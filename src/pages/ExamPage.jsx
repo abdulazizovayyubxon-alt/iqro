@@ -18,7 +18,7 @@ function shuffleArray(arr) {
 }
 
 const ExamPage = ({ goBack }) => {
-  const { state, addObjection, showToast } = useContext(AppContext);
+  const { state, addScore, addMistake, addObjection, showToast } = useContext(AppContext);
   const cat = state.activeCategory;
 
   const [questions, setQuestions] = useState([]);
@@ -43,7 +43,7 @@ const ExamPage = ({ goBack }) => {
     const groups = [];
 
     filteredTopics.forEach(topic => {
-      const qs = getFallbackQuestions(topic.id, 0, 999).map(q => ({ ...q, topicId: topic.id, topicName: topic.name, topicIcon: topic.icon }));
+      const qs = getFallbackQuestions(topic.id, cat).map(q => ({ ...q, topicId: topic.id, topicName: topic.name, topicIcon: topic.icon }));
       if (qs.length > 0) {
         const shuffled = shuffleArray(qs);
         const pick = Math.ceil(EXAM_TOTAL / filteredTopics.length);
@@ -102,6 +102,18 @@ const ExamPage = ({ goBack }) => {
     clearInterval(timerRef.current);
     setFinished(true);
     setEndTime(new Date());
+
+    // Statistikani yangilash — har bir javobni addScore/addMistake orqali saqlash
+    questions.forEach((q, i) => {
+      if (answers[i] !== undefined) {
+        if (answers[i] === q.correct) {
+          addScore(2, q.topicId);
+        } else {
+          addMistake(q.topicId, q.q, q.opts[q.correct], q.opts);
+        }
+      }
+    });
+
     const correct = questions.filter((q, i) => answers[i] === q.correct).length;
     const pct = Math.round((correct / questions.length) * 100);
     if (pct >= 60) {

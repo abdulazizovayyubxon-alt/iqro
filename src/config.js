@@ -1,10 +1,12 @@
 // Markaziy konfiguratsiya — barcha global konstantalar shu yerda
 
-export const EXAM_DATE = new Date('2026-05-13T09:00:00');
+// Imtihon sanasi — agar o'tib ketgan bo'lsa, keyingi siklga o'tadi
+const RAW_EXAM_DATE = new Date('2026-05-13T09:00:00');
+export const EXAM_DATE = RAW_EXAM_DATE > new Date() ? RAW_EXAM_DATE : null;
 
 export const APP_NAME = 'IQRO';
 export const APP_SUBTITLE = 'Kasbiy Sertifikatlash Tayyorgarligi';
-export const EXAM_LABEL = '13 May — IQRO Kasbiy Sertifikatlash Imtihoni';
+export const EXAM_LABEL = EXAM_DATE ? '13 May — IQRO Kasbiy Sertifikatlash Imtihoni' : 'IQRO Kasbiy Sertifikatlash Platformasi';
 export const EXAM_GOAL_SCORE = 70;
 
 export const BATCH_SIZE = 50; // Har bir blokdagi savollar soni
@@ -18,3 +20,4 @@ export const ADMIN_EMAILS = [
 
 // Imtihon rejimida har savol uchun vaqt (soniyada)
 export const QUESTION_TIMER_SECONDS = 60;
+

@@ -114,6 +114,10 @@ export const AppProvider = ({ children }) => {
 
     const statRef = doc(db, 'userStats', user.uid);
     const { objections, sentObjectionIds, ...statsToSave } = state;
+    // Leaderboard uchun foydalanuvchi ma'lumotlarini ham saqlash
+    statsToSave.displayName = user.displayName || '';
+    statsToSave.userName = user.displayName || '';
+    statsToSave.photoURL = user.photoURL || null;
     setDoc(statRef, statsToSave, { merge: true }).catch(console.error);
 
     // localStorage ga ham (offline backup)
@@ -398,6 +402,19 @@ export const AppProvider = ({ children }) => {
     showToast("Statistika tozalandi", 'info');
   };
 
+  // ─── E'tiroz izohini yangilash ───
+  const updateObjectionNote = async (fbId, newNote) => {
+    if (!fbId || !newNote.trim()) return;
+    try {
+      await updateDoc(doc(db, "objections", fbId), { note: newNote.trim() });
+      showToast("E'tiroz yangilandi ✏️", 'success');
+    } catch (err) { console.error(err); }
+    setState(prev => ({
+      ...prev,
+      objections: prev.objections.map(o => o.fbId === fbId ? { ...o, note: newNote.trim() } : o)
+    }));
+  };
+
   return (
     <AppContext.Provider value={{
       state,
@@ -409,6 +426,7 @@ export const AppProvider = ({ children }) => {
       solveObjection,
       deleteObjection,
       importObjections,
+      updateObjectionNote,
       resetStats,
       toast,
       showToast,

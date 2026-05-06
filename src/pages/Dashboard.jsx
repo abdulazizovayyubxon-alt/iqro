@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { EXAM_DATE, EXAM_LABEL, EXAM_GOAL_SCORE } from '../config';
 
 const Dashboard = ({ navigateToTest }) => {
-  const { state, updateState, clearObjections, solveObjection, deleteObjection, importObjections, showToast } = useContext(AppContext);
+  const { state, updateState, clearObjections, solveObjection, deleteObjection, importObjections, updateObjectionNote, showToast } = useContext(AppContext);
   const [editingId, setEditingId] = useState(null);
   const [editNote, setEditNote] = useState('');
 
@@ -14,8 +14,12 @@ const Dashboard = ({ navigateToTest }) => {
   const [daysLeft, setDaysLeft] = useState('');
 
   useEffect(() => {
+    if (!EXAM_DATE) {
+      setDaysLeft('Bilimingizni oshirishda davom eting!');
+      return;
+    }
     const calc = () => {
-      const diff = EXAM_DATE - new Date(); // FIX: config dan
+      const diff = EXAM_DATE - new Date();
       if (diff <= 0) setDaysLeft('Imtihon kuni!');
       else setDaysLeft(`${Math.floor(diff / 86400000)} kun ${Math.floor((diff % 86400000) / 3600000)} soat`);
     };
@@ -97,7 +101,7 @@ const Dashboard = ({ navigateToTest }) => {
           {state.activeCategory === 'art' ? "Sertifikatlashga tayyorgarlik kursi" : `${EXAM_LABEL} | Maqsad: ${EXAM_GOAL_SCORE} ball`}
         </div>
         <div className="day-countdown" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-          <Clock size={16} /> {state.activeCategory === 'art' ? "Muvaffaqiyatli o'zlashtirish tilaymiz!" : `Imtihongacha: ${daysLeft}`}
+          <Clock size={16} /> {state.activeCategory === 'art' ? "Muvaffaqiyatli o'zlashtirish tilaymiz!" : EXAM_DATE ? `Imtihongacha: ${daysLeft}` : daysLeft}
         </div>
         
         {/* Mobile Quick Switch Button */}
@@ -215,9 +219,7 @@ const Dashboard = ({ navigateToTest }) => {
                         />
                         <div style={{ display: 'flex', gap: '8px' }}>
                           <button className="btn btn-primary btn-sm" onClick={() => {
-                            // Firestore'da note'ni yangilash kodi AppContext'da bo'lishi kerak, 
-                            // lekin hozircha faqat local state'da ko'rsatamiz yoki AppContext'ga funksiya qo'shamiz
-                            // Hozircha oddiygina yopamiz
+                            updateObjectionNote(obj.fbId, editNote);
                             setEditingId(null);
                           }}>Saqlash</button>
                           <button className="btn btn-outline btn-sm" onClick={() => setEditingId(null)}>Bekor qilish</button>
