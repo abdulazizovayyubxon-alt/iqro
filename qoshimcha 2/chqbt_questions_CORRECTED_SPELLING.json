@@ -1,0 +1,473 @@
+{
+  "metadata": {
+    "platform": "CHQBT - Kasbiy Sertifikatlash Tayyorgarligi",
+    "version": "2.0",
+    "spellCheckFixed": true,
+    "encoding": "UTF-8",
+    "note": "Barcha savollar o'zbek imlosiga muvofiq ravishda tuzatildi"
+  },
+  "sections": {
+    "otish": {
+      "name": "Otish tayyorgarligi",
+      "description": "Qurol qonuni, AK, ballistika, otish xavfsizligi",
+      "icon": "🔫",
+      "questions": [
+        {
+          "id": "otish_001",
+          "question": "Qurol qonuni O'zbekistonda qachon qabul qilingan?",
+          "options": ["2017-yil", "2019-yil", "2020-yil", "2018-yil"],
+          "correctAnswer": 1,
+          "explanation": "O'zbekiston Respublikasi 'Qurol to'g'risida'gi qonuni 2019-yil 7-iyunida O'RQ-550-son bilan qabul qilingan."
+        },
+        {
+          "id": "otish_002",
+          "question": "Qurol turlari qanday taqsimlanadi?",
+          "options": ["Faqat o'qotar qurol", "O'qotar va pnevmatik qurol", "Pnevmatik, kimyoviy, yadroviy qurol", "Faqat xavf-kaftil qurol"],
+          "correctAnswer": 1,
+          "explanation": "Qurol to'g'risida qonunga ko'ra, qurol ikki asosiy turga bo'linadi: o'qotar qurol va pnevmatik qurol."
+        },
+        {
+          "id": "otish_003",
+          "question": "Kalashnikov avtomati (AK) qaysi mamlakatda ixtiro qilingan?",
+          "options": ["AQSH", "Germaniya", "Sovet Ittifoqi", "Italiya"],
+          "correctAnswer": 2,
+          "explanation": "Kalashnikov avtomati Sovet Ittifoqi muhandisi Mixail Kalashnikovning ixtirosi (1947-yil)."
+        },
+        {
+          "id": "otish_004",
+          "question": "AK patronining o'lchami qanday?",
+          "options": ["5.45 × 39 mm", "7.62 × 39 mm", "7.92 × 57 mm", "5.56 × 45 mm"],
+          "correctAnswer": 0,
+          "explanation": "Modern AK-74 va undan keyin versiyalarida 5.45 × 39 mm patron ishlatiladi."
+        },
+        {
+          "id": "otish_005",
+          "question": "AK patronining qismlari qanday?",
+          "options": ["Faqat o'q va o'rg'uc", "O'q, o'rg'uc, boshlovchi va kuzasi", "Faqat kuzasi", "Texnika qismlari"],
+          "correctAnswer": 1,
+          "explanation": "Patron to'liq to'plami: o'q, o'rg'uc, boshlovchi (kapsula) va kuzasi (gilza)."
+        },
+        {
+          "id": "otish_006",
+          "question": "Otish hodisasi necha davrda bo'ladi?",
+          "options": ["2 davrda", "3 davrda", "4 davrda", "5 davrda"],
+          "correctAnswer": 2,
+          "explanation": "Otish hodisasi 4 davrda bo'ladi: 1) Zarba berish 2) Otishni boshlanishi 3) O'q harakati 4) Mergan hodisasi."
+        },
+        {
+          "id": "otish_007",
+          "question": "AK samarali otish masofa qancha metr?",
+          "options": ["300 metr", "400 metr", "600 metr", "1000 metr"],
+          "correctAnswer": 2,
+          "explanation": "AK-74 samarali otish masofa 400 metrgacha, maksimal masofa 600 metrgacha bo'ladi."
+        },
+        {
+          "id": "otish_008",
+          "question": "AK o'q boshlang'ich tezligi qancha?",
+          "options": ["600 m/s", "800 m/s", "900 m/s", "1000 m/s"],
+          "correctAnswer": 2,
+          "explanation": "AK-74 o'q boshlang'ich tezligi 900 m/s, AK-47 esa 715 m/s ni tashkil etadi."
+        },
+        {
+          "id": "otish_009",
+          "question": "Qurol bilan ishlashning asosiy tamoyili?",
+          "options": ["Xavfsizlik", "Aniqlik", "Samaralilik", "Tezlik"],
+          "correctAnswer": 0,
+          "explanation": "Qurol bilan ishlashning asosiy tamoyili — XAVFSIZLIK. Bu shaxsiy salomatlikni himoya qiladi."
+        },
+        {
+          "id": "otish_010",
+          "question": "Otishda qurolni qaysi tomon tutish to'g'ri?",
+          "options": ["Faqat o'ng qo'l", "Faqat chap qo'l", "Ikkala qo'l bilan", "Istalgan tomon"],
+          "correctAnswer": 2,
+          "explanation": "Xavfsiz otish uchun qurol ikkala qo'l bilan mustahkam tutilishi kerak."
+        }
+      ]
+    },
+    "taktika": {
+      "name": "Taktika va topografiya",
+      "description": "Azimut, xarita, relyef, jangovar harakat",
+      "icon": "🗺️",
+      "questions": [
+        {
+          "id": "taktika_001",
+          "question": "Topografiya nima?",
+          "options": ["Faqat xarita o'qish", "Yer sirtining xususiyatlarini tadqiq etish", "Qitalar haqida bilim", "Shaharlar haqida bilim"],
+          "correctAnswer": 1,
+          "explanation": "Topografiya — yer sirtining relyefi, obyektlari, masofasi va xarita o'qishni o'rgatadi."
+        },
+        {
+          "id": "taktika_002",
+          "question": "Azimut nima?",
+          "options": ["Yo'nalish", "Shimol yo'nalishidan nishongacha burchak", "Masafa", "Relyef turi"],
+          "correctAnswer": 1,
+          "explanation": "Azimut — shimol yo'nalishidan nishon tomoniga soat o'qiga muvofiq o'lchangan burchak (0-360 daraja)."
+        },
+        {
+          "id": "taktika_003",
+          "question": "Gorizont tomonlari nechaga bo'linadi?",
+          "options": ["2 tomonga", "4 tomonga", "8 tomonga", "Chiziqlar yo'qdir"],
+          "correctAnswer": 2,
+          "explanation": "Gorizont 4 asosiy tomon (Shimol, Janub, Sharq, G'arb) va 4 oraliq, jami 8 qismga bo'linadi."
+        },
+        {
+          "id": "taktika_004",
+          "question": "Xarita masshtabi nima?",
+          "options": ["Xarita rangi", "Xarita va haqiqiy yer nisbati", "Xarita shakli", "Xarita o'lchami"],
+          "correctAnswer": 1,
+          "explanation": "Masshtab — xaritada 1 santimetr haqiqiy yerning qancha o'lchami ekanini ko'rsatadi."
+        },
+        {
+          "id": "taktika_005",
+          "question": "1:25000 masshtab nima demak?",
+          "options": ["250 metr", "2500 metr", "25 metr", "25 kilometer"],
+          "correctAnswer": 1,
+          "explanation": "1:25000 masshtab - xaritada 1 sm = 250 metrni anglatadi."
+        },
+        {
+          "id": "taktika_006",
+          "question": "Xarita belgisi qanday?",
+          "options": ["Faqat ranglar", "Relyef va nishonlarning belgilari", "Faqat sonlar", "Hech narsa"],
+          "correctAnswer": 1,
+          "explanation": "Xarita belgisi — tog'lar, daryolar, yo'llar, binolar, dronlar va boshqa nishonlarni xaritada belgilab ko'rsatadi."
+        },
+        {
+          "id": "taktika_007",
+          "question": "Relyef turlari qanday?",
+          "options": ["Faqat tog'", "Tog', tekislik, vodiy, techalak", "Faqat tekislik", "Vodiylar"],
+          "correctAnswer": 1,
+          "explanation": "Relyef turlari: tog', tekislik, vodiy, techalak, platfor va boshqalar."
+        },
+        {
+          "id": "taktika_008",
+          "question": "Izogipsa nima?",
+          "options": ["Xarita chizigi", "Bir xil balandlikdagi nuqtalarni birlashtiruvchi chiziq", "Yo'l", "Daryocho"],
+          "correctAnswer": 1,
+          "explanation": "Izogipsa — xaritada bir xil balandlikdagi nuqtalarni birlashtiruvchi chiziq, yer relyefini ko'rsatadi."
+        },
+        {
+          "id": "taktika_009",
+          "question": "Azimut turlari nechaga?",
+          "options": ["1 turga", "2 turga", "3 turga", "4 turga"],
+          "correctAnswer": 1,
+          "explanation": "Azimut turlari: geografik azimut va magnit azimut."
+        },
+        {
+          "id": "taktika_010",
+          "question": "Oriyentir nima?",
+          "options": ["Faqat tog'", "Yer sirtidagi aniq nishonlar", "Yo'l", "Xarita belgisi"],
+          "correctAnswer": 1,
+          "explanation": "Oriyentir — topografiyada yo'nalish uchun ishlatiluvchi oydinchig nishonlar."
+        }
+      ]
+    },
+    "fv": {
+      "name": "Fuqaro muhofazasi",
+      "description": "OQQ, favqulodda vaziyatlar, himoya vositalari",
+      "icon": "🛡️",
+      "questions": [
+        {
+          "id": "fv_001",
+          "question": "Fuqaro muhofazasi nima?",
+          "options": ["Faqat davlat himoyasi", "Favqulodda vaziyatlarda aholini himoya qilish", "Jangovar ta'minot", "Askari tajriba"],
+          "correctAnswer": 1,
+          "explanation": "Fuqaro muhofazasi — tabiiy va sun'iy favqulodda vaziyatlarda aholini himoya qilish toimiy choralari."
+        },
+        {
+          "id": "fv_002",
+          "question": "Favqulodda vaziyat turlari nechaga?",
+          "options": ["1 turga", "2 turga", "3 turga", "4 turga"],
+          "correctAnswer": 1,
+          "explanation": "Favqulodda vaziyat turlari: tabiiy (zilzila, tashqin) va sun'iy (bombarduv, gazlash)."
+        },
+        {
+          "id": "fv_003",
+          "question": "OQQ nima?",
+          "options": ["Kimyoviy qurol", "Yadroviy, kimyoviy, biologik qurol", "Faqat biologik qurol", "Oddiy qurol"],
+          "correctAnswer": 1,
+          "explanation": "OQQ — Yadroviy, Kimyoviy va Biologik qurol turlarining qisqartmasi."
+        },
+        {
+          "id": "fv_004",
+          "question": "Yadroviy qurol ta'siri qanday?",
+          "options": ["Faqat otish", "Issiqlik, radioaktivlik, mexanik ta'sir", "Faqat gaz", "Tovush"],
+          "correctAnswer": 1,
+          "explanation": "Yadroviy qurol ta'siri: issiqlik, radioaktiv chigish, mexanik kuchli to'lqin."
+        },
+        {
+          "id": "fv_005",
+          "question": "Kimyoviy qurol moddalarida neler bor?",
+          "options": ["Faqat gaz", "GV (sarin), Iprit, Lewisit", "Faqat jadam", "Boshqa narsa"],
+          "correctAnswer": 1,
+          "explanation": "Kimyoviy qurol moddalar: GV (sarin), Mustard (Iprit), Lewisit."
+        },
+        {
+          "id": "fv_006",
+          "question": "Biologik qurol nima?",
+          "options": ["Qurol", "Viruslar, bakteriyalar, toksinlar", "Tibbiy moddalar", "Oziq-ovqat"],
+          "correctAnswer": 1,
+          "explanation": "Biologik qurol — mikroorganizmlar va ularning toksinlari qo'llaniladi."
+        },
+        {
+          "id": "fv_007",
+          "question": "Favqulodda vaziyatda hlobar qanday berish kerak?",
+          "options": ["Qo'ng'iroq qilish", "Sirena, radio, SMS orqali", "Kutmoq", "Hech narsa"],
+          "correctAnswer": 1,
+          "explanation": "Favqulodda vaziyatda ogohlantirah: sirena, radio, telegramma."
+        },
+        {
+          "id": "fv_008",
+          "question": "Himoya vositalari nechaga?",
+          "options": ["1 turga", "Individual va kollektiv", "Faqat individual", "Faqat kollektiv"],
+          "correctAnswer": 1,
+          "explanation": "Himoya vositalari: individual (gaz niqobi, kostyumi) va kollektiv (bunker, poxona)."
+        },
+        {
+          "id": "fv_009",
+          "question": "Gaz niqobining qismlari nechaga?",
+          "options": ["1 ta", "2 ta", "3 ta", "4 ta"],
+          "correctAnswer": 1,
+          "explanation": "Gaz niqobi: maskavet va filtr (hava toza qiluvchi)."
+        },
+        {
+          "id": "fv_010",
+          "question": "Himoya kostyumi nima uchun?",
+          "options": ["Issiqlik uchun", "Kimyoviy va biologik zarilashdan", "Faqat shovni yumashish uchun", "Oynachash uchun"],
+          "correctAnswer": 1,
+          "explanation": "Himoya kostyumi (KZO) — kimyoviy, biologik va radioaktiv moddalardan himoya qiladi."
+        }
+      ]
+    },
+    "tibbiyot": {
+      "name": "Tibbiy bilim asoslari",
+      "description": "Birinchi yordam, jarohatlar, qon ketishi",
+      "icon": "🏥",
+      "questions": [
+        {
+          "id": "tibbiyot_001",
+          "question": "Birinchi tibbiy yordam (PMP) nima?",
+          "options": ["Faqat gipsi", "Shoshilinch tibbiy choralar", "Faqat davolar", "Surxmilik"],
+          "correctAnswer": 1,
+          "explanation": "Birinchi tibbiy yordam (PMP) — jarohatni o'z-o'zidan yoki to'lovchisi orqali dorilar ishlatmasdan qilish tibbiy choralar."
+        },
+        {
+          "id": "tibbiyot_002",
+          "question": "PMP tartib qanday?",
+          "options": ["Istalgan tartibda", "Kazolinib → Qonni to'xtatar → Bandaj → Imobil", "Faqat bandaj", "Hech qanday tartib"],
+          "correctAnswer": 1,
+          "explanation": "PMP tartib: kazolinib → qonni to'xtatar → jarohatni tozalash → bandaj → imobilizatsiya."
+        },
+        {
+          "id": "tibbiyot_003",
+          "question": "Qon ketishing eng xavfli turi?",
+          "options": ["Kapillyar", "Venoz", "Arterial", "Faqat kapillyar"],
+          "correctAnswer": 2,
+          "explanation": "Arterial qon ketishi eng xavfli — bir minutada 1-1,5 litr qon yo'qolsa, o'lim xavfi."
+        },
+        {
+          "id": "tibbiyot_004",
+          "question": "Arterial qon to'xtatar qanday?",
+          "options": ["Oddiy bandaj", "Tournike (puls ustida)", "Faqat shing", "Hech nima"],
+          "correctAnswer": 1,
+          "explanation": "Arterial qon: tournike qo'yish, pulsni topib, puls ustida 3-5 sm ba'landlikda fiksatsiya qilish."
+        },
+        {
+          "id": "tibbiyot_005",
+          "question": "Suyak sinishi belgilari?",
+          "options": ["Faqat qichish", "Og'rish, shuollik, harakat cheklanuvi, deformatsiya", "Faqat og'rish", "Hech narsa"],
+          "correctAnswer": 1,
+          "explanation": "Suyak sinishi belgilari: og'rish, shuollik, harakat cheklanuvi, notormal qoqilish, erishmalik."
+        },
+        {
+          "id": "tibbiyot_006",
+          "question": "Suyak sinishiga PMP?",
+          "options": ["Faqat kutmoq", "Imobil → sovuq → bandaj → baland qo'yish", "Faqat harakat", "Hech narsa"],
+          "correctAnswer": 1,
+          "explanation": "Suyak sinishiga PMP: imobilizatsiya → sovuq qo'yish → bandaj → baland qo'yish."
+        },
+        {
+          "id": "tibbiyot_007",
+          "question": "Yuqumli kasallik qanday tarqaladi?",
+          "options": ["Faqat hava orqali", "Hava, suv, taom, vektora orqali", "Faqat qaytarish", "Hech qanday yo'l"],
+          "correctAnswer": 1,
+          "explanation": "Yuqumli kasalliklashing yo'llari: havani bo'yicha, suv/taom orqali, vektora (hasharotlar), kontakt orqali."
+        },
+        {
+          "id": "tibbiyot_008",
+          "question": "Jangovar jarohatlar turlari?",
+          "options": ["Faqat o'q jarohatsi", "O'q, shrapnel, mushuq, minadan jarohatsi", "Faqat o'q", "Hech narsa"],
+          "correctAnswer": 1,
+          "explanation": "Jangovar jarohatlar: o'q jarohatsi, shrapnel jarohatsi, mushuq jarohatsi, minadan jarohatsi."
+        },
+        {
+          "id": "tibbiyot_009",
+          "question": "Jarohatni dez-infektsiya qaysi moddalar bilan?",
+          "options": ["Faqat suv", "Peroksid, iod, spirt, miramistin", "Faqat noni", "Boshqa narsa"],
+          "correctAnswer": 1,
+          "explanation": "Jarohat dez-infektsiyasi: peroksid, iod, spirt (70%), miramistin yoki klorheksidini."
+        },
+        {
+          "id": "tibbiyot_010",
+          "question": "Burna qon ketishi PMP?",
+          "options": ["Boshni orqaga surtmoq", "Boshni oldiga surtmoq, burna sovuq, muhayyo qo'yish", "Faqat shunga", "Hech narsa"],
+          "correctAnswer": 1,
+          "explanation": "Burna qon ketishi: boshni oldiga egilish, burnani sovuq suv bilan sug'orish, muhayyo qo'yish."
+        }
+      ]
+    },
+    "pedagogika": {
+      "name": "Pedagogik mahorat",
+      "description": "Ta'lim paradigmalari, dars turlari, o'qitish metodikasi",
+      "icon": "📚",
+      "questions": [
+        {
+          "id": "pedagogika_001",
+          "question": "Pedagogika nima?",
+          "options": ["Faqat ta'lim", "Ta'lim va o'sib yetilish ilmi", "Faqat yosh o'sishi", "Beshi tayyorgarligi"],
+          "correctAnswer": 1,
+          "explanation": "Pedagogika — ta'lim va o'sib yetilishning ilmi, bolalarni o'qitish va rivojlantirishning usullari."
+        },
+        {
+          "id": "pedagogika_002",
+          "question": "Ta'lim tamoyillari nechaga?",
+          "options": ["1 ta", "5 ta", "3 ta", "7 ta"],
+          "correctAnswer": 1,
+          "explanation": "Ta'lim tamoyillari: onglilik, ko'rgazmalilik, tizimlilik, ilmiylik, amaliyot birligi."
+        },
+        {
+          "id": "pedagogika_003",
+          "question": "Ta'lim paradigmasi nima?",
+          "options": ["Faqat usuli", "Ta'limning falsafiy asosi", "Faqat maqsad", "Hech narsa"],
+          "correctAnswer": 1,
+          "explanation": "Paradigma — ta'limning falsafiy-ilmiy asosi va maqsadi belgilaydi."
+        },
+        {
+          "id": "pedagogika_004",
+          "question": "Ta'lim paradigmalari nechaga?",
+          "options": ["2 ta", "5 ta", "3 ta", "4 ta"],
+          "correctAnswer": 1,
+          "explanation": "Paradigmalar: an'anaviy, ratsionalistik, fenomenologik, texnokratik, ezoterik."
+        },
+        {
+          "id": "pedagogika_005",
+          "question": "An'anaviy paradigmada o'qituvchi qanday?",
+          "options": ["Konsultant", "Bilim beruvchi", "Yordamchi", "Direkt"],
+          "correctAnswer": 1,
+          "explanation": "An'anaviy paradigma: o'qituvchi — bilim beruvchi, talaba — qabul qiluvchi."
+        },
+        {
+          "id": "pedagogika_006",
+          "question": "Ratsionalistik paradigma maqsadi?",
+          "options": ["Faqat o'qitish", "Mantiqiy fikrlash", "Faqat yodlash", "Hech narsa"],
+          "correctAnswer": 1,
+          "explanation": "Ratsionalistik paradigma: mantiqiy tafakkurni o'rgatish, ilmiy yo'llar ishlatish."
+        },
+        {
+          "id": "pedagogika_007",
+          "question": "Dars turlari nechaga?",
+          "options": ["2 ta", "5 ta", "3 ta", "4 ta"],
+          "correctAnswer": 1,
+          "explanation": "Dars turlari: yangi bilim, mustahkamlash, takrorlash, nazorat, aralash."
+        },
+        {
+          "id": "pedagogika_008",
+          "question": "Yangi bilim darsining maqsadi?",
+          "options": ["Mustahkamlash", "Yangi bilim berish", "Takrorlash", "Nazorat"],
+          "correctAnswer": 1,
+          "explanation": "Yangi bilim dars: yangi tushunchalar, qonunlar, formulalar o'rgatish."
+        },
+        {
+          "id": "pedagogika_009",
+          "question": "Mustahkamlash darsida nima?",
+          "options": ["Yangi bilim", "Bilimni chuqurlashtirish", "Takrorlash", "Nazorat"],
+          "correctAnswer": 1,
+          "explanation": "Mustahkamlash dars: berilgan bilimlarni chuqurlashtirish, ko'nikmalar tuzish."
+        },
+        {
+          "id": "pedagogika_010",
+          "question": "CHQBT fanining maqsadi?",
+          "options": ["Faqat harbiy bilim", "Yoshlarni harbiy xizmatlga tayyorlash", "Faqat jismoniy", "Hech narsa"],
+          "correctAnswer": 1,
+          "explanation": "CHQBT maqsadi: yoshlarni harbiy xizmatlga ruhiy, jismoniy, nazariy, amaliy yondash tayyorlash."
+        }
+      ]
+    },
+    "nizomlar": {
+      "name": "Harbiy nizomlar",
+      "description": "Ichki xizmat, intizomiy, garnizon, saf nizomi",
+      "icon": "📜",
+      "questions": [
+        {
+          "id": "nizomlar_001",
+          "question": "Ichki xizmat nizomi nima?",
+          "options": ["Paradlashish tartibi", "Qimmiy hayot va xizmat tartib-qoidalari", "Otish mashqlari", "Chegara himoyasi"],
+          "correctAnswer": 1,
+          "explanation": "Ichki xizmat nizomi — harbiy qismlar ichidagi kundalik hayot, tartib-intizom qo'idalarini belgilaydi."
+        },
+        {
+          "id": "nizomlar_002",
+          "question": "Rota qo'mondoni kimga mas'ul?",
+          "options": ["Polk qo'mondoniga", "O'z rotasining tarbiyasi va xizmatiga", "Batalyon qo'mondoniga", "Navbatchi ofitsarga"],
+          "correctAnswer": 1,
+          "explanation": "Rota qo'mondoni o'z rotasining kundalik hayoti, tarbiyasi va intizomiga bevosita mas'ul."
+        },
+        {
+          "id": "nizomlar_003",
+          "question": "Navbatchi ofitser necha soat xizmat qiladi?",
+          "options": ["12 soat", "24 soat", "8 soat", "48 soat"],
+          "correctAnswer": 1,
+          "explanation": "Navbatchi ofitser 24 soat (bir sutka) xizmat qiladi, keyin almashadi."
+        },
+        {
+          "id": "nizomlar_004",
+          "question": "Harbiy intizom nima?",
+          "options": ["Kiyim tartibi", "Qonun va buyruqlarga rioya, majburiyat bajarish", "Sport qo'idasi", "Parade tuzilishi"],
+          "correctAnswer": 1,
+          "explanation": "Harbiy intizom — qonun, nizom, buyruqlarga qat'iy rioya va o'z burchini vijdonan bajarish."
+        },
+        {
+          "id": "nizomlar_005",
+          "question": "Intizomiy jazolar turlari?",
+          "options": ["2 tur", "5 tur", "3 tur", "4 tur"],
+          "correctAnswer": 1,
+          "explanation": "Intizomiy jazolar: ogohlantirish, qattiq ogohlantirish, intizomiy qamoq, unvondan tushirish."
+        },
+        {
+          "id": "nizomlar_006",
+          "question": "Qorovul xizmati nima?",
+          "options": ["Paradlashing", "Muhim nishonlarni himoya qilish", "Mashg'ulot", "Sport"],
+          "correctAnswer": 1,
+          "explanation": "Qorovul xizmati — harbiy qism, qurol-yarog', texnika va muhim objektlarni qo'riqlash."
+        },
+        {
+          "id": "nizomlar_007",
+          "question": "Saf nizomi nima?",
+          "options": ["Paradni tartibga solish", "Safda turish va harakat tartibini belgilash", "Jangda harakat", "Otish masqlari"],
+          "correctAnswer": 1,
+          "explanation": "Saf nizomi — harbiy xizmatchilarning safda turishi, harakati va buyruqlarni bajarish tartibini belgilaydi."
+        },
+        {
+          "id": "nizomlar_008",
+          "question": "'Tinchlang!' buyrug'i berilganda nima bo'ladi?",
+          "options": ["O'tirib oladilar", "O'ng oyoq chap oyoqqa qo'shiladi, erkin holat", "Chapga buriladi", "Yugurab ketadi"],
+          "correctAnswer": 1,
+          "explanation": "'Tinchlang!' buyrug'ida o'ng oyoq chap oyoqqa qo'shiladi va erkin holat qabul qilinadi."
+        },
+        {
+          "id": "nizomlar_009",
+          "question": "Garnizon nima?",
+          "options": ["Bitta rota", "Hududda joylashgan barcha harbiy qismlar", "Bitta polk", "Kasalxona"],
+          "correctAnswer": 1,
+          "explanation": "Garnizon — ma'lum shahar yoki hududda doimiy joylashgan barcha harbiy qismlar majmuasi."
+        },
+        {
+          "id": "nizomlar_010",
+          "question": "Intizomiy nizom kimga taalluqli?",
+          "options": ["Faqat ofitserlarga", "Faqat askarlariga", "Barcha harbiy xizmatchilarga", "Faqat generallarga"],
+          "correctAnswer": 2,
+          "explanation": "Intizomiy nizom — Qurolli Kuchlari barcha harbiy xizmatchilariga (askargacha generalga qadar) taalluqli."
+        }
+      ]
+    }
+  }
+}
