@@ -23,7 +23,7 @@ const LeaderboardPage = ({ goBack }) => {
       const results = [];
       snapshot.forEach(doc => {
         const data = doc.data();
-        if (data.totalScore > 0) {
+        if (data.totalScore !== undefined) {
           results.push({
             id: doc.id,
             name: data.displayName || data.userName || 'Maxfiy foydalanuvchi',
@@ -34,27 +34,13 @@ const LeaderboardPage = ({ goBack }) => {
           });
         }
       });
-      setLeaders(results.length > 0 ? results : getMockLeaders());
+      setLeaders(results);
     } catch (err) {
       console.error("Leaderboard fetch error:", err);
-      // Agar Firestore rules yopiq bo'lsa (Missing permissions), demo ma'lumot ko'rsatamiz
-      if (err.message && err.message.includes('Missing or insufficient permissions')) {
-         alert("Diqqat: Firebase Firestore qoidalarida 'userStats' kolleksiyasini o'qish ruxsati yopiq. Hozircha demo-reyting ko'rsatilmoqda. Buni Firebase konsolidan to'g'irlashingiz kerak.");
-      }
-      setLeaders(getMockLeaders());
+      setLeaders([]);
     } finally {
       setLoading(false);
     }
-  };
-
-  const getMockLeaders = () => {
-    return [
-      { id: '1', name: 'Alisher Qodirov', score: 24500, streak: 12, answered: 2450 },
-      { id: '2', name: 'Zarina M.', score: 21200, streak: 5, answered: 2120 },
-      { id: '3', name: 'Umidjon (Sirdaryo)', score: 19850, streak: 8, answered: 1985 },
-      { id: '4', name: 'Javohir', score: 18400, streak: 2, answered: 1840 },
-      { id: '5', name: 'Botir', score: 15200, streak: 0, answered: 1520 }
-    ];
   };
 
   const getRankBadge = (index) => {

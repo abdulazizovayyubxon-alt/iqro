@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import { SCHEDULE, TOPICS } from '../data/mockData';
-import { Play, Repeat, Zap, MessageCircle, Download, Trash2, Medal, Palette, Clock, Award, Target, Flame, AlertTriangle, Map, CheckCircle2 } from 'lucide-react';
+import { Play, Repeat, Zap, MessageCircle, Download, Trash2, Medal, Palette, Clock, Award, Target, Flame, AlertTriangle, Map, CheckCircle2, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { EXAM_DATE, EXAM_LABEL, EXAM_GOAL_SCORE } from '../config';
 
@@ -272,6 +272,28 @@ const Dashboard = ({ navigateToTest }) => {
         </div>
       </div>
 
+      {/* G'OYA-6: Haftalik taqqoslash */}
+      {catStats.totalAnswered > 10 && (
+        <div className="glass-panel" style={{ padding: '16px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 14, border: '1px solid rgba(59,130,246,0.15)', background: 'rgba(59,130,246,0.03)' }}>
+          <div style={{ width: 40, height: 40, borderRadius: 12, background: 'var(--blue-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <TrendingUp size={20} color="var(--blue)" />
+          </div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>
+              {totalAcc >= 70 ? "Ajoyib natija! " : totalAcc >= 50 ? "Yaxshi yo'ldasiz! " : "Davom eting! "}
+              {totalAcc}% aniqlik
+            </div>
+            <div style={{ fontSize: 12, color: 'var(--text3)' }}>
+              {catStats.totalAnswered} ta savoldan {catStats.totalCorrect} tasiga to'g'ri javob berdingiz
+              {catStats.maxStreak > 3 && ` • Eng uzun seriya: ${catStats.maxStreak} ta ketma-ket`}
+            </div>
+          </div>
+          {totalAcc >= 70 && <div style={{ fontSize: 28 }}>🎯</div>}
+          {totalAcc >= 50 && totalAcc < 70 && <div style={{ fontSize: 28 }}>📈</div>}
+          {totalAcc < 50 && <div style={{ fontSize: 28 }}>💪</div>}
+        </div>
+      )}
+
       {/* 📌 Kunlik Maqsad */}
       {(() => {
         const today = new Date().toDateString();
@@ -390,10 +412,22 @@ const Dashboard = ({ navigateToTest }) => {
                         </span>
                       </div>
                     </div>
-                    <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                    <div style={{ textAlign: 'right', flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
                       <div style={{ fontSize: 16, fontWeight: 800, color: 'var(--red)' }}>{t.wrong}</div>
                       <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 600 }}>XATO</div>
                     </div>
+                    {/* G'OYA-5: Mashq qilish tugmasi */}
+                    <button 
+                      className="btn btn-sm"
+                      onClick={(e) => { e.stopPropagation(); navigateToTest(t.id, 'exam'); }}
+                      style={{ 
+                        background: 'var(--red)', color: 'white', border: 'none', 
+                        fontSize: 11, padding: '6px 10px', borderRadius: 8, flexShrink: 0,
+                        fontWeight: 700
+                      }}
+                    >
+                      Mashq qil
+                    </button>
                   </div>
                 ))}
               </div>

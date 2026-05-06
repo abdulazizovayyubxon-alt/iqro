@@ -26,6 +26,13 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
   const timerRef = useRef(null);
   const explanationRef = useRef(null);
 
+  // G'OYA-1: Motivatsion so'zlar va combo
+  const [comboCount, setComboCount] = useState(0);
+  const [motivationText, setMotivationText] = useState('');
+  const motivationTimerRef = useRef(null);
+
+  // G'OYA-4: Mini-darslik
+  const [showTheory, setShowTheory] = useState(false);
 
   // Flashcard state
   const [fcFlipped, setFcFlipped] = useState(false);
@@ -38,7 +45,7 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
 
   // Timer: har yangi savolda reset
   useEffect(() => {
-    if (mode !== 'exam' || showResults || questions.length === 0) {
+    if (mode !== 'exam' || showResults || questions.length === 0 || showTheory) {
       setTimerActive(false);
       clearInterval(timerRef.current);
       return;
@@ -159,14 +166,33 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
     const q = questions[qIndex];
 
     if (q.correct === optIdx) {
+      const newCombo = comboCount + 1;
+      setComboCount(newCombo);
       addScore(2, topicId);
+
+      // G'OYA-1: Motivatsion so'zlar
+      const MOTIVATIONS = [
+        { min: 1, words: ["To'g'ri! ✓", "Yaxshi! 👍", "Ha! ✅"] },
+        { min: 3, words: ["Zo'r! 🔥", "Ajoyib! ⚡", "Davom eting! 💪"] },
+        { min: 5, words: ["Daho! 🧠", "Mukammal! 🌟", "Qoyil! 🏆"] },
+        { min: 10, words: ["LEGENDA! 👑", "CHEMPION! 🥇", "FENOMENAL! 🚀"] },
+      ];
+      const tier = [...MOTIVATIONS].reverse().find(m => newCombo >= m.min);
+      const word = tier ? tier.words[Math.floor(Math.random() * tier.words.length)] : "To'g'ri!";
+      setMotivationText(newCombo >= 3 ? `${word} (${newCombo}x combo!)` : word);
+      clearTimeout(motivationTimerRef.current);
+      motivationTimerRef.current = setTimeout(() => setMotivationText(''), 2000);
+
+      // Combo darajasiga qarab confetti kuchliroq
       confetti({
-        particleCount: 80,
-        spread: 60,
+        particleCount: newCombo >= 10 ? 200 : newCombo >= 5 ? 120 : 80,
+        spread: newCombo >= 5 ? 90 : 60,
         origin: { y: 0.7 },
-        colors: ['#34D399', '#10B981', '#ffffff']
+        colors: newCombo >= 10 ? ['#FFD700', '#FFA500', '#FF4500'] : ['#34D399', '#10B981', '#ffffff']
       });
     } else {
+      setComboCount(0);
+      setMotivationText('');
       addMistake(topicId, q.q, q.opts[q.correct], q.opts);
     }
 
@@ -209,6 +235,13 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
   const topicObj = TOPICS.find(t => t.id === topicId);
   const topicName = topicId < 0 ? "Barcha bo'limlar" : topicObj?.name;
 
+  // G'OYA-4: Eslatmani ko'rsatish
+  useEffect(() => {
+    if (topicObj?.theoryHint && mode === 'exam' && Object.keys(answers).length === 0 && questions.length > 0) {
+      setShowTheory(true);
+    }
+  }, [topicId, mode, selectedBatch, questions.length]);
+
   // FIX: haqiqiy savol soni (kategoriya bo'yicha)
   const totalQuestionsCount = getTopicQuestionCount(topicId, state.activeCategory);
   const batchCount = getTopicBatchCount(topicId, state.activeCategory);
@@ -234,6 +267,30 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
       ? topic.category.includes(state.activeCategory) 
       : topic.category === state.activeCategory;
   }).length;
+
+  if (showTheory) {
+    return (
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="page" style={{ padding: '20px' }}>
+        <div className="glass-panel" style={{ padding: '30px 20px', textAlign: 'center', maxWidth: '600px', margin: '10vh auto' }}>
+          <div style={{ fontSize: '48px', marginBottom: '16px' }}>📚</div>
+          <h2 style={{ marginBottom: '12px', color: 'var(--text)' }}>Qisqacha Eslatma</h2>
+          <p style={{ color: 'var(--text3)', fontSize: '14px', marginBottom: '24px' }}>
+            Testni boshlashdan oldin quyidagi nazariy ma'lumotlarni yodga oling:
+          </p>
+          <div style={{ fontSize: '15px', lineHeight: '1.6', color: 'var(--text2)', marginBottom: '32px', textAlign: 'left', background: 'var(--bg2)', padding: '20px', borderRadius: '16px', border: '1px solid var(--border)' }}>
+            {topicObj?.theoryHint}
+          </div>
+          <button 
+            className="btn btn-primary" 
+            style={{ width: '100%', padding: '16px', fontSize: '16px', fontWeight: 'bold', borderRadius: '12px' }}
+            onClick={() => setShowTheory(false)}
+          >
+            O'qib chiqdim, Testni boshlash
+          </button>
+        </div>
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page" style={{ padding: '12px 16px' }}>
@@ -460,7 +517,44 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
                 >
                   <MessageCircle size={14} /> E'tiroz
                 </button>
-                <div className="q-num">Savol {currentQ + 1} / {questions.length}</div>
+
+                {/* G'OYA-7: Progress bar */}
+                <div style={{ width: '100%', height: '4px', borderRadius: '2px', background: 'var(--bg3)', marginBottom: '8px', overflow: 'hidden' }}>
+                  <div style={{ 
+                    width: `${((Object.keys(answers).length) / questions.length) * 100}%`, 
+                    height: '100%', 
+                    borderRadius: '2px', 
+                    background: 'linear-gradient(90deg, var(--blue), var(--accent))', 
+                    transition: 'width 0.5s ease' 
+                  }} />
+                </div>
+
+                {/* G'OYA-2: Savol mavzusi */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                  <div className="q-num">Savol {currentQ + 1} / {questions.length}</div>
+                  {topicId >= 0 && (
+                    <div style={{ fontSize: '11px', color: 'var(--blue)', fontWeight: '600', background: 'var(--blue-bg)', padding: '2px 8px', borderRadius: '6px' }}>
+                      {topicName}
+                    </div>
+                  )}
+                </div>
+
+                {/* G'OYA-1: Motivatsion matn */}
+                {motivationText && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8, y: -10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    style={{
+                      textAlign: 'center', fontWeight: '800', fontSize: comboCount >= 10 ? '20px' : comboCount >= 5 ? '18px' : '16px',
+                      color: comboCount >= 10 ? '#FFD700' : comboCount >= 5 ? 'var(--amber)' : 'var(--green)',
+                      padding: '6px 0', marginBottom: '4px',
+                      textShadow: comboCount >= 10 ? '0 0 10px rgba(255,215,0,0.5)' : 'none'
+                    }}
+                  >
+                    {motivationText}
+                  </motion.div>
+                )}
                 
                 {/* Timer */}
                 {mode === 'exam' && answers[currentQ] === undefined && (
@@ -537,6 +631,16 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
                       <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>
                         {answers[currentQ] === questions[currentQ].correct ? '✓ To\'g\'ri' : '✗ Noto\'g\'ri'}
                       </div>
+                      {/* G'OYA-3: Noto'g'ri javob tanlangan bo'lsa, nima uchun noto'g'ri ekanini ko'rsatish */}
+                      {answers[currentQ] !== questions[currentQ].correct && answers[currentQ] >= 0 && (
+                        <div style={{ marginBottom: '8px', padding: '8px 10px', background: 'rgba(239,68,68,0.08)', borderRadius: '8px', fontSize: '13px', lineHeight: '1.5' }}>
+                          <span style={{ color: 'var(--red)', fontWeight: '600' }}>Siz tanladingiz:</span>{' '}
+                          <span style={{ color: 'var(--text2)' }}>{questions[currentQ].opts[answers[currentQ]]?.replace(/^[A-D]\)\s*/, '')}</span>
+                          <br/>
+                          <span style={{ color: 'var(--green)', fontWeight: '600' }}>To'g'ri javob:</span>{' '}
+                          <span style={{ color: 'var(--text)' }}>{questions[currentQ].opts[questions[currentQ].correct]?.replace(/^[A-D]\)\s*/, '')}</span>
+                        </div>
+                      )}
                       {questions[currentQ].explanation}
                     </motion.div>
 
