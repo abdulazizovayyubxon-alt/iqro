@@ -9,6 +9,19 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <title>IQRO — Kasbiy Sertifikatlash Tayyorgarligi</title>
+    <!-- Cache Buster -->
+    <script>
+      const APP_VER = '1.0.1';
+      if (localStorage.getItem('iqro_app_version') !== APP_VER) {
+        localStorage.setItem('iqro_app_version', APP_VER);
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function(r) {
+            for(let reg of r) { reg.unregister(); }
+            window.location.reload(true);
+          });
+        }
+      }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   </head>
   <body>
