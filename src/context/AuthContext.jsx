@@ -135,6 +135,8 @@ export const AuthProvider = ({ children }) => {
       // Kirish muvaffaqiyatli bo'lsa profilni yangilab qo'yamiz (ism o'zgargan bo'lsa)
       if (auth.currentUser && auth.currentUser.displayName !== name) {
         await updateProfile(auth.currentUser, { displayName: name });
+        // React state'ni majburan yangilaymiz
+        setUser(Object.assign({}, auth.currentUser, { displayName: name }));
         // Firestore dagi ismni ham yangilaymiz
         await setDoc(doc(db, 'users', auth.currentUser.uid), { displayName: name }, { merge: true });
       }
@@ -145,6 +147,8 @@ export const AuthProvider = ({ children }) => {
         try {
           const userCred = await createUserWithEmailAndPassword(auth, fakeEmail, fakePassword);
           await updateProfile(userCred.user, { displayName: name });
+          // React state'ni majburan yangilaymiz
+          setUser(Object.assign({}, userCred.user, { displayName: name }));
           await setDoc(doc(db, 'users', userCred.user.uid), {
             uid: userCred.user.uid,
             email: fakeEmail,

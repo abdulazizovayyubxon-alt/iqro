@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { motion } from 'framer-motion';
 import { Trophy, Medal, Crown, Star, ArrowLeft } from 'lucide-react';
-import { collection, query, orderBy, limit, getDocs } from 'firebase/firestore';
+import { collection, query, orderBy, limit, getDocs, doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { AuthContext } from '../context/AuthContext';
 
@@ -21,12 +21,12 @@ const LeaderboardPage = ({ goBack }) => {
       const snapshot = await getDocs(q);
       
       const results = [];
-      snapshot.forEach(doc => {
-        const data = doc.data();
+      snapshot.forEach(docSnap => {
+        const data = docSnap.data();
         if (data.totalScore !== undefined) {
           results.push({
-            id: doc.id,
-            name: data.displayName || data.userName || 'Maxfiy foydalanuvchi',
+            id: docSnap.id,
+            name: data.displayName || data.userName || null,
             score: data.totalScore || 0,
             streak: data.dailyStreak || 0,
             answered: data.totalAnswered || 0,
@@ -34,6 +34,22 @@ const LeaderboardPage = ({ goBack }) => {
           });
         }
       });
+      
+      // Eski ro'yxatdan o'tganlarda ism yo'q bo'lsa, 'users' dan qidiramiz
+      for (let res of results) {
+        if (!res.name) {
+          try {
+            const userDoc = await getDoc(doc(db, 'users', res.id));
+            if (userDoc.exists()) {
+              res.name = userDoc.data().displayName;
+            }
+          } catch (e) {
+            console.error("User fetch error:", e);
+          }
+          if (!res.name) res.name = 'Maxfiy foydalanuvchi';
+        }
+      }
+
       setLeaders(results);
     } catch (err) {
       console.error("Leaderboard fetch error:", err);
