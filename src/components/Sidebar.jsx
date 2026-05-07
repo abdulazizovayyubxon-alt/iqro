@@ -95,7 +95,7 @@ const Sidebar = ({ currentPage, setCurrentPage, navigateToTest }) => {
 
           {/* Reyting */}
           <div
-            className={`nav-item hide-mobile ${currentPage === 'leaderboard' ? 'active' : ''}`}
+            className={`nav-item ${currentPage === 'leaderboard' ? 'active' : ''}`}
             onClick={() => setCurrentPage('leaderboard')}
           >
             <span className="nav-icon"><Trophy size={20} /></span>

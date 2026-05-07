@@ -26,7 +26,7 @@ const LeaderboardPage = ({ goBack }) => {
         if (data.totalScore !== undefined) {
           results.push({
             id: docSnap.id,
-            name: data.displayName || data.userName || null,
+            name: data.displayName || data.userName || data.name || null,
             score: data.totalScore || 0,
             streak: data.dailyStreak || 0,
             answered: data.totalAnswered || 0,
@@ -35,20 +35,22 @@ const LeaderboardPage = ({ goBack }) => {
         }
       });
       
-      // Eski ro'yxatdan o'tganlarda ism yo'q bo'lsa, 'users' dan qidiramiz
-      for (let res of results) {
+      // Ismlarni parallel ravishda 'users' kolleksiyasidan qidirish (fallback)
+      await Promise.all(results.map(async (res) => {
         if (!res.name) {
           try {
             const userDoc = await getDoc(doc(db, 'users', res.id));
             if (userDoc.exists()) {
-              res.name = userDoc.data().displayName;
+              const userData = userDoc.data();
+              res.name = userData.displayName || userData.userName || userData.name || userData.email?.split('@')[0];
+              if (userData.photoURL && !res.photoURL) res.photoURL = userData.photoURL;
             }
           } catch (e) {
             console.error("User fetch error:", e);
           }
-          if (!res.name) res.name = 'Maxfiy foydalanuvchi';
+          if (!res.name) res.name = `ID: ${res.id.substring(0, 6)}`;
         }
-      }
+      }));
 
       setLeaders(results);
     } catch (err) {

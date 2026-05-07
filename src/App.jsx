@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from './context/AuthContext';
+import { motion, AnimatePresence } from 'framer-motion';
+import { RefreshCw } from 'lucide-react';
+
+// Components
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+
+// Pages
 import Dashboard from './pages/Dashboard';
 import Schedule from './pages/Schedule';
 import Stats from './pages/Stats';
@@ -10,13 +16,12 @@ import LoginPage from './pages/LoginPage';
 import AdminPage from './pages/AdminPage';
 import ExamPage from './pages/ExamPage';
 import SmartReviewPage from './pages/SmartReviewPage';
+import MigrationPage from './pages/MigrationPage';
 import LeaderboardPage from './pages/LeaderboardPage';
-import { motion, AnimatePresence } from 'framer-motion';
-import { RefreshCw } from 'lucide-react';
 
 function App() {
   const { user, loading } = useAuth();
-  const [currentPage, setCurrentPage] = useState('dashboard');
+  const [currentPage, setCurrentPage] = useState('migration');
   const [examMode, setExamMode] = useState(false);
   const [testMode, setTestMode] = useState('exam');
   const [selectedTopic, setSelectedTopic] = useState(-1);

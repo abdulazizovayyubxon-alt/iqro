@@ -115,9 +115,11 @@ export const AppProvider = ({ children }) => {
     const statRef = doc(db, 'userStats', user.uid);
     const { objections, sentObjectionIds, ...statsToSave } = state;
     // Leaderboard uchun foydalanuvchi ma'lumotlarini ham saqlash
-    statsToSave.displayName = user.displayName || '';
-    statsToSave.userName = user.displayName || '';
-    statsToSave.photoURL = user.photoURL || null;
+    const currentName = user.displayName || state.displayName || '';
+    statsToSave.displayName = currentName;
+    statsToSave.userName = currentName;
+    statsToSave.photoURL = user.photoURL || state.photoURL || null;
+    
     setDoc(statRef, statsToSave, { merge: true }).catch(console.error);
 
     // localStorage ga ham (offline backup)
