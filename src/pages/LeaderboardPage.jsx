@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react'; // Final sync trigger
 import { motion } from 'framer-motion';
 import { Trophy, Medal, Crown, Star, ArrowLeft } from 'lucide-react';
 import { collection, query, orderBy, limit, getDocs, doc, getDoc } from 'firebase/firestore';
