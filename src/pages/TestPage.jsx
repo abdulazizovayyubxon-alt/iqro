@@ -247,7 +247,7 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
       <div className="page" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh' }}>
         <div style={{ textAlign: 'center' }}>
           <RefreshCw className="spin" size={32} style={{ color: 'var(--accent)', margin: '0 auto 16px' }} />
-          <div style={{ color: 'var(--text2)', fontFamily: "'IBM Plex Mono', monospace' }}>Savollar yuklanmoqda...</div>
+          <div style={{ color: 'var(--text2)', fontFamily: "'IBM Plex Mono', monospace", fontSize: '14px' }}>Savollar yuklanmoqda...</div>
         </div>
       </div>
     );
@@ -498,7 +498,7 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
                   <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}><Share size={13} /> Natijani ulashing</div>
                   <div style={{ display: 'flex', gap: '8px' }}>
                     <button className="btn btn-sm" style={{ flex: 1, background: '#25D366', color: 'white', border: 'none', borderRadius: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const emoji = pct >= 70 ? '🏆' : pct >= 50 ? '📊' : '💪'; const text = `${emoji} IQRO platformasida test yechdim!\n📚 Mavzu: ${topicName}\n✅ Natija: ${correctCount}/${questions.length} (${pct}%)\n🎯 Imtihonga tayyorgarlik davom etmoqda!\n\nhttps://iqro-t41p.vercel.app`; window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank'); }}>WhatsApp</button>
-                    <button className="btn btn-sm" style={{ flex: 1, background: '#2AABEE', color: 'white', border: 'none', borderRadius: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const emoji = pct >= 70 ? '🏆' : pct >= 50 ? '📊' : '💪'; const text = `${emoji} IQRO platformasida test yechdim!\n📚 Mavzu: ${topicName}\n✅ Natija: ${correctCount}/${questions.length} (${pct}%)\n🎯 Imtihonga tayyorgarlik!`; window.open(`https://t.me/share/url?url=https://iqro-t41p.vercel.app&text=${encodeURIComponent(text own)}`, '_blank'); }}>Telegram</button>
+                    <button className="btn btn-sm" style={{ flex: 1, background: '#2AABEE', color: 'white', border: 'none', borderRadius: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const emoji = pct >= 70 ? '🏆' : pct >= 50 ? '📊' : '💪'; const text = `${emoji} IQRO platformasida test yechdim!\n📚 Mavzu: ${topicName}\n✅ Natija: ${correctCount}/${questions.length} (${pct}%)\n🎯 Imtihonga tayyorgarlik!`; window.open(`https://t.me/share/url?url=https://iqro-t41p.vercel.app&text=${encodeURIComponent(text)}`, '_blank'); }}>Telegram</button>
                     <button className="btn btn-sm btn-outline" style={{ borderRadius: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const text = `IQRO platformasida test: ${correctCount}/${questions.length} (${pct}%) - ${topicName}`; navigator.clipboard?.writeText(text); showToast('Nusxalandi! 📋', 'info'); }} >📋</button>
                   </div>
                 </div>
