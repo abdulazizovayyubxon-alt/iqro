@@ -102,6 +102,15 @@ const Sidebar = ({ currentPage, setCurrentPage, navigateToTest }) => {
             <span className="nav-label">Reyting</span>
           </div>
 
+          {/* Yutuqlar */}
+          <div
+            className={`nav-item ${currentPage === 'achievements' ? 'active' : ''}`}
+            onClick={() => setCurrentPage('achievements')}
+          >
+            <span className="nav-icon"><Medal size={20} /></span>
+            <span className="nav-label">Yutuqlar</span>
+          </div>
+
           {/* Admin link — faqat admin uchun */}
           {isAdmin && (
             <div

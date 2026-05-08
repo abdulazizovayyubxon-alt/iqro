@@ -244,7 +244,6 @@ export const AppProvider = ({ children }) => {
       }];
       if (newMistakes.length > MAX_MISTAKES_SAVED) newMistakes.shift();
 
-      // Kunlik maqsad yangilanishi (xato ham hisobga olinadi)
       const today = new Date().toDateString();
       const dg = prev.dailyGoal?.date === today
         ? { ...prev.dailyGoal, answered: (prev.dailyGoal.answered || 0) + 1 }
@@ -261,36 +260,37 @@ export const AppProvider = ({ children }) => {
         lastGoalDate = today;
       }
 
-      // Spaced Repetition — xato savolni spacedCards ga qo'shish
-      const qHash = (question || '').substring(0, 60);
+      // SMART REVIEW: Spaced Repetition Logic
+      const qHash = (question || '').substring(0, 100);
       let spacedCards = [...(prev.spacedCards || [])];
       const existingIdx = spacedCards.findIndex(c => c.qHash === qHash);
+
       if (existingIdx >= 0) {
-        // Mavjud — level ni 0 ga qaytarish
+        // Xato qilindi -> Level 0 ga tushadi va tezroq qaytadi
         spacedCards[existingIdx] = {
           ...spacedCards[existingIdx],
           level: 0,
           correctStreak: 0,
-          nextReview: Date.now() + 10 * 60 * 1000, // 10 daqiqadan keyin
-          lastReview: Date.now()
+          nextReview: Date.now() + 10 * 60 * 1000, // 10 min keyin
+          lastReview: Date.now(),
+          difficulty: (spacedCards[existingIdx].difficulty || 1) + 1
         };
       } else {
-        // Yangi qo'shish
+        // Yangi xato savol
         spacedCards.push({
           qHash,
           q: question,
           opts: opts || [],
-          correct: opts ? opts.indexOf(correctOpt) : 0,
-          explanation: '',
+          correct: opts ? opts.findIndex(o => o === correctOpt) : 0,
           topicId,
           level: 0,
           correctStreak: 0,
-          nextReview: Date.now() + 10 * 60 * 1000,
-          lastReview: Date.now()
+          nextReview: Date.now(),
+          lastReview: Date.now(),
+          difficulty: 1
         });
-        // Max 100 ta saqlash
-        if (spacedCards.length > 100) spacedCards = spacedCards.slice(-100);
       }
+      if (spacedCards.length > 200) spacedCards = spacedCards.slice(-200);
 
       return {
         ...prev,

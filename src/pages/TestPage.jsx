@@ -135,7 +135,6 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
           });
         }
       } else {
-        // Firestore-dan savollarni yuklash
         const qRef = collection(db, 'questions');
         let qQuery = query(qRef);
 
@@ -149,7 +148,6 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
           ...doc.data()
         }));
 
-        // Tasodifiy aralashtirish
         qList = qList.sort(() => 0.5 - Math.random());
       }
 
@@ -220,7 +218,7 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
 
   const handleFlashcardKnown = (known) => {
     setFcKnown(prev => ({ ...prev, [currentQ]: known }));
-    if (currentQ << questions questions.length - 1) {
+    if (currentQ < questions.length - 1) {
       setCurrentQ(prev => prev + 1);
       setFcFlipped(false);
     } else {
@@ -234,7 +232,7 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
   }, [topicId, mode]);
 
   const topicObj = TOPICS.find(t => t.id === topicId);
-  const topicName = topicId <<  0 ? "Barcha bo'limlar" : topicObj?.name;
+  const topicName = topicId !== 0 ? (topicId === -1 ? "Barcha bo'limlar" : topicObj?.name) : "Barcha bo'limlar";
 
   useEffect(() => {
     if (topicObj?.theoryHint && mode === 'exam' && Object.keys(answers).length === 0 && questions.length > 0) {
@@ -246,10 +244,10 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
 
   if (isGenerating) {
     return (
-      <<divdiv className="page" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh' }}>
-        <<divdiv style={{ textAlign: 'center' }}>
-          <<RefreshRefreshCw className="spin" size={32} style={{ color: 'var(--accent)', margin: '0 auto 16px' }} />
-          <<divdiv style={{ color: 'var(--text2)', fontFamily: "'IBM Plex Mono', monospace' }}>Savollar yuklanmoqda...</div>
+      <div className="page" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh' }}>
+        <div style={{ textAlign: 'center' }}>
+          <RefreshCw className="spin" size={32} style={{ color: 'var(--accent)', margin: '0 auto 16px' }} />
+          <div style={{ color: 'var(--text2)', fontFamily: "'IBM Plex Mono', monospace' }}>Savollar yuklanmoqda...</div>
         </div>
       </div>
     );
@@ -257,17 +255,17 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
 
   if (showTheory) {
     return (
-      <<motionmotion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="page" style={{ padding: '20px' }}>
-        <<divdiv className="glass-panel" style={{ padding: '30px 20px', textAlign: 'center', maxWidth: '600px', margin: '10vh auto' }}>
-          <<divdiv style={{ fontSize: '48px', marginBottom: '16px' }}>📚</div>
-          <<hh2 style={{ marginBottom: '12px', color: 'var(--text)' }}>Qisqacha Eslatma</h2>
-          <<pp style={{ color: 'var(--text3)', fontSize: '14px', marginBottom: '24px' }}>
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="page" style={{ padding: '20px' }}>
+        <div className="glass-panel" style={{ padding: '30px 20px', textAlign: 'center', maxWidth: '600px', margin: '10vh auto' }}>
+          <div style={{ fontSize: '48px', marginBottom: '16px' }}>📚</div>
+          <h2 style={{ marginBottom: '12px', color: 'var(--text)' }}>Qisqacha Eslatma</h2>
+          <p style={{ color: 'var(--text3)', fontSize: '14px', marginBottom: '24px' }}>
             Testni boshlashdan oldin quyidagi nazariy ma'lumotlarni yodga oling:
           </p>
-          <<divdiv style={{ fontSize: '15px', lineHeight: '1.6', color: 'var(--text2)', marginBottom: '32px', textAlign: 'left', background: 'var(--bg2)', padding: '20px', borderRadius: '16px', border: '1px solid var(--border)' }}>
+          <div style={{ fontSize: '15px', lineHeight: '1.6', color: 'var(--text2)', marginBottom: '32px', textAlign: 'left', background: 'var(--bg2)', padding: '20px', borderRadius: '16px', border: '1px solid var(--border)' }}>
             {topicObj?.theoryHint}
           </div>
-          <<buttonbutton
+          <button
             className="btn btn-primary"
             style={{ width: '100%', padding: '16px', fontSize: '16px', fontWeight: 'bold', borderRadius: '12px' }}
             onClick={() => setShowTheory(false)}
@@ -280,44 +278,44 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
   }
 
   return (
-    <<motionmotion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page" style={{ padding: '12px 16px' }}>
-      <<divdiv className="test-header" style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingBottom: '8px', borderBottom: '1px solid var(--border)', marginBottom: '12px' }}>
-        <<buttonbutton
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page" style={{ padding: '12px 16px' }}>
+      <div className="test-header" style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingBottom: '8px', borderBottom: '1px solid var(--border)', marginBottom: '12px' }}>
+        <button
           onClick={goBack}
           className="btn-outline"
           style={{ borderRadius: '12px', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0, flexShrink: 0 }}
           title="Orqaga"
         >
-          <<ArrowArrowLeft size={18} />
+          <ArrowLeft size={18} />
         </button>
-        <<divdiv style={{ minWidth: 0, flex: 1 }}>
-          <<divdiv className="test-title" style={{ fontSize: '18px', marginBottom: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{topicName}</div>
-          <<divdiv className="test-meta" style={{ fontSize: '11px', whiteSpace: 'nowrap' }}>
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <div className="test-title" style={{ fontSize: '18px', marginBottom: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{topicName}</div>
+          <div className="test-meta" style={{ fontSize: '11px', whiteSpace: 'nowrap' }}>
             {questions.length} savol {mode !== 'mistakes' && selectedBatch + 1 > 0 && ` · Blok ${selectedBatch + 1}`}
           </div>
         </div>
-        <<divdiv style={{ marginLeft: 'auto', display: 'flex', gap: '8px' }}>
-          <<buttonbutton
+        <div style={{ marginLeft: 'auto', display: 'flex', gap: '8px' }}>
+          <button
             onClick={() => setMode(mode === 'flash' ? 'exam' : 'flash')}
             style={{ background: mode === 'flash' ? 'var(--blue)' : 'var(--bg3)', border: 'none', borderRadius: '10px', color: mode === 'flash' ? 'white' : 'var(--text2)', cursor: 'pointer', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: '600' }}
           >
-            <<ZapZap size={16} />
-            <<spanspan className="hide-mobile">Flashcard</span>
+            <Zap size={16} />
+            <span className="hide-mobile">Flashcard</span>
           </button>
-          <<buttonbutton
+          <button
             onClick={generateQuestions}
             style={{ background: 'var(--bg3)', border: 'none', borderRadius: '10px', color: 'var(--text2)', cursor: 'pointer', padding: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             title="Yangi savollar"
           >
-            <<RefreshRefreshCw size={18} />
+            <RefreshCw size={18} />
           </button>
         </div>
       </div>
 
-      <<divdiv className="topic-selector">
-        <<buttonbutton className={`topic-btn ${topicId === -1 ? 'active' : ''}`} onClick={() => setTopicId(-1)}>📚 Barcha</button>
+      <div className="topic-selector">
+        <button className={`topic-btn ${topicId === -1 ? 'active' : ''}`} onClick={() => setTopicId(-1)}>📚 Barcha</button>
         {TOPICS.filter(t => Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory).map(t => (
-          <<buttonbutton
+          <button
             key={t.id}
             className={`topic-btn ${topicId === t.id ? 'active' : ''}`}
             onClick={() => setTopicId(t.id)}
@@ -328,12 +326,12 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
       </div>
 
       {mode !== 'mistakes' && (
-        <<divdiv className="batch-selector" style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '8px' }}>
+        <div className="batch-selector" style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '8px' }}>
           {Array.from({ length: Math.ceil(fullPool.length / BATCH_SIZE) }).map((_, i) => {
             const start = i * BATCH_SIZE + 1;
             const end = Math.min((i + 1) * BATCH_SIZE, fullPool.length);
             return (
-              <<buttonbutton
+              <button
                 key={i}
                 className={`btn btn-sm ${selectedBatch === i ? 'btn-primary' : 'btn-outline'}`}
                 onClick={() => setSelectedBatch(i)}
@@ -347,81 +345,101 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
       )}
 
       {questions.length === 0 ? (
-        <<divdiv className="glass-panel" style={{ padding: '40px', textAlign: 'center' }}>
+        <div className="glass-panel" style={{ padding: '40px', textAlign: 'center' }}>
           {mode === 'mistakes'
-            ? <<>><div style={{ fontSize: '40px', marginBottom: '12px' }}>🎉</div><<divdiv style={{ color: 'var(--text2)' }}>Hozircha xato yo'q — ajoyib!</div></>
-            : <<divdiv style={{ color: 'var(--text2)' }}>Hozircha savollar yo'q.</div>
+            ? <><div style={{ fontSize: '40px', marginBottom: '12px' }}>🎉</div><div style={{ color: 'var(--text2)' }}>Hozircha xato yo'q — ajoyib!</div></>
+            : <div style={{ color: 'var(--text2)' }}>Hozircha savollar yo'q.</div>
           }
         </div>
       ) : mode === 'flash' ? (
-        <<divdiv className="flash-mode-container">
-          <<divdiv style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-            <<divdiv style={{ fontSize: '13px', color: 'var(--text3)' }}>{currentQ + 1} / {questions.length}</div>
-            <<divdiv style={{ display: 'flex', gap: '12px', fontSize: '13px' }}>
-              <<spanspan style={{ color: 'var(--green)' }}>✓ {Object.values(fcKnown).filter(Boolean).length} bilaman</span>
-              <<spanspan style={{ color: 'var(--red)' }}>✗ {Object.values(fcKnown).filter(v => v === false).length} bilmayman</span>
+        <div className="flash-mode-container">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+            <div style={{ fontSize: '13px', color: 'var(--text3)' }}>{currentQ + 1} / {questions.length}</div>
+            <div style={{ display: 'flex', gap: '12px', fontSize: '13px' }}>
+              <span style={{ color: 'var(--green)' }}>✓ {Object.values(fcKnown).filter(Boolean).length} bilaman</span>
+              <span style={{ color: 'var(--red)' }}>✗ {Object.values(fcKnown).filter(v => v === false).length} bilmayman</span>
             </div>
           </div>
-          <<divdiv style={{ height: '4px', background: 'var(--bg3)', borderRadius: '2px', marginBottom: '20px' }}>
-            <<divdiv style={{ height: '100%', borderRadius: '2px', background: 'var(--accent)', width: `${((currentQ) / questions.length) * 100}%`, transition: 'width 0.3s ease' }} />
+          <div style={{ height: '4px', background: 'var(--bg3)', borderRadius: '2px', marginBottom: '20px' }}>
+            <div style={{ height: '100%', borderRadius: '2px', background: 'var(--accent)', width: `${((currentQ) / questions.length) * 100}%`, transition: 'width 0.3s ease' }} />
           </div>
-          <<divdiv className="flashcard-wrap" onClick={() => setFcFlipped(!fcFlipped)}>
-            <<motionmotion.div className={`flashcard ${fcFlipped ? 'flipped' : ''}`}>
-              <<divdiv className="flashcard-face flashcard-front">
-                <<buttonbutton className="objection-btn" onClick={(e) => { e.stopPropagation(); setShowObjectionModal(true); }}><<MessageMessageCircle size={14} /> E'tiroz</button>
-                <<divdiv style={{ fontSize: '12px', color: 'var(--text3)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '1px' }}>Savol — bosing, javobni ko'ring</div>
-                <<divdiv className="flashcard-front-text">{questions[currentQ].q}</div>
+          <div className="flashcard-wrap" onClick={() => setFcFlipped(!fcFlipped)}>
+            <motion.div className={`flashcard ${fcFlipped ? 'flipped' : ''}`}>
+              <div className="flashcard-face flashcard-front">
+                <button className="objection-btn" onClick={(e) => { e.stopPropagation(); setShowObjectionModal(true); }}><MessageCircle size={14} /> E'tiroz</button>
+                <div style={{ fontSize: '12px', color: 'var(--text3)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '1px' }}>Savol — bosing, javobni ko'ring</div>
+                <div className="flashcard-front-text">{questions[currentQ].q}</div>
               </div>
-              <<divdiv className="flashcard-face flashcard-back">
-                <<divdiv className="flashcard-back-text">
-                  <<divdiv style={{ fontSize: '12px', color: 'var(--text3)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>To'g'ri javob</div>
-                  <<divdiv style={{ fontSize: '20px', fontWeight: '700', color: 'var(--green)', marginBottom: '12px' }}>{questions[currentQ].opts[questions[currentQ].correct]?.replace(/^[A-D]\)\s*/, '')}</div>
-                  {questions[currentQ].explanation && <<divdiv style={{ color: 'var(--text2)', fontSize: '13px', lineHeight: '1.5' }}>{questions[currentQ].explanation}</div>}
+              <div className="flashcard-face flashcard-back">
+                <div className="flashcard-back-text">
+                  <div style={{ fontSize: '12px', color: 'var(--text3)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>To'g'ri javob</div>
+                  <div style={{ fontSize: '20px', fontWeight: '700', color: 'var(--green)', marginBottom: '12px' }}>{questions[currentQ].opts[questions[currentQ].correct]?.replace(/^[A-D]\)\s*/, '')}</div>
+                  {questions[currentQ].explanation && <div style={{ color: 'var(--text2)', fontSize: '13px', lineHeight: '1.5' }}>{questions[currentQ].explanation}</div>}
                 </div>
               </div>
             </motion.div>
           </div>
           {fcFlipped ? (
-            <<divdiv style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginTop: '20px' }}>
-              <<buttonbutton className="btn" style={{ flex: 1, maxWidth: '180px', background: 'var(--red-bg)', borderColor: 'var(--red)', color: 'var(--red)' }} onClick={() => { setFcFlipped(false); handleFlashcardKnown(false); }}><<ThumbsThumbsDown size={18} /> Bilmayman</button>
-              <<buttonbutton className="btn" style={{ flex: 1, maxWidth: '180px', background: 'var(--green-bg)', borderColor: 'var(--green)', color: 'var(--green)' }} onClick={() => { setFcFlipped(false); handleFlashcardKnown(true); }}><<ThumbsThumbsUp size={18} /> Bilaman</button>
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginTop: '20px' }}>
+              <button className="btn" style={{ flex: 1, maxWidth: '180px', background: 'var(--red-bg)', borderColor: 'var(--red)', color: 'var(--red)' }} onClick={() => { setFcFlipped(false); handleFlashcardKnown(false); }}><ThumbsDown size={18} /> Bilmayman</button>
+              <button className="btn" style={{ flex: 1, maxWidth: '180px', background: 'var(--green-bg)', borderColor: 'var(--green)', color: 'var(--green)' }} onClick={() => { setFcFlipped(false); handleFlashcardKnown(true); }}><ThumbsUp size={18} /> Bilaman</button>
             </div>
           ) : (
-            <<divdiv style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '20px' }}>
-              <<buttonbutton className="btn btn-outline" onClick={() => { if (currentQ > 0) { setCurrentQ(prev => prev - 1); setFcFlipped(false); } }} disabled={currentQ === 0}>← Oldingi</button>
-              <<buttonbutton className="btn btn-outline" onClick={() => { if (currentQ << questions questions.length - 1) { setCurrentQ(prev => prev + 1); setFcFlipped(false); } }} disabled={currentQ === questions.length - 1}>Keyingi →</button>
+            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '20px' }}>
+              <button className="btn btn-outline" onClick={() => { if (currentQ > 0) { setCurrentQ(prev => prev - 1); setFcFlipped(false); } }} disabled={currentQ === 0}>← Oldingi</button>
+              <button className="btn btn-outline" onClick={() => { if (currentQ < questions.length - 1) { setCurrentQ(prev => prev + 1); setFcFlipped(false); } }} disabled={currentQ === questions.length - 1}>Keyingi →</button>
             </div>
           )}
         </div>
       ) : (
-        <<divdiv className="exam-mode-container">
+        <div className="exam-mode-container">
           {!showResults ? (
-            <<AnAnimatePresence mode="wait">
-              <<motionmotion.div key={currentQ} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} transition={{ duration: 0.2 }} className="question-box glass-panel" style={{ position: 'relative', padding: '24px 16px' }}>
-                <<buttonbutton className="objection-btn" onClick={() => setShowObjectionModal(true)}><<MessageMessageCircle size={14} /> E'tiroz</button>
-                <<divdiv style={{ width: '100%', height: '4px', borderRadius: '2px', background: 'var(--bg3)', marginBottom: '8px', overflow: 'hidden' }}>
-                  <<divdiv style={{ width: `${((Object.keys(answers).length) / questions.length) * 100}%`, height: '100%', borderRadius: '2px', background: 'linear-gradient(90deg, var(--blue), var(--accent))', transition: 'width 0.5s ease' }} />
+            <AnimatePresence mode="wait">
+              <motion.div key={currentQ} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} transition={{ duration: 0.2 }} className="question-box glass-panel" style={{ position: 'relative', padding: '24px 16px' }}>
+                <button className="objection-btn" onClick={() => setShowObjectionModal(true)}><MessageCircle size={14} /> E'tiroz</button>
+                <div style={{ width: '100%', height: '4px', borderRadius: '2px', background: 'var(--bg3)', marginBottom: '8px', overflow: 'hidden' }}>
+                  <div style={{ width: `${((Object.keys(answers).length) / questions.length) * 100}%`, height: '100%', borderRadius: '2px', background: 'linear-gradient(90deg, var(--blue), var(--accent))', transition: 'width 0.5s ease' }} />
                 </div>
-                <<divdiv style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                  <<divdiv className="q-num">Savol {currentQ + 1} / {questions.length}</div>
-                  {topicId >= 0 && <<divdiv style={{ fontSize: '11px', color: 'var(--blue)', fontWeight: '600', background: 'var(--blue-bg)', padding: '2px 8px', borderRadius: '6px' }}>{topicName}</div>}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                  <div className="q-num">Savol {currentQ + 1} / {questions.length}</div>
+                  {topicId >= 0 && <div style={{ fontSize: '11px', color: 'var(--blue)', fontWeight: '600', background: 'var(--blue-bg)', padding: '2px 8px', borderRadius: '6px' }}>{topicName}</div>}
                 </div>
                 {motivationText && (
-                  <<motionmotion.div initial={{ opacity: 0, scale: 0.8, y: -10 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0 }} style={{ textAlign: 'center', fontWeight: '800', fontSize: comboCount >= 10 ? '20px' : comboCount >= 5 ? '18px' : '16px', color: comboCount >= 10 ? '#FFD700' : comboCount >= 5 ? 'var(--amber)' : 'var(--green)', padding: '6px 0', marginBottom: '4px', textShadow: comboCount >= 10 ? '0 0 10px rgba(255,215,0,0.5)' : 'none' }}>{motivationText}</motion.div>
+                  <motion.div initial={{ opacity: 0, scale: 0.8, y: -10 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0 }} style={{ textAlign: 'center', fontWeight: '800', fontSize: comboCount >= 10 ? '20px' : comboCount >= 5 ? '18px' : '16px', color: comboCount >= 10 ? '#FFD700' : comboCount >= 5 ? 'var(--amber)' : 'var(--green)', padding: '6px 0', marginBottom: '4px', textShadow: comboCount >= 10 ? '0 0 10px rgba(255,215,0,0.5)' : 'none' }}>{motivationText}</motion.div>
                 )}
                 {mode === 'exam' && answers[currentQ] === undefined && (
-                  <<divdiv className={`question-timer ${timeLeft <= 10 ? 'timer-danger' : timeLeft <= 20 ? 'timer-warning' : ''}`}>
-                    <<ClockClock size={14} />
-                    <<spanspan>{timeLeft}s</span>
-                    <<divdiv className="timer-bar-wrap">
-                      <<divdiv className="timer-bar-fill" style={{ width: `${(timeLeft / QUESTION_TIMER_SECONDS) * 100}%`, background: timeLeft <= 10 ? 'var(--red)' : timeLeft <= 20 ? 'var(--amber)' : 'var(--green)' }} />
+                  <div className={`question-timer ${timeLeft <= 10 ? 'timer-danger' : timeLeft <= 20 ? 'timer-warning' : ''}`}>
+                    <Clock size={14} />
+                    <span>{timeLeft}s</span>
+                    <div className="timer-bar-wrap">
+                      <div className="timer-bar-fill" style={{ width: `${(timeLeft / QUESTION_TIMER_SECONDS) * 100}%`, background: timeLeft <= 10 ? 'var(--red)' : timeLeft <= 20 ? 'var(--amber)' : 'var(--green)' }} />
                     </div>
                   </div>
                 )}
-                {answers[currentQ] === -1 && <<divdiv style={{ color: 'var(--red)', fontSize: '13px', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>⏰ Vaqt tugadi!</div>}
-                {questions[currentQ].image && <<divdiv style={{ margin: '0 0 16px', textAlign: 'center' }}><<imgimg src={questions[currentQ].image} alt="Savol rasmi" style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '12px', border: '1px solid var(--border)' }} /></div>}
-                {questions[currentQ].isHtml ? <<divdiv className="q-text" dangerouslySetInnerHTML={{ __html: questions[currentQ].q }} /> : <<divdiv className="q-text" style={{ whiteSpace: 'pre-line' }}>{questions[currentQ].q}</div>}
-                <<divdiv className="options">
+                {answers[currentQ] === -1 && <div style={{ color: 'var(--red)', fontSize: '13px', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>⏰ Vaqt tugadi!</div>}
+
+                {/* SMRT Qiyinlik Indikatori */}
+                {questions[currentQ].difficulty !== undefined && (
+                  <div style={{ textAlign: 'center', marginBottom: '12px' }}>
+                    <span style={{
+                      fontSize: '11px',
+                      fontWeight: '700',
+                      padding: '2px 8px',
+                      borderRadius: '10px',
+                      color: 'white',
+                      background: questions[currentQ].difficulty >= 3 ? 'var(--red)' : questions[currentQ].difficulty >= 1 ? 'var(--amber)' : 'var(--green)',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.5px',
+                      boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                    }}>
+                      {questions[currentQ].difficulty >= 3 ? '🔴 Qiyin' : questions[currentQ].difficulty >= 1 ? '🟡 O\'rtacha' : '🟢 Oson'}
+                    </span>
+                  </div>
+                )}
+
+                {questions[currentQ].image && <div style={{ margin: '0 0 16px', textAlign: 'center' }}><img src={questions[currentQ].image} alt="Savol rasmi" style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '12px', border: '1px solid var(--border)' }} /></div>}
+                {questions[currentQ].isHtml ? <div className="q-text" dangerouslySetInnerHTML={{ __html: questions[currentQ].q }} /> : <div className="q-text" style={{ whiteSpace: 'pre-line' }}>{questions[currentQ].q}</div>}
+                <div className="options">
                   {questions[currentQ].opts.map((opt, i) => {
                     const answered = answers[currentQ] !== undefined;
                     const correctIdx = questions[currentQ].correct;
@@ -433,29 +451,29 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
                       else bg = 'disabled';
                     }
                     return (
-                      <<divdiv key={i} className={`option ${bg} ${!answered ? 'hoverable' : ''}`} onClick={() => handleSelect(currentQ, i)}>
-                        <<divdiv className="opt-letter">{['A', 'B', 'C', 'D'][i]}</div>
-                        <<divdiv className="opt-text">{opt.replace(/^[A-D]\)\s*/, '')}</div>
+                      <div key={i} className={`option ${bg} ${!answered ? 'hoverable' : ''}`} onClick={() => handleSelect(currentQ, i)}>
+                        <div className="opt-letter">{['A', 'B', 'C', 'D'][i]}</div>
+                        <div className="opt-text">{opt.replace(/^[A-D]\)\s*/, '')}</div>
                       </div>
                     );
                   })}
                 </div>
                 {answers[currentQ] !== undefined && (
                   <>
-                    <<motionmotion.div ref={explanationRef} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className={`explanation-box ${answers[currentQ] === questions[currentQ].correct ? 'correct' : 'wrong'}`}>
-                      <<divdiv style={{ fontWeight: 'bold', marginBottom: '8px' }}>{answers[currentQ] === questions[currentQ].correct ? '✓ To\'g\'ri' : '✗ Noto\'g\'ri'}</div>
+                    <motion.div ref={explanationRef} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className={`explanation-box ${answers[currentQ] === questions[currentQ].correct ? 'correct' : 'wrong'}`}>
+                      <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>{answers[currentQ] === questions[currentQ].correct ? '✓ To\'g\'ri' : '✗ Noto\'g\'ri'}</div>
                       {answers[currentQ] !== questions[currentQ].correct && answers[currentQ] >= 0 && (
-                        <<divdiv style={{ marginBottom: '8px', padding: '8px 10px', background: 'rgba(239,68,68,0.08)', borderRadius: '8px', fontSize: '13px', lineHeight: '1.5' }}>
-                          <<spanspan style={{ color: 'var(--red)', fontWeight: '600' }}>Siz tanladingiz:</span> {questions[currentQ].opts[answers[currentQ]]?.replace(/^[A-D]\)\s*/, '')}<<brbr/>
-                          <<spanspan style={{ color: 'var(--green)', fontWeight: '600' }}>To'g'ri javob:</span> {questions[currentQ].opts[questions[currentQ].correct]?.replace(/^[A-D]\)\s*/, '')}
+                        <div style={{ marginBottom: '8px', padding: '8px 10px', background: 'rgba(239,68,68,0.08)', borderRadius: '8px', fontSize: '13px', lineHeight: '1.5' }}>
+                          <span style={{ color: 'var(--red)', fontWeight: '600' }}>Siz tanladingiz:</span> {questions[currentQ].opts[answers[currentQ]]?.replace(/^[A-D]\)\s*/, '')}<br/>
+                          <span style={{ color: 'var(--green)', fontWeight: '600' }}>To'g'ri javob:</span> {questions[currentQ].opts[questions[currentQ].correct]?.replace(/^[A-D]\)\s*/, '')}
                         </div>
                       )}
                       {questions[currentQ].explanation}
                     </motion.div>
                     {isUsefulMnemonic(questions[currentQ].mnemonic) && (
-                      <<divdiv className="mnemonic-box">
-                        <<divdiv className="mnemonic-icon">💡</div>
-                        <<divdiv className="mnemonic-text"><<strongstrong>Eslab qolish uchun:</strong><<brbr />{questions[currentQ].mnemonic}</div>
+                      <div className="mnemonic-box">
+                        <div className="mnemonic-icon">💡</div>
+                        <div className="mnemonic-text"><strong>Eslab qolish uchun:</strong><br />{questions[currentQ].mnemonic}</div>
                       </div>
                     )}
                   </>
@@ -463,34 +481,34 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
               </motion.div>
             </AnimatePresence>
           ) : (
-            <<divdiv className="result-panel glass-panel" style={{ padding: '40px 20px', textAlign: 'center' }}>
-              <<divdiv style={{ fontSize: '48px', marginBottom: '16px' }}>{correctCount / questions.length >= 0.7 ? '🏆' : correctCount / questions.length >= 0.5 ? '📊' : '💪'}</div>
-              <<divdiv style={{ fontSize: '24px', color: 'var(--text)', fontWeight: '700', marginBottom: '8px' }}>{correctCount / questions.length >= 0.7 ? 'Ajoyib natija!' : 'Davom eting!'}</div>
-              <<divdiv style={{ fontSize: '16px', color: 'var(--text2)', marginBottom: '24px' }}>{questions.length} ta savoldan {correctCount} tasiga to'g'ri javob berdingiz.</div>
-              <<divdiv style={{ background: 'var(--bg3)', borderRadius: '16px', padding: '24px', display: 'inline-block', marginBottom: '32px' }}>
-                <<divdiv style={{ fontSize: '14px', color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>Natija</div>
-                <<divdiv style={{ fontSize: '56px', fontFamily: "'Bebas Neue', sans-serif", color: correctCount / questions.length >= 0.7 ? 'var(--green)' : correctCount / questions.length >= 0.5 ? 'var(--amber)' : 'var(--red)', lineHeight: '1' }}>{correctCount} <<spanspan style={{ fontSize: '32px', color: 'var(--text3)' }}>/ {questions.length}</span></div>
-                <<divdiv style={{ fontSize: '20px', marginTop: '8px', color: 'var(--text2)' }}>{Math.round((correctCount / questions.length) * 100)}%</div>
+            <div className="result-panel glass-panel" style={{ padding: '40px 20px', textAlign: 'center' }}>
+              <div style={{ fontSize: '48px', marginBottom: '16px' }}>{correctCount / questions.length >= 0.7 ? '🏆' : correctCount / questions.length >= 0.5 ? '📊' : '💪'}</div>
+              <div style={{ fontSize: '24px', color: 'var(--text)', fontWeight: '700', marginBottom: '8px' }}>{correctCount / questions.length >= 0.7 ? 'Ajoyib natija!' : 'Davom eting!'}</div>
+              <div style={{ fontSize: '16px', color: 'var(--text2)', marginBottom: '24px' }}>{questions.length} ta savoldan {correctCount} tasiga to'g'ri javob berdingiz.</div>
+              <div style={{ background: 'var(--bg3)', borderRadius: '16px', padding: '24px', display: 'inline-block', marginBottom: '32px' }}>
+                <div style={{ fontSize: '14px', color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>Natija</div>
+                <div style={{ fontSize: '56px', fontFamily: "'Bebas Neue', sans-serif", color: correctCount / questions.length >= 0.7 ? 'var(--green)' : correctCount / questions.length >= 0.5 ? 'var(--amber)' : 'var(--red)', lineHeight: '1' }}>{correctCount} <span style={{ fontSize: '32px', color: 'var(--text3)' }}>/ {questions.length}</span></div>
+                <div style={{ fontSize: '20px', marginTop: '8px', color: 'var(--text2)' }}>{Math.round((correctCount / questions.length) * 100)}%</div>
               </div>
-              <<divdiv style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '320px', margin: '0 auto' }}>
-                <<buttonbutton className="btn btn-primary" onClick={generateQuestions}><<RefreshRefreshCw size={18} /> Yana ishlash</button>
-                {state.mistakes.length > 0 && <<buttonbutton className="btn btn-outline" onClick={() => setMode('mistakes')}><<TargetTarget size={18} /> Xatolar ustida ishlash</button>}
-                <<buttonbutton className="btn btn-outline" onClick={goBack}><<HomeHome size={18} /> Boshqa bo'limga</button>
-                <<divdiv style={{ marginTop: '8px', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
-                  <<divdiv style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}><<ShareShare2 size={13} /> Natijani ulashing</div>
-                  <<divdiv style={{ display: 'flex', gap: '8px' }}>
-                    <<buttonbutton className="btn btn-sm" style={{ flex: 1, background: '#25D366', color: 'white', border: 'none', borderRadius: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const emoji = pct >= 70 ? '🏆' : pct >= 50 ? '📊' : '💪'; const text = `${emoji} IQRO platformasida test yechdim!\n📚 Mavzu: ${topicName}\n✅ Natija: ${correctCount}/${questions.length} (${pct}%)\n🎯 Imtihonga tayyorgarlik davom etmoqda!\n\nhttps://iqro-t41p.vercel.app`; window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank'); }}>WhatsApp</button>
-                    <<buttonbutton className="btn btn-sm" style={{ flex: 1, background: '#2AABEE', color: 'white', border: 'none', borderRadius: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const emoji = pct >= 70 ? '🏆' : pct >= 50 ? '📊' : '💪'; const text = `${emoji} IQRO platformasida test yechdim!\n📚 Mavzu: ${topicName}\n✅ Natija: ${correctCount}/${questions.length} (${pct}%)\n🎯 Imtihonga tayyorgarlik!`; window.open(`https://t.me/share/url?url=https://iqro-t41p.vercel.app&text=${encodeURIComponent(text)}`, '_blank'); }}>Telegram</button>
-                    <<buttonbutton className="btn btn-sm btn-outline" style={{ borderRadius: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const text = `IQRO platformasida test: ${correctCount}/${questions.length} (${pct}%) - ${topicName}`; navigator.clipboard?.writeText(text); showToast('Nusxalandi! 📋', 'info'); }} >📋</button>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '320px', margin: '0 auto' }}>
+                <button className="btn btn-primary" onClick={generateQuestions}><RefreshCw size={18} /> Yana ishlash</button>
+                {state.mistakes.length > 0 && <button className="btn btn-outline" onClick={() => setMode('mistakes')}><Target size={18} /> Xatolar ustida ishlash</button>}
+                <button className="btn btn-outline" onClick={goBack}><Home size={18} /> Boshqa bo'limga</button>
+                <div style={{ marginTop: '8px', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
+                  <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}><Share size={13} /> Natijani ulashing</div>
+                  <div style={{ display: 'flex', gap: '8px' }}>
+                    <button className="btn btn-sm" style={{ flex: 1, background: '#25D366', color: 'white', border: 'none', borderRadius: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const emoji = pct >= 70 ? '🏆' : pct >= 50 ? '📊' : '💪'; const text = `${emoji} IQRO platformasida test yechdim!\n📚 Mavzu: ${topicName}\n✅ Natija: ${correctCount}/${questions.length} (${pct}%)\n🎯 Imtihonga tayyorgarlik davom etmoqda!\n\nhttps://iqro-t41p.vercel.app`; window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank'); }}>WhatsApp</button>
+                    <button className="btn btn-sm" style={{ flex: 1, background: '#2AABEE', color: 'white', border: 'none', borderRadius: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const emoji = pct >= 70 ? '🏆' : pct >= 50 ? '📊' : '💪'; const text = `${emoji} IQRO platformasida test yechdim!\n📚 Mavzu: ${topicName}\n✅ Natija: ${correctCount}/${questions.length} (${pct}%)\n🎯 Imtihonga tayyorgarlik!`; window.open(`https://t.me/share/url?url=https://iqro-t41p.vercel.app&text=${encodeURIComponent(text own)}`, '_blank'); }}>Telegram</button>
+                    <button className="btn btn-sm btn-outline" style={{ borderRadius: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const text = `IQRO platformasida test: ${correctCount}/${questions.length} (${pct}%) - ${topicName}`; navigator.clipboard?.writeText(text); showToast('Nusxalandi! 📋', 'info'); }} >📋</button>
                   </div>
                 </div>
               </div>
             </div>
           )}
           {!showResults && (
-            <<divdiv className="q-nav" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px' }}>
-              <<buttonbutton disabled={currentQ === 0} className="btn btn-outline" onClick={() => setCurrentQ(prev => prev - 1)}>Orqaga</button>
-              {Object.keys(answers).length === questions.length ? <<buttonbutton className="btn btn-primary" onClick={() => setShowResults(true)}>Natijani Ko'rish</button> : <<buttonbutton disabled={currentQ === questions.length - 1} className="btn btn-outline" onClick={() => setCurrentQ(prev => prev + 1)}>Keyingi</button>}
+            <div className="q-nav" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px' }}>
+              <button disabled={currentQ === 0} className="btn btn-outline" onClick={() => setCurrentQ(prev => prev - 1)}>Orqaga</button>
+              {Object.keys(answers).length === questions.length ? <button className="btn btn-primary" onClick={() => setShowResults(true)}>Natijani Ko'rish</button> : <button disabled={currentQ === questions.length - 1} className="btn btn-outline" onClick={() => setCurrentQ(prev => prev + 1)}>Keyingi</button>}
             </div>
           )}
         </div>

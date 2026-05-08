@@ -18,6 +18,7 @@ import ExamPage from './pages/ExamPage';
 import SmartReviewPage from './pages/SmartReviewPage';
 import MigrationPage from './pages/MigrationPage';
 import LeaderboardPage from './pages/LeaderboardPage';
+import AchievementsPage from './pages/AchievementsPage';
 
 function App() {
   const { user, loading } = useAuth();
@@ -125,6 +126,11 @@ function App() {
             {currentPage === 'leaderboard' && (
               <motion.div key="leaderboard" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <LeaderboardPage goBack={() => setCurrentPage('dashboard')} />
+              </motion.div>
+            )}
+            {currentPage === 'achievements' && (
+              <motion.div key="achievements" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                <AchievementsPage />
               </motion.div>
             )}
             {currentPage === 'test' && (
