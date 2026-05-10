@@ -140,6 +140,8 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
 
         if (topicId !== -1) {
           qQuery = query(qRef, where('topicId', '==', topicId));
+        } else {
+          qQuery = query(qRef, where('category', '==', state.activeCategory));
         }
 
         const snap = await getDocs(qQuery);
@@ -232,7 +234,7 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
   }, [topicId, mode]);
 
   const topicObj = TOPICS.find(t => t.id === topicId);
-  const topicName = topicId !== 0 ? (topicId === -1 ? "Barcha bo'limlar" : topicObj?.name) : "Barcha bo'limlar";
+  const topicName = topicId === -1 ? "Barcha bo'limlar" : (topicObj?.name || "Barcha bo'limlar");
 
   useEffect(() => {
     if (topicObj?.theoryHint && mode === 'exam' && Object.keys(answers).length === 0 && questions.length > 0) {
@@ -497,7 +499,7 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
                 <div style={{ marginTop: '8px', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
                   <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}><Share2 size={13} /> Natijani ulashing</div>
                   <div style={{ display: 'flex', gap: '8px' }}>
-                    <button className="btn btn-sm" style={{ flex: 1, background: '#25D366', color: 'white', border: 'none', borderRadius: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const emoji = pct >= 70 ? '🏆' : pct >= 50 ? '📊' : '💪'; const text = `${emoji} IQRO platformasida test yechdim!\n📚 Mavzu: ${topicName}\n✅ Natija: ${correctCount}/${questions.length} (${pct}%)\n🎯 Imtihonga tayyorgarlik davom etmoqda!\n\nhttps://iqro-t41p.vercel.app`; window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank'); }}>WhatsApp</button>
+
                     <button className="btn btn-sm" style={{ flex: 1, background: '#2AABEE', color: 'white', border: 'none', borderRadius: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const emoji = pct >= 70 ? '🏆' : pct >= 50 ? '📊' : '💪'; const text = `${emoji} IQRO platformasida test yechdim!\n📚 Mavzu: ${topicName}\n✅ Natija: ${correctCount}/${questions.length} (${pct}%)\n🎯 Imtihonga tayyorgarlik!`; window.open(`https://t.me/share/url?url=https://iqro-t41p.vercel.app&text=${encodeURIComponent(text)}`, '_blank'); }}>Telegram</button>
                     <button className="btn btn-sm btn-outline" style={{ borderRadius: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const text = `IQRO platformasida test: ${correctCount}/${questions.length} (${pct}%) - ${topicName}`; navigator.clipboard?.writeText(text); showToast('Nusxalandi! 📋', 'info'); }} >📋</button>
                   </div>
