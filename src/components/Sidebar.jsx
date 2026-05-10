@@ -63,15 +63,6 @@ const Sidebar = ({ currentPage, setCurrentPage, navigateToTest }) => {
           </div>
 
           <div
-            className={`nav-item ${currentPage === 'stats' ? 'active' : ''}`}
-            onClick={() => setCurrentPage('stats')}
-          >
-            <span className="nav-icon"><BarChart3 size={20} /></span>
-            <span className="nav-label">Statistika</span>
-          </div>
-
-          {/* Imtihon Simulyatsiyasi */}
-          <div
             className={`nav-item ${currentPage === 'exam' ? 'active' : ''}`}
             onClick={() => setCurrentPage('exam')}
           >
@@ -79,7 +70,6 @@ const Sidebar = ({ currentPage, setCurrentPage, navigateToTest }) => {
             <span className="nav-label">Imtihon</span>
           </div>
 
-          {/* Aqlli Takrorlash */}
           <div
             className={`nav-item ${currentPage === 'smartreview' ? 'active' : ''}`}
             onClick={() => setCurrentPage('smartreview')}
@@ -93,7 +83,6 @@ const Sidebar = ({ currentPage, setCurrentPage, navigateToTest }) => {
             })()}
           </div>
 
-          {/* Reyting */}
           <div
             className={`nav-item ${currentPage === 'leaderboard' ? 'active' : ''}`}
             onClick={() => setCurrentPage('leaderboard')}
@@ -102,7 +91,6 @@ const Sidebar = ({ currentPage, setCurrentPage, navigateToTest }) => {
             <span className="nav-label">Reyting</span>
           </div>
 
-          {/* Yutuqlar */}
           <div
             className={`nav-item ${currentPage === 'achievements' ? 'active' : ''}`}
             onClick={() => setCurrentPage('achievements')}
