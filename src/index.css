@@ -672,6 +672,15 @@ body {
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
+@media (max-width: 768px) {
+  .objection-btn {
+    top: 8px;
+    right: 8px;
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+}
+
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -724,24 +733,27 @@ body {
     display: flex; 
     flex-direction: row; 
     align-items: center; 
-    justify-content: space-around; 
+    justify-content: flex-start; /* Changed from space-around */
     z-index: 1000; 
-    overflow: visible; 
-    padding: 0 5px 15px 5px; /* Padding for iPhone home indicator */
+    overflow-x: auto; /* Allow horizontal scroll */
+    overflow-y: hidden;
+    padding: 0 10px 15px 10px; 
     background: var(--glass-bg);
     backdrop-filter: blur(25px); 
     -webkit-backdrop-filter: blur(25px);
     box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+    scrollbar-width: none; /* Hide scrollbar Firefox */
   }
+  .sidebar::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome/Safari */
 
   .sidebar-section { 
     border: none; 
     padding: 0; 
     display: flex; 
     flex-direction: row; 
-    width: 100%; 
+    width: auto; /* Auto width for scrolling */
     align-items: center; 
-    justify-content: space-around; 
+    justify-content: flex-start; 
   }
   
   .sidebar-title { display: none; }
@@ -886,11 +898,11 @@ body {
   /* Button text hiding on small buttons if needed */
   .btn-sm svg { width: 14px; height: 14px; }
 
-  /* E'tirozlar bo'limini telefonda yashirish */
+  /* E'tirozlar bo'limini telefonda ko'rinadigan qilish */
   #objections-section, 
   .objections-list-container,
   .objection-card {
-    display: none !important;
+    display: block !important;
   }
 }
 
@@ -1089,16 +1101,23 @@ body {
 }
 
 @media (max-width: 768px) {
-  .badges-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 8px;
+  .admin-tabs { 
+    flex-direction: row; 
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
-  .badge-card { padding: 14px 10px; }
-  .badge-icon { font-size: 26px; }
-  .badge-name { font-size: 11px; }
-  .admin-tabs { flex-direction: column; }
-  .admin-tab { padding: 10px; }
+  .admin-tabs::-webkit-scrollbar { display: none; }
+  .admin-tab { padding: 10px 16px; flex-shrink: 0; min-width: auto; }
   .admin-quick-stat { min-width: 60px; padding: 10px 12px; }
+  
+  /* Admin jadvallarini mobil uchun scrollable qilish */
+  .admin-page .glass-panel {
+    overflow-x: auto;
+  }
+  .admin-page table {
+    min-width: 600px;
+  }
 }
 
 /* ========== IMTIHON SAHIFASI ========== */
