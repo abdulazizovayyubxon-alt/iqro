@@ -711,7 +711,7 @@ body {
 
 .modal-title { font-size: 20px; font-weight: 700; margin-bottom: 16px; color: var(--text); }
 .modal-text { font-size: 14px; color: var(--text2); margin-bottom: 20px; }
-.modal-input { width: 100%; padding: 12px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--bg3); color: var(--text); font-family: inherit; margin-bottom: 24px; resize: none; min-height: 100px; }
+.modal-input { width: 100%; padding: 12px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--bg3); color: var(--text); font-family: inherit; resize: none; }
 .modal-actions { display: flex; gap: 12px; justify-content: flex-end; }
 
 /* ========================================================
