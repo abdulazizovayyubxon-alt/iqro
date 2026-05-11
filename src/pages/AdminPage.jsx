@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useAdmin } from '../hooks/useAdmin';
-import { db } from '../firebase';
+import { db, storage } from '../firebase';
 import {
   collection, query, orderBy, onSnapshot,
   updateDoc, deleteDoc, doc, getDocs, addDoc
 } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Shield, MessageCircle, Users, BarChart3,
@@ -31,7 +32,24 @@ const AdminPage = () => {
   // Question Management State
   const [isAdding, setIsAdding] = useState(false);
   const [editingQ, setEditingQ] = useState(null);
-  const [newQ, setNewQ] = useState({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '' });
+  const [newQ, setNewQ] = useState({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' });
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    setIsUploadingImage(true);
+    try {
+      const storageRef = ref(storage, `questions/${Date.now()}_${file.name}`);
+      await uploadBytes(storageRef, file);
+      const url = await getDownloadURL(storageRef);
+      setNewQ({ ...newQ, image: url });
+      showToast("Rasm yuklandi!", 'success');
+    } catch (err) {
+      showToast("Rasm yuklashda xatolik: " + err.message, 'error');
+    }
+    setIsUploadingImage(false);
+  };
 
   useEffect(() => {
     const q = query(collection(db, 'objections'), orderBy('timestamp', 'desc'));
@@ -105,7 +123,7 @@ const AdminPage = () => {
       }
       setIsAdding(false);
       setEditingQ(null);
-      setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '' });
+      setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' });
       const snap = await getDocs(collection(db, 'questions'));
       setQuestions(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     } catch (e) {
@@ -344,7 +362,7 @@ const AdminPage = () => {
               <button className="btn btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={handleCleanDuplicates}>
                 <Trash2 size={16} /> Takroriylarni o'chirish
               </button>
-              <button className="btn btn-primary" onClick={() => { setIsAdding(true); setEditingQ(null); setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '' }); }}>
+              <button className="btn btn-primary" onClick={() => { setIsAdding(true); setEditingQ(null); setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' }); }}>
                 <Plus size={16} /> Yangi savol qo'shish
               </button>
             </div>
@@ -514,6 +532,29 @@ const AdminPage = () => {
                     value={newQ.q}
                     onChange={e => setNewQ({...newQ, q: e.target.value})}
                   />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Rasm qo'shish (ixtiyoriy)</label>
+                  {newQ.image && (
+                    <div style={{ position: 'relative', width: '150px', marginBottom: '8px' }}>
+                      <img src={newQ.image} alt="Uploaded" style={{ width: '100%', borderRadius: '8px', border: '1px solid var(--border)' }} />
+                      <button 
+                        className="btn btn-sm btn-outline" 
+                        style={{ position: 'absolute', top: 5, right: 5, padding: '4px', background: 'var(--bg)', color: 'var(--red)' }}
+                        onClick={() => setNewQ({...newQ, image: ''})}
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
+                  )}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    disabled={isUploadingImage}
+                    style={{ fontSize: '13px', color: 'var(--text3)' }}
+                  />
+                  {isUploadingImage && <div style={{ fontSize: '12px', color: 'var(--blue)' }}>Yuklanmoqda...</div>}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Mavzu ID (topicId)</label>
