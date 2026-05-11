@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, enableIndexedDbPersistence } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
@@ -18,6 +18,16 @@ const app = initializeApp(firebaseConfig);
 // Bazaga ulanish (Firestore)
 export const db = getFirestore(app);
 
+// Offline persistence (Keshni yoqish)
+enableIndexedDbPersistence(db).catch((err) => {
+    if (err.code === 'failed-precondition') {
+        console.warn("Firestore keshini faqat bitta tabda yoqish mumkin.");
+    } else if (err.code === 'unimplemented') {
+        console.warn("Brauzer Firestore keshini qo'llab-quvvatlamaydi.");
+    }
+});
+
 // Auth
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
+

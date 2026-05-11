@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import { AppContext } from '../context/AppContext';
+import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { Moon, Sun, LogOut, ChevronDown, Camera, Medal, Palette } from 'lucide-react';
 import { updateProfile } from 'firebase/auth';
@@ -8,7 +9,8 @@ import { EXAM_DATE } from '../config';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = ({ theme, toggleTheme }) => {
-  const { state, updateState, toast, showToast } = useContext(AppContext);
+  const { state, updateState } = useContext(AppContext);
+  const { toast, showToast } = useContext(ToastContext);
   const { user, logout } = useAuth();
   const [daysLeft, setDaysLeft] = useState(0);
   const [showUserMenu, setShowUserMenu] = useState(false);

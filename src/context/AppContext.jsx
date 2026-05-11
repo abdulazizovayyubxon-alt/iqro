@@ -3,6 +3,7 @@ import { TOPICS } from '../data/mockData';
 import { MAX_MISTAKES_SAVED } from '../config';
 import { db } from '../firebase';
 import { AuthContext } from './AuthContext';
+import { ToastContext } from './ToastContext';
 import {
   collection,
   addDoc,
@@ -36,7 +37,6 @@ const buildDefaultState = () => ({
   totalCorrect: 0,
   topicStats: {},
   mistakes: [],
-  objections: [],
   sessionStart: Date.now(),
   studyMinutes: 0,
   activeCategory: 'chqbt',
@@ -44,8 +44,6 @@ const buildDefaultState = () => ({
     chqbt: buildDefaultCatStats(),
     art: buildDefaultCatStats()
   },
-  sentObjectionIds: [],
-  // Kunlik maqsad tizimi
   dailyGoal: {
     date: new Date().toDateString(),
     answered: 0,
@@ -54,13 +52,13 @@ const buildDefaultState = () => ({
   },
   dailyStreak: 0,
   lastGoalDate: null,
-  spacedCards: [] // Spaced Repetition uchun
+  spacedCards: []
 });
 
 export const AppProvider = ({ children }) => {
   const { user } = useContext(AuthContext);
+  const { showToast } = useContext(ToastContext);
   const [state, setState] = useState(buildDefaultState);
-  const [toast, setToast] = useState(null);
   const [cloudSynced, setCloudSynced] = useState(false);
 
   // ─── 1. Foydalanuvchi kirishi/chiqishida statistikani yuklash ───
@@ -81,7 +79,6 @@ export const AppProvider = ({ children }) => {
         setState(prev => ({
           ...buildDefaultState(),
           ...data,
-          objections: prev.objections, // objectionlar alohida listener'da
           stats: data.stats || { chqbt: buildDefaultCatStats(), art: buildDefaultCatStats() },
           topicStats: data.topicStats || {}
         }));
@@ -113,7 +110,7 @@ export const AppProvider = ({ children }) => {
     if (!user || !cloudSynced) return;
 
     const statRef = doc(db, 'userStats', user.uid);
-    const { objections, sentObjectionIds, ...statsToSave } = state;
+    const { ...statsToSave } = state;
     // Leaderboard uchun foydalanuvchi ma'lumotlarini ham saqlash
     const currentName = user.displayName || state.displayName || '';
     statsToSave.displayName = currentName;
@@ -125,44 +122,6 @@ export const AppProvider = ({ children }) => {
     // localStorage ga ham (offline backup)
     localStorage.setItem('iqro_state', JSON.stringify(state));
   }, [state, user, cloudSynced]);
-
-  // ─── 3. E'tirozlar (Firebase real-time) ───
-  useEffect(() => {
-    const q = query(collection(db, "objections"), orderBy("timestamp", "desc"));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const cloudObjections = snapshot.docs.map(d => ({
-        ...d.data(),
-        fbId: d.id,
-        date: d.data().timestamp?.toDate()?.toLocaleString() || d.data().date
-      }));
-
-      setState(prev => {
-        const mySentIds = prev.sentObjectionIds || [];
-        const solvedMine = cloudObjections.filter(obj =>
-          obj.solved && mySentIds.includes(obj.id)
-        );
-        if (solvedMine.length > 0) {
-          showToast(`✅ Siz yuborgan ${solvedMine.length} ta xato tuzatildi!`, 'success');
-          const solvedIds = new Set(solvedMine.map(o => o.id));
-          return {
-            ...prev,
-            objections: cloudObjections,
-            sentObjectionIds: mySentIds.filter(id => !solvedIds.has(id))
-          };
-        }
-        return { ...prev, objections: cloudObjections };
-      });
-    }, (error) => {
-      console.warn("Firebase objections sync error:", error);
-    });
-    return () => unsubscribe();
-  }, []);
-
-  // ─── Toast ───
-  const showToast = (message, type = 'success') => {
-    setToast({ message, type, id: Date.now() });
-    setTimeout(() => setToast(null), 5000);
-  };
 
   const updateState = (updates) => setState(prev => ({ ...prev, ...updates }));
 
@@ -313,86 +272,7 @@ export const AppProvider = ({ children }) => {
     });
   };
 
-  // ─── addObjection ───
-  const addObjection = async (topicId, questionObj, note) => {
-    const topic = TOPICS.find(t => t.id === topicId);
-    const newObjection = {
-      id: Date.now(),
-      uid: user?.uid || 'anonymous',
-      userEmail: user?.email || '',
-      userName: user?.displayName || '',
-      topic: topic ? topic.name : "Aralash",
-      topicId,
-      category: state.activeCategory,
-      question: questionObj.q || questionObj,
-      options: questionObj.opts || [],
-      correct: questionObj.opts ? questionObj.opts[questionObj.correct] : null,
-      note,
-      date: new Date().toLocaleString(),
-      solved: false,
-      timestamp: new Date()
-    };
 
-    setState(prev => ({
-      ...prev,
-      objections: [...prev.objections, newObjection],
-      sentObjectionIds: [...(prev.sentObjectionIds || []), newObjection.id]
-    }));
-
-    try {
-      await addDoc(collection(db, "objections"), { ...newObjection, timestamp: new Date() });
-    } catch (err) {
-      console.error("Firebase write error:", err);
-    }
-  };
-
-  // ─── clearObjections ───
-  const clearObjections = async () => {
-    setState(prev => ({ ...prev, objections: [] }));
-    try {
-      const q = query(collection(db, "objections"));
-      const snapshot = await getDocs(q);
-      const batch = writeBatch(db);
-      snapshot.docs.forEach((d) => batch.delete(d.ref));
-      await batch.commit();
-    } catch (err) { console.error(err); }
-  };
-
-  // ─── solveObjection ───
-  const solveObjection = async (fbId) => {
-    if (!fbId) return;
-    try {
-      await updateDoc(doc(db, "objections", fbId), { solved: true });
-      showToast("Savol tuzatilgan deb belgilandi! ✅");
-    } catch (err) { console.error(err); }
-    setState(prev => ({
-      ...prev,
-      objections: prev.objections.map(o => o.fbId === fbId ? { ...o, solved: true } : o)
-    }));
-  };
-
-  // ─── deleteObjection ───
-  const deleteObjection = async (fbId) => {
-    if (!fbId) return;
-    try {
-      await deleteDoc(doc(db, "objections", fbId));
-      showToast("E'tiroz o'chirildi", "info");
-    } catch (err) { console.error(err); }
-    setState(prev => ({
-      ...prev,
-      objections: prev.objections.filter(o => o.fbId !== fbId)
-    }));
-  };
-
-  // ─── importObjections ───
-  const importObjections = (newObjections) => {
-    if (!Array.isArray(newObjections)) return;
-    setState(prev => {
-      const existingIds = new Set(prev.objections.map(o => o.id));
-      const filtered = newObjections.filter(o => !existingIds.has(o.id));
-      return { ...prev, objections: [...prev.objections, ...filtered] };
-    });
-  };
 
   // ─── Statistikani reset qilish ───
   const resetStats = async () => {
@@ -404,34 +284,13 @@ export const AppProvider = ({ children }) => {
     showToast("Statistika tozalandi", 'info');
   };
 
-  // ─── E'tiroz izohini yangilash ───
-  const updateObjectionNote = async (fbId, newNote) => {
-    if (!fbId || !newNote.trim()) return;
-    try {
-      await updateDoc(doc(db, "objections", fbId), { note: newNote.trim() });
-      showToast("E'tiroz yangilandi ✏️", 'success');
-    } catch (err) { console.error(err); }
-    setState(prev => ({
-      ...prev,
-      objections: prev.objections.map(o => o.fbId === fbId ? { ...o, note: newNote.trim() } : o)
-    }));
-  };
-
   return (
     <AppContext.Provider value={{
       state,
       updateState,
       addScore,
       addMistake,
-      addObjection,
-      clearObjections,
-      solveObjection,
-      deleteObjection,
-      importObjections,
-      updateObjectionNote,
       resetStats,
-      toast,
-      showToast,
       cloudSynced
     }}>
       {children}

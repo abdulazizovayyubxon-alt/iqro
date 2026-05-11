@@ -24,7 +24,7 @@ const chqbtTopics = [
     theoryHint: "📌 OQQ turlari: yadroviy, kimyoviy, biologik. Himoya vositalari: gas niqob (GP-7), himoya kiyimi. Signal turlari: \"Havo xavfi\", \"Kimyoviy xavf\". Yashirish joylari." },
   { id: 5, name: "Tibbiy bilim asoslari", icon: React.createElement(HeartPulse, { size: 20 }), day: 7, category: 'chqbt',
     theoryHint: "📌 Birinchi yordam: qon to'xtatish (jgut, bosim bog'lam), sun'iy nafas, yurak uqalash. Jarohat turlari: ochiq, yopiq. Suyak sinishi: shina qo'yish qoidalari." },
-  { id: 6, name: "Pedagogik mahorat", icon: React.createElement(GraduationCap, { size: 20 }), day: 8, category: ['chqbt', 'art'],
+  { id: 6, name: "Pedagogik mahorat", icon: React.createElement(GraduationCap, { size: 20 }), day: 8, category: 'chqbt',
     theoryHint: "📌 Ta'lim paradigmalari: an'anaviy, rivojlantiruvchi, shaxsga yo'naltirilgan. Dars turlari: yangi bilim, mustahkamlash, nazorat. Sinf rahbari vazifalari va pedagogik etika." },
 ];
 

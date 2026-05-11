@@ -1,12 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/AppContext';
+import { ObjectionContext } from '../context/ObjectionContext';
+import { ToastContext } from '../context/ToastContext';
 import { SCHEDULE, TOPICS } from '../data/mockData';
 import { Play, Repeat, Zap, MessageCircle, Download, Trash2, Medal, Palette, Clock, Award, Target, Flame, AlertTriangle, Map, CheckCircle2, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { EXAM_DATE, EXAM_LABEL, EXAM_GOAL_SCORE } from '../config';
 
 const Dashboard = ({ navigateToTest }) => {
-  const { state, updateState, clearObjections, solveObjection, deleteObjection, importObjections, updateObjectionNote, showToast } = useContext(AppContext);
+  const { state, updateState } = useContext(AppContext);
+  const { objections, clearObjections, solveObjection, deleteObjection, importObjections, updateObjectionNote } = useContext(ObjectionContext);
+  const { showToast } = useContext(ToastContext);
   const [editingId, setEditingId] = useState(null);
   const [editNote, setEditNote] = useState('');
 
@@ -37,7 +41,7 @@ const Dashboard = ({ navigateToTest }) => {
   const dayNum = Math.floor((today - startDay) / 86400000) + 1;
 
   const downloadObjections = () => {
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state.objections || [], null, 2));
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(objections || [], null, 2));
     const downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href", dataStr);
     downloadAnchorNode.setAttribute("download", "iqro_etirozlar.json");
@@ -129,7 +133,7 @@ const Dashboard = ({ navigateToTest }) => {
       <div id="objections-section" className="glass-panel" style={{ padding: '24px', marginBottom: '24px', border: '1px solid rgba(59, 130, 246, 0.3)', background: 'rgba(59, 130, 246, 0.05)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '10px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--blue)', fontWeight: '800', fontSize: '18px' }}>
-              <MessageCircle size={22} /> E'tirozlar ({state.objections.length})
+              <MessageCircle size={22} /> E'tirozlar ({objections.length})
             </div>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
               <button className="btn btn-outline btn-sm" onClick={downloadObjections}>
@@ -141,7 +145,7 @@ const Dashboard = ({ navigateToTest }) => {
                 <input type="file" accept=".json" onChange={handleImportObjections} style={{ display: 'none' }} />
               </label>
 
-              {state.objections.length > 0 && (
+              {objections.length > 0 && (
                 <button className="btn btn-outline btn-sm" onClick={() => { if(confirm('Barcha e\'tirozlarni o\'chirib yuborasizmi?')) clearObjections(); }} style={{ color: 'var(--red)' }}>
                   <Trash2 size={14} /> Tozalash
                 </button>
@@ -149,13 +153,13 @@ const Dashboard = ({ navigateToTest }) => {
             </div>
           </div>
           
-          {state.objections.length === 0 ? (
+          {objections.length === 0 ? (
             <div style={{ color: 'var(--text3)', fontSize: '14px', textAlign: 'center', padding: '20px' }}>
               Hozircha e'tirozlar yo'q. Boshqa qurilmadagi ma'lumotlarni "Yuklash" orqali o'tkazishingiz mumkin.
             </div>
           ) : (
             <div style={{ maxHeight: '500px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', paddingRight: '10px' }}>
-              {[...state.objections].reverse().map((obj, idx) => (
+              {[...objections].reverse().map((obj, idx) => (
                 <div 
                   key={obj.fbId || idx} 
                   className="glass-panel objection-card" 
@@ -524,11 +528,11 @@ const Dashboard = ({ navigateToTest }) => {
       </div>
 
       {/* Oxirgi Tuzatishlar Jurnali (Public Fix Log) */}
-      {state.objections.filter(o => o.solved).length > 0 && (
+      {objections.filter(o => o.solved).length > 0 && (
         <div className="objections-list-container">
           <div className="section-header" style={{ marginTop: '32px', color: 'var(--green)' }}>Oxirgi tuzatishlar</div>
           <div className="glass-panel" style={{ padding: '16px', background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
-            {[...state.objections].filter(o => o.solved).reverse().slice(0, 5).map((obj, i) => (
+            {[...objections].filter(o => o.solved).reverse().slice(0, 5).map((obj, i) => (
               <div key={obj.fbId || i} style={{ 
                 display: 'flex', 
                 gap: '12px', 

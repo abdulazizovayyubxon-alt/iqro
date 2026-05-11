@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
+import { ObjectionContext } from '../context/ObjectionContext';
+import { ToastContext } from '../context/ToastContext';
 import { TOPICS, getFallbackQuestions } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, CheckCircle, XCircle } from 'lucide-react';
+import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, CheckCircle, XCircle, RefreshCw } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { db } from '../firebase';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 
 const EXAM_DURATION = 90 * 60; // 90 daqiqa
 const EXAM_TOTAL = 50;
@@ -18,7 +22,9 @@ function shuffleArray(arr) {
 }
 
 const ExamPage = ({ goBack }) => {
-  const { state, addScore, addMistake, addObjection, showToast } = useContext(AppContext);
+  const { state, addScore, addMistake } = useContext(AppContext);
+  const { addObjection } = useContext(ObjectionContext);
+  const { showToast } = useContext(ToastContext);
   const cat = state.activeCategory;
 
   const [questions, setQuestions] = useState([]);
@@ -31,41 +37,64 @@ const ExamPage = ({ goBack }) => {
   const [endTime, setEndTime] = useState(null);
   const [showObjectionModal, setShowObjectionModal] = useState(false);
   const [objectionText, setObjectionText] = useState('');
+  const [loading, setLoading] = useState(true);
   const timerRef = useRef(null);
 
-  // Savollarni yuklash
+  // Savollarni yuklash (Firestore dan)
   useEffect(() => {
-    const filteredTopics = TOPICS.filter(t =>
-      Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat
-    );
+    const loadExamQuestions = async () => {
+      setLoading(true);
+      try {
+        const qRef = collection(db, 'questions');
+        const qQuery = query(qRef, where('category', '==', cat));
+        const snap = await getDocs(qQuery);
+        
+        let allQ = snap.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
 
-    let allQuestions = [];
-    const groups = [];
+        if (allQ.length === 0) {
+          showToast("Savollar topilmadi!", 'error');
+          goBack();
+          return;
+        }
 
-    filteredTopics.forEach(topic => {
-      const qs = getFallbackQuestions(topic.id, cat).map(q => ({ ...q, topicId: topic.id, topicName: topic.name, topicIcon: topic.icon }));
-      if (qs.length > 0) {
-        const shuffled = shuffleArray(qs);
-        const pick = Math.ceil(EXAM_TOTAL / filteredTopics.length);
-        const selected = shuffled.slice(0, pick);
-        const start = allQuestions.length;
-        allQuestions = [...allQuestions, ...selected];
-        groups.push({ name: topic.name, icon: topic.icon, start, end: allQuestions.length - 1 });
+        const filteredTopics = TOPICS.filter(t =>
+          Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat
+        );
+
+        // Savollarga mavzu ma'lumotlarini biriktirish
+        allQ = allQ.map(q => {
+          const topic = filteredTopics.find(t => t.id === q.topicId);
+          return {
+            ...q,
+            topicName: topic ? topic.name : 'Aralash',
+            topicIcon: topic ? topic.icon : null
+          };
+        });
+
+        const final = shuffleArray(allQ).slice(0, EXAM_TOTAL);
+        setQuestions(final);
+
+        // Guruhlarni qayta hisoblash
+        const regrouped = [];
+        filteredTopics.forEach((topic) => {
+          const indices = final.map((q, i) => q.topicId === topic.id ? i : -1).filter(i => i >= 0);
+          if (indices.length > 0) {
+            regrouped.push({ name: topic.name, icon: topic.icon, indices });
+          }
+        });
+        setTopicGroups(regrouped);
+      } catch (err) {
+        console.error("Exam load error:", err);
+        showToast("Xatolik yuz berdi", 'error');
+      } finally {
+        setLoading(false);
       }
-    });
+    };
 
-    const final = shuffleArray(allQuestions).slice(0, EXAM_TOTAL);
-    setQuestions(final);
-
-    // Guruhlarni qayta hisoblash
-    const regrouped = [];
-    filteredTopics.forEach((topic, ti) => {
-      const indices = final.map((q, i) => q.topicId === topic.id ? i : -1).filter(i => i >= 0);
-      if (indices.length > 0) {
-        regrouped.push({ name: topic.name, icon: topic.icon, indices });
-      }
-    });
-    setTopicGroups(regrouped);
+    loadExamQuestions();
   }, [cat]);
 
   // Taymer
@@ -124,13 +153,7 @@ const ExamPage = ({ goBack }) => {
   const handleObjectionSubmit = () => {
     if (!objectionText.trim()) return;
     const q = questions[currentQ];
-    addObjection({
-      question: q.q,
-      topic: q.topicName,
-      correct: q.opts[q.correct],
-      note: objectionText,
-      category: cat,
-    });
+    addObjection(q.topicId, cat, q, objectionText);
     setObjectionText('');
     setShowObjectionModal(false);
     showToast("E'tiroz yuborildi!", 'success');
@@ -143,14 +166,16 @@ const ExamPage = ({ goBack }) => {
   const isUrgent = timeLeft <= 300; // 5 daqiqa
   const isWarning = timeLeft <= 600; // 10 daqiqa
 
-  if (questions.length === 0) {
+  if (loading) {
     return (
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '60vh', flexDirection: 'column', gap: 16 }}>
-        <div className="spin" style={{ width: 32, height: 32, border: '3px solid var(--border)', borderTopColor: 'var(--blue)', borderRadius: '50%' }} />
-        <div style={{ color: 'var(--text3)' }}>Savollar yuklanmoqda...</div>
+      <div className="page" style={{ height: '70vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
+        <RefreshCw className="spin" size={32} style={{ color: 'var(--blue)' }} />
+        <div style={{ color: 'var(--text3)', fontSize: 15 }}>Savollar tayyorlanmoqda...</div>
       </div>
     );
   }
+
+  if (questions.length === 0) return null;
 
   // ===== NATIJA SAHIFASI =====
   if (finished) {

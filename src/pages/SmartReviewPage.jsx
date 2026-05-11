@@ -1,19 +1,27 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
+import { ObjectionContext } from '../context/ObjectionContext';
+import { ToastContext } from '../context/ToastContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Brain, CheckCircle, XCircle, Clock, ChevronRight, ArrowLeft, Zap } from 'lucide-react';
+import { Brain, CheckCircle, XCircle, Clock, ChevronRight, ArrowLeft, Zap, MessageCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 // Intervallar (daqiqada): 10min, 1soat, 6soat, 1kun, 3kun, 7kun
 const INTERVALS = [10, 60, 360, 1440, 4320, 10080];
 
 const SmartReviewPage = ({ goBack }) => {
-  const { state, updateState, showToast } = useContext(AppContext);
+  const { state, updateState } = useContext(AppContext);
+  const { addObjection } = useContext(ObjectionContext);
+  const { showToast } = useContext(ToastContext);
   const [cards, setCards] = useState([]);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answered, setAnswered] = useState(null); // null | index
   const [sessionStats, setSessionStats] = useState({ correct: 0, wrong: 0 });
   const [sessionDone, setSessionDone] = useState(false);
+
+  // Objection state
+  const [showObjectionModal, setShowObjectionModal] = useState(false);
+  const [objectionText, setObjectionText] = useState('');
 
   useEffect(() => {
     // Hozir takrorlash kerak bo'lgan savollarni filtrlash
@@ -77,6 +85,16 @@ const SmartReviewPage = ({ goBack }) => {
     }
     setCurrentIdx(prev => prev + 1);
     setAnswered(null);
+  };
+
+  const handleObjection = () => {
+    if (objectionText.trim()) {
+      const card = cards[currentIdx];
+      addObjection(card.topicId, state.activeCategory, card, objectionText);
+      setObjectionText('');
+      setShowObjectionModal(false);
+      showToast("E'tiroz yuborildi!", 'success');
+    }
   };
 
   // Hech savol yo'q
@@ -183,7 +201,14 @@ const SmartReviewPage = ({ goBack }) => {
           exit={{ opacity: 0, x: -30 }}
           transition={{ duration: 0.15 }}
         >
-          <div className="glass-panel" style={{ padding: 28, maxWidth: 700, margin: '0 auto' }}>
+          <div className="glass-panel" style={{ padding: 28, maxWidth: 700, margin: '0 auto', position: 'relative' }}>
+            <button
+              className="objection-btn"
+              style={{ position: 'absolute', top: 12, right: 12 }}
+              onClick={() => setShowObjectionModal(true)}
+            >
+              <MessageCircle size={14} /> E'tiroz
+            </button>
             {/* Daraja badge */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
               <div style={{
@@ -273,6 +298,28 @@ const SmartReviewPage = ({ goBack }) => {
           </div>
         </motion.div>
       </AnimatePresence>
+
+      {/* E'TIROZ MODALI */}
+      {showObjectionModal && (
+        <div className="modal-overlay" onClick={() => setShowObjectionModal(false)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <div className="modal-title">⚠️ E'tiroz bildirish</div>
+            <div className="modal-text" style={{ fontSize: 13, lineHeight: 1.5 }}>
+              <strong>Savol:</strong> {card.q}
+            </div>
+            <textarea
+              className="modal-input"
+              placeholder="Muammo yoki xatolikni tushuntiring..."
+              value={objectionText}
+              onChange={e => setObjectionText(e.target.value)}
+            />
+            <div className="modal-actions">
+              <button className="btn btn-outline" onClick={() => setShowObjectionModal(false)}>Bekor</button>
+              <button className="btn btn-primary" onClick={handleObjection}>Yuborish</button>
+            </div>
+          </div>
+        </div>
+      )}
     </motion.div>
   );
 };

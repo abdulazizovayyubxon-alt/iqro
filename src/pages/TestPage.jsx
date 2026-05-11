@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { AppContext } from '../context/AppContext';
+import { ObjectionContext } from '../context/ObjectionContext';
+import { ToastContext } from '../context/ToastContext';
 import { TOPICS } from '../data/mockData';
 import { BADGES, getEarnedBadges } from '../data/badges';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -10,7 +12,9 @@ import { db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 
 const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
-  const { state, addScore, addMistake, addObjection, showToast } = useContext(AppContext);
+  const { state, addScore, addMistake } = useContext(AppContext);
+  const { addObjection } = useContext(ObjectionContext);
+  const { showToast } = useContext(ToastContext);
   const [questions, setQuestions] = useState([]);
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState({});
@@ -150,7 +154,9 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
           ...doc.data()
         }));
 
-        qList = qList.sort(() => 0.5 - Math.random());
+        if (topicId === -1) {
+          qList = qList.sort(() => 0.5 - Math.random());
+        }
       }
 
       setFullPool(qList);
@@ -211,7 +217,7 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
   const handleObjection = () => {
     if (objectionText.trim()) {
       const qObj = questions[currentQ];
-      addObjection(topicId, qObj, objectionText);
+      addObjection(topicId, state.activeCategory, qObj, objectionText);
       setObjectionText('');
       setShowObjectionModal(false);
       showToast("E'tiroz qabul qilindi. Rahmat!", 'success');
@@ -513,6 +519,28 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
               {Object.keys(answers).length === questions.length ? <button className="btn btn-primary" onClick={() => setShowResults(true)}>Natijani Ko'rish</button> : <button disabled={currentQ === questions.length - 1} className="btn btn-outline" onClick={() => setCurrentQ(prev => prev + 1)}>Keyingi</button>}
             </div>
           )}
+        </div>
+      )}
+
+      {/* E'TIROZ MODALI */}
+      {showObjectionModal && (
+        <div className="modal-overlay" onClick={() => setShowObjectionModal(false)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <div className="modal-title">⚠️ E'tiroz bildirish</div>
+            <div className="modal-text" style={{ fontSize: 13, lineHeight: 1.5 }}>
+              <strong>Savol:</strong> {questions[currentQ]?.q}
+            </div>
+            <textarea
+              className="modal-input"
+              placeholder="Muammo yoki xatolikni tushuntiring..."
+              value={objectionText}
+              onChange={e => setObjectionText(e.target.value)}
+            />
+            <div className="modal-actions">
+              <button className="btn btn-outline" onClick={() => setShowObjectionModal(false)}>Bekor</button>
+              <button className="btn btn-primary" onClick={handleObjection}>Yuborish</button>
+            </div>
+          </div>
         </div>
       )}
     </motion.div>

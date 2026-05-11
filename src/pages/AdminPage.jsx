@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AppContext } from '../context/AppContext';
+import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useAdmin } from '../hooks/useAdmin';
 import { db } from '../firebase';
@@ -17,7 +17,7 @@ import {
 const AdminPage = () => {
   const { isAdmin } = useAdmin();
   const { user } = useAuth();
-  const { showToast } = useContext(AppContext);
+  const { showToast } = useContext(ToastContext);
 
   const [tab, setTab] = useState('objections'); // objections | users | stats | questions
   const [objections, setObjections] = useState([]);
