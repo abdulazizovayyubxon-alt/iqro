@@ -502,10 +502,10 @@ const AdminPage = () => {
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
               className="modal-content"
-              style={{ maxWidth: '600px', width: '//90%' }}
+              style={{ maxWidth: '600px', width: '90%', maxHeight: '90vh', display: 'flex', flexDirection: 'column', padding: '24px' }}
             >
-              <div className="modal-title">{editingQ ? 'Savolni tahrirlash' : 'Yangi savol qo\'shish'}</div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '20px 0' }}>
+              <div className="modal-title" style={{ flexShrink: 0 }}>{editingQ ? 'Savolni tahrirlash' : 'Yangi savol qo\'shish'}</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '20px 0', overflowY: 'auto', flex: 1 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Savol matni</label>
                   <textarea
@@ -568,7 +568,7 @@ const AdminPage = () => {
                   />
                 </div>
               </div>
-              <div className="modal-actions">
+              <div className="modal-actions" style={{ flexShrink: 0, marginTop: '16px' }}>
                 <button className="btn btn-outline" onClick={() => { setIsAdding(false); setEditingQ(null); }}>Bekor qilish</button>
                 <button className="btn btn-primary" onClick={handleSaveQuestion} disabled={!newQ.q || newQ.opts.some(o => !o)}>Saqlash</button>
               </div>
