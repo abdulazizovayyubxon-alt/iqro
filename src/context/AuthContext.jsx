@@ -33,6 +33,7 @@ export const AuthProvider = ({ children }) => {
         // Firestore'da foydalanuvchi profilini tekshiramiz/yaratamiz
         const userRef = doc(db, 'users', firebaseUser.uid);
         const userSnap = await getDoc(userRef);
+        let isPremium = false;
         if (!userSnap.exists()) {
           // Yangi foydalanuvchi — profil yaratamiz
           await setDoc(userRef, {
@@ -41,10 +42,16 @@ export const AuthProvider = ({ children }) => {
             displayName: firebaseUser.displayName || firebaseUser.email?.split('@')[0],
             photoURL: firebaseUser.photoURL || null,
             role: 'user', // 'user' yoki 'admin'
+            isPremium: false,
             createdAt: new Date(),
           });
+        } else {
+          isPremium = userSnap.data().isPremium || false;
         }
-        setUser(firebaseUser);
+        
+        // Asl firebaseUser ob'ektiga isPremium ni qo'shamiz
+        const enhancedUser = Object.assign(firebaseUser, { isPremium });
+        setUser(enhancedUser);
       } else {
         setUser(null);
       }
@@ -132,14 +139,17 @@ export const AuthProvider = ({ children }) => {
     try {
       // Avval shu raqam bilan kirishga urinamiz
       await signInWithEmailAndPassword(auth, fakeEmail, fakePassword);
-      // Kirish muvaffaqiyatli bo'lsa profilni yangilab qo'yamiz (ism o'zgargan bo'lsa)
+      // Kirish muvaffaqiyatli bo'lsa profilni yangilab qo'yamiz
+      let isPremium = false;
+      const userRef = doc(db, 'users', auth.currentUser.uid);
+      const userSnap = await getDoc(userRef);
+      if (userSnap.exists()) isPremium = userSnap.data().isPremium || false;
+
       if (auth.currentUser && auth.currentUser.displayName !== name) {
         await updateProfile(auth.currentUser, { displayName: name });
-        // React state'ni majburan yangilaymiz
-        setUser(Object.assign({}, auth.currentUser, { displayName: name }));
-        // Firestore dagi ismni ham yangilaymiz
-        await setDoc(doc(db, 'users', auth.currentUser.uid), { displayName: name }, { merge: true });
+        await setDoc(userRef, { displayName: name }, { merge: true });
       }
+      setUser(Object.assign(auth.currentUser, { displayName: name, isPremium }));
       return true;
     } catch (err) {
       if (err.code === 'auth/user-not-found' || err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password') {
@@ -148,13 +158,14 @@ export const AuthProvider = ({ children }) => {
           const userCred = await createUserWithEmailAndPassword(auth, fakeEmail, fakePassword);
           await updateProfile(userCred.user, { displayName: name });
           // React state'ni majburan yangilaymiz
-          setUser(Object.assign({}, userCred.user, { displayName: name }));
+          setUser(Object.assign(userCred.user, { displayName: name, isPremium: false }));
           await setDoc(doc(db, 'users', userCred.user.uid), {
             uid: userCred.user.uid,
             email: fakeEmail,
             phone: cleanPhone,
             displayName: name,
             role: 'user',
+            isPremium: false,
             createdAt: new Date(),
           });
           return true;

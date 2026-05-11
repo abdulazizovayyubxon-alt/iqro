@@ -79,6 +79,21 @@ const AdminPage = () => {
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
   };
 
+  const togglePremium = async (userId, currentStatus) => {
+    try {
+      await updateDoc(doc(db, 'users', userId), { isPremium: !currentStatus });
+      showToast("Premium holati o'zgartirildi!", 'success');
+    } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+  };
+
+  const toggleAdmin = async (userId, currentRole) => {
+    try {
+      const newRole = currentRole === 'admin' ? 'user' : 'admin';
+      await updateDoc(doc(db, 'users', userId), { role: newRole });
+      showToast(`Rol o'zgartirildi: ${newRole}`, 'success');
+    } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+  };
+
   const handleSaveQuestion = async () => {
     try {
       if (editingQ) {
@@ -95,6 +110,43 @@ const AdminPage = () => {
       setQuestions(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     } catch (e) {
       showToast("Xatolik yuz berdi", 'error');
+    }
+  };
+
+  const handleCleanDuplicates = async () => {
+    if (!window.confirm("Barcha takroriy (dublikat) savollarni bazadan o'chirishni tasdiqlaysizmi?")) return;
+    try {
+      showToast("Tahlil va o'chirish boshlandi, kuting...", 'info');
+      const questionMap = new Map();
+      const duplicatesToDelete = [];
+      
+      const normalize = (text) => text ? text.toLowerCase().replace(/[‘'`ʼ]/g, "'").replace(/\s+/g, " ").trim() : "";
+      
+      for (const q of questions) {
+        const normText = normalize(q.q);
+        if (questionMap.has(normText)) {
+          duplicatesToDelete.push(q.id);
+        } else {
+          questionMap.set(normText, q.id);
+        }
+      }
+
+      if (duplicatesToDelete.length === 0) {
+        showToast("Takroriy savollar topilmadi!", 'success');
+        return;
+      }
+
+      for (const docId of duplicatesToDelete) {
+        await deleteDoc(doc(db, 'questions', docId));
+      }
+
+      showToast(`Muvaffaqiyatli! ${duplicatesToDelete.length} ta takroriy savol o'chirildi.`, 'success');
+      
+      // Ro'yxatni yangilash
+      const snap = await getDocs(collection(db, 'questions'));
+      setQuestions(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+    } catch (e) {
+      showToast("Xatolik yuz berdi: " + e.message, 'error');
     }
   };
 
@@ -288,9 +340,14 @@ const AdminPage = () => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ fontSize: '18px', fontWeight: '700', color: 'var(--text)' }}>Savollar Bazasi ({questions.length})</div>
-            <button className="btn btn-primary" onClick={() => { setIsAdding(true); setEditingQ(null); setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '' }); }}>
-              <Plus size={16} /> Yangi savol qo'shish
-            </button>
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <button className="btn btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={handleCleanDuplicates}>
+                <Trash2 size={16} /> Takroriylarni o'chirish
+              </button>
+              <button className="btn btn-primary" onClick={() => { setIsAdding(true); setEditingQ(null); setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '' }); }}>
+                <Plus size={16} /> Yangi savol qo'shish
+              </button>
+            </div>
           </div>
 
           <div className="glass-panel" style={{ overflow: 'hidden' }}>
@@ -332,8 +389,9 @@ const AdminPage = () => {
                   <tr>
                     <th style={{ padding: '14px 20px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Foydalanuvchi</th>
                     <th style={{ padding: '14px 20px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Email</th>
+                    <th style={{ padding: '14px 20px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Premium</th>
                     <th style={{ padding: '14px 20px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Rol</th>
-                    <th style={{ padding: '14px 20px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Ro'yxatdan o'tgan</th>
+                    <th style={{ padding: '14px 20px', textAlign: 'right', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Amallar</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -347,12 +405,36 @@ const AdminPage = () => {
                       </td>
                       <td style={{ padding: '14px 20px', fontSize: '14px', color: 'var(--text2)' }}>{u.email}</td>
                       <td style={{ padding: '14px 20px' }}>
+                        <span style={{ 
+                          background: u.isPremium ? 'var(--green-bg)' : 'var(--bg3)', 
+                          color: u.isPremium ? 'var(--green)' : 'var(--text3)', 
+                          fontSize: '12px', fontWeight: '700', padding: '4px 10px', borderRadius: '6px' 
+                        }}>
+                          {u.isPremium ? '⭐ Premium' : 'Oddiy'}
+                        </span>
+                      </td>
+                      <td style={{ padding: '14px 20px' }}>
                         <span style={{ background: u.role === 'admin' ? 'var(--blue-bg)' : 'var(--bg3)', color: u.role === 'admin' ? 'var(--blue)' : 'var(--text3)', fontSize: '12px', fontWeight: '700', padding: '4px 10px', borderRadius: '6px' }}>
                           {u.role === 'admin' ? '🛡️ Admin' : '👤 Foydalanuvchi'}
                         </span>
                       </td>
-                      <td style={{ padding: '14px 20px', fontSize: '13px', color: 'var(--text3)' }}>
-                        {u.createdAt?.toDate?.()?.toLocaleDateString() || '—'}
+                      <td style={{ padding: '14px 20px', textAlign: 'right' }}>
+                        <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+                          <button 
+                            className="btn btn-sm" 
+                            style={{ padding: '6px 12px', fontSize: '11px', background: u.isPremium ? 'var(--bg3)' : 'var(--amber)', color: u.isPremium ? 'var(--text)' : '#fff' }}
+                            onClick={() => togglePremium(u.id, u.isPremium)}
+                          >
+                            {u.isPremium ? 'Premiumni bekor qilish' : '+ Premium berish'}
+                          </button>
+                          <button 
+                            className="btn btn-sm" 
+                            style={{ padding: '6px 12px', fontSize: '11px', background: 'var(--bg3)', color: 'var(--text)' }}
+                            onClick={() => toggleAdmin(u.id, u.role)}
+                          >
+                            {u.role === 'admin' ? 'Admindan olish' : 'Admin qilish'}
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}

@@ -2,17 +2,36 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
+import { useAuth } from '../context/AuthContext';
+import PremiumModal from '../components/PremiumModal';
 import { SCHEDULE, TOPICS } from '../data/mockData';
 import { Play, Repeat, Zap, MessageCircle, Download, Trash2, Medal, Palette, Clock, Award, Target, Flame, AlertTriangle, Map, CheckCircle2, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { EXAM_DATE, EXAM_LABEL, EXAM_GOAL_SCORE } from '../config';
 
 const Dashboard = ({ navigateToTest }) => {
+  const { user } = useAuth();
   const { state, updateState } = useContext(AppContext);
   const { objections, clearObjections, solveObjection, deleteObjection, importObjections, updateObjectionNote } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
   const [editingId, setEditingId] = useState(null);
   const [editNote, setEditNote] = useState('');
+  const [showPremiumModal, setShowPremiumModal] = useState(false);
+
+  const handleNavigation = (topicId, mode) => {
+    // Agar premium bo'lmasa, ma'lum funksiyalarni bloklash
+    if (!user?.isPremium) {
+      if (mode === 'exam') {
+        setShowPremiumModal(true);
+        return;
+      }
+      if (topicId >= 2) {
+        setShowPremiumModal(true);
+        return;
+      }
+    }
+    navigateToTest(topicId, mode);
+  };
 
   // FIX: countdown faqat Header da — Dashboard da faqat kun/soat matni (boshqa interval yo'q)
   const [daysLeft, setDaysLeft] = useState('');
@@ -384,7 +403,7 @@ const Dashboard = ({ navigateToTest }) => {
                 {weakTopics.map((t, i) => (
                   <div
                     key={t.id}
-                    onClick={() => navigateToTest(t.id, 'exam')}
+                    onClick={() => handleNavigation(t.id, 'exam')}
                     style={{
                       display: 'flex', alignItems: 'center', gap: 14, padding: '12px 14px',
                       background: 'var(--bg2)', borderRadius: 12, cursor: 'pointer',
@@ -423,7 +442,7 @@ const Dashboard = ({ navigateToTest }) => {
                     {/* G'OYA-5: Mashq qilish tugmasi */}
                     <button 
                       className="btn btn-sm"
-                      onClick={(e) => { e.stopPropagation(); navigateToTest(t.id, 'exam'); }}
+                      onClick={(e) => { e.stopPropagation(); handleNavigation(t.id, 'exam'); }}
                       style={{ 
                         background: 'var(--red)', color: 'white', border: 'none', 
                         fontSize: 11, padding: '6px 10px', borderRadius: 8, flexShrink: 0,
@@ -443,14 +462,14 @@ const Dashboard = ({ navigateToTest }) => {
       {/* Tezkor boshlash */}
       <div className="section-header">Tezkor Boshlash</div>
       <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '24px' }}>
-        <button className="btn btn-primary" onClick={() => navigateToTest(-1, 'exam')}>
+        <button className="btn btn-primary" onClick={() => handleNavigation(-1, 'exam')}>
           <Play size={16} /> Bugungi Dars Testi
         </button>
-        <button className="btn btn-outline" onClick={() => navigateToTest(-1, 'mistakes')}>
+        <button className="btn btn-outline" onClick={() => handleNavigation(-1, 'mistakes')}>
           <Zap size={16} /> Tezkor Takrorlash (15 ta)
           {filteredMistakesCount > 0 && <span style={{ background: 'var(--red)', color: 'white', borderRadius: '10px', padding: '2px 7px', fontSize: '11px', marginLeft: '4px' }}>{filteredMistakesCount}</span>}
         </button>
-        <button className="btn btn-outline" onClick={() => navigateToTest(-1, 'flash')}>
+        <button className="btn btn-outline" onClick={() => handleNavigation(-1, 'flash')}>
           <Zap size={16} /> Flashcard Rejimi
         </button>
       </div>
@@ -479,7 +498,7 @@ const Dashboard = ({ navigateToTest }) => {
             return (
               <div
                 key={t.id}
-                onClick={() => navigateToTest(t.id, 'exam')}
+                onClick={() => handleNavigation(t.id, 'exam')}
                 style={{
                   display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
                   padding: '16px 10px', borderRadius: 16, cursor: 'pointer',
@@ -552,6 +571,11 @@ const Dashboard = ({ navigateToTest }) => {
           </div>
         </div>
       )}
+      
+      <PremiumModal 
+        isOpen={showPremiumModal} 
+        onClose={() => setShowPremiumModal(false)} 
+      />
     </motion.div>
   );
 };
