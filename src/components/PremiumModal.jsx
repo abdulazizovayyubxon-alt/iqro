@@ -157,7 +157,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
         {/* Telegram backup */}
         <button
           className="btn"
-          onClick={() => window.open('https://t.me/iqro_admin', '_blank')}
+          onClick={() => window.open('https://t.me/xonnoma', '_blank')}
           style={{
             width: '100%', padding: '12px', borderRadius: '12px',
             background: 'rgba(255,255,255,0.05)',
