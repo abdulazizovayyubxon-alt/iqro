@@ -1,9 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Crown, CheckCircle, Zap, Shield, ChevronRight, X } from 'lucide-react';
+import { Crown, CheckCircle, Zap, Shield, X, CreditCard, Smartphone } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import { generateClickUrl, generatePaymeUrl, PREMIUM_PRICE } from '../services/payment';
 
 const PremiumModal = ({ isOpen, onClose }) => {
+  const { user } = useAuth();
+  const [processing, setProcessing] = useState(false);
+
   if (!isOpen) return null;
+
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('uz-UZ').format(price) + " so'm";
+  };
+
+  const handleClickPay = () => {
+    if (!user) return;
+    setProcessing(true);
+    const url = generateClickUrl(user.uid, user.phone || '');
+    if (url) {
+      window.open(url, '_blank');
+    }
+    setTimeout(() => setProcessing(false), 2000);
+  };
+
+  const handlePaymePay = () => {
+    if (!user) return;
+    setProcessing(true);
+    const url = generatePaymeUrl(user.uid);
+    if (url) {
+      window.open(url, '_blank');
+    }
+    setTimeout(() => setProcessing(false), 2000);
+  };
 
   return (
     <div className="modal-overlay" onClick={onClose} style={{
@@ -12,15 +41,15 @@ const PremiumModal = ({ isOpen, onClose }) => {
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       zIndex: 9999, padding: '20px'
     }}>
-      <motion.div 
+      <motion.div
         className="glass-panel"
         initial={{ opacity: 0, y: 20, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.95 }}
         onClick={e => e.stopPropagation()}
         style={{
-          width: '100%', maxWidth: '400px', padding: '30px',
-          background: 'linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%)',
+          width: '100%', maxWidth: '420px', padding: '30px',
+          background: 'linear-gradient(145deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%)',
           border: '1px solid rgba(251, 191, 36, 0.3)',
           boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(251, 191, 36, 0.1)',
           position: 'relative', overflow: 'hidden'
@@ -33,7 +62,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
           filter: 'blur(50px)', borderRadius: '50%', pointerEvents: 'none'
         }} />
 
-        <button 
+        <button
           onClick={onClose}
           style={{
             position: 'absolute', top: '15px', right: '15px',
@@ -57,41 +86,97 @@ const PremiumModal = ({ isOpen, onClose }) => {
             Premium Rejim
           </h2>
           <p style={{ color: 'var(--text2)', fontSize: '14px', lineHeight: '1.5' }}>
-            Ushbu bo'lim faqat Premium foydalanuvchilar uchun ochiq. Barcha imkoniyatlardan foydalanish uchun Premium xarid qiling!
+            Barcha imkoniyatlardan cheklanmagan foydalanish
           </p>
+          {/* Narx */}
+          <div style={{
+            marginTop: '12px', fontSize: '32px', fontWeight: '900',
+            color: 'var(--amber)', letterSpacing: '-1px'
+          }}>
+            {formatPrice(PREMIUM_PRICE)}
+          </div>
+          <div style={{ color: 'var(--text3)', fontSize: '12px' }}>bir martalik to'lov</div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '30px' }}>
+        {/* Afzalliklar */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
           {[
-            "Barcha mavzular ochiq bo'ladi",
-            "Imtihon simulyatsiyasi",
-            "Reklamasiz va to'siqlarsiz o'qish",
-            "Cheklanmagan Aqlli takrorlash"
+            "Barcha 15 ta mavzu ochiq bo'ladi",
+            "Imtihon simulyatsiyasi (50 savol, 60 daqiqa)",
+            "Aqlli takrorlash — cheklanmagan",
+            "Reklamasiz o'qish"
           ].map((text, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--text)' }}>
-              <CheckCircle size={18} style={{ color: 'var(--green)' }} />
-              <span style={{ fontSize: '14px', fontWeight: '500' }}>{text}</span>
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text)' }}>
+              <CheckCircle size={16} style={{ color: 'var(--green)', flexShrink: 0 }} />
+              <span style={{ fontSize: '13px', fontWeight: '500' }}>{text}</span>
             </div>
           ))}
         </div>
 
-        <button 
+        {/* To'lov tugmalari */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '16px' }}>
+          {/* Click */}
+          <button
+            className="btn"
+            onClick={handleClickPay}
+            disabled={processing}
+            style={{
+              width: '100%', padding: '14px', borderRadius: '12px',
+              background: 'linear-gradient(135deg, #00B4D8, #0077B6)',
+              color: '#fff', fontWeight: 'bold', fontSize: '15px',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
+              border: 'none', cursor: processing ? 'wait' : 'pointer',
+              boxShadow: '0 4px 15px rgba(0, 180, 216, 0.3)',
+              opacity: processing ? 0.7 : 1
+            }}
+          >
+            <CreditCard size={20} />
+            Click orqali to'lash
+          </button>
+
+          {/* Payme */}
+          <button
+            className="btn"
+            onClick={handlePaymePay}
+            disabled={processing}
+            style={{
+              width: '100%', padding: '14px', borderRadius: '12px',
+              background: 'linear-gradient(135deg, #00CCCC, #009999)',
+              color: '#fff', fontWeight: 'bold', fontSize: '15px',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
+              border: 'none', cursor: processing ? 'wait' : 'pointer',
+              boxShadow: '0 4px 15px rgba(0, 204, 204, 0.3)',
+              opacity: processing ? 0.7 : 1
+            }}
+          >
+            <Smartphone size={20} />
+            Payme orqali to'lash
+          </button>
+        </div>
+
+        {/* Telegram backup */}
+        <button
           className="btn"
-          onClick={() => window.open('https://t.me/admin_username_here', '_blank')}
+          onClick={() => window.open('https://t.me/iqro_admin', '_blank')}
           style={{
-            width: '100%', padding: '16px', borderRadius: '12px',
-            background: 'linear-gradient(to right, #0088cc, #0099e6)',
-            color: '#fff', fontWeight: 'bold', fontSize: '16px',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
-            border: 'none', cursor: 'pointer', boxShadow: '0 4px 15px rgba(0, 136, 204, 0.3)'
+            width: '100%', padding: '12px', borderRadius: '12px',
+            background: 'rgba(255,255,255,0.05)',
+            color: 'var(--text2)', fontWeight: '600', fontSize: '13px',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+            border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer'
           }}
         >
-          <Zap size={20} />
+          <Zap size={16} />
           Telegram orqali ulanish (Admin)
         </button>
 
-        <div style={{ textAlign: 'center', marginTop: '16px', color: 'var(--text3)', fontSize: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-          <Shield size={14} /> Xavfsiz to'lov tizimi orqali
+        <div style={{
+          textAlign: 'center', marginTop: '16px', color: 'var(--text3)',
+          fontSize: '11px', display: 'flex', alignItems: 'center',
+          justifyContent: 'center', gap: '6px'
+        }}>
+          <Shield size={12} />
+          Xavfsiz to'lov • Click & Payme sertifikatlangan
         </div>
       </motion.div>
     </div>

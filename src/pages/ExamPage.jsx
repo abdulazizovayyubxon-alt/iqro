@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
-import { TOPICS, getFallbackQuestions } from '../data/mockData';
+import { TOPICS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, CheckCircle, XCircle, RefreshCw } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import ObjectionModal from '../components/shared/ObjectionModal';
+import SafeHtml from '../components/shared/SafeHtml';
 import { db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
+import { summarizeTestResults } from '../engine/SmartQuestionEngine';
 
 const EXAM_DURATION = 90 * 60; // 90 daqiqa
 const EXAM_TOTAL = 50;
@@ -21,8 +25,10 @@ function shuffleArray(arr) {
   return a;
 }
 
-const ExamPage = ({ goBack }) => {
-  const { state, addScore, addMistake } = useContext(AppContext);
+const ExamPage = () => {
+  const navigate = useNavigate();
+  const goBack = () => navigate('/');
+  const { state, batchCommitResults } = useContext(AppContext);
   const { addObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
   const cat = state.activeCategory;
@@ -36,7 +42,6 @@ const ExamPage = ({ goBack }) => {
   const [startTime] = useState(new Date());
   const [endTime, setEndTime] = useState(null);
   const [showObjectionModal, setShowObjectionModal] = useState(false);
-  const [objectionText, setObjectionText] = useState('');
   const [loading, setLoading] = useState(true);
   const timerRef = useRef(null);
 
@@ -132,29 +137,21 @@ const ExamPage = ({ goBack }) => {
     setFinished(true);
     setEndTime(new Date());
 
-    // Statistikani yangilash — har bir javobni addScore/addMistake orqali saqlash
-    questions.forEach((q, i) => {
-      if (answers[i] !== undefined) {
-        if (answers[i] === q.correct) {
-          addScore(2, q.topicId);
-        } else {
-          addMistake(q.topicId, q.q, q.opts[q.correct], q.opts);
-        }
-      }
-    });
+    // 🧠 SMART ENGINE: Natijalarni tahlil qilish va bir marta saqlash
+    // Bu barcha 50 ta savolni tahlil qilib, state'ni 1 marta yangilaydi (50 ta write o'rniga 1 ta write)
+    const results = summarizeTestResults(questions, answers, state.spacedCards || [], -1); // -1 = barcha mavzular
+    batchCommitResults(results);
 
-    const correct = questions.filter((q, i) => answers[i] === q.correct).length;
-    const pct = Math.round((correct / questions.length) * 100);
+    const correct = results.correctCount;
+    const pct = results.accuracy;
     if (pct >= 60) {
       confetti({ particleCount: 150, spread: 80, origin: { y: 0.5 } });
     }
   };
 
-  const handleObjectionSubmit = () => {
-    if (!objectionText.trim()) return;
+  const handleObjectionSubmit = (text) => {
     const q = questions[currentQ];
-    addObjection(q.topicId, cat, q, objectionText);
-    setObjectionText('');
+    addObjection(q.topicId, cat, q, text);
     setShowObjectionModal(false);
     showToast("E'tiroz yuborildi!", 'success');
   };
@@ -282,7 +279,7 @@ const ExamPage = ({ goBack }) => {
           ))}
 
           <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
-            <button className="btn btn-primary" style={{ flex: 1 }} onClick={() => window.location.reload()}>
+            <button className="btn btn-primary" style={{ flex: 1 }} onClick={() => navigate(0)}>
               Qaytadan urinish
             </button>
             <button className="btn btn-outline" style={{ flex: 1 }} onClick={goBack}>
@@ -357,8 +354,7 @@ const ExamPage = ({ goBack }) => {
               )}
               {/* Savol matni */}
               {q.isHtml ? (
-                <div style={{ fontSize: 16, fontWeight: 500, lineHeight: 1.6, marginBottom: 24, color: 'var(--text)' }}
-                  dangerouslySetInnerHTML={{ __html: q.q }} />
+                <SafeHtml html={q.q} style={{ fontSize: 16, fontWeight: 500, lineHeight: 1.6, marginBottom: 24, color: 'var(--text)' }} />
               ) : (
                 <div style={{ fontSize: 18, fontWeight: 600, lineHeight: 1.5, marginBottom: 24, color: 'var(--text)', whiteSpace: 'pre-line' }}>
                   {q.q}
@@ -481,26 +477,12 @@ const ExamPage = ({ goBack }) => {
       </div>
 
       {/* E'TIROZ MODALI */}
-      {showObjectionModal && (
-        <div className="modal-overlay" onClick={() => setShowObjectionModal(false)}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <div className="modal-title">⚠️ E'tiroz bildirish</div>
-            <div className="modal-text" style={{ fontSize: 13, lineHeight: 1.5 }}>
-              <strong>Savol:</strong> {q.q}
-            </div>
-            <textarea
-              className="modal-input"
-              placeholder="Muammo yoki xatolikni tushuntiring..."
-              value={objectionText}
-              onChange={e => setObjectionText(e.target.value)}
-            />
-            <div className="modal-actions">
-              <button className="btn btn-outline" onClick={() => setShowObjectionModal(false)}>Bekor</button>
-              <button className="btn btn-primary" onClick={handleObjectionSubmit}>Yuborish</button>
-            </div>
-          </div>
-        </div>
-      )}
+      <ObjectionModal
+        isOpen={showObjectionModal}
+        onClose={() => setShowObjectionModal(false)}
+        questionText={questions[currentQ]?.q}
+        onSubmit={handleObjectionSubmit}
+      />
     </div>
   );
 };

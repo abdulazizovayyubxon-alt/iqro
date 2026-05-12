@@ -40,6 +40,8 @@ const buildDefaultState = () => ({
   sessionStart: Date.now(),
   studyMinutes: 0,
   activeCategory: 'chqbt',
+  topicId: -1,      // Tanlangan mavzu ID (-1 = barchasi)
+  testMode: 'exam',  // Test rejimi: 'exam' | 'flashcard' | 'mistakes'
   stats: {
     chqbt: buildDefaultCatStats(),
     art: buildDefaultCatStats()
@@ -105,22 +107,35 @@ export const AppProvider = ({ children }) => {
     loadUserStats();
   }, [user]);
 
-  // ─── 2. Statistika o'zgarganda Firestore'ga saqlash ───
+  // ─── 2. Statistika o'zgarganda Firestore'ga saqlash (DEBOUNCED) ───
+  // Har o'zgarishda emas, 3 soniya kutib, oxirgi holatni bir marta yozadi.
+  // Bu test paytida ~50 ta write o'rniga 2-3 ta write qiladi.
+  const saveTimerRef = React.useRef(null);
+
   useEffect(() => {
     if (!user || !cloudSynced) return;
 
-    const statRef = doc(db, 'userStats', user.uid);
-    const { ...statsToSave } = state;
-    // Leaderboard uchun foydalanuvchi ma'lumotlarini ham saqlash
-    const currentName = user.displayName || state.displayName || '';
-    statsToSave.displayName = currentName;
-    statsToSave.userName = currentName;
-    statsToSave.photoURL = user.photoURL || state.photoURL || null;
-    
-    setDoc(statRef, statsToSave, { merge: true }).catch(console.error);
-
-    // localStorage ga ham (offline backup)
+    // localStorage ga darhol saqlash (offline backup — bu bepul)
     localStorage.setItem('iqro_state', JSON.stringify(state));
+
+    // Firestore ga debounced yozish — 3 soniya kutib
+    clearTimeout(saveTimerRef.current);
+    saveTimerRef.current = setTimeout(() => {
+      const statRef = doc(db, 'userStats', user.uid);
+      const statsToSave = { ...state };
+      // Leaderboard uchun foydalanuvchi ma'lumotlarini ham saqlash
+      const currentName = user.displayName || state.displayName || '';
+      statsToSave.displayName = currentName;
+      statsToSave.userName = currentName;
+      statsToSave.photoURL = user.photoURL || state.photoURL || null;
+      // topicId va testMode ni saqlamaymiz (navigatsiya uchun vaqtinchalik)
+      delete statsToSave.topicId;
+      delete statsToSave.testMode;
+
+      setDoc(statRef, statsToSave, { merge: true }).catch(console.error);
+    }, 3000);
+
+    return () => clearTimeout(saveTimerRef.current);
   }, [state, user, cloudSynced]);
 
   const updateState = (updates) => setState(prev => ({ ...prev, ...updates }));
@@ -272,7 +287,74 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  // ─── batchCommitResults: Test yakunida natijalarni BIR MARTA saqlash ───
+  // TestPage test tugaganda addScore/addMistake o'rniga shu funksiyani chaqiradi.
+  // Bu Firestore write'larni drastik kamaytiradi (50 write → 1 write).
+  const batchCommitResults = (results) => {
+    setState(prev => {
+      const cat = prev.activeCategory;
+      const catStats = prev.stats[cat] || buildDefaultCatStats();
 
+      // Topic stats yangilash
+      const newTopicStats = { ...prev.topicStats };
+      if (results.topicId >= 0) {
+        const ts = newTopicStats[results.topicId] || { answered: 0, correct: 0 };
+        newTopicStats[results.topicId] = {
+          answered: ts.answered + results.totalAnswered,
+          correct: ts.correct + results.correctCount
+        };
+      }
+
+      // Xatolarni birlashtirish
+      const newMistakes = [...catStats.mistakes, ...results.newMistakes];
+      while (newMistakes.length > MAX_MISTAKES_SAVED) newMistakes.shift();
+
+      // Kunlik maqsad
+      const today = new Date().toDateString();
+      const dg = prev.dailyGoal?.date === today
+        ? { ...prev.dailyGoal, answered: (prev.dailyGoal.answered || 0) + results.totalAnswered }
+        : { date: today, answered: results.totalAnswered, target: prev.dailyGoal?.target || 20, completed: false };
+      if (!dg.completed && dg.answered >= dg.target) dg.completed = true;
+
+      // Kunlik streak
+      let dailyStreak = prev.dailyStreak || 0;
+      let lastGoalDate = prev.lastGoalDate;
+      if (dg.completed && lastGoalDate !== today) {
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        if (lastGoalDate === yesterday.toDateString()) dailyStreak += 1;
+        else if (lastGoalDate !== today) dailyStreak = 1;
+        lastGoalDate = today;
+      }
+
+      // Streak
+      const newStreak = results.wrongCount > 0 ? 0 : catStats.streak + results.correctCount;
+      const newMaxStreak = Math.max(catStats.maxStreak, newStreak);
+
+      return {
+        ...prev,
+        totalScore: (prev.totalScore || 0) + results.correctCount * 2,
+        totalAnswered: prev.totalAnswered + results.totalAnswered,
+        totalCorrect: prev.totalCorrect + results.correctCount,
+        topicStats: newTopicStats,
+        dailyGoal: dg,
+        dailyStreak,
+        lastGoalDate,
+        spacedCards: results.updatedSpacedCards || prev.spacedCards,
+        stats: {
+          ...prev.stats,
+          [cat]: {
+            ...catStats,
+            totalAnswered: catStats.totalAnswered + results.totalAnswered,
+            totalCorrect: catStats.totalCorrect + results.correctCount,
+            streak: newStreak,
+            maxStreak: newMaxStreak,
+            mistakes: newMistakes
+          }
+        }
+      };
+    });
+  };
 
   // ─── Statistikani reset qilish ───
   const resetStats = async () => {
@@ -290,6 +372,7 @@ export const AppProvider = ({ children }) => {
       updateState,
       addScore,
       addMistake,
+      batchCommitResults,
       resetStats,
       cloudSynced
     }}>

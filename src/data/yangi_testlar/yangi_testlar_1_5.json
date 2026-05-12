@@ -1,0 +1,190 @@
+[
+  // ==========================================
+  // 1-MAVZU: BUYUK SARKARDALAR
+  // ==========================================
+  {
+    "q": "Dushman otliq qo'shini son jihatdan ustun bo'lib, ochiq maydonda shiddatli hujumga o'tmoqda. Bunday vaziyatda tarixda isbotlangan qaysi taktik usul dushmanni kutilmaganda sarosimaga solib, tartibini buzishga xizmat qiladi?",
+    "opts": [
+      "Markaziy qo'shinni chekindirib, pistirmadagi kuchlar bilan yon tomondan zarba berish",
+      "Askarlarni otdan tushirib, ma'lum masofadan turib yopqasiga kamondan o'q yog'dirish",
+      "Qo'shinni an'anaviy besh qism o'rniga yettita mustaqil jangovar bo'linmaga ajratish",
+      "Otlarning jilovini belga bog'lab, faqat mudofaa xandaqlari ichida himoyalanib turish"
+    ],
+    "correct": 1,
+    "topicId": 1,
+    "explanation": "Amir Temur Terek daryosi jangida (1395) qo'shinini otdan tushirib kamondan o'q uzish orqali To'xtamishxon otliqlarini sarosimaga solgan.",
+    "mnemonic": "Terek daryosi - Otdan tushib kamon otish."
+  },
+  {
+    "q": "1221-yilgi Parvon dashtidagi jangda Sulton Jaloliddin Manguberdining asosiy taktik yutug'i nima bilan izohlanadi?",
+    "opts": [
+      "Dushmanni ochiq dashtga tortib chiqib, to'lg'ama usulida qurshovga olishi bilan",
+      "Otliq qo'shinni 7 ta mustaqil qo'lga ajratib, ketma-ket hujum uyushtirgani bilan",
+      "Askarlar ot jilovini belga bog'lab, tog'li hududda yayov holda kamondan o'q uzgani bilan",
+      "Fillar va to'fangdozlardan unumli foydalanib, dushman markazini yorib o'tgani bilan"
+    ],
+    "correct": 2,
+    "topicId": 1,
+    "explanation": "Parvon dashti tog'li va toshloq bo'lgani sababli, Sultonning otliq askarlari ot jilovini belga bog'lab, yayov holda kamondan dushmanni o'qqa tutgan va bu jang taqdirini hal qilgan.",
+    "mnemonic": "Parvon dashti - Ot jilovi belda, yayov kamon."
+  },
+  {
+    "q": "Zahiriddin Muhammad Boburning Panipat jangidagi (1525-yil) g'alabasining asosiy omili quyidagilardan qaysi biri edi?",
+    "opts": [
+      "Qo'shinning o'ng va so'l qanotlaridan to'lg'ama usulini qo'llashi hamda aravaga o'rnatilgan to'plardan foydalanishi",
+      "Dushman ustiga qorong'i tunda to'satdan hujum qilib, ularning fillarini chekinishga majbur qilishi",
+      "Jang maydonining suv manbalariga yaqin ekanligidan oqilona foydalanib, dushmanni suvsiz qoldirishi",
+      "Barcha qo'shinni bitta markazga yig'ib, faqat dushmanning bosh qo'mondoniga aniq zarba qaratishi"
+    ],
+    "correct": 0,
+    "topicId": 1,
+    "explanation": "Bobur Panipatda burong'or va juvong'ori orqali to'lg'ama usuli bilan dushman ortiga o'tgan va 700 ta arava panohida to'fangdozlardan unumli foydalangan.",
+    "mnemonic": "Panipat - To'lg'ama va 700 ta arava (to'fangdozlar)."
+  },
+
+  // ==========================================
+  // 2-MAVZU: TEMUR TUZUKLARI
+  // ==========================================
+  {
+    "q": "\"Temur tuzuklari\"da bayon etilgan harbiy qoidalarga ko'ra, qo'shinni jang maydoniga joylashtirishda qat'iy taqiqlangan holatni aniqlang:",
+    "opts": [
+      "Qo'shin manzilgohini suv manbalaridan (ariq yoki quduq) juda uzoq masofada joylashtirish",
+      "Askarlarning ko'zini qamashtirmasligi uchun qo'shinni quyosh nuriga ro'baro' qilib qo'yish",
+      "Dushman ustidan operativ ustunlikka ega bo'lish uchun baland tepaliklarni egallab olish",
+      "Yoyilgan holda jang qilish uchun oldi ochiq va keng dalahovlida jang maydonini tanlash"
+    ],
+    "correct": 1,
+    "topicId": 2,
+    "explanation": "Qoidalarga ko'ra, qo'shin dushman oldida oftobga ro'baro' bo'lmasligi kerak, shunda quyosh shu'lasi sipohlarning ko'zini qamashtirmaydi.",
+    "mnemonic": "Oftobga ro'baro' turish taqiqlanadi (ko'z qamashadi)."
+  },
+  {
+    "q": "Amir Temur qo'shinida \"aylboshi\", \"qo'shunboshi\", \"mirixazora\" va \"tuman og'asi\" kabi lavozimlar joriy etilgan edi. Ushbu tizimning qo'shin boshqaruvidagi eng asosiy ahamiyati nima?",
+    "opts": [
+      "Askarlarning maoshini nazorat qilish va ularni kiyim-kechak bilan muntazam ta'minlash",
+      "O'lja taqsimotida adolatni ta'minlash hamda egallangan hududlarni teng qismlarga bo'lib idora etish",
+      "Qo'shinni markazlashgan, tezkor va aniq zanjirsimon yagona boshqaruv tizimi asosida idora etish",
+      "Zaxiradagi askarlarni harbiy yig'inlarga tezkorlik bilan jalb etish va ro'yxatga olish"
+    ],
+    "correct": 2,
+    "topicId": 2,
+    "explanation": "Bu 10 lik, 100 lik, 1000 lik va 10000 lik tizim qo'shinlarni yagona va tezkor boshqarish uchun yaratilgan mukammal zanjir edi.",
+    "mnemonic": "Ayl, qo'shun, xazora, tuman - yagona boshqaruv zanjiri."
+  },
+  {
+    "q": "Amir Temur \"Temur tuzuklari\"da dushman lashkari qancha miqdordan kam bo'lsa, bu urushda lashkarga amir ul-umaro sardorlik qilishi kerakligini qat'iy belgilab qo'ygan?",
+    "opts": [
+      "5 ming otliqdan",
+      "10 ming otliqdan",
+      "12 ming otliqdan",
+      "40 ming piyodadan"
+    ],
+    "correct": 2,
+    "topicId": 2,
+    "explanation": "Agar dushman lashkari 12 ming otliqdan kam bo'lsa, urushda lashkarga amir ul-umaro sardorlik qilishi belgilangan.",
+    "mnemonic": "12 mingdan kam = Amir ul-umaro boshqaradi."
+  },
+
+  // ==========================================
+  // 3-MAVZU: FASHIZM USTIDAN G'ALABA
+  // ==========================================
+  {
+    "q": "O'zbekiston xalqining Ikkinchi jahon urushidagi xizmatlari to'g'risida bildirilgan qaysi fikr tarixiy dalillarga asoslangan?",
+    "opts": [
+      "O'zbekistonda jami 14 ta diviziya va 12 ta brigada tuzilgan hamda 250 ming nafar yetim bolalarga boshpana berilgan.",
+      "Front hududlaridan O'zbekistonga 170 ta fabrika ko'chirib keltirilgan, biroq mablag' yig'ishga ruxsat etilmagan.",
+      "O'zbekistondan jami 870 ming kishi frontga ketgan bo'lib, ularning barchasi \"Slava\" ordeni bilan taqdirlangan.",
+      "O'zbekiston aholisi 475 million rubl yig'ib bergan, ammo front uchun kiyim-kechak tayyorlash to'xtatilgan."
+    ],
+    "correct": 0,
+    "topicId": 3,
+    "explanation": "Urush boshidayoq O'zbekistonda 14 diviziya, 12 brigada tashkil etilgan hamda jami 250 ming nafar yetim bolaga mehr-oqibat ko'rsatilgan.",
+    "mnemonic": "14 diviziya, 12 brigada, 250 ming yetim bola asralgan."
+  },
+  {
+    "q": "Mustaqillik yillarida yurtimiz sarhadlarini himoya qilishda sodir bo'lgan qaysi voqea Qurolli Kuchlarimiz va xalqimiz birdamligining yorqin sinovi bo'ldi?",
+    "opts": [
+      "1999-yil fevral oyida Toshkent shahrida sodir etilgan jinoyat va qamoqxonalarga uyushtirilgan hujumlar",
+      "2000-yil iyul-avgust oylarida Surxondaryo viloyatining Sariosiyo va Uzun tumanlariga terrorchi to'dalarning bostirib kirishi",
+      "2002-yil dekabr oyida chegara postlarida yuz bergan ommaviy qurolli to'qnashuvlar",
+      "2008-yil bahorida tog'li hududlarda xalqaro jinoiy guruhlar tomonidan uyushtirilgan diversiyalar"
+    ],
+    "correct": 1,
+    "topicId": 3,
+    "explanation": "2000-yil Sariosiyo va Uzun tumanlarida terrorchilarga qarshi bo'lib o'tgan keskin janglarda harbiylarimiz o'z jonini fido qilgan.",
+    "mnemonic": "Sariosiyo va Uzun - 2000 yil (Terrorchilarga zarba)."
+  },
+
+  // ==========================================
+  // 4-MAVZU: UMUMIY HARBIY MAJBURIYAT VA QASAMYOD
+  // ==========================================
+  {
+    "q": "Fuqaro O'zbekiston hududida yashayotgan va ma'lum ish o'rniga ega bo'lgan chet el fuqarosidir. Qonunchilikka ko'ra, unga nisbatan \"Umumiy harbiy majburiyat\" qay tartibda tatbiq etiladi?",
+    "opts": [
+      "Faqat favqulodda vaziyatlardagina harbiy xizmatga jalb etiladi",
+      "Uning ishlash vizasi asosida 6 oylik qisqa yig'inlarga chaqiriladi",
+      "Umumiy harbiy majburiyat unga umuman tatbiq etilmaydi",
+      "O'zbekiston fuqarolari bilan bir xil tartibda haqiqiy harbiy xizmatga olinadi"
+    ],
+    "correct": 2,
+    "topicId": 4,
+    "explanation": "Qonunga ko'ra, Umumiy harbiy majburiyat O'zbekiston hududida yashayotgan chet el fuqarolari va fuqaroligi bo'lmagan shaxslarga tatbiq etilmaydi.",
+    "mnemonic": "Chet ellik va fuqaroligi yo'qlarga harbiy majburiyat yo'q."
+  },
+  {
+    "q": "\"Umumiy harbiy majburiyat va harbiy xizmat to'g'risida\"gi Qonunga ko'ra, harbiy ro'yxatga olinmagan yoki undan chiqarilgan, shu jumladan, iste'fodagi fuqarolarga qanday ta'rif beriladi?",
+    "opts": [
+      "Chaqiriluvchilar",
+      "Harbiy xizmatchilar",
+      "Harbiy xizmatga majburlar",
+      "Harbiy xizmatga majbur bo'lmagan shaxslar"
+    ],
+    "correct": 3,
+    "topicId": 4,
+    "explanation": "Turli sabablarga ko'ra harbiy ro'yxatga olinmagan yoki ro'yxatdan chiqarilgan (masalan iste'fodagi) shaxslar \"harbiy xizmatga majbur bo'lmagan shaxslar\" deb ataladi.",
+    "mnemonic": "Ro'yxatdan chiqqan yoki iste'fodagi = Majbur emas."
+  },
+
+  // ==========================================
+  // 5-MAVZU: HARBIY XIZMAT TURLARI
+  // ==========================================
+  {
+    "q": "Oliy ma'lumotli (bakalavr diplomi bor) yigit oddiy askar sifatida muddatli harbiy xizmatga chaqirildi. Uning harbiy xizmati taqvim hisobida necha oy davom etadi?",
+    "opts": [
+      "9 oy",
+      "12 oy",
+      "15 oy",
+      "18 oy"
+    ],
+    "correct": 1,
+    "topicId": 5,
+    "explanation": "Muddatli harbiy xizmat muddati oddiy askarlar va serjantlar uchun ham, oliy ma'lumotlilar uchun ham bir xil — 12 oy etib belgilangan.",
+    "mnemonic": "Oliy ma'lumotliga ham, oddiyga ham - 12 oy."
+  },
+  {
+    "q": "Safarbarlik chaqiruvi rezervidagi (SChR) harbiy xizmatning muddatli harbiy xizmatdan eng asosiy farqlaridan birini ko'rsating.",
+    "opts": [
+      "SChR xizmati faqat 27 yoshdan oshgan shaxslar uchun mo'ljallangan va faqat urush vaqtida chaqiriladi",
+      "SChR hududiy prinsip asosida oylik yig'inlar tarzida tashkil etiladi va maxsus hisobga pul badali to'lanadi",
+      "SChR dagi xizmatchilar har qanday holatda faqat oliy ofitserlar tarkibi lavozimlarida xizmat qiladi",
+      "SChR kontrakt asosida faqat kamida 5 yillik muddatga tuziladigan uzoq muddatli harbiy xizmatdir"
+    ],
+    "correct": 1,
+    "topicId": 5,
+    "explanation": "SChR (safarbarlik chaqiruvi rezervi) 27 yoshgacha olinadi, oylik yig'in tarzida o'tiladi va mudofaa maxsus hisobiga pul badali kiritiladi.",
+    "mnemonic": "SChR = 1 oylik yig'in + Pul badali."
+  },
+  {
+    "q": "(Vaziyatli savol) Fuqaro o'z xohishi bilan harbiy xizmatni kasb tariqasida tanlab, haqiqiy harbiy xizmatga kirish uchun hujjat topshirdi. Qonunchilikka asosan, u bilan dastlabki kontrakt qancha muddatga tuziladi?",
+    "opts": [
+      "3 yilga",
+      "5 yilga",
+      "10 yilga",
+      "12 yilga"
+    ],
+    "correct": 1,
+    "topicId": 5,
+    "explanation": "Haqiqiy harbiy xizmatga kirayotgan shaxslar bilan dastlabki kontrakt 5 yilga tuziladi.",
+    "mnemonic": "Birinchi marta kontrakt - 5 yilga."
+  }
+]

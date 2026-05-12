@@ -1,0 +1,177 @@
+[
+  // ==========================================
+  // 34-MAVZU: UMUMQO'SHIN JANGI
+  // ==========================================
+  {
+    "q": "Zamonaviy umumqo'shin jangining asosiy turlari qaysilar va ulardan qaysi biri dushmanga maksimal talafot yetkazib, muhim obyektlarni saqlab qolishga qaratilgan?",
+    "opts": [
+      "Hujum va Mudofaa; Hujum",
+      "Mudofaa va Hujum; Mudofaa",
+      "Qurshovga olish va Chekinish; Qurshovga olish",
+      "Pistirma va Razvedka; Pistirma"
+    ],
+    "correct": 1,
+    "topicId": 34,
+    "explanation": "Jangning asosiy turlari Mudofaa va Hujumdir. Kuch jihatdan ustun bo'lgan dushmanga talafot yetkazib, obyektlarni saqlab qolish va keyingi harakatlarga sharoit yaratish Mudofaadan maqsad hisoblanadi.",
+    "mnemonic": "Mudofaa = Obyektni asrash va kuchli dushmanga talafot yetkazish."
+  },
+  {
+    "q": "Askarning jangdagi majburiyatlaridan kelib chiqib, u PJM (piyodalar jangovar mashinasi) va tanklardagi yoqilg'i qancha miqdorda sarflanganda komandirga bildiruv berishi shart?",
+    "opts": [
+      "Yoqilg'i zaxirasining 0,5 qismi ishlatilganda",
+      "Yoqilg'i zaxirasining 0,75 qismi ishlatilganda",
+      "Yoqilg'i to'liq tugaganda",
+      "Yoqilg'ining yarmi tugagan zaxoti"
+    ],
+    "correct": 1,
+    "topicId": 34,
+    "explanation": "O'q-dorilar zaxirasining 0,5 (yarmi) va yoqilg'i zaxirasining 0,75 qismi ishlatilishi bilan komandirga bildiruv berish askar (serjant) ning majburiyatiga kiradi.",
+    "mnemonic": "O'q = 0.5 (yarmi), Yoqilg'i = 0.75 (uchdan to'rt qismi)."
+  },
+
+  // ==========================================
+  // 35-36 MAVZULAR: JANGOVAR GURUH VA TEXNIKALAR
+  // ==========================================
+  {
+    "q": "Odatda jangovar guruh front bo'ylab qancha masofadagi tayanch punktini mudofaa qiladi va ular nechta dushman tankini yakson qilishlari shart?",
+    "opts": [
+      "100 metr; 1 ta tank",
+      "200 metr; eng kamida 2 ta tank",
+      "400 metr; eng kamida 5 ta tank",
+      "500 metr; 3 ta tank"
+    ],
+    "correct": 1,
+    "topicId": 35,
+    "explanation": "Guruh front bo'ylab 200 m gacha bo'lgan tayanch punktni mudofaa qiladi va eng kamida dushmanning 2 ta tankini yakson qilishi kerak (shunda dushman 50% tankidan ajralib hujumni to'xtatadi).",
+    "mnemonic": "200 metr = 2 ta tank."
+  },
+  {
+    "q": "O'zbekiston Respublikasi Qurolli Kuchlarida mavjud bo'lgan BMP-2 (Piyoda jangovar mashinasi) qanday asosiy qurollar bilan jihozlangan?",
+    "opts": [
+      "14,5 mm li katta kalibrli pulemyot va 7,62 mm li PKT",
+      "125 mm silliq devorli to'p va 12,7 mm li zenit pulemyoti",
+      "30 mm li avtomatik to'p, 7,62 mm li PKT va PTUR (raketa)",
+      "Faqatgina o'qotar granatomyotlar bilan"
+    ],
+    "correct": 2,
+    "topicId": 36,
+    "explanation": "BTR-80 da 14,5 mm pulemyot; T-72 tankida 125 mm to'p o'rnatilgan. BMP-2 esa 30 mm li avtomatik to'p va PTUR raketalari bilan qurollangan.",
+    "mnemonic": "BMP = 30mm to'p + Raketa (PTUR)."
+  },
+  {
+    "q": "Quyidagi qaysi xorijiy tank Isroil armiyasining jangovar quroli hisoblanadi?",
+    "opts": [
+      "M1A1",
+      "Chellenjer-2",
+      "Merkava Mk.1",
+      "Leopard-2"
+    ],
+    "correct": 2,
+    "topicId": 36,
+    "explanation": "AQShniki – M1A1, Buyuk Britaniyaniki – Chellenjer-2, Isroilniki esa Merkava Mk.1 tanki hisoblanadi.",
+    "mnemonic": "Merkava = Isroil tanki."
+  },
+
+  // ==========================================
+  // 37-MAVZU: AVIATSIYA VA UCHUVCHISIZ APPARATLAR
+  // ==========================================
+  {
+    "q": "Og'irligiga ko'ra Uchuvchisiz Uchish Apparatlari (UUA) sinflanishida \"Mini\" og'irlikdagi apparatlarning vazni qanchagacha bo'ladi?",
+    "opts": [
+      "10 kg gacha",
+      "50 kg gacha",
+      "100 kg gacha",
+      "1000 kg gacha"
+    ],
+    "correct": 1,
+    "topicId": 37,
+    "explanation": "Mikro UUA 10 kg gacha; Mini UUA 50 kg gacha; O'rtacha UUA 1000 kg gacha; Og'ir UUA 1000 kg dan ortiq bo'ladi.",
+    "mnemonic": "Mikro = 10, Mini = 50, O'rtacha = 1000."
+  },
+  {
+    "q": "O'zbekiston Respublikasida ishlab chiqarilgan \"LOCHIN-HA341\" uchuvchisiz uchish apparatining eng yuqori uchish balandligi va tezligi qancha?",
+    "opts": [
+      "Balandligi 3000 m; tezligi 50 km/h",
+      "Balandligi 4500 m; tezligi 62 km/h",
+      "Balandligi 5000 m; tezligi 80 km/h",
+      "Balandligi 2000 m; tezligi 40 km/h"
+    ],
+    "correct": 1,
+    "topicId": 37,
+    "explanation": "Lochin-HA341 ning eng yuqori tezligi 62 km/h bo'lib, u 4500 m balandlikkacha ko'tarila oladi. Uchish davomiyligi 180 daqiqa.",
+    "mnemonic": "Lochin HA341: 4500m osmonda, 62 tezlikda (mashinaday)."
+  },
+
+  // ==========================================
+  // 38-39 MAVZULAR: MUHANDISLIK TO'SIQLARI VA MINALAR
+  // ==========================================
+  {
+    "q": "OZM-72 piyodalarga qarshi minasi qanday xususiyatga ega?",
+    "opts": [
+      "U faqat tanklarning o'ng g'ildiragini ishdan chiqaradi",
+      "U yerdan 0.6 – 0.9 m balandlikka sakrab portlaydi va 2400 dona metall parcha sochad",
+      "U yer ostida chuqur 2 metrda portlab, xandaq hosil qiladi",
+      "U portlamaydigan muhandislik to'sig'i hisoblanadi"
+    ],
+    "correct": 1,
+    "topicId": 39,
+    "explanation": "OZM-72 (Осколочная заградительная мина) sakrab portlovchi mina bo'lib, yerdan 0.6-0.9 m ko'tarilib portlaydi va 2400 dona parchalarni sochib, 25 metr radiusgacha yoppasiga qiradi.",
+    "mnemonic": "OZM-72 = Sakraydigan daxshat (2400 bo'lakcha)."
+  },
+  {
+    "q": "Eskarplar, kontreskarplar, uyumlar va tikanli simlar qanday muhandislik to'siqlari turiga kiradi?",
+    "opts": [
+      "Minali-portlovchi to'siqlar",
+      "Havo desantiga qarshi to'siqlar",
+      "Portlamaydigan to'siqlar",
+      "Mujassamlashgan to'siqlar"
+    ],
+    "correct": 2,
+    "topicId": 38,
+    "explanation": "Tankka qarshi chuqurlar, eskarplar, kontreskarplar, tikanli simlar va elektr o'tkazilgan suvli to'siqlar - bular barchasi portlamaydigan muhandislik to'siqlaridir.",
+    "mnemonic": "Sim va chuqur portlamaydi = Portlamaydigan to'siq."
+  },
+
+  // ==========================================
+  // 40, 42 MAVZULAR: TOPOGRAFIYA VA NAVIGATSIYA
+  // ==========================================
+  {
+    "q": "Adrianov kompasida limbning shkalasidagi bir bo'linish necha gradus (°) ga teng va hisob qaysi yo'nalishda ortib boradi?",
+    "opts": [
+      "1° ga teng, soat miliga qarshi",
+      "3° ga teng, soat mili yo'nalishi bo'ylab",
+      "5° ga teng, chapdan o'ngga",
+      "15° ga teng, vertikal yo'nalishda"
+    ],
+    "correct": 1,
+    "topicId": 40,
+    "explanation": "Adrianov kompasida limbning raqamlari har 15° oraliqda yozilgan. Lekin kichik shkalaning bir bo'linishi 3° ga teng va hisob soat mili bo'yicha ortib boradi.",
+    "mnemonic": "Adrianov = 1 chiziqcha 3 gradus."
+  },
+  {
+    "q": "Mahalliy belgilarga qarab gorizont tomonlarini aniqlashda, moxlar (po'panak) va daraxt po'stlog'idagi g'adir-budirliklar odatda qaysi tomonda ko'proq bo'ladi?",
+    "opts": [
+      "Janub tomonda",
+      "Sharq tomonda",
+      "Shimol tomonda",
+      "G'arb tomonda"
+    ],
+    "correct": 2,
+    "topicId": 40,
+    "explanation": "Moxlar quyosh tushmaydigan (namroq) shimol tomonda o'sadi, daraxt po'stlog'ining dag'al qismlari va yoriqlari ham asosan shimol tomonda joylashadi. (Janub tomonda esa mevalar tez pishadi, to'nka halqalari qalin bo'ladi).",
+    "mnemonic": "Shimol (sovuq va quyoshsiz) = Mox va dag'al po'stloq."
+  },
+  {
+    "q": "Navigatsiya vositasining Kosmik segmenti o'z ichiga qancha sun'iy yo'ldoshni mujassam etgan va ular qancha balandlikda harakatlanadi?",
+    "opts": [
+      "10 ta yo'ldosh, 5000 km balandlikda",
+      "24 ta asosiy va 4 ta zaxira yo'ldosh, 20200 km uzoqlikda",
+      "50 ta yo'ldosh, 45000 km uzoqlikda",
+      "4 ta yo'ldosh, 150 km balandlikda"
+    ],
+    "correct": 1,
+    "topicId": 41,
+    "explanation": "Kosmik segment Yer atrofida 6 ta orbita hosil qilib harakatlanuvchi 24 ta asosiy va 4 ta zaxira yo'ldoshdan iborat bo'lib, o'rtacha balandligi 20 200 km ni tashkil qiladi.",
+    "mnemonic": "GPS: 24 ta yo'ldosh, 20 ming kilometr osmonda."
+  }
+]

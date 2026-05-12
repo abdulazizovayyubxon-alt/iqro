@@ -1290,3 +1290,85 @@ body {
   }
 }
 
+/* ═══════════════════════════════════════════════
+   SKELETON LOADER — React.lazy yuklanish holati
+   ═══════════════════════════════════════════════ */
+@keyframes skeletonShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton-page { padding: 32px 40px; max-width: 1000px; margin: 0 auto; }
+
+.skeleton-line {
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--bg3) 25%, var(--border) 50%, var(--bg3) 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton-header { margin-bottom: 28px; display: flex; flex-direction: column; gap: 10px; }
+.skeleton-w20 { width: 20%; }
+.skeleton-w40 { width: 40%; }
+.skeleton-w50 { width: 50%; }
+.skeleton-w60 { width: 60%; }
+.skeleton-w70 { width: 70%; }
+.skeleton-w80 { width: 80%; }
+.skeleton-h10 { height: 10px; }
+.skeleton-h12 { height: 12px; }
+.skeleton-h14 { height: 14px; }
+.skeleton-h16 { height: 16px; }
+.skeleton-h24 { height: 24px; }
+
+.skeleton-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.skeleton-card {
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--bg2);
+  border: 0.5px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton-bar {
+  height: 6px;
+  border-radius: 3px;
+  margin-top: 8px;
+  background: linear-gradient(90deg, var(--bg3) 25%, var(--border) 50%, var(--bg3) 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton-content { display: flex; flex-direction: column; gap: 16px; }
+
+.skeleton-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.skeleton-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  background: linear-gradient(90deg, var(--bg3) 25%, var(--border) 50%, var(--bg3) 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton-row > div { display: flex; flex-direction: column; gap: 8px; }
+
+@media (max-width: 768px) {
+  .skeleton-page { padding: 16px 12px; }
+  .skeleton-cards { grid-template-columns: 1fr; }
+}

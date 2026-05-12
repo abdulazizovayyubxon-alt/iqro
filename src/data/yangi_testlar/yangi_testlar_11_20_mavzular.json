@@ -1,0 +1,194 @@
+[
+  // ==========================================
+  // 11, 12, 13, 14, 15-MAVZULAR: SAF TAYYORGARLIGI
+  // ==========================================
+  {
+    "q": "Joyda turib burilishlarda \"Ort-GA!\" komandasi qaysi oyoq qismlari orqali bajariladi?",
+    "opts": [
+      "O'ng tovon va chap oyoq uchi orqali",
+      "Chap tovon va o'ng oyoq uchi orqali",
+      "Faqat ikkala oyoq uchlari orqali",
+      "Chap oyoq uchi va o'ng tovon orqali"
+    ],
+    "correct": 1,
+    "topicId": 11,
+    "explanation": "\"Ort-GA!\" va \"Chap-GA!\" burilish amallari chap poshna (tovon) va o'ng oyoq uchida turgan holda, chap qo'l tomonga burilib bajariladi.",
+    "mnemonic": "Ortga va Chapga = Chap tovon + O'ng uchi."
+  },
+  {
+    "q": "Yurish davomida \"O'ng-GA!\" komandasi berilganda, ijro komandasi qaysi oyoq yerga bosilishi bilan bir vaqtda beriladi?",
+    "opts": [
+      "O'ng oyoq",
+      "Chap oyoq",
+      "Ikkala oyoq ham bo'lishi mumkin",
+      "Faqat to'xtagandan so'ng chap oyoq"
+    ],
+    "correct": 0,
+    "topicId": 13,
+    "explanation": "Yurish davomida o'ngga burilish uchun ijro komandasi o'ng oyoq yerga bosilishi bilan bir vaqtda (\"Bir\" sanog'ida) beriladi.",
+    "mnemonic": "O'ngga burilish - o'ng oyoq bosilganda beriladi."
+  },
+  {
+    "q": "Ikkinchi sherengada turgan harbiy xizmatchi safdan chiqish to'g'risida buyruq olganda qanday harakat qiladi?",
+    "opts": [
+      "To'g'ridan-to'g'ri oldindagi askarni itarib o'tib ketadi",
+      "Chap qo'lini oldinda turgan askarning yelkasiga qo'yadi",
+      "O'ng tomonga bir qadam tashlab safdan chiqadi",
+      "Joyida turib bildiruv beradi va chiqmaydi"
+    ],
+    "correct": 1,
+    "topicId": 15,
+    "explanation": "Agar safdan chiqish buyrug'ini olgan harbiy xizmatchi ikkinchi sherengada turgan bo'lsa, avval chap qo'lini oldinda turgan askarning yelkasiga qo'yadi. Shundan so'ng oldingi askar bir qadam oldinga va yonga tashlab unga yo'l beradi.",
+    "mnemonic": "Ikkinchi qatorda tursang, oldingining yelkasiga chap qo'lni qo'yasan."
+  },
+
+  // ==========================================
+  // 16-MAVZU: MUDOFAA QONUNI VA DOKTRINA
+  // ==========================================
+  {
+    "q": "O'zbekiston Respublikasining hozirgi amaldagi Mudofaa Doktrinasi qachon tasdiqlangan va u nechta bo'limdan iborat?",
+    "opts": [
+      "2018-yil 9-yanvarda, 4 bo'limdan",
+      "2001-yil 11-mayda, 5 bo'limdan",
+      "2022-yil 1-avgustda, 6 bo'limdan",
+      "2020-yil 14-yanvarda, 4 bo'limdan"
+    ],
+    "correct": 0,
+    "topicId": 16,
+    "explanation": "Mudofaa Doktrinasi 2018-yil 9-yanvardagi qonun bilan tasdiqlangan hamda 4 bo'lim va 40 moddadan iborat. (2001-yil 11-may - bu Mudofaa to'g'risidagi qonun qabul qilingan sana).",
+    "mnemonic": "Doktrina: 2018-yil 9-yanvar. 4 bo'lim, 40 modda."
+  },
+  {
+    "q": "Urush davrida O'zbekiston Respublikasi Mudofaa vaziri qanday qo'shimcha maqomga ega bo'ladi?",
+    "opts": [
+      "Davlat Xavfsizlik Xizmati raisi",
+      "Qurolli Kuchlar Oliy Bosh Qo'mondoni",
+      "Qurolli Kuchlar Oliy Bosh Qo'mondoni o'rinbosari",
+      "Qurolli Kuchlar Bosh shtabining boshlig'i"
+    ],
+    "correct": 2,
+    "topicId": 16,
+    "explanation": "Qonunga ko'ra, Urush davrida O'zbekiston Respublikasi Mudofaa vaziri bir paytning o'zida Qurolli Kuchlar Oliy Bosh Qo'mondoni (Prezident) o'rinbosari hisoblanadi.",
+    "mnemonic": "Urush davrida Vazir = Prezident o'rinbosari."
+  },
+
+  // ==========================================
+  // 17-MAVZU: INTIZOM NIZOMI VA RAG'BATLANTIRISH
+  // ==========================================
+  {
+    "q": "Muddatli harbiy xizmatchilarga intizomiy ta'zir qo'llash taqiqlanadigan holat qaysi javobda to'g'ri ko'rsatilgan?",
+    "opts": [
+      "Navbatdan tashqari xizmatga jalb qilinganda",
+      "Lavozimga tayinlangan kundan boshlab 3 oy davomidagi lavozimga kirishish davrida",
+      "Ta'tilga ketishdan bir kun oldin",
+      "Agar askar rag'batlantirish olganiga 1 oy to'lmagan bo'lsa"
+    ],
+    "correct": 1,
+    "topicId": 17,
+    "explanation": "Intizom Nizomiga ko'ra, lavozimga tayinlangan kundan boshlab 3 oy davomidagi lavozimga kirishish davrida lavozim majburiyatlarini bajarishda kamchiliklarga yo'l qo'ygan harbiy xizmatchiga nisbatan intizomiy ta'zir qo'llash taqiqlanadi.",
+    "mnemonic": "Lavozimda yangi (ilk 3 oy) = Ta'zir berish mumkin emas."
+  },
+  {
+    "q": "Muddatli harbiy xizmatchilarni rag'batlantirish maqsadida beriladigan qisqa muddatli ta'tilning davomiyligi qancha bo'lishi mumkin?",
+    "opts": [
+      "15 sutkagacha (yo'l vaqti bilan birga)",
+      "10 sutkagacha (yo'l vaqtini hisobga olmagan holda)",
+      "5 sutkagacha (yo'l vaqti bilan birga)",
+      "Faqat 10 sutka qat'iy va yo'l vaqti kiritiladi"
+    ],
+    "correct": 1,
+    "topicId": 17,
+    "explanation": "Rag'batlantirish tariqasida ta'tilni o'tkazish joyiga borish va qaytib kelish uchun zarur vaqtni hisobga olmagan holda 10 sutkagacha bo'lgan qisqa muddatli ta'til berilishi ko'rsatilgan.",
+    "mnemonic": "Rag'bat ta'tili: 10 sutka (+yo'l vaqti alohida)."
+  },
+
+  // ==========================================
+  // 18-MAVZU: QUROLLI TO'QNASHUVLAR HUQUQI
+  // ==========================================
+  {
+    "q": "Xalqaro insonparvarlik huquqining manbalaridan biri bo'lgan 1949-yilgi Jeneva konvensiyalarining IV konvensiyasi qanday nomlanadi?",
+    "opts": [
+      "Harakatdagi armiyalarda yaradorlar qismatini yaxshilash",
+      "Harbiy asirlar bilan muomala qilish",
+      "Urush vaqtida tinch aholini himoya qilish",
+      "Dengizdagi qurolli kuchlar halokati"
+    ],
+    "correct": 2,
+    "topicId": 18,
+    "explanation": "I konvensiya - yaradorlar; II konvensiya - dengizdagilar; III konvensiya - harbiy asirlar; IV konvensiya - Urush vaqtida tinch aholini himoya qilish to'g'risidadir.",
+    "mnemonic": "4-konvensiya tinch aholi himoyasi."
+  },
+  {
+    "q": "Kombatant atamasining aniq ta'rifini ko'rsating.",
+    "opts": [
+      "Urush harakatlarida dushmanga qarshi ayg'oqchilik qiluvchi yashirin guruh a'zosi",
+      "Qurolli kuchlar tarkibiga kiruvchi va urush harakatlarida bevosita qatnashish huquqiga ega shaxs",
+      "Urush davrida tinch aholini tibbiy yordam bilan ta'minlovchi xodim",
+      "Faqatgina asirga tushgan harbiy xizmatchilarni anglatuvchi atama"
+    ],
+    "correct": 1,
+    "topicId": 18,
+    "explanation": "Kombatant – qurolli kuchlar tarkibiga kiruvchi va urush harakatlarida bevosita qatnashish huquqiga ega shaxsni anglatadi.",
+    "mnemonic": "Kombatant = Jangchi, bevosita urushda qatnashuvchi askar."
+  },
+
+  // ==========================================
+  // 19-MAVZU: QUROLLI KUCHLAR TARKIBI VA VAZIFALARI
+  // ==========================================
+  {
+    "q": "Mudofaa vazirligi tasarrufidagi \"Sharqiy harbiy okrug\" qaysi hududlarni qamrab oladi?",
+    "opts": [
+      "Toshkent shahri, Toshkent va Sirdaryo viloyatlari",
+      "Jizzax, Samarqand va Navoiy viloyatlari",
+      "Farg'ona, Andijon va Namangan viloyatlari",
+      "Qoraqalpog'iston Respublikasi va Xorazm viloyati"
+    ],
+    "correct": 2,
+    "topicId": 19,
+    "explanation": "Sharqiy harbiy okrug Farg'ona, Andijon va Namangan viloyatlarini o'z ichiga oladi.",
+    "mnemonic": "Sharq = Vodiy = Farg'ona, Andijon, Namangan."
+  },
+  {
+    "q": "Buxoro, Surxondaryo va Qashqadaryo viloyatlari Mudofaa vazirligining qaysi harbiy okrugi tarkibiga kiradi?",
+    "opts": [
+      "Janubiy-g'arbiy maxsus harbiy okrug",
+      "Markaziy harbiy okrug",
+      "Shimoliy-g'arbiy harbiy okrug",
+      "Toshkent harbiy okrugi"
+    ],
+    "correct": 0,
+    "topicId": 19,
+    "explanation": "Buxoro, Surxondaryo va Qashqadaryo viloyatlari Janubiy-g'arbiy maxsus harbiy okrug tasarrufiga kiradi.",
+    "mnemonic": "Surxondaryo/Qashqadaryo = Janub, Buxoro = G'arb -> Janubiy-G'arbiy okrug."
+  },
+
+  // ==========================================
+  // 20-MAVZU: FUQARO MUHOFAZASI
+  // ==========================================
+  {
+    "q": "Fuqaro muhofazasi tizimida favqulodda vaziyat sodir bo'lish ehtimoli yuzaga kelganda aholini qanday maxsus signal bilan ogohlantiriladi?",
+    "opts": [
+      "Xavf yaqinlashmoqda!",
+      "Havo hujumi bong urildi!",
+      "Diqqat hammaga!",
+      "Zudlik bilan evakuatsiya!"
+    ],
+    "correct": 2,
+    "topicId": 20,
+    "explanation": "Aholiga xabar berish shartli ravishda \"Diqqat hammaga!\" signali (ruporlar, sirenalar, karnaylar) orqali yetkaziladi.",
+    "mnemonic": "Universal signal nomi: Diqqat hammaga!"
+  },
+  {
+    "q": "O'zbekiston Respublikasida favqulodda vaziyatlarda aholini evakuatsiya qilish asosan qanday tamoyillar asosida tashkil etiladi?",
+    "opts": [
+      "Faqat ijtimoiy kelib chiqish tamoyili asosida",
+      "Hududiy, ishlab chiqarish va ishlab chiqarish-hududiy tamoyili asosida",
+      "Yosh toifalari va jinsi bo'yicha ajratilgan holda",
+      "Faqat ixtiyoriy tamoyil asosida"
+    ],
+    "correct": 1,
+    "topicId": 20,
+    "explanation": "Evakuatsiya hududiy, ishlab chiqarish va ishlab chiqarish-hududiy tamoyili asosida amalga oshiriladi (masalan, korxona xodimlari ish joyidan, aholi esa yashash joyidan ko'chiriladi).",
+    "mnemonic": "Evakuatsiya tamoyillari: Hududiy va Ishlab chiqarish."
+  }
+]

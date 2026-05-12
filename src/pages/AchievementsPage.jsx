@@ -1,42 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
-import { TOPICS, getTopicQuestionCount } from '../data/mockData';
+import { TOPICS } from '../data/mockData';
 import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy, Medal, Zap, Target, TrendingUp, BarChart3, Star, AlertCircle } from 'lucide-react';
-
-// Donut (yumaloq) grafik komponenti
-const RadialChart = ({ pct, size = 120, stroke = 10, color = 'var(--green)', label }) => {
-  const r = (size - stroke) / 2;
-  const circ = 2 * Math.PI * r;
-  const fill = (pct / 100) * circ;
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ transform: 'rotate(-90deg)' }}>
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="var(--bg3)" strokeWidth={stroke} />
-        <circle
-          cx={size / 2} cy={size / 2} r={r}
-          fill="none" stroke={color} strokeWidth={stroke}
-          strokeDasharray={`${fill} ${circ}`}
-          strokeLinecap="round"
-          style={{ transition: 'stroke-dasharray 1s cubic-bezier(0.25, 1, 0.5, 1)' }}
-        />
-        <text
-          x="50%" y="50%"
-          textAnchor="middle" dominantBaseline="middle"
-          fill="var(--text)"
-          fontSize={size * 0.18}
-          fontWeight="800"
-          style={{ transform: `rotate(90deg)`, transformOrigin: `${size/2}px ${size/2}px` }}
-        >
-          {pct}%
-        </text>
-      </svg>
-      {label && <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: '600', textAlign: 'center' }}>{label}</div>}
-    </div>
-  );
-};
+import RadialChart from '../components/shared/RadialChart';
 
 const AchievementsPage = () => {
   const { state } = useContext(AppContext);
@@ -247,7 +215,7 @@ const AchievementsPage = () => {
             <div className="glass-panel" style={{ padding: '20px', marginBottom: '24px' }}>
               {filteredTopics.map((t, idx) => {
                 const s = state.topicStats[t.id];
-                const topicTotal = getTopicQuestionCount(t.id);
+                const topicTotal = s?.answered || 0;
                 const answered = s?.answered || 0;
                 const topicCorrect = s?.correct || 0;
                 const pct = answered > 0 ? Math.round((topicCorrect / answered) * 100) : 0;

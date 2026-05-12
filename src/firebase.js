@@ -1,35 +1,42 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, enableIndexedDbPersistence } from "firebase/firestore";
+import { initializeFirestore, persistentLocalCache, persistentSingleTabManager } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
+// ────────────────────────────────────────────────────────
+// Firebase konfiguratsiyasi — .env faylidan olinadi
+// Hech qachon kalitlarni to'g'ridan-to'g'ri kodga yozmang!
+// ────────────────────────────────────────────────────────
 const firebaseConfig = {
-  apiKey: "AIzaSyDUlD2LaZegs0ifhNY2wLBDenB2oNX5sVU",
-  authDomain: "iqro-platforma.firebaseapp.com",
-  projectId: "iqro-platforma",
-  storageBucket: "iqro-platforma.firebasestorage.app",
-  messagingSenderId: "637089963772",
-  appId: "1:637089963772:web:a4165d8ae157986cbac179",
-  measurementId: "G-GPTQZDZ79J"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
+
+// .env faylida kalitlar borligini tekshirish (dev mode uchun ogohlantirish)
+if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
+  console.error(
+    "⚠️ Firebase konfiguratsiya topilmadi! .env faylida VITE_FIREBASE_* kalitlari borligini tekshiring."
+  );
+}
 
 // Ilovani ishga tushirish
 const app = initializeApp(firebaseConfig);
 
-// Bazaga ulanish (Firestore)
-export const db = getFirestore(app);
-
-// Offline persistence (Keshni yoqish)
-enableIndexedDbPersistence(db).catch((err) => {
-    if (err.code === 'failed-precondition') {
-        console.warn("Firestore keshini faqat bitta tabda yoqish mumkin.");
-    } else if (err.code === 'unimplemented') {
-        console.warn("Brauzer Firestore keshini qo'llab-quvvatlamaydi.");
-    }
+// Bazaga ulanish (Firestore) — yangi API bilan offline persistence
+// enableIndexedDbPersistence() — DEPRECATED (eskirgan)
+// Yangi usul: initializeFirestore + persistentLocalCache
+export const db = initializeFirestore(app, {
+  localCache: persistentLocalCache({
+    tabManager: persistentSingleTabManager({ forceOwnership: false })
+  })
 });
 
 // Auth
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 export const storage = getStorage(app);
-

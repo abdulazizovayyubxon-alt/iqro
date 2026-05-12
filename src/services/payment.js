@@ -1,0 +1,68 @@
+/**
+ * Click/Payme to'lov integratsiyasi
+ *
+ * ARXITEKTURA:
+ * 1. Frontend → Click/Payme checkout URL ochadi (userId bilan)
+ * 2. Foydalanuvchi to'lov qiladi
+ * 3. Click/Payme → /api/payment-webhook ga POST yuboradi
+ * 4. Webhook Firestore'da isPremium = true qiladi
+ *
+ * MUHIM: merchant_id va secret_key faqat .env da bo'lishi kerak!
+ */
+
+// ── Narxlar ──
+export const PREMIUM_PRICE = 15000; // 15,000 so'm
+export const PREMIUM_LABEL = "IQRO Premium — Barcha bo'limlar";
+
+// ── Click checkout URL generatori ──
+export const generateClickUrl = (userId, userPhone) => {
+  const merchantId = import.meta.env.VITE_CLICK_MERCHANT_ID;
+  const serviceId = import.meta.env.VITE_CLICK_SERVICE_ID;
+
+  if (!merchantId || !serviceId) {
+    console.error('Click merchant sozlamalari topilmadi (.env)');
+    return null;
+  }
+
+  // Click checkout parametrlari
+  const params = new URLSearchParams({
+    service_id: serviceId,
+    merchant_id: merchantId,
+    amount: PREMIUM_PRICE,
+    transaction_param: userId, // Firestore user ID — webhook da ishlatiladi
+    return_url: `${window.location.origin}/?payment=success`,
+    // Qo'shimcha ma'lumot
+    merchant_user_id: userId
+  });
+
+  return `https://my.click.uz/services/pay?${params.toString()}`;
+};
+
+// ── Payme checkout URL generatori ──
+export const generatePaymeUrl = (userId) => {
+  const merchantId = import.meta.env.VITE_PAYME_MERCHANT_ID;
+
+  if (!merchantId) {
+    console.error('Payme merchant sozlamalari topilmadi (.env)');
+    return null;
+  }
+
+  // Payme checkout parametrlari (Base64 encoded)
+  const params = {
+    m: merchantId,
+    'ac.user_id': userId,
+    a: PREMIUM_PRICE * 100, // Payme tiyinda ishlaydi (1 so'm = 100 tiyin)
+    c: `${window.location.origin}/?payment=success`
+  };
+
+  // Payme URL: https://checkout.paycom.uz/base64_encoded_params
+  const encoded = btoa(JSON.stringify(params));
+  return `https://checkout.paycom.uz/${encoded}`;
+};
+
+// ── To'lov holatini tekshirish (frontend polling) ──
+// Webhook orqali isPremium yangilangandan keyin AuthContext avtomatik oladi
+export const checkPaymentSuccess = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get('payment') === 'success';
+};

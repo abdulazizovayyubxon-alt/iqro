@@ -1,0 +1,177 @@
+[
+  // ==========================================
+  // 21-22-MAVZULAR: FAVQULODDA VAZIYATLAR VA XABAR BERISH
+  // ==========================================
+  {
+    "q": "Favqulodda vaziyatlarning tabiiy xususiyatli turlaridan biri bo'lgan \"epifitotiya\" qanday hodisani anglatadi?",
+    "opts": [
+      "Hayvonlarning ommaviy kasallanishi yoki nobud bo'lishi",
+      "Odamlarning guruh bo'lib yuqumli kasalliklarga chalinishi",
+      "O'simliklarning ommaviy nobud bo'lishi yoki kasallanishi",
+      "Baland tog'lardagi ko'llarning yorilishi oqibatida suv toshishi"
+    ],
+    "correct": 2,
+    "topicId": 21,
+    "explanation": "Epidemiya - odamlarning kasallanishi; Epizootiya - hayvonlarning nobud bo'lishi; Epifitotiya - o'simliklarning ommaviy nobud bo'lishi yoki kasallanishini anglatadi.",
+    "mnemonic": "Fito = O'simlik (fitoterapiya kabi). Epifitotiya = o'simliklar halokati."
+  },
+  {
+    "q": "Oila a'zolari bilan birgalikda ishlab chiqarish xodimlarini xavfsiz hududlarga ko'chirish qanday evakuatsiya tamoyiliga kiradi?",
+    "opts": [
+      "Faqat ishlab chiqarish tamoyili",
+      "Hududiy tamoyil",
+      "Ishlab chiqarish-hududiy tamoyili",
+      "Lokal-hududiy tamoyil"
+    ],
+    "correct": 2,
+    "topicId": 22,
+    "explanation": "Ishchi-xizmatchilar faqat o'zi ko'chirilsa ishlab chiqarish tamoyili; agar oila a'zolari bilan birgalikda ko'chiriladigan bo'lsa - ishlab chiqarish-hududiy tamoyili hisoblanadi.",
+    "mnemonic": "Ishchi + Oila = Ishlab chiqarish-hududiy."
+  },
+
+  // ==========================================
+  // 23-MAVZU: PANOHGOHLAR
+  // ==========================================
+  {
+    "q": "O'rta hajmli panohgohlar o'ziga qancha odamni sig'dira oladi?",
+    "opts": [
+      "150 dan 600 nafargacha",
+      "600 dan 2000 nafargacha",
+      "2000 dan 5000 nafargacha",
+      "100 dan 500 nafargacha"
+    ],
+    "correct": 1,
+    "topicId": 23,
+    "explanation": "Panohgohlar hajmi bo'yicha: Kichik hajmli (150-600 odam); O'rta hajmli (600-2000 odam); Katta hajmli (2000 dan ortiq odam) turlarga bo'linadi.",
+    "mnemonic": "O'rta hajm = 600 dan 2 minggacha."
+  },
+  {
+    "q": "Panohgohda (himoya inshootida) har bir yashirinuvchi uchun norma bo'yicha qancha toza havo va joy bo'lishi lozim?",
+    "opts": [
+      "1 m² joy va 2 m³ havo",
+      "0,5 m² joy va 1,5 m³ havo",
+      "1,5 m² joy va 3 m³ havo",
+      "0,8 m² joy va 1 m³ havo"
+    ],
+    "correct": 1,
+    "topicId": 23,
+    "explanation": "Me'yorlarga ko'ra, har bir yashirinuvchi uchun 2 sutkaga yetarli oziq-ovqat zaxirasi, 0,5 m² joy va 1,5 m³ havo bo'lishi talab etiladi.",
+    "mnemonic": "Yarim kvadrat joy va yarimta ortiqcha kub havo (0,5m² va 1,5m³)."
+  },
+
+  // ==========================================
+  // 24, 25-MAVZULAR: GAZNIQOBLAR VA RESPIRATORLAR
+  // ==========================================
+  {
+    "q": "GP-7 markali filtrlovchi fuqarolar gazniqobining umumiy og'irligi va uning filtr qutisi og'irligi to'g'ri ko'rsatilgan javobni toping.",
+    "opts": [
+      "Umumiy og'irligi 1,5 kg, filtr qutisi 0,5 kg",
+      "Umumiy og'irligi 0,9 kg dan oshmaydi, filtr qutisi 0,25 kg",
+      "Umumiy og'irligi 1,2 kg, filtr qutisi 0,35 kg",
+      "Umumiy og'irligi 0,6 kg, filtr qutisi 0,15 kg"
+    ],
+    "correct": 1,
+    "topicId": 24,
+    "explanation": "GP-7 filtrlovchi gazniqobining umumiy og'irligi 0,9 kg dan oshmaydi, filtr qutisining og'irligi esa 0,25 kg ni tashkil etadi.",
+    "mnemonic": "GP-7: jami 900 gramm, filtr 250 gramm."
+  },
+  {
+    "q": "Boshning vertikal va gorizontal o'lchamlari yig'indisi 100 cm ga teng bo'lgan shaxsga nechanchi o'lchamdagi shlem-niqob berilishi kerak?",
+    "opts": [
+      "0-o'lchamli",
+      "1-o'lchamli",
+      "2-o'lchamli",
+      "3-o'lchamli"
+    ],
+    "correct": 3,
+    "topicId": 24,
+    "explanation": "O'lchamlar me'yoriga ko'ra: <92 cm (0 o'lcham); 92-96 cm (1); 96-98 cm (2); 99-102,5 cm (3 o'lcham). 100 cm bo'lgan yig'indi 3-o'lchamga to'g'ri keladi.",
+    "mnemonic": "99 dan 102.5 gacha = 3-o'lcham."
+  },
+  {
+    "q": "R-2 respiratori insonni asosan nimalardan himoya qiladi?",
+    "opts": [
+      "Har qanday kuchli ta'sir qiluvchi kimyoviy gazlardan",
+      "Faqat biologik qurollardan",
+      "Radioaktiv va tuproq changidan",
+      "Quyosh radiatsiyasidan va ko'r bo'lishdan"
+    ],
+    "correct": 2,
+    "topicId": 25,
+    "explanation": "R-2 respiratori nafas olish organlarini radioaktiv va tuproq changidan himoyalash uchun mo'ljallangan aerozolga qarshi himoya vositasidir. U gaz va bug'lardan to'liq himoya qila olmaydi.",
+    "mnemonic": "Respirator R-2 = Radioaktiv chang himoyasi."
+  },
+
+  // ==========================================
+  // 26, 27-MAVZULAR: TERINI HIMOYALOVCHI VOSITALAR
+  // ==========================================
+  {
+    "q": "Umumqo'shin himoya to'plami (UHT)ning himoya plashi necha xil o'lchamda ishlab chiqariladi va bo'yi 175 cm bo'lgan askarga qaysi o'lcham mos keladi?",
+    "opts": [
+      "3 xil o'lchamda, 2-o'lcham mos keladi",
+      "4 xil o'lchamda, 3-o'lcham mos keladi",
+      "5 xil o'lchamda, 4-o'lcham mos keladi",
+      "4 xil o'lchamda, 2-o'lcham mos keladi"
+    ],
+    "correct": 1,
+    "topicId": 26,
+    "explanation": "Plash 4 o'lchamda bo'ladi: 1-o'lcham (<166 sm), 2-o'lcham (166-172 sm), 3-o'lcham (172-178 sm), 4-o'lcham (>178 sm). 175 sm uchun 3-o'lcham (172-178) mos keladi.",
+    "mnemonic": "172-178 orasi 3-o'lcham."
+  },
+  {
+    "q": "Terini himoyalovchi vositalarni kombinezon holatida kiyish bo'yicha me'yor qancha vaqt ichida bajarilsa \"A'lo\" baho hisoblanadi?",
+    "opts": [
+      "3 daqiqa",
+      "4 daqiqa",
+      "5 daqiqa",
+      "6 daqiqa"
+    ],
+    "correct": 1,
+    "topicId": 27,
+    "explanation": "Umumqo'shin himoya to'plamini (UHT) plash holatida kiyish \"a'lo\" baho uchun 3 daqiqa, kombinezon holatida kiyish esa 4 daqiqa qilib belgilangan.",
+    "mnemonic": "Plash = 3 daqiqa, Kombinezon (murakkabroq) = 4 daqiqa."
+  },
+
+  // ==========================================
+  // 28-MAVZU: KALASHNIKOV AVTOMATI (AK-74)
+  // ==========================================
+  {
+    "q": "AK-74 (5,45 mm) avtomatidan uzilgan o'qning boshlang'ich tezligi sekundiga necha metrni tashkil qiladi?",
+    "opts": [
+      "715 m/s",
+      "850 m/s",
+      "900 m/s",
+      "960 m/s"
+    ],
+    "correct": 2,
+    "topicId": 28,
+    "explanation": "AK-74 avtomatida o'qning boshlang'ich tezligi 900 m/s dir. AK-47 da esa 715 m/s, RPK-74 pulemyotida 960 m/s ni tashkil etadi.",
+    "mnemonic": "AK-74 juda tez: sekundiga 900 metr!"
+  },
+  {
+    "q": "AK-74 va AK-47 avtomatlarining patronlar bilan to'ldirilgan o'qdonlari bilan birgalikdagi mos ravishdagi og'irliklari to'g'ri ko'rsatilgan qatorni toping.",
+    "opts": [
+      "AK-74: 3,6 kg, AK-47: 4,3 kg",
+      "AK-74: 3,2 kg, AK-47: 3,8 kg",
+      "AK-74: 4,3 kg, AK-47: 5,46 kg",
+      "AK-74: 2,9 kg, AK-47: 3,6 kg"
+    ],
+    "correct": 0,
+    "topicId": 28,
+    "explanation": "Yangi namunadagi AK-74 nisbatan yengilroq - 3,6 kg, AK-47 esa 4,3 kg ni tashkil etadi.",
+    "mnemonic": "AK-74 (3.6 kg) -> AK-47 (4.3 kg)."
+  },
+  {
+    "q": "AK-74 avtomati stvolidagi o'yiqlar soni nechta va bu o'yiqlar qanday maqsadga xizmat qiladi?",
+    "opts": [
+      "3 ta, o'qning uchish masofasini uzaytiradi",
+      "4 ta, o'qqa aylanma harakat berib, uning parvoz barqarorligini ta'minlaydi",
+      "6 ta, qurol qizib ketishining oldini oladi",
+      "8 ta, gazlarni tezroq tashqariga chiqarib yuboradi"
+    ],
+    "correct": 1,
+    "topicId": 28,
+    "explanation": "Kalashnikov avtomatlarining barcha modifikatsiyalarida (AK-74, AK-47, RPK) stvol kanalida 4 ta o'yiq mavjud bo'lib, ular o'qqa o'z o'qi atrofida aylanma harakat beradi va shu orqali nishonga aniq yetib borishini ta'minlaydi.",
+    "mnemonic": "4 ta o'yiq (narez) - aylanma barqarorlik uchun."
+  }
+]

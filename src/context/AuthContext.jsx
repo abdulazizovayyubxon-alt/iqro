@@ -8,13 +8,37 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  updateProfile
+  updateProfile,
+  sendPasswordResetEmail
 } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 export const AuthContext = createContext();
 
 export const useAuth = () => useContext(AuthContext);
+
+// ────────────────────────────────────────────────────────
+// Telefon raqamidan internal email generatsiya qilish
+// Bu faqat Firebase Auth uchun ichki identifikator —
+// foydalanuvchi bu emailni ko'rmaydi
+// ────────────────────────────────────────────────────────
+const phoneToEmail = (phone) => {
+  const clean = phone.replace(/\D/g, '');
+  return `${clean}@iqro.uz`;
+};
+
+// ────────────────────────────────────────────────────────
+// Parol validatsiyasi
+// ────────────────────────────────────────────────────────
+const validatePassword = (password) => {
+  if (!password || password.length < 6) {
+    return "Parol kamida 6 ta belgidan iborat bo'lishi kerak.";
+  }
+  if (password.length > 128) {
+    return "Parol juda uzun (maksimum 128 belgi).";
+  }
+  return null; // Xatolik yo'q
+};
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -49,8 +73,17 @@ export const AuthProvider = ({ children }) => {
           isPremium = userSnap.data().isPremium || false;
         }
         
-        // Asl firebaseUser ob'ektiga isPremium ni qo'shamiz
-        const enhancedUser = Object.assign(firebaseUser, { isPremium });
+        // Firebase user ob'ektini mutatsiya qilmasdan yangi ob'ekt yaratamiz
+        // Object.assign(firebaseUser, ...) — XAVFLI, chunki asl Firebase ob'ektni buzadi
+        const enhancedUser = {
+          uid: firebaseUser.uid,
+          email: firebaseUser.email,
+          displayName: firebaseUser.displayName,
+          photoURL: firebaseUser.photoURL,
+          isPremium,
+          // Firebase Auth metodlarini saqlash uchun asl referensni saqlaymiz
+          _firebaseUser: firebaseUser
+        };
         setUser(enhancedUser);
       } else {
         setUser(null);
@@ -60,7 +93,7 @@ export const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  // Google Sign-In
+  // ─── Google Sign-In ───
   const signInWithGoogle = async () => {
     setAuthError('');
     // Mobil yoki brauzerni tekshiramiz
@@ -85,7 +118,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Email / Parol bilan kirish
+  // ─── Email / Parol bilan kirish ───
   const signInWithEmail = async (email, password) => {
     setAuthError('');
     try {
@@ -103,7 +136,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Ro'yxatdan o'tish
+  // ─── Ro'yxatdan o'tish ───
   const registerWithEmail = async (email, password, displayName) => {
     setAuthError('');
     try {
@@ -122,73 +155,146 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Oddiy kirish (Ism + Telefon)
-  const signInWithPhoneSimple = async (name, phone) => {
+  // ────────────────────────────────────────────────────────
+  // XAVFSIZ Telefon + Parol bilan kirish
+  //
+  // OLDINGI (XAVFLI) usul:
+  //   parol = "iqro" + telefon_raqam  ← har kim boshqaning akkauntiga kirishi mumkin edi!
+  //
+  // YANGI (XAVFSIZ) usul:
+  //   - Foydalanuvchi o'zi parol kiritadi
+  //   - Parol kamida 6 ta belgidan iborat
+  //   - Telefon raqam ichki email sifatida ishlatiladi (foydalanuvchi ko'rmaydi)
+  // ────────────────────────────────────────────────────────
+  const signInWithPhone = async (name, phone, password) => {
     setAuthError('');
-    // Telefon raqamidan faqat raqamlarni ajratib olamiz
+
+    // Telefon raqam validatsiyasi
     const cleanPhone = phone.replace(/\D/g, '');
     if (cleanPhone.length < 9) {
       setAuthError("Telefon raqami noto'g'ri");
       return false;
     }
-    
-    // Yolg'on email va doimiy parol yasaymiz
-    const fakeEmail = `${cleanPhone}@iqro.uz`;
-    const fakePassword = `iqro${cleanPhone}`;
+
+    // Parol validatsiyasi
+    const passwordError = validatePassword(password);
+    if (passwordError) {
+      setAuthError(passwordError);
+      return false;
+    }
+
+    // Ichki email yaratish (foydalanuvchi ko'rmaydi)
+    const internalEmail = phoneToEmail(phone);
 
     try {
-      // Avval shu raqam bilan kirishga urinamiz
-      await signInWithEmailAndPassword(auth, fakeEmail, fakePassword);
-      // Kirish muvaffaqiyatli bo'lsa profilni yangilab qo'yamiz
+      // 1. Avval mavjud akkaunt bilan kirishga urinamiz
+      await signInWithEmailAndPassword(auth, internalEmail, password);
+      
+      // Kirish muvaffaqiyatli — profilni yangilaymiz
       let isPremium = false;
       const userRef = doc(db, 'users', auth.currentUser.uid);
       const userSnap = await getDoc(userRef);
       if (userSnap.exists()) isPremium = userSnap.data().isPremium || false;
 
+      // Agar ism o'zgargan bo'lsa — yangilaymiz
       if (auth.currentUser && auth.currentUser.displayName !== name) {
         await updateProfile(auth.currentUser, { displayName: name });
         await setDoc(userRef, { displayName: name }, { merge: true });
       }
-      setUser(Object.assign(auth.currentUser, { displayName: name, isPremium }));
+
+      setUser({
+        uid: auth.currentUser.uid,
+        email: auth.currentUser.email,
+        displayName: name,
+        photoURL: auth.currentUser.photoURL,
+        isPremium,
+        _firebaseUser: auth.currentUser
+      });
       return true;
     } catch (err) {
-      if (err.code === 'auth/user-not-found' || err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password') {
-        // Agar topilmasa, demak yangi foydalanuvchi — uni ro'yxatdan o'tkazamiz
+      // 2. Akkaunt topilmadi — yangi foydalanuvchi, ro'yxatdan o'tkazamiz
+      if (
+        err.code === 'auth/user-not-found' ||
+        err.code === 'auth/invalid-credential'
+      ) {
         try {
-          const userCred = await createUserWithEmailAndPassword(auth, fakeEmail, fakePassword);
+          const userCred = await createUserWithEmailAndPassword(auth, internalEmail, password);
           await updateProfile(userCred.user, { displayName: name });
-          // React state'ni majburan yangilaymiz
-          setUser(Object.assign(userCred.user, { displayName: name, isPremium: false }));
+
+          // Firestore'da profil yaratamiz
           await setDoc(doc(db, 'users', userCred.user.uid), {
             uid: userCred.user.uid,
-            email: fakeEmail,
+            email: internalEmail,
             phone: cleanPhone,
             displayName: name,
             role: 'user',
             isPremium: false,
             createdAt: new Date(),
           });
+
+          setUser({
+            uid: userCred.user.uid,
+            email: internalEmail,
+            displayName: name,
+            photoURL: null,
+            isPremium: false,
+            _firebaseUser: userCred.user
+          });
           return true;
         } catch (regErr) {
           console.error("Ro'yxatdan o'tish xatosi:", regErr);
-          setAuthError("Ro'yxatdan o'tish xatosi: " + (regErr.code || regErr.message));
+          if (regErr.code === 'auth/email-already-in-use') {
+            setAuthError("Bu raqam allaqachon ro'yxatdan o'tgan. Parol noto'g'ri bo'lishi mumkin.");
+          } else if (regErr.code === 'auth/weak-password') {
+            setAuthError("Parol kamida 6 ta belgidan iborat bo'lishi kerak.");
+          } else {
+            setAuthError("Ro'yxatdan o'tishda xatolik yuz berdi.");
+          }
           return false;
         }
-      } else {
-        console.error("Kirish xatosi:", err);
-        setAuthError("Kirish xatosi: " + (err.code || err.message));
+      }
+
+      // 3. Parol noto'g'ri (akkaunt mavjud, lekin parol mos kelmadi)
+      if (err.code === 'auth/wrong-password') {
+        setAuthError("Parol noto'g'ri. Qaytadan urinib ko'ring.");
         return false;
       }
+
+      // 4. Boshqa xatoliklar
+      console.error("Kirish xatosi:", err);
+      setAuthError("Kirishda xatolik yuz berdi. Qaytadan urinib ko'ring.");
+      return false;
     }
   };
 
-  // Chiqish
+  // ─── Parolni tiklash (telefon raqam uchun) ───
+  // Telefon orqali kirgan foydalanuvchilar uchun
+  // parolni tiklash imkoniyati (email orqali)
+  const resetPassword = async (phone) => {
+    setAuthError('');
+    const cleanPhone = phone.replace(/\D/g, '');
+    if (cleanPhone.length < 9) {
+      setAuthError("Telefon raqami noto'g'ri");
+      return false;
+    }
+
+    // Iqro.uz email uchun parol tiklash ishlamaydi (bu haqiqiy email emas)
+    // Shuning uchun foydalanuvchiga admin bilan bog'lanish tavsiya etiladi
+    setAuthError(
+      "Parolni tiklash uchun admin bilan bog'laning: @iqro_admin (Telegram)"
+    );
+    return false;
+  };
+
+  // ─── Chiqish ───
   const logout = () => signOut(auth);
 
   return (
     <AuthContext.Provider value={{ 
       user, loading, authError, setAuthError, 
-      signInWithGoogle, signInWithEmail, registerWithEmail, signInWithPhoneSimple, 
+      signInWithGoogle, signInWithEmail, registerWithEmail, 
+      signInWithPhone, // YANGI: xavfsiz telefon+parol auth
+      resetPassword,   // YANGI: parol tiklash
       logout 
     }}>
       {children}

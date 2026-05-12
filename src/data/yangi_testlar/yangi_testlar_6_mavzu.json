@@ -1,0 +1,67 @@
+[
+  {
+    "q": "Oliy harbiy ta'lim muassasasiga o'qishga kirgunga qadar hech qanday harbiy unvonga ega bo'lmagan yigit o'qishga qabul qilingan vaqtida unga qanday unvon beriladi?",
+    "opts": [
+      "Oddiy askar",
+      "Kichik serjant",
+      "Tinglovchi",
+      "Kursant"
+    ],
+    "correct": 3,
+    "topicId": 6,
+    "explanation": "Ta'lim muassasalariga kirgunga qadar harbiy unvonga ega bo'lmagan yoki oddiy askar (matros) harbiy unvoniga ega fuqarolarni o'qishga qabul qilish vaqtida ularga avtomatik ravishda \"kursant\" harbiy unvoni beriladi.",
+    "mnemonic": "Unvonsiz o'qishga kirgan - to'g'ridan to'g'ri Kursant bo'ladi."
+  },
+  {
+    "q": "(Vaziyatli savol) Harbiy xizmatchining harbiy-hisob ixtisosligi bo'yicha yo'nalishi yuridik (huquqiy) soha bo'lib, uning ofitserlik unvoni general-mayor. Qonunchilikka ko'ra, uning to'liq unvoni qanday nomlanadi?",
+    "opts": [
+      "Yuridik xizmat general-mayori",
+      "Adliya general-mayori",
+      "General-mayor (yurist)",
+      "Huquqni muhofaza qilish general-mayori"
+    ],
+    "correct": 1,
+    "topicId": 6,
+    "explanation": "Yuridik yo'nalishdagi ofitserlar tarkibidagi harbiy xizmatchilarning harbiy unvoniga mos ravishda \"adliya\" so'zi qo'shib aytiladi (masalan: adliya general-mayori).",
+    "mnemonic": "Yuridik soha = \"Adliya\" so'zi qo'shiladi."
+  },
+  {
+    "q": "Quyida keltirilgan unvonlardan qaysi biri kema tarkibidagi \"Katta ofitserlar\" unvonlari sirasiga kirmaydi?",
+    "opts": [
+      "I rang kapitani",
+      "II rang kapitani",
+      "III rang kapitani",
+      "Kapitan-leytenant"
+    ],
+    "correct": 3,
+    "topicId": 6,
+    "explanation": "Kema tarkibidagi \"Kapitan-leytenant\" unvoni katta ofitserlarga emas, balki Kichik ofitserlar tarkibiga kiradi. Katta ofitserlar faqat I, II va III rang kapitanlaridan iborat.",
+    "mnemonic": "Kapitan-leytenant — kichik ofitser. Rangli kapitanlar (I, II, III) — katta ofitserlar."
+  },
+  {
+    "q": "Harbiy xizmatda bo'lgan ofitser o'z xizmat burchini to'liq o'tab, yoshiga doir nafaqaga chiqqanidan so'ng uning mavjud harbiy unvoniga qanday so'z qo'shib aytiladi?",
+    "opts": [
+      "Rezervdagi",
+      "Zaxiradagi",
+      "Iste'fodagi",
+      "Faqriydagi (Faxriy)"
+    ],
+    "correct": 2,
+    "topicId": 6,
+    "explanation": "Yoshiga yoki sog'lig'iga ko'ra butunlay xizmatni yakunlab, nafaqaga chiqqan shaxslarning harbiy unvoniga \"iste'fodagi\" so'zi qo'shiladi (masalan: iste'fodagi polkovnik).",
+    "mnemonic": "To'liq nafaqaga chiqsa = \"iste'fodagi\"."
+  },
+  {
+    "q": "Qonun-qoidalarga ko'ra, harbiy xizmat nazarda tutilgan qo'shin turlarida qaysi toifadagi harbiy xizmatchilarning harbiy unvonlariga qo'shin turi yoki xizmatning nomi (masalan, tank qo'shinlari ...) umuman qo'shilmaydi?",
+    "opts": [
+      "Generallar va katta ofitserlarning harbiy unvonlariga",
+      "Serjant (starshina)larning harbiy unvonlariga",
+      "Faqat kema tarkibidagi harbiy unvonlarga",
+      "Tibbiy xizmat va adliya xodimi bo'lgan ofitserlarga"
+    ],
+    "correct": 1,
+    "topicId": 6,
+    "explanation": "Qonunchilikka binoan, serjant (shuningdek, dengizda starshina)larning harbiy unvonlariga ularning xizmat qilayotgan qo'shin turi yoki xizmatning nomi qo'shib aytilmaydi.",
+    "mnemonic": "Serjant va starshinalarga qo'shin nomi qo'shilmaydi."
+  }
+]

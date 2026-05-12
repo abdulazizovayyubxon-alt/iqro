@@ -1,15 +1,18 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Brain, CheckCircle, XCircle, Clock, ChevronRight, ArrowLeft, Zap, MessageCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { updateSpacedCard } from '../engine/SmartQuestionEngine';
+import ObjectionModal from '../components/shared/ObjectionModal';
+import SafeHtml from '../components/shared/SafeHtml';
 
-// Intervallar (daqiqada): 10min, 1soat, 6soat, 1kun, 3kun, 7kun
-const INTERVALS = [10, 60, 360, 1440, 4320, 10080];
-
-const SmartReviewPage = ({ goBack }) => {
+const SmartReviewPage = () => {
+  const navigate = useNavigate();
+  const goBack = () => navigate('/');
   const { state, updateState } = useContext(AppContext);
   const { addObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
@@ -21,7 +24,6 @@ const SmartReviewPage = ({ goBack }) => {
 
   // Objection state
   const [showObjectionModal, setShowObjectionModal] = useState(false);
-  const [objectionText, setObjectionText] = useState('');
 
   useEffect(() => {
     // Hozir takrorlash kerak bo'lgan savollarni filtrlash
@@ -48,24 +50,7 @@ const SmartReviewPage = ({ goBack }) => {
     const updatedCards = [...(state.spacedCards || [])];
     const cardIdx = updatedCards.findIndex(c => c.qHash === card.qHash);
     if (cardIdx >= 0) {
-      if (isCorrect) {
-        const newLevel = Math.min((updatedCards[cardIdx].level || 0) + 1, INTERVALS.length - 1);
-        updatedCards[cardIdx] = {
-          ...updatedCards[cardIdx],
-          level: newLevel,
-          correctStreak: (updatedCards[cardIdx].correctStreak || 0) + 1,
-          nextReview: Date.now() + INTERVALS[newLevel] * 60 * 1000,
-          lastReview: Date.now()
-        };
-      } else {
-        updatedCards[cardIdx] = {
-          ...updatedCards[cardIdx],
-          level: 0,
-          correctStreak: 0,
-          nextReview: Date.now() + INTERVALS[0] * 60 * 1000,
-          lastReview: Date.now()
-        };
-      }
+      updatedCards[cardIdx] = updateSpacedCard(updatedCards[cardIdx], isCorrect);
     }
     updateState({ spacedCards: updatedCards });
 
@@ -87,14 +72,11 @@ const SmartReviewPage = ({ goBack }) => {
     setAnswered(null);
   };
 
-  const handleObjection = () => {
-    if (objectionText.trim()) {
-      const card = cards[currentIdx];
-      addObjection(card.topicId, state.activeCategory, card, objectionText);
-      setObjectionText('');
-      setShowObjectionModal(false);
-      showToast("E'tiroz yuborildi!", 'success');
-    }
+  const handleObjection = (text) => {
+    const card = cards[currentIdx];
+    addObjection(card.topicId, state.activeCategory, card, text);
+    setShowObjectionModal(false);
+    showToast("E'tiroz yuborildi!", 'success');
   };
 
   // Hech savol yo'q
@@ -225,8 +207,7 @@ const SmartReviewPage = ({ goBack }) => {
 
             {/* Savol */}
             {card.isHtml ? (
-              <div style={{ fontSize: 17, fontWeight: 600, lineHeight: 1.6, marginBottom: 24, color: 'var(--text)' }}
-                dangerouslySetInnerHTML={{ __html: card.q }} />
+              <SafeHtml html={card.q} style={{ fontSize: 17, fontWeight: 600, lineHeight: 1.6, marginBottom: 24, color: 'var(--text)' }} />
             ) : (
               <div style={{ fontSize: 17, fontWeight: 600, lineHeight: 1.6, marginBottom: 24, color: 'var(--text)', whiteSpace: 'pre-line' }}>
                 {card.q}
@@ -300,26 +281,12 @@ const SmartReviewPage = ({ goBack }) => {
       </AnimatePresence>
 
       {/* E'TIROZ MODALI */}
-      {showObjectionModal && (
-        <div className="modal-overlay" onClick={() => setShowObjectionModal(false)}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <div className="modal-title">⚠️ E'tiroz bildirish</div>
-            <div className="modal-text" style={{ fontSize: 13, lineHeight: 1.5 }}>
-              <strong>Savol:</strong> {card.q}
-            </div>
-            <textarea
-              className="modal-input"
-              placeholder="Muammo yoki xatolikni tushuntiring..."
-              value={objectionText}
-              onChange={e => setObjectionText(e.target.value)}
-            />
-            <div className="modal-actions">
-              <button className="btn btn-outline" onClick={() => setShowObjectionModal(false)}>Bekor</button>
-              <button className="btn btn-primary" onClick={handleObjection}>Yuborish</button>
-            </div>
-          </div>
-        </div>
-      )}
+      <ObjectionModal
+        isOpen={showObjectionModal}
+        onClose={() => setShowObjectionModal(false)}
+        questionText={cards[currentIdx]?.q}
+        onSubmit={handleObjection}
+      />
     </motion.div>
   );
 };

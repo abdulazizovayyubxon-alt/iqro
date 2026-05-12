@@ -1,0 +1,173 @@
+[
+  // ==========================================
+  // 7-MAVZU: CHAQIRILUVCHILARNI HARBIY XIZMATGA TAYYORLASH
+  // ==========================================
+  {
+    "q": "O'n besh va o'n olti yoshdagi o'smirlar (chaqiriluvchilar) qaysi organ jalb etadigan mutaxassis shifokorlar tomonidan har yili tibbiy ko'rikdan o'tkaziladi?",
+    "opts": [
+      "Sog'liqni saqlash vazirligi",
+      "Mudofaa ishlari organlari",
+      "Viloyat hokimligi",
+      "Ichki ishlar bo'limi"
+    ],
+    "correct": 1,
+    "topicId": 7,
+    "explanation": "Qoidalarga asosan, 15 va 16 yoshdagi o'smirlarni mudofaa ishlari organlari jalb etadigan mutaxassis shifokorlar har yili tibbiy ko'rikdan o'tkazadi.",
+    "mnemonic": "Harbiy hisob shifokorlarini Mudofaa ishlari organi jalb qiladi."
+  },
+  {
+    "q": "Chaqiriluvchilar bilan olib boriladigan davolash-sog'lomlashtirish ishlarini ularning turar joylarida qaysi idora tashkil etadi?",
+    "opts": [
+      "Sog'liqni saqlash organlari",
+      "Mudofaa vazirligi",
+      "Ichki ishlar vazirligi",
+      "Favqulodda vaziyatlar vazirligi"
+    ],
+    "correct": 0,
+    "topicId": 7,
+    "explanation": "Sog'liqni saqlash organlari o'smirlar xonalarini tashkil etgan holda ularni davolash-sog'lomlashtirish ishlarini uyushtiradilar.",
+    "mnemonic": "Davolash - Sog'liqni saqlash organlari ishi."
+  },
+
+  // ==========================================
+  // 8-MAVZU: MUDDATLI HARBIY XIZMAT VA SChR CHAQIRUVI
+  // ==========================================
+  {
+    "q": "Fuqarolarning muddatli harbiy xizmatga hamda safarbarlik chaqiruvi rezervidagi xizmatga chaqirilishi O'zbekiston Respublikasi Prezidentining qaroriga asosan har yili qaysi oylarda o'tkaziladi?",
+    "opts": [
+      "Yanvar – fevral",
+      "Mart – aprel",
+      "May – iyun",
+      "Sentyabr – oktyabr"
+    ],
+    "correct": 1,
+    "topicId": 8,
+    "explanation": "Muddatli harbiy xizmatga chaqiruv Prezident qaroriga binoan har yili mart-aprel oylarida bo'lib o'tadi.",
+    "mnemonic": "Bahorning ilk oylarida: Mart-Aprel chaqiruvi."
+  },
+  {
+    "q": "(Vaziyatli savol) Chaqiriluvchi oilali, uning xotini birinchi guruh nogironi hisoblanadi. Shuningdek, ularning ikkita voyaga yetmagan farzandi bor. Bu holat chaqiriluvchining harbiy xizmatga chaqirilish muddatiga qanday ta'sir qiladi?",
+    "opts": [
+      "Salomatligiga ko'ra butunlay xizmatdan ozod etiladi",
+      "Oilaviy sharoitiga ko'ra xizmat muddati kechiktiriladi",
+      "Hech qanday ta'sir qilmaydi, xizmatga chaqiriladi",
+      "Faqat bir oylik SChR xizmatiga borishga ruxsat etiladi"
+    ],
+    "correct": 1,
+    "topicId": 8,
+    "explanation": "Qonunchilikka muvofiq, chaqiriluvchining birinchi yoki ikkinchi guruh nogironligi bo'lgan xotini va voyaga yetmagan ikki va undan ortiq farzandi bo'lsa, chaqirilish muddati kechiktiriladi.",
+    "mnemonic": "Nogiron xotin + 2 farzand = Muddati kechiktiriladi (Ozod qilinmaydi, kechiktiriladi)."
+  },
+  {
+    "q": "Tinchlik davrida qaysi toifadagi fuqarolar muddatli harbiy xizmatga hamda SChR xizmatiga chaqirilishdan butunlay ozod etiluvchilar ro'yxatiga kirmaydi?",
+    "opts": [
+      "Ro'yxatdan o'tgan diniy tashkilotlarda diniy rutba egasi bo'lgan shaxslar",
+      "Aka-ukasi harbiy xizmat vaqtida vafot etgan chaqiriluvchilar",
+      "Oliy o'quv yurtlarining kunduzgi ta'lim shaklida o'qiyotgan talabalar",
+      "Salomatligiga ko'ra harbiy xizmatga yaroqsiz deb topilgan fuqarolar"
+    ],
+    "correct": 2,
+    "topicId": 8,
+    "explanation": "Kunduzgi ta'lim talabalari harbiy xizmatdan ozod etilmaydi, faqatgina ularning chaqirilish muddati o'qishni tugatguniga qadar kechiktiriladi xolos.",
+    "mnemonic": "Talabalar ozod qilinmaydi, ularning muddati kechiktiriladi."
+  },
+
+  // ==========================================
+  // 9-MAVZU: SAF VA UNING BOSHQARILISHI
+  // ==========================================
+  {
+    "q": "O'zbekiston Respublikasi Qurolli Kuchlarining amaldagi Saf Nizomi Mudofaa vazirligi tomonidan qachon tasdiqlangan va u nechta bo'limdan iborat?",
+    "opts": [
+      "2023-yil 1-avgust, 5 bo'lim",
+      "2024-yil 10-sentyabr, 6 bo'lim",
+      "2025-yil 20-may, 7 bo'lim",
+      "2022-yil 14-yanvar, 9 bo'lim"
+    ],
+    "correct": 2,
+    "topicId": 9,
+    "explanation": "Yangi qabul qilingan tahrirga ko'ra Saf Nizomi Mudofaa vazirligi tomonidan 2025-yil 20-mayda tasdiqlangan hamda u 7 bo'lim, 194 moddadan iborat.",
+    "mnemonic": "Yangi Saf nizomi: 2025-yil 20-may, 7 bo'lim."
+  },
+  {
+    "q": "Harbiy xizmatchilar bir chiziqda, belgilangan intervalni saqlagan holda yonma-yon turgan saf nima deb ataladi?",
+    "opts": [
+      "Qator",
+      "Sherenga",
+      "Kolonna",
+      "Mashinalar chizig'i"
+    ],
+    "correct": 1,
+    "topicId": 9,
+    "explanation": "Bir chiziqda yonma-yon turgan saf — Sherenga deb ataladi. Ketma-ket turish esa Qator yoki Kolonnani bildiradi.",
+    "mnemonic": "Yonma-yon (bir chiziqda) = Sherenga."
+  },
+  {
+    "q": "Saf elementlari doirasida \"Distansiya\" so'zining aniq ma'nosini toping.",
+    "opts": [
+      "Front bo'ylab harbiy xizmatchilar o'rtasidagi yonma-yon masofa",
+      "Birinchi sherengadan oxirgi sherengagacha bo'lgan oraliq masofa",
+      "Saf uzunligi bo'ylab (ketma-ket) harbiy xizmatchilar o'rtasidagi masofa",
+      "Safning o'ng va chap qanotlari o'rtasidagi masofa"
+    ],
+    "correct": 2,
+    "topicId": 9,
+    "explanation": "Distansiya — bu saf uzunligi bo'ylab ketma-ket turgan harbiy xizmatchilar (yoki mashinalar) o'rtasidagi masofadir. Yonma-yon masofa bu \"Interval\".",
+    "mnemonic": "Distansiya - oldinga/orqaga qarab. Interval - yonga qarab."
+  },
+
+  // ==========================================
+  // 10-MAVZU: KOMANDALAR VA HARAKATLANISH
+  // ==========================================
+  {
+    "q": "Harbiy saf amalini bekor qilish yoki ijrosini to'xtatish uchun komandir tomonidan qanday komanda beriladi?",
+    "opts": [
+      "BEKOR QILINSIN!",
+      "ORTGA!",
+      "ERKIN!",
+      "QOLDIRILSIN!"
+    ],
+    "correct": 3,
+    "topicId": 10,
+    "explanation": "Saf amalini bekor qilish yoki uning ijrosini darhol to'xtatish uchun nizom bo'yicha \"QOLDIRILSIN!\" komandasi beriladi.",
+    "mnemonic": "Bekor qilish = QOLDIRILSIN."
+  },
+  {
+    "q": "Dastlabki komanda va ijro komandasining o'ziga xos xususiyati qaysi javobda to'g'ri ko'rsatilgan?",
+    "opts": [
+      "Dastlabki komanda past ovozda berilib, ijro komandasi baland ovozda qichqirib aytiladi",
+      "Dastlabki komanda safda turganlar harakatni anglab yetishi uchun cho'ziq tarzda beriladi, ijro komandasi tanaffusdan so'ng qisqa va aniq beriladi",
+      "Faqat ijro komandasi mavjud, dastlabki komandalar faqatgina ogohlantirish uchun qog'ozda yoziladi",
+      "Dastlabki komanda berilgach zudlik bilan harakat boshlanadi, ijro komandasi esa harakatni to'xtatadi"
+    ],
+    "correct": 1,
+    "topicId": 10,
+    "explanation": "Dastlabki komanda ma'noni anglash uchun cho'ziq, ijro komandasi esa tanaffusdan keyin keskin va qisqa tarzda aytiladi.",
+    "mnemonic": "Dastlabkisi cho'zi-i-iq, Ijro esa Keskin."
+  },
+  {
+    "q": "Shaxdam qadam tashlab yurish tezligi va har bir qadamning uzunligi qancha bo'lishi belgilangan?",
+    "opts": [
+      "Daqiqada 165-180 qadam, uzunligi 85-90 sm",
+      "Daqiqada 110-120 qadam, uzunligi 70-80 sm",
+      "Daqiqada 90-100 qadam, uzunligi 60-70 sm",
+      "Daqiqada 130-140 qadam, uzunligi 80-90 sm"
+    ],
+    "correct": 1,
+    "topicId": 10,
+    "explanation": "Qadamlab yurish harakati daqiqada 110-120 qadam tezlikda va uzunligi 70-80 sm etib belgilangan. 165-180 tezlik bu yugurish harakati uchun xos.",
+    "mnemonic": "Shaxdam qadam: 110-120 tezlik, 70-80 sm uzlik."
+  },
+  {
+    "q": "Yugurish harakatidan qadamlab yurish harakatiga o'tish uchun qaysi ijro komandasi berilishi lozim?",
+    "opts": [
+      "TO'XTA!",
+      "Oddiy qadam - BOS!",
+      "Qadam - BOS!",
+      "Shaxdam - BOS!"
+    ],
+    "correct": 2,
+    "topicId": 10,
+    "explanation": "Yugurish harakatidan qadamlab yurish harakatiga o'tish uchun \"Qadam – BOS!\" komandasi beriladi.",
+    "mnemonic": "Yugurishdan oddiy yurishga o'tish uchun -> Qadam - BOS!"
+  }
+]

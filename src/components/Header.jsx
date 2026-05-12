@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
@@ -9,6 +10,7 @@ import { EXAM_DATE } from '../config';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = ({ theme, toggleTheme }) => {
+  const navigate = useNavigate();
   const { state, updateState } = useContext(AppContext);
   const { toast, showToast } = useContext(ToastContext);
   const { user, logout } = useAuth();
@@ -58,7 +60,7 @@ const Header = ({ theme, toggleTheme }) => {
   return (
     <>
       <div className="header">
-        <div className="logo" onClick={() => window.location.reload()}>
+        <div className="logo" onClick={() => navigate('/')}>
           <div className="logo-box">IQ</div>
           <span className="logo-text">RO</span>
         </div>
@@ -141,14 +143,14 @@ const Header = ({ theme, toggleTheme }) => {
                     <div style={{ display: 'flex', gap: '8px' }}>
                       <button
                         className={`btn btn-sm ${state.activeCategory === 'chqbt' ? 'btn-primary' : 'btn-outline'}`}
-                        onClick={() => { updateState({ activeCategory: 'chqbt' }); setShowUserMenu(false); }}
+                        onClick={() => { updateState({ activeCategory: 'chqbt' }); navigate('/'); setShowUserMenu(false); }}
                         style={{ flex: 1, padding: '8px', fontSize: '12px' }}
                       >
                         <Medal size={16} style={{ marginRight: '6px' }} /> CHQBT
                       </button>
                       <button
                         className={`btn btn-sm ${state.activeCategory === 'art' ? 'btn-primary' : 'btn-outline'}`}
-                        onClick={() => { updateState({ activeCategory: 'art' }); setShowUserMenu(false); }}
+                        onClick={() => { updateState({ activeCategory: 'art' }); navigate('/'); setShowUserMenu(false); }}
                         style={{ flex: 1, padding: '8px', fontSize: '12px' }}
                       >
                         <Palette size={16} style={{ marginRight: '6px' }} /> San'at

@@ -1,0 +1,267 @@
+[
+  // ==========================================
+  // 7-8 MAVZULAR: CHAQIRUV VA MUDDATLI XIZMAT
+  // ==========================================
+  {
+    "q": "Chaqiruv uchastkalarida qayd etiladigan fuqarolarni tibbiy ko'rikdan o'tkazuvchi komissiya tarkibiga kamida qanday shifokorlar kiritilishi shart?",
+    "opts": [
+      "Faqat jarroh, terapevt, psixiatr",
+      "Jarroh, terapevt, nevropatolog, psixiatr, lor, stomatolog, oftolmolog",
+      "Terapevt va kardiolog",
+      "Faqatgina psixiatr va terapevt"
+    ],
+    "correct": 1,
+    "topicId": 7,
+    "explanation": "Qonunchilikka ko'ra chaqiruv komissiyasiga jarroh, terapevt, nevropatolog, psixiatr, lor, stomatolog, oftolmolog, zarurat bo'lsa boshqa ixtisoslikdagi shifokorlar ham kiritiladi.",
+    "mnemonic": "7 ta asosiy shifokor: jarroh, terapevt, asab, ruhiyat, quloq-tomoq, tish va ko'z (oftolmolog)."
+  },
+  {
+    "q": "O'zbekiston Respublikasi Prezidentining navbatdagi chaqiruv to'g'risidagi qarori qachon e'lon qilinadi?",
+    "opts": [
+      "Chaqiruv boshlanishiga kamida 10 kun qolganda",
+      "Chaqiruv boshlanishiga kamida bir oy qolganda",
+      "Chaqiruv kunining o'zida",
+      "Chaqiruvdan kamida uch oy oldin"
+    ],
+    "correct": 1,
+    "topicId": 8,
+    "explanation": "O'zbekiston Respublikasi Prezidentining qarori bilan chaqiruv boshlanishiga kamida bir oy qolganda ommaviy axborot vositalarida e'lon qilinadi.",
+    "mnemonic": "Chaqiruvdan 1 oy oldin e'lon qilinadi."
+  },
+
+  // ==========================================
+  // 9-MAVZU: SAF NIZOMI VA ATAMALARI
+  // ==========================================
+  {
+    "q": "Safning \"Qanoti\" hamda \"Front\"i deganda nima tushuniladi?",
+    "opts": [
+      "Qanot – safning orqa tomoni, Front – safning o'ng tomoni",
+      "Qanot – safning o'ng va chap tomoni, Front – harbiy xizmatchilar yuzlanib turgan tomon",
+      "Qanot – safning uzunligi, Front – safning markaziy qismi",
+      "Qanot – harbiy xizmatchilar yuzlanib turgan tomon, Front – safning chap tomoni"
+    ],
+    "correct": 1,
+    "topicId": 9,
+    "explanation": "Qanot – safning o'ng va chap tomoni bo'lib, saf burilganda nomi o'zgarmaydi. Front – harbiy xizmatchilar yuzlanib turgan tomon.",
+    "mnemonic": "Qanot = Ikki yon (o'ng-chap). Front = Yuzlangan tomon."
+  },
+  {
+    "q": "Front bo'ylab harbiy xizmatchilar o'rtasidagi masofa qanday ataladi?",
+    "opts": [
+      "Distansiya",
+      "Interval",
+      "Saf eni",
+      "Qadam"
+    ],
+    "correct": 1,
+    "topicId": 9,
+    "explanation": "Front bo'ylab yonma-yon turgan harbiy xizmatchilar o'rtasidagi masofa - Interval deb ataladi.",
+    "mnemonic": "Yoniga = Interval, Orqasiga = Distansiya."
+  },
+
+  // ==========================================
+  // 10-12 MAVZULAR: SAF HARAKATLARI
+  // ==========================================
+  {
+    "q": "\"Oyoqlar yelka kengligida, TUR!\" komandasi berilganda ekipirovkasiz harbiy xizmatchi qanday holatga o'tadi?",
+    "opts": [
+      "O'ng oyog'ini yonga tashlaydi va qo'llarini ko'kragida chalishtiradi",
+      "Chap oyog'ini yarim qadam yonga tashlab, qo'llarini orqa tomonga oladi, chap qo'li kaftini o'ng qo'li bilan ushlab turadi",
+      "Chap oyog'ini orqaga tashlaydi va qo'llarini yoniga tushiradi",
+      "Hech qanday harakat qilmaydi, faqat oyoq uchlarini ochadi"
+    ],
+    "correct": 1,
+    "topicId": 10,
+    "explanation": "Ekipirovkasiz harbiy xizmatchi chap oyog'ini yarim qadam yonga tashlab, qo'llarini orqa tomonga oladi, barmoqlari bukilmagan chap qo'l kaftini o'ng qo'l bilan ushlab, kamar ustida qovushtiradi.",
+    "mnemonic": "Chap oyoq yonga, Orqada chap kaft o'ng qo'l ichiga."
+  },
+  {
+    "q": "Safda bosh kiyim yechilganda uni to'g'ri ushlab turish holati qanday bo'lishi kerak?",
+    "opts": [
+      "O'ng qo'lda nishoni o'ziga qaratilgan holatda",
+      "Chap qo'lda nishoni old tomon qaratilgan, erkin tushirilgan holatda",
+      "Ikkala qo'l bilan ko'krak qafasi oldida",
+      "O'ng qo'l bilan belbog'ga qistirib qo'yiladi"
+    ],
+    "correct": 1,
+    "topicId": 10,
+    "explanation": "Yechilgan bosh kiyim erkin tushirilgan chap qo'lga, nishoni old tomonga qaratilgan holatda ushlab turiladi.",
+    "mnemonic": "Yechilgan qalpoq: Chap qo'lda, nishoni oldinga."
+  },
+  {
+    "q": "Joyda qadam bosish harakati davomida oyoq yerdan necha santimetr yuqoriga ko'tariladi?",
+    "opts": [
+      "5 – 10 cm",
+      "15 – 20 cm",
+      "25 – 30 cm",
+      "30 – 35 cm"
+    ],
+    "correct": 1,
+    "topicId": 12,
+    "explanation": "Joyda qadam bosish \"Joyingda, qadam - BOS!\" komandasi bilan bajarilib, oyoq yerdan 15 - 20 cm yuqoriga ko'tariladi.",
+    "mnemonic": "Shaxdam qadam ko'tarilishi = Joyda qadam ko'tarilishi = 15-20 cm."
+  },
+
+  // ==========================================
+  // 13-15 MAVZULAR: BURILISHLAR VA SAFDAN CHIQISH
+  // ==========================================
+  {
+    "q": "Yurish davomida ortga burilish uchun dastlabki komanda qaysi oyoq yerga bosilishi bilan bir vaqtda beriladi?",
+    "opts": [
+      "Chap oyoq",
+      "O'ng oyoq",
+      "Muhim emas",
+      "Faqat joyida turib burilish kerak"
+    ],
+    "correct": 1,
+    "topicId": 13,
+    "explanation": "Yurish davomida ortga burilish uchun ijro komandasi O'NG oyoq yerga bosilishi bilan bir vaqtda beriladi. So'ng chap bilan bir qadam va hokazo.",
+    "mnemonic": "Yurishda ORTGA = O'ng oyoq yerga tekkanda."
+  },
+  {
+    "q": "Safdan tashqarida (binolarda) bosh kiyimsiz yurib borayotgan harbiy xizmatchi boshliq yonidan o'tayotganda qanday harbiycha salom beradi?",
+    "opts": [
+      "Hech qanday harakat qilmaydi",
+      "O'ng qo'lini chakkasiga olib keladi va boshliq tomon yuzini buradi",
+      "O'ng qo'lini boshiga (chakkaga) olib boradi, chap qo'lini soni yaqinida tutib harakatdan to'xtatadi",
+      "Ikki qo'lini ko'ksiga qo'yib bosh egadi"
+    ],
+    "correct": 2,
+    "topicId": 14,
+    "explanation": "Bosh kiyimda ham, bosh kiyimsiz ham yurish davomida salom berishda o'ng qo'l bosh kiyimga (chakkaga) keltiriladi, chap qo'l esa son yonida erkin harakatdan to'xtatiladi.",
+    "mnemonic": "Chap qo'l son yonida qotadi, O'ng qo'l chakkada."
+  },
+
+  // ==========================================
+  // 16-17 MAVZULAR: MUDOFAA QONUNI VA INTIZOM NIZOMI
+  // ==========================================
+  {
+    "q": "Qurolli Kuchlar Oliy Bosh Qo'mondoni kim?",
+    "opts": [
+      "Mudofaa vaziri",
+      "Bosh shtab boshlig'i",
+      "O'zbekiston Respublikasi Prezidenti",
+      "Xavfsizlik Kengashi raisi"
+    ],
+    "correct": 2,
+    "topicId": 16,
+    "explanation": "Mudofaa va Qurolli Kuchlarga O'zbekiston Respublikasi Prezidenti – Qurolli Kuchlar Oliy Bosh Qo'mondoni rahbarlik qiladi.",
+    "mnemonic": "Prezident = Oliy Bosh Qo'mondon."
+  },
+  {
+    "q": "Komandir (boshliq) bo'linmadagi shaxsiy tarkibni qanday rag'batlantirish huquqiga ega?",
+    "opts": [
+      "Har oyda bir marta ixtiyoriy ravishda barcha rag'batlantirish turlarini bir vaqtda qo'llash",
+      "Bitta namunali ish uchun faqat bir marotaba bitta rag'batlantirish turini qo'llash",
+      "Bir qilig'i uchun ham mukofot, ham qisqa ta'til berish",
+      "Intizomiy ta'zir bilan bir vaqtda yorliq berish"
+    ],
+    "correct": 1,
+    "topicId": 17,
+    "explanation": "Har bir komandir bitta namunali ish uchun harbiy xizmatchi yoki bo'linmani faqat bir marotaba rag'batlantirishga haqli.",
+    "mnemonic": "Bitta yaxshi ishga - Bitta rag'batlantirish."
+  },
+
+  // ==========================================
+  // 18, 20 MAVZULAR: JENEVA HUQUQI VA FUQARO MUHOFAZASI
+  // ==========================================
+  {
+    "q": "Oq bayroq xalqaro insonparvarlik huquqida nimanining timsoli hisoblanadi?",
+    "opts": [
+      "Faqatgina taslim bo'lish",
+      "Tibbiy va sanitar xizmatlarini ogohlantirish",
+      "Sulh tuzish yoki taslim bo'lish haqida kelishish uchun yuboriluvchi elchilar (parlamentyorlar) bayrog'i",
+      "Neytral hudud belgisi"
+    ],
+    "correct": 2,
+    "topicId": 18,
+    "explanation": "Oq bayroq – sulh tuzish yoki taslim bo'lish haqida kelishish uchun yuboriluvchi elchilar, parlamentyorlar bayrog'i hisoblanadi.",
+    "mnemonic": "Oq bayroq = Elchi va Parlamentyor."
+  },
+  {
+    "q": "\"Fuqaro muhofazasi to'g'risida\"gi Qonun qachon qabul qilingan?",
+    "opts": [
+      "1998-yil 12-aprelda",
+      "2000-yil 26-mayda",
+      "2001-yil 11-mayda",
+      "2018-yil 9-yanvarda"
+    ],
+    "correct": 1,
+    "topicId": 20,
+    "explanation": "\"Fuqaro muhofazasi to'g'risida\"gi Qonun 2000-yil 26-may kuni qabul qilingan. (2001 yil 11-may \"Mudofaa to'g'risida\"gi qonun, 2018 yil 9-yanvar Mudofaa Doktrinasi).",
+    "mnemonic": "Fuqaro muhofazasi = 2000-yil."
+  },
+
+  // ==========================================
+  // 21, 23 MAVZULAR: FAVQULODDA VAZIYATLAR VA PANOHGOHLAR
+  // ==========================================
+  {
+    "q": "Kimyoviy xavfli obyektlardagi avariyalar (Zaharli moddalar otilib chiqishi) qanday turdagi favqulodda vaziyatga kiradi?",
+    "opts": [
+      "Tabiiy xususiyatli",
+      "Ekologik xususiyatli",
+      "Texnogen xususiyatli",
+      "Harbiy-siyosiy xususiyatli"
+    ],
+    "correct": 2,
+    "topicId": 21,
+    "explanation": "Insonlarning ishlab chiqarish yoki xo'jalik faoliyati bilan bog'liq bo'lgan (transport, kimyoviy, energetika avariyalari) holatlar Texnogen xususiyatli favqulodda vaziyatlar deyiladi.",
+    "mnemonic": "Zavod va avariyalar = Texnogen (texnika oqibati)."
+  },
+  {
+    "q": "Muhofaza inshootida suv bilan ta'minlash tizimida avariya holati uchun har bir kishiga sutkasiga qancha texnik suv zaxirasi bo'lishi belgilangan?",
+    "opts": [
+      "3 litr",
+      "5-7 litr",
+      "10 litr",
+      "1,5 litr"
+    ],
+    "correct": 1,
+    "topicId": 23,
+    "explanation": "Avariya holati uchun sutkasiga har bir kishiga 3 litr ichimlik suvi va 5–7 litr texnik suv zaxirasi mavjud bo'lishi belgilangan.",
+    "mnemonic": "Ichimlik 3 litr, Texnik suv 5-7 litr."
+  },
+
+  // ==========================================
+  // 24, 27, 28 MAVZULAR: GAZNIQOBLAR VA QUROLLAR
+  // ==========================================
+  {
+    "q": "Maktab o'quvchilari uchun mo'ljallangan filtrlovchi gazniqoblarning eng ilg'or modeli qaysi?",
+    "opts": [
+      "GP-5",
+      "PDF-2D",
+      "PDF-2Sh",
+      "L-1"
+    ],
+    "correct": 2,
+    "topicId": 24,
+    "explanation": "Bugungi kunda maktabgacha yoshdagilar uchun PDF-2D, maktab o'quvchilari uchun PDF-2Sh bolalar gazniqobi ilg'or hisoblanadi.",
+    "mnemonic": "Sh = Shkolnik (Maktab o'quvchisi) -> PDF-2Sh."
+  },
+  {
+    "q": "Umumqo'shin himoya to'plami (UHT) ni kiyish vaqtida \"A'lo\" baho olish uchun qanday vaqt ko'rsatkichi talab etiladi?",
+    "opts": [
+      "Plash holatida: 3 daqiqa, Kombinezon holatida: 4 daqiqa",
+      "Plash holatida: 4 daqiqa, Kombinezon holatida: 5 daqiqa",
+      "Plash holatida: 2 daqiqa, Kombinezon holatida: 3 daqiqa",
+      "Plash holatida: 4 daqiqa 20 soniya"
+    ],
+    "correct": 0,
+    "topicId": 27,
+    "explanation": "UHT ni Plash holatida kiyish 3 daqiqada (A'lo), Kombinezon holatida kiyish 4 daqiqada (A'lo) bajarilishi kerak.",
+    "mnemonic": "A'lo baho: Plash - 3, Kombinezon - 4."
+  },
+  {
+    "q": "AK-74 avtomatining to'g'ridan-to'g'ri yo'nalishda ko'krak qiyofali nishonga qarata o't ochish masofasi qancha?",
+    "opts": [
+      "350 metr",
+      "440 metr",
+      "525 metr",
+      "625 metr"
+    ],
+    "correct": 1,
+    "topicId": 28,
+    "explanation": "Jadvalga muvofiq, AK-74 da ko'krak qiyofali nishonga to'g'ridan to'g'ri o't ochish masofasi 440 metrni tashkil etadi (AK-47 da 350m). Yuguruvchi nishonga esa 625 metr.",
+    "mnemonic": "AK-74: Ko'krak = 440m, Yuguruvchi = 625m."
+  }
+]

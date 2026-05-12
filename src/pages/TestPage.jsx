@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
@@ -7,12 +8,21 @@ import { BADGES, getEarnedBadges } from '../data/badges';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RefreshCw, ArrowLeft, Home, Target, PenTool, Zap, MessageCircle, ThumbsUp, ThumbsDown, Clock, Share2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import ObjectionModal from '../components/shared/ObjectionModal';
+import SafeHtml from '../components/shared/SafeHtml';
 import { BATCH_SIZE, QUESTION_TIMER_SECONDS } from '../config';
 import { db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
+import { smartSort, summarizeTestResults } from '../engine/SmartQuestionEngine';
 
-const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
-  const { state, addScore, addMistake } = useContext(AppContext);
+const TestPage = () => {
+  const navigate = useNavigate();
+  const { state, addScore, addMistake, batchCommitResults, updateState } = useContext(AppContext);
+  const mode = state.testMode || 'exam';
+  const setMode = (m) => updateState({ testMode: m });
+  const topicId = state.topicId ?? -1;
+  const setTopicId = (id) => updateState({ topicId: id });
+  const goBack = () => navigate('/');
   const { addObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
   const [questions, setQuestions] = useState([]);
@@ -24,7 +34,6 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
 
   // Objection Modal State
   const [showObjectionModal, setShowObjectionModal] = useState(false);
-  const [objectionText, setObjectionText] = useState('');
 
   // Timer
   const [timeLeft, setTimeLeft] = useState(QUESTION_TIMER_SECONDS);
@@ -68,7 +77,6 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
           clearInterval(timerRef.current);
           const q = questions[currentQ];
           if (q && answers[currentQ] === undefined) {
-            addMistake(topicId, q.q, q.opts[q.correct], q.opts);
             setAnswers(prev2 => ({ ...prev2, [currentQ]: -1 })); // -1 = vaqt tugadi
           }
           return 0;
@@ -149,14 +157,22 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
         }
 
         const snap = await getDocs(qQuery);
-        qList = snap.docs.map(doc => ({
+        const rawList = snap.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
         }));
 
-        if (topicId === -1) {
-          qList = qList.sort(() => 0.5 - Math.random());
-        }
+        // 🧠 SMART SORT — aqlli savol tanlash
+        // Zaif mavzulardagi savollarni ko'proq ko'rsatadi,
+        // spaced repetition muddati kelgan savollarni ustivor qiladi
+        qList = smartSort(rawList, {
+          topicStats: state.topicStats,
+          spacedCards: state.spacedCards || [],
+          mistakes: (state.stats?.[state.activeCategory]?.mistakes) || [],
+          activeCategory: state.activeCategory,
+          batchSize: rawList.length,
+          topicId
+        });
       }
 
       setFullPool(qList);
@@ -183,7 +199,6 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
     if (q.correct === optIdx) {
       const newCombo = comboCount + 1;
       setComboCount(newCombo);
-      addScore(2, topicId);
 
       const MOTIVATIONS = [
         { min: 1, words: ["To'g'ri! ✓", "Yaxshi! 👍", "Ha! ✅"] },
@@ -206,7 +221,6 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
     } else {
       setComboCount(0);
       setMotivationText('');
-      addMistake(topicId, q.q, q.opts[q.correct], q.opts);
     }
 
     setTimeout(() => {
@@ -214,14 +228,11 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
     }, 400);
   };
 
-  const handleObjection = () => {
-    if (objectionText.trim()) {
-      const qObj = questions[currentQ];
-      addObjection(topicId, state.activeCategory, qObj, objectionText);
-      setObjectionText('');
-      setShowObjectionModal(false);
-      showToast("E'tiroz qabul qilindi. Rahmat!", 'success');
-    }
+  const handleObjection = (text) => {
+    const qObj = questions[currentQ];
+    addObjection(topicId, state.activeCategory, qObj, text);
+    setShowObjectionModal(false);
+    showToast("E'tiroz qabul qilindi. Rahmat!", 'success');
   };
 
   const handleFlashcardKnown = (known) => {
@@ -247,6 +258,13 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
       setShowTheory(true);
     }
   }, [topicId, mode, selectedBatch, questions.length]);
+
+  const handleShowResults = () => {
+    setShowResults(true);
+    // 🧠 SMART ENGINE: Natijalarni tahlil qilish va bir marta saqlash
+    const results = summarizeTestResults(questions, answers, state.spacedCards || [], topicId);
+    batchCommitResults(results);
+  };
 
   const correctCount = Object.keys(answers).filter(k => answers[k] === questions[parseInt(k)]?.correct).length;
 
@@ -289,7 +307,7 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page" style={{ padding: '12px 16px' }}>
       <div className="test-header" style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingBottom: '8px', borderBottom: '1px solid var(--border)', marginBottom: '12px' }}>
         <button
-          onClick={goBack}
+          onClick={() => navigate('/')}
           className="btn-outline"
           style={{ borderRadius: '12px', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0, flexShrink: 0 }}
           title="Orqaga"
@@ -446,7 +464,7 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
                 )}
 
                 {questions[currentQ].image && <div style={{ margin: '0 0 16px', textAlign: 'center' }}><img src={questions[currentQ].image} alt="Savol rasmi" style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '12px', border: '1px solid var(--border)' }} /></div>}
-                {questions[currentQ].isHtml ? <div className="q-text" dangerouslySetInnerHTML={{ __html: questions[currentQ].q }} /> : <div className="q-text" style={{ whiteSpace: 'pre-line' }}>{questions[currentQ].q}</div>}
+                {questions[currentQ].isHtml ? <SafeHtml html={questions[currentQ].q} className="q-text" /> : <div className="q-text" style={{ whiteSpace: 'pre-line' }}>{questions[currentQ].q}</div>}
                 <div className="options">
                   {questions[currentQ].opts.map((opt, i) => {
                     const answered = answers[currentQ] !== undefined;
@@ -501,7 +519,7 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '320px', margin: '0 auto' }}>
                 <button className="btn btn-primary" onClick={generateQuestions}><RefreshCw size={18} /> Yana ishlash</button>
                 {state.mistakes.length > 0 && <button className="btn btn-outline" onClick={() => setMode('mistakes')}><Target size={18} /> Xatolar ustida ishlash</button>}
-                <button className="btn btn-outline" onClick={goBack}><Home size={18} /> Boshqa bo'limga</button>
+                <button className="btn btn-outline" onClick={() => navigate('/')}><Home size={18} /> Boshqa bo'limga</button>
                 <div style={{ marginTop: '8px', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
                   <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}><Share2 size={13} /> Natijani ulashing</div>
                   <div style={{ display: 'flex', gap: '8px' }}>
@@ -516,33 +534,19 @@ const TestPage = ({ mode, setMode, topicId, setTopicId, goBack }) => {
           {!showResults && (
             <div className="q-nav" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px' }}>
               <button disabled={currentQ === 0} className="btn btn-outline" onClick={() => setCurrentQ(prev => prev - 1)}>Orqaga</button>
-              {Object.keys(answers).length === questions.length ? <button className="btn btn-primary" onClick={() => setShowResults(true)}>Natijani Ko'rish</button> : <button disabled={currentQ === questions.length - 1} className="btn btn-outline" onClick={() => setCurrentQ(prev => prev + 1)}>Keyingi</button>}
+              {Object.keys(answers).length === questions.length ? <button className="btn btn-primary" onClick={handleShowResults}>Natijani Ko'rish</button> : <button disabled={currentQ === questions.length - 1} className="btn btn-outline" onClick={() => setCurrentQ(prev => prev + 1)}>Keyingi</button>}
             </div>
           )}
         </div>
       )}
 
       {/* E'TIROZ MODALI */}
-      {showObjectionModal && (
-        <div className="modal-overlay" onClick={() => setShowObjectionModal(false)}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <div className="modal-title">⚠️ E'tiroz bildirish</div>
-            <div className="modal-text" style={{ fontSize: 13, lineHeight: 1.5 }}>
-              <strong>Savol:</strong> {questions[currentQ]?.q}
-            </div>
-            <textarea
-              className="modal-input"
-              placeholder="Muammo yoki xatolikni tushuntiring..."
-              value={objectionText}
-              onChange={e => setObjectionText(e.target.value)}
-            />
-            <div className="modal-actions">
-              <button className="btn btn-outline" onClick={() => setShowObjectionModal(false)}>Bekor</button>
-              <button className="btn btn-primary" onClick={handleObjection}>Yuborish</button>
-            </div>
-          </div>
-        </div>
-      )}
+      <ObjectionModal
+        isOpen={showObjectionModal}
+        onClose={() => setShowObjectionModal(false)}
+        questionText={questions[currentQ]?.q}
+        onSubmit={handleObjection}
+      />
     </motion.div>
   );
 };

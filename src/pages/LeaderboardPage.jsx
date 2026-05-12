@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react'; // Final sync trigger
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Trophy, Medal, Crown, Star, ArrowLeft } from 'lucide-react';
 import { collection, query, orderBy, limit, getDocs, doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { AuthContext } from '../context/AuthContext';
 
-const LeaderboardPage = ({ goBack }) => {
+const LeaderboardPage = () => {
+  const navigate = useNavigate();
+  const goBack = () => navigate('/');
   const { user } = useContext(AuthContext);
   const [leaders, setLeaders] = useState([]);
   const [loading, setLoading] = useState(true);

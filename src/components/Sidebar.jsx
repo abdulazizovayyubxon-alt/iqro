@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { useAdmin } from '../hooks/useAdmin';
 import { TOPICS } from '../data/mockData';
@@ -15,12 +16,34 @@ import {
   Palette
 } from 'lucide-react';
 
-const Sidebar = ({ currentPage, setCurrentPage, navigateToTest }) => {
+// URL xaritasi — route ↔ sahifa nomi
+const ROUTE_MAP = {
+  '/': 'dashboard',
+  '/test': 'test',
+  '/exam': 'exam',
+  '/review': 'smartreview',
+  '/leaderboard': 'leaderboard',
+  '/achievements': 'achievements',
+  '/admin': 'admin',
+};
+
+const Sidebar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { state, updateState } = useContext(AppContext);
   const { isAdmin } = useAdmin();
   const [showMobSubjects, setShowMobSubjects] = useState(false);
 
+  // Joriy sahifani aniqlash
+  const currentPage = ROUTE_MAP[location.pathname] || 'dashboard';
+
   const activeCategoryName = state.activeCategory === 'art' ? "Tasviriy san'at" : "CHQBT";
+
+  // Test sahifasiga o'tish (topicId va mode bilan)
+  const navigateToTest = (topicId, mode = 'exam') => {
+    updateState({ topicId, testMode: mode });
+    navigate('/test');
+  };
 
   return (
     <>
@@ -30,14 +53,14 @@ const Sidebar = ({ currentPage, setCurrentPage, navigateToTest }) => {
           <div className="sidebar-title">Fanlar</div>
           <div
             className={`nav-item ${state.activeCategory === 'chqbt' ? 'active' : ''}`}
-            onClick={() => { updateState({ activeCategory: 'chqbt' }); setCurrentPage('dashboard'); }}
+            onClick={() => { updateState({ activeCategory: 'chqbt' }); navigate('/'); }}
             style={{ marginBottom: '5px' }}
           >
             <span className="nav-icon"><Medal size={20} /></span> CHQBT Platformasi
           </div>
           <div
             className={`nav-item ${state.activeCategory === 'art' ? 'active' : ''}`}
-            onClick={() => { updateState({ activeCategory: 'art' }); setCurrentPage('dashboard'); }}
+            onClick={() => { updateState({ activeCategory: 'art' }); navigate('/'); }}
           >
             <span className="nav-icon"><Palette size={20} /></span> Tasviriy san'at
           </div>
@@ -48,7 +71,7 @@ const Sidebar = ({ currentPage, setCurrentPage, navigateToTest }) => {
           <div className="sidebar-title hide-mobile">Asosiy</div>
           <div
             className={`nav-item ${currentPage === 'dashboard' ? 'active' : ''}`}
-            onClick={() => setCurrentPage('dashboard')}
+            onClick={() => navigate('/')}
           >
             <span className="nav-icon"><LayoutDashboard size={20} /></span>
             <span className="nav-label">Dashboard</span>
@@ -64,15 +87,15 @@ const Sidebar = ({ currentPage, setCurrentPage, navigateToTest }) => {
 
           <div
             className={`nav-item ${currentPage === 'exam' ? 'active' : ''}`}
-            onClick={() => setCurrentPage('exam')}
+            onClick={() => navigate('/exam')}
           >
             <span className="nav-icon"><GraduationCap size={20} /></span>
             <span className="nav-label">Imtihon</span>
           </div>
 
           <div
-            className={`nav-item ${currentPage === 'smartreview' ? 'active' : ''}`}
-            onClick={() => setCurrentPage('smartreview')}
+            className={`nav-item ${location.pathname === '/review' ? 'active' : ''}`}
+            onClick={() => navigate('/review')}
           >
             <span className="nav-icon"><Brain size={20} /></span>
             <span className="nav-label">Takrorlash</span>
@@ -85,7 +108,7 @@ const Sidebar = ({ currentPage, setCurrentPage, navigateToTest }) => {
 
           <div
             className={`nav-item ${currentPage === 'leaderboard' ? 'active' : ''}`}
-            onClick={() => setCurrentPage('leaderboard')}
+            onClick={() => navigate('/leaderboard')}
           >
             <span className="nav-icon"><Trophy size={20} /></span>
             <span className="nav-label">Reyting</span>
@@ -93,7 +116,7 @@ const Sidebar = ({ currentPage, setCurrentPage, navigateToTest }) => {
 
           <div
             className={`nav-item ${currentPage === 'achievements' ? 'active' : ''}`}
-            onClick={() => setCurrentPage('achievements')}
+            onClick={() => navigate('/achievements')}
           >
             <span className="nav-icon"><Medal size={20} /></span>
             <span className="nav-label">Yutuqlar</span>
@@ -103,7 +126,7 @@ const Sidebar = ({ currentPage, setCurrentPage, navigateToTest }) => {
           {isAdmin && (
             <div
               className={`nav-item ${currentPage === 'admin' ? 'active' : ''}`}
-              onClick={() => setCurrentPage('admin')}
+              onClick={() => navigate('/admin')}
             >
               <span className="nav-icon"><Shield size={20} /></span>
               <span className="nav-label">Admin Panel</span>
@@ -132,7 +155,7 @@ const Sidebar = ({ currentPage, setCurrentPage, navigateToTest }) => {
             return (
               <div
                 key={t.id}
-                className={`nav-item ${currentPage === 'test' && state.topicId === t.id ? 'active' : ''} ${pct >= 70 ? 'done' : ''}`}
+                className={`nav-item ${location.pathname === '/test' && state.topicId === t.id ? 'active' : ''} ${pct >= 70 ? 'done' : ''}`}
                 onClick={() => navigateToTest(t.id, 'exam')}
               >
                 <span className="nav-icon">{t.icon}</span>
@@ -156,14 +179,14 @@ const Sidebar = ({ currentPage, setCurrentPage, navigateToTest }) => {
               <button
                 className={`btn ${state.activeCategory === 'chqbt' ? 'btn-primary' : 'btn-outline'}`}
                 style={{ justifyContent: 'flex-start', padding: '16px', display: 'flex', alignItems: 'center' }}
-                onClick={() => { updateState({ activeCategory: 'chqbt' }); setCurrentPage('dashboard'); setShowMobSubjects(false); }}
+                onClick={() => { updateState({ activeCategory: 'chqbt' }); navigate('/'); setShowMobSubjects(false); }}
               >
                 <Medal size={20} style={{ marginRight: '10px' }} /> CHQBT Platformasi
               </button>
               <button
                 className={`btn ${state.activeCategory === 'art' ? 'btn-primary' : 'btn-outline'}`}
                 style={{ justifyContent: 'flex-start', padding: '16px', display: 'flex', alignItems: 'center' }}
-                onClick={() => { updateState({ activeCategory: 'art' }); setCurrentPage('dashboard'); setShowMobSubjects(false); }}
+                onClick={() => { updateState({ activeCategory: 'art' }); navigate('/'); setShowMobSubjects(false); }}
               >
                 <Palette size={20} style={{ marginRight: '10px' }} /> Tasviriy san'at
               </button>

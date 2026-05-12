@@ -1,0 +1,242 @@
+[
+  // ==========================================
+  // 28-29 MAVZULAR: AK-74, SVD, RPG, PM TEXNIK XUSUSIYATLARI
+  // ==========================================
+  {
+    "q": "AK-47 va RPK-74 qurollarida o'qning boshlang'ich tezliklari (m/s) to'g'ri ko'rsatilgan qatorni toping.",
+    "opts": [
+      "AK-47: 900 m/s; RPK-74: 715 m/s",
+      "AK-47: 715 m/s; RPK-74: 960 m/s",
+      "AK-47: 825 m/s; RPK-74: 900 m/s",
+      "AK-47: 960 m/s; RPK-74: 825 m/s"
+    ],
+    "correct": 1,
+    "topicId": 28,
+    "explanation": "AK-47 eski va og'irroq o'qdan foydalanadi, tezligi 715 m/s. RPK-74 pulemyotining stvoli uzunroq bo'lgani uchun o'qning boshlang'ich tezligi juda yuqori - 960 m/s gacha yetadi (AK-74 da esa 900 m/s).",
+    "mnemonic": "AK-47 eng sekin (715), RPK eng tez (960)."
+  },
+  {
+    "q": "Kalashnikov pulemyoti (PKM) ning to'liq o'qdonlarisiz og'irligi hamda uning tasmali qutilariga qancha o'q sig'ishi belgilangan?",
+    "opts": [
+      "Og'irligi 5.46 kg, sig'imi 75/100 dona",
+      "Og'irligi 8.2 kg, sig'imi 100/200 dona",
+      "Og'irligi 4.3 kg, sig'imi 45/90 dona",
+      "Og'irligi 10 kg, sig'imi 200/250 dona"
+    ],
+    "correct": 1,
+    "topicId": 29,
+    "explanation": "PKM pulemyoti ancha og'ir qurol bo'lib, og'irligi 8.2 kg ni tashkil qiladi va uning tasmali qutilari 100 yoki 200 ta patronga mo'ljallangan.",
+    "mnemonic": "PKM = 8.2 kg va 100/200 talik tasma."
+  },
+  {
+    "q": "SVD (Dragunov merganlik miltig'i) ning optik mo'ljalga olish moslamasi bilan nishonga olib otish masofasi va jangovar o't ochish tezligi (bir daqiqada) qancha?",
+    "opts": [
+      "1000 metr va daqiqasiga 60 dona",
+      "1200 metr va daqiqasiga 40 dona",
+      "1300 metr va daqiqasiga 30 dona",
+      "1500 metr va daqiqasiga 10 dona"
+    ],
+    "correct": 2,
+    "topicId": 29,
+    "explanation": "SVD optik mo'ljal bilan 1300 metrgacha aniq ura oladi (ochiq nishon bilan 1200m). Mergan quroli bo'lgani uchun tezligi avtomatlarga qaraganda pastroq - daqiqasiga 30 dona.",
+    "mnemonic": "SVD Optik=1300, Ochiq=1200, Tezlik=30 (xuddi PM kabi)."
+  },
+  {
+    "q": "RPG-7 granatomyotining mo'ljalga olish uzoqligi va PG-7V granatasi bilan eng ta'sirli o't ochish masofasi qanchani tashkil etadi?",
+    "opts": [
+      "Mo'ljalga olish: 1000 m; Ta'sirli masofa: 500 m",
+      "Mo'ljalga olish: 500 m; Ta'sirli masofa: 330 m",
+      "Mo'ljalga olish: 800 m; Ta'sirli masofa: 400 m",
+      "Mo'ljalga olish: 300 m; Ta'sirli masofa: 200 m"
+    ],
+    "correct": 1,
+    "topicId": 29,
+    "explanation": "RPG-7 da mo'ljalga olish masofasi 500 m, eng ta'sirli otish masofasi esa PG-7V granatasi bilan 330 m, PG-7VM granatasi bilan 310 m.",
+    "mnemonic": "RPG-7: Mo'ljal yarim kilometr (500), Ta'sir esa taxminan uch yuz (330)."
+  },
+  {
+    "q": "9 millimetrli Makarov to'pponchasi (PM) da o'qning zarar yetkazish (talafot) kuchi qancha masofagacha saqlanib qoladi?",
+    "opts": [
+      "50 metrgacha",
+      "100 metrgacha",
+      "350 metrgacha",
+      "500 metrgacha"
+    ],
+    "correct": 2,
+    "topicId": 29,
+    "explanation": "PM da o't ochish 50 metrgacha samarali hisoblanadi (aniq tegadi), biroq o'qning o'ldirish (zarar yetkazish) kuchi 350 metrgacha saqlanib qoladi.",
+    "mnemonic": "PM: Aniq 50, Zarari 350 gacha."
+  },
+
+  // ==========================================
+  // 30-MAVZU: QUROL QISMLARI VA MEXANIZMLARI
+  // ==========================================
+  {
+    "q": "AK-74 qurolida stvol qutisining (stvolnaya korobka) asosiy vazifasi nima?",
+    "opts": [
+      "O'q uchishini yo'naltirish",
+      "Gaz porsheni harakatini yo'naltirish",
+      "Avtomat qism va mexanizmlarini biriktirish hamda stvol kanalini zatvor bilan yopish",
+      "Qurolning siltanish energiyasini kamaytirish"
+    ],
+    "correct": 2,
+    "topicId": 30,
+    "explanation": "Stvol qutisi avtomatning markaziy asosi bo'lib, barcha qismlarni o'ziga biriktiradi, zatvor va zatvor ramasining harakatini yo'naltiradi.",
+    "mnemonic": "Quti = Asosiy korpus, hammasini birlashtiradi."
+  },
+  {
+    "q": "AK-74 da patronni patrondonga yuborish, stvol kanalini yopish, kapsulni ezish (urish) va patrondan gilzani sug'urib olish vazifalarini qaysi mexanizm bajaradi?",
+    "opts": [
+      "Zatvor ramasi",
+      "Zatvor",
+      "Zarbdor-tepki mexanizmi",
+      "Qaytaruvchi mexanizm"
+    ],
+    "correct": 1,
+    "topicId": 30,
+    "explanation": "Aynan kichik qism bo'lmish \"Zatvor\" ichida zarbdor va uloqtirgich joylashgani uchun u stvol kanalini yopadi va kapsulni urib portlatadi.",
+    "mnemonic": "Zatvor - hamma amaliy (kapsul urish, gilza olish) ishni qiladi. Ramasi faqat uni tashiydi."
+  },
+  {
+    "q": "Avtomat o'q uzayotganda qo'llarni qizib ketgan metalldan kuyishdan asrash uchun qaysi qism xizmat qiladi?",
+    "opts": [
+      "Tormoz-kompensator",
+      "Stvol qutisining qopqog'i",
+      "Stvolosti qoplamasi (sevyo)",
+      "Gaz trubkasi"
+    ],
+    "correct": 2,
+    "topicId": 30,
+    "explanation": "Stvolosti qoplamasi (sevyo) qurolni chap qo'l bilan ushlaganda qulaylik yaratish hamda otish davomida qizib ketadigan stvoldan qo'lni kuyishdan saqlaydi.",
+    "mnemonic": "Qoplama (Sevyo) = Qo'lni kuyishdan asraydi."
+  },
+
+  // ==========================================
+  // 31-MAVZU: OTISHDAGI TUTILISHLAR (OTKAZLAR) VA TOZALASH
+  // ==========================================
+  {
+    "q": "Agar otish vaqtida zatvor oldingi holatda bo'lsa, o'qdonda patron bor va tepki bosilganda o'q uzilmasa (kapsulda urilish izi yo'q yoki kuchsiz bo'lsa), bunga nima sabab bo'lishi mumkin?",
+    "opts": [
+      "O'qdon nosoz yoki ifloslangan",
+      "Qaytaruvchi prujina singan",
+      "Zarbdor yoki zarbdor-tepki mexanizmi nosoz, moyning ifloslanishi yoki to'ng'lab qolganligi",
+      "Uloqtirgich yoki uning prujinasi ifloslangan"
+    ],
+    "correct": 2,
+    "topicId": 31,
+    "explanation": "O'q uzilmasligi ko'pincha zarbdor mexanizmining tiqilishi, kapsulga zarba bermasligi, sovuq havoda noto'g'ri moylash oqibatida moyning muzlab qolishidan (to'ng'lashidan) kelib chiqadi.",
+    "mnemonic": "Urish izi yo'q = Zarbdor yoki moy muzlagan."
+  },
+  {
+    "q": "Otish jarayonida gilza tutilib qolsa (stvol qutisidan uloqtirilmay zatvor oldida qolsa), ehtimoliy sabab va uni bartaraf etish usuli qanday?",
+    "opts": [
+      "Qaytaruvchi prujina singan, zudlik bilan prujinani almashtirish",
+      "Uloqtirgich yeyilgan yoki ishqalanuvchi qismlar va gaz yo'llari ifloslangan. Zatvor dastasini tortib gilza olinadi va qurol tozalanadi",
+      "Stvol qizib ketgan, qurolni suv bilan sovutish kerak",
+      "Patron nosoz, shunchaki yangi patron o'rnatish yetarli"
+    ],
+    "correct": 1,
+    "topicId": 31,
+    "explanation": "Gilzaning tashqariga chiqmay qolishi gaz yo'llarining kuchli kirlanganligi (yetarli gaz kuchi yo'qligi) yoki uloqtirgichning (vikidivatel) noto'g'ri ishlashidan dalolat beradi.",
+    "mnemonic": "Gilza chiqmasa: Uloqtirgich (vikidivatel) buzuq yoki gaz yetmayapti."
+  },
+  {
+    "q": "Oboyma va o'tkazgich nima uchun xizmat qiladi?",
+    "opts": [
+      "Qurolni qismlarga ajratishda vintlarni burash uchun",
+      "Stvol ichini ugleroddan tozalash uchun",
+      "O'qdonni patronlar bilan tezroq to'ldirish uchun",
+      "Zatvor ramasini moylash uchun"
+    ],
+    "correct": 2,
+    "topicId": 31,
+    "explanation": "Anjomlar tarkibidagi oboyma va o'tkazgich o'qdonni qo'lda bittalab to'ldirgandan ko'ra ancha tezroq o'q bilan to'ldirishga imkon beruvchi vositalardir.",
+    "mnemonic": "Oboyma = O'qdonni tez to'ldirish (15 ta o'q birdaniga)."
+  },
+
+  // ==========================================
+  // 32-MAVZU: QUROLNI QISMLARGA AJRATISH VA YIG'ISH
+  // ==========================================
+  {
+    "q": "AK-74 avtomatini noto'liq qismlarga ajratishda, shompol ajratib olingandan keyingi (4-qadam) harakat nima?",
+    "opts": [
+      "Zatvor ramasini ajratish",
+      "Stvol qutisining qopqog'ini ajratish",
+      "Anjomlar penalini chiqarib olish",
+      "Qaytarish mexanizmini ajratish"
+    ],
+    "correct": 1,
+    "topicId": 32,
+    "explanation": "Ketma-ketlik: 1) O'qdon; 2) Penal; 3) Shompol; 4) Stvol qutisining qopqog'i; 5) Qaytarish mexanizmi.",
+    "mnemonic": "O'qdon -> Penal -> Shompol -> Qopqoq."
+  },
+  {
+    "q": "Noto'liq qismlarga ajratilgan avtomatni qayta yig'ish jarayonining eng oxirgi (9-qadam) amali qaysi?",
+    "opts": [
+      "Shompolni biriktirish",
+      "Tepkini jangovar vzvoddan tushirish",
+      "Anjomlar penalini qo'ndoqqa solish",
+      "O'qdonni avtomatga biriktirish"
+    ],
+    "correct": 3,
+    "topicId": 32,
+    "explanation": "Ajratish o'qdonni yechishdan boshlanadi, yig'ish esa o'qdonni qaytarib joyiga taqish (biriktirish) bilan to'liq yakunlanadi.",
+    "mnemonic": "Yig'ishning oxiri = O'qdonni taqish."
+  },
+  {
+    "q": "Avtomatni yig'ish jarayonining eng muhim xavfsizlik va aniqlik qoidasi nima?",
+    "opts": [
+      "Barcha qismlarni suv bilan yuvib tashlash",
+      "Qismlardagi raqamlar stvol qutisidagi raqamlarga mos kelishini taqqoslab ko'rish",
+      "Zatvorni doim o'ng qo'l bilan mahkamlash",
+      "Qurolni moylashdan oldin qizdirish"
+    ],
+    "correct": 1,
+    "topicId": 32,
+    "explanation": "Har bir qurol qismlari (gaz quvuri, zatvor, zatvor ramasi) individual ravishda birbiriga moslangan bo'ladi. Yig'ishda boshqa qurolning qismlari aralashib ketmasligi uchun ulardagi raqamlar mosligi majburiy tekshiriladi.",
+    "mnemonic": "Yig'ishda raqamlarga e'tibor ber (birovnikini aralashtirma)."
+  },
+
+  // ==========================================
+  // 33-MAVZU: QO'L GRANATALARI (RGD-5 va F-1)
+  // ==========================================
+  {
+    "q": "RGD-5 va F-1 granatalarining vazni (og'irligi) to'g'ri ko'rsatilgan qatorni toping.",
+    "opts": [
+      "RGD-5: 600 g, F-1: 310 g",
+      "RGD-5: 310 g, F-1: 600 g",
+      "Ikkalasi ham 400 g dan",
+      "RGD-5: 450 g, F-1: 750 g"
+    ],
+    "correct": 1,
+    "topicId": 33,
+    "explanation": "RGD-5 yengil hujum granatasi bo'lib, uning og'irligi 310 g. F-1 esa mudofaa uchun og'ir qalin qobiqli cho'yan granata bo'lib, og'irligi 600 g ni tashkil etadi.",
+    "mnemonic": "RGD-5 = yengil (310), F-1 = og'ir cho'yan (600)."
+  },
+  {
+    "q": "F-1 parchalanuvchi qo'l granatasining o'ldiruvchi parchalari uchish radiusi necha metrga teng?",
+    "opts": [
+      "25 metr",
+      "50 metr",
+      "100 metr",
+      "200 metr"
+    ],
+    "correct": 3,
+    "topicId": 33,
+    "explanation": "F-1 granatasining parchalari 200 metrgacha bo'lgan masofada odamni o'ldirish xavfiga ega. Shuning uchun uni faqat xandaq (pana) ichidan uloqtirish ruxsat etiladi. (RGD-5 da bu ko'rsatkich 25 m).",
+    "mnemonic": "F-1 (Limonka) = 200 metr xavf radiusi."
+  },
+  {
+    "q": "Ikkala turdagi granatalarda (RGD-5 va F-1) ishlatiladigan UZRGM zapali sekinlatkichining yonish (portlashgacha bo'lgan) vaqti qancha?",
+    "opts": [
+      "1,5 – 2 soniya",
+      "2,5 – 3 soniya",
+      "3,2 – 4,2 soniya",
+      "5,5 – 6 soniya"
+    ],
+    "correct": 2,
+    "topicId": 33,
+    "explanation": "UZRGM zapalining sekinlatkichi halqani tortib qoshiqcha qo'yib yuborilganidan so'ng 3,2 dan 4,2 soniya oralig'ida yonib tugaydi va portlashni chaqiradi.",
+    "mnemonic": "Zapal yonish vaqti: 3 dan 4 sekundgacha (3.2-4.2)."
+  }
+]

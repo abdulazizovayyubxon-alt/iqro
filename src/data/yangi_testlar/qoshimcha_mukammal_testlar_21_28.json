@@ -1,0 +1,203 @@
+[
+  // ==========================================
+  // 21-22 MAVZULAR: FAVQULODDA VAZIYATLAR VA EVAKUATSIYA
+  // ==========================================
+  {
+    "q": "O'zbekiston Respublikasida energiya va kommunal tizimlardagi avariyalar (GES, elektr tarmoqlari ishdan chiqishi) favqulodda vaziyatlarning qaysi guruhiga kiradi?",
+    "opts": [
+      "Tabiiy xususiyatli",
+      "Texnogen xususiyatli",
+      "Ekologik xususiyatli",
+      "Gidrometeorologik xususiyatli"
+    ],
+    "correct": 1,
+    "topicId": 21,
+    "explanation": "GES, TETSlar hamda kommunal tizimlardagi har qanday uzilishlar texnogen (texnika va sanoat) xususiyatli avariyalar hisoblanadi.",
+    "mnemonic": "Energetika/Kommunal = Texnogen avariya."
+  },
+  {
+    "q": "Quruqlik (tuproq, yerosti) holatining o'zgarishi, ya'ni tuproqning neft va zaharli vositalar bilan ifloslanishi favqulodda vaziyatlarning qaysi guruhiga kiradi?",
+    "opts": [
+      "Geologik xavfli hodisalar",
+      "Texnogen avariyalar",
+      "Ekologik xususiyatli favqulodda vaziyatlar",
+      "Epifitotik vaziyatlar"
+    ],
+    "correct": 2,
+    "topicId": 21,
+    "explanation": "Quruqlik, gidrosfera (suv) va atmosfera (havo) tarkibining uzoq muddatli o'zgarishi va zaharlanishi Ekologik xususiyatli favqulodda vaziyatlarga kiradi.",
+    "mnemonic": "Tuproq/Havo/Suv ifloslanishi = Ekologik halokat."
+  },
+  {
+    "q": "Umumiy aholini xavfsiz hududlarga ko'chirish yashash joyi bo'yicha amalga oshiriladigan evakuatsiya tamoyili nima deb ataladi?",
+    "opts": [
+      "Hududiy tamoyil",
+      "Ishlab chiqarish tamoyili",
+      "Ishlab chiqarish-hududiy tamoyili",
+      "Lokal tamoyil"
+    ],
+    "correct": 0,
+    "topicId": 22,
+    "explanation": "Barcha aholi yashash joylaridan olib chiqib ketilsa - Hududiy tamoyil. Agar ishchi-xizmatchilar ish joyidan evakuatsiya qilinsa - Ishlab chiqarish tamoyili.",
+    "mnemonic": "Yashash joyidan hamma ko'chirilsa = Hududiy."
+  },
+
+  // ==========================================
+  // 23-MAVZU: PANOHGOHLAR
+  // ==========================================
+  {
+    "q": "Panohgohning yordamchi xonalari tarkibiga qaysi bo'limlar kiradi?",
+    "opts": [
+      "Aholini joylashtirish xonasi va tibbiyot punkti",
+      "Tibbiyot xonasi va rahbarlar xonasi",
+      "Filtr-ventilyatsiya, yuvinish/hojatxona, dizel elektr, oziq-ovqat zaxirasi xonasi",
+      "Faqat aholi joylashadigan katta zal va oziq-ovqat ombori"
+    ],
+    "correct": 2,
+    "topicId": 23,
+    "explanation": "Panohgoh asosiy (aholi va tibbiyot) hamda yordamchi (filtr-ventilyatsiya, hojatxona, generator, oziq-ovqat) xonalarga bo'linadi.",
+    "mnemonic": "Yordamchi xonalar: Texnika (dizel, filtr) va ta'minot (ovqat, hojatxona)."
+  },
+  {
+    "q": "Oddiy yashirinish joylari bo'lmish ochiq va yopiq xandaqlar odatda necha kishiga mo'ljallab quriladi?",
+    "opts": [
+      "5 – 10 kishi",
+      "10 – 15 kishi",
+      "20 – 30 kishi",
+      "50 kishidan ortiq"
+    ],
+    "correct": 1,
+    "topicId": 23,
+    "explanation": "Eng oddiy yopiq xandaqlar asosan 10 – 15 kishi uchun mo'ljallab qaziladi va uzun yo'lakni tashkil etadi.",
+    "mnemonic": "Oddiy xandaq sig'imi: 10-15 kishi."
+  },
+
+  // ==========================================
+  // 24-25 MAVZULAR: GAZNIQOB VA RESPIRATOR
+  // ==========================================
+  {
+    "q": "GP-5 gazniqobini kiyish vaqtida nima uchun birinchi navbatda ko'zni yumish va qayta nafas olmay turish talab qilinadi?",
+    "opts": [
+      "Gazniqob linzalari sinib ketishidan saqlash uchun",
+      "Zaharli gazlar va radioaktiv changlarning qisqa vaqt ichida ham nafas yo'llariga va ko'zga tushishini oldini olish uchun",
+      "Gazniqob prujinalari qulay o'rnashishi uchun",
+      "Bosh kiyim yechilganda sovuq havo kirmasligi uchun"
+    ],
+    "correct": 1,
+    "topicId": 24,
+    "explanation": "Havoda yurgan yuqori konsentratsiyadagi zaharlovchi moddalar juda qisqa vaqt ichida ham insonga shikast yetkazishi mumkin, shuning uchun ko'zni yumib, nafas to'xtatilib gazniqob kiyiladi, so'ng keskin nafas chiqarib filtrlanmagan havo tashqariga haydaladi.",
+    "mnemonic": "Ko'zni yum + Nafasni to'xtat = Zahar kirmaydi."
+  },
+  {
+    "q": "Respiratorlardan foydalanish uchun atrof-muhit havosidagi kislorod miqdori kamida necha foiz bo'lishi talab etiladi?",
+    "opts": [
+      "10 % dan kam bo'lmasligi kerak",
+      "15 % dan kam bo'lmasligi kerak",
+      "18 % dan kam bo'lmasligi kerak",
+      "21 % dan kam bo'lmasligi kerak"
+    ],
+    "correct": 2,
+    "topicId": 25,
+    "explanation": "Aerozolga, gazga, gaz-aerozolga qarshi barcha turdagi respiratorlar havodagi kislorod miqdori 18 % dan kam bo'lmagan holatlarda ishlatishga mo'ljallangan. Agar kislorod bundan kam bo'lsa izolyatsiyalovchi (kislorod ballonli) vositalar kerak.",
+    "mnemonic": "Respirator ishlashi uchun havo kislorodi: Minimal 18%."
+  },
+  {
+    "q": "Qo'lbola himoya vositasi bo'lmish paxta-dokali bog'lagichni tayyorlashda qalinligi necha santimetr bo'lgan paxta qatlami ishlatiladi va yakuniy bog'lagich uzunligi qancha bo'ladi?",
+    "opts": [
+      "5 sm qalinlikda paxta, 50 sm uzunlikda",
+      "1-2 sm qalinlikda paxta, 30 – 35 sm uzunlikda",
+      "3 sm qalinlikda paxta, 20 sm uzunlikda",
+      "0.5 sm qalinlikda paxta, 40 sm uzunlikda"
+    ],
+    "correct": 1,
+    "topicId": 25,
+    "explanation": "Paxta-dokali bog'lagich 100-50 sm o'lchamdagi doka va 1-2 sm qalinlikdagi paxtadan tayyorlanadi, uzunasiga 30-35 sm qilib kesiladi.",
+    "mnemonic": "Doka: 1-2 sm paxta, 30-35 sm uzunlik."
+  },
+
+  // ==========================================
+  // 26-27 MAVZULAR: TERINI HIMOYALASH VA ME'YORLAR
+  // ==========================================
+  {
+    "q": "Yengil himoya kostyumi (L-1) nechta o'lchamda ishlab chiqariladi va bo'yi 169 cm bo'lgan xizmatchiga nechanchi o'lcham mos keladi?",
+    "opts": [
+      "4 xil o'lchamda, 2-o'lcham",
+      "3 xil o'lchamda, 2-o'lcham",
+      "3 xil o'lchamda, 1-o'lcham",
+      "4 xil o'lchamda, 3-o'lcham"
+    ],
+    "correct": 1,
+    "topicId": 26,
+    "explanation": "L-1 kostyumi 3 ta o'lchamda bo'ladi: 1-o'lcham (<165 sm), 2-o'lcham (165-172 sm), 3-o'lcham (>172 sm). Demak, 169 sm bo'yli xizmatchiga 2-o'lcham to'g'ri keladi.",
+    "mnemonic": "L-1 faqat 3 xil: 165 gacha, 172 gacha, 172 dan yuqori."
+  },
+  {
+    "q": "Himoya paypoqlarining 2-o'lchami qanday poyabzal o'lchamiga mos keladi?",
+    "opts": [
+      "40 o'lchamli poyabzal",
+      "41 – 42 o'lchamli poyabzal",
+      "43 va undan katta o'lcham",
+      "38 – 39 o'lchamli poyabzal"
+    ],
+    "correct": 1,
+    "topicId": 26,
+    "explanation": "Himoya paypoqlari 3 xil bo'ladi: 1-o'lcham (40), 2-o'lcham (41-42), 3-o'lcham (43+).",
+    "mnemonic": "Paypoq-2 = 41-42 oyoq kiyimi."
+  },
+  {
+    "q": "UHT (Umumqo'shin himoya to'plami)ni plash holatida kiyish bo'yicha me'yorni qancha vaqt ichida bajarish \"Yaxshi\" baho bilan baholanadi?",
+    "opts": [
+      "3 daqiqa",
+      "3 daqiqa 20 soniya",
+      "4 daqiqa",
+      "4 daqiqa 35 soniya"
+    ],
+    "correct": 1,
+    "topicId": 27,
+    "explanation": "UHT ni plash holatida kiyish: A'lo – 3 daqiqa; Yaxshi – 3 daqiqa 20 soniya; Qoniqarli – 4 daqiqa.",
+    "mnemonic": "Plash kiyish yaxshi: 3 daqiqa 20 soniya."
+  },
+
+  // ==========================================
+  // 28-MAVZU: KALASHNIKOV AVTOMATLARI FARQI
+  // ==========================================
+  {
+    "q": "AK-47 va AK-74 avtomatlarining kalibri (o'q diametri) qanday bo'ladi?",
+    "opts": [
+      "Ikkalasi ham 7,62 mm",
+      "AK-47 – 5,45 mm, AK-74 – 7,62 mm",
+      "AK-47 – 7,62 mm, AK-74 – 5,45 mm",
+      "Ikkalasi ham 5,45 mm"
+    ],
+    "correct": 2,
+    "topicId": 28,
+    "explanation": "Eski model AK-47 ning kalibri 7,62 mm bo'lgan bo'lsa, takomillashgan yengilroq AK-74 avtomatining kalibri 5,45 mm ga teng.",
+    "mnemonic": "AK-47 = 7.62mm (og'ir, eski), AK-74 = 5.45mm (yengil, yangi)."
+  },
+  {
+    "q": "Qaysi qurolning o'q otish talafot yetkazish masofasi boshqalariga nisbatan uzoqroq - 1500 metrni tashkil etadi?",
+    "opts": [
+      "AK-74",
+      "RPK-74",
+      "AK-47",
+      "Makarov to'pponchasi"
+    ],
+    "correct": 2,
+    "topicId": 28,
+    "explanation": "Jadvalga muvofiq, AK-74 va RPK-74 larning o'q talafot yetkazish masofasi 1350 metr, eski namunadagi AK-47 ning talafot masofasi esa 1500 metrni tashkil etadi.",
+    "mnemonic": "Talafot masofasi AK-47 da eng uzoq: 1.5 kilometr."
+  },
+  {
+    "q": "AK-74 va AK-47 da ishlatiladigan otish sur'ati (bir daqiqada otiladigan o'qlar soni) necha donani tashkil etadi?",
+    "opts": [
+      "AK-74: 600 dona, AK-47: 600–650 dona",
+      "AK-74: 400 dona, AK-47: 600 dona",
+      "Ikkalasi ham daqiqasiga 1000 donadan ortiq",
+      "AK-74: 800 dona, AK-47: 800 dona"
+    ],
+    "correct": 0,
+    "topicId": 28,
+    "explanation": "Texnik tavsif jadvaliga ko'ra, AK-74 daqiqasiga 600 dona, AK-47 esa 600–650 dona o'q uzish sur'atiga ega.",
+    "mnemonic": "Otish sur'ati taxminan 600 ta (daqiqasiga)."
+  }
+]

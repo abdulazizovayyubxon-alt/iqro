@@ -1,0 +1,60 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Admin tekshirish funksiyasi ──
+    function isAdmin() {
+      return request.auth != null && (
+        request.auth.token.email == 'abdulazizovayyubxon@gmail.com' ||
+        request.auth.token.email == '998999154686@iqro.uz'
+      );
+    }
+
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+
+    function isLoggedIn() {
+      return request.auth != null;
+    }
+
+    // ── userStats: faqat o'z ma'lumotlari ──
+    match /userStats/{userId} {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId);
+    }
+
+    // ── questions: hamma o'qiy oladi, faqat admin yoza oladi ──
+    match /questions/{docId} {
+      allow read: if isLoggedIn();
+      allow write: if isAdmin();
+    }
+
+    // ── objections: hamma yoza oladi, faqat admin o'chira oladi ──
+    match /objections/{docId} {
+      allow read: if isLoggedIn();
+      allow create: if isLoggedIn();
+      allow update: if isLoggedIn();
+      allow delete: if isAdmin();
+    }
+
+    // ── users: foydalanuvchi profili (isPremium, etc.) ──
+    // Webhook Firebase Admin SDK orqali yozadi (rules bypass)
+    // Frontend faqat o'z profilini o'qiy oladi
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if isOwner(userId) || isAdmin();
+    }
+
+    // ── leaderboard: hamma o'qiy oladi, faqat o'zi yoza oladi ──
+    match /leaderboard/{userId} {
+      allow read: if isLoggedIn();
+      allow write: if isOwner(userId);
+    }
+
+    // ── Qolgan hamma narsa bloklangan ──
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
@@ -9,7 +10,8 @@ import { Play, Repeat, Zap, MessageCircle, Download, Trash2, Medal, Palette, Clo
 import { motion } from 'framer-motion';
 import { EXAM_DATE, EXAM_LABEL, EXAM_GOAL_SCORE } from '../config';
 
-const Dashboard = ({ navigateToTest }) => {
+const Dashboard = () => {
+  const navigate = useNavigate();
   const { user } = useAuth();
   const { state, updateState } = useContext(AppContext);
   const { objections, clearObjections, solveObjection, deleteObjection, importObjections, updateObjectionNote } = useContext(ObjectionContext);
@@ -30,7 +32,8 @@ const Dashboard = ({ navigateToTest }) => {
         return;
       }
     }
-    navigateToTest(topicId, mode);
+    updateState({ topicId, testMode: mode });
+    navigate('/test');
   };
 
   // FIX: countdown faqat Header da — Dashboard da faqat kun/soat matni (boshqa interval yo'q)
