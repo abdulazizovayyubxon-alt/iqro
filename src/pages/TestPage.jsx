@@ -444,24 +444,21 @@ const TestPage = () => {
                 )}
                 {answers[currentQ] === -1 && <div style={{ color: 'var(--red)', fontSize: '13px', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>⏰ Vaqt tugadi!</div>}
 
-                {/* SMRT Qiyinlik Indikatori */}
+                {/* Qiyinlik indikatori — kichik niqtacha */}
                 {questions[currentQ].difficulty !== undefined && (
-                  <div style={{ textAlign: 'center', marginBottom: '12px' }}>
-                    <span style={{
-                      fontSize: '11px',
-                      fontWeight: '700',
-                      padding: '2px 8px',
-                      borderRadius: '10px',
-                      color: 'white',
-                      background: questions[currentQ].difficulty >= 3 ? 'var(--red)' : questions[currentQ].difficulty >= 1 ? 'var(--amber)' : 'var(--green)',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.5px',
-                      boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-                    }}>
-                      {questions[currentQ].difficulty >= 3 ? '🔴 Qiyin' : questions[currentQ].difficulty >= 1 ? '🟡 O\'rtacha' : '🟢 Oson'}
-                    </span>
-                  </div>
+                  <span style={{
+                    position: 'absolute',
+                    top: '14px',
+                    right: '48px',
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    display: 'inline-block',
+                    opacity: 0.45,
+                    background: questions[currentQ].difficulty >= 3 ? 'var(--red)' : questions[currentQ].difficulty >= 1 ? 'var(--amber)' : 'var(--green)',
+                  }} title={questions[currentQ].difficulty >= 3 ? 'Qiyin' : questions[currentQ].difficulty >= 1 ? "O'rtacha" : 'Oson'} />
                 )}
+
 
                 {questions[currentQ].image && <div style={{ margin: '0 0 16px', textAlign: 'center' }}><img src={questions[currentQ].image} alt="Savol rasmi" style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '12px', border: '1px solid var(--border)' }} /></div>}
                 {questions[currentQ].isHtml ? <SafeHtml html={questions[currentQ].q} className="q-text" /> : <div className="q-text" style={{ whiteSpace: 'pre-line' }}>{questions[currentQ].q}</div>}
