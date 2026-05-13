@@ -53,42 +53,51 @@ export const AuthProvider = ({ children }) => {
     });
 
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      if (firebaseUser) {
-        // Firestore'da foydalanuvchi profilini tekshiramiz/yaratamiz
-        const userRef = doc(db, 'users', firebaseUser.uid);
-        const userSnap = await getDoc(userRef);
-        let isPremium = false;
-        if (!userSnap.exists()) {
-          // Yangi foydalanuvchi — profil yaratamiz
-          await setDoc(userRef, {
+      try {
+        if (firebaseUser) {
+          // Firestore'da foydalanuvchi profilini tekshiramiz/yaratamiz
+          let isPremium = false;
+          try {
+            const userRef = doc(db, 'users', firebaseUser.uid);
+            const userSnap = await getDoc(userRef);
+            if (!userSnap.exists()) {
+              // Yangi foydalanuvchi — profil yaratamiz
+              await setDoc(userRef, {
+                uid: firebaseUser.uid,
+                email: firebaseUser.email,
+                displayName: firebaseUser.displayName || firebaseUser.email?.split('@')[0],
+                photoURL: firebaseUser.photoURL || null,
+                role: 'user',
+                isPremium: false,
+                createdAt: new Date(),
+              });
+            } else {
+              isPremium = userSnap.data().isPremium || false;
+            }
+          } catch (firestoreErr) {
+            // Firestore xatosi — foydalanuvchini baribir tizimga kiritamiz
+            console.warn('Firestore profil xatosi (davom etilmoqda):', firestoreErr.message);
+          }
+
+          const enhancedUser = {
             uid: firebaseUser.uid,
             email: firebaseUser.email,
-            displayName: firebaseUser.displayName || firebaseUser.email?.split('@')[0],
-            photoURL: firebaseUser.photoURL || null,
-            role: 'user', // 'user' yoki 'admin'
-            isPremium: false,
-            createdAt: new Date(),
-          });
+            displayName: firebaseUser.displayName,
+            photoURL: firebaseUser.photoURL,
+            isPremium,
+            _firebaseUser: firebaseUser
+          };
+          setUser(enhancedUser);
         } else {
-          isPremium = userSnap.data().isPremium || false;
+          setUser(null);
         }
-        
-        // Firebase user ob'ektini mutatsiya qilmasdan yangi ob'ekt yaratamiz
-        // Object.assign(firebaseUser, ...) — XAVFLI, chunki asl Firebase ob'ektni buzadi
-        const enhancedUser = {
-          uid: firebaseUser.uid,
-          email: firebaseUser.email,
-          displayName: firebaseUser.displayName,
-          photoURL: firebaseUser.photoURL,
-          isPremium,
-          // Firebase Auth metodlarini saqlash uchun asl referensni saqlaymiz
-          _firebaseUser: firebaseUser
-        };
-        setUser(enhancedUser);
-      } else {
+      } catch (err) {
+        console.error('onAuthStateChanged xatosi:', err);
         setUser(null);
+      } finally {
+        // Har qanday holatda ham loading ni o'chiramiz
+        setLoading(false);
       }
-      setLoading(false);
     });
     return () => unsubscribe();
   }, []);
