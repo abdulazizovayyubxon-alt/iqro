@@ -1187,13 +1187,19 @@ body {
 }
 
 .exam-navigator {
-  width: 240px;
+  width: 280px;
   flex-shrink: 0;
   padding: 16px;
   overflow-y: auto;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
+}
+
+.exam-q-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
 }
 
 .exam-result-card {
@@ -1213,6 +1219,10 @@ body {
     width: 100%;
     flex-shrink: 0;
     margin-bottom: 20px;
+  }
+  .exam-q-grid {
+    grid-template-columns: repeat(10, 1fr);
+    gap: 4px;
   }
   .exam-question-area {
     overflow-y: visible;

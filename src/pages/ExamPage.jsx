@@ -441,7 +441,7 @@ const ExamPage = () => {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(10, 1fr)', gap: 4 }}>
+            <div className="exam-q-grid">
               {questions.map((_, i) => {
                 const isCurrent = i === currentQ;
                 const isAns = answers[i] !== undefined;
