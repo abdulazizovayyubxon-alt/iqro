@@ -284,9 +284,13 @@ export const AuthProvider = ({ children }) => {
   // ─── Google Sign-In ───
   const signInWithGoogle = async () => {
     setAuthError('');
+
+    // Har doim akkaunt tanlash oynasini ko'rsatish
+    googleProvider.setCustomParameters({ prompt: 'select_account' });
+
     // Mobil yoki brauzerni tekshiramiz
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
-    
+
     try {
       if (isMobile) {
         // Telefonda to'g'ridan-to'g'ri yo'naltirish (popup ishlamaydi)
@@ -296,12 +300,33 @@ export const AuthProvider = ({ children }) => {
         await signInWithPopup(auth, googleProvider);
       }
     } catch (err) {
-      if (err.code === 'auth/popup-blocked') {
-        // Agar popup bloklangan bo'lsa, baribir redirect qilamiz
-        await signInWithRedirect(auth, googleProvider);
-      } else {
-        setAuthError("Google bilan kirishda xatolik. Qayta urinib ko'ring.");
-        console.error(err);
+      console.error('Google sign-in xatosi:', err);
+
+      // Xato kodlariga qarab aniq xabar berish
+      switch (err.code) {
+        case 'auth/popup-blocked':
+          // Popup bloklangan — redirect ga o'tish
+          try {
+            await signInWithRedirect(auth, googleProvider);
+          } catch (redirectErr) {
+            setAuthError("Brauzer Google oynasini blokladi. Iltimos, popup-blokerini o'chiring.");
+          }
+          break;
+        case 'auth/popup-closed-by-user':
+        case 'auth/cancelled-popup-request':
+          // Foydalanuvchi o'zi yopdi — xato ko'rsatmaymiz
+          break;
+        case 'auth/network-request-failed':
+          setAuthError("Internet aloqasi yo'q. Iltimos, tarmoqni tekshiring.");
+          break;
+        case 'auth/unauthorized-domain':
+          setAuthError("Bu domen Google Auth uchun ruxsat etilmagan. Administrator bilan bog'laning.");
+          break;
+        case 'auth/internal-error':
+          setAuthError("Ichki xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring.");
+          break;
+        default:
+          setAuthError("Google bilan kirishda xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring.");
       }
     }
   };
@@ -502,18 +527,27 @@ export const AuthProvider = ({ children }) => {
   // ─── Chiqish ───
   // Xavfsizlik: logout paytida barcha mahalliy ma'lumotlarni tozalash
   // Bu "Improper Session Management" zaifligini oldini oladi
-  const logout = () => {
-    // 1. Foydalanuvchi statistikasini tozalash
+  const logout = async () => {
+    const currentUid = user?.uid;
+
+    // 1. Foydalanuvchiga tegishli izolyatsiyalangan ma'lumotlarni tozalash
+    if (currentUid) {
+      localStorage.removeItem(`iqro_state_${currentUid}`);
+      localStorage.removeItem(`sentObjectionIds_${currentUid}`);
+    }
+
+    // 2. Eski format (izolyatsiyalanmagan) kalitlarni ham tozalash
     localStorage.removeItem('iqro_state');
     localStorage.removeItem('chqbt_state');
-
-    // 2. E'tiroz tizimi ma'lumotlarini tozalash
     localStorage.removeItem('sentObjectionIds');
 
-    // 3. sessionStorage ni to'liq tozalash
+    // 3. Brute-force hisoblagichni tozalash
+    localStorage.removeItem('iqro_login_attempts');
+
+    // 4. sessionStorage ni to'liq tozalash
     sessionStorage.clear();
 
-    // 4. Firebase Auth dan chiqish
+    // 5. Firebase Auth dan chiqish
     return signOut(auth);
   };
 

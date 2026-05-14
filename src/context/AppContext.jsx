@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useState, useEffect, useContext, useRef, useCallback } from 'react';
 import { TOPICS } from '../data/mockData';
 import { MAX_MISTAKES_SAVED } from '../config';
 import { db } from '../firebase';
@@ -57,49 +57,59 @@ const buildDefaultState = () => ({
   spacedCards: []
 });
 
+// ────────────────────────────────────────────────────────
+// XAVFSIZ localStorage kalit nomini yaratish
+// Har bir foydalanuvchining ma'lumotlari alohida saqlanadi
+// ────────────────────────────────────────────────────────
+const getUserStateKey = (uid) => `iqro_state_${uid}`;
+
 export const AppProvider = ({ children }) => {
   const { user } = useContext(AuthContext);
   const { showToast } = useContext(ToastContext);
   const [state, setState] = useState(buildDefaultState);
   const [cloudSynced, setCloudSynced] = useState(false);
+  const prevUserRef = useRef(null);
 
   // ─── 1. Foydalanuvchi kirishi/chiqishida statistikani yuklash ───
   useEffect(() => {
-    if (!user) {
-      // Tizimdan chiqqanda default state
+    // Foydalanuvchi o'zgarganda (yoki chiqqanda) — darhol state tozalash
+    const prevUid = prevUserRef.current;
+    const newUid = user?.uid || null;
+
+    if (prevUid !== newUid) {
+      // Foydalanuvchi o'zgardi — darhol default state ga o'tkazish
       setState(buildDefaultState());
       setCloudSynced(false);
+      prevUserRef.current = newUid;
+    }
+
+    if (!user) {
       return;
     }
 
     // Foydalanuvchi statistikasini Firestore'dan yuklash
     const loadUserStats = async () => {
-      const statRef = doc(db, 'userStats', user.uid);
-      const snap = await getDoc(statRef);
-      if (snap.exists()) {
-        const data = snap.data();
-        setState(prev => ({
-          ...buildDefaultState(),
-          ...data,
-          stats: data.stats || { chqbt: buildDefaultCatStats(), art: buildDefaultCatStats() },
-          topicStats: data.topicStats || {}
-        }));
-      } else {
-        // Yangi foydalanuvchi — localStorage'dagi eski ma'lumotni Firestore'ga ko'chiramiz (migration)
-        const oldSaved = localStorage.getItem('iqro_state') || localStorage.getItem('chqbt_state');
-        if (oldSaved) {
-          try {
-            const parsed = JSON.parse(oldSaved);
-            const migratedState = {
-              ...buildDefaultState(),
-              ...parsed,
-              stats: parsed.stats || { chqbt: buildDefaultCatStats(), art: buildDefaultCatStats() }
-            };
-            setState(migratedState);
-            await setDoc(statRef, migratedState);
-            showToast("Eski ma'lumotlar bulutga ko'chirildi ☁️", 'info');
-          } catch (e) {}
+      try {
+        const statRef = doc(db, 'userStats', user.uid);
+        const snap = await getDoc(statRef);
+        if (snap.exists()) {
+          const data = snap.data();
+          setState(prev => ({
+            ...buildDefaultState(),
+            ...data,
+            stats: data.stats || { chqbt: buildDefaultCatStats(), art: buildDefaultCatStats() },
+            topicStats: data.topicStats || {}
+          }));
+        } else {
+          // Yangi foydalanuvchi — toza holat bilan boshlash
+          // XAVFSIZLIK: boshqa foydalanuvchining localStorage datasini
+          // hech qachon yangi foydalanuvchiga ko'chirmaymiz!
+          setState(buildDefaultState());
         }
+      } catch (err) {
+        console.error('Foydalanuvchi statistikasini yuklashda xatolik:', err);
+        // Xatolik bo'lsa ham default state bilan davom etish
+        setState(buildDefaultState());
       }
       setCloudSynced(true);
     };
@@ -110,13 +120,15 @@ export const AppProvider = ({ children }) => {
   // ─── 2. Statistika o'zgarganda Firestore'ga saqlash (DEBOUNCED) ───
   // Har o'zgarishda emas, 3 soniya kutib, oxirgi holatni bir marta yozadi.
   // Bu test paytida ~50 ta write o'rniga 2-3 ta write qiladi.
-  const saveTimerRef = React.useRef(null);
+  const saveTimerRef = useRef(null);
 
   useEffect(() => {
     if (!user || !cloudSynced) return;
 
-    // localStorage ga darhol saqlash (offline backup — bu bepul)
-    localStorage.setItem('iqro_state', JSON.stringify(state));
+    // User-ga tegishli localStorage ga saqlash (offline backup)
+    // XAVFSIZLIK: kalit nomi user UID bilan izolyatsiya qilingan
+    const userKey = getUserStateKey(user.uid);
+    localStorage.setItem(userKey, JSON.stringify(state));
 
     // Firestore ga debounced yozish — 3 soniya kutib
     clearTimeout(saveTimerRef.current);
@@ -361,6 +373,8 @@ export const AppProvider = ({ children }) => {
     const fresh = buildDefaultState();
     setState(fresh);
     if (user) {
+      // User-specific localStorage ni tozalash
+      localStorage.removeItem(getUserStateKey(user.uid));
       await setDoc(doc(db, 'userStats', user.uid), fresh, { merge: false });
     }
     showToast("Statistika tozalandi", 'info');

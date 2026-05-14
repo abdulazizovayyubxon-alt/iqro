@@ -12,23 +12,43 @@ export const ObjectionContext = createContext();
 
 export const useObjections = () => useContext(ObjectionContext);
 
+// ────────────────────────────────────────────────────────
+// XAVFSIZ localStorage kalit — foydalanuvchiga bog'langan
+// ────────────────────────────────────────────────────────
+const getSentObjectionKey = (uid) => `sentObjectionIds_${uid}`;
+
 export const ObjectionProvider = ({ children }) => {
   const { user } = useContext(AuthContext);
   const { showToast } = useContext(ToastContext);
   const [objections, setObjections] = useState([]);
   const [sentObjectionIds, setSentObjectionIds] = useState([]);
 
+  // Foydalanuvchi o'zgarganda sentObjectionIds ni yuklash
   useEffect(() => {
-    // LocalStorage dan oldingi yuborilgan e'tirozlarni yuklash
-    const saved = localStorage.getItem('sentObjectionIds');
-    if (saved) {
-      try { setSentObjectionIds(JSON.parse(saved)); } catch (e) {}
-    }
-
     if (!user) {
+      // Tizimdan chiqqanda — tozalash
       setObjections([]);
+      setSentObjectionIds([]);
       return;
     }
+
+    // Foydalanuvchiga tegishli yuborilgan e'tirozlar ID larini yuklash
+    const key = getSentObjectionKey(user.uid);
+    try {
+      const saved = localStorage.getItem(key);
+      if (saved) {
+        setSentObjectionIds(JSON.parse(saved));
+      } else {
+        setSentObjectionIds([]);
+      }
+    } catch (e) {
+      setSentObjectionIds([]);
+    }
+  }, [user]);
+
+  // Firestore real-time e'tirozlarni kuzatish
+  useEffect(() => {
+    if (!user) return;
 
     const q = query(collection(db, "objections"), orderBy("timestamp", "desc"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -40,8 +60,11 @@ export const ObjectionProvider = ({ children }) => {
 
       setObjections(prevObjections => {
         // Yangi hal qilingan e'tirozlarni topish (faqat o'zimiz yuborganlarni tekshiramiz)
-        const mySentIds = JSON.parse(localStorage.getItem('sentObjectionIds') || '[]');
-        const solvedMine = cloudObjections.filter(obj => 
+        const key = getSentObjectionKey(user.uid);
+        let mySentIds = [];
+        try { mySentIds = JSON.parse(localStorage.getItem(key) || '[]'); } catch (e) {}
+
+        const solvedMine = cloudObjections.filter(obj =>
           obj.solved && mySentIds.includes(obj.id)
         );
 
@@ -51,7 +74,7 @@ export const ObjectionProvider = ({ children }) => {
           const solvedIds = new Set(solvedMine.map(o => o.id));
           const newSentIds = mySentIds.filter(id => !solvedIds.has(id));
           setSentObjectionIds(newSentIds);
-          localStorage.setItem('sentObjectionIds', JSON.stringify(newSentIds));
+          localStorage.setItem(key, JSON.stringify(newSentIds));
         }
 
         return cloudObjections;
@@ -59,17 +82,19 @@ export const ObjectionProvider = ({ children }) => {
     }, (error) => {
       console.warn("Firebase objections sync error:", error);
     });
-    
+
     return () => unsubscribe();
-  }, [showToast]);
+  }, [user, showToast]);
 
   const addObjection = async (topicId, category, questionObj, note) => {
+    if (!user) return;
+
     const topic = TOPICS.find(t => t.id === topicId);
     const newObjection = {
       id: Date.now(),
-      uid: user?.uid || 'anonymous',
-      userEmail: user?.email || '',
-      userName: user?.displayName || '',
+      uid: user.uid,
+      userEmail: user.email || '',
+      userName: user.displayName || '',
       topic: topic ? topic.name : "Aralash",
       topicId,
       category: category,
@@ -82,9 +107,11 @@ export const ObjectionProvider = ({ children }) => {
       timestamp: new Date()
     };
 
+    // Foydalanuvchiga tegishli localStorage ga saqlash
+    const key = getSentObjectionKey(user.uid);
     const newSentIds = [...sentObjectionIds, newObjection.id];
     setSentObjectionIds(newSentIds);
-    localStorage.setItem('sentObjectionIds', JSON.stringify(newSentIds));
+    localStorage.setItem(key, JSON.stringify(newSentIds));
 
     try {
       await addDoc(collection(db, "objections"), { ...newObjection, timestamp: new Date() });
