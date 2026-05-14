@@ -25,6 +25,11 @@ export const ObjectionProvider = ({ children }) => {
       try { setSentObjectionIds(JSON.parse(saved)); } catch (e) {}
     }
 
+    if (!user) {
+      setObjections([]);
+      return;
+    }
+
     const q = query(collection(db, "objections"), orderBy("timestamp", "desc"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const cloudObjections = snapshot.docs.map(d => ({

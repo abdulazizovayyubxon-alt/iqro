@@ -388,20 +388,23 @@ body {
 }
 .login-logo-icon {
   font-size: 48px;
-  margin-bottom: 8px;
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .login-logo-title {
   font-size: 32px;
   font-weight: 900;
   letter-spacing: -1px;
   color: var(--text);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 .login-logo-sub {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text3);
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
 .login-tabs {

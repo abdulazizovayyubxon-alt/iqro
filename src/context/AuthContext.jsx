@@ -28,16 +28,195 @@ const phoneToEmail = (phone) => {
 };
 
 // ────────────────────────────────────────────────────────
-// Parol validatsiyasi
+// Parol validatsiyasi — entropiya asosida
 // ────────────────────────────────────────────────────────
-const validatePassword = (password) => {
-  if (!password || password.length < 6) {
-    return "Parol kamida 6 ta belgidan iborat bo'lishi kerak.";
+
+// Taqiqlangan oddiy parollar ro'yxati (blacklist)
+const BLACKLISTED_PASSWORDS = [
+  'parol123', 'password', 'admin', 'teacher', 'student',
+  'qwerty', 'abc123', '123456', '12345678', 'iloveyou',
+  'password1', 'letmein', 'welcome', 'monkey', 'dragon',
+  '111111', '000000', 'football', 'master', 'login',
+  'iqro123', 'iqro2024', 'iqro2025', 'iqro2026', 'test123',
+  'parol', 'maxfiy', 'salom123', 'uzbek123'
+];
+
+// Ketma-ket belgilarni aniqlash (12345, abcde, qwerty)
+const SEQUENTIAL_PATTERNS = [
+  '0123456789', '9876543210',
+  'abcdefghijklmnopqrstuvwxyz', 'zyxwvutsrqponmlkjihgfedcba',
+  'qwertyuiop', 'asdfghjkl', 'zxcvbnm',
+  'poiuytrewq', 'lkjhgfdsa', 'mnbvcxz'
+];
+
+const hasSequentialChars = (password, minLen = 4) => {
+  const lower = password.toLowerCase();
+  for (const seq of SEQUENTIAL_PATTERNS) {
+    for (let i = 0; i <= seq.length - minLen; i++) {
+      if (lower.includes(seq.substring(i, i + minLen))) return true;
+    }
+  }
+  return false;
+};
+
+// Takrorlanuvchi belgilarni aniqlash (aaaa, 1111)
+const hasRepeatedChars = (password, minRepeat = 4) => {
+  for (let i = 0; i <= password.length - minRepeat; i++) {
+    const char = password[i];
+    let count = 1;
+    for (let j = i + 1; j < password.length && password[j] === char; j++) {
+      count++;
+    }
+    if (count >= minRepeat) return true;
+  }
+  return false;
+};
+
+// Parol kuchi ballini hisoblash (0-100)
+const calculatePasswordStrength = (password, username = '') => {
+  if (!password) return { score: 0, level: 'none', label: '' };
+  
+  let score = 0;
+  const checks = {
+    length: false,
+    uppercase: false,
+    lowercase: false,
+    digit: false,
+    special: false,
+    noSequential: false,
+    noRepeated: false,
+    notBlacklisted: false,
+    notUsername: false
+  };
+
+  // Uzunlik — 10 dan 16 gacha
+  if (password.length >= 10) { score += 20; checks.length = true; }
+  else if (password.length >= 8) { score += 10; }
+  else if (password.length >= 6) { score += 5; }
+
+  // Katta harf
+  if (/[A-Z]/.test(password)) { score += 15; checks.uppercase = true; }
+
+  // Kichik harf
+  if (/[a-z]/.test(password)) { score += 15; checks.lowercase = true; }
+
+  // Raqam
+  if (/\d/.test(password)) { score += 15; checks.digit = true; }
+
+  // Maxsus belgi
+  if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]/.test(password)) { score += 15; checks.special = true; }
+
+  // Ketma-ket belgilar yo'q
+  if (!hasSequentialChars(password)) { score += 5; checks.noSequential = true; }
+  else { score -= 10; }
+
+  // Takrorlanuvchi belgilar yo'q
+  if (!hasRepeatedChars(password)) { score += 5; checks.noRepeated = true; }
+  else { score -= 10; }
+
+  // Blacklist da emas
+  if (!BLACKLISTED_PASSWORDS.includes(password.toLowerCase())) { score += 5; checks.notBlacklisted = true; }
+  else { score -= 30; }
+
+  // Foydalanuvchi nomi bilan bir xil emas
+  if (username && password.toLowerCase().includes(username.toLowerCase())) {
+    score -= 20;
+  } else {
+    score += 5; checks.notUsername = true;
+  }
+
+  score = Math.max(0, Math.min(100, score));
+
+  let level, label;
+  if (score >= 80) { level = 'strong'; label = 'Mustahkam parol'; }
+  else if (score >= 50) { level = 'medium'; label = "O'rtacha parol"; }
+  else if (score >= 25) { level = 'weak'; label = 'Zaif parol'; }
+  else { level = 'danger'; label = 'Juda zaif'; }
+
+  return { score, level, label, checks };
+};
+
+const validatePassword = (password, username = '') => {
+  if (!password) {
+    return "Parolni kiritish shart.";
+  }
+  if (password.length < 10) {
+    return "Parol kamida 10 ta belgidan iborat bo'lishi kerak.";
   }
   if (password.length > 128) {
     return "Parol juda uzun (maksimum 128 belgi).";
   }
+  if (!/[A-Z]/.test(password)) {
+    return "Parolda kamida 1 ta katta harf bo'lishi kerak (A-Z).";
+  }
+  if (!/[a-z]/.test(password)) {
+    return "Parolda kamida 1 ta kichik harf bo'lishi kerak (a-z).";
+  }
+  if (!/\d/.test(password)) {
+    return "Parolda kamida 1 ta raqam bo'lishi kerak (0-9).";
+  }
+  if (BLACKLISTED_PASSWORDS.includes(password.toLowerCase())) {
+    return "Bu parol juda oddiy va xavfsiz emas. Boshqa parol tanlang.";
+  }
+  if (hasSequentialChars(password)) {
+    return "Parolda ketma-ket belgilar (1234, abcd, qwerty) ishlatmang.";
+  }
+  if (hasRepeatedChars(password)) {
+    return "Parolda bir xil belgilarni ko'p marta takrorlamang (aaaa).";
+  }
+  if (username && password.toLowerCase().includes(username.toLowerCase())) {
+    return "Parol foydalanuvchi nomi yoki telefon raqamini o'z ichiga olmasligi kerak.";
+  }
   return null; // Xatolik yo'q
+};
+
+// ────────────────────────────────────────────────────────
+// Brute-force himoyasi — Rate Limiting
+// 5 marta noto'g'ri urinishdan so'ng 15 daqiqaga bloklash
+// ────────────────────────────────────────────────────────
+const LOGIN_ATTEMPTS_KEY = 'iqro_login_attempts';
+const MAX_ATTEMPTS = 5;
+const LOCKOUT_DURATION = 15 * 60 * 1000; // 15 daqiqa
+
+const getLoginAttempts = () => {
+  try {
+    const data = JSON.parse(localStorage.getItem(LOGIN_ATTEMPTS_KEY) || '{}');
+    return data;
+  } catch { return {}; }
+};
+
+const recordFailedAttempt = () => {
+  const data = getLoginAttempts();
+  const now = Date.now();
+  data.attempts = (data.attempts || 0) + 1;
+  data.lastAttempt = now;
+  if (data.attempts >= MAX_ATTEMPTS) {
+    data.lockedUntil = now + LOCKOUT_DURATION;
+  }
+  localStorage.setItem(LOGIN_ATTEMPTS_KEY, JSON.stringify(data));
+  return data;
+};
+
+const resetLoginAttempts = () => {
+  localStorage.removeItem(LOGIN_ATTEMPTS_KEY);
+};
+
+const checkLockout = () => {
+  const data = getLoginAttempts();
+  if (data.lockedUntil && Date.now() < data.lockedUntil) {
+    const remainingMs = data.lockedUntil - Date.now();
+    const minutes = Math.ceil(remainingMs / 60000);
+    return {
+      locked: true,
+      message: `Xavfsizlik sababli akkaunt ${minutes} daqiqaga bloklangan. Iltimos, biroz kuting.`,
+      remainingMs
+    };
+  }
+  // Muddat o'tgan bo'lsa, tozalaymiz
+  if (data.lockedUntil && Date.now() >= data.lockedUntil) {
+    resetLoginAttempts();
+  }
+  return { locked: false, attempts: data.attempts || 0 };
 };
 
 export const AuthProvider = ({ children }) => {
@@ -175,21 +354,36 @@ export const AuthProvider = ({ children }) => {
   //   - Parol kamida 6 ta belgidan iborat
   //   - Telefon raqam ichki email sifatida ishlatiladi (foydalanuvchi ko'rmaydi)
   // ────────────────────────────────────────────────────────
-  const signInWithPhone = async (name, phone, password) => {
+  const signInWithPhone = async (name, phone, password, isRegistering = false) => {
     setAuthError('');
+
+    // Brute-force tekshiruvi
+    const lockStatus = checkLockout();
+    if (lockStatus.locked) {
+      setAuthError(lockStatus.message);
+      return false;
+    }
 
     // Telefon raqam validatsiyasi
     const cleanPhone = phone.replace(/\D/g, '');
     if (cleanPhone.length < 9) {
-      setAuthError("Telefon raqami noto'g'ri");
+      setAuthError("Telefon raqami noto'g'ri kiritildi. Iltimos, qaytadan urinib ko'ring.");
       return false;
     }
 
-    // Parol validatsiyasi
-    const passwordError = validatePassword(password);
-    if (passwordError) {
-      setAuthError(passwordError);
-      return false;
+    // Parol validatsiyasi — faqat ro'yxatdan o'tishda kuchli tekshiruv
+    if (isRegistering) {
+      const passwordError = validatePassword(password, cleanPhone);
+      if (passwordError) {
+        setAuthError(passwordError);
+        return false;
+      }
+    } else {
+      // Kirishda faqat bo'sh emasligini tekshiramiz
+      if (!password || password.length < 6) {
+        setAuthError("Parolni kiritish shart.");
+        return false;
+      }
     }
 
     // Ichki email yaratish (foydalanuvchi ko'rmaydi)
@@ -199,7 +393,10 @@ export const AuthProvider = ({ children }) => {
       // 1. Avval mavjud akkaunt bilan kirishga urinamiz
       await signInWithEmailAndPassword(auth, internalEmail, password);
       
-      // Kirish muvaffaqiyatli — profilni yangilaymiz
+      // Kirish muvaffaqiyatli — brute-force hisoblagichni tozalaymiz
+      resetLoginAttempts();
+
+      // Profilni yangilaymiz
       let isPremium = false;
       const userRef = doc(db, 'users', auth.currentUser.uid);
       const userSnap = await getDoc(userRef);
@@ -265,13 +462,20 @@ export const AuthProvider = ({ children }) => {
 
       // 3. Parol noto'g'ri (akkaunt mavjud, lekin parol mos kelmadi)
       if (err.code === 'auth/wrong-password') {
-        setAuthError("Parol noto'g'ri. Qaytadan urinib ko'ring.");
+        const attemptData = recordFailedAttempt();
+        const remaining = MAX_ATTEMPTS - attemptData.attempts;
+        if (remaining > 0) {
+          setAuthError(`Ma'lumotlar noto'g'ri kiritildi. Yana ${remaining} ta urinish qoldi.`);
+        } else {
+          setAuthError(`Xavfsizlik sababli akkaunt 15 daqiqaga bloklandi. Iltimos, biroz kuting.`);
+        }
         return false;
       }
 
       // 4. Boshqa xatoliklar
+      recordFailedAttempt();
       console.error("Kirish xatosi:", err);
-      setAuthError("Kirishda xatolik yuz berdi. Qaytadan urinib ko'ring.");
+      setAuthError("Ma'lumotlar noto'g'ri kiritildi, iltimos qaytadan urinib ko'ring.");
       return false;
     }
   };
@@ -296,15 +500,32 @@ export const AuthProvider = ({ children }) => {
   };
 
   // ─── Chiqish ───
-  const logout = () => signOut(auth);
+  // Xavfsizlik: logout paytida barcha mahalliy ma'lumotlarni tozalash
+  // Bu "Improper Session Management" zaifligini oldini oladi
+  const logout = () => {
+    // 1. Foydalanuvchi statistikasini tozalash
+    localStorage.removeItem('iqro_state');
+    localStorage.removeItem('chqbt_state');
+
+    // 2. E'tiroz tizimi ma'lumotlarini tozalash
+    localStorage.removeItem('sentObjectionIds');
+
+    // 3. sessionStorage ni to'liq tozalash
+    sessionStorage.clear();
+
+    // 4. Firebase Auth dan chiqish
+    return signOut(auth);
+  };
 
   return (
     <AuthContext.Provider value={{ 
       user, loading, authError, setAuthError, 
       signInWithGoogle, signInWithEmail, registerWithEmail, 
-      signInWithPhone, // YANGI: xavfsiz telefon+parol auth
-      resetPassword,   // YANGI: parol tiklash
-      logout 
+      signInWithPhone,
+      resetPassword,
+      logout,
+      calculatePasswordStrength,
+      checkLockout
     }}>
       {children}
     </AuthContext.Provider>

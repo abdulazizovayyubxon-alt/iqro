@@ -1,14 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Phone, LogIn, Lock, Eye, EyeOff, UserPlus, ArrowLeft, ShieldCheck } from 'lucide-react';
+import { User, Phone, LogIn, Lock, Eye, EyeOff, UserPlus, ShieldCheck, AlertTriangle, CheckCircle, XCircle, Shield } from 'lucide-react';
 
 const LoginPage = () => {
-  const { signInWithPhone, signInWithGoogle, resetPassword, authError, setAuthError } = useAuth();
+  const {
+    signInWithPhone, signInWithGoogle, resetPassword,
+    authError, setAuthError,
+    calculatePasswordStrength, checkLockout
+  } = useAuth();
+
   const [form, setForm] = useState({ name: '', phone: '', password: '', confirmPassword: '' });
   const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState('login'); // 'login' | 'register'
   const [showPassword, setShowPassword] = useState(false);
+  const [lockoutTimer, setLockoutTimer] = useState(null);
+
+  // Brute-force lockout taymerini tekshirish
+  useEffect(() => {
+    const checkLock = () => {
+      const status = checkLockout();
+      if (status.locked) {
+        setLockoutTimer(Math.ceil(status.remainingMs / 1000));
+      } else {
+        setLockoutTimer(null);
+      }
+    };
+    checkLock();
+    const interval = setInterval(checkLock, 1000);
+    return () => clearInterval(interval);
+  }, [checkLockout]);
+
+  // Parol kuchi — real vaqtda hisoblash
+  const passwordStrength = useMemo(() => {
+    if (mode !== 'register' || !form.password) return null;
+    const cleanPhone = form.phone.replace(/\D/g, '');
+    return calculatePasswordStrength(form.password, cleanPhone);
+  }, [form.password, form.phone, mode, calculatePasswordStrength]);
 
   const handleChange = (e) => {
     setAuthError('');
@@ -22,15 +50,15 @@ const LoginPage = () => {
     setForm(prev => ({ ...prev, phone: val }));
   };
 
-  const switchMode = () => {
-    setAuthError('');
-    setForm(prev => ({ ...prev, password: '', confirmPassword: '' }));
-    setMode(mode === 'login' ? 'register' : 'login');
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setAuthError('');
+
+    // Lockout tekshiruvi
+    if (lockoutTimer) {
+      setAuthError(`Xavfsizlik sababli akkaunt bloklangan. ${Math.ceil(lockoutTimer / 60)} daqiqa kuting.`);
+      return;
+    }
 
     // Ro'yxatdan o'tishda ism validatsiyasi
     if (mode === 'register') {
@@ -47,22 +75,26 @@ const LoginPage = () => {
       return;
     }
 
-    // Parol validatsiyasi
-    if (!form.password || form.password.length < 6) {
-      setAuthError("Parol kamida 6 ta belgidan iborat bo'lishi kerak.");
-      return;
-    }
-
-    // Ro'yxatdan o'tishda parol tasdiqlash
-    if (mode === 'register' && form.password !== form.confirmPassword) {
-      setAuthError("Parollar mos kelmaydi.");
-      return;
+    // Ro'yxatdan o'tishda parol tekshiruvi
+    if (mode === 'register') {
+      if (!form.password || form.password.length < 10) {
+        setAuthError("Parol kamida 10 ta belgidan iborat bo'lishi kerak.");
+        return;
+      }
+      if (form.password !== form.confirmPassword) {
+        setAuthError("Parollar mos kelmaydi. Iltimos, qaytadan tekshiring.");
+        return;
+      }
+    } else {
+      if (!form.password) {
+        setAuthError("Maxfiy parolni kiritish shart.");
+        return;
+      }
     }
 
     setLoading(true);
-    // Kirish rejimida ism sifatida telefon raqamning o'zini beramiz (mavjud bo'lsa, serverdan olinadi)
     const displayName = mode === 'register' ? form.name : (form.name || cleanPhone);
-    await signInWithPhone(displayName, form.phone, form.password);
+    await signInWithPhone(displayName, form.phone, form.password, mode === 'register');
     setLoading(false);
   };
 
@@ -73,6 +105,36 @@ const LoginPage = () => {
     }
     await resetPassword(form.phone);
   };
+
+  // Parol kuchi rangi va foizi
+  const getStrengthColor = (level) => {
+    switch (level) {
+      case 'strong': return 'var(--green)';
+      case 'medium': return 'var(--amber)';
+      case 'weak': return '#F97316';
+      case 'danger': return 'var(--red)';
+      default: return 'var(--bg3)';
+    }
+  };
+
+  const getStrengthEmoji = (level) => {
+    switch (level) {
+      case 'strong': return '🟢';
+      case 'medium': return '🟡';
+      case 'weak': return '🟠';
+      case 'danger': return '🔴';
+      default: return '';
+    }
+  };
+
+  // Lockout formatlanishi
+  const formatLockout = (seconds) => {
+    const min = Math.floor(seconds / 60);
+    const sec = seconds % 60;
+    return `${min}:${sec.toString().padStart(2, '0')}`;
+  };
+
+  const isLocked = lockoutTimer !== null && lockoutTimer > 0;
 
   return (
     <div className="login-page">
@@ -89,10 +151,43 @@ const LoginPage = () => {
       >
         {/* Logo */}
         <div className="login-logo">
-          <div className="login-logo-icon">🎓</div>
+          <div className="login-logo-icon">
+            <Shield size={48} style={{ color: 'var(--accent)', filter: 'drop-shadow(0 4px 12px rgba(59,130,246,0.3))' }} />
+          </div>
           <div className="login-logo-title">IQRO</div>
-          <div className="login-logo-sub">Kasbiy Sertifikatlash Platformasi</div>
+          <div className="login-logo-sub">Tizimga xavfsiz kirish</div>
         </div>
+
+        {/* Lockout ogohlantirishi */}
+        <AnimatePresence>
+          {isLocked && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              style={{
+                background: 'var(--red-bg)',
+                border: '1px solid rgba(239,68,68,0.3)',
+                borderRadius: '12px',
+                padding: '16px',
+                marginBottom: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px'
+              }}
+            >
+              <AlertTriangle size={24} style={{ color: 'var(--red)', flexShrink: 0 }} />
+              <div>
+                <div style={{ fontWeight: '700', fontSize: '14px', color: 'var(--red)', marginBottom: '2px' }}>
+                  Akkaunt vaqtinchalik bloklangan
+                </div>
+                <div style={{ fontSize: '13px', color: 'var(--text3)' }}>
+                  Xavfsizlik sababli {formatLockout(lockoutTimer)} vaqt kuting
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Rejim almashtirish indikatori */}
         <div style={{
@@ -105,6 +200,7 @@ const LoginPage = () => {
         }}>
           <button
             type="button"
+            id="login-tab-btn"
             onClick={() => { setMode('login'); setAuthError(''); }}
             style={{
               flex: 1,
@@ -129,6 +225,7 @@ const LoginPage = () => {
           </button>
           <button
             type="button"
+            id="register-tab-btn"
             onClick={() => { setMode('register'); setAuthError(''); }}
             style={{
               flex: 1,
@@ -165,8 +262,9 @@ const LoginPage = () => {
                 transition={{ duration: 0.2 }}
                 className="login-field"
               >
-                <label className="login-label"><User size={14} /> Ism va Familiya</label>
+                <label className="login-label"><User size={14} /> Ism va familiya</label>
                 <input
+                  id="register-name-input"
                   className="login-input"
                   type="text"
                   name="name"
@@ -182,10 +280,11 @@ const LoginPage = () => {
           <div className="login-field">
             <label className="login-label"><Phone size={14} /> Telefon raqam</label>
             <input
+              id="login-phone-input"
               className="login-input"
               type="tel"
               name="phone"
-              placeholder="+998 90 123 45 67"
+              placeholder="Foydalanuvchi nomi yoki ID"
               value={form.phone}
               onChange={handlePhoneChange}
               required
@@ -196,22 +295,23 @@ const LoginPage = () => {
 
           {/* Parol maydoni */}
           <div className="login-field">
-            <label className="login-label"><Lock size={14} /> Parol</label>
+            <label className="login-label"><Lock size={14} /> Maxfiy parol</label>
             <div style={{ position: 'relative' }}>
               <input
+                id="login-password-input"
                 className="login-input"
                 type={showPassword ? 'text' : 'password'}
                 name="password"
-                placeholder={mode === 'register' ? "Kamida 6 ta belgi" : "Parolingizni kiriting"}
+                placeholder="Maxfiy parol"
                 value={form.password}
                 onChange={handleChange}
                 required
                 autoComplete={mode === 'register' ? 'new-password' : 'current-password'}
                 style={{ paddingRight: '44px' }}
-                minLength={6}
               />
               <button
                 type="button"
+                id="toggle-password-btn"
                 onClick={() => setShowPassword(!showPassword)}
                 style={{
                   position: 'absolute',
@@ -234,96 +334,158 @@ const LoginPage = () => {
             </div>
           </div>
 
-          {/* Parolni tasdiqlash — faqat ro'yxatdan o'tishda */}
+          {/* Parolni tasdiqlash va kuch indikatori — faqat ro'yxatdan o'tishda */}
           <AnimatePresence mode="wait">
             {mode === 'register' && (
               <motion.div
-                key="confirm-field"
+                key="register-extra-fields"
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.2 }}
-                className="login-field"
               >
-                <label className="login-label"><ShieldCheck size={14} /> Parolni tasdiqlang</label>
-                <input
-                  className="login-input"
-                  type={showPassword ? 'text' : 'password'}
-                  name="confirmPassword"
-                  placeholder="Parolni qaytadan kiriting"
-                  value={form.confirmPassword}
-                  onChange={handleChange}
-                  autoComplete="new-password"
-                  minLength={6}
-                />
-                {/* Parol kuchi indikatori */}
-                {form.password.length > 0 && (
-                  <div style={{ marginTop: '8px' }}>
+                {/* Parol kuchi indikatori — rangli progress-bar */}
+                {form.password.length > 0 && passwordStrength && (
+                  <div style={{ marginBottom: '16px' }}>
+                    {/* Progress bar */}
                     <div style={{
-                      height: '4px',
-                      borderRadius: '2px',
+                      height: '6px',
+                      borderRadius: '3px',
                       background: 'var(--bg3)',
-                      overflow: 'hidden'
+                      overflow: 'hidden',
+                      marginBottom: '8px'
                     }}>
-                      <div style={{
-                        height: '100%',
-                        borderRadius: '2px',
-                        transition: 'all 0.3s ease',
-                        width: form.password.length >= 12 ? '100%' :
-                               form.password.length >= 8 ? '66%' :
-                               form.password.length >= 6 ? '33%' : '10%',
-                        background: form.password.length >= 12 ? 'var(--green)' :
-                                    form.password.length >= 8 ? 'var(--amber)' :
-                                    form.password.length >= 6 ? 'var(--blue)' : 'var(--red)',
-                      }} />
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${passwordStrength.score}%` }}
+                        transition={{ duration: 0.4, ease: 'easeOut' }}
+                        style={{
+                          height: '100%',
+                          borderRadius: '3px',
+                          background: getStrengthColor(passwordStrength.level),
+                        }}
+                      />
                     </div>
+
+                    {/* Kuch darajasi matni */}
                     <div style={{
-                      fontSize: '11px',
-                      color: 'var(--text3)',
-                      marginTop: '4px',
                       display: 'flex',
-                      justifyContent: 'space-between'
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      marginBottom: '10px'
                     }}>
-                      <span>
-                        {form.password.length >= 12 ? '🟢 Kuchli parol' :
-                         form.password.length >= 8 ? '🟡 O\'rtacha parol' :
-                         form.password.length >= 6 ? '🔵 Qabul qilinadigan' :
-                         '🔴 Juda qisqa'}
+                      <span style={{
+                        fontSize: '12px',
+                        fontWeight: '600',
+                        color: getStrengthColor(passwordStrength.level)
+                      }}>
+                        {getStrengthEmoji(passwordStrength.level)} {passwordStrength.label}
                       </span>
-                      {form.confirmPassword && form.password !== form.confirmPassword && (
-                        <span style={{ color: 'var(--red)' }}>⚠ Mos kelmaydi</span>
-                      )}
-                      {form.confirmPassword && form.password === form.confirmPassword && (
-                        <span style={{ color: 'var(--green)' }}>✓ Mos keladi</span>
-                      )}
+                      <span style={{ fontSize: '11px', color: 'var(--text3)' }}>
+                        {passwordStrength.score}/100 ball
+                      </span>
+                    </div>
+
+                    {/* Batafsil tekshiruvlar */}
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: '1fr 1fr',
+                      gap: '4px',
+                      fontSize: '11px'
+                    }}>
+                      {[
+                        { key: 'length', label: '10+ belgi uzunlik' },
+                        { key: 'uppercase', label: 'Katta harf (A-Z)' },
+                        { key: 'lowercase', label: 'Kichik harf (a-z)' },
+                        { key: 'digit', label: 'Raqam (0-9)' },
+                        { key: 'noSequential', label: "Ketma-ket yo'q" },
+                        { key: 'noRepeated', label: "Takror yo'q" },
+                      ].map(({ key, label }) => (
+                        <div key={key} style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '4px',
+                          color: passwordStrength.checks[key] ? 'var(--green)' : 'var(--text3)',
+                          padding: '3px 0'
+                        }}>
+                          {passwordStrength.checks[key]
+                            ? <CheckCircle size={12} />
+                            : <XCircle size={12} style={{ opacity: 0.5 }} />
+                          }
+                          <span>{label}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 )}
+
+                {/* Parolni tasdiqlash maydoni */}
+                <div className="login-field">
+                  <label className="login-label"><ShieldCheck size={14} /> Parolni tasdiqlang</label>
+                  <input
+                    id="register-confirm-password-input"
+                    className="login-input"
+                    type={showPassword ? 'text' : 'password'}
+                    name="confirmPassword"
+                    placeholder="Parolni qaytadan kiriting"
+                    value={form.confirmPassword}
+                    onChange={handleChange}
+                    autoComplete="new-password"
+                  />
+                  {/* Parol mos kelish indikatori */}
+                  {form.confirmPassword && (
+                    <div style={{
+                      fontSize: '12px',
+                      marginTop: '4px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '4px'
+                    }}>
+                      {form.password === form.confirmPassword ? (
+                        <span style={{ color: 'var(--green)', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          <CheckCircle size={14} /> Parollar mos keladi
+                        </span>
+                      ) : (
+                        <span style={{ color: 'var(--red)', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          <XCircle size={14} /> Parollar mos kelmaydi
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
 
           {/* Xatolik xabari */}
-          {authError && (
-            <motion.div
-              className="login-error"
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              ⚠️ {authError}
-            </motion.div>
-          )}
+          <AnimatePresence>
+            {authError && (
+              <motion.div
+                className="login-error"
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}
+              >
+                <AlertTriangle size={16} style={{ flexShrink: 0, marginTop: '1px' }} />
+                <span>{authError}</span>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <button
             type="submit"
+            id="login-submit-btn"
             className="btn btn-primary login-submit-btn"
-            disabled={loading}
+            disabled={loading || isLocked}
             style={{ marginTop: 10 }}
           >
-            {loading ? '⏳ Kuting...' : (
-              mode === 'register' 
-                ? <><UserPlus size={18} /> Ro'yxatdan O'tish</>
-                : <><LogIn size={18} /> Tizimga Kirish</>
+            {loading ? '⏳ Iltimos, kuting...' : (
+              isLocked ? (
+                <><AlertTriangle size={18} /> Bloklangan ({formatLockout(lockoutTimer)})</>
+              ) : mode === 'register'
+                ? <><UserPlus size={18} /> Ro'yxatdan o'tish</>
+                : <><LogIn size={18} /> Tizimga kirish</>
             )}
           </button>
 
@@ -331,6 +493,7 @@ const LoginPage = () => {
           {mode === 'login' && (
             <button
               type="button"
+              id="forgot-password-btn"
               onClick={handleForgotPassword}
               style={{
                 background: 'none',
@@ -364,15 +527,18 @@ const LoginPage = () => {
         {/* Google orqali kirish */}
         <button
           type="button"
+          id="google-login-btn"
           onClick={async () => { setLoading(true); await signInWithGoogle(); setLoading(false); }}
-          disabled={loading}
+          disabled={loading || isLocked}
           style={{
             width: '100%', padding: '13px', borderRadius: '12px',
             border: '1.5px solid var(--border)', background: 'var(--bg2)',
             color: 'var(--text)', fontSize: '15px', fontWeight: '600',
-            cursor: 'pointer', display: 'flex', alignItems: 'center',
+            cursor: isLocked ? 'not-allowed' : 'pointer',
+            display: 'flex', alignItems: 'center',
             justifyContent: 'center', gap: '12px', transition: 'all 0.2s',
-            fontFamily: 'inherit', marginBottom: '10px'
+            fontFamily: 'inherit', marginBottom: '10px',
+            opacity: isLocked ? 0.5 : 1
           }}
         >
           <svg width="20" height="20" viewBox="0 0 48 48">
@@ -384,10 +550,9 @@ const LoginPage = () => {
           Google orqali kirish
         </button>
 
-
-
         <p className="login-footer-note" style={{ marginTop: 20 }}>
-          🔒 Parolingiz xavfsiz tarzda shifrlangan holda saqlanadi. Telefon raqamingiz akkauntingizni aniqlash uchun ishlatiladi.
+          <Shield size={14} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+          Sizning parolingiz xavfsiz tarzda shifrlangan holda saqlanadi. Telefon raqamingiz faqat akkauntingizni aniqlash uchun ishlatiladi.
         </p>
       </motion.div>
     </div>
