@@ -421,18 +421,35 @@ const TestPage = () => {
         <div className="exam-mode-container">
           {!showResults ? (
             <AnimatePresence mode="wait">
-              <motion.div key={currentQ} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} transition={{ duration: 0.2 }} className="question-box glass-panel" style={{ position: 'relative', padding: '24px 16px' }}>
-                <button className="objection-btn" onClick={() => setShowObjectionModal(true)}><MessageCircle size={14} /> E'tiroz</button>
-                <div style={{ width: '100%', height: '4px', borderRadius: '2px', background: 'var(--bg3)', marginBottom: '8px', overflow: 'hidden' }}>
+              <motion.div key={currentQ} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} transition={{ duration: 0.2 }} className="question-box glass-panel" style={{ padding: '20px 16px' }}>
+
+                {/* ── Sarlavha qatori: savol raqami + qiyinlik + mavzu + e'tiroz ── */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '6px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div className="q-num">Savol {currentQ + 1} / {questions.length}</div>
+                    {questions[currentQ].difficulty !== undefined && (
+                      <span style={{
+                        width: '8px', height: '8px', borderRadius: '50%',
+                        display: 'inline-block', flexShrink: 0, opacity: 0.6,
+                        background: questions[currentQ].difficulty >= 3 ? 'var(--red)' : questions[currentQ].difficulty >= 1 ? 'var(--amber)' : 'var(--green)',
+                      }} title={questions[currentQ].difficulty >= 3 ? 'Qiyin' : questions[currentQ].difficulty >= 1 ? "O'rtacha" : 'Oson'} />
+                    )}
+                    {topicId >= 0 && <div style={{ fontSize: '11px', color: 'var(--blue)', fontWeight: '600', background: 'var(--blue-bg)', padding: '2px 8px', borderRadius: '6px' }}>{topicName}</div>}
+                  </div>
+                  <button className="objection-btn" style={{ position: 'relative', top: 'auto', right: 'auto', margin: 0 }} onClick={() => setShowObjectionModal(true)}><MessageCircle size={14} /> E'tiroz</button>
+                </div>
+
+                {/* ── Progress bar ── */}
+                <div style={{ width: '100%', height: '4px', borderRadius: '2px', background: 'var(--bg3)', marginBottom: '10px', overflow: 'hidden' }}>
                   <div style={{ width: `${((Object.keys(answers).length) / questions.length) * 100}%`, height: '100%', borderRadius: '2px', background: 'linear-gradient(90deg, var(--blue), var(--accent))', transition: 'width 0.5s ease' }} />
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                  <div className="q-num">Savol {currentQ + 1} / {questions.length}</div>
-                  {topicId >= 0 && <div style={{ fontSize: '11px', color: 'var(--blue)', fontWeight: '600', background: 'var(--blue-bg)', padding: '2px 8px', borderRadius: '6px' }}>{topicName}</div>}
-                </div>
+
+                {/* ── Motivatsiya matni ── */}
                 {motivationText && (
-                  <motion.div initial={{ opacity: 0, scale: 0.8, y: -10 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0 }} style={{ textAlign: 'center', fontWeight: '800', fontSize: comboCount >= 10 ? '20px' : comboCount >= 5 ? '18px' : '16px', color: comboCount >= 10 ? '#FFD700' : comboCount >= 5 ? 'var(--amber)' : 'var(--green)', padding: '6px 0', marginBottom: '4px', textShadow: comboCount >= 10 ? '0 0 10px rgba(255,215,0,0.5)' : 'none' }}>{motivationText}</motion.div>
+                  <motion.div initial={{ opacity: 0, scale: 0.8, y: -10 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0 }} style={{ textAlign: 'center', fontWeight: '800', fontSize: comboCount >= 10 ? '20px' : comboCount >= 5 ? '18px' : '16px', color: comboCount >= 10 ? '#FFD700' : comboCount >= 5 ? 'var(--amber)' : 'var(--green)', padding: '4px 0', marginBottom: '4px', textShadow: comboCount >= 10 ? '0 0 10px rgba(255,215,0,0.5)' : 'none' }}>{motivationText}</motion.div>
                 )}
+
+                {/* ── Taymer ── */}
                 {mode === 'exam' && answers[currentQ] === undefined && (
                   <div className={`question-timer ${timeLeft <= 10 ? 'timer-danger' : timeLeft <= 20 ? 'timer-warning' : ''}`}>
                     <Clock size={14} />
@@ -443,22 +460,6 @@ const TestPage = () => {
                   </div>
                 )}
                 {answers[currentQ] === -1 && <div style={{ color: 'var(--red)', fontSize: '13px', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>⏰ Vaqt tugadi!</div>}
-
-                {/* Qiyinlik indikatori — kichik niqtacha */}
-                {questions[currentQ].difficulty !== undefined && (
-                  <span style={{
-                    position: 'absolute',
-                    top: '14px',
-                    right: '48px',
-                    width: '8px',
-                    height: '8px',
-                    borderRadius: '50%',
-                    display: 'inline-block',
-                    opacity: 0.45,
-                    background: questions[currentQ].difficulty >= 3 ? 'var(--red)' : questions[currentQ].difficulty >= 1 ? 'var(--amber)' : 'var(--green)',
-                  }} title={questions[currentQ].difficulty >= 3 ? 'Qiyin' : questions[currentQ].difficulty >= 1 ? "O'rtacha" : 'Oson'} />
-                )}
-
 
                 {questions[currentQ].image && <div style={{ margin: '0 0 16px', textAlign: 'center' }}><img src={questions[currentQ].image} alt="Savol rasmi" style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '12px', border: '1px solid var(--border)' }} /></div>}
                 {questions[currentQ].isHtml ? <SafeHtml html={questions[currentQ].q} className="q-text" /> : <div className="q-text" style={{ whiteSpace: 'pre-line' }}>{questions[currentQ].q}</div>}

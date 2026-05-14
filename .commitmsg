@@ -1,0 +1,6 @@
+UI: Fix TestPage question header layout
+
+- Move E'tiroz button into header flex row (remove absolute positioning)
+- Move difficulty dot inline with question number
+- Restore progress bar, timer, and motivation text in correct order
+- Clean up overlapping elements
