@@ -184,15 +184,8 @@ const SmartReviewPage = () => {
           transition={{ duration: 0.15 }}
         >
           <div className="glass-panel" style={{ padding: 28, maxWidth: 700, margin: '0 auto', position: 'relative' }}>
-            <button
-              className="objection-btn"
-              style={{ position: 'absolute', top: 12, right: 12 }}
-              onClick={() => setShowObjectionModal(true)}
-            >
-              <MessageCircle size={14} /> E'tiroz
-            </button>
-            {/* Daraja badge */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+            {/* Header: Daraja, Stats, Objection */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, flexWrap: 'wrap', gap: 10 }}>
               <div style={{
                 fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 6,
                 background: 'var(--blue-bg)', color: 'var(--blue)', textTransform: 'uppercase'
@@ -200,8 +193,19 @@ const SmartReviewPage = () => {
                 <Clock size={12} style={{ verticalAlign: -2, marginRight: 4 }} />
                 Daraja: {levelNames[card.level || 0]}
               </div>
-              <div style={{ fontSize: 12, color: 'var(--text3)' }}>
-                ✅ {sessionStats.correct} &nbsp; ❌ {sessionStats.wrong}
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                <div style={{ fontSize: 13, color: 'var(--text3)', fontWeight: 600, display: 'flex', gap: '8px' }}>
+                  <span style={{ color: 'var(--green)' }}>✅ {sessionStats.correct}</span>
+                  <span style={{ color: 'var(--red)' }}>❌ {sessionStats.wrong}</span>
+                </div>
+                <button
+                  className="objection-btn"
+                  style={{ position: 'relative', top: 'auto', right: 'auto', margin: 0 }}
+                  onClick={() => setShowObjectionModal(true)}
+                >
+                  <MessageCircle size={14} /> E'tiroz
+                </button>
               </div>
             </div>
 
