@@ -1,5 +1,4 @@
-Security: Fix premium bypass vulnerability
+Fix: Leaderboard permission error
 
-- Added hard checks in ExamPage: non-premium users are strictly blocked from rendering the exam and shown the PremiumModal instead.
-- Added hard checks in TestPage: non-premium users are blocked from selecting topicId >= 2 and shown the PremiumModal instead.
-- Prevents users from bypassing premium restrictions via direct URL navigation or sidebar links.
+- Updated firestore.rules to allow any logged-in user to read the userStats collection.
+- This fixes the issue where the leaderboard failed to load due to "missing or insufficient permissions" because userStats was previously restricted to owner-only read access.
