@@ -389,10 +389,10 @@ export const AuthProvider = ({ children }) => {
       return false;
     }
 
-    // Telefon raqam validatsiyasi
+    // Telefon raqam validatsiyasi (Faqat O'zbekiston kodi)
     const cleanPhone = phone.replace(/\D/g, '');
-    if (cleanPhone.length < 9) {
-      setAuthError("Telefon raqami noto'g'ri kiritildi. Iltimos, qaytadan urinib ko'ring.");
+    if (!cleanPhone.startsWith('998') || cleanPhone.length !== 12) {
+      setAuthError("Faqat O'zbekiston telefon raqamlari (+998) orqali kirish mumkin.");
       return false;
     }
 
@@ -511,8 +511,8 @@ export const AuthProvider = ({ children }) => {
   const resetPassword = async (phone) => {
     setAuthError('');
     const cleanPhone = phone.replace(/\D/g, '');
-    if (cleanPhone.length < 9) {
-      setAuthError("Telefon raqami noto'g'ri");
+    if (!cleanPhone.startsWith('998') || cleanPhone.length !== 12) {
+      setAuthError("Faqat O'zbekiston telefon raqamlari (+998) orqali tiklash mumkin.");
       return false;
     }
 

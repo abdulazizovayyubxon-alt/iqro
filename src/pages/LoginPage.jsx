@@ -10,7 +10,7 @@ const LoginPage = () => {
     calculatePasswordStrength, checkLockout
   } = useAuth();
 
-  const [form, setForm] = useState({ name: '', phone: '', password: '', confirmPassword: '' });
+  const [form, setForm] = useState({ name: '', phone: '+998', password: '', confirmPassword: '' });
   const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState('login'); // 'login' | 'register'
   const [showPassword, setShowPassword] = useState(false);
@@ -46,7 +46,19 @@ const LoginPage = () => {
   const handlePhoneChange = (e) => {
     setAuthError('');
     let val = e.target.value.replace(/[^\d+]/g, '');
-    if (!val.startsWith('+')) val = '+' + val.replace(/\+/g, '');
+    
+    // Faqat O'zbekiston kodi qolishini ta'minlash
+    if (!val.startsWith('+998')) {
+      if (val.startsWith('998')) val = '+' + val;
+      else if (val.startsWith('+')) val = '+998';
+      else val = '+998' + val;
+    }
+    
+    // Raqamlar soni 13 tadan oshmasligi kerak (+998 va 9 ta raqam)
+    if (val.length > 13) {
+      val = val.slice(0, 13);
+    }
+    
     setForm(prev => ({ ...prev, phone: val }));
   };
 
@@ -68,10 +80,10 @@ const LoginPage = () => {
       }
     }
 
-    // Telefon validatsiyasi
+    // Telefon validatsiyasi (Faqat O'zbekiston kodi)
     const cleanPhone = form.phone.replace(/\D/g, '');
-    if (cleanPhone.length < 9) {
-      setAuthError("Telefon raqami to'liq emas (masalan: +998901234567).");
+    if (!cleanPhone.startsWith('998') || cleanPhone.length !== 12) {
+      setAuthError("Iltimos, O'zbekiston telefon raqamini to'g'ri kiriting (masalan: +998901234567).");
       return;
     }
 
@@ -99,8 +111,9 @@ const LoginPage = () => {
   };
 
   const handleForgotPassword = async () => {
-    if (!form.phone || form.phone.replace(/\D/g, '').length < 9) {
-      setAuthError("Avval telefon raqamingizni kiriting.");
+    const cleanPhone = form.phone.replace(/\D/g, '');
+    if (!cleanPhone.startsWith('998') || cleanPhone.length !== 12) {
+      setAuthError("Parolni tiklash uchun avval telefon raqamingizni to'liq kiriting.");
       return;
     }
     await resetPassword(form.phone);
@@ -284,7 +297,7 @@ const LoginPage = () => {
               className="login-input"
               type="tel"
               name="phone"
-              placeholder="Foydalanuvchi nomi yoki ID"
+              placeholder="+998 90 123 45 67"
               value={form.phone}
               onChange={handlePhoneChange}
               required
