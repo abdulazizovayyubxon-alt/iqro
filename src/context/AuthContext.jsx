@@ -443,11 +443,17 @@ export const AuthProvider = ({ children }) => {
       });
       return true;
     } catch (err) {
-      // 2. Akkaunt topilmadi — yangi foydalanuvchi, ro'yxatdan o'tkazamiz
+      // 2. Akkaunt topilmadi yoki hisob ma'lumotlari yaroqsiz
       if (
         err.code === 'auth/user-not-found' ||
         err.code === 'auth/invalid-credential'
       ) {
+        // FAQAT ro'yxatdan o'tish rejimida yangi akkaunt yaratamiz
+        if (!isRegistering) {
+          setAuthError("Bu telefon raqam ro'yxatdan o'tmagan. Iltimos, avval ro'yxatdan o'ting.");
+          return false;
+        }
+
         try {
           const userCred = await createUserWithEmailAndPassword(auth, internalEmail, password);
           await updateProfile(userCred.user, { displayName: name });
