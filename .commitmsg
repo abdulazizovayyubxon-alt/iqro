@@ -1,5 +1,5 @@
-Security Fix: login no longer auto-registers unknown users
+Security: Fix premium bypass vulnerability
 
-- Login mode now shows error if phone number not found
-- Only register mode creates new accounts
-- Prevents accidental account creation via login form
+- Added hard checks in ExamPage: non-premium users are strictly blocked from rendering the exam and shown the PremiumModal instead.
+- Added hard checks in TestPage: non-premium users are blocked from selecting topicId >= 2 and shown the PremiumModal instead.
+- Prevents users from bypassing premium restrictions via direct URL navigation or sidebar links.

@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
+import { useAuth } from '../context/AuthContext';
 import { TOPICS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, CheckCircle, XCircle, RefreshCw } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import ObjectionModal from '../components/shared/ObjectionModal';
+import PremiumModal from '../components/PremiumModal';
 import SafeHtml from '../components/shared/SafeHtml';
 import { db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
@@ -28,10 +30,33 @@ function shuffleArray(arr) {
 const ExamPage = () => {
   const navigate = useNavigate();
   const goBack = () => navigate('/');
+  const { user } = useAuth();
   const { state, batchCommitResults } = useContext(AppContext);
   const { addObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
   const cat = state.activeCategory;
+  const [showPremiumModal, setShowPremiumModal] = useState(false);
+
+  // Premium tekshiruvi — imtihon faqat premium foydalanuvchilar uchun
+  if (!user?.isPremium) {
+    return (
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
+        <div className="glass-panel" style={{ maxWidth: 500, margin: '60px auto', padding: 40, textAlign: 'center' }}>
+          <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
+          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Imtihon — Premium</div>
+          <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
+            Imtihon simulyatsiyasi faqat Premium foydalanuvchilar uchun ochiq.
+            Premium rejimni faollashtiring va 50 ta savoldan iborat to'liq imtihon yechib ko'ring!
+          </div>
+          <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
+            ⭐ Premium Rejimni Faollashtirish
+          </button>
+          <button className="btn btn-outline" onClick={goBack}>← Bosh sahifaga</button>
+        </div>
+        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
+      </motion.div>
+    );
+  }
 
   const [questions, setQuestions] = useState([]);
   const [topicGroups, setTopicGroups] = useState([]); // [{name, icon, start, end}]

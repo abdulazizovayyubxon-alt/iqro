@@ -3,12 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
+import { useAuth } from '../context/AuthContext';
 import { TOPICS } from '../data/mockData';
 import { BADGES, getEarnedBadges } from '../data/badges';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RefreshCw, ArrowLeft, Home, Target, PenTool, Zap, MessageCircle, ThumbsUp, ThumbsDown, Clock, Share2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import ObjectionModal from '../components/shared/ObjectionModal';
+import PremiumModal from '../components/PremiumModal';
 import SafeHtml from '../components/shared/SafeHtml';
 import { BATCH_SIZE, QUESTION_TIMER_SECONDS } from '../config';
 import { db } from '../firebase';
@@ -17,13 +19,23 @@ import { smartSort, summarizeTestResults } from '../engine/SmartQuestionEngine';
 
 const TestPage = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { state, addScore, addMistake, batchCommitResults, updateState } = useContext(AppContext);
   const mode = state.testMode || 'exam';
   const setMode = (m) => updateState({ testMode: m });
   const topicId = state.topicId ?? -1;
-  const setTopicId = (id) => updateState({ topicId: id });
   const goBack = () => navigate('/');
   const { addObjection } = useContext(ObjectionContext);
+  const [showPremiumModal, setShowPremiumModal] = useState(false);
+
+  // Premium tekshiruvli mavzu o'zgartirish
+  const setTopicId = (id) => {
+    if (!user?.isPremium && id >= 2) {
+      setShowPremiumModal(true);
+      return;
+    }
+    updateState({ topicId: id });
+  };
   const { showToast } = useContext(ToastContext);
   const [questions, setQuestions] = useState([]);
   const [currentQ, setCurrentQ] = useState(0);
@@ -539,11 +551,17 @@ const TestPage = () => {
       )}
 
       {/* E'TIROZ MODALI */}
+      {/* E'TIROZ MODALI */}
       <ObjectionModal
         isOpen={showObjectionModal}
         onClose={() => setShowObjectionModal(false)}
         questionText={questions[currentQ]?.q}
         onSubmit={handleObjection}
+      />
+
+      <PremiumModal 
+        isOpen={showPremiumModal} 
+        onClose={() => setShowPremiumModal(false)} 
       />
     </motion.div>
   );
