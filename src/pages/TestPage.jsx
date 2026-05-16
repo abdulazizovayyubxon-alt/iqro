@@ -29,16 +29,17 @@ const TestPage = () => {
   const { addObjection } = useContext(ObjectionContext);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
-  // URL orqali yoki state orqali kiritilganda premium tekshiruvi (barcha mavzular uchun)
-  if (!user?.isPremium) {
+  const isFreeLimitReached = !user?.isPremium && (state.totalAnswered || 0) >= 100;
+
+  // Bepul limit tekshiruvi (100 ta savol)
+  if (isFreeLimitReached) {
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
         <div className="glass-panel" style={{ maxWidth: 500, margin: '60px auto', padding: 40, textAlign: 'center' }}>
           <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
-          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Premium Bo'lim</div>
+          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Bepul Limit Tugadi</div>
           <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-            Bu bo'limdagi barcha savollar faqat Premium foydalanuvchilar uchun ochiq.
-            Premium rejimni faollashtiring va to'liq bazadan foydalaning!
+            Siz bepul limitni (100 ta savol) muvaffaqiyatli yakunladingiz! Barcha mavzular va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
           </div>
           <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
             ⭐ Premium Rejimni Faollashtirish
@@ -52,7 +53,7 @@ const TestPage = () => {
 
   // Premium tekshiruvli mavzu o'zgartirish
   const setTopicId = (id) => {
-    if (!user?.isPremium) {
+    if (isFreeLimitReached) {
       setShowPremiumModal(true);
       return;
     }

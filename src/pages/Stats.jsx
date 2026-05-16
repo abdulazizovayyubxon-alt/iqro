@@ -16,15 +16,16 @@ const Stats = () => {
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const { state } = useContext(AppContext);
 
-  if (!user?.isPremium) {
+  const isFreeLimitReached = !user?.isPremium && (state.totalAnswered || 0) >= 100;
+
+  if (isFreeLimitReached) {
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
         <div className="glass-panel" style={{ maxWidth: 500, margin: '60px auto', padding: 40, textAlign: 'center' }}>
           <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
-          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Premium Funksiya</div>
+          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Bepul Limit Tugadi</div>
           <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-            Bu bo'lim faqat Premium foydalanuvchilar uchun ochiq.
-            Premium rejimni faollashtiring va barcha imkoniyatlardan foydalaning!
+            Siz bepul limitni (100 ta savol) muvaffaqiyatli yakunladingiz! O'z statistikangizni ko'rish va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
           </div>
           <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
             ⭐ Premium Rejimni Faollashtirish

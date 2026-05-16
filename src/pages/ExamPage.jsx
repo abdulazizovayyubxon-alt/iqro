@@ -38,16 +38,17 @@ const ExamPage = () => {
   const cat = state.activeCategory;
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
-  // Premium tekshiruvi — imtihon faqat premium foydalanuvchilar uchun
-  if (!user?.isPremium) {
+  const isFreeLimitReached = !user?.isPremium && (state.totalAnswered || 0) >= 100;
+
+  // Bepul limit tekshiruvi — imtihon 100 ta savoldan so'ng bloklanadi
+  if (isFreeLimitReached) {
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
         <div className="glass-panel" style={{ maxWidth: 500, margin: '60px auto', padding: 40, textAlign: 'center' }}>
           <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
-          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Imtihon — Premium</div>
+          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Bepul Limit Tugadi</div>
           <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-            Imtihon simulyatsiyasi faqat Premium foydalanuvchilar uchun ochiq.
-            Premium rejimni faollashtiring va 50 ta savoldan iborat to'liq imtihon yechib ko'ring!
+            Siz bepul limitni (100 ta savol) muvaffaqiyatli yakunladingiz! Barcha mavzular, imtihonlar va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
           </div>
           <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
             ⭐ Premium Rejimni Faollashtirish

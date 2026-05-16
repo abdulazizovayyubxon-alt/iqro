@@ -21,8 +21,9 @@ const Dashboard = () => {
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
   const handleNavigation = (topicId, mode) => {
-    // Agar premium bo'lmasa, barcha funksiyalarni bloklash
-    if (!user?.isPremium) {
+    // 100 ta bepul savol limitini tekshirish
+    const isFreeLimitReached = !user?.isPremium && (state.totalAnswered || 0) >= 100;
+    if (isFreeLimitReached) {
       setShowPremiumModal(true);
       return;
     }
@@ -144,6 +145,22 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
+
+      {/* 100 ta savol limiti (Non-Premium) */}
+      {!user?.isPremium && (
+        <div className="glass-panel" style={{ padding: '16px 20px', marginBottom: 24, border: '1px solid rgba(251, 191, 36, 0.3)', background: 'rgba(251, 191, 36, 0.05)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+            <div style={{ fontWeight: 700, color: 'var(--amber)' }}>Bepul Limit: 100 ta savol</div>
+            <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text)' }}>{Math.min(state.totalAnswered || 0, 100)} / 100</div>
+          </div>
+          <div style={{ height: 8, background: 'var(--bg3)', borderRadius: 4, overflow: 'hidden' }}>
+            <div style={{ width: `${Math.min(((state.totalAnswered || 0) / 100) * 100, 100)}%`, height: '100%', background: 'var(--amber)' }} />
+          </div>
+          <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 8 }}>
+            Siz hozircha tizimni bepul ishlatmoqdasiz. Barcha savollarni yechish uchun <span style={{ color: 'var(--amber)', cursor: 'pointer', textDecoration: 'underline' }} onClick={() => setShowPremiumModal(true)}>Premium</span> oling.
+          </div>
+        </div>
+      )}
 
       {/* E'tirozlar paneli */}
       <div id="objections-section" className="glass-panel" style={{ padding: '24px', marginBottom: '24px', border: '1px solid rgba(59, 130, 246, 0.3)', background: 'rgba(59, 130, 246, 0.05)' }}>
