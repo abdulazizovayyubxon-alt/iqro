@@ -4,6 +4,7 @@ import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
+import { useAdmin } from '../hooks/useAdmin';
 import PremiumModal from '../components/PremiumModal';
 import { SCHEDULE, TOPICS } from '../data/mockData';
 import { Play, Repeat, Zap, MessageCircle, Download, Trash2, Medal, Palette, Clock, Award, Target, Flame, AlertTriangle, Map, CheckCircle2, TrendingUp } from 'lucide-react';
@@ -146,24 +147,58 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* 100 ta savol limiti (Non-Premium) */}
+      {/* 100 ta savol limiti (Non-Premium) - Ixcham va Premium ko'rinish */}
       {!user?.isPremium && (
-        <div className="glass-panel" style={{ padding: '16px 20px', marginBottom: 24, border: '1px solid rgba(251, 191, 36, 0.3)', background: 'rgba(251, 191, 36, 0.05)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-            <div style={{ fontWeight: 700, color: 'var(--amber)' }}>Bepul Limit: 100 ta savol</div>
-            <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text)' }}>{Math.min(state.totalAnswered || 0, 100)} / 100</div>
+        <div 
+          className="glass-panel hoverable" 
+          onClick={() => setShowPremiumModal(true)}
+          style={{ 
+            padding: '12px 18px', 
+            marginBottom: 24, 
+            border: '1px solid rgba(251, 191, 36, 0.4)', 
+            background: 'linear-gradient(90deg, rgba(251, 191, 36, 0.08) 0%, rgba(245, 158, 11, 0.02) 100%)',
+            borderRadius: '14px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '16px',
+            cursor: 'pointer',
+            boxShadow: '0 4px 12px rgba(251, 191, 36, 0.05)'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ width: 36, height: 36, borderRadius: '10px', background: 'rgba(251, 191, 36, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--amber)' }}>
+              <Zap size={18} />
+            </div>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--text)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                Bepul Limit <span style={{ fontSize: 11, background: 'var(--amber)', color: '#000', padding: '1px 6px', borderRadius: '6px', fontWeight: 800 }}>PRO</span>
+              </div>
+              <div style={{ fontSize: 12, color: 'var(--text3)' }}>
+                Cheklovsiz ishlash uchun Premium oling
+              </div>
+            </div>
           </div>
-          <div style={{ height: 8, background: 'var(--bg3)', borderRadius: 4, overflow: 'hidden' }}>
-            <div style={{ width: `${Math.min(((state.totalAnswered || 0) / 100) * 100, 100)}%`, height: '100%', background: 'var(--amber)' }} />
-          </div>
-          <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 8 }}>
-            Siz hozircha tizimni bepul ishlatmoqdasiz. Barcha savollarni yechish uchun <span style={{ color: 'var(--amber)', cursor: 'pointer', textDecoration: 'underline' }} onClick={() => setShowPremiumModal(true)}>Premium</span> oling.
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+              <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--amber)' }}>
+                {Math.min(state.totalAnswered || 0, 100)} / 100
+              </div>
+              <div style={{ width: 70, height: 4, background: 'var(--bg3)', borderRadius: 2, overflow: 'hidden', marginTop: 4 }}>
+                <div style={{ width: `${Math.min(((state.totalAnswered || 0) / 100) * 100, 100)}%`, height: '100%', background: 'var(--amber)' }} />
+              </div>
+            </div>
+            <div style={{ background: 'var(--amber)', color: '#000', padding: '6px 12px', borderRadius: '8px', fontSize: 12, fontWeight: 800 }}>
+              Faollashtirish
+            </div>
           </div>
         </div>
       )}
 
-      {/* E'tirozlar paneli */}
-      <div id="objections-section" className="glass-panel" style={{ padding: '24px', marginBottom: '24px', border: '1px solid rgba(59, 130, 246, 0.3)', background: 'rgba(59, 130, 246, 0.05)' }}>
+      {/* E'tirozlar paneli - Faqat Adminlarga ko'rinadi */}
+      {isAdmin && (
+        <div id="objections-section" className="glass-panel" style={{ padding: '24px', marginBottom: '24px', border: '1px solid rgba(59, 130, 246, 0.3)', background: 'rgba(59, 130, 246, 0.05)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '10px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--blue)', fontWeight: '800', fontSize: '18px' }}>
               <MessageCircle size={22} /> E'tirozlar ({objections.length})
@@ -282,7 +317,8 @@ const Dashboard = () => {
             </div>
 
           )}
-      </div>
+        </div>
+      )}
 
       {/* Statistika */}
       <div className="stats-grid">
@@ -560,8 +596,8 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Oxirgi Tuzatishlar Jurnali (Public Fix Log) */}
-      {objections.filter(o => o.solved).length > 0 && (
+      {/* Oxirgi Tuzatishlar Jurnali (Public Fix Log) - Faqat Adminlarga ko'rinadi */}
+      {isAdmin && objections.filter(o => o.solved).length > 0 && (
         <div className="objections-list-container">
           <div className="section-header" style={{ marginTop: '32px', color: 'var(--green)' }}>Oxirgi tuzatishlar</div>
           <div className="glass-panel" style={{ padding: '16px', background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
@@ -585,6 +621,7 @@ const Dashboard = () => {
           </div>
         </div>
       )}
+
       
       <PremiumModal 
         isOpen={showPremiumModal} 
