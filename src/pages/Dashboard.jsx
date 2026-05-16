@@ -21,16 +21,10 @@ const Dashboard = () => {
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
   const handleNavigation = (topicId, mode) => {
-    // Agar premium bo'lmasa, ma'lum funksiyalarni bloklash
+    // Agar premium bo'lmasa, barcha funksiyalarni bloklash
     if (!user?.isPremium) {
-      if (mode === 'exam') {
-        setShowPremiumModal(true);
-        return;
-      }
-      if (topicId >= 2) {
-        setShowPremiumModal(true);
-        return;
-      }
+      setShowPremiumModal(true);
+      return;
     }
     updateState({ topicId, testMode: mode });
     navigate('/test');
