@@ -81,8 +81,9 @@ const TestPage = () => {
   const [motivationText, setMotivationText] = useState('');
   const motivationTimerRef = useRef(null);
 
-  // Mini-darslik
+  // Mini-darslik va ko'rilgan mavzular xotirasi
   const [showTheory, setShowTheory] = useState(false);
+  const [seenTheoryTopics, setSeenTheoryTopics] = useState({});
 
   // Flashcard state
   const [fcFlipped, setFcFlipped] = useState(false);
@@ -299,10 +300,14 @@ const TestPage = () => {
   const topicName = topicId === -1 ? "Barcha bo'limlar" : (topicObj?.name || "Barcha bo'limlar");
 
   useEffect(() => {
-    if (topicObj?.theoryHint && mode === 'exam' && Object.keys(answers).length === 0 && questions.length > 0) {
-      setShowTheory(true);
+    if (topicObj?.theoryHint && mode === 'exam' && questions.length > 0) {
+      // Faqat shu mavzuga birinchi marta kirganda ko'rsatiladi (blok o'zgarganda emas)
+      if (!seenTheoryTopics[topicId]) {
+        setShowTheory(true);
+        setSeenTheoryTopics(prev => ({ ...prev, [topicId]: true }));
+      }
     }
-  }, [topicId, mode, selectedBatch, questions.length]);
+  }, [topicId, mode, questions.length]);
 
   const handleShowResults = () => {
     setShowResults(true);
