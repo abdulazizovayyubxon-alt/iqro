@@ -568,15 +568,15 @@ const AdminPage = () => {
 
       {tab === 'tariffs' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
             <div style={{ fontSize: '18px', fontWeight: '700', color: 'var(--text)' }}>Premium Tariflar</div>
             <button className="btn btn-primary" onClick={() => { setIsAddingTariff(true); setEditingTariff(null); setNewTariff({ id: '', name: '', price: 0, durationMonths: 1 }); }}>
               <Plus size={16} /> Yangi tarif qo'shish
             </button>
           </div>
 
-          <div className="glass-panel" style={{ overflow: 'hidden' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <div className="glass-panel" style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', minWidth: '500px', borderCollapse: 'collapse' }}>
               <thead style={{ background: 'var(--bg3)' }}>
                 <tr>
                   <th style={{ padding: '14px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)' }}>ID / Nomi</th>
