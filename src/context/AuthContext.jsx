@@ -237,6 +237,51 @@ export const AuthProvider = ({ children }) => {
     getRedirectResult(auth).then(async (result) => {
       if (result?.user) {
         console.log("Google redirect muvaffaqiyatli yakunlandi:", result.user.email);
+        const firebaseUser = result.user;
+        let role = 'user';
+        let isPremium = false;
+        try {
+          const userRef = doc(db, 'users', firebaseUser.uid);
+          const userSnap = await getDoc(userRef);
+          if (userSnap.exists()) {
+            const data = userSnap.data();
+            isPremium = data.isPremium || false;
+            role = data.role || 'user';
+          } else {
+            await setDoc(userRef, {
+              uid: firebaseUser.uid,
+              email: firebaseUser.email,
+              displayName: firebaseUser.displayName || firebaseUser.email?.split('@')[0],
+              photoURL: firebaseUser.photoURL || null,
+              role: 'user',
+              isPremium: false,
+              createdAt: new Date(),
+            }).catch(e => console.warn('Yangi profil yaratishda xato (redirect):', e));
+          }
+        } catch (firestoreErr) {
+          console.warn('Firestore profil yuklashda xato (redirect):', firestoreErr.message);
+        }
+
+        const enhancedUser = {
+          uid: firebaseUser.uid,
+          email: firebaseUser.email,
+          displayName: firebaseUser.displayName,
+          photoURL: firebaseUser.photoURL,
+          isPremium,
+          role,
+          _firebaseUser: firebaseUser
+        };
+
+        localStorage.setItem('iqro_cached_user', JSON.stringify({
+          uid: firebaseUser.uid,
+          email: firebaseUser.email,
+          displayName: firebaseUser.displayName,
+          photoURL: firebaseUser.photoURL,
+          isPremium,
+          role
+        }));
+
+        setUser(enhancedUser);
       }
     }).catch((error) => {
       console.error("Google redirect xatosi:", error);
@@ -325,16 +370,19 @@ export const AuthProvider = ({ children }) => {
 
       switch (err.code) {
         case 'auth/popup-blocked':
-          // Popup bloklangan bo'lsa, redirect usulidan foydalanamiz
-          try {
-            await signInWithRedirect(auth, googleProvider);
-          } catch (redirectErr) {
-            setAuthError("Brauzer Google oynasini blokladi. Iltimos, popup-blokerini o'chiring.");
-          }
-          break;
         case 'auth/popup-closed-by-user':
         case 'auth/cancelled-popup-request':
-          // Foydalanuvchi o'zi yopdi — xato ko'rsatmaymiz
+          // Telegram Webview, Instagram Webview yoki mobil brauzerlarda popup ochish cheklangan bo'lsa,
+          // darhol cancelled yoki blocked xatosi beradi. Shuning uchun avtomatik ravishda redirect usuliga o'tamiz.
+          const isMobileOrWebview = /iPhone|iPad|iPod|Android|Telegram|Instagram|WebView/i.test(navigator.userAgent);
+          if (isMobileOrWebview || err.code === 'auth/popup-blocked') {
+            try {
+              await signInWithRedirect(auth, googleProvider);
+            } catch (redirectErr) {
+              console.error('Google redirect xatosi:', redirectErr);
+              setAuthError("Brauzer Google oynasini blokladi yoki tizimga kirish imkonsiz.");
+            }
+          }
           break;
         case 'auth/network-request-failed':
           setAuthError("Internet aloqasi yo'q. Iltimos, tarmoqni tekshiring.");
