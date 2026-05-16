@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react'; // Final sync trigger
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Trophy, Medal, Crown, Star, ArrowLeft } from 'lucide-react';
-import { collection, query, orderBy, limit, getDocs, doc, getDoc } from 'firebase/firestore';
+import { collection, query, orderBy, limit, getDocs, doc, getDoc, where, getCountFromServer } from 'firebase/firestore';
 import { db } from '../firebase';
 import { AuthContext } from '../context/AuthContext';
 
@@ -15,7 +15,7 @@ const LeaderboardPage = () => {
 
   useEffect(() => {
     fetchLeaderboard();
-  }, []);
+  }, [user]);
 
   const fetchLeaderboard = async () => {
     try {
@@ -38,6 +38,39 @@ const LeaderboardPage = () => {
         }
       });
       
+      // Foydalanuvchining o'zi top-50 da bormi?
+      let meIndex = results.findIndex(r => user && r.id === user.uid);
+      
+      if (user && meIndex === -1) {
+        // Foydalanuvchi top-50 da yo'q bo'lsa, uning aniq o'rnini hisoblaymiz
+        try {
+          const myStatsDoc = await getDoc(doc(db, 'userStats', user.uid));
+          if (myStatsDoc.exists()) {
+            const myData = myStatsDoc.data();
+            const myScore = myData.totalScore || 0;
+            
+            // O'zimdan ko'p ball olganlar sonini aniqlaymiz
+            const rankQuery = query(collection(db, 'userStats'), where('totalScore', '>', myScore));
+            const countSnap = await getCountFromServer(rankQuery);
+            const myRank = countSnap.data().count + 1;
+
+            results.push({
+              id: user.uid,
+              name: user.displayName || user.email?.split('@')[0] || 'Siz',
+              score: myScore,
+              streak: myData.dailyStreak || 0,
+              answered: myData.totalAnswered || 0,
+              photoURL: user.photoURL || null,
+              exactRank: myRank
+            });
+          }
+        } catch (e) {
+          console.error("My rank fetch error:", e);
+        }
+      } else if (meIndex !== -1) {
+        results[meIndex].exactRank = meIndex + 1;
+      }
+
       // Ismlarni parallel ravishda 'users' kolleksiyasidan qidirish (fallback)
       await Promise.all(results.map(async (res) => {
         if (!res.name) {
@@ -64,11 +97,25 @@ const LeaderboardPage = () => {
     }
   };
 
-  const getRankBadge = (index) => {
-    if (index === 0) return <Crown size={24} style={{ color: '#fbbf24' }} />; // Oltin
-    if (index === 1) return <Medal size={24} style={{ color: '#9ca3af' }} />; // Kumush
-    if (index === 2) return <Medal size={24} style={{ color: '#b45309' }} />; // Bronza
-    return <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--text3)', width: 24, textAlign: 'center' }}>{index + 1}</div>;
+  // Ma'lumot yuklangandan so'ng foydalanuvchi qatoriga avtomatik skroll qilish
+  useEffect(() => {
+    if (!loading && user && leaders.length > 0) {
+      const timer = setTimeout(() => {
+        const el = document.getElementById(`leaderboard-row-${user.uid}`);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [loading, leaders, user]);
+
+  const getRankBadge = (index, exactRank) => {
+    const rankNum = exactRank || (index + 1);
+    if (rankNum === 1) return <Crown size={24} style={{ color: '#fbbf24' }} />; // Oltin
+    if (rankNum === 2) return <Medal size={24} style={{ color: '#9ca3af' }} />; // Kumush
+    if (rankNum === 3) return <Medal size={24} style={{ color: '#b45309' }} />; // Bronza
+    return <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--text3)', width: 24, textAlign: 'center' }}>{rankNum}</div>;
   };
 
   return (
@@ -104,21 +151,23 @@ const LeaderboardPage = () => {
               return (
                 <motion.div
                   key={leader.id}
+                  id={`leaderboard-row-${leader.id}`}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.05 }}
+                  transition={{ delay: idx * 0.03 }}
                   style={{
                     display: 'flex', alignItems: 'center', gap: 16, padding: '16px 20px',
-                    background: isMe ? 'rgba(59, 130, 246, 0.1)' : 'var(--bg2)',
+                    background: isMe ? 'rgba(59, 130, 246, 0.12)' : 'var(--bg2)',
                     border: `1.5px solid ${isMe ? 'var(--blue)' : 'var(--border)'}`,
+                    boxShadow: isMe ? '0 0 20px rgba(59, 130, 246, 0.3)' : 'none',
                     borderRadius: 16, position: 'relative', overflow: 'hidden'
                   }}
                 >
-                  {isMe && <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 4, background: 'var(--blue)' }} />}
+                  {isMe && <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 6, background: 'var(--blue)' }} />}
                   
                   {/* O'rin */}
                   <div style={{ width: 30, display: 'flex', justifyContent: 'center' }}>
-                    {getRankBadge(idx)}
+                    {getRankBadge(idx, leader.exactRank)}
                   </div>
 
                   {/* Avatar */}

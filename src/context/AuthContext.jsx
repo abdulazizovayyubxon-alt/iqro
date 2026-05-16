@@ -220,8 +220,16 @@ const checkLockout = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(() => {
+    const cached = localStorage.getItem('iqro_cached_user');
+    if (cached) {
+      try { return JSON.parse(cached); } catch (e) { console.warn("Cache parse error:", e); }
+    }
+    return null;
+  });
+  const [loading, setLoading] = useState(() => {
+    return !localStorage.getItem('iqro_cached_user');
+  });
   const [authError, setAuthError] = useState('');
 
   useEffect(() => {
@@ -232,16 +240,20 @@ export const AuthProvider = ({ children }) => {
     });
 
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      let role = 'user';
+      let isPremium = false;
+      
       try {
         if (firebaseUser) {
-          // Firestore'da foydalanuvchi profilini tekshiramiz/yaratamiz
-          let isPremium = false;
           try {
             const userRef = doc(db, 'users', firebaseUser.uid);
             const userSnap = await getDoc(userRef);
-            if (!userSnap.exists()) {
-              // Yangi foydalanuvchi — profil yaratamiz
-              await setDoc(userRef, {
+            if (userSnap.exists()) {
+              const data = userSnap.data();
+              isPremium = data.isPremium || false;
+              role = data.role || 'user';
+            } else {
+              setDoc(userRef, {
                 uid: firebaseUser.uid,
                 email: firebaseUser.email,
                 displayName: firebaseUser.displayName || firebaseUser.email?.split('@')[0],
@@ -249,13 +261,10 @@ export const AuthProvider = ({ children }) => {
                 role: 'user',
                 isPremium: false,
                 createdAt: new Date(),
-              });
-            } else {
-              isPremium = userSnap.data().isPremium || false;
+              }).catch(e => console.warn('Yangi profil yaratishda xato:', e));
             }
           } catch (firestoreErr) {
-            // Firestore xatosi — foydalanuvchini baribir tizimga kiritamiz
-            console.warn('Firestore profil xatosi (davom etilmoqda):', firestoreErr.message);
+            console.warn('Firestore profil yuklashda xato:', firestoreErr.message);
           }
 
           const enhancedUser = {
@@ -264,22 +273,36 @@ export const AuthProvider = ({ children }) => {
             displayName: firebaseUser.displayName,
             photoURL: firebaseUser.photoURL,
             isPremium,
+            role,
             _firebaseUser: firebaseUser
           };
+
+          // Cache for instant load next time
+          localStorage.setItem('iqro_cached_user', JSON.stringify({
+            uid: firebaseUser.uid,
+            email: firebaseUser.email,
+            displayName: firebaseUser.displayName,
+            photoURL: firebaseUser.photoURL,
+            isPremium,
+            role
+          }));
+
           setUser(enhancedUser);
         } else {
+          localStorage.removeItem('iqro_cached_user');
           setUser(null);
         }
       } catch (err) {
-        console.error('onAuthStateChanged xatosi:', err);
+        console.error('onAuthStateChanged umumiy xatosi:', err);
+        localStorage.removeItem('iqro_cached_user');
         setUser(null);
       } finally {
-        // Har qanday holatda ham loading ni o'chiramiz
         setLoading(false);
       }
     });
     return () => unsubscribe();
   }, []);
+
 
   // ─── Google Sign-In ───
   const signInWithGoogle = async () => {
@@ -549,6 +572,7 @@ export const AuthProvider = ({ children }) => {
 
     // 3. Brute-force hisoblagichni tozalash
     localStorage.removeItem('iqro_login_attempts');
+    localStorage.removeItem('iqro_cached_user');
 
     // 4. sessionStorage ni to'liq tozalash
     sessionStorage.clear();

@@ -12,7 +12,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Shield, MessageCircle, Users, BarChart3,
   CheckCircle, Trash2, Clock, AlertTriangle,
-  ChevronDown, ChevronUp, Search, Plus, Edit3, FileText
+  ChevronDown, ChevronUp, Search, Plus, Edit3, FileText, Zap
 } from 'lucide-react';
 
 const AdminPage = () => {
@@ -244,7 +244,11 @@ const AdminPage = () => {
       <div className="page" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh', gap: '16px' }}>
         <AlertTriangle size={48} style={{ color: 'var(--red)' }} />
         <div style={{ fontSize: '24px', fontWeight: '800', color: 'var(--text)' }}>Ruxsat yo'q</div>
-        <div style={{ color: 'var(--text3)', fontSize: '15px' }}>Bu sahifa faqat admin uchun</div>
+        <div style={{ color: 'var(--text3)', fontSize: '15px', textAlign: 'center' }}>
+          Bu sahifa faqat adminlar uchun. <br/>
+          Sizning hozirgi emailingiz: <b>{user?.email}</b> <br/>
+          Roli: <b>{user?.role || 'user'}</b>
+        </div>
       </div>
     );
   }

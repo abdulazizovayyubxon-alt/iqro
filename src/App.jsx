@@ -70,7 +70,7 @@ function App() {
 
   // ── Sahifa kuzatuvi (Analytics) ──
   const PAGE_NAMES = {
-    '/': 'Dashboard', '/schedule': 'Jadval', '/stats': 'Statistika',
+    '/': 'Test', '/dashboard': 'Dashboard', '/schedule': 'Jadval', '/stats': 'Statistika',
     '/test': 'Test', '/exam': 'Imtihon', '/review': 'Takrorlash',
     '/leaderboard': 'Reyting', '/achievements': 'Yutuqlar',
     '/admin': 'Admin', '/migration': 'Migratsiya'
@@ -146,7 +146,8 @@ function App() {
           <Suspense fallback={<PageSkeleton />}>
             <AnimatePresence mode="wait">
               <Routes location={location} key={location.pathname}>
-                <Route path="/" element={<Dashboard />} />
+                <Route path="/" element={<Navigate to="/test" replace />} />
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/schedule" element={<Schedule />} />
                 <Route path="/stats" element={<Stats />} />
                 <Route path="/test" element={<TestPage />} />
@@ -156,7 +157,7 @@ function App() {
                 <Route path="/achievements" element={<AchievementsPage />} />
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="/migration" element={<MigrationPage />} />
-                <Route path="*" element={<Navigate to="/" replace />} />
+                <Route path="*" element={<Navigate to="/test" replace />} />
               </Routes>
             </AnimatePresence>
           </Suspense>
