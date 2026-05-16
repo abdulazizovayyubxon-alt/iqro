@@ -233,10 +233,16 @@ export const AuthProvider = ({ children }) => {
   const [authError, setAuthError] = useState('');
 
   useEffect(() => {
-    // Redirect natijasini ushlash (mobil uchun)
-    getRedirectResult(auth).catch((error) => {
+    // Redirect natijasini ushlash (mobil yoki fallback uchun)
+    getRedirectResult(auth).then(async (result) => {
+      if (result?.user) {
+        console.log("Google redirect muvaffaqiyatli yakunlandi:", result.user.email);
+      }
+    }).catch((error) => {
       console.error("Google redirect xatosi:", error);
-      setAuthError("Google bilan ulanish bekor qilindi yoki xatolik yuz berdi.");
+      if (error?.code !== 'auth/redirect-cancelled-by-user') {
+        setAuthError("Google bilan ulanish bekor qilindi yoki xatolik yuz berdi.");
+      }
     });
 
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -311,24 +317,15 @@ export const AuthProvider = ({ children }) => {
     // Har doim akkaunt tanlash oynasini ko'rsatish
     googleProvider.setCustomParameters({ prompt: 'select_account' });
 
-    // Mobil yoki brauzerni tekshiramiz
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
-
     try {
-      if (isMobile) {
-        // Telefonda to'g'ridan-to'g'ri yo'naltirish (popup ishlamaydi)
-        await signInWithRedirect(auth, googleProvider);
-      } else {
-        // Kompyuterda popup oyna
-        await signInWithPopup(auth, googleProvider);
-      }
+      // Har doim birinchi navbatda popup orqali kirishga urinamiz (eng ishonchli usul, desktop va mobil brauzerlarda ishlaydi)
+      await signInWithPopup(auth, googleProvider);
     } catch (err) {
-      console.error('Google sign-in xatosi:', err);
+      console.error('Google sign-in xatosi (popup):', err);
 
-      // Xato kodlariga qarab aniq xabar berish
       switch (err.code) {
         case 'auth/popup-blocked':
-          // Popup bloklangan — redirect ga o'tish
+          // Popup bloklangan bo'lsa, redirect usulidan foydalanamiz
           try {
             await signInWithRedirect(auth, googleProvider);
           } catch (redirectErr) {
