@@ -110,7 +110,21 @@ const ExamPage = () => {
           };
         });
 
-        const final = shuffleArray(allQ).slice(0, EXAM_TOTAL);
+        // Pedagogik mahorat (yoki O'qitish metodikasi) savollarini ajratish
+        const pedTopicId = cat === 'art' ? 14 : 6;
+        const pedAll = allQ.filter(q => q.topicId === pedTopicId);
+        const otherAll = allQ.filter(q => q.topicId !== pedTopicId);
+
+        // Ped mahoratdan doim 10 ta savol olamiz (agar bor bo'lsa)
+        const pedCount = Math.min(pedAll.length, 10);
+        const pedSelected = shuffleArray(pedAll).slice(0, pedCount);
+
+        // Qolgan savollarni boshqa mavzulardan olamiz (jami 50 ta bo'lishi uchun)
+        const otherCount = EXAM_TOTAL - pedSelected.length;
+        const otherSelected = shuffleArray(otherAll).slice(0, otherCount);
+
+        // Barchasini birlashtirib, aralashtiramiz
+        const final = shuffleArray([...pedSelected, ...otherSelected]);
         setQuestions(final);
 
         // Guruhlarni qayta hisoblash
