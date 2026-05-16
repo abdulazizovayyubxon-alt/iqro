@@ -1,4 +1,0 @@
-Fix: Leaderboard permission error
-
-- Updated firestore.rules to allow any logged-in user to read the userStats collection.
-- This fixes the issue where the leaderboard failed to load due to "missing or insufficient permissions" because userStats was previously restricted to owner-only read access.

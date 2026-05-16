@@ -12,6 +12,7 @@ import confetti from 'canvas-confetti';
 import ObjectionModal from '../components/shared/ObjectionModal';
 import PremiumModal from '../components/PremiumModal';
 import SafeHtml from '../components/shared/SafeHtml';
+import QuestionMedia from '../components/QuestionMedia';
 import { BATCH_SIZE, QUESTION_TIMER_SECONDS } from '../config';
 import { db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
@@ -27,6 +28,27 @@ const TestPage = () => {
   const goBack = () => navigate('/');
   const { addObjection } = useContext(ObjectionContext);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
+
+  // URL orqali yoki state orqali kiritilganda premium tekshiruvi (faqat mavzular uchun)
+  if (!user?.isPremium && topicId >= 2) {
+    return (
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
+        <div className="glass-panel" style={{ maxWidth: 500, margin: '60px auto', padding: 40, textAlign: 'center' }}>
+          <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
+          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Premium Bo'lim</div>
+          <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
+            Bu mavzudagi savollar faqat Premium foydalanuvchilar uchun ochiq.
+            Premium rejimni faollashtiring va to'liq bazadan foydalaning!
+          </div>
+          <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
+            ⭐ Premium Rejimni Faollashtirish
+          </button>
+          <button className="btn btn-outline" onClick={goBack}>← Bosh sahifaga</button>
+        </div>
+        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
+      </motion.div>
+    );
+  }
 
   // Premium tekshiruvli mavzu o'zgartirish
   const setTopicId = (id) => {
@@ -406,6 +428,7 @@ const TestPage = () => {
               <div className="flashcard-face flashcard-front">
                 <button className="objection-btn" onClick={(e) => { e.stopPropagation(); setShowObjectionModal(true); }}><MessageCircle size={14} /> E'tiroz</button>
                 <div style={{ fontSize: '12px', color: 'var(--text3)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '1px' }}>Savol — bosing, javobni ko'ring</div>
+                <QuestionMedia question={questions[currentQ]} />
                 <div className="flashcard-front-text">{questions[currentQ].q}</div>
               </div>
               <div className="flashcard-face flashcard-back">
@@ -473,7 +496,7 @@ const TestPage = () => {
                 )}
                 {answers[currentQ] === -1 && <div style={{ color: 'var(--red)', fontSize: '13px', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>⏰ Vaqt tugadi!</div>}
 
-                {questions[currentQ].image && <div style={{ margin: '0 0 16px', textAlign: 'center' }}><img src={questions[currentQ].image} alt="Savol rasmi" style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '12px', border: '1px solid var(--border)' }} /></div>}
+                <QuestionMedia question={questions[currentQ]} />
                 {questions[currentQ].isHtml ? <SafeHtml html={questions[currentQ].q} className="q-text" /> : <div className="q-text" style={{ whiteSpace: 'pre-line' }}>{questions[currentQ].q}</div>}
                 <div className="options">
                   {questions[currentQ].opts.map((opt, i) => {

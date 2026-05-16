@@ -5,9 +5,36 @@ import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
 import { motion } from 'framer-motion';
 import { Trophy, Zap, Target, TrendingUp } from 'lucide-react';
 import RadialChart from '../components/shared/RadialChart';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import PremiumModal from '../components/PremiumModal';
 
 const Stats = () => {
+  const navigate = useNavigate();
+  const goBack = () => navigate('/');
+  const { user } = useAuth();
+  const [showPremiumModal, setShowPremiumModal] = useState(false);
   const { state } = useContext(AppContext);
+
+  if (!user?.isPremium) {
+    return (
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
+        <div className="glass-panel" style={{ maxWidth: 500, margin: '60px auto', padding: 40, textAlign: 'center' }}>
+          <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
+          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Premium Funksiya</div>
+          <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
+            Bu bo'lim faqat Premium foydalanuvchilar uchun ochiq.
+            Premium rejimni faollashtiring va barcha imkoniyatlardan foydalaning!
+          </div>
+          <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
+            ⭐ Premium Rejimni Faollashtirish
+          </button>
+          <button className="btn btn-outline" onClick={goBack}>← Bosh sahifaga</button>
+        </div>
+        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
+      </motion.div>
+    );
+  }
   const cat = state.activeCategory;
   const catStats = state.stats[cat] || { totalAnswered: 0, totalCorrect: 0, streak: 0, maxStreak: 0, mistakes: [] };
 

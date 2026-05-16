@@ -10,6 +10,7 @@ import { setUser, clearUser } from './services/sentry';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import LoginPage from './pages/LoginPage';
+import OfflineIndicator from './components/OfflineIndicator';
 
 // ══════════════════════════════════════════════════════════════
 // React.lazy — sahifalar faqat kerak bo'lganda yuklanadi
@@ -138,6 +139,7 @@ function App() {
   return (
     <div className="layout-container">
       <Header theme={theme} toggleTheme={toggleTheme} />
+      <OfflineIndicator />
       <div className="layout-body">
         <Sidebar />
         <main className="main-content">

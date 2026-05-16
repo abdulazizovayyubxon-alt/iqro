@@ -11,6 +11,7 @@ import confetti from 'canvas-confetti';
 import ObjectionModal from '../components/shared/ObjectionModal';
 import PremiumModal from '../components/PremiumModal';
 import SafeHtml from '../components/shared/SafeHtml';
+import QuestionMedia from '../components/QuestionMedia';
 import { db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { summarizeTestResults } from '../engine/SmartQuestionEngine';
@@ -370,13 +371,8 @@ const ExamPage = () => {
                 </button>
               </div>
 
-              {/* Savol rasmi */}
-              {q.image && (
-                <div style={{ margin: '0 0 16px', textAlign: 'center' }}>
-                  <img src={q.image} alt="Savol rasmi"
-                    style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '12px', border: '1px solid var(--border)' }} />
-                </div>
-              )}
+              {/* Savol rasmi yoki sxemasi */}
+              <QuestionMedia question={q} />
               {/* Savol matni */}
               {q.isHtml ? (
                 <SafeHtml html={q.q} style={{ fontSize: 16, fontWeight: 500, lineHeight: 1.6, marginBottom: 24, color: 'var(--text)' }} />
