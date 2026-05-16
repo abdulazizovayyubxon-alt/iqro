@@ -69,13 +69,16 @@ const Sidebar = () => {
         {/* MAIN NAVIGATION */}
         <div className="sidebar-section">
           <div className="sidebar-title hide-mobile">Asosiy</div>
-          <div
-            className={`nav-item ${currentPage === 'dashboard' ? 'active' : ''}`}
-            onClick={() => navigate('/')}
-          >
-            <span className="nav-icon"><LayoutDashboard size={20} /></span>
-            <span className="nav-label">Dashboard</span>
-          </div>
+          {isAdmin && (
+            <div
+              className={`nav-item ${currentPage === 'dashboard' ? 'active' : ''}`}
+              onClick={() => navigate('/dashboard')}
+            >
+              <span className="nav-icon"><LayoutDashboard size={20} /></span>
+              <span className="nav-label">Dashboard</span>
+            </div>
+          )}
+
 
           <div
             className={`nav-item ${currentPage === 'test' ? 'active' : ''}`}

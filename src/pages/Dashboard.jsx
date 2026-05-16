@@ -14,12 +14,24 @@ import { EXAM_DATE, EXAM_LABEL, EXAM_GOAL_SCORE } from '../config';
 const Dashboard = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { isAdmin } = useAdmin();
   const { state, updateState } = useContext(AppContext);
   const { objections, clearObjections, solveObjection, deleteObjection, importObjections, updateObjectionNote } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
   const [editingId, setEditingId] = useState(null);
   const [editNote, setEditNote] = useState('');
   const [showPremiumModal, setShowPremiumModal] = useState(false);
+
+  useEffect(() => {
+    if (!isAdmin) {
+      navigate('/test', { replace: true });
+    }
+  }, [isAdmin, navigate]);
+
+  if (!isAdmin) {
+    return null;
+  }
+
 
   const handleNavigation = (topicId, mode) => {
     // 100 ta bepul savol limitini tekshirish
