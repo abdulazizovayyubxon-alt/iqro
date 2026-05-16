@@ -20,7 +20,7 @@ const AdminPage = () => {
   const { user } = useAuth();
   const { showToast } = useContext(ToastContext);
 
-  const [tab, setTab] = useState('objections'); // objections | users | stats | questions
+  const [tab, setTab] = useState('objections'); // objections | users | stats | questions | tariffs
   const [objections, setObjections] = useState([]);
   const [users, setUsers] = useState([]);
   const [questions, setQuestions] = useState([]);
@@ -34,6 +34,12 @@ const AdminPage = () => {
   const [editingQ, setEditingQ] = useState(null);
   const [newQ, setNewQ] = useState({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' });
   const [isUploadingImage, setIsUploadingImage] = useState(false);
+
+  // Tariffs State
+  const [tariffs, setTariffs] = useState([]);
+  const [isAddingTariff, setIsAddingTariff] = useState(false);
+  const [editingTariff, setEditingTariff] = useState(null);
+  const [newTariff, setNewTariff] = useState({ id: '', name: '', price: 0, durationMonths: 1 });
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -80,6 +86,18 @@ const AdminPage = () => {
       setQuestions(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     };
     loadQuestions();
+  }, [tab]);
+
+  useEffect(() => {
+    if (tab !== 'tariffs') return;
+    const unsub = onSnapshot(doc(db, 'settings', 'premium'), (docSnap) => {
+      if (docSnap.exists() && docSnap.data().plans) {
+        setTariffs(docSnap.data().plans);
+      } else {
+        setTariffs([{ id: 'lifetime', name: 'Cheksiz Premium', price: 15000, durationMonths: 999 }]);
+      }
+    });
+    return () => unsub();
   }, [tab]);
 
   const handleSolve = async (fbId) => {
@@ -177,6 +195,41 @@ const AdminPage = () => {
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
   };
 
+  const handleSaveTariff = async () => {
+    try {
+      let updatedTariffs = [...tariffs];
+      if (editingTariff) {
+        updatedTariffs = updatedTariffs.map(t => t.id === newTariff.id ? newTariff : t);
+      } else {
+        if (updatedTariffs.some(t => t.id === newTariff.id)) {
+          showToast("Bunday ID dagi tarif mavjud", 'error');
+          return;
+        }
+        updatedTariffs.push(newTariff);
+      }
+      // settings/premium hujjatini saqlash yoki yangilash
+      await updateDoc(doc(db, 'settings', 'premium'), { plans: updatedTariffs }).catch(async (err) => {
+        if (err.code === 'not-found') {
+          // hujjat yo'q bo'lsa yaratamiz
+          const { setDoc } = await import('firebase/firestore');
+          await setDoc(doc(db, 'settings', 'premium'), { plans: updatedTariffs });
+        } else throw err;
+      });
+      showToast("✅ Tarif saqlandi!", 'success');
+      setIsAddingTariff(false);
+      setEditingTariff(null);
+    } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+  };
+
+  const handleDeleteTariff = async (tariffId) => {
+    if (!window.confirm("Tarifni o'chirishni tasdiqlaysizmi?")) return;
+    try {
+      const updatedTariffs = tariffs.filter(t => t.id !== tariffId);
+      await updateDoc(doc(db, 'settings', 'premium'), { plans: updatedTariffs });
+      showToast("🗑️ Tarif o'chirildi", 'info');
+    } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+  };
+
   const filtered = objections.filter(o => {
     const matchSearch = !search || o.question?.toLowerCase().includes(search.toLowerCase()) || o.topic?.toLowerCase().includes(search.toLowerCase()) || o.note?.toLowerCase().includes(search.toLowerCase());
     const matchFilter = filterSolved === 'all' || (filterSolved === 'solved' ? o.solved : !o.solved);
@@ -235,6 +288,9 @@ const AdminPage = () => {
         </button>
         <button className={`admin-tab ${tab === 'stats' ? 'active' : ''}`} onClick={() => setTab('stats')}>
           <BarChart3 size={16} /> Statistika
+        </button>
+        <button className={`admin-tab ${tab === 'tariffs' ? 'active' : ''}`} onClick={() => setTab('tariffs')}>
+          <Zap size={16} /> Tariflar
         </button>
       </div>
 
@@ -510,6 +566,47 @@ const AdminPage = () => {
         </div>
       )}
 
+      {tab === 'tariffs' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ fontSize: '18px', fontWeight: '700', color: 'var(--text)' }}>Premium Tariflar</div>
+            <button className="btn btn-primary" onClick={() => { setIsAddingTariff(true); setEditingTariff(null); setNewTariff({ id: '', name: '', price: 0, durationMonths: 1 }); }}>
+              <Plus size={16} /> Yangi tarif qo'shish
+            </button>
+          </div>
+
+          <div className="glass-panel" style={{ overflow: 'hidden' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+              <thead style={{ background: 'var(--bg3)' }}>
+                <tr>
+                  <th style={{ padding: '14px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)' }}>ID / Nomi</th>
+                  <th style={{ padding: '14px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)' }}>Narxi (so'm)</th>
+                  <th style={{ padding: '14px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)' }}>Muddati (Oy)</th>
+                  <th style={{ padding: '14px', textAlign: 'right', fontSize: '12px', color: 'var(--text3)' }}>Amallar</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tariffs.map((t) => (
+                  <tr key={t.id} style={{ borderTop: '0.5px solid var(--border)' }}>
+                    <td style={{ padding: '14px', fontSize: '14px', color: 'var(--text)', fontWeight: '600' }}>
+                      {t.name} <div style={{ fontSize: '11px', color: 'var(--text3)', fontWeight: '400' }}>{t.id}</div>
+                    </td>
+                    <td style={{ padding: '14px', fontSize: '14px', color: 'var(--amber)', fontWeight: '700' }}>{new Intl.NumberFormat('uz-UZ').format(t.price)} so'm</td>
+                    <td style={{ padding: '14px', fontSize: '14px', color: 'var(--text2)' }}>{t.durationMonths === 999 ? 'Cheksiz' : `${t.durationMonths} oy`}</td>
+                    <td style={{ padding: '14px', textAlign: 'right' }}>
+                      <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+                        <button className="btn btn-sm btn-outline" onClick={() => { setEditingTariff(t); setNewTariff({...t}); setIsAddingTariff(true); }}><Edit3 size={14} /></button>
+                        <button className="btn btn-sm btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={() => handleDeleteTariff(t.id)}><Trash2 size={14} /></button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
       <AnimatePresence>
         {isAdding && (
           <motion.div
@@ -612,6 +709,46 @@ const AdminPage = () => {
               <div className="modal-actions" style={{ flexShrink: 0, marginTop: '16px' }}>
                 <button className="btn btn-outline" onClick={() => { setIsAdding(false); setEditingQ(null); }}>Bekor qilish</button>
                 <button className="btn btn-primary" onClick={handleSaveQuestion} disabled={!newQ.q || newQ.opts.some(o => !o)}>Saqlash</button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isAddingTariff && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="modal-overlay"
+            style={{ zIndex: 1000 }}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
+              className="modal-content"
+              style={{ maxWidth: '400px', width: '90%', padding: '24px' }}
+            >
+              <div className="modal-title">{editingTariff ? 'Tarifni tahrirlash' : 'Yangi tarif'}</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '20px 0' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>ID (masalan: 6months)</label>
+                  <input className="modal-input" value={newTariff.id} onChange={e => setNewTariff({...newTariff, id: e.target.value})} disabled={!!editingTariff} />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Nomi</label>
+                  <input className="modal-input" value={newTariff.name} onChange={e => setNewTariff({...newTariff, name: e.target.value})} />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Narxi (so'm)</label>
+                  <input type="number" className="modal-input" value={newTariff.price} onChange={e => setNewTariff({...newTariff, price: parseInt(e.target.value)})} />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Muddati (oy, cheksiz uchun 999)</label>
+                  <input type="number" className="modal-input" value={newTariff.durationMonths} onChange={e => setNewTariff({...newTariff, durationMonths: parseInt(e.target.value)})} />
+                </div>
+              </div>
+              <div className="modal-actions" style={{ marginTop: '16px' }}>
+                <button className="btn btn-outline" onClick={() => setIsAddingTariff(false)}>Bekor qilish</button>
+                <button className="btn btn-primary" onClick={handleSaveTariff} disabled={!newTariff.id || !newTariff.name || !newTariff.price}>Saqlash</button>
               </div>
             </motion.div>
           </motion.div>

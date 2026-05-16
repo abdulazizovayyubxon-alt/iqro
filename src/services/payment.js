@@ -15,7 +15,7 @@ export const PREMIUM_PRICE = 15000; // 15,000 so'm
 export const PREMIUM_LABEL = "IQRO Premium — Barcha bo'limlar";
 
 // ── Click checkout URL generatori ──
-export const generateClickUrl = (userId, userPhone) => {
+export const generateClickUrl = (userId, userPhone, planPrice = PREMIUM_PRICE, planId = 'lifetime') => {
   const merchantId = import.meta.env.VITE_CLICK_MERCHANT_ID;
   const serviceId = import.meta.env.VITE_CLICK_SERVICE_ID;
 
@@ -28,8 +28,8 @@ export const generateClickUrl = (userId, userPhone) => {
   const params = new URLSearchParams({
     service_id: serviceId,
     merchant_id: merchantId,
-    amount: PREMIUM_PRICE,
-    transaction_param: userId, // Firestore user ID — webhook da ishlatiladi
+    amount: planPrice,
+    transaction_param: `${userId}__${planId}`, // Firestore user ID + planId — webhook da ishlatiladi
     return_url: `${window.location.origin}/?payment=success`,
     // Qo'shimcha ma'lumot
     merchant_user_id: userId
@@ -39,7 +39,7 @@ export const generateClickUrl = (userId, userPhone) => {
 };
 
 // ── Payme checkout URL generatori ──
-export const generatePaymeUrl = (userId) => {
+export const generatePaymeUrl = (userId, planPrice = PREMIUM_PRICE, planId = 'lifetime') => {
   const merchantId = import.meta.env.VITE_PAYME_MERCHANT_ID;
 
   if (!merchantId) {
@@ -50,8 +50,8 @@ export const generatePaymeUrl = (userId) => {
   // Payme checkout parametrlari (Base64 encoded)
   const params = {
     m: merchantId,
-    'ac.user_id': userId,
-    a: PREMIUM_PRICE * 100, // Payme tiyinda ishlaydi (1 so'm = 100 tiyin)
+    'ac.user_id': `${userId}__${planId}`,
+    a: planPrice * 100, // Payme tiyinda ishlaydi (1 so'm = 100 tiyin)
     c: `${window.location.origin}/?payment=success`
   };
 

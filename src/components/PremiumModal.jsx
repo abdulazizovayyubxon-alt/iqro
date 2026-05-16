@@ -2,11 +2,31 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Crown, CheckCircle, Zap, Shield, X, CreditCard, Smartphone } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { generateClickUrl, generatePaymeUrl, PREMIUM_PRICE } from '../services/payment';
+import { generateClickUrl, generatePaymeUrl } from '../services/payment';
+import { db } from '../firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 const PremiumModal = ({ isOpen, onClose }) => {
   const { user } = useAuth();
   const [processing, setProcessing] = useState(false);
+  const [plans, setPlans] = useState([]);
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const fetchPlans = async () => {
+      const docSnap = await getDoc(doc(db, 'settings', 'premium'));
+      if (docSnap.exists() && docSnap.data().plans?.length > 0) {
+        setPlans(docSnap.data().plans);
+        setSelectedPlan(docSnap.data().plans[0]);
+      } else {
+        const defaultPlan = { id: 'lifetime', name: 'Cheksiz Premium', price: 15000, durationMonths: 999 };
+        setPlans([defaultPlan]);
+        setSelectedPlan(defaultPlan);
+      }
+    };
+    fetchPlans();
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -15,9 +35,9 @@ const PremiumModal = ({ isOpen, onClose }) => {
   };
 
   const handleClickPay = () => {
-    if (!user) return;
+    if (!user || !selectedPlan) return;
     setProcessing(true);
-    const url = generateClickUrl(user.uid, user.phone || '');
+    const url = generateClickUrl(user.uid, user.phone || '', selectedPlan.price, selectedPlan.id);
     if (url) {
       window.open(url, '_blank');
     }
@@ -25,9 +45,9 @@ const PremiumModal = ({ isOpen, onClose }) => {
   };
 
   const handlePaymePay = () => {
-    if (!user) return;
+    if (!user || !selectedPlan) return;
     setProcessing(true);
-    const url = generatePaymeUrl(user.uid);
+    const url = generatePaymeUrl(user.uid, selectedPlan.price, selectedPlan.id);
     if (url) {
       window.open(url, '_blank');
     }
@@ -88,14 +108,30 @@ const PremiumModal = ({ isOpen, onClose }) => {
           <p style={{ color: 'var(--text2)', fontSize: '14px', lineHeight: '1.5' }}>
             Barcha imkoniyatlardan cheklanmagan foydalanish
           </p>
-          {/* Narx */}
-          <div style={{
-            marginTop: '12px', fontSize: '32px', fontWeight: '900',
-            color: 'var(--amber)', letterSpacing: '-1px'
-          }}>
-            {formatPrice(PREMIUM_PRICE)}
+          {/* Tariflar ro'yxati */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '16px', marginBottom: '8px' }}>
+            {plans.map(p => (
+              <div 
+                key={p.id} 
+                onClick={() => setSelectedPlan(p)}
+                style={{ 
+                  display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                  padding: '12px 16px', borderRadius: '12px', cursor: 'pointer',
+                  background: selectedPlan?.id === p.id ? 'rgba(251, 191, 36, 0.15)' : 'rgba(255, 255, 255, 0.05)',
+                  border: selectedPlan?.id === p.id ? '2px solid var(--amber)' : '1px solid rgba(255, 255, 255, 0.1)',
+                  transition: 'all 0.2s'
+                }}
+              >
+                <div style={{ textAlign: 'left' }}>
+                  <div style={{ fontSize: '15px', fontWeight: 'bold', color: selectedPlan?.id === p.id ? 'var(--amber)' : 'white' }}>{p.name}</div>
+                  <div style={{ fontSize: '12px', color: 'var(--text3)' }}>{p.durationMonths === 999 ? 'Cheksiz muddat' : `${p.durationMonths} oy muddat`}</div>
+                </div>
+                <div style={{ fontSize: '16px', fontWeight: '800', color: selectedPlan?.id === p.id ? 'var(--amber)' : 'white' }}>
+                  {formatPrice(p.price)}
+                </div>
+              </div>
+            ))}
           </div>
-          <div style={{ color: 'var(--text3)', fontSize: '12px' }}>bir martalik to'lov</div>
         </div>
 
         {/* Afzalliklar */}

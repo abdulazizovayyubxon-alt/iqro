@@ -80,12 +80,42 @@ async function handleClick(req, res) {
 
     try {
       const db = getDb();
-      const userId = merchant_trans_id;
+      
+      const rawUserId = merchant_trans_id;
+      let userId = rawUserId;
+      let planId = 'lifetime';
+      if (rawUserId && rawUserId.includes('__')) {
+        const parts = rawUserId.split('__');
+        userId = parts[0];
+        planId = parts[1];
+      }
+
+      // Muddatini hisoblash
+      let durationMonths = 999;
+      try {
+        const settingsDoc = await db.collection('settings').doc('premium').get();
+        if (settingsDoc.exists) {
+          const plans = settingsDoc.data().plans || [];
+          const matchedPlan = plans.find(p => p.id === planId);
+          if (matchedPlan) {
+            durationMonths = matchedPlan.durationMonths;
+          }
+        }
+      } catch(e) { console.error('Plan fetch error', e); }
+
+      let expireDate = null;
+      if (durationMonths && durationMonths !== 999) {
+        const d = new Date();
+        d.setMonth(d.getMonth() + durationMonths);
+        expireDate = d.toISOString();
+      }
 
       // Firestore'da isPremium = true
       await db.collection('users').doc(userId).update({
         isPremium: true,
         premiumSince: new Date().toISOString(),
+        premiumExpire: expireDate,
+        premiumPlan: planId,
         premiumMethod: 'click',
         premiumTransId: click_trans_id
       });
@@ -128,7 +158,14 @@ async function handlePayme(req, res) {
   if (method === 'PerformTransaction') {
     try {
       const db = getDb();
-      const userId = params.account?.user_id;
+      const rawUserId = params.account?.user_id;
+      let userId = rawUserId;
+      let planId = 'lifetime';
+      if (rawUserId && rawUserId.includes('__')) {
+        const parts = rawUserId.split('__');
+        userId = parts[0];
+        planId = parts[1];
+      }
 
       if (!userId) {
         return res.status(200).json({
@@ -137,9 +174,31 @@ async function handlePayme(req, res) {
         });
       }
 
+      // Muddatini hisoblash
+      let durationMonths = 999;
+      try {
+        const settingsDoc = await db.collection('settings').doc('premium').get();
+        if (settingsDoc.exists) {
+          const plans = settingsDoc.data().plans || [];
+          const matchedPlan = plans.find(p => p.id === planId);
+          if (matchedPlan) {
+            durationMonths = matchedPlan.durationMonths;
+          }
+        }
+      } catch(e) { console.error('Plan fetch error', e); }
+
+      let expireDate = null;
+      if (durationMonths && durationMonths !== 999) {
+        const d = new Date();
+        d.setMonth(d.getMonth() + durationMonths);
+        expireDate = d.toISOString();
+      }
+
       await db.collection('users').doc(userId).update({
         isPremium: true,
         premiumSince: new Date().toISOString(),
+        premiumExpire: expireDate,
+        premiumPlan: planId,
         premiumMethod: 'payme',
         premiumTransId: params.id
       });

@@ -19,8 +19,8 @@ const LeaderboardPage = () => {
 
   const fetchLeaderboard = async () => {
     try {
-      // Firebase'dan eng ko'p ball (totalScore) to'plagan 15 kishini olamiz
-      const q = query(collection(db, 'userStats'), orderBy('totalScore', 'desc'), limit(15));
+      // Firebase'dan eng ko'p ball (totalScore) to'plagan 50 kishini olamiz
+      const q = query(collection(db, 'userStats'), orderBy('totalScore', 'desc'), limit(50));
       const snapshot = await getDocs(q);
       
       const results = [];
