@@ -95,6 +95,10 @@ const ExamPage = () => {
         const filteredTopics = TOPICS.filter(t =>
           Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat
         );
+        const validTopicIds = filteredTopics.map(t => t.id);
+        
+        // BAZADAGI XATOLIKLARNI OLDINI OLISH
+        allQ = allQ.filter(q => validTopicIds.includes(q.topicId));
 
         // Savollarga mavzu ma'lumotlarini biriktirish
         allQ = allQ.map(q => {

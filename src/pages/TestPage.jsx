@@ -152,7 +152,10 @@ const TestPage = () => {
       let qList = [];
 
       if (mode === 'mistakes') {
-        const filteredMistakes = state.mistakes.filter(m => {
+        const catStats = state.stats?.[state.activeCategory];
+        const mistakesSource = catStats?.mistakes || [];
+        
+        const filteredMistakes = mistakesSource.filter(m => {
           const topic = TOPICS.find(t => t.name === m.topic);
           if (!topic) return false;
           return Array.isArray(topic.category)
@@ -192,10 +195,17 @@ const TestPage = () => {
         }
 
         const snap = await getDocs(qQuery);
-        const rawList = snap.docs.map(doc => ({
+        let rawList = snap.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
         }));
+
+        // BAZADAGI XATOLIKLARNI OLDINI OLISH: Faqat joriy fan mavzularini qoldiramiz
+        const validTopicIds = TOPICS.filter(t => 
+          Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory
+        ).map(t => t.id);
+        
+        rawList = rawList.filter(q => validTopicIds.includes(q.topicId));
 
         // 🧠 SMART SORT — aqlli savol tanlash
         // Zaif mavzulardagi savollarni ko'proq ko'rsatadi,

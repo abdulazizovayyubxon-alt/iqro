@@ -12,6 +12,7 @@ import SafeHtml from '../components/shared/SafeHtml';
 import QuestionMedia from '../components/QuestionMedia';
 import { useAuth } from '../context/AuthContext';
 import PremiumModal from '../components/PremiumModal';
+import { TOPICS } from '../data/mockData';
 
 const SmartReviewPage = () => {
   const navigate = useNavigate();
@@ -54,7 +55,14 @@ const SmartReviewPage = () => {
   useEffect(() => {
     // Hozir takrorlash kerak bo'lgan savollarni filtrlash
     const now = Date.now();
+    
+    // Joriy fanga mos keladigan mavzularni ajratib olish
+    const validTopicIds = TOPICS.filter(t => 
+      Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory
+    ).map(t => t.id);
+
     const allCards = (state.spacedCards || [])
+      .filter(c => validTopicIds.includes(c.topicId)) // FAKAT o'z fanini chiqarish
       .filter(c => c.nextReview <= now)
       .sort((a, b) => a.nextReview - b.nextReview)
       .slice(0, 20); // Bir sessiyada max 20 ta
