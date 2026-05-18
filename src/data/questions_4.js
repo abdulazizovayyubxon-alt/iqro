@@ -864,7 +864,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Zarba to'lqini - Xandaq va transheya."
     },
   {
-      "q": "CHQBT darsida 11-sinf o'quvchilariga er sharining tektonik xususiyatlari va seysmik kamarlar o'rganilmoqda. Keys: \"Xalqaro seysmik stansiyalar ma'lumotlariga ko'ra, Yer sharida yuz beradigan umumiy zilzilalar ma'lum bir hududiy kamarlar bo'ylab taqsimlanadi. O'qituvchi o'quvchilardan Yer sharidagi jami seysmik tebranishlarning eng katta qismi, ya'ni qariyb 80 foizi to'g'ri keladigan asosiy kamarni aniqlashni so'radi\". Amaldagi CHQBT darsligi matniga binoan, zilzilalarning 80 foizi yuzaga keladigan ushbu hududiy seysmik kamar qaysi javobda to'g'ri ko'rsatilgan?",
+      "q": "Xalqaro seysmik stansiyalar ma'lumotlariga ko'ra, Yer sharida yuz beradigan umumiy zilzilalar ma'lum bir hududiy kamarlar bo'ylab taqsimlanadi. O'qituvchi o'quvchilardan Yer sharidagi jami seysmik tebranishlarning eng katta qismi, ya'ni qariyb 80 foizi to'g'ri keladigan asosiy kamarni aniqlashni so'radi. Amaldagi CHQBT darsligi matniga binoan, zilzilalarning 80 foizi yuzaga keladigan ushbu hududiy seysmik kamar qaysi javobda to'g'ri ko'rsatilgan?",
       "opts": [
         "A) O'rta yer dengizi - Osiyo seysmik kamari",
         "B) Tinch okean seysmik kamari",
@@ -876,7 +876,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Tinch okean seysmik kamari..."
     },
   {
-      "q": "11-sinf CHQBT darsliklarining \"24-dars. Zilzila vaqtida harakatlanish\" mavzusidagi qat'iy tasniflar o'rganilmoqda. Keys: \"Seysmologik laboratoriya xodimlari Markaziy Osiyo va O'zbekiston hududida sodir bo'ladigan zilzilalar darslik me'yorlari asosida tahlil qilmoqdalar\". Darslik matnidagi ma'lumotlarga ko'ra, O'zbekiston va Markaziy Osiyodagi zilzilalar asosan qaysi turga kiradi va ularning chuqurligi odatda necha kilometr oralig'ida bo'ladi?",
+      "q": "Seysmologik laboratoriya xodimlari Markaziy Osiyo va O'zbekiston hududida sodir bo'ladigan zilzilalar darslik me'yorlari asosida tahlil qilmoqdalar. Darslik matnidagi ma'lumotlarga ko'ra, O'zbekiston va Markaziy Osiyodagi zilzilalar asosan qaysi turga kiradi va ularning chuqurligi odatda necha kilometr oralig'ida bo'ladi?",
       "opts": [
         "A) Vulqonli zilzilalar, chuqurligi 5-10 km",
         "B) Qobiq zilzilalari, chuqurligi odatda 10-40 km (ba'zida 70 km gacha)",
@@ -888,7 +888,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Qobiq zilzilalari, chuqurligi odatda 10-40 km (ba'zida 70..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Zilzila turlarining kelib chiqishi va uning ulush ko'rsatkichlari\" bo'limi tahlil qilinmoqda. Keys: \"Favqulodda vaziyatlar vazirligi mutaxassisi maktabda o'quvchilarga Yer qobig'ining harakatlari va tektonik plitalarning to'qnashuvi natijasida eng ko'p tarqalgan global zilzilalar mexanizmini tushuntirmoqda\". 11-sinf CHQBT darsligidagi qat'iy statistikaga muvofiq, Yer yuzida eng keng tarqalgan hamda umumiy zilzilalarning qariyb 95-99 foizini tashkil etuvchi zilzila turi qanday nomlanadi?",
+      "q": "Favqulodda vaziyatlar vazirligi mutaxassisi maktabda o'quvchilarga Yer qobig'ining harakatlari va tektonik plitalarning to'qnashuvi natijasida eng ko'p tarqalgan global zilzilalar mexanizmini tushuntirmoqda. 11-sinf CHQBT darsligidagi qat'iy statistikaga muvofiq, Yer yuzida eng keng tarqalgan hamda umumiy zilzilalarning qariyb 95-99 foizini tashkil etuvchi zilzila turi qanday nomlanadi?",
       "opts": [
         "A) O'pirilish zilzilasi",
         "B) Tektonik zilzila",
@@ -900,7 +900,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Tektonik zilzila..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy fuqaro muhofazasi mashg'ulotida ko'p qavatli binolar ichida to'satdan er qimirlashi boshlanganda xavfsiz va xavfli zonalarni to'g'ri aniqlash qoidalarini o'rgatmoqda. Keys: \"Dars xonasida o'tirgan o'quvchilarga to'satdan zilzila boshlanganligi to'g'risida shartli signal berildi. O'quvchilar darslikda belgilangan uydagi (xonadagi) eng xavfli nuqtalarni yodda saqlagan holda harakat qilishlari shart\". Amaldagi CHQBT darsligi matniga binoan, er qimirlaganda bino va uy ichidagi eng xavfli joylar qaysi javobda to'g'ri va to'liq sanab o'tilgan?",
+      "q": "Dars xonasida o'tirgan o'quvchilarga to'satdan zilzila boshlanganligi to'g'risida shartli signal berildi. O'quvchilar darslikda belgilangan uydagi (xonadagi) eng xavfli nuqtalarni yodda saqlagan holda harakat qilishlari shart. Amaldagi CHQBT darsligi matniga binoan, er qimirlaganda bino va uy ichidagi eng xavfli joylar qaysi javobda to'g'ri va to'liq sanab o'tilgan?",
       "opts": [
         "A) Faqat uyning o'rtasidagi oshxona va oshxona stoli osti",
         "B) Ichki va tashqi deraza osti, devorlarning oyna bilan qoplangan qismlari, oxirgi qavatlardagi burchakda joylashgan xonalar, lift va zinapoya maydonchalari",
@@ -912,7 +912,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Ichki va tashqi deraza osti, devorlarning oyna bilan..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik-amaliy mashg'ulotida \"Zilzila pallasida shoshilinch evakuatsiya va vaqt ko'rsatkichlari me'yori\" o'rganilmoqda. Keys: \"O'quvchi ko'p qavatli uyning birinchi qavatida yoki xom g'ishtli, paxsa devorli shaxsiy uy ichida turganida to'satdan kuchli seysmik tebranishni sezdi\". Darslikning \"Xonaning ichida bo'lganda\" bo'limidagi 1-band qat'iy ko'rsatmasiga ko'ra, bunday pastki qavat va xom g'ishtli uylarda yashaydigan shaxslar er qimirlashi boshlanishi bilan darhol ochiq maydonga (tashqariga) chiqib ketishlari uchun maksimal necha soniya vaqt beriladi?",
+      "q": "O'quvchi ko'p qavatli uyning birinchi qavatida yoki xom g'ishtli, paxsa devorli shaxsiy uy ichida turganida to'satdan kuchli seysmik tebranishni sezdi. Darslikning \"Xonaning ichida bo'lganda\" bo'limidagi 1-band qat'iy ko'rsatmasiga ko'ra, bunday pastki qavat va xom g'ishtli uylarda yashaydigan shaxslar er qimirlashi boshlanishi bilan darhol ochiq maydonga (tashqariga) chiqib ketishlari uchun maksimal necha soniya vaqt beriladi?",
       "opts": [
         "A) 5-10 soniya ichida",
         "B) 15-20 soniya ichida",
@@ -924,7 +924,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - 15-20 soniya ichida..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari metodik yig'ilishida \"Ko'p qavatli uylarning yuqori qavatlarida zilzila sodir bo'lganda aholining harakatlanish cheklovlari\" tahlil qilinmoqda. Keys: \"O'quvchi zilzila vaqtida ko'p qavatli binoning ikkinchi qavatidan yuqorida joylashgan xonada qolib ketdi. U vahima oqibatida darhol tashqariga qochish maqsadida muayyan zonalarga qarab yugurmoqchi\". Darslikning qat'iy yo'riqnomalariga muvofiq, zilzila vaqtida ikkinchi qavatdan yuqorida bo'lgan shaxslarga birinchi navbatda qaysi joylarga qarab yugurish qat'iyan man etiladi?",
+      "q": "O'quvchi zilzila vaqtida ko'p qavatli binoning ikkinchi qavatidan yuqorida joylashgan xonada qolib ketdi. U vahima oqibatida darhol tashqariga qochish maqsadida muayyan zonalarga qarab yugurmoqchi. Darslikning qat'iy yo'riqnomalariga muvofiq, zilzila vaqtida ikkinchi qavatdan yuqorida bo'lgan shaxslarga birinchi navbatda qaysi joylarga qarab yugurish qat'iyan man etiladi?",
       "opts": [
         "A) Uyning to'g'ri to'g'risidagi ochiq balkoniga",
         "B) Lift yoki zinapoyalarga (chunki ko'p hollarda yer qimirlashi bilan birinchi navbatda uk qulaydi)",
@@ -936,7 +936,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Lift yoki zinapoyalarga (chunki ko'p hollarda yer qimirlashi..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Ko'chki va o'pirilishlar yuzaga kelganda aholini muhofaza qilish tartiblari\" bo'limi o'rganilmoqda. Keys: \"Tog'li va tog'oldi hududlarida davomli yog'ingarchilik oqibatida insonlar o'limiga olib kelishi mumkin bo'lgan tog' o'pirilishlari va er ko'chishi xavfi vujudga keldi. Bo'linma tarkibidagi askarlar aholini zudlik bilan evakuatsiya qilmoqdalar\". Darslikning \"Ko'chki vaqtida to'g'ri harakatlanish qoidalari\" bandiga asosan, er ko'chishi boshlanganida xavfsiz hududga qochishga mutloq ulgurmagan shaxslar zudlik bilan qonunan qayerga o'tishlari yoki chiqishlari shart?",
+      "q": "Tog'li va tog'oldi hududlarida davomli yog'ingarchilik oqibatida insonlar o'limiga olib kelishi mumkin bo'lgan tog' o'pirilishlari va er ko'chishi xavfi vujudga keldi. Bo'linma tarkibidagi askarlar aholini zudlik bilan evakuatsiya qilmoqdalar. Darslikning \"Ko'chki vaqtida to'g'ri harakatlanish qoidalari\" bandiga asosan, er ko'chishi boshlanganida xavfsiz hududga qochishga mutloq ulgurmagan shaxslar zudlik bilan qonunan qayerga o'tishlari yoki chiqishlari shart?",
       "opts": [
         "A) Sayoz ariqlar ichiga va chuqur daryo o'zanlariga berkining",
         "B) Uyning tomiga chiqing yoki mustahkam devor panasiga o'tib oling",
@@ -948,7 +948,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Uyning tomiga chiqing yoki mustahkam devor panasiga o'tib..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Sel va suv toshqinlari vaqtida xavfsizlik masofalari normativi\" bo'yicha taktik savol berildi. Keys: \"Tog' daryolari o'zanlarida to'satdan katta hajmdagi qum, tosh va tog' jinslari bo'laklari aralashmasidan iborat shiddatli loy-toshli oqim yuzaga keldi. Kuzatuvchi askar aholini sel oqimidan xavfsiz masofada ushlab turishi shart\". Amaldagi darslik matnidagi qat'iy ko'rsatmaga ko'ra, aholi harakatdagi sel oqimiga yaqinlashmay, undan kamida necha metr uzoqroq masofada turishi majburiydir?",
+      "q": "Tog' daryolari o'zanlarida to'satdan katta hajmdagi qum, tosh va tog' jinslari bo'laklari aralashmasidan iborat shiddatli loy-toshli oqim yuzaga keldi. Kuzatuvchi askar aholini sel oqimidan xavfsiz masofada ushlab turishi shart. Amaldagi darslik matnidagi qat'iy ko'rsatmaga ko'ra, aholi harakatdagi sel oqimiga yaqinlashmay, undan kamida necha metr uzoqroq masofada turishi majburiydir?",
       "opts": [
         "A) 5-10 metr uzoqlikda",
         "B) Kamida 50-70 metr uzoqroq masofada",
@@ -960,7 +960,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Kamida 50-70 metr uzoqroq masofada..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Kuchli shamol va uning tezlik ko'rsatkichlariga ko'ra tasniflanishi\" mavzusi muhokama qilinmoqda. Keys: \"Meteorologiya xizmati hududda esayotgan shamol tezligini o'lchash jarayonida darslikda belgilangan mezonlar bo'yicha uning dovul yoki bo'ron toifasiga kirishini aniqlamoqda\". 11-sinf CHQBT darsligi matniga binoan, tezligi 20-25 m/s bo'lgan shamol hamda tezligi 30 m/s ga yetgan shamollar ilmiy tilda mos ravishda qanday nomlanadi?",
+      "q": "Meteorologiya xizmati hududda esayotgan shamol tezligini o'lchash jarayonida darslikda belgilangan mezonlar bo'yicha uning dovul yoki bo'ron toifasiga kirishini aniqlamoqda. 11-sinf CHQBT darsligi matniga binoan, tezligi 20-25 m/s bo'lgan shamol hamda tezligi 30 m/s ga yetgan shamollar ilmiy tilda mos ravishda qanday nomlanadi?",
       "opts": [
         "A) O'rtacha shamol va kuchli shamol",
         "B) Dovul (shtorm) va bo'ron",
@@ -972,7 +972,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Dovul (shtorm) va bo'ron..."
     },
   {
-      "q": "CHQBT darsida \"Anomal sovuq ob-havo sharoitida inson organizmidagi xavfli tana harorati chegaralari\" o'rganilmoqda. Keys: \"Tibbiy guruh anomal sovuq oqibatida kuchli muzlash holatiga tushgan va hayotiy funktsiyalari susaygan bemorning ichki tana haroratini o'lchamoqda\". Darslikdagi \"Tana harorati bilan bog'liq xavfli chegaralar\" jadvaliga muvofiq, inson ichki tana harorati necha darajadan past bo'lganida yurak va nafas tizimlari faoliyati buziladi va necha darajada koma holatiga olib kelishi mumkin?",
+      "q": "Tibbiy guruh anomal sovuq oqibatida kuchli muzlash holatiga tushgan va hayotiy funktsiyalari susaygan bemorning ichki tana haroratini o'lchamoqda. Darslikdagi \"Tana harorati bilan bog'liq xavfli chegaralar\" jadvaliga muvofiq, inson ichki tana harorati necha darajadan past bo'lganida yurak va nafas tizimlari faoliyati buziladi va necha darajada koma holatiga olib kelishi mumkin?",
       "opts": [
         "A) 36.6 darajada buziladi, 35 darajada koma yuz beradi",
         "B) 32 darajajdan pastda yurak va nafas faoliyati buziladi, 27 darajada koma holatiga olib kelishi mumkin",
@@ -984,7 +984,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - 32 darajajdan pastda yurak va nafas faoliyati buziladi,..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Radioaktiv va zaharli moddalardan muhofazalanishda aholiga signal berish qoidalari\" bo'yicha keys berildi. Keys: \"Kimyoviy yoki radiatsiyaviy xavfli ob'ektda to'satdan yirik halokat yuz berdi va zaharli moddalar atmosferaga tarqala boshladi. Fuqaro muhofazasi boshqarmasi aholini zudlik bilan ogohlantirish chorasini ko'rmoqda\". Darslik matniga ko'ra, radiatsiyaviy va kimyoviy xavfli ob'ektlarda avariyalar sodir bo'lganda aholiga avariya to'g'risida xabar berish maqsadida elektrosirenalar va ommaviy axborot vositalari orqali uzatiladigan asosiy shoshilinch signal qanday nomlanadi?",
+      "q": "Kimyoviy yoki radiatsiyaviy xavfli ob'ektda to'satdan yirik halokat yuz berdi va zaharli moddalar atmosferaga tarqala boshladi. Fuqaro muhofazasi boshqarmasi aholini zudlik bilan ogohlantirish chorasini ko'rmoqda. Darslik matniga ko'ra, radiatsiyaviy va kimyoviy xavfli ob'ektlarda avariyalar sodir bo'lganda aholiga avariya to'g'risida xabar berish maqsadida elektrosirenalar va ommaviy axborot vositalari orqali uzatiladigan asosiy shoshilinch signal qanday nomlanadi?",
       "opts": [
         "A) Kimyoviy xavf!",
         "B) Diqqat, barchaga!",
@@ -996,7 +996,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Diqqat, barchaga!..."
     },
   {
-      "q": "Tuman fuqaro muhofazasi kengashi yig'ilishida \"KTEZM moddalari fizik-kimyoviy tabiatiga ko'ra aholini to'g'ri evakuatsiya qilish qoidalari\" ko'rib chiqildi. Keys: \"Kimyoviy ob'ektdagi halokat natijasida atmosferaga ko'p miqdorda xlor moddasi tarqaldi. Sapyorlar aholini binolarning qaysi qavatlariga joylashtirish tartibini darslik asosi bo'yicha buyurishdi\". Darslikning \"KTEZMning to'kilishi bilan bog'liq o'zini himoya qilish usullari\" bo'limiga binoan, xlor moddasi havodan og'ir bo'lib pastga er bo'ylab tarqalishi sababli, hudud xlor bilan zararlanganda insonlarga binolarning qaysi qismiga o'rnashishlari tavsiya etiladi?",
+      "q": "Kimyoviy ob'ektdagi halokat natijasida atmosferaga ko'p miqdorda xlor moddasi tarqaldi. Sapyorlar aholini binolarning qaysi qavatlariga joylashtirish tartibini darslik asosi bo'yicha buyurishdi. Darslikning \"KTEZMning to'kilishi bilan bog'liq o'zini himoya qilish usullari\" bo'limiga binoan, xlor moddasi havodan og'ir bo'lib pastga er bo'ylab tarqalishi sababli, hudud xlor bilan zararlanganda insonlarga binolarning qaysi qismiga o'rnashishlari tavsiya etiladi?",
       "opts": [
         "A) Binolarning yerto'lalari va pastki birinchi qavatlariga",
         "B) Binolarning yuqori qavatlariga",
@@ -1008,7 +1008,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Binolarning yuqori qavatlariga..."
     },
   {
-      "q": "11-sinf CHQBT darsligining \"29-dars. Gidrotexnik inshootlar bilan bog'liq favqulodda vaziyatlar\" bo'limi tahlil qilinmoqda. Keys: \"Yirik suv ombori to'g'oni yoki baland tog' ko'llarining urib ketishi hisobiga boshqarib bo'lmaydigan, aholi punktlarini suv ostida qoldiradigan halokatli suv oqimi yuzaga keldi\". Darslik matnidagi fundamental ta'rifga ko'ra, gidrotexnik inshoot yoki uning bir qismi ishdan chiqib buzilishi hisobiga yuzaga keladigan bunday og'ir halokat turi ilmiy tilda nima deb ataladi?",
+      "q": "Yirik suv ombori to'g'oni yoki baland tog' ko'llarining urib ketishi hisobiga boshqarib bo'lmaydigan, aholi punktlarini suv ostida qoldiradigan halokatli suv oqimi yuzaga keldi. Darslik matnidagi fundamental ta'rifga ko'ra, gidrotexnik inshoot yoki uning bir qismi ishdan chiqib buzilishi hisobiga yuzaga keladigan bunday og'ir halokat turi ilmiy tilda nima deb ataladi?",
       "opts": [
         "A) Ekologik global inqiroz",
         "B) Gidrodinamik halokat",
@@ -1044,7 +1044,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Garovda ushlab turilgan shaxs (Garovga olingan shaxs)..."
     },
   {
-      "q": "CHQBT amaliy fuqaro muhofazasi darsida o'quvchilar \"25-dars. Ko'chki va suv toshqinlarida harakatlanish qoidalari\" mavzusini o'rganmoqdalar. Keys: \"Tog'li hududda joylashgan aholi punktiga kutilmaganda daryo o'zanlaridan loyqa va tosh aralash oqim bostirib kela boshladi. Aholi orasida sarosima yuzaga kelmasligi uchun qutqaruvchilar darslikda ko'rsatilgan qat'iy tartib asosida harakat qilishni buyurishdi\". Darslik matnidagi evakuatsiya va qutqaruv qoidalariga binoan, suv toshqini yoki sel kelganda yordamga kelgan qutqaruvchilar yaqinlashgan pallada suzuvchi vositaga (qayiqqa) o'tish va unda o'zini tutish tartibi qanday amalga oshirilishi qonunan shart?",
+      "q": "Tog'li hududda joylashgan aholi punktiga kutilmaganda daryo o'zanlaridan loyqa va tosh aralash oqim bostirib kela boshladi. Aholi orasida sarosima yuzaga kelmasligi uchun qutqaruvchilar darslikda ko'rsatilgan qat'iy tartib asosida harakat qilishni buyurishdi. Darslik matnidagi evakuatsiya va qutqaruv qoidalariga binoan, suv toshqini yoki sel kelganda yordamga kelgan qutqaruvchilar yaqinlashgan pallada suzuvchi vositaga (qayiqqa) o'tish va unda o'zini tutish tartibi qanday amalga oshirilishi qonunan shart?",
       "opts": [
         "A) Qayiq ichida tik turib, tezroq harakatlanish uchun eshkaklarni mustaqil burash lozim",
         "B) Qutqaruvchilarning ko'rsatmalariga qat'iy amal qilish, yukning ko'payib ketmasligiga e'tibor berish, harakat vaqtida o'rningizdan qimirlamaslik va qayiq chetiga o'tirmaslik shart",
@@ -1056,7 +1056,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Qutqaruvchilarning ko'rsatmalariga qat'iy amal qilish, yukning ko'payib ketmasligiga..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Kuchli shamolda to'g'ri harakatlanish va fazoviy xavfsizlik zonalari\" bo'yicha tahliliy keys etib berildi. Keys: \"Aholi yashash punkti hududida to'satdan darslikda 'Afg'on', 'Qo'qon' yoki 'Bekobod' deb ataladigan o'ta shiddatli kuchli shamol, dovul yoki bo'ron esishi boshlandi. Mergan askar ko'chada bo'lgan vaqtda o'z hayotini va sog'lig'ini uchuvchi bo'laklardan asrash chorasini ko'rmoqda\". Darslikning \"Kuchli shamol vaqtida to'g'ri harakatlanish tartibi\" qoidalariga muvofiq, ko'chada qolib ketgan shaxslar jarohatlanishdan saqlanish uchun birinchi navbatda qaysi ob'ektlar ostida yoki yaqinida turishlari qat'iyan man etiladi?",
+      "q": "Aholi yashash punkti hududida to'satdan darslikda 'Afg'on', 'Qo'qon' yoki 'Bekobod' deb ataladigan o'ta shiddatli kuchli shamol, dovul yoki bo'ron esishi boshlandi. Mergan askar ko'chada bo'lgan vaqtda o'z hayotini va sog'lig'ini uchuvchi bo'laklardan asrash chorasini ko'rmoqda. Darslikning \"Kuchli shamol vaqtida to'g'ri harakatlanish tartibi\" qoidalariga muvofiq, ko'chada qolib ketgan shaxslar jarohatlanishdan saqlanish uchun birinchi navbatda qaysi ob'ektlar ostida yoki yaqinida turishlari qat'iyan man etiladi?",
       "opts": [
         "A) Faqat chuqurliklar, yerto'lalar va erosti o'tish joylari ichida",
         "B) Daraxtlar, reklama shitlari yoki omonat to'siqlar ostida hamda elektr uzatish liniyalari yoki shikastlangan binolardan uzoqroqda turish shart",
@@ -1068,7 +1068,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Daraxtlar, reklama shitlari yoki omonat to'siqlar ostida hamda..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Anomal sovuq paytlarda to'g'ri harakatlanish va muzlash xavfi bo'lgan tana a'zolari\" mavzusi darslik matni asosida tahlil qilinmoqda. Keys: \"Qishki taktik o'quv mashg'uloti vaqtida ob-havo harorati me'yordan keskin pasayib, anomal sovuq holati yuzaga keldi. Askar ochiq maydonda uzoq vaqt navbatchilikda turish pallasida o'z tanasini muzlash xavfidan asrashi shart\". Darslikdagi maxsus muzlash chizmalariga ko'ra, anomal sovuq oqibatida birinchi navbatda muzlash xavfi o'ta yuqori bo'lgan va poyabzal siqqanida yoki ho'l bo'lganida keskin shikastlanadigan tana qismlari qaysi javobda to'liq ko'rsatilgan?",
+      "q": "Qishki taktik o'quv mashg'uloti vaqtida ob-havo harorati me'yordan keskin pasayib, anomal sovuq holati yuzaga keldi. Askar ochiq maydonda uzoq vaqt navbatchilikda turish pallasida o'z tanasini muzlash xavfidan asrashi shart. Darslikdagi maxsus muzlash chizmalariga ko'ra, anomal sovuq oqibatida birinchi navbatda muzlash xavfi o'ta yuqori bo'lgan va poyabzal siqqanida yoki ho'l bo'lganida keskin shikastlanadigan tana qismlari qaysi javobda to'liq ko'rsatilgan?",
       "opts": [
         "A) Faqat ko'krak qafasi va qorin mushaklari sohalari",
         "B) Qo'l barmoqlari, yuz (burun, quloq, yonoq) va oyoq barmoqlari",
@@ -1092,7 +1092,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Ko'p suyuqlik ichish - ayniqsa ichimlik suvi va..."
     },
   {
-      "q": "CHQBT fani rahbari o'quv xonasida \"Transport vositalari bilan bog'liq avariyalarda harakatlanish: Suvga ag'darilgan avtomobildan qutulish taktikasi\" mavzusini o'rgatmoqda. Keys: \"Yo'l-transport hodisasi natijasida engil avtomobil ko'prikdan chuqur suv havzasiga ag'darilib tushdi va ma'lum bir muddat suv yuzasida suzib turdi. Yo'lovchi askar cho'kib ketayotgan avtomobil ichidan darslik qoidalari bo'yicha zudlik bilan tashqariga chiqishi shart\". Darslik['Avtomobil transporti avariyalari va halokatlarida to'g'ri harakat qilish tartibi'] bo'limiga binoan, bunday suvga tushgan mashinadan eshikni ochmasdan, ishonchli qutulish uchun birinchi navbatda qaysi harakat qat'iy bajarilishi lozim?",
+      "q": "Yo'l-transport hodisasi natijasida engil avtomobil ko'prikdan chuqur suv havzasiga ag'darilib tushdi va ma'lum bir muddat suv yuzasida suzib turdi. Yo'lovchi askar cho'kib ketayotgan avtomobil ichidan darslik qoidalari bo'yicha zudlik bilan tashqariga chiqishi shart. Darslik['Avtomobil transporti avariyalari va halokatlarida to'g'ri harakat qilish tartibi'] bo'limiga binoan, bunday suvga tushgan mashinadan eshikni ochmasdan, ishonchli qutulish uchun birinchi navbatda qaysi harakat qat'iy bajarilishi lozim?",
       "opts": [
         "A) Avtomobil eshigini bor kuch bilan ochishga urinish kerak (chunki eshik ochilsa suv tezroq chiqadi)",
         "B) Ochiq oyna orqali chiqish, zururat tug'ilganda qattiq jism bilan oynani sindirib tashlash, qo'llar bilan mashinaning tomini ushlab tashqariga siqilib chiqish va zudlik bilan yuqoriga qarab suzish",
@@ -1104,7 +1104,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Ochiq oyna orqali chiqish, zururat tug'ilganda qattiq jism..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari ilmiy-metodik yig'ilishida \"KTEZM moddalari to'kilganda uchinchi turdagi kimyoviy sharoit favqulodda vaziyatlari xususiyatlari\" o'rganilmoqda. Keys: \"Kimyoviy zavod omborida suyultirilgan suyuq KTEZM moddalari (fosgen, azot tetroksidi) halokatli tarzda katta miqdorda ostiga solingan idishga quyildi yoki ko'p miqdorda o'g'itlar yoki oltingugurtning yonishi yuz berdi\". Darslik matnidagi kimyoviy tasnifga binoan, bunday sharoitda uzoq masofalarga tarqalishi mumkin bo'lgan zaharli konsentratsiyali qanday zaharlovchi havo qatlami hosil bo'ladi?",
+      "q": "Kimyoviy zavod omborida suyultirilgan suyuq KTEZM moddalari (fosgen, azot tetroksidi) halokatli tarzda katta miqdorda ostiga solingan idishga quyildi yoki ko'p miqdorda o'g'itlar yoki oltingugurtning yonishi yuz berdi. Darslik matnidagi kimyoviy tasnifga binoan, bunday sharoitda uzoq masofalarga tarqalishi mumkin bo'lgan zaharli konsentratsiyali qanday zaharlovchi havo qatlami hosil bo'ladi?",
       "opts": [
         "A) Birlamchi portlovchi aerozol buluti",
         "B) KTEZM bug'larining ikkilamchi buluti",
@@ -1116,7 +1116,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - KTEZM bug'larining ikkilamchi buluti..."
     },
   {
-      "q": "11-sinf CHQBT darsida \"Gidrotexnik inshootlar buzilishi natijasida to'satdan suv bosish xavfi yuzaga kelganda aholining harakatlanishi\" mavzusi tahlil qilinmoqda. Keys: \"Suv ombori to'g'onining kutilmaganda texnogen buzilishi oqibatida aholi yashash punkti hududini shiddat bilan sel va suv bosa boshladi. Aholi xavfsiz tepaliklarga qochishga ulgurmasdan bino ichida qolib ketdi\". Darslikning \"Suv toshqini yuzaga kelgan vaqtdagi harakatlar\" qoidalariga muvofiq, atrofni suv bosgan taqdirda, bino ichida qolib ketgan shaxslar qutqaruvchilarga uyda odamlar borligini bildirish uchun kunduzi va kechasi mos ravishda qanday vizual signal berishga majburdirlar?",
+      "q": "Suv ombori to'g'onining kutilmaganda texnogen buzilishi oqibatida aholi yashash punkti hududini shiddat bilan sel va suv bosa boshladi. Aholi xavfsiz tepaliklarga qochishga ulgurmasdan bino ichida qolib ketdi. Darslikning \"Suv toshqini yuzaga kelgan vaqtdagi harakatlar\" qoidalariga muvofiq, atrofni suv bosgan taqdirda, bino ichida qolib ketgan shaxslar qutqaruvchilarga uyda odamlar borligini bildirish uchun kunduzi va kechasi mos ravishda qanday vizual signal berishga majburdirlar?",
       "opts": [
         "A) Kunduzi baland ovozda baqirish, kechasi esa eshikni qattiq taqillatish orqali",
         "B) Kunduzi - derazadan tashqariga yorqin rangdagi matoni hilpiratish orqali, kechasi - fonusni o'chirib yoqish orqali",
@@ -1128,7 +1128,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Kunduzi - derazadan tashqariga yorqin rangdagi matoni hilpiratish..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Yong'in xavfsizligi: gaz ballonlaridan to'g'ri foydalanish ketma-ketligi\" bo'limida kundalik hayotiy qoidalar o'rganilmoqda. Keys: \"O'quvchi uy sharoitida oshxonadagi tabiiy yoki propan gaz ballonli plitani yoqib, taom tayyorlamoqchi. U portlash va yong'in kelib chiqishining oldini olish uchun darslikdagi qat'iy izchillik qoidasiga amal qilishi shart\". Darslikning \"Kundalik hayotda yong'in xavfsizligini ta'minlash\" yo'riqnomasiga binoan, gaz ballonlaridan foydalanishda birinchi bo'lib qaysi harakat bajarilishi qonunan majburiydir?",
+      "q": "O'quvchi uy sharoitida oshxonadagi tabiiy yoki propan gaz ballonli plitani yoqib, taom tayyorlamoqchi. U portlash va yong'in kelib chiqishining oldini olish uchun darslikdagi qat'iy izchillik qoidasiga amal qilishi shart. Darslikning \"Kundalik hayotda yong'in xavfsizligini ta'minlash\" yo'riqnomasiga binoan, gaz ballonlaridan foydalanishda birinchi bo'lib qaysi harakat bajarilishi qonunan majburiydir?",
       "opts": [
         "A) Avval gaz jo'mragini keng ochib, so'ngra gugurt qidirish lozim",
         "B) Avval gugurtni yoqib, so'ng gaz jo'mragini ochish shart",
@@ -1140,7 +1140,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Avval gugurtni yoqib, so'ng gaz jo'mragini ochish shart..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Terrorchilik harakatlari vaqtida tasodifan garovga tushib qolgan shaxsning xatti-harakatlari va psixologik majburiyatlari\" bo'yicha murakkab Y3 darajasidagi tahlil testi berildi. Keys: \"Fuqaro jamoat joyida terrorchilar guruhining qo'qqisdan hujum qilishi oqibatida garovga tushib qoldi. U darslikdagi 'Vahimaga berilmaslikka harakat qiling, sababi siz terrorchiga tirik holda keraksiz' degan fundamental qoidani yodga oldi\". Darslikning \"Terrorizm bilan bog'liq ekstremal va favqulodda vaziyatlarda aholining harakati\" bo'limiga muvofiq, tutqinlikda bo'lgan shaxs kelgusida huquqni muhofaza qiluvchi organlarning qutqaruv operatsiyasiga muvaffaqiyatli ko'mak berishi uchun xotirasida qaysi ma'lumotlarni qat'iy va aniq saqlab qolishi shart?",
+      "q": "Fuqaro jamoat joyida terrorchilar guruhining qo'qqisdan hujum qilishi oqibatida garovga tushib qoldi. U darslikdagi 'Vahimaga berilmaslikka harakat qiling, sababi siz terrorchiga tirik holda keraksiz' degan fundamental qoidani yodga oldi. Darslikning \"Terrorizm bilan bog'liq ekstremal va favqulodda vaziyatlarda aholining harakati\" bo'limiga muvofiq, tutqinlikda bo'lgan shaxs kelgusida huquqni muhofaza qiluvchi organlarning qutqaruv operatsiyasiga muvaffaqiyatli ko'mak berishi uchun xotirasida qaysi ma'lumotlarni qat'iy va aniq saqlab qolishi shart?",
       "opts": [
         "A) Faqat binoning bozor qiymatini va undagi mebellarning brendini eslab qolishi lozim",
         "B) Deraza, eshik, zinapoyalarning joylashgan o'rni, devor qog'ozlari rangi, o'ziga xos hidlar, jinoyatchilarning ovozi, tashqi ko'rinishi, uslublari va ular orasidagi rollar taqsimotini eslab qolishi shart",
@@ -1224,7 +1224,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - 2000-yil 15-dekabr kuni..."
     },
   {
-      "q": "CHQBT darsida 11-sinf o'quvchilariga er sharining tektonik xususiyatlari va seysmik kamarlar o'rganilmoqda. Keys: \"O'qituvchi o'quvchilarga global zilzilalar tarqalish xaritasi asosida O'rta yer dengizi - Osiyo seysmik kamarining umumiy ulushini tushuntirmoqda\". 11-sinf CHQBT darsligi matniga muvofiq, O'rta yer dengizi (Osiyo) seysmik kamarida er yuzidagi jami zilzilalarning taxminan necha foizi yuz berishi belgilangan?",
+      "q": "O'qituvchi o'quvchilarga global zilzilalar tarqalish xaritasi asosida O'rta yer dengizi - Osiyo seysmik kamarining umumiy ulushini tushuntirmoqda. 11-sinf CHQBT darsligi matniga muvofiq, O'rta yer dengizi (Osiyo) seysmik kamarida er yuzidagi jami zilzilalarning taxminan necha foizi yuz berishi belgilangan?",
       "opts": [
         "A) Taxminan 80 foizi",
         "B) Taxminan 15 foizi",
@@ -1236,7 +1236,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Taxminan 15 foizi..."
     },
   {
-      "q": "11-sinf CHQBT darsligi \"24-dars. Zilzila turlari\" bo'limi tahlil qilinmoqda. Keys: \"O'quvchilar er ostidagi tabiiy bo'shliqlarning yoki karst g'orlarining to'satdan qulashi natijasida yuzaga keladigan, odatda o'ta kuchsiz bo'ladigan mahalliy er tebranishi xususiyatlarini o'rganishmoqda\". Darslikdagi \"Zilzila turlari\" chizmasiga ko'ra, bunday er osti bo'shliqlari qulashidan kelib chiqadigan kuchsiz tebranish turi qonunan nima deb ataladi?",
+      "q": "O'quvchilar er ostidagi tabiiy bo'shliqlarning yoki karst g'orlarining to'satdan qulashi natijasida yuzaga keladigan, odatda o'ta kuchsiz bo'ladigan mahalliy er tebranishi xususiyatlarini o'rganishmoqda. Darslikdagi \"Zilzila turlari\" chizmasiga ko'ra, bunday er osti bo'shliqlari qulashidan kelib chiqadigan kuchsiz tebranish turi qonunan nima deb ataladi?",
       "opts": [
         "A) Tektonik zilzila",
         "B) O'pirilish zilzilasi",
@@ -1248,7 +1248,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - O'pirilish zilzilasi..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy taktik maydonda zilzila pallasida uy ichidagi xavfsizlik choralarini darslik asosida tushuntirmoqda. Keys: \"Er qimirlashi boshlangan pallada o'quvchi askar ko'p qavatli uy xonasi ichida qolib ketdi va o'zini yuqoridan tushadigan suvoq parchalari hamda yoritkich asboblaridan asrash chorasini ko'rmoqda\". Darslikning \"Zilzila vaqtida harakatlanish\" qoidalariga muvofiq, bino ichida qolgan shaxslar yuqoridan narsalar qulab tushayotgan soniyada qayerga yashirinishlari majburiydir?",
+      "q": "Er qimirlashi boshlangan pallada o'quvchi askar ko'p qavatli uy xonasi ichida qolib ketdi va o'zini yuqoridan tushadigan suvoq parchalari hamda yoritkich asboblaridan asrash chorasini ko'rmoqda. Darslikning \"Zilzila vaqtida harakatlanish\" qoidalariga muvofiq, bino ichida qolgan shaxslar yuqoridan narsalar qulab tushayotgan soniyada qayerga yashirinishlari majburiydir?",
       "opts": [
         "A) Faqat deraza va oyna to'siqlarining tagiga",
         "B) Stol yoki karavotlar (maktabda esa partalar) tagiga",
@@ -1260,7 +1260,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Stol yoki karavotlar (maktabda esa partalar) tagiga..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik-amaliy mashg'ulotida \"Zilzila vaqtida oyna sinishi xavfi va undan qutulish qoidalari\" o'rganilmoqda. Keys: \"Er tebranishi oqibatida bino eshiklari siqilib qoldi va o'quvchi hayoti xavf ostida qolganligi sababli xonadan zudlik bilan deraza orqali tashqariga sakrashga majbur bo'ldi\". Darslik matnidagi qat'iy ko'rsatmaga ko'ra, bino ichidan o'ta zarur sharoitda deraza orqali chiqishga majbur bo'lingan hollarda qaysi majburiy harakat tartibiga amal qilinishi shart?",
+      "q": "Er tebranishi oqibatida bino eshiklari siqilib qoldi va o'quvchi hayoti xavf ostida qolganligi sababli xonadan zudlik bilan deraza orqali tashqariga sakrashga majbur bo'ldi. Darslik matnidagi qat'iy ko'rsatmaga ko'ra, bino ichidan o'ta zarur sharoitda deraza orqali chiqishga majbur bo'lingan hollarda qaysi majburiy harakat tartibiga amal qilinishi shart?",
       "opts": [
         "A) Zinhor yopiq deraza oynasiga qarab sakramang; oynani taburetka yoki yelka bilan sindirib, keyin sakrang",
         "B) Deraza oynasini ochishga urinib, kamida 15 daqiqa kutish lozim",
@@ -1272,7 +1272,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Deraza oynasini ochishga urinib, kamida 15 daqiqa kutish..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari ilmiy-metodik kengashida \"Geologik xavfli hodisalar va ularning qonuniy ta'rifi\" o'rganilmoqda. Keys: \"Muhandislik xizmati mutaxassislari insonlar o'limiga olib keladigan, aholini xavfli hududdan xavfsiz joylarga ko'chirishni talab qiladigan er sathining to'satdan siljishi va tog' parchalari qulashi jarayonini tahlil qilishmoqda\". 11-sinf darsligi \"25-dars\" matnidagi fundamental ta'rifga ko'ra, bunday geologik xavfli tabiiy hodisa qonunan nima deb ataladi?",
+      "q": "Muhandislik xizmati mutaxassislari insonlar o'limiga olib keladigan, aholini xavfli hududdan xavfsiz joylarga ko'chirishni talab qiladigan er sathining to'satdan siljishi va tog' parchalari qulashi jarayonini tahlil qilishmoqda. 11-sinf darsligi \"25-dars\" matnidagi fundamental ta'rifga ko'ra, bunday geologik xavfli tabiiy hodisa qonunan nima deb ataladi?",
       "opts": [
         "A) Gidrodinamik suv toshqini",
         "B) Ko'chki va o'pirilishlar",
@@ -1284,7 +1284,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Ko'chki va o'pirilishlar..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Suv toshqinlari vaqtida binolar ichida qolib ketgan aholining harakatlanish tartibi\" bo'limi tahlil qilinmoqda. Keys: \"To'g'on buzilishi oqibatida daryo suvi to'satdan keskin ko'tarilib, hududdagi barcha uylarni bosa boshladi. Aholi evakuatsiya marrasiga chiqishga ulgurmasdan uylari ichida qolib ketdi\". Darslikning \"Suv toshqini vaqtida to'g'ri harakatlanish qoidalari\" bo'limidagi 4-band talabiga ko'ra, qutqaruvchilar etib kelguniga qadar suv bosgan hududdagi odamlar qaysi joylarda turishlari qat'iy talab qilinadi?",
+      "q": "To'g'on buzilishi oqibatida daryo suvi to'satdan keskin ko'tarilib, hududdagi barcha uylarni bosa boshladi. Aholi evakuatsiya marrasiga chiqishga ulgurmasdan uylari ichida qolib ketdi. Darslikning \"Suv toshqini vaqtida to'g'ri harakatlanish qoidalari\" bo'limidagi 4-band talabiga ko'ra, qutqaruvchilar etib kelguniga qadar suv bosgan hududdagi odamlar qaysi joylarda turishlari qat'iy talab qilinadi?",
       "opts": [
         "A) Binolarning yerto'lalari va pastki birinchi qavatlarida",
         "B) Binolarning yuqori qavatlari va tomlarida, daraxtlarda va boshqa tepaliklarda",
@@ -1308,7 +1308,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - 5-8 m/s tezlikdagi shamol..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy darsda \"Kuchli jala yog'ishi pallasida fuqaro muhofazasi tadbirlarining miqdoriy ko'rsatkichlari\"ni tushuntirmoqda. Keys: \"O'quvchilar shiddat bilan yog'adigan, ho'l qor yoki qor uchqunlari aralash yuz berishi mumkin bo'lgan jala oqibatlarini o'rganishmoqda\". Darslik matnidagi qat'iy ko'rsatkichga ko'ra, darslikda \"kuchli jala\" deb ataluvchi atmosfera yog'inining yog'ish jadalligi har soatda necha millimetrgacha yetishi qonunan qayd etilgan?",
+      "q": "O'quvchilar shiddat bilan yog'adigan, ho'l qor yoki qor uchqunlari aralash yuz berishi mumkin bo'lgan jala oqibatlarini o'rganishmoqda. Darslik matnidagi qat'iy ko'rsatkichga ko'ra, darslikda \"kuchli jala\" deb ataluvchi atmosfera yog'inining yog'ish jadalligi har soatda necha millimetrgacha yetishi qonunan qayd etilgan?",
       "opts": [
         "A) Har soatda 5-10 mm gacha",
         "B) Har soatda 100 mm gacha",
@@ -1320,7 +1320,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Har soatda 100 mm gacha..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Kuchli zaharli va radioaktiv moddalar bilan bog'liq birinchi turdagi kimyoviy favqulodda vaziyatlar tabiati\" bo'yicha savol berildi. Keys: \"Kimyoviy ob'ektdagi texnologik asbob-uskunalarning yoki maxsus bosim ostidagi idishlarning bir zumda bosimsizlanishi yuz berdi\". Darslikning \"Kuchli ta'sir etuvchi radioaktiv va zaharli moddalar\" bo'limiga muvofiq, bunday bir zumda portlash oqibatida shamol bo'ylab tarqaladigan qanday xavfli havo qatlami hosil bo'ladi?",
+      "q": "Kimyoviy ob'ektdagi texnologik asbob-uskunalarning yoki maxsus bosim ostidagi idishlarning bir zumda bosimsizlanishi yuz berdi. Darslikning \"Kuchli ta'sir etuvchi radioaktiv va zaharli moddalar\" bo'limiga muvofiq, bunday bir zumda portlash oqibatida shamol bo'ylab tarqaladigan qanday xavfli havo qatlami hosil bo'ladi?",
       "opts": [
         "A) KTEZM bug'larining uzoq muddatli ikkilamchi buluti",
         "B) Birlamchi bug'-gaz yoki aerozol bulutlar",
@@ -1332,7 +1332,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Birlamchi bug'-gaz yoki aerozol bulutlar..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Kimyoviy xavfli ob'ektdagi avariya vaqtida deraza va eshiklarni germetiklash qoidalari\" bo'limi tahlil qilinmoqda. Keys: \"Aholi yashash punkti yaqinidagi korxonada zaharli modda tarqaldi va 'Diqqat, barchaga!' signali berildi. Shaxsiy himoya vositalari bo'lmaganligi sababli aholi uy ichida qolishga majbur bo'ldi\". Darslikning \"KTEZMning to'kilishi bilan bog'liq o'zini himoya qilish usullari\" qoidalariga ko'ra, bunday uy ichida qolib ketgan shaxslar zaharli havo kirmasligi uchun uydagi qaysi teshiklarni mahkam berkitishlari shart?",
+      "q": "Aholi yashash punkti yaqinidagi korxonada zaharli modda tarqaldi va 'Diqqat, barchaga!' signali berildi. Shaxsiy himoya vositalari bo'lmaganligi sababli aholi uy ichida qolishga majbur bo'ldi. Darslikning \"KTEZMning to'kilishi bilan bog'liq o'zini himoya qilish usullari\" qoidalariga ko'ra, bunday uy ichida qolib ketgan shaxslar zaharli havo kirmasligi uchun uydagi qaysi teshiklarni mahkam berkitishlari shart?",
       "opts": [
         "A) Faqat uy ichidagi xona eshiklarini",
         "B) Deraza va eshiklarni, dudburon va shamollatish tuynuklarini",
@@ -1344,7 +1344,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Deraza va eshiklarni, dudburon va shamollatish tuynuklarini..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Yong'in pallasida yuzaga keladigan ikkilamchi kengayish omillari tasnifi\" bo'yicha murakkab taktik savol berildi. Keys: \"Bino ichidagi dastlabki yonish jarayoni nazoratdan chiqib, yirik yong'inga aylandi. Yong'inning boshlang'ich alangasi o'z-o'zidan yangi xavfli talafot qatlamlarini keltirib chiqara boshladi\". Darslikdagi \"Ikkilamchi kengayish omillari\" ro'yxatiga muvofiq, quyidagilardan qaysi biri yong'in oqibatida yuzaga keladigan ikkilamchi zararlovchi omillar sirasiga qonunan kiritilgan?",
+      "q": "Bino ichidagi dastlabki yonish jarayoni nazoratdan chiqib, yirik yong'inga aylandi. Yong'inning boshlang'ich alangasi o'z-o'zidan yangi xavfli talafot qatlamlarini keltirib chiqara boshladi. Darslikdagi \"Ikkilamchi kengayish omillari\" ro'yxatiga muvofiq, quyidagilardan qaysi biri yong'in oqibatida yuzaga keladigan ikkilamchi zararlovchi omillar sirasiga qonunan kiritilgan?",
       "opts": [
         "A) Porox namligining ortishi va stvol yivlari eyilishi",
         "B) Bino yoki inshoot devorining qulab tushishi, yana boshqa portlashlarning sodir bo'lishi hamda turli zaharli va kimyoviy moddalarning atrof-muhitga tarqalishi",
@@ -1356,7 +1356,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Bino yoki inshoot devorining qulab tushishi, yana boshqa..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy darsda \"Yong'inni o'chirishning birlamchi vositalari mexanikasi va uning tarkibi\"ni darslik chizmalari asosida o'rgatmoqda. Keys: \"O'quv xonasida to'satdan kichik alovlanish boshlandi. O'quvchilar olov kengayib yong'inga aylanmasidan oldin uni joyida to'xtatish uchun yong'inga qarshi mexanizatsiyalashmagan po'lat asboblarni olib kelishdi\". Darslikning \"Yong'inni to'xtatish uchun birlamchi o't o'chirish vositalari\" bo'limiga binoan, yong'in qalqonida saqlanadigan mexanizatsiyalashmagan ushbu asboblar guruhiga qaysi vositalar qonunan kiradi?",
+      "q": "O'quv xonasida to'satdan kichik alovlanish boshlandi. O'quvchilar olov kengayib yong'inga aylanmasidan oldin uni joyida to'xtatish uchun yong'inga qarshi mexanizatsiyalashmagan po'lat asboblarni olib kelishdi. Darslikning \"Yong'inni to'xtatish uchun birlamchi o't o'chirish vositalari\" bo'limiga binoan, yong'in qalqonida saqlanadigan mexanizatsiyalashmagan ushbu asboblar guruhiga qaysi vositalar qonunan kiradi?",
       "opts": [
         "A) Faqat elektr dvigatel boshqaradigan zamonaviy nasoslar",
         "B) Ilgak, lom, belkurak va bolta",
@@ -1368,7 +1368,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Ilgak, lom, belkurak va bolta..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Xalqaro terrorchilik harakatlari va ularning hududiy ko'rinishlari tasnifi\" bo'yicha darslik savoli berildi. Keys: \"Terrorchilar faoliyatining xususiyatiga ko'ra darslikda terrorizmning uch xil ko'rinishi ajratib ko'rsatilgan\". Darslikning \"Terrorizm va uning oqibatlari\" bo'limiga muvofiq, fuqarolarning o'z davlat hududida o'z davlatiga qarshi sodir etadigan g'ayriqonuniy terrorchilik harakatlari qonunan qanday nomlanadi?",
+      "q": "Terrorchilar faoliyatining xususiyatiga ko'ra darslikda terrorizmning uch xil ko'rinishi ajratib ko'rsatilgan. Darslikning \"Terrorizm va uning oqibatlari\" bo'limiga muvofiq, fuqarolarning o'z davlat hududida o'z davlatiga qarshi sodir etadigan g'ayriqonuniy terrorchilik harakatlari qonunan qanday nomlanadi?",
       "opts": [
         "A) Transmilliy terrorizm",
         "B) Ichki terrorizm",
@@ -1380,7 +1380,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Ichki terrorizm..."
     },
   {
-      "q": "CHQBT taktik tayyorgarlik darsligi \"32-dars. Ekologik tusdagi favqulodda vaziyatlar\" bo'limi o'rganilmoqda. Keys: \"Ekin maydonlariga mineral o'g'itlar va zaharli kimyoviy moddalarning me'yordan ortiq haddan ziyod ko'p solinishi natijasida oqava va zovur suvlari orqali daryolarga zararli chiqindilar tushdi\". Darslik matnidagi gidrosfera ifloslanishi ma'lumotlariga ko'ra, Amudaryo va Sirdaryo etagida daryo suvining bunday oqava zovur suvlari bilan ifloslanish darajasi taxminan necha foizgacha yetganligi darslikda qat'iy qayd etilgan?",
+      "q": "Ekin maydonlariga mineral o'g'itlar va zaharli kimyoviy moddalarning me'yordan ortiq haddan ziyod ko'p solinishi natijasida oqava va zovur suvlari orqali daryolarga zararli chiqindilar tushdi. Darslik matnidagi gidrosfera ifloslanishi ma'lumotlariga ko'ra, Amudaryo va Sirdaryo etagida daryo suvining bunday oqava zovur suvlari bilan ifloslanish darajasi taxminan necha foizgacha yetganligi darslikda qat'iy qayd etilgan?",
       "opts": [
         "A) 10-15% gacha",
         "B) 2-3% gacha",
@@ -1584,7 +1584,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Xalqaro terrorizm (Mezhdunarodnyy terrorizm)..."
     },
   {
-      "q": "CHQBT darsida 11-sinf o'quvchilariga transport vositalari bilan bog'liq yirik halokatlar va ularda harakatlanish qoidalari o'rgatilmoqda. Keys: \"Yo'lovchi poyezdi tez harakatlanayotgan vaqtda kutilmaganda relsdan chiqib ketish xavfi yuzaga keldi va vagonlarning keskin silkinishi boshlandi. Yo'lovchi askar vagon ichida darslikda belgilangan xavfsiz tana holatini egallash chorasini ko'rmoqda\". Darslikning \"Temiryo'l transporti avariyalari vaqtida to'g'ri harakatlanish tartibi\" qoidalariga muvofiq, poyezd to'satdan ag'darilayotgan yoki keskin tormozlanayotgan o'sha ilk soniyalarda jarohatlanishni kamaytirish uchun qaysi jismoniy holatni egallash (turish) qonunan shart etib belgilangan?",
+      "q": "Yo'lovchi poyezdi tez harakatlanayotgan vaqtda kutilmaganda relsdan chiqib ketish xavfi yuzaga keldi va vagonlarning keskin silkinishi boshlandi. Yo'lovchi askar vagon ichida darslikda belgilangan xavfsiz tana holatini egallash chorasini ko'rmoqda. Darslikning \"Temiryo'l transporti avariyalari vaqtida to'g'ri harakatlanish tartibi\" qoidalariga muvofiq, poyezd to'satdan ag'darilayotgan yoki keskin tormozlanayotgan o'sha ilk soniyalarda jarohatlanishni kamaytirish uchun qaysi jismoniy holatni egallash (turish) qonunan shart etib belgilangan?",
       "opts": [
         "A) Vagon oynasiga qarab tik turish va baland ovozda baqirish lozim",
         "B) Polga yotish, o'rindiqlar ostiga kirish yoki devor burchaklariga mahkam suyanib, boshni qo'llar bilan berkitish, oyoqlarni esa harakat yo'nalishiga qarshi tirash shart",
@@ -1596,7 +1596,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Polga yotish, o'rindiqlar ostiga kirish yoki devor burchaklariga..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"KTEZM moddalari to'kilganda birinchi turdagi kimyoviy favqulodda vaziyatlar xususiyatlari\" bo'yicha tahliliy keys berildi. Keys: \"Kimyoviy zavod omboridagi KTEZM moddalari saqlanadigan yuqori bosimli rezervuarlarda kutilmaganda yirik yorilish sodir bo'ldi. Zaharli moddalarning burun hajmi bir lahzada atmosferaga gaz holatida otilib chiqdi\". Darslikdagi \"Kimyoviy sharoitni baholash va KTEZM avariyalari\" qoidalariga ko'ra, bunday o'ta qisqa mikrosoniyada portlash oqibatida havoda hosil bo'ladigan zaharli bulut qonunan qanday nomlanadi?",
+      "q": "Kimyoviy zavod omboridagi KTEZM moddalari saqlanadigan yuqori bosimli rezervuarlarda kutilmaganda yirik yorilish sodir bo'ldi. Zaharli moddalarning burun hajmi bir lahzada atmosferaga gaz holatida otilib chiqdi. Darslikdagi \"Kimyoviy sharoitni baholash va KTEZM avariyalari\" qoidalariga ko'ra, bunday o'ta qisqa mikrosoniyada portlash oqibatida havoda hosil bo'ladigan zaharli bulut qonunan qanday nomlanadi?",
       "opts": [
         "A) KTEZM bug'larining uzoq muddatli ikkilamchi buluti",
         "B) Birlamchi bug'-gaz buluti",
@@ -1608,7 +1608,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Birlamchi bug'-gaz buluti..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"KTEZM moddalari to'kilganda ikkinchi turdagi kimyoviy favqulodda vaziyatlar tabiati\" darslik asosida tahlil qilinmoqda. Keys: \"Kimyoviy ob'ektdagi halokat natijasida zaharli suyuqliklar er yuzasiga yoki maxsus saqlash idishlariga oqib tushdi. Suyuqlik er sirtida asta-sekin bug'lanib, havo oqimi orqali aholi punktlari tomon siljiy boshladi\". Darslik matnidagi kimyoviy sharoit tasnifiga binoan, KTEZM to'kilgan joydan suyuqlikning asta-sekin bug'lanishi hisobiga havoda hosil bo'ladigan zaharli bulut qonunan qanday nomlanadi?",
+      "q": "Kimyoviy ob'ektdagi halokat natijasida zaharli suyuqliklar er yuzasiga yoki maxsus saqlash idishlariga oqib tushdi. Suyuqlik er sirtida asta-sekin bug'lanib, havo oqimi orqali aholi punktlari tomon siljiy boshladi. Darslik matnidagi kimyoviy sharoit tasnifiga binoan, KTEZM to'kilgan joydan suyuqlikning asta-sekin bug'lanishi hisobiga havoda hosil bo'ladigan zaharli bulut qonunan qanday nomlanadi?",
       "opts": [
         "A) Birlamchi bug'-gaz buluti",
         "B) Ikkilamchi bug'-gaz buluti",
@@ -1620,7 +1620,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Ikkilamchi bug'-gaz buluti..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy darsda \"KTEZM moddalari to'kilganda to'rtinchi turdagi kimyoviy favqulodda vaziyatlar parametrlari\"ni tushuntirmoqda. Keys: \"Kimyoviy moddalar tashiladigan temiryo'l sisternalarida yoki transport vositalarida yirik halokat yuz berdi. Natijada havoda KTEZM moddalarining ham birlamchi tezkor buluti, ham erga to'kilgan suyuqlikning uzoq muddatli bug'lanishidan hosil bo'lgan ikkilamchi buluti bir vaqtda vujudga keldi\". Darslikning \"Kimyoviy halokat turlari\" bo'limiga muvofiq, bir vaqtning o'zide ham birlamchi, ham ikkilamchi zaharli bulutlarning birgalikda hosil bo'lish holati kimyoviy vaziyatning nechanchi turiga qonunan to'g'ri keladi?",
+      "q": "Kimyoviy moddalar tashiladigan temiryo'l sisternalarida yoki transport vositalarida yirik halokat yuz berdi. Natijada havoda KTEZM moddalarining ham birlamchi tezkor buluti, ham erga to'kilgan suyuqlikning uzoq muddatli bug'lanishidan hosil bo'lgan ikkilamchi buluti bir vaqtda vujudga keldi. Darslikning \"Kimyoviy halokat turlari\" bo'limiga muvofiq, bir vaqtning o'zide ham birlamchi, ham ikkilamchi zaharli bulutlarning birgalikda hosil bo'lish holati kimyoviy vaziyatning nechanchi turiga qonunan to'g'ri keladi?",
       "opts": [
         "A) Birinchi turiga",
         "B) To'rtinchi turiga",
@@ -1632,7 +1632,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - To'rtinchi turiga..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Ammiak moddasining jismoniy-kimyoviy xususiyatlari va undan muhofazalanish taktikasi\" bo'yicha keys berildi. Keys: \"Sanoat korxonasidagi avariya oqibatida havoga ko'p miqdorda ammiak gazi tarqaldi va 'Diqqat, barchaga!' ogohlantirish signali chalindi. Askar ammiakning havodan engil ekanligi va yuqoriga ko'tarilish xususiyatini hisobga olib, aholini binolarning xavfsiz qismlariga joylashtirishi shart\". Darslikning \"KTEZM xususiyatlari va aholi muhofazasi\" qoidalariga ko'ra, havodan ancha engil bo'lgan ammiak gazi tarqalgan hududda aholiga binolarning qaysi qismiga yashirinish qonunan tavsiya etiladi?",
+      "q": "Sanoat korxonasidagi avariya oqibatida havoga ko'p miqdorda ammiak gazi tarqaldi va 'Diqqat, barchaga!' ogohlantirish signali chalindi. Askar ammiakning havodan engil ekanligi va yuqoriga ko'tarilish xususiyatini hisobga olib, aholini binolarning xavfsiz qismlariga joylashtirishi shart. Darslikning \"KTEZM xususiyatlari va aholi muhofazasi\" qoidalariga ko'ra, havodan ancha engil bo'lgan ammiak gazi tarqalgan hududda aholiga binolarning qaysi qismiga yashirinish qonunan tavsiya etiladi?",
       "opts": [
         "A) Binolarning yuqori qavatlari va tomlariga",
         "B) Binolarning yerto'lalari, bino osti xonalari va birinchi qavatlariga",
@@ -1644,7 +1644,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Binolarning yerto'lalari, bino osti xonalari va birinchi qavatlariga..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Yong'ining kelib chiqish shartlari: Yonish uchburchagi elementlari\" bo'limi tahlil qilinmoqda. Keys: \"Maktab laboratoriyasida o'quvchilar yong'in kelib chiqishi uchun zarur bo'lgan fizik-kimyoviy omillar zanjirini o'rganishmoqda. Darslikda yong'in yuzaga kelishi uchun uchta asosiy omilning bir vaqtda uchrashishi majburiy shart ekanligi ta'kidlangan\". Amaldagi 11-sinf CHQBT darsligi matniga binoan, yong'in kelib chiqishini ta'minlovchi ushbu uchta asosiy omil qaysi javobda to'liq va to'g'ri ko'rsatilgan?",
+      "q": "Maktab laboratoriyasida o'quvchilar yong'in kelib chiqishi uchun zarur bo'lgan fizik-kimyoviy omillar zanjirini o'rganishmoqda. Darslikda yong'in yuzaga kelishi uchun uchta asosiy omilning bir vaqtda uchrashishi majburiy shart ekanligi ta'kidlangan. Amaldagi 11-sinf CHQBT darsligi matniga binoan, yong'in kelib chiqishini ta'minlovchi ushbu uchta asosiy omil qaysi javobda to'liq va to'g'ri ko'rsatilgan?",
       "opts": [
         "A) Shamol kuchi, havo namligi va qurol moyi qoldiqlari",
         "B) Yonuvchi modda (yonilg'i), kislorod (havo) va olov manbai (issiqlik, uchqun)",
@@ -1656,7 +1656,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Yonuvchi modda (yonilg'i), kislorod (havo) va olov manbai..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik-amaliy mashg'ulotida \"Yong'in sodir bo'lgan binodan es-hushi o'zida bo'lgan insonlarni to'g'ri evakuatsiya qilish texnikasi\" o'rganilmoqda. Keys: \"Ko'p qavatli bino xonalarida yong'in kengayib, atrofni o'ta zaharli va qalin qora yong'in tutuni qopladi. Askar xona ichida qolib ketgan o'quvchini tashqariga xavfsiz olib chiqish darslik qoidasini bajarmoqda\". Darslikning \"Yong'in vaqtida harakat qilish tartibi\" yo'riqnomasiga binoan, zaharli issiq tutun har doim yuqoriga ko'tarilishini hisobga olib, askar bemorni qalin tutunli xonadan qaysi holatda olib chiqishi qonunan shart?",
+      "q": "Ko'p qavatli bino xonalarida yong'in kengayib, atrofni o'ta zaharli va qalin qora yong'in tutuni qopladi. Askar xona ichida qolib ketgan o'quvchini tashqariga xavfsiz olib chiqish darslik qoidasini bajarmoqda. Darslikning \"Yong'in vaqtida harakat qilish tartibi\" yo'riqnomasiga binoan, zaharli issiq tutun har doim yuqoriga ko'tarilishini hisobga olib, askar bemorni qalin tutunli xonadan qaysi holatda olib chiqishi qonunan shart?",
       "opts": [
         "A) Bemorni tik turg'izib, tezlik bilan yugurish orqali",
         "B) Enkaygan holatda yoki emaklab (erga yaqin holda), burun va og'izni namlangan dastro'mol yoki mato bilan yopgan tarzda",
@@ -1668,7 +1668,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Enkaygan holatda yoki emaklab (erga yaqin holda), burun..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari ilmiy-metodik kengashida \"Yong'in o'chirish vositalari: O't o'chirgich turlari va ularning qo'llanilish doirasi\" o'rganilmoqda. Keys: \"Maktab binosidagi elektr shitida to'satdan qisqa tutashuv tufayli yong'in sodir bo'ldi. Navbatchi o'quvchi elektr toki kuchlanishi ostida bo'lgan ushbu ob'ektni o'chirish uchun darslik qoidasiga mos keladigan o't o'chirgich turini tanlashi shart\". Darslikning \"Yong'in xavfsizligi qoidalari\" bo'limiga muvofiq, kuchlanish ostidagi elektr uskunalarini va simlarni o'chirishda suv o'rniga qaysi turdagi maxsus o't o'chirgichlardan foydalanish majburiydir?",
+      "q": "Maktab binosidagi elektr shitida to'satdan qisqa tutashuv tufayli yong'in sodir bo'ldi. Navbatchi o'quvchi elektr toki kuchlanishi ostida bo'lgan ushbu ob'ektni o'chirish uchun darslik qoidasiga mos keladigan o't o'chirgich turini tanlashi shart. Darslikning \"Yong'in xavfsizligi qoidalari\" bo'limiga muvofiq, kuchlanish ostidagi elektr uskunalarini va simlarni o'chirishda suv o'rniga qaysi turdagi maxsus o't o'chirgichlardan foydalanish majburiydir?",
       "opts": [
         "A) Oddiy kimyoviy ko'pikli o't o'chirgichlardan",
         "B) Uglerod kislotali (uglekislotnyy) yoki kukunli (poroshkovyy) o't o'chirgichlardan",
@@ -1680,7 +1680,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Uglerod kislotali (uglekislotnyy) yoki kukunli (poroshkovyy) o't o'chirgichlardan..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Terrorizmga qarshi kurash sharoitida portlovchi qurilmalar shubhali belgilari\" bo'yicha taktik savol berildi. Keys: \"Jamoat transporti bekatida yoki maktab hovlisida egasiz qoldirilgan, tashqi ko'rinishidan shubhali bo'lgan g'alati quti topildi. O'quvchi undan kelayotgan o'ziga xos mexanik tovushlarni eshitdi\". Darslikning \"Terrorizm xavfi tug'ilganda aholining harakati\" bo'limiga binoan, quyidagilardan qaysi biri darslikda belgilangan shubhali portlovchi qurilmaning asosiy tashqi razvedka belgilari ro'yxatiga kiritilmagan?",
+      "q": "Jamoat transporti bekatida yoki maktab hovlisida egasiz qoldirilgan, tashqi ko'rinishidan shubhali bo'lgan g'alati quti topildi. O'quvchi undan kelayotgan o'ziga xos mexanik tovushlarni eshitdi. Darslikning \"Terrorizm xavfi tug'ilganda aholining harakati\" bo'limiga binoan, quyidagilardan qaysi biri darslikda belgilangan shubhali portlovchi qurilmaning asosiy tashqi razvedka belgilari ro'yxatiga kiritilmagan?",
       "opts": [
         "A) Buyumdan soat mexanizmining miltillashi, tikillagan tovush kelishi, simlar yoki antenna chiqib turishi",
         "B) Buyumning ustiga qurol moyi va po'lat yivlar qoldig'ining simmetrik surilganligi",
@@ -1692,7 +1692,7 @@ export const q4_fuqaro_muhofazasi = [
       "mnemonic": "Fuqaro muhofazasi - Buyumning ustiga qurol moyi va po'lat yivlar qoldig'ining..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Terrorchilar tomonidan garovga olingan shaxslarni qutqarish operatsiyasi vaqtidagi xavfsizlik choralari\" bo'limi tahlil qilinmoqda. Keys: \"Maxsus xizmat organlari terrorchilar berkingan bino ichiga to'satdan bostirib kirdi va o'ta shiddatli otishma boshlandi. Garovda ushlab turilgan askar o'z hayotini tasodifiy o'qlardan asrash chorasini ko'rmoqda\". Darslikning \"Qutqaruv operatsiyasi o'tkazilayotgan pallada garovga olingan shaxsning harakatlari\" yo'riqnomasiga ko'ra, shturm boshlangan o'sha ilk soniyalarda tutqinlikdagi shaxslar qaysi majburiy taktik harakatni bajarishlari shart?",
+      "q": "Maxsus xizmat organlari terrorchilar berkingan bino ichiga to'satdan bostirib kirdi va o'ta shiddatli otishma boshlandi. Garovda ushlab turilgan askar o'z hayotini tasodifiy o'qlardan asrash chorasini ko'rmoqda. Darslikning \"Qutqaruv operatsiyasi o'tkazilayotgan pallada garovga olingan shaxsning harakatlari\" yo'riqnomasiga ko'ra, shturm boshlangan o'sha ilk soniyalarda tutqinlikdagi shaxslar qaysi majburiy taktik harakatni bajarishlari shart?",
       "opts": [
         "A) Derazalarga qarab yugurish va qutqaruvchilarga qarab qo'l silkitish lozim",
         "B) Darhol polga yotish, ko'zlarni yumib, boshingizni qo'llaringiz bilan berkitish, devor burchaklariga yoki mebellar ortiga yashirinish va o'q uzish tugaguncha mutloq qimirlamay yotish shart",

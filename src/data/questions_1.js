@@ -2280,7 +2280,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Harbiy qismda ichki tartibni, intizomni saqlash, hududni, ob'ektlarni,..."
     },
   {
-      "q": "CHQBT o'quv darsligining \"Sutkalik naryad tarkibidagi rotaning navbatchisi va uning majburiyatlari\" bo'limi tahlil qilinmoqda. Keys: \"Rota yotoqxonasida (kazarmada) favqulodda holat (masalan, yong'in yoki dushman hujumi xavfi) yuz berdi\". Ichki xizmat nizomi talablariga binoan, rota navbatchisi (dezhurniy) bunday o'ta og'ir va favqulodda vaziyat yuz berganda birinchi navbatda qanday qonuniy va taktik harakatni amalga oshirishi shart?",
+      "q": "Rota yotoqxonasida (kazarmada) favqulodda holat (masalan, yong'in yoki dushman hujumi xavfi) yuz berdi. Ichki xizmat nizomi talablariga binoan, rota navbatchisi (dezhurniy) bunday o'ta og'ir va favqulodda vaziyat yuz berganda birinchi navbatda qanday qonuniy va taktik harakatni amalga oshirishi shart?",
       "opts": [
         "A) Hech kimga xabar bermasdan, zudlik bilan maktab CHQBT rahbarining shaxsiy telefoniga qo'ng'iroq qilishi lozim.",
         "B) Zudlik bilan \"Tashvish\" (Trevoga) signalini berishi, shaxsiy tarkibni uyg'otishi, bu haqda qism navbatchisiga ma'lum qilishi hamda odamlarni va qurollarni xavfsiz joyga ko'chirish (evakuatsiya) choralarini ko'rishi shart.",
@@ -2340,7 +2340,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Harbiy xizmatchilar xizmat ishlari yuzasidan o'zlarining bevosita boshlig'iga..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Harbiy xizmatchilarning sog'lig'ini saqlash, ovqatlanish va maishiy ta'minot\" bo'limi tahlil qilinmoqda. Keys: \"Harbiy qism oshxonasida shaxsiy tarkib uchun oziq-ovqat mahsulotlarini tayyorlash va tarqatish jarayoni boshlanish arafasida turibdi\". Ichki xizmat nizomi talablariga binoan, tayyorlangan taomlarni shaxsiy tarkibga tarqatishga (iste'mol qilishga) faqat qaysi mas'ul shaxslar guruhi tomonidan taomning sifati tekshirilib, maxsus hisob daftariga ijobiy xulosa yozilgandan keyingina ruxsat beriladi?",
+      "q": "Harbiy qism oshxonasida shaxsiy tarkib uchun oziq-ovqat mahsulotlarini tayyorlash va tarqatish jarayoni boshlanish arafasida turibdi. Ichki xizmat nizomi talablariga binoan, tayyorlangan taomlarni shaxsiy tarkibga tarqatishga (iste'mol qilishga) faqat qaysi mas'ul shaxslar guruhi tomonidan taomning sifati tekshirilib, maxsus hisob daftariga ijobiy xulosa yozilgandan keyingina ruxsat beriladi?",
       "opts": [
         "A) Faqat maktab ota-onalar qo'mitasi raisi va ma'muriyat vakillari tekshirganidan keyin.",
         "B) Harbiy qism navbatchisi, tibbiyot xizmati navbatchisi (shifokor) va harbiy qism komandiri (yoki u tayinlagan doimiy komissiya) tomonidan taomning sifati bevosita tatib ko'rib tekshirilgandan keyin.",
@@ -2388,7 +2388,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Yo'q, barcha harbiy xizmatchilar belgilangan harbiy kiyim-boshni, farqlash..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Bo'linmalarda kechki tekshiruv (Vechernyaya proverka) tartibi\" mavzusi o'tilmoqda. Keys: \"Rotada kun yakunlandi va kechki tekshiruv soati keldi\". Rota navbatchisi shaxsiy tarkibni safga tizib. Ichki xizmat nizomi qoidalariga ko'ra, kechki tekshiruv o'tkazilishidan ko'zlangan asosiy maqsad nima va u qanday huquqiy tartibda amalga oshiriladi?",
+      "q": "Rotada kun yakunlandi va kechki tekshiruv soati keldi. Rota navbatchisi shaxsiy tarkibni safga tizib. Ichki xizmat nizomi qoidalariga ko'ra, kechki tekshiruv o'tkazilishidan ko'zlangan asosiy maqsad nima va u qanday huquqiy tartibda amalga oshiriladi?",
       "opts": [
         "A) Faqat askarlarning ertangi kun uchun kiyim-boshlarini tozaligini ko'zdan kechirish.",
         "B) Rota shaxsiy tarkibining to'liqligini, odamlarning joyida ekanligini aniqlash maqsadida ro'yxat (jurnal) bo'yicha har bir askarning familiyasini o'qib tekshirish hamda ertangi kun tartibini va naryadlarni e'lon qilish.",
@@ -2448,7 +2448,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Yosh askarlar harbiy qismga kelgach, alohida binoda (yosh..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Harbiy xizmatchilarning sog'lig'ini saqlash va shaxsiy gigiyena qoidalari\" bo'limida navbatdagi amaliy mavzu tahlil qilinmoqda. Keys: \"Muddatli harbiy xizmatga chaqirilgan askarlar kundalik xizmat vazifalarini bajarish davomida o'zlarining tashqi ko'rinishi va shaxsiy gigiyenalariga e'tibor qaratishlari shart\". Ichki xizmat nizomining qat'iy talablariga muvofiq, askarlar tarkibining harbiy kiyim-bosh kiyganda soch qo'yish (soch borasidagi cheklovlar) hamda dushxona-kir yuvish xizmatidan foydalanish tartibi qonunan qanday belgilangan?",
+      "q": "Muddatli harbiy xizmatga chaqirilgan askarlar kundalik xizmat vazifalarini bajarish davomida o'zlarining tashqi ko'rinishi va shaxsiy gigiyenalariga e'tibor qaratishlari shart. Ichki xizmat nizomining qat'iy talablariga muvofiq, askarlar tarkibining harbiy kiyim-bosh kiyganda soch qo'yish (soch borasidagi cheklovlar) hamda dushxona-kir yuvish xizmatidan foydalanish tartibi qonunan qanday belgilangan?",
       "opts": [
         "A) Askarlarga sochlarini istalgan uzunlikda va zamonaviy uslubda o'stirishga to'liq ruxsat beriladi, dushxonaga faqat dam olish kunlari boriladi.",
         "B) Harbiy xizmatchilar sochini doimo silliq, kalta va ozoda qilib oldirib yurishlari shart. Muddatli harbiy xizmatchilar haftada kamida bir marta majburiy tartibda dushxonaga (banyaga) boradilar va ayni shu kuni ularning ichki kiyimlari hamda choyshablari majburiy ravishda toza to'plamga almashtiriladi.",
@@ -2460,7 +2460,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Harbiy xizmatchilar sochini doimo silliq, kalta va ozoda..."
     },
   {
-      "q": "11-sinf CHQBT darsida \"Harbiy qismga hamda bo'linmaga boshliqlarning kelishi (kutib olish va hisobot berish tartibi)\" mavzusi o'rganilmoqda. Keys: \"Rota yotoqxonasida askarlar kun tartibiga muvofiq mustaqil tayyorgarlik bilan shug'ullanayotgan vaqtda xonaga to'g'ridan-to'g'ri rota komandiri (ofitser) kirib keldi\". Ichki xizmat nizomiga binoan, ushbu ofitserni birinchi bo'lib ko'rgan askar yoki rota navbatchisi zudlik bilan qanday qonuniy saf va ogohlantirish buyrug'ini berishi shart?",
+      "q": "Rota yotoqxonasida askarlar kun tartibiga muvofiq mustaqil tayyorgarlik bilan shug'ullanayotgan vaqtda xonaga to'g'ridan-to'g'ri rota komandiri (ofitser) kirib keldi. Ichki xizmat nizomiga binoan, ushbu ofitserni birinchi bo'lib ko'rgan askar yoki rota navbatchisi zudlik bilan qanday qonuniy saf va ogohlantirish buyrug'ini berishi shart?",
       "opts": [
         "A) Hech qanday buyruq bermasdan, zudlik bilan ofitserning yoniga borib qo'l berib ko'rishishi lozim.",
         "B) Zudlik bilan baland ovozda \"Smirno\" (Tik tur) buyrug'ini berishi shart. Rota bo'yicha navbatchi esa komandirning yoniga zudlik bilan borib, saf tortib xizmat holati hamda shaxsiy tarkib to'g'risida rasman bildirgi (raport) berishi majburiydir.",
@@ -2496,7 +2496,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Qurol va harbiy texnikani shaxsiy tarkibga biriktirish harbiy..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Harbiy qism shaxsiy tarkibining o'z xizmat joyidan vaqtincha tashqariga chiqishi (Uvolneniye — javob berish tartibi)\" mavzusi o'tilmoqda. Keys: \"Muddatli harbiy xizmatchi shanba yoki yakshanba kuni harbiy qism hududidan tashqariga, yaqin atrofdagi shaharga vaqtincha borishni istaydi\". Ichki xizmat nizomi talablariga binoan, muddatli harbiy xizmatchilarga qism hududidan vaqtincha chiqish huquqi kim tomonidan va qanday qonuniy cheklovlar asosida beriladi?",
+      "q": "Muddatli harbiy xizmatchi shanba yoki yakshanba kuni harbiy qism hududidan tashqariga, yaqin atrofdagi shaharga vaqtincha borishni istaydi. Ichki xizmat nizomi talablariga binoan, muddatli harbiy xizmatchilarga qism hududidan vaqtincha chiqish huquqi kim tomonidan va qanday qonuniy cheklovlar asosida beriladi?",
       "opts": [
         "A) Askarlar darslardan tashqari vaqtda komandirdan ruxsat so'ramasdan, o'z xohishlariga ko'ra istalgan vaqtda qismni tark etishlari mumkin.",
         "B) Bo'linmadan haftada navbat bo'yicha shaxsiy tarkibning ma'lum bir qismigacha (masalan, 15-20 foizigacha) muddatli harbiy xizmatchilarga rota komandirining ruxsati bilan, qism komandiri tasdiqlagan uvolneniye varaqasi (ruxsatnoma) asosida va faqat belgilangan vaqt chegarasidagina ruxsat etiladi.",
@@ -2532,7 +2532,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Bo'linmani safga tizishi, odamlarning ro'yxat bo'yicha to'liqligini tekshirishi,..."
     },
   {
-      "q": "CHQBT darsida \"Harbiy xizmatchilarning huquqiy himoyasi, taklif va shikoyatlar topshirish tartibi\" o'rganilmoqda. Keys: \"Kontrakt bo'yicha harbiy xizmatchi o'zining huquqlari yuqori lavozimdagi boshliq tomonidan buzilgan deb hisoblaganligi sababli u qonuniy tartibda shikoyat (ariza) topshirmoqchi\". Ichki xizmat nizomi qoidalariga ko'ra, harbiy xizmatchilarga o'z boshliqlari ustidan shikoyat arizasini topshirish jarayonida qaysi harakat qonunan qat'iyan taqiqlangan?",
+      "q": "Kontrakt bo'yicha harbiy xizmatchi o'zining huquqlari yuqori lavozimdagi boshliq tomonidan buzilgan deb hisoblaganligi sababli u qonuniy tartibda shikoyat (ariza) topshirmoqchi. Ichki xizmat nizomi qoidalariga ko'ra, harbiy xizmatchilarga o'z boshliqlari ustidan shikoyat arizasini topshirish jarayonida qaysi harakat qonunan qat'iyan taqiqlangan?",
       "opts": [
         "A) Shikoyatni yozma ravishda o'z qo'li bilan oq qog'ozga yozib topshirish taqiqlanadi.",
         "B) Safda turganda (saf oldida) shikoyat topshirish, shuningdek, o'ziga berilgan qonuniy harbiy buyruqni bajarmasdan turib, buyruq ustidan e'tiroz sifatida shikoyat topshirish qat'iyan taqiqlanadi.",
@@ -2604,7 +2604,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Hayfsan, qattiq hayfsan, harbiy qism hududidan navbatdagi javob..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Intizomiy jazoni e'lon qilish va rasmiylashtirish tartibi\" bo'limida yangi mavzu o'rganilmoqda. Keys: \"Kontrakt bo'yicha harbiy xizmat o'tayotgan serjantga komandir buyrug'i bilan intizomiy jazo (masalan, hayfsan) berildi\". Intizomiy nizom qoidalariga binoan, harbiy xizmatchiga berilgan intizomiy jazo sodir etilgan huquqbuzarlik aniqlangan kundan boshlab ko'pi bilan qancha muddat ichida e'lon qilinishi va kuchga kirishi shart?",
+      "q": "Kontrakt bo'yicha harbiy xizmat o'tayotgan serjantga komandir buyrug'i bilan intizomiy jazo (masalan, hayfsan) berildi. Intizomiy nizom qoidalariga binoan, harbiy xizmatchiga berilgan intizomiy jazo sodir etilgan huquqbuzarlik aniqlangan kundan boshlab ko'pi bilan qancha muddat ichida e'lon qilinishi va kuchga kirishi shart?",
       "opts": [
         "A) Jazo huquqbuzarlik sodir etilgan kundan boshlab 5 yildan keyin ham istalgan vaqtda e'lon qilinishi mumkin.",
         "B) Intizomiy jazo huquqbuzarlik aniqlangan kundan boshlab zudlik bilan, lekin u sodir etilgan kundan boshlab (agar xizmatchi bo'yicha xizmat tekshiruvi o'tkazilsa, tekshiruv tugagan kundan boshlab) qonunda belgilangan muddatlardan (odatda 10 sutkadan) kechiktirmasdan e'lon qilinishi shart.",
@@ -2640,7 +2640,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Yo'q, har bir komandir (boshliq) faqat Intizomiy nizomda..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Intizomiy jazoni qo'llashdan oldin tushuntirish olish va xizmat tekshiruvi (sluzhebnoye rassledovaniye) o'tkazish\" mavzusi tahlil qilinmoqda. Keys: \"Harbiy qismda aslahaxonalarga zarar yetkazganlikda gumonlanayotgan askarga intizomiy jazo berish rejalashtirilmoqda\". Intizomiy nizom talablariga binoan, komandir huquqbuzarlik sodir etgan harbiy xizmatchiga jazo e'lon qilishidan oldin qaysi majburiy huquqiy protsedurani amalga oshirishi qonunan shart?",
+      "q": "Harbiy qismda aslahaxonalarga zarar yetkazganlikda gumonlanayotgan askarga intizomiy jazo berish rejalashtirilmoqda. Intizomiy nizom talablariga binoan, komandir huquqbuzarlik sodir etgan harbiy xizmatchiga jazo e'lon qilishidan oldin qaysi majburiy huquqiy protsedurani amalga oshirishi qonunan shart?",
       "opts": [
         "A) Gumonlanuvchi askarni zudlik bilan 10 kun muddatga harbiy qism hududidan tashqariga haydab yuborishi lozim.",
         "B) Voqeaning asl sabablarini aniqlashi, xizmat tekshiruvi o'tkazishi hamda jazo qo'llashdan avval huquqbuzarlik sodir etgan harbiy xizmatchining shaxsan o'zidan yozma ravishda tushuntirish xati olishi shart.",
@@ -2652,7 +2652,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Voqeaning asl sabablarini aniqlashi, xizmat tekshiruvi o'tkazishi hamda..."
     },
   {
-      "q": "CHQBT fani rahbari 11-sinf o'quvchilariga \"Bir jinoiy yoki intizomiy huquqbuzarlik uchun jazo qo'llash qoidalari\"ni tushuntirmoqda. Keys: \"Askar buyruqni bajarmaganligi uchun unga nisbatan bitta buyruq bilan ham hayfsan, ham qism hududidan chiqishni taqiqlash jazosi, shuningdek, moddiy jarima bir vaqtda qo'llanildi\". Intizomiy nizomning qat'iy qoidalariga ko'ra, ushbu jazo qo'llash jarayoni qonunan qanday baholanadi?",
+      "q": "Askar buyruqni bajarmaganligi uchun unga nisbatan bitta buyruq bilan ham hayfsan, ham qism hududidan chiqishni taqiqlash jazosi, shuningdek, moddiy jarima bir vaqtda qo'llanildi. Intizomiy nizomning qat'iy qoidalariga ko'ra, ushbu jazo qo'llash jarayoni qonunan qanday baholanadi?",
       "opts": [
         "A) Bu to'g'ri, chunki intizom qanchalik qattiq bo'lsa, askar buyruqni shunchalik tez o'rganadi.",
         "B) Yo'q, qonunga ko'ra, sodir etilgan bitta intizomiy huquqbuzarlik (xato) uchun faqat bitta intizomiy jazo chorasi qo'llanilishi mumkin. Bir nechta jazoni bitta huquqbuzarlikka qo'shib qo'llash qat'iyan man etiladi.",
@@ -2748,7 +2748,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Yo'q, harbiy xizmatchilarga jamoaviy intizomiy jazo choralari qo'llanilishi..."
     },
   {
-      "q": "CHQBT darsligining \"Rag'batlantirish huquqlarini qo'llashda boshliqlarning vakolatlari\" bo'limida yangi mavzu o'rganilmoqda. Keys: \"Kichik leytenant unvoniga ega bo'lgan vzvod komandiri o'ziga bo'ysunuvchi intizomli askarning ota-onasiga davlat nomidan rasmiy tashakkurnoma xati yubormoqchi\". Intizomiy nizom qoidalariga ko'ra, boshliqlarning rag'batlantirish choralari qo'llash huquqi qonunan qanday cheklanadi?",
+      "q": "Kichik leytenant unvoniga ega bo'lgan vzvod komandiri o'ziga bo'ysunuvchi intizomli askarning ota-onasiga davlat nomidan rasmiy tashakkurnoma xati yubormoqchi. Intizomiy nizom qoidalariga ko'ra, boshliqlarning rag'batlantirish choralari qo'llash huquqi qonunan qanday cheklanadi?",
       "opts": [
         "A) Istalgan harbiy unvondagi boshliq o'z xohishiga ko'ra Qurolli Kuchlardagi har qanday rag'batlantirish turini mustaqil qo'llay oladi.",
         "B) Har bir boshliq rag'batlantirish choralarini faqat Intizomiy nizomda o'z lavozimi va harbiy unvoni uchun aniq belgilab qo'yilgan qonuniy vakolatlar doirasidagina qo'llash huquqiga ega.",
@@ -2760,7 +2760,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Har bir boshliq rag'batlantirish choralarini faqat Intizomiy nizomda..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Intizomiy huquqbuzarlik sodir etgan mast holatdagi harbiy xizmatchiga jazo berish qoidalari\" muhokama qilinmoqda. Keys: \"Harbiy qism hududida ichkilikbozlik qilib, tartibni buzgan askarga komandir zudlik bilan saf oldida hayfsan jazosini e'lon qilmoqchi bo'ldi\". Intizomiy nizom talablariga muvofiq, mast holatda bo'lgan harbiy xizmatchiga intizomiy jazo chorasini e'lon qilish tartibi qonunan qanday amalga oshirilishi shart?",
+      "q": "Harbiy qism hududida ichkilikbozlik qilib, tartibni buzgan askarga komandir zudlik bilan saf oldida hayfsan jazosini e'lon qilmoqchi bo'ldi. Intizomiy nizom talablariga muvofiq, mast holatda bo'lgan harbiy xizmatchiga intizomiy jazo chorasini e'lon qilish tartibi qonunan qanday amalga oshirilishi shart?",
       "opts": [
         "A) Jazo zudlik bilan, askar mast holatdaligida, hamma shaxsiy tarkib oldida qattiq talaffuz bilan o'qib eshittirilishi lozim.",
         "B) Mast holatda bo'lgan harbiy xizmatchiga jazo chorasini e'lon qilish (shuningdek, undan yozma tushuntirish xati olish) u butunlay hushyor tortgunga qadar (so'zlariga va harakatlariga to'liq javob bera oladigan holatga kelgunga qadar) kechiktirilishi qonunan shart.",
@@ -2784,7 +2784,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Harbiy xizmatchiga qo'llanilgan intizomiy jazo chorasi u e'lon..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari metodik yig'ilishida \"Boshliqlarning o'z vakolatidan yuqori bo'lgan intizomiy jazolarni qo'llash zarurati tug'ilgandagi harakat tartibi\" o'rganilmoqda. Keys: \"Kichik ofitser askar tomonidan sodir etilgan o'ta og'ir huquqbuzarlikka guvoh bo'ldi va unga nisbatan unvonini pasaytirish jazosini qo'llash kerak deb hisobladi, biroq ofitserning buni amalga oshirishga nizomiy huquqi yetmaydi\". Intizomiy nizomga muvofiq, bunday holatda boshliq qanday qonuniy yo'l tutishi shart?",
+      "q": "Kichik ofitser askar tomonidan sodir etilgan o'ta og'ir huquqbuzarlikka guvoh bo'ldi va unga nisbatan unvonini pasaytirish jazosini qo'llash kerak deb hisobladi, biroq ofitserning buni amalga oshirishga nizomiy huquqi yetmaydi. Intizomiy nizomga muvofiq, bunday holatda boshliq qanday qonuniy yo'l tutishi shart?",
       "opts": [
         "A) Huquqi yetmasa ham buyruqni shaxsan o'zi rasmiylashtirib, keyinchalik yuqori shtabni ogohlantirishi kifoya.",
         "B) U o'zining intizomiy huquqlaridan tashqariga chiquvchi jazo chorasini qo'llash zarur deb hisoblasa, huquqbuzarlik to'g'risidagi barcha xizmat tekshiruvi hujjatlarini zudlik bilan ushbu jazoni qo'llash vakolatiga ega bo'lgan yuqori turuvchi boshliqqa (komandirga) taqdim etadi.",
@@ -2808,7 +2808,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Intizomiy jazo chorasini qo'llash vaqtida harbiy xizmatchining shaxsiy..."
     },
   {
-      "q": "CHQBT darsida 11-sinf o'quvchilariga \"Intizomiy jazoni muddatidan oldin olib tashlash shartlari va rag'batlantirish etikasi\" o'rgatilmoqda. Keys: \"Birorta intizomiy jazo chorasi amal qilib turgan (ya'ni xizmat kartochkasiga jazosi yozilgan) kontrakt bo'yicha harbiy xizmatchi navbatdagi darsda yuksak jangovar natija ko'rsatdi\". Intizomiy nizom qoidalariga ko'ra, amaldagi intizomiy jazosi bor bo'lgan harbiy xizmatchiga nisbatan xizmatda erishgan yangi yutuqlari uchun qanday rag'batlantirish chorasi qo'llanilishi qonunan majburiy shart hisoblanadi?",
+      "q": "Birorta intizomiy jazo chorasi amal qilib turgan (ya'ni xizmat kartochkasiga jazosi yozilgan) kontrakt bo'yicha harbiy xizmatchi navbatdagi darsda yuksak jangovar natija ko'rsatdi. Intizomiy nizom qoidalariga ko'ra, amaldagi intizomiy jazosi bor bo'lgan harbiy xizmatchiga nisbatan xizmatda erishgan yangi yutuqlari uchun qanday rag'batlantirish chorasi qo'llanilishi qonunan majburiy shart hisoblanadi?",
       "opts": [
         "A) Unga bir vaqtning o'zida ham pul mukofoti beriladi, ham unvoni bir pogona yuqori ko'tariladi.",
         "B) Harbiy xizmatchiga amaldagi intizomiy jazo chorasi qo'llanilgan davrda, uni rag'batlantirish tariqasida faqat ilgari berilgan o'sha intizomiy jazosini olib tashlash chorasigina qo'llaniladi (ya'ni bitta jazo olib tashlanmasdan turib, unga yangi boshqa rag'batlantirish berilmaydi).",
@@ -2832,7 +2832,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Serjantlarga qo'llanilgan intizomiy jazolar shaxsan, serjantlarning safi oldida,..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Huquqbuzarlik sodir etgan, biroq xizmat joyida bo'lmagan harbiy xizmatchilarga jazo berish tartibi\" bo'limida yangi amaliy vaziyat tahlil qilinmoqda. Keys: \"Harbiy xizmatchi xizmat safarida, gospitalda davolanishda yoki navbatdagi ta'tilda bo'lgan vaqtida og'ir intizomiy huquqbuzarlik sodir etganligi aniqlandi\". Intizomiy nizom qoidalariga muvofiq, bunday holatda unga nisbatan intizomiy jazo chorasini qo'llash va uni rasmiylashtirish jarayoni qonunan qanday amalga oshiriladi?",
+      "q": "Harbiy xizmatchi xizmat safarida, gospitalda davolanishda yoki navbatdagi ta'tilda bo'lgan vaqtida og'ir intizomiy huquqbuzarlik sodir etganligi aniqlandi. Intizomiy nizom qoidalariga muvofiq, bunday holatda unga nisbatan intizomiy jazo chorasini qo'llash va uni rasmiylashtirish jarayoni qonunan qanday amalga oshiriladi?",
       "opts": [
         "A) Uni xizmat joyida bo'lmaganligi sababli jazolash mutloq taqiqlanadi va huquqbuzarlik afv etiladi.",
         "B) Unga nisbatan jazo chorasini qo'llash u xizmat safaridan, davolanishdan yoki ta'tildan o'z harbiy qismiga rasman qaytib kelgunga qadar (eskirish muddati to'xtatilgan holda) qonuniy ravishda kechiktiriladi.",
@@ -2844,7 +2844,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Unga nisbatan jazo chorasini qo'llash u xizmat safaridan,..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Intizomiy jazo chorasini qo'llashda aybning sub'ektiv va ob'ektiv jihatlarini aniqlash\" normasi muhokama qilinmoqda. Keys: \"Komandir buyruqni bajarmagan askarni jazolashdan avval, uning bu ishni qasddan qilganligini yoki ob'ektiv to'sqinliklar (masalan, texnikaning to'satdan buzilishi yoki tabiiy ofat) tufayli bajara olmaganligini aniqlamoqchi\". Intizomiy nizom talablariga binoan, harbiy intizomni buzganlik uchun jazo chorasini qo'llashda qaysi huquqiy holat jazo berishni mutloq taqiqlaydi (man etadi)?",
+      "q": "Komandir buyruqni bajarmagan askarni jazolashdan avval, uning bu ishni qasddan qilganligini yoki ob'ektiv to'sqinliklar (masalan, texnikaning to'satdan buzilishi yoki tabiiy ofat) tufayli bajara olmaganligini aniqlamoqchi. Intizomiy nizom talablariga binoan, harbiy intizomni buzganlik uchun jazo chorasini qo'llashda qaysi huquqiy holat jazo berishni mutloq taqiqlaydi (man etadi)?",
       "opts": [
         "A) Agarda askar o'z xatti-harakatini charchoq tufayli bajara olmaganligini og'zaki ravishda ma'lum qilsa.",
         "B) Agarda huquqbuzarlik g'ayriqonuniy harakatlar natijasida emas, balki engib bo'lmas kuch (tabiiy ofat) yoki komandirning o'ziga bog'liq bo'lmagan mutloq ob'ektiv sabablar, shuningdek, zaruriy mudofaa holatida sodir etilganligi isbotlansa.",
@@ -2868,7 +2868,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Yuqori turuvchi komandir (boshliq) quyi boshliq tomonidan berilgan..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Intizomiy jazoning ijrosini vaqtincha to'xtatib turish asoslari\" mavzusi tahlil qilinmoqda. Keys: \"Askar intizomiy huquqbuzarlik sodir etdi va unga nisbatan qonuniy tartibda jazo chorasi belgilandi, biroq aynan shu vaqtda harbiy qism zudlik bilan jangovar safarbarlik holatiga o'tkazilib, poligon mashg'ulotlariga yo'l oldi\". Intizomiy nizom qoidalariga binoan, jangovar shaylik yoki harbiy harakatlar davrida berilgan intizomiy jazolarning ijro etilishi qonunan qanday tartibga solinadi?",
+      "q": "Askar intizomiy huquqbuzarlik sodir etdi va unga nisbatan qonuniy tartibda jazo chorasi belgilandi, biroq aynan shu vaqtda harbiy qism zudlik bilan jangovar safarbarlik holatiga o'tkazilib, poligon mashg'ulotlariga yo'l oldi. Intizomiy nizom qoidalariga binoan, jangovar shaylik yoki harbiy harakatlar davrida berilgan intizomiy jazolarning ijro etilishi qonunan qanday tartibga solinadi?",
       "opts": [
         "A) Jazo har qanday jangovar holatdan qat'i nazar zudlik bilan o'sha kunning o'zidayoq to'liq ijro etilishi shart.",
         "B) Jangovar shaylikning yuqori darajalariga o'tilganda, safarbarlik e'lon qilinganda yoki harbiy harakatlar olib borilayotgan davrda intizomiy jazolarning ijro etilishi vaqtincha to'xtatib turiladi va qo'shinlar oddiy xizmat rejimiga qaytgach qayta tiklanadi.",
@@ -2892,7 +2892,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Harbiy xizmatchilarning sha'ni va qadr-qimmatini saqlash, intizomni mustahkamlash..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari metodik yig'ilishida \"Intizomiy nizom qoidalarini qo'llashda rag'batlantirish va jazo choralarining mutanosibligi tamoyili\" o'rganilmoqda. Keys: \"Askar xizmat faoliyati davomida ham o'ta yirik jangovar muvaffaqiyatga erishdi, ham kichik maishiy intizom xatosiga yo'l qo'ydi\". Intizomiy nizomning boshqaruv prinsiplariga muvofiq, komandirlar shaxsiy tarkib bilan ishlashda intizomiy jazo berish va rag'batlantirish tizimidan foydalanishda qaysi oltin qoidaga rioya qilishlari shart?",
+      "q": "Askar xizmat faoliyati davomida ham o'ta yirik jangovar muvaffaqiyatga erishdi, ham kichik maishiy intizom xatosiga yo'l qo'ydi. Intizomiy nizomning boshqaruv prinsiplariga muvofiq, komandirlar shaxsiy tarkib bilan ishlashda intizomiy jazo berish va rag'batlantirish tizimidan foydalanishda qaysi oltin qoidaga rioya qilishlari shart?",
       "opts": [
         "A) Faqat jazo choralari miqdorini ko'paytirish shart, chunki rag'bat askarni xizmatdan chalg'itadi.",
         "B) Rag'batlantirish va intizomiy jazo choralari harbiy xizmatchining shaxsiy sifatlari, xizmat ko'rsatkichlari va burchga bo'lgan munosabatini xolis baholagan holda, rag'batlantirish ustuvorligi tamoyili asosida oqilona uyg'unlashtirilishi shart.",
@@ -2964,7 +2964,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Soqchi daxlsiz shaxsdir. U faqat o'zining qorovul boshlig'i,..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Postdagi soqchining majburiyatlari va taqiqlangan harakatlar\" bo'limida yangi mavzu o'rganilmoqda. Keys: \"Tungi smenada postda qo'riqchilik qilayotgan askar uzoq vaqt tik turishdan charchadi, sovuq qotdi va u o'zini chalg'itish uchun telefonidan foydalanishni yoki post budkasiga suyanib o'tirishni rejalashtirdi\". Garnizon va qorovullik xizmatlari nizomiga binoan, soqchiga postda turgan vaqtida quyidagi harakatlardan qaysi birini bajarish qonunan qat'iyan taqiqlanadi (man etadi)?",
+      "q": "Tungi smenada postda qo'riqchilik qilayotgan askar uzoq vaqt tik turishdan charchadi, sovuq qotdi va u o'zini chalg'itish uchun telefonidan foydalanishni yoki post budkasiga suyanib o'tirishni rejalashtirdi. Garnizon va qorovullik xizmatlari nizomiga binoan, soqchiga postda turgan vaqtida quyidagi harakatlardan qaysi birini bajarish qonunan qat'iyan taqiqlanadi (man etadi)?",
       "opts": [
         "A) Post hududini ko'zdan kechirish va dushman kelayotgan yo'nalishni kuzatish.",
         "B) Uxlash, o'tirish, biror narsaga tayanish, yozish, o'qish, qo'shiq aytish, so'zlashish, ovqatlanish, ichish, chekish, telefon yoki boshqa elektron vositalardan foydalanish hamda qurolni birovga topshirish.",
@@ -2988,7 +2988,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - \"To'xta, kim kelmoqda?\" deb qichqirishi shart. Agar buyruq..."
     },
   {
-      "q": "10-sinf CHQBT darsida \"Soqchi tomonidan ogohlantirishsiz to'g'ridan-to'g'ri qurol qo'llanilishi mumkin bo'lgan favqulodda holat\" o'rganilmoqda. Keys: \"Postda turgan soqchiga yoki u qo'riqlayotgan ob'ektga nisbatan kutilmaganda, to'satdan qurolli hujum yuz berdi\". Garnizon va qorovullik xizmatlari nizomining qat'iy normalariga ko'ra, soqchi qaysi vaziyatda hech qanday ovozli ogohlantirishlarsiz va havoga o'q uzmasdan to'g'ridan-to'g'ri nishonga qarata o'q uzish huquqiga ega?",
+      "q": "Postda turgan soqchiga yoki u qo'riqlayotgan ob'ektga nisbatan kutilmaganda, to'satdan qurolli hujum yuz berdi. Garnizon va qorovullik xizmatlari nizomining qat'iy normalariga ko'ra, soqchi qaysi vaziyatda hech qanday ovozli ogohlantirishlarsiz va havoga o'q uzmasdan to'g'ridan-to'g'ri nishonga qarata o'q uzish huquqiga ega?",
       "opts": [
         "A) Agar ob'ekt yaqinidan o'tayotgan tinch aholi vakillari uning og'zaki buyrug'iga bo'ysunmay harakatlanishda davom etsa.",
         "B) Soqchiga yoki u qo'riqlayotgan ob'ektga (shuningdek, u himoya qilayotgan safdoshlariga) qo'qqisdan yoki aniq qurolli hujum qilingan taqdirda.",
@@ -3000,7 +3000,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Soqchiga yoki u qo'riqlayotgan ob'ektga (shuningdek, u himoya..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Qorovul tarkibining jangovar shayligi va aslahalarni o'qlash qoidalari\" bo'limi tahlil qilinmoqda. Keys: \"Qorovul guruhi xizmat postlariga jo'nab ketishdan oldin qurollarni (avtomatlarni) o'qlash jarayonini bajarishi kerak\". Nizom talablariga binoan, qorovul qurollari qayerda, kimning buyrug'i va bevosita nazorati ostida o'qlanadi hamda patron qachon stvol qutisiga (patronnikka) yuboriladi?",
+      "q": "Qorovul guruhi xizmat postlariga jo'nab ketishdan oldin qurollarni (avtomatlarni) o'qlash jarayonini bajarishi kerak. Nizom talablariga binoan, qorovul qurollari qayerda, kimning buyrug'i va bevosita nazorati ostida o'qlanadi hamda patron qachon stvol qutisiga (patronnikka) yuboriladi?",
       "opts": [
         "A) Askarlar qurollarini kazarma ichida, o'z xohishlariga ko'ra dars boshlanishidan oldin o'qlab oladilar.",
         "B) Qurollar qorovulxonada maxsus jihozlangan, yoritilgan va yong'inga qarshi vositalar bor joyda, shaxsan qorovul boshlig'i buyrug'i va nazorati ostida o'qlanadi. Bunda patron stvol qutisiga (patronnikka) faqat postda, bevosita qurol qo'llash zarurati tug'ilgandagina yuboriladi.",
@@ -3024,7 +3024,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Qurollar maxsus temir yoki mustahkam yog'och qurol javonida..."
     },
   {
-      "q": "11-sinf CHQBT darsida \"Qorovul almashinuvi va postdagi askarni almashtirish tartibi\" mavzusi o'tilmoqda. Keys: \"Postda turgan soqchining 2 soatlik xizmat muddati tugadi va uni yangi askar bilan almashtirish uchun qorovuldor (razvodyashiy) boshchiligidagi guruh postga yetib keldi\". Nizom qoidalariga ko'ra, postni eskisidan yangi soqchiga topshirish va qabul qilish vaqtida qaysi elementlarning butunligi qonunan majburiy tekshiriladi?",
+      "q": "Postda turgan soqchining 2 soatlik xizmat muddati tugadi va uni yangi askar bilan almashtirish uchun qorovuldor (razvodyashiy) boshchiligidagi guruh postga yetib keldi. Nizom qoidalariga ko'ra, postni eskisidan yangi soqchiga topshirish va qabul qilish vaqtida qaysi elementlarning butunligi qonunan majburiy tekshiriladi?",
       "opts": [
         "A) Faqat post budkasining rangi va uning atrofidagi daraxtlarning miqdori.",
         "B) Qo'riqlanayotgan ob'ektning butunligi, muhrlar, plombalar, qulflar, simto'siqlar holati hamda post xavfsizlik vositalarining sozligi (bular post guvohnomasi bo'yicha aniq sanab qabul qilinadi).",
@@ -3048,7 +3048,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Qonuniy ravishda qasamyod qabul qilmagan (Harbiy qasamyodga qadar..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Postdagi soqchining aloqa va signalizatsiya vositalaridan foydalanish tartibi\" bo'limida yangi amaliy vaziyat tahlil qilinmoqda. Keys: \"Tungi smenada uzoq masofadagi postda xizmat o'tayotgan soqchi qo'riqlanayotgan ob'ekt yaqinida shubhali harakatlar yoki dushman bo'lishi ehtimoli bor guruhni uzoqdan vizual aniqladi\". Aloqa vositalari (telefon yoki signalizatsiya tugmasi) orqali zudlik bilan qorovulxonaga, ya'ni shaxsan qorovul boshlig'iga yoki qorvuldorga xabar berishi hamda vaziyatni qat'iy kuzatishda davom etishi shart.",
+      "q": "Tungi smenada uzoq masofadagi postda xizmat o'tayotgan soqchi qo'riqlanayotgan ob'ekt yaqinida shubhali harakatlar yoki dushman bo'lishi ehtimoli bor guruhni uzoqdan vizual aniqladi. Aloqa vositalari (telefon yoki signalizatsiya tugmasi) orqali zudlik bilan qorovulxonaga, ya'ni shaxsan qorovul boshlig'iga yoki qorvuldorga xabar berishi hamda vaziyatni qat'iy kuzatishda davom etishi shart.",
       "opts": [
         "A) Hech qanday signal bermasdan, dushmanga bildirmay post hududidan uzoqroqqa vaqtincha yashirinishi lozim.",
         "B) Aloqa vositalari (telefon yoki signalizatsiya tugmasi) orqali zudlik bilan qorovulxonaga, ya'ni shaxsan qorovul boshlig'iga yoki qorvuldorga xabar berishi hamda vaziyatni qat'iy kuzatishda davom etishi shart.",
@@ -3060,7 +3060,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Aloqa vositalari (telefon yoki signalizatsiya tugmasi) orqali zudlik..."
     },
   {
-      "q": "11-sinf CHQBT darsida \"Qorovulxonaga hujum qilinganda yoki favqulodda holat yuz berganda qorovul tarkibining harakatlari\" o'rganilmoqda. Keys: \"Garnizon ob'ektini qo'riqlayotgan qorovulxonaning o'ziga nisbatan dushman yoki begona guruh tomonidan to'satdan qurolli hujum uyushtirildi\". Nizom normalariga ko'ra, bunday o'ta og'ir va favqulodda vaziyatda qorovul boshlig'ining buyrug'iga binoan qorovulning butun shaxsiy tarkibi (shu jumladan dam olayotgan smena ham) qanday qonuniy va taktik algoritm asosida harakat qilishga majbur?",
+      "q": "Garnizon ob'ektini qo'riqlayotgan qorovulxonaning o'ziga nisbatan dushman yoki begona guruh tomonidan to'satdan qurolli hujum uyushtirildi. Nizom normalariga ko'ra, bunday o'ta og'ir va favqulodda vaziyatda qorovul boshlig'ining buyrug'iga binoan qorovulning butun shaxsiy tarkibi (shu jumladan dam olayotgan smena ham) qanday qonuniy va taktik algoritm asosida harakat qilishga majbur?",
       "opts": [
         "A) Dam olayotgan askarlar buyruq berilsa ham kiyimlarini to'liq kiyib bo'lmaguncha o'z yotoqlaridan turishlari taqiqlanadi.",
         "B) Qorovul tarkibi zudlik bilan \"Qurolga!\" komandasi bo'yicha oyoqqa turadi, o'z qurollarini qabul qilib oladi va qorovulxonani mudofaa qilish rejasiga muvofiq belgilangan jangovar pozitsiyalarni egallab, hujumni daf etadi.",
@@ -3072,7 +3072,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Qorovul tarkibi zudlik bilan \"Qurolga!\" komandasi bo'yicha oyoqqa..."
     },
   {
-      "q": "CHQBT o'quv darsligining \"Postdagi soqchining sog'lig'i to'satdan yomonlashganda yoki jarohatlangandagi harakat tartibi\" bo'limi tahlil qilinmoqda. Keys: \"Postda xizmat o'tayotgan soqchining to'satdan qattiq betob bo'lib qolganligi (issig'i ko'tarilib, hushidan ketish holatiga kelganligi) tufayli u xizmat burchini davom ettira olmaydigan holatga keldi\". Garnizon va qorovullik xizmatlari nizomiga muvofiq, soqchi bunday vaziyatda o'z postini mustaqil tashlab keta oladimi va u qanday qonuniy yo'l tutishi shart?",
+      "q": "Postda xizmat o'tayotgan soqchining to'satdan qattiq betob bo'lib qolganligi (issig'i ko'tarilib, hushidan ketish holatiga kelganligi) tufayli u xizmat burchini davom ettira olmaydigan holatga keldi. Garnizon va qorovullik xizmatlari nizomiga muvofiq, soqchi bunday vaziyatda o'z postini mustaqil tashlab keta oladimi va u qanday qonuniy yo'l tutishi shart?",
       "opts": [
         "A) Ha, u o'z qurolini post budkasiga qo'yib, mustaqil ravishda harbiy qism tibbiyot punktiga borish huquqiga ega.",
         "B) Yo'q, soqchiga har qanday holatda postni o'zboshimchalik bilan tashlab ketish qat'iyan man etiladi. U aloqa vositasi orqali yoki \"Qorovul chaqirilsin!\" deb baland ovozda signal berishi va faqat o'zining almashtiruvchisi (yangi soqchi) kelganidan keyingina postni topshirishi shart.",
@@ -3120,7 +3120,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Yo'q, qorovulxonaga kirish qat'iy cheklangan. Faqat harbiy qism..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Postlarni yong'indan saqlash va yong'in yuz berganda soqchining majburiyatlari\" mavzusi tahlil qilinmoqda. Keys: \"Soqchi qo'riqlayotgan harbiy ombor yoki ob'ekt hududida to'satdan yong'in kelib chiqdi\". Garnizon va qorovullik xizmatlari nizomining qat'iy talablariga binoan, soqchi yong'inni ko'rgan birinchi soniyalarda qanday qonuniy va taktik harakatni zudlik bilan bajarishga qonunan mas'uldir?",
+      "q": "Soqchi qo'riqlayotgan harbiy ombor yoki ob'ekt hududida to'satdan yong'in kelib chiqdi. Garnizon va qorovullik xizmatlari nizomining qat'iy talablariga binoan, soqchi yong'inni ko'rgan birinchi soniyalarda qanday qonuniy va taktik harakatni zudlik bilan bajarishga qonunan mas'uldir?",
       "opts": [
         "A) O'z qurol-aslahalarini tashlab, zudlik bilan harbiy qism darvozasidan tashqariga qochishi lozim.",
         "B) Aloqa vositasi orqali zudlik bilan qorovulxonaga (qorovul boshlig'iga) yong'in haqida xabar berishi, o'z postida qo'riqchilik va kuzatuvni davom ettirgan holda (chunki yong'in dushman diversion harakati bo'lishi mumkin) yong'inni o'chirish vositalarini qo'llashi shart.",
@@ -3168,7 +3168,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Smenalarni qorovulxonadan postlarga xavfsiz va to'g'ri olib borish,..."
     },
   {
-      "q": "CHQBT darsida 11-sinf o'quvchilari \"Postda turgan soqchining qurolni qo'llash cheklovlari va huquqiy me'yorlari\" o'rgatilmoqda. Keys: \"Tungi smenada postda xizmat burchini bajarayotgan soqchi ob'ektga noqonuniy kirib, uning ogohlantirishlariga bo'ysunmay qochishga urinayotgan homilador ayolga, yosh bolaga yoki yaqqol nogironlik belgilari ko'rinib turgan shaxsga guvoh bo'ldi\". Garnizon va qorovullik xizmatlari nizomining insonparvarlik hamda huquqiy normalariga muvofiq, soqchiga (chasovoyga) qaysi toifadagi shaxslarga nisbatan o'qotar qurolni to'g'ridan-to'g'ri qo'llash (otish) qonunan qat'iyan man etiladi?",
+      "q": "Tungi smenada postda xizmat burchini bajarayotgan soqchi ob'ektga noqonuniy kirib, uning ogohlantirishlariga bo'ysunmay qochishga urinayotgan homilador ayolga, yosh bolaga yoki yaqqol nogironlik belgilari ko'rinib turgan shaxsga guvoh bo'ldi. Garnizon va qorovullik xizmatlari nizomining insonparvarlik hamda huquqiy normalariga muvofiq, soqchiga (chasovoyga) qaysi toifadagi shaxslarga nisbatan o'qotar qurolni to'g'ridan-to'g'ri qo'llash (otish) qonunan qat'iyan man etiladi?",
       "opts": [
         "A) Faqat chet el davlatlari fuqarolari ekanligini tasdiqlovchi xorijiy pasportga ega bo'lgan shaxslarga.",
         "B) Ayollarga, yaqqol nogironlik belgilari ko'rinib turgan shaxslarga hamda voyaga yetmagan yosh bolalarga nisbatan (bundan ularning soqchiga qurolli hujum qilgan yoki jamoaviy guruh bo'lib qurolli qarshilik ko'rsatgan hollari mustasno).",
@@ -3192,7 +3192,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Sutka davomida kamida bir marta (shuningdek, har safar..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Postdagi soqchining favqulodda vaziyatlarda aloqa tizimi va chaqiruv signallari\" bo'limida yangi amaliy vaziyat tahlil qilinmoqda. Keys: \"Postda xizmat o'tayotgan soqchining texnik aloqa vositalari (telefon yoki signalizatsiya liniyasi) to'satdan dushman diversion harakati yoki texnik nosozlik tufayli butunlay ishdan chiqdi, biroq u zudlik bilan qorovulxonani yordamga chaqirishi shart\". Nizom qoidalariga muvofiq, aloqa butunlay uzilgan bunday og'ir sharoitda soqchi qorovulxonaga favqulodda signal yetkazish uchun qanday qonuniy va taktik harakatni bajarish huquqiga ega?",
+      "q": "Postda xizmat o'tayotgan soqchining texnik aloqa vositalari (telefon yoki signalizatsiya liniyasi) to'satdan dushman diversion harakati yoki texnik nosozlik tufayli butunlay ishdan chiqdi, biroq u zudlik bilan qorovulxonani yordamga chaqirishi shart. Nizom qoidalariga muvofiq, aloqa butunlay uzilgan bunday og'ir sharoitda soqchi qorovulxonaga favqulodda signal yetkazish uchun qanday qonuniy va taktik harakatni bajarish huquqiga ega?",
       "opts": [
         "A) O'z postini zudlik bilan tashlab, eng yaqin joylashgan tuman mudofaa ishlari bo'limiga yugurib borishi lozim.",
         "B) Postda turgan joyining o'zidan qurolidan havoga qarata ketma-ket ogohlantiruvchi o'q uzish (otish) orqali yoki baland ovozda \"Qorovul, postga!\" deb baqirish orqali yordam chaqirishi shart.",
@@ -3204,7 +3204,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Postda turgan joyining o'zidan qurolidan havoga qarata ketma-ket..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Qorovul tarkibidagi askarlarning qorovulxonadan tashqariga chiqish taqiqlari va intizomi\" normasi muhokama qilinmoqda. Keys: \"Qorovul naryadi tarkibidagi askarlardan biri shaxsiy ehtiyojlari sababli yoki harbiy qismdagi do'stlari bilan ko'rishish maqsadida qorovulxona binosidan vaqtincha tashqariga chiqishni rejalashtirdi\". Garnizon va qorovullik xizmatlari nizomining qat'iy talablariga binoan, qorovul tarkibiga kiruvchi askar, serjant va ofitserlarga qaysi holatda qorovulxonani va uning hududini tark etishga qonunan ruxsat beriladi?",
+      "q": "Qorovul naryadi tarkibidagi askarlardan biri shaxsiy ehtiyojlari sababli yoki harbiy qismdagi do'stlari bilan ko'rishish maqsadida qorovulxona binosidan vaqtincha tashqariga chiqishni rejalashtirdi. Garnizon va qorovullik xizmatlari nizomining qat'iy talablariga binoan, qorovul tarkibiga kiruvchi askar, serjant va ofitserlarga qaysi holatda qorovulxonani va uning hududini tark etishga qonunan ruxsat beriladi?",
       "opts": [
         "A) Agarda kun dars mashg'ulotlaridan tashqari vaqt, ya'ni erkin soat bo'lsa, istalgan vaqtda chiqish mumkin.",
         "B) Faqat qorovul boshlig'ining shaxsiy ruxsati va buyrug'i bilan — faqat xizmat vazifalarini bajarish (postga smena olib borish, ob'ektni ko'zdan kechirish) yoki ovqatlanish/shoshilinch tibbiy yordam olish maqsadidagina ruxsat etiladi. O'zboshimchalik bilan chiqish qat'iyan man etiladi.",
@@ -3228,7 +3228,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Yo'q, qorovul tarkibi (naryadi) daxlsiz xizmat guruhi bo'lib,..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Postlarni jihozlash va ulardagi muhandislik-texnik xavfsizlik vositalari\" mavzusi tahlil qilinmoqda. Keys: \"Yangi barpo etilgan harbiy aslahaxona atrofida qonuniy talablar asosida yangi post hududi tashkil etilmoqda\". Garnizon va qorovullik xizmatlari nizomiga binoan, postda soqchining xavfsizligini ta'minlash, dushman kuzatuvidan himoyalanish va har qanday ob-havoda aloqani saqlash uchun post hududida majburiy tartibda qaysi muhandislik inshootlari o'rnatilgan bo'lishi qonunan shart?",
+      "q": "Yangi barpo etilgan harbiy aslahaxona atrofida qonuniy talablar asosida yangi post hududi tashkil etilmoqda. Garnizon va qorovullik xizmatlari nizomiga binoan, postda soqchining xavfsizligini ta'minlash, dushman kuzatuvidan himoyalanish va har qanday ob-havoda aloqani saqlash uchun post hududida majburiy tartibda qaysi muhandislik inshootlari o'rnatilgan bo'lishi qonunan shart?",
       "opts": [
         "A) Faqat sport maydonchasi, yengil kiyim almashtirish xonasi va oziq-ovqat saqlash javoni.",
         "B) Maxsus jihozlangan soqchi budkasi (boshpana), qorovulxona bilan to'g'ridan-to'g'ri ulaydigan aloqa vositalari (telefon), yoritish moslamalari, post egallaydigan hudud xaritasi hamda yong'inga qarshi birlamchi asbob-anjomlar.",
@@ -3252,7 +3252,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Shaxsan qorovul boshlig'ining yordamchisiga (u qorovul boshlig'i bo'lmagan..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari metodik yig'ilishida \"Qorovul naryadiga boradigan shaxsiy tarkibning ma'naviy-ruhiy holati va intizomini tekshirish qoidalari\" o'rganilmoqda. Keys: \"Ertaga qorovul xizmatiga jo'nab ketishi kerak bo'lgan bo'linma askarlari bugun harbiy qismda maxsus tayyorgarlikdan o'tmoqdalar\". Nizomning qat'iy talablariga muvofiq, askarlar qorovul xizmati naryadiga kirishishlaridan oldin, ular qaysi majburiy tayyorgarlik bosqichlaridan (amaliy va ruhiy ko'rikdan) o'tishlari qonunan shart qilib belgilangan?",
+      "q": "Ertaga qorovul xizmatiga jo'nab ketishi kerak bo'lgan bo'linma askarlari bugun harbiy qismda maxsus tayyorgarlikdan o'tmoqdalar. Nizomning qat'iy talablariga muvofiq, askarlar qorovul xizmati naryadiga kirishishlaridan oldin, ular qaysi majburiy tayyorgarlik bosqichlaridan (amaliy va ruhiy ko'rikdan) o'tishlari qonunan shart qilib belgilangan?",
       "opts": [
         "A) Askarlar faqat haftalik kiyim-kechak ta'minoti xonasida yangi buyum formalarini qabul qilib olishlari kifoya.",
         "B) Harbiy qism psixologi va tibbiyot xodimlari tomonidan majburiy ruhiy-tibbiy ko'rikdan o'tkazilishi, qorvuldorlar boshchiligida maxsus jihozlangan o'quv shaharchasida qorovul xizmati qoidalari va qurol qo'llash shartlari bo'yicha amaliy mashqlarni (yo'riqnomani) to'liq bajarishi shart.",
@@ -3336,7 +3336,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Harbiy xizmatchi o'ziga biriktirilgan qurol-yarog', harbiy texnika, kiyim-bosh..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Joyida turgan holatda burilishlarni bajarish qoidalari (O'ngga, Chapga, Ortga burilishlar)\" bo'limida amaliy dars o'tilmoqda. Keys: \"CHQBT fani rahbari o'quvchilarga 'Ortga buril!' (Krugom) buyrug'ini berdi\". Saf nizomida belgilangan harakat qoidalariga muvofiq, joyida burilishlar tananing qaysi qismlari (poshna va tana muvozanati) yordamida va qaysi elkadan (yo'nalishdan) burilish orqali qonunan to'g'ri bajarilishi shart?",
+      "q": "CHQBT fani rahbari o'quvchilarga 'Ortga buril!' (Krugom) buyrug'ini berdi. Saf nizomida belgilangan harakat qoidalariga muvofiq, joyida burilishlar tananing qaysi qismlari (poshna va tana muvozanati) yordamida va qaysi elkadan (yo'nalishdan) burilish orqali qonunan to'g'ri bajarilishi shart?",
       "opts": [
         "A) O'ngga va chapga burilishlar har doim o'ng elka orqali ixtiyoriy tana harakati bilan bajariladi.",
         "B) Joyida burilishlar chap oyoq poshnasida va o'ng oyoq uchida (o'ngga burilish esa o'ng poshnada) bajariladi. \"Ortga buril!\" buyrug'i esa har doim tana muvozanatini saqlagan holda, chap elka orqali 180 darajaga o'girilish bilan bajariladi.",
@@ -3348,7 +3348,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Joyida burilishlar chap oyoq poshnasida va o'ng oyoq..."
     },
   {
-      "q": "11-sinf CHQBT mashg'ulotida o'quvchilar \"Saf odobi va safda harakatlanish vaqtida harbiycha salom berish qoidalari\" mavzusini o'rganmoqdalar. Keys: \"Harbiy xizmatchi safdan tashqarida, bosh kiyimsiz (furajkasiz yoki beretsiz) kiyim formasida ketayotgan vaqtda qarshisidan yuqori unvondagi boshliq (komandir) chiqib qoldi\". Saf nizomining yangi tahrirdagi talablariga binoan, bosh kiyimi bo'lmagan harbiy xizmatchi harakatda boshliqqa qanday to'g'ri qonuniy shaklda harbiycha salom berishi shart?",
+      "q": "Harbiy xizmatchi safdan tashqarida, bosh kiyimsiz (furajkasiz yoki beretsiz) kiyim formasida ketayotgan vaqtda qarshisidan yuqori unvondagi boshliq (komandir) chiqib qoldi. Saf nizomining yangi tahrirdagi talablariga binoan, bosh kiyimi bo'lmagan harbiy xizmatchi harakatda boshliqqa qanday to'g'ri qonuniy shaklda harbiycha salom berishi shart?",
       "opts": [
         "A) O'ng qo'lini zudlik bilan chakka qismiga (peshonasiga) yaqinlashtirib, saf qadamida to'xatishi lozim.",
         "B) Bosh kiyimi bo'lmaganda qo'lni boshga olib borish taqiqlanadi; u boshliqqa 3-4 qadam qolganda harakatni qisqa muddatga saf qadamiga o'tkazishi, tanasini g'oz tutib, boshini boshliq tomonga burishi va uning ko'zlariga tik qarab o'tib ketishi shart.",
@@ -3360,7 +3360,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Bosh kiyimi bo'lmaganda qo'lni boshga olib borish taqiqlanadi;..."
     },
   {
-      "q": "CHQBT o'quv qo'llanmasining \"Saf qadami va Oddiy qadam (Shagovyy i Obychnyy shag) farqlari\" mavzusi tahlil qilinmoqda. Keys: \"Vzvod tantanali marsh bilan ploshchadka bo'ylab 'Saf qadami bilan — MARSH!' buyrug'i ostida harakatlanmoqda\". Saf nizomining qat'iy normativlariga ko'ra, saf qadamida harakatlanayotgan askarning oyoqni yerdan ko'tarish balandligi (sm), qadamlar davriyligi (1 daqiqada necha qadam) va qo'llarning harakatlanish amplitudasi qonunan qanday aniq o'lchovlar asosida bajarilishi shart?",
+      "q": "Vzvod tantanali marsh bilan ploshchadka bo'ylab 'Saf qadami bilan — MARSH!' buyrug'i ostida harakatlanmoqda. Saf nizomining qat'iy normativlariga ko'ra, saf qadamida harakatlanayotgan askarning oyoqni yerdan ko'tarish balandligi (sm), qadamlar davriyligi (1 daqiqada necha qadam) va qo'llarning harakatlanish amplitudasi qonunan qanday aniq o'lchovlar asosida bajarilishi shart?",
       "opts": [
         "A) Oyoq yerdan 5 sm ko'tariladi, daqiqasiga 60 qadam tashlanadi, qo'llar faqat cho'ntakda saqlanadi.",
         "B) Oyoq yer yuzasidan 15-20 sm balandlikka ko'tarilib, uchi cho'zilgan holda qat'iy qo'yiladi. Qadam sur'ati daqiqasiga 110-120 qadamni tashkil etishi, qo'llar esa tana bo'ylab oldinga (kamargacha) va orqaga erkin harakatlanishi shart.",
@@ -3420,7 +3420,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Avtomat ko'krakda bo'lganda, uning stvol (og'iz) qismi chap..."
     },
   {
-      "q": "CHQBT darsida 10-sinf o'quvchilariga \"Safda harakatlanish davomida burilishlarni bajarish qoidalari (Harakatda o'ngga va chapga burilish)\" mavzusi o'rgatilmoqda. Keys: \"Vzvod oddiy qadam bilan marsh qilib ketayotgan vaqtda komandir 'Harakatda o'ngga — MARSH!' buyrug'ini berdi\". Saf nizomining qat'iy talablariga binoan, harakatlanish vaqtida berilgan burilish buyrug'ining ijro qismi (\"MARSH!\") qaysi oyoq yerga qo'yilgan soniyada berilishi va burilish qaysi oyoq yordamida boshlanishi shart?",
+      "q": "Vzvod oddiy qadam bilan marsh qilib ketayotgan vaqtda komandir 'Harakatda o'ngga — MARSH!' buyrug'ini berdi. Saf nizomining qat'iy talablariga binoan, harakatlanish vaqtida berilgan burilish buyrug'ining ijro qismi (\"MARSH!\") qaysi oyoq yerga qo'yilgan soniyada berilishi va burilish qaysi oyoq yordamida boshlanishi shart?",
       "opts": [
         "A) Buyruq har doim chap oyoq yerga teqqan vaqtda beriladi va burilish o'ng oyoqni keskin tashlash bilan bajariladi.",
         "B) \"O'ngga\" burilish buyrug'ining ijro qismi o'ng oyoq yerga qo'yilayotganda beriladi. Shundan so'ng chap oyoq bilan yana bir qadam tashlanadi va chap oyoq uchida burilib, o'ng oyoq bilan yangi yo'nalishda harakat davom ettiriladi.",
@@ -3444,7 +3444,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - \"ODDIY QADAM BILAN!\" (SHAGOM) buyrug'i beriladi. Ushbu buyruq..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Safni bir qatordan ikki qatorga (yoki aksincha) qayta yoyish va shakllantirish tartibi\" bo'limida yangi amaliy keys tahlil qilinmoqda. Keys: \"Joyida bir qatorli yoyma safda turgan vzvodni komandir ikki qatorli safga o'tkazmoqchi\". Saf nizomida belgilangan normalarga ko'ra, bo'linmani ikki qatorga qayta tizishdan oldin majburiy ravishda qaysi hisob-kitob buyrug'i berilishi va xizmatchilar qanday harakat algoritmini bajarishlari shart?",
+      "q": "Joyida bir qatorli yoyma safda turgan vzvodni komandir ikki qatorli safga o'tkazmoqchi. Saf nizomida belgilangan normalarga ko'ra, bo'linmani ikki qatorga qayta tizishdan oldin majburiy ravishda qaysi hisob-kitob buyrug'i berilishi va xizmatchilar qanday harakat algoritmini bajarishlari shart?",
       "opts": [
         "A) \"Hamma erkin hisoblasin!\" buyrug'i beriladi va askarlar o'z yoshlariga ko'ra saf boshiga o'tadilar.",
         "B) \"Birinchi va ikkinchiga — HISOB CHIQ!\" buyrug'i beriladi. Hisob tugagach, \"Ikki qatorga — SAF TORT!\" buyrug'i beriladi va ikkinchi raqamli askarlar chap oyoq bilan bir qadam orqaga, o'ng oyoq bilan bir qadam o'ngga o'tib, birinchi raqamlarning ortiga joylashadilar.",
@@ -3456,7 +3456,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - \"Birinchi va ikkinchiga — HISOB CHIQ!\" buyrug'i beriladi...."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Safda qurolni 'Yelkaga' (Na plecho) holatidan 'Belboqqa' (Na remen) holatiga o'tkazish taktikasi\" muhokama qilinmoqda. Keys: \"Safda uzun stvolli qurol (avtomat) bilan turgan askar uzoq vaqt harakatlanish uchun qurol holatini o'zgartirishi kerak\". Saf nizomi talablariga muvofiq, qurolni yelkadan belboqqa o'tkazish jarayoni necha taktdan (harakatdan) iborat va u qaysi qo'lning birlamchi harakati bilan qonunan boshlanishi shart?",
+      "q": "Safda uzun stvolli qurol (avtomat) bilan turgan askar uzoq vaqt harakatlanish uchun qurol holatini o'zgartirishi kerak. Saf nizomi talablariga muvofiq, qurolni yelkadan belboqqa o'tkazish jarayoni necha taktdan (harakatdan) iborat va u qaysi qo'lning birlamchi harakati bilan qonunan boshlanishi shart?",
       "opts": [
         "A) Bu harakat atigi 1 ta taktdan iborat bo'lib, qurol erkin holda o'ng tizzaga tashlanadi.",
         "B) Qurolni yelkadan belboqqa o'tkazish Saf nizomiga ko'ra 3 ta qat'iy taktdan iborat bo'lib, u o'ng qo'l bilan avtomat tasmasini (remen) yuqoridan tutib, chap qo'l bilan qurol qo'ndog'ini pastdan ushlash harakati bilan tizimli boshlanadi.",
@@ -3468,7 +3468,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Qurolni yelkadan belboqqa o'tkazish Saf nizomiga ko'ra 3..."
     },
   {
-      "q": "11-sinf CHQBT darsida \"Safda harbiy xizmatchilarning o'zaro tekisligini saqlash va 'Tekislan!' (Ravnyays) buyrug'ini bajarish odobi\" o'rganilmoqda. Keys: \"Komandir safda turgan bo'linmaga 'Vzvod — TEKISLAN!' buyrug'ini berdi\". Saf nizomining amaldagi qoidalariga ko'ra, ushbu buyruq berilganda saf boshidagi (o'ng qanotdagi) birinchi askardan tashqari barcha askarlar boshlarini qaysi tomonga burishlari va ko'krak qismini qanday holatda tutishlari qonunan shart?",
+      "q": "Komandir safda turgan bo'linmaga 'Vzvod — TEKISLAN!' buyrug'ini berdi. Saf nizomining amaldagi qoidalariga ko'ra, ushbu buyruq berilganda saf boshidagi (o'ng qanotdagi) birinchi askardan tashqari barcha askarlar boshlarini qaysi tomonga burishlari va ko'krak qismini qanday holatda tutishlari qonunan shart?",
       "opts": [
         "A) Barcha askarlar boshlarini to'g'ridan-to'g'ri pastga qaratib, o'z poyabzallarining tozaligiga qarashlari shart.",
         "B) O'ng qanotdagi birinchi askardan tashqari barcha askarlar boshlarini zudlik bilan o'ng tomonga buradilar (o'ng iyak chap yelkadan yuqoriroq turadi) va o'ng tomondagi safdoshining ko'kragiga qarab saf tekisligini to'g'rilaydilar.",
@@ -3480,7 +3480,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - O'ng qanotdagi birinchi askardan tashqari barcha askarlar boshlarini..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Safdan chiqish va komandir (boshliq) huzuriga yetib kelish tartibi\" mavzusi tahlil qilinmoqda. Keys: \"Safda turgan askarning familiyasi komandir tomonidan o'qildi va 'Safdan — CHIQ!' buyrug'i berildi\". Saf nizomi talablariga binoan, birinchi qatorda (yoki ikkinchi qatorda) turgan askar safdan chiqayotganda necha qadam oldinga yurishi, komandirga qanday yaqinlashishi va unga yetib kelgach qaysi qonuniy harakat bilan hisobot berishi shart?",
+      "q": "Safda turgan askarning familiyasi komandir tomonidan o'qildi va 'Safdan — CHIQ!' buyrug'i berildi. Saf nizomi talablariga binoan, birinchi qatorda (yoki ikkinchi qatorda) turgan askar safdan chiqayotganda necha qadam oldinga yurishi, komandirga qanday yaqinlashishi va unga yetib kelgach qaysi qonuniy harakat bilan hisobot berishi shart?",
       "opts": [
         "A) U safdan chiqib, to'g'ridan-to'g'ri komandirning yoniga yugurib borishi va uning qo'lini siqib ko'rishishi lozim.",
         "B) U safdan belgilangan qadamlar miqdorida chiqadi, komandirga 2-3 qadam qolganda to'xtaydi, o'ng qo'lini bosh kiyimiga olib borib harbiycha salom beradi hamda kelganligi to'g'risida rasman bildirgi (raport) beradi.",
@@ -3492,7 +3492,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - U safdan belgilangan qadamlar miqdorida chiqadi, komandirga 2-3..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari ilmiy-metodik kengashida \"Safda harakatlanish vaqtida 'To'xta!' (Stoy) buyrug'ini bajarish texnikasi\" o'rganilmoqda. Keys: \"Yurish safida (kolonnada) jadal sur'at bilan ketayotgan bo'linmaga komandir kutilmaganda 'Vzvod — TO'XTA!' buyrug'ini berdi\". Saf nizomining qat'iy me'yorlariga muvofiq, buyruqning ijro qismi eshitilgandan keyin askar yana necha qadam tashlashi va oyoqlarni qanday tartibda birlashtirishi qonunan shart qilib belgilangan?",
+      "q": "Yurish safida (kolonnada) jadal sur'at bilan ketayotgan bo'linmaga komandir kutilmaganda 'Vzvod — TO'XTA!' buyrug'ini berdi. Saf nizomining qat'iy me'yorlariga muvofiq, buyruqning ijro qismi eshitilgandan keyin askar yana necha qadam tashlashi va oyoqlarni qanday tartibda birlashtirishi qonunan shart qilib belgilangan?",
       "opts": [
         "A) Buyruq eshitilishi bilan askar zudlik bilan o'sha soniyada to'xtashi shart, qo'shimcha qadam tashlash taqiqlanadi.",
         "B) Buyruqning ijro qismi (MARSH yoki TO'XTA) qaysi oyoq qo'yilgandan qat'i nazar, askar yana bitta qadam tashlaydi va orqada qolgan oyoqni oldingi oyoqning yoniga keskin urib birlashtiradi hamda saf holatini egallaydi.",
@@ -3552,7 +3552,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Ular komandirning buyrug'i bilan chap (yoki o'ng) tomondagi..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Safda jamoaviy harakatlanish vaqtida qadam muvozanatini (Takt) to'g'rilash qoidalari\" bo'limida amaliy dars o'tilmoqda. Keys: \"Vzvod oddiy qadam bilan ketayotgan vaqtda saf markazidagi bir nechta askar umumiy qadam muvozanatidan (taktidan) chiqib ketdi va komandir ularga qadamni to'g'rilash buyrug'ini berdi\". Saf nizomi qoidalariga ko'ra, safda harakatlanayotganda qadamni safdoshlar bilan o'zaro tenglashtirish (to'g'rilash) uchun qaysi qonuniy buyruq beriladi va askar oyog'ini qanday o'zgartiradi?",
+      "q": "Vzvod oddiy qadam bilan ketayotgan vaqtda saf markazidagi bir nechta askar umumiy qadam muvozanatidan (taktidan) chiqib ketdi va komandir ularga qadamni to'g'rilash buyrug'ini berdi. Saf nizomi qoidalariga ko'ra, safda harakatlanayotganda qadamni safdoshlar bilan o'zaro tenglashtirish (to'g'rilash) uchun qaysi qonuniy buyruq beriladi va askar oyog'ini qanday o'zgartiradi?",
       "opts": [
         "A) \"Qadamni buz!\" buyrug'i beriladi va askarlar ixtiyoriy ravishda yugurib saf boshiga o'tadilar.",
         "B) \"OYOQ ALMASHTIR!\" (SMENIT SHAG) buyrug'i beriladi. Askar ushbu buyruq bo'yicha qadam tashlayotgan oyoq yoniga ikkinchi oyoqni qisqa muddatga tezkorlik bilan qo'shib (urib) oladi va yangi qadamni umumiy saf takti bilan bir xil davom ettiradi.",
@@ -3588,7 +3588,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Mashinalar bir chiziq bo'ylab, peshtoq tomonlari bilan bir..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Safda turgan holatda komandir (boshliq) tomonidan berilgan salomga jamoaviy javob berish qoidalari\" mavzusi tahlil qilinmoqda. Keys: \"Safda turgan vaqtda butun boshli vzvod shaxsiy tarkibiga harbiy qism komandiri 'Assalomu alaykum, safdoshlar!' (yoki 'Salom, safdoshlar!') deb murojaat qildi\". Saf nizomi normalariga binoan, safdagi askarlar komandirning salomiga jamoaviy (bir ovozdan) qanday qonuniy matn asosida va qanday uslubda javob berishlari qonunan qat'iy majburiydir?",
+      "q": "Safda turgan vaqtda butun boshli vzvod shaxsiy tarkibiga harbiy qism komandiri 'Assalomu alaykum, safdoshlar!' (yoki 'Salom, safdoshlar!') deb murojaat qildi. Saf nizomi normalariga binoan, safdagi askarlar komandirning salomiga jamoaviy (bir ovozdan) qanday qonuniy matn asosida va qanday uslubda javob berishlari qonunan qat'iy majburiydir?",
       "opts": [
         "A) Har bir askar o'z shaxsiy unvonini aytib, o'z ixtiyoriga ko'ra og'zaki salom berishi kifoya.",
         "B) Butun bo'linma bir ovozdan, baland, aniq va cho'zmasdan: \"Va alaykum assalom, barchangizga sog'liq-salomatlik tilayman, janob polkovnik (yoki boshliq unvoni)!\" deb qat'iy nizomiy shaklda javob beradi.",
@@ -3612,7 +3612,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom qoidasi - Harbiy xizmatchilarning o'rtacha qadam uzunligi 70-80 sm qilib..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Safda qurolni 'Avtomatni — BELBOQQA!' (Avtomat na-remen) holatidan 'Ko'krakka' (Na-grud) o'tkazish harakati\" muhokama qilinmoqda. Keys: \"Safda avtomati belbog'ida (o'ng yelkasida) osilgan holda turgan askarga komandir qurolni ko'krakka o'tkazish buyrug'ini berdi\". Saf nizomining amaldagi qoidalariga binoan, qurolni belbog'dan ko'krakka o'tkazish harakati necha taktdan (bosqichdan) iborat va birinchi taktda o'ng qo'l avtomatning qaysi qismidan tutishi qonunan shart?",
+      "q": "Safda avtomati belbog'ida (o'ng yelkasida) osilgan holda turgan askarga komandir qurolni ko'krakka o'tkazish buyrug'ini berdi. Saf nizomining amaldagi qoidalariga binoan, qurolni belbog'dan ko'krakka o'tkazish harakati necha taktdan (bosqichdan) iborat va birinchi taktda o'ng qo'l avtomatning qaysi qismidan tutishi qonunan shart?",
       "opts": [
         "A) Bu harakat atigi 1 ta taktdan iborat bo'lib, qurol to'g'ridan-to'g'ri bo'yinga osib qo'yiladi.",
         "B) Qurolni belbog'dan ko'krakka o'tkazish Saf nizomiga ko'ra 3 ta qat'iy taktdan iborat. Birinchi taktda o'ng qo'l bilan avtomat tasmasi yelkadan yuqoriga ko'tariladi, chap qo'l esa avtomat qo'ndog'ini pastdan mahkam tutadi.",

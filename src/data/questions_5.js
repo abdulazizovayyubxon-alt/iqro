@@ -1380,7 +1380,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Is gazi - Tez, Ovqat - Sekinroq."
     },
   {
-      "q": "CHQBT darsida 11-sinf o'quvchilariga \"Elektr tokidan zararlanganda birinchi tibbiy yordam ko'rsatish\" mavzusi o'rgatilmoqda. Keys: \"Ishlab chiqarish ustaxonasida to'satdan yuz bergan avariya natijasida bir ishchini elektr toki urdi. Uni ko'rikdan o'tkazish jarayonida bemorda kuchli og'riq, mushaklarning falajlanishi, es-hushini yo'qotish, yurak urishining sezilarli buzilishi va nafas olishning keskin qiyinlashishi alomatlari aniqlandi\". Darslikdagi \"Elektr toki urishi belgilari\" tasnifiga ko'ra, ushbu alomatlar bemor organizmining qaysi qat'iy og'irlik holatiga (darajasiga) tushganligidan dalolat beradi?",
+      "q": "Ishlab chiqarish ustaxonasida to'satdan yuz bergan avariya natijasida bir ishchini elektr toki urdi. Uni ko'rikdan o'tkazish jarayonida bemorda kuchli og'riq, mushaklarning falajlanishi, es-hushini yo'qotish, yurak urishining sezilarli buzilishi va nafas olishning keskin qiyinlashishi alomatlari aniqlandi. Darslikdagi \"Elektr toki urishi belgilari\" tasnifiga ko'ra, ushbu alomatlar bemor organizmining qaysi qat'iy og'irlik holatiga (darajasiga) tushganligidan dalolat beradi?",
       "opts": [
         "A) Yengil holat",
         "B) O'rta og'irlikdagi holat",
@@ -1392,7 +1392,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - O'rta og'irlikdagi holat..."
     },
   {
-      "q": "Maktab hovlisida o'tkazilayotgan amaliy fuqaro muhofazasi mashg'ulotida \"Termik shikastlanishlar va ularga ko'mak berish\" qoidalari tahlil qilinmoqda. Keys: \"Yong'in sodir bo'lgan hududdan olib chiqilgan jabrlanuvchining teri qatlami tekshirilganda, terining chuqur shikastlangani, terida o'ziga xos kulrang yoki qora to'qimalar (o'lik sohalar) paydo bo'lgani aniqlandi. Biroq nerv uchlari shikastlangani sababli bemor o'sha sohada og'riqni deyarli sezmayotganligini yoki og'riq o'ta kamligini bildirdi\". Darslik matnidagi qat'iy mezonlarga ko'ra, ushbu klinik alomatlar terining nechanchi darajali kuyish holatiga qonunan to'g'ri keladi?",
+      "q": "Yong'in sodir bo'lgan hududdan olib chiqilgan jabrlanuvchining teri qatlami tekshirilganda, terining chuqur shikastlangani, terida o'ziga xos kulrang yoki qora to'qimalar (o'lik sohalar) paydo bo'lgani aniqlandi. Biroq nerv uchlari shikastlangani sababli bemor o'sha sohada og'riqni deyarli sezmayotganligini yoki og'riq o'ta kamligini bildirdi. Darslik matnidagi qat'iy mezonlarga ko'ra, ushbu klinik alomatlar terining nechanchi darajali kuyish holatiga qonunan to'g'ri keladi?",
       "opts": [
         "A) 1-darajali kuyish",
         "B) 2-darajali kuyish",
@@ -1404,7 +1404,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - 3-darajali kuyish..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Avtotransport dori qutisining majburiy aslahalari va ularning funktsional vazifalari\" bo'yicha amaliy savol berildi. Keys: \"Yo'l-transport hodisasi natijasida og'ir jarohat olgan va tana a'zosidan (arterial qon tomiridan) o'ta ko'p miqdorda, shiddatli qon ketayotgan jabrlanuvchiga shoshilinch yordam ko'rsatish zarur\". Darslikning \"Avtotransport dori qutisining tarkibi va qon ketishi holatlarida\" rukni qoidalariga muvofiq, bunday o'ta ko'p va hayotga xavf soluvchi qon ketishini zudlik bilan to'xtatish uchun dori qutisidagi qaysi maxsus tibbiy aslahadan foydalanish majburiydir?",
+      "q": "Yo'l-transport hodisasi natijasida og'ir jarohat olgan va tana a'zosidan (arterial qon tomiridan) o'ta ko'p miqdorda, shiddatli qon ketayotgan jabrlanuvchiga shoshilinch yordam ko'rsatish zarur. Darslikning \"Avtotransport dori qutisining tarkibi va qon ketishi holatlarida\" rukni qoidalariga muvofiq, bunday o'ta ko'p va hayotga xavf soluvchi qon ketishini zudlik bilan to'xtatish uchun dori qutisidagi qaysi maxsus tibbiy aslahadan foydalanish majburiydir?",
       "opts": [
         "A) Elastik oddiy bint",
         "B) Turniket rezina jgut",
@@ -1416,7 +1416,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Turniket rezina jgut..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida darslik matni asosida \"Bosh miya shikastlanishlarining differentsial tahlili va alomatlari\" o'rganilmoqda. Keys: \"Avtohalokatga uchragan haydovchi tekshirilganda uning quloq yoki burun sohasidan qon yoxud tiniq rangli suyuqlik oqayotgani, shuningdek ko'zlari atrofida ko'karish ('ko'zoynak simptomi') hosil bo'lganligi hamda ongning og'ir darajada buzilganligi vizual qayd etildi\". Darslikning \"Bosh miya shikastlanishi turlari\" bo'limiga binoan, ushbu o'ziga xos o'tkir simptomlar (alomatlar) bosh qismining qaysi jarohatiga qonunan tegishli hisoblanadi?",
+      "q": "Avtohalokatga uchragan haydovchi tekshirilganda uning quloq yoki burun sohasidan qon yoxud tiniq rangli suyuqlik oqayotgani, shuningdek ko'zlari atrofida ko'karish ('ko'zoynak simptomi') hosil bo'lganligi hamda ongning og'ir darajada buzilganligi vizual qayd etildi. Darslikning \"Bosh miya shikastlanishi turlari\" bo'limiga binoan, ushbu o'ziga xos o'tkir simptomlar (alomatlar) bosh qismining qaysi jarohatiga qonunan tegishli hisoblanadi?",
       "opts": [
         "A) Miyaning eng yengil chayqalishi (silkinishi)",
         "B) Bosh suyagi sinishi (kalla suyagi asosi va gumbazi sinishi)",
@@ -1428,7 +1428,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Bosh suyagi sinishi (kalla suyagi asosi va gumbazi..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik-tibbiy tayyorgarlik darsida \"Tayanch-harakat apparati shikastlanganda transportirovka (tashish) qilish prinsiplari\" o'rganilmoqda. Keys: \"Askar jang maydonida umurtqa pog'onasi, bo'yin, bel yoki chanoq-son suyaklaridan o'ta og'ir jarohat olgan bemoring shifoxonaga yetkazish uchun tayyorlamoqda. Noto'g'ri harakat qilish bemorning asab tizimini butunlay falaj qilishi mumkin\". Darslikning \"Transportirovka qilish tartibi\" qoidalariga muvofiq, umurtqa pog'onasi zarar ko'rgan bunday bemorlarni ko'chirish va tashish vaqtida quvvatlovchi vositalar bilan birgalikda ularni qanday majburiy yuzaga yotqizish qonunan shart etib belgilangan?",
+      "q": "Askar jang maydonida umurtqa pog'onasi, bo'yin, bel yoki chanoq-son suyaklaridan o'ta og'ir jarohat olgan bemoring shifoxonaga yetkazish uchun tayyorlamoqda. Noto'g'ri harakat qilish bemorning asab tizimini butunlay falaj qilishi mumkin. Darslikning \"Transportirovka qilish tartibi\" qoidalariga muvofiq, umurtqa pog'onasi zarar ko'rgan bunday bemorlarni ko'chirish va tashish vaqtida quvvatlovchi vositalar bilan birgalikda ularni qanday majburiy yuzaga yotqizish qonunan shart etib belgilangan?",
       "opts": [
         "A) Yumshoq gubkali matras ustiga yonboshlatib",
         "B) Qattiq va mutloq tekis yuzaga (shit yoki taxtaga) jismoniy harakatsiz holatda yotqizib",
@@ -1440,7 +1440,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Qattiq va mutloq tekis yuzaga (shit yoki taxtaga)..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy darsda \"Ko'krak qafasining ochiq va teshilgan jarohatlarida birlamchi shoshilinch yordam ko'rsatish\" taktikasini tushuntirmoqda. Keys: \"Portlash natijasida ko'krak sohasidan ochiq o'q yoki parcha jarohati olgan bemorning o'pka qismiga tashqi muhitdan atmosfera havosi kirishi (pnevmotoraks) va nafas qisishi boshlandi\". Darslikning \"Ko'krak jarohatlanganda birinchi tibbiy yordam choralari\" yo'riqnomasiga binoan, havo tashqaridan o'pka bo'shlig'iga teshik orqali kirmasligi uchun jarohatlangan ochiq yara yuzasini zudlik bilan qanday qoplama (usul) bilan yopish shart?",
+      "q": "Portlash natijasida ko'krak sohasidan ochiq o'q yoki parcha jarohati olgan bemorning o'pka qismiga tashqi muhitdan atmosfera havosi kirishi (pnevmotoraks) va nafas qisishi boshlandi. Darslikning \"Ko'krak jarohatlanganda birinchi tibbiy yordam choralari\" yo'riqnomasiga binoan, havo tashqaridan o'pka bo'shlig'iga teshik orqali kirmasligi uchun jarohatlangan ochiq yara yuzasini zudlik bilan qanday qoplama (usul) bilan yopish shart?",
       "opts": [
         "A) Yumshoq elastik bint bilan bo'sh o'rash orqali",
         "B) Steril qoplama yoki toza doka (germetik asseptik bog'lam) yordamida yarani mahkam yopish orqali",
@@ -1452,7 +1452,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Steril qoplama yoki toza doka (germetik asseptik bog'lam)..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Qorin bo'shlig'i a'zolarining shikastlanish alomatlari va birinchi yordam cheklovlari\" bo'limi tahlil qilinmoqda. Keys: \"Qorin sohasidan og'ir yopiq zarba olgan bemorda ichki a'zolarning yorilishi oqibatida o'tkir ichki qon ketishi rivojlanmoqda. Bemorning yuzi keskin oqardi, arterial qon bosimi tobora pasayib, o'ta kuchli chanqoq hissi boshlandi\". Darslikning \"Qorin jarohatlarida birinchi tibbiy yordam harakatlari\" bo'limidagi uchinchi band talabiga ko'ra, bemor o'ta qattiq chanqaganini aytib qichqirgan taqdirda ham unga qaysi harakatini bajarish qat'iyan man etiladi?",
+      "q": "Qorin sohasidan og'ir yopiq zarba olgan bemorda ichki a'zolarning yorilishi oqibatida o'tkir ichki qon ketishi rivojlanmoqda. Bemorning yuzi keskin oqardi, arterial qon bosimi tobora pasayib, o'ta kuchli chanqoq hissi boshlandi. Darslikning \"Qorin jarohatlarida birinchi tibbiy yordam harakatlari\" bo'limidagi uchinchi band talabiga ko'ra, bemor o'ta qattiq chanqaganini aytib qichqirgan taqdirda ham unga qaysi harakatini bajarish qat'iyan man etiladi?",
       "opts": [
         "A) Bemorning yuzini sovuq suv bilan artish taqiqlanadi",
         "B) Suyuqlik (suv) ichishiga mutloq ruxsat bermaslik (ichirish taqiqlanadi)",
@@ -1464,7 +1464,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Suyuqlik (suv) ichishiga mutloq ruxsat bermaslik (ichirish taqiqlanadi)..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Is gazi (CO) va undan zaharlanganda organizmdagi patologik zanjir oqibatlari\" bo'yicha tahliliy keys berildi. Keys: \"Qish mavsumida nosoz isitish pechidan xonaga hidsiz va rangsiz is gazi sizib chiqdi. Xonadagi inson ushbu gazdan uzoq vaqt nafas olishi natijasida gaz uning qon tizimiga o'tib, qondagi hayotiy element bilan bog'landi va organizmda og'ir kislorod yetishmovchiligini keltirib chiqardi\". Darslik matnidagi is gazidan zaharlanish ta'rifiga ko'ra, is gazi nafas yo'llari orqali qonga kirgach, birinchi navbatda qonning qaysi asosiy tarkibiy elementi (moddasi) bilan bog'lanib, uning kislorod tashish qobiliyatini butunlay yo'q qiladi?",
+      "q": "Qish mavsumida nosoz isitish pechidan xonaga hidsiz va rangsiz is gazi sizib chiqdi. Xonadagi inson ushbu gazdan uzoq vaqt nafas olishi natijasida gaz uning qon tizimiga o'tib, qondagi hayotiy element bilan bog'landi va organizmda og'ir kislorod yetishmovchiligini keltirib chiqardi. Darslik matnidagi is gazidan zaharlanish ta'rifiga ko'ra, is gazi nafas yo'llari orqali qonga kirgach, birinchi navbatda qonning qaysi asosiy tarkibiy elementi (moddasi) bilan bog'lanib, uning kislorod tashish qobiliyatini butunlay yo'q qiladi?",
       "opts": [
         "A) Leykotsitlar bilan",
         "B) Gemoglobin bilan",
@@ -1476,7 +1476,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Gemoglobin bilan..."
     },
   {
-      "q": "CHQBT fani rahbari o'quvchilarga \"Zaharli ilon chaqqanda poligon sharoitida ko'rsatiladigan to'g'ri birinchi yordam algoritmi\"ni darslik asosida tushuntirmoqda. Keys: \"Dala-taktik mashg'uloti vaqtida askarni zaharli ilon to'satdan oyog'idan chaqdi. Jarohatlangan joy ko'karib, shish boshlandi va bemorning yurak urishi tezlashdi. Guruh sardori zahar qon orqali tanaga tez tarqalmasligi uchun shoshilinch chora ko'rmoqda\". Darslikning \"Zaharli ilon chaqqanda birinchi yordam ko'rsatish\" qoidalariga muvofiq, zaharning tana bo'ylab tarqalish tezligini va organizmdagi harakat dinamikasini minimal darajaga tushirish uchun jarohatlangan oyoq yoki qo'l qismini birinchi navbatda qanday holatga keltirish qonunan shart?",
+      "q": "Dala-taktik mashg'uloti vaqtida askarni zaharli ilon to'satdan oyog'idan chaqdi. Jarohatlangan joy ko'karib, shish boshlandi va bemorning yurak urishi tezlashdi. Guruh sardori zahar qon orqali tanaga tez tarqalmasligi uchun shoshilinch chora ko'rmoqda. Darslikning \"Zaharli ilon chaqqanda birinchi yordam ko'rsatish\" qoidalariga muvofiq, zaharning tana bo'ylab tarqalish tezligini va organizmdagi harakat dinamikasini minimal darajaga tushirish uchun jarohatlangan oyoq yoki qo'l qismini birinchi navbatda qanday holatga keltirish qonunan shart?",
       "opts": [
         "A) Oyoqni qattiq jgut bilan mahkam bo'g'ish lozim",
         "B) Shinalar yoki taxta bilan mahkam bog'lab, mutloq harakatsizlantirish va bemor harakatini cheklash shart",
@@ -1488,7 +1488,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Shinalar yoki taxta bilan mahkam bog'lab, mutloq harakatsizlantirish..."
     },
   {
-      "q": "11-sinf darsligining \"42-dars. Zaharli hasharotlar chaqqanda birinchi tibbiy yordam ko'rsatish: Qoraqurt chaqishi\" mavzusi o'rganilmoqda. Keys: \"Dala hududida askarni zaharli qoraqurt chaqdi. 15 daqiqa o'tgach bemorning muskullarida o'ta kuchli og'riq boshlandi, qorni dam bo'lib, muskullari taranglashdi va titrash alomatlari yuzaga keldi. Tibbiyot punkti xodimi organizmda zahar ta'sirida kuchli allergik reaktsiya va asoratlar kengayib ketishining oldini olish uchun bemorga shoshilinch dori vositalarini bermoqda\". Darslikdagi qoraqurt chaqqanda ko'rsatiladigan birinchi yordam qoidalariga muvofiq, bemorga birinchi navbatda qaysi guruhga mansub dori-preparatlari berilishi shart?",
+      "q": "Dala hududida askarni zaharli qoraqurt chaqdi. 15 daqiqa o'tgach bemorning muskullarida o'ta kuchli og'riq boshlandi, qorni dam bo'lib, muskullari taranglashdi va titrash alomatlari yuzaga keldi. Tibbiyot punkti xodimi organizmda zahar ta'sirida kuchli allergik reaktsiya va asoratlar kengayib ketishining oldini olish uchun bemorga shoshilinch dori vositalarini bermoqda. Darslikdagi qoraqurt chaqqanda ko'rsatiladigan birinchi yordam qoidalariga muvofiq, bemorga birinchi navbatda qaysi guruhga mansub dori-preparatlari berilishi shart?",
       "opts": [
         "A) Kuchli antibiotik dori vositalari",
         "B) Antigistamin (allergiyaga qarshi) dori-preparatlari",
@@ -1500,7 +1500,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Antigistamin (allergiyaga qarshi) dori-preparatlari..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Ko'z sohasining mexanik shikastlanishlari va birinchi yordam qoidalari\" bo'limi tahlil qilinmoqda. Keys: \"Avariya yoki portlash oqibatida o'quvchining ko'z qismi shikastlandi. Bemor ko'zida qattiq og'riq, yorug'likdan qo'rqish, ko'z yoshi uzluksiz oqishi va ko'rish qobiliyatining keskin pasayishini bildirdi\". Darslikdagi \"Ko'rish organlari jarohatlariga bog'lam qo'yish\" chizmasi va qoidalariga muvofiq, shikastlangan ko'zni infektsiyadan asrash va uning harakatlanishini to'xtatish uchun ko'zga qanday bog'lam turi qo'yilishi darslikda qonunan belgilangan?",
+      "q": "Avariya yoki portlash oqibatida o'quvchining ko'z qismi shikastlandi. Bemor ko'zida qattiq og'riq, yorug'likdan qo'rqish, ko'z yoshi uzluksiz oqishi va ko'rish qobiliyatining keskin pasayishini bildirdi. Darslikdagi \"Ko'rish organlari jarohatlariga bog'lam qo'yish\" chizmasi va qoidalariga muvofiq, shikastlangan ko'zni infektsiyadan asrash va uning harakatlanishini to'xtatish uchun ko'zga qanday bog'lam turi qo'yilishi darslikda qonunan belgilangan?",
       "opts": [
         "A) Sopqonsimon maxsus bog'lam",
         "B) Binokulyar (yoki monokulyar) steril ko'z bog'lami",
@@ -1512,7 +1512,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Binokulyar (yoki monokulyar) steril ko'z bog'lami..."
     },
   {
-      "q": "11-sinf CHQBT darsligi \"37-dars. Paylar cho'zilishi va bo'g'imlar chiqishida birinchi tibbiy yordam ko'rsatish: Chiqishlarni davolash prinsiplari\" bo'limi o'rganilmoqda. Keys: \"Sport mashg'ulotida yiqilish oqibatida o'quvchining elka bo'g'im suyagi o'z joyidan batamom siljidi, kuchli shish va deformatsiya hosil bo'ldi. Maktab shifokori bemorga birlamchi yordam ko'rsatgandan so'ng, uni ixtisoslashtirilgan shifoxona sharoitida to'liq davolash bosqichlarini tushuntirdi\". Darslik matnidagi \"Bo'g'imlar chiqishini davolash\" qoidalariga muvofiq, chiqqan suyak bo'g'imida normal anatomik moslikni qayta tiklash harakatidan so'ng, qo'l yoki oyoqlarni qisqa muddatga qat'iy qotirib turish uchun qaysi tibbiy vosita (shakli) qo'llanilishi shart?",
+      "q": "Sport mashg'ulotida yiqilish oqibatida o'quvchining elka bo'g'im suyagi o'z joyidan batamom siljidi, kuchli shish va deformatsiya hosil bo'ldi. Maktab shifokori bemorga birlamchi yordam ko'rsatgandan so'ng, uni ixtisoslashtirilgan shifoxona sharoitida to'liq davolash bosqichlarini tushuntirdi. Darslik matnidagi \"Bo'g'imlar chiqishini davolash\" qoidalariga muvofiq, chiqqan suyak bo'g'imida normal anatomik moslikni qayta tiklash harakatidan so'ng, qo'l yoki oyoqlarni qisqa muddatga qat'iy qotirib turish uchun qaysi tibbiy vosita (shakli) qo'llanilishi shart?",
       "opts": [
         "A) Issiq parafinli kompress bog'lamlari",
         "B) Gipsli shina yoki yumshoq fiksatsiyalovchi bog'lam",
@@ -1740,7 +1740,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Steril bint va bog'lov materiallaridan foydalanish hamda bintni..."
     },
   {
-      "q": "CHQBT amaliy dala mashg'ulotida \"Termik shikastlanishlar: I va II darajali yengil va o'rta kuyishlar tabiati\" tahlil qilinmoqda. Keys: \"Poligondagi dala oshxonasida ehtiyotsizlik oqibatida askarning qo'l teri qismiga o'ta issiq qaynoq suv to'kildi. Jarohatlangan sohada terining keskin qizarishi, shish paydo bo'lishi hamda ichi tiniq sarg'ish suyuqlik bilan to'lgan har xil o'lchamdagi pufakchalar hosil bo'lib, o'tkir og'riq boshlandi\". Darslik normalariga muvofiq, shish va ichi suyuqlik to'la pufakchalar hosil qiluvchi ushbu klinik holat terining nechanchi darajali kuyishi hisoblanadi?",
+      "q": "Poligondagi dala oshxonasida ehtiyotsizlik oqibatida askarning qo'l teri qismiga o'ta issiq qaynoq suv to'kildi. Jarohatlangan sohada terining keskin qizarishi, shish paydo bo'lishi hamda ichi tiniq sarg'ish suyuqlik bilan to'lgan har xil o'lchamdagi pufakchalar hosil bo'lib, o'tkir og'riq boshlandi. Darslik normalariga muvofiq, shish va ichi suyuqlik to'la pufakchalar hosil qiluvchi ushbu klinik holat terining nechanchi darajali kuyishi hisoblanadi?",
       "opts": [
         "A) I darajali kuyish",
         "B) II darajali kuyish",
@@ -1752,7 +1752,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - II darajali kuyish..."
     },
   {
-      "q": "11-sinf tibbiy tayyorgarlik imtihonida o'quvchilarga \"Kuyish asoratlari: Kuyish kasalligi va shok holati\" bo'yicha tahliliy keys berildi. Keys: \"Yong'indan qutqarib olingan askarning tana a'zolarining juda katta qismi (30% dan ortig'i) issiqlik alangasidan og'ir termik jarohat oldi. Bemor dastlab kuchli og'riq tufayli o'ta bezovta bo'ldi, qon bosimi keskin tebrandi, so'ngra to'satdan karaxtlik holatiga tushib, barcha hayotiy funktsiyalari pasaya boshladi\". Tibbiyot qoidalariga ko'ra, og'riq in'ektsiyasi va tana suyuqligining onson yo'qolishi hisobiga kelib chiqadigan ushbu og'ir umumiy patologik reaktsiya darslikda nima deb ataladi?",
+      "q": "Yong'indan qutqarib olingan askarning tana a'zolarining juda katta qismi (30% dan ortig'i) issiqlik alangasidan og'ir termik jarohat oldi. Bemor dastlab kuchli og'riq tufayli o'ta bezovta bo'ldi, qon bosimi keskin tebrandi, so'ngra to'satdan karaxtlik holatiga tushib, barcha hayotiy funktsiyalari pasaya boshladi. Tibbiyot qoidalariga ko'ra, og'riq in'ektsiyasi va tana suyuqligining onson yo'qolishi hisobiga kelib chiqadigan ushbu og'ir umumiy patologik reaktsiya darslikda nima deb ataladi?",
       "opts": [
         "A) Mahalliy anemiya",
         "B) Kuyish shoki (Kuyish kasalligi)",
@@ -1764,7 +1764,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Kuyish shoki (Kuyish kasalligi)..."
     },
   {
-      "q": "CHQBT darsida o'quvchilar \"Termik kuyishlarda birlamchi tibbiy yordam ko'rsatish va qonuniy taqiqlar\" mavzusini o'rganishmoqda. Keys: \"O'quvchi tanasining kuygan qismida hosil bo'lgan suyuqlikli pufakchalarni infektsiyani tezroq chiqarib tashlash maqsadida pichoq yoki igna bilan mustaqil ravishda teshib, ustiga yog'li surtma dori surtmoqchi bo'ldi\". Darslikning \"Kuyishda birinchi yordam ko'rsatish\" qoidalariga muvofiq, yaraning chuqur infektsiyalanishi va infeksiya kengayishining oldini olish uchun yordam ko'rsatuvchi shaxsga qaysi harakat qat'iyan man etiladi?",
+      "q": "O'quvchi tanasining kuygan qismida hosil bo'lgan suyuqlikli pufakchalarni infektsiyani tezroq chiqarib tashlash maqsadida pichoq yoki igna bilan mustaqil ravishda teshib, ustiga yog'li surtma dori surtmoqchi bo'ldi. Darslikning \"Kuyishda birinchi yordam ko'rsatish\" qoidalariga muvofiq, yaraning chuqur infektsiyalanishi va infeksiya kengayishining oldini olish uchun yordam ko'rsatuvchi shaxsga qaysi harakat qat'iyan man etiladi?",
       "opts": [
         "A) Yarani sovuq oqari suv ostida 15-20 daqiqa ushlab turish taqiqlanadi",
         "B) Pufakchalarni teshish (kesish), kuygan joyga yopishib qolgan kiyim bo'laklarini yulib olish hamda yaraga yog', maz yoki kukunlar surtish qat'iyan man etiladi",
@@ -1776,7 +1776,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Pufakchalarni teshish (kesish), kuygan joyga yopishib qolgan kiyim..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Suyak sinishi turlari: Ochiq va yopiq sinishlarning asosiy anatomik farqlari\" bo'iycha keys topshirig'i berildi. Keys: \"Yiqilish natijasida askarning qo'l suyak to'qimalari parchalandi. Ko'rik vaqtida suyak singan sohadagi yumshoq to'qimalar va teri qatlamining butunligi onson buzilganligi, singan po'latday o'tkir suyak parchalari tashqariga chiqib turganligi va yaradan kuchli qon ketayotgani aniqlandi\". Darslik tasnifiga ko'ra, teri va yumshoq to'qimalarning yorilishi hamda tashqi muhit bilan bevosita aloqa hosil bo'lishi bilan kechadigan bunday jarohat turi qonunan qanday nomlanadi?",
+      "q": "Yiqilish natijasida askarning qo'l suyak to'qimalari parchalandi. Ko'rik vaqtida suyak singan sohadagi yumshoq to'qimalar va teri qatlamining butunligi onson buzilganligi, singan po'latday o'tkir suyak parchalari tashqariga chiqib turganligi va yaradan kuchli qon ketayotgani aniqlandi. Darslik tasnifiga ko'ra, teri va yumshoq to'qimalarning yorilishi hamda tashqi muhit bilan bevosita aloqa hosil bo'lishi bilan kechadigan bunday jarohat turi qonunan qanday nomlanadi?",
       "opts": [
         "A) Yopiq sinish",
         "B) Ochiq sinish (Otkrytyy perelom)",
@@ -1788,7 +1788,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Ochiq sinish (Otkrytyy perelom)..."
     },
   {
-      "q": "CHQBT o'qituvchilari o'rtasida o'tkazilgan ilmiy-metodik seminarda \"Suyak singanida transport immobilizatsiyasi qoidalari\" muhokama qilinmoqda. Keys: \"Askar boldir suyagi ochiq singan va yaradan arterial qon ketayotgan jarohatdorga shoshilinch transport shinalari yordamida yordam ko'rsatmoqchi\". Darslikning \"Suyak sinishida immobilizatsiya qilish zanjiri\" yo'riqnomasiga binoan, transport shinalarini oyoqqa bog'lashdan mutloq oldin, birinchi navbatda qaysi ikki shoshilinch tibbiy harakat ketma-ket bajarilishi majburiydir?",
+      "q": "Askar boldir suyagi ochiq singan va yaradan arterial qon ketayotgan jarohatdorga shoshilinch transport shinalari yordamida yordam ko'rsatmoqchi. Darslikning \"Suyak sinishida immobilizatsiya qilish zanjiri\" yo'riqnomasiga binoan, transport shinalarini oyoqqa bog'lashdan mutloq oldin, birinchi navbatda qaysi ikki shoshilinch tibbiy harakat ketma-ket bajarilishi majburiydir?",
       "opts": [
         "A) Avval shinani qattiq bog'lab, so'ngra gips qo'yish laboratoriyasiga yo'l olish kerak",
         "B) Birinchi navbatda turniket (jgut) yordamida qon ketishini to'xtatish, yara atrofiga antiseptik surib steril bog'lam qo'yish va shundan keyingina shinani (kiyim ustidan) joylashtirish shart",
@@ -1800,7 +1800,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Birinchi navbatda turniket (jgut) yordamida qon ketishini to'xtatish,..."
     },
   {
-      "q": "11-sinf CHQBT darsligi \"36-dars. Bosh va kalla suyagi jarohatlarida birinchi yordam ko'rsatish: Transportirovka holati\" qoidalari o'rganilmoqda. Keys: \"Kalla suyagi asosi singan, es-hushi o'zida bo'lmagan og'ir bemor harbiy gospitalga transport vositasida olib ketilmoqda. Kuzatuvchi askar bemor qushganida qusuq massasi nafas yo'llarini bo'g'ib qo'ymasligi yoki tili orqaga ketmasligi uchun uning tanasini qat'iy ma'lum bir holatda saqlashi shart\". Darslik yo'riqnomasiga muvofiq, hushsiz holatdagi bunday bosh jarohati bor bemorlarni transportda xavfsiz tashish uchun ular qaysi holatda yotqizilishi shart?",
+      "q": "Kalla suyagi asosi singan, es-hushi o'zida bo'lmagan og'ir bemor harbiy gospitalga transport vositasida olib ketilmoqda. Kuzatuvchi askar bemor qushganida qusuq massasi nafas yo'llarini bo'g'ib qo'ymasligi yoki tili orqaga ketmasligi uchun uning tanasini qat'iy ma'lum bir holatda saqlashi shart. Darslik yo'riqnomasiga muvofiq, hushsiz holatdagi bunday bosh jarohati bor bemorlarni transportda xavfsiz tashish uchun ular qaysi holatda yotqizilishi shart?",
       "opts": [
         "A) Chalqancha yotqizilib, oyoqlari yuqoriga ko'tariladi",
         "B) Yonbosh holatda (yoki qorindagi barqaror holatda), boshini sekin yonga burib, kiyim yoqalarini bo'shatgan tarzda",
@@ -1812,7 +1812,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Yonbosh holatda (yoki qorindagi barqaror holatda), boshini sekin..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Zaharli ilonlar chaqqanda organizmda yuz beradigan klinik o'zgarishlar o'lchovlari\" bo'limi tahlil qilinmoqda. Keys: \"Ilon chaqqan askarning umumiy holati jiddiy o'rganilmoqda. Darslikda ilon zahari neyrotoksik va gemolitik ta'sir ko'rsatishi natijasida inson arterial qon bosimi va tana harorati keskin o'zgarishi jadvallarda berilgan\". Darslikning \"Ilon chaqqandagi TTT klinik ko'rsatkichlari\" jadvallariga muvofiq, zahar organizmga to'liq tarqalganda tana harorati necha darajagacha ko'tarilishi va qon bosimi dinamikasi qanday o'zgarishi qat'iy belgilangan?",
+      "q": "Ilon chaqqan askarning umumiy holati jiddiy o'rganilmoqda. Darslikda ilon zahari neyrotoksik va gemolitik ta'sir ko'rsatishi natijasida inson arterial qon bosimi va tana harorati keskin o'zgarishi jadvallarda berilgan. Darslikning \"Ilon chaqqandagi TTT klinik ko'rsatkichlari\" jadvallariga muvofiq, zahar organizmga to'liq tarqalganda tana harorati necha darajagacha ko'tarilishi va qon bosimi dinamikasi qanday o'zgarishi qat'iy belgilangan?",
       "opts": [
         "A) Tana harorati 36.6 darajada barqaror qoladi, qon bosimi ortadi",
         "B) Tana harorati 38-39 darajagacha ko'tariladi, arterial qon bosimi esa keskin pasayadi (gipotoniya yuz beradi)",
@@ -1836,7 +1836,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Chaqilgan joyda chidab bo'lmas darajada o'tkir lofildovchi og'riq,..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy dars xonasida \"Qo'l va oyoq barmoqlari jarohatlanganda spiralsimon va qo'lqopsimon bog'lamlarni to'g'ri qo'yish texnikasi\"ni o'rgatmoqda. Keys: \"O'quvchi portlash oqibatida chap qo'lining barcha barmoqlaridan kombinatsiyalashgan jarohat olgan bemorga steril bint yordamida 'qo'lqopsimon' bog'lam qo'ymoqchi\". Darslikning \"Bog'lam qo'yish usullari va qoidalari\" yo'riqnomasiga binoan, chap qo'lga qo'lqopsimon bog'lam qo'yish harakati qonunan qaysi barmoqdan boshlanishi va qaysi barmoqda yakunlanishi qat'iy shart qibly belgilangan?",
+      "q": "O'quvchi portlash oqibatida chap qo'lining barcha barmoqlaridan kombinatsiyalashgan jarohat olgan bemorga steril bint yordamida 'qo'lqopsimon' bog'lam qo'ymoqchi. Darslikning \"Bog'lam qo'yish usullari va qoidalari\" yo'riqnomasiga binoan, chap qo'lga qo'lqopsimon bog'lam qo'yish harakati qonunan qaysi barmoqdan boshlanishi va qaysi barmoqda yakunlanishi qat'iy shart qibly belgilangan?",
       "opts": [
         "A) Bosh barmoqdan boshlanib, jimjiloqda tugaydi",
         "B) Jimjiloqdan boshlanib, birin-ketin o'ralib, bosh barmoqda batamom yakunlanadi",
@@ -1980,7 +1980,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Karantin..."
     },
   {
-      "q": "CHQBT darsida 11-sinf o'quvchilariga \"Arterial va venoz qon ketishining o'zaro farqlari hamda ularni onson aniqlash alomatlari\" o'rgatilmoqda. Keys: \"Dala-taktik poligonida portlash oqibatida jarohatlangan askarning tana a'zosi ko'zdan kechirilganda, yirik qon tomiridan och qizil rangli qonning o'ta yuqori bosim bilan, pulsatsiyali favvorasimon otilib chiqayotganligi vujudga keldi\". Darslikdagi qon ketishi tasnifiga ko'ra, hayotcenter uchun o'ta xavfli bo'lgan ushbu qon ochilishi qaysi qon tomirining shikastlanganligidan qat'iy dalolat beradi?",
+      "q": "Dala-taktik poligonida portlash oqibatida jarohatlangan askarning tana a'zosi ko'zdan kechirilganda, yirik qon tomiridan och qizil rangli qonning o'ta yuqori bosim bilan, pulsatsiyali favvorasimon otilib chiqayotganligi vujudga keldi. Darslikdagi qon ketishi tasnifiga ko'ra, hayotcenter uchun o'ta xavfli bo'lgan ushbu qon ochilishi qaysi qon tomirining shikastlanganligidan qat'iy dalolat beradi?",
       "opts": [
         "A) Venoz qon tomiri",
         "B) Arterial qon tomiri",
@@ -1992,7 +1992,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Arterial qon tomiri..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik-tibbiy musobaqasida \"Venoz qon ketishining klinik xususiyatlari va birinchi yordam bog'lami\" o'rganilmoqda. Keys: \"Mexanik jarohat natijasida askarning qo'l qismidagi tomirdan to'q qizil qonning hech qanday favvorasiz va pulsatsiyasiz, sekin, uzluksiz oqib chiqayotganligi vizual qayd etildi\". Darslikning \"Qon ketganda yordam ko'rsatish\" qoidalariga muvofiq, bunday venoz qon ketishini joyida tez to'xtatish uchun turniket o'rniga qaysi eng ishonchli bog'lov usulidan foydalanish darslikda qonunan belgilangan?",
+      "q": "Mexanik jarohat natijasida askarning qo'l qismidagi tomirdan to'q qizil qonning hech qanday favvorasiz va pulsatsiyasiz, sekin, uzluksiz oqib chiqayotganligi vizual qayd etildi. Darslikning \"Qon ketganda yordam ko'rsatish\" qoidalariga muvofiq, bunday venoz qon ketishini joyida tez to'xtatish uchun turniket o'rniga qaysi eng ishonchli bog'lov usulidan foydalanish darslikda qonunan belgilangan?",
       "opts": [
         "A) Yarani shunchaki ochiq qoldirib, ustiga issiq grelka qo'yish orqali",
         "B) Bosib turuvchi steril bog'lam qo'yish orqali",
@@ -2004,7 +2004,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Bosib turuvchi steril bog'lam qo'yish orqali..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Arterial jgut qo'llashda vaqt chegaralari normativi va uning qonuniy asoratlari\" darslik asosida tahlil qilinmoqda. Keys: \"Askar jarohatlangan safdoshining arterial qonini to'xtatish uchun son qismiga turniket jgutini mahkam qisib bog'ladi va jgut ostiga vaqt yozilgan maxsus qog'oz eslatmani qistirdi\". Amaldagi 11-sinf CHQBT darsligi qoidalariga ko'ra, jgut bog'langan tana a'zosi onson o'lib ketmasligi uchun jgutni maksimal qo'llash muddati yozgi va qishki vaqtlarda mos ravishda ko'pi bilan necha soatdan oshmasligi qonunan qat'iy shart qilib belgilangan?",
+      "q": "Askar jarohatlangan safdoshining arterial qonini to'xtatish uchun son qismiga turniket jgutini mahkam qisib bog'ladi va jgut ostiga vaqt yozilgan maxsus qog'oz eslatmani qistirdi. Amaldagi 11-sinf CHQBT darsligi qoidalariga ko'ra, jgut bog'langan tana a'zosi onson o'lib ketmasligi uchun jgutni maksimal qo'llash muddati yozgi va qishki vaqtlarda mos ravishda ko'pi bilan necha soatdan oshmasligi qonunan qat'iy shart qilib belgilangan?",
       "opts": [
         "A) Yozda 10 soat, qishda 24 soat",
         "B) Yozgi vaqtda ko'pi bilan 2 soat, qishki sovuq vaqtda esa ko'pi bilan 1-1.5 soat oralig'ida",
@@ -2016,7 +2016,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Yozgi vaqtda ko'pi bilan 2 soat, qishki sovuq..."
     },
   {
-      "q": "Buning suyak sinishi: Yopiq sinishlarning klinik belgilari va diagnostikasi\" bo'yicha taktik savol berildi. Keys: \"Taktik mashg'ulotda yiqilgan askarning oyoq qismi qattiq jarohatlandi. Tashqi tomondan terining butunligi mutloq buzilmagan, biroq suyak singan sohadagi o'ta qattiq shish, oyoq shaklining g'ayritabiiy qiyshayishi hamda jismoniy harakatlantirganda suyak siniqlarining o'zaro bir-biriga ishqalanish ovozi eshitildi\". Darslik matniga ko'ra, suyak siniqlarining o'zaro ishqalanishidan hosil bo'ladigan ushbu o'ziga xos tibbiy ovoz ilmiy tilda nima deb ataladi?",
+      "q": "Taktik mashg'ulotda yiqilgan askarning oyoq qismi qattiq jarohatlandi. Tashqi tomondan terining butunligi mutloq buzilmagan, biroq suyak singan sohadagi o'ta qattiq shish, oyoq shaklining g'ayritabiiy qiyshayishi hamda jismoniy harakatlantirganda suyak siniqlarining o'zaro bir-biriga ishqalanish ovozi eshitildi. Darslik matniga ko'ra, suyak siniqlarining o'zaro ishqalanishidan hosil bo'ladigan ushbu o'ziga xos tibbiy ovoz ilmiy tilda nima deb ataladi?",
       "opts": [
         "A) Gematoma",
         "B) Krepitatsiya",
@@ -2028,7 +2028,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Krepitatsiya..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Suyak sinishlarida transport shinalarini qo'llashning fundamental qoidalari\" bo'limi tahlil qilinmoqda. Keys: \"Askar boldir suyaklari singan bemorning oyog'iga transport shinasini shakllantirib bog'lamoqchi\". Darslikning \"Shina qo'yish uslublari va qoidalari\" yo'riqnomasiga binoan, transport shinasini jarohatlangan oyoq yoki qo'l a'zosiga qo'yish vaqtida, sinish barqarorligini ta'minlash uchun singan suyak joylashgan sohadan tashqari kamida nechta qo'shni bo'g'imni ishonchli qotirish qonunan shart?",
+      "q": "Askar boldir suyaklari singan bemorning oyog'iga transport shinasini shakllantirib bog'lamoqchi. Darslikning \"Shina qo'yish uslublari va qoidalari\" yo'riqnomasiga binoan, transport shinasini jarohatlangan oyoq yoki qo'l a'zosiga qo'yish vaqtida, sinish barqarorligini ta'minlash uchun singan suyak joylashgan sohadan tashqari kamida nechta qo'shni bo'g'imni ishonchli qotirish qonunan shart?",
       "opts": [
         "A) Hech qanday bo'g'im qotirilmaydi, faqat suyakust bog'lanadi",
         "B) Kamida ikkita qo'shni bo'g'imni qotirish shart",
@@ -2040,7 +2040,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Kamida ikkita qo'shni bo'g'imni qotirish shart..."
     },
   {
-      "q": "11-sinf darsligining \"36-dars. Bosh va kalla suyagi jarohatlari: Miyaning og'ir lat yeyishi va ichki bosim asoratlari\" mavzusi o'rganilmoqda. Keys: \"Boshidan og'ir mexanik zarba olgan askar ko'zdan kechirilganda, uning hushidan ketganligi, nafasining onson qiyinlashganligi aniqlandi. Shuningdek, uning ko'z qorachiqlari yorug'likka tekshirilganda, o'ng va chap ko'z qorachiqlarining o'lchamlari bir-biridan keskin farq qilishi aniqlandi\". Darslikning kalla jarohatlari klinik belgilariga ko'ra, ko'z qorachiqlarining bunday har xil o'lchamda bo'lish og'ir patologik alomati tibbiyotda qonunan qanday nomlanadi?",
+      "q": "Boshidan og'ir mexanik zarba olgan askar ko'zdan kechirilganda, uning hushidan ketganligi, nafasining onson qiyinlashganligi aniqlandi. Shuningdek, uning ko'z qorachiqlari yorug'likka tekshirilganda, o'ng va chap ko'z qorachiqlarining o'lchamlari bir-biridan keskin farq qilishi aniqlandi. Darslikning kalla jarohatlari klinik belgilariga ko'ra, ko'z qorachiqlarining bunday har xil o'lchamda bo'lish og'ir patologik alomati tibbiyotda qonunan qanday nomlanadi?",
       "opts": [
         "A) Gematoma oqimi",
         "B) Anizokoriya",
@@ -2052,7 +2052,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Anizokoriya..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Ko'krak qafasining teshilgan jarohatlari: Pnevmotoraks hodisasi mexanikasi\" bo'limi tahlil qilinmoqda. Keys: \"Ko'krak qafasidan ochiq jarohat olgan askarning ko'krak devori teshilishi oqibatida, yara teshigidan har safar nafas olganda va chiqarganda havo va ko'pik aralash shovqinli ovoz kelmoqda, bemor tobora bo'g'ilmoqda\". Darslik matnidagi fundamental ballistik-tibbiy ta'rifga ko'ra, atmosfera havasining ko'krak devoridagi yara teshigi orqali o'pka plevra bo'shlig'iga onson suqilib kirishi va o'pkani siqib qo'yishi hodisasi nima deb ataladi?",
+      "q": "Ko'krak qafasidan ochiq jarohat olgan askarning ko'krak devori teshilishi oqibatida, yara teshigidan har safar nafas olganda va chiqarganda havo va ko'pik aralash shovqinli ovoz kelmoqda, bemor tobora bo'g'ilmoqda. Darslik matnidagi fundamental ballistik-tibbiy ta'rifga ko'ra, atmosfera havasining ko'krak devoridagi yara teshigi orqali o'pka plevra bo'shlig'iga onson suqilib kirishi va o'pkani siqib qo'yishi hodisasi nima deb ataladi?",
       "opts": [
         "A) Gematoma",
         "B) Pnevmotoraks",
@@ -2064,7 +2064,7 @@ export const q5_tibbiy_bilim = [
       "mnemonic": "Tibbiy bilim asoslari - Pnevmotoraks..."
     },
   {
-      "q": "11-sinf CHQBT darsligi matniga muvofiq, \"Zaharli ilonlar chaqqanda mutloq taqiqlangan harakatlar zanjiri\" o'rganilmoqda. Keys: \"Askar dala maydonida safdoshi ilon chaqqan joyni zahar tarqallmasligi uchun pichoq bilan kesib qon chiqarmoqchi, og'iz bilan zaharni so'rmoqchi va jarohat ustini olov bilan kuydirmoqchi bo'ldi\". Darslikning \"Ilon chaqqanda birinchi yordam cheklovlari\" bo'limidagi qat'iy talablarga ko'ra, buoqdagi to'qimalarning o'tkir o'lishiga va qon tomirlarining jiddiy jarohatlanishiga sabab bo'lishi tufayli quyidagi amallarning qaysi biri darslik bo'yicha qat'iyan man etiladi?",
+      "q": "Askar dala maydonida safdoshi ilon chaqqan joyni zahar tarqallmasligi uchun pichoq bilan kesib qon chiqarmoqchi, og'iz bilan zaharni so'rmoqchi va jarohat ustini olov bilan kuydirmoqchi bo'ldi. Darslikning \"Ilon chaqqanda birinchi yordam cheklovlari\" bo'limidagi qat'iy talablarga ko'ra, buoqdagi to'qimalarning o'tkir o'lishiga va qon tomirlarining jiddiy jarohatlanishiga sabab bo'lishi tufayli quyidagi amallarning qaysi biri darslik bo'yicha qat'iyan man etiladi?",
       "opts": [
         "A) Yarani toza bint bilan yumshoq o'rash taqiqlanadi",
         "B) Jarohatlangan joyni kesish, kuydirish, jgut bilan qattiq bo'g'ish hamda spirtli ichimliklar ichirish qat'iyan man etiladi",

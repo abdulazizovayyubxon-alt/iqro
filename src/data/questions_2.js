@@ -3252,7 +3252,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qurol og'zini odamga qaratma!"
     },
   {
-      "q": "CHQBT fani rahbari 11-sinf o'quvchilariga O'zbekiston Respublikasining \"Qurol to'g'risida\"gi Qonuniga muvofiq qurol turlarining tasnifini tushuntirmoqda. Keys: \"Yuridik shaxs o'z xizmat majburiyatlarini bajarish vaqtida xodimlarning hayoti va sog'lig'ini, pul mablag'larini hamda qimmatli yuklarni himoya qilish maqsadida maxsus qurol turlaridan foydalanishga ruxsat oldi\". Ushbu qonuniy me'yorlar doirasidan kelib chiqib tahlil qilinsa, qonun bo'yicha bunday maqsadlar uchun mo'ljallangan qurollar qaysi qurol turiga (tasnifiga) kiritiladi?",
+      "q": "Yuridik shaxs o'z xizmat majburiyatlarini bajarish vaqtida xodimlarning hayoti va sog'lig'ini, pul mablag'larini hamda qimmatli yuklarni himoya qilish maqsadida maxsus qurol turlaridan foydalanishga ruxsat oldi. Ushbu qonuniy me'yorlar doirasidan kelib chiqib tahlil qilinsa, qonun bo'yicha bunday maqsadlar uchun mo'ljallangan qurollar qaysi qurol turiga (tasnifiga) kiritiladi?",
       "opts": [
         "A) Fuqaroviy qurol (Grajdanskoye orujiye)",
         "B) Xizmat quroli (Slujebnoye orujiye)",
@@ -3264,7 +3264,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Xizmat quroli (Slujebnoye orujiye)..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Fuqaroviy qurol turlari va ularning huquqiy maqsadi\" mavzusi muhokama qilinmoqda. Keys: \"O'zbekiston fuqarosi sport bilan shug'ullanish, ovchilik qilish hamda o'zini o'zi mudofaa qilish maqsadida qurol sotib olish uchun ichki ishlar organlariga ruxsatnoma so'rab murojaat qildi\". \"Qurol to'g'risida\"gi Qonununig qat'iy moddalariga muvofiq, fuqarolarning faqat mana shu uchta maqsadi uchun mo'ljallangan qurollar huquqiy jihatdan qaysi umumiy guruhga mansub hisoblanadi?",
+      "q": "O'zbekiston fuqarosi sport bilan shug'ullanish, ovchilik qilish hamda o'zini o'zi mudofaa qilish maqsadida qurol sotib olish uchun ichki ishlar organlariga ruxsatnoma so'rab murojaat qildi. \"Qurol to'g'risida\"gi Qonununig qat'iy moddalariga muvofiq, fuqarolarning faqat mana shu uchta maqsadi uchun mo'ljallangan qurollar huquqiy jihatdan qaysi umumiy guruhga mansub hisoblanadi?",
       "opts": [
         "A) Xizmat quroli (Slujebnoye orujiye)",
         "B) Fuqaroviy qurol (Grajdanskoye orujiye)",
@@ -3288,7 +3288,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - 21 yoshdan boshlab..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari ilmiy-metodik kengashida \"Fuqaroviy qurolni saqlash va olib yurish huquqi cheklovlari\" bo'yicha tahliliy vaziyat o'rganilmoqda. Keys: \"Ruxsatnomaga ega bo'lgan fuqaro o'zining ov qurolini shahar markazida o'tkazilayotgan ommaviy miting, namoyish yoki bayram tadbiri o'tkazilayotgan joyga kiyim ostiga yashirgan holda olib kirdi\". \"Qurol to'g'risida\"gi Qonunning qat'iy taqiqlari nuqtai nazaridan yondashilsa, ushbu fuqaroning xatti-harakati qonunan qanday baholanadi?",
+      "q": "Ruxsatnomaga ega bo'lgan fuqaro o'zining ov qurolini shahar markazida o'tkazilayotgan ommaviy miting, namoyish yoki bayram tadbiri o'tkazilayotgan joyga kiyim ostiga yashirgan holda olib kirdi. \"Qurol to'g'risida\"gi Qonunning qat'iy taqiqlari nuqtai nazaridan yondashilsa, ushbu fuqaroning xatti-harakati qonunan qanday baholanadi?",
       "opts": [
         "A) Bu to'g'ri, chunki ruxsatnomasi bor fuqaro qurolini respublika hududida istalgan joyda olib yurishi mumkin.",
         "B) Bu mutloq g'ayriqonuniy harakatdir. Qonunga ko'ra, mitinglar, ko'cha yurishlari, namoyishlar va boshqa ommaviy tadbirlar o'tkazilayotganda fuqaroviy qurolni olib yurish qat'iyan taqiqlanadi.",
@@ -3300,7 +3300,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Bu mutloq g'ayriqonuniy harakatdir. Qonunga ko'ra, mitinglar, ko'cha..."
     },
   {
-      "q": "11-sinf CHQBT darsida \"Qurol muomalasining litsenziyalash va ruxsat berish tizimi\" o'rganilmoqda. Keys: \"Tadbirkorlik sub'ekti xorijdan sport va ov qurollarini olib kelish hamda O'zbekistonda fuqaroviy qurol savdosi bilan shug'ullanish uchun maxsus ruxsatnoma olmoqchi\". O'zbekiston Respublikasining amaldagi qonunchiligiga ko'ra, fuqaroviy va xizmat qurolini hamda uning o'q-dorilarini ishlab chiqarish, ta'mirlash va realizatsiya qilish (sotish) faoliyatini litsenziyalash qaysi davlat organi tomonidan amalga oshiriladi?",
+      "q": "Tadbirkorlik sub'ekti xorijdan sport va ov qurollarini olib kelish hamda O'zbekistonda fuqaroviy qurol savdosi bilan shug'ullanish uchun maxsus ruxsatnoma olmoqchi. O'zbekiston Respublikasining amaldagi qonunchiligiga ko'ra, fuqaroviy va xizmat qurolini hamda uning o'q-dorilarini ishlab chiqarish, ta'mirlash va realizatsiya qilish (sotish) faoliyatini litsenziyalash qaysi davlat organi tomonidan amalga oshiriladi?",
       "opts": [
         "A) O'zbekiston Respublikasi Mudofaa vazirligi",
         "B) O'zbekiston Respublikasi Milliy gvardiyasi",
@@ -3324,7 +3324,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Qurolni qo'llashdan oldin u qo'llaniladigan shaxs aniq ogohlantirilishi..."
     },
   {
-      "q": "10-sinf CHQBT darsida \"Qurol to'g'risidagi qonun hujjatlarini buzganlik uchun huquqiy javobgarlik\" mavzusi tahlil qilinmoqda. Keys: \"Fuqaro o'ziga qonuniy biriktirilgan ov qurolini uydagi oddiy kiyim javonida, o'qlangan holatda, yosh bolalar hamda begona shaxslar osongina olishi mumkin bo'lgan sharoitda saqlab kelganligi aniqlandi\". \"Qurol to'g'risida\"gi Qonununig qurol saqlash shartlariga oid qat'iy me'yorlariga muvofiq, ushbu fuqaroning harakati qonunan qanday huquqiy oqibatni keltirib chiqaradi?",
+      "q": "Fuqaro o'ziga qonuniy biriktirilgan ov qurolini uydagi oddiy kiyim javonida, o'qlangan holatda, yosh bolalar hamda begona shaxslar osongina olishi mumkin bo'lgan sharoitda saqlab kelganligi aniqlandi. \"Qurol to'g'risida\"gi Qonununig qurol saqlash shartlariga oid qat'iy me'yorlariga muvofiq, ushbu fuqaroning harakati qonunan qanday huquqiy oqibatni keltirib chiqaradi?",
       "opts": [
         "A) Qurol qonuniy bo'lganligi sababli, uning uy ichida qanday saqlanishi huquqiy javobgarlikka sabab bo'lmaydi.",
         "B) Bu qurol saqlash qoidalarini qo'pol ravishda buzish hisoblanadi. Fuqaroviy qurol uning butunligi saqlanishini ta'minlaydigan, begona shaxslar kirishini istisno etadigan seyflarda yoki qulflanadigan temir qutilarda saqlanishi shart; aks holda qurol olib qo'yiladi va fuqaro javobgarlikka tortiladi.",
@@ -3336,7 +3336,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Bu qurol saqlash qoidalarini qo'pol ravishda buzish hisoblanadi...."
     },
   {
-      "q": "Tuman mudofaa ishlari bo'limi va CHQBT rahbarlarining qo'shma yig'ilishida \"Fuqaroviy qurol sotib olish huquqini cheklovchi tibbiy asoslar\" normasi ko'rib chiqildi. Keys: \"Fuqaroviy qurol sotib olish istagida bo'lgan shaxs tibbiy ko'rikdan o'tayotganda uning ruhiy holatida muammolar borligi yoki uning ko'rish qobiliyati qonuniy minimal normativdan ancha pastligi aniqlandi\". \"Qurol to'g'risida\"gi Qonunga binoan, qurolga egalik qilish litsenziyasini berishni rad etishga asos bo'ladigan tibbiy cheklovlar ro'yxati qaysi javobda to'g'ri va ongli ko'rsatilgan?",
+      "q": "Fuqaroviy qurol sotib olish istagida bo'lgan shaxs tibbiy ko'rikdan o'tayotganda uning ruhiy holatida muammolar borligi yoki uning ko'rish qobiliyati qonuniy minimal normativdan ancha pastligi aniqlandi. \"Qurol to'g'risida\"gi Qonunga binoan, qurolga egalik qilish litsenziyasini berishni rad etishga asos bo'ladigan tibbiy cheklovlar ro'yxati qaysi javobda to'g'ri va ongli ko'rsatilgan?",
       "opts": [
         "A) Tibbiy ko'rik faqat ixtiyoriy xarakterga ega bo'lib, uning xulosasi litsenziya berishga ta'sir ko'rsatmaydi.",
         "B) Qurolga egalik qilishni cheklovchi kasalliklar (ruhiy kasalliklar, narkologiya hisobida turish, ko'rish qobiliyatining o'ta pastligi) mavjud bo'lgan shaxslarga fuqaroviy qurolga egalik qilish huquqi qonunan qat'iyan taqiqlanadi.",
@@ -3348,7 +3348,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Qurolga egalik qilishni cheklovchi kasalliklar (ruhiy kasalliklar, narkologiya..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Qurol to'g'risida\"gi Qonun bo'yicha cheklovlar yo'nalishida murakkab Y3 tahlil testi taqdim etildi. Keys: \"Xorijiy davlat fuqarosi O'zbekistonga sayyoh sifatida keldi va u o'zini o'zi mudofaa qilish maqsadida respublika hududidagi fuqarolik do'konidan gazli to'pponcha yoki ov qurolini sotib olib, yonida olib yurishni istadi\". Amaldagi \"Qurol to'g'risida\"gi Qonun normalari zanjiri tahlil qilinsa, chet el fuqarolarining O'zbekiston hududida fuqaroviy qurol sotib olishi va olib yurishi tartibi qonunan qanday cheklanadi?",
+      "q": "Xorijiy davlat fuqarosi O'zbekistonga sayyoh sifatida keldi va u o'zini o'zi mudofaa qilish maqsadida respublika hududidagi fuqarolik do'konidan gazli to'pponcha yoki ov qurolini sotib olib, yonida olib yurishni istadi. Amaldagi \"Qurol to'g'risida\"gi Qonun normalari zanjiri tahlil qilinsa, chet el fuqarolarining O'zbekiston hududida fuqaroviy qurol sotib olishi va olib yurishi tartibi qonunan qanday cheklanadi?",
       "opts": [
         "A) Chet el fuqarolari O'zbekiston fuqarolari bilan mutloq teng huquqqa ega bo'lib, qurolni cheklovsiz sotib olishlari mumkin.",
         "B) Chet el fuqarolariga O'zbekistonda o'zini o'zi mudofaa qilish qurollarini sotib olish taqiqlanadi. Ular ov yoki sport qurolini faqat tegishli vazirliklar ruxsatnomasi va tegishli ov/sport shartnomalari asosida vaqtincha olib kirishlari yoki sotib olishlari mumkin, ammo mudofaa quroliga haqli emaslar.",
@@ -3360,7 +3360,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Chet el fuqarolariga O'zbekistonda o'zini o'zi mudofaa qilish..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Qurolni olib qo'yish va ruxsatnomani bekor qilish asoslari\" bo'limida yakuniy normalar tahlil qilinmoqda. Keys: \"Fuqaroviy qurolga ega bo'lgan shaxs jamoat joyida alkogolli ichimlik ta'sirida mast holatda yurganligi yoki tunda jamoat tartibini qo'pol ravishda buzganligi sababli ichki ishlar organlariga ruxsatnoma so'rab boruvchi organ xodimlari tomonidan ushlandi\". \"Qurol to'g'risida\"gi Qonunga binoan, fuqaroning bunday huquqbuzarliklari uning qurolga bo'lgan huquqiga qanday qonuniy ta'sir ko'rsatadi?",
+      "q": "Fuqaroviy qurolga ega bo'lgan shaxs jamoat joyida alkogolli ichimlik ta'sirida mast holatda yurganligi yoki tunda jamoat tartibini qo'pol ravishda buzganligi sababli ichki ishlar organlariga ruxsatnoma so'rab boruvchi organ xodimlari tomonidan ushlandi. \"Qurol to'g'risida\"gi Qonunga binoan, fuqaroning bunday huquqbuzarliklari uning qurolga bo'lgan huquqiga qanday qonuniy ta'sir ko'rsatadi?",
       "opts": [
         "A) Jamoat joyidagi ma'muriy huquqbuzarliklar fuqaroning qurol saqlash ruxsatnomasiga hech qanday daxl qilmaydi.",
         "B) Qurol muomalasi qoidalarini buzgan, jamoat tartibiga tajovuz qilgan yoki mast holatda qurol olib yurgan shaxslarning qurol saqlash va olib yurish ruxsatnomalari qonunda belgilangan tartibda bekor qilinadi va qurol majburiy olib qo'yiladi.",
@@ -3372,7 +3372,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Qurol muomalasi qoidalarini buzgan, jamoat tartibiga tajovuz qilgan..."
     },
   {
-      "q": "CHQBT fani rahbari 11-sinf o'quvchilariga \"Qurol to'g'risida\"gi Qonuniga muvofiq qurol muomalasidagi taqiqlar mavzusini tushuntirmoqda. Keys: \"Kolleksioner fuqaro o'z uyida saqlash maqsadida boshqa davlatdan pichoq tig'i o'qdek otilib chiqadigan yoki og'irligi bilan sanchiladigan, tig'ining uzunligi 9 santimetrdan ortiq bo'lgan sovuq qurol turini yashirincha olib kirdi\". Ushbu qonuniy me'yorlar doirasidan kelib chiqib tahlil qilinsa, qonun bo'yicha bunday xususiyatga ega bo'lgan sovuq qurollarning O'zbekiston hududida muomalada bo'lishi qonunan qanday tartibga solingan?",
+      "q": "Kolleksioner fuqaro o'z uyida saqlash maqsadida boshqa davlatdan pichoq tig'i o'qdek otilib chiqadigan yoki og'irligi bilan sanchiladigan, tig'ining uzunligi 9 santimetrdan ortiq bo'lgan sovuq qurol turini yashirincha olib kirdi. Ushbu qonuniy me'yorlar doirasidan kelib chiqib tahlil qilinsa, qonun bo'yicha bunday xususiyatga ega bo'lgan sovuq qurollarning O'zbekiston hududida muomalada bo'lishi qonunan qanday tartibga solingan?",
       "opts": [
         "A) Tig'i 15 santimetrdan oshmaganligi sababli uni erkin olib yurish va saqlashga ruxsat beriladi.",
         "B) Bunday xususiyatga ega bo'lgan, tig'ining uzunligi 9 santimetrdan ortiq bo'lgan sovuq qurollarning O'zbekiston Respublikasi hududida muomalada bo'lishi qat'iyan taqiqlanadi.",
@@ -3384,7 +3384,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Bunday xususiyatga ega bo'lgan, tig'ining uzunligi 9 santimetrdan..."
     },
   {
-      "q": "CHQBT darsida 10-sinf o'quvchilariga \"Xizmat qurolining texnik xususiyatlari va cheklovlari\" mavzusi o'rgatilmoqda. Keys: \"Xususiy qo'riqlash tashkiloti o'z xodimlari uchun qisqa stvolli o'qotar qurol sotib oldi, biroq ushbu qurolning o'qdon sig'imi 12 ta patronni tashkil etishi va undan to'xtovsiz (avtomat rejimida) otish imkoniyati borligi aniqlandi\". \"Qurol to'g'risida\"gi Qonunning qat'iy moddalariga muvofiq, xizmat qurolining texnik tavsifi qonunan qanday bo'lishi shart?",
+      "q": "Xususiy qo'riqlash tashkiloti o'z xodimlari uchun qisqa stvolli o'qotar qurol sotib oldi, biroq ushbu qurolning o'qdon sig'imi 12 ta patronni tashkil etishi va undan to'xtovsiz (avtomat rejimida) otish imkoniyati borligi aniqlandi. \"Qurol to'g'risida\"gi Qonunning qat'iy moddalariga muvofiq, xizmat qurolining texnik tavsifi qonunan qanday bo'lishi shart?",
       "opts": [
         "A) Xizmat qurolining o'qdon sig'imi cheklanmagan bo'lib, undan avtomat rejimida otishga to'liq ruxsat beriladi.",
         "B) Xizmat quroli to'xtovsiz otish imkoniyatini (avtomat rejimini) istisno etishi, uning o'qdon (magazin) sig'imi esa 10 ta patrondan ortiq bo'lmasligi qonunan qat'iy shart qibly belgilangan.",
@@ -3408,7 +3408,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Qurol egalariga o'zlariga tegishli qurolni va uning o'q-dorilarini..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari seminari ishtirokchilariga \"Qurol ruxsatnomasining amal qilish muddatini uzaytirish qoidalari\" bo'yicha amaliy savol berildi. Keys: \"Ov qurolini saqlash va olib yurish ruxsatnomasining amal qilish muddati tugashiga 5 kun qolgan fuqaro hujjatlarni uzaytirish kuche ichki ishlar organlariga ruxsatnoma so'rab bordi\". \"Qurol to'g'risida\"gi Qonun normalariga ko'ra, qurol egalari ruxsatnomaning amal qilish muddati tugashidan kamida qancha vaqt oldin ariza topshirishlari qonunan majburiydir?",
+      "q": "Ov qurolini saqlash va olib yurish ruxsatnomasining amal qilish muddati tugashiga 5 kun qolgan fuqaro hujjatlarni uzaytirish kuche ichki ishlar organlariga ruxsatnoma so'rab bordi. \"Qurol to'g'risida\"gi Qonun normalariga ko'ra, qurol egalari ruxsatnomaning amal qilish muddati tugashidan kamida qancha vaqt oldin ariza topshirishlari qonunan majburiydir?",
       "opts": [
         "A) Hujjat muddati tugagan kundan keyingina 10 kun ichida topshirsa ham bo'ladi.",
         "B) Qurol egalari ruxsatnomaning amal qilish muddati tugashidan kamida bir oy oldin uni uzaytirish to'g'risida ichki ishlar organlariga ariza va tegishli hujjatlarni taqdim etishlari shart.",
@@ -3420,7 +3420,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Qurol egalari ruxsatnomaning amal qilish muddati tugashidan kamida..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Fuqaroviy qurol sotib olish ruxsatnomasini berish rad etiladigan holatlar\" bo'limi tahlil qilinmoqda. Keys: \"22 yoshli fuqaro o'zini o'zi mudofaa qilish qurolini sotib olish kuche ariza berdi, biroq tekshirish davomida uning muqaddam qasddan sodir etilgan og'ir jinoyat uchun sudlanganligi va jazo muddatini o'tab chiqqanligi aniqlandi\". \"Qurol to'g'risida\"gi Qonunga binoan, ushbu fuqaroga qurol sotib olishga ruxsatnoma beriladimi?",
+      "q": "22 yoshli fuqaro o'zini o'zi mudofaa qilish qurolini sotib olish kuche ariza berdi, biroq tekshirish davomida uning muqaddam qasddan sodir etilgan og'ir jinoyat uchun sudlanganligi va jazo muddatini o'tab chiqqanligi aniqlandi. \"Qurol to'g'risida\"gi Qonunga binoan, ushbu fuqaroga qurol sotib olishga ruxsatnoma beriladimi?",
       "opts": [
         "A) Jazo muddatini to'liq o'tab chiqqanligi va yoshi 21 dan oshganligi sababli unga ruxsatnoma so'zsiz beriladi.",
         "B) Qasddan sodir etilgan jinoyatlar uchun sudlanganlik holati tugallanganidan yoki olib tashlanganidan qat'i nazar, bunday shaxslarga fuqaroviy qurol sotib olishga ruxsatnoma berilishi qonunan qat'iyan rad etiladi.",
@@ -3432,7 +3432,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Qasddan sodir etilgan jinoyatlar uchun sudlanganlik holati tugallanganidan..."
     },
   {
-      "q": "11-sinf CHQBT darsida \"Qurol qo'llanilgan har qanday vaziyatda yuzaga keladigan shoshilinch majburiyatlar\" mavzusi o'rganilmoqda. Keys: \"Qo'riqlash xodimi ob'ektga bostirib kir go'riqlash xodimi ob'ektga bostirib kirgan qurolli jinoyatchiga qarata xizmat qurolini muvaffaqiyatli qo'lladi va uni yarador qildi\". \"Qurol to'g'risida\"gi Qonunning qat'iy talablariga binoan, qurol qo'llagan shaxs jarohatlangan fuqaroga nisbatan va huquqni muhofaza qiluvchi organlarni xabardor qilish borasida zudlik bilan qaysi harakatlarni bajarishga qonunan majbur?",
+      "q": "Qo'riqlash xodimi ob'ektga bostirib kir go'riqlash xodimi ob'ektga bostirib kirgan qurolli jinoyatchiga qarata xizmat qurolini muvaffaqiyatli qo'lladi va uni yarador qildi. \"Qurol to'g'risida\"gi Qonunning qat'iy talablariga binoan, qurol qo'llagan shaxs jarohatlangan fuqaroga nisbatan va huquqni muhofaza qiluvchi organlarni xabardor qilish borasida zudlik bilan qaysi harakatlarni bajarishga qonunan majbur?",
       "opts": [
         "A) Yarador jinoyatchini o'sha joyda qoldirib, zudlik bilan uydagi yaqin qarindoshlariga qo'ng'iroq qilishi lozim.",
         "B) Yarador bo'lgan shaxsga birlamchi tibbiy yordam ko'rsatishi, tez tibbiy yordam chaqirishi hamda qurol qo'llanilganligi to'g'risida zudlik bilan (sutka davomida) voqea joyidagi ichki ishlar organlariga va prokurorga xabar berishi shart.",
@@ -3444,7 +3444,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Yarador bo'lgan shaxsga birlamchi tibbiy yordam ko'rsatishi, tez..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Fuqaroviy qurolni O'zbekiston hududida tashish (transport qilish) qoidalari\" muhokama qilindi. Keys: \"Fuqaro o'zining qonuniy ov qurolini avtomobilning orqa o'rindig'iga g'ilofsiz, o'qlangan va shay holatda qo'yib, boshqa viloyatdagi ov hududiga qarab haydab ketmoqda\". \"Qurol to'g'risida\"gi Qonun va uning qoidalariga muvofiq, jismoniy shaxslar tomonidan qurolni transportda tashish tartibi qonunan qanday qat'iy belgilangan?",
+      "q": "Fuqaro o'zining qonuniy ov qurolini avtomobilning orqa o'rindig'iga g'ilofsiz, o'qlangan va shay holatda qo'yib, boshqa viloyatdagi ov hududiga qarab haydab ketmoqda. \"Qurol to'g'risida\"gi Qonun va uning qoidalariga muvofiq, jismoniy shaxslar tomonidan qurolni transportda tashish tartibi qonunan qanday qat'iy belgilangan?",
       "opts": [
         "A) Qurol transport ichida haydovchining yonida doimo o'qlangan va otishga shay holatda bo'lishi xavfsizlik talabidir.",
         "B) Qurolni tashish faqat ruxsatnoma mavjud bo'lganda, qurol bo'shatilgan (o'qsizlantirilgan) holatda, maxsus g'ilofga solingan va qurol qutisiga joylashtirilgan holda amalga oshirilishi shart.",
@@ -3468,7 +3468,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Quvvati belgilangan me'yordan yuqori bo'lgan pnevmatik qurollarni ruxsatnomasiz..."
     },
   {
-      "q": "Tuman mudofaa ishlari bo'limi va CHQBT rahbarlarining qo'shma metodik kengashida \"Qurol egasining vafoti munosabati bilan qurol muomalasini tartibga solish\" normasi o'rganildi. Keys: \"Qonuniy ov quroliga ega bo'lgan fuqaro vafot etdi. Uning o'g'li otasidan qolgan ushbu ov qurolini hech qanday davlat idoralarini ogohlantirmasdan to'g'ridan-to'g'ri o'z mulki sifatida uyida saqlay boshladi\". \"Qurol to'g'risida\"gi Qonun me'yorlariga muvofiq, qurol egasi vafot etgan taqdirdagina qurol zudlik bilan qayerga topshirilishi shart va merosxo'r qanday yo'l tutishi lozim?",
+      "q": "Qonuniy ov quroliga ega bo'lgan fuqaro vafot etdi. Uning o'g'li otasidan qolgan ushbu ov qurolini hech qanday davlat idoralarini ogohlantirmasdan to'g'ridan-to'g'ri o'z mulki sifatida uyida saqlay boshladi. \"Qurol to'g'risida\"gi Qonun me'yorlariga muvofiq, qurol egasi vafot etgan taqdirdagina qurol zudlik bilan qayerga topshirilishi shart va merosxo'r qanday yo'l tutishi lozim?",
       "opts": [
         "A) Merosxo'r qurolni o'z ixtiyoriga ko'ra fuqarolik bozorlarida mustaqil ravishda sotib yuborish huquqiga ega.",
         "B) Qurol egasi vafot etgan taqdirda, qurol va uning o'q-dorilari meros masalasi qonuniy hal bo'lgunga qadar zudlik bilan ichki ishlar organlariga vaqtincha saqlash uchun topshirilishi shart. Merosxo'r qurolga ruxsatnoma olgandan keyingina uniy uyiga qaytara oladi.",
@@ -3492,7 +3492,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Qurol va moslamalardan foydalanilganda ular inson o'limiga olib..."
     },
   {
-      "q": "CHQBT darsida 11-sinf o'quvchilariga \"Qurol to'g'risida\"gi Qonuniga muvofiq jismoniy shaxslarga taqiqlangan qurol xususiyatlari o'rgatilmoqda. Keys: \"Fuqaro shaxsiy mudofaa maqsadida chet eldan boshqa buyumlarga (masalan, soyabon, qalam yoki fonusga) o'xshatib yasalgan, tashqi ko'rinishidan qurol ekanligi mutloq bildirmaydigan maxfiy o'qotar qurol turini sotib olib keldi\". Ushbu qurolning muomalaga kiritilishi \"Qurol to'g'risida\"gi Qonununig qat'iy normalariga ko'ra qonunan qanday baholanadi?",
+      "q": "Fuqaro shaxsiy mudofaa maqsadida chet eldan boshqa buyumlarga (masalan, soyabon, qalam yoki fonusga) o'xshatib yasalgan, tashqi ko'rinishidan qurol ekanligi mutloq bildirmaydigan maxfiy o'qotar qurol turini sotib olib keldi. Ushbu qurolning muomalaga kiritilishi \"Qurol to'g'risida\"gi Qonununig qat'iy normalariga ko'ra qonunan qanday baholanadi?",
       "opts": [
         "A) Soyabon yoki fonus shaklida bo'lsa, jamoat joylarida ochiq olib yurish sharti bilan ruxsat beriladi.",
         "B) Shakli boshqa buyumlarga o'xshatib yasalgan, ko'rinishi niqoblangan o'qotar qurollarning O'zbekiston Respublikasi hududida muomalada bo'lishi qat'iyan taqiqlanadi.",
@@ -3516,7 +3516,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Qurollar maxsus jihozlangan, temir eshikli, panjarali, signalizatsiya va..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Qurolni olib yurish huquqiga ega bo'lgan shaxslarning alkogolli va giyohvandlik vositalari ta'siridagi holat bo'yicha cheklovlari\" bo'limida yeni amaliy vaziyat tahlil qilinmoqda. Keys: \"Ruxsatnomaga ega bo'lgan ovchi jamoat joyida, o'zining ov qurolini g'ilofga solingan holda olib yuribdi, biroq tekshirish davomida uning engil darajadagi alkogolli ichimlik ta'sirida (mast) ekanligi vizual aniqlandi\". \"Qurol to'g'risida\"gi Qonununig qat'iy moddalariga ko'ra, qurol olib yurish vaqtida mastlik holati qonunan qanday huquqiy oqibatni keltirib chiqaradi?",
+      "q": "Ruxsatnomaga ega bo'lgan ovchi jamoat joyida, o'zining ov qurolini g'ilofga solingan holda olib yuribdi, biroq tekshirish davomida uning engil darajadagi alkogolli ichimlik ta'sirida (mast) ekanligi vizual aniqlandi. \"Qurol to'g'risida\"gi Qonununig qat'iy moddalariga ko'ra, qurol olib yurish vaqtida mastlik holati qonunan qanday huquqiy oqibatni keltirib chiqaradi?",
       "opts": [
         "A) G'ilof ichida bo'lganligi va engil darajada mast bo'lganligi sababli fuqaroga nisbatan hech qanday jazo qo'llanilmaydi.",
         "B) Alkogolli ichimlik, giyohvandlik vositalari yoki psixotrop moddalar ta'sirida mast holatda bo'lgan shaxslarning qurol olib yurishi qat'iyan taqiqlanadi; bu ruxsatnomaning bekor qilinishiga va qurolning musodara etilishiga sabab bo'ladi.",
@@ -3528,7 +3528,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Alkogolli ichimlik, giyohvandlik vositalari yoki psixotrop moddalar ta'sirida..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"O'zbekiston hududida muomalasi taqiqlangan o'q-dori turlari va ularning texnik xususiyatlari\" normasi muhokama qilinmoqda. Keys: \"Sport do'koni egasi fuqarolar kuche mo'ljallangan ov qurollariga mos keladigan, o'qining ichki qismiga maxsus portlovchi yoki tez yonuvchan kimyoviy moddalar joylashtirilgan patronlar turkumi savdosini tashkil etdi\". \"Qurol to'g'risida\"gi Qonunga binoan, fuqaroviy qurollar kuche qaysi turdagi o'q-dorilarning (patronlarning) muomalada bo'lishi qonunan qat'iyan man etiladi?",
+      "q": "Sport do'koni egasi fuqarolar kuche mo'ljallangan ov qurollariga mos keladigan, o'qining ichki qismiga maxsus portlovchi yoki tez yonuvchan kimyoviy moddalar joylashtirilgan patronlar turkumi savdosini tashkil etdi. \"Qurol to'g'risida\"gi Qonunga binoan, fuqaroviy qurollar kuche qaysi turdagi o'q-dorilarning (patronlarning) muomalada bo'lishi qonunan qat'iyan man etiladi?",
       "opts": [
         "A) Faqat xorijiy davlatlarda ishlab chiqarilgan va sertifikatga ega bo'lmagan oddiy qo'rg'oshin o'qli patronlar.",
         "B) Nishonga tekkanda portlaydigan yoki yonib ketadigan (zirh teshuvchi, o't qo'yuvchi yoki portlovchi) xususiyatga ega bo'lgan o'qli patronlarning fuqaroviy qurollar uchun muomalada bo'lishi qat'iyan taqiqlanadi.",
@@ -3552,7 +3552,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Ruxsatnomaning amal qilishi bekor qilingan taqdirda, fuqaro uning..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Fuqaroviy qurol sotib olish huquqiga ega bo'lgan sub'ektlar doirasi\" mavzusi tahlil qilinmoqda. Keys: \"O'zbekistonda rasman ro'yxatdan o'tgan, o'zining shaxsiy ustavi va jamoat kengashiga ega bo'lgan sport-vatanparvarlik uyushmasi o'z a'zolarini musobaqalarga tayyorlash uchun ov va sport qurollarini sotib olishga ruxsatnoma so'radi\". \"Qurol to'g'risida\"gi Qonun normalariga ko'ra, O'zbekiston Respublikasi hududida fuqaroviy qurol sotib olish huquqiga ega bo'lgan yuridik shaxslar (sub'ektlar) to'g'ri ko'rsatilgan javobni aniqlang:",
+      "q": "O'zbekistonda rasman ro'yxatdan o'tgan, o'zining shaxsiy ustavi va jamoat kengashiga ega bo'lgan sport-vatanparvarlik uyushmasi o'z a'zolarini musobaqalarga tayyorlash uchun ov va sport qurollarini sotib olishga ruxsatnoma so'radi. \"Qurol to'g'risida\"gi Qonun normalariga ko'ra, O'zbekiston Respublikasi hududida fuqaroviy qurol sotib olish huquqiga ega bo'lgan yuridik shaxslar (sub'ektlar) to'g'ri ko'rsatilgan javobni aniqlang:",
       "opts": [
         "A) Faqat xususiy tadbirkorlik bilan shug'ullanadigan barcha savdo va xizmat ko'rsatish dokonlari omborlari.",
         "B) Maxsus xizmat vazifalariga ega bo'lgan yuridik shaxslar, qurol savdosi bilan shug'ullanuvchi korxonalar, shuningdek, ovchilik va sport tashkilotlari hamda ilmiy-tadqiqot muassasalari.",
@@ -3576,7 +3576,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Qonunda belgilangan tartibda muntazam ravishda — har besh..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari metodik yig'ilishida \"Qurol muomalasida o'zini o'zi mudofaa qilish quroli sifatida ruxsat etilgan vositalarning chegaralari\" o'rganilmoqda. Keys: \"Fuqaro o'zini ko'chada ko'payib ketgan bezorilardan himoya qilish maqsadida elektroshendiruvchi (shoker) vosita sotib oldi, biroq ushbu shokerning chiqish quvvati va parametrlari davlat standartlarida belgilangan normalardan ancha yuqori ekanligi ma'lum bo'ldi\". \"Qurol to'g'risida\"gi Qonunga muvofiq, fuqarolar foydalanadigan elektroshok moslamalarining texnik parametrlari qonunan qanday nazorat qilinadi?",
+      "q": "Fuqaro o'zini ko'chada ko'payib ketgan bezorilardan himoya qilish maqsadida elektroshendiruvchi (shoker) vosita sotib oldi, biroq ushbu shokerning chiqish quvvati va parametrlari davlat standartlarida belgilangan normalardan ancha yuqori ekanligi ma'lum bo'ldi. \"Qurol to'g'risida\"gi Qonunga muvofiq, fuqarolar foydalanadigan elektroshok moslamalarining texnik parametrlari qonunan qanday nazorat qilinadi?",
       "opts": [
         "A) Chiqish quvvati qanchalik yuqori bo'lsa, mudofaa shanchalik samarali bo'lgani kuche parametrlarga cheklov qo'yilmaydi.",
         "B) Elektroshok moslamalari va uchqun chiqargichlarning texnik parametrlari O'zbekiston Respublikasi Sog'liqni saqlash vazirligi hamda davlat standartlari (O'zstandart) tomonidan belgilangan normalardan oshmasligi shart; aks holda muomalasi taqiqlanadi.",
@@ -3588,7 +3588,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Elektroshok moslamalari va uchqun chiqargichlarning texnik parametrlari O'zbekiston..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Qurol savdosi bilan shug'ullanuvchi do'konlarda fuqarolarga qurol va o'q-dorilarni realizatsiya qilish (sotish) shartlari\" bo'yicha tahliliy savol berildi. Keys: \"Qurol do'koni sotuvchisi ov quroli sotib olish uchun tegishli litsenziyani taqdim etgan fuqaroga qurolni sotdi, biroq uning o'q-dorilarini (patronlarini) alohida litsenziyasiz, faqat fuqaroning og'zaki iltimosiga ko'ra qo'shib berdi\". \"Qurol to'g'risida\"gi Qonun normalariga ko'ra, do'kon sotuvchisining ushbu harakati qonunan qanday baholanadi?",
+      "q": "Qurol do'koni sotuvchisi ov quroli sotib olish uchun tegishli litsenziyani taqdim etgan fuqaroga qurolni sotdi, biroq uning o'q-dorilarini (patronlarini) alohida litsenziyasiz, faqat fuqaroning og'zaki iltimosiga ko'ra qo'shib berdi. \"Qurol to'g'risida\"gi Qonun normalariga ko'ra, do'kon sotuvchisining ushbu harakati qonunan qanday baholanadi?",
       "opts": [
         "A) Bu to'g'ri, chunki qurol sotib olish ruxsatnomasi bor shaxsga uning o'qlarini ham cheklovsiz sotishga ruxsat beriladi.",
         "B) Bu mutloq qonunbuzarlikdir. Qurol do'konlarida o'q-dorilar (patronlar) fuqarolarga faqat ularda ushbu turdagi qurolni saqlash va olib yurish huquqini beruvchi aniq rasmiy ruxsatnoma taqdim etilgandagina qonuniy realizatsiya qilinishi shart.",
@@ -3732,7 +3732,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Sog'liqni saqlash vazirligi hamda davlat standartlari (O'zstandart)..."
     },
   {
-      "q": "CHQBT darsida 10-sinf o'quvchilariga \"Xizmat qurolining texnik xususiyatlari va cheklovlari\" mavzusi o'rgatilmoqda. Keys: \"Xususiy qo'riqlash tashkiloti o'z xodimlari uchun qisqa stvolli o'qotar qurol sotib oldi, biroq ushbu qurolning o'qdon sig'imi 12 ta patronni tashkil etishi va undan to'xtovsiz (avtomat rejimida) otish imkoniyati borligi aniqlandi\". \"Qurol to'g'risida\"gi Qonunining qat'iy moddalariga muvofiq, xizmat qurolining texnik tavsifi qonunan qanday bo'lishi shart?",
+      "q": "Xususiy qo'riqlash tashkiloti o'z xodimlari uchun qisqa stvolli o'qotar qurol sotib oldi, biroq ushbu qurolning o'qdon sig'imi 12 ta patronni tashkil etishi va undan to'xtovsiz (avtomat rejimida) otish imkoniyati borligi aniqlandi. \"Qurol to'g'risida\"gi Qonunining qat'iy moddalariga muvofiq, xizmat qurolining texnik tavsifi qonunan qanday bo'lishi shart?",
       "opts": [
         "A) Xizmat qurolining o'qdon sig'imi cheklanmagan bo'lib, undan avtomat rejimida otishga to'liq ruxsat beriladi.",
         "B) Xizmat quroli to'xtovsiz otish imkoniyatini (avtomat rejimini) istisno etishi, uning o'qdon (magazin) sig'imi esa 10 ta patrondan ortiq bo'lmasligi qonunan qat'iy shart qilib belgilangan.",
@@ -3744,7 +3744,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Qonun qoidasi - Xizmat quroli to'xtovsiz otish imkoniyatini (avtomat rejimini) istisno..."
     },
   {
-      "q": "CHQBT darsida 11-sinf o'quvchilariga ichki ballistika qonuniyatlari o'rgatilmoqda. Keys: \"Otish vaqtida kapsul-pistoncha mexanizmining urilishi natijasida porox zaryadi yonib, o'ta yuqori bosimli gazlar ajralib chiqa boshladi. Ushbu gazlar bosimi o'qni joyidan qo'zg'atib, uni gilzadan ajratadi va stvol kanali ichidagi yo'naltiruvchi ariqchalarga (yivlarga) siqib kiritadi\". Ichki ballistika va otish hodisasi qoidalariga ko'ra, otish boshlangan ushbu dastlabki jarayon otish hodisasining qaysi qat'iy davri deb ataladi?",
+      "q": "Otish vaqtida kapsul-pistoncha mexanizmining urilishi natijasida porox zaryadi yonib, o'ta yuqori bosimli gazlar ajralib chiqa boshladi. Ushbu gazlar bosimi o'qni joyidan qo'zg'atib, uni gilzadan ajratadi va stvol kanali ichidagi yo'naltiruvchi ariqchalarga (yivlarga) siqib kiritadi. Ichki ballistika va otish hodisasi qoidalariga ko'ra, otish boshlangan ushbu dastlabki jarayon otish hodisasining qaysi qat'iy davri deb ataladi?",
       "opts": [
         "A) Birinchi (asosiy) davr",
         "B) Dastlabki (priblitelniy) davr",
@@ -3756,7 +3756,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Dastlabki (priblitelniy) davr..."
     },
   {
-      "q": "11-sinf bitiruvchilarining harbiylashtirilgan taktik amaliyotida \"Otish hodisasining birinchi (asosiy) davri\" tahlil qilinmoqda. Keys: \"O'q stvol kanali ichida harakatlanishni boshlagan soniyadan e'tiboran porox zaryadi o'ta shiddat bilan yonishda davom etmoqda. Natijada gaz hajmi va bosimi keskin ko'tarilib, o'q stvol kanalining ma'lum bir qismiga etganda eng oliy nuqtaga etadi\". Ichki ballistika normativlariga ko'ra, ushbu asosiy davrda porox gazlarining stvol ichidagi eng yuqori maksimal bosimi (Pm) o'q stvol kanalining qancha qismini bosib o'tganida hosil bo'ladi?",
+      "q": "O'q stvol kanali ichida harakatlanishni boshlagan soniyadan e'tiboran porox zaryadi o'ta shiddat bilan yonishda davom etmoqda. Natijada gaz hajmi va bosimi keskin ko'tarilib, o'q stvol kanalining ma'lum bir qismiga etganda eng oliy nuqtaga etadi. Ichki ballistika normativlariga ko'ra, ushbu asosiy davrda porox gazlarining stvol ichidagi eng yuqori maksimal bosimi (Pm) o'q stvol kanalining qancha qismini bosib o'tganida hosil bo'ladi?",
       "opts": [
         "A) O'q stvol kanalini butunlay tark etishidan to'g'ri 1 sm oldin",
         "B) O'q stvol kanalining taxminan 4-6 santimetrli yo'lini bosib o'tganida (ya'ni stvolning boshlang'ich qismida)",
@@ -3768,7 +3768,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - O'q stvol kanalining taxminan 4-6 santimetrli yo'lini bosib..."
     },
   {
-      "q": "CHQBT o'qituvchilari malaka oshirish seminarida \"Otish hodisasining ikkinchi davri xususiyatlari\" o'rganilmoqda. Keys: \"Porox zaryadi to'liq yonib bo'lgan soniyadan boshlab, stvol ichida mavjud bo'lgan gazlarning ichki kengayish energiyasi hisobiga o'qning tezligi maksimal darajagacha ko'tarila boshladi\". Ichki ballistikaning kengayish qonuniyatiga ko'ra, otish hodisasining ushbu ikkinchi davri o'q stvol kanalining qaysi nuqtasiga etganda qonunan yakunlanadi?",
+      "q": "Porox zaryadi to'liq yonib bo'lgan soniyadan boshlab, stvol ichida mavjud bo'lgan gazlarning ichki kengayish energiyasi hisobiga o'qning tezligi maksimal darajagacha ko'tarila boshladi. Ichki ballistikaning kengayish qonuniyatiga ko'ra, otish hodisasining ushbu ikkinchi davri o'q stvol kanalining qaysi nuqtasiga etganda qonunan yakunlanadi?",
       "opts": [
         "A) O'q stvol o'rtasiga kelib, gaz bosimi nolga teng bo'lgan vaqtda",
         "B) O'q stvol kanalini o'z tumshug'i (boshi) bilan butunlay tark etgan (chiqqan) soniyada",
@@ -3792,7 +3792,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Stvol og'zidan bir necha santimetr (taxminan 20-30 sm)..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy otish poligonida ob-havoning qurol mexanizmiga ta'sirini tushuntirmoqda. Keys: \"Qishki o'quv mashg'ulotida havo harorati minus 15 darajagacha pasayib ketdi. Askarlar Kalashnikov avtomatidan ochiq maydonda otish mashqini bajarmoqdalar\". Ichki ballistika qonuniyatlariga tayanib tahlil qilinsa, atrof-muhit va porox haroratining o'ta sovuq bo'lishi o'qning boshlang'ich tezligiga (V0) va trayektoriyasiga qanday ta'sir ko'rsatadi?",
+      "q": "Qishki o'quv mashg'ulotida havo harorati minus 15 darajagacha pasayib ketdi. Askarlar Kalashnikov avtomatidan ochiq maydonda otish mashqini bajarmoqdalar. Ichki ballistika qonuniyatlariga tayanib tahlil qilinsa, atrof-muhit va porox haroratining o'ta sovuq bo'lishi o'qning boshlang'ich tezligiga (V0) va trayektoriyasiga qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) Porox tezroq yonadi va o'qning boshlang'ich tezligi keskin ko'tariladi.",
         "B) Poroxning yonish tezligi sekinlashadi, gaz bosimi pasayadi, natijada o'qning boshlang'ich tezligi kamayadi va u nishondan pastga tegadi.",
@@ -3804,7 +3804,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Poroxning yonish tezligi sekinlashadi, gaz bosimi pasayadi, natijada..."
     },
   {
-      "q": "10-sinf CHQBT darsida \"O'qning boshlang'ich tezligi (V0) va unga stvol uzunligining ta'siri\" mavzusi tahlil qilinmoqda. Keys: \"Kalashnikov avtomati (AK-74) stvol uzunligi bilan Kalashnikov pulemyoti (RPK-74) stvol uzunligi o'zaro solishtirilmoqda. Ikkala quroldan ham bir xil turdagi 5.45 mm kalibrli patron ishlatiladi\". Ichki ballistika qoidalaridan kelib chiqib mulohaza qilinsa, stvol uzunligining uzun bo'lishi o'qning boshlang'ich tezligiga qanday ta'sir qiladi va qaysi qurolda o'q yuqori tezlikda otilib chiqadi?",
+      "q": "Kalashnikov avtomati (AK-74) stvol uzunligi bilan Kalashnikov pulemyoti (RPK-74) stvol uzunligi o'zaro solishtirilmoqda. Ikkala quroldan ham bir xil turdagi 5.45 mm kalibrli patron ishlatiladi. Ichki ballistika qoidalaridan kelib chiqib mulohaza qilinsa, stvol uzunligining uzun bo'lishi o'qning boshlang'ich tezligiga qanday ta'sir qiladi va qaysi qurolda o'q yuqori tezlikda otilib chiqadi?",
       "opts": [
         "A) Stvol qanchalik uzun bo'lsa, ishqalanish ortib tezlik pasayadi, shuning uchun avtomatda tezlik yuqori bo'ladi.",
         "B) Stvol qanchalik uzun bo'lsa, porox gazlari o'qqa shanchalik uzoq vaqt ta'sir qiladi, natijada pulemyotda (RPK-74) o'qning boshlang'ich tezligi yuqori bo'ladi.",
@@ -3816,7 +3816,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Stvol qanchalik uzun bo'lsa, porox gazlari o'qqa shanchalik..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Tashqi ballistika va o'qning havo bo'shlig'idagi uchish trayektoriyasi\" bo'limida amaliy topshiriq berildi. Keys: \"Stvol kanalidan otilib chiqqan o'q havo kengligida harakatlanmoqda. Agar fazoda hech qanday havo qarshiligi va er sirtining tortish kuchi mavjud bo'lmaganida, o'q qanday chiziq bo'ylab harakatlangan bo'lar edi?\". Tashqi ballistikaning geometrik qoidalariga ko'ra, ushbu holatda o'qning harakat chizig'i qonunan qanday nomlanadi?",
+      "q": "Stvol kanalidan otilib chiqqan o'q havo kengligida harakatlanmoqda. Agar fazoda hech qanday havo qarshiligi va er sirtining tortish kuchi mavjud bo'lmaganida, o'q qanday chiziq bo'ylab harakatlangan bo'lar edi?. Tashqi ballistikaning geometrik qoidalariga ko'ra, ushbu holatda o'qning harakat chizig'i qonunan qanday nomlanadi?",
       "opts": [
         "A) Otish chizig'i (Liniya brosaniya)",
         "B) Otish yo'nalishi bo'ylab to'g'ri chiziq (Liniya vistrela)",
@@ -3828,7 +3828,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Otish yo'nalishi bo'ylab to'g'ri chiziq (Liniya vistrela)..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari metodik yig'ilishida \"O'q trayektoriyasining shakllanishiga ta'sir etuvchi tashqi tabiiy kuchlar\" o'rganilmoqda. Keys: \"Poligonda otilgan o'q havoda vaqtinchalik to'g'ri chiziqda chiqdi, biroq havo kengligiga o'tishi bilan uning harakat yo'nalishi erga qarab egilgan egri chiziq (parabola) shakliga kirdi\". Tashqi ballistika qonunlariga muvofiq, havo bo'shlig'ida uchayotgan o'qni o'zining to'g'ri chiziqli harakatidan doimo pastga va sekinlashishga majbur qiladigan ikkita asosiy kuch qaysi javobda to'g'ri ko'rsatilgan?",
+      "q": "Poligonda otilgan o'q havoda vaqtinchalik to'g'ri chiziqda chiqdi, biroq havo kengligiga o'tishi bilan uning harakat yo'nalishi erga qarab egilgan egri chiziq (parabola) shakliga kirdi. Tashqi ballistika qonunlariga muvofiq, havo bo'shlig'ida uchayotgan o'qni o'zining to'g'ri chiziqli harakatidan doimo pastga va sekinlashishga majbur qiladigan ikkita asosiy kuch qaysi javobda to'g'ri ko'rsatilgan?",
       "opts": [
         "A) Shamolning yonlama kuchi va qurolning orqaga tepish kuchi",
         "B) Er sirtining tortish kuchi (Sila tyajesti) va havoning qarshilik kuchi (Sila soprotivleniya vozduxa)",
@@ -3840,7 +3840,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Er sirtining tortish kuchi (Sila tyajesti) va havoning..."
     },
   {
-      "q": "11-sinf bitiruv imtihonida o'quvchilarga \"O'q trayektoriyasining elementlari va tushish burchagi tahlili\" bo'yicha savol berildi. Keys: \"O'q o'z uchish chizig'ining eng yuqori cho'qqisidan o'tib, erga va nishonga qarab pastga yo'naldi va nishon yuzasini ma'lum bir burchak ostida kesib o'tdi\". Tashqi ballistika terminologiyasiga asosan, o'qning nishonga yoki er sirtiga urilish (kesishish) nuqtasidagi trayektoriya urinmasi bilan uchrashish tekislik o'rtasida hosil bo'lgan burchak qonunan qanday nomlanadi?",
+      "q": "O'q o'z uchish chizig'ining eng yuqori cho'qqisidan o'tib, erga va nishonga qarab pastga yo'naldi va nishon yuzasini ma'lum bir burchak ostida kesib o'tdi. Tashqi ballistika terminologiyasiga asosan, o'qning nishonga yoki er sirtiga urilish (kesishish) nuqtasidagi trayektoriya urinmasi bilan uchrashish tekislik o'rtasida hosil bo'lgan burchak qonunan qanday nomlanadi?",
       "opts": [
         "A) Otish burchagi (Ugol brosaniya)",
         "B) Tushish burchagi (Ugol padeniya)",
@@ -3852,7 +3852,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Tushish burchagi (Ugol padeniya)..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"To'g'ri otish masofasi (Dalnost pryamogo vistrela) va uning taktik ahamiyati\" muhokama qilinmoqda. Keys: \"Askar dushman nishoniga qarata qurol o'qdonini to'g'riladi. Otish davomida trayektoriya balandligi dushman nishonining bo'yidan (balandligidan) yuqoriga ko'tarilmasdan, nishonni burun uzunligi bo'ylab shikastlay oldi\". Amaliy otish asoslariga ko'ra, nishonga olish chizig'ini o'zgartirmasdan turib, nishonni to'liq urish imkonini beradigan bunday otish masofasi qanday ataladi?",
+      "q": "Askar dushman nishoniga qarata qurol o'qdonini to'g'riladi. Otish davomida trayektoriya balandligi dushman nishonining bo'yidan (balandligidan) yuqoriga ko'tarilmasdan, nishonni burun uzunligi bo'ylab shikastlay oldi. Amaliy otish asoslariga ko'ra, nishonga olish chizig'ini o'zgartirmasdan turib, nishonni to'liq urish imkonini beradigan bunday otish masofasi qanday ataladi?",
       "opts": [
         "A) Maksimal jangovar masofa",
         "B) To'g'ri otish masofasi (Pryamoy vistrel)",
@@ -3864,7 +3864,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - To'g'ri otish masofasi (Pryamoy vistrel)..."
     },
   {
-      "q": "CHQBT amaliy mashg'ulotida o'quvchilar \"O'q trayektoriyasining o'lik yoki ko'rinmaydigan bo'shlig'i\" (Prikritoye prostranstvo) tushunchasini o'rganmoqdalar. Keys: \"Dushman askari balandligi 1.5 metr bo'lgan g'ishtin devor ortiga berkinib oldi. Biz tomondan otilgan o'q trayektoriyasi ushbu devorning eng yuqori chetidan yalab o'tib, uning ortidagi ma'lum bir masofagacha bo'lgan hududga pastga tushib etolmadi\". Tashqi ballistika qoidalariga ko'ra, to'siq ortidagi o'q etib bora olmaydigan (nishon o'qdan himoyalangan) ushbu makon bo'shlig'i qonunan qanday nomlanadi?",
+      "q": "Dushman askari balandligi 1.5 metr bo'lgan g'ishtin devor ortiga berkinib oldi. Biz tomondan otilgan o'q trayektoriyasi ushbu devorning eng yuqori chetidan yalab o'tib, uning ortidagi ma'lum bir masofagacha bo'lgan hududga pastga tushib etolmadi. Tashqi ballistika qoidalariga ko'ra, to'siq ortidagi o'q etib bora olmaydigan (nishon o'qdan himoyalangan) ushbu makon bo'shlig'i qonunan qanday nomlanadi?",
       "opts": [
         "A) Xavfsiz otish bo'shlig'i (Porajayemoye prostranstvo)",
         "B) Ko'rinmaydigan yoki pana bo'shliq (Prikritoye prostranstvo)",
@@ -3888,7 +3888,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Shikastlash yoki urish bo'shlig'i (Porajayemoye prostranstvo)..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"O'qning shaxsiy aylanish harakati va uning havo qarshiligidagi og'ishi\" (Derivatsiya) mavzusi tahlil qilinmoqda. Keys: \"Uzoq masofadagi nishonga qarata yivli stvoldan otilgan o'q havo kengligida o'z o'qi atrofida o'ta yuqori tezlikda aylanib bormoqda. Biroq ma'lum bir masofadan keyin o'q havo qarshiligi va aylanish kuchi ta'sirida o'z uchish yo'nalishidan (o'ng tomonga) g'ayriqonuniy ravishda chetga og'a boshladi\". Tashqi ballistika qonunlariga ko'ra, yivli qurollardan otilganda o'qning aylanishi natijasida o'z uchish chizig'idan yonga og'ish hodisasi nima deb ataladi?",
+      "q": "Uzoq masofadagi nishonga qarata yivli stvoldan otilgan o'q havo kengligida o'z o'qi atrofida o'ta yuqori tezlikda aylanib bormoqda. Biroq ma'lum bir masofadan keyin o'q havo qarshiligi va aylanish kuchi ta'sirida o'z uchish yo'nalishidan (o'ng tomonga) g'ayriqonuniy ravishda chetga og'a boshladi. Tashqi ballistika qonunlariga ko'ra, yivli qurollardan otilganda o'qning aylanishi natijasida o'z uchish chizig'idan yonga og'ish hodisasi nima deb ataladi?",
       "opts": [
         "A) Rikooshet (Qaytarilish)",
         "B) Derivatsiya (Yonga og'ish)",
@@ -3900,7 +3900,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Derivatsiya (Yonga og'ish)..."
     },
   {
-      "q": "11-sinf o'quvchilariri o'rtasida o'tkazilayotgan \"Vatanparvarlar\" harbiy sport musobaqasida tashqi ballistikaning meteorologik omillari muhokama qilinmoqda. Keys: \"Otish mashg'uloti o'tkazilayotgan poligon hududida havo bosimi (atmosfera bosimi) normadan ancha yuqori ekanligi va havoning zichligi ortganligi qayd etildi\". Tashqi ballistika qonuniyatlaridan kelib chiqib tahlil qilinsa, havoning zichligi va atmosfera bosimining ortishi o'qning uchish masofasiga hamda trayektoriyasiga amalda qanday ta'sir ko'rsatadi?",
+      "q": "Otish mashg'uloti o'tkazilayotgan poligon hududida havo bosimi (atmosfera bosimi) normadan ancha yuqori ekanligi va havoning zichligi ortganligi qayd etildi. Tashqi ballistika qonuniyatlaridan kelib chiqib tahlil qilinsa, havoning zichligi va atmosfera bosimining ortishi o'qning uchish masofasiga hamda trayektoriyasiga amalda qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) Havo qarshiligi kamayadi va o'q belgilangan masofadan ancha uzoqqa borib tegadi.",
         "B) Havo qarshiligi ortadi, o'q havoda tezligini tezroq yo'qotadi, natijada uchish masofasi qisqaradi va o'q nishondan pastga tegadi.",
@@ -3912,7 +3912,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Havo qarshiligi ortadi, o'q havoda tezligini tezroq yo'qotadi,..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Otish burchagi va uning o'q trayektoriyasiga ta'siri\" bo'limida yeni amaliy vaziyat ko'rib chiqilmoqda. Keys: \"Mergan qurol stvolini gorizont chizig'iga nisbatan ma'lum bir burchak ostida yuqoriga ko'tardi (Ugol vozvisheniya). Natijada o'q havodagi eng uzoq parvoz masofasini bosib o'tishi kerak\". Tashqi ballistika va mexanika qonunlariga binoan, havo qarshiligi mavjud bo'lgan real atmosfera sharoitida o'qning eng uzoq masofaga uchishini ta'minlaydigan eng maqbul (optimal) otish burchagi (Ugol naibolshiy dalnosti) taxminan necha darajaga teng hisoblanadi?",
+      "q": "Mergan qurol stvolini gorizont chizig'iga nisbatan ma'lum bir burchak ostida yuqoriga ko'tardi (Ugol vozvisheniya). Natijada o'q havodagi eng uzoq parvoz masofasini bosib o'tishi kerak. Tashqi ballistika va mexanika qonunlariga binoan, havo qarshiligi mavjud bo'lgan real atmosfera sharoitida o'qning eng uzoq masofaga uchishini ta'minlaydigan eng maqbul (optimal) otish burchagi (Ugol naibolshiy dalnosti) taxminan necha darajaga teng hisoblanadi?",
       "opts": [
         "A) Gorizontga nisbatan 90 daraja tik yuqoriga",
         "B) Gorizontga nisbatan taxminan 30-35 daraja burchak ostida",
@@ -3924,7 +3924,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Gorizontga nisbatan taxminan 30-35 daraja burchak ostida..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari ilmiy-metodik kengashida \"O'q trayektoriyasining shakli va uning geometrik element\" o'rganilmoqda. Keys: \"Poligonda otilgan o'q havoda harakatlanib, o'zining eng yuqori balandlik nuqtasiga etdi va shundan so'ng erga qarab pastga enishni boshladi\". Tashqi ballistikaning chiziqli qoidalariga ko'ra, o'q trayektoriyasining eng yuqori nuqtasidan (cho'qqisidan) nishonga urilish (tushish) nuqtasigacha bo'lgan, o'qning pastga qarab enib boradigan egri qismi qonunan qanday nomlanadi?",
+      "q": "Poligonda otilgan o'q havoda harakatlanib, o'zining eng yuqori balandlik nuqtasiga etdi va shundan so'ng erga qarab pastga enishni boshladi. Tashqi ballistikaning chiziqli qoidalariga ko'ra, o'q trayektoriyasining eng yuqori nuqtasidan (cho'qqisidan) nishonga urilish (tushish) nuqtasigacha bo'lgan, o'qning pastga qarab enib boradigan egri qismi qonunan qanday nomlanadi?",
       "opts": [
         "A) Ko'tarilish shoxi (Vosxodyashaya vetv)",
         "B) Pasayish yoki enish shoxi (Nisxodyashaya vetv)",
@@ -3936,7 +3936,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Pasayish yoki enish shoxi (Nisxodyashaya vetv)..."
     },
   {
-      "q": "11-sinf CHQBT darsida \"Porox gazlarining stvol ichidagi kengayish xususiyatlari va bosim turlari\" tahlil qilinmoqda. Keys: \"Kapsul yongandan so'ng porox zaryadi gilza ichidagi tor doirada o'ta shiddat bilan yondi va stvol kanali bo'ylab o'q orqasidan kengayib bora boshladi. Ushbu jarayonda gazlar faqat o'qni oldinga surish bilan cheklanib qolmaydi\". Ichki ballistika qoidalariga ko'ra, yonayotgan porox gazlarining energiya kuchi o'qni oldinga surishdan tashqari qurol mexanizmining qaysi qarshi harakatini (taktik hodisasini) yuzaga keltirishga majbur qiladi?",
+      "q": "Kapsul yongandan so'ng porox zaryadi gilza ichidagi tor doirada o'ta shiddat bilan yondi va stvol kanali bo'ylab o'q orqasidan kengayib bora boshladi. Ushbu jarayonda gazlar faqat o'qni oldinga surish bilan cheklanib qolmaydi. Ichki ballistika qoidalariga ko'ra, yonayotgan porox gazlarining energiya kuchi o'qni oldinga surishdan tashqari qurol mexanizmining qaysi qarshi harakatini (taktik hodisasini) yuzaga keltirishga majbur qiladi?",
       "opts": [
         "A) Qurol stvolining kalibrini avtomat ravishda kengaytirib yuboradi.",
         "B) Qurolni otish yo'nalishiga teskari tomonga, ya'ni orqaga qarab keskin surish harakatini (Orqaga tepish — Otdacha) yuzaga keltiradi.",
@@ -3948,7 +3948,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Qurolni otish yo'nalishiga teskari tomonga, ya'ni orqaga qarab..."
     },
   {
-      "q": "CHQBT o'qituvchilari uchun o'tkazilgan malaka oshirish imtihonida \"Otish asbob-anjomlari va nishonga olish chizig'i elementlari\" bo'yicha savol berildi. Keys: \"Askar nishonni aniq urish uchun ko'z qorachig'ini qurolning mo'ljal tirqishi (selik) va mo'ljal darchasi (mushka) orqali nishonning qo'ndirish nuqtasiga bir chiziq bo'ylab to'g'riladi\". Amaliy otish xaritasi qoidalariga muvofiq, otuvchining ko'zidan mo'ljal tirqishi va mushka uchlari orqali nishondagi nuqtaga qadar o'tgan ushbu tasavvuriy to'g'ri chiziq qonunan qanday nomlanadi?",
+      "q": "Askar nishonni aniq urish uchun ko'z qorachig'ini qurolning mo'ljal tirqishi (selik) va mo'ljal darchasi (mushka) orqali nishonning qo'ndirish nuqtasiga bir chiziq bo'ylab to'g'riladi. Amaliy otish xaritasi qoidalariga muvofiq, otuvchining ko'zidan mo'ljal tirqishi va mushka uchlari orqali nishondagi nuqtaga qadar o'tgan ushbu tasavvuriy to'g'ri chiziq qonunan qanday nomlanadi?",
       "opts": [
         "A) Otish o'qi chizig'i (O'q liniyasi)",
         "B) Nishonga olish chizig'i (Liniya priselivaniya)",
@@ -3960,7 +3960,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Nishonga olish chizig'i (Liniya priselivaniya)..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Otishning yorug'lik va tovush hodisalari mexanikasi\" mavzusida tahliliy savol berildi. Keys: \"Askarlar tunda otish mashqini bajarishayotganda, qurol og'zidan o'q otilib chiqqan soniyada yorqin alanga (chaqnash) ko'rindi va keskin qarsillagan tovush eshitildi\". Ichki va tashqi ballistika tutashuv qoidalariga ko'ra, qurol og'zida yuz beradigan ushbu yorug'lik alangasi va tovush to'lqinining kelib chiqishiga birinchi navbatda qaysi ilmiy jarayon sabab bo'ladi?",
+      "q": "Askarlar tunda otish mashqini bajarishayotganda, qurol og'zidan o'q otilib chiqqan soniyada yorqin alanga (chaqnash) ko'rindi va keskin qarsillagan tovush eshitildi. Ichki va tashqi ballistika tutashuv qoidalariga ko'ra, qurol og'zida yuz beradigan ushbu yorug'lik alangasi va tovush to'lqinining kelib chiqishiga birinchi navbatda qaysi ilmiy jarayon sabab bo'ladi?",
       "opts": [
         "A) O'qning stvol devorlariga o'ta kuchli ishqalanishi natijasida temir qizib ketishi.",
         "B) Stvoldan o'q ortidan otilib chiqqan, hali oxirigacha yonib ulgurmagan issiq porox gazlarining tashqi havodagi kislorod bilan to'satdan to'qnashib, tezkor yonishi va havoni keskin kengaytirishi.",
@@ -3972,7 +3972,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Stvoldan o'q ortidan otilib chiqqan, hali oxirigacha yonib..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"O'qning jonli nishonlarni shikastlash kuchi va uning kinetik energiyasi\" bo'limida yakuniy normalar tahlil qilinmoqda. Keys: \"Kalashnikov avtomatidan otilgan 5.45 mm kalibrli o'q havo bo'shlig'ida uzoq masofaga uchib bordi. Biz uning nishonga etgandagi kinetik energiya kuchini aniqlashimiz kerak\". Tashqi ballistika va mexanika qonuniyatlariga binoan, uchayotgan o'qning nishonga urilish soniyasidagi shikastlash kuchi (Kinetik energiya — E) birinchi navbatda o'qning qaysi ikkita asosiy ko'rsatkichiga qonunan to'g'ridan-to'g'ri bog'liq hisoblanadi?",
+      "q": "Kalashnikov avtomatidan otilgan 5.45 mm kalibrli o'q havo bo'shlig'ida uzoq masofaga uchib bordi. Biz uning nishonga etgandagi kinetik energiya kuchini aniqlashimiz kerak. Tashqi ballistika va mexanika qonuniyatlariga binoan, uchayotgan o'qning nishonga urilish soniyasidagi shikastlash kuchi (Kinetik energiya — E) birinchi navbatda o'qning qaysi ikkita asosiy ko'rsatkichiga qonunan to'g'ridan-to'g'ri bog'liq hisoblanadi?",
       "opts": [
         "A) Qurol stvolining uzunligiga va undagi yivlar (ariqchalar) soniga.",
         "B) O'qning shaxsiy og'irligiga (massasiga) hamda uning nishonga urilgan soniyadagi uchish tezligiga ($E = \\frac{mv^2}{2}$ formulasi asosida).",
@@ -3984,7 +3984,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - O'qning shaxsiy og'irligiga (massasiga) hamda uning nishonga urilgan..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"O'qning havoda uchish vaqtida uchrashi mumkin bo'lgan shamol turlari va ularni hisobga olish taktikasi\" bo'limida amaliy topshiriq bajarilmoqda. Keys: \"Mergan 400 metr masofadagi nishonga qarata o'q uzmoqchi, biroq poligon maydonida otish yo'nalishiga parallel ravishda, ya'ni to'g'ridan-to'g'ri merganning yuziga qarab esayotgan kuchli qarshi shamol (Prodolnyy vstrechnyy veter) esayotganligi aniqlandi\". Tashqi ballistika qonuniyatlariga tayanib tahlil qilinsa, bunday kuchli qarshi shamol o'qning uchish masofasiga hamda nishonga urilish nuqtasiga amalda qanday ta'sir ko'rsatadi?",
+      "q": "Mergan 400 metr masofadagi nishonga qarata o'q uzmoqchi, biroq poligon maydonida otish yo'nalishiga parallel ravishda, ya'ni to'g'ridan-to'g'ri merganning yuziga qarab esayotgan kuchli qarshi shamol (Prodolnyy vstrechnyy veter) esayotganligi aniqlandi. Tashqi ballistika qonuniyatlariga tayanib tahlil qilinsa, bunday kuchli qarshi shamol o'qning uchish masofasiga hamda nishonga urilish nuqtasiga amalda qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) O'qning tezligini yanada oshiradi va u belgilangan nishondan ancha yuqoriga borib tegadi.",
         "B) O'qning havodagi qarshiligini orttiradi, tezligini pasaytiradi, natijada o'qning uchish masofasi qisqaradi va u nishonning mo'ljallangan nuqtasidan pastroqqa borib uriladi.",
@@ -3996,7 +3996,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - O'qning havodagi qarshiligini orttiradi, tezligini pasaytiradi, natijada o'qning..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Trayektoriya cho'qqisi va uning otish xaritasi elementlari bilan bog'liqligi\" bo'yicha yakuniy tahliliy savol berildi. Keys: \"Miltiqdan otilgan o'q havo kengligida yuqoriga ko'tarilib bordi va ko'tarilish shoxining (Vosxodyashaya vetv) eng oxirgi yuqori nuqtasi etdi. Shundan so'ng o'q erkin muvozanatni yoqotib, pastga enish shoxi (Nisxodyashaya vetv) bo'ylab harakatini davom ettirdi\". Tashqi ballistika terminlariga muvofiq, o'q trayektoriyasining uchrashish tekisligidan (gorizontdan) eng uzoqlashgan, uni teng ikki qismga bo'lmaydigan (chunki pasayish shoxi kalta bo'ladi) ushbu eng yuqori nuqtasi qonunan qanday nomlanadi?",
+      "q": "Miltiqdan otilgan o'q havo kengligida yuqoriga ko'tarilib bordi va ko'tarilish shoxining (Vosxodyashaya vetv) eng oxirgi yuqori nuqtasi etdi. Shundan so'ng o'q erkin muvozanatni yoqotib, pastga enish shoxi (Nisxodyashaya vetv) bo'ylab harakatini davom ettirdi. Tashqi ballistika terminlariga muvofiq, o'q trayektoriyasining uchrashish tekisligidan (gorizontdan) eng uzoqlashgan, uni teng ikki qismga bo'lmaydigan (chunki pasayish shoxi kalta bo'ladi) ushbu eng yuqori nuqtasi qonunan qanday nomlanadi?",
       "opts": [
         "A) Tushish nuqtasi (Tochka padeniya)",
         "B) Trayektoriya cho'qqisi (Vershina traektorii)",
@@ -4008,7 +4008,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Trayektoriya cho'qqisi (Vershina traektorii)..."
     },
   {
-      "q": "CHQBT o'quv poligonida amaliy otish mashg'uloti o'tkazilmoqda. Keys: \"Avtomat stvolidan otilib chiqqan o'qning boshlang'ich tezligi (V0) qurolning o'q otish masofasiga, o'qning nishonga etib borish vaqtiga hamda dushman kiyim-boshini yoki himoya to'siqlarini teshib o'tish (shikastlash) kuchiga bevosita ta'sir ko'rsatadi\". Ichki va tashqi ballistika qonuniyatlarining o'zaro bog'liqligi nuqtai nazaridan tahlil qilinsa, o'qning boshlang'ich tezligi ($V_0$) ortishi bilan uning havodagi trayektoriyasi qanday ko'rinishga keladi va nishonni urish ehtimoli qanday o'zgaradi?",
+      "q": "Avtomat stvolidan otilib chiqqan o'qning boshlang'ich tezligi (V0) qurolning o'q otish masofasiga, o'qning nishonga etib borish vaqtiga hamda dushman kiyim-boshini yoki himoya to'siqlarini teshib o'tish (shikastlash) kuchiga bevosita ta'sir ko'rsatadi. Ichki va tashqi ballistika qonuniyatlarining o'zaro bog'liqligi nuqtai nazaridan tahlil qilinsa, o'qning boshlang'ich tezligi ($V_0$) ortishi bilan uning havodagi trayektoriyasi qanday ko'rinishga keladi va nishonni urish ehtimoli qanday o'zgaradi?",
       "opts": [
         "A) Trayektoriya baland ko'tariladi, o'q havoda ko'proq chayqaladi va nishonni urish qiyinlashadi.",
         "B) Trayektoriya yanada cho'ziq (g'oz yoki yassi) holatga keladi, tashqi muhit (shamol, harorat) ta'siri kamayadi va nishonni urish aniqligi ortadi.",
@@ -4032,7 +4032,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Ajralib chiqadigan porox gazlari miqdori va stvol ichidagi..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"O'q og'irligining (massasining) boshlang'ich tezlik bilan teskari mutanosibligi\" qonuni muhokama qilinmoqda. Keys: \"Taktik mashg'ulotda bir xil rusdagi quroldan, porox zaryadi mutloq teng bo'lgan ikki xil o'q otildi: birinchi o'q o'ta engillashtirilgan po'lat o'zakli o'q, ikkinchi o'q esa og'ir qo'rg'oshin quyilgan zirh teshuvchi o'q\". Ichki ballistika qoidalaridan kelib chiqib mulohaza qilinsa, o'qning shaxsiy og'irligi (massasi) ortishi uning stvol og'zidan otilib chiqish pallasidagi boshlang'ich tezligiga qanday ta'sir ko'rsatadi?",
+      "q": "Taktik mashg'ulotda bir xil rusdagi quroldan, porox zaryadi mutloq teng bo'lgan ikki xil o'q otildi: birinchi o'q o'ta engillashtirilgan po'lat o'zakli o'q, ikkinchi o'q esa og'ir qo'rg'oshin quyilgan zirh teshuvchi o'q. Ichki ballistika qoidalaridan kelib chiqib mulohaza qilinsa, o'qning shaxsiy og'irligi (massasi) ortishi uning stvol og'zidan otilib chiqish pallasidagi boshlang'ich tezligiga qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) O'q qanchalik og'ir bo'lsa, uning inertsiyasi yuqori bo'lib, boshlang'ich tezligi shanchalik ortadi.",
         "B) O'q qanchalik og'ir bo'lsa, porox gazlarining uni joyidan qo'zg'atishi va stvoldaud jamoa tezlashtirishi qiyinlashadi, natijada uning boshlang'ich tezligi kamayadi.",
@@ -4044,7 +4044,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - O'q qanchalik og'ir bo'lsa, porox gazlarining uni joyidan..."
     },
   {
-      "q": "11-sinf o'quvchilari o'rtasida o'tkazilayotgan \"Vatanparvarlar\" harbiy sport musobaqasida ichki ballistikaning termodinamik omillari tahlil qilinmoqda. Keys: \"Yozgi issiq ob-havoda, quyosh ostida uzoq vaqt qolib ketgan patronlar tarkibidagi porox zaryadining harorati plyus 40 darajagacha qizib ketdi. Askar ushbu qizigan patronlar bilan nishonga qarata o'q uzdi\". Ichki ballistikaning termodinamik qonunlariga muvofiq, porox boshlang'ich haroratining bunday yuqori bo'lishi o'qning boshlang'ich tezligiga poligon sharoitida amalda qanday ta'sir ko'rsatadi?",
+      "q": "Yozgi issiq ob-havoda, quyosh ostida uzoq vaqt qolib ketgan patronlar tarkibidagi porox zaryadining harorati plyus 40 darajagacha qizib ketdi. Askar ushbu qizigan patronlar bilan nishonga qarata o'q uzdi. Ichki ballistikaning termodinamik qonunlariga muvofiq, porox boshlang'ich haroratining bunday yuqori bo'lishi o'qning boshlang'ich tezligiga poligon sharoitida amalda qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) Porox qiziganda uning kimyoviy xususiyati buziladi va o'q umuman stvoldan otilib chiqaimaydi.",
         "B) Poroxning yonish tezligi keskin ortadi, stvol kanali ichida gaz bosimi tezroq ko'tariladi va o'qning boshlang'ich tezligi sezilarli darajada ko'payadi.",
@@ -4056,7 +4056,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Poroxning yonish tezligi keskin ortadi, stvol kanali ichida..."
     },
   {
-      "q": "CHQBT fani rahbari 11-sinf o'quvchilariga \"Qurol stvolining eyilishi (iznos stvola) va uning boshlang'ich tezlikka salbiy ta'siri\" mavzusini o'rgatmoqda. Keys: \"Ko'p yillar davomida amaliy otish mashg'ulotlarida to'xtovsiz ishlatilgan, stvol kanali ichidagi yivlari eyilib, silliqlashib ketgan va stvol diametri kengaygan quroldan o'q otildi\". Ichki ballistika normalariga ko'ra, qurol stvolining bunday eyilishi va ichki devorlarining eskirishi o'qning boshlang'ich tezligiga qanday huquqiy va taktik ta'sir ko'rsatadi?",
+      "q": "Ko'p yillar davomida amaliy otish mashg'ulotlarida to'xtovsiz ishlatilgan, stvol kanali ichidagi yivlari eyilib, silliqlashib ketgan va stvol diametri kengaygan quroldan o'q otildi. Ichki ballistika normalariga ko'ra, qurol stvolining bunday eyilishi va ichki devorlarining eskirishi o'qning boshlang'ich tezligiga qanday huquqiy va taktik ta'sir ko'rsatadi?",
       "opts": [
         "A) Eyilgan stvolda to'siq kam bo'lganligi sababli o'q yanada yuqori tezlikda otilib chiqadi.",
         "B) Porox gazlarining bir qismi o'q va stvol devorlari orasidagi tirqishlardan oldinga qochib ketadi (gaz proryvi), stvoldagi bosim pasayadi, natijada o'qning boshlang'ich tezligi keskin kamayadi.",
@@ -4068,7 +4068,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Porox gazlarining bir qismi o'q va stvol devorlari..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari ilmiy-metodik kengashida \"Porox zaryadining namlik darajasi va uning o'q kinetik energiyasiga ta'siri\" o'rganilmoqda. Keys: \"Omborda noto'g'ri saqlanganligi sababli nam tortgan (namligi ortgan) porox zaryadiga ega bo'lgan patronlar naryad tarkibidagi askarlarga amaliy otish mashg'uloti uchun tarqatildi\". Ichki ballistika qonuniyatlariga muvofiq, porox tarkibidagi namlik miqdorining oshishi otish pallasida o'qning boshlang'ich tezligiga qanday salbiy ta'sir ko'rsatadi?",
+      "q": "Omborda noto'g'ri saqlanganligi sababli nam tortgan (namligi ortgan) porox zaryadiga ega bo'lgan patronlar naryad tarkibidagi askarlarga amaliy otish mashg'uloti uchun tarqatildi. Ichki ballistika qonuniyatlariga muvofiq, porox tarkibidagi namlik miqdorining oshishi otish pallasida o'qning boshlang'ich tezligiga qanday salbiy ta'sir ko'rsatadi?",
       "opts": [
         "A) Nam porox portlab ketadi va qurol stvolini butunlay parchalab yuboradi.",
         "B) Poroxning yonish sur'ati pasayadi, gaz hosil bo'lish tezligi va stvoldagi bosim keskin kamayadi, natijada o'qning boshlang'ich tezligi pasayib, uchish masofasi qisqaradi.",
@@ -4092,7 +4092,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Stvol kanali mutloq quruq, toza, unda hech qanday..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"O'qning shakli (aerodinamik tuzilishi) va uning boshlang'ich tezlikni saqlab qolishdagi ahamiyati\" muhokama qilinmoqda. Keys: \"Mergan uzoq masofadagi nishonni urish uchun ikki xil o'q tuzilishini tahlil qildi: birinchisi uchi o'tkirlangan cho'ziq aerodinamik o'q, ikkinchisi esa uchi to'mtoq va qisqa ov o'qi\". Tashqi ballistika kengayish prinsiplariga asosan, o'qning aerodinamik shakli uning havo qarshiligini engib, o'z boshlang'ich tezligini ($V_0$) uzoq masofagacha yuqori saqlab qolishiga qanday ta'sir ko'rsatadi?",
+      "q": "Mergan uzoq masofadagi nishonni urish uchun ikki xil o'q tuzilishini tahlil qildi: birinchisi uchi o'tkirlangan cho'ziq aerodinamik o'q, ikkinchisi esa uchi to'mtoq va qisqa ov o'qi. Tashqi ballistika kengayish prinsiplariga asosan, o'qning aerodinamik shakli uning havo qarshiligini engib, o'z boshlang'ich tezligini ($V_0$) uzoq masofagacha yuqori saqlab qolishiga qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) To'mtoq o'q havoni ko'proq yorganligi sababli u o'z tezligini uzoqroq saqlaydi.",
         "B) Uchi o'tkir cho'ziq o'q havo qarshiligini (girdoblar hosil bo'lishini) minimal darajaga tushiradi, natijada u o'z boshlang'ich tezligini uzoq masofagacha yo'qotmasdan yuqori saqlaydi.",
@@ -4104,7 +4104,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Uchi o'tkir cho'ziq o'q havo qarshiligini (girdoblar hosil..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Qurol kalibri (stvol diametri) va porox gazlari bosimining o'zaro nisbatan boshlang'ich tezlikni belgilashi\" bo'limida yangi amaliy vaziyat ko'rib chiqilmoqda. Keys: \"9 mm kalibrli Makarov to'pponchasi (PM) va 5.45 mm kalibrli Kalashnikov avtomati (AK-74) o'qlarining boshlang'ich tezliklari solishtirilmoqda\". Ichki ballistika qonuniyatlariga tayanib tahlil qilinsa, nima sababdan kalibri kichik va o'qi engil bo'lgan avtomat (AK-74) o'qining boshlang'ich tezligi, kalibri katta bo'lgan to'pponcha (PM) o'qining boshlang'ich tezligidan qonunan bir necha barobar yuqori hisoblanadi?",
+      "q": "9 mm kalibrli Makarov to'pponchasi (PM) va 5.45 mm kalibrli Kalashnikov avtomati (AK-74) o'qlarining boshlang'ich tezliklari solishtirilmoqda. Ichki ballistika qonuniyatlariga tayanib tahlil qilinsa, nima sababdan kalibri kichik va o'qi engil bo'lgan avtomat (AK-74) o'qining boshlang'ich tezligi, kalibri katta bo'lgan to'pponcha (PM) o'qining boshlang'ich tezligidan qonunan bir necha barobar yuqori hisoblanadi?",
       "opts": [
         "A) To'pponcha stvoli ichidagi yivlar soni avtomatnikidan ko'p bo'lganligi sababli o'q sekinlashadi.",
         "B) Avtomatda porox zaryadi miqdori ancha ko'p, stvoli uzun va stvol ichidagi gaz bosimi o'ta yuqori, o'qi esa engil aerodinamik shaklda bo'lganligi sababli (AK-74 da V0 taxminan 900 m/s, PM da esa 315 m/s).",
@@ -4116,7 +4116,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Avtomatda porox zaryadi miqdori ancha ko'p, stvoli uzun..."
     },
   {
-      "q": "CHQBT fani guruhlarida qurol mexanizmlarining o'ziga xos xususiyatlari ko'rib chiqiladi. Davomi sifatida: \"Askarlar amaliy otish mashg'ulotini yakunlab, qurol stvolining qizish darajasini o'rganmoqdalar\". Keys: \"Avtomatdan ketma-ket 3 ta o'qdon (90 ta patron) qisqa muddat ichida to'xtovsiz (avtomat rejimida) otildi. Natijada qurol stvoli haddan tashqari qizib, temirning kengayishi va ichki yivlar orasidagi ishqalanish xususiyatlari o'zgardi\". Ichki ballistika qonunlariga binoan, qurol stvolining bunday haddan tashqari qizib ketishi (nagrev stvola) o'sha pallada otilayotgan keyingi o'qlarning boshlang'ich tezligiga va otish aniqligiga qanday ta'sir ko'rsatadi?",
+      "q": "Avtomatdan ketma-ket 3 ta o'qdon (90 ta patron) qisqa muddat ichida to'xtovsiz (avtomat rejimida) otildi. Natijada qurol stvoli haddan tashqari qizib, temirning kengayishi va ichki yivlar orasidagi ishqalanish xususiyatlari o'zgardi. Ichki ballistika qonunlariga binoan, qurol stvolining bunday haddan tashqari qizib ketishi (nagrev stvola) o'sha pallada otilayotgan keyingi o'qlarning boshlang'ich tezligiga va otish aniqligiga qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) Stvol qiziganda po'lat yumshab, o'q hech qanday qarshiliksiz yanada to'g'ri va yuqori tezlikda uchadi.",
         "B) Stvol kanali diametri kengayadi, o'q stvol devorlariga mahkam yopishmaydi (gazlar oldinga sizib o'tadi), natijada o'qning boshlang'ich tezligi kamayadi va otish aniqligi keskin pasayadi.",
@@ -4128,7 +4128,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Stvol kanali diametri kengayadi, o'q stvol devorlariga mahkam..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"O'qotar qurol aslahalari tarkibidagi porox turi va uning yonish shaklining boshlang'ich tezlikka ta'siri\" bo'limi tahlil qilinmoqda. Keys: \"Ikki xil o'quv patroni solishtirilmoqda: birinchisida tez yonuvchi plastinkasimon porox ishlatilgan, ikkinchisida esa sekinroq, ammo uzoq vaqt davomida gaz ajratadigan donador (doroli) porox zaryadi mavjud\". Ichki ballistika mexanikasidan kelib chiqib mulohaza qilinsa, poroxning geometrik shakli va yonish sur'ati o'qning stvol ichidagi harakat tezlanishiga hamda boshlang'ich tezligiga qanday ta'sir ko'rsatadi?",
+      "q": "Ikki xil o'quv patroni solishtirilmoqda: birinchisida tez yonuvchi plastinkasimon porox ishlatilgan, ikkinchisida esa sekinroq, ammo uzoq vaqt davomida gaz ajratadigan donador (doroli) porox zaryadi mavjud. Ichki ballistika mexanikasidan kelib chiqib mulohaza qilinsa, poroxning geometrik shakli va yonish sur'ati o'qning stvol ichidagi harakat tezlanishiga hamda boshlang'ich tezligiga qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) Porox shakli faqat uning gilza ichida qanchalik qisqarib joylashishini belgilaydi, o'q tezligiga ta'siri yo'q.",
         "B) Porox donalarining shakli uning yonish yuzasini va gaz ajralish tezligini belgilaydi; tez yonadigan porox o'qqa boshlang'ich bosimni keskin bersa, sekin yonuvchi porox uzun stvollarda o'q tezligini barqaror oshirishga xizmat qiladi.",
@@ -4152,7 +4152,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Porox gazlarining bir qismi o'qdan oldinga sizib o'tib..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Qurol moyining o'q harakatlanish pallasidagi o'rni va uning boshlang'ich tezlikka ta'siri\" muhokama qilinmoqda. Keys: \"Askar amaliy otish mashg'ulotdan oldin qurol stvolini quruq mato bilan artib tozalashni unutdi va stvol kanali ichida quyuq to'plangan qurol moyi (smazka) qoldiqlari saqlanib qolgan holda o'q uzdi\". Ichki ballistika qoidalaridan kelib chiqib tahlil qilinsa, stvol ichidagi ortiqcha moy qoldiqlarining mavjudligi o'qning boshlang'ich tezligiga amalda qanday ta'sir ko'rsatadi?",
+      "q": "Askar amaliy otish mashg'ulotdan oldin qurol stvolini quruq mato bilan artib tozalashni unutdi va stvol kanali ichida quyuq to'plangan qurol moyi (smazka) qoldiqlari saqlanib qolgan holda o'q uzdi. Ichki ballistika qoidalaridan kelib chiqib tahlil qilinsa, stvol ichidagi ortiqcha moy qoldiqlarining mavjudligi o'qning boshlang'ich tezligiga amalda qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) Moy o'qning sirpanishini osonlashtiradi va uning boshlang'ich tezligini keskin oshiradi.",
         "B) Moy o'q harakatiga mexanik qarshilik (gidravlik to'siq) hosil qiladi, porox gazlarining energiyasini kamaytiradi, boshlang'ich tezlikni pasaytiradi va stvolning shishishiga olib kelishi mumkin.",
@@ -4164,7 +4164,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Moy o'q harakatiga mexanik qarshilik (gidravlik to'siq) hosil..."
     },
   {
-      "q": "11-sinf o'quvchilarining harbiylashtirilgan taktik musobaqasida \"O'q og'irligi va uning uzoq masofalarda tezlikni saqlab qolish xususiyati\" tahlil qilinmoqda. Keys: \"Bir xil quroldan va bir xil boshlang'ich tezlikda ikki xil o'q otildi: birinchisi engil alyuminiy o'zakli o'q, ikkinchisi esa og'ir po'lat o'zakli o'q. Ikkala o'q ham 500 metr masofadagi nishon tomon uchib bormoqda\". Tashqi ballistika kuchi va inertsiy qonunlariga muvofiq, uzoq masofaga borganda qaysi o'q o'z tezligini yuqoriroq saqlab qoladi va nishonni qattiqroq shikastlaydi?",
+      "q": "Bir xil quroldan va bir xil boshlang'ich tezlikda ikki xil o'q otildi: birinchisi engil alyuminiy o'zakli o'q, ikkinchisi esa og'ir po'lat o'zakli o'q. Ikkala o'q ham 500 metr masofadagi nishon tomon uchib bormoqda. Tashqi ballistika kuchi va inertsiy qonunlariga muvofiq, uzoq masofaga borganda qaysi o'q o'z tezligini yuqoriroq saqlab qoladi va nishonni qattiqroq shikastlaydi?",
       "opts": [
         "A) Engil o'q havoda engil uchganligi sababli uzoq masofada tezligini mutloq yo'qotmaydi.",
         "B) Og'ir o'q o'zining katta inersiya kuchi (massasi) hisobiga havo qarshiligini onsonroq engadi va uzoq masofada o'z tezligini engil o'qqa nisbatan yuqoriroq saqlab qoladi.",
@@ -4176,7 +4176,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Og'ir o'q o'zining katta inersiya kuchi (massasi) hisobiga..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari metodik yig'ilishida \"Atmosfera havosining harorati (gradus) o'qning havodagi parvoz tezligiga ta'siri\" o'rganilmoqda. Keys: \"Yozning jazirama issiq kunida (plyus 35 darajada) otilgan o'qning havo kengligidagi harakati bilan, qishning sovuq kunida (minus 15 darajada) otilgan o'qning harakati solishtirilmoqda\". Tashqi ballistika qonuniyatlariga binoan, havo haroratining issiq bo'lishi uchayotgan o'qning tezligiga va havo qarshiligiga amalda qanday ta'sir ko'rsatadi?",
+      "q": "Yozning jazirama issiq kunida (plyus 35 darajada) otilgan o'qning havo kengligidagi harakati bilan, qishning sovuq kunida (minus 15 darajada) otilgan o'qning harakati solishtirilmoqda. Tashqi ballistika qonuniyatlariga binoan, havo haroratining issiq bo'lishi uchayotgan o'qning tezligiga va havo qarshiligiga amalda qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) Issiq havoda havo zichligi ortadi va o'q tezligini tezda yo'qotib erga qulaydi.",
         "B) Issiq havoda havo zichligi kamayadi (havo siyraklashadi), natijada o'qqa ko'rsatiladigan havo qarshiligi pasayadi va o'q o'z tezligini uzoq masofagacha yuqori saqlaydi.",
@@ -4188,7 +4188,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Issiq havoda havo zichligi kamayadi (havo siyraklashadi), natijada..."
     },
   {
-      "q": "10-sinf CHQBT darsida \"Qurol stvoli ichidagi yivlar qadami (shag narezov) va uning o'qning aylanish tezligiga ta'siri\" tahlil qilinmoqda. Keys: \"Yivli qurol stvoli ichidagi burama ariqchalarning aylanish burchagi (qadami) o'qga stvol ichida o'z o'qi atrofida oylanish harakatini beradi\". Ichki ballistika prinsiplaridan kelib chiqib mulohaza qilinsa, o'qning stvoldan otilib chiqish soniyasidagi shaxsiy aylanish tezligi uning boshlang'ich tezligiga ($V_0$) va havodagi turg'unligiga qanday ta'sir ko'rsatadi?",
+      "q": "Yivli qurol stvoli ichidagi burama ariqchalarning aylanish burchagi (qadami) o'qga stvol ichida o'z o'qi atrofida oylanish harakatini beradi. Ichki ballistika prinsiplaridan kelib chiqib mulohaza qilinsa, o'qning stvoldan otilib chiqish soniyasidagi shaxsiy aylanish tezligi uning boshlang'ich tezligiga ($V_0$) va havodagi turg'unligiga qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) Aylanish tezligi qanchalik yuqori bo'lsa, o'q havoda shanchalik tez ag'darilib ketadi.",
         "B) Aylanish o'qqa giroskopik turg'unlik beradi, uning havodagi muvozanatini saqlaydi va boshlang'ich tezlikning uzoq masofagacha keskin pasayib ketishining oldini oladi.",
@@ -4200,7 +4200,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Aylanish o'qqa giroskopik turg'unlik beradi, uning havodagi muvozanatini..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Gilza ichidagi porox zaryadining zichligi (plotnost zaryajaniya) va uning bosim portlashiga ta'siri\" bo'limida amaliy keys ko'rib chiqilmoqda. Keys: \"Patron ishlab chiqarish jarayonida gilza ichidagi porox zaryadi o'ta qattiq presslanib, zichlab joylashtirildi, natijada porox donalari orasidagi bo'sh havo maydoni qolmadi\". Ichki ballistika qonunlariga ko'ra, porox zichligining bunday haddan tashqari yuqori bo'lishi otish pallasida stvol ichidagi bosimga va o'qning boshlang'ich tezligiga qanday xavfli ta'sir ko'rsatadi?",
+      "q": "Patron ishlab chiqarish jarayonida gilza ichidagi porox zaryadi o'ta qattiq presslanib, zichlab joylashtirildi, natijada porox donalari orasidagi bo'sh havo maydoni qolmadi. Ichki ballistika qonunlariga ko'ra, porox zichligining bunday haddan tashqari yuqori bo'lishi otish pallasida stvol ichidagi bosimga va o'qning boshlang'ich tezligiga qanday xavfli ta'sir ko'rsatadi?",
       "opts": [
         "A) Porox zich bo'lsa u umuman yonmaydi va otish hodisasi yuz bermaydi.",
         "B) Poroxning yonishi portlash (detonatsiya) rejimiga o'tib ketadi, stvoldagi bosim ruxsat etilgan me'yordan keskin oshib, qurolni parchalashi yoki o'q tezligini nazoratsiz o'zgartirishi mumkin.",
@@ -4212,7 +4212,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Poroxning yonishi portlash (detonatsiya) rejimiga o'tib ketadi, stvoldagi..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"O'q dastasining g'ilof (obolochka) materiali va uning stvoldai ishqalanish qarshiligi\" bo'yicha savol berildi. Keys: \"Zamonaviy jangovar patronlar o'qining tashqi qismi toza po'latdan emas, balki bimetall (tompak — mis va rux qorishmasi) moddasi bilan qoplangan\". Ichki ballistika qonuniyatlariga muvofiq, o'q tashqi qobig'ining yumshoqroq bimetall moddasidan ishlanishi o'qning boshlang'ich tezligini barqaror saqlashda qanday rol o'ynaydi?",
+      "q": "Zamonaviy jangovar patronlar o'qining tashqi qismi toza po'latdan emas, balki bimetall (tompak — mis va rux qorishmasi) moddasi bilan qoplangan. Ichki ballistika qonuniyatlariga muvofiq, o'q tashqi qobig'ining yumshoqroq bimetall moddasidan ishlanishi o'qning boshlang'ich tezligini barqaror saqlashda qanday rol o'ynaydi?",
       "opts": [
         "A) Bimetall o'q stvol ichida erib ketadi va stvolni o'z-o'zidan tozalashga xizmat qiladi.",
         "B) O'qning stvol ichidagi yivlarga onsonroq kirishini ta'minlaydi, po'lat stvolning ichki eyilishini (ishqalanish qarshiligini) kamaytiradi va boshlang'ich tezlikning pasayib ketishidan asraydi.",
@@ -4224,7 +4224,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - O'qning stvol ichidagi yivlarga onsonroq kirishini ta'minlaydi, po'lat..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Qurol ogiz qismidagi qo'shimcha moslamalar (DTT — Dulnyy tormoz kompensator) va ularning boshlang'ich tezlikka ta'siri\" muhokama qilindi. Keys: \"Kalashnikov avtomati (AK-74) stvoli og'ziga maxsus dulo tormoz-kompensatori o'rnatilgan. Otish vaqtida o'q stvoldan chiqishi bilan porox gazlarining bir qismi ushbu moslama teshiklari orqali yonga va orqaga yo'naltiriladi\". Tashqi va ichki ballistika qoidalari zanjiridan kelib chiqib tahlil qilinsa, ushbu moslamaning mavjudligi o'qning boshlang'ich tezligiga amalda qanday ta'sir ko'rsatadi?",
+      "q": "Kalashnikov avtomati (AK-74) stvoli og'ziga maxsus dulo tormoz-kompensatori o'rnatilgan. Otish vaqtida o'q stvoldan chiqishi bilan porox gazlarining bir qismi ushbu moslama teshiklari orqali yonga va orqaga yo'naltiriladi. Tashqi va ichki ballistika qoidalari zanjiridan kelib chiqib tahlil qilinsa, ushbu moslamaning mavjudligi o'qning boshlang'ich tezligiga amalda qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) Moslama porox gazlarini chetga burganligi sababli o'qning boshlang'ich tezligini 50 foizga kamaytirib yuboradi.",
         "B) O'qning boshlang'ich tezligiga deyarli salbiy ta'sir ko'rsatmaydi, biroq qurolning orqaga tepishini va tumshug'ining yuqoriga sakrashini kamaytirib, keyingi otiladigan o'qlarning aniqligini oshiradi.",
@@ -4236,7 +4236,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - O'qning boshlang'ich tezligiga deyarli salbiy ta'sir ko'rsatmaydi, biroq..."
     },
   {
-      "q": "Tuman mudofaa ishlari bo'limi va CHQBT rahbarlarining qo'shma yig'ilishida \"Geografik joylashuv (Dengiz sathidan balandlik) va uning o'q parvoz tezligiga ta'siri\" o'rganildi. Keys: \"Miltiqdan bir xil o'q o'quv mashg'uloti davomida ikki xil geografik hududda otildi: birinchisi dengiz sathidan 3000 metr balandlikdagi tog'li poligonda, ikkinchisi esa pasttekislikdagi cho'l zonasida\". Tashqi ballistika qonunlariga binoan, baland tog'li sharoitda otilgan o'qning parvoz tezligi pasttekislikdagiga nisbatan qanday o'zgaradi?",
+      "q": "Miltiqdan bir xil o'q o'quv mashg'uloti davomida ikki xil geografik hududda otildi: birinchisi dengiz sathidan 3000 metr balandlikdagi tog'li poligonda, ikkinchisi esa pasttekislikdagi cho'l zonasida. Tashqi ballistika qonunlariga binoan, baland tog'li sharoitda otilgan o'qning parvoz tezligi pasttekislikdagiga nisbatan qanday o'zgaradi?",
       "opts": [
         "A) Tog'da havo zich bo'lganligi sababli o'q tezligini tezda yo'qotadi va yaqin masofaga tushadi.",
         "B) Tog'li hududda dengiz sathidan baland bo'lganligi sababli atmosfera bosimi past va havo siyrak bo'ladi, natijada o'q kamroq havo qarshiligiga uchraydi va o'z tezligini uzoqroq saqlab, uzoqqa uchadi.",
@@ -4248,7 +4248,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Tog'li hududda dengiz sathidan baland bo'lganligi sababli atmosfera..."
     },
   {
-      "q": "11-sinf CHQBT darsida \"Patron g'ilofining mustahkamligi va uning o'qni gilzadan ajralish pallasidagi tezlikka ta'siri\" tahlil qilinmoqda. Keys: \"Patron gilzasi og'zining o'qni qisib turish kuchi (objim puli) texnik sabablarga ko'ra o'ta bo'sh yoki o'ta mahkam qilib ishlab chiqarildi\". Ichki ballistika qonunlariga ko'ra, o'qning gilzadan ajralish pallasida porox gazlarining dastlabki bosimi shakllanishiga ushbu qisish kuchi qanday ta'sir ko'rsatadi?",
+      "q": "Patron gilzasi og'zining o'qni qisib turish kuchi (objim puli) texnik sabablarga ko'ra o'ta bo'sh yoki o'ta mahkam qilib ishlab chiqarildi. Ichki ballistika qonunlariga ko'ra, o'qning gilzadan ajralish pallasida porox gazlarining dastlabki bosimi shakllanishiga ushbu qisish kuchi qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) Qisish kuchi bo'sh bo'lsa, porox gazlari stvol ichida uzoqroq to'planib, tezlikni oshiradi.",
         "B) Qisish kuchi o'ta bo'sh bo'lsa, o'q gaz bosimi etarli darajaga etmay turib gilzadan erta ajraladi va boshlang'ich tezlik kamayadi; o'ta mahkam bo'lsa, dastlabki bosim ortib, tezlik ko'payadi yoki stvol shikastlanadi.",
@@ -4272,7 +4272,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Standart og'irlikdagi sifatli porox zaryadi, stvol uzunligining me'yorda..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"O'qning havoda uchish trayektoriyasini shakllantiruvchi geometrik elementlar\" bo'limi tahlil qilinmoqda. Keys: \"Otish vaqtida stvol kanali o'qi ma'lum bir yo'nalishga sozlandi. O'q stvol og'zidan chiqib, havoda er sirtining tortish va havo qarshilik kuchlari ta'sirida egri chiziq hosil qilib uchib ketdi\". Tashqi ballistika qoidalariga ko'ra, qurol otilgan nuqtadan (stvol og'zidan) boshlanib, nishonga urilish yoki erga qulash nuqtasigacha davom etadigan o'qning havodagi ushbu simmetrik bo'lmagan egri harakat chizig'i qonunan qanday nomlanadi?",
+      "q": "Otish vaqtida stvol kanali o'qi ma'lum bir yo'nalishga sozlandi. O'q stvol og'zidan chiqib, havoda er sirtining tortish va havo qarshilik kuchlari ta'sirida egri chiziq hosil qilib uchib ketdi. Tashqi ballistika qoidalariga ko'ra, qurol otilgan nuqtadan (stvol og'zidan) boshlanib, nishonga urilish yoki erga qulash nuqtasigacha davom etadigan o'qning havodagi ushbu simmetrik bo'lmagan egri harakat chizig'i qonunan qanday nomlanadi?",
       "opts": [
         "A) Otish o'qi chizig'i (O'q liniyasi)",
         "B) Trayektoriya (Traektoriya)",
@@ -4296,7 +4296,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Trayektoriya tekisligi (Ploskost traektorii)..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"O'q otish nuqtasi va uchrashish tekisligi munosabatlari\" muhokama qilinmoqda. Keys: \"Askar yotgan holatda qurolini er sirtiga parallel saqlab turibdi. O'q otilgan soniyada stvol og'zining markazidan o'tgan gorizontal tekislik o'qning butun uchish yo'liga nisbatan poydevor hisoblanadi\". Tashqi ballistika normalariga ko'ra, stvol og'zining markazidan o'tadigan, otish nuqtasi kesib o'tuvchi ushbu gorizontal tekislik qonunan qanday nomlanadi?",
+      "q": "Askar yotgan holatda qurolini er sirtiga parallel saqlab turibdi. O'q otilgan soniyada stvol og'zining markazidan o'tgan gorizontal tekislik o'qning butun uchish yo'liga nisbatan poydevor hisoblanadi. Tashqi ballistika normalariga ko'ra, stvol og'zining markazidan o'tadigan, otish nuqtasi kesib o'tuvchi ushbu gorizontal tekislik qonunan qanday nomlanadi?",
       "opts": [
         "A) Nishonga olish gorizonti",
         "B) Qurol gorizonti (Gorizont orujiya)",
@@ -4308,7 +4308,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Qurol gorizonti (Gorizont orujiya)..."
     },
   {
-      "q": "11-sinf o'quvchilari poligon maydonida tashqi ballistikaning \"Otish chizig'i\" (Liniya vistrela) elementini o'rganmoqdalar. Keys: \"Otish pallasida qurol kurgagi urildi va porox gazlari o'qni oldinga surdi. Biroq o'q hali stvoldan chiqmasdan oldin, qurol stvoli kanalining o'qi davom ettirilib, fazoda cheksiz to'g'ri chiziq sifatida tasavvur qilindi\". Tashqi ballistika geometriyasiga muvofiq, otishdan oldin to'g'rilangan stvol kanali o'qining fazodagi ushbu geometrik davomi (to'g'ri chiziq) qonunan nima deb ataladi?",
+      "q": "Otish pallasida qurol kurgagi urildi va porox gazlari o'qni oldinga surdi. Biroq o'q hali stvoldan chiqmasdan oldin, qurol stvoli kanalining o'qi davom ettirilib, fazoda cheksiz to'g'ri chiziq sifatida tasavvur qilindi. Tashqi ballistika geometriyasiga muvofiq, otishdan oldin to'g'rilangan stvol kanali o'qining fazodagi ushbu geometrik davomi (to'g'ri chiziq) qonunan nima deb ataladi?",
       "opts": [
         "A) Uchish chizig'i (Liniya brosaniya)",
         "B) Otish chizig'i (Liniya vistrela)",
@@ -4320,7 +4320,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Otish chizig'i (Liniya vistrela)..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari ilmiy-metodik kengashida \"Uchish chizig'i (Liniya brosaniya) va uning kelib chiqishi\" mavzusi tahlil qilinmoqda. Keys: \"O'q otish vaqtida qurol mexanizmining harakati va porox gazlarining silkinishi (orqaga tepishi) natijasida qurol stvoli dastlabki holatidan bir oz yuqoriga yoki yonga siljiydi. O'q stvoldan aynan mana shu siljigan soniyada otilib chiqadi\". Tashqi ballistika qonunlariga ko'ra, o'q stvoldan chiqib ketayotgan soniyada stvol kanali o'qining fazodagi to'g'ri davomi qonunan qanday nomlanadi?",
+      "q": "O'q otish vaqtida qurol mexanizmining harakati va porox gazlarining silkinishi (orqaga tepishi) natijasida qurol stvoli dastlabki holatidan bir oz yuqoriga yoki yonga siljiydi. O'q stvoldan aynan mana shu siljigan soniyada otilib chiqadi. Tashqi ballistika qonunlariga ko'ra, o'q stvoldan chiqib ketayotgan soniyada stvol kanali o'qining fazodagi to'g'ri davomi qonunan qanday nomlanadi?",
       "opts": [
         "A) Otish chizig'i (Liniya vistrela)",
         "B) Uchish chizig'i (Liniya brosaniya)",
@@ -4344,7 +4344,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Ko'tarilish burchagi (Ugol vozvisheniya)..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Uchish burchagi (Ugol vitiskaniya) va uning dinamik shakllanishi\" bo'limida yangi amaliy vaziyat ko'rib chiqilmoqda. Keys: \"Qurol gorizontiga nisbatan stvol dastlabki holatda ma'lum bir burchakda turgan edi (Otish chizig'i). O'q otilgan pallada qurol silkinib, stvol yuqoriga ko'tarildi va o'q stvoldan chiqayotganda yangi yo'nalish hosil bo'ldi (Uchish chizig'i)\". Tashqi ballistika qoidalariga ko'ra, otish chizig'i va uchish chizig'i o'rtasida hosil bo'lgan, qurol silkinishini ifodalovchi ushbu burchak nima deb ataladi?",
+      "q": "Qurol gorizontiga nisbatan stvol dastlabki holatda ma'lum bir burchakda turgan edi (Otish chizig'i). O'q otilgan pallada qurol silkinib, stvol yuqoriga ko'tarildi va o'q stvoldan chiqayotganda yangi yo'nalish hosil bo'ldi (Uchish chizig'i). Tashqi ballistika qoidalariga ko'ra, otish chizig'i va uchish chizig'i o'rtasida hosil bo'lgan, qurol silkinishini ifodalovchi ushbu burchak nima deb ataladi?",
       "opts": [
         "A) Nishonga olish burchagi",
         "B) Uchish yoki sakrash burchagi (Ugol vitiskaniya / Ugol vilita)",
@@ -4356,7 +4356,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Uchish yoki sakrash burchagi (Ugol vitiskaniya / Ugol..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"O'qning havoda uchish vaqtidagi eng yuqori nuqtasi (Tochka vershini)\" mavzusi muhokama qilinmoqda. Keys: \"Miltiqdan otilgan o'q havo kengligida yuqoriga ko'tarilib borib, o'z parvozining eng yuqori cho'qqisiga etdi va shu soniyadan boshlab uning trayektoriyasi er sirtiga qarab pastga enishni boshladi\". Tashqi ballistika o'lchovlariga ko'ra, trayektoriyaning ushbu eng yuqori nuqtasidan qurol gorizontigacha bo'lgan tik (perpendikulyar) masofa qonunan qanday nomlanadi?",
+      "q": "Miltiqdan otilgan o'q havo kengligida yuqoriga ko'tarilib borib, o'z parvozining eng yuqori cho'qqisiga etdi va shu soniyadan boshlab uning trayektoriyasi er sirtiga qarab pastga enishni boshladi. Tashqi ballistika o'lchovlariga ko'ra, trayektoriyaning ushbu eng yuqori nuqtasidan qurol gorizontigacha bo'lgan tik (perpendikulyar) masofa qonunan qanday nomlanadi?",
       "opts": [
         "A) To'g'ri otish masofasi",
         "B) Trayektoriya balandligi (Visota traektorii)",
@@ -4368,7 +4368,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Trayektoriya balandligi (Visota traektorii)..."
     },
   {
-      "q": "10-sinf CHQBT darsida \"Tushish nuqtasi (Tochka padeniya) va uning chiziqli chegarasi\" tahlil qilinmoqda. Keys: \"Poligonda sinov tariqasida otilgan o'q havo bo'shlig'ida uzoq masofani bosib o'tdi va hech qanday to'siqqa uchrashmasdan, oxir-oqibat qurol gorizonti tekisligi bilan qayta kesishib, erga kelib urildi\". Tashqi ballistikaning geometrik nuqtai nazaridan yondashilsa, o'q trayektoriyasining qurol gorizonti bilan kesishgan ushbu yakuniy nuqtasi qonunan qanday nomlanadi?",
+      "q": "Poligonda sinov tariqasida otilgan o'q havo bo'shlig'ida uzoq masofani bosib o'tdi va hech qanday to'siqqa uchrashmasdan, oxir-oqibat qurol gorizonti tekisligi bilan qayta kesishib, erga kelib urildi. Tashqi ballistikaning geometrik nuqtai nazaridan yondashilsa, o'q trayektoriyasining qurol gorizonti bilan kesishgan ushbu yakuniy nuqtasi qonunan qanday nomlanadi?",
       "opts": [
         "A) Otish nuqtasi (Tochka vileta)",
         "B) Tushish nuqtasi (Tochka padeniya)",
@@ -4380,7 +4380,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Tushish nuqtasi (Tochka padeniya)..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari ilmiy-metodik yig'ilishida \"To'liq uchish masofasi (Polnaya dalnost) normativi\" o'rganilmoqda. Keys: \"Harbiy muhandislar quroldan chiqayotgan o'qning umumiy parvoz imkoniyatini o'lchashmoqda. Buning uchun uga qurol og'zidan (otish nuqtasidan) to o'qning erga qulash (tushish) nuqtasigacha bo'lgan gorizontal masofani aniq o'lchab olishdi\". Tashqi ballistika qoidalariga binoan, otish nuqtasidan to tushish nuqtasigacha bo'lgan ushbu gorizontal masofa chizig'i qanday nomlanadi?",
+      "q": "Harbiy muhandislar quroldan chiqayotgan o'qning umumiy parvoz imkoniyatini o'lchashmoqda. Buning uchun uga qurol og'zidan (otish nuqtasidan) to o'qning erga qulash (tushish) nuqtasigacha bo'lgan gorizontal masofani aniq o'lchab olishdi. Tashqi ballistika qoidalariga binoan, otish nuqtasidan to tushish nuqtasigacha bo'lgan ushbu gorizontal masofa chizig'i qanday nomlanadi?",
       "opts": [
         "A) Nishonga olish masofasi",
         "B) To'liq uchish masofasi (Polnaya dalnost poleta)",
@@ -4392,7 +4392,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - To'liq uchish masofasi (Polnaya dalnost poleta)..."
     },
   {
-      "q": "11-sinf CHQBT darsida \"O'q trayektoriyasining simmetrik emasligi va uning sabablari\" tahlil qilinmoqda. Keys: \"O'q trayektoriyasi o'rganilganda, uning ko'tarilish shoxi (Vosxodyashaya vetv) uzun va cho'ziqroq, pastga enish shoxi (Nisxodyashaya vetv) esa kalta va tikroq ekanligi aniqlandi. Trayektoriya cho'qqisi uniy teng ikkiga bo'lmaydi\". Tashqi ballistikaning dinamik qonunlariga ko'ra, o'q trayektoriyasining bunday assimetrik shaklga kirishiga va o'qning pastga tezroq qulashiga birinchi navbatda qaysi vanished kuch sabab bo'ladi?",
+      "q": "O'q trayektoriyasi o'rganilganda, uning ko'tarilish shoxi (Vosxodyashaya vetv) uzun va cho'ziqroq, pastga enish shoxi (Nisxodyashaya vetv) esa kalta va tikroq ekanligi aniqlandi. Trayektoriya cho'qqisi uniy teng ikkiga bo'lmaydi. Tashqi ballistikaning dinamik qonunlariga ko'ra, o'q trayektoriyasining bunday assimetrik shaklga kirishiga va o'qning pastga tezroq qulashiga birinchi navbatda qaysi vanished kuch sabab bo'ladi?",
       "opts": [
         "A) Qurolning orqaga tepish kuchi va stvoldagi yivlar soni",
         "B) Havoning doimiy qarshilik kuchi (Sila soprotivleniya vozduxa)",
@@ -4404,7 +4404,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Havoning doimiy qarshilik kuchi (Sila soprotivleniya vozduxa)..."
     },
   {
-      "q": "CHQBT o'quv poligonida amaliy otish tahlili o'tkazilmoqda. Keys: \"Askar uzoq masofadagi dushman nishoniga qarata o'q uzdi. O'q parvozining yakuniy qismida erkin qulash harakati tezlashdi va u qurol gorizonti tekisligini o'tkir burchak ostida kesib o'tmoq\". Tashqi ballistikaning burchak o'lchovlari qoidalariga ko'ra, o'qning uchrashish tekisligiga (gorizontga) kelib urilgan (tushgan) nuqtasidagi trayektoriya urinmasi bilan qurol gorizonti chizig'i o'rtasida hosil bo'lgan burchak qonunan qanday nomlanadi?",
+      "q": "Askar uzoq masofadagi dushman nishoniga qarata o'q uzdi. O'q parvozining yakuniy qismida erkin qulash harakati tezlashdi va u qurol gorizonti tekisligini o'tkir burchak ostida kesib o'tmoq. Tashqi ballistikaning burchak o'lchovlari qoidalariga ko'ra, o'qning uchrashish tekisligiga (gorizontga) kelib urilgan (tushgan) nuqtasidagi trayektoriya urinmasi bilan qurol gorizonti chizig'i o'rtasida hosil bo'lgan burchak qonunan qanday nomlanadi?",
       "opts": [
         "A) Otish burchagi (Ugol brosaniya)",
         "B) Tushish burchagi (Ugol padeniya)",
@@ -4428,7 +4428,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Yer tortish kuchi tezlanishi hisobiga yakuniy tezlik boshlang'ich..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"O'q trayektoriyasining nishonga olish chizig'iga nisbatan shakllanishi\" mavzusi o'rganilmoqda. Keys: \"Askar nishonni urish uchun ko'z va mo'ljal moslamalari orqali to'g'ri chiziq hosil qildi (Nishonga olish chizig'i). O'q otilgandan so'ng u stvoldan chiqib, dastlab ushbu nishonga olish chizig'idan yuqoriga ko'tarildi, trayektoriya cho'qqisidan o'tib, so'ngra yana pastga enib nishonga olish chizig'i bilan kesishdi\". Tashqi ballistika qoidalariga ko'ra, o'q trayektoriyasining nishonga olish chizig'idan eng uzoqlashgan (eng baland) tik masofasi qonunan qanday nomlanadi?",
+      "q": "Askar nishonni urish uchun ko'z va mo'ljal moslamalari orqali to'g'ri chiziq hosil qildi (Nishonga olish chizig'i). O'q otilgandan so'ng u stvoldan chiqib, dastlab ushbu nishonga olish chizig'idan yuqoriga ko'tarildi, trayektoriya cho'qqisidan o'tib, so'ngra yana pastga enib nishonga olish chizig'i bilan kesishdi. Tashqi ballistika qoidalariga ko'ra, o'q trayektoriyasining nishonga olish chizig'idan eng uzoqlashgan (eng baland) tik masofasi qonunan qanday nomlanadi?",
       "opts": [
         "A) To'g'ri otish masofasi",
         "B) Trayektoriyaning nishonga olish chizig'idan ustunligi (Prevysheniye traektorii)",
@@ -4440,7 +4440,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Trayektoriyaning nishonga olish chizig'idan ustunligi (Prevysheniye traektorii)..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik amaliyotida \"O'qning uchrashish nuqtasi va uchrashish burchagi\" elementlari tahlil qilinmoqda. Keys: \"Tog'li poligonda otilgan o'q tekis erga emas, balki nishon o'rnatilgan tik tog' yonbag'riga (tepaliq yuzasiga) borib urildi va u yerda ma'lum bir burchak hosil qildi\". Tashqi ballistika terminologiyasiga asosan, o'qning nishon yuzasi (yoki to'siq) bilan uchrashgan (urilgan) nuqtasidagi trayektoriya urinmasi bilan o'sha nishon yuzasiga o'tkazilgan urinma tekislik o'rtasidagi burchak qonunan qanday nomlanadi?",
+      "q": "Tog'li poligonda otilgan o'q tekis erga emas, balki nishon o'rnatilgan tik tog' yonbag'riga (tepaliq yuzasiga) borib urildi va u yerda ma'lum bir burchak hosil qildi. Tashqi ballistika terminologiyasiga asosan, o'qning nishon yuzasi (yoki to'siq) bilan uchrashgan (urilgan) nuqtasidagi trayektoriya urinmasi bilan o'sha nishon yuzasiga o'tkazilgan urinma tekislik o'rtasidagi burchak qonunan qanday nomlanadi?",
       "opts": [
         "A) Otish burchagi",
         "B) Uchrashish burchagi (Ugol vstrechi)",
@@ -4452,7 +4452,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Uchrashish burchagi (Ugol vstrechi)..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari ilmiy-metodik kengashida \"Trayektoriyaning cho'ziqlik (yassilik) darajasi va uning taktik afzalligi\" o'rganilmoqda. Keys: \"Ikki xil quroldan bir xil masofadagi nishonga o'q otildi. Birinchi quroldan otilgan o'q havoda baland yoy hosil qildi (Tik trayektoriya), ikkinchi quroldan otilgan o'q esa yer sirtiga parallel ravishda o'ta past egri chiziq hosil qilib uchdi (Yassi trayektoriya)\". Tashqi ballistika qonunlariga binoan, trayektoriyaning yassi (cho'ziq) bo'lishi birinchi navbatda o'qning qaysi asosiy ko'rsatkichiga bog'liq va uning amaliy foydasi nimada?",
+      "q": "Ikki xil quroldan bir xil masofadagi nishonga o'q otildi. Birinchi quroldan otilgan o'q havoda baland yoy hosil qildi (Tik trayektoriya), ikkinchi quroldan otilgan o'q esa yer sirtiga parallel ravishda o'ta past egri chiziq hosil qilib uchdi (Yassi trayektoriya). Tashqi ballistika qonunlariga binoan, trayektoriyaning yassi (cho'ziq) bo'lishi birinchi navbatda o'qning qaysi asosiy ko'rsatkichiga bog'liq va uning amaliy foydasi nimada?",
       "opts": [
         "A) O'qning og'irligiga bog'liq bo'lib, o'q qanchalik og'ir bo'lsa trayektoriya shanchalik baland ko'tariladi",
         "B) O'qning boshlang'ich tezligiga bog'liq; tezlik qanchalik yuqori bo'lsa, trayektoriya shanchalik yassi (cho'ziq) bo'ladi va to'g'ri otish masofasi ortib, nishonni urish osonlashadi",
@@ -4464,7 +4464,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - O'qning boshlang'ich tezligiga bog'liq; tezlik qanchalik yuqori bo'lsa,..."
     },
   {
-      "q": "11-sinf CHQBT imtihonida o'quvchilarga \"O'qning havodagi parvozi vaqtida uning ortida hosil bo'ladigan bo'shliq (Girdob zonasi)\" bo'yicha tahliliy savol berildi. Keys: \"O'q o'ta yuqori tezlikda havoni yorib bormoqda. Uning tumshug'i oldida havo qatlami keskin zichlashadi, o'qning dumi (orqa qismi) ortida esa havo ulgurib yetisha olmaydigan siyraklashgan muhit (vakuumli girdob zonasi) hosil bo'ladi\". Tashqi ballistikaning aerodinamika qonunlariga ko'ra, o'q orqasidagi ushbu siyraklashgan havo girdobi o'qning harakatiga qanday ta'sir ko'rsatadi?",
+      "q": "O'q o'ta yuqori tezlikda havoni yorib bormoqda. Uning tumshug'i oldida havo qatlami keskin zichlashadi, o'qning dumi (orqa qismi) ortida esa havo ulgurib yetisha olmaydigan siyraklashgan muhit (vakuumli girdob zonasi) hosil bo'ladi. Tashqi ballistikaning aerodinamika qonunlariga ko'ra, o'q orqasidagi ushbu siyraklashgan havo girdobi o'qning harakatiga qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) O'qni oldinga qarab itaradi va uning tezligini yanada oshiradi",
         "B) O'qni orqaga qarab tortadi, ya'ni tormozlanish kuchi hosil qilib o'qning parvoz tezligini sekinlashtiradi",
@@ -4476,7 +4476,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - O'qni orqaga qarab tortadi, ya'ni tormozlanish kuchi hosil..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Trayektoriyaning amaliy elementlari: To'siq ortidagi xavfsiz va shikastlash zonalari nisbati\" bo'limi tahlil qilinmoqda. Keys: \"Dushman askari balandligi 2 metr bo'lgan beton to'siq ortiga berkingan. Biz tomondan otilgan o'q trayektoriyasining pasayish shoxi ushbu to'siq chetidan o'tib, ma'lum bir masofadan keyin nishonning bosh qismiga tegishi mumkinligi hisoblab chiqildi\". Tashqi ballistika chizmalariga muvofiq, to'siq ortidagi o'q borib tegishi (nishonni shikastlashi) mumkin bo'lgan ushbu amaliy hudud chegarasi qonunan qanday nomlanadi?",
+      "q": "Dushman askari balandligi 2 metr bo'lgan beton to'siq ortiga berkingan. Biz tomondan otilgan o'q trayektoriyasining pasayish shoxi ushbu to'siq chetidan o'tib, ma'lum bir masofadan keyin nishonning bosh qismiga tegishi mumkinligi hisoblab chiqildi. Tashqi ballistika chizmalariga muvofiq, to'siq ortidagi o'q borib tegishi (nishonni shikastlashi) mumkin bo'lgan ushbu amaliy hudud chegarasi qonunan qanday nomlanadi?",
       "opts": [
         "A) O'lik yoki pana hudud",
         "B) Shikastlash hududi (Porajayemoye prostranstvo to'siq ortida)",
@@ -4488,7 +4488,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Shikastlash hududi (Porajayemoye prostranstvo to'siq ortida)..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"O'qning shakli va uning ballistik koeffitsienti ($C$)\" mavzusi muhokama qilindi. Keys: \"Harbiy muhandislar uzoq masofaga uchadigan o'q loyihasini yaratishda uning ballistik koeffitsientini (havo qarshiligini yengib o'tish qobiliyatini) yaxshilash choralarini ko'rmoqdalar\". Tashqi ballistika qonuniyatlaridan kelib chiqib tahlil qilinsa, o'qning ballistik koeffitsientini oshirish va havo qarshiligini minimal darajaga tushirish uchun o'qning tuzilishi qanday bo'lishi shart?",
+      "q": "Harbiy muhandislar uzoq masofaga uchadigan o'q loyihasini yaratishda uning ballistik koeffitsientini (havo qarshiligini yengib o'tish qobiliyatini) yaxshilash choralarini ko'rmoqdalar. Tashqi ballistika qonuniyatlaridan kelib chiqib tahlil qilinsa, o'qning ballistik koeffitsientini oshirish va havo qarshiligini minimal darajaga tushirish uchun o'qning tuzilishi qanday bo'lishi shart?",
       "opts": [
         "A) O'q kalibri o'ta yirik, o'zi esa mutloq yumaloq shaklda bo'lishi kerak",
         "B) O'q cho'ziq, uchi silliq va o'tkirlashgan (aerodinamik) shaklda, og'irligi esa o'z o'lchamiga nisbatan yetarli darajada bo'lishi shart",
@@ -4512,7 +4512,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Nam havo zichligi quruq havoga nisbatan farq qilishi..."
     },
   {
-      "q": "Tuman mudofaa ishlari bo'limi va CHQBT rahbarlarining qo'shma yig'ilishida \"Otish gorizonti va nishonga olish chizig'i o'rtasidagi burchak munosabatlari\" ko'rib chiqildi. Keys: \"Askar qurolni nishonga to'g'rilaganda, nishonga olish chizig'i qurol gorizonti bilan mutloq parallel bo'madi, balki ma'lum bir burchak ostida kesishdi\". Tashqi ballistika chiziqli geometriyasiga ko'ra, nishonga olish chizig'i va qurol gorizonti o'rtasida hosil bo'lgan burchak qonunan qanday nomlanadi?",
+      "q": "Askar qurolni nishonga to'g'rilaganda, nishonga olish chizig'i qurol gorizonti bilan mutloq parallel bo'madi, balki ma'lum bir burchak ostida kesishdi. Tashqi ballistika chiziqli geometriyasiga ko'ra, nishonga olish chizig'i va qurol gorizonti o'rtasida hosil bo'lgan burchak qonunan qanday nomlanadi?",
       "opts": [
         "A) Otish burchagi",
         "B) Nishonning joylashish burchagi (Ugol mesta tseli)",
@@ -4536,7 +4536,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - To'g'ri otish masofasini, nishonning harakat tezligini, shamolning yo'nalishi..."
     },
   {
-      "q": "CHQBT darsida 11-sinf o'quvchilariga amaliy otish zonalarining xususiyatlari o'rgatilmoqda. Keys: \"Askar dushman nishoniga qarata qurol mo'ljalini o'zgartirmasdan otishni boshladi. Butun otish masofasi davomida o'q trayektoriyasining er sirtidan eng baland nuqtasi (cho'qqisi) dushman nishonining umumiy balandligidan yuqoriga ko'tarilmadi va nishonni to'liq qamrab oldi\". Amaliy otish qonuniyatlariga ko'ra, nishonga olish balandligini o'zgartirmasdan nishonni butun uzunligi bo'ylab urish imkonini beradigan bunday masofa zonasi qonunan nima deb ataladi?",
+      "q": "Askar dushman nishoniga qarata qurol mo'ljalini o'zgartirmasdan otishni boshladi. Butun otish masofasi davomida o'q trayektoriyasining er sirtidan eng baland nuqtasi (cho'qqisi) dushman nishonining umumiy balandligidan yuqoriga ko'tarilmadi va nishonni to'liq qamrab oldi. Amaliy otish qonuniyatlariga ko'ra, nishonga olish balandligini o'zgartirmasdan nishonni butun uzunligi bo'ylab urish imkonini beradigan bunday masofa zonasi qonunan nima deb ataladi?",
       "opts": [
         "A) Maksimal jangovar otish masofasi",
         "B) To'g'ri otish masofasi (Pryamoy vistrel)",
@@ -4548,7 +4548,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - To'g'ri otish masofasi (Pryamoy vistrel)..."
     },
   {
-      "q": "11-sinf bitiruvchilarining harbiylashtirilgan taktik mashg'ulotida \"To'g'ri otish masofasining amaliy ahamiyati\" tahlil qilinmoqda. Keys: \"Hujumga o'tayotgan dushman askari bizning mergandan 350 metr uzoqlikda turibdi. Mergan foydalanayotgan qurolning o'sha nishon bo'yicha to'g'ri otish masofasi 400 metrga teng\". Amaliy otish asoslaridan kelib chiqib tahlil qilinsa, mergan dushman uning to'g'ri otish zonasi ichida harakatlanayotgan ushbu pallada nishonga olish moslamasini (priselnaya planka) o'zgartirishi (shag ko'tarishi) shartmi?",
+      "q": "Hujumga o'tayotgan dushman askari bizning mergandan 350 metr uzoqlikda turibdi. Mergan foydalanayotgan qurolning o'sha nishon bo'yicha to'g'ri otish masofasi 400 metrga teng. Amaliy otish asoslaridan kelib chiqib tahlil qilinsa, mergan dushman uning to'g'ri otish zonasi ichida harakatlanayotgan ushbu pallada nishonga olish moslamasini (priselnaya planka) o'zgartirishi (shag ko'tarishi) shartmi?",
       "opts": [
         "A) Ha, dushman har 50 metr yaqinlashganda mo'ljal tirqishini majburiy ravishda yuqoriga ko'tarish shart",
         "B) Yo'q, shart emas. Chunki nishon to'g'ri otish masofasidan kichik hududda joylashganligi sababli, mo'ljalni o'zgartirmasdan ham o'q nishonning ixtiyoriy qismiga borib tegadi",
@@ -4560,7 +4560,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Yo'q, shart emas. Chunki nishon to'g'ri otish masofasidan..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Nishon balandligining to'g'ri otish masofasiga ta'siri\" muhokama qilinmoqda. Keys: \"Poligonda bir xil quroldan ikki xil nishonga qarata o'q uzilmoqda: birinchi nishon erda yotgan askar shakli (balandligi 30 sm), ikkinchi nishon esa tik turgan askar shakli (balandligi 170 sm)\". Amaliy otish zonalarining ichki geometrik qoidalariga ko'ra, nishonning shaxsiy balandligi ortishi (yoki kamayishi) to'g'ri otish masofasining umumiy uzunligiga qanday ta'sir ko'rsatadi?",
+      "q": "Poligonda bir xil quroldan ikki xil nishonga qarata o'q uzilmoqda: birinchi nishon erda yotgan askar shakli (balandligi 30 sm), ikkinchi nishon esa tik turgan askar shakli (balandligi 170 sm). Amaliy otish zonalarining ichki geometrik qoidalariga ko'ra, nishonning shaxsiy balandligi ortishi (yoki kamayishi) to'g'ri otish masofasining umumiy uzunligiga qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) Nishon qanchalik baland bo'lsa, to'g'ri otish masofasi shanchalik qisqarib boradi",
         "B) Nishon qanchalik baland bo'lsa, to'g'ri otish masofasi shanchalik uzun (katta) bo'ladi",
@@ -4584,7 +4584,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Avtomatda (AK-74) o'qning boshlang'ich tezligi yuqori va trayektoriyasi..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari ilmiy-metodik kengashida \"Ko'rinmaydigan yoki pana bo'shliq\" (Prikritoye prostranstvo) mezonlari o'rganilmoqda. Keys: \"Dushman askari balandligi 1 metr bo'lgan qum qoplari (to'siq) ortiga joylashdi. Biz tomondan otilgan o'q trayektoriyasi ushbu to'siqning yuqori chetidan o'tib ketdi, biroq to'siq ortidagi ma'lum bir masofagacha bo'lgan hududga pastga tushib etolmadi\". Keys tahlili ko'ra, to'siq balandligi va o'q trayektoriyasining pasayish shoxi (Nisxodyashaya vetv) ortida hosil bo'lgan, nishon o'qdan butun himoyalangan ushbu makon qonunan nima deb ataladi?",
+      "q": "Dushman askari balandligi 1 metr bo'lgan qum qoplari (to'siq) ortiga joylashdi. Biz tomondan otilgan o'q trayektoriyasi ushbu to'siqning yuqori chetidan o'tib ketdi, biroq to'siq ortidagi ma'lum bir masofagacha bo'lgan hududga pastga tushib etolmadi. Keys tahlili ko'ra, to'siq balandligi va o'q trayektoriyasining pasayish shoxi (Nisxodyashaya vetv) ortida hosil bo'lgan, nishon o'qdan butun himoyalangan ushbu makon qonunan nima deb ataladi?",
       "opts": [
         "A) Shikastlash bo'shlig'i",
         "B) Ko'rinmaydigan yoki pana bo'shliq (Prikritoye prostranstvo)",
@@ -4596,7 +4596,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Ko'rinmaydigan yoki pana bo'shliq (Prikritoye prostranstvo)..."
     },
   {
-      "q": "CHQBT amaliy otish darsida o'quvchilar \"Pana bo'shliq, o'lik bo'shliq va shikastlash bo'shlig'ining o'zaro nisbati\" chizmasini tahlil qilmoqdalar. Keys: \"Dushman askari balandligi 1.5 metr bo'lgan devor ortida berkinib turibdi. Devor ortida hosil bo'lgan umumiy pana bo'shliqning (Prikritoye prostranstvo) uzunligi 30 metrga teng. Dushman askarining shaxsiy bo'yi (balandligi) 1.5 metrni tashkil etadi\". Amaliy otish zonalarining ichki tuzilish qoidalariga ko'ra, ushbu vaziyatda umumiy pana bo'shliq ichidagi o'lik bo'shliq (Mertvoye prostranstvo) ko'rsatkichi qanchaga teng bo'ladi?",
+      "q": "Dushman askari balandligi 1.5 metr bo'lgan devor ortida berkinib turibdi. Devor ortida hosil bo'lgan umumiy pana bo'shliqning (Prikritoye prostranstvo) uzunligi 30 metrga teng. Dushman askarining shaxsiy bo'yi (balandligi) 1.5 metrni tashkil etadi. Amaliy otish zonalarining ichki tuzilish qoidalariga ko'ra, ushbu vaziyatda umumiy pana bo'shliq ichidagi o'lik bo'shliq (Mertvoye prostranstvo) ko'rsatkichi qanchaga teng bo'ladi?",
       "opts": [
         "A) O'lik bo'shliq o'q trayektoriyasiga bog'liq ravishda 60 metrga uzayadi",
         "B) Umumiy pana bo'shliqning barcha 30 metrli hududi o'lik bo'shliq bilan mutloq mos keladi (chunki nishon bo'yi to'siq balandligi bilan teng)",
@@ -4620,7 +4620,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - \"P\" yoki \"S\" (Doimiy — Postoyannyy) belgisi..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Er sirtining nishonga qarab nishabligi (relyef) va uning shikastlash bo'shlig'iga ta'siri\" o'rganilmoqda. Keys: \"Mergan pasttekislikda turib, o'zidan yuqorida, ya'ni tog' tepaligida (ko'tarilgan qiyalikda — pod'em) joylashgan dushman nishoniga qarata o'q uzmoqchi\". Amaliy otish xaritasi qonuniyatlariga ko'ra, nishon joylashgan er sirtining bizga nisbatan yuqoriga qiyalangan (ko'tarilgan) bo'lishi o'qning nishonni urish ehtimoli bo'lgan shikastlash bo'shlig'ining (Porajayemoye prostranstvo) umumiy chuqurligiga qanday amaliy va taktik ta'sir ko'rsatadi?",
+      "q": "Mergan pasttekislikda turib, o'zidan yuqorida, ya'ni tog' tepaligida (ko'tarilgan qiyalikda — pod'em) joylashgan dushman nishoniga qarata o'q uzmoqchi. Amaliy otish xaritasi qonuniyatlariga ko'ra, nishon joylashgan er sirtining bizga nisbatan yuqoriga qiyalangan (ko'tarilgan) bo'lishi o'qning nishonni urish ehtimoli bo'lgan shikastlash bo'shlig'ining (Porajayemoye prostranstvo) umumiy chuqurligiga qanday amaliy va taktik ta'sir ko'rsatadi?",
       "opts": [
         "A) Qiyalik yuqoriga bo'lganda o'q havodagi tezligini oshiradi va shikastlash bo'shlig'i ortadi",
         "B) Uchrashish burchagi ortishi sababli o'q trayektoriyasi er sirtini tezroq kesib o'tadi, natijada shikastlash bo'shlig'ining chuqurligi sezilarli darajada qisqaradi",
@@ -4632,7 +4632,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Uchrashish burchagi ortishi sababli o'q trayektoriyasi er sirtini..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik amaliyotida \"Er sirtining otish yo'nalishi bo'ylab pastga enish qiyaligi (skat) va amaliy zonalar munosabati\" tahlil qilinmoqda. Keys: \"Askar tepalikda turib, o'zidan pastga qarab enib ketgan vodiy bag'ridagi (enish qiyalikdagi — spuskayushiysya skat) dushman nishoniga qarata o'q uzmoqchi\". Amaliy otish prinsiplariga asosan, nishon joylashgan er sirtining otish yo'nalishi bo'ylab pastga qarab enish qiyalik shaklida bo'lishi o'qning shikastlash bo'shlig'ining (Porajayemoye prostranstvo) chuqurligiga qanday ta'sir ko'rsatadi?",
+      "q": "Askar tepalikda turib, o'zidan pastga qarab enib ketgan vodiy bag'ridagi (enish qiyalikdagi — spuskayushiysya skat) dushman nishoniga qarata o'q uzmoqchi. Amaliy otish prinsiplariga asosan, nishon joylashgan er sirtining otish yo'nalishi bo'ylab pastga qarab enish qiyalik shaklida bo'lishi o'qning shikastlash bo'shlig'ining (Porajayemoye prostranstvo) chuqurligiga qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) O'q erga tezroq urilib, shikastlash bo'shlig'ini minimal holatga kelytiradi",
         "B) O'q trayektoriyasi er sirtiga nisbatan uzoq vaqt parallel (cho'ziq) harakatlanishi sababli uchrashish burchagi kamayadi va shikastlash bo'shlig'ining chuqurligi keskin kattalashadi",
@@ -4644,7 +4644,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - O'q trayektoriyasi er sirtiga nisbatan uzoq vaqt parallel..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari ilmiy-metodik yig'ilishida \"Shikastlash bo'shlig'i (Porajayemoye prostranstvo) chegarasini aniqlash formulasisi\" ko'rib chiqildi. Keys: \"Harbiy muhandislar poligon sharoitida o'q trayektoriyasining pasayish burchagini (\\theta) va nishonning shaxsiy balandligini (H) hisobga olgan holda o'qning amaliy shikastlash bo'shlig'i chuqurligini (Z) aniq hisoblab chiqmoqchi\". Amaliy otish matematikasi qoidalariga binoan, tekis er yuzasida shikastlash bo'shlig'i chuqurligini nishon balandligi va tushish burchagi tangensi orqali aniqlovchi to'g'ri formula qaysi javobda ko'rsatilgan?",
+      "q": "Harbiy muhandislar poligon sharoitida o'q trayektoriyasining pasayish burchagini (\\theta) va nishonning shaxsiy balandligini (H) hisobga olgan holda o'qning amaliy shikastlash bo'shlig'i chuqurligini (Z) aniq hisoblab chiqmoqchi. Amaliy otish matematikasi qoidalariga binoan, tekis er yuzasida shikastlash bo'shlig'i chuqurligini nishon balandligi va tushish burchagi tangensi orqali aniqlovchi to'g'ri formula qaysi javobda ko'rsatilgan?",
       "opts": [
         "A) Z = H * \\theta",
         "B) Z = H / tan(\\theta)",
@@ -4656,7 +4656,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Z = H / tan(\\theta)..."
     },
   {
-      "q": "11-sinf CHQBT darsida \"To'g'ri otish masofasining amaliy jangdagi o'rni va o'q-dori tejamkorligi\" mavzusi o'rganilmoqda. Keys: \"Taktik hujum vaqtida bo'linmaga dushman pulemyotchilar nuqtasini yoq qilish topshirig'i berildi. Komandir askarlarga faqat dushman bizning qurolning to'g'ri otish masofasi ichki chegarasiga kirganidan keyingina ochiq o'q uzishni buyurdi\". CHQBT fani dasturi qoidalariga ko'ra, komandirning ushbu buyrug'i jangovar sharoitda birinchi navbatda qaysi taktik afzallikni ta'minlashga xizmat qiladi?",
+      "q": "Taktik hujum vaqtida bo'linmaga dushman pulemyotchilar nuqtasini yoq qilish topshirig'i berildi. Komandir askarlarga faqat dushman bizning qurolning to'g'ri otish masofasi ichki chegarasiga kirganidan keyingina ochiq o'q uzishni buyurdi. CHQBT fani dasturi qoidalariga ko'ra, komandirning ushbu buyrug'i jangovar sharoitda birinchi navbatda qaysi taktik afzallikni ta'minlashga xizmat qiladi?",
       "opts": [
         "A) Qurol ovozini dushmandan butun yashirish maqsadida qo'llaniladi",
         "B) Nishonga olish moslamasini o'zgartirishga ketadigan vaqtni tejash, o'qdon patronlarini bekorga sarflamaslik va nishonni birinchi o'qdanoq yuqori aniqlikda urishni kafolatlash",
@@ -4668,7 +4668,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Nishonga olish moslamasini o'zgartirishga ketadigan vaqtni tejash, o'qdon..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"O'qning tarqalish (rasseyaniye) doirasi va amaliy otish zonalari aloqadorligi\" bo'limi tahlil qilinmoqda. Keys: \"Uzoq masofadagi nishonga bitta quroldan mutloq bir xil sharoitda ketma-ket 10 ta o'q uzildi. Biroq havo qarshiligi va qurol silkinishi tufayli o'qlar bitta nuqtaga emas, nishon atrofida ma'lum bir guruh (sochilish doirasi) hosil qilib urildi\". Amaliy otish qoidalariga ko'ra, o'qlarning bunday tabiiy sochilish (tarqalish) chuqurligi shikastlash bo'shlig'ining (Porajayemoye prostranstvo) umumiy samaradorligiga qanday ta'sir ko'rsatadi?",
+      "q": "Uzoq masofadagi nishonga bitta quroldan mutloq bir xil sharoitda ketma-ket 10 ta o'q uzildi. Biroq havo qarshiligi va qurol silkinishi tufayli o'qlar bitta nuqtaga emas, nishon atrofida ma'lum bir guruh (sochilish doirasi) hosil qilib urildi. Amaliy otish qoidalariga ko'ra, o'qlarning bunday tabiiy sochilish (tarqalish) chuqurligi shikastlash bo'shlig'ining (Porajayemoye prostranstvo) umumiy samaradorligiga qanday ta'sir ko'rsatadi?",
       "opts": [
         "A) Sochilish qanchalik katta bo'lsa, shikastlash bo'shlig'i shanchalik kengayib, aniqlik ortadi",
         "B) O'qlarning sochilish doirasi shikastlash bo'shlig'ining amaliy chuqurligidan kichik bo'lsagina nishon to'liq va ishonchli yoq qilinishi ta'minlanadi",
@@ -4680,7 +4680,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - O'qlarning sochilish doirasi shikastlash bo'shlig'ining amaliy chuqurligidan kichik..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Ko'rinmaydigan pana bo'shliqning (Prikritoye prostranstvo) to'siqdan uzoqlashish qonuniyati\" muhokama qilindi. Keys: \"Dushman beton devor ortida turibdi. O'q trayektoriyasining pasayish shoxi devor chetidan o'tib pastga enmoqda. Biz devordan boshlab dushman tomonga qarab masofa uzoqlashgan sari pana bo'shliq balandligining o'zgarishini tahlil qilishimiz kerak\". Amaliy otish chizmalarining geometriyasiga binoan, to'siqdan dushman tomonga qarab uzoqlashgan sari, ko'rinmaydigan pana bo'shliqning (himoya zonasining) vertikal balandligi qanday o'zgarib boradi?",
+      "q": "Dushman beton devor ortida turibdi. O'q trayektoriyasining pasayish shoxi devor chetidan o'tib pastga enmoqda. Biz devordan boshlab dushman tomonga qarab masofa uzoqlashgan sari pana bo'shliq balandligining o'zgarishini tahlil qilishimiz kerak. Amaliy otish chizmalarining geometriyasiga binoan, to'siqdan dushman tomonga qarab uzoqlashgan sari, ko'rinmaydigan pana bo'shliqning (himoya zonasining) vertikal balandligi qanday o'zgarib boradi?",
       "opts": [
         "A) To'siqdan uzoqlashgan sari pana bo'shliq balandligi mutloq o'zgarmas to'g'ri chiziq bo'lib qoladi",
         "B) To'siqdan uzoqlashgan sari o'q trayektoriyasi pastga enishi hisobiga pana bo'shliq balandligi asta-sekin kamayib (pasayib) boradi va nihoyat urish nuqtasida nolga tenglashadi",
@@ -4692,7 +4692,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - To'siqdan uzoqlashgan sari o'q trayektoriyasi pastga enishi hisobiga..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Amaliy otish zonalarini noto'g'ri baholashning huquqiy va harbiy oqibatlari\" bo'yicha tahliliy savol berildi. Keys: \"Askar dushman nishonigacha bo'lgan masofani vizual (ko'z bilan) noto'g'ri aniqladi. Masofa aslida 500 metr edi, askar esa uni 300 metr deb o'yladi va qurol mo'ljal moslamasini '3' raqamiga qo'yib o'q uzdi. Foydalanilayotgan qurolning ushbu nishon bo'yicha to'g'ri otish masofasi esa 350 metrga teng\". Amaliy otish va ballistika qonuniyatlariga ko'ra, askarning ushbu xatosi o'qning trayektoriyasiga va nishonni urishiga qanday salbiy oqibat ko'rsatadi?",
+      "q": "Askar dushman nishonigacha bo'lgan masofani vizual (ko'z bilan) noto'g'ri aniqladi. Masofa aslida 500 metr edi, askar esa uni 300 metr deb o'yladi va qurol mo'ljal moslamasini '3' raqamiga qo'yib o'q uzdi. Foydalanilayotgan qurolning ushbu nishon bo'yicha to'g'ri otish masofasi esa 350 metrga teng. Amaliy otish va ballistika qonuniyatlariga ko'ra, askarning ushbu xatosi o'qning trayektoriyasiga va nishonni urishiga qanday salbiy oqibat ko'rsatadi?",
       "opts": [
         "A) O'q baribir borib nishonning markaziga aniq uriladi, chunki avtomat o'qi uzoqqa uchadi",
         "B) O'q trayektoriyasi nishonga etib bormasdan, uning ostidan (oldidan) erga borib uriladi, chunki masofa noto'g'ri qo'yilgan va nishon to'g'ri otish zonasidan tashqarida joylashgan",
@@ -4704,7 +4704,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - O'q trayektoriyasi nishonga etib bormasdan, uning ostidan (oldidan)..."
     },
   {
-      "q": "Tuman mudofaa ishlari bo'limi va CHQBT rahbarlarining qo'shma yig'ilishida \"O'lik bo'shliqni (Mertvoye prostranstvo) jangovar taktika yordamida engish choralari\" muhokama qilindi. Keys: \"Dushman askarlari balandligi o'ta yuqori bo'lgan tepalik va qoyalar ortidagi chuqur o'lik bo'shliq ichiga berkinib olishgan. Bizning askarlardagi Kalashnikov avtomati (AK-74) o'qlarining yassi trayektoriyasi ushbu o'lik bo'shliq ichidagi dushmanga mutloq etib bora olmaydi\". Amaliy jangovar taktika qoidalariga muvofiq, to'siq ortidagi bunday chuqur o'lik bo'shliqlarda berkingan dushmanni yoq qilish uchun qaysi turdagi o'qotar yoki jangovar aslahalardan foydalanish qonunan va taktik jihatdan majburiydir?",
+      "q": "Dushman askarlari balandligi o'ta yuqori bo'lgan tepalik va qoyalar ortidagi chuqur o'lik bo'shliq ichiga berkinib olishgan. Bizning askarlardagi Kalashnikov avtomati (AK-74) o'qlarining yassi trayektoriyasi ushbu o'lik bo'shliq ichidagi dushmanga mutloq etib bora olmaydi. Amaliy jangovar taktika qoidalariga muvofiq, to'siq ortidagi bunday chuqur o'lik bo'shliqlarda berkingan dushmanni yoq qilish uchun qaysi turdagi o'qotar yoki jangovar aslahalardan foydalanish qonunan va taktik jihatdan majburiydir?",
       "opts": [
         "A) Faqat pistolet yoki yivsiz ov miltiqlaridan ochiq safda otish o'tkazish lozim",
         "B) Trayektoriyasi o'ta tik (yoy shaklida) bo'lgan, ya'ni yuqoridan pastga perpendikulyar tushuvchi qurollar (minomyotlar, granatomyotlar) yoki qo'l granatalaridan foydalanish shart",
@@ -4800,7 +4800,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Ballistika qoidasi - Z = H / tan(\\theta)..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy mashg'ulotda o'quvchilarga Kalashnikov avtomatining (AK-74) taktik-texnik xususiyatlarini darslik me'yorlari asosida tushuntirmoqda. Keys: \"Jangovar vaziyatda dushman nishoniga nisbatan yanada kuchliroq talafot yetkazish, o'qning boshlang'ich tezligini yuqori darajada saqlash va samarali otish masofasini kengaytirish maqsadida bo'linmaning asosiy o't ochish vositasi ishga solindi\". Taktik va ichki ballistika qonuniyatlariga ko'ra, pulemyot stvolining avtomatnikiga nisbatan uzun bo'lishi o'qning boshlang'ich tezligiga qanday ta'sir ko'rsatadi va darslik bo'yicha AK-74 da ushbu ko'rsatkich qat'iy qanchaga teng?",
+      "q": "Jangovar vaziyatda dushman nishoniga nisbatan yanada kuchliroq talafot yetkazish, o'qning boshlang'ich tezligini yuqori darajada saqlash va samarali otish masofasini kengaytirish maqsadida bo'linmaning asosiy o't ochish vositasi ishga solindi. Taktik va ichki ballistika qonuniyatlariga ko'ra, pulemyot stvolining avtomatnikiga nisbatan uzun bo'lishi o'qning boshlang'ich tezligiga qanday ta'sir ko'rsatadi va darslik bo'yicha AK-74 da ushbu ko'rsatkich qat'iy qanchaga teng?",
       "opts": [
         "A) Stvolda ishqalanish ortib tezlik pasayadi; AK-74 da boshlang'ich tezlik 315 m/s ga teng",
         "B) Porox gazlari o'qqa uzun stvoldan shuncha ko'p vaqt ta'sir ko'rsatadi va o'q tezligi ortadi; AK-74 da u 900 m/s ni tashkil etadi",
@@ -4812,7 +4812,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Porox gazlari o'qqa uzun stvoldan shuncha ko'p vaqt..."
     },
   {
-      "q": "11-sinf o'quvchilari harbiy poligon sharoitida Kalashnikov avtomatidan (AK-74) joyidan turib harakatlanmaydigan nishonlarga otish mashqini bajarishga tayyorlanmoqdalar. Keys: \"Otish maydonida o'quvchi askar yotgan holda 100 metr masofada paydo bo'ladigan, o'qchining vizual ko'rinishiga mos keladigan maxsus nishonni birinchi o'qdanoq aniq urishi shart\". Amaldagi CHQBT darsligi \"Avtomatdan boshlang'ich otish mashqini bajarish\" shartlariga binoan, ushbu taktik mashg'ulotda qo'llaniladigan nishon turi va o'quvchiga ajratiladigan patronlar soni qaysi javobda qat'iy to'g'ri ko'rsatilgan?",
+      "q": "Otish maydonida o'quvchi askar yotgan holda 100 metr masofada paydo bo'ladigan, o'qchining vizual ko'rinishiga mos keladigan maxsus nishonni birinchi o'qdanoq aniq urishi shart. Amaldagi CHQBT darsligi \"Avtomatdan boshlang'ich otish mashqini bajarish\" shartlariga binoan, ushbu taktik mashg'ulotda qo'llaniladigan nishon turi va o'quvchiga ajratiladigan patronlar soni qaysi javobda qat'iy to'g'ri ko'rsatilgan?",
       "opts": [
         "A) 8 raqamli nishon, 5 ta patron",
         "B) Yotib olgan otuvchining ko'krak hajmiga o'xshash shaklli nishon, 3 ta patron",
@@ -4824,7 +4824,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Yotib olgan otuvchining ko'krak hajmiga o'xshash shaklli nishon,..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Avtomatdan otish bo'yicha o'quv va amaliy mashqlarni bajarishda xavfsizlik choralari\" mavzusi darslik matni asosida tahlil qilinmoqda. Keys: \"Otish guruhining boshlig'i otish yo'lagida mashg'ulotni boshlash arafasida qurol mexanizmlarini tekshirayotganda kutilmaganda bir qator qat'iy taqiqlar buzilganligini aniqladi\". Darslikning \"Mashg'ulot o'tkazishdagi xavfsizlik choralari\" qoidalariga muvofiq, qurol o'qlangan yoki o'qlanmaganidan qat'i nazar, quyidagi harakatlarning qaysi biri mutloq va qonunan taqiqlangan hisoblanadi?",
+      "q": "Otish guruhining boshlig'i otish yo'lagida mashg'ulotni boshlash arafasida qurol mexanizmlarini tekshirayotganda kutilmaganda bir qator qat'iy taqiqlar buzilganligini aniqladi. Darslikning \"Mashg'ulot o'tkazishdagi xavfsizlik choralari\" qoidalariga muvofiq, qurol o'qlangan yoki o'qlanmaganidan qat'i nazar, quyidagi harakatlarning qaysi biri mutloq va qonunan taqiqlangan hisoblanadi?",
       "opts": [
         "A) Qurolni faqat dushman nishoni yo'nalishiga qarab to'g'rilab turish",
         "B) Qurolni odamlarga va otish maydonining orqa tomoniga – nishondan boshqa tarafga yo'naltirish",
@@ -4836,7 +4836,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Qurolni odamlarga va otish maydonining orqa tomoniga –..."
     },
   {
-      "q": "11-sinf CHQBT yakuniy imtihonida o'quvchilarga \"Jangovar otish sur'ati va uning taktik qo'llanilishi\" bo'yicha keys-topshiriq berildi. Keys: \"Mudofaa jangida askar dushmanning yaqinlashib kelayotgan jonli kuchlarini yakson qilish uchun Kalashnikov avtomatidan (AK-74) o't ochish intensivligini to'g'ri taqsimlashi kerak\". Qurolning jangovar tavsiflariga oid qat'iy normalar zanjiri tahlil qilinsa, AK-74 avtomatida bittalab otganda va navbat bilan (avtomat rejimida) otgandagi jangovar otish sur'ati daqiqasiga mos ravishda necha dona o'qni tashkil etadi?",
+      "q": "Mudofaa jangida askar dushmanning yaqinlashib kelayotgan jonli kuchlarini yakson qilish uchun Kalashnikov avtomatidan (AK-74) o't ochish intensivligini to'g'ri taqsimlashi kerak. Qurolning jangovar tavsiflariga oid qat'iy normalar zanjiri tahlil qilinsa, AK-74 avtomatida bittalab otganda va navbat bilan (avtomat rejimida) otgandagi jangovar otish sur'ati daqiqasiga mos ravishda necha dona o'qni tashkil etadi?",
       "opts": [
         "A) Bittalab otganda 10 ta, avtomat rejimida 30 ta o'q",
         "B) Bittalab otganda 40 ta, navbat bilan (avtomat rejimida) 100 ta o'q",
@@ -4848,7 +4848,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Bittalab otganda 40 ta, navbat bilan (avtomat rejimida)..."
     },
   {
-      "q": "CHQBT darsida \"Qurol bilan saf amallarini joyida turib bajarish mexanikasi\" o'rganilmoqda. Keys: \"Komandirning 'Avtomat ko'krak-KA!' degan ijro buyrug'i eshitilishi bilan askar 'tasmaga' holatidagi avtomatni uchta qat'iy usulni ketma-ket bajarib 'ko'krakka' holatiga o'tkazishi lozim\". Darslikning \"Saf amallarini qurol bilan joyida turib bajarish\" qoidalariga binoan, ushbu jarayonning eng birinchi usulida qurolni yelkadan tushirish va dastlabki barqaror holatda tutish tartibi qanday amalga oshiriladi?",
+      "q": "Komandirning 'Avtomat ko'krak-KA!' degan ijro buyrug'i eshitilishi bilan askar 'tasmaga' holatidagi avtomatni uchta qat'iy usulni ketma-ket bajarib 'ko'krakka' holatiga o'tkazishi lozim. Darslikning \"Saf amallarini qurol bilan joyida turib bajarish\" qoidalariga binoan, ushbu jarayonning eng birinchi usulida qurolni yelkadan tushirish va dastlabki barqaror holatda tutish tartibi qanday amalga oshiriladi?",
       "opts": [
         "A) O'ng o'rindiqqa yiqilib, qurolni bosh orqali chap yelkaga tez tashlash orqali",
         "B) Qurol yelkadan uning tasmasi bo'ylab biroz yuqoriga ko'tarilgan o'ng qo'l bilan tushirilgach, chap qo'l bilan stvol osti va stvol usti qoplamalaridan tutib olinadi; o'qdoni chapga qaratilgan qurol vertikal holatda, stvolining og'zi iyak balandligida tutiladi",
@@ -4860,7 +4860,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Qurol yelkadan uning tasmasi bo'ylab biroz yuqoriga ko'tarilgan..."
     },
   {
-      "q": "11-sinf o'quvchilari taktik tayyorgarlik darsida \"Mudofaa jangida askarlarning o'zaro harakat koordinatsiyasi\" tizimini o'rganmoqdalar. Keys: \"Dushman bo'linma mudofaa chizig'iga shiddatli hujum boshladi. Seksiyaning (bo'linmaning) asosiy o't ochish vositasi bo'lgan Kalashnikov qo'l pulemyoti (KQP) dushmanning harakatlarini o't ochish bilan panalab turibdi\". Darslikning \"Askarning mudofaadagi harakatlari\" bo'limiga muvofiq, pulemyotchi va granatomyotchilarning jang maydonidagi harakatlarini o't ochish bilan panalab turish uchun qolgan askarlar taktik jihatdan qanday guruhlanish asosida harakat qilishlari shart?",
+      "q": "Dushman bo'linma mudofaa chizig'iga shiddatli hujum boshladi. Seksiyaning (bo'linmaning) asosiy o't ochish vositasi bo'lgan Kalashnikov qo'l pulemyoti (KQP) dushmanning harakatlarini o't ochish bilan panalab turibdi. Darslikning \"Askarning mudofaadagi harakatlari\" bo'limiga muvofiq, pulemyotchi va granatomyotchilarning jang maydonidagi harakatlarini o't ochish bilan panalab turish uchun qolgan askarlar taktik jihatdan qanday guruhlanish asosida harakat qilishlari shart?",
       "opts": [
         "A) To'rt kolonnali yurish safi bo'lib parallel chiziqda",
         "B) Jangovar \"ikkilik\" va \"uchlik\" tarkibida",
@@ -4872,7 +4872,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Jangovar \"ikkilik\" va \"uchlik\" tarkibida..."
     },
   {
-      "q": "Amaliy taktik mashg'ulotda askar dushman o'qotar qurollaridan mutloq xavfsiz va himoyalangan o't ochish pozitsiyasini yaratish uchun bir kishilik okop (xandaq) qazish vazifasini bajarmoqda. Keys: \"Askar dushman o't yog'dirib turgandagi darslik talablariga rioya etgan holda, er osti qatlamini qazishga kirishdi\". Darslikdagi \"Dushman o't yog'dirib turganda bir kishilik okop qazish\" ketma-ketligi qoidalariga ko'ra, askar dushmanning ko'ziga ko'rinmaslik va o'qdan himoyalanish uchun ilk qazish harakatini qaysi holatda bajarishi majburiydir?",
+      "q": "Askar dushman o't yog'dirib turgandagi darslik talablariga rioya etgan holda, er osti qatlamini qazishga kirishdi. Darslikdagi \"Dushman o't yog'dirib turganda bir kishilik okop qazish\" ketma-ketligi qoidalariga ko'ra, askar dushmanning ko'ziga ko'rinmaslik va o'qdan himoyalanish uchun ilk qazish harakatini qaysi holatda bajarishi majburiydir?",
       "opts": [
         "A) Tik turgan holda, kurakni ikki qo'llab qattiq urish orqali",
         "B) Tanlangan joyga yotib olgan holda va piyodalar chap tomonga yonboshlagan tarzda (kurak bilan yerning ustki qismini o'yib, oldinga tuproq uyish orqali)",
@@ -4884,7 +4884,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Tanlangan joyga yotib olgan holda va piyodalar chap..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Qurol aslahalarni jangovar shay holatda saqlash va sarlash\" bo'limi tahlil qilinmoqda. Keys: \"Askar amaliy otishni boshlashdan oldin qurol tasmasining uzunligini shaxsiy jismoniy parametrlariga moslab sarlash buyrug'ini oldi\". Darslik qoidalariga ko'ra, safda qurol tasmasini bo'shatish yoki tortish zarur bo'lganida qaysi qat'iy va rasmiy harbiy komanda berilishi shart?",
+      "q": "Askar amaliy otishni boshlashdan oldin qurol tasmasining uzunligini shaxsiy jismoniy parametrlariga moslab sarlash buyrug'ini oldi. Darslik qoidalariga ko'ra, safda qurol tasmasini bo'shatish yoki tortish zarur bo'lganida qaysi qat'iy va rasmiy harbiy komanda berilishi shart?",
       "opts": [
         "A) Avtomat tasmaga keltirilsin!",
         "B) Tasma BO'SHATILSIN (TORTILSIN)!",
@@ -4908,7 +4908,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Porox zaryadining yonishidan boshlanib, o'q qobig'i stvolning kesiklariga..."
     },
   {
-      "q": "Taktik o'quv mashg'ulotida Kalashnikov avtomatidan nishonga qarata o'q uzish va nishongacha bo'lgan masofani aniq belgilash qoidalari o'rganilmoqda. Keys: \"Askar dushman okopi yo'nalishidagi harakatlarni sinchkovlik bilan kuzatmoqda. Darslik qoidalariga ko'ra, nishonni birinchi o'qdanoq yo'q qilish uchun unga ma'lum bir taktik tushunchani jadvallarga asosan hisoblash topshirig'i berildi\". Amaliy otish nazariyasining fundamental ta'rifiga muvofiq, trayektoriya mo'ljalga olish chizig'idan (nishondan) balandga ko'tarilmaydigan va jangning qizg'in pallalarida mo'ljallagich holatini o'zgartirmasdan otish imkonini beradigan masofa uzoqligi nima deb ataladi?",
+      "q": "Askar dushman okopi yo'nalishidagi harakatlarni sinchkovlik bilan kuzatmoqda. Darslik qoidalariga ko'ra, nishonni birinchi o'qdanoq yo'q qilish uchun unga ma'lum bir taktik tushunchani jadvallarga asosan hisoblash topshirig'i berildi. Amaliy otish nazariyasining fundamental ta'rifiga muvofiq, trayektoriya mo'ljalga olish chizig'idan (nishondan) balandga ko'tarilmaydigan va jangning qizg'in pallalarida mo'ljallagich holatini o'zgartirmasdan otish imkonini beradigan masofa uzoqligi nima deb ataladi?",
       "opts": [
         "A) Osma trayektoriya masofasi",
         "B) To'g'ri mo'ljallab otish uzoqligi (To'g'ri otish)",
@@ -4920,7 +4920,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - To'g'ri mo'ljallab otish uzoqligi (To'g'ri otish)..."
     },
   {
-      "q": "11-sinf CHQBT darsligining \"48-dars. Avtomatdan otish bo'yicha o'quv mashqini bajarish xavfsizlik asoslari\" bo'limi o'rganilmoqda. Keys: \"Jangovar poligon maydonida otish mashqlari o'tkazilayotgan vaqtda kutilmaganda bir qator favqulodda taktik holatlar va xavfli o'zgarishlar yuzaga kelganligi sababli barcha qurollardan o't ochishni darhol to'xtatish buyurildi\". Darslikning \"O't ochish zudlik bilan to'xtatiladigan holatlar\" qoidalariga ko'ra, quyidagilardan qaysi biri o't ochishni tezda to'xtatishga majbur qiluvchi qat'iy sabablar ro'yxatiga kiritilmagan?",
+      "q": "Jangovar poligon maydonida otish mashqlari o'tkazilayotgan vaqtda kutilmaganda bir qator favqulodda taktik holatlar va xavfli o'zgarishlar yuzaga kelganligi sababli barcha qurollardan o't ochishni darhol to'xtatish buyurildi. Darslikning \"O't ochish zudlik bilan to'xtatiladigan holatlar\" qoidalariga ko'ra, quyidagilardan qaysi biri o't ochishni tezda to'xtatishga majbur qiluvchi qat'iy sabablar ro'yxatiga kiritilmagan?",
       "opts": [
         "A) Nishonlar maydonida odamlar, transport vositalari yoki hayvonlar ko'ringanida",
         "B) O't ochish maydonida to'satdan yong'in sodir bo'lganida",
@@ -4932,7 +4932,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - O'quvchi askar jangovar \"ikkilik\" tarkibida qadam tashlashni boshlaganida..."
     },
   {
-      "q": "11-sinf CHQBT taktik imtihonida o'quvchilarga \"Jang maydonida to'siqlar va muhandislik g'ovlaridan o'tish taktikasi\" bo'yicha darslik keysi berildi. Keys: \"Hujum harakatlari vaqtida bo'linma yo'lida dushman tomonidan o'rnatilgan ayrili to'siqlar va uyumlar bilan to'silgan xavfli hudud uchrab qoldi. Dushman zich o't ochayotganligi sababli sustkashlikka yo'l qo'yish katta talafotga sabab bo'lishi mumkin\". Darslikning qat'iy ko'rsatmalariga muvofiq, agar ushbu uyali to'siqlarni maxsus changaklar yordamida tortib olishning mutloq iloji bo'lmasa, askarlar qonunan qanday yo'l tutishlari shart?",
+      "q": "Hujum harakatlari vaqtida bo'linma yo'lida dushman tomonidan o'rnatilgan ayrili to'siqlar va uyumlar bilan to'silgan xavfli hudud uchrab qoldi. Dushman zich o't ochayotganligi sababli sustkashlikka yo'l qo'yish katta talafotga sabab bo'lishi mumkin. Darslikning qat'iy ko'rsatmalariga muvofiq, agar ushbu uyali to'siqlarni maxsus changaklar yordamida tortib olishning mutloq iloji bo'lmasa, askarlar qonunan qanday yo'l tutishlari shart?",
       "opts": [
         "A) Butun bo'linma zudlik bilan orqaga chekinib, sutkalik naryad binosiga qaytishi lozim",
         "B) To'siqlarning ustiga maxsus to'shamalar yoki shinellar tashlab, tez va uyushgan holda ustidan o'tib ketishlari shart",
@@ -5040,7 +5040,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Qo'zg'almas (shikastlantirilmaydigan) maydon..."
     },
   {
-      "q": "CHQBT darsida 11-sinf o'quvchilari \"45-dars. Nishongacha bo'lgan masofani aniqlash\" bo'limidagi matematik-taktik qoidalarni o'rganmoqdalar. Keys: \"Askar dushman okopi yo'nalishidagi balandligi yoki kengligi aniq ma'lum bo'lgan obyektni durbin yordamida kuzatdi hamda uning ostida ko'rinib turgan burchak kattaligini mingdan bir o'lchovda o'lchadi. Shundan so'ng u nishongacha bo'lgan masofani (D) aniqlash uchun darslikdagi maxsus formulani qo'lladi\". Amaldagi CHQBT darsligiga ko'ra, nishon balandligi/kengligi (B) va u ko'rinib turgan burchak kattaligi (BU) ma'lum bo'lganda masofani aniqlaydigan qat'iy formula qaysi javobda to'g'ri ko'rsatilgan?",
+      "q": "Askar dushman okopi yo'nalishidagi balandligi yoki kengligi aniq ma'lum bo'lgan obyektni durbin yordamida kuzatdi hamda uning ostida ko'rinib turgan burchak kattaligini mingdan bir o'lchovda o'lchadi. Shundan so'ng u nishongacha bo'lgan masofani (D) aniqlash uchun darslikdagi maxsus formulani qo'lladi. Amaldagi CHQBT darsligiga ko'ra, nishon balandligi/kengligi (B) va u ko'rinib turgan burchak kattaligi (BU) ma'lum bo'lganda masofani aniqlaydigan qat'iy formula qaysi javobda to'g'ri ko'rsatilgan?",
       "opts": [
         "A) D = B / (BU * 1000)",
         "B) D = (B * 1000) / BU",
@@ -5052,7 +5052,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - D = (B * 1000) / BU..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida darslikning \"45-dars. Yopiq va qo'zg'almas maydonlar chuqurligini aniqlash mexanikasi\" mavzusi muhokama qilinmoqda. Keys: \"Harbiy mergan dushman askari berkingan yashirinish joyining darslik chizmasidagi parametrlarini tahlil qilmoqda. U yashirinish joyining balandligi va ungacha bo'lgan uzoqlikka teng balandlikni taqqoslash jadvallaridan aniqlab, otishning uzoqligini topdi\". Darslik qoidalariga muvofiq, yopiq maydonning chuqurlik o'lchamini amalda aniqlash uchun qaysi ikki ko'rsatkich o'rtasidagi farq (tafovut) hisoblab chiqilishi qonunan shart?",
+      "q": "Harbiy mergan dushman askari berkingan yashirinish joyining darslik chizmasidagi parametrlarini tahlil qilmoqda. U yashirinish joyining balandligi va ungacha bo'lgan uzoqlikka teng balandlikni taqqoslash jadvallaridan aniqlab, otishning uzoqligini topdi. Darslik qoidalariga muvofiq, yopiq maydonning chuqurlik o'lchamini amalda aniqlash uchun qaysi ikki ko'rsatkich o'rtasidagi farq (tafovut) hisoblab chiqilishi qonunan shart?",
       "opts": [
         "A) Qurolning umumiy og'irligi va o'qning boshlang'ich tezligi o'rtasidagi farq",
         "B) Otishning aniqlangan uzoqligi va yashirinish joyining uzoqligi o'rtasidagi farq",
@@ -5064,7 +5064,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Otishning aniqlangan uzoqligi va yashirinish joyining uzoqligi o'rtasidagi..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik amaliyotida \"Dushman o't yog'dirib turganda bir kishilik okop qazish ketma-ketligi\" o'rganilmoqda. Keys: \"Askar bir kishilik yotib otish okopini qazish darsining ikkinchi bosqichiga o'tdi. U piyodalar kuragini g'ilofidan chiqardi hamda darslik qoidasiga ko'ra yerning ustki qismini o'yib, chuqurning oldi va yon chegaralariga tuproq uyib joyni belgilashni boshladi\". Darslik matnidagi harakat yo'riqnomasiga binoan, askar kurak bilan ushbu harakatni bajarayotgan soniyada o'z tanasini qaysi holatda saqlashi va kurakni qanday tutishi shart?",
+      "q": "Askar bir kishilik yotib otish okopini qazish darsining ikkinchi bosqichiga o'tdi. U piyodalar kuragini g'ilofidan chiqardi hamda darslik qoidasiga ko'ra yerning ustki qismini o'yib, chuqurning oldi va yon chegaralariga tuproq uyib joyni belgilashni boshladi. Darslik matnidagi harakat yo'riqnomasiga binoan, askar kurak bilan ushbu harakatni bajarayotgan soniyada o'z tanasini qaysi holatda saqlashi va kurakni qanday tutishi shart?",
       "opts": [
         "A) Tik turgan holda, kurakni faqat o'ng qo'li bilan vertikal tutishi shart",
         "B) Chap tomonga yonboshlagan holda va ikkala qo'li bilan kurakni o'zi tomon qaratib (yerga urgancha) tutishi shart",
@@ -5076,7 +5076,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Chap tomonga yonboshlagan holda va ikkala qo'li bilan..."
     },
   {
-      "q": "CHQBT fani rahbari o'quvchilarga jang maydonida dushman o'qotar qurollaridan himoyalangan holda harakatlanish taktikasini tushuntirmoqda. Keys: \"Askar jang maydonida dushman o'q uzib turgan va panaliklari o'ta kam bo'lgan, sayoz ariqlar yoki chuqur bo'lmagan daralardan iborat qisman niqoblangan uchastkadan o'tishi kerak. U dushmanga nishon bo'lmaslik uchun oyoq tizzalari va ikkala qo'l tirsagiga (yoki barmoqlariga) engashgan holda harakatlanmoqda, qurolni esa o'ng qo'li bilan tirsakka yaqin ushlab bormoqda\". Darslikning \"Askarning jang maydonida harakatlanishi\" bo'limiga ko'ra, ushbu taktik xususiyatlarga ega bo'lgan harakatlanish turi qanday nomlanadi?",
+      "q": "Askar jang maydonida dushman o'q uzib turgan va panaliklari o'ta kam bo'lgan, sayoz ariqlar yoki chuqur bo'lmagan daralardan iborat qisman niqoblangan uchastkadan o'tishi kerak. U dushmanga nishon bo'lmaslik uchun oyoq tizzalari va ikkala qo'l tirsagiga (yoki barmoqlariga) engashgan holda harakatlanmoqda, qurolni esa o'ng qo'li bilan tirsakka yaqin ushlab bormoqda. Darslikning \"Askarning jang maydonida harakatlanishi\" bo'limiga ko'ra, ushbu taktik xususiyatlarga ega bo'lgan harakatlanish turi qanday nomlanadi?",
       "opts": [
         "A) Yerga yopishib emaklash",
         "B) Emaklash usuli (Tizzada va tirsakda harakatlanish)",
@@ -5088,7 +5088,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Emaklash usuli (Tizzada va tirsakda harakatlanish)..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Kuzatuv posti va uning hududiy zonalarga ajratilishi\" bo'yicha darslik savoli berildi. Keys: \"Kuzatuvchi etib tayinlangan askar o'ziga biriktirilgan sektordagi o'rta zonani ko'zdan kechirmoqda. U optik moslamalarsiz, o'zining shaxsiy ko'rish qobiliyati yordamida joydagi obyektlarni aniq farqlay olish imkoniyatiga ega\". Darslikdagi \"Kuzatish sektorlarini zonalarga bo'lish\" qoidalariga binoan, ko'z bilan aniq farqlash mumkin bo'lgan ushbu \"O'rta zona\" masofaviy o'lchami necha metrlar oralig'ini qamrab oladi?",
+      "q": "Kuzatuvchi etib tayinlangan askar o'ziga biriktirilgan sektordagi o'rta zonani ko'zdan kechirmoqda. U optik moslamalarsiz, o'zining shaxsiy ko'rish qobiliyati yordamida joydagi obyektlarni aniq farqlay olish imkoniyatiga ega. Darslikdagi \"Kuzatish sektorlarini zonalarga bo'lish\" qoidalariga binoan, ko'z bilan aniq farqlash mumkin bo'lgan ushbu \"O'rta zona\" masofaviy o'lchami necha metrlar oralig'ini qamrab oladi?",
       "opts": [
         "A) 0 - 400 metrgacha bo'lgan masofani",
         "B) 440 - 500 metrgacha bo'lgan masofani",
@@ -5136,7 +5136,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Uyurma..."
     },
   {
-      "q": "CHQBT darsida 11-sinf o'quvchilariga yaqin masofadagi nishonlarni yo'q qilishga mo'ljallangan Makarov to'pponchasining (PM) jangovar xususiyatlari o'rganilmoqda. Keys: \"Ofitser to'satdan paydo bo'lgan dushman nishoniga qarata to'pponchadan o't ochishi va qisqa muddat ichida maksimal darajada aniq zarba berishi zarur\". Qurolning jangovar tavsiflariga ko'ra, Makarov to'pponchasining (PM) samarali otish masofasi qonunan necha metr etib belgilangan?",
+      "q": "Ofitser to'satdan paydo bo'lgan dushman nishoniga qarata to'pponchadan o't ochishi va qisqa muddat ichida maksimal darajada aniq zarba berishi zarur. Qurolning jangovar tavsiflariga ko'ra, Makarov to'pponchasining (PM) samarali otish masofasi qonunan necha metr etib belgilangan?",
       "opts": [
         "A) 15 metr",
         "B) 50 metr",
@@ -5148,7 +5148,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - 50 metr..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida Makarov to'pponchasining (PM) kurgak-tepki mexanizmi (USM) ishlash prinsiplari tahlil qilinmoqda. Keys: \"Otuvchi favqulodda jangovar vaziyatda vaqtni tejash maqsadida to'pponcha kurgagini oldindan qo'lda orqaga tortib shaylamasdan, to'g'ridan-to'g'ri tepkini (suskavoy kryuchok) bosish orqali o'q uzdi\". To'pponchaning konstruktiv tuzilishiga ko'ra, kurgakni qo'lda tortmasdan, faqat tepkini bosish hisobiga kurgakning o'z-o'zidan orqaga burilib, so'ngra pistonchaga urilishini ta'minlaydigan ushbu mexanik xususiyat nima deb ataladi?",
+      "q": "Otuvchi favqulodda jangovar vaziyatda vaqtni tejash maqsadida to'pponcha kurgagini oldindan qo'lda orqaga tortib shaylamasdan, to'g'ridan-to'g'ri tepkini (suskavoy kryuchok) bosish orqali o'q uzdi. To'pponchaning konstruktiv tuzilishiga ko'ra, kurgakni qo'lda tortmasdan, faqat tepkini bosish hisobiga kurgakning o'z-o'zidan orqaga burilib, so'ngra pistonchaga urilishini ta'minlaydigan ushbu mexanik xususiyat nima deb ataladi?",
       "opts": [
         "A) Avtomatlashtirilgan blokirovka",
         "B) O'z-o'zidan otish (Samovzvod) mexanizmi",
@@ -5160,7 +5160,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - O'z-o'zidan otish (Samovzvod) mexanizmi..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik-amaliy mashg'ulotida Makarov to'pponchasini (PM) jangovar shay holatga keltirish qoidalari o'rganilmoqda. Keys: \"Askar to'pponcha o'qdoniga (magazin) patronlarni to'liq joylashtirib, uni qurol dastasiga kiritdi. O'q uzishni boshlash uchun u zatvorni oxirigacha orqaga tortib, qo'yib yuborishi va patronni patron xonasiga (patronnik) yuborishi shart\". Ushbu jarayonda o'qdon ichidagi navbatdagi patronni yuqoriga surib, zatvor yo'liga shay qibly turadigan o'qdonning ichki tarkibiy qismi qonunan qanday nomlanadi?",
+      "q": "Askar to'pponcha o'qdoniga (magazin) patronlarni to'liq joylashtirib, uni qurol dastasiga kiritdi. O'q uzishni boshlash uchun u zatvorni oxirigacha orqaga tortib, qo'yib yuborishi va patronni patron xonasiga (patronnik) yuborishi shart. Ushbu jarayonda o'qdon ichidagi navbatdagi patronni yuqoriga surib, zatvor yo'liga shay qibly turadigan o'qdonning ichki tarkibiy qismi qonunan qanday nomlanadi?",
       "opts": [
         "A) O'qdon qopqog'i",
         "B) Patron surgich (Podavatel)",
@@ -5172,7 +5172,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Patron surgich (Podavatel)..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy otish tiri sharoitida to'pponchaning xavfsizlik mexanizmlarini tushuntirmoqda. Keys: \"O'quvchi to'pponchadan otishni yakunlab, qurolni xavfsiz holatga keltirmoqchi. U zatvor g'ilofining chap tomonida joylashgan xavfsizlik dastasini (predoxranitel) yuqoriga ko'tarib qo'ydi\". To'pponchaning moddiy qismiga binoan, xavfsizlik dastasi yuqoriga ko'tarilganda (xavfsiz holatga o'tkazilganda) qurol mexanizmida qaysi qat'iy blokirovka jarayoni avtomat ravishda yuz beradi?",
+      "q": "O'quvchi to'pponchadan otishni yakunlab, qurolni xavfsiz holatga keltirmoqchi. U zatvor g'ilofining chap tomonida joylashgan xavfsizlik dastasini (predoxranitel) yuqoriga ko'tarib qo'ydi. To'pponchaning moddiy qismiga binoan, xavfsizlik dastasi yuqoriga ko'tarilganda (xavfsiz holatga o'tkazilganda) qurol mexanizmida qaysi qat'iy blokirovka jarayoni avtomat ravishda yuz beradi?",
       "opts": [
         "A) Faqat o'qdon quroldan ajralib pastga tushadi",
         "B) Zatvor g'ilofi ramka bilan, kurgak esa zarb beruvchi (boyek) bilan mutloq bloklanadi va kurgak xavfsiz ravishda jangovar shaylikdan tushadi",
@@ -5196,7 +5196,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Tepki dastasini (Suskavaya skoba)..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari metodik kengashida SVD (Snayper miltig'i) qurolining taktik vazifalari darslik me'yorlari asosida tahlil qilinmoqda. Keys: \"Jangovar sharoitda uzoq masofadagi (800 metrdan ortiq masofada) to'satdan paydo bo'ladigan, harakatlanuvchi, ochiq yoki niqoblangan va yashiringan muhim nishonlarni bitta o'q bilan aniq urib yo'q qilish topshirig'i berildi\". Taktik tayyorgarlik qoidalariga ko'ra, SVD snayper miltig'idan uzoq masofalardagi nishonlarni o'ta yuqori aniqlikda mo'ljalga olish va kuzatish uchun qurolga qaysi asosiy maxsus optik moslama o'rnatilishi shart?",
+      "q": "Jangovar sharoitda uzoq masofadagi (800 metrdan ortiq masofada) to'satdan paydo bo'ladigan, harakatlanuvchi, ochiq yoki niqoblangan va yashiringan muhim nishonlarni bitta o'q bilan aniq urib yo'q qilish topshirig'i berildi. Taktik tayyorgarlik qoidalariga ko'ra, SVD snayper miltig'idan uzoq masofalardagi nishonlarni o'ta yuqori aniqlikda mo'ljalga olish va kuzatish uchun qurolga qaysi asosiy maxsus optik moslama o'rnatilishi shart?",
       "opts": [
         "A) Dioptrli ochiq mo'ljallagich",
         "B) PSO-1 optik mo'ljallagichi",
@@ -5208,7 +5208,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - PSO-1 optik mo'ljallagichi..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik amaliyotida SVD snayper miltig'ining o'q-dori xususiyatlari o'rganilmoqda. Keys: \"Snayper uzoq masofadagi zirhlangan nishonni yoki dushmanning yashirinish joyi ortidagi jonli kuchini urish uchun miltiq kalibriga mos keladigan patron turini tanlamoqda\". Jangovar qurollarning tavsifnomalariga muvofiq, SVD snayper miltig'ining qat'iy kalibri necha millimetrni tashkil etadi?",
+      "q": "Snayper uzoq masofadagi zirhlangan nishonni yoki dushmanning yashirinish joyi ortidagi jonli kuchini urish uchun miltiq kalibriga mos keladigan patron turini tanlamoqda. Jangovar qurollarning tavsifnomalariga muvofiq, SVD snayper miltig'ining qat'iy kalibri necha millimetrni tashkil etadi?",
       "opts": [
         "A) 5.45 mm",
         "B) 7.62 mm",
@@ -5220,7 +5220,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - 7.62 mm..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Uzoq masofalarga otishda qurol traektoriyasi yassiligi va o'q tezligi munosabati\" bo'limi tahlil qilinmoqda. Keys: \"SVD snayper miltig'idan otilgan o'q havo kengligida uzoq masofaga g'oz (yassi) trayektoriya hosil qibly uchishi, shamol va tashqi muhit ta'siriga minimal darajada uchrashi ma'lum bo'ldi\". Ichki ballistika ko'rsatkichlariga ko'ra, SVD snayper miltig'ide o'qning stvol og'iz qismidagi boshlang'ich tezligi qonunan qanchaga teng etib belgilangan?",
+      "q": "SVD snayper miltig'idan otilgan o'q havo kengligida uzoq masofaga g'oz (yassi) trayektoriya hosil qibly uchishi, shamol va tashqi muhit ta'siriga minimal darajada uchrashi ma'lum bo'ldi. Ichki ballistika ko'rsatkichlariga ko'ra, SVD snayper miltig'ide o'qning stvol og'iz qismidagi boshlang'ich tezligi qonunan qanchaga teng etib belgilangan?",
       "opts": [
         "A) 315 m/s",
         "B) 830 m/s",
@@ -5232,7 +5232,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - 830 m/s..."
     },
   {
-      "q": "11-sinf CHQBT imtihonida o'quvchilarga SVD snayper miltig'ining avtomatlashtirilgan ishlash mexanikasi bo'yicha taktik savol berildi. Keys: \"SVD miltig'idan o'q otilgan pallada, o'q ortidan kelayotgan yuqori bosimli porox gazlarining bir qismi stvol devoridagi maxsus teshik orqali gaz kamerasiga o'tadi va porox gazlari energiyasi hisobiga qurol mexanizmi o'z-o'zidan qayta oqlanadi\". Miltiqning ichki tuzilish qoidalariga ko'ra, gaz kamerasiga kirgan porox gazlari birinchi navbatda qaysi qismga bosim bilan ta'sir o'tkazib, zatvor ramkasini orqaga surishga majbur qiladi?",
+      "q": "SVD miltig'idan o'q otilgan pallada, o'q ortidan kelayotgan yuqori bosimli porox gazlarining bir qismi stvol devoridagi maxsus teshik orqali gaz kamerasiga o'tadi va porox gazlari energiyasi hisobiga qurol mexanizmi o'z-o'zidan qayta oqlanadi. Miltiqning ichki tuzilish qoidalariga ko'ra, gaz kamerasiga kirgan porox gazlari birinchi navbatda qaysi qismga bosim bilan ta'sir o'tkazib, zatvor ramkasini orqaga surishga majbur qiladi?",
       "opts": [
         "A) Kurgak dastasiga",
         "B) Gaz porsheniga (Gazovyy porshen)",
@@ -5244,7 +5244,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Gaz porsheniga (Gazovyy porshen)..."
     },
   {
-      "q": "CHQBT darsida Makarov to'pponchasining (PM) jangovar otish qobiliyati tahlil qilinmoqda. Keys: \"Askar dushman bilan to'qnashuv paytida yaqin masofadan o'q uzish tezligini maksimal darajada ushlab turishi shart\". Qurolning jangovar tavsiflariga binoan, Makarov to'pponchasining (PM) 1 daqiqa ichida amalda bajarilishi mumkin bo'lgan jangovar otish sur'ati qat'iy nechta o'qqa teng?",
+      "q": "Askar dushman bilan to'qnashuv paytida yaqin masofadan o'q uzish tezligini maksimal darajada ushlab turishi shart. Qurolning jangovar tavsiflariga binoan, Makarov to'pponchasining (PM) 1 daqiqa ichida amalda bajarilishi mumkin bo'lgan jangovar otish sur'ati qat'iy nechta o'qqa teng?",
       "opts": [
         "A) 10 ta o'qqa",
         "B) 30 ta o'qqa",
@@ -5292,7 +5292,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - 1300 metr..."
     },
   {
-      "q": "CHQBT taktik amaliyotida Makarov to'pponchasining (PM) vazn ko'rsatkich listi tahlil qilinmoqda. Keys: \"O'quvchi to'pponchaning o'qdoniga 8 ta to'liq jangovar patron joylashtirib, qurolning umumiy og'irligini o'lchadi\". To'pponchaning jangovar tavsifiga ko'ra, PM to'pponchasining patronlar bilan to'liq o'qlangan holatdagi umumiy og'irligi qonunan qancha etib belgilangan?",
+      "q": "O'quvchi to'pponchaning o'qdoniga 8 ta to'liq jangovar patron joylashtirib, qurolning umumiy og'irligini o'lchadi. To'pponchaning jangovar tavsifiga ko'ra, PM to'pponchasining patronlar bilan to'liq o'qlangan holatdagi umumiy og'irligi qonunan qancha etib belgilangan?",
       "opts": [
         "A) 730 gramm",
         "B) 810 gramm",
@@ -5496,7 +5496,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - 640 metr..."
     },
   {
-      "q": "CHQBT darsida 11-sinf o'quvchilariga askarning yaqin jangda dushman jonli kuchlarini va texnikalarini yo'q qilishda qo'llaydigan qo'l granatalari tasnifi o'rgatilmoqda. Keys: \"Hujumga o'tayotgan bo'linma tarkibidagi askar dushman okopi yo'nalishida harakatlanib, harakat xavfsizligini ta'minlash va panaga yashiringan dushmanning jonli kuchini parchalari bilan shikastlash uchun granata otishga shaylandi\". Darslikning taktik-texnik tavsiflariga ko'ra, parchalari uncha uzoq bo'lmagan masofaga tarqaladigan RGD-5 qo'l granatasi jangovar xususiyatiga ko'ra qaysi turga kiradi?",
+      "q": "Hujumga o'tayotgan bo'linma tarkibidagi askar dushman okopi yo'nalishida harakatlanib, harakat xavfsizligini ta'minlash va panaga yashiringan dushmanning jonli kuchini parchalari bilan shikastlash uchun granata otishga shaylandi. Darslikning taktik-texnik tavsiflariga ko'ra, parchalari uncha uzoq bo'lmagan masofaga tarqaladigan RGD-5 qo'l granatasi jangovar xususiyatiga ko'ra qaysi turga kiradi?",
       "opts": [
         "A) Mudofaa granatasi",
         "B) Hujumkor granata",
@@ -5508,7 +5508,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Hujumkor granata..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida darslik matni asosida \"Qo'l granatalari alovlatgichining (zapal UZRGM) ishlash mexanikasi\" tahlil qilinmoqda. Keys: \"Burun burchak o'lchagich sohasidagi xavfsizlik chekasini (shplint) sug'urib oldi va qurolni dushman pozitsiyasiga qarata kuchli siltash bilan otdi. Granata havoda uchib borayotgan soniyalarda uning ichki kapsula qismida alovlanish zanjiri ishga tushdi\". Amaldagi CHQBT darsligi normalariga muvofiq, UZRGM alovlatgichi portlovchi moddani (detonatorni) portlatishi uchun havodagi parvoz vaqtida qat'iy necha soniya (vaqt oralig'i) o'tishi shart?",
+      "q": "Burun burchak o'lchagich sohasidagi xavfsizlik chekasini (shplint) sug'urib oldi va qurolni dushman pozitsiyasiga qarata kuchli siltash bilan otdi. Granata havoda uchib borayotgan soniyalarda uning ichki kapsula qismida alovlanish zanjiri ishga tushdi. Amaldagi CHQBT darsligi normalariga muvofiq, UZRGM alovlatgichi portlovchi moddani (detonatorni) portlatishi uchun havodagi parvoz vaqtida qat'iy necha soniya (vaqt oralig'i) o'tishi shart?",
       "opts": [
         "A) 1.5 - 2.5 soniya",
         "B) 3.2 - 4.2 soniya",
@@ -5520,7 +5520,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - 3.2 - 4.2 soniya..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik-amaliy mashg'ulotida F-1 qo'l granatasining (Limonka) jangovar qo'llanish chegaralari o'rganilmoqda. Keys: \"Askar mudofaa jangida okop (xandaq) ichiga mustahkam joylashgan holda, dushmanning yaqinlashib kelayotgan guruhi yo'nalishida F-1 granatasini otdi. Komandir askarlarga ushbu granata otilgandan keyin okop panasidan mutloq chiqmaslikni buyurdi\". Qurol aslahalarning jangovar tavsifiga ko'ra, nima sababdan F-1 granatasi otilganda askar faqat xandaq yoki mustahkam pana ortida turishi qonunan shart hisoblanadi?",
+      "q": "Askar mudofaa jangida okop (xandaq) ichiga mustahkam joylashgan holda, dushmanning yaqinlashib kelayotgan guruhi yo'nalishida F-1 granatasini otdi. Komandir askarlarga ushbu granata otilgandan keyin okop panasidan mutloq chiqmaslikni buyurdi. Qurol aslahalarning jangovar tavsifiga ko'ra, nima sababdan F-1 granatasi otilganda askar faqat xandaq yoki mustahkam pana ortida turishi qonunan shart hisoblanadi?",
       "opts": [
         "A) Granata o'ta og'ir bo'lib, askar kiyimini shikastlashi mumkinligi sababli",
         "B) F-1 mudofaa granatasi bo'lib, uning portlashi natijasida hosil bo'ladigan og'ir parchalarning tarqalish radiusi qonunan 200 metrgacha yetishi mumkinligi sababli",
@@ -5532,7 +5532,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - F-1 mudofaa granatasi bo'lib, uning portlashi natijasida hosil..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy taktik maydonda \"Hujumkor qo'l granatalarining shikastlash imkoniyatlari\" qoidasini darslik asosida tushuntirmoqda. Keys: \"Askarlar hujum harakatlari davomida dushman to'siqlari yaqinida RGD-5 va RG-42 qo'l granatalarini qo'llashmoqda. Ushbu granatalarning og'irligi engil bo'lganligi sababli askar ularni yugurish vaqtida ham uzoqqa ota oladi\". Darslikning muhandislik-jangovar tavsiflariga binoan, RGD-5 va RG-42 hujumkor granatalari portlaganda ularning parchalari taxminan necha metr masofagacha bo'lgan radiusda dushman jonli kuchiga shikast yetkazishi mumkin?",
+      "q": "Askarlar hujum harakatlari davomida dushman to'siqlari yaqinida RGD-5 va RG-42 qo'l granatalarini qo'llashmoqda. Ushbu granatalarning og'irligi engil bo'lganligi sababli askar ularni yugurish vaqtida ham uzoqqa ota oladi. Darslikning muhandislik-jangovar tavsiflariga binoan, RGD-5 va RG-42 hujumkor granatalari portlaganda ularning parchalari taxminan necha metr masofagacha bo'lgan radiusda dushman jonli kuchiga shikast yetkazishi mumkin?",
       "opts": [
         "A) 100 metr radiusda",
         "B) 25 metr radiusda",
@@ -5544,7 +5544,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - 25 metr radiusda..."
     },
   {
-      "q": "11-sinf CHQBT yakuniy imtihonida o'quvchilarga RPG-7 tankka qarshi qo'l granatomyotining jangovar vazifalari bo'yicha keys-topshiriq berildi. Keys: \"Taktik mudofaa jangida dushmanning og'ir zirhli tanklari va piyodalarning jangovar mashinarli (BTR, BMP) bizning seksiyaning mudofaa pozitsiyasiga shiddat bilan bostirib kelmoqda. Seksiyadagi granatomyotchi dushman texnikasini yakson qilish buyrug'ini oldi\". Darslikning \"Askarning mudofaadagi harakatlari\" bo'limidagi jangovar qoidalarga muvofiq, hujumga o'tgan dushman tanklari va bronetransportyorlarini to'g'ridan-to'g'ri o't ochib yakson qilish uchun qaysi jangovar quroldan foydalanish majburiydir?",
+      "q": "Taktik mudofaa jangida dushmanning og'ir zirhli tanklari va piyodalarning jangovar mashinarli (BTR, BMP) bizning seksiyaning mudofaa pozitsiyasiga shiddat bilan bostirib kelmoqda. Seksiyadagi granatomyotchi dushman texnikasini yakson qilish buyrug'ini oldi. Darslikning \"Askarning mudofaadagi harakatlari\" bo'limidagi jangovar qoidalarga muvofiq, hujumga o'tgan dushman tanklari va bronetransportyorlarini to'g'ridan-to'g'ri o't ochib yakson qilish uchun qaysi jangovar quroldan foydalanish majburiydir?",
       "opts": [
         "A) Kalashnikov avtomatidan (AK-74)",
         "B) RPG-7 tankka qarshi qo'l granatomyotidan",
@@ -5556,7 +5556,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - RPG-7 tankka qarshi qo'l granatomyotidan..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Qo'l granatalarini xavfsiz uloqtirish marralarini tashkil etish\" bo'limida yangi amaliy vaziyat tahlil qilinmoqda. Keys: \"Poligon maydonida o'quvchilar bilan qo'l granatalarini otish bo'yicha amaliy mashg'ulot o'tkazilmoqda. Komandir yordamchisi darslik normativiga muvofiq, granata otish davomida xavfsizlikni ta'minlash uchun granatalarni tarqatish nuqtasini otish marrasidan ma'lum bir masofada jihozladi\". 11-sinf CHQBT darsligi qoidalari zanjiriga ko'ra, qo'l granatalari va ularning zapallarini tarqatish joyi dastlabki otish marrasidan kamida necha metr uzoqlikda jihozlanishi shart?",
+      "q": "Poligon maydonida o'quvchilar bilan qo'l granatalarini otish bo'yicha amaliy mashg'ulot o'tkazilmoqda. Komandir yordamchisi darslik normativiga muvofiq, granata otish davomida xavfsizlikni ta'minlash uchun granatalarni tarqatish nuqtasini otish marrasidan ma'lum bir masofada jihozladi. 11-sinf CHQBT darsligi qoidalari zanjiriga ko'ra, qo'l granatalari va ularning zapallarini tarqatish joyi dastlabki otish marrasidan kamida necha metr uzoqlikda jihozlanishi shart?",
       "opts": [
         "A) 5 metr uzoqlikda",
         "B) 25 metr uzoqlikda",
@@ -5568,7 +5568,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - 25 metr uzoqlikda..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik-amaliy musobaqasida \"RG-42 qo'l granatasining korpus tuzilish xususiyat\" o'rganilmoqda. Keys: \"O'quvchi qurol omboridan olingan o'quv granatalarining tashqi korpus tuzilishini solishtirmoqda. U ichki qismida ko'p miqdorda parchalarni hosil qiluvchi maxsus metall tasmali lentasi bor bo'lgan silindrsimon granatani ajratib oldi\". Jangovar qurollar moddiy qismi qoidalariga ko'ra, korpusi silindr shaklida bo'lgan ushbu tarixiy-jangovar qo'l granatasi darslikda qanday nomlanadi?",
+      "q": "O'quvchi qurol omboridan olingan o'quv granatalarining tashqi korpus tuzilishini solishtirmoqda. U ichki qismida ko'p miqdorda parchalarni hosil qiluvchi maxsus metall tasmali lentasi bor bo'lgan silindrsimon granatani ajratib oldi. Jangovar qurollar moddiy qismi qoidalariga ko'ra, korpusi silindr shaklida bo'lgan ushbu tarixiy-jangovar qo'l granatasi darslikda qanday nomlanadi?",
       "opts": [
         "A) RGD-5",
         "B) RG-42",
@@ -5580,7 +5580,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - RG-42..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy otish tiri sharoitida granatalarni jangovar shay holatga keltirish pallasida o'quvchilarga yo'riqnoma bermoqda. Keys: \"Askar jangovar vazifani bajarishdan to'g'ri 10 daqiqa oldin granata korpusini va uning ichki qismidagi portlovchi zaryadni alovlantirishga xizmat qiluvchi mexanizmlarni o'zaro birlashtirishi shart\". Granataning moddiy qismiga binoan, qo'l granatalarini bevosita portlashga olib keladigan va granata korpusining yuqori qismidagi maxsus uyaga burab kirgaziyladigan moslama qonunan nima deb ataladi?",
+      "q": "Askar jangovar vazifani bajarishdan to'g'ri 10 daqiqa oldin granata korpusini va uning ichki qismidagi portlovchi zaryadni alovlantirishga xizmat qiluvchi mexanizmlarni o'zaro birlashtirishi shart. Granataning moddiy qismiga binoan, qo'l granatalarini bevosita portlashga olib keladigan va granata korpusining yuqori qismidagi maxsus uyaga burab kirgaziyladigan moslama qonunan nima deb ataladi?",
       "opts": [
         "A) Brustver",
         "B) Alovlatgich (Zapal - UZRGM)",
@@ -5592,7 +5592,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Alovlatgich (Zapal - UZRGM)..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"RPG-7 granatomyotidan otiladigan jangovar granataning havoda uchish pallasidagi o'ziga xos xususiyat\" bo'yicha taktik savol berildi. Keys: \"Granatomyotdan o'q uzilgan soniyada granata stvoldan chiqdi, biroq u havoda ma'lum bir masofani bosib o'tgandan keyingina uning shaxsiy reaktiv dvigateli ishga tushdi va o'q o'ta yuqori tezlikda dushman tanki tomon yo'naldi\". Ichki va tashqi ballistika qoidalari xaritasiga ko'ra, granatomyot o'qining stvol ichida o'qchiga shikast yetkazmasdan xavfsiz chiqib ketishini ta'minlaydigan stvol ichidagi dastlabki harakat kuchi nima hisobiga hosil bo'ladi?",
+      "q": "Granatomyotdan o'q uzilgan soniyada granata stvoldan chiqdi, biroq u havoda ma'lum bir masofani bosib o'tgandan keyingina uning shaxsiy reaktiv dvigateli ishga tushdi va o'q o'ta yuqori tezlikda dushman tanki tomon yo'naldi. Ichki va tashqi ballistika qoidalari xaritasiga ko'ra, granatomyot o'qining stvol ichida o'qchiga shikast yetkazmasdan xavfsiz chiqib ketishini ta'minlaydigan stvol ichidagi dastlabki harakat kuchi nima hisobiga hosil bo'ladi?",
       "opts": [
         "A) Faqat tashqi atmosfera shamol kuchi hisobiga",
         "B) Granata dumi qismidagi poroxli start zaryadining stvol ichida yonishi hisobiga",
@@ -5604,7 +5604,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Granata dumi qismidagi poroxli start zaryadining stvol ichida..."
     },
   {
-      "q": "CHQBT darsida \"QA'TIY F-1 mudofaa granatasining tashqi ko'rinishi va geometrik tuzilishi\" o'rganilmoqda. Keys: \"O'quvchi darslik rasmlari asosida granatalarni vizual farqlash mashqini bajarmoqda. U korpusi quyma cho'yandan yasalgan, tashqi sirti ko'plab chuqurchalar shaklida simmetrik kesilgan qurol turini aniqladi\". Harbiy-texnik taviflarga ko'ra, tashqi ko'rinishi xalq tilida \"Limonka\" deb ataladigan ushbu cho'yan korpusli granata qaysi javobda to'g'ri ko'rsatilgan?",
+      "q": "O'quvchi darslik rasmlari asosida granatalarni vizual farqlash mashqini bajarmoqda. U korpusi quyma cho'yandan yasalgan, tashqi sirti ko'plab chuqurchalar shaklida simmetrik kesilgan qurol turini aniqladi. Harbiy-texnik taviflarga ko'ra, tashqi ko'rinishi xalq tilida \"Limonka\" deb ataladigan ushbu cho'yan korpusli granata qaysi javobda to'g'ri ko'rsatilgan?",
       "opts": [
         "A) RGD-5",
         "B) F-1",
@@ -5616,7 +5616,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - F-1..."
     },
   {
-      "q": "11-sinf CHQBT taktik amaliyotida \"Hujumkor granatalarning (RGD-5) umumiy og'irlik o'lchovlari\" ko'rib chiqilmoqda. Keys: \"Askar hujum harakati vaqtida o'zi bilan ko'proq o'q-dori olib yurish va qisqa muddatda uzoq masofaga granata uloqtirish uchun granataning umumiy vaznini hisobga olmoqda\". Qurol aslahalarning qat'iy TTT ko'rsatkichlariga muvofiq, RGD-5 qo'l granatasining alovlatgich bilan birgalikdagi umumiy og'irligi qonunan necha grammni tashkil etadi?",
+      "q": "Askar hujum harakati vaqtida o'zi bilan ko'proq o'q-dori olib yurish va qisqa muddatda uzoq masofaga granata uloqtirish uchun granataning umumiy vaznini hisobga olmoqda. Qurol aslahalarning qat'iy TTT ko'rsatkichlariga muvofiq, RGD-5 qo'l granatasining alovlatgich bilan birgalikdagi umumiy og'irligi qonunan necha grammni tashkil etadi?",
       "opts": [
         "A) 110 gramm",
         "B) 310 gramm",
@@ -5628,7 +5628,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - 310 gramm..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari ilmiy-metodik kengashida \"F-1 mudofaa granatasining TTT ko'rsatkichlari va uning og'irligi\" tahlil qilinmoqda. Keys: \"Mudofaa jangida okop ichida turgan askar dushman guruhi ustiga cho'yan korpusli F-1 granatasini uloqtirishdan oldin uning jismoniy vaznini avtomat vazni bilan taqqoslamoqda\". Harbiy tavsifnomalarga binoan, F-1 mudofaa qo'l granatasining alovlatgichi bilan birgalikdagi umumiy og'irligi qonunan qancha etib belgilangan?",
+      "q": "Mudofaa jangida okop ichida turgan askar dushman guruhi ustiga cho'yan korpusli F-1 granatasini uloqtirishdan oldin uning jismoniy vaznini avtomat vazni bilan taqqoslamoqda. Harbiy tavsifnomalarga binoan, F-1 mudofaa qo'l granatasining alovlatgichi bilan birgalikdagi umumiy og'irligi qonunan qancha etib belgilangan?",
       "opts": [
         "A) 310 gramm",
         "B) 600 gramm",
@@ -5856,7 +5856,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Paxtavon patronlar va maxsus signal vositalarini..."
     },
   {
-      "q": "CHQBT darsida 11-sinf o'quvchilariga dushman zirhli texnikalarining harakatlanish yo'nalishlarida muhandislik to'siqlarini tashkil etish qoidalari o'rgatilmoqda. Keys: \"Taktik mudofaa jangida bo'linma muhandis-sapyorlari dushman tanklari bostirib kelishi kutilayotgan yo'nalishda portlovchi modda zaryadi o'ta yuqori va faqat og'ir vaznli zaryadlar ostida bosim bilan portlaydigan muhandislik to'sig'ini o'rnatishmoqda\". Harbiy-muhandislik tasnifiga ko'ra, dushman zirhli texnikalarini yo'q qilishga mo'ljallangan TM-62M minasi qaysi turga kiradi?",
+      "q": "Taktik mudofaa jangida bo'linma muhandis-sapyorlari dushman tanklari bostirib kelishi kutilayotgan yo'nalishda portlovchi modda zaryadi o'ta yuqori va faqat og'ir vaznli zaryadlar ostida bosim bilan portlaydigan muhandislik to'sig'ini o'rnatishmoqda. Harbiy-muhandislik tasnifiga ko'ra, dushman zirhli texnikalarini yo'q qilishga mo'ljallangan TM-62M minasi qaysi turga kiradi?",
       "opts": [
         "A) Piyodalarga qarshi parchalanadigan mina",
         "B) Tankka qarshi bosim bilan portlaydigan mina",
@@ -5868,7 +5868,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Tankka qarshi bosim bilan portlaydigan mina..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Piyodalarga qarshi minalarning dushman jonli kuchini shikastlash xususiyat\" mavzusi darslik asosida tahlil qilinmoqda. Keys: \"Sapyorlar bo'linma mudofaa chizig'i oldida dushman piyodalarining yashirincha suqilib kirishini to'xtatish uchun to'siq o'rnatmoqdalar. Ushbu mina dushman askari uning ustiga qadam bosgan soniyada portlab, uning pastki a'zolarini og'ir shikastlaydi\". Muhandislik mantiqiga ko'ra, korpusi plastik moddadan tayyorlangan, bosim ta'sirida portlaydigan PMN-2 minasi qaysi qurol toifasiga mansub hisoblanadi?",
+      "q": "Sapyorlar bo'linma mudofaa chizig'i oldida dushman piyodalarining yashirincha suqilib kirishini to'xtatish uchun to'siq o'rnatmoqdalar. Ushbu mina dushman askari uning ustiga qadam bosgan soniyada portlab, uning pastki a'zolarini og'ir shikastlaydi. Muhandislik mantiqiga ko'ra, korpusi plastik moddadan tayyorlangan, bosim ta'sirida portlaydigan PMN-2 minasi qaysi qurol toifasiga mansub hisoblanadi?",
       "opts": [
         "A) Tankka qarshi zirh teshuvchi mina",
         "B) Piyodalarga qarshi bosim bilan portlaydigan mina",
@@ -5880,7 +5880,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Piyodalarga qarshi bosim bilan portlaydigan mina..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik-amaliy mashg'ulotida \"Piyodalarga qarshi sakrab chiquvchi minalarning (OZM-72) talafot ko'lami\" o'rganilmoqda. Keys: \"Dushman bo'linmalari bizning muhandislik to'siqlari o'rnatilgan hududga yaqinlashganda, darslikda maxsus mina poyasidagi simli tortgich ishga tushdi. Mina er sirtidan havoga ma'lum bir balandlikka (0.6-0.8 metrga) sakrab chiqib, havo bo'shlig'ida portladi va parchalari 360 darajada burun atrofga tarqaldi\". Muhandislik tayyorgarligi jadvallariga ko'ra, OZM-72 sakrab chiquvchi minasi portlaganda uning uchar parchalari necha metr radiusdagi dushman jonli kuchini yakson qila oladi?",
+      "q": "Dushman bo'linmalari bizning muhandislik to'siqlari o'rnatilgan hududga yaqinlashganda, darslikda maxsus mina poyasidagi simli tortgich ishga tushdi. Mina er sirtidan havoga ma'lum bir balandlikka (0.6-0.8 metrga) sakrab chiqib, havo bo'shlig'ida portladi va parchalari 360 darajada burun atrofga tarqaldi. Muhandislik tayyorgarligi jadvallariga ko'ra, OZM-72 sakrab chiquvchi minasi portlaganda uning uchar parchalari necha metr radiusdagi dushman jonli kuchini yakson qila oladi?",
       "opts": [
         "A) 5 metr radiusda",
         "B) 25-30 metr radiusda",
@@ -5892,7 +5892,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - 25-30 metr radiusda..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy taktik maydonda MON-50 yo'naltirilgan ta'sirga ega bo'lgan minaning ishlash prinsiplarini tushuntirmoqda. Keys: \"Askar dushman yashirincha bostirib kelishi mumkin bo'lgan tor yo'lak oldida maxsus mina o'rnatdi. Ushbu minaning korpusi dushman yo'nalishiga qaratilgan yassi-egri shaklda bo'lib, u portlagan soniyada parchalari hamma tomonga emas, balki faqat oldingi ma'lum bir sektor bo'ylab shiddat bilan otilib chiqadi\". Muhandislik tavsifiga ko'ra, MON-50 minasi darslikda qanday nomlanadi?",
+      "q": "Askar dushman yashirincha bostirib kelishi mumkin bo'lgan tor yo'lak oldida maxsus mina o'rnatdi. Ushbu minaning korpusi dushman yo'nalishiga qaratilgan yassi-egri shaklda bo'lib, u portlagan soniyada parchalari hamma tomonga emas, balki faqat oldingi ma'lum bir sektor bo'ylab shiddat bilan otilib chiqadi. Muhandislik tavsifiga ko'ra, MON-50 minasi darslikda qanday nomlanadi?",
       "opts": [
         "A) Piyodalarga qarshi sakrab chiquvchi aylana mina",
         "B) Piyodalarga qarshi yo'naltirilgan shikastlash minasi",
@@ -5904,7 +5904,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Piyodalarga qarshi yo'naltirilgan shikastlash minasi..."
     },
   {
-      "q": "11-sinf CHQBT yakuniy imtihonida o'quvchilarga \"Qurol aslahalarni otishdan keyin parvarishlash va tozalash darslik qoidalari\" bo'yicha keys-topshiriq berildi. Keys: \"Amaliy otish mashg'uloti yakunlangandan so'ng, askar Kalashnikov avtomatining stvol kanali ichida, gaz kamerasida va zatvor qismlarida to'planib qolgan qattiq porox kuyindilarini (nagar) va zang qatlamlarini onson tozalash uchun maxsus suyuqlikdan foydalandi\". Qurolni tozalash-moylash yo'riqnomalariga muvofiq, porox kuyindisini eritish va tozalash uchun qo'llaniladigan ushbu maxsus kimyoviy suyuqlik darslikda qanday nomlangan?",
+      "q": "Amaliy otish mashg'uloti yakunlangandan so'ng, askar Kalashnikov avtomatining stvol kanali ichida, gaz kamerasida va zatvor qismlarida to'planib qolgan qattiq porox kuyindilarini (nagar) va zang qatlamlarini onson tozalash uchun maxsus suyuqlikdan foydalandi. Qurolni tozalash-moylash yo'riqnomalariga muvofiq, porox kuyindisini eritish va tozalash uchun qo'llaniladigan ushbu maxsus kimyoviy suyuqlik darslikda qanday nomlangan?",
       "opts": [
         "A) Fuqaroviy motor moyi",
         "B) RJD (Suyuq qurol tozalash eritmasi)",
@@ -5916,7 +5916,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - RJD (Suyuq qurol tozalash eritmasi)..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Qurolni tozalash va moylash vaqtlari hamda davriyligi reglamenti\" bo'limida yangi amaliy vaziyat tahlil qilinmoqda. Keys: \"Askar harbiy qism sharoitida tinchlik xizmati davrida quroldan hech qanday amaliy otish mashg'uloti bajarmadi. Komandir unga qurol omborda uzoq vaqt ishlatsiz turgan bo'lsa ham uning qismlari zanglamasligi uchun muntazam ko'rikdan o'tkazib tozalab turishni buyurdi\". Otish tayyorgarligi yo'riqnomalariga binoan, tinchlik vaqtida quroldan mutloq foydalanilmagan taqdirda ham u kamida necha kunda bir marta majburiy tartibda tozalanib va qayta moylanib turishi shart?",
+      "q": "Askar harbiy qism sharoitida tinchlik xizmati davrida quroldan hech qanday amaliy otish mashg'uloti bajarmadi. Komandir unga qurol omborda uzoq vaqt ishlatsiz turgan bo'lsa ham uning qismlari zanglamasligi uchun muntazam ko'rikdan o'tkazib tozalab turishni buyurdi. Otish tayyorgarligi yo'riqnomalariga binoan, tinchlik vaqtida quroldan mutloq foydalanilmagan taqdirda ham u kamida necha kunda bir marta majburiy tartibda tozalanib va qayta moylanib turishi shart?",
       "opts": [
         "A) Har kuni ertalab badantarbiya darsidan oldin",
         "B) Haftada kamida bir marta",
@@ -5928,7 +5928,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Haftada kamida bir marta..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik-amaliy musobaqasida \"Tankka qarshi TM-62M minasining umumiy portlovchi modda miqdori\" o'rganilmoqda. Keys: \"O'quvchi dushman tanklarining zanjirband g'ildiraklarini va tag qismini parchalab, texnikani burun harakatdan to'xtatish imkoniyatiga ega bo'lgan TM-62M minasining TTT raqamlarini tahlil qilmoqda\". Muhandislik-texnik tavsifnomalariga ko'ra, TM-62M minasining ichki qismiga qonunan necha kilogramm og'irlikdagi o'ta kuchli portlovchi modda zaryadi joylashtirilgan bo'ladi?",
+      "q": "O'quvchi dushman tanklarining zanjirband g'ildiraklarini va tag qismini parchalab, texnikani burun harakatdan to'xtatish imkoniyatiga ega bo'lgan TM-62M minasining TTT raqamlarini tahlil qilmoqda. Muhandislik-texnik tavsifnomalariga ko'ra, TM-62M minasining ichki qismiga qonunan necha kilogramm og'irlikdagi o'ta kuchli portlovchi modda zaryadi joylashtirilgan bo'ladi?",
       "opts": [
         "A) 1-2 kilogramm",
         "B) 7.5 - 8.5 kilogramm",
@@ -5940,7 +5940,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - 7.5 - 8.5 kilogramm..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy taktik maydonda \"Minalarning portlatgich (vzyvatel) turlari va ularning vazifalari\" qoidasini darslik asosida tushuntirmoqda. Keys: \"Askar tankka qarshi TM-62M minasini yer ostiga ko'mishdan oldin, uning markaziy qismiga dushman tanki bosganida portlash reaktsiyasini beruvchi MVCh-62 rusumli maxsus mexanik moslamani o'rnatdi\". Muhandislik tayyorgarligi qoidalariga ko'ra, minani bevosita jangovar shay holatga keltiruvchi va bosim ta'sirida portlashni boshlab beruvchi ushbu moslama nima deb ataladi?",
+      "q": "Askar tankka qarshi TM-62M minasini yer ostiga ko'mishdan oldin, uning markaziy qismiga dushman tanki bosganida portlash reaktsiyasini beruvchi MVCh-62 rusumli maxsus mexanik moslamani o'rnatdi. Muhandislik tayyorgarligi qoidalariga ko'ra, minani bevosita jangovar shay holatga keltiruvchi va bosim ta'sirida portlashni boshlab beruvchi ushbu moslama nima deb ataladi?",
       "opts": [
         "A) Brustver",
         "B) Portlatgich (Vzryvatel)",
@@ -5952,7 +5952,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Portlatgich (Vzryvatel)..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga MON-50 piyodalarga qarshi minasining taktik-texnik tavsiflari bo'yicha savol berildi. Keys: \"Muhandis-sapyor MON-50 yo'naltirilgan ta'sirga ega bo'lgan minani dushman askarlari yugurib kelishi kutilayotgan yo'lak chetidagi daraxt tagiga o'rnatdi. U minaning parchalari to'g'ri chiziq bo'ylab dushmangan maksimal darajada shikast etkazishini hisoblamoq\". Muhandislik tavsifnomalariga muvofiq, MON-50 minasi portlagan soniyada uning tayyor uchar parchalari oldinga yo'nalish bo'ylab necha metr masofagacha bo'lgan dushman jonli kuchini burun yo'q qila oladi?",
+      "q": "Muhandis-sapyor MON-50 yo'naltirilgan ta'sirga ega bo'lgan minani dushman askarlari yugurib kelishi kutilayotgan yo'lak chetidagi daraxt tagiga o'rnatdi. U minaning parchalari to'g'ri chiziq bo'ylab dushmangan maksimal darajada shikast etkazishini hisoblamoq. Muhandislik tavsifnomalariga muvofiq, MON-50 minasi portlagan soniyada uning tayyor uchar parchalari oldinga yo'nalish bo'ylab necha metr masofagacha bo'lgan dushman jonli kuchini burun yo'q qila oladi?",
       "opts": [
         "A) 10 metrgacha",
         "B) 50 metrgacha",
@@ -5964,7 +5964,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - 50 metrgacha..."
     },
   {
-      "q": "CHQBT darsida \"Qurolni tozalash-moylash asbob-anjomlari va ularning qo'llanilishi\" o'rganilmoqda. Keys: \"Askar amaliy otishni yakunlab, avtomat stvoli kanali ichki yivlarini porox kuydirgi qoldiqlaridan tozalash uchun qurol dastasidagi po'lat simli maxsus cho'tkani chiqardi va uni tozalash dastasiga (shompol) burab qotirdi\". Otish tayyorgarligi moddiy qismi qoidalariga ko'ra, qurolni tozalash va moylash uchun mo'ljallangan ushbu jami anjomlar birgalikda saqlanadigan maxsus g'ilof darslikda nima deb ataladi?",
+      "q": "Askar amaliy otishni yakunlab, avtomat stvoli kanali ichki yivlarini porox kuydirgi qoldiqlaridan tozalash uchun qurol dastasidagi po'lat simli maxsus cho'tkani chiqardi va uni tozalash dastasiga (shompol) burab qotirdi. Otish tayyorgarligi moddiy qismi qoidalariga ko'ra, qurolni tozalash va moylash uchun mo'ljallangan ushbu jami anjomlar birgalikda saqlanadigan maxsus g'ilof darslikda nima deb ataladi?",
       "opts": [
         "A) Brustver xaltachasi",
         "B) Penal (Tozalash asboblari qutisi)",
@@ -5976,7 +5976,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - Penal (Tozalash asboblari qutisi)..."
     },
   {
-      "q": "11-sinf CHQBT taktik amaliyotida \"PMN-2 piyodalarga qarshi minasining amaliy portlash mexanizmi\" ko'rib chiqilmoqda. Keys: \"Dushman askari hududni razvedka qilish vaqtida sapyorlarimiz tomonidan er ostiga yashirilgan PMN-2 minasining yuqori qismidagi rezina xochsimon datchik ustiga oyog'i bilan beixtiyor qadam bosdi\". Muhandislik-texnik normalariga binoan, PMN-2 minasi dushman askari uning ustiga kamida necha kilogramm og'irlik bilan bosganida soniyali portlash reaktsiyasini hosil qiladi?",
+      "q": "Dushman askari hududni razvedka qilish vaqtida sapyorlarimiz tomonidan er ostiga yashirilgan PMN-2 minasining yuqori qismidagi rezina xochsimon datchik ustiga oyog'i bilan beixtiyor qadam bosdi. Muhandislik-texnik normalariga binoan, PMN-2 minasi dushman askari uning ustiga kamida necha kilogramm og'irlik bilan bosganida soniyali portlash reaktsiyasini hosil qiladi?",
       "opts": [
         "A) 1-2 kg bosim ostida",
         "B) 8-25 kg gacha bo'lgan bosim ta'sirida",
@@ -5988,7 +5988,7 @@ export const q2_otish_tayyorgarligi = [
       "mnemonic": "Moddiy qism va TTT - 8-25 kg gacha bo'lgan bosim ta'sirida..."
     },
   {
-      "q": "Tuman mudofaa ishlari bo'limi va CHQBT rahbarlarining qo'shma yig'ilishida \"Minalashtirilgan to'siq maydonlarini xaritaga belgilash va xavfsizlik\" chorasi tahlil qilinmoqda. Keys: \"Muhandislik bo'linmasi komandiri dushman yo'nalishida tankka va piyodalarga qarshi minalarni to'liq o'rnatib bo'lgach, o'z askarlarimiz adashib ushbu hududga kirib ketmasligi uchun maxsus hujjat chizmasini tayyorladi\". Harbiy-muhandislik nizomlariga binoan, minalar o'rnatilgan maydonning aniq geografik koordinatalari, minalar soni va turi qat'iy qayd etiladigan ushbu rasmiy muhandislik hujjati qanday nomlanadi?",
+      "q": "Muhandislik bo'linmasi komandiri dushman yo'nalishida tankka va piyodalarga qarshi minalarni to'liq o'rnatib bo'lgach, o'z askarlarimiz adashib ushbu hududga kirib ketmasligi uchun maxsus hujjat chizmasini tayyorladi. Harbiy-muhandislik nizomlariga binoan, minalar o'rnatilgan maydonning aniq geografik koordinatalari, minalar soni va turi qat'iy qayd etiladigan ushbu rasmiy muhandislik hujjati qanday nomlanadi?",
       "opts": [
         "A) Sutkalik naryad jadvali",
         "B) Minalashtirilgan maydon formulyari",

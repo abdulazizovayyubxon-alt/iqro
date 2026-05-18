@@ -6660,7 +6660,7 @@ export const q0_harbiy_xizmat = [
       "mnemonic": "Qurolni hisobdan chiqarish - Ta'lim + Mudofaa + IIB maxsus komissiya dalolatnomasi."
     },
   {
-      "q": "CHQBT o'quv dasturining \"O'quv-moddiy bazani saqlashda moddiy javobgarlik\" bo'limi o'rganilmoqda. Keys: \"Maktabga yangi kelgan CHQBT fani rahbari o'quv xonasi, pnevmatik qurollar, fuqaro muhofazasi asbob-anjomlari va o'quv-tarqatma materiallarini maktab ma'muriyatidan qabul qilib olmoqda\". 591-sonli Qaror qoidalariga binoan, CHQBT faniga biriktirilgan barcha o'quv-moddiy jihozlarning butunligi, qonuniy saqlanishi va maqsadli foydalanilishi uchun birinchi navbatda kim shaxsiy moddiy javobgar hisoblanadi?",
+      "q": "Maktabga yangi kelgan CHQBT fani rahbari o'quv xonasi, pnevmatik qurollar, fuqaro muhofazasi asbob-anjomlari va o'quv-tarqatma materiallarini maktab ma'muriyatidan qabul qilib olmoqda. 591-sonli Qaror qoidalariga binoan, CHQBT faniga biriktirilgan barcha o'quv-moddiy jihozlarning butunligi, qonuniy saqlanishi va maqsadli foydalanilishi uchun birinchi navbatda kim shaxsiy moddiy javobgar hisoblanadi?",
       "opts": [
         "A) Maktabning yuqori sinf o'quvchilari va sinf sardorlari jamoaviy javobgar bo'ladilar.",
         "B) Shaxsan CHQBT fani rahbari (u barcha o'quv-moddiy vositalarni moddiy javobgarlik shartnomasi asosida o'z zimmasiga qabul qiladi).",

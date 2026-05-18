@@ -888,7 +888,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Motoo'qchi - PJM yoki ZTR."
     },
   {
-      "q": "CHQBT fani rahbari amaliy taktik mashg'ulotda o'quvchilarga zamonaviy umumqo'shin jangining o'ziga xos murakkab xususiyatlarini darslik asosida tushuntirmoqda. Keys: \"Jang maydonida dushmanning zamonaviy yuqori aniqlikdagi qurollari, uchuvchisiz uchish apparatlari va radioelektron bostirish vositalari shiddat bilan qo'llanilmoqda. Komandir bo'linma askarlaridan jangovar vaziyatning keskin o'zgarishiga tezkor moslashishni talab qildi\". 11-sinf CHQBT darsligi matniga muvofiq, zamonaviy umumqo'shin jangining bosh qonuniy xarakteri va xususiyati qaysi javobda to'g'ri va to'liq ko'rsatilgan?",
+      "q": "Jang maydonida dushmanning zamonaviy yuqori aniqlikdagi qurollari, uchuvchisiz uchish apparatlari va radioelektron bostirish vositalari shiddat bilan qo'llanilmoqda. Komandir bo'linma askarlaridan jangovar vaziyatning keskin o'zgarishiga tezkor moslashishni talab qildi. 11-sinf CHQBT darsligi matniga muvofiq, zamonaviy umumqo'shin jangining bosh qonuniy xarakteri va xususiyati qaysi javobda to'g'ri va to'liq ko'rsatilgan?",
       "opts": [
         "A) Jang faqat ochiq tekislik maydonlarida, hech qanday texnikalarsiz sekin kechadi",
         "B) Jang o'ta shiddatli, shoshilinch qarorlar qabul qilishni talab etuvchi, keskin va qisqa muddatda o'zgaruvchan hamda quruqlik, havo va axborot makonlaridagi harakatlarning qonuniy majmuasidir",
@@ -900,7 +900,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Jang o'ta shiddatli, shoshilinch qarorlar qabul qilishni talab..."
     },
   {
-      "q": "11-sinf o'quvchilarining dala-taktik maydonida \"Askarning jangdagi majburiyatlari va burchlari zanjiri\" mavzusini o'rganmoqdalar. Keys: \"Jang boshlanishidan oldin askar o'zining pozitsiyasini jihozlash, qurol-aslahalarini jangovar shay holatga keltirish buyrug'ini oldi\". Quruqlikdagi qo'shinlarning jangovar nizomi va CHQBT darsligi normalariga binoan, askar jangga kirishishidan avval o'z qurol-yarog'idan tashqari birinchi navbatda qaysi muhim jangovar ko'rsatkichlarni aniq va mukammal bilishi qonunan shart?",
+      "q": "Jang boshlanishidan oldin askar o'zining pozitsiyasini jihozlash, qurol-aslahalarini jangovar shay holatga keltirish buyrug'ini oldi. Quruqlikdagi qo'shinlarning jangovar nizomi va CHQBT darsligi normalariga binoan, askar jangga kirishishidan avval o'z qurol-yarog'idan tashqari birinchi navbatda qaysi muhim jangovar ko'rsatkichlarni aniq va mukammal bilishi qonunan shart?",
       "opts": [
         "A) Faqat dushman bo'linmasining yillik moliyaviy budjeti va harbiy parad kiyimlari shaklini",
         "B) O'z vzvodi, jangovar guruh va shaxsan o'zining jangovar vazifasini, dushmanning yaqin atrofdagi nishonlari joylashishini, otish marrasini va parol-salomlashish so'zlarini",
@@ -912,7 +912,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - O'z vzvodi, jangovar guruh va shaxsan o'zining jangovar..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Jang turlari va ularning taktik maqsadlari\" mavzusi darslik matni asosida tahlil qilinmoqda. Keys: \"Bo'linma komandiri dushmanning kutilmagan hujumini muvaffaqiyatli daf etish, uning jonli kuchlari va texnikalariga talafot yetkazish hamda egallab turilgan muhim strategik hudud yoki marrani ishonchli asrab qolish haqida jangovar buyruq berdi\". Taktik tayyorgarlik qoidalariga ko'ra, ushbu qo'yilgan maqsad va harbiy harakatlar majmuasi jangning qaysi asosiy turiga qonunan to'liq mos keladi?",
+      "q": "Bo'linma komandiri dushmanning kutilmagan hujumini muvaffaqiyatli daf etish, uning jonli kuchlari va texnikalariga talafot yetkazish hamda egallab turilgan muhim strategik hudud yoki marrani ishonchli asrab qolish haqida jangovar buyruq berdi. Taktik tayyorgarlik qoidalariga ko'ra, ushbu qo'yilgan maqsad va harbiy harakatlar majmuasi jangning qaysi asosiy turiga qonunan to'liq mos keladi?",
       "opts": [
         "A) Hujum jangi",
         "B) Mudofaa jangi",
@@ -924,7 +924,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Mudofaa jangi..."
     },
   {
-      "q": "11-sinf CHQBT yakuniy imtihonida o'quvchilarga \"Hujum jangi va uning asosiy taktik maqsadi\" bo'yicha keys-topshiriq berildi. Keys: \"Bizning guruh dushmanning mudofaa chizig'ini yorib o'tish, uning yashiringan o't ochish nuqtalarini yo'q qilish hamda belgilangan strategik marra yoki obyektni qo'lga kiritish buyrug'ini oldi\". Darslikdagi taktik qonuniyatlar zanjiriga binoan, dushmanning jonli kuchini, qurol-yarog'larini mutloq tor-mor keltirish va g'alaba qozonish maqsadida olib boriladigan jang turi qanday nomlanadi?",
+      "q": "Bizning guruh dushmanning mudofaa chizig'ini yorib o'tish, uning yashiringan o't ochish nuqtalarini yo'q qilish hamda belgilangan strategik marra yoki obyektni qo'lga kiritish buyrug'ini oldi. Darslikdagi taktik qonuniyatlar zanjiriga binoan, dushmanning jonli kuchini, qurol-yarog'larini mutloq tor-mor keltirish va g'alaba qozonish maqsadida olib boriladigan jang turi qanday nomlanadi?",
       "opts": [
         "A) Taktik mudofaa jangi",
         "B) Hujum jangi",
@@ -936,7 +936,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Hujum jangi..."
     },
   {
-      "q": "CHQBT amaliy mashg'ulotida \"Jang maydonida dushmanning zich o't ochishi ostida askarlarning o'zaro harakat koordinatsiyasi\" o'rganilmoqda. Keys: \"Dushman pulemyot va avtomatlardan tinimsiz o't ochayotganligi sababli bo'linmaning ochiq maydon bo'ylab tik turib harakatlanishi o'ta xavfli holatni yuzaga keltirdi. Komandir askarlarga jangovar guruhlarga bo'linib, bir-birini o't ochish bilan panalagan holda oldinga siljishni buyurdi\". Darslikning \"Askarning jangdagi harakatlari\" bo'limiga muvofiq, bunday mudammal sharoitda askarlar qaysi taktik guruhlar tarkibida o'zaro uyg'un harakat qilishlari shart?",
+      "q": "Dushman pulemyot va avtomatlardan tinimsiz o't ochayotganligi sababli bo'linmaning ochiq maydon bo'ylab tik turib harakatlanishi o'ta xavfli holatni yuzaga keltirdi. Komandir askarlarga jangovar guruhlarga bo'linib, bir-birini o't ochish bilan panalagan holda oldinga siljishni buyurdi. Darslikning \"Askarning jangdagi harakatlari\" bo'limiga muvofiq, bunday mudammal sharoitda askarlar qaysi taktik guruhlar tarkibida o'zaro uyg'un harakat qilishlari shart?",
       "opts": [
         "A) Butun bo'linma parallel to'rt qator bo'lib yurish safida",
         "B) Jangovar ikklik va uchlik tarkibida",
@@ -948,7 +948,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Jangovar ikklik va uchlik tarkibida..."
     },
   {
-      "q": "Taktik tayyorgarlik darsida 11-sinf o'quvchilari \"Jangovar guruh tarkibida o'zaro qutqarish va harakat strategiyasi\" mavzusini o'rganmoqdalar. Keys: \"Jangovar ikklik tarkibida harakatlanayotgan ikki askardan biri dushman yo'nalishida oldinga qarab qisqa masofaga yugurish harakatini bajarmoqda\". Taktik xavfsizlik va darslik qoidalariga ko'ra, u oldinga siljiyotgan o'sha soniyalarda uning ortida qolgan ikkinchi safdoshi qonunan qanday taktik majburiyatni bajarishi majburiydir?",
+      "q": "Jangovar ikklik tarkibida harakatlanayotgan ikki askardan biri dushman yo'nalishida oldinga qarab qisqa masofaga yugurish harakatini bajarmoqda. Taktik xavfsizlik va darslik qoidalariga ko'ra, u oldinga siljiyotgan o'sha soniyalarda uning ortida qolgan ikkinchi safdoshi qonunan qanday taktik majburiyatni bajarishi majburiydir?",
       "opts": [
         "A) O'z qurolini yerga qo'yib, faqat dushman samolyotlarini kuzatishi lozim",
         "B) Qurolini jangovar shay holatda tutib, dushmanning paydo bo'ladigan o't ochish nuqtalarini onson o't ochish bilan bostirishi va o'z sherigining harakatini ishonchli panalab turishi shart",
@@ -960,7 +960,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Qurolini jangovar shay holatda tutib, dushmanning paydo bo'ladigan..."
     },
   {
-      "q": "Amaliy taktik mashg'ulotda askar dushman kuzatuvidan va o'qidan panalanish maqsadida joy relyefiga mos ravishda niqoblanish vazifasini bajarmoqda. Keys: \"Askar yashil o'tloqli va butazorli hududda mudofaa pozitsiyasini egalladi hamda dushman vizual razvedkasiga nishon bo'lmaslik uchun o'z kiyimi va quroliga niqoblovchi elementlarni o'rnatmoqchi\". Darslikdagi \"Joy relyefiga ko'ra niqoblanish\" qoidalariga ko'ra, askar bunday yashil o'tloqli hududda birinchi navbatda qaysi tabiiy materiallardan niqob sifatida foydalanishi taktik jihatdan to'g'ri hisoblanadi?",
+      "q": "Askar yashil o'tloqli va butazorli hududda mudofaa pozitsiyasini egalladi hamda dushman vizual razvedkasiga nishon bo'lmaslik uchun o'z kiyimi va quroliga niqoblovchi elementlarni o'rnatmoqchi. Darslikdagi \"Joy relyefiga ko'ra niqoblanish\" qoidalariga ko'ra, askar bunday yashil o'tloqli hududda birinchi navbatda qaysi tabiiy materiallardan niqob sifatida foydalanishi taktik jihatdan to'g'ri hisoblanadi?",
       "opts": [
         "A) Quruq sarg'ish somon parchalari va qum tuproq qatlamidan",
         "B) Atrofdagi yashil buta shaxobchalari, o't-o'lanlar va yashil bargli o'simliklar bo'laklaridan",
@@ -972,7 +972,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Atrofdagi yashil buta shaxobchalari, o't-o'lanlar va yashil bargli..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Askarning jangdagi burchlari: O'q-dori va yonilg'i sarfini nazorat qilish\" bo'limi tahlil qilinmoqda. Keys: \"Shiddatli jang davom etmoqda. Askar o'z avtomatining o'qdonidagi patronlar juda tez kamayib borayotganligini va jangovar texnikaning yonilg'isi oz qolganligini sezdi\". Darslik va Jangovar nizom qoidalariga muvofiq, askar o'q-dori va yonilg'i zaxrashi kritik darajaga tushganda zudlik bilan qonunan qanday harakatni bajarishi shart?",
+      "q": "Shiddatli jang davom etmoqda. Askar o'z avtomatining o'qdonidagi patronlar juda tez kamayib borayotganligini va jangovar texnikaning yonilg'isi oz qolganligini sezdi. Darslik va Jangovar nizom qoidalariga muvofiq, askar o'q-dori va yonilg'i zaxrashi kritik darajaga tushganda zudlik bilan qonunan qanday harakatni bajarishi shart?",
       "opts": [
         "A) O't ochishni mustaqil to'xtatib, qurolini yerga tashlashi lozim",
         "B) O'q-dorilar va yonilg'i sarfini qat'iy kuzatib borishi hamda zaxra tugashidan oldin o'z vaqtida shaxsan o'z komandiriga bu haqda bildiruv berishi shart",
@@ -984,7 +984,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - O'q-dorilar va yonilg'i sarfini qat'iy kuzatib borishi hamda..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik amaliyotida \"Jang maydonida paydo bo'ladigan nishonlarni mustaqil qidirib topish va yo'q qilish\" qoidasi o'rganilmoqda. Keys: \"Askar okop ichida turgan holda dushman yo'nalishini sinchkovlik bilan kuzatmoqda. U to'satdan butalar ortida dushman merganining yashirincha joylashayotganini ko'rib qoldi\". Darslik qoidalariga ko'ra, askar jang maydonida dushmanning yeni nishonini birinchi bo'lib aniqlagan o'sha soniyada qaysi majburiy taktik amalni bajarishi shart?",
+      "q": "Askar okop ichida turgan holda dushman yo'nalishini sinchkovlik bilan kuzatmoqda. U to'satdan butalar ortida dushman merganining yashirincha joylashayotganini ko'rib qoldi. Darslik qoidalariga ko'ra, askar jang maydonida dushmanning yeni nishonini birinchi bo'lib aniqlagan o'sha soniyada qaysi majburiy taktik amalni bajarishi shart?",
       "opts": [
         "A) Komandir buyrug'ini kutib, hech qanday harakat qilmay turishi lozim",
         "B) Nishonni mustaqil ravishda (yoki komandir buyrug'i bilan) darhol yo'q qilish chorasini ko'rishi hamda nishonของ joyini komandiriga zudlik bilan ma'lum qilishi shart",
@@ -996,7 +996,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Nishonni mustaqil ravishda (yoki komandir buyrug'i bilan) darhol..."
     },
   {
-      "q": "CHQBT fani rahbari o'quv xonasida \"Askarning jangdagi majburiyatlari: Komandirni himoya qilish va etakchilikni qo'lga olish\" mavzusini o'rgatmoqda. Keys: \"Shiddatli jangovar to'qnashuv vaqtida bo'linma komandiri dushman o'qidan og'ir jarohat oldi (yoki halok bo'ldi). Guruhda qo'mondonlik tizimi vaqtinchalik uzildi\". Darslik va Jangovar nizom qoidalariga muvofiq, bunday o'ta og'ir vaziyatda askar qonunan qanday taktik qaror qabul qilishga majbur?",
+      "q": "Shiddatli jangovar to'qnashuv vaqtida bo'linma komandiri dushman o'qidan og'ir jarohat oldi (yoki halok bo'ldi). Guruhda qo'mondonlik tizimi vaqtinchalik uzildi. Darslik va Jangovar nizom qoidalariga muvofiq, bunday o'ta og'ir vaziyatda askar qonunan qanday taktik qaror qabul qilishga majbur?",
       "opts": [
         "A) Jangni to'xtatib, zudlik bilan eng yaqin harbiy gospital binosiga qochishi lozim",
         "B) Jangda komandirni ishonchli himoya qilishi, u yarador bo'lganda birinchi yordam ko'rsatishi hamda komandir jangni boshqara olmay qolgan taqdirda boshqaruvni jasorat bilan shaxsan o'z zimmasiga olishi shart",
@@ -1008,7 +1008,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Jangda komandirni ishonchli himoya qilishi, u yarador bo'lganda..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Mudofaa jangida askarning o'z pozitsiyasini mustahkamlash... bosqichlari\" bo'yicha taktik savol berildi. Keys: \"Komandir bo'linmaga belgilangan marrada mudofaaga o'tish buyrug'ini berdi. Askar birinchi navbatda yotib otish okopini qazib bo'ldi\". Darslikning \"Askarning mudofaadagi harakatlari\" bo'limiga muvofiq, okop qazish ishlari yakunlangandan keyin askar o'z xavfsizligini ta'minlash va o't ochish doirasini kengaytirish uchun keyingi qaysi majburiy muhandislik amalini ketma-ket bajarishi shart?",
+      "q": "Komandir bo'linmaga belgilangan marrada mudofaaga o'tish buyrug'ini berdi. Askar birinchi navbatda yotib otish okopini qazib bo'ldi. Darslikning \"Askarning mudofaadagi harakatlari\" bo'limiga muvofiq, okop qazish ishlari yakunlangandan keyin askar o'z xavfsizligini ta'minlash va o't ochish doirasini kengaytirish uchun keyingi qaysi majburiy muhandislik amalini ketma-ket bajarishi shart?",
       "opts": [
         "A) Okopni tashlab, zudlik bilan dushman hududiga razvedkaga yo'l olishi lozim",
         "B) Okopni tizzadan otish va tik turib otish chuqurligigacha chuqurlashtirishi, tuproq ko'tarmasini mahkamlab niqoblashi hamda dushmanning kelish yo'llarini uzluksiz kuzatishi shart",
@@ -1020,7 +1020,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Okopni tizzadan otish va tik turib otish chuqurligigacha..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Askarning jangga shaylanish pallasidagi shaxsiy himoya vositalari intizomi\" bo'limi tahlil qilinmoqda. Keys: \"Bo'linma jangovar tashvish signali bilan poligon maydoniga chiqdi. Komandir askarlarga jangovar kiyim-bosh va shaxsiy himoya anjomlarini to'liq kiyishni buyurdi\". Darslik me'yorlariga ko'ra, askarning jang maydonida o'q va parchalar zarbidan omon qolishini ta'minlovchi eng asosiy shaxsiy himoya vositalari to'plami qaysi javobda to'g'ri ko'rsatilgan?",
+      "q": "Bo'linma jangovar tashvish signali bilan poligon maydoniga chiqdi. Komandir askarlarga jangovar kiyim-bosh va shaxsiy himoya anjomlarini to'liq kiyishni buyurdi. Darslik me'yorlariga ko'ra, askarning jang maydonida o'q va parchalar zarbidan omon qolishini ta'minlovchi eng asosiy shaxsiy himoya vositalari to'plami qaysi javobda to'g'ri ko'rsatilgan?",
       "opts": [
         "A) Faqat jismoniy tarbiya sport libosi va rezina qo'lqoplar",
         "B) Po'lat dubulg'a va zirhli nimcha",
@@ -1032,7 +1032,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Po'lat dubulg'a va zirhli nimcha..."
     },
   {
-      "q": "Tuman CHQBT rahbarlari metodik kengashida \"Hujum jangida askarning harakatlanish usullari: Qisqa masofalarga yugurib siljish qoidalari\" o'rganilmoqda. Keys: \"Hujumiga o'tayotgan askar dushman zich o't ochib turgan ochiq maydon bo'ylab birinchi panagacha yugurib o'tishi kerak. U dushmanga aniq mo'ljal olishga imkon bermaslik uchun shoshilinch harakatlanmoqda\". Darslikning \"Askarning hujumdagi harakatlari\" yo'riqnomasiga binoan, bunday yugurib siljish vaqtida har bir qisqa yugurish masofasi o'rtacha necha qadamdan oshmasligi va necha soniya ichida bajarilib, darhol yerga yotilishi qonunan shart?",
+      "q": "Hujumiga o'tayotgan askar dushman zich o't ochib turgan ochiq maydon bo'ylab birinchi panagacha yugurib o'tishi kerak. U dushmanga aniq mo'ljal olishga imkon bermaslik uchun shoshilinch harakatlanmoqda. Darslikning \"Askarning hujumdagi harakatlari\" yo'riqnomasiga binoan, bunday yugurib siljish vaqtida har bir qisqa yugurish masofasi o'rtacha necha qadamdan oshmasligi va necha soniya ichida bajarilib, darhol yerga yotilishi qonunan shart?",
       "opts": [
         "A) O'rtacha 100-150 qadam, 1 daqiqa davomida yuriladi",
         "B) O'rtacha 20-40 qadam oralig'ida bo'shishi va dushman mo'ljal olguniga qadar, ya'ni 4-5 soniya ichida tezda bajarilib yerga yotilishi shart",
@@ -1044,7 +1044,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - O'rtacha 20-40 qadam oralig'ida bo'shishi va dushman mo'ljal..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Jang maydonida dushmanning o't ochish vositalari tabiatini tahlil qilish va ularni tasniflash\" bo'yicha taktik savol berildi. Keys: \"Askar jang maydonida dushmanning to'g'ridan-to'g'ri yo'naltirilgan o'qotar qurollari hamda okop orqasidagi berkingan nishonlarni uradigan osma trayektoriyali vositalari farqini o'rganmoqda\". Darslik matniga muvofiq, dushmanning okoplar va tepaliklar ortida berkingan jonli kuchlarini yuqoridan osma trayektoriya hosil qibly shikastlaydigan eng asosiy taktik qurol turi qaysi javobda to'g'ri ko'rsatilgan?",
+      "q": "Askar jang maydonida dushmanning to'g'ridan-to'g'ri yo'naltirilgan o'qotar qurollari hamda okop orqasidagi berkingan nishonlarni uradigan osma trayektoriyali vositalari farqini o'rganmoqda. Darslik matniga muvofiq, dushmanning okoplar va tepaliklar ortida berkingan jonli kuchlarini yuqoridan osma trayektoriya hosil qibly shikastlaydigan eng asosiy taktik qurol turi qaysi javobda to'g'ri ko'rsatilgan?",
       "opts": [
         "A) Makarov to'pponchasi",
         "B) Minomyotlar va portlovchi granatalar",
@@ -1056,7 +1056,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Minomyotlar va portlovchi granatalar..."
     },
   {
-      "q": "CHQBT darsida \"Jang maydonida yarador bo'lgan safdoshga taktik sharoitda birinchi yordam ko'rsatish qoidalari\" o'rganilmoqda. Keys: \"Shiddatli otishma ketayotgan xavfli hududda askarning safdoshi oyog'idan yaralandi va undan o'ta ko'p miqdorda qon keta boshladi. Askar dushman o't ochib turgan vaziyatda birinchi yordam ko'rsatishi shart\". Darslik va Taktik-tibbiy tayyorgarlik normalariga binoan, dushman o't ochib turgan ushbu xavfli pallada yaradorni qutqarish va yordam ko'rsatishของ eng birinchi qonuniy chorasi qanday amalga oshiriladi?",
+      "q": "Shiddatli otishma ketayotgan xavfli hududda askarning safdoshi oyog'idan yaralandi va undan o'ta ko'p miqdorda qon keta boshladi. Askar dushman o't ochib turgan vaziyatda birinchi yordam ko'rsatishi shart. Darslik va Taktik-tibbiy tayyorgarlik normalariga binoan, dushman o't ochib turgan ushbu xavfli pallada yaradorni qutqarish va yordam ko'rsatishของ eng birinchi qonuniy chorasi qanday amalga oshiriladi?",
       "opts": [
         "A) Yaradorning yonida tik turib, uning kiyimlarini to'liq yechish lozim",
         "B) Avvalo dushmanga o't ochib uni bostirish yoki xavfsiz pana joyga emaklab o'tish, yaradorga erga yopishgan holda turniket bog'lash va uni jang maydonidan onson evakuatsiya qilish shart",
@@ -1068,7 +1068,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Avvalo dushmanga o't ochib uni bostirish yoki xavfsiz..."
     },
   {
-      "q": "11-sinf o'quvchilarining dala o'quv yig'inida \"Jang maydonida emaklab harakatlanish qoidalari\" o'rganilmoqda. Keys: \"Askar dushman zich o't ochayotgan, er sirti mutloq tekis va panaliklar o'ta kam bo'lgan ochiq maydon bo'ylab erga butun tana a'zolari bilan mahkam yopishgan holda harakatlanmoqda\". Darslikning \"Askarning jang maydonida harakatlanishi\" bo'limiga ko'ra, tanani erga maksimal darajada yaqin tutib, qurolni stvolidan ushlagan holda bilakka qo'yib harakatlanadigan ushbu emaklash turi qanday nomlanadi?",
+      "q": "Askar dushman zich o't ochayotgan, er sirti mutloq tekis va panaliklar o'ta kam bo'lgan ochiq maydon bo'ylab erga butun tana a'zolari bilan mahkam yopishgan holda harakatlanmoqda. Darslikning \"Askarning jang maydonida harakatlanishi\" bo'limiga ko'ra, tanani erga maksimal darajada yaqin tutib, qurolni stvolidan ushlagan holda bilakka qo'yib harakatlanadigan ushbu emaklash turi qanday nomlanadi?",
       "opts": [
         "A) Tizzada va tirsakda emaklash",
         "B) Yerga yopishib emaklash",
@@ -1080,7 +1080,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Yerga yopishib emaklash..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Jang maydonida askarning vizual va akustik kuzatuv qoidalari\" bo'limi tahlil qilinmoqda. Keys: \"Kuzatuvchi etib tayinlangan askar o'ziga biriktirilgan sektordagi o'zgarishlarni tunda va kunduzi sinchkovlik bilan o'rganmoqda\". Darslik matnidagi qat'iy yo'riqnomaga binoan, askar kuzatish sektorini vizual ko'zdan kechirayotgan soniyalarda joy relyefini qanday tartibda suzib chiqishi darslikda qonunan majburiy shart qibly belgilangan?",
+      "q": "Kuzatuvchi etib tayinlangan askar o'ziga biriktirilgan sektordagi o'zgarishlarni tunda va kunduzi sinchkovlik bilan o'rganmoqda. Darslik matnidagi qat'iy yo'riqnomaga binoan, askar kuzatish sektorini vizual ko'zdan kechirayotgan soniyalarda joy relyefini qanday tartibda suzib chiqishi darslikda qonunan majburiy shart qibly belgilangan?",
       "opts": [
         "A) Faqat eng uzoq masofadagi osmon ufqiga qarab tik turish orqali",
         "B) Yaqindan uzoqqa qarab, o'ngdan chapga va chapdan o'ngga ketma-ketlikda, har bir shubhali ob'ektni sinchkovlik bilan ko'zdan kechirish orqali",
@@ -1092,7 +1092,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Yaqindan uzoqqa qarab, o'ngdan chapga va chapdan o'ngga..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Jangovar vaziyatda Tashvish signali berilganda askarning qurol-aslahalarni to'plash va saqlash majburiyati\" bo'yicha tahliliy keys berildi. Keys: \"Bo'linma joylashgan harbiy qism hududida to'satdan jangovar tashvish signali chalindi. Askar o'ziga biriktirilgan jangovar qurolni aslahaxona piramidasidan qabul qilib oldi\". Saf va Jangovar nizom qoidalariga muvofiq, qurol qabul qilib olingan o'sha ilk soniyalardan boshlab jangovar topshiriq yakunlangunga qadar qurolning sozligi, xavfsiz tutilishi va burunligi uchun birlamchi qonuniy javobgarlik kimning zimmasiga yuklatiladi?",
+      "q": "Bo'linma joylashgan harbiy qism hududida to'satdan jangovar tashvish signali chalindi. Askar o'ziga biriktirilgan jangovar qurolni aslahaxona piramidasidan qabul qilib oldi. Saf va Jangovar nizom qoidalariga muvofiq, qurol qabul qilib olingan o'sha ilk soniyalardan boshlab jangovar topshiriq yakunlangunga qadar qurolning sozligi, xavfsiz tutilishi va burunligi uchun birlamchi qonuniy javobgarlik kimning zimmasiga yuklatiladi?",
       "opts": [
         "A) Faqat harbiy qism komandiri va shtab boshlig'i zimmasiga",
         "B) Qurol shaxsan kimga biriktirilgan bo'lsa, to'g'ridan-to'g'ri o'sha askarning shaxsiy burchi va majburiyati hisoblanadi",
@@ -1128,7 +1128,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Yuksak jangovar hushyorlik, jismoniy chidamlilik, qurolni ko'z yumuq..."
     },
   {
-      "q": "CHQBT darsida 11-sinf o'quvchilari \"Harbiy topografiya: Joy relyefini mahalliy belgilarga ko'ra mo'ljal olish\" mavzusini o'rganmoqdalar. Keys: \"Razvedka guruh tunda notanish o'rmonli hududda vizual oriyentirlarsiz qolib ketdi. Komandir askarlarga kompassiz, faqat daraxtlar qobig'ining tabiiy-biologik xususiyatlariga tayanib ufoq tomonlarini aniqlashni buyurdi\". O'quv darsligi qoidalariga ko'ra, yolg'iz o'suvchi daraxtlarning qobig'i va shox-shabbalari ularning qaysi tomonida asosan qalinroq va serbosh bo'ladi, qaysi tomonida esa namlik yuqoriligi sababli yo'sin ko'p to'planadi?",
+      "q": "Razvedka guruh tunda notanish o'rmonli hududda vizual oriyentirlarsiz qolib ketdi. Komandir askarlarga kompassiz, faqat daraxtlar qobig'ining tabiiy-biologik xususiyatlariga tayanib ufoq tomonlarini aniqlashni buyurdi. O'quv darsligi qoidalariga ko'ra, yolg'iz o'suvchi daraxtlarning qobig'i va shox-shabbalari ularning qaysi tomonida asosan qalinroq va serbosh bo'ladi, qaysi tomonida esa namlik yuqoriligi sababli yo'sin ko'p to'planadi?",
       "opts": [
         "A) Janubiy tomonida yo'sin ko'p bo'ladi, shimolida shoxlar qalin bo'ladi",
         "B) Shimoliy tomonida yo'sin va lishayniklar ko'p to'planadi, janubiy tomonida esa daraxt shoxlari har doim qalinroq va uzunroq o'sadi",
@@ -1140,7 +1140,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Shimoliy tomonida yo'sin va lishayniklar ko'p to'planadi, janubiy..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik-topografik mashg'ulotida \"Mahalliy diniy me'morchilik obidalari yordamida ufoq tomonlarini aniqlash\" qoidasi tahlil qilinmoqda. Keys: \"Notanish aholi punktida harakatlanayotgan askar kompassiz sharoitda masjid binosining mehrob qismiga qarab vizual yo'nalishni belgilab oldi\". O'zbekiston va Markaziy Osiyo geografik joylashuv iqlimiga hamda darslik normalariga muvofiq, masjidlar ichidagi mehroblar qat'iy qaysi ufoq tomoniga qaratib qurilgan bo'ladi?",
+      "q": "Notanish aholi punktida harakatlanayotgan askar kompassiz sharoitda masjid binosining mehrob qismiga qarab vizual yo'nalishni belgilab oldi. O'zbekiston va Markaziy Osiyo geografik joylashuv iqlimiga hamda darslik normalariga muvofiq, masjidlar ichidagi mehroblar qat'iy qaysi ufoq tomoniga qaratib qurilgan bo'ladi?",
       "opts": [
         "A) Mutloq shimoliy-sharq tomoniga",
         "B) G'arbiy yoki janubiy-g'g'arbiy tomonga",
@@ -1152,7 +1152,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - G'arbiy yoki janubiy-g'g'arbiy tomonga..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Magnit azimuti va uning harakatlanishdagi ongli amaliyoti\" mavzusi darslik matni asosida o'rganilmoqda. Keys: \"Merganga tunda azimut bo'yicha harakatlanish topshirig'i berildi. U darslik chizmasiga asosan, kompas strelkasining shimoliy uchi bilan belgilangan nishon chizig'i orasidagi burchakni soat mili yo'nalishi bo'ylab o'lchab chiqdi\". Harbiy topografiya qoidalariga binoan, magnit strelkasining shimoliy uchi chizig'idan soat mili yo'nalishi bo'ylab nishongacha o'lchanadigan, 0 dan 360 darajagacha bo'lgan ushbu burchak qiymati ilmiy tilda nima deb ataladi?",
+      "q": "Merganga tunda azimut bo'yicha harakatlanish topshirig'i berildi. U darslik chizmasiga asosan, kompas strelkasining shimoliy uchi bilan belgilangan nishon chizig'i orasidagi burchakni soat mili yo'nalishi bo'ylab o'lchab chiqdi. Harbiy topografiya qoidalariga binoan, magnit strelkasining shimoliy uchi chizig'idan soat mili yo'nalishi bo'ylab nishongacha o'lchanadigan, 0 dan 360 darajagacha bo'lgan ushbu burchak qiymati ilmiy tilda nima deb ataladi?",
       "opts": [
         "A) Haqiqiy burchak chuqurligi",
         "B) Magnit azimuti",
@@ -1164,7 +1164,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Magnit azimuti..."
     },
   {
-      "q": "11-sinf o'quvchilari dala sharoitida \"Kompas yordamida magnit azimutini er joyida to'g'ri aniqlash\" amaliy mashqini bajarmoqdalar. Keys: \"Askar berilgan azimut burchagi (masalan, 60 daraja) bo'ylab to'g'ri qadam tashlashi shart. Buning uchun u kompasni tekis tutgan holda uning limbidagi 0 yozuvini qaysi muhim element bilan to'liq moslashtirib olishi majburiydir?\"",
+      "q": "Askar berilgan azimut burchagi (masalan, 60 daraja) bo'ylab to'g'ri qadam tashlashi shart. Buning uchun u kompasni tekis tutgan holda uning limbidagi 0 yozuvini qaysi muhim element bilan to'liq moslashtirib olishi majburiydir?",
       "opts": [
         "A) Kompasning vizir chizig'ini quyosh yo'nalishiga moslash orqali",
         "B) Kompas limbidagi 0 yozuvini magnit strelkasining shimoliy ko'rsatkich uchi bilan to'liq birlashtirish orqali",
@@ -1176,7 +1176,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Kompas limbidagi 0 yozuvini magnit strelkasining shimoliy ko'rsatkich..."
     },
   {
-      "q": "Taktik o'quv poligonida \"Teskari azimutni hisoblash va adashgan guruhni ortga xavfsiz qaytarish\" matematik keysi o'rganilmoqda. Keys: \"Guruh oldinga qarab to'g'ri 120 darajali magnit azimuti bo'ylab harakatlanib bordi. Vazifa qurilganidan so'ng, komandir askarlarga borgan yo'lak bo'ylab aynan ortga qaytish uchun teskari azimut burchagini darslik formulasiga ko'ra tezkor hisoblashni buyurdi\". Harbiy topografiya qonuniga binoan, agar to'g'ri azimut 180 darajadan kichik bo'lsa, teskari azimutni topish uchun to'g'ri azimut qiymatiga qancha daraja qoishilishi qonunan shart?",
+      "q": "Guruh oldinga qarab to'g'ri 120 darajali magnit azimuti bo'ylab harakatlanib bordi. Vazifa qurilganidan so'ng, komandir askarlarga borgan yo'lak bo'ylab aynan ortga qaytish uchun teskari azimut burchagini darslik formulasiga ko'ra tezkor hisoblashni buyurdi. Harbiy topografiya qonuniga binoan, agar to'g'ri azimut 180 darajadan kichik bo'lsa, teskari azimutni topish uchun to'g'ri azimut qiymatiga qancha daraja qoishilishi qonunan shart?",
       "opts": [
         "A) To'g'ri azimutdan 90 daraja ayriladi",
         "B) To'g'ri azimut qiymatiga 180 daraja qo'shiladi",
@@ -1188,7 +1188,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - To'g'ri azimut qiymatiga 180 daraja qo'shiladi..."
     },
   {
-      "q": "CHQBT bitiruv imtihonida o'quvchilarga \"Teskari azimut burchagini 180 darajadan katta bo'lgan holatlar uchun hisoblash\" topshirig'i berildi. Keys: \"Kuzatuvchi guruh dushman ortiga o'tish uchun to'g'ri 240 darajali azimut bo'ylab harakatlandi. Ortga xavfsiz qaytish safini tashkil etish uchun teskari azimut burchagini hisoblash talab etildi\". Harbiy topografiya qoidasiga ko'ra, agar to'g'ri azimut burchagi 180 darajadan katta bo'lsa, ortga qaytishdagi teskari azimutni aniqlash uchun to'g'ri azimutdan qancha daraja ayrib tashlanishi qonunan majburiydir?",
+      "q": "Kuzatuvchi guruh dushman ortiga o'tish uchun to'g'ri 240 darajali azimut bo'ylab harakatlandi. Ortga xavfsiz qaytish safini tashkil etish uchun teskari azimut burchagini hisoblash talab etildi. Harbiy topografiya qoidasiga ko'ra, agar to'g'ri azimut burchagi 180 darajadan katta bo'lsa, ortga qaytishdagi teskari azimutni aniqlash uchun to'g'ri azimutdan qancha daraja ayrib tashlanishi qonunan majburiydir?",
       "opts": [
         "A) To'g'ri azimutga 360 daraja qo'shiladi",
         "B) To'g'ri azimut qiymatidan 180 daraja ayrib tashlanadi",
@@ -1200,7 +1200,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - To'g'ri azimut qiymatidan 180 daraja ayrib tashlanadi..."
     },
   {
-      "q": "11-sinf CHQBT darsligining \"Nishongacha bo'lgan masofani burchak o'lchovlari yordamida aniqlash\" qoidasi o'rganilmoqda. Keys: \"Askar dushman okopi yaqinida balandligi aniq 2 metr bo'lgan dushman simmetrik texnikasini durbin yordamida kuzatdi. Obyekt durbin shkalasida kichik 4 ta bo'limni egalladi, ya'ni uning burchak kattaligi 0-20 burchakka teng bo'ldi\". Darslikdagi burchak o'lchagich formulasiga tayanib, askardan nishongacha bo'lgan aniq taktik masofani metrlarda hisoblang:",
+      "q": "Askar dushman okopi yaqinida balandligi aniq 2 metr bo'lgan dushman simmetrik texnikasini durbin yordamida kuzatdi. Obyekt durbin shkalasida kichik 4 ta bo'limni egalladi, ya'ni uning burchak kattaligi 0-20 burchakka teng bo'ldi. Darslikdagi burchak o'lchagich formulasiga tayanib, askardan nishongacha bo'lgan aniq taktik masofani metrlarda hisoblang:",
       "opts": [
         "A) 50 metr masofada",
         "B) 100 metr masofada",
@@ -1212,7 +1212,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - 100 metr masofada..."
     },
   {
-      "q": "CHQBT amaliy mashg'ulotida \"Burchak o'lchagich formulasisi yordamida dushman okopigacha bo'lgan masofani aniqlash\" masalasi yechilmoqda. Keys: \"Harbiy mergan uzoq masofada turgan, darslik jadvali bo'yicha o'rtacha kengligi 3 metr ekanligi aniq bo'lgan dushman zirhli transportyorini kuzatmoqda. BTR durbin ko'rsatkichida to'g'ri 0-05 burchak o'lchamini egalladi\". Darslik formulasidan foydanilgan holda, mergandan dushman zirhli transportyorigacha bo'lgan aniq topografik masofani aniqlang:",
+      "q": "Harbiy mergan uzoq masofada turgan, darslik jadvali bo'yicha o'rtacha kengligi 3 metr ekanligi aniq bo'lgan dushman zirhli transportyorini kuzatmoqda. BTR durbin ko'rsatkichida to'g'ri 0-05 burchak o'lchamini egalladi. Darslik formulasidan foydanilgan holda, mergandan dushman zirhli transportyorigacha bo'lgan aniq topografik masofani aniqlang:",
       "opts": [
         "A) 200 metr masofada",
         "B) 600 metr masofada",
@@ -1224,7 +1224,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - 600 metr masofada..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"O'q otilgandagi chaqnash va tovush yetib kelish vaqti munosabatiga ko‘ra dushmangacha bo‘lgan masofani topish\" chizmasi bo'yicha amaliy masala berildi. Keys: \"Tungi kuzatuv postida turgan askar uzoq masofada dushman artilleriya quroli otilganidagi olov chaqnashini vizual ko'rdi. Chaqnash ko'ringan soniyadan boshlab to uning portlash ovozi askar qulog'iga yetib kelguniga qadar sekundomer bilan aniq 5 sekund vaqt o'tdi\". Havoda tovush tarqalish tezligi qat'iy 340 m/s ekanligini hisobga olib, postdan dushman quroligacha bo'lgan aniq taktik masofani hisoblang:",
+      "q": "Tungi kuzatuv postida turgan askar uzoq masofada dushman artilleriya quroli otilganidagi olov chaqnashini vizual ko'rdi. Chaqnash ko'ringan soniyadan boshlab to uning portlash ovozi askar qulog'iga yetib kelguniga qadar sekundomer bilan aniq 5 sekund vaqt o'tdi. Havoda tovush tarqalish tezligi qat'iy 340 m/s ekanligini hisobga olib, postdan dushman quroligacha bo'lgan aniq taktik masofani hisoblang:",
       "opts": [
         "A) 680 metr masofada",
         "B) 1700 metr masofada",
@@ -1236,7 +1236,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - 1700 metr masofada..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Tovush va yorug'lik tezligi dinamikasiga ko'ra jang maydonidagi nishonlar uzoqligini aniqlash\" bo'limi tahlil qilinmoqda. Keys: \"Askar dushman minomyoti otilgan palladagi olov chaqnashini ko'rib, vaqtni... hisobladi. Minomyot ovozi chaqnashdan roppa-rosa 10 sekund o'tgach yetib keldi\". Fizika-topografiya qoidalariga muvofiq, askardan ushbu dushman minomyotigacha bo'lgan jangovar masofa necha kilometrni tashkil etadi?",
+      "q": "Askar dushman minomyoti otilgan palladagi olov chaqnashini ko'rib, vaqtni... hisobladi. Minomyot ovozi chaqnashdan roppa-rosa 10 sekund o'tgach yetib keldi. Fizika-topografiya qoidalariga muvofiq, askardan ushbu dushman minomyotigacha bo'lgan jangovar masofa necha kilometrni tashkil etadi?",
       "opts": [
         "A) 1.5 kilometrni",
         "B) 3.4 kilometrni",
@@ -1248,7 +1248,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - 3.4 kilometrni..."
     },
   {
-      "q": "11-sinf darsligining \"Harbiy topografiya: Topografik xaritalarning masshtab o'lchovlarini farqlash\" mavzusi o'rganilmoqda. Keys: \"Komandir taktik jangovar xaritada ikki nuqta orasidagi masofani chizg'ich bilan o'lchadi va u xaritada aniq 5 santimetr chiqdi. Xaritaning pastki qismida masshtab 1 : 50 000 ekanligi yozilgan\". Xaritaning qonuniy masshtab o'lchoviga tayanib, er joyidagi ushbu ikki obyekt orasidagi haqiqiy masofa necha metr yoki kilometrga teng ekanligini hisoblang:",
+      "q": "Komandir taktik jangovar xaritada ikki nuqta orasidagi masofani chizg'ich bilan o'lchadi va u xaritada aniq 5 santimetr chiqdi. Xaritaning pastki qismida masshtab 1 : 50 000 ekanligi yozilgan. Xaritaning qonuniy masshtab o'lchoviga tayanib, er joyidagi ushbu ikki obyekt orasidagi haqiqiy masofa necha metr yoki kilometrga teng ekanligini hisoblang:",
       "opts": [
         "A) 500 metrga teng",
         "B) 2500 metrga teng",
@@ -1260,7 +1260,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - 2500 metrga teng..."
     },
   {
-      "q": "CHQBT taktik mashg'ulotida \"O'rmon va ochiq hududlarda topografik xaritalarsiz Quyosh va soat yordamida ufoq tomonlarini aniqlash\" qoidasi o'rganilmoqda. Keys: \"Askar kunduzi soat 12:00 da ochiq maydonda tik turgan holda o'z tanasining erga tushayotgan soyasini kuzatdi\". Quyoshning kun davomidagi ballistik harakati va darslik qoidalariga binoan, shimoliy yarim sharda peshin vaqtida jismlarning eng qisqa bo'lib tushadigan soyasi to'g'g'ridan-to'g'ri qaysi aniq ufoq tomonini ko'rsatadi?",
+      "q": "Askar kunduzi soat 12:00 da ochiq maydonda tik turgan holda o'z tanasining erga tushayotgan soyasini kuzatdi. Quyoshning kun davomidagi ballistik harakati va darslik qoidalariga binoan, shimoliy yarim sharda peshin vaqtida jismlarning eng qisqa bo'lib tushadigan soyasi to'g'g'ridan-to'g'ri qaysi aniq ufoq tomonini ko'rsatadi?",
       "opts": [
         "A) To'g'ri va qat'iy janub tomonini",
         "B) Qat'iy va aniq shimol tomonini",
@@ -1284,7 +1284,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Minalashtirilgan muhandislik to'siq maydonlarini yoki tikanli simli g'ovlarni..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Azimut bo'ylab harakatlanishda yo'ldagi to'siqlarni aylanib o'tish taktikasi\" bo'limi tahlil qilinmoqda. Keys: \"Askar azimut bo'ylab oldinga to'g'ri ketayotgan edi, kutilmaganda uning yo'lida uzoq masofaga cho'zilgan, chuqur teshilgan va o'tib bo'lmaydigan texnogen botqoqlik uchrab qoldi\". Darslikning topografik harakatlanish yo'riqnomasiga binoan, askar azimut burchagi buzilib adashib ketmasligi uchun ushbu to'siqni aylanib o'tishda qaysi majburiy taktik usulni qo'llashi shart?",
+      "q": "Askar azimut bo'ylab oldinga to'g'ri ketayotgan edi, kutilmaganda uning yo'lida uzoq masofaga cho'zilgan, chuqur teshilgan va o'tib bo'lmaydigan texnogen botqoqlik uchrab qoldi. Darslikning topografik harakatlanish yo'riqnomasiga binoan, askar azimut burchagi buzilib adashib ketmasligi uchun ushbu to'siqni aylanib o'tishda qaysi majburiy taktik usulni qo'llashi shart?",
       "opts": [
         "A) Kompasni tashlab, to'siq ichiga to'g'ridan-to'g'ri sakrashi lozim",
         "B) To'siqning qarama-qarshi marrasida aniq ko'rinib turgan birorta ko'zga tashlanuvchi mo'ljalni belgilab olish, to'siqni aylanib o'tib, o'sha belgilangan mo'ljal nuqtasidan boshlab dastlabki azimut bo'yicha harakatni davom ettirish shart",
@@ -1368,7 +1368,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Juft qadamlarni sanash usulidan..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy taktik mashg'ulotda o'quvchilarga motoo'qchi vzvod tizimidagi eng quyi jangovar bo'g'inni darslik chizmalari asosida tushuntirmoqda. Keys: \"Zamonaviy jangda harakatchanlikni oshirish, dushmanning zich o't ochishi ostida guruh bo'lib oldinga muvaffaqiyatli siljish va o't ochish pozitsiyalarini o'zaro panalash maqsadida vzvod tarkibidan eng kichik taktik bo'g'in ajratildi\". Amaldagi CHQBT darsligi matniga muvofiq, tashkiliy jihatdan vzvod tarkibiga kiradigan, zamonaviy jang mayaonidagi ushbu eng quyi va asosiy jangovar taktik bo'linma ilmiy tilda nima deb ataladi?",
+      "q": "Zamonaviy jangda harakatchanlikni oshirish, dushmanning zich o't ochishi ostida guruh bo'lib oldinga muvaffaqiyatli siljish va o't ochish pozitsiyalarini o'zaro panalash maqsadida vzvod tarkibidan eng kichik taktik bo'g'in ajratildi. Amaldagi CHQBT darsligi matniga muvofiq, tashkiliy jihatdan vzvod tarkibiga kiradigan, zamonaviy jang mayaonidagi ushbu eng quyi va asosiy jangovar taktik bo'linma ilmiy tilda nima deb ataladi?",
       "opts": [
         "A) Harbiy okrug shtab bo'linmasi",
         "B) Jangovar guruh (Seksiya)",
@@ -1380,7 +1380,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Jangovar guruh (Seksiya)..."
     },
   {
-      "q": "11-sinf o'quvchilarining dala-taktik maydonida \"Jangovar guruh shaxsiy tarkibining lavozim majburiyatlari va qurollanishi\" mavzusini o'rganmoqdalar. Keys: \"Jangovar guruh tarkibiga kiruvchi lavozimlarning qurol va o'q-dori jamlanmalari normalari darslik jadvallari bo'yicha tahlil qilinmoqda\". Darslikning \"Jangovar guruh tarkibi va qurollanishi\" normativlariga muvofiq, guruh komandiri o'rinbosari jangovar harakatlar vaqtida asosan qaysi o'qotar qurol bilan qurollanadi va darslik bo'yicha uning jangovar o'q-dori jamlanmasi qat'iy necha dona patronni tashkil etadi?",
+      "q": "Jangovar guruh tarkibiga kiruvchi lavozimlarning qurol va o'q-dori jamlanmalari normalari darslik jadvallari bo'yicha tahlil qilinmoqda. Darslikning \"Jangovar guruh tarkibi va qurollanishi\" normativlariga muvofiq, guruh komandiri o'rinbosari jangovar harakatlar vaqtida asosan qaysi o'qotar qurol bilan qurollanadi va darslik bo'yicha uning jangovar o'q-dori jamlanmasi qat'iy necha dona patronni tashkil etadi?",
       "opts": [
         "A) Makarov to'pponchasi, 32 ta patron",
         "B) Kalashnikov avtomati, 450 ta patron",
@@ -1392,7 +1392,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Kalashnikov avtomati, 450 ta patron..."
     },
   {
-      "q": "CHQBT o'qituvchilari seminarida \"Jangovar guruh tarkibidagi granatomyotchining taktik vazifalari va qurollanish me'yori\" darslik matni asosida tahlil qilinmoqda. Keys: \"Jangovar sharoitda dushmanning yengil zirhlangan texnikalarini, nuqtalari ichidagi jonli kuchlarini yakson qilish maqsadida guruh tarkibidagi maxsus o'qchi askar ishga solindi\". Darslikdagi qat'iy ko'rsatkichlarga ko'ra, guruh tarkibidagi granatomyotchi askar qaysi qurol bilan qurollantirilari va uning daxlsiz jamlanmasiga darslik bo'yicha necha dona o'q kiritilgan bo'ladi?",
+      "q": "Jangovar sharoitda dushmanning yengil zirhlangan texnikalarini, nuqtalari ichidagi jonli kuchlarini yakson qilish maqsadida guruh tarkibidagi maxsus o'qchi askar ishga solindi. Darslikdagi qat'iy ko'rsatkichlarga ko'ra, guruh tarkibidagi granatomyotchi askar qaysi qurol bilan qurollantirilari va uning daxlsiz jamlanmasiga darslik bo'yicha necha dona o'q kiritilgan bo'ladi?",
       "opts": [
         "A) Kalashnikov qo'l pulemyoti, 1000 ta patron",
         "B) RPG-7 tankka qarshi qo'l granatomyoti, 4 dona o'q",
@@ -1404,7 +1404,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - RPG-7 tankka qarshi qo'l granatomyoti, 4 dona o'q..."
     },
   {
-      "q": "11-sinf CHQBT imtihonida o'quvchilarga \"Jangovar guruhning jangovar imkoniyatlarini belgilovchi strategik omillar\" bo'yicha taktik savol berildi. Keys: \"Komandir mudofaa jangini tashkil etishdan oldin o'z tasarrufidagi jangovar guruhning dushman hujumini qaytara olish qobiliyatini, ya'ni uning jangovar imkoniyatlarini tahlil qilmoqda\". Darslik matnidagi fundamental qoidalarga muvofiq, jangovar guruhning jangovar imkoniyati birinchi navbatda qaysi asosiy ko'rsatkichlar majmuasiga to'g'ridan-to'g'ri bog'liq bo'ladi?",
+      "q": "Komandir mudofaa jangini tashkil etishdan oldin o'z tasarrufidagi jangovar guruhning dushman hujumini qaytara olish qobiliyatini, ya'ni uning jangovar imkoniyatlarini tahlil qilmoqda. Darslik matnidagi fundamental qoidalarga muvofiq, jangovar guruhning jangovar imkoniyati birinchi navbatda qaysi asosiy ko'rsatkichlar majmuasiga to'g'ridan-to'g'ri bog'liq bo'ladi?",
       "opts": [
         "A) Faqat yil fasllari, ob-havo sharoiti va hududning iqlimiy haroratiga",
         "B) Shaxsiy tarkib soniga, qurol-yarog' hamda harbiy texnikalarning miqdori va ularning texnik sozlik holatiga, shuningdek shaxsiy tarkibning kasbiy mahoratiga",
@@ -1416,7 +1416,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Shaxsiy tarkib soniga, qurol-yarog' hamda harbiy texnikalarning miqdori..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy darsda \"Piyodalarning jangovar mashinasi va uning taktik vazifalari\" mavzusini ongli tushuntirmoqda. Keys: \"Motoo'qchilar bo'linmasi jang maydonida dushmanning mudofaa chizig'iga shiddatli hujum uyushtirmoqda. Askarlarni front chizig'iga xavfsiz yetkazish, ularni jang maydonida o'q va parchalardan zirh bilan asrash hamda tanklar bilan hamkorlikda dushmanga qarata yalpi o't ochish maqsadida asosiy zanjirli jangovar texnika harakatga keltirildi\". Darslikning \"Jangovar texnikalar TTT\" bo'limiga binoan, ushbu taktik xususiyatlarga ega bo'lgan va gusenitsa bilan jihozlangan motoo'qchilar texnikasi qanday nomlanadi?",
+      "q": "Motoo'qchilar bo'linmasi jang maydonida dushmanning mudofaa chizig'iga shiddatli hujum uyushtirmoqda. Askarlarni front chizig'iga xavfsiz yetkazish, ularni jang maydonida o'q va parchalardan zirh bilan asrash hamda tanklar bilan hamkorlikda dushmanga qarata yalpi o't ochish maqsadida asosiy zanjirli jangovar texnika harakatga keltirildi. Darslikning \"Jangovar texnikalar TTT\" bo'limiga binoan, ushbu taktik xususiyatlarga ega bo'lgan va gusenitsa bilan jihozlangan motoo'qchilar texnikasi qanday nomlanadi?",
       "opts": [
         "A) Zirhli transportyor",
         "B) Piyodalarning jangovar mashinasi",
@@ -1428,7 +1428,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Piyodalarning jangovar mashinasi..."
     },
   {
-      "q": "11-sinf o'quvchilarining taktik-amaliy mashg'ulotida \"Zirhli transportyor va uning PJMdan texnik-konstruktiv farqlari\" o'rganilmoqda. Keys: \"Askar kolonna tarkibida o'ta yuqori tezlikda, asosan shosse va tekis yo'llar bo'ylab harakatlanib, o'z bo'linmasini tezkor manzilga yetkazish vazifasini bajarmoqda. U o'ziga biriktirilgan g'ildirakli zirhli texnikaning xususiyatlarini tahlil qildi\". Darslik materiallariga muvofiq, gusenitsali PJMdan farqli o'laroq, asosan g'ildirakli yurish qismiga ega bo'lgan va shaxsiy tarkibni tashishga mo'ljallangan ushbu zirhli texnika darslikda qonunan qanday yuritiladi?",
+      "q": "Askar kolonna tarkibida o'ta yuqori tezlikda, asosan shosse va tekis yo'llar bo'ylab harakatlanib, o'z bo'linmasini tezkor manzilga yetkazish vazifasini bajarmoqda. U o'ziga biriktirilgan g'ildirakli zirhli texnikaning xususiyatlarini tahlil qildi. Darslik materiallariga muvofiq, gusenitsali PJMdan farqli o'laroq, asosan g'ildirakli yurish qismiga ega bo'lgan va shaxsiy tarkibni tashishga mo'ljallangan ushbu zirhli texnika darslikda qonunan qanday yuritiladi?",
       "opts": [
         "A) Og'ir jangovar tank",
         "B) Zirhli transportyor",
@@ -1440,7 +1440,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Zirhli transportyor..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Jangovar guruh tarkibidagi pulemyotchining qurollanishi va uning o'q-dori zaxrashi normativi\" bo'limi tahlil qilinmoqda. Keys: \"Mudofaa jangida dushmanning ommaviy bostirib kelayotgan jonli kuchini zich o't ochish zanjiri bilan to'xtatib turish va jangovar guruh mudofaasini ta'minlash uchun guruh tarkibidagi maxsus qurollangan pulemyotchi askar to'xtovsiz o't ochmoqda\". Darslikdagi rasmiy jadvallarga binoan, jangovar guruh tarkibidagi pulemyotchi askarning daxlsiz o'q-dori jamlanmasi jami necha dona patronni tashkil etishi qonunan belgilab qo'yilgan?",
+      "q": "Mudofaa jangida dushmanning ommaviy bostirib kelayotgan jonli kuchini zich o't ochish zanjiri bilan to'xtatib turish va jangovar guruh mudofaasini ta'minlash uchun guruh tarkibidagi maxsus qurollangan pulemyotchi askar to'xtovsiz o't ochmoqda. Darslikdagi rasmiy jadvallarga binoan, jangovar guruh tarkibidagi pulemyotchi askarning daxlsiz o'q-dori jamlanmasi jami necha dona patronni tashkil etishi qonunan belgilab qo'yilgan?",
       "opts": [
         "A) 450 ta patronni",
         "B) 2000 ta patronni",
@@ -1452,7 +1452,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - 2000 ta patronni..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Jangovar mashinalarga shaxsiy tarkibning to'g'ri saf tortishi va joylashishi\" bo'yicha maxsus keys berildi. Keys: \"Komandir Mashinalarga buyrug'ini berdi. Guruh shaxsiy tarkibi darslik chizmasiga qat'iy rioya qilgan holda, zirhli transportyorning yon va yuqori kirish lyuklari orqali ichkariga tartib bilan joylashish xaritasiga ko'ra mashina atrofida saf tortdi\". Saf nizomi va Taktik tayyorgarlik bo'limidagi ushbu amaliy harakat sxemasining bosh qonuniy maqsadi qaysi javobda to'g'ri ko'rsatilgan?",
+      "q": "Komandir Mashinalarga buyrug'ini berdi. Guruh shaxsiy tarkibi darslik chizmasiga qat'iy rioya qilgan holda, zirhli transportyorning yon va yuqori kirish lyuklari orqali ichkariga tartib bilan joylashish xaritasiga ko'ra mashina atrofida saf tortdi. Saf nizomi va Taktik tayyorgarlik bo'limidagi ushbu amaliy harakat sxemasining bosh qonuniy maqsadi qaysi javobda to'g'ri ko'rsatilgan?",
       "opts": [
         "A) Mashina ichidagi mebellarning brendini va narxini aniqlash",
         "B) Jangovar vaziyatda shaxsiy tarkibning mashinaga eng qisqa vaqt ichida, tartibli, talafotsiz chiqishini va qurollarni xavfsiz holatda tutib joylashishini ta'minlash",
@@ -1464,7 +1464,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Jangovar vaziyatda shaxsiy tarkibning mashinaga eng qisqa vaqt..."
     },
   {
-      "q": "CHQBT fani rahbari amaliy taktik maydonda \"Jangovar tanklarning zamonaviy umumqo'shin jangidagi o'rni va vazifalari\" qoidasini darslik asosida tushuntirmoqda. Keys: \"Hujum darsida dushmanning mustahkam istehkomlarini, beton to'siqlarini va zirhli texnikalarini kuchli o't ochish quvvati hamda zirh himoyasi bilan yorib o'tish buyrug'i berildi. Bo'linma hujumini panalash uchun Qurolli Kuchlarning ososiy zarbdor va o'ta og'ir zirhli vositasi jangga kiritildi\". Taktika qonuniyatlariga ko'ra, kuchli qurol-yarog'ga, ishonchli zirhga va yuqori harakatchanlikka ega bo'lgan ushbu ososiy og'ir jangovar texnika nima deb ataladi?",
+      "q": "Hujum darsida dushmanning mustahkam istehkomlarini, beton to'siqlarini va zirhli texnikalarini kuchli o't ochish quvvati hamda zirh himoyasi bilan yorib o'tish buyrug'i berildi. Bo'linma hujumini panalash uchun Qurolli Kuchlarning ososiy zarbdor va o'ta og'ir zirhli vositasi jangga kiritildi. Taktika qonuniyatlariga ko'ra, kuchli qurol-yarog'ga, ishonchli zirhga va yuqori harakatchanlikka ega bo'lgan ushbu ososiy og'ir jangovar texnika nima deb ataladi?",
       "opts": [
         "A) Zirhli transportyor",
         "B) Tank",
@@ -1476,7 +1476,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Tank..."
     },
   {
-      "q": "11-sinf CHQBT bitiruv imtihonida o'quvchilarga \"Jangovar guruh tarkibidagi snayperning maxsus vazifasi va qurollanishi\" bo'yicha taktik savol berildi. Keys: \"Jang maydonida uzoq masofada paydo bo'lgan dushmanning muhim shaxslarini yakka aniq o'q bilan yo'q qilish topshirig'i berildi\". Darslik normalariga muvofiq, ushbu o'ta mas'uliyatli vazifa guruh tarkibidagi qaysi lavozimli askarga yuklatiladi va uning asosiy quroli kalibri qanchaga teng?",
+      "q": "Jang maydonida uzoq masofada paydo bo'lgan dushmanning muhim shaxslarini yakka aniq o'q bilan yo'q qilish topshirig'i berildi. Darslik normalariga muvofiq, ushbu o'ta mas'uliyatli vazifa guruh tarkibidagi qaysi lavozimli askarga yuklatiladi va uning asosiy quroli kalibri qanchaga teng?",
       "opts": [
         "A) Pulemyotchi askarga, kalibri 5.45 mm",
         "B) Snayper askarga, SVD miltig'i (kalibri 7.62 mm)",
@@ -1488,7 +1488,7 @@ export const q3_taktik_tayyorgarlik = [
       "mnemonic": "Taktik tayyorgarlik - Snayper askarga, SVD miltig'i (kalibri 7.62 mm)..."
     },
   {
-      "q": "CHQBT o'quv dasturining \"Jangovar texnika va vositalarning taktik-texnik imkoniyatlarini taqqoslash\" bo'limi o'rganilmoqda. Keys: \"Taktik shtab xodimlari bo'linmani jangovar harakatlarga tayyorlash jarayonida PJM va ZTR mashinalarining o't ochish quvvati hamda qurollanish elementlarini darslik asosida taqqoslashmoqda\". Darslikning \"Harbiy texnikalar tavsifi\" bo'limidagi qat'iy faktga ko'ra, PJM ZTRdan asosan qaysi jangovar ustunligi bilan tubdan farq qiladi va kuchliroq hisoblanadi?",
+      "q": "Taktik shtab xodimlari bo'linmani jangovar harakatlarga tayyorlash jarayonida PJM va ZTR mashinalarining o't ochish quvvati hamda qurollanish elementlarini darslik asosida taqqoslashmoqda. Darslikning \"Harbiy texnikalar tavsifi\" bo'limidagi qat'iy faktga ko'ra, PJM ZTRdan asosan qaysi jangovar ustunligi bilan tubdan farq qiladi va kuchliroq hisoblanadi?",
       "opts": [
         "A) Faqat g'ildirakli bo'lganligi va yo'lda tezroq yurishi bilan",
         "B) Bortida kuchliroq jangovar to'p, tankka qarshi boshqariladigan raketa majmuasi (TKBRM) borligi hamda gusenitsali yurish qismi relyefda yuqori o'tuvchanlikni ta'minlashi bilan",
