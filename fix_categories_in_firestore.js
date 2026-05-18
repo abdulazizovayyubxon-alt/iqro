@@ -25,20 +25,17 @@ async function fixCategories() {
   const adminEmail = process.env.VITE_ADMIN_EMAIL || 'abdulazizovayyubxon@gmail.com';
   const adminPassword = process.env.VITE_ADMIN_PASSWORD;
 
-  if (!adminPassword) {
-    console.error("\n⚠️ XATOLIK: .env faylida VITE_ADMIN_PASSWORD topilmadi!");
-    console.error("Iltimos, loyihadagi .env faylingizning eng oxiriga o'zingizning Firebase parolingizni qo'shib saqlang:");
-    console.error("VITE_ADMIN_PASSWORD=sizning_parolingiz\n");
-    process.exit(1);
-  }
-
-  console.log(`🔑 Bazaga admin (${adminEmail}) bo'lib ulanilmoqda...`);
-  try {
-    await signInWithEmailAndPassword(auth, adminEmail, adminPassword);
-    console.log("✅ Admin ulanishi muvaffaqiyatli!");
-  } catch (authErr) {
-    console.error("❌ Logindan o'tishda xatolik! Parol yoki email noto'g'ri:", authErr.message);
-    process.exit(1);
+  if (adminPassword) {
+    console.log(`🔑 Bazaga admin (${adminEmail}) bo'lib ulanilmoqda...`);
+    try {
+      await signInWithEmailAndPassword(auth, adminEmail, adminPassword);
+      console.log("✅ Admin ulanishi muvaffaqiyatli!");
+    } catch (authErr) {
+      console.error("❌ Logindan o'tishda xatolik! Parol yoki email noto'g'ri:", authErr.message);
+      process.exit(1);
+    }
+  } else {
+    console.log("🔓 Baza qoidalaridagi (allow read, write: if true;) ochiq ruxsat orqali ulanilmoqda...");
   }
 
   console.log("Qidirilmoqda: Firestore'dagi barcha savollar...");
