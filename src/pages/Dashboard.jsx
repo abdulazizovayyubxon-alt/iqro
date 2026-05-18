@@ -332,30 +332,7 @@ const Dashboard = () => {
         </div>
       )}
 
-      {/* Statistika */}
-      <div className="stats-grid">
-        <div className="stat-box glass-panel">
-          <div className="stat-box-val">{catStats.totalAnswered}</div>
-          <div className="stat-box-lbl">Javob berildi</div>
-          <div className="stat-box-sub">jami savollar</div>
-        </div>
-        <div className="stat-box glass-panel">
-          <div className="stat-box-val">{totalAcc}%</div>
-          <div className="stat-box-lbl">Aniqlik</div>
-          <div className="stat-box-sub">to'g'ri / jami</div>
-        </div>
-        <div className="stat-box glass-panel">
-          <div className="stat-box-val" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>{catStats.streak} <Flame size={24} color="var(--amber)" /></div>
-          <div className="stat-box-lbl">Streak</div>
-          <div className="stat-box-sub">ketma-ket to'g'ri</div>
-        </div>
-        {/* FIX: maxStreak endi ko'rsatiladi */}
-        <div className="stat-box glass-panel">
-          <div className="stat-box-val" style={{ color: 'var(--amber)', display: 'flex', alignItems: 'center', gap: '4px' }}>{catStats.maxStreak} <Zap size={24} /></div>
-          <div className="stat-box-lbl">Rekord Streak</div>
-          <div className="stat-box-sub">eng uzun zanjir</div>
-        </div>
-      </div>
+
 
       {/* Haftalik taqqoslash, Kunlik Maqsad va Zaif Nuqtalar panellari Yutuqlar bo'limiga (AchievementsPage.jsx) ko'chirildi */}
 
