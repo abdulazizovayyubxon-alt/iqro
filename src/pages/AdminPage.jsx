@@ -20,7 +20,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Shield, MessageCircle, Users, BarChart3,
   CheckCircle, Trash2, Clock, AlertTriangle,
-  ChevronDown, ChevronUp, Search, Plus, Edit3, FileText, Zap
+  ChevronDown, ChevronUp, Search, Plus, Edit3, FileText, Zap,
+  Bell, Send, CheckCircle2, AlertCircle, Info
 } from 'lucide-react';
 
 const AdminPage = () => {
@@ -28,7 +29,7 @@ const AdminPage = () => {
   const { user } = useAuth();
   const { showToast } = useContext(ToastContext);
 
-  const [tab, setTab] = useState('objections'); // objections | users | stats | questions | tariffs
+  const [tab, setTab] = useState('objections'); // objections | users | stats | questions | tariffs | notifications
   const [objections, setObjections] = useState([]);
   const [users, setUsers] = useState([]);
   const [questions, setQuestions] = useState([]);
@@ -43,6 +44,47 @@ const AdminPage = () => {
   const [newQ, setNewQ] = useState({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' });
   const [isUploadingImage, setIsUploadingImage] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
+
+  // Notification Management State
+  const [adminNotifs, setAdminNotifs] = useState([]);
+  const [newNotif, setNewNotif] = useState({ title: '', message: '', type: 'info', targetUser: 'all' });
+  const [isSendingNotif, setIsSendingNotif] = useState(false);
+
+  useEffect(() => {
+    if (!isAdmin) return;
+    const qNotifs = query(collection(db, 'notifications'), orderBy('date', 'desc'));
+    const unsub = onSnapshot(qNotifs, (snap) => {
+      setAdminNotifs(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+    }, (err) => console.error("Notifs fetch error:", err));
+    return () => unsub();
+  }, [isAdmin]);
+
+  const handleSendNotification = async () => {
+    if (!newNotif.title || !newNotif.message) {
+      showToast("Sarlavha va matnni to'ldiring!", 'error');
+      return;
+    }
+    setIsSendingNotif(true);
+    try {
+      await addDoc(collection(db, 'notifications'), {
+        ...newNotif,
+        date: new Date().toISOString()
+      });
+      showToast("✅ Bildirishnoma muvaffaqiyatli yuborildi!", 'success');
+      setNewNotif({ title: '', message: '', type: 'info', targetUser: 'all' });
+    } catch (e) {
+      showToast("Xatolik: " + e.message, 'error');
+    }
+    setIsSendingNotif(false);
+  };
+
+  const handleDeleteNotification = async (notifId) => {
+    if (!window.confirm("Bu bildirishnomani bazadan o'chirishni tasdiqlaysizmi?")) return;
+    try {
+      await deleteDoc(doc(db, 'notifications', notifId));
+      showToast("🗑️ Bildirishnoma o'chirildi", 'info');
+    } catch (e) { showToast("Xatolik: " + e.message, 'error'); }
+  };
 
   const handleSyncAllQuestions = async () => {
     if (!window.confirm("Barcha lokal fayllardagi (questions_0...7) savollarni Firestore bazasi bilan sinxronlashni tasdiqlaysizmi? (Faqat yangi savollar qo'shiladi)")) return;
@@ -370,6 +412,9 @@ const AdminPage = () => {
         <button className={`admin-tab ${tab === 'tariffs' ? 'active' : ''}`} onClick={() => setTab('tariffs')}>
           <Zap size={16} /> Tariflar
         </button>
+        <button className={`admin-tab ${tab === 'notifications' ? 'active' : ''}`} onClick={() => setTab('notifications')}>
+          <Bell size={16} /> Bildirishnomalar
+        </button>
       </div>
 
       {tab === 'objections' && (
@@ -684,6 +729,122 @@ const AdminPage = () => {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+      )}
+
+      {tab === 'notifications' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          {/* Yangi bildirishnoma yuborish formasi */}
+          <div className="glass-panel" style={{ padding: '24px' }}>
+            <div style={{ fontSize: '18px', fontWeight: '700', color: 'var(--text)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Send size={20} style={{ color: 'var(--blue)' }} /> Yangi Bildirishnoma Yuborish
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', gridColumn: 'span 2' }}>
+                <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Sarlavha</label>
+                <input 
+                  className="modal-input" 
+                  placeholder="Masalan: 🎉 Yangi imtihon bo'limi qo'shildi!" 
+                  value={newNotif.title} 
+                  onChange={e => setNewNotif({...newNotif, title: e.target.value})} 
+                />
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', gridColumn: 'span 2' }}>
+                <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Xabar matni</label>
+                <textarea 
+                  className="modal-input" 
+                  style={{ minHeight: '80px' }}
+                  placeholder="Xabar mazmunini batafsil yozing..." 
+                  value={newNotif.message} 
+                  onChange={e => setNewNotif({...newNotif, message: e.target.value})} 
+                />
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Xabar turi</label>
+                <select 
+                  className="modal-input" 
+                  value={newNotif.type} 
+                  onChange={e => setNewNotif({...newNotif, type: e.target.value})}
+                >
+                  <option value="info">ℹ️ Ma'lumot (Info - Ko'k)</option>
+                  <option value="success">✅ Muvaffaqiyat (Success - Yashil)</option>
+                  <option value="warning">⚠️ Ogohlantirish (Warning - Sariq)</option>
+                </select>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Qabul qiluvchilar</label>
+                <select 
+                  className="modal-input" 
+                  value={newNotif.targetUser} 
+                  onChange={e => setNewNotif({...newNotif, targetUser: e.target.value})}
+                >
+                  <option value="all">👥 Barcha foydalanuvchilar (All)</option>
+                  {users.map(u => (
+                    <option key={u.id} value={u.id}>👤 {u.email || u.id}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <button 
+                className="btn btn-primary" 
+                onClick={handleSendNotification}
+                disabled={isSendingNotif || !newNotif.title || !newNotif.message}
+              >
+                {isSendingNotif ? 'Yuborilmoqda...' : <><Send size={16} /> Yuborish</>}
+              </button>
+            </div>
+          </div>
+
+          {/* Yuborilgan bildirishnomalar ro'yxati */}
+          <div className="glass-panel" style={{ padding: '24px' }}>
+            <div style={{ fontSize: '18px', fontWeight: '700', color: 'var(--text)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Bell size={20} style={{ color: 'var(--amber)' }} /> Yuborilgan Bildirishnomalar Tarixi
+            </div>
+            
+            {adminNotifs.length === 0 ? (
+              <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text3)', fontSize: '14px' }}>
+                Hali hech qanday bildirishnoma yuborilmagan.
+              </div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {adminNotifs.map(n => (
+                  <div key={n.id} style={{ padding: '16px', borderRadius: '16px', background: 'var(--bg3)', border: '1px solid var(--border)', display: 'flex', gap: '16px', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', gap: '16px', alignItems: 'center', minWidth: 0 }}>
+                      <div style={{ 
+                        width: '40px', height: '40px', borderRadius: '12px', flexShrink: 0,
+                        background: n.type === 'success' ? 'var(--green-bg)' : n.type === 'warning' ? 'var(--amber-bg)' : 'var(--blue-bg)',
+                        color: n.type === 'success' ? 'var(--green)' : n.type === 'warning' ? 'var(--amber)' : 'var(--blue)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center'
+                      }}>
+                        {n.type === 'success' ? <CheckCircle2 size={20} /> : n.type === 'warning' ? <AlertCircle size={20} /> : <Info size={20} />}
+                      </div>
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ fontWeight: '700', fontSize: '15px', color: 'var(--text)', marginBottom: '4px' }}>{n.title}</div>
+                        <div style={{ fontSize: '13px', color: 'var(--text2)', marginBottom: '6px' }}>{n.message}</div>
+                        <div style={{ display: 'flex', gap: '12px', fontSize: '11px', color: 'var(--text3)', fontWeight: '500' }}>
+                          <span>📅 {new Date(n.date).toLocaleString()}</span>
+                          <span>🎯 {n.targetUser === 'all' ? 'Barcha foydalanuvchilar' : `👤 Foydalanuvchi: ${n.targetUser}`}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <button 
+                      className="btn btn-sm btn-outline" 
+                      style={{ color: 'var(--red)', borderColor: 'var(--red)', flexShrink: 0 }}
+                      onClick={() => handleDeleteNotification(n.id)}
+                      title="O'chirish"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       )}

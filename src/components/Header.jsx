@@ -5,7 +5,8 @@ import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { Moon, Sun, LogOut, ChevronDown, Camera, Medal, Palette, Bell, Calendar, CheckCircle2, AlertCircle, Info, Trash2 } from 'lucide-react';
 import { updateProfile } from 'firebase/auth';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
+import { collection, getDocs } from 'firebase/firestore';
 import { EXAM_DATE } from '../config';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -54,6 +55,41 @@ const Header = ({ theme, toggleTheme }) => {
     const interval = setInterval(calcDays, 60000);
     return () => clearInterval(interval);
   }, []);
+
+  // Firestore'dan jonli bildirishnomalarni yuklash
+  useEffect(() => {
+    const fetchFirestoreNotifications = async () => {
+      try {
+        const notifSnap = await getDocs(collection(db, 'notifications'));
+        const firestoreNotifs = notifSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+        
+        const relevantNotifs = firestoreNotifs.filter(n => !n.targetUser || n.targetUser === user?.uid || n.targetUser === 'all');
+        
+        setNotifications(prev => {
+          const localMap = new Map(prev.map(item => [item.id, item]));
+          
+          relevantNotifs.forEach(fn => {
+            if (localMap.has(fn.id)) {
+              const existing = localMap.get(fn.id);
+              localMap.set(fn.id, { ...fn, read: existing.read });
+            } else {
+              localMap.set(fn.id, { ...fn, read: false });
+            }
+          });
+          
+          const merged = Array.from(localMap.values()).sort((a,b) => new Date(b.date) - new Date(a.date));
+          localStorage.setItem('IQRO_NOTIFICATIONS', JSON.stringify(merged));
+          return merged;
+        });
+      } catch(e) {
+        console.error("Bildirishnomalarni yuklashda xatolik:", e);
+      }
+    };
+
+    fetchFirestoreNotifications();
+    const interval = setInterval(fetchFirestoreNotifications, 180000);
+    return () => clearInterval(interval);
+  }, [user]);
 
   const menuRef = useRef(null);
   const notifRef = useRef(null);
