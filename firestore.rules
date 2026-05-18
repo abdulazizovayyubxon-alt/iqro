@@ -6,7 +6,8 @@ service cloud.firestore {
     function isAdmin() {
       return request.auth != null && (
         request.auth.token.email == 'abdulazizovayyubxon@gmail.com' ||
-        request.auth.token.email == '998999154686@iqro.uz'
+        request.auth.token.email == '998999154686@iqro.uz' ||
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'
       );
     }
 
@@ -18,10 +19,10 @@ service cloud.firestore {
       return request.auth != null;
     }
 
-    // ── userStats: faqat o'z ma'lumotlari yoziladi, reyting uchun hamma o'qiydi ──
+    // ── userStats: faqat o'z ma'lumotlari yoziladi, reyting uchun hamma o'qiydi, admin o'chira oladi ──
     match /userStats/{userId} {
       allow read: if isLoggedIn();
-      allow write: if isOwner(userId);
+      allow write: if isOwner(userId) || isAdmin();
     }
 
     // ── questions: hamma o'qiy oladi, faqat admin yoza oladi ──
@@ -39,17 +40,21 @@ service cloud.firestore {
     }
 
     // ── users: foydalanuvchi profili (isPremium, etc.) ──
-    // Webhook Firebase Admin SDK orqali yozadi (rules bypass)
-    // Frontend faqat o'z profilini o'qiy oladi
     match /users/{userId} {
       allow read: if isOwner(userId) || isAdmin();
       allow write: if isOwner(userId) || isAdmin();
     }
 
-    // ── leaderboard: hamma o'qiy oladi, faqat o'zi yoza oladi ──
+    // ── notifications: hamma o'qiy oladi, faqat admin yoza/o'chira oladi ──
+    match /notifications/{docId} {
+      allow read: if isLoggedIn();
+      allow write: if isAdmin();
+    }
+
+    // ── leaderboard: hamma o'qiy oladi, faqat o'zi/admin yoza oladi ──
     match /leaderboard/{userId} {
       allow read: if isLoggedIn();
-      allow write: if isOwner(userId);
+      allow write: if isOwner(userId) || isAdmin();
     }
 
     // ── Qolgan hamma narsa bloklangan ──
