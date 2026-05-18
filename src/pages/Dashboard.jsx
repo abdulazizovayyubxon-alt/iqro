@@ -332,10 +332,6 @@ const Dashboard = () => {
         </div>
       )}
 
-
-
-      {/* Haftalik taqqoslash, Kunlik Maqsad va Zaif Nuqtalar panellari Yutuqlar bo'limiga (AchievementsPage.jsx) ko'chirildi */}
-
       {/* Tezkor boshlash */}
       <div className="section-header">Tezkor Boshlash</div>
       <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '24px' }}>
