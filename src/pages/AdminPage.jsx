@@ -597,28 +597,28 @@ const AdminPage = () => {
           {users.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text3)' }}>Yuklanmoqda...</div>
           ) : (
-            <div className="glass-panel" style={{ overflow: 'hidden' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <div className="glass-panel" style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', minWidth: '700px', borderCollapse: 'collapse' }}>
                 <thead style={{ background: 'var(--bg3)' }}>
                   <tr>
-                    <th style={{ padding: '14px 20px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Foydalanuvchi</th>
-                    <th style={{ padding: '14px 20px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Email</th>
-                    <th style={{ padding: '14px 20px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Premium</th>
-                    <th style={{ padding: '14px 20px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Rol</th>
-                    <th style={{ padding: '14px 20px', textAlign: 'right', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Amallar</th>
+                    <th style={{ padding: '14px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Foydalanuvchi</th>
+                    <th style={{ padding: '14px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Email</th>
+                    <th style={{ padding: '14px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Premium</th>
+                    <th style={{ padding: '14px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Rol</th>
+                    <th style={{ padding: '14px', textAlign: 'right', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Amallar</th>
                   </tr>
                 </thead>
                 <tbody>
                   {users.map((u) => (
                     <tr key={u.id} style={{ borderTop: '0.5px solid var(--border)' }}>
-                      <td style={{ padding: '14px 20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <td style={{ padding: '14px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'linear-gradient(135deg, #007AFF, #5AC8FA)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: '700', fontSize: '14px', flexShrink: 0 }}>
                           {(u.displayName || u.email || '?')[0].toUpperCase()}
                         </div>
                         <span style={{ fontWeight: '600', fontSize: '14px', color: 'var(--text)' }}>{u.displayName || '—'}</span>
                       </td>
-                      <td style={{ padding: '14px 20px', fontSize: '14px', color: 'var(--text2)' }}>{u.email}</td>
-                      <td style={{ padding: '14px 20px' }}>
+                      <td style={{ padding: '14px', fontSize: '14px', color: 'var(--text2)' }}>{u.email}</td>
+                      <td style={{ padding: '14px' }}>
                         <span style={{ 
                           background: u.isPremium ? 'var(--green-bg)' : 'var(--bg3)', 
                           color: u.isPremium ? 'var(--green)' : 'var(--text3)', 
@@ -627,30 +627,30 @@ const AdminPage = () => {
                           {u.isPremium ? '⭐ Premium' : 'Oddiy'}
                         </span>
                       </td>
-                      <td style={{ padding: '14px 20px' }}>
+                      <td style={{ padding: '14px' }}>
                         <span style={{ background: u.role === 'admin' ? 'var(--blue-bg)' : 'var(--bg3)', color: u.role === 'admin' ? 'var(--blue)' : 'var(--text3)', fontSize: '12px', fontWeight: '700', padding: '4px 10px', borderRadius: '6px' }}>
                           {u.role === 'admin' ? '🛡️ Admin' : '👤 Foydalanuvchi'}
                         </span>
                       </td>
-                      <td style={{ padding: '14px 20px', textAlign: 'right' }}>
-                        <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+                      <td style={{ padding: '14px', textAlign: 'right' }}>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'flex-end', alignItems: 'center' }}>
                           <button 
                             className="btn btn-sm" 
-                            style={{ padding: '6px 12px', fontSize: '11px', background: u.isPremium ? 'var(--bg3)' : 'var(--amber)', color: u.isPremium ? 'var(--text)' : '#fff' }}
+                            style={{ padding: '6px 10px', fontSize: '11px', background: u.isPremium ? 'var(--bg3)' : 'var(--amber)', color: u.isPremium ? 'var(--text)' : '#fff' }}
                             onClick={() => togglePremium(u.id, u.isPremium)}
                           >
                             {u.isPremium ? 'Premiumni bekor qilish' : '+ Premium berish'}
                           </button>
                           <button 
                             className="btn btn-sm" 
-                            style={{ padding: '6px 12px', fontSize: '11px', background: 'var(--bg3)', color: 'var(--text)' }}
+                            style={{ padding: '6px 10px', fontSize: '11px', background: 'var(--bg3)', color: 'var(--text)' }}
                             onClick={() => toggleAdmin(u.id, u.role)}
                           >
                             {u.role === 'admin' ? 'Admindan olish' : 'Admin qilish'}
                           </button>
                           <button 
                             className="btn btn-sm btn-outline" 
-                            style={{ padding: '6px 12px', fontSize: '11px', color: 'var(--red)', borderColor: 'var(--red)' }}
+                            style={{ padding: '6px 10px', fontSize: '11px', color: 'var(--red)', borderColor: 'var(--red)' }}
                             onClick={() => handleDeleteUser(u.id, u.email)}
                             title="Foydalanuvchini va uning reytingdagi natijasini o'chirish"
                           >
