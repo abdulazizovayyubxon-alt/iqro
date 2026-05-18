@@ -1,96 +1,145 @@
+/**
+ * ════════════════════════════════════════════════
+ *  FIRESTORE CATEGORY TUZATISH SKRIPTI
+ * ════════════════════════════════════════════════
+ *
+ * Bu skript Firestore'dagi barcha savollarni tekshirib,
+ * noto'g'ri yoki yo'q `category` fieldlarini tuzatadi.
+ *
+ * QOIDA:
+ *   topicId 0-6  → category: 'chqbt'
+ *   topicId 7+   → category: 'art'
+ *
+ * ISHLATISH:
+ *   Loyiha papkasiga kopyalang va ishga tushiring:
+ *   node fix_categories_in_firestore.js
+ *
+ * DIQQAT: Bu skript faqat bir marta ishga tushiriladi.
+ * ════════════════════════════════════════════════
+ */
+
 import dotenv from 'dotenv';
 dotenv.config();
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, writeBatch, doc } from "firebase/firestore";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { readFileSync } from 'fs';
 
+// .env fayldan firebase config o'qiymiz
+// Agar import ishlamasa, quyidagi config ni to'g'ridan-to'g'ri yozing:
 const firebaseConfig = {
-  apiKey: "AIzaSyDUlD2LaZegs0ifhNY2wLBDenB2oNX5sVU",
-  authDomain: "iqro-platforma.firebaseapp.com",
-  projectId: "iqro-platforma",
-  storageBucket: "iqro-platforma.firebasestorage.app",
-  messagingSenderId: "637089963772",
-  appId: "1:637089963772:web:a4165d8ae157986cbac179",
-  measurementId: "G-GPTQZDZ79J"
+  apiKey: process.env.VITE_FIREBASE_API_KEY || "AIzaSyDUlD2LaZegs0ifhNY2wLBDenB2oNX5sVU",
+  authDomain: process.env.VITE_FIREBASE_AUTH_DOMAIN || "iqro-platforma.firebaseapp.com",
+  projectId: process.env.VITE_FIREBASE_PROJECT_ID || "iqro-platforma",
+  storageBucket: process.env.VITE_FIREBASE_STORAGE_BUCKET || "iqro-platforma.firebasestorage.app",
+  messagingSenderId: process.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "637089963772",
+  appId: process.env.VITE_FIREBASE_APP_ID || "1:637089963772:web:a4165d8ae157986cbac179",
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth(app);
 
-const isAuto = process.argv.includes('--yes') || process.argv.includes('-y');
+/**
+ * topicId asosida to'g'ri categoryni qaytaradi
+ * Bu funksiya mockData.js dagi mantiqqa to'liq mos keladi:
+ *   chqbtTopics: id 0..6
+ *   artTopics:   id 7+
+ */
+function getExpectedCategory(topicId) {
+  if (typeof topicId !== 'number' || isNaN(topicId)) return null;
+  return topicId >= 7 ? 'art' : 'chqbt';
+}
 
 async function fixCategories() {
-  const adminEmail = process.env.VITE_ADMIN_EMAIL || 'abdulazizovayyubxon@gmail.com';
-  const adminPassword = process.env.VITE_ADMIN_PASSWORD;
+  console.log("🔍 Firestore'dagi barcha savollar tekshirilmoqda...");
+  
+  const qRef = collection(db, 'questions');
+  const snap = await getDocs(qRef);
+  
+  console.log(`📊 Jami savollar soni: ${snap.docs.length}`);
+  
+  const toFix = [];      // category noto'g'ri yoki yo'q
+  const alreadyOk = [];  // category to'g'ri
+  const problematic = []; // topicId yo'q yoki noto'g'ri
 
-  if (adminPassword) {
-    console.log(`🔑 Bazaga admin (${adminEmail}) bo'lib ulanilmoqda...`);
-    try {
-      await signInWithEmailAndPassword(auth, adminEmail, adminPassword);
-      console.log("✅ Admin ulanishi muvaffaqiyatli!");
-    } catch (authErr) {
-      console.error("❌ Logindan o'tishda xatolik! Parol yoki email noto'g'ri:", authErr.message);
-      process.exit(1);
+  snap.docs.forEach(d => {
+    const data = d.data();
+    const { topicId, category, q } = data;
+
+    if (typeof topicId !== 'number' || isNaN(topicId)) {
+      problematic.push({ id: d.id, q: (q || '').slice(0, 60), topicId, category });
+      return;
     }
-  } else {
-    console.log("🔓 Baza qoidalaridagi (allow read, write: if true;) ochiq ruxsat orqali ulanilmoqda...");
-  }
 
-  console.log("Qidirilmoqda: Firestore'dagi barcha savollar...");
-  const snap = await getDocs(collection(db, 'questions'));
-  const docsToUpdate = [];
-
-  snap.forEach(docSnap => {
-    const data = docSnap.data();
-    const topicId = parseInt(data.topicId);
-    let expectedCat = topicId === 7 ? 'art' : 'chqbt';
+    const expected = getExpectedCategory(topicId);
     
-    if (data.category !== expectedCat) {
-      docsToUpdate.push({
-        id: docSnap.id,
-        expectedCat,
-        oldCat: data.category || 'none',
-        topicId
+    if (category !== expected) {
+      toFix.push({
+        id: d.id,
+        q: (q || '').slice(0, 60),
+        topicId,
+        oldCategory: category || '(yo\'q)',
+        newCategory: expected
       });
+    } else {
+      alreadyOk.push(d.id);
     }
   });
 
-  if (docsToUpdate.length === 0) {
-    console.log("✅ Barcha savollarning kategoriyasi allaqachon to'g'ri! Hech narsani o'zgartirish shart emas.");
-    process.exit(0);
+  // Hisobot
+  console.log(`\n✅ To'g'ri category bor: ${alreadyOk.length} ta`);
+  console.log(`⚠️  Tuzatish kerak: ${toFix.length} ta`);
+  console.log(`❌ Muammoli (topicId yo'q): ${problematic.length} ta`);
+
+  if (problematic.length > 0) {
+    console.log('\n❌ MUAMMOLI SAVOLLAR (topicId yo\'q yoki noto\'g\'ri):');
+    problematic.forEach(p => {
+      console.log(`  ID: ${p.id} | topicId: ${p.topicId} | category: ${p.category}`);
+      console.log(`  Savol: "${p.q}..."`);
+    });
+    console.log('\nBu savollarni Admin paneldan qo\'lda tekshiring va topicId ni belgilang.\n');
   }
 
-  console.log(`⚠️ Jami ${docsToUpdate.length} ta savolning kategoriyasi noto'g'ri ekanligi aniqlandi.`);
-  
-  if (!isAuto) {
-    console.log("Tasdiqlash uchun '--yes' bayrog'i bilan ishga tushiring.");
-    process.exit(0);
+  if (toFix.length === 0) {
+    console.log('\n🎉 Barcha savollar to\'g\'ri! Hech narsa tuzatilmadi.');
+    return;
   }
 
-  console.log("Tahrirlash boshlandi...");
-  const qRef = collection(db, 'questions');
+  console.log('\n📝 Tuzatiladigan savollardan namunalar (dastlabki 10 ta):');
+  toFix.slice(0, 10).forEach(f => {
+    console.log(`  topicId: ${f.topicId} | ${f.oldCategory} → ${f.newCategory} | "${f.q}..."`);
+  });
+
+  // Tasdiqlash (production'da `--yes` flagini ishlatish mumkin)
+  if (!process.argv.includes('--yes')) {
+    console.log(`\n⚡ ${toFix.length} ta savolni tuzatish uchun '--yes' flagini qo'shing:`);
+    console.log('   node fix_categories_in_firestore.js --yes\n');
+    return;
+  }
+
+  // Batch update
+  console.log(`\n🚀 ${toFix.length} ta savol tuzatilmoqda...`);
   
-  // 400 tadan batch qilib yozamiz
-  for (let i = 0; i < docsToUpdate.length; i += 400) {
+  let fixed = 0;
+  for (let i = 0; i < toFix.length; i += 400) {
     const batch = writeBatch(db);
-    const chunk = docsToUpdate.slice(i, i + 400);
+    const chunk = toFix.slice(i, i + 400);
     
     chunk.forEach(item => {
-      const docRef = doc(qRef, item.id);
-      batch.update(docRef, { category: item.expectedCat });
+      const docRef = doc(db, 'questions', item.id);
+      batch.update(docRef, { category: item.newCategory });
     });
-
+    
     await batch.commit();
-    console.log(`  🔄 Batch ${i / 400 + 1} muvaffaqiyatli saqlandi.`);
+    fixed += chunk.length;
+    console.log(`  ✅ ${fixed}/${toFix.length} ta tuzatildi...`);
   }
 
-  console.log("✅ Muvaffaqiyatli! Barcha savollar kategoriyalari to'liq to'g'rilandi.");
-  process.exit(0);
+  console.log(`\n🎉 Muvaffaqiyatli! Jami ${fixed} ta savol tuzatildi.`);
+  console.log('Endi platformani qayta yuklab, savollar aralashib ketmasligi tekshiring.');
 }
 
 fixCategories().catch(err => {
-  console.error("Xatolik yuz berdi:", err);
+  console.error('❌ Xatolik:', err);
   process.exit(1);
 });
