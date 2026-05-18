@@ -1,17 +1,34 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
+import { useAuth } from '../context/AuthContext';
 import { TOPICS } from '../data/mockData';
 import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Trophy, Medal, Zap, Target, TrendingUp, BarChart3, Star, AlertCircle } from 'lucide-react';
+import { Trophy, Medal, Zap, Target, TrendingUp, BarChart3, Star, AlertCircle, Award, Flame, AlertTriangle } from 'lucide-react';
 import RadialChart from '../components/shared/RadialChart';
+import PremiumModal from '../components/PremiumModal';
 
 const AchievementsPage = () => {
-  const { state } = useContext(AppContext);
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const { state, updateState } = useContext(AppContext);
   const [activeTab, setActiveTab] = useState('achievements'); // achievements | statistics
+  const [showPremiumModal, setShowPremiumModal] = useState(false);
+
+  const handleNavigation = (topicId, mode) => {
+    const isFreeLimitReached = !user?.isPremium && (state.totalAnswered || 0) >= 100;
+    if (isFreeLimitReached) {
+      setShowPremiumModal(true);
+      return;
+    }
+    updateState({ topicId, testMode: mode });
+    navigate('/test');
+  };
 
   const cat = state.activeCategory;
   const catStats = state.stats[cat] || { totalAnswered: 0, totalCorrect: 0, streak: 0, maxStreak: 0, mistakes: [] };
+
 
   const earnedBadges = getEarnedBadges(state.stats);
   const totalXP = getTotalXP(state.stats);
@@ -98,6 +115,168 @@ const AchievementsPage = () => {
           </div>
         </div>
       </div>
+
+      {/* G'OYA-6: Haftalik taqqoslash */}
+      {catStats.totalAnswered > 10 && (
+        <div className="glass-panel" style={{ padding: '16px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 14, border: '1px solid rgba(59,130,246,0.15)', background: 'rgba(59,130,246,0.03)' }}>
+          <div style={{ width: 40, height: 40, borderRadius: 12, background: 'var(--blue-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <TrendingUp size={20} color="var(--blue)" />
+          </div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>
+              {acc >= 70 ? "Ajoyib natija! " : acc >= 50 ? "Yaxshi yo'ldasiz! " : "Davom eting! "}
+              {acc}% aniqlik
+            </div>
+            <div style={{ fontSize: 12, color: 'var(--text3)' }}>
+              {catStats.totalAnswered} ta savoldan {catStats.totalCorrect} tasiga to'g'ri javob berdingiz
+              {catStats.maxStreak > 3 && ` • Eng uzun seriya: ${catStats.maxStreak} ta ketma-ket`}
+            </div>
+          </div>
+          {acc >= 70 && <div style={{ fontSize: 28 }}>🎯</div>}
+          {acc >= 50 && acc < 70 && <div style={{ fontSize: 28 }}>📈</div>}
+          {acc < 50 && <div style={{ fontSize: 28 }}>💪</div>}
+        </div>
+      )}
+
+      {/* 📌 Kunlik Maqsad */}
+      {(() => {
+        const today = new Date().toDateString();
+        const dg = state.dailyGoal?.date === today ? state.dailyGoal : { date: today, answered: 0, target: 20, completed: false };
+        const pct = Math.min(100, Math.round((dg.answered / dg.target) * 100));
+        const ds = state.dailyStreak || 0;
+
+        return (
+          <div className="glass-panel" style={{
+            padding: '20px 24px', marginBottom: 24,
+            border: dg.completed ? '1.5px solid var(--green)' : '0.5px solid var(--border)',
+            background: dg.completed ? 'rgba(16,185,129,0.05)' : 'var(--bg2)',
+            transition: 'all 0.3s'
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12, flexWrap: 'wrap', gap: 8 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                {dg.completed ? <Award size={24} color="var(--green)" /> : <Target size={24} color="var(--accent)" />}
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--text)' }}>
+                    {dg.completed ? 'Bugungi maqsad bajarildi!' : 'Bugungi maqsad'}
+                  </div>
+                  <div style={{ fontSize: 12, color: 'var(--text3)' }}>
+                    {dg.answered} / {dg.target} savol yechildi
+                  </div>
+                </div>
+              </div>
+              {ds > 0 && (
+                <div style={{
+                  display: 'flex', alignItems: 'center', gap: 6,
+                  background: 'linear-gradient(135deg, #f59e0b, #ef4444)',
+                  color: 'white', padding: '5px 14px', borderRadius: 20,
+                  fontWeight: 700, fontSize: 13
+                }}>
+                  <Flame size={14} /> {ds} kun streak
+                </div>
+              )}
+            </div>
+            <div style={{ height: 10, borderRadius: 5, background: 'var(--bg3)', overflow: 'hidden' }}>
+              <div style={{
+                width: `${pct}%`, height: '100%', borderRadius: 5,
+                background: dg.completed
+                  ? 'linear-gradient(90deg, #10b981, #34d399)'
+                  : pct > 50 ? 'linear-gradient(90deg, #3b82f6, #60a5fa)' : 'linear-gradient(90deg, #6366f1, #818cf8)',
+                transition: 'width 0.5s ease'
+              }} />
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6, fontSize: 11, color: 'var(--text3)' }}>
+              <span>{pct}% bajarildi</span>
+              <span>{Math.max(0, dg.target - dg.answered)} ta qoldi</span>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* ⚠️ Zaif Nuqtalar Paneli */}
+      {(() => {
+        const weakTopics = TOPICS
+          .filter(t => {
+            const match = Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat;
+            const ts = state.topicStats[t.id];
+            return match && ts && ts.answered > 0;
+          })
+          .map(t => {
+            const ts = state.topicStats[t.id];
+            const wrong = ts.answered - ts.correct;
+            const topicAcc = Math.round((ts.correct / ts.answered) * 100);
+            return { ...t, wrong, acc: topicAcc, answered: ts.answered, correct: ts.correct };
+          })
+          .filter(t => t.wrong > 0)
+          .sort((a, b) => b.wrong - a.wrong || a.acc - b.acc)
+          .slice(0, 5);
+
+        if (weakTopics.length === 0) return null;
+
+        return (
+          <div style={{ marginBottom: 24 }}>
+            <div className="section-header" style={{ color: 'var(--red)', display: 'flex', alignItems: 'center', gap: '8px' }}><AlertTriangle size={20} /> Zaif Nuqtalaringiz</div>
+            <div className="glass-panel" style={{ padding: '20px', border: '1px solid rgba(239,68,68,0.15)', background: 'rgba(239,68,68,0.03)' }}>
+              <div style={{ fontSize: 12, color: 'var(--text3)', marginBottom: 16 }}>
+                Eng ko'p xato qilingan mavzular — bu yerga ko'proq e'tibor bering!
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {weakTopics.map((t, i) => (
+                  <div
+                    key={t.id}
+                    onClick={() => handleNavigation(t.id, 'exam')}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: 14, padding: '12px 14px',
+                      background: 'var(--bg2)', borderRadius: 12, cursor: 'pointer',
+                      border: '0.5px solid var(--border)', transition: 'all 0.2s'
+                    }}
+                    className="hoverable"
+                  >
+                    <div style={{
+                      width: 36, height: 36, borderRadius: 10, flexShrink: 0,
+                      background: t.acc < 40 ? 'var(--red-bg)' : t.acc < 70 ? 'var(--amber-bg)' : 'var(--green-bg)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18
+                    }}>
+                      {t.icon}
+                    </div>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {t.name}
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <div style={{ flex: 1, height: 6, borderRadius: 3, background: 'var(--bg3)', overflow: 'hidden' }}>
+                          <div style={{
+                            width: `${t.acc}%`, height: '100%', borderRadius: 3,
+                            background: t.acc < 40 ? 'var(--red)' : t.acc < 70 ? 'var(--amber)' : 'var(--green)',
+                            transition: 'width 0.5s ease'
+                          }} />
+                        </div>
+                        <span style={{ fontSize: 12, fontWeight: 700, color: t.acc < 40 ? 'var(--red)' : t.acc < 70 ? 'var(--amber)' : 'var(--green)', flexShrink: 0 }}>
+                          {t.acc}%
+                        </span>
+                      </div>
+                    </div>
+                    <div style={{ textAlign: 'right', flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
+                      <div style={{ fontSize: 16, fontWeight: 800, color: 'var(--red)' }}>{t.wrong}</div>
+                      <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 600 }}>XATO</div>
+                    </div>
+                    <button 
+                      className="btn btn-sm"
+                      onClick={(e) => { e.stopPropagation(); handleNavigation(t.id, 'exam'); }}
+                      style={{ 
+                        background: 'var(--red)', color: 'white', border: 'none', 
+                        fontSize: 11, padding: '6px 10px', borderRadius: 8, flexShrink: 0,
+                        fontWeight: 700
+                      }}
+                    >
+                      Mashq qil
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Internal Tabs */}
       <div className="mode-bar" style={{ marginBottom: '24px' }}>
@@ -281,8 +460,11 @@ const AchievementsPage = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {showPremiumModal && <PremiumModal onClose={() => setShowPremiumModal(false)} />}
     </motion.div>
   );
+
 };
 
 export default AchievementsPage;
