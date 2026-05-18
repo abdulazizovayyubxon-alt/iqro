@@ -246,6 +246,20 @@ const AdminPage = () => {
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
   };
 
+  const handleDeleteUser = async (userId, userEmail) => {
+    if (!window.confirm(`DIQQAT!!! Siz foydalanuvchini (${userEmail || userId}) tizimdan butunlay o'chirmoqchisiz.\n\nUshbu amal foydalanuvchining hisobini va reytingdagi (Leaderboard) barcha natijalarini batamom supurib tashlaydi!\n\nTasdiqlaysizmi?`)) return;
+    try {
+      await deleteDoc(doc(db, 'users', userId));
+      await deleteDoc(doc(db, 'userStats', userId));
+      setUsers(prev => prev.filter(u => u.id !== userId));
+      showToast("🗑️ Foydalanuvchi va uning reyting natijalari batamom o'chirildi!", 'success');
+    } catch (e) {
+      console.error("Foydalanuvchini o'chirishda xatolik:", e);
+      showToast("Xatolik yuz berdi: " + e.message, 'error');
+    }
+  };
+
+
   const handleSaveQuestion = async () => {
     try {
       if (editingQ) {
@@ -633,6 +647,14 @@ const AdminPage = () => {
                             onClick={() => toggleAdmin(u.id, u.role)}
                           >
                             {u.role === 'admin' ? 'Admindan olish' : 'Admin qilish'}
+                          </button>
+                          <button 
+                            className="btn btn-sm btn-outline" 
+                            style={{ padding: '6px 12px', fontSize: '11px', color: 'var(--red)', borderColor: 'var(--red)' }}
+                            onClick={() => handleDeleteUser(u.id, u.email)}
+                            title="Foydalanuvchini va uning reytingdagi natijasini o'chirish"
+                          >
+                            <Trash2 size={13} style={{ marginRight: '4px' }} /> O'chirish
                           </button>
                         </div>
                       </td>
