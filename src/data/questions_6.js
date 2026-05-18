@@ -264,18 +264,6 @@ export const q6_pedagogik_mahorat = [
       "mnemonic": "Nizom - bu harbiy tartib asosi."
     },
   {
-      "q": "Moslikni toping:\n1. Tarbiyaviy faoliyatni tashkil etish\n2. Xavfsiz rivojlantiruvchi ta'lim muhitini yaratish",
-      "opts": [
-        "1-b, 2-c",
-        "1-c, 2-a",
-        "1-b, 2-a",
-        "1-a, 2-b"
-      ],
-      "correct": 0,
-      "explanation": "Tarbiyaviy faoliyat bolalar jamoasidagi muhit bilan, xavfsiz muhit esa xavfsizlik qoidalarini ta'minlash bilan bog'liq.",
-      "mnemonic": "Kalit so'zga e'tibor bering va javobni vizuallashtiring."
-    },
-  {
       "q": "Formativ baholashning maqsadi nima?",
       "opts": [
         "Choraklik baho qo'yish",
