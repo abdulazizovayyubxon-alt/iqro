@@ -1,21 +1,37 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Trophy, Medal, Crown, Star, ArrowLeft } from 'lucide-react';
-import { collection, query, orderBy, limit, getDocs, doc, getDoc, where, getCountFromServer } from 'firebase/firestore';
+import { Trophy, Medal, Crown, Star, ArrowLeft, Trash2 } from 'lucide-react';
+import { collection, query, orderBy, limit, getDocs, doc, getDoc, where, getCountFromServer, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { AuthContext } from '../context/AuthContext';
+import { ToastContext } from '../context/ToastContext';
+import { useAdmin } from '../hooks/useAdmin';
 
 const LeaderboardPage = () => {
   const navigate = useNavigate();
   const goBack = () => navigate('/');
   const { user } = useContext(AuthContext);
+  const { showToast } = useContext(ToastContext);
+  const { isAdmin } = useAdmin();
   const [leaders, setLeaders] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchLeaderboard();
   }, [user]);
+
+  const handleDeleteLeaderResult = async (leaderId, leaderName) => {
+    if (!window.confirm(`DIQQAT! Siz o'quvchi (${leaderName || leaderId}) ning reytingdagi (Leaderboard) natijasini o'chirmoqchisiz.\n\nBu foydalanuvchining to'plagan barcha ballari reytingdan olib tashlanadi.\n\nTasdiqlaysizmi?`)) return;
+    try {
+      await deleteDoc(doc(db, 'userStats', leaderId));
+      setLeaders(prev => prev.filter(l => l.id !== leaderId));
+      showToast("🗑️ Reyting natijasi muvaffaqiyatli o'chirildi!", 'success');
+    } catch (e) {
+      console.error("Reyting natijasini o'chirishda xatolik:", e);
+      showToast("Xatolik: " + e.message, 'error');
+    }
+  };
 
   const fetchLeaderboard = async () => {
     try {
@@ -195,12 +211,27 @@ const LeaderboardPage = () => {
                     </div>
                   </div>
 
-                  {/* Ball */}
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: 20, fontWeight: 900, color: 'var(--text)' }}>
-                      {leader.score.toLocaleString()}
+                  {/* Ball va Admin o'chirish tugmasi */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                    <div style={{ textAlign: 'right' }}>
+                      <div style={{ fontSize: 20, fontWeight: 900, color: 'var(--text)' }}>
+                        {leader.score.toLocaleString()}
+                      </div>
+                      <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text3)' }}>BALL</div>
                     </div>
-                    <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text3)' }}>BALL</div>
+                    {isAdmin && (
+                      <button
+                        className="btn btn-sm btn-outline"
+                        style={{ color: 'var(--red)', borderColor: 'var(--red)', padding: '6px', borderRadius: '10px' }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDeleteLeaderResult(leader.id, leader.name);
+                        }}
+                        title="Bu foydalanuvchining reyting natijasini o'chirish"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    )}
                   </div>
                 </motion.div>
               );
