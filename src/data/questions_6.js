@@ -1607,4 +1607,173 @@ export const q6_pedagogik_mahorat = [
       "explanation": "Abstrakt tafakkur — bu ko'z bilan ko'rib bo'lmaydigan umumiy tushunchalar asosida fikrlashdir.",
       "mnemonic": "Kalit so'zga e'tibor bering va javobni vizuallashtiring."
     }
+,
+  {
+      "q": "“Tarbiyaviy ishlarning zamonaviy, shu jumladan interaktiv shakl va usullarini mashg‘ulot va sinfdan tashqari ishlarda qo‘llash” mehnat harakatlarining asosiy vazifalari to‘g‘ri ko‘rsatilgan javob variantini aniqlang:\n1. Muammoli vaziyatlar orqali darslarda o‘quvchilarning faol ishtirokini ta’minlash\n2. An’anaviy dars usullarini jarayonga singdirish sifatini oshirishni qo‘llab-quvvatlash\n3. Tashabbuskorlik va yangicha yondashuvni qo‘llab-quvvatlash\n4. Jamoadada ishlash, o‘zaro hamkorlik ko‘nikmalarini rivojlantirish",
+      "opts": [
+        "A) 2, 3",
+        "B) 1, 2, 3",
+        "C) 1, 3, 4",
+        "D) 2, 4"
+      ],
+      "correct": 2,
+      "explanation": "Interaktiv usullar o‘quvchilarning faolligini (1), tashabbuskorligini (3) va jamoaviy hamkorligini (4) rivojlantirishga qaratilgan. An'anaviy usullar (2) bunga kirmaydi.",
+      "mnemonic": "Interaktiv - Faollik, Tashabbus, Hamkorlik."
+    },
+  {
+      "q": "Pedagogning “Dars maqsadlari asosida o‘quvchilar uchun erishimli vazifalarni belgilash” mehnat harakatlarining vazifalari aniq ko‘rsatilgan javob variantini belgilang.",
+      "opts": [
+        "A) O‘quvchilarni ta’lim jarayonining faol ishtirokchisiga aylantirish, mustaqil ishlarni yo‘lga qo‘yish, kasbga yo‘naltirish orqali chuqur bilim egallashga undash",
+        "B) Dars jarayonini ko‘rgazmali, interfaol usul va quvnoq tarzda o‘tkazishni rejalashtirish hamda jarayonga ma’muriyat, ota-onalar, mahalla xodimlarini jalb qilish",
+        "C) Dars mavzusini hayotiy misollar orqali tushunarli va qiziqarli qilib yetkazish, dars maqsadlari asosida o‘quvchilarda o‘qishga bo‘lgan qiziqishlarini oshirishni rejalashtirish",
+        "D) O‘quvchilar uchun vazifalarni oddiydan murakkabga, bosqichma-bosqich yetkazish, turli darajadagi o‘quvchilar uchun moslashtirilgan vazifalar ishlab chiqish"
+      ],
+      "correct": 3,
+      "explanation": "Erishimli vazifalar belgilash — topshiriqlarni o‘quvchining imkoniyatiga moslab, oddiydan murakkabga qarab bosqichma-bosqich va differensial tarzda tuzishdir.",
+      "mnemonic": "Erishimli - Oddiydan murakkabga, moslashtirilgan."
+    },
+  {
+      "q": "Pedagog darslarida o‘quvchilarning tahlil qilish va mulohaza yuritish qobiliyatlarini rivojlantirmoqchi bo‘ldi. Buning uchun avval o‘zi tanqidiy fikrlash metodlarini o‘rganish va ularni darslarda qo‘llashni maqsad qildi. Yuqoridagilarni amalga oshirishda samara bermaydigan mehnat harakatlarini aniqlang.",
+      "opts": [
+        "A) Seminar va treninglarda faol ishtirok etish",
+        "B) Muntazam malaka oshirish kurslaridan o‘tish",
+        "C) 4K usulini chuqur o‘rganib chiqish va qo‘llash",
+        "D) O‘quvchilarga darsda faqat tayyor xulosalarni berish"
+      ],
+      "correct": 3,
+      "explanation": "Tayyor xulosalarni berish o‘quvchilarni mustaqil fikrlash va tahlil qilish imkoniyatidan mahrum qiladi, shuning uchun bu usul samara bermaydi.",
+      "mnemonic": "Tayyor xulosa fikrlashni o'ldiradi."
+    },
+  {
+      "q": "10-sinf o‘quvchilarining 2-chorak yakuni bo‘yicha sifat ko‘rsatkichlari kutilgandan past chiqdi, chunki choraklik baho chiqarish uchun pedagog faqat test natijalarini asos qilib olgan edi. Ayrim o‘quvchilarning test natijalari juda past bo‘lib, loyiha ishi va amaliy topshiriq natijalari esa yuqori edi. Bu holatni tuzatish uchun pedagog kelgusida qanday mehnat harakatlarini amalga oshirgani ma’qul?",
+      "opts": [
+        "A) Ta’lim natijalarini baholashda faqat loyiha ishlarini asos qilib olishni",
+        "B) Ta’lim natijalarini baholash uchun turli usul va vositalardan foydalanishni",
+        "C) O‘quvchilar erishgan yutuqlarining natijalarini to‘g‘ri tahlil qilishni",
+        "D) Yozma nazorat ishlarining soni, shakli, turi hamda sifatini ko‘paytirishni"
+      ],
+      "correct": 1,
+      "explanation": "Obyektiv va adolatli baholash uchun pedagog ta'lim natijalarini baholashda turli xil usul va vositalardan (test, amaliy ish, loyiha va h.k.) mutanosib foydalanishi lozim.",
+      "mnemonic": "Baholashda turli usullardan foydalan."
+    },
+  {
+      "q": "Pedagog dars beradigan fani bo‘yicha kompetensiyalar, bilim, malaka talablarini aniqlab, dasturda berilgan mavzular bilan taqqosladi hamda ular asosida loyihaviy va interfaol darslar o‘tish rejalarini o‘ylab qo‘ydi. Bunda u qaysi mehnat harakatlarini amalga oshirdi?",
+      "opts": [
+        "A) Dars davomida har bir o‘quvchiga o‘z g‘oyalari va qarashlarini ifoda etish imkoniyatini yaratish",
+        "B) Darsning maqsadlari, o‘quvchilarning yosh xususiyatlariga mos keladigan dars shakllarini qo‘llash",
+        "C) O‘quvchilarga individual ta’lim ehtiyojlaridan kelib chiqib, o‘z vaqtida differensial yordam berish",
+        "D) Davlat ta’lim standartlari va o‘quv dasturlarining maqsadlariga muvofiq o‘quv rejalarini ishlab chiqish"
+      ],
+      "correct": 3,
+      "explanation": "Dastur, malaka talablari va kompetensiyalar asosida dars rejasi tuzish — Davlat ta'lim standartlari va o‘quv dasturlariga muvofiq o‘quv rejalarini ishlab chiqish jarayonidir.",
+      "mnemonic": "Dastur va talab - O'quv rejasi."
+    },
+  {
+      "q": "O‘qituvchi mavzuni nazariy misollar yordamida taqdimot orqali oldingi mavzuga bog‘lab, tartib bilan tushuntirib berdi, barcha o‘quvchilarning ishtirokini ta’minlashga harakat qildi, dars so‘ngida mavzu xuddi shunday masalalar orqali mustahkamlandi. Uyga vazifada berilgan hayotiy masalalarni o‘quvchilar bajara olmadi. Dars jarayonida o‘qituvchi didaktikaning qaysi tamoyiliga AMAL QILMADI?",
+      "opts": [
+        "A) Faollik va mustaqillik tamoyili",
+        "B) Nazariya va amaliyot bog‘liqligi tamoyili",
+        "C) Sistemalilik va izchillik tamoyili",
+        "D) Ko‘rgazmalilik tamoyili"
+      ],
+      "correct": 1,
+      "explanation": "Darsda faqat nazariy masalalar ko‘rilib, hayotiy amaliyotga bog‘lanmagani uchun o‘quvchilar hayotiy vazifalarni yechishda qiynaldi. Bu nazariya va amaliyot bog‘liqligi tamoyili buzilganini ko'rsatadi.",
+      "mnemonic": "Nazariyadan hayotga - Nazariya va amaliyot bog'liqligi."
+    },
+  {
+      "q": "Saf tayyorgarligi mashg‘ulotida joyida turib “orqaga burilish” harakatini butun sinfga o‘rgatishda o‘qituvchi harakatning to‘g‘ri bajarilishini ta’minlash uchun qaysi didaktik ketma-ketlikni qo‘llashi eng samarali hisoblanadi?",
+      "opts": [
+        "A) Harakatning nazariy asosini tushuntirish, xavfsizlik qoidalarini eslatish va bitta o‘quvchiga bajartirib, xatolarini umumiy muhokama qilish",
+        "B) Harakatni avval to‘liq ko‘rsatish, keyin uni tarkibiy qismlarga ajratib tushuntirish, har bir bosqichni alohida mashq qildirish va oxirida harakatni yana takrorlash",
+        "C) Mashg‘ulot mazmunini og‘zaki izohlash, so‘ng o‘quvchilarga uni mustaqil bajarishni topshirish va xatolarni tuzatish",
+        "D) Harakat bajarilishini videoyozuv orqali ko‘rsatish, asosiy jihatlarini muhokama qilish va bitta o‘quvchiga bajartirib, xatolarini sinf bilan tahlil qilish"
+      ],
+      "correct": 1,
+      "explanation": "Saf tayyorgarligi metodikasida harakatni o‘rgatishning eng samarali usuli: to‘liq namoyish etish -> qismlarga bo‘lib tushuntirish -> alohida mashq qildirish -> to‘liq takrorlash hisoblanadi.",
+      "mnemonic": "Namoyish -> Qismlar -> Mashq -> Takrorlash."
+    },
+  {
+      "q": "Quyida tarbiyaning qaysi turi haqida so‘z borgan?\n\"Tarbiyaning bu turi — o‘quvchilarda sog‘lom turmush tarzini shakllantirishga, tananing chidamliligi va kuchini oshirishga qaratilgan pedagogik jarayondir. U o‘quvchilarda tezkorlik, chidamlilik, intizom, individual va jamoaviy ishlash ko‘nikmalarini rivojlantiradi.\"",
+      "opts": [
+        "A) Jismoniy tarbiya",
+        "B) Ekologik tarbiya",
+        "C) Mehnat tarbiyasi",
+        "D) Huquqiy tarbiya"
+      ],
+      "correct": 0,
+      "explanation": "Sog‘lom turmush tarzi, tana chidamliligi, kuch va tezkorlikni rivojlantirish bevosita jismoniy tarbiyaning asosiy maqsadi hisoblanadi.",
+      "mnemonic": "Kuch va chidamlilik - Jismoniy tarbiya."
+    },
+  {
+      "q": "Ta’lim texnologiyalari va ularning kamchiliklarini moslashtiring. (Kamchiliklar ustunida ortiqchasi bor.)\n1) zamonaviy ta’lim texnologiyalarining kamchiligi\n2) individual ta’lim texnologiyasining kamchiligi\n\na) o‘zlashtirish samaradorligi yuqori bo‘lmasligi\nb) o‘quvchilar ko‘proq passiv ishtirok etishi\nc) jamoada ishlash tajribasining yetarlicha shakllanmasligi\nd) vaqt va resurslarni ko‘p talab qilishi",
+      "opts": [
+        "A) 1-b, 2-c",
+        "B) 1-b, 2-a",
+        "C) 1-d, 2-c",
+        "D) 1-d, 2-a, c"
+      ],
+      "correct": 2,
+      "explanation": "Zamonaviy texnologiyalar ko‘p vaqt va resurs talab qiladi (d). Individual ta'limda esa o‘quvchi jamoada ishlash ko‘nikmasidan uzilib qoladi (c).",
+      "mnemonic": "Zamonaviy - Ko'p resurs, Individual - Jamoasiz."
+    },
+  {
+      "q": "Quyidagi vaziyatda o‘qituvchi qanday faoliyatni amalga oshirgan?\n\"Dars davomida o‘quvchilarga mavzu tushuntirildi, ularga mashqlar berildi. Darsdan so‘ng o‘qituvchi o‘z harakatlari va dars jarayonidagi faoliyatini tahlil qildi, xatolarni ko‘rib chiqdi hamda keyingi darslar uchun strategiyalarni belgiladi.\"",
+      "opts": [
+        "A) pedagogik ijodkorlik",
+        "B) pedagogik takt",
+        "C) pedagogik nutq",
+        "D) pedagogik refleksiya"
+      ],
+      "correct": 3,
+      "explanation": "O‘qituvchining o‘z darsi va harakatlarini qayta tahlil qilib, xato va yutuqlarini sarhisob qilishi pedagogik refleksiya deb ataladi.",
+      "mnemonic": "O'zini tahlil qilish - Refleksiya."
+    },
+  {
+      "q": "Sinf rahbari bir o‘quvchining o‘qishdagi muvaffaqiyatsizliklari oilaviy muammolar bilan bog‘liqligini aniqladi. Ushbu holatda sinf rahbari quyidagi qaysi ishlarni amalga oshirishi lozim?\n1. O‘quvchining ruhiy holati, tashvish va ehtiyojlarini aniqlash hamda individual suhbat o‘tkazishi.\n2. O‘quvchining muammosini e’tiborsiz qoldirish, oilaviy masalalariga aralashmasligi.\n3. Holatni maktab psixologiga ma’lum qilib, maslahatlashgan holda o‘quvchiga psixologik yordam tashkil etishi.\n4. O‘quvchining irodasini mustahkamlash uchun natijalarini boshqa tengdoshlari natijasi bilan solishtirish, baholash talablarini orttirishi.\n5. Holat bo‘yicha voyaga yetmaganlar masalalari bo‘yicha komissiyani xabardor qilish.",
+      "opts": [
+        "A) 1, 2, 3",
+        "B) 2 va 4",
+        "C) 1 va 3",
+        "D) 2, 3, 5"
+      ],
+      "correct": 2,
+      "explanation": "O‘quvchiga yordam berishning eng to‘g‘ri yo‘li — uning o‘zi bilan samimiy suhbatlashish (1) va maktab psixologi bilan hamkorlikda yordam ko‘rsatishdir (3).",
+      "mnemonic": "Suhbat va Psixolog yordami."
+    },
+  {
+      "q": "Qaysi javobda nostandart dars mashg‘uloti namunasi berilgan?",
+      "opts": [
+        "A) O‘qituvchi doskada kasrlarni qo‘shish va ayirish qoidalarini tushuntirdi, o‘quvchilar darslikdagi misollarni yechishdi, o‘qituvchi esa javoblarni tekshirib, to‘g‘ri yechimini ko‘rsatdi.",
+        "B) O‘qituvchi o‘quvchilarga Amir Temur hayoti bilan va harbiy yurishlari haqida ma’lumot berdi, test topshiriqlari yordamida mavzudan o‘rganganlari mustahkamlandi.",
+        "C) O‘qituvchi o‘quvchilarga “Padarkush” fojiasi haqida ma’lumot berdi, asar qahramonlarining o‘ziga xos xarakterli xususiyatlarini farqlab berdi, uyda asarni to‘liq o‘qib kelishini vazifa sifatida berdi.",
+        "D) O‘quvchilar tayyorlagan ijodiy ishlarini sinfxonada ota-onalar ishtirokidagi ko‘rgazmada taqdim etishdi, o‘qituvchi ko‘rgazma yakunida dars bo‘yicha xulosalar chiqardi."
+      ],
+      "correct": 3,
+      "explanation": "Ota-onalar ishtirokidagi ko‘rgazma-dars an'anaviy dars qoliplaridan tashqaridagi nostandart dars shakli hisoblanadi.",
+      "mnemonic": "Ko'rgazma dars - Nostandart."
+    },
+  {
+      "q": "O‘qituvchi mutaxassislik fani bo‘yicha A+ darajadagi milliy sertifikatga ega, o‘quvchilar uni hurmat qilishadi. O‘qituvchilarga mavzuni sodda va qiziqarli qilib tushuntirib berdi, biroq dars davomida yangi mavzuni mustahkamlash uchun vaqt yetmay qoldi. Ushbu o‘qituvchi qaysi pedagogik qobiliyatini rivojlantirishi kerak?",
+      "opts": [
+        "A) tashkilotchilik qobiliyatini",
+        "B) nutqiy qobiliyatlarini",
+        "C) avtoritar qobiliyatini",
+        "D) didaktik qobiliyatlarini"
+      ],
+      "correct": 0,
+      "explanation": "Dars vaqtini to‘g‘ri taqsimlash va dars bosqichlarini o‘z vaqtida o‘tkazish bevosita o‘qituvchining tashkilotchilik qobiliyatiga bog‘liq.",
+      "mnemonic": "Vaqtni boshqarish - Tashkilotchilik."
+    },
+  {
+      "q": "O‘qituvchi “Tibbiy yordam” mavzusini o‘tayotganda o‘quvchilarni guruhlarga bo‘lib, har bir guruhga turli favqulodda holatlar bo‘yicha birinchi yordam ko‘rsatish usullarini mustaqil o‘rganish, plakat, taqdimot yoki stend ko‘rinishida material tayyorlash va sinf oldida himoya qilish topshirig‘ini berdi. Mazkur dars jarayonida qaysi zamonaviy pedagogik texnologiya qo‘llangan?",
+      "opts": [
+        "A) O‘yinli ta’lim texnologiyasi",
+        "B) Loyiha asoslangan ta’lim texnologiyasi",
+        "C) Muammoli ta’lim texnologiyasi",
+        "D) Integratsion ta’lim texnologiyasi"
+      ],
+      "correct": 1,
+      "explanation": "O‘quvchilarning mustaqil izlanib, muayyan mahsulot (plakat, taqdimot, stend) tayyorlashi va uni himoya qilishi loyihaga asoslangan ta'lim (PBL) texnologiyasidir.",
+      "mnemonic": "Plakat/Taqdimot tayyorlash - Loyiha ishi."
+    }
 ];

@@ -5,9 +5,17 @@ import { useAdmin } from '../hooks/useAdmin';
 import { db, storage } from '../firebase';
 import {
   collection, query, orderBy, onSnapshot,
-  updateDoc, deleteDoc, doc, getDocs, addDoc
+  updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { q0_harbiy_xizmat } from '../data/questions_0.js';
+import { q1_umumharbiy_nizomlar } from '../data/questions_1.js';
+import { q2_otish_tayyorgarligi } from '../data/questions_2.js';
+import { q3_taktik_tayyorgarlik } from '../data/questions_3.js';
+import { q4_fuqaro_muhofazasi } from '../data/questions_4.js';
+import { q5_tibbiy_bilim } from '../data/questions_5.js';
+import { q6_pedagogik_mahorat } from '../data/questions_6.js';
+import { q7_tasviriy_sanat } from '../data/questions_7.js';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Shield, MessageCircle, Users, BarChart3,
@@ -34,6 +42,72 @@ const AdminPage = () => {
   const [editingQ, setEditingQ] = useState(null);
   const [newQ, setNewQ] = useState({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' });
   const [isUploadingImage, setIsUploadingImage] = useState(false);
+  const [isSyncing, setIsSyncing] = useState(false);
+
+  const handleSyncAllQuestions = async () => {
+    if (!window.confirm("Barcha lokal fayllardagi (questions_0...7) savollarni Firestore bazasi bilan sinxronlashni tasdiqlaysizmi? (Faqat yangi savollar qo'shiladi)")) return;
+    setIsSyncing(true);
+    showToast("Sinxronlash boshlandi, iltimos kuting...", 'info');
+    try {
+      const allData = [
+        { id: 0, data: q0_harbiy_xizmat, cat: 'chqbt' },
+        { id: 1, data: q1_umumharbiy_nizomlar, cat: 'chqbt' },
+        { id: 2, data: q2_otish_tayyorgarligi, cat: 'chqbt' },
+        { id: 3, data: q3_taktik_tayyorgarlik, cat: 'chqbt' },
+        { id: 4, data: q4_fuqaro_muhofazasi, cat: 'chqbt' },
+        { id: 5, data: q5_tibbiy_bilim, cat: 'chqbt' },
+        { id: 6, data: q6_pedagogik_mahorat, cat: 'chqbt' },
+        { id: 7, data: q7_tasviriy_sanat, cat: 'art' }
+      ];
+
+      const snap = await getDocs(collection(db, 'questions'));
+      const normalize = (text) => text ? text.toLowerCase().replace(/[‘'`ʼ]/g, "'").replace(/\s+/g, " ").trim() : "";
+      const existingSet = new Set(snap.docs.map(d => normalize(d.data().q)));
+
+      const newQuestionsToPush = [];
+      for (const item of allData) {
+        for (const q of item.data) {
+          if (!existingSet.has(normalize(q.q))) {
+            newQuestionsToPush.push({
+              ...q,
+              topicId: item.id,
+              category: item.cat,
+              createdAt: new Date().toISOString()
+            });
+            existingSet.add(normalize(q.q));
+          }
+        }
+      }
+
+      if (newQuestionsToPush.length === 0) {
+        showToast("Barcha savollar allaqachon bazada mavjud. Sinxronlash shart emas!", 'success');
+        setIsSyncing(false);
+        return;
+      }
+
+      showToast(`${newQuestionsToPush.length} ta yangi savol topildi. Yuklanmoqda...`, 'info');
+
+      const qRef = collection(db, 'questions');
+      for (let i = 0; i < newQuestionsToPush.length; i += 400) {
+        const batch = writeBatch(db);
+        const chunk = newQuestionsToPush.slice(i, i + 400);
+        chunk.forEach(q => {
+          const newDoc = doc(qRef);
+          batch.set(newDoc, q);
+        });
+        await batch.commit();
+      }
+
+      showToast(`Muvaffaqiyatli! ${newQuestionsToPush.length} ta yangi savol Firestore'ga qo'shildi.`, 'success');
+      
+      const updatedSnap = await getDocs(collection(db, 'questions'));
+      setQuestions(updatedSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+    } catch (err) {
+      console.error("Sinxronlash xatosi:", err);
+      showToast("Sinxronlashda xatolik: " + err.message, 'error');
+    }
+    setIsSyncing(false);
+  };
 
   // Tariffs State
   const [tariffs, setTariffs] = useState([]);
@@ -419,6 +493,9 @@ const AdminPage = () => {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ fontSize: '18px', fontWeight: '700', color: 'var(--text)' }}>Savollar Bazasi ({questions.length})</div>
             <div style={{ display: 'flex', gap: '10px' }}>
+              <button className="btn btn-outline" style={{ color: 'var(--blue)', borderColor: 'var(--blue)' }} onClick={handleSyncAllQuestions} disabled={isSyncing}>
+                <Zap size={16} /> {isSyncing ? 'Sinxronlanmoqda...' : 'Fayllardan bazaga sinxronlash'}
+              </button>
               <button className="btn btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={handleCleanDuplicates}>
                 <Trash2 size={16} /> Takroriylarni o'chirish
               </button>
