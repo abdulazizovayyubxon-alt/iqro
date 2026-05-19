@@ -476,6 +476,19 @@ export const AuthProvider = ({ children }) => {
   //   - Parol kamida 6 ta belgidan iborat
   //   - Telefon raqam ichki email sifatida ishlatiladi (foydalanuvchi ko'rmaydi)
   // ────────────────────────────────────────────────────────
+  // Foydalanuvchi mavjudligini tekshirish (telefon raqam bo'yicha)
+  const checkUserExists = async (phone) => {
+    try {
+      const { fetchSignInMethodsForEmail } = await import('firebase/auth');
+      const internalEmail = phoneToEmail(phone);
+      const methods = await fetchSignInMethodsForEmail(auth, internalEmail);
+      return methods.length > 0;
+    } catch (e) {
+      // Agar xatolik bo'lsa — mavjud emas deb hisoblaymiz
+      return false;
+    }
+  };
+
   const signInWithPhone = async (name, phone, password, isRegistering = false) => {
     setAuthError('');
 
@@ -664,7 +677,8 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={{ 
       user, loading, authError, setAuthError, 
       signInWithGoogle, signInWithEmail, registerWithEmail, 
-      signInWithPhone,
+    signInWithPhone,
+      checkUserExists,
       resetPassword,
       logout,
       calculatePasswordStrength,
