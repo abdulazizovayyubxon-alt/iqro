@@ -238,7 +238,7 @@ export default function OnboardingPage({ onComplete }) {
   const goNext = () => { setDir(1); setStep(s => s + 1); };
   const goBack = () => { setDir(-1); setStep(s => s - 1); };
 
-  const handleFinish = async () => {
+  const handleFinish = async (finalTimeVal) => {
     setSaving(true);
     setStep(3);
     try {
@@ -247,11 +247,22 @@ export default function OnboardingPage({ onComplete }) {
           onboardingDone: true,
           onboardingGoal: goal,
           onboardingSubject: subject,
-          onboardingDailyMinutes: time,
+          onboardingDailyMinutes: (typeof finalTimeVal === 'string' ? finalTimeVal : time),
         });
       }
     } catch (e) { console.error(e); }
     setTimeout(() => { setStep(4); setSaving(false); }, 2800);
+  };
+
+  const handleSelect = (val) => {
+    stepData[step].set(val);
+    setTimeout(() => {
+      if (step === 2) {
+        handleFinish(val);
+      } else {
+        goNext();
+      }
+    }, 350);
   };
 
   const currentSelected = [goal, subject, time][step] ?? null;
@@ -312,7 +323,7 @@ export default function OnboardingPage({ onComplete }) {
                   subtitle={stepData[step].subtitle}
                   items={stepData[step].items}
                   selected={stepData[step].val}
-                  onSelect={stepData[step].set}
+                  onSelect={handleSelect}
                 />
               )}
               {step === 3 && <LoadingStep />}
@@ -322,17 +333,13 @@ export default function OnboardingPage({ onComplete }) {
         </div>
 
         {/* Footer */}
-        {step !== 3 && (
+        {step === 4 && (
           <div style={ss.footer}>
             <button
-              style={{
-                ...ss.primaryBtn,
-                opacity: step < 3 && !canProceed ? 0.5 : 1,
-              }}
-              disabled={(step < 3 && !canProceed) || saving}
-              onClick={step === 4 ? onComplete : step === 2 ? handleFinish : goNext}
+              style={ss.primaryBtn}
+              onClick={onComplete}
             >
-              {step === 4 ? 'Platformani boshlash 🚀' : 'Keyingi'}
+              Platformani boshlash 🚀
             </button>
           </div>
         )}
@@ -344,7 +351,7 @@ export default function OnboardingPage({ onComplete }) {
 // ── Styles ──
 const ss = {
   pageOuter: {
-    minHeight: '100vh',
+    minHeight: IS_MOBILE ? '100dvh' : '100vh',
     background: IS_MOBILE ? 'var(--bg)' : 'linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%)',
     display: IS_MOBILE ? 'block' : 'flex',
     alignItems: 'center',
