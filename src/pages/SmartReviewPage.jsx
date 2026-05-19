@@ -37,14 +37,14 @@ const SmartReviewPage = () => {
   if (isFreeLimitReached) {
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', padding: '20px' }}>
-        <div style={{ maxWidth: 400, width: '100%', background: '#fff', border: '1.5px solid #E2E8F0', borderRadius: 24, padding: '40px 28px', textAlign: 'center' }}>
+        <div style={{ maxWidth: 400, width: '100%', background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 24, padding: '40px 28px', textAlign: 'center' }}>
           <div style={{ fontSize: 52, marginBottom: 16 }}>🔒</div>
-          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 8, color: '#0F172A' }}>Bepul Limit Tugadi</div>
-          <div style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.6, marginBottom: 28 }}>7 kunlik sinov yakunlandi! Premium rejimni faollashtiring.</div>
+          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 8, color: 'var(--text)' }}>Bepul Limit Tugadi</div>
+          <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 28 }}>7 kunlik sinov yakunlandi! Premium rejimni faollashtiring.</div>
           <button style={{ width: '100%', padding: '15px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 16, cursor: 'pointer', fontFamily: 'inherit', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
             ⭐ Premium Rejimni Faollashtirish
           </button>
-          <button style={{ width: '100%', padding: '13px', background: '#fff', color: '#334155', border: '1.5px solid #E2E8F0', borderRadius: 14, fontWeight: 600, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit' }} onClick={goBack}>← Bosh sahifaga</button>
+          <button style={{ width: '100%', padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit' }} onClick={goBack}>← Bosh sahifaga</button>
         </div>
         <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
       </motion.div>
@@ -128,16 +128,16 @@ const SmartReviewPage = () => {
 
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: 600, margin: '0 auto', padding: '20px 16px' }}>
-        <div style={{ background: '#fff', border: '1.5px solid #E2E8F0', borderRadius: 24, padding: '44px 28px', textAlign: 'center', marginTop: 40 }}>
+        <div style={{ background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 24, padding: '44px 28px', textAlign: 'center', marginTop: 40 }}>
           <div style={{ fontSize: 52, marginBottom: 14 }}>🧠</div>
-          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 8, color: '#0F172A' }}>Hozircha takrorlash kerak emas!</div>
+          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 8, color: 'var(--text)' }}>Hozircha takrorlash kerak emas!</div>
           {totalSpaced > 0 ? (
-            <div style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.7, marginBottom: 24 }}>
-              Jami <strong style={{ color: '#0F172A' }}>{totalSpaced}</strong> ta savol kuzatilmoqda.<br />
+            <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.7, marginBottom: 24 }}>
+              Jami <strong style={{ color: 'var(--text)' }}>{totalSpaced}</strong> ta savol kuzatilmoqda.<br />
               Keyingi takrorlash: <strong style={{ color: '#29B6F6' }}>{waitMinutes < 60 ? `${waitMinutes} daqiqa` : waitMinutes < 1440 ? `${Math.round(waitMinutes / 60)} soat` : `${Math.round(waitMinutes / 1440)} kun`}</strong> dan keyin
             </div>
           ) : (
-            <div style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.7, marginBottom: 24 }}>
+            <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.7, marginBottom: 24 }}>
               Testlarda xato qilganingizda savollar avtomatik ravishda bu yerga qo'shiladi.<br />
               Boshqa testlarni yechib boring!
             </div>
@@ -156,9 +156,9 @@ const SmartReviewPage = () => {
     const pct = Math.round((sessionStats.correct / total) * 100);
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: 560, margin: '0 auto', padding: '20px 16px' }}>
-        <div style={{ background: '#fff', border: '1.5px solid #E2E8F0', borderRadius: 24, padding: '40px 28px', textAlign: 'center', marginTop: 40 }}>
+        <div style={{ background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 24, padding: '40px 28px', textAlign: 'center', marginTop: 40 }}>
           <div style={{ fontSize: 52, marginBottom: 12 }}>{pct >= 70 ? '🎉' : '💪'}</div>
-          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 20, color: '#0F172A' }}>Takrorlash tugadi!</div>
+          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 20, color: 'var(--text)' }}>Takrorlash tugadi!</div>
           <div style={{ display: 'flex', gap: 24, justifyContent: 'center', marginBottom: 20 }}>
             <div style={{ textAlign: 'center', background: '#DCFCE7', borderRadius: 16, padding: '16px 24px' }}>
               <div style={{ fontSize: 32, fontWeight: 900, color: '#16A34A' }}>{sessionStats.correct}</div>
@@ -169,8 +169,8 @@ const SmartReviewPage = () => {
               <div style={{ fontSize: 11, color: '#DC2626', fontWeight: 700, marginTop: 4 }}>XATO</div>
             </div>
           </div>
-          <div style={{ fontSize: 13, color: '#94A3B8', marginBottom: 24, lineHeight: 1.7 }}>
-            Xato savollar <strong style={{ color: '#0F172A' }}>10 daqiqa</strong>dan keyin qaytadan ko'rsatiladi.<br />
+          <div style={{ fontSize: 13, color: 'var(--text3)', marginBottom: 24, lineHeight: 1.7 }}>
+            Xato savollar <strong style={{ color: 'var(--text)' }}>10 daqiqa</strong>dan keyin qaytadan ko'rsatiladi.<br />
             To'g'ri savollar keyingi bosqichga o'tdi!
           </div>
           <button onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto' }}>
@@ -193,11 +193,11 @@ const SmartReviewPage = () => {
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
         <div>
-          <h1 style={{ fontSize: 22, fontWeight: 900, color: '#0F172A', margin: '0 0 2px' }}>🧠 Aqlli Takrorlash</h1>
-          <div style={{ fontSize: 12, color: '#94A3B8' }}>{currentIdx + 1} / {cards.length} savol</div>
+          <h1 style={{ fontSize: 22, fontWeight: 900, color: 'var(--text)', margin: '0 0 2px' }}>🧠 Aqlli Takrorlash</h1>
+          <div style={{ fontSize: 12, color: 'var(--text3)' }}>{currentIdx + 1} / {cards.length} savol</div>
         </div>
-        <button onClick={goBack} style={{ width: 38, height: 38, borderRadius: 12, border: '1.5px solid #E2E8F0', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
-          <ArrowLeft size={18} color="#334155" />
+        <button onClick={goBack} style={{ width: 38, height: 38, borderRadius: 12, border: '1.5px solid var(--border)', background: 'var(--bg2)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+          <ArrowLeft size={18} color="var(--text2)" />
         </button>
       </div>
 
@@ -208,18 +208,18 @@ const SmartReviewPage = () => {
 
       <AnimatePresence mode="wait">
         <motion.div key={currentIdx} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.15 }}>
-          <div style={{ background: '#fff', border: '1.5px solid #E2E8F0', borderRadius: 20, padding: '24px 20px', maxWidth: 700, margin: '0 auto' }}>
+          <div style={{ background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 20, padding: '24px 20px', maxWidth: 700, margin: '0 auto' }}>
 
             {/* Header: Daraja + Stats + Objection */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, flexWrap: 'wrap', gap: 10 }}>
-              <span style={{ fontSize: 11, fontWeight: 700, padding: '4px 10px', borderRadius: 8, background: '#F0F9FF', color: '#0284C7' }}>
+              <span style={{ fontSize: 11, fontWeight: 700, padding: '4px 10px', borderRadius: 8, background: 'var(--blue-bg)', color: 'var(--blue)' }}>
                 <Clock size={11} style={{ verticalAlign: -1, marginRight: 3 }} />
                 {levelNames[card.level || 0]}
               </span>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                 <span style={{ fontSize: 12, fontWeight: 700, color: '#16A34A' }}>✅ {sessionStats.correct}</span>
                 <span style={{ fontSize: 12, fontWeight: 700, color: '#DC2626' }}>❌ {sessionStats.wrong}</span>
-                <button onClick={() => setShowObjectionModal(true)} style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '5px 10px', borderRadius: 8, border: '1px solid #E2E8F0', background: '#F8FAFC', fontSize: 11, fontWeight: 600, color: '#64748B', cursor: 'pointer', fontFamily: 'inherit' }}>
+                <button onClick={() => setShowObjectionModal(true)} style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '5px 10px', borderRadius: 8, border: '1px solid var(--border)', background: 'var(--bg3)', fontSize: 11, fontWeight: 600, color: 'var(--text3)', cursor: 'pointer', fontFamily: 'inherit' }}>
                   <MessageCircle size={13} /> E'tiroz
                 </button>
               </div>
@@ -227,25 +227,25 @@ const SmartReviewPage = () => {
 
             <QuestionMedia question={card} />
             {card.isHtml ? (
-              <SafeHtml html={card.q} style={{ fontSize: 17, fontWeight: 700, lineHeight: 1.6, marginBottom: 20, color: '#0F172A' }} />
+              <SafeHtml html={card.q} style={{ fontSize: 17, fontWeight: 700, lineHeight: 1.6, marginBottom: 20, color: 'var(--text)' }} />
             ) : (
-              <div style={{ fontSize: 17, fontWeight: 700, lineHeight: 1.6, marginBottom: 20, color: '#0F172A', whiteSpace: 'pre-line' }}>{card.q}</div>
+              <div style={{ fontSize: 17, fontWeight: 700, lineHeight: 1.6, marginBottom: 20, color: 'var(--text)', whiteSpace: 'pre-line' }}>{card.q}</div>
             )}
 
             {/* Variantlar */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {card.opts.map((opt, i) => {
-                let bg = '#FAFAFA', border = '1.5px solid #E2E8F0', color = '#334155';
+                let bg = 'var(--bg3)', border = '1.5px solid var(--border)', color = 'var(--text2)';
                 if (answered !== null) {
                   if (i === card.correct) { bg = '#DCFCE7'; border = '2px solid #86EFAC'; color = '#166534'; }
                   else if (i === answered && i !== card.correct) { bg = '#FEE2E2'; border = '2px solid #FCA5A5'; color = '#991B1B'; }
-                  else { bg = '#F8FAFC'; color = '#CBD5E1'; }
+                  else { bg = 'var(--bg3)'; color = 'var(--text3)'; }
                 }
                 return (
                   <button key={i} onClick={() => handleAnswer(i)}
                     style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '13px 16px', borderRadius: 12, textAlign: 'left', border, background: bg, cursor: answered !== null ? 'default' : 'pointer', fontFamily: 'inherit', fontSize: 14, fontWeight: 500, color }}
                   >
-                    <div style={{ width: 30, height: 30, borderRadius: 8, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 13, background: answered !== null && i === card.correct ? '#16A34A' : answered === i && i !== card.correct ? '#DC2626' : '#F1F5F9', color: answered !== null && (i === card.correct || i === answered) ? '#fff' : '#94A3B8' }}>
+                    <div style={{ width: 30, height: 30, borderRadius: 8, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 13, background: answered !== null && i === card.correct ? '#16A34A' : answered === i && i !== card.correct ? '#DC2626' : 'var(--bg3)', color: answered !== null && (i === card.correct || i === answered) ? '#fff' : 'var(--text3)' }}>
                       {answered !== null && i === card.correct ? <CheckCircle size={15} /> : answered === i && i !== card.correct ? <XCircle size={15} /> : ['A','B','C','D'][i]}
                     </div>
                     {opt.replace(/^[A-D]\)\s*/, '')}
