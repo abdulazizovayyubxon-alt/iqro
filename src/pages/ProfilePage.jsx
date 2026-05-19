@@ -9,7 +9,8 @@ import { db, auth } from '../firebase';
 import { motion } from 'framer-motion';
 import { 
   User, Phone, Calendar, Landmark, Settings, LogOut, Trash2, 
-  ChevronRight, Save, Edit3, ArrowLeft, Shield, Sparkles, HelpCircle 
+  ChevronRight, Save, Edit3, ArrowLeft, Shield, Sparkles, HelpCircle,
+  Moon, Sun
 } from 'lucide-react';
 
 const GOALS = [
@@ -30,7 +31,7 @@ const GENDERS = [
   { id: 'female', label: 'Ayol' }
 ];
 
-const ProfilePage = () => {
+const ProfilePage = ({ theme, toggleTheme }) => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
   const { state, updateState } = useContext(AppContext);
@@ -43,6 +44,13 @@ const ProfilePage = () => {
   const [goal, setGoal] = useState('');
   const [subject, setSubject] = useState('');
   const [phone, setPhone] = useState('');
+  
+  // Tizim sozlamalari
+  const [examDate, setExamDate] = useState(() => {
+    const saved = localStorage.getItem('CUSTOM_EXAM_DATE');
+    if (saved) return saved.split('T')[0];
+    return '';
+  });
   
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -104,6 +112,15 @@ const ProfilePage = () => {
       // AppContext dagi activeCategory ni ham moslashtiramiz agar fan o'zgargan bo'lsa
       if (subject && subject !== 'multi' && state.activeCategory !== subject) {
         updateState({ activeCategory: subject });
+      }
+
+      // 3. Imtihon sanasini saqlash
+      if (examDate) {
+        localStorage.setItem('CUSTOM_EXAM_DATE', new Date(examDate).toISOString());
+        window.dispatchEvent(new Event('storage'));
+      } else {
+        localStorage.removeItem('CUSTOM_EXAM_DATE');
+        window.dispatchEvent(new Event('storage'));
       }
 
       showToast("Profil muvaffaqiyatli saqlandi!", "success");
@@ -303,6 +320,51 @@ const ProfilePage = () => {
                   <option key={g.id} value={g.id}>{g.badge} {g.title}</option>
                 ))}
               </select>
+            </div>
+          </div>
+        </div>
+
+        {/* Tizim sozlamalari */}
+        <div className="glass-panel" style={{ padding: '20px 24px' }}>
+          <h2 style={{ fontSize: 16, fontWeight: 800, color: 'var(--text)', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <Settings size={18} style={{ color: 'var(--blue)' }} /> Tizim sozlamalari
+          </h2>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            {/* Tungi rejim */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: 12, borderBottom: '1px solid var(--border)' }}>
+              <div>
+                <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)', display: 'block' }}>Tungi rejim</span>
+                <span style={{ fontSize: 12, color: 'var(--text3)' }}>Ilova interfeysi ko'rinishini o'zgartirish</span>
+              </div>
+              <button
+                type="button"
+                className={`btn btn-sm ${theme === 'dark' ? 'btn-primary' : 'btn-outline'}`}
+                onClick={toggleTheme}
+                style={{ padding: '8px 16px', borderRadius: 10, display: 'flex', alignItems: 'center', gap: 6, fontSize: 13 }}
+              >
+                {theme === 'dark' ? <Moon size={14} /> : <Sun size={14} />}
+                {theme === 'dark' ? 'Yoqilgan' : 'O\'chirilgan'}
+              </button>
+            </div>
+
+            {/* Imtihon sanasi */}
+            <div>
+              <label style={{ fontSize: 13, fontWeight: 600, color: 'var(--text2)', marginBottom: 6, display: 'block' }}>Imtihon sanasi (Kalkulyator uchun)</label>
+              <input 
+                type="date" 
+                value={examDate}
+                onChange={(e) => setExamDate(e.target.value)}
+                style={{
+                  width: '100%', padding: '12px 14px', borderRadius: 12, 
+                  border: '1.5px solid var(--border)', background: 'var(--bg3)',
+                  color: 'var(--text)', fontSize: 14, fontFamily: 'inherit',
+                  outline: 'none'
+                }}
+              />
+              <span style={{ fontSize: 11, color: 'var(--text3)', marginTop: 4, display: 'block' }}>
+                Ushbu sana asosida platformaning yuqori burchagida imtihongacha qolgan kunlar ko'rsatiladi.
+              </span>
             </div>
           </div>
         </div>

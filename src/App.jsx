@@ -183,7 +183,7 @@ function App() {
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="/migration" element={<MigrationPage />} />
                 <Route path="/referral" element={<ReferralPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/profile" element={<ProfilePage theme={theme} toggleTheme={toggleTheme} />} />
                 <Route path="*" element={<Navigate to="/test" replace />} />
               </Routes>
             </AnimatePresence>
