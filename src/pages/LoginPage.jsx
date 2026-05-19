@@ -186,7 +186,7 @@ export default function LoginPage() {
               {/* ── STEP: PHONE ── */}
               {step === STEPS.PHONE && (
                 <>
-                  <h1 style={s.title}>Telefon raqamingiz</h1>
+                  <h1 style={s.title}>Xush kelibsiz</h1>
                   <p style={s.subtitle}>
                     Raqamingizni kiriting va parol so'ralmasdan profilingizga tezkor kiring.
                   </p>
@@ -363,7 +363,7 @@ export default function LoginPage() {
 // ── Styles ──
 const s = {
   pageOuter: {
-    minHeight: '100vh',
+    minHeight: IS_MOBILE ? '100dvh' : '100vh',
     background: IS_MOBILE ? 'var(--bg)' : 'linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%)',
     display: IS_MOBILE ? 'block' : 'flex',
     alignItems: 'center',
@@ -375,7 +375,7 @@ const s = {
   page: {
     width: '100%',
     maxWidth: 460,
-    minHeight: IS_MOBILE ? '100vh' : 'auto',
+    minHeight: IS_MOBILE ? '100dvh' : 'auto',
     background: 'var(--bg2)',
     borderRadius: IS_MOBILE ? 0 : 24,
     boxShadow: IS_MOBILE ? 'none' : '0 20px 60px rgba(0,0,0,0.05)',
@@ -387,25 +387,25 @@ const s = {
   progressFill: { height: '100%', background: PRIMARY, borderRadius: '0 2px 2px 0' },
   header: {
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-    padding: '12px 20px 0',
+    padding: IS_MOBILE ? '8px 16px 0' : '12px 20px 0',
   },
   backBtn: {
     background: 'none', border: 'none', cursor: 'pointer',
     color: 'var(--text)', padding: 6, display: 'flex', alignItems: 'center', borderRadius: 8,
   },
-  content: { flex: 1, padding: '28px 24px 16px', overflowY: 'auto' },
-  title: { fontSize: 28, fontWeight: 800, lineHeight: 1.2, marginBottom: 10, color: 'var(--text)' },
-  subtitle: { fontSize: 15, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 28 },
+  content: { flex: 1, padding: IS_MOBILE ? '16px 20px 8px' : '28px 24px 16px', overflowY: 'auto' },
+  title: { fontSize: IS_MOBILE ? 26 : 28, fontWeight: 800, lineHeight: 1.2, marginBottom: 8, color: 'var(--text)' },
+  subtitle: { fontSize: 14, color: 'var(--text3)', lineHeight: 1.5, marginBottom: IS_MOBILE ? 16 : 28 },
   phoneWrap: { marginBottom: 8 },
   phoneInput: {
-    width: '100%', fontSize: 28, fontWeight: 700,
+    width: '100%', fontSize: IS_MOBILE ? 24 : 28, fontWeight: 700,
     color: 'var(--text)', border: 'none', outline: 'none',
     background: 'transparent', fontFamily: 'inherit',
     caretColor: PRIMARY, letterSpacing: 1,
     paddingBottom: 8, borderBottom: `2px solid ${PRIMARY}`,
   },
   input: {
-    width: '100%', padding: '15px 16px', fontSize: 16,
+    width: '100%', padding: '14px 16px', fontSize: 15,
     border: '1.5px solid var(--border)', borderRadius: 14,
     background: 'var(--bg3)', color: 'var(--text)', fontFamily: 'inherit',
     outline: 'none', marginBottom: 12, transition: 'border-color 0.2s',
@@ -422,22 +422,28 @@ const s = {
     textDecoration: 'underline', textUnderlineOffset: 3,
   },
   errorText: { marginTop: 10, fontSize: 13, color: '#EF4444', fontWeight: 500 },
-  footer: { padding: '16px 24px calc(24px + env(safe-area-inset-bottom))', borderTop: '1px solid var(--border)', background: 'var(--bg2)' },
+  footer: { 
+    padding: IS_MOBILE 
+      ? '12px 20px calc(12px + env(safe-area-inset-bottom))' 
+      : '16px 24px calc(24px + env(safe-area-inset-bottom))', 
+    borderTop: '1px solid var(--border)', 
+    background: 'var(--bg2)' 
+  },
   primaryBtn: {
-    width: '100%', padding: '16px', borderRadius: 14,
+    width: '100%', padding: IS_MOBILE ? '14px' : '16px', borderRadius: 14,
     background: PRIMARY, color: '#fff', border: 'none',
     fontWeight: 700, fontSize: 16, cursor: 'pointer',
-    fontFamily: 'inherit', transition: 'opacity 0.2s', marginBottom: 12,
+    fontFamily: 'inherit', transition: 'opacity 0.2s', marginBottom: IS_MOBILE ? 8 : 12,
   },
-  orRow: { display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 },
+  orRow: { display: 'flex', alignItems: 'center', gap: 12, marginBottom: IS_MOBILE ? 8 : 12 },
   orLine: { flex: 1, height: 1, background: 'var(--border)' },
   orText: { fontSize: 13, color: 'var(--text3)', fontWeight: 500 },
   outlineBtn: {
-    width: '100%', padding: '14px 16px', borderRadius: 14,
+    width: '100%', padding: IS_MOBILE ? '12px 16px' : '14px 16px', borderRadius: 14,
     border: '1.5px solid var(--border)', background: 'var(--bg2)',
     color: 'var(--text)', fontWeight: 600, fontSize: 15,
     cursor: 'pointer', fontFamily: 'inherit',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-    marginBottom: 10, transition: 'background 0.15s',
+    marginBottom: IS_MOBILE ? 0 : 10, transition: 'background 0.15s',
   },
 };
