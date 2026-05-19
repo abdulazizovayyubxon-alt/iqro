@@ -115,13 +115,13 @@ const LeaderboardPage = () => {
   const Avatar = ({ entry, size = 44 }) => (
     <div style={{
       width: size, height: size, borderRadius: '50%', flexShrink: 0,
-      background: '#E2E8F0', overflow: 'hidden',
+      background: 'var(--bg3)', overflow: 'hidden',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       border: entry.rank <= 3 ? `2px solid ${entry.rank === 1 ? '#F59E0B' : entry.rank === 2 ? '#9CA3AF' : '#B45309'}` : 'none',
     }}>
       {entry.photoURL
         ? <img src={entry.photoURL} alt={entry.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-        : <span style={{ fontSize: size * 0.38, fontWeight: 800, color: '#64748B' }}>{(entry.name || '?').charAt(0).toUpperCase()}</span>
+        : <span style={{ fontSize: size * 0.38, fontWeight: 800, color: 'var(--text3)' }}>{(entry.name || '?').charAt(0).toUpperCase()}</span>
       }
     </div>
   );
@@ -130,7 +130,7 @@ const LeaderboardPage = () => {
     if (rank === 1) return <Crown size={20} style={{ color: '#F59E0B' }} />;
     if (rank === 2) return <Medal size={20} style={{ color: '#9CA3AF' }} />;
     if (rank === 3) return <Medal size={20} style={{ color: '#B45309' }} />;
-    return <span style={{ fontSize: 15, fontWeight: 800, color: '#94A3B8', minWidth: 20, textAlign: 'center' }}>{rank}</span>;
+    return <span style={{ fontSize: 15, fontWeight: 800, color: 'var(--text3)', minWidth: 20, textAlign: 'center' }}>{rank}</span>;
   };
 
   const LeaderRow = ({ entry, pinned }) => (
@@ -139,8 +139,8 @@ const LeaderboardPage = () => {
       style={{
         display: 'flex', alignItems: 'center', gap: 14,
         padding: '12px 16px', borderRadius: 14,
-        border: `1.5px solid ${entry.isMe ? PRIMARY : '#E2E8F0'}`,
-        background: entry.isMe ? '#F0F9FF' : pinned ? '#FFFBEB' : '#FAFAFA',
+        border: `1.5px solid ${entry.isMe ? PRIMARY : 'var(--border)'}`,
+        background: entry.isMe ? 'var(--blue-bg)' : pinned ? 'var(--amber-bg)' : 'var(--bg2)',
         boxShadow: entry.isMe ? `0 0 0 3px ${PRIMARY}20` : 'none',
         position: 'relative', overflow: 'hidden',
       }}
@@ -154,7 +154,7 @@ const LeaderboardPage = () => {
       <Avatar entry={entry} size={40} />
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ fontSize: 14, fontWeight: 700, color: '#0F172A', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {entry.name}
           </span>
           {entry.isMe && (
@@ -164,16 +164,16 @@ const LeaderboardPage = () => {
             <span style={{ fontSize: 10, background: '#F59E0B', color: '#fff', padding: '1px 7px', borderRadius: 8, fontWeight: 700, flexShrink: 0 }}>PIN</span>
           )}
         </div>
-        <div style={{ fontSize: 11, color: '#94A3B8', marginTop: 2, display: 'flex', gap: 10 }}>
+        <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 2, display: 'flex', gap: 10 }}>
           <span>📝 {entry.answered}</span>
           {entry.streak > 0 && <span>🔥 {entry.streak} kun</span>}
         </div>
       </div>
       <div style={{ textAlign: 'right', flexShrink: 0 }}>
-        <div style={{ fontSize: 18, fontWeight: 900, color: entry.isMe ? PRIMARY : '#0F172A' }}>
+        <div style={{ fontSize: 18, fontWeight: 900, color: entry.isMe ? PRIMARY : 'var(--text)' }}>
           {entry.score.toLocaleString()}
         </div>
-        <div style={{ fontSize: 10, color: '#94A3B8', fontWeight: 600 }}>BALL</div>
+        <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 600 }}>BALL</div>
       </div>
       {isAdmin && (
         <button
@@ -200,7 +200,7 @@ const LeaderboardPage = () => {
           {/* 2-o'rin */}
           <div style={s.podiumItem}>
             <Avatar entry={top3[1]} size={52} />
-            <div style={{ fontSize: 11, fontWeight: 700, color: '#334155', marginTop: 6, textAlign: 'center', maxWidth: 80, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{top3[1].name}</div>
+            <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text2)', marginTop: 6, textAlign: 'center', maxWidth: 80, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{top3[1].name}</div>
             <div style={{ ...s.podiumBlock, height: 60, background: '#9CA3AF' }}>
               <span style={{ fontSize: 16, fontWeight: 900, color: '#fff' }}>2</span>
             </div>
@@ -209,7 +209,7 @@ const LeaderboardPage = () => {
           <div style={{ ...s.podiumItem, marginTop: -20 }}>
             <Crown size={28} style={{ color: '#F59E0B', marginBottom: 4 }} />
             <Avatar entry={top3[0]} size={64} />
-            <div style={{ fontSize: 12, fontWeight: 700, color: '#334155', marginTop: 6, textAlign: 'center', maxWidth: 90, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{top3[0].name}</div>
+            <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text2)', marginTop: 6, textAlign: 'center', maxWidth: 90, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{top3[0].name}</div>
             <div style={{ ...s.podiumBlock, height: 80, background: '#F59E0B' }}>
               <span style={{ fontSize: 20, fontWeight: 900, color: '#fff' }}>1</span>
             </div>
@@ -217,7 +217,7 @@ const LeaderboardPage = () => {
           {/* 3-o'rin */}
           <div style={s.podiumItem}>
             <Avatar entry={top3[2]} size={52} />
-            <div style={{ fontSize: 11, fontWeight: 700, color: '#334155', marginTop: 6, textAlign: 'center', maxWidth: 80, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{top3[2].name}</div>
+            <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text2)', marginTop: 6, textAlign: 'center', maxWidth: 80, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{top3[2].name}</div>
             <div style={{ ...s.podiumBlock, height: 44, background: '#B45309' }}>
               <span style={{ fontSize: 16, fontWeight: 900, color: '#fff' }}>3</span>
             </div>
@@ -259,8 +259,8 @@ const LeaderboardPage = () => {
 const s = {
   page: { maxWidth: 600, margin: '0 auto', padding: '20px 16px 120px' },
   header: { marginBottom: 20 },
-  title: { fontSize: 26, fontWeight: 900, color: '#0F172A', margin: '0 0 4px' },
-  subtitle: { fontSize: 14, color: '#94A3B8', margin: 0 },
+  title: { fontSize: 26, fontWeight: 900, color: 'var(--text)', margin: '0 0 4px' },
+  subtitle: { fontSize: 14, color: 'var(--text3)', margin: 0 },
   podium: {
     display: 'flex', alignItems: 'flex-end', justifyContent: 'center',
     gap: 16, marginBottom: 28, padding: '20px 0 0',
@@ -273,16 +273,16 @@ const s = {
     display: 'flex', alignItems: 'center', justifyContent: 'center',
   },
   listWrap: { display: 'flex', flexDirection: 'column', gap: 0 },
-  empty: { textAlign: 'center', padding: 40, color: '#94A3B8', fontSize: 15 },
+  empty: { textAlign: 'center', padding: 40, color: 'var(--text3)', fontSize: 15 },
   pinnedWrap: {
     position: 'fixed', bottom: 0, left: 0, right: 0,
     padding: '0 16px calc(80px + env(safe-area-inset-bottom)) 16px',
-    background: 'linear-gradient(transparent, #fff 30%)',
+    background: 'linear-gradient(transparent, var(--bg) 30%)',
     zIndex: 100,
     maxWidth: 600, margin: '0 auto',
   },
   pinnedDivider: { display: 'flex', justifyContent: 'center', marginBottom: 8 },
-  pinnedDots: { fontSize: 14, color: '#CBD5E1', letterSpacing: 4 },
+  pinnedDots: { fontSize: 14, color: 'var(--border2)', letterSpacing: 4 },
 };
 
 export default LeaderboardPage;

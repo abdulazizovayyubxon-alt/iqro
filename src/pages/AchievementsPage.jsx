@@ -54,8 +54,8 @@ const AchievementsPage = () => {
       style={{ maxWidth: 700, margin: '0 auto', padding: '20px 16px 32px' }}
     >
       {/* Header */}
-      <h1 style={{ fontSize: 26, fontWeight: 900, color: '#0F172A', margin: '0 0 4px' }}>🏅 Yutuqlar</h1>
-      <p style={{ fontSize: 14, color: '#94A3B8', marginBottom: 24 }}>Statistika va natijalaringiz</p>
+      <h1 style={{ fontSize: 26, fontWeight: 900, color: 'var(--text)', margin: '0 0 4px' }}>🏅 Yutuqlar</h1>
+      <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>Statistika va natijalaringiz</p>
 
       {/* Level Header */}
       <div style={{
@@ -74,20 +74,20 @@ const AchievementsPage = () => {
               <Trophy size={28} color="white" />
             </div>
             <div>
-              <div style={{ fontSize: 20, fontWeight: 900, color: '#0F172A' }}>
+              <div style={{ fontSize: 20, fontWeight: 900, color: 'var(--text)' }}>
                 {levelInfo.name} <span style={{ color: levelInfo.color }}>Lv.{levelInfo.level}</span>
               </div>
-              <div style={{ fontSize: 13, color: '#94A3B8', marginTop: 2 }}>
+              <div style={{ fontSize: 13, color: 'var(--text3)', marginTop: 2 }}>
                 ⚡ {totalXP} XP · {earnedBadges.length}/{BADGES.length} badge
               </div>
             </div>
           </div>
           <div style={{ flex: 1, minWidth: 180 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, fontSize: 12, color: '#94A3B8' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, fontSize: 12, color: 'var(--text3)' }}>
               <span>Keyingi daraja</span>
               <span style={{ fontWeight: 700, color: levelInfo.color }}>{totalXP}/{nextLevelXP} XP</span>
             </div>
-            <div style={{ height: 8, background: '#E2E8F0', borderRadius: 4, overflow: 'hidden' }}>
+            <div style={{ height: 8, background: 'var(--border)', borderRadius: 4, overflow: 'hidden' }}>
               <div style={{ width: `${levelPct}%`, height: '100%', background: levelInfo.color, borderRadius: 4, transition: 'width 1s ease' }} />
             </div>
           </div>
@@ -257,14 +257,14 @@ const AchievementsPage = () => {
       })()}
 
       {/* Tabs */}
-      <div style={{ display: 'flex', background: '#F1F5F9', borderRadius: 12, padding: 3, gap: 3, marginBottom: 24 }}>
+      <div style={{ display: 'flex', background: 'var(--bg3)', borderRadius: 12, padding: 3, gap: 3, marginBottom: 24 }}>
         {[{ id: 'achievements', label: '🏅 Yutuqlar' }, { id: 'statistics', label: '📊 Statistika' }].map(tab => (
           <button
             key={tab.id}
             style={{
               flex: 1, padding: '10px', borderRadius: 10, border: 'none',
-              background: activeTab === tab.id ? '#fff' : 'transparent',
-              color: activeTab === tab.id ? '#0F172A' : '#94A3B8',
+              background: activeTab === tab.id ? 'var(--bg2)' : 'transparent',
+              color: activeTab === tab.id ? 'var(--text)' : 'var(--text3)',
               fontWeight: 700, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit',
               boxShadow: activeTab === tab.id ? '0 1px 4px rgba(0,0,0,0.08)' : 'none',
               transition: 'all 0.18s',
@@ -295,8 +295,8 @@ const AchievementsPage = () => {
                     key={badge.id}
                     style={{
                       padding: '16px 12px', borderRadius: 16, textAlign: 'center',
-                      border: earned ? `1.5px solid ${badge.color}40` : '1.5px solid #E2E8F0',
-                      background: earned ? `${badge.color}0F` : '#FAFAFA',
+                      border: earned ? `1.5px solid ${badge.color}40` : '1.5px solid var(--border)',
+                      background: earned ? `${badge.color}0F` : 'var(--bg3)',
                       opacity: earned ? 1 : 0.55,
                       display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
                     }}
@@ -304,9 +304,9 @@ const AchievementsPage = () => {
                     <div style={{ fontSize: 36, filter: earned ? 'none' : 'grayscale(1)' }}>
                       {earned ? badge.icon : '🔒'}
                     </div>
-                    <div style={{ fontSize: 12, fontWeight: 700, color: '#0F172A', lineHeight: 1.3 }}>{badge.name}</div>
-                    <div style={{ fontSize: 11, color: '#94A3B8', lineHeight: 1.4 }}>{badge.desc}</div>
-                    <div style={{ fontSize: 12, fontWeight: 800, color: earned ? badge.color : '#CBD5E1' }}>+{badge.xp} XP</div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text)', lineHeight: 1.3 }}>{badge.name}</div>
+                    <div style={{ fontSize: 11, color: 'var(--text3)', lineHeight: 1.4 }}>{badge.desc}</div>
+                    <div style={{ fontSize: 12, fontWeight: 800, color: earned ? badge.color : 'var(--text3)' }}>+{badge.xp} XP</div>
                   </div>
                 );
               })}
