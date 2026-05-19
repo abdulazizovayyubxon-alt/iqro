@@ -41,7 +41,7 @@ export default function BottomNav() {
   return (
     <>
       {/* Bottom Nav Bar */}
-      <nav style={styles.nav}>
+      <nav className="bottom-nav" style={styles.nav}>
         {TABS.map(tab => {
           const Icon = tab.icon;
           const isActive = tab.id === activeTab;

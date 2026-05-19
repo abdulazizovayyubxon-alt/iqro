@@ -100,6 +100,8 @@ const PremiumModal = ({ isOpen, onClose }) => {
     setTimeout(() => { setProcessing(false); }, 2000);
   };
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
   return (
     <div
       onClick={onClose}
@@ -108,23 +110,23 @@ const PremiumModal = ({ isOpen, onClose }) => {
         background: 'rgba(0,0,0,0.7)',
         backdropFilter: 'blur(12px)',
         zIndex: 9999,
-        display: 'flex', alignItems: 'flex-end',
+        display: 'flex',
+        alignItems: isMobile ? 'flex-end' : 'center',
         justifyContent: 'center',
-        padding: '0',
+        padding: isMobile ? 0 : '20px',
       }}
     >
       <motion.div
-        initial={{ y: '100%', opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: '100%', opacity: 0 }}
+        initial={isMobile ? { y: '100%', opacity: 0 } : { scale: 0.92, opacity: 0 }}
+        animate={isMobile ? { y: 0, opacity: 1 } : { scale: 1, opacity: 1 }}
+        exit={isMobile ? { y: '100%', opacity: 0 } : { scale: 0.92, opacity: 0 }}
         transition={{ type: 'spring', stiffness: 340, damping: 35 }}
         onClick={e => e.stopPropagation()}
         style={{
           width: '100%', maxWidth: 480,
           background: 'linear-gradient(180deg, #1a1a2e 0%, #0f0f1e 100%)',
-          borderRadius: '24px 24px 0 0',
+          borderRadius: isMobile ? '24px 24px 0 0' : '24px',
           border: '1px solid rgba(255,255,255,0.1)',
-          borderBottom: 'none',
           overflow: 'hidden',
           maxHeight: '92vh',
           overflowY: 'auto',

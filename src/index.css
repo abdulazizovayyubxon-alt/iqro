@@ -1413,15 +1413,26 @@ body {
 }
 
 /* ========== BOTTOM NAV (Yangi mobil navigatsiya) ========== */
+
+/* Desktop: sidebar ko'rinadi, BottomNav yashirilgan */
+.bottom-nav {
+  display: none !important;
+}
+
 @media (max-width: 768px) {
   /* Eski sidebar ni mobilda yashiramiz */
   .sidebar {
     display: none !important;
   }
 
-  /* Yangi BottomNav komponentini ko'rsatamiz */
-  nav[style*="fixed"][style*="bottom: 0"] {
+  /* Yangi BottomNav mobilda ko'rinadi */
+  .bottom-nav {
     display: grid !important;
+  }
+
+  /* Main content pastki paddingni faqat mobilda qo'shamiz */
+  .main-content {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom)) !important;
   }
 }
 

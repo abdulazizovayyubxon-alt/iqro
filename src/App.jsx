@@ -166,7 +166,7 @@ function App() {
       <OfflineIndicator />
       <div className="layout-body">
         <Sidebar />
-        <main className="main-content" style={{ paddingBottom: 'calc(72px + env(safe-area-inset-bottom))' }}>
+        <main className="main-content">
           <Suspense fallback={<PageSkeleton />}>
             <AnimatePresence mode="wait">
               <Routes location={location} key={location.pathname}>
