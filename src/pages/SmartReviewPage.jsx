@@ -272,5 +272,6 @@ const SmartReviewPage = () => {
       <ObjectionModal isOpen={showObjectionModal} onClose={() => setShowObjectionModal(false)} questionText={cards[currentIdx]?.q} onSubmit={handleObjection} />
     </motion.div>
   );
+};
 
 export default SmartReviewPage;

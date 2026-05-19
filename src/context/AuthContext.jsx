@@ -9,7 +9,9 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
-  sendPasswordResetEmail
+  sendPasswordResetEmail,
+  setPersistence,
+  browserLocalPersistence
 } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import {
@@ -77,102 +79,30 @@ const hasRepeatedChars = (password, minRepeat = 4) => {
   return false;
 };
 
-// Parol kuchi ballini hisoblash (0-100)
+// Parol kuchi ballini hisoblash (soddalashtirilgan)
 const calculatePasswordStrength = (password, username = '') => {
   if (!password) return { score: 0, level: 'none', label: '' };
   
-  let score = 0;
-  const checks = {
-    length: false,
-    uppercase: false,
-    lowercase: false,
-    digit: false,
-    special: false,
-    noSequential: false,
-    noRepeated: false,
-    notBlacklisted: false,
-    notUsername: false
+  const score = Math.min(100, Math.round((password.length / 6) * 100));
+  const level = password.length >= 6 ? 'strong' : 'weak';
+  const label = password.length >= 6 ? 'Etarli' : 'Kamida 6 belgi';
+
+  return {
+    score,
+    level,
+    label,
+    checks: {
+      length: password.length >= 6,
+      uppercase: true,
+      digit: true
+    }
   };
-
-  // Uzunlik — 10 dan 16 gacha
-  if (password.length >= 10) { score += 20; checks.length = true; }
-  else if (password.length >= 8) { score += 10; }
-  else if (password.length >= 6) { score += 5; }
-
-  // Katta harf
-  if (/[A-Z]/.test(password)) { score += 15; checks.uppercase = true; }
-
-  // Kichik harf
-  if (/[a-z]/.test(password)) { score += 15; checks.lowercase = true; }
-
-  // Raqam
-  if (/\d/.test(password)) { score += 15; checks.digit = true; }
-
-  // Maxsus belgi
-  if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]/.test(password)) { score += 15; checks.special = true; }
-
-  // Ketma-ket belgilar yo'q
-  if (!hasSequentialChars(password)) { score += 5; checks.noSequential = true; }
-  else { score -= 10; }
-
-  // Takrorlanuvchi belgilar yo'q
-  if (!hasRepeatedChars(password)) { score += 5; checks.noRepeated = true; }
-  else { score -= 10; }
-
-  // Blacklist da emas
-  if (!BLACKLISTED_PASSWORDS.includes(password.toLowerCase())) { score += 5; checks.notBlacklisted = true; }
-  else { score -= 30; }
-
-  // Foydalanuvchi nomi bilan bir xil emas
-  if (username && password.toLowerCase().includes(username.toLowerCase())) {
-    score -= 20;
-  } else {
-    score += 5; checks.notUsername = true;
-  }
-
-  score = Math.max(0, Math.min(100, score));
-
-  let level, label;
-  if (score >= 80) { level = 'strong'; label = 'Mustahkam parol'; }
-  else if (score >= 50) { level = 'medium'; label = "O'rtacha parol"; }
-  else if (score >= 25) { level = 'weak'; label = 'Zaif parol'; }
-  else { level = 'danger'; label = 'Juda zaif'; }
-
-  return { score, level, label, checks };
 };
 
-const validatePassword = (password, username = '') => {
-  if (!password) {
-    return "Parolni kiritish shart.";
-  }
-  if (password.length < 10) {
-    return "Parol kamida 10 ta belgidan iborat bo'lishi kerak.";
-  }
-  if (password.length > 128) {
-    return "Parol juda uzun (maksimum 128 belgi).";
-  }
-  if (!/[A-Z]/.test(password)) {
-    return "Parolda kamida 1 ta katta harf bo'lishi kerak (A-Z).";
-  }
-  if (!/[a-z]/.test(password)) {
-    return "Parolda kamida 1 ta kichik harf bo'lishi kerak (a-z).";
-  }
-  if (!/\d/.test(password)) {
-    return "Parolda kamida 1 ta raqam bo'lishi kerak (0-9).";
-  }
-  if (BLACKLISTED_PASSWORDS.includes(password.toLowerCase())) {
-    return "Bu parol juda oddiy va xavfsiz emas. Boshqa parol tanlang.";
-  }
-  if (hasSequentialChars(password)) {
-    return "Parolda ketma-ket belgilar (1234, abcd, qwerty) ishlatmang.";
-  }
-  if (hasRepeatedChars(password)) {
-    return "Parolda bir xil belgilarni ko'p marta takrorlamang (aaaa).";
-  }
-  if (username && password.toLowerCase().includes(username.toLowerCase())) {
-    return "Parol foydalanuvchi nomi yoki telefon raqamini o'z ichiga olmasligi kerak.";
-  }
-  return null; // Xatolik yo'q
+const validatePassword = (password) => {
+  if (!password) return "Parolni kiritish shart.";
+  if (password.length < 6) return "Parol kamida 6 ta belgidan iborat bo'lishi kerak.";
+  return null;
 };
 
 // ────────────────────────────────────────────────────────
@@ -250,6 +180,11 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
+    // Tizimda uzoq vaqt (kamida 30 kun) qolishi uchun persistence ni o'rnatamiz
+    setPersistence(auth, browserLocalPersistence).catch(err => {
+      console.warn("Persistence rejimini o'rnatishda xato:", err);
+    });
+
     // Redirect natijasini ushlash (mobil yoki fallback uchun)
     getRedirectResult(auth).then(async (result) => {
       if (result?.user) {
