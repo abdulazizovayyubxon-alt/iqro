@@ -5,12 +5,15 @@ import { AnimatePresence } from 'framer-motion';
 import { RefreshCw } from 'lucide-react';
 import { trackPageView, startPageTimer } from './services/analytics';
 import { setUser, clearUser } from './services/sentry';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from './firebase';
 
 // Components (har doim kerak — code split qilinmaydi)
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import LoginPage from './pages/LoginPage';
 import OfflineIndicator from './components/OfflineIndicator';
+import OnboardingPage from './pages/OnboardingPage';
 
 // ══════════════════════════════════════════════════════════════
 // React.lazy — sahifalar faqat kerak bo'lganda yuklanadi
@@ -68,6 +71,21 @@ function App() {
   const { user, loading } = useAuth();
   const location = useLocation();
   const [theme, setTheme] = useState('light');
+  const [needsOnboarding, setNeedsOnboarding] = useState(false);
+  const [onboardingChecked, setOnboardingChecked] = useState(false);
+
+  // Yangi foydalanuvchimi tekshirish
+  useEffect(() => {
+    if (!user) { setOnboardingChecked(true); setNeedsOnboarding(false); return; }
+    const CACHE_KEY = `iqro_onboarding_${user.uid}`;
+    if (localStorage.getItem(CACHE_KEY)) { setNeedsOnboarding(false); setOnboardingChecked(true); return; }
+    getDoc(doc(db, 'users', user.uid)).then(snap => {
+      const done = snap.exists() && snap.data().onboardingDone === true;
+      if (done) localStorage.setItem(CACHE_KEY, '1');
+      setNeedsOnboarding(!done);
+      setOnboardingChecked(true);
+    }).catch(() => { setNeedsOnboarding(false); setOnboardingChecked(true); });
+  }, [user]);
 
   // ── Sahifa kuzatuvi (Analytics) ──
   const PAGE_NAMES = {
@@ -112,16 +130,12 @@ function App() {
   };
 
   // Firebase yuklanmoqda
-  if (loading) {
+  if (loading || !onboardingChecked) {
     return (
       <div style={{
-        height: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        gap: '16px',
-        background: 'var(--bg)'
+        height: '100vh', display: 'flex', alignItems: 'center',
+        justifyContent: 'center', flexDirection: 'column',
+        gap: '16px', background: 'var(--bg)'
       }}>
         <RefreshCw className="spin" size={36} style={{ color: 'var(--accent)' }} />
         <div style={{ color: 'var(--text2)', fontFamily: "'IBM Plex Mono', monospace", fontSize: '14px' }}>
@@ -134,6 +148,14 @@ function App() {
   // Tizimga kirmagan foydalanuvchi
   if (!user) {
     return <LoginPage />;
+  }
+
+  // Yangi foydalanuvchi — Onboarding
+  if (needsOnboarding) {
+    return <OnboardingPage onComplete={() => {
+      localStorage.setItem(`iqro_onboarding_${user.uid}`, '1');
+      setNeedsOnboarding(false);
+    }} />;
   }
 
   // Asosiy ilova
