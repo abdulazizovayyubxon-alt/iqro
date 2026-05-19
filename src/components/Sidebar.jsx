@@ -137,14 +137,6 @@ const Sidebar = () => {
             <span className="nav-label">Do'stlarni taklif qilish</span>
           </div>
 
-          <div
-            className={`nav-item ${currentPage === 'profile' ? 'active' : ''}`}
-            onClick={() => navigate('/profile')}
-          >
-            <span className="nav-icon"><User size={20} /></span>
-            <span className="nav-label">Profil</span>
-          </div>
-
           {/* Admin link — faqat admin uchun */}
           {isAdmin && (
             <div
