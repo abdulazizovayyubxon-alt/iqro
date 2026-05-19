@@ -7,42 +7,31 @@ import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { useAdmin } from '../hooks/useAdmin';
 import PremiumModal from '../components/PremiumModal';
-import { SCHEDULE, TOPICS } from '../data/mockData';
-import { Play, Repeat, Zap, MessageCircle, Download, Trash2, Medal, Palette, Clock, Award, Target, Flame, AlertTriangle, Map, CheckCircle2, TrendingUp } from 'lucide-react';
+import { TOPICS } from '../data/mockData';
+import {
+  Play, Zap, Brain, GraduationCap, Trophy,
+  ChevronRight, Clock, Target, TrendingUp,
+  Medal, Palette, CheckCircle2, Trash2,
+  MessageCircle, Download
+} from 'lucide-react';
 import { motion } from 'framer-motion';
 import { EXAM_DATE, EXAM_GOAL_SCORE, EXAM_LABEL } from '../config';
+
+const PRIMARY = '#29B6F6';
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { isAdmin } = useAdmin();
   const { state, updateState } = useContext(AppContext);
-  const { objections, clearObjections, solveObjection, deleteObjection, importObjections, updateObjectionNote } = useContext(ObjectionContext);
+  const { objections, clearObjections, solveObjection, deleteObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
   const { isTrialExpired: isFreeLimitReached, daysLeft: trialDaysLeft } = useTrialExpiry();
-  const [editingId, setEditingId] = useState(null);
-  const [editNote, setEditNote] = useState('');
   const [showPremiumModal, setShowPremiumModal] = useState(false);
-
-
-  const handleNavigation = (topicId, mode) => {
-    // 7 kunlik bepul trial tekshiruvi
-    if (isFreeLimitReached) {
-      setShowPremiumModal(true);
-      return;
-    }
-    updateState({ topicId, testMode: mode });
-    navigate('/test');
-  };
-
-  // FIX: countdown faqat Header da — Dashboard da faqat kun/soat matni (boshqa interval yo'q)
   const [daysLeft, setDaysLeft] = useState('');
 
   useEffect(() => {
-    if (!EXAM_DATE) {
-      setDaysLeft('Bilimingizni oshirishda davom eting!');
-      return;
-    }
+    if (!EXAM_DATE) { setDaysLeft('Bilimingizni oshirishda davom eting!'); return; }
     const calc = () => {
       const diff = EXAM_DATE - new Date();
       if (diff <= 0) setDaysLeft('Imtihon kuni!');
@@ -53,396 +42,327 @@ const Dashboard = () => {
     return () => clearInterval(int);
   }, []);
 
+  const handleNav = (topicId, mode) => {
+    if (isFreeLimitReached) { setShowPremiumModal(true); return; }
+    updateState({ topicId, testMode: mode });
+    navigate('/test');
+  };
+
   const cat = state.activeCategory;
   const catStats = state.stats[cat];
-  const totalAcc = catStats.totalAnswered > 0 ? Math.round((catStats.totalCorrect / catStats.totalAnswered) * 100) : 0;
-
-  const today = new Date();
-  const startDay = new Date('2026-05-02');
-  const dayNum = Math.floor((today - startDay) / 86400000) + 1;
-
-  const downloadObjections = () => {
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(objections || [], null, 2));
-    const downloadAnchorNode = document.createElement('a');
-    downloadAnchorNode.setAttribute("href", dataStr);
-    downloadAnchorNode.setAttribute("download", "iqro_etirozlar.json");
-    document.body.appendChild(downloadAnchorNode);
-    downloadAnchorNode.click();
-    downloadAnchorNode.remove();
-    showToast("E'tirozlar yuklab olindi", 'info');
-  };
-
-  const handleImportObjections = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      try {
-        const json = JSON.parse(event.target.result);
-        importObjections(json);
-        showToast("Ma'lumotlar muvaffaqiyatli qo'shildi!", 'success');
-      } catch (err) {
-        showToast("Faylni o'qishda xatolik!", 'error');
-      }
-    };
-    reader.readAsText(file);
-    e.target.value = ''; // Reset input
-  };
-
+  const totalAcc = catStats.totalAnswered > 0
+    ? Math.round((catStats.totalCorrect / catStats.totalAnswered) * 100) : 0;
   const filteredMistakesCount = catStats.mistakes.length;
 
-  return (
-    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="page">
-      {/* Welcome Banner */}
-      <div className="welcome-banner glass-panel" style={{ 
-        background: state.activeCategory === 'art' ? 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)' : '',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        {/* Mobile Subject Badge */}
-        <div className="mobile-only-item" style={{ 
-          position: 'absolute', 
-          top: '10px', 
-          right: '10px', 
-          background: 'rgba(255,255,255,0.2)', 
-          padding: '4px 10px', 
-          borderRadius: '20px', 
-          fontSize: '10px', 
-          fontWeight: 'bold', 
-          color: 'white',
-          backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255,255,255,0.3)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '4px'
-        }}>
-          {state.activeCategory === 'art' ? <><Palette size={12}/> ART</> : <><Medal size={12}/> CHQBT</>}
-        </div>
+  const dueCards = (state.spacedCards || []).filter(c => c.nextReview <= Date.now()).length;
 
-        <div className="welcome-title">
-          {state.activeCategory === 'art' ? "Tasviriy san'at va Chizmachilik" : "IQRO Platformasi"}
+  const userName = user?.displayName?.split(' ')[0] || 'Foydalanuvchi';
+
+  const quickActions = [
+    {
+      id: 'test', icon: Play, label: 'Dars Testi', desc: 'Barcha mavzular',
+      color: PRIMARY, bg: '#F0F9FF',
+      onClick: () => handleNav(-1, 'exam'),
+    },
+    {
+      id: 'exam', icon: GraduationCap, label: 'Imtihon', desc: '50 savol · 60 daqiqa',
+      color: '#8B5CF6', bg: '#F5F3FF',
+      onClick: () => { if (isFreeLimitReached) { setShowPremiumModal(true); return; } navigate('/exam'); },
+    },
+    {
+      id: 'review', icon: Brain, label: 'Takrorlash', desc: dueCards > 0 ? `${dueCards} savol kutmoqda` : 'Hozircha yo\'q',
+      color: '#10B981', bg: '#ECFDF5',
+      badge: dueCards > 0 ? dueCards : null,
+      onClick: () => navigate('/review'),
+    },
+    {
+      id: 'mistakes', icon: Zap, label: 'Xatolar', desc: `${filteredMistakesCount} ta xato`,
+      color: '#F59E0B', bg: '#FFFBEB',
+      onClick: () => handleNav(-1, 'mistakes'),
+    },
+  ];
+
+  const categoryTopics = TOPICS.filter(t =>
+    Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat
+  );
+
+  return (
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={s.page}>
+
+      {/* ── GREETING ── */}
+      <div style={s.greeting}>
+        <div>
+          <div style={s.greetSub}>Xush kelibsiz 👋</div>
+          <h1 style={s.greetName}>{userName}</h1>
         </div>
-        <div className="welcome-sub">
-          {state.activeCategory === 'art' ? "Sertifikatlashga tayyorgarlik kursi" : `${EXAM_LABEL} | Maqsad: ${EXAM_GOAL_SCORE} ball`}
-        </div>
-        <div className="day-countdown" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-          <Clock size={16} /> {state.activeCategory === 'art' ? "Muvaffaqiyatli o'zlashtirish tilaymiz!" : EXAM_DATE ? `Imtihongacha: ${daysLeft}` : daysLeft}
-        </div>
-        
-        {/* Mobile Quick Switch Button */}
-        <div className="mobile-only-item" style={{ marginTop: '15px' }}>
-          <button 
-            className="btn btn-sm" 
-            style={{ 
-              background: 'rgba(255,255,255,0.15)', 
-              color: 'white', 
-              border: '1px solid rgba(255,255,255,0.3)',
-              fontSize: '11px',
-              padding: '6px 12px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px'
-            }}
-            onClick={() => updateState({ activeCategory: state.activeCategory === 'chqbt' ? 'art' : 'chqbt' })}
-          >
-            {state.activeCategory === 'chqbt' ? <><Palette size={14} /> San'atga o'tish</> : <><Medal size={14} /> CHQBTga o'tish</>}
-          </button>
-        </div>
+        {/* Fan almashtirish */}
+        <button
+          style={s.catSwitch}
+          onClick={() => updateState({ activeCategory: cat === 'chqbt' ? 'art' : 'chqbt' })}
+        >
+          {cat === 'chqbt' ? <><Medal size={14} /> CHQBT</> : <><Palette size={14} /> San'at</>}
+        </button>
       </div>
 
-      {/* 100 ta savol limiti (Non-Premium) - Ixcham va Premium ko'rinish */}
-      {!user?.isPremium && (
-        <div 
-          className="glass-panel hoverable" 
-          onClick={() => setShowPremiumModal(true)}
-          style={{ 
-            padding: '12px 18px', 
-            marginBottom: 24, 
-            border: '1px solid rgba(251, 191, 36, 0.4)', 
-            background: 'linear-gradient(90deg, rgba(251, 191, 36, 0.08) 0%, rgba(245, 158, 11, 0.02) 100%)',
-            borderRadius: '14px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '16px',
-            cursor: 'pointer',
-            boxShadow: '0 4px 12px rgba(251, 191, 36, 0.05)'
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ width: 36, height: 36, borderRadius: '10px', background: 'rgba(251, 191, 36, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--amber)' }}>
-              <Zap size={18} />
+      {/* ── IMTIHON BANNER ── */}
+      {EXAM_DATE && cat !== 'art' && (
+        <div style={s.examBanner}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <div style={{ background: 'rgba(255,255,255,0.2)', borderRadius: 10, padding: '8px 10px' }}>
+              <Clock size={20} color="#fff" />
             </div>
             <div>
-              <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--text)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                Bepul Limit <span style={{ fontSize: 11, background: 'var(--amber)', color: '#000', padding: '1px 6px', borderRadius: '6px', fontWeight: 800 }}>PRO</span>
-              </div>
-              <div style={{ fontSize: 12, color: 'var(--text3)' }}>
-                Cheklovsiz ishlash uchun Premium oling
-              </div>
+              <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>{EXAM_LABEL}</div>
+              <div style={{ fontSize: 18, fontWeight: 800, color: '#fff' }}>{daysLeft}</div>
             </div>
           </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-              <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--amber)' }}>
-                {trialDaysLeft !== null ? `${trialDaysLeft} kun qoldi` : '—'}
-              </div>
-              <div style={{ width: 70, height: 4, background: 'var(--bg3)', borderRadius: 2, overflow: 'hidden', marginTop: 4 }}>
-                <div style={{ width: `${Math.min(((7 - (trialDaysLeft ?? 0)) / 7) * 100, 100)}%`, height: '100%', background: 'var(--amber)' }} />
-              </div>
-            </div>
-            <div style={{ background: 'var(--amber)', color: '#000', padding: '6px 12px', borderRadius: '8px', fontSize: 12, fontWeight: 800 }}>
-              Faollashtirish
-            </div>
+          <div style={s.examGoal}>
+            <Target size={14} />
+            <span>Maqsad: {EXAM_GOAL_SCORE} ball</span>
           </div>
         </div>
       )}
 
-      {/* E'tirozlar paneli - Faqat Adminlarga ko'rinadi */}
-      {isAdmin && (
-        <div id="objections-section" className="glass-panel" style={{ padding: '24px', marginBottom: '24px', border: '1px solid rgba(59, 130, 246, 0.3)', background: 'rgba(59, 130, 246, 0.05)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '10px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--blue)', fontWeight: '800', fontSize: '18px' }}>
-              <MessageCircle size={22} /> E'tirozlar ({objections.length})
-            </div>
-            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <button className="btn btn-outline btn-sm" onClick={downloadObjections}>
-                <Download size={14} /> Yuklab olish
-              </button>
-              
-              <label className="btn btn-outline btn-sm" style={{ cursor: 'pointer' }}>
-                <Download size={14} style={{ transform: 'rotate(180deg)' }} /> Yuklash (Import)
-                <input type="file" accept=".json" onChange={handleImportObjections} style={{ display: 'none' }} />
-              </label>
-
-              {objections.length > 0 && (
-                <button className="btn btn-outline btn-sm" onClick={() => { if(confirm('Barcha e\'tirozlarni o\'chirib yuborasizmi?')) clearObjections(); }} style={{ color: 'var(--red)' }}>
-                  <Trash2 size={14} /> Tozalash
-                </button>
-              )}
+      {/* ── PREMIUM TRIAL BANNER ── */}
+      {!user?.isPremium && (
+        <button style={s.trialBanner} onClick={() => setShowPremiumModal(true)}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <span style={{ fontSize: 24 }}>⚡</span>
+            <div style={{ textAlign: 'left' }}>
+              <div style={{ fontSize: 14, fontWeight: 700, color: '#92400E' }}>
+                Bepul sinov: {trialDaysLeft !== null ? `${trialDaysLeft} kun qoldi` : '—'}
+              </div>
+              <div style={{ fontSize: 12, color: '#B45309' }}>Premium ga o'tib cheksiz ishlang</div>
             </div>
           </div>
-          
-          {objections.length === 0 ? (
-            <div style={{ color: 'var(--text3)', fontSize: '14px', textAlign: 'center', padding: '20px' }}>
-              Hozircha e'tirozlar yo'q. Boshqa qurilmadagi ma'lumotlarni "Yuklash" orqali o'tkazishingiz mumkin.
-            </div>
-          ) : (
-            <div style={{ maxHeight: '500px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', paddingRight: '10px' }}>
-              {[...objections].reverse().map((obj, idx) => (
-                <div 
-                  key={obj.fbId || idx} 
-                  className="glass-panel objection-card" 
-                  style={{ 
-                    background: obj.solved ? 'rgba(16, 185, 129, 0.05)' : 'var(--bg2)', 
-                    padding: '16px', 
-                    borderRadius: '12px', 
-                    border: obj.solved ? '1px solid var(--green)' : '0.5px solid var(--border)',
-                    opacity: obj.solved ? 0.8 : 1,
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <span style={{ 
-                        background: obj.category === 'art' ? 'linear-gradient(90deg, #6366f1, #a855f7)' : 'var(--blue)', 
-                        color: 'white', 
-                        fontSize: '10px', 
-                        padding: '2px 8px', 
-                        borderRadius: '4px',
-                        fontWeight: 'bold'
-                      }}>
-                        {obj.category === 'art' ? '🎨 ART' : '🎖️ CHQBT'}
-                      </span>
-                      <span style={{ color: 'var(--blue)', fontWeight: 'bold', fontSize: '12px', textTransform: 'uppercase' }}>{obj.topic}</span>
-                      {obj.solved ? (
-                        <span style={{ background: 'var(--green)', color: 'white', fontSize: '10px', padding: '2px 8px', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '4px' }}><CheckCircle2 size={10} /> TUZATILDI</span>
-                      ) : (
-                        <span style={{ background: 'var(--amber)', color: 'white', fontSize: '10px', padding: '2px 8px', borderRadius: '10px' }}>YANGI</span>
-                      )}
-                    </div>
-                    <span style={{ color: 'var(--text3)', fontSize: '11px' }}>{obj.date}</span>
-                  </div>
-                  
-                  <div style={{ color: 'var(--text)', fontSize: '14px', marginBottom: '8px', fontWeight: '500' }}>
-                    <span style={{ color: 'var(--text3)' }}>Savol:</span> {obj.question}
-                  </div>
+          <div style={s.trialBtn}>Faollashtirish</div>
+        </button>
+      )}
 
-                  {obj.correct && (
-                    <div style={{ color: 'var(--green)', fontSize: '12px', marginBottom: '12px', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      <CheckCircle2 size={14} /> To'g'ri javob: {obj.correct.replace(/^[A-D]\)\s*/, '')}
-                    </div>
+      {/* ── STATISTIKA ── */}
+      <div style={s.statsRow}>
+        {[
+          { label: 'Javob berildi', value: catStats.totalAnswered, icon: '📝' },
+          { label: 'To\'g\'rilik', value: `${totalAcc}%`, icon: '🎯' },
+          { label: 'Xatolar', value: filteredMistakesCount, icon: '⚡' },
+        ].map((stat, i) => (
+          <div key={i} style={s.statCard}>
+            <div style={s.statIcon}>{stat.icon}</div>
+            <div style={s.statVal}>{stat.value}</div>
+            <div style={s.statLbl}>{stat.label}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* ── TEZKOR HARAKATLAR ── */}
+      <div style={s.sectionLabel}>Tezkor boshlash</div>
+      <div style={s.actionsGrid}>
+        {quickActions.map((action) => {
+          const Icon = action.icon;
+          return (
+            <button key={action.id} style={{ ...s.actionCard, background: action.bg }} onClick={action.onClick}>
+              <div style={{ ...s.actionIcon, background: action.color }}>
+                <Icon size={20} color="#fff" />
+                {action.badge && (
+                  <span style={s.actionBadge}>{action.badge}</span>
+                )}
+              </div>
+              <div style={{ textAlign: 'left', flex: 1 }}>
+                <div style={{ fontSize: 15, fontWeight: 700, color: '#0F172A' }}>{action.label}</div>
+                <div style={{ fontSize: 12, color: '#94A3B8', marginTop: 2 }}>{action.desc}</div>
+              </div>
+              <ChevronRight size={18} style={{ color: '#CBD5E1', flexShrink: 0 }} />
+            </button>
+          );
+        })}
+      </div>
+
+      {/* ── BO'LIMLAR XARITASI ── */}
+      <div style={s.sectionLabel}>Bo'limlar xaritasi</div>
+      <div style={s.topicsGrid}>
+        {categoryTopics.map((t) => {
+          const ts = state.topicStats[t.id];
+          const hasStats = ts && ts.answered > 0;
+          const pct = hasStats ? Math.round((ts.correct / ts.answered) * 100) : 0;
+          const color = !hasStats ? '#CBD5E1' : pct >= 70 ? '#10B981' : pct >= 40 ? '#F59E0B' : '#EF4444';
+          const r = 28, circ = 2 * Math.PI * r;
+
+          return (
+            <button
+              key={t.id}
+              style={s.topicCard}
+              onClick={() => handleNav(t.id, 'exam')}
+            >
+              {/* Donut */}
+              <div style={{ position: 'relative', width: 64, height: 64, margin: '0 auto 8px' }}>
+                <svg width={64} height={64} viewBox="0 0 64 64">
+                  <circle cx={32} cy={32} r={r} fill="none" stroke="#F1F5F9" strokeWidth={5} />
+                  {hasStats && (
+                    <circle cx={32} cy={32} r={r} fill="none" stroke={color} strokeWidth={5}
+                      strokeDasharray={`${(pct / 100) * circ} ${circ}`}
+                      strokeLinecap="round" transform="rotate(-90 32 32)" />
                   )}
-
-                  <div style={{ 
-                    background: 'var(--bg3)', 
-                    padding: '12px', 
-                    borderRadius: '8px', 
-                    fontSize: '13px', 
-                    color: 'var(--text2)', 
-                    borderLeft: `3px solid ${obj.solved ? 'var(--green)' : 'var(--blue)'}`,
-                    marginBottom: '12px'
-                  }}>
-                    {editingId === obj.fbId ? (
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                        <textarea 
-                          value={editNote}
-                          onChange={(e) => setEditNote(e.target.value)}
-                          className="modal-input"
-                          style={{ marginBottom: '8px', minHeight: '60px' }}
-                        />
-                        <div style={{ display: 'flex', gap: '8px' }}>
-                          <button className="btn btn-primary btn-sm" onClick={() => {
-                            updateObjectionNote(obj.fbId, editNote);
-                            setEditingId(null);
-                          }}>Saqlash</button>
-                          <button className="btn btn-outline btn-sm" onClick={() => setEditingId(null)}>Bekor qilish</button>
-                        </div>
-                      </div>
-                    ) : (
-                      <><strong>E'tiroz:</strong> {obj.note}</>
-                    )}
-                  </div>
-
-                  <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
-                    {!obj.solved && (
-                      <button className="btn btn-outline btn-sm" style={{ color: 'var(--green)', borderColor: 'var(--green)', display: 'flex', alignItems: 'center', gap: '4px' }} onClick={() => solveObjection(obj.fbId)}>
-                        <CheckCircle2 size={14} /> Tuzatildi
-                      </button>
-                    )}
-                    <button className="btn btn-outline btn-sm" onClick={() => deleteObjection(obj.fbId)} style={{ color: 'var(--red)', borderColor: 'var(--red)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      <Trash2 size={14} /> O'chirish
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-          )}
-        </div>
-      )}
-
-      {/* Tezkor boshlash */}
-      <div className="section-header">Tezkor Boshlash</div>
-      <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '24px' }}>
-        <button className="btn btn-primary" onClick={() => handleNavigation(-1, 'exam')}>
-          <Play size={16} /> Bugungi Dars Testi
-        </button>
-        <button className="btn btn-outline" onClick={() => handleNavigation(-1, 'mistakes')}>
-          <Zap size={16} /> Tezkor Takrorlash (15 ta)
-          {filteredMistakesCount > 0 && <span style={{ background: 'var(--red)', color: 'white', borderRadius: '10px', padding: '2px 7px', fontSize: '11px', marginLeft: '4px' }}>{filteredMistakesCount}</span>}
-        </button>
-        <button className="btn btn-outline" onClick={() => handleNavigation(-1, 'flash')}>
-          <Zap size={16} /> Flashcard Rejimi
-        </button>
-      </div>
-
-      {/* Bo'limlar Progress Map */}
-      <div className="section-header" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        {state.activeCategory === 'art' ? <><Palette size={20}/> Bo'limlar Xaritasi</> : <><Map size={20}/> Bo'limlar Xaritasi</>}
-      </div>
-      <div className="glass-panel" style={{ padding: '24px', marginBottom: 24 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: 16 }}>
-          {TOPICS.filter(t => {
-            return Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory;
-          }).map((t, idx) => {
-            const ts = state.topicStats[t.id];
-            const hasStats = ts && ts.answered > 0;
-            const pct = hasStats ? Math.round((ts.correct / ts.answered) * 100) : 0;
-            const answered = hasStats ? ts.answered : 0;
-            const color = !hasStats ? 'var(--text3)' : pct >= 70 ? 'var(--green)' : pct >= 40 ? 'var(--amber)' : 'var(--red)';
-            const bg = !hasStats ? 'var(--bg3)' : pct >= 70 ? 'rgba(16,185,129,0.1)' : pct >= 40 ? 'rgba(245,158,11,0.1)' : 'rgba(239,68,68,0.1)';
-            const status = !hasStats ? '⬜' : pct >= 70 ? '✅' : pct >= 40 ? '🟡' : '🔴';
-
-            // SVG donut uchun
-            const r = 32, circ = 2 * Math.PI * r;
-            const fillArc = (pct / 100) * circ;
-
-            return (
-              <div
-                key={t.id}
-                onClick={() => handleNavigation(t.id, 'exam')}
-                style={{
-                  display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
-                  padding: '16px 10px', borderRadius: 16, cursor: 'pointer',
-                  background: bg, border: `1px solid ${hasStats ? color : 'var(--border)'}`,
-                  transition: 'all 0.2s', position: 'relative'
-                }}
-                className="hoverable"
-              >
-                {/* Donut */}
-                <div style={{ position: 'relative', width: 72, height: 72 }}>
-                  <svg width={72} height={72} viewBox="0 0 72 72">
-                    <circle cx={36} cy={36} r={r} fill="none" stroke="var(--bg3)" strokeWidth={6} />
-                    {hasStats && (
-                      <circle cx={36} cy={36} r={r} fill="none" stroke={color} strokeWidth={6}
-                        strokeDasharray={`${fillArc} ${circ}`} strokeLinecap="round"
-                        transform="rotate(-90 36 36)" style={{ transition: 'stroke-dasharray 0.8s ease' }} />
-                    )}
-                  </svg>
-                  <div style={{
-                    position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column',
-                    alignItems: 'center', justifyContent: 'center'
-                  }}>
-                    <div style={{ fontSize: hasStats ? 16 : 22, fontWeight: 800, color }}>
-                      {hasStats ? `${pct}%` : t.icon}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Nomi */}
+                </svg>
                 <div style={{
-                  fontSize: 12, fontWeight: 600, color: 'var(--text)', textAlign: 'center',
-                  lineHeight: 1.3, overflow: 'hidden', textOverflow: 'ellipsis',
-                  display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical'
+                  position: 'absolute', inset: 0,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: hasStats ? 13 : 18, fontWeight: 800, color,
                 }}>
-                  {t.name}
-                </div>
-
-                {/* Status */}
-                <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 500 }}>
-                  {hasStats ? `${answered} savol` : 'Boshlanmagan'}
+                  {hasStats ? `${pct}%` : t.icon}
                 </div>
               </div>
-            );
-          })}
-        </div>
+              <div style={{ fontSize: 11, fontWeight: 600, color: '#334155', textAlign: 'center', lineHeight: 1.3 }}>
+                {t.name}
+              </div>
+              <div style={{ fontSize: 10, color: '#94A3B8', marginTop: 3 }}>
+                {hasStats ? `${ts.answered} savol` : 'Boshlanmagan'}
+              </div>
+            </button>
+          );
+        })}
       </div>
 
-      {/* Oxirgi Tuzatishlar Jurnali (Public Fix Log) - Faqat Adminlarga ko'rinadi */}
-      {isAdmin && objections.filter(o => o.solved).length > 0 && (
-        <div className="objections-list-container">
-          <div className="section-header" style={{ marginTop: '32px', color: 'var(--green)' }}>Oxirgi tuzatishlar</div>
-          <div className="glass-panel" style={{ padding: '16px', background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
-            {[...objections].filter(o => o.solved).reverse().slice(0, 5).map((obj, i) => (
-              <div key={obj.fbId || i} style={{ 
-                display: 'flex', 
-                gap: '12px', 
-                alignItems: 'center', 
-                padding: '10px 0', 
-                borderBottom: i < 4 ? '1px solid rgba(16, 185, 129, 0.1)' : 'none' 
-              }}>
-                <div style={{ background: 'var(--green)', color: 'white', padding: '4px', borderRadius: '50%', display: 'flex' }}>
-                  <Zap size={12} fill="white" />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '13px', color: 'var(--text)', fontWeight: '500' }}>{obj.question}</div>
-                  <div style={{ fontSize: '11px', color: 'var(--text3)' }}>{obj.date} · Tuzatildi</div>
-                </div>
-              </div>
-            ))}
+      {/* ── ADMIN E'TIROZLAR ── */}
+      {isAdmin && objections.length > 0 && (
+        <div style={s.adminBox}>
+          <div style={s.adminBoxHeader}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 700, color: '#1D4ED8' }}>
+              <MessageCircle size={18} /> E'tirozlar ({objections.length})
+            </div>
+            <button style={s.adminClearBtn}
+              onClick={() => { if (confirm('Barchasini o\'chirasizmi?')) clearObjections(); }}>
+              <Trash2 size={14} /> Tozalash
+            </button>
           </div>
+          {[...objections].reverse().slice(0, 5).map((obj, i) => (
+            <div key={obj.fbId || i} style={s.objCard}>
+              <div style={{ fontSize: 12, color: '#64748B', marginBottom: 4 }}>{obj.topic} · {obj.date}</div>
+              <div style={{ fontSize: 13, fontWeight: 600, color: '#0F172A', marginBottom: 6 }}>{obj.question}</div>
+              <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+                {!obj.solved && (
+                  <button style={s.objBtn('#10B981')} onClick={() => solveObjection(obj.fbId)}>
+                    <CheckCircle2 size={12} /> Tuzatildi
+                  </button>
+                )}
+                <button style={s.objBtn('#EF4444')} onClick={() => deleteObjection(obj.fbId)}>
+                  <Trash2 size={12} /> O'chirish
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       )}
 
-      
-      <PremiumModal 
-        isOpen={showPremiumModal} 
-        onClose={() => setShowPremiumModal(false)} 
-      />
+      <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
     </motion.div>
   );
+};
+
+// ── Styles ──
+const s = {
+  page: { padding: '20px 16px 32px', maxWidth: 720, margin: '0 auto' },
+  greeting: {
+    display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  greetSub: { fontSize: 14, color: '#94A3B8', fontWeight: 500, marginBottom: 2 },
+  greetName: { fontSize: 26, fontWeight: 800, color: '#0F172A', margin: 0 },
+  catSwitch: {
+    display: 'flex', alignItems: 'center', gap: 6,
+    padding: '8px 14px', borderRadius: 12,
+    border: '1.5px solid #E2E8F0', background: '#F8FAFC',
+    fontSize: 13, fontWeight: 700, color: '#334155',
+    cursor: 'pointer', fontFamily: 'inherit',
+    whiteSpace: 'nowrap', flexShrink: 0,
+  },
+  examBanner: {
+    background: 'linear-gradient(135deg, #29B6F6, #0284C7)',
+    borderRadius: 18, padding: '18px 20px',
+    marginBottom: 14,
+    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+  },
+  examGoal: {
+    display: 'flex', alignItems: 'center', gap: 6,
+    background: 'rgba(255,255,255,0.15)', borderRadius: 10, padding: '6px 12px',
+    fontSize: 13, fontWeight: 600, color: '#fff',
+  },
+  trialBanner: {
+    width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+    background: '#FFFBEB', border: '1.5px solid #FCD34D', borderRadius: 16,
+    padding: '14px 16px', marginBottom: 20, cursor: 'pointer', fontFamily: 'inherit',
+  },
+  trialBtn: {
+    background: '#F59E0B', color: '#fff', fontWeight: 700, fontSize: 13,
+    padding: '8px 14px', borderRadius: 10, flexShrink: 0,
+  },
+  statsRow: {
+    display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: 10, marginBottom: 24,
+  },
+  statCard: {
+    background: '#F8FAFC', border: '1.5px solid #E2E8F0', borderRadius: 16,
+    padding: '16px 12px', textAlign: 'center',
+  },
+  statIcon: { fontSize: 20, marginBottom: 6 },
+  statVal: { fontSize: 22, fontWeight: 800, color: '#0F172A', lineHeight: 1 },
+  statLbl: { fontSize: 11, color: '#94A3B8', marginTop: 4, fontWeight: 500 },
+  sectionLabel: {
+    fontSize: 13, fontWeight: 700, color: '#94A3B8',
+    textTransform: 'uppercase', letterSpacing: 0.8,
+    marginBottom: 12, marginTop: 4,
+  },
+  actionsGrid: { display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28 },
+  actionCard: {
+    display: 'flex', alignItems: 'center', gap: 14,
+    padding: '14px 16px', borderRadius: 16,
+    border: '1.5px solid #E2E8F0', cursor: 'pointer',
+    fontFamily: 'inherit', transition: 'all 0.15s', textAlign: 'left',
+  },
+  actionIcon: {
+    width: 44, height: 44, borderRadius: 12,
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    flexShrink: 0, position: 'relative',
+  },
+  actionBadge: {
+    position: 'absolute', top: -6, right: -6,
+    background: '#EF4444', color: '#fff', fontSize: 9, fontWeight: 800,
+    borderRadius: 6, padding: '1px 4px', minWidth: 14, textAlign: 'center',
+  },
+  topicsGrid: {
+    display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))',
+    gap: 10, marginBottom: 24,
+  },
+  topicCard: {
+    padding: '14px 10px', borderRadius: 16,
+    border: '1.5px solid #E2E8F0', background: '#FAFAFA',
+    cursor: 'pointer', fontFamily: 'inherit',
+    transition: 'all 0.15s', display: 'flex', flexDirection: 'column',
+    alignItems: 'center',
+  },
+  adminBox: {
+    border: '1.5px solid #BFDBFE', borderRadius: 16,
+    background: '#EFF6FF', padding: '16px', marginBottom: 16,
+  },
+  adminBoxHeader: {
+    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+    marginBottom: 14,
+  },
+  adminClearBtn: {
+    display: 'flex', alignItems: 'center', gap: 6,
+    padding: '6px 12px', borderRadius: 8, border: '1px solid #FECACA',
+    background: '#FFF', color: '#EF4444', fontSize: 12, fontWeight: 600,
+    cursor: 'pointer', fontFamily: 'inherit',
+  },
+  objCard: {
+    background: '#fff', borderRadius: 12, padding: '12px 14px',
+    marginBottom: 8, border: '1px solid #E2E8F0',
+  },
+  objBtn: (color) => ({
+    display: 'flex', alignItems: 'center', gap: 4,
+    padding: '5px 10px', borderRadius: 8,
+    border: `1px solid ${color}20`, background: `${color}10`,
+    color, fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
+  }),
 };
 
 export default Dashboard;
