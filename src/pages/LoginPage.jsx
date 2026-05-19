@@ -32,6 +32,8 @@ export default function LoginPage() {
   const [isRegister, setIsRegister] = useState(false);
   const [phone, setPhone] = useState('+998');
   const [name, setName] = useState('');
+  const [gender, setGender] = useState('male');
+  const [birthDate, setBirthDate] = useState('');
   const [password, setPassword] = useState('');
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -107,7 +109,7 @@ export default function LoginPage() {
         return;
       }
       setLoading(true);
-      const res = await signInWithPhone(name, phone, '', true);
+      const res = await signInWithPhone(name, phone, '', true, gender, birthDate);
       setLoading(false);
       if (res && !res.success) {
         setStep(STEPS.PHONE);
@@ -217,20 +219,69 @@ export default function LoginPage() {
               {/* ── STEP: REGISTER NAME ── */}
               {step === STEPS.REGISTER_NAME && (
                 <>
-                  <h1 style={s.title}>Ismingizni kiriting</h1>
+                  <h1 style={s.title}>Hisobingizni yarating</h1>
                   <p style={s.subtitle}>
-                    Profil yaratish uchun ism-familiyangizni kiriting.
+                    Bilimingizni sinab ko'ring, testlarda qatnashing va malakangizni oshiring.
                   </p>
-                  <input
-                    id="register-name-input"
-                    style={s.input}
-                    type="text"
-                    placeholder="Ism va familiyangiz"
-                    value={name}
-                    onChange={e => { setAuthError(''); setName(e.target.value); }}
-                    autoFocus
-                    onKeyDown={e => e.key === 'Enter' && handleContinue()}
-                  />
+                  
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '10px' }}>
+                    <div>
+                      <label style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text2)', marginBottom: '6px', display: 'block' }}>Ism va familiya</label>
+                      <input
+                        id="register-name-input"
+                        style={s.input}
+                        type="text"
+                        placeholder="Ism va familiyangizni kiriting"
+                        value={name}
+                        onChange={e => { setAuthError(''); setName(e.target.value); }}
+                        autoFocus
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text2)', marginBottom: '6px', display: 'block' }}>Jinsingiz</label>
+                      <div style={{ display: 'flex', gap: '10px' }}>
+                        <button
+                          type="button"
+                          onClick={() => setGender('male')}
+                          style={{
+                            flex: 1, padding: '12px', borderRadius: '12px',
+                            border: gender === 'male' ? `2px solid ${PRIMARY}` : '1.5px solid var(--border)',
+                            background: gender === 'male' ? 'var(--blue-bg)' : 'var(--bg2)',
+                            color: gender === 'male' ? PRIMARY : 'var(--text2)',
+                            fontWeight: 700, fontSize: '14px', cursor: 'pointer', fontFamily: 'inherit',
+                            transition: 'all 0.15s'
+                          }}
+                        >
+                          Erkak
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setGender('female')}
+                          style={{
+                            flex: 1, padding: '12px', borderRadius: '12px',
+                            border: gender === 'female' ? `2px solid ${PRIMARY}` : '1.5px solid var(--border)',
+                            background: gender === 'female' ? 'var(--blue-bg)' : 'var(--bg2)',
+                            color: gender === 'female' ? PRIMARY : 'var(--text2)',
+                            fontWeight: 700, fontSize: '14px', cursor: 'pointer', fontFamily: 'inherit',
+                            transition: 'all 0.15s'
+                          }}
+                        >
+                          Ayol
+                        </button>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text2)', marginBottom: '6px', display: 'block' }}>Tug'ilgan sana</label>
+                      <input
+                        style={s.input}
+                        type="date"
+                        value={birthDate}
+                        onChange={e => setBirthDate(e.target.value)}
+                      />
+                    </div>
+                  </div>
                 </>
               )}
 

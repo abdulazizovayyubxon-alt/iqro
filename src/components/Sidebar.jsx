@@ -14,7 +14,8 @@ import {
   Trophy,
   Medal,
   Palette,
-  Users
+  Users,
+  User
 } from 'lucide-react';
 
 // URL xaritasi — route ↔ sahifa nomi
@@ -27,6 +28,7 @@ const ROUTE_MAP = {
   '/achievements': 'achievements',
   '/admin': 'admin',
   '/referral': 'referral',
+  '/profile': 'profile',
 };
 
 const Sidebar = () => {
@@ -133,6 +135,14 @@ const Sidebar = () => {
           >
             <span className="nav-icon"><Users size={20} /></span>
             <span className="nav-label">Do'stlarni taklif qilish</span>
+          </div>
+
+          <div
+            className={`nav-item ${currentPage === 'profile' ? 'active' : ''}`}
+            onClick={() => navigate('/profile')}
+          >
+            <span className="nav-icon"><User size={20} /></span>
+            <span className="nav-label">Profil</span>
           </div>
 
           {/* Admin link — faqat admin uchun */}

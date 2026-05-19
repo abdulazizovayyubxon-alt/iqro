@@ -424,7 +424,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const signInWithPhone = async (name, phone, password = '', isRegistering = false) => {
+  const signInWithPhone = async (name, phone, password = '', isRegistering = false, gender = '', birthDate = '') => {
     setAuthError('');
     const cleanPhone = phone.replace(/\D/g, '');
     if (!cleanPhone.startsWith('998') || cleanPhone.length !== 12) {
@@ -486,6 +486,8 @@ export const AuthProvider = ({ children }) => {
             email: internalEmail,
             phone: cleanPhone,
             displayName: name,
+            gender,
+            birthDate,
             role: 'user',
             isPremium: false,
             createdAt: new Date(),

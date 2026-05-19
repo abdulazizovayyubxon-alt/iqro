@@ -132,6 +132,7 @@ export default function BottomNav() {
                 <p style={styles.drawerLabel}>Sahifalar</p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                   {[
+                    { path: '/profile',      icon: User,   label: '👤 Mening profilim' },
                     { path: '/achievements', icon: Medal,  label: '🏅 Yutuqlar' },
                     { path: '/referral',     icon: Users,  label: '🤝 Do\'stlarni taklif qilish' },
                     { path: '/stats',        icon: Trophy, label: '📊 Statistika' },

@@ -304,7 +304,11 @@ const Header = ({ theme, toggleTheme }) => {
                   exit={{ opacity: 0, y: -10, scale: 0.95 }}
                   transition={{ duration: 0.15 }}
                 >
-                  <div className="user-dropdown-header" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div 
+                    className="user-dropdown-header" 
+                    onClick={() => { navigate('/profile'); setShowUserMenu(false); }}
+                    style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer', padding: '16px' }}
+                  >
                     {user?.photoURL ? (
                       <img
                         src={user.photoURL}
@@ -316,9 +320,11 @@ const Header = ({ theme, toggleTheme }) => {
                         {getInitials(displayName)}
                       </div>
                     )}
-                    <div style={{ overflow: 'hidden' }}>
-                      <div style={{ fontWeight: '700', fontSize: '15px', color: 'var(--text)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>{displayName}</div>
-                      <div style={{ fontSize: '12px', color: 'var(--text3)', marginTop: '2px', white: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>{user?.email || 'Foydalanuvchi'}</div>
+                    <div style={{ overflow: 'hidden', flex: 1 }}>
+                      <div style={{ fontWeight: '700', fontSize: '15px', color: 'var(--text)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        {displayName} <ChevronRight size={14} style={{ color: 'var(--text3)' }} />
+                      </div>
+                      <div style={{ fontSize: '12px', color: 'var(--text3)', marginTop: '2px', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>{user?.email || 'Foydalanuvchi'}</div>
                     </div>
                   </div>
 
