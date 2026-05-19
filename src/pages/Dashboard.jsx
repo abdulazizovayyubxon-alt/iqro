@@ -61,23 +61,23 @@ const Dashboard = () => {
   const quickActions = [
     {
       id: 'test', icon: Play, label: 'Dars Testi', desc: 'Barcha mavzular',
-      color: PRIMARY, bg: '#F0F9FF',
+      color: 'var(--blue)', bg: 'var(--blue-bg)',
       onClick: () => handleNav(-1, 'exam'),
     },
     {
       id: 'exam', icon: GraduationCap, label: 'Imtihon', desc: '50 savol · 60 daqiqa',
-      color: '#8B5CF6', bg: '#F5F3FF',
+      color: 'var(--purple)', bg: 'var(--purple-bg)',
       onClick: () => { if (isFreeLimitReached) { setShowPremiumModal(true); return; } navigate('/exam'); },
     },
     {
       id: 'review', icon: Brain, label: 'Takrorlash', desc: dueCards > 0 ? `${dueCards} savol kutmoqda` : 'Hozircha yo\'q',
-      color: '#10B981', bg: '#ECFDF5',
+      color: 'var(--green)', bg: 'var(--green-bg)',
       badge: dueCards > 0 ? dueCards : null,
       onClick: () => navigate('/review'),
     },
     {
       id: 'mistakes', icon: Zap, label: 'Xatolar', desc: `${filteredMistakesCount} ta xato`,
-      color: '#F59E0B', bg: '#FFFBEB',
+      color: 'var(--amber)', bg: 'var(--amber-bg)',
       onClick: () => handleNav(-1, 'mistakes'),
     },
   ];
@@ -160,7 +160,7 @@ const Dashboard = () => {
         {quickActions.map((action) => {
           const Icon = action.icon;
           return (
-            <button key={action.id} style={{ ...s.actionCard, background: action.bg }} onClick={action.onClick}>
+            <button key={action.id} style={{ ...s.actionCard, background: action.bg, borderColor: 'var(--border)' }} onClick={action.onClick}>
               <div style={{ ...s.actionIcon, background: action.color }}>
                 <Icon size={20} color="#fff" />
                 {action.badge && (
@@ -168,10 +168,10 @@ const Dashboard = () => {
                 )}
               </div>
               <div style={{ textAlign: 'left', flex: 1 }}>
-                <div style={{ fontSize: 15, fontWeight: 700, color: '#0F172A' }}>{action.label}</div>
-                <div style={{ fontSize: 12, color: '#94A3B8', marginTop: 2 }}>{action.desc}</div>
+                <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{action.label}</div>
+                <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2 }}>{action.desc}</div>
               </div>
-              <ChevronRight size={18} style={{ color: '#CBD5E1', flexShrink: 0 }} />
+              <ChevronRight size={18} style={{ color: 'var(--text3)', flexShrink: 0 }} />
             </button>
           );
         })}
@@ -184,7 +184,7 @@ const Dashboard = () => {
           const ts = state.topicStats[t.id];
           const hasStats = ts && ts.answered > 0;
           const pct = hasStats ? Math.round((ts.correct / ts.answered) * 100) : 0;
-          const color = !hasStats ? '#CBD5E1' : pct >= 70 ? '#10B981' : pct >= 40 ? '#F59E0B' : '#EF4444';
+          const color = !hasStats ? 'var(--text3)' : pct >= 70 ? '#10B981' : pct >= 40 ? '#F59E0B' : '#EF4444';
           const r = 28, circ = 2 * Math.PI * r;
 
           return (
@@ -196,7 +196,7 @@ const Dashboard = () => {
               {/* Donut */}
               <div style={{ position: 'relative', width: 64, height: 64, margin: '0 auto 8px' }}>
                 <svg width={64} height={64} viewBox="0 0 64 64">
-                  <circle cx={32} cy={32} r={r} fill="none" stroke="#F1F5F9" strokeWidth={5} />
+                  <circle cx={32} cy={32} r={r} fill="none" stroke="var(--bg3)" strokeWidth={5} />
                   {hasStats && (
                     <circle cx={32} cy={32} r={r} fill="none" stroke={color} strokeWidth={5}
                       strokeDasharray={`${(pct / 100) * circ} ${circ}`}
@@ -211,10 +211,10 @@ const Dashboard = () => {
                   {hasStats ? `${pct}%` : t.icon}
                 </div>
               </div>
-              <div style={{ fontSize: 11, fontWeight: 600, color: '#334155', textAlign: 'center', lineHeight: 1.3 }}>
+              <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text)', textAlign: 'center', lineHeight: 1.3 }}>
                 {t.name}
               </div>
-              <div style={{ fontSize: 10, color: '#94A3B8', marginTop: 3 }}>
+              <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 3 }}>
                 {hasStats ? `${ts.answered} savol` : 'Boshlanmagan'}
               </div>
             </button>
@@ -226,7 +226,7 @@ const Dashboard = () => {
       {isAdmin && objections.length > 0 && (
         <div style={s.adminBox}>
           <div style={s.adminBoxHeader}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 700, color: '#1D4ED8' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 700, color: 'var(--blue)' }}>
               <MessageCircle size={18} /> E'tirozlar ({objections.length})
             </div>
             <button style={s.adminClearBtn}
@@ -236,8 +236,8 @@ const Dashboard = () => {
           </div>
           {[...objections].reverse().slice(0, 5).map((obj, i) => (
             <div key={obj.fbId || i} style={s.objCard}>
-              <div style={{ fontSize: 12, color: '#64748B', marginBottom: 4 }}>{obj.topic} · {obj.date}</div>
-              <div style={{ fontSize: 13, fontWeight: 600, color: '#0F172A', marginBottom: 6 }}>{obj.question}</div>
+              <div style={{ fontSize: 12, color: 'var(--text3)', marginBottom: 4 }}>{obj.topic} · {obj.date}</div>
+              <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 6 }}>{obj.question}</div>
               <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
                 {!obj.solved && (
                   <button style={s.objBtn('#10B981')} onClick={() => solveObjection(obj.fbId)}>
@@ -265,13 +265,13 @@ const s = {
     display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between',
     marginBottom: 20,
   },
-  greetSub: { fontSize: 14, color: '#94A3B8', fontWeight: 500, marginBottom: 2 },
-  greetName: { fontSize: 26, fontWeight: 800, color: '#0F172A', margin: 0 },
+  greetSub: { fontSize: 14, color: 'var(--text3)', fontWeight: 500, marginBottom: 2 },
+  greetName: { fontSize: 26, fontWeight: 800, color: 'var(--text)', margin: 0 },
   catSwitch: {
     display: 'flex', alignItems: 'center', gap: 6,
     padding: '8px 14px', borderRadius: 12,
-    border: '1.5px solid #E2E8F0', background: '#F8FAFC',
-    fontSize: 13, fontWeight: 700, color: '#334155',
+    border: '1.5px solid var(--border)', background: 'var(--bg2)',
+    fontSize: 13, fontWeight: 700, color: 'var(--text2)',
     cursor: 'pointer', fontFamily: 'inherit',
     whiteSpace: 'nowrap', flexShrink: 0,
   },
@@ -288,7 +288,7 @@ const s = {
   },
   trialBanner: {
     width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-    background: '#FFFBEB', border: '1.5px solid #FCD34D', borderRadius: 16,
+    background: 'var(--amber-bg)', border: '1.5px solid var(--border)', borderRadius: 16,
     padding: '14px 16px', marginBottom: 20, cursor: 'pointer', fontFamily: 'inherit',
   },
   trialBtn: {
@@ -300,14 +300,14 @@ const s = {
     gap: 10, marginBottom: 24,
   },
   statCard: {
-    background: '#F8FAFC', border: '1.5px solid #E2E8F0', borderRadius: 16,
+    background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 16,
     padding: '16px 12px', textAlign: 'center',
   },
   statIcon: { fontSize: 20, marginBottom: 6 },
-  statVal: { fontSize: 22, fontWeight: 800, color: '#0F172A', lineHeight: 1 },
-  statLbl: { fontSize: 11, color: '#94A3B8', marginTop: 4, fontWeight: 500 },
+  statVal: { fontSize: 22, fontWeight: 800, color: 'var(--text)', lineHeight: 1 },
+  statLbl: { fontSize: 11, color: 'var(--text3)', marginTop: 4, fontWeight: 500 },
   sectionLabel: {
-    fontSize: 13, fontWeight: 700, color: '#94A3B8',
+    fontSize: 13, fontWeight: 700, color: 'var(--text3)',
     textTransform: 'uppercase', letterSpacing: 0.8,
     marginBottom: 12, marginTop: 4,
   },
@@ -315,7 +315,7 @@ const s = {
   actionCard: {
     display: 'flex', alignItems: 'center', gap: 14,
     padding: '14px 16px', borderRadius: 16,
-    border: '1.5px solid #E2E8F0', cursor: 'pointer',
+    border: '1.5px solid var(--border)', cursor: 'pointer',
     fontFamily: 'inherit', transition: 'all 0.15s', textAlign: 'left',
   },
   actionIcon: {
@@ -334,14 +334,14 @@ const s = {
   },
   topicCard: {
     padding: '14px 10px', borderRadius: 16,
-    border: '1.5px solid #E2E8F0', background: '#FAFAFA',
+    border: '1.5px solid var(--border)', background: 'var(--bg2)',
     cursor: 'pointer', fontFamily: 'inherit',
     transition: 'all 0.15s', display: 'flex', flexDirection: 'column',
     alignItems: 'center',
   },
   adminBox: {
-    border: '1.5px solid #BFDBFE', borderRadius: 16,
-    background: '#EFF6FF', padding: '16px', marginBottom: 16,
+    border: '1.5px solid var(--border)', borderRadius: 16,
+    background: 'var(--blue-bg)', padding: '16px', marginBottom: 16,
   },
   adminBoxHeader: {
     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
@@ -349,13 +349,13 @@ const s = {
   },
   adminClearBtn: {
     display: 'flex', alignItems: 'center', gap: 6,
-    padding: '6px 12px', borderRadius: 8, border: '1px solid #FECACA',
-    background: '#FFF', color: '#EF4444', fontSize: 12, fontWeight: 600,
+    padding: '6px 12px', borderRadius: 8, border: '1px solid var(--border)',
+    background: 'var(--bg2)', color: '#EF4444', fontSize: 12, fontWeight: 600,
     cursor: 'pointer', fontFamily: 'inherit',
   },
   objCard: {
-    background: '#fff', borderRadius: 12, padding: '12px 14px',
-    marginBottom: 8, border: '1px solid #E2E8F0',
+    background: 'var(--bg2)', borderRadius: 12, padding: '12px 14px',
+    marginBottom: 8, border: '1px solid var(--border)',
   },
   objBtn: (color) => ({
     display: 'flex', alignItems: 'center', gap: 4,

@@ -21,6 +21,8 @@
   --amber-bg: #FFFBEB;
   --blue: #3B82F6;
   --blue-bg: #EFF6FF;
+  --purple: #8B5CF6;
+  --purple-bg: #F5F3FF;
   
   --glass-bg: rgba(255, 255, 255, 0.85);
   --glass-border: rgba(0, 0, 0, 0.05);
@@ -49,6 +51,8 @@ body.dark-theme {
   --amber-bg: rgba(251, 191, 36, 0.1);
   --blue: #60A5FA;
   --blue-bg: rgba(96, 165, 250, 0.1);
+  --purple: #A78BFA;
+  --purple-bg: rgba(167, 139, 250, 0.1);
   
   --glass-bg: rgba(30, 41, 59, 0.85);
   --glass-border: rgba(255, 255, 255, 0.05);
