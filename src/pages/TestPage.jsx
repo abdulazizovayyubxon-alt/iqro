@@ -36,17 +36,17 @@ const TestPage = () => {
   // Bepul limit tekshiruvi ({} ta savol)
   if (isFreeLimitReached) {
     return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
-        <div className="glass-panel" style={{ maxWidth: 500, margin: '60px auto', padding: 40, textAlign: 'center' }}>
-          <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
-          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Bepul Limit Tugadi</div>
-          <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-            Siz bepul limitni (7 kun) muvaffaqiyatli yakunladingiz! Barcha mavzular va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', padding: '20px' }}>
+        <div style={{ maxWidth: 400, width: '100%', background: '#fff', border: '1.5px solid #E2E8F0', borderRadius: 24, padding: '40px 28px', textAlign: 'center' }}>
+          <div style={{ fontSize: 52, marginBottom: 16 }}>🔒</div>
+          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 8, color: '#0F172A' }}>Bepul Limit Tugadi</div>
+          <div style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.6, marginBottom: 28 }}>
+            7 kunlik sinov yakunlandi! Barcha savollar va mavzularga kirish uchun Premium rejimni faollashtiring.
           </div>
-          <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
+          <button style={{ width: '100%', padding: '15px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 16, cursor: 'pointer', fontFamily: 'inherit', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
             ⭐ Premium Rejimni Faollashtirish
           </button>
-          <button className="btn btn-outline" onClick={goBack}>← Bosh sahifaga</button>
+          <button style={{ width: '100%', padding: '13px', background: '#fff', color: '#334155', border: '1.5px solid #E2E8F0', borderRadius: 14, fontWeight: 600, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit' }} onClick={goBack}>← Bosh sahifaga</button>
         </div>
         <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
       </motion.div>
@@ -325,10 +325,10 @@ const TestPage = () => {
 
   if (isGenerating) {
     return (
-      <div className="page" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh' }}>
         <div style={{ textAlign: 'center' }}>
-          <RefreshCw className="spin" size={32} style={{ color: 'var(--accent)', margin: '0 auto 16px' }} />
-          <div style={{ color: 'var(--text2)', fontFamily: "'IBM Plex Mono', monospace", fontSize: '14px' }}>Savollar yuklanmoqda...</div>
+          <div style={{ width: 48, height: 48, border: '3px solid #E2E8F0', borderTopColor: '#29B6F6', borderRadius: '50%', animation: 'spin 0.8s linear infinite', margin: '0 auto 16px' }} />
+          <div style={{ color: '#64748B', fontSize: 14, fontWeight: 500 }}>Savollar yuklanmoqda...</div>
         </div>
       </div>
     );
@@ -336,22 +336,21 @@ const TestPage = () => {
 
   if (showTheory) {
     return (
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="page" style={{ padding: '20px' }}>
-        <div className="glass-panel" style={{ padding: '30px 20px', textAlign: 'center', maxWidth: '600px', margin: '10vh auto' }}>
-          <div style={{ fontSize: '48px', marginBottom: '16px' }}>📚</div>
-          <h2 style={{ marginBottom: '12px', color: 'var(--text)' }}>Qisqacha Eslatma</h2>
-          <p style={{ color: 'var(--text3)', fontSize: '14px', marginBottom: '24px' }}>
-            Testni boshlashdan oldin quyidagi nazariy ma'lumotlarni yodga oling:
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} style={{ padding: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' }}>
+        <div style={{ background: '#fff', border: '1.5px solid #E2E8F0', borderRadius: 24, padding: '32px 24px', textAlign: 'center', maxWidth: 520, width: '100%' }}>
+          <div style={{ fontSize: 48, marginBottom: 16 }}>📚</div>
+          <h2 style={{ marginBottom: 8, color: '#0F172A', fontSize: 22, fontWeight: 900 }}>Qisqacha Eslatma</h2>
+          <p style={{ color: '#94A3B8', fontSize: 14, marginBottom: 20 }}>
+            Testni boshlashdan oldin quyidagi ma'lumotlarni yodga oling:
           </p>
-          <div style={{ fontSize: '15px', lineHeight: '1.6', color: 'var(--text2)', marginBottom: '32px', textAlign: 'left', background: 'var(--bg2)', padding: '20px', borderRadius: '16px', border: '1px solid var(--border)' }}>
+          <div style={{ fontSize: 15, lineHeight: 1.7, color: '#334155', marginBottom: 28, textAlign: 'left', background: '#F8FAFC', padding: '18px 20px', borderRadius: 16, border: '1px solid #E2E8F0' }}>
             {topicObj?.theoryHint}
           </div>
           <button
-            className="btn btn-primary"
-            style={{ width: '100%', padding: '16px', fontSize: '16px', fontWeight: 'bold', borderRadius: '12px' }}
+            style={{ width: '100%', padding: '16px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontSize: 16, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}
             onClick={() => setShowTheory(false)}
           >
-            O'qib chiqdim, Testni boshlash
+            O'qib chiqdim — Testni boshlash
           </button>
         </div>
       </motion.div>
@@ -359,38 +358,36 @@ const TestPage = () => {
   }
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page" style={{ padding: '12px 16px' }}>
-      {/* Bepul oy tugashiga eslatma banneri */}
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: 700, margin: '0 auto', padding: '12px 16px 80px' }}>
       <FreeMonthBanner onPayClick={() => setShowPremiumModal(true)} />
-      <div className="test-header" style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingBottom: '8px', borderBottom: '1px solid var(--border)', marginBottom: '12px' }}>
+
+      {/* Header */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingBottom: 12, borderBottom: '1px solid #F1F5F9', marginBottom: 12 }}>
         <button
           onClick={() => navigate('/')}
-          className="btn-outline"
-          style={{ borderRadius: '12px', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0, flexShrink: 0 }}
-          title="Orqaga"
+          style={{ width: 38, height: 38, borderRadius: 12, border: '1.5px solid #E2E8F0', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}
         >
-          <ArrowLeft size={18} />
+          <ArrowLeft size={18} color="#334155" />
         </button>
         <div style={{ minWidth: 0, flex: 1 }}>
-          <div className="test-title" style={{ fontSize: '18px', marginBottom: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{topicName}</div>
-          <div className="test-meta" style={{ fontSize: '11px', whiteSpace: 'nowrap' }}>
-            {questions.length} savol {mode !== 'mistakes' && selectedBatch + 1 > 0 && ` · Blok ${selectedBatch + 1}`}
+          <div style={{ fontSize: 17, fontWeight: 800, color: '#0F172A', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{topicName}</div>
+          <div style={{ fontSize: 11, color: '#94A3B8', marginTop: 1 }}>
+            {questions.length} savol{mode !== 'mistakes' && selectedBatch + 1 > 0 ? ` · Blok ${selectedBatch + 1}` : ''}
           </div>
         </div>
-        <div style={{ marginLeft: 'auto', display: 'flex', gap: '8px' }}>
+        <div style={{ display: 'flex', gap: 8 }}>
           <button
             onClick={() => setMode(mode === 'flash' ? 'exam' : 'flash')}
-            style={{ background: mode === 'flash' ? 'var(--blue)' : 'var(--bg3)', border: 'none', borderRadius: '10px', color: mode === 'flash' ? 'white' : 'var(--text2)', cursor: 'pointer', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: '600' }}
+            style={{ background: mode === 'flash' ? '#29B6F6' : '#F1F5F9', border: 'none', borderRadius: 10, color: mode === 'flash' ? '#fff' : '#64748B', cursor: 'pointer', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, fontFamily: 'inherit' }}
           >
-            <Zap size={16} />
+            <Zap size={15} />
             <span className="hide-mobile">Flashcard</span>
           </button>
           <button
             onClick={generateQuestions}
-            style={{ background: 'var(--bg3)', border: 'none', borderRadius: '10px', color: 'var(--text2)', cursor: 'pointer', padding: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            title="Yangi savollar"
+            style={{ background: '#F1F5F9', border: 'none', borderRadius: 10, color: '#64748B', cursor: 'pointer', padding: 8, display: 'flex', alignItems: 'center' }}
           >
-            <RefreshCw size={18} />
+            <RefreshCw size={17} />
           </button>
         </div>
       </div>
@@ -479,7 +476,7 @@ const TestPage = () => {
         <div className="exam-mode-container">
           {!showResults ? (
             <AnimatePresence mode="wait">
-              <motion.div key={currentQ} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} transition={{ duration: 0.2 }} className="question-box glass-panel" style={{ padding: '20px 16px' }}>
+              <motion.div key={currentQ} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} transition={{ duration: 0.2 }} style={{ background: '#fff', border: '1.5px solid #E2E8F0', borderRadius: 20, padding: '20px 16px' }}>
 
                 {/* ── Sarlavha qatori: savol raqami + qiyinlik + mavzu + e'tiroz ── */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '6px' }}>
@@ -563,19 +560,19 @@ const TestPage = () => {
               </motion.div>
             </AnimatePresence>
           ) : (
-            <div className="result-panel glass-panel" style={{ padding: '40px 20px', textAlign: 'center' }}>
-              <div style={{ fontSize: '48px', marginBottom: '16px' }}>{correctCount / questions.length >= 0.7 ? '🏆' : correctCount / questions.length >= 0.5 ? '📊' : '💪'}</div>
-              <div style={{ fontSize: '24px', color: 'var(--text)', fontWeight: '700', marginBottom: '8px' }}>{correctCount / questions.length >= 0.7 ? 'Ajoyib natija!' : 'Davom eting!'}</div>
-              <div style={{ fontSize: '16px', color: 'var(--text2)', marginBottom: '24px' }}>{questions.length} ta savoldan {correctCount} tasiga to'g'ri javob berdingiz.</div>
-              <div style={{ background: 'var(--bg3)', borderRadius: '16px', padding: '24px', display: 'inline-block', marginBottom: '32px' }}>
-                <div style={{ fontSize: '14px', color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>Natija</div>
-                <div style={{ fontSize: '56px', fontFamily: "'Bebas Neue', sans-serif", color: correctCount / questions.length >= 0.7 ? 'var(--green)' : correctCount / questions.length >= 0.5 ? 'var(--amber)' : 'var(--red)', lineHeight: '1' }}>{correctCount} <span style={{ fontSize: '32px', color: 'var(--text3)' }}>/ {questions.length}</span></div>
-                <div style={{ fontSize: '20px', marginTop: '8px', color: 'var(--text2)' }}>{Math.round((correctCount / questions.length) * 100)}%</div>
+            <div style={{ background: '#fff', border: '1.5px solid #E2E8F0', borderRadius: 20, padding: '36px 24px', textAlign: 'center' }}>
+              <div style={{ fontSize: 52, marginBottom: 12 }}>{correctCount / questions.length >= 0.7 ? '🏆' : correctCount / questions.length >= 0.5 ? '📊' : '💪'}</div>
+              <div style={{ fontSize: 22, color: '#0F172A', fontWeight: 900, marginBottom: 6 }}>{correctCount / questions.length >= 0.7 ? 'Ajoyib natija!' : 'Davom eting!'}</div>
+              <div style={{ fontSize: 14, color: '#94A3B8', marginBottom: 24 }}>{questions.length} ta savoldan {correctCount} tasiga to'g'ri javob berdingiz.</div>
+              <div style={{ background: '#F8FAFC', border: '1.5px solid #E2E8F0', borderRadius: 20, padding: '24px 32px', display: 'inline-block', marginBottom: 28 }}>
+                <div style={{ fontSize: 12, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8, fontWeight: 600 }}>Natija</div>
+                <div style={{ fontSize: 52, fontWeight: 900, color: correctCount / questions.length >= 0.7 ? '#10B981' : correctCount / questions.length >= 0.5 ? '#F59E0B' : '#EF4444', lineHeight: 1 }}>{correctCount} <span style={{ fontSize: 28, color: '#CBD5E1' }}>/ {questions.length}</span></div>
+                <div style={{ fontSize: 20, marginTop: 8, color: '#64748B', fontWeight: 700 }}>{Math.round((correctCount / questions.length) * 100)}%</div>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '320px', margin: '0 auto' }}>
-                <button className="btn btn-primary" onClick={generateQuestions}><RefreshCw size={18} /> Yana ishlash</button>
-                {state.mistakes.length > 0 && <button className="btn btn-outline" onClick={() => setMode('mistakes')}><Target size={18} /> Xatolar ustida ishlash</button>}
-                <button className="btn btn-outline" onClick={() => navigate('/')}><Home size={18} /> Boshqa bo'limga</button>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 320, margin: '0 auto' }}>
+                <button style={{ padding: '14px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }} onClick={generateQuestions}><RefreshCw size={17} /> Yana ishlash</button>
+                {state.mistakes?.length > 0 && <button style={{ padding: '13px', background: '#fff', color: '#334155', border: '1.5px solid #E2E8F0', borderRadius: 14, fontWeight: 600, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }} onClick={() => setMode('mistakes')}><Target size={16} /> Xatolar ustida ishlash</button>}
+                <button style={{ padding: '13px', background: '#fff', color: '#334155', border: '1.5px solid #E2E8F0', borderRadius: 14, fontWeight: 600, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }} onClick={() => navigate('/')}><Home size={16} /> Bosh sahifaga</button>
                 <div style={{ marginTop: '8px', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
                   <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}><Share2 size={13} /> Natijani ulashing</div>
                   <div style={{ display: 'flex', gap: '8px' }}>
