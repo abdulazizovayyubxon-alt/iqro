@@ -139,32 +139,84 @@ function WelcomeStep({ goal, time, onDone }) {
   const timeObj = TIMES.find(t => t.id === time);
 
   return (
-    <div style={{ textAlign: 'center', padding: '20px 0' }}>
+    <div style={{ textAlign: 'center', padding: '10px 0 20px' }}>
       <div style={{ fontSize: 64, marginBottom: 16 }}>🎉</div>
-      <h1 style={{ ...ss.title, textAlign: 'center' }}>Hammasi tayyor!</h1>
-      <p style={{ ...ss.subtitle, textAlign: 'center' }}>IQRO platformasiga xush kelibsiz</p>
+      <h1 style={{ ...ss.title, textAlign: 'center', fontSize: 32, fontWeight: 900, marginBottom: 6 }}>Hammasi tayyor!</h1>
+      <p style={{ ...ss.subtitle, textAlign: 'center', fontSize: 15, color: 'var(--text3)', marginBottom: 24 }}>IQRO platformasiga xush kelibsiz</p>
 
-      <div style={{ background: 'var(--bg3)', borderRadius: 16, padding: '16px 20px', marginBottom: 20, textAlign: 'left' }}>
+      <div style={{
+        background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+        border: '1px solid var(--border)',
+        borderRadius: 20,
+        padding: '24px 20px',
+        marginBottom: 24,
+        textAlign: 'left',
+        boxShadow: '0 8px 32px rgba(0,0,0,0.15)'
+      }}>
         {goalObj && (
-          <div style={ss.summaryRow}>
-            <span style={{ fontSize: 18 }}>{goalObj.badge}</span>
-            <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)' }}>{goalObj.title}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18, borderBottom: '1px solid var(--border)', paddingBottom: 14 }}>
+            <div style={{
+              width: 38, height: 38, borderRadius: 12,
+              background: 'rgba(59, 130, 246, 0.12)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 18, color: '#3B82F6'
+            }}>
+              {goalObj.badge}
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <span style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>Sizning toifangiz</span>
+              <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{goalObj.title}</span>
+            </div>
           </div>
         )}
         {timeObj && (
-          <div style={ss.summaryRow}>
-            <span style={{ fontSize: 18 }}>⏱</span>
-            <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)' }}>Kunlik: {timeObj.title}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18, borderBottom: '1px solid var(--border)', paddingBottom: 14 }}>
+            <div style={{
+              width: 38, height: 38, borderRadius: 12,
+              background: 'rgba(16, 185, 129, 0.12)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 18, color: '#10B981'
+            }}>
+              ⏱
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <span style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>Kunlik reja</span>
+              <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{timeObj.title}</span>
+            </div>
           </div>
         )}
-        <div style={ss.summaryRow}>
-          <span style={{ fontSize: 18 }}>⭐</span>
-          <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)' }}>7 kunlik bepul sinov</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <div style={{
+            width: 38, height: 38, borderRadius: 12,
+            background: 'rgba(245, 158, 11, 0.12)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: 18, color: '#F59E0B'
+          }}>
+            ⭐
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>Sinov muddati</span>
+            <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>7 kunlik bepul sinov</span>
+          </div>
         </div>
       </div>
 
-      <div style={{ background: 'var(--blue-bg)', border: '1px solid var(--border)', borderRadius: 12, padding: '12px 16px', fontSize: 13, color: 'var(--blue)', marginBottom: 24 }}>
-        🏆 Foydalanuvchilarning <strong>89%</strong> si maqsadiga erisha oldi
+      <div style={{
+        background: 'linear-gradient(90deg, rgba(59, 130, 246, 0.08) 0%, rgba(147, 51, 234, 0.08) 100%)',
+        border: '1px solid rgba(59, 130, 246, 0.15)',
+        borderRadius: 14,
+        padding: '14px 18px',
+        fontSize: 13,
+        color: 'var(--text2)',
+        marginBottom: 24,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 8,
+        lineHeight: 1.4
+      }}>
+        <span style={{ fontSize: 16 }}>🏆</span>
+        <span style={{ textAlign: 'left' }}>Foydalanuvchilarning <strong style={{ color: 'var(--blue)', fontWeight: 800 }}>89%</strong> si o'z maqsadlariga erisha olishdi!</span>
       </div>
     </div>
   );
