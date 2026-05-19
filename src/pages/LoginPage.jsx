@@ -271,16 +271,6 @@ export default function LoginPage() {
                         </button>
                       </div>
                     </div>
-
-                    <div>
-                      <label style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text2)', marginBottom: '6px', display: 'block' }}>Tug'ilgan sana</label>
-                      <input
-                        style={s.input}
-                        type="date"
-                        value={birthDate}
-                        onChange={e => setBirthDate(e.target.value)}
-                      />
-                    </div>
                   </div>
                 </>
               )}
