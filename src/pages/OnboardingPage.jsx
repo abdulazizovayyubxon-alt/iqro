@@ -1,56 +1,196 @@
 /**
- * OnboardingPage.jsx
- * Faqat yangi ro'yxatdan o'tgan foydalanuvchilarga ko'rsatiladi.
- * 4 ta qadam: Maqsad → Fan → Vaqt rejalash → Tabrik
+ * OnboardingPage.jsx — Namuna uslubida qayta yozilgan
+ * Oq fon, katta sarlavha, vertikal kartochkalar, pastda yopishgan tugma
+ * Desktop: markazlashgan karta | Mobil: to'liq ekran
  */
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft, CheckCircle } from 'lucide-react';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 
+const PRIMARY = '#29B6F6';
+const IS_MOBILE = typeof window !== 'undefined' && window.innerWidth <= 768;
+
+// ── Ma'lumotlar ──
 const GOALS = [
-  { id: 'attestation', emoji: '🏆', title: 'Attestatsiyadan o\'tish', desc: 'Malaka oshirish va tasdiqlash' },
-  { id: 'exam',        emoji: '📝', title: 'Imtihonga tayyorlanish', desc: 'IQRO sertifikatlash imtihoni' },
-  { id: 'knowledge',   emoji: '🧠', title: 'Bilimni oshirish',       desc: 'Kasbiy rivojlanish' },
-  { id: 'practice',    emoji: '🎯', title: 'Mashq qilish',           desc: 'Muntazam test yechish' },
+  { id: 'attestation', badge: '🏛', title: 'Attestatsiyadan o\'tish', desc: 'Malaka oshirish va tasdiqlash' },
+  { id: 'exam',        badge: '📝', title: 'Imtihonga tayyorlanish', desc: 'IQRO sertifikatlash imtihoni' },
+  { id: 'knowledge',   badge: '🧠', title: 'Bilimni oshirish',       desc: 'Kasbiy rivojlanish uchun' },
+  { id: 'practice',    badge: '🎯', title: 'Muntazam mashq',         desc: 'Har kuni test yechish' },
 ];
 
 const SUBJECTS = [
-  { id: 'chqbt',  emoji: '🏛️', title: 'CHQBT',              desc: 'O\'zbekiston tarixi va huquq' },
-  { id: 'ped',    emoji: '📚', title: 'Pedagogik Mahorat',   desc: 'Ta\'lim metodologiyasi' },
-  { id: 'art',    emoji: '🎨', title: 'Tasviriy San\'at',    desc: 'Badiiy ta\'lim' },
-  { id: 'multi',  emoji: '📖', title: 'Bir nechta fan',      desc: 'Barcha fanlar bo\'yicha' },
+  { id: 'chqbt', badge: 'Q', title: 'CHQBT', desc: 'O\'zbekiston tarixi, huquqi, Konstitutsiya' },
+  { id: 'ped',   badge: 'P', title: 'Pedagogik Mahorat', desc: 'Ta\'lim metodologiyasi va psixologiya' },
+  { id: 'art',   badge: 'S', title: 'Tasviriy San\'at', desc: 'Badiiy ta\'lim va san\'at nazariyasi' },
+  { id: 'multi', badge: '✦', title: 'Bir nechta fan', desc: 'Barcha fanlar bo\'yicha kompleks' },
 ];
 
 const TIMES = [
-  { id: '10', emoji: '⚡', title: '10 daqiqa',  desc: 'Tez-tez, oz-ozdan' },
-  { id: '20', emoji: '🎯', title: '20 daqiqa',  desc: 'Optimal balansi' },
-  { id: '30', emoji: '💪', title: '30 daqiqa',  desc: 'Chuqur o\'rganish' },
-  { id: '60', emoji: '🏅', title: '1 soat +',   desc: 'Jiddiy tayyorlanish' },
+  { id: '10', badge: '10', title: '10 daqiqa',  desc: 'Tez va ixcham — har kuni ozgina' },
+  { id: '20', badge: '20', title: '20 daqiqa',  desc: 'Maqbul — ko\'pchilik shu tanlaydi' },
+  { id: '30', badge: '30', title: '30 daqiqa',  desc: 'Yaxshi natija uchun' },
+  { id: '60', badge: '60', title: '1 soat +',   desc: 'Jiddiy va chuqur tayyorlanish' },
 ];
 
-const slideVariants = {
-  enter: (dir) => ({ x: dir > 0 ? 60 : -60, opacity: 0 }),
-  center: { x: 0, opacity: 1 },
-  exit:  (dir) => ({ x: dir > 0 ? -60 : 60, opacity: 0 }),
-};
+const LOADING_STEPS = [
+  'Profilingiz yaratilmoqda...',
+  'Maqsadlaringiz sozlanmoqda...',
+  'Kunlik reja tayyorlanmoqda...',
+];
 
+// ── Qadam komponentlari ──
+function ListStep({ title, subtitle, items, selected, onSelect }) {
+  return (
+    <>
+      <h1 style={ss.title}>{title}</h1>
+      {subtitle && <p style={ss.subtitle}>{subtitle}</p>}
+      <div style={ss.list}>
+        {items.map(item => {
+          const isActive = selected === item.id;
+          return (
+            <button
+              key={item.id}
+              style={{
+                ...ss.listItem,
+                border: isActive ? `2px solid ${PRIMARY}` : '1.5px solid #E2E8F0',
+                background: isActive ? '#F0F9FF' : '#fff',
+              }}
+              onClick={() => onSelect(item.id)}
+            >
+              <div style={{
+                ...ss.badge,
+                background: isActive ? PRIMARY : '#F1F5F9',
+                color: isActive ? '#fff' : '#64748B',
+              }}>
+                {item.badge}
+              </div>
+              <div style={ss.listItemText}>
+                <span style={{ fontSize: 16, fontWeight: 700, color: '#0F172A' }}>{item.title}</span>
+                <span style={{ fontSize: 13, color: '#94A3B8', marginTop: 2 }}>{item.desc}</span>
+              </div>
+              {isActive && <CheckCircle size={20} style={{ color: PRIMARY, flexShrink: 0 }} />}
+            </button>
+          );
+        })}
+      </div>
+    </>
+  );
+}
+
+function LoadingStep() {
+  const [stepIdx, setStepIdx] = React.useState(0);
+  const [progress, setProgress] = React.useState(0);
+
+  React.useEffect(() => {
+    const prog = setInterval(() => setProgress(p => Math.min(p + 2, 100)), 40);
+    const step = setInterval(() => setStepIdx(i => Math.min(i + 1, LOADING_STEPS.length - 1)), 800);
+    return () => { clearInterval(prog); clearInterval(step); };
+  }, []);
+
+  return (
+    <div style={{ textAlign: 'center', padding: '40px 0' }}>
+      {/* Animated icon */}
+      <div style={ss.loaderCircle}>
+        <div style={ss.loaderInner}>
+          <span style={{ fontSize: 28 }}>✦</span>
+        </div>
+      </div>
+
+      <h2 style={{ fontSize: 22, fontWeight: 800, color: '#0F172A', margin: '24px 0 8px' }}>
+        Optimizing daily goals...
+      </h2>
+      <p style={{ fontSize: 14, color: '#94A3B8', marginBottom: 28 }}>
+        Rejangiz tayyorlanmoqda, bir necha soniya kuting
+      </p>
+
+      {/* Progress bar */}
+      <div style={{ background: '#E2E8F0', borderRadius: 4, height: 6, marginBottom: 6, overflow: 'hidden' }}>
+        <motion.div
+          animate={{ width: `${progress}%` }}
+          style={{ height: '100%', background: PRIMARY, borderRadius: 4 }}
+        />
+      </div>
+      <p style={{ fontSize: 12, color: '#94A3B8', textAlign: 'right', marginBottom: 24 }}>{progress}%</p>
+
+      {/* Checklist */}
+      <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: 12 }}>
+        {LOADING_STEPS.map((text, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            {i < stepIdx ? (
+              <CheckCircle size={20} style={{ color: PRIMARY, flexShrink: 0 }} />
+            ) : i === stepIdx ? (
+              <div style={ss.spinnerSmall} />
+            ) : (
+              <div style={{ width: 20, height: 20, borderRadius: '50%', border: '2px solid #E2E8F0', flexShrink: 0 }} />
+            )}
+            <span style={{ fontSize: 14, color: i <= stepIdx ? PRIMARY : '#94A3B8', fontWeight: i === stepIdx ? 600 : 400 }}>
+              {text}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function WelcomeStep({ goal, time, onDone }) {
+  const goalObj = GOALS.find(g => g.id === goal);
+  const timeObj = TIMES.find(t => t.id === time);
+
+  return (
+    <div style={{ textAlign: 'center', padding: '20px 0' }}>
+      <div style={{ fontSize: 64, marginBottom: 16 }}>🎉</div>
+      <h1 style={{ ...ss.title, textAlign: 'center' }}>Hammasi tayyor!</h1>
+      <p style={{ ...ss.subtitle, textAlign: 'center' }}>IQRO platformasiga xush kelibsiz</p>
+
+      <div style={{ background: '#F8FAFC', borderRadius: 16, padding: '16px 20px', marginBottom: 20, textAlign: 'left' }}>
+        {goalObj && (
+          <div style={ss.summaryRow}>
+            <span style={{ fontSize: 18 }}>{goalObj.badge}</span>
+            <span style={{ fontSize: 14, fontWeight: 600, color: '#0F172A' }}>{goalObj.title}</span>
+          </div>
+        )}
+        {timeObj && (
+          <div style={ss.summaryRow}>
+            <span style={{ fontSize: 18 }}>⏱</span>
+            <span style={{ fontSize: 14, fontWeight: 600, color: '#0F172A' }}>Kunlik: {timeObj.title}</span>
+          </div>
+        )}
+        <div style={ss.summaryRow}>
+          <span style={{ fontSize: 18 }}>⭐</span>
+          <span style={{ fontSize: 14, fontWeight: 600, color: '#0F172A' }}>7 kunlik bepul sinov</span>
+        </div>
+      </div>
+
+      <div style={{ background: '#F0F9FF', border: '1px solid #BAE6FD', borderRadius: 12, padding: '12px 16px', fontSize: 13, color: '#0369A1', marginBottom: 24 }}>
+        🏆 Foydalanuvchilarning <strong>89%</strong> si maqsadiga erisha oldi
+      </div>
+    </div>
+  );
+}
+
+// ── Asosiy komponent ──
 export default function OnboardingPage({ onComplete }) {
   const { user } = useAuth();
-  const [step, setStep] = useState(0); // 0=maqsad, 1=fan, 2=vaqt, 3=loading, 4=tabrik
+  const [step, setStep] = useState(0); // 0=maqsad 1=fan 2=vaqt 3=loading 4=tabrik
   const [dir, setDir] = useState(1);
-  const [goal, setGoal]       = useState(null);
+  const [goal, setGoal]     = useState(null);
   const [subject, setSubject] = useState(null);
-  const [time, setTime]       = useState(null);
-  const [saving, setSaving]   = useState(false);
+  const [time, setTime]     = useState(null);
+  const [saving, setSaving] = useState(false);
+
+  const TOTAL_STEPS = 3; // 0,1,2
+  const progress = step >= 3 ? 1 : (step + 1) / (TOTAL_STEPS + 1);
 
   const goNext = () => { setDir(1); setStep(s => s + 1); };
   const goBack = () => { setDir(-1); setStep(s => s - 1); };
 
   const handleFinish = async () => {
     setSaving(true);
-    setStep(3); // loading
+    setStep(3);
     try {
       if (user?.uid) {
         await updateDoc(doc(db, 'users', user.uid), {
@@ -60,291 +200,180 @@ export default function OnboardingPage({ onComplete }) {
           onboardingDailyMinutes: time,
         });
       }
-    } catch (e) {
-      console.error('Onboarding save error:', e);
-    }
-    setTimeout(() => { setStep(4); setSaving(false); }, 1200);
+    } catch (e) { console.error(e); }
+    setTimeout(() => { setStep(4); setSaving(false); }, 2800);
   };
 
-  // ── Step renderlari ──
-  const steps = [
-    // 0 — Maqsad
-    <ChoiceStep
-      key="goal"
-      dir={dir}
-      title="Maqsadingiz nima?"
-      subtitle="O'zingizga mos yo'nalishni tanlang"
-      items={GOALS}
-      selected={goal}
-      onSelect={setGoal}
-      onNext={goNext}
-      step={0}
-      total={3}
-    />,
-    // 1 — Fan
-    <ChoiceStep
-      key="subject"
-      dir={dir}
-      title="Qaysi fanda tayyorlanasiz?"
-      subtitle="Eng ko'p vaqt sarflaydigan fan"
-      items={SUBJECTS}
-      selected={subject}
-      onSelect={setSubject}
-      onNext={goNext}
-      onBack={goBack}
-      step={1}
-      total={3}
-    />,
-    // 2 — Kunlik vaqt
-    <ChoiceStep
-      key="time"
-      dir={dir}
-      title="Kunlik o'qish vaqti?"
-      subtitle="Har kuni qancha vaqt ajrata olasiz?"
-      items={TIMES}
-      selected={time}
-      onSelect={setTime}
-      onNext={handleFinish}
-      onBack={goBack}
-      step={2}
-      total={3}
-      nextLabel="Boshlash 🚀"
-      nextDisabled={saving}
-    />,
-    // 3 — Loading
-    <LoadingStep key="loading" />,
-    // 4 — Tabrik
-    <WelcomeStep key="welcome" goal={goal} time={time} onDone={onComplete} />,
+  const currentSelected = [goal, subject, time][step] ?? null;
+  const canProceed = step < 3 && currentSelected !== null;
+
+  const stepData = [
+    { title: 'Maqsadingiz nima?', subtitle: null, items: GOALS, val: goal, set: setGoal },
+    { title: 'Qaysi fanda tayyorlanasiz?', subtitle: null, items: SUBJECTS, val: subject, set: setSubject },
+    { title: 'Kunlik o\'qish vaqti?', subtitle: null, items: TIMES, val: time, set: setTime },
   ];
 
   return (
-    <div style={styles.page}>
-      <div style={styles.bgCircle1} />
-      <div style={styles.bgCircle2} />
-      <div style={styles.card}>
-        <AnimatePresence custom={dir} mode="wait">
-          {steps[step]}
-        </AnimatePresence>
+    <div style={ss.pageOuter}>
+      <div style={ss.page}>
+        {/* Progress bar */}
+        <div style={ss.progressTrack}>
+          <motion.div
+            animate={{ width: `${progress * 100}%` }}
+            transition={{ duration: 0.4, ease: 'easeInOut' }}
+            style={ss.progressFill}
+          />
+        </div>
+
+        {/* Header */}
+        {step < 3 && (
+          <div style={ss.header}>
+            {step > 0 ? (
+              <button style={ss.backBtn} onClick={goBack}>
+                <ArrowLeft size={22} />
+              </button>
+            ) : <div style={{ width: 36 }} />}
+            <span style={{ fontSize: 13, color: '#94A3B8', fontWeight: 600 }}>
+              {step + 1} / {TOTAL_STEPS}
+            </span>
+            <div style={{ width: 36 }} />
+          </div>
+        )}
+
+        {/* Content */}
+        <div style={ss.content}>
+          <AnimatePresence mode="wait" custom={dir}>
+            <motion.div
+              key={step}
+              custom={dir}
+              variants={{
+                enter: d => ({ x: d > 0 ? 40 : -40, opacity: 0 }),
+                center: { x: 0, opacity: 1 },
+                exit: d => ({ x: d > 0 ? -40 : 40, opacity: 0 }),
+              }}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.22 }}
+            >
+              {step < 3 && (
+                <ListStep
+                  title={stepData[step].title}
+                  subtitle={stepData[step].subtitle}
+                  items={stepData[step].items}
+                  selected={stepData[step].val}
+                  onSelect={stepData[step].set}
+                />
+              )}
+              {step === 3 && <LoadingStep />}
+              {step === 4 && <WelcomeStep goal={goal} time={time} onDone={onComplete} />}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Footer */}
+        {step !== 3 && (
+          <div style={ss.footer}>
+            <button
+              style={{
+                ...ss.primaryBtn,
+                opacity: step < 3 && !canProceed ? 0.5 : 1,
+              }}
+              disabled={(step < 3 && !canProceed) || saving}
+              onClick={step === 4 ? onComplete : step === 2 ? handleFinish : goNext}
+            >
+              {step === 4 ? 'Platformani boshlash 🚀' : 'Keyingi'}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-// ── Qadam: Tanlov ──
-function ChoiceStep({ dir, title, subtitle, items, selected, onSelect, onNext, onBack, step, total, nextLabel, nextDisabled }) {
-  return (
-    <motion.div
-      custom={dir}
-      variants={slideVariants}
-      initial="enter"
-      animate="center"
-      exit="exit"
-      transition={{ duration: 0.28, ease: 'easeInOut' }}
-      style={{ width: '100%' }}
-    >
-      {/* Progress dots */}
-      <div style={styles.dots}>
-        {Array.from({ length: total }).map((_, i) => (
-          <div key={i} style={{ ...styles.dot, background: i === step ? 'var(--accent)' : 'var(--border)', width: i === step ? 24 : 8 }} />
-        ))}
-      </div>
-
-      <div style={styles.emoji}>🎯</div>
-      <h2 style={styles.title}>{title}</h2>
-      <p style={styles.subtitle}>{subtitle}</p>
-
-      <div style={styles.grid}>
-        {items.map(item => (
-          <button
-            key={item.id}
-            style={{
-              ...styles.choice,
-              ...(selected === item.id ? styles.choiceActive : {}),
-            }}
-            onClick={() => onSelect(item.id)}
-          >
-            <span style={styles.choiceEmoji}>{item.emoji}</span>
-            <span style={styles.choiceTitle}>{item.title}</span>
-            <span style={styles.choiceDesc}>{item.desc}</span>
-          </button>
-        ))}
-      </div>
-
-      <div style={styles.btnRow}>
-        {onBack && (
-          <button style={styles.btnBack} onClick={onBack}>← Orqaga</button>
-        )}
-        <button
-          style={{ ...styles.btnNext, opacity: (!selected || nextDisabled) ? 0.4 : 1, flex: 1 }}
-          disabled={!selected || nextDisabled}
-          onClick={onNext}
-        >
-          {nextLabel || 'Davom etish →'}
-        </button>
-      </div>
-    </motion.div>
-  );
-}
-
-// ── Loading ──
-function LoadingStep() {
-  const messages = [
-    'Profilingiz yaratilmoqda...',
-    'Maqsadlaringiz sozlanmoqda...',
-    'Siz uchun tayyorlanmoqda...',
-  ];
-  const [idx, setIdx] = React.useState(0);
-  React.useEffect(() => {
-    const t = setInterval(() => setIdx(i => (i + 1) % messages.length), 700);
-    return () => clearInterval(t);
-  }, []);
-
-  return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ textAlign: 'center', padding: '60px 0' }}>
-      <div style={styles.spinner} />
-      <p style={{ color: 'var(--text3)', marginTop: 24, fontSize: 15 }}>{messages[idx]}</p>
-    </motion.div>
-  );
-}
-
-// ── Tabrik ──
-function WelcomeStep({ goal, time, onDone }) {
-  const goalObj = GOALS.find(g => g.id === goal);
-  const timeObj = TIMES.find(t => t.id === time);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      style={{ textAlign: 'center' }}
-    >
-      <div style={{ fontSize: 64, marginBottom: 16 }}>🎉</div>
-      <h2 style={{ ...styles.title, fontSize: 24 }}>Hammasi tayyor!</h2>
-      <p style={styles.subtitle}>IQRO platformasiga xush kelibsiz</p>
-
-      {/* Stats box */}
-      <div style={styles.statsBox}>
-        {goalObj && (
-          <div style={styles.statRow}>
-            <span style={styles.statEmoji}>{goalObj.emoji}</span>
-            <span style={styles.statText}>{goalObj.title}</span>
-          </div>
-        )}
-        {timeObj && (
-          <div style={styles.statRow}>
-            <span style={styles.statEmoji}>{timeObj.emoji}</span>
-            <span style={styles.statText}>Kunlik: {timeObj.title}</span>
-          </div>
-        )}
-        <div style={styles.statRow}>
-          <span style={styles.statEmoji}>⭐</span>
-          <span style={styles.statText}>7 kunlik bepul sinov</span>
-        </div>
-      </div>
-
-      {/* Social proof */}
-      <div style={styles.proof}>
-        🏆 Foydalanuvchilarning <strong>89%</strong> si maqsadiga erisha oldi
-      </div>
-
-      <button style={{ ...styles.btnNext, width: '100%', fontSize: 17, padding: '16px' }} onClick={onDone}>
-        Platformani boshlash 🚀
-      </button>
-    </motion.div>
-  );
-}
-
 // ── Styles ──
-const styles = {
+const ss = {
+  pageOuter: {
+    minHeight: '100vh',
+    background: IS_MOBILE ? '#fff' : 'linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%)',
+    display: IS_MOBILE ? 'block' : 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: IS_MOBILE ? 0 : '40px 20px',
+    fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif",
+    color: '#0F172A',
+  },
   page: {
-    minHeight: '100vh', display: 'flex', alignItems: 'center',
-    justifyContent: 'center', background: 'var(--bg)',
-    padding: '20px', position: 'relative', overflow: 'hidden',
+    width: '100%',
+    maxWidth: 460,
+    minHeight: IS_MOBILE ? '100vh' : 'auto',
+    background: '#fff',
+    borderRadius: IS_MOBILE ? 0 : 24,
+    boxShadow: IS_MOBILE ? 'none' : '0 20px 60px rgba(0,0,0,0.10)',
+    display: 'flex',
+    flexDirection: 'column',
+    overflow: 'hidden',
   },
-  bgCircle1: {
-    position: 'fixed', top: -120, right: -80,
-    width: 300, height: 300, borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%)',
-    pointerEvents: 'none',
+  progressTrack: { height: 4, background: '#E2E8F0', flexShrink: 0 },
+  progressFill: { height: '100%', background: PRIMARY, borderRadius: '0 2px 2px 0' },
+  header: {
+    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+    padding: '14px 20px 0',
   },
-  bgCircle2: {
-    position: 'fixed', bottom: -100, left: -80,
-    width: 280, height: 280, borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(139,92,246,0.10) 0%, transparent 70%)',
-    pointerEvents: 'none',
+  backBtn: {
+    background: 'none', border: 'none', cursor: 'pointer',
+    color: '#0F172A', padding: 6, display: 'flex', alignItems: 'center',
+    borderRadius: 8,
   },
-  card: {
-    background: 'var(--bg2)', borderRadius: 24,
-    border: '1px solid var(--border)',
-    boxShadow: '0 20px 60px rgba(0,0,0,0.12)',
-    padding: '36px 28px', width: '100%', maxWidth: 460,
-    position: 'relative', zIndex: 1,
+  content: { flex: 1, padding: '24px 20px 16px', overflowY: 'auto' },
+  title: { fontSize: 26, fontWeight: 800, lineHeight: 1.25, marginBottom: 8, color: '#0F172A' },
+  subtitle: { fontSize: 14, color: '#94A3B8', marginBottom: 20, lineHeight: 1.5 },
+  list: { display: 'flex', flexDirection: 'column', gap: 10, marginTop: 8 },
+  listItem: {
+    display: 'flex', alignItems: 'center', gap: 14,
+    padding: '14px 16px', borderRadius: 14,
+    cursor: 'pointer', textAlign: 'left', width: '100%',
+    fontFamily: 'inherit', transition: 'all 0.18s',
   },
-  dots: {
-    display: 'flex', alignItems: 'center', gap: 6,
-    justifyContent: 'center', marginBottom: 28,
+  badge: {
+    width: 40, height: 40, borderRadius: 12, flexShrink: 0,
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    fontSize: 14, fontWeight: 800, transition: 'all 0.18s',
   },
-  dot: {
-    height: 8, borderRadius: 4, transition: 'all 0.3s',
+  listItemText: { flex: 1, display: 'flex', flexDirection: 'column' },
+  footer: {
+    padding: '12px 20px calc(16px + env(safe-area-inset-bottom))',
+    borderTop: '1px solid #F1F5F9', background: '#fff',
   },
-  emoji: { fontSize: 44, textAlign: 'center', marginBottom: 12 },
-  title: {
-    fontSize: 21, fontWeight: 800, color: 'var(--text)',
-    textAlign: 'center', margin: '0 0 8px',
+  primaryBtn: {
+    width: '100%', padding: '16px', borderRadius: 14,
+    background: PRIMARY, color: '#fff',
+    border: 'none', fontWeight: 700, fontSize: 16,
+    cursor: 'pointer', fontFamily: 'inherit', transition: 'opacity 0.2s',
   },
-  subtitle: {
-    fontSize: 14, color: 'var(--text3)', textAlign: 'center',
-    marginBottom: 24, lineHeight: 1.5,
-  },
-  grid: {
-    display: 'grid', gridTemplateColumns: '1fr 1fr',
-    gap: 10, marginBottom: 24,
-  },
-  choice: {
-    display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
-    padding: '14px 14px', borderRadius: 14, cursor: 'pointer',
-    border: '1.5px solid var(--border)', background: 'var(--bg)',
-    textAlign: 'left', transition: 'all 0.18s', fontFamily: 'inherit',
-    gap: 4,
-  },
-  choiceActive: {
-    border: '2px solid var(--accent)',
-    background: 'rgba(59,130,246,0.07)',
-    boxShadow: '0 0 0 3px rgba(59,130,246,0.12)',
-  },
-  choiceEmoji: { fontSize: 22 },
-  choiceTitle: { fontSize: 13, fontWeight: 700, color: 'var(--text)' },
-  choiceDesc:  { fontSize: 11, color: 'var(--text3)', lineHeight: 1.4 },
-  btnRow: { display: 'flex', gap: 10 },
-  btnBack: {
-    padding: '13px 18px', borderRadius: 12, border: '1.5px solid var(--border)',
-    background: 'var(--bg)', color: 'var(--text3)', cursor: 'pointer',
-    fontFamily: 'inherit', fontWeight: 600, fontSize: 14,
-  },
-  btnNext: {
-    padding: '13px 0', borderRadius: 12, border: 'none',
-    background: 'var(--accent)', color: '#fff', cursor: 'pointer',
-    fontFamily: 'inherit', fontWeight: 700, fontSize: 15,
-    transition: 'opacity 0.2s',
-  },
-  spinner: {
-    width: 48, height: 48, borderRadius: '50%',
-    border: '3px solid var(--border)',
-    borderTopColor: 'var(--accent)',
-    animation: 'spin 0.8s linear infinite',
+  loaderCircle: {
+    width: 100, height: 100, borderRadius: '50%',
+    border: `3px solid ${PRIMARY}20`,
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
     margin: '0 auto',
+    boxShadow: `0 0 0 12px ${PRIMARY}10`,
+    animation: 'pulse 2s ease infinite',
   },
-  statsBox: {
-    background: 'var(--bg3)', borderRadius: 16, padding: '16px 20px',
-    marginBottom: 16, display: 'flex', flexDirection: 'column', gap: 10,
+  loaderInner: {
+    width: 64, height: 64, borderRadius: '50%',
+    background: PRIMARY,
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    color: '#fff',
   },
-  statRow: { display: 'flex', alignItems: 'center', gap: 12 },
-  statEmoji: { fontSize: 20 },
-  statText: { fontSize: 14, fontWeight: 600, color: 'var(--text)' },
-  proof: {
-    background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)',
-    borderRadius: 12, padding: '12px 16px', fontSize: 13, color: 'var(--text2)',
-    marginBottom: 20, lineHeight: 1.5,
+  spinnerSmall: {
+    width: 20, height: 20, borderRadius: '50%',
+    border: `2px solid ${PRIMARY}40`,
+    borderTopColor: PRIMARY,
+    animation: 'spin 0.8s linear infinite',
+    flexShrink: 0,
+  },
+  summaryRow: {
+    display: 'flex', alignItems: 'center', gap: 12,
+    padding: '8px 0', borderBottom: '1px solid #F1F5F9',
   },
 };
