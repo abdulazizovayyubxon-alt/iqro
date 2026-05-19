@@ -297,14 +297,14 @@ const ProfilePage = ({ theme, toggleTheme }) => {
               >
                 <option value="">Tanlang...</option>
                 {SUBJECTS.map(s => (
-                  <option key={s.id} value={s.id}>{s.badge} {s.title}</option>
+                  <option key={s.id} value={s.id}>{s.title}</option>
                 ))}
               </select>
             </div>
 
             {/* Maqsad */}
             <div>
-              <label style={{ fontSize: 13, fontWeight: 600, color: 'var(--text2)', marginBottom: 6, display: 'block' }}>Kanal / Maqsad toifasi</label>
+              <label style={{ fontSize: 13, fontWeight: 600, color: 'var(--text2)', marginBottom: 6, display: 'block' }}>Maqsadingiz</label>
               <select
                 value={goal}
                 onChange={(e) => setGoal(e.target.value)}
@@ -317,7 +317,7 @@ const ProfilePage = ({ theme, toggleTheme }) => {
               >
                 <option value="">Tanlang...</option>
                 {GOALS.map(g => (
-                  <option key={g.id} value={g.id}>{g.badge} {g.title}</option>
+                  <option key={g.id} value={g.id}>{g.title}</option>
                 ))}
               </select>
             </div>
