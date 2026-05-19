@@ -13,12 +13,11 @@ import { useAuth } from '../context/AuthContext';
 const PRIMARY = '#29B6F6';
 const IS_MOBILE = typeof window !== 'undefined' && window.innerWidth <= 768;
 
-// ── Ma'lumotlar ──
 const GOALS = [
-  { id: 'attestation', badge: '🏛', title: 'Attestatsiyadan o\'tish', desc: 'Malaka oshirish va tasdiqlash' },
-  { id: 'exam',        badge: '📝', title: 'Imtihonga tayyorlanish', desc: 'IQRO sertifikatlash imtihoni' },
-  { id: 'knowledge',   badge: '🧠', title: 'Bilimni oshirish',       desc: 'Kasbiy rivojlanish uchun' },
-  { id: 'practice',    badge: '🎯', title: 'Muntazam mashq',         desc: 'Har kuni test yechish' },
+  { id: 'second_category', badge: '🥈', title: 'Ikkinchi toifa', desc: 'Navbatdagi malaka toifasini olish' },
+  { id: 'first_category',  badge: '🥇', title: 'Birinchi toifa',  desc: 'Malaka toifasini oshirish' },
+  { id: 'highest_category',badge: '🏆', title: 'Oliy toifa',      desc: 'Eng yuqori toifaga erishish' },
+  { id: 'professional',    badge: '🎯', title: 'Kasbiy sertifikat uchun', desc: 'Milliy va kasbiy sertifikat imtihoni' },
 ];
 
 const SUBJECTS = [
