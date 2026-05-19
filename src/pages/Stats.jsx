@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import { TOPICS } from '../data/mockData';
 import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
@@ -8,6 +8,7 @@ import RadialChart from '../components/shared/RadialChart';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import PremiumModal from '../components/PremiumModal';
+import { FREE_QUESTION_LIMIT } from '../config';
 
 const Stats = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Stats = () => {
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const { state } = useContext(AppContext);
 
-  const isFreeLimitReached = !user?.isPremium && (state.totalAnswered || 0) >= 100;
+  const isFreeLimitReached = !user?.isPremium && (state.totalAnswered || 0) >= FREE_QUESTION_LIMIT;
 
   if (isFreeLimitReached) {
     return (
@@ -25,7 +26,7 @@ const Stats = () => {
           <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
           <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Bepul Limit Tugadi</div>
           <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-            Siz bepul limitni (100 ta savol) muvaffaqiyatli yakunladingiz! O'z statistikangizni ko'rish va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
+            Siz bepul limitni ({FREE_QUESTION_LIMIT} ta savol) muvaffaqiyatli yakunladingiz! O'z statistikangizni ko'rish va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
           </div>
           <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
             ⭐ Premium Rejimni Faollashtirish

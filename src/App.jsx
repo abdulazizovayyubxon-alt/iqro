@@ -26,6 +26,7 @@ const LeaderboardPage = React.lazy(() => import('./pages/LeaderboardPage'));
 const AchievementsPage = React.lazy(() => import('./pages/AchievementsPage'));
 const AdminPage = React.lazy(() => import('./pages/AdminPage'));
 const MigrationPage = React.lazy(() => import('./pages/MigrationPage'));
+const ReferralPage = React.lazy(() => import('./pages/ReferralPage'));
 
 // ── Skeleton Loader — sahifa yuklanayotganda chiroyli ko'rinish ──
 const PageSkeleton = () => (
@@ -157,6 +158,7 @@ function App() {
                 <Route path="/achievements" element={<AchievementsPage />} />
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="/migration" element={<MigrationPage />} />
+                <Route path="/referral" element={<ReferralPage />} />
                 <Route path="*" element={<Navigate to="/test" replace />} />
               </Routes>
             </AnimatePresence>

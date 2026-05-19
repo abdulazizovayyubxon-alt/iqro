@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
+import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS } from '../data/mockData';
 import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -13,11 +14,11 @@ const AchievementsPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { state, updateState } = useContext(AppContext);
-  const [activeTab, setActiveTab] = useState('achievements'); // achievements | statistics
+  const [activeTab, setActiveTab] = useState('achievements');
   const [showPremiumModal, setShowPremiumModal] = useState(false);
+  const { isTrialExpired: isFreeLimitReached } = useTrialExpiry();
 
   const handleNavigation = (topicId, mode) => {
-    const isFreeLimitReached = !user?.isPremium && (state.totalAnswered || 0) >= 100;
     if (isFreeLimitReached) {
       setShowPremiumModal(true);
       return;

@@ -29,7 +29,12 @@ const AdminPage = () => {
   const { user } = useAuth();
   const { showToast } = useContext(ToastContext);
 
-  const [tab, setTab] = useState('objections'); // objections | users | stats | questions | tariffs | notifications
+  const [tab, setTab] = useState('objections'); // objections | users | stats | questions | tariffs | notifications | referrals
+
+  // ── Referral statistika state ──
+  const [allReferrals, setAllReferrals] = useState([]);
+  const [referralLoading, setReferralLoading] = useState(false);
+  const [referralSummary, setReferralSummary] = useState({ total: 0, paid: 0, pending: 0, totalBonus: 0 });
   const [objections, setObjections] = useState([]);
   const [users, setUsers] = useState([]);
   const [questions, setQuestions] = useState([]);
@@ -216,6 +221,31 @@ const AdminPage = () => {
     return () => unsub();
   }, [tab]);
 
+  // ── Referral tab ma'lumotlarini yuklash ──
+  useEffect(() => {
+    if (tab !== 'referrals') return;
+    const loadReferrals = async () => {
+      setReferralLoading(true);
+      try {
+        const snap = await getDocs(collection(db, 'referrals'));
+        const refs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        setAllReferrals(refs);
+        const paid = refs.filter(r => r.status === 'paid').length;
+        const pending = refs.filter(r => r.status === 'pending').length;
+        setReferralSummary({
+          total: refs.length,
+          paid,
+          pending,
+          totalBonus: paid * 15000,
+        });
+      } catch (e) {
+        showToast("Referral ma'lumotlarini yuklashda xatolik", 'error');
+      }
+      setReferralLoading(false);
+    };
+    loadReferrals();
+  }, [tab]);
+
   const handleSolve = async (fbId) => {
     try {
       await updateDoc(doc(db, 'objections', fbId), { solved: true, solvedBy: user.email, solvedAt: new Date() });
@@ -260,13 +290,22 @@ const AdminPage = () => {
   };
 
 
+  // topicId asosida category avtomatik hisoblanadi
+  // topicId 0-6 → 'chqbt', topicId 7+ → 'art'
+  const getCategoryFromTopicId = (topicId) => topicId >= 7 ? 'art' : 'chqbt';
+
   const handleSaveQuestion = async () => {
     try {
+      // category ni topicId dan avtomatik hisoblab, savolga qo'shamiz
+      const questionToSave = {
+        ...newQ,
+        category: getCategoryFromTopicId(newQ.topicId)
+      };
       if (editingQ) {
-        await updateDoc(doc(db, 'questions', editingQ.id), newQ);
+        await updateDoc(doc(db, 'questions', editingQ.id), questionToSave);
         showToast("✅ Savol yangilandi!", 'success');
       } else {
-        await addDoc(collection(db, 'questions'), newQ);
+        await addDoc(collection(db, 'questions'), questionToSave);
         showToast("✅ Yangi savol qo'shildi!", 'success');
       }
       setIsAdding(false);
@@ -428,6 +467,9 @@ const AdminPage = () => {
         </button>
         <button className={`admin-tab ${tab === 'notifications' ? 'active' : ''}`} onClick={() => setTab('notifications')}>
           <Bell size={16} /> Bildirishnomalar
+        </button>
+        <button className={`admin-tab ${tab === 'referrals' ? 'active' : ''}`} onClick={() => setTab('referrals')}>
+          <Users size={16} /> Referrallar
         </button>
       </div>
 
@@ -871,6 +913,102 @@ const AdminPage = () => {
         </div>
       )}
 
+      {/* ════════════════════════════════════════════
+          REFERRALLAR BO'LIMI — Admin Panel
+          ════════════════════════════════════════════ */}
+      {tab === 'referrals' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+
+          {/* Umumiy statistika kartalari */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px' }}>
+            {[
+              { label: 'Jami referrallar', value: referralSummary.total, icon: '🔗', color: 'var(--blue)' },
+              { label: "To'lagan", value: referralSummary.paid, icon: '✅', color: '#22c55e' },
+              { label: 'Kutilmoqda', value: referralSummary.pending, icon: '⏳', color: '#eab308' },
+              { label: "Jami bonus (so'm)", value: referralSummary.totalBonus.toLocaleString(), icon: '💰', color: '#8b5cf6' },
+            ].map((card, i) => (
+              <div key={i} className="glass-panel" style={{ padding: '16px', textAlign: 'center' }}>
+                <div style={{ fontSize: 24, marginBottom: 6 }}>{card.icon}</div>
+                <div style={{ fontSize: 22, fontWeight: 900, color: card.color }}>{card.value}</div>
+                <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 2 }}>{card.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Referrallar jadvali */}
+          <div className="glass-panel" style={{ padding: '20px', overflow: 'hidden' }}>
+            <div style={{ fontSize: '16px', fontWeight: '700', color: 'var(--text)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Users size={18} style={{ color: 'var(--blue)' }} /> Barcha referrallar ro'yxati
+            </div>
+
+            {referralLoading ? (
+              <div style={{ textAlign: 'center', padding: 40, color: 'var(--text3)' }}>⏳ Yuklanmoqda...</div>
+            ) : allReferrals.length === 0 ? (
+              <div style={{ textAlign: 'center', padding: 40, color: 'var(--text3)' }}>
+                <div style={{ fontSize: 32, marginBottom: 8 }}>🔗</div>
+                <div>Hali hech kim referral orqali kelmagan</div>
+              </div>
+            ) : (
+              <div style={{ overflowX: 'auto' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
+                  <thead style={{ background: 'var(--bg3)' }}>
+                    <tr>
+                      {["Taklif qiluvchi", "Taklif qilingan", "Sana", "Status", "Bonus", "Bepul tugash"].map(h => (
+                        <th key={h} style={{ padding: '10px 12px', textAlign: 'left', fontSize: '11px', color: 'var(--text3)', fontWeight: 700 }}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {allReferrals
+                      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                      .map((r) => (
+                        <tr key={r.id} style={{ borderTop: '0.5px solid var(--border)' }}>
+                          <td style={{ padding: '10px 12px', color: 'var(--text)' }}>
+                            <div style={{ fontWeight: 600 }}>{r.referrerName || '—'}</div>
+                            <div style={{ fontSize: 10, color: 'var(--text3)' }}>{r.referrerId?.slice(0, 8)}...</div>
+                          </td>
+                          <td style={{ padding: '10px 12px', color: 'var(--text)' }}>
+                            <div style={{ fontWeight: 600 }}>{r.referredName || '—'}</div>
+                            <div style={{ fontSize: 10, color: 'var(--text3)' }}>{r.referredId?.slice(0, 8)}...</div>
+                          </td>
+                          <td style={{ padding: '10px 12px', color: 'var(--text3)', fontSize: 12 }}>
+                            {r.createdAt ? new Date(r.createdAt).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'short', year: '2-digit' }) : '—'}
+                          </td>
+                          <td style={{ padding: '10px 12px' }}>
+                            {r.status === 'paid' ? (
+                              <span style={{ fontSize: '11px', fontWeight: 700, background: 'rgba(34,197,94,0.15)', color: '#22c55e', padding: '2px 10px', borderRadius: '20px' }}>✅ To'ladi</span>
+                            ) : (
+                              <span style={{ fontSize: '11px', fontWeight: 700, background: 'rgba(234,179,8,0.15)', color: '#eab308', padding: '2px 10px', borderRadius: '20px' }}>⏳ Kutilmoqda</span>
+                            )}
+                            {r.limitReached && <div style={{ fontSize: 10, color: '#ef4444', marginTop: 2 }}>limit to'lgan</div>}
+                          </td>
+                          <td style={{ padding: '10px 12px', color: r.bonusPaid ? '#22c55e' : 'var(--text3)', fontWeight: r.bonusPaid ? 700 : 400, fontSize: 13 }}>
+                            {r.bonusPaid ? `+${(r.bonusAmount || 15000).toLocaleString()} so'm` : '—'}
+                          </td>
+                          <td style={{ padding: '10px 12px', color: 'var(--text3)', fontSize: 12 }}>
+                            {r.freeExpire ? new Date(r.freeExpire).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'short' }) : '—'}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+
+          {/* Qoidalar eslatmasi */}
+          <div className="glass-panel" style={{ padding: '16px', background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.2)' }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--blue)', marginBottom: 8 }}>ℹ️ Referral tizimi qoidalari</div>
+            <div style={{ fontSize: 12, color: 'var(--text3)', lineHeight: 1.7 }}>
+              • Taklif qilingan → <strong>30 kun bepul Premium</strong> (ro'yxatdan o'tganda darhol)<br/>
+              • Taklif qiluvchi → do'sti to'laganda <strong>15,000 so'm bonus</strong> (premium hisobiga)<br/>
+              • Maksimal bonus: <strong>3 ta × 15,000 = 45,000 so'm</strong> (1.5 oylik bepul)<br/>
+              • Bonus faqat do'st birinchi marta to'laganda bir marta beriladi
+            </div>
+          </div>
+        </div>
+      )}
+
       <AnimatePresence>
         {isAdding && (
           <motion.div
@@ -918,13 +1056,32 @@ const AdminPage = () => {
                   {isUploadingImage && <div style={{ fontSize: '12px', color: 'var(--blue)' }}>Yuklanmoqda...</div>}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Mavzu ID (topicId)</label>
-                  <input
-                    type="number"
+                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Mavzu (topicId)</label>
+                  <select
                     className="modal-input"
                     value={newQ.topicId}
                     onChange={e => setNewQ({...newQ, topicId: parseInt(e.target.value)})}
-                  />
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <option value={0}>0 — Harbiy xizmat asoslari (chqbt)</option>
+                    <option value={1}>1 — Umumharbiy nizomlar (chqbt)</option>
+                    <option value={2}>2 — Otish tayyorgarligi (chqbt)</option>
+                    <option value={3}>3 — Taktik tayyorgarlik (chqbt)</option>
+                    <option value={4}>4 — Fuqaro muhofazasi (chqbt)</option>
+                    <option value={5}>5 — Tibbiy bilim asoslari (chqbt)</option>
+                    <option value={6}>6 — Pedagogik mahorat (chqbt)</option>
+                    <option value={7}>7 — Tasviriy san'at asoslari (art)</option>
+                    <option value={8}>8 — Amaliy bezak san'ati (art)</option>
+                    <option value={9}>9 — Me'morlik va Miniatyura (art)</option>
+                    <option value={10}>10 — Dizayn va Zamonaviy san'at (art)</option>
+                    <option value={11}>11 — Grafik savodxonlik (art)</option>
+                    <option value={12}>12 — Mashinasozlik chizmalari (art)</option>
+                    <option value={13}>13 — Qurilish chizmalari (art)</option>
+                    <option value={14}>14 — O'qitish metodikasi (art)</option>
+                  </select>
+                  <div style={{ fontSize: '11px', color: 'var(--text3)', marginTop: '-4px' }}>
+                    ⚡ Category avtomatik: topicId 0-6 → chqbt, 7+ → art
+                  </div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Javob variantlari</label>

@@ -4,6 +4,7 @@ import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
+import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS } from '../data/mockData';
 import { BADGES, getEarnedBadges } from '../data/badges';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,6 +12,7 @@ import { RefreshCw, ArrowLeft, Home, Target, PenTool, Zap, MessageCircle, Thumbs
 import confetti from 'canvas-confetti';
 import ObjectionModal from '../components/shared/ObjectionModal';
 import PremiumModal from '../components/PremiumModal';
+import FreeMonthBanner from '../components/FreeMonthBanner';
 import SafeHtml from '../components/shared/SafeHtml';
 import QuestionMedia from '../components/QuestionMedia';
 import { BATCH_SIZE, QUESTION_TIMER_SECONDS } from '../config';
@@ -29,9 +31,9 @@ const TestPage = () => {
   const { addObjection } = useContext(ObjectionContext);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
-  const isFreeLimitReached = !user?.isPremium && (state.totalAnswered || 0) >= 100;
+  const { isTrialExpired: isFreeLimitReached } = useTrialExpiry();
 
-  // Bepul limit tekshiruvi (100 ta savol)
+  // Bepul limit tekshiruvi ({} ta savol)
   if (isFreeLimitReached) {
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
@@ -39,7 +41,7 @@ const TestPage = () => {
           <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
           <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Bepul Limit Tugadi</div>
           <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-            Siz bepul limitni (100 ta savol) muvaffaqiyatli yakunladingiz! Barcha mavzular va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
+            Siz bepul limitni (7 kun) muvaffaqiyatli yakunladingiz! Barcha mavzular va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
           </div>
           <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
             ⭐ Premium Rejimni Faollashtirish
@@ -190,7 +192,10 @@ const TestPage = () => {
         let qQuery = query(qRef);
 
         if (topicId !== -1) {
-          qQuery = query(qRef, where('topicId', '==', topicId));
+          // MUHIM: topicId va category ikkalasini birga filtrlaymiz
+          // Bu boshqa fanning savollarini aralashtirmasligini ta'minlaydi
+          const expectedCategory = topicId >= 7 ? 'art' : 'chqbt';
+          qQuery = query(qRef, where('topicId', '==', topicId), where('category', '==', expectedCategory));
         } else {
           qQuery = query(qRef, where('category', '==', state.activeCategory));
         }
@@ -355,6 +360,8 @@ const TestPage = () => {
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page" style={{ padding: '12px 16px' }}>
+      {/* Bepul oy tugashiga eslatma banneri */}
+      <FreeMonthBanner onPayClick={() => setShowPremiumModal(true)} />
       <div className="test-header" style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingBottom: '8px', borderBottom: '1px solid var(--border)', marginBottom: '12px' }}>
         <button
           onClick={() => navigate('/')}

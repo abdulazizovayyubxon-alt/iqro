@@ -321,6 +321,7 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
       } else {
         // Yangi xato — kartochka yaratish
         const newCard = {
+          ...q, // image, isHtml, explanation kabi xususiyatlarni yo'qotmaslik uchun
           qHash,
           q: q.q,
           opts: q.opts || [],

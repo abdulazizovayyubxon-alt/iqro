@@ -39,10 +39,23 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
-    // ── users: foydalanuvchi profili (isPremium, etc.) ──
+    // ── users: foydalanuvchi profili (referral kod qidirish va reyting uchun hamma o'qiy oladi) ──
     match /users/{userId} {
-      allow read: if isOwner(userId) || isAdmin();
+      allow read: if isLoggedIn();
       allow write: if isOwner(userId) || isAdmin();
+    }
+
+    // ── referrals: taklif qilinganlar va bonuslar ──
+    match /referrals/{docId} {
+      allow create: if isLoggedIn();
+      allow read: if isLoggedIn() && (request.auth.uid == resource.data.referrerId || request.auth.uid == resource.data.referredId || isAdmin());
+      allow update, delete: if isAdmin();
+    }
+
+    // ── settings: tariflar va sozlamalar (hamma o'qiydi, admin yoza oladi) ──
+    match /settings/{docId} {
+      allow read: if isLoggedIn();
+      allow write: if isAdmin();
     }
 
     // ── notifications: hamma o'qiy oladi, faqat admin yoza/o'chira oladi ──

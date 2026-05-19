@@ -11,7 +11,7 @@
  */
 
 // ── Narxlar ──
-export const PREMIUM_PRICE = 15000; // 15,000 so'm
+export const PREMIUM_PRICE = 30000; // 30,000 so'm
 export const PREMIUM_LABEL = "IQRO Premium — Barcha bo'limlar";
 
 // ── Click checkout URL generatori ──

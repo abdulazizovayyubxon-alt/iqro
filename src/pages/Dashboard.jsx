@@ -4,12 +4,13 @@ import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
+import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { useAdmin } from '../hooks/useAdmin';
 import PremiumModal from '../components/PremiumModal';
 import { SCHEDULE, TOPICS } from '../data/mockData';
 import { Play, Repeat, Zap, MessageCircle, Download, Trash2, Medal, Palette, Clock, Award, Target, Flame, AlertTriangle, Map, CheckCircle2, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { EXAM_DATE, EXAM_LABEL, EXAM_GOAL_SCORE } from '../config';
+import { EXAM_DATE, EXAM_GOAL_SCORE, EXAM_LABEL } from '../config';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -18,24 +19,14 @@ const Dashboard = () => {
   const { state, updateState } = useContext(AppContext);
   const { objections, clearObjections, solveObjection, deleteObjection, importObjections, updateObjectionNote } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
+  const { isTrialExpired: isFreeLimitReached, daysLeft: trialDaysLeft } = useTrialExpiry();
   const [editingId, setEditingId] = useState(null);
   const [editNote, setEditNote] = useState('');
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
-  useEffect(() => {
-    if (!isAdmin) {
-      navigate('/test', { replace: true });
-    }
-  }, [isAdmin, navigate]);
-
-  if (!isAdmin) {
-    return null;
-  }
-
 
   const handleNavigation = (topicId, mode) => {
-    // 100 ta bepul savol limitini tekshirish
-    const isFreeLimitReached = !user?.isPremium && (state.totalAnswered || 0) >= 100;
+    // 7 kunlik bepul trial tekshiruvi
     if (isFreeLimitReached) {
       setShowPremiumModal(true);
       return;
@@ -195,10 +186,10 @@ const Dashboard = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
             <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
               <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--amber)' }}>
-                {Math.min(state.totalAnswered || 0, 100)} / 100
+                {trialDaysLeft !== null ? `${trialDaysLeft} kun qoldi` : '—'}
               </div>
               <div style={{ width: 70, height: 4, background: 'var(--bg3)', borderRadius: 2, overflow: 'hidden', marginTop: 4 }}>
-                <div style={{ width: `${Math.min(((state.totalAnswered || 0) / 100) * 100, 100)}%`, height: '100%', background: 'var(--amber)' }} />
+                <div style={{ width: `${Math.min(((7 - (trialDaysLeft ?? 0)) / 7) * 100, 100)}%`, height: '100%', background: 'var(--amber)' }} />
               </div>
             </div>
             <div style={{ background: 'var(--amber)', color: '#000', padding: '6px 12px', borderRadius: '8px', fontSize: 12, fontWeight: 800 }}>

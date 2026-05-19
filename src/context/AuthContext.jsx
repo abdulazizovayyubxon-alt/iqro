@@ -12,6 +12,11 @@ import {
   sendPasswordResetEmail
 } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
+import {
+  savePendingReferralCode,
+  getReferralCodeFromUrl,
+  applyReferralAfterRegister
+} from '../services/referral';
 
 export const AuthContext = createContext();
 
@@ -232,6 +237,18 @@ export const AuthProvider = ({ children }) => {
   });
   const [authError, setAuthError] = useState('');
 
+  // ── URL da referral kod bo'lsa — localStorage ga saqlab qo'yamiz ──
+  useEffect(() => {
+    const code = getReferralCodeFromUrl();
+    if (code) {
+      savePendingReferralCode(code);
+      // URL dan ?ref= parametrini tozalaymiz (chiroyli ko'rinishi uchun)
+      const url = new URL(window.location.href);
+      url.searchParams.delete('ref');
+      window.history.replaceState({}, '', url.toString());
+    }
+  }, []);
+
   useEffect(() => {
     // Redirect natijasini ushlash (mobil yoki fallback uchun)
     getRedirectResult(auth).then(async (result) => {
@@ -257,6 +274,12 @@ export const AuthProvider = ({ children }) => {
               isPremium: false,
               createdAt: new Date(),
             }).catch(e => console.warn('Yangi profil yaratishda xato (redirect):', e));
+            
+            const refApplied = await applyReferralAfterRegister(
+              firebaseUser.uid,
+              firebaseUser.displayName || firebaseUser.email?.split('@')[0]
+            );
+            if (refApplied) isPremium = true;
           }
         } catch (firestoreErr) {
           console.warn('Firestore profil yuklashda xato (redirect):', firestoreErr.message);
@@ -304,7 +327,7 @@ export const AuthProvider = ({ children }) => {
               isPremium = data.isPremium || false;
               role = data.role || 'user';
             } else {
-              setDoc(userRef, {
+              await setDoc(userRef, {
                 uid: firebaseUser.uid,
                 email: firebaseUser.email,
                 displayName: firebaseUser.displayName || firebaseUser.email?.split('@')[0],
@@ -313,6 +336,12 @@ export const AuthProvider = ({ children }) => {
                 isPremium: false,
                 createdAt: new Date(),
               }).catch(e => console.warn('Yangi profil yaratishda xato:', e));
+
+              const refApplied = await applyReferralAfterRegister(
+                firebaseUser.uid,
+                firebaseUser.displayName || firebaseUser.email?.split('@')[0]
+              );
+              if (refApplied) isPremium = true;
             }
           } catch (firestoreErr) {
             console.warn('Firestore profil yuklashda xato:', firestoreErr.message);
@@ -537,12 +566,17 @@ export const AuthProvider = ({ children }) => {
             createdAt: new Date(),
           });
 
+          // ── Referral ulash (agar URL da ?ref= kod bo'lgan bo'lsa) ──
+          // Bu funksiya B ga 1 oy bepul beradi va referral recordni yaratadi
+          const referralApplied = await applyReferralAfterRegister(userCred.user.uid, name);
+          const isPremiumFromReferral = referralApplied; // Bepul oy berildimi?
+
           setUser({
             uid: userCred.user.uid,
             email: internalEmail,
             displayName: name,
             photoURL: null,
-            isPremium: false,
+            isPremium: isPremiumFromReferral,
             _firebaseUser: userCred.user
           });
           return true;

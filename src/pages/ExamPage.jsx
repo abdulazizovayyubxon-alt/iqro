@@ -4,6 +4,7 @@ import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
+import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, CheckCircle, XCircle, RefreshCw } from 'lucide-react';
@@ -38,7 +39,7 @@ const ExamPage = () => {
   const cat = state.activeCategory;
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
-  const isFreeLimitReached = !user?.isPremium && (state.totalAnswered || 0) >= 100;
+  const { isTrialExpired: isFreeLimitReached } = useTrialExpiry();
 
   // Bepul limit tekshiruvi — imtihon 100 ta savoldan so'ng bloklanadi
   if (isFreeLimitReached) {
@@ -48,7 +49,7 @@ const ExamPage = () => {
           <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
           <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Bepul Limit Tugadi</div>
           <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-            Siz bepul limitni (100 ta savol) muvaffaqiyatli yakunladingiz! Barcha mavzular, imtihonlar va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
+            Siz bepul limitni (7 kun) muvaffaqiyatli yakunladingiz! Barcha mavzular, imtihonlar va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
           </div>
           <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
             ⭐ Premium Rejimni Faollashtirish

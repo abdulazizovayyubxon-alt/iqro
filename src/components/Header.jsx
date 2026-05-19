@@ -63,7 +63,13 @@ const Header = ({ theme, toggleTheme }) => {
         const notifSnap = await getDocs(collection(db, 'notifications'));
         const firestoreNotifs = notifSnap.docs.map(d => ({ id: d.id, ...d.data() }));
         
-        const relevantNotifs = firestoreNotifs.filter(n => !n.targetUser || n.targetUser === user?.uid || n.targetUser === 'all');
+        const relevantNotifs = firestoreNotifs.filter(n =>
+          !n.targetUser && !n.userId
+            ? true                                        // Umumiy bildirishnoma
+            : n.targetUser === user?.uid                  // targetUser orqali
+              || n.targetUser === 'all'
+              || n.userId === user?.uid                   // referral bonus userId orqali
+        );
         
         setNotifications(prev => {
           const localMap = new Map(prev.map(item => [item.id, item]));
@@ -469,4 +475,3 @@ const Header = ({ theme, toggleTheme }) => {
 };
 
 export default Header;
-

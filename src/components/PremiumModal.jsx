@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Crown, CheckCircle, Zap, Shield, X, CreditCard, Smartphone } from 'lucide-react';
+import { Crown, CheckCircle, Zap, Shield, X, CreditCard, Smartphone, Gift } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { generateClickUrl, generatePaymeUrl } from '../services/payment';
 import { db } from '../firebase';
@@ -11,22 +11,29 @@ const PremiumModal = ({ isOpen, onClose }) => {
   const [processing, setProcessing] = useState(false);
   const [plans, setPlans] = useState([]);
   const [selectedPlan, setSelectedPlan] = useState(null);
+  const [referralBonus, setReferralBonus] = useState(0); // foydalanuvchining bonus balansi
 
-  React.useEffect(() => {
-    if (!isOpen) return;
-    const fetchPlans = async () => {
+  useEffect(() => {
+    if (!isOpen || !user) return;
+    const fetchData = async () => {
+      // Tariflarni yuklash
       const docSnap = await getDoc(doc(db, 'settings', 'premium'));
       if (docSnap.exists() && docSnap.data().plans?.length > 0) {
         setPlans(docSnap.data().plans);
         setSelectedPlan(docSnap.data().plans[0]);
       } else {
-        const defaultPlan = { id: 'lifetime', name: 'Cheksiz Premium', price: 15000, durationMonths: 999 };
+        const defaultPlan = { id: 'monthly', name: '1 oylik Premium', price: 30000, durationMonths: 1 };
         setPlans([defaultPlan]);
         setSelectedPlan(defaultPlan);
       }
+      // Referral bonus balansini yuklash
+      const userSnap = await getDoc(doc(db, 'users', user.uid));
+      if (userSnap.exists()) {
+        setReferralBonus(userSnap.data().referralBonus || 0);
+      }
     };
-    fetchPlans();
-  }, [isOpen]);
+    fetchData();
+  }, [isOpen, user]);
 
   if (!isOpen) return null;
 
@@ -34,10 +41,16 @@ const PremiumModal = ({ isOpen, onClose }) => {
     return new Intl.NumberFormat('uz-UZ').format(price) + " so'm";
   };
 
+  // Bonus ayirilgandan keyingi haqiqiy narx (0 dan kam bo'lmasin)
+  const finalPrice = selectedPlan
+    ? Math.max(0, selectedPlan.price - referralBonus)
+    : 0;
+  const hasBonus = referralBonus > 0 && selectedPlan;
+
   const handleClickPay = () => {
     if (!user || !selectedPlan) return;
     setProcessing(true);
-    const url = generateClickUrl(user.uid, user.phone || '', selectedPlan.price, selectedPlan.id);
+    const url = generateClickUrl(user.uid, user.phone || '', finalPrice, selectedPlan.id);
     if (url) {
       window.open(url, '_blank');
     }
@@ -47,7 +60,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
   const handlePaymePay = () => {
     if (!user || !selectedPlan) return;
     setProcessing(true);
-    const url = generatePaymeUrl(user.uid, selectedPlan.price, selectedPlan.id);
+    const url = generatePaymeUrl(user.uid, finalPrice, selectedPlan.id);
     if (url) {
       window.open(url, '_blank');
     }
@@ -134,13 +147,32 @@ const PremiumModal = ({ isOpen, onClose }) => {
           </div>
         </div>
 
+        {/* Referral bonus banneri — faqat bonus bor bo'lsa ko'rinadi */}
+        {hasBonus && (
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 12,
+            background: 'rgba(34,197,94,0.12)', border: '1.5px solid rgba(34,197,94,0.4)',
+            borderRadius: 12, padding: '12px 16px', marginBottom: 16
+          }}>
+            <Gift size={20} style={{ color: '#22c55e', flexShrink: 0 }} />
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 13, fontWeight: 800, color: '#22c55e' }}>
+                Do'stlar taklifi bonusi: −{formatPrice(referralBonus)}
+              </div>
+              <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 2 }}>
+                {formatPrice(selectedPlan.price)} − {formatPrice(referralBonus)} = <strong style={{ color: '#22c55e' }}>{formatPrice(finalPrice)}</strong>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Afzalliklar */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
           {[
-            "Barcha 15 ta mavzu ochiq bo'ladi",
+            "Barcha mavzular to'liq ochiq",
             "Imtihon simulyatsiyasi (50 savol, 60 daqiqa)",
             "Aqlli takrorlash — cheklanmagan",
-            "Reklamasiz o'qish"
+            "Flashcard va xatolar ustida ishlash",
           ].map((text, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text)' }}>
               <CheckCircle size={16} style={{ color: 'var(--green)', flexShrink: 0 }} />
@@ -167,7 +199,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
             }}
           >
             <CreditCard size={20} />
-            Click orqali to'lash
+            Click — {formatPrice(finalPrice)}
           </button>
 
           {/* Payme */}
@@ -186,7 +218,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
             }}
           >
             <Smartphone size={20} />
-            Payme orqali to'lash
+            Payme — {formatPrice(finalPrice)}
           </button>
         </div>
 

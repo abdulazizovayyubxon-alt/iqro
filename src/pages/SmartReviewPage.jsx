@@ -11,6 +11,7 @@ import ObjectionModal from '../components/shared/ObjectionModal';
 import SafeHtml from '../components/shared/SafeHtml';
 import QuestionMedia from '../components/QuestionMedia';
 import { useAuth } from '../context/AuthContext';
+import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import PremiumModal from '../components/PremiumModal';
 import { TOPICS } from '../data/mockData';
 
@@ -31,7 +32,7 @@ const SmartReviewPage = () => {
   const { user } = useAuth();
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
-  const isFreeLimitReached = !user?.isPremium && (state.totalAnswered || 0) >= 100;
+  const { isTrialExpired: isFreeLimitReached } = useTrialExpiry();
 
   if (isFreeLimitReached) {
     return (
@@ -40,7 +41,7 @@ const SmartReviewPage = () => {
           <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
           <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Bepul Limit Tugadi</div>
           <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-            Siz bepul limitni (100 ta savol) muvaffaqiyatli yakunladingiz! Aqlli Takrorlash va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
+            Siz bepul limitni (7 kun) muvaffaqiyatli yakunladingiz! Aqlli Takrorlash va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
           </div>
           <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
             ⭐ Premium Rejimni Faollashtirish
@@ -115,9 +116,15 @@ const SmartReviewPage = () => {
 
   // Hech savol yo'q
   if (cards.length === 0 && !sessionDone) {
-    const totalSpaced = (state.spacedCards || []).length;
+    const validTopicIds = TOPICS.filter(t => 
+      Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory
+    ).map(t => t.id);
+
+    const categorySpacedCards = (state.spacedCards || []).filter(c => validTopicIds.includes(c.topicId));
+    
+    const totalSpaced = categorySpacedCards.length;
     const nextReview = totalSpaced > 0
-      ? Math.min(...(state.spacedCards || []).map(c => c.nextReview))
+      ? Math.min(...categorySpacedCards.map(c => c.nextReview))
       : null;
     const waitMinutes = nextReview ? Math.max(0, Math.round((nextReview - Date.now()) / 60000)) : 0;
 

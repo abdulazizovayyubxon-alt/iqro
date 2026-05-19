@@ -13,7 +13,8 @@ import {
   Brain,
   Trophy,
   Medal,
-  Palette
+  Palette,
+  Users
 } from 'lucide-react';
 
 // URL xaritasi — route ↔ sahifa nomi
@@ -25,6 +26,7 @@ const ROUTE_MAP = {
   '/leaderboard': 'leaderboard',
   '/achievements': 'achievements',
   '/admin': 'admin',
+  '/referral': 'referral',
 };
 
 const Sidebar = () => {
@@ -123,6 +125,14 @@ const Sidebar = () => {
           >
             <span className="nav-icon"><Medal size={20} /></span>
             <span className="nav-label">Yutuqlar</span>
+          </div>
+
+          <div
+            className={`nav-item ${currentPage === 'referral' ? 'active' : ''}`}
+            onClick={() => navigate('/referral')}
+          >
+            <span className="nav-icon"><Users size={20} /></span>
+            <span className="nav-label">Do'stlarni taklif qilish</span>
           </div>
 
           {/* Admin link — faqat admin uchun */}
