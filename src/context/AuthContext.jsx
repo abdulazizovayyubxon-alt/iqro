@@ -424,44 +424,21 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const signInWithPhone = async (name, phone, password, isRegistering = false) => {
+  const signInWithPhone = async (name, phone, password = '', isRegistering = false) => {
     setAuthError('');
-
-    // Brute-force tekshiruvi
-    const lockStatus = checkLockout();
-    if (lockStatus.locked) {
-      setAuthError(lockStatus.message);
-      return false;
-    }
-
-    // Telefon raqam validatsiyasi (Faqat O'zbekiston kodi)
     const cleanPhone = phone.replace(/\D/g, '');
     if (!cleanPhone.startsWith('998') || cleanPhone.length !== 12) {
       setAuthError("Faqat O'zbekiston telefon raqamlari (+998) orqali kirish mumkin.");
-      return false;
+      return { success: false };
     }
 
-    // Parol validatsiyasi — faqat ro'yxatdan o'tishda kuchli tekshiruv
-    if (isRegistering) {
-      const passwordError = validatePassword(password, cleanPhone);
-      if (passwordError) {
-        setAuthError(passwordError);
-        return false;
-      }
-    } else {
-      // Kirishda faqat bo'sh emasligini tekshiramiz
-      if (!password || password.length < 6) {
-        setAuthError("Parolni kiritish shart.");
-        return false;
-      }
-    }
-
-    // Ichki email yaratish (foydalanuvchi ko'rmaydi)
+    // Default parol: iqro_auto_pass_ + telefon
+    const finalPassword = password || `iqro_auto_pass_${cleanPhone}`;
     const internalEmail = phoneToEmail(phone);
 
     try {
       // 1. Avval mavjud akkaunt bilan kirishga urinamiz
-      await signInWithEmailAndPassword(auth, internalEmail, password);
+      await signInWithEmailAndPassword(auth, internalEmail, finalPassword);
       
       // Kirish muvaffaqiyatli — brute-force hisoblagichni tozalaymiz
       resetLoginAttempts();
@@ -473,7 +450,7 @@ export const AuthProvider = ({ children }) => {
       if (userSnap.exists()) isPremium = userSnap.data().isPremium || false;
 
       // Agar ism o'zgargan bo'lsa — yangilaymiz
-      if (auth.currentUser && auth.currentUser.displayName !== name) {
+      if (auth.currentUser && name && auth.currentUser.displayName !== name) {
         await updateProfile(auth.currentUser, { displayName: name });
         await setDoc(userRef, { displayName: name }, { merge: true });
       }
@@ -481,26 +458,26 @@ export const AuthProvider = ({ children }) => {
       setUser({
         uid: auth.currentUser.uid,
         email: auth.currentUser.email,
-        displayName: name,
+        displayName: auth.currentUser.displayName || name || phone,
         photoURL: auth.currentUser.photoURL,
         isPremium,
         _firebaseUser: auth.currentUser
       });
-      return true;
+      return { success: true };
     } catch (err) {
-      // 2. Akkaunt topilmadi yoki hisob ma'lumotlari yaroqsiz
+      // 2. Akkaunt topilmadi yoki hisob ma'lumotlari yaroqsiz -> Ro'yxatdan o'tish
       if (
         err.code === 'auth/user-not-found' ||
         err.code === 'auth/invalid-credential'
       ) {
-        // FAQAT ro'yxatdan o'tish rejimida yangi akkaunt yaratamiz
+        // Agar ro'yxatdan o'tish so'ralmagan bo'lsa, demak yangi user
+        // va biz LoginPage ga xabar beramiz
         if (!isRegistering) {
-          setAuthError("Bu telefon raqam ro'yxatdan o'tmagan. Iltimos, avval ro'yxatdan o'ting.");
-          return false;
+          return { success: false, notRegistered: true };
         }
 
         try {
-          const userCred = await createUserWithEmailAndPassword(auth, internalEmail, password);
+          const userCred = await createUserWithEmailAndPassword(auth, internalEmail, finalPassword);
           await updateProfile(userCred.user, { displayName: name });
 
           // Firestore'da profil yaratamiz
@@ -514,10 +491,8 @@ export const AuthProvider = ({ children }) => {
             createdAt: new Date(),
           });
 
-          // ── Referral ulash (agar URL da ?ref= kod bo'lgan bo'lsa) ──
-          // Bu funksiya B ga 1 oy bepul beradi va referral recordni yaratadi
           const referralApplied = await applyReferralAfterRegister(userCred.user.uid, name);
-          const isPremiumFromReferral = referralApplied; // Bepul oy berildimi?
+          const isPremiumFromReferral = referralApplied;
 
           setUser({
             uid: userCred.user.uid,
@@ -527,37 +502,36 @@ export const AuthProvider = ({ children }) => {
             isPremium: isPremiumFromReferral,
             _firebaseUser: userCred.user
           });
-          return true;
+          return { success: true };
         } catch (regErr) {
           console.error("Ro'yxatdan o'tish xatosi:", regErr);
-          if (regErr.code === 'auth/email-already-in-use') {
-            setAuthError("Bu raqam allaqachon ro'yxatdan o'tgan. Parol noto'g'ri bo'lishi mumkin.");
-          } else if (regErr.code === 'auth/weak-password') {
-            setAuthError("Parol kamida 6 ta belgidan iborat bo'lishi kerak.");
-          } else {
-            setAuthError("Ro'yxatdan o'tishda xatolik yuz berdi.");
-          }
-          return false;
+          setAuthError("Ro'yxatdan o'tishda xatolik yuz berdi.");
+          return { success: false };
         }
       }
 
       // 3. Parol noto'g'ri (akkaunt mavjud, lekin parol mos kelmadi)
       if (err.code === 'auth/wrong-password') {
+        // Agar default parol bilan kirmoqchi bo'lgan bo'lsa va xato bergan bo'lsa,
+        // demak bu foydalanuvchida eski maxsus parol bor
+        if (!password) {
+          return { success: false, hasCustomPassword: true };
+        }
+
         const attemptData = recordFailedAttempt();
         const remaining = MAX_ATTEMPTS - attemptData.attempts;
         if (remaining > 0) {
-          setAuthError(`Ma'lumotlar noto'g'ri kiritildi. Yana ${remaining} ta urinish qoldi.`);
+          setAuthError(`Parol noto'g'ri kiritildi. Yana ${remaining} ta urinish qoldi.`);
         } else {
           setAuthError(`Xavfsizlik sababli akkaunt 15 daqiqaga bloklandi. Iltimos, biroz kuting.`);
         }
-        return false;
+        return { success: false, wrongPassword: true };
       }
 
       // 4. Boshqa xatoliklar
       recordFailedAttempt();
       console.error("Kirish xatosi:", err);
-      setAuthError("Ma'lumotlar noto'g'ri kiritildi, iltimos qaytadan urinib ko'ring.");
-      return false;
+      setAuthError("Kirishda xatolik yuz berdi, iltimos qaytadan urinib ko'ring.");
     }
   };
 

@@ -17,7 +17,6 @@ const STEPS = {
   CHECKING: 'checking',
   PASSWORD: 'password',
   REGISTER_NAME: 'register_name',
-  REGISTER_PASS: 'register_pass',
 };
 
 const PRIMARY = '#29B6F6';
@@ -26,7 +25,6 @@ const IS_MOBILE = typeof window !== 'undefined' && window.innerWidth <= 768;
 export default function LoginPage() {
   const {
     signInWithPhone, signInWithGoogle, resetPassword,
-    checkUserExists,
     authError, setAuthError, checkLockout
   } = useAuth();
 
@@ -35,7 +33,6 @@ export default function LoginPage() {
   const [phone, setPhone] = useState('+998');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
   const [lockoutTimer, setLockoutTimer] = useState(null);
@@ -74,12 +71,23 @@ export default function LoginPage() {
     setStep(STEPS.CHECKING);
     setLoading(true);
     try {
-      const exists = await checkUserExists(phone);
-      setIsRegister(!exists);
-      setStep(exists ? STEPS.PASSWORD : STEPS.REGISTER_NAME);
+      const res = await signInWithPhone('', phone, '', false);
+      if (res.success) {
+        // Parolsiz to'g'ridan-to'g'ri muvaffaqiyatli kirdi
+        return;
+      }
+
+      if (res.notRegistered) {
+        setIsRegister(true);
+        setStep(STEPS.REGISTER_NAME);
+      } else if (res.hasCustomPassword) {
+        // Eski profilingizda maxsus parol saqlangan
+        setIsRegister(false);
+        setStep(STEPS.PASSWORD);
+      }
     } catch {
-      setStep(STEPS.PASSWORD);
-      setIsRegister(false);
+      setStep(STEPS.PHONE);
+      setAuthError("Xatolik yuz berdi, qayta urining.");
     } finally {
       setLoading(false);
     }
@@ -98,18 +106,19 @@ export default function LoginPage() {
         setAuthError("Ism-familiyangizni to'liq kiriting (kamida 3 belgi)");
         return;
       }
-      setStep(STEPS.REGISTER_PASS);
+      setLoading(true);
+      const res = await signInWithPhone(name, phone, '', true);
+      setLoading(false);
+      if (res && !res.success) {
+        setStep(STEPS.PHONE);
+      }
       return;
     }
 
-    if (step === STEPS.PASSWORD || step === STEPS.REGISTER_PASS) {
+    if (step === STEPS.PASSWORD) {
       if (!password) { setAuthError("Parolni kiriting"); return; }
-      if (password.length < 6) { setAuthError("Parol kamida 6 belgidan iborat bo'lishi kerak"); return; }
-      if (isRegister) {
-        if (password !== confirmPassword) { setAuthError("Parollar mos kelmaydi"); return; }
-      }
       setLoading(true);
-      await signInWithPhone(isRegister ? name : phone, phone, password, isRegister);
+      await signInWithPhone('', phone, password, false);
       setLoading(false);
     }
   };
@@ -117,7 +126,6 @@ export default function LoginPage() {
   const handleBack = () => {
     setAuthError('');
     if (step === STEPS.PASSWORD || step === STEPS.REGISTER_NAME) setStep(STEPS.PHONE);
-    else if (step === STEPS.REGISTER_PASS) setStep(STEPS.REGISTER_NAME);
   };
 
   const handleGoogle = async () => {
@@ -132,13 +140,12 @@ export default function LoginPage() {
   };
 
   const progressMap = {
-    [STEPS.PHONE]: 0.25,
-    [STEPS.CHECKING]: 0.5,
-    [STEPS.REGISTER_NAME]: 0.65,
+    [STEPS.PHONE]: 0.33,
+    [STEPS.CHECKING]: 0.66,
+    [STEPS.REGISTER_NAME]: 0.85,
     [STEPS.PASSWORD]: 0.85,
-    [STEPS.REGISTER_PASS]: 0.9,
   };
-  const progress = progressMap[step] || 0.25;
+  const progress = progressMap[step] || 0.33;
 
   return (
     <div style={s.pageOuter}>
@@ -179,7 +186,7 @@ export default function LoginPage() {
                 <>
                   <h1 style={s.title}>Telefon raqamingiz</h1>
                   <p style={s.subtitle}>
-                    Raqamingizdan foydalanib o'quv jarayonini saqlang va istalgan qurilmada davom ettiring.
+                    Raqamingizni kiriting va parol so'ralmasdan profilingizga tezkor kiring.
                   </p>
                   <div style={s.phoneWrap}>
                     <input
@@ -212,7 +219,7 @@ export default function LoginPage() {
                 <>
                   <h1 style={s.title}>Ismingizni kiriting</h1>
                   <p style={s.subtitle}>
-                    <span style={{ color: PRIMARY, fontWeight: 700 }}>{phone}</span> — yangi hisob yaratish.
+                    Profil yaratish uchun ism-familiyangizni kiriting.
                   </p>
                   <input
                     id="register-name-input"
@@ -227,19 +234,19 @@ export default function LoginPage() {
                 </>
               )}
 
-              {/* ── STEP: PASSWORD (login) ── */}
+              {/* ── STEP: PASSWORD (kirish) ── */}
               {step === STEPS.PASSWORD && (
                 <>
                   <h1 style={s.title}>Parolni kiriting</h1>
                   <p style={s.subtitle}>
-                    Profilga kirish uchun parolingizni kiriting.
+                    Profilingizda eski maxsus parol o'rnatilgan. Uni kiriting:
                   </p>
                   <div style={{ position: 'relative' }}>
                     <input
                       id="login-password-input"
                       style={s.input}
                       type={showPass ? 'text' : 'password'}
-                      placeholder="Parol"
+                      placeholder="Eski parolingiz"
                       value={password}
                       onChange={e => { setAuthError(''); setPassword(e.target.value); }}
                       autoFocus
@@ -250,45 +257,8 @@ export default function LoginPage() {
                     </button>
                   </div>
                   <button style={s.forgotBtn} onClick={handleForgotPassword}>
-                    Parolni unutdingizmi?
+                    Parolni tiklash
                   </button>
-                </>
-              )}
-
-              {/* ── STEP: REGISTER PASS ── */}
-              {step === STEPS.REGISTER_PASS && (
-                <>
-                  <h1 style={s.title}>Parol o'rnating</h1>
-                  <p style={s.subtitle}>Profil xavfsizligi uchun parol belgilang (kamida 6 belgi).</p>
-                  <div style={{ position: 'relative', marginBottom: 12 }}>
-                    <input
-                      id="register-password-input"
-                      style={s.input}
-                      type={showPass ? 'text' : 'password'}
-                      placeholder="Yangi parol"
-                      value={password}
-                      onChange={e => { setAuthError(''); setPassword(e.target.value); }}
-                      autoFocus
-                    />
-                    <button type="button" onClick={() => setShowPass(!showPass)} style={s.eyeBtn} tabIndex={-1}>
-                      {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
-                    </button>
-                  </div>
-
-                  <input
-                    id="register-confirm-password-input"
-                    style={s.input}
-                    type={showPass ? 'text' : 'password'}
-                    placeholder="Parolni tasdiqlang"
-                    value={confirmPassword}
-                    onChange={e => { setAuthError(''); setConfirmPassword(e.target.value); }}
-                    onKeyDown={e => e.key === 'Enter' && handleContinue()}
-                  />
-                  {confirmPassword && (
-                    <p style={{ fontSize: 13, marginTop: 4, color: password === confirmPassword ? '#10B981' : '#EF4444' }}>
-                      {password === confirmPassword ? '✓ Parollar mos keldi' : '✗ Parollar mos kelmadi'}
-                    </p>
-                  )}
                 </>
               )}
 
@@ -316,7 +286,7 @@ export default function LoginPage() {
             >
               {loading ? 'Iltimos, kuting...'
                 : lockoutTimer ? `Kuting (${lockoutTimer}s)`
-                : step === STEPS.PASSWORD || step === STEPS.REGISTER_PASS ? 'Tayyor' : 'Davom etish'}
+                : step === STEPS.PASSWORD ? 'Kirish' : 'Davom etish'}
             </button>
           )}
 
