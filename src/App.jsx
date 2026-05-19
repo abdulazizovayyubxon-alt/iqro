@@ -14,6 +14,7 @@ import Sidebar from './components/Sidebar';
 import LoginPage from './pages/LoginPage';
 import OfflineIndicator from './components/OfflineIndicator';
 import OnboardingPage from './pages/OnboardingPage';
+import BottomNav from './components/BottomNav';
 
 // ══════════════════════════════════════════════════════════════
 // React.lazy — sahifalar faqat kerak bo'lganda yuklanadi
@@ -165,7 +166,7 @@ function App() {
       <OfflineIndicator />
       <div className="layout-body">
         <Sidebar />
-        <main className="main-content">
+        <main className="main-content" style={{ paddingBottom: 'calc(72px + env(safe-area-inset-bottom))' }}>
           <Suspense fallback={<PageSkeleton />}>
             <AnimatePresence mode="wait">
               <Routes location={location} key={location.pathname}>
@@ -187,6 +188,7 @@ function App() {
           </Suspense>
         </main>
       </div>
+      <BottomNav />
     </div>
   );
 }

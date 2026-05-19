@@ -1,250 +1,371 @@
+/**
+ * PremiumModal.jsx — Yangilangan premium modal
+ * 3 ta tarif, o'rtadagi "ENG OMMABOP" badge, psixologik narxlash
+ */
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Crown, CheckCircle, Zap, Shield, X, CreditCard, Smartphone, Gift } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Crown, CheckCircle, X, CreditCard, Smartphone,
+  Gift, Zap, Star, Clock, Shield, TrendingUp
+} from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { generateClickUrl, generatePaymeUrl } from '../services/payment';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 
+// Default tariflar (Firestore dan yuklanmasa)
+const DEFAULT_PLANS = [
+  {
+    id: 'monthly',
+    name: '1 Oylik',
+    price: 30000,
+    durationMonths: 1,
+    perDay: 1000,
+    badge: null,
+    color: '#3B82F6',
+  },
+  {
+    id: 'quarterly',
+    name: '3 Oylik',
+    price: 75000,
+    durationMonths: 3,
+    perDay: 833,
+    badge: 'ENG OMMABOP',
+    color: '#8B5CF6',
+    savings: '17%',
+  },
+  {
+    id: 'yearly',
+    name: '12 Oylik',
+    price: 240000,
+    durationMonths: 12,
+    perDay: 667,
+    badge: 'TEJAMKOR',
+    color: '#10B981',
+    savings: '33%',
+  },
+];
+
+const FEATURES = [
+  { icon: '📚', text: "Barcha mavzular to'liq ochiq" },
+  { icon: '🎯', text: 'Imtihon simulyatsiyasi (50 savol)' },
+  { icon: '🧠', text: 'Aqlli takrorlash — cheklanmagan' },
+  { icon: '📊', text: "Batafsil statistika va tahlil" },
+  { icon: '🏆', text: 'Reyting va yutuqlar tizimi' },
+  { icon: '⚡', text: 'Yangi savollar har hafta qo\'shiladi' },
+];
+
 const PremiumModal = ({ isOpen, onClose }) => {
   const { user } = useAuth();
   const [processing, setProcessing] = useState(false);
-  const [plans, setPlans] = useState([]);
-  const [selectedPlan, setSelectedPlan] = useState(null);
-  const [referralBonus, setReferralBonus] = useState(0); // foydalanuvchining bonus balansi
+  const [plans, setPlans] = useState(DEFAULT_PLANS);
+  const [selectedPlan, setSelectedPlan] = useState(DEFAULT_PLANS[1]); // O'rtadagi (ommabop)
+  const [referralBonus, setReferralBonus] = useState(0);
+  const [payMethod, setPayMethod] = useState(null); // 'click' | 'payme' | null
 
   useEffect(() => {
     if (!isOpen || !user) return;
+    setPayMethod(null);
     const fetchData = async () => {
-      // Tariflarni yuklash
-      const docSnap = await getDoc(doc(db, 'settings', 'premium'));
-      if (docSnap.exists() && docSnap.data().plans?.length > 0) {
-        setPlans(docSnap.data().plans);
-        setSelectedPlan(docSnap.data().plans[0]);
-      } else {
-        const defaultPlan = { id: 'monthly', name: '1 oylik Premium', price: 30000, durationMonths: 1 };
-        setPlans([defaultPlan]);
-        setSelectedPlan(defaultPlan);
-      }
-      // Referral bonus balansini yuklash
-      const userSnap = await getDoc(doc(db, 'users', user.uid));
-      if (userSnap.exists()) {
-        setReferralBonus(userSnap.data().referralBonus || 0);
-      }
+      try {
+        const docSnap = await getDoc(doc(db, 'settings', 'premium'));
+        if (docSnap.exists() && docSnap.data().plans?.length > 0) {
+          const dbPlans = docSnap.data().plans;
+          setPlans(dbPlans);
+          setSelectedPlan(dbPlans[Math.floor(dbPlans.length / 2)] || dbPlans[0]);
+        }
+        const userSnap = await getDoc(doc(db, 'users', user.uid));
+        if (userSnap.exists()) {
+          setReferralBonus(userSnap.data().referralBonus || 0);
+        }
+      } catch (e) { console.error('PremiumModal fetch error:', e); }
     };
     fetchData();
   }, [isOpen, user]);
 
   if (!isOpen) return null;
 
-  const formatPrice = (price) => {
-    return new Intl.NumberFormat('uz-UZ').format(price) + " so'm";
-  };
-
-  // Bonus ayirilgandan keyingi haqiqiy narx (0 dan kam bo'lmasin)
-  const finalPrice = selectedPlan
-    ? Math.max(0, selectedPlan.price - referralBonus)
-    : 0;
+  const fmt = (n) => new Intl.NumberFormat('uz-UZ').format(n) + " so'm";
+  const finalPrice = selectedPlan ? Math.max(0, selectedPlan.price - referralBonus) : 0;
   const hasBonus = referralBonus > 0 && selectedPlan;
 
-  const handleClickPay = () => {
+  const handlePay = (method) => {
     if (!user || !selectedPlan) return;
     setProcessing(true);
-    const url = generateClickUrl(user.uid, user.phone || '', finalPrice, selectedPlan.id);
-    if (url) {
-      window.open(url, '_blank');
-    }
-    setTimeout(() => setProcessing(false), 2000);
-  };
-
-  const handlePaymePay = () => {
-    if (!user || !selectedPlan) return;
-    setProcessing(true);
-    const url = generatePaymeUrl(user.uid, finalPrice, selectedPlan.id);
-    if (url) {
-      window.open(url, '_blank');
-    }
-    setTimeout(() => setProcessing(false), 2000);
+    setPayMethod(method);
+    const url = method === 'click'
+      ? generateClickUrl(user.uid, user.phone || '', finalPrice, selectedPlan.id)
+      : generatePaymeUrl(user.uid, finalPrice, selectedPlan.id);
+    if (url) window.open(url, '_blank');
+    setTimeout(() => { setProcessing(false); }, 2000);
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose} style={{
-      position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-      background: 'rgba(15, 23, 42, 0.8)', backdropFilter: 'blur(10px)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      zIndex: 9999, padding: '20px'
-    }}>
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0,
+        background: 'rgba(0,0,0,0.7)',
+        backdropFilter: 'blur(12px)',
+        zIndex: 9999,
+        display: 'flex', alignItems: 'flex-end',
+        justifyContent: 'center',
+        padding: '0',
+      }}
+    >
       <motion.div
-        className="glass-panel"
-        initial={{ opacity: 0, y: 20, scale: 0.95 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 20, scale: 0.95 }}
+        initial={{ y: '100%', opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: '100%', opacity: 0 }}
+        transition={{ type: 'spring', stiffness: 340, damping: 35 }}
         onClick={e => e.stopPropagation()}
         style={{
-          width: '100%', maxWidth: '420px', padding: '30px',
-          background: 'linear-gradient(145deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%)',
-          border: '1px solid rgba(251, 191, 36, 0.3)',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(251, 191, 36, 0.1)',
-          position: 'relative', overflow: 'hidden'
+          width: '100%', maxWidth: 480,
+          background: 'linear-gradient(180deg, #1a1a2e 0%, #0f0f1e 100%)',
+          borderRadius: '24px 24px 0 0',
+          border: '1px solid rgba(255,255,255,0.1)',
+          borderBottom: 'none',
+          overflow: 'hidden',
+          maxHeight: '92vh',
+          overflowY: 'auto',
         }}
       >
-        {/* Glow effect */}
+        {/* Glow top */}
         <div style={{
-          position: 'absolute', top: '-50px', right: '-50px',
-          width: '150px', height: '150px', background: 'rgba(251, 191, 36, 0.2)',
-          filter: 'blur(50px)', borderRadius: '50%', pointerEvents: 'none'
+          position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
+          width: 200, height: 100,
+          background: 'radial-gradient(ellipse, rgba(139,92,246,0.35) 0%, transparent 70%)',
+          pointerEvents: 'none',
         }} />
 
-        <button
-          onClick={onClose}
-          style={{
-            position: 'absolute', top: '15px', right: '15px',
-            background: 'none', border: 'none', color: 'var(--text3)',
-            cursor: 'pointer', padding: '5px'
-          }}
-        >
-          <X size={20} />
-        </button>
+        {/* Handle + Close */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 20px 0' }}>
+          <div style={{ width: 40, height: 4, borderRadius: 2, background: 'rgba(255,255,255,0.2)', margin: '0 auto' }} />
+          <button
+            onClick={onClose}
+            style={{ background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: 10, padding: '6px', cursor: 'pointer', color: 'rgba(255,255,255,0.6)' }}
+          >
+            <X size={18} />
+          </button>
+        </div>
 
-        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-          <div style={{
-            width: '64px', height: '64px', borderRadius: '50%',
-            background: 'rgba(251, 191, 36, 0.1)', border: '2px solid rgba(251, 191, 36, 0.5)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            margin: '0 auto 16px', color: 'var(--amber)'
-          }}>
-            <Crown size={32} />
+        <div style={{ padding: '16px 20px 32px' }}>
+          {/* Hero */}
+          <div style={{ textAlign: 'center', marginBottom: 24 }}>
+            <motion.div
+              animate={{ rotate: [0, -10, 10, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+              style={{ fontSize: 52, marginBottom: 10 }}
+            >
+              👑
+            </motion.div>
+            <h2 style={{ fontSize: 24, fontWeight: 900, color: '#fff', margin: '0 0 6px' }}>
+              IQRO Premium
+            </h2>
+            <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', margin: 0 }}>
+              Cheksiz imkoniyatlar bilan tayyorlan
+            </p>
           </div>
-          <h2 style={{ fontSize: '24px', fontWeight: '800', color: '#fff', marginBottom: '8px' }}>
-            Premium Rejim
-          </h2>
-          <p style={{ color: 'var(--text2)', fontSize: '14px', lineHeight: '1.5' }}>
-            Barcha imkoniyatlardan cheklanmagan foydalanish
-          </p>
-          {/* Tariflar ro'yxati */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '16px', marginBottom: '8px' }}>
-            {plans.map(p => (
-              <div 
-                key={p.id} 
-                onClick={() => setSelectedPlan(p)}
-                style={{ 
-                  display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                  padding: '12px 16px', borderRadius: '12px', cursor: 'pointer',
-                  background: selectedPlan?.id === p.id ? 'rgba(251, 191, 36, 0.15)' : 'rgba(255, 255, 255, 0.05)',
-                  border: selectedPlan?.id === p.id ? '2px solid var(--amber)' : '1px solid rgba(255, 255, 255, 0.1)',
-                  transition: 'all 0.2s'
+
+          {/* Social proof */}
+          <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16,
+            marginBottom: 24, fontSize: 13, color: 'rgba(255,255,255,0.5)'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <TrendingUp size={14} style={{ color: '#10B981' }} />
+              <span>2,000+ foydalanuvchi</span>
+            </div>
+            <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.1)' }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <Star size={14} style={{ color: '#F59E0B' }} />
+              <span>89% muvaffaqiyat</span>
+            </div>
+          </div>
+
+          {/* Tariflar */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 20 }}>
+            {plans.map((plan, idx) => {
+              const isSelected = selectedPlan?.id === plan.id;
+              const isPopular = plan.badge === 'ENG OMMABOP';
+              return (
+                <div
+                  key={plan.id}
+                  onClick={() => setSelectedPlan(plan)}
+                  style={{
+                    position: 'relative',
+                    padding: isPopular ? '16px 16px 16px 16px' : '14px 16px',
+                    borderRadius: 16,
+                    cursor: 'pointer',
+                    border: isSelected
+                      ? `2px solid ${plan.color || '#8B5CF6'}`
+                      : '1.5px solid rgba(255,255,255,0.08)',
+                    background: isSelected
+                      ? `rgba(${plan.id === 'monthly' ? '59,130,246' : plan.id === 'quarterly' ? '139,92,246' : '16,185,129'}, 0.12)`
+                      : 'rgba(255,255,255,0.04)',
+                    transition: 'all 0.2s',
+                    overflow: 'hidden',
+                  }}
+                >
+                  {/* Badge */}
+                  {plan.badge && (
+                    <div style={{
+                      position: 'absolute', top: 0, right: 16,
+                      background: isPopular ? 'linear-gradient(135deg, #8B5CF6, #6D28D9)' : 'linear-gradient(135deg, #10B981, #059669)',
+                      color: '#fff', fontSize: 9, fontWeight: 900,
+                      padding: '3px 10px', borderRadius: '0 0 8px 8px',
+                      letterSpacing: 0.8,
+                    }}>
+                      {plan.badge}
+                    </div>
+                  )}
+
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <span style={{ fontSize: 16, fontWeight: 800, color: '#fff' }}>{plan.name}</span>
+                        {plan.savings && (
+                          <span style={{
+                            fontSize: 11, fontWeight: 700,
+                            background: 'rgba(16,185,129,0.2)', color: '#10B981',
+                            padding: '2px 7px', borderRadius: 6,
+                          }}>
+                            -{plan.savings}
+                          </span>
+                        )}
+                      </div>
+                      <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>
+                        {plan.perDay ? `Kuniga ${plan.perDay.toLocaleString()} so'm` : `${plan.durationMonths === 999 ? 'Cheksiz' : plan.durationMonths + ' oy'}`}
+                      </div>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <div style={{ fontSize: 20, fontWeight: 900, color: plan.color || '#fff' }}>
+                        {fmt(plan.price)}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Selected indicator */}
+                  {isSelected && (
+                    <div style={{
+                      position: 'absolute', top: '50%', left: -1,
+                      transform: 'translateY(-50%)',
+                      width: 3, height: '60%',
+                      background: plan.color || '#8B5CF6',
+                      borderRadius: '0 3px 3px 0',
+                    }} />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Referral bonus */}
+          <AnimatePresence>
+            {hasBonus && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                style={{
+                  background: 'rgba(16,185,129,0.12)',
+                  border: '1px solid rgba(16,185,129,0.3)',
+                  borderRadius: 12, padding: '12px 14px',
+                  marginBottom: 16, display: 'flex', alignItems: 'center', gap: 10,
                 }}
               >
-                <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontSize: '15px', fontWeight: 'bold', color: selectedPlan?.id === p.id ? 'var(--amber)' : 'white' }}>{p.name}</div>
-                  <div style={{ fontSize: '12px', color: 'var(--text3)' }}>{p.durationMonths === 999 ? 'Cheksiz muddat' : `${p.durationMonths} oy muddat`}</div>
+                <Gift size={18} style={{ color: '#10B981', flexShrink: 0 }} />
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: '#10B981' }}>
+                    Do'st bonusi: −{fmt(referralBonus)}
+                  </div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)' }}>
+                    Jami: <s style={{ opacity: 0.5 }}>{fmt(selectedPlan?.price)}</s> → <strong style={{ color: '#10B981' }}>{fmt(finalPrice)}</strong>
+                  </div>
                 </div>
-                <div style={{ fontSize: '16px', fontWeight: '800', color: selectedPlan?.id === p.id ? 'var(--amber)' : 'white' }}>
-                  {formatPrice(p.price)}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
-        {/* Referral bonus banneri — faqat bonus bor bo'lsa ko'rinadi */}
-        {hasBonus && (
+          {/* Features (collapsible) */}
           <div style={{
-            display: 'flex', alignItems: 'center', gap: 12,
-            background: 'rgba(34,197,94,0.12)', border: '1.5px solid rgba(34,197,94,0.4)',
-            borderRadius: 12, padding: '12px 16px', marginBottom: 16
+            background: 'rgba(255,255,255,0.04)',
+            border: '1px solid rgba(255,255,255,0.07)',
+            borderRadius: 14, padding: '14px 16px',
+            marginBottom: 20,
           }}>
-            <Gift size={20} style={{ color: '#22c55e', flexShrink: 0 }} />
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 13, fontWeight: 800, color: '#22c55e' }}>
-                Do'stlar taklifi bonusi: −{formatPrice(referralBonus)}
-              </div>
-              <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 2 }}>
-                {formatPrice(selectedPlan.price)} − {formatPrice(referralBonus)} = <strong style={{ color: '#22c55e' }}>{formatPrice(finalPrice)}</strong>
-              </div>
+            <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,0.4)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
+              Nimalar kiradi
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+              {FEATURES.map((f, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ fontSize: 14 }}>{f.icon}</span>
+                  <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)', lineHeight: 1.3 }}>{f.text}</span>
+                </div>
+              ))}
             </div>
           </div>
-        )}
 
-        {/* Afzalliklar */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
-          {[
-            "Barcha mavzular to'liq ochiq",
-            "Imtihon simulyatsiyasi (50 savol, 60 daqiqa)",
-            "Aqlli takrorlash — cheklanmagan",
-            "Flashcard va xatolar ustida ishlash",
-          ].map((text, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text)' }}>
-              <CheckCircle size={16} style={{ color: 'var(--green)', flexShrink: 0 }} />
-              <span style={{ fontSize: '13px', fontWeight: '500' }}>{text}</span>
-            </div>
-          ))}
-        </div>
+          {/* To'lov tugmalari */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 12 }}>
+            <button
+              onClick={() => handlePay('click')}
+              disabled={processing}
+              style={{
+                width: '100%', padding: '15px', borderRadius: 14,
+                background: 'linear-gradient(135deg, #0EA5E9, #0284C7)',
+                color: '#fff', fontWeight: 800, fontSize: 16,
+                border: 'none', cursor: processing ? 'wait' : 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+                fontFamily: 'inherit',
+                boxShadow: '0 4px 20px rgba(14,165,233,0.35)',
+                opacity: processing && payMethod === 'click' ? 0.7 : 1,
+              }}
+            >
+              <CreditCard size={20} />
+              Click — {fmt(finalPrice)}
+            </button>
 
-        {/* To'lov tugmalari */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '16px' }}>
-          {/* Click */}
+            <button
+              onClick={() => handlePay('payme')}
+              disabled={processing}
+              style={{
+                width: '100%', padding: '15px', borderRadius: 14,
+                background: 'linear-gradient(135deg, #14B8A6, #0D9488)',
+                color: '#fff', fontWeight: 800, fontSize: 16,
+                border: 'none', cursor: processing ? 'wait' : 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+                fontFamily: 'inherit',
+                boxShadow: '0 4px 20px rgba(20,184,166,0.35)',
+                opacity: processing && payMethod === 'payme' ? 0.7 : 1,
+              }}
+            >
+              <Smartphone size={20} />
+              Payme — {fmt(finalPrice)}
+            </button>
+          </div>
+
+          {/* Telegram */}
           <button
-            className="btn"
-            onClick={handleClickPay}
-            disabled={processing}
+            onClick={() => window.open('https://t.me/xonnoma', '_blank')}
             style={{
-              width: '100%', padding: '14px', borderRadius: '12px',
-              background: 'linear-gradient(135deg, #00B4D8, #0077B6)',
-              color: '#fff', fontWeight: 'bold', fontSize: '15px',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
-              border: 'none', cursor: processing ? 'wait' : 'pointer',
-              boxShadow: '0 4px 15px rgba(0, 180, 216, 0.3)',
-              opacity: processing ? 0.7 : 1
+              width: '100%', padding: '12px', borderRadius: 12,
+              background: 'transparent', color: 'rgba(255,255,255,0.4)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              fontWeight: 600, fontSize: 13, cursor: 'pointer',
+              fontFamily: 'inherit',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
             }}
           >
-            <CreditCard size={20} />
-            Click — {formatPrice(finalPrice)}
+            <Zap size={14} /> Telegram orqali Admin bilan bog'lanish
           </button>
 
-          {/* Payme */}
-          <button
-            className="btn"
-            onClick={handlePaymePay}
-            disabled={processing}
-            style={{
-              width: '100%', padding: '14px', borderRadius: '12px',
-              background: 'linear-gradient(135deg, #00CCCC, #009999)',
-              color: '#fff', fontWeight: 'bold', fontSize: '15px',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
-              border: 'none', cursor: processing ? 'wait' : 'pointer',
-              boxShadow: '0 4px 15px rgba(0, 204, 204, 0.3)',
-              opacity: processing ? 0.7 : 1
-            }}
-          >
-            <Smartphone size={20} />
-            Payme — {formatPrice(finalPrice)}
-          </button>
-        </div>
-
-        {/* Telegram backup */}
-        <button
-          className="btn"
-          onClick={() => window.open('https://t.me/xonnoma', '_blank')}
-          style={{
-            width: '100%', padding: '12px', borderRadius: '12px',
-            background: 'rgba(255,255,255,0.05)',
-            color: 'var(--text2)', fontWeight: '600', fontSize: '13px',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-            border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer'
-          }}
-        >
-          <Zap size={16} />
-          Telegram orqali ulanish (Admin)
-        </button>
-
-        <div style={{
-          textAlign: 'center', marginTop: '16px', color: 'var(--text3)',
-          fontSize: '11px', display: 'flex', alignItems: 'center',
-          justifyContent: 'center', gap: '6px'
-        }}>
-          <Shield size={12} />
-          Xavfsiz to'lov • Click & Payme sertifikatlangan
+          {/* Ishonch belgisi */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginTop: 14, color: 'rgba(255,255,255,0.3)', fontSize: 12 }}>
+            <Shield size={13} />
+            Xavfsiz to'lov • Click & Payme sertifikatlangan
+          </div>
         </div>
       </motion.div>
     </div>

@@ -1411,3 +1411,23 @@ body {
   .skeleton-page { padding: 16px 12px; }
   .skeleton-cards { grid-template-columns: 1fr; }
 }
+
+/* ========== BOTTOM NAV (Yangi mobil navigatsiya) ========== */
+@media (max-width: 768px) {
+  /* Eski sidebar ni mobilda yashiramiz */
+  .sidebar {
+    display: none !important;
+  }
+
+  /* Yangi BottomNav komponentini ko'rsatamiz */
+  nav[style*="fixed"][style*="bottom: 0"] {
+    display: grid !important;
+  }
+}
+
+/* Spin animatsiyasi (OnboardingPage va App loader uchun) */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.spin { animation: spin 1s linear infinite; }
