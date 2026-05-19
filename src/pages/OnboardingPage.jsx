@@ -22,7 +22,6 @@ const GOALS = [
 
 const SUBJECTS = [
   { id: 'chqbt', badge: 'Q', title: 'CHQBT', desc: 'O\'zbekiston tarixi, huquqi, Konstitutsiya' },
-  { id: 'ped',   badge: 'P', title: 'Pedagogik Mahorat', desc: 'Ta\'lim metodologiyasi va psixologiya' },
   { id: 'art',   badge: 'S', title: 'Tasviriy San\'at', desc: 'Badiiy ta\'lim va san\'at nazariyasi' },
   { id: 'multi', badge: '✦', title: 'Bir nechta fan', desc: 'Barcha fanlar bo\'yicha kompleks' },
 ];
