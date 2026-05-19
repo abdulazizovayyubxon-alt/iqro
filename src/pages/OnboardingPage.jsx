@@ -53,21 +53,21 @@ function ListStep({ title, subtitle, items, selected, onSelect }) {
               key={item.id}
               style={{
                 ...ss.listItem,
-                border: isActive ? `2px solid ${PRIMARY}` : '1.5px solid #E2E8F0',
-                background: isActive ? '#F0F9FF' : '#fff',
+                border: isActive ? `2px solid ${PRIMARY}` : '1.5px solid var(--border)',
+                background: isActive ? 'var(--blue-bg)' : 'var(--bg2)',
               }}
               onClick={() => onSelect(item.id)}
             >
               <div style={{
                 ...ss.badge,
-                background: isActive ? PRIMARY : '#F1F5F9',
-                color: isActive ? '#fff' : '#64748B',
+                background: isActive ? PRIMARY : 'var(--bg3)',
+                color: isActive ? '#fff' : 'var(--text3)',
               }}>
                 {item.badge}
               </div>
               <div style={ss.listItemText}>
-                <span style={{ fontSize: 16, fontWeight: 700, color: '#0F172A' }}>{item.title}</span>
-                <span style={{ fontSize: 13, color: '#94A3B8', marginTop: 2 }}>{item.desc}</span>
+                <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--text)' }}>{item.title}</span>
+                <span style={{ fontSize: 13, color: 'var(--text3)', marginTop: 2 }}>{item.desc}</span>
               </div>
               {isActive && <CheckCircle size={20} style={{ color: PRIMARY, flexShrink: 0 }} />}
             </button>
@@ -97,21 +97,21 @@ function LoadingStep() {
         </div>
       </div>
 
-      <h2 style={{ fontSize: 22, fontWeight: 800, color: '#0F172A', margin: '24px 0 8px' }}>
+      <h2 style={{ fontSize: 22, fontWeight: 800, color: 'var(--text)', margin: '24px 0 8px' }}>
         Optimizing daily goals...
       </h2>
-      <p style={{ fontSize: 14, color: '#94A3B8', marginBottom: 28 }}>
+      <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 28 }}>
         Rejangiz tayyorlanmoqda, bir necha soniya kuting
       </p>
 
       {/* Progress bar */}
-      <div style={{ background: '#E2E8F0', borderRadius: 4, height: 6, marginBottom: 6, overflow: 'hidden' }}>
+      <div style={{ background: 'var(--border)', borderRadius: 4, height: 6, marginBottom: 6, overflow: 'hidden' }}>
         <motion.div
           animate={{ width: `${progress}%` }}
           style={{ height: '100%', background: PRIMARY, borderRadius: 4 }}
         />
       </div>
-      <p style={{ fontSize: 12, color: '#94A3B8', textAlign: 'right', marginBottom: 24 }}>{progress}%</p>
+      <p style={{ fontSize: 12, color: 'var(--text3)', textAlign: 'right', marginBottom: 24 }}>{progress}%</p>
 
       {/* Checklist */}
       <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -122,9 +122,9 @@ function LoadingStep() {
             ) : i === stepIdx ? (
               <div style={ss.spinnerSmall} />
             ) : (
-              <div style={{ width: 20, height: 20, borderRadius: '50%', border: '2px solid #E2E8F0', flexShrink: 0 }} />
+              <div style={{ width: 20, height: 20, borderRadius: '50%', border: '2px solid var(--border)', flexShrink: 0 }} />
             )}
-            <span style={{ fontSize: 14, color: i <= stepIdx ? PRIMARY : '#94A3B8', fontWeight: i === stepIdx ? 600 : 400 }}>
+            <span style={{ fontSize: 14, color: i <= stepIdx ? PRIMARY : 'var(--text3)', fontWeight: i === stepIdx ? 600 : 400 }}>
               {text}
             </span>
           </div>
@@ -144,26 +144,26 @@ function WelcomeStep({ goal, time, onDone }) {
       <h1 style={{ ...ss.title, textAlign: 'center' }}>Hammasi tayyor!</h1>
       <p style={{ ...ss.subtitle, textAlign: 'center' }}>IQRO platformasiga xush kelibsiz</p>
 
-      <div style={{ background: '#F8FAFC', borderRadius: 16, padding: '16px 20px', marginBottom: 20, textAlign: 'left' }}>
+      <div style={{ background: 'var(--bg3)', borderRadius: 16, padding: '16px 20px', marginBottom: 20, textAlign: 'left' }}>
         {goalObj && (
           <div style={ss.summaryRow}>
             <span style={{ fontSize: 18 }}>{goalObj.badge}</span>
-            <span style={{ fontSize: 14, fontWeight: 600, color: '#0F172A' }}>{goalObj.title}</span>
+            <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)' }}>{goalObj.title}</span>
           </div>
         )}
         {timeObj && (
           <div style={ss.summaryRow}>
             <span style={{ fontSize: 18 }}>⏱</span>
-            <span style={{ fontSize: 14, fontWeight: 600, color: '#0F172A' }}>Kunlik: {timeObj.title}</span>
+            <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)' }}>Kunlik: {timeObj.title}</span>
           </div>
         )}
         <div style={ss.summaryRow}>
           <span style={{ fontSize: 18 }}>⭐</span>
-          <span style={{ fontSize: 14, fontWeight: 600, color: '#0F172A' }}>7 kunlik bepul sinov</span>
+          <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)' }}>7 kunlik bepul sinov</span>
         </div>
       </div>
 
-      <div style={{ background: '#F0F9FF', border: '1px solid #BAE6FD', borderRadius: 12, padding: '12px 16px', fontSize: 13, color: '#0369A1', marginBottom: 24 }}>
+      <div style={{ background: 'var(--blue-bg)', border: '1px solid var(--border)', borderRadius: 12, padding: '12px 16px', fontSize: 13, color: 'var(--blue)', marginBottom: 24 }}>
         🏆 Foydalanuvchilarning <strong>89%</strong> si maqsadiga erisha oldi
       </div>
     </div>
@@ -293,26 +293,26 @@ export default function OnboardingPage({ onComplete }) {
 const ss = {
   pageOuter: {
     minHeight: '100vh',
-    background: IS_MOBILE ? '#fff' : 'linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%)',
+    background: IS_MOBILE ? 'var(--bg)' : 'linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%)',
     display: IS_MOBILE ? 'block' : 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     padding: IS_MOBILE ? 0 : '40px 20px',
     fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif",
-    color: '#0F172A',
+    color: 'var(--text)',
   },
   page: {
     width: '100%',
     maxWidth: 460,
     minHeight: IS_MOBILE ? '100vh' : 'auto',
-    background: '#fff',
+    background: 'var(--bg2)',
     borderRadius: IS_MOBILE ? 0 : 24,
-    boxShadow: IS_MOBILE ? 'none' : '0 20px 60px rgba(0,0,0,0.10)',
+    boxShadow: IS_MOBILE ? 'none' : '0 20px 60px rgba(0,0,0,0.05)',
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
   },
-  progressTrack: { height: 4, background: '#E2E8F0', flexShrink: 0 },
+  progressTrack: { height: 4, background: 'var(--border)', flexShrink: 0 },
   progressFill: { height: '100%', background: PRIMARY, borderRadius: '0 2px 2px 0' },
   header: {
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -320,12 +320,12 @@ const ss = {
   },
   backBtn: {
     background: 'none', border: 'none', cursor: 'pointer',
-    color: '#0F172A', padding: 6, display: 'flex', alignItems: 'center',
+    color: 'var(--text)', padding: 6, display: 'flex', alignItems: 'center',
     borderRadius: 8,
   },
   content: { flex: 1, padding: '24px 20px 16px', overflowY: 'auto' },
-  title: { fontSize: 26, fontWeight: 800, lineHeight: 1.25, marginBottom: 8, color: '#0F172A' },
-  subtitle: { fontSize: 14, color: '#94A3B8', marginBottom: 20, lineHeight: 1.5 },
+  title: { fontSize: 26, fontWeight: 800, lineHeight: 1.25, marginBottom: 8, color: 'var(--text)' },
+  subtitle: { fontSize: 14, color: 'var(--text3)', marginBottom: 20, lineHeight: 1.5 },
   list: { display: 'flex', flexDirection: 'column', gap: 10, marginTop: 8 },
   listItem: {
     display: 'flex', alignItems: 'center', gap: 14,
@@ -341,7 +341,7 @@ const ss = {
   listItemText: { flex: 1, display: 'flex', flexDirection: 'column' },
   footer: {
     padding: '12px 20px calc(16px + env(safe-area-inset-bottom))',
-    borderTop: '1px solid #F1F5F9', background: '#fff',
+    borderTop: '1px solid var(--border)', background: 'var(--bg2)',
   },
   primaryBtn: {
     width: '100%', padding: '16px', borderRadius: 14,
@@ -372,6 +372,6 @@ const ss = {
   },
   summaryRow: {
     display: 'flex', alignItems: 'center', gap: 12,
-    padding: '8px 0', borderBottom: '1px solid #F1F5F9',
+    padding: '8px 0', borderBottom: '1px solid var(--border)',
   },
 };
