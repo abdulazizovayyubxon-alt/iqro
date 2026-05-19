@@ -139,20 +139,7 @@ const Dashboard = () => {
         </button>
       )}
 
-      {/* ── STATISTIKA ── */}
-      <div style={s.statsRow}>
-        {[
-          { label: 'Javob berildi', value: catStats.totalAnswered, icon: '📝' },
-          { label: 'To\'g\'rilik', value: `${totalAcc}%`, icon: '🎯' },
-          { label: 'Xatolar', value: filteredMistakesCount, icon: '⚡' },
-        ].map((stat, i) => (
-          <div key={i} style={s.statCard}>
-            <div style={s.statIcon}>{stat.icon}</div>
-            <div style={s.statVal}>{stat.value}</div>
-            <div style={s.statLbl}>{stat.label}</div>
-          </div>
-        ))}
-      </div>
+
 
       {/* ── TEZKOR HARAKATLAR ── */}
       <div style={s.sectionLabel}>Tezkor boshlash</div>
