@@ -1,246 +1,288 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Trophy, Medal, Crown, Star, ArrowLeft, Trash2 } from 'lucide-react';
-import { collection, query, orderBy, limit, getDocs, doc, getDoc, where, getCountFromServer, deleteDoc } from 'firebase/firestore';
+import { Crown, Medal, Star, Trash2, Trophy } from 'lucide-react';
+import {
+  collection, query, orderBy, limit, getDocs,
+  doc, getDoc, where, getCountFromServer, deleteDoc
+} from 'firebase/firestore';
 import { db } from '../firebase';
 import { AuthContext } from '../context/AuthContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAdmin } from '../hooks/useAdmin';
 
+const PRIMARY = '#29B6F6';
+
 const LeaderboardPage = () => {
   const navigate = useNavigate();
-  const goBack = () => navigate('/');
   const { user } = useContext(AuthContext);
   const { showToast } = useContext(ToastContext);
   const { isAdmin } = useAdmin();
   const [leaders, setLeaders] = useState([]);
+  const [myEntry, setMyEntry] = useState(null); // top-50 tashqarisidagi "Siz" qatori
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchLeaderboard();
-  }, [user]);
+  useEffect(() => { fetchLeaderboard(); }, [user]);
 
-  const handleDeleteLeaderResult = async (leaderId, leaderName) => {
-    if (!window.confirm(`DIQQAT! Siz o'quvchi (${leaderName || leaderId}) ning reytingdagi (Leaderboard) natijasini o'chirmoqchisiz.\n\nBu foydalanuvchining to'plagan barcha ballari reytingdan olib tashlanadi.\n\nTasdiqlaysizmi?`)) return;
+  const handleDelete = async (id, name) => {
+    if (!window.confirm(`"${name}" ning reyting natijasini o'chirasizmi?`)) return;
     try {
-      await deleteDoc(doc(db, 'userStats', leaderId));
-      setLeaders(prev => prev.filter(l => l.id !== leaderId));
-      showToast("🗑️ Reyting natijasi muvaffaqiyatli o'chirildi!", 'success');
+      await deleteDoc(doc(db, 'userStats', id));
+      setLeaders(prev => prev.filter(l => l.id !== id));
+      if (myEntry?.id === id) setMyEntry(null);
+      showToast("Reyting natijasi o'chirildi", 'success');
     } catch (e) {
-      console.error("Reyting natijasini o'chirishda xatolik:", e);
-      showToast("Xatolik: " + e.message, 'error');
+      showToast('Xatolik: ' + e.message, 'error');
     }
   };
 
   const fetchLeaderboard = async () => {
     try {
-      // Firebase'dan eng ko'p ball (totalScore) to'plagan 50 kishini olamiz
       const q = query(collection(db, 'userStats'), orderBy('totalScore', 'desc'), limit(50));
       const snapshot = await getDocs(q);
-      
       const results = [];
       snapshot.forEach(docSnap => {
-        const data = docSnap.data();
-        if (data.totalScore !== undefined) {
+        const d = docSnap.data();
+        if (d.totalScore !== undefined) {
           results.push({
             id: docSnap.id,
-            name: data.displayName || data.userName || data.name || null,
-            score: data.totalScore || 0,
-            streak: data.dailyStreak || 0,
-            answered: data.totalAnswered || 0,
-            photoURL: data.photoURL || null
+            name: d.displayName || d.userName || d.name || null,
+            score: d.totalScore || 0,
+            streak: d.dailyStreak || 0,
+            answered: d.totalAnswered || 0,
+            photoURL: d.photoURL || null,
           });
         }
       });
-      
-      // Foydalanuvchining o'zi top-50 da bormi?
-      let meIndex = results.findIndex(r => user && r.id === user.uid);
-      
-      if (user && meIndex === -1) {
-        // Foydalanuvchi top-50 da yo'q bo'lsa, uning aniq o'rnini hisoblaymiz
-        try {
-          const myStatsDoc = await getDoc(doc(db, 'userStats', user.uid));
-          if (myStatsDoc.exists()) {
-            const myData = myStatsDoc.data();
-            const myScore = myData.totalScore || 0;
-            
-            // O'zimdan ko'p ball olganlar sonini aniqlaymiz
-            const rankQuery = query(collection(db, 'userStats'), where('totalScore', '>', myScore));
-            const countSnap = await getCountFromServer(rankQuery);
-            const myRank = countSnap.data().count + 1;
 
-            results.push({
-              id: user.uid,
-              name: user.displayName || user.email?.split('@')[0] || 'Siz',
-              score: myScore,
-              streak: myData.dailyStreak || 0,
-              answered: myData.totalAnswered || 0,
-              photoURL: user.photoURL || null,
-              exactRank: myRank
-            });
-          }
-        } catch (e) {
-          console.error("My rank fetch error:", e);
-        }
-      } else if (meIndex !== -1) {
-        results[meIndex].exactRank = meIndex + 1;
-      }
-
-      // Ismlarni parallel ravishda 'users' kolleksiyasidan qidirish (fallback)
+      // Ismlarni users kolleksiyasidan yuklash
       await Promise.all(results.map(async (res) => {
         if (!res.name) {
           try {
-            const userDoc = await getDoc(doc(db, 'users', res.id));
-            if (userDoc.exists()) {
-              const userData = userDoc.data();
-              res.name = userData.displayName || userData.userName || userData.name || userData.email?.split('@')[0];
-              if (userData.photoURL && !res.photoURL) res.photoURL = userData.photoURL;
+            const ud = await getDoc(doc(db, 'users', res.id));
+            if (ud.exists()) {
+              const u = ud.data();
+              res.name = u.displayName || u.userName || u.name || u.email?.split('@')[0];
+              if (u.photoURL && !res.photoURL) res.photoURL = u.photoURL;
             }
-          } catch (e) {
-            console.error("User fetch error:", e);
-          }
-          if (!res.name) res.name = `ID: ${res.id.substring(0, 6)}`;
+          } catch (_) {}
+          if (!res.name) res.name = `#${res.id.slice(0, 6)}`;
         }
       }));
 
+      // "Siz" top-50 da bormi?
+      const meIdx = results.findIndex(r => user && r.id === user.uid);
+      if (meIdx !== -1) {
+        results[meIdx].rank = meIdx + 1;
+        results[meIdx].isMe = true;
+        setMyEntry(null);
+      } else if (user) {
+        // Top-50 tashqarida — alohida qatorga solish
+        try {
+          const myDoc = await getDoc(doc(db, 'userStats', user.uid));
+          if (myDoc.exists()) {
+            const md = myDoc.data();
+            const myScore = md.totalScore || 0;
+            const rankQ = query(collection(db, 'userStats'), where('totalScore', '>', myScore));
+            const cnt = await getCountFromServer(rankQ);
+            setMyEntry({
+              id: user.uid,
+              name: user.displayName || user.email?.split('@')[0] || 'Siz',
+              score: myScore,
+              streak: md.dailyStreak || 0,
+              answered: md.totalAnswered || 0,
+              photoURL: user.photoURL || null,
+              rank: cnt.data().count + 1,
+              isMe: true,
+            });
+          }
+        } catch (_) {}
+      }
+
+      results.forEach((r, i) => { if (!r.rank) r.rank = i + 1; });
       setLeaders(results);
     } catch (err) {
-      console.error("Leaderboard fetch error:", err);
-      setLeaders([]);
+      console.error('Leaderboard error:', err);
     } finally {
       setLoading(false);
     }
   };
 
-  // Ma'lumot yuklangandan so'ng foydalanuvchi qatoriga avtomatik skroll qilish
-  useEffect(() => {
-    if (!loading && user && leaders.length > 0) {
-      const timer = setTimeout(() => {
-        const el = document.getElementById(`leaderboard-row-${user.uid}`);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      }, 300);
-      return () => clearTimeout(timer);
-    }
-  }, [loading, leaders, user]);
+  // Top 3 podium
+  const top3 = leaders.slice(0, 3);
+  const rest = leaders.slice(3);
 
-  const getRankBadge = (index, exactRank) => {
-    const rankNum = exactRank || (index + 1);
-    if (rankNum === 1) return <Crown size={24} style={{ color: '#fbbf24' }} />; // Oltin
-    if (rankNum === 2) return <Medal size={24} style={{ color: '#9ca3af' }} />; // Kumush
-    if (rankNum === 3) return <Medal size={24} style={{ color: '#b45309' }} />; // Bronza
-    return <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--text3)', width: 24, textAlign: 'center' }}>{rankNum}</div>;
+  const Avatar = ({ entry, size = 44 }) => (
+    <div style={{
+      width: size, height: size, borderRadius: '50%', flexShrink: 0,
+      background: '#E2E8F0', overflow: 'hidden',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      border: entry.rank <= 3 ? `2px solid ${entry.rank === 1 ? '#F59E0B' : entry.rank === 2 ? '#9CA3AF' : '#B45309'}` : 'none',
+    }}>
+      {entry.photoURL
+        ? <img src={entry.photoURL} alt={entry.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        : <span style={{ fontSize: size * 0.38, fontWeight: 800, color: '#64748B' }}>{(entry.name || '?').charAt(0).toUpperCase()}</span>
+      }
+    </div>
+  );
+
+  const RankIcon = ({ rank }) => {
+    if (rank === 1) return <Crown size={20} style={{ color: '#F59E0B' }} />;
+    if (rank === 2) return <Medal size={20} style={{ color: '#9CA3AF' }} />;
+    if (rank === 3) return <Medal size={20} style={{ color: '#B45309' }} />;
+    return <span style={{ fontSize: 15, fontWeight: 800, color: '#94A3B8', minWidth: 20, textAlign: 'center' }}>{rank}</span>;
   };
 
-  return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
-      {/* Top bar */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24, flexWrap: 'wrap', gap: 10 }}>
-        <button className="btn btn-outline btn-sm" onClick={goBack}>
-          <ArrowLeft size={14} /> Orqaga
-        </button>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <Trophy size={20} style={{ color: '#fbbf24' }} />
-          <span style={{ fontWeight: 800, fontSize: 18, color: 'var(--text)' }}>TOP Reyting</span>
+  const LeaderRow = ({ entry, pinned }) => (
+    <div
+      id={`lb-${entry.id}`}
+      style={{
+        display: 'flex', alignItems: 'center', gap: 14,
+        padding: '12px 16px', borderRadius: 14,
+        border: `1.5px solid ${entry.isMe ? PRIMARY : '#E2E8F0'}`,
+        background: entry.isMe ? '#F0F9FF' : pinned ? '#FFFBEB' : '#FAFAFA',
+        boxShadow: entry.isMe ? `0 0 0 3px ${PRIMARY}20` : 'none',
+        position: 'relative', overflow: 'hidden',
+      }}
+    >
+      {entry.isMe && (
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 4, background: PRIMARY, borderRadius: '2px 0 0 2px' }} />
+      )}
+      <div style={{ width: 24, display: 'flex', justifyContent: 'center', flexShrink: 0 }}>
+        <RankIcon rank={entry.rank} />
+      </div>
+      <Avatar entry={entry} size={40} />
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ fontSize: 14, fontWeight: 700, color: '#0F172A', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            {entry.name}
+          </span>
+          {entry.isMe && (
+            <span style={{ fontSize: 10, background: PRIMARY, color: '#fff', padding: '1px 7px', borderRadius: 8, fontWeight: 700, flexShrink: 0 }}>SIZ</span>
+          )}
+          {pinned && !entry.isMe && (
+            <span style={{ fontSize: 10, background: '#F59E0B', color: '#fff', padding: '1px 7px', borderRadius: 8, fontWeight: 700, flexShrink: 0 }}>PIN</span>
+          )}
         </div>
-        <div style={{ width: 80 }} /> {/* Spacer */}
+        <div style={{ fontSize: 11, color: '#94A3B8', marginTop: 2, display: 'flex', gap: 10 }}>
+          <span>📝 {entry.answered}</span>
+          {entry.streak > 0 && <span>🔥 {entry.streak} kun</span>}
+        </div>
+      </div>
+      <div style={{ textAlign: 'right', flexShrink: 0 }}>
+        <div style={{ fontSize: 18, fontWeight: 900, color: entry.isMe ? PRIMARY : '#0F172A' }}>
+          {entry.score.toLocaleString()}
+        </div>
+        <div style={{ fontSize: 10, color: '#94A3B8', fontWeight: 600 }}>BALL</div>
+      </div>
+      {isAdmin && (
+        <button
+          onClick={() => handleDelete(entry.id, entry.name)}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#EF4444', padding: 4, borderRadius: 8 }}
+        >
+          <Trash2 size={14} />
+        </button>
+      )}
+    </div>
+  );
+
+  return (
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={s.page}>
+      {/* Header */}
+      <div style={s.header}>
+        <h1 style={s.title}>🏆 Reyting</h1>
+        <p style={s.subtitle}>Eng yuqori ball to'plagan o'quvchilar</p>
       </div>
 
-      <div className="glass-panel" style={{ maxWidth: 650, margin: '0 auto', padding: 24 }}>
-        <div style={{ textAlign: 'center', marginBottom: 30 }}>
-          <div style={{ fontSize: 48, marginBottom: 10 }}>🏆</div>
-          <h2 style={{ fontSize: 24, fontWeight: 900, color: 'var(--text)', marginBottom: 8 }}>Chempionlar Doskasi</h2>
-          <p style={{ fontSize: 14, color: 'var(--text3)' }}>Platformadagi eng faol va yuqori ball to'plagan o'quvchilar</p>
+      {/* Top 3 Podium */}
+      {!loading && top3.length >= 3 && (
+        <div style={s.podium}>
+          {/* 2-o'rin */}
+          <div style={s.podiumItem}>
+            <Avatar entry={top3[1]} size={52} />
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#334155', marginTop: 6, textAlign: 'center', maxWidth: 80, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{top3[1].name}</div>
+            <div style={{ ...s.podiumBlock, height: 60, background: '#9CA3AF' }}>
+              <span style={{ fontSize: 16, fontWeight: 900, color: '#fff' }}>2</span>
+            </div>
+          </div>
+          {/* 1-o'rin */}
+          <div style={{ ...s.podiumItem, marginTop: -20 }}>
+            <Crown size={28} style={{ color: '#F59E0B', marginBottom: 4 }} />
+            <Avatar entry={top3[0]} size={64} />
+            <div style={{ fontSize: 12, fontWeight: 700, color: '#334155', marginTop: 6, textAlign: 'center', maxWidth: 90, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{top3[0].name}</div>
+            <div style={{ ...s.podiumBlock, height: 80, background: '#F59E0B' }}>
+              <span style={{ fontSize: 20, fontWeight: 900, color: '#fff' }}>1</span>
+            </div>
+          </div>
+          {/* 3-o'rin */}
+          <div style={s.podiumItem}>
+            <Avatar entry={top3[2]} size={52} />
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#334155', marginTop: 6, textAlign: 'center', maxWidth: 80, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{top3[2].name}</div>
+            <div style={{ ...s.podiumBlock, height: 44, background: '#B45309' }}>
+              <span style={{ fontSize: 16, fontWeight: 900, color: '#fff' }}>3</span>
+            </div>
+          </div>
         </div>
+      )}
 
+      {/* Ro'yxat */}
+      <div style={s.listWrap}>
         {loading ? (
-          <div style={{ textAlign: 'center', padding: 40, color: 'var(--text3)' }}>Yuklanmoqda...</div>
+          <div style={s.empty}>⏳ Yuklanmoqda...</div>
         ) : leaders.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: 40, color: 'var(--text3)' }}>Hozircha reyting bo'sh</div>
+          <div style={s.empty}>Hozircha reyting bo'sh</div>
         ) : (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {leaders.map((leader, idx) => {
-              const isMe = user && user.uid === leader.id;
-              
-              return (
-                <motion.div
-                  key={leader.id}
-                  id={`leaderboard-row-${leader.id}`}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.03 }}
-                  style={{
-                    display: 'flex', alignItems: 'center', gap: 16, padding: '16px 20px',
-                    background: isMe ? 'rgba(59, 130, 246, 0.12)' : 'var(--bg2)',
-                    border: `1.5px solid ${isMe ? 'var(--blue)' : 'var(--border)'}`,
-                    boxShadow: isMe ? '0 0 20px rgba(59, 130, 246, 0.3)' : 'none',
-                    borderRadius: 16, position: 'relative', overflow: 'hidden'
-                  }}
-                >
-                  {isMe && <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 6, background: 'var(--blue)' }} />}
-                  
-                  {/* O'rin */}
-                  <div style={{ width: 30, display: 'flex', justifyContent: 'center' }}>
-                    {getRankBadge(idx, leader.exactRank)}
-                  </div>
-
-                  {/* Avatar */}
-                  <div style={{
-                    width: 44, height: 44, borderRadius: '50%', background: 'var(--bg3)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                    overflow: 'hidden', border: idx < 3 ? '2px solid #fbbf24' : 'none'
-                  }}>
-                    {leader.photoURL ? (
-                      <img src={leader.photoURL} alt={leader.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                    ) : (
-                      <span style={{ fontSize: 20, fontWeight: 700, color: 'var(--text2)' }}>{leader.name.charAt(0).toUpperCase()}</span>
-                    )}
-                  </div>
-
-                  {/* Ism */}
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--text)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      {leader.name}
-                      {isMe && <span style={{ fontSize: 10, background: 'var(--blue)', color: 'white', padding: '2px 6px', borderRadius: 10, marginLeft: 8, verticalAlign: 'middle' }}>SIZ</span>}
-                    </div>
-                    <div style={{ fontSize: 12, color: 'var(--text3)', display: 'flex', gap: 12, marginTop: 4 }}>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><Star size={12} /> {leader.answered} savol</span>
-                      {leader.streak > 0 && <span style={{ display: 'flex', alignItems: 'center', gap: 4, color: 'var(--amber)' }}>🔥 {leader.streak} kun</span>}
-                    </div>
-                  </div>
-
-                  {/* Ball va Admin o'chirish tugmasi */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                    <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: 20, fontWeight: 900, color: 'var(--text)' }}>
-                        {leader.score.toLocaleString()}
-                      </div>
-                      <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text3)' }}>BALL</div>
-                    </div>
-                    {isAdmin && (
-                      <button
-                        className="btn btn-sm btn-outline"
-                        style={{ color: 'var(--red)', borderColor: 'var(--red)', padding: '6px', borderRadius: '10px' }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleDeleteLeaderResult(leader.id, leader.name);
-                        }}
-                        title="Bu foydalanuvchining reyting natijasini o'chirish"
-                      >
-                        <Trash2 size={16} />
-                      </button>
-                    )}
-                  </div>
-                </motion.div>
-              );
-            })}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {/* Top-3 ni ro'yxatda ham ko'rsatamiz */}
+            {leaders.map((entry, idx) => (
+              <motion.div key={entry.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.02 }}>
+                <LeaderRow entry={entry} />
+              </motion.div>
+            ))}
           </div>
         )}
       </div>
+
+      {/* "Siz" qatori — top-50 tashqarida bo'lsa, pastda PIN sifatida */}
+      {myEntry && (
+        <div style={s.pinnedWrap}>
+          <div style={s.pinnedDivider}>
+            <div style={s.pinnedDots}>• • •</div>
+          </div>
+          <LeaderRow entry={myEntry} pinned />
+        </div>
+      )}
     </motion.div>
   );
+};
+
+const s = {
+  page: { maxWidth: 600, margin: '0 auto', padding: '20px 16px 120px' },
+  header: { marginBottom: 20 },
+  title: { fontSize: 26, fontWeight: 900, color: '#0F172A', margin: '0 0 4px' },
+  subtitle: { fontSize: 14, color: '#94A3B8', margin: 0 },
+  podium: {
+    display: 'flex', alignItems: 'flex-end', justifyContent: 'center',
+    gap: 16, marginBottom: 28, padding: '20px 0 0',
+  },
+  podiumItem: {
+    display: 'flex', flexDirection: 'column', alignItems: 'center',
+  },
+  podiumBlock: {
+    width: 72, borderRadius: '10px 10px 0 0', marginTop: 6,
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+  },
+  listWrap: { display: 'flex', flexDirection: 'column', gap: 0 },
+  empty: { textAlign: 'center', padding: 40, color: '#94A3B8', fontSize: 15 },
+  pinnedWrap: {
+    position: 'fixed', bottom: 0, left: 0, right: 0,
+    padding: '0 16px calc(80px + env(safe-area-inset-bottom)) 16px',
+    background: 'linear-gradient(transparent, #fff 30%)',
+    zIndex: 100,
+    maxWidth: 600, margin: '0 auto',
+  },
+  pinnedDivider: { display: 'flex', justifyContent: 'center', marginBottom: 8 },
+  pinnedDots: { fontSize: 14, color: '#CBD5E1', letterSpacing: 4 },
 };
 
 export default LeaderboardPage;

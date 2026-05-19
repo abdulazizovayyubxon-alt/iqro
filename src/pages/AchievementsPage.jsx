@@ -49,69 +49,46 @@ const AchievementsPage = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="page"
-      style={{ padding: '12px 16px' }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      style={{ maxWidth: 700, margin: '0 auto', padding: '20px 16px 32px' }}
     >
-      <div style={{
-        fontFamily: "'Bebas Neue', sans-serif",
-        fontSize: '28px',
-        letterSpacing: '2px',
-        color: 'var(--accent2)',
-        marginBottom: '20px',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '12px'
-      }}>
-        <Star size={32} /> Yutuqlar & Statistika
-      </div>
+      {/* Header */}
+      <h1 style={{ fontSize: 26, fontWeight: 900, color: '#0F172A', margin: '0 0 4px' }}>🏅 Yutuqlar</h1>
+      <p style={{ fontSize: 14, color: '#94A3B8', marginBottom: 24 }}>Statistika va natijalaringiz</p>
 
-      {/* User Progress Header (Always visible) */}
-      <div className="glass-panel" style={{
-        padding: '24px',
-        marginBottom: '24px',
-        background: `linear-gradient(135deg, ${levelInfo.color}15, transparent)`,
-        border: `1px solid ${levelInfo.color}40`
+      {/* Level Header */}
+      <div style={{
+        padding: '20px', marginBottom: 20,
+        background: `${levelInfo.color}10`,
+        border: `1.5px solid ${levelInfo.color}30`,
+        borderRadius: 18,
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
             <div style={{
-              width: '64px',
-              height: '64px',
-              borderRadius: '16px',
-              background: `linear-gradient(135deg, ${levelInfo.color}, ${levelInfo.color}90)`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '32px',
-              boxShadow: `0 8px 20px ${levelInfo.color}40`
+              width: 56, height: 56, borderRadius: 14,
+              background: levelInfo.color,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}>
-              <Trophy size={32} color="white" />
+              <Trophy size={28} color="white" />
             </div>
             <div>
-              <div style={{ fontSize: '24px', fontWeight: '900', color: 'var(--text)' }}>
+              <div style={{ fontSize: 20, fontWeight: 900, color: '#0F172A' }}>
                 {levelInfo.name} <span style={{ color: levelInfo.color }}>Lv.{levelInfo.level}</span>
               </div>
-              <div style={{ fontSize: '14px', color: 'var(--text3)', marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <Zap size={14} style={{ color: '#FBBF24' }} />
-                {totalXP} XP • {earnedBadges.length}/{BADGES.length} badge yig'ilgan
+              <div style={{ fontSize: 13, color: '#94A3B8', marginTop: 2 }}>
+                ⚡ {totalXP} XP · {earnedBadges.length}/{BADGES.length} badge
               </div>
             </div>
           </div>
-          <div style={{ flex: 1, minWidth: '220px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', fontSize: '12px', color: 'var(--text3)' }}>
+          <div style={{ flex: 1, minWidth: 180 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, fontSize: 12, color: '#94A3B8' }}>
               <span>Keyingi daraja</span>
-              <span style={{ fontWeight: '700', color: levelInfo.color }}>{totalXP} / {nextLevelXP} XP</span>
+              <span style={{ fontWeight: 700, color: levelInfo.color }}>{totalXP}/{nextLevelXP} XP</span>
             </div>
-            <div style={{ height: '10px', background: 'var(--bg3)', borderRadius: '5px', overflow: 'hidden' }}>
-              <div style={{
-                width: `${levelPct}%`,
-                height: '100%',
-                background: `linear-gradient(90deg, ${levelInfo.color}, ${levelInfo.color}cc)`,
-                borderRadius: '5px',
-                transition: 'width 1s ease'
-              }} />
+            <div style={{ height: 8, background: '#E2E8F0', borderRadius: 4, overflow: 'hidden' }}>
+              <div style={{ width: `${levelPct}%`, height: '100%', background: levelInfo.color, borderRadius: 4, transition: 'width 1s ease' }} />
             </div>
           </div>
         </div>
@@ -279,20 +256,24 @@ const AchievementsPage = () => {
         );
       })()}
 
-      {/* Internal Tabs */}
-      <div className="mode-bar" style={{ marginBottom: '24px' }}>
-        <button 
-          className={`mode-btn ${activeTab === 'achievements' ? 'active' : ''}`}
-          onClick={() => setActiveTab('achievements')}
-        >
-          <Medal size={18} /> Yutuqlar
-        </button>
-        <button 
-          className={`mode-btn ${activeTab === 'statistics' ? 'active' : ''}`}
-          onClick={() => setActiveTab('statistics')}
-        >
-          <BarChart3 size={18} /> Statistika
-        </button>
+      {/* Tabs */}
+      <div style={{ display: 'flex', background: '#F1F5F9', borderRadius: 12, padding: 3, gap: 3, marginBottom: 24 }}>
+        {[{ id: 'achievements', label: '🏅 Yutuqlar' }, { id: 'statistics', label: '📊 Statistika' }].map(tab => (
+          <button
+            key={tab.id}
+            style={{
+              flex: 1, padding: '10px', borderRadius: 10, border: 'none',
+              background: activeTab === tab.id ? '#fff' : 'transparent',
+              color: activeTab === tab.id ? '#0F172A' : '#94A3B8',
+              fontWeight: 700, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit',
+              boxShadow: activeTab === tab.id ? '0 1px 4px rgba(0,0,0,0.08)' : 'none',
+              transition: 'all 0.18s',
+            }}
+            onClick={() => setActiveTab(tab.id)}
+          >
+            {tab.label}
+          </button>
+        ))}
       </div>
 
       <AnimatePresence mode="wait">
@@ -306,49 +287,27 @@ const AchievementsPage = () => {
             <div className="section-header" style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Trophy size={20} style={{ color: 'var(--amber)' }} /> Kolleksiya
             </div>
-            <div className="badges-grid">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: 10 }}>
               {BADGES.map((badge) => {
                 const earned = earnedBadges.some(b => b.id === badge.id);
                 return (
-                  <motion.div
+                  <div
                     key={badge.id}
-                    className={`badge-card glass-panel ${earned ? 'earned' : 'locked'}`}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    whileHover={{ scale: 1.05 }}
                     style={{
-                      border: earned ? `1px solid ${badge.color}50` : '1px solid var(--border)',
-                      background: earned ? `${badge.color}10` : 'var(--bg2)',
-                      opacity: earned ? 1 : 0.5,
-                      cursor: 'pointer',
-                      position: 'relative',
-                      overflow: 'hidden'
+                      padding: '16px 12px', borderRadius: 16, textAlign: 'center',
+                      border: earned ? `1.5px solid ${badge.color}40` : '1.5px solid #E2E8F0',
+                      background: earned ? `${badge.color}0F` : '#FAFAFA',
+                      opacity: earned ? 1 : 0.55,
+                      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
                     }}
                   >
-                    <div className="badge-icon" style={{
-                      fontSize: '40px',
-                      filter: earned ? 'none' : 'grayscale(1)',
-                      transition: 'all 0.3s ease'
-                    }}>
+                    <div style={{ fontSize: 36, filter: earned ? 'none' : 'grayscale(1)' }}>
                       {earned ? badge.icon : '🔒'}
                     </div>
-                    <div className="badge-name" style={{
-                      color: earned ? 'var(--text)' : 'var(--text3)',
-                      fontWeight: '700'
-                    }}>{badge.name}</div>
-                    <div className="badge-desc" style={{
-                      fontSize: '12px',
-                      color: earned ? 'var(--text2)' : 'var(--text3)',
-                      opacity: earned ? 1 : 0.7
-                    }}>{badge.desc}</div>
-                    <div className="badge-xp" style={{
-                      color: earned ? badge.color : 'var(--text3)',
-                      fontWeight: '600',
-                      fontSize: '12px'
-                    }}>
-                      +{badge.xp} XP
-                    </div>
-                  </motion.div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: '#0F172A', lineHeight: 1.3 }}>{badge.name}</div>
+                    <div style={{ fontSize: 11, color: '#94A3B8', lineHeight: 1.4 }}>{badge.desc}</div>
+                    <div style={{ fontSize: 12, fontWeight: 800, color: earned ? badge.color : '#CBD5E1' }}>+{badge.xp} XP</div>
+                  </div>
                 );
               })}
             </div>
