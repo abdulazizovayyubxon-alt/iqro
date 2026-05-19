@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff, CheckCircle, XCircle } from 'lucide-react';
 
+// ── Google SVG ──
 const GoogleIcon = () => (
   <svg width="20" height="20" viewBox="0 0 48 48">
     <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.9 33.6 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C33.9 5.7 29.2 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.9z"/>
@@ -12,26 +13,27 @@ const GoogleIcon = () => (
   </svg>
 );
 
+// ── Telegram SVG ──
+const TelegramIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="#29B6F6">
+    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 14.013 4.53 13.1c-.658-.204-.671-.658.136-.975l10.895-4.201c.548-.198 1.027.12.001.975l-.001-.001z"/>
+  </svg>
+);
+
 const STEPS = {
-  WELCOME: 'welcome',
   PHONE: 'phone',
-  CHECKING: 'checking',
   PASSWORD: 'password',
   REGISTER_NAME: 'register_name',
   REGISTER_PASS: 'register_pass',
 };
 
-const PRIMARY = '#29B6F6';
-const IS_MOBILE = typeof window !== 'undefined' && window.innerWidth <= 768;
-
 export default function LoginPage() {
   const {
     signInWithPhone, signInWithGoogle, resetPassword,
-    checkUserExists,
-    authError, setAuthError, checkLockout
+    authError, setAuthError, calculatePasswordStrength, checkLockout
   } = useAuth();
 
-  const [step, setStep] = useState(STEPS.WELCOME);
+  const [step, setStep] = useState(STEPS.PHONE);
   const [isRegister, setIsRegister] = useState(false);
   const [phone, setPhone] = useState('+998');
   const [name, setName] = useState('');
@@ -48,6 +50,11 @@ export default function LoginPage() {
     }, 1000);
     return () => clearInterval(interval);
   }, [checkLockout]);
+
+  const passwordStrength = useMemo(() => {
+    if (!password) return null;
+    return calculatePasswordStrength(password, phone.replace(/\D/g, ''));
+  }, [password, phone, calculatePasswordStrength]);
 
   const handlePhoneChange = (e) => {
     setAuthError('');
@@ -66,59 +73,39 @@ export default function LoginPage() {
     return c.startsWith('998') && c.length === 12;
   };
 
-  const handlePhoneNext = async () => {
+  const handleContinue = async () => {
     setAuthError('');
     if (!isPhoneValid()) {
       setAuthError("To'g'ri telefon raqam kiriting");
       return;
     }
-    setStep(STEPS.CHECKING);
-    setLoading(true);
-    try {
-      const exists = await checkUserExists(phone);
-      setIsRegister(!exists);
-      setStep(exists ? STEPS.PASSWORD : STEPS.REGISTER_NAME);
-    } catch {
-      setStep(STEPS.PASSWORD);
-      setIsRegister(false);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleContinue = async () => {
-    setAuthError('');
-
     if (step === STEPS.PHONE) {
-      await handlePhoneNext();
+      setStep(isRegister ? STEPS.REGISTER_NAME : STEPS.PASSWORD);
       return;
     }
-
     if (step === STEPS.REGISTER_NAME) {
       if (!name.trim() || name.length < 3) {
-        setAuthError("Ism-familiyangizni to'liq kiriting (kamida 3 belgi)");
+        setAuthError("Ism-familiyangizni to'liq kiriting");
         return;
       }
       setStep(STEPS.REGISTER_PASS);
       return;
     }
-
     if (step === STEPS.PASSWORD || step === STEPS.REGISTER_PASS) {
       if (!password) { setAuthError("Parolni kiriting"); return; }
-      if (password.length < 6) { setAuthError("Parol kamida 6 belgidan iborat bo'lishi kerak"); return; }
       if (isRegister) {
+        if (password.length < 6) { setAuthError("Parol kamida 6 belgi bo'lishi kerak"); return; }
         if (password !== confirmPassword) { setAuthError("Parollar mos kelmaydi"); return; }
       }
       setLoading(true);
-      await signInWithPhone(isRegister ? name : phone, phone, password, isRegister);
+      await signInWithPhone(isRegister ? name : (phone), phone, password, isRegister);
       setLoading(false);
     }
   };
 
   const handleBack = () => {
     setAuthError('');
-    if (step === STEPS.PHONE) setStep(STEPS.WELCOME);
-    else if (step === STEPS.PASSWORD || step === STEPS.REGISTER_NAME) setStep(STEPS.PHONE);
+    if (step === STEPS.PASSWORD || step === STEPS.REGISTER_NAME) setStep(STEPS.PHONE);
     else if (step === STEPS.REGISTER_PASS) setStep(STEPS.REGISTER_NAME);
   };
 
@@ -133,246 +120,230 @@ export default function LoginPage() {
     await resetPassword(phone);
   };
 
-  // Progress bar foizi
+  // ── Progress ──
   const progressMap = {
-    [STEPS.WELCOME]: 0.1,
-    [STEPS.PHONE]: 0.3,
-    [STEPS.CHECKING]: 0.5,
-    [STEPS.REGISTER_NAME]: 0.65,
-    [STEPS.PASSWORD]: 0.85,
-    [STEPS.REGISTER_PASS]: 0.9,
+    [STEPS.PHONE]: 0.25,
+    [STEPS.REGISTER_NAME]: 0.5,
+    [STEPS.PASSWORD]: 0.75,
+    [STEPS.REGISTER_PASS]: 0.75,
   };
-  const progress = progressMap[step] || 0.1;
+  const progress = progressMap[step] || 0.25;
+
+  const getStrengthColor = (lvl) => {
+    if (lvl === 'strong') return '#10B981';
+    if (lvl === 'medium') return '#F59E0B';
+    if (lvl === 'weak') return '#F97316';
+    return '#EF4444';
+  };
 
   return (
     <div style={s.pageOuter}>
-      <div style={s.page}>
+    <div style={s.page}>
+      {/* Progress bar */}
+      <div style={s.progressTrack}>
+        <motion.div
+          animate={{ width: `${progress * 100}%` }}
+          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          style={s.progressFill}
+        />
+      </div>
 
-        {/* Progress bar */}
-        <div style={s.progressTrack}>
-          <motion.div
-            animate={{ width: `${progress * 100}%` }}
-            transition={{ duration: 0.4, ease: 'easeInOut' }}
-            style={s.progressFill}
-          />
-        </div>
-
-        {/* Header — faqat orqaga tugma */}
-        <div style={s.header}>
-          {step !== STEPS.WELCOME && step !== STEPS.CHECKING ? (
-            <button style={s.backBtn} onClick={handleBack}>
-              <ArrowLeft size={22} />
-            </button>
-          ) : <div style={{ width: 36 }} />}
-          <div style={{ width: 36 }} />
-        </div>
-
-        {/* Content */}
-        <div style={s.content}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={step}
-              initial={{ opacity: 0, x: 24 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -24 }}
-              transition={{ duration: 0.22 }}
-              style={step === STEPS.WELCOME ? s.welcomeCenter : {}}
-            >
-
-              {/* ── WELCOME (Markazdagi tugmalar) ── */}
-              {step === STEPS.WELCOME && (
-                <div style={s.welcomeContainer}>
-                  <h1 style={s.welcomeTitle}>IQRO</h1>
-                  <p style={s.welcomeSubtitle}>
-                    Milliy sertifikat va kirish imtihonlariga tayyorlanish platformasi
-                  </p>
-                  
-                  <div style={s.buttonGroup}>
-                    <button
-                      style={s.giantBtnPrimary}
-                      onClick={() => {
-                        setIsRegister(false);
-                        setStep(STEPS.PHONE);
-                      }}
-                    >
-                      Tizimga kirish
-                    </button>
-                    <button
-                      style={s.giantBtnSecondary}
-                      onClick={() => {
-                        setIsRegister(true);
-                        setStep(STEPS.PHONE);
-                      }}
-                    >
-                      Ro'yxatdan o'tish
-                    </button>
-                  </div>
-
-                  <div style={s.orRowWelcome}>
-                    <div style={s.orLine} />
-                    <span style={s.orText}>yoki</span>
-                    <div style={s.orLine} />
-                  </div>
-
-                  <button id="google-login-btn-welcome" style={s.outlineBtnWelcome} onClick={handleGoogle} disabled={loading}>
-                    <GoogleIcon /> Google orqali kirish
-                  </button>
-                </div>
-              )}
-
-              {/* ── PHONE ── */}
-              {step === STEPS.PHONE && (
-                <>
-                  <h1 style={s.title}>Telefon raqamingiz</h1>
-                  <p style={s.subtitle}>
-                    Tizim raqamingiz bo'yicha profilni avtomatik aniqlaydi.
-                  </p>
-                  <div style={s.phoneWrap}>
-                    <input
-                      id="login-phone-input"
-                      style={s.phoneInput}
-                      type="tel"
-                      value={phone}
-                      onChange={handlePhoneChange}
-                      placeholder="+998 00 000 00 00"
-                      autoFocus
-                      onKeyDown={e => e.key === 'Enter' && handlePhoneNext()}
-                    />
-                  </div>
-                </>
-              )}
-
-              {/* ── CHECKING ── */}
-              {step === STEPS.CHECKING && (
-                <>
-                  <h1 style={s.title}>Tekshirilmoqda...</h1>
-                  <p style={s.subtitle}>{phone}</p>
-                  <div style={{ display: 'flex', justifyContent: 'center', padding: '24px 0' }}>
-                    <div style={{ width: 40, height: 40, border: `3px solid #E2E8F0`, borderTopColor: PRIMARY, borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
-                  </div>
-                </>
-              )}
-
-              {/* ── REGISTER NAME ── */}
-              {step === STEPS.REGISTER_NAME && (
-                <>
-                  <h1 style={s.title}>Ismingizni kiriting</h1>
-                  <p style={s.subtitle}>
-                    Yangicha bilim olish uchun ismingizni yozing.
-                  </p>
-                  <input
-                    id="register-name-input"
-                    style={s.input}
-                    type="text"
-                    placeholder="Ism va familiyangiz"
-                    value={name}
-                    onChange={e => { setAuthError(''); setName(e.target.value); }}
-                    autoFocus
-                    onKeyDown={e => e.key === 'Enter' && handleContinue()}
-                  />
-                </>
-              )}
-
-              {/* ── PASSWORD (kirish) ── */}
-              {step === STEPS.PASSWORD && (
-                <>
-                  <h1 style={s.title}>Parolni kiriting</h1>
-                  <p style={s.subtitle}>
-                    Maxfiy parolingizni kiriting.
-                  </p>
-                  <div style={{ position: 'relative' }}>
-                    <input
-                      id="login-password-input"
-                      style={s.input}
-                      type={showPass ? 'text' : 'password'}
-                      placeholder="Parol"
-                      value={password}
-                      onChange={e => { setAuthError(''); setPassword(e.target.value); }}
-                      autoFocus
-                      onKeyDown={e => e.key === 'Enter' && handleContinue()}
-                    />
-                    <button type="button" onClick={() => setShowPass(!showPass)} style={s.eyeBtn} tabIndex={-1}>
-                      {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
-                    </button>
-                  </div>
-                  <button style={s.forgotBtn} onClick={handleForgotPassword}>
-                    Parolni unutdingizmi?
-                  </button>
-                </>
-              )}
-
-              {/* ── REGISTER PASS ── */}
-              {step === STEPS.REGISTER_PASS && (
-                <>
-                  <h1 style={s.title}>Parol o'rnating</h1>
-                  <p style={s.subtitle}>Profil xavfsizligi uchun parol belgilang (kamida 6 belgi).</p>
-                  <div style={{ position: 'relative', marginBottom: 12 }}>
-                    <input
-                      id="register-password-input"
-                      style={s.input}
-                      type={showPass ? 'text' : 'password'}
-                      placeholder="Yangi parol"
-                      value={password}
-                      onChange={e => { setAuthError(''); setPassword(e.target.value); }}
-                      autoFocus
-                    />
-                    <button type="button" onClick={() => setShowPass(!showPass)} style={s.eyeBtn} tabIndex={-1}>
-                      {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
-                    </button>
-                  </div>
-
-                  <input
-                    id="register-confirm-password-input"
-                    style={s.input}
-                    type={showPass ? 'text' : 'password'}
-                    placeholder="Parolni tasdiqlang"
-                    value={confirmPassword}
-                    onChange={e => { setAuthError(''); setConfirmPassword(e.target.value); }}
-                    onKeyDown={e => e.key === 'Enter' && handleContinue()}
-                  />
-                  {confirmPassword && (
-                    <p style={{ fontSize: 13, marginTop: 4, color: password === confirmPassword ? '#10B981' : '#EF4444' }}>
-                      {password === confirmPassword ? '✓ Parollar mos keldi' : '✗ Parollar mos kelmadi'}
-                    </p>
-                  )}
-                </>
-              )}
-
-              {/* Error */}
-              {authError && (
-                <motion.p
-                  initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}
-                  style={s.errorText}
-                >
-                  {authError}
-                </motion.p>
-              )}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Footer */}
-        {step !== STEPS.WELCOME && step !== STEPS.CHECKING && (
-          <div style={s.footer}>
+      {/* Header */}
+      <div style={s.header}>
+        {step !== STEPS.PHONE ? (
+          <button style={s.backBtn} onClick={handleBack}>
+            <ArrowLeft size={22} />
+          </button>
+        ) : <div style={{ width: 36 }} />}
+        {/* Tab toggler — faqat birinchi qadamda */}
+        {step === STEPS.PHONE && (
+          <div style={s.tabRow}>
             <button
-              id="login-submit-btn"
-              style={{ ...s.primaryBtn, opacity: loading || lockoutTimer ? 0.6 : 1 }}
-              onClick={handleContinue}
-              disabled={loading || !!lockoutTimer}
-            >
-              {loading ? 'Iltimos, kuting...'
-                : lockoutTimer ? `Kuting (${lockoutTimer}s)`
-                : step === STEPS.PASSWORD || step === STEPS.REGISTER_PASS ? 'Tayyor' : 'Davom etish'}
-            </button>
+              style={{ ...s.tab, ...(isRegister ? {} : s.tabActive) }}
+              onClick={() => { setIsRegister(false); setAuthError(''); }}
+            >Kirish</button>
+            <button
+              style={{ ...s.tab, ...(isRegister ? s.tabActive : {}) }}
+              onClick={() => { setIsRegister(true); setAuthError(''); }}
+            >Ro'yxatdan o'tish</button>
           </div>
         )}
+        <div style={{ width: 36 }} />
       </div>
+
+      {/* Content */}
+      <div style={s.content}>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={step}
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -24 }}
+            transition={{ duration: 0.22 }}
+          >
+            {/* ── STEP: PHONE ── */}
+            {step === STEPS.PHONE && (
+              <>
+                <p style={s.logo}>📚 IQRO</p>
+                <h1 style={s.title}>Xush kelibsiz!</h1>
+                <p style={s.subtitle}>
+                  {isRegister
+                    ? "Akkaunt yarating va tayyorlanishni boshlang"
+                    : "Raqamingizdan foydalanib, o'quv jarayoningizni saqlang va istalgan qurilmada davom ettiring."}
+                </p>
+                <div style={s.phoneWrap}>
+                  <input
+                    id="login-phone-input"
+                    style={s.phoneInput}
+                    type="tel"
+                    value={phone}
+                    onChange={handlePhoneChange}
+                    placeholder="+998 00 000 00 00"
+                    autoFocus
+                  />
+                </div>
+              </>
+            )}
+
+            {/* ── STEP: REGISTER NAME ── */}
+            {step === STEPS.REGISTER_NAME && (
+              <>
+                <h1 style={s.title}>Hisobingizni yarating</h1>
+                <p style={s.subtitle}>Ismingizni kiriting, bu sizning profilingizda ko'rinadi.</p>
+                <input
+                  id="register-name-input"
+                  style={s.input}
+                  type="text"
+                  placeholder="Ism va familiyangizni kiriting"
+                  value={name}
+                  onChange={e => { setAuthError(''); setName(e.target.value); }}
+                  autoFocus
+                />
+              </>
+            )}
+
+            {/* ── STEP: PASSWORD (login) ── */}
+            {step === STEPS.PASSWORD && (
+              <>
+                <h1 style={s.title}>Parolingizni kiriting</h1>
+                <p style={s.subtitle}>{phone}</p>
+                <div style={{ position: 'relative' }}>
+                  <input
+                    id="login-password-input"
+                    style={s.input}
+                    type={showPass ? 'text' : 'password'}
+                    placeholder="Maxfiy parol"
+                    value={password}
+                    onChange={e => { setAuthError(''); setPassword(e.target.value); }}
+                    autoFocus
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPass(!showPass)}
+                    style={s.eyeBtn}
+                    tabIndex={-1}
+                  >
+                    {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
+                </div>
+                <button style={s.forgotBtn} onClick={handleForgotPassword}>
+                  Parolni unutdingizmi?
+                </button>
+              </>
+            )}
+
+            {/* ── STEP: REGISTER PASS ── */}
+            {step === STEPS.REGISTER_PASS && (
+              <>
+                <h1 style={s.title}>Parol o'rnating</h1>
+                <p style={s.subtitle}>Profil xavfsizligi uchun parol belgilang (kamida 6 belgi).</p>
+                <div style={{ position: 'relative', marginBottom: 12 }}>
+                  <input
+                    id="register-password-input"
+                    style={s.input}
+                    type={showPass ? 'text' : 'password'}
+                    placeholder="Yangi parol"
+                    value={password}
+                    onChange={e => { setAuthError(''); setPassword(e.target.value); }}
+                    autoFocus
+                  />
+                  <button type="button" onClick={() => setShowPass(!showPass)} style={s.eyeBtn} tabIndex={-1}>
+                    {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
+                </div>
+
+
+
+
+                <input
+                  id="register-confirm-password-input"
+                  style={s.input}
+                  type={showPass ? 'text' : 'password'}
+                  placeholder="Parolni tasdiqlang"
+                  value={confirmPassword}
+                  onChange={e => { setAuthError(''); setConfirmPassword(e.target.value); }}
+                />
+                {confirmPassword && (
+                  <p style={{ fontSize: 13, marginTop: 6, color: password === confirmPassword ? '#10B981' : '#EF4444' }}>
+                    {password === confirmPassword ? '✓ Parollar mos' : '✗ Parollar mos kelmaydi'}
+                  </p>
+                )}
+              </>
+            )}
+
+            {/* Error */}
+            {authError && (
+              <motion.p
+                initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}
+                style={s.errorText}
+              >
+                {authError}
+              </motion.p>
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Footer */}
+      <div style={s.footer}>
+        {/* Main CTA */}
+        <button
+          id="login-submit-btn"
+          style={{
+            ...s.primaryBtn,
+            opacity: loading || lockoutTimer ? 0.6 : 1,
+          }}
+          onClick={handleContinue}
+          disabled={loading || !!lockoutTimer}
+        >
+          {loading ? 'Iltimos, kuting...' : lockoutTimer ? `Kuting (${lockoutTimer}s)` : 'Davom etish'}
+        </button>
+
+        {/* Google & Telegram — faqat 1-qadamda */}
+        {step === STEPS.PHONE && (
+          <>
+            <div style={s.orRow}>
+              <div style={s.orLine} />
+              <span style={s.orText}>yoki</span>
+              <div style={s.orLine} />
+            </div>
+            <button id="google-login-btn" style={s.outlineBtn} onClick={handleGoogle} disabled={loading}>
+              <GoogleIcon /> Google orqali kirish
+            </button>
+          </>
+        )}
+      </div>
+    </div>
     </div>
   );
 }
 
 // ── Styles ──
+const PRIMARY = '#29B6F6';
+const IS_MOBILE = typeof window !== 'undefined' && window.innerWidth <= 768;
+
 const s = {
+  // Desktop: bg + centered card. Mobile: full white screen
   pageOuter: {
     minHeight: '100vh',
     background: IS_MOBILE ? '#fff' : 'linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%)',
@@ -394,104 +365,48 @@ const s = {
     flexDirection: 'column',
     overflow: 'hidden',
   },
-  progressTrack: { height: 4, background: '#E2E8F0', flexShrink: 0 },
-  progressFill: { height: '100%', background: PRIMARY, borderRadius: '0 2px 2px 0' },
+  progressTrack: {
+    height: 4, background: '#E2E8F0', flexShrink: 0,
+  },
+  progressFill: {
+    height: '100%', background: PRIMARY, borderRadius: '0 2px 2px 0',
+  },
   header: {
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     padding: '12px 20px 0',
   },
   backBtn: {
     background: 'none', border: 'none', cursor: 'pointer',
-    color: '#0F172A', padding: 6, display: 'flex', alignItems: 'center', borderRadius: 8,
+    color: '#0F172A', padding: 6, display: 'flex', alignItems: 'center',
+    borderRadius: 8,
+  },
+  tabRow: {
+    display: 'flex', background: '#F1F5F9', borderRadius: 10, padding: 3, gap: 3,
+  },
+  tab: {
+    padding: '7px 16px', borderRadius: 8, border: 'none',
+    background: 'transparent', cursor: 'pointer',
+    fontSize: 13, fontWeight: 600, color: '#64748B', fontFamily: 'inherit',
+    transition: 'all 0.18s',
+  },
+  tabActive: {
+    background: '#fff', color: '#0F172A',
+    boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
   },
   content: {
-    flex: 1,
-    padding: '28px 24px 16px',
+    flex: 1, padding: '28px 24px 16px',
     overflowY: 'auto',
-    display: 'flex',
-    flexDirection: 'column',
   },
-  welcomeCenter: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    flex: 1,
+  logo: {
+    fontSize: 22, marginBottom: 8, fontWeight: 800, color: PRIMARY,
   },
-  welcomeContainer: {
-    textAlign: 'center',
-    padding: '20px 0',
+  title: {
+    fontSize: 28, fontWeight: 800, lineHeight: 1.2,
+    marginBottom: 10, color: '#0F172A',
   },
-  welcomeTitle: {
-    fontSize: 48,
-    fontWeight: 900,
-    color: PRIMARY,
-    letterSpacing: -1,
-    marginBottom: 12,
+  subtitle: {
+    fontSize: 15, color: '#64748B', lineHeight: 1.6, marginBottom: 28,
   },
-  welcomeSubtitle: {
-    fontSize: 16,
-    color: '#64748B',
-    lineHeight: 1.6,
-    marginBottom: 40,
-    padding: '0 10px',
-  },
-  buttonGroup: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 16,
-    marginBottom: 24,
-  },
-  giantBtnPrimary: {
-    width: '100%',
-    padding: '18px',
-    borderRadius: 16,
-    background: PRIMARY,
-    color: '#fff',
-    border: 'none',
-    fontWeight: 800,
-    fontSize: 17,
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-    boxShadow: '0 4px 14px rgba(41, 182, 246, 0.25)',
-    transition: 'transform 0.15s, opacity 0.15s',
-  },
-  giantBtnSecondary: {
-    width: '100%',
-    padding: '18px',
-    borderRadius: 16,
-    background: '#F1F5F9',
-    color: '#0F172A',
-    border: 'none',
-    fontWeight: 800,
-    fontSize: 17,
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-    transition: 'transform 0.15s, opacity 0.15s',
-  },
-  orRowWelcome: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 12,
-    margin: '24px 0',
-  },
-  outlineBtnWelcome: {
-    width: '100%',
-    padding: '16px',
-    borderRadius: 16,
-    border: '1.5px solid #E2E8F0',
-    background: '#fff',
-    color: '#0F172A',
-    fontWeight: 700,
-    fontSize: 15,
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 10,
-  },
-  title: { fontSize: 28, fontWeight: 800, lineHeight: 1.2, marginBottom: 10, color: '#0F172A' },
-  subtitle: { fontSize: 15, color: '#64748B', lineHeight: 1.6, marginBottom: 28 },
   phoneWrap: { marginBottom: 8 },
   phoneInput: {
     width: '100%', fontSize: 28, fontWeight: 700,
@@ -504,7 +419,8 @@ const s = {
     width: '100%', padding: '15px 16px', fontSize: 16,
     border: '1.5px solid #E2E8F0', borderRadius: 14,
     background: '#F8FAFC', color: '#0F172A', fontFamily: 'inherit',
-    outline: 'none', marginBottom: 12, transition: 'border-color 0.2s',
+    outline: 'none', marginBottom: 12,
+    transition: 'border-color 0.2s',
     boxSizing: 'border-box',
   },
   eyeBtn: {
@@ -517,15 +433,39 @@ const s = {
     fontFamily: 'inherit', marginTop: 4, padding: 0,
     textDecoration: 'underline', textUnderlineOffset: 3,
   },
-  errorText: { marginTop: 10, fontSize: 13, color: '#EF4444', fontWeight: 500 },
-  footer: { padding: '16px 24px calc(24px + env(safe-area-inset-bottom))', borderTop: '1px solid #F1F5F9', background: '#fff' },
+  strengthTrack: {
+    height: 6, background: '#E2E8F0', borderRadius: 3, overflow: 'hidden',
+  },
+  strengthFill: {
+    height: '100%', borderRadius: 3, transition: 'width 0.4s, background 0.3s',
+  },
+  errorText: {
+    marginTop: 10, fontSize: 13, color: '#EF4444', fontWeight: 500,
+  },
+  footer: {
+    padding: '16px 24px calc(24px + env(safe-area-inset-bottom))',
+    borderTop: '1px solid #F1F5F9',
+    background: '#fff',
+  },
   primaryBtn: {
     width: '100%', padding: '16px', borderRadius: 14,
-    background: PRIMARY, color: '#fff', border: 'none',
-    fontWeight: 700, fontSize: 16, cursor: 'pointer',
-    fontFamily: 'inherit', transition: 'opacity 0.2s', marginBottom: 12,
+    background: PRIMARY, color: '#fff',
+    border: 'none', fontWeight: 700, fontSize: 16,
+    cursor: 'pointer', fontFamily: 'inherit',
+    transition: 'opacity 0.2s',
+    marginBottom: 12,
   },
-  orRow: { display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 },
+  orRow: {
+    display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12,
+  },
   orLine: { flex: 1, height: 1, background: '#E2E8F0' },
   orText: { fontSize: 13, color: '#94A3B8', fontWeight: 500 },
+  outlineBtn: {
+    width: '100%', padding: '14px 16px', borderRadius: 14,
+    border: '1.5px solid #E2E8F0', background: '#fff',
+    color: '#0F172A', fontWeight: 600, fontSize: 15,
+    cursor: 'pointer', fontFamily: 'inherit',
+    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+    marginBottom: 10, transition: 'background 0.15s',
+  },
 };
