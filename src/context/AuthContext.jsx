@@ -294,11 +294,11 @@ export const AuthProvider = ({ children }) => {
       let isPremium = false;
       
       try {
+        let trialInfo = { status: 'expired', daysLeft: 0, urgencyMs: 0 };
         if (firebaseUser) {
           try {
             const userRef = doc(db, 'users', firebaseUser.uid);
             const userSnap = await getDoc(userRef);
-            let trialInfo = { status: 'expired', daysLeft: 0, urgencyMs: 0 };
             if (userSnap.exists()) {
               const data = userSnap.data();
               isPremium = data.isPremium || false;
