@@ -586,6 +586,9 @@ export const AuthProvider = ({ children }) => {
           return { success: true };
         } catch (regErr) {
           console.error("Ro'yxatdan o'tish xatosi:", regErr);
+          if (regErr.code === 'auth/email-already-in-use') {
+            return { success: false, hasCustomPassword: true };
+          }
           setAuthError("Ro'yxatdan o'tishda xatolik yuz berdi.");
           return { success: false };
         }
