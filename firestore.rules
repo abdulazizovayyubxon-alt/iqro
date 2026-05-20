@@ -48,7 +48,7 @@ service cloud.firestore {
     // ── referrals: taklif qilinganlar va bonuslar ──
     match /referrals/{docId} {
       allow create: if isLoggedIn();
-      allow read: if isLoggedIn() && (request.auth.uid == resource.data.referrerId || request.auth.uid == resource.data.referredId || isAdmin());
+      allow read: if isAdmin() || (isLoggedIn() && (request.auth.uid == resource.data.referrerId || request.auth.uid == resource.data.referredId));
       allow update, delete: if isAdmin();
     }
 
