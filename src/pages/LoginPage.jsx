@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff, UserPlus, LogIn } from 'lucide-react';
 
 const GoogleIcon = () => (
   <svg width="20" height="20" viewBox="0 0 48 48">
@@ -15,6 +15,7 @@ const GoogleIcon = () => (
 const STEPS = {
   PHONE: 'phone',
   CHECKING: 'checking',
+  CHOOSE: 'choose',         // Yangi: foydalanuvchi tanlaydi
   PASSWORD: 'password',
   REGISTER_NAME: 'register_name',
 };
@@ -29,7 +30,6 @@ export default function LoginPage() {
   } = useAuth();
 
   const [step, setStep] = useState(STEPS.PHONE);
-  const [isRegister, setIsRegister] = useState(false);
   const [phone, setPhone] = useState('+998');
   const [name, setName] = useState('');
   const [gender, setGender] = useState('male');
@@ -64,6 +64,7 @@ export default function LoginPage() {
     return c.startsWith('998') && c.length === 12;
   };
 
+  // ── TELEFON RAQAM KIRITILGANDA ──
   const handlePhoneNext = async () => {
     setAuthError('');
     if (!isPhoneValid()) {
@@ -74,27 +75,52 @@ export default function LoginPage() {
     setLoading(true);
     try {
       const res = await signInWithPhone('', phone, '', false);
+      if (!res) {
+        // signInWithPhone undefined qaytardi — kutilmagan holat
+        setStep(STEPS.PHONE);
+        setAuthError("Xatolik yuz berdi, qaytadan urinib ko'ring.");
+        return;
+      }
+
       if (res.success) {
         // Parolsiz to'g'ridan-to'g'ri muvaffaqiyatli kirdi
         return;
       }
 
-      if (res.notRegistered) {
-        setIsRegister(true);
-        setStep(STEPS.REGISTER_NAME);
+      if (res.needsChoice) {
+        // Firebase aniqlay olmadi — foydalanuvchiga tanlov beramiz
+        setStep(STEPS.CHOOSE);
       } else if (res.hasCustomPassword) {
-        // Eski profilingizda maxsus parol saqlangan
-        setIsRegister(false);
+        // Foydalanuvchi mavjud, parol kiritish kerak
         setStep(STEPS.PASSWORD);
+      } else {
+        // Boshqa xato
+        setStep(STEPS.PHONE);
       }
-    } catch {
+    } catch (e) {
+      console.error("handlePhoneNext xatosi:", e);
       setStep(STEPS.PHONE);
-      setAuthError("Xatolik yuz berdi, qayta urining.");
+      if (!authError) {
+        setAuthError("Xatolik yuz berdi, qaytadan urinib ko'ring.");
+      }
     } finally {
       setLoading(false);
     }
   };
 
+  // ── FOYDALANUVCHI TANLOVI: YANGI HISOB ──
+  const handleChooseRegister = () => {
+    setAuthError('');
+    setStep(STEPS.REGISTER_NAME);
+  };
+
+  // ── FOYDALANUVCHI TANLOVI: MAVJUD HISOB ──
+  const handleChooseLogin = () => {
+    setAuthError('');
+    setStep(STEPS.PASSWORD);
+  };
+
+  // ── DAVOM ETISH TUGMASI ──
   const handleContinue = async () => {
     setAuthError('');
 
@@ -109,16 +135,22 @@ export default function LoginPage() {
         return;
       }
       setLoading(true);
-      const res = await signInWithPhone(name, phone, '', true, gender, birthDate);
-      setLoading(false);
-      if (res && !res.success) {
-        if (res.hasCustomPassword) {
-          // Bu raqam oldindan mavjud — parol so'rash kerak
-          setIsRegister(false);
-          setStep(STEPS.PASSWORD);
-        } else {
-          setStep(STEPS.PHONE);
+      try {
+        const res = await signInWithPhone(name, phone, '', true, gender, birthDate);
+        if (res && !res.success) {
+          if (res.hasCustomPassword) {
+            // Bu raqam oldindan mavjud — parol so'rash kerak
+            setStep(STEPS.PASSWORD);
+          } else {
+            setStep(STEPS.PHONE);
+          }
         }
+      } catch (e) {
+        console.error("Register xatosi:", e);
+        setStep(STEPS.PHONE);
+        if (!authError) setAuthError("Ro'yxatdan o'tishda xatolik.");
+      } finally {
+        setLoading(false);
       }
       return;
     }
@@ -126,14 +158,22 @@ export default function LoginPage() {
     if (step === STEPS.PASSWORD) {
       if (!password) { setAuthError("Parolni kiriting"); return; }
       setLoading(true);
-      await signInWithPhone('', phone, password, false);
-      setLoading(false);
+      try {
+        await signInWithPhone('', phone, password, false);
+      } catch (e) {
+        console.error("Password login xatosi:", e);
+        if (!authError) setAuthError("Kirishda xatolik yuz berdi.");
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
   const handleBack = () => {
     setAuthError('');
-    if (step === STEPS.PASSWORD || step === STEPS.REGISTER_NAME) setStep(STEPS.PHONE);
+    if (step === STEPS.PASSWORD || step === STEPS.REGISTER_NAME || step === STEPS.CHOOSE) {
+      setStep(STEPS.PHONE);
+    }
   };
 
   const handleGoogle = async () => {
@@ -148,12 +188,13 @@ export default function LoginPage() {
   };
 
   const progressMap = {
-    [STEPS.PHONE]: 0.33,
-    [STEPS.CHECKING]: 0.66,
-    [STEPS.REGISTER_NAME]: 0.85,
-    [STEPS.PASSWORD]: 0.85,
+    [STEPS.PHONE]: 0.25,
+    [STEPS.CHECKING]: 0.50,
+    [STEPS.CHOOSE]: 0.50,
+    [STEPS.REGISTER_NAME]: 0.75,
+    [STEPS.PASSWORD]: 0.75,
   };
-  const progress = progressMap[step] || 0.33;
+  const progress = progressMap[step] || 0.25;
 
   return (
     <div style={s.pageOuter}>
@@ -194,7 +235,7 @@ export default function LoginPage() {
                 <>
                   <h1 style={s.title}>Xush kelibsiz</h1>
                   <p style={s.subtitle}>
-                    Raqamingizni kiriting va parol so'ralmasdan profilingizga tezkor kiring.
+                    Telefon raqamingizni kiriting — tizimga tezkor kiring.
                   </p>
                   <div style={s.phoneWrap}>
                     <input
@@ -217,7 +258,49 @@ export default function LoginPage() {
                   <h1 style={s.title}>Tekshirilmoqda...</h1>
                   <p style={s.subtitle}>{phone}</p>
                   <div style={{ display: 'flex', justifyContent: 'center', padding: '24px 0' }}>
-                    <div style={{ width: 40, height: 40, border: `3px solid #E2E8F0`, borderTopColor: PRIMARY, borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+                    <div style={{ width: 40, height: 40, border: `3px solid var(--border)`, borderTopColor: PRIMARY, borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+                  </div>
+                </>
+              )}
+
+              {/* ── STEP: CHOOSE — foydalanuvchi o'zi tanlaydi ── */}
+              {step === STEPS.CHOOSE && (
+                <>
+                  <h1 style={s.title}>Raqam topildi</h1>
+                  <p style={s.subtitle}>
+                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> — bu raqam bilan nima qilmoqchisiz?
+                  </p>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '8px' }}>
+                    {/* Yangi hisob */}
+                    <button
+                      id="choose-register-btn"
+                      style={s.choiceBtn}
+                      onClick={handleChooseRegister}
+                    >
+                      <div style={s.choiceIcon}>
+                        <UserPlus size={22} color={PRIMARY} />
+                      </div>
+                      <div style={{ flex: 1, textAlign: 'left' }}>
+                        <div style={s.choiceTitle}>Yangi hisob yaratish</div>
+                        <div style={s.choiceDesc}>Birinchi marta kiryapsizmi? Ro'yxatdan o'ting</div>
+                      </div>
+                    </button>
+
+                    {/* Mavjud hisob */}
+                    <button
+                      id="choose-login-btn"
+                      style={s.choiceBtn}
+                      onClick={handleChooseLogin}
+                    >
+                      <div style={s.choiceIcon}>
+                        <LogIn size={22} color="#10B981" />
+                      </div>
+                      <div style={{ flex: 1, textAlign: 'left' }}>
+                        <div style={s.choiceTitle}>Parol bilan kirish</div>
+                        <div style={s.choiceDesc}>Avval ro'yxatdan o'tgansiz va parolingiz bor</div>
+                      </div>
+                    </button>
                   </div>
                 </>
               )}
@@ -286,14 +369,14 @@ export default function LoginPage() {
                 <>
                   <h1 style={s.title}>Parolni kiriting</h1>
                   <p style={s.subtitle}>
-                    Profilingizda eski maxsus parol o'rnatilgan. Uni kiriting:
+                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> uchun parolingizni kiriting:
                   </p>
                   <div style={{ position: 'relative' }}>
                     <input
                       id="login-password-input"
                       style={s.input}
                       type={showPass ? 'text' : 'password'}
-                      placeholder="Eski parolingiz"
+                      placeholder="Parolingiz"
                       value={password}
                       onChange={e => { setAuthError(''); setPassword(e.target.value); }}
                       autoFocus
@@ -324,7 +407,7 @@ export default function LoginPage() {
 
         {/* Footer */}
         <div style={s.footer}>
-          {step !== STEPS.CHECKING && (
+          {step !== STEPS.CHECKING && step !== STEPS.CHOOSE && (
             <button
               id="login-submit-btn"
               style={{ ...s.primaryBtn, opacity: loading || lockoutTimer ? 0.6 : 1 }}
@@ -441,5 +524,28 @@ const s = {
     cursor: 'pointer', fontFamily: 'inherit',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
     marginBottom: IS_MOBILE ? 0 : 10, transition: 'background 0.15s',
+  },
+  // ── CHOOSE step styles ──
+  choiceBtn: {
+    display: 'flex', alignItems: 'center', gap: '14px',
+    padding: '16px', borderRadius: 16,
+    border: '1.5px solid var(--border)', background: 'var(--bg3)',
+    cursor: 'pointer', fontFamily: 'inherit',
+    transition: 'all 0.15s ease',
+    width: '100%', textAlign: 'left',
+  },
+  choiceIcon: {
+    width: 48, height: 48, borderRadius: 14,
+    background: 'var(--bg2)',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    flexShrink: 0,
+    border: '1px solid var(--border)',
+  },
+  choiceTitle: {
+    fontSize: 16, fontWeight: 700, color: 'var(--text)',
+    marginBottom: 2,
+  },
+  choiceDesc: {
+    fontSize: 13, color: 'var(--text3)', lineHeight: 1.4,
   },
 };

@@ -544,73 +544,65 @@ export const AuthProvider = ({ children }) => {
       });
       return { success: true };
     } catch (err) {
+      console.warn("signInWithPhone xatosi:", err.code, err.message);
+
       // 2. Akkaunt topilmadi yoki hisob ma'lumotlari yaroqsiz
       if (
         err.code === 'auth/user-not-found' ||
-        err.code === 'auth/invalid-credential'
+        err.code === 'auth/invalid-credential' ||
+        err.code === 'auth/invalid-login-credentials'
       ) {
-        // ═══ FIREBASE EMAIL ENUMERATION PROTECTION WORKAROUND ═══
-        // auth/invalid-credential — "user yo'q" yoki "parol noto'g'ri" bo'lishi mumkin.
-        // Unauthenticated holatda Firestore'ga murojaat qilib bo'lmaydi,
-        // shuning uchun createUser orqali tekshiramiz:
-        // agar email-already-in-use kelsa → user mavjud, eski parol bor.
-        if (!isRegistering) {
+        // ═══ ISHONCHLI USUL ═══
+        // Firebase Email Enumeration Protection yoqilgan bo'lsa,
+        // auth/invalid-credential "user yo'q" yoki "parol noto'g'ri" ekanligini aniqlab bo'lmaydi.
+        // Shu sababli "probe" (user yaratib o'chirish) usulini ISHLATMAYMIZ —
+        // foydalanuvchiga o'zi tanlash imkonini beramiz.
+
+        if (isRegistering) {
+          // Ro'yxatdan o'tish rejimida — yangi akkaunt yaratamiz
           try {
-            // Sinov: yangi akkaunt ochishga urinamiz
-            const testCred = await createUserWithEmailAndPassword(auth, internalEmail, finalPassword);
-            // Muvaffaqiyatli → bu haqiqiy yangi user, akkaunt yaratildi!
-            // Lekin bizga faqat tekshirish kerak edi, shu sababli o'chirib tashlaymiz
-            // va LoginPage ga "notRegistered" qaytaramiz (u ism kiritish sahifasiga o'tkazadi)
-            await testCred.user.delete();
-            await signOut(auth);
-            return { success: false, notRegistered: true };
-          } catch (probeErr) {
-            if (probeErr.code === 'auth/email-already-in-use') {
-              // User MAVJUD — eski maxsus parol bor
+            const userCred = await createUserWithEmailAndPassword(auth, internalEmail, finalPassword);
+            await updateProfile(userCred.user, { displayName: name });
+
+            // Firestore'da profil yaratamiz
+            await setDoc(doc(db, 'users', userCred.user.uid), {
+              uid: userCred.user.uid,
+              email: internalEmail,
+              phone: cleanPhone,
+              displayName: name,
+              gender,
+              birthDate,
+              role: 'user',
+              isPremium: false,
+              createdAt: new Date(),
+            });
+
+            const referralApplied = await applyReferralAfterRegister(userCred.user.uid, name);
+            const isPremiumFromReferral = referralApplied;
+
+            setUser({
+              uid: userCred.user.uid,
+              email: internalEmail,
+              displayName: name,
+              photoURL: null,
+              isPremium: isPremiumFromReferral,
+              _firebaseUser: userCred.user
+            });
+            return { success: true };
+          } catch (regErr) {
+            console.error("Ro'yxatdan o'tish xatosi:", regErr);
+            if (regErr.code === 'auth/email-already-in-use') {
+              // Bu raqam allaqachon mavjud — parol bilan kirish kerak
               return { success: false, hasCustomPassword: true };
             }
-            // Boshqa xato — yangi user deb hisoblaymiz
-            return { success: false, notRegistered: true };
+            setAuthError("Ro'yxatdan o'tishda xatolik yuz berdi.");
+            return { success: false };
           }
         }
 
-        try {
-          const userCred = await createUserWithEmailAndPassword(auth, internalEmail, finalPassword);
-          await updateProfile(userCred.user, { displayName: name });
-
-          // Firestore'da profil yaratamiz
-          await setDoc(doc(db, 'users', userCred.user.uid), {
-            uid: userCred.user.uid,
-            email: internalEmail,
-            phone: cleanPhone,
-            displayName: name,
-            gender,
-            birthDate,
-            role: 'user',
-            isPremium: false,
-            createdAt: new Date(),
-          });
-
-          const referralApplied = await applyReferralAfterRegister(userCred.user.uid, name);
-          const isPremiumFromReferral = referralApplied;
-
-          setUser({
-            uid: userCred.user.uid,
-            email: internalEmail,
-            displayName: name,
-            photoURL: null,
-            isPremium: isPremiumFromReferral,
-            _firebaseUser: userCred.user
-          });
-          return { success: true };
-        } catch (regErr) {
-          console.error("Ro'yxatdan o'tish xatosi:", regErr);
-          if (regErr.code === 'auth/email-already-in-use') {
-            return { success: false, hasCustomPassword: true };
-          }
-          setAuthError("Ro'yxatdan o'tishda xatolik yuz berdi.");
-          return { success: false };
-        }
+        // Kirish rejimida — foydalanuvchiga tanlash imkoni beramiz
+        // "Yangi hisobmi yoki mavjud hisob?" — LoginPage hal qiladi
+        return { success: false, needsChoice: true };
       }
 
       // 3. Parol noto'g'ri (akkaunt mavjud, lekin parol mos kelmadi)
@@ -631,10 +623,23 @@ export const AuthProvider = ({ children }) => {
         return { success: false, wrongPassword: true };
       }
 
-      // 4. Boshqa xatoliklar
+      // 4. Tarmoq xatoligi
+      if (err.code === 'auth/network-request-failed') {
+        setAuthError("Internet aloqasi yo'q. Iltimos, tarmoqni tekshiring.");
+        return { success: false };
+      }
+
+      // 5. Juda ko'p urinish
+      if (err.code === 'auth/too-many-requests') {
+        setAuthError("Juda ko'p urinish. Iltimos, biroz kutib qaytadan urining.");
+        return { success: false };
+      }
+
+      // 6. Boshqa xatoliklar
       recordFailedAttempt();
       console.error("Kirish xatosi:", err);
       setAuthError("Kirishda xatolik yuz berdi, iltimos qaytadan urinib ko'ring.");
+      return { success: false };
     }
   };
 
