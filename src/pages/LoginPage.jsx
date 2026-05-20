@@ -87,8 +87,11 @@ export default function LoginPage() {
         return;
       }
 
-      if (res.needsChoice) {
-        // Firebase aniqlay olmadi — foydalanuvchiga tanlov beramiz
+      if (res.notRegistered) {
+        // Yangi foydalanuvchi — avtomatik ro'yxatdan o'tish sahifasiga
+        setStep(STEPS.REGISTER_NAME);
+      } else if (res.needsChoice) {
+        // Probe ishlamadi — foydalanuvchiga tanlov beramiz (fallback)
         setStep(STEPS.CHOOSE);
       } else if (res.hasCustomPassword) {
         // Foydalanuvchi mavjud, parol kiritish kerak

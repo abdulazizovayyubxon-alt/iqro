@@ -552,57 +552,66 @@ export const AuthProvider = ({ children }) => {
         err.code === 'auth/invalid-credential' ||
         err.code === 'auth/invalid-login-credentials'
       ) {
-        // ═══ ISHONCHLI USUL ═══
-        // Firebase Email Enumeration Protection yoqilgan bo'lsa,
-        // auth/invalid-credential "user yo'q" yoki "parol noto'g'ri" ekanligini aniqlab bo'lmaydi.
-        // Shu sababli "probe" (user yaratib o'chirish) usulini ISHLATMAYMIZ —
-        // foydalanuvchiga o'zi tanlash imkonini beramiz.
+        // ═══ AVTOMATIK ANIQLASH (PROBE) ═══
+        // auth/invalid-credential — "user yo'q" yoki "parol noto'g'ri" farqlash uchun
+        // createUser orqali tekshiramiz.
 
-        if (isRegistering) {
-          // Ro'yxatdan o'tish rejimida — yangi akkaunt yaratamiz
+        if (!isRegistering) {
+          // ── PROBE: Foydalanuvchi mavjudmi tekshirish ──
           try {
-            const userCred = await createUserWithEmailAndPassword(auth, internalEmail, finalPassword);
-            await updateProfile(userCred.user, { displayName: name });
-
-            // Firestore'da profil yaratamiz
-            await setDoc(doc(db, 'users', userCred.user.uid), {
-              uid: userCred.user.uid,
-              email: internalEmail,
-              phone: cleanPhone,
-              displayName: name,
-              gender,
-              birthDate,
-              role: 'user',
-              isPremium: false,
-              createdAt: new Date(),
-            });
-
-            const referralApplied = await applyReferralAfterRegister(userCred.user.uid, name);
-            const isPremiumFromReferral = referralApplied;
-
-            setUser({
-              uid: userCred.user.uid,
-              email: internalEmail,
-              displayName: name,
-              photoURL: null,
-              isPremium: isPremiumFromReferral,
-              _firebaseUser: userCred.user
-            });
-            return { success: true };
-          } catch (regErr) {
-            console.error("Ro'yxatdan o'tish xatosi:", regErr);
-            if (regErr.code === 'auth/email-already-in-use') {
-              // Bu raqam allaqachon mavjud — parol bilan kirish kerak
+            const testCred = await createUserWithEmailAndPassword(auth, internalEmail, finalPassword);
+            // Muvaffaqiyatli → yangi user. Test akkauntni o'chiramiz.
+            try { await testCred.user.delete(); } catch (delErr) { console.warn('Test user delete:', delErr); }
+            try { await signOut(auth); } catch (soErr) { console.warn('SignOut after probe:', soErr); }
+            return { success: false, notRegistered: true };
+          } catch (probeErr) {
+            if (probeErr.code === 'auth/email-already-in-use') {
+              // User MAVJUD — eski maxsus parol bor
               return { success: false, hasCustomPassword: true };
             }
-            setAuthError("Ro'yxatdan o'tishda xatolik yuz berdi.");
-            return { success: false };
+            // Probe ham ishlamadi (tarmoq, rate-limit, boshqa) → fallback
+            console.warn('Probe xatosi:', probeErr.code);
+            return { success: false, needsChoice: true };
           }
         }
 
-        // Kirish rejimida — foydalanuvchiga tanlash imkoni beramiz
-        // "Yangi hisobmi yoki mavjud hisob?" — LoginPage hal qiladi
-        return { success: false, needsChoice: true };
+        // ── RO'YXATDAN O'TISH REJIMI ──
+        try {
+          const userCred = await createUserWithEmailAndPassword(auth, internalEmail, finalPassword);
+          await updateProfile(userCred.user, { displayName: name });
+
+          await setDoc(doc(db, 'users', userCred.user.uid), {
+            uid: userCred.user.uid,
+            email: internalEmail,
+            phone: cleanPhone,
+            displayName: name,
+            gender,
+            birthDate,
+            role: 'user',
+            isPremium: false,
+            createdAt: new Date(),
+          });
+
+          const referralApplied = await applyReferralAfterRegister(userCred.user.uid, name);
+          const isPremiumFromReferral = referralApplied;
+
+          setUser({
+            uid: userCred.user.uid,
+            email: internalEmail,
+            displayName: name,
+            photoURL: null,
+            isPremium: isPremiumFromReferral,
+            _firebaseUser: userCred.user
+          });
+          return { success: true };
+        } catch (regErr) {
+          console.error("Ro'yxatdan o'tish xatosi:", regErr);
+          if (regErr.code === 'auth/email-already-in-use') {
+            return { success: false, hasCustomPassword: true };
+          }
+          setAuthError("Ro'yxatdan o'tishda xatolik yuz berdi.");
+          return { success: false };
+        }
       }
 
       // 3. Parol noto'g'ri (akkaunt mavjud, lekin parol mos kelmadi)
