@@ -13,7 +13,7 @@ import {
   setPersistence,
   browserLocalPersistence
 } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, collection, query, where, getDocs } from 'firebase/firestore';
 import {
   savePendingReferralCode,
   getReferralCodeFromUrl,
@@ -544,13 +544,28 @@ export const AuthProvider = ({ children }) => {
       });
       return { success: true };
     } catch (err) {
-      // 2. Akkaunt topilmadi yoki hisob ma'lumotlari yaroqsiz -> Ro'yxatdan o'tish
+      // 2. Akkaunt topilmadi yoki hisob ma'lumotlari yaroqsiz
       if (
         err.code === 'auth/user-not-found' ||
         err.code === 'auth/invalid-credential'
       ) {
-        // Agar ro'yxatdan o'tish so'ralmagan bo'lsa, demak yangi user
-        // va biz LoginPage ga xabar beramiz
+        // ═══ FIREBASE EMAIL ENUMERATION PROTECTION WORKAROUND ═══
+        // auth/invalid-credential — bu "user yo'q" yoki "parol noto'g'ri" bo'lishi mumkin.
+        // Firestore'dan tekshirib aniqlash kerak:
+        try {
+          const usersRef = collection(db, 'users');
+          const q = query(usersRef, where('email', '==', internalEmail));
+          const snap = await getDocs(q);
+          
+          if (!snap.empty) {
+            // Foydalanuvchi Firestore'da MAVJUD — demak eski parol bor
+            return { success: false, hasCustomPassword: true };
+          }
+        } catch (fsErr) {
+          console.warn('Firestore user tekshiruvida xato:', fsErr);
+        }
+
+        // Firestore'da ham topilmadi — yangi foydalanuvchi
         if (!isRegistering) {
           return { success: false, notRegistered: true };
         }

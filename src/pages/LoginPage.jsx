@@ -112,7 +112,13 @@ export default function LoginPage() {
       const res = await signInWithPhone(name, phone, '', true, gender, birthDate);
       setLoading(false);
       if (res && !res.success) {
-        setStep(STEPS.PHONE);
+        if (res.hasCustomPassword) {
+          // Bu raqam oldindan mavjud — parol so'rash kerak
+          setIsRegister(false);
+          setStep(STEPS.PASSWORD);
+        } else {
+          setStep(STEPS.PHONE);
+        }
       }
       return;
     }
