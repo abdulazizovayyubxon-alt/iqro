@@ -70,7 +70,7 @@ export default function ReferralPage() {
       // 1 — Shaxsiy tavsiya uslubi
       `📚 Assalomu alaykum!
 
-${firstName} siz uchun IQRO platformasida 30 kunlik BEPUL Premium ochib berdi.
+${firstName} sizga IQRO platformasida ${REFERRAL_DISCOUNT}% CHEGIRMA ulashmoqda!
 
 IQRO — kasbiy sertifikatlash imtihoniga tayyorgarlik platformasi.
 
@@ -78,7 +78,7 @@ IQRO — kasbiy sertifikatlash imtihoniga tayyorgarlik platformasi.
 ✅ Aqlli takrorlash tizimi
 ✅ Ikki tomonga ${REFERRAL_DISCOUNT}% chegirma
 
-Havola orqali ro'yxatdan o'ting — SIZ HAM, MEN HAM 30 kun bepul olamiz! 👇
+Havola orqali ro'yxatdan o'ting — SIZ HAM, MEN HAM ${REFERRAL_DISCOUNT}% chegirma olamiz! 👇
 ${refLink}
 
 Kod: ${refCode}`,
@@ -88,17 +88,17 @@ Kod: ${refCode}`,
 
 ${firstName} siz bilan IQRO da birga o'qishni taklif qilmoqda!
 
-Ro'yxatdan o'ting — IKKALANGIZ 30 kunlik BEPUL Premium olasiz. Keyingi to'lovda ${REFERRAL_DISCOUNT}% chegirma.
+Ro'yxatdan o'ting — IKKALANGIZ ${REFERRAL_DISCOUNT}% CHEGIRMA olasiz!
 
-👉 Bepul kirish: ${refLink}
+👉 Ro'yxatdan o'tish: ${refLink}
 🔑 Kod: ${refCode}
 
 Bugundan boshlang — imtihon yaqinlashmoqda!`,
 
       // 3 — Statistika va ishonch uslubi
-`🏆 ${firstName} sizga sovg'a yo'lladi!
+`🏆 ${firstName} sizga ${REFERRAL_DISCOUNT}% chegirma sovg'a qilmoqda!
 
-IQRO — kasbiy sertifikatlash platformasi. 1 oylik bepul kirish sizni kutmoqda.
+IQRO — kasbiy sertifikatlash platformasi.
 
 Nima uchun IQRO?
 • 7 ta fan bo'yicha 1000+ savollar bazasi
@@ -114,11 +114,11 @@ Sertifikatlash imtihoni yaqinlashmoqda — tayyorgarlikni bugundan boshlang.
       // 4 — Qisqa va ta'sirchan
 `👋 Salom!
 
-${firstName} sizi IQRO platformasiga taklif qildi va 1 oy bepul kirish ulashdi.
+${firstName} sizga IQRO platformasida ${REFERRAL_DISCOUNT}% chegirma ulashmoqda.
 
 IQRO — kasbiy sertifikatlash imtihoniga onlayn tayyorgarlik. Qulay, tez va samarali.
 
-Bugun ro'yxatdan o'ting — 1 oy bepul foydalaning:
+Bugun ro'yxatdan o'ting — ${REFERRAL_DISCOUNT}% chegirma bilan boshlang:
 ${refLink}
 
 Kod: ${refCode}
@@ -131,7 +131,7 @@ Kod: ${refCode}
 
     if (platform === 'telegram') {
       // Telegram uchun qisqaroq variant
-      return `📚 ${firstName} siz bilan IQRO da birga o\u2018qishni taklif qilmoqda!\n\nRo\u2018yxatdan o\u2018ting — IKKALANGIZ 30 kun BEPUL Premium olasiz + ${REFERRAL_DISCOUNT}% chegirma!\n\n✅ Bepul kirish: ${refLink}\n🔑 Kod: ${refCode}`;
+      return `📚 ${firstName} sizga IQRO da ${REFERRAL_DISCOUNT}% CHEGIRMA ulashmoqda!\n\nRo\u2018yxatdan o\u2018ting — IKKALANGIZ ${REFERRAL_DISCOUNT}% chegirma olasiz!\n\n✅ Ro\u2018yxatdan o\u2018tish: ${refLink}\n🔑 Kod: ${refCode}`;
     }
 
     return messages[idx];
@@ -180,7 +180,7 @@ Kod: ${refCode}
         🤝 Do'stlarni taklif qilish
       </h1>
       <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>
-        Taklif qiling — ikkalangiz {FREE_MONTH_DAYS} kun bepul Premium oling!
+        Taklif qiling — ikkalangiz {REFERRAL_DISCOUNT}% chegirma oling!
       </p>
 
       {loading ? (
@@ -201,7 +201,7 @@ Kod: ${refCode}
               <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>50/50 Model — ikki tomonga foyda</div>
               <div style={{ fontSize: 28, fontWeight: 900, color: '#fff', margin: '4px 0' }}>{stats?.total || 0} / {MAX_REFERRALS}</div>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)' }}>
-                {stats?.total || 0} ta do'st taklif qilindi · Har biriga {FREE_MONTH_DAYS} kun bepul
+                {stats?.total || 0} ta do'st taklif qilindi · Ikki tomonga {REFERRAL_DISCOUNT}% chegirma
               </div>
             </div>
             <div style={{ fontSize: 48 }}>🎁</div>
@@ -290,7 +290,7 @@ Kod: ${refCode}
             <div style={s.label}>Qanday ishlaydi?</div>
             {[
               { icon: '🔗', title: 'Havolangizni yuboring', desc: "Do'stingizga shaxsiy referral havolangizni yuboring" },
-              { icon: '🎉', title: `Ikkalangiz ${FREE_MONTH_DAYS} kun bepul!`, desc: `Siz ham, do'stingiz ham darhol bepul Premium oladi` },
+              { icon: '🎉', title: `Ikkalangiz ${REFERRAL_DISCOUNT}% chegirma!`, desc: `Siz ham, do'stingiz ham to'lovda ${REFERRAL_DISCOUNT}% chegirma oladi` },
               { icon: '💰', title: `Keyingi to'lovda ${REFERRAL_DISCOUNT}% chegirma`, desc: `Ikki tomonga ${fmtSum(DISCOUNT_AMOUNT)} tejaladi` },
             ].map((step, i) => (
               <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', marginBottom: i < 2 ? 12 : 0 }}>
