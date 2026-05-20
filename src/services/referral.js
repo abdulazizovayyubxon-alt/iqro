@@ -43,11 +43,13 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase';
 
-// ── Konstantalar ──
+// ── Konstantalar (50/50 MODEL) ──
 export const MAX_REFERRALS       = 3;           // A maksimal 3 kishi taklif qilishi mumkin
-export const REFERRAL_BONUS      = 15000;        // Har bir to'lagan uchun A ga bonus (so'm)
-export const FREE_MONTH_DAYS     = 30;           // B ga bepul muddat (kun)
+export const REFERRAL_DISCOUNT   = 50;          // 50% chegirma — ikki tomonga
+export const FREE_MONTH_DAYS     = 30;           // Ikki tomonga 30 kun bepul
 export const MONTHLY_PRICE       = 30000;        // 1 oylik tarif narxi (so'm)
+export const DISCOUNT_AMOUNT     = Math.round(MONTHLY_PRICE * REFERRAL_DISCOUNT / 100); // 15,000 so'm
+export const REFERRAL_BONUS      = DISCOUNT_AMOUNT; // backward compat
 export const MAX_TOTAL_BONUS     = REFERRAL_BONUS * MAX_REFERRALS; // 45,000 so'm
 
 // ── Referral kod generatori ──
@@ -71,10 +73,17 @@ export async function getUserReferralCode(uid, displayName) {
     return snap.data().referralCode;
   }
 
-  // Yangi kod yaratamiz
-  const code = generateReferralCode(displayName);
+  // Yangi kod yaratamiz — uniqligini tekshiramiz
+  let code = generateReferralCode(displayName);
+  let attempts = 0;
+  while (attempts < 5) {
+    const existing = await findUserByReferralCode(code);
+    if (!existing) break; // unikal
+    code = generateReferralCode(displayName);
+    attempts++;
+  }
+
   await updateDoc(userRef, { referralCode: code }).catch(async () => {
-    // Agar doc yo'q bo'lsa — setDoc
     await setDoc(userRef, { referralCode: code }, { merge: true });
   });
   return code;
@@ -144,25 +153,41 @@ export async function applyReferralAfterRegister(newUserId, newUserName) {
     const referrerData = referrerSnap.data() || {};
     const currentCount = referrerData.referralCount || 0;
 
+    // ═══ LIMIT TEKSHIRUVI ═══
     if (currentCount >= MAX_REFERRALS) {
-      // Limit to'lgan — bonus berilmaydi, lekin B ga bepul oy yine beramiz
-      // (B ni chetlab qo'ymaslik uchun)
-      console.log('Referrer referral limitga yetdi, lekin B ga bepul oy beriladi');
+      console.log('Referrer referral limitga yetdi — yangi referral qabul qilinmaydi');
+      return false; // Limitga yetgan — hech kimga bepul berilmaydi
     }
 
-    // B ga 1 oy bepul muddat berish
+    // ═══ 50/50 MODEL — Ikki tomonga 30 kun bepul ═══
     const freeExpire = new Date();
     freeExpire.setDate(freeExpire.getDate() + FREE_MONTH_DAYS);
 
+    // B (yangi foydalanuvchi) ga 30 kun bepul Premium
     const newUserRef = doc(db, 'users', newUserId);
     await setDoc(newUserRef, {
       referredBy: referrer.uid,
       freeMonthExpire: freeExpire.toISOString(),
-      isPremium: true,        // 1 oy davomida Premium
+      isPremium: true,
       premiumExpire: freeExpire.toISOString(),
       premiumPlan: 'referral_free',
       reminderSent: false,
+      referralDiscount: REFERRAL_DISCOUNT, // 50% chegirma keyingi to'lovda
     }, { merge: true });
+
+    // A (taklif qiluvchi) ga ham 30 kun bepul Premium uzaytirish
+    const referrerExpire = new Date();
+    const existingExpire = referrerData.premiumExpire ? new Date(referrerData.premiumExpire) : new Date();
+    const baseDate = existingExpire > new Date() ? existingExpire : new Date();
+    referrerExpire.setTime(baseDate.getTime() + FREE_MONTH_DAYS * 24 * 60 * 60 * 1000);
+
+    await updateDoc(referrerRef, {
+      referralCount: increment(1), // ═══ BUG #2 TUZATILDI ═══
+      isPremium: true,
+      premiumExpire: referrerExpire.toISOString(),
+      premiumPlan: referrerData.premiumPlan === 'paid' ? 'paid' : 'referral_bonus',
+      referralBonus: increment(DISCOUNT_AMOUNT),
+    });
 
     // Referrals kolleksiyasiga yozamiz
     await addDoc(collection(db, 'referrals'), {
@@ -170,12 +195,14 @@ export async function applyReferralAfterRegister(newUserId, newUserName) {
       referredId: newUserId,
       referredName: newUserName,
       referrerName: referrer.displayName || '',
-      status: 'pending',      // B henuz to'lamagan
+      status: 'active',  // Ikki tomonlama bepul boshlandi
       bonusPaid: false,
-      bonusAmount: 0,
+      bonusAmount: DISCOUNT_AMOUNT,
+      discountPercent: REFERRAL_DISCOUNT,
       createdAt: new Date().toISOString(),
       paidAt: null,
       freeExpire: freeExpire.toISOString(),
+      referrerFreeExpire: referrerExpire.toISOString(),
     });
 
     return true;

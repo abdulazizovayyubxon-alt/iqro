@@ -1,430 +1,382 @@
+/**
+ * ProfilePage.jsx — Premium Profile sahifasi
+ * Gradient header, XP, streak, countdown, badges, referral, edit
+ */
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
 import { ToastContext } from '../context/ToastContext';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import { updateProfile } from 'firebase/auth';
-import { db, auth } from '../firebase';
-import { motion } from 'framer-motion';
-import { 
-  User, Phone, Calendar, Landmark, Settings, LogOut, Trash2, 
-  ChevronRight, Save, Edit3, ArrowLeft, Shield, Sparkles, HelpCircle,
-  Moon, Sun
-} from 'lucide-react';
+import { db } from '../firebase';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
+import { getUserReferralCode, buildReferralLink, getReferralStats } from '../services/referral';
+import PremiumModal from '../components/PremiumModal';
+import { useAdmin } from '../hooks/useAdmin';
+import './ProfilePage.css';
 
-const GOALS = [
-  { id: 'second_category', badge: '🥈', title: 'Ikkinchi toifa' },
-  { id: 'first_category',  badge: '🥇', title: 'Birinchi toifa' },
-  { id: 'highest_category',badge: '🏆', title: 'Oliy toifa' },
-  { id: 'professional',    badge: '🎯', title: 'Kasbiy sertifikat uchun' },
-];
+const DAY_NAMES = ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'];
 
-const SUBJECTS = [
-  { id: 'chqbt', badge: 'Q', title: 'CHQBT' },
-  { id: 'art',   badge: 'S', title: 'Tasviriy San\'at' },
-  { id: 'multi', badge: '✦', title: 'Bir nechta fan' },
-];
-
-const GENDERS = [
-  { id: 'male', label: 'Erkak' },
-  { id: 'female', label: 'Ayol' }
-];
-
-const ProfilePage = ({ theme, toggleTheme }) => {
-  const navigate = useNavigate();
+export default function ProfilePage({ theme, toggleTheme }) {
   const { user, logout } = useAuth();
-  const { state, updateState } = useContext(AppContext);
+  const { state } = useContext(AppContext);
   const { showToast } = useContext(ToastContext);
+  const { isAdmin } = useAdmin();
+  const navigate = useNavigate();
 
-  // Profil tahrirlash holatlari
-  const [name, setName] = useState('');
-  const [gender, setGender] = useState('');
-  const [birthDate, setBirthDate] = useState('');
-  const [goal, setGoal] = useState('');
-  const [subject, setSubject] = useState('');
-  const [phone, setPhone] = useState('');
-  
-  // Tizim sozlamalari
-  const [examDate, setExamDate] = useState(() => {
-    const saved = localStorage.getItem('CUSTOM_EXAM_DATE');
-    if (saved) return saved.split('T')[0];
-    return '';
-  });
-  
-  const [loading, setLoading] = useState(true);
+  const [showEdit, setShowEdit] = useState(false);
+  const [showPremium, setShowPremium] = useState(false);
+  const [editForm, setEditForm] = useState({ name: '', gender: '', birthDate: '', goal: '', subject: '' });
   const [saving, setSaving] = useState(false);
+  const [refCode, setRefCode] = useState('');
+  const [refStats, setRefStats] = useState(null);
+  const [copied, setCopied] = useState(false);
 
+  // Exam date from localStorage
+  const [examDate, setExamDate] = useState(() => {
+    try { return localStorage.getItem('iqro_exam_date') || ''; } catch { return ''; }
+  });
+
+  // Load profile data
   useEffect(() => {
     if (!user) return;
-    
-    // Firestore'dan qo'shimcha profil ma'lumotlarini yuklash
-    const loadProfile = async () => {
+    const load = async () => {
       try {
-        const userRef = doc(db, 'users', user.uid);
-        const userSnap = await getDoc(userRef);
-        
-        if (userSnap.exists()) {
-          const data = userSnap.data();
-          setName(data.displayName || user.displayName || '');
-          setGender(data.gender || '');
-          setBirthDate(data.birthDate || '');
-          setGoal(data.onboardingGoal || '');
-          setSubject(data.onboardingSubject || '');
-          setPhone(data.phone || user.email?.split('@')[0] || '');
-        } else {
-          setName(user.displayName || '');
+        const snap = await getDoc(doc(db, 'users', user.uid));
+        if (snap.exists()) {
+          const d = snap.data();
+          setEditForm({
+            name: d.displayName || user.displayName || '',
+            gender: d.gender || '',
+            birthDate: d.birthDate || '',
+            goal: d.goal || '',
+            subject: d.subject || '',
+          });
+          if (d.examDate) { setExamDate(d.examDate); localStorage.setItem('iqro_exam_date', d.examDate); }
         }
-      } catch (err) {
-        console.error("Profilni yuklashda xatolik:", err);
-      } finally {
-        setLoading(false);
-      }
+        const code = await getUserReferralCode(user.uid, user.displayName);
+        setRefCode(code);
+        const st = await getReferralStats(user.uid);
+        setRefStats(st);
+      } catch (e) { console.error('Profile load error:', e); }
     };
-    
-    loadProfile();
+    load();
   }, [user]);
 
-  const handleSave = async (e) => {
-    e.preventDefault();
-    if (!name.trim()) {
-      showToast("Ism va familiyani kiritish shart", "error");
-      return;
-    }
-    
+  if (!user) return null;
+
+  // Computed values
+  const displayName = editForm.name || user.displayName || 'Foydalanuvchi';
+  const initials = displayName.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+  const isPremium = user.isPremium || false;
+  const catStats = state.stats?.chqbt || { totalAnswered: 0, totalCorrect: 0, maxStreak: 0 };
+  const totalAnswered = (state.stats?.chqbt?.totalAnswered || 0) + (state.stats?.art?.totalAnswered || 0);
+  const totalCorrect = (state.stats?.chqbt?.totalCorrect || 0) + (state.stats?.art?.totalCorrect || 0);
+  const acc = totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
+  const earnedBadges = getEarnedBadges(state.stats);
+  const totalXP = getTotalXP(state.stats);
+  const levelInfo = getLevel(totalXP);
+  const nextXP = levelInfo.level === 1 ? 75 : levelInfo.level === 2 ? 200 : levelInfo.level === 3 ? 500 : levelInfo.level === 4 ? 1000 : 9999;
+  const xpPct = Math.min(100, Math.round((totalXP / nextXP) * 100));
+
+  // Daily goal
+  const today = new Date().toDateString();
+  const dg = state.dailyGoal?.date === today ? state.dailyGoal : { answered: 0, target: 20 };
+  const goalPct = Math.min(100, Math.round((dg.answered / dg.target) * 100));
+  const goalDone = dg.answered >= dg.target;
+
+  // Streak week
+  const dailyStreak = state.dailyStreak || 0;
+  const todayIdx = new Date().getDay(); // 0=Sun
+  const weekDays = [1, 2, 3, 4, 5, 6, 0]; // Mon-Sun
+
+  // Countdown
+  const getCountdown = () => {
+    const ed = examDate || localStorage.getItem('iqro_exam_date');
+    if (!ed) return null;
+    const diff = new Date(ed) - new Date();
+    if (diff <= 0) return { y: 0, m: 0, d: 0 };
+    const d = Math.floor(diff / 86400000);
+    return { y: Math.floor(d / 365), m: Math.floor((d % 365) / 30), d: d % 30 };
+  };
+  const countdown = getCountdown();
+
+  // Save profile
+  const handleSave = async () => {
     setSaving(true);
     try {
-      // 1. Firebase Auth profilini yangilash
-      if (auth.currentUser && name !== auth.currentUser.displayName) {
-        await updateProfile(auth.currentUser, { displayName: name });
-      }
-      
-      // 2. Firestore dagi user hujjatini yangilash
-      const userRef = doc(db, 'users', user.uid);
-      await updateDoc(userRef, {
-        displayName: name,
-        gender,
-        birthDate,
-        onboardingGoal: goal,
-        onboardingSubject: subject,
-      });
-
-      // AppContext dagi activeCategory ni ham moslashtiramiz agar fan o'zgargan bo'lsa
-      if (subject && subject !== 'multi' && state.activeCategory !== subject) {
-        updateState({ activeCategory: subject });
-      }
-
-      // 3. Imtihon sanasini saqlash
-      if (examDate) {
-        localStorage.setItem('CUSTOM_EXAM_DATE', new Date(examDate).toISOString());
-        window.dispatchEvent(new Event('storage'));
-      } else {
-        localStorage.removeItem('CUSTOM_EXAM_DATE');
-        window.dispatchEvent(new Event('storage'));
-      }
-
-      showToast("Profil muvaffaqiyatli saqlandi!", "success");
-    } catch (err) {
-      console.error("Profilni saqlashda xatolik:", err);
-      showToast("Xatolik yuz berdi, qayta urinib ko'ring", "error");
-    } finally {
-      setSaving(false);
+      await setDoc(doc(db, 'users', user.uid), {
+        displayName: editForm.name,
+        gender: editForm.gender,
+        birthDate: editForm.birthDate,
+        goal: editForm.goal,
+        subject: editForm.subject,
+      }, { merge: true });
+      showToast("Profil saqlandi ✅", 'success');
+      setShowEdit(false);
+    } catch (e) {
+      showToast("Xatolik yuz berdi", 'error');
     }
+    setSaving(false);
   };
 
   const handleLogout = async () => {
-    if (window.confirm("Tizimdan chiqishni tasdiqlaysizmi?")) {
-      await logout();
-      navigate('/');
-    }
+    try { await logout(); navigate('/'); } catch { showToast("Chiqishda xatolik", 'error'); }
   };
 
-  if (loading) {
-    return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh', flexDirection: 'column', gap: 12 }}>
-        <div style={{
-          width: 36, height: 36,
-          border: '3px solid var(--border)',
-          borderTopColor: 'var(--blue)',
-          borderRadius: '50%',
-          animation: 'spin 0.8s linear infinite'
-        }} />
-        <p style={{ color: 'var(--text3)', fontSize: 14 }}>Profil ma'lumotlari yuklanmoqda...</p>
-      </div>
-    );
-  }
+  const copyRef = async () => {
+    try {
+      await navigator.clipboard.writeText(buildReferralLink(refCode));
+      setCopied(true); showToast("Havola nusxalandi! ✅", 'success');
+      setTimeout(() => setCopied(false), 2000);
+    } catch { showToast("Nusxalab bo'lmadi", 'error'); }
+  };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      style={{ maxWidth: 600, margin: '0 auto', padding: '20px 16px 40px' }}
-    >
-      {/* Back Header */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-        <button 
-          onClick={() => navigate(-1)}
-          style={{ 
-            background: 'var(--bg3)', border: '1px solid var(--border)', 
-            borderRadius: 12, width: 40, height: 40, 
-            display: 'flex', alignItems: 'center', justifyContent: 'center', 
-            cursor: 'pointer', color: 'var(--text)' 
-          }}
-        >
-          <ArrowLeft size={20} />
-        </button>
-        <div>
-          <h1 style={{ fontSize: 22, fontWeight: 900, color: 'var(--text)', margin: 0 }}>Mening profilim</h1>
-          <p style={{ fontSize: 12, color: 'var(--text3)', margin: '2px 0 0' }}>Shaxsiy ma'lumotlar va sozlamalar</p>
-        </div>
-      </div>
-
-      {/* User Card */}
-      <div className="glass-panel" style={{ padding: '20px 24px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 16 }}>
-        <div style={{ 
-          width: 60, height: 60, borderRadius: 20, 
-          background: 'linear-gradient(135deg, var(--accent) 0%, var(--blue) 100%)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', 
-          color: '#fff', fontSize: 24, fontWeight: 800, flexShrink: 0
-        }}>
-          {name ? name.substring(0, 2).toUpperCase() : '?'}
-        </div>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
-            <span style={{ fontSize: 18, fontWeight: 800, color: 'var(--text)' }}>{name || 'Foydalanuvchi'}</span>
-            {user?.isPremium && (
-              <span style={{ 
-                background: 'linear-gradient(135deg, #f59e0b, #ef4444)', 
-                color: '#fff', fontSize: 10, fontWeight: 800, 
-                padding: '2px 8px', borderRadius: 20, display: 'inline-flex', alignItems: 'center', gap: 3
-              }}>
-                <Sparkles size={10} /> PREMIUM
-              </span>
-            )}
+    <motion.div className="pp" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      {/* ═══ GRADIENT HEADER ═══ */}
+      <div className="pp-header">
+        <div className="pp-header-top">
+          <div className="pp-avatar">{initials}</div>
+          <div className="pp-user-info">
+            <h1 className="pp-user-name">{displayName}</h1>
+            <div className="pp-user-email">{user.email}</div>
+            <div className="pp-badges-row">
+              <span className="pp-badge pp-badge-level">⚡ Lv.{levelInfo.level} {levelInfo.name}</span>
+              {isPremium
+                ? <span className="pp-badge pp-badge-premium"><Crown size={10} /> Premium</span>
+                : <span className="pp-badge pp-badge-free" onClick={() => setShowPremium(true)} style={{ cursor: 'pointer' }}>Bepul</span>
+              }
+            </div>
           </div>
-          <div style={{ fontSize: 13, color: 'var(--text3)', marginTop: 2, display: 'flex', alignItems: 'center', gap: 4 }}>
-            <Phone size={12} /> {phone ? `+${phone}` : 'Raqam kiritilmagan'}
+        </div>
+
+        {/* XP Progress */}
+        <div className="pp-xp-bar">
+          <div className="pp-xp-labels">
+            <span>⚡ {totalXP} XP</span>
+            <span>{totalXP}/{nextXP} XP</span>
+          </div>
+          <div className="pp-xp-track">
+            <div className="pp-xp-fill" style={{ width: `${xpPct}%` }} />
           </div>
         </div>
       </div>
 
-      {/* Profile Form */}
-      <form onSubmit={handleSave} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-        
-        {/* Shaxsiy ma'lumotlar sektsiyasi */}
-        <div className="glass-panel" style={{ padding: '20px 24px' }}>
-          <h2 style={{ fontSize: 16, fontWeight: 800, color: 'var(--text)', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
-            <User size={18} style={{ color: 'var(--blue)' }} /> Shaxsiy ma'lumotlar
-          </h2>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {/* Ism va Familiya */}
-            <div>
-              <label style={{ fontSize: 13, fontWeight: 600, color: 'var(--text2)', marginBottom: 6, display: 'block' }}>Ism va familiya</label>
-              <input 
-                type="text" 
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Ism va familiyangizni kiriting"
-                style={{
-                  width: '100%', padding: '12px 14px', borderRadius: 12, 
-                  border: '1.5px solid var(--border)', background: 'var(--bg3)',
-                  color: 'var(--text)', fontSize: 14, fontFamily: 'inherit',
-                  outline: 'none'
-                }}
-              />
-            </div>
-
-            {/* Jins */}
-            <div>
-              <label style={{ fontSize: 13, fontWeight: 600, color: 'var(--text2)', marginBottom: 6, display: 'block' }}>Jins</label>
-              <div style={{ display: 'flex', gap: 10 }}>
-                {GENDERS.map(g => (
-                  <button
-                    key={g.id}
-                    type="button"
-                    onClick={() => setGender(g.id)}
-                    style={{
-                      flex: 1, padding: '12px', borderRadius: 12,
-                      border: gender === g.id ? '2px solid var(--blue)' : '1.5px solid var(--border)',
-                      background: gender === g.id ? 'var(--blue-bg)' : 'var(--bg2)',
-                      color: gender === g.id ? 'var(--blue)' : 'var(--text2)',
-                      fontWeight: 700, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit',
-                      transition: 'all 0.15s'
-                    }}
-                  >
-                    {g.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Tug'ilgan sana */}
-            <div>
-              <label style={{ fontSize: 13, fontWeight: 600, color: 'var(--text2)', marginBottom: 6, display: 'block' }}>Tug'ilgan sana</label>
-              <div style={{ position: 'relative' }}>
-                <input 
-                  type="date" 
-                  value={birthDate}
-                  onChange={(e) => setBirthDate(e.target.value)}
-                  style={{
-                    width: '100%', padding: '12px 14px', borderRadius: 12, 
-                    border: '1.5px solid var(--border)', background: 'var(--bg3)',
-                    color: 'var(--text)', fontSize: 14, fontFamily: 'inherit',
-                    outline: 'none'
-                  }}
-                />
-              </div>
-            </div>
+      <div className="pp-content">
+        {/* ═══ STREAK WEEK ═══ */}
+        <div className="pp-card">
+          <div className="pp-card-label">🔥 Haftalik Streak · {dailyStreak} kun</div>
+          <div className="pp-streak-row">
+            {weekDays.map((dayIdx, i) => {
+              const isActive = i < dailyStreak;
+              const isToday = dayIdx === todayIdx;
+              return (
+                <div key={dayIdx} className={`pp-streak-day ${isActive ? 'active' : ''}`}
+                  style={isToday && !isActive ? { borderColor: 'var(--blue)', background: 'var(--blue-bg)' } : {}}>
+                  <div className="pp-streak-icon">{isActive ? '🔥' : isToday ? '📍' : '○'}</div>
+                  <div className="pp-streak-lbl" style={isToday && !isActive ? { color: 'var(--blue)' } : {}}>
+                    {DAY_NAMES[i]}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Tayyorgarlik maqsadlari sektsiyasi */}
-        <div className="glass-panel" style={{ padding: '20px 24px' }}>
-          <h2 style={{ fontSize: 16, fontWeight: 800, color: 'var(--text)', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
-            <Landmark size={18} style={{ color: 'var(--accent)' }} /> Tayyorgarlik sozlamalari
-          </h2>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {/* Fan */}
-            <div>
-              <label style={{ fontSize: 13, fontWeight: 600, color: 'var(--text2)', marginBottom: 6, display: 'block' }}>Tayyorgarlik fani</label>
-              <select
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
-                style={{
-                  width: '100%', padding: '12px 14px', borderRadius: 12, 
-                  border: '1.5px solid var(--border)', background: 'var(--bg3)',
-                  color: 'var(--text)', fontSize: 14, fontFamily: 'inherit',
-                  outline: 'none', appearance: 'none', cursor: 'pointer'
-                }}
-              >
-                <option value="">Tanlang...</option>
-                {SUBJECTS.map(s => (
-                  <option key={s.id} value={s.id}>{s.title}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Maqsad */}
-            <div>
-              <label style={{ fontSize: 13, fontWeight: 600, color: 'var(--text2)', marginBottom: 6, display: 'block' }}>Maqsadingiz</label>
-              <select
-                value={goal}
-                onChange={(e) => setGoal(e.target.value)}
-                style={{
-                  width: '100%', padding: '12px 14px', borderRadius: 12, 
-                  border: '1.5px solid var(--border)', background: 'var(--bg3)',
-                  color: 'var(--text)', fontSize: 14, fontFamily: 'inherit',
-                  outline: 'none', appearance: 'none', cursor: 'pointer'
-                }}
-              >
-                <option value="">Tanlang...</option>
-                {GOALS.map(g => (
-                  <option key={g.id} value={g.id}>{g.title}</option>
-                ))}
-              </select>
-            </div>
+        {/* ═══ DAILY GOAL ═══ */}
+        <div className="pp-card" style={goalDone ? { borderColor: 'var(--green)', background: 'rgba(16,185,129,0.04)' } : {}}>
+          <div className="pp-card-label">{goalDone ? '✅' : '🎯'} Bugungi maqsad</div>
+          <div className="pp-goal-info">
+            <span className="pp-goal-text">{goalDone ? 'Bajarildi!' : `${dg.answered}/${dg.target} savol`}</span>
+            <span className="pp-goal-nums" style={{ color: goalDone ? 'var(--green)' : 'var(--text3)' }}>{goalPct}%</span>
+          </div>
+          <div className="pp-goal-track">
+            <div className="pp-goal-fill" style={{
+              width: `${goalPct}%`,
+              background: goalDone ? 'linear-gradient(90deg,#10b981,#34d399)' : 'linear-gradient(90deg,#3b82f6,#8b5cf6)'
+            }} />
+          </div>
+          <div className="pp-goal-sub">
+            <span>{goalPct}% bajarildi</span>
+            <span>{Math.max(0, dg.target - dg.answered)} ta qoldi</span>
           </div>
         </div>
 
-        {/* Tizim sozlamalari */}
-        <div className="glass-panel" style={{ padding: '20px 24px' }}>
-          <h2 style={{ fontSize: 16, fontWeight: 800, color: 'var(--text)', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
-            <Settings size={18} style={{ color: 'var(--blue)' }} /> Tizim sozlamalari
-          </h2>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {/* Tungi rejim */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: 12, borderBottom: '1px solid var(--border)' }}>
-              <div>
-                <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)', display: 'block' }}>Tungi rejim</span>
-                <span style={{ fontSize: 12, color: 'var(--text3)' }}>Ilova interfeysi ko'rinishini o'zgartirish</span>
+        {/* ═══ EXAM COUNTDOWN ═══ */}
+        {countdown && (
+          <div className="pp-card">
+            <div className="pp-card-label">📅 Imtihon sanasi</div>
+            <div className="pp-countdown-grid">
+              {[{ v: countdown.y, l: 'Yil' }, { v: countdown.m, l: 'Oy' }, { v: countdown.d, l: 'Kun' }].map((c, i) => (
+                <div key={i} className="pp-countdown-box">
+                  <div className="pp-countdown-val">{c.v}</div>
+                  <div className="pp-countdown-lbl">{c.l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ═══ STAT CARDS ═══ */}
+        <div className="pp-stats-grid">
+          <div className="pp-stat-card">
+            <div className="pp-stat-icon">📝</div>
+            <div className="pp-stat-val">{totalAnswered}</div>
+            <div className="pp-stat-lbl">Savollar</div>
+          </div>
+          <div className="pp-stat-card">
+            <div className="pp-stat-icon">🎯</div>
+            <div className="pp-stat-val">{acc}%</div>
+            <div className="pp-stat-lbl">Aniqlik</div>
+          </div>
+          <div className="pp-stat-card">
+            <div className="pp-stat-icon">🏆</div>
+            <div className="pp-stat-val">{earnedBadges.length}</div>
+            <div className="pp-stat-lbl">Yutuqlar</div>
+          </div>
+        </div>
+
+        {/* ═══ REFERRAL BLOCK ═══ */}
+        <div className="pp-referral" onClick={() => navigate('/referral')}>
+          <div className="pp-referral-icon">🤝</div>
+          <div className="pp-referral-text">
+            <div className="pp-referral-title">Do'stlarni taklif qil</div>
+            <div className="pp-referral-desc">
+              {refStats ? `${refStats.total}/3 taklif · ` : ''}Bonus oling!
+            </div>
+          </div>
+          <div className="pp-referral-arrow"><ChevronRight size={20} /></div>
+        </div>
+
+        {refCode && (
+          <div className="pp-card" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 700, marginBottom: 4 }}>REFERRAL KOD</div>
+              <div style={{ fontSize: 20, fontWeight: 900, letterSpacing: 4, color: 'var(--blue)', fontFamily: 'monospace' }}>{refCode}</div>
+            </div>
+            <button onClick={copyRef} style={{
+              display: 'flex', alignItems: 'center', gap: 6, padding: '10px 16px',
+              borderRadius: 12, border: '1.5px solid var(--border)', background: 'var(--bg3)',
+              fontSize: 13, fontWeight: 600, color: 'var(--text2)', cursor: 'pointer', fontFamily: 'inherit'
+            }}>
+              {copied ? <Check size={14} /> : <Copy size={14} />}
+              {copied ? 'Nusxalandi' : 'Nusxa'}
+            </button>
+          </div>
+        )}
+
+        {/* ═══ BADGES ROW ═══ */}
+        <div className="pp-card">
+          <div className="pp-card-label">🏅 Yutuqlar kolleksiyasi · {earnedBadges.length}/{BADGES.length}</div>
+          <div className="pp-badges-scroll">
+            {BADGES.map(badge => {
+              const earned = earnedBadges.some(b => b.id === badge.id);
+              return (
+                <div key={badge.id} className="pp-badge-item">
+                  <div className={`pp-badge-icon-wrap ${earned ? 'earned' : 'locked'}`}
+                    style={earned ? { background: `${badge.color}15`, borderColor: `${badge.color}40` } : {}}>
+                    {earned ? badge.icon : '🔒'}
+                  </div>
+                  <div className="pp-badge-name">{badge.name}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ═══ MENU ═══ */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {/* Admin Panel — faqat adminlar uchun */}
+          {isAdmin && (
+            <button className="pp-menu-item" onClick={() => navigate('/admin')}>
+              <div className="pp-menu-icon" style={{ background: 'linear-gradient(135deg, #F59E0B, #EF4444)', color: '#fff' }}>
+                <Shield size={20} />
               </div>
-              <button
-                type="button"
-                className={`btn btn-sm ${theme === 'dark' ? 'btn-primary' : 'btn-outline'}`}
-                onClick={toggleTheme}
-                style={{ padding: '8px 16px', borderRadius: 10, display: 'flex', alignItems: 'center', gap: 6, fontSize: 13 }}
-              >
-                {theme === 'dark' ? <Moon size={14} /> : <Sun size={14} />}
-                {theme === 'dark' ? 'Yoqilgan' : 'O\'chirilgan'}
+              <span className="pp-menu-label">Admin Panel</span>
+              <ChevronRight size={18} className="pp-menu-arrow" />
+            </button>
+          )}
+
+          {/* Theme Toggle */}
+          <button className="pp-menu-item" onClick={toggleTheme}>
+            <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--blue)' }}>
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </div>
+            <span className="pp-menu-label">{theme === 'dark' ? 'Yorqin rejim' : 'Tungi rejim'}</span>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
+          {/* Edit Profile */}
+          <button className="pp-menu-item" onClick={() => setShowEdit(true)}>
+            <div className="pp-menu-icon" style={{ background: 'var(--purple-bg)', color: 'var(--purple)' }}>
+              <Edit3 size={20} />
+            </div>
+            <span className="pp-menu-label">Profilni tahrirlash</span>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
+          {/* Logout */}
+          <button className="pp-menu-item danger" onClick={handleLogout}>
+            <div className="pp-menu-icon" style={{ background: 'var(--red-bg)', color: 'var(--red)' }}>
+              <LogOut size={20} />
+            </div>
+            <span className="pp-menu-label">Chiqish</span>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+        </div>
+      </div>
+
+      {/* ═══ EDIT MODAL ═══ */}
+      {showEdit && (
+        <div className="pp-modal-overlay" onClick={() => setShowEdit(false)}>
+          <div className="pp-modal" onClick={e => e.stopPropagation()}>
+            <div className="pp-modal-title">✏️ Profilni tahrirlash</div>
+            <div className="pp-field">
+              <label>Ism</label>
+              <input value={editForm.name} onChange={e => setEditForm(p => ({ ...p, name: e.target.value }))} placeholder="To'liq ism" />
+            </div>
+            <div className="pp-field">
+              <label>Jins</label>
+              <select value={editForm.gender} onChange={e => setEditForm(p => ({ ...p, gender: e.target.value }))}>
+                <option value="">Tanlang</option>
+                <option value="male">Erkak</option>
+                <option value="female">Ayol</option>
+              </select>
+            </div>
+            <div className="pp-field">
+              <label>Tug'ilgan sana</label>
+              <input type="date" value={editForm.birthDate} onChange={e => setEditForm(p => ({ ...p, birthDate: e.target.value }))} />
+            </div>
+            <div className="pp-field">
+              <label>Maqsad</label>
+              <input value={editForm.goal} onChange={e => setEditForm(p => ({ ...p, goal: e.target.value }))} placeholder="Masalan: Sertifikatlashdan o'tish" />
+            </div>
+            <div className="pp-field">
+              <label>Fan</label>
+              <input value={editForm.subject} onChange={e => setEditForm(p => ({ ...p, subject: e.target.value }))} placeholder="Masalan: Matematika" />
+            </div>
+            <div className="pp-field">
+              <label>Imtihon sanasi</label>
+              <input type="date" value={examDate} onChange={e => {
+                setExamDate(e.target.value);
+                localStorage.setItem('iqro_exam_date', e.target.value);
+              }} />
+            </div>
+            <div className="pp-modal-actions">
+              <button className="pp-btn-cancel" onClick={() => setShowEdit(false)}>Bekor</button>
+              <button className="pp-btn-save" onClick={handleSave} disabled={saving}>
+                {saving ? 'Saqlanmoqda...' : 'Saqlash'}
               </button>
             </div>
-
-            {/* Imtihon sanasi */}
-            <div>
-              <label style={{ fontSize: 13, fontWeight: 600, color: 'var(--text2)', marginBottom: 6, display: 'block' }}>Imtihon sanasi (Kalkulyator uchun)</label>
-              <input 
-                type="date" 
-                value={examDate}
-                onChange={(e) => setExamDate(e.target.value)}
-                style={{
-                  width: '100%', padding: '12px 14px', borderRadius: 12, 
-                  border: '1.5px solid var(--border)', background: 'var(--bg3)',
-                  color: 'var(--text)', fontSize: 14, fontFamily: 'inherit',
-                  outline: 'none'
-                }}
-              />
-              <span style={{ fontSize: 11, color: 'var(--text3)', marginTop: 4, display: 'block' }}>
-                Ushbu sana asosida platformaning yuqori burchagida imtihongacha qolgan kunlar ko'rsatiladi.
-              </span>
-            </div>
           </div>
         </div>
+      )}
 
-        {/* Tizim sozlamalari va logout */}
-        <div className="glass-panel" style={{ padding: '12px 24px' }}>
-          <div 
-            onClick={() => navigate('/referral')}
-            style={{ 
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between', 
-              padding: '12px 0', borderBottom: '1px solid var(--border)', cursor: 'pointer' 
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <Sparkles size={18} style={{ color: 'var(--amber)' }} />
-              <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)' }}>Do'stlarni taklif qilish (Referral)</span>
-            </div>
-            <ChevronRight size={16} style={{ color: 'var(--text3)' }} />
-          </div>
-
-          <div 
-            onClick={handleLogout}
-            style={{ 
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between', 
-              padding: '12px 0', cursor: 'pointer' 
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <LogOut size={18} style={{ color: 'var(--red)' }} />
-              <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--red)' }}>Tizimdan chiqish</span>
-            </div>
-            <ChevronRight size={16} style={{ color: 'var(--red)', opacity: 0.5 }} />
-          </div>
-        </div>
-
-        {/* Saqlash tugmasi */}
-        <button
-          type="submit"
-          disabled={saving}
-          style={{
-            width: '100%', padding: '16px', borderRadius: 14,
-            background: 'var(--blue)', color: '#fff',
-            border: 'none', fontWeight: 700, fontSize: 16,
-            cursor: 'pointer', fontFamily: 'inherit', display: 'flex',
-            alignItems: 'center', justifyContent: 'center', gap: 8,
-            boxShadow: '0 4px 12px rgba(59,130,246,0.2)',
-            opacity: saving ? 0.7 : 1
-          }}
-        >
-          <Save size={18} />
-          {saving ? "Saqlanmoqda..." : "Profilni saqlash"}
-        </button>
-
-      </form>
+      {/* Premium Modal */}
+      {showPremium && <PremiumModal isOpen={showPremium} onClose={() => setShowPremium(false)} />}
     </motion.div>
   );
-};
-
-export default ProfilePage;
+}

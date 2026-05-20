@@ -261,6 +261,19 @@ export const AuthProvider = ({ children }) => {
               const data = userSnap.data();
               isPremium = data.isPremium || false;
               role = data.role || 'user';
+
+              // ═══ BUG #1 TUZATILDI: Premium muddati tekshiruvi ═══
+              if (isPremium && data.premiumExpire && data.premiumPlan !== 'paid') {
+                const expDate = new Date(data.premiumExpire);
+                if (expDate < new Date()) {
+                  // Bepul muddat tugagan — premium bekor qilish
+                  isPremium = false;
+                  await updateDoc(userRef, {
+                    isPremium: false,
+                    premiumPlan: 'expired',
+                  }).catch(e => console.warn('Premium expire update xatosi:', e));
+                }
+              }
             } else {
               await setDoc(userRef, {
                 uid: firebaseUser.uid,

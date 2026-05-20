@@ -14,6 +14,8 @@ import {
   REFERRAL_BONUS,
   FREE_MONTH_DAYS,
   MAX_TOTAL_BONUS,
+  REFERRAL_DISCOUNT,
+  DISCOUNT_AMOUNT,
 } from '../services/referral';
 
 const fmtSum = (n) => n.toLocaleString('uz-UZ') + " so'm";
@@ -68,15 +70,15 @@ export default function ReferralPage() {
       // 1 — Shaxsiy tavsiya uslubi
       `📚 Assalomu alaykum!
 
-${firstName} siz uchun IQRO platformasida 1 oylik bepul kirish ochib berdi.
+${firstName} siz uchun IQRO platformasida 30 kunlik BEPUL Premium ochib berdi.
 
-IQRO — kasbiy sertifikatlash imtihoniga tayyorgarlik platformasi. Minglab o'qituvchilar allaqachon shu yerda o'qiyapti.
+IQRO — kasbiy sertifikatlash imtihoniga tayyorgarlik platformasi.
 
 ✅ Testlar va imtihon simulyatsiyasi
 ✅ Aqlli takrorlash tizimi
-✅ Reyting va natijalar tahlili
+✅ Ikki tomonga ${REFERRAL_DISCOUNT}% chegirma
 
-Havola 1 oy muddatli — kechiktirmang 👇
+Havola orqali ro'yxatdan o'ting — SIZ HAM, MEN HAM 30 kun bepul olamiz! 👇
 ${refLink}
 
 Kod: ${refCode}`,
@@ -84,14 +86,14 @@ Kod: ${refCode}`,
       // 2 — Muammo → Yechim uslubi
       `🎯 Sertifikatlash imtihoniga tayyorlanayapsizmi?
 
-${firstName} siz uchun IQRO platformasiga 1 oylik bepul kirish ulashdi.
+${firstName} siz bilan IQRO da birga o'qishni taklif qilmoqda!
 
-Ko'pchilik o'qituvchilar imtihon oldidan nima o'qishni bilmay qiyinchilikka tushadi. IQRO aynan shu muammoni hal qiladi — barcha fanlar bo'yicha savollar, imtihon rejimi va natijalar tahlili bir joyda.
+Ro'yxatdan o'ting — IKKALANGIZ 30 kunlik BEPUL Premium olasiz. Keyingi to'lovda ${REFERRAL_DISCOUNT}% chegirma.
 
 👉 Bepul kirish: ${refLink}
 🔑 Kod: ${refCode}
 
-Foydalanib ko'ring — 1 oy bepul!`,
+Bugundan boshlang — imtihon yaqinlashmoqda!`,
 
       // 3 — Statistika va ishonch uslubi
 `🏆 ${firstName} sizga sovg'a yo'lladi!
@@ -129,7 +131,7 @@ Kod: ${refCode}
 
     if (platform === 'telegram') {
       // Telegram uchun qisqaroq variant
-      return `📚 ${firstName} siz uchun IQRO platformasida 1 oylik bepul kirish ochdi!\n\nKasbiy sertifikatlash imtihoniga tayyorgarlik — testlar, imtihon simulyatsiyasi, reyting.\n\n✅ Bepul kirish: ${refLink}\n🔑 Kod: ${refCode}`;
+      return `📚 ${firstName} siz bilan IQRO da birga o\u2018qishni taklif qilmoqda!\n\nRo\u2018yxatdan o\u2018ting — IKKALANGIZ 30 kun BEPUL Premium olasiz + ${REFERRAL_DISCOUNT}% chegirma!\n\n✅ Bepul kirish: ${refLink}\n🔑 Kod: ${refCode}`;
     }
 
     return messages[idx];
@@ -178,7 +180,7 @@ Kod: ${refCode}
         🤝 Do'stlarni taklif qilish
       </h1>
       <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>
-        Taklif qiling — ikkalangiz yuting!
+        Taklif qiling — ikkalangiz {FREE_MONTH_DAYS} kun bepul Premium oling!
       </p>
 
       {loading ? (
@@ -196,10 +198,10 @@ Kod: ${refCode}
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           }}>
             <div>
-              <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>Bonus hisobingiz</div>
-              <div style={{ fontSize: 28, fontWeight: 900, color: '#fff', margin: '4px 0' }}>{fmtSum(bonusProgress)}</div>
+              <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>50/50 Model — ikki tomonga foyda</div>
+              <div style={{ fontSize: 28, fontWeight: 900, color: '#fff', margin: '4px 0' }}>{stats?.total || 0} / {MAX_REFERRALS}</div>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)' }}>
-                {stats?.paid || 0} ta to'ladi · Maqsad: {MAX_REFERRALS} ta
+                {stats?.total || 0} ta do'st taklif qilindi · Har biriga {FREE_MONTH_DAYS} kun bepul
               </div>
             </div>
             <div style={{ fontSize: 48 }}>🎁</div>
@@ -288,8 +290,8 @@ Kod: ${refCode}
             <div style={s.label}>Qanday ishlaydi?</div>
             {[
               { icon: '🔗', title: 'Havolangizni yuboring', desc: "Do'stingizga shaxsiy referral havolangizni yuboring" },
-              { icon: '🎁', title: `Do'stingiz ${FREE_MONTH_DAYS} kun bepul foydalanadi`, desc: "Ro'yxatdan o'tgandan darhol premium kirish ochiladi" },
-              { icon: '💰', title: `Do'stingiz to'laganda ${fmtSum(REFERRAL_BONUS)} bonus`, desc: `Maksimal ${MAX_REFERRALS} ta = ${fmtSum(MAX_TOTAL_BONUS)}` },
+              { icon: '🎉', title: `Ikkalangiz ${FREE_MONTH_DAYS} kun bepul!`, desc: `Siz ham, do'stingiz ham darhol bepul Premium oladi` },
+              { icon: '💰', title: `Keyingi to'lovda ${REFERRAL_DISCOUNT}% chegirma`, desc: `Ikki tomonga ${fmtSum(DISCOUNT_AMOUNT)} tejaladi` },
             ].map((step, i) => (
               <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', marginBottom: i < 2 ? 12 : 0 }}>
                 <div style={{ width: 40, height: 40, borderRadius: 12, background: 'var(--blue-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, flexShrink: 0 }}>

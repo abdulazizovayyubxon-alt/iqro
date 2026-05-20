@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useAdmin } from '../hooks/useAdmin';
@@ -21,13 +22,16 @@ import {
   Shield, MessageCircle, Users, BarChart3,
   CheckCircle, Trash2, Clock, AlertTriangle,
   ChevronDown, ChevronUp, Search, Plus, Edit3, FileText, Zap,
-  Bell, Send, CheckCircle2, AlertCircle, Info
+  Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft
 } from 'lucide-react';
+
+import './AdminPage.css';
 
 const AdminPage = () => {
   const { isAdmin } = useAdmin();
   const { user } = useAuth();
   const { showToast } = useContext(ToastContext);
+  const navigate = useNavigate();
 
   const [tab, setTab] = useState('objections'); // objections | users | stats | questions | tariffs | notifications | referrals
 
@@ -246,6 +250,35 @@ const AdminPage = () => {
     loadReferrals();
   }, [tab]);
 
+  // ═══ Admin: Referral statusini "to'ladi" ga o'zgartirish ═══
+  const handleMarkReferralPaid = async (refId, referrerId) => {
+    if (!window.confirm("Bu referralni 'To'ladi' deb belgilashni tasdiqlaysizmi?")) return;
+    try {
+      await updateDoc(doc(db, 'referrals', refId), {
+        status: 'paid',
+        bonusPaid: true,
+        bonusAmount: 15000,
+        paidAt: new Date().toISOString(),
+      });
+      // Referrer ga bonus qo'shish
+      if (referrerId) {
+        await updateDoc(doc(db, 'users', referrerId), {
+          referralBonus: increment(15000),
+        });
+      }
+      showToast("✅ Referral to'langan deb belgilandi va bonus berildi!", 'success');
+      // Ro'yxatni yangilash
+      const snap = await getDocs(collection(db, 'referrals'));
+      const refs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      setAllReferrals(refs);
+      const paid = refs.filter(r => r.status === 'paid').length;
+      const pending = refs.filter(r => r.status !== 'paid').length;
+      setReferralSummary({ total: refs.length, paid, pending, totalBonus: paid * 15000 });
+    } catch (e) {
+      showToast("Xatolik: " + e.message, 'error');
+    }
+  };
+
   const handleSolve = async (fbId) => {
     try {
       await updateDoc(doc(db, 'objections', fbId), { solved: true, solvedBy: user.email, solvedAt: new Date() });
@@ -423,53 +456,58 @@ const AdminPage = () => {
   }
 
   return (
-    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="page">
+    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="admin-page">
+      {/* Back button */}
+      <button className="admin-back-btn" onClick={() => navigate('/profile')}>
+        <ArrowLeft size={16} /> Profilga qaytish
+      </button>
+
       <div className="admin-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <div className="admin-badge"><Shield size={18} /> ADMIN</div>
+          <div className="admin-badge"><Shield size={14} /> ADMIN</div>
           <div>
-            <div style={{ fontSize: '28px', fontWeight: '900', letterSpacing: '-0.5px' }}>Boshqaruv Paneli</div>
-            <div style={{ fontSize: '13px', color: 'var(--text3)', marginTop: '2px' }}>{user?.email}</div>
+            <div style={{ fontSize: '22px', fontWeight: '900', letterSpacing: '-0.5px', color: 'var(--text)' }}>Boshqaruv Paneli</div>
+            <div style={{ fontSize: '12px', color: 'var(--text3)', marginTop: '2px' }}>{user?.email}</div>
           </div>
         </div>
-        <div style={{ display: 'flex', gap: '16px' }}>
-          <div className="admin-quick-stat" style={{ borderColor: 'var(--amber)' }}>
-            <div style={{ fontSize: '24px', fontWeight: '800', color: 'var(--amber)' }}>{unsolvedCount}</div>
-            <div style={{ fontSize: '11px', color: 'var(--text3)', fontWeight: '600' }}>KUTMOQDA</div>
+        <div className="admin-quick-stats">
+          <div className="admin-quick-stat">
+            <div className="admin-quick-stat-val" style={{ color: 'var(--amber)' }}>{unsolvedCount}</div>
+            <div className="admin-quick-stat-lbl">Kutmoqda</div>
           </div>
-          <div className="admin-quick-stat" style={{ borderColor: 'var(--green)' }}>
-            <div style={{ fontSize: '24px', fontWeight: '800', color: 'var(--green)' }}>{solvedCount}</div>
-            <div style={{ fontSize: '11px', color: 'var(--text3)', fontWeight: '600' }}>HAL QILINDI</div>
+          <div className="admin-quick-stat">
+            <div className="admin-quick-stat-val" style={{ color: 'var(--green)' }}>{solvedCount}</div>
+            <div className="admin-quick-stat-lbl">Hal qilindi</div>
           </div>
-          <div className="admin-quick-stat" style={{ borderColor: 'var(--blue)' }}>
-            <div style={{ fontSize: '24px', fontWeight: '800', color: 'var(--blue)' }}>{users.length || '—'}</div>
-            <div style={{ fontSize: '11px', color: 'var(--text3)', fontWeight: '600' }}>FOYDALANUVCHI</div>
+          <div className="admin-quick-stat">
+            <div className="admin-quick-stat-val" style={{ color: 'var(--blue)' }}>{users.length || '—'}</div>
+            <div className="admin-quick-stat-lbl">Foydalanuvchi</div>
           </div>
         </div>
       </div>
 
       <div className="admin-tabs">
         <button className={`admin-tab ${tab === 'objections' ? 'active' : ''}`} onClick={() => setTab('objections')}>
-          <MessageCircle size={16} /> E'tirozlar
+          <MessageCircle size={15} /> E'tirozlar
           {unsolvedCount > 0 && <span className="admin-tab-badge">{unsolvedCount}</span>}
         </button>
         <button className={`admin-tab ${tab === 'questions' ? 'active' : ''}`} onClick={() => setTab('questions')}>
-          <FileText size={16} /> Savollar
+          <FileText size={15} /> Savollar
         </button>
         <button className={`admin-tab ${tab === 'users' ? 'active' : ''}`} onClick={() => setTab('users')}>
-          <Users size={16} /> Foydalanuvchilar
+          <Users size={15} /> Foydalanuvchilar
         </button>
         <button className={`admin-tab ${tab === 'stats' ? 'active' : ''}`} onClick={() => setTab('stats')}>
-          <BarChart3 size={16} /> Statistika
+          <BarChart3 size={15} /> Statistika
         </button>
         <button className={`admin-tab ${tab === 'tariffs' ? 'active' : ''}`} onClick={() => setTab('tariffs')}>
-          <Zap size={16} /> Tariflar
+          <Zap size={15} /> Tariflar
         </button>
         <button className={`admin-tab ${tab === 'notifications' ? 'active' : ''}`} onClick={() => setTab('notifications')}>
-          <Bell size={16} /> Bildirishnomalar
+          <Bell size={15} /> Xabarlar
         </button>
         <button className={`admin-tab ${tab === 'referrals' ? 'active' : ''}`} onClick={() => setTab('referrals')}>
-          <Users size={16} /> Referrallar
+          <Users size={15} /> Referral
         </button>
       </div>
 
@@ -590,120 +628,81 @@ const AdminPage = () => {
       )}
 
       {tab === 'questions' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div style={{ fontSize: '18px', fontWeight: '700', color: 'var(--text)' }}>Savollar Bazasi ({questions.length})</div>
-            <div style={{ display: 'flex', gap: '10px' }}>
-              <button className="btn btn-outline" style={{ color: 'var(--blue)', borderColor: 'var(--blue)' }} onClick={handleSyncAllQuestions} disabled={isSyncing}>
-                <Zap size={16} /> {isSyncing ? 'Sinxronlanmoqda...' : 'Fayllardan bazaga sinxronlash'}
-              </button>
-              <button className="btn btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={handleCleanDuplicates}>
-                <Trash2 size={16} /> Takroriylarni o'chirish
-              </button>
-              <button className="btn btn-primary" onClick={() => { setIsAdding(true); setEditingQ(null); setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' }); }}>
-                <Plus size={16} /> Yangi savol qo'shish
-              </button>
-            </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div className="admin-section-title"><FileText size={18} style={{ color: 'var(--blue)' }} /> Savollar Bazasi ({questions.length})</div>
+          <div className="admin-action-bar">
+            <button className="btn btn-outline" style={{ color: 'var(--blue)', borderColor: 'var(--blue)' }} onClick={handleSyncAllQuestions} disabled={isSyncing}>
+              <Zap size={14} /> {isSyncing ? 'Sinxronlanmoqda...' : 'Sinxronlash'}
+            </button>
+            <button className="btn btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={handleCleanDuplicates}>
+              <Trash2 size={14} /> Dublikatlar
+            </button>
+            <button className="btn btn-primary" onClick={() => { setIsAdding(true); setEditingQ(null); setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' }); }}>
+              <Plus size={14} /> Yangi savol
+            </button>
           </div>
 
-          <div className="glass-panel" style={{ overflow: 'hidden' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-              <thead style={{ background: 'var(--bg3)' }}>
-                <tr>
-                  <th style={{ padding: '12px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)' }}>Savol</th>
-                  <th style={{ padding: '12px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)' }}>Mavzu ID</th>
-                  <th style={{ padding: '12px', textAlign: 'center', fontSize: '12px', color: 'var(--text3)' }}>Amallar</th>
-                </tr>
-              </thead>
-              <tbody>
-                {questions.map((q) => (
-                  <tr key={q.id} style={{ borderTop: '0.5px solid var(--border)' }}>
-                    <td style={{ padding: '12px', fontSize: '13px', color: 'var(--text)', maxWidth: '400px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      {q.q}
-                    </td>
-                    <td style={{ padding: '12px', fontSize: '13px', color: 'var(--text2)' }}>{q.topicId}</td>
-                    <td style={{ padding: '12px', display: 'flex', gap: '8px', justifyContent: 'center' }}>
-                      <button className="btn btn-sm btn-outline" onClick={() => { setEditingQ(q); setNewQ({...q}); setIsAdding(true); }}><Edit3 size={14} /></button>
-                      <button className="btn btn-sm btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={() => handleDeleteQuestion(q.id)}><Trash2 size={14} /></button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {questions.slice(0, 50).map((q) => (
+              <div key={q.id} className="admin-q-card">
+                <div className="admin-q-text">{q.q}</div>
+                <div className="admin-q-footer">
+                  <span className="admin-q-topic">#{q.topicId} · {q.category || 'chqbt'}</span>
+                  <div className="admin-q-actions">
+                    <button className="btn btn-sm btn-outline" onClick={() => { setEditingQ(q); setNewQ({...q}); setIsAdding(true); }}><Edit3 size={14} /></button>
+                    <button className="btn btn-sm btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={() => handleDeleteQuestion(q.id)}><Trash2 size={14} /></button>
+                  </div>
+                </div>
+              </div>
+            ))}
+            {questions.length > 50 && (
+              <div style={{ textAlign: 'center', padding: 16, color: 'var(--text3)', fontSize: 13 }}>
+                ... va yana {questions.length - 50} ta savol
+              </div>
+            )}
           </div>
         </div>
       )}
 
       {tab === 'users' && (
         <div>
+          <div className="admin-section-title"><Users size={18} style={{ color: 'var(--blue)' }} /> Foydalanuvchilar ({users.length})</div>
           {users.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text3)' }}>Yuklanmoqda...</div>
+            <div className="admin-empty"><div className="admin-empty-icon">👥</div><div className="admin-empty-text">Yuklanmoqda...</div></div>
           ) : (
-            <div className="glass-panel" style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', minWidth: '700px', borderCollapse: 'collapse' }}>
-                <thead style={{ background: 'var(--bg3)' }}>
-                  <tr>
-                    <th style={{ padding: '14px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Foydalanuvchi</th>
-                    <th style={{ padding: '14px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Email</th>
-                    <th style={{ padding: '14px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Premium</th>
-                    <th style={{ padding: '14px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Rol</th>
-                    <th style={{ padding: '14px', textAlign: 'right', fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Amallar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {users.map((u) => (
-                    <tr key={u.id} style={{ borderTop: '0.5px solid var(--border)' }}>
-                      <td style={{ padding: '14px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'linear-gradient(135deg, #007AFF, #5AC8FA)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: '700', fontSize: '14px', flexShrink: 0 }}>
-                          {(u.displayName || u.email || '?')[0].toUpperCase()}
-                        </div>
-                        <span style={{ fontWeight: '600', fontSize: '14px', color: 'var(--text)' }}>{u.displayName || '—'}</span>
-                      </td>
-                      <td style={{ padding: '14px', fontSize: '14px', color: 'var(--text2)' }}>{u.email}</td>
-                      <td style={{ padding: '14px' }}>
-                        <span style={{ 
-                          background: u.isPremium ? 'var(--green-bg)' : 'var(--bg3)', 
-                          color: u.isPremium ? 'var(--green)' : 'var(--text3)', 
-                          fontSize: '12px', fontWeight: '700', padding: '4px 10px', borderRadius: '6px' 
-                        }}>
-                          {u.isPremium ? '⭐ Premium' : 'Oddiy'}
-                        </span>
-                      </td>
-                      <td style={{ padding: '14px' }}>
-                        <span style={{ background: u.role === 'admin' ? 'var(--blue-bg)' : 'var(--bg3)', color: u.role === 'admin' ? 'var(--blue)' : 'var(--text3)', fontSize: '12px', fontWeight: '700', padding: '4px 10px', borderRadius: '6px' }}>
-                          {u.role === 'admin' ? '🛡️ Admin' : '👤 Foydalanuvchi'}
-                        </span>
-                      </td>
-                      <td style={{ padding: '14px', textAlign: 'right' }}>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'flex-end', alignItems: 'center' }}>
-                          <button 
-                            className="btn btn-sm" 
-                            style={{ padding: '6px 10px', fontSize: '11px', background: u.isPremium ? 'var(--bg3)' : 'var(--amber)', color: u.isPremium ? 'var(--text)' : '#fff' }}
-                            onClick={() => togglePremium(u.id, u.isPremium)}
-                          >
-                            {u.isPremium ? 'Premiumni bekor qilish' : '+ Premium berish'}
-                          </button>
-                          <button 
-                            className="btn btn-sm" 
-                            style={{ padding: '6px 10px', fontSize: '11px', background: 'var(--bg3)', color: 'var(--text)' }}
-                            onClick={() => toggleAdmin(u.id, u.role)}
-                          >
-                            {u.role === 'admin' ? 'Admindan olish' : 'Admin qilish'}
-                          </button>
-                          <button 
-                            className="btn btn-sm btn-outline" 
-                            style={{ padding: '6px 10px', fontSize: '11px', color: 'var(--red)', borderColor: 'var(--red)' }}
-                            onClick={() => handleDeleteUser(u.id, u.email)}
-                            title="Foydalanuvchini va uning reytingdagi natijasini o'chirish"
-                          >
-                            <Trash2 size={13} style={{ marginRight: '4px' }} /> O'chirish
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {users.map((u) => (
+                <div key={u.id} className="admin-user-card">
+                  <div className="admin-user-top">
+                    <div className="admin-user-avatar">
+                      {(u.displayName || u.email || '?')[0].toUpperCase()}
+                    </div>
+                    <div className="admin-user-info">
+                      <div className="admin-user-name">{u.displayName || '—'}</div>
+                      <div className="admin-user-email">{u.email}</div>
+                    </div>
+                  </div>
+                  <div className="admin-user-badges">
+                    <span className="admin-user-badge" style={{ background: u.isPremium ? 'var(--green-bg)' : 'var(--bg3)', color: u.isPremium ? 'var(--green)' : 'var(--text3)' }}>
+                      {u.isPremium ? '⭐ Premium' : 'Oddiy'}
+                    </span>
+                    <span className="admin-user-badge" style={{ background: u.role === 'admin' ? 'var(--blue-bg)' : 'var(--bg3)', color: u.role === 'admin' ? 'var(--blue)' : 'var(--text3)' }}>
+                      {u.role === 'admin' ? '🛡️ Admin' : '👤 User'}
+                    </span>
+                  </div>
+                  <div className="admin-user-actions">
+                    <button onClick={() => togglePremium(u.id, u.isPremium)} style={u.isPremium ? {} : { background: 'var(--amber)', color: '#fff', borderColor: 'var(--amber)' }}>
+                      {u.isPremium ? '✕ Premium' : '+ Premium'}
+                    </button>
+                    <button onClick={() => toggleAdmin(u.id, u.role)}>
+                      {u.role === 'admin' ? '✕ Admin' : '+ Admin'}
+                    </button>
+                    <button className="danger-btn" onClick={() => handleDeleteUser(u.id, u.email)}>
+                      <Trash2 size={13} /> O'chirish
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
         </div>
@@ -711,7 +710,7 @@ const AdminPage = () => {
 
       {tab === 'stats' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <div className="stats-grid">
+          <div className="admin-stats-grid">
             <div className="stat-box glass-panel">
               <div className="stat-box-val">{objections.length}</div>
               <div className="stat-box-lbl">Jami E'tirozlar</div>
@@ -744,7 +743,7 @@ const AdminPage = () => {
               const pct = Math.round((count / objections.length) * 100);
               return (
                 <div key={topic} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-                  <div style={{ minWidth: '180px', fontSize: '13px', color: 'var(--text2)', fontWeight: '500' }}>{topic}</div>
+                  <div style={{ minWidth: '100px', fontSize: '13px', color: 'var(--text2)', fontWeight: '500', flex: '0 0 auto' }}>{topic}</div>
                   <div style={{ flex: 1, height: '8px', background: 'var(--bg3)', borderRadius: '4px', overflow: 'hidden' }}>
                     <div style={{ width: `${pct}%`, height: '100%', background: 'var(--blue)', borderRadius: '4px', transition: 'width 0.6s ease' }} />
                   </div>
@@ -757,42 +756,28 @@ const AdminPage = () => {
       )}
 
       {tab === 'tariffs' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
-            <div style={{ fontSize: '18px', fontWeight: '700', color: 'var(--text)' }}>Premium Tariflar</div>
+            <div className="admin-section-title"><Zap size={18} style={{ color: 'var(--amber)' }} /> Premium Tariflar</div>
             <button className="btn btn-primary" onClick={() => { setIsAddingTariff(true); setEditingTariff(null); setNewTariff({ id: '', name: '', price: 0, durationMonths: 1 }); }}>
-              <Plus size={16} /> Yangi tarif qo'shish
+              <Plus size={14} /> Yangi tarif
             </button>
           </div>
 
-          <div className="glass-panel" style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', minWidth: '500px', borderCollapse: 'collapse' }}>
-              <thead style={{ background: 'var(--bg3)' }}>
-                <tr>
-                  <th style={{ padding: '14px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)' }}>ID / Nomi</th>
-                  <th style={{ padding: '14px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)' }}>Narxi (so'm)</th>
-                  <th style={{ padding: '14px', textAlign: 'left', fontSize: '12px', color: 'var(--text3)' }}>Muddati (Oy)</th>
-                  <th style={{ padding: '14px', textAlign: 'right', fontSize: '12px', color: 'var(--text3)' }}>Amallar</th>
-                </tr>
-              </thead>
-              <tbody>
-                {tariffs.map((t) => (
-                  <tr key={t.id} style={{ borderTop: '0.5px solid var(--border)' }}>
-                    <td style={{ padding: '14px', fontSize: '14px', color: 'var(--text)', fontWeight: '600' }}>
-                      {t.name} <div style={{ fontSize: '11px', color: 'var(--text3)', fontWeight: '400' }}>{t.id}</div>
-                    </td>
-                    <td style={{ padding: '14px', fontSize: '14px', color: 'var(--amber)', fontWeight: '700' }}>{new Intl.NumberFormat('uz-UZ').format(t.price)} so'm</td>
-                    <td style={{ padding: '14px', fontSize: '14px', color: 'var(--text2)' }}>{t.durationMonths === 999 ? 'Cheksiz' : `${t.durationMonths} oy`}</td>
-                    <td style={{ padding: '14px', textAlign: 'right' }}>
-                      <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
-                        <button className="btn btn-sm btn-outline" onClick={() => { setEditingTariff(t); setNewTariff({...t}); setIsAddingTariff(true); }}><Edit3 size={14} /></button>
-                        <button className="btn btn-sm btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={() => handleDeleteTariff(t.id)}><Trash2 size={14} /></button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {tariffs.map((t) => (
+              <div key={t.id} className="admin-tariff-card">
+                <div className="admin-tariff-info">
+                  <div className="admin-tariff-name">{t.name}</div>
+                  <div className="admin-tariff-details">{t.id} · {t.durationMonths === 999 ? 'Cheksiz' : `${t.durationMonths} oy`}</div>
+                </div>
+                <div className="admin-tariff-price">{new Intl.NumberFormat('uz-UZ').format(t.price)}</div>
+                <div style={{ display: 'flex', gap: 6 }}>
+                  <button className="btn btn-sm btn-outline" onClick={() => { setEditingTariff(t); setNewTariff({...t}); setIsAddingTariff(true); }}><Edit3 size={14} /></button>
+                  <button className="btn btn-sm btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={() => handleDeleteTariff(t.id)}><Trash2 size={14} /></button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
@@ -920,17 +905,17 @@ const AdminPage = () => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
 
           {/* Umumiy statistika kartalari */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px' }}>
+          <div className="admin-ref-grid">
             {[
               { label: 'Jami referrallar', value: referralSummary.total, icon: '🔗', color: 'var(--blue)' },
               { label: "To'lagan", value: referralSummary.paid, icon: '✅', color: '#22c55e' },
               { label: 'Kutilmoqda', value: referralSummary.pending, icon: '⏳', color: '#eab308' },
-              { label: "Jami bonus (so'm)", value: referralSummary.totalBonus.toLocaleString(), icon: '💰', color: '#8b5cf6' },
+              { label: "Jami bonus", value: referralSummary.totalBonus.toLocaleString() + " so'm", icon: '💰', color: '#8b5cf6' },
             ].map((card, i) => (
-              <div key={i} className="glass-panel" style={{ padding: '16px', textAlign: 'center' }}>
-                <div style={{ fontSize: 24, marginBottom: 6 }}>{card.icon}</div>
-                <div style={{ fontSize: 22, fontWeight: 900, color: card.color }}>{card.value}</div>
-                <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 2 }}>{card.label}</div>
+              <div key={i} className="admin-stat-card">
+                <div style={{ fontSize: 22, marginBottom: 4 }}>{card.icon}</div>
+                <div style={{ fontSize: 20, fontWeight: 900, color: card.color }}>{card.value}</div>
+                <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 2 }}>{card.label}</div>
               </div>
             ))}
           </div>
@@ -953,7 +938,7 @@ const AdminPage = () => {
                 <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
                   <thead style={{ background: 'var(--bg3)' }}>
                     <tr>
-                      {["Taklif qiluvchi", "Taklif qilingan", "Sana", "Status", "Bonus", "Bepul tugash"].map(h => (
+                      {["Taklif qiluvchi", "Taklif qilingan", "Sana", "Status", "Bonus", "Bepul tugash", "Amal"].map(h => (
                         <th key={h} style={{ padding: '10px 12px', textAlign: 'left', fontSize: '11px', color: 'var(--text3)', fontWeight: 700 }}>{h}</th>
                       ))}
                     </tr>
@@ -977,16 +962,28 @@ const AdminPage = () => {
                           <td style={{ padding: '10px 12px' }}>
                             {r.status === 'paid' ? (
                               <span style={{ fontSize: '11px', fontWeight: 700, background: 'rgba(34,197,94,0.15)', color: '#22c55e', padding: '2px 10px', borderRadius: '20px' }}>✅ To'ladi</span>
+                            ) : r.status === 'active' ? (
+                              <span style={{ fontSize: '11px', fontWeight: 700, background: 'rgba(59,130,246,0.15)', color: '#3b82f6', padding: '2px 10px', borderRadius: '20px' }}>🔄 Faol</span>
                             ) : (
                               <span style={{ fontSize: '11px', fontWeight: 700, background: 'rgba(234,179,8,0.15)', color: '#eab308', padding: '2px 10px', borderRadius: '20px' }}>⏳ Kutilmoqda</span>
                             )}
-                            {r.limitReached && <div style={{ fontSize: 10, color: '#ef4444', marginTop: 2 }}>limit to'lgan</div>}
                           </td>
                           <td style={{ padding: '10px 12px', color: r.bonusPaid ? '#22c55e' : 'var(--text3)', fontWeight: r.bonusPaid ? 700 : 400, fontSize: 13 }}>
                             {r.bonusPaid ? `+${(r.bonusAmount || 15000).toLocaleString()} so'm` : '—'}
                           </td>
                           <td style={{ padding: '10px 12px', color: 'var(--text3)', fontSize: 12 }}>
                             {r.freeExpire ? new Date(r.freeExpire).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'short' }) : '—'}
+                          </td>
+                          <td style={{ padding: '10px 12px' }}>
+                            {r.status !== 'paid' && (
+                              <button
+                                className="btn btn-sm"
+                                style={{ background: 'var(--green)', color: '#fff', border: 'none', fontSize: 11, padding: '4px 10px' }}
+                                onClick={() => handleMarkReferralPaid(r.id, r.referrerId)}
+                              >
+                                ✓ To'ladi
+                              </button>
+                            )}
                           </td>
                         </tr>
                       ))}
@@ -997,13 +994,13 @@ const AdminPage = () => {
           </div>
 
           {/* Qoidalar eslatmasi */}
-          <div className="glass-panel" style={{ padding: '16px', background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.2)' }}>
-            <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--blue)', marginBottom: 8 }}>ℹ️ Referral tizimi qoidalari</div>
-            <div style={{ fontSize: 12, color: 'var(--text3)', lineHeight: 1.7 }}>
-              • Taklif qilingan → <strong>30 kun bepul Premium</strong> (ro'yxatdan o'tganda darhol)<br/>
-              • Taklif qiluvchi → do'sti to'laganda <strong>15,000 so'm bonus</strong> (premium hisobiga)<br/>
-              • Maksimal bonus: <strong>3 ta × 15,000 = 45,000 so'm</strong> (1.5 oylik bepul)<br/>
-              • Bonus faqat do'st birinchi marta to'laganda bir marta beriladi
+          <div className="admin-info-box">
+            <div className="admin-info-title">ℹ️ Referral tizimi qoidalari (50/50 MODEL)</div>
+            <div className="admin-info-text">
+              • Taklif qiluvchi va qilingan — <strong>ikkalasiga 30 kun bepul Premium</strong><br/>
+              • Har bir muvaffaqiyatli referral — ikki tomonga <strong>50% chegirma</strong><br/>
+              • Maksimal: <strong>3 ta taklif</strong> (har biri uchun 30 kun bepul)<br/>
+              • Admin "To'ladi" tugmasini bosib bonus berishni tasdiqlaydi
             </div>
           </div>
         </div>
