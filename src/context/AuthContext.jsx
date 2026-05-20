@@ -338,7 +338,11 @@ export const AuthProvider = ({ children }) => {
                 firebaseUser.uid,
                 firebaseUser.displayName || firebaseUser.email?.split('@')[0]
               );
-              if (refApplied) isPremium = true;
+              if (refApplied) {
+                isPremium = true;
+                // Referral orqali kelgan B ga "Tabriklaymiz!" ko'rsatish uchun flag
+                localStorage.setItem('iqro_referral_welcome', 'true');
+              }
               // Yangi foydalanuvchi — trial boshlandi
               trialInfo = { status: 'trial', daysLeft: FREE_TRIAL_DAYS, urgencyMs: 0 };
               isPremium = true;

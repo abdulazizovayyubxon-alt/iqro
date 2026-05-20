@@ -42,6 +42,17 @@ const Dashboard = () => {
     return () => clearInterval(int);
   }, []);
 
+  // ═══ REFERRAL WELCOME TOAST ═══
+  useEffect(() => {
+    const flag = localStorage.getItem('iqro_referral_welcome');
+    if (flag === 'true') {
+      localStorage.removeItem('iqro_referral_welcome');
+      setTimeout(() => {
+        showToast("🎉 Tabriklaymiz! Siz 30 kun bepul Premium oldingiz! Ikkalangiz ham foyda ko'rasiz!", 'success');
+      }, 1500);
+    }
+  }, []);
+
   const handleNav = (topicId, mode) => {
     if (isFreeLimitReached) { setShowPremiumModal(true); return; }
     updateState({ topicId, testMode: mode });

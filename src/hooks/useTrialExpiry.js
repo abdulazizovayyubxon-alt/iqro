@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
-import { FREE_TRIAL_DAYS } from '../config';
+import { FREE_TRIAL_DAYS, URGENCY_DAYS } from '../services/referral';
 
 const CACHE_KEY = 'iqro_trial_status';
 const CACHE_TTL = 1000 * 60 * 60; // 1 soat — har soatda bir marta Firestore tekshiriladi
@@ -13,6 +13,9 @@ export function useTrialExpiry() {
   const [daysLeft, setDaysLeft] = useState(FREE_TRIAL_DAYS);
   const [trialEndDate, setTrialEndDate] = useState(null);
   const [loading, setLoading] = useState(true);
+  // Urgency davri uchun
+  const [isUrgency, setIsUrgency] = useState(false);
+  const [urgencyMs, setUrgencyMs] = useState(0);
 
   useEffect(() => {
     if (!user) {
@@ -24,6 +27,8 @@ export function useTrialExpiry() {
     if (user.isPremium) {
       setIsTrialExpired(false);
       setDaysLeft(null); // null = cheksiz
+      setIsUrgency(false);
+      setUrgencyMs(0);
       setLoading(false);
       return;
     }
@@ -37,6 +42,8 @@ export function useTrialExpiry() {
           setIsTrialExpired(cache.isTrialExpired);
           setDaysLeft(cache.daysLeft);
           setTrialEndDate(cache.trialEndDate ? new Date(cache.trialEndDate) : null);
+          setIsUrgency(cache.isUrgency || false);
+          setUrgencyMs(cache.urgencyMs || 0);
           setLoading(false);
           return;
         }
@@ -61,6 +68,8 @@ export function useTrialExpiry() {
           if (freeEnd > new Date()) {
             setIsTrialExpired(false);
             setDaysLeft(null);
+            setIsUrgency(false);
+            setUrgencyMs(0);
             setLoading(false);
             return;
           }
@@ -81,23 +90,56 @@ export function useTrialExpiry() {
         }
 
         // Trial tugash sanasi
-        const endDate = new Date(createdAt);
-        endDate.setDate(endDate.getDate() + FREE_TRIAL_DAYS);
+        const trialEnd = new Date(createdAt);
+        trialEnd.setDate(trialEnd.getDate() + FREE_TRIAL_DAYS);
+
+        // Urgency tugash sanasi (trial + 3 kun)
+        const urgencyEnd = new Date(createdAt);
+        urgencyEnd.setDate(urgencyEnd.getDate() + FREE_TRIAL_DAYS + URGENCY_DAYS);
 
         const now = new Date();
-        const msLeft = endDate - now;
-        const days = Math.ceil(msLeft / (1000 * 60 * 60 * 24));
-        const expired = msLeft <= 0;
+        const msToTrialEnd = trialEnd - now;
+        const msToUrgencyEnd = urgencyEnd - now;
+        const days = Math.ceil(msToTrialEnd / 86400000);
 
-        setIsTrialExpired(expired);
-        setDaysLeft(expired ? 0 : days);
-        setTrialEndDate(endDate);
+        if (msToTrialEnd > 0) {
+          // Hali trial davom etmoqda
+          setIsTrialExpired(false);
+          setDaysLeft(days);
+          setIsUrgency(false);
+          setUrgencyMs(0);
+        } else if (msToUrgencyEnd > 0) {
+          // Trial tugagan, urgency davri
+          setIsTrialExpired(false); // Urgency davomida hali bloklangan emas
+          setDaysLeft(0);
+          setIsUrgency(true);
+          setUrgencyMs(msToUrgencyEnd);
+        } else {
+          // Hamma muddat tugagan — to'liq blok
+          setIsTrialExpired(true);
+          setDaysLeft(0);
+          setIsUrgency(false);
+          setUrgencyMs(0);
+
+          // ═══ DISCOUNT EXPIRY: chegirma muddati tugadi — Firestore da ham bekor qilish ═══
+          if (data.referralDiscount && data.referralDiscount > 0) {
+            await updateDoc(userRef, {
+              referralDiscount: 0,
+              discountExpired: true,
+              discountExpiredAt: new Date().toISOString(),
+            }).catch(e => console.warn('Discount expire update xatosi:', e));
+          }
+        }
+
+        setTrialEndDate(trialEnd);
 
         // Cache ga saqlaymiz
         sessionStorage.setItem(`${CACHE_KEY}_${user.uid}`, JSON.stringify({
-          isTrialExpired: expired,
-          daysLeft: expired ? 0 : days,
-          trialEndDate: endDate.toISOString(),
+          isTrialExpired: msToUrgencyEnd <= 0,
+          daysLeft: msToTrialEnd > 0 ? days : 0,
+          trialEndDate: trialEnd.toISOString(),
+          isUrgency: msToTrialEnd <= 0 && msToUrgencyEnd > 0,
+          urgencyMs: msToTrialEnd <= 0 && msToUrgencyEnd > 0 ? msToUrgencyEnd : 0,
           savedAt: Date.now(),
         }));
 
@@ -113,5 +155,6 @@ export function useTrialExpiry() {
     checkTrial();
   }, [user]);
 
-  return { isTrialExpired, daysLeft, trialEndDate, loading };
+  return { isTrialExpired, daysLeft, trialEndDate, loading, isUrgency, urgencyMs };
 }
+
