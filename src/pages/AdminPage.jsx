@@ -243,7 +243,8 @@ const AdminPage = () => {
           totalBonus: paid * 15000,
         });
       } catch (e) {
-        showToast("Referral ma'lumotlarini yuklashda xatolik", 'error');
+        console.error("Referrals load error:", e);
+        showToast("Referral ma'lumotlarini yuklashda xatolik: " + e.message, 'error');
       }
       setReferralLoading(false);
     };

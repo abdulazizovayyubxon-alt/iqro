@@ -12,7 +12,10 @@ import { ToastContext } from '../context/ToastContext';
 import { db } from '../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
-import { getUserReferralCode, buildReferralLink, getReferralStats } from '../services/referral';
+import {
+  getUserReferralCode, buildReferralLink, getReferralStats,
+  MAX_REFERRALS, REFERRAL_DISCOUNT, MONTHLY_PRICE, DISCOUNT_AMOUNT
+} from '../services/referral';
 import PremiumModal from '../components/PremiumModal';
 import { useAdmin } from '../hooks/useAdmin';
 import './ProfilePage.css';
@@ -33,6 +36,9 @@ export default function ProfilePage({ theme, toggleTheme }) {
   const [refCode, setRefCode] = useState('');
   const [refStats, setRefStats] = useState(null);
   const [copied, setCopied] = useState(false);
+
+  // Urgency countdown (72h real-time)
+  const [urgencyLeft, setUrgencyLeft] = useState(user?.urgencyMs || 0);
 
   // Exam date from localStorage
   const [examDate, setExamDate] = useState(() => {
@@ -65,12 +71,37 @@ export default function ProfilePage({ theme, toggleTheme }) {
     load();
   }, [user]);
 
+  // Urgency countdown interval
+  useEffect(() => {
+    if (user?.trialStatus !== 'urgency' || urgencyLeft <= 0) return;
+    const iv = setInterval(() => {
+      setUrgencyLeft(prev => {
+        if (prev <= 1000) { clearInterval(iv); return 0; }
+        return prev - 1000;
+      });
+    }, 1000);
+    return () => clearInterval(iv);
+  }, [user?.trialStatus, urgencyLeft]);
+
   if (!user) return null;
 
   // Computed values
   const displayName = editForm.name || user.displayName || 'Foydalanuvchi';
   const initials = displayName.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
   const isPremium = user.isPremium || false;
+  const trialStatus = user.trialStatus || 'expired';
+  const trialDaysLeft = user.trialDaysLeft || 0;
+
+  // Urgency formatting
+  const fmtUrgency = () => {
+    const ms = urgencyLeft;
+    const d = Math.floor(ms / 86400000);
+    const h = Math.floor((ms % 86400000) / 3600000);
+    const m = Math.floor((ms % 3600000) / 60000);
+    const s = Math.floor((ms % 60000) / 1000);
+    return { d, h: String(h).padStart(2, '0'), m: String(m).padStart(2, '0'), s: String(s).padStart(2, '0') };
+  };
+  const urg = fmtUrgency();
   const catStats = state.stats?.chqbt || { totalAnswered: 0, totalCorrect: 0, maxStreak: 0 };
   const totalAnswered = (state.stats?.chqbt?.totalAnswered || 0) + (state.stats?.art?.totalAnswered || 0);
   const totalCorrect = (state.stats?.chqbt?.totalCorrect || 0) + (state.stats?.art?.totalCorrect || 0);
@@ -166,6 +197,54 @@ export default function ProfilePage({ theme, toggleTheme }) {
       </div>
 
       <div className="pp-content">
+        {/* ═══ FREE TRIAL BANNER ═══ */}
+        {trialStatus === 'trial' && (
+          <div className="pp-trial-banner">
+            <div className="pp-trial-icon">🎁</div>
+            <div className="pp-trial-text">
+              <div className="pp-trial-title">Sinov muddati faol</div>
+              <div className="pp-trial-desc">Barcha Premium funksiyalar {trialDaysLeft} kun bepul!</div>
+            </div>
+            <div className="pp-trial-days">
+              <div className="pp-trial-days-num">{trialDaysLeft}</div>
+              <div className="pp-trial-days-lbl">kun qoldi</div>
+            </div>
+          </div>
+        )}
+
+        {/* ═══ URGENCY COUNTDOWN (72h) ═══ */}
+        {trialStatus === 'urgency' && urgencyLeft > 0 && (
+          <div className="pp-urgency-banner" onClick={() => setShowPremium(true)}>
+            <div className="pp-urgency-top">
+              <span>⚠️ Sinov muddati tugadi!</span>
+              {user.hasReferralDiscount && <span className="pp-urgency-badge">{REFERRAL_DISCOUNT}% CHEGIRMA</span>}
+            </div>
+            <div className="pp-urgency-timer">
+              <div className="pp-urg-block"><span>{urg.d}</span><small>kun</small></div>
+              <div className="pp-urg-sep">:</div>
+              <div className="pp-urg-block"><span>{urg.h}</span><small>soat</small></div>
+              <div className="pp-urg-sep">:</div>
+              <div className="pp-urg-block"><span>{urg.m}</span><small>daq</small></div>
+              <div className="pp-urg-sep">:</div>
+              <div className="pp-urg-block"><span>{urg.s}</span><small>son</small></div>
+            </div>
+            <div className="pp-urgency-cta">
+              {user.hasReferralDiscount
+                ? `Hozir sotib oling: ${(MONTHLY_PRICE - DISCOUNT_AMOUNT).toLocaleString()} so'm (${MONTHLY_PRICE.toLocaleString()} o'rniga)`
+                : `Chegirma muddati tugamoqda — obunani faollashtiring!`
+              }
+            </div>
+          </div>
+        )}
+
+        {/* ═══ EXPIRED BANNER ═══ */}
+        {trialStatus === 'expired' && !isPremium && (
+          <div className="pp-expired-banner" onClick={() => setShowPremium(true)}>
+            <div className="pp-expired-text">
+              <span>🔒</span> Sinov muddati tugadi. <strong>Premium obunani faollashtiring</strong> →
+            </div>
+          </div>
+        )}
         {/* ═══ STREAK WEEK ═══ */}
         <div className="pp-card">
           <div className="pp-card-label">🔥 Haftalik Streak · {dailyStreak} kun</div>
@@ -239,13 +318,33 @@ export default function ProfilePage({ theme, toggleTheme }) {
           </div>
         </div>
 
-        {/* ═══ REFERRAL BLOCK ═══ */}
+        {/* ═══ REFERRAL SLOTS GAMIFICATION ═══ */}
+        <div className="pp-card">
+          <div className="pp-card-label">🤝 Taklif qilishlar · {refStats?.total || 0}/{MAX_REFERRALS}</div>
+          <div className="pp-ref-slots">
+            {Array.from({ length: MAX_REFERRALS }).map((_, i) => {
+              const isActive = i < (refStats?.total || 0);
+              return (
+                <div key={i} className={`pp-ref-slot ${isActive ? 'filled' : 'empty'}`}>
+                  {isActive ? '✅' : '⚪'}
+                </div>
+              );
+            })}
+          </div>
+          {refStats && refStats.total >= MAX_REFERRALS ? (
+            <div className="pp-ref-limit-msg">🏆 Maksimal limitga erishildi!</div>
+          ) : (
+            <div className="pp-ref-sub">Har bir taklif uchun ikkalangizga {REFERRAL_DISCOUNT}% chegirma!</div>
+          )}
+        </div>
+
+        {/* ═══ REFERRAL LINK ═══ */}
         <div className="pp-referral" onClick={() => navigate('/referral')}>
           <div className="pp-referral-icon">🤝</div>
           <div className="pp-referral-text">
             <div className="pp-referral-title">Do'stlarni taklif qil</div>
             <div className="pp-referral-desc">
-              {refStats ? `${refStats.total}/3 taklif · ` : ''}Bonus oling!
+              {refStats ? `${refStats.total}/${MAX_REFERRALS} taklif · ` : ''}Bonus oling!
             </div>
           </div>
           <div className="pp-referral-arrow"><ChevronRight size={20} /></div>

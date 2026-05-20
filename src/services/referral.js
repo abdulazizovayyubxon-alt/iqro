@@ -43,14 +43,16 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase';
 
-// ── Konstantalar (50/50 MODEL) ──
-export const MAX_REFERRALS       = 3;           // A maksimal 3 kishi taklif qilishi mumkin
+// ── Konstantalar (50/50 MODEL + FREE TRIAL) ──
+export const MAX_REFERRALS       = 5;           // A maksimal 5 kishi taklif qilishi mumkin
 export const REFERRAL_DISCOUNT   = 50;          // 50% chegirma — ikki tomonga
-export const FREE_MONTH_DAYS     = 30;           // Ikki tomonga 30 kun bepul
+export const FREE_TRIAL_DAYS     = 7;           // Ro'yxatdan o'tgandan 7 kun bepul sinov
+export const URGENCY_DAYS        = 3;           // Trial tugagandan keyin 3 kun (72 soat) chegirma
+export const FREE_MONTH_DAYS     = 30;          // Referral orqali kelganlarga 30 kun bepul
 export const MONTHLY_PRICE       = 30000;        // 1 oylik tarif narxi (so'm)
 export const DISCOUNT_AMOUNT     = Math.round(MONTHLY_PRICE * REFERRAL_DISCOUNT / 100); // 15,000 so'm
 export const REFERRAL_BONUS      = DISCOUNT_AMOUNT; // backward compat
-export const MAX_TOTAL_BONUS     = REFERRAL_BONUS * MAX_REFERRALS; // 45,000 so'm
+export const MAX_TOTAL_BONUS     = REFERRAL_BONUS * MAX_REFERRALS; // 75,000 so'm
 
 // ── Referral kod generatori ──
 // Format: ismdanbirinchi4harf + tasodifiy4raqam → "AYYU8K2X"

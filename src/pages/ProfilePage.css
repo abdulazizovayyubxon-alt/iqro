@@ -344,3 +344,135 @@
   background: linear-gradient(135deg, #3B82F6, #8B5CF6);
   color: #fff; border-color: transparent !important;
 }
+
+/* ── Free Trial Banner ── */
+.pp-trial-banner {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 18px; border-radius: 18px;
+  background: linear-gradient(135deg, #10B981, #059669);
+  border: none; position: relative; overflow: hidden;
+}
+.pp-trial-banner::after {
+  content: ''; position: absolute; top: -20px; right: -20px;
+  width: 100px; height: 100px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.pp-trial-icon { font-size: 32px; flex-shrink: 0; }
+.pp-trial-text { flex: 1; }
+.pp-trial-title {
+  font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 2px;
+}
+.pp-trial-desc {
+  font-size: 12px; color: rgba(255,255,255,0.8);
+}
+.pp-trial-days {
+  text-align: center; background: rgba(255,255,255,0.2);
+  border-radius: 14px; padding: 10px 16px;
+  backdrop-filter: blur(8px);
+}
+.pp-trial-days-num {
+  font-size: 28px; font-weight: 900; color: #fff; line-height: 1;
+}
+.pp-trial-days-lbl {
+  font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7);
+  text-transform: uppercase; margin-top: 2px;
+}
+
+/* ── Urgency Countdown Banner (72h) ── */
+.pp-urgency-banner {
+  padding: 18px 16px; border-radius: 18px;
+  background: linear-gradient(135deg, #F97316, #EF4444, #DC2626);
+  cursor: pointer; position: relative; overflow: hidden;
+  animation: ppUrgencyPulse 3s ease-in-out infinite;
+}
+@keyframes ppUrgencyPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.3); }
+  50% { box-shadow: 0 0 20px 4px rgba(239,68,68,0.2); }
+}
+.pp-urgency-banner::after {
+  content: ''; position: absolute; top: -30px; right: -30px;
+  width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.pp-urgency-top {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 12px; position: relative; z-index: 1;
+  font-size: 14px; font-weight: 800; color: #fff;
+}
+.pp-urgency-badge {
+  background: rgba(255,255,255,0.25); padding: 3px 12px;
+  border-radius: 20px; font-size: 11px; font-weight: 800;
+  letter-spacing: 0.5px; backdrop-filter: blur(8px);
+}
+.pp-urgency-timer {
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px; margin-bottom: 12px; position: relative; z-index: 1;
+}
+.pp-urg-block {
+  text-align: center;
+  background: rgba(0,0,0,0.25); border-radius: 12px;
+  padding: 10px 12px; min-width: 54px;
+  backdrop-filter: blur(8px);
+}
+.pp-urg-block span {
+  display: block; font-size: 26px; font-weight: 900;
+  color: #fff; line-height: 1; font-variant-numeric: tabular-nums;
+}
+.pp-urg-block small {
+  display: block; font-size: 9px; font-weight: 700;
+  color: rgba(255,255,255,0.65); text-transform: uppercase;
+  margin-top: 3px;
+}
+.pp-urg-sep {
+  font-size: 24px; font-weight: 900; color: rgba(255,255,255,0.5);
+  line-height: 1; padding-bottom: 14px;
+}
+.pp-urgency-cta {
+  text-align: center; font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,0.85); position: relative; z-index: 1;
+}
+
+/* ── Expired Banner ── */
+.pp-expired-banner {
+  padding: 14px 18px; border-radius: 14px;
+  background: var(--bg3); border: 1.5px solid var(--border);
+  cursor: pointer; transition: all 0.2s;
+}
+.pp-expired-banner:hover { background: var(--bg2); border-color: var(--blue); }
+.pp-expired-text {
+  font-size: 13px; color: var(--text2); font-weight: 600;
+  display: flex; align-items: center; gap: 8px;
+}
+.pp-expired-text strong { color: var(--blue); }
+
+/* ── Referral Slots Gamification ── */
+.pp-ref-slots {
+  display: flex; gap: 8px; margin-bottom: 10px; justify-content: center;
+}
+.pp-ref-slot {
+  width: 48px; height: 48px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; transition: all 0.3s;
+  border: 2px solid var(--border); background: var(--bg3);
+}
+.pp-ref-slot.filled {
+  background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.05));
+  border-color: #10B981;
+  animation: ppSlotPop 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes ppSlotPop {
+  from { transform: scale(0.8); } to { transform: scale(1); }
+}
+.pp-ref-slot.empty {
+  opacity: 0.5;
+}
+.pp-ref-limit-msg {
+  text-align: center; font-size: 13px; font-weight: 700;
+  color: #10B981; padding: 8px; border-radius: 10px;
+  background: rgba(16,185,129,0.08);
+}
+.pp-ref-sub {
+  text-align: center; font-size: 12px; color: var(--text3); font-weight: 500;
+}

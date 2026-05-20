@@ -13,12 +13,53 @@ import {
   setPersistence,
   browserLocalPersistence
 } from 'firebase/auth';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import {
   savePendingReferralCode,
   getReferralCodeFromUrl,
-  applyReferralAfterRegister
+  applyReferralAfterRegister,
+  FREE_TRIAL_DAYS,
+  URGENCY_DAYS,
+  REFERRAL_DISCOUNT,
 } from '../services/referral';
+
+// ── Trial status hisoblash funksiyasi ──
+function computeTrialStatus(data) {
+  // Agar to'langan premium bo'lsa — 'premium'
+  if (data.isPremium && data.premiumPlan === 'paid') return { status: 'premium', daysLeft: 0, urgencyMs: 0 };
+  // Agar referral orqali premium bo'lsa va hali muddati tugamagan bo'lsa — 'premium'
+  if (data.isPremium && data.premiumExpire) {
+    const exp = new Date(data.premiumExpire);
+    if (exp > new Date()) return { status: 'premium', daysLeft: Math.ceil((exp - new Date()) / 86400000), urgencyMs: 0 };
+  }
+
+  // createdAt asosida hisoblash
+  const createdAt = data.createdAt?.toDate ? data.createdAt.toDate() : new Date(data.createdAt || Date.now());
+  const now = new Date();
+  const daysSinceReg = Math.floor((now - createdAt) / 86400000);
+
+  if (daysSinceReg < FREE_TRIAL_DAYS) {
+    // 1-7 kun: Free Trial
+    return { status: 'trial', daysLeft: FREE_TRIAL_DAYS - daysSinceReg, urgencyMs: 0 };
+  }
+
+  if (daysSinceReg < FREE_TRIAL_DAYS + URGENCY_DAYS) {
+    // 8-10 kun: Urgency — 72 soatlik countdown
+    const urgencyEnd = new Date(createdAt);
+    urgencyEnd.setDate(urgencyEnd.getDate() + FREE_TRIAL_DAYS + URGENCY_DAYS);
+    const msLeft = urgencyEnd - now;
+    return {
+      status: 'urgency',
+      daysLeft: 0,
+      urgencyMs: Math.max(0, msLeft),
+      hasReferralDiscount: !!data.referredBy,
+      discountPercent: data.referredBy ? REFERRAL_DISCOUNT : 0,
+    };
+  }
+
+  // 11+ kun: Normal (chegirma tugagan)
+  return { status: 'expired', daysLeft: 0, urgencyMs: 0 };
+}
 
 export const AuthContext = createContext();
 
@@ -257,22 +298,30 @@ export const AuthProvider = ({ children }) => {
           try {
             const userRef = doc(db, 'users', firebaseUser.uid);
             const userSnap = await getDoc(userRef);
+            let trialInfo = { status: 'expired', daysLeft: 0, urgencyMs: 0 };
             if (userSnap.exists()) {
               const data = userSnap.data();
               isPremium = data.isPremium || false;
               role = data.role || 'user';
 
-              // ═══ BUG #1 TUZATILDI: Premium muddati tekshiruvi ═══
+              // ═══ Premium muddati tekshiruvi ═══
               if (isPremium && data.premiumExpire && data.premiumPlan !== 'paid') {
                 const expDate = new Date(data.premiumExpire);
                 if (expDate < new Date()) {
-                  // Bepul muddat tugagan — premium bekor qilish
                   isPremium = false;
                   await updateDoc(userRef, {
                     isPremium: false,
                     premiumPlan: 'expired',
                   }).catch(e => console.warn('Premium expire update xatosi:', e));
                 }
+              }
+
+              // ═══ TRIAL STATUS HISOBLASH ═══
+              trialInfo = computeTrialStatus({ ...data, isPremium });
+
+              // Trial davomida premium funksiyalar ochiq
+              if (trialInfo.status === 'trial' || trialInfo.status === 'urgency') {
+                isPremium = true;
               }
             } else {
               await setDoc(userRef, {
@@ -290,6 +339,9 @@ export const AuthProvider = ({ children }) => {
                 firebaseUser.displayName || firebaseUser.email?.split('@')[0]
               );
               if (refApplied) isPremium = true;
+              // Yangi foydalanuvchi — trial boshlandi
+              trialInfo = { status: 'trial', daysLeft: FREE_TRIAL_DAYS, urgencyMs: 0 };
+              isPremium = true;
             }
           } catch (firestoreErr) {
             console.warn('Firestore profil yuklashda xato:', firestoreErr.message);
@@ -302,6 +354,11 @@ export const AuthProvider = ({ children }) => {
             photoURL: firebaseUser.photoURL,
             isPremium,
             role,
+            trialStatus: trialInfo.status,
+            trialDaysLeft: trialInfo.daysLeft,
+            urgencyMs: trialInfo.urgencyMs,
+            hasReferralDiscount: trialInfo.hasReferralDiscount || false,
+            discountPercent: trialInfo.discountPercent || 0,
             _firebaseUser: firebaseUser
           };
 
@@ -312,7 +369,12 @@ export const AuthProvider = ({ children }) => {
             displayName: firebaseUser.displayName,
             photoURL: firebaseUser.photoURL,
             isPremium,
-            role
+            role,
+            trialStatus: trialInfo.status,
+            trialDaysLeft: trialInfo.daysLeft,
+            urgencyMs: trialInfo.urgencyMs,
+            hasReferralDiscount: trialInfo.hasReferralDiscount || false,
+            discountPercent: trialInfo.discountPercent || 0,
           }));
 
           setUser(enhancedUser);
