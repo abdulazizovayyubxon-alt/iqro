@@ -550,24 +550,28 @@ export const AuthProvider = ({ children }) => {
         err.code === 'auth/invalid-credential'
       ) {
         // ═══ FIREBASE EMAIL ENUMERATION PROTECTION WORKAROUND ═══
-        // auth/invalid-credential — bu "user yo'q" yoki "parol noto'g'ri" bo'lishi mumkin.
-        // Firestore'dan tekshirib aniqlash kerak:
-        try {
-          const usersRef = collection(db, 'users');
-          const q = query(usersRef, where('email', '==', internalEmail));
-          const snap = await getDocs(q);
-          
-          if (!snap.empty) {
-            // Foydalanuvchi Firestore'da MAVJUD — demak eski parol bor
-            return { success: false, hasCustomPassword: true };
-          }
-        } catch (fsErr) {
-          console.warn('Firestore user tekshiruvida xato:', fsErr);
-        }
-
-        // Firestore'da ham topilmadi — yangi foydalanuvchi
+        // auth/invalid-credential — "user yo'q" yoki "parol noto'g'ri" bo'lishi mumkin.
+        // Unauthenticated holatda Firestore'ga murojaat qilib bo'lmaydi,
+        // shuning uchun createUser orqali tekshiramiz:
+        // agar email-already-in-use kelsa → user mavjud, eski parol bor.
         if (!isRegistering) {
-          return { success: false, notRegistered: true };
+          try {
+            // Sinov: yangi akkaunt ochishga urinamiz
+            const testCred = await createUserWithEmailAndPassword(auth, internalEmail, finalPassword);
+            // Muvaffaqiyatli → bu haqiqiy yangi user, akkaunt yaratildi!
+            // Lekin bizga faqat tekshirish kerak edi, shu sababli o'chirib tashlaymiz
+            // va LoginPage ga "notRegistered" qaytaramiz (u ism kiritish sahifasiga o'tkazadi)
+            await testCred.user.delete();
+            await signOut(auth);
+            return { success: false, notRegistered: true };
+          } catch (probeErr) {
+            if (probeErr.code === 'auth/email-already-in-use') {
+              // User MAVJUD — eski maxsus parol bor
+              return { success: false, hasCustomPassword: true };
+            }
+            // Boshqa xato — yangi user deb hisoblaymiz
+            return { success: false, notRegistered: true };
+          }
         }
 
         try {
