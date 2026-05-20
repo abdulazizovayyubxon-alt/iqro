@@ -27,7 +27,7 @@ const TestPage = () => {
   const mode = state.testMode || 'exam';
   const setMode = (m) => updateState({ testMode: m });
   const topicId = state.topicId ?? -1;
-  const goBack = () => navigate('/');
+  const goBack = () => navigate('/test');
   const { addObjection } = useContext(ObjectionContext);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
@@ -441,7 +441,7 @@ const TestPage = () => {
             </div>
           </div>
           <div style={{ height: '4px', background: 'var(--bg3)', borderRadius: '2px', marginBottom: '20px' }}>
-            <div style={{ height: '100%', borderRadius: '2px', background: 'var(--accent)', width: `${((currentQ) / questions.length) * 100}%`, transition: 'width 0.3s ease' }} />
+            <div style={{ height: '100%', borderRadius: '2px', background: 'var(--accent)', width: `${((currentQ + 1) / questions.length) * 100}%`, transition: 'width 0.3s ease' }} />
           </div>
           <div className="flashcard-wrap" onClick={() => setFcFlipped(!fcFlipped)}>
             <motion.div className={`flashcard ${fcFlipped ? 'flipped' : ''}`}>
@@ -572,7 +572,7 @@ const TestPage = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 320, margin: '0 auto' }}>
                 <button style={{ padding: '14px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }} onClick={generateQuestions}><RefreshCw size={17} /> Yana ishlash</button>
                 {state.mistakes?.length > 0 && <button style={{ padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }} onClick={() => setMode('mistakes')}><Target size={16} /> Xatolar ustida ishlash</button>}
-                <button style={{ padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }} onClick={() => navigate('/')}><Home size={16} /> Bosh sahifaga</button>
+                <button style={{ padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }} onClick={() => navigate('/test')}><Home size={16} /> Bosh sahifaga</button>
                 <div style={{ marginTop: '8px', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
                   <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}><Share2 size={13} /> Natijani ulashing</div>
                   <div style={{ display: 'flex', gap: '8px' }}>

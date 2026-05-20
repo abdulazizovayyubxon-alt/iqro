@@ -5,7 +5,6 @@ import { useAdmin } from '../hooks/useAdmin';
 import { TOPICS } from '../data/mockData';
 import {
   LayoutDashboard,
-  BarChart3,
   PenTool,
   BookOpen,
   Shield,
@@ -15,21 +14,8 @@ import {
   Medal,
   Palette,
   Users,
-  User
 } from 'lucide-react';
 
-// URL xaritasi — route ↔ sahifa nomi
-const ROUTE_MAP = {
-  '/': 'dashboard',
-  '/test': 'test',
-  '/exam': 'exam',
-  '/review': 'smartreview',
-  '/leaderboard': 'leaderboard',
-  '/achievements': 'achievements',
-  '/admin': 'admin',
-  '/referral': 'referral',
-  '/profile': 'profile',
-};
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -38,8 +24,8 @@ const Sidebar = () => {
   const { isAdmin } = useAdmin();
   const [showMobSubjects, setShowMobSubjects] = useState(false);
 
-  // Joriy sahifani aniqlash
-  const currentPage = ROUTE_MAP[location.pathname] || 'dashboard';
+  // Joriy sahifani aniqlash — uniformly location.pathname orqali
+  const isActive = (path) => location.pathname === path;
 
   const activeCategoryName = state.activeCategory === 'art' ? "Tasviriy san'at" : "CHQBT";
 
@@ -75,7 +61,7 @@ const Sidebar = () => {
           <div className="sidebar-title hide-mobile">Asosiy</div>
           {isAdmin && (
             <div
-              className={`nav-item ${currentPage === 'dashboard' ? 'active' : ''}`}
+              className={`nav-item ${isActive('/dashboard') ? 'active' : ''}`}
               onClick={() => navigate('/dashboard')}
             >
               <span className="nav-icon"><LayoutDashboard size={20} /></span>
@@ -85,7 +71,7 @@ const Sidebar = () => {
 
 
           <div
-            className={`nav-item ${currentPage === 'test' ? 'active' : ''}`}
+            className={`nav-item ${isActive('/test') ? 'active' : ''}`}
             onClick={() => navigateToTest(-1, 'exam')}
           >
             <span className="nav-icon"><PenTool size={20} /></span>
@@ -93,7 +79,7 @@ const Sidebar = () => {
           </div>
 
           <div
-            className={`nav-item ${currentPage === 'exam' ? 'active' : ''}`}
+            className={`nav-item ${isActive('/exam') ? 'active' : ''}`}
             onClick={() => navigate('/exam')}
           >
             <span className="nav-icon"><GraduationCap size={20} /></span>
@@ -101,7 +87,7 @@ const Sidebar = () => {
           </div>
 
           <div
-            className={`nav-item ${location.pathname === '/review' ? 'active' : ''}`}
+            className={`nav-item ${isActive('/review') ? 'active' : ''}`}
             onClick={() => navigate('/review')}
           >
             <span className="nav-icon"><Brain size={20} /></span>
@@ -114,7 +100,7 @@ const Sidebar = () => {
           </div>
 
           <div
-            className={`nav-item ${currentPage === 'leaderboard' ? 'active' : ''}`}
+            className={`nav-item ${isActive('/leaderboard') ? 'active' : ''}`}
             onClick={() => navigate('/leaderboard')}
           >
             <span className="nav-icon"><Trophy size={20} /></span>
@@ -122,7 +108,7 @@ const Sidebar = () => {
           </div>
 
           <div
-            className={`nav-item ${currentPage === 'achievements' ? 'active' : ''}`}
+            className={`nav-item ${isActive('/achievements') ? 'active' : ''}`}
             onClick={() => navigate('/achievements')}
           >
             <span className="nav-icon"><Medal size={20} /></span>
@@ -130,7 +116,7 @@ const Sidebar = () => {
           </div>
 
           <div
-            className={`nav-item ${currentPage === 'referral' ? 'active' : ''}`}
+            className={`nav-item ${isActive('/referral') ? 'active' : ''}`}
             onClick={() => navigate('/referral')}
           >
             <span className="nav-icon"><Users size={20} /></span>
@@ -140,7 +126,7 @@ const Sidebar = () => {
           {/* Admin link — faqat admin uchun */}
           {isAdmin && (
             <div
-              className={`nav-item ${currentPage === 'admin' ? 'active' : ''}`}
+              className={`nav-item ${isActive('/admin') ? 'active' : ''}`}
               onClick={() => navigate('/admin')}
             >
               <span className="nav-icon"><Shield size={20} /></span>

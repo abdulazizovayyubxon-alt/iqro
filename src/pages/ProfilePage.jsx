@@ -142,9 +142,13 @@ const ProfilePage = ({ theme, toggleTheme }) => {
   if (loading) {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh', flexDirection: 'column', gap: 12 }}>
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Yuklanmoqda...</span>
-        </div>
+        <div style={{
+          width: 36, height: 36,
+          border: '3px solid var(--border)',
+          borderTopColor: 'var(--blue)',
+          borderRadius: '50%',
+          animation: 'spin 0.8s linear infinite'
+        }} />
         <p style={{ color: 'var(--text3)', fontSize: 14 }}>Profil ma'lumotlari yuklanmoqda...</p>
       </div>
     );

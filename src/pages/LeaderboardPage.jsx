@@ -140,8 +140,8 @@ const LeaderboardPage = () => {
         display: 'flex', alignItems: 'center', gap: 14,
         padding: '12px 16px', borderRadius: 14,
         border: `1.5px solid ${entry.isMe ? PRIMARY : 'var(--border)'}`,
-        background: entry.isMe ? 'var(--blue-bg)' : pinned ? 'var(--amber-bg)' : 'var(--bg2)',
-        boxShadow: entry.isMe ? `0 0 0 3px ${PRIMARY}20` : 'none',
+        background: entry.isMe ? 'rgba(41, 182, 246, 0.12)' : pinned ? 'rgba(245, 158, 11, 0.12)' : 'var(--bg2)',
+        boxShadow: entry.isMe ? `0 0 0 3px rgba(41, 182, 246, 0.2)` : 'none',
         position: 'relative', overflow: 'hidden',
       }}
     >
@@ -275,11 +275,11 @@ const s = {
   listWrap: { display: 'flex', flexDirection: 'column', gap: 0 },
   empty: { textAlign: 'center', padding: 40, color: 'var(--text3)', fontSize: 15 },
   pinnedWrap: {
-    position: 'fixed', bottom: 0, left: 0, right: 0,
+    position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50%)',
+    width: '100%', maxWidth: 600,
     padding: '0 16px calc(80px + env(safe-area-inset-bottom)) 16px',
     background: 'linear-gradient(transparent, var(--bg) 30%)',
     zIndex: 100,
-    maxWidth: 600, margin: '0 auto',
   },
   pinnedDivider: { display: 'flex', justifyContent: 'center', marginBottom: 8 },
   pinnedDots: { fontSize: 14, color: 'var(--border2)', letterSpacing: 4 },

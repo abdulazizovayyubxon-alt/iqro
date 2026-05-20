@@ -15,9 +15,9 @@ import {
 const TABS = [
   { id: 'test',        path: '/test',         icon: PenTool,       label: 'Test' },
   { id: 'exam',        path: '/exam',         icon: GraduationCap, label: 'Imtihon' },
-  { id: 'review',      path: '/review',       icon: Brain,         label: 'Takrorlash' },
+  { id: 'review',      path: '/review',       icon: Brain,         label: 'Takror' },
   { id: 'leaderboard', path: '/leaderboard',  icon: Trophy,        label: 'Reyting' },
-  { id: 'referral',    path: '/referral',     icon: Users,         label: 'Taklif qilish' },
+  { id: 'referral',    path: '/referral',     icon: Users,         label: 'Taklif' },
 ];
 
 export default function BottomNav() {
@@ -83,7 +83,7 @@ export default function BottomNav() {
 
 const styles = {
   nav: {
-    display: 'none', // CSS media query orqali mobilda ko'rinadi
+    // CSS media query orqali mobilda ko'rinadi, bu yerda display yo'q
     position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1000,
     background: 'var(--bg2)', borderTop: '1px solid var(--border)',
     padding: '8px 0 calc(8px + env(safe-area-inset-bottom))',
@@ -97,8 +97,7 @@ const styles = {
   },
   activePill: {
     position: 'absolute',
-    top: '50%', left: '50%',
-    transform: 'translate(-50%, -50%)',
+    top: -9, left: -9,
     width: 40, height: 40, borderRadius: 12,
     background: 'var(--accent)',
     zIndex: 0,

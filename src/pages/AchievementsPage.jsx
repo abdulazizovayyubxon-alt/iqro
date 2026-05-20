@@ -369,7 +369,7 @@ const AchievementsPage = () => {
                     transition={{ delay: idx * 0.05 }}
                     className="stats-topic-row"
                   >
-                    <div style={{ minWidth: '180px', fontSize: '14px', fontWeight: '500', color: 'var(--text)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <div style={{ minWidth: '120px', maxWidth: '180px', fontSize: '14px', fontWeight: '500', color: 'var(--text)', display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
                       {t.icon} {t.name}
                     </div>
                     <div style={{ flex: 1 }}>

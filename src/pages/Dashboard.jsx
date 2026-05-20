@@ -49,7 +49,7 @@ const Dashboard = () => {
   };
 
   const cat = state.activeCategory;
-  const catStats = state.stats[cat];
+  const catStats = state.stats[cat] || { totalAnswered: 0, totalCorrect: 0, streak: 0, maxStreak: 0, mistakes: [] };
   const totalAcc = catStats.totalAnswered > 0
     ? Math.round((catStats.totalCorrect / catStats.totalAnswered) * 100) : 0;
   const filteredMistakesCount = catStats.mistakes.length;
@@ -316,7 +316,7 @@ const s = {
     borderRadius: 6, padding: '1px 4px', minWidth: 14, textAlign: 'center',
   },
   topicsGrid: {
-    display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))',
+    display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
     gap: 10, marginBottom: 24,
   },
   topicCard: {

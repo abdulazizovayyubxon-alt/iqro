@@ -59,17 +59,100 @@ export default function ReferralPage() {
     }
   };
 
+  // ── Jalb qiluvchi matnlar — har safar biri tasodifiy tanlanadi ──
+  const getShareMessage = (senderName, platform = 'general') => {
+    const name = senderName || 'Do\'stingiz';
+    const firstName = name.split(' ')[0];
+
+    const messages = [
+      // 1 — Shaxsiy tavsiya uslubi
+      `📚 Assalomu alaykum!
+
+${firstName} siz uchun IQRO platformasida 1 oylik bepul kirish ochib berdi.
+
+IQRO — kasbiy sertifikatlash imtihoniga tayyorgarlik platformasi. Minglab o'qituvchilar allaqachon shu yerda o'qiyapti.
+
+✅ Testlar va imtihon simulyatsiyasi
+✅ Aqlli takrorlash tizimi
+✅ Reyting va natijalar tahlili
+
+Havola 1 oy muddatli — kechiktirmang 👇
+${refLink}
+
+Kod: ${refCode}`,
+
+      // 2 — Muammo → Yechim uslubi
+      `🎯 Sertifikatlash imtihoniga tayyorlanayapsizmi?
+
+${firstName} siz uchun IQRO platformasiga 1 oylik bepul kirish ulashdi.
+
+Ko'pchilik o'qituvchilar imtihon oldidan nima o'qishni bilmay qiyinchilikka tushadi. IQRO aynan shu muammoni hal qiladi — barcha fanlar bo'yicha savollar, imtihon rejimi va natijalar tahlili bir joyda.
+
+👉 Bepul kirish: ${refLink}
+🔑 Kod: ${refCode}
+
+Foydalanib ko'ring — 1 oy bepul!`,
+
+      // 3 — Statistika va ishonch uslubi
+`🏆 ${firstName} sizga sovg'a yo'lladi!
+
+IQRO — kasbiy sertifikatlash platformasi. 1 oylik bepul kirish sizni kutmoqda.
+
+Nima uchun IQRO?
+• 7 ta fan bo'yicha 1000+ savollar bazasi
+• Haqiqiy imtihon sharoitida mashq
+• Xatolarni tahlil qilish tizimi
+• O'qituvchilar reytingi
+
+Sertifikatlash imtihoni yaqinlashmoqda — tayyorgarlikni bugundan boshlang.
+
+🔗 ${refLink}
+📌 Kod: ${refCode}`,
+
+      // 4 — Qisqa va ta'sirchan
+`👋 Salom!
+
+${firstName} sizi IQRO platformasiga taklif qildi va 1 oy bepul kirish ulashdi.
+
+IQRO — kasbiy sertifikatlash imtihoniga onlayn tayyorgarlik. Qulay, tez va samarali.
+
+Bugun ro'yxatdan o'ting — 1 oy bepul foydalaning:
+${refLink}
+
+Kod: ${refCode}
+
+⏳ Taklif muddatli — o'tkazib yubormang!`,
+    ];
+
+    // Tasodifiy matn tanlash
+    const idx = Math.floor(Math.random() * messages.length);
+
+    if (platform === 'telegram') {
+      // Telegram uchun qisqaroq variant
+      return `📚 ${firstName} siz uchun IQRO platformasida 1 oylik bepul kirish ochdi!\n\nKasbiy sertifikatlash imtihoniga tayyorgarlik — testlar, imtihon simulyatsiyasi, reyting.\n\n✅ Bepul kirish: ${refLink}\n🔑 Kod: ${refCode}`;
+    }
+
+    return messages[idx];
+  };
+
   const shareReferral = async () => {
-    const text = `🎓 IQRO Platformasiga qo'shiling!\n\nMen siz uchun 1 oylik bepul kirish yo'llab berdim.\n👉 ${refLink}\n\nYoki kod: ${refCode}`;
+    const msg = getShareMessage(user?.displayName);
     if (navigator.share) {
-      try { await navigator.share({ title: 'IQRO Platform', text, url: refLink }); } catch { }
+      try {
+        await navigator.share({
+          title: 'IQRO — Kasbiy Sertifikatlash Platformasi',
+          text: msg,
+          url: refLink
+        });
+      } catch { /* bekor qilingan */ }
     } else {
-      await copyToClipboard(text, 'link');
+      await copyToClipboard(msg, 'link');
     }
   };
 
   const shareViaTelegram = () => {
-    const text = encodeURIComponent(`🎓 IQRO Platformasiga qo'shiling! 1 oylik bepul kirish:\n${refLink}\nKod: ${refCode}`);
+    const msg = getShareMessage(user?.displayName, 'telegram');
+    const text = encodeURIComponent(msg);
     window.open(`https://t.me/share/url?url=${encodeURIComponent(refLink)}&text=${text}`, '_blank');
   };
 
@@ -149,6 +232,16 @@ export default function ReferralPage() {
                 </button>
               </div>
             </div>
+
+            {/* Matnni nusxalash — har qanday qurilmada ishlaydi */}
+            <button
+              onClick={() => copyToClipboard(getShareMessage(user?.displayName), 'msg')}
+              style={{ ...s.outlineBtn, width: '100%', marginBottom: 10, justifyContent: 'center', gap: 8 }}
+            >
+              {copied === 'msg' ? <Check size={15} /> : <Copy size={15} />}
+              {copied === 'msg' ? 'Matn nusxalandi! ✅' : 'Tayyor matn nusxalash (WhatsApp / SMS)'}
+            </button>
+
             <div style={{ display: 'flex', gap: 10 }}>
               <button onClick={shareReferral} style={{ ...s.primaryBtn, flex: 1 }}>
                 <Share2 size={16} /> Ulashish

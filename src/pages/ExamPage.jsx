@@ -31,7 +31,7 @@ function shuffleArray(arr) {
 
 const ExamPage = () => {
   const navigate = useNavigate();
-  const goBack = () => navigate('/');
+  const goBack = () => navigate('/test');
   const { user } = useAuth();
   const { state, batchCommitResults } = useContext(AppContext);
   const { addObjection } = useContext(ObjectionContext);
@@ -328,7 +328,7 @@ const ExamPage = () => {
             <button className="btn btn-primary" style={{ flex: 1 }} onClick={() => navigate(0)}>
               Qaytadan urinish
             </button>
-            <button className="btn btn-outline" style={{ flex: 1 }} onClick={goBack}>
+            <button className="btn btn-outline" style={{ flex: 1 }} onClick={() => navigate('/test')}>
               Bosh sahifaga
             </button>
           </div>

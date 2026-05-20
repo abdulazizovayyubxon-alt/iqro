@@ -17,7 +17,7 @@ import { TOPICS } from '../data/mockData';
 
 const SmartReviewPage = () => {
   const navigate = useNavigate();
-  const goBack = () => navigate('/');
+  const goBack = () => navigate('/test');
   const { state, updateState } = useContext(AppContext);
   const { addObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
@@ -44,7 +44,7 @@ const SmartReviewPage = () => {
           <button style={{ width: '100%', padding: '15px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 16, cursor: 'pointer', fontFamily: 'inherit', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
             ⭐ Premium Rejimni Faollashtirish
           </button>
-          <button style={{ width: '100%', padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit' }} onClick={goBack}>← Bosh sahifaga</button>
+          <button style={{ width: '100%', padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit' }} onClick={goBack}>← Dashboard</button>
         </div>
         <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
       </motion.div>
@@ -160,11 +160,11 @@ const SmartReviewPage = () => {
           <div style={{ fontSize: 52, marginBottom: 12 }}>{pct >= 70 ? '🎉' : '💪'}</div>
           <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 20, color: 'var(--text)' }}>Takrorlash tugadi!</div>
           <div style={{ display: 'flex', gap: 24, justifyContent: 'center', marginBottom: 20 }}>
-            <div style={{ textAlign: 'center', background: '#DCFCE7', borderRadius: 16, padding: '16px 24px' }}>
+            <div style={{ textAlign: 'center', background: 'rgba(22, 163, 74, 0.12)', border: '1px solid rgba(22, 163, 74, 0.25)', borderRadius: 16, padding: '16px 24px' }}>
               <div style={{ fontSize: 32, fontWeight: 900, color: '#16A34A' }}>{sessionStats.correct}</div>
               <div style={{ fontSize: 11, color: '#16A34A', fontWeight: 700, marginTop: 4 }}>TO'G'RI</div>
             </div>
-            <div style={{ textAlign: 'center', background: '#FEE2E2', borderRadius: 16, padding: '16px 24px' }}>
+            <div style={{ textAlign: 'center', background: 'rgba(220, 38, 38, 0.12)', border: '1px solid rgba(220, 38, 38, 0.25)', borderRadius: 16, padding: '16px 24px' }}>
               <div style={{ fontSize: 32, fontWeight: 900, color: '#DC2626' }}>{sessionStats.wrong}</div>
               <div style={{ fontSize: 11, color: '#DC2626', fontWeight: 700, marginTop: 4 }}>XATO</div>
             </div>
@@ -237,8 +237,8 @@ const SmartReviewPage = () => {
               {card.opts.map((opt, i) => {
                 let bg = 'var(--bg3)', border = '1.5px solid var(--border)', color = 'var(--text2)';
                 if (answered !== null) {
-                  if (i === card.correct) { bg = '#DCFCE7'; border = '2px solid #86EFAC'; color = '#166534'; }
-                  else if (i === answered && i !== card.correct) { bg = '#FEE2E2'; border = '2px solid #FCA5A5'; color = '#991B1B'; }
+                  if (i === card.correct) { bg = 'rgba(22, 163, 74, 0.15)'; border = '2px solid rgba(22, 163, 74, 0.4)'; color = 'var(--text)'; }
+                  else if (i === answered && i !== card.correct) { bg = 'rgba(220, 38, 38, 0.15)'; border = '2px solid rgba(220, 38, 38, 0.4)'; color = 'var(--text)'; }
                   else { bg = 'var(--bg3)'; color = 'var(--text3)'; }
                 }
                 return (
@@ -257,8 +257,8 @@ const SmartReviewPage = () => {
             {/* Tushuntirish */}
             {answered !== null && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} style={{ marginTop: 16 }}>
-                <div style={{ padding: '14px 16px', borderRadius: 12, fontSize: 14, lineHeight: 1.6, background: isCorrect ? '#F0FDF4' : '#FFF1F2', border: `1px solid ${isCorrect ? '#BBF7D0' : '#FECDD3'}`, color: isCorrect ? '#166534' : '#9F1239', marginBottom: 14 }}>
-                  <strong>{isCorrect ? '✅ To\'g\'ri!' : '❌ Noto\'g\'ri!'}</strong>{' '}{card.explanation || ''}
+                <div style={{ padding: '14px 16px', borderRadius: 12, fontSize: 14, lineHeight: 1.6, background: isCorrect ? 'rgba(22, 163, 74, 0.12)' : 'rgba(220, 38, 38, 0.12)', border: `1px solid ${isCorrect ? 'rgba(22, 163, 74, 0.25)' : 'rgba(220, 38, 38, 0.25)'}`, color: 'var(--text2)', marginBottom: 14 }}>
+                  <strong style={{ color: isCorrect ? '#22c55e' : '#ef4444' }}>{isCorrect ? '✅ To\'g\'ri!' : '❌ Noto\'g\'ri!'}</strong>{' '}{card.explanation || ''}
                 </div>
                 <button onClick={nextCard} style={{ width: '100%', padding: '14px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
                   {currentIdx + 1 >= cards.length ? 'Yakunlash' : 'Keyingi savol'} <ChevronRight size={18} />
