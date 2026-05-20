@@ -21,7 +21,8 @@ import { getFirestore } from 'firebase-admin/firestore';
 import crypto from 'crypto';
 
 const REFERRAL_BONUS = 15000;   // so'm — har bir to'lagan do'st uchun
-const MAX_REFERRALS  = 3;        // A maksimal 3 ta bonus olishi mumkin
+const MAX_REFERRALS  = 5;        // A maksimal 5 ta bonus olishi mumkin
+const REFERRAL_DISCOUNT = 50;    // 50% chegirma
 
 // Firebase Admin SDK (server-side)
 function getDb() {
@@ -152,16 +153,25 @@ async function activatePremium(db, rawUserId, planId, paymentMethod, transId) {
     expireDate = d.toISOString();
   }
 
-  // B → isPremium = true
-  await db.collection('users').doc(userId).update({
+  // B → isPremium = true (premiumPlan = 'paid' — AuthContext da expire check skip qiladi)
+  const userRef = db.collection('users').doc(userId);
+  const userSnap = await userRef.get();
+  const userData = userSnap.exists ? userSnap.data() : {};
+
+  // Agar referral orqali kelgan va chegirmasi bor bo'lsa — eslatma qo'shamiz
+  const updateData = {
     isPremium: true,
     premiumSince: new Date().toISOString(),
     premiumExpire: expireDate,
-    premiumPlan: planId,
+    premiumPlan: 'paid',  // ═══ MUHIM: 'paid' bo'lsa AuthContext expire check ni skip qiladi
     premiumMethod: paymentMethod,
     premiumTransId: transId,
-    reminderSent: false, // Bepul oy tugashiga eslatma uchun
-  });
+    reminderSent: false,
+    referralDiscount: 0, // To'lovi bo'lgandan keyin chegirma nolga tushadi
+    discountExpired: true,
+  };
+
+  await userRef.update(updateData);
 
   // Referral bonusini hisoblaymiz (A ga bonus)
   await processReferralBonus(db, userId);

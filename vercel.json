@@ -1,5 +1,12 @@
 {
   "rewrites": [
-    { "source": "/((?!assets|sw|workbox|manifest|registerSW).*)", "destination": "/index.html" }
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/((?!assets|sw|workbox|manifest|registerSW|api).*)", "destination": "/index.html" }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron-daily?secret=${CRON_SECRET}",
+      "schedule": "0 6 * * *"
+    }
   ]
 }
