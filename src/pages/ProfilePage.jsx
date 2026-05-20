@@ -40,7 +40,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
   // Urgency countdown (72h real-time)
   const [urgencyLeft, setUrgencyLeft] = useState(user?.urgencyMs || 0);
 
-  // Exam date from localStorage
+  // Exam date — Firestore dan sinxronlanadi, localStorage kesh sifatida
   const [examDate, setExamDate] = useState(() => {
     try { return localStorage.getItem('iqro_exam_date') || ''; } catch { return ''; }
   });
@@ -60,7 +60,12 @@ export default function ProfilePage({ theme, toggleTheme }) {
             goal: d.goal || '',
             subject: d.subject || '',
           });
-          if (d.examDate) { setExamDate(d.examDate); localStorage.setItem('iqro_exam_date', d.examDate); }
+          if (d.examDate) {
+            setExamDate(d.examDate);
+            localStorage.setItem('iqro_exam_date', d.examDate);
+            // Header uchun ham sinxronlaymiz (CUSTOM_EXAM_DATE formatida)
+            localStorage.setItem('CUSTOM_EXAM_DATE', new Date(d.examDate).toISOString());
+          }
         }
         const code = await getUserReferralCode(user.uid, user.displayName);
         setRefCode(code);
@@ -138,13 +143,20 @@ export default function ProfilePage({ theme, toggleTheme }) {
   const handleSave = async () => {
     setSaving(true);
     try {
-      await setDoc(doc(db, 'users', user.uid), {
+      const profileData = {
         displayName: editForm.name,
         gender: editForm.gender,
         birthDate: editForm.birthDate,
         goal: editForm.goal,
         subject: editForm.subject,
-      }, { merge: true });
+      };
+      // Imtihon sanasini ham Firestore ga saqlaymiz (qurilmalar arasi sinxron)
+      if (examDate) {
+        profileData.examDate = examDate;
+        localStorage.setItem('iqro_exam_date', examDate);
+        localStorage.setItem('CUSTOM_EXAM_DATE', new Date(examDate).toISOString());
+      }
+      await setDoc(doc(db, 'users', user.uid), profileData, { merge: true });
       showToast("Profil saqlandi ✅", 'success');
       setShowEdit(false);
     } catch (e) {
@@ -461,7 +473,11 @@ export default function ProfilePage({ theme, toggleTheme }) {
               <label>Imtihon sanasi</label>
               <input type="date" value={examDate} onChange={e => {
                 setExamDate(e.target.value);
+                // Kesh sifatida localStorage ga saqlaymiz (Firestore ga handleSave da saqlanadi)
                 localStorage.setItem('iqro_exam_date', e.target.value);
+                if (e.target.value) {
+                  localStorage.setItem('CUSTOM_EXAM_DATE', new Date(e.target.value).toISOString());
+                }
               }} />
             </div>
             <div className="pp-modal-actions">

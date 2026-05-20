@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { Moon, Sun, LogOut, ChevronDown, Camera, Medal, Palette, Bell, Calendar, CheckCircle2, AlertCircle, Info, Trash2 } from 'lucide-react';
 import { updateProfile } from 'firebase/auth';
 import { auth, db } from '../firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, setDoc } from 'firebase/firestore';
 import { EXAM_DATE } from '../config';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -51,14 +51,30 @@ const Header = ({ theme, toggleTheme }) => {
   };
 
   useEffect(() => {
-    calcDays();
+    // Firestore dan imtihon sanasini yuklash (qurilmalar arasi sinxron)
+    const loadExamDate = async () => {
+      if (!user) return;
+      try {
+        const snap = await getDoc(doc(db, 'users', user.uid));
+        if (snap.exists() && snap.data().examDate) {
+          const firestoreDate = snap.data().examDate;
+          // Firestore dagi sana localStorage ga kesh qilamiz
+          localStorage.setItem('iqro_exam_date', firestoreDate);
+          localStorage.setItem('CUSTOM_EXAM_DATE', new Date(firestoreDate).toISOString());
+        }
+      } catch (e) {
+        console.warn('Exam date yuklashda xato:', e);
+      }
+      calcDays();
+    };
+    loadExamDate();
     window.addEventListener('storage', calcDays);
     const interval = setInterval(calcDays, 60000);
     return () => {
       clearInterval(interval);
       window.removeEventListener('storage', calcDays);
     };
-  }, []);
+  }, [user]);
 
   // Firestore'dan jonli bildirishnomalarni yuklash
   useEffect(() => {
@@ -355,7 +371,7 @@ const Header = ({ theme, toggleTheme }) => {
               <button 
                 className="btn btn-primary" 
                 style={{ flex: 1 }} 
-                onClick={() => {
+                onClick={async () => {
                   let target = null;
                   if (tempDate) {
                     target = new Date(tempDate);
@@ -363,7 +379,19 @@ const Header = ({ theme, toggleTheme }) => {
                     target = new Date(Date.now() + parseInt(tempDays) * 86400000);
                   }
                   if (target) {
+                    // localStorage ga kesh sifatida saqlaymiz
                     localStorage.setItem('CUSTOM_EXAM_DATE', target.toISOString());
+                    // yyyy-mm-dd formatda ham saqlaymiz (ProfilePage uchun)
+                    const dateStr = target.toISOString().split('T')[0];
+                    localStorage.setItem('iqro_exam_date', dateStr);
+                    // ═══ FIRESTORE GA SAQLAYMIZ (qurilmalar arasi sinxron) ═══
+                    if (user) {
+                      try {
+                        await setDoc(doc(db, 'users', user.uid), { examDate: dateStr }, { merge: true });
+                      } catch (e) {
+                        console.warn('Exam date Firestore saqlash xatosi:', e);
+                      }
+                    }
                     calcDays();
                     showToast("Imtihon sanasi muvaffaqiyatli saqlandi!", 'success');
                   }
