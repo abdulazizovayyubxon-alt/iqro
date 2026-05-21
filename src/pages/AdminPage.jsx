@@ -6,7 +6,7 @@ import { useAdmin } from '../hooks/useAdmin';
 import { db, storage } from '../firebase';
 import {
   collection, query, orderBy, onSnapshot,
-  updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch
+  updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch, increment
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { q0_harbiy_xizmat } from '../data/questions_0.js';
@@ -1030,12 +1030,13 @@ const AdminPage = () => {
 
           {/* Qoidalar eslatmasi */}
           <div className="admin-info-box">
-            <div className="admin-info-title">ℹ️ Referral tizimi qoidalari (50/50 MODEL)</div>
+            <div className="admin-info-title">ℹ️ Referral tizimi joriy qoidalari (50/50 MODEL)</div>
             <div className="admin-info-text">
-              • Taklif qiluvchi va qilingan — <strong>ikkalasiga 30 kun bepul Premium</strong><br/>
-              • Har bir muvaffaqiyatli referral — ikki tomonga <strong>50% chegirma</strong><br/>
-              • Maksimal: <strong>3 ta taklif</strong> (har biri uchun 30 kun bepul)<br/>
-              • Admin "To'ladi" tugmasini bosib bonus berishni tasdiqlaydi
+              • <strong>Taklif qilingan do'st (B)</strong> ro'yxatdan o'tganda keyingi oylik to'loviga <strong>50% chegirma</strong> oladi (bepul premium yo'q).<br/>
+              • <strong>Taklif qiluvchi (A)</strong> do'sti (B) birinchi to'lovni muvaffaqiyatli qilgandan so'ng <strong>15 000 so'm</strong> bonus oladi.<br/>
+              • Maksimal takliflar soni: <strong>5 ta do'st</strong> (maksimal 75 000 so'm bonus).<br/>
+              • To'lov amalga oshirilganda (Click/Payme orqali) referral statusi avtomatik ravishda <strong>"To'ladi"</strong>ga o'tadi va bonus avtomatik beriladi.<br/>
+              • <strong>Amal (✓ To'ladi)</strong> tugmasi faqat favqulodda holatlar (qo'lda to'lov qilinganda) uchun admin qo'shimcha boshqaruvi sifatida qoldirilgan.
             </div>
           </div>
         </div>
