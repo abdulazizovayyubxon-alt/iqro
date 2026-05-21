@@ -79,19 +79,14 @@ IQRO — kasbiy sertifikatlash imtihoniga tayyorgarlik platformasi.
 ✅ Ikki tomonga ${REFERRAL_DISCOUNT}% chegirma
 
 Havola orqali ro'yxatdan o'ting — SIZ HAM, MEN HAM ${REFERRAL_DISCOUNT}% chegirma olamiz! 👇
-${refLink}
-
-Kod: ${refCode}`,
+${refLink}`,
 
       // 2 — Muammo → Yechim uslubi
       `🎯 Sertifikatlash imtihoniga tayyorlanayapsizmi?
 
 ${firstName} siz bilan IQRO da birga o'qishni taklif qilmoqda!
 
-Ro'yxatdan o'ting — IKKALANGIZ ${REFERRAL_DISCOUNT}% CHEGIRMA olasiz!
-
-👉 Ro'yxatdan o'tish: ${refLink}
-🔑 Kod: ${refCode}
+Ro'yxatdan o'tish: ${refLink}
 
 Bugundan boshlang — imtihon yaqinlashmoqda!`,
 
@@ -108,8 +103,7 @@ Nima uchun IQRO?
 
 Sertifikatlash imtihoni yaqinlashmoqda — tayyorgarlikni bugundan boshlang.
 
-🔗 ${refLink}
-📌 Kod: ${refCode}`,
+🔗 ${refLink}`,
 
       // 4 — Qisqa va ta'sirchan
 `👋 Salom!
@@ -118,10 +112,8 @@ ${firstName} sizga IQRO platformasida ${REFERRAL_DISCOUNT}% chegirma ulashmoqda.
 
 IQRO — kasbiy sertifikatlash imtihoniga onlayn tayyorgarlik. Qulay, tez va samarali.
 
-Bugun ro'yxatdan o'ting — ${REFERRAL_DISCOUNT}% chegirma bilan boshlang:
+Bugun ro'yxatdan o'tish:
 ${refLink}
-
-Kod: ${refCode}
 
 ⏳ Taklif muddatli — o'tkazib yubormang!`,
     ];
@@ -131,7 +123,7 @@ Kod: ${refCode}
 
     if (platform === 'telegram') {
       // Telegram uchun qisqaroq variant
-      return `📚 ${firstName} sizga IQRO da ${REFERRAL_DISCOUNT}% CHEGIRMA ulashmoqda!\n\nRo\u2018yxatdan o\u2018ting — IKKALANGIZ ${REFERRAL_DISCOUNT}% chegirma olasiz!\n\n✅ Ro\u2018yxatdan o\u2018tish: ${refLink}\n🔑 Kod: ${refCode}`;
+      return `📚 ${firstName} sizga IQRO da ${REFERRAL_DISCOUNT}% CHEGIRMA ulashmoqda!\n\nRo\u2018yxatdan o\u2018ting — IKKALANGIZ ${REFERRAL_DISCOUNT}% chegirma olasiz!\n\n✅ Ro\u2018yxatdan o\u2018tish: ${refLink}`;
     }
 
     return messages[idx];
@@ -211,18 +203,6 @@ Kod: ${refCode}
           {/* Kod va havola */}
           <div style={s.card}>
             <div style={s.label}>Sizning referral ma'lumotlaringiz</div>
-            <div style={{ marginBottom: 12 }}>
-              <div style={{ fontSize: 11, color: 'var(--text3)', marginBottom: 6, fontWeight: 600 }}>REFERRAL KOD</div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'var(--blue-bg)', border: '1.5px solid var(--border)', borderRadius: 14, padding: '12px 16px' }}>
-                <span style={{ fontSize: 24, fontWeight: 900, letterSpacing: 5, color: 'var(--blue)', fontFamily: 'monospace', flex: 1 }}>
-                  {refCode}
-                </span>
-                <button style={s.copyBtn} onClick={() => copyToClipboard(refCode, 'code')}>
-                  {copied === 'code' ? <Check size={14} /> : <Copy size={14} />}
-                  {copied === 'code' ? 'Nusxalandi' : 'Nusxa'}
-                </button>
-              </div>
-            </div>
             <div style={{ marginBottom: 16 }}>
               <div style={{ fontSize: 11, color: 'var(--text3)', marginBottom: 6, fontWeight: 600 }}>REFERRAL HAVOLA</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'var(--bg3)', border: '1.5px solid var(--border)', borderRadius: 14, padding: '10px 14px' }}>

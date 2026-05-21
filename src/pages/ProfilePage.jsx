@@ -362,22 +362,6 @@ export default function ProfilePage({ theme, toggleTheme }) {
           <div className="pp-referral-arrow"><ChevronRight size={20} /></div>
         </div>
 
-        {refCode && (
-          <div className="pp-card" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 700, marginBottom: 4 }}>REFERRAL KOD</div>
-              <div style={{ fontSize: 20, fontWeight: 900, letterSpacing: 4, color: 'var(--blue)', fontFamily: 'monospace' }}>{refCode}</div>
-            </div>
-            <button onClick={copyRef} style={{
-              display: 'flex', alignItems: 'center', gap: 6, padding: '10px 16px',
-              borderRadius: 12, border: '1.5px solid var(--border)', background: 'var(--bg3)',
-              fontSize: 13, fontWeight: 600, color: 'var(--text2)', cursor: 'pointer', fontFamily: 'inherit'
-            }}>
-              {copied ? <Check size={14} /> : <Copy size={14} />}
-              {copied ? 'Nusxalandi' : 'Nusxa'}
-            </button>
-          </div>
-        )}
 
         {/* ═══ BADGES ROW ═══ */}
         <div className="pp-card">
