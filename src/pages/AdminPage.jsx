@@ -1013,10 +1013,20 @@ const AdminPage = () => {
                             {r.status !== 'paid' && (
                               <button
                                 className="btn btn-sm"
-                                style={{ background: 'var(--green)', color: '#fff', border: 'none', fontSize: 11, padding: '4px 10px' }}
+                                style={{ background: 'var(--green)', color: '#fff', border: 'none', fontSize: 11, padding: '4px 10px', marginRight: 6 }}
                                 onClick={() => handleMarkReferralPaid(r.id, r.referrerId)}
                               >
                                 ✓ To'ladi
+                              </button>
+                            )}
+                            {r.freeExpire && (
+                              <button
+                                className="btn btn-sm"
+                                style={{ background: 'var(--red)', color: '#fff', border: 'none', fontSize: 11, padding: '4px 10px' }}
+                                onClick={() => handleCancelReferralPremium(r.referredId, r.id)}
+                                title="Bepul premiumni bekor qilish"
+                              >
+                                ✕ Premium bekor qilish
                               </button>
                             )}
                           </td>
