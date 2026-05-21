@@ -576,7 +576,7 @@ export const q1_umumharbiy_nizomlar = [
       "mnemonic": "Nizom - bu harbiy tartib asosi."
     },
   {
-      "q": "Moslikni toping (Muloqot uslublari):\n1. Avtoritar\n2. Demokratik",
+      "q": "Moslikni toping (Muloqot uslublari):\n1. Avtoritar\n2. Demokratik\na) hamkorlik va tenglik\nb) buyruqbozlik va qat'iy talab",
       "opts": [
         "1-a, 2-b",
         "1-b, 2-a",

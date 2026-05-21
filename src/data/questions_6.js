@@ -1320,7 +1320,7 @@ export const q6_pedagogik_mahorat = [
       "mnemonic": "Kalit so'zga e'tibor bering va javobni vizuallashtiring."
     },
   {
-      "q": "Moslikni toping:\n1. Uslubiy tahlil\n2. Didaktik tahlil",
+      "q": "Moslikni toping:\n1. Uslubiy tahlil\n2. Didaktik tahlil\na) darsning o'quv materialining mazmuni va vaqt taqsimotini tahlil qilish\nb) o'qituvchining dars o'tish mahorati va uslubini tahlil qilish",
       "opts": [
         "1-a, 2-b",
         "1-b, 2-a",
@@ -1368,7 +1368,7 @@ export const q6_pedagogik_mahorat = [
       "mnemonic": "Kalit so'zga e'tibor bering va javobni vizuallashtiring."
     },
   {
-      "q": "Moslikni toping (Dars turlari):\n1. Aralash dars\n2. Yangi materiallar bilan tanishish darsi\n3. Bilimlarni mustahkamlash darsi",
+      "q": "Moslikni toping (Dars turlari):\n1. Aralash dars\n2. Yangi materiallar bilan tanishish darsi\n3. Bilimlarni mustahkamlash darsi\na) darsning barcha elementlari (takrorlash, yangi mavzu, amaliyot) mavjud bo'lgan dars\nb) asosiy e'tibor yangi o'quv materialini o'rganishga qaratilgan dars\nc) o'tilgan materialni takrorlash va mashqlar bajarishga qaratilgan dars",
       "opts": [
         "1-a, 2-b, 3-c",
         "1-b, 2-a, 3-c",
@@ -1416,7 +1416,7 @@ export const q6_pedagogik_mahorat = [
       "mnemonic": "Kalit so'zga e'tibor bering va javobni vizuallashtiring."
     },
   {
-      "q": "Moslikni toping (Pedagogik mahorat bosqichlari):\n1. Pedagogik texnika\n2. Pedagogik muloqot",
+      "q": "Moslikni toping (Pedagogik mahorat bosqichlari):\n1. Pedagogik texnika\n2. Pedagogik muloqot\na) o'qituvchining o'zini tutishi, mimika va pantomimika mahorati\nb) o'qituvchining o'quvchilar bilan o'zaro hamkorligi va munosabati",
       "opts": [
         "1-a, 2-b",
         "1-b, 2-a",
@@ -1452,7 +1452,7 @@ export const q6_pedagogik_mahorat = [
       "mnemonic": "Kalit so'zga e'tibor bering va javobni vizuallashtiring."
     },
   {
-      "q": "Moslikni toping (Ta'lim tamoyillari):\n1. Izchillik\n2. Tushunarlilik",
+      "q": "Moslikni toping (Ta'lim tamoyillari):\n1. Izchillik\n2. Tushunarlilik\na) mavzularning mantiqiy ketma-ketlikda va tizimli ravishda o'tilishi\nb) o'quv materialining o'quvchilarning yoshi va bilim darajasiga mos bo'lishi",
       "opts": [
         "1-a, 2-b",
         "1-b, 2-a",

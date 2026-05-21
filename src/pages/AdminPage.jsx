@@ -122,7 +122,7 @@ const AdminPage = () => {
           if (!existingSet.has(normalize(q.q))) {
             newQuestionsToPush.push({
               ...q,
-              topicId: item.id,
+              topicId: q.topicId !== undefined ? q.topicId : item.id,
               category: item.cat,
               createdAt: new Date().toISOString()
             });
