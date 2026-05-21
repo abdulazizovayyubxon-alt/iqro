@@ -546,31 +546,45 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       console.warn("signInWithPhone xatosi:", err.code, err.message);
 
-      // 2. Akkaunt topilmadi yoki hisob ma'lumotlari yaroqsiz
-      if (
+      const isAuthWrong = 
         err.code === 'auth/user-not-found' ||
         err.code === 'auth/invalid-credential' ||
-        err.code === 'auth/invalid-login-credentials'
-      ) {
-        // ═══ AVTOMATIK ANIQLASH (PROBE) ═══
-        // auth/invalid-credential — "user yo'q" yoki "parol noto'g'ri" farqlash uchun
-        // createUser orqali tekshiramiz.
+        err.code === 'auth/invalid-login-credentials' ||
+        err.code === 'auth/wrong-password';
 
+      if (isAuthWrong) {
+        // Agar foydalanuvchi parol kiritgan bo'lsa va xato bo'lsa -> bu noto'g'ri parol!
+        if (password) {
+          const attemptData = recordFailedAttempt();
+          const remaining = MAX_ATTEMPTS - attemptData.attempts;
+          if (remaining > 0) {
+            setAuthError(`Parol noto'g'ri kiritildi. Yana ${remaining} ta urinish qoldi.`);
+          } else {
+            setAuthError(`Xavfsizlik sababli akkaunt 15 daqiqaga bloklandi. Iltimos, biroz kuting.`);
+          }
+          return { success: false, wrongPassword: true };
+        }
+
+        // Agar foydalanuvchi hali parol kiritmagan bo'lsa (faqat telefon raqam yozib Davom etishni bosgan)
         if (!isRegistering) {
-          // ── PROBE: Foydalanuvchi mavjudmi tekshirish ──
+          // ── Serverless API orqali foydalanuvchi borligini tekshiramiz ──
           try {
-            const testCred = await createUserWithEmailAndPassword(auth, internalEmail, finalPassword);
-            // Muvaffaqiyatli → yangi user. Test akkauntni o'chiramiz.
-            try { await testCred.user.delete(); } catch (delErr) { console.warn('Test user delete:', delErr); }
-            try { await signOut(auth); } catch (soErr) { console.warn('SignOut after probe:', soErr); }
-            return { success: false, notRegistered: true };
-          } catch (probeErr) {
-            if (probeErr.code === 'auth/email-already-in-use') {
-              // User MAVJUD — eski maxsus parol bor
+            const checkRes = await fetch('/api/check-user', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ phone: cleanPhone })
+            });
+            if (!checkRes.ok) throw new Error('API failed');
+            const checkData = await checkRes.json();
+            
+            if (checkData.exists) {
               return { success: false, hasCustomPassword: true };
+            } else {
+              return { success: false, notRegistered: true };
             }
-            // Probe ham ishlamadi (tarmoq, rate-limit, boshqa) → fallback
-            console.warn('Probe xatosi:', probeErr.code);
+          } catch (apiErr) {
+            console.warn('Check user API xatosi:', apiErr);
+            // API ishlamasa, fallback sifatida needsChoice qaytaramiz (foydalanuvchi o'zi tanlaydi)
             return { success: false, needsChoice: true };
           }
         }
@@ -614,37 +628,19 @@ export const AuthProvider = ({ children }) => {
         }
       }
 
-      // 3. Parol noto'g'ri (akkaunt mavjud, lekin parol mos kelmadi)
-      if (err.code === 'auth/wrong-password') {
-        // Agar default parol bilan kirmoqchi bo'lgan bo'lsa va xato bergan bo'lsa,
-        // demak bu foydalanuvchida eski maxsus parol bor
-        if (!password) {
-          return { success: false, hasCustomPassword: true };
-        }
-
-        const attemptData = recordFailedAttempt();
-        const remaining = MAX_ATTEMPTS - attemptData.attempts;
-        if (remaining > 0) {
-          setAuthError(`Parol noto'g'ri kiritildi. Yana ${remaining} ta urinish qoldi.`);
-        } else {
-          setAuthError(`Xavfsizlik sababli akkaunt 15 daqiqaga bloklandi. Iltimos, biroz kuting.`);
-        }
-        return { success: false, wrongPassword: true };
-      }
-
-      // 4. Tarmoq xatoligi
+      // Tarmoq xatoligi
       if (err.code === 'auth/network-request-failed') {
         setAuthError("Internet aloqasi yo'q. Iltimos, tarmoqni tekshiring.");
         return { success: false };
       }
 
-      // 5. Juda ko'p urinish
+      // Juda ko'p urinish
       if (err.code === 'auth/too-many-requests') {
         setAuthError("Juda ko'p urinish. Iltimos, biroz kutib qaytadan urining.");
         return { success: false };
       }
 
-      // 6. Boshqa xatoliklar
+      // Boshqa xatoliklar
       recordFailedAttempt();
       console.error("Kirish xatosi:", err);
       setAuthError("Kirishda xatolik yuz berdi, iltimos qaytadan urinib ko'ring.");
