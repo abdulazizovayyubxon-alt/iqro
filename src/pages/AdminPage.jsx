@@ -44,6 +44,7 @@ const AdminPage = () => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
+  const [userSearch, setUserSearch] = useState('');
   const [filterSolved, setFilterSolved] = useState('all'); // all | unsolved | solved
   const [expandedId, setExpandedId] = useState(null);
 
@@ -439,6 +440,15 @@ const AdminPage = () => {
     return matchSearch && matchFilter;
   });
 
+  const filteredUsers = users.filter(u => {
+    if (!userSearch) return true;
+    const term = userSearch.toLowerCase();
+    const nameMatch = u.displayName?.toLowerCase().includes(term);
+    const emailMatch = u.email?.toLowerCase().includes(term);
+    const phoneMatch = u.phoneNumber?.toLowerCase().includes(term) || u.phone?.toLowerCase().includes(term);
+    return nameMatch || emailMatch || phoneMatch;
+  });
+
   const unsolvedCount = objections.filter(o => !o.solved).length;
   const solvedCount = objections.filter(o => o.solved).length;
 
@@ -667,39 +677,63 @@ const AdminPage = () => {
 
       {tab === 'users' && (
         <div>
-          <div className="admin-section-title"><Users size={18} style={{ color: 'var(--blue)' }} /> Foydalanuvchilar ({users.length})</div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14, flexWrap: 'wrap', gap: 10 }}>
+            <div className="admin-section-title" style={{ marginBottom: 0 }}><Users size={18} style={{ color: 'var(--blue)' }} /> Foydalanuvchilar ({filteredUsers.length}/{users.length})</div>
+            <div className="admin-search-wrap" style={{ maxWidth: 300, width: '100%' }}>
+              <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text3)' }} />
+              <input
+                className="admin-search"
+                style={{ padding: '8px 8px 8px 32px', fontSize: '13px', borderRadius: '10px' }}
+                placeholder="Ism, telefon yoki email..."
+                value={userSearch}
+                onChange={e => setUserSearch(e.target.value)}
+              />
+            </div>
+          </div>
           {users.length === 0 ? (
             <div className="admin-empty"><div className="admin-empty-icon">👥</div><div className="admin-empty-text">Yuklanmoqda...</div></div>
+          ) : filteredUsers.length === 0 ? (
+            <div className="glass-panel" style={{ padding: '40px', textAlign: 'center', color: 'var(--text3)' }}>
+              Foydalanuvchi topilmadi 🔍
+            </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {users.map((u) => (
-                <div key={u.id} className="admin-user-card">
-                  <div className="admin-user-top">
-                    <div className="admin-user-avatar">
-                      {(u.displayName || u.email || '?')[0].toUpperCase()}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {filteredUsers.map((u) => (
+                <div key={u.id} className="admin-user-row">
+                  <div className="admin-user-left">
+                    <div className="admin-user-avatar-sm">
+                      {(u.displayName || u.email || u.phoneNumber || '?')[0].toUpperCase()}
                     </div>
-                    <div className="admin-user-info">
-                      <div className="admin-user-name">{u.displayName || '—'}</div>
-                      <div className="admin-user-email">{u.email}</div>
+                    <div className="admin-user-details">
+                      <div className="admin-user-name-line">
+                        <span className="admin-user-name-sm">{u.displayName || '—'}</span>
+                        {u.isPremium && <span style={{ fontSize: 11 }} title="Premium">⭐</span>}
+                        {u.role === 'admin' && <span style={{ fontSize: 11 }} title="Admin">🛡️</span>}
+                      </div>
+                      <div className="admin-user-subtext">{u.email || u.phoneNumber || 'Identifikator yo\'q'}</div>
                     </div>
                   </div>
-                  <div className="admin-user-badges">
-                    <span className="admin-user-badge" style={{ background: u.isPremium ? 'var(--green-bg)' : 'var(--bg3)', color: u.isPremium ? 'var(--green)' : 'var(--text3)' }}>
-                      {u.isPremium ? '⭐ Premium' : 'Oddiy'}
-                    </span>
-                    <span className="admin-user-badge" style={{ background: u.role === 'admin' ? 'var(--blue-bg)' : 'var(--bg3)', color: u.role === 'admin' ? 'var(--blue)' : 'var(--text3)' }}>
-                      {u.role === 'admin' ? '🛡️ Admin' : '👤 User'}
-                    </span>
-                  </div>
-                  <div className="admin-user-actions">
-                    <button onClick={() => togglePremium(u.id, u.isPremium)} style={u.isPremium ? {} : { background: 'var(--amber)', color: '#fff', borderColor: 'var(--amber)' }}>
-                      {u.isPremium ? '✕ Premium' : '+ Premium'}
+                  <div className="admin-user-actions-sm">
+                    <button 
+                      onClick={() => togglePremium(u.id, u.isPremium)} 
+                      className={`action-btn-sm ${u.isPremium ? 'premium-active' : ''}`}
+                      title={u.isPremium ? "Premium statusini bekor qilish" : "Premium statusini yoqish"}
+                    >
+                      ⭐
                     </button>
-                    <button onClick={() => toggleAdmin(u.id, u.role)}>
-                      {u.role === 'admin' ? '✕ Admin' : '+ Admin'}
+                    <button 
+                      onClick={() => toggleAdmin(u.id, u.role)} 
+                      className={`action-btn-sm ${u.role === 'admin' ? 'admin-active' : ''}`}
+                      title={u.role === 'admin' ? "Admin huquqini olish" : "Admin huquqini berish"}
+                    >
+                      🛡️
                     </button>
-                    <button className="danger-btn" onClick={() => handleDeleteUser(u.id, u.email)}>
-                      <Trash2 size={13} /> O'chirish
+                    <button 
+                      className="action-btn-sm delete-btn" 
+                      onClick={() => handleDeleteUser(u.id, u.email || u.phoneNumber)}
+                      title="O'chirish"
+                    >
+                      <Trash2 size={13} />
                     </button>
                   </div>
                 </div>

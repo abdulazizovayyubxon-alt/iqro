@@ -341,3 +341,115 @@
   .admin-action-bar { flex-direction: column; }
   .admin-action-bar button { min-width: 0; }
 }
+
+/* Compact User Row Design */
+.admin-user-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  gap: 10px;
+}
+
+.admin-user-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+
+.admin-user-avatar-sm {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.admin-user-details {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.admin-user-name-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.admin-user-name-sm {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-user-subtext {
+  font-size: 11px;
+  color: var(--text3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-user-actions-sm {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.action-btn-sm {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--bg3);
+  color: var(--text3);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 12px;
+  outline: none;
+}
+
+.action-btn-sm:hover {
+  background: var(--surface2);
+  color: var(--text);
+}
+
+.action-btn-sm.premium-active {
+  background: var(--amber-bg);
+  color: var(--amber);
+  border-color: rgba(245,158,11,0.3);
+}
+
+.action-btn-sm.admin-active {
+  background: var(--blue-bg);
+  color: var(--blue);
+  border-color: rgba(59,130,246,0.3);
+}
+
+.action-btn-sm.delete-btn {
+  color: var(--red);
+}
+
+.action-btn-sm.delete-btn:hover {
+  background: var(--red-bg);
+  border-color: rgba(239,68,68,0.3);
+}
