@@ -1006,8 +1006,38 @@ const AdminPage = () => {
                           <td style={{ padding: '10px 12px', color: r.bonusPaid ? '#22c55e' : 'var(--text3)', fontWeight: r.bonusPaid ? 700 : 400, fontSize: 13 }}>
                             {r.bonusPaid ? `+${(r.bonusAmount || 15000).toLocaleString()} so'm` : '—'}
                           </td>
-                          <td style={{ padding: '10px 12px', color: 'var(--text3)', fontSize: 12 }}>
-                            {r.freeExpire ? new Date(r.freeExpire).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'short' }) : '—'}
+                          <td style={{ padding: '10px 12px', fontSize: 12 }}>
+                            {(() => {
+                              if (r.freeExpire) {
+                                return (
+                                  <span style={{ color: 'var(--text)', fontWeight: 500 }}>
+                                    🎁 {new Date(r.freeExpire).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'short' })}
+                                  </span>
+                                );
+                              }
+                              if (r.createdAt) {
+                                const created = new Date(r.createdAt);
+                                const now = new Date();
+                                const diffMs = now - created;
+                                const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                                if (diffDays < 7) {
+                                  return (
+                                    <span style={{ color: 'var(--blue)', fontWeight: 600 }}>
+                                      🎁 Trial: {7 - diffDays} kun
+                                    </span>
+                                  );
+                                } else if (diffDays < 10) {
+                                  return (
+                                    <span style={{ color: 'var(--amber)', fontWeight: 600 }}>
+                                      ⏳ Chegirma: {10 - diffDays} kun
+                                    </span>
+                                  );
+                                } else {
+                                  return <span style={{ color: 'var(--text3)' }}>❌ Tugagan</span>;
+                                }
+                              }
+                              return <span style={{ color: 'var(--text3)' }}>—</span>;
+                            })()}
                           </td>
                           <td style={{ padding: '10px 12px' }}>
                             {r.status !== 'paid' && (

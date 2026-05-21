@@ -298,8 +298,36 @@ ${refLink}
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)' }}>{r.referredName || "Noma'lum"}</div>
-                      <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 2 }}>
-                        {new Date(r.createdAt).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'short' })}
+                      <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
+                        <span>Sana: {new Date(r.createdAt).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'short' })}</span>
+                        {(() => {
+                          if (r.freeExpire) {
+                            return (
+                              <span style={{ color: 'var(--text2)', fontWeight: 500 }}>
+                                🎁 Bepul premium: {new Date(r.freeExpire).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'short' })} gacha
+                              </span>
+                            );
+                          }
+                          const created = new Date(r.createdAt);
+                          const now = new Date();
+                          const diffMs = now - created;
+                          const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                          if (diffDays < 7) {
+                            return (
+                              <span style={{ color: '#29B6F6', fontWeight: 600 }}>
+                                🎁 Trial: {7 - diffDays} kun qoldi
+                              </span>
+                            );
+                          } else if (diffDays < 10) {
+                            return (
+                              <span style={{ color: '#F59E0B', fontWeight: 600 }}>
+                                ⏳ Chegirma: {10 - diffDays} kun qoldi
+                              </span>
+                            );
+                          } else {
+                            return <span style={{ color: 'var(--text3)' }}>❌ Muddati tugagan</span>;
+                          }
+                        })()}
                       </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4 }}>
