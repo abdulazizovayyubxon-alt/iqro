@@ -6,11 +6,10 @@
  *
  *  QOIDALAR:
  *  ┌─────────────────────────────────────────────────────────┐
- *  │  A → B, C, D ni taklif qiladi (maksimal 3 kishi)        │
- *  │  B ro'yxatdan o'tganda  → B ga 1 OY BEPUL               │
+ *  │  A → B ni taklif qiladi (maksimal 5 kishi)              │
+ *  │  B ro'yxatdan o'tganda  → B ga 50% CHEGIRMA beriladi    │
  *  │  B birinchi to'lovini qilganda → A ga 15,000 so'm bonus  │
- *  │  A 3 ta to'lasa → 45,000 so'm (1.5 oy bepul)            │
- *  │  B bepul oydan keyin eslatma xabari yuboriladi           │
+ *  │  A 5 ta to'lasa → 75,000 so'm yig'adi                   │
  *  └─────────────────────────────────────────────────────────┘
  *
  *  FIRESTORE TUZILMASI:
@@ -19,9 +18,8 @@
  *    referralCode: string         — "AYYUB8K2" (uniq kod)
  *    referredBy: string | null    — A ning uid (B ni kim taklif qildi)
  *    referralBonus: number        — A ning yig'ilgan bonus (so'mda)
- *    referralCount: number        — A taklif qilgan va TO'LAGAN kishilar soni
- *    freeMonthExpire: string|null — B ning bepul oy tugash sanasi
- *    reminderSent: boolean        — B ga eslatma yuboriladimi?
+ *    referralCount: number        — A bonus olgan to'lovlar soni
+ *    referralDiscount: number     — B uchun keyingi to'lovda chegirma foizi
  *
  *  referrals/{refId}:
  *    referrerId: string           — taklif qiluvchi (A) uid
@@ -149,47 +147,28 @@ export async function applyReferralAfterRegister(newUserId, newUserName) {
       return false;
     }
 
-    // Referrer ning joriy referral sonini tekshiramiz
-    const referrerRef = doc(db, 'users', referrer.uid);
-    const referrerSnap = await getDoc(referrerRef);
-    const referrerData = referrerSnap.data() || {};
-    const currentCount = referrerData.referralCount || 0;
+    // Referrer ning joriy taklif qilganlar sonini tekshiramiz
+    const q = query(collection(db, 'referrals'), where('referrerId', '==', referrer.uid));
+    const snap = await getDocs(q);
+    const currentTotalInvites = snap.size;
 
     // ═══ LIMIT TEKSHIRUVI ═══
-    if (currentCount >= MAX_REFERRALS) {
-      console.log('Referrer referral limitga yetdi — yangi referral qabul qilinmaydi');
-      return false; // Limitga yetgan — hech kimga bepul berilmaydi
+    if (currentTotalInvites >= MAX_REFERRALS) {
+      console.log('Referrer taklif limitiga yetdi — yangi referral qabul qilinmaydi');
+      return false; // Limitga yetgan
     }
 
-    // ═══ 50/50 MODEL — Ikki tomonga 30 kun bepul ═══
-    const freeExpire = new Date();
-    freeExpire.setDate(freeExpire.getDate() + FREE_MONTH_DAYS);
-
-    // B (yangi foydalanuvchi) ga 30 kun bepul Premium
+    // ═══ 50/50 MODEL — Faqat chegirma belgilanadi ═══
+    // B (yangi foydalanuvchi) ga 50% chegirma beramiz, bepul premium YO'Q
     const newUserRef = doc(db, 'users', newUserId);
     await setDoc(newUserRef, {
       referredBy: referrer.uid,
-      freeMonthExpire: freeExpire.toISOString(),
-      isPremium: true,
-      premiumExpire: freeExpire.toISOString(),
-      premiumPlan: 'referral_free',
-      reminderSent: false,
-      referralDiscount: REFERRAL_DISCOUNT, // 50% chegirma keyingi to'lovda
+      referralDiscount: REFERRAL_DISCOUNT, // Keyingi to'lovda 50% chegirma
+      isPremium: false, // Bepul oylik bekor qilingan
     }, { merge: true });
 
-    // A (taklif qiluvchi) ga ham 30 kun bepul Premium uzaytirish
-    const referrerExpire = new Date();
-    const existingExpire = referrerData.premiumExpire ? new Date(referrerData.premiumExpire) : new Date();
-    const baseDate = existingExpire > new Date() ? existingExpire : new Date();
-    referrerExpire.setTime(baseDate.getTime() + FREE_MONTH_DAYS * 24 * 60 * 60 * 1000);
-
-    await updateDoc(referrerRef, {
-      referralCount: increment(1), // ═══ BUG #2 TUZATILDI ═══
-      isPremium: true,
-      premiumExpire: referrerExpire.toISOString(),
-      premiumPlan: referrerData.premiumPlan === 'paid' ? 'paid' : 'referral_bonus',
-      referralBonus: increment(DISCOUNT_AMOUNT),
-    });
+    // A (taklif qiluvchi) ga ham hozircha bonus berilmaydi. 
+    // Bonus qachonki B to'lov qilsa, webhook orqali beriladi.
 
     // Referrals kolleksiyasiga yozamiz
     await addDoc(collection(db, 'referrals'), {
@@ -197,14 +176,12 @@ export async function applyReferralAfterRegister(newUserId, newUserName) {
       referredId: newUserId,
       referredName: newUserName,
       referrerName: referrer.displayName || '',
-      status: 'active',  // Ikki tomonlama bepul boshlandi
+      status: 'pending',  // B to'lov qilgunicha kutish holatida
       bonusPaid: false,
-      bonusAmount: DISCOUNT_AMOUNT,
+      bonusAmount: 0,
       discountPercent: REFERRAL_DISCOUNT,
       createdAt: new Date().toISOString(),
       paidAt: null,
-      freeExpire: freeExpire.toISOString(),
-      referrerFreeExpire: referrerExpire.toISOString(),
     });
 
     return true;

@@ -139,7 +139,8 @@ Kod: ${refCode}
 
   const shareReferral = async () => {
     const msg = getShareMessage(user?.displayName);
-    if (navigator.share) {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (navigator.share && isMobile) {
       try {
         await navigator.share({
           title: 'IQRO — Kasbiy Sertifikatlash Platformasi',
