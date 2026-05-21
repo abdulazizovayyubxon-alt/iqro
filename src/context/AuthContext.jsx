@@ -23,6 +23,19 @@ import {
   REFERRAL_DISCOUNT,
 } from '../services/referral';
 
+// Synchronously capture and save the referral code on script load
+try {
+  const initialCode = getReferralCodeFromUrl();
+  if (initialCode) {
+    savePendingReferralCode(initialCode);
+    const url = new URL(window.location.href);
+    url.searchParams.delete('ref');
+    window.history.replaceState({}, '', url.toString());
+  }
+} catch (e) {
+  console.warn("Failed to capture referral code synchronously:", e);
+}
+
 // ── Trial status hisoblash funksiyasi ──
 function computeTrialStatus(data) {
   // Agar to'langan premium bo'lsa — 'premium'
@@ -208,17 +221,6 @@ export const AuthProvider = ({ children }) => {
   });
   const [authError, setAuthError] = useState('');
 
-  // ── URL da referral kod bo'lsa — localStorage ga saqlab qo'yamiz ──
-  useEffect(() => {
-    const code = getReferralCodeFromUrl();
-    if (code) {
-      savePendingReferralCode(code);
-      // URL dan ?ref= parametrini tozalaymiz (chiroyli ko'rinishi uchun)
-      const url = new URL(window.location.href);
-      url.searchParams.delete('ref');
-      window.history.replaceState({}, '', url.toString());
-    }
-  }, []);
 
   useEffect(() => {
     // Tizimda uzoq vaqt (kamida 30 kun) qolishi uchun persistence ni o'rnatamiz
@@ -249,13 +251,13 @@ export const AuthProvider = ({ children }) => {
               role: 'user',
               isPremium: false,
               createdAt: new Date(),
-            }).catch(e => console.warn('Yangi profil yaratishda xato (redirect):', e));
+            }, { merge: true }).catch(e => console.warn('Yangi profil yaratishda xato (redirect):', e));
             
-            const refApplied = await applyReferralAfterRegister(
+            await applyReferralAfterRegister(
               firebaseUser.uid,
               firebaseUser.displayName || firebaseUser.email?.split('@')[0]
             );
-            if (refApplied) isPremium = true;
+            isPremium = true;
           }
         } catch (firestoreErr) {
           console.warn('Firestore profil yuklashda xato (redirect):', firestoreErr.message);
@@ -332,14 +334,13 @@ export const AuthProvider = ({ children }) => {
                 role: 'user',
                 isPremium: false,
                 createdAt: new Date(),
-              }).catch(e => console.warn('Yangi profil yaratishda xato:', e));
+              }, { merge: true }).catch(e => console.warn('Yangi profil yaratishda xato:', e));
 
               const refApplied = await applyReferralAfterRegister(
                 firebaseUser.uid,
                 firebaseUser.displayName || firebaseUser.email?.split('@')[0]
               );
               if (refApplied) {
-                isPremium = true;
                 // Referral orqali kelgan B ga "Tabriklaymiz!" ko'rsatish uchun flag
                 localStorage.setItem('iqro_referral_welcome', 'true');
               }
@@ -604,17 +605,19 @@ export const AuthProvider = ({ children }) => {
             role: 'user',
             isPremium: false,
             createdAt: new Date(),
-          });
+          }, { merge: true });
 
           const referralApplied = await applyReferralAfterRegister(userCred.user.uid, name);
-          const isPremiumFromReferral = referralApplied;
+          if (referralApplied) {
+            localStorage.setItem('iqro_referral_welcome', 'true');
+          }
 
           setUser({
             uid: userCred.user.uid,
             email: internalEmail,
             displayName: name,
             photoURL: null,
-            isPremium: isPremiumFromReferral,
+            isPremium: true,
             _firebaseUser: userCred.user
           });
           return { success: true };
