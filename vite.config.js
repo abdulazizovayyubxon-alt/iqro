@@ -11,6 +11,7 @@ export default defineConfig({
 
       // ── Workbox: Offline caching strategiyalari ──
       workbox: {
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         // Precache: Barcha build fayllarini oldindan keshlash
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
 
