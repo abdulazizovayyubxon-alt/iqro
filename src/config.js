@@ -8,7 +8,7 @@ export const APP_NAME = 'IQRO';
 export const APP_SUBTITLE = 'Kasbiy Sertifikatlash Tayyorgarligi';
 export const EXAM_LABEL = EXAM_DATE ? '13 May — IQRO Kasbiy Sertifikatlash Imtihoni' : 'IQRO Kasbiy Sertifikatlash Platformasi';
 export const EXAM_GOAL_SCORE = 70;
-export const APP_URL = 'https://iqro-platforma.vercel.app'; // Haqiqiy domen (agar o'zgarsa shu yerni tahrirlaysiz)
+export const APP_URL = 'https://iqro-t41p.vercel.app'; // Haqiqiy domen (agar o'zgarsa shu yerni tahrirlaysiz)
 
 export const BATCH_SIZE = 50; // Har bir blokdagi savollar soni
 export const MAX_MISTAKES_SAVED = 50; // Maksimal saqlanadigan xatolar soni
