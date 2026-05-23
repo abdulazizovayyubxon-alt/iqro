@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
@@ -18,7 +18,7 @@ import { TOPICS } from '../data/mockData';
 const SmartReviewPage = () => {
   const navigate = useNavigate();
   const goBack = () => navigate('/test');
-  const { state, updateState } = useContext(AppContext);
+  const { state, updateState, cloudSynced } = useContext(AppContext);
   const { addObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
   const [cards, setCards] = useState([]);
@@ -33,6 +33,8 @@ const SmartReviewPage = () => {
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
   const { isTrialExpired: isFreeLimitReached } = useTrialExpiry();
+
+  const hasLoadedRef = useRef(false);
 
   if (isFreeLimitReached) {
     return (
@@ -52,6 +54,9 @@ const SmartReviewPage = () => {
   }
 
   useEffect(() => {
+    if (!cloudSynced) return;
+    if (hasLoadedRef.current) return;
+
     // Hozir takrorlash kerak bo'lgan savollarni filtrlash
     const now = Date.now();
     
@@ -70,7 +75,8 @@ const SmartReviewPage = () => {
     setAnswered(null);
     setSessionDone(false);
     setSessionStats({ correct: 0, wrong: 0 });
-  }, []);
+    hasLoadedRef.current = true;
+  }, [cloudSynced, state.activeCategory, state.spacedCards]);
 
   const handleAnswer = (optIdx) => {
     if (answered !== null) return;

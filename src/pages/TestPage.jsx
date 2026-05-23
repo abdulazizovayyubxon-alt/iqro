@@ -131,7 +131,7 @@ const TestPage = () => {
 
   useEffect(() => {
     generateFullPool();
-  }, [topicId, mode]);
+  }, [topicId, mode, state.activeCategory]);
 
   useEffect(() => {
     if (fullPool.length > 0) {
@@ -194,7 +194,8 @@ const TestPage = () => {
         if (topicId !== -1) {
           // MUHIM: topicId va category ikkalasini birga filtrlaymiz
           // Bu boshqa fanning savollarini aralashtirmasligini ta'minlaydi
-          const expectedCategory = topicId >= 7 ? 'art' : 'chqbt';
+          const topicObj = TOPICS.find(t => t.id === topicId);
+          const expectedCategory = topicObj ? topicObj.category : state.activeCategory;
           qQuery = query(qRef, where('topicId', '==', topicId), where('category', '==', expectedCategory));
         } else {
           qQuery = query(qRef, where('category', '==', state.activeCategory));

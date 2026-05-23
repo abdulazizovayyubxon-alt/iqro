@@ -1150,7 +1150,7 @@ const AdminPage = () => {
                     <option value={11}>11 — Grafik savodxonlik (art)</option>
                     <option value={12}>12 — Mashinasozlik chizmalari (art)</option>
                     <option value={13}>13 — Qurilish chizmalari (art)</option>
-                    <option value={14}>14 — O'qitish metodikasi (art)</option>
+                    <option value={14}>14 — Pedagogik mahorat (art)</option>
                   </select>
                   <div style={{ fontSize: '11px', color: 'var(--text3)', marginTop: '-4px' }}>
                     ⚡ Category avtomatik: topicId 0-6 → chqbt, 7+ → art
