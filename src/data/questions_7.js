@@ -1388,7 +1388,7 @@ export const q7_tasviriy_sanat = [
     "correct": 1,
     "explanation": "Jamoani birlashtiruvchi asosiy kuch - bu ularni yagona va qiziqarli maqsad atrofida (tadbirlar, hasharlar) birlashtirishdir.",
     "mnemonic": "Kalit so'zga e'tibor bering va javobni vizuallashtiring.",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "O'qituvchi \"O'zbekistonning kelajagi\" mavzusida bahs-munozara tashkil etdi. Bu suhbat qanday tarbiya tamoyiliga xizmat qiladi?",
@@ -1401,7 +1401,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Vatan kelajagi haqida qayg'urish va fikr almashish o'quvchilarda bevosita fuqarolik pozitsiyasi va vatanparvarlik tuyg'ularini shakllantiradi.",
     "mnemonic": "Kalit so'zga e'tibor bering va javobni vizuallashtiring.",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Quyidagilardan qaysi biri darsni tashkil etishning NOAN'ANAVIY shakllariga misol bo'ladi?",
@@ -1414,7 +1414,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Noan'anaviy darslar bu standart ramkalardan chiqqan, rolli, syujetli va qiziqarli o'yin formatida o'tiluvchi motivatsion darslardir.",
     "mnemonic": "Kalit so'zga e'tibor bering va javobni vizuallashtiring.",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Loyihaga asoslangan ta'limning (Project-Based Learning) asosiy xususiyati nima?",
@@ -1479,7 +1479,7 @@ export const q7_tasviriy_sanat = [
     "correct": 1,
     "explanation": "Rivojlantirish - bu psixologik jarayonlarni va qobiliyatlarni shakllantirishdir.",
     "mnemonic": "Kalit so'zga e'tibor bering va javobni vizuallashtiring.",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "MOSLASHTIRING. Ta'lim shakllarini moslang.\n1. Individual\n2. Jamoaviy\n3. Guruhli",
@@ -1518,7 +1518,7 @@ export const q7_tasviriy_sanat = [
     "correct": 1,
     "explanation": "Madaniyat, odob va qadriyatlarni shakllantirish darsning tarbiyaviy yo'nalishiga kiradi.",
     "mnemonic": "Kalit so'zga e'tibor bering va javobni vizuallashtiring.",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "O'quvchilarda fanga bo'lgan qiziqishni oshirish va ularda ilmiy dunyoqarashni shakllantirish qaysi tafakkur turini rivojlantiradi?",
@@ -2194,7 +2194,7 @@ export const q7_tasviriy_sanat = [
     "correct": 1,
     "explanation": "San'at darslari orqali o'quvchilarda go'zallikka bo'lgan muhabbat va estetik did tarbiyalanadi.",
     "mnemonic": "Go'zallik - Estetika.",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Tasviriy san'at darsini jihozlashda nima eng muhim?",
@@ -2298,7 +2298,7 @@ export const q7_tasviriy_sanat = [
     "correct": 1,
     "explanation": "Andoza vaqtni tejaydi va aniqlikni ta'minlaydi (masalan, naqshda).",
     "mnemonic": "Andoza - Aniqlik.",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Tasviriy san'at darslarining 'ma'naviy-axloqiy' ahamiyati nima?",
@@ -2311,7 +2311,7 @@ export const q7_tasviriy_sanat = [
     "correct": 1,
     "explanation": "San'at inson ruhini poklaydi va yaxshilikka chorlaydi.",
     "mnemonic": "San'at - Tarbiya.",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Tasviriy san'at darsida 'muhit' (atmosfera) qanday bo'lishi kerak?",
@@ -2337,7 +2337,7 @@ export const q7_tasviriy_sanat = [
     "correct": 1,
     "explanation": "Eskiz - bu g'oyani qog'ozga tushirishning birinchi bosqichidir.",
     "mnemonic": "Reja - Eskiz.",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Tasviriy san'at darsida 'ranglar psixologiyasi' nima uchun o'rgatiladi?",
@@ -2402,7 +2402,7 @@ export const q7_tasviriy_sanat = [
     "correct": 1,
     "explanation": "Ta'lim dasturi darsning asosi va rejasi hisoblanadi.",
     "mnemonic": "Dastur - Reja.",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Daryo flotining kichik zobitlar tarkibidagi oxirgi eng yuqori unvonni toping.",
@@ -3481,7 +3481,7 @@ export const q7_tasviriy_sanat = [
     "correct": 0,
     "explanation": "Formatlar (A0, A1, A2, A3, A4) GOST 2.301-68 bo'yicha standartlashtirilgan.",
     "mnemonic": "Format - 301.",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmadagi asosiy ko'rinadigan chiziq qanday ataladi?",
@@ -4183,7 +4183,7 @@ export const q7_tasviriy_sanat = [
     "correct": 1,
     "explanation": "Standart detallar detallashtirilmaydi, ular shunchaki ro'yxatda ko'rsatiladi.",
     "mnemonic": "Standart - Chizilmaydi.",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarda 'ishchi chizma' (rabochiy chertej) nima?",
@@ -4586,7 +4586,7 @@ export const q7_tasviriy_sanat = [
     "correct": 1,
     "explanation": "Muammoli vaziyat o'quvchini yechim izlashga va ijodiy yondashishga majbur qiladi.",
     "mnemonic": "Muammo - Izlanish.",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Integrallashgan (fanlararo) dars nima?",
@@ -4638,7 +4638,7 @@ export const q7_tasviriy_sanat = [
     "correct": 1,
     "explanation": "O'z ishining namoyish etilishi bolaga katta motivatsiya beradi.",
     "mnemonic": "Ko'rgazma - Motivatsiya.",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Darsda 'didaktik o'yin' deganda nima tushuniladi?",
@@ -4664,7 +4664,7 @@ export const q7_tasviriy_sanat = [
     "correct": 1,
     "explanation": "Metodika - bu o'qitish yo'li va usulidir.",
     "mnemonic": "Tavsiya - Yo'l-yo'riq.",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Darsda 'o'z-o'zini baholash' (self-assessment) metodi?",
@@ -13673,7 +13673,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darslarida chiziqlar turlari va ularning chizmadagi qatʼiy vazifalarini bilish grafik savodxonlikning asosi hisoblanadi. Quyidagi chiziq turlarini ularning grafik vazifalari bilan toʻgʻri moslashtiring:\n1. Detalning koʻrinadigan qismlari, konturlari va qirralarini chizishda qoʻllaniladigan asosiy tutash chiziq.\n2. Detalning ichki yoki orqa tomondagi koʻrinmaydigan qismlarini, kontur chiziqlarini koʻrsatishda ishlatiladigan chiziq.\n3. Proyeksiyalar oʻqlarini, simmetriya markazlarini va aylana oʻqlarini belgilashda qoʻllaniladigan ingichka chiziq.\n4. Chizmada kesim va qirqim oʻtkazilgan joylarni, kesuvchi tekislik vaziyatini koʻrsatuvchi yoʻgʻonlashtirilgan chiziq.\na) Shtrixli chiziq\nb) Shtrix-punktir chiziq\nc) Tutash yoʻgʻon chiziq\nd) Ochiq chiziq",
@@ -13738,7 +13738,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Chizmalarda masshtablarni qoʻllash qoidalariga koʻra, detalning real oʻlchamlari chizma formatiga moslab oʻzgartiriladi. ESKD standartiga muvofiq, quyidagi berilgan oʻlchamlardan qaysi biri qatʼiy ravishda standartlashtirilgan \"Kattalashtirish masshtabi\" hisoblanadi?",
@@ -13751,7 +13751,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi grafik topshiriqda chizgʻich va sirkul yordamida \"Toʻgʻri burchak ostida kesishuvchi ikki chiziqni ma’lum $R$ radiusli yoy bilan silliq tutashtirish\" (tutashma qurish) amalini bajarmoqda. Tutashma nuqtalarining mutloq aniq chiqishi uchun u ishlarni qaysi tartibda bajarishi shart?\n1. Berilgan ikki perpendikulyar chiziqdan $R$ masofada ularga parallel yordamchi toʻgʻri chiziqlar oʻtkazish.\n2. Parallel chiziqlarning oʻzaro kesishgan nuqtasini topib, uni tutashma yoyining markazi ($O$ nuqta) deb belgilash.\n3. Markaziy $O$ nuqtadan berilgan asosiy chiziqlarga perpendikulyarlar tushirib, tutashish nuqtalarini ($A$ va $B$) aniqlash.\n4. Sirkul ignasini $O$ nuqtaga qoʻyib, $R$ radiusi bilan $A$ va $B$ nuqtalarini yoy shaklida oʻzaro silliq birlashtirish.",
@@ -13816,7 +13816,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik topshirigʻida berilgan detalning frontal va gorizontal koʻrinishlariga tayanib, uning uchinchi — \"Profil koʻrinishini (chapdan qarashini) qurish\" bosqichlarini bajarmoqda. Proyeksion bogʻliqlikning mutloq toʻgʻri chiqishi uchun u quyidagi ishlarni qaysi izchillikda bajarishi shart?\n1. Frontal koʻrinishdagi barcha xarakterli nuqta va burchaklardan oʻng tomonga parallel gorizontal bogʻlovchi chiziqlar oʻtkazish.\n2. Gorizontal koʻrinishdagi nuqtalardan oʻng tomonga chiziqlar oʻtkazib, ularni $45^\\circ$ burchak ostidagi yordamchi toʻgʻri chiziqqa (doimiy chiziqqa) urish.\n3. Doimiy chiziq bilan kesishgan nuqtalarni qatʼiy vertikal ravishda yuqoriga qarab yoʻnaltirish.\n4. Gorizontal va vertikal chiziqlarning kesishish nuqtalarini oʻzaro tutashtirib, profil koʻrinish konturini qalinlashtirish.",
@@ -13881,7 +13881,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik darsida darslik metodikasiga binoan, berilgan toʻgʻri chiziq kesmasini sirkul va chizgʻich yordamida \"Teng ikkala boʻlakka boʻlish\" (perpendikulyar oʻq oʻtkazish) amalini bajarmoqda. Grafik qurishning mutloq aniq chiqishi uchun u quyidagi qadamlarni qaysi izchillikda bajarishi shart?\n1. Sirkul dastasini kesmaning berilgan $A$ uchiga qoʻyib, radiusni kesma uzunligining yarmidan sezilarli darajada katta qilib ochish.\n2. Tanlangan radius yordamida kesmaning pastki va yuqori tomonlarida yordamchi aylanma yoylarni chizish.\n3. Sirkul radiusini mutloq oʻzgartirmasdan, uning dastasini kesmaning $B$ uchiga qoʻyib, avvalgi yoylarni kesishtiruvchi yangi yoylarni chizish.\n4. Yoylarning oʻzaro kesishishidan hosil boʻlgan yuqori va pastki ikki nuqtani chizgʻich yordamida tutashtirib, kesma oʻrtasini belgilash.",
@@ -13933,7 +13933,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarda tekis detallarning qalinligini yoki uzunligini bitta proyeksiya orqali koʻrsatish uchun maxsus harfiy belgilar ishlatiladi. Darslik qoidalariga koʻra, chizmada oʻlcham sonining oldiga kichik \" $s$ \" (yoki latun $s$) harfi qoʻyilgan boʻlsa, bu detalning qaysi konstruktiv parametrini bildiradi?",
@@ -13972,7 +13972,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Chizmalarda murakkab qirqimlar turlari va ularning kesuvchi tekisliklar vaziyatiga koʻra tasniflanishi oʻrganiladi. Darslik qoidalariga koʻra, detalning ichki tuzilishini ochish uchun oʻzaro parallel boʻlgan ikki yoki undan ortiq kesuvchi tekisliklar yordamida oʻtkaziladigan, koʻrinishi pogʻonali oʻtish xarakteriga ega boʻlgan murakkab qirqim turi qanday nomlanadi?",
@@ -13998,7 +13998,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Chizmalarni rasmiylashtirishda asosiy yozuv (shtamp) va uning chizma formatidagi qatʼiy joylashish oʻrni oʻrganiladi. ESKD andozalariga muvofiq, barcha asosiy formatlar uchun (faqat A4 formatidan tashqari) asosiy yozuv ramkasi formatning qaysi burchagiga joylashtirilishi shart?",
@@ -14037,7 +14037,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Geometrik jismlarning chizmalarini chizishda sirtlarning proyeksiyalanish xususiyatlari oʻrganiladi. Darslik materiallariga binoan, frontal proyeksiya tekisligiga nisbatan parallel, ammo gorizontal proyeksiya tekisligiga perpendikulyar joylashgan toʻgʻri chiziq kesmasi gorizontal proyeksiya tekisligida qanday grafik shaklda proyeksiyalanadi?",
@@ -14076,7 +14076,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik darsida darslik metodikasiga muvofiq, berilgan aylana ichiga sirkul va chizgʻich yordamida \"Muntazam uchburchak chizish\" amalini bajarmoqda. Grafik tasvirning geometrik jihatdan mutloq aniq chiqishi uchun u quyidagi qurish bosqichlarini qaysi qatʼiy izchillikda bajarishi shart?\n1. Aylana markazidan oʻtuvchi tik vertikal oʻq chizigʻini oʻtkazish va uning aylananing yuqori qismi bilan kesishgan nuqtasini birinchi burchak ($A$ nuqta) deb belgilash.\n2. Sirkul radiusini aylana radiusiga teng saqlab, ignasini vertikal oʻqning pastki uchi ($B$ nuqtaga) qoʻyish.\n3. $B$ nuqtadan aylana sirtini ikki tomondan kesib oʻtuvchi yordamchi yoy chizish hamda kesishish nuqtalarini $C$ va $D$ deb belgilash.\n4. Hosil boʻlgan $A, C$ va $D$ nuqtalarini chizgʻich yordamida toʻgʻri chiziqlar bilan oʻzaro qalin qilib tutashtirish.",
@@ -14141,7 +14141,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik topshirigʻida berilgan ikki toʻgʻri chiziq oʻrtasida (ular oʻzaro oʻtkir burchak hosil qilgan vaziyatda) ma’lum $R$ radiusli yoy yordamida \"Ichki silliq tutashma qurish\" amalini bajarmoqda. Tutashma markazining mutloq aniq chiqishi uchun u grafik ishlarni qaysi tartibda bajarishi shart?\n1. Berilgan oʻtkir burchakning har ikkala tomonidan $R$ masofada uning tomonlariga parallel yordamchi chiziqlar oʻtkazish.\n2. Parallel yordamchi chiziqlarning oʻzaro ichki maydonda kesishgan nuqtasini topib, uni $O$ markaz deb belgilash.\n3. $O$ markazdan burchakning asosiy tomonlariga qatʼiy perpendikulyar chiziqlar tushirib, urinish nuqtalarini aniqlash.\n4. Sirkul ignasini $O$ nuqtaga qoʻyib, burchak tomonlaridagi urinish nuqtalarini $R$ radiusi bilan silliq yoy shaklida birlashtirish.",
@@ -14180,7 +14180,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darslarida grafik tasvirlarning turlari va ularning chizmadagi qatʼiy vazifalarini bilish muhim hisoblanadi. Quyidagi chizma tasvir turlarini ularning darslikda belgilangan grafik xususiyatlari bilan toʻgʻri moslashtiring:\n1. Ob’ektning kuzatuvchiga qaragan oldingi tomonidan qatʼiy frontal proyeksiyalanishidan hosil boʻladigan bosh tasvir.\n2. Ob’ektning xayoliy ravishda bitta yoki bir nechta tekisliklar bilan kesilishi natijasida faqat tekislik tegib oʻtgan figuraning oʻzini aks ettiruvchi tasvir.\n3. Ob’ektning kesuvchi tekislik tegib oʻtgan figurasi bilan birgalikda uning ortida turgan koʻrinadigan qismlarini ham yaxlit koʻrsatuvchi tasvir.\n4. Ob’ektning orqa yoki pastki qismidagi koʻrinmaydigan murakkab elementlarini asosiy koʻrinishlarni oʻzgartirmasdan, chizmaning boʻsh joyida yirikroq masshtabda alohida koʻrsatadigan tasvir.\na) Qirqim\nb) Masofaviy (tashqi) element\nc) Koʻrinish (Bosh koʻrinish)\nd) Kesim",
@@ -14206,7 +14206,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik topshirigʻida berilgan detalning frontal va profil koʻrinishlariga tayanib, uning uchinchi — \"Gorizontal koʻrinishini (tepadan qarashini) proyeksion bogʻliqlikda qurish\" bosqichlarini bajarmoqda. Tasvirning geometrik jihatdan aniq chiqishi uchun u quyidagi ishlarni qaysi izchillikda bajarishi shart?\n1. Frontal koʻrinishdagi barcha xarakterli vertikal qirralardan qatʼiy pastga qarab parallel proyeksion bogʻlovchi chiziqlar tushirish.\n2. Profil koʻrinishdagi nuqtalardan chap tomonga parallel gorizontal chiziqlar oʻtkazib, ularni $45^\\circ$ burchak ostidagi yordamchi doimiy chiziqqa urish.\n3. Doimiy chiziq bilan kesishgan nuqtalarni qatʼiy gorizontal ravishda chap tomonga, frontal koʻrinishdan tushgan chiziqlar tomonga yoʻnaltirish.\n4. Vertikal va gorizontal proyeksion chiziqlarning oʻzaro kesishish nuqtalarini tutashtirib, gorizontal koʻrinish konturini qalinlashtirish.",
@@ -14245,7 +14245,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Geometrik chizmachilikda egri chiziqlarni silliq tutashtirish qoidalari oʻrganiladi. Agar toʻgʻri chiziq bilan aylana yoyini uchinchi bir yoy yordamida \"Tashqi tutashma\" usulida silliq birlashtirish kerak boʻlsa, darslik qoidalariga koʻra, tutashma yoyining markazini topish uchun aylana markazidan oʻtkaziladigan yordamchi yoyning radiusi qanday aniqlanadi?",
@@ -14271,7 +14271,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik darsida darslik metodikasiga muvofiq, berilgan aylana ichiga sirkul va chizgʻich yordamida \"Muntazam toʻrtburchak (kvadrat) chizish\" amalini bajarmoqda. Grafik tasvirning geometrik jihatdan mutloq aniq chiqishi uchun u quyidagi qurish bosqichlarini qaysi qatʼiy izchillikda bajarishi shart?\n1. Aylana markazidan oʻtuvchi va oʻzaro qatʼiy perpendikulyar boʻlgan gorizontal hamda vertikal oʻq chiziqlarini oʻtkazish.\n2. oʻq chiziqlarining aylana sirti bilan kesishgan toʻrtta chekka nuqtalarini aniqlash va ularni tartib bilan belgilash.\n3. Sirkul ignasini oʻzgartirmasdan, hosil boʻlgan toʻrtta kesishish nuqtalarini chizgʻich yordamida oʻzaro ketma-ket toʻgʻri chiziqlar bilan tutashtirish.\n4. Hosil boʻlgan kvadrat shaklining diagonallari oʻq chiziqlari bilan mutloq mos kelishini chizgʻich yordamida tekshirish.",
@@ -14323,7 +14323,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarda oʻlcham chiziqlarini joylashtirish va ularning bir-biriga nisbatan masofalari andaza talablari asosida bajariladi. Darslik qoidalariga koʻra, chizmada oʻzaro parallel oʻtkaziladigan ikki qoʻshni oʻlcham chiziqlari orasidagi eng kam (minimal) masofa necha millimetr etib belgilangan?",
@@ -14401,7 +14401,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik topshirigʻida berilgan detalning frontal koʻrinishida \"Zinalik murakkab qirqimni qurish va rasmiylashtirish\" bosqichlarini bajarmoqda. Chizmaning standart talablariga toʻliq mos kelishi uchun u quyidagi ishlarni qaysi izchillikda bajarishi shart?\n1. Detalning ichki teshiklari va chuqurchalaridan oʻtuvchi bir-biriga parallel boʻlgan bir nechta xayoliy kesuvchi tekisliklar vaziyatini belgilash.\n2. Kesuvchi tekisliklarning oʻtish joylarini chekka qismlarida ochiq yoʻgʻon chiziqlar (shtrixlar) va yoʻnalish koʻrsatuvchi strelkalar bilan chizish.\n3. Pogʻonali oʻtish (burilish) joylariga ochiq chiziq burchakchalarini qoʻyish va chekka shtrixlar yoniga bir xil bosh harflarni ($A-A$) yozish.\n4. Parallel tekisliklar kesgan barcha figuralarni bitta umumiy tekislikka keltirib, yaxlit shaklda chizish va metall shtrixlari bilan toʻldirish.",
@@ -14414,7 +14414,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarda oʻlcham sonlarini yozish va ularning oʻlcham chizigʻiga nisbatan joylashishi qatʼiy normalangan. Standart qoidalariga koʻra, chizmadagi gorizontal yoʻnalishdagi oʻlcham chiziqlarining oʻlcham sonlari chiziqqa nisbatan qayerda joylashishi shart?",
@@ -14427,7 +14427,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Geometrik jismlarning proyeksiyalarini chizishda nuqtaning fazoviy koordinatalari epyurda tahlil qilinadi. Darslik qoidalariga binoan, fazodagi biron bir $A$ nuqtaning gorizontal proyeksiya tekisligidan ($H$) boʻlgan haqiqiy uzoqlik masofasi (ya’ni balandligi), uning epyurdagi qaysi koordinata qiymatiga mutloq teng boʻladi?",
@@ -14466,7 +14466,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik darsida darslik metodikasiga muvofiq, \"Berilgan $R$ radiusli aylana tashqarisida yotgan $A$ nuqtadan aylanaga toʻgʻri keluvchi urinma chiziq qurish\" amalini bajarmoqda. Grafik tasvirning geometrik jihatdan mutloq aniq chiqishi uchun u quyidagi qurish bosqichlarini qaysi qatʼiy izchillikda bajarishi shart?\n1. Aylana markazi $O$ nuqtani berilgan tashqi $A$ nuqta bilan chizgʻich yordamida toʻgʻri chiziq orqali tutashtirish.\n2. Hosil boʻlgan $OA$ kesmaning teng oʻrtasini topib, uni yordamchi $O_1$ markaz deb belgilash.\n3. Sirkul ignasini $O_1$ nuqtaga qoʻyib, $O_1A$ radiusi bilan asosiy aylanani kesuvchi yordamchi aylana chizish hamda kesishish nuqtasini $B$ deb belgilash.\n4. Tashqi $A$ nuqtani hosil boʻlgan urinish $B$ nuqtasi bilan chizgʻich yordamida qalin toʻgʻri chiziq orqali tutashtirish.",
@@ -14492,7 +14492,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida koordinata tekisliklarining fazoviy joylashuvi va ularning xalqaro belgilanishi tahlil qilinadi. Grafik savodxonlik qoidalariga binoan, kuzatuvchining qatʼiy chap tomonida joylashgan va detalning yon tomondan qaralgandagi profil koʻrinishini hosil qiluvchi proyeksiya tekisligi qaysi bosh harf bilan belgilanadi?",
@@ -14518,7 +14518,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarni chizishda detalning burchakli qismlariga oʻlcham qoʻyish andaza talablari asosida bajariladi. ESKD standartiga muvofiq, chizmada burchak oʻlchamlarining daraja sonlari oʻlcham chizigʻiga nisbatan qanday vaziyatda yozilishi shart?",
@@ -14531,7 +14531,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik topshirigʻida berilgan toʻgʻri burchak hosil qilib kesishgan ikki chiziq oʻrtasida ma’lum $R$ radiusli yoy yordamida \"Tashqi silliq tutashma qurish\" bosqichlarini bajarmoqda. Tutashma markazining matematik aniq chiqishi uchun u quyidagi ishlarni qaysi izchillikda bajarishi shart?\n1. Sirkul dastasini burchak uchi $O$ nuqtaga qoʻyib, berilgan $R$ radiusi bilan burchak tomonlarini kesuvchi yordamchi yoy chizish.\n2. Burchak tomonlari bilan yoyning kesishgan urinish nuqtalarini ($A$ va $B$) aniq belgilash.\n3. Sirkul radiusini mutloq oʻzgartirmasdan, uning ignasini navbat bilan $A$ va $B$ nuqtalariga qoʻyib, burchak ichida oʻzaro kesishuvchi ikkita yoy chizish va kesishish nuqtasini $C$ markaz deb belgilash.\n4. Sirkul ignasini $C$ nuqtaga qoʻyib, $R$ radiusi bilan $A$ va $B$ urinish nuqtalarini oʻzaro silliq birlashtirish.",
@@ -14583,7 +14583,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmasini toʻgʻri oʻqishda undagi turli konstruktiv elementlarning grafik ifodalanishi tahlil qilinadi. Chizmada aylanma harakat qiluvchi vallar yoki silindrik detallarning chekka qirralarida burchak ostida yoʻnilgan nafis qiyalik-kesik qismi darsliklarda nima deb ataladi?",
@@ -14609,7 +14609,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarda oʻlcham sonlarini joylashtirishda detalning koʻrinish oʻqlari bilan oʻzaro munosabati darslikda normalangan. Standart qoidalariga koʻra, chizmadagi oʻlcham sonlarini quyidagi keltirilgan grafik chiziqlardan qaysi birining ustiga toʻgʻridan-toʻgʻri yozish yoki ularni kesib oʻtish mutloq taqiqlanadi?",
@@ -14622,7 +14622,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Kesim va qirqimlar bajarilganda detalning kesilgan yuzalarini shtrixlashda chiziqlar orasidagi masofa normalangan. ESKD andazasiga muvofiq, bitta chizma formatidagi barcha kesimlar uchun shtrix chiziqlari orasidagi parallel masofa (qadami) detal oʻlchamiga qarab qaysi standart oʻlcham oraligʻida tanlanishi shart?",
@@ -14635,7 +14635,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Geometrik chizmachilikda toʻgʻri chiziqlarni teng boʻlaklarga boʻlishning grafik usullari tahlil qilinadi. Darslik qoidalariga koʻra, berilgan toʻgʻri chiziq kesmasini sirkul va chizgʻich yordamida matematik hisob-kitoblarsiz ixtiyoriy miqdordagi (masalan, 3, 7 yoki 9 ta) teng boʻlaklarga boʻlish uchun uning birinchi uchidan qanday yordamchi element oʻtkazilishi shart?",
@@ -14687,7 +14687,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Gaspard Monj usuli boʻyicha epyur chizmalarini oʻqishda koordinata oʻqlarining tutashish markazi tahlil qilinadi. Frontal ($V$), gorizontal ($H$) va profil ($W$) proyeksiya tekisliklarining uchalasi ham oʻzaro kesishadigan va qiymati mutloq nolga teng boʻlgan markaziy nuqta darsliklarda nima deb ataladi?",
@@ -14778,7 +14778,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini toʻgʻri oʻqishda undagi kavisli va yumaloq qismlarning grafik ifodalanishi tahlil qilinadi. Chizmada burchakli qismlarning oʻtkir qirralarini mexanik sinishdan asrash va plastiklik berish maqsadida yoysimon silliq qilib yoʻnilgan ichki yoki tashqi burchak qismi darsliklarda nima deb ataladi?",
@@ -14817,7 +14817,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Kesim va qirqimlar bajarilganda chizmada qoʻshni (tutashib turgan) ikki alohida detalning kesilgan qismlarini bir-biridan vizual ajratish qoidalari oʻrganiladi. ESKD andazasiga muvofiq, yigʻish chizmalarida bir-biriga tegib turgan ikki metall detalning shtrix chiziqlari qanday chizilishi shart?",
@@ -14882,7 +14882,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Chizmalarda detalning koʻrinishlarini joylashtirishda Yevropa va Amerika proyeksiyalash tizimlarining farqlari darsliklarda oʻrganiladi. Grafik savodxonlik qoidalariga binoan, xalqaro ESKD standartida qabul qilingan va detalning tepadagi frontal koʻrinishi ostiga qatʼiy uning gorizontal koʻrinishini (tepadan qaralishini) joylashtirishni talab qiluvchi tizim qanday nomlanadi?",
@@ -14895,7 +14895,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Chizmachilikda murakkab kesimlar va qirqimlar chizilganda uchinchi shaxsga ma’lumotni toʻgʻri yetkazish uchun harfiy koʻrsatkichlar ishlatiladi. Quyidagi grafik holatlarni ularning ESKD standartida belgilangan harfiy rasmiylashtirish qoidalari bilan toʻgʻri moslashtiring:\n1. Kesuvchi tekislik detalning simmetriya oʻqi boʻylab oʻtmagan va chizmaning boʻsh joyiga chiqarib chizilgan har qanday kesim ustiga yoziladigan belgi.\n2. Detal chizmasida uning juda mayda elementini yiriklashtirib koʻrsatuvchi masofaviy element aylanasi tepasiga qoʻyiladigan belgi.\n3. Chizmada kesuvchi tekislik yoʻnalishining boshlanishi va oxirini koʻrsatuvchi ochiq yoʻgʻon chiziqlar yoniga yoziladigan belgi.\n4. Agar chiqarilgan qirqim oʻz holatida emas, balki ma’lum burchakka burib chizilgan boʻlsa, harfiy koʻrsatkich yoniga qoʻyiladigan maxsus belgi.",
@@ -14908,7 +14908,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarda oʻlcham chiziqlari va ularning chekka qismlarini chegaralash qoidalari normalangan. Darslik talablariga muvofiq, texnologik chizmalarda oʻlcham chizigʻining chetidagi strelkalar oʻrniga parallel $45^\\circ$ burchak ostida qiya ingichka chiziqchalar (kertiklar) qoʻllashga qaysi turdagi maxsus chizmalarda ruxsat etiladi?",
@@ -14947,7 +14947,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Geometrik jismlarning proyeksiyalarini chizishda ularning sirt turlari va qirralari tahlil qilinadi. Darslik materiallariga binoan, uchala proyeksiya tekisligidagi (H, V, W) koʻrinishlari ham oʻzaro mutloq teng boʻlgan toʻgʻri toʻrtburchaklardan (yoki kvadratlardan) iborat boʻlgan jism turi chizmachilikda qanday nomlanadi?",
@@ -15012,7 +15012,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Kesim va qirqimlar bajarilganda detalning material turiga koʻra shtrixlash turlari qoʻllaniladi. ESKD andazasiga muvofiq, agar chizmada detalning kesilgan qismi bir-biriga parallel toʻgʻri chiziqlar bilan emas, balki tutash ingichka chiziqdan iborat boʻlgan toʻlqinsimon chiziqlar bilan toʻldirilgan boʻlsa, bu qaysi material turini bildiradi?",
@@ -15077,7 +15077,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Chizmalarda detalning koʻrinishlarini joylashtirishda proyeksiyalash tizimlarining qoidalari darsliklarda oʻrganiladi. Grafik savodxonlik qoidalariga binoan, detalning tepadagi frontal koʻrinishi ustiga qatʼiy uning ostki koʻrinishini (pastdan qaralishini) joylashtirishni talab qiluvchi standart tizim qanday nomlanadi?",
@@ -15090,7 +15090,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Chizmachilikda murakkab kesimlar va qirqimlar chizilganda ularni toʻgʻri ifodalash uchun chiziq turlari ishlatiladi. Quyidagi grafik holatlarni ularning ESKD standartida belgilangan chiziq turlari bilan toʻgʻri moslashtiring:\n1. Kesim va qirqimlarda kesuvchi tekislik joylashgan vaziyatni koʻrsatuvchi chekka yoʻgʻonlashtirilgan liniya elementlari.\n2. Kesim va qirqimlarda kesuvchi tekislik yoʻnalishi oʻzgaradigan (buriladigan) burchak joylarini koʻrsatuvchi liniya elementlari.\n3. Kesim va qirqimlarda kesilgan yaxlit metall qismlar ichini toʻldirishda qoʻllaniladigan parallel qiya chiziqlar.\n4. Mahalliy qirqim yoki mahalliy kesim bajarilganda tasvirni asosiy koʻrinishdan ajratib turuvchi chegara chizigʻi.\na) Tutash ingichka chiziq\nb) Tutash ingichka toʻlqinsimon chiziq\nc) Ochiq chiziq\nd) Ochiq chiziqning burilish qismlari",
@@ -15103,7 +15103,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Chizmalarda oʻlcham chiziqlari va ularning chekka qismlarini chegaralash qoidalari normalangan. Darslik talablariga muvofiq, texnologik chizmalarda oʻlcham chizigʻining chetidagi strelkalar oʻrniga aniq nuqtalar qoʻllashga qaysi holatda standart boʻyicha ruxsat etiladi?",
@@ -15116,7 +15116,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik topshirigʻida berilgan toʻgʻri chiziq kesmasini chizgʻich va sirkul yordamida \"Muntazam oltiburchak asosi qilib qurish\" bosqichlarini bajarmoqda. Geometrik qurishning mutloq toʻgʻri chiqishi uchun u ishlarni qaysi izchillikda bajarishi shart?\n1. Sirkul dastasini berilgan kesma uzunligiga teng ochib, ignasini navbat bilan $A$ va $B$ uchlariga qoʻyib, oʻzaro kesishuvchi yoylar orqali markaziy $O$ nuqtani topish.\n2. Sirkul ignasini hosil boʻlgan $O$ nuqtaga qoʻyib, $OA$ radiusli asosiy yordamchi aylanani chizish.\n3. Sirkul radiusini mutloq oʻzgartirmasdan, ignasini aylana sirtidagi nuqtalarga ketma-ket qoʻyib, yangi burchak kesishmalarini belgilash.\n4. Hosil boʻlgan barcha oltita burchak nuqtalarini chizgʻich yordamida oʻzaro ketma-ket toʻgʻri chiziqlar bilan qalin qilib tutashtirish.",
@@ -15142,7 +15142,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Geometrik jismlarning proyeksiyalarini chizishda ularning sirt turlari va qirralari tahlil qilinadi. Darslik materiallariga binoan, frontal va profil proyeksiya tekisliklaridagi koʻrinishlari toʻgʻri toʻrtburchak, gorizontal proyeksiya tekisligidagi koʻrinishi esa aylana boʻlgan jism turi chizmachilikda qanday nomlanadi?",
@@ -15207,7 +15207,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Kesim va qirqimlar bajarilganda detalning material turiga koʻra shtrixlash turlari qoʻllaniladi. ESKD andazasiga muvofiq, agar chizmada detalning kesilgan qismi bir-biriga parallel tutash ingichka chiziqlar bilan ma’lum qadamda kesishgan holda toʻrsimon shaklda toʻldirilgan boʻlsa, bu qaysi material turini bildiradi?",
@@ -15272,7 +15272,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida frontal tekislikda kesim burchaklarini chizish qoidalari oʻrganiladi. Grafik savodxonlik qoidalariga binoan, frontal proyeksiya tekisligiga ($V$) ham, gorizontal proyeksiya tekisligiga ($H$) ham qatʼiy perpendikulyar vaziyatda joylashgan koordinatali tekislik darsliklarda qanday nomlanadi?",
@@ -15298,7 +15298,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarni rasmiylashtirishda format maydonining quyi qismida joylashgan texnik yozuvlar bloki oʻrganiladi. ESKD andozalariga muvofiq, barcha asosiy formatlar ichida faqat qaysi format turining ramkasi uzun (gorizontal) tomoni boʻylab yotqizilgan holda ishlatilishi mutloq taqiqlanadi va faqat tik (vertikal) holatda qoʻllaniladi?",
@@ -15337,7 +15337,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Geometrik jismlarning proyeksiyalarini chizishda ularning sirt turlari va qirralari tahlil qilinadi. Darslik materiallariga binoan, frontal va profil proyeksiya tekisliklaridagi koʻrinishlari teng yonli uchburchak, gorizontal proyeksiya tekisligidagi koʻrinishi esa markazida nuqtasi bor doira boʻlgan jism turi chizmachilikda qanday nomlanadi?",
@@ -15363,7 +15363,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi chiziqlarning grafik ifodalanishi tahlil qilinadi. Chizmada koʻrinmaydigan ichki konturlar va qirralarni koʻrsatish uchun ishlatiladigan shtrixli chiziqning alohida chiziqchalari (shtrixlari) uzunligi standart boʻyicha qaysi oraliqda boʻlishi shart?",
@@ -15376,7 +15376,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik topshirigʻida berilgan detalning frontal va gorizontal koʻrinishlariga tayanib, \"Detalning $A-A$ yoʻnalishi boʻyicha frontal toʻliq qirqimini qurish\" bosqichlarini bajarmoqda. Tasvirlarning proyeksion bogʻliqlikka toʻliq mos kelishi uchun u ishlarni qaysi izchillikda bajarishi shart?\n1. Gorizontal koʻrinishda detalning ichki boʻshliqlaridan oʻtuvchi frontal-kesuvchi tekislik vaziyatini belgilash va ochiq yoʻgʻon chiziq bilan chizish.\n2. Ochiq chiziq chetlariga oldingi koʻrinish yoʻnalishini koʻrsatuvchi strelkalarni va $A$ harflarini joylashtirish.\n3. Kesuvchi tekislik toʻgʻri kesib oʻtgan barcha figuralarni frontal proyeksiya (bosh koʻrinish) oʻrniga koʻchirib chizish.\n4. Hosil boʻlgan qirqim maydoni ichini parallel ingichka chiziqlar bilan metall shtrixi holatida toʻldirish va ustiga $A-A$ yozuvini yozish.",
@@ -15402,7 +15402,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Kesim va qirqimlar bajarilganda detalning material turiga koʻra shtrixlash turlari qoʻllaniladi. ESKD andazasiga muvofiq, agar chizmada detalning kesilgan qismi bir-biriga parallel boʻlgan ikkita ingichka va bitta yoʻgʻon chiziqlar navbatlashishi orqali toʻldirilgan boʻlsa, bu qaysi material turini bildiradi?",
@@ -15467,7 +15467,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida tekisliklarning proyeksiyalanish xususiyatlari oʻrganiladi. Grafik savodxonlik qoidalariga binoan, gorizontal proyeksiya tekisligiga ($H$) parallel boʻlgan va unga proyeksiyalanganda oʻzining haqiqiy shakli hamda oʻlchamini (natural koʻrinishini) oʻzgartirmasdan hosil qiluvchi tekislik darsliklarda qanday nomlanadi?",
@@ -15493,7 +15493,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarni rasmiylashtirishda format maydonining chetlaridagi chiziqlar turlari oʻrganiladi. ESKD andozalariga muvofiq, chizma qogʻozining toza kesilgan chekkalarini ifodalovchi va chizma maydonini ramka bilan chegaralashdan oldin chiziladigan eng tashqi chiziq qanday nomlanadi?",
@@ -15532,7 +15532,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Geometrik jismlarning proyeksiyalarini chizishda ularning sirt turlari va qirralari tahlil qilinadi. Darslik materiallariga binoan, uchala proyeksiya tekisligidagi (H, V, W) koʻrinishlari ham oʻzaro mutloq teng boʻlgan mukammal doiralardan iborat boʻlgan jism turi chizmachilikda qanday nomlanadi?",
@@ -15558,7 +15558,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi chiziqlarning grafik ifodalanishi tahlil qilinadi. Chizmada biron bir detalning kesilgan yuzasi ustida yotgan, lekin oʻta yupqa boʻlganligi sababli (masalan, qovurgʻalar, tishli gʻildirak tishlari) qirqimga kiritilmasdan, kesilmagan holda yaxlit (shtrixlarsiz) koʻrsatiladigan elementlar darsliklarda nima deb ataladi?",
@@ -15597,7 +15597,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Kesim va qirqimlar bajarilganda detalning material turiga koʻra shtrixlash turlari qoʻllaniladi. ESKD andazasiga muvofiq, agar chizmada detalning kesilgan qismi hech qanday chiziqlarsiz, mutloq oq qoldirilgan boʻlsa, lekin uning chekka konturlari oʻta qalin chiziq bilan oʻralgan boʻlsa, bu qaysi material turini bildiradi?",
@@ -15662,7 +15662,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida koordinata tekisliklarining proyeksiyalanish xususiyatlari oʻrganiladi. Grafik savodxonlik qoidalariga binoan, frontal proyeksiya tekisligiga ($V$) parallel boʻlgan va unga proyeksiyalanganda oʻzining haqiqiy shakli hamda oʻlchamini (natural koʻrinishini) mutloq oʻzgartirmasdan hosil qiluvchi tekislik darsliklarda qanday nomlanadi?",
@@ -15688,7 +15688,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarni rasmiylashtirishda format maydonining oʻng quyi qismida joylashgan texnik yozuvlar bloki oʻrganiladi. ESKD andozalariga muvofiq, maktab chizmachilik darslarida ishlatiladigan asosiy yozuv shtampining standart tashqi oʻlchamlari (uzunligi va balandligi) necha millimetr etib belgilangan?",
@@ -15701,7 +15701,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik topshirigʻida berilgan toʻgʻri chiziq kesmasini chizgʻich va sirkul yordamida \"Muntazam oltiburchak ichiga toʻgʻri aylana chizish\" bosqichlarini bajarmoqda. Geometrik qurishning mutloq toʻgʻri chiqishi uchun u ishlarni qaysi izchillikda bajarishi shart?\n1. Oltiburchakning qarama-qarshi burchaklarini oʻzaro toʻgʻri chiziqlar (diagonallar) bilan tutashtirib, markaziy $O$ nuqtani topish.\n2. Markaziy $O$ nuqtadan oltiburchakning ixtiyoriy bitta tomoniga qatʼiy perpendikulyar chiziq tushirib, ichki urinish radiusini ($R$) aniqlash.\n3. Sirkul ignasini $O$ nuqtaga qoʻyib, aniqlangan $R$ masofasi bilan oltiburchak tomonlariga ichkaridan tegib oʻtuvchi aylanani chizish.\n4. Ichki aylananing barcha oltita tomon bilan mutloq bitta nuqtada uchrashishini koʻzdan kechirib, konturni aniqlashtirish.",
@@ -15727,7 +15727,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Geometrik jismlarning proyeksiyalarini chizishda ularning sirt turlari va qirralari tahlil qilinadi. Darslik materiallariga binoan, frontal va gorizontal proyeksiya tekisliklaridagi koʻrinishlari toʻgʻri toʻrtburchak, profil proyeksiya tekisligidagi koʻrinishi esa muntazam oltiburchak boʻlgan jism turi chizmachilikda qanday nomlanadi?",
@@ -15753,7 +15753,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi chiziqlarning grafik ifodalanishi tahlil qilinadi. Chizmada biron bir detalning uzunligi boʻyicha oʻtkazilgan toʻliq qirqimida, kesuvchi tekislik uning ichki yaxlit metall elementi (masalan, tishli gʻildirak vali yoki shponka) ustidan oʻtsa, ushbu element chizmada qanday koʻrsatilishi shart?",
@@ -15792,7 +15792,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Kesim va qirqimlar bajarilganda detalning material turiga koʻra shtrixlash turlari qoʻllaniladi. ESKD andazasiga muvofiq, agar chizmada detalning kesilgan qismi bir-biriga parallel boʻlgan tutash ingichka chiziqlar bilan toʻldirilgan boʻlsa, bu qaysi material turini bildiradi?",
@@ -15857,7 +15857,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida profil proyeksiyalovchi tekisliklarning xususiyatlari oʻrganiladi. Grafik savodxonlik qoidalariga binoan, profil proyeksiya tekisligiga ($W$) qatʼiy parallel boʻlgan va unga proyeksiyalanganda oʻzining haqiqiy shakli hamda oʻlchamini natural koʻrinishda hosil qiluvchi tekislik darsliklarda qanday nomlanadi?",
@@ -15883,7 +15883,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarni rasmiylashtirishda format maydonining oʻng quyi qismida joylashgan texnik yozuvlar bloki oʻrganiladi. ESKD andozalariga muvofiq, ishlab chiqarish va loyihalash institutlarida ishlatiladigan professional yirik asosiy yozuv shtampining standart uzunligi necha millimetr etib belgilangan?",
@@ -15896,7 +15896,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik topshirigʻida berilgan toʻgʻri chiziq kesmasini chizgʻich va sirkul yordamida \"Muntazam sakkizburchak ichiga toʻgʻri aylana chizish\" bosqichlarini bajarmoqda. Geometrik qurishning mutloq toʻgʻri chiqishi uchun u ishlarni qaysi izchillikda bajarishi shart?\n1. Sakkizburchakning barcha qarama-qarshi burchaklarini oʻzaro toʻgʻri chiziqlar bilan tutashtirib, markaziy $O$ nuqtani topish.\n2. Markaziy $O$ nuqtadan sakkizburchakning ixtiyoriy bitta tomoniga qatʼiy perpendikulyar chiziq tushirib, ichki urinish radiusini ($R$) aniqlash.\n3. Sirkul ignasini $O$ nuqtaga qoʻyib, aniqlangan $R$ masofasi bilan sakkizburchak tomonlariga ichkaridan tegib oʻtuvchi aylanani chizish.\n4. Ichki aylananing barcha sakkizta tomon bilan mutloq bitta nuqtada uchrashishini tekshirib, konturni qalinlashtirish.",
@@ -15922,7 +15922,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Geometrik jismlarning proyeksiyalarini chizishda ularning sirt turlari va qirralari tahlil qilinadi. Darslik materiallariga binoan, frontal va gorizontal proyeksiya tekisliklaridagi koʻrinishlari toʻgʻri toʻrtburchak, profil proyeksiya tekisligidagi koʻrinishi esa muntazam beshburchak boʻlgan jism turi chizmachilikda qanday nomlanadi?",
@@ -15948,7 +15948,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi chiziqlarning grafik ifodalanishi tahlil qilinadi. Chizmada biron bir detalning koʻndalang kesimi boʻyicha oʻtkazilgan toʻliq qirqimida, kesuvchi tekislik uning yupqa qovurgʻasi ustidan oʻtsa, ushbu qovurgʻa elementining ichki qismi chizmada qanday koʻrsatilishi shart?",
@@ -15987,7 +15987,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Kesim va qirqimlar bajarilganda detalning material turiga koʻra shtrixlash turlari qoʻllaniladi. ESKD andazasiga muvofiq, agar chizmada detalning kesilgan qismi bir-biriga parallel boʻlgan tutash ingichka chiziqlar bilan ma’lum tartibda uzilib-uzilib chizilgan shtrixlar zanjiri shaklida toʻldirilgan boʻlsa, bu qaysi material turini bildiradi?",
@@ -16052,7 +16052,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida frontal proyeksiyalovchi tekisliklarning xususiyatlari oʻrganiladi. Grafik savodxonlik qoidalariga binoan, frontal proyeksiya tekisligiga ($V$) qatʼiy perpendikulyar boʻlgan, ammo gorizontal va profil tekisliklarga qiya vaziyatda joylashgan tekislik darsliklarda qanday nomlanadi?",
@@ -16078,7 +16078,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Chizmalarni rasmiylashtirishda format maydonining oʻng quyi qismida joylashgan texnik yozuvlar bloki oʻrganiladi. ESKD andozalariga muvofiq, barcha formatlar ichida faqat qaysi format turining ramkasi quyi gorizontal tomoni boʻylab joylashganda asosiy yozuv shtampining uzunligi formatning toʻliq kengligiga teng boʻladi?",
@@ -16117,7 +16117,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Geometrik jismlarning proyeksiyalarini chizishda ularning sirt turlari va qirralari tahlil qilinadi. Darslik materiallariga binoan, frontal va profil proyeksiya tekisliklaridagi koʻrinishlari toʻgʻri toʻrtburchak, gorizontal proyeksiya tekisligidagi koʻrinishi esa muntazam sakkizburchak boʻlgan jism turi chizmachilikda qanday nomlanadi?",
@@ -16143,7 +16143,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi chiziqlarning grafik ifodalanishi tahlil qilinadi. Chizmada biron bir detalning boʻylama (uzunligi boʻyicha) oʻtkazilgan toʻliq qirqimida, kesuvchi tekislik uning ichki standart mahkamlovchi elementi (masalan, bolt, gayka yoki shayba) ustidan oʻtsa, ushbu mahkamlovchi elementlar chizmada qanday koʻrsatilishi shart?",
@@ -16156,7 +16156,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik topshirigʻida berilgan detalning frontal va profil koʻrinishlariga tayanib, \"Detalning markaziy oʻqidan oʻtuvchi gorizontal yarim qirqimini qurish\" bosqichlarini bajarmoqda. Tasvirlarning proyeksion qonuniyatlarga toʻliq mos kelishi uchun u ishlarni qaysi izchillikda bajarishi shart?\n1. Gorizontal koʻrinishning simmetriya oʻqini aniqlash va uning chap yoki oʻng tomonini qirqim qilishni rejalashtirish.\n2. Koʻrinishning qirqim qilinadigan yarmidagi barcha koʻrinmaydigan shtrixli chiziqlarni qalin tutash chiziqqa aylantirish.\n3. Kesuvchi tekislik ichki metallga tekkan qismlarni aniqlab, faqat qirqim yarmigagina parallel shtrix chiziqlarini chizish.\n4. Koʻrinish yarmi bilan qirqim yarmini oʻzaro ajratib turuvchi chegara sifatida ingichka shtrix-punktir oʻq chizigʻini qoldirish.",
@@ -16182,7 +16182,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Kesim va qirqimlar bajarilganda detalning material turiga koʻra shtrixlash turlari qoʻllaniladi. ESKD andazasiga muvofiq, agar chizmada detalning kesilgan qismi bir-biriga parallel boʻlgan tutash ingichka chiziqlar bilan oʻzaro $45^\\circ$ burchak ostida kesishgan va chiziqlarning bir tomoni shtrixli chiziqlar zanjiridan iborat boʻlsa, bu qaysi material turini bildiradi?",
@@ -16247,7 +16247,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida profil proyeksiyalovchi tekisliklarning xususiyatlari oʻrganiladi. Grafik savodxonlik qoidalariga binoan, profil proyeksiya tekisligiga ($W$) qatʼiy perpendikulyar boʻlgan, ammo gorizontal va frontal tekisliklarga qiya vaziyatda joylashgan tekislik darsliklarda qanday nomlanadi?",
@@ -16273,7 +16273,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarni rasmiylashtirishda format maydonining hoshiya chegaralari oʻrganiladi. ESKD andozalariga muvofiq, baxes asosiy formatlar uchun formatning tashqi kesish konturidan ichki asosiy ramka chizigʻigacha chap tomondan qoldirilishi kerak boʻlgan standart tikish masofasi necha millimetr etib belgilangan?",
@@ -16286,7 +16286,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik topshirigʻida berilgan toʻgʻri chiziq kesmasini chizgʻich va sirkul yordamida \"Muntazam oʻn ikkiburchak asosi qilib qurish\" bosqichlarini bajarmoqda. Geometrik qurishning mutloq toʻgʻri chiqishi uchun u ishlarni qaysi izchillikda bajarishi shart?\n1. Berilgan kesmaning ikki uchidan qatʼiy perpendikulyar boʻlgan tik yordamchi chiziqlar oʻtkazish.\n2. Hosil boʻlgan tashqi burchaklarni sirkul yordamida qatʼiy teng ikkiga boʻluvchi qiya nurlar chizish.\n3. Sirkul dastasini berilgan kesma oʻlchamiga teng ochib, qiya nurlar ustida yangi burchak nuqtalarini ketma-ket belgilash.\n4. Hosil boʻlgan barcha oʻn ikkita burchak nuqtalarini chizgʻich yordamida oʻzaro toʻgʻri chiziqlar bilan qalin qilib tutashtirish.",
@@ -16312,7 +16312,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Geometrik jismlarning proyeksiyalarini chizishda ularning sirt turlari va qirralari tahlil qilinadi. Darslik materiallariga binoan, frontal va gorizontal proyeksiya tekisliklaridagi koʻrinishlari toʻgʻri toʻrtburchak, profil proyeksiya tekisligidagi koʻrinishi esa muntazam oʻnburchak boʻlgan jism turi chizmachilikda qanday nomlanadi?",
@@ -16338,7 +16338,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi chiziqlarning grafik ifodalanishi tahlil qilinadi. Chizmada biron bir detalning koʻndalang kesimi boʻyicha oʻtkazilgan toʻliq qirqimida, kesuvchi tekislik uning yaxlit mahkamlovchi elementi boʻlgan shponka yoki shpilka ustidan boʻylama oʻtsa, ushbu element chizmada qanday koʻrsatilishi shart?",
@@ -16377,7 +16377,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Kesim va qirqimlar bajarilganda detalning material turiga koʻra shtrixlash turlari qoʻllaniladi. ESKD andazasiga muvofiq, agar chizmada detalning kesilgan qismi bir-biriga parallel boʻlgan tutash ingichka chiziqlar bilan oʻzaro $45^\\circ$ burchak ostida kesishgan va chiziqlarning bir tomoni toʻliq oq kataklar holatida shaxmat taqsimotida toʻldirilgan boʻlsa, bu qaysi material turini bildiradi?",
@@ -16442,7 +16442,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida frontal darajali tekisliklarning xususiyatlari oʻrganiladi. Grafik savodxonlik qoidalariga binoan, frontal proyeksiya tekisligiga ($V$) qatʼiy parallel boʻlgan va unga proyeksiyalanganda oʻzining haqiqiy shakli hamda oʻlchamini natural koʻrinishda hosil qiluvchi tekislik darsliklarda qanday nomlanadi?",
@@ -16468,7 +16468,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarni rasmiylashtirishda format maydonining hoshiya chegaralari oʻrganiladi. ESKD andozalariga muvofiq, barcha asosiy formatlar uchun formatning tashqi oʻlcham ramkasini chizishda qaysi chiziq turidan foydalanish qatʼiy talab etiladi?",
@@ -16507,7 +16507,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Geometrik jismlarning proyeksiyalarini chizishda ularning sirt turlari va qirralari tahlil qilinadi. Darslik materiallariga binoan, frontal va gorizontal proyeksiya tekisliklaridagi koʻrinishlari toʻgʻri toʻrtburchak, profil proyeksiya tekisligidagi koʻrinishi esa muntazam oʻn ikkiburchak boʻlgan jism turi chizmachilikda qanday nomlanadi?",
@@ -16533,7 +16533,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi chiziqlarning grafik ifodalanishi tahlil qilinadi. Chizmada biron bir detalning koʻndalang kesimi boʻyicha oʻtkazilgan toʻliq qirqimida, kesuvchi tekislik uning tishli gʻildirak tishi yoki mahkamlovchi ponasi ustidan koʻndalang (eni boʻylab) oʻtsa, ushbu element chizmada qanday koʻrsatilishi shart?",
@@ -16572,7 +16572,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Kesim va qirqimlar bajarilganda detalning material turiga koʻra shtrixlash turlari qoʻllaniladi. ESKD andazasiga muvofiq, agar chizmada detalning kesilgan qismi bir-biriga parallel boʻlgan tutash ingichka chiziqlar bilan oʻzaro $45^\\circ$ burchak ostida kesishgan va chiziqlarning bir tomoni toʻliq toʻq shtrix-punktir zanjiri holatida toʻldirilgan boʻlsa, bu qaysi material turini bildiradi?",
@@ -16637,7 +16637,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida profil darajali tekisliklarning xususiyatlari oʻrganiladi. Grafik savodxonlik qoidalariga binoan, profil proyeksiya tekisligiga ($W$) qatʼiy parallel boʻlgan va unga proyeksiyalanganda oʻzining haqiqiy shakli hamda oʻlchamini natural koʻrinishda hosil qiluvchi tekislik darsliklarda qanday nomlanadi?",
@@ -16663,7 +16663,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarni rasmiylashtirishda format maydonining hoshiya chegaralari oʻrganiladi. ESKD andozalariga muvofiq, chizma ramkasi ichida chizilgan va detalning massasi, varaq raqami hamda chizmani tayyorlagan shaxsning ismi yoziladigan texnik kataklar majmuasi darsliklarda nima deb ataladi?",
@@ -16702,7 +16702,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Geometrik jismlarning proyeksiyalarini chizishda ularning sirt turlari va qirralari tahlil qilinadi. Darslik materiallariga binoan, frontal va gorizontal proyeksiya tekisliklaridagi koʻrinishlari toʻgʻri toʻrtburchak, profil proyeksiya tekisligidagi koʻrinishi esa muntazam oʻn toʻrtburchak boʻlgan jism turi chizmachilikda qanday nomlanadi?",
@@ -16728,7 +16728,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "[Aslida: 252-savol]\nDetal chizmalarini oʻqishda undagi chiziqlarning grafik ifodalanishi tahlil qilinadi. Chizmada biron bir detalning koʻndalang kesimi boʻyicha oʻtkazilgan toʻliq qirqimida, kesuvchi tekislik uning tishli gʻildirak tishi yoki mahkamlovchi ponasi ustidan boʻylama (uzunligi boʻyicha) oʻtsa, ushbu element chizmada qanday koʻrsatilishi shart?",
@@ -16767,7 +16767,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Kesim va qirqimlar bajarilganda detalning material turiga koʻra shtrixlash turlari qoʻllaniladi. ESKD andazasiga muvofiq, agar chizmada detalning kesilgan qismi bir-biriga parallel boʻlgan tutash ingichka chiziqlar bilan oʻzaro $45^\\circ$ burchak ostida kesishgan va chiziqlarning bir tomoni toʻliq toʻq nuqtalar zanjiri hamda qiya toʻlqinlar uygʻunligida toʻldirilgan boʻlsa, bu qaysi material turini bildiradi?",
@@ -16832,7 +16832,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Gaspard Monj usuli boʻyicha epyurdagi uchinchi darajali murakkab pozitsion masalalarni yechish qoidalari oʻrganiladi. Darslik materiallariga binoan, epyurda berilgan ikki umumiy vaziyatdagi qiya tekisliklarning oʻzaro fazoviy kesishish toʻgʻri chizigʻini aniqlash uchun qaysi turdagi yordamchi elementlar tizimidan foydalanish qatʼiy talab etiladi?",
@@ -16871,7 +16871,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik topshirigʻida berilgan piramida va prizma sirtlarining oʻzaro kesishish chizigʻini epyurda \"Qirralarning sirt bilan kesishish nuqtalarini topish usuli\" boʻyicha chizmoqchi. Grafik tasvirning mutloq toʻgʻri chiqishi uchun u amallarni qaysi ketma-ketlikda bajarishi shart?\n1. Birinchi jismning barcha tik qirralaridan oʻtuvchi yordamchi proyeksiyalovchi tekisliklar oʻtkazish.\n2. Yordamchi tekisliklarning ikkinchi jism sirti bilan kesishgan koʻndalang chiziqlarini aniqlash va chizish.\n3. Birinchi jism qirralarining oʻsha hosil boʻlgan chiziqlar bilan oʻzaro kesishgan fazoviy tayanch nuqtalarini belgilash.\n4. Topilgan barcha tayanch nuqtalarni ularning jism sirtidagi joylashish tartibi boʻyicha toʻgʻri chiziqlar bilan ketma-ket tutashtirish.",
@@ -16923,7 +16923,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi chiziqlarning grafik ifodalanishi va qisqartirish qoidalari tahlil qilinadi. Chizmada biron bir detalning sirtida bir xil masofada joylashgan va mutloq bir xil shaklga ega boʻlgan koʻplab teshiklar yoki tishlar zanjiri mavjud boʻlsa, darslik qoidasiga koʻra ularni chizmada qanday koʻrsatishga ruxsat etiladi?",
@@ -16962,7 +16962,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Kesim va qirqimlar bajarilganda detalning material turiga koʻra shtrixlash turlari qoʻllaniladi. ESKD andazasiga muvofiq, agar chizmada detalning kesilgan qismi bir-biriga parallel boʻlgan tutash ingichka chiziqlar bilan oʻzaro $45^\\circ$ burchak ostida toʻldirilgan boʻlsa, lekin chiziqlarning bir qismi ingichka shtrixli chiziqlar bilan navbatlashgan boʻlsa, bu qaysi material turini bildiradi?",
@@ -17027,7 +17027,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Gaspard Monj usuli boʻyicha epyurda toʻgʻri chiziq kesmasini fazoviy tahlil qilish qoidalari oʻrganiladi. Darslik materiallariga binoan, agar toʻgʻri chiziq kesmasining epyurdagi frontal va gorizontal proyeksiyalari oʻzaro qatʼiy teng va koordinata oʻqiga nisbatan bir xil qiyalik burchagiga ega boʻlsa, bu toʻgʻri chiziq qanday nomlanadi?",
@@ -17066,7 +17066,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi chizmachilik topshirigʻida berilgan toʻgʻri burchakli izometrik proyeksiyada \"Aylanish oʻqi vertikal boʻlgan toʻgʻri silindrning yaqqol tasvirini qurish\" bosqichlarini bajarmoqda. Tasvirning geometrik jihatdan mutloq aniq chiqishi uchun u ishlarni qaysi izchillikda bajarishi shart?\n1. Gorizontal tekislikda ($XOY$) silindr asosining diametriga teng oʻlchamda birinchi ovalni (pastki asosni) qurish.\n2. Pastki ovalning markazidan yuqoriga qatʼiy vertikal yoʻnalishda silindr balandligiga teng oʻq chizigʻini oʻtkazish.\n3. Balandlik oʻqining yuqori uchida pastki asosga mutloq parallel va teng oʻlchamdagi ikkinchi ovalni (yuqori asosni) qurish.\n4. Har ikkala ovalning eng chekka chetlarini tutash yoʻgʻon yasaluvchi chiziqlar bilan parallel tutashtirib, konturni qalinlashtirish.",
@@ -17092,7 +17092,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Kesim va qirqimlar bajarilganda detalning material turiga koʻra shtrixlash turlari qoʻllaniladi. ESKD andazasiga muvofiq, agar chizmada detalning kesilgan qismi bir-biriga parallel boʻlgan tutash ingichka chiziqlar bilan toʻldirilgan boʻlsa, ammo chiziqlar guruhlar shaklida (masalan, ikkitadan yoki uchtadan parallel boʻlib) garmonik ajratilgan boʻlsa, bu qaysi material turini bildiradi?",
@@ -17118,7 +17118,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi chiziqlarning grafik ifodalanishi va qisqartirish qoidalari tahlil qilinadi. Chizmada biron bir detalning sirtida qatʼiy takrorlanadigan uzun konusli tishlar yoki buramalar boʻlsa, darslik qoidasiga koʻra ularning qolgan qismlarini chizmasdan, faqat element chegarasini qaysi chiziq turi bilan koʻrsatishga ruxsat etiladi?",
@@ -17157,7 +17157,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Kesim va qirqimlar bajarilganda detalning material turiga koʻra shtrixlash turlari qoʻllaniladi. ESKD andazasiga muvofiq, agar chizmada detalning kesilgan qismi mutloq toʻq qora rang bilan toʻliq boʻyalgan boʻlsa, lekin uning qalinligi chizmada $2\\text{ mm}$ dan kichik ekanligi koʻrinsa, bu grafik uslub qaysi holatda qoʻllaniladi?",
@@ -17209,7 +17209,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida geometrik jismlar sirtlarining proyeksiyalanish xususiyatlari va ularning epyurdagi oʻzaro munosabatlari oʻrganiladi. Quyidagi jism turlarini ularning frontal proyeksiya tekisligida ($V$) hosil qiladigan eng xarakterli kontur shakllari bilan toʻgʻri moslashtiring:\n1. Asosi gorizontal tekislikda yotgan muntazam uchburchakli toʻgʻri piramida.\n2. Aylanish oʻqi gorizontal tekislikka perpendikulyar boʻlgan toʻgʻri aylanma konus.\n3. Asosi gorizontal tekislikka parallel boʻlgan mukammal kvadratlar jamlanmasidan iborat kub.\n4. Aylanish oʻqi frontal tekislikka perpendikulyar boʻlgan toʻgʻri aylanma silindr.\na) Teng yonli uchburchak\nb) Mukammal doira\nc) Uchburchak\nd) Kvadrat",
@@ -17235,7 +17235,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik chizmalarida tishli gʻildiraklar va uzatmalar elementlarining shartli grafik tasvirlanish qoidalari normalangan. Tishli gʻildirak chizmasidagi quyidagi doira turlarini ularning darslikda belgilangan qatʼiy chiziq turlari bilan toʻgʻri moslashtiring:\n1. Tishli gʻildirak tishlarining eng chekka yuqori uchlaridan oʻtuvchi tashqi choʻqqi aylanasi.\n2. Tishli gʻildirak tishlarining bir-biri bilan ilashadigan va barcha hisob-kitoblar asosini tashkil etuvchi boʻluvchi aylanasi.\n3. Tishli gʻildirak tishlarining eng ostki (botiq) qismlaridan oʻtuvchi tub aylanasi.\n4. Tishli gʻildirakning kesim va qirqimlarida tishlarning boʻylama yoʻnalishda kesilish chegarasi.\na) Shtrix-punktir ingichka chiziq\nb) Tutash ingichka chiziq\nc) Tutash yoʻgʻon chiziq\nd) Shtrixli chiziq",
@@ -17287,7 +17287,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi turli konstruktiv elementlarning grafik tasvirlanish qoidalari tahlil qilinadi. Quyidagi texnik terminlarni ularning darslikda keltirilgan qatʼiy muhandislik tavsiflari bilan toʻgʻri moslashtiring:\n1. Detalning chekka oʻtkir qirralarini mexanik sinishdan asrash va plastiklik berish uchun burchak ostida yoʻnilgan qismi.\n2. Detal sirtining tekislikdan kavisli yuzaga oʻtish joylaridagi silliqlangan ichki yoki tashqi burchak yoyi.\n3. Vallar sirtida boshqa detallarni mahkamlab aylantirish uchun moʻljallangan toʻgʻri toʻrtburchakli uzun ariqcha.\n4. Silindrik detallarning ichki qismida boshqa elementlar kirishi uchun maxsus asboblar bilan ochilgan chuqurcha.\na) Galtel\nb) Shponka ariqchasi\nc) Faska\nd) Yoʻnilgan uya",
@@ -17365,7 +17365,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida murakkab qirqimlar va kesuvchi tekisliklarning oʻzaro joylashuv vaziyatlari tahlil qilinadi. Quyidagi qirqim turlarini ularning darslikda belgilangan qatʼiy konstruktiv-grafik ta’riflari bilan toʻgʻri moslashtiring:\n1. Detalning ichki tuzilishini ochish uchun oʻzaro parallel boʻlgan bir nechta kesuvchi tekisliklar yordamida oʻtkaziladigan murakkab tasvir.\n2. Detalning chigal tuzilishini ochish uchun bitta nuqtada oʻzaro ma’lum bir burchak ostida kesishuvchi tekisliklar yordamida oʻtkaziladigan murakkab tasvir.\n3. Detalning faqat ma’lum bir kichik boʻlagini, bitta teshigini yoki chuqurchasini koʻrsatuvchi va ingichka toʻlqinsimon chiziq bilan ajratiladigan tasvir.\n4. Xayoliy kesuvchi tekislik gorizontal proyeksiya tekisligiga nisbatan qandaydir oʻtkir burchak ostida qiya oʻtkazilganda hosil boʻladigan tasvir.\na) Sinish qirqimi\nb) Qiyshiq qirqim\nc) Zinalik qirqim\nd) Mahalliy qirqim",
@@ -17391,7 +17391,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarda rezbali teshiklarning grafik ifodalanishi va ularning xalqaro ESKD standartidagi chiziqlar turlari normalangan. Ichki rezbali silindrik teshiklar (koʻndalang kesimdagi teshiklar) uchun quyidagi qismlarni ularning chizmadagi standart chiziq turlari bilan toʻgʻri moslashtiring:\n1. Rezbali teshikning eng ichki qismini, ya’ni rezba choʻqqilarining diametrini koʻrsatuvchi ichki chiziq.\n2. Rezbali teshikning eng tashqi (botiq) qismini, ya’ni rezba tubining diametrini koʻrsatuvchi chiziq.\n3. Teshik oxirigacha rezba toʻliq yoʻnilmagan holatda, rezba tugagan joyni koʻrsatuvchi koʻndalang liniya.\n4. Teshikka qatʼiy ustki tomondan qaralganda rezba tashqi (tub) diametrining yoy shaklidagi tasviri.\na) Tutash ingichka chiziq\nb) Toʻrtdan uch qismi chizilgan tutash ingichka aylana yoyi\nc) Tutash yoʻgʻon chiziq\nd) Yoʻgʻon koʻndalang chiziq",
@@ -17404,7 +17404,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida geometrik jismlar sirtlarining proyeksiyalanish xususiyatlari va ularning epyurdagi oʻzaro munosabatlari oʻrganiladi. Quyidagi jism turlarini ularning gorizontal proyeksiya tekisligida ($H$) hosil qiladigan eng xarakterli kontur shakllari bilan toʻgʻri moslashtiring:\n1. Aylanish oʻqi gorizontal tekislikka perpendikulyar boʻlgan toʻgʻri aylanma silindr.\n2. Asosi frontal tekislikda yotgan muntazam toʻrtburchakli toʻgʻri prizma.\n3. Fazoviy joylashuvi gorizontal tekislikka parallel boʻlgan muntazam oltiburchakli prizma asosi.\n4. Fazoviy shakli uchburchakli piramidaning ma’lum balandlikda gorizontal tekislikka parallel kesilishidan hosil boʻlgan yuqori sirti.\na) Toʻgʻri toʻrtburchak\nb) Uchburchak\nc) Mukammal doira\nd) Muntazam oltiburchak",
@@ -17430,7 +17430,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik chizmalarida tishli ilashmalar va tishli uzatmalarning yigʻish chizmasidagi shartli grafik tasvirlanish qoidalari normalangan. Ikki tishli gʻildirakning oʻzaro ilashish maydoni (kesishish zonasi) uchun quyidagi elementlarni ularning standart grafik qoidalari bilan toʻgʻri moslashtiring:\n1. Ilashish zonasida yetakchi gʻildirak tishining koʻrinadigan choʻqqi aylanasi liniyasi.\n2. Ilashish zonasida yetaklanuvchi gʻildirak tishining toʻsib qolinadigan (koʻrinmaydigan) choʻqqi aylanasi liniyasi.\n3. Har ikkala tishli gʻildirakning ilashish zonasida bir-biriga mutloq urinib oʻtuvchi boʻluvchi aylanalari chizigʻi.\n4. Yigʻish chizmasining koʻndalang kesimida tishli gʻildirak tishlarining oʻzaro bir-birining ichiga kirish chegarasi.\na) Shtrixli chiziq\nb) Shtrix-punktir ingichka chiziq\nc) Tutash yoʻgʻon chiziq\nd) Tutash ingichka chiziq",
@@ -17443,7 +17443,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Gaspard Monj usuli boʻyicha epyur chizmalarini oʻqishda nuqta proyeksiyalarining oʻq chiziqlaridan boʻlgan masofalari tahlil qilinadi. Fazodagi ixtiyoriy $A$ nuqtaning quyidagi koordinata qiymatlarini ularning epyurdagi qatʼiy geometrik ta’riflari bilan toʻgʻri moslashtiring:\n1. $A$ nuqtaning profil proyeksiya tekisligidan ($W$) boʻlgan haqiqiy uzoqlik masofasi.\n2. $A$ nuqtaning frontal proyeksiya tekisligidan ($V$) boʻlgan haqiqiy uzoqlik masofasi.\n3. $A$ nuqtaning gorizontal proyeksiya tekisligidan ($H$) boʻlgan haqiqiy uzoqlik masofasi.\n4. $A$ nuqtaning uchburchakli koordinata oʻqlarining markazidan boshlanish qiymati.\na) $Y$ koordinatasi (chuqurligi)\nb) $Z$ koordinatasi (balandligi)\nc) $X$ koordinatasining qiymati\nd) Nol koordinata nuqtasi",
@@ -17482,7 +17482,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi turli konstruktiv elementlarning grafik tasvirlanish qoidalari tahlil qilinadi. Quyidagi texnik terminlarni ularning darslikda keltirilgan qatʼiy muhandislik tavsiflari bilan toʻgʻri moslashtiring:\n1. Silindrik valning yoki teshikning chekka qismida boshqa detallarning uchrashishini osonlashtiruvchi qiyalik-kesik.\n2. Detal sirtining ichki burchaklarida kuchlanishni kamaytirish uchun yoʻysimon silliqlangan aylanma qismi.\n3. Tishli gʻildirak markazidagi teshik ichida val bilan birikishni ta’minlovchi toʻgʻri toʻrtburchakli boʻylama ariqcha.\n4. Trubalar va armaturalarning chekka uchlarida burab biriktirish uchun ochilgan spiral ariqchalar majmuasi.\na) Galtel\nb) Rezba\nc) Faska\nd) Shponka uyasi",
@@ -17508,7 +17508,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarda oʻlcham qoʻshishda ishlatiladigan maxsus grafik simvollar detalning konstruktiv xususiyatlarini aniqlaydi. Quyidagi grafik belgilarni ularning darslikda belgilangan qatʼiy chizmachilik ma’nolari bilan toʻgʻri moslashtiring:\n1. Oʻlcham sonining oldiga qoʻyiladigan va detal elementining toʻliq aylana ekanligini koʻrsatuvchi belgi.\n2. Oʻlcham sonining oldiga qoʻyiladigan va detal elementining aylanma yoy ekanligini koʻrsatuvchi belgi.\n3. Oʻlcham sonining oldiga qoʻyiladigan va sirtning kvadrat shaklida ekanligini koʻrsatuvchi toʻrtburchak belgi.\n4. Oʻlcham sonining oldiga qoʻyiladigan va sirtning sharsimon doira ekanligini koʻrsatuvchi bosh harfiy belgi.\na) $\\square$\nb) Sph\nc) $\\varnothing$\nd) $R$",
@@ -17560,7 +17560,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik chizmachiligida detallarning ajralmas birikmalari va ularning payvandlash turlari shartli grafik belgilari bilan ifodalanadi. Quyidagi payvand chok turlarini ularning ESKD standartida belgilangan qatʼiy grafik yordamchi simvollari bilan toʻgʻri moslashtiring:\n1. Ikki detalning chekkalari bir-biriga mutloq toʻgʻri burchak hosil qilib taqalgan burchakli chok belgisi.\n2. Ikki detal tekisligining chekkalari bir-biri bilan parallel holatda ustma-ust kiygʻizilib bajarilgan chok belgisi.\n3. Ikki detalning uchma-uch kelgan qismlari bir tomonlama qiyalik (yoʻnilma) bilan payvandlangandagi chok belgisi.\n4. Chizmada payvand chokining detal sirti boʻylab butunlay aylanma (yopiq kontur) shaklida bajarilishini koʻrsatuvchi belgi.\na) Kichik boʻgʻizsimon doiracha\nb) Kichik qiya toʻgʻri burchak shakli\nc) Kichik toʻgʻri burchakli uchburchak\nd) Kichik teskari \"Z\" harfi shakli",
@@ -17573,7 +17573,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Aksonometrik proyeksiyalarda sirtlarning yaqqol tasvirlarini qurishda qoʻllaniladigan koordinata oʻqlarining oʻzaro joylashish nisbatlari normalangan. Quyidagi aksonometriya turlarini ularning darslikda belgilangan $X$ oʻqining gorizontal chiziqqa nisbatan hosil qilgan burchak koʻrsatkichlari bilan toʻgʻri moslashtiring:\n1. Toʻgʻri burchakli izometrik proyeksiyada $X$ oʻqining gorizontal chiziqqa nisbatan burchagi.\n2. Toʻgʻri burchakli dimetrik proyeksiyada $X$ oʻqining gorizontal chiziqqa nisbatan burchagi.\n3. Qiya burchakli frontal dimetrik proyeksiyada $X$ oʻqining gorizontal chiziqqa nisbatan burchagi.\n4. Qiya burchakli gorizontal izometrik proyeksiyada $X$ oʻqining gorizontal chiziqqa nisbatan burchagi.\na) $7^\\circ 10'$ burchak ostida\nb) $0^\\circ$ (mutloq gorizontal) vaziyatda\nc) $30^\\circ$ burchak ostida\nd) $15^\\circ$ burchak ostida",
@@ -17599,7 +17599,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida geometrik jismlar sirtlarining proyeksiyalanish xususiyatlari va ularning epyurdagi oʻzaro munosabatlari oʻrganiladi. Quyidagi jism turlarini ularning profil proyeksiya tekisligida ($W$) hosil qiladigan eng xarakterli kontur shakllari bilan toʻgʻri moslashtiring:\n1. Aylanish oʻqi profil tekisligiga perpendikulyar boʻlgan toʻgʻri aylanma silindr.\n2. Asosi gorizontal tekislikda yotgan toʻgʻri oltiburchakli prizma.\n3. Aylanish oʻqi gorizontal tekislikka perpendikulyar boʻlgan toʻgʻri aylanma konus.\n4. Fazoviy joylashuvi profil tekisligiga parallel boʻlgan muntazam beshburchakli piramida asosi.\na) Teng yonli uchburchak\nb) Muntazam beshburchak\nc) Mukammal doira\nd) Toʻgʻri toʻrtburchak",
@@ -17625,7 +17625,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik chizmalarini oʻqishda tishli mexanizmlar va gʻildiraklarning konstruktiv oʻlchamlari va ularning hisob-kitob parametrlari darsliklarda aniqlashtiriladi. Quyidagi texnik terminlarni ularning qatʼiy muhandislik formulaviy ifodalari bilan toʻgʻri moslashtiring:\n1. Tishli gʻildirak tishlarining sonini koʻrsatuvchi va hisoblashlarda ishlatiladigan asosiy parametr.\n2. Tishli gʻildirak ilashmasining asosiy oʻlchov birligi boʻlgan va millimetrlarda ifodalanadigan modul koeffitsiyenti.\n3. Tishli gʻildirakning boʻluvchi aylanasi diametrini aniqlashda qoʻllaniladigan koʻpaytma qiymati.\n4. Tishli gʻildirak tishlarining umumiy balandligini modul orqali topishda ishlatiladigan koeffitsiyent.\na) $m \\times z$\nb) $2.25m$\nc) $z$\nd) $m$",
@@ -17677,7 +17677,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi turli konstruktiv elementlarning grafik tasvirlanish qoidalari tahlil qilinadi. Quyidagi texnik terminlarni ularning darslikda keltirilgan qatʼiy muhandislik vazifalari bilan toʻgʻri moslashtiring:\n1. Detal sirtida aylanma harakat qiluvchi elementlarning sirpanishini kamaytirish uchun ochilgan boʻylama ariqcha.\n2. Detal sirtida moylash materiallari erkin oqishi va tarqalishi uchun moʻljallangan aylanma maxsus teshik-ariqcha.\n3. Vallarning chekka uchlarida ularni boshqa qismlarga tishli oʻrnatish uchun yoʻnilgan boʻylama ariqchalar toʻplami.\n4. Silindrik detal sirtini qoʻl bilan ushlaganda sirpanib ketmasligi uchun asboblar bilan berilgan gʻadir-budur chizgilar toʻplami.\na) Moy ariqchasi\nb) Shlis liniyalari\nc) Shponka uyasi\nd) Riflanish (tish-tish qism)",
@@ -17716,7 +17716,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Aksonometrik proyeksiyalarda koordinata oʻqlari boʻylab oʻlchamlarning qisqarish koeffitsiyentlari tasvirlarning aniqligini belgilaydi. Quyidagi koordinata oʻqilarini ularning qiya burchakli frontal dimetrik proyeksiyadagi qatʼiy amaliy (soddalashtirilgan) qisqarish koeffitsiyentlari bilan toʻgʻri moslashtiring:\n1. Frontal dimetrik proyeksiyada $X$ koordinata oʻqi boʻylab oʻlchamlarning amaliy qisqarishi.\n2. Frontal dimetrik proyeksiyada $Y$ koordinata oʻqi boʻylab oʻlchamlarning amaliy qisqarishi.\n3. Frontal dimetrik proyeksiyada $Z$ koordinata oʻqi boʻylab oʻlchamlarning amaliy qisqarishi.\n4. Frontal dimetrik proyeksiyada $Y$ oʻqining gorizontal oʻqqa nisbatan standart burchagi.\na) $0.5$\nb) $45^\\circ$\nc) $1.0$\nd) $1.0$ oʻqi",
@@ -17729,7 +17729,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Gaspard Monj usuli boʻyicha epyur chizmalarini qurishda toʻgʻri chiziqlarning proyeksiya tekisliklariga nisbatan fazoviy joylashuvi tahlil qilinadi. Quyidagi toʻgʻri chiziq turlarini ularning darslikda belgilangan qatʼiy grafik iz xususiyatlari bilan toʻgʻri moslashtiring:\n1. Proyeksiya tekisligi bilan kesishish nuqtasida toʻgʻri chiziqning qoldirgan gorizontal izi.\n2. Proyeksiya tekisligi bilan kesishish nuqtasida toʻgʻri chiziqning qoldirgan frontal izi.\n3. Proyeksiya tekisligi bilan kesishish nuqtasida toʻgʻri chiziqning qoldirgan profil izi.\n4. Toʻgʻri chiziq proyeksiya tekisligiga parallel boʻlganda undagi iz elementlari holati.\na) $N'$ va $N''$ (frontal nuqta)\nb) Iz elementi mutloq cheksizlikda yotadi (topilmaydi)\nc) $M$ va $M'$ (gorizontal nuqta)\nd) $P''$ va $P'''$ (profil nuqta)",
@@ -17755,7 +17755,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik chizmachiligida detallarning ajraladigan birikmalari tarkibida rezbali elementlarning ulanish turlari darsliklarda qiyoslanadi. Quyidagi birikma turlarini ularning ESKD standartida belgilangan qatʼiy konstruktiv-grafik xususiyatlari bilan toʻgʻri moslashtiring:\n1. Biriktiriluvchi detallarning birida toʻliq oʻtdi teshik, ikkinchisida esa maxsus koʻr rezbali teshik boʻlganda qoʻllaniladigan birikma.\n2. Biriktiriluvchi detallarning har ikkalasida ham silliq oʻtdi teshik boʻlib, ularni mustahkamlovchi sterjen va gayka yordamida bogʻlovchi birikma.\n3. Detal sirtidagi rezbaga toʻgʻridan-toʻgʻri burab kirgʻiziladigan va uning uchi detalning siljishini toʻxtatib turadigan birikma.\n4. Quvurlarning uchlarini oʻzaro jipslashgan holda ichki va tashqi aylanma yuzalar orqali muftalar yordamida bogʻlovchi birikma.\na) Shpilkali birikma\nb) Shvontli birikma\nc) Boltli birikma\nd) Muftali birikma",
@@ -17768,7 +17768,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Aksonometrik proyeksiyalarda sirtlarning yaqqol tasvirlarini qurishda qoʻllaniladigan koordinata oʻqlarining oʻzaro burchak koʻrsatkichlari normalangan. Quyidagi aksonometriya turlarini ularning darslikda belgilangan $Y$ oʻqining gorizontal chiziqqa nisbatan hosil qilgan burchak koʻrsatkichlari bilan toʻgʻri moslashtiring:\n1. Toʻgʻri burchakli izometrik proyeksiyada $Y$ oʻqining gorizontal chiziqqa nisbatan ogʻish burchagi.\n2. Toʻgʻri burchakli dimetrik proyeksiyada $Y$ oʻqining gorizontal chiziqqa nisbatan ogʻish burchagi.\n3. Qiya burchakli frontal dimetrik proyeksiyada $Y$ oʻqining gorizontal chiziqqa nisbatan ogʻish burchagi.\n4. Qiya burchakli gorizontal izometrik proyeksiyada $Y$ oʻqining gorizontal chiziqqa nisbatan ogʻish burchagi.\na) $41^\\circ 25'$ burchak ostida\nb) $30^\\circ$ burchak ostida\nc) $30^\\circ$ burchak ostida (chapga)\nd) $45^\\circ$ burchak ostida",
@@ -17794,7 +17794,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida geometrik jismlar sirtlarining proyeksiyalanish xususiyatlari va ularning epyurdagi oʻzaro munosabatlari oʻrganiladi. Quyidagi jism sirtlarini ularning uchburchakli Gaspard Monj epyurida hosil qiladigan yasaluvchi elementlari soni bilan toʻgʻri moslashtiring:\n1. Prizmatik sirtning epyurda tasvirlanishini ta’minlovchi uning asosiy qirralari.\n2. Piramidal sirtning epyurda tasvirlanishini ta’minlovchi uning yon qirralari.\n3. Silindrik sirtning epyur maydonida kontur hosil qiluvchi eng chekka chiziqlari.\n4. Konusli sirtning epyur maydonida kontur hosil qiluvchi va choʻqqida birlashuvchi chiziqlari.\na) Ikkita parallel yasaluvchi toʻgʻri chiziq\nb) Ikkita kesishuvchi qiya yasaluvchi chiziq\nc) Chekli miqdordagi parallel qirralar liniyasi\nd) Bitta nuqtada uchrashuvchi chekli qirralar liniyasi",
@@ -17820,7 +17820,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik chizmalarini oʻqishda tishli mexanizmlar va gʻildiraklarning konstruktiv elementlari va ularning oʻlcham normalari darsliklarda aniqlashtiriladi. Tishli gʻildirak tarkibidagi quyidagi qismlarni ularning darslikda belgilangan qatʼiy texnik vazifalari bilan toʻgʻri moslashtiring:\n1. Tishli gʻildirakning val ustiga toʻgʻridan-toʻgʻri kiygʻiziladigan va ichida shponka uyasi joylashgan markaziy qalin qismi.\n2. Tishli gʻildirakning tishlar joylashgan va mexanik yuklamani qabul qiluvchi eng tashqi halqasimon qismi.\n3. Tishli gʻildirak markazi bilan uning tashqi halqasini oʻzaro garmonik bogʻlab turuvchi yupqa disk yoki tishsimon tirsaklar.\n4. Tishli gʻildirak tishlarining yon sirtidagi mexanik ishlov berilgan va ilashishni ta’minlovchi evolventali yuza.\na) Gardish (venets)\nb) Disk (yoki burti)\nc) Hub (stupitsa)\nd) Tish profili",
@@ -17859,7 +17859,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarni rasmiylashtirishda chizmachilik shriftlarining unikal elementlari va ularning standart balandlik ulushlari darsliklarda normalangan. A tipidagi yupqa shrift uchun quyidagi kichik harflarni ularning standart grafik kenglik koeffitsiyentlari bilan toʻgʻri moslashtiring:\n1. Shrift tarkibidagi eng keng boʻlgan \"sh\", \"shch\" yoki \"m\" kichik harflarining kengligi.\n2. Shrift tarkibidagi eng ommabop boʻlgan \"a\", \"b\", \"v\", \"g\", \"d\" kichik harflarining kengligi.\n3. Shrift tarkibidagi eng tor boʻlgan \"z\" yoki \"s\" kichik harflarining kengligi.\n4. Shrift tarkibidagi \"i\" yoki \"j\" kichik harflarining standart grafik kenglik oʻlchami.\na) $\\frac{5}{14}h$\nb) $\\frac{4}{14}h$\nc) $\\frac{7}{14}h$\nd) $\\frac{5}{14}h$ oʻlchovida",
@@ -17872,7 +17872,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi turli konstruktiv elementlarning grafik tasvirlanish qoidalari tahlil qilinadi. Quyidagi texnik terminlarni ularning darslikda keltirilgan qatʼiy muhandislik xususiyatlari bilan toʻgʻri moslashtiring:\n1. Silindrik detal sirtida uning muvozanatini saqlash va boshqa qismlarga tishli biriktirish uchun ochilgan spiralsimon ariqcha.\n2. tishli gʻildirak gardishida mexanik harakatni uzatish uchun maxsus asboblar bilan garmonik yoʻnilgan elementlar majmuasi.\n3. Vallarning chekka qismida shponka joylashishi uchun maxsus freza asboblari yordamida ochilgan botiq chuqurcha.\n4. Detalning ichki qismida suyuqliklar oqishini toʻxtatish yoki yoʻnaltirish uchun moʻljallangan klapansimon maxsus uya.\na) Shponka uyasi\nb) klapan oʻrindigʻi\nc) Rezba qadami\nd) Gʻildirak tishlari",
@@ -17898,7 +17898,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Chizmalarda oʻlcham qoʻshishda ishlatiladigan maxsus grafik belgilar va ularning darslikda belgilangan qatʼiy burchak koʻrsatkichlari normalangan. Quyidagi burchak turlarini ularning chizmalarda qoʻllaniladigan standart grafik belgilar joylashuvi bilan toʻgʻri moslashtiring:\n1. Detal tarkibidagi qiyalik burchaklari chizmada koʻrsatilganda daraja sonining yozilish joyi.\n2. Detal sirtidagi konuslik burchaklari chizmada koʻrsatilganda daraja sonining yozilish joyi.\n3. Rezbaning profil burchagi chizmada koʻrsatilganda daraja sonining yozilish joyi.\n4. Faska qiyaligining burchagi chizmada koʻrsatilganda daraja sonining yozilish joyi.\na) Rezba konturi orasidagi yoy maydonida\nb) Oʻlcham sonining yonida koʻpaytma shaklida\nc) Qiyalik oʻq chizigʻining ustki qismida\nd) Konus oʻq chizigʻiga parallel holatda",
@@ -17911,7 +17911,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Aksonometrik proyeksiyalarda koordinata oʻqlari boʻylab oʻlchamlarning qisqarish koeffitsiyentlari tasvirlarning aniqligini belgilaydi. Quyidagi koordinata oʻqilarini ularning qiya burchakli frontal izometrik proyeksiyadagi qatʼiy amaliy (soddalashtirilgan) qisqarish koeffitsiyentlari bilan toʻgʻri moslashtiring:\n1. Frontal izometrik proyeksiyada $X$ koordinata oʻqi boʻylab oʻlchamlarning amaliy koeffitsiyenti.\n2. Frontal izometrik proyeksiyada $Y$ koordinata oʻqi boʻylab oʻlchamlarning amaliy koeffitsiyenti.\n3. Frontal izometrik proyeksiyada $Z$ koordinata oʻqi boʻylab oʻlchamlarning amaliy koeffitsiyenti.\n4. Frontal izometrik proyeksiyada oʻqlar orasidagi standart burchak koʻrsatkichi.\na) $1.0$ (yon oʻqi)\nb) $90^\\circ$ va $135^\\circ$\nc) $1.0$\nd) $1.0$ (tik oʻq)",
@@ -17924,7 +17924,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Gaspard Monj usuli boʻyicha epyur chizmalarini qurishda toʻgʻri chiziqlarning proyeksiya tekisliklariga nisbatan fazoviy joylashuvi tahlil qilinadi. Quyidagi toʻgʻri chiziq turlarini ularning darslikda belgilangan qatʼiy koordinatali nomlari bilan toʻgʻri moslashtiring:\n1. Gorizontal proyeksiya tekisligiga ($H$) qatʼiy perpendikulyar boʻlgan toʻgʻri chiziq turi.\n2. Frontal proyeksiya tekisligiga ($V$) qatʼiy perpendikulyar boʻlgan toʻgʻri chiziq turi.\n3. Profil proyeksiya tekisligiga ($W$) qatʼiy perpendikulyar boʻlgan toʻgʻri chiziq turi.\n4. Uchala proyeksiya tekisligiga ham qiya joylashgan toʻgʻri chiziq turi.\na) Frontal proyeksiyalovchi toʻgʻri chiziq\nb) Umumiy vaziyatdagi toʻgʻri chiziq\nc) Gorizontal proyeksiyalovchi toʻgʻri chiziq\nd) Profil proyeksiyalovchi toʻgʻri chiziq",
@@ -17950,7 +17950,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik chizmachiligida detallarni harakatlantiruvchi va yoʻnaltiruvchi elementlarning grafik ifodalanish qoidalari darsliklarda oʻrganiladi. Quyidagi konstruktiv qismlarni ularning ESKD standartida belgilangan qatʼiy grafik va shartli ta’riflari bilan toʻgʻri moslashtiring:\n1. Mexanizmlarda vallarning aylanma harakatini ta’minlovchi va oʻq liniyasi atrofida shartli ravishda kesishuvchi diagonalli kvadrat ichida koʻrsatiladigan element.\n2. Vallarning tayanch qismi hisoblangan va chizmada korpus ichidagi shartli toʻrtburchak va uning ichidagi aylana bilan ifodalanadigan element.\n3. Mashina va mexanizmlarda tebranma harakatni yoki zarbni yumshatish uchun ishlatiladigan, chizmada zigzagsimon siniq chiziq bilan koʻrsatiladigan element.\n4. Yuk koʻtarish mexanizmlarida zanjir yoki arqonlarni yoʻnaltiruvchi, chizmada markaziy oʻqli doira va uning ichki aylanma ariqchasi bilan beriladigan element.\na) Sirpanish podshipnigi\nb) Blok (shkiv)\nc) Dumalash podshipnigi\nd) Prujina (buralma)",
@@ -17963,7 +17963,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Aksonometrik proyeksiyalarda sirtlarning yaqqol tasvirlarini qurishda koordinata oʻqlari orasidagi burchak koʻrsatkichlarining geometrik tabiati normalangan. Quyidagi aksonometriya turlarini ularning darslikda belgilangan $Z$ oʻqi bilan $X$ oʻqi orasidagi qatʼiy burchak koʻrsatkichlari boʻyicha toʻgʻri moslashtiring:\n1. Toʻgʻri burchakli izometrik proyeksiyada $Z$ va $X$ oʻqlari orasidagi burchak.\n2. Toʻgʻri burchakli dimetrik proyeksiyada $Z$ va $X$ oʻqlari orasidagi burchak.\n3. Qiya burchakli frontal dimetrik proyeksiyada $Z$ va $X$ oʻqlari orasidagi burchak.\n4. Qiya burchakli gorizontal izometrik proyeksiyada $Z$ va $X$ oʻqlari orasidagi burchak.\na) $97^\\circ 10'$ burchak\nb) $135^\\circ$ burchak\nc) $120^\\circ$ burchak\nd) $90^\\circ$ burchak",
@@ -17989,7 +17989,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida geometrik jismlar sirtlarining proyeksiyalanish xususiyatlari va ularning epyurdagi koordinatali oʻrinlari oʻrganiladi. Quyidagi jism turlarini ularning profil proyeksiya tekisligida ($W$) hosil qiladigan chekka kontur yasaluvchi liniyalari xususiyatlari bilan toʻgʻri moslashtiring:\n1. Aylanish oʻqi profil tekisligiga parallel boʻlgan toʻgʻri aylanma silindr konturi.\n2. Asosi gorizontal tekislikda yotgan muntazam toʻrtburchakli toʻgʻri piramida konturi.\n3. Aylanish oʻqi gorizontal tekislikka perpendikulyar boʻlgan toʻgʻri aylanma konus konturi.\n4. Fazoviy joylashuvi profil tekisligiga perpendikulyar boʻlgan toʻgʻri aylanma silindr konturi.\na) Bitta choʻqqida uchrashuvchi ikki qiya chiziq\nb) Mukammal aylana konturi\nc) Ikkita parallel vertikal toʻgʻri chiziq\nd) Bitta umumiy vertikal oʻq chizigʻi",
@@ -18015,7 +18015,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik chizmalarini oʻqishda tishli uzatmalar va gʻildiraklarning konstruktiv oʻlchamlari darsliklarda aniqlashtiriladi. Tishli gʻildirak tarkibidagi quyidagi doiraviy elementlarni ularning qatʼiy oʻlcham formulaviy qiymatlari bilan toʻgʻri moslashtiring:\n1. Tishli gʻildirak tishlarining tashqi choʻqqi aylanasi diametri ($D_a$) qiymati.\n2. Tishli gʻildirak tishlarining ichki tub aylanasi diametri ($D_f$) qiymati.\n3. Tishli gʻildirakning asosiy boʻluvchi aylanasi diametri ($D$) qiymati.\n4. Tishli gʻildirak tishlarining oʻrtacha qadam masofasi oʻlchami.\na) $m \\times (z - 2.5)$\nb) $\\pi \\times m$\nc) $m \\times (z + 2)$\nd) $m \\times z$",
@@ -18067,7 +18067,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi turli konstruktiv elementlarning grafik tasvirlanish qoidalari tahlil qilinadi. Quyidagi texnik terminlarni ularning darslikda keltirikgan qatʼiy muhandislik vazifalari bilan toʻgʻri moslashtiring:\n1. Vallarning chekka qismida podshipniklar yoki vtulkalar qatʼiy joylashishi uchun moʻljallangan silliq silindrik qism.\n2. Vallarning oʻrta qismida unga kiygʻizilgan detallarning boʻylama surilishini toʻxtatuvchi halqasimon chiqib turgan qism.\n3. Silindrik detal sirtida uning mustahkamligini oshirish uchun yoʻnilgan boʻylama botiq ariqchalar zanjiri.\n4. Detal sirtining boshqa qismlar bilan havo oʻtkazmaydigan qilib jipslashishini ta’minlovchi rezinali xalqasimon uya.\na) Burti (yoqa qism)\nb) Jipslashuvchi ariqcha\nc) Silliq boʻyincha (tsapfa)\nd) Mustahkamlik kanali",
@@ -18119,7 +18119,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Gaspard Monj usuli boʻyicha epyur chizmalarini qurishda tekisliklarning proyeksiya tekisliklariga nisbatan fazoviy vaziyatlari tahlil qilinadi. Quyidagi tekislik turlarini ularning darslikda belgilangan qatʼiy proyeksiyalanish xususiyatlari bilan toʻgʻri moslashtiring:\n1. Gorizontal proyeksiya tekisligiga ($H$) qatʼiy perpendikulyar boʻlgan tekislik turi.\n2. Frontal proyeksiya tekisligiga ($V$) qatʼiy perpendikulyar boʻlgan tekislik turi.\n3. Profil proyeksiya tekisligiga ($W$) qatʼiy perpendikulyar boʻlgan tekislik turi.\n4. Uchala proyeksiya tekisligiga ham parallel boʻlmagan ixtiyoriy tekislik turi.\na) Frontal proyeksiyalovchi tekislik\nb) Umumiy vaziyatdagi tekislik\nc) Gorizontal proyeksiyalovchi tekislik\nd) Profil proyeksiyalovchi tekislik",
@@ -18145,7 +18145,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik chizmachiligida detallarning qoʻzgʻaluvchan va qoʻzgʻalmas mexanik birikmalari darsliklarda qiyoslanadi. Quyidagi texnik terminlarni ularning ESKD standartida belgilangan qatʼiy konstruktiv-grafik vazifalari bilan toʻgʻri moslashtiring:\n1. Vallarni va boshqa aylanuvchi qismlarni korpus ichida qatʼiy ushlab turuvchi hamda mexanik ishqalanishni kamaytiruvchi tayanch tugun.\n2. Aylanma harakatni bitta oʻq yoʻnalishi boʻylab choʻzilayotgan ikki mustaqil val oʻrtasida uzatish yoki ularni biriktirish uchun xizmat qiluvchi moslama.\n3. Mashina va mexanizmlarning aylanuvchi qismlarini masofadan turib toʻxtatish yoki tezligini pasaytirish uchun ishlatiladigan ishqalanish elementi.\n4. Korpus tarkibidagi suyuqlik yoki gazning tashqariga sizib chiqib ketmasligini ta’minlovchi maxsus zichlagichli hoshiya tizimi.\na) Mufta\nb) Tormoz tizimi\nc) Podshipnik\nd) Salnik (zichlagich)",
@@ -18158,7 +18158,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Aksonometrik proyeksiyalarda sirtlarning yaqqol tasvirlarini qurishda koordinata oʻqlari orasidagi burchak koʻrsatkichlarining geometrik tabiati normalangan. Quyidagi aksonometriya turlarini ularning darslikda belgilangan $Y$ oʻqi bilan $Z$ oʻqi orasidagi qatʼiy burchak koʻrsatkichlari boʻyicha toʻgʻri moslashtiring:\n1. Toʻgʻri burchakli izometrik proyeksiyada $Y$ va $Z$ oʻqlari orasidagi burchak.\n2. Toʻgʻri burchakli dimetrik proyeksiyada $Y$ va $Z$ oʻqlari orasidagi burchak.\n3. Qiya burchakli frontal dimetrik proyeksiyada $Y$ va $Z$ oʻqlari orasidagi burchak.\n4. Qiya burchakli gorizontal izometrik proyeksiyada $Y$ va $Z$ oʻqlari orasidagi burchak.\na) $131^\\circ 25'$ burchak\nb) $135^\\circ$ burchak\nc) $120^\\circ$ burchak\nd) $90^\\circ$ burchak",
@@ -18184,7 +18184,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida geometrik jismlar sirtlarining proyeksiyalanish xususiyatlari va ularning epyurdagi oʻzaro munosabatlari oʻrganiladi. Quyidagi jism sirtlarini ularning uchburchakli Gaspard Monj epyurida hosil qiladigan chekka kontur chiziqlari tabiati bilan toʻgʻri moslashtiring:\n1. Toʻgʻri oltiburchakli prizma sirtining frontal proyeksiyadagi chekka chegaralari shakli.\n2. Muntazam toʻrtburchakli piramida sirtining gorizontal proyeksiyadagi kontur shakli.\n3. Toʻgʻri aylanma silindr sirtining profil proyeksiyadagi chekka chegaralari shakli.\n4. Toʻgʻri aylanma konus sirtining frontal proyeksiyadagi chekka chegaralari shakli.\na) Markazida nuqtasi yotgan kvadrat\nb) Teng yonli uchburchak\nc) Toʻgʻri toʻrtburchak\nd) Parallel toʻgʻri chiziqlardan iborat toʻrtburchak",
@@ -18210,7 +18210,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik chizmalarini oʻqishda tishli mexanizmlar va vallarning konstruktiv elementlari va ularning oʻlcham normalari darsliklarda aniqlashtiriladi. Vallar tarkibidagi quyidagi qismlarni ularning darslikda belgilangan qatʼiy texnik vazifalari bilan toʻgʻri moslashtiring:\n1. Valning oʻz oʻqi atrofida erkin aylanishini ta’minlovchi va podshipnik ichiga toʻgʻridan-toʻgʻri joylashadigan chekka qismi.\n2. Valning podshipnik ichiga kiradigan, ammo mexanik yuklamani qatʼiy tik vertikal yoʻnalishda qabul qiluvchi tayanch qismi.\n3. Valning unga kiygʻizilgan boshqa detallarning (tishli gʻildiraklarning) boʻylama siljishini butunlay toʻxtatuvchi yon devor qismi.\n4. Valning chekka uchlarida burab mahkamlash uchun maxsus asboblar yordamida ochilgan spiral ariqchalar majmuasi.\na) Tovon (piyata)\nb) Rezbali qism\nc) Silliq boʻyincha (tsapfa)\nd) Burti (yoqa)",
@@ -18249,7 +18249,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarni rasmiylashtirishda chizmachilik shriftlarining unikal elementlari va ularning standart balandlik ulushlari darsliklarda normalangan. B tipidagi qalin shrift uchun quyidagi kichik harflarni ularning standart grafik kenglik koeffitsiyentlari bilan toʻgʻri moslashtiring:\n1. Shrift tarkibidagi eng keng boʻlgan \"sh\", \"shch\" yoki \"m\" kichik harflarining kengligi.\n2. Shrift tarkibidagi eng ommabop boʻlgan \"a\", \"b\", \"v\", \"g\", \"d\" kichik harflarining kengligi.\n3. Shrift tarkibidagi eng tor boʻlgan \"z\" yoki \"s\" kichik harflarining kengligi.\n4. Shrift tarkibidagi \"i\" yoki \"j\" kichik harflarining standart grafik kenglik oʻlchami.\na) $\\frac{5}{10}h$\nb) $\\frac{4}{10}h$\nc) $\\frac{7}{10}h$\nd) $\\frac{5}{10}h$ kengligida",
@@ -18262,7 +18262,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi turli konstruktiv elementlarning grafik tasvirlanish qoidalari tahlil qilinadi. Quyidagi texnik terminlarni ularning darslikda keltirilgan qatʼiy muhandislik xususiyatlari bilan toʻgʻri moslashtiring:\n1. Silindrik detal sirtida uning boshqa qismlar bilan havo yoki suyuqlik oʻtkazmaydigan jipslashuvini ta’minlovchi rezbali qadam.\n2. tishli gʻildirak gardishida mexanik harakatni uzatish uchun maxsus asboblar bilan garmonik yoʻnilgan elementlar majmuasi.\n3. Vallarning chekka qismida shponka joylashishi uchun maxsus freza asboblari yordamida ochilgan botiq chuqurcha.\n4. Detal sirtining chekka burchaklarida oʻtkir qirralarni yoʻqotish uchun ma’lum burchak ostida kesilgan tekis qism.\na) Gʻildirak tishlari\nb) Faska qiyofasi\nc) Rezba qadami\nd) Shponka uyasi",
@@ -18288,7 +18288,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarda oʻlcham qoʻshishda ishlatiladigan maxsus grafik belgilar va ularning darslikda belgilangan qatʼiy burchak koʻrsatkichlari normalangan. Quyidagi rezba turlarining profil burchaklarini ularning standart qiymatlari bilan toʻgʻri moslashtiring:\n1. Mashinasozlikda keng qoʻllaniladigan standart metrik rezbaning profil burchagi kattaligi.\n2. Quvurlar va gidravlik ulanishlarda ishlatiladigan quvurli rezbaning profil burchagi kattaligi.\n3. Mexanik yuklamalarni uzatuvchi harakat vintlaridagi trapesiyali rezbaning profil burchagi kattaligi.\n4. Katta bir tomonlama kuchlanishlarga moʻljallangan tirgakli rezbaning profil qiyalik burchagi.\na) $55^\\circ$ burchak\nb) $30^\\circ$ burchak\nc) $60^\\circ$ burchak\nd) $3^\\circ$ nishobli burchak",
@@ -18301,7 +18301,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Aksonometrik proyeksiyalarda koordinata oʻqlari boʻylab oʻlchamlarning qisqarish koeffitsiyentlari tasvirlarning aniqligini belgilaydi. Quyidagi koordinata oʻqilarini ularning qiya burchakli gorizontal izometrik proyeksiyadagi standart burchak qiymatlari bilan toʻgʻri moslashtiring:\n1. Gorizontal izometrik proyeksiyada $X$ oʻqining gorizontal chiziqqa nisbatan ogʻish burchagi.\n2. Gorizontal izometrik proyeksiyada $Y$ oʻqining gorizontal chiziqqa nisbatan ogʻish burchagi.\n3. Gorizontal izometrik proyeksiyada $Z$ oʻqining gorizontal chiziqqa nisbatan vaziyati.\n4. Gorizontal izometrik proyeksiyada uchburchakli oʻqlarning oʻzaro umumiy burchagi.\na) $30^\\circ$ burchak (oʻngga)\nb) $90^\\circ$ (qatʼiy tik vertikal)\nc) $30^\\circ$ burchak (chapga)\nd) $120^\\circ$ burchak",
@@ -18314,7 +18314,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Gaspard Monj usuli boʻyicha epyur chizmalarini qurishda tekisliklarning proyeksiya tekisliklariga nisbatan fazoviy joylashuvi tahlil qilinadi. Quyidagi tekislik turlarini ularning darslikda belgilangan qatʼiy grafik iz xususiyatlari bilan toʻgʻri moslashtiring:\n1. Gorizontal proyeksiyalovchi tekislikning epyurdagi frontal iz chizigʻi vaziyati.\n2. Frontal proyeksiyalovchi tekislikning epyurdagi gorizontal iz chizigʻi vaziyati.\n3. Profil proyeksiyalovchi tekislikning epyurdagi frontal iz chizigʻi vaziyati.\n4. Umumiy vaziyatdagi qiya tekislikning epyurdagi iz chiziqlari holati.\na) Koordinata oʻqiga qatʼiy perpendikulyar toʻgʻri chiziq\nb) Koordinata oʻqlariga nisbatan burchak ostida qiya chiziqlar\nc) Koordinata oʻqiga qatʼiy perpendikulyar tik chiziq elementida\nd) Koordinata oʻqi bilan ma’lum burchak hosil qiluvchi qiya chiziq",
@@ -18340,7 +18340,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik chizmachiligida mexanizmlar va kinematik zanjirlarning ishlash prinsiplari shartli grafik belgilar tizimi yordamida uzatiladi. Quyidagi mexanik uzatma turlarini ularning darslikda belgilangan qatʼiy grafik va shartli ta’riflari bilan toʻgʻri moslashtiring:\n1. Harakatni oʻzaro parallel oʻqlarda yotgan ikki tishli element yordamida, tashqi yoki ichki ilashish orqali uzatuvchi mexanizm.\n2. Harakatni oʻzaro kesishuvchi ($90^\\circ$ burchakli) oʻqlar oʻrtasida konus shaklidagi tishli qismlar yordamida uzatuvchi mexanizm.\n3. Aylanma harakatni qatʼiy ilgarilama-ortga harakatga yoki aksincha holatga oʻtkazuvchi maxsus tishli chizgʻichli mexanizm.\n4. Fazoda oʻzaro ayqash boʻlgan oʻqlar oʻrtasida harakatni spiralsimon vint va tishli gʻildirak yordamida uzatuvchi mexanizm.\na) Konusli tishli uzatma\nb) Tishli reykali uzatma\nc) Silindrik tishli uzatma\nd) Chervyakli uzatma",
@@ -18379,7 +18379,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmachilik darsliklarida geometrik jismlar sirtlarining proyeksiyalanish xususiyatlari va ularning epyurdagi oʻzaro joylashuv qonuniyatlari oʻrganiladi. Quyidagi jism turlarini ularning gorizontal proyeksiya tekisligida ($H$) hosil qiladigan simmetriya oʻqlari soni bilan toʻgʻri moslashtiring:\n1. Gorizontal proyeksiya tekisligida asosi yotgan toʻgʻri aylanma silindr tasviri.\n2. Gorizontal proyeksiya tekisligida asosi yotgan toʻgʻri toʻrtburchakli prizma tasviri.\n3. Gorizontal proyeksiya tekisligida asosi yotgan muntazam uchburchakli piramida tasviri.\n4. Gorizontal proyeksiya tekisligida asosi yotgan teng yonli trapetsiya asosli prizma tasviri.\na) Uchta simmetriya oʻqi liniyasi\nb) bitta simmetriya oʻqi liniyasi\nc) Cheksiz koʻp simmetriya oʻqi chizigʻi\nd) Ikkita oʻzaro perpendikulyar simmetriya oʻqi",
@@ -18405,7 +18405,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik chizmalarini oʻqishda tishli mexanizmlar va gʻildiraklarning konstruktiv elementlari va ularning oʻlcham normalari darsliklarda aniqlashtiriladi. Tishli gʻildirak tarkibidagi quyidagi qismlarni ularning darslikda belgilangan qatʼiy oʻlcham ta’riflari bilan toʻgʻri moslashtiring:\n1. Tishli gʻildirak tishining boʻluvchi aylanadan yuqorida joylashgan bosh qismi balandligi ($h_a$).\n2. Tishli gʻildirak tishining boʻluvchi aylanadan pastda joylashgan tub qismi balandligi ($h_f$).\n3. Tishli gʻildirak tishining toʻliq balandligini ($h$) ifodalovchi umumiy oʻlcham qiymati.\n4. Tishli gʻildirak tishlarining yon tomonlama qalinligi va tishlar aro boʻshliq masofasi yigʻindisi.\na) $1.25m$\nb) $m \\times \\pi$\nc) $m$\nd) $2.25m$",
@@ -18457,7 +18457,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini oʻqishda undagi turli konstruktiv elementlarning grafik tasvirlanish qoidalari tahlil qilinadi. Quyidagi texnik terminlarni ularning darslikda keltirilgan qatʼiy muhandislik xususiyatlari bilan toʻgʻri moslashtiring:\n1. Detal sirtining chekka qismlarida oʻtkir qirralarni yoʻqotish va plastiklik berish uchun yoʻysimon ishlov berilgan qismi.\n2. Detal sirtida moylash materiallari erkin oqishi va tarqalishi uchun maxsus yoʻnilgan botiq aylanma kanal.\n3. Vallarning chekka uchlarida ularni boshqa qismlarga tishli oʻrnatish va sirpanishni yoʻqotish uchun ochilgan boʻylama ariqchalar majmuasi.\n4. Silindrik detal sirtini qoʻl bilan ushlaganda sirpanib ketmasligi uchun asboblar bilan berilgan shartli toʻrsimon chizgilar toʻplami.\na) Moy ariqchasi\nb) Riflanish (tishli sirt)\nc) Galtel (yumaloqlik)\nd) Shlis liniyalari",
@@ -18704,7 +18704,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi \"Berilgan aylana markazidan oʻtib, unga qatʼiy urinma boʻlgan toʻgʻri chiziqni (urinmani) qurish\" bosqichlarini bajarmoqda. Qurish qadamlarining toʻgʻri izchilligini belgilang:\n\n1. Aylana markazi va berilgan tashqi nuqtani tutashtiruvchi toʻgʻri chiziq oʻtkazish.\n2. Hosil boʻlgan kesmaning teng oʻrtasini topib, markazdan yordamchi doira chizish.\n3. Yordamchi doiraning asosiy aylana bilan kesishgan nuqtalarini topish.\n4. Topilgan nuqtalarni tashqi nuqta bilan tutashtirib, urinma chiziqlarni qalin chizish.",
@@ -18782,7 +18782,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi \"Berilgan kesmani chizgʻich va sirkul yordamida beshta teng boʻlakka boʻlish\" (proportsional boʻlish usuli) amalini bajarmoqda. Grafik qadamlarning toʻgʻri izchilligini belgilang:\n\n1. Kesmaning $A$ uchidan oʻtir burchak ostida yordamchi nur oʻtkazish.\n2. Nur ustida sirkul yordamida bir xil oʻlchamdagi beshta boʻlakni ketma-ket belgilash.\n3. Beshinchi oxirgi nuqtani kesmaning $B$ uchi bilan tutashtirish.\n4. Nur ustidagi qolgan nuqtalardan asosiy kesmaga parallel chiziqlar oʻtkazib, boʻlaklarni aniqlash.",
@@ -18886,7 +18886,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Yigʻish chizmalarda standart mahkamlovchi detallarning oʻzaro birikish holatlari grafik jihatdan tahlil qilinadi. Bolt, shayba va gayka yordamida ikkita plastinka oʻzaro biriktirilganda, ESKD andazasiga koʻra, bolt sterjenining boʻylama kesimi chizmada qanday grafik uslubda koʻrsatilishi shart?",
@@ -18899,7 +18899,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarda qirqimlar bajarilganda, kesuvchi tekisliklarning vaziyati va yoʻnalishi chizma maydonida maxsus belgilanadi. Agarda chizmada murakkab sinish qirqimi bajarilgan boʻlsa, kesuvchi tekisliklarning oʻzaro kesishgan (singan va burilgan) ichki burchak nuqtalarida ochiq liniyaning qaysi grafik elementi chizilishi qatʼiy talab etiladi?",
@@ -18925,7 +18925,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Tishli gʻildiraklar va uzatmalar elementlarining chizmalarini chizishda shartli grafik chiziqlar normalangan. ESKD standartiga muvofiq, tishli gʻildirak chizmasida tishlarning oʻzaro ilashish asosi hisoblangan va barcha muhandislik hisob-kitoblari yuritiladigan boʻluvchi aylananing konturi qaysi chiziq turi bilan chiziladi?",
@@ -18938,7 +18938,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Chizmalarni oʻqishda va detallash ishlarida kesim tasvirlarining chizma maydonidagi joylashuvi guruhlanadi. Detal konturidan butunlay tashqariga, ya’ni chizma maydonining ixtiyoriy boʻsh joyiga chiqarib chizilgan va asosiy koʻrinish chiziqlarini chalkashtirmaydigan kesim turi darsliklarda nima deb ataladi?",
@@ -18977,7 +18977,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik buyumlarida quvurlar va korpusli elementlarning ajralmaydigan birikmalari chizmalarda garmonik ifolalanadi. ESKD standartiga koʻra, yigʻish chizmasida ikki detalning oʻzaro elektr-yoy yordamida payvandlangan chokini va uning oʻtish yoʻnalishini koʻrsatish uchun qaysi grafik yoʻnaltiruvchi elementdan foydalaniladi?",
@@ -18990,7 +18990,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Detal chizmalarini loyihalashda uning ayrim elementlarining oʻta kichik qismlarini (masalan, rezba aylanasi ariqchasini) masshtabli koʻrsatish qoidasi normalangan. Asosiy tasvirdagi mayda elementni alohida aylanma chiziq bilan oʻrab, chizma chetiga yirikroq masshtabda (masalan, $5:1$) chiziladigan qoʻshimcha garmonik tasvir qanday nomlanadi?",
@@ -19029,7 +19029,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Chizmalarda qirqim tasvirlarini qurishda, kesuvchi tekislik ortida yotgan koʻrinadigan qirralarning chizilish qonuniyatlari darslikda belgilangan. Grafik savodxonlik mezonlariga koʻra, detal qirqib koʻrsatilgandan keyin, uning xayoliy kesuvchi tekisligidan orqada (ortda) joylashgan, ammo kuzatuvchiga toʻgʻridan-toʻgʻri koʻrinadigan barcha real qirralar chizmada qanday chiziq bilan aks ettiriladi?",
@@ -19081,7 +19081,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida bino qismlarining oʻlchamlarini va koordinata oʻqlarini bogʻlash qoidalari normalangan. Bino devorlarining, ustunlarining va poydevorlarining chizmadagi vaziyatini qatʼiy belgilash uchun qoʻllaniladigan, chizma maydonining chap va pastki chetlariga chiqarib, ichiga bosh harflar va raqamlar yoziladigan mayda doirachalar tizimi nima deb ataladi?",
@@ -19185,7 +19185,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida darslik materiallariga binoan, binolarning xonalar ichidagi vertikal tuzilishini, qavatlar balandligini, konstruktiv qatlamlarini va poydevor chuqurligini grafik koʻrsatishga xizmat qiluvchi tasvir turi qanday nomlanadi?",
@@ -19211,7 +19211,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida materiallarning shartli grafik shtrixlash turlari darslikda qatʼiy normalangan. Bino qirqimi chizmasida, devorning yoki poydevorning kesilgan qismi mutloq yaxlit tabiiy gʻisht materialidan ekanligini koʻrsatish uchun uning ichki maydoni qanday shtrixlanishi shart?",
@@ -19289,7 +19289,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida binolarning muhandislik jihozlari shartli grafik belgilar bilan ifodalanadi. Bino plani chizmasida xonalar ichiga oʻrnatiladigan isitish batareyalari (radiatorlar) darslik mezonlariga koʻra qaysi garmonik grafik shaklda tasvirlanadi?",
@@ -19315,7 +19315,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarini oʻqishda binoning vertikal balandlik koʻrsatkichlari tahlil qilinadi. Darslik materiallariga binoan, binoning poydevor asosi, pol sathlari va tom qismlarining chizmadagi mutloq balandlik oʻlchov birligi standart qoidaga koʻra qaysi oʻlchovda yoziladi?",
@@ -19328,7 +19328,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Yigʻish chizmalarida mahkamlovchi detallarning shartli grafik ifodalari normalangan. Ikki detal oʻzaro ulanayotganda, ularning birida toʻliq oʻtdi teshik, ikkinchisida esa koʻr rezbali teshik boʻlgan holatda qoʻllaniladigan ikki uchi rezbali silindrik sterjen turi nima deb ataladi?",
@@ -19380,7 +19380,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik buyumlari chizmasida aylanma harakatni uzatuvchi tasmali uzatmalar normalangan. Kinematik uzatish chizmalarida tasmali uzatmaning garmonik asosi boʻlgan parallel ikki gʻildirak (shkiv) sirti qaysi shartli grafik belgi bilan birlashtiriladi?",
@@ -19419,7 +19419,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida bino planining masshtab koʻrsatkichlari darsliklarda normalangan. Oddiy turar-joy binolari yoki maktab binolarining garmonik plan chizmalarini chizishda eng keng qoʻllaniladigan standart kichraytirish masshtabi turi qaysi javobda toʻgʻri berilgan?",
@@ -19432,7 +19432,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik buyumlarida detallarning ajralmaydigan parchinlangan birikmalari normalangan. Yigʻish chizmalarida ikki list materialni oʻzaro bogʻlovchi parchin mix sterjeni boʻylama qirqimga tushganda, ESKD andazasiga muvofiq qanday koʻrsatiladi?",
@@ -19471,7 +19471,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida xonalarning garmonik tarkibi va jihozlanishi normalangan. Bino plani chizmalarida, oshxona va sanuzellar ichidagi muhandislik-sanitariya jihozlarini (masalan, rakovina yoki vanna konturini) chizishda qaysi standart grafik chiziq turidan foydalaniladi?",
@@ -19484,7 +19484,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Yigʻish chizmalarida detallarning ajralmaydigan elimlangan birikmalari shartli grafik belgilar bilan ifodalanadi. ESKD andazasiga koʻra, ikki detalning oʻzaro maxsus kimyoviy qorishmalar yordamida elimlangan chokini chizmada koʻrsatish uchun chiqaruvchi chiziqning gorizontal javoni ustiga qaysi maxsus grafik belgi qoʻyiladi?",
@@ -19549,7 +19549,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida binoning garmonik sath koordinatalari darslikda qatʼiy belgilangan. Bino qirqimi chizmasida, birinchi qavat polining mutloq toza sathi qurilish qoidalariga koʻra boshlangʻich hisob nuqtasi hisoblanib, sath belgisida qanday raqamli koʻrsatkich bilan muhrlanadi?",
@@ -19575,7 +19575,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida darslik materiallariga binoan, bino planida va kesimida xonalarning aniq vazifasini, nomini va xususiyatlarini tartib raqamlari orqali garmonik koʻrsatishga xizmat qiluvchi qoʻshimcha matnli jadval turi qanday nomlanadi?",
@@ -19666,7 +19666,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida xonalarning ichki tuzilishini garmonik rejalashtirish qoidalari oʻrganiladi. Bino plani chizmalarida, devor qalinligidan ancha yupqa boʻlgan va faqat xonalarni oʻzaro ajratishga xizmat qiluvchi ichki yassi toʻsiq devorlari darsliklarda qanday nomlanadi?",
@@ -19744,7 +19744,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida binoning garmonik sath koordinatalari darslikda qatʼiy belgilangan. Bino qirqimi chizmasida, yer sathidan pastda joylashgan podval polining yoki poydevor asosining balandlik oʻlchami sath belgisida qaysi maxsus matematik simvol bilan boshlanishi shart?",
@@ -19770,7 +19770,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida darslik materiallariga binoan, bino planida xonalarning aniq maydonlari koʻrsatkichlarining raqamlari ostiga chiziladigan gorizontal chiziq turi qaysi standart chiziq turiga mos kelishi shart?",
@@ -19783,7 +19783,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik buyumlarida vallar sirtida aylanma harakatni uzatuvchi prizmatik (toʻgʻri toʻrtburchakli) shponkalarning uyalari chizmalarda loyihalanadi. Val chizmasining boʻylama koʻrinishida, prizmatik shponka oʻrnatiladigan uyat (botiqlik) konturi geometrik jihatdan qanday chiziq shaklida aks ettiriladi?",
@@ -19861,7 +19861,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida binolarning poydevor turlari va ularning grafik ifodalari normalangan. Bino qirqimi chizmasida, poydevorning ostki qismida joylashgan va devor yukini toʻgʻridan-toʻgʻri gruntga (yerga) tarqatuvchi, chizmada trapetsiya yoki toʻgʻri toʻrtburchak shaklidagi yirik blok koʻrinishida beriladigan qism nima deb ataladi?",
@@ -19939,7 +19939,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida bino planining oʻlchamlarini ichki xonalar boʻylab berish qoidalari darslikda qatʼiy belgilangan. Xonalar ichidagi devor qalinligi, eshik kengligi va xonaning aniq eni oʻlchamlarini koʻrsatish uchun bino planining ichki maydonidan oʻtkaziladigan uzluksiz oʻlcham chiziqlari tizimi nima deb ataladi?",
@@ -19965,7 +19965,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida darslik materiallariga binoan, binoning poydevor qurilishi boshlanishidan oldin, uning yer maydonidagi umumiy joylashuvini, atrofidagi yoʻllar va yashil maydonlar bilan mutanosibligini koʻrsatuvchi eng yirik masshtabli maxsus plan turi qanday nomlanadi?",
@@ -20056,7 +20056,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida bino xonalarining oʻzaro joylashishi va ularning eshik tabaqalari hoshiyalari normalangan. Bino plani chizmalarida, bir vaqtning oʻzida ham ichkariga, ham tashqariga erkin ochilib-yopiladigan (mayatniksimon) maxsus jamoat binolari eshiklarining shartli grafik tasviri qanday chiziladi?",
@@ -20134,7 +20134,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida bino planining oʻlchamlarini tashqi konturlar boʻylab berish qoidalari darslikda qatʼiy belgilangan. Tashqi oʻlcham chiziqlari zanjirining eng birinchi (devorga eng yaqin) qatoridan ikkinchi qatorigacha qoldirilishi kerak boʻlgan minimal standart masofa necha millimetrga teng?",
@@ -20147,7 +20147,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Yigʻish chizmalarida standart boʻlmagan maxsus buyumlarning kesim maydonlarini ifodalash normalangan. ESKD standartiga muvofiq, yigʻish chizmasining qirqimida shisha, shaffof oyna yoki plastmassa materiallar kesimga tushganda, ularning ichki maydoni chizmada qanday grafik shtrixlar bilan toʻldiriladi?",
@@ -20160,7 +20160,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida darslik materiallariga binoan, binoning bosh planida (genplan) hududdagi shamol yoʻnalishini, yil davomida shamolning qaysi tomondan eng koʻp esishini garmonik koʻrsatuvchi koʻp burchakli grafik diagramma simvoli qanday nomlanadi?",
@@ -20225,7 +20225,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida bino devorlarining vertikal tekislikdagi elementlari va tirsaklari loyihalanadi. Darslik ma’lumotlariga koʻra, binoning ichki yoki tashqi asosiy devori sirtidan gorizontal yoʻnalishda boʻrtib chiqqan, toʻgʻri toʻrtburchak kesimli va yuk koʻtaruvchi ustun vazifasini bajaruvchi devor elementi qanday nomlanadi?",
@@ -20251,7 +20251,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida xonalarning garmonik tuzilishi va ularning eshik tabaqalari hoshiyalari normalangan. Bino plani chizmalarida, devor oʻyigʻi ichiga oʻrnatilgan va aylanma oʻq atrofida emas, balki maxsus relslar boʻylab yon tomonga surilib ochiladigan eshiklarning shartli grafik tasviri qanday chiziladi?",
@@ -20316,7 +20316,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Mashinasozlikning alohida sohalarida buramali ulanishlar va ularning nostandart parametrlari normalangan. Profil burchagi qatʼiy $55^\\circ$ boʻlgan, oʻlchamlari mutloq dyuym tizimiga asoslangan, ammo quvurlar tizimida emas, balki oddiy mahkamlovchi vint va boltlar sirtida ishlatiladigan rezba turi darsliklarda qanday nomlanadi?",
@@ -20329,7 +20329,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida bino planining oʻlchamlarini tashqi konturlar boʻylab berish qoidalari darslikda qatʼiy belgilangan. Bino planining eng chekka qismidan oʻtkaziladigan, binoning birinchi koordinata oʻqidan eng oxirgi koordinata oʻqqacha boʻlgan masofani koʻrsatuvchi oʻlcham liniyasi nechanchi qatorda joylashadi?",
@@ -20355,7 +20355,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida darslik materiallariga binoan, binoning bosh planida (genplan) loyihalanayotgan binoning poydevor konturi va uning atrofidagi mavjud (eski) binolar konturi chizmalarda oʻzaro qanday grafik chiziqlar yordamida ajratiladi?",
@@ -20407,7 +20407,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida binoning ichki xonalari va eshiklarining grafik hoshiyalari normalangan. Bino plani chizmasida xonaga kirish joyidagi eshik tabaqasining oʻzi (ya’ni ochilib turgan eshik polotnosi) qaysi standart grafik chiziq turida chizilishi shart?",
@@ -20420,7 +20420,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida binolarning poydevor va yer toʻsiq qismlari muhandislik darsliklari asosida loyihalanadi. Darslik ma’lumotlariga koʻra, binoning poydevor ustida joylashgan, tashqi muhit namligidan asrash uchun koʻpincha granit yoki kafel bilan qoplanadigan va sath belgisi poldan pastda koʻrsatiladigan devorning eng quyi qismi qanday nomlanadi?",
@@ -20446,7 +20446,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida bino xonalarining eshik tabaqalari joylashishi va uchrashish turlari normalangan. Bino plani chizmalarida, devor oʻyigʻi ichiga oʻrnatilgan va ochilganda akkordeon kabi buklanib yigʻiladigan (buklama) maxsus eshiklarning shartli grafik tasviri chizmada qanday koʻrsatiladi?",
@@ -20498,7 +20498,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida bino elementlarining grafik masshtab koʻrsatkichlari darsliklarda normalangan. Binoning umumiy koʻrinishini, xonalar joylashuvini va eshik-deraza oʻrinlarini garmonik aks ettiruvchi bino plani chizmasini chizishda eng koʻp qoʻllaniladigan asosiy masshtab turi qaysi javobda toʻgʻri berilgan?",
@@ -20524,7 +20524,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida bino planining oʻlchamlarini tashqi konturlar boʻylab berish qoidalari darslikda qatʼiy belgilangan. Tashqi oʻlcham chiziqlari zanjirining ikkinchi qatorida (ya’ni birinchi va uchinchi qatorlar oraligʻida) qaysi oʻlchamlar koʻrsatilishi shart?",
@@ -20550,7 +20550,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida darslik materiallariga binoan, binoning bosh planida (genplan) hududdagi muhandislik tarmoqlari, quvurlar va elektr uzatish liniyalarining grafik chizilishi qaysi liniya turi bilan normalangan?",
@@ -20615,7 +20615,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida binolarning muhandislik-konstruktiv va me’moriy tugunlari darslik materiallari asosida loyihalanadi. Darslik ma’lumotlariga koʻra, binoning poydevoridan yuqorida joylashgan tashqi asosiy devor sirtining pastki qismida namlik va yomgʻir suvlarining devor ichiga sizib kirishini toʻxtatuvchi maxsus gidroizolyatsiya qatlami qaysi chiziq va belgi bilan koʻrsatiladi?",
@@ -20641,7 +20641,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida bino xonalarining eshik tabaqalari va ularning maxsus konstruktiv turlari normalangan. Bino plani chizmalarida, jamoat binolarining kirish qismiga oʻrnatiladigan, aylanma oʻq atrofida toʻrtta qanoti bilan uzluksiz aylanib turuvchi (karuselsimon) maxsus eshiklarning shartli grafik tasviri chizmada qanday koʻrsatiladi?",
@@ -20706,7 +20706,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Mashinasozlikning alohida sohalarida buramali ulanishlar va ularning nostandart quvurli tiqinli parametrlari normalangan. Quvurlar tizimida zichlikni va yuqori bosim ostida havo oʻtkazmaslikni ta’minlash uchun ishlatiladigan, spiral ariqchalari qatʼiy konus sirt boʻylab kamayib boruvchi maxsus metrik konusli rezba turi oʻlcham raqami oldiga qaysi harfiy koʻrsatkich yoziladi?",
@@ -20719,7 +20719,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida bino planining oʻlchamlarini tashqi konturlar boʻylab berish qoidalari darslikda qatʼiy belgilangan. Tashqi oʻlcham chiziqlari zanjirining uchinchi (devordan eng uzoq) qatorida qaysi oʻlcham koʻrsatilishi qatʼiy talab etiladi?",
@@ -20745,7 +20745,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida darslik materiallariga binoan, binoning bosh planida (genplan) mavjud ob’ektlar ichidan yangi qurilishi rejalashtirilayotgan binoning aniq joylashuv koordinatalarini va uning burchak burchaklarini yer maydoniga qarab belgilashda qoʻllaniladigan grafik chiziq nima deb ataladi?",
@@ -20836,7 +20836,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik yigʻish chizmalarida standart mahkamlovchi detallarning boʻylama kesimga tushgandagi grafik tasvirlanish qoidalari normalangan. Quyidagi standart elementlarni ularning ESKD andazasida belgilangan qatʼiy qirqim koʻrinishlari bilan toʻgʻri moslashtiring:\n1. Ikki detalni silliq oʻtdi teshiklar orqali gayka yordamida biriktiruvchi toʻliq sterjenli bolt elementi.\n2. Detal ichidagi koʻr rezbali teshikka toʻgʻridan-toʻgʻri burab kirgʻiziladigan shpilka sterjeni elementi.\n3. Gayka ostiga qoʻyiladigan va detal sirtini eyilishdan asraydigan yupqa aylanma shayba elementi.\n4. Gaykaning oʻz-oʻzidan burilib ketishini toʻxtatuvchi ikki qanotli simsimon standart shplint elementi.\na) Boʻylama kesimda har doim shtrixlanmasdan, yaxlit koʻrsatiladi\nb) Boʻylama kesimda qisman shtrixli liniyalar bilan ajratiladi\nc) Boʻylama kesimda mutloq kesilmagan holatda, yaxlit koʻrsatiladi\nd) Boʻylama kesimda butunlay toʻq qora rangga boʻyaladi",
@@ -20849,7 +20849,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida bino elementlari va xonalarning balandlik darajalari sath belgilari tizimi yordamida normalangan. Bino qirqimida uchraydigan quyidagi sathlarni ularning standart raqamli koʻrsatkichlari simvollari bilan toʻgʻri moslashtiring:\n1. Binoning birinchi qavat toza pol sathining qurilish darsligidagi boshlangʻich hisob koʻrsatkichi.\n2. Binoning birinchi qavat pol sathidan yuqorida joylashgan shift yoki tom qismlarining balandlik koʻrsatkichi.\n3. Binoning yer osti podval qismi polining yoki poydevor asosi tubining chuqurlik koʻrsatkichi.\n4. Binoning tashqi muhit bilan bogʻlangan poydevor chetidagi toza tuproq (grunt) sathi koʻrsatkichi.\na) Musbat plyus belgili raqam\nb) Manfiy minus belgili raqam\nc) Hech qanday ishorasiz sof nol raqami\nd) Manfiy va musbat oraliq raqami",
@@ -20862,7 +20862,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik buyumlari chizmasida tishli gʻildiraklar va shesternyalar elementlarining chiziq turlari ESKD davlat standartlari bilan qatʼiy normalangan. Tishli gʻildirak chizmasidagi quyidagi qismlarni ularning standart grafik chiziq turlari bilan toʻgʻri moslashtiring:\n1. Tishli gʻildirak tishining eng chekka yuqori uchlaridan oʻtuvchi tashqi choʻqqi aylanasi konturi.\n2. Tishli gʻildirak tishlarining oʻzaro ilashish asosi hisoblangan markaziy boʻluvchi aylanasi konturi.\n3. Tishli gʻildirak tishlarining eng ostki botiq qismlaridan oʻtuvchi ichki tub aylanasi konturi (kesim bajarilmagand.\n4. \na) .Tishli gʻildirakning boʻylama qirqimida tishlarning kesuvchi tekislik ortida qolgan koʻrinadigan qirralari liniyasi.a) Shtrix-punktir ingichka chiziq\nb) Tutash ingichka chiziq\nc) Tutash yoʻgʻon chiziq\nd) Shtrixli chiziq",
@@ -20875,7 +20875,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida binoning asosiy konstruktiv devorlari va xonalararo toʻsiq elementlari chiziqlar qalinligi yordamida garmonik ajratiladi. Bino planidagi quyidagi elementlarni ularning darslikda belgilangan qatʼiy chiziq turlari bilan toʻgʻri moslashtiring:\n1. Binoning barcha tashqi yuk koʻtaruvchi va ichki kapital asosiy devorlarining kontur liniyalari.\n2. Xonalarni oʻzaro ajratishga xizmat qiluvchi yupqa toʻsiq (peregorodk.\n3. \n4. \na) devorlarining kontur liniyalari.Devor ichiga oʻrnatiladigan muhandislik jihozlari, sanitariya asboblari va mebellar konturi.Bino planida oʻtuvchi koordinata oʻqlari va ularning markaziy yoʻnalish liniyalari.a) Tutash ingichka chiziq\nb) Shtrix-punktir ingichka chiziq\nc) Tutash yoʻgʻon chiziq\nd) Tutash ingichka chiziq elementlari",
@@ -20901,7 +20901,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida devor oʻyiqlari ichiga joylashtiriladigan eshik va deraza elementlarining shartli grafik belgilari darsliklarda normalangan. Bino planidagi quyidagi oʻyiq turlarini ularning darslikda belgilangan qatʼiy grafik shakllari bilan toʻgʻri moslashtiring:\n1. Asosiy devor ichidan ochilgan, chorakli hoshiyaga ega boʻlgan standart deraza oʻyigʻi tasviri.\n2. Xonaga kirish joyidagi, bitta tabaqasi ichkariga qarab ochiladigan standart eshik oʻyigʻi tasviri.\n3. Jamoat binolarida qoʻllaniladigan, ikkala tabaqasi ham erkin ochilib-yopiladigan mayatniksimon eshik tasviri.\n4. Devor ichiga maxsus relslar yordamida yon tomonga surilib ochiladigan surma eshik tasviri.\na) $45^\\circ$ li bitta qiya chiziq va uning yoyi\nb) Devor liniyasiga parallel toʻgʻri chiziq va chekka yoʻnalish hoshiyalari\nc) Devor konturi ichidagi uchta parallel ingichka chiziq va chetik qismlari\nd) Simmetriya oʻqiga parallel qoʻshaloq qiya chiziqlar",
@@ -20914,7 +20914,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik buyumlarida vallar sirtida aylanma quvvatni uzatuvchi shponkali va shlisli birikmalar darslik muhandislik qoidalari asosida loyihalanadi. Quyidagi birikma elementlarini ularning boʻylama koʻrinishdagi oʻziga xos geometrik kontur chiziqlari bilan toʻgʻri moslashtiring:\n1. Boʻylama kesimda oʻzining eng chekka qismida qatʼiy $1:100$ qiyalik burchagiga ega boʻlgan ponasimon shponka uyasi.\n2. Boʻylama kesimda freza asbobi yordamida ochilgan, pastki qismi doiraviy yoy shaklida boʻlgan segmentli shponka uyasining tubi.\n3. Boʻylama kesimda yon qirralari mutloq parallel va tekis boʻlgan standart prizmatik shponka uyasining shakli.\n4. Boʻylama koʻrinishda val sirti boʻylab ketma-ket parallel choʻzilgan tishsimon shlis chiziqlari chegarasi.\na) Toʻgʻri toʻrtburchak\nb) Tutash ingichka parallel chiziqlar guruhlari\nc) Qiya toʻgʻri chiziq\nd) Doiraviy yoy liniyasi",
@@ -20927,7 +20927,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida materiallarning kesim va qirqimlardagi shartli grafik shtrixlash koʻrinishlari ESKD davlat standartlari bilan normalangan. Quyidagi qurilish materiallarini ularning chizmadagi qatʼiy shtrixlash turlari bilan toʻgʻri moslashtiring:\n1. Binoning poydevor va devor qismlarida keng qoʻllaniladigan tabiiy pishgan gʻisht materiali maydoni.\n2. Binoning yuk koʻtaruvchi konstruksiyalarida ishlatiladigan quyma yaxlit beton materiali maydoni.\n3. Poydevor ostiga va pol tagiga yotqiziladigan yumshoq tabiiy qum qatlami maydoni.\n4. Binoning toʻsiq va eshiklarida qoʻllaniladigan tabiiy yogʻoch (boʻylama kesimd.\na) materiali maydoni.a) qiya ingichka chiziqlar va mayda nuqtalar guruhlari\nb) Daraxt yillik halqalari va tolalarini ifodalovchi kavisli chiziqlar\nc) $45^\\circ$ burchak ostidagi bir-biriga parallel tutash ingichka chiziqlar\nd) Ma’lum masofadagi mayda garmonik nuqtalar toʻplami",
@@ -20940,7 +20940,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik chizmalarida rezbali elementlarning oʻlchamlarini qoʻshishda ishlatiladigan maxsus harfiy koʻrsatkichlar darsliklarda tasniflanadi. Quyidagi rezba ifodalarini ularning darslikda belgilangan qatʼiy muhandislik ma’nolari bilan toʻgʻri moslashtiring:\n1. Diametri $20\\text{ mm}$ va mayda qadam oʻlchami $1.5\\text{ mm}$ boʻlgan standart metrik rezba belgisi.\n2. Nominal diametri $2\\text{ dyuym}$ boʻlgan, quvurlar ulanishida qoʻllaniladigan quvurli silindrik rezba belgisi.\n3. Tashqi diametri $40\\text{ mm}$ boʻlgan, harakat vintlarida ishlatiladigan trapesiyali rezba belgisi.\n4. Nominal diametri $30\\text{ mm}$ boʻlgan, katta bir tomonlama yuklamalarga moʻljallangan tirgakli rezba belgisi.\na) $G2$\nb) $Tr40$\nc) $M20 \\times 1.5$\nd) $S30$",
@@ -20953,7 +20953,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida bino planining tashqi konturi boʻylab chiqariladigan oʻlcham chiziqlari zanjiri ma’lum tartibda qatorlarga ajratiladi. Quyidagi oʻlcham qatorlarini ularning darslikda belgilangan qatʼiy oʻlcham vazifalari bilan toʻgʻri moslashtiring:\n1. Devor konturiga eng yaqin joylashgan birinchi (ichki) oʻlcham chizigʻi qatori.\n2. Birinchi qatordan tashqarida joylashgan ikkinchi (ort.\n3. \n4. \na) oʻlcham chizigʻi qatori.Devordan eng uzoqda joylashgan uchinchi (tashqi) oʻlcham chizigʻi qatori.Bino xonalari ichidan oʻtkaziladigan uzluksiz oʻlcham chizigʻi qatori.a) Markazlashtirish (koordinata) oʻqlari orasidagi masofalar oʻlchami\nb) Binoning chekka oʻqlari orasidagi umumiy gabarit oʻlchami\nc) Deraza va eshik oʻyiqlari hamda devor boʻlaklari oʻlchamlari\nd) Ichki devor qalinliklari va xonalarning toza eni oʻlchamlari",
@@ -20979,7 +20979,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida binoning asosiy garmonik tasvirlari ularning fazoviy yoʻnalishlari va proyeksiyalanish xususiyatlariga koʻra darsliklarda tasniflanadi. Quyidagi tasvir turlarini ularning qatʼiy muhandislik ta’riflari bilan toʻgʻri moslashtiring:\n1. Binoning gorizontal tekislik bilan xayolan kesilib, deraza sathidan oʻtkazilgan kesuvchi tekislikdagi tasviri.\n2. Binoning vertikal tekislik bilan xayolan kesilib, ichki konstruktiv qismlarini koʻrsatuvchi vertikal tasviri.\n3. Binoga qatʼiy tashqi old, yon yoki orqa tomonlardan qaralgandagi me’moriy tashqi koʻrinishi tasviri.\n4. Binoning yer maydonidagi joylashuvini, atrofidagi ob’ektlar va yoʻllar bilan mutanosibligini koʻrsatuvchi yirik tasviri.\na) Bino qirqimi\nb) Fasad\nc) Bino plani\nd) Bosh plan",
@@ -21018,7 +21018,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida binoning poydevor va yer osti konstruktiv elementlari ularning me’moriy vazifalariga koʻra darsliklarda tasniflanadi. Quyidagi muhandislik atamalarini ularning poydevor chizmasidagi qatʼiy darslik ta’riflari bilan toʻgʻri moslashtiring:\n1. Binonining eng pastki yuk koʻtaruvchi qismi boʻlib, barcha ogʻirlikni toʻgʻridan-toʻgʻri gruntga tarqatuvchi element.\n2. Poydevorning eng ostiga toʻshaladigan, yukni bir xil taqsimlashga xizmat qiluvchi qum yoki beton qatlam.\n3. Poydevor asosi qismini yer osti grunt suvlaridan va namlikdan asrash uchun toʻshaladigan maxsus qatlam.\n4. Poydevor devorining yer sathidan yuqoriga chiqib turgan va asosiy devorga asos boʻluvchi qismi.\na) Gidroizolyatsiya\nb) Tsokol boʻyincha\nc) Poydevor poyasi\nd) Poydevor podshushkasi",
@@ -21044,7 +21044,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida bino xonalarining eshik tabaqalari joylashishi va ularning maxsus konstruktiv mexanizmlari darsliklarda guruhlanadi. Quyidagi maxsus eshik turlarini ularning bino planidagi shartli grafik tasvirlash qoidalari bilan toʻgʻri moslashtiring:\n1. Eshik oʻyigʻi ichida akkordeon kabi garmonik buklanib yigʻiladigan buklama eshik tasviri.\n2. Jamoat binolarining kirish maydoniga oʻrnatiladigan, toʻrtta qanoti bilan markaziy oʻqda uzluksiz aylanadigan karusel eshik tasviri.\n3. Bino xonalarida eng koʻp qoʻllaniladigan, bitta tabaqali va bitta tomonga ochiladigan standart eshik tasviri.\n4. Ikki tabaqasi ham bir vaqtda ham ichkariga, ham tashqariga ochiladigan mayatniksimon eshik tasviri.\na) $45^\\circ$ li bitta qiya chiziq va uning doiraviy yoyi\nb) Simmetriya oʻqiga parallel qoʻshaloq qiya chiziqlar\nc) Bir-biri bilan sharnirli ulangan bir nechta kalta siniq chiziqlar zanjiri\nd) Doira ichida oʻzaro perpendikulyar kesishgʻan toʻrtta radius chiziqlari",
@@ -21057,7 +21057,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik buyumlari chizmasida detal sirtiga beriladigan mexanik va termik ishlov berish parametrlari chizmada maxsus belgilanadi. Quyidagi sirt koʻrsatkichlarini ularning ESKD standartida normalangan harfiy-raqamli ifodalari bilan toʻgʻri moslashtiring:\n1. Sirtning mexanik yoʻnilishdan keyingi gʻadir-budurlik (balandlik) koʻrsatkichi belgisi.\n2. Sirtning metrik oʻlchamlari yoniga qoʻyiladigan, materialning qattiqlik darajasi koeffitsiyenti.\n3. Sirtning kimyoviy-termik ishlov berilgan qatlamining qalinligi koʻrsatkichi harfi.\n4. Sirtning mutloq tozalik darajasini aniqlovchi mikrometr hisobidagi profil ogʻishi.\na) $HRC$\nb) $t$\nc) $Rz$\nd) $Ra$",
@@ -21070,7 +21070,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida materiallarning kesim va qirqimlardagi shartli grafik shtrixlash maydonlari ularning zichlik xususiyatlariga koʻra darsliklarda qiyoslanadi. Quyidagi material turlarini ularning chizmadagi shartli grafik toʻldirish usullari bilan toʻgʻri moslashtiring:\n1. Bino poydevor osti va pol qatlamlarida qoʻllaniladigan barcha turdagi suyuq eritmalar va moy maydonlari.\n2. Bino toʻsiqlari va polosti qismlarida ishlatiladigan yumshoq tolali, paxsa yoki asbest materiallari maydoni.\n3. Binoning bezak va devor qismlarida ishlatiladigan sopol, chinni hamda kafel materiallari maydoni.\n4. Binoning yuk koʻtaruvchi asosiy devorlarida qoʻllaniladigan tabiiy gʻisht materiallari maydoni.\na) Ma’lum masofada tartibsiz joylashgan mayda nuqtalar va xalqalar toʻplami\nb) Oʻzaro toʻgʻri burchak ostida kesishgan toʻrsimon ingichka chiziqlar\nc) $45^\\circ$ burchak ostidagi bir-biriga parallel tutash ingichka chiziqlar\nd) Boʻsh qoldirilib, kontur cheti toʻlqinsimon chiziq va mayda nuqtalar bilan chegaralanishi",
@@ -21109,7 +21109,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik yigʻish chizmalarida detallarning ajralmaydigan payvandlangan birikmalari chok turlariga koʻra shartli grafik belgilar bilan ajratiladi. Quyidagi payvand chok tavsiflarini ularning ESKD standartidagi rasmiy grafik simvollari bilan toʻgʻri moslashtiring:\n1. Ikki detalning chekkalari bir-biri bilan qatʼiy parallel holatda, ustma-ust teginib turgan yuzalar boʻylab bajarilgan chok simvoli.\n2. Ikki detalning oʻzaro nuqtali kontaktlar orqali elektr-kontaktli usulda nuqtali payvandlanganligi simvoli.\n3. Ikki detalning uchma-uch kelgan qismlari bitta chiziq boʻylab yaxlit birlashtirilgandagi chok simvoli.\n4. Payvand chokining sirti mexanik yoʻnilish natijasida mutloq tekis (yassi) holatga keltirilganligi simvoli.\na) Kichik \"X\" simvoli\nb) Kichik toʻgʻri gorizontal chiziqcha\nc) Kichik \"П\" harfi shakli\nd) bitta yassi gorizontal liniya element",
@@ -21122,7 +21122,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida binoning asosiy tasvirlari ularning proyeksiyalanish xususiyatlari va darslik qoidalariga koʻra guruhlanadi. Quyidagi tasvir turlarini ularning chizmadagi qatʼiy proyeksion chiziq vazifalari bilan toʻgʻri moslashtiring:\n1. Bino plani chizmasida xayoliy kesuvchi tekislik bevosita kesib oʻtgan asosiy devor konturlari chizigʻi.\n2. Bino qirqimi chizmasida kesuvchi tekislik ortida qolgan, ammo kesilmasdan uzoqda koʻrinib turgan qismlar chizigʻi.\n3. Bino fasadi chizmasida deraza, eshik va peshtoqlarning eng chekka tashqi kontur liniyalari.\n4. Bino plani chizmasida deraza oʻrni hoshiyasi ichidan oʻtkaziladigan parallel ichki chiziqlar.\na) Tutash ingichka chiziq\nb) Tutash yoʻgʻon chiziq\nc) Tutash yoʻgʻon chiziq (asosiy)\nd) Tutash ingichka chiziq (yordamchi)",
@@ -21148,7 +21148,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida bino tarkibidagi xonalar va ularning muhandislik jihozlari shartli grafik belgilar tizimi yordamida uzatiladi. Quyidagi jihoz turlarini ularning bino planidagi darslikda belgilangan grafik shakllari bilan toʻgʻri moslashtiring:\n1. Xonalar ichiga oʻrnatiladigan, ichki maydoni tarmoqli toʻrtburchak shaklida boʻlgan isitish batareyasi.\n2. Sanuzellar ichiga joylashtiriladigan, bitta chekkasi yumaloqlangan yassi toʻrtburchak shaklidagi standart vanna.\n3. Oshxona ichiga oʻrnatiladigan, markazida ikkita yoki toʻrtta kichik doirachalari boʻlgan gaz plitasi.\n4. Xonalar ichidan oʻtuvchi, markazida diagonallari boʻlgan toʻrtburchak shaklidagi shamollatish shaxtasi.\na) Yassi toʻrtburchak va uning ichki doirachalari\nb) Toʻrtburchak va uning ichidagi diagonallar chizigʻi\nc) Tarmoqli toʻrtburchak shakli\nd) bitta chekkasi yumaloqlangan toʻrtburchak",
@@ -21161,7 +21161,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik buyumlarida vallar sirtidagi shponka va shlis uyalarining oʻlchamlarini oʻlchash qoidalari darsliklarda qatʼiy belgilangan. Quyidagi oʻlcham elementlarini ularning chizmadagi toʻgʻri boshlanish nuqtalari bilan toʻgʻri moslashtiring:\n1. Val sirtidagi prizmatik shponka uyasining chuqurligini oʻlchashda olinadigan boshlangʻich nuqta.\n2. Tishli gʻildirak teshigi ichidagi shponka uyasining chuqurligini oʻlchashda olinadigan boshlangʻich nuqta.\n3. Val sirtidagi segmentli shponka uyasining radiusli botiqligini oʻlchashda olinadigan markaziy nuqta.\n4. Shlisli val sirtidagi tishlarning umumiy balandligini oʻlchashda olinadigan chekka nuqta.\na) Teshik ichki aylanma yuzasining eng yuqori botiq chetidan\nb) Valning geometrik oʻq chizigʻi oʻrtasidan\nc) Val tashqi aylanma yuzasining eng yuqori chetidan\nd) Tishlarning eng chekka tashqi choʻqqi chizigʻidan",
@@ -21213,7 +21213,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarini binoning tashqi va ichki elementlarini me’moriy jihatdan rasmiylashtirishda chiziqlar qalinligi darsliklarda normalangan. Bino qirqimi chizmasidagi quyidagi qismlarni ularning qatʼiy grafik chiziq turlari bilan toʻgʻri moslashtiring:\n1. Xayoliy kesuvchi tekislik bevosita kesib oʻtgan pol qatlamlari va poydevor bloklarining hoshiya liniyalari.\n2. Kesuvchi tekislik tarkibiga kirmagan, faqat uzoq fonda koʻrinib turgan xonalararo eshik va deraza romlari konturi.\n3. Bino qirqimida xonalarning oʻlchamlarini va balandliklarini koʻrsatuvchi yordamchi chiqaruvchi liniyalar.\n4. Bino konstruksiyasining simmetriya markazlarini belgilovchi va sath doirachalariga boruvchi yoʻnalish liniyalari.\na) Tutash ingichka chiziq\nb) Shtrix-punktir ingichka chiziq\nc) Tutash yoʻgʻon chiziq\nd) Tutash ingichka chiziq (yordamchi)",
@@ -21239,7 +21239,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida deraza oʻyiqlarining hoshiya elementlari va ularning darslikda belgilangan me’moriy qismlari normalangan. Bino planidagi quyidagi elementlarni ularning qatʼiy qurilish muhandislik atamalari bilan toʻgʻri moslashtiring:\n1. Tashqi asosiy devor konturi ichidan ochilgan, chorakli hoshiyaga ega boʻlgan standart deraza boʻshligʻi.\n2. Deraza oʻyigʻi chetidagi tashqi tomonga chiqib turgan kichik gʻishtli toʻsiq devorcha elementi.\n3. Deraza romining xona ichkarisiga qaragan quyi qismiga oʻrnatiladigan yassi gorizontal taxta yoki plastmassa element.\n4. Deraza romining tashqi tomonga qaragan quyi qismida yomgʻir suvini qochirishga xizmat qiluvchi qiya metall element.\na) Chet (chetik)\nb) Deraza tokchasi\nc) Deraza oʻyigʻi\nd) Suv qochirgich (sliv)",
@@ -21252,7 +21252,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik buyumlarida vallar sirtida aylanma harakatni uzatuvchi segmentli shponkalar va ularning uyalari darslik mezonlariga koʻra loyihalanadi. Segmentli shponka birikmasi uchun quyidagi elementlarni ularning chizmadagi standart tasvirlash qoidalari bilan toʻgʻri moslashtiring:\n1. Val chizmasining boʻylama koʻrinishida segmentli shponka oʻrnatiladigan uyat botiqligining kontur chizigʻi.\n2. Segmentli shponka elementi yigʻish chizmasining boʻylama kesimiga qatʼiy tushgandagi shtrixlash holati.\n3. Segmentli shponkaning oʻzige xos geometrik shaklini ifodalovchi tashqi hoshiya chizigʻi koʻrinishi.\n4. Tishli gʻildirak ichidagi segmentli shponka uyasining chuqurligini oʻlchashda olinadigan boshlangʻich nuqta.\na) Umuman shtrixlanmaydi, kesilmagan yaxlit holatda qoldiriladi\nb) Yarim doira (disk boʻlagi) konturi\nc) Doiraviy yoy chizigʻi\nd) Teshik ichki aylanma yuzasining eng yuqori botiq chetidan",
@@ -21265,7 +21265,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida binoning asosiy grafik tasvirlari ularning darslikda belgilangan qatʼiy muhandislik vazifalariga koʻra tasniflanadi. Quyidagi tasvir turlarini ularning chizmada koʻrsatadigan asosiy konstruktiv elementlari bilan toʻgʻri moslashtiring:\n1. Binoning xonalararo boʻlinishi, deraza-eshik oʻrinlari, xonalar maydoni va devor qalinliklarini koʻrsatuvchi tasvir.\n2. Binoning qavatlar balandligi, konstruktiv qatlamlari, zinapoyalar vertikal tuzilishi va poydevor chuqurligini koʻrsatuvchi tasvir.\n3. Binoning deraza, eshik, peshtoq, karniz va tsokol qismlarining joylashuv me’moriy koʻrinishini koʻrsatuvchi tasvir.\n4. Binoning yer maydonidagi oʻrnini, shamollar gulini, atrofidagi yoʻllar va yashil maydonlar mutanosibligini koʻrsatuvchi tasvir.\na) Bino qirqimi\nb) Fasad\nc) Bino plani\nd) Bosh plan",
@@ -21291,7 +21291,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida bino hoshiyasi chetidagi uzluksiz oʻlcham chiziqlari zanjiri ma’lum me’yoriy tartibda guruhlanadi. Quyidagi oʻlcham zanjirlarini ularning darslikda belgilangan qatʼiy joylashuv tartiblari bilan toʻgʻri moslashtiring:\n1. Binoning birinchi koordinata oʻqidan eng oxirgi koordinata oʻqqacha boʻlgan umumiy masofasini koʻrsatuvchi qator.\n2. Bino devoridagi markazlashtirish (koordinat.\n3. \n4. \na) oʻqlari orasidagi masofalarni koʻrsatuvchi qator.Deraza va eshik oʻyiqlari va devor boʻlaklarining aniq oʻlchamlarini koʻrsatuvchi qator.Bino xonalarining ichki qismidan oʻtkaziladigan devor qalinligi va xona eni oʻlchamlari qatori.a) Tashqi oʻlcham zanjirining ikkinchi qatori\nb) Tashqi oʻlcham zanjirining uchinchi qatori\nc) Tashqi oʻlcham zanjirining birinchi qatori\nd) Ichki oʻlcham zanjiri qatori",
@@ -21343,7 +21343,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida binoning ichki zinalari (zinapoyalar) va ularning konstruktiv qismlari darslik mezonlari boʻyicha tasniflanadi. Quyidagi zinapoya elementlarini ularning qatʼiy qurilish muhandislik ta’riflari bilan toʻgʻri moslashtiring:\n1. Zinapoyaning odam oyogʻi bosiladigan gorizontal yassi yuzasini belgilovchi kenglik oʻlchami.\n2. Zinapoyaning qadam balandligini belgilovchi tik vertikal yuzasining balandlik oʻlchami.\n3. Ketma-ket kelgan zinalar toʻplami va ularni koʻtarib turuvchi qiya konstruktiv toʻsinlar tizimi.\n4. Zinapoya marshlari orasida joylashgan, odamlar dam olishiga moʻljallangan gorizontal yassi maydon.\na) Tiklama (podstuyenok)\nb) Zinapoya marshi\nc) Enlama (prostup)\nd) Zinapoya maydonchasi",
@@ -21369,7 +21369,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida bino chizmalari tarkibidagi spetsifikatsiya va eksplikatsiya jadvallari darslik materiallari asosida qiyoslanadi. Quyidagi jadval turlarini ularning chizmadagi qatʼiy format koʻrsatkichlari va vazifalari bilan toʻgʻri moslashtiring:\n1. Chizma formatining oʻng quyi burchagiga joylashtiriladigan, buyum qismlari roʻyxatini beruvchi jadval.\n2. Bino planida xonalarning aniq vazifasini, nomini va xususiyatlarini tartib raqamlari orqali koʻrsatuvchi jadval.\n3. Chizma formatining mutloq oʻng quyi burchagida joylashgan, chizma muallifi va masshtabini koʻrsatuvchi asosiy shtamp.\n4. Bosh plan chizmasida hududdagi barcha bino va inshootlarning tartib raqamlari va nomlarini koʻrsatuvchi roʻyxat.\na) Eksplikatsiya\nb) Asosiy yozuv\nc) Spetsifikatsiya\nd) Binolar va inshootlar roʻyxati jadvali",
@@ -21408,7 +21408,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmachiligida binoning poydevor va polosti konstruktiv qatlamlari muhandislik darsliklari asosida guruhlanadi. Quyidagi me’moriy-muhandislik elementlarini ularning bino qirqimi chizmasidagi qatʼiy darslik ta’riflari bilan toʻgʻri moslashtiring:\n1. Binoning birinchi qavatada yer namligini xonaga oʻtkazmaslik uchun pol ostiga quyiladigan quyma beton qatlami.\n2. Poydevor devorining yer sathidan yuqoriga chiqib turgan, tashqi tomondan granit yoki kafel bilan qoplanadigan qismi.\n3. Binoning yuk koʻtaruvchi devorlari ostida joylashgan va barcha ogʻirlikni toʻgʻridan-toʻgʻri gruntga tarqatuvchi qism.\n4. Bino tashqi devori quyi chetida yomgʻir suvini binodan uzoqlashtiruvchi yassi betonli himoya yoʻlakchasi.\na) Tsokol boʻlagi\nb) Otmostka chizigʻi\nc) Beton tayyorgarlik qatlami\nd) Poydevor poyasi",
@@ -21434,7 +21434,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Qurilish chizmalarida binoning asosiy tasvirlari va ulardagi oʻlcham turlari darslik qoidalariga koʻra guruhlanadi. Quyidagi grafik tasvirlarni ularda yozilishi qatʼiy talab etiladigan standart oʻlcham turlari bilan toʻgʻri moslashtiring:\n1. Binoning xonalararo boʻlinishi va devor qalinliklari koʻrsatiladigan gorizontal tasvirdagi oʻlchamlar.\n2. Binoning qavatlar balandligi, zinalar va poydevor chuqurliklari koʻrsatiladigan vertikal tasvirdagi oʻlchamlar.\n3. Binoning tashqi me’moriy koʻrinishi, deraza va eshiklarining tashqi joylashuv sathlari koʻrsatiladigan oʻlchamlar.\n4. Hududdagi bino konturlari, koʻchalar kengligi va shamollar guli joylashuvi koʻrsatiladigan oʻlchamlar.\na) Sath belgilari (metrlarda)\nb) Tashqi sath belgilari va fasad oʻlchamlari\nc) Chiziqli oʻlcham zanjirlari (millimetrlarda)\nd) Hududiy gabarit oʻlchamlar (metrlarda)",
@@ -21447,7 +21447,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 13
+    "topicId": 14
   },
   {
     "q": "Mashinasozlik chizmalarida metrik, trapesiyali va quvur rezbalarining chizmadagi oʻlcham chiziqlari joylashuvi darsliklarda qatʼiy normalangan. Quyidagi rezba turlarini ularning oʻlcham chiziqlari tortiladigan qatʼiy chizmachilik qoidalari bilan toʻgʻri moslashtiring:Silindrik val sirtiga ochilgan tashqi metrik yoki trapesiyali rezbalarning oʻlcham chizigʻi joylashishi.Detal ichiga ochilgan koʻr yoki oʻtdi rezbali teshiklarning ichki oʻlcham chizigʻi joylashishi.Quvurlar va ulanish armaturalarining quvurli silindrik rezbalarining oʻlcham chizigʻi joylashishi.Rezba oʻlchamlari chizmada cheklangan joyda koʻrsatilganda uning chiqaruvchi liniyasi holati.a) Teshikning eng ichki koʻrinadigan yoʻgʻon chiziqlari (choʻqqilari) boʻylabb) Rezba simvolini koʻrsatuvchi maxsus javonli chiqaruvchi chiziq yordamidac) Sterjenning eng chekka tashqi yoʻgʻon chiziqlari (choʻqqilari) boʻylabb) Rezbaning ingichka chizigʻi (tubi) boʻylab",
@@ -21473,7 +21473,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 12
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi qurilish chizmachiligi topshirigʻida berilgan oʻlchamlarga muvofiq \"Binoning gorizontal toza planini (bino planini) bosqichma-bosqich grafik qurish\" amalini bajarmoqda. Qurilish darsliklari mezonlariga koʻra ish qadamlarining qatʼiy izchilligini aniqlang:\n1. Chizma maydonida binoning barcha tashqi va ichki kapital devorlarining markazlashtirish (koordinata) oʻq chiziqlarini shtrix-punktirda oʻtkazish.\n2. Koordinata oʻqlaridan iki tomonga qarab devor qalinliklarini oʻlchab belgilash va asosiy kapital devorlar konturini ingichka chiziqda chizish.\n3. Kapital devorlar konturi ichidan darslik shartli belgilari asosida deraza va eshik oʻyiqlari oʻrinlarini, xonalararo yupqa toʻsiqlarni ajratish.\n4. Devor chiziqlarini qalinlashtirish, xonalar ichiga sanitariya-texnika jihozlarini chizish, tashqi-ichki oʻlcham zanjirlarini va xonalar maydonini muhrlash.",
@@ -21499,7 +21499,7 @@ export const q7_tasviriy_sanat = [
     "correct": 2,
     "explanation": "Darslik ma'lumotlariga ko'ra to'g'ri javob: C",
     "mnemonic": "",
-    "topicId": 11
+    "topicId": 14
   },
   {
     "q": "Oʻquvchi qurilish chizmachiligi darsida berilgan bino plani va balandlik oʻlchamlariga tayanib, binoning \"Vertikal konstruktiv qirqimini (bino qirqimini) garmonik qurish\" bosqichlarini bajarmoqda. Tasvirning muhandislik jihatdan aniq chiqishi uchun amallarning toʻgʻri tartibini belgilang:\n1. Bino planidan kesuvchi tekislik oʻtgan yoʻnalishdagi barcha koordinata oʻqlarini qirqim chiziladigan maydonga tik vertikal loyihalash.\n2. Loyihalangan oʻq chiziqlari ustiga poydevor chuqurligi, pol sathlari, deraza-eshik balandliklari va tom poyasining sath koordinatalarini oʻlchab belgilash.\n3. Belgilangan balandlik nuqtalari boʻylab poydevor bloklarini, kapital devorlarni, qavatlararo yassi yopish plitalarini ingichka chiziqda chizish.\n4. Kesuvchi tekislik bevosita kesib oʻtgan devor va pol qismlari konturini qalinlashtirish, material turiga koʻra shtrixlash va sath doirachalarini qoʻshish.",

@@ -34,7 +34,7 @@ const artBaseNames = [
   "Grafik savodxonlik",
   "Mashinasozlik chizmalari",
   "Qurilish chizmalari",
-  "O'qitish metodikasi"
+  "Pedagogik mahorat"
 ];
 
 const artIcons = [
