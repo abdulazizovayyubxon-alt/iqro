@@ -101,6 +101,7 @@ function App() {
     const pageName = PAGE_NAMES[location.pathname] || location.pathname;
     trackPageView(pageName, location.pathname);
     startPageTimer(pageName);
+    document.title = `${pageName} | IQRO`;
   }, [location.pathname]);
 
   // ── Sentry foydalanuvchi konteksti ──

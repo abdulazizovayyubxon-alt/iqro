@@ -5,7 +5,7 @@ import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
-import { TOPICS } from '../data/mockData';
+import { TOPICS, SUBJECTS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, CheckCircle, XCircle, RefreshCw } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -17,8 +17,19 @@ import { db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { summarizeTestResults } from '../engine/SmartQuestionEngine';
 
-const EXAM_DURATION = 90 * 60; // 90 daqiqa
 const EXAM_TOTAL = 50;
+
+const getExamDuration = (category) => {
+  switch (category) {
+    case 'boshlangich':
+    case 'info':
+      return 120 * 60;
+    case 'til':
+      return 105 * 60;
+    default:
+      return 90 * 60;
+  }
+};
 
 function shuffleArray(arr) {
   const a = [...arr];
@@ -65,16 +76,24 @@ const ExamPage = () => {
   const [topicGroups, setTopicGroups] = useState([]); // [{name, icon, start, end}]
   const [answers, setAnswers] = useState({});
   const [currentQ, setCurrentQ] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(EXAM_DURATION);
+  const [timeLeft, setTimeLeft] = useState(() => getExamDuration(cat));
   const [finished, setFinished] = useState(false);
   const [startTime] = useState(new Date());
   const [endTime, setEndTime] = useState(null);
   const [showObjectionModal, setShowObjectionModal] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [cheatWarnings, setCheatWarnings] = useState(0);
+  const [cheatDisqualified, setCheatDisqualified] = useState(false);
   const timerRef = useRef(null);
 
   // Savollarni yuklash (Firestore dan)
   useEffect(() => {
+    setTimeLeft(getExamDuration(cat));
+    setFinished(false);
+    setAnswers({});
+    setCurrentQ(0);
+    setCheatWarnings(0);
+    setCheatDisqualified(false);
     const loadExamQuestions = async () => {
       setLoading(true);
       try {
@@ -112,7 +131,8 @@ const ExamPage = () => {
         });
 
         // Pedagogik mahorat (yoki O'qitish metodikasi) savollarini ajratish
-        const pedTopicId = cat === 'art' ? 14 : 6;
+        const pedTopic = filteredTopics.find(t => t.name === "Pedagogik mahorat");
+        const pedTopicId = pedTopic ? pedTopic.id : (cat === 'art' ? 14 : 6);
         const pedAll = allQ.filter(q => q.topicId === pedTopicId);
         const otherAll = allQ.filter(q => q.topicId !== pedTopicId);
 
@@ -195,6 +215,35 @@ const ExamPage = () => {
     }
   };
 
+  // Anti-Cheat: Tab switch or window blur detection
+  useEffect(() => {
+    if (loading || finished || questions.length === 0 || cheatDisqualified) return;
+
+    const handleVisibilityOrBlur = () => {
+      if (document.hidden) {
+        setCheatWarnings(prev => {
+          const next = prev + 1;
+          if (next >= 3) {
+            setCheatDisqualified(true);
+            showToast("Boshqa sahifaga o'tish qoidalari 3 marta buzilganligi sababli imtihon yakunlandi!", 'error');
+            handleFinish(true);
+          } else {
+            showToast(`Diqqat! Imtihondan chalg'imang. Ogohlantirish: ${next}/3`, 'warning');
+          }
+          return next;
+        });
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityOrBlur);
+    window.addEventListener('blur', handleVisibilityOrBlur);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityOrBlur);
+      window.removeEventListener('blur', handleVisibilityOrBlur);
+    };
+  }, [loading, finished, questions.length, answers, cheatDisqualified]);
+
   const handleObjectionSubmit = (text) => {
     const q = questions[currentQ];
     addObjection(q.topicId, cat, q, text);
@@ -230,11 +279,26 @@ const ExamPage = () => {
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
         {/* Natija kartasi */}
         <div className="glass-panel exam-result-card">
+          {cheatDisqualified && (
+            <div style={{
+              background: 'var(--red-bg)',
+              border: '1px solid var(--red)',
+              borderRadius: 14,
+              padding: '12px 16px',
+              color: 'var(--red)',
+              fontSize: 13,
+              fontWeight: 700,
+              textAlign: 'center',
+              marginBottom: 20
+            }}>
+              ⚠️ Imtihon boshqa sahifaga o'tish qoidalari buzilganligi sababli (3 marta chalg'ish) avtomatik yakunlandi!
+            </div>
+          )}
           <div style={{ textAlign: 'center', marginBottom: 24 }}>
             <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 4 }}>
-              {pct >= 70 ? '🎉 Tabriklaymiz!' : pct >= 50 ? '📊 Yaxshi harakat!' : '💪 Davom eting!'}
+              {cheatDisqualified ? '❌ Imtihondan chetlashtirildingiz' : (pct >= 70 ? '🎉 Tabriklaymiz!' : pct >= 50 ? '📊 Yaxshi harakat!' : '💪 Davom eting!')}
             </div>
-            <div style={{ fontSize: 13, color: 'var(--text3)' }}>Imtihon yakunlandi</div>
+            <div style={{ fontSize: 13, color: 'var(--text3)' }}>{cheatDisqualified ? 'Qoidabuzarlik aniqlandi' : 'Imtihon yakunlandi'}</div>
           </div>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 32, justifyContent: 'center', alignItems: 'center', marginBottom: 32 }}>
@@ -349,9 +413,25 @@ const ExamPage = () => {
           <ChevronLeft size={16} /> Chiqish
         </button>
         <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--text)' }}>
-          {cat === 'art' ? "🎨 San'at" : "🎖️ CHQBT"} — Imtihon Simulyatsiyasi
+          {SUBJECTS.find(s => s.id === cat)?.name || "CHQBT"} — Imtihon Simulyatsiyasi
         </div>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+          {cheatWarnings > 0 && (
+            <div style={{
+              background: 'var(--red-bg)',
+              border: '1px solid var(--red)',
+              borderRadius: 8,
+              padding: '6px 12px',
+              fontSize: 12,
+              fontWeight: 700,
+              color: 'var(--red)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6
+            }}>
+              <span>⚠️ Ogohlantirish: {cheatWarnings}/3</span>
+            </div>
+          )}
           <div className={`exam-timer ${isUrgent ? 'timer-danger' : isWarning ? 'timer-warning' : ''}`}>
             <Clock size={16} />
             <span>Qolgan vaqt: <strong>{formatTime(timeLeft)}</strong></span>

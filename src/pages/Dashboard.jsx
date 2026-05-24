@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { useAdmin } from '../hooks/useAdmin';
 import PremiumModal from '../components/PremiumModal';
-import { TOPICS } from '../data/mockData';
+import { TOPICS, SUBJECTS } from '../data/mockData';
 import {
   Play, Zap, Brain, GraduationCap, Trophy,
   ChevronRight, Clock, Target, TrendingUp,
@@ -69,6 +69,18 @@ const Dashboard = () => {
 
   const userName = user?.displayName?.split(' ')[0] || 'Foydalanuvchi';
 
+  const getExamDurationMinutes = (category) => {
+    switch (category) {
+      case 'boshlangich':
+      case 'info':
+        return 120;
+      case 'til':
+        return 105;
+      default:
+        return 90;
+    }
+  };
+
   const quickActions = [
     {
       id: 'test', icon: Play, label: 'Dars Testi', desc: 'Barcha mavzular',
@@ -76,7 +88,7 @@ const Dashboard = () => {
       onClick: () => handleNav(-1, 'exam'),
     },
     {
-      id: 'exam', icon: GraduationCap, label: 'Imtihon', desc: '50 savol · 60 daqiqa',
+      id: 'exam', icon: GraduationCap, label: 'Imtihon', desc: `50 savol · ${getExamDurationMinutes(cat)} daqiqa`,
       color: 'var(--purple)', bg: 'var(--purple-bg)',
       onClick: () => { if (isFreeLimitReached) { setShowPremiumModal(true); return; } navigate('/exam'); },
     },
@@ -106,13 +118,30 @@ const Dashboard = () => {
           <div style={s.greetSub}>Xush kelibsiz 👋</div>
           <h1 style={s.greetName}>{userName}</h1>
         </div>
-        {/* Fan almashtirish */}
-        <button
-          style={s.catSwitch}
-          onClick={() => updateState({ activeCategory: cat === 'chqbt' ? 'art' : 'chqbt' })}
-        >
-          {cat === 'chqbt' ? <><Medal size={14} /> CHQBT</> : <><Palette size={14} /> San'at</>}
-        </button>
+      </div>
+
+      {/* ── SUBJECT TABS (Dinamik) ── */}
+      <div style={s.subjTabsContainer}>
+        {SUBJECTS.map(subj => {
+          const Icon = subj.icon;
+          const isSelected = subj.id === cat;
+          return (
+            <button
+              key={subj.id}
+              style={{
+                ...s.subjTab,
+                background: isSelected ? 'var(--blue)' : 'var(--bg2)',
+                color: isSelected ? '#fff' : 'var(--text2)',
+                borderColor: isSelected ? 'var(--blue)' : 'var(--border)',
+                boxShadow: isSelected ? '0 4px 12px rgba(41, 182, 246, 0.25)' : 'none',
+              }}
+              onClick={() => updateState({ activeCategory: subj.id })}
+            >
+              <Icon size={16} />
+              <span>{subj.name}</span>
+            </button>
+          );
+        })}
       </div>
 
       {/* ── IMTIHON BANNER ── */}
@@ -272,6 +301,30 @@ const s = {
     fontSize: 13, fontWeight: 700, color: 'var(--text2)',
     cursor: 'pointer', fontFamily: 'inherit',
     whiteSpace: 'nowrap', flexShrink: 0,
+  },
+  subjTabsContainer: {
+    display: 'flex',
+    gap: 8,
+    overflowX: 'auto',
+    paddingBottom: 8,
+    marginBottom: 20,
+    scrollbarWidth: 'none',
+    msOverflowStyle: 'none',
+    WebkitOverflowScrolling: 'touch',
+  },
+  subjTab: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 8,
+    padding: '10px 16px',
+    borderRadius: 12,
+    border: '1.5px solid var(--border)',
+    fontSize: 14,
+    fontWeight: 700,
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+    whiteSpace: 'nowrap',
+    transition: 'all 0.2s ease',
   },
   examBanner: {
     background: 'linear-gradient(135deg, #29B6F6, #0284C7)',

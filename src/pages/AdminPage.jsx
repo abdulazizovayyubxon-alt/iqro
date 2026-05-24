@@ -326,8 +326,11 @@ const AdminPage = () => {
 
 
   // topicId asosida category avtomatik hisoblanadi
-  // topicId 0-6 → 'chqbt', topicId 7+ → 'art'
-  const getCategoryFromTopicId = (topicId) => topicId >= 7 ? 'art' : 'chqbt';
+  // TOPICS ro'yxatidan qidiriladi
+  const getCategoryFromTopicId = (topicId) => {
+    const topicObj = TOPICS.find(t => t.id === topicId);
+    return topicObj ? topicObj.category : 'chqbt';
+  };
 
   const handleSaveQuestion = async () => {
     try {
@@ -1136,24 +1139,14 @@ const AdminPage = () => {
                     onChange={e => setNewQ({...newQ, topicId: parseInt(e.target.value)})}
                     style={{ cursor: 'pointer' }}
                   >
-                    <option value={0}>0 — Harbiy xizmat asoslari (chqbt)</option>
-                    <option value={1}>1 — Umumharbiy nizomlar (chqbt)</option>
-                    <option value={2}>2 — Otish tayyorgarligi (chqbt)</option>
-                    <option value={3}>3 — Taktik tayyorgarlik (chqbt)</option>
-                    <option value={4}>4 — Fuqaro muhofazasi (chqbt)</option>
-                    <option value={5}>5 — Tibbiy bilim asoslari (chqbt)</option>
-                    <option value={6}>6 — Pedagogik mahorat (chqbt)</option>
-                    <option value={7}>7 — Tasviriy san'at asoslari (art)</option>
-                    <option value={8}>8 — Amaliy bezak san'ati (art)</option>
-                    <option value={9}>9 — Me'morlik va Miniatyura (art)</option>
-                    <option value={10}>10 — Dizayn va Zamonaviy san'at (art)</option>
-                    <option value={11}>11 — Grafik savodxonlik (art)</option>
-                    <option value={12}>12 — Mashinasozlik chizmalari (art)</option>
-                    <option value={13}>13 — Qurilish chizmalari (art)</option>
-                    <option value={14}>14 — Pedagogik mahorat (art)</option>
+                    {TOPICS.map(t => (
+                      <option key={t.id} value={t.id}>
+                        {t.id} — {t.name} ({Array.isArray(t.category) ? t.category.join(', ') : t.category})
+                      </option>
+                    ))}
                   </select>
                   <div style={{ fontSize: '11px', color: 'var(--text3)', marginTop: '-4px' }}>
-                    ⚡ Category avtomatik: topicId 0-6 → chqbt, 7+ → art
+                    ⚡ Category avtomatik ravishda mavzuga mos ravishda belgilanadi.
                   </div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>

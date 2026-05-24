@@ -20,7 +20,7 @@
     "firebase-admin": "^12.1.0",
     "framer-motion": "^11.2.10",
     "lucide-react": "^0.395.0",
-    "pdf-parse": "^1.1.1",
+    "pdf-parse": "^1.1.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.15.0",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BATCH_SIZE } from '../config';
-import { Medal, ClipboardList, Target, Map, Shield, HeartPulse, GraduationCap, Palette, PaintBucket, LandPlot, Image as ImageIcon, Ruler, Settings, Home, BookOpen } from 'lucide-react';
+import { Medal, ClipboardList, Target, Map, Shield, HeartPulse, GraduationCap, Palette, PaintBucket, LandPlot, Image as ImageIcon, Ruler, Settings, Home, BookOpen, Activity, Baby, Laptop, Smile, PenTool, Award } from 'lucide-react';
 
 // ══════════════════════════════════════════════════════════════
 // TOPICS — mavzular ro'yxati (statik, ~2KB)
@@ -50,7 +50,152 @@ const artTopics = artBaseNames.map((name, i) => ({
   category: 'art'
 }));
 
-export const TOPICS = [...chqbtTopics, ...artTopics];
+const tarixBaseNames = [
+  "Oʻzbekiston tarixi (Qadimgi davrdan XIII asrgacha)",
+  "Oʻzbekiston tarixi (XIII–XV asrlar)",
+  "Oʻzbekiston tarixi (XVI–XIX asrning I yarmi)",
+  "Oʻzbekiston tarixi (XIX asr II yarmi – Hozirgi davr)",
+  "Jahon tarixi (Qadimgi dunyo va Ilk oʻrta asrlar)",
+  "Jahon tarixi (XIII–XV asrlar va Yangi davr)",
+  "Jahon tarixi (Eng yangi davr: XX–XXI asrlar)",
+  "Pedagogik mahorat"
+];
+
+const tarixTopics = tarixBaseNames.map((name, i) => ({
+  id: 15 + i,
+  name,
+  icon: name === "Pedagogik mahorat" ? React.createElement(GraduationCap, { size: 20 }) : React.createElement(BookOpen, { size: 20 }),
+  day: 14 + Math.floor(i / 4),
+  category: 'tarix'
+}));
+
+const sportBaseNames = [
+  "Sport fiziologiyasi va Sog'lom turmush tarzi asoslari",
+  "Gimnastika turlari, texnikasi va qoidalari",
+  "Harakatli o'yinlar va ularning darsdagi o'rni",
+  "Yengil atletika va Suzish turlari, qoidalari",
+  "Kurash turlari, texnikasi va taktikasi",
+  "Sport o'yinlari (Futbol va Voleybol qoidalari)",
+  "Sport o'yinlari (Basketbol, Gandbol, Shaxmat-shashka)",
+  "Pedagogik mahorat"
+];
+
+const sportTopics = sportBaseNames.map((name, i) => ({
+  id: 23 + i,
+  name,
+  icon: name === "Pedagogik mahorat" ? React.createElement(GraduationCap, { size: 20 }) : React.createElement(Activity, { size: 20 }),
+  day: 18 + Math.floor(i / 4),
+  category: 'sport'
+}));
+
+const boshlangichBaseNames = [
+  "Ona tili (Imlo, Punktuatsiya va Uslubiyat)",
+  "Ona tili (Lingvistik tahlil va Matnni o'qib tushunish)",
+  "O'qish savodxonligi (Badiiy matn tahlili va Bolalar adabiyoti)",
+  "Matematika (Sonlar va amallar, Algebraik mulohaza)",
+  "Matematika (Geometriya, o'lchovlar, ehtimollik va mantiq)",
+  "Tabiiy fanlar (Quyosh sistemasi, geografiya va tirik organizmlar)",
+  "Tabiiy fanlar (Fizik xossalar, kimyo) va Tarbiya fanlari",
+  "Pedagogik mahorat"
+];
+
+const boshlangichTopics = boshlangichBaseNames.map((name, i) => ({
+  id: 31 + i,
+  name,
+  icon: name === "Pedagogik mahorat" ? React.createElement(GraduationCap, { size: 20 }) : React.createElement(Baby, { size: 20 }),
+  day: 22 + Math.floor(i / 4),
+  category: 'boshlangich'
+}));
+
+const infoBaseNames = [
+  "Axborot, raqamli madaniyat, kompyuter texnik va dasturiy ta'minoti",
+  "Ofis dasturlari (Word, Excel, PowerPoint) va Ma'lumotlar bazasi (Access, SQL)",
+  "Mantiqiy fikrlash, rostlik jadvali va Sanoq sistemalari",
+  "Algoritmlash asoslari (blok sxema, Scratch, LOGO)",
+  "Kodli dasturlash tillari (Python, JavaScript)",
+  "Kompyuter grafikasi (Photoshop, Paint) va Veb-texnologiyalar (HTML, CSS)",
+  "Kompyuter tarmoqlari, IP manzillash, xavfsizlik va raqamli xizmatlar",
+  "Pedagogik mahorat"
+];
+
+const infoTopics = infoBaseNames.map((name, i) => ({
+  id: 39 + i,
+  name,
+  icon: name === "Pedagogik mahorat" ? React.createElement(GraduationCap, { size: 20 }) : React.createElement(Laptop, { size: 20 }),
+  day: 26 + Math.floor(i / 4),
+  category: 'info'
+}));
+
+const mttBaseNames = [
+  "Maktabgacha pedagogika asoslari va Bolaning rivojlanish bosqichlari",
+  "Bolalarni tarbiyalash turlari (Axloqiy, aqliy, estetik, jismoniy, mehnat, ekologik)",
+  "Ta'lim va tarbiya jarayoni metodlari (Nutq o'stirish, savodxonlik, sensor tarbiya)",
+  "Matematik tasavvurlar va Tasviriy, sahnalashtirish faoliyatlari",
+  "O'yin faoliyati va Rivojlantiruvchi ta'lim muhitini tashkil etish",
+  "Maktabgacha ta'lim me'yoriy-huquqiy asoslari (Qonun, \"Ilk qadam\", \"Ilm yo'li\")",
+  "Bolalar rivojlanishini kuzatish va \"Rivojlanish xaritasi\"",
+  "Pedagogik mahorat"
+];
+
+const mttTopics = mttBaseNames.map((name, i) => ({
+  id: 47 + i,
+  name,
+  icon: name === "Pedagogik mahorat" ? React.createElement(GraduationCap, { size: 20 }) : React.createElement(Smile, { size: 20 }),
+  day: 30 + Math.floor(i / 4),
+  category: 'mtt'
+}));
+
+const tilBaseNames = [
+  "Matn tahlili va O'qish savodxonligi (Ilmiy-ommabop matnni o'qib tushunish)",
+  "Tildan amaliy foydalanish (Talaffuz, imlo qoidalari va punktuatsiya)",
+  "Uslubiyat, so'zlarning kontekstdagi ma'nosi va nutq namunalari",
+  "Til nazariyasi va lingvistik tahlil (fonetika, leksika, morfologiya, sintaktik me'yorlar)",
+  "Badiiy matn tahlili (nasr, drama) va adabiyot nazariyasi (janr, vazn, badiiy san'atlar)",
+  "Milliy adabiyot tarixi (O'zbek xalq og'zaki ijodi, o'zbek she'riyati, nasri va dramaturgiyasi)",
+  "Jahon adabiyoti tarixi (epik, dramatik va lirik asarlar)",
+  "Pedagogik mahorat"
+];
+
+const tilTopics = tilBaseNames.map((name, i) => ({
+  id: 55 + i,
+  name,
+  icon: name === "Pedagogik mahorat" ? React.createElement(GraduationCap, { size: 20 }) : React.createElement(PenTool, { size: 20 }),
+  day: 34 + Math.floor(i / 4),
+  category: 'til'
+}));
+
+const mttRahbarBaseNames = [
+  "Maktabgacha pedagogika va Bolaning rivojlanish xususiyatlari",
+  "Tarbiya turlari (Axloqiy, aqliy, estetik, jismoniy, mehnat, ekologik tarbiya)",
+  "Ta'lim-tarbiya jarayonini rejalashtirish va Metodik rahbarlik",
+  "Pedagogik xodimlar faoliyatini boshqarish va Metodik yordam",
+  "Maktabgacha ta'lim me'yoriy-huquqiy asoslari (Qonun, Davlat standarti, Ilk qadam)",
+  "Bolalar hayotini muhofaza qilish, alohida ehtiyojlar va Kuzatuv kengashi",
+  "Ish hujjatlari, yillik reja, monitoring va Rivojlantiruvchi muhit",
+  "Pedagogik mahorat"
+];
+
+const mttRahbarTopics = mttRahbarBaseNames.map((name, i) => ({
+  id: 63 + i,
+  name,
+  icon: name === "Pedagogik mahorat" ? React.createElement(GraduationCap, { size: 20 }) : React.createElement(Award, { size: 20 }),
+  day: 38 + Math.floor(i / 4),
+  category: 'mtt_rahbar'
+}));
+
+export const SUBJECTS = [
+  { id: 'chqbt', name: "CHQBT", icon: Medal, desc: "Harbiy bilimlar, Konstitutsiya va birinchi yordam" },
+  { id: 'art', name: "Tasviriy San'at", icon: Palette, desc: "Chizmachilik va san'at tarixi" },
+  { id: 'tarix', name: "Tarix", icon: BookOpen, desc: "O'zbekiston va Jahon tarixi, pedagogik mahorat" },
+  { id: 'sport', name: "Jismoniy Tarbiya", icon: Activity, desc: "Sport nazariyasi va metodikasi" },
+  { id: 'boshlangich', name: "Boshlang'ich Ta'lim", icon: Baby, desc: "Ona tili, matematika, tabiiy fanlar, metodika" },
+  { id: 'info', name: "Informatika va AT", icon: Laptop, desc: "Kompyuter tizimlari, algoritmlash va dasturlash" },
+  { id: 'mtt', name: "MTT Tarbiyachilari", icon: Smile, desc: "Maktabgacha ta'lim pedagogikasi va metodikasi" },
+  { id: 'mtt_rahbar', name: "MTT Dir. O'rinbosari", icon: Award, desc: "Metodik rahbarlik, me'yoriy hujjatlar va boshqaruv" },
+  { id: 'til', name: "Ona Tili va Adabiyot", icon: PenTool, desc: "Til qoidalari, adabiyot tarixi va tahlili" }
+];
+
+export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics];
 
 export const SCHEDULE = [
   { day: 1, date: "2 May", topic: "Harbiy xizmat asoslari", tests: 8, goal: "Konstitutsiya, Mudofaa doktrinasi", topicId: 0 },

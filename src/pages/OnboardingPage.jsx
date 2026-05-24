@@ -23,6 +23,13 @@ const GOALS = [
 const SUBJECTS = [
   { id: 'chqbt', badge: 'Q', title: 'CHQBT', desc: 'O\'zbekiston tarixi, huquqi, Konstitutsiya' },
   { id: 'art',   badge: 'S', title: 'Tasviriy San\'at', desc: 'Badiiy ta\'lim va san\'at nazariyasi' },
+  { id: 'tarix', badge: 'T', title: 'Tarix', desc: 'O\'zbekiston va Jahon tarixi, metodika' },
+  { id: 'sport', badge: 'J', title: 'Jismoniy Tarbiya', desc: 'Sport nazariyasi va metodikasi' },
+  { id: 'boshlangich', badge: 'B', title: 'Boshlang\'ich Ta\'lim', desc: 'Ona tili, matematika, tabiiy fanlar, metodika' },
+  { id: 'info', badge: 'I', title: 'Informatika va AT', desc: 'Kompyuter tizimlari, algoritmlash va dasturlash' },
+  { id: 'mtt', badge: 'M', title: 'MTT Tarbiyachilari', desc: 'Maktabgacha ta\'lim pedagogikasi va metodikasi' },
+  { id: 'mtt_rahbar', badge: 'D', title: 'MTT Dir. O\'rinbosari', desc: 'Metodik rahbarlik, me\'yoriy hujjatlar va boshqaruv' },
+  { id: 'til', badge: 'O', title: 'Ona Tili va Adabiyot', desc: 'Til qoidalari, adabiyot tarixi va tahlili' },
   { id: 'multi', badge: '✦', title: 'Bir nechta fan', desc: 'Barcha fanlar bo\'yicha kompleks' },
 ];
 

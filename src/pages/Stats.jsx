@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
-import { TOPICS } from '../data/mockData';
+import { TOPICS, SUBJECTS } from '../data/mockData';
 import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
 import { motion } from 'framer-motion';
 import { Trophy, Zap, Target, TrendingUp } from 'lucide-react';
@@ -59,7 +59,7 @@ const Stats = () => {
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="page">
       <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: '24px', letterSpacing: '2px', color: 'var(--accent2)', marginBottom: '20px' }}>
-        Statistika {state.activeCategory === 'art' ? "(San'at)" : "(CHQBT)"}
+        Statistika ({SUBJECTS.find(s => s.id === state.activeCategory)?.name || "CHQBT"})
       </div>
 
       {/* XP va Daraja */}

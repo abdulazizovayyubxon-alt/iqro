@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { useAdmin } from '../hooks/useAdmin';
-import { TOPICS } from '../data/mockData';
+import { TOPICS, SUBJECTS } from '../data/mockData';
 import {
   LayoutDashboard,
   PenTool,
@@ -27,7 +27,8 @@ const Sidebar = () => {
   // Joriy sahifani aniqlash — uniformly location.pathname orqali
   const isActive = (path) => location.pathname === path;
 
-  const activeCategoryName = state.activeCategory === 'art' ? "Tasviriy san'at" : "CHQBT";
+  const activeSubject = SUBJECTS.find(s => s.id === state.activeCategory);
+  const activeCategoryName = activeSubject ? activeSubject.name : "CHQBT";
 
   // Test sahifasiga o'tish (topicId va mode bilan)
   const navigateToTest = (topicId, mode = 'exam') => {
@@ -41,19 +42,20 @@ const Sidebar = () => {
         {/* DESKTOP ONLY: Platform Switcher */}
         <div className="sidebar-section hide-mobile" style={{ borderBottom: '1px solid var(--border)', marginBottom: '15px', paddingBottom: '15px' }}>
           <div className="sidebar-title">Fanlar</div>
-          <div
-            className={`nav-item ${state.activeCategory === 'chqbt' ? 'active' : ''}`}
-            onClick={() => { updateState({ activeCategory: 'chqbt' }); navigate('/'); }}
-            style={{ marginBottom: '5px' }}
-          >
-            <span className="nav-icon"><Medal size={20} /></span> CHQBT Platformasi
-          </div>
-          <div
-            className={`nav-item ${state.activeCategory === 'art' ? 'active' : ''}`}
-            onClick={() => { updateState({ activeCategory: 'art' }); navigate('/'); }}
-          >
-            <span className="nav-icon"><Palette size={20} /></span> Tasviriy san'at
-          </div>
+          {SUBJECTS.map(subj => {
+            const Icon = subj.icon;
+            const isSelected = state.activeCategory === subj.id;
+            return (
+              <div
+                key={subj.id}
+                className={`nav-item ${isSelected ? 'active' : ''}`}
+                onClick={() => { updateState({ activeCategory: subj.id }); navigate('/'); }}
+                style={{ marginBottom: '5px' }}
+              >
+                <span className="nav-icon"><Icon size={20} /></span> {subj.name}
+              </div>
+            );
+          })}
         </div>
 
         {/* MAIN NAVIGATION */}
@@ -177,20 +179,20 @@ const Sidebar = () => {
             <div className="modal-title">Fanni tanlang</div>
             <div className="modal-text">Hozirgi fan: <strong>{activeCategoryName}</strong></div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <button
-                className={`btn ${state.activeCategory === 'chqbt' ? 'btn-primary' : 'btn-outline'}`}
-                style={{ justifyContent: 'flex-start', padding: '16px', display: 'flex', alignItems: 'center' }}
-                onClick={() => { updateState({ activeCategory: 'chqbt' }); navigate('/'); setShowMobSubjects(false); }}
-              >
-                <Medal size={20} style={{ marginRight: '10px' }} /> CHQBT Platformasi
-              </button>
-              <button
-                className={`btn ${state.activeCategory === 'art' ? 'btn-primary' : 'btn-outline'}`}
-                style={{ justifyContent: 'flex-start', padding: '16px', display: 'flex', alignItems: 'center' }}
-                onClick={() => { updateState({ activeCategory: 'art' }); navigate('/'); setShowMobSubjects(false); }}
-              >
-                <Palette size={20} style={{ marginRight: '10px' }} /> Tasviriy san'at
-              </button>
+              {SUBJECTS.map(subj => {
+                const Icon = subj.icon;
+                const isSelected = state.activeCategory === subj.id;
+                return (
+                  <button
+                    key={subj.id}
+                    className={`btn ${isSelected ? 'btn-primary' : 'btn-outline'}`}
+                    style={{ justifyContent: 'flex-start', padding: '16px', display: 'flex', alignItems: 'center' }}
+                    onClick={() => { updateState({ activeCategory: subj.id }); navigate('/'); setShowMobSubjects(false); }}
+                  >
+                    <Icon size={20} style={{ marginRight: '10px' }} /> {subj.name}
+                  </button>
+                );
+              })}
             </div>
             <button className="btn btn-outline" style={{ width: '100%', marginTop: '20px' }} onClick={() => setShowMobSubjects(false)}>
               Yopish

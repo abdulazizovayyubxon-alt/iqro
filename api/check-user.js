@@ -18,6 +18,37 @@ function getAuthAdmin() {
   return getAuth();
 }
 
+// In-memory rate limiting map
+const rateLimitMap = new Map();
+const LIMIT = 15; // Max 15 requests per minute
+const WINDOW_MS = 60 * 1000; // 1 minute window
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  
+  // Clean up memory if it grows too large (> 5000 IPs)
+  if (rateLimitMap.size > 5000) {
+    for (const [key, value] of rateLimitMap.entries()) {
+      const active = value.filter(t => now - t < WINDOW_MS);
+      if (active.length === 0) {
+        rateLimitMap.delete(key);
+      } else {
+        rateLimitMap.set(key, active);
+      }
+    }
+  }
+  
+  if (!rateLimitMap.has(ip)) {
+    rateLimitMap.set(ip, [now]);
+    return false;
+  }
+  
+  const timestamps = rateLimitMap.get(ip).filter(t => now - t < WINDOW_MS);
+  timestamps.push(now);
+  rateLimitMap.set(ip, timestamps);
+  return timestamps.length > LIMIT;
+}
+
 export default async function handler(req, res) {
   // CORS Headers
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -30,6 +61,12 @@ export default async function handler(req, res) {
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
+  }
+
+  // Rate Limiting
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'anonymous';
+  if (checkRateLimit(ip)) {
+    return res.status(429).json({ error: 'Too many requests. Please try again later.' });
   }
 
   if (req.method !== 'POST') {

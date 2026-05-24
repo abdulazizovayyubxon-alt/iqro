@@ -5,12 +5,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield } from 'lucide-react';
+import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield, Download } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
 import { ToastContext } from '../context/ToastContext';
 import { db } from '../firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, collection, query, where, getDocs } from 'firebase/firestore';
 import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
 import {
   getUserReferralCode, buildReferralLink, getReferralStats,
@@ -37,6 +37,27 @@ export default function ProfilePage({ theme, toggleTheme }) {
   const [refCode, setRefCode] = useState('');
   const [refStats, setRefStats] = useState(null);
   const [copied, setCopied] = useState(false);
+
+  const [downloadingOffline, setDownloadingOffline] = useState(false);
+  const [downloadProgress, setDownloadProgress] = useState('');
+
+  const handleDownloadOffline = async () => {
+    if (downloadingOffline) return;
+    setDownloadingOffline(true);
+    setDownloadProgress('Yuklanmoqda...');
+    try {
+      const qRef = collection(db, 'questions');
+      const qQuery = query(qRef, where('category', '==', state.activeCategory || 'chqbt'));
+      const snap = await getDocs(qQuery);
+      showToast(`Tayyor! ${snap.size} ta savol offline foydalanish uchun keshlandi ✅`, 'success');
+    } catch (e) {
+      console.error(e);
+      showToast("Offline yuklashda xatolik yuz berdi", 'error');
+    } finally {
+      setDownloadingOffline(false);
+      setDownloadProgress('');
+    }
+  };
 
   // Urgency countdown (72h real-time)
   const [urgencyLeft, setUrgencyLeft] = useState(user?.urgencyMs || 0);
@@ -108,9 +129,8 @@ export default function ProfilePage({ theme, toggleTheme }) {
     return { d, h: String(h).padStart(2, '0'), m: String(m).padStart(2, '0'), s: String(s).padStart(2, '0') };
   };
   const urg = fmtUrgency();
-  const catStats = state.stats?.chqbt || { totalAnswered: 0, totalCorrect: 0, maxStreak: 0 };
-  const totalAnswered = (state.stats?.chqbt?.totalAnswered || 0) + (state.stats?.art?.totalAnswered || 0);
-  const totalCorrect = (state.stats?.chqbt?.totalCorrect || 0) + (state.stats?.art?.totalCorrect || 0);
+  const totalAnswered = Object.values(state.stats || {}).reduce((acc, curr) => acc + (curr.totalAnswered || 0), 0);
+  const totalCorrect = Object.values(state.stats || {}).reduce((acc, curr) => acc + (curr.totalCorrect || 0), 0);
   const acc = totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
   const earnedBadges = getEarnedBadges(state.stats);
   const totalXP = getTotalXP(state.stats);
@@ -411,6 +431,15 @@ export default function ProfilePage({ theme, toggleTheme }) {
               <Edit3 size={20} />
             </div>
             <span className="pp-menu-label">Profilni tahrirlash</span>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
+          {/* Offline Download */}
+          <button className="pp-menu-item" onClick={handleDownloadOffline} disabled={downloadingOffline}>
+            <div className="pp-menu-icon" style={{ background: 'var(--green-bg)', color: 'var(--green)' }}>
+              <Download size={20} className={downloadingOffline ? "spin" : ""} />
+            </div>
+            <span className="pp-menu-label">{downloadProgress || "Offline rejim uchun yuklash"}</span>
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
 
