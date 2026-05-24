@@ -209,32 +209,34 @@ ${refLink}
                 <span style={{ fontSize: 12, color: 'var(--text2)', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {refLink}
                 </span>
-                <button style={s.copyBtn} onClick={() => copyToClipboard(refLink, 'link')}>
+                <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={s.copyBtn} onClick={() => copyToClipboard(refLink, 'link')}>
                   {copied === 'link' ? <Check size={14} /> : <Copy size={14} />}
                   {copied === 'link' ? 'Nusxalandi' : 'Nusxa'}
-                </button>
+                </motion.button>
               </div>
             </div>
 
             {/* Matnni nusxalash — har qanday qurilmada ishlaydi */}
-            <button
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => copyToClipboard(getShareMessage(user?.displayName), 'msg')}
               style={{ ...s.outlineBtn, width: '100%', marginBottom: 10, justifyContent: 'center', gap: 8 }}
             >
               {copied === 'msg' ? <Check size={15} /> : <Copy size={15} />}
               {copied === 'msg' ? 'Matn nusxalandi! ✅' : 'Tayyor matn nusxalash (WhatsApp / SMS)'}
-            </button>
+            </motion.button>
 
             <div style={{ display: 'flex', gap: 10 }}>
-              <button onClick={shareReferral} style={{ ...s.primaryBtn, flex: 1 }}>
+              <motion.button whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.98 }} onClick={shareReferral} style={{ ...s.primaryBtn, flex: 1 }}>
                 <Share2 size={16} /> Ulashish
-              </button>
-              <button onClick={shareViaTelegram} style={{ ...s.outlineBtn, flex: 1, borderColor: '#29B6F6', color: '#0088cc' }}>
+              </motion.button>
+              <motion.button whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.98 }} onClick={shareViaTelegram} style={{ ...s.outlineBtn, flex: 1, borderColor: '#29B6F6', color: '#0088cc' }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.17 13.54l-2.95-.924c-.64-.203-.658-.64.136-.954l11.57-4.46c.538-.194 1.006.131.837.948z" />
                 </svg>
                 Telegram
-              </button>
+              </motion.button>
             </div>
           </div>
 
@@ -352,9 +354,9 @@ ${refLink}
               <div style={{ fontSize: 12, color: 'var(--text3)', marginBottom: 16 }}>
                 Har biri to'laganda {fmtSum(REFERRAL_BONUS)} bonus olasiz
               </div>
-              <button onClick={shareReferral} style={{ ...s.primaryBtn, width: '100%' }}>
+              <motion.button whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.98 }} onClick={shareReferral} style={{ ...s.primaryBtn, width: '100%' }}>
                 <Gift size={15} /> Hoziroq taklif qilish
-              </button>
+              </motion.button>
             </div>
           )}
         </div>

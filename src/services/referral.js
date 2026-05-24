@@ -184,9 +184,10 @@ export async function applyReferralAfterRegister(newUserId, newUserName) {
       paidAt: null,
     });
 
+    console.log(`✅ Referral muvaffaqiyatli ulandi: referrer=${referrer.uid}, referred=${newUserId}, discount=${REFERRAL_DISCOUNT}%`);
     return true;
   } catch (err) {
-    console.error('Referral ulashda xato:', err);
+    console.error('❌ Referral ulashda xato yuz berdi:', err);
     return false;
   }
 }
