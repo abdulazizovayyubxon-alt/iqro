@@ -64,6 +64,11 @@ const AdminPage = () => {
   const [isDraggingFile, setIsDraggingFile] = useState(false);
   const [isUploadingJSON, setIsUploadingJSON] = useState(false);
 
+  // Question Filters & Search State
+  const [questionSearch, setQuestionSearch] = useState('');
+  const [questionCategoryFilter, setQuestionCategoryFilter] = useState('all');
+  const [questionTopicFilter, setQuestionTopicFilter] = useState('all');
+
   // Notification Management State
   const [adminNotifs, setAdminNotifs] = useState([]);
   const [newNotif, setNewNotif] = useState({ title: '', message: '', type: 'info', targetUser: 'all' });
@@ -389,6 +394,32 @@ const AdminPage = () => {
     }
   };
 
+  // ═══ Admin: Referral bepul premiumini bekor qilish ═══
+  const handleCancelReferralPremium = async (referredId, referralDocId) => {
+    if (!window.confirm("Bu foydalanuvchining bepul premium statusini bekor qilishni tasdiqlaysizmi?")) return;
+    try {
+      await updateDoc(doc(db, 'referrals', referralDocId), {
+        freeExpire: null
+      });
+      if (referredId) {
+        await updateDoc(doc(db, 'users', referredId), {
+          isPremium: false,
+          freeMonthExpire: null
+        });
+      }
+      showToast("✅ Bepul premium status bekor qilindi!", 'success');
+      // Ro'yxatni yangilash
+      const snap = await getDocs(collection(db, 'referrals'));
+      const refs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      setAllReferrals(refs);
+      const paid = refs.filter(r => r.status === 'paid').length;
+      const pending = refs.filter(r => r.status !== 'paid').length;
+      setReferralSummary({ total: refs.length, paid, pending, totalBonus: paid * 15000 });
+    } catch (e) {
+      showToast("Xatolik: " + e.message, 'error');
+    }
+  };
+
   const handleSolve = async (fbId) => {
     try {
       await updateDoc(doc(db, 'objections', fbId), { solved: true, solvedBy: user.email, solvedAt: new Date() });
@@ -437,10 +468,25 @@ const AdminPage = () => {
   // TOPICS ro'yxatidan qidiriladi
 
   const handleSaveQuestion = async () => {
+    if (!newQ.q || newQ.q.trim() === '') {
+      showToast("Xato: Savol matnini kiriting!", 'error');
+      return;
+    }
+    if (newQ.opts.some(opt => !opt || opt.trim() === '')) {
+      showToast("Xato: Barcha variantlarni to'ldiring!", 'error');
+      return;
+    }
+    const correctVal = parseInt(newQ.correct);
+    if (isNaN(correctVal) || correctVal < 0 || correctVal > 3) {
+      showToast("Xato: To'g'ri javob indeksi 0, 1, 2 yoki 3 bo'lishi shart!", 'error');
+      return;
+    }
+
     try {
       // category ni topicId dan avtomatik hisoblab, savolga qo'shamiz
       const questionToSave = {
         ...newQ,
+        correct: correctVal,
         category: getCategoryFromTopicId(newQ.topicId)
       };
       if (editingQ) {
@@ -554,6 +600,18 @@ const AdminPage = () => {
     const emailMatch = u.email?.toLowerCase().includes(term);
     const phoneMatch = u.phoneNumber?.toLowerCase().includes(term) || u.phone?.toLowerCase().includes(term);
     return nameMatch || emailMatch || phoneMatch;
+  });
+
+  const filteredQuestions = questions.filter(q => {
+    const qText = q.q || '';
+    const category = q.category || '';
+    const topicId = q.topicId !== undefined ? q.topicId : '';
+
+    const matchSearch = !questionSearch || qText.toLowerCase().includes(questionSearch.toLowerCase());
+    const matchCategory = questionCategoryFilter === 'all' || category === questionCategoryFilter;
+    const matchTopic = questionTopicFilter === 'all' || String(topicId) === String(questionTopicFilter);
+
+    return matchSearch && matchCategory && matchTopic;
   });
 
   const unsolvedCount = objections.filter(o => !o.solved).length;
@@ -679,11 +737,7 @@ const AdminPage = () => {
                       onClick={() => setExpandedId(expandedId === obj.fbId ? null : obj.fbId)}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flex: 1 }}>
-                        <span style={{
-                          background: obj.solved ? 'var(--green)' : 'var(--amber)',
-                          color: 'white', fontSize: '10px', fontWeight: '700',
-                          padding: '3px 8px', borderRadius: '6px'
-                        }}>
+                        <span className={`status-badge-neon ${obj.solved ? 'paid' : 'pending'}`} style={{ fontSize: '10px', padding: '2px 8px', borderRadius: '6px' }}>
                           {obj.solved ? '✅ HAL QILINDI' : '⏳ YANGI'}
                         </span>
                         <span style={{ fontSize: '12px', color: 'var(--blue)', fontWeight: '600' }}>{obj.category === 'art' ? '🎨' : '🎖️'} {obj.topic}</span>
@@ -748,6 +802,7 @@ const AdminPage = () => {
       {tab === 'questions' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div className="admin-section-title"><FileText size={18} style={{ color: 'var(--blue)' }} /> Savollar Bazasi ({questions.length})</div>
+          
           <div className="admin-action-bar">
             <button className="btn btn-outline" style={{ color: 'var(--blue)', borderColor: 'var(--blue)' }} onClick={handleSyncAllQuestions} disabled={isSyncing}>
               <Zap size={14} /> {isSyncing ? 'Sinxronlanmoqda...' : 'Sinxronlash'}
@@ -758,6 +813,69 @@ const AdminPage = () => {
             <button className="btn btn-primary" onClick={() => { setIsAdding(true); setEditingQ(null); setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' }); }}>
               <Plus size={14} /> Yangi savol
             </button>
+          </div>
+
+          {/* Glassmorphic Filter and Search Bar */}
+          <div className="admin-glass-filter-bar">
+            <div className="admin-search-wrap">
+              <Search size={16} className="admin-search-icon" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text3)' }} />
+              <input
+                className="admin-search"
+                placeholder="Savol matni bo'yicha qidirish..."
+                value={questionSearch}
+                onChange={e => setQuestionSearch(e.target.value)}
+              />
+            </div>
+            <div className="admin-filter-selects">
+              <div className="admin-select-wrapper">
+                <span className="admin-select-label">Kategoriya:</span>
+                <select
+                  className="admin-select"
+                  value={questionCategoryFilter}
+                  onChange={e => {
+                    setQuestionCategoryFilter(e.target.value);
+                    setQuestionTopicFilter('all'); // category o'zgarganda mavzuni reset qilamiz
+                  }}
+                >
+                  <option value="all">Barchasi</option>
+                  <option value="chqbt">🎖️ CHQBT</option>
+                  <option value="art">🎨 Tasviriy san'at</option>
+                  <option value="tarix">📜 Tarix</option>
+                  <option value="sport">⚽ Jismoniy tarbiya</option>
+                  <option value="boshlangich">🏫 Boshlang'ich sinf</option>
+                  <option value="info">💻 Informatika</option>
+                  <option value="mtt">🧸 MTT tarbiyachisi</option>
+                  <option value="mtt_rahbar">👔 MTT rahbari</option>
+                  <option value="til">🗣️ Tillar</option>
+                </select>
+              </div>
+              <div className="admin-select-wrapper">
+                <span className="admin-select-label">Mavzu:</span>
+                <select
+                  className="admin-select"
+                  value={questionTopicFilter}
+                  onChange={e => setQuestionTopicFilter(e.target.value)}
+                >
+                  <option value="all">Barchasi</option>
+                  {TOPICS.filter(t => 
+                    questionCategoryFilter === 'all' || 
+                    t.category === questionCategoryFilter || 
+                    (Array.isArray(t.category) && t.category.includes(questionCategoryFilter))
+                  ).map(t => (
+                    <option key={t.id} value={t.id}>
+                      #{t.id} — {t.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* Real-time stats indicator */}
+          <div className="admin-stats-indicator">
+            <span>Ko'rsatilmoqda: <strong>{Math.min(50, filteredQuestions.length)} ta</strong></span>
+            <span>Topildi: <strong>{filteredQuestions.length} ta</strong></span>
+            <span>Jami: <strong>{questions.length} ta</strong></span>
           </div>
 
           {/* Drag and Drop JSON Upload Area */}
@@ -803,7 +921,7 @@ const AdminPage = () => {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            {questions.slice(0, 50).map((q) => (
+            {filteredQuestions.slice(0, 50).map((q) => (
               <div key={q.id} className="admin-q-card">
                 <div className="admin-q-text">{q.q}</div>
                 <div className="admin-q-footer">
@@ -815,9 +933,14 @@ const AdminPage = () => {
                 </div>
               </div>
             ))}
-            {questions.length > 50 && (
+            {filteredQuestions.length === 0 && (
+              <div style={{ textAlign: 'center', padding: '40px', color: 'var(--text3)', fontSize: '14px' }}>
+                Savol topilmadi 🔍
+              </div>
+            )}
+            {filteredQuestions.length > 50 && (
               <div style={{ textAlign: 'center', padding: 16, color: 'var(--text3)', fontSize: 13 }}>
-                ... va yana {questions.length - 50} ta savol
+                ... va yana {filteredQuestions.length - 50} ta savol
               </div>
             )}
           </div>
@@ -1145,11 +1268,11 @@ const AdminPage = () => {
                           </td>
                           <td style={{ padding: '10px 12px' }}>
                             {r.status === 'paid' ? (
-                              <span style={{ fontSize: '11px', fontWeight: 700, background: 'rgba(34,197,94,0.15)', color: '#22c55e', padding: '2px 10px', borderRadius: '20px' }}>✅ To'ladi</span>
+                              <span className="status-badge-neon paid">✅ To'ladi</span>
                             ) : r.status === 'active' ? (
-                              <span style={{ fontSize: '11px', fontWeight: 700, background: 'rgba(59,130,246,0.15)', color: '#3b82f6', padding: '2px 10px', borderRadius: '20px' }}>🔄 Faol</span>
+                              <span className="status-badge-neon active">🔄 Faol</span>
                             ) : (
-                              <span style={{ fontSize: '11px', fontWeight: 700, background: 'rgba(234,179,8,0.15)', color: '#eab308', padding: '2px 10px', borderRadius: '20px' }}>⏳ Kutilmoqda</span>
+                              <span className="status-badge-neon pending">⏳ Kutilmoqda</span>
                             )}
                           </td>
                           <td style={{ padding: '10px 12px', color: r.bonusPaid ? '#22c55e' : 'var(--text3)', fontWeight: r.bonusPaid ? 700 : 400, fontSize: 13 }}>
