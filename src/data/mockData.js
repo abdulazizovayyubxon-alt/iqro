@@ -1,6 +1,9 @@
 import React from 'react';
 import { BATCH_SIZE } from '../config';
-import { Medal, ClipboardList, Target, Map, Shield, HeartPulse, GraduationCap, Palette, PaintBucket, LandPlot, Image as ImageIcon, Ruler, Settings, Home, BookOpen, Activity, Baby, Laptop, Smile, PenTool, Award } from 'lucide-react';
+import {
+  Medal, ClipboardList, Target, Map, Shield, HeartPulse, GraduationCap, Palette, PaintBucket, LandPlot, Image as ImageIcon, Ruler, Settings, Home, BookOpen, Activity, Baby, Laptop, Smile, PenTool, Award,
+  Compass, Scroll, Hourglass, Globe, Heart, Swords, Trophy, Flame, Calculator, Sun, Cpu, Code, Network, FileText, Binary, Monitor, Wifi, MessageSquare, Scale, Users
+} from 'lucide-react';
 
 // ══════════════════════════════════════════════════════════════
 // TOPICS — mavzular ro'yxati (statik, ~2KB)
@@ -61,10 +64,21 @@ const tarixBaseNames = [
   "Pedagogik mahorat"
 ];
 
+const tarixIcons = [
+  React.createElement(Compass, { size: 20 }),
+  React.createElement(Shield, { size: 20 }),
+  React.createElement(Scroll, { size: 20 }),
+  React.createElement(Map, { size: 20 }),
+  React.createElement(Hourglass, { size: 20 }),
+  React.createElement(Compass, { size: 20 }),
+  React.createElement(Globe, { size: 20 }),
+  React.createElement(GraduationCap, { size: 20 })
+];
+
 const tarixTopics = tarixBaseNames.map((name, i) => ({
   id: 15 + i,
   name,
-  icon: name === "Pedagogik mahorat" ? React.createElement(GraduationCap, { size: 20 }) : React.createElement(BookOpen, { size: 20 }),
+  icon: tarixIcons[i] || React.createElement(BookOpen, { size: 20 }),
   day: 14 + Math.floor(i / 4),
   category: 'tarix'
 }));
@@ -80,10 +94,21 @@ const sportBaseNames = [
   "Pedagogik mahorat"
 ];
 
+const sportIcons = [
+  React.createElement(HeartPulse, { size: 20 }),
+  React.createElement(Activity, { size: 20 }),
+  React.createElement(Smile, { size: 20 }),
+  React.createElement(Flame, { size: 20 }),
+  React.createElement(Swords, { size: 20 }),
+  React.createElement(Target, { size: 20 }),
+  React.createElement(Trophy, { size: 20 }),
+  React.createElement(GraduationCap, { size: 20 })
+];
+
 const sportTopics = sportBaseNames.map((name, i) => ({
   id: 23 + i,
   name,
-  icon: name === "Pedagogik mahorat" ? React.createElement(GraduationCap, { size: 20 }) : React.createElement(Activity, { size: 20 }),
+  icon: sportIcons[i] || React.createElement(Activity, { size: 20 }),
   day: 18 + Math.floor(i / 4),
   category: 'sport'
 }));
@@ -99,10 +124,21 @@ const boshlangichBaseNames = [
   "Pedagogik mahorat"
 ];
 
+const boshlangichIcons = [
+  React.createElement(PenTool, { size: 20 }),
+  React.createElement(BookOpen, { size: 20 }),
+  React.createElement(Heart, { size: 20 }),
+  React.createElement(Calculator, { size: 20 }),
+  React.createElement(Ruler, { size: 20 }),
+  React.createElement(Sun, { size: 20 }),
+  React.createElement(Globe, { size: 20 }),
+  React.createElement(GraduationCap, { size: 20 })
+];
+
 const boshlangichTopics = boshlangichBaseNames.map((name, i) => ({
   id: 31 + i,
   name,
-  icon: name === "Pedagogik mahorat" ? React.createElement(GraduationCap, { size: 20 }) : React.createElement(Baby, { size: 20 }),
+  icon: boshlangichIcons[i] || React.createElement(Baby, { size: 20 }),
   day: 22 + Math.floor(i / 4),
   category: 'boshlangich'
 }));
@@ -118,10 +154,21 @@ const infoBaseNames = [
   "Pedagogik mahorat"
 ];
 
+const infoIcons = [
+  React.createElement(Laptop, { size: 20 }),
+  React.createElement(FileText, { size: 20 }),
+  React.createElement(Binary, { size: 20 }),
+  React.createElement(Cpu, { size: 20 }),
+  React.createElement(Code, { size: 20 }),
+  React.createElement(Monitor, { size: 20 }),
+  React.createElement(Wifi, { size: 20 }),
+  React.createElement(GraduationCap, { size: 20 })
+];
+
 const infoTopics = infoBaseNames.map((name, i) => ({
   id: 39 + i,
   name,
-  icon: name === "Pedagogik mahorat" ? React.createElement(GraduationCap, { size: 20 }) : React.createElement(Laptop, { size: 20 }),
+  icon: infoIcons[i] || React.createElement(Laptop, { size: 20 }),
   day: 26 + Math.floor(i / 4),
   category: 'info'
 }));
@@ -137,10 +184,21 @@ const mttBaseNames = [
   "Pedagogik mahorat"
 ];
 
+const mttIcons = [
+  React.createElement(Baby, { size: 20 }),
+  React.createElement(Heart, { size: 20 }),
+  React.createElement(MessageSquare, { size: 20 }),
+  React.createElement(Palette, { size: 20 }),
+  React.createElement(Smile, { size: 20 }),
+  React.createElement(FileText, { size: 20 }),
+  React.createElement(Map, { size: 20 }),
+  React.createElement(GraduationCap, { size: 20 })
+];
+
 const mttTopics = mttBaseNames.map((name, i) => ({
   id: 47 + i,
   name,
-  icon: name === "Pedagogik mahorat" ? React.createElement(GraduationCap, { size: 20 }) : React.createElement(Smile, { size: 20 }),
+  icon: mttIcons[i] || React.createElement(Smile, { size: 20 }),
   day: 30 + Math.floor(i / 4),
   category: 'mtt'
 }));
@@ -156,10 +214,21 @@ const tilBaseNames = [
   "Pedagogik mahorat"
 ];
 
+const tilIcons = [
+  React.createElement(BookOpen, { size: 20 }),
+  React.createElement(PenTool, { size: 20 }),
+  React.createElement(MessageSquare, { size: 20 }),
+  React.createElement(Ruler, { size: 20 }),
+  React.createElement(FileText, { size: 20 }),
+  React.createElement(Scroll, { size: 20 }),
+  React.createElement(Globe, { size: 20 }),
+  React.createElement(GraduationCap, { size: 20 })
+];
+
 const tilTopics = tilBaseNames.map((name, i) => ({
   id: 55 + i,
   name,
-  icon: name === "Pedagogik mahorat" ? React.createElement(GraduationCap, { size: 20 }) : React.createElement(PenTool, { size: 20 }),
+  icon: tilIcons[i] || React.createElement(PenTool, { size: 20 }),
   day: 34 + Math.floor(i / 4),
   category: 'til'
 }));
@@ -175,10 +244,21 @@ const mttRahbarBaseNames = [
   "Pedagogik mahorat"
 ];
 
+const mttRahbarIcons = [
+  React.createElement(Baby, { size: 20 }),
+  React.createElement(Heart, { size: 20 }),
+  React.createElement(ClipboardList, { size: 20 }),
+  React.createElement(Users, { size: 20 }),
+  React.createElement(Scale, { size: 20 }),
+  React.createElement(Shield, { size: 20 }),
+  React.createElement(Award, { size: 20 }),
+  React.createElement(GraduationCap, { size: 20 })
+];
+
 const mttRahbarTopics = mttRahbarBaseNames.map((name, i) => ({
   id: 63 + i,
   name,
-  icon: name === "Pedagogik mahorat" ? React.createElement(GraduationCap, { size: 20 }) : React.createElement(Award, { size: 20 }),
+  icon: mttRahbarIcons[i] || React.createElement(Award, { size: 20 }),
   day: 38 + Math.floor(i / 4),
   category: 'mtt_rahbar'
 }));
