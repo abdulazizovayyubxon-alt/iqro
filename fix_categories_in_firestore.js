@@ -42,12 +42,20 @@ const db = getFirestore(app);
 /**
  * topicId asosida to'g'ri categoryni qaytaradi
  * Bu funksiya mockData.js dagi mantiqqa to'liq mos keladi:
- *   chqbtTopics: id 0..6
- *   artTopics:   id 7+
  */
 function getExpectedCategory(topicId) {
   if (typeof topicId !== 'number' || isNaN(topicId)) return null;
-  return topicId >= 7 ? 'art' : 'chqbt';
+  const tid = topicId;
+  if (tid >= 0 && tid <= 6) return 'chqbt';
+  if (tid >= 7 && tid <= 14) return 'art';
+  if (tid >= 15 && tid <= 22) return 'tarix';
+  if (tid >= 23 && tid <= 30) return 'sport';
+  if (tid >= 31 && tid <= 38) return 'boshlangich';
+  if (tid >= 39 && tid <= 46) return 'info';
+  if (tid >= 47 && tid <= 54) return 'mtt';
+  if (tid >= 55 && tid <= 62) return 'til';
+  if (tid >= 63 && tid <= 70) return 'mtt_rahbar';
+  return null;
 }
 
 async function fixCategories() {

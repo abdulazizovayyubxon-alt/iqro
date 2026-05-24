@@ -34,6 +34,20 @@ const allData = [
   { id: 7, data: q7_tasviriy_sanat, cat: 'art' }
 ];
 
+function getCategoryFromTopicId(topicId) {
+  const tid = parseInt(topicId);
+  if (tid >= 0 && tid <= 6) return 'chqbt';
+  if (tid >= 7 && tid <= 14) return 'art';
+  if (tid >= 15 && tid <= 22) return 'tarix';
+  if (tid >= 23 && tid <= 30) return 'sport';
+  if (tid >= 31 && tid <= 38) return 'boshlangich';
+  if (tid >= 39 && tid <= 46) return 'info';
+  if (tid >= 47 && tid <= 54) return 'mtt';
+  if (tid >= 55 && tid <= 62) return 'til';
+  if (tid >= 63 && tid <= 70) return 'mtt_rahbar';
+  return 'chqbt';
+}
+
 async function migrate() {
   const qRef = collection(db, 'questions');
   console.log("Starting migration...");
@@ -48,10 +62,11 @@ async function migrate() {
       
       chunk.forEach(q => {
         const newDoc = doc(qRef);
+        const resolvedTopicId = q.topicId !== undefined ? q.topicId : item.id;
         batch.set(newDoc, {
           ...q,
-          topicId: item.id,
-          category: item.cat,
+          topicId: resolvedTopicId,
+          category: getCategoryFromTopicId(resolvedTopicId),
           createdAt: new Date().toISOString()
         });
       });

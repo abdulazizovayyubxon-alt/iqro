@@ -28,7 +28,18 @@ service cloud.firestore {
     // ── questions: hamma o'qiy oladi, faqat admin yoza oladi ──
     match /questions/{docId} {
       allow read: if isLoggedIn();
-      allow write: if isAdmin();
+      allow create, update: if isAdmin() && (
+        (request.resource.data.topicId >= 0 && request.resource.data.topicId <= 6 && request.resource.data.category == 'chqbt') ||
+        (request.resource.data.topicId >= 7 && request.resource.data.topicId <= 14 && request.resource.data.category == 'art') ||
+        (request.resource.data.topicId >= 15 && request.resource.data.topicId <= 22 && request.resource.data.category == 'tarix') ||
+        (request.resource.data.topicId >= 23 && request.resource.data.topicId <= 30 && request.resource.data.category == 'sport') ||
+        (request.resource.data.topicId >= 31 && request.resource.data.topicId <= 38 && request.resource.data.category == 'boshlangich') ||
+        (request.resource.data.topicId >= 39 && request.resource.data.topicId <= 46 && request.resource.data.category == 'info') ||
+        (request.resource.data.topicId >= 47 && request.resource.data.topicId <= 54 && request.resource.data.category == 'mtt') ||
+        (request.resource.data.topicId >= 55 && request.resource.data.topicId <= 62 && request.resource.data.category == 'til') ||
+        (request.resource.data.topicId >= 63 && request.resource.data.topicId <= 70 && request.resource.data.category == 'mtt_rahbar')
+      );
+      allow delete: if isAdmin();
     }
 
     // ── objections: hamma yoza oladi, faqat admin o'chira oladi ──

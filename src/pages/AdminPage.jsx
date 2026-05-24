@@ -26,6 +26,13 @@ import {
 } from 'lucide-react';
 
 import './AdminPage.css';
+import { TOPICS } from '../data/mockData';
+
+const getCategoryFromTopicId = (topicId) => {
+  const idNum = parseInt(topicId);
+  const topicObj = TOPICS.find(t => t.id === idNum);
+  return topicObj ? topicObj.category : 'chqbt';
+};
 
 const AdminPage = () => {
   const { isAdmin } = useAdmin();
@@ -120,10 +127,11 @@ const AdminPage = () => {
       for (const item of allData) {
         for (const q of item.data) {
           if (!existingSet.has(normalize(q.q))) {
+            const resolvedTopicId = q.topicId !== undefined ? q.topicId : item.id;
             newQuestionsToPush.push({
               ...q,
-              topicId: q.topicId !== undefined ? q.topicId : item.id,
-              category: item.cat,
+              topicId: resolvedTopicId,
+              category: getCategoryFromTopicId(resolvedTopicId),
               createdAt: new Date().toISOString()
             });
             existingSet.add(normalize(q.q));
@@ -327,10 +335,6 @@ const AdminPage = () => {
 
   // topicId asosida category avtomatik hisoblanadi
   // TOPICS ro'yxatidan qidiriladi
-  const getCategoryFromTopicId = (topicId) => {
-    const topicObj = TOPICS.find(t => t.id === topicId);
-    return topicObj ? topicObj.category : 'chqbt';
-  };
 
   const handleSaveQuestion = async () => {
     try {
