@@ -306,7 +306,7 @@ const TestPage = () => {
   const topicName = topicId === -1 ? "Barcha bo'limlar" : (topicObj?.name || "Barcha bo'limlar");
 
   useEffect(() => {
-    if (topicObj?.theoryHint && mode === 'exam' && questions.length > 0) {
+    if (topicObj?.theoryHint && questions.length > 0) {
       // Faqat shu mavzuga birinchi marta kirganda ko'rsatiladi (blok o'zgarganda emas)
       if (!seenTheoryTopics[topicId]) {
         setShowTheory(true);
