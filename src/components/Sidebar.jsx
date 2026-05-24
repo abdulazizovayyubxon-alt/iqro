@@ -147,29 +147,7 @@ const Sidebar = () => {
           </div>
         </div>
 
-        {/* DESKTOP ONLY: Topics List */}
-        <div className="sidebar-section hide-mobile">
-          <div className="sidebar-title">
-            {state.activeCategory === 'art' ? "Mavzular" : "Bo'limlar"}
-          </div>
-          {TOPICS.filter(t => Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory).map((t) => {
-            const s = state.topicStats[t.id];
-            const pct = s && s.answered > 0 ? Math.round((s.correct / s.answered) * 100) : 0;
-            return (
-              <div
-                key={t.id}
-                className={`nav-item ${location.pathname === '/test' && state.topicId === t.id ? 'active' : ''} ${pct >= 70 ? 'done' : ''}`}
-                onClick={() => navigateToTest(t.id, 'exam')}
-              >
-                <span className="nav-icon">{t.icon}</span>
-                <span className="nav-label" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{t.name}</span>
-                <span className="nav-progress" style={{ color: pct >= 70 ? 'var(--green)' : 'var(--text3)' }}>
-                  {pct}%
-                </span>
-              </div>
-            );
-          })}
-        </div>
+
       </div>
 
       {/* MOBILE SUBJECT SELECTOR MODAL */}
