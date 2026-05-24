@@ -61,6 +61,8 @@ const AdminPage = () => {
   const [newQ, setNewQ] = useState({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' });
   const [isUploadingImage, setIsUploadingImage] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
+  const [isDraggingFile, setIsDraggingFile] = useState(false);
+  const [isUploadingJSON, setIsUploadingJSON] = useState(false);
 
   // Notification Management State
   const [adminNotifs, setAdminNotifs] = useState([]);
@@ -167,6 +169,104 @@ const AdminPage = () => {
       showToast("Sinxronlashda xatolik: " + err.message, 'error');
     }
     setIsSyncing(false);
+  };
+
+  const processJsonQuestions = async (jsonString) => {
+    setIsUploadingJSON(true);
+    showToast("JSON fayl tahlil qilinmoqda...", 'info');
+    try {
+      const parsed = JSON.parse(jsonString);
+      const list = Array.isArray(parsed) ? parsed : (parsed.questions || []);
+      
+      if (!Array.isArray(list) || list.length === 0) {
+        showToast("Xato: Savollar topilmadi. JSON massiv formatida bo'lishi kerak!", 'error');
+        setIsUploadingJSON(false);
+        return;
+      }
+
+      const normalize = (text) => text ? text.toLowerCase().replace(/[‘'`ʼ]/g, "'").replace(/\s+/g, " ").trim() : "";
+      
+      // Get all existing questions to filter out duplicates
+      const snap = await getDocs(collection(db, 'questions'));
+      const existingSet = new Set(snap.docs.map(d => normalize(d.data().q)));
+
+      const toAdd = [];
+      list.forEach(q => {
+        if (!q.q || !Array.isArray(q.opts) || q.correct === undefined) {
+          console.warn("Noto'g'ri formatdagi savol chetlab o'tildi:", q);
+          return;
+        }
+
+        const normQText = normalize(q.q);
+        if (!existingSet.has(normQText)) {
+          const resolvedTopicId = parseInt(q.topicId) || 0;
+          toAdd.push({
+            q: q.q,
+            opts: q.opts,
+            correct: parseInt(q.correct) || 0,
+            topicId: resolvedTopicId,
+            category: getCategoryFromTopicId(resolvedTopicId),
+            explanation: q.explanation || `✓ To'g'ri javob: ${String.fromCharCode(65 + (parseInt(q.correct) || 0))}`,
+            mnemonic: q.mnemonic || '',
+            image: q.image || '',
+            createdAt: new Date().toISOString()
+          });
+          existingSet.add(normQText);
+        }
+      });
+
+      if (toAdd.length === 0) {
+        showToast("Barcha savollar allaqachon bazada mavjud!", 'success');
+        setIsUploadingJSON(false);
+        return;
+      }
+
+      showToast(`${toAdd.length} ta yangi savol topildi. Yuklanmoqda...`, 'info');
+
+      // Batch push to Firestore in chunks of 400
+      const qRef = collection(db, 'questions');
+      for (let i = 0; i < toAdd.length; i += 400) {
+        const batch = writeBatch(db);
+        const chunk = toAdd.slice(i, i + 400);
+        chunk.forEach(q => {
+          const newDoc = doc(qRef);
+          batch.set(newDoc, q);
+        });
+        await batch.commit();
+      }
+
+      showToast(`Muvaffaqiyatli! ${toAdd.length} ta yangi savol yuklandi. 🎉`, 'success');
+      
+      const updatedSnap = await getDocs(collection(db, 'questions'));
+      setQuestions(updatedSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+
+    } catch (e) {
+      console.error("JSON upload error:", e);
+      showToast("Faylni yuklashda xatolik: " + e.message, 'error');
+    }
+    setIsUploadingJSON(false);
+  };
+
+  const handleFileDrop = (e) => {
+    e.preventDefault();
+    setIsDraggingFile(false);
+    const file = e.dataTransfer.files[0];
+    if (file && (file.type === "application/json" || file.name.endsWith('.json'))) {
+      const reader = new FileReader();
+      reader.onload = (event) => processJsonQuestions(event.target.result);
+      reader.readAsText(file);
+    } else {
+      showToast("Faqat .json kengaytmali fayllar qabul qilinadi!", 'error');
+    }
+  };
+
+  const handleFileSelect = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => processJsonQuestions(event.target.result);
+      reader.readAsText(file);
+    }
   };
 
   // Tariffs State
@@ -658,6 +758,48 @@ const AdminPage = () => {
             <button className="btn btn-primary" onClick={() => { setIsAdding(true); setEditingQ(null); setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' }); }}>
               <Plus size={14} /> Yangi savol
             </button>
+          </div>
+
+          {/* Drag and Drop JSON Upload Area */}
+          <div
+            onDragOver={(e) => { e.preventDefault(); setIsDraggingFile(true); }}
+            onDragLeave={() => setIsDraggingFile(false)}
+            onDrop={handleFileDrop}
+            style={{
+              border: `2px dashed ${isDraggingFile ? 'var(--blue)' : 'var(--border)'}`,
+              borderRadius: '16px',
+              padding: '24px',
+              textAlign: 'center',
+              background: isDraggingFile ? 'var(--blue-bg)' : 'var(--bg2)',
+              transition: 'all 0.2s ease',
+              cursor: 'pointer',
+              position: 'relative'
+            }}
+            onClick={() => document.getElementById('json-file-input').click()}
+          >
+            <input
+              id="json-file-input"
+              type="file"
+              accept=".json"
+              style={{ display: 'none' }}
+              onChange={handleFileSelect}
+            />
+            {isUploadingJSON ? (
+              <div>
+                <div style={{ fontSize: '32px', marginBottom: '8px', display: 'inline-block' }} className="spin-icon">⏳</div>
+                <div style={{ fontSize: '14px', fontWeight: '700', color: 'var(--text)' }}>Savollar yuklanmoqda, iltimos kuting...</div>
+              </div>
+            ) : (
+              <div>
+                <div style={{ fontSize: '32px', marginBottom: '8px' }}>📁</div>
+                <div style={{ fontSize: '14px', fontWeight: '700', color: 'var(--text)', marginBottom: '4px' }}>
+                  {isDraggingFile ? 'Faylni shu yerga tashlang' : 'JSON faylni sudrab tashlang yoki bosing'}
+                </div>
+                <div style={{ fontSize: '11px', color: 'var(--text3)' }}>
+                  Diapazon bo'yicha topicId va category avtomatik bog'lanadi (Ommaviy yuklash)
+                </div>
+              </div>
+            )}
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>

@@ -54,13 +54,13 @@ const artTopics = artBaseNames.map((name, i) => ({
 }));
 
 const tarixBaseNames = [
-  "Oʻzbekiston tarixi (XIII asrgacha)",
-  "Oʻzbekiston tarixi (XIII–XV asrlar)",
-  "Oʻzbekiston tarixi (XVI–XIX asrlar)",
-  "Oʻzbekiston tarixi (XIX–XXI asrlar)",
-  "Jahon tarixi (Qadimgi va Oʻrta asrlar)",
-  "Jahon tarixi (Yangi davr)",
-  "Jahon tarixi (Eng yangi davr)",
+  "O'zbekiston tarixi I",
+  "O'zbekiston tarixi II",
+  "O'zbekiston tarixi III",
+  "O'zbekiston tarixi IV",
+  "Jahon tarixi I",
+  "Jahon tarixi II",
+  "Jahon tarixi III",
   "Pedagogik mahorat"
 ];
 
@@ -84,12 +84,12 @@ const tarixTopics = tarixBaseNames.map((name, i) => ({
 }));
 
 const sportBaseNames = [
-  "Fiziologiya va Sog'lom turmush tarzi",
-  "Gimnastika va uning qoidalari",
-  "Harakatli o'yinlar metodikasi",
+  "Fiziologiya va Sog'lom hayot",
+  "Gimnastika qoidalari",
+  "Harakatli o'yinlar",
   "Yengil atletika va Suzish",
-  "Kurash texnikasi va taktikasi",
-  "Futbol va Voleybol qoidalari",
+  "Kurash va Taktika",
+  "Futbol va Voleybol",
   "Basketbol, Gandbol, Shaxmat",
   "Pedagogik mahorat"
 ];
@@ -114,13 +114,13 @@ const sportTopics = sportBaseNames.map((name, i) => ({
 }));
 
 const boshlangichBaseNames = [
-  "Ona tili (Imlo va Uslubiyat)",
-  "Ona tili (Lingvistik tahlil)",
-  "O'qish savodxonligi va Adabiyot",
-  "Matematika (Sonlar va Algebra)",
-  "Matematika (Geometriya va Mantiq)",
-  "Tabiiy fanlar (Geografiya, Biologiya)",
-  "Tabiiy fanlar (Fizika, Kimyo, Tarbiya)",
+  "Imlo va Uslubiyat",
+  "Lingvistik tahlil",
+  "O'qish va Adabiyot",
+  "Sonlar va Algebra",
+  "Geometriya va Mantiq",
+  "Geografiya va Biologiya",
+  "Fizika, Kimyo va Tarbiya",
   "Pedagogik mahorat"
 ];
 
@@ -144,13 +144,13 @@ const boshlangichTopics = boshlangichBaseNames.map((name, i) => ({
 }));
 
 const infoBaseNames = [
-  "Kompyuter va Raqamli madaniyat",
+  "Raqamli madaniyat",
   "Ofis dasturlari va VB",
-  "Mantiq va Sanoq sistemalari",
+  "Mantiq va Sanoq tizimi",
   "Algoritmlash va Scratch",
-  "Dasturlash tillari (Python, JS)",
-  "Kompyuter grafikasi va Veb",
-  "Tarmoqlar, IP va Xavfsizlik",
+  "Python va JS dasturlash",
+  "Grafika va Veb-dizayn",
+  "Tarmoqlar va Xavfsizlik",
   "Pedagogik mahorat"
 ];
 
@@ -174,13 +174,13 @@ const infoTopics = infoBaseNames.map((name, i) => ({
 }));
 
 const mttBaseNames = [
-  "Pedagogika va Bolaning rivojlanishi",
-  "Bolalarni tarbiyalash turlari",
-  "Nutq o'stirish va Sensor tarbiya",
-  "Matematika va Tasviriy faoliyat",
-  "O'yin va Rivojlantiruvchi muhit",
-  "MTT Me'yoriy-huquqiy asoslari",
-  "Bolalar rivojlanish xaritasi",
+  "Pedagogika va Rivojlanish",
+  "Tarbiyalash turlari",
+  "Nutq va Sensor tarbiya",
+  "Matematika va Tasviriy",
+  "O'yin va Rivojlanish muhiti",
+  "Me'yoriy-huquqiy asoslar",
+  "Bolalar xaritasi",
   "Pedagogik mahorat"
 ];
 
@@ -204,11 +204,11 @@ const mttTopics = mttBaseNames.map((name, i) => ({
 }));
 
 const tilBaseNames = [
-  "Matn tahlili va O'qish savodxonligi",
-  "Imlo, Talaffuz va Punktuatsiya",
-  "Uslubiyat va Nutq namunalari",
-  "Til nazariyasi va Lingvistik tahlil",
-  "Badiiy matn va Adabiyot nazariyasi",
+  "Matn tahlili va Savodxonlik",
+  "Imlo va Punktuatsiya",
+  "Uslubiyat va Nutq",
+  "Til nazariyasi",
+  "Badiiy matn va Adabiyot",
   "Milliy adabiyot tarixi",
   "Jahon adabiyoti tarixi",
   "Pedagogik mahorat"
@@ -234,13 +234,13 @@ const tilTopics = tilBaseNames.map((name, i) => ({
 }));
 
 const mttRahbarBaseNames = [
-  "Pedagogika va Rivojlanish bosqichlari",
-  "Axloqiy, Estetik va Jismoniy tarbiya",
-  "Rejalashtirish va Metodik rahbarlik",
-  "Xodimlar boshqaruvi va Metodik yordam",
+  "Pedagogika va Rivojlanish",
+  "Tarbiyaviy yo'nalishlar",
+  "Metodik rahbarlik",
+  "Xodimlar boshqaruvi",
   "Me'yoriy-huquqiy asoslar",
-  "Kuzatuv kengashi va Xavfsizlik",
-  "Ish hujjatlari va Rivojlantiruvchi muhit",
+  "Kuzatuv kengashi",
+  "Hujjatlar va Muhit",
   "Pedagogik mahorat"
 ];
 

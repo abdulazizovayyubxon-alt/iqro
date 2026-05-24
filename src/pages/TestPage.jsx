@@ -426,11 +426,94 @@ const TestPage = () => {
       )}
 
       {questions.length === 0 ? (
-        <div className="glass-panel" style={{ padding: '40px', textAlign: 'center' }}>
-          {mode === 'mistakes'
-            ? <><div style={{ fontSize: '40px', marginBottom: '12px' }}>🎉</div><div style={{ color: 'var(--text2)' }}>Hozircha xato yo'q — ajoyib!</div></>
-            : <div style={{ color: 'var(--text2)' }}>Hozircha savollar yo'q.</div>
-          }
+        <div 
+          className="glass-panel" 
+          style={{ 
+            padding: '48px 32px', 
+            textAlign: 'center', 
+            maxWidth: '500px', 
+            margin: '40px auto', 
+            borderRadius: '24px', 
+            border: '1px solid var(--border)',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.1)',
+            background: 'linear-gradient(135deg, var(--glass-bg), rgba(255, 255, 255, 0.03))',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+        >
+          {/* Glowing background orb */}
+          <div style={{
+            position: 'absolute',
+            width: '180px',
+            height: '180px',
+            background: mode === 'mistakes' 
+              ? 'radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%)' 
+              : 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            pointerEvents: 'none',
+            zIndex: 0
+          }} />
+
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            {mode === 'mistakes' ? (
+              <>
+                <div 
+                  className="float-animation" 
+                  style={{ 
+                    fontSize: '56px', 
+                    marginBottom: '20px', 
+                    filter: 'drop-shadow(0 10px 15px rgba(16, 185, 129, 0.2))',
+                    display: 'inline-block'
+                  }}
+                >
+                  🏆
+                </div>
+                <h3 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text)', marginBottom: '10px' }}>
+                  Hozircha xatolar yo'q
+                </h3>
+                <p style={{ color: 'var(--text3)', fontSize: '14px', lineHeight: '1.6', marginBottom: '28px', maxWidth: '340px', margin: '0 auto 28px' }}>
+                  Ajoyib natija! Siz hali birorta ham xato qilmadingiz yoki barcha xatolaringizni muvaffaqiyatli tuzatdingiz.
+                </p>
+                <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+                  <button className="btn btn-outline" onClick={goBack}>
+                    <ArrowLeft size={16} /> Fanni almashtirish
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div 
+                  className="float-animation" 
+                  style={{ 
+                    fontSize: '56px', 
+                    marginBottom: '20px', 
+                    filter: 'drop-shadow(0 10px 15px rgba(59, 130, 246, 0.2))',
+                    display: 'inline-block'
+                  }}
+                >
+                  ⏳
+                </div>
+                <h3 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text)', marginBottom: '10px' }}>
+                  Mavzu tayyorlanmoqda
+                </h3>
+                <p style={{ color: 'var(--text3)', fontSize: '14px', lineHeight: '1.6', marginBottom: '28px', maxWidth: '340px', margin: '0 auto 28px' }}>
+                  Ushbu bo'lim uchun savollar hozirda yuklanish jarayonida yoki tez orada qo'shiladi. Boshqa bo'lim yoki fanni sinab ko'ring.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center' }}>
+                  {topicId !== -1 && (
+                    <button className="btn btn-primary" style={{ width: '220px' }} onClick={() => setTopicId(-1)}>
+                      📚 Barcha mavzular
+                    </button>
+                  )}
+                  <button className="btn btn-outline" style={{ width: '220px' }} onClick={goBack}>
+                    <ArrowLeft size={16} /> Boshqa fanni tanlash
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
         </div>
       ) : mode === 'flash' ? (
         <div className="flash-mode-container">
