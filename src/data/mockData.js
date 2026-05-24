@@ -2,7 +2,7 @@ import React from 'react';
 import { BATCH_SIZE } from '../config';
 import {
   Medal, ClipboardList, Target, Map, Shield, HeartPulse, GraduationCap, Palette, PaintBucket, LandPlot, Image as ImageIcon, Ruler, Settings, Home, BookOpen, Activity, Baby, Laptop, Smile, PenTool, Award,
-  Compass, Scroll, Hourglass, Globe, Heart, Swords, Trophy, Flame, Calculator, Sun, Cpu, Code, Network, FileText, Binary, Monitor, Wifi, MessageSquare, Scale, Users
+  Compass, Scroll, Hourglass, Globe, Heart, Swords, Trophy, Flame, Calculator, Sun, Cpu, Code, Network, FileText, Binary, Monitor, Wifi, MessageSquare, Scale, Users, ClipboardList as ClipboardIcon
 } from 'lucide-react';
 
 // ══════════════════════════════════════════════════════════════
@@ -54,13 +54,13 @@ const artTopics = artBaseNames.map((name, i) => ({
 }));
 
 const tarixBaseNames = [
-  "Oʻzbekiston tarixi (Qadimgi davrdan XIII asrgacha)",
+  "Oʻzbekiston tarixi (XIII asrgacha)",
   "Oʻzbekiston tarixi (XIII–XV asrlar)",
-  "Oʻzbekiston tarixi (XVI–XIX asrning I yarmi)",
-  "Oʻzbekiston tarixi (XIX asr II yarmi – Hozirgi davr)",
-  "Jahon tarixi (Qadimgi dunyo va Ilk oʻrta asrlar)",
-  "Jahon tarixi (XIII–XV asrlar va Yangi davr)",
-  "Jahon tarixi (Eng yangi davr: XX–XXI asrlar)",
+  "Oʻzbekiston tarixi (XVI–XIX asrlar)",
+  "Oʻzbekiston tarixi (XIX–XXI asrlar)",
+  "Jahon tarixi (Qadimgi va Oʻrta asrlar)",
+  "Jahon tarixi (Yangi davr)",
+  "Jahon tarixi (Eng yangi davr)",
   "Pedagogik mahorat"
 ];
 
@@ -84,13 +84,13 @@ const tarixTopics = tarixBaseNames.map((name, i) => ({
 }));
 
 const sportBaseNames = [
-  "Sport fiziologiyasi va Sog'lom turmush tarzi asoslari",
-  "Gimnastika turlari, texnikasi va qoidalari",
-  "Harakatli o'yinlar va ularning darsdagi o'rni",
-  "Yengil atletika va Suzish turlari, qoidalari",
-  "Kurash turlari, texnikasi va taktikasi",
-  "Sport o'yinlari (Futbol va Voleybol qoidalari)",
-  "Sport o'yinlari (Basketbol, Gandbol, Shaxmat-shashka)",
+  "Fiziologiya va Sog'lom turmush tarzi",
+  "Gimnastika va uning qoidalari",
+  "Harakatli o'yinlar metodikasi",
+  "Yengil atletika va Suzish",
+  "Kurash texnikasi va taktikasi",
+  "Futbol va Voleybol qoidalari",
+  "Basketbol, Gandbol, Shaxmat",
   "Pedagogik mahorat"
 ];
 
@@ -114,13 +114,13 @@ const sportTopics = sportBaseNames.map((name, i) => ({
 }));
 
 const boshlangichBaseNames = [
-  "Ona tili (Imlo, Punktuatsiya va Uslubiyat)",
-  "Ona tili (Lingvistik tahlil va Matnni o'qib tushunish)",
-  "O'qish savodxonligi (Badiiy matn tahlili va Bolalar adabiyoti)",
-  "Matematika (Sonlar va amallar, Algebraik mulohaza)",
-  "Matematika (Geometriya, o'lchovlar, ehtimollik va mantiq)",
-  "Tabiiy fanlar (Quyosh sistemasi, geografiya va tirik organizmlar)",
-  "Tabiiy fanlar (Fizik xossalar, kimyo) va Tarbiya fanlari",
+  "Ona tili (Imlo va Uslubiyat)",
+  "Ona tili (Lingvistik tahlil)",
+  "O'qish savodxonligi va Adabiyot",
+  "Matematika (Sonlar va Algebra)",
+  "Matematika (Geometriya va Mantiq)",
+  "Tabiiy fanlar (Geografiya, Biologiya)",
+  "Tabiiy fanlar (Fizika, Kimyo, Tarbiya)",
   "Pedagogik mahorat"
 ];
 
@@ -144,13 +144,13 @@ const boshlangichTopics = boshlangichBaseNames.map((name, i) => ({
 }));
 
 const infoBaseNames = [
-  "Axborot, raqamli madaniyat, kompyuter texnik va dasturiy ta'minoti",
-  "Ofis dasturlari (Word, Excel, PowerPoint) va Ma'lumotlar bazasi (Access, SQL)",
-  "Mantiqiy fikrlash, rostlik jadvali va Sanoq sistemalari",
-  "Algoritmlash asoslari (blok sxema, Scratch, LOGO)",
-  "Kodli dasturlash tillari (Python, JavaScript)",
-  "Kompyuter grafikasi (Photoshop, Paint) va Veb-texnologiyalar (HTML, CSS)",
-  "Kompyuter tarmoqlari, IP manzillash, xavfsizlik va raqamli xizmatlar",
+  "Kompyuter va Raqamli madaniyat",
+  "Ofis dasturlari va VB",
+  "Mantiq va Sanoq sistemalari",
+  "Algoritmlash va Scratch",
+  "Dasturlash tillari (Python, JS)",
+  "Kompyuter grafikasi va Veb",
+  "Tarmoqlar, IP va Xavfsizlik",
   "Pedagogik mahorat"
 ];
 
@@ -174,13 +174,13 @@ const infoTopics = infoBaseNames.map((name, i) => ({
 }));
 
 const mttBaseNames = [
-  "Maktabgacha pedagogika asoslari va Bolaning rivojlanish bosqichlari",
-  "Bolalarni tarbiyalash turlari (Axloqiy, aqliy, estetik, jismoniy, mehnat, ekologik)",
-  "Ta'lim va tarbiya jarayoni metodlari (Nutq o'stirish, savodxonlik, sensor tarbiya)",
-  "Matematik tasavvurlar va Tasviriy, sahnalashtirish faoliyatlari",
-  "O'yin faoliyati va Rivojlantiruvchi ta'lim muhitini tashkil etish",
-  "Maktabgacha ta'lim me'yoriy-huquqiy asoslari (Qonun, \"Ilk qadam\", \"Ilm yo'li\")",
-  "Bolalar rivojlanishini kuzatish va \"Rivojlanish xaritasi\"",
+  "Pedagogika va Bolaning rivojlanishi",
+  "Bolalarni tarbiyalash turlari",
+  "Nutq o'stirish va Sensor tarbiya",
+  "Matematika va Tasviriy faoliyat",
+  "O'yin va Rivojlantiruvchi muhit",
+  "MTT Me'yoriy-huquqiy asoslari",
+  "Bolalar rivojlanish xaritasi",
   "Pedagogik mahorat"
 ];
 
@@ -204,13 +204,13 @@ const mttTopics = mttBaseNames.map((name, i) => ({
 }));
 
 const tilBaseNames = [
-  "Matn tahlili va O'qish savodxonligi (Ilmiy-ommabop matnni o'qib tushunish)",
-  "Tildan amaliy foydalanish (Talaffuz, imlo qoidalari va punktuatsiya)",
-  "Uslubiyat, so'zlarning kontekstdagi ma'nosi va nutq namunalari",
-  "Til nazariyasi va lingvistik tahlil (fonetika, leksika, morfologiya, sintaktik me'yorlar)",
-  "Badiiy matn tahlili (nasr, drama) va adabiyot nazariyasi (janr, vazn, badiiy san'atlar)",
-  "Milliy adabiyot tarixi (O'zbek xalq og'zaki ijodi, o'zbek she'riyati, nasri va dramaturgiyasi)",
-  "Jahon adabiyoti tarixi (epik, dramatik va lirik asarlar)",
+  "Matn tahlili va O'qish savodxonligi",
+  "Imlo, Talaffuz va Punktuatsiya",
+  "Uslubiyat va Nutq namunalari",
+  "Til nazariyasi va Lingvistik tahlil",
+  "Badiiy matn va Adabiyot nazariyasi",
+  "Milliy adabiyot tarixi",
+  "Jahon adabiyoti tarixi",
   "Pedagogik mahorat"
 ];
 
@@ -234,13 +234,13 @@ const tilTopics = tilBaseNames.map((name, i) => ({
 }));
 
 const mttRahbarBaseNames = [
-  "Maktabgacha pedagogika va Bolaning rivojlanish xususiyatlari",
-  "Tarbiya turlari (Axloqiy, aqliy, estetik, jismoniy, mehnat, ekologik tarbiya)",
-  "Ta'lim-tarbiya jarayonini rejalashtirish va Metodik rahbarlik",
-  "Pedagogik xodimlar faoliyatini boshqarish va Metodik yordam",
-  "Maktabgacha ta'lim me'yoriy-huquqiy asoslari (Qonun, Davlat standarti, Ilk qadam)",
-  "Bolalar hayotini muhofaza qilish, alohida ehtiyojlar va Kuzatuv kengashi",
-  "Ish hujjatlari, yillik reja, monitoring va Rivojlantiruvchi muhit",
+  "Pedagogika va Rivojlanish bosqichlari",
+  "Axloqiy, Estetik va Jismoniy tarbiya",
+  "Rejalashtirish va Metodik rahbarlik",
+  "Xodimlar boshqaruvi va Metodik yordam",
+  "Me'yoriy-huquqiy asoslar",
+  "Kuzatuv kengashi va Xavfsizlik",
+  "Ish hujjatlari va Rivojlantiruvchi muhit",
   "Pedagogik mahorat"
 ];
 
