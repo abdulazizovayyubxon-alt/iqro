@@ -5,7 +5,7 @@ import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
-import { TOPICS } from '../data/mockData';
+import { TOPICS, SUBJECTS } from '../data/mockData';
 import { BADGES, getEarnedBadges } from '../data/badges';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RefreshCw, ArrowLeft, Home, Target, PenTool, Zap, MessageCircle, ThumbsUp, ThumbsDown, Clock, Share2 } from 'lucide-react';
@@ -391,6 +391,51 @@ const TestPage = () => {
             <RefreshCw size={17} />
           </button>
         </div>
+      </div>
+
+      {/* Subject Tabs */}
+      <div style={{
+        display: 'flex',
+        gap: '8px',
+        overflowX: 'auto',
+        paddingBottom: '8px',
+        marginBottom: '12px',
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none',
+        WebkitOverflowScrolling: 'touch',
+      }}>
+        {SUBJECTS.map(subj => {
+          const Icon = subj.icon;
+          const isSelected = subj.id === state.activeCategory;
+          return (
+            <button
+              key={subj.id}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '8px 12px',
+                borderRadius: '10px',
+                border: '1.5px solid var(--border)',
+                background: isSelected ? '#29B6F6' : 'var(--bg2)',
+                color: isSelected ? '#fff' : 'var(--text2)',
+                borderColor: isSelected ? '#29B6F6' : 'var(--border)',
+                fontSize: '13px',
+                fontWeight: 700,
+                cursor: 'pointer',
+                fontFamily: 'inherit',
+                whiteSpace: 'nowrap',
+                transition: 'all 0.2s ease',
+              }}
+              onClick={() => {
+                updateState({ activeCategory: subj.id, topicId: -1 });
+              }}
+            >
+              <Icon size={14} />
+              <span>{subj.name}</span>
+            </button>
+          );
+        })}
       </div>
 
       <div className="topic-selector">

@@ -17,13 +17,12 @@ import { q4_fuqaro_muhofazasi } from '../data/questions_4.js';
 import { q5_tibbiy_bilim } from '../data/questions_5.js';
 import { q6_pedagogik_mahorat } from '../data/questions_6.js';
 import { q7_tasviriy_sanat } from '../data/questions_7.js';
-import qTarix from '../data/questions_tarix.json';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Shield, MessageCircle, Users, BarChart3,
   CheckCircle, Trash2, Clock, AlertTriangle,
   ChevronDown, ChevronUp, Search, Plus, Edit3, FileText, Zap,
-  Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft
+  Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, RefreshCw
 } from 'lucide-react';
 
 import './AdminPage.css';
@@ -64,6 +63,7 @@ const AdminPage = () => {
   const [isSyncing, setIsSyncing] = useState(false);
   const [isDraggingFile, setIsDraggingFile] = useState(false);
   const [isUploadingJSON, setIsUploadingJSON] = useState(false);
+  const [isFixing, setIsFixing] = useState(false);
 
   // Question Filters & Search State
   const [questionSearch, setQuestionSearch] = useState('');
@@ -112,10 +112,14 @@ const AdminPage = () => {
   };
 
   const handleSyncAllQuestions = async () => {
-    if (!window.confirm("Barcha lokal fayllardagi (questions_0...7 va Tarix) savollarni Firestore bazasi bilan sinxronlashni tasdiqlaysizmi? (Faqat yangi savollar qo'shiladi)")) return;
+    if (!window.confirm("Barcha lokal fayllardagi (questions_0...7, Tarix va Ona tili) savollarni Firestore bazasi bilan sinxronlashni tasdiqlaysizmi? (Faqat yangi savollar qo'shiladi)")) return;
     setIsSyncing(true);
     showToast("Sinxronlash boshlandi, iltimos kuting...", 'info');
     try {
+      showToast("Katta ma'lumotlar yuklanmoqda...", 'info');
+      const qTarix = (await import('../data/questions_tarix.json')).default;
+      const qOnaTili = (await import('../data/questions_ona_tili.json')).default;
+
       const allData = [
         { id: 0, data: q0_harbiy_xizmat, cat: 'chqbt' },
         { id: 1, data: q1_umumharbiy_nizomlar, cat: 'chqbt' },
@@ -125,7 +129,8 @@ const AdminPage = () => {
         { id: 5, data: q5_tibbiy_bilim, cat: 'chqbt' },
         { id: 6, data: q6_pedagogik_mahorat, cat: 'chqbt' },
         { id: 7, data: q7_tasviriy_sanat, cat: 'art' },
-        { id: 15, data: qTarix, cat: 'tarix' }
+        { id: 15, data: qTarix, cat: 'tarix' },
+        { id: 55, data: qOnaTili, cat: 'til' }
       ];
 
       const snap = await getDocs(collection(db, 'questions'));
@@ -176,6 +181,83 @@ const AdminPage = () => {
       showToast("Sinxronlashda xatolik: " + err.message, 'error');
     }
     setIsSyncing(false);
+  };
+
+  const handleFixAndShuffleAnswers = async () => {
+    if (!window.confirm("Ona tili (55-62) va Tarix (15-22) fanlaridagi barcha savollarning javob variantlarini aralashtirish va Firestore bazasida correct indekslarini to'g'rilashni tasdiqlaysizmi?")) return;
+    setIsFixing(true);
+    showToast("Aralashtirish va tuzatish boshlandi, iltimos kuting...", 'info');
+    
+    try {
+      const qRef = collection(db, 'questions');
+      const onaTiliTopics = [55, 56, 57, 58, 59, 60, 61, 62];
+      const tarixTopics = [15, 16, 17, 18, 19, 20, 21, 22];
+      const allTargetTopics = [...onaTiliTopics, ...tarixTopics];
+
+      // Fetch all questions
+      const snap = await getDocs(collection(db, 'questions'));
+      const targetDocs = snap.docs.filter(d => allTargetTopics.includes(parseInt(d.data().topicId)));
+
+      if (targetDocs.length === 0) {
+        showToast("Tuzatiladigan savollar topilmadi!", 'warning');
+        setIsFixing(false);
+        return;
+      }
+
+      // Shuffle options helper
+      const shuffleWithCorrect = (opts, correctIdx) => {
+        const arr = [...opts];
+        const correctText = arr[correctIdx] || arr[0];
+        
+        // Fisher-Yates shuffle
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        
+        const newCorrectIdx = arr.indexOf(correctText) !== -1 ? arr.indexOf(correctText) : 0;
+        const letters = ['A', 'B', 'C', 'D'];
+        const relabeled = arr.map((opt, i) => {
+          const text = opt.replace(/^[A-D]\)\s*/, '');
+          return `${letters[i]}) ${text}`;
+        });
+        return { opts: relabeled, correct: newCorrectIdx };
+      };
+
+      let updated = 0;
+      const batchLimit = 400;
+      
+      // Batch updates
+      for (let i = 0; i < targetDocs.length; i += batchLimit) {
+        const batch = writeBatch(db);
+        const chunk = targetDocs.slice(i, i + batchLimit);
+        
+        chunk.forEach(docSnap => {
+          const data = docSnap.data();
+          if (Array.isArray(data.opts) && data.opts.length === 4) {
+            const currentCorrect = data.correct ?? 0;
+            const { opts: newOpts, correct: newCorrect } = shuffleWithCorrect(data.opts, currentCorrect);
+            batch.update(doc(db, 'questions', docSnap.id), {
+              opts: newOpts,
+              correct: newCorrect
+            });
+            updated++;
+          }
+        });
+        
+        await batch.commit();
+      }
+
+      showToast(`Muvaffaqiyatli! ${updated} ta savol aralashtirildi va to'g'ri javob indekslari sozlandi. 🎉`, 'success');
+      
+      // Update local state
+      const updatedSnap = await getDocs(collection(db, 'questions'));
+      setQuestions(updatedSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+    } catch (err) {
+      console.error("Aralashtirishda xatolik:", err);
+      showToast("Xatolik: " + err.message, 'error');
+    }
+    setIsFixing(false);
   };
 
   const processJsonQuestions = async (jsonString) => {
@@ -808,6 +890,9 @@ const AdminPage = () => {
           <div className="admin-action-bar">
             <button className="btn btn-outline" style={{ color: 'var(--blue)', borderColor: 'var(--blue)' }} onClick={handleSyncAllQuestions} disabled={isSyncing}>
               <Zap size={14} /> {isSyncing ? 'Sinxronlanmoqda...' : 'Sinxronlash'}
+            </button>
+            <button className="btn btn-outline" style={{ color: 'var(--amber)', borderColor: 'var(--amber)' }} onClick={handleFixAndShuffleAnswers} disabled={isFixing}>
+              <RefreshCw size={14} className={isFixing ? "spin-animation" : ""} /> {isFixing ? 'Tuzatilmoqda...' : 'Aralashtirish & Tuzatish (Ona tili va Tarix)'}
             </button>
             <button className="btn btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={handleCleanDuplicates}>
               <Trash2 size={14} /> Dublikatlar
