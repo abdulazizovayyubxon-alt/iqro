@@ -17,6 +17,7 @@ import { q4_fuqaro_muhofazasi } from '../data/questions_4.js';
 import { q5_tibbiy_bilim } from '../data/questions_5.js';
 import { q6_pedagogik_mahorat } from '../data/questions_6.js';
 import { q7_tasviriy_sanat } from '../data/questions_7.js';
+import qTarix from '../data/questions_tarix.json';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Shield, MessageCircle, Users, BarChart3,
@@ -111,7 +112,7 @@ const AdminPage = () => {
   };
 
   const handleSyncAllQuestions = async () => {
-    if (!window.confirm("Barcha lokal fayllardagi (questions_0...7) savollarni Firestore bazasi bilan sinxronlashni tasdiqlaysizmi? (Faqat yangi savollar qo'shiladi)")) return;
+    if (!window.confirm("Barcha lokal fayllardagi (questions_0...7 va Tarix) savollarni Firestore bazasi bilan sinxronlashni tasdiqlaysizmi? (Faqat yangi savollar qo'shiladi)")) return;
     setIsSyncing(true);
     showToast("Sinxronlash boshlandi, iltimos kuting...", 'info');
     try {
@@ -123,7 +124,8 @@ const AdminPage = () => {
         { id: 4, data: q4_fuqaro_muhofazasi, cat: 'chqbt' },
         { id: 5, data: q5_tibbiy_bilim, cat: 'chqbt' },
         { id: 6, data: q6_pedagogik_mahorat, cat: 'chqbt' },
-        { id: 7, data: q7_tasviriy_sanat, cat: 'art' }
+        { id: 7, data: q7_tasviriy_sanat, cat: 'art' },
+        { id: 15, data: qTarix, cat: 'tarix' }
       ];
 
       const snap = await getDocs(collection(db, 'questions'));
