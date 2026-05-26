@@ -10,6 +10,8 @@ import { collection, getDocs, doc, getDoc, setDoc } from 'firebase/firestore';
 import { EXAM_DATE } from '../config';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const IS_MOBILE = typeof window !== 'undefined' && window.innerWidth <= 768;
+
 const Header = ({ theme, toggleTheme }) => {
   const navigate = useNavigate();
   const { state, updateState } = useContext(AppContext);
@@ -167,13 +169,13 @@ const Header = ({ theme, toggleTheme }) => {
 
         <div className="header-stats">
           {/* Tarmoq holati */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'var(--bg2)', border: '1px solid var(--border)', padding: '7px 12px', borderRadius: '12px' }} title={isOnline ? "Tizim tarmoqqa ulangan" : "Tizim oflayn rejimda"}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', padding: '6px 12px', borderRadius: '99px' }} title={isOnline ? "Tizim tarmoqqa ulangan" : "Tizim oflayn rejimda"}>
             <span style={{
               width: '8px',
               height: '8px',
               borderRadius: '50%',
               background: isOnline ? '#10B981' : '#F59E0B',
-              boxShadow: isOnline ? '0 0 8px ' + (isOnline ? '#10B981' : '#F59E0B') : 'none',
+              boxShadow: isOnline ? '0 0 8px #10B981' : 'none',
               display: 'inline-block',
               transition: 'all 0.3s ease'
             }} />
@@ -183,40 +185,45 @@ const Header = ({ theme, toggleTheme }) => {
           </div>
 
           {/* Kun Countdown */}
-          <div 
-            className="hstat hide-mobile" 
+          <motion.div 
+            className="hide-mobile" 
             onClick={() => {
               setTempDays(daysLeft);
               setShowExamModal(true);
             }} 
-            style={{ cursor: 'pointer' }}
+            whileHover={{ y: -1 }}
+            whileTap={{ scale: 0.96 }}
+            style={{ 
+              display: 'flex', alignItems: 'center', gap: '6px', 
+              background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', 
+              padding: '6px 12px', borderRadius: '99px', cursor: 'pointer' 
+            }}
             title="Imtihon sanasini o'zgartirish"
           >
-            <div className="hstat-val" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              {daysLeft} <Calendar size={14} style={{ color: 'var(--blue)', opacity: 0.8 }} />
-            </div>
-            <div className="hstat-lbl">Kun qoldi</div>
-          </div>
+            <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text)' }}>{daysLeft} kun qoldi</span>
+            <Calendar size={13} style={{ color: 'var(--blue)', opacity: 0.8 }} />
+          </motion.div>
 
           {/* Bildirishnomalar menyusi (Qo'ng'iroqcha) */}
           <div style={{ position: 'relative' }} ref={notifRef}>
-            <button 
+            <motion.button 
               className="user-avatar-btn" 
-              style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'var(--bg2)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text)' }}
+              whileTap={{ scale: 0.95 }}
+              style={{ width: '38px', height: '38px', borderRadius: '12px', background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text)', cursor: 'pointer' }}
               onClick={() => setShowNotifMenu(!showNotifMenu)}
               title="Bildirishnomalar"
             >
               <Bell size={18} />
               {unreadCount > 0 && (
                 <span style={{ 
-                  position: 'absolute', top: '-2px', right: '-2px', background: 'var(--red)', color: 'white', 
-                  fontSize: '10px', fontWeight: '800', padding: '1px 5px', borderRadius: '10px', 
-                  animation: 'pulse 2s infinite', border: '2px solid var(--bg)' 
+                  position: 'absolute', top: '-4px', right: '-4px', background: 'var(--red)', color: 'white', 
+                  fontSize: '9px', fontWeight: '800', padding: '1px 5px', borderRadius: '99px', 
+                  animation: 'pulse 2s infinite', border: '1.5px solid var(--bg2)' 
                 }}>
                   {unreadCount}
                 </span>
               )}
-            </button>
+            </motion.button>
 
             <AnimatePresence>
               {showNotifMenu && (
@@ -434,14 +441,47 @@ const Header = ({ theme, toggleTheme }) => {
       )}
 
       {/* Toast xabar tizimi */}
-      {toast && (
-        <div className={`toast toast-${toast.type}`} key={toast.id}>
-          {toast.type === 'success' && '✓ '}
-          {toast.type === 'error' && '✗ '}
-          {toast.type === 'info' && 'ℹ '}
-          {toast.message}
-        </div>
-      )}
+      <AnimatePresence>
+        {toast && (
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.9, x: '-50%' }}
+            animate={{ opacity: 1, y: 0, scale: 1, x: '-50%' }}
+            exit={{ opacity: 0, y: 20, scale: 0.9, x: '-50%' }}
+            transition={{ type: 'spring', stiffness: 380, damping: 28 }}
+            className={`toast-capsule toast-capsule-${toast.type}`}
+            key={toast.id}
+            style={{
+              position: 'fixed',
+              bottom: IS_MOBILE ? '90px' : '32px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              padding: '12px 24px',
+              borderRadius: '99px',
+              fontSize: '14px',
+              fontWeight: 700,
+              zIndex: 10000,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              color: '#fff',
+              background: toast.type === 'success' ? 'rgba(16, 185, 129, 0.92)' : toast.type === 'error' ? 'rgba(239, 68, 68, 0.92)' : 'rgba(37, 99, 235, 0.92)',
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255,255,255,0.15)',
+              pointerEvents: 'none',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            <span style={{ fontSize: '16px', fontWeight: 800 }}>
+              {toast.type === 'success' && '✓'}
+              {toast.type === 'error' && '✗'}
+              {toast.type === 'info' && 'ℹ'}
+            </span>
+            <span>{toast.message}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

@@ -571,8 +571,8 @@ body.dark-theme {
 .user-avatar-initials {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #007AFF, #5AC8FA);
+  border-radius: 10px;
+  background: linear-gradient(135deg, #29B6F6, #8B5CF6);
   color: white;
   font-weight: 700;
   font-size: 13px;
@@ -580,6 +580,7 @@ body.dark-theme {
   align-items: center;
   justify-content: center;
   letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.15);
 }
 
 .user-dropdown {
@@ -587,10 +588,12 @@ body.dark-theme {
   top: calc(100% + 8px);
   right: 0;
   min-width: 220px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.06);
   z-index: 500;
   overflow: hidden;
 }
