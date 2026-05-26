@@ -126,20 +126,21 @@ const Dashboard = () => {
           const Icon = subj.icon;
           const isSelected = subj.id === cat;
           return (
-            <button
+            <motion.button
               key={subj.id}
+              whileTap={{ scale: 0.95 }}
               style={{
                 ...s.subjTab,
-                background: isSelected ? 'var(--blue)' : 'var(--bg2)',
-                color: isSelected ? '#fff' : 'var(--text2)',
-                borderColor: isSelected ? 'var(--blue)' : 'var(--border)',
-                boxShadow: isSelected ? '0 4px 12px rgba(41, 182, 246, 0.25)' : 'none',
+                background: isSelected ? 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)' : 'var(--glass-bg)',
+                color: isSelected ? '#fff' : 'var(--text3)',
+                border: isSelected ? '1px solid transparent' : '1px solid var(--glass-border)',
+                boxShadow: isSelected ? '0 4px 12px rgba(139, 92, 246, 0.2)' : 'none',
               }}
               onClick={() => updateState({ activeCategory: subj.id })}
             >
               <Icon size={16} />
               <span>{subj.name}</span>
-            </button>
+            </motion.button>
           );
         })}
       </div>
@@ -179,6 +180,27 @@ const Dashboard = () => {
         </button>
       )}
 
+      {/* ── REFERRAL BANNER (Do'stlarni Taklif Qilish) ── */}
+      <motion.button
+        whileHover={{ scale: 1.01, y: -2 }}
+        whileTap={{ scale: 0.98 }}
+        style={s.referralBanner}
+        onClick={() => navigate('/referral')}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <span style={{ fontSize: 26, filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }}>🎁</span>
+          <div style={{ textAlign: 'left' }}>
+            <div style={{ fontSize: 14, fontWeight: 800, color: '#78350F' }}>
+              Do'stlarni taklif eting!
+            </div>
+            <div style={{ fontSize: 12, color: '#92400E', marginTop: 2, fontWeight: 500 }}>
+              Yoziling va bepul 30 kunlik Premium oling!
+            </div>
+          </div>
+        </div>
+        <div style={s.referralBtn}>Taklif qilish</div>
+      </motion.button>
+
 
 
       {/* ── TEZKOR HARAKATLAR ── */}
@@ -187,7 +209,13 @@ const Dashboard = () => {
         {quickActions.map((action) => {
           const Icon = action.icon;
           return (
-            <button key={action.id} style={{ ...s.actionCard, background: action.bg, borderColor: 'var(--border)' }} onClick={action.onClick}>
+            <motion.button
+              key={action.id}
+              whileHover={{ scale: 1.01, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              style={{ ...s.actionCard, background: action.bg, borderColor: 'var(--glass-border)' }}
+              onClick={action.onClick}
+            >
               <div style={{ ...s.actionIcon, background: action.color }}>
                 <Icon size={20} color="#fff" />
                 {action.badge && (
@@ -199,7 +227,7 @@ const Dashboard = () => {
                 <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2 }}>{action.desc}</div>
               </div>
               <ChevronRight size={18} style={{ color: 'var(--text3)', flexShrink: 0 }} />
-            </button>
+            </motion.button>
           );
         })}
       </div>
@@ -215,17 +243,19 @@ const Dashboard = () => {
           const r = 28, circ = 2 * Math.PI * r;
 
           return (
-            <button
+            <motion.button
               key={t.id}
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
               style={s.topicCard}
               onClick={() => handleNav(t.id, 'exam')}
             >
               {/* Donut */}
               <div style={{ position: 'relative', width: 64, height: 64, margin: '0 auto 8px' }}>
                 <svg width={64} height={64} viewBox="0 0 64 64">
-                  <circle cx={32} cy={32} r={r} fill="none" stroke="var(--bg3)" strokeWidth={5} />
+                  <circle cx={32} cy={32} r={r} fill="none" stroke="var(--bg3)" strokeWidth={4} />
                   {hasStats && (
-                    <circle cx={32} cy={32} r={r} fill="none" stroke={color} strokeWidth={5}
+                    <circle cx={32} cy={32} r={r} fill="none" stroke={color} strokeWidth={4}
                       strokeDasharray={`${(pct / 100) * circ} ${circ}`}
                       strokeLinecap="round" transform="rotate(-90 32 32)" />
                   )}
@@ -244,7 +274,7 @@ const Dashboard = () => {
               <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 3 }}>
                 {hasStats ? `${ts.answered} savol` : 'Boshlanmagan'}
               </div>
-            </button>
+            </motion.button>
           );
         })}
       </div>
@@ -339,11 +369,22 @@ const s = {
   },
   trialBanner: {
     width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-    background: 'var(--amber-bg)', border: '1.5px solid var(--border)', borderRadius: 16,
-    padding: '14px 16px', marginBottom: 20, cursor: 'pointer', fontFamily: 'inherit',
+    background: 'var(--amber-bg)', border: '1px solid var(--glass-border)', borderRadius: 18,
+    padding: '16px 18px', marginBottom: 20, cursor: 'pointer', fontFamily: 'inherit',
   },
   trialBtn: {
     background: '#F59E0B', color: '#fff', fontWeight: 700, fontSize: 13,
+    padding: '8px 14px', borderRadius: 10, flexShrink: 0,
+  },
+  referralBanner: {
+    width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+    background: 'linear-gradient(135deg, #FDE68A 0%, #FBBF24 100%)',
+    border: '1px solid rgba(245, 158, 11, 0.2)', borderRadius: 18,
+    padding: '16px 18px', marginBottom: 20, cursor: 'pointer', fontFamily: 'inherit',
+    boxShadow: '0 4px 15px rgba(245, 158, 11, 0.12)',
+  },
+  referralBtn: {
+    background: '#78350F', color: '#fff', fontWeight: 700, fontSize: 13,
     padding: '8px 14px', borderRadius: 10, flexShrink: 0,
   },
   statsRow: {
@@ -351,7 +392,7 @@ const s = {
     gap: 10, marginBottom: 24,
   },
   statCard: {
-    background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 16,
+    background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', borderRadius: 18,
     padding: '16px 12px', textAlign: 'center',
   },
   statIcon: { fontSize: 20, marginBottom: 6 },
@@ -365,9 +406,10 @@ const s = {
   actionsGrid: { display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28 },
   actionCard: {
     display: 'flex', alignItems: 'center', gap: 14,
-    padding: '14px 16px', borderRadius: 16,
-    border: '1.5px solid var(--border)', cursor: 'pointer',
-    fontFamily: 'inherit', transition: 'all 0.15s', textAlign: 'left',
+    padding: '16px 18px', borderRadius: 18,
+    border: '1px solid var(--glass-border)', cursor: 'pointer',
+    fontFamily: 'inherit', textAlign: 'left',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.01)',
   },
   actionIcon: {
     width: 44, height: 44, borderRadius: 12,
@@ -384,11 +426,13 @@ const s = {
     gap: 10, marginBottom: 24,
   },
   topicCard: {
-    padding: '14px 10px', borderRadius: 16,
-    border: '1.5px solid var(--border)', background: 'var(--bg2)',
+    padding: '16px 12px', borderRadius: 18,
+    border: '1px solid var(--glass-border)', background: 'var(--glass-bg)',
+    backdropFilter: 'blur(10px)',
     cursor: 'pointer', fontFamily: 'inherit',
-    transition: 'all 0.15s', display: 'flex', flexDirection: 'column',
+    display: 'flex', flexDirection: 'column',
     alignItems: 'center',
+    boxShadow: '0 2px 10px rgba(0,0,0,0.02)',
   },
   adminBox: {
     border: '1.5px solid var(--border)', borderRadius: 16,
