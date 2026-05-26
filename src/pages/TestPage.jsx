@@ -403,6 +403,9 @@ const TestPage = () => {
         scrollbarWidth: 'none',
         msOverflowStyle: 'none',
         WebkitOverflowScrolling: 'touch',
+        scrollSnapType: 'x mandatory',
+        paddingLeft: '2px',
+        paddingRight: '2px',
       }}>
         {SUBJECTS.map(subj => {
           const Icon = subj.icon;
@@ -414,9 +417,9 @@ const TestPage = () => {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
-                padding: '8px 12px',
-                borderRadius: '10px',
-                border: '1.5px solid var(--border)',
+                padding: '9px 14px',
+                borderRadius: '12px',
+                border: '1.5px solid',
                 background: isSelected ? '#29B6F6' : 'var(--bg2)',
                 color: isSelected ? '#fff' : 'var(--text2)',
                 borderColor: isSelected ? '#29B6F6' : 'var(--border)',
@@ -426,6 +429,9 @@ const TestPage = () => {
                 fontFamily: 'inherit',
                 whiteSpace: 'nowrap',
                 transition: 'all 0.2s ease',
+                flexShrink: 0,
+                scrollSnapAlign: 'start',
+                boxShadow: isSelected ? '0 4px 12px rgba(41,182,246,0.3)' : 'none',
               }}
               onClick={() => {
                 updateState({ activeCategory: subj.id, topicId: -1 });

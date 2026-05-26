@@ -36,8 +36,10 @@ service cloud.firestore {
         (request.resource.data.topicId >= 31 && request.resource.data.topicId <= 38 && request.resource.data.category == 'boshlangich') ||
         (request.resource.data.topicId >= 39 && request.resource.data.topicId <= 46 && request.resource.data.category == 'info') ||
         (request.resource.data.topicId >= 47 && request.resource.data.topicId <= 54 && request.resource.data.category == 'mtt') ||
-        (request.resource.data.topicId >= 55 && request.resource.data.topicId <= 62 && request.resource.data.category == 'til') ||
-        (request.resource.data.topicId >= 63 && request.resource.data.topicId <= 70 && request.resource.data.category == 'mtt_rahbar')
+        // til va adabiyot (adabiyot -> til ko'chirilishi uchun vaqtincha ruxsat)
+        (request.resource.data.topicId >= 55 && request.resource.data.topicId <= 62 && (request.resource.data.category == 'til' || request.resource.data.category == 'adabiyot')) ||
+        // mtt_rahbar (63-70)
+        (request.resource.data.topicId >= 63 && request.resource.data.topicId <= 70 && (request.resource.data.category == 'mtt_rahbar' || request.resource.data.category == 'adabiyot'))
       );
       allow delete: if isAdmin();
     }

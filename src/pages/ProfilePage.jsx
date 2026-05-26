@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield, Download } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
+import { SUBJECTS } from '../data/mockData';
 import { ToastContext } from '../context/ToastContext';
 import { db } from '../firebase';
 import { doc, getDoc, setDoc, collection, query, where, getDocs } from 'firebase/firestore';
@@ -24,7 +25,7 @@ const DAY_NAMES = ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'];
 
 export default function ProfilePage({ theme, toggleTheme }) {
   const { user, logout } = useAuth();
-  const { state } = useContext(AppContext);
+  const { state, updateState } = useContext(AppContext);
   const { showToast } = useContext(ToastContext);
   const { isAdmin } = useAdmin();
   const navigate = useNavigate();
@@ -348,6 +349,57 @@ export default function ProfilePage({ theme, toggleTheme }) {
             <div className="pp-stat-icon">🏆</div>
             <div className="pp-stat-val">{earnedBadges.length}</div>
             <div className="pp-stat-lbl">Yutuqlar</div>
+          </div>
+        </div>
+
+        {/* ═══ FAN TANLASH ═══ */}
+        <div className="pp-card">
+          <div className="pp-card-label">📚 Faol fan — slayd qilib tanlang</div>
+          <div style={{
+            display: 'flex',
+            gap: 8,
+            overflowX: 'auto',
+            paddingBottom: 6,
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            WebkitOverflowScrolling: 'touch',
+            scrollSnapType: 'x mandatory',
+          }}>
+            {SUBJECTS.map(subj => {
+              const Icon = subj.icon;
+              const isActive = state.activeCategory === subj.id;
+              return (
+                <button
+                  key={subj.id}
+                  onClick={() => updateState({ activeCategory: subj.id, topicId: -1 })}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: 6,
+                    padding: '12px 14px',
+                    borderRadius: 14,
+                    border: '1.5px solid',
+                    borderColor: isActive ? '#3B82F6' : 'var(--border)',
+                    background: isActive ? 'linear-gradient(135deg, #3B82F6, #8B5CF6)' : 'var(--bg3)',
+                    color: isActive ? '#fff' : 'var(--text2)',
+                    cursor: 'pointer',
+                    fontFamily: 'inherit',
+                    flexShrink: 0,
+                    scrollSnapAlign: 'start',
+                    transition: 'all 0.2s ease',
+                    boxShadow: isActive ? '0 4px 14px rgba(59,130,246,0.35)' : 'none',
+                    minWidth: 80,
+                  }}
+                >
+                  <Icon size={18} />
+                  <span style={{ fontSize: 11, fontWeight: 700, textAlign: 'center', lineHeight: 1.3 }}>{subj.name}</span>
+                </button>
+              );
+            })}
+          </div>
+          <div style={{ marginTop: 10, fontSize: 12, color: 'var(--text3)', textAlign: 'center' }}>
+            Hozir faol: <strong style={{ color: 'var(--blue)' }}>{SUBJECTS.find(s => s.id === state.activeCategory)?.name || '—'}</strong>
           </div>
         </div>
 

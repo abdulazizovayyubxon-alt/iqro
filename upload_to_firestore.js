@@ -10,6 +10,7 @@ import { q5_tibbiy_bilim } from './src/data/questions_5.js';
 import { q6_pedagogik_mahorat } from './src/data/questions_6.js';
 import { q7_tasviriy_sanat } from './src/data/questions_7.js';
 import qTarix from './src/data/questions_tarix.json';
+import qOnaTili from './src/data/questions_ona_tili.json';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDUlD2LaZegs0ifhNY2wLBDenB2oNX5sVU",
@@ -33,7 +34,8 @@ const allData = [
   { id: 5, data: q5_tibbiy_bilim, cat: 'chqbt' },
   { id: 6, data: q6_pedagogik_mahorat, cat: 'chqbt' },
   { id: 7, data: q7_tasviriy_sanat, cat: 'art' },
-  { id: 15, data: qTarix, cat: 'tarix' }
+  { id: 15, data: qTarix, cat: 'tarix' },
+  { id: 55, data: qOnaTili, cat: 'til' }
 ];
 
 function getCategoryFromTopicId(topicId) {

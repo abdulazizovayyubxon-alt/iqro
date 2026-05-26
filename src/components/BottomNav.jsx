@@ -2,14 +2,12 @@
  * BottomNav.jsx — Mobil qurilmalar uchun pastki navigatsiya paneli
  * Faqat kichik ekranlarda (< 768px) ko'rinadi
  */
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { AppContext } from '../context/AppContext';
-import { useAdmin } from '../hooks/useAdmin';
-import { TOPICS } from '../data/mockData';
 import {
-  PenTool, Brain, Trophy, GraduationCap, Users
+  PenTool, Brain, Trophy, GraduationCap, User
 } from 'lucide-react';
 
 const TABS = [
@@ -17,7 +15,7 @@ const TABS = [
   { id: 'exam',        path: '/exam',         icon: GraduationCap, label: 'Imtihon' },
   { id: 'review',      path: '/review',       icon: Brain,         label: 'Takror' },
   { id: 'leaderboard', path: '/leaderboard',  icon: Trophy,        label: 'Reyting' },
-  { id: 'referral',    path: '/referral',     icon: Users,         label: 'Taklif' },
+  { id: 'profile',     path: '/profile',      icon: User,          label: 'Profil' },
 ];
 
 export default function BottomNav() {
