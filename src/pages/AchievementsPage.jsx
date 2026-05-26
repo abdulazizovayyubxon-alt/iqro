@@ -59,36 +59,39 @@ const AchievementsPage = () => {
 
       {/* Level Header */}
       <div style={{
-        padding: '20px', marginBottom: 20,
-        background: `${levelInfo.color}10`,
-        border: `1.5px solid ${levelInfo.color}30`,
-        borderRadius: 18,
+        padding: '24px 20px', marginBottom: 20,
+        background: 'var(--glass-bg)',
+        backdropFilter: 'blur(20px)',
+        border: `1px solid var(--glass-border)`,
+        borderRadius: 24,
+        boxShadow: '0 8px 32px rgba(0,0,0,0.02)',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
             <div style={{
-              width: 56, height: 56, borderRadius: 14,
-              background: levelInfo.color,
+              width: 56, height: 56, borderRadius: 16,
+              background: `linear-gradient(135deg, ${levelInfo.color} 0%, #8B5CF6 100%)`,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: `0 4px 15px ${levelInfo.color}30`,
             }}>
-              <Trophy size={28} color="white" />
+              <Trophy size={26} color="white" />
             </div>
             <div>
-              <div style={{ fontSize: 20, fontWeight: 900, color: 'var(--text)' }}>
-                {levelInfo.name} <span style={{ color: levelInfo.color }}>Lv.{levelInfo.level}</span>
+              <div style={{ fontSize: 20, fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.5px' }}>
+                {levelInfo.name} <span style={{ color: levelInfo.color, fontWeight: 800 }}>Lv.{levelInfo.level}</span>
               </div>
-              <div style={{ fontSize: 13, color: 'var(--text3)', marginTop: 2 }}>
+              <div style={{ fontSize: 13, color: 'var(--text3)', marginTop: 2, fontWeight: 500 }}>
                 ⚡ {totalXP} XP · {earnedBadges.length}/{BADGES.length} badge
               </div>
             </div>
           </div>
           <div style={{ flex: 1, minWidth: 180 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, fontSize: 12, color: 'var(--text3)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, fontSize: 12, color: 'var(--text3)', fontWeight: 500 }}>
               <span>Keyingi daraja</span>
               <span style={{ fontWeight: 700, color: levelInfo.color }}>{totalXP}/{nextLevelXP} XP</span>
             </div>
-            <div style={{ height: 8, background: 'var(--border)', borderRadius: 4, overflow: 'hidden' }}>
-              <div style={{ width: `${levelPct}%`, height: '100%', background: levelInfo.color, borderRadius: 4, transition: 'width 1s ease' }} />
+            <div style={{ height: 8, background: 'var(--bg3)', borderRadius: 4, overflow: 'hidden', border: '1px solid var(--glass-border)' }}>
+              <div style={{ width: `${levelPct}%`, height: '100%', background: `linear-gradient(90deg, ${levelInfo.color}, #8B5CF6)`, borderRadius: 4, transition: 'width 1s ease' }} />
             </div>
           </div>
         </div>
@@ -126,18 +129,20 @@ const AchievementsPage = () => {
         return (
           <div className="glass-panel" style={{
             padding: '20px 24px', marginBottom: 24,
-            border: dg.completed ? '1.5px solid var(--green)' : '0.5px solid var(--border)',
-            background: dg.completed ? 'rgba(16,185,129,0.05)' : 'var(--bg2)',
+            border: dg.completed ? '1.5px solid var(--green)' : '1px solid var(--glass-border)',
+            background: dg.completed ? 'rgba(16,185,129,0.04)' : 'var(--glass-bg)',
+            backdropFilter: 'blur(20px)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.02)',
             transition: 'all 0.3s'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12, flexWrap: 'wrap', gap: 8 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 {dg.completed ? <Award size={24} color="var(--green)" /> : <Target size={24} color="var(--accent)" />}
                 <div>
-                  <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--text)' }}>
+                  <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--text)', letterSpacing: '-0.3px' }}>
                     {dg.completed ? 'Bugungi maqsad bajarildi!' : 'Bugungi maqsad'}
                   </div>
-                  <div style={{ fontSize: 12, color: 'var(--text3)' }}>
+                  <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 500 }}>
                     {dg.answered} / {dg.target} savol yechildi
                   </div>
                 </div>
@@ -145,15 +150,16 @@ const AchievementsPage = () => {
               {ds > 0 && (
                 <div style={{
                   display: 'flex', alignItems: 'center', gap: 6,
-                  background: 'linear-gradient(135deg, #f59e0b, #ef4444)',
-                  color: 'white', padding: '5px 14px', borderRadius: 20,
-                  fontWeight: 700, fontSize: 13
+                  background: 'linear-gradient(135deg, #FFB300, #F4511E)',
+                  color: 'white', padding: '6px 14px', borderRadius: 20,
+                  fontWeight: 800, fontSize: 12,
+                  boxShadow: '0 4px 10px rgba(244, 81, 30, 0.2)'
                 }}>
                   <Flame size={14} /> {ds} kun streak
                 </div>
               )}
             </div>
-            <div style={{ height: 10, borderRadius: 5, background: 'var(--bg3)', overflow: 'hidden' }}>
+            <div style={{ height: 10, borderRadius: 5, background: 'var(--bg3)', overflow: 'hidden', border: '1px solid var(--glass-border)' }}>
               <div style={{
                 width: `${pct}%`, height: '100%', borderRadius: 5,
                 background: dg.completed
@@ -162,7 +168,7 @@ const AchievementsPage = () => {
                 transition: 'width 0.5s ease'
               }} />
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6, fontSize: 11, color: 'var(--text3)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6, fontSize: 11, color: 'var(--text3)', fontWeight: 500 }}>
               <span>{pct}% bajarildi</span>
               <span>{Math.max(0, dg.target - dg.answered)} ta qoldi</span>
             </div>
@@ -287,27 +293,35 @@ const AchievementsPage = () => {
             <div className="section-header" style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Trophy size={20} style={{ color: 'var(--amber)' }} /> Kolleksiya
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: 10 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: 12 }}>
               {BADGES.map((badge) => {
                 const earned = earnedBadges.some(b => b.id === badge.id);
                 return (
-                  <div
+                  <motion.div
                     key={badge.id}
+                    whileHover={{ y: -2, scale: 1.02 }}
                     style={{
-                      padding: '16px 12px', borderRadius: 16, textAlign: 'center',
-                      border: earned ? `1.5px solid ${badge.color}40` : '1.5px solid var(--border)',
-                      background: earned ? `${badge.color}0F` : 'var(--bg3)',
-                      opacity: earned ? 1 : 0.55,
-                      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
+                      padding: '20px 12px 16px', borderRadius: 20, textAlign: 'center',
+                      border: earned ? `1px solid ${badge.color}40` : '1px solid var(--glass-border)',
+                      background: earned ? `${badge.color}08` : 'var(--glass-bg)',
+                      backdropFilter: 'blur(10px)',
+                      opacity: earned ? 1 : 0.45,
+                      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
+                      boxShadow: earned ? `0 4px 20px ${badge.color}0F` : 'none',
                     }}
                   >
-                    <div style={{ fontSize: 36, filter: earned ? 'none' : 'grayscale(1)' }}>
+                    <div style={{
+                      fontSize: 36,
+                      filter: earned ? 'none' : 'grayscale(1)',
+                      marginBottom: 4,
+                      transform: earned ? 'scale(1)' : 'scale(0.95)'
+                    }}>
                       {earned ? badge.icon : '🔒'}
                     </div>
-                    <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text)', lineHeight: 1.3 }}>{badge.name}</div>
-                    <div style={{ fontSize: 11, color: 'var(--text3)', lineHeight: 1.4 }}>{badge.desc}</div>
-                    <div style={{ fontSize: 12, fontWeight: 800, color: earned ? badge.color : 'var(--text3)' }}>+{badge.xp} XP</div>
-                  </div>
+                    <div style={{ fontSize: 13, fontWeight: 800, color: 'var(--text)', lineHeight: 1.3, letterSpacing: '-0.3px' }}>{badge.name}</div>
+                    <div style={{ fontSize: 11, color: 'var(--text3)', lineHeight: 1.4, fontWeight: 500 }}>{badge.desc}</div>
+                    <div style={{ fontSize: 12, fontWeight: 800, color: earned ? badge.color : 'var(--text3)', background: earned ? `${badge.color}15` : 'var(--bg3)', padding: '2px 8px', borderRadius: 8, marginTop: 4 }}>+{badge.xp} XP</div>
+                  </motion.div>
                 );
               })}
             </div>
