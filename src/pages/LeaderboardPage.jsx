@@ -112,19 +112,35 @@ const LeaderboardPage = () => {
   const top3 = leaders.slice(0, 3);
   const rest = leaders.slice(3);
 
-  const Avatar = ({ entry, size = 44 }) => (
-    <div style={{
-      width: size, height: size, borderRadius: '50%', flexShrink: 0,
-      background: 'var(--bg3)', overflow: 'hidden',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      border: entry.rank <= 3 ? `2px solid ${entry.rank === 1 ? '#F59E0B' : entry.rank === 2 ? '#9CA3AF' : '#B45309'}` : 'none',
-    }}>
-      {entry.photoURL
-        ? <img src={entry.photoURL} alt={entry.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-        : <span style={{ fontSize: size * 0.38, fontWeight: 800, color: 'var(--text3)' }}>{(entry.name || '?').charAt(0).toUpperCase()}</span>
-      }
-    </div>
-  );
+  const Avatar = ({ entry, size = 44 }) => {
+    const isPodium = entry.rank <= 3;
+    const borderColor = entry.rank === 1 ? '#F59E0B' : entry.rank === 2 ? '#9CA3AF' : '#B45309';
+    return (
+      <div style={{
+        width: size + (isPodium ? 8 : 0),
+        height: size + (isPodium ? 8 : 0),
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifycontent: 'center',
+        border: isPodium ? `2px solid ${borderColor}` : 'none',
+        padding: isPodium ? 2 : 0,
+        flexShrink: 0,
+      }}>
+        <div style={{
+          width: size, height: size, borderRadius: '50%', flexShrink: 0,
+          background: 'var(--bg3)', overflow: 'hidden',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          border: isPodium ? `1.5px solid rgba(255,255,255,0.8)` : 'none',
+        }}>
+          {entry.photoURL
+            ? <img src={entry.photoURL} alt={entry.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            : <span style={{ fontSize: size * 0.38, fontWeight: 800, color: 'var(--text3)' }}>{(entry.name || '?').charAt(0).toUpperCase()}</span>
+          }
+        </div>
+      </div>
+    );
+  };
 
   const RankIcon = ({ rank }) => {
     if (rank === 1) return <Crown size={20} style={{ color: '#F59E0B' }} />;
@@ -138,10 +154,19 @@ const LeaderboardPage = () => {
       id={`lb-${entry.id}`}
       style={{
         display: 'flex', alignItems: 'center', gap: 14,
-        padding: '12px 16px', borderRadius: 14,
-        border: `1.5px solid ${entry.isMe ? PRIMARY : 'var(--border)'}`,
-        background: entry.isMe ? 'rgba(41, 182, 246, 0.12)' : pinned ? 'rgba(245, 158, 11, 0.12)' : 'var(--bg2)',
-        boxShadow: entry.isMe ? `0 0 0 3px rgba(41, 182, 246, 0.2)` : 'none',
+        padding: '14px 16px', borderRadius: 16,
+        border: entry.isMe
+          ? '1.5px solid #29B6F6'
+          : pinned
+            ? '1.5px solid #F59E0B'
+            : '1px solid var(--glass-border)',
+        background: entry.isMe
+          ? 'rgba(41, 182, 246, 0.08)'
+          : pinned
+            ? 'rgba(245, 158, 11, 0.08)'
+            : 'var(--glass-bg)',
+        backdropFilter: 'blur(10px)',
+        boxShadow: entry.isMe ? '0 4px 15px rgba(41, 182, 246, 0.1)' : '0 2px 8px rgba(0,0,0,0.01)',
         position: 'relative', overflow: 'hidden',
       }}
     >
@@ -201,16 +226,16 @@ const LeaderboardPage = () => {
           <div style={s.podiumItem}>
             <Avatar entry={top3[1]} size={52} />
             <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text2)', marginTop: 6, textAlign: 'center', maxWidth: 80, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{top3[1].name}</div>
-            <div style={{ ...s.podiumBlock, height: 60, background: '#9CA3AF' }}>
+            <div style={{ ...s.podiumBlock, height: 60, background: 'linear-gradient(135deg, #E2E8F0 0%, #9CA3AF 100%)', border: '1px solid rgba(255,255,255,0.3)', boxShadow: '0 4px 15px rgba(156, 163, 175, 0.2)' }}>
               <span style={{ fontSize: 16, fontWeight: 900, color: '#fff' }}>2</span>
             </div>
           </div>
           {/* 1-o'rin */}
           <div style={{ ...s.podiumItem, marginTop: -20 }}>
-            <Crown size={28} style={{ color: '#F59E0B', marginBottom: 4 }} />
+            <Crown size={28} style={{ color: '#F59E0B', marginBottom: 4, filter: 'drop-shadow(0 2px 4px rgba(245,158,11,0.3))' }} />
             <Avatar entry={top3[0]} size={64} />
             <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text2)', marginTop: 6, textAlign: 'center', maxWidth: 90, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{top3[0].name}</div>
-            <div style={{ ...s.podiumBlock, height: 80, background: '#F59E0B' }}>
+            <div style={{ ...s.podiumBlock, height: 80, background: 'linear-gradient(135deg, #FDE68A 0%, #F59E0B 100%)', border: '1px solid rgba(255,255,255,0.4)', boxShadow: '0 8px 20px rgba(245, 158, 11, 0.25)' }}>
               <span style={{ fontSize: 20, fontWeight: 900, color: '#fff' }}>1</span>
             </div>
           </div>
@@ -218,7 +243,7 @@ const LeaderboardPage = () => {
           <div style={s.podiumItem}>
             <Avatar entry={top3[2]} size={52} />
             <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text2)', marginTop: 6, textAlign: 'center', maxWidth: 80, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{top3[2].name}</div>
-            <div style={{ ...s.podiumBlock, height: 44, background: '#B45309' }}>
+            <div style={{ ...s.podiumBlock, height: 44, background: 'linear-gradient(135deg, #FDBA74 0%, #B45309 100%)', border: '1px solid rgba(255,255,255,0.3)', boxShadow: '0 4px 12px rgba(180, 83, 9, 0.2)' }}>
               <span style={{ fontSize: 16, fontWeight: 900, color: '#fff' }}>3</span>
             </div>
           </div>
