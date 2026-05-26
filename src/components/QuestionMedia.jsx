@@ -353,8 +353,8 @@ export default function QuestionMedia({ question, style }) {
           style={{
             maxWidth: '100%',
             maxHeight: '280px',
-            borderRadius: '12px',
-            border: '1px solid var(--border)',
+            borderRadius: '16px',
+            border: '1px solid var(--glass-border)',
             objectFit: 'contain',
           }}
         />
@@ -368,9 +368,9 @@ export default function QuestionMedia({ question, style }) {
       <div style={{
         ...containerStyle,
         padding: '16px',
-        borderRadius: '12px',
-        background: 'var(--bg2)',
-        border: '1px dashed var(--border)',
+        borderRadius: '16px',
+        background: 'var(--glass-bg)',
+        border: '1px dashed var(--glass-border)',
         color: 'var(--text2)',
         fontSize: '13px',
       }}>

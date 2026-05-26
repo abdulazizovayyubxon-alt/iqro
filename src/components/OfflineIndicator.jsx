@@ -16,75 +16,74 @@ import { WifiOff, Wifi, RefreshCw, X } from 'lucide-react';
 const baseCard = {
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'center',
   gap: '10px',
-  padding: '10px 16px',
-  borderRadius: '14px',
+  padding: '10px 20px',
+  borderRadius: '99px',
   fontSize: '13px',
   fontWeight: 600,
-  backdropFilter: 'blur(16px)',
-  WebkitBackdropFilter: 'blur(16px)',
-  fontFamily: "'IBM Plex Mono', 'Roboto Mono', monospace",
-  boxShadow: '0 4px 24px rgba(0,0,0,0.18)',
-  animation: 'oi_slideIn 0.28s cubic-bezier(0.34,1.56,0.64,1)',
+  backdropFilter: 'blur(20px)',
+  WebkitBackdropFilter: 'blur(20px)',
+  boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+  animation: 'oi_slideIn 0.35s cubic-bezier(0.34,1.56,0.64,1)',
   pointerEvents: 'auto',
+  maxWidth: '90vw',
+  textAlign: 'center',
 };
 
 const STYLES = {
-  // Ekran pastki o'ng burchagi — barcha bannerlar shu yerda
   wrapper: {
     position: 'fixed',
-    bottom: '24px',
-    right: '24px',
+    top: '20px',
+    left: '50%',
+    transform: 'translateX(-50%)',
     zIndex: 9999,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     gap: '10px',
     pointerEvents: 'none',
+    width: '100%',
   },
 
-  // Offline — qizil
   offline: {
     ...baseCard,
-    background: 'rgba(239, 68, 68, 0.92)',
+    background: 'rgba(239, 68, 68, 0.95)',
     color: '#fff',
-    border: '1px solid rgba(255,255,255,0.15)',
+    border: '1px solid rgba(255,255,255,0.2)',
   },
 
-  // Qayta ulandi — yashil
   online: {
     ...baseCard,
-    background: 'rgba(34, 197, 94, 0.92)',
+    background: 'rgba(16, 185, 129, 0.95)',
     color: '#fff',
-    border: '1px solid rgba(255,255,255,0.15)',
+    border: '1px solid rgba(255,255,255,0.2)',
   },
 
-  // Yangi versiya — binafsha
   update: {
     ...baseCard,
-    background: 'rgba(99, 102, 241, 0.95)',
+    background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)',
     color: '#fff',
-    border: '1px solid rgba(255,255,255,0.15)',
-    maxWidth: '290px',
-    alignItems: 'flex-start',
-    flexWrap: 'wrap',
-    gap: '8px',
+    border: '1px solid rgba(255,255,255,0.25)',
+    padding: '12px 24px',
+    flexWrap: 'nowrap',
+    gap: '12px',
   },
 
   updateBtn: {
     display: 'flex',
     alignItems: 'center',
-    gap: '5px',
-    padding: '5px 12px',
-    borderRadius: '8px',
+    gap: '4px',
+    padding: '6px 14px',
+    borderRadius: '99px',
     background: '#fff',
     color: '#6366F1',
     border: 'none',
     fontSize: '12px',
-    fontWeight: 700,
+    fontWeight: 800,
     cursor: 'pointer',
     flexShrink: 0,
-    transition: 'transform 0.15s, opacity 0.15s',
+    transition: 'all 0.2s',
   },
 
   dismissBtn: {
@@ -95,22 +94,21 @@ const STYLES = {
     border: 'none',
     color: 'rgba(255,255,255,0.75)',
     cursor: 'pointer',
-    padding: '2px',
-    borderRadius: '6px',
+    padding: '4px',
+    borderRadius: '50%',
     flexShrink: 0,
-    transition: 'color 0.15s',
+    transition: 'all 0.15s',
     pointerEvents: 'auto',
-    marginLeft: 'auto',
   },
 
-  // Jonli nuqta — offline paytda miltillaydi
   dot: {
     width: '8px',
     height: '8px',
     borderRadius: '50%',
-    background: '#fff',
+    background: '#EF4444',
+    border: '2px solid #fff',
     flexShrink: 0,
-    animation: 'oi_pulse 1.6s ease-in-out infinite',
+    animation: 'oi_pulse 1s ease-in-out infinite',
   },
 };
 
@@ -118,16 +116,16 @@ const STYLES = {
 
 const CSS = `
 @keyframes oi_slideIn {
-  from { opacity: 0; transform: translateX(24px) scale(0.95); }
-  to   { opacity: 1; transform: translateX(0)    scale(1);    }
+  from { opacity: 0; transform: translateY(-40px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
 }
 @keyframes oi_slideOut {
-  from { opacity: 1; transform: translateX(0)    scale(1);    }
-  to   { opacity: 0; transform: translateX(24px) scale(0.95); }
+  from { opacity: 1; transform: translateY(0)    scale(1);    }
+  to   { opacity: 0; transform: translateY(-40px) scale(0.95); }
 }
 @keyframes oi_pulse {
-  0%, 100% { opacity: 1;   transform: scale(1);    }
-  50%       { opacity: 0.4; transform: scale(0.85); }
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.3); opacity: 0.5; }
 }
 `;
 
@@ -225,19 +223,8 @@ export default function OfflineIndicator() {
         {showUpdate && (
           <div style={STYLES.update}>
             <span style={{ flex: 1, lineHeight: 1.5 }}>
-              🆕 Yangi versiya tayyor!
+              Yangi versiya parvozga tayyor! 🚀 Tizimni 1 soniyada yangilang.
             </span>
-
-            {/* Yopish tugmasi */}
-            <button
-              style={STYLES.dismissBtn}
-              onClick={() => setShowUpdate(false)}
-              title="Keyinroq"
-              onMouseOver={e => e.currentTarget.style.color = '#fff'}
-              onMouseOut={e  => e.currentTarget.style.color = 'rgba(255,255,255,0.75)'}
-            >
-              <X size={14} />
-            </button>
 
             {/* Yangilash tugmasi */}
             <button

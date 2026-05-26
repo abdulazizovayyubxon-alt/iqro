@@ -122,7 +122,10 @@ const Sidebar = () => {
             onClick={() => navigate('/referral')}
           >
             <span className="nav-icon"><Users size={20} /></span>
-            <span className="nav-label">Do'stlarni taklif qilish</span>
+            <span className="nav-label" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              Do'stlarni taklif qilish
+              <span style={{ animation: 'pulseGift 1.5s infinite', display: 'inline-block' }}>🎁</span>
+            </span>
           </div>
 
           {/* Admin link — faqat admin uchun */}

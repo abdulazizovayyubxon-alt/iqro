@@ -72,12 +72,13 @@ export default function FreeMonthBanner({ onPayClick }) {
         exit={{ opacity: 0, y: -10 }}
         style={{
           display: 'flex', alignItems: 'center', gap: 10,
-          background: bg, border: `1.5px solid ${color}40`,
-          borderRadius: 12, padding: '10px 14px', marginBottom: 12,
+          background: bg, border: `1px solid ${color}30`,
+          borderRadius: 16, padding: '12px 16px', marginBottom: 16,
+          boxShadow: '0 4px 15px rgba(0,0,0,0.01)',
         }}
       >
         <Clock size={16} style={{ color, flexShrink: 0 }} />
-        <div style={{ flex: 1, fontSize: 13, color: 'var(--text)' }}>
+        <div style={{ flex: 1, fontSize: 13, color: 'var(--text)', fontWeight: 500 }}>
           {isExpired ? (
             <strong style={{ color }}>
               {isReferral ? 'Bepul oyingiz tugadi.' : '7 kunlik sinov muddatingiz tugadi.'} Davom etish uchun to\'lang.
@@ -89,14 +90,19 @@ export default function FreeMonthBanner({ onPayClick }) {
             </>
           )}
         </div>
-        <button onClick={onPayClick} style={{
-          background: color, color: '#fff', border: 'none',
-          borderRadius: 8, padding: '5px 12px', fontSize: 12,
-          fontWeight: 800, cursor: 'pointer', flexShrink: 0,
-          display: 'flex', alignItems: 'center', gap: 4
-        }}>
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={onPayClick}
+          style={{
+            background: color, color: '#fff', border: 'none',
+            borderRadius: 10, padding: '6px 14px', fontSize: 12,
+            fontWeight: 800, cursor: 'pointer', flexShrink: 0,
+            display: 'flex', alignItems: 'center', gap: 4
+          }}
+        >
           <Zap size={12} /> To'lash
-        </button>
+        </motion.button>
         <button onClick={() => setDismissed(true)} style={{
           background: 'none', border: 'none', cursor: 'pointer',
           color: 'var(--text3)', padding: 4, flexShrink: 0

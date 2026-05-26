@@ -81,11 +81,14 @@ export default function BottomNav() {
 
 const styles = {
   nav: {
-    // CSS media query orqali mobilda ko'rinadi, bu yerda display yo'q
     position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1000,
-    background: 'var(--bg2)', borderTop: '1px solid var(--border)',
+    background: 'var(--glass-bg)',
+    backdropFilter: 'blur(20px)',
+    WebkitBackdropFilter: 'blur(20px)',
+    borderTop: '1px solid var(--glass-border)',
     padding: '8px 0 calc(8px + env(safe-area-inset-bottom))',
     gridTemplateColumns: 'repeat(5, 1fr)',
+    boxShadow: '0 -4px 20px rgba(0,0,0,0.03)',
   },
   tab: {
     display: 'flex', flexDirection: 'column', alignItems: 'center',
@@ -97,8 +100,9 @@ const styles = {
     position: 'absolute',
     top: -9, left: -9,
     width: 40, height: 40, borderRadius: 12,
-    background: 'var(--accent)',
+    background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)',
     zIndex: 0,
+    boxShadow: '0 4px 12px rgba(139, 92, 246, 0.25)',
   },
   badge: {
     position: 'absolute', top: -6, right: -8,

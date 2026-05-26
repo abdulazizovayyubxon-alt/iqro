@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "uz.iqro.app",
+      "sha256_cert_fingerprints": [
+        "14:6D:E9:83:C5:E9:9D:05:07:3E:CF:AA:D3:FF:6F:A9:BF:4E:5A:F3:1D:64:89:D2:C3:A8:1A:18:18:2C:4D:2A"
+      ]
+    }
+  }
+]

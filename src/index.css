@@ -1507,3 +1507,9 @@ input:focus, textarea:focus, select:focus {
   border-color: var(--accent) !important;
   box-shadow: 0 0 0 3px rgba(41, 182, 246, 0.15) !important;
 }
+
+@keyframes pulseGift {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.6)); }
+  100% { transform: scale(1); }
+}
