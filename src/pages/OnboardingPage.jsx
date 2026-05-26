@@ -56,19 +56,23 @@ function ListStep({ title, subtitle, items, selected, onSelect }) {
         {items.map(item => {
           const isActive = selected === item.id;
           return (
-            <button
+            <motion.button
               key={item.id}
               style={{
                 ...ss.listItem,
-                border: isActive ? `2px solid ${PRIMARY}` : '1.5px solid var(--border)',
+                border: isActive ? `2.5px solid ${PRIMARY}` : '1.5px solid var(--border)',
                 background: isActive ? 'var(--blue-bg)' : 'var(--bg2)',
+                boxShadow: isActive ? '0 8px 24px rgba(41, 182, 246, 0.12)' : '0 2px 8px rgba(0,0,0,0.01)',
               }}
               onClick={() => onSelect(item.id)}
+              whileHover={{ y: -2, boxShadow: '0 8px 20px rgba(0,0,0,0.03)' }}
+              whileTap={{ scale: 0.98 }}
             >
               <div style={{
                 ...ss.badge,
                 background: isActive ? PRIMARY : 'var(--bg3)',
                 color: isActive ? '#fff' : 'var(--text3)',
+                boxShadow: isActive ? '0 4px 12px rgba(41, 182, 246, 0.2)' : 'none',
               }}>
                 {item.badge}
               </div>
@@ -77,7 +81,7 @@ function ListStep({ title, subtitle, items, selected, onSelect }) {
                 <span style={{ fontSize: 13, color: 'var(--text3)', marginTop: 2 }}>{item.desc}</span>
               </div>
               {isActive && <CheckCircle size={20} style={{ color: PRIMARY, flexShrink: 0 }} />}
-            </button>
+            </motion.button>
           );
         })}
       </div>
@@ -297,9 +301,9 @@ export default function OnboardingPage({ onComplete }) {
         {step < 3 && (
           <div style={ss.header}>
             {step > 0 ? (
-              <button style={ss.backBtn} onClick={goBack}>
+              <motion.button whileTap={{ scale: 0.9 }} style={ss.backBtn} onClick={goBack}>
                 <ArrowLeft size={22} />
-              </button>
+              </motion.button>
             ) : <div style={{ width: 36 }} />}
             <span style={{ fontSize: 13, color: '#94A3B8', fontWeight: 600 }}>
               {step + 1} / {TOTAL_STEPS}
@@ -342,12 +346,13 @@ export default function OnboardingPage({ onComplete }) {
         {/* Footer */}
         {step === 4 && (
           <div style={ss.footer}>
-            <button
+            <motion.button
               style={ss.primaryBtn}
               onClick={onComplete}
+              whileTap={{ scale: 0.98 }}
             >
               Platformani boshlash 🚀
-            </button>
+            </motion.button>
           </div>
         )}
       </div>
@@ -359,30 +364,33 @@ export default function OnboardingPage({ onComplete }) {
 const ss = {
   pageOuter: {
     minHeight: IS_MOBILE ? '100dvh' : '100vh',
-    background: IS_MOBILE ? 'var(--bg)' : 'linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%)',
+    background: IS_MOBILE ? 'var(--bg)' : 'radial-gradient(circle at top left, var(--bg) 0%, var(--bg3) 100%)',
     display: IS_MOBILE ? 'block' : 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     padding: IS_MOBILE ? 0 : '40px 20px',
-    fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif",
+    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
     color: 'var(--text)',
   },
   page: {
     width: '100%',
     maxWidth: 460,
-    minHeight: IS_MOBILE ? '100vh' : 'auto',
-    background: 'var(--bg2)',
+    minHeight: IS_MOBILE ? '100dvh' : 'auto',
+    background: IS_MOBILE ? 'var(--bg2)' : 'var(--glass-bg)',
+    backdropFilter: IS_MOBILE ? 'none' : 'blur(20px)',
+    WebkitBackdropFilter: IS_MOBILE ? 'none' : 'blur(20px)',
+    border: IS_MOBILE ? 'none' : '1px solid var(--glass-border)',
     borderRadius: IS_MOBILE ? 0 : 24,
-    boxShadow: IS_MOBILE ? 'none' : '0 20px 60px rgba(0,0,0,0.05)',
+    boxShadow: IS_MOBILE ? 'none' : '0 24px 80px rgba(0,0,0,0.06)',
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
   },
   progressTrack: { height: 4, background: 'var(--border)', flexShrink: 0 },
-  progressFill: { height: '100%', background: PRIMARY, borderRadius: '0 2px 2px 0' },
+  progressFill: { height: '100%', background: 'linear-gradient(90deg, #29B6F6, #8B5CF6)', borderRadius: '0 2px 2px 0' },
   header: {
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-    padding: '14px 20px 0',
+    padding: '16px 20px 0',
   },
   backBtn: {
     background: 'none', border: 'none', cursor: 'pointer',
@@ -395,9 +403,10 @@ const ss = {
   list: { display: 'flex', flexDirection: 'column', gap: 10, marginTop: 8 },
   listItem: {
     display: 'flex', alignItems: 'center', gap: 14,
-    padding: '14px 16px', borderRadius: 14,
+    padding: '16px 18px', borderRadius: 18,
     cursor: 'pointer', textAlign: 'left', width: '100%',
-    fontFamily: 'inherit', transition: 'all 0.18s',
+    fontFamily: 'inherit', transition: 'all 0.2s ease',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.01)',
   },
   badge: {
     width: 40, height: 40, borderRadius: 12, flexShrink: 0,
@@ -407,27 +416,29 @@ const ss = {
   listItemText: { flex: 1, display: 'flex', flexDirection: 'column' },
   footer: {
     padding: '12px 20px calc(16px + env(safe-area-inset-bottom))',
-    borderTop: '1px solid var(--border)', background: 'var(--bg2)',
+    borderTop: '1px solid var(--border)', background: IS_MOBILE ? 'var(--bg2)' : 'transparent',
   },
   primaryBtn: {
-    width: '100%', padding: '16px', borderRadius: 14,
-    background: PRIMARY, color: '#fff',
+    width: '100%', padding: '16px', borderRadius: 16,
+    background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff',
     border: 'none', fontWeight: 700, fontSize: 16,
-    cursor: 'pointer', fontFamily: 'inherit', transition: 'opacity 0.2s',
+    cursor: 'pointer', fontFamily: 'inherit', transition: 'all 0.2s',
+    boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)',
   },
   loaderCircle: {
-    width: 100, height: 100, borderRadius: '50%',
+    width: 90, height: 90, borderRadius: '50%',
     border: `3px solid ${PRIMARY}20`,
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     margin: '0 auto',
     boxShadow: `0 0 0 12px ${PRIMARY}10`,
-    animation: 'pulse 2s ease infinite',
+    animation: 'skeletonPulse 2.5s ease infinite',
   },
   loaderInner: {
-    width: 64, height: 64, borderRadius: '50%',
-    background: PRIMARY,
+    width: 60, height: 60, borderRadius: '50%',
+    background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     color: '#fff',
+    boxShadow: '0 4px 12px rgba(139, 92, 246, 0.2)',
   },
   spinnerSmall: {
     width: 20, height: 20, borderRadius: '50%',
