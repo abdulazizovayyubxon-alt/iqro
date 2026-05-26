@@ -747,28 +747,28 @@ const AdminPage = () => {
       </div>
 
       <div className="admin-tabs">
-        <button className={`admin-tab ${tab === 'objections' ? 'active' : ''}`} onClick={() => setTab('objections')}>
+        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'objections' ? 'active' : ''}`} onClick={() => setTab('objections')}>
           <MessageCircle size={15} /> E'tirozlar
           {unsolvedCount > 0 && <span className="admin-tab-badge">{unsolvedCount}</span>}
-        </button>
-        <button className={`admin-tab ${tab === 'questions' ? 'active' : ''}`} onClick={() => setTab('questions')}>
+        </motion.button>
+        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'questions' ? 'active' : ''}`} onClick={() => setTab('questions')}>
           <FileText size={15} /> Savollar
-        </button>
-        <button className={`admin-tab ${tab === 'users' ? 'active' : ''}`} onClick={() => setTab('users')}>
+        </motion.button>
+        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'users' ? 'active' : ''}`} onClick={() => setTab('users')}>
           <Users size={15} /> Foydalanuvchilar
-        </button>
-        <button className={`admin-tab ${tab === 'stats' ? 'active' : ''}`} onClick={() => setTab('stats')}>
+        </motion.button>
+        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'stats' ? 'active' : ''}`} onClick={() => setTab('stats')}>
           <BarChart3 size={15} /> Statistika
-        </button>
-        <button className={`admin-tab ${tab === 'tariffs' ? 'active' : ''}`} onClick={() => setTab('tariffs')}>
+        </motion.button>
+        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'tariffs' ? 'active' : ''}`} onClick={() => setTab('tariffs')}>
           <Zap size={15} /> Tariflar
-        </button>
-        <button className={`admin-tab ${tab === 'notifications' ? 'active' : ''}`} onClick={() => setTab('notifications')}>
+        </motion.button>
+        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'notifications' ? 'active' : ''}`} onClick={() => setTab('notifications')}>
           <Bell size={15} /> Xabarlar
-        </button>
-        <button className={`admin-tab ${tab === 'referrals' ? 'active' : ''}`} onClick={() => setTab('referrals')}>
+        </motion.button>
+        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'referrals' ? 'active' : ''}`} onClick={() => setTab('referrals')}>
           <Users size={15} /> Referral
-        </button>
+        </motion.button>
       </div>
 
       {tab === 'objections' && (
@@ -888,18 +888,18 @@ const AdminPage = () => {
           <div className="admin-section-title"><FileText size={18} style={{ color: 'var(--blue)' }} /> Savollar Bazasi ({questions.length})</div>
           
           <div className="admin-action-bar">
-            <button className="btn btn-outline" style={{ color: 'var(--blue)', borderColor: 'var(--blue)' }} onClick={handleSyncAllQuestions} disabled={isSyncing}>
+            <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline" style={{ color: 'var(--blue)', borderColor: 'var(--blue)' }} onClick={handleSyncAllQuestions} disabled={isSyncing}>
               <Zap size={14} /> {isSyncing ? 'Sinxronlanmoqda...' : 'Sinxronlash'}
-            </button>
-            <button className="btn btn-outline" style={{ color: 'var(--amber)', borderColor: 'var(--amber)' }} onClick={handleFixAndShuffleAnswers} disabled={isFixing}>
+            </motion.button>
+            <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline" style={{ color: 'var(--amber)', borderColor: 'var(--amber)' }} onClick={handleFixAndShuffleAnswers} disabled={isFixing}>
               <RefreshCw size={14} className={isFixing ? "spin-animation" : ""} /> {isFixing ? 'Tuzatilmoqda...' : 'Aralashtirish & Tuzatish (Ona tili va Tarix)'}
-            </button>
-            <button className="btn btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={handleCleanDuplicates}>
+            </motion.button>
+            <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={handleCleanDuplicates}>
               <Trash2 size={14} /> Dublikatlar
-            </button>
-            <button className="btn btn-primary" onClick={() => { setIsAdding(true); setEditingQ(null); setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' }); }}>
+            </motion.button>
+            <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-primary" onClick={() => { setIsAdding(true); setEditingQ(null); setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' }); }}>
               <Plus size={14} /> Yangi savol
-            </button>
+            </motion.button>
           </div>
 
           {/* Glassmorphic Filter and Search Bar */}
@@ -966,19 +966,23 @@ const AdminPage = () => {
           </div>
 
           {/* Drag and Drop JSON Upload Area */}
-          <div
+          <motion.div
+            whileHover={{ scale: 1.005 }}
+            whileTap={{ scale: 0.995 }}
             onDragOver={(e) => { e.preventDefault(); setIsDraggingFile(true); }}
             onDragLeave={() => setIsDraggingFile(false)}
             onDrop={handleFileDrop}
             style={{
-              border: `2px dashed ${isDraggingFile ? 'var(--blue)' : 'var(--border)'}`,
-              borderRadius: '16px',
-              padding: '24px',
+              border: `2.5px dashed ${isDraggingFile ? 'var(--blue)' : 'var(--glass-border)'}`,
+              borderRadius: '20px',
+              padding: '32px 24px',
               textAlign: 'center',
-              background: isDraggingFile ? 'var(--blue-bg)' : 'var(--bg2)',
-              transition: 'all 0.2s ease',
+              background: isDraggingFile ? 'var(--blue-bg)' : 'var(--glass-bg)',
+              backdropFilter: 'blur(10px)',
+              transition: 'all 0.25s ease',
               cursor: 'pointer',
-              position: 'relative'
+              position: 'relative',
+              boxShadow: isDraggingFile ? '0 8px 30px rgba(59, 130, 246, 0.15)' : 'none',
             }}
             onClick={() => document.getElementById('json-file-input').click()}
           >
@@ -1005,7 +1009,7 @@ const AdminPage = () => {
                 </div>
               </div>
             )}
-          </div>
+          </motion.div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {filteredQuestions.slice(0, 50).map((q) => (
