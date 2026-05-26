@@ -1,8 +1,9 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, useContext, Suspense } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
+import { AppContext } from './context/AppContext';
 import { AnimatePresence } from 'framer-motion';
-import { RefreshCw } from 'lucide-react';
+import { RefreshCw, Shield, BookOpen, Clock, Palette } from 'lucide-react';
 import { trackPageView, startPageTimer } from './services/analytics';
 import { setUser, clearUser } from './services/sentry';
 import { doc, getDoc } from 'firebase/firestore';
@@ -34,40 +35,73 @@ const ReferralPage = React.lazy(() => import('./pages/ReferralPage'));
 const ProfilePage = React.lazy(() => import('./pages/ProfilePage'));
 
 // ── Skeleton Loader — sahifa yuklanayotganda chiroyli ko'rinish ──
-const PageSkeleton = () => (
-  <div className="skeleton-page">
-    {/* Sarlavha skeleton */}
-    <div className="skeleton-header">
-      <div className="skeleton-line skeleton-w40 skeleton-h24" />
-      <div className="skeleton-line skeleton-w20 skeleton-h16" />
-    </div>
+const PageSkeleton = () => {
+  const appContext = useContext(AppContext);
+  const activeCategory = appContext?.state?.activeCategory || 'chqbt';
+  
+  // Icon select based on category
+  let WatermarkIcon = Shield;
+  let themeColor = 'rgba(37, 99, 235, 0.04)'; // default blue
+  
+  if (activeCategory === 'ona_tili') {
+    WatermarkIcon = BookOpen;
+    themeColor = 'rgba(16, 185, 129, 0.04)'; // green
+  } else if (activeCategory === 'tarix') {
+    WatermarkIcon = Clock;
+    themeColor = 'rgba(245, 158, 11, 0.04)'; // amber
+  } else if (activeCategory === 'art') {
+    WatermarkIcon = Palette;
+    themeColor = 'rgba(139, 92, 246, 0.04)'; // purple
+  }
 
-    {/* Kartalar skeleton */}
-    <div className="skeleton-cards">
-      {[1, 2, 3].map(i => (
-        <div key={i} className="skeleton-card">
-          <div className="skeleton-line skeleton-w60 skeleton-h16" />
-          <div className="skeleton-line skeleton-w80 skeleton-h12" />
-          <div className="skeleton-line skeleton-w40 skeleton-h12" />
-          <div className="skeleton-bar" />
-        </div>
-      ))}
-    </div>
+  return (
+    <div className="skeleton-page" style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Dynamic Watermark Background */}
+      <div style={{
+        position: 'absolute',
+        bottom: '-30px',
+        right: '-30px',
+        pointerEvents: 'none',
+        zIndex: 0,
+        animation: 'skeletonPulse 2.5s infinite ease-in-out',
+        color: themeColor,
+      }}>
+        <WatermarkIcon size={260} style={{ strokeWidth: 1.2 }} />
+      </div>
 
-    {/* Kontent skeleton */}
-    <div className="skeleton-content">
-      {[1, 2, 3, 4, 5].map(i => (
-        <div key={i} className="skeleton-row">
-          <div className="skeleton-circle" />
-          <div style={{ flex: 1 }}>
-            <div className="skeleton-line skeleton-w70 skeleton-h14" />
-            <div className="skeleton-line skeleton-w50 skeleton-h10" />
+      {/* Sarlavha skeleton */}
+      <div className="skeleton-header" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="skeleton-line skeleton-w40 skeleton-h24" />
+        <div className="skeleton-line skeleton-w20 skeleton-h16" />
+      </div>
+
+      {/* Kartalar skeleton */}
+      <div className="skeleton-cards" style={{ position: 'relative', zIndex: 1 }}>
+        {[1, 2, 3].map(i => (
+          <div key={i} className="skeleton-card">
+            <div className="skeleton-line skeleton-w60 skeleton-h16" />
+            <div className="skeleton-line skeleton-w80 skeleton-h12" />
+            <div className="skeleton-line skeleton-w40 skeleton-h12" />
+            <div className="skeleton-bar" />
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      {/* Kontent skeleton */}
+      <div className="skeleton-content" style={{ position: 'relative', zIndex: 1 }}>
+        {[1, 2, 3, 4, 5].map(i => (
+          <div key={i} className="skeleton-row">
+            <div className="skeleton-circle" />
+            <div style={{ flex: 1 }}>
+              <div className="skeleton-line skeleton-w70 skeleton-h14" />
+              <div className="skeleton-line skeleton-w50 skeleton-h10" />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 function App() {
   const { user, loading } = useAuth();

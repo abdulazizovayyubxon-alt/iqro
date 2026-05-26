@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
 :root {
   --bg: #F8FAFC;
   --bg2: #FFFFFF;
@@ -29,19 +31,19 @@
 }
 
 body.dark-theme {
-  --bg: #0F172A;
-  --bg2: #1E293B;
-  --bg3: #334155;
-  --surface: #1E293B;
-  --surface2: #334155;
-  --border: #334155;
-  --border2: #475569;
+  --bg: #0A0F1D;
+  --bg2: #131A30;
+  --bg3: #1E294B;
+  --surface: #131A30;
+  --surface2: #1E294B;
+  --border: #1E294B;
+  --border2: #2E3E75;
   --accent: #3B82F6;
   --accent2: #60A5FA;
   --accent3: #93C5FD;
-  --text: #F8FAFC;
-  --text2: #E2E8F0;
-  --text3: #94A3B8;
+  --text: #F1F5F9;
+  --text2: #CBD5E1;
+  --text3: #64748B;
   
   --red: #F87171;
   --red-bg: rgba(248, 113, 113, 0.1);
@@ -54,8 +56,8 @@ body.dark-theme {
   --purple: #A78BFA;
   --purple-bg: rgba(167, 139, 250, 0.1);
   
-  --glass-bg: rgba(30, 41, 59, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-bg: rgba(19, 26, 48, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 * { 
@@ -66,17 +68,24 @@ body.dark-theme {
 
 body { 
   background: var(--bg); 
+  background-attachment: fixed;
   color: var(--text); 
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif; 
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif; 
   -webkit-font-smoothing: antialiased;
   min-height: 100vh; 
   overflow-x: hidden; 
 }
 
+body.dark-theme {
+  background: radial-gradient(circle at top left, #0D1527 0%, #070B16 100%);
+  background-attachment: fixed;
+}
+
 /* SCROLLBAR */
-::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: var(--text3); opacity: 0.3; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 /* UTILS */
 .divider { height: 1px; background: var(--border); margin: 20px 0; }
@@ -1379,6 +1388,10 @@ body {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
+@keyframes skeletonPulse {
+  0%, 100% { transform: scale(1); opacity: 0.15; }
+  50% { transform: scale(1.08); opacity: 0.08; }
+}
 
 .skeleton-page { padding: 32px 40px; max-width: 1000px; margin: 0 auto; }
 
@@ -1485,3 +1498,9 @@ body {
   to   { transform: rotate(360deg); }
 }
 .spin { animation: spin 1s linear infinite; }
+
+/* Global Input Focus styling */
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(41, 182, 246, 0.15) !important;
+}

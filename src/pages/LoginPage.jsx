@@ -215,9 +215,9 @@ export default function LoginPage() {
         {/* Header — faqat orqaga qaytish tugmasi */}
         <div style={s.header}>
           {step !== STEPS.PHONE && step !== STEPS.CHECKING ? (
-            <button style={s.backBtn} onClick={handleBack}>
+            <motion.button whileTap={{ scale: 0.9 }} style={s.backBtn} onClick={handleBack}>
               <ArrowLeft size={22} />
-            </button>
+            </motion.button>
           ) : <div style={{ width: 36 }} />}
           <div style={{ width: 36 }} />
         </div>
@@ -276,10 +276,12 @@ export default function LoginPage() {
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '8px' }}>
                     {/* Yangi hisob */}
-                    <button
+                    <motion.button
                       id="choose-register-btn"
                       style={s.choiceBtn}
                       onClick={handleChooseRegister}
+                      whileHover={{ y: -2, boxShadow: '0 8px 20px rgba(0,0,0,0.03)' }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       <div style={s.choiceIcon}>
                         <UserPlus size={22} color={PRIMARY} />
@@ -288,13 +290,15 @@ export default function LoginPage() {
                         <div style={s.choiceTitle}>Yangi hisob yaratish</div>
                         <div style={s.choiceDesc}>Birinchi marta kiryapsizmi? Ro'yxatdan o'ting</div>
                       </div>
-                    </button>
+                    </motion.button>
 
                     {/* Mavjud hisob */}
-                    <button
+                    <motion.button
                       id="choose-login-btn"
                       style={s.choiceBtn}
                       onClick={handleChooseLogin}
+                      whileHover={{ y: -2, boxShadow: '0 8px 20px rgba(0,0,0,0.03)' }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       <div style={s.choiceIcon}>
                         <LogIn size={22} color="#10B981" />
@@ -303,7 +307,7 @@ export default function LoginPage() {
                         <div style={s.choiceTitle}>Parol bilan kirish</div>
                         <div style={s.choiceDesc}>Avval ro'yxatdan o'tgansiz va parolingiz bor</div>
                       </div>
-                    </button>
+                    </motion.button>
                   </div>
                 </>
               )}
@@ -333,34 +337,38 @@ export default function LoginPage() {
                     <div>
                       <label style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text2)', marginBottom: '6px', display: 'block' }}>Jinsingiz</label>
                       <div style={{ display: 'flex', gap: '10px' }}>
-                        <button
+                        <motion.button
                           type="button"
                           onClick={() => setGender('male')}
+                          whileTap={{ scale: 0.96 }}
                           style={{
-                            flex: 1, padding: '12px', borderRadius: '12px',
+                            flex: 1, padding: '12px', borderRadius: '14px',
                             border: gender === 'male' ? `2px solid ${PRIMARY}` : '1.5px solid var(--border)',
                             background: gender === 'male' ? 'var(--blue-bg)' : 'var(--bg2)',
                             color: gender === 'male' ? PRIMARY : 'var(--text2)',
                             fontWeight: 700, fontSize: '14px', cursor: 'pointer', fontFamily: 'inherit',
-                            transition: 'all 0.15s'
+                            transition: 'all 0.15s',
+                            boxShadow: gender === 'male' ? '0 4px 12px rgba(41, 182, 246, 0.12)' : 'none',
                           }}
                         >
                           Erkak
-                        </button>
-                        <button
+                        </motion.button>
+                        <motion.button
                           type="button"
                           onClick={() => setGender('female')}
+                          whileTap={{ scale: 0.96 }}
                           style={{
-                            flex: 1, padding: '12px', borderRadius: '12px',
+                            flex: 1, padding: '12px', borderRadius: '14px',
                             border: gender === 'female' ? `2px solid ${PRIMARY}` : '1.5px solid var(--border)',
                             background: gender === 'female' ? 'var(--blue-bg)' : 'var(--bg2)',
                             color: gender === 'female' ? PRIMARY : 'var(--text2)',
                             fontWeight: 700, fontSize: '14px', cursor: 'pointer', fontFamily: 'inherit',
-                            transition: 'all 0.15s'
+                            transition: 'all 0.15s',
+                            boxShadow: gender === 'female' ? '0 4px 12px rgba(41, 182, 246, 0.12)' : 'none',
                           }}
                         >
                           Ayol
-                        </button>
+                        </motion.button>
                       </div>
                     </div>
                   </div>
@@ -411,16 +419,17 @@ export default function LoginPage() {
         {/* Footer */}
         <div style={s.footer}>
           {step !== STEPS.CHECKING && step !== STEPS.CHOOSE && (
-            <button
+            <motion.button
               id="login-submit-btn"
               style={{ ...s.primaryBtn, opacity: loading || lockoutTimer ? 0.6 : 1 }}
               onClick={handleContinue}
               disabled={loading || !!lockoutTimer}
+              whileTap={{ scale: 0.98 }}
             >
               {loading ? 'Iltimos, kuting...'
                 : lockoutTimer ? `Kuting (${lockoutTimer}s)`
                 : step === STEPS.PASSWORD ? 'Kirish' : 'Davom etish'}
-            </button>
+            </motion.button>
           )}
 
           {/* Google — faqat 1-qadamda */}
@@ -431,9 +440,15 @@ export default function LoginPage() {
                 <span style={s.orText}>yoki</span>
                 <div style={s.orLine} />
               </div>
-              <button id="google-login-btn" style={s.outlineBtn} onClick={handleGoogle} disabled={loading}>
+              <motion.button 
+                id="google-login-btn" 
+                style={s.outlineBtn} 
+                onClick={handleGoogle} 
+                disabled={loading}
+                whileTap={{ scale: 0.98 }}
+              >
                 <GoogleIcon /> Google orqali kirish
-              </button>
+              </motion.button>
             </>
           )}
         </div>
@@ -446,30 +461,33 @@ export default function LoginPage() {
 const s = {
   pageOuter: {
     minHeight: IS_MOBILE ? '100dvh' : '100vh',
-    background: IS_MOBILE ? 'var(--bg)' : 'linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%)',
+    background: IS_MOBILE ? 'var(--bg)' : 'radial-gradient(circle at top left, var(--bg) 0%, var(--bg3) 100%)',
     display: IS_MOBILE ? 'block' : 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     padding: IS_MOBILE ? 0 : '40px 20px',
-    fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif",
+    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
     color: 'var(--text)',
   },
   page: {
     width: '100%',
     maxWidth: 460,
     minHeight: IS_MOBILE ? '100dvh' : 'auto',
-    background: 'var(--bg2)',
+    background: IS_MOBILE ? 'var(--bg2)' : 'var(--glass-bg)',
+    backdropFilter: IS_MOBILE ? 'none' : 'blur(20px)',
+    WebkitBackdropFilter: IS_MOBILE ? 'none' : 'blur(20px)',
+    border: IS_MOBILE ? 'none' : '1px solid var(--glass-border)',
     borderRadius: IS_MOBILE ? 0 : 24,
-    boxShadow: IS_MOBILE ? 'none' : '0 20px 60px rgba(0,0,0,0.05)',
+    boxShadow: IS_MOBILE ? 'none' : '0 24px 80px rgba(0,0,0,0.06)',
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
   },
   progressTrack: { height: 4, background: 'var(--border)', flexShrink: 0 },
-  progressFill: { height: '100%', background: PRIMARY, borderRadius: '0 2px 2px 0' },
+  progressFill: { height: '100%', background: 'linear-gradient(90deg, #29B6F6, #8B5CF6)', borderRadius: '0 2px 2px 0' },
   header: {
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-    padding: IS_MOBILE ? '8px 16px 0' : '12px 20px 0',
+    padding: IS_MOBILE ? '16px 16px 0' : '20px 20px 0',
   },
   backBtn: {
     background: 'none', border: 'none', cursor: 'pointer',
@@ -480,25 +498,26 @@ const s = {
   subtitle: { fontSize: 15, color: 'var(--text3)', lineHeight: 1.6, marginBottom: IS_MOBILE ? 16 : 28 },
   phoneWrap: { marginBottom: 8 },
   phoneInput: {
-    width: '100%', fontSize: 32, fontWeight: 700,
+    width: '100%', fontSize: 32, fontWeight: 800,
     color: 'var(--text)', border: 'none', outline: 'none',
     background: 'transparent', fontFamily: 'inherit',
     caretColor: PRIMARY, letterSpacing: 1,
-    paddingBottom: 8, borderBottom: `2px solid ${PRIMARY}`,
+    paddingBottom: 8, borderBottom: `2.5px solid ${PRIMARY}`,
   },
   input: {
-    width: '100%', padding: '14px 16px', fontSize: 15,
-    border: '1.5px solid var(--border)', borderRadius: 14,
+    width: '100%', padding: '15px 18px', fontSize: 15,
+    border: '1.5px solid var(--border)', borderRadius: 16,
     background: 'var(--bg3)', color: 'var(--text)', fontFamily: 'inherit',
-    outline: 'none', marginBottom: 12, transition: 'border-color 0.2s',
+    outline: 'none', marginBottom: 12, transition: 'all 0.25s ease',
     boxSizing: 'border-box',
+    boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.01)',
   },
   eyeBtn: {
     position: 'absolute', right: 14, top: '50%', transform: 'translateY(-60%)',
     background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)',
   },
   forgotBtn: {
-    background: 'none', border: 'none', color: PRIMARY,
+    background: 'none', border: 'none', color: '#29B6F6',
     fontSize: 14, fontWeight: 600, cursor: 'pointer',
     fontFamily: 'inherit', marginTop: 4, padding: 0,
     textDecoration: 'underline', textUnderlineOffset: 3,
@@ -509,37 +528,40 @@ const s = {
       ? '12px 20px calc(12px + env(safe-area-inset-bottom))' 
       : '16px 24px calc(24px + env(safe-area-inset-bottom))', 
     borderTop: '1px solid var(--border)', 
-    background: 'var(--bg2)' 
+    background: IS_MOBILE ? 'var(--bg2)' : 'transparent' 
   },
   primaryBtn: {
-    width: '100%', padding: IS_MOBILE ? '14px' : '16px', borderRadius: 14,
-    background: PRIMARY, color: '#fff', border: 'none',
+    width: '100%', padding: IS_MOBILE ? '14px' : '16px', borderRadius: 16,
+    background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none',
     fontWeight: 700, fontSize: 16, cursor: 'pointer',
-    fontFamily: 'inherit', transition: 'opacity 0.2s', marginBottom: IS_MOBILE ? 8 : 12,
+    fontFamily: 'inherit', transition: 'all 0.2s', marginBottom: IS_MOBILE ? 8 : 12,
+    boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)',
   },
   orRow: { display: 'flex', alignItems: 'center', gap: 12, marginBottom: IS_MOBILE ? 8 : 12 },
   orLine: { flex: 1, height: 1, background: 'var(--border)' },
   orText: { fontSize: 13, color: 'var(--text3)', fontWeight: 500 },
   outlineBtn: {
-    width: '100%', padding: IS_MOBILE ? '12px 16px' : '14px 16px', borderRadius: 14,
+    width: '100%', padding: IS_MOBILE ? '14px 16px' : '15px 16px', borderRadius: 16,
     border: '1.5px solid var(--border)', background: 'var(--bg2)',
     color: 'var(--text)', fontWeight: 600, fontSize: 15,
     cursor: 'pointer', fontFamily: 'inherit',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-    marginBottom: IS_MOBILE ? 0 : 10, transition: 'background 0.15s',
+    marginBottom: IS_MOBILE ? 0 : 10, transition: 'all 0.2s',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
   },
   // ── CHOOSE step styles ──
   choiceBtn: {
     display: 'flex', alignItems: 'center', gap: '14px',
-    padding: '16px', borderRadius: 16,
-    border: '1.5px solid var(--border)', background: 'var(--bg3)',
+    padding: '16px 18px', borderRadius: 20,
+    border: '1.5px solid var(--border)', background: 'var(--bg2)',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.01)',
     cursor: 'pointer', fontFamily: 'inherit',
-    transition: 'all 0.15s ease',
+    transition: 'all 0.2s ease',
     width: '100%', textAlign: 'left',
   },
   choiceIcon: {
     width: 48, height: 48, borderRadius: 14,
-    background: 'var(--bg2)',
+    background: 'var(--bg3)',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     flexShrink: 0,
     border: '1px solid var(--border)',
