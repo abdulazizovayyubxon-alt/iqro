@@ -83,6 +83,21 @@ const PremiumModal = ({ isOpen, onClose }) => {
     fetchData();
   }, [isOpen, user]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    window.history.pushState({ premiumModalOpen: true }, '');
+    const handlePopState = () => {
+      onClose();
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      if (window.history.state?.premiumModalOpen) {
+        window.history.back();
+      }
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const fmt = (n) => new Intl.NumberFormat('uz-UZ').format(n) + " so'm";

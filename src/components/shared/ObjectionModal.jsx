@@ -14,6 +14,21 @@ import { MessageCircle } from 'lucide-react';
 const ObjectionModal = ({ isOpen, onClose, questionText, onSubmit }) => {
   const [text, setText] = useState('');
 
+  React.useEffect(() => {
+    if (!isOpen) return;
+    window.history.pushState({ objectionModalOpen: true }, '');
+    const handlePopState = () => {
+      onClose();
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      if (window.history.state?.objectionModalOpen) {
+        window.history.back();
+      }
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const handleSubmit = () => {

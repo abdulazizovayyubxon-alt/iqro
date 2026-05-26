@@ -5,7 +5,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield, Download } from 'lucide-react';
+import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield, Download, FileText } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
 import { SUBJECTS } from '../data/mockData';
@@ -33,6 +33,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
   const [showEdit, setShowEdit] = useState(false);
   const [showPremium, setShowPremium] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const [showPrivacy, setShowPrivacy] = useState(false);
   const [editForm, setEditForm] = useState({ name: '', gender: '', birthDate: '', goal: '', subject: '' });
   const [saving, setSaving] = useState(false);
   const [refCode, setRefCode] = useState('');
@@ -98,6 +99,30 @@ export default function ProfilePage({ theme, toggleTheme }) {
     };
     load();
   }, [user]);
+
+  // Modal history interception for back button
+  useEffect(() => {
+    const hasOpenModal = showEdit || showPremium || showLogoutConfirm || showPrivacy;
+    if (!hasOpenModal) return;
+
+    window.history.pushState({ profileModalOpen: true }, '');
+
+    const handlePopState = () => {
+      setShowEdit(false);
+      setShowPremium(false);
+      setShowLogoutConfirm(false);
+      setShowPrivacy(false);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      if (window.history.state?.profileModalOpen) {
+        window.history.back();
+      }
+    };
+  }, [showEdit, showPremium, showLogoutConfirm, showPrivacy]);
 
   // Urgency countdown interval
   useEffect(() => {
@@ -495,6 +520,15 @@ export default function ProfilePage({ theme, toggleTheme }) {
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
 
+          {/* Maxfiylik Siyosati */}
+          <button className="pp-menu-item" onClick={() => setShowPrivacy(true)}>
+            <div className="pp-menu-icon" style={{ background: 'rgba(255,255,255,0.06)', color: 'var(--text2)' }}>
+              <FileText size={20} />
+            </div>
+            <span className="pp-menu-label">Maxfiylik siyosati</span>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
           {/* Logout */}
           <button className="pp-menu-item danger" onClick={() => setShowLogoutConfirm(true)}>
             <div className="pp-menu-icon" style={{ background: 'var(--red-bg)', color: 'var(--red)' }}>
@@ -590,6 +624,74 @@ export default function ProfilePage({ theme, toggleTheme }) {
                 Chiqish 🚪
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ═══ PRIVACY POLICY MODAL ═══ */}
+      {showPrivacy && (
+        <div className="pp-modal-overlay" onClick={() => setShowPrivacy(false)}>
+          <div className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 500, padding: '24px' }}>
+            <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <Shield size={22} style={{ color: 'var(--blue)' }} /> Maxfiylik Siyosati
+            </div>
+            <div style={{ 
+              maxHeight: '320px', 
+              overflowY: 'auto', 
+              fontSize: '13px', 
+              lineHeight: '1.6', 
+              color: 'var(--text2)', 
+              margin: '16px 0',
+              paddingRight: '8px',
+              borderBottom: '1px solid var(--border)'
+            }} className="pp-policy-scroll">
+              <p style={{ marginBottom: '12px' }}><strong>1. Umumiy qoidalar</strong><br/>
+              Ushbu Maxfiylik Siyosati IQRO platformasi foydalanuvchilarining shaxsiy ma'lumotlarini yig'ish, saqlash va himoya qilish tartibini belgilaydi. Biz foydalanuvchilarimizning maxfiyligini hurmat qilamiz va ma'lumotlar xavfsizligini ta'minlashga mas'uliyat bilan yondashamiz.</p>
+              
+              <p style={{ marginBottom: '12px' }}><strong>2. Yig'iladigan ma'lumotlar</strong><br/>
+              Platformadan ro'yxatdan o'tish va foydalanish davomida quyidagi shaxsiy ma'lumotlar to'planishi mumkin:
+              </p>
+              <ul style={{ paddingLeft: '20px', marginBottom: '12px' }}>
+                <li>Ism va familiya;</li>
+                <li>Telefon raqami;</li>
+                <li>Tanlangan o'quv fanlari, maqsadlar va imtihon sanasi;</li>
+                <li>Ilovadan foydalanish va test natijalari statistikasi.</li>
+              </ul>
+              
+              <p style={{ marginBottom: '12px' }}><strong>3. Ma'lumotlardan foydalanish maqsadi</strong><br/>
+              Siz taqdim etgan ma'lumotlar quyidagi maqsadlarda ishlatiladi:
+              </p>
+              <ul style={{ paddingLeft: '20px', marginBottom: '12px' }}>
+                <li>O'quv jarayonini shaxsiylashtirish va fanga mos yuklash ekranlarini ko'rsatish;</li>
+                <li>Premium obuna va to'lovlarni boshqarish;</li>
+                <li>Do'stlarni taklif etish (referral) dasturini to'g'ri ishlashini ta'minlash va chegirmalarni hisoblash;</li>
+                <li>Platforma barqarorligini tahlil qilish va xatoliklarni bartaraf etish.</li>
+              </ul>
+
+              <p style={{ marginBottom: '12px' }}><strong>4. Ma'lumotlar xavfsizligi va himoyasi</strong><br/>
+              Foydalanuvchilarning ma'lumotlari Firebase xavfsizlik qoidalari orqali himoyalangan va begona shaxslarga taqdim etilmaydi. Shaxsiy ma'lumotlar uchinchi shaxslarga sotilmaydi yoki ijaraga berilmaydi.</p>
+
+              <p style={{ marginBottom: '12px' }}><strong>5. Aloqa va murojaat</strong><br/>
+              Maxfiylik siyosati bo'yicha savollaringiz yoki takliflaringiz bo'lsa, platformaning qo'llab-quvvatlash xizmati yoki admin paneli orqali murojaat qilishingiz mumkin.</p>
+            </div>
+            <button 
+              onClick={() => setShowPrivacy(false)} 
+              style={{ 
+                width: '100%',
+                padding: '12px', 
+                borderRadius: 12, 
+                background: 'var(--blue)', 
+                color: '#fff', 
+                border: 'none', 
+                fontWeight: 700, 
+                fontSize: 14, 
+                cursor: 'pointer', 
+                fontFamily: 'inherit',
+                transition: 'opacity 0.2s'
+              }}
+            >
+              Tushunarli 🤝
+            </button>
           </div>
         </div>
       )}
