@@ -133,24 +133,24 @@ const SmartReviewPage = () => {
     const waitMinutes = nextReview ? Math.max(0, Math.round((nextReview - Date.now()) / 60000)) : 0;
 
     return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: 600, margin: '0 auto', padding: '20px 16px' }}>
-        <div style={{ background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 24, padding: '44px 28px', textAlign: 'center', marginTop: 40 }}>
-          <div style={{ fontSize: 52, marginBottom: 14 }}>🧠</div>
-          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 8, color: 'var(--text)' }}>Hozircha takrorlash kerak emas!</div>
+      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ maxWidth: 600, margin: '0 auto', padding: '20px 16px' }}>
+        <div style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)', borderRadius: 24, padding: '44px 28px', textAlign: 'center', marginTop: 40, boxShadow: '0 20px 40px rgba(0,0,0,0.06)' }}>
+          <div style={{ fontSize: 52, marginBottom: 14, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.08))' }}>🧠</div>
+          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)', letterSpacing: '-0.5px' }}>Hozircha takrorlash kerak emas!</div>
           {totalSpaced > 0 ? (
-            <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.7, marginBottom: 24 }}>
+            <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.7, marginBottom: 24, fontWeight: 500 }}>
               Jami <strong style={{ color: 'var(--text)' }}>{totalSpaced}</strong> ta savol kuzatilmoqda.<br />
               Keyingi takrorlash: <strong style={{ color: '#29B6F6' }}>{waitMinutes < 60 ? `${waitMinutes} daqiqa` : waitMinutes < 1440 ? `${Math.round(waitMinutes / 60)} soat` : `${Math.round(waitMinutes / 1440)} kun`}</strong> dan keyin
             </div>
           ) : (
-            <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.7, marginBottom: 24 }}>
+            <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.7, marginBottom: 24, fontWeight: 500 }}>
               Testlarda xato qilganingizda savollar avtomatik ravishda bu yerga qo'shiladi.<br />
               Boshqa testlarni yechib boring!
             </div>
           )}
-          <button onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto' }}>
+          <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}>
             <ArrowLeft size={16} /> Bosh sahifaga
-          </button>
+          </motion.button>
         </div>
       </motion.div>
     );
@@ -161,27 +161,27 @@ const SmartReviewPage = () => {
     const total = sessionStats.correct + sessionStats.wrong;
     const pct = Math.round((sessionStats.correct / total) * 100);
     return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: 560, margin: '0 auto', padding: '20px 16px' }}>
-        <div style={{ background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 24, padding: '40px 28px', textAlign: 'center', marginTop: 40 }}>
-          <div style={{ fontSize: 52, marginBottom: 12 }}>{pct >= 70 ? '🎉' : '💪'}</div>
-          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 20, color: 'var(--text)' }}>Takrorlash tugadi!</div>
+      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ maxWidth: 560, margin: '0 auto', padding: '20px 16px' }}>
+        <div style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)', borderRadius: 24, padding: '40px 28px', textAlign: 'center', marginTop: 40, boxShadow: '0 20px 40px rgba(0,0,0,0.06)' }}>
+          <div style={{ fontSize: 52, marginBottom: 12, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.08))' }}>{pct >= 70 ? '🎉' : '💪'}</div>
+          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 20, color: 'var(--text)', letterSpacing: '-0.5px' }}>Takrorlash tugadi!</div>
           <div style={{ display: 'flex', gap: 24, justifyContent: 'center', marginBottom: 20 }}>
-            <div style={{ textAlign: 'center', background: 'rgba(22, 163, 74, 0.12)', border: '1px solid rgba(22, 163, 74, 0.25)', borderRadius: 16, padding: '16px 24px' }}>
+            <div style={{ textAlign: 'center', background: 'rgba(22, 163, 74, 0.08)', border: '1px solid rgba(22, 163, 74, 0.15)', borderRadius: 16, padding: '16px 24px' }}>
               <div style={{ fontSize: 32, fontWeight: 900, color: '#16A34A' }}>{sessionStats.correct}</div>
               <div style={{ fontSize: 11, color: '#16A34A', fontWeight: 700, marginTop: 4 }}>TO'G'RI</div>
             </div>
-            <div style={{ textAlign: 'center', background: 'rgba(220, 38, 38, 0.12)', border: '1px solid rgba(220, 38, 38, 0.25)', borderRadius: 16, padding: '16px 24px' }}>
+            <div style={{ textAlign: 'center', background: 'rgba(220, 38, 38, 0.08)', border: '1px solid rgba(220, 38, 38, 0.15)', borderRadius: 16, padding: '16px 24px' }}>
               <div style={{ fontSize: 32, fontWeight: 900, color: '#DC2626' }}>{sessionStats.wrong}</div>
               <div style={{ fontSize: 11, color: '#DC2626', fontWeight: 700, marginTop: 4 }}>XATO</div>
             </div>
           </div>
-          <div style={{ fontSize: 13, color: 'var(--text3)', marginBottom: 24, lineHeight: 1.7 }}>
+          <div style={{ fontSize: 13, color: 'var(--text3)', marginBottom: 24, lineHeight: 1.7, fontWeight: 500 }}>
             Xato savollar <strong style={{ color: 'var(--text)' }}>10 daqiqa</strong>dan keyin qaytadan ko'rsatiladi.<br />
             To'g'ri savollar keyingi bosqichga o'tdi!
           </div>
-          <button onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto' }}>
+          <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}>
             <ArrowLeft size={16} /> Bosh sahifaga
-          </button>
+          </motion.button>
         </div>
       </motion.div>
     );
@@ -243,19 +243,26 @@ const SmartReviewPage = () => {
               {card.opts.map((opt, i) => {
                 let bg = 'var(--bg3)', border = '1.5px solid var(--border)', color = 'var(--text2)';
                 if (answered !== null) {
-                  if (i === card.correct) { bg = 'rgba(22, 163, 74, 0.15)'; border = '2px solid rgba(22, 163, 74, 0.4)'; color = 'var(--text)'; }
-                  else if (i === answered && i !== card.correct) { bg = 'rgba(220, 38, 38, 0.15)'; border = '2px solid rgba(220, 38, 38, 0.4)'; color = 'var(--text)'; }
-                  else { bg = 'var(--bg3)'; color = 'var(--text3)'; }
+                  if (i === card.correct) { bg = 'rgba(22, 163, 74, 0.12)'; border = '1.5px solid var(--green)'; color = 'var(--text)'; }
+                  else if (i === answered && i !== card.correct) { bg = 'rgba(220, 38, 38, 0.12)'; border = '1.5px solid var(--red)'; color = 'var(--text)'; }
+                  else { bg = 'var(--bg3)'; color = 'var(--text3)'; border = '1px solid var(--glass-border)'; }
+                } else {
+                  border = '1px solid var(--glass-border)';
+                  bg = 'var(--glass-bg)';
                 }
                 return (
-                  <button key={i} onClick={() => handleAnswer(i)}
-                    style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '13px 16px', borderRadius: 12, textAlign: 'left', border, background: bg, cursor: answered !== null ? 'default' : 'pointer', fontFamily: 'inherit', fontSize: 14, fontWeight: 500, color }}
+                  <motion.button
+                    key={i}
+                    whileHover={answered === null ? { y: -1, scale: 1.005 } : {}}
+                    whileTap={answered === null ? { scale: 0.99 } : {}}
+                    onClick={() => handleAnswer(i)}
+                    style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px', borderRadius: 16, textAlign: 'left', border, background: bg, cursor: answered !== null ? 'default' : 'pointer', fontFamily: 'inherit', fontSize: 14, fontWeight: 500, color, transition: 'background 0.2s, border-color 0.2s' }}
                   >
                     <div style={{ width: 30, height: 30, borderRadius: 8, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 13, background: answered !== null && i === card.correct ? '#16A34A' : answered === i && i !== card.correct ? '#DC2626' : 'var(--bg3)', color: answered !== null && (i === card.correct || i === answered) ? '#fff' : 'var(--text3)' }}>
                       {answered !== null && i === card.correct ? <CheckCircle size={15} /> : answered === i && i !== card.correct ? <XCircle size={15} /> : ['A','B','C','D'][i]}
                     </div>
                     {opt.replace(/^[A-D]\)\s*/, '')}
-                  </button>
+                  </motion.button>
                 );
               })}
             </div>

@@ -337,22 +337,24 @@ const TestPage = () => {
 
   if (showTheory) {
     return (
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} style={{ padding: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' }}>
-        <div style={{ background: '#fff', border: '1.5px solid #E2E8F0', borderRadius: 24, padding: '32px 24px', textAlign: 'center', maxWidth: 520, width: '100%' }}>
-          <div style={{ fontSize: 48, marginBottom: 16 }}>📚</div>
-          <h2 style={{ marginBottom: 8, color: '#0F172A', fontSize: 22, fontWeight: 900 }}>Qisqacha Eslatma</h2>
-          <p style={{ color: '#94A3B8', fontSize: 14, marginBottom: 20 }}>
+      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ padding: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' }}>
+        <div style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)', borderRadius: 24, padding: '32px 24px', textAlign: 'center', maxWidth: 520, width: '100%', boxShadow: '0 20px 40px rgba(0,0,0,0.06)' }}>
+          <div style={{ fontSize: 52, marginBottom: 16, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.08))' }}>📚</div>
+          <h2 style={{ marginBottom: 8, color: 'var(--text)', fontSize: 22, fontWeight: 800, letterSpacing: '-0.5px' }}>Qisqacha Eslatma</h2>
+          <p style={{ color: 'var(--text3)', fontSize: 14, marginBottom: 20, fontWeight: 500 }}>
             Testni boshlashdan oldin quyidagi ma'lumotlarni yodga oling:
           </p>
-          <div style={{ fontSize: 15, lineHeight: 1.7, color: '#334155', marginBottom: 28, textAlign: 'left', background: '#F8FAFC', padding: '18px 20px', borderRadius: 16, border: '1px solid #E2E8F0' }}>
+          <div style={{ fontSize: 15, lineHeight: 1.7, color: 'var(--text2)', marginBottom: 28, textAlign: 'left', background: 'var(--bg3)', padding: '16px 20px', borderRadius: 16, borderLeft: '4px solid var(--accent)' }}>
             {topicObj?.theoryHint}
           </div>
-          <button
-            style={{ width: '100%', padding: '16px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontSize: 16, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}
+          <motion.button
+            whileHover={{ scale: 1.01, y: -1 }}
+            whileTap={{ scale: 0.98 }}
+            style={{ width: '100%', padding: '16px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontSize: 16, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}
             onClick={() => setShowTheory(false)}
           >
             O'qib chiqdim — Testni boshlash
-          </button>
+          </motion.button>
         </div>
       </motion.div>
     );
@@ -665,10 +667,17 @@ const TestPage = () => {
                       else bg = 'disabled';
                     }
                     return (
-                      <div key={i} className={`option ${bg} ${!answered ? 'hoverable' : ''}`} onClick={() => handleSelect(currentQ, i)}>
+                      <motion.div
+                        key={i}
+                        whileHover={!answered ? { y: -1, scale: 1.005 } : {}}
+                        whileTap={!answered ? { scale: 0.99 } : {}}
+                        className={`option ${bg} ${!answered ? 'hoverable' : ''}`}
+                        onClick={() => handleSelect(currentQ, i)}
+                        style={{ cursor: answered ? 'default' : 'pointer' }}
+                      >
                         <div className="opt-letter">{['A', 'B', 'C', 'D'][i]}</div>
                         <div className="opt-text">{opt.replace(/^[A-D]\)\s*/, '')}</div>
-                      </div>
+                      </motion.div>
                     );
                   })}
                 </div>
@@ -695,25 +704,24 @@ const TestPage = () => {
               </motion.div>
             </AnimatePresence>
           ) : (
-            <div style={{ background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 20, padding: '36px 24px', textAlign: 'center' }}>
-              <div style={{ fontSize: 52, marginBottom: 12 }}>{correctCount / questions.length >= 0.7 ? '🏆' : correctCount / questions.length >= 0.5 ? '📊' : '💪'}</div>
-              <div style={{ fontSize: 22, color: 'var(--text)', fontWeight: 900, marginBottom: 6 }}>{correctCount / questions.length >= 0.7 ? 'Ajoyib natija!' : 'Davom eting!'}</div>
-              <div style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>{questions.length} ta savoldan {correctCount} tasiga to'g'ri javob berdingiz.</div>
-              <div style={{ background: 'var(--bg3)', border: '1.5px solid var(--border)', borderRadius: 20, padding: '24px 32px', display: 'inline-block', marginBottom: 28 }}>
-                <div style={{ fontSize: 12, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8, fontWeight: 600 }}>Natija</div>
-                <div style={{ fontSize: 52, fontWeight: 900, color: correctCount / questions.length >= 0.7 ? '#10B981' : correctCount / questions.length >= 0.5 ? '#F59E0B' : '#EF4444', lineHeight: 1 }}>{correctCount} <span style={{ fontSize: 28, color: '#CBD5E1' }}>/ {questions.length}</span></div>
-                <div style={{ fontSize: 20, marginTop: 8, color: 'var(--text2)', fontWeight: 700 }}>{Math.round((correctCount / questions.length) * 100)}%</div>
+            <div style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)', borderRadius: 24, padding: '36px 24px', textAlign: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.06)' }}>
+              <div style={{ fontSize: 52, marginBottom: 12, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.08))' }}>{correctCount / questions.length >= 0.7 ? '🏆' : correctCount / questions.length >= 0.5 ? '📊' : '💪'}</div>
+              <div style={{ fontSize: 22, color: 'var(--text)', fontWeight: 800, marginBottom: 6, letterSpacing: '-0.5px' }}>{correctCount / questions.length >= 0.7 ? 'Ajoyib Natija!' : 'Davom eting!'}</div>
+              <div style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24, fontWeight: 500 }}>{questions.length} ta savoldan {correctCount} tasiga to'g'ri javob berdingiz.</div>
+              <div style={{ background: 'var(--bg3)', border: '1px solid var(--glass-border)', borderRadius: 20, padding: '24px 32px', display: 'inline-block', marginBottom: 28 }}>
+                <div style={{ fontSize: 12, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8, fontWeight: 700 }}>Natija</div>
+                <div style={{ fontSize: 52, fontWeight: 900, color: correctCount / questions.length >= 0.7 ? '#10B981' : correctCount / questions.length >= 0.5 ? '#F59E0B' : '#EF4444', lineHeight: 1 }}>{correctCount} <span style={{ fontSize: 28, color: 'var(--text3)' }}>/ {questions.length}</span></div>
+                <div style={{ fontSize: 20, marginTop: 8, color: 'var(--text2)', fontWeight: 800 }}>{Math.round((correctCount / questions.length) * 100)}%</div>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 320, margin: '0 auto' }}>
-                <button style={{ padding: '14px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }} onClick={generateQuestions}><RefreshCw size={17} /> Yana ishlash</button>
-                {state.mistakes?.length > 0 && <button style={{ padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }} onClick={() => setMode('mistakes')}><Target size={16} /> Xatolar ustida ishlash</button>}
-                <button style={{ padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }} onClick={() => navigate('/test')}><Home size={16} /> Bosh sahifaga</button>
-                <div style={{ marginTop: '8px', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
-                  <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}><Share2 size={13} /> Natijani ulashing</div>
+                <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} style={{ padding: '14px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }} onClick={generateQuestions}><RefreshCw size={17} /> Yana ishlash</motion.button>
+                {state.mistakes?.length > 0 && <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} style={{ padding: '13px', background: 'var(--glass-bg)', color: 'var(--text2)', border: '1px solid var(--glass-border)', borderRadius: 16, fontWeight: 600, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }} onClick={() => setMode('mistakes')}><Target size={16} /> Xatolar ustida ishlash</motion.button>}
+                <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} style={{ padding: '13px', background: 'var(--glass-bg)', color: 'var(--text2)', border: '1px solid var(--glass-border)', borderRadius: 16, fontWeight: 600, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }} onClick={() => navigate('/test')}><Home size={16} /> Bosh sahifaga</motion.button>
+                <div style={{ marginTop: '8px', paddingTop: '16px', borderTop: '1px solid var(--glass-border)' }}>
+                  <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}><Share2 size={13} /> Natijani ulashing</div>
                   <div style={{ display: 'flex', gap: '8px' }}>
-
-                    <button className="btn btn-sm" style={{ flex: 1, background: '#2AABEE', color: 'white', border: 'none', borderRadius: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const emoji = pct >= 70 ? '🏆' : pct >= 50 ? '📊' : '💪'; const text = `${emoji} IQRO platformasida test yechdim!\n📚 Mavzu: ${topicName}\n✅ Natija: ${correctCount}/${questions.length} (${pct}%)\n🎯 Imtihonga tayyorgarlik!`; window.open(`https://t.me/share/url?url=https://iqro-t41p.vercel.app&text=${encodeURIComponent(text)}`, '_blank'); }}>Telegram</button>
-                    <button className="btn btn-sm btn-outline" style={{ borderRadius: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const text = `IQRO platformasida test: ${correctCount}/${questions.length} (${pct}%) - ${topicName}`; navigator.clipboard?.writeText(text); showToast('Nusxalandi! 📋', 'info'); }} >📋</button>
+                    <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="btn btn-sm" style={{ flex: 1, background: '#29B6F6', color: 'white', border: 'none', borderRadius: '12px', padding: '10px' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const emoji = pct >= 70 ? '🏆' : pct >= 50 ? '📊' : '💪'; const text = `${emoji} IQRO platformasida test yechdim!\n📚 Mavzu: ${topicName}\n✅ Natija: ${correctCount}/${questions.length} (${pct}%)\n🎯 Imtihonga tayyorgarlik!`; window.open(`https://t.me/share/url?url=https://iqro-t41p.vercel.app&text=${encodeURIComponent(text)}`, '_blank'); }}>Telegram</motion.button>
+                    <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="btn btn-sm btn-outline" style={{ borderRadius: '12px', padding: '10px', border: '1px solid var(--glass-border)' }} onClick={() => { const pct = Math.round((correctCount / questions.length) * 100); const text = `IQRO platformasida test: ${correctCount}/${questions.length} (${pct}%) - ${topicName}`; navigator.clipboard?.writeText(text); showToast('Nusxalandi! 📋', 'info'); }} >📋</motion.button>
                   </div>
                 </div>
               </div>
