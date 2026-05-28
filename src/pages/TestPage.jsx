@@ -286,7 +286,8 @@ const TestPage = () => {
               rawList = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
               // Buni ham telefon xotirasiga yozib qo'yamiz, toki qayta kirsangiz yana limit yemasligi uchun
               await localforage.setItem(cacheKey, rawList);
-              // versionKey ni yangilamaymiz, toki ertaga admin Publish bosganda u yangilanib olsin
+              // versionKey ni ham saqlaymiz, aks holda har gal qayta-qayta baza so'rayveradi (infinite loop bug fix)
+              await localforage.setItem(versionKey, remoteVersion);
             } catch (fallbackErr) {
               console.error("Fallback yuklashda xatolik:", fallbackErr);
               rawList = [];

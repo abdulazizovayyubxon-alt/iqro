@@ -181,6 +181,7 @@ const ExamPage = () => {
               const snap = await getDocs(qQuery);
               allQ = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
               await localforage.setItem(cacheKey, allQ);
+              await localforage.setItem(versionKey, remoteVersion);
             } catch (fallbackErr) {
               console.error("Fallback yuklashda xatolik:", fallbackErr);
               allQ = [];
