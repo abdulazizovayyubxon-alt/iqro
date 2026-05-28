@@ -276,8 +276,21 @@ const TestPage = () => {
               rawList = [];
             }
           } else {
-            // Agar storageUrls da bu fanga oid fayl bo'lmasa
-            rawList = [];
+            // Agar storageUrls da bu fanga oid fayl bo'lmasa (Admin hali Publish bosmagan bo'lsa),
+            // eskirgan usulda to'g'ridan-to'g'ri bazadan yuklashga urinib ko'ramiz (Fallback)
+            try {
+              const { query, where, getDocs, collection } = await import('firebase/firestore');
+              const qRef = collection(db, 'questions');
+              const qQuery = query(qRef, where('category', '==', state.activeCategory));
+              const snap = await getDocs(qQuery);
+              rawList = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+              // Buni ham telefon xotirasiga yozib qo'yamiz, toki qayta kirsangiz yana limit yemasligi uchun
+              await localforage.setItem(cacheKey, rawList);
+              // versionKey ni yangilamaymiz, toki ertaga admin Publish bosganda u yangilanib olsin
+            } catch (fallbackErr) {
+              console.error("Fallback yuklashda xatolik:", fallbackErr);
+              rawList = [];
+            }
           }
         }
 

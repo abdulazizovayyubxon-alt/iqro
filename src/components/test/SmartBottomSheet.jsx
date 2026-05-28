@@ -78,16 +78,15 @@ const SmartBottomSheet = ({
             />
             {/* Drawer */}
             <motion.div
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              exit={{ y: '100%' }}
+              initial={{ y: '100%', x: '-50%' }}
+              animate={{ y: 0, x: '-50%' }}
+              exit={{ y: '100%', x: '-50%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="bottom-sheet-modal"
               style={{
                 position: 'fixed',
                 bottom: 0,
                 left: '50%',
-                transform: 'translateX(-50%)',
                 width: '100%',
                 maxWidth: '700px',
                 background: 'var(--bg2)',

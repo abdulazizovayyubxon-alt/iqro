@@ -173,7 +173,18 @@ const ExamPage = () => {
               allQ = [];
             }
           } else {
-            allQ = [];
+            // Fallback to getDocs
+            try {
+              const { query, where, getDocs, collection } = await import('firebase/firestore');
+              const qRef = collection(db, 'questions');
+              const qQuery = query(qRef, where('category', '==', cat));
+              const snap = await getDocs(qQuery);
+              allQ = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+              await localforage.setItem(cacheKey, allQ);
+            } catch (fallbackErr) {
+              console.error("Fallback yuklashda xatolik:", fallbackErr);
+              allQ = [];
+            }
           }
         }
 
