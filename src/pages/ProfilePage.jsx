@@ -750,7 +750,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
             {/* Instruction Steps */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, background: 'var(--bg3)', padding: '16px 20px', borderRadius: 16, marginBottom: 20 }}>
               <div style={{ fontSize: 12, color: 'var(--text2)', lineHeight: 1.5 }}>
-                <strong>1-qadam:</strong> Telegramda <a href="https://t.me/iqro_robot" target="_blank" rel="noreferrer" style={{ color: '#29B6F6', fontWeight: 700 }}>@iqro_robot</a> botini oching va <code>/start</code> buyrug'ini bosing.
+                <strong>1-qadam:</strong> Telegramda <a href="https://t.me/IQRO_testbot" target="_blank" rel="noreferrer" style={{ color: '#29B6F6', textDecoration: 'none', fontWeight: 700 }}>@IQRO_testbot</a> botini oching va <code style={{ background: 'var(--bg3)', padding: '2px 6px', borderRadius: 4 }}>/start</code> buyrug'ini bosing.
               </div>
               <div style={{ fontSize: 12, color: 'var(--text2)', lineHeight: 1.5 }}>
                 <strong>2-qadam:</strong> Botga ulanish uchun quyidagi shaxsiy ID kodini yuboring:
