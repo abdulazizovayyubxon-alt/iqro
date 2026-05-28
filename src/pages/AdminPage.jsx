@@ -249,6 +249,7 @@ const AdminPage = () => {
   useEffect(() => {
     if (tab !== 'users') return;
     const loadUsers = async () => {
+      if (users.length > 0) return; // Keshdan o'qish (qayta yuklamaslik uchun)
       const snap = await getDocs(collection(db, 'users'));
       setUsers(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     };
@@ -258,6 +259,7 @@ const AdminPage = () => {
   useEffect(() => {
     if (tab !== 'questions') return;
     const loadQuestions = async () => {
+      if (questions.length > 0) return; // Keshdan o'qish (qayta yuklamaslik uchun)
       const snap = await getDocs(collection(db, 'questions'));
       setQuestions(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     };
@@ -280,6 +282,7 @@ const AdminPage = () => {
   useEffect(() => {
     if (tab !== 'referrals') return;
     const loadReferrals = async () => {
+      if (allReferrals.length > 0) return; // Keshdan o'qish
       setReferralLoading(true);
       try {
         const snap = await getDocs(collection(db, 'referrals'));
