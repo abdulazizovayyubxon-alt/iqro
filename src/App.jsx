@@ -33,6 +33,7 @@ const AdminPage = React.lazy(() => import('./pages/AdminPage'));
 const MigrationPage = React.lazy(() => import('./pages/MigrationPage'));
 const ReferralPage = React.lazy(() => import('./pages/ReferralPage'));
 const ProfilePage = React.lazy(() => import('./pages/ProfilePage'));
+const ErrorNotebookPage = React.lazy(() => import('./pages/ErrorNotebookPage'));
 
 // ── Skeleton Loader — sahifa yuklanayotganda chiroyli ko'rinish ──
 const PageSkeleton = () => {
@@ -218,6 +219,7 @@ function App() {
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="/migration" element={<MigrationPage />} />
                 <Route path="/referral" element={<ReferralPage />} />
+                <Route path="/errors" element={<ErrorNotebookPage />} />
                 <Route path="/profile" element={<ProfilePage theme={theme} toggleTheme={toggleTheme} />} />
                 <Route path="*" element={<Navigate to="/test" replace />} />
               </Routes>

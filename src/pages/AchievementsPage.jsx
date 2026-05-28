@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
-import { TOPICS } from '../data/mockData';
+import { TOPICS, SUBJECTS } from '../data/mockData';
 import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy, Medal, Zap, Target, TrendingUp, BarChart3, Star, AlertCircle, Award, Flame, AlertTriangle } from 'lucide-react';
@@ -16,6 +16,8 @@ const AchievementsPage = () => {
   const { state, updateState } = useContext(AppContext);
   const [activeTab, setActiveTab] = useState('achievements');
   const [showPremiumModal, setShowPremiumModal] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const canvasRef = useRef(null);
   const { isTrialExpired: isFreeLimitReached } = useTrialExpiry();
 
   const handleNavigation = (topicId, mode) => {
@@ -30,6 +32,226 @@ const AchievementsPage = () => {
   const cat = state.activeCategory;
   const catStats = state.stats[cat] || { totalAnswered: 0, totalCorrect: 0, streak: 0, maxStreak: 0, mistakes: [] };
 
+  // Calculate average time stats
+  const totalTime = state.timeStats?.totalTime || 0;
+  const totalQuestionsTime = state.timeStats?.totalQuestions || 0;
+  const avgTime = totalQuestionsTime > 0 ? Math.round(totalTime / totalQuestionsTime) : 0;
+
+  let speedLabel = "Ma'lumot yo'q";
+  let speedColor = "var(--text3)";
+  if (avgTime > 0) {
+    if (avgTime < 45) {
+      speedLabel = "Tezkor (Ajoyib!)";
+      speedColor = "#10B981"; // Green
+    } else if (avgTime <= 90) {
+      speedLabel = "O'rtacha";
+      speedColor = "#F59E0B"; // Amber
+    } else {
+      speedLabel = "Sekin";
+      speedColor = "#EF4444"; // Red
+    }
+  }
+
+  const total = catStats.totalAnswered;
+  const correct = catStats.totalCorrect;
+  const acc = total > 0 ? Math.round((correct / total) * 100) : 0;
+
+  // Predict Category (Toifa)
+  let toifa = "Mutaxassis";
+  let toifaColor = "#3b82f6"; // Blue
+  let nextToifaText = "";
+  if (total >= 10) {
+    if (acc >= 80) {
+      toifa = "Oliy Toifa";
+      toifaColor = "#F59E0B"; // Gold
+      nextToifaText = "Tayyorlik darajasi ajoyib!";
+    } else if (acc >= 70) {
+      toifa = "1-Toifa";
+      toifaColor = "#10B981"; // Green
+      nextToifaText = `Oliy toifa uchun yana ${80 - acc}% kerak`;
+    } else if (acc >= 60) {
+      toifa = "2-Toifa";
+      toifaColor = "#8B5CF6"; // Purple
+      nextToifaText = `1-toifa uchun yana ${70 - acc}% kerak`;
+    } else {
+      toifa = "Mutaxassis";
+      toifaColor = "#EF4444"; // Red
+      nextToifaText = `2-toifa uchun yana ${60 - acc}% kerak`;
+    }
+  } else {
+    toifa = "Hisoblanmoqda...";
+    nextToifaText = "Kamida 10 ta savol yeching";
+  }
+
+  const subjectName = SUBJECTS.find(s => s.id === state.activeCategory)?.name || 'CHQBT';
+
+  const drawPassport = (canvas) => {
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    
+    // Set dimensions
+    canvas.width = 800;
+    canvas.height = 500;
+    
+    // 1. Draw Background Gradient
+    const grad = ctx.createLinearGradient(0, 0, 800, 500);
+    grad.addColorStop(0, '#0F172A'); // Slate 900
+    grad.addColorStop(1, '#1E1B4B'); // Indigo 950
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 800, 500);
+    
+    // 2. Draw Decorative Borders / Frames
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(20, 20, 760, 460);
+    
+    ctx.strokeStyle = '#29B6F6';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(25, 25, 750, 450);
+    
+    // Draw Corner Ornaments
+    const drawCorner = (x, y, dx, dy) => {
+      ctx.strokeStyle = '#29B6F6';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(x, y + dy * 20);
+      ctx.lineTo(x, y);
+      ctx.lineTo(x + dx * 20, y);
+      ctx.stroke();
+    };
+    drawCorner(25, 25, 1, 1);
+    drawCorner(775, 25, -1, 1);
+    drawCorner(25, 475, 1, -1);
+    drawCorner(775, 475, -1, -1);
+    
+    // 3. Draw Watermark logo/text in background
+    ctx.font = 'bold 90px sans-serif';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.02)';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('IQRO PLATFORM', 400, 250);
+    
+    // 4. Header text
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.font = '800 28px sans-serif';
+    
+    // Gold gradient for Header
+    const textGrad = ctx.createLinearGradient(0, 40, 0, 80);
+    textGrad.addColorStop(0, '#38BDF8');
+    textGrad.addColorStop(1, '#818CF8');
+    ctx.fillStyle = textGrad;
+    ctx.fillText('TAYYORGARLIK PASPORTI', 400, 45);
+    
+    ctx.font = '500 13px sans-serif';
+    ctx.fillStyle = '#94A3B8';
+    ctx.fillText('ATTESTATSIYA VA TOIFA PROGNOZI', 400, 82);
+    
+    // Divider
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(100, 110);
+    ctx.lineTo(700, 110);
+    ctx.stroke();
+    
+    // 5. Left Side: User Info & Subject
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = 'bold 20px sans-serif';
+    const userName = user?.displayName || state.displayName || 'Hurmatli Foydalanuvchi';
+    ctx.fillText(userName, 80, 150);
+    
+    ctx.font = '500 14px sans-serif';
+    ctx.fillStyle = '#64748B';
+    ctx.fillText('Foydalanuvchi', 80, 180);
+    
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = 'bold 18px sans-serif';
+    ctx.fillText(subjectName, 80, 230);
+    
+    ctx.font = '500 14px sans-serif';
+    ctx.fillStyle = '#64748B';
+    ctx.fillText('Fan/Yo\'nalish', 80, 260);
+    
+    // 6. Right Side: Category Prediction (Toifa)
+    ctx.textAlign = 'right';
+    ctx.fillStyle = toifaColor;
+    ctx.font = 'bold 36px sans-serif';
+    ctx.fillText(toifa, 720, 150);
+    
+    ctx.font = '500 14px sans-serif';
+    ctx.fillStyle = '#64748B';
+    ctx.fillText('Tahminiy Toifa', 720, 195);
+    
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = 'bold 18px sans-serif';
+    ctx.fillText(nextToifaText || 'Tayyorlik darajasi ajoyib', 720, 230);
+    
+    ctx.font = '500 14px sans-serif';
+    ctx.fillStyle = '#64748B';
+    ctx.fillText('Holat/Maslahat', 720, 260);
+    
+    // Divider
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+    ctx.beginPath();
+    ctx.moveTo(100, 310);
+    ctx.lineTo(700, 310);
+    ctx.stroke();
+    
+    // 7. Bottom Row: Stats Summary
+    // Stat 1: Aniqlik
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#10B981';
+    ctx.font = 'bold 24px sans-serif';
+    ctx.fillText(`${acc}%`, 200, 340);
+    ctx.font = '500 13px sans-serif';
+    ctx.fillStyle = '#64748B';
+    ctx.fillText('O\'zlashtirish', 200, 375);
+    
+    // Stat 2: O'rtacha vaqt
+    ctx.fillStyle = '#F59E0B';
+    ctx.font = 'bold 24px sans-serif';
+    ctx.fillText(`${avgTime}s`, 400, 340);
+    ctx.font = '500 13px sans-serif';
+    ctx.fillStyle = '#64748B';
+    ctx.fillText('O\'rtacha vaqt', 400, 375);
+    
+    // Stat 3: Tezlik
+    ctx.fillStyle = '#8B5CF6';
+    ctx.font = 'bold 24px sans-serif';
+    ctx.fillText(speedLabel, 600, 340);
+    ctx.font = '500 13px sans-serif';
+    ctx.fillStyle = '#64748B';
+    ctx.fillText('Tezlik bahosi', 600, 375);
+    
+    // 8. Footer Info
+    ctx.fillStyle = '#475569';
+    ctx.font = '500 12px monospace';
+    ctx.fillText('IQRO PLATFORMASI ORQALI GENERATSIYA QILINGAN', 400, 440);
+  };
+
+  useEffect(() => {
+    if (showShareModal && canvasRef.current) {
+      drawPassport(canvasRef.current);
+    }
+  }, [showShareModal]);
+
+  const downloadPassport = () => {
+    if (!canvasRef.current) return;
+    const link = document.createElement('a');
+    link.download = `iqro_passport_${user?.displayName || 'user'}.png`;
+    link.href = canvasRef.current.toDataURL('image/png');
+    link.click();
+  };
+
+  const shareToTelegram = () => {
+    const pct = acc;
+    const toifaText = toifa;
+    const text = `🏆 IQRO platformasida attestatsiyaga tayyorgarlik darajasi pasportimni oldim!\n\n📚 Fan: ${subjectName}\n🎯 Aniqlik ko'rsatkichi: ${pct}%\n⏱ O'rtacha tezlik: ${avgTime}s (${speedLabel})\n⚡ Toifa prognozi: ${toifaText}\n\nSiz ham o'z toifangizni sinab ko'ring: iqro-t41p.vercel.app`;
+    window.open(`https://t.me/share/url?url=https://iqro-t41p.vercel.app&text=${encodeURIComponent(text)}`, '_blank');
+  };
+
 
   const earnedBadges = getEarnedBadges(state.stats);
   const totalXP = getTotalXP(state.stats);
@@ -42,10 +264,7 @@ const AchievementsPage = () => {
     Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat
   );
 
-  const total = catStats.totalAnswered;
-  const correct = catStats.totalCorrect;
   const wrong = total - correct;
-  const acc = total > 0 ? Math.round((correct / total) * 100) : 0;
 
   return (
     <motion.div
@@ -93,6 +312,57 @@ const AchievementsPage = () => {
             <div style={{ height: 8, background: 'var(--bg3)', borderRadius: 4, overflow: 'hidden', border: '1px solid var(--glass-border)' }}>
               <div style={{ width: `${levelPct}%`, height: '100%', background: `linear-gradient(90deg, ${levelInfo.color}, #8B5CF6)`, borderRadius: 4, transition: 'width 1s ease' }} />
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 📋 ATTESTATSIYA PASPORTI & PROGNOZ WIDGET */}
+      <div className="glass-panel" style={{
+        padding: '24px 20px',
+        marginBottom: 20,
+        border: '1.5px solid var(--border)',
+        background: 'linear-gradient(135deg, var(--glass-bg), rgba(41, 182, 246, 0.05))',
+        backdropFilter: 'blur(20px)',
+        borderRadius: 24,
+        boxShadow: '0 12px 32px rgba(0, 0, 0, 0.04)',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <Award size={24} color="#F59E0B" />
+            <div>
+              <div style={{ fontWeight: 800, fontSize: 16, color: 'var(--text)', letterSpacing: '-0.3px' }}>Attestatsiya Pasporti & Toifa Prognozi</div>
+              <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 500 }}>Foydalanuvchi natijalari asosida tayyorlandi</div>
+            </div>
+          </div>
+          <button 
+            onClick={() => setShowShareModal(true)} 
+            style={{ 
+              background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', 
+              color: '#fff', 
+              border: 'none', 
+              borderRadius: '12px', 
+              padding: '8px 16px', 
+              fontSize: '12px', 
+              fontWeight: 700, 
+              cursor: 'pointer', 
+              fontFamily: 'inherit',
+              boxShadow: '0 4px 10px rgba(41, 182, 246, 0.2)' 
+            }}
+          >
+            📋 Pasportni Ko'rish
+          </button>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: 12, marginTop: 12 }}>
+          <div style={{ background: 'var(--bg3)', padding: 12, borderRadius: 16, border: '1px solid var(--border)', textAlign: 'center' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text3)', marginBottom: 4 }}>TOIFA PROGNOZI</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: toifaColor }}>{toifa}</div>
+            <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 4 }}>{nextToifaText}</div>
+          </div>
+          <div style={{ background: 'var(--bg3)', padding: 12, borderRadius: 16, border: '1px solid var(--border)', textAlign: 'center' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text3)', marginBottom: 4 }}>O'RTACHA TEZLIK</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: speedColor }}>{avgTime > 0 ? `${avgTime}s / savol` : "Hisoblanmoqda..."}</div>
+            <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 4 }}>{speedLabel}</div>
           </div>
         </div>
       </div>
@@ -436,6 +706,121 @@ const AchievementsPage = () => {
       </AnimatePresence>
 
       {showPremiumModal && <PremiumModal onClose={() => setShowPremiumModal(false)} />}
+
+      {/* SHARE MODAL */}
+      <AnimatePresence>
+        {showShareModal && (
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'rgba(0,0,0,0.65)',
+              backdropFilter: 'blur(8px)',
+              zIndex: 9999,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '16px'
+            }}
+            onClick={() => setShowShareModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 20 }}
+              style={{
+                background: 'var(--bg2)',
+                border: '1.5px solid var(--border)',
+                borderRadius: '24px',
+                padding: '24px',
+                width: '100%',
+                maxWidth: '640px',
+                boxShadow: '0 24px 48px rgba(0,0,0,0.3)',
+                textAlign: 'center'
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+                <h3 style={{ margin: 0, color: 'var(--text)', fontSize: '18px', fontWeight: 800 }}>Tayyorgarlik Pasporti</h3>
+                <button 
+                  onClick={() => setShowShareModal(false)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: 'var(--text3)',
+                    fontSize: '20px',
+                    cursor: 'pointer',
+                    fontWeight: 700
+                  }}
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* Canvas rendered but scaled down responsively */}
+              <div style={{ 
+                width: '100%', 
+                overflow: 'hidden', 
+                borderRadius: '16px', 
+                border: '1.5px solid var(--border)', 
+                background: '#0F172A',
+                marginBottom: 20
+              }}>
+                <canvas 
+                  ref={canvasRef} 
+                  style={{ 
+                    width: '100%', 
+                    height: 'auto', 
+                    display: 'block' 
+                  }} 
+                />
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                <button 
+                  onClick={downloadPassport}
+                  style={{
+                    padding: '14px',
+                    background: '#29B6F6',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '14px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    fontFamily: 'inherit'
+                  }}
+                >
+                  📥 Yuklab Olish (PNG)
+                </button>
+                <button 
+                  onClick={shareToTelegram}
+                  style={{
+                    padding: '14px',
+                    background: '#24A1DE',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '14px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    fontFamily: 'inherit'
+                  }}
+                >
+                  ✈️ Telegramda Ulashish
+                </button>
+              </div>
+              <div style={{ marginTop: 12, fontSize: 11, color: 'var(--text3)' }}>
+                Pasport rasmini yuklab olib, Telegram guruhlarida do'stlaringizga yuborishingiz mumkin!
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 

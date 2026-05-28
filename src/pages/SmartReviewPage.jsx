@@ -18,7 +18,7 @@ import { TOPICS } from '../data/mockData';
 const SmartReviewPage = () => {
   const navigate = useNavigate();
   const goBack = () => navigate('/test');
-  const { state, updateState, cloudSynced } = useContext(AppContext);
+  const { state, updateState, cloudSynced, saveCustomMnemonic } = useContext(AppContext);
   const { addObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
   const [cards, setCards] = useState([]);
@@ -132,22 +132,105 @@ const SmartReviewPage = () => {
       : null;
     const waitMinutes = nextReview ? Math.max(0, Math.round((nextReview - Date.now()) / 60000)) : 0;
 
+    // Forecast Calculation
+    const todayEnd = new Date().setHours(23, 59, 59, 999);
+    const oneDayMs = 24 * 60 * 60 * 1000;
+    
+    const forecast = [
+      { label: 'Bugun', count: 0 },
+      { label: 'Ertaga', count: 0 },
+      { label: '3-kuni', count: 0 },
+      { label: '4-7 kunlar', count: 0 },
+      { label: 'Keyinroq', count: 0 },
+    ];
+
+    for (const card of categorySpacedCards) {
+      const due = card.nextReview;
+      if (due <= todayEnd) {
+        forecast[0].count++;
+      } else if (due <= todayEnd + oneDayMs) {
+        forecast[1].count++;
+      } else if (due <= todayEnd + 2 * oneDayMs) {
+        forecast[2].count++;
+      } else if (due <= todayEnd + 7 * oneDayMs) {
+        forecast[3].count++;
+      } else {
+        forecast[4].count++;
+      }
+    }
+
+    const maxCount = Math.max(...forecast.map(f => f.count), 1);
+
     return (
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ maxWidth: 600, margin: '0 auto', padding: '20px 16px' }}>
-        <div style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)', borderRadius: 24, padding: '44px 28px', textAlign: 'center', marginTop: 40, boxShadow: '0 20px 40px rgba(0,0,0,0.06)' }}>
+        <div style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)', borderRadius: 24, padding: '36px 24px', textAlign: 'center', marginTop: 24, boxShadow: '0 20px 40px rgba(0,0,0,0.06)' }}>
           <div style={{ fontSize: 52, marginBottom: 14, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.08))' }}>🧠</div>
           <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)', letterSpacing: '-0.5px' }}>Hozircha takrorlash kerak emas!</div>
           {totalSpaced > 0 ? (
-            <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.7, marginBottom: 24, fontWeight: 500 }}>
+            <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.7, marginBottom: 28, fontWeight: 500 }}>
               Jami <strong style={{ color: 'var(--text)' }}>{totalSpaced}</strong> ta savol kuzatilmoqda.<br />
               Keyingi takrorlash: <strong style={{ color: '#29B6F6' }}>{waitMinutes < 60 ? `${waitMinutes} daqiqa` : waitMinutes < 1440 ? `${Math.round(waitMinutes / 60)} soat` : `${Math.round(waitMinutes / 1440)} kun`}</strong> dan keyin
             </div>
           ) : (
-            <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.7, marginBottom: 24, fontWeight: 500 }}>
+            <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.7, marginBottom: 28, fontWeight: 500 }}>
               Testlarda xato qilganingizda savollar avtomatik ravishda bu yerga qo'shiladi.<br />
               Boshqa testlarni yechib boring!
             </div>
           )}
+
+          {/* 📊 Visual Forecast Widget */}
+          {totalSpaced > 0 && (
+            <div style={{ 
+              background: 'var(--bg3)', 
+              borderRadius: 20, 
+              padding: '20px 16px', 
+              marginBottom: 32, 
+              border: '1.5px solid var(--border)',
+              textAlign: 'left'
+            }}>
+              <div style={{ fontSize: 13, fontWeight: 800, color: 'var(--text)', marginBottom: 2 }}>📊 Takrorlash navbati prognozi</div>
+              <div style={{ fontSize: 11, color: 'var(--text3)', marginBottom: 16 }}>Kelgusi kunlar davomida takrorlanadigan savollar hajmi.</div>
+              
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 8, alignItems: 'end', minHeight: 80, paddingBottom: 6 }}>
+                {forecast.map((day, i) => {
+                  const pct = (day.count / maxCount) * 100;
+                  return (
+                    <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: day.count > 0 ? '#29B6F6' : 'var(--text3)' }}>
+                        {day.count}
+                      </span>
+                      {/* Vertical progress bar */}
+                      <div style={{ 
+                        width: '100%', 
+                        maxWidth: 24, 
+                        height: 50, 
+                        background: 'var(--bg2)', 
+                        borderRadius: 6, 
+                        overflow: 'hidden', 
+                        display: 'flex', 
+                        alignItems: 'end' 
+                      }}>
+                        <motion.div 
+                          initial={{ height: 0 }}
+                          animate={{ height: `${pct}%` }}
+                          transition={{ duration: 0.8, ease: 'easeOut', delay: i * 0.1 }}
+                          style={{ 
+                            width: '100%', 
+                            background: day.count > 0 ? 'linear-gradient(0deg, #29B6F6 0%, #8B5CF6 100%)' : 'var(--border)', 
+                            borderRadius: '0 0 6px 6px' 
+                          }}
+                        />
+                      </div>
+                      <span style={{ fontSize: 9, fontWeight: 600, color: 'var(--text3)', textAlign: 'center', whiteSpace: 'nowrap' }}>
+                        {day.label}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}>
             <ArrowLeft size={16} /> Bosh sahifaga
           </motion.button>
@@ -273,6 +356,59 @@ const SmartReviewPage = () => {
                 <div style={{ padding: '14px 16px', borderRadius: 12, fontSize: 14, lineHeight: 1.6, background: isCorrect ? 'rgba(22, 163, 74, 0.12)' : 'rgba(220, 38, 38, 0.12)', border: `1px solid ${isCorrect ? 'rgba(22, 163, 74, 0.25)' : 'rgba(220, 38, 38, 0.25)'}`, color: 'var(--text2)', marginBottom: 14 }}>
                   <strong style={{ color: isCorrect ? '#22c55e' : '#ef4444' }}>{isCorrect ? '✅ To\'g\'ri!' : '❌ Noto\'g\'ri!'}</strong>{' '}{card.explanation || ''}
                 </div>
+
+                {(() => {
+                  const qHash = (card.q || '').substring(0, 100);
+                  return (
+                    <div style={{ marginBottom: 16 }}>
+                      {state.customMnemonics?.[qHash] && (
+                        <div style={{ borderColor: 'var(--amber)', background: 'rgba(245, 158, 11, 0.05)', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 10, padding: 12, borderRadius: 12, border: '1px solid var(--border)' }}>
+                          <div style={{ fontSize: 18 }}>🧠</div>
+                          <div style={{ fontSize: 13, color: 'var(--text2)' }}><strong>Sizning eslatmangiz:</strong><br />{state.customMnemonics[qHash]}</div>
+                        </div>
+                      )}
+                      <div className="custom-mnemonic-box" style={{
+                        background: 'var(--glass-bg)',
+                        border: '1.5px dashed var(--border)',
+                        borderRadius: '16px',
+                        padding: '14px',
+                        textAlign: 'left',
+                        transition: 'all 0.3s ease'
+                      }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', fontSize: '13px', fontWeight: '700', color: 'var(--text2)' }}>
+                          <span>🧠 Shaxsiy mnemonika (Eslatma)</span>
+                        </div>
+                        <textarea
+                          placeholder="Ushbu savol uchun shaxsiy eslatma yoki assotsiatsiya yozing..."
+                          value={state.customMnemonics?.[qHash] || ''}
+                          onChange={(e) => saveCustomMnemonic(qHash, e.target.value)}
+                          style={{
+                            width: '100%',
+                            minHeight: '60px',
+                            background: 'var(--bg3)',
+                            border: '1px solid var(--border)',
+                            borderRadius: '10px',
+                            padding: '8px 12px',
+                            color: 'var(--text)',
+                            fontSize: '13px',
+                            fontFamily: 'inherit',
+                            resize: 'vertical',
+                            outline: 'none',
+                            transition: 'border-color 0.2s'
+                          }}
+                          onFocus={(e) => e.target.style.borderColor = '#29B6F6'}
+                          onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
+                        />
+                        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
+                          <span style={{ fontSize: '11px', color: 'var(--text3)' }}>
+                            {(state.customMnemonics?.[qHash] || '').trim() ? '✓ Saqlandi' : "Yozilgan eslatma keyingi safar ham ko'rsatiladi"}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+
                 <button onClick={nextCard} style={{ width: '100%', padding: '14px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
                   {currentIdx + 1 >= cards.length ? 'Yakunlash' : 'Keyingi savol'} <ChevronRight size={18} />
                 </button>

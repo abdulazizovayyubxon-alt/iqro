@@ -54,7 +54,9 @@ const buildDefaultState = () => ({
   },
   dailyStreak: 0,
   lastGoalDate: null,
-  spacedCards: []
+  spacedCards: [],
+  customMnemonics: {},
+  timeStats: { totalTime: 0, totalQuestions: 0 }
 });
 
 // ────────────────────────────────────────────────────────
@@ -98,7 +100,9 @@ export const AppProvider = ({ children }) => {
             ...buildDefaultState(),
             ...data,
             stats: data.stats || { chqbt: buildDefaultCatStats(), art: buildDefaultCatStats() },
-            topicStats: data.topicStats || {}
+            topicStats: data.topicStats || {},
+            customMnemonics: data.customMnemonics || {},
+            timeStats: data.timeStats || { totalTime: 0, totalQuestions: 0 }
           }));
         } else {
           // Yangi foydalanuvchi — toza holat bilan boshlash
@@ -343,6 +347,11 @@ export const AppProvider = ({ children }) => {
       const newStreak = results.wrongCount > 0 ? 0 : catStats.streak + results.correctCount;
       const newMaxStreak = Math.max(catStats.maxStreak, newStreak);
 
+      // Vaqt statistikasi (Time Analytics)
+      const sessionTime = results.sessionTime || 0;
+      const sessionQuestions = results.totalAnswered || 0;
+      const currentTimeStats = prev.timeStats || { totalTime: 0, totalQuestions: 0 };
+
       return {
         ...prev,
         totalScore: (prev.totalScore || 0) + results.correctCount * 2,
@@ -353,6 +362,10 @@ export const AppProvider = ({ children }) => {
         dailyStreak,
         lastGoalDate,
         spacedCards: results.updatedSpacedCards || prev.spacedCards,
+        timeStats: {
+          totalTime: currentTimeStats.totalTime + sessionTime,
+          totalQuestions: currentTimeStats.totalQuestions + sessionQuestions
+        },
         stats: {
           ...prev.stats,
           [cat]: {
@@ -368,6 +381,17 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  // Shaxsiy mnemonika saqlash
+  const saveCustomMnemonic = (qHash, text) => {
+    setState(prev => ({
+      ...prev,
+      customMnemonics: {
+        ...(prev.customMnemonics || {}),
+        [qHash]: text
+      }
+    }));
+  };
+
   // ─── Statistikani reset qilish ───
   const resetStats = async () => {
     const fresh = buildDefaultState();
@@ -380,6 +404,42 @@ export const AppProvider = ({ children }) => {
     showToast("Statistika tozalandi", 'info');
   };
 
+  // ─── Xatolarni o'chirish va tozalash ───
+  const deleteMistake = (questionText) => {
+    setState(prev => {
+      const cat = prev.activeCategory;
+      const catStats = prev.stats[cat] || buildDefaultCatStats();
+      const newMistakes = catStats.mistakes.filter(m => m.question !== questionText);
+      return {
+        ...prev,
+        stats: {
+          ...prev.stats,
+          [cat]: {
+            ...catStats,
+            mistakes: newMistakes
+          }
+        }
+      };
+    });
+  };
+
+  const clearMistakes = () => {
+    setState(prev => {
+      const cat = prev.activeCategory;
+      const catStats = prev.stats[cat] || buildDefaultCatStats();
+      return {
+        ...prev,
+        stats: {
+          ...prev.stats,
+          [cat]: {
+            ...catStats,
+            mistakes: []
+          }
+        }
+      };
+    });
+  };
+
   return (
     <AppContext.Provider value={{
       state,
@@ -388,6 +448,9 @@ export const AppProvider = ({ children }) => {
       addMistake,
       batchCommitResults,
       resetStats,
+      deleteMistake,
+      clearMistakes,
+      saveCustomMnemonic,
       cloudSynced
     }}>
       {children}

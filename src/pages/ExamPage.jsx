@@ -19,6 +19,18 @@ import { summarizeTestResults } from '../engine/SmartQuestionEngine';
 
 const EXAM_TOTAL = 50;
 
+const SUBJECT_BLUEPRINTS = {
+  chqbt: { 0: 8, 1: 8, 2: 7, 3: 4, 4: 4, 5: 4, 6: 15 },
+  art: { 7: 10, 8: 3, 9: 4, 10: 3, 11: 7, 12: 4, 13: 4, 14: 15 },
+  tarix: { 15: 5, 16: 4, 17: 3, 18: 6, 19: 5, 20: 7, 21: 5, 22: 15 },
+  sport: { 23: 2, 24: 3, 25: 5, 26: 6, 27: 1, 28: 2, 29: 16, 30: 5 },
+  boshlangich: { 31: 4, 32: 3, 33: 9, 34: 5, 35: 4, 36: 5, 37: 5, 38: 15 },
+  info: { 39: 3, 40: 7, 41: 5, 42: 3, 43: 3, 44: 5, 45: 4, 46: 15 },
+  mtt: { 47: 5, 48: 5, 49: 5, 50: 5, 51: 5, 52: 5, 53: 5, 54: 15 },
+  til: { 55: 5, 56: 8, 57: 7, 58: 5, 59: 8, 60: 2, 61: 0, 62: 15 },
+  mtt_rahbar: { 63: 5, 64: 5, 65: 5, 66: 5, 67: 5, 68: 5, 69: 5, 70: 15 }
+};
+
 const getExamDuration = (category) => {
   switch (category) {
     case 'boshlangich':
@@ -44,7 +56,7 @@ const ExamPage = () => {
   const navigate = useNavigate();
   const goBack = () => navigate('/test');
   const { user } = useAuth();
-  const { state, batchCommitResults } = useContext(AppContext);
+  const { state, batchCommitResults, updateState } = useContext(AppContext);
   const { addObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
   const cat = state.activeCategory;
@@ -75,25 +87,57 @@ const ExamPage = () => {
   const [questions, setQuestions] = useState([]);
   const [topicGroups, setTopicGroups] = useState([]); // [{name, icon, start, end}]
   const [answers, setAnswers] = useState({});
+  const [flagged, setFlagged] = useState({});
+  const [pacing, setPacing] = useState(null);
+  const [weakTopicsSorted, setWeakTopicsSorted] = useState([]);
   const [currentQ, setCurrentQ] = useState(0);
   const [timeLeft, setTimeLeft] = useState(() => getExamDuration(cat));
   const [finished, setFinished] = useState(false);
   const [startTime] = useState(new Date());
   const [endTime, setEndTime] = useState(null);
   const [showObjectionModal, setShowObjectionModal] = useState(false);
-  const [loading, setLoading] = useState(true);
+  
+  const [examStarted, setExamStarted] = useState(false);
+  const [examType, setExamType] = useState('standard');
+  const [loading, setLoading] = useState(false);
+  
   const [cheatWarnings, setCheatWarnings] = useState(0);
   const [cheatDisqualified, setCheatDisqualified] = useState(false);
   const timerRef = useRef(null);
 
+  const questionStartTimeRef = useRef(Date.now());
+  const questionTimesRef = useRef({});
+
+  const accumulateTime = () => {
+    if (questionStartTimeRef.current) {
+      const elapsed = Math.round((Date.now() - questionStartTimeRef.current) / 1000);
+      const capped = Math.min(180, elapsed); // 3 daqiqa cap
+      questionTimesRef.current[currentQ] = (questionTimesRef.current[currentQ] || 0) + capped;
+    }
+    questionStartTimeRef.current = Date.now();
+  };
+
+  const handleQuestionSwitch = (nextIdx) => {
+    accumulateTime();
+    setCurrentQ(nextIdx);
+  };
+
   // Savollarni yuklash (Firestore dan)
   useEffect(() => {
+    if (!examStarted) return;
+
     setTimeLeft(getExamDuration(cat));
     setFinished(false);
     setAnswers({});
+    setFlagged({});
+    setPacing(null);
+    setWeakTopicsSorted([]);
     setCurrentQ(0);
     setCheatWarnings(0);
     setCheatDisqualified(false);
+    questionTimesRef.current = {};
+    questionStartTimeRef.current = Date.now();
+
     const loadExamQuestions = async () => {
       setLoading(true);
       try {
@@ -130,22 +174,95 @@ const ExamPage = () => {
           };
         });
 
-        // Pedagogik mahorat (yoki O'qitish metodikasi) savollarini ajratish
-        const pedTopic = filteredTopics.find(t => t.name === "Pedagogik mahorat");
-        const pedTopicId = pedTopic ? pedTopic.id : (cat === 'art' ? 14 : 6);
-        const pedAll = allQ.filter(q => q.topicId === pedTopicId);
-        const otherAll = allQ.filter(q => q.topicId !== pedTopicId);
+        // 🎯 RASMIY SPETSIFIKATSIYA BO'YICHA SAVOLLARNI PROPORSIYALASH VA QIYNILIK BALANSI (30-56-14)
+        const blueprint = SUBJECT_BLUEPRINTS[cat];
+        let finalQuestions = [];
 
-        // Ped mahoratdan doim 10 ta savol olamiz (agar bor bo'lsa)
-        const pedCount = Math.min(pedAll.length, 10);
-        const pedSelected = shuffleArray(pedAll).slice(0, pedCount);
+        if (blueprint) {
+          const targetY1 = cat === 'sport' ? 12 : 15;
+          const targetY2 = cat === 'sport' ? 22 : 28;
+          const targetY3 = cat === 'sport' ? 6 : 7;
 
-        // Qolgan savollarni boshqa mavzulardan olamiz (jami 50 ta bo'lishi uchun)
-        const otherCount = EXAM_TOTAL - pedSelected.length;
-        const otherSelected = shuffleArray(otherAll).slice(0, otherCount);
+          let remY1 = targetY1;
+          let remY2 = targetY2;
+          let remY3 = targetY3;
 
-        // Barchasini birlashtirib, aralashtiramiz
-        const final = shuffleArray([...pedSelected, ...otherSelected]);
+          const weakTopicIds = filteredTopics
+            .filter(t => {
+              const s = state.topicStats[t.id];
+              return s && s.answered > 0 && (s.correct / s.answered) < 0.7;
+            })
+            .map(t => t.id);
+
+          Object.keys(blueprint).forEach(topicStr => {
+            const topicIdNum = parseInt(topicStr, 10);
+            const countNeeded = blueprint[topicIdNum];
+            if (countNeeded === 0) return;
+
+            const topicQ = allQ.filter(q => q.topicId === topicIdNum);
+            
+            let y1Pool = shuffleArray(topicQ.filter(q => q.difficulty === 'Y1'));
+            let y2Pool = shuffleArray(topicQ.filter(q => q.difficulty === 'Y2'));
+            let y3Pool = shuffleArray(topicQ.filter(q => q.difficulty === 'Y3'));
+
+            // Weak rejimida zaif mavzular xatolarini birinchi qo'yamiz
+            if (examType === 'weak' && weakTopicIds.includes(topicIdNum)) {
+              const mistakes = (state.stats?.[cat]?.mistakes) || [];
+              const isMistake = (q) => mistakes.some(m => m.question === q.q);
+              
+              y1Pool = [...y1Pool.filter(isMistake), ...y1Pool.filter(q => !isMistake(q))];
+              y2Pool = [...y2Pool.filter(isMistake), ...y2Pool.filter(q => !isMistake(q))];
+              y3Pool = [...y3Pool.filter(isMistake), ...y3Pool.filter(q => !isMistake(q))];
+            }
+
+            for (let s = 0; s < countNeeded; s++) {
+              let chosenPool = null;
+              let chosenDiff = '';
+              let bestScore = -1;
+
+              if (y1Pool.length > 0 && remY1 > 0) {
+                const score = remY1 / targetY1;
+                if (score > bestScore) { bestScore = score; chosenPool = y1Pool; chosenDiff = 'Y1'; }
+              }
+              if (y2Pool.length > 0 && remY2 > 0) {
+                const score = remY2 / targetY2;
+                if (score > bestScore) { bestScore = score; chosenPool = y2Pool; chosenDiff = 'Y2'; }
+              }
+              if (y3Pool.length > 0 && remY3 > 0) {
+                const score = remY3 / targetY3;
+                if (score > bestScore) { bestScore = score; chosenPool = y3Pool; chosenDiff = 'Y3'; }
+              }
+
+              // Fallback
+              if (!chosenPool) {
+                if (y2Pool.length > 0) { chosenPool = y2Pool; chosenDiff = 'Y2'; }
+                else if (y1Pool.length > 0) { chosenPool = y1Pool; chosenDiff = 'Y1'; }
+                else if (y3Pool.length > 0) { chosenPool = y3Pool; chosenDiff = 'Y3'; }
+              }
+
+              if (chosenPool && chosenPool.length > 0) {
+                const q = chosenPool.shift();
+                finalQuestions.push(q);
+                if (chosenDiff === 'Y1') remY1--;
+                if (chosenDiff === 'Y2') remY2--;
+                if (chosenDiff === 'Y3') remY3--;
+              }
+            }
+          });
+        } else {
+          // Fallback
+          const pedTopic = filteredTopics.find(t => t.name === "Pedagogik mahorat");
+          const pedTopicId = pedTopic ? pedTopic.id : (cat === 'art' ? 14 : 6);
+          const pedAll = allQ.filter(q => q.topicId === pedTopicId);
+          const otherAll = allQ.filter(q => q.topicId !== pedTopicId);
+          const pedCount = Math.min(pedAll.length, 10);
+          const pedSelected = shuffleArray(pedAll).slice(0, pedCount);
+          const otherCount = EXAM_TOTAL - pedSelected.length;
+          const otherSelected = shuffleArray(otherAll).slice(0, otherCount);
+          finalQuestions = [...pedSelected, ...otherSelected];
+        }
+
+        const final = shuffleArray(finalQuestions);
         setQuestions(final);
 
         // Guruhlarni qayta hisoblash
@@ -166,7 +283,7 @@ const ExamPage = () => {
     };
 
     loadExamQuestions();
-  }, [cat]);
+  }, [cat, examStarted, examType]);
 
   // Taymer
   useEffect(() => {
@@ -199,13 +316,56 @@ const ExamPage = () => {
 
   const handleFinish = (auto = false) => {
     if (!auto && !window.confirm("Imtihonni yakunlashni tasdiqlaysizmi?")) return;
+    accumulateTime();
     clearInterval(timerRef.current);
     setFinished(true);
     setEndTime(new Date());
 
-    // 🧠 SMART ENGINE: Natijalarni tahlil qilish va bir marta saqlash
-    // Bu barcha 50 ta savolni tahlil qilib, state'ni 1 marta yangilaydi (50 ta write o'rniga 1 ta write)
-    const results = summarizeTestResults(questions, answers, state.spacedCards || [], -1); // -1 = barcha mavzular
+    // Vaqt analitikasini hisoblash
+    const times = questionTimesRef.current;
+    let y1Time = 0, y1Count = 0;
+    let y2Time = 0, y2Count = 0;
+    let y3Time = 0, y3Count = 0;
+
+    questions.forEach((qObj, idx) => {
+      const t = times[idx] || 0;
+      if (qObj.difficulty === 'Y1') { y1Time += t; y1Count++; }
+      else if (qObj.difficulty === 'Y2') { y2Time += t; y2Count++; }
+      else if (qObj.difficulty === 'Y3') { y3Time += t; y3Count++; }
+    });
+
+    setPacing({
+      avgY1: y1Count > 0 ? Math.round(y1Time / y1Count) : 0,
+      avgY2: y2Count > 0 ? Math.round(y2Time / y2Count) : 0,
+      avgY3: y3Count > 0 ? Math.round(y3Time / y3Count) : 0,
+      totalTime: Object.values(times).reduce((a, b) => a + b, 0)
+    });
+
+    // Tavsiyalarni hisoblash
+    const topicPerformance = topicGroups.map(group => {
+      const totalInTopic = group.indices.length;
+      const correctInTopic = group.indices.filter(idx => answers[idx] === questions[idx].correct).length;
+      const accuracy = totalInTopic > 0 ? (correctInTopic / totalInTopic) * 100 : 0;
+      
+      const firstQIndex = group.indices[0];
+      const topicId = questions[firstQIndex]?.topicId;
+
+      return {
+        name: group.name,
+        topicId: topicId,
+        accuracy: accuracy,
+        total: totalInTopic,
+        correct: correctInTopic
+      };
+    });
+
+    const weakTopics = topicPerformance
+      .filter(t => t.accuracy < 80)
+      .sort((a, b) => a.accuracy - b.accuracy);
+    setWeakTopicsSorted(weakTopics);
+
+    // 🧠 SMART ENGINE
+    const results = summarizeTestResults(questions, answers, state.spacedCards || [], -1);
     batchCommitResults(results);
 
     const correct = results.correctCount;
@@ -257,6 +417,81 @@ const ExamPage = () => {
   const pct = questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0;
   const isUrgent = timeLeft <= 300; // 5 daqiqa
   const isWarning = timeLeft <= 600; // 10 daqiqa
+
+  if (!examStarted) {
+    return (
+      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="page" style={{ maxWidth: 600, margin: '40px auto', padding: '20px 16px' }}>
+        <div className="glass-panel" style={{ padding: '36px 24px', textAlign: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.06)' }}>
+          <div style={{ fontSize: 52, marginBottom: 16 }}>🏆</div>
+          <h1 style={{ fontSize: 24, fontWeight: 900, color: 'var(--text)', marginBottom: 8, letterSpacing: '-0.5px' }}>Imtihon Simulyatori</h1>
+          <p style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 28, fontWeight: 500 }}>
+            Attestatsiya malaka sinovi standartlariga mos ravishda 50 ta savoldan iborat real imtihon simulyatsiyasi.
+          </p>
+
+          {/* Exam Type Selector */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 32, textAlign: 'left' }}>
+            {/* Standard option */}
+            <div 
+              onClick={() => setExamType('standard')}
+              style={{
+                padding: '16px 20px',
+                borderRadius: 16,
+                border: '2px solid',
+                borderColor: examType === 'standard' ? 'var(--blue)' : 'var(--border)',
+                background: examType === 'standard' ? 'var(--blue-bg)' : 'var(--bg2)',
+                cursor: 'pointer',
+                transition: 'all 0.2s'
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
+                <strong style={{ fontSize: 15, color: 'var(--text)' }}>📋 Standart Attestatsiya Imtihoni</strong>
+                <input type="radio" checked={examType === 'standard'} readOnly />
+              </div>
+              <div style={{ fontSize: 12, color: 'var(--text3)', lineHeight: 1.5 }}>
+                Haqiqiy malaka sinovi formati. Barcha bo'limlardan aralash savollar va 10 ta pedagogik mahorat savollari.
+              </div>
+            </div>
+
+            {/* Weak option */}
+            <div 
+              onClick={() => setExamType('weak')}
+              style={{
+                padding: '16px 20px',
+                borderRadius: 16,
+                border: '2px solid',
+                borderColor: examType === 'weak' ? 'var(--blue)' : 'var(--border)',
+                background: examType === 'weak' ? 'var(--blue-bg)' : 'var(--bg2)',
+                cursor: 'pointer',
+                transition: 'all 0.2s'
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
+                <strong style={{ fontSize: 15, color: 'var(--text)' }}>🔥 Zaif mavzular bo'yicha moslashtirilgan</strong>
+                <input type="radio" checked={examType === 'weak'} readOnly />
+              </div>
+              <div style={{ fontSize: 12, color: 'var(--text3)', lineHeight: 1.5 }}>
+                Platformadagi shaxsiy statistikangizga asoslangan imtihon. Siz eng ko'p xato qilgan yoki aniqligi past mavzularga ko'proq urg'u beradi.
+              </div>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <motion.button 
+              whileHover={{ scale: 1.01, y: -1 }} 
+              whileTap={{ scale: 0.98 }} 
+              onClick={() => { setExamStarted(true); }}
+              style={{ padding: '16px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontSize: 16, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}
+            >
+              Imtihonni boshlash
+            </motion.button>
+            <button className="btn btn-outline" style={{ padding: '14px', borderRadius: 16 }} onClick={goBack}>
+              Bosh sahifaga qaytish
+            </button>
+          </div>
+        </div>
+      </motion.div>
+    );
+  }
 
   if (loading) {
     return (
@@ -340,6 +575,74 @@ const ExamPage = () => {
             </div>
           </div>
 
+          {/* ⚡ PACING ANALYTICS CARD */}
+          {pacing && (
+            <div style={{
+              background: 'var(--bg2)',
+              border: '1px solid var(--border)',
+              borderRadius: 16,
+              padding: '16px 20px',
+              marginTop: 16,
+              marginBottom: 16,
+              textAlign: 'left'
+            }}>
+              <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 12 }}>
+                <Clock size={16} style={{ color: 'var(--blue)' }} />
+                <strong style={{ fontSize: 14, color: 'var(--text)', fontWeight: 800 }}>Vaqt va Tezlik Tahlili</strong>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', gap: 12 }}>
+                <div style={{ background: 'var(--bg3)', padding: 10, borderRadius: 8, textAlign: 'center', border: '1px solid var(--border)' }}>
+                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600, marginBottom: 2 }}>Oson (Y1)</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{pacing.avgY1} soniya</div>
+                </div>
+                <div style={{ background: 'var(--bg3)', padding: 10, borderRadius: 8, textAlign: 'center', border: '1px solid var(--border)' }}>
+                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600, marginBottom: 2 }}>Oʻrta (Y2)</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{pacing.avgY2} soniya</div>
+                </div>
+                <div style={{ background: 'var(--bg3)', padding: 10, borderRadius: 8, textAlign: 'center', border: '1px solid var(--border)' }}>
+                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600, marginBottom: 2 }}>Qiyin (Y3)</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{pacing.avgY3} soniya</div>
+                </div>
+              </div>
+              <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 10, lineHeight: 1.4 }}>
+                {pacing.avgY3 > 60 
+                  ? "💡 Maslahat: Murakkab (Y3) keys savollariga koʻp vaqt (60 soniyadan ortiq) yoʻqotyapsiz. Haqiqiy imtihonda ulgurish uchun tezroq fikrlashga harakat qiling." 
+                  : "⚡ Barakalla! Vaqtni har bir qiyinchilik darajasida juda toʻgʻri taqsimladingiz."}
+              </div>
+            </div>
+          )}
+
+          {/* 💡 PERSONALIZED ADVICE CARD */}
+          {weakTopicsSorted.length > 0 && (
+            <div style={{
+              background: 'var(--blue-bg)',
+              border: '1.5px solid var(--blue)',
+              borderRadius: 16,
+              padding: '16px 20px',
+              marginTop: 16,
+              marginBottom: 16,
+              textAlign: 'left'
+            }}>
+              <div style={{ display: 'flex', gap: 10, alignItems: 'center', marginBottom: 8 }}>
+                <span style={{ fontSize: 18 }}>💡</span>
+                <strong style={{ fontSize: 14, color: 'var(--text)', fontWeight: 800 }}>Siz uchun Shaxsiy Tavsiya</strong>
+              </div>
+              <p style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.5, margin: '0 0 12px 0' }}>
+                Imtihon natijalariga koʻra, sizda <strong>{weakTopicsSorted[0].name}</strong> boʻlimidan bilim koʻrsatkichi pastroq boʻldi ({weakTopicsSorted[0].correct} ta to'g'ri, {weakTopicsSorted[0].total} ta savoldan). Ushbu boʻlimdagi boʻshliqlarni toʻldirish uchun mavzuli testlarni bajarishni tavsiya qilamiz.
+              </p>
+              <button 
+                className="btn btn-sm btn-primary"
+                onClick={() => {
+                  updateState({ topicId: weakTopicsSorted[0].topicId });
+                  navigate('/test');
+                }}
+                style={{ padding: '8px 16px', borderRadius: 10, fontSize: 13, fontWeight: 700 }}
+              >
+                🎯 Mavzuni Qayta Mashq Qilish
+              </button>
+            </div>
+          )}
+
           {/* Izoh */}
           <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 28, fontSize: 13 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -368,11 +671,10 @@ const ExamPage = () => {
                   const ans = answers[qi];
                   const isCorrect = ans === q.correct;
                   const isWrong = ans !== undefined && !isCorrect;
-                  const isSkipped = ans === undefined;
                   return (
                     <button
                       key={qi}
-                      onClick={() => { setFinished(false); setCurrentQ(qi); setTimeout(() => setFinished(true), 0); }}
+                      onClick={() => { setFinished(false); handleQuestionSwitch(qi); setTimeout(() => setFinished(true), 0); }}
                       style={{
                         width: 40, height: 40, borderRadius: 10, border: isWrong ? '2px dashed var(--red)' : isCorrect ? '2px solid var(--green)' : '1.5px solid var(--border2)',
                         background: isCorrect ? 'var(--green-bg)' : isWrong ? 'var(--red-bg)' : 'var(--bg3)',
@@ -462,13 +764,28 @@ const ExamPage = () => {
                 <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                   Savol {currentQ + 1} / {questions.length}
                 </div>
-                <button
-                  className="objection-btn"
-                  style={{ position: 'static' }}
-                  onClick={() => setShowObjectionModal(true)}
-                >
-                  <AlertCircle size={13} /> E'tiroz
-                </button>
+                <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+                  <button
+                    className="objection-btn"
+                    style={{ position: 'static', display: 'flex', alignItems: 'center', gap: 6, padding: '6px 12px', borderRadius: 8, fontSize: 13, fontWeight: 600, border: '1px solid var(--border)' }}
+                    onClick={() => setShowObjectionModal(true)}
+                  >
+                    <AlertCircle size={13} /> E'tiroz
+                  </button>
+                  <button
+                    onClick={() => setFlagged(prev => ({ ...prev, [currentQ]: !prev[currentQ] }))}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: 6,
+                      background: flagged[currentQ] ? 'var(--amber-bg)' : 'transparent',
+                      border: flagged[currentQ] ? '1px solid var(--amber)' : '1px solid var(--border)',
+                      color: flagged[currentQ] ? 'var(--amber)' : 'var(--text3)',
+                      padding: '6px 12px', borderRadius: 8, fontSize: 13, fontWeight: 600, cursor: 'pointer'
+                    }}
+                  >
+                    <Flag size={13} fill={flagged[currentQ] ? 'var(--amber)' : 'none'} />
+                    {flagged[currentQ] ? 'Belgilangan' : 'Belgilash'}
+                  </button>
+                </div>
               </div>
 
               {/* Savol rasmi yoki sxemasi */}
@@ -518,14 +835,14 @@ const ExamPage = () => {
                 <button
                   className="btn btn-outline"
                   disabled={currentQ === 0}
-                  onClick={() => setCurrentQ(prev => prev - 1)}
+                  onClick={() => handleQuestionSwitch(currentQ - 1)}
                 >
                   <ChevronLeft size={18} /> Orqaga
                 </button>
                 <button
                   className="btn btn-primary"
                   disabled={currentQ === questions.length - 1}
-                  onClick={() => setCurrentQ(prev => prev + 1)}
+                  onClick={() => handleQuestionSwitch(currentQ + 1)}
                 >
                   Keyingi <ChevronRight size={18} />
                 </button>
@@ -546,11 +863,15 @@ const ExamPage = () => {
               </div>
             </div>
 
-            {/* Rang izohlari - Minimalist */}
+            {/* Rang izohlari */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, fontSize: 11, color: 'var(--text2)', marginBottom: 16 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <div style={{ width: 12, height: 12, borderRadius: 4, background: 'var(--blue)' }} />
-                <span>Belgilangan</span>
+                <span>Javob berilgan</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <div style={{ width: 12, height: 12, borderRadius: 4, background: 'var(--amber)' }} />
+                <span>Belgilangan 🚩</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <div style={{ width: 12, height: 12, borderRadius: 4, background: 'var(--bg3)', border: '1px solid var(--border)' }} />
@@ -566,21 +887,53 @@ const ExamPage = () => {
               {questions.map((_, i) => {
                 const isCurrent = i === currentQ;
                 const isAns = answers[i] !== undefined;
+                const isFlagged = flagged[i];
+
+                let btnBg = 'var(--bg3)';
+                let btnColor = 'var(--text)';
+                let btnBorder = isCurrent ? '2px solid var(--text)' : '1px solid var(--border)';
+
+                if (isAns) {
+                  btnBg = 'var(--blue)';
+                  btnColor = 'white';
+                  btnBorder = isCurrent ? '2px solid var(--text)' : 'none';
+                }
+                if (isFlagged) {
+                  btnBg = 'var(--amber)';
+                  btnColor = 'white';
+                  btnBorder = isCurrent ? '2px solid var(--text)' : 'none';
+                }
+                if (isCurrent && !isAns && !isFlagged) {
+                  btnBg = 'var(--bg2)';
+                }
+
                 return (
                   <button
                     key={i}
-                    onClick={() => setCurrentQ(i)}
+                    onClick={() => handleQuestionSwitch(i)}
                     style={{
                       width: '100%', aspectRatio: '1', borderRadius: 4,
-                      border: isCurrent ? '2px solid var(--text)' : isAns ? 'none' : '1px solid var(--border)',
-                      background: isAns && !isCurrent ? 'var(--blue)' : isCurrent ? 'var(--bg2)' : 'var(--bg3)',
-                      color: isAns && !isCurrent ? 'white' : 'var(--text)',
+                      border: btnBorder,
+                      background: btnBg,
+                      color: btnColor,
                       fontWeight: 700, fontSize: 10, cursor: 'pointer',
                       transition: 'all 0.15s', padding: 0,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center'
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      position: 'relative'
                     }}
                   >
                     {i + 1}
+                    {isFlagged && (
+                      <span style={{
+                        position: 'absolute',
+                        top: 2,
+                        right: 2,
+                        width: 4,
+                        height: 4,
+                        borderRadius: '50%',
+                        background: 'white'
+                      }} />
+                    )}
                   </button>
                 );
               })}

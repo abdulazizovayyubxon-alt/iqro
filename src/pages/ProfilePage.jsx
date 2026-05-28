@@ -5,7 +5,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield, Download, FileText } from 'lucide-react';
+import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield, Download, FileText, Send } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
 import { SUBJECTS } from '../data/mockData';
@@ -34,6 +34,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
   const [showPremium, setShowPremium] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showTelegramModal, setShowTelegramModal] = useState(false);
   const [editForm, setEditForm] = useState({ name: '', gender: '', birthDate: '', goal: '', subject: '' });
   const [saving, setSaving] = useState(false);
   const [refCode, setRefCode] = useState('');
@@ -102,7 +103,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
 
   // Modal history interception for back button
   useEffect(() => {
-    const hasOpenModal = showEdit || showPremium || showLogoutConfirm || showPrivacy;
+    const hasOpenModal = showEdit || showPremium || showLogoutConfirm || showPrivacy || showTelegramModal;
     if (!hasOpenModal) return;
 
     window.history.pushState({ profileModalOpen: true }, '');
@@ -112,6 +113,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
       setShowPremium(false);
       setShowLogoutConfirm(false);
       setShowPrivacy(false);
+      setShowTelegramModal(false);
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -122,7 +124,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
         window.history.back();
       }
     };
-  }, [showEdit, showPremium, showLogoutConfirm, showPrivacy]);
+  }, [showEdit, showPremium, showLogoutConfirm, showPrivacy, showTelegramModal]);
 
   // Urgency countdown interval
   useEffect(() => {
@@ -520,6 +522,18 @@ export default function ProfilePage({ theme, toggleTheme }) {
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
 
+          {/* Telegram Eslatmalar */}
+          <button className="pp-menu-item" onClick={() => setShowTelegramModal(true)}>
+            <div className="pp-menu-icon" style={{ background: 'rgba(41, 182, 246, 0.1)', color: '#29B6F6' }}>
+              <Send size={20} />
+            </div>
+            <span className="pp-menu-label">Telegram eslatmalar</span>
+            <div style={{ marginRight: 8, fontSize: 11, fontWeight: 700, color: state.telegramEnabled ? 'var(--green)' : 'var(--text3)' }}>
+              {state.telegramEnabled ? "Yoqilgan" : "O'chirilgan"}
+            </div>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
           {/* Maxfiylik Siyosati */}
           <button className="pp-menu-item" onClick={() => setShowPrivacy(true)}>
             <div className="pp-menu-icon" style={{ background: 'rgba(255,255,255,0.06)', color: 'var(--text2)' }}>
@@ -688,6 +702,98 @@ export default function ProfilePage({ theme, toggleTheme }) {
                 cursor: 'pointer', 
                 fontFamily: 'inherit',
                 transition: 'opacity 0.2s'
+              }}
+            >
+              Tushunarli 🤝
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ═══ TELEGRAM INTEGRATION MODAL ═══ */}
+      {showTelegramModal && (
+        <div className="pp-modal-overlay" onClick={() => setShowTelegramModal(false)}>
+          <div className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 440, padding: '24px' }}>
+            <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <Send size={22} style={{ color: '#29B6F6' }} /> Telegram Eslatmalar
+            </div>
+            
+            <div style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, margin: '16px 0' }}>
+              Attestatsiyaga tayyorgarlikni yanada tizimli qilish uchun har kuni takrorlashingiz kerak bo'lgan testlarni Telegram orqali qabul qiling.
+            </div>
+
+            {/* Instruction Steps */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, background: 'var(--bg3)', padding: '16px 20px', borderRadius: 16, marginBottom: 20 }}>
+              <div style={{ fontSize: 12, color: 'var(--text2)', lineHeight: 1.5 }}>
+                <strong>1-qadam:</strong> Telegramda <a href="https://t.me/iqro_robot" target="_blank" rel="noreferrer" style={{ color: '#29B6F6', fontWeight: 700 }}>@iqro_robot</a> botini oching va <code>/start</code> buyrug'ini bosing.
+              </div>
+              <div style={{ fontSize: 12, color: 'var(--text2)', lineHeight: 1.5 }}>
+                <strong>2-qadam:</strong> Botga ulanish uchun quyidagi shaxsiy ID kodini yuboring:
+                <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
+                  <code style={{ flex: 1, padding: '8px 12px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 8, fontSize: 13, fontWeight: 700, textAlign: 'center', fontFamily: 'monospace' }}>
+                    IQRO-{user.uid.substring(0, 8).toUpperCase()}
+                  </code>
+                  <button 
+                    onClick={() => {
+                      navigator.clipboard.writeText(`IQRO-${user.uid.substring(0, 8).toUpperCase()}`);
+                      showToast("Ulanish kodi nusxalandi! 📋", "success");
+                    }}
+                    style={{ padding: '6px 12px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 8, cursor: 'pointer', fontSize: 12, fontWeight: 700 }}
+                  >
+                    Nusxalash
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Toggle */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 16px', borderRadius: 12, background: 'var(--bg3)', border: '1px solid var(--border)', marginBottom: 24 }}>
+              <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)' }}>⏰ Kundalik eslatmalar</span>
+              <button 
+                onClick={async () => {
+                  const newState = !state.telegramEnabled;
+                  updateState({ telegramEnabled: newState });
+                  
+                  try {
+                    await setDoc(doc(db, 'users', user.uid), {
+                      telegramEnabled: newState,
+                      telegramCode: `IQRO-${user.uid.substring(0, 8).toUpperCase()}`
+                    }, { merge: true });
+                    showToast(newState ? "Eslatmalar yoqildi! 🔔" : "Eslatmalar o'chirildi! 🔕", "success");
+                  } catch (e) {
+                    showToast("Firebase sinxronizatsiyada xatolik", "error");
+                  }
+                }}
+                style={{ 
+                  padding: '6px 14px', 
+                  background: state.telegramEnabled ? 'var(--green)' : 'var(--bg2)', 
+                  color: state.telegramEnabled ? '#fff' : 'var(--text3)', 
+                  border: '1.5px solid',
+                  borderColor: state.telegramEnabled ? 'var(--green)' : 'var(--border)',
+                  borderRadius: 10, 
+                  fontWeight: 700, 
+                  fontSize: 12, 
+                  cursor: 'pointer' 
+                }}
+              >
+                {state.telegramEnabled ? "Yoqilgan" : "O'chirilgan"}
+              </button>
+            </div>
+
+            <button 
+              onClick={() => setShowTelegramModal(false)} 
+              style={{ 
+                width: '100%',
+                padding: '13px', 
+                borderRadius: 14, 
+                background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', 
+                color: '#fff', 
+                border: 'none', 
+                fontWeight: 700, 
+                fontSize: 14, 
+                cursor: 'pointer', 
+                fontFamily: 'inherit',
+                boxShadow: '0 4px 15px rgba(41, 182, 246, 0.2)'
               }}
             >
               Tushunarli 🤝

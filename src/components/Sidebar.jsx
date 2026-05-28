@@ -14,6 +14,7 @@ import {
   Medal,
   Palette,
   Users,
+  AlertCircle,
 } from 'lucide-react';
 
 
@@ -98,6 +99,19 @@ const Sidebar = () => {
               const now = Date.now();
               const due = (state.spacedCards || []).filter(c => c.nextReview <= now).length;
               return due > 0 ? <span style={{ background: 'var(--red)', color: 'white', borderRadius: 10, padding: '1px 7px', fontSize: 11, fontWeight: 700, marginLeft: 'auto' }}>{due}</span> : null;
+            })()}
+          </div>
+
+          <div
+            className={`nav-item ${isActive('/errors') ? 'active' : ''}`}
+            onClick={() => navigate('/errors')}
+          >
+            <span className="nav-icon"><AlertCircle size={20} /></span>
+            <span className="nav-label">Xatolar kitobi</span>
+            {(() => {
+              const cat = state.activeCategory;
+              const mistakesCount = (state.stats?.[cat]?.mistakes || []).length;
+              return mistakesCount > 0 ? <span style={{ background: 'var(--red)', color: 'white', borderRadius: 10, padding: '1px 7px', fontSize: 11, fontWeight: 700, marginLeft: 'auto' }}>{mistakesCount}</span> : null;
             })()}
           </div>
 

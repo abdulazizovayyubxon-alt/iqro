@@ -23,7 +23,7 @@ import { smartSort, summarizeTestResults } from '../engine/SmartQuestionEngine';
 const TestPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { state, addScore, addMistake, batchCommitResults, updateState } = useContext(AppContext);
+  const { state, addScore, addMistake, batchCommitResults, updateState, saveCustomMnemonic } = useContext(AppContext);
   const mode = state.testMode || 'exam';
   const setMode = (m) => updateState({ testMode: m });
   const topicId = state.topicId ?? -1;
@@ -69,6 +69,10 @@ const TestPage = () => {
   const [showResults, setShowResults] = useState(false);
   const [selectedBatch, setSelectedBatch] = useState(0);
 
+  // New States: Difficulty Filter and Timer Mode
+  const [diffFilter, setDiffFilter] = useState('ALL'); // 'ALL', 'Y1', 'Y2', 'Y3'
+  const [timerMode, setTimerMode] = useState('countdown'); // 'countdown', 'stopwatch', 'off'
+
   // Objection Modal State
   const [showObjectionModal, setShowObjectionModal] = useState(false);
 
@@ -77,6 +81,21 @@ const TestPage = () => {
   const [timerActive, setTimerActive] = useState(false);
   const timerRef = useRef(null);
   const explanationRef = useRef(null);
+  const questionStartTimeRef = useRef(Date.now());
+  const questionTimesRef = useRef({});
+
+  const accumulateTime = () => {
+    if (answers[currentQ] === undefined && questionStartTimeRef.current) {
+      let elapsed = 0;
+      if (timerMode === 'countdown') {
+        elapsed = Math.min(QUESTION_TIMER_SECONDS, Math.round((Date.now() - questionStartTimeRef.current) / 1000));
+      } else if (timerMode === 'stopwatch') {
+        elapsed = Math.round((Date.now() - questionStartTimeRef.current) / 1000);
+      }
+      questionTimesRef.current[currentQ] = (questionTimesRef.current[currentQ] || 0) + elapsed;
+      questionStartTimeRef.current = Date.now();
+    }
+  };
 
   // Motivatsion so'zlar va combo
   const [comboCount, setComboCount] = useState(0);
@@ -96,7 +115,10 @@ const TestPage = () => {
   }, [currentQ]);
 
   useEffect(() => {
-    if (mode !== 'exam' || showResults || questions.length === 0 || showTheory) {
+    // Reset start time whenever currentQ changes and is not answered yet
+    questionStartTimeRef.current = Date.now();
+
+    if (mode !== 'exam' || showResults || questions.length === 0 || showTheory || timerMode === 'off') {
       setTimerActive(false);
       clearInterval(timerRef.current);
       return;
@@ -106,24 +128,36 @@ const TestPage = () => {
       clearInterval(timerRef.current);
       return;
     }
-    setTimeLeft(QUESTION_TIMER_SECONDS);
-    setTimerActive(true);
-    clearInterval(timerRef.current);
-    timerRef.current = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev <= 1) {
-          clearInterval(timerRef.current);
-          const q = questions[currentQ];
-          if (q && answers[currentQ] === undefined) {
-            setAnswers(prev2 => ({ ...prev2, [currentQ]: -1 })); // -1 = vaqt tugadi
+
+    if (timerMode === 'countdown') {
+      setTimeLeft(QUESTION_TIMER_SECONDS);
+      setTimerActive(true);
+      clearInterval(timerRef.current);
+      timerRef.current = setInterval(() => {
+        setTimeLeft(prev => {
+          if (prev <= 1) {
+            clearInterval(timerRef.current);
+            const q = questions[currentQ];
+            if (q && answers[currentQ] === undefined) {
+              setAnswers(prev2 => ({ ...prev2, [currentQ]: -1 })); // -1 = vaqt tugadi
+              questionTimesRef.current[currentQ] = QUESTION_TIMER_SECONDS;
+            }
+            return 0;
           }
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
+          return prev - 1;
+        });
+      }, 1000);
+    } else if (timerMode === 'stopwatch') {
+      setTimeLeft(0);
+      setTimerActive(true);
+      clearInterval(timerRef.current);
+      timerRef.current = setInterval(() => {
+        setTimeLeft(prev => prev + 1);
+      }, 1000);
+    }
+
     return () => clearInterval(timerRef.current);
-  }, [currentQ, mode, showResults, questions.length]);
+  }, [currentQ, mode, showResults, questions.length, timerMode]);
 
   const isUsefulMnemonic = (text) => text && !["Kalit so'zga e'tibor bering va javobni vizuallashtiring.", "Kalit so'zga e'tibor bering va javobni vizuallashtiring"].includes(text.trim());
 
@@ -131,7 +165,7 @@ const TestPage = () => {
 
   useEffect(() => {
     generateFullPool();
-  }, [topicId, mode, state.activeCategory]);
+  }, [topicId, mode, state.activeCategory, diffFilter]);
 
   useEffect(() => {
     if (fullPool.length > 0) {
@@ -140,6 +174,11 @@ const TestPage = () => {
       setCurrentQ(0);
       setFcFlipped(false);
       setAnswers({});
+      questionTimesRef.current = {};
+    } else {
+      setQuestions([]);
+      setCurrentQ(0);
+      setAnswers({});
     }
   }, [selectedBatch, fullPool]);
 
@@ -147,6 +186,7 @@ const TestPage = () => {
     setIsGenerating(true);
     setShowResults(false);
     setAnswers({});
+    questionTimesRef.current = {};
     setCurrentQ(0);
     setFcFlipped(false);
     setFcKnown({});
@@ -227,7 +267,11 @@ const TestPage = () => {
         });
       }
 
-      setFullPool(qList);
+      let finalPool = qList;
+      if (diffFilter !== 'ALL') {
+        finalPool = qList.filter(q => q.difficulty === diffFilter);
+      }
+      setFullPool(finalPool);
     } catch (error) {
       console.error("Firestore Error:", error);
       showToast("Savollarni yuklashda xatolik yuz berdi", 'error');
@@ -244,6 +288,9 @@ const TestPage = () => {
     if (answers[qIndex] !== undefined) return;
     clearInterval(timerRef.current);
     setTimerActive(false);
+
+    const elapsed = Math.min(QUESTION_TIMER_SECONDS, Math.round((Date.now() - questionStartTimeRef.current) / 1000));
+    questionTimesRef.current[qIndex] = (questionTimesRef.current[qIndex] || 0) + elapsed;
 
     setAnswers(prev => ({ ...prev, [qIndex]: optIdx }));
     const q = questions[qIndex];
@@ -319,6 +366,11 @@ const TestPage = () => {
     setShowResults(true);
     // 🧠 SMART ENGINE: Natijalarni tahlil qilish va bir marta saqlash
     const results = summarizeTestResults(questions, answers, state.spacedCards || [], topicId);
+    
+    // Add total session time to results
+    const totalSessionTime = Object.values(questionTimesRef.current).reduce((a, b) => a + b, 0);
+    results.sessionTime = totalSessionTime;
+
     batchCommitResults(results);
   };
 
@@ -378,7 +430,15 @@ const TestPage = () => {
             {questions.length} savol{mode !== 'mistakes' && selectedBatch + 1 > 0 ? ` · Blok ${selectedBatch + 1}` : ''}
           </div>
         </div>
-        <div style={{ display: 'flex', gap: 8 }}>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          {topicObj?.theoryHint && (
+            <button
+              onClick={() => setShowTheory(true)}
+              style={{ background: '#FFF8E1', border: '1px solid #FFE082', borderRadius: 10, color: '#B78103', cursor: 'pointer', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, fontFamily: 'inherit' }}
+            >
+              <span>📚 Konspekt</span>
+            </button>
+          )}
           <button
             onClick={() => setMode(mode === 'flash' ? 'exam' : 'flash')}
             style={{ background: mode === 'flash' ? '#29B6F6' : '#F1F5F9', border: 'none', borderRadius: 10, color: mode === 'flash' ? '#fff' : '#64748B', cursor: 'pointer', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, fontFamily: 'inherit' }}
@@ -458,6 +518,58 @@ const TestPage = () => {
           </button>
         ))}
       </div>
+
+      {/* Qiyinlik darajasi filtri */}
+      {mode !== 'mistakes' && (
+        <div style={{
+          display: 'flex',
+          gap: '8px',
+          overflowX: 'auto',
+          paddingBottom: '8px',
+          marginBottom: '12px',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+          WebkitOverflowScrolling: 'touch',
+          paddingLeft: '2px',
+          paddingRight: '2px',
+        }}>
+          {[
+            { id: 'ALL', label: 'Barchasi', icon: '📊', color: 'var(--text2)', bg: 'var(--bg2)', activeBg: '#64748B' },
+            { id: 'Y1', label: 'Oson (Y1)', icon: '🟢', color: '#15803D', bg: '#F0FDF4', activeBg: '#16A34A' },
+            { id: 'Y2', label: "O'rta (Y2)", icon: '🟡', color: '#B45309', bg: '#FFFBEB', activeBg: '#D97706' },
+            { id: 'Y3', label: 'Qiyin (Y3)', icon: '🔴', color: '#B91C1C', bg: '#FEF2F2', activeBg: '#DC2626' }
+          ].map(opt => {
+            const isSelected = diffFilter === opt.id;
+            return (
+              <button
+                key={opt.id}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '8px 12px',
+                  borderRadius: '10px',
+                  border: isSelected ? '1.5px solid transparent' : '1.5px solid var(--border)',
+                  background: isSelected ? opt.activeBg : opt.bg,
+                  color: isSelected ? '#fff' : opt.color,
+                  fontSize: '12px',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  whiteSpace: 'nowrap',
+                  transition: 'all 0.2s ease',
+                  flexShrink: 0,
+                  boxShadow: isSelected ? '0 4px 10px rgba(0,0,0,0.1)' : 'none',
+                }}
+                onClick={() => setDiffFilter(opt.id)}
+              >
+                <span>{opt.icon}</span>
+                <span>{opt.label}</span>
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       {mode !== 'mistakes' && (
         <div className="batch-selector" style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '8px' }}>
@@ -641,17 +753,72 @@ const TestPage = () => {
                   <motion.div initial={{ opacity: 0, scale: 0.8, y: -10 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0 }} style={{ textAlign: 'center', fontWeight: '800', fontSize: comboCount >= 10 ? '20px' : comboCount >= 5 ? '18px' : '16px', color: comboCount >= 10 ? '#FFD700' : comboCount >= 5 ? 'var(--amber)' : 'var(--green)', padding: '4px 0', marginBottom: '4px', textShadow: comboCount >= 10 ? '0 0 10px rgba(255,215,0,0.5)' : 'none' }}>{motivationText}</motion.div>
                 )}
 
-                {/* ── Taymer ── */}
+                {/* ── Taymer / Sekundomer ── */}
                 {mode === 'exam' && answers[currentQ] === undefined && (
-                  <div className={`question-timer ${timeLeft <= 10 ? 'timer-danger' : timeLeft <= 20 ? 'timer-warning' : ''}`}>
-                    <Clock size={14} />
-                    <span>{timeLeft}s</span>
-                    <div className="timer-bar-wrap">
-                      <div className="timer-bar-fill" style={{ width: `${(timeLeft / QUESTION_TIMER_SECONDS) * 100}%`, background: timeLeft <= 10 ? 'var(--red)' : timeLeft <= 20 ? 'var(--amber)' : 'var(--green)' }} />
-                    </div>
+                  <div 
+                    onClick={() => {
+                      accumulateTime();
+                      if (timerMode === 'countdown') {
+                        setTimerMode('stopwatch');
+                      } else if (timerMode === 'stopwatch') {
+                        setTimerMode('off');
+                      } else {
+                        setTimerMode('countdown');
+                      }
+                    }}
+                    className={`question-timer ${timerMode === 'countdown' && timeLeft <= 10 ? 'timer-danger' : timerMode === 'countdown' && timeLeft <= 20 ? 'timer-warning' : ''}`}
+                    style={{ 
+                      cursor: 'pointer', 
+                      userSelect: 'none', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: '8px', 
+                      padding: '6px 12px', 
+                      background: 'var(--bg3)', 
+                      borderRadius: '10px', 
+                      width: 'fit-content', 
+                      marginBottom: '12px',
+                      border: '1px solid var(--border)',
+                      transition: 'all 0.2s ease'
+                    }}
+                    title="Taymer rejimini o'zgartirish uchun bosing (Countdown -> Sekundomer -> O'chiq)"
+                  >
+                    <Clock size={14} color="var(--text2)" />
+                    <span style={{ fontWeight: 700, fontSize: '12px', color: 'var(--text2)' }}>
+                      {timerMode === 'countdown' && `${timeLeft}s (Taymer)`}
+                      {timerMode === 'stopwatch' && `${timeLeft}s (Sekundomer)`}
+                      {timerMode === 'off' && "Taymer: O'chiq"}
+                    </span>
+                    {timerMode === 'countdown' && (
+                      <div className="timer-bar-wrap" style={{ width: '40px', height: '4px', background: 'var(--border)', borderRadius: '2px', overflow: 'hidden' }}>
+                        <div className="timer-bar-fill" style={{ height: '100%', width: `${(timeLeft / QUESTION_TIMER_SECONDS) * 100}%`, background: timeLeft <= 10 ? 'var(--red)' : timeLeft <= 20 ? 'var(--amber)' : 'var(--green)' }} />
+                      </div>
+                    )}
                   </div>
                 )}
-                {answers[currentQ] === -1 && <div style={{ color: 'var(--red)', fontSize: '13px', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>⏰ Vaqt tugadi!</div>}
+                {answers[currentQ] === -1 && <div style={{ color: 'var(--red)', fontSize: '13px', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '12px' }}>⏰ Vaqt tugadi!</div>}
+
+                {/* ── Aqlli Badglar (Takrorlash & Zaif Nuqta) ── */}
+                {(() => {
+                  const qHash = (questions[currentQ]?.q || '').substring(0, 100);
+                  const isSpaced = (state.spacedCards || []).some(card => card.qHash === qHash);
+                  const isWeak = (state.stats?.[state.activeCategory]?.mistakes || []).some(m => (m.question || '').substring(0, 100) === qHash);
+                  if (!isSpaced && !isWeak) return null;
+                  return (
+                    <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
+                      {isSpaced && (
+                        <span style={{ fontSize: '11px', fontWeight: '800', color: '#1E40AF', background: '#DBEAFE', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid #BFDBFE' }}>
+                          🔄 Takrorlash
+                        </span>
+                      )}
+                      {isWeak && (
+                        <span style={{ fontSize: '11px', fontWeight: '800', color: '#92400E', background: '#FEF3C7', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid #FDE68A' }}>
+                          ⚠️ Zaif Nuqta
+                        </span>
+                      )}
+                    </div>
+                  );
+                })()}
 
                 <QuestionMedia question={questions[currentQ]} />
                 {questions[currentQ].isHtml ? <SafeHtml html={questions[currentQ].q} className="q-text" /> : <div className="q-text" style={{ whiteSpace: 'pre-line' }}>{questions[currentQ].q}</div>}
@@ -693,12 +860,64 @@ const TestPage = () => {
                       )}
                       {questions[currentQ].explanation}
                     </motion.div>
-                    {isUsefulMnemonic(questions[currentQ].mnemonic) && (
-                      <div className="mnemonic-box">
-                        <div className="mnemonic-icon">💡</div>
-                        <div className="mnemonic-text"><strong>Eslab qolish uchun:</strong><br />{questions[currentQ].mnemonic}</div>
-                      </div>
-                    )}
+                    {(() => {
+                      const qHash = (questions[currentQ]?.q || '').substring(0, 100);
+                      return (
+                        <>
+                          {isUsefulMnemonic(questions[currentQ].mnemonic) && !state.customMnemonics?.[qHash] && (
+                            <div className="mnemonic-box">
+                              <div className="mnemonic-icon">💡</div>
+                              <div className="mnemonic-text"><strong>Eslab qolish uchun:</strong><br />{questions[currentQ].mnemonic}</div>
+                            </div>
+                          )}
+                          {state.customMnemonics?.[qHash] && (
+                            <div className="mnemonic-box" style={{ borderColor: 'var(--amber)', background: 'rgba(245, 158, 11, 0.05)' }}>
+                              <div className="mnemonic-icon">🧠</div>
+                              <div className="mnemonic-text"><strong>Sizning eslatmangiz:</strong><br />{state.customMnemonics[qHash]}</div>
+                            </div>
+                          )}
+                          <div className="custom-mnemonic-box" style={{
+                            marginTop: '12px',
+                            background: 'var(--glass-bg)',
+                            border: '1.5px dashed var(--border)',
+                            borderRadius: '16px',
+                            padding: '14px',
+                            textAlign: 'left',
+                            transition: 'all 0.3s ease'
+                          }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', fontSize: '13px', fontWeight: '700', color: 'var(--text2)' }}>
+                              <span>🧠 Shaxsiy mnemonika (Eslatma)</span>
+                            </div>
+                            <textarea
+                              placeholder="Ushbu savol uchun shaxsiy eslatma yoki assotsiatsiya yozing..."
+                              value={state.customMnemonics?.[qHash] || ''}
+                              onChange={(e) => saveCustomMnemonic(qHash, e.target.value)}
+                              style={{
+                                width: '100%',
+                                minHeight: '60px',
+                                background: 'var(--bg3)',
+                                border: '1px solid var(--border)',
+                                borderRadius: '10px',
+                                padding: '8px 12px',
+                                color: 'var(--text)',
+                                fontSize: '13px',
+                                fontFamily: 'inherit',
+                                resize: 'vertical',
+                                outline: 'none',
+                                transition: 'border-color 0.2s'
+                              }}
+                              onFocus={(e) => e.target.style.borderColor = '#29B6F6'}
+                              onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
+                            />
+                            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
+                              <span style={{ fontSize: '11px', color: 'var(--text3)' }}>
+                                {(state.customMnemonics?.[qHash] || '').trim() ? '✓ Saqlandi' : "Yozilgan eslatma keyingi safar ham ko'rsatiladi"}
+                              </span>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })()}
                   </>
                 )}
               </motion.div>
@@ -729,8 +948,8 @@ const TestPage = () => {
           )}
           {!showResults && (
             <div className="q-nav" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px' }}>
-              <button disabled={currentQ === 0} className="btn btn-outline" onClick={() => setCurrentQ(prev => prev - 1)}>Orqaga</button>
-              {Object.keys(answers).length === questions.length ? <button className="btn btn-primary" onClick={handleShowResults}>Natijani Ko'rish</button> : <button disabled={currentQ === questions.length - 1} className="btn btn-outline" onClick={() => setCurrentQ(prev => prev + 1)}>Keyingi</button>}
+              <button disabled={currentQ === 0} className="btn btn-outline" onClick={() => { accumulateTime(); setCurrentQ(prev => prev - 1); }}>Orqaga</button>
+              {Object.keys(answers).length === questions.length ? <button className="btn btn-primary" onClick={handleShowResults}>Natijani Ko'rish</button> : <button disabled={currentQ === questions.length - 1} className="btn btn-outline" onClick={() => { accumulateTime(); setCurrentQ(prev => prev + 1); }}>Keyingi</button>}
             </div>
           )}
         </div>
