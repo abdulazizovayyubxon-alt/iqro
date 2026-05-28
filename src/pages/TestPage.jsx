@@ -513,57 +513,7 @@ const TestPage = () => {
         ))}
       </div>
 
-      {/* Qiyinlik darajasi filtri */}
-      {mode !== 'mistakes' && (
-        <div style={{
-          display: 'flex',
-          gap: '8px',
-          overflowX: 'auto',
-          paddingBottom: '8px',
-          marginBottom: '12px',
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none',
-          WebkitOverflowScrolling: 'touch',
-          paddingLeft: '2px',
-          paddingRight: '2px',
-        }}>
-          {[
-            { id: 'ALL', label: 'Barchasi', icon: '📊', color: 'var(--text2)', bg: 'var(--bg2)', activeBg: '#64748B' },
-            { id: 'Y1', label: 'Oson (Y1)', icon: '🟢', color: '#15803D', bg: '#F0FDF4', activeBg: '#16A34A' },
-            { id: 'Y2', label: "O'rta (Y2)", icon: '🟡', color: '#B45309', bg: '#FFFBEB', activeBg: '#D97706' },
-            { id: 'Y3', label: 'Qiyin (Y3)', icon: '🔴', color: '#B91C1C', bg: '#FEF2F2', activeBg: '#DC2626' }
-          ].map(opt => {
-            const isSelected = diffFilter === opt.id;
-            return (
-              <button
-                key={opt.id}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  padding: '8px 12px',
-                  borderRadius: '10px',
-                  border: isSelected ? '1.5px solid transparent' : '1.5px solid var(--border)',
-                  background: isSelected ? opt.activeBg : opt.bg,
-                  color: isSelected ? '#fff' : opt.color,
-                  fontSize: '12px',
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  fontFamily: 'inherit',
-                  whiteSpace: 'nowrap',
-                  transition: 'all 0.2s ease',
-                  flexShrink: 0,
-                  boxShadow: isSelected ? '0 4px 10px rgba(0,0,0,0.1)' : 'none',
-                }}
-                onClick={() => setDiffFilter(opt.id)}
-              >
-                <span>{opt.icon}</span>
-                <span>{opt.label}</span>
-              </button>
-            );
-          })}
-        </div>
-      )}
+
 
       {mode !== 'mistakes' && (
         <div className="batch-selector" style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '8px' }}>

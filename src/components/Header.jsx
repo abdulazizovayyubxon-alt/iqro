@@ -168,22 +168,6 @@ const Header = ({ theme, toggleTheme }) => {
         </div>
 
         <div className="header-stats">
-          {/* Tarmoq holati */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', padding: '6px 12px', borderRadius: '99px' }} title={isOnline ? "Tizim tarmoqqa ulangan" : "Tizim oflayn rejimda"}>
-            <span style={{
-              width: '8px',
-              height: '8px',
-              borderRadius: '50%',
-              background: isOnline ? '#10B981' : '#F59E0B',
-              boxShadow: isOnline ? '0 0 8px #10B981' : 'none',
-              display: 'inline-block',
-              transition: 'all 0.3s ease'
-            }} />
-            <span style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text2)', transition: 'all 0.3s ease' }}>
-              {isOnline ? 'Onlayn' : 'Oflayn'}
-            </span>
-          </div>
-
           {/* Kun Countdown */}
           <motion.div 
             className="hide-mobile" 
