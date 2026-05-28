@@ -45,16 +45,60 @@ export default async function handler(req, res) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
+  const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+  const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}`;
+
+  async function sendTelegramMessage(chatId, text) {
+    if (!TELEGRAM_BOT_TOKEN || !chatId) return false;
+    try {
+      const resp = await fetch(`${TELEGRAM_API_URL}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: text,
+          parse_mode: 'HTML'
+        })
+      });
+      return resp.ok;
+    } catch (e) {
+      console.error("TG Send Error:", e);
+      return false;
+    }
+  }
+
+
   const db = getDb();
   const now = new Date();
   const results = {
     premiumExpired: 0,
     remindersSent: 0,
+    telegramSent: 0,
     discountsCleared: 0,
     errors: [],
   };
 
   try {
+    // ═══ 0. TELEGRAM KUNDALIK ESLATMALAR ═══
+    const tgUsers = await db.collection('users')
+      .where('telegramEnabled', '==', true)
+      .get();
+
+    const tgPromises = [];
+    for (const userDoc of tgUsers.docs) {
+      const data = userDoc.data();
+      if (data.telegramChatId) {
+        const msg = `📚 <b>Vaqt bo'ldi!</b>\n\nAttestatsiya imtihoniga tayyorgarlikni tizimli davom ettiramiz. Bugungi takrorlash testlaringiz sizni kutmoqda.\n\n👉 <a href="https://iqro-t41p.vercel.app">Platformaga kirish va test ishlash</a>`;
+        tgPromises.push(
+          sendTelegramMessage(data.telegramChatId, msg).then(success => {
+            if (success) results.telegramSent++;
+          })
+        );
+      }
+    }
+    // Parallelda yuborish
+    await Promise.all(tgPromises);
+
     // ═══ 1. PREMIUM MUDDATI TEKSHIRUVI ═══
     // premiumExpire o'tgan va premiumPlan !== 'paid' bo'lganlarni topamiz
     const premiumUsers = await db.collection('users')
