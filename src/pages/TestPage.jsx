@@ -37,8 +37,8 @@ const TestPage = () => {
   const goBack = () => navigate('/test');
   const { addObjection } = useContext(ObjectionContext);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
-
   const { isTrialExpired: isFreeLimitReached } = useTrialExpiry();
+  const versionCacheRef = useRef(null);
 
   // Bepul limit tekshiruvi ({} ta savol)
   if (isFreeLimitReached) {
@@ -241,18 +241,28 @@ const TestPage = () => {
           });
         }
       } else {
-        // 🔥 AQLLI KESHLASH (JSON BUNDLING) 🔥
-        // 1. Firebase'dan faqat 1 dona qog'ozni o'qiymiz (Versiyani bilish uchun)
-        const versionDocRef = doc(db, 'settings', 'version');
-        const versionSnap = await getDoc(versionDocRef);
-        
+        // 1. Firebase'dan faqat 1 dona qog'ozni o'qiymiz (Versiyani bilish uchun - sessiya davomida 1 marta)
         let remoteVersion = 0;
         let storageUrls = {};
-        if (versionSnap.exists()) {
-          const vData = versionSnap.data();
-          remoteVersion = vData.dbVersion || 0;
-          storageUrls = vData.urls || {};
+
+        if (!versionCacheRef.current) {
+          try {
+            const versionDocRef = doc(db, 'settings', 'version');
+            const versionSnap = await getDoc(versionDocRef);
+            if (versionSnap.exists()) {
+              versionCacheRef.current = versionSnap.data();
+            } else {
+              versionCacheRef.current = { dbVersion: 0, urls: {} };
+            }
+          } catch (e) {
+            console.error("Version xatosi:", e);
+            versionCacheRef.current = { dbVersion: 0, urls: {} };
+          }
         }
+
+        const vData = versionCacheRef.current;
+        remoteVersion = vData.dbVersion || 0;
+        storageUrls = vData.urls || {};
 
         const cacheKey = `bundle_${state.activeCategory}`;
         const versionKey = `version_${state.activeCategory}`;

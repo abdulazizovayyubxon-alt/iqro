@@ -48,11 +48,36 @@ export default function ProfilePage({ theme, toggleTheme }) {
     if (downloadingOffline) return;
     setDownloadingOffline(true);
     setDownloadProgress('Yuklanmoqda...');
+    
     try {
-      const qRef = collection(db, 'questions');
-      const qQuery = query(qRef, where('category', '==', state.activeCategory || 'chqbt'));
-      const snap = await getDocs(qQuery);
-      showToast(`Tayyor! ${snap.size} ta savol offline foydalanish uchun keshlandi ✅`, 'success');
+      const cat = state.activeCategory || 'chqbt';
+      const versionDocRef = doc(db, 'settings', 'version');
+      const versionSnap = await getDoc(versionDocRef);
+      
+      let remoteVersion = 0;
+      let storageUrls = {};
+      if (versionSnap.exists()) {
+        const vData = versionSnap.data();
+        remoteVersion = vData.dbVersion || 0;
+        storageUrls = vData.urls || {};
+      }
+
+      const cacheKey = `bundle_${cat}`;
+      const versionKey = `version_${cat}`;
+      
+      const downloadUrl = storageUrls[cat];
+      if (downloadUrl) {
+        const res = await fetch(downloadUrl);
+        const rawList = await res.json();
+        
+        const localforage = (await import('localforage')).default;
+        await localforage.setItem(cacheKey, rawList);
+        await localforage.setItem(versionKey, remoteVersion);
+        
+        showToast(`Tayyor! ${rawList.length} ta savol offline rejim uchun keshlandi ✅`, 'success');
+      } else {
+        showToast("Hozircha serverda offline ma'lumotlar tayyor emas.", 'error');
+      }
     } catch (e) {
       console.error(e);
       showToast("Offline yuklashda xatolik yuz berdi", 'error');
