@@ -165,10 +165,18 @@ const ExamPage = () => {
         allQ = allQ.filter(q => validTopicIds.includes(q.topicId));
 
         // Savollarga mavzu ma'lumotlarini biriktirish
-        allQ = allQ.map(q => {
+        allQ = allQ.map((q, idx) => {
           const topic = filteredTopics.find(t => t.id === q.topicId);
+          let diff = q.difficulty;
+          if (!diff) {
+            const mod = idx % 100;
+            if (mod < 30) diff = 'Y1';
+            else if (mod < 86) diff = 'Y2';
+            else diff = 'Y3';
+          }
           return {
             ...q,
+            difficulty: diff,
             topicName: topic ? topic.name : 'Aralash',
             topicIcon: topic ? topic.icon : null
           };
