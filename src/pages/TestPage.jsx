@@ -75,6 +75,7 @@ const TestPage = () => {
 
   // Objection Modal State
   const [showObjectionModal, setShowObjectionModal] = useState(false);
+  const [activeReviewTab, setActiveReviewTab] = useState('analysis');
 
   // Timer
   const [timeLeft, setTimeLeft] = useState(QUESTION_TIMER_SECONDS);
@@ -112,6 +113,7 @@ const TestPage = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    setActiveReviewTab('analysis');
   }, [currentQ]);
 
   useEffect(() => {
@@ -431,14 +433,6 @@ const TestPage = () => {
           </div>
         </div>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          {topicObj?.theoryHint && (
-            <button
-              onClick={() => setShowTheory(true)}
-              style={{ background: '#FFF8E1', border: '1px solid #FFE082', borderRadius: 10, color: '#B78103', cursor: 'pointer', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, fontFamily: 'inherit' }}
-            >
-              <span>📚 Konspekt</span>
-            </button>
-          )}
           <button
             onClick={() => setMode(mode === 'flash' ? 'exam' : 'flash')}
             style={{ background: mode === 'flash' ? '#29B6F6' : '#F1F5F9', border: 'none', borderRadius: 10, color: mode === 'flash' ? '#fff' : '#64748B', cursor: 'pointer', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, fontFamily: 'inherit' }}
@@ -849,76 +843,201 @@ const TestPage = () => {
                   })}
                 </div>
                 {answers[currentQ] !== undefined && (
-                  <>
-                    <motion.div ref={explanationRef} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className={`explanation-box ${answers[currentQ] === questions[currentQ].correct ? 'correct' : 'wrong'}`}>
-                      <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>{answers[currentQ] === questions[currentQ].correct ? '✓ To\'g\'ri' : '✗ Noto\'g\'ri'}</div>
-                      {answers[currentQ] !== questions[currentQ].correct && answers[currentQ] >= 0 && (
-                        <div style={{ marginBottom: '8px', padding: '8px 10px', background: 'rgba(239,68,68,0.08)', borderRadius: '8px', fontSize: '13px', lineHeight: '1.5' }}>
-                          <span style={{ color: 'var(--red)', fontWeight: '600' }}>Siz tanladingiz:</span> {questions[currentQ].opts[answers[currentQ]]?.replace(/^[A-D]\)\s*/, '')}<br/>
-                          <span style={{ color: 'var(--green)', fontWeight: '600' }}>To'g'ri javob:</span> {questions[currentQ].opts[questions[currentQ].correct]?.replace(/^[A-D]\)\s*/, '')}
+                  <motion.div
+                    ref={explanationRef}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    style={{
+                      marginTop: '16px',
+                      background: 'var(--bg2)',
+                      border: '1.5px solid var(--border)',
+                      borderRadius: '20px',
+                      overflow: 'hidden',
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    {/* Tab Headers */}
+                    <div style={{
+                      display: 'flex',
+                      borderBottom: '1px solid var(--border)',
+                      background: 'var(--bg3)',
+                    }}>
+                      <button
+                        onClick={() => setActiveReviewTab('analysis')}
+                        style={{
+                          flex: 1,
+                          padding: '12px',
+                          border: 'none',
+                          background: activeReviewTab === 'analysis' ? 'var(--bg2)' : 'transparent',
+                          color: activeReviewTab === 'analysis' ? 'var(--text)' : 'var(--text3)',
+                          fontSize: '13px',
+                          fontWeight: '700',
+                          cursor: 'pointer',
+                          fontFamily: 'inherit',
+                          borderBottom: activeReviewTab === 'analysis' ? '2.5px solid #29B6F6' : 'none',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '6px',
+                          transition: 'all 0.2s'
+                        }}
+                      >
+                        <span>📖 Tahlil</span>
+                      </button>
+                      <button
+                        onClick={() => setActiveReviewTab('notes')}
+                        style={{
+                          flex: 1,
+                          padding: '12px',
+                          border: 'none',
+                          background: activeReviewTab === 'notes' ? 'var(--bg2)' : 'transparent',
+                          color: activeReviewTab === 'notes' ? 'var(--text)' : 'var(--text3)',
+                          fontSize: '13px',
+                          fontWeight: '700',
+                          cursor: 'pointer',
+                          fontFamily: 'inherit',
+                          borderBottom: activeReviewTab === 'notes' ? '2.5px solid #29B6F6' : 'none',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '6px',
+                          position: 'relative',
+                          transition: 'all 0.2s'
+                        }}
+                      >
+                        <span>🧠 Eslatmalar</span>
+                        {(() => {
+                          const qHash = (questions[currentQ]?.q || '').substring(0, 100);
+                          if (state.customMnemonics?.[qHash]) {
+                            return (
+                              <span style={{
+                                width: '6px',
+                                height: '6px',
+                                borderRadius: '50%',
+                                background: 'var(--green)',
+                                position: 'absolute',
+                                top: '12px',
+                                right: '20px'
+                              }} />
+                            );
+                          }
+                          return null;
+                        })()}
+                      </button>
+                    </div>
+
+                    {/* Tab Content */}
+                    <div style={{ padding: '16px', textAlign: 'left' }}>
+                      {activeReviewTab === 'analysis' && (
+                        <div>
+                          {/* Noto'g'ri / To'g'ri status strip */}
+                          <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            fontWeight: '800',
+                            fontSize: '14px',
+                            color: answers[currentQ] === questions[currentQ].correct ? 'var(--green)' : 'var(--red)',
+                            marginBottom: '12px'
+                          }}>
+                            <span>{answers[currentQ] === questions[currentQ].correct ? '✓ To\'g\'ri' : '✗ Noto\'g\'ri'}</span>
+                          </div>
+
+                          {answers[currentQ] !== questions[currentQ].correct && answers[currentQ] >= 0 && (
+                            <div style={{
+                              marginBottom: '12px',
+                              padding: '10px 12px',
+                              background: 'rgba(239, 68, 68, 0.05)',
+                              border: '1px solid rgba(239, 68, 68, 0.1)',
+                              borderRadius: '12px',
+                              fontSize: '13px',
+                              lineHeight: '1.5'
+                            }}>
+                              <div style={{ marginBottom: '4px' }}>
+                                <span style={{ color: 'var(--text3)' }}>Siz tanladingiz:</span>{' '}
+                                <span style={{ color: 'var(--red)', fontWeight: '600' }}>
+                                  {questions[currentQ].opts[answers[currentQ]]?.replace(/^[A-D]\)\s*/, '')}
+                                </span>
+                              </div>
+                              <div>
+                                <span style={{ color: 'var(--text3)' }}>To'g'ri javob:</span>{' '}
+                                <span style={{ color: 'var(--green)', fontWeight: '600' }}>
+                                  {questions[currentQ].opts[questions[currentQ].correct]?.replace(/^[A-D]\)\s*/, '')}
+                                </span>
+                              </div>
+                            </div>
+                          )}
+
+                          <div style={{ color: 'var(--text2)', fontSize: '14px', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
+                            {questions[currentQ].explanation}
+                          </div>
                         </div>
                       )}
-                      {questions[currentQ].explanation}
-                    </motion.div>
-                    {(() => {
-                      const qHash = (questions[currentQ]?.q || '').substring(0, 100);
-                      return (
-                        <>
-                          {isUsefulMnemonic(questions[currentQ].mnemonic) && !state.customMnemonics?.[qHash] && (
-                            <div className="mnemonic-box">
-                              <div className="mnemonic-icon">💡</div>
-                              <div className="mnemonic-text"><strong>Eslab qolish uchun:</strong><br />{questions[currentQ].mnemonic}</div>
+
+                      {activeReviewTab === 'notes' && (
+                        <div>
+                          {/* System Mnemonic */}
+                          {isUsefulMnemonic(questions[currentQ].mnemonic) && (
+                            <div style={{
+                              background: 'rgba(245, 158, 11, 0.04)',
+                              border: '1px dashed var(--amber)',
+                              borderRadius: '12px',
+                              padding: '12px',
+                              display: 'flex',
+                              gap: '10px',
+                              marginBottom: '14px',
+                              textAlign: 'left'
+                            }}>
+                              <div style={{ fontSize: '18px' }}>💡</div>
+                              <div style={{ fontSize: '13px', color: 'var(--text2)', lineHeight: '1.5' }}>
+                                <strong>Tavsiya etilgan mnemonika:</strong><br />
+                                {questions[currentQ].mnemonic}
+                              </div>
                             </div>
                           )}
-                          {state.customMnemonics?.[qHash] && (
-                            <div className="mnemonic-box" style={{ borderColor: 'var(--amber)', background: 'rgba(245, 158, 11, 0.05)' }}>
-                              <div className="mnemonic-icon">🧠</div>
-                              <div className="mnemonic-text"><strong>Sizning eslatmangiz:</strong><br />{state.customMnemonics[qHash]}</div>
-                            </div>
-                          )}
-                          <div className="custom-mnemonic-box" style={{
-                            marginTop: '12px',
-                            background: 'var(--glass-bg)',
-                            border: '1.5px dashed var(--border)',
-                            borderRadius: '16px',
-                            padding: '14px',
-                            textAlign: 'left',
-                            transition: 'all 0.3s ease'
-                          }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', fontSize: '13px', fontWeight: '700', color: 'var(--text2)' }}>
-                              <span>🧠 Shaxsiy mnemonika (Eslatma)</span>
-                            </div>
-                            <textarea
-                              placeholder="Ushbu savol uchun shaxsiy eslatma yoki assotsiatsiya yozing..."
-                              value={state.customMnemonics?.[qHash] || ''}
-                              onChange={(e) => saveCustomMnemonic(qHash, e.target.value)}
-                              style={{
-                                width: '100%',
-                                minHeight: '60px',
-                                background: 'var(--bg3)',
-                                border: '1px solid var(--border)',
-                                borderRadius: '10px',
-                                padding: '8px 12px',
-                                color: 'var(--text)',
-                                fontSize: '13px',
-                                fontFamily: 'inherit',
-                                resize: 'vertical',
-                                outline: 'none',
-                                transition: 'border-color 0.2s'
-                              }}
-                              onFocus={(e) => e.target.style.borderColor = '#29B6F6'}
-                              onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
-                            />
-                            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
-                              <span style={{ fontSize: '11px', color: 'var(--text3)' }}>
-                                {(state.customMnemonics?.[qHash] || '').trim() ? '✓ Saqlandi' : "Yozilgan eslatma keyingi safar ham ko'rsatiladi"}
-                              </span>
-                            </div>
-                          </div>
-                        </>
-                      );
-                    })()}
-                  </>
+
+                          {/* Custom Mnemonic text area */}
+                          {(() => {
+                            const qHash = (questions[currentQ]?.q || '').substring(0, 100);
+                            return (
+                              <div style={{ textAlign: 'left' }}>
+                                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: 'var(--text3)', marginBottom: '6px' }}>
+                                  Shaxsiy eslatmangiz:
+                                </label>
+                                <textarea
+                                  placeholder="Ushbu savolni eslab qolish uchun shaxsiy assotsiatsiya yozing..."
+                                  value={state.customMnemonics?.[qHash] || ''}
+                                  onChange={(e) => saveCustomMnemonic(qHash, e.target.value)}
+                                  style={{
+                                    width: '100%',
+                                    minHeight: '80px',
+                                    background: 'var(--bg3)',
+                                    border: '1px solid var(--border)',
+                                    borderRadius: '12px',
+                                    padding: '10px 12px',
+                                    color: 'var(--text)',
+                                    fontSize: '13px',
+                                    fontFamily: 'inherit',
+                                    resize: 'vertical',
+                                    outline: 'none',
+                                    transition: 'border-color 0.2s',
+                                    lineHeight: '1.5'
+                                  }}
+                                  onFocus={(e) => e.target.style.borderColor = '#29B6F6'}
+                                  onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
+                                />
+                                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
+                                  <span style={{ fontSize: '11px', color: 'var(--text3)' }}>
+                                    {(state.customMnemonics?.[qHash] || '').trim() ? '✓ Saqlandi' : "Eslatma keyingi safar ham ko'rsatiladi"}
+                                  </span>
+                                </div>
+                              </div>
+                            );
+                          })()}
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
                 )}
               </motion.div>
             </AnimatePresence>
