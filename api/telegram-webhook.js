@@ -92,7 +92,7 @@ export default async function handler(req, res) {
               const refData = refSnap.data();
               const refExp = refData.freeExpire ? new Date(refData.freeExpire) : new Date();
               if (refExp < new Date()) refExp.setTime(new Date().getTime());
-              refExp.setDate(refExp.getDate() + 7); // 1 hafta bepul
+              refExp.setDate(refExp.getDate() + 15); // 15 kun bepul
               
               await referrerRef.update({
                 isPremium: true,
@@ -100,7 +100,7 @@ export default async function handler(req, res) {
               });
               
               if (refData.telegramChatId) {
-                await sendMessage(refData.telegramChatId, `🎁 <b>Suyunchi!</b>\n\nSiz taklif qilgan do'stingiz (${userData.displayName || 'Foydalanuvchi'}) premium sotib oldi! Sizga avtomatik tarzda <b>1 haftalik bepul premium</b> qo'shib berildi.`);
+                await sendMessage(refData.telegramChatId, `🎁 <b>Suyunchi!</b>\n\nSiz taklif qilgan do'stingiz (${userData.displayName || 'Foydalanuvchi'}) premium sotib oldi! Sizga avtomatik tarzda <b>15 kunlik bepul premium</b> qo'shib berildi.`);
               }
             }
           }
@@ -295,7 +295,7 @@ export default async function handler(req, res) {
       
     } else if (incomingText === "🔗 Do'stlarni taklif qilish" || incomingText === '/referal') {
       const refLink = `https://iqro-t41p.vercel.app/register?ref=${linkedUid}`;
-      await sendMessage(chatId, `🔗 <b>Do'stlarni taklif qilish</b>\n\nQuyidagi havolani do'stlaringizga yuboring. Ular ro'yxatdan o'tsa va premium olsa, sizga avtomatik <b>1 hafta bepul premium</b> beriladi!\n\n${refLink}`, keyboardMarkup);
+      await sendMessage(chatId, `🔗 <b>Do'stlarni taklif qilish</b>\n\nQuyidagi havolani do'stlaringizga yuboring. Ular ro'yxatdan o'tsa va premium olsa, sizga avtomatik <b>15 kun bepul premium</b> beriladi!\n\n${refLink}`, keyboardMarkup);
       
     } else if (incomingText === "💳 Premium Sotib Olish" || incomingText === '/premium') {
       // 1. Narxni bazadan olish
