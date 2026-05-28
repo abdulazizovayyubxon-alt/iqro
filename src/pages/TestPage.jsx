@@ -447,6 +447,23 @@ const TestPage = () => {
     results.sessionTime = totalSessionTime;
 
     batchCommitResults(results);
+
+    // Send result to Telegram
+    const correctCount = Object.keys(answers).filter(k => answers[k] === questions[parseInt(k)]?.correct).length;
+    const wrongCount = Object.keys(answers).length - correctCount;
+    fetch('/api/send-result', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        uid: user?.uid,
+        correct: correctCount,
+        wrong: wrongCount,
+        total: questions.length,
+        time: Math.round(totalSessionTime / 60) + ' daqiqa',
+        mode: mode === 'exam' ? 'Imtihon rejim' : 'O\'rganish rejim',
+        title: topicName
+      })
+    }).catch(e => console.error(e));
   };
 
   const correctCount = Object.keys(answers).filter(k => answers[k] === questions[parseInt(k)]?.correct).length;

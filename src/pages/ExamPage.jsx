@@ -430,6 +430,21 @@ const ExamPage = () => {
     if (pct >= 60) {
       confetti({ particleCount: 150, spread: 80, origin: { y: 0.5 } });
     }
+
+    // Send result to Telegram
+    fetch('/api/send-result', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        uid: user?.uid,
+        correct,
+        wrong: questions.length - correct,
+        total: questions.length,
+        time: formatTime(Object.values(times).reduce((a, b) => a + b, 0)),
+        mode: 'Standart Attestatsiya Imtihoni',
+        title: 'Barcha bo\'limlar'
+      })
+    }).catch(e => console.error(e));
   };
 
   // Anti-Cheat: Tab switch or window blur detection

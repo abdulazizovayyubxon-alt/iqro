@@ -80,23 +80,44 @@ export default async function handler(req, res) {
 
   try {
     // ═══ 0. TELEGRAM KUNDALIK ESLATMALAR ═══
+    const isSunday = now.getDay() === 0;
+
     const tgUsers = await db.collection('users')
       .where('telegramEnabled', '==', true)
       .get();
+
+    let allStats = [];
+    if (isSunday) {
+      const statsSnap = await db.collection('userStats').orderBy('totalScore', 'desc').get();
+      allStats = statsSnap.docs.map(d => ({ id: d.id, score: d.data().totalScore || 0 }));
+    }
 
     const tgPromises = [];
     for (const userDoc of tgUsers.docs) {
       const data = userDoc.data();
       if (data.telegramChatId) {
         let scoreMsg = "";
+        let score = 0;
+        let rank = 0;
         try {
           const statSnap = await db.collection('userStats').doc(userDoc.id).get();
           if (statSnap.exists) {
-            scoreMsg = `\n\n📊 Joriy yig'gan ballingiz: <b>${statSnap.data().totalScore || 0}</b>. Reytingda ko'tarilish uchun test ishlashni davom ettiring!`;
+            score = statSnap.data().totalScore || 0;
+            if (isSunday) {
+              const rIndex = allStats.findIndex(s => s.id === userDoc.id);
+              rank = rIndex >= 0 ? rIndex + 1 : allStats.length + 1;
+            }
           }
         } catch(e) {}
 
-        const msg = `📚 <b>Vaqt bo'ldi!</b>\n\nAttestatsiya imtihoniga tayyorgarlikni tizimli davom ettiramiz. Bugungi takrorlash testlaringiz sizni kutmoqda.${scoreMsg}\n\n👉 <a href="https://iqro-t41p.vercel.app">Platformaga kirish</a>`;
+        let msg = "";
+        if (isSunday) {
+          msg = `🏆 <b>Haftalik Hisobot!</b>\n\nPlatformada shu kungacha jami <b>${score} ball</b> yig'dingiz.\nUmumiy reytingda <b>${rank}-o'rindasiz!</b>\n\nKeyingi hafta top reytingga chiqishga harakat qiling! Keling, bitta test ishlaymiz👇\n\n👉 <a href="https://iqro-t41p.vercel.app">Platformaga kirish</a>`;
+        } else {
+          scoreMsg = `\n\n📊 Joriy yig'gan ballingiz: <b>${score}</b>. Reytingda ko'tarilish uchun test ishlashni davom ettiring!`;
+          msg = `📚 <b>Vaqt bo'ldi!</b>\n\nAttestatsiya imtihoniga tayyorgarlikni tizimli davom ettiramiz. Bugungi takrorlash testlaringiz sizni kutmoqda.${scoreMsg}\n\n👉 <a href="https://iqro-t41p.vercel.app">Platformaga kirish</a>`;
+        }
+
         tgPromises.push(
           sendTelegramMessage(data.telegramChatId, msg).then(success => {
             if (success) results.telegramSent++;

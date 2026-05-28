@@ -193,12 +193,27 @@ export default async function handler(req, res) {
     let incomingText = text.trim();
 
     // ==========================================
-    // 3. ADMIN RO'YXATDAN O'TISHI
+    // 3. ADMIN RO'YXATDAN O'TISHI VA JAVOB (REPLY) BERISHI
     // ==========================================
     if (incomingText === '/admin') {
       await db.collection('settings').doc('admin').set({ telegramChatId: chatId });
       await sendMessage(chatId, "✅ <b>Siz Admin sifatida ro'yxatga olindingiz!</b>\n\nEndi mijozlarning to'lov cheklari to'g'ridan-to'g'ri shu yerga keladi.");
       return res.status(200).send('Admin saved');
+    }
+
+    // Admin mijozga reply qildimi?
+    const adminSnap = await db.collection('settings').doc('admin').get();
+    let adminId = null;
+    if (adminSnap.exists) adminId = adminSnap.data().telegramChatId;
+
+    if (chatId === adminId && body.message.reply_to_message && body.message.reply_to_message.text) {
+      const repliedText = body.message.reply_to_message.text;
+      const match = repliedText.match(/ID: #UID_(\d+)/);
+      if (match && match[1]) {
+        const targetChatId = match[1];
+        await sendMessage(parseInt(targetChatId), `👨‍💻 <b>Admin javobi:</b>\n\n${incomingText}`);
+        return res.status(200).send('Admin reply sent');
+      }
     }
 
     // Foydalanuvchini izlash
@@ -217,7 +232,7 @@ export default async function handler(req, res) {
       keyboard: [
         [{text: "💳 Premium Sotib Olish"}],
         [{text: "📊 Statistika"}, {text: "🔑 Kodimni ko'rish"}],
-        [{text: "🔗 Do'stlarni taklif qilish"}]
+        [{text: "🔗 Do'stlarni taklif qilish"}, {text: "💬 Yordam"}]
       ],
       resize_keyboard: true
     };
@@ -329,8 +344,19 @@ export default async function handler(req, res) {
       msg += `\nQuyidagi kartaga to'lov qiling:\n\n💳 Karta: <code>9860350143333655</code>\n👤 Egasi: Ayyubxon Abdulazizov\n\n<b>👇 To'lov qilgach, chekni (skrinshotni) to'g'ridan-to'g'ri shu yerga rasm qilib yuboring!</b>`;
       
       await sendMessage(chatId, msg, keyboardMarkup);
+    } else if (incomingText === "💬 Yordam" || incomingText === '/yordam') {
+      await sendMessage(chatId, `💬 <b>Yordam xizmati</b>\n\nSavol yoki taklifingiz bo'lsa, xuddi shu yerga yozib yuboring. Xabaringiz to'g'ridan-to'g'ri adminga yetkaziladi va biz tez orada sizga javob beramiz!`, keyboardMarkup);
+
     } else {
-      await sendMessage(chatId, "Kechirasiz, men bu buyruqni tushunmadim. Iltimos menyudagi tugmalardan foydalaning.", keyboardMarkup);
+      // Boshqa har qanday noma'lum matnni adminga "Support" sifatida yuborish
+      if (adminId && chatId !== adminId) {
+        await sendMessage(adminId, `📩 <b>Yangi murojaat!</b>\n\n👤 Foydalanuvchi: ${linkedUser ? (linkedUser.displayName || 'Ismsiz') : 'Noma\'lum'}\nID: #UID_${chatId}\n\n💬 Matn:\n<i>${incomingText}</i>\n\n👇 <i>(Ushbu xabarga "Reply" qilib javob yozing)</i>`);
+        await sendMessage(chatId, "✅ Xabaringiz adminga yetkazildi. Tez orada javob olamiz!");
+      } else if (chatId === adminId) {
+        await sendMessage(chatId, "Kechirasiz, men bu buyruqni tushunmadim. Mijozga javob yozish uchun uning xabariga 'Reply' qilib yozing.", keyboardMarkup);
+      } else {
+        await sendMessage(chatId, "Kechirasiz, men bu buyruqni tushunmadim. Iltimos menyudagi tugmalardan foydalaning.", keyboardMarkup);
+      }
     }
 
     res.status(200).send('OK');
