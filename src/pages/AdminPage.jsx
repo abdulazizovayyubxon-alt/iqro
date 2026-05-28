@@ -6,9 +6,9 @@ import { useAdmin } from '../hooks/useAdmin';
 import { db, storage } from '../firebase';
 import {
   collection, query, orderBy, onSnapshot,
-  updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch, increment
+  updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch, increment, setDoc
 } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL, uploadString } from 'firebase/storage';
 import { q0_harbiy_xizmat } from '../data/questions_0.js';
 import { q1_umumharbiy_nizomlar } from '../data/questions_1.js';
 import { q2_otish_tayyorgarligi } from '../data/questions_2.js';
@@ -22,7 +22,7 @@ import {
   Shield, MessageCircle, Users, BarChart3,
   CheckCircle, Trash2, Clock, AlertTriangle,
   ChevronDown, ChevronUp, Search, Plus, Edit3, FileText, Zap,
-  Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, RefreshCw
+  Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, RefreshCw, UploadCloud
 } from 'lucide-react';
 
 import './AdminPage.css';
@@ -627,6 +627,58 @@ const AdminPage = () => {
     }
   };
 
+  const handlePublishBundles = async () => {
+    if (!window.confirm("Barcha savollarni yig'ib Firebase Storage'ga yuklashni (Publish) tasdiqlaysizmi? Bu foydalanuvchilar ilovasida versiyani yangilaydi.")) return;
+    setIsSyncing(true);
+    showToast("Ma'lumotlar yig'ilmoqda, kuting...", 'info');
+
+    try {
+      // 1. Hamma savollarni olish
+      const snap = await getDocs(collection(db, 'questions'));
+      const allQuestions = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+      // 2. Kategoriya bo'yicha guruhlash
+      const bundles = {};
+      allQuestions.forEach(q => {
+        let cat = q.category || 'other';
+        if (Array.isArray(cat)) cat = cat[0]; // If category is an array, take the first one
+        if (!bundles[cat]) bundles[cat] = [];
+        bundles[cat].push(q);
+      });
+
+      // 3. Storage'ga yuklash
+      const storageUrls = {};
+      const catKeys = Object.keys(bundles);
+      for (let i = 0; i < catKeys.length; i++) {
+        const cat = catKeys[i];
+        showToast(`'${cat}' fani yuklanmoqda... (${i + 1}/${catKeys.length})`, 'info');
+        const jsonStr = JSON.stringify(bundles[cat]);
+        const bundleRef = ref(storage, `bundles/${cat}.json`);
+        await uploadString(bundleRef, jsonStr, 'raw', { contentType: 'application/json' });
+        const url = await getDownloadURL(bundleRef);
+        storageUrls[cat] = url;
+      }
+
+      // 4. settings/version ni yangilash
+      showToast(`Sozlamalar yangilanmoqda...`, 'info');
+      const versionDocRef = doc(db, 'settings', 'version');
+      const newVersion = Date.now();
+      
+      await setDoc(versionDocRef, {
+        dbVersion: newVersion,
+        urls: storageUrls,
+        updatedAt: new Date().toISOString()
+      }, { merge: true });
+
+      showToast("✅ Barcha savollar muvaffaqiyatli Storage'ga yuklandi!", 'success');
+
+    } catch (e) {
+      console.error("Publish xatosi:", e);
+      showToast("Yuklashda xatolik: " + e.message, 'error');
+    }
+    setIsSyncing(false);
+  };
+
   const handleDeleteQuestion = async (id) => {
     if (!window.confirm("Savolni o'chirishni tasdiqlaysizmi?")) return;
     try {
@@ -888,8 +940,11 @@ const AdminPage = () => {
           <div className="admin-section-title"><FileText size={18} style={{ color: 'var(--blue)' }} /> Savollar Bazasi ({questions.length})</div>
           
           <div className="admin-action-bar">
+            <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-primary" style={{ background: 'var(--green)', borderColor: 'var(--green)' }} onClick={handlePublishBundles} disabled={isSyncing}>
+              <UploadCloud size={14} /> {isSyncing ? 'Yuklanmoqda...' : '🚀 Dasturni Yangilash (Publish)'}
+            </motion.button>
             <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline" style={{ color: 'var(--blue)', borderColor: 'var(--blue)' }} onClick={handleSyncAllQuestions} disabled={isSyncing}>
-              <Zap size={14} /> {isSyncing ? 'Sinxronlanmoqda...' : 'Sinxronlash'}
+              <Zap size={14} /> {isSyncing ? 'Sinxronlanmoqda...' : 'Eskicha Sinxronlash'}
             </motion.button>
             <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline" style={{ color: 'var(--amber)', borderColor: 'var(--amber)' }} onClick={handleFixAndShuffleAnswers} disabled={isFixing}>
               <RefreshCw size={14} className={isFixing ? "spin-animation" : ""} /> {isFixing ? 'Tuzatilmoqda...' : 'Aralashtirish & Tuzatish (Ona tili va Tarix)'}

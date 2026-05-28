@@ -14,8 +14,9 @@ import PremiumModal from '../components/PremiumModal';
 import SafeHtml from '../components/shared/SafeHtml';
 import QuestionMedia from '../components/QuestionMedia';
 import { db } from '../firebase';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
 import { summarizeTestResults } from '../engine/SmartQuestionEngine';
+import localforage from 'localforage';
 
 const EXAM_TOTAL = 50;
 
@@ -141,14 +142,50 @@ const ExamPage = () => {
     const loadExamQuestions = async () => {
       setLoading(true);
       try {
-        const qRef = collection(db, 'questions');
-        const qQuery = query(qRef, where('category', '==', cat));
-        const snap = await getDocs(qQuery);
+        // 🔥 AQLLI KESHLASH (JSON BUNDLING) 🔥
+        const versionDocRef = doc(db, 'settings', 'version');
+        const versionSnap = await getDoc(versionDocRef);
         
-        let allQ = snap.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
+        let remoteVersion = 0;
+        let storageUrls = {};
+        if (versionSnap.exists()) {
+          const vData = versionSnap.data();
+          remoteVersion = vData.dbVersion || 0;
+          storageUrls = vData.urls || {};
+        }
+
+        const cacheKey = `bundle_${cat}`;
+        const versionKey = `version_${cat}`;
+        
+        const localCategoryVersion = await localforage.getItem(versionKey);
+        let allQ = await localforage.getItem(cacheKey);
+
+        if (!allQ || localCategoryVersion !== remoteVersion) {
+          const downloadUrl = storageUrls[cat];
+          if (downloadUrl) {
+            try {
+              const res = await fetch(downloadUrl);
+              allQ = await res.json();
+              await localforage.setItem(cacheKey, allQ);
+              await localforage.setItem(versionKey, remoteVersion);
+            } catch (err) {
+              console.error("Bundle yuklashda xatolik:", err);
+              allQ = [];
+            }
+          } else {
+            allQ = [];
+          }
+        }
+
+        allQ = allQ.filter(q => q.category === cat);
+
+        // SAVOL KODLARINI UI'DAN OLIB TASHLASH (Masalan: "(Savol kodi: #PM2263)")
+        allQ = allQ.map(q => {
+          if (q.q) {
+            q.q = q.q.replace(/\s*\(Savol kodi:\s*#[a-zA-Z0-9_-]+\)/gi, '');
+          }
+          return q;
+        });
 
         if (allQ.length === 0) {
           showToast("Savollar topilmadi!", 'error');

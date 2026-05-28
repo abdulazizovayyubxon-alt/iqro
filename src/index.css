@@ -1515,3 +1515,13 @@ input:focus, textarea:focus, select:focus {
   50% { transform: scale(1.25); filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.6)); }
   100% { transform: scale(1); }
 }
+
+/* ── Smart Bottom Sheet Styles ── */
+.bottom-sheet-trigger:hover {
+  background: var(--bg3) !important;
+  border-color: var(--accent) !important;
+  transform: translateY(-1px);
+}
+.bottom-sheet-trigger:active {
+  transform: translateY(1px);
+}
