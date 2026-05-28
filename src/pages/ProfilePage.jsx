@@ -10,8 +10,10 @@ import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
 import { SUBJECTS } from '../data/mockData';
 import { ToastContext } from '../context/ToastContext';
-import { db } from '../firebase';
-import { doc, getDoc, setDoc, collection, query, where, getDocs } from 'firebase/firestore';
+import { db, auth } from '../firebase';
+import { doc, getDoc, updateDoc, setDoc, onSnapshot, collection, query, where, getDocs, limit } from 'firebase/firestore';
+import { updateProfile } from 'firebase/auth';
+import { signInWithCustomToken } from 'firebase/auth';
 import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
 import {
   getUserReferralCode, buildReferralLink, getReferralStats,
@@ -35,6 +37,39 @@ export default function ProfilePage({ theme, toggleTheme }) {
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showTelegramModal, setShowTelegramModal] = useState(false);
+  const [tgLoading, setTgLoading] = useState(false);
+  const [tgError, setTgError] = useState('');
+
+  const handleTelegramLogin = async () => {
+    const sessionId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    window.open(`https://t.me/IQRO_testbot?start=login_${sessionId}`, '_blank');
+    setTgLoading(true);
+    setTgError('Telegram orqali tasdiqlash kutilmoqda... Botga kirib START bosing.');
+    
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch(`/api/telegram-auth?sessionId=${sessionId}`);
+        const data = await res.json();
+        if (data.success && data.token) {
+          clearInterval(interval);
+          await signInWithCustomToken(auth, data.token);
+          setTgLoading(false);
+          setTgError('');
+          showToast('Hisob muvaffaqiyatli tiklandi!', 'success');
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }, 2500);
+    
+    setTimeout(() => {
+      clearInterval(interval);
+      if (tgLoading) {
+        setTgLoading(false);
+        setTgError('');
+      }
+    }, 120000);
+  };
   const [editForm, setEditForm] = useState({ name: '', gender: '', birthDate: '', goal: '', subject: '' });
   const [saving, setSaving] = useState(false);
   const [refCode, setRefCode] = useState('');
@@ -537,6 +572,16 @@ export default function ProfilePage({ theme, toggleTheme }) {
             <span className="pp-menu-label">Profilni tahrirlash</span>
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
+
+          {/* Account Recovery */}
+          <button className="pp-menu-item" onClick={handleTelegramLogin} disabled={tgLoading}>
+            <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--blue)' }}>
+              <Send size={20} className={tgLoading ? "spin" : ""} />
+            </div>
+            <span className="pp-menu-label">{tgLoading ? 'Kutilmoqda...' : 'Eski hisobni tiklash (Telegram)'}</span>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+          {tgError && <div style={{ padding: '0 16px', fontSize: 12, color: 'var(--blue)', marginTop: '-5px', marginBottom: '5px' }}>{tgError}</div>}
 
           {/* Offline Download */}
           <button className="pp-menu-item" onClick={handleDownloadOffline} disabled={downloadingOffline}>

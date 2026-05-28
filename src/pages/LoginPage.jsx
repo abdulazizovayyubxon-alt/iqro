@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Eye, EyeOff, UserPlus, LogIn } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff, UserPlus, LogIn, Send } from 'lucide-react';
+import { signInWithCustomToken } from 'firebase/auth';
+import { auth } from '../firebase';
 
 const GoogleIcon = () => (
   <svg width="20" height="20" viewBox="0 0 48 48">
@@ -188,6 +190,34 @@ export default function LoginPage() {
   const handleForgotPassword = async () => {
     if (!isPhoneValid()) { setAuthError("Avval telefon raqamni kiriting"); return; }
     await resetPassword(phone);
+  };
+
+  const handleTelegramLogin = async () => {
+    const sessionId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    window.open(`https://t.me/IQRO_testbot?start=login_${sessionId}`, '_blank');
+    setLoading(true);
+    setAuthError('Telegram orqali tasdiqlash kutilmoqda... Botga kirib START bosing.');
+    
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch(`/api/telegram-auth?sessionId=${sessionId}`);
+        const data = await res.json();
+        if (data.success && data.token) {
+          clearInterval(interval);
+          await signInWithCustomToken(auth, data.token);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }, 2500);
+    
+    setTimeout(() => {
+      clearInterval(interval);
+      if (loading) {
+        setLoading(false);
+        setAuthError('');
+      }
+    }, 120000); // 2 min timeout
   };
 
   const progressMap = {
@@ -448,6 +478,15 @@ export default function LoginPage() {
                 whileTap={{ scale: 0.98 }}
               >
                 <GoogleIcon /> Google orqali kirish
+              </motion.button>
+              
+              <motion.button 
+                style={{ ...s.outlineBtn, marginTop: '10px', color: '#fff', background: '#29B6F6', border: 'none' }} 
+                onClick={handleTelegramLogin} 
+                disabled={loading}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Send size={20} color="#fff" /> Telegram orqali kirish
               </motion.button>
             </>
           )}

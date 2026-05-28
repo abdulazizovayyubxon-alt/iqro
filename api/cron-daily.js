@@ -88,7 +88,15 @@ export default async function handler(req, res) {
     for (const userDoc of tgUsers.docs) {
       const data = userDoc.data();
       if (data.telegramChatId) {
-        const msg = `📚 <b>Vaqt bo'ldi!</b>\n\nAttestatsiya imtihoniga tayyorgarlikni tizimli davom ettiramiz. Bugungi takrorlash testlaringiz sizni kutmoqda.\n\n👉 <a href="https://iqro-t41p.vercel.app">Platformaga kirish va test ishlash</a>`;
+        let scoreMsg = "";
+        try {
+          const statSnap = await db.collection('userStats').doc(userDoc.id).get();
+          if (statSnap.exists) {
+            scoreMsg = `\n\n📊 Joriy yig'gan ballingiz: <b>${statSnap.data().totalScore || 0}</b>. Reytingda ko'tarilish uchun test ishlashni davom ettiring!`;
+          }
+        } catch(e) {}
+
+        const msg = `📚 <b>Vaqt bo'ldi!</b>\n\nAttestatsiya imtihoniga tayyorgarlikni tizimli davom ettiramiz. Bugungi takrorlash testlaringiz sizni kutmoqda.${scoreMsg}\n\n👉 <a href="https://iqro-t41p.vercel.app">Platformaga kirish</a>`;
         tgPromises.push(
           sendTelegramMessage(data.telegramChatId, msg).then(success => {
             if (success) results.telegramSent++;

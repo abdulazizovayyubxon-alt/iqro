@@ -612,6 +612,16 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('iqro_referral_welcome', 'true');
           }
 
+          // Adminga bildirishnoma yuborish
+          fetch('/api/notify-admin', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'register',
+              message: `Yangi foydalanuvchi ro'yxatdan o'tdi!\nIsm: ${name}\nTelefon: ${cleanPhone}\nID: ${userCred.user.uid}`
+            })
+          }).catch(e => console.warn('Admin notify xatosi:', e));
+
           setUser({
             uid: userCred.user.uid,
             email: internalEmail,
