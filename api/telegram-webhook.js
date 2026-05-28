@@ -18,7 +18,8 @@ function getDb() {
   return getFirestore();
 }
 
-const TELEGRAM_API_URL = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}`;
+const TELEGRAM_BOT_TOKEN = '8523102352:AAEQOggWs3ULCGivaao-bmMpwT-_lFdxMeQ';
+const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}`;
 
 async function sendMessage(chatId, text) {
   try {
