@@ -40,6 +40,22 @@ export default function LoginPage() {
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
   const [lockoutTimer, setLockoutTimer] = useState(null);
+  const [featureIdx, setFeatureIdx] = useState(0);
+
+  useEffect(() => {
+    if (step === STEPS.PHONE) {
+      const int = setInterval(() => {
+        setFeatureIdx(prev => (prev + 1) % 3);
+      }, 3000);
+      return () => clearInterval(int);
+    }
+  }, [step]);
+
+  const FEATURES = [
+    { icon: '🚀', title: 'Tezkor va Qulay', desc: 'Imtihonga zamonaviy usulda tayyorlaning' },
+    { icon: '🧠', title: 'Aqlli Takrorlash', desc: 'Xatolarni tahlil qilib, eslab qolishni osonlashtiring' },
+    { icon: '📵', title: 'Oflayn Rejim', desc: 'Internetsiz ham test ishlashda davom eting' }
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -274,10 +290,26 @@ export default function LoginPage() {
               {/* ── STEP: PHONE ── */}
               {step === STEPS.PHONE && (
                 <>
-                  <h1 style={s.title}>Xush kelibsiz</h1>
-                  <p style={s.subtitle}>
-                    Telefon raqamingizni kiriting — tizimga tezkor kiring.
-                  </p>
+                  <div style={{ marginBottom: 32, minHeight: 80, display: 'flex', alignItems: 'center' }}>
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={featureIdx}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                        style={{ display: 'flex', alignItems: 'center', gap: 16 }}
+                      >
+                        <div style={{ fontSize: 48, filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.1))' }}>
+                          {FEATURES[featureIdx].icon}
+                        </div>
+                        <div>
+                          <h1 style={{ ...s.title, marginBottom: 6, fontSize: 24, lineHeight: 1.1 }}>{FEATURES[featureIdx].title}</h1>
+                          <p style={{ ...s.subtitle, margin: 0, fontSize: 13, lineHeight: 1.4 }}>{FEATURES[featureIdx].desc}</p>
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
                   <div style={s.phoneWrap}>
                     <input
                       id="login-phone-input"
@@ -519,10 +551,15 @@ export default function LoginPage() {
             </>
           )}
 
-          {/* Trust Badges */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', marginTop: '24px', opacity: 0.5 }}>
-            <ShieldCheck size={16} color="var(--text)" />
-            <span style={{ fontSize: '12px', color: 'var(--text)', fontWeight: 500 }}>Ma'lumotlaringiz xavfsiz himoyalangan</span>
+          {/* Trust Badges & Policies */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', marginTop: '24px' }}>
+            <div style={{ fontSize: '11px', color: 'var(--text3)', textAlign: 'center', maxWidth: 280, lineHeight: 1.5 }}>
+              Tizimga kirish orqali siz bizning <a href="#" style={{color: PRIMARY, textDecoration: 'none', fontWeight: 600}}>Maxfiylik Siyosati</a> va <a href="#" style={{color: PRIMARY, textDecoration: 'none', fontWeight: 600}}>Foydalanish Shartlari</a>ga rozi bo'lasiz.
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', opacity: 0.6 }}>
+              <ShieldCheck size={16} color="var(--text)" />
+              <span style={{ fontSize: '12px', color: 'var(--text)', fontWeight: 500 }}>Ma'lumotlaringiz xavfsiz himoyalangan</span>
+            </div>
           </div>
         </div>
       </div>

@@ -568,9 +568,29 @@ const ExamPage = () => {
 
   if (loading) {
     return (
-      <div className="page" style={{ height: '70vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
-        <RefreshCw className="spin" size={32} style={{ color: 'var(--blue)' }} />
-        <div style={{ color: 'var(--text3)', fontSize: 15 }}>Savollar tayyorlanmoqda...</div>
+      <div style={{ maxWidth: 640, margin: '40px auto', padding: '20px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <style>{`
+          @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 0.3; }
+            100% { opacity: 0.6; }
+          }
+        `}</style>
+        {/* Header Skeleton */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+           <div style={{ width: '40%', height: 24, background: 'var(--bg3)', borderRadius: 8, animation: 'pulse 1.5s infinite ease-in-out' }} />
+           <div style={{ width: '20%', height: 24, background: 'var(--bg3)', borderRadius: 8, animation: 'pulse 1.5s infinite ease-in-out' }} />
+        </div>
+        {/* Question Text Skeleton */}
+        <div style={{ background: 'var(--bg2)', padding: '24px 20px', borderRadius: 20, border: '1px solid var(--border)' }}>
+          <div style={{ width: '100%', height: 22, background: 'var(--bg3)', borderRadius: 6, marginBottom: 12, animation: 'pulse 1.5s infinite ease-in-out', animationDelay: '0.1s' }} />
+          <div style={{ width: '80%', height: 22, background: 'var(--bg3)', borderRadius: 6, marginBottom: 24, animation: 'pulse 1.5s infinite ease-in-out', animationDelay: '0.2s' }} />
+          
+          {/* Answers Skeletons */}
+          {[1,2,3,4].map((i, idx) => (
+            <div key={i} style={{ width: '100%', height: 56, background: 'var(--bg3)', borderRadius: 16, marginBottom: 10, animation: 'pulse 1.5s infinite ease-in-out', animationDelay: \`0.\${3 + idx}s\` }} />
+          ))}
+        </div>
       </div>
     );
   }

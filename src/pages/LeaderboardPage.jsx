@@ -91,6 +91,21 @@ const LeaderboardPage = () => {
     return () => unsubscribe();
   }, [user]);
 
+  const handleDeleteClick = (id, name) => {
+    setDeleteConfirm({ show: true, id, name });
+  };
+
+  const executeDelete = async () => {
+    try {
+      await deleteDoc(doc(db, 'userStats', deleteConfirm.id));
+      showToast('Natija o\'chirildi', 'success');
+    } catch (e) {
+      showToast('Xatolik yuz berdi', 'error');
+    } finally {
+      setDeleteConfirm({ show: false, id: null, name: '' });
+    }
+  };
+
   // Top 3 podium
   const top3 = leaders.slice(0, 3);
   const rest = leaders.slice(3);

@@ -449,10 +449,28 @@ const TestPage = () => {
 
   if (isGenerating) {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh' }}>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ width: 48, height: 48, border: '3px solid #E2E8F0', borderTopColor: '#29B6F6', borderRadius: '50%', animation: 'spin 0.8s linear infinite', margin: '0 auto 16px' }} />
-          <div style={{ color: '#64748B', fontSize: 14, fontWeight: 500 }}>Savollar yuklanmoqda...</div>
+      <div style={{ maxWidth: 640, margin: '0 auto', padding: '20px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <style>{`
+          @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 0.3; }
+            100% { opacity: 0.6; }
+          }
+        `}</style>
+        {/* Header Skeleton */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+           <div style={{ width: '40%', height: 24, background: 'var(--bg3)', borderRadius: 8, animation: 'pulse 1.5s infinite ease-in-out' }} />
+           <div style={{ width: '20%', height: 24, background: 'var(--bg3)', borderRadius: 8, animation: 'pulse 1.5s infinite ease-in-out' }} />
+        </div>
+        {/* Question Text Skeleton */}
+        <div style={{ background: 'var(--bg2)', padding: '24px 20px', borderRadius: 20, border: '1px solid var(--border)' }}>
+          <div style={{ width: '100%', height: 22, background: 'var(--bg3)', borderRadius: 6, marginBottom: 12, animation: 'pulse 1.5s infinite ease-in-out', animationDelay: '0.1s' }} />
+          <div style={{ width: '80%', height: 22, background: 'var(--bg3)', borderRadius: 6, marginBottom: 24, animation: 'pulse 1.5s infinite ease-in-out', animationDelay: '0.2s' }} />
+          
+          {/* Answers Skeletons */}
+          {[1,2,3,4].map((i, idx) => (
+            <div key={i} style={{ width: '100%', height: 56, background: 'var(--bg3)', borderRadius: 16, marginBottom: 10, animation: 'pulse 1.5s infinite ease-in-out', animationDelay: \`0.\${3 + idx}s\` }} />
+          ))}
         </div>
       </div>
     );

@@ -138,10 +138,10 @@ const Dashboard = () => {
               whileTap={{ scale: 0.95 }}
               style={{
                 ...s.subjTab,
-                background: isSelected ? 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)' : 'var(--glass-bg)',
-                color: isSelected ? '#fff' : 'var(--text3)',
-                border: isSelected ? '1px solid transparent' : '1px solid var(--glass-border)',
-                boxShadow: isSelected ? '0 4px 12px rgba(139, 92, 246, 0.2)' : 'none',
+                background: isSelected ? 'var(--blue)' : 'var(--bg3)',
+                color: isSelected ? '#fff' : 'var(--text2)',
+                border: isSelected ? '1px solid var(--blue)' : '1.5px solid var(--border)',
+                boxShadow: isSelected ? '0 4px 12px rgba(41, 182, 246, 0.25)' : 'none',
               }}
               onClick={() => updateState({ activeCategory: subj.id })}
             >
@@ -156,10 +156,10 @@ const Dashboard = () => {
       {showExamBanner && EXAM_DATE && cat !== 'art' && (
         <div style={{...s.examBanner, position: 'relative'}}>
           <button 
-            style={{ position: 'absolute', top: 8, right: 8, background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '50%', width: 24, height: 24, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', cursor: 'pointer' }}
+            style={{ position: 'absolute', top: 4, right: 4, background: 'transparent', border: 'none', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', cursor: 'pointer', borderRadius: '50%' }}
             onClick={(e) => { e.stopPropagation(); setShowExamBanner(false); localStorage.setItem('iqro_dismissed_exam_banner', '1'); }}
           >
-            <X size={14} />
+            <X size={18} />
           </button>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <div style={{ background: 'rgba(255,255,255,0.2)', borderRadius: 10, padding: '8px 10px' }}>
@@ -197,10 +197,10 @@ const Dashboard = () => {
       {showReferralBanner && (
       <div style={{ position: 'relative', width: '100%', maxWidth: 600, margin: '0 auto' }}>
         <button 
-          style={{ position: 'absolute', top: 6, right: 6, zIndex: 10, background: 'rgba(0,0,0,0.06)', border: 'none', borderRadius: '50%', width: 26, height: 26, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+          style={{ position: 'absolute', top: 4, right: 4, zIndex: 10, background: 'transparent', border: 'none', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', borderRadius: '50%' }}
           onClick={(e) => { e.stopPropagation(); setShowReferralBanner(false); localStorage.setItem('iqro_dismissed_ref_banner', '1'); }}
         >
-          <X size={14} color="#78350F" />
+          <X size={18} color="#B45309" />
         </button>
       <motion.button
         whileHover={{ scale: 1.01, y: -2 }}
@@ -373,8 +373,8 @@ const s = {
     display: 'flex',
     alignItems: 'center',
     gap: 8,
-    padding: '10px 16px',
-    borderRadius: 12,
+    padding: '14px 20px', // Min 48px touch target
+    borderRadius: 14,
     border: '1.5px solid var(--border)',
     fontSize: 14,
     fontWeight: 700,
@@ -385,9 +385,9 @@ const s = {
     transition: 'all 0.2s ease',
   },
   examBanner: {
-    background: 'linear-gradient(135deg, #29B6F6, #0284C7)',
-    borderRadius: 18, padding: '18px 20px',
-    marginBottom: 14,
+    background: 'var(--blue)',
+    borderRadius: 18, padding: '20px 24px',
+    marginBottom: 16,
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
   },
   examGoal: {
@@ -406,10 +406,10 @@ const s = {
   },
   referralBanner: {
     width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-    background: 'linear-gradient(135deg, #FDE68A 0%, #FBBF24 100%)',
-    border: '1px solid rgba(245, 158, 11, 0.2)', borderRadius: 18,
-    padding: '16px 18px', marginBottom: 20, cursor: 'pointer', fontFamily: 'inherit',
-    boxShadow: '0 4px 15px rgba(245, 158, 11, 0.12)',
+    background: 'var(--amber-bg)',
+    border: '1.5px solid var(--amber)', borderRadius: 18,
+    padding: '18px 20px', marginBottom: 20, cursor: 'pointer', fontFamily: 'inherit',
+    boxShadow: '0 4px 15px rgba(245, 158, 11, 0.08)',
   },
   referralBtn: {
     background: '#78350F', color: '#fff', fontWeight: 700, fontSize: 13,

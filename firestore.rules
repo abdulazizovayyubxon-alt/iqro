@@ -55,7 +55,14 @@ service cloud.firestore {
     // ── users: foydalanuvchi profili (referral kod qidirish va reyting uchun hamma o'qiy oladi) ──
     match /users/{userId} {
       allow read: if isLoggedIn();
-      allow write: if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId) 
+                    && request.resource.data.role == 'user' 
+                    && (request.resource.data.isPremium == false || !('isPremium' in request.resource.data));
+      allow update: if isAdmin() || (
+        isOwner(userId) 
+        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'isPremium', 'premiumPlan', 'premiumExpire', 'freeExpire', 'referralBonus']))
+      );
+      allow delete: if isAdmin();
     }
 
     // ── referrals: taklif qilinganlar va bonuslar ──

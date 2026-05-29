@@ -141,6 +141,8 @@ const PremiumModal = ({ isOpen, onClose }) => {
   const finalPrice = selectedPlan ? Math.max(0, selectedPlan.price - referralBonus) : 0;
   const hasBonus = referralBonus > 0 && selectedPlan;
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+  const isPWA = typeof window !== 'undefined' && window.matchMedia('(display-mode: standalone)').matches;
+  const isAndroidApp = isPWA && /android/i.test(navigator.userAgent);
   const BOT_USERNAME = 'IQRO_testbot';
 
   const handlePay = () => {
@@ -184,9 +186,10 @@ const PremiumModal = ({ isOpen, onClose }) => {
         onClick={e => e.stopPropagation()}
         style={{
           width: '100%', maxWidth: 480,
-          background: 'linear-gradient(180deg, #1a1a2e 0%, #0f0f1e 100%)',
+          background: '#ffffff',
           borderRadius: isMobile ? '24px 24px 0 0' : '24px',
-          border: '1px solid rgba(255,255,255,0.1)',
+          border: '1px solid rgba(0,0,0,0.08)',
+          boxShadow: '0 24px 50px rgba(0,0,0,0.1)',
           overflow: 'hidden',
           maxHeight: '94vh',
           overflowY: 'auto',
@@ -197,7 +200,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
         <div style={{
           position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
           width: 300, height: 150, pointerEvents: 'none',
-          background: 'radial-gradient(ellipse, rgba(139,92,246,0.3) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, rgba(41,182,246,0.12) 0%, transparent 70%)',
         }} />
 
         {/* Header */}
@@ -206,7 +209,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
             {step !== 'plans' && (
               <button
                 onClick={() => setStep('plans')}
-                style={{ background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: 8, padding: '5px 8px', cursor: 'pointer', color: 'rgba(255,255,255,0.7)', fontSize: 12 }}
+                style={{ background: 'rgba(0,0,0,0.05)', border: 'none', borderRadius: 8, padding: '5px 8px', cursor: 'pointer', color: '#64748B', fontSize: 12, fontWeight: 600 }}
               >
                 ← Orqaga
               </button>
@@ -214,7 +217,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
           </div>
           <button
             onClick={onClose}
-            style={{ background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: 10, padding: '6px', cursor: 'pointer', color: 'rgba(255,255,255,0.6)', marginLeft: 'auto' }}
+            style={{ background: 'rgba(0,0,0,0.05)', border: 'none', borderRadius: 10, padding: '6px', cursor: 'pointer', color: '#64748B', marginLeft: 'auto' }}
           >
             <X size={18} />
           </button>
@@ -228,6 +231,17 @@ const PremiumModal = ({ isOpen, onClose }) => {
               <motion.div key="plans" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                 {/* Hero */}
                 <div style={{ textAlign: 'center', marginBottom: 20 }}>
+                  
+                  {/* FOMO Countdown Banner */}
+                  <motion.div 
+                    initial={{ y: -10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    style={{ background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: 12, padding: '8px 12px', display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 16 }}
+                  >
+                    <span style={{ fontSize: 16 }}>⏳</span>
+                    <span style={{ fontSize: 12, fontWeight: 700, color: '#B45309' }}>Maxsus taklif: 24 soat ichida xarid qilsangiz...</span>
+                  </motion.div>
+
                   <motion.div
                     animate={{ rotate: [0, -10, 10, -10, 0] }}
                     transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
@@ -235,17 +249,17 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   >
                     👑
                   </motion.div>
-                  <h2 style={{ fontSize: 22, fontWeight: 900, color: '#fff', margin: '0 0 4px' }}>IQRO Premium</h2>
-                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', margin: 0 }}>Cheksiz imkoniyatlar bilan tayyorlan</p>
+                  <h2 style={{ fontSize: 22, fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>IQRO Premium</h2>
+                  <p style={{ fontSize: 13, color: '#64748B', margin: 0 }}>Cheksiz imkoniyatlar bilan tayyorlan</p>
                 </div>
 
                 {/* Social proof */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 20, fontSize: 12, color: 'rgba(255,255,255,0.45)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                    <TrendingUp size={12} style={{ color: '#10B981' }} />
-                    <span>2,000+ foydalanuvchi</span>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 20, fontSize: 12, color: '#64748B' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontWeight: 600, color: '#10B981' }}>
+                    <Shield size={14} />
+                    <span>100% Xavfsiz To'lov</span>
                   </div>
-                  <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
+                  <div style={{ width: 1, height: 14, background: 'rgba(0,0,0,0.1)' }} />
                   <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
                     <Star size={12} style={{ color: '#F59E0B' }} />
                     <span>89% muvaffaqiyat</span>
@@ -264,10 +278,11 @@ const PremiumModal = ({ isOpen, onClose }) => {
                         style={{
                           position: 'relative', padding: '14px 16px', borderRadius: 14,
                           cursor: 'pointer',
-                          border: isSelected ? `2px solid ${plan.color}` : isPopular ? '1.5px solid rgba(139,92,246,0.4)' : '1.5px solid rgba(255,255,255,0.08)',
+                          border: isSelected ? `2px solid ${plan.color}` : '1.5px solid rgba(0,0,0,0.06)',
                           background: isSelected
-                            ? `rgba(${plan.id === 'monthly' ? '59,130,246' : plan.id === 'quarterly' ? '139,92,246' : '16,185,129'}, 0.12)`
-                            : isPopular ? 'rgba(139,92,246,0.05)' : 'rgba(255,255,255,0.03)',
+                            ? `rgba(${plan.id === 'monthly' ? '59,130,246' : plan.id === 'quarterly' ? '139,92,246' : '16,185,129'}, 0.08)`
+                            : '#ffffff',
+                          boxShadow: isSelected ? '0 4px 12px rgba(0,0,0,0.03)' : 'none',
                           transition: 'all 0.2s',
                           transform: isPopular ? 'scale(1.02)' : 'none',
                         }}
@@ -285,19 +300,19 @@ const PremiumModal = ({ isOpen, onClose }) => {
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                           <div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                              <span style={{ fontSize: 15, fontWeight: 800, color: '#fff' }}>{plan.name}</span>
+                              <span style={{ fontSize: 15, fontWeight: 800, color: '#0f172a' }}>{plan.name}</span>
                               {plan.savings && (
-                                <span style={{ fontSize: 10, fontWeight: 700, background: 'rgba(16,185,129,0.2)', color: '#10B981', padding: '2px 6px', borderRadius: 5 }}>
+                                <span style={{ fontSize: 10, fontWeight: 700, background: 'rgba(16,185,129,0.15)', color: '#10B981', padding: '2px 6px', borderRadius: 5 }}>
                                   -{plan.savings}
                                 </span>
                               )}
                             </div>
-                            <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', marginTop: 2 }}>
+                            <div style={{ fontSize: 11, color: '#64748B', marginTop: 2, fontWeight: 500 }}>
                               {plan.perDay ? `Kuniga ${plan.perDay.toLocaleString()} so'm` : `${plan.durationMonths} oy`}
                             </div>
                           </div>
                           <div style={{ textAlign: 'right' }}>
-                            <div style={{ fontSize: 18, fontWeight: 900, color: plan.color || '#fff' }}>
+                            <div style={{ fontSize: 18, fontWeight: 900, color: plan.color || '#0f172a' }}>
                               {fmt(plan.price)}
                             </div>
                           </div>
@@ -338,9 +353,18 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
                 {/* To'lov usullari */}
                 <div style={{ marginBottom: 16 }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.35)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
-                    To'lov usulini tanlang
-                  </div>
+                  {isAndroidApp ? (
+                    <div style={{ padding: '16px', background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: 12, marginBottom: 16 }}>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: '#B45309', marginBottom: 4 }}>Dastur ichida xarid vaqtincha faol emas</div>
+                      <div style={{ fontSize: 12, color: '#92400E', lineHeight: 1.4 }}>
+                        Iltimos, Premium xarid qilish uchun rasmiy veb-saytimizga kiring: <b>iqro.uz</b>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: '#94A3B8', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
+                        To'lov usulini tanlang
+                      </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                     {PAY_METHODS.map((m) => {
                       const isActive = selectedMethod === m.id;
@@ -369,16 +393,16 @@ const PremiumModal = ({ isOpen, onClose }) => {
                           )}
                           <span style={{ fontSize: 22 }}>{m.icon}</span>
                           <div style={{ flex: 1 }}>
-                            <div style={{ fontSize: 14, fontWeight: 700, color: isActive ? m.color : '#fff' }}>
+                            <div style={{ fontSize: 14, fontWeight: 700, color: isActive ? m.color : '#334155' }}>
                               {m.label}
                             </div>
-                            <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)' }}>
+                            <div style={{ fontSize: 11, color: '#64748B', fontWeight: 500 }}>
                               {m.sublabel}
                             </div>
                           </div>
                           <div style={{
                             width: 20, height: 20, borderRadius: '50%',
-                            border: isActive ? `2px solid ${m.color}` : '2px solid rgba(255,255,255,0.2)',
+                            border: isActive ? `2px solid ${m.color}` : '2px solid rgba(0,0,0,0.1)',
                             background: isActive ? m.color : 'transparent',
                             display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                           }}>
@@ -387,29 +411,31 @@ const PremiumModal = ({ isOpen, onClose }) => {
                         </div>
                       );
                     })}
-                  </div>
+                    </>
+                  )}
                 </div>
 
                 {/* Features */}
                 <div style={{
-                  background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)',
-                  borderRadius: 14, padding: '12px 14px', marginBottom: 18,
+                  background: '#f8fafc', border: '1px solid #e2e8f0',
+                  borderRadius: 14, padding: '14px', marginBottom: 18,
                 }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.35)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
+                  <div style={{ fontSize: 11, fontWeight: 800, color: '#94A3B8', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
                     Nimalar kiradi
                   </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
                     {FEATURES.map((f, i) => (
-                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-                        <span style={{ fontSize: 13 }}>{f.icon}</span>
-                        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', lineHeight: 1.3 }}>{f.text}</span>
+                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <span style={{ fontSize: 14 }}>{f.icon}</span>
+                        <span style={{ fontSize: 11, color: '#475569', lineHeight: 1.3, fontWeight: 600 }}>{f.text}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Asosiy tugma */}
-                <motion.button
+                {!isAndroidApp && (
+                  <motion.button
                   whileTap={{ scale: 0.98 }}
                   onClick={handlePay}
                   disabled={processing}
@@ -437,9 +463,10 @@ const PremiumModal = ({ isOpen, onClose }) => {
                     <><Smartphone size={18} /> Payme — {fmt(finalPrice)}</>
                   )}
                 </motion.button>
+                )}
 
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'rgba(255,255,255,0.25)', fontSize: 11 }}>
-                  <Shield size={12} />
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: '#94A3B8', fontSize: 11, fontWeight: 600 }}>
+                  <ShieldCheck size={14} color="#10B981" />
                   Xavfsiz to'lov • 100% kafolat
                 </div>
               </motion.div>

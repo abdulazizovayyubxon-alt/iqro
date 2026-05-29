@@ -684,6 +684,20 @@ export default function ProfilePage({ theme, toggleTheme }) {
             </button>
           )}
 
+          {/* Oflayn ishlash kafolati / Yuklab olish */}
+          <button className="pp-menu-item" onClick={handleDownloadOffline}>
+            <div className="pp-menu-icon" style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#10B981' }}>
+              <Shield size={20} />
+            </div>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
+              <span className="pp-menu-label" style={{ fontWeight: 800, color: '#10B981' }}>
+                {downloadingOffline ? downloadProgress : "Oflayn ishlash (Kafolat)"}
+              </span>
+              <span style={{ fontSize: 11, color: 'var(--text3)' }}>Internetsiz ishlash uchun savollarni yuklash</span>
+            </div>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
           {/* Theme Toggle */}
           <button className="pp-menu-item" onClick={toggleTheme}>
             <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--blue)' }}>

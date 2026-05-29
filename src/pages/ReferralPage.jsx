@@ -108,14 +108,15 @@ Sertifikatlash imtihoni yaqinlashmoqda — tayyorgarlikni bugundan boshlang.
       // 4 — Qisqa va ta'sirchan
 `👋 Salom!
 
-${firstName} sizga IQRO platformasida ${REFERRAL_DISCOUNT}% chegirma ulashmoqda.
+Men senga IQRO platformasida ${REFERRAL_DISCOUNT}% CHEGIRMA sovg'a qilyapman 🎁.
 
-IQRO — kasbiy sertifikatlash imtihoniga onlayn tayyorgarlik. Qulay, tez va samarali.
+IQRO — DTM standartlaridagi testlarni ishlash orqali imtihonga tayyorgarlik ko'rish platformasi. 
+Eng zo'r tarafi — bu yerda xatolarni tahlil qilish va internetsiz ishlash (oflayn) funksiyasi ham bor!
 
-Bugun ro'yxatdan o'tish:
+Hoziroq havola orqali o'tib, chegirma bilan ro'yxatdan o't:
 ${refLink}
 
-⏳ Taklif muddatli — o'tkazib yubormang!`,
+⏳ Taklif muddatli — o'tkazib yuborma!`,
     ];
 
     // Tasodifiy matn tanlash
@@ -245,27 +246,53 @@ ${refLink}
 
           {/* Progress */}
           <div style={s.card}>
-            <div style={s.label}>Taklif qadamlari</div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+              <div style={{ ...s.label, marginBottom: 0 }}>Taklif qadamlari</div>
+              <div style={{ fontSize: 12, fontWeight: 800, color: '#29B6F6' }}>{stats?.paid || 0} / {dynamicMax} Do'st</div>
+            </div>
+            
+            {/* O'sish shkalasi (Progress Bar) */}
+            <div style={{ position: 'relative', height: 14, background: 'var(--bg3)', borderRadius: 10, marginBottom: 24, border: '1px solid var(--border)', overflow: 'hidden' }}>
+               <motion.div 
+                 initial={{ width: 0 }}
+                 animate={{ width: `${Math.min(100, ((stats?.paid || 0) / dynamicMax) * 100)}%` }}
+                 transition={{ duration: 1, ease: 'easeOut' }}
+                 style={{ position: 'absolute', top: 0, left: 0, height: '100%', background: 'linear-gradient(90deg, #29B6F6, #8B5CF6)' }}
+               />
+            </div>
+
             <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
               {Array.from({ length: dynamicMax }).map((_, i) => {
                 const isPaid = i < (stats?.paid || 0);
                 const isPending = !isPaid && i < (stats?.total || 0);
                 return (
-                  <div key={i} style={{
-                    flex: 1, padding: '10px 4px', borderRadius: 12, textAlign: 'center',
-                    background: isPaid ? 'var(--green-bg)' : isPending ? 'var(--amber-bg)' : 'var(--bg3)',
-                    border: `1.5px solid ${isPaid ? 'var(--green)' : isPending ? 'var(--amber)' : 'var(--border)'}`,
-                  }}>
-                    <div style={{ fontSize: 18, marginBottom: 3 }}>{isPaid ? '✅' : isPending ? '⏳' : '👤'}</div>
-                    <div style={{ fontSize: 9, fontWeight: 700, color: isPaid ? 'var(--green)' : isPending ? 'var(--amber)' : 'var(--text3)' }}>
-                      {isPaid ? fmtSum(REFERRAL_BONUS) : isPending ? 'Kutilmoqda' : `+${fmtSum(REFERRAL_BONUS)}`}
+                  <motion.div 
+                    key={i}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: i * 0.1 }}
+                    style={{
+                      flex: 1, padding: '12px 2px', borderRadius: 14, textAlign: 'center',
+                      background: isPaid ? 'rgba(16, 185, 129, 0.1)' : isPending ? 'rgba(245, 158, 11, 0.1)' : 'var(--bg3)',
+                      border: `1.5px solid ${isPaid ? '#10B981' : isPending ? '#F59E0B' : 'var(--border)'}`,
+                      boxShadow: isPaid ? '0 4px 12px rgba(16, 185, 129, 0.15)' : 'none',
+                    }}>
+                    <motion.div 
+                      animate={isPaid ? { y: [0, -4, 0], scale: [1, 1.1, 1] } : {}}
+                      transition={isPaid ? { repeat: Infinity, duration: 2, ease: "easeInOut" } : {}}
+                      style={{ fontSize: 24, marginBottom: 6 }}
+                    >
+                      {isPaid ? '🎁' : isPending ? '⏳' : '📦'}
+                    </motion.div>
+                    <div style={{ fontSize: 9, fontWeight: 800, color: isPaid ? '#10B981' : isPending ? '#F59E0B' : 'var(--text3)' }}>
+                      {isPaid ? 'Ochildi' : isPending ? 'Kutilmoqda' : `+${fmtSum(REFERRAL_BONUS)}`}
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
             {!stats?.canInviteMore && (
-              <div style={{ background: 'var(--green-bg)', border: '1px solid var(--border)', borderRadius: 10, padding: '10px 14px', fontSize: 13, color: 'var(--green)' }}>
+              <div style={{ background: 'var(--green-bg)', border: '1px solid var(--border)', borderRadius: 10, padding: '10px 14px', fontSize: 13, color: 'var(--green)', marginTop: 10 }}>
                 🏆 Siz maksimal {MAX_REFERRALS} ta taklif limitiga yetdingiz!
               </div>
             )}
