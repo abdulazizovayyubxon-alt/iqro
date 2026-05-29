@@ -5,7 +5,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield, Download, FileText, Send, Play, GraduationCap, Brain, Zap } from 'lucide-react';
+import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield, Download, FileText, Send, Play, GraduationCap, Brain, Zap, CreditCard } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
 import { SUBJECTS } from '../data/mockData';
@@ -592,6 +592,55 @@ export default function ProfilePage({ theme, toggleTheme }) {
 
         {/* ═══ MENU ═══ */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+
+          {/* ── PREMIUM STATUS CARD ── */}
+          {isPremium ? (
+            <div style={{
+              background: 'linear-gradient(135deg, rgba(245,158,11,0.12), rgba(251,191,36,0.06))',
+              border: '1.5px solid rgba(245,158,11,0.35)',
+              borderRadius: 16, padding: '14px 16px',
+              display: 'flex', alignItems: 'center', gap: 12,
+            }}>
+              <div style={{ fontSize: 28 }}>👑</div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 14, fontWeight: 800, color: '#D97706' }}>Premium Faol</div>
+                <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2 }}>
+                  {user.premiumExpire
+                    ? `Tugash sanasi: ${new Date(user.premiumExpire).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'long', year: 'numeric' })}`
+                    : 'Muddatsiz obuna'}
+                </div>
+              </div>
+              <button
+                onClick={() => setShowPremium(true)}
+                style={{
+                  background: 'rgba(245,158,11,0.15)', border: '1px solid rgba(245,158,11,0.3)',
+                  borderRadius: 10, padding: '6px 12px', color: '#D97706',
+                  fontWeight: 700, fontSize: 12, cursor: 'pointer', whiteSpace: 'nowrap'
+                }}
+              >
+                Yangilash
+              </button>
+            </div>
+          ) : (
+            <button
+              className="pp-menu-item"
+              onClick={() => setShowPremium(true)}
+              style={{
+                background: 'linear-gradient(135deg, rgba(41,182,246,0.12), rgba(139,92,246,0.08))',
+                border: '1.5px solid rgba(41,182,246,0.3)',
+              }}
+            >
+              <div className="pp-menu-icon" style={{ background: 'linear-gradient(135deg, #29B6F6, #8B5CF6)', color: '#fff' }}>
+                <Crown size={20} />
+              </div>
+              <div style={{ flex: 1, textAlign: 'left' }}>
+                <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--text)' }}>Premium olish</div>
+                <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 1 }}>Telegram orqali tez va oson</div>
+              </div>
+              <ChevronRight size={18} className="pp-menu-arrow" />
+            </button>
+          )}
+
           {/* Admin Panel — faqat adminlar uchun */}
           {isAdmin && (
             <button className="pp-menu-item" onClick={() => navigate('/admin')}>

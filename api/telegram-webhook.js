@@ -1,6 +1,6 @@
 /**
  * ════════════════════════════════════════════════════════════
- *  Telegram Webhook for CHQBT Platform (Super Bot)
+ *  Telegram Webhook for IQRO Platform (Super Bot)
  *  api/telegram-webhook.js
  * ════════════════════════════════════════════════════════════
  */
@@ -19,7 +19,8 @@ function getDb() {
   return { db: getFirestore(), auth: getAuth() };
 }
 
-const TELEGRAM_BOT_TOKEN = '8523102352:AAEQOggWs3ULCGivaao-bmMpwT-_lFdxMeQ';
+// ── Bot token env dan olinadi (xavfsizlik uchun) ──
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8523102352:AAEQOggWs3ULCGivaao-bmMpwT-_lFdxMeQ';
 const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}`;
 
 async function sendMessage(chatId, text, replyMarkup = null) {
@@ -32,19 +33,30 @@ async function sendMessage(chatId, text, replyMarkup = null) {
     if (replyMarkup) {
       body.reply_markup = replyMarkup;
     }
-    await fetch(`${TELEGRAM_API_URL}/sendMessage`, {
+    const resp = await fetch(`${TELEGRAM_API_URL}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
     });
+    return resp;
   } catch (error) {
     console.error("Telegram xabar yuborishda xatolik:", error);
   }
 }
 
+// ── Asosiy klaviatura menyu ──
+const keyboardMarkup = {
+  keyboard: [
+    [{ text: "💳 Premium Sotib Olish" }],
+    [{ text: "📊 Statistika" }, { text: "🔑 Kodimni ko'rish" }],
+    [{ text: "🔗 Do'stlarni taklif qilish" }, { text: "💬 Yordam" }]
+  ],
+  resize_keyboard: true
+};
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(200).send('Webhook is running');
+    return res.status(200).send('IQRO Telegram Webhook is running ✅');
   }
 
   try {
@@ -59,10 +71,18 @@ export default async function handler(req, res) {
       const adminChatId = cb.message.chat.id;
       const data = cb.data;
 
+      // Callback query ga javob berish (loading spinner o'chirish)
+      await fetch(`${TELEGRAM_API_URL}/answerCallbackQuery`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ callback_query_id: cb.id })
+      });
+
       if (data.startsWith('approve_') || data.startsWith('reject_')) {
-        const action = data.split('_')[0];
-        const uid = data.split('_')[1];
-        
+        const parts = data.split('_');
+        const action = parts[0];
+        const uid = parts.slice(1).join('_'); // uid da _ bo'lishi mumkin
+
         const userRef = db.collection('users').doc(uid);
         const userSnap = await userRef.get();
         if (!userSnap.exists) return res.status(200).send('User not found');
@@ -76,28 +96,35 @@ export default async function handler(req, res) {
             isPremium: true,
             premiumPlan: 'paid',
             premiumExpire: exp.toISOString(),
-            discountAvailable: false // Chegirma ishlatildi
+            premiumSince: new Date().toISOString(),
+            premiumMethod: 'telegram_manual',
+            discountAvailable: false
           });
 
           // Mijozga xabar
           if (userData.telegramChatId) {
-            await sendMessage(userData.telegramChatId, "🎉 <b>Tabriklaymiz!</b>\n\nTo'lovingiz tasdiqlandi va sizga 1 oylik Premium yoqildi. Saytga kirib bemalol ishlatavering!");
+            await sendMessage(userData.telegramChatId,
+              "🎉 <b>Tabriklaymiz!</b>\n\nTo'lovingiz tasdiqlandi va sizga <b>1 oylik Premium</b> yoqildi! 🏆\n\nSaytga kirib bemalol ishlatavering!\n\n👉 https://iqro-t41p.vercel.app",
+              keyboardMarkup
+            );
           }
 
-          // Referalga (do'stiga) mukofot
+          // Referralga (do'stiga) mukofot
           if (userData.referredBy) {
-            const referrerRef = db.collection('users').doc(userData.referredBy);
+            const referrerId = userData.referredBy;
+            const referrerRef = db.collection('users').doc(referrerId);
             const refSnap = await referrerRef.get();
             if (refSnap.exists) {
               const refData = refSnap.data();
-              // A ga 15,000 so'm bonus berish
               await referrerRef.update({
                 referralBonus: (refData.referralBonus || 0) + 15000,
                 referralCount: (refData.referralCount || 0) + 1
               });
 
-              // Referrals kolleksiyasini yangilash
-              const refDocs = await db.collection('referrals').where('referredId', '==', userDoc.id).get();
+              // BUG TUZATISH: userDoc.id o'rniga uid ishlatildi
+              const refDocs = await db.collection('referrals')
+                .where('referredId', '==', uid)
+                .get();
               if (!refDocs.empty) {
                 await refDocs.docs[0].ref.update({
                   status: 'paid',
@@ -106,37 +133,59 @@ export default async function handler(req, res) {
                   paidAt: new Date().toISOString()
                 });
               }
-              
+
               if (refData.telegramChatId) {
-                await sendMessage(refData.telegramChatId, `🎁 <b>Suyunchi!</b>\n\nSiz taklif qilgan do'stingiz (${userData.displayName || 'Foydalanuvchi'}) premium sotib oldi! Hisobingizga avtomatik tarzda <b>15,000 so'm bonus</b> qo'shib berildi.`);
+                await sendMessage(refData.telegramChatId,
+                  `🎁 <b>Suyunchi!</b>\n\nSiz taklif qilgan do'stingiz (<b>${userData.displayName || 'Do\'stingiz'}</b>) premium sotib oldi!\n\nHisobingizga avtomatik tarzda <b>15,000 so'm bonus</b> qo'shib berildi. 🎉`
+                );
               }
             }
           }
 
-          // Admin xabarini o'zgartirish
-          await fetch(`${TELEGRAM_API_URL}/editMessageCaption`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              chat_id: adminChatId,
-              message_id: cb.message.message_id,
-              caption: cb.message.caption + "\n\n✅ TASDIQLANDI VA PREMIUM YOQILDI!"
-            })
-          });
+          // Admin xabarini yangilash
+          try {
+            await fetch(`${TELEGRAM_API_URL}/editMessageCaption`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                chat_id: adminChatId,
+                message_id: cb.message.message_id,
+                caption: (cb.message.caption || '') + "\n\n✅ <b>TASDIQLANDI VA PREMIUM YOQILDI!</b>",
+                parse_mode: 'HTML'
+              })
+            });
+          } catch (e) {
+            // editMessageCaption ishlamasa text ni o'zgartirish
+            await fetch(`${TELEGRAM_API_URL}/editMessageText`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                chat_id: adminChatId,
+                message_id: cb.message.message_id,
+                text: (cb.message.text || 'To\'lov') + "\n\n✅ <b>TASDIQLANDI!</b>",
+                parse_mode: 'HTML'
+              })
+            });
+          }
 
         } else if (action === 'reject') {
           if (userData.telegramChatId) {
-            await sendMessage(userData.telegramChatId, "❌ Kechirasiz, yuborgan to'lov chekingiz tasdiqlanmadi. Iltimos qaytadan urining yoki adminga murojaat qiling.");
+            await sendMessage(userData.telegramChatId,
+              "❌ Kechirasiz, yuborgan to'lov chekingiz tasdiqlanmadi.\n\nIltimos, qaytadan to'lab chekni yuboring yoki muammo bo'lsa adminga yozing. 💬"
+            );
           }
-          await fetch(`${TELEGRAM_API_URL}/editMessageCaption`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              chat_id: adminChatId,
-              message_id: cb.message.message_id,
-              caption: cb.message.caption + "\n\n❌ RAD ETILDI"
-            })
-          });
+          try {
+            await fetch(`${TELEGRAM_API_URL}/editMessageCaption`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                chat_id: adminChatId,
+                message_id: cb.message.message_id,
+                caption: (cb.message.caption || '') + "\n\n❌ <b>RAD ETILDI</b>",
+                parse_mode: 'HTML'
+              })
+            });
+          } catch (e) { /* ignore */ }
         }
       }
       return res.status(200).send('CB handled');
@@ -147,17 +196,8 @@ export default async function handler(req, res) {
     const chatId = chat.id;
 
     // ==========================================
-    // 1.5. KONTAKT YUBORILGANDA (Telegram orqali login)
+    // 2. KONTAKT YUBORILGANDA (Telegram orqali login)
     // ==========================================
-    const keyboardMarkup = {
-      keyboard: [
-        [{text: "💳 Premium Sotib Olish"}],
-        [{text: "📊 Statistika"}, {text: "🔑 Kodimni ko'rish"}],
-        [{text: "🔗 Do'stlarni taklif qilish"}, {text: "💬 Yordam"}]
-      ],
-      resize_keyboard: true
-    };
-
     if (contact) {
       let phone = contact.phone_number;
       if (!phone.startsWith('+')) phone = '+' + phone;
@@ -165,82 +205,89 @@ export default async function handler(req, res) {
       const email = `${cleanPhone}@iqro.uz`;
 
       try {
-         let userRecord;
-         try {
-           userRecord = await auth.getUserByEmail(email);
-         } catch (e) {
-           if (e.code === 'auth/user-not-found') {
-             userRecord = await auth.createUser({
-               email: email,
-               password: `iqro_auto_pass_${cleanPhone}`,
-               displayName: contact.first_name || 'Foydalanuvchi'
-             });
-             await db.collection('users').doc(userRecord.uid).set({
-               uid: userRecord.uid,
-               email: email,
-               phone: cleanPhone,
-               displayName: contact.first_name || 'Foydalanuvchi',
-               role: 'user',
-               isPremium: false,
-               createdAt: new Date(),
-               telegramChatId: chatId,
-               telegramEnabled: true
-             });
-           }
-         }
-         
-         const pendingLogins = await db.collection('logins')
-            .where('chatId', '==', chatId)
-            .where('status', '==', 'pending_contact')
-            .get(); // get all and sort in JS since no index might exist
-
-         let latestLogin = null;
-         if (!pendingLogins.empty) {
-           const sortedDocs = pendingLogins.docs.sort((a,b) => b.data().createdAt.toDate() - a.data().createdAt.toDate());
-           latestLogin = sortedDocs[0];
-         }
-
-         if (latestLogin) {
-           await db.collection('users').doc(userRecord.uid).set({
+        let userRecord;
+        try {
+          userRecord = await auth.getUserByEmail(email);
+        } catch (e) {
+          if (e.code === 'auth/user-not-found') {
+            userRecord = await auth.createUser({
+              email: email,
+              password: `iqro_auto_pass_${cleanPhone}`,
+              displayName: contact.first_name || 'Foydalanuvchi'
+            });
+            await db.collection('users').doc(userRecord.uid).set({
+              uid: userRecord.uid,
+              email: email,
+              phone: cleanPhone,
+              displayName: contact.first_name || 'Foydalanuvchi',
+              role: 'user',
+              isPremium: false,
+              createdAt: new Date(),
               telegramChatId: chatId,
               telegramEnabled: true
-           }, { merge: true });
+            });
+          } else {
+            throw e;
+          }
+        }
 
-           const customToken = await auth.createCustomToken(userRecord.uid);
-           await latestLogin.ref.update({
-             token: customToken,
-             status: 'success'
-           });
-           
-           await sendMessage(chatId, `✅ <b>Muvaffaqiyatli!</b>\n\nSaytga ruxsat berildi. Sayt ochiq bo'lgan brauzerga qayting!`, keyboardMarkup);
-         } else {
-           await db.collection('users').doc(userRecord.uid).set({
-              telegramChatId: chatId,
-              telegramEnabled: true
-           }, { merge: true });
-           await sendMessage(chatId, `✅ <b>Raqamingiz tasdiqlandi!</b>\n\nEndi saytdagi "Telegram orqali kirish" tugmasini qaytadan bossangiz parolsiz to'g'ridan-to'g'ri kirasiz.`, keyboardMarkup);
-         }
+        const pendingLogins = await db.collection('logins')
+          .where('chatId', '==', chatId)
+          .where('status', '==', 'pending_contact')
+          .get();
+
+        let latestLogin = null;
+        if (!pendingLogins.empty) {
+          const sortedDocs = pendingLogins.docs.sort(
+            (a, b) => b.data().createdAt.toDate() - a.data().createdAt.toDate()
+          );
+          latestLogin = sortedDocs[0];
+        }
+
+        await db.collection('users').doc(userRecord.uid).set({
+          telegramChatId: chatId,
+          telegramEnabled: true
+        }, { merge: true });
+
+        if (latestLogin) {
+          const customToken = await auth.createCustomToken(userRecord.uid);
+          await latestLogin.ref.update({
+            token: customToken,
+            status: 'success'
+          });
+          await sendMessage(chatId,
+            `✅ <b>Muvaffaqiyatli!</b>\n\nSaytga ruxsat berildi. Sayt ochiq bo'lgan brauzerga qayting!`,
+            keyboardMarkup
+          );
+        } else {
+          await sendMessage(chatId,
+            `✅ <b>Raqamingiz tasdiqlandi!</b>\n\nEndi saytdagi "Telegram orqali kirish" tugmasini qaytadan bossangiz parolsiz to'g'ridan-to'g'ri kirasiz.`,
+            keyboardMarkup
+          );
+        }
       } catch (err) {
-         console.error(err);
-         await sendMessage(chatId, `Xatolik yuz berdi. Qaytadan urining.`);
+        console.error('Contact error:', err);
+        await sendMessage(chatId, `Xatolik yuz berdi. Qaytadan urining.`);
       }
       return res.status(200).send('Contact handled');
     }
 
     // ==========================================
-    // 2. FOTO YUBORILGANDA (To'lov cheklari)
+    // 3. FOTO YUBORILGANDA (To'lov cheklari)
     // ==========================================
     if (photo) {
       const adminSnap = await db.collection('settings').doc('admin').get();
       if (!adminSnap.exists) {
-        await sendMessage(chatId, "Kechirasiz, admin hali tizimga ulanmagan.");
+        await sendMessage(chatId, "Kechirasiz, admin hali tizimga ulanmagan. Keyinroq urinib ko'ring.");
         return res.status(200).send('No admin');
       }
       const adminId = adminSnap.data().telegramChatId;
 
       const usersSnap = await db.collection('users').where('telegramChatId', '==', chatId).get();
       if (usersSnap.empty) {
-        await sendMessage(chatId, "Siz hali platformaga ulanmagansiz. Saytdan kodingizni olib kiring.");
+        await sendMessage(chatId,
+          "❌ Siz hali platformaga ulanmagansiz.\n\nIltimos, saytga kiring va Profilingizdan <b>IQRO-...</b> kodingizni olib, botga yuboring."
+        );
         return res.status(200).send('Not linked');
       }
       const userDoc = usersSnap.docs[0];
@@ -255,7 +302,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           chat_id: adminId,
           photo: photoFileId,
-          caption: `💰 <b>Yangi to'lov cheki!</b>\n\n👤 Mijoz: ${userData.displayName || 'Ismsiz'}\n🆔 ID: ${uid}\n📞 Telefon: ${userData.phoneNumber || 'Yoq'}\n\nIltimos, to'lovni tasdiqlang:`,
+          caption: `💰 <b>Yangi to'lov cheki!</b>\n\n👤 Mijoz: ${userData.displayName || 'Ismsiz'}\n🆔 UID: ${uid}\n📞 Telefon: ${userData.phone || userData.phoneNumber || 'Ko\'rsatilmagan'}\n📧 Email: ${userData.email || '-'}\n\n⏰ Vaqt: ${new Date().toLocaleString('uz-UZ')}\n\nIltimos, to'lovni tasdiqlang:`,
           parse_mode: 'HTML',
           reply_markup: {
             inline_keyboard: [[
@@ -266,7 +313,23 @@ export default async function handler(req, res) {
         })
       });
 
-      await sendMessage(chatId, "⏳ <b>Chekingiz adminga yuborildi!</b>\n\nIltimos kuting, tasdiqlangach sizga xabar beramiz.");
+      // Foydalanuvchiga xabar
+      await sendMessage(chatId,
+        "⏳ <b>Chekingiz adminga yuborildi!</b>\n\nIltimos kuting, 5-30 daqiqa ichida tasdiqlangach sizga xabar beramiz. 🙏",
+        keyboardMarkup
+      );
+
+      // Bazaga pending to'lov yozib qo'yamiz
+      await db.collection('payments').add({
+        userId: uid,
+        userName: userData.displayName || '',
+        method: 'telegram_manual',
+        status: 'pending',
+        chatId: chatId,
+        adminId: adminId,
+        createdAt: new Date().toISOString()
+      });
+
       return res.status(200).send('Photo forwarded');
     }
 
@@ -274,11 +337,13 @@ export default async function handler(req, res) {
     let incomingText = text.trim();
 
     // ==========================================
-    // 3. ADMIN RO'YXATDAN O'TISHI VA JAVOB (REPLY) BERISHI
+    // 4. ADMIN BUYRUQLARI
     // ==========================================
     if (incomingText === '/admin') {
       await db.collection('settings').doc('admin').set({ telegramChatId: chatId });
-      await sendMessage(chatId, "✅ <b>Siz Admin sifatida ro'yxatga olindingiz!</b>\n\nEndi mijozlarning to'lov cheklari to'g'ridan-to'g'ri shu yerga keladi.");
+      await sendMessage(chatId,
+        "✅ <b>Siz Admin sifatida ro'yxatga olindingiz!</b>\n\nEndi mijozlarning to'lov cheklari to'g'ridan-to'g'ri shu yerga keladi.\n\n<i>Buyruqlar: /stats /users</i>"
+      );
       return res.status(200).send('Admin saved');
     }
 
@@ -287,83 +352,126 @@ export default async function handler(req, res) {
     let adminId = null;
     if (adminSnap.exists) adminId = adminSnap.data().telegramChatId;
 
-    if (chatId === adminId && body.message.reply_to_message && body.message.reply_to_message.text) {
-      const repliedText = body.message.reply_to_message.text;
-      const match = repliedText.match(/ID: #UID_(\d+)/);
-      if (match && match[1]) {
-        const targetChatId = match[1];
-        await sendMessage(parseInt(targetChatId), `👨‍💻 <b>Admin javobi:</b>\n\n${incomingText}`);
-        return res.status(200).send('Admin reply sent');
+    if (chatId === adminId && body.message.reply_to_message) {
+      const repliedCaption = body.message.reply_to_message.caption || '';
+      const repliedText = body.message.reply_to_message.text || '';
+      const fullText = repliedCaption + repliedText;
+      const uidMatch = fullText.match(/UID: ([^\n]+)/);
+      if (uidMatch && uidMatch[1]) {
+        const targetUid = uidMatch[1].trim();
+        // targetUid dan chatId ni topamiz
+        const targetSnap = await db.collection('users').doc(targetUid).get();
+        if (targetSnap.exists && targetSnap.data().telegramChatId) {
+          await sendMessage(targetSnap.data().telegramChatId,
+            `👨‍💻 <b>Admin javobi:</b>\n\n${incomingText}`
+          );
+          await sendMessage(adminId, `✅ Javob yuborildi.`);
+          return res.status(200).send('Admin reply sent');
+        }
       }
     }
 
     // Foydalanuvchini izlash
-    const usersSnap = await db.collection('users').where('telegramChatId', '==', chatId).get();
+    const usersSnap2 = await db.collection('users').where('telegramChatId', '==', chatId).get();
     let linkedUser = null;
     let linkedUid = null;
-    if (!usersSnap.empty) {
-      linkedUser = usersSnap.docs[0].data();
-      linkedUid = usersSnap.docs[0].id;
+    if (!usersSnap2.empty) {
+      linkedUser = usersSnap2.docs[0].data();
+      linkedUid = usersSnap2.docs[0].id;
     }
 
     // ==========================================
-    // 4. BOSH MENYU VA KLAVIATURA BUYRUQLARI
+    // 5. /start va KODLAR
     // ==========================================
-    // keyboardMarkup yuqorida e'lon qilingan
-
     if (incomingText.startsWith('/start')) {
       const parts = incomingText.split(' ');
-      let code = '';
-      if (parts.length > 1) {
-        if (parts[1].startsWith('IQRO-')) {
-          code = parts[1];
-        } else if (parts[1].startsWith('login_')) {
-          // TELEGRAM LOGIN MANTIG'I
-          const sessionId = parts[1].replace('login_', '');
-          if (!linkedUser) {
-            const requestPhoneMarkup = {
-              keyboard: [[
-                { text: "📱 Telefon raqamni yuborish", request_contact: true }
-              ]],
-              resize_keyboard: true,
-              one_time_keyboard: true
-            };
-            
+      let param = parts.length > 1 ? parts[1] : '';
+
+      // Telegram login (saytdan bot ga yo'naltirish)
+      if (param.startsWith('login_')) {
+        const sessionId = param.replace('login_', '');
+        if (!linkedUser) {
+          const requestPhoneMarkup = {
+            keyboard: [[{ text: "📱 Telefon raqamni yuborish", request_contact: true }]],
+            resize_keyboard: true,
+            one_time_keyboard: true
+          };
+          await db.collection('logins').doc(sessionId).set({
+            status: 'pending_contact',
+            chatId: chatId,
+            createdAt: new Date()
+          });
+          await sendMessage(chatId,
+            "🔐 <b>Saytga kirish tasdiqlanmoqda...</b>\n\nSaytga to'g'ridan-to'g'ri (parolsiz) kirish uchun pastdagi <b>📱 Telefon raqamni yuborish</b> tugmasini bosing.",
+            requestPhoneMarkup
+          );
+        } else {
+          try {
+            const customToken = await auth.createCustomToken(linkedUid);
             await db.collection('logins').doc(sessionId).set({
-              status: 'pending_contact',
-              chatId: chatId,
+              token: customToken,
+              status: 'success',
               createdAt: new Date()
             });
-
-            await sendMessage(chatId, "🔐 <b>Saytga kirish tasdiqlanmoqda...</b>\n\nSaytga to'g'ridan-to'g'ri (parolsiz) kirish uchun pastdagi <b>📱 Telefon raqamni yuborish</b> tugmasini bosing.", requestPhoneMarkup);
-          } else {
-            // Generate Custom Token
-            try {
-              const customToken = await auth.createCustomToken(linkedUid);
-              await db.collection('logins').doc(sessionId).set({
-                token: customToken,
-                status: 'success',
-                createdAt: new Date()
-              });
-              await sendMessage(chatId, `✅ <b>Muvaffaqiyatli!</b>\n\nSaytga ruxsat berildi. Sayt ochiq bo'lgan brauzerga qayting!`);
-            } catch(e) {
-              await sendMessage(chatId, "Xatolik yuz berdi. Qaytadan urinib ko'ring.");
-            }
+            await sendMessage(chatId,
+              `✅ <b>Muvaffaqiyatli!</b>\n\nSaytga ruxsat berildi. Sayt ochiq bo'lgan brauzerga qayting!`,
+              keyboardMarkup
+            );
+          } catch (e) {
+            await sendMessage(chatId, "Xatolik yuz berdi. Qaytadan urinib ko'ring.");
           }
-          return res.status(200).send('Login handled');
         }
+        return res.status(200).send('Login handled');
       }
-      
-      if (!code) {
-        if (linkedUser) {
-          await sendMessage(chatId, `Assalomu alaykum, <b>${linkedUser.displayName || 'Foydalanuvchi'}</b>! Bosh menyudasiz. Quyidagi tugmalardan foydalaning:`, keyboardMarkup);
-          return res.status(200).send('Menu shown');
-        } else {
-          await sendMessage(chatId, "<b>Xush kelibsiz!</b> 🎓\n\nIltimos, platformadagi <b>Shaxsiy ID</b> kodingizni (Masalan: <code>IQRO-8D7EVVJZ</code>) shu yerga yuboring.");
-          return res.status(200).send('Start handled');
+
+      // To'lov buyrug'i (saytdan "Telegram orqali to'lash" bosilganda)
+      if (param.startsWith('pay_')) {
+        const planId = param.replace('pay_', ''); // monthly, quarterly, yearly
+
+        // Narxni bazadan ol
+        const pSnap = await db.collection('settings').doc('premium').get();
+        const defaultPrices = { monthly: 30000, quarterly: 75000, yearly: 240000 };
+        const defaultNames = { monthly: '1 Oylik', quarterly: '3 Oylik', yearly: '12 Oylik' };
+        let price = defaultPrices[planId] || 30000;
+        let planName = defaultNames[planId] || planId;
+
+        if (pSnap.exists) {
+          const plans = pSnap.data().plans || [];
+          const found = plans.find(p => p.id === planId);
+          if (found) { price = found.price; planName = found.name; }
         }
+
+        // Chegirma tekshirish
+        let finalPrice = price;
+        let discountMsg = '';
+        if (linkedUser && linkedUser.discountAvailable) {
+          finalPrice = Math.round(price * 0.5);
+          discountMsg = `\n\n🎉 <i>Sizda do'stingiz taklifi orqali <b>50% chegirma</b> mavjud!</i>\nNarx: <s>${price.toLocaleString()}</s> → <b>${finalPrice.toLocaleString()} so'm</b>`;
+        }
+
+        const msg = `💳 <b>Premium — ${planName}</b>${discountMsg || `\n\nNarx: <b>${finalPrice.toLocaleString()} so'm</b>`}\n\nQuyidagi kartaga to'lov qiling:\n\n💳 Karta: <code>9860350143333655</code>\n👤 Egasi: Ayyubxon Abdulazizov\n\n<b>👇 To'lov qilgach, to'lov chekini (skrinshotni) to'g'ridan-to'g'ri shu yerga rasm qilib yuboring!</b>\n\n⚡ Admin 5-30 daqiqa ichida tasdiqlaydi.`;
+
+        await sendMessage(chatId, msg, keyboardMarkup);
+        return res.status(200).send('Pay info sent');
+      }
+
+      // IQRO kodi /start orqali
+      if (param.startsWith('IQRO-')) {
+        incomingText = param;
       } else {
-        incomingText = code;
+        // Oddiy /start
+        if (linkedUser) {
+          const premiumStatus = linkedUser.isPremium ? '✅ Premium faol' : '❌ Premium yo\'q';
+          await sendMessage(chatId,
+            `Assalomu alaykum, <b>${linkedUser.displayName || 'Foydalanuvchi'}</b>! 👋\n\nHolat: ${premiumStatus}\n\nQuyidagi tugmalardan foydalaning:`,
+            keyboardMarkup
+          );
+        } else {
+          await sendMessage(chatId,
+            "<b>Xush kelibsiz!</b> 🎓\n\nIQRO — O'qituvchilar attestatsiyasi platformasi.\n\nBotdan to'liq foydalanish uchun saytda ro'yxatdan o'ting va Profilingizdagi <b>IQRO-...</b> kodingizni shu yerga yuboring.\n\n👉 https://iqro-t41p.vercel.app"
+          );
+        }
+        return res.status(200).send('Start handled');
       }
     }
 
@@ -371,9 +479,11 @@ export default async function handler(req, res) {
     if (incomingText.startsWith('IQRO-')) {
       const code = incomingText;
       const searchSnap = await db.collection('users').where('telegramCode', '==', code).get();
-      
+
       if (searchSnap.empty) {
-        await sendMessage(chatId, "❌ Kechirasiz, bunday kodga ega foydalanuvchi topilmadi. Kodingizni to'g'ri ko'chirganingizga ishonch hosil qiling.");
+        await sendMessage(chatId,
+          "❌ Bunday kodga ega foydalanuvchi topilmadi.\n\nKodingizni to'g'ri ko'chirganingizga ishonch hosil qiling.\n\nSaytdagi Profil sahifasida <b>Telegram Bot</b> bo'limiga kiring."
+        );
       } else {
         const uDoc = searchSnap.docs[0];
         const uData = uDoc.data();
@@ -381,69 +491,100 @@ export default async function handler(req, res) {
           telegramChatId: chatId,
           telegramEnabled: true
         });
-        await sendMessage(chatId, `✅ <b>Muvaffaqiyatli ulandi!</b>\n\nAssalomu alaykum, <b>${uData.displayName || 'Foydalanuvchi'}</b>! Platforma endi sizga shu yerda xizmat ko'rsatadi.`, keyboardMarkup);
+        await sendMessage(chatId,
+          `✅ <b>Muvaffaqiyatli ulandi!</b>\n\nAssalomu alaykum, <b>${uData.displayName || 'Foydalanuvchi'}</b>! Platforma endi sizga shu yerda xizmat ko'rsatadi. 🎉`,
+          keyboardMarkup
+        );
       }
       return res.status(200).send('Code processed');
     }
 
     // Tizimga ulanmaganlar uchun blok
     if (!linkedUser) {
-      await sendMessage(chatId, "Iltimos, botdan to'liq foydalanish uchun platformadan olingan <b>IQRO-...</b> kodingizni yuboring.");
+      await sendMessage(chatId,
+        "Iltimos, botdan to'liq foydalanish uchun saytdan olingan <b>IQRO-...</b> kodingizni yuboring.\n\n👉 https://iqro-t41p.vercel.app"
+      );
       return res.status(200).send('Not linked');
     }
 
     // ==========================================
-    // 5. MENYU TUGMALARI
+    // 6. MENYU TUGMALARI
     // ==========================================
     if (incomingText === "🔑 Kodimni ko'rish" || incomingText === '/kodim') {
-      await sendMessage(chatId, `Sizning platformadagi shaxsiy kodingiz:\n\n<code>${linkedUser.telegramCode}</code>\n\nAgar saytdan chiqib ketsangiz yoki brauzeringiz tozalansa, saytning Profil sahifasidan aynan shu kod orqali o'z profilingizga qaytishingiz mumkin!`, keyboardMarkup);
-      
+      const code = linkedUser.telegramCode || 'Kod topilmadi';
+      await sendMessage(chatId,
+        `🔑 Sizning platformadagi shaxsiy kodingiz:\n\n<code>${code}</code>\n\nAgar saytdan chiqib ketsangiz, saytning Profil sahifasidan aynan shu kod orqali o'z profilingizga qaytishingiz mumkin!`,
+        keyboardMarkup
+      );
+
     } else if (incomingText === "📊 Statistika" || incomingText === '/statistika') {
       const statSnap = await db.collection('userStats').doc(linkedUid).get();
-      let score = 0;
-      if (statSnap.exists) score = statSnap.data().totalScore || 0;
-      await sendMessage(chatId, `📊 <b>Sizning statistikangiz:</b>\n\nJami yig'gan ballingiz: <b>${score}</b> ball.\n\nReytingda ko'tarilish uchun saytga kirib ko'proq test ishlang!`, keyboardMarkup);
-      
+      let score = 0, totalAnswered = 0, totalCorrect = 0;
+      if (statSnap.exists) {
+        const d = statSnap.data();
+        score = d.totalScore || 0;
+        totalAnswered = d.totalAnswered || 0;
+        totalCorrect = d.totalCorrect || 0;
+      }
+      const acc = totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
+      await sendMessage(chatId,
+        `📊 <b>${linkedUser.displayName || 'Siz'}ning statistikasi:</b>\n\n⚡ Jami ball: <b>${score}</b>\n📝 Ishlangan: <b>${totalAnswered}</b> ta\n🎯 Aniqlik: <b>${acc}%</b>\n\nReytingda ko'tarilish uchun saytga kirib ko'proq test ishlang!`,
+        keyboardMarkup
+      );
+
     } else if (incomingText === "🔗 Do'stlarni taklif qilish" || incomingText === '/referal') {
       const refLink = `https://iqro-t41p.vercel.app/register?ref=${linkedUid}`;
-      await sendMessage(chatId, `🔗 <b>Do'stlarni taklif qilish</b>\n\nQuyidagi havolani do'stlaringizga yuboring. Ular ro'yxatdan o'tsa va premium olsa, sizga avtomatik <b>15,000 so'm bonus</b> beriladi!\n\n${refLink}`, keyboardMarkup);
-      
+      await sendMessage(chatId,
+        `🔗 <b>Do'stlarni taklif qilish</b>\n\nQuyidagi havolani do'stlaringizga yuboring. Ular ro'yxatdan o'tsa va premium olsa, sizga avtomatik <b>15,000 so'm bonus</b> beriladi!\n\n${refLink}`,
+        keyboardMarkup
+      );
+
     } else if (incomingText === "💳 Premium Sotib Olish" || incomingText === '/premium') {
-      // 1. Narxni bazadan olish
       const pSnap = await db.collection('settings').doc('premium').get();
-      let basePrice = 15000;
+      let basePrice = 30000;
       if (pSnap.exists) {
         const plans = pSnap.data().plans || [];
-        const monthly = plans.find(p => p.months === 1);
+        const monthly = plans.find(p => p.months === 1 || p.id === 'monthly');
         if (monthly) basePrice = monthly.price;
       }
-      
+
       let finalPrice = basePrice;
-      let msg = `💳 <b>Premium Sotib Olish</b>\n\n`;
-      
-      // 2. Chegirmani hisoblash
+      let discountMsg = '';
       if (linkedUser.discountAvailable) {
-        finalPrice = basePrice * 0.5; // 50% chegirma (referal tizimi bo'yicha)
-        msg += `🎉 <i>Sizda do'stingiz taklifi orqali 50% chegirma mavjud!</i>\n\nOylik to'lov summasi: <del>${basePrice}</del> emas, balki <b>${finalPrice.toLocaleString()} so'm</b>\n`;
-      } else {
-        msg += `Oylik to'lov summasi: <b>${finalPrice.toLocaleString()} so'm</b>\n`;
+        finalPrice = Math.round(basePrice * 0.5);
+        discountMsg = `\n\n🎉 <i>Sizda <b>50% chegirma</b> mavjud!</i> Narx: <s>${basePrice.toLocaleString()}</s> → <b>${finalPrice.toLocaleString()} so'm</b>`;
       }
-      
-      msg += `\nQuyidagi kartaga to'lov qiling:\n\n💳 Karta: <code>9860350143333655</code>\n👤 Egasi: Ayyubxon Abdulazizov\n\n<b>👇 To'lov qilgach, chekni (skrinshotni) to'g'ridan-to'g'ri shu yerga rasm qilib yuboring!</b>`;
-      
+
+      const msg = `💳 <b>Premium Sotib Olish</b>${discountMsg || `\n\nOylik to'lov: <b>${finalPrice.toLocaleString()} so'm</b>`}\n\nQuyidagi kartaga to'lov qiling:\n\n💳 Karta: <code>9860350143333655</code>\n👤 Egasi: Ayyubxon Abdulazizov\n\n<b>👇 To'lov qilgach, chekni (skrinshotni) to'g'ridan-to'g'ri shu yerga rasm qilib yuboring!</b>\n\n⚡ Admin 5-30 daqiqa ichida tasdiqlaydi.`;
+
       await sendMessage(chatId, msg, keyboardMarkup);
+
     } else if (incomingText === "💬 Yordam" || incomingText === '/yordam') {
-      await sendMessage(chatId, `💬 <b>Yordam xizmati</b>\n\nSavol yoki taklifingiz bo'lsa, xuddi shu yerga yozib yuboring. Xabaringiz to'g'ridan-to'g'ri adminga yetkaziladi va biz tez orada sizga javob beramiz!`, keyboardMarkup);
+      await sendMessage(chatId,
+        `💬 <b>Yordam xizmati</b>\n\nSavol yoki taklifingiz bo'lsa, xuddi shu yerga yozib yuboring.\n\nXabaringiz to'g'ridan-to'g'ri adminga yetkaziladi va biz tez orada sizga javob beramiz!`,
+        keyboardMarkup
+      );
 
     } else {
-      // Boshqa har qanday noma'lum matnni adminga "Support" sifatida yuborish
+      // Noma'lum matn → adminga murojaat sifatida yo'naltirish
       if (adminId && chatId !== adminId) {
-        await sendMessage(adminId, `📩 <b>Yangi murojaat!</b>\n\n👤 Foydalanuvchi: ${linkedUser ? (linkedUser.displayName || 'Ismsiz') : 'Noma\'lum'}\nID: #UID_${chatId}\n\n💬 Matn:\n<i>${incomingText}</i>\n\n👇 <i>(Ushbu xabarga "Reply" qilib javob yozing)</i>`);
-        await sendMessage(chatId, "✅ Xabaringiz adminga yetkazildi. Tez orada javob olamiz!");
+        await sendMessage(adminId,
+          `📩 <b>Yangi murojaat!</b>\n\n👤 Foydalanuvchi: ${linkedUser.displayName || 'Ismsiz'}\n🆔 UID: ${linkedUid}\n📞 Tel: ${linkedUser.phone || '-'}\n\n💬 Matn:\n<i>${incomingText}</i>\n\n<i>(Javob berish uchun ushbu xabarga "Reply" qilib yozing)</i>`
+        );
+        await sendMessage(chatId,
+          "✅ Xabaringiz adminga yetkazildi. Tez orada javob olamiz! 🙏",
+          keyboardMarkup
+        );
       } else if (chatId === adminId) {
-        await sendMessage(chatId, "Kechirasiz, men bu buyruqni tushunmadim. Mijozga javob yozish uchun uning xabariga 'Reply' qilib yozing.", keyboardMarkup);
+        await sendMessage(chatId,
+          "Kechirasiz, men bu buyruqni tushunmadim. Mijozga javob yozish uchun uning xabariga 'Reply' qilib yozing.",
+          keyboardMarkup
+        );
       } else {
-        await sendMessage(chatId, "Kechirasiz, men bu buyruqni tushunmadim. Iltimos menyudagi tugmalardan foydalaning.", keyboardMarkup);
+        await sendMessage(chatId,
+          "Kechirasiz, men bu buyruqni tushunmadim. Iltimos menyudagi tugmalardan foydalaning.",
+          keyboardMarkup
+        );
       }
     }
 
@@ -451,6 +592,6 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error("Webhook error:", error);
-    res.status(500).send('Error');
+    res.status(500).send('Error: ' + error.message);
   }
 }
