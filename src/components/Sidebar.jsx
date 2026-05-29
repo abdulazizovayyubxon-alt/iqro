@@ -15,13 +15,16 @@ import {
   Palette,
   Users,
   AlertCircle,
+  Download
 } from 'lucide-react';
 
+import { PWAContext } from '../context/PWAContext';
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { state, updateState } = useContext(AppContext);
+  const { isInstallable, installApp } = useContext(PWAContext);
   const { isAdmin } = useAdmin();
   const [showMobSubjects, setShowMobSubjects] = useState(false);
 
@@ -141,6 +144,18 @@ const Sidebar = () => {
               <span style={{ animation: 'pulseGift 1.5s infinite', display: 'inline-block' }}>🎁</span>
             </span>
           </div>
+
+          {/* INSTALL APP */}
+          {isInstallable && (
+            <div
+              className={`nav-item`}
+              onClick={installApp}
+              style={{ background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05))', border: '1px solid rgba(16, 185, 129, 0.2)' }}
+            >
+              <span className="nav-icon" style={{ color: '#10B981' }}><Download size={20} /></span>
+              <span className="nav-label" style={{ color: '#10B981', fontWeight: 800 }}>Ilovani o'rnatish</span>
+            </div>
+          )}
 
           {/* Admin link — faqat admin uchun */}
           {isAdmin && (

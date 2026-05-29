@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext'
 import { ToastProvider } from './context/ToastContext'
 import { ObjectionProvider } from './context/ObjectionContext'
 import { AppProvider } from './context/AppContext'
+import { PWAProvider } from './context/PWAContext'
 import App from './App.jsx'
 import './index.css'
 
@@ -22,7 +23,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <ToastProvider>
           <ObjectionProvider>
             <AppProvider>
-              <App />
+              <PWAProvider>
+                <App />
+              </PWAProvider>
             </AppProvider>
           </ObjectionProvider>
         </ToastProvider>

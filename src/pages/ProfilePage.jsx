@@ -10,6 +10,7 @@ import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
 import { SUBJECTS } from '../data/mockData';
 import { ToastContext } from '../context/ToastContext';
+import { PWAContext } from '../context/PWAContext';
 import { db, auth } from '../firebase';
 import { doc, getDoc, updateDoc, setDoc, onSnapshot, collection, query, where, getDocs, limit } from 'firebase/firestore';
 import { updateProfile } from 'firebase/auth';
@@ -29,6 +30,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
   const { user, logout } = useAuth();
   const { state, updateState } = useContext(AppContext);
   const { showToast } = useContext(ToastContext);
+  const { isInstallable, installApp } = useContext(PWAContext);
   const { isAdmin } = useAdmin();
   const navigate = useNavigate();
 
@@ -597,6 +599,17 @@ export default function ProfilePage({ theme, toggleTheme }) {
                 <Shield size={20} />
               </div>
               <span className="pp-menu-label">Admin Panel</span>
+              <ChevronRight size={18} className="pp-menu-arrow" />
+            </button>
+          )}
+
+          {/* Install App */}
+          {isInstallable && (
+            <button className="pp-menu-item" onClick={installApp}>
+              <div className="pp-menu-icon" style={{ background: 'linear-gradient(135deg, #10B981, #059669)', color: '#fff' }}>
+                <Download size={20} />
+              </div>
+              <span className="pp-menu-label" style={{ fontWeight: 800 }}>Ilovani o'rnatish (PWA)</span>
               <ChevronRight size={18} className="pp-menu-arrow" />
             </button>
           )}
