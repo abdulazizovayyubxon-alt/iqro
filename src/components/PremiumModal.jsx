@@ -60,7 +60,7 @@ const PAY_METHODS = [
   {
     id: 'telegram',
     label: 'Telegram orqali',
-    sublabel: 'Chek yuboring → Admin tasdiqlaydi',
+    sublabel: 'Maxsus kod orqali → Darhol yoqish',
     icon: '📱',
     color: '#29B6F6',
     bgColor: 'rgba(41, 182, 246, 0.15)',
@@ -459,10 +459,10 @@ const PremiumModal = ({ isOpen, onClose }) => {
                 {/* Qadamlar */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 24 }}>
                   {[
-                    { step: '1', icon: '💳', text: 'Botdagi karta raqamiga ko\'rsatilgan summani to\'lang' },
-                    { step: '2', icon: '📸', text: 'To\'lov chekining skrinshotini oling' },
-                    { step: '3', icon: '📤', text: 'Skrinshotni @IQRO_testbot ga rasm qilib yuboring' },
-                    { step: '4', icon: '⏳', text: 'Admin 5-30 daqiqa ichida tasdiqlaydi va sizga Premium yoqiladi' },
+                    { step: '1', icon: '💳', text: 'Botdagi karta raqamiga kerakli summani to\'lang' },
+                    { step: '2', icon: '🔑', text: 'O\'tkazma izohiga bot bergan maxsus TXN kodni yozing' },
+                    { step: '3', icon: '💬', text: 'To\'lovdan so\'ng, botga o\'sha TXN kodni yuboring' },
+                    { step: '4', icon: '⚡', text: 'Premium darhol avtomatik tarzda yoqiladi!' },
                   ].map((item) => (
                     <div
                       key={item.step}

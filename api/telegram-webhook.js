@@ -47,6 +47,80 @@ async function sendMessage(chatId, text, replyMarkup = null) {
   }
 }
 
+// ── To'lov kodi generatsiya qilish (masalan: TXN-A3F7K2) ──
+function generateTxnCode() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = 'TXN-';
+  for (let i = 0; i < 6; i++) {
+    code += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return code;
+}
+
+// ── Premium yoqish (telegram_auto) ──
+async function activatePremiumAuto(db, uid, planId, txnCode) {
+  const settingsDoc = await db.collection('settings').doc('premium').get();
+  const defaultDurations = { monthly: 1, quarterly: 3, yearly: 12 };
+  let durationMonths = defaultDurations[planId] || 1;
+
+  if (settingsDoc.exists) {
+    const plans = settingsDoc.data().plans || [];
+    const found = plans.find(p => p.id === planId);
+    if (found && found.durationMonths) durationMonths = found.durationMonths;
+  }
+
+  const exp = new Date();
+  exp.setMonth(exp.getMonth() + durationMonths);
+
+  const userRef = db.collection('users').doc(uid);
+  const userSnap = await userRef.get();
+  const userData = userSnap.exists ? userSnap.data() : {};
+
+  await userRef.update({
+    isPremium: true,
+    premiumPlan: 'paid',
+    premiumExpire: exp.toISOString(),
+    premiumSince: new Date().toISOString(),
+    premiumMethod: 'telegram_auto',
+    premiumTransId: txnCode,
+    discountAvailable: false,
+    discountExpired: true,
+    reminderSent: false,
+  });
+
+  // Referral bonusi
+  if (userData.referredBy) {
+    const referrerId = userData.referredBy;
+    const referrerRef = db.collection('users').doc(referrerId);
+    const refSnap = await referrerRef.get();
+    if (refSnap.exists) {
+      const refData = refSnap.data();
+      const currentCount = refData.referralCount || 0;
+      if (currentCount < 5) {
+        await referrerRef.update({
+          referralBonus: (refData.referralBonus || 0) + 15000,
+          referralCount: currentCount + 1,
+        });
+        const refDocs = await db.collection('referrals').where('referredId', '==', uid).get();
+        if (!refDocs.empty) {
+          await refDocs.docs[0].ref.update({
+            status: 'paid', bonusPaid: true, bonusAmount: 15000,
+            paidAt: new Date().toISOString()
+          });
+        }
+        // Referrarga xabar
+        if (refData.telegramChatId) {
+          await sendMessage(refData.telegramChatId,
+            `🎁 <b>Suyunchi!</b>\n\nSiz taklif qilgan do'stingiz (<b>${userData.displayName || "Do'stingiz"}</b>) premium sotib oldi!\n\nHisobingizga <b>15,000 so'm bonus</b> qo'shildi. 🎉`
+          );
+        }
+      }
+    }
+  }
+
+  return durationMonths;
+}
+
 // ── Asosiy klaviatura menyu ──
 const keyboardMarkup = {
   keyboard: [
@@ -279,61 +353,12 @@ export default async function handler(req, res) {
     // 3. FOTO YUBORILGANDA (To'lov cheklari)
     // ==========================================
     if (photo) {
-      const adminSnap = await db.collection('settings').doc('admin').get();
-      if (!adminSnap.exists) {
-        await sendMessage(chatId, "Kechirasiz, admin hali tizimga ulanmagan. Keyinroq urinib ko'ring.");
-        return res.status(200).send('No admin');
-      }
-      const adminId = adminSnap.data().telegramChatId;
-
-      const usersSnap = await db.collection('users').where('telegramChatId', '==', chatId).get();
-      if (usersSnap.empty) {
-        await sendMessage(chatId,
-          "❌ Siz hali platformaga ulanmagansiz.\n\nIltimos, saytga kiring va Profilingizdan <b>IQRO-...</b> kodingizni olib, botga yuboring."
-        );
-        return res.status(200).send('Not linked');
-      }
-      const userDoc = usersSnap.docs[0];
-      const uid = userDoc.id;
-      const userData = userDoc.data();
-
-      // Rasm faylini Adminga yo'naltirish
-      const photoFileId = photo[photo.length - 1].file_id;
-      await fetch(`${TELEGRAM_API_URL}/sendPhoto`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: adminId,
-          photo: photoFileId,
-          caption: `💰 <b>Yangi to'lov cheki!</b>\n\n👤 Mijoz: ${userData.displayName || 'Ismsiz'}\n🆔 UID: ${uid}\n📞 Telefon: ${userData.phone || userData.phoneNumber || 'Ko\'rsatilmagan'}\n📧 Email: ${userData.email || '-'}\n\n⏰ Vaqt: ${new Date().toLocaleString('uz-UZ')}\n\nIltimos, to'lovni tasdiqlang:`,
-          parse_mode: 'HTML',
-          reply_markup: {
-            inline_keyboard: [[
-              { text: "✅ Tasdiqlash", callback_data: `approve_${uid}` },
-              { text: "❌ Rad etish", callback_data: `reject_${uid}` }
-            ]]
-          }
-        })
-      });
-
-      // Foydalanuvchiga xabar
+      // ── YANGI: Screenshot yuborilganda faqat TXN kodi so'raymiz ──
       await sendMessage(chatId,
-        "⏳ <b>Chekingiz adminga yuborildi!</b>\n\nIltimos kuting, 5-30 daqiqa ichida tasdiqlangach sizga xabar beramiz. 🙏",
+        `📸 Rahmat, skrinshot qabul qilindi!\n\n✅ Tasdiqlash uchun endi o'tkazma izohiga yozgan <b>TXN-XXXXXX</b> kodingizni botga yuboring.\n\n<i>Agar kod olmagan bo'lsangiz, avval "💳 Premium Sotib Olish" tugmasini bosing.</i>`,
         keyboardMarkup
       );
-
-      // Bazaga pending to'lov yozib qo'yamiz
-      await db.collection('payments').add({
-        userId: uid,
-        userName: userData.displayName || '',
-        method: 'telegram_manual',
-        status: 'pending',
-        chatId: chatId,
-        adminId: adminId,
-        createdAt: new Date().toISOString()
-      });
-
-      return res.status(200).send('Photo forwarded');
+      return res.status(200).send('Photo received, awaiting TXN');
     }
 
     if (!text) return res.status(200).send('No text');
@@ -449,10 +474,27 @@ export default async function handler(req, res) {
         let discountMsg = '';
         if (linkedUser && linkedUser.discountAvailable) {
           finalPrice = Math.round(price * 0.5);
-          discountMsg = `\n\n🎉 <i>Sizda do'stingiz taklifi orqali <b>50% chegirma</b> mavjud!</i>\nNarx: <s>${price.toLocaleString()}</s> → <b>${finalPrice.toLocaleString()} so'm</b>`;
+          discountMsg = `\n🎉 <i>Sizda <b>50% chegirma</b> mavjud!</i> Narx: <s>${price.toLocaleString()}</s> → <b>${finalPrice.toLocaleString()} so'm</b>`;
         }
 
-        const msg = `💳 <b>Premium — ${planName}</b>${discountMsg || `\n\nNarx: <b>${finalPrice.toLocaleString()} so'm</b>`}\n\nQuyidagi kartaga to'lov qiling:\n\n💳 Karta: <code>9860350143333655</code>\n👤 Egasi: Ayyubxon Abdulazizov\n\n<b>👇 To'lov qilgach, to'lov chekini (skrinshotni) to'g'ridan-to'g'ri shu yerga rasm qilib yuboring!</b>\n\n⚡ Admin 5-30 daqiqa ichida tasdiqlaydi.`;
+        // ── YANGI: Noyob TXN kodi yaratish ──
+        const txnCode = generateTxnCode();
+        const expireAt = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 soat amal qiladi
+
+        // Kutilayotgan to'lovni bazaga yozamiz
+        await db.collection('pendingPayments').doc(txnCode).set({
+          txnCode,
+          userId: linkedUid,
+          planId,
+          amount: finalPrice,
+          chatId,
+          createdAt: new Date().toISOString(),
+          expireAt: expireAt.toISOString(),
+          status: 'pending',
+          discountApplied: !!linkedUser?.discountAvailable,
+        });
+
+        const msg = `💳 <b>Premium — ${planName}</b>${discountMsg ? '\n' + discountMsg : ''}\n\nTo'lov summasi: <b>${finalPrice.toLocaleString()} so'm</b>\n\n━━━━━━━━━━━━━━━━\n💳 Karta raqami:\n<code>9860 3501 4333 3655</code>\n👤 Egasi: <b>Ayyubxon Abdulazizov</b>\n━━━━━━━━━━━━━━━━\n\n🔑 <b>Sizning to'lov kodingiz:</b>\n<code>${txnCode}</code>\n\n📌 <b>Qanday to'lash kerak:</b>\n1️⃣ Yuqoridagi kartaga <b>${finalPrice.toLocaleString()} so'm</b> o'tkazing\n2️⃣ O'tkazma izohiga: <code>${txnCode}</code> yozing\n3️⃣ O'tkazmadan so'ng botga <code>${txnCode}</code> yozing\n\n⚡ Premium <b>darhol</b> yoqiladi! (Admin kutish yo'q)\n⏳ Kod <b>24 soat</b> amal qiladi.`;
 
         await sendMessage(chatId, msg, keyboardMarkup);
         return res.status(200).send('Pay info sent');
@@ -545,20 +587,33 @@ export default async function handler(req, res) {
     } else if (incomingText === "💳 Premium Sotib Olish" || incomingText === '/premium') {
       const pSnap = await db.collection('settings').doc('premium').get();
       let basePrice = 30000;
+      let planId = 'monthly';
       if (pSnap.exists) {
         const plans = pSnap.data().plans || [];
         const monthly = plans.find(p => p.months === 1 || p.id === 'monthly');
-        if (monthly) basePrice = monthly.price;
+        if (monthly) { basePrice = monthly.price; planId = monthly.id || 'monthly'; }
       }
 
       let finalPrice = basePrice;
-      let discountMsg = '';
+      let discountLine = '';
       if (linkedUser.discountAvailable) {
         finalPrice = Math.round(basePrice * 0.5);
-        discountMsg = `\n\n🎉 <i>Sizda <b>50% chegirma</b> mavjud!</i> Narx: <s>${basePrice.toLocaleString()}</s> → <b>${finalPrice.toLocaleString()} so'm</b>`;
+        discountLine = `\n🎉 <i>Sizda <b>50% chegirma</b> mavjud!</i> Narx: <s>${basePrice.toLocaleString()}</s> → <b>${finalPrice.toLocaleString()} so'm</b>`;
       }
 
-      const msg = `💳 <b>Premium Sotib Olish</b>${discountMsg || `\n\nOylik to'lov: <b>${finalPrice.toLocaleString()} so'm</b>`}\n\nQuyidagi kartaga to'lov qiling:\n\n💳 Karta: <code>9860350143333655</code>\n👤 Egasi: Ayyubxon Abdulazizov\n\n<b>👇 To'lov qilgach, chekni (skrinshotni) to'g'ridan-to'g'ri shu yerga rasm qilib yuboring!</b>\n\n⚡ Admin 5-30 daqiqa ichida tasdiqlaydi.`;
+      // TXN kodi yaratish
+      const txnCode = generateTxnCode();
+      const expireAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
+      await db.collection('pendingPayments').doc(txnCode).set({
+        txnCode, userId: linkedUid, planId,
+        amount: finalPrice, chatId,
+        createdAt: new Date().toISOString(),
+        expireAt: expireAt.toISOString(),
+        status: 'pending',
+        discountApplied: !!linkedUser.discountAvailable,
+      });
+
+      const msg = `💳 <b>Premium Sotib Olish</b>${discountLine}\n\nTo'lov summasi: <b>${finalPrice.toLocaleString()} so'm</b>\n\n━━━━━━━━━━━━━━━━\n💳 Karta raqami:\n<code>9860 3501 4333 3655</code>\n👤 Egasi: <b>Ayyubxon Abdulazizov</b>\n━━━━━━━━━━━━━━━━\n\n🔑 <b>Sizning to'lov kodingiz:</b>\n<code>${txnCode}</code>\n\n📌 <b>Qanday to'lash kerak:</b>\n1️⃣ Yuqoridagi kartaga <b>${finalPrice.toLocaleString()} so'm</b> o'tkazing\n2️⃣ O'tkazma izohiga: <code>${txnCode}</code> yozing\n3️⃣ O'tkazmadan so'ng botga <code>${txnCode}</code> yuboring\n\n⚡ Premium <b>darhol</b> yoqiladi!\n⏳ Kod <b>24 soat</b> amal qiladi.`;
 
       await sendMessage(chatId, msg, keyboardMarkup);
 
@@ -568,6 +623,78 @@ export default async function handler(req, res) {
         keyboardMarkup
       );
 
+    } else if (/^TXN-[A-Z0-9]{6}$/.test(incomingText.toUpperCase())) {
+      // ── TXN kodi tekshirish va AVTOMATIK PREMIUM YOQISH ──
+      const txnCode = incomingText.toUpperCase();
+      const pendingRef = db.collection('pendingPayments').doc(txnCode);
+      const pendingSnap = await pendingRef.get();
+
+      if (!pendingSnap.exists) {
+        await sendMessage(chatId,
+          `❌ <b>${txnCode}</b> kodi topilmadi.\n\nIltimos, to'g'ri kodni kiriting yoki yangi to'lov uchun "💳 Premium Sotib Olish" tugmasini bosing.`,
+          keyboardMarkup
+        );
+      } else {
+        const pending = pendingSnap.data();
+
+        if (pending.status === 'completed') {
+          await sendMessage(chatId,
+            `✅ Bu kod allaqachon ishlatilgan.\n\nAgar muammo bo'lsa, yordam uchun "💬 Yordam" tugmasini bosing.`,
+            keyboardMarkup
+          );
+        } else if (pending.userId !== linkedUid) {
+          await sendMessage(chatId,
+            `❌ Bu kod boshqa foydalanuvchiga tegishli.\n\nO'zingizning kodingizni kiriting.`,
+            keyboardMarkup
+          );
+        } else if (new Date(pending.expireAt) < new Date()) {
+          await sendMessage(chatId,
+            `⏰ Bu kodning muddati tugagan.\n\nYangi to'lov uchun "💳 Premium Sotib Olish" tugmasini bosing.`,
+            keyboardMarkup
+          );
+        } else {
+          // ✅ PREMIUM YOQISH
+          const durationMonths = await activatePremiumAuto(db, pending.userId, pending.planId, txnCode);
+
+          // Kodni 'completed' deb belgilaymiz
+          await pendingRef.update({
+            status: 'completed',
+            confirmedAt: new Date().toISOString(),
+            confirmedByChatId: chatId,
+          });
+
+          // To'lovni payments ga yozamiz
+          await db.collection('payments').add({
+            userId: pending.userId,
+            txnCode,
+            planId: pending.planId,
+            amount: pending.amount,
+            method: 'telegram_auto',
+            status: 'completed',
+            chatId,
+            createdAt: new Date().toISOString(),
+          });
+
+          await sendMessage(chatId,
+            `🎉 <b>Tabriklaymiz!</b>\n\nTo'lovingiz tasdiqlandi!\n\n✅ <b>${durationMonths} oylik Premium</b> yoqildi!\n\nSaytga kirib bemalol ishlatavering! 🚀\n\n👉 https://iqro-t41p.vercel.app`,
+            keyboardMarkup
+          );
+
+          // Adminga xabardorlik (tasdiqlash kerak emas)
+          const adminSnap2 = await db.collection('settings').doc('admin').get();
+          if (adminSnap2.exists) {
+            const adminChatId2 = adminSnap2.data().telegramChatId;
+            if (adminChatId2) {
+              const userRef2 = db.collection('users').doc(pending.userId);
+              const userSnap2 = await userRef2.get();
+              const ud2 = userSnap2.exists ? userSnap2.data() : {};
+              await sendMessage(adminChatId2,
+                `💰 <b>Yangi to'lov!</b> (Avtomatik tasdiqlandi)\n\n👤 Mijoz: ${ud2.displayName || 'Ismsiz'}\n💳 Kod: <code>${txnCode}</code>\n💵 Summa: ${pending.amount?.toLocaleString() || '-'} so'm\n📅 Reja: ${pending.planId}\n⏰ ${new Date().toLocaleString('uz-UZ')}`
+              );
+            }
+          }
+        }
+      }
     } else {
       // Noma'lum matn → adminga murojaat sifatida yo'naltirish
       if (adminId && chatId !== adminId) {
