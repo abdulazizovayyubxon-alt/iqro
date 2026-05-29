@@ -8,7 +8,9 @@ import { updateProfile } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { collection, getDocs, doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore';
 import { EXAM_DATE } from '../config';
+import { getReferralStats } from '../services/referral';
 import { motion, AnimatePresence } from 'framer-motion';
+import confetti from 'canvas-confetti';
 
 const IS_MOBILE = typeof window !== 'undefined' && window.innerWidth <= 768;
 
@@ -20,6 +22,30 @@ const Header = ({ theme, toggleTheme }) => {
   const [daysLeft, setDaysLeft] = useState(0);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  
+  // Ambassador Modal va Stats
+  const [ambassadorModal, setAmbassadorModal] = useState(false);
+  const [isAmbassador, setIsAmbassador] = useState(false);
+
+  useEffect(() => {
+    if (!user) return;
+    const checkReferrals = async () => {
+      try {
+        const stats = await getReferralStats(user.uid);
+        if (stats.paid >= 5) {
+          setIsAmbassador(true);
+          // Agar oldin ko'rsatilmagan bo'lsa, modalni chiqaramiz
+          if (!localStorage.getItem('iqro_ambassador_thanks')) {
+            setAmbassadorModal(true);
+            confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+          }
+        }
+      } catch (e) {
+        console.warn('Referral check error', e);
+      }
+    };
+    checkReferrals();
+  }, [user]);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -313,29 +339,55 @@ const Header = ({ theme, toggleTheme }) => {
             </AnimatePresence>
           </div>
 
-          {/* Foydalanuvchi Avatar Menu */}
+          {/* Taklif (Gift) Menu - Mavsumiy va jonli */}
           <div style={{ position: 'relative' }}>
-            <button
+            <motion.button
               className="user-avatar-btn"
-              onClick={() => navigate('/profile')}
-              title={displayName}
-              style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+              onClick={() => navigate('/referral')}
+              title="Do'stlarni taklif qiling"
+              initial={{ rotate: 0 }}
+              animate={
+                (!localStorage.getItem('iqro_gift_wiggled') && user && !isAmbassador) ? {
+                  rotate: [0, -15, 15, -15, 15, 0],
+                  scale: [1, 1.1, 1.1, 1.1, 1.1, 1]
+                } : {}
+              }
+              transition={{ duration: 1.5, ease: "easeInOut", times: [0, 0.2, 0.4, 0.6, 0.8, 1], repeat: 2 }}
+              onAnimationComplete={() => localStorage.setItem('iqro_gift_wiggled', 'true')}
+              whileTap={{ scale: 0.9 }}
+              style={{
+                width: '38px', height: '38px', borderRadius: '12px',
+                background: 'var(--glass-bg)', border: '1px solid var(--glass-border)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer', position: 'relative'
+              }}
             >
-              {user?.photoURL ? (
-                <img
-                  src={user.photoURL}
-                  alt={displayName}
-                  style={{ width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover' }}
-                />
-              ) : (
-                <div className="user-avatar-initials">
-                  {getInitials(displayName)}
-                </div>
-              )}
-              <span className="hide-mobile" style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text2)' }}>
-                {displayName}
-              </span>
-            </button>
+              {(() => {
+                const month = new Date().getMonth() + 1;
+                let iconStr = '🎁';
+                let glowColor = 'rgba(245, 158, 11, 0.4)';
+                if (month >= 3 && month <= 5) {
+                  iconStr = '🌸'; glowColor = 'rgba(236, 72, 153, 0.4)';
+                } else if (month >= 6 && month <= 8) {
+                  iconStr = '☀️'; glowColor = 'rgba(239, 68, 68, 0.4)';
+                } else if (month >= 9 && month <= 11) {
+                  iconStr = '🍂'; glowColor = 'rgba(217, 119, 6, 0.4)';
+                } else {
+                  iconStr = '❄️'; glowColor = 'rgba(56, 189, 248, 0.4)';
+                }
+
+                return (
+                  <>
+                    <span style={{ fontSize: '20px', zIndex: 2 }}>{iconStr}</span>
+                    <div style={{
+                      position: 'absolute', inset: -4, borderRadius: '14px',
+                      background: `radial-gradient(circle, ${glowColor} 0%, transparent 70%)`,
+                      zIndex: 1, pointerEvents: 'none'
+                    }} />
+                  </>
+                );
+              })()}
+            </motion.button>
           </div>
         </div>
       </div>
@@ -464,6 +516,49 @@ const Header = ({ theme, toggleTheme }) => {
               {toast.type === 'info' && 'ℹ'}
             </span>
             <span>{toast.message}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Ambassador Minnatdorchilik Modali */}
+      <AnimatePresence>
+        {ambassadorModal && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="modal-overlay"
+            onClick={() => {
+              setAmbassadorModal(false);
+              localStorage.setItem('iqro_ambassador_thanks', 'true');
+            }}
+            style={{ zIndex: 10001, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          >
+            <motion.div
+              initial={{ scale: 0.8, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.8, y: 20 }}
+              className="modal-content glass-panel"
+              onClick={e => e.stopPropagation()}
+              style={{ maxWidth: '400px', textAlign: 'center', padding: '30px', background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85))', border: '1px solid rgba(245, 158, 11, 0.3)' }}
+            >
+              <div style={{ fontSize: '60px', marginBottom: '10px' }}>🌟</div>
+              <h2 style={{ fontSize: '24px', fontWeight: 900, color: 'var(--text)', marginBottom: '12px' }}>
+                Katta Rahmat!
+              </h2>
+              <p style={{ fontSize: '15px', color: 'var(--text2)', lineHeight: 1.5, marginBottom: '20px' }}>
+                Sizning yordamingiz bilan 5 ta yangi do'stimiz loyihaga qo'shildi! Platformamiz rivojiga qo'shgan ushbu ulkan hissangiz uchun sizdan juda minnatdormiz.
+              </p>
+              <div style={{ background: 'var(--amber-bg)', color: 'var(--amber)', padding: '12px', borderRadius: '12px', fontSize: '13px', fontWeight: 600, marginBottom: '24px' }}>
+                Siz uchun maxsus: yana 2 ta do'stingizni taklif qilib chegirmalar olish imkoniyatini taqdim etamiz! (Limit +2)
+              </div>
+              <button
+                className="btn btn-primary"
+                style={{ width: '100%', background: 'linear-gradient(135deg, #F59E0B, #FBBF24)', color: '#fff', fontSize: '16px' }}
+                onClick={() => {
+                  setAmbassadorModal(false);
+                  localStorage.setItem('iqro_ambassador_thanks', 'true');
+                }}
+              >
+                Ajoyib!
+              </button>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

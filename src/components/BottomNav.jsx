@@ -6,8 +6,9 @@ import React, { useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { AppContext } from '../context/AppContext';
+import { useAuth } from '../context/AuthContext';
 import {
-  PenTool, Brain, Trophy, GraduationCap, Gift
+  PenTool, Brain, Trophy, GraduationCap, User
 } from 'lucide-react';
 
 const TABS = [
@@ -15,13 +16,16 @@ const TABS = [
   { id: 'exam',        path: '/exam',         icon: GraduationCap, label: 'Imtihon' },
   { id: 'review',      path: '/review',       icon: Brain,         label: 'Takror' },
   { id: 'leaderboard', path: '/leaderboard',  icon: Trophy,        label: 'Reyting' },
-  { id: 'referral',    path: '/referral',     icon: Gift,          label: 'Taklif' },
+  { id: 'profile',     path: '/profile',      icon: User,          label: 'Siz' },
 ];
 
 export default function BottomNav() {
   const navigate = useNavigate();
   const location = useLocation();
   const { state, updateState } = useContext(AppContext);
+  const { user } = useAuth();
+  
+  const isPremium = user?.isPremium || false;
 
   const dueCount = (state.spacedCards || []).filter(c => c.nextReview <= Date.now()).length;
 
@@ -38,6 +42,7 @@ export default function BottomNav() {
         const Icon = tab.icon;
         const isActive = tab.id === activeTab;
         const badge = tab.id === 'review' && dueCount > 0 ? dueCount : null;
+        const isProfile = tab.id === 'profile';
 
         return (
           <button
@@ -53,14 +58,34 @@ export default function BottomNav() {
                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
               )}
-              <Icon
-                size={22}
-                style={{
+              {isProfile ? (
+                <div style={{
+                  width: 24, height: 24, borderRadius: '50%',
+                  background: isPremium ? 'linear-gradient(45deg, #F59E0B, #FBBF24)' : 'var(--glass-border)',
+                  padding: isPremium ? 2 : 1,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
                   position: 'relative', zIndex: 1,
-                  color: isActive ? '#fff' : 'var(--text3)',
-                  transition: 'color 0.2s',
-                }}
-              />
+                  boxShadow: isPremium ? '0 0 10px rgba(245, 158, 11, 0.5)' : 'none',
+                  marginTop: -1
+                }}>
+                  {user?.photoURL ? (
+                    <img src={user.photoURL} alt="Avatar" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
+                  ) : (
+                    <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: 'var(--glass-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Icon size={14} style={{ color: isActive ? (isPremium ? '#F59E0B' : '#fff') : 'var(--text3)' }} />
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Icon
+                  size={22}
+                  style={{
+                    position: 'relative', zIndex: 1,
+                    color: isActive ? '#fff' : 'var(--text3)',
+                    transition: 'color 0.2s',
+                  }}
+                />
+              )}
               {badge && (
                 <span style={styles.badge}>{badge}</span>
               )}

@@ -42,7 +42,7 @@ import {
 import { db } from '../firebase';
 
 // ── Konstantalar (50/50 MODEL + FREE TRIAL) ──
-export const MAX_REFERRALS       = 5;           // A maksimal 5 kishi taklif qilishi mumkin
+export const MAX_REFERRALS       = 7;           // A maksimal 7 kishi taklif qilishi mumkin
 export const REFERRAL_DISCOUNT   = 50;          // 50% chegirma — ikki tomonga
 export const FREE_TRIAL_DAYS     = 7;           // Ro'yxatdan o'tgandan 7 kun bepul sinov
 export const URGENCY_DAYS        = 3;           // Trial tugagandan keyin 3 kun (72 soat) chegirma
