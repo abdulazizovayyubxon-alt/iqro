@@ -100,7 +100,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  const fmt = (n) => new Intl.NumberFormat('uz-UZ').format(n) + " so'm";
+  const fmt = (n) => new Intl.NumberFormat('fr-FR').format(n).replace(',', ' ') + " so'm";
   const finalPrice = selectedPlan ? Math.max(0, selectedPlan.price - referralBonus) : 0;
   const hasBonus = referralBonus > 0 && selectedPlan;
 
@@ -111,7 +111,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
     const url = method === 'click'
       ? generateClickUrl(user.uid, user.phone || '', finalPrice, selectedPlan.id)
       : generatePaymeUrl(user.uid, finalPrice, selectedPlan.id);
-    if (url) window.open(url, '_blank');
+    if (url) window.location.href = url;
     setTimeout(() => { setProcessing(false); }, 2000);
   };
 
@@ -216,12 +216,15 @@ const PremiumModal = ({ isOpen, onClose }) => {
                     cursor: 'pointer',
                     border: isSelected
                       ? `2px solid ${plan.color || '#8B5CF6'}`
-                      : '1.5px solid rgba(255,255,255,0.08)',
+                      : isPopular ? '1.5px solid rgba(139,92,246,0.5)' : '1.5px solid rgba(255,255,255,0.08)',
                     background: isSelected
                       ? `rgba(${plan.id === 'monthly' ? '59,130,246' : plan.id === 'quarterly' ? '139,92,246' : '16,185,129'}, 0.12)`
-                      : 'rgba(255,255,255,0.04)',
+                      : isPopular ? 'rgba(139,92,246,0.05)' : 'rgba(255,255,255,0.04)',
                     transition: 'all 0.2s',
                     overflow: 'hidden',
+                    transform: isPopular ? 'scale(1.02)' : 'none',
+                    boxShadow: isPopular ? '0 8px 24px rgba(139,92,246,0.15)' : 'none',
+                    zIndex: isPopular ? 10 : 1,
                   }}
                 >
                   {/* Badge */}
@@ -365,7 +368,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
           {/* Telegram */}
           <button
-            onClick={() => window.open('https://t.me/xonnoma', '_blank')}
+            onClick={() => window.location.href = 'tg://resolve?domain=xonnoma'}
             style={{
               width: '100%', padding: '12px', borderRadius: 12,
               background: 'transparent', color: 'rgba(255,255,255,0.4)',

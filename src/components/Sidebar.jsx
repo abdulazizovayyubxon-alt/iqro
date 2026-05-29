@@ -50,7 +50,7 @@ const Sidebar = () => {
               <div
                 key={subj.id}
                 className={`nav-item ${isSelected ? 'active' : ''}`}
-                onClick={() => { updateState({ activeCategory: subj.id }); navigate('/'); }}
+                onClick={() => { updateState({ activeCategory: subj.id }); navigate('/test'); }}
                 style={{ marginBottom: '5px' }}
               >
                 <span className="nav-icon"><Icon size={20} /></span> {subj.name}

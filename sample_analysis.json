@@ -1,0 +1,86 @@
+{
+  "matchingCount": 8136,
+  "withCodeCount": 20100,
+  "sampleMatching": [
+    {
+      "id": "00B87mzGwhMmc6J71a9J",
+      "explanation": "O'z-o'ziga xizmat kiyinish va tozalashdir (A). Tabiatdagi mehnat esa o'simliklarni parvarishlashni o'z ichiga oladi (B).",
+      "opts": [
+        "A) 1-C, 2-D",
+        "B) 1-A, 2-B",
+        "C) 1-D, 2-A",
+        "D) 1-B, 2-C"
+      ],
+      "q": "Bolalar mehnati turlarini ularga mos misollar bilan moslashtiring:\n1. O'z-o'ziga xizmat mehnati\n2. Tabiatdagi mehnat\n\nA. O'z kiyimlarini mustaqil kiyish, o'yinchoqlarini yig'ishtirish\nB. Guruh burchagidagi gullarni sug'orish va xazonlarni tozalash\nC. Kattalar uchun qurilish jihozlarini yasash\nD. Faqat maktab darslarini tayyorlash (Savol kodi: #MTT374)",
+      "mnemonic": "Tarbiya — bolada tabiatga g'amxo'rlik va mustaqil mehnat ko'nikmasini shakllantiradi.",
+      "correct": 1,
+      "category": "mtt",
+      "topicId": 51,
+      "createdAt": "2026-05-28T08:04:30.693Z"
+    },
+    {
+      "id": "00BstUHzDQsiqXg19vlG",
+      "topicId": 2,
+      "createdAt": "2026-05-28T08:01:42.301Z",
+      "correct": 0,
+      "mnemonic": "Qaytaruvchi = Qaytarish (oldinga), Rama + Porshen = Porox gazlari bilan orqaga surish.",
+      "category": "chqbt",
+      "opts": [
+        "A) 1-A, 2-B",
+        "B) 1-D, 2-A",
+        "C) 1-B, 2-C",
+        "D) 1-C, 2-D"
+      ],
+      "q": "Kalashnikov avtomatining qismlarini ularning asosiy funksiyalari bilan to'g'ri moslashtiring:\n1. Qaytaruvchi mexanizm\n2. Zatvor ramasi va gaz porsheni\n\nA. Zatvor ramasi va zatvorni oldingi holatiga qaytarish uchun xizmat qiladi\nB. Porox gazlari ta'sirida orqaga harakatlanib, avtomatni qayta o'qlaydi\nC. Patronga kapsulani urib, o'q otilishini amalga oshiradi\nD. Avtomat stvolidagi yo'naltiruvchi kanallarni tozalaydi (Savol kodi: #WP1214)",
+      "explanation": "Qaytaruvchi mexanizm oldinga qaytaradi (A), zatvor ramasi porshen bilan orqaga siljib qayta o'qlaydi (B)."
+    },
+    {
+      "id": "00NkMjhCzxsyX0FGuYII",
+      "explanation": "Perimetr P = 4 * a = 4 * 6 = 24 sm (A). Yuz S = a * a = 6 * 6 = 36 kv.sm (B). To'g'ri javob A.",
+      "q": "[Mavzu: Mantiqiy va nostandart masalalar] Kvadratning perimetri va yuziga doir quyidagi ko'rsatkichlarni moslashtiring:\n1. Tomoni 6 sm bo'lgan kvadrat perimetri\n2. Tomoni 6 sm bo'lgan kvadrat yuzi\n\nA. 24 sm (chiziqli o'lchov)\nB. 36 kv.sm (yuz o'lchovi)\nC. 12 sm\nD. 46 kv.sm (Savol kodi: #B3000_2904)",
+      "opts": [
+        "A) 1-C, 2-D",
+        "B) 1-D, 2-C",
+        "C) 1-B, 2-A",
+        "D) 1-A, 2-B"
+      ],
+      "category": "boshlangich",
+      "correct": 3,
+      "mnemonic": "Kvadrat perimetri 4a, yuzi esa a kvadrat.",
+      "createdAt": "2026-05-28T08:03:23.077Z",
+      "topicId": 38
+    },
+    {
+      "id": "00h89mW4pnx01p6l3llI",
+      "explanation": "Sport zali optimal harorati +15...+18°C bo'lishi (A), havo almashinuvi esa soatiga kamida 3 marta bo'lishi (B) kerak.",
+      "q": "Sport inshootlaridan foydalanishdagi me'yorlarni moslashtiring:\n1. Sport zalining optimal havo harorati\n2. Sport zali yoritilganlik darajasi va shamollatilishi\n\nA. +15°C dan +18°C gacha bo'lgan harorat diapazoni\nB. Mashg'ulotlar vaqtida havo almashinuvi soatiga kamida 3 marta bo'lishi va sun'iy yorug'lik\nC. +22°C dan yuqori va yopiq derazalar\nD. Havo haroratining har doim tashqi harorat bilan bir xil bo'lishi (Savol kodi: #BG1674)",
+      "opts": [
+        "A) 1-D, 2-A",
+        "B) 1-B, 2-C",
+        "C) 1-C, 2-D",
+        "D) 1-A, 2-B"
+      ],
+      "category": "sport",
+      "correct": 3,
+      "mnemonic": "Harakatli o'yinlar — tezkorlik va jamoada ishlash ko'nikmasini shakllantiradi.",
+      "createdAt": "2026-05-28T08:03:55.518Z",
+      "topicId": 26
+    },
+    {
+      "id": "00q7xJPbTfIUBkI0n9im",
+      "explanation": "O'z-o'ziga xizmat kiyinish va tozalashdir (A). Tabiatdagi mehnat esa o'simliklarni parvarishlashni o'z ichiga oladi (B).",
+      "opts": [
+        "A) 1-C, 2-D",
+        "B) 1-D, 2-A",
+        "C) 1-B, 2-C",
+        "D) 1-A, 2-B"
+      ],
+      "q": "Bolalar mehnati turlarini ularga mos misollar bilan moslashtiring:\n1. O'z-o'ziga xizmat mehnati\n2. Tabiatdagi mehnat\n\nA. O'z kiyimlarini mustaqil kiyish, o'yinchoqlarini yig'ishtirish\nB. Guruh burchagidagi gullarni sug'orish va xazonlarni tozalash\nC. Kattalar uchun qurilish jihozlarini yasash\nD. Faqat maktab darslarini tayyorlash (Savol kodi: #MTT397)",
+      "mnemonic": "Tarbiya — bolada tabiatga g'amxo'rlik va mustaqil mehnat ko'nikmasini shakllantiradi.",
+      "correct": 3,
+      "category": "mtt",
+      "topicId": 51,
+      "createdAt": "2026-05-28T08:04:30.693Z"
+    }
+  ]
+}

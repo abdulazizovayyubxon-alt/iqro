@@ -13,9 +13,6 @@ export const APP_URL = 'https://iqro-t41p.vercel.app'; // Haqiqiy domen (agar o'
 export const BATCH_SIZE = 50; // Har bir blokdagi savollar soni
 export const MAX_MISTAKES_SAVED = 50; // Maksimal saqlanadigan xatolar soni
 
-// Bepul foydalanuvchilar uchun savol limiti
-// Barcha sahifalar shu konstantadan foydalansin — o'zgartirish kerak bo'lsa faqat shu yerda o'zgartirish yetarli
-export const FREE_QUESTION_LIMIT = 200;
 
 // Bepul sinov muddati (kun) — ro'yxatdan o'tgan sanadan boshlab hisoblanadi
 // Faqat shu yerda o'zgartirish yetarli — barcha sahifalar avtomatik yangilanadi

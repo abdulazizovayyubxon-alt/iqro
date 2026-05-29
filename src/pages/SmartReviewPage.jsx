@@ -53,13 +53,16 @@ const SmartReviewPage = () => {
     );
   }
 
+  const [now, setNow] = useState(Date.now());
+  
+  useEffect(() => {
+    const timer = setInterval(() => setNow(Date.now()), 60000);
+    return () => clearInterval(timer);
+  }, []);
+
   useEffect(() => {
     if (!cloudSynced) return;
     if (hasLoadedRef.current) return;
-
-    // Hozir takrorlash kerak bo'lgan savollarni filtrlash
-    const now = Date.now();
-    
     // Joriy fanga mos keladigan mavzularni ajratib olish
     const validTopicIds = TOPICS.filter(t => 
       Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory

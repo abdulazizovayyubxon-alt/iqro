@@ -490,36 +490,43 @@ export default function ProfilePage({ theme, toggleTheme }) {
           </div>
         </div>
 
-        {/* ═══ REFERRAL SLOTS GAMIFICATION ═══ */}
-        <div className="pp-card">
-          <div className="pp-card-label">🤝 Taklif qilishlar · {refStats?.total || 0}/{MAX_REFERRALS}</div>
-          <div className="pp-ref-slots">
-            {Array.from({ length: MAX_REFERRALS }).map((_, i) => {
-              const isActive = i < (refStats?.total || 0);
-              return (
-                <div key={i} className={`pp-ref-slot ${isActive ? 'filled' : 'empty'}`}>
-                  {isActive ? '✅' : '⚪'}
-                </div>
-              );
-            })}
-          </div>
-          {refStats && refStats.total >= MAX_REFERRALS ? (
-            <div className="pp-ref-limit-msg">🏆 Maksimal limitga erishildi!</div>
-          ) : (
-            <div className="pp-ref-sub">Har bir taklif uchun ikkalangizga {REFERRAL_DISCOUNT}% chegirma!</div>
-          )}
-        </div>
-
-        {/* ═══ REFERRAL LINK ═══ */}
-        <div className="pp-referral" onClick={() => navigate('/referral')}>
-          <div className="pp-referral-icon">🤝</div>
-          <div className="pp-referral-text">
-            <div className="pp-referral-title">Do'stlarni taklif qil</div>
-            <div className="pp-referral-desc">
-              {refStats ? `${refStats.total}/${MAX_REFERRALS} taklif · ` : ''}Bonus oling!
+        {/* ═══ COMBINED REFERRAL & PREMIUM CARD ═══ */}
+        <div className="pp-card" style={{ padding: 0, overflow: 'hidden', border: '1.5px solid var(--blue)', background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))' }} onClick={() => navigate('/referral')}>
+          <div style={{ padding: '20px 20px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+              <div style={{ width: 48, height: 48, borderRadius: 16, background: 'linear-gradient(135deg, #3B82F6, #8B5CF6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, boxShadow: '0 8px 20px rgba(59, 130, 246, 0.3)' }}>
+                🤝
+              </div>
+              <div>
+                <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--text)', marginBottom: 4 }}>Do'stlarni taklif qiling</div>
+                <div style={{ fontSize: 13, color: 'var(--text3)', fontWeight: 500 }}>Har bir taklif uchun chegirmalar!</div>
+              </div>
+            </div>
+            <div style={{ color: 'var(--blue)', background: 'var(--blue-bg)', width: 36, height: 36, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <ChevronRight size={20} />
             </div>
           </div>
-          <div className="pp-referral-arrow"><ChevronRight size={20} /></div>
+          <div style={{ background: 'var(--bg2)', padding: '16px 20px', borderTop: '1px solid var(--border)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+              <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--text2)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Taraqqiyot</span>
+              <span style={{ fontSize: 13, fontWeight: 800, color: 'var(--blue)' }}>{refStats?.total || 0}/{MAX_REFERRALS}</span>
+            </div>
+            <div className="pp-ref-slots" style={{ gap: 8, marginTop: 0 }}>
+              {Array.from({ length: MAX_REFERRALS }).map((_, i) => {
+                const isActive = i < (refStats?.total || 0);
+                return (
+                  <div key={i} className={`pp-ref-slot ${isActive ? 'filled' : 'empty'}`} style={isActive ? { background: '#10B981', color: '#fff', borderColor: '#10B981' } : {}}>
+                    {isActive ? '✅' : '⚪'}
+                  </div>
+                );
+              })}
+            </div>
+            {refStats && refStats.total >= MAX_REFERRALS ? (
+              <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--green)', marginTop: 12, textAlign: 'center' }}>🏆 Maksimal limitga erishildi!</div>
+            ) : (
+              <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 12, textAlign: 'center' }}>Har bir do'stingiz uchun {REFERRAL_DISCOUNT}% chegirma oling</div>
+            )}
+          </div>
         </div>
 
 
@@ -589,6 +596,15 @@ export default function ProfilePage({ theme, toggleTheme }) {
               <Download size={20} className={downloadingOffline ? "spin" : ""} />
             </div>
             <span className="pp-menu-label">{downloadProgress || "Offline rejim uchun yuklash"}</span>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
+          {/* Qo'llanma */}
+          <button className="pp-menu-item" onClick={() => window.location.href = 'tg://resolve?domain=iqro_admin'}>
+            <div className="pp-menu-icon" style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#10B981' }}>
+              <div style={{ fontSize: 16 }}>📖</div>
+            </div>
+            <span className="pp-menu-label">Foydalanish qo'llanmasi</span>
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
 
@@ -795,7 +811,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
             {/* Instruction Steps */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, background: 'var(--bg3)', padding: '16px 20px', borderRadius: 16, marginBottom: 20 }}>
               <div style={{ fontSize: 12, color: 'var(--text2)', lineHeight: 1.5 }}>
-                <strong>1-qadam:</strong> Telegramda <a href="https://t.me/IQRO_testbot" target="_blank" rel="noreferrer" style={{ color: '#29B6F6', textDecoration: 'none', fontWeight: 700 }}>@IQRO_testbot</a> botini oching va <code style={{ background: 'var(--bg3)', padding: '2px 6px', borderRadius: 4 }}>/start</code> buyrug'ini bosing.
+                <strong>1-qadam:</strong> Telegramda <a href="tg://resolve?domain=IQRO_testbot" style={{ color: '#29B6F6', textDecoration: 'none', fontWeight: 700 }}>@IQRO_testbot</a> botini oching va <code style={{ background: 'var(--bg3)', padding: '2px 6px', borderRadius: 4 }}>/start</code> buyrug'ini bosing.
               </div>
               <div style={{ fontSize: 12, color: 'var(--text2)', lineHeight: 1.5 }}>
                 <strong>2-qadam:</strong> Botga ulanish uchun quyidagi shaxsiy ID kodini yuboring:

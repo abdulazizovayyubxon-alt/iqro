@@ -104,6 +104,31 @@ const PageSkeleton = () => {
   );
 };
 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+  componentDidCatch(error, errorInfo) {
+    console.error('ErrorBoundary caught an error', error, errorInfo);
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{padding: '20px', color: '#EF4444', background: '#FEF2F2', height: '100vh'}}>
+          <h1>Xatolik yuz berdi!</h1>
+          <pre style={{whiteSpace: 'pre-wrap', wordBreak: 'break-all'}}>{String(this.state.error?.stack || this.state.error)}</pre>
+          <button onClick={() => window.location.reload()} style={{marginTop: 20, padding: '10px 20px'}}>Yangilash</button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 function App() {
   const { user, loading } = useAuth();
   const location = useLocation();
@@ -204,27 +229,29 @@ function App() {
       <div className="layout-body">
         <Sidebar />
         <main className="main-content">
-          <Suspense fallback={<PageSkeleton />}>
-            <AnimatePresence mode="wait">
-              <Routes location={location} key={location.pathname}>
-                <Route path="/" element={<Navigate to="/test" replace />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/schedule" element={<Schedule />} />
-                <Route path="/stats" element={<Stats />} />
-                <Route path="/test" element={<TestPage />} />
-                <Route path="/exam" element={<ExamPage />} />
-                <Route path="/review" element={<SmartReviewPage />} />
-                <Route path="/leaderboard" element={<LeaderboardPage />} />
-                <Route path="/achievements" element={<AchievementsPage />} />
-                <Route path="/admin" element={<AdminPage />} />
-                <Route path="/migration" element={<MigrationPage />} />
-                <Route path="/referral" element={<ReferralPage />} />
-                <Route path="/errors" element={<ErrorNotebookPage />} />
-                <Route path="/profile" element={<ProfilePage theme={theme} toggleTheme={toggleTheme} />} />
-                <Route path="*" element={<Navigate to="/test" replace />} />
-              </Routes>
-            </AnimatePresence>
-          </Suspense>
+          <ErrorBoundary>
+            <Suspense fallback={<PageSkeleton />}>
+              <AnimatePresence mode="wait">
+                <Routes location={location} key={location.pathname}>
+                  <Route path="/" element={<Navigate to="/test" replace />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/schedule" element={<Schedule />} />
+                  <Route path="/stats" element={<Stats />} />
+                  <Route path="/test" element={<TestPage />} />
+                  <Route path="/exam" element={<ExamPage />} />
+                  <Route path="/review" element={<SmartReviewPage />} />
+                  <Route path="/leaderboard" element={<LeaderboardPage />} />
+                  <Route path="/achievements" element={<AchievementsPage />} />
+                  <Route path="/admin" element={<AdminPage />} />
+                  <Route path="/migration" element={<MigrationPage />} />
+                  <Route path="/referral" element={<ReferralPage />} />
+                  <Route path="/errors" element={<ErrorNotebookPage />} />
+                  <Route path="/profile" element={<ProfilePage theme={theme} toggleTheme={toggleTheme} />} />
+                  <Route path="*" element={<Navigate to="/test" replace />} />
+                </Routes>
+              </AnimatePresence>
+            </Suspense>
+          </ErrorBoundary>
         </main>
       </div>
       <BottomNav />

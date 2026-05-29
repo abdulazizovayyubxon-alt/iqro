@@ -21,19 +21,25 @@ const LeaderboardPage = () => {
   const [leaders, setLeaders] = useState([]);
   const [myEntry, setMyEntry] = useState(null); // top-50 tashqarisidagi "Siz" qatori
   const [loading, setLoading] = useState(true);
+  const [deleteConfirm, setDeleteConfirm] = useState({ show: false, id: null, name: '' });
 
   useEffect(() => { fetchLeaderboard(); }, [user]);
 
-  const handleDelete = async (id, name) => {
-    if (!window.confirm(`"${name}" ning reyting natijasini o'chirasizmi?`)) return;
+  const executeDelete = async () => {
+    if (!deleteConfirm.id) return;
     try {
-      await deleteDoc(doc(db, 'userStats', id));
-      setLeaders(prev => prev.filter(l => l.id !== id));
-      if (myEntry?.id === id) setMyEntry(null);
+      await deleteDoc(doc(db, 'userStats', deleteConfirm.id));
+      setLeaders(prev => prev.filter(l => l.id !== deleteConfirm.id));
+      if (myEntry?.id === deleteConfirm.id) setMyEntry(null);
       showToast("Reyting natijasi o'chirildi", 'success');
     } catch (e) {
       showToast('Xatolik: ' + e.message, 'error');
     }
+    setDeleteConfirm({ show: false, id: null, name: '' });
+  };
+
+  const handleDeleteClick = (id, name) => {
+    setDeleteConfirm({ show: true, id, name });
   };
 
   const fetchLeaderboard = async () => {
@@ -55,20 +61,10 @@ const LeaderboardPage = () => {
         }
       });
 
-      // Ismlarni users kolleksiyasidan yuklash
-      await Promise.all(results.map(async (res) => {
-        if (!res.name) {
-          try {
-            const ud = await getDoc(doc(db, 'users', res.id));
-            if (ud.exists()) {
-              const u = ud.data();
-              res.name = u.displayName || u.userName || u.name || u.email?.split('@')[0];
-              if (u.photoURL && !res.photoURL) res.photoURL = u.photoURL;
-            }
-          } catch (_) {}
-          if (!res.name) res.name = `#${res.id.slice(0, 6)}`;
-        }
-      }));
+      // Ismlar yo'q bo'lsa fallback
+      results.forEach(res => {
+        if (!res.name) res.name = `#${res.id.slice(0, 6)}`;
+      });
 
       // "Siz" top-50 da bormi?
       const meIdx = results.findIndex(r => user && r.id === user.uid);
@@ -202,10 +198,14 @@ const LeaderboardPage = () => {
       </div>
       {isAdmin && (
         <button
-          onClick={() => handleDelete(entry.id, entry.name)}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#EF4444', padding: 4, borderRadius: 8 }}
+          onClick={() => handleDeleteClick(entry.id, entry.name)}
+          style={{
+            background: 'rgba(239, 68, 68, 0.1)', color: '#EF4444',
+            border: 'none', borderRadius: '50%', padding: 8, cursor: 'pointer',
+            marginLeft: 10,
+          }}
         >
-          <Trash2 size={14} />
+          <Trash2 size={16} />
         </button>
       )}
     </div>
@@ -213,16 +213,13 @@ const LeaderboardPage = () => {
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={s.page}>
-      {/* Header */}
       <div style={s.header}>
         <h1 style={s.title}>🏆 Reyting</h1>
         <p style={s.subtitle}>Eng yuqori ball to'plagan o'quvchilar</p>
       </div>
 
-      {/* Top 3 Podium */}
       {!loading && top3.length >= 3 && (
         <div style={s.podium}>
-          {/* 2-o'rin */}
           <div style={s.podiumItem}>
             <Avatar entry={top3[1]} size={52} />
             <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text2)', marginTop: 6, textAlign: 'center', maxWidth: 80, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{top3[1].name}</div>
@@ -230,7 +227,6 @@ const LeaderboardPage = () => {
               <span style={{ fontSize: 16, fontWeight: 900, color: '#fff' }}>2</span>
             </div>
           </div>
-          {/* 1-o'rin */}
           <div style={{ ...s.podiumItem, marginTop: -20 }}>
             <Crown size={28} style={{ color: '#F59E0B', marginBottom: 4, filter: 'drop-shadow(0 2px 4px rgba(245,158,11,0.3))' }} />
             <Avatar entry={top3[0]} size={64} />
@@ -239,7 +235,6 @@ const LeaderboardPage = () => {
               <span style={{ fontSize: 20, fontWeight: 900, color: '#fff' }}>1</span>
             </div>
           </div>
-          {/* 3-o'rin */}
           <div style={s.podiumItem}>
             <Avatar entry={top3[2]} size={52} />
             <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text2)', marginTop: 6, textAlign: 'center', maxWidth: 80, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{top3[2].name}</div>
@@ -250,7 +245,6 @@ const LeaderboardPage = () => {
         </div>
       )}
 
-      {/* Ro'yxat */}
       <div style={s.listWrap}>
         {loading ? (
           <div style={s.empty}>⏳ Yuklanmoqda...</div>
@@ -258,7 +252,6 @@ const LeaderboardPage = () => {
           <div style={s.empty}>Hozircha reyting bo'sh</div>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            {/* Top-3 ni ro'yxatda ham ko'rsatamiz */}
             {leaders.map((entry, idx) => (
               <motion.div key={entry.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.02 }}>
                 <LeaderRow entry={entry} />
@@ -268,13 +261,26 @@ const LeaderboardPage = () => {
         )}
       </div>
 
-      {/* "Siz" qatori — top-50 tashqarida bo'lsa, pastda PIN sifatida */}
       {myEntry && (
         <div style={s.pinnedWrap}>
           <div style={s.pinnedDivider}>
             <div style={s.pinnedDots}>• • •</div>
           </div>
           <LeaderRow entry={myEntry} pinned />
+        </div>
+      )}
+
+      {deleteConfirm.show && (
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: 24, maxWidth: 320, width: '90%', borderRadius: 20, textAlign: 'center' }}>
+            <div style={{ fontSize: 40, marginBottom: 12 }}>⚠️</div>
+            <h3 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>O'chirishni tasdiqlang</h3>
+            <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>"{deleteConfirm.name}" ning reyting natijasini rostdan ham o'chirasizmi?</p>
+            <div style={{ display: 'flex', gap: 12 }}>
+              <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setDeleteConfirm({ show: false, id: null, name: '' })}>Bekor qilish</button>
+              <button className="btn" style={{ flex: 1, padding: '12px', background: '#EF4444', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={executeDelete}>O'chirish</button>
+            </div>
+          </motion.div>
         </div>
       )}
     </motion.div>

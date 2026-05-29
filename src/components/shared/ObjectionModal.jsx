@@ -17,17 +17,26 @@ const ObjectionModal = ({ isOpen, onClose, questionText, onSubmit }) => {
   React.useEffect(() => {
     if (!isOpen) return;
     window.history.pushState({ objectionModalOpen: true }, '');
+    
+    // Store the latest onClose in a ref to avoid stale closures without needing it in deps
     const handlePopState = () => {
-      onClose();
+      onCloseRef.current();
     };
+    
     window.addEventListener('popstate', handlePopState);
+    
     return () => {
       window.removeEventListener('popstate', handlePopState);
       if (window.history.state?.objectionModalOpen) {
         window.history.back();
       }
     };
-  }, [isOpen, onClose]);
+  }, [isOpen]); // Removed onClose to prevent effect re-running on parent render
+
+  const onCloseRef = React.useRef(onClose);
+  React.useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
 
   if (!isOpen) return null;
 

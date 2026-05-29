@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Eye, EyeOff, UserPlus, LogIn, Send } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff, UserPlus, LogIn, Send, ShieldCheck } from 'lucide-react';
 import { signInWithCustomToken } from 'firebase/auth';
 import { auth } from '../firebase';
 
@@ -194,7 +194,7 @@ export default function LoginPage() {
 
   const handleTelegramLogin = async () => {
     const sessionId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    window.open(`https://t.me/IQRO_testbot?start=login_${sessionId}`, '_blank');
+    window.location.href = `tg://resolve?domain=IQRO_testbot&start=login_${sessionId}`;
     setLoading(true);
     setAuthError('Telegram orqali tasdiqlash kutilmoqda... Botga kirib START bosing.');
     
@@ -477,7 +477,8 @@ export default function LoginPage() {
                 disabled={loading}
                 whileTap={{ scale: 0.98 }}
               >
-                <GoogleIcon /> Google orqali kirish
+                {loading ? <div className="spinner" style={{ width: 20, height: 20, border: '3px solid var(--border)', borderTopColor: '#DB4437', borderRadius: '50%', animation: 'spin 1s linear infinite', marginRight: 10 }} /> : <GoogleIcon />} 
+                {loading ? 'Kuting...' : 'Google orqali kirish'}
               </motion.button>
               
               <motion.button 
@@ -490,6 +491,12 @@ export default function LoginPage() {
               </motion.button>
             </>
           )}
+
+          {/* Trust Badges */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', marginTop: '24px', opacity: 0.5 }}>
+            <ShieldCheck size={16} color="var(--text)" />
+            <span style={{ fontSize: '12px', color: 'var(--text)', fontWeight: 500 }}>Ma'lumotlaringiz xavfsiz himoyalangan</span>
+          </div>
         </div>
       </div>
     </div>
@@ -544,7 +551,7 @@ const s = {
     paddingBottom: 8, borderBottom: `2.5px solid ${PRIMARY}`,
   },
   input: {
-    width: '100%', padding: '15px 18px', fontSize: 15,
+    width: '100%', padding: '16px 18px', fontSize: 15,
     border: '1.5px solid var(--border)', borderRadius: 16,
     background: 'var(--bg3)', color: 'var(--text)', fontFamily: 'inherit',
     outline: 'none', marginBottom: 12, transition: 'all 0.25s ease',
@@ -570,7 +577,7 @@ const s = {
     background: IS_MOBILE ? 'var(--bg2)' : 'transparent' 
   },
   primaryBtn: {
-    width: '100%', padding: IS_MOBILE ? '14px' : '16px', borderRadius: 16,
+    width: '100%', padding: '16px', borderRadius: 16,
     background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none',
     fontWeight: 700, fontSize: 16, cursor: 'pointer',
     fontFamily: 'inherit', transition: 'all 0.2s', marginBottom: IS_MOBILE ? 8 : 12,
@@ -580,7 +587,7 @@ const s = {
   orLine: { flex: 1, height: 1, background: 'var(--border)' },
   orText: { fontSize: 13, color: 'var(--text3)', fontWeight: 500 },
   outlineBtn: {
-    width: '100%', padding: IS_MOBILE ? '14px 16px' : '15px 16px', borderRadius: 16,
+    width: '100%', padding: '16px', borderRadius: 16,
     border: '1.5px solid var(--border)', background: 'var(--bg2)',
     color: 'var(--text)', fontWeight: 600, fontSize: 15,
     cursor: 'pointer', fontFamily: 'inherit',

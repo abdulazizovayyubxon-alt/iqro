@@ -22,6 +22,7 @@ const ErrorNotebookPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTopic, setSelectedTopic] = useState('all');
   const [expandedQuestion, setExpandedQuestion] = useState(null); // qIndex
+  const [showClearConfirm, setShowClearConfirm] = useState(false);
 
   const handleBack = () => navigate('/test');
 
@@ -43,10 +44,13 @@ const ErrorNotebookPage = () => {
   };
 
   const handleClearAll = () => {
-    if (window.confirm("Barcha xatolarni o'chirishni tasdiqlaysizmi?")) {
-      clearMistakes();
-      showToast("Barcha xatolar tozalandi! ✨", "success");
-    }
+    setShowClearConfirm(true);
+  };
+
+  const executeClearAll = () => {
+    clearMistakes();
+    setShowClearConfirm(false);
+    showToast("Barcha xatolar tozalandi! ✨", "success");
   };
 
   const handlePractice = () => {

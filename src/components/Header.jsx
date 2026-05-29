@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { Moon, Sun, LogOut, ChevronDown, Camera, Medal, Palette, Bell, Calendar, CheckCircle2, AlertCircle, Info, Trash2 } from 'lucide-react';
 import { updateProfile } from 'firebase/auth';
 import { auth, db } from '../firebase';
-import { collection, getDocs, doc, getDoc, setDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore';
 import { EXAM_DATE } from '../config';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -90,11 +90,12 @@ const Header = ({ theme, toggleTheme }) => {
     };
   }, [user]);
 
-  // Firestore'dan jonli bildirishnomalarni yuklash
+  // Firestore'dan jonli bildirishnomalarni yuklash (onSnapshot orqali)
   useEffect(() => {
-    const fetchFirestoreNotifications = async () => {
+    if (!user) return;
+    
+    const unsubscribe = onSnapshot(collection(db, 'notifications'), (notifSnap) => {
       try {
-        const notifSnap = await getDocs(collection(db, 'notifications'));
         const firestoreNotifs = notifSnap.docs.map(d => ({ id: d.id, ...d.data() }));
         
         const relevantNotifs = firestoreNotifs.filter(n =>
@@ -124,11 +125,11 @@ const Header = ({ theme, toggleTheme }) => {
       } catch(e) {
         console.error("Bildirishnomalarni yuklashda xatolik:", e);
       }
-    };
+    }, (err) => {
+      console.error("Notification snapshot xatosi:", err);
+    });
 
-    fetchFirestoreNotifications();
-    const interval = setInterval(fetchFirestoreNotifications, 180000);
-    return () => clearInterval(interval);
+    return () => unsubscribe();
   }, [user]);
 
   const menuRef = useRef(null);

@@ -8,16 +8,14 @@ import RadialChart from '../components/shared/RadialChart';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import PremiumModal from '../components/PremiumModal';
-import { FREE_QUESTION_LIMIT } from '../config';
-
+import { useTrialExpiry } from '../hooks/useTrialExpiry';
 const Stats = () => {
   const navigate = useNavigate();
-  const goBack = () => navigate('/');
+  const goBack = () => navigate('/test');
   const { user } = useAuth();
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const { state } = useContext(AppContext);
-
-  const isFreeLimitReached = !user?.isPremium && (state.totalAnswered || 0) >= FREE_QUESTION_LIMIT;
+  const { isTrialExpired: isFreeLimitReached } = useTrialExpiry();
 
   if (isFreeLimitReached) {
     return (
@@ -26,7 +24,7 @@ const Stats = () => {
           <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
           <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Bepul Limit Tugadi</div>
           <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-            Siz bepul limitni ({FREE_QUESTION_LIMIT} ta savol) muvaffaqiyatli yakunladingiz! O'z statistikangizni ko'rish va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
+            7 kunlik sinov yakunlandi! O'z statistikangizni ko'rish va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
           </div>
           <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
             ⭐ Premium Rejimni Faollashtirish

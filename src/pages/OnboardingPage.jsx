@@ -326,7 +326,7 @@ export default function OnboardingPage({ onComplete }) {
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ duration: 0.22 }}
+              transition={{ duration: 0.35, ease: [0.34, 1.56, 0.64, 1] }}
             >
               {step < 3 && (
                 <ListStep

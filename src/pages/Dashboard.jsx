@@ -12,7 +12,7 @@ import {
   Play, Zap, Brain, GraduationCap, Trophy,
   ChevronRight, Clock, Target, TrendingUp,
   Medal, Palette, CheckCircle2, Trash2,
-  MessageCircle, Download
+  MessageCircle, Download, X
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { EXAM_DATE, EXAM_GOAL_SCORE, EXAM_LABEL } from '../config';
@@ -29,6 +29,13 @@ const Dashboard = () => {
   const { isTrialExpired: isFreeLimitReached, daysLeft: trialDaysLeft } = useTrialExpiry();
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [daysLeft, setDaysLeft] = useState('');
+  const [showExamBanner, setShowExamBanner] = useState(true);
+  const [showReferralBanner, setShowReferralBanner] = useState(true);
+
+  useEffect(() => {
+    setShowExamBanner(localStorage.getItem('iqro_dismissed_exam_banner') !== '1');
+    setShowReferralBanner(localStorage.getItem('iqro_dismissed_ref_banner') !== '1');
+  }, []);
 
   useEffect(() => {
     if (!EXAM_DATE) { setDaysLeft('Bilimingizni oshirishda davom eting!'); return; }
@@ -146,8 +153,14 @@ const Dashboard = () => {
       </div>
 
       {/* ── IMTIHON BANNER ── */}
-      {EXAM_DATE && cat !== 'art' && (
-        <div style={s.examBanner}>
+      {showExamBanner && EXAM_DATE && cat !== 'art' && (
+        <div style={{...s.examBanner, position: 'relative'}}>
+          <button 
+            style={{ position: 'absolute', top: 8, right: 8, background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '50%', width: 24, height: 24, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', cursor: 'pointer' }}
+            onClick={(e) => { e.stopPropagation(); setShowExamBanner(false); localStorage.setItem('iqro_dismissed_exam_banner', '1'); }}
+          >
+            <X size={14} />
+          </button>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <div style={{ background: 'rgba(255,255,255,0.2)', borderRadius: 10, padding: '8px 10px' }}>
               <Clock size={20} color="#fff" />
@@ -181,6 +194,14 @@ const Dashboard = () => {
       )}
 
       {/* ── REFERRAL BANNER (Do'stlarni Taklif Qilish) ── */}
+      {showReferralBanner && (
+      <div style={{ position: 'relative', width: '100%', maxWidth: 600, margin: '0 auto' }}>
+        <button 
+          style={{ position: 'absolute', top: 6, right: 6, zIndex: 10, background: 'rgba(0,0,0,0.06)', border: 'none', borderRadius: '50%', width: 26, height: 26, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+          onClick={(e) => { e.stopPropagation(); setShowReferralBanner(false); localStorage.setItem('iqro_dismissed_ref_banner', '1'); }}
+        >
+          <X size={14} color="#78350F" />
+        </button>
       <motion.button
         whileHover={{ scale: 1.01, y: -2 }}
         whileTap={{ scale: 0.98 }}
@@ -200,8 +221,8 @@ const Dashboard = () => {
         </div>
         <div style={s.referralBtn}>Taklif qilish</div>
       </motion.button>
-
-
+      </div>
+      )}
 
       {/* ── TEZKOR HARAKATLAR ── */}
       <div style={s.sectionLabel}>Tezkor boshlash</div>
@@ -213,8 +234,14 @@ const Dashboard = () => {
               key={action.id}
               whileHover={{ scale: 1.01, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              style={{ ...s.actionCard, background: action.bg, borderColor: 'var(--glass-border)' }}
+              style={{ 
+                ...s.actionCard, 
+                background: action.bg, 
+                borderColor: action.id === 'test' ? 'var(--blue)' : 'var(--glass-border)',
+                boxShadow: action.id === 'test' ? '0 0 0 2px var(--blue)' : '0 2px 8px rgba(0,0,0,0.01)'
+              }}
               onClick={action.onClick}
+              animate={action.id === 'test' ? { boxShadow: ['0 0 0 2px rgba(41,182,246,0.3)', '0 0 0 6px rgba(41,182,246,0)'], transition: { repeat: Infinity, duration: 1.5 } } : {}}
             >
               <div style={{ ...s.actionIcon, background: action.color }}>
                 <Icon size={20} color="#fff" />
@@ -354,6 +381,7 @@ const s = {
     cursor: 'pointer',
     fontFamily: 'inherit',
     whiteSpace: 'nowrap',
+    flexShrink: 0,
     transition: 'all 0.2s ease',
   },
   examBanner: {

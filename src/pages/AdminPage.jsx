@@ -54,6 +54,12 @@ const AdminPage = () => {
   const [userSearch, setUserSearch] = useState('');
   const [filterSolved, setFilterSolved] = useState('all'); // all | unsolved | solved
   const [expandedId, setExpandedId] = useState(null);
+  const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, text: "", onConfirm: null });
+
+  const confirmAction = (text, onConfirm) => {
+    setConfirmDialog({ isOpen: true, text, onConfirm });
+  };
+
 
   // Question Management State
   const [isAdding, setIsAdding] = useState(false);
@@ -103,12 +109,13 @@ const AdminPage = () => {
     setIsSendingNotif(false);
   };
 
-  const handleDeleteNotification = async (notifId) => {
-    if (!window.confirm("Bu bildirishnomani bazadan o'chirishni tasdiqlaysizmi?")) return;
-    try {
+  const handleDeleteNotification = (notifId) => {
+    confirmAction("Bu bildirishnomani bazadan o'chirishni tasdiqlaysizmi?", async () => {
+try {
       await deleteDoc(doc(db, 'notifications', notifId));
       showToast("🗑️ Bildirishnoma o'chirildi", 'info');
     } catch (e) { showToast("Xatolik: " + e.message, 'error'); }
+    });
   };
 
 
@@ -307,7 +314,7 @@ const AdminPage = () => {
 
   // ═══ Admin: Referral statusini "to'ladi" ga o'zgartirish ═══
   const handleMarkReferralPaid = async (refId, referrerId) => {
-    if (!window.confirm("Bu referralni 'To'ladi' deb belgilashni tasdiqlaysizmi?")) return;
+    confirmAction("Bu referralni 'To'ladi' deb belgilashni tasdiqlaysizmi?", async () => {
     try {
       await updateDoc(doc(db, 'referrals', refId), {
         status: 'paid',
@@ -332,11 +339,12 @@ const AdminPage = () => {
     } catch (e) {
       showToast("Xatolik: " + e.message, 'error');
     }
+    });
   };
 
   // ═══ Admin: Referral bepul premiumini bekor qilish ═══
   const handleCancelReferralPremium = async (referredId, referralDocId) => {
-    if (!window.confirm("Bu foydalanuvchining bepul premium statusini bekor qilishni tasdiqlaysizmi?")) return;
+    confirmAction("Bu foydalanuvchining bepul premium statusini bekor qilishni tasdiqlaysizmi?", async () => {
     try {
       await updateDoc(doc(db, 'referrals', referralDocId), {
         freeExpire: null
@@ -358,6 +366,7 @@ const AdminPage = () => {
     } catch (e) {
       showToast("Xatolik: " + e.message, 'error');
     }
+    });
   };
 
   const handleSolve = async (fbId) => {
@@ -367,12 +376,13 @@ const AdminPage = () => {
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
   };
 
-  const handleDeleteObjection = async (fbId) => {
-    if (!window.confirm("E'tirozni o'chirishni tasdiqlaysizmi?")) return;
-    try {
+  const handleDeleteObjection = (fbId) => {
+    confirmAction("E'tirozni o'chirishni tasdiqlaysizmi?", async () => {
+try {
       await deleteDoc(doc(db, 'objections', fbId));
       showToast("🗑️ O'chirildi", 'info');
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+    });
   };
 
   const togglePremium = async (userId, currentStatus) => {
@@ -391,7 +401,7 @@ const AdminPage = () => {
   };
 
   const handleDeleteUser = async (userId, userEmail) => {
-    if (!window.confirm(`DIQQAT!!! Siz foydalanuvchini (${userEmail || userId}) tizimdan butunlay o'chirmoqchisiz.\n\nUshbu amal foydalanuvchining hisobini va reytingdagi (Leaderboard) barcha natijalarini batamom supurib tashlaydi!\n\nTasdiqlaysizmi?`)) return;
+    confirmAction(`DIQQAT!!! Siz foydalanuvchini (${userEmail || userId}) tizimdan butunlay o'chirmoqchisiz.\n\nUshbu amal foydalanuvchining hisobini va reytingdagi (Leaderboard) barcha natijalarini batamom supurib tashlaydi!\n\nTasdiqlaysizmi?`, async () => {
     try {
       await deleteDoc(doc(db, 'users', userId));
       await deleteDoc(doc(db, 'userStats', userId));
@@ -401,6 +411,7 @@ const AdminPage = () => {
       console.error("Foydalanuvchini o'chirishda xatolik:", e);
       showToast("Xatolik yuz berdi: " + e.message, 'error');
     }
+    });
   };
 
 
@@ -447,7 +458,7 @@ const AdminPage = () => {
   };
 
   const handleCleanDuplicates = async () => {
-    if (!window.confirm("Barcha takroriy (dublikat) savollarni bazadan o'chirishni tasdiqlaysizmi?")) return;
+    confirmAction("Barcha takroriy (dublikat) savollarni bazadan o'chirishni tasdiqlaysizmi?", async () => {
     try {
       showToast("Tahlil va o'chirish boshlandi, kuting...", 'info');
       const questionMap = new Map();
@@ -481,10 +492,11 @@ const AdminPage = () => {
     } catch (e) {
       showToast("Xatolik yuz berdi: " + e.message, 'error');
     }
+    });
   };
 
   const handlePublishBundles = async () => {
-    if (!window.confirm("Barcha savollarni yig'ib Firebase Storage'ga yuklashni (Publish) tasdiqlaysizmi? Bu foydalanuvchilar ilovasida versiyani yangilaydi.")) return;
+    confirmAction("Barcha savollarni yig'ib Firebase Storage'ga yuklashni (Publish) tasdiqlaysizmi? Bu foydalanuvchilar ilovasida versiyani yangilaydi.", async () => {
     setIsSyncing(true);
     showToast("Ma'lumotlar yig'ilmoqda, kuting...", 'info');
 
@@ -533,15 +545,17 @@ const AdminPage = () => {
       showToast("Yuklashda xatolik: " + e.message, 'error');
     }
     setIsSyncing(false);
+    });
   };
 
-  const handleDeleteQuestion = async (id) => {
-    if (!window.confirm("Savolni o'chirishni tasdiqlaysizmi?")) return;
-    try {
+  const handleDeleteQuestion = (id) => {
+    confirmAction("Savolni o'chirishni tasdiqlaysizmi?", async () => {
+try {
       await deleteDoc(doc(db, 'questions', id));
       showToast("🗑️ Savol o'chirildi", 'info');
       setQuestions(prev => prev.filter(q => q.id !== id));
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+    });
   };
 
   const handleSaveTariff = async () => {
@@ -570,13 +584,14 @@ const AdminPage = () => {
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
   };
 
-  const handleDeleteTariff = async (tariffId) => {
-    if (!window.confirm("Tarifni o'chirishni tasdiqlaysizmi?")) return;
-    try {
+  const handleDeleteTariff = (tariffId) => {
+    confirmAction("Tarifni o'chirishni tasdiqlaysizmi?", async () => {
+try {
       const updatedTariffs = tariffs.filter(t => t.id !== tariffId);
       await updateDoc(doc(db, 'settings', 'premium'), { plans: updatedTariffs });
       showToast("🗑️ Tarif o'chirildi", 'info');
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+    });
   };
 
   const filtered = objections.filter(o => {
@@ -1507,6 +1522,20 @@ const AdminPage = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {confirmDialog.isOpen && (
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: 24, maxWidth: 320, width: '90%', borderRadius: 20, textAlign: 'center' }}>
+            <div style={{ fontSize: 40, marginBottom: 12 }}>⚠️</div>
+            <h3 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Tasdiqlang</h3>
+            <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24, whiteSpace: 'pre-wrap' }}>{confirmDialog.text}</p>
+            <div style={{ display: 'flex', gap: 12 }}>
+              <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setConfirmDialog({ isOpen: false, text: '', onConfirm: null })}>Bekor qilish</button>
+              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { confirmDialog.onConfirm(); setConfirmDialog({ isOpen: false, text: '', onConfirm: null }); }}>Tasdiqlash</button>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </motion.div>
   );
 };

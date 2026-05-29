@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, CheckCircle, XCircle, RefreshCw } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import ObjectionModal from '../components/shared/ObjectionModal';
+import { processQuestionsOnTheFly } from '../utils/questionFixer';
 import PremiumModal from '../components/PremiumModal';
 import SafeHtml from '../components/shared/SafeHtml';
 import QuestionMedia from '../components/QuestionMedia';
@@ -65,25 +66,7 @@ const ExamPage = () => {
 
   const { isTrialExpired: isFreeLimitReached } = useTrialExpiry();
 
-  // Bepul limit tekshiruvi — imtihon 100 ta savoldan so'ng bloklanadi
-  if (isFreeLimitReached) {
-    return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
-        <div className="glass-panel" style={{ maxWidth: 500, margin: '60px auto', padding: 40, textAlign: 'center' }}>
-          <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
-          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Bepul Limit Tugadi</div>
-          <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-            Siz bepul limitni (7 kun) muvaffaqiyatli yakunladingiz! Barcha mavzular, imtihonlar va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
-          </div>
-          <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
-            ⭐ Premium Rejimni Faollashtirish
-          </button>
-          <button className="btn btn-outline" onClick={goBack}>← Bosh sahifaga</button>
-        </div>
-        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
-      </motion.div>
-    );
-  }
+
 
   const [questions, setQuestions] = useState([]);
   const [topicGroups, setTopicGroups] = useState([]); // [{name, icon, start, end}]
@@ -97,6 +80,7 @@ const ExamPage = () => {
   const [startTime] = useState(new Date());
   const [endTime, setEndTime] = useState(null);
   const [showObjectionModal, setShowObjectionModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
   
   const [examStarted, setExamStarted] = useState(false);
   const [examType, setExamType] = useState('standard');
@@ -190,17 +174,9 @@ const ExamPage = () => {
         }
 
         allQ = allQ.filter(q => q.category === cat);
-
-        // SAVOL KODLARINI UI'DAN OLIB TASHLASH (Masalan: "(Savol kodi: #PM2263)")
-        allQ = allQ.map(q => {
-          if (q.q) {
-            q.q = q.q.replace(/\s*\(Savol kodi:\s*#[a-zA-Z0-9_-]+\)/gi, '');
-          }
-          return q;
-        });
+        allQ = processQuestionsOnTheFly(allQ);
 
         if (allQ.length === 0) {
-          showToast("Savollar topilmadi!", 'error');
           goBack();
           return;
         }
@@ -372,7 +348,10 @@ const ExamPage = () => {
   };
 
   const handleFinish = (auto = false) => {
-    if (!auto && !window.confirm("Imtihonni yakunlashni tasdiqlaysizmi?")) return;
+    if (!auto) {
+      setShowConfirmModal(true);
+      return;
+    }
     accumulateTime();
     clearInterval(timerRef.current);
     setFinished(true);
@@ -561,6 +540,26 @@ const ExamPage = () => {
             </button>
           </div>
         </div>
+      </motion.div>
+    );
+  }
+
+  // Bepul limit tekshiruvi — imtihon bloklanishi (barcha hooklardan so'ng)
+  if (isFreeLimitReached) {
+    return (
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
+        <div className="glass-panel" style={{ maxWidth: 500, margin: '60px auto', padding: 40, textAlign: 'center' }}>
+          <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
+          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Bepul Limit Tugadi</div>
+          <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
+            Siz bepul limitni (7 kun) muvaffaqiyatli yakunladingiz! Barcha mavzular, imtihonlar va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
+          </div>
+          <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
+            ⭐ Premium Rejimni Faollashtirish
+          </button>
+          <button className="btn btn-outline" onClick={goBack}>← Bosh sahifaga</button>
+        </div>
+        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
       </motion.div>
     );
   }
@@ -1015,12 +1014,26 @@ const ExamPage = () => {
           <button
             className="btn btn-primary"
             style={{ width: '100%', background: 'var(--red)', borderColor: 'var(--red)' }}
-            onClick={() => handleFinish(false)}
+            onClick={() => setShowConfirmModal(true)}
           >
             <Flag size={16} /> Yakunlash ({answeredCount}/{questions.length})
           </button>
         </div>
       </div>
+
+      {showConfirmModal && (
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: 24, maxWidth: 320, width: '90%', borderRadius: 20, textAlign: 'center' }}>
+            <div style={{ fontSize: 40, marginBottom: 12 }}>🚩</div>
+            <h3 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Imtihonni yakunlash</h3>
+            <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>Rostdan ham imtihonni yakunlamoqchimisiz? Barcha belgilangan javoblar saqlanadi.</p>
+            <div style={{ display: 'flex', gap: 12 }}>
+              <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setShowConfirmModal(false)}>Yo'q</button>
+              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { setShowConfirmModal(false); handleFinish(true); }}>Ha, yakunlash</button>
+            </div>
+          </motion.div>
+        </div>
+      )}
 
       {/* E'TIROZ MODALI */}
       <ObjectionModal

@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import PremiumModal from '../components/PremiumModal';
 
+import { EXAM_DATE, EXAM_GOAL_SCORE } from '../config';
+
 const Schedule = () => {
   const navigate = useNavigate();
   const goBack = () => navigate('/');
@@ -43,9 +45,12 @@ const Schedule = () => {
     );
   }
 
+  const createdAt = user?._firebaseUser?.metadata?.creationTime ? new Date(user._firebaseUser.metadata.creationTime) : new Date();
   const today = new Date();
-  const startDay = new Date('2026-05-02');
-  const dayNum = Math.floor((today - startDay) / 86400000) + 1;
+  const startDay = new Date(createdAt.getFullYear(), createdAt.getMonth(), createdAt.getDate());
+  const todayDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const dayNum = Math.floor((todayDay - startDay) / 86400000) + 1;
+  const progressPercent = Math.min(100, Math.max(0, Math.round((dayNum / SCHEDULE.length) * 100)));
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page" style={{ maxWidth: 700, margin: '0 auto', padding: '20px 16px' }}>
@@ -58,9 +63,20 @@ const Schedule = () => {
         </div>
       </div>
       
-      <div className="alert alert-warning" style={{ marginBottom: '20px', borderRadius: 16, border: '1px solid rgba(245, 158, 11, 0.15)', background: 'rgba(245, 158, 11, 0.05)', color: '#B45309', fontWeight: 600, fontSize: 13, display: 'flex', alignItems: 'center', gap: 10 }}>
-        <span>⏰</span>
-        <span>Imtihon: 13 may 2026 | Har kunlik maqsad: kamida 80 savol yechish</span>
+      <div style={{ background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', borderRadius: 20, padding: 20, marginBottom: 24, color: '#fff', boxShadow: '0 10px 25px rgba(139, 92, 246, 0.2)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+          <div style={{ fontWeight: 700, fontSize: 16 }}>Sizning maqsadingiz: {EXAM_GOAL_SCORE} ball</div>
+          {EXAM_DATE && <div style={{ fontSize: 13, background: 'rgba(255,255,255,0.2)', padding: '4px 10px', borderRadius: 12, fontWeight: 600 }}>Imtihon: {EXAM_DATE.toLocaleDateString('uz-UZ')}</div>}
+        </div>
+        <div style={{ fontSize: 13, opacity: 0.9, marginBottom: 16 }}>Har kunlik maqsad: kamida 80 ta savol yechish va bilimlarni mustahkamlash!</div>
+        
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8, fontSize: 13, fontWeight: 600 }}>
+          <span>Reja taraqqiyoti</span>
+          <span>{progressPercent}%</span>
+        </div>
+        <div style={{ height: 6, background: 'rgba(255,255,255,0.2)', borderRadius: 3, overflow: 'hidden' }}>
+          <motion.div initial={{ width: 0 }} animate={{ width: `${progressPercent}%` }} transition={{ duration: 1, ease: "easeOut" }} style={{ height: '100%', background: '#fff', borderRadius: 3 }} />
+        </div>
       </div>
 
       <div className="glass-panel" style={{ overflowX: 'auto', borderRadius: 20, border: '1px solid var(--glass-border)', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
@@ -78,8 +94,19 @@ const Schedule = () => {
             {SCHEDULE.map(s => {
               const isToday = dayNum === s.day;
               const isPast = dayNum > s.day;
+              
+              const rowDate = new Date(startDay);
+              rowDate.setDate(startDay.getDate() + s.day - 1);
+              const formattedDate = rowDate.toLocaleDateString('uz-UZ', { day: 'numeric', month: 'short' });
+              
               return (
-                <tr key={s.day} style={{ background: isToday ? 'rgba(41, 182, 246, 0.08)' : 'transparent', borderBottom: '1px solid var(--glass-border)' }}>
+                <motion.tr 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: Math.min(s.day * 0.05, 1) }}
+                  key={s.day} 
+                  style={{ background: isToday ? 'rgba(41, 182, 246, 0.08)' : 'transparent', borderBottom: '1px solid var(--glass-border)' }}
+                >
                   <td style={{ padding: '14px 20px' }}>
                     <span className={`day-badge ${isToday ? 'active' : isPast ? 'done' : ''}`} style={{
                       display: 'inline-flex', width: 34, height: 34, alignItems: 'center', justifyContent: 'center', borderRadius: 10,
@@ -88,16 +115,16 @@ const Schedule = () => {
                       color: isToday || isPast ? '#fff' : 'var(--text3)',
                       boxShadow: isToday ? '0 4px 10px rgba(41, 182, 246, 0.2)' : isPast ? '0 4px 10px rgba(16, 185, 129, 0.15)' : 'none'
                     }}>
-                      {s.day}
+                      {isPast && !isToday ? '✓' : s.day}
                     </span>
                   </td>
-                  <td style={{ padding: '14px 20px', fontSize: 14, fontWeight: 600, color: 'var(--text2)' }}>{s.date}</td>
+                  <td style={{ padding: '14px 20px', fontSize: 14, fontWeight: 600, color: 'var(--text2)' }}>{formattedDate}</td>
                   <td style={{ padding: '14px 20px', fontSize: 14, fontWeight: 700, color: 'var(--text)' }}>{s.topic}</td>
                   <td style={{ padding: '14px 20px', fontSize: 14, fontWeight: 800, color: '#29B6F6' }}>
                     {s.tests} ta
                   </td>
                   <td style={{ padding: '14px 20px', fontSize: 12, color: 'var(--text3)', fontWeight: 500 }}>{s.goal}</td>
-                </tr>
+                </motion.tr>
               );
             })}
           </tbody>

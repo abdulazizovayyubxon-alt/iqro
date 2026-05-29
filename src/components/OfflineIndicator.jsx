@@ -136,26 +136,16 @@ export default function OfflineIndicator() {
   const [showOnlineMsg, setShowOnlineMsg] = useState(false);
   const [swWorker,      setSwWorker     ] = useState(null);
   const [showUpdate,    setShowUpdate   ] = useState(false);
-
   const onlineTimer = useRef(null);
 
   // ── Internet holati ──────────────────────────────────────────
   useEffect(() => {
     const handleOnline = () => {
       setIsOnline(true);
-      setShowOnlineMsg(true);
-
-      // Oldingi taymerni o'chirish
-      if (onlineTimer.current) clearTimeout(onlineTimer.current);
-
-      // 3 soniyadan keyin "Qayta ulandi" xabarini yashirish
-      onlineTimer.current = setTimeout(() => setShowOnlineMsg(false), 3000);
     };
 
     const handleOffline = () => {
       setIsOnline(false);
-      setShowOnlineMsg(false);
-      if (onlineTimer.current) clearTimeout(onlineTimer.current);
     };
 
     window.addEventListener('online',  handleOnline);
@@ -211,7 +201,7 @@ export default function OfflineIndicator() {
   }, [swWorker]);
 
   // Hech narsa ko'rsatilmasa — render qilmaymiz
-  if (!showUpdate && isOnline && !showOnlineMsg) return null;
+  if (!showUpdate && isOnline) return null;
 
   return (
     <>
@@ -245,7 +235,7 @@ export default function OfflineIndicator() {
           </div>
         )}
 
-        {/* ── Offline banneri ── */}
+        {/* ── Offline banneri (faqatgina offline bo'lsa ko'rsatamiz) ── */}
         {!isOnline && (
           <div style={STYLES.offline}>
             <WifiOff size={15} />
@@ -253,15 +243,6 @@ export default function OfflineIndicator() {
             <div style={STYLES.dot} />
           </div>
         )}
-
-        {/* ── Qayta ulandi xabari ── */}
-        {isOnline && showOnlineMsg && (
-          <div style={STYLES.online}>
-            <Wifi size={15} />
-            <span>Internet qayta ulandi ✓</span>
-          </div>
-        )}
-
       </div>
     </>
   );

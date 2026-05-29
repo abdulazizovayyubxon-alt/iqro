@@ -81,6 +81,7 @@ export default function BottomNav() {
 
 const styles = {
   nav: {
+    display: 'grid',
     position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1000,
     background: 'var(--glass-bg)',
     backdropFilter: 'blur(20px)',

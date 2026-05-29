@@ -148,7 +148,7 @@ ${refLink}
   const shareViaTelegram = () => {
     const msg = getShareMessage(user?.displayName, 'telegram');
     const text = encodeURIComponent(msg);
-    window.open(`https://t.me/share/url?url=${encodeURIComponent(refLink)}&text=${text}`, '_blank');
+    window.location.href = `https://t.me/share/url?url=${encodeURIComponent(refLink)}&text=${text}`;
   };
 
   if (!user) {
