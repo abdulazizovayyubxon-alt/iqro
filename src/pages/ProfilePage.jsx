@@ -291,22 +291,6 @@ export default function ProfilePage({ theme, toggleTheme }) {
       {/* ═══ REFERRAL (TAKLIF) BANNER TOP ═══ */}
       <div className="pp-header" style={{ paddingBottom: '24px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          
-          <div className="pp-ref-card-top" onClick={() => navigate('/referral')} style={{ cursor: 'pointer', background: 'rgba(255,255,255,0.15)', borderRadius: '20px', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid rgba(255,255,255,0.3)', backdropFilter: 'blur(10px)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-              <div style={{ width: 50, height: 50, borderRadius: '14px', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
-                🤝
-              </div>
-              <div>
-                <div style={{ fontSize: 18, fontWeight: 800, color: '#fff', marginBottom: 2 }}>Do'stlarni taklif qiling</div>
-                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', fontWeight: 500 }}>Har bir do'st uchun {REFERRAL_DISCOUNT}% chegirma</div>
-              </div>
-            </div>
-            <div style={{ background: 'rgba(255,255,255,0.2)', width: 32, height: 32, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
-              <ChevronRight size={18} />
-            </div>
-          </div>
-
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 4px' }}>
             <div className="pp-badges-row" style={{ marginTop: 0 }}>
               <span className="pp-badge pp-badge-level" style={{ background: 'rgba(255,255,255,0.2)', color: '#fff', border: 'none' }}>⚡ Lv.{levelInfo.level} {levelInfo.name}</span>
@@ -515,14 +499,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
           </button>
           {tgError && <div style={{ padding: '0 16px', fontSize: 12, color: 'var(--blue)', marginTop: '-5px', marginBottom: '5px' }}>{tgError}</div>}
 
-          {/* Offline Download */}
-          <button className="pp-menu-item" onClick={handleDownloadOffline} disabled={downloadingOffline}>
-            <div className="pp-menu-icon" style={{ background: 'var(--green-bg)', color: 'var(--green)' }}>
-              <Download size={20} className={downloadingOffline ? "spin" : ""} />
-            </div>
-            <span className="pp-menu-label">{downloadProgress || "Offline rejim uchun yuklash"}</span>
-            <ChevronRight size={18} className="pp-menu-arrow" />
-          </button>
+
 
           {/* Qo'llanma */}
           <button className="pp-menu-item" onClick={() => window.location.href = 'tg://resolve?domain=iqro_admin'}>
@@ -594,7 +571,24 @@ export default function ProfilePage({ theme, toggleTheme }) {
               <label>Fan</label>
               <input value={editForm.subject} onChange={e => setEditForm(p => ({ ...p, subject: e.target.value }))} placeholder="Masalan: Matematika" />
             </div>
-            <div className="pp-modal-actions">
+            <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid var(--border)' }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text2)', marginBottom: 10 }}>Qo'shimcha Sozlamalar</div>
+              <button 
+                onClick={handleDownloadOffline} 
+                disabled={downloadingOffline}
+                style={{ 
+                  display: 'flex', alignItems: 'center', gap: 10, width: '100%', 
+                  padding: '12px 16px', background: 'var(--bg3)', border: '1px solid var(--border)', 
+                  borderRadius: 12, cursor: downloadingOffline ? 'not-allowed' : 'pointer', color: 'var(--text)',
+                  fontSize: 14, fontWeight: 500
+                }}
+              >
+                <Download size={18} className={downloadingOffline ? "spin" : ""} style={{ color: 'var(--green)' }} />
+                {downloadProgress || "Offline rejim uchun ma'lumotlarni yuklash"}
+              </button>
+            </div>
+            
+            <div className="pp-modal-actions" style={{ marginTop: '20px' }}>
               <button className="pp-btn-cancel" onClick={() => setShowEdit(false)}>Bekor</button>
               <button className="pp-btn-save" onClick={handleSave} disabled={saving}>
                 {saving ? 'Saqlanmoqda...' : 'Saqlash'}
