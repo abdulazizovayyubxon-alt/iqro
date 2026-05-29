@@ -288,31 +288,45 @@ export default function ProfilePage({ theme, toggleTheme }) {
 
   return (
     <motion.div className="pp" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      {/* ═══ GRADIENT HEADER ═══ */}
-      <div className="pp-header">
-        <div className="pp-header-top">
-          <div className="pp-avatar">{initials}</div>
-          <div className="pp-user-info">
-            <h1 className="pp-user-name">{displayName}</h1>
-            <div className="pp-user-email">{user.email}</div>
-            <div className="pp-badges-row">
-              <span className="pp-badge pp-badge-level">⚡ Lv.{levelInfo.level} {levelInfo.name}</span>
+      {/* ═══ REFERRAL (TAKLIF) BANNER TOP ═══ */}
+      <div className="pp-header" style={{ paddingBottom: '24px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          
+          <div className="pp-ref-card-top" onClick={() => navigate('/referral')} style={{ cursor: 'pointer', background: 'rgba(255,255,255,0.15)', borderRadius: '20px', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid rgba(255,255,255,0.3)', backdropFilter: 'blur(10px)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+              <div style={{ width: 50, height: 50, borderRadius: '14px', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
+                🤝
+              </div>
+              <div>
+                <div style={{ fontSize: 18, fontWeight: 800, color: '#fff', marginBottom: 2 }}>Do'stlarni taklif qiling</div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', fontWeight: 500 }}>Har bir do'st uchun {REFERRAL_DISCOUNT}% chegirma</div>
+              </div>
+            </div>
+            <div style={{ background: 'rgba(255,255,255,0.2)', width: 32, height: 32, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
+              <ChevronRight size={18} />
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 4px' }}>
+            <div className="pp-badges-row" style={{ marginTop: 0 }}>
+              <span className="pp-badge pp-badge-level" style={{ background: 'rgba(255,255,255,0.2)', color: '#fff', border: 'none' }}>⚡ Lv.{levelInfo.level} {levelInfo.name}</span>
               {isPremium
                 ? <span className="pp-badge pp-badge-premium"><Crown size={10} /> Premium</span>
-                : <span className="pp-badge pp-badge-free" onClick={() => setShowPremium(true)} style={{ cursor: 'pointer' }}>Bepul</span>
+                : <span className="pp-badge pp-badge-free" onClick={() => setShowPremium(true)} style={{ cursor: 'pointer', background: 'rgba(255,255,255,0.2)', color: '#fff', border: 'none' }}>Bepul</span>
               }
             </div>
           </div>
+
         </div>
 
         {/* XP Progress */}
-        <div className="pp-xp-bar">
-          <div className="pp-xp-labels">
+        <div className="pp-xp-bar" style={{ marginTop: '16px', background: 'rgba(0,0,0,0.15)' }}>
+          <div className="pp-xp-labels" style={{ color: 'rgba(255,255,255,0.9)' }}>
             <span>⚡ {totalXP} XP</span>
             <span>{totalXP}/{nextXP} XP</span>
           </div>
-          <div className="pp-xp-track">
-            <div className="pp-xp-fill" style={{ width: `${xpPct}%` }} />
+          <div className="pp-xp-track" style={{ background: 'rgba(255,255,255,0.1)' }}>
+            <div className="pp-xp-fill" style={{ width: `${xpPct}%`, background: '#fff' }} />
           </div>
         </div>
       </div>
@@ -405,129 +419,40 @@ export default function ProfilePage({ theme, toggleTheme }) {
           </div>
         </div>
 
-        {/* ═══ EXAM COUNTDOWN ═══ */}
-        {countdown && (
-          <div className="pp-card">
-            <div className="pp-card-label">📅 Imtihon sanasi</div>
-            <div className="pp-countdown-grid">
-              {[{ v: countdown.y, l: 'Yil' }, { v: countdown.m, l: 'Oy' }, { v: countdown.d, l: 'Kun' }].map((c, i) => (
-                <div key={i} className="pp-countdown-box">
-                  <div className="pp-countdown-val">{c.v}</div>
-                  <div className="pp-countdown-lbl">{c.l}</div>
-                </div>
-              ))}
+        {/* ═══ STAT CARDS OR EMPTY CTA ═══ */}
+        {totalAnswered === 0 ? (
+          <div className="pp-card" style={{ textAlign: 'center', padding: '30px 20px', border: '1.5px dashed var(--blue)' }}>
+            <div style={{ fontSize: 40, marginBottom: 12 }}>🚀</div>
+            <h3 style={{ margin: '0 0 8px 0', color: 'var(--text)', fontSize: 18 }}>Sizda hali natijalar yo'q</h3>
+            <p style={{ margin: '0 0 20px 0', color: 'var(--text3)', fontSize: 13 }}>Tizimda o'z o'rningizni topish va XP yig'ish uchun hoziroq birinchi testingizni ishlang!</p>
+            <button 
+              onClick={() => navigate('/test')}
+              style={{ background: 'var(--blue)', color: '#fff', border: 'none', padding: '12px 24px', borderRadius: '12px', fontSize: 14, fontWeight: 700, cursor: 'pointer', width: '100%', boxShadow: '0 4px 12px rgba(59,130,246,0.3)' }}
+            >
+              Boshlash uchun test yechish
+            </button>
+          </div>
+        ) : (
+          <div className="pp-stats-grid">
+            <div className="pp-stat-card">
+              <div className="pp-stat-icon">📝</div>
+              <div className="pp-stat-val">{totalAnswered}</div>
+              <div className="pp-stat-lbl">Savollar</div>
+            </div>
+            <div className="pp-stat-card">
+              <div className="pp-stat-icon">🎯</div>
+              <div className="pp-stat-val">{acc}%</div>
+              <div className="pp-stat-lbl">Aniqlik</div>
+            </div>
+            <div className="pp-stat-card">
+              <div className="pp-stat-icon">🏆</div>
+              <div className="pp-stat-val">{earnedBadges.length}</div>
+              <div className="pp-stat-lbl">Yutuqlar</div>
             </div>
           </div>
         )}
 
-        {/* ═══ STAT CARDS ═══ */}
-        <div className="pp-stats-grid">
-          <div className="pp-stat-card">
-            <div className="pp-stat-icon">📝</div>
-            <div className="pp-stat-val">{totalAnswered}</div>
-            <div className="pp-stat-lbl">Savollar</div>
-          </div>
-          <div className="pp-stat-card">
-            <div className="pp-stat-icon">🎯</div>
-            <div className="pp-stat-val">{acc}%</div>
-            <div className="pp-stat-lbl">Aniqlik</div>
-          </div>
-          <div className="pp-stat-card">
-            <div className="pp-stat-icon">🏆</div>
-            <div className="pp-stat-val">{earnedBadges.length}</div>
-            <div className="pp-stat-lbl">Yutuqlar</div>
-          </div>
-        </div>
-
-        {/* ═══ FAN TANLASH ═══ */}
-        <div className="pp-card">
-          <div className="pp-card-label">📚 Faol fan — slayd qilib tanlang</div>
-          <div style={{
-            display: 'flex',
-            gap: 8,
-            overflowX: 'auto',
-            paddingBottom: 6,
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-            WebkitOverflowScrolling: 'touch',
-            scrollSnapType: 'x mandatory',
-          }}>
-            {SUBJECTS.map(subj => {
-              const Icon = subj.icon;
-              const isActive = state.activeCategory === subj.id;
-              return (
-                <button
-                  key={subj.id}
-                  onClick={() => updateState({ activeCategory: subj.id, topicId: -1 })}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: 6,
-                    padding: '12px 14px',
-                    borderRadius: 14,
-                    border: '1.5px solid',
-                    borderColor: isActive ? '#3B82F6' : 'var(--border)',
-                    background: isActive ? 'linear-gradient(135deg, #3B82F6, #8B5CF6)' : 'var(--bg3)',
-                    color: isActive ? '#fff' : 'var(--text2)',
-                    cursor: 'pointer',
-                    fontFamily: 'inherit',
-                    flexShrink: 0,
-                    scrollSnapAlign: 'start',
-                    transition: 'all 0.2s ease',
-                    boxShadow: isActive ? '0 4px 14px rgba(59,130,246,0.35)' : 'none',
-                    minWidth: 80,
-                  }}
-                >
-                  <Icon size={18} />
-                  <span style={{ fontSize: 11, fontWeight: 700, textAlign: 'center', lineHeight: 1.3 }}>{subj.name}</span>
-                </button>
-              );
-            })}
-          </div>
-          <div style={{ marginTop: 10, fontSize: 12, color: 'var(--text3)', textAlign: 'center' }}>
-            Hozir faol: <strong style={{ color: 'var(--blue)' }}>{SUBJECTS.find(s => s.id === state.activeCategory)?.name || '—'}</strong>
-          </div>
-        </div>
-
-        {/* ═══ COMBINED REFERRAL & PREMIUM CARD ═══ */}
-        <div className="pp-card" style={{ padding: 0, overflow: 'hidden', border: '1.5px solid var(--blue)', background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))' }} onClick={() => navigate('/referral')}>
-          <div style={{ padding: '20px 20px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-              <div style={{ width: 48, height: 48, borderRadius: 16, background: 'linear-gradient(135deg, #3B82F6, #8B5CF6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, boxShadow: '0 8px 20px rgba(59, 130, 246, 0.3)' }}>
-                🤝
-              </div>
-              <div>
-                <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--text)', marginBottom: 4 }}>Do'stlarni taklif qiling</div>
-                <div style={{ fontSize: 13, color: 'var(--text3)', fontWeight: 500 }}>Har bir taklif uchun chegirmalar!</div>
-              </div>
-            </div>
-            <div style={{ color: 'var(--blue)', background: 'var(--blue-bg)', width: 36, height: 36, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <ChevronRight size={20} />
-            </div>
-          </div>
-          <div style={{ background: 'var(--bg2)', padding: '16px 20px', borderTop: '1px solid var(--border)' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-              <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--text2)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Taraqqiyot</span>
-              <span style={{ fontSize: 13, fontWeight: 800, color: 'var(--blue)' }}>{refStats?.total || 0}/{MAX_REFERRALS}</span>
-            </div>
-            <div className="pp-ref-slots" style={{ gap: 8, marginTop: 0 }}>
-              {Array.from({ length: MAX_REFERRALS }).map((_, i) => {
-                const isActive = i < (refStats?.total || 0);
-                return (
-                  <div key={i} className={`pp-ref-slot ${isActive ? 'filled' : 'empty'}`} style={isActive ? { background: '#10B981', color: '#fff', borderColor: '#10B981' } : {}}>
-                    {isActive ? '✅' : '⚪'}
-                  </div>
-                );
-              })}
-            </div>
-            {refStats && refStats.total >= MAX_REFERRALS ? (
-              <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--green)', marginTop: 12, textAlign: 'center' }}>🏆 Maksimal limitga erishildi!</div>
-            ) : (
-              <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 12, textAlign: 'center' }}>Har bir do'stingiz uchun {REFERRAL_DISCOUNT}% chegirma oling</div>
-            )}
-          </div>
-        </div>
+        {/* (Subject section and Referral Card removed from here) */}
 
 
         {/* ═══ BADGES ROW ═══ */}
@@ -622,8 +547,8 @@ export default function ProfilePage({ theme, toggleTheme }) {
 
           {/* Maxfiylik Siyosati */}
           <button className="pp-menu-item" onClick={() => setShowPrivacy(true)}>
-            <div className="pp-menu-icon" style={{ background: 'rgba(255,255,255,0.06)', color: 'var(--text2)' }}>
-              <FileText size={20} />
+            <div className="pp-menu-icon" style={{ background: 'rgba(236, 72, 153, 0.1)', color: '#EC4899' }}>
+              <Shield size={20} />
             </div>
             <span className="pp-menu-label">Maxfiylik siyosati</span>
             <ChevronRight size={18} className="pp-menu-arrow" />
@@ -668,17 +593,6 @@ export default function ProfilePage({ theme, toggleTheme }) {
             <div className="pp-field">
               <label>Fan</label>
               <input value={editForm.subject} onChange={e => setEditForm(p => ({ ...p, subject: e.target.value }))} placeholder="Masalan: Matematika" />
-            </div>
-            <div className="pp-field">
-              <label>Imtihon sanasi</label>
-              <input type="date" value={examDate} onChange={e => {
-                setExamDate(e.target.value);
-                // Kesh sifatida localStorage ga saqlaymiz (Firestore ga handleSave da saqlanadi)
-                localStorage.setItem('iqro_exam_date', e.target.value);
-                if (e.target.value) {
-                  localStorage.setItem('CUSTOM_EXAM_DATE', new Date(e.target.value).toISOString());
-                }
-              }} />
             </div>
             <div className="pp-modal-actions">
               <button className="pp-btn-cancel" onClick={() => setShowEdit(false)}>Bekor</button>
