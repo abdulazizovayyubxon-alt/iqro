@@ -163,6 +163,9 @@ ${refLink}
   }
 
   const bonusProgress = stats ? (stats.paid * REFERRAL_BONUS) : 0;
+  
+  // Dynamic max limit: If user successfully invited 5 (paid), give them +2 slots.
+  const dynamicMax = stats?.paid >= 5 ? 7 : 5;
 
   return (
     <motion.div
@@ -192,7 +195,7 @@ ${refLink}
           }}>
             <div>
               <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>50/50 Model — ikki tomonga foyda</div>
-              <div style={{ fontSize: 28, fontWeight: 900, color: '#fff', margin: '4px 0' }}>{stats?.total || 0} / {MAX_REFERRALS}</div>
+              <div style={{ fontSize: 28, fontWeight: 900, color: '#fff', margin: '4px 0' }}>{stats?.total || 0} / {dynamicMax}</div>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)' }}>
                 {stats?.total || 0} ta do'st taklif qilindi · Ikki tomonga {REFERRAL_DISCOUNT}% chegirma
               </div>
@@ -244,7 +247,7 @@ ${refLink}
           <div style={s.card}>
             <div style={s.label}>Taklif qadamlari</div>
             <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
-              {Array.from({ length: MAX_REFERRALS }).map((_, i) => {
+              {Array.from({ length: dynamicMax }).map((_, i) => {
                 const isPaid = i < (stats?.paid || 0);
                 const isPending = !isPaid && i < (stats?.total || 0);
                 return (

@@ -365,24 +365,27 @@ const Header = ({ theme, toggleTheme }) => {
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 cursor: 'pointer', position: 'relative'
               }}
-            >
-              {(() => {
+                 {(() => {
                 const month = new Date().getMonth() + 1;
-                let iconStr = '🎁';
+                let seasonBadge = '';
                 let glowColor = 'rgba(245, 158, 11, 0.4)';
+                
                 if (month >= 3 && month <= 5) {
-                  iconStr = '🌸'; glowColor = 'rgba(236, 72, 153, 0.4)';
+                  seasonBadge = '🌸'; glowColor = 'rgba(236, 72, 153, 0.4)';
                 } else if (month >= 6 && month <= 8) {
-                  iconStr = '☀️'; glowColor = 'rgba(239, 68, 68, 0.4)';
+                  seasonBadge = '☀️'; glowColor = 'rgba(239, 68, 68, 0.4)';
                 } else if (month >= 9 && month <= 11) {
-                  iconStr = '🍂'; glowColor = 'rgba(217, 119, 6, 0.4)';
+                  seasonBadge = '🍁'; glowColor = 'rgba(217, 119, 6, 0.4)';
                 } else {
-                  iconStr = '❄️'; glowColor = 'rgba(56, 189, 248, 0.4)';
+                  seasonBadge = '❄️'; glowColor = 'rgba(56, 189, 248, 0.4)';
                 }
 
                 return (
                   <>
-                    <span style={{ fontSize: '20px', zIndex: 2 }}>{iconStr}</span>
+                    <span style={{ fontSize: '20px', zIndex: 2 }}>🎁</span>
+                    <span style={{ position: 'absolute', bottom: -2, right: -2, fontSize: '11px', zIndex: 3, filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }}>
+                      {seasonBadge}
+                    </span>
                     <div style={{
                       position: 'absolute', inset: -4, borderRadius: '14px',
                       background: `radial-gradient(circle, ${glowColor} 0%, transparent 70%)`,
