@@ -7,7 +7,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { AppContext } from '../context/AppContext';
 import {
-  PenTool, Brain, Trophy, GraduationCap, User
+  PenTool, Brain, Trophy, GraduationCap, Gift
 } from 'lucide-react';
 
 const TABS = [
@@ -15,7 +15,7 @@ const TABS = [
   { id: 'exam',        path: '/exam',         icon: GraduationCap, label: 'Imtihon' },
   { id: 'review',      path: '/review',       icon: Brain,         label: 'Takror' },
   { id: 'leaderboard', path: '/leaderboard',  icon: Trophy,        label: 'Reyting' },
-  { id: 'profile',     path: '/profile',      icon: User,          label: 'Profil' },
+  { id: 'referral',    path: '/referral',     icon: Gift,          label: 'Taklif' },
 ];
 
 export default function BottomNav() {
