@@ -859,7 +859,16 @@ export default function ProfilePage({ theme, toggleTheme }) {
               initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }}
               className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 500, padding: '24px' }}
             >
-              <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '20px' }}>
+              <div 
+                className="pp-modal-title" 
+                style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '20px', cursor: 'pointer' }}
+                onClick={() => {
+                  // Secret trigger for testing Ambassador Modal
+                  localStorage.setItem('force_ambassador', '1');
+                  localStorage.removeItem('iqro_ambassador_thanks');
+                  showToast('Admin: Ambassador test yuborildi. Sahifani yangilang!', 'success');
+                }}
+              >
                 <span style={{ fontSize: 24 }}>📖</span> Foydalanish qo'llanmasi
               </div>
               

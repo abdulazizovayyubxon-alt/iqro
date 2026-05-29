@@ -32,12 +32,16 @@ const Header = ({ theme, toggleTheme }) => {
     const checkReferrals = async () => {
       try {
         const stats = await getReferralStats(user.uid);
-        if (stats.paid >= 5) {
+        const forceTest = localStorage.getItem('force_ambassador') === '1';
+        if (stats.paid >= 5 || forceTest) {
           setIsAmbassador(true);
           // Agar oldin ko'rsatilmagan bo'lsa, modalni chiqaramiz
           if (!localStorage.getItem('iqro_ambassador_thanks')) {
             setAmbassadorModal(true);
             confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+            if (forceTest) {
+              localStorage.removeItem('force_ambassador');
+            }
           }
         }
       } catch (e) {
