@@ -6,7 +6,7 @@
 
 /* ── Gradient Header ── */
 .pp-header {
-  background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #6D28D9 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
   border-radius: 0 0 28px 28px;
   padding: 32px 20px 28px;
   position: relative;
