@@ -365,7 +365,8 @@ const Header = ({ theme, toggleTheme }) => {
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 cursor: 'pointer', position: 'relative'
               }}
-                 {(() => {
+            >
+              {(() => {
                 const month = new Date().getMonth() + 1;
                 let seasonBadge = '';
                 let glowColor = 'rgba(245, 158, 11, 0.4)';
