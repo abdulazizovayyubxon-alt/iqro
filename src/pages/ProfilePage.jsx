@@ -37,6 +37,8 @@ export default function ProfilePage({ theme, toggleTheme }) {
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showTelegramModal, setShowTelegramModal] = useState(false);
+  const [showGuideModal, setShowGuideModal] = useState(false);
+  const [activeGuidePanel, setActiveGuidePanel] = useState(null);
   const [tgLoading, setTgLoading] = useState(false);
   const [tgError, setTgError] = useState('');
 
@@ -580,36 +582,21 @@ export default function ProfilePage({ theme, toggleTheme }) {
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
 
-          {/* Account Recovery */}
-          <button className="pp-menu-item" onClick={handleTelegramLogin} disabled={tgLoading}>
-            <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--blue)' }}>
-              <Send size={20} className={tgLoading ? "spin" : ""} />
-            </div>
-            <span className="pp-menu-label">{tgLoading ? 'Kutilmoqda...' : 'Eski hisobni tiklash (Telegram)'}</span>
-            <ChevronRight size={18} className="pp-menu-arrow" />
-          </button>
-          {tgError && <div style={{ padding: '0 16px', fontSize: 12, color: 'var(--blue)', marginTop: '-5px', marginBottom: '5px' }}>{tgError}</div>}
-
-
-
-          {/* Qo'llanma */}
-          <button className="pp-menu-item" onClick={() => window.location.href = 'tg://resolve?domain=iqro_admin'}>
-            <div className="pp-menu-icon" style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#10B981' }}>
-              <div style={{ fontSize: 16 }}>📖</div>
-            </div>
-            <span className="pp-menu-label">Foydalanish qo'llanmasi</span>
-            <ChevronRight size={18} className="pp-menu-arrow" />
-          </button>
-
-          {/* Telegram Eslatmalar */}
+          {/* Telegram Bot */}
           <button className="pp-menu-item" onClick={() => setShowTelegramModal(true)}>
             <div className="pp-menu-icon" style={{ background: 'rgba(41, 182, 246, 0.1)', color: '#29B6F6' }}>
               <Send size={20} />
             </div>
-            <span className="pp-menu-label">Telegram eslatmalar</span>
-            <div style={{ marginRight: 8, fontSize: 11, fontWeight: 700, color: state.telegramEnabled ? 'var(--green)' : 'var(--text3)' }}>
-              {state.telegramEnabled ? "Yoqilgan" : "O'chirilgan"}
+            <span className="pp-menu-label">Telegram Bot & Sozlamalar</span>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
+          {/* Qo'llanma */}
+          <button className="pp-menu-item" onClick={() => setShowGuideModal(true)}>
+            <div className="pp-menu-icon" style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#10B981' }}>
+              <div style={{ fontSize: 16 }}>📖</div>
             </div>
+            <span className="pp-menu-label">Foydalanish qo'llanmasi</span>
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
 
@@ -799,93 +786,158 @@ export default function ProfilePage({ theme, toggleTheme }) {
       {showTelegramModal && (
         <div className="pp-modal-overlay" onClick={() => setShowTelegramModal(false)}>
           <div className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 440, padding: '24px' }}>
-            <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <Send size={22} style={{ color: '#29B6F6' }} /> Telegram Eslatmalar
+            <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '20px' }}>
+              <Send size={22} style={{ color: '#29B6F6' }} /> Telegram Sozlamalari
             </div>
             
-            <div style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, margin: '16px 0' }}>
-              Attestatsiyaga tayyorgarlikni yanada tizimli qilish uchun har kuni takrorlashingiz kerak bo'lgan testlarni Telegram orqali qabul qiling.
+            {/* Eslatmalar bo'limi */}
+            <div style={{ background: 'var(--bg3)', borderRadius: 16, padding: '16px', marginBottom: 16, border: '1px solid var(--border)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)' }}>⏰ Kundalik eslatmalar</span>
+                <button 
+                  onClick={async () => {
+                    const newState = !state.telegramEnabled;
+                    updateState({ telegramEnabled: newState });
+                    try {
+                      await setDoc(doc(db, 'users', user.uid), {
+                        telegramEnabled: newState,
+                        telegramCode: `IQRO-${user.uid.substring(0, 8).toUpperCase()}`
+                      }, { merge: true });
+                      showToast(newState ? "Eslatmalar yoqildi! 🔔" : "Eslatmalar o'chirildi! 🔕", "success");
+                    } catch (e) {
+                      showToast("Firebase sinxronizatsiyada xatolik", "error");
+                    }
+                  }}
+                  style={{
+                    width: 48, height: 26, borderRadius: 13, border: 'none', position: 'relative', cursor: 'pointer',
+                    background: state.telegramEnabled ? '#10B981' : 'var(--border)', transition: '0.3s'
+                  }}
+                >
+                  <div style={{
+                    width: 22, height: 22, borderRadius: '50%', background: '#fff', position: 'absolute', top: 2,
+                    left: state.telegramEnabled ? 24 : 2, transition: '0.3s', boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                  }} />
+                </button>
+              </div>
+              <div style={{ fontSize: 12, color: 'var(--text3)', lineHeight: 1.5 }}>
+                Har kuni test ishlash eslatmalarini Telegram bot orqali oling. Buning uchun <a href="tg://resolve?domain=IQRO_testbot" style={{ color: '#29B6F6', textDecoration: 'none', fontWeight: 700 }}>@IQRO_testbot</a> botiga <code style={{background:'var(--bg)', padding:'2px 4px', borderRadius:4}}>IQRO-{user.uid.substring(0, 8).toUpperCase()}</code> kodini yuboring.
+              </div>
             </div>
 
-            {/* Instruction Steps */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, background: 'var(--bg3)', padding: '16px 20px', borderRadius: 16, marginBottom: 20 }}>
-              <div style={{ fontSize: 12, color: 'var(--text2)', lineHeight: 1.5 }}>
-                <strong>1-qadam:</strong> Telegramda <a href="tg://resolve?domain=IQRO_testbot" style={{ color: '#29B6F6', textDecoration: 'none', fontWeight: 700 }}>@IQRO_testbot</a> botini oching va <code style={{ background: 'var(--bg3)', padding: '2px 6px', borderRadius: 4 }}>/start</code> buyrug'ini bosing.
+            {/* Hisobni tiklash bo'limi */}
+            <div style={{ background: 'var(--bg3)', borderRadius: 16, padding: '16px', border: '1px solid var(--border)' }}>
+              <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', marginBottom: 8 }}>🔄 Eski hisobni tiklash</div>
+              <div style={{ fontSize: 12, color: 'var(--text3)', lineHeight: 1.5, marginBottom: 12 }}>
+                Oldingi hisobingizdagi obuna va yutuqlarni hozirgi hisobingizga ko'chirib o'tkazish.
               </div>
-              <div style={{ fontSize: 12, color: 'var(--text2)', lineHeight: 1.5 }}>
-                <strong>2-qadam:</strong> Botga ulanish uchun quyidagi shaxsiy ID kodini yuboring:
-                <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
-                  <code style={{ flex: 1, padding: '8px 12px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 8, fontSize: 13, fontWeight: 700, textAlign: 'center', fontFamily: 'monospace' }}>
-                    IQRO-{user.uid.substring(0, 8).toUpperCase()}
-                  </code>
-                  <button 
-                    onClick={() => {
-                      navigator.clipboard.writeText(`IQRO-${user.uid.substring(0, 8).toUpperCase()}`);
-                      showToast("Ulanish kodi nusxalandi! 📋", "success");
-                    }}
-                    style={{ padding: '6px 12px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 8, cursor: 'pointer', fontSize: 12, fontWeight: 700 }}
-                  >
-                    Nusxalash
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Toggle */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 16px', borderRadius: 12, background: 'var(--bg3)', border: '1px solid var(--border)', marginBottom: 24 }}>
-              <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)' }}>⏰ Kundalik eslatmalar</span>
               <button 
-                onClick={async () => {
-                  const newState = !state.telegramEnabled;
-                  updateState({ telegramEnabled: newState });
-                  
-                  try {
-                    await setDoc(doc(db, 'users', user.uid), {
-                      telegramEnabled: newState,
-                      telegramCode: `IQRO-${user.uid.substring(0, 8).toUpperCase()}`
-                    }, { merge: true });
-                    showToast(newState ? "Eslatmalar yoqildi! 🔔" : "Eslatmalar o'chirildi! 🔕", "success");
-                  } catch (e) {
-                    showToast("Firebase sinxronizatsiyada xatolik", "error");
-                  }
-                }}
+                onClick={handleTelegramLogin} 
+                disabled={tgLoading}
                 style={{ 
-                  padding: '6px 14px', 
-                  background: state.telegramEnabled ? 'var(--green)' : 'var(--bg2)', 
-                  color: state.telegramEnabled ? '#fff' : 'var(--text3)', 
-                  border: '1.5px solid',
-                  borderColor: state.telegramEnabled ? 'var(--green)' : 'var(--border)',
-                  borderRadius: 10, 
-                  fontWeight: 700, 
-                  fontSize: 12, 
-                  cursor: 'pointer' 
+                  width: '100%', padding: '12px', borderRadius: 12, background: 'var(--blue-bg)', color: 'var(--blue)', 
+                  border: '1px solid rgba(41, 182, 246, 0.3)', fontWeight: 700, fontSize: 13, cursor: tgLoading ? 'not-allowed' : 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 8
                 }}
               >
-                {state.telegramEnabled ? "Yoqilgan" : "O'chirilgan"}
+                <Send size={16} className={tgLoading ? "spin" : ""} />
+                {tgLoading ? 'Kutilmoqda...' : 'Telegram orqali tiklash'}
               </button>
+              {tgError && <div style={{ fontSize: 11, color: 'var(--red)', marginTop: 8, textAlign: 'center' }}>{tgError}</div>}
             </div>
 
-            <button 
-              onClick={() => setShowTelegramModal(false)} 
-              style={{ 
-                width: '100%',
-                padding: '13px', 
-                borderRadius: 14, 
-                background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', 
-                color: '#fff', 
-                border: 'none', 
-                fontWeight: 700, 
-                fontSize: 14, 
-                cursor: 'pointer', 
-                fontFamily: 'inherit',
-                boxShadow: '0 4px 15px rgba(41, 182, 246, 0.2)'
-              }}
-            >
-              Tushunarli 🤝
+            <button onClick={() => setShowTelegramModal(false)} style={{ width: '100%', padding: '12px', borderRadius: 12, background: 'var(--blue)', color: '#fff', border: 'none', fontWeight: 700, marginTop: '20px' }}>
+              Yopish
             </button>
           </div>
         </div>
       )}
+
+      {/* ═══ USER GUIDE MODAL ═══ */}
+      <AnimatePresence>
+        {showGuideModal && (
+          <div className="pp-modal-overlay" onClick={() => setShowGuideModal(false)}>
+            <motion.div 
+              initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }}
+              className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 500, padding: '24px' }}
+            >
+              <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '20px' }}>
+                <span style={{ fontSize: 24 }}>📖</span> Foydalanish qo'llanmasi
+              </div>
+              
+              <div className="pp-policy-scroll" style={{ maxHeight: '400px', overflowY: 'auto', paddingRight: '8px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                
+                {/* Panel 1 */}
+                <div style={{ background: 'var(--bg3)', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border)' }}>
+                  <button 
+                    onClick={() => setActiveGuidePanel(p => p === 1 ? null : 1)}
+                    style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', background: 'transparent', border: 'none', color: 'var(--text)', fontWeight: 700, fontSize: 14, cursor: 'pointer' }}
+                  >
+                    🚀 IQRO o'zi qanday platforma?
+                    <ChevronRight size={16} style={{ transform: activeGuidePanel === 1 ? 'rotate(90deg)' : 'rotate(0deg)', transition: '0.2s' }} />
+                  </button>
+                  {activeGuidePanel === 1 && (
+                    <div style={{ padding: '10px 16px 16px', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>
+                      IQRO — attestatsiya va sertifikatlash imtihonlariga tayyorlanish uchun mo'ljallangan zamonaviy platforma. Bizda minglab testlar bazasi bo'lib, ular haqiqiy imtihon standartlariga mos keladi. Siz bu yerda o'z bilimingizni tekshirishingiz va xatolar ustida tizimli ishlashingiz mumkin.
+                    </div>
+                  )}
+                </div>
+
+                {/* Panel 2 */}
+                <div style={{ background: 'var(--bg3)', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border)' }}>
+                  <button 
+                    onClick={() => setActiveGuidePanel(p => p === 2 ? null : 2)}
+                    style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', background: 'transparent', border: 'none', color: 'var(--text)', fontWeight: 700, fontSize: 14, cursor: 'pointer' }}
+                  >
+                    🧠 "Takrorlash" bo'limi qanday ishlaydi?
+                    <ChevronRight size={16} style={{ transform: activeGuidePanel === 2 ? 'rotate(90deg)' : 'rotate(0deg)', transition: '0.2s' }} />
+                  </button>
+                  {activeGuidePanel === 2 && (
+                    <div style={{ padding: '10px 16px 16px', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>
+                      Biz <strong>"Spaced Repetition" (Oraliq takrorlash)</strong> algoritmidan foydalanamiz. Testda xato qilgan yoki qiynalgan savollaringiz darhol sizga ko'rinmaydi. Algoritm ularni xotirangizdan o'chib ketishiga yaqin qolganda aynan qulay vaqtda hisoblab sizga qayta ko'rsatadi. Shu sababli bilimingiz doimiy yodda qoladi!
+                    </div>
+                  )}
+                </div>
+
+                {/* Panel 3 */}
+                <div style={{ background: 'var(--bg3)', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border)' }}>
+                  <button 
+                    onClick={() => setActiveGuidePanel(p => p === 3 ? null : 3)}
+                    style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', background: 'transparent', border: 'none', color: 'var(--text)', fontWeight: 700, fontSize: 14, cursor: 'pointer' }}
+                  >
+                    🏆 Reyting va XP nima?
+                    <ChevronRight size={16} style={{ transform: activeGuidePanel === 3 ? 'rotate(90deg)' : 'rotate(0deg)', transition: '0.2s' }} />
+                  </button>
+                  {activeGuidePanel === 3 && (
+                    <div style={{ padding: '10px 16px 16px', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>
+                      Siz to'g'ri ishlagan har bir test uchun <strong>XP (Tajriba ochkosi)</strong> olasiz. Ketma-ket kunlar davomida kirib o'qisangiz (Streak), olingan ochkolar hajmi ortib boradi. Shuningdek, tizimli o'qisangiz Respublika bo'yicha Reytingingiz ko'tariladi va turli nishonlar olasiz.
+                    </div>
+                  )}
+                </div>
+
+                {/* Panel 4 */}
+                <div style={{ background: 'var(--bg3)', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border)' }}>
+                  <button 
+                    onClick={() => setActiveGuidePanel(p => p === 4 ? null : 4)}
+                    style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', background: 'transparent', border: 'none', color: 'var(--text)', fontWeight: 700, fontSize: 14, cursor: 'pointer' }}
+                  >
+                    🎁 Do'stlarni taklif qilish
+                    <ChevronRight size={16} style={{ transform: activeGuidePanel === 4 ? 'rotate(90deg)' : 'rotate(0deg)', transition: '0.2s' }} />
+                  </button>
+                  {activeGuidePanel === 4 && (
+                    <div style={{ padding: '10px 16px 16px', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>
+                      Tizimda <strong>50/50 Chegirma</strong> tizimi ishlaydi. Siz do'stingizga maxsus havolangizni yuborasiz. U shu orqali ro'yxatdan o'tsa 50% chegirmaga ega bo'ladi. U to'lov qilgach, <strong>Siz ham o'z navbatdagi to'lovingiz uchun juda katta chegirma yutib olasiz!</strong>
+                    </div>
+                  )}
+                </div>
+
+              </div>
+
+              <button onClick={() => setShowGuideModal(false)} style={{ width: '100%', padding: '12px', borderRadius: 12, background: 'var(--blue)', color: '#fff', border: 'none', fontWeight: 700, marginTop: '20px', cursor: 'pointer' }}>
+                Tushunarli 🤝
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
