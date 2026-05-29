@@ -309,14 +309,7 @@ export default async function handler(req, res) {
     // ==========================================
     // 4. BOSH MENYU VA KLAVIATURA BUYRUQLARI
     // ==========================================
-    const keyboardMarkup = {
-      keyboard: [
-        [{text: "💳 Premium Sotib Olish"}],
-        [{text: "📊 Statistika"}, {text: "🔑 Kodimni ko'rish"}],
-        [{text: "🔗 Do'stlarni taklif qilish"}, {text: "💬 Yordam"}]
-      ],
-      resize_keyboard: true
-    };
+    // keyboardMarkup yuqorida e'lon qilingan
 
     if (incomingText.startsWith('/start')) {
       const parts = incomingText.split(' ');

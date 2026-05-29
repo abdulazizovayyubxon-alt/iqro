@@ -568,20 +568,45 @@ export const AuthProvider = ({ children }) => {
 
         // Agar foydalanuvchi hali parol kiritmagan bo'lsa (faqat telefon raqam yozib Davom etishni bosgan)
         if (!isRegistering) {
-          // ── Serverless API orqali foydalanuvchi borligini tekshiramiz ──
+          // ── Serverless API orqali eski foydalanuvchini migratsiya qilamiz ──
           try {
-            const checkRes = await fetch('/api/check-user', {
+            const migrateRes = await fetch('/api/migrate-old-user', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ phone: cleanPhone })
             });
-            if (!checkRes.ok) throw new Error('API failed');
-            const checkData = await checkRes.json();
+            if (!migrateRes.ok) throw new Error('API failed');
+            const migrateData = await migrateRes.json();
             
-            if (checkData.exists) {
-              return { success: false, hasCustomPassword: true };
-            } else {
+            if (migrateData.success) {
+              // Migratsiya qilingan bo'lsa, endi u to'g'ri (auto) parolga ega!
+              // Parol kiritish o'rniga to'g'ridan-to'g'ri kirishga qaytadan urinamiz
+              try {
+                await signInWithEmailAndPassword(auth, internalEmail, finalPassword);
+                resetLoginAttempts();
+                
+                let isPremium = false;
+                const userRef = doc(db, 'users', auth.currentUser.uid);
+                const userSnap = await getDoc(userRef);
+                if (userSnap.exists()) isPremium = userSnap.data().isPremium || false;
+
+                setUser({
+                  uid: auth.currentUser.uid,
+                  email: auth.currentUser.email,
+                  displayName: auth.currentUser.displayName || phone,
+                  photoURL: auth.currentUser.photoURL,
+                  isPremium,
+                  _firebaseUser: auth.currentUser
+                });
+                return { success: true };
+              } catch (retryErr) {
+                console.error("Migratsiyadan keyin ham kirish xatosi:", retryErr);
+                return { success: false, hasCustomPassword: true };
+              }
+            } else if (migrateData.reason === 'not_found_in_db') {
               return { success: false, notRegistered: true };
+            } else {
+              return { success: false, hasCustomPassword: true };
             }
           } catch (apiErr) {
             console.warn('Check user API xatosi:', apiErr);
