@@ -1510,6 +1510,10 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 0 0 3px rgba(41, 182, 246, 0.15) !important;
 }
 
+#login-phone-input:focus {
+  box-shadow: none !important;
+}
+
 @keyframes pulseGift {
   0% { transform: scale(1); }
   50% { transform: scale(1.25); filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.6)); }
