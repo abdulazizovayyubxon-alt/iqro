@@ -420,9 +420,10 @@ const TestPage = () => {
     // 🧠 SMART ENGINE: Natijalarni tahlil qilish va bir marta saqlash
     const results = summarizeTestResults(questions, answers, state.spacedCards || [], topicId);
     
-    // Add total session time to results
+    // Add total session time and topicId to results
     const totalSessionTime = Object.values(questionTimesRef.current).reduce((a, b) => a + b, 0);
     results.sessionTime = totalSessionTime;
+    results.topicId = topicId;
 
     batchCommitResults(results);
 

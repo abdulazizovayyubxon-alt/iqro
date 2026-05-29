@@ -402,6 +402,8 @@ const ExamPage = () => {
 
     // 🧠 SMART ENGINE
     const results = summarizeTestResults(questions, answers, state.spacedCards || [], -1);
+    results.topicId = -1;
+    results.sessionTime = Math.round((Date.now() - startTime) / 1000); // optional if startTime is available
     batchCommitResults(results);
 
     const correct = results.correctCount;

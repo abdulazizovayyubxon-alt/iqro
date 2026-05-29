@@ -352,7 +352,7 @@ export const AppProvider = ({ children }) => {
       const sessionQuestions = results.totalAnswered || 0;
       const currentTimeStats = prev.timeStats || { totalTime: 0, totalQuestions: 0 };
 
-      return {
+      const newState = {
         ...prev,
         totalScore: (prev.totalScore || 0) + results.correctCount * 2,
         totalAnswered: prev.totalAnswered + results.totalAnswered,
@@ -378,6 +378,22 @@ export const AppProvider = ({ children }) => {
           }
         }
       };
+
+      // Force immediate sync to Firestore so Leaderboard is instantly updated!
+      setTimeout(() => {
+        if (!user) return;
+        const statRef = doc(db, 'userStats', user.uid);
+        const statsToSave = { ...newState };
+        const currentName = user.displayName || statsToSave.displayName || '';
+        statsToSave.displayName = currentName;
+        statsToSave.userName = currentName;
+        statsToSave.photoURL = user.photoURL || statsToSave.photoURL || null;
+        delete statsToSave.topicId;
+        delete statsToSave.testMode;
+        setDoc(statRef, statsToSave, { merge: true }).catch(console.error);
+      }, 0);
+
+      return newState;
     });
   };
 

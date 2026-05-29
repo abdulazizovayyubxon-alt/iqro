@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Crown, Medal, Star, Trash2, Trophy } from 'lucide-react';
 import {
-  collection, query, orderBy, limit, getDocs,
+  collection, query, orderBy, limit, getDocs, onSnapshot,
   doc, getDoc, where, getCountFromServer, deleteDoc
 } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -23,86 +23,73 @@ const LeaderboardPage = () => {
   const [loading, setLoading] = useState(true);
   const [deleteConfirm, setDeleteConfirm] = useState({ show: false, id: null, name: '' });
 
-  useEffect(() => { fetchLeaderboard(); }, [user]);
-
-  const executeDelete = async () => {
-    if (!deleteConfirm.id) return;
-    try {
-      await deleteDoc(doc(db, 'userStats', deleteConfirm.id));
-      setLeaders(prev => prev.filter(l => l.id !== deleteConfirm.id));
-      if (myEntry?.id === deleteConfirm.id) setMyEntry(null);
-      showToast("Reyting natijasi o'chirildi", 'success');
-    } catch (e) {
-      showToast('Xatolik: ' + e.message, 'error');
-    }
-    setDeleteConfirm({ show: false, id: null, name: '' });
-  };
-
-  const handleDeleteClick = (id, name) => {
-    setDeleteConfirm({ show: true, id, name });
-  };
-
-  const fetchLeaderboard = async () => {
-    try {
-      const q = query(collection(db, 'userStats'), orderBy('totalScore', 'desc'), limit(50));
-      const snapshot = await getDocs(q);
-      const results = [];
-      snapshot.forEach(docSnap => {
-        const d = docSnap.data();
-        if (d.totalScore !== undefined) {
-          results.push({
-            id: docSnap.id,
-            name: d.displayName || d.userName || d.name || null,
-            score: d.totalScore || 0,
-            streak: d.dailyStreak || 0,
-            answered: d.totalAnswered || 0,
-            photoURL: d.photoURL || null,
-          });
-        }
-      });
-
-      // Ismlar yo'q bo'lsa fallback
-      results.forEach(res => {
-        if (!res.name) res.name = `#${res.id.slice(0, 6)}`;
-      });
-
-      // "Siz" top-50 da bormi?
-      const meIdx = results.findIndex(r => user && r.id === user.uid);
-      if (meIdx !== -1) {
-        results[meIdx].rank = meIdx + 1;
-        results[meIdx].isMe = true;
-        setMyEntry(null);
-      } else if (user) {
-        // Top-50 tashqarida — alohida qatorga solish
-        try {
-          const myDoc = await getDoc(doc(db, 'userStats', user.uid));
-          if (myDoc.exists()) {
-            const md = myDoc.data();
-            const myScore = md.totalScore || 0;
-            const rankQ = query(collection(db, 'userStats'), where('totalScore', '>', myScore));
-            const cnt = await getCountFromServer(rankQ);
-            setMyEntry({
-              id: user.uid,
-              name: user.displayName || user.email?.split('@')[0] || 'Siz',
-              score: myScore,
-              streak: md.dailyStreak || 0,
-              answered: md.totalAnswered || 0,
-              photoURL: user.photoURL || null,
-              rank: cnt.data().count + 1,
-              isMe: true,
+  useEffect(() => {
+    if (!user) return;
+    
+    const q = query(collection(db, 'userStats'), orderBy('totalScore', 'desc'), limit(50));
+    
+    const unsubscribe = onSnapshot(q, async (snapshot) => {
+      try {
+        const results = [];
+        snapshot.forEach(docSnap => {
+          const d = docSnap.data();
+          if (d.totalScore !== undefined) {
+            results.push({
+              id: docSnap.id,
+              name: d.displayName || d.userName || d.name || `#${docSnap.id.slice(0, 6)}`,
+              score: d.totalScore || 0,
+              streak: d.dailyStreak || 0,
+              answered: d.totalAnswered || 0,
+              photoURL: d.photoURL || null,
             });
           }
-        } catch (_) {}
-      }
+        });
 
-      results.forEach((r, i) => { if (!r.rank) r.rank = i + 1; });
-      setLeaders(results);
-    } catch (err) {
-      console.error('Leaderboard error:', err);
-    } finally {
+        // "Siz" top-50 da bormi?
+        const meIdx = results.findIndex(r => r.id === user.uid);
+        if (meIdx !== -1) {
+          results[meIdx].rank = meIdx + 1;
+          results[meIdx].isMe = true;
+          setMyEntry(null);
+        } else {
+          // Top-50 tashqarida — alohida qatorga solish
+          try {
+            const myDoc = await getDoc(doc(db, 'userStats', user.uid));
+            if (myDoc.exists()) {
+              const md = myDoc.data();
+              const myScore = md.totalScore || 0;
+              const rankQ = query(collection(db, 'userStats'), where('totalScore', '>', myScore));
+              const cnt = await getCountFromServer(rankQ);
+              setMyEntry({
+                id: user.uid,
+                name: user.displayName || user.email?.split('@')[0] || 'Siz',
+                score: myScore,
+                streak: md.dailyStreak || 0,
+                answered: md.totalAnswered || 0,
+                photoURL: user.photoURL || null,
+                rank: cnt.data().count + 1,
+                isMe: true,
+              });
+            } else {
+              setMyEntry(null);
+            }
+          } catch (_) {}
+        }
+
+        results.forEach((r, i) => { if (!r.rank) r.rank = i + 1; });
+        setLeaders(results);
+      } catch (err) {
+        console.error('Leaderboard processing error:', err);
+      } finally {
+        setLoading(false);
+      }
+    }, (error) => {
+      console.error('Leaderboard snapshot error:', error);
       setLoading(false);
-    }
-  };
+    });
+
+    return () => unsubscribe();
+  }, [user]);
 
   // Top 3 podium
   const top3 = leaders.slice(0, 3);
