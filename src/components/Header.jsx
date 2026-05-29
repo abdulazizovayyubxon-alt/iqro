@@ -351,13 +351,13 @@ const Header = ({ theme, toggleTheme }) => {
               title="Do'stlarni taklif qiling"
               initial={{ rotate: 0 }}
               animate={
-                (!localStorage.getItem('iqro_gift_wiggled') && user && !isAmbassador) ? {
+                (!sessionStorage.getItem('iqro_gift_wiggled') && user && !isAmbassador) ? {
                   rotate: [0, -15, 15, -15, 15, 0],
                   scale: [1, 1.1, 1.1, 1.1, 1.1, 1]
                 } : {}
               }
               transition={{ duration: 1.5, ease: "easeInOut", times: [0, 0.2, 0.4, 0.6, 0.8, 1], repeat: 2 }}
-              onAnimationComplete={() => localStorage.setItem('iqro_gift_wiggled', 'true')}
+              onAnimationComplete={() => sessionStorage.setItem('iqro_gift_wiggled', 'true')}
               whileTap={{ scale: 0.9 }}
               style={{
                 width: '38px', height: '38px', borderRadius: '12px',
