@@ -19,8 +19,11 @@ function getDb() {
   return { db: getFirestore(), auth: getAuth() };
 }
 
-// ── Bot token env dan olinadi (xavfsizlik uchun) ──
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8523102352:AAEQOggWs3ULCGivaao-bmMpwT-_lFdxMeQ';
+// ── Bot token faqat env dan olinadi (xavfsizlik uchun hardcode yo'q) ──
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+if (!TELEGRAM_BOT_TOKEN) {
+  console.error('TELEGRAM_BOT_TOKEN env o\'zgaruvchisi topilmadi!');
+}
 const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}`;
 
 async function sendMessage(chatId, text, replyMarkup = null) {
@@ -592,6 +595,7 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error("Webhook error:", error);
-    res.status(500).send('Error: ' + error.message);
+    // Telegram ga DOIM 200 qaytaramiz — aks holda qayta-qayta urinadi
+    res.status(200).send('Error logged: ' + error.message);
   }
 }
