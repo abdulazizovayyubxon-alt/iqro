@@ -539,7 +539,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
               <div className="pp-stat-val">{acc}%</div>
               <div className="pp-stat-lbl">Aniqlik</div>
             </div>
-            <div className="pp-stat-card">
+            <div className="pp-stat-card" onClick={() => navigate('/achievements')} style={{ cursor: 'pointer' }}>
               <div className="pp-stat-icon">🏆</div>
               <div className="pp-stat-val">{earnedBadges.length}</div>
               <div className="pp-stat-lbl">Yutuqlar</div>
@@ -548,26 +548,6 @@ export default function ProfilePage({ theme, toggleTheme }) {
         )}
 
         {/* (Subject section and Referral Card removed from here) */}
-
-
-        {/* ═══ BADGES ROW ═══ */}
-        <div className="pp-card">
-          <div className="pp-card-label">🏅 Yutuqlar kolleksiyasi · {earnedBadges.length}/{BADGES.length}</div>
-          <div className="pp-badges-scroll">
-            {BADGES.map(badge => {
-              const earned = earnedBadges.some(b => b.id === badge.id);
-              return (
-                <div key={badge.id} className="pp-badge-item">
-                  <div className={`pp-badge-icon-wrap ${earned ? 'earned' : 'locked'}`}
-                    style={earned ? { background: `${badge.color}15`, borderColor: `${badge.color}40` } : {}}>
-                    {earned ? badge.icon : '🔒'}
-                  </div>
-                  <div className="pp-badge-name">{badge.name}</div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
 
         {/* ═══ MENU ═══ */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
