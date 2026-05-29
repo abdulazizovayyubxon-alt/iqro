@@ -175,9 +175,9 @@ function App() {
     if (savedTheme) {
       setTheme(savedTheme);
       if (savedTheme === 'dark') document.body.classList.add('dark-theme');
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
-      document.body.classList.add('dark-theme');
+    } else {
+      setTheme('light');
+      document.body.classList.remove('dark-theme');
     }
   }, []);
 
