@@ -5,7 +5,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield, Download, FileText, Send } from 'lucide-react';
+import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield, Download, FileText, Send, Play, GraduationCap, Brain, Zap } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
 import { SUBJECTS } from '../data/mockData';
@@ -248,6 +248,33 @@ export default function ProfilePage({ theme, toggleTheme }) {
   };
   const countdown = getCountdown();
 
+  // ── Tezkor Boshlash Variables ──
+  const cat = state.activeCategory || 'boshlangich';
+  const catStats = state.stats[cat] || { mistakes: [] };
+  const filteredMistakesCount = catStats.mistakes ? catStats.mistakes.length : 0;
+  const dueCards = (state.spacedCards || []).filter(c => c.nextReview <= Date.now()).length;
+
+  const handleNav = (topicId, testMode) => {
+    if (trialStatus === 'expired' && !isPremium) {
+      setShowPremium(true);
+      return;
+    }
+    updateState({ topicId, testMode });
+    navigate('/test');
+  };
+
+  const getExamDurationMinutes = (category) => {
+    switch (category) {
+      case 'boshlangich':
+      case 'info':
+        return 120;
+      case 'til':
+        return 105;
+      default:
+        return 90;
+    }
+  };
+
   // Save profile
   const handleSave = async () => {
     setSaving(true);
@@ -364,6 +391,90 @@ export default function ProfilePage({ theme, toggleTheme }) {
             </div>
           </div>
         )}
+
+        {/* ═══ TEZKOR BOSHLASH (QUICK START) 2x2 GRID ═══ */}
+        <div style={{ marginBottom: '24px' }}>
+          <div className="pp-card-label" style={{ marginBottom: '12px' }}>🚀 Tezkor Boshlash</div>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '12px'
+          }}>
+            {/* Dars Testi */}
+            <motion.div whileTap={{ scale: 0.96 }} onClick={() => handleNav(-1, 'exam')}
+              style={{
+                background: 'linear-gradient(135deg, rgba(41, 182, 246, 0.1), rgba(41, 182, 246, 0.05))',
+                border: '1px solid rgba(41, 182, 246, 0.2)',
+                borderRadius: '16px', padding: '16px', cursor: 'pointer',
+                display: 'flex', flexDirection: 'column', gap: '12px'
+              }}>
+              <div style={{ width: 40, height: 40, borderRadius: '12px', background: 'var(--blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', boxShadow: '0 4px 12px rgba(41, 182, 246, 0.3)' }}>
+                <Play size={20} fill="currentColor" />
+              </div>
+              <div>
+                <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text)', marginBottom: '2px' }}>Dars Testi</div>
+                <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: 500 }}>Barcha mavzular</div>
+              </div>
+            </motion.div>
+
+            {/* Imtihon */}
+            <motion.div whileTap={{ scale: 0.96 }} onClick={() => { if (trialStatus === 'expired' && !isPremium) { setShowPremium(true); return; } navigate('/exam'); }}
+              style={{
+                background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05))',
+                border: '1px solid rgba(139, 92, 246, 0.2)',
+                borderRadius: '16px', padding: '16px', cursor: 'pointer',
+                display: 'flex', flexDirection: 'column', gap: '12px'
+              }}>
+              <div style={{ width: 40, height: 40, borderRadius: '12px', background: 'var(--purple)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)' }}>
+                <GraduationCap size={22} />
+              </div>
+              <div>
+                <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text)', marginBottom: '2px' }}>Imtihon</div>
+                <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: 500 }}>50 savol · {getExamDurationMinutes(cat)} daqiqa</div>
+              </div>
+            </motion.div>
+
+            {/* Takrorlash */}
+            <motion.div whileTap={{ scale: 0.96 }} onClick={() => navigate('/review')}
+              style={{
+                background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05))',
+                border: '1px solid rgba(16, 185, 129, 0.2)',
+                borderRadius: '16px', padding: '16px', cursor: 'pointer',
+                display: 'flex', flexDirection: 'column', gap: '12px', position: 'relative'
+              }}>
+              {dueCards > 0 && (
+                <div style={{ position: 'absolute', top: 12, right: 12, background: 'var(--red)', color: '#fff', fontSize: '10px', fontWeight: 800, padding: '2px 6px', borderRadius: '8px' }}>
+                  {dueCards}
+                </div>
+              )}
+              <div style={{ width: 40, height: 40, borderRadius: '12px', background: 'var(--green)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)' }}>
+                <Brain size={22} />
+              </div>
+              <div>
+                <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text)', marginBottom: '2px' }}>Takrorlash</div>
+                <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: 500 }}>{dueCards > 0 ? `${dueCards} savol kutmoqda` : 'Hozircha yo\'q'}</div>
+              </div>
+            </motion.div>
+
+            {/* Xatolar */}
+            <motion.div whileTap={{ scale: 0.96 }} onClick={() => handleNav(-1, 'mistakes')}
+              style={{
+                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05))',
+                border: '1px solid rgba(245, 158, 11, 0.2)',
+                borderRadius: '16px', padding: '16px', cursor: 'pointer',
+                display: 'flex', flexDirection: 'column', gap: '12px'
+              }}>
+              <div style={{ width: 40, height: 40, borderRadius: '12px', background: 'var(--amber)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', boxShadow: '0 4px 12px rgba(245, 158, 11, 0.3)' }}>
+                <Zap size={22} />
+              </div>
+              <div>
+                <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text)', marginBottom: '2px' }}>Xatolar</div>
+                <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: 500 }}>{filteredMistakesCount} ta xato</div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
         {/* ═══ STREAK WEEK ═══ */}
         <div className="pp-card">
           <div className="pp-card-label">🔥 Haftalik Streak · {dailyStreak} kun</div>
