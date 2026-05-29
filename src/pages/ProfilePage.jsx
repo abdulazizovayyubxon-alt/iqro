@@ -320,17 +320,28 @@ export default function ProfilePage({ theme, toggleTheme }) {
       {/* ═══ REFERRAL (TAKLIF) BANNER TOP ═══ */}
       <div className="pp-header" style={{ paddingBottom: '24px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 4px' }}>
-            <div className="pp-badges-row" style={{ marginTop: 0 }}>
-              <span className="pp-badge pp-badge-level" style={{ background: 'rgba(255,255,255,0.2)', color: '#fff', border: 'none' }}>⚡ Lv.{levelInfo.level} {levelInfo.name}</span>
-              {isPremium
-                ? <span className="pp-badge pp-badge-premium"><Crown size={10} /> Premium</span>
-                : <span className="pp-badge pp-badge-free" onClick={() => setShowPremium(true)} style={{ cursor: 'pointer', background: 'rgba(255,255,255,0.2)', color: '#fff', border: 'none' }}>Bepul</span>
-              }
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '0 4px' }}>
+            <div style={{ 
+              width: 52, height: 52, borderRadius: '16px', background: 'rgba(255,255,255,0.2)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 22, fontWeight: 800, color: '#fff', border: '1px solid rgba(255,255,255,0.3)',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+            }}>
+              {initials}
+            </div>
+            <div>
+              <div style={{ fontSize: 20, fontWeight: 800, color: '#fff', marginBottom: '4px', letterSpacing: '-0.3px' }}>
+                {displayName}
+              </div>
+              <div className="pp-badges-row" style={{ marginTop: 0 }}>
+                <span className="pp-badge pp-badge-level" style={{ background: 'rgba(255,255,255,0.2)', color: '#fff', border: 'none' }}>⚡ Lv.{levelInfo.level} {levelInfo.name}</span>
+                {isPremium
+                  ? <span className="pp-badge pp-badge-premium"><Crown size={10} /> Premium</span>
+                  : <span className="pp-badge pp-badge-free" onClick={() => setShowPremium(true)} style={{ cursor: 'pointer', background: 'rgba(255,255,255,0.2)', color: '#fff', border: 'none' }}>Bepul</span>
+                }
+              </div>
             </div>
           </div>
-
-        </div>
 
         {/* XP Progress */}
         <div className="pp-xp-bar" style={{ marginTop: '16px', background: 'rgba(0,0,0,0.15)' }}>
@@ -340,6 +351,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
           </div>
           <div className="pp-xp-track" style={{ background: 'rgba(255,255,255,0.1)' }}>
             <div className="pp-xp-fill" style={{ width: `${xpPct}%`, background: '#fff' }} />
+          </div>
           </div>
         </div>
       </div>
@@ -497,57 +509,6 @@ export default function ProfilePage({ theme, toggleTheme }) {
           </div>
         </div>
 
-        {/* ═══ DAILY GOAL (COMPACT) ═══ */}
-        <div style={{ marginBottom: '24px' }}>
-          <motion.div 
-            whileHover={{ scale: 1.01 }}
-            style={{
-              background: goalDone 
-                ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05))' 
-                : 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05))',
-              border: goalDone 
-                ? '1px solid rgba(16, 185, 129, 0.2)' 
-                : '1px solid rgba(59, 130, 246, 0.2)',
-              borderRadius: '16px', padding: '16px',
-              display: 'flex', alignItems: 'center', gap: '16px',
-              position: 'relative', overflow: 'hidden'
-            }}
-          >
-            {/* Progress Circle on the left */}
-            <div style={{ position: 'relative', width: 44, height: 44, flexShrink: 0 }}>
-              <svg width={44} height={44} viewBox="0 0 44 44">
-                <circle cx={22} cy={22} r={19} fill="none" stroke="var(--bg3)" strokeWidth={4} />
-                <circle cx={22} cy={22} r={19} fill="none" 
-                  stroke={goalDone ? '#10b981' : '#3b82f6'} 
-                  strokeWidth={4}
-                  strokeDasharray={`${(goalPct / 100) * (2 * Math.PI * 19)} 1000`}
-                  strokeLinecap="round" transform="rotate(-90 22 22)" 
-                />
-              </svg>
-              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16 }}>
-                {goalDone ? '✅' : '🎯'}
-              </div>
-            </div>
-            
-            <div style={{ flex: 1 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '4px' }}>
-                <span style={{ fontSize: '15px', fontWeight: 800, color: 'var(--text)' }}>Bugungi maqsad</span>
-                <span style={{ fontSize: '13px', fontWeight: 700, color: goalDone ? '#10b981' : '#3b82f6' }}>{goalPct}%</span>
-              </div>
-              <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: 500 }}>
-                {goalDone ? 'Barcha topshiriqlar bajarildi!' : `${dg.answered} ishlangan, yana ${Math.max(0, dg.target - dg.answered)} ta qoldi`}
-              </div>
-            </div>
-            
-            {goalDone && (
-              <motion.div 
-                animate={{ x: ['-100%', '200%'] }} 
-                transition={{ repeat: Infinity, duration: 2.5, ease: 'linear' }}
-                style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: '30%', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)', transform: 'skewX(-20deg)' }} 
-              />
-            )}
-          </motion.div>
-        </div>
 
         {/* ═══ STAT CARDS OR EMPTY CTA ═══ */}
         {totalAnswered === 0 ? (
