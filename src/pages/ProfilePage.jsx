@@ -497,23 +497,56 @@ export default function ProfilePage({ theme, toggleTheme }) {
           </div>
         </div>
 
-        {/* ═══ DAILY GOAL ═══ */}
-        <div className="pp-card" style={goalDone ? { borderColor: 'var(--green)', background: 'rgba(16,185,129,0.04)' } : {}}>
-          <div className="pp-card-label">{goalDone ? '✅' : '🎯'} Bugungi maqsad</div>
-          <div className="pp-goal-info">
-            <span className="pp-goal-text">{goalDone ? 'Bajarildi!' : `${dg.answered}/${dg.target} savol`}</span>
-            <span className="pp-goal-nums" style={{ color: goalDone ? 'var(--green)' : 'var(--text3)' }}>{goalPct}%</span>
-          </div>
-          <div className="pp-goal-track">
-            <div className="pp-goal-fill" style={{
-              width: `${goalPct}%`,
-              background: goalDone ? 'linear-gradient(90deg,#10b981,#34d399)' : 'linear-gradient(90deg,#3b82f6,#8b5cf6)'
-            }} />
-          </div>
-          <div className="pp-goal-sub">
-            <span>{goalPct}% bajarildi</span>
-            <span>{Math.max(0, dg.target - dg.answered)} ta qoldi</span>
-          </div>
+        {/* ═══ DAILY GOAL (COMPACT) ═══ */}
+        <div style={{ marginBottom: '24px' }}>
+          <motion.div 
+            whileHover={{ scale: 1.01 }}
+            style={{
+              background: goalDone 
+                ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05))' 
+                : 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05))',
+              border: goalDone 
+                ? '1px solid rgba(16, 185, 129, 0.2)' 
+                : '1px solid rgba(59, 130, 246, 0.2)',
+              borderRadius: '16px', padding: '16px',
+              display: 'flex', alignItems: 'center', gap: '16px',
+              position: 'relative', overflow: 'hidden'
+            }}
+          >
+            {/* Progress Circle on the left */}
+            <div style={{ position: 'relative', width: 44, height: 44, flexShrink: 0 }}>
+              <svg width={44} height={44} viewBox="0 0 44 44">
+                <circle cx={22} cy={22} r={19} fill="none" stroke="var(--bg3)" strokeWidth={4} />
+                <circle cx={22} cy={22} r={19} fill="none" 
+                  stroke={goalDone ? '#10b981' : '#3b82f6'} 
+                  strokeWidth={4}
+                  strokeDasharray={`${(goalPct / 100) * (2 * Math.PI * 19)} 1000`}
+                  strokeLinecap="round" transform="rotate(-90 22 22)" 
+                />
+              </svg>
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16 }}>
+                {goalDone ? '✅' : '🎯'}
+              </div>
+            </div>
+            
+            <div style={{ flex: 1 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '4px' }}>
+                <span style={{ fontSize: '15px', fontWeight: 800, color: 'var(--text)' }}>Bugungi maqsad</span>
+                <span style={{ fontSize: '13px', fontWeight: 700, color: goalDone ? '#10b981' : '#3b82f6' }}>{goalPct}%</span>
+              </div>
+              <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: 500 }}>
+                {goalDone ? 'Barcha topshiriqlar bajarildi!' : `${dg.answered} ishlangan, yana ${Math.max(0, dg.target - dg.answered)} ta qoldi`}
+              </div>
+            </div>
+            
+            {goalDone && (
+              <motion.div 
+                animate={{ x: ['-100%', '200%'] }} 
+                transition={{ repeat: Infinity, duration: 2.5, ease: 'linear' }}
+                style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: '30%', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)', transform: 'skewX(-20deg)' }} 
+              />
+            )}
+          </motion.div>
         </div>
 
         {/* ═══ STAT CARDS OR EMPTY CTA ═══ */}
@@ -541,10 +574,53 @@ export default function ProfilePage({ theme, toggleTheme }) {
               <div className="pp-stat-val">{acc}%</div>
               <div className="pp-stat-lbl">Aniqlik</div>
             </div>
-            <div className="pp-stat-card" onClick={() => navigate('/achievements')} style={{ cursor: 'pointer' }}>
-              <div className="pp-stat-icon">🏆</div>
-              <div className="pp-stat-val">{earnedBadges.length}</div>
-              <div className="pp-stat-lbl">Yutuqlar</div>
+            <div 
+              className="pp-stat-card" 
+              onClick={() => navigate('/achievements')} 
+              style={{ 
+                cursor: 'pointer', 
+                background: 'linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(245, 158, 11, 0.05))',
+                border: '1px solid rgba(245, 158, 11, 0.4)',
+                position: 'relative', overflow: 'hidden'
+              }}
+            >
+              <div style={{ 
+                height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 4, position: 'relative' 
+              }}>
+                {earnedBadges.length > 0 ? (
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    {earnedBadges.slice(0, 3).map((b, idx) => (
+                      <span key={idx} style={{ 
+                        fontSize: 22, 
+                        marginLeft: idx > 0 ? -12 : 0, 
+                        zIndex: 3 - idx,
+                        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))'
+                      }}>{b.icon}</span>
+                    ))}
+                    {earnedBadges.length > 3 && (
+                      <span style={{ 
+                        fontSize: 10, fontWeight: 800, color: '#fff', background: '#F59E0B', 
+                        borderRadius: '10px', padding: '1px 5px', marginLeft: -8, zIndex: 4,
+                        border: '2px solid var(--glass-bg)'
+                      }}>+{earnedBadges.length - 3}</span>
+                    )}
+                  </div>
+                ) : (
+                  <span style={{ fontSize: 26, filter: 'drop-shadow(0 2px 8px rgba(245, 158, 11, 0.5))' }}>🏆</span>
+                )}
+              </div>
+              <div className="pp-stat-val" style={{ color: '#D97706', textShadow: '0 2px 4px rgba(245,158,11,0.2)' }}>{earnedBadges.length}</div>
+              <div className="pp-stat-lbl" style={{ color: '#B45309', fontWeight: 700 }}>Yutuqlar</div>
+              
+              <motion.div 
+                animate={{ x: ['-100%', '200%'] }} 
+                transition={{ repeat: Infinity, duration: 4, ease: 'linear', repeatDelay: 1 }}
+                style={{ 
+                  position: 'absolute', top: 0, left: 0, bottom: 0, width: '40%', 
+                  background: 'linear-gradient(90deg, transparent, rgba(251,191,36,0.3), transparent)', 
+                  transform: 'skewX(-20deg)' 
+                }} 
+              />
             </div>
           </div>
         )}
