@@ -84,8 +84,9 @@ export function useTrialExpiry() {
             ? data.createdAt.toDate()
             : new Date(data.createdAt);
         } else {
-          // createdAt yo'q — hozirgi sanani yozib qo'yamiz (birinchi kirishda)
-          createdAt = new Date();
+          // createdAt yo'q — bu eski foydalanuvchi. Unga yangidan 7 kun bermaymiz.
+          // Trial'i tugagan deb hisoblash uchun eski sanani o'rnatamiz.
+          createdAt = new Date('2024-01-01');
           await updateDoc(userRef, { createdAt: createdAt.toISOString() });
         }
 
