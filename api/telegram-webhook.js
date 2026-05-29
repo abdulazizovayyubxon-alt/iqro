@@ -143,8 +143,89 @@ export default async function handler(req, res) {
     }
 
     if (!body || !body.message) return res.status(200).send('No message');
-    const { chat, text, photo } = body.message;
+    const { chat, text, photo, contact } = body.message;
     const chatId = chat.id;
+
+    // ==========================================
+    // 1.5. KONTAKT YUBORILGANDA (Telegram orqali login)
+    // ==========================================
+    const keyboardMarkup = {
+      keyboard: [
+        [{text: "💳 Premium Sotib Olish"}],
+        [{text: "📊 Statistika"}, {text: "🔑 Kodimni ko'rish"}],
+        [{text: "🔗 Do'stlarni taklif qilish"}, {text: "💬 Yordam"}]
+      ],
+      resize_keyboard: true
+    };
+
+    if (contact) {
+      let phone = contact.phone_number;
+      if (!phone.startsWith('+')) phone = '+' + phone;
+      const cleanPhone = phone.replace(/\D/g, '');
+      const email = `${cleanPhone}@iqro.uz`;
+
+      try {
+         let userRecord;
+         try {
+           userRecord = await auth.getUserByEmail(email);
+         } catch (e) {
+           if (e.code === 'auth/user-not-found') {
+             userRecord = await auth.createUser({
+               email: email,
+               password: `iqro_auto_pass_${cleanPhone}`,
+               displayName: contact.first_name || 'Foydalanuvchi'
+             });
+             await db.collection('users').doc(userRecord.uid).set({
+               uid: userRecord.uid,
+               email: email,
+               phone: cleanPhone,
+               displayName: contact.first_name || 'Foydalanuvchi',
+               role: 'user',
+               isPremium: false,
+               createdAt: new Date(),
+               telegramChatId: chatId,
+               telegramEnabled: true
+             });
+           }
+         }
+         
+         const pendingLogins = await db.collection('logins')
+            .where('chatId', '==', chatId)
+            .where('status', '==', 'pending_contact')
+            .get(); // get all and sort in JS since no index might exist
+
+         let latestLogin = null;
+         if (!pendingLogins.empty) {
+           const sortedDocs = pendingLogins.docs.sort((a,b) => b.data().createdAt.toDate() - a.data().createdAt.toDate());
+           latestLogin = sortedDocs[0];
+         }
+
+         if (latestLogin) {
+           await db.collection('users').doc(userRecord.uid).set({
+              telegramChatId: chatId,
+              telegramEnabled: true
+           }, { merge: true });
+
+           const customToken = await auth.createCustomToken(userRecord.uid);
+           await latestLogin.ref.update({
+             token: customToken,
+             status: 'success'
+           });
+           
+           await sendMessage(chatId, `✅ <b>Muvaffaqiyatli!</b>\n\nSaytga ruxsat berildi. Sayt ochiq bo'lgan brauzerga qayting!`, keyboardMarkup);
+         } else {
+           await db.collection('users').doc(userRecord.uid).set({
+              telegramChatId: chatId,
+              telegramEnabled: true
+           }, { merge: true });
+           await sendMessage(chatId, `✅ <b>Raqamingiz tasdiqlandi!</b>\n\nEndi saytdagi "Telegram orqali kirish" tugmasini qaytadan bossangiz parolsiz to'g'ridan-to'g'ri kirasiz.`, keyboardMarkup);
+         }
+      } catch (err) {
+         console.error(err);
+         await sendMessage(chatId, `Xatolik yuz berdi. Qaytadan urining.`);
+      }
+      return res.status(200).send('Contact handled');
+    }
 
     // ==========================================
     // 2. FOTO YUBORILGANDA (To'lov cheklari)
@@ -247,7 +328,21 @@ export default async function handler(req, res) {
           // TELEGRAM LOGIN MANTIG'I
           const sessionId = parts[1].replace('login_', '');
           if (!linkedUser) {
-            await sendMessage(chatId, "❌ Kechirasiz, siz ushbu botga ulanmagansiz. Oldin saytdagi Profilingizdan IQRO kodingizni botga yuboring.");
+            const requestPhoneMarkup = {
+              keyboard: [[
+                { text: "📱 Telefon raqamni yuborish", request_contact: true }
+              ]],
+              resize_keyboard: true,
+              one_time_keyboard: true
+            };
+            
+            await db.collection('logins').doc(sessionId).set({
+              status: 'pending_contact',
+              chatId: chatId,
+              createdAt: new Date()
+            });
+
+            await sendMessage(chatId, "🔐 <b>Saytga kirish tasdiqlanmoqda...</b>\n\nSaytga to'g'ridan-to'g'ri (parolsiz) kirish uchun pastdagi <b>📱 Telefon raqamni yuborish</b> tugmasini bosing.", requestPhoneMarkup);
           } else {
             // Generate Custom Token
             try {

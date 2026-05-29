@@ -198,12 +198,13 @@ export default function LoginPage() {
     setLoading(true);
     setAuthError('Telegram orqali tasdiqlash kutilmoqda... Botga kirib START bosing.');
     
-    const interval = setInterval(async () => {
+    if (window.tgInterval) clearInterval(window.tgInterval);
+    window.tgInterval = setInterval(async () => {
       try {
         const res = await fetch(`/api/telegram-auth?sessionId=${sessionId}`);
         const data = await res.json();
         if (data.success && data.token) {
-          clearInterval(interval);
+          clearInterval(window.tgInterval);
           await signInWithCustomToken(auth, data.token);
         }
       } catch (e) {
@@ -212,12 +213,19 @@ export default function LoginPage() {
     }, 2500);
     
     setTimeout(() => {
-      clearInterval(interval);
-      if (loading) {
-        setLoading(false);
-        setAuthError('');
-      }
+      if (window.tgInterval) clearInterval(window.tgInterval);
+      setLoading(false);
+      // We don't clear authError here because the user might still be looking at it,
+      // but they can click cancel.
     }, 120000); // 2 min timeout
+  };
+
+  const cancelTelegramLogin = () => {
+    if (window.tgInterval) {
+      clearInterval(window.tgInterval);
+    }
+    setLoading(false);
+    setAuthError('');
   };
 
   const progressMap = {
@@ -412,6 +420,15 @@ export default function LoginPage() {
                   <p style={s.subtitle}>
                     <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> uchun parolingizni kiriting:
                   </p>
+                  
+                  {/* ESKI FOYDALANUVCHILAR UCHUN HINT */}
+                  <div style={{ background: 'rgba(41, 182, 246, 0.1)', padding: '12px', borderRadius: '12px', marginBottom: '20px', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                    <ShieldCheck size={20} color="#29B6F6" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <p style={{ margin: 0, fontSize: '13px', color: 'var(--text2)', lineHeight: '1.4' }}>
+                      <strong>Parolingiz yo'qmi?</strong> Eski tizimda ro'yxatdan o'tgan bo'lsangiz, orqaga qaytib <b>"Telegram orqali kirish"</b> ni tanlang. Bot orqali parolsiz kirishingiz mumkin.
+                    </p>
+                  </div>
+
                   <div style={{ position: 'relative' }}>
                     <input
                       id="login-password-input"
@@ -435,12 +452,22 @@ export default function LoginPage() {
 
               {/* Error */}
               {authError && (
-                <motion.p
+                <motion.div
                   initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}
-                  style={s.errorText}
+                  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}
                 >
-                  {authError}
-                </motion.p>
+                  <p style={s.errorText}>
+                    {authError}
+                  </p>
+                  {authError.includes('Telegram orqali tasdiqlash kutilmoqda') && (
+                    <button 
+                      onClick={cancelTelegramLogin}
+                      style={{ background: 'transparent', border: '1px solid #FF3B30', color: '#FF3B30', padding: '6px 16px', borderRadius: '20px', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}
+                    >
+                      Bekor qilish
+                    </button>
+                  )}
+                </motion.div>
               )}
             </motion.div>
           </AnimatePresence>
