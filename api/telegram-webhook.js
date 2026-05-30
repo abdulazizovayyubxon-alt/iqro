@@ -11,9 +11,15 @@ import { getAuth } from 'firebase-admin/auth';
 
 function getDb() {
   if (getApps().length === 0) {
-    const serviceAccount = JSON.parse(
-      Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT, 'base64').toString()
-    );
+    let serviceAccountStr = process.env.FIREBASE_SERVICE_ACCOUNT || '{}';
+    let serviceAccount;
+    try {
+      // Avval oddiy JSON sifatida o'qishga harakat qilamiz
+      serviceAccount = JSON.parse(serviceAccountStr);
+    } catch (e) {
+      // O'xshamasa base64 dan ochamiz
+      serviceAccount = JSON.parse(Buffer.from(serviceAccountStr, 'base64').toString());
+    }
     initializeApp({ credential: cert(serviceAccount) });
   }
   return { db: getFirestore(), auth: getAuth() };
