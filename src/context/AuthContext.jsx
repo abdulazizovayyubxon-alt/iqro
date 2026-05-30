@@ -685,7 +685,7 @@ export const AuthProvider = ({ children }) => {
       // Boshqa xatoliklar
       recordFailedAttempt();
       console.error("Kirish xatosi:", err);
-      setAuthError("Kirishda xatolik yuz berdi, iltimos qaytadan urinib ko'ring.");
+      setAuthError(`Xatolik yuz berdi: ${err.message || err.toString()}`);
       return { success: false };
     }
   };
