@@ -53,22 +53,22 @@ export default async function handler(req, res) {
       return res.status(404).json({ success: false, reason: 'user_not_found' });
     }
 
-    // 2. Foydalanuvchini bazadan qidiramiz (eski user ekanligini tasdiqlash uchun)
+    // 2. Foydalanuvchini bazadan qidiramiz
     const usersRef = db.collection('users');
     const snapshot = await usersRef.where('phone', '==', cleanPhone).limit(1).get();
 
-    if (snapshot.empty) {
-      return res.status(404).json({ success: false, reason: 'not_found_in_db' });
-    }
+    let userDoc = null;
+    let userData = null;
 
-    const userDoc = snapshot.docs[0];
-    const userData = userDoc.data();
-
-    // 3. Xavfsizlik: Bu funksiya orqali faqat "hali o'zi parol o'rnatmagan" (migratsiya qilingan) 
-    // eski foydalanuvchilarning parolini o'zgartirish mumkin.
-    // Agar foydalanuvchi "hasClaimedAccount" == true bo'lsa, demak u allaqachon parolni o'zgartirgan!
-    if (userData.hasClaimedAccount) {
-      return res.status(403).json({ success: false, reason: 'already_claimed' });
+    if (!snapshot.empty) {
+      userDoc = snapshot.docs[0];
+      userData = userDoc.data();
+      
+      // Xavfsizlik: faqat "hali o'zi parol o'rnatmagan" (migratsiya qilingan) 
+      // eski foydalanuvchilarning parolini o'zgartirish mumkin.
+      if (userData.hasClaimedAccount) {
+        return res.status(403).json({ success: false, reason: 'already_claimed' });
+      }
     }
 
     // 4. Parolni o'zgartiramiz
@@ -76,11 +76,21 @@ export default async function handler(req, res) {
       password: newPassword
     });
 
-    // 5. Bazada belgilab qo'yamiz, qayta o'zgartira olmasligi uchun
-    await userDoc.ref.update({
-      hasClaimedAccount: true,
-      lastLoginAt: new Date().toISOString()
-    });
+    // 5. Bazada belgilab qo'yamiz (agar baza hujjati mavjud bo'lsa)
+    if (userDoc) {
+      await userDoc.ref.update({
+        hasClaimedAccount: true,
+        lastLoginAt: new Date().toISOString()
+      });
+    } else {
+      // Agar bazada bo'lmasa, uni yangi yaratamiz
+      await usersRef.doc(userRecord.uid).set({
+        phone: cleanPhone,
+        hasClaimedAccount: true,
+        createdAt: new Date().toISOString(),
+        lastLoginAt: new Date().toISOString()
+      });
+    }
 
     return res.status(200).json({ success: true });
   } catch (error) {
