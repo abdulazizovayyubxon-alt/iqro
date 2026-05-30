@@ -617,6 +617,37 @@ export const AuthProvider = ({ children }) => {
       if (isAuthWrong) {
         // Agar foydalanuvchi parol kiritgan bo'lsa va xato bo'lsa -> bu noto'g'ri parol!
         if (password) {
+          try {
+            // Eski foydalanuvchilar o'z hisobini yangi parol bilan "o'zlashtirishiga" urinib ko'ramiz
+            const claimRes = await fetch('/api/claim-old-account', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ phone: cleanPhone, newPassword: password })
+            });
+            const claimData = await claimRes.json();
+            if (claimData.success) {
+              // Parol muvaffaqiyatli almashtirildi! Endi yangi parol bilan kiramiz
+              const userCred = await signInWithEmailAndPassword(auth, internalEmail, password);
+              
+              let isPremium = false;
+              const userRef = doc(db, 'users', userCred.user.uid);
+              const userSnap = await getDoc(userRef);
+              if (userSnap.exists()) isPremium = userSnap.data().isPremium || false;
+
+              setUser({
+                uid: userCred.user.uid,
+                email: userCred.user.email,
+                displayName: userCred.user.displayName || name || phone,
+                photoURL: userCred.user.photoURL,
+                isPremium,
+                _firebaseUser: userCred.user
+              });
+              return { success: true };
+            }
+          } catch (claimErr) {
+            console.warn("Claim error:", claimErr);
+          }
+
           const attemptData = recordFailedAttempt();
           const remaining = MAX_ATTEMPTS - attemptData.attempts;
           if (remaining > 0) {
@@ -671,6 +702,35 @@ export const AuthProvider = ({ children }) => {
 
       // Agar email band bo'lsa, demak u ro'yxatdan o'tgan, shunchaki parol kiritishi kerak!
       if (err.code === 'auth/email-already-in-use') {
+        if (password) {
+          try {
+            const claimRes = await fetch('/api/claim-old-account', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ phone: cleanPhone, newPassword: password })
+            });
+            const claimData = await claimRes.json();
+            if (claimData.success) {
+              const userCred = await signInWithEmailAndPassword(auth, internalEmail, password);
+              let isPremium = false;
+              const userRef = doc(db, 'users', userCred.user.uid);
+              const userSnap = await getDoc(userRef);
+              if (userSnap.exists()) isPremium = userSnap.data().isPremium || false;
+
+              setUser({
+                uid: userCred.user.uid,
+                email: userCred.user.email,
+                displayName: userCred.user.displayName || name || phone,
+                photoURL: userCred.user.photoURL,
+                isPremium,
+                _firebaseUser: userCred.user
+              });
+              return { success: true };
+            }
+          } catch (claimErr) {
+            console.warn("Claim error:", claimErr);
+          }
+        }
         return { success: false, hasCustomPassword: true };
       }
 
