@@ -538,6 +538,49 @@ export const AuthProvider = ({ children }) => {
         await signInWithEmailAndPassword(auth, internalEmail, password);
       }
       
+      // Yangi foydalanuvchi bo'lsa (Ro'yxatdan o'tish)
+      if (isRegistering) {
+        const userCred = await createUserWithEmailAndPassword(auth, internalEmail, password);
+        await updateProfile(userCred.user, { displayName: name });
+
+        await setDoc(doc(db, 'users', userCred.user.uid), {
+          uid: userCred.user.uid,
+          email: internalEmail,
+          phone: cleanPhone,
+          displayName: name,
+          gender,
+          birthDate,
+          role: 'user',
+          isPremium: false,
+          createdAt: new Date(),
+        }, { merge: true });
+
+        const referralApplied = await applyReferralAfterRegister(userCred.user.uid, name);
+        if (referralApplied) {
+          localStorage.setItem('iqro_referral_welcome', 'true');
+        }
+
+        // Adminga bildirishnoma yuborish
+        fetch('/api/notify-admin', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: 'register',
+            message: `Yangi foydalanuvchi ro'yxatdan o'tdi!\nIsm: ${name}\nTelefon: ${cleanPhone}\nID: ${userCred.user.uid}`
+          })
+        }).catch(e => console.warn('Admin notify xatosi:', e));
+
+        setUser({
+          uid: userCred.user.uid,
+          email: internalEmail,
+          displayName: name,
+          photoURL: null,
+          isPremium: false,
+          _firebaseUser: userCred.user
+        });
+        return { success: true };
+      }
+      
       // Kirish muvaffaqiyatli — brute-force hisoblagichni tozalaymiz
       resetLoginAttempts();
 
@@ -617,56 +660,6 @@ export const AuthProvider = ({ children }) => {
             // API ishlamasa, fallback sifatida needsChoice qaytaramiz (foydalanuvchi o'zi tanlaydi)
             return { success: false, needsChoice: true };
           }
-        }
-
-        // ── RO'YXATDAN O'TISH REJIMI ──
-        try {
-          const userCred = await createUserWithEmailAndPassword(auth, internalEmail, password);
-          await updateProfile(userCred.user, { displayName: name });
-
-          await setDoc(doc(db, 'users', userCred.user.uid), {
-            uid: userCred.user.uid,
-            email: internalEmail,
-            phone: cleanPhone,
-            displayName: name,
-            gender,
-            birthDate,
-            role: 'user',
-            isPremium: false,
-            createdAt: new Date(),
-          }, { merge: true });
-
-          const referralApplied = await applyReferralAfterRegister(userCred.user.uid, name);
-          if (referralApplied) {
-            localStorage.setItem('iqro_referral_welcome', 'true');
-          }
-
-          // Adminga bildirishnoma yuborish
-          fetch('/api/notify-admin', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              type: 'register',
-              message: `Yangi foydalanuvchi ro'yxatdan o'tdi!\nIsm: ${name}\nTelefon: ${cleanPhone}\nID: ${userCred.user.uid}`
-            })
-          }).catch(e => console.warn('Admin notify xatosi:', e));
-
-          setUser({
-            uid: userCred.user.uid,
-            email: internalEmail,
-            displayName: name,
-            photoURL: null,
-            isPremium: true,
-            _firebaseUser: userCred.user
-          });
-          return { success: true };
-        } catch (regErr) {
-          console.error("Ro'yxatdan o'tish xatosi:", regErr);
-          if (regErr.code === 'auth/email-already-in-use') {
-            return { success: false, hasCustomPassword: true };
-          }
-          setAuthError("Ro'yxatdan o'tishda xatolik yuz berdi.");
-          return { success: false };
         }
       }
 
