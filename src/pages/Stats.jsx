@@ -14,22 +14,22 @@ const Stats = () => {
   const goBack = () => navigate('/test');
   const { user } = useAuth();
   const [showPremiumModal, setShowPremiumModal] = useState(false);
-  const { state } = useContext(AppContext);
-  const { isTrialExpired: isFreeLimitReached } = useTrialExpiry();
+  const { state } = useContext(AppContext);  const { isTrialExpired } = useTrialExpiry();
+  const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
 
   if (isFreeLimitReached) {
     return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
-        <div className="glass-panel" style={{ maxWidth: 500, margin: '60px auto', padding: 40, textAlign: 'center' }}>
-          <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
-          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Bepul Limit Tugadi</div>
-          <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-            7 kunlik sinov yakunlandi! O'z statistikangizni ko'rish va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="limit-container">
+        <div className="limit-card">
+          <div className="limit-icon">🔒</div>
+          <div className="limit-title">Kunlik Bepul Limit Tugadi</div>
+          <div className="limit-text">
+            Siz bugungi 50 ta bepul savol limitiga yetdingiz! Barcha savollar va mavzularga cheksiz kirish uchun Premium rejimni faollashtiring.
           </div>
-          <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
+          <button className="limit-btn-primary" onClick={() => setShowPremiumModal(true)}>
             ⭐ Premium Rejimni Faollashtirish
           </button>
-          <button className="btn btn-outline" onClick={goBack}>← Bosh sahifaga</button>
+          <button className="limit-btn-secondary" onClick={goBack}>← Bosh sahifaga</button>
         </div>
         <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
       </motion.div>

@@ -9,9 +9,9 @@ import { ArrowLeft, CheckCircle } from 'lucide-react';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const PRIMARY = '#29B6F6';
-const IS_MOBILE = typeof window !== 'undefined' && window.innerWidth <= 768;
 
 const GOALS = [
   { id: 'second_category', badge: '🥈', title: 'Ikkinchi toifa', desc: 'Navbatdagi malaka toifasini olish' },
@@ -47,7 +47,8 @@ const LOADING_STEPS = [
 ];
 
 // ── Qadam komponentlari ──
-function ListStep({ title, subtitle, items, selected, onSelect }) {
+function ListStep({ title, subtitle, items, selected, onSelect, isMobile }) {
+  const ss = getStyles(isMobile);
   return (
     <>
       <h1 style={ss.title}>{title}</h1>
@@ -89,9 +90,10 @@ function ListStep({ title, subtitle, items, selected, onSelect }) {
   );
 }
 
-function LoadingStep() {
+function LoadingStep({ isMobile }) {
   const [stepIdx, setStepIdx] = React.useState(0);
   const [progress, setProgress] = React.useState(0);
+  const ss = getStyles(isMobile);
 
   React.useEffect(() => {
     const prog = setInterval(() => setProgress(p => Math.min(p + 2, 100)), 40);
@@ -145,9 +147,10 @@ function LoadingStep() {
   );
 }
 
-function WelcomeStep({ goal, time, onDone }) {
+function WelcomeStep({ goal, time, onDone, isMobile }) {
   const goalObj = GOALS.find(g => g.id === goal);
   const timeObj = TIMES.find(t => t.id === time);
+  const ss = getStyles(isMobile);
 
   return (
     <div style={{ textAlign: 'center', padding: '10px 0 20px' }}>
@@ -236,6 +239,9 @@ function WelcomeStep({ goal, time, onDone }) {
 // ── Asosiy komponent ──
 export default function OnboardingPage({ onComplete }) {
   const { user } = useAuth();
+  const isMobile = useIsMobile();
+  const ss = getStyles(isMobile);
+  
   const [step, setStep] = useState(0); // 0=maqsad 1=fan 2=vaqt 3=loading 4=tabrik
   const [dir, setDir] = useState(1);
   const [goal, setGoal]     = useState(null);
@@ -335,10 +341,11 @@ export default function OnboardingPage({ onComplete }) {
                   items={stepData[step].items}
                   selected={stepData[step].val}
                   onSelect={handleSelect}
+                  isMobile={isMobile}
                 />
               )}
-              {step === 3 && <LoadingStep />}
-              {step === 4 && <WelcomeStep goal={goal} time={time} onDone={onComplete} />}
+              {step === 3 && <LoadingStep isMobile={isMobile} />}
+              {step === 4 && <WelcomeStep goal={goal} time={time} onDone={() => onComplete(subject)} isMobile={isMobile} />}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -348,7 +355,7 @@ export default function OnboardingPage({ onComplete }) {
           <div style={ss.footer}>
             <motion.button
               style={ss.primaryBtn}
-              onClick={onComplete}
+              onClick={() => onComplete(subject)}
               whileTap={{ scale: 0.98 }}
             >
               Platformani boshlash 🚀
@@ -361,27 +368,27 @@ export default function OnboardingPage({ onComplete }) {
 }
 
 // ── Styles ──
-const ss = {
+const getStyles = (isMobile) => ({
   pageOuter: {
-    minHeight: IS_MOBILE ? '100dvh' : '100vh',
-    background: IS_MOBILE ? 'var(--bg)' : 'radial-gradient(circle at top left, var(--bg) 0%, var(--bg3) 100%)',
-    display: IS_MOBILE ? 'block' : 'flex',
+    minHeight: isMobile ? '100dvh' : '100vh',
+    background: isMobile ? 'var(--bg)' : 'radial-gradient(circle at top left, var(--bg) 0%, var(--bg3) 100%)',
+    display: isMobile ? 'block' : 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: IS_MOBILE ? 0 : '40px 20px',
+    padding: isMobile ? 0 : '40px 20px',
     fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
     color: 'var(--text)',
   },
   page: {
     width: '100%',
     maxWidth: 460,
-    minHeight: IS_MOBILE ? '100dvh' : 'auto',
-    background: IS_MOBILE ? 'var(--bg2)' : 'var(--glass-bg)',
-    backdropFilter: IS_MOBILE ? 'none' : 'blur(20px)',
-    WebkitBackdropFilter: IS_MOBILE ? 'none' : 'blur(20px)',
-    border: IS_MOBILE ? 'none' : '1px solid var(--glass-border)',
-    borderRadius: IS_MOBILE ? 0 : 24,
-    boxShadow: IS_MOBILE ? 'none' : '0 24px 80px rgba(0,0,0,0.06)',
+    minHeight: isMobile ? '100dvh' : 'auto',
+    background: isMobile ? 'var(--bg2)' : 'var(--glass-bg)',
+    backdropFilter: isMobile ? 'none' : 'blur(20px)',
+    WebkitBackdropFilter: isMobile ? 'none' : 'blur(20px)',
+    border: isMobile ? 'none' : '1px solid var(--glass-border)',
+    borderRadius: isMobile ? 0 : 24,
+    boxShadow: isMobile ? 'none' : '0 24px 80px rgba(0,0,0,0.06)',
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
@@ -416,7 +423,7 @@ const ss = {
   listItemText: { flex: 1, display: 'flex', flexDirection: 'column' },
   footer: {
     padding: '12px 20px calc(16px + env(safe-area-inset-bottom))',
-    borderTop: '1px solid var(--border)', background: IS_MOBILE ? 'var(--bg2)' : 'transparent',
+    borderTop: '1px solid var(--border)', background: isMobile ? 'var(--bg2)' : 'transparent',
   },
   primaryBtn: {
     width: '100%', padding: '16px', borderRadius: 16,
@@ -451,4 +458,4 @@ const ss = {
     display: 'flex', alignItems: 'center', gap: 12,
     padding: '8px 0', borderBottom: '1px solid var(--border)',
   },
-};
+});

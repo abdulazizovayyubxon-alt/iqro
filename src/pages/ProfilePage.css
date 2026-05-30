@@ -108,6 +108,80 @@
 /* ── Content area ── */
 .pp-content { padding: 16px 16px 0; display: flex; flex-direction: column; gap: 14px; }
 
+/* ── Tezkor Boshlash ── */
+.pp-quick-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.pp-quick-card {
+  border-radius: 16px;
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+}
+
+.pp-quick-card-icon {
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+}
+
+.pp-quick-card-title {
+  font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px;
+}
+.pp-quick-card-subtitle {
+  font-size: 12px; color: var(--text3); font-weight: 500;
+}
+
+/* Specific cards */
+.pp-quick-card.blue {
+  background: linear-gradient(135deg, rgba(41, 182, 246, 0.1), rgba(41, 182, 246, 0.05));
+  border: 1px solid rgba(41, 182, 246, 0.2);
+}
+.pp-quick-card.blue .pp-quick-card-icon {
+  background: var(--blue);
+  box-shadow: 0 4px 12px rgba(41, 182, 246, 0.3);
+}
+
+.pp-quick-card.purple {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+.pp-quick-card.purple .pp-quick-card-icon {
+  background: var(--purple);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.pp-quick-card.green {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+.pp-quick-card.green .pp-quick-card-icon {
+  background: var(--green);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.pp-quick-card.amber {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+.pp-quick-card.amber .pp-quick-card-icon {
+  background: var(--amber);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.pp-quick-badge {
+  position: absolute; top: 12px; right: 12px;
+  background: var(--red); color: #fff;
+  font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 8px;
+}
+
 /* ── Card base ── */
 .pp-card {
   background: var(--bg2);

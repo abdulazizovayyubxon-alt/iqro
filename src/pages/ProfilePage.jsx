@@ -12,9 +12,8 @@ import { SUBJECTS } from '../data/mockData';
 import { ToastContext } from '../context/ToastContext';
 import { PWAContext } from '../context/PWAContext';
 import { db, auth } from '../firebase';
-import { doc, getDoc, updateDoc, setDoc, onSnapshot, collection, query, where, getDocs, limit } from 'firebase/firestore';
-import { updateProfile } from 'firebase/auth';
-import { signInWithCustomToken } from 'firebase/auth';
+import { doc, getDoc, updateDoc, setDoc, onSnapshot, collection, query, where, getDocs, limit, deleteDoc } from 'firebase/firestore';
+import { updateProfile, deleteUser, signInWithCustomToken } from 'firebase/auth';
 import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
 import {
   getUserReferralCode, buildReferralLink, getReferralStats,
@@ -40,6 +39,8 @@ export default function ProfilePage({ theme, toggleTheme }) {
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showTelegramModal, setShowTelegramModal] = useState(false);
   const [showGuideModal, setShowGuideModal] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [activeGuidePanel, setActiveGuidePanel] = useState(null);
   const [tgLoading, setTgLoading] = useState(false);
   const [tgError, setTgError] = useState('');
@@ -167,7 +168,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
 
   // Modal history interception for back button
   useEffect(() => {
-    const hasOpenModal = showEdit || showPremium || showLogoutConfirm || showPrivacy || showTelegramModal;
+    const hasOpenModal = showEdit || showPremium || showLogoutConfirm || showPrivacy || showTelegramModal || showDeleteConfirm;
     if (!hasOpenModal) return;
 
     window.history.pushState({ profileModalOpen: true }, '');
@@ -178,6 +179,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
       setShowLogoutConfirm(false);
       setShowPrivacy(false);
       setShowTelegramModal(false);
+      setShowDeleteConfirm(false);
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -188,7 +190,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
         window.history.back();
       }
     };
-  }, [showEdit, showPremium, showLogoutConfirm, showPrivacy, showTelegramModal]);
+  }, [showEdit, showPremium, showLogoutConfirm, showPrivacy, showTelegramModal, showDeleteConfirm]);
 
   // Urgency countdown interval
   useEffect(() => {
@@ -309,6 +311,32 @@ export default function ProfilePage({ theme, toggleTheme }) {
     try { await logout(); navigate('/'); } catch { showToast("Chiqishda xatolik", 'error'); }
   };
 
+  const handleDeleteAccount = async () => {
+    if (deleting) return;
+    setDeleting(true);
+    try {
+      const uid = user.uid;
+      // 1. Delete Firestore records (errors ignored if permissions deny, but they shouldn't)
+      await deleteDoc(doc(db, 'userStats', uid)).catch(e => console.log(e));
+      await deleteDoc(doc(db, 'users', uid)).catch(e => console.log(e));
+      
+      // 2. Delete Auth user
+      await deleteUser(auth.currentUser);
+      showToast("Hisobingiz muvaffaqiyatli o'chirildi.", 'success');
+      navigate('/');
+    } catch (e) {
+      console.error(e);
+      if (e.code === 'auth/requires-recent-login') {
+        showToast("Xavfsizlik: Iltimos, hisobdan chiqib qayta kiring va keyin o'chiring.", 'error');
+        setShowDeleteConfirm(false);
+      } else {
+        showToast("Xatolik yuz berdi. Adminga murojaat qiling.", 'error');
+      }
+    } finally {
+      setDeleting(false);
+    }
+  };
+
   const copyRef = async () => {
     try {
       await navigator.clipboard.writeText(buildReferralLink(refCode));
@@ -411,81 +439,53 @@ export default function ProfilePage({ theme, toggleTheme }) {
         {/* ═══ TEZKOR BOSHLASH (QUICK START) 2x2 GRID ═══ */}
         <div style={{ marginBottom: '24px' }}>
           <div className="pp-card-label" style={{ marginBottom: '12px' }}>🚀 Tezkor Boshlash</div>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '12px'
-          }}>
+          <div className="pp-quick-grid">
             {/* Dars Testi */}
-            <motion.div whileTap={{ scale: 0.96 }} onClick={() => handleNav(-1, 'exam')}
-              style={{
-                background: 'linear-gradient(135deg, rgba(41, 182, 246, 0.1), rgba(41, 182, 246, 0.05))',
-                border: '1px solid rgba(41, 182, 246, 0.2)',
-                borderRadius: '16px', padding: '16px', cursor: 'pointer',
-                display: 'flex', flexDirection: 'column', gap: '12px'
-              }}>
-              <div style={{ width: 40, height: 40, borderRadius: '12px', background: 'var(--blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', boxShadow: '0 4px 12px rgba(41, 182, 246, 0.3)' }}>
+            <motion.div whileTap={{ scale: 0.96 }} onClick={() => handleNav(-1, 'exam')} className="pp-quick-card blue">
+              <div className="pp-quick-card-icon">
                 <Play size={20} fill="currentColor" />
               </div>
               <div>
-                <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text)', marginBottom: '2px' }}>Dars Testi</div>
-                <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: 500 }}>Barcha mavzular</div>
+                <div className="pp-quick-card-title">Dars Testi</div>
+                <div className="pp-quick-card-subtitle">Barcha mavzular</div>
               </div>
             </motion.div>
 
             {/* Imtihon */}
-            <motion.div whileTap={{ scale: 0.96 }} onClick={() => { if (trialStatus === 'expired' && !isPremium) { setShowPremium(true); return; } navigate('/exam'); }}
-              style={{
-                background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05))',
-                border: '1px solid rgba(139, 92, 246, 0.2)',
-                borderRadius: '16px', padding: '16px', cursor: 'pointer',
-                display: 'flex', flexDirection: 'column', gap: '12px'
-              }}>
-              <div style={{ width: 40, height: 40, borderRadius: '12px', background: 'var(--purple)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)' }}>
+            <motion.div whileTap={{ scale: 0.96 }} onClick={() => { if (trialStatus === 'expired' && !isPremium) { setShowPremium(true); return; } navigate('/exam'); }} className="pp-quick-card purple">
+              <div className="pp-quick-card-icon">
                 <GraduationCap size={22} />
               </div>
               <div>
-                <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text)', marginBottom: '2px' }}>Imtihon</div>
-                <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: 500 }}>50 savol · {getExamDurationMinutes(cat)} daqiqa</div>
+                <div className="pp-quick-card-title">Imtihon</div>
+                <div className="pp-quick-card-subtitle">50 savol · {getExamDurationMinutes(cat)} daqiqa</div>
               </div>
             </motion.div>
 
             {/* Takrorlash */}
-            <motion.div whileTap={{ scale: 0.96 }} onClick={() => navigate('/review')}
-              style={{
-                background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05))',
-                border: '1px solid rgba(16, 185, 129, 0.2)',
-                borderRadius: '16px', padding: '16px', cursor: 'pointer',
-                display: 'flex', flexDirection: 'column', gap: '12px', position: 'relative'
-              }}>
+            <motion.div whileTap={{ scale: 0.96 }} onClick={() => navigate('/review')} className="pp-quick-card green">
               {dueCards > 0 && (
-                <div style={{ position: 'absolute', top: 12, right: 12, background: 'var(--red)', color: '#fff', fontSize: '10px', fontWeight: 800, padding: '2px 6px', borderRadius: '8px' }}>
+                <div className="pp-quick-badge">
                   {dueCards}
                 </div>
               )}
-              <div style={{ width: 40, height: 40, borderRadius: '12px', background: 'var(--green)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)' }}>
+              <div className="pp-quick-card-icon">
                 <Brain size={22} />
               </div>
               <div>
-                <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text)', marginBottom: '2px' }}>Takrorlash</div>
-                <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: 500 }}>{dueCards > 0 ? `${dueCards} savol kutmoqda` : 'Hozircha yo\'q'}</div>
+                <div className="pp-quick-card-title">Takrorlash</div>
+                <div className="pp-quick-card-subtitle">{dueCards > 0 ? `${dueCards} savol kutmoqda` : 'Hozircha yo\'q'}</div>
               </div>
             </motion.div>
 
             {/* Xatolar */}
-            <motion.div whileTap={{ scale: 0.96 }} onClick={() => handleNav(-1, 'mistakes')}
-              style={{
-                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05))',
-                border: '1px solid rgba(245, 158, 11, 0.2)',
-                borderRadius: '16px', padding: '16px', cursor: 'pointer',
-                display: 'flex', flexDirection: 'column', gap: '12px'
-              }}>
-              <div style={{ width: 40, height: 40, borderRadius: '12px', background: 'var(--amber)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', boxShadow: '0 4px 12px rgba(245, 158, 11, 0.3)' }}>
+            <motion.div whileTap={{ scale: 0.96 }} onClick={() => handleNav(-1, 'mistakes')} className="pp-quick-card amber">
+              <div className="pp-quick-card-icon">
                 <Zap size={22} />
               </div>
               <div>
-                <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text)', marginBottom: '2px' }}>Xatolar</div>
-                <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: 500 }}>{filteredMistakesCount} ta xato</div>
+                <div className="pp-quick-card-title">Xatolar</div>
+                <div className="pp-quick-card-subtitle">{filteredMistakesCount} ta xato</div>
               </div>
             </motion.div>
           </div>
@@ -743,6 +743,15 @@ export default function ProfilePage({ theme, toggleTheme }) {
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
 
+          {/* Delete Account */}
+          <button className="pp-menu-item" onClick={() => setShowDeleteConfirm(true)}>
+            <div className="pp-menu-icon" style={{ background: 'rgba(239, 68, 68, 0.1)', color: '#EF4444' }}>
+              <Shield size={20} style={{ transform: 'rotate(180deg)' }} />
+            </div>
+            <span className="pp-menu-label" style={{ color: '#EF4444' }}>Hisobni o'chirish</span>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
           {/* Logout */}
           <button className="pp-menu-item danger" onClick={() => setShowLogoutConfirm(true)}>
             <div className="pp-menu-icon" style={{ background: 'var(--red-bg)', color: 'var(--red)' }}>
@@ -842,6 +851,43 @@ export default function ProfilePage({ theme, toggleTheme }) {
                 }}
               >
                 Chiqish 🚪
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ═══ DELETE ACCOUNT CONFIRMATION MODAL ═══ */}
+      {showDeleteConfirm && (
+        <div className="pp-modal-overlay" onClick={() => setShowDeleteConfirm(false)}>
+          <div className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 400, textAlign: 'center', padding: '28px 24px' }}>
+            <div style={{ fontSize: 44, marginBottom: 12 }}>🗑️</div>
+            <div className="pp-modal-title" style={{ marginBottom: 10, fontSize: 18, fontWeight: 800, color: 'var(--red)' }}>Hisobni o'chirish</div>
+            <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
+              Rostdan ham hisobingizni o'chirmoqchimisiz? Bu amalni orqaga qaytarib bo'lmaydi. Barcha ballaringiz, obunangiz va statistikangiz butunlay o'chib ketadi.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <button 
+                onClick={handleDeleteAccount} 
+                disabled={deleting}
+                style={{ 
+                  padding: '13px', borderRadius: 12, background: 'var(--red)', color: '#fff', 
+                  border: 'none', fontWeight: 700, fontSize: 14, cursor: deleting ? 'not-allowed' : 'pointer', fontFamily: 'inherit',
+                  transition: 'opacity 0.2s', opacity: deleting ? 0.7 : 1
+                }}
+              >
+                {deleting ? "O'chirilmoqda..." : "Ha, hisobimni o'chirish"}
+              </button>
+              <button 
+                onClick={() => setShowDeleteConfirm(false)} 
+                disabled={deleting}
+                style={{ 
+                  padding: '12px', borderRadius: 12, background: 'transparent', color: 'var(--text)', 
+                  border: '1.5px solid var(--border)', fontWeight: 600, fontSize: 13, cursor: 'pointer', fontFamily: 'inherit',
+                  transition: 'all 0.2s'
+                }}
+              >
+                Bekor qilish
               </button>
             </div>
           </div>

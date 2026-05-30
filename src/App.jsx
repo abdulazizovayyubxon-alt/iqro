@@ -34,6 +34,8 @@ const MigrationPage = React.lazy(() => import('./pages/MigrationPage'));
 const ReferralPage = React.lazy(() => import('./pages/ReferralPage'));
 const ProfilePage = React.lazy(() => import('./pages/ProfilePage'));
 const ErrorNotebookPage = React.lazy(() => import('./pages/ErrorNotebookPage'));
+const PrivacyPage = React.lazy(() => import('./pages/PrivacyPage'));
+const TermsPage = React.lazy(() => import('./pages/TermsPage'));
 
 // ── Skeleton Loader — sahifa yuklanayotganda chiroyli ko'rinish ──
 const PageSkeleton = () => {
@@ -208,15 +210,36 @@ function App() {
     );
   }
 
+  // ── Ochiq sahifalar (Auth kerak emas) ──
+  if (location.pathname === '/privacy') {
+    return (
+      <Suspense fallback={<PageSkeleton />}>
+        <PrivacyPage />
+      </Suspense>
+    );
+  }
+  if (location.pathname === '/terms') {
+    return (
+      <Suspense fallback={<PageSkeleton />}>
+        <TermsPage />
+      </Suspense>
+    );
+  }
+
   // Tizimga kirmagan foydalanuvchi
   if (!user) {
     return <LoginPage />;
   }
 
+  const appContext = useContext(AppContext);
+
   // Yangi foydalanuvchi — Onboarding
   if (needsOnboarding) {
-    return <OnboardingPage onComplete={() => {
+    return <OnboardingPage onComplete={(subject) => {
       localStorage.setItem(`iqro_onboarding_${user.uid}`, '1');
+      if (subject) {
+        appContext.updateState({ activeCategory: subject });
+      }
       setNeedsOnboarding(false);
     }} />;
   }

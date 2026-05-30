@@ -52,9 +52,9 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
-    // ── users: foydalanuvchi profili (referral kod qidirish va reyting uchun hamma o'qiy oladi) ──
+    // ── users: foydalanuvchi profili (faqat o'zini o'qiydi yoki admin) ──
     match /users/{userId} {
-      allow read: if isLoggedIn();
+      allow read: if isOwner(userId) || isAdmin();
       allow create: if isOwner(userId) 
                     && request.resource.data.role == 'user' 
                     && (request.resource.data.isPremium == false || !('isPremium' in request.resource.data));

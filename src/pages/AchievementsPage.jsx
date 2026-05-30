@@ -18,7 +18,8 @@ const AchievementsPage = () => {
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
   const canvasRef = useRef(null);
-  const { isTrialExpired: isFreeLimitReached } = useTrialExpiry();
+  const { isTrialExpired } = useTrialExpiry();
+  const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
 
   const handleNavigation = (topicId, mode) => {
     if (isFreeLimitReached) {

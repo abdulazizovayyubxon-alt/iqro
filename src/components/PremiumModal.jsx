@@ -12,6 +12,7 @@ import { useAuth } from '../context/AuthContext';
 import { generateClickUrl, generatePaymeUrl } from '../services/payment';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
+import { purchasePlan } from '../services/playBilling';
 
 // Default tariflar (Firestore dan yuklanmasa)
 const DEFAULT_PLANS = [
@@ -138,15 +139,37 @@ const PremiumModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const fmt = (n) => new Intl.NumberFormat('fr-FR').format(n).replace(',', ' ') + " so'm";
-  const finalPrice = selectedPlan ? Math.max(0, selectedPlan.price - referralBonus) : 0;
-  const hasBonus = referralBonus > 0 && selectedPlan;
+  
+  const hasReferralDiscount = userData?.referralDiscount > 0;
+  const discountPercent = userData?.referralDiscount || 0;
+
+  let finalPrice = selectedPlan ? selectedPlan.price : 0;
+  if (hasReferralDiscount) {
+    finalPrice = Math.max(0, finalPrice * (100 - discountPercent) / 100);
+  }
+  finalPrice = Math.max(0, finalPrice - referralBonus);
+
+  const hasBonus = (referralBonus > 0 || hasReferralDiscount) && selectedPlan;
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
   const isPWA = typeof window !== 'undefined' && window.matchMedia('(display-mode: standalone)').matches;
   const isAndroidApp = isPWA && /android/i.test(navigator.userAgent);
   const BOT_USERNAME = 'IQRO_testbot';
 
-  const handlePay = () => {
+  const handlePay = async () => {
     if (!user || !selectedPlan) return;
+
+    if (isAndroidApp) {
+      setProcessing(true);
+      const res = await purchasePlan(selectedPlan.id, user.uid);
+      setProcessing(false);
+      if (!res.success) {
+        alert(res.message);
+      } else {
+        alert(res.message);
+        onClose();
+      }
+      return;
+    }
 
     if (selectedMethod === 'telegram') {
       // Telegram orqali — botga yo'naltirish (pay_planId parametri bilan)
@@ -325,7 +348,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   })}
                 </div>
 
-                {/* Referral bonus */}
+                {/* Referral bonus / chegirma */}
                 <AnimatePresence>
                   {hasBonus && (
                     <motion.div
@@ -341,9 +364,11 @@ const PremiumModal = ({ isOpen, onClose }) => {
                       <Gift size={16} style={{ color: '#10B981', flexShrink: 0 }} />
                       <div style={{ flex: 1 }}>
                         <div style={{ fontSize: 12, fontWeight: 700, color: '#10B981' }}>
-                          Do'st bonusi: −{fmt(referralBonus)}
+                          {hasReferralDiscount && `Taklif chegirmasi: -${discountPercent}%`}
+                          {hasReferralDiscount && referralBonus > 0 && ' | '}
+                          {referralBonus > 0 && `Do'st bonusi: -${fmt(referralBonus)}`}
                         </div>
-                        <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)' }}>
+                        <div style={{ fontSize: 11, color: '#475569' }}>
                           Jami: <s style={{ opacity: 0.5 }}>{fmt(selectedPlan?.price)}</s> → <strong style={{ color: '#10B981' }}>{fmt(finalPrice)}</strong>
                         </div>
                       </div>
@@ -354,10 +379,10 @@ const PremiumModal = ({ isOpen, onClose }) => {
                 {/* To'lov usullari */}
                 <div style={{ marginBottom: 16 }}>
                   {isAndroidApp ? (
-                    <div style={{ padding: '16px', background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: 12, marginBottom: 16 }}>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: '#B45309', marginBottom: 4 }}>Dastur ichida xarid vaqtincha faol emas</div>
-                      <div style={{ fontSize: 12, color: '#92400E', lineHeight: 1.4 }}>
-                        Iltimos, Premium xarid qilish uchun rasmiy veb-saytimizga kiring: <b>iqro.uz</b>
+                    <div style={{ padding: '16px', background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)', borderRadius: 12, marginBottom: 16 }}>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: '#1D4ED8', marginBottom: 4 }}>Google Play orqali xarid qilish</div>
+                      <div style={{ fontSize: 12, color: '#1E3A8A', lineHeight: 1.4 }}>
+                        Siz tanlagan {selectedPlan.name} ta'rifi to'g'ridan-to'g'ri Google Play orqali xarid qilinadi. To'lov mutlaqo xavfsiz.
                       </div>
                     </div>
                   ) : (
@@ -435,7 +460,26 @@ const PremiumModal = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Asosiy tugma */}
-                {!isAndroidApp && (
+                {isAndroidApp ? (
+                  <motion.button
+                    whileTap={{ scale: 0.98 }}
+                    onClick={handlePay}
+                    disabled={processing}
+                    style={{
+                      width: '100%', padding: '16px', borderRadius: 16,
+                      background: 'linear-gradient(135deg, #3B82F6, #2563EB)',
+                      color: '#fff', fontWeight: 800, fontSize: 16,
+                      border: 'none', cursor: processing ? 'wait' : 'pointer',
+                      fontFamily: 'inherit',
+                      boxShadow: '0 4px 20px rgba(59,130,246,0.35)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+                      opacity: processing ? 0.7 : 1,
+                      marginBottom: 12,
+                    }}
+                  >
+                    <><Crown size={18} /> Google Play bilan to'lash — {fmt(finalPrice)}</>
+                  </motion.button>
+                ) : (
                   <motion.button
                   whileTap={{ scale: 0.98 }}
                   onClick={handlePay}

@@ -11,10 +11,10 @@ import { EXAM_DATE } from '../config';
 import { getReferralStats } from '../services/referral';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
-
-const IS_MOBILE = typeof window !== 'undefined' && window.innerWidth <= 768;
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const Header = ({ theme, toggleTheme }) => {
+  const isMobile = useIsMobile();
   const navigate = useNavigate();
   const { state, updateState } = useContext(AppContext);
   const { toast, showToast } = useContext(ToastContext);
@@ -85,9 +85,20 @@ const Header = ({ theme, toggleTheme }) => {
 
   const calcDays = () => {
     const customSaved = localStorage.getItem('CUSTOM_EXAM_DATE');
-    const target = customSaved ? new Date(customSaved) : EXAM_DATE;
+    let target = null;
+    if (customSaved) {
+      target = new Date(customSaved);
+      if (isNaN(target.getTime())) target = null;
+    }
+    if (!target) target = EXAM_DATE;
+
+    if (!target) {
+      setDaysLeft(0);
+      return;
+    }
+
     const diff = target - new Date();
-    if (diff <= 0) {
+    if (isNaN(diff) || diff <= 0) {
       setDaysLeft(0);
     } else {
       setDaysLeft(Math.floor(diff / 86400000));
@@ -201,21 +212,16 @@ const Header = ({ theme, toggleTheme }) => {
         <div className="header-stats">
           {/* Kun Countdown */}
           <motion.div 
-            className="hide-mobile" 
+            className="header-exam-countdown hide-mobile" 
             onClick={() => {
               setTempDays(daysLeft);
               setShowExamModal(true);
             }} 
             whileHover={{ y: -1 }}
             whileTap={{ scale: 0.96 }}
-            style={{ 
-              display: 'flex', alignItems: 'center', gap: '6px', 
-              background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', 
-              padding: '6px 12px', borderRadius: '99px', cursor: 'pointer' 
-            }}
             title="Imtihon sanasini o'zgartirish"
           >
-            <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text)' }}>{daysLeft} kun qoldi</span>
+            <span className="header-exam-countdown-text">{daysLeft} kun qoldi</span>
             <Calendar size={13} style={{ color: 'var(--blue)', opacity: 0.8 }} />
           </motion.div>
 
@@ -224,17 +230,12 @@ const Header = ({ theme, toggleTheme }) => {
             <motion.button 
               className="user-avatar-btn" 
               whileTap={{ scale: 0.95 }}
-              style={{ width: '38px', height: '38px', borderRadius: '12px', background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text)', cursor: 'pointer' }}
               onClick={() => setShowNotifMenu(!showNotifMenu)}
               title="Bildirishnomalar"
             >
               <Bell size={18} />
               {unreadCount > 0 && (
-                <span style={{ 
-                  position: 'absolute', top: '-4px', right: '-4px', background: 'var(--red)', color: 'white', 
-                  fontSize: '9px', fontWeight: '800', padding: '1px 5px', borderRadius: '99px', 
-                  animation: 'pulse 2s infinite', border: '1.5px solid var(--bg2)' 
-                }}>
+                <span className="notif-badge-pill">
                   {unreadCount}
                 </span>
               )}
@@ -250,12 +251,11 @@ const Header = ({ theme, toggleTheme }) => {
                   exit={{ opacity: 0, y: -10, scale: 0.95 }}
                   transition={{ duration: 0.15 }}
                 >
-                  <div className="user-dropdown-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px' }}>
-                    <div style={{ fontWeight: '700', fontSize: '16px', color: 'var(--text)' }}>Bildirishnomalar</div>
+                  <div className="user-dropdown-header">
+                    <div className="user-dropdown-header-title">Bildirishnomalar</div>
                     {unreadCount > 0 && (
                       <button 
-                        className="btn btn-sm" 
-                        style={{ background: 'transparent', border: 'none', color: 'var(--blue)', fontSize: '12px', padding: 0, fontWeight: '600' }}
+                        className="notif-clear-all-btn" 
                         onClick={(e) => {
                           e.stopPropagation();
                           const updated = notifications.map(n => ({ ...n, read: true }));
@@ -272,48 +272,34 @@ const Header = ({ theme, toggleTheme }) => {
 
                   <div style={{ maxHeight: '340px', overflowY: 'auto' }}>
                     {notifications.length === 0 ? (
-                      <div style={{ padding: '32px 16px', textAlign: 'center', color: 'var(--text3)', fontSize: '13px' }}>
+                      <div className="notif-empty">
                         Bildirishnomalar yo'q
                       </div>
                     ) : (
                       notifications.map((n) => (
                         <div 
                           key={n.id} 
+                          className={`notif-item ${n.read ? 'read' : 'unread'}`}
                           onClick={() => {
                             const updated = notifications.map(item => item.id === n.id ? { ...item, read: true } : item);
                             setNotifications(updated);
                             localStorage.setItem('IQRO_NOTIFICATIONS', JSON.stringify(updated));
                           }}
-                          style={{ 
-                            padding: '14px 16px', 
-                            borderBottom: '0.5px solid var(--border)', 
-                            background: n.read ? 'transparent' : 'var(--blue-bg)',
-                            cursor: 'pointer',
-                            transition: 'background 0.2s',
-                            display: 'flex',
-                            gap: '12px',
-                            alignItems: 'flex-start'
-                          }}
                         >
-                          <div style={{ 
-                            width: '32px', height: '32px', borderRadius: '10px', flexShrink: 0,
-                            background: n.type === 'success' ? 'var(--green-bg)' : n.type === 'warning' ? 'var(--amber-bg)' : 'var(--blue-bg)',
-                            color: n.type === 'success' ? 'var(--green)' : n.type === 'warning' ? 'var(--amber)' : 'var(--blue)',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center'
-                          }}>
+                          <div className={`notif-icon-box ${n.type}`}>
                             {n.type === 'success' ? <CheckCircle2 size={18} /> : n.type === 'warning' ? <AlertCircle size={18} /> : <Info size={18} />}
                           </div>
                           <div style={{ flex: 1, minWidth: 0 }}>
-                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
-                              <div style={{ fontWeight: n.read ? '600' : '700', fontSize: '14px', color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            <div className="notif-title-row">
+                              <div className={`notif-title ${n.read ? 'read' : 'unread'}`}>
                                 {n.title}
                               </div>
-                              {!n.read && <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--blue)', flexShrink: 0 }} />}
+                              {!n.read && <div className="notif-dot" />}
                             </div>
-                            <div style={{ fontSize: '12px', color: n.read ? 'var(--text3)' : 'var(--text2)', lineHeight: '1.4', marginBottom: '6px' }}>
+                            <div className={`notif-msg ${n.read ? 'read' : 'unread'}`}>
                               {n.message}
                             </div>
-                            <div style={{ fontSize: '10px', color: 'var(--text3)', fontWeight: '500' }}>
+                            <div className="notif-date">
                               {new Date(n.date).toLocaleDateString()} • {new Date(n.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                             </div>
                           </div>
@@ -359,12 +345,6 @@ const Header = ({ theme, toggleTheme }) => {
               transition={{ duration: 1.5, ease: "easeInOut", times: [0, 0.2, 0.4, 0.6, 0.8, 1], repeat: 2 }}
               onAnimationComplete={() => sessionStorage.setItem('iqro_gift_wiggled', 'true')}
               whileTap={{ scale: 0.9 }}
-              style={{
-                width: '38px', height: '38px', borderRadius: '12px',
-                background: 'var(--glass-bg)', border: '1px solid var(--glass-border)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                cursor: 'pointer', position: 'relative'
-              }}
             >
               {(() => {
                 const month = new Date().getMonth() + 1;
@@ -384,14 +364,10 @@ const Header = ({ theme, toggleTheme }) => {
                 return (
                   <>
                     <span style={{ fontSize: '20px', zIndex: 2 }}>🎁</span>
-                    <span style={{ position: 'absolute', bottom: -2, right: -2, fontSize: '11px', zIndex: 3, filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }}>
+                    <span className="gift-season-badge">
                       {seasonBadge}
                     </span>
-                    <div style={{
-                      position: 'absolute', inset: -4, borderRadius: '14px',
-                      background: `radial-gradient(circle, ${glowColor} 0%, transparent 70%)`,
-                      zIndex: 1, pointerEvents: 'none'
-                    }} />
+                    <div className="gift-glow-bg" style={{ background: `radial-gradient(circle, ${glowColor} 0%, transparent 70%)` }} />
                   </>
                 );
               })()}
@@ -404,16 +380,16 @@ const Header = ({ theme, toggleTheme }) => {
       {showExamModal && (
         <div className="modal-overlay" onClick={() => setShowExamModal(false)}>
           <div className="modal-content glass-panel" onClick={e => e.stopPropagation()} style={{ maxWidth: '400px' }}>
-            <div className="modal-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div className="modal-title">
               <Calendar size={22} style={{ color: 'var(--blue)' }} /> Imtihon sanasini sozlash
             </div>
-            <div className="modal-text" style={{ marginBottom: '20px' }}>
+            <div className="modal-text">
               Imtihonga necha kun qolganini o'zingiz belgilang. Tizim har kuni avtomatik ravishda teskari sanoqni hisoblab boradi.
             </div>
             
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
+            <div className="flex-col-gap-16" style={{ marginBottom: '24px' }}>
               <div>
-                <label style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text2)', marginBottom: '6px', display: 'block' }}>Qolgan kunlar sonini kiriting:</label>
+                <label className="input-label-sm">Qolgan kunlar sonini kiriting:</label>
                 <input 
                   type="number" 
                   className="modal-input" 
@@ -425,10 +401,10 @@ const Header = ({ theme, toggleTheme }) => {
                 />
               </div>
               
-              <div style={{ textAlign: 'center', color: 'var(--text3)', fontSize: '13px', fontWeight: '600' }}>YOKI</div>
+              <div className="text-center-or">YOKI</div>
               
               <div>
-                <label style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text2)', marginBottom: '6px', display: 'block' }}>Aniq sanani tanlang:</label>
+                <label className="input-label-sm">Aniq sanani tanlang:</label>
                 <input 
                   type="date" 
                   className="modal-input" 
@@ -497,7 +473,7 @@ const Header = ({ theme, toggleTheme }) => {
             key={toast.id}
             style={{
               position: 'fixed',
-              bottom: IS_MOBILE ? '90px' : '32px',
+              bottom: isMobile ? '90px' : '32px',
               left: '50%',
               transform: 'translateX(-50%)',
               padding: '12px 24px',
@@ -538,27 +514,25 @@ const Header = ({ theme, toggleTheme }) => {
               setAmbassadorModal(false);
               localStorage.setItem('iqro_ambassador_thanks', 'true');
             }}
-            style={{ zIndex: 10001, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             <motion.div
               initial={{ scale: 0.8, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.8, y: 20 }}
-              className="modal-content glass-panel"
+              className="modal-content glass-panel ambassador-modal-inner"
               onClick={e => e.stopPropagation()}
-              style={{ maxWidth: '400px', textAlign: 'center', padding: '30px', background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85))', border: '1px solid rgba(245, 158, 11, 0.3)' }}
+              style={{ maxWidth: '400px' }}
             >
-              <div style={{ fontSize: '60px', marginBottom: '10px' }}>🌟</div>
-              <h2 style={{ fontSize: '24px', fontWeight: 900, color: 'var(--text)', marginBottom: '12px' }}>
+              <div className="ambassador-emoji">🌟</div>
+              <h2 className="ambassador-title">
                 Katta Rahmat!
               </h2>
-              <p style={{ fontSize: '15px', color: 'var(--text2)', lineHeight: 1.5, marginBottom: '20px' }}>
+              <p className="ambassador-text">
                 Sizning yordamingiz bilan 5 ta yangi do'stimiz loyihaga qo'shildi! Platformamiz rivojiga qo'shgan ushbu ulkan hissangiz uchun sizdan juda minnatdormiz.
               </p>
-              <div style={{ background: 'var(--amber-bg)', color: 'var(--amber)', padding: '12px', borderRadius: '12px', fontSize: '13px', fontWeight: 600, marginBottom: '24px' }}>
+              <div className="ambassador-highlight">
                 Siz uchun maxsus: yana 2 ta do'stingizni taklif qilib chegirmalar olish imkoniyatini taqdim etamiz! (Limit +2)
               </div>
               <button
-                className="btn btn-primary"
-                style={{ width: '100%', background: 'linear-gradient(135deg, #F59E0B, #FBBF24)', color: '#fff', fontSize: '16px' }}
+                className="btn btn-primary ambassador-btn"
                 onClick={() => {
                   setAmbassadorModal(false);
                   localStorage.setItem('iqro_ambassador_thanks', 'true');

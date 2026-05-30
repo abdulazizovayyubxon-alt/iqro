@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Eye, EyeOff, UserPlus, LogIn, Send, ShieldCheck } from 'lucide-react';
 import { signInWithCustomToken } from 'firebase/auth';
 import { auth } from '../firebase';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const GoogleIcon = () => (
   <svg width="20" height="20" viewBox="0 0 48 48">
@@ -23,13 +24,15 @@ const STEPS = {
 };
 
 const PRIMARY = '#29B6F6';
-const IS_MOBILE = typeof window !== 'undefined' && window.innerWidth <= 768;
 
 export default function LoginPage() {
   const {
     signInWithPhone, signInWithGoogle, resetPassword,
     authError, setAuthError, checkLockout
   } = useAuth();
+  
+  const isMobile = useIsMobile();
+  const s = getStyles(isMobile);
 
   const [step, setStep] = useState(STEPS.PHONE);
   const [phone, setPhone] = useState('+998');
@@ -155,9 +158,13 @@ export default function LoginPage() {
         setAuthError("Ism-familiyangizni to'liq kiriting (kamida 3 belgi)");
         return;
       }
+      if (!password || password.length < 6) {
+        setAuthError("Parol kamida 6 ta belgidan iborat bo'lishi kerak");
+        return;
+      }
       setLoading(true);
       try {
-        const res = await signInWithPhone(name, phone, '', true, gender, birthDate);
+        const res = await signInWithPhone(name, phone, password, true, gender, birthDate);
         if (res && !res.success) {
           if (res.hasCustomPassword) {
             // Bu raqam oldindan mavjud — parol so'rash kerak
@@ -441,6 +448,23 @@ export default function LoginPage() {
                         </motion.button>
                       </div>
                     </div>
+
+                    <div>
+                      <label style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text2)', marginBottom: '6px', display: 'block' }}>Parol yarating</label>
+                      <div style={{ position: 'relative' }}>
+                        <input
+                          style={s.input}
+                          type={showPass ? 'text' : 'password'}
+                          placeholder="Kamida 6 ta belgi"
+                          value={password}
+                          onChange={e => { setAuthError(''); setPassword(e.target.value); }}
+                          onKeyDown={e => e.key === 'Enter' && handleContinue()}
+                        />
+                        <button type="button" onClick={() => setShowPass(!showPass)} style={s.eyeBtn} tabIndex={-1}>
+                          {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </>
               )}
@@ -554,7 +578,7 @@ export default function LoginPage() {
           {/* Trust Badges & Policies */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', marginTop: '24px' }}>
             <div style={{ fontSize: '11px', color: 'var(--text3)', textAlign: 'center', maxWidth: 280, lineHeight: 1.5 }}>
-              Tizimga kirish orqali siz bizning <a href="#" style={{color: PRIMARY, textDecoration: 'none', fontWeight: 600}}>Maxfiylik Siyosati</a> va <a href="#" style={{color: PRIMARY, textDecoration: 'none', fontWeight: 600}}>Foydalanish Shartlari</a>ga rozi bo'lasiz.
+              Tizimga kirish orqali siz bizning <a href="/privacy" style={{color: '#29B6F6', textDecoration: 'none', fontWeight: 600}}>Maxfiylik Siyosati</a> va <a href="/terms" style={{color: '#29B6F6', textDecoration: 'none', fontWeight: 600}}>Foydalanish Shartlari</a>ga rozi bo'lasiz.
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', opacity: 0.6 }}>
               <ShieldCheck size={16} color="var(--text)" />
@@ -568,27 +592,27 @@ export default function LoginPage() {
 }
 
 // ── Styles ──
-const s = {
+const getStyles = (isMobile) => ({
   pageOuter: {
-    minHeight: IS_MOBILE ? '100dvh' : '100vh',
-    background: IS_MOBILE ? 'var(--bg)' : 'radial-gradient(circle at top left, var(--bg) 0%, var(--bg3) 100%)',
-    display: IS_MOBILE ? 'block' : 'flex',
+    minHeight: isMobile ? '100dvh' : '100vh',
+    background: isMobile ? 'var(--bg)' : 'radial-gradient(circle at top left, var(--bg) 0%, var(--bg3) 100%)',
+    display: isMobile ? 'block' : 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: IS_MOBILE ? 0 : '40px 20px',
+    padding: isMobile ? 0 : '40px 20px',
     fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
     color: 'var(--text)',
   },
   page: {
     width: '100%',
     maxWidth: 460,
-    minHeight: IS_MOBILE ? '100dvh' : 'auto',
-    background: IS_MOBILE ? 'var(--bg2)' : 'var(--glass-bg)',
-    backdropFilter: IS_MOBILE ? 'none' : 'blur(20px)',
-    WebkitBackdropFilter: IS_MOBILE ? 'none' : 'blur(20px)',
-    border: IS_MOBILE ? 'none' : '1px solid var(--glass-border)',
-    borderRadius: IS_MOBILE ? 0 : 24,
-    boxShadow: IS_MOBILE ? 'none' : '0 24px 80px rgba(0,0,0,0.06)',
+    minHeight: isMobile ? '100dvh' : 'auto',
+    background: isMobile ? 'var(--bg2)' : 'var(--glass-bg)',
+    backdropFilter: isMobile ? 'none' : 'blur(20px)',
+    WebkitBackdropFilter: isMobile ? 'none' : 'blur(20px)',
+    border: isMobile ? 'none' : '1px solid var(--glass-border)',
+    borderRadius: isMobile ? 0 : 24,
+    boxShadow: isMobile ? 'none' : '0 24px 80px rgba(0,0,0,0.06)',
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
@@ -597,15 +621,15 @@ const s = {
   progressFill: { height: '100%', background: 'linear-gradient(90deg, #29B6F6, #8B5CF6)', borderRadius: '0 2px 2px 0' },
   header: {
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-    padding: IS_MOBILE ? '16px 16px 0' : '20px 20px 0',
+    padding: isMobile ? '16px 16px 0' : '20px 20px 0',
   },
   backBtn: {
     background: 'none', border: 'none', cursor: 'pointer',
     color: 'var(--text)', padding: 6, display: 'flex', alignItems: 'center', borderRadius: 8,
   },
-  content: { flex: 1, padding: IS_MOBILE ? '16px 20px 8px' : '28px 24px 16px', overflowY: 'auto' },
+  content: { flex: 1, padding: isMobile ? '16px 20px 8px' : '28px 24px 16px', overflowY: 'auto' },
   title: { fontSize: 32, fontWeight: 800, lineHeight: 1.2, marginBottom: 8, color: 'var(--text)' },
-  subtitle: { fontSize: 15, color: 'var(--text3)', lineHeight: 1.6, marginBottom: IS_MOBILE ? 16 : 28 },
+  subtitle: { fontSize: 15, color: 'var(--text3)', lineHeight: 1.6, marginBottom: isMobile ? 16 : 28 },
   phoneWrap: { marginBottom: 8 },
   phoneInput: {
     width: '100%', fontSize: 32, fontWeight: 800,
@@ -634,20 +658,20 @@ const s = {
   },
   errorText: { marginTop: 10, fontSize: 13, color: '#EF4444', fontWeight: 500 },
   footer: { 
-    padding: IS_MOBILE 
+    padding: isMobile 
       ? '12px 20px calc(12px + env(safe-area-inset-bottom))' 
       : '16px 24px calc(24px + env(safe-area-inset-bottom))', 
     borderTop: '1px solid var(--border)', 
-    background: IS_MOBILE ? 'var(--bg2)' : 'transparent' 
+    background: isMobile ? 'var(--bg2)' : 'transparent' 
   },
   primaryBtn: {
     width: '100%', padding: '16px', borderRadius: 16,
     background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none',
     fontWeight: 700, fontSize: 16, cursor: 'pointer',
-    fontFamily: 'inherit', transition: 'all 0.2s', marginBottom: IS_MOBILE ? 8 : 12,
+    fontFamily: 'inherit', transition: 'all 0.2s', marginBottom: isMobile ? 8 : 12,
     boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)',
   },
-  orRow: { display: 'flex', alignItems: 'center', gap: 12, marginBottom: IS_MOBILE ? 8 : 12 },
+  orRow: { display: 'flex', alignItems: 'center', gap: 12, marginBottom: isMobile ? 8 : 12 },
   orLine: { flex: 1, height: 1, background: 'var(--border)' },
   orText: { fontSize: 13, color: 'var(--text3)', fontWeight: 500 },
   outlineBtn: {
@@ -656,7 +680,7 @@ const s = {
     color: 'var(--text)', fontWeight: 600, fontSize: 15,
     cursor: 'pointer', fontFamily: 'inherit',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-    marginBottom: IS_MOBILE ? 0 : 10, transition: 'all 0.2s',
+    marginBottom: isMobile ? 0 : 10, transition: 'all 0.2s',
     boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
   },
   // ── CHOOSE step styles ──
@@ -683,4 +707,4 @@ const s = {
   choiceDesc: {
     fontSize: 13, color: 'var(--text3)', lineHeight: 1.4,
   },
-};
+});

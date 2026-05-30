@@ -28,8 +28,8 @@ const TestHeader = ({
       </div>
       <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
         <button
-          onClick={() => setMode(mode === 'flash' ? 'exam' : 'flash')}
-          style={{ background: mode === 'flash' ? '#29B6F6' : '#F1F5F9', border: 'none', borderRadius: 10, color: mode === 'flash' ? '#fff' : '#64748B', cursor: 'pointer', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, fontFamily: 'inherit' }}
+          onClick={() => setMode(mode === 'flashcard' ? 'exam' : 'flashcard')}
+          style={{ background: mode === 'flashcard' ? '#29B6F6' : '#F1F5F9', border: 'none', borderRadius: 10, color: mode === 'flashcard' ? '#fff' : '#64748B', cursor: 'pointer', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, fontFamily: 'inherit' }}
         >
           <Zap size={15} />
           <span className="hide-mobile">Flashcard</span>

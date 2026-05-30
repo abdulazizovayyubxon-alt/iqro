@@ -119,17 +119,22 @@ export function clearPendingReferralCode() {
   localStorage.removeItem(REF_KEY);
 }
 
-// ── Kod orqali foydalanuvchini topish ──
+// ── Kod orqali foydalanuvchini topish (XAVFSIZ API ORQALI) ──
 export async function findUserByReferralCode(code) {
   if (!code) return null;
-  const q = query(
-    collection(db, 'users'),
-    where('referralCode', '==', code.toUpperCase())
-  );
-  const snap = await getDocs(q);
-  if (snap.empty) return null;
-  const d = snap.docs[0];
-  return { uid: d.id, ...d.data() };
+  try {
+    const res = await fetch('/api/find-referral', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code: code.toUpperCase() })
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.user || null;
+  } catch (err) {
+    console.error('findUserByReferralCode API xatosi:', err);
+    return null;
+  }
 }
 
 // ── Yangi foydalanuvchi ro'yxatdan o'tganda referral ulash ──
@@ -151,9 +156,12 @@ export async function applyReferralAfterRegister(newUserId, newUserName) {
     const q = query(collection(db, 'referrals'), where('referrerId', '==', referrer.uid));
     const snap = await getDocs(q);
     const currentTotalInvites = snap.size;
+    
+    const paidInvites = snap.docs.filter(d => d.data().status === 'paid').length;
+    const dynamicMax = paidInvites >= 5 ? 7 : 5;
 
     // ═══ LIMIT TEKSHIRUVI ═══
-    if (currentTotalInvites >= MAX_REFERRALS) {
+    if (currentTotalInvites >= dynamicMax) {
       console.log('Referrer taklif limitiga yetdi — yangi referral qabul qilinmaydi');
       return false; // Limitga yetgan
     }
@@ -205,8 +213,10 @@ export async function getReferralStats(uid) {
     const paid = referrals.filter(r => r.status === 'paid').length;
     const pending = referrals.filter(r => r.status === 'pending').length;
     const totalBonus = paid * REFERRAL_BONUS;
-    const canInviteMore = total < MAX_REFERRALS;
-    const remainingSlots = MAX_REFERRALS - total;
+    
+    const dynamicMax = paid >= 5 ? 7 : 5;
+    const canInviteMore = total < dynamicMax;
+    const remainingSlots = dynamicMax - total;
 
     return {
       referrals,

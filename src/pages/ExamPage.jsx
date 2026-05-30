@@ -64,7 +64,8 @@ const ExamPage = () => {
   const cat = state.activeCategory;
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
-  const { isTrialExpired: isFreeLimitReached } = useTrialExpiry();
+  const { isTrialExpired } = useTrialExpiry();
+  const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
 
 
 
@@ -546,20 +547,20 @@ const ExamPage = () => {
     );
   }
 
-  // Bepul limit tekshiruvi — imtihon bloklanishi (barcha hooklardan so'ng)
+  // Bepul limit tekshiruvi
   if (isFreeLimitReached) {
     return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
-        <div className="glass-panel" style={{ maxWidth: 500, margin: '60px auto', padding: 40, textAlign: 'center' }}>
-          <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
-          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Bepul Limit Tugadi</div>
-          <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-            Siz bepul limitni (7 kun) muvaffaqiyatli yakunladingiz! Barcha mavzular, imtihonlar va cheksiz savollar bazasiga kirish uchun Premium rejimni faollashtiring.
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="limit-container">
+        <div className="limit-card">
+          <div className="limit-icon">🔒</div>
+          <div className="limit-title">Kunlik Bepul Limit Tugadi</div>
+          <div className="limit-text">
+            Siz bugungi 50 ta bepul savol limitiga yetdingiz! Barcha savollar va mavzularga cheksiz kirish uchun Premium rejimni faollashtiring.
           </div>
-          <button className="btn btn-primary" style={{ width: '100%', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
+          <button className="limit-btn-primary" onClick={() => setShowPremiumModal(true)}>
             ⭐ Premium Rejimni Faollashtirish
           </button>
-          <button className="btn btn-outline" onClick={goBack}>← Bosh sahifaga</button>
+          <button className="limit-btn-secondary" onClick={() => navigate('/')}>← Bosh sahifaga</button>
         </div>
         <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
       </motion.div>
@@ -568,27 +569,20 @@ const ExamPage = () => {
 
   if (loading) {
     return (
-      <div style={{ maxWidth: 640, margin: '40px auto', padding: '20px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <style>{`
-          @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 0.3; }
-            100% { opacity: 0.6; }
-          }
-        `}</style>
+      <div className="test-skeleton-container">
         {/* Header Skeleton */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-           <div style={{ width: '40%', height: 24, background: 'var(--bg3)', borderRadius: 8, animation: 'pulse 1.5s infinite ease-in-out' }} />
-           <div style={{ width: '20%', height: 24, background: 'var(--bg3)', borderRadius: 8, animation: 'pulse 1.5s infinite ease-in-out' }} />
+        <div className="test-skeleton-header">
+           <div className="test-skeleton-line" style={{ width: '40%', height: 24 }} />
+           <div className="test-skeleton-line" style={{ width: '20%', height: 24 }} />
         </div>
         {/* Question Text Skeleton */}
-        <div style={{ background: 'var(--bg2)', padding: '24px 20px', borderRadius: 20, border: '1px solid var(--border)' }}>
-          <div style={{ width: '100%', height: 22, background: 'var(--bg3)', borderRadius: 6, marginBottom: 12, animation: 'pulse 1.5s infinite ease-in-out', animationDelay: '0.1s' }} />
-          <div style={{ width: '80%', height: 22, background: 'var(--bg3)', borderRadius: 6, marginBottom: 24, animation: 'pulse 1.5s infinite ease-in-out', animationDelay: '0.2s' }} />
+        <div className="test-skeleton-box">
+          <div className="test-skeleton-line" style={{ width: '100%', height: 22, marginBottom: 12, animationDelay: '0.1s' }} />
+          <div className="test-skeleton-line" style={{ width: '80%', height: 22, marginBottom: 24, animationDelay: '0.2s' }} />
           
           {/* Answers Skeletons */}
           {[1,2,3,4].map((i, idx) => (
-            <div key={i} style={{ width: '100%', height: 56, background: 'var(--bg3)', borderRadius: 16, marginBottom: 10, animation: 'pulse 1.5s infinite ease-in-out', animationDelay: `0.${3 + idx}s` }} />
+            <div key={i} className="test-skeleton-line" style={{ width: '100%', height: 56, borderRadius: 16, marginBottom: 10, animationDelay: `0.${3 + idx}s` }} />
           ))}
         </div>
       </div>

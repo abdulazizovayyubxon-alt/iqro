@@ -512,13 +512,30 @@ export const AuthProvider = ({ children }) => {
       return { success: false };
     }
 
-    // Default parol: iqro_auto_pass_ + telefon
-    const finalPassword = password || `iqro_auto_pass_${cleanPhone}`;
+    if (!password && isRegistering) {
+      setAuthError("Parol kiritilishi shart.");
+      return { success: false };
+    }
+
     const internalEmail = phoneToEmail(phone);
 
     try {
-      // 1. Avval mavjud akkaunt bilan kirishga urinamiz
-      await signInWithEmailAndPassword(auth, internalEmail, finalPassword);
+      if (!password && !isRegistering) {
+        // PROBE MODE: Faqat foydalanuvchi bormi yo'qmi tekshiramiz. Parolsiz login qilish taqiqlanadi!
+        const exists = await checkUserExists(phone);
+        
+        // Agar eski iqro_auto_pass_ bilan migratsiya qilingan bo'lsa,
+        // foydalanuvchidan Telegram orqali kirishni so'rash kerak
+        if (exists) {
+          return { success: false, hasCustomPassword: true };
+        } else {
+          return { success: false, notRegistered: true };
+        }
+      }
+
+      // Parol mavjud bo'lsa (Login holati)
+      if (password && !isRegistering) {
+        await signInWithEmailAndPassword(auth, internalEmail, password);
       
       // Kirish muvaffaqiyatli — brute-force hisoblagichni tozalaymiz
       resetLoginAttempts();
@@ -582,23 +599,9 @@ export const AuthProvider = ({ children }) => {
               // Migratsiya qilingan bo'lsa, endi u to'g'ri (auto) parolga ega!
               // Parol kiritish o'rniga to'g'ridan-to'g'ri kirishga qaytadan urinamiz
               try {
-                await signInWithEmailAndPassword(auth, internalEmail, finalPassword);
-                resetLoginAttempts();
-                
-                let isPremium = false;
-                const userRef = doc(db, 'users', auth.currentUser.uid);
-                const userSnap = await getDoc(userRef);
-                if (userSnap.exists()) isPremium = userSnap.data().isPremium || false;
-
-                setUser({
-                  uid: auth.currentUser.uid,
-                  email: auth.currentUser.email,
-                  displayName: auth.currentUser.displayName || phone,
-                  photoURL: auth.currentUser.photoURL,
-                  isPremium,
-                  _firebaseUser: auth.currentUser
-                });
-                return { success: true };
+                // Migratsiyadan keyin eski default parol orqali kirish yopildi.
+                // Foydalanuvchi faqat Telegram orqali kirishi mumkin.
+                return { success: false, hasCustomPassword: true };
               } catch (retryErr) {
                 console.error("Migratsiyadan keyin ham kirish xatosi:", retryErr);
                 return { success: false, hasCustomPassword: true };
@@ -617,7 +620,7 @@ export const AuthProvider = ({ children }) => {
 
         // ── RO'YXATDAN O'TISH REJIMI ──
         try {
-          const userCred = await createUserWithEmailAndPassword(auth, internalEmail, finalPassword);
+          const userCred = await createUserWithEmailAndPassword(auth, internalEmail, password);
           await updateProfile(userCred.user, { displayName: name });
 
           await setDoc(doc(db, 'users', userCred.user.uid), {

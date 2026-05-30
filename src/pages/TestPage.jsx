@@ -38,7 +38,8 @@ const TestPage = () => {
   const goBack = () => navigate('/test');
   const { addObjection } = useContext(ObjectionContext);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
-  const { isTrialExpired: isFreeLimitReached } = useTrialExpiry();
+  const { isTrialExpired } = useTrialExpiry();
+  const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
   const versionCacheRef = useRef(null);
 
 
@@ -256,33 +257,25 @@ const TestPage = () => {
 
         // 3. Agar telefonda savollar yo'q bo'lsa yoki versiya eskirgan bo'lsa (yangi savol qo'shilgan)
         if (!rawList || localCategoryVersion !== remoteVersion) {
-          const downloadUrl = storageUrls[state.activeCategory];
-          if (downloadUrl) {
-            try {
-              const res = await fetch(downloadUrl);
-              rawList = await res.json();
-              // Telefon xotirasini yangilaymiz
-              await localforage.setItem(cacheKey, rawList);
-              await localforage.setItem(versionKey, remoteVersion);
-            } catch (err) {
-              console.error("Bundle yuklashda xatolik:", err);
-              rawList = [];
+          const token = await user.getIdToken();
+          try {
+            const res = await fetch(`/api/get-questions?category=${state.activeCategory}`, {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            });
+            if (!res.ok) {
+              if (res.status === 403) {
+                showToast("Premium yoki sinov muddati talab qilinadi", 'error');
+                setShowPremiumModal(true);
+              }
+              throw new Error('Server error: ' + res.status);
             }
-          } else {
-            // Agar storageUrls da bu fanga oid fayl bo'lmasa (Admin hali Publish bosmagan bo'lsa),
-            // eskirgan usulda to'g'ridan-to'g'ri bazadan yuklashga urinib ko'ramiz (Fallback)
-            try {
-              const { query, where, getDocs, collection } = await import('firebase/firestore');
-              const qRef = collection(db, 'questions');
-              const qQuery = query(qRef, where('category', '==', state.activeCategory));
-              const snap = await getDocs(qQuery);
-              rawList = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-              // Buni ham telefon xotirasiga yozib qo'yamiz, toki qayta kirsangiz yana limit yemasligi uchun
-              await localforage.setItem(cacheKey, rawList);
-              // versionKey ni ham saqlaymiz, aks holda har gal qayta-qayta baza so'rayveradi (infinite loop bug fix)
-              await localforage.setItem(versionKey, remoteVersion);
-            } catch (fallbackErr) {
-              console.error("Fallback yuklashda xatolik:", fallbackErr);
+            rawList = await res.json();
+            await localforage.setItem(cacheKey, rawList);
+            await localforage.setItem(versionKey, remoteVersion);
+          } catch (err) {
+            console.error("Bundle yuklashda xatolik:", err);
               rawList = [];
             }
           }
@@ -449,27 +442,20 @@ const TestPage = () => {
 
   if (isGenerating) {
     return (
-      <div style={{ maxWidth: 640, margin: '0 auto', padding: '20px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <style>{`
-          @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 0.3; }
-            100% { opacity: 0.6; }
-          }
-        `}</style>
+      <div className="test-skeleton-container">
         {/* Header Skeleton */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-           <div style={{ width: '40%', height: 24, background: 'var(--bg3)', borderRadius: 8, animation: 'pulse 1.5s infinite ease-in-out' }} />
-           <div style={{ width: '20%', height: 24, background: 'var(--bg3)', borderRadius: 8, animation: 'pulse 1.5s infinite ease-in-out' }} />
+        <div className="test-skeleton-header">
+           <div className="test-skeleton-line" style={{ width: '40%', height: 24 }} />
+           <div className="test-skeleton-line" style={{ width: '20%', height: 24 }} />
         </div>
         {/* Question Text Skeleton */}
-        <div style={{ background: 'var(--bg2)', padding: '24px 20px', borderRadius: 20, border: '1px solid var(--border)' }}>
-          <div style={{ width: '100%', height: 22, background: 'var(--bg3)', borderRadius: 6, marginBottom: 12, animation: 'pulse 1.5s infinite ease-in-out', animationDelay: '0.1s' }} />
-          <div style={{ width: '80%', height: 22, background: 'var(--bg3)', borderRadius: 6, marginBottom: 24, animation: 'pulse 1.5s infinite ease-in-out', animationDelay: '0.2s' }} />
+        <div className="test-skeleton-box">
+          <div className="test-skeleton-line" style={{ width: '100%', height: 22, marginBottom: 12, animationDelay: '0.1s' }} />
+          <div className="test-skeleton-line" style={{ width: '80%', height: 22, marginBottom: 24, animationDelay: '0.2s' }} />
           
           {/* Answers Skeletons */}
           {[1,2,3,4].map((i, idx) => (
-            <div key={i} style={{ width: '100%', height: 56, background: 'var(--bg3)', borderRadius: 16, marginBottom: 10, animation: 'pulse 1.5s infinite ease-in-out', animationDelay: `0.${3 + idx}s` }} />
+            <div key={i} className="test-skeleton-line" style={{ width: '100%', height: 56, borderRadius: 16, marginBottom: 10, animationDelay: `0.${3 + idx}s` }} />
           ))}
         </div>
       </div>
@@ -478,20 +464,20 @@ const TestPage = () => {
 
   if (showTheory) {
     return (
-      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ padding: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' }}>
-        <div style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)', borderRadius: 24, padding: '32px 24px', textAlign: 'center', maxWidth: 520, width: '100%', boxShadow: '0 20px 40px rgba(0,0,0,0.06)' }}>
-          <div style={{ fontSize: 52, marginBottom: 16, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.08))' }}>📚</div>
-          <h2 style={{ marginBottom: 8, color: 'var(--text)', fontSize: 22, fontWeight: 800, letterSpacing: '-0.5px' }}>Qisqacha Eslatma</h2>
-          <p style={{ color: 'var(--text3)', fontSize: 14, marginBottom: 20, fontWeight: 500 }}>
+      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="theory-container">
+        <div className="theory-card">
+          <div className="theory-icon">📚</div>
+          <h2 className="theory-title">Qisqacha Eslatma</h2>
+          <p className="theory-subtitle">
             Testni boshlashdan oldin quyidagi ma'lumotlarni yodga oling:
           </p>
-          <div style={{ fontSize: 15, lineHeight: 1.7, color: 'var(--text2)', marginBottom: 28, textAlign: 'left', background: 'var(--bg3)', padding: '16px 20px', borderRadius: 16, borderLeft: '4px solid var(--accent)' }}>
+          <div className="theory-content">
             {topicObj?.theoryHint}
           </div>
           <motion.button
             whileHover={{ scale: 1.01, y: -1 }}
             whileTap={{ scale: 0.98 }}
-            style={{ width: '100%', padding: '16px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontSize: 16, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}
+            className="theory-btn"
             onClick={() => setShowTheory(false)}
           >
             O'qib chiqdim — Testni boshlash
@@ -504,17 +490,17 @@ const TestPage = () => {
   // Bepul limit tekshiruvi (hooks ishga tushgandan so'ng)
   if (isFreeLimitReached) {
     return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', padding: '20px' }}>
-        <div style={{ maxWidth: 400, width: '100%', background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 24, padding: '40px 28px', textAlign: 'center' }}>
-          <div style={{ fontSize: 52, marginBottom: 16 }}>🔒</div>
-          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 8, color: 'var(--text)' }}>Bepul Limit Tugadi</div>
-          <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 28 }}>
-            7 kunlik sinov yakunlandi! Barcha savollar va mavzularga kirish uchun Premium rejimni faollashtiring.
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="limit-container">
+        <div className="limit-card">
+          <div className="limit-icon">🔒</div>
+          <div className="limit-title">Kunlik Bepul Limit Tugadi</div>
+          <div className="limit-text">
+            Siz bugungi 50 ta bepul savol limitiga yetdingiz! Barcha savollar va mavzularga cheksiz kirish uchun Premium rejimni faollashtiring.
           </div>
-          <button style={{ width: '100%', padding: '15px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 16, cursor: 'pointer', fontFamily: 'inherit', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
+          <button className="limit-btn-primary" onClick={() => setShowPremiumModal(true)}>
             ⭐ Premium Rejimni Faollashtirish
           </button>
-          <button style={{ width: '100%', padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit' }} onClick={goBack}>← Bosh sahifaga</button>
+          <button className="limit-btn-secondary" onClick={goBack}>← Bosh sahifaga</button>
         </div>
         <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
       </motion.div>
@@ -568,27 +554,14 @@ const TestPage = () => {
       )}
 
       {questions.length === 0 ? (
-        <div 
-          className="glass-panel" 
-          style={{ 
-            padding: '48px 32px', textAlign: 'center', maxWidth: '500px', margin: '40px auto', 
-            borderRadius: '24px', border: '1px solid var(--border)',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.1)',
-            background: 'linear-gradient(135deg, var(--glass-bg), rgba(255, 255, 255, 0.03))',
-            position: 'relative', overflow: 'hidden'
-          }}
-        >
-          <div style={{
-            position: 'absolute', width: '180px', height: '180px',
-            background: mode === 'mistakes' ? 'radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%)' : 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)',
-            top: '50%', left: '50%', transform: 'translate(-50%, -50%)', pointerEvents: 'none', zIndex: 0
-          }} />
-          <div style={{ position: 'relative', zIndex: 1 }}>
+        <div className="empty-state-card">
+          <div className={`empty-state-glow ${mode === 'mistakes' ? 'success' : 'info'}`} />
+          <div className="empty-state-content">
             {mode === 'mistakes' ? (
               <>
-                <div className="float-animation" style={{ fontSize: '56px', marginBottom: '20px', filter: 'drop-shadow(0 10px 15px rgba(16, 185, 129, 0.2))', display: 'inline-block' }}>🏆</div>
-                <h3 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text)', marginBottom: '10px' }}>Hozircha xatolar yo'q</h3>
-                <p style={{ color: 'var(--text3)', fontSize: '14px', lineHeight: '1.6', marginBottom: '28px', maxWidth: '340px', margin: '0 auto 28px' }}>
+                <div className="empty-state-icon success float-animation">🏆</div>
+                <h3 className="empty-state-title">Hozircha xatolar yo'q</h3>
+                <p className="empty-state-text">
                   Ajoyib natija! Siz hali birorta ham xato qilmadingiz yoki barcha xatolaringizni muvaffaqiyatli tuzatdingiz.
                 </p>
                 <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
@@ -597,9 +570,9 @@ const TestPage = () => {
               </>
             ) : (
               <>
-                <div className="float-animation" style={{ fontSize: '56px', marginBottom: '20px', filter: 'drop-shadow(0 10px 15px rgba(59, 130, 246, 0.2))', display: 'inline-block' }}>⏳</div>
-                <h3 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text)', marginBottom: '10px' }}>Mavzu tayyorlanmoqda</h3>
-                <p style={{ color: 'var(--text3)', fontSize: '14px', lineHeight: '1.6', marginBottom: '28px', maxWidth: '340px', margin: '0 auto 28px' }}>
+                <div className="empty-state-icon info float-animation">⏳</div>
+                <h3 className="empty-state-title">Mavzu tayyorlanmoqda</h3>
+                <p className="empty-state-text">
                   Ushbu bo'lim uchun savollar hozirda yuklanish jarayonida yoki tez orada qo'shiladi. Boshqa bo'lim yoki fanni sinab ko'ring.
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center' }}>
@@ -612,7 +585,7 @@ const TestPage = () => {
             )}
           </div>
         </div>
-      ) : mode === 'flash' ? (
+      ) : mode === 'flashcard' ? (
         <FlashcardView 
           questions={questions}
           currentQ={currentQ}

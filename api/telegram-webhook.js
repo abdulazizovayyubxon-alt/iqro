@@ -472,9 +472,15 @@ export default async function handler(req, res) {
         // Chegirma tekshirish
         let finalPrice = price;
         let discountMsg = '';
-        if (linkedUser && linkedUser.discountAvailable) {
-          finalPrice = Math.round(price * 0.5);
-          discountMsg = `\n🎉 <i>Sizda <b>50% chegirma</b> mavjud!</i> Narx: <s>${price.toLocaleString()}</s> → <b>${finalPrice.toLocaleString()} so'm</b>`;
+        if (linkedUser && linkedUser.referralDiscount > 0) {
+          finalPrice = Math.max(0, Math.round(price * (100 - linkedUser.referralDiscount) / 100));
+          discountMsg = `\n🎉 <i>Sizda <b>${linkedUser.referralDiscount}% chegirma</b> mavjud!</i> Narx: <s>${price.toLocaleString()}</s> → <b>${finalPrice.toLocaleString()} so'm</b>`;
+        }
+        
+        // Referral bonus keshbekini hisoblash
+        if (linkedUser && linkedUser.referralBonus > 0) {
+          finalPrice = Math.max(0, finalPrice - linkedUser.referralBonus);
+          discountMsg += `\n🎁 <i>Sizda qo'shimcha keshbek bor!</i> Yakuniy narx: <b>${finalPrice.toLocaleString()} so'm</b>`;
         }
 
         // ── YANGI: Noyob TXN kodi yaratish ──

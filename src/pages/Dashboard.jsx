@@ -26,7 +26,9 @@ const Dashboard = () => {
   const { state, updateState } = useContext(AppContext);
   const { objections, clearObjections, solveObjection, deleteObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
-  const { isTrialExpired: isFreeLimitReached, daysLeft: trialDaysLeft } = useTrialExpiry();
+  const { isTrialExpired, daysLeft: trialDaysLeft } = useTrialExpiry();
+  const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
+  const questionsLeft = Math.max(0, 50 - (state.dailyGoal?.answered || 0));
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [daysLeft, setDaysLeft] = useState('');
   const [showExamBanner, setShowExamBanner] = useState(true);
@@ -38,15 +40,28 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    if (!EXAM_DATE) { setDaysLeft('Bilimingizni oshirishda davom eting!'); return; }
     const calc = () => {
-      const diff = EXAM_DATE - new Date();
-      if (diff <= 0) setDaysLeft('Imtihon kuni!');
+      const customSaved = localStorage.getItem('CUSTOM_EXAM_DATE');
+      let target = null;
+      if (customSaved) {
+        target = new Date(customSaved);
+        if (isNaN(target.getTime())) target = null;
+      }
+      if (!target) target = EXAM_DATE;
+
+      if (!target) { setDaysLeft('Bilimingizni oshirishda davom eting!'); return; }
+      
+      const diff = target - new Date();
+      if (isNaN(diff) || diff <= 0) setDaysLeft('Imtihon kuni!');
       else setDaysLeft(`${Math.floor(diff / 86400000)} kun ${Math.floor((diff % 86400000) / 3600000)} soat`);
     };
     calc();
+    window.addEventListener('storage', calc);
     const int = setInterval(calc, 60000);
-    return () => clearInterval(int);
+    return () => {
+      clearInterval(int);
+      window.removeEventListener('storage', calc);
+    };
   }, []);
 
   // ═══ REFERRAL WELCOME TOAST ═══
@@ -55,7 +70,7 @@ const Dashboard = () => {
     if (flag === 'true') {
       localStorage.removeItem('iqro_referral_welcome');
       setTimeout(() => {
-        showToast("🎉 Tabriklaymiz! Siz 30 kun bepul Premium oldingiz! Ikkalangiz ham foyda ko'rasiz!", 'success');
+        showToast("🎉 Tabriklaymiz! Do'stingiz orqali 50% chegirmaga ega bo'ldingiz!", 'success');
       }, 1500);
     }
   }, []);
@@ -117,34 +132,34 @@ const Dashboard = () => {
   );
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={s.page}>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="dashboard-page">
 
       {/* ── GREETING ── */}
-      <div style={s.greeting}>
+      <div className="dashboard-greeting">
         <div>
-          <div style={s.greetSub}>Xush kelibsiz 👋</div>
-          <h1 style={s.greetName}>{userName}</h1>
+          <div className="dashboard-greet-sub">Xush kelibsiz 👋</div>
+          <h1 className="dashboard-greet-name">{userName}</h1>
         </div>
       </div>
 
       {/* ── SUBJECT TABS (Dinamik) ── */}
-      <div style={s.subjTabsContainer}>
+      <div className="dashboard-subj-tabs">
         {SUBJECTS.map(subj => {
           const Icon = subj.icon;
           const isSelected = subj.id === cat;
           return (
-            <motion.button
-              key={subj.id}
-              whileTap={{ scale: 0.95 }}
-              style={{
-                ...s.subjTab,
-                background: isSelected ? 'var(--blue)' : 'var(--bg3)',
-                color: isSelected ? '#fff' : 'var(--text2)',
-                border: isSelected ? '1px solid var(--blue)' : '1.5px solid var(--border)',
-                boxShadow: isSelected ? '0 4px 12px rgba(41, 182, 246, 0.25)' : 'none',
-              }}
-              onClick={() => updateState({ activeCategory: subj.id })}
-            >
+              <motion.button
+                key={subj.id}
+                whileTap={{ scale: 0.95 }}
+                className="dashboard-subj-tab"
+                style={{
+                  background: isSelected ? 'var(--blue)' : 'var(--bg3)',
+                  color: isSelected ? '#fff' : 'var(--text2)',
+                  border: isSelected ? '1px solid var(--blue)' : '1.5px solid var(--border)',
+                  boxShadow: isSelected ? '0 4px 12px rgba(41, 182, 246, 0.25)' : 'none',
+                }}
+                onClick={() => updateState({ activeCategory: subj.id })}
+              >
               <Icon size={16} />
               <span>{subj.name}</span>
             </motion.button>
@@ -154,7 +169,7 @@ const Dashboard = () => {
 
       {/* ── IMTIHON BANNER ── */}
       {showExamBanner && EXAM_DATE && cat !== 'art' && (
-        <div style={{...s.examBanner, position: 'relative'}}>
+        <div className="dashboard-exam-banner">
           <button 
             style={{ position: 'absolute', top: 4, right: 4, background: 'transparent', border: 'none', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', cursor: 'pointer', borderRadius: '50%' }}
             onClick={(e) => { e.stopPropagation(); setShowExamBanner(false); localStorage.setItem('iqro_dismissed_exam_banner', '1'); }}
@@ -170,7 +185,7 @@ const Dashboard = () => {
               <div style={{ fontSize: 18, fontWeight: 800, color: '#fff' }}>{daysLeft}</div>
             </div>
           </div>
-          <div style={s.examGoal}>
+          <div className="dashboard-exam-goal">
             <Target size={14} />
             <span>Maqsad: {EXAM_GOAL_SCORE} ball</span>
           </div>
@@ -179,17 +194,17 @@ const Dashboard = () => {
 
       {/* ── PREMIUM TRIAL BANNER ── */}
       {!user?.isPremium && (
-        <button style={s.trialBanner} onClick={() => setShowPremiumModal(true)}>
+        <button className="dashboard-trial-banner" onClick={() => setShowPremiumModal(true)}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span style={{ fontSize: 24 }}>⚡</span>
             <div style={{ textAlign: 'left' }}>
               <div style={{ fontSize: 14, fontWeight: 700, color: '#92400E' }}>
-                Bepul sinov: {trialDaysLeft !== null ? `${trialDaysLeft} kun qoldi` : '—'}
+                {isTrialExpired ? `Bugun yana ${questionsLeft} ta bepul savol qoldi` : `Bepul sinov: ${trialDaysLeft !== null ? `${trialDaysLeft} kun qoldi` : '—'}`}
               </div>
               <div style={{ fontSize: 12, color: '#B45309' }}>Premium ga o'tib cheksiz ishlang</div>
             </div>
           </div>
-          <div style={s.trialBtn}>Faollashtirish</div>
+          <div className="dashboard-trial-btn">Faollashtirish</div>
         </button>
       )}
 
@@ -205,7 +220,7 @@ const Dashboard = () => {
       <motion.button
         whileHover={{ scale: 1.01, y: -2 }}
         whileTap={{ scale: 0.98 }}
-        style={s.referralBanner}
+        className="dashboard-referral-banner"
         onClick={() => navigate('/referral')}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -215,18 +230,18 @@ const Dashboard = () => {
               Do'stlarni taklif eting!
             </div>
             <div style={{ fontSize: 12, color: '#92400E', marginTop: 2, fontWeight: 500 }}>
-              Yoziling va bepul 30 kunlik Premium oling!
+              Taklif qiling va ikkalangiz ham 50% chegirma oling!
             </div>
           </div>
         </div>
-        <div style={s.referralBtn}>Taklif qilish</div>
+        <div className="dashboard-referral-btn">Taklif qilish</div>
       </motion.button>
       </div>
       )}
 
       {/* ── TEZKOR HARAKATLAR ── */}
-      <div style={s.sectionLabel}>Tezkor boshlash</div>
-      <div style={s.actionsGrid}>
+      <div className="dashboard-section-label">Tezkor boshlash</div>
+      <div className="dashboard-actions-grid">
         {quickActions.map((action) => {
           const Icon = action.icon;
           return (
@@ -234,8 +249,8 @@ const Dashboard = () => {
               key={action.id}
               whileHover={{ scale: 1.01, y: -2 }}
               whileTap={{ scale: 0.98 }}
+              className="dashboard-action-card"
               style={{ 
-                ...s.actionCard, 
                 background: action.bg, 
                 borderColor: action.id === 'test' ? 'var(--blue)' : 'var(--glass-border)',
                 boxShadow: action.id === 'test' ? '0 0 0 2px var(--blue)' : '0 2px 8px rgba(0,0,0,0.01)'
@@ -243,10 +258,10 @@ const Dashboard = () => {
               onClick={action.onClick}
               animate={action.id === 'test' ? { boxShadow: ['0 0 0 2px rgba(41,182,246,0.3)', '0 0 0 6px rgba(41,182,246,0)'], transition: { repeat: Infinity, duration: 1.5 } } : {}}
             >
-              <div style={{ ...s.actionIcon, background: action.color }}>
+              <div className="dashboard-action-icon" style={{ background: action.color }}>
                 <Icon size={20} color="#fff" />
                 {action.badge && (
-                  <span style={s.actionBadge}>{action.badge}</span>
+                  <span className="dashboard-action-badge">{action.badge}</span>
                 )}
               </div>
               <div style={{ textAlign: 'left', flex: 1 }}>
@@ -260,8 +275,8 @@ const Dashboard = () => {
       </div>
 
       {/* ── BO'LIMLAR XARITASI ── */}
-      <div style={s.sectionLabel}>Bo'limlar xaritasi</div>
-      <div style={s.topicsGrid}>
+      <div className="dashboard-section-label">Bo'limlar xaritasi</div>
+      <div className="dashboard-topics-grid">
         {categoryTopics.map((t) => {
           const ts = state.topicStats[t.id];
           const hasStats = ts && ts.answered > 0;
@@ -274,7 +289,7 @@ const Dashboard = () => {
               key={t.id}
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              style={s.topicCard}
+              className="dashboard-topic-card"
               onClick={() => handleNav(t.id, 'exam')}
             >
               {/* Donut */}
@@ -308,27 +323,27 @@ const Dashboard = () => {
 
       {/* ── ADMIN E'TIROZLAR ── */}
       {isAdmin && objections.length > 0 && (
-        <div style={s.adminBox}>
-          <div style={s.adminBoxHeader}>
+        <div className="dashboard-admin-box">
+          <div className="dashboard-admin-header">
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 700, color: 'var(--blue)' }}>
               <MessageCircle size={18} /> E'tirozlar ({objections.length})
             </div>
-            <button style={s.adminClearBtn}
+            <button className="dashboard-admin-clear"
               onClick={() => { if (confirm('Barchasini o\'chirasizmi?')) clearObjections(); }}>
               <Trash2 size={14} /> Tozalash
             </button>
           </div>
           {[...objections].reverse().slice(0, 5).map((obj, i) => (
-            <div key={obj.fbId || i} style={s.objCard}>
+            <div key={obj.fbId || i} className="dashboard-obj-card">
               <div style={{ fontSize: 12, color: 'var(--text3)', marginBottom: 4 }}>{obj.topic} · {obj.date}</div>
               <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 6 }}>{obj.question}</div>
               <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
                 {!obj.solved && (
-                  <button style={s.objBtn('#10B981')} onClick={() => solveObjection(obj.fbId)}>
+                  <button className="dashboard-obj-btn" style={{ border: '1px solid #10B98120', background: '#10B98110', color: '#10B981' }} onClick={() => solveObjection(obj.fbId)}>
                     <CheckCircle2 size={12} /> Tuzatildi
                   </button>
                 )}
-                <button style={s.objBtn('#EF4444')} onClick={() => deleteObjection(obj.fbId)}>
+                <button className="dashboard-obj-btn" style={{ border: '1px solid #EF444420', background: '#EF444410', color: '#EF4444' }} onClick={() => deleteObjection(obj.fbId)}>
                   <Trash2 size={12} /> O'chirish
                 </button>
               </div>
@@ -340,152 +355,6 @@ const Dashboard = () => {
       <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
     </motion.div>
   );
-};
-
-// ── Styles ──
-const s = {
-  page: { padding: '20px 16px 32px', maxWidth: 720, margin: '0 auto' },
-  greeting: {
-    display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between',
-    marginBottom: 20,
-  },
-  greetSub: { fontSize: 14, color: 'var(--text3)', fontWeight: 500, marginBottom: 2 },
-  greetName: { fontSize: 26, fontWeight: 800, color: 'var(--text)', margin: 0 },
-  catSwitch: {
-    display: 'flex', alignItems: 'center', gap: 6,
-    padding: '8px 14px', borderRadius: 12,
-    border: '1.5px solid var(--border)', background: 'var(--bg2)',
-    fontSize: 13, fontWeight: 700, color: 'var(--text2)',
-    cursor: 'pointer', fontFamily: 'inherit',
-    whiteSpace: 'nowrap', flexShrink: 0,
-  },
-  subjTabsContainer: {
-    display: 'flex',
-    gap: 8,
-    overflowX: 'auto',
-    paddingBottom: 8,
-    marginBottom: 20,
-    scrollbarWidth: 'none',
-    msOverflowStyle: 'none',
-    WebkitOverflowScrolling: 'touch',
-  },
-  subjTab: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 8,
-    padding: '14px 20px', // Min 48px touch target
-    borderRadius: 14,
-    border: '1.5px solid var(--border)',
-    fontSize: 14,
-    fontWeight: 700,
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-    whiteSpace: 'nowrap',
-    flexShrink: 0,
-    transition: 'all 0.2s ease',
-  },
-  examBanner: {
-    background: 'var(--blue)',
-    borderRadius: 18, padding: '20px 24px',
-    marginBottom: 16,
-    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-  },
-  examGoal: {
-    display: 'flex', alignItems: 'center', gap: 6,
-    background: 'rgba(255,255,255,0.15)', borderRadius: 10, padding: '6px 12px',
-    fontSize: 13, fontWeight: 600, color: '#fff',
-  },
-  trialBanner: {
-    width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-    background: 'var(--amber-bg)', border: '1px solid var(--glass-border)', borderRadius: 18,
-    padding: '16px 18px', marginBottom: 20, cursor: 'pointer', fontFamily: 'inherit',
-  },
-  trialBtn: {
-    background: '#F59E0B', color: '#fff', fontWeight: 700, fontSize: 13,
-    padding: '8px 14px', borderRadius: 10, flexShrink: 0,
-  },
-  referralBanner: {
-    width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-    background: 'var(--amber-bg)',
-    border: '1.5px solid var(--amber)', borderRadius: 18,
-    padding: '18px 20px', marginBottom: 20, cursor: 'pointer', fontFamily: 'inherit',
-    boxShadow: '0 4px 15px rgba(245, 158, 11, 0.08)',
-  },
-  referralBtn: {
-    background: '#78350F', color: '#fff', fontWeight: 700, fontSize: 13,
-    padding: '8px 14px', borderRadius: 10, flexShrink: 0,
-  },
-  statsRow: {
-    display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: 10, marginBottom: 24,
-  },
-  statCard: {
-    background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', borderRadius: 18,
-    padding: '16px 12px', textAlign: 'center',
-  },
-  statIcon: { fontSize: 20, marginBottom: 6 },
-  statVal: { fontSize: 22, fontWeight: 800, color: 'var(--text)', lineHeight: 1 },
-  statLbl: { fontSize: 11, color: 'var(--text3)', marginTop: 4, fontWeight: 500 },
-  sectionLabel: {
-    fontSize: 13, fontWeight: 700, color: 'var(--text3)',
-    textTransform: 'uppercase', letterSpacing: 0.8,
-    marginBottom: 12, marginTop: 4,
-  },
-  actionsGrid: { display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28 },
-  actionCard: {
-    display: 'flex', alignItems: 'center', gap: 14,
-    padding: '16px 18px', borderRadius: 18,
-    border: '1px solid var(--glass-border)', cursor: 'pointer',
-    fontFamily: 'inherit', textAlign: 'left',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.01)',
-  },
-  actionIcon: {
-    width: 44, height: 44, borderRadius: 12,
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
-    flexShrink: 0, position: 'relative',
-  },
-  actionBadge: {
-    position: 'absolute', top: -6, right: -6,
-    background: '#EF4444', color: '#fff', fontSize: 9, fontWeight: 800,
-    borderRadius: 6, padding: '1px 4px', minWidth: 14, textAlign: 'center',
-  },
-  topicsGrid: {
-    display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
-    gap: 10, marginBottom: 24,
-  },
-  topicCard: {
-    padding: '16px 12px', borderRadius: 18,
-    border: '1px solid var(--glass-border)', background: 'var(--glass-bg)',
-    backdropFilter: 'blur(10px)',
-    cursor: 'pointer', fontFamily: 'inherit',
-    display: 'flex', flexDirection: 'column',
-    alignItems: 'center',
-    boxShadow: '0 2px 10px rgba(0,0,0,0.02)',
-  },
-  adminBox: {
-    border: '1.5px solid var(--border)', borderRadius: 16,
-    background: 'var(--blue-bg)', padding: '16px', marginBottom: 16,
-  },
-  adminBoxHeader: {
-    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-    marginBottom: 14,
-  },
-  adminClearBtn: {
-    display: 'flex', alignItems: 'center', gap: 6,
-    padding: '6px 12px', borderRadius: 8, border: '1px solid var(--border)',
-    background: 'var(--bg2)', color: '#EF4444', fontSize: 12, fontWeight: 600,
-    cursor: 'pointer', fontFamily: 'inherit',
-  },
-  objCard: {
-    background: 'var(--bg2)', borderRadius: 12, padding: '12px 14px',
-    marginBottom: 8, border: '1px solid var(--border)',
-  },
-  objBtn: (color) => ({
-    display: 'flex', alignItems: 'center', gap: 4,
-    padding: '5px 10px', borderRadius: 8,
-    border: `1px solid ${color}20`, background: `${color}10`,
-    color, fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
-  }),
 };
 
 export default Dashboard;
