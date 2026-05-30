@@ -257,7 +257,21 @@ const TestPage = () => {
 
         // 3. Agar telefonda savollar yo'q bo'lsa yoki versiya eskirgan bo'lsa (yangi savol qo'shilgan)
         if (!rawList || localCategoryVersion !== remoteVersion) {
-          const token = await auth.currentUser.getIdToken();
+          // auth.currentUser sahifa yuklanishida null bo'lishi mumkin — kuting
+          let currentUser = auth.currentUser;
+          if (!currentUser) {
+            currentUser = await new Promise((resolve) => {
+              const unsub = auth.onAuthStateChanged(u => {
+                unsub();
+                resolve(u);
+              });
+              setTimeout(() => resolve(null), 5000);
+            });
+          }
+          if (!currentUser) {
+            throw new Error('Foydalanuvchi tizimga kirmagan');
+          }
+          const token = await currentUser.getIdToken();
           try {
             const res = await fetch(`/api/get-questions?category=${state.activeCategory}`, {
               headers: {
