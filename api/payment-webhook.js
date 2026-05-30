@@ -281,3 +281,4 @@ export default async function handler(req, res) {
   if (isPayme) return handlePayme(req, res);
   return handleClick(req, res);
 }
+
