@@ -20,9 +20,9 @@ export default async function handler(req, res) {
   
   // Vercel da joylashgan loyihamizning URL si
   // Vercel VERCEL_URL env ni o'zi qo'yadi
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : 'https://iqro-t41p.vercel.app';
+  // Har doim asosiy (production) domenni ishlatamiz!
+  // Shunda har bir yangilanishda eski url ga qolib ketmaydi.
+  const baseUrl = 'https://iqro-t41p.vercel.app';
 
   const webhookUrl = `${baseUrl}/api/telegram-webhook`;
 
