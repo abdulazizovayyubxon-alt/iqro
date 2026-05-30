@@ -291,6 +291,27 @@ export default async function handler(req, res) {
         let userRecord;
         try {
           userRecord = await auth.getUserByEmail(email);
+          // Agar topilsa, lekin Firestore'da yo'q bo'lsa, yaratib qo'yamiz
+          const docSnap = await db.collection('users').doc(userRecord.uid).get();
+          if (!docSnap.exists) {
+            await db.collection('users').doc(userRecord.uid).set({
+              uid: userRecord.uid,
+              email: email,
+              phone: cleanPhone,
+              displayName: contact.first_name || 'Foydalanuvchi',
+              role: 'user',
+              isPremium: false,
+              createdAt: new Date(),
+              telegramChatId: chatId,
+              telegramEnabled: true
+            });
+          } else {
+            // Agar bor bo'lsa, chatId ni yangilab qo'yamiz
+            await docSnap.ref.update({
+              telegramChatId: chatId,
+              telegramEnabled: true
+            });
+          }
         } catch (e) {
           if (e.code === 'auth/user-not-found') {
             userRecord = await auth.createUser({

@@ -35,12 +35,11 @@ export default async function handler(req, res) {
     const decodedToken = await getAuth().verifyIdToken(idToken);
     const uid = decodedToken.uid;
     
+    let userData = {};
     const userSnap = await db.collection('users').doc(uid).get();
-    if (!userSnap.exists) {
-      return res.status(403).json({ error: 'Forbidden: User not found in database' });
+    if (userSnap.exists) {
+      userData = userSnap.data();
     }
-    
-    const userData = userSnap.data();
     
     const isPremium = userData.isPremium === true;
     
@@ -50,6 +49,10 @@ export default async function handler(req, res) {
       const createdDate = userData.createdAt.toDate ? userData.createdAt.toDate() : new Date(userData.createdAt);
       const diffDays = (Date.now() - createdDate.getTime()) / (1000 * 60 * 60 * 24);
       isTrial = diffDays <= 7;
+    } else {
+      // If no creation date or missing user doc, we can assume trial is valid from today 
+      // OR we can just grant them trial. Let's just grant them trial since they just authenticated.
+      isTrial = true;
     }
     
     if (!isPremium && !isTrial) {
