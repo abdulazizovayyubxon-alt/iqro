@@ -17,7 +17,15 @@ function getDb() {
       // Avval oddiy JSON sifatida o'qishga harakat qilamiz
       serviceAccount = JSON.parse(serviceAccountStr);
     } catch (e) {
-      //// ── Bot token faqat env dan olinadi ──
+      // O'xshamasa base64 dan ochamiz
+      serviceAccount = JSON.parse(Buffer.from(serviceAccountStr, 'base64').toString());
+    }
+    initializeApp({ credential: cert(serviceAccount) });
+  }
+  return { db: getFirestore(), auth: getAuth() };
+}
+
+// ── Bot token faqat env dan olinadi ──
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 if (!TELEGRAM_BOT_TOKEN) {
   console.error('TELEGRAM_BOT_TOKEN env o\'zgaruvchisi topilmadi!');
