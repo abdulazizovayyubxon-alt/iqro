@@ -71,6 +71,9 @@ export const AppProvider = ({ children }) => {
   const [state, setState] = useState(buildDefaultState);
   const [cloudSynced, setCloudSynced] = useState(false);
   const prevUserRef = useRef(null);
+  // Har doim joriy user qiymatini saqlaymiz (stale closure muammosini hal qilish uchun)
+  const userRef = useRef(user);
+  useEffect(() => { userRef.current = user; }, [user]);
 
   // ─── 1. Foydalanuvchi kirishi/chiqishida statistikani yuklash ───
   useEffect(() => {
@@ -379,19 +382,23 @@ export const AppProvider = ({ children }) => {
         }
       };
 
-      // Force immediate sync to Firestore so Leaderboard is instantly updated!
+      // Force immediate sync to Firestore — userRef orqali stale closure muammosi hal qilinadi
       setTimeout(() => {
-        if (!user) return;
-        const statRef = doc(db, 'userStats', user.uid);
+        const currentUser = userRef.current;
+        if (!currentUser) return;
+        const statRef = doc(db, 'userStats', currentUser.uid);
         const statsToSave = { ...newState };
-        const currentName = user.displayName || statsToSave.displayName || '';
+        const currentName = currentUser.displayName || statsToSave.displayName || currentUser.email?.split('@')[0] || '';
         statsToSave.displayName = currentName;
         statsToSave.userName = currentName;
-        statsToSave.photoURL = user.photoURL || statsToSave.photoURL || null;
+        statsToSave.photoURL = currentUser.photoURL || statsToSave.photoURL || null;
         delete statsToSave.topicId;
         delete statsToSave.testMode;
-        setDoc(statRef, statsToSave, { merge: true }).catch(console.error);
-      }, 0);
+        setDoc(statRef, statsToSave, { merge: true }).catch(err => {
+          console.error('Natijalarni saqlashda xatolik:', err);
+          showToast('Natijalar vaqtincha saqlanmadi. Internet aloqasini tekshiring.', 'error');
+        });
+      }, 100);
 
       return newState;
     });
