@@ -219,7 +219,7 @@ export default function LoginPage() {
     const sessionId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     window.location.href = `tg://resolve?domain=IQRO_testbot&start=login_${sessionId}`;
     setLoading(true);
-    setAuthError('Telegram orqali tasdiqlash kutilmoqda... Botga kirib START bosing.');
+    setAuthError('⏳ Telegram orqali tasdiqlash kutilmoqda... Botga o\'tib "📱 Telefon raqamni yuborish" tugmasini bosing.');
     
     if (window.tgInterval) clearInterval(window.tgInterval);
     window.tgInterval = setInterval(async () => {
@@ -228,7 +228,10 @@ export default function LoginPage() {
         const data = await res.json();
         if (data.success && data.token) {
           clearInterval(window.tgInterval);
+          setAuthError('');
+          setLoading(false);
           await signInWithCustomToken(auth, data.token);
+          // onAuthStateChanged o'zi user ni set qiladi
         }
       } catch (e) {
         console.error(e);
@@ -236,10 +239,11 @@ export default function LoginPage() {
     }, 2500);
     
     setTimeout(() => {
-      if (window.tgInterval) clearInterval(window.tgInterval);
-      setLoading(false);
-      // We don't clear authError here because the user might still be looking at it,
-      // but they can click cancel.
+      if (window.tgInterval) {
+        clearInterval(window.tgInterval);
+        setLoading(false);
+        setAuthError('Vaqt tugadi. Qaytadan urinib ko\'ring.');
+      }
     }, 120000); // 2 min timeout
   };
 

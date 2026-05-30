@@ -575,7 +575,9 @@ export const AuthProvider = ({ children }) => {
           email: internalEmail,
           displayName: name,
           photoURL: null,
-          isPremium: false,
+          isPremium: true,  // Trial davomida premium funksiyalar ochiq
+          trialStatus: 'trial',
+          trialDaysLeft: FREE_TRIAL_DAYS,
           _firebaseUser: userCred.user
         });
         return { success: true };
@@ -596,13 +598,14 @@ export const AuthProvider = ({ children }) => {
         await setDoc(userRef, { displayName: name }, { merge: true });
       }
 
+      const currentFbUser = auth.currentUser;
       setUser({
-        uid: auth.currentUser.uid,
-        email: auth.currentUser.email,
-        displayName: auth.currentUser.displayName || name || phone,
-        photoURL: auth.currentUser.photoURL,
+        uid: currentFbUser.uid,
+        email: currentFbUser.email,
+        displayName: currentFbUser.displayName || name || phone,
+        photoURL: currentFbUser.photoURL,
         isPremium,
-        _firebaseUser: auth.currentUser
+        _firebaseUser: currentFbUser
       });
       return { success: true };
     } catch (err) {

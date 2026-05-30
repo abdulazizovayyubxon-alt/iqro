@@ -17,7 +17,7 @@ import FreeMonthBanner from '../components/FreeMonthBanner';
 import SafeHtml from '../components/shared/SafeHtml';
 import QuestionMedia from '../components/QuestionMedia';
 import { BATCH_SIZE, QUESTION_TIMER_SECONDS } from '../config';
-import { db } from '../firebase';
+import { db, auth } from '../firebase';
 import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
 import { smartSort, summarizeTestResults } from '../engine/SmartQuestionEngine';
 import localforage from 'localforage';
@@ -257,7 +257,7 @@ const TestPage = () => {
 
         // 3. Agar telefonda savollar yo'q bo'lsa yoki versiya eskirgan bo'lsa (yangi savol qo'shilgan)
         if (!rawList || localCategoryVersion !== remoteVersion) {
-          const token = await user.getIdToken();
+          const token = await auth.currentUser.getIdToken();
           try {
             const res = await fetch(`/api/get-questions?category=${state.activeCategory}`, {
               headers: {
