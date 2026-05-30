@@ -276,8 +276,7 @@ const TestPage = () => {
             await localforage.setItem(versionKey, remoteVersion);
           } catch (err) {
             console.error("Bundle yuklashda xatolik:", err);
-              rawList = [];
-            }
+            rawList = [];
           }
         }
 

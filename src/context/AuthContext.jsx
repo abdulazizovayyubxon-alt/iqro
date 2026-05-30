@@ -536,6 +536,7 @@ export const AuthProvider = ({ children }) => {
       // Parol mavjud bo'lsa (Login holati)
       if (password && !isRegistering) {
         await signInWithEmailAndPassword(auth, internalEmail, password);
+      }
       
       // Kirish muvaffaqiyatli — brute-force hisoblagichni tozalaymiz
       resetLoginAttempts();
