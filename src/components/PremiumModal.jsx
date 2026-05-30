@@ -511,7 +511,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                 )}
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: '#94A3B8', fontSize: 11, fontWeight: 600 }}>
-                  <ShieldCheck size={14} color="#10B981" />
+                  <Shield size={14} color="#10B981" />
                   Xavfsiz to'lov • 100% kafolat
                 </div>
               </motion.div>
@@ -522,8 +522,8 @@ const PremiumModal = ({ isOpen, onClose }) => {
               <motion.div key="telegram_guide" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                 <div style={{ textAlign: 'center', marginBottom: 24 }}>
                   <div style={{ fontSize: 56, marginBottom: 12 }}>📱</div>
-                  <h2 style={{ fontSize: 20, fontWeight: 900, color: '#fff', margin: '0 0 8px' }}>Telegram Bot ochildi!</h2>
-                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: 1.6 }}>
+                  <h2 style={{ fontSize: 20, fontWeight: 900, color: '#0f172a', margin: '0 0 8px' }}>Telegram Bot ochildi!</h2>
+                  <p style={{ fontSize: 13, color: '#64748B', margin: 0, lineHeight: 1.6 }}>
                     Bot sizga to'lov yo'riqnomasini yubordi. Quyidagi qadamlarni bajaring:
                   </p>
                 </div>
@@ -531,17 +531,17 @@ const PremiumModal = ({ isOpen, onClose }) => {
                 {/* Qadamlar */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 24 }}>
                   {[
-                    { step: '1', icon: '💳', text: 'Botdagi karta raqamiga kerakli summani to\'lang' },
-                    { step: '2', icon: '🔑', text: 'O\'tkazma izohiga bot bergan maxsus TXN kodni yozing' },
-                    { step: '3', icon: '💬', text: 'To\'lovdan so\'ng, botga o\'sha TXN kodni yuboring' },
-                    { step: '4', icon: '⚡', text: 'Premium darhol avtomatik tarzda yoqiladi!' },
+                    { step: '1', icon: '💳', text: 'Botdagi karta raqamiga to\'lov summasini o\'tkazing' },
+                    { step: '2', icon: '📸', text: 'To\'lov tasdiqlovchi chek (skrinshot) rasmini oling' },
+                    { step: '3', icon: '💬', text: 'Ushbu chek (skrinshot) rasmini botga yuboring' },
+                    { step: '4', icon: '⚡', text: 'Admin tekshirib, premiumingizni faollashtiradi!' },
                   ].map((item) => (
                     <div
                       key={item.step}
                       style={{
                         display: 'flex', alignItems: 'center', gap: 14,
                         padding: '14px 16px', borderRadius: 14,
-                        background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)',
+                        background: '#f8fafc', border: '1px solid rgba(0,0,0,0.06)',
                       }}
                     >
                       <div style={{
@@ -554,7 +554,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                         <span style={{ fontSize: 18 }}>{item.icon}</span>
-                        <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.4 }}>{item.text}</span>
+                        <span style={{ fontSize: 13, color: '#334155', lineHeight: 1.4, fontWeight: 600 }}>{item.text}</span>
                       </div>
                     </div>
                   ))}
@@ -566,11 +566,11 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   borderRadius: 14, padding: '14px 16px', marginBottom: 20,
                   textAlign: 'center',
                 }}>
-                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginBottom: 6 }}>To'lov kartasi</div>
+                  <div style={{ fontSize: 11, color: '#64748B', marginBottom: 6, fontWeight: 700 }}>To'lov kartasi</div>
                   <div style={{ fontSize: 20, fontWeight: 900, color: '#29B6F6', letterSpacing: 3, fontFamily: 'monospace' }}>
                     9860 3501 4333 3655
                   </div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>Ayyubxon Abdulazizov</div>
+                  <div style={{ fontSize: 12, color: '#475569', marginTop: 4, fontWeight: 600 }}>Ayyubxon Abdulazizov</div>
                 </div>
 
                 {/* Bot ga qayta o'tish */}
@@ -594,7 +594,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   onClick={onClose}
                   style={{
                     width: '100%', padding: '12px', borderRadius: 14, background: 'transparent',
-                    color: 'rgba(255,255,255,0.4)', border: '1px solid rgba(255,255,255,0.1)',
+                    color: '#64748B', border: '1px solid rgba(0,0,0,0.1)',
                     fontWeight: 600, fontSize: 13, cursor: 'pointer', fontFamily: 'inherit',
                   }}
                 >

@@ -21,38 +21,13 @@ import { db } from '../firebase';
 export default function FreeMonthBanner({ onPayClick }) {
   const { user } = useAuth();
   const { daysLeft: trialDaysLeft, isTrialExpired } = useTrialExpiry();
-  const [referralDaysLeft, setReferralDaysLeft] = useState(null);
   const [dismissed, setDismissed] = useState(false);
-
-  // Referral bepul oy tugashini tekshirish
-  useEffect(() => {
-    if (!user || user.isPremium) return;
-    const check = async () => {
-      try {
-        const snap = await getDoc(doc(db, 'users', user.uid));
-        if (!snap.exists()) return;
-        const data = snap.data();
-        if (!data.referredBy || !data.freeMonthExpire) return;
-        if (data.premiumPlan && data.premiumPlan !== 'referral_free') return;
-
-        const expire = new Date(data.freeMonthExpire);
-        const diff = Math.ceil((expire - new Date()) / (1000 * 60 * 60 * 24));
-        if (diff <= 7) setReferralDaysLeft(Math.max(0, diff));
-      } catch (e) { /* jimgina o'tamiz */ }
-    };
-    check();
-  }, [user]);
 
   if (dismissed || user?.isPremium) return null;
 
-  // Qaysi banner ko'rsatilishini aniqlaymiz
   let daysLeft = null;
-  let isReferral = false;
 
-  if (referralDaysLeft !== null) {
-    daysLeft = referralDaysLeft;
-    isReferral = true;
-  } else if (isTrialExpired) {
+  if (isTrialExpired) {
     daysLeft = 0;
   } else if (trialDaysLeft !== null && trialDaysLeft <= 2) {
     daysLeft = trialDaysLeft;
@@ -81,11 +56,11 @@ export default function FreeMonthBanner({ onPayClick }) {
         <div style={{ flex: 1, fontSize: 13, color: 'var(--text)', fontWeight: 500 }}>
           {isExpired ? (
             <strong style={{ color }}>
-              {isReferral ? 'Bepul oyingiz tugadi.' : '7 kunlik sinov muddatingiz tugadi.'} Davom etish uchun to\'lang.
+              7 kunlik sinov muddatingiz tugadi. Davom etish uchun to'lang.
             </strong>
           ) : (
             <>
-              {isReferral ? 'Bepul oyingizga' : 'Bepul sinov muddatingizga'}{' '}
+              Bepul sinov muddatingizga{' '}
               <strong style={{ color }}>{daysLeft} kun</strong> qoldi. To'lovni unutmang!
             </>
           )}

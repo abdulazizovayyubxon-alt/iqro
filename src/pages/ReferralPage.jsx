@@ -336,7 +336,7 @@ ${refLink}
                           if (r.freeExpire) {
                             return (
                               <span style={{ color: 'var(--text2)', fontWeight: 500 }}>
-                                🎁 Bepul premium: {new Date(r.freeExpire).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'short' })} gacha
+                                🎁 Chegirma: 50% faol
                               </span>
                             );
                           }

@@ -36,6 +36,7 @@ const ProfilePage = React.lazy(() => import('./pages/ProfilePage'));
 const ErrorNotebookPage = React.lazy(() => import('./pages/ErrorNotebookPage'));
 const PrivacyPage = React.lazy(() => import('./pages/PrivacyPage'));
 const TermsPage = React.lazy(() => import('./pages/TermsPage'));
+const DeleteAccountPage = React.lazy(() => import('./pages/DeleteAccountPage'));
 
 // ── Skeleton Loader — sahifa yuklanayotganda chiroyli ko'rinish ──
 const PageSkeleton = () => {
@@ -225,6 +226,13 @@ function App() {
       </Suspense>
     );
   }
+  if (location.pathname === '/delete-account') {
+    return (
+      <Suspense fallback={<PageSkeleton />}>
+        <DeleteAccountPage />
+      </Suspense>
+    );
+  }
 
   // Tizimga kirmagan foydalanuvchi
   if (!user) {
@@ -270,6 +278,7 @@ function App() {
                   <Route path="/referral" element={<ReferralPage />} />
                   <Route path="/errors" element={<ErrorNotebookPage />} />
                   <Route path="/profile" element={<ProfilePage theme={theme} toggleTheme={toggleTheme} />} />
+                  <Route path="/delete-account" element={<DeleteAccountPage />} />
                   <Route path="*" element={<Navigate to="/test" replace />} />
                 </Routes>
               </AnimatePresence>

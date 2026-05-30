@@ -25,9 +25,9 @@ const SUBJECT_BLUEPRINTS = {
   chqbt: { 0: 8, 1: 8, 2: 7, 3: 4, 4: 4, 5: 4, 6: 15 },
   art: { 7: 10, 8: 3, 9: 4, 10: 3, 11: 7, 12: 4, 13: 4, 14: 15 },
   tarix: { 15: 5, 16: 4, 17: 3, 18: 6, 19: 5, 20: 7, 21: 5, 22: 15 },
-  sport: { 23: 2, 24: 3, 25: 5, 26: 6, 27: 1, 28: 2, 29: 16, 30: 5 },
+  sport: { 23: 2, 24: 3, 25: 5, 26: 6, 27: 1, 28: 2, 29: 26, 30: 5 },
   boshlangich: { 31: 4, 32: 3, 33: 9, 34: 5, 35: 4, 36: 5, 37: 5, 38: 15 },
-  info: { 39: 3, 40: 7, 41: 5, 42: 3, 43: 3, 44: 5, 45: 4, 46: 15 },
+  info: { 39: 3, 40: 7, 41: 5, 42: 3, 43: 3, 44: 5, 45: 4, 46: 20 },
   mtt: { 47: 5, 48: 5, 49: 5, 50: 5, 51: 5, 52: 5, 53: 5, 54: 15 },
   til: { 55: 5, 56: 8, 57: 7, 58: 5, 59: 8, 60: 2, 61: 0, 62: 15 },
   mtt_rahbar: { 63: 5, 64: 5, 65: 5, 66: 5, 67: 5, 68: 5, 69: 5, 70: 15 }
@@ -82,6 +82,7 @@ const ExamPage = () => {
   const [endTime, setEndTime] = useState(null);
   const [showObjectionModal, setShowObjectionModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [reviewMode, setReviewMode] = useState(false);
   
   const [examStarted, setExamStarted] = useState(false);
   const [examType, setExamType] = useState('standard');
@@ -114,6 +115,7 @@ const ExamPage = () => {
 
     setTimeLeft(getExamDuration(cat));
     setFinished(false);
+    setReviewMode(false);
     setAnswers({});
     setFlagged({});
     setPacing(null);
@@ -761,7 +763,11 @@ const ExamPage = () => {
                   return (
                     <button
                       key={qi}
-                      onClick={() => { setFinished(false); handleQuestionSwitch(qi); setTimeout(() => setFinished(true), 0); }}
+                      onClick={() => {
+                        setReviewMode(true);
+                        setFinished(false);
+                        setCurrentQ(qi);
+                      }}
                       style={{
                         width: 40, height: 40, borderRadius: 10, border: isWrong ? '2px dashed var(--red)' : isCorrect ? '2px solid var(--green)' : '1.5px solid var(--border2)',
                         background: isCorrect ? 'var(--green-bg)' : isWrong ? 'var(--red-bg)' : 'var(--bg3)',
@@ -805,33 +811,48 @@ const ExamPage = () => {
           {SUBJECTS.find(s => s.id === cat)?.name || "CHQBT"} — Imtihon Simulyatsiyasi
         </div>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-          {cheatWarnings > 0 && (
-            <div style={{
-              background: 'var(--red-bg)',
-              border: '1px solid var(--red)',
-              borderRadius: 8,
-              padding: '6px 12px',
-              fontSize: 12,
-              fontWeight: 700,
-              color: 'var(--red)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6
-            }}>
-              <span>⚠️ Ogohlantirish: {cheatWarnings}/3</span>
-            </div>
+          {reviewMode ? (
+            <button
+              className="btn btn-sm btn-primary"
+              style={{ background: 'var(--blue)', color: 'white', border: 'none', fontWeight: 700 }}
+              onClick={() => {
+                setFinished(true);
+                setReviewMode(false);
+              }}
+            >
+              📊 Natijaga Qaytish
+            </button>
+          ) : (
+            <>
+              {cheatWarnings > 0 && (
+                <div style={{
+                  background: 'var(--red-bg)',
+                  border: '1px solid var(--red)',
+                  borderRadius: 8,
+                  padding: '6px 12px',
+                  fontSize: 12,
+                  fontWeight: 700,
+                  color: 'var(--red)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 6
+                }}>
+                  <span>⚠️ Ogohlantirish: {cheatWarnings}/3</span>
+                </div>
+              )}
+              <div className={`exam-timer ${isUrgent ? 'timer-danger' : isWarning ? 'timer-warning' : ''}`}>
+                <Clock size={16} />
+                <span>Qolgan vaqt: <strong>{formatTime(timeLeft)}</strong></span>
+              </div>
+              <button
+                className="btn btn-sm"
+                style={{ background: 'var(--red)', color: 'white', border: 'none' }}
+                onClick={() => handleFinish(false)}
+              >
+                <Flag size={14} /> Yakunlash
+              </button>
+            </>
           )}
-          <div className={`exam-timer ${isUrgent ? 'timer-danger' : isWarning ? 'timer-warning' : ''}`}>
-            <Clock size={16} />
-            <span>Qolgan vaqt: <strong>{formatTime(timeLeft)}</strong></span>
-          </div>
-          <button
-            className="btn btn-sm"
-            style={{ background: 'var(--red)', color: 'white', border: 'none' }}
-            onClick={() => handleFinish(false)}
-          >
-            <Flag size={14} /> Yakunlash
-          </button>
         </div>
       </div>
 
@@ -889,23 +910,51 @@ const ExamPage = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {q.opts.map((opt, i) => {
                   const isSelected = answered === i;
+                  const isCorrectOpt = q.correct === i;
+                  const isWrongOpt = isSelected && !isCorrectOpt;
+                  
+                  let optBorder = isSelected ? '2px solid var(--blue)' : '1.5px solid var(--border)';
+                  let optBg = isSelected ? 'var(--blue-bg)' : 'var(--bg2)';
+                  let indicatorBg = isSelected ? 'var(--blue)' : 'var(--bg3)';
+                  let indicatorColor = isSelected ? 'white' : 'var(--text3)';
+                  
+                  if (reviewMode) {
+                    if (isCorrectOpt) {
+                      optBorder = '2px solid var(--green)';
+                      optBg = 'var(--green-bg)';
+                      indicatorBg = 'var(--green)';
+                      indicatorColor = 'white';
+                    } else if (isWrongOpt) {
+                      optBorder = '2px solid var(--red)';
+                      optBg = 'var(--red-bg)';
+                      indicatorBg = 'var(--red)';
+                      indicatorColor = 'white';
+                    } else {
+                      optBorder = '1.5px solid var(--border)';
+                      optBg = 'var(--bg2)';
+                      indicatorBg = 'var(--bg3)';
+                      indicatorColor = 'var(--text3)';
+                    }
+                  }
+
                   return (
                     <button
                       key={i}
-                      onClick={() => handleSelect(i)}
+                      onClick={() => !reviewMode && handleSelect(i)}
                       style={{
                         display: 'flex', alignItems: 'center', gap: 14,
                         padding: '14px 16px', borderRadius: 12, textAlign: 'left',
-                        border: isSelected ? '2px solid var(--blue)' : '1.5px solid var(--border)',
-                        background: isSelected ? 'var(--blue-bg)' : 'var(--bg2)',
-                        cursor: 'pointer', transition: 'all 0.15s', fontFamily: 'inherit',
-                        fontSize: 15, fontWeight: 500, color: isSelected ? 'var(--text)' : 'var(--text2)',
+                        border: optBorder,
+                        background: optBg,
+                        cursor: reviewMode ? 'default' : 'pointer', 
+                        transition: 'all 0.15s', fontFamily: 'inherit',
+                        fontSize: 15, fontWeight: 500, color: 'var(--text)',
                       }}
                     >
                       <div style={{
                         width: 32, height: 32, borderRadius: 8, flexShrink: 0,
-                        background: isSelected ? 'var(--blue)' : 'var(--bg3)',
-                        color: isSelected ? 'white' : 'var(--text3)',
+                        background: indicatorBg,
+                        color: indicatorColor,
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         fontWeight: 700, fontSize: 14
                       }}>
@@ -916,6 +965,33 @@ const ExamPage = () => {
                   );
                 })}
               </div>
+
+              {reviewMode && (
+                <div style={{
+                  marginTop: 24,
+                  padding: 20,
+                  borderRadius: 16,
+                  background: 'var(--blue-bg)',
+                  border: '1.5px solid var(--blue)',
+                  textAlign: 'left'
+                }}>
+                  <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 10 }}>
+                    <span style={{ fontSize: 18 }}>📖</span>
+                    <strong style={{ fontSize: 14, color: 'var(--text)', fontWeight: 800 }}>Tushuntirish:</strong>
+                  </div>
+                  <div style={{ fontSize: 14, color: 'var(--text2)', lineHeight: 1.6 }}>
+                    {q.explanation ? (
+                      q.explanation.startsWith('<') ? (
+                        <SafeHtml html={q.explanation} />
+                      ) : (
+                        q.explanation
+                      )
+                    ) : (
+                      "Ushbu savol uchun tushuntirish kiritilmagan."
+                    )}
+                  </div>
+                </div>
+              )}
 
               {/* Navigatsiya */}
               <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 24 }}>
@@ -1027,13 +1103,26 @@ const ExamPage = () => {
             </div>
           </div>
 
-          <button
-            className="btn btn-primary"
-            style={{ width: '100%', background: 'var(--red)', borderColor: 'var(--red)' }}
-            onClick={() => setShowConfirmModal(true)}
-          >
-            <Flag size={16} /> Yakunlash ({answeredCount}/{questions.length})
-          </button>
+          {reviewMode ? (
+            <button
+              className="btn btn-primary"
+              style={{ width: '100%', background: 'var(--blue)', borderColor: 'var(--blue)', fontWeight: 700 }}
+              onClick={() => {
+                setFinished(true);
+                setReviewMode(false);
+              }}
+            >
+              📊 Natijaga Qaytish
+            </button>
+          ) : (
+            <button
+              className="btn btn-primary"
+              style={{ width: '100%', background: 'var(--red)', borderColor: 'var(--red)' }}
+              onClick={() => setShowConfirmModal(true)}
+            >
+              <Flag size={16} /> Yakunlash ({answeredCount}/{questions.length})
+            </button>
+          )}
         </div>
       </div>
 

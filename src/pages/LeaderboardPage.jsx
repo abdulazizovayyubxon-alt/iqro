@@ -120,7 +120,7 @@ const LeaderboardPage = () => {
         borderRadius: '50%',
         display: 'flex',
         alignItems: 'center',
-        justifycontent: 'center',
+        justifyContent: 'center',
         border: isPodium ? `2px solid ${borderColor}` : 'none',
         padding: isPodium ? 2 : 0,
         flexShrink: 0,

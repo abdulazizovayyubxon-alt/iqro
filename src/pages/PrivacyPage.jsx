@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Shield } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function PrivacyPage() {
   const navigate = useNavigate();
@@ -59,7 +59,8 @@ export default function PrivacyPage() {
 
         <h2 style={s.heading}>5. Ma'lumotlarni o'chirish</h2>
         <p style={s.text}>
-          Siz istalgan vaqtda o'z hisobingizni va barcha shaxsiy ma'lumotlaringizni o'chirish huquqiga egasiz. Buning uchun Platformaning <b>Profil</b> sahifasidagi "Hisobni o'chirish" tugmasidan foydalanishingiz mumkin.
+          Siz istalgan vaqtda o'z hisobingizni va barcha shaxsiy ma'lumotlaringizni o'chirish huquqiga egasiz. 
+          Buning uchun Platformaning <b>Profil</b> sahifasidagi "Hisobni o'chirish" tugmasidan foydalanishingiz yoki tizimga kirmasdan turib <Link to="/delete-account" style={{ color: '#29B6F6', textDecoration: 'underline' }}>bu yerda</Link> hisobni o'chirish so'rovini yuborishingiz mumkin.
         </p>
 
         <h2 style={s.heading}>6. Xavfsizlik</h2>

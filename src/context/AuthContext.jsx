@@ -618,81 +618,21 @@ export const AuthProvider = ({ children }) => {
         err.code === 'auth/wrong-password';
 
       if (isAuthWrong) {
-        // Agar foydalanuvchi parol kiritgan bo'lsa va xato bo'lsa -> bu noto'g'ri parol!
         if (password) {
-          try {
-            // Eski foydalanuvchilar o'z hisobini yangi parol bilan "o'zlashtirishiga" urinib ko'ramiz
-            const claimRes = await fetch('/api/claim-old-account', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ phone: cleanPhone, newPassword: password })
-            });
-            const claimData = await claimRes.json();
-            if (claimData.success) {
-              // Parol muvaffaqiyatli almashtirildi! Endi yangi parol bilan kiramiz
-              const userCred = await signInWithEmailAndPassword(auth, internalEmail, password);
-              
-              let isPremium = false;
-              const userRef = doc(db, 'users', userCred.user.uid);
-              const userSnap = await getDoc(userRef);
-              if (userSnap.exists()) isPremium = userSnap.data().isPremium || false;
-
-              setUser({
-                uid: userCred.user.uid,
-                email: userCred.user.email,
-                displayName: userCred.user.displayName || name || phone,
-                photoURL: userCred.user.photoURL,
-                isPremium,
-                _firebaseUser: userCred.user
-              });
-              return { success: true };
-            }
-          } catch (claimErr) {
-            console.warn("Claim error:", claimErr);
-          }
-
           const attemptData = recordFailedAttempt();
           const remaining = MAX_ATTEMPTS - attemptData.attempts;
           if (remaining > 0) {
-            setAuthError(`Parol noto'g'ri kiritildi. Yana ${remaining} ta urinish qoldi.`);
+            setAuthError(`Telefon raqam yoki parol noto'g'ri kiritildi. Yana ${remaining} ta urinish qoldi.`);
           } else {
             setAuthError(`Xavfsizlik sababli akkaunt 15 daqiqaga bloklandi. Iltimos, biroz kuting.`);
           }
           return { success: false, wrongPassword: true };
-        }
-
-        // Agar foydalanuvchi hali parol kiritmagan bo'lsa (faqat telefon raqam yozib Davom etishni bosgan)
-        if (!isRegistering) {
-          // ── Serverless API orqali eski foydalanuvchini migratsiya qilamiz ──
-          try {
-            const migrateRes = await fetch('/api/migrate-old-user', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ phone: cleanPhone })
-            });
-            if (!migrateRes.ok) throw new Error('API failed');
-            const migrateData = await migrateRes.json();
-            
-            if (migrateData.success) {
-              // Migratsiya qilingan bo'lsa, endi u to'g'ri (auto) parolga ega!
-              // Parol kiritish o'rniga to'g'ridan-to'g'ri kirishga qaytadan urinamiz
-              try {
-                // Migratsiyadan keyin eski default parol orqali kirish yopildi.
-                // Foydalanuvchi faqat Telegram orqali kirishi mumkin.
-                return { success: false, hasCustomPassword: true };
-              } catch (retryErr) {
-                console.error("Migratsiyadan keyin ham kirish xatosi:", retryErr);
-                return { success: false, hasCustomPassword: true };
-              }
-            } else if (migrateData.reason === 'not_found_in_db') {
-              return { success: false, notRegistered: true };
-            } else {
-              return { success: false, hasCustomPassword: true };
-            }
-          } catch (apiErr) {
-            console.warn('Check user API xatosi:', apiErr);
-            // API ishlamasa, fallback sifatida needsChoice qaytaramiz (foydalanuvchi o'zi tanlaydi)
-            return { success: false, needsChoice: true };
+        } else {
+          const exists = await checkUserExists(phone);
+          if (exists) {
+            return { success: false, hasCustomPassword: true };
+          } else {
+            return { success: false, notRegistered: true };
           }
         }
       }
@@ -703,37 +643,9 @@ export const AuthProvider = ({ children }) => {
         return { success: false };
       }
 
-      // Agar email band bo'lsa, demak u ro'yxatdan o'tgan, shunchaki parol kiritishi kerak!
+      // Agar email band bo'lsa (Ro'yxatdan o'tayotganda)
       if (err.code === 'auth/email-already-in-use') {
-        if (password) {
-          try {
-            const claimRes = await fetch('/api/claim-old-account', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ phone: cleanPhone, newPassword: password })
-            });
-            const claimData = await claimRes.json();
-            if (claimData.success) {
-              const userCred = await signInWithEmailAndPassword(auth, internalEmail, password);
-              let isPremium = false;
-              const userRef = doc(db, 'users', userCred.user.uid);
-              const userSnap = await getDoc(userRef);
-              if (userSnap.exists()) isPremium = userSnap.data().isPremium || false;
-
-              setUser({
-                uid: userCred.user.uid,
-                email: userCred.user.email,
-                displayName: userCred.user.displayName || name || phone,
-                photoURL: userCred.user.photoURL,
-                isPremium,
-                _firebaseUser: userCred.user
-              });
-              return { success: true };
-            }
-          } catch (claimErr) {
-            console.warn("Claim error:", claimErr);
-          }
-        }
+        setAuthError("Bu telefon raqam allaqachon ro'yxatdan o'tgan. Iltimos, tizimga kiring.");
         return { success: false, hasCustomPassword: true };
       }
 

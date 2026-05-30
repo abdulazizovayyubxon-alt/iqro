@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     return res.status(403).json({ error: 'Ruxsat yo\'q. Secret noto\'g\'ri.' });
   }
 
-  const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8523102352:AAEQOggWs3ULCGivaao-bmMpwT-_lFdxMeQ';
+  const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
   
   // Vercel da joylashgan loyihamizning URL si
   // Vercel VERCEL_URL env ni o'zi qo'yadi
