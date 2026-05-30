@@ -19,8 +19,8 @@ function getDb() {
   return { db: getFirestore(), auth: getAuth() };
 }
 
-// ── Bot token faqat env dan olinadi (xavfsizlik uchun hardcode yo'q) ──
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+// ── Bot token faqat env dan olinadi (yoki test token ishlatiladi) ──
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8523102352:AAEQOggWs3ULCGivaao-bmMpwT-_lFdxMeQ';
 if (!TELEGRAM_BOT_TOKEN) {
   console.error('TELEGRAM_BOT_TOKEN env o\'zgaruvchisi topilmadi!');
 }
