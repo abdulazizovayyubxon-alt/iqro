@@ -669,6 +669,11 @@ export const AuthProvider = ({ children }) => {
         return { success: false };
       }
 
+      // Agar email band bo'lsa, demak u ro'yxatdan o'tgan, shunchaki parol kiritishi kerak!
+      if (err.code === 'auth/email-already-in-use') {
+        return { success: false, hasCustomPassword: true };
+      }
+
       // Juda ko'p urinish
       if (err.code === 'auth/too-many-requests') {
         setAuthError("Juda ko'p urinish. Iltimos, biroz kutib qaytadan urining.");
