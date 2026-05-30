@@ -469,7 +469,7 @@ const TestPage = () => {
           
           {/* Answers Skeletons */}
           {[1,2,3,4].map((i, idx) => (
-            <div key={i} style={{ width: '100%', height: 56, background: 'var(--bg3)', borderRadius: 16, marginBottom: 10, animation: 'pulse 1.5s infinite ease-in-out', animationDelay: \`0.\${3 + idx}s\` }} />
+            <div key={i} style={{ width: '100%', height: 56, background: 'var(--bg3)', borderRadius: 16, marginBottom: 10, animation: 'pulse 1.5s infinite ease-in-out', animationDelay: `0.${3 + idx}s` }} />
           ))}
         </div>
       </div>

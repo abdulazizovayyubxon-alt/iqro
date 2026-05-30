@@ -411,6 +411,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                         </div>
                       );
                     })}
+                  </div>
                     </>
                   )}
                 </div>
