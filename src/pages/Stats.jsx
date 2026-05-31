@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../context/AppContext';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
@@ -35,7 +35,31 @@ const Stats = () => {
       </motion.div>
     );
   }
+
   const cat = state.activeCategory;
+  const [topicTotals, setTopicTotals] = useState({});
+
+  useEffect(() => {
+    const loadTotals = async () => {
+      try {
+        const localforage = (await import('localforage')).default;
+        const rawList = await localforage.getItem(`bundle_${cat}`);
+        if (rawList && Array.isArray(rawList)) {
+          const totals = {};
+          rawList.forEach(q => {
+            if (q.category === cat) {
+              totals[q.topicId] = (totals[q.topicId] || 0) + 1;
+            }
+          });
+          setTopicTotals(totals);
+        }
+      } catch (e) {
+        console.error("Error loading topic totals:", e);
+      }
+    };
+    loadTotals();
+  }, [cat]);
+
   const catStats = state.stats[cat] || { totalAnswered: 0, totalCorrect: 0, streak: 0, maxStreak: 0, mistakes: [] };
 
   const filteredTopics = TOPICS.filter(t =>
@@ -124,7 +148,7 @@ const Stats = () => {
       <div className="glass-panel" style={{ padding: '20px', marginBottom: '24px' }}>
         {filteredTopics.map((t, idx) => {
           const s = state.topicStats[t.id];
-          const topicTotal = s?.answered || 0;
+          const topicTotal = topicTotals[t.id] || 0;
           const answered = s?.answered || 0;
           const topicCorrect = s?.correct || 0;
           const pct = answered > 0 ? Math.round((topicCorrect / answered) * 100) : 0;

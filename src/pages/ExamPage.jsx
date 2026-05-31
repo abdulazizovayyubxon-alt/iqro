@@ -431,11 +431,11 @@ const ExamPage = () => {
     }).catch(e => console.error(e));
   };
 
-  // Anti-Cheat: Tab switch or window blur detection
+  // Anti-Cheat: Tab switch detection (Play Market safe)
   useEffect(() => {
     if (loading || finished || questions.length === 0 || cheatDisqualified) return;
 
-    const handleVisibilityOrBlur = () => {
+    const handleVisibilityChange = () => {
       if (document.hidden) {
         setCheatWarnings(prev => {
           const next = prev + 1;
@@ -451,12 +451,10 @@ const ExamPage = () => {
       }
     };
 
-    document.addEventListener('visibilitychange', handleVisibilityOrBlur);
-    window.addEventListener('blur', handleVisibilityOrBlur);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityOrBlur);
-      window.removeEventListener('blur', handleVisibilityOrBlur);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, [loading, finished, questions.length, answers, cheatDisqualified]);
 

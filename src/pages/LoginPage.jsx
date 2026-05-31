@@ -44,6 +44,26 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [lockoutTimer, setLockoutTimer] = useState(null);
   const [featureIdx, setFeatureIdx] = useState(0);
+  const [openFaqIdx, setOpenFaqIdx] = useState(null);
+
+  const FAQS = [
+    {
+      q: "IQRO platformasi nima?",
+      a: "IQRO — sertifikatlashtirish imtihonlariga tayyorlanayotgan o'qituvchilar va talabalar uchun maxsus ishlab chiqilgan, zamonaviy o'quv va aqlli takrorlash platformasidir."
+    },
+    {
+      q: "Qanday qilib ro'yxatdan o'taman?",
+      a: "Telefon raqamingizni kiriting. Agar raqamingiz tizimda bo'lmasa, tizim ismingiz, jinsingiz va yangi parolni so'rab, avtomatik ravishda yangi akkaunt yaratadi."
+    },
+    {
+      q: "Tizim va ma'lumotlarim xavfsizmi?",
+      a: "Ha, ma'lumotlaringiz Google Firebase shifrlash standartlari asosida to'liq himoyalangan. Parollar va shaxsiy ma'lumotlar uchinchi shaxslarga berilmaydi."
+    },
+    {
+      q: "Telefon raqamimni parolsiz bot orqali kiritsam bo'ladimi?",
+      a: "Ha! Telegram orqali kirish tugmasini bosing va botga o'ting. Bot orqali telefon raqamingizni yuborib, parolsiz tezkor kirishingiz mumkin."
+    }
+  ];
 
   useEffect(() => {
     if (step === STEPS.PHONE) {
@@ -332,6 +352,103 @@ export default function LoginPage() {
                       autoFocus
                       onKeyDown={e => e.key === 'Enter' && handlePhoneNext()}
                     />
+                  </div>
+
+                  {/* Trust Badges */}
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-around',
+                    alignItems: 'center',
+                    marginTop: '24px',
+                    padding: '12px 6px',
+                    background: 'var(--bg3)',
+                    borderRadius: '16px',
+                    border: '1.5px solid var(--border)',
+                    gap: '8px'
+                  }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '4px', flex: 1 }}>
+                      <span style={{ fontSize: '20px' }}>🔒</span>
+                      <span style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text)' }}>Google Secure</span>
+                      <span style={{ fontSize: '9px', color: 'var(--text3)' }}>Firebase shifrlash</span>
+                    </div>
+                    <div style={{ width: '1px', height: '30px', background: 'var(--border)' }} />
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '4px', flex: 1 }}>
+                      <span style={{ fontSize: '20px' }}>⚡</span>
+                      <span style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text)' }}>Tezkor Kirish</span>
+                      <span style={{ fontSize: '9px', color: 'var(--text3)' }}>Telegram / Google</span>
+                    </div>
+                    <div style={{ width: '1px', height: '30px', background: 'var(--border)' }} />
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '4px', flex: 1 }}>
+                      <span style={{ fontSize: '20px' }}>🛡️</span>
+                      <span style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text)' }}>Shaxsiy Himoya</span>
+                      <span style={{ fontSize: '9px', color: 'var(--text3)' }}>Maxfiylik kafolati</span>
+                    </div>
+                  </div>
+
+                  {/* FAQ Accordion */}
+                  <div style={{ marginTop: '24px' }}>
+                    <h3 style={{ fontSize: '14px', fontWeight: '800', color: 'var(--text)', marginBottom: '10px', paddingLeft: '4px' }}>
+                      🤔 Ko'p beriladigan savollar
+                    </h3>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {FAQS.map((faq, idx) => {
+                        const isOpen = openFaqIdx === idx;
+                        return (
+                          <div 
+                            key={idx} 
+                            style={{ 
+                              background: 'var(--bg2)', 
+                              border: '1.5px solid var(--border)', 
+                              borderRadius: '14px', 
+                              overflow: 'hidden',
+                              transition: 'all 0.2s ease-in-out'
+                            }}
+                          >
+                            <button
+                              onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
+                              style={{
+                                width: '100%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                padding: '12px 14px',
+                                background: 'transparent',
+                                border: 'none',
+                                cursor: 'pointer',
+                                textAlign: 'left',
+                                fontFamily: 'inherit',
+                                fontSize: '13px',
+                                fontWeight: '700',
+                                color: isOpen ? 'var(--blue)' : 'var(--text2)',
+                                transition: 'color 0.2s',
+                                minHeight: '48px',
+                              }}
+                            >
+                              <span>{faq.q}</span>
+                              <span style={{ fontSize: '14px', fontWeight: '800', transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s', color: 'var(--text3)' }}>
+                                ▾
+                              </span>
+                            </button>
+                            
+                            <AnimatePresence initial={false}>
+                              {isOpen && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: 'auto', opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  style={{ overflow: 'hidden' }}
+                                >
+                                  <div style={{ padding: '0 14px 12px 14px', fontSize: '12px', color: 'var(--text3)', lineHeight: '1.6' }}>
+                                    {faq.a}
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </>
               )}
@@ -629,7 +746,9 @@ const getStyles = (isMobile) => ({
   },
   backBtn: {
     background: 'none', border: 'none', cursor: 'pointer',
-    color: 'var(--text)', padding: 6, display: 'flex', alignItems: 'center', borderRadius: 8,
+    color: 'var(--text)', width: '48px', height: '48px',
+    display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px',
+    transition: 'background 0.2s',
   },
   content: { flex: 1, padding: isMobile ? '16px 20px 8px' : '28px 24px 16px', overflowY: 'auto' },
   title: { fontSize: 32, fontWeight: 800, lineHeight: 1.2, marginBottom: 8, color: 'var(--text)' },
@@ -651,14 +770,16 @@ const getStyles = (isMobile) => ({
     boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.01)',
   },
   eyeBtn: {
-    position: 'absolute', right: 14, top: '50%', transform: 'translateY(-60%)',
+    position: 'absolute', right: '4px', top: '50%', transform: 'translateY(-50%)',
     background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)',
+    width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center',
   },
   forgotBtn: {
     background: 'none', border: 'none', color: '#29B6F6',
     fontSize: 14, fontWeight: 600, cursor: 'pointer',
-    fontFamily: 'inherit', marginTop: 4, padding: 0,
+    fontFamily: 'inherit', marginTop: '6px', padding: '12px 0px',
     textDecoration: 'underline', textUnderlineOffset: 3,
+    display: 'inline-block', minHeight: '44px',
   },
   errorText: { marginTop: 10, fontSize: 13, color: '#EF4444', fontWeight: 500 },
   footer: { 

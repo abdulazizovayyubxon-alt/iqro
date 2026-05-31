@@ -44,6 +44,26 @@ export default function ProfilePage({ theme, toggleTheme }) {
   const [activeGuidePanel, setActiveGuidePanel] = useState(null);
   const [tgLoading, setTgLoading] = useState(false);
   const [tgError, setTgError] = useState('');
+  const [openProfileFaqIdx, setOpenProfileFaqIdx] = useState(null);
+
+  const PROFILE_FAQS = [
+    {
+      q: "Premium obuna nimalarni beradi?",
+      a: "Premium obuna barcha mavzulardagi savollarni cheksiz yechish, har bir savol uchun batafsil tahlil va mnemonika (eslab qolish texnikasi) bilan tanishish hamda oflayn rejimda ishlatish imkonini beradi."
+    },
+    {
+      q: "To'lovlar qanday amalga oshiriladi va xavfsizmi?",
+      a: "To'lovlar 100% xavfsiz Click, Payme yoki Telegram bot orqali to'g'ridan-to'g'ri o'tkaziladi. Barcha tranzaksiyalar shifrlangan."
+    },
+    {
+      q: "Premium faollashishi uchun qancha vaqt ketadi?",
+      a: "Click va Payme orqali to'lovlar avtomatik tarzda 5 soniyada faollashadi. Telegram bot orqali chek yuborilganda esa admin tomonidan 5-10 daqiqada tasdiqlanadi."
+    },
+    {
+      q: "Savollar bazasi qanchalik tez-tez yangilanadi?",
+      a: "Savollarimiz professional ekspertlar tomonidan har hafta yangilanib, eng so'nggi milliy sertifikatlash va malaka oshirish standartlariga moslashtiriladi."
+    }
+  ];
 
   const handleTelegramLogin = async () => {
     const sessionId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
@@ -774,6 +794,99 @@ export default function ProfilePage({ theme, toggleTheme }) {
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
         </div>
+
+        {/* Profile page FAQ Accordion & Trust Badges */}
+        <div className="pp-card" style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          
+          {/* Trust Badges */}
+          <div>
+            <div style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '14px' }}>
+              🛡️ Xavfsizlik va Kafolat
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '8px', textAlign: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', background: 'var(--bg3)', padding: '12px 6px', borderRadius: '12px', border: '1px solid var(--border)' }}>
+                <span style={{ fontSize: '20px' }}>🔒</span>
+                <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text)' }}>Click & Payme</span>
+                <span style={{ fontSize: '9px', color: 'var(--text3)' }}>100% Xavfsiz to'lov</span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', background: 'var(--bg3)', padding: '12px 6px', borderRadius: '12px', border: '1px solid var(--border)' }}>
+                <span style={{ fontSize: '20px' }}>⚡</span>
+                <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text)' }}>Tezkor Faol</span>
+                <span style={{ fontSize: '9px', color: 'var(--text3)' }}>Avtomat yoqiladi</span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', background: 'var(--bg3)', padding: '12px 6px', borderRadius: '12px', border: '1px solid var(--border)' }}>
+                <span style={{ fontSize: '20px' }}>📱</span>
+                <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text)' }}>Oflayn Kafolat</span>
+                <span style={{ fontSize: '9px', color: 'var(--text3)' }}>Internetsiz ishlaydi</span>
+              </div>
+            </div>
+          </div>
+
+          {/* FAQ Section */}
+          <div>
+            <div style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '14px' }}>
+              ❓ To'lov va Premium bo'yicha FAQ
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {PROFILE_FAQS.map((faq, idx) => {
+                const isOpen = openProfileFaqIdx === idx;
+                return (
+                  <div 
+                    key={idx} 
+                    style={{ 
+                      background: 'var(--bg3)', 
+                      border: '1px solid var(--border)', 
+                      borderRadius: '12px', 
+                      overflow: 'hidden',
+                      transition: 'all 0.2s'
+                    }}
+                  >
+                    <button
+                      onClick={() => setOpenProfileFaqIdx(isOpen ? null : idx)}
+                      style={{
+                        width: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '12px 14px',
+                        background: 'transparent',
+                        border: 'none',
+                        cursor: 'pointer',
+                        textAlign: 'left',
+                        fontFamily: 'inherit',
+                        fontSize: '13px',
+                        fontWeight: '700',
+                        color: isOpen ? 'var(--blue)' : 'var(--text)',
+                        minHeight: '48px',
+                      }}
+                    >
+                      <span>{faq.q}</span>
+                      <span style={{ fontSize: '14px', transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s', color: 'var(--text3)' }}>
+                        ▾
+                      </span>
+                    </button>
+                    
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          style={{ overflow: 'hidden' }}
+                        >
+                          <div style={{ padding: '0 14px 12px 14px', fontSize: '12px', color: 'var(--text3)', lineHeight: '1.6' }}>
+                            {faq.a}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* ═══ EDIT MODAL ═══ */}
@@ -841,7 +954,8 @@ export default function ProfilePage({ theme, toggleTheme }) {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          lineHeight: '1.2'
+                          lineHeight: '1.2',
+                          minHeight: '48px'
                         }}
                       >
                         {opt.label}

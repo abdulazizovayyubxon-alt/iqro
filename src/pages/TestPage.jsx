@@ -710,6 +710,7 @@ const TestPage = () => {
                 setActiveReviewTab={setActiveReviewTab}
                 saveCustomMnemonic={saveCustomMnemonic}
                 setShowObjectionModal={setShowObjectionModal}
+                onPremiumClick={() => setShowPremiumModal(true)}
               />
               <div className="q-nav" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px' }}>
                 <button disabled={currentQ === 0} className="btn btn-outline" onClick={() => { accumulateTime(); setCurrentQ(prev => prev - 1); }}>Orqaga</button>

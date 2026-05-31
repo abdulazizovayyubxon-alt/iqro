@@ -1,12 +1,38 @@
 // Badge (Yutuq) tizimi — shartlar va ta'riflari
 
+const sumTotalAnswered = (stats) => {
+  if (!stats) return 0;
+  return Object.keys(stats).reduce((sum, key) => {
+    const cat = stats[key];
+    return sum + (cat?.totalAnswered || 0);
+  }, 0);
+};
+
+const getMaxStreak = (stats) => {
+  if (!stats) return 0;
+  return Object.keys(stats).reduce((max, key) => {
+    const cat = stats[key];
+    return Math.max(max, cat?.maxStreak || 0);
+  }, 0);
+};
+
+const hasAccuracy = (stats, minQuestions, minPct) => {
+  if (!stats) return false;
+  return Object.keys(stats).some(key => {
+    const cat = stats[key];
+    if (!cat || !cat.totalAnswered || cat.totalAnswered < minQuestions) return false;
+    const pct = Math.round((cat.totalCorrect / cat.totalAnswered) * 100);
+    return pct >= minPct;
+  });
+};
+
 export const BADGES = [
   {
     id: 'first_step',
     icon: '🌱',
     name: 'Birinchi Qadam',
     desc: 'Birinchi savolga javob berdi',
-    condition: (stats) => (stats?.chqbt?.totalAnswered + stats?.art?.totalAnswered) >= 1,
+    condition: (stats) => sumTotalAnswered(stats) >= 1,
     color: '#10B981',
     xp: 10
   },
@@ -15,7 +41,7 @@ export const BADGES = [
     icon: '🔟',
     name: "O'ntalik",
     desc: "Jami 10 ta savolga javob berdi",
-    condition: (stats) => (stats?.chqbt?.totalAnswered + stats?.art?.totalAnswered) >= 10,
+    condition: (stats) => sumTotalAnswered(stats) >= 10,
     color: '#3B82F6',
     xp: 25
   },
@@ -24,7 +50,7 @@ export const BADGES = [
     icon: '🎯',
     name: "Ellik Nishon",
     desc: "Jami 50 ta savolga javob berdi",
-    condition: (stats) => (stats?.chqbt?.totalAnswered + stats?.art?.totalAnswered) >= 50,
+    condition: (stats) => sumTotalAnswered(stats) >= 50,
     color: '#8B5CF6',
     xp: 50
   },
@@ -33,7 +59,7 @@ export const BADGES = [
     icon: '💯',
     name: "Yuztalik",
     desc: "Jami 100 ta savolga javob berdi",
-    condition: (stats) => (stats?.chqbt?.totalAnswered + stats?.art?.totalAnswered) >= 100,
+    condition: (stats) => sumTotalAnswered(stats) >= 100,
     color: '#F59E0B',
     xp: 100
   },
@@ -42,7 +68,7 @@ export const BADGES = [
     icon: '🚀',
     name: "Kosmik",
     desc: "Jami 500 ta savolga javob berdi",
-    condition: (stats) => (stats?.chqbt?.totalAnswered + stats?.art?.totalAnswered) >= 500,
+    condition: (stats) => sumTotalAnswered(stats) >= 500,
     color: '#EF4444',
     xp: 300
   },
@@ -51,7 +77,7 @@ export const BADGES = [
     icon: '🔥',
     name: "Alanga",
     desc: "5 ta savolni ketma-ket to'g'ri yechdi",
-    condition: (stats) => Math.max(stats?.chqbt?.maxStreak || 0, stats?.art?.maxStreak || 0) >= 5,
+    condition: (stats) => getMaxStreak(stats) >= 5,
     color: '#F97316',
     xp: 30
   },
@@ -60,7 +86,7 @@ export const BADGES = [
     icon: '⚡',
     name: "Chaqmoq",
     desc: "10 ta savolni ketma-ket to'g'ri yechdi",
-    condition: (stats) => Math.max(stats?.chqbt?.maxStreak || 0, stats?.art?.maxStreak || 0) >= 10,
+    condition: (stats) => getMaxStreak(stats) >= 10,
     color: '#FBBF24',
     xp: 75
   },
@@ -69,7 +95,7 @@ export const BADGES = [
     icon: '🌟',
     name: "Yulduz",
     desc: "25 ta savolni ketma-ket to'g'ri yechdi",
-    condition: (stats) => Math.max(stats?.chqbt?.maxStreak || 0, stats?.art?.maxStreak || 0) >= 25,
+    condition: (stats) => getMaxStreak(stats) >= 25,
     color: '#F59E0B',
     xp: 200
   },
@@ -78,11 +104,7 @@ export const BADGES = [
     icon: '🎓',
     name: "Talaba",
     desc: "80% va undan yuqori aniqlik bilan javob berdi",
-    condition: (stats) => {
-      const cat = stats?.chqbt;
-      return cat?.totalAnswered >= 20 && cat?.totalAnswered > 0 &&
-        Math.round((cat.totalCorrect / cat.totalAnswered) * 100) >= 80;
-    },
+    condition: (stats) => hasAccuracy(stats, 20, 80),
     color: '#6366F1',
     xp: 150
   },
@@ -91,11 +113,7 @@ export const BADGES = [
     icon: '🏆',
     name: "Ustoz",
     desc: "90% va undan yuqori aniqlik bilan javob berdi",
-    condition: (stats) => {
-      const cat = stats?.chqbt;
-      return cat?.totalAnswered >= 30 && cat?.totalAnswered > 0 &&
-        Math.round((cat.totalCorrect / cat.totalAnswered) * 100) >= 90;
-    },
+    condition: (stats) => hasAccuracy(stats, 30, 90),
     color: '#F59E0B',
     xp: 300
   },

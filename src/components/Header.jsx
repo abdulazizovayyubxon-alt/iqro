@@ -220,6 +220,7 @@ const Header = ({ theme, toggleTheme }) => {
             whileHover={{ y: -1 }}
             whileTap={{ scale: 0.96 }}
             title="Imtihon sanasini o'zgartirish"
+            style={{ minHeight: '48px', display: 'flex', alignItems: 'center', gap: '6px', boxSizing: 'border-box' }}
           >
             <span className="header-exam-countdown-text">{daysLeft} kun qoldi</span>
             <Calendar size={13} style={{ color: 'var(--blue)', opacity: 0.8 }} />
@@ -232,6 +233,7 @@ const Header = ({ theme, toggleTheme }) => {
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowNotifMenu(!showNotifMenu)}
               title="Bildirishnomalar"
+              style={{ width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0, position: 'relative' }}
             >
               <Bell size={18} />
               {unreadCount > 0 && (
@@ -345,6 +347,7 @@ const Header = ({ theme, toggleTheme }) => {
               transition={{ duration: 1.5, ease: "easeInOut", times: [0, 0.2, 0.4, 0.6, 0.8, 1], repeat: 2 }}
               onAnimationComplete={() => sessionStorage.setItem('iqro_gift_wiggled', 'true')}
               whileTap={{ scale: 0.9 }}
+              style={{ width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0, position: 'relative' }}
             >
               {(() => {
                 const month = new Date().getMonth() + 1;

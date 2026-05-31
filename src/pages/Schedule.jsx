@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { SCHEDULE } from '../data/mockData';
+import React, { useState, useContext } from 'react';
+import { TOPICS } from '../data/mockData';
+import { AppContext } from '../context/AppContext';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -12,6 +13,8 @@ const Schedule = () => {
   const goBack = () => navigate('/');
   const { user } = useAuth();
   const [showPremiumModal, setShowPremiumModal] = useState(false);
+  const { state } = useContext(AppContext);
+  const cat = state.activeCategory || 'chqbt';
 
   if (!user?.isPremium) {
     return (
@@ -45,12 +48,36 @@ const Schedule = () => {
     );
   }
 
+  const catTopics = TOPICS.filter(t =>
+    Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat
+  );
+
+  // Generate dynamic schedule
+  const dynamicSchedule = catTopics.map((topic, index) => {
+    return {
+      day: index + 1,
+      topic: topic.name,
+      tests: 40, 
+      goal: topic.theoryHint ? topic.theoryHint.replace("📌 ", "").split('.')[0] : "Mavzuni o'rganish",
+      topicId: topic.id
+    };
+  });
+  
+  // Add a final day for overall exam
+  dynamicSchedule.push({
+    day: catTopics.length + 1,
+    topic: "Umumiy takrorlash (Imtihon)",
+    tests: 50,
+    goal: "Barcha bo'limlar — aralash test simulyatsiyasi",
+    topicId: -1
+  });
+
   const createdAt = user?._firebaseUser?.metadata?.creationTime ? new Date(user._firebaseUser.metadata.creationTime) : new Date();
   const today = new Date();
   const startDay = new Date(createdAt.getFullYear(), createdAt.getMonth(), createdAt.getDate());
   const todayDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   const dayNum = Math.floor((todayDay - startDay) / 86400000) + 1;
-  const progressPercent = Math.min(100, Math.max(0, Math.round((dayNum / SCHEDULE.length) * 100)));
+  const progressPercent = Math.min(100, Math.max(0, Math.round((dayNum / dynamicSchedule.length) * 100)));
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page" style={{ maxWidth: 700, margin: '0 auto', padding: '20px 16px' }}>
@@ -91,7 +118,7 @@ const Schedule = () => {
             </tr>
           </thead>
           <tbody>
-            {SCHEDULE.map(s => {
+            {dynamicSchedule.map(s => {
               const isToday = dayNum === s.day;
               const isPast = dayNum > s.day;
               

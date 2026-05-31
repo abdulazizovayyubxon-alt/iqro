@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, Clock } from 'lucide-react';
+import { MessageCircle, Clock, Crown, Lock } from 'lucide-react';
 import SafeHtml from '../shared/SafeHtml';
 import QuestionMedia from '../QuestionMedia';
+import { useAuth } from '../../context/AuthContext';
 
 const QuestionBox = ({
   questions,
@@ -24,8 +25,11 @@ const QuestionBox = ({
   activeReviewTab,
   setActiveReviewTab,
   saveCustomMnemonic,
-  setShowObjectionModal
+  setShowObjectionModal,
+  onPremiumClick
 }) => {
+  const { user } = useAuth();
+  const isPremium = user?.isPremium || false;
   const isUsefulMnemonic = (text) => text && !["Kalit so'zga e'tibor bering va javobni vizuallashtiring.", "Kalit so'zga e'tibor bering va javobni vizuallashtiring"].includes(text.trim());
 
   return (
@@ -194,69 +198,149 @@ const QuestionBox = ({
             </div>
 
             {/* Tab Content */}
-            <div style={{ padding: '16px', textAlign: 'left' }}>
-              {activeReviewTab === 'analysis' && (
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '800', fontSize: '14px', color: answers[currentQ] === questions[currentQ].correct ? 'var(--green)' : 'var(--red)', marginBottom: '12px' }}>
-                    <span>{answers[currentQ] === questions[currentQ].correct ? "✓ To'g'ri" : "✗ Noto'g'ri"}</span>
-                  </div>
-
-                  {answers[currentQ] !== questions[currentQ].correct && answers[currentQ] >= 0 && (
-                    <div style={{ marginBottom: '12px', padding: '10px 12px', background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.1)', borderRadius: '12px', fontSize: '13px', lineHeight: '1.5' }}>
-                      <div style={{ marginBottom: '4px' }}>
-                        <span style={{ color: 'var(--text3)' }}>Siz tanladingiz:</span>{' '}
-                        <span style={{ color: 'var(--red)', fontWeight: '600' }}>{questions[currentQ].opts[answers[currentQ]]?.replace(/^[A-D]\)\s*/, '')}</span>
-                      </div>
-                      <div>
-                        <span style={{ color: 'var(--text3)' }}>To'g'ri javob:</span>{' '}
-                        <span style={{ color: 'var(--green)', fontWeight: '600' }}>{questions[currentQ].opts[questions[currentQ].correct]?.replace(/^[A-D]\)\s*/, '')}</span>
-                      </div>
+            <div style={{ padding: '16px', textAlign: 'left', position: 'relative', minHeight: !isPremium ? '240px' : 'auto' }}>
+              
+              {/* Blur Container */}
+              <div style={{
+                filter: !isPremium ? 'blur(6px)' : 'none',
+                opacity: !isPremium ? 0.3 : 1,
+                pointerEvents: !isPremium ? 'none' : 'auto',
+                userSelect: !isPremium ? 'none' : 'auto',
+                transition: 'all 0.3s ease'
+              }}>
+                {activeReviewTab === 'analysis' && (
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '800', fontSize: '14px', color: answers[currentQ] === questions[currentQ].correct ? 'var(--green)' : 'var(--red)', marginBottom: '12px' }}>
+                      <span>{answers[currentQ] === questions[currentQ].correct ? "✓ To'g'ri" : "✗ Noto'g'ri"}</span>
                     </div>
-                  )}
 
-                  <div style={{ color: 'var(--text2)', fontSize: '14px', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
-                    {questions[currentQ].explanation}
-                  </div>
-                </div>
-              )}
-
-              {activeReviewTab === 'notes' && (
-                <div>
-                  {isUsefulMnemonic(questions[currentQ].mnemonic) && (
-                    <div style={{ background: 'rgba(245, 158, 11, 0.04)', border: '1px dashed var(--amber)', borderRadius: '12px', padding: '12px', display: 'flex', gap: '10px', marginBottom: '14px', textAlign: 'left' }}>
-                      <div style={{ fontSize: '18px' }}>💡</div>
-                      <div style={{ fontSize: '13px', color: 'var(--text2)', lineHeight: '1.5' }}>
-                        <strong>Tavsiya etilgan mnemonika:</strong><br />
-                        {questions[currentQ].mnemonic}
-                      </div>
-                    </div>
-                  )}
-
-                  {(() => {
-                    const qHash = (questions[currentQ]?.q || '').substring(0, 100);
-                    return (
-                      <div style={{ textAlign: 'left' }}>
-                        <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: 'var(--text3)', marginBottom: '6px' }}>
-                          Shaxsiy eslatmangiz:
-                        </label>
-                        <textarea
-                          placeholder="Ushbu savolni eslab qolish uchun shaxsiy assotsiatsiya yozing..."
-                          value={state.customMnemonics?.[qHash] || ''}
-                          onChange={(e) => saveCustomMnemonic(qHash, e.target.value)}
-                          style={{ width: '100%', minHeight: '80px', background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '12px', padding: '10px 12px', color: 'var(--text)', fontSize: '13px', fontFamily: 'inherit', resize: 'vertical', outline: 'none', transition: 'border-color 0.2s', lineHeight: '1.5' }}
-                          onFocus={(e) => e.target.style.borderColor = '#29B6F6'}
-                          onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
-                        />
-                        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
-                          <span style={{ fontSize: '11px', color: 'var(--text3)' }}>
-                            {(state.customMnemonics?.[qHash] || '').trim() ? '✓ Saqlandi' : "Eslatma keyingi safar ham ko'rsatiladi"}
-                          </span>
+                    {answers[currentQ] !== questions[currentQ].correct && answers[currentQ] >= 0 && (
+                      <div style={{ marginBottom: '12px', padding: '10px 12px', background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.1)', borderRadius: '12px', fontSize: '13px', lineHeight: '1.5' }}>
+                        <div style={{ marginBottom: '4px' }}>
+                          <span style={{ color: 'var(--text3)' }}>Siz tanladingiz:</span>{' '}
+                          <span style={{ color: 'var(--red)', fontWeight: '600' }}>{questions[currentQ].opts[answers[currentQ]]?.replace(/^[A-D]\)\s*/, '')}</span>
+                        </div>
+                        <div>
+                          <span style={{ color: 'var(--text3)' }}>To'g'ri javob:</span>{' '}
+                          <span style={{ color: 'var(--green)', fontWeight: '600' }}>{questions[currentQ].opts[questions[currentQ].correct]?.replace(/^[A-D]\)\s*/, '')}</span>
                         </div>
                       </div>
-                    );
-                  })()}
+                    )}
+
+                    <div style={{ color: 'var(--text2)', fontSize: '14px', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
+                      {questions[currentQ].explanation}
+                    </div>
+                  </div>
+                )}
+
+                {activeReviewTab === 'notes' && (
+                  <div>
+                    {isUsefulMnemonic(questions[currentQ].mnemonic) && (
+                      <div style={{ background: 'rgba(245, 158, 11, 0.04)', border: '1px dashed var(--amber)', borderRadius: '12px', padding: '12px', display: 'flex', gap: '10px', marginBottom: '14px', textAlign: 'left' }}>
+                        <div style={{ fontSize: '18px' }}>💡</div>
+                        <div style={{ fontSize: '13px', color: 'var(--text2)', lineHeight: '1.5' }}>
+                          <strong>Tavsiya etilgan mnemonika:</strong><br />
+                          {questions[currentQ].mnemonic}
+                        </div>
+                      </div>
+                    )}
+
+                    {(() => {
+                      const qHash = (questions[currentQ]?.q || '').substring(0, 100);
+                      return (
+                        <div style={{ textAlign: 'left' }}>
+                          <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: 'var(--text3)', marginBottom: '6px' }}>
+                            Shaxsiy eslatmangiz:
+                          </label>
+                          <textarea
+                            placeholder="Ushbu savolni eslab qolish uchun shaxsiy assotsiatsiya yozing..."
+                            value={state.customMnemonics?.[qHash] || ''}
+                            onChange={(e) => saveCustomMnemonic(qHash, e.target.value)}
+                            style={{ width: '100%', minHeight: '80px', background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '12px', padding: '10px 12px', color: 'var(--text)', fontSize: '13px', fontFamily: 'inherit', resize: 'vertical', outline: 'none', transition: 'border-color 0.2s', lineHeight: '1.5' }}
+                            onFocus={(e) => e.target.style.borderColor = '#29B6F6'}
+                            onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
+                          />
+                          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
+                            <span style={{ fontSize: '11px', color: 'var(--text3)' }}>
+                              {(state.customMnemonics?.[qHash] || '').trim() ? '✓ Saqlandi' : "Eslatma keyingi safar ham ko'rsatiladi"}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })()}
+                  </div>
+                )}
+              </div>
+
+              {/* Paywall Overlay */}
+              {!isPremium && (
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '24px 16px',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  backdropFilter: 'blur(3px)',
+                  textAlign: 'center',
+                  borderRadius: '12px',
+                  zIndex: 2,
+                }}>
+                  <div style={{
+                    background: 'var(--bg2)',
+                    border: '1.5px solid var(--border)',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+                    padding: '24px 20px',
+                    borderRadius: '20px',
+                    maxWidth: '340px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                  }}>
+                    <div style={{
+                      width: '48px', height: '48px', borderRadius: '50%',
+                      background: 'linear-gradient(135deg, #F59E0B, #8B5CF6)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: '12px',
+                      boxShadow: '0 4px 12px rgba(245, 158, 11, 0.3)',
+                    }}>
+                      <Crown size={22} color="#fff" />
+                    </div>
+                    <h4 style={{ margin: '0 0 6px 0', fontSize: '15px', fontWeight: 800, color: 'var(--text)' }}>
+                      Premium Tahlil & Mnemonika
+                    </h4>
+                    <p style={{ margin: '0 0 16px 0', fontSize: '12px', color: 'var(--text3)', lineHeight: '1.5' }}>
+                      Savollarning to'liq ilmiy tahlili va eslab qolishni osonlashtiruvchi mnemonikalar faqat Premium foydalanuvchilar uchun ochiq.
+                    </p>
+                    <button
+                      onClick={onPremiumClick}
+                      style={{
+                        background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)',
+                        color: '#fff',
+                        border: 'none',
+                        padding: '10px 20px',
+                        borderRadius: '12px',
+                        fontSize: '13px',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        boxShadow: '0 4px 12px rgba(139, 92, 246, 0.25)',
+                        fontFamily: 'inherit',
+                      }}
+                    >
+                      <span>Premiumga O'tish</span>
+                      <Crown size={12} />
+                    </button>
+                  </div>
                 </div>
               )}
+
             </div>
           </motion.div>
         )}
