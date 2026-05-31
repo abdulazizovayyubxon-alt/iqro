@@ -170,7 +170,8 @@ export const smartSort = (allQuestions, options = {}) => {
     mistakes = [],
     activeCategory = 'chqbt',
     batchSize = 50,
-    topicId = -1
+    topicId = -1,
+    repetitionLimit = 10
   } = options;
 
   if (!allQuestions || allQuestions.length === 0) return [];
@@ -244,8 +245,8 @@ export const smartSort = (allQuestions, options = {}) => {
     }
   }
 
-  // 7. Final ro'yxat: avval takrorlash savollari (maks 30%), keyin oddiy
-  const maxReviewSlots = Math.ceil(batchSize * 0.3);
+  // 7. Final ro'yxat: avval takrorlash savollari (maks repetitionLimit%), keyin oddiy
+  const maxReviewSlots = Math.ceil(batchSize * (repetitionLimit / 100));
   const reviewQuestions = dueForReview.slice(0, maxReviewSlots);
   const remainingSlots = batchSize - reviewQuestions.length;
   const regularQuestions = regular.slice(0, remainingSlots);

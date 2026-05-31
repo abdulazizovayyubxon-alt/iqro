@@ -56,6 +56,7 @@ const buildDefaultState = () => ({
   lastGoalDate: null,
   spacedCards: [],
   customMnemonics: {},
+  repetitionLimit: 10,
   timeStats: { totalTime: 0, totalQuestions: 0 }
 });
 

@@ -281,6 +281,18 @@ export default function ProfilePage({ theme, toggleTheme }) {
     }
   };
 
+  const handleOpenEdit = () => {
+    setEditForm({
+      name: editForm.name || user.displayName || '',
+      gender: editForm.gender || '',
+      birthDate: editForm.birthDate || '',
+      goal: editForm.goal || '',
+      subject: editForm.subject || '',
+      repetitionLimit: state.repetitionLimit ?? 10
+    });
+    setShowEdit(true);
+  };
+
   // Save profile
   const handleSave = async () => {
     setSaving(true);
@@ -299,6 +311,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
         localStorage.setItem('CUSTOM_EXAM_DATE', new Date(examDate).toISOString());
       }
       await setDoc(doc(db, 'users', user.uid), profileData, { merge: true });
+      updateState({ repetitionLimit: editForm.repetitionLimit ?? 10 });
       showToast("Profil saqlandi ✅", 'success');
       setShowEdit(false);
     } catch (e) {
@@ -708,7 +721,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
           </button>
 
           {/* Edit Profile */}
-          <button className="pp-menu-item" onClick={() => setShowEdit(true)}>
+          <button className="pp-menu-item" onClick={handleOpenEdit}>
             <div className="pp-menu-icon" style={{ background: 'var(--purple-bg)', color: 'var(--purple)' }}>
               <Edit3 size={20} />
             </div>
@@ -794,6 +807,53 @@ export default function ProfilePage({ theme, toggleTheme }) {
             </div>
             <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid var(--border)' }}>
               <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text2)', marginBottom: 10 }}>Qo'shimcha Sozlamalar</div>
+              
+              {/* Repetition Intensity Selector */}
+              <div className="pp-field" style={{ marginBottom: '16px' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '12px', fontWeight: 600, color: 'var(--text2)', marginBottom: '8px' }}>
+                  🧠 Aqlli Takrorlash Chastotasi
+                </label>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
+                  {[
+                    { label: "O'chiq\n(0%)", value: 0 },
+                    { label: "Kam\n(10%)", value: 10 },
+                    { label: "O'rtacha\n(30%)", value: 30 },
+                    { label: "Tez\n(50%)", value: 50 }
+                  ].map(opt => {
+                    const isSelected = (editForm.repetitionLimit ?? 10) === opt.value;
+                    return (
+                      <button
+                        key={opt.value}
+                        type="button"
+                        onClick={() => setEditForm(p => ({ ...p, repetitionLimit: opt.value }))}
+                        style={{
+                          padding: '8px 4px',
+                          borderRadius: '10px',
+                          border: isSelected ? '2px solid var(--blue)' : '1px solid var(--border)',
+                          background: isSelected ? 'var(--blue-bg)' : 'var(--bg2)',
+                          color: isSelected ? 'var(--blue)' : 'var(--text)',
+                          fontSize: '11px',
+                          fontWeight: isSelected ? '800' : '500',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s',
+                          whiteSpace: 'pre-line',
+                          textAlign: 'center',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          lineHeight: '1.2'
+                        }}
+                      >
+                        {opt.label}
+                      </button>
+                    );
+                  })}
+                </div>
+                <small style={{ display: 'block', marginTop: '6px', color: 'var(--text3)', fontSize: '11px', lineHeight: '1.4' }}>
+                  Xato qilingan savollarning keyingi testlarda qayta kelish ulushi (tavsiya etiladi: 10%).
+                </small>
+              </div>
+
               <button 
                 onClick={handleDownloadOffline} 
                 disabled={downloadingOffline}

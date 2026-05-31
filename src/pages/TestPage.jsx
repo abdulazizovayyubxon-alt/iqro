@@ -38,6 +38,22 @@ const TestPage = () => {
   const goBack = () => navigate('/test');
   const { addObjection } = useContext(ObjectionContext);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
+  const [showRepetitionBanner, setShowRepetitionBanner] = useState(() => {
+    try {
+      return localStorage.getItem('hide_repetition_banner') !== 'true';
+    } catch {
+      return true;
+    }
+  });
+
+  const handleDismissBanner = () => {
+    setShowRepetitionBanner(false);
+    try {
+      localStorage.setItem('hide_repetition_banner', 'true');
+    } catch (e) {
+      console.error(e);
+    }
+  };
   const { isTrialExpired } = useTrialExpiry();
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
   const versionCacheRef = useRef(null);
@@ -322,7 +338,8 @@ const TestPage = () => {
           mistakes: (state.stats?.[state.activeCategory]?.mistakes) || [],
           activeCategory: state.activeCategory,
           batchSize: rawList.length,
-          topicId
+          topicId,
+          repetitionLimit: state.repetitionLimit ?? 10
         });
       }
 
@@ -613,6 +630,65 @@ const TestPage = () => {
         <div className="exam-mode-container">
           {!showResults ? (
             <>
+              {/* Repetition Informational Banner */}
+              {(state.repetitionLimit ?? 10) > 0 && showRepetitionBanner && (
+                <motion.div 
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, height: 0 }}
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%)',
+                    border: '1px solid rgba(59, 130, 246, 0.25)',
+                    borderRadius: '16px',
+                    padding: '12px 16px',
+                    marginBottom: '16px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '12px',
+                    backdropFilter: 'blur(10px)',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.03)'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flex: 1 }}>
+                    <div style={{
+                      width: '32px',
+                      height: '32px',
+                      borderRadius: '10px',
+                      background: 'rgba(59, 130, 246, 0.15)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'var(--blue)',
+                      flexShrink: 0
+                    }}>
+                      <RefreshCw size={16} />
+                    </div>
+                    <div style={{ fontSize: '12px', lineHeight: '1.4', color: 'var(--text2)' }}>
+                      <strong style={{ color: 'var(--text)' }}>Aqlli Takrorlash Faol:</strong> Noto'g'ri yechilgan savollar mustahkamlash uchun qayta ko'rsatiladi (ulush: {state.repetitionLimit ?? 10}%). Sozlamalarni profildan o'zgartirishingiz mumkin.
+                    </div>
+                  </div>
+                  <button 
+                    onClick={handleDismissBanner}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      color: 'var(--text3)',
+                      cursor: 'pointer',
+                      padding: '4px',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'background 0.2s'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                  >
+                    <X size={14} />
+                  </button>
+                </motion.div>
+              )}
               <QuestionBox 
                 questions={questions}
                 currentQ={currentQ}
