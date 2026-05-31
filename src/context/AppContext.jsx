@@ -21,6 +21,21 @@ import {
 
 export const AppContext = createContext();
 
+// Helper to get ISO-8601 week number (YYYY_Www)
+export const getWeekId = (date = new Date()) => {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const dayNum = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+  return `${d.getUTCFullYear()}_W${String(weekNo).padStart(2, '0')}`;
+};
+
+// Helper to get month ID (YYYY_MM)
+export const getMonthId = (date = new Date()) => {
+  return `${date.getFullYear()}_M${String(date.getMonth() + 1).padStart(2, '0')}`;
+};
+
 const buildDefaultCatStats = () => ({
   totalAnswered: 0,
   totalCorrect: 0,
@@ -29,36 +44,42 @@ const buildDefaultCatStats = () => ({
   mistakes: []
 });
 
-const buildDefaultState = () => ({
-  totalScore: 0,
-  streak: 0,
-  maxStreak: 0,
-  totalAnswered: 0,
-  totalCorrect: 0,
-  topicStats: {},
-  mistakes: [],
-  sessionStart: Date.now(),
-  studyMinutes: 0,
-  activeCategory: 'chqbt',
-  topicId: -1,      // Tanlangan mavzu ID (-1 = barchasi)
-  testMode: 'exam',  // Test rejimi: 'exam' | 'flashcard' | 'mistakes'
-  stats: {
-    chqbt: buildDefaultCatStats(),
-    art: buildDefaultCatStats()
-  },
-  dailyGoal: {
-    date: new Date().toDateString(),
-    answered: 0,
-    target: 20,
-    completed: false
-  },
-  dailyStreak: 0,
-  lastGoalDate: null,
-  spacedCards: [],
-  customMnemonics: {},
-  repetitionLimit: 10,
-  timeStats: { totalTime: 0, totalQuestions: 0 }
-});
+const buildDefaultState = () => {
+  const weekId = getWeekId();
+  const monthId = getMonthId();
+  return {
+    totalScore: 0,
+    streak: 0,
+    maxStreak: 0,
+    totalAnswered: 0,
+    totalCorrect: 0,
+    topicStats: {},
+    mistakes: [],
+    sessionStart: Date.now(),
+    studyMinutes: 0,
+    activeCategory: 'chqbt',
+    topicId: -1,      // Tanlangan mavzu ID (-1 = barchasi)
+    testMode: 'exam',  // Test rejimi: 'exam' | 'flashcard' | 'mistakes'
+    stats: {
+      chqbt: buildDefaultCatStats(),
+      art: buildDefaultCatStats()
+    },
+    dailyGoal: {
+      date: new Date().toDateString(),
+      answered: 0,
+      target: 20,
+      completed: false
+    },
+    dailyStreak: 0,
+    lastGoalDate: null,
+    spacedCards: [],
+    customMnemonics: {},
+    repetitionLimit: 10,
+    timeStats: { totalTime: 0, totalQuestions: 0 },
+    [`weekly_${weekId}`]: 0,
+    [`monthly_${monthId}`]: 0
+  };
+};
 
 // ────────────────────────────────────────────────────────
 // XAVFSIZ localStorage kalit nomini yaratish
@@ -195,9 +216,16 @@ export const AppProvider = ({ children }) => {
         lastGoalDate = today;
       }
 
+      const weekId = getWeekId();
+      const monthId = getMonthId();
+      const currentWeeklyScore = prev[`weekly_${weekId}`] || 0;
+      const currentMonthlyScore = prev[`monthly_${monthId}`] || 0;
+
       return {
         ...prev,
         totalScore: (prev.totalScore || 0) + points,
+        [`weekly_${weekId}`]: currentWeeklyScore + points,
+        [`monthly_${monthId}`]: currentMonthlyScore + points,
         totalAnswered: prev.totalAnswered + 1,
         totalCorrect: prev.totalCorrect + 1,
         topicStats: newTopicStats,
@@ -356,9 +384,16 @@ export const AppProvider = ({ children }) => {
       const sessionQuestions = results.totalAnswered || 0;
       const currentTimeStats = prev.timeStats || { totalTime: 0, totalQuestions: 0 };
 
+      const weekId = getWeekId();
+      const monthId = getMonthId();
+      const currentWeeklyScore = prev[`weekly_${weekId}`] || 0;
+      const currentMonthlyScore = prev[`monthly_${monthId}`] || 0;
+
       const newState = {
         ...prev,
         totalScore: (prev.totalScore || 0) + results.correctCount * 2,
+        [`weekly_${weekId}`]: currentWeeklyScore + results.correctCount * 2,
+        [`monthly_${monthId}`]: currentMonthlyScore + results.correctCount * 2,
         totalAnswered: prev.totalAnswered + results.totalAnswered,
         totalCorrect: prev.totalCorrect + results.correctCount,
         topicStats: newTopicStats,
