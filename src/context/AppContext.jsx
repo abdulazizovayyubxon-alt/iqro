@@ -62,7 +62,8 @@ const buildDefaultState = () => {
     testMode: 'exam',  // Test rejimi: 'exam' | 'flashcard' | 'mistakes'
     stats: {
       chqbt: buildDefaultCatStats(),
-      art: buildDefaultCatStats()
+      art: buildDefaultCatStats(),
+      nemis: buildDefaultCatStats()
     },
     dailyGoal: {
       date: new Date().toDateString(),
@@ -124,7 +125,7 @@ export const AppProvider = ({ children }) => {
           setState(prev => ({
             ...buildDefaultState(),
             ...data,
-            stats: data.stats || { chqbt: buildDefaultCatStats(), art: buildDefaultCatStats() },
+            stats: data.stats || { chqbt: buildDefaultCatStats(), art: buildDefaultCatStats(), nemis: buildDefaultCatStats() },
             topicStats: data.topicStats || {},
             customMnemonics: data.customMnemonics || {},
             timeStats: data.timeStats || { totalTime: 0, totalQuestions: 0 }

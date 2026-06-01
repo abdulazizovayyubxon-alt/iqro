@@ -30,7 +30,8 @@ const SUBJECT_BLUEPRINTS = {
   info: { 39: 3, 40: 7, 41: 5, 42: 3, 43: 3, 44: 5, 45: 4, 46: 20 },
   mtt: { 47: 5, 48: 5, 49: 5, 50: 5, 51: 5, 52: 5, 53: 5, 54: 15 },
   til: { 55: 5, 56: 8, 57: 7, 58: 5, 59: 8, 60: 2, 61: 0, 62: 15 },
-  mtt_rahbar: { 63: 5, 64: 5, 65: 5, 66: 5, 67: 5, 68: 5, 69: 5, 70: 15 }
+  mtt_rahbar: { 63: 5, 64: 5, 65: 5, 66: 5, 67: 5, 68: 5, 69: 5, 70: 15 },
+  nemis: { 71: 6, 72: 5, 73: 4, 74: 7, 75: 7, 76: 6, 77: 5, 78: 5, 79: 5 }
 };
 
 const getExamDuration = (category) => {
@@ -39,6 +40,7 @@ const getExamDuration = (category) => {
     case 'info':
       return 120 * 60;
     case 'til':
+    case 'nemis':
       return 105 * 60;
     default:
       return 90 * 60;

@@ -179,6 +179,27 @@ const mttRahbarTopics = [
     theoryHint: "📌 Rahbar xodimning pedagogik-psixologik kompetensiyalari, boshqaruv etika qoidalari, pedagogik dizayn va bolalar rivojlanish dinamikasini metodik qo'llab-quvvatlash va baholash." }
 ];
 
+const nemisTopics = [
+  { id: 71, name: "Nemis tili: Ilmiy-ommabop matn tushunish", icon: React.createElement(BookOpen, { size: 20 }), day: 42, category: 'nemis',
+    theoryHint: "📌 Standart nemis tilida yozilgan ilmiy-ommabop matnlarni (gazeta, jurnal yoki internet maqolalari) o'qib tushunish, asosiy g'oyani aniqlash va kontekstdan so'z ma'nosini topish." },
+  { id: 72, name: "Nemis tili: Voqeaband matn tushunish", icon: React.createElement(Compass, { size: 20 }), day: 42, category: 'nemis',
+    theoryHint: "📌 Nemis tilidagi badiiy va real voqeaband matnlarni o'qib tushunish, voqealar ketma-ketligini va qahramonlar obrazlarini tahlil qilish." },
+  { id: 73, name: "Nemis tili: Matn yaxlitligi va tuzilishi", icon: React.createElement(Scroll, { size: 20 }), day: 42, category: 'nemis',
+    theoryHint: "📌 Matnning umumiy yaxlitligi va qismlari (kirish, rivojlantirish, xulosa) o'rtasidagi mantiqiy bog'liqliklar hamda bog'lovchilarni tahlil qilish." },
+  { id: 74, name: "Nemis tili: Grammatika", icon: React.createElement(Ruler, { size: 20 }), day: 42, category: 'nemis',
+    theoryHint: "📌 Nemis tili grammatikasi, kelishiklar, fe'l zamonlari (Präteritum, Perfekt, Plusquamperfekt), Passiv, Konjunktiv II, nisbiy gaplar va sintaktik o'zgarishlar." },
+  { id: 75, name: "Nemis tili: Leksika", icon: React.createElement(PenTool, { size: 20 }), day: 43, category: 'nemis',
+    theoryHint: "📌 So'z boyligi, so'z yasalishi (Suffixe, Präfixe), sinonimlar, o'xshash so'zlarni farqlash hamda kollokatsiyalar (Fraktal fe'llar, Nomen-Verb-Verbindungen)." },
+  { id: 76, name: "Nemis tili: Pragmatika", icon: React.createElement(MessageSquare, { size: 20 }), day: 43, category: 'nemis',
+    theoryHint: "📌 Turli nutqiy vaziyatlarga mos keladigan og'zaki yoki yozma nutq andozalari, suhbat strategiyalari va ijtimoiy-madaniy til normalari." },
+  { id: 77, name: "Nemis tili: Kasbiy standartlar", icon: React.createElement(Scale, { size: 20 }), day: 43, category: 'nemis',
+    theoryHint: "📌 Nemis tili o'qituvchisining kasbiy standarti, o'quv darslarini rejalashtirish, xavfsiz rivojlantiruvchi ta'lim muhitini yaratish hamda baholash mezonlari." },
+  { id: 78, name: "Nemis tili: Pedagogika va sinf boshqaruvi", icon: React.createElement(Award, { size: 20 }), day: 43, category: 'nemis',
+    theoryHint: "📌 Sinfni boshqarish usullari, o'qitish didaktikasi va pedagogik muloqot etikasini malaka sinovlarida va konkret keys vaziyatlarida qo'llash." },
+  { id: 79, name: "Nemis tili: O'qitish metodikasi", icon: React.createElement(GraduationCap, { size: 20 }), day: 43, category: 'nemis',
+    theoryHint: "📌 Nemis tilini chet tili sifatida o'qitish metodikasi (DaF), ta'lim metodlari (PPP, TBLT, CLIL, Guided Discovery, ALM) va zamonaviy yondashuvlar." }
+];
+
 export const SUBJECTS = [
   { id: 'chqbt', name: "CHQBT", icon: Medal, desc: "Harbiy bilimlar, Konstitutsiya va birinchi yordam" },
   { id: 'art', name: "Tasviriy San'at", icon: Palette, desc: "Chizmachilik va san'at tarixi" },
@@ -188,10 +209,11 @@ export const SUBJECTS = [
   { id: 'info', name: "Informatika va AT", icon: Laptop, desc: "Kompyuter tizimlari, algoritmlash va dasturlash" },
   { id: 'mtt', name: "MTT Tarbiyachilari", icon: Smile, desc: "Maktabgacha ta'lim pedagogikasi va metodikasi" },
   { id: 'mtt_rahbar', name: "MTT Dir. O'rinbosari", icon: Award, desc: "Metodik rahbarlik, me'yoriy hujjatlar va boshqaruv" },
-  { id: 'til', name: "Ona Tili va Adabiyot", icon: PenTool, desc: "Til qoidalari, adabiyot tarixi va tahlili" }
+  { id: 'til', name: "Ona Tili va Adabiyot", icon: PenTool, desc: "Til qoidalari, adabiyot tarixi va tahlili" },
+  { id: 'nemis', name: "Nemis Tili", icon: Globe, desc: "Til qoidalari, o'qib tushunish, pragmatika va metodika" }
 ];
 
-export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics];
+export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...nemisTopics];
 
 export const SCHEDULE = [
   { day: 1, date: "2 May", topic: "Harbiy xizmat asoslari", tests: 8, goal: "Konstitutsiya, Mudofaa doktrinasi", topicId: 0 },

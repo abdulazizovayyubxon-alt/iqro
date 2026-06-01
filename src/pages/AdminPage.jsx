@@ -855,6 +855,7 @@ try {
                   <option value="mtt">🧸 MTT tarbiyachisi</option>
                   <option value="mtt_rahbar">👔 MTT rahbari</option>
                   <option value="til">🗣️ Tillar</option>
+                  <option value="nemis">🌐 Nemis tili</option>
                 </select>
               </div>
               <div className="admin-select-wrapper">

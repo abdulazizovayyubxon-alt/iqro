@@ -30,6 +30,7 @@ const SUBJECTS = [
   { id: 'mtt', badge: 'M', title: 'MTT Tarbiyachilari', desc: 'Maktabgacha ta\'lim pedagogikasi va metodikasi' },
   { id: 'mtt_rahbar', badge: 'D', title: 'MTT Dir. O\'rinbosari', desc: 'Metodik rahbarlik, me\'yoriy hujjatlar va boshqaruv' },
   { id: 'til', badge: 'O', title: 'Ona Tili va Adabiyot', desc: 'Til qoidalari, adabiyot tarixi va tahlili' },
+  { id: 'nemis', badge: 'N', title: 'Nemis Tili', desc: 'Nemis tili qoidalari, pragmatika, metodika' },
   { id: 'multi', badge: '✦', title: 'Bir nechta fan', desc: 'Barcha fanlar bo\'yicha kompleks' },
 ];
 
