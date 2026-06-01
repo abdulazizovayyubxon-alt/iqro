@@ -640,18 +640,22 @@ const ExamPage = () => {
 
             {/* Statistika */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <div style={{ display: 'flex', gap: 24 }}>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 28, fontWeight: 900, color: 'var(--green)' }}>{correctCount}</div>
-                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600 }}>TO'G'RI</div>
+              <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+                <div style={{ textAlign: 'center', minWidth: 60 }}>
+                  <div style={{ fontSize: 26, fontWeight: 900, color: 'var(--green)' }}>{correctCount}</div>
+                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>TO'G'RI</div>
                 </div>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 28, fontWeight: 900, color: 'var(--red)' }}>{wrongCount}</div>
-                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600 }}>XATO</div>
+                <div style={{ textAlign: 'center', minWidth: 60 }}>
+                  <div style={{ fontSize: 26, fontWeight: 900, color: 'var(--red)' }}>{wrongCount}</div>
+                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>XATO</div>
                 </div>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 28, fontWeight: 900, color: 'var(--text)' }}>{questions.length - answeredCount}</div>
-                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600 }}>QOLDIRILDI</div>
+                <div style={{ textAlign: 'center', minWidth: 70 }}>
+                  <div style={{ fontSize: 26, fontWeight: 900, color: 'var(--text)' }}>{questions.length - answeredCount}</div>
+                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>QOLDIRILDI</div>
+                </div>
+                <div style={{ textAlign: 'center', minWidth: 80 }}>
+                  <div style={{ fontSize: 26, fontWeight: 900, color: '#29B6F6' }}>+{correctCount * 2}</div>
+                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>REYTING BALL</div>
                 </div>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 13, color: 'var(--text2)' }}>

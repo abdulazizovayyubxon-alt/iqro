@@ -570,6 +570,11 @@ export default function ProfilePage({ theme, toggleTheme }) {
               <div className="pp-stat-val">{acc}%</div>
               <div className="pp-stat-lbl">Aniqlik</div>
             </div>
+            <div className="pp-stat-card" onClick={() => navigate('/leaderboard')} style={{ cursor: 'pointer', background: 'linear-gradient(135deg, rgba(41, 182, 246, 0.12), rgba(139, 92, 246, 0.04))', border: '1px solid rgba(41, 182, 246, 0.35)' }}>
+              <div className="pp-stat-icon">🏆</div>
+              <div className="pp-stat-val" style={{ color: '#29B6F6' }}>{state.totalScore || 0}</div>
+              <div className="pp-stat-lbl" style={{ color: '#0284C7', fontWeight: 700 }}>Balllar</div>
+            </div>
             <div 
               className="pp-stat-card" 
               onClick={() => navigate('/achievements')} 

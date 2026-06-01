@@ -46,6 +46,9 @@ const TestResults = ({
           {correctCount} <span style={{ fontSize: 28, color: 'var(--text3)' }}>/ {questionsLength}</span>
         </div>
         <div style={{ fontSize: 20, marginTop: 8, color: 'var(--text2)', fontWeight: 800 }}>{pct}%</div>
+        <div style={{ fontSize: 13, color: '#29B6F6', fontWeight: 700, marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
+          🏆 +{correctCount * 2} reyting ball qo'shildi!
+        </div>
       </div>
       
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 320, margin: '0 auto' }}>

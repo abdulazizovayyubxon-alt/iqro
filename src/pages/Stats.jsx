@@ -137,6 +137,10 @@ const Stats = () => {
               <span style={{ fontSize: '14px', color: 'var(--text2)', fontWeight: '500' }}>⚡ Max Streak</span>
               <span style={{ fontSize: '20px', fontWeight: '800', color: 'var(--amber)' }}>{catStats.maxStreak}</span>
             </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: '14px', color: 'var(--text2)', fontWeight: '500' }}>🏆 Reyting ball</span>
+              <span style={{ fontSize: '20px', fontWeight: '800', color: '#29B6F6' }}>{state.totalScore || 0}</span>
+            </div>
           </div>
         </div>
       </div>
