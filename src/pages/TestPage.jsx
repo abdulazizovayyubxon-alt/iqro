@@ -289,24 +289,78 @@ const TestPage = () => {
           }
           const token = await currentUser.getIdToken();
           try {
-            const res = await fetch(`/api/get-questions?category=${state.activeCategory}`, {
-              headers: {
-                Authorization: `Bearer ${token}`
+            const directUrl = storageUrls[state.activeCategory];
+            if (directUrl) {
+              console.log(`Direct storage dan yuklanmoqda: ${state.activeCategory} -> ${directUrl}`);
+              const directRes = await fetch(directUrl);
+              if (directRes.ok) {
+                rawList = await directRes.json();
+                console.log(`✅ Direct storage dan ${rawList.length} ta savol yuklandi`);
+              } else {
+                console.warn(`Direct storage xatosi: ${directRes.status}`);
               }
-            });
-            if (!res.ok) {
-              if (res.status === 403) {
-                showToast("Premium yoki sinov muddati talab qilinadi", 'error');
-                setShowPremiumModal(true);
-              }
-              throw new Error('Server error: ' + res.status);
             }
-            rawList = await res.json();
+          } catch (directErr) {
+            console.error("Direct storage yuklashda xatolik:", directErr);
+          }
+
+          // Agar direct yuklanmasa, API orqali sinab ko'ramiz
+          if (!rawList || rawList.length === 0) {
+            try {
+              const res = await fetch(`/api/get-questions?category=${state.activeCategory}`, {
+                headers: {
+                  Authorization: `Bearer ${token}`
+                }
+              });
+              if (!res.ok) {
+                if (res.status === 403) {
+                  showToast("Premium yoki sinov muddati talab qilinadi", 'error');
+                  setShowPremiumModal(true);
+                }
+                throw new Error('Server error: ' + res.status);
+              }
+              rawList = await res.json();
+            } catch (err) {
+              console.error("API orqali bundle yuklashda xatolik:", err);
+              rawList = [];
+            }
+          }
+
+          if (rawList && rawList.length > 0) {
             await localforage.setItem(cacheKey, rawList);
             await localforage.setItem(versionKey, remoteVersion);
-          } catch (err) {
-            console.error("Bundle yuklashda xatolik:", err);
-            rawList = [];
+          }
+
+          // 🔄 FALLBACK: Agar bundle yuklanmasa, topicId bo'yicha parallel Firestore query
+          if (!rawList || rawList.length === 0) {
+            console.warn("Bundle yuklanmadi — Firestore dan topicId bo'yicha o'qilmoqda...");
+            try {
+              const qRef = collection(db, 'questions');
+              // Joriy kategoriya uchun mavzu IDlarini olamiz
+              const categoryTopicIds = TOPICS.filter(t =>
+                Array.isArray(t.category)
+                  ? t.category.includes(state.activeCategory)
+                  : t.category === state.activeCategory
+              ).map(t => t.id);
+
+              // Har bir topicId uchun alohida query — parallel bajariladi (tezroq)
+              const snapshots = await Promise.all(
+                categoryTopicIds.map(tid =>
+                  getDocs(query(qRef, where('topicId', '==', tid)))
+                )
+              );
+              rawList = snapshots.flatMap(snap =>
+                snap.docs.map(d => ({ id: d.id, ...d.data() }))
+              );
+              console.log(`✅ Firestore dan ${rawList.length} ta savol yuklandi (${categoryTopicIds.length} mavzu)`);
+              if (rawList.length > 0) {
+                await localforage.setItem(cacheKey, rawList);
+                await localforage.setItem(versionKey, remoteVersion);
+              }
+            } catch (fsErr) {
+              console.error("Firestore fallback xatosi:", fsErr);
+              rawList = [];
+            }
           }
         }
 

@@ -39,7 +39,9 @@ service cloud.firestore {
         // til va adabiyot (adabiyot -> til ko'chirilishi uchun vaqtincha ruxsat)
         (request.resource.data.topicId >= 55 && request.resource.data.topicId <= 62 && (request.resource.data.category == 'til' || request.resource.data.category == 'adabiyot')) ||
         // mtt_rahbar (63-70)
-        (request.resource.data.topicId >= 63 && request.resource.data.topicId <= 70 && (request.resource.data.category == 'mtt_rahbar' || request.resource.data.category == 'adabiyot'))
+        (request.resource.data.topicId >= 63 && request.resource.data.topicId <= 70 && (request.resource.data.category == 'mtt_rahbar' || request.resource.data.category == 'adabiyot')) ||
+        // nemis tili (71-79)
+        (request.resource.data.topicId >= 71 && request.resource.data.topicId <= 79 && request.resource.data.category == 'nemis')
       );
       allow delete: if isAdmin();
     }
