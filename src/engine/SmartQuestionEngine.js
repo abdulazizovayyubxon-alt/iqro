@@ -230,41 +230,72 @@ export const smartSort = (allQuestions, options = {}) => {
     return { ...q, _priority: priority, _spacedCard: spacedCard };
   });
 
-  // 5. Priority bo'yicha kamayish tartibida saralash
-  scoredQuestions.sort((a, b) => b._priority - a._priority);
-
-  // 6. Takrorlash muddati kelgan savollarni ajratib olish
-  const dueForReview = [];
-  const regular = [];
+  // 5. Savollarni Repetition (takrorlash kerak bo'lgan) va Fresh (yangi) guruhlariga ajratamiz
+  const repetitionPool = [];
+  const freshPool = [];
 
   for (const q of scoredQuestions) {
-    if (q._spacedCard && q._spacedCard.nextReview <= now) {
-      dueForReview.push(q);
+    const qHash = (q.q || '').substring(0, 100);
+    // Agar spaced-repetition ro'yxatida bo'lsa yoki xatolar ro'yxatida bo'lsa, u takrorlash savolidir
+    const isRepetition = spacedMap.has(qHash) || mistakeSet.has(qHash);
+    
+    if (isRepetition) {
+      repetitionPool.push(q);
     } else {
-      regular.push(q);
+      freshPool.push(q);
     }
   }
 
-  // 7. Final ro'yxat: avval takrorlash savollari (maks repetitionLimit%), keyin oddiy
-  const maxReviewSlots = Math.ceil(batchSize * (repetitionLimit / 100));
-  const reviewQuestions = dueForReview.slice(0, maxReviewSlots);
-  const remainingSlots = batchSize - reviewQuestions.length;
-  const regularQuestions = regular.slice(0, remainingSlots);
+  // Har bir guruhni o'z ustivorligi bo'yicha kamayish tartibida saralaymiz
+  repetitionPool.sort((a, b) => b._priority - a._priority);
+  freshPool.sort((a, b) => b._priority - a._priority);
 
-  // Aralashtirib qo'shamiz (foydalanuvchi farq qilmasligi uchun)
-  const finalBatch = [...reviewQuestions, ...regularQuestions];
+  // 6. Savollarni blokkalar (har biri 50 tadan) bo'yicha taqsimlaymiz
+  const finalBatch = [];
+  const BLOCK_SIZE = 50;
+  
+  // Bizga batchSize dona savol kerak (odatda allQuestions.length)
+  const totalNeeded = Math.min(batchSize, allQuestions.length);
+  const numBlocks = Math.ceil(totalNeeded / BLOCK_SIZE);
 
-  // Ichki shuffle — foydalanuvchi takrorlash va yangi savollar tartibini sezmasligi uchun
-  for (let i = finalBatch.length - 1; i > 0; i--) {
-    // Faqat yaqin atrofdagi savollarni almashtiramiz (3 ta ichida)
-    const j = Math.max(0, i - Math.floor(Math.random() * 3));
-    [finalBatch[i], finalBatch[j]] = [finalBatch[j], finalBatch[i]];
+  for (let b = 0; b < numBlocks; b++) {
+    const blockQuestions = [];
+    
+    // Ushbu blok uchun nechta savol kerakligini hisoblaymiz (oxirgi blok 50 tadan kichikroq bo'lishi mumkin)
+    const blockNeeded = Math.min(BLOCK_SIZE, totalNeeded - finalBatch.length);
+    // Ushbu blok uchun maksimal takrorlash savollari sonini hisoblaymiz (10% limit uchun 50 ta savoldan maks 5 ta)
+    const blockMaxRep = Math.round(blockNeeded * (repetitionLimit / 100));
+
+    let repCount = 0;
+
+    // A. Avval ruxsat etilgan limitgacha takrorlash savollarini qo'shamiz
+    while (repCount < blockMaxRep && repetitionPool.length > 0 && blockQuestions.length < blockNeeded) {
+      blockQuestions.push(repetitionPool.shift());
+      repCount++;
+    }
+
+    // B. Qolgan joylarni yangi/fresh savollar bilan to'ldiramiz (bu me'yoridan ko'p takrorlanishni oldini oladi)
+    while (freshPool.length > 0 && blockQuestions.length < blockNeeded) {
+      blockQuestions.push(freshPool.shift());
+    }
+
+    // C. Agar yangi savollar tugab qolsa, qolgan joylarni baribir takrorlash savollari bilan to'ldiramiz
+    while (repetitionPool.length > 0 && blockQuestions.length < blockNeeded) {
+      blockQuestions.push(repetitionPool.shift());
+    }
+
+    // Blok ichidagi savollarni aralashtiramiz (foydalanuvchi takrorlashlar joylashuvini sezmasligi uchun)
+    for (let i = blockQuestions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [blockQuestions[i], blockQuestions[j]] = [blockQuestions[j], blockQuestions[i]];
+    }
+
+    finalBatch.push(...blockQuestions);
   }
 
-  // Debug flag'larni tozalash
+  // Debug maydonlarini tozalash va toza savollarni qaytarish
   return finalBatch.map(({ _priority, _spacedCard, ...q }) => ({
     ...q,
-    // TestPage uchun qiyinlik indikatori
     difficulty: _spacedCard?.difficulty ?? q.difficulty
   }));
 };
@@ -304,6 +335,24 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
       // Spaced Repetition: to'g'ri javob → level ko'tariladi
       if (updatedCards.has(qHash)) {
         updatedCards.set(qHash, updateSpacedCard(updatedCards.get(qHash), true));
+      } else {
+        // Yangi to'g'ri javob — spacedCards ga qo'shamiz (level 1), 
+        // to'g'ri javob berilgan savollar darhol takrorlanmasligi uchun
+        const newCard = {
+          ...q,
+          qHash,
+          q: q.q,
+          opts: q.opts || [],
+          correct: q.correct,
+          topicId: q.topicId ?? topicId,
+          level: 1,
+          correctStreak: 1,
+          difficulty: 1,
+          lastReview: Date.now(),
+          nextReview: Date.now() + calculateNextReview(1, 1),
+          lastResult: 'correct'
+        };
+        updatedCards.set(qHash, newCard);
       }
     } else {
       wrongCount++;

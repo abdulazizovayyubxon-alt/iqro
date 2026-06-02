@@ -383,6 +383,15 @@ const TestPage = () => {
         // SAVOL KODLARINI UI'DAN OLIB TASHLASH VA MOSLASHTIRISH SAVOLLARINI ARALASHTIRISH
         rawList = processQuestionsOnTheFly(rawList);
 
+        // Dublikat savollarni tozalaymiz
+        const seenText = new Set();
+        rawList = rawList.filter(q => {
+          const cleanText = (q.q || '').trim().toLowerCase();
+          if (seenText.has(cleanText)) return false;
+          seenText.add(cleanText);
+          return true;
+        });
+
         // 🧠 SMART SORT — aqlli savol tanlash
         // Zaif mavzulardagi savollarni ko'proq ko'rsatadi,
         // spaced repetition muddati kelgan savollarni ustivor qiladi

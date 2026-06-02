@@ -181,6 +181,15 @@ const ExamPage = () => {
         allQ = allQ.filter(q => q.category === cat);
         allQ = processQuestionsOnTheFly(allQ);
 
+        // Baza yoki yuklanish jarayonida takrorlangan savollarni mutlaqo olib tashlaymiz (imtihonda takrorlanmasligi uchun)
+        const seenText = new Set();
+        allQ = allQ.filter(q => {
+          const cleanText = (q.q || '').trim().toLowerCase();
+          if (seenText.has(cleanText)) return false;
+          seenText.add(cleanText);
+          return true;
+        });
+
         if (allQ.length === 0) {
           goBack();
           return;
