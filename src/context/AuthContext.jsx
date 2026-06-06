@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { auth, googleProvider, db } from '../firebase';
+import { auth, googleProvider, db, app } from '../firebase';
 import {
   signInWithPopup,
   signInWithRedirect,
@@ -11,7 +11,8 @@ import {
   updateProfile,
   sendPasswordResetEmail,
   setPersistence,
-  browserLocalPersistence
+  browserLocalPersistence,
+  linkWithPopup
 } from 'firebase/auth';
 import { doc, getDoc, setDoc, updateDoc, collection, query, where, getDocs } from 'firebase/firestore';
 import {
@@ -663,6 +664,123 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // ─── Hisoblarni birlashtirish (Account Merge) ───
+  // Telefon hisobi bilan Google/Telegram hisobini birlashtiradi.
+  // Secondary Firebase App orqali ishlaydi — joriy sessiya buzilmaydi.
+  const mergePhoneAccount = async (phone, password) => {
+    if (!user) return { success: false, error: 'not_logged_in' };
+
+    const cleanPhone = phone.replace(/\D/g, '');
+    const internalEmail = phoneToEmail(phone);
+    const currentUid = user.uid;
+
+    try {
+      const { initializeApp, deleteApp } = await import('firebase/app');
+      const { getAuth, signInWithEmailAndPassword: secondSignIn } = await import('firebase/auth');
+
+      const secondaryAppName = `merge_${Date.now()}`;
+      const secondaryApp = initializeApp(app.options, secondaryAppName);
+      const secondaryAuth = getAuth(secondaryApp);
+
+      // Telefon hisobiga kiramiz (parolni tekshirish uchun)
+      let phoneCred;
+      try {
+        phoneCred = await secondSignIn(secondaryAuth, internalEmail, password);
+      } catch (authErr) {
+        await deleteApp(secondaryApp);
+        if (
+          authErr.code === 'auth/wrong-password' ||
+          authErr.code === 'auth/invalid-credential' ||
+          authErr.code === 'auth/invalid-login-credentials'
+        ) return { success: false, error: 'wrong_password' };
+        if (authErr.code === 'auth/user-not-found') return { success: false, error: 'not_found' };
+        if (authErr.code === 'auth/too-many-requests') return { success: false, error: 'too_many_requests' };
+        throw authErr;
+      }
+
+      const oldUid = phoneCred.user.uid;
+
+      if (oldUid === currentUid) {
+        await secondaryAuth.signOut();
+        await deleteApp(secondaryApp);
+        return { success: false, error: 'same_account' };
+      }
+
+      // Firestore ma'lumotlarini o'qiymiz
+      const [oldUserSnap, oldStatsSnap, currentStatsSnap] = await Promise.all([
+        getDoc(doc(db, 'users', oldUid)),
+        getDoc(doc(db, 'userStats', oldUid)),
+        getDoc(doc(db, 'userStats', currentUid)),
+      ]);
+
+      const batch = writeBatch(db);
+
+      // Foydalanuvchi profilini birlashtirish
+      if (oldUserSnap.exists()) {
+        const oldData = oldUserSnap.data();
+        batch.set(doc(db, 'users', currentUid), {
+          phone: oldData.phone || cleanPhone,
+          ...(oldData.gender && { gender: oldData.gender }),
+          ...(oldData.birthDate && { birthDate: oldData.birthDate }),
+          linkedFrom: oldUid,
+          linkedAt: new Date(),
+        }, { merge: true });
+
+        // Eski hisobni "birlashtirilgan" deb belgilash
+        batch.set(doc(db, 'users', oldUid), {
+          merged: true,
+          mergedTo: currentUid,
+          mergedAt: new Date(),
+        }, { merge: true });
+      }
+
+      // Statistikani birlashtirish — ko'proq javob bergani asosiy bo'ladi
+      if (oldStatsSnap.exists()) {
+        const oldStats = oldStatsSnap.data();
+        const currentAnswered = currentStatsSnap.exists() ? (currentStatsSnap.data()?.totalAnswered || 0) : 0;
+        const oldAnswered = oldStats.totalAnswered || 0;
+
+        if (oldAnswered > currentAnswered) {
+          // Telefon hisobidagi statistika yanada boy — uni ko'chiramiz
+          batch.set(doc(db, 'userStats', currentUid), {
+            ...oldStats,
+            displayName: user.displayName || oldStats.displayName,
+            photoURL: user.photoURL || oldStats.photoURL || null,
+          });
+        }
+
+        batch.set(doc(db, 'userStats', oldUid), { mergedTo: currentUid }, { merge: true });
+      }
+
+      await batch.commit();
+
+      await secondaryAuth.signOut();
+      await deleteApp(secondaryApp);
+
+      return { success: true, oldUid };
+    } catch (err) {
+      console.error('mergePhoneAccount xatosi:', err);
+      return { success: false, error: err.message || 'unknown' };
+    }
+  };
+
+  // ─── Google hisobini ulash (telefon foydalanuvchisi uchun) ───
+  const linkGoogleAccount = async () => {
+    try {
+      googleProvider.setCustomParameters({ prompt: 'select_account' });
+      await linkWithPopup(auth.currentUser, googleProvider);
+      return { success: true };
+    } catch (err) {
+      if (err.code === 'auth/credential-already-in-use') {
+        return { success: false, error: 'already_separate_account' };
+      }
+      if (err.code === 'auth/popup-blocked' || err.code === 'auth/popup-closed-by-user') {
+        return { success: false, error: 'popup_blocked' };
+      }
+      return { success: false, error: err.code || err.message };
+    }
+  };
+
   // ─── Parolni tiklash (telefon raqam uchun) ───
   // Telefon orqali kirgan foydalanuvchilar uchun
   // parolni tiklash imkoniyati (email orqali)
@@ -711,12 +829,14 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ 
-      user, loading, authError, setAuthError, 
-      signInWithGoogle, signInWithEmail, registerWithEmail, 
-    signInWithPhone,
+    <AuthContext.Provider value={{
+      user, loading, authError, setAuthError,
+      signInWithGoogle, signInWithEmail, registerWithEmail,
+      signInWithPhone,
       checkUserExists,
       resetPassword,
+      mergePhoneAccount,
+      linkGoogleAccount,
       logout,
       calculatePasswordStrength,
       checkLockout

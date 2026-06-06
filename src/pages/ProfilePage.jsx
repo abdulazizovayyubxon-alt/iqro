@@ -5,7 +5,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield, Download, FileText, Send, Play, GraduationCap, Brain, Zap } from 'lucide-react';
+import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield, Download, FileText, Send, Play, GraduationCap, Brain, Zap, Link, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
 import { SUBJECTS } from '../data/mockData';
@@ -26,7 +26,7 @@ import './ProfilePage.css';
 const DAY_NAMES = ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'];
 
 export default function ProfilePage({ theme, toggleTheme }) {
-  const { user, logout } = useAuth();
+  const { user, logout, mergePhoneAccount, linkGoogleAccount } = useAuth();
   const { state, updateState } = useContext(AppContext);
   const { showToast } = useContext(ToastContext);
   const { isInstallable, installApp } = useContext(PWAContext);
@@ -45,6 +45,15 @@ export default function ProfilePage({ theme, toggleTheme }) {
   const [tgLoading, setTgLoading] = useState(false);
   const [tgError, setTgError] = useState('');
   const [openProfileFaqIdx, setOpenProfileFaqIdx] = useState(null);
+
+  // Hisob birlashtirish (merge)
+  const [showMergeModal, setShowMergeModal] = useState(false);
+  const [mergePhone, setMergePhone] = useState('+998');
+  const [mergePassword, setMergePassword] = useState('');
+  const [showMergePass, setShowMergePass] = useState(false);
+  const [merging, setMerging] = useState(false);
+  const [mergeError, setMergeError] = useState('');
+  const [linkingGoogle, setLinkingGoogle] = useState(false);
 
   const PROFILE_FAQS = [
     {
@@ -188,7 +197,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
 
   // Modal history interception for back button
   useEffect(() => {
-    const hasOpenModal = showEdit || showPremium || showLogoutConfirm || showPrivacy || showTelegramModal || showDeleteConfirm;
+    const hasOpenModal = showEdit || showPremium || showLogoutConfirm || showPrivacy || showTelegramModal || showDeleteConfirm || showMergeModal;
     if (!hasOpenModal) return;
 
     window.history.pushState({ profileModalOpen: true }, '');
@@ -200,6 +209,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
       setShowPrivacy(false);
       setShowTelegramModal(false);
       setShowDeleteConfirm(false);
+      setShowMergeModal(false);
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -210,7 +220,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
         window.history.back();
       }
     };
-  }, [showEdit, showPremium, showLogoutConfirm, showPrivacy, showTelegramModal, showDeleteConfirm]);
+  }, [showEdit, showPremium, showLogoutConfirm, showPrivacy, showTelegramModal, showDeleteConfirm, showMergeModal]);
 
   // Urgency countdown interval
   useEffect(() => {
@@ -338,6 +348,73 @@ export default function ProfilePage({ theme, toggleTheme }) {
       showToast("Xatolik yuz berdi", 'error');
     }
     setSaving(false);
+  };
+
+  // Kirish usulini aniqlash
+  const loginProvider = (() => {
+    const providerData = user?._firebaseUser?.providerData || [];
+    if (providerData.some(p => p.providerId === 'google.com')) return 'google';
+    if (providerData.some(p => p.providerId === 'password')) {
+      return user?.email?.endsWith('@iqro.uz') ? 'phone' : 'email';
+    }
+    return 'telegram';
+  })();
+
+  const handleMergePhone = async () => {
+    const c = mergePhone.replace(/\D/g, '');
+    if (!c.startsWith('998') || c.length !== 12) {
+      setMergeError("To'g'ri O'zbekiston telefon raqamini kiriting (+998XXXXXXXXX)");
+      return;
+    }
+    if (!mergePassword || mergePassword.length < 6) {
+      setMergeError("Parol kamida 6 ta belgidan iborat bo'lishi kerak");
+      return;
+    }
+    setMerging(true);
+    setMergeError('');
+    const result = await mergePhoneAccount(mergePhone, mergePassword);
+    setMerging(false);
+
+    if (result.success) {
+      setShowMergeModal(false);
+      setMergePhone('+998');
+      setMergePassword('');
+      showToast('Hisoblar muvaffaqiyatli birlashtirildi! ✅ Statistikangiz ko\'chirildi.', 'success');
+      // Sahifani yangilash — yangi ma'lumotlar ko'rinishi uchun
+      setTimeout(() => window.location.reload(), 1500);
+    } else {
+      switch (result.error) {
+        case 'wrong_password':
+          setMergeError("Telefon raqam yoki parol noto'g'ri. Qaytadan urinib ko'ring.");
+          break;
+        case 'not_found':
+          setMergeError("Bu telefon raqam bilan ro'yxatdan o'tilmagan.");
+          break;
+        case 'same_account':
+          setMergeError("Bu allaqachon sizning hisobingiz.");
+          break;
+        case 'too_many_requests':
+          setMergeError("Juda ko'p urinish. Biroz kutib qaytadan urining.");
+          break;
+        default:
+          setMergeError("Xatolik yuz berdi. Qaytadan urinib ko'ring.");
+      }
+    }
+  };
+
+  const handleLinkGoogle = async () => {
+    setLinkingGoogle(true);
+    const result = await linkGoogleAccount();
+    setLinkingGoogle(false);
+    if (result.success) {
+      showToast('Google hisob muvaffaqiyatli ulandi! ✅', 'success');
+    } else if (result.error === 'already_separate_account') {
+      showToast("Bu Google hisob allaqachon alohida ro'yxatdan o'tgan. Google bilan kirib, keyin telefon hisobini birlashtiring.", 'error');
+    } else if (result.error === 'popup_blocked') {
+      showToast("Brauzer popup ni blokladi. Sozlamalardan ruxsat bering.", 'error');
+    } else {
+      showToast("Google ulanishda xatolik yuz berdi.", 'error');
+    }
   };
 
   const handleLogout = async () => {
@@ -781,6 +858,15 @@ export default function ProfilePage({ theme, toggleTheme }) {
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
 
+          {/* Hisobni birlashtirish */}
+          <button className="pp-menu-item" onClick={() => { setShowMergeModal(true); setMergeError(''); }}>
+            <div className="pp-menu-icon" style={{ background: 'rgba(139, 92, 246, 0.1)', color: '#8B5CF6' }}>
+              <Link size={20} />
+            </div>
+            <span className="pp-menu-label">Hisobni birlashtirish</span>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
           {/* Delete Account */}
           <button className="pp-menu-item" onClick={() => setShowDeleteConfirm(true)}>
             <div className="pp-menu-icon" style={{ background: 'rgba(239, 68, 68, 0.1)', color: '#EF4444' }}>
@@ -1067,6 +1153,129 @@ export default function ProfilePage({ theme, toggleTheme }) {
                 }}
               >
                 Bekor qilish
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ═══ HISOB BIRLASHTIRISH MODAL ═══ */}
+      {showMergeModal && (
+        <div className="pp-modal-overlay" onClick={() => setShowMergeModal(false)}>
+          <div className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 420, padding: '28px 24px' }}>
+            <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+              <Link size={22} style={{ color: '#8B5CF6' }} /> Hisobni birlashtirish
+            </div>
+            <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 20 }}>
+              Telefon raqam bilan ro'yxatdan o'tgan eski hisobingizni joriy hisobingizga birlashtiring. Barcha statistika va ma'lumotlar ko'chiriladi.
+            </p>
+
+            {/* Joriy kirish usuli */}
+            <div style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 12, padding: '10px 14px', marginBottom: 16, fontSize: 13, color: 'var(--text2)' }}>
+              <strong>Joriy hisob:</strong>{' '}
+              {loginProvider === 'google' && '🔵 Google — ' + (user?.email || '')}
+              {loginProvider === 'phone' && '📱 Telefon — ' + (user?.email?.replace('@iqro.uz', '') || '')}
+              {loginProvider === 'telegram' && '✈️ Telegram'}
+              {loginProvider === 'email' && '📧 Email — ' + (user?.email || '')}
+            </div>
+
+            {/* Telefon raqam bilan birlashtirish */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div>
+                <label style={{ fontSize: 12, fontWeight: 700, color: 'var(--text3)', marginBottom: 6, display: 'block' }}>
+                  ESKI TELEFON HISOBNING RAQAMI
+                </label>
+                <input
+                  type="tel"
+                  value={mergePhone}
+                  onChange={e => {
+                    setMergeError('');
+                    let v = e.target.value.replace(/[^\d+]/g, '');
+                    if (!v.startsWith('+998')) {
+                      if (v.startsWith('998')) v = '+' + v;
+                      else if (v.startsWith('+')) v = '+998';
+                      else v = '+998' + v;
+                    }
+                    if (v.length > 13) v = v.slice(0, 13);
+                    setMergePhone(v);
+                  }}
+                  placeholder="+998 90 123 45 67"
+                  style={{
+                    width: '100%', padding: '13px 16px', fontSize: 15, borderRadius: 12,
+                    border: '1.5px solid var(--border)', background: 'var(--bg3)',
+                    color: 'var(--text)', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box',
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{ fontSize: 12, fontWeight: 700, color: 'var(--text3)', marginBottom: 6, display: 'block' }}>
+                  O'SHA HISOBNING PAROLI
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <input
+                    type={showMergePass ? 'text' : 'password'}
+                    value={mergePassword}
+                    onChange={e => { setMergeError(''); setMergePassword(e.target.value); }}
+                    placeholder="Parolingiz"
+                    onKeyDown={e => e.key === 'Enter' && handleMergePhone()}
+                    style={{
+                      width: '100%', padding: '13px 48px 13px 16px', fontSize: 15, borderRadius: 12,
+                      border: '1.5px solid var(--border)', background: 'var(--bg3)',
+                      color: 'var(--text)', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box',
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowMergePass(p => !p)}
+                    style={{ position: 'absolute', right: 4, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)', width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  >
+                    {showMergePass ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
+                </div>
+              </div>
+
+              {mergeError && (
+                <p style={{ fontSize: 13, color: '#EF4444', fontWeight: 500, margin: 0 }}>{mergeError}</p>
+              )}
+            </div>
+
+            {/* Ajratuvchi */}
+            {loginProvider === 'phone' && (
+              <>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, margin: '16px 0' }}>
+                  <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
+                  <span style={{ fontSize: 12, color: 'var(--text3)' }}>yoki</span>
+                  <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
+                </div>
+                <button
+                  onClick={handleLinkGoogle}
+                  disabled={linkingGoogle}
+                  style={{
+                    width: '100%', padding: '13px', borderRadius: 12,
+                    border: '1.5px solid var(--border)', background: 'var(--bg2)',
+                    color: 'var(--text)', fontWeight: 600, fontSize: 14, cursor: linkingGoogle ? 'not-allowed' : 'pointer',
+                    fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                    opacity: linkingGoogle ? 0.6 : 1, marginBottom: 12,
+                  }}
+                >
+                  {linkingGoogle ? 'Ulanmoqda...' : '🔵 Google hisobini ulash'}
+                </button>
+              </>
+            )}
+
+            <div className="pp-modal-actions" style={{ marginTop: loginProvider === 'phone' ? 0 : 20 }}>
+              <button className="pp-btn-cancel" onClick={() => setShowMergeModal(false)}>Bekor</button>
+              <button
+                onClick={handleMergePhone}
+                disabled={merging}
+                style={{
+                  padding: '12px 20px', borderRadius: 12, background: '#8B5CF6', color: '#fff',
+                  border: 'none', fontWeight: 700, fontSize: 14, cursor: merging ? 'not-allowed' : 'pointer',
+                  fontFamily: 'inherit', opacity: merging ? 0.7 : 1, minWidth: 140,
+                }}
+              >
+                {merging ? 'Birlashtirmoqda...' : 'Birlashtirish ✅'}
               </button>
             </div>
           </div>

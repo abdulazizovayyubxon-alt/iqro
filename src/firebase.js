@@ -25,7 +25,7 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
 }
 
 // Ilovani ishga tushirish
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
 // Bazaga ulanish (Firestore) — yangi API bilan offline persistence
 // enableIndexedDbPersistence() — DEPRECATED (eskirgan)
