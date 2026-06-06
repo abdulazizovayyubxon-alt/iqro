@@ -1,29 +1,36 @@
 /**
- * ProfilePage.jsx — Premium Profile sahifasi
- * Gradient header, XP, streak, countdown, badges, referral, edit
+ * ProfilePage.jsx — Profil sahifasi
+ * Sarlavha (XP/level), tezkor boshlash, streak, statistika,
+ * guruhlangan menyu (Sozlamalar / Ma'lumot / Hisob) va modallar.
  */
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield, Download, FileText, Send, Play, GraduationCap, Brain, Zap, KeyRound, Eye, EyeOff } from 'lucide-react';
+import { Moon, Sun, Edit3, LogOut, ChevronRight, Crown, Shield, Download, Send, Play, GraduationCap, Brain, Zap, KeyRound, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
-import { SUBJECTS } from '../data/mockData';
 import { ToastContext } from '../context/ToastContext';
 import { PWAContext } from '../context/PWAContext';
 import { db, auth } from '../firebase';
-import { doc, getDoc, updateDoc, setDoc, onSnapshot, collection, query, where, getDocs, limit, deleteDoc } from 'firebase/firestore';
-import { updateProfile, deleteUser, signInWithCustomToken } from 'firebase/auth';
-import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
-import {
-  getUserReferralCode, buildReferralLink, getReferralStats,
-  MAX_REFERRALS, REFERRAL_DISCOUNT, MONTHLY_PRICE, DISCOUNT_AMOUNT
-} from '../services/referral';
+import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
+import { deleteUser } from 'firebase/auth';
+import { getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
+import { REFERRAL_DISCOUNT, MONTHLY_PRICE, DISCOUNT_AMOUNT } from '../services/referral';
 import PremiumModal from '../components/PremiumModal';
 import { useAdmin } from '../hooks/useAdmin';
 import './ProfilePage.css';
 
 const DAY_NAMES = ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'];
+
+// Menyu bo'lim sarlavhasi uslubi (Sozlamalar / Ma'lumot / Hisob)
+const ppSectionLabel = {
+  fontSize: 12,
+  fontWeight: 700,
+  color: 'var(--text3)',
+  textTransform: 'uppercase',
+  letterSpacing: '0.8px',
+  margin: '14px 4px 2px',
+};
 
 export default function ProfilePage({ theme, toggleTheme }) {
   const { user, logout, changePassword } = useAuth();
@@ -42,9 +49,10 @@ export default function ProfilePage({ theme, toggleTheme }) {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [activeGuidePanel, setActiveGuidePanel] = useState(null);
-  const [tgLoading, setTgLoading] = useState(false);
-  const [tgError, setTgError] = useState('');
   const [openProfileFaqIdx, setOpenProfileFaqIdx] = useState(null);
+
+  // Aqlli takrorlash chastotasi (sozlama)
+  const [showRepetitionModal, setShowRepetitionModal] = useState(false);
 
   // Parolni o'zgartirish
   const [showPasswordModal, setShowPasswordModal] = useState(false);
@@ -73,41 +81,8 @@ export default function ProfilePage({ theme, toggleTheme }) {
     }
   ];
 
-  const handleTelegramLogin = async () => {
-    const sessionId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    window.open(`https://t.me/IQRO_testbot?start=login_${sessionId}`, '_blank');
-    setTgLoading(true);
-    setTgError('Telegram orqali tasdiqlash kutilmoqda... Botga kirib START bosing.');
-    
-    const interval = setInterval(async () => {
-      try {
-        const res = await fetch(`/api/telegram-auth?sessionId=${sessionId}`);
-        const data = await res.json();
-        if (data.success && data.token) {
-          clearInterval(interval);
-          await signInWithCustomToken(auth, data.token);
-          setTgLoading(false);
-          setTgError('');
-          showToast('Hisob muvaffaqiyatli tiklandi!', 'success');
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    }, 2500);
-    
-    setTimeout(() => {
-      clearInterval(interval);
-      if (tgLoading) {
-        setTgLoading(false);
-        setTgError('');
-      }
-    }, 120000);
-  };
-  const [editForm, setEditForm] = useState({ name: '', gender: '', birthDate: '', goal: '', subject: '' });
+  const [editForm, setEditForm] = useState({ name: '', gender: '', birthDate: '' });
   const [saving, setSaving] = useState(false);
-  const [refCode, setRefCode] = useState('');
-  const [refStats, setRefStats] = useState(null);
-  const [copied, setCopied] = useState(false);
 
   const [downloadingOffline, setDownloadingOffline] = useState(false);
   const [downloadProgress, setDownloadProgress] = useState('');
@@ -158,11 +133,6 @@ export default function ProfilePage({ theme, toggleTheme }) {
   // Urgency countdown (72h real-time)
   const [urgencyLeft, setUrgencyLeft] = useState(user?.urgencyMs || 0);
 
-  // Exam date — Firestore dan sinxronlanadi, localStorage kesh sifatida
-  const [examDate, setExamDate] = useState(() => {
-    try { return localStorage.getItem('iqro_exam_date') || ''; } catch { return ''; }
-  });
-
   // Load profile data
   useEffect(() => {
     if (!user) return;
@@ -175,20 +145,13 @@ export default function ProfilePage({ theme, toggleTheme }) {
             name: d.displayName || user.displayName || '',
             gender: d.gender || '',
             birthDate: d.birthDate || '',
-            goal: d.goal || '',
-            subject: d.subject || '',
           });
           if (d.examDate) {
-            setExamDate(d.examDate);
             localStorage.setItem('iqro_exam_date', d.examDate);
             // Header uchun ham sinxronlaymiz (CUSTOM_EXAM_DATE formatida)
             localStorage.setItem('CUSTOM_EXAM_DATE', new Date(d.examDate).toISOString());
           }
         }
-        const code = await getUserReferralCode(user.uid, user.displayName);
-        setRefCode(code);
-        const st = await getReferralStats(user.uid);
-        setRefStats(st);
       } catch (e) { console.error('Profile load error:', e); }
     };
     load();
@@ -196,7 +159,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
 
   // Modal history interception for back button
   useEffect(() => {
-    const hasOpenModal = showEdit || showPremium || showLogoutConfirm || showPrivacy || showTelegramModal || showDeleteConfirm || showPasswordModal;
+    const hasOpenModal = showEdit || showPremium || showLogoutConfirm || showPrivacy || showTelegramModal || showDeleteConfirm || showPasswordModal || showRepetitionModal;
     if (!hasOpenModal) return;
 
     window.history.pushState({ profileModalOpen: true }, '');
@@ -209,6 +172,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
       setShowTelegramModal(false);
       setShowDeleteConfirm(false);
       setShowPasswordModal(false);
+      setShowRepetitionModal(false);
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -219,7 +183,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
         window.history.back();
       }
     };
-  }, [showEdit, showPremium, showLogoutConfirm, showPrivacy, showTelegramModal, showDeleteConfirm, showPasswordModal]);
+  }, [showEdit, showPremium, showLogoutConfirm, showPrivacy, showTelegramModal, showDeleteConfirm, showPasswordModal, showRepetitionModal]);
 
   // Urgency countdown interval
   useEffect(() => {
@@ -261,27 +225,10 @@ export default function ProfilePage({ theme, toggleTheme }) {
   const nextXP = levelInfo.level === 1 ? 75 : levelInfo.level === 2 ? 200 : levelInfo.level === 3 ? 500 : levelInfo.level === 4 ? 1000 : 9999;
   const xpPct = Math.min(100, Math.round((totalXP / nextXP) * 100));
 
-  // Daily goal
-  const today = new Date().toDateString();
-  const dg = state.dailyGoal?.date === today ? state.dailyGoal : { answered: 0, target: 20 };
-  const goalPct = Math.min(100, Math.round((dg.answered / dg.target) * 100));
-  const goalDone = dg.answered >= dg.target;
-
   // Streak week
   const dailyStreak = state.dailyStreak || 0;
   const todayIdx = new Date().getDay(); // 0=Sun
   const weekDays = [1, 2, 3, 4, 5, 6, 0]; // Mon-Sun
-
-  // Countdown
-  const getCountdown = () => {
-    const ed = examDate || localStorage.getItem('iqro_exam_date');
-    if (!ed) return null;
-    const diff = new Date(ed) - new Date();
-    if (diff <= 0) return { y: 0, m: 0, d: 0 };
-    const d = Math.floor(diff / 86400000);
-    return { y: Math.floor(d / 365), m: Math.floor((d % 365) / 30), d: d % 30 };
-  };
-  const countdown = getCountdown();
 
   // ── Tezkor Boshlash Variables ──
   const cat = state.activeCategory || 'boshlangich';
@@ -315,9 +262,6 @@ export default function ProfilePage({ theme, toggleTheme }) {
       name: editForm.name || user.displayName || '',
       gender: editForm.gender || '',
       birthDate: editForm.birthDate || '',
-      goal: editForm.goal || '',
-      subject: editForm.subject || '',
-      repetitionLimit: state.repetitionLimit ?? 10
     });
     setShowEdit(true);
   };
@@ -330,17 +274,8 @@ export default function ProfilePage({ theme, toggleTheme }) {
         displayName: editForm.name,
         gender: editForm.gender,
         birthDate: editForm.birthDate,
-        goal: editForm.goal,
-        subject: editForm.subject,
       };
-      // Imtihon sanasini ham Firestore ga saqlaymiz (qurilmalar arasi sinxron)
-      if (examDate) {
-        profileData.examDate = examDate;
-        localStorage.setItem('iqro_exam_date', examDate);
-        localStorage.setItem('CUSTOM_EXAM_DATE', new Date(examDate).toISOString());
-      }
       await setDoc(doc(db, 'users', user.uid), profileData, { merge: true });
-      updateState({ repetitionLimit: editForm.repetitionLimit ?? 10 });
       showToast("Profil saqlandi ✅", 'success');
       setShowEdit(false);
     } catch (e) {
@@ -412,17 +347,9 @@ export default function ProfilePage({ theme, toggleTheme }) {
     }
   };
 
-  const copyRef = async () => {
-    try {
-      await navigator.clipboard.writeText(buildReferralLink(refCode));
-      setCopied(true); showToast("Havola nusxalandi! ✅", 'success');
-      setTimeout(() => setCopied(false), 2000);
-    } catch { showToast("Nusxalab bo'lmadi", 'error'); }
-  };
-
   return (
     <motion.div className="pp" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      {/* ═══ REFERRAL (TAKLIF) BANNER TOP ═══ */}
+      {/* ═══ FOYDALANUVCHI SARLAVHASI ═══ */}
       <div className="pp-header" style={{ paddingBottom: '24px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '0 4px' }}>
@@ -753,30 +680,8 @@ export default function ProfilePage({ theme, toggleTheme }) {
             </button>
           )}
 
-          {/* Install App */}
-          {isInstallable && (
-            <button className="pp-menu-item" onClick={installApp}>
-              <div className="pp-menu-icon" style={{ background: 'linear-gradient(135deg, #10B981, #059669)', color: '#fff' }}>
-                <Download size={20} />
-              </div>
-              <span className="pp-menu-label" style={{ fontWeight: 800 }}>Ilovani o'rnatish (PWA)</span>
-              <ChevronRight size={18} className="pp-menu-arrow" />
-            </button>
-          )}
-
-          {/* Oflayn ishlash kafolati / Yuklab olish */}
-          <button className="pp-menu-item" onClick={handleDownloadOffline}>
-            <div className="pp-menu-icon" style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#10B981' }}>
-              <Shield size={20} />
-            </div>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <span className="pp-menu-label" style={{ fontWeight: 800, color: '#10B981' }}>
-                {downloadingOffline ? downloadProgress : "Oflayn ishlash (Kafolat)"}
-              </span>
-              <span style={{ fontSize: 11, color: 'var(--text3)' }}>Internetsiz ishlash uchun savollarni yuklash</span>
-            </div>
-            <ChevronRight size={18} className="pp-menu-arrow" />
-          </button>
+          {/* ═══════ SOZLAMALAR ═══════ */}
+          <div style={ppSectionLabel}>⚙️ Sozlamalar</div>
 
           {/* Theme Toggle */}
           <button className="pp-menu-item" onClick={toggleTheme}>
@@ -796,14 +701,60 @@ export default function ProfilePage({ theme, toggleTheme }) {
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
 
-          {/* Telegram Bot */}
+          {/* Parolni o'zgartirish */}
+          <button className="pp-menu-item" onClick={() => { setShowPasswordModal(true); setPassError(''); setNewPassword(''); setNewPassword2(''); }}>
+            <div className="pp-menu-icon" style={{ background: 'rgba(139, 92, 246, 0.1)', color: '#8B5CF6' }}>
+              <KeyRound size={20} />
+            </div>
+            <span className="pp-menu-label">Parolni o'zgartirish</span>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
+          {/* Aqlli takrorlash chastotasi */}
+          <button className="pp-menu-item" onClick={() => setShowRepetitionModal(true)}>
+            <div className="pp-menu-icon" style={{ background: 'rgba(41, 182, 246, 0.1)', color: '#29B6F6' }}>
+              <Brain size={20} />
+            </div>
+            <span className="pp-menu-label">Aqlli takrorlash chastotasi</span>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
+          {/* Kundalik eslatma (Telegram) */}
           <button className="pp-menu-item" onClick={() => setShowTelegramModal(true)}>
             <div className="pp-menu-icon" style={{ background: 'rgba(41, 182, 246, 0.1)', color: '#29B6F6' }}>
               <Send size={20} />
             </div>
-            <span className="pp-menu-label">Telegram Bot & Sozlamalar</span>
+            <span className="pp-menu-label">Kundalik eslatma (Telegram)</span>
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
+
+          {/* Oflayn ishlash kafolati / Yuklab olish */}
+          <button className="pp-menu-item" onClick={handleDownloadOffline}>
+            <div className="pp-menu-icon" style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#10B981' }}>
+              <Download size={20} />
+            </div>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
+              <span className="pp-menu-label" style={{ fontWeight: 800, color: '#10B981' }}>
+                {downloadingOffline ? downloadProgress : "Oflayn ishlash (Kafolat)"}
+              </span>
+              <span style={{ fontSize: 11, color: 'var(--text3)' }}>Internetsiz ishlash uchun savollarni yuklash</span>
+            </div>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
+          {/* Install App */}
+          {isInstallable && (
+            <button className="pp-menu-item" onClick={installApp}>
+              <div className="pp-menu-icon" style={{ background: 'linear-gradient(135deg, #10B981, #059669)', color: '#fff' }}>
+                <Download size={20} />
+              </div>
+              <span className="pp-menu-label" style={{ fontWeight: 800 }}>Ilovani o'rnatish (PWA)</span>
+              <ChevronRight size={18} className="pp-menu-arrow" />
+            </button>
+          )}
+
+          {/* ═══════ MA'LUMOT ═══════ */}
+          <div style={ppSectionLabel}>ℹ️ Ma'lumot</div>
 
           {/* Qo'llanma */}
           <button className="pp-menu-item" onClick={() => setShowGuideModal(true)}>
@@ -823,14 +774,8 @@ export default function ProfilePage({ theme, toggleTheme }) {
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
 
-          {/* Parolni o'zgartirish */}
-          <button className="pp-menu-item" onClick={() => { setShowPasswordModal(true); setPassError(''); setNewPassword(''); setNewPassword2(''); }}>
-            <div className="pp-menu-icon" style={{ background: 'rgba(139, 92, 246, 0.1)', color: '#8B5CF6' }}>
-              <KeyRound size={20} />
-            </div>
-            <span className="pp-menu-label">Parolni o'zgartirish</span>
-            <ChevronRight size={18} className="pp-menu-arrow" />
-          </button>
+          {/* ═══════ HISOB ═══════ */}
+          <div style={ppSectionLabel}>🔒 Hisob</div>
 
           {/* Delete Account */}
           <button className="pp-menu-item" onClick={() => setShowDeleteConfirm(true)}>
@@ -966,85 +911,65 @@ export default function ProfilePage({ theme, toggleTheme }) {
               <label>Tug'ilgan sana</label>
               <input type="date" value={editForm.birthDate} onChange={e => setEditForm(p => ({ ...p, birthDate: e.target.value }))} />
             </div>
-            <div className="pp-field">
-              <label>Maqsad</label>
-              <input value={editForm.goal} onChange={e => setEditForm(p => ({ ...p, goal: e.target.value }))} placeholder="Masalan: Sertifikatlashdan o'tish" />
-            </div>
-            <div className="pp-field">
-              <label>Fan</label>
-              <input value={editForm.subject} onChange={e => setEditForm(p => ({ ...p, subject: e.target.value }))} placeholder="Masalan: Matematika" />
-            </div>
-            <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid var(--border)' }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text2)', marginBottom: 10 }}>Qo'shimcha Sozlamalar</div>
-              
-              {/* Repetition Intensity Selector */}
-              <div className="pp-field" style={{ marginBottom: '16px' }}>
-                <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '12px', fontWeight: 600, color: 'var(--text2)', marginBottom: '8px' }}>
-                  🧠 Aqlli Takrorlash Chastotasi
-                </label>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
-                  {[
-                    { label: "O'chiq\n(0%)", value: 0 },
-                    { label: "Kam\n(10%)", value: 10 },
-                    { label: "O'rtacha\n(30%)", value: 30 },
-                    { label: "Tez\n(50%)", value: 50 }
-                  ].map(opt => {
-                    const isSelected = (editForm.repetitionLimit ?? 10) === opt.value;
-                    return (
-                      <button
-                        key={opt.value}
-                        type="button"
-                        onClick={() => setEditForm(p => ({ ...p, repetitionLimit: opt.value }))}
-                        style={{
-                          padding: '8px 4px',
-                          borderRadius: '10px',
-                          border: isSelected ? '2px solid var(--blue)' : '1px solid var(--border)',
-                          background: isSelected ? 'var(--blue-bg)' : 'var(--bg2)',
-                          color: isSelected ? 'var(--blue)' : 'var(--text)',
-                          fontSize: '11px',
-                          fontWeight: isSelected ? '800' : '500',
-                          cursor: 'pointer',
-                          transition: 'all 0.2s',
-                          whiteSpace: 'pre-line',
-                          textAlign: 'center',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          lineHeight: '1.2',
-                          minHeight: '48px'
-                        }}
-                      >
-                        {opt.label}
-                      </button>
-                    );
-                  })}
-                </div>
-                <small style={{ display: 'block', marginTop: '6px', color: 'var(--text3)', fontSize: '11px', lineHeight: '1.4' }}>
-                  Xato qilingan savollarning keyingi testlarda qayta kelish ulushi (tavsiya etiladi: 10%).
-                </small>
-              </div>
 
-              <button 
-                onClick={handleDownloadOffline} 
-                disabled={downloadingOffline}
-                style={{ 
-                  display: 'flex', alignItems: 'center', gap: 10, width: '100%', 
-                  padding: '12px 16px', background: 'var(--bg3)', border: '1px solid var(--border)', 
-                  borderRadius: 12, cursor: downloadingOffline ? 'not-allowed' : 'pointer', color: 'var(--text)',
-                  fontSize: 14, fontWeight: 500
-                }}
-              >
-                <Download size={18} className={downloadingOffline ? "spin" : ""} style={{ color: 'var(--green)' }} />
-                {downloadProgress || "Offline rejim uchun ma'lumotlarni yuklash"}
-              </button>
-            </div>
-            
             <div className="pp-modal-actions" style={{ marginTop: '20px' }}>
               <button className="pp-btn-cancel" onClick={() => setShowEdit(false)}>Bekor</button>
               <button className="pp-btn-save" onClick={handleSave} disabled={saving}>
                 {saving ? 'Saqlanmoqda...' : 'Saqlash'}
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ═══ AQLLI TAKRORLASH CHASTOTASI MODAL ═══ */}
+      {showRepetitionModal && (
+        <div className="pp-modal-overlay" onClick={() => setShowRepetitionModal(false)}>
+          <div className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 420, padding: '28px 24px' }}>
+            <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+              <Brain size={22} style={{ color: '#29B6F6' }} /> Aqlli takrorlash chastotasi
+            </div>
+            <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 20 }}>
+              Xato qilingan savollar keyingi testlarda qanchalik tez-tez qaytishini tanlang.
+            </p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
+              {[
+                { label: "O'chiq\n(0%)", value: 0 },
+                { label: "Kam\n(10%)", value: 10 },
+                { label: "O'rtacha\n(30%)", value: 30 },
+                { label: "Tez\n(50%)", value: 50 }
+              ].map(opt => {
+                const isSelected = (state.repetitionLimit ?? 10) === opt.value;
+                return (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    onClick={() => { updateState({ repetitionLimit: opt.value }); showToast('Saqlandi ✅', 'success'); }}
+                    style={{
+                      padding: '8px 4px', borderRadius: '10px',
+                      border: isSelected ? '2px solid var(--blue)' : '1px solid var(--border)',
+                      background: isSelected ? 'var(--blue-bg)' : 'var(--bg2)',
+                      color: isSelected ? 'var(--blue)' : 'var(--text)',
+                      fontSize: '11px', fontWeight: isSelected ? '800' : '500',
+                      cursor: 'pointer', transition: 'all 0.2s', whiteSpace: 'pre-line',
+                      textAlign: 'center', display: 'flex', alignItems: 'center',
+                      justifyContent: 'center', lineHeight: '1.2', minHeight: '48px',
+                      fontFamily: 'inherit',
+                    }}
+                  >
+                    {opt.label}
+                  </button>
+                );
+              })}
+            </div>
+            <small style={{ display: 'block', marginTop: '10px', color: 'var(--text3)', fontSize: '11px', lineHeight: '1.4' }}>
+              Tavsiya etiladi: 10%. Tanlov darhol saqlanadi.
+            </small>
+
+            <button onClick={() => setShowRepetitionModal(false)} style={{ width: '100%', padding: '12px', borderRadius: 12, background: 'var(--blue)', color: '#fff', border: 'none', fontWeight: 700, marginTop: '20px', cursor: 'pointer', fontFamily: 'inherit' }}>
+              Yopish
+            </button>
           </div>
         </div>
       )}
@@ -1313,27 +1238,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
               </div>
             </div>
 
-            {/* Hisobni tiklash bo'limi */}
-            <div style={{ background: 'var(--bg3)', borderRadius: 16, padding: '16px', border: '1px solid var(--border)' }}>
-              <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', marginBottom: 8 }}>🔄 Eski hisobni tiklash</div>
-              <div style={{ fontSize: 12, color: 'var(--text3)', lineHeight: 1.5, marginBottom: 12 }}>
-                Oldingi hisobingizdagi obuna va yutuqlarni hozirgi hisobingizga ko'chirib o'tkazish.
-              </div>
-              <button 
-                onClick={handleTelegramLogin} 
-                disabled={tgLoading}
-                style={{ 
-                  width: '100%', padding: '12px', borderRadius: 12, background: 'var(--blue-bg)', color: 'var(--blue)', 
-                  border: '1px solid rgba(41, 182, 246, 0.3)', fontWeight: 700, fontSize: 13, cursor: tgLoading ? 'not-allowed' : 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 8
-                }}
-              >
-                <Send size={16} className={tgLoading ? "spin" : ""} />
-                {tgLoading ? 'Kutilmoqda...' : 'Telegram orqali tiklash'}
-              </button>
-              {tgError && <div style={{ fontSize: 11, color: 'var(--red)', marginTop: 8, textAlign: 'center' }}>{tgError}</div>}
-            </div>
-
-            <button onClick={() => setShowTelegramModal(false)} style={{ width: '100%', padding: '12px', borderRadius: 12, background: 'var(--blue)', color: '#fff', border: 'none', fontWeight: 700, marginTop: '20px' }}>
+            <button onClick={() => setShowTelegramModal(false)} style={{ width: '100%', padding: '12px', borderRadius: 12, background: 'var(--blue)', color: '#fff', border: 'none', fontWeight: 700, marginTop: '4px' }}>
               Yopish
             </button>
           </div>
