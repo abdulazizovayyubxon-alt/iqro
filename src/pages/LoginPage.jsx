@@ -300,7 +300,6 @@ export default function LoginPage() {
                       value={phone}
                       onChange={handlePhoneChange}
                       placeholder="+998 00 000 00 00"
-                      autoFocus
                       onKeyDown={e => e.key === 'Enter' && handlePhoneNext()}
                     />
                   </div>
@@ -506,37 +505,55 @@ export default function LoginPage() {
 
         {/* Footer */}
         <div style={s.footer}>
-          {step !== STEPS.CHECKING && step !== STEPS.CHOOSE && (
-            <motion.button
-              id="login-submit-btn"
-              style={{ ...s.primaryBtn, opacity: loading || lockoutTimer ? 0.6 : 1 }}
-              onClick={handleContinue}
-              disabled={loading || !!lockoutTimer}
-              whileTap={{ scale: 0.98 }}
-            >
-              {loading ? 'Iltimos, kuting...'
-                : lockoutTimer ? `Kuting (${lockoutTimer}s)`
-                : step === STEPS.PASSWORD ? 'Kirish' : 'Davom etish'}
-            </motion.button>
-          )}
-
-          {/* Telegram — faqat 1-qadamda */}
-          {step === STEPS.PHONE && (
+          {/* ── PHONE qadami: Telegram ASOSIY, telefon ikkinchi darajali ── */}
+          {step === STEPS.PHONE ? (
             <>
-              <div style={s.orRow}>
-                <div style={s.orLine} />
-                <span style={s.orText}>yoki</span>
-                <div style={s.orLine} />
-              </div>
+              {/* Telegram — ASOSIY (tavsiya etiladi) */}
               <motion.button
-                style={{ ...s.outlineBtn, color: '#fff', background: '#29B6F6', border: 'none' }}
+                style={{ ...s.primaryBtn, background: 'linear-gradient(135deg, #29B6F6 0%, #1E88E5 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 6, boxShadow: '0 4px 15px rgba(41, 182, 246, 0.3)' }}
                 onClick={handleTelegramLogin}
                 disabled={loading}
                 whileTap={{ scale: 0.98 }}
               >
                 <Send size={20} color="#fff" /> Telegram orqali kirish
               </motion.button>
+              <div style={{ textAlign: 'center', fontSize: 12, color: 'var(--text3)', marginBottom: 14 }}>
+                ✨ Parolsiz — eng oson va tavsiya etilgan usul
+              </div>
+
+              <div style={s.orRow}>
+                <div style={s.orLine} />
+                <span style={s.orText}>yoki telefon raqam bilan</span>
+                <div style={s.orLine} />
+              </div>
+
+              {/* Telefon — IKKINCHI DARAJALI */}
+              <motion.button
+                id="login-submit-btn"
+                style={{ ...s.outlineBtn, opacity: loading || lockoutTimer ? 0.6 : 1 }}
+                onClick={handleContinue}
+                disabled={loading || !!lockoutTimer}
+                whileTap={{ scale: 0.98 }}
+              >
+                {loading ? 'Iltimos, kuting...'
+                  : lockoutTimer ? `Kuting (${lockoutTimer}s)`
+                  : 'Telefon raqam bilan davom etish'}
+              </motion.button>
             </>
+          ) : (
+            step !== STEPS.CHECKING && step !== STEPS.CHOOSE && (
+              <motion.button
+                id="login-submit-btn"
+                style={{ ...s.primaryBtn, opacity: loading || lockoutTimer ? 0.6 : 1 }}
+                onClick={handleContinue}
+                disabled={loading || !!lockoutTimer}
+                whileTap={{ scale: 0.98 }}
+              >
+                {loading ? 'Iltimos, kuting...'
+                  : lockoutTimer ? `Kuting (${lockoutTimer}s)`
+                  : step === STEPS.PASSWORD ? 'Kirish' : 'Davom etish'}
+              </motion.button>
+            )
           )}
 
           {/* Trust Badges & Policies */}
