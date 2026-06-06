@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { initializeFirestore, persistentLocalCache, persistentSingleTabManager } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
 // ────────────────────────────────────────────────────────
@@ -25,7 +25,7 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
 }
 
 // Ilovani ishga tushirish
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 // Bazaga ulanish (Firestore) — yangi API bilan offline persistence
 // enableIndexedDbPersistence() — DEPRECATED (eskirgan)
@@ -38,5 +38,4 @@ export const db = initializeFirestore(app, {
 
 // Auth
 export const auth = getAuth(app);
-export const googleProvider = new GoogleAuthProvider();
 export const storage = getStorage(app);

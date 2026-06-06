@@ -5,7 +5,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield, Download, FileText, Send, Play, GraduationCap, Brain, Zap, Link, Eye, EyeOff } from 'lucide-react';
+import { Moon, Sun, Edit3, LogOut, ChevronRight, Copy, Check, Crown, Shield, Download, FileText, Send, Play, GraduationCap, Brain, Zap, KeyRound, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
 import { SUBJECTS } from '../data/mockData';
@@ -26,7 +26,7 @@ import './ProfilePage.css';
 const DAY_NAMES = ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'];
 
 export default function ProfilePage({ theme, toggleTheme }) {
-  const { user, logout, mergePhoneAccount, linkGoogleAccount } = useAuth();
+  const { user, logout, changePassword } = useAuth();
   const { state, updateState } = useContext(AppContext);
   const { showToast } = useContext(ToastContext);
   const { isInstallable, installApp } = useContext(PWAContext);
@@ -46,14 +46,13 @@ export default function ProfilePage({ theme, toggleTheme }) {
   const [tgError, setTgError] = useState('');
   const [openProfileFaqIdx, setOpenProfileFaqIdx] = useState(null);
 
-  // Hisob birlashtirish (merge)
-  const [showMergeModal, setShowMergeModal] = useState(false);
-  const [mergePhone, setMergePhone] = useState('+998');
-  const [mergePassword, setMergePassword] = useState('');
-  const [showMergePass, setShowMergePass] = useState(false);
-  const [merging, setMerging] = useState(false);
-  const [mergeError, setMergeError] = useState('');
-  const [linkingGoogle, setLinkingGoogle] = useState(false);
+  // Parolni o'zgartirish
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [newPassword, setNewPassword] = useState('');
+  const [newPassword2, setNewPassword2] = useState('');
+  const [showNewPass, setShowNewPass] = useState(false);
+  const [changingPass, setChangingPass] = useState(false);
+  const [passError, setPassError] = useState('');
 
   const PROFILE_FAQS = [
     {
@@ -197,7 +196,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
 
   // Modal history interception for back button
   useEffect(() => {
-    const hasOpenModal = showEdit || showPremium || showLogoutConfirm || showPrivacy || showTelegramModal || showDeleteConfirm || showMergeModal;
+    const hasOpenModal = showEdit || showPremium || showLogoutConfirm || showPrivacy || showTelegramModal || showDeleteConfirm || showPasswordModal;
     if (!hasOpenModal) return;
 
     window.history.pushState({ profileModalOpen: true }, '');
@@ -209,7 +208,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
       setShowPrivacy(false);
       setShowTelegramModal(false);
       setShowDeleteConfirm(false);
-      setShowMergeModal(false);
+      setShowPasswordModal(false);
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -220,7 +219,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
         window.history.back();
       }
     };
-  }, [showEdit, showPremium, showLogoutConfirm, showPrivacy, showTelegramModal, showDeleteConfirm, showMergeModal]);
+  }, [showEdit, showPremium, showLogoutConfirm, showPrivacy, showTelegramModal, showDeleteConfirm, showPasswordModal]);
 
   // Urgency countdown interval
   useEffect(() => {
@@ -350,70 +349,36 @@ export default function ProfilePage({ theme, toggleTheme }) {
     setSaving(false);
   };
 
-  // Kirish usulini aniqlash
-  const loginProvider = (() => {
-    const providerData = user?._firebaseUser?.providerData || [];
-    if (providerData.some(p => p.providerId === 'google.com')) return 'google';
-    if (providerData.some(p => p.providerId === 'password')) {
-      return user?.email?.endsWith('@iqro.uz') ? 'phone' : 'email';
-    }
-    return 'telegram';
-  })();
-
-  const handleMergePhone = async () => {
-    const c = mergePhone.replace(/\D/g, '');
-    if (!c.startsWith('998') || c.length !== 12) {
-      setMergeError("To'g'ri O'zbekiston telefon raqamini kiriting (+998XXXXXXXXX)");
+  const handleChangePassword = async () => {
+    if (!newPassword || newPassword.length < 6) {
+      setPassError("Parol kamida 6 ta belgidan iborat bo'lishi kerak");
       return;
     }
-    if (!mergePassword || mergePassword.length < 6) {
-      setMergeError("Parol kamida 6 ta belgidan iborat bo'lishi kerak");
+    if (newPassword !== newPassword2) {
+      setPassError("Parollar mos kelmadi");
       return;
     }
-    setMerging(true);
-    setMergeError('');
-    const result = await mergePhoneAccount(mergePhone, mergePassword);
-    setMerging(false);
+    setChangingPass(true);
+    setPassError('');
+    const result = await changePassword(newPassword);
+    setChangingPass(false);
 
     if (result.success) {
-      setShowMergeModal(false);
-      setMergePhone('+998');
-      setMergePassword('');
-      showToast('Hisoblar muvaffaqiyatli birlashtirildi! ✅ Statistikangiz ko\'chirildi.', 'success');
-      // Sahifani yangilash — yangi ma'lumotlar ko'rinishi uchun
-      setTimeout(() => window.location.reload(), 1500);
+      setShowPasswordModal(false);
+      setNewPassword('');
+      setNewPassword2('');
+      showToast('Parol muvaffaqiyatli o\'zgartirildi! ✅', 'success');
     } else {
       switch (result.error) {
-        case 'wrong_password':
-          setMergeError("Telefon raqam yoki parol noto'g'ri. Qaytadan urinib ko'ring.");
+        case 'weak_password':
+          setPassError("Parol juda zaif. Kamida 6 ta belgi kiriting.");
           break;
-        case 'not_found':
-          setMergeError("Bu telefon raqam bilan ro'yxatdan o'tilmagan.");
-          break;
-        case 'same_account':
-          setMergeError("Bu allaqachon sizning hisobingiz.");
-          break;
-        case 'too_many_requests':
-          setMergeError("Juda ko'p urinish. Biroz kutib qaytadan urining.");
+        case 'requires_recent_login':
+          setPassError("Xavfsizlik uchun qaytadan kiring (Telegram orqali), keyin parolni o'zgartiring.");
           break;
         default:
-          setMergeError("Xatolik yuz berdi. Qaytadan urinib ko'ring.");
+          setPassError("Xatolik yuz berdi. Qaytadan urinib ko'ring.");
       }
-    }
-  };
-
-  const handleLinkGoogle = async () => {
-    setLinkingGoogle(true);
-    const result = await linkGoogleAccount();
-    setLinkingGoogle(false);
-    if (result.success) {
-      showToast('Google hisob muvaffaqiyatli ulandi! ✅', 'success');
-    } else if (result.error === 'already_separate_account') {
-      showToast("Bu Google hisob allaqachon alohida ro'yxatdan o'tgan. Google bilan kirib, keyin telefon hisobini birlashtiring.", 'error');
-    } else if (result.error === 'popup_blocked') {
-      showToast("Brauzer popup ni blokladi. Sozlamalardan ruxsat bering.", 'error');
-    } else {
-      showToast("Google ulanishda xatolik yuz berdi.", 'error');
     }
   };
 
@@ -858,12 +823,12 @@ export default function ProfilePage({ theme, toggleTheme }) {
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
 
-          {/* Hisobni birlashtirish */}
-          <button className="pp-menu-item" onClick={() => { setShowMergeModal(true); setMergeError(''); }}>
+          {/* Parolni o'zgartirish */}
+          <button className="pp-menu-item" onClick={() => { setShowPasswordModal(true); setPassError(''); setNewPassword(''); setNewPassword2(''); }}>
             <div className="pp-menu-icon" style={{ background: 'rgba(139, 92, 246, 0.1)', color: '#8B5CF6' }}>
-              <Link size={20} />
+              <KeyRound size={20} />
             </div>
-            <span className="pp-menu-label">Hisobni birlashtirish</span>
+            <span className="pp-menu-label">Parolni o'zgartirish</span>
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
 
@@ -1159,66 +1124,28 @@ export default function ProfilePage({ theme, toggleTheme }) {
         </div>
       )}
 
-      {/* ═══ HISOB BIRLASHTIRISH MODAL ═══ */}
-      {showMergeModal && (
-        <div className="pp-modal-overlay" onClick={() => setShowMergeModal(false)}>
+      {/* ═══ PAROLNI O'ZGARTIRISH MODAL ═══ */}
+      {showPasswordModal && (
+        <div className="pp-modal-overlay" onClick={() => setShowPasswordModal(false)}>
           <div className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 420, padding: '28px 24px' }}>
             <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-              <Link size={22} style={{ color: '#8B5CF6' }} /> Hisobni birlashtirish
+              <KeyRound size={22} style={{ color: '#8B5CF6' }} /> Parolni o'zgartirish
             </div>
             <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 20 }}>
-              Telefon raqam bilan ro'yxatdan o'tgan eski hisobingizni joriy hisobingizga birlashtiring. Barcha statistika va ma'lumotlar ko'chiriladi.
+              Yangi parolingizni kiriting. Keyingi safar telefon raqam orqali kirganda shu paroldan foydalanasiz.
             </p>
 
-            {/* Joriy kirish usuli */}
-            <div style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 12, padding: '10px 14px', marginBottom: 16, fontSize: 13, color: 'var(--text2)' }}>
-              <strong>Joriy hisob:</strong>{' '}
-              {loginProvider === 'google' && '🔵 Google — ' + (user?.email || '')}
-              {loginProvider === 'phone' && '📱 Telefon — ' + (user?.email?.replace('@iqro.uz', '') || '')}
-              {loginProvider === 'telegram' && '✈️ Telegram'}
-              {loginProvider === 'email' && '📧 Email — ' + (user?.email || '')}
-            </div>
-
-            {/* Telefon raqam bilan birlashtirish */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <div>
                 <label style={{ fontSize: 12, fontWeight: 700, color: 'var(--text3)', marginBottom: 6, display: 'block' }}>
-                  ESKI TELEFON HISOBNING RAQAMI
-                </label>
-                <input
-                  type="tel"
-                  value={mergePhone}
-                  onChange={e => {
-                    setMergeError('');
-                    let v = e.target.value.replace(/[^\d+]/g, '');
-                    if (!v.startsWith('+998')) {
-                      if (v.startsWith('998')) v = '+' + v;
-                      else if (v.startsWith('+')) v = '+998';
-                      else v = '+998' + v;
-                    }
-                    if (v.length > 13) v = v.slice(0, 13);
-                    setMergePhone(v);
-                  }}
-                  placeholder="+998 90 123 45 67"
-                  style={{
-                    width: '100%', padding: '13px 16px', fontSize: 15, borderRadius: 12,
-                    border: '1.5px solid var(--border)', background: 'var(--bg3)',
-                    color: 'var(--text)', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box',
-                  }}
-                />
-              </div>
-
-              <div>
-                <label style={{ fontSize: 12, fontWeight: 700, color: 'var(--text3)', marginBottom: 6, display: 'block' }}>
-                  O'SHA HISOBNING PAROLI
+                  YANGI PAROL
                 </label>
                 <div style={{ position: 'relative' }}>
                   <input
-                    type={showMergePass ? 'text' : 'password'}
-                    value={mergePassword}
-                    onChange={e => { setMergeError(''); setMergePassword(e.target.value); }}
-                    placeholder="Parolingiz"
-                    onKeyDown={e => e.key === 'Enter' && handleMergePhone()}
+                    type={showNewPass ? 'text' : 'password'}
+                    value={newPassword}
+                    onChange={e => { setPassError(''); setNewPassword(e.target.value); }}
+                    placeholder="Kamida 6 ta belgi"
                     style={{
                       width: '100%', padding: '13px 48px 13px 16px', fontSize: 15, borderRadius: 12,
                       border: '1.5px solid var(--border)', background: 'var(--bg3)',
@@ -1227,55 +1154,49 @@ export default function ProfilePage({ theme, toggleTheme }) {
                   />
                   <button
                     type="button"
-                    onClick={() => setShowMergePass(p => !p)}
+                    onClick={() => setShowNewPass(p => !p)}
                     style={{ position: 'absolute', right: 4, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)', width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                   >
-                    {showMergePass ? <EyeOff size={18} /> : <Eye size={18} />}
+                    {showNewPass ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
                 </div>
               </div>
 
-              {mergeError && (
-                <p style={{ fontSize: 13, color: '#EF4444', fontWeight: 500, margin: 0 }}>{mergeError}</p>
+              <div>
+                <label style={{ fontSize: 12, fontWeight: 700, color: 'var(--text3)', marginBottom: 6, display: 'block' }}>
+                  PAROLNI TAKRORLANG
+                </label>
+                <input
+                  type={showNewPass ? 'text' : 'password'}
+                  value={newPassword2}
+                  onChange={e => { setPassError(''); setNewPassword2(e.target.value); }}
+                  placeholder="Yana bir bor kiriting"
+                  onKeyDown={e => e.key === 'Enter' && handleChangePassword()}
+                  style={{
+                    width: '100%', padding: '13px 16px', fontSize: 15, borderRadius: 12,
+                    border: '1.5px solid var(--border)', background: 'var(--bg3)',
+                    color: 'var(--text)', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box',
+                  }}
+                />
+              </div>
+
+              {passError && (
+                <p style={{ fontSize: 13, color: '#EF4444', fontWeight: 500, margin: 0 }}>{passError}</p>
               )}
             </div>
 
-            {/* Ajratuvchi */}
-            {loginProvider === 'phone' && (
-              <>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, margin: '16px 0' }}>
-                  <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
-                  <span style={{ fontSize: 12, color: 'var(--text3)' }}>yoki</span>
-                  <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
-                </div>
-                <button
-                  onClick={handleLinkGoogle}
-                  disabled={linkingGoogle}
-                  style={{
-                    width: '100%', padding: '13px', borderRadius: 12,
-                    border: '1.5px solid var(--border)', background: 'var(--bg2)',
-                    color: 'var(--text)', fontWeight: 600, fontSize: 14, cursor: linkingGoogle ? 'not-allowed' : 'pointer',
-                    fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                    opacity: linkingGoogle ? 0.6 : 1, marginBottom: 12,
-                  }}
-                >
-                  {linkingGoogle ? 'Ulanmoqda...' : '🔵 Google hisobini ulash'}
-                </button>
-              </>
-            )}
-
-            <div className="pp-modal-actions" style={{ marginTop: loginProvider === 'phone' ? 0 : 20 }}>
-              <button className="pp-btn-cancel" onClick={() => setShowMergeModal(false)}>Bekor</button>
+            <div className="pp-modal-actions" style={{ marginTop: 20 }}>
+              <button className="pp-btn-cancel" onClick={() => setShowPasswordModal(false)}>Bekor</button>
               <button
-                onClick={handleMergePhone}
-                disabled={merging}
+                onClick={handleChangePassword}
+                disabled={changingPass}
                 style={{
                   padding: '12px 20px', borderRadius: 12, background: '#8B5CF6', color: '#fff',
-                  border: 'none', fontWeight: 700, fontSize: 14, cursor: merging ? 'not-allowed' : 'pointer',
-                  fontFamily: 'inherit', opacity: merging ? 0.7 : 1, minWidth: 140,
+                  border: 'none', fontWeight: 700, fontSize: 14, cursor: changingPass ? 'not-allowed' : 'pointer',
+                  fontFamily: 'inherit', opacity: changingPass ? 0.7 : 1, minWidth: 140,
                 }}
               >
-                {merging ? 'Birlashtirmoqda...' : 'Birlashtirish ✅'}
+                {changingPass ? 'Saqlanmoqda...' : 'Saqlash ✅'}
               </button>
             </div>
           </div>

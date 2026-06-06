@@ -1,18 +1,14 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { auth, googleProvider, db, app } from '../firebase';
+import { auth, db } from '../firebase';
 import {
-  signInWithPopup,
-  signInWithRedirect,
-  getRedirectResult,
   signOut,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
-  sendPasswordResetEmail,
+  updatePassword,
   setPersistence,
-  browserLocalPersistence,
-  linkWithPopup
+  browserLocalPersistence
 } from 'firebase/auth';
 import { doc, getDoc, setDoc, updateDoc, collection, query, where, getDocs } from 'firebase/firestore';
 import {
@@ -134,29 +130,52 @@ const hasRepeatedChars = (password, minRepeat = 4) => {
   return false;
 };
 
-// Parol kuchi ballini hisoblash (soddalashtirilgan)
+// Parol kuchi ballini hisoblash — haqiqiy tekshiruvlar asosida
 const calculatePasswordStrength = (password, username = '') => {
-  if (!password) return { score: 0, level: 'none', label: '' };
-  
-  const score = Math.min(100, Math.round((password.length / 6) * 100));
-  const level = password.length >= 6 ? 'strong' : 'weak';
-  const label = password.length >= 6 ? 'Etarli' : 'Kamida 6 belgi';
+  if (!password) return { score: 0, level: 'none', label: '', checks: {} };
 
-  return {
-    score,
-    level,
-    label,
-    checks: {
-      length: password.length >= 6,
-      uppercase: true,
-      digit: true
-    }
+  const checks = {
+    length: password.length >= 6,
+    longer: password.length >= 8,
+    letter: /[a-zA-Z]/.test(password),
+    digit: /\d/.test(password),
   };
+
+  let score = 0;
+  if (checks.length) score += 35;
+  if (checks.longer) score += 20;
+  if (checks.letter) score += 20;
+  if (checks.digit) score += 25;
+
+  // Zaif/oson topiladigan parollar ballini pasaytiramiz
+  const lower = password.toLowerCase();
+  const isBlacklisted = BLACKLISTED_PASSWORDS.includes(lower);
+  if (isBlacklisted || hasSequentialChars(password) || hasRepeatedChars(password)) {
+    score = Math.min(score, 25);
+  }
+
+  let level = 'weak';
+  let label = 'Zaif parol';
+  if (score >= 80) { level = 'strong'; label = 'Kuchli parol'; }
+  else if (score >= 50) { level = 'medium'; label = "O'rtacha parol"; }
+  else if (password.length < 6) { label = 'Kamida 6 belgi'; }
+
+  return { score: Math.min(100, score), level, label, checks };
 };
 
+// Ro'yxatdan o'tishda parolni tekshirish — oson topiladigan parollarni rad etadi
 const validatePassword = (password) => {
   if (!password) return "Parolni kiritish shart.";
   if (password.length < 6) return "Parol kamida 6 ta belgidan iborat bo'lishi kerak.";
+  if (BLACKLISTED_PASSWORDS.includes(password.toLowerCase())) {
+    return "Bu parol juda oddiy va xavfsiz emas. Boshqa parol tanlang.";
+  }
+  if (hasRepeatedChars(password)) {
+    return "Parolda bir xil belgilar ketma-ket takrorlanmasin (masalan: 1111).";
+  }
+  if (hasSequentialChars(password)) {
+    return "Parol oddiy ketma-ketlikdan iborat bo'lmasin (masalan: 12345, qwerty).";
+  }
   return null;
 };
 
@@ -227,69 +246,6 @@ export const AuthProvider = ({ children }) => {
     // Tizimda uzoq vaqt (kamida 30 kun) qolishi uchun persistence ni o'rnatamiz
     setPersistence(auth, browserLocalPersistence).catch(err => {
       console.warn("Persistence rejimini o'rnatishda xato:", err);
-    });
-
-    // Redirect natijasini ushlash (mobil yoki fallback uchun)
-    getRedirectResult(auth).then(async (result) => {
-      if (result?.user) {
-        console.log("Google redirect muvaffaqiyatli yakunlandi:", result.user.email);
-        const firebaseUser = result.user;
-        let role = 'user';
-        let isPremium = false;
-        try {
-          const userRef = doc(db, 'users', firebaseUser.uid);
-          const userSnap = await getDoc(userRef);
-          if (userSnap.exists()) {
-            const data = userSnap.data();
-            isPremium = data.isPremium || false;
-            role = data.role || 'user';
-          } else {
-            await setDoc(userRef, {
-              uid: firebaseUser.uid,
-              email: firebaseUser.email,
-              displayName: firebaseUser.displayName || firebaseUser.email?.split('@')[0],
-              photoURL: firebaseUser.photoURL || null,
-              role: 'user',
-              isPremium: false,
-              createdAt: new Date(),
-            }, { merge: true }).catch(e => console.warn('Yangi profil yaratishda xato (redirect):', e));
-            
-            await applyReferralAfterRegister(
-              firebaseUser.uid,
-              firebaseUser.displayName || firebaseUser.email?.split('@')[0]
-            );
-            isPremium = true;
-          }
-        } catch (firestoreErr) {
-          console.warn('Firestore profil yuklashda xato (redirect):', firestoreErr.message);
-        }
-
-        const enhancedUser = {
-          uid: firebaseUser.uid,
-          email: firebaseUser.email,
-          displayName: firebaseUser.displayName,
-          photoURL: firebaseUser.photoURL,
-          isPremium,
-          role,
-          _firebaseUser: firebaseUser
-        };
-
-        localStorage.setItem('iqro_cached_user', JSON.stringify({
-          uid: firebaseUser.uid,
-          email: firebaseUser.email,
-          displayName: firebaseUser.displayName,
-          photoURL: firebaseUser.photoURL,
-          isPremium,
-          role
-        }));
-
-        setUser(enhancedUser);
-      }
-    }).catch((error) => {
-      console.error("Google redirect xatosi:", error);
-      if (error?.code !== 'auth/redirect-cancelled-by-user') {
-        setAuthError("Google bilan ulanish bekor qilindi yoki xatolik yuz berdi.");
-      }
     });
 
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -399,51 +355,6 @@ export const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-
-  // ─── Google Sign-In ───
-  const signInWithGoogle = async () => {
-    setAuthError('');
-
-    // Har doim akkaunt tanlash oynasini ko'rsatish
-    googleProvider.setCustomParameters({ prompt: 'select_account' });
-
-    try {
-      // Har doim birinchi navbatda popup orqali kirishga urinamiz (eng ishonchli usul, desktop va mobil brauzerlarda ishlaydi)
-      await signInWithPopup(auth, googleProvider);
-    } catch (err) {
-      console.error('Google sign-in xatosi (popup):', err);
-
-      switch (err.code) {
-        case 'auth/popup-blocked':
-        case 'auth/popup-closed-by-user':
-        case 'auth/cancelled-popup-request':
-          // Telegram Webview, Instagram Webview yoki mobil brauzerlarda popup ochish cheklangan bo'lsa,
-          // darhol cancelled yoki blocked xatosi beradi. Shuning uchun avtomatik ravishda redirect usuliga o'tamiz.
-          const isMobileOrWebview = /iPhone|iPad|iPod|Android|Telegram|Instagram|WebView/i.test(navigator.userAgent);
-          if (isMobileOrWebview || err.code === 'auth/popup-blocked') {
-            try {
-              await signInWithRedirect(auth, googleProvider);
-            } catch (redirectErr) {
-              console.error('Google redirect xatosi:', redirectErr);
-              setAuthError("Brauzer Google oynasini blokladi yoki tizimga kirish imkonsiz.");
-            }
-          }
-          break;
-        case 'auth/network-request-failed':
-          setAuthError("Internet aloqasi yo'q. Iltimos, tarmoqni tekshiring.");
-          break;
-        case 'auth/unauthorized-domain':
-          setAuthError("Bu domen Google Auth uchun ruxsat etilmagan. Administrator bilan bog'laning.");
-          break;
-        case 'auth/internal-error':
-          setAuthError("Ichki xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring.");
-          break;
-        default:
-          setAuthError("Google bilan kirishda xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring.");
-      }
-    }
-  };
-
   // ─── Email / Parol bilan kirish ───
   const signInWithEmail = async (email, password) => {
     setAuthError('');
@@ -513,9 +424,12 @@ export const AuthProvider = ({ children }) => {
       return { success: false };
     }
 
-    if (!password && isRegistering) {
-      setAuthError("Parol kiritilishi shart.");
-      return { success: false };
+    if (isRegistering) {
+      const pwError = validatePassword(password);
+      if (pwError) {
+        setAuthError(pwError);
+        return { success: false };
+      }
     }
 
     const internalEmail = phoneToEmail(phone);
@@ -664,138 +578,32 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // ─── Hisoblarni birlashtirish (Account Merge) ───
-  // Telefon hisobi bilan Google/Telegram hisobini birlashtiradi.
-  // Secondary Firebase App orqali ishlaydi — joriy sessiya buzilmaydi.
-  const mergePhoneAccount = async (phone, password) => {
-    if (!user) return { success: false, error: 'not_logged_in' };
-
-    const cleanPhone = phone.replace(/\D/g, '');
-    const internalEmail = phoneToEmail(phone);
-    const currentUid = user.uid;
-
-    try {
-      const { initializeApp, deleteApp } = await import('firebase/app');
-      const { getAuth, signInWithEmailAndPassword: secondSignIn } = await import('firebase/auth');
-
-      const secondaryAppName = `merge_${Date.now()}`;
-      const secondaryApp = initializeApp(app.options, secondaryAppName);
-      const secondaryAuth = getAuth(secondaryApp);
-
-      // Telefon hisobiga kiramiz (parolni tekshirish uchun)
-      let phoneCred;
-      try {
-        phoneCred = await secondSignIn(secondaryAuth, internalEmail, password);
-      } catch (authErr) {
-        await deleteApp(secondaryApp);
-        if (
-          authErr.code === 'auth/wrong-password' ||
-          authErr.code === 'auth/invalid-credential' ||
-          authErr.code === 'auth/invalid-login-credentials'
-        ) return { success: false, error: 'wrong_password' };
-        if (authErr.code === 'auth/user-not-found') return { success: false, error: 'not_found' };
-        if (authErr.code === 'auth/too-many-requests') return { success: false, error: 'too_many_requests' };
-        throw authErr;
-      }
-
-      const oldUid = phoneCred.user.uid;
-
-      if (oldUid === currentUid) {
-        await secondaryAuth.signOut();
-        await deleteApp(secondaryApp);
-        return { success: false, error: 'same_account' };
-      }
-
-      // Firestore ma'lumotlarini o'qiymiz
-      const [oldUserSnap, oldStatsSnap, currentStatsSnap] = await Promise.all([
-        getDoc(doc(db, 'users', oldUid)),
-        getDoc(doc(db, 'userStats', oldUid)),
-        getDoc(doc(db, 'userStats', currentUid)),
-      ]);
-
-      const batch = writeBatch(db);
-
-      // Foydalanuvchi profilini birlashtirish
-      if (oldUserSnap.exists()) {
-        const oldData = oldUserSnap.data();
-        batch.set(doc(db, 'users', currentUid), {
-          phone: oldData.phone || cleanPhone,
-          ...(oldData.gender && { gender: oldData.gender }),
-          ...(oldData.birthDate && { birthDate: oldData.birthDate }),
-          linkedFrom: oldUid,
-          linkedAt: new Date(),
-        }, { merge: true });
-
-        // Eski hisobni "birlashtirilgan" deb belgilash
-        batch.set(doc(db, 'users', oldUid), {
-          merged: true,
-          mergedTo: currentUid,
-          mergedAt: new Date(),
-        }, { merge: true });
-      }
-
-      // Statistikani birlashtirish — ko'proq javob bergani asosiy bo'ladi
-      if (oldStatsSnap.exists()) {
-        const oldStats = oldStatsSnap.data();
-        const currentAnswered = currentStatsSnap.exists() ? (currentStatsSnap.data()?.totalAnswered || 0) : 0;
-        const oldAnswered = oldStats.totalAnswered || 0;
-
-        if (oldAnswered > currentAnswered) {
-          // Telefon hisobidagi statistika yanada boy — uni ko'chiramiz
-          batch.set(doc(db, 'userStats', currentUid), {
-            ...oldStats,
-            displayName: user.displayName || oldStats.displayName,
-            photoURL: user.photoURL || oldStats.photoURL || null,
-          });
-        }
-
-        batch.set(doc(db, 'userStats', oldUid), { mergedTo: currentUid }, { merge: true });
-      }
-
-      await batch.commit();
-
-      await secondaryAuth.signOut();
-      await deleteApp(secondaryApp);
-
-      return { success: true, oldUid };
-    } catch (err) {
-      console.error('mergePhoneAccount xatosi:', err);
-      return { success: false, error: err.message || 'unknown' };
+  // ─── Parolni o'zgartirish (joriy foydalanuvchi uchun) ───
+  // Telegram orqali kirgan yoki tizimda bo'lgan foydalanuvchi yangi parol o'rnatadi.
+  const changePassword = async (newPassword) => {
+    if (!auth.currentUser) return { success: false, error: 'not_logged_in' };
+    if (!newPassword || newPassword.length < 6) {
+      return { success: false, error: 'weak_password' };
     }
-  };
-
-  // ─── Google hisobini ulash (telefon foydalanuvchisi uchun) ───
-  const linkGoogleAccount = async () => {
     try {
-      googleProvider.setCustomParameters({ prompt: 'select_account' });
-      await linkWithPopup(auth.currentUser, googleProvider);
+      await updatePassword(auth.currentUser, newPassword);
       return { success: true };
     } catch (err) {
-      if (err.code === 'auth/credential-already-in-use') {
-        return { success: false, error: 'already_separate_account' };
+      if (err.code === 'auth/requires-recent-login') {
+        return { success: false, error: 'requires_recent_login' };
       }
-      if (err.code === 'auth/popup-blocked' || err.code === 'auth/popup-closed-by-user') {
-        return { success: false, error: 'popup_blocked' };
-      }
-      return { success: false, error: err.code || err.message };
+      return { success: false, error: err.code || 'unknown' };
     }
   };
 
   // ─── Parolni tiklash (telefon raqam uchun) ───
-  // Telefon orqali kirgan foydalanuvchilar uchun
-  // parolni tiklash imkoniyati (email orqali)
+  // Email soxta (@iqro.uz) bo'lgani uchun email orqali tiklash ishlamaydi.
+  // Yechim: foydalanuvchi Telegram orqali kiradi (parolsiz), keyin Profildan
+  // yangi parol o'rnatadi. Shuning uchun bu yerda yo'naltirish xabari beramiz.
   const resetPassword = async (phone) => {
     setAuthError('');
-    const cleanPhone = phone.replace(/\D/g, '');
-    if (!cleanPhone.startsWith('998') || cleanPhone.length !== 12) {
-      setAuthError("Faqat O'zbekiston telefon raqamlari (+998) orqali tiklash mumkin.");
-      return false;
-    }
-
-    // Iqro.uz email uchun parol tiklash ishlamaydi (bu haqiqiy email emas)
-    // Shuning uchun foydalanuvchiga admin bilan bog'lanish tavsiya etiladi
     setAuthError(
-      "Parolni tiklash uchun admin bilan bog'laning: @iqro_admin (Telegram)"
+      "Parolingizni unutdingizmi? Orqaga qayting va \"Telegram orqali kirish\" tugmasi orqali kiring — keyin Profil → Parolni o'zgartirish bo'limidan yangi parol o'rnatasiz."
     );
     return false;
   };
@@ -831,12 +639,11 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={{
       user, loading, authError, setAuthError,
-      signInWithGoogle, signInWithEmail, registerWithEmail,
+      signInWithEmail, registerWithEmail,
       signInWithPhone,
       checkUserExists,
       resetPassword,
-      mergePhoneAccount,
-      linkGoogleAccount,
+      changePassword,
       logout,
       calculatePasswordStrength,
       checkLockout

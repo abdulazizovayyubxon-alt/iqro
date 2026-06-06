@@ -97,50 +97,16 @@ export default function LoginPage() {
   };
 
   // ── TELEFON RAQAM KIRITILGANDA ──
-  const handlePhoneNext = async () => {
+  // Email soxta (@iqro.uz) bo'lgani uchun "foydalanuvchi bormi?" ni ishonchli
+  // aniqlab bo'lmaydi. Shuning uchun foydalanuvchining o'zidan so'raymiz:
+  // yangi hisob ochadimi yoki mavjud hisobga kiradimi.
+  const handlePhoneNext = () => {
     setAuthError('');
     if (!isPhoneValid()) {
       setAuthError("To'g'ri telefon raqam kiriting");
       return;
     }
-    setStep(STEPS.CHECKING);
-    setLoading(true);
-    try {
-      const res = await signInWithPhone('', phone, '', false);
-      if (!res) {
-        // signInWithPhone undefined qaytardi — kutilmagan holat
-        setStep(STEPS.PHONE);
-        setAuthError("Xatolik yuz berdi, qaytadan urinib ko'ring.");
-        return;
-      }
-
-      if (res.success) {
-        // Parolsiz to'g'ridan-to'g'ri muvaffaqiyatli kirdi
-        return;
-      }
-
-      if (res.notRegistered) {
-        // Yangi foydalanuvchi — avtomatik ro'yxatdan o'tish sahifasiga
-        setStep(STEPS.REGISTER_NAME);
-      } else if (res.needsChoice) {
-        // Probe ishlamadi — foydalanuvchiga tanlov beramiz (fallback)
-        setStep(STEPS.CHOOSE);
-      } else if (res.hasCustomPassword) {
-        // Foydalanuvchi mavjud, parol kiritish kerak
-        setStep(STEPS.PASSWORD);
-      } else {
-        // Boshqa xato
-        setStep(STEPS.PHONE);
-      }
-    } catch (e) {
-      console.error("handlePhoneNext xatosi:", e);
-      setStep(STEPS.PHONE);
-      if (!authError) {
-        setAuthError("Xatolik yuz berdi, qaytadan urinib ko'ring.");
-      }
-    } finally {
-      setLoading(false);
-    }
+    setStep(STEPS.CHOOSE);
   };
 
   // ── FOYDALANUVCHI TANLOVI: YANGI HISOB ──
@@ -355,9 +321,9 @@ export default function LoginPage() {
               {/* ── STEP: CHOOSE — foydalanuvchi o'zi tanlaydi ── */}
               {step === STEPS.CHOOSE && (
                 <>
-                  <h1 style={s.title}>Raqam topildi</h1>
+                  <h1 style={s.title}>Davom etamiz</h1>
                   <p style={s.subtitle}>
-                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> — bu raqam bilan nima qilmoqchisiz?
+                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> — bu raqam bilan birinchi marta kiryapsizmi?
                   </p>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '8px' }}>
@@ -373,8 +339,8 @@ export default function LoginPage() {
                         <UserPlus size={22} color={PRIMARY} />
                       </div>
                       <div style={{ flex: 1, textAlign: 'left' }}>
-                        <div style={s.choiceTitle}>Yangi hisob yaratish</div>
-                        <div style={s.choiceDesc}>Birinchi marta kiryapsizmi? Ro'yxatdan o'ting</div>
+                        <div style={s.choiceTitle}>Ha, yangi hisob yarataman</div>
+                        <div style={s.choiceDesc}>Birinchi marta kiryapsiz — ro'yxatdan o'ting</div>
                       </div>
                     </motion.button>
 
@@ -390,8 +356,8 @@ export default function LoginPage() {
                         <LogIn size={22} color="#10B981" />
                       </div>
                       <div style={{ flex: 1, textAlign: 'left' }}>
-                        <div style={s.choiceTitle}>Parol bilan kirish</div>
-                        <div style={s.choiceDesc}>Avval ro'yxatdan o'tgansiz va parolingiz bor</div>
+                        <div style={s.choiceTitle}>Yo'q, hisobim bor</div>
+                        <div style={s.choiceDesc}>Avval ro'yxatdan o'tgansiz — parol bilan kiring</div>
                       </div>
                     </motion.button>
                   </div>
@@ -486,11 +452,11 @@ export default function LoginPage() {
                     <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> uchun parolingizni kiriting:
                   </p>
                   
-                  {/* ESKI FOYDALANUVCHILAR UCHUN HINT */}
+                  {/* PAROLNI UNUTGANLAR UCHUN HINT */}
                   <div style={{ background: 'rgba(41, 182, 246, 0.1)', padding: '12px', borderRadius: '12px', marginBottom: '20px', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
                     <ShieldCheck size={20} color="#29B6F6" style={{ flexShrink: 0, marginTop: '2px' }} />
                     <p style={{ margin: 0, fontSize: '13px', color: 'var(--text2)', lineHeight: '1.4' }}>
-                      <strong>Parolingiz yo'qmi?</strong> Eski tizimda ro'yxatdan o'tgan bo'lsangiz, orqaga qaytib <b>"Telegram orqali kirish"</b> ni tanlang. Bot orqali parolsiz kirishingiz mumkin.
+                      <strong>Parolingizni unutdingizmi?</strong> Orqaga qayting va <b>"Telegram orqali kirish"</b> ni tanlang — parolsiz kirasiz, so'ng Profil → <b>Parolni o'zgartirish</b> bo'limidan yangi parol o'rnatasiz.
                     </p>
                   </div>
 
@@ -510,7 +476,7 @@ export default function LoginPage() {
                     </button>
                   </div>
                   <button style={s.forgotBtn} onClick={handleForgotPassword}>
-                    Parolni tiklash
+                    Parolni unutdingizmi?
                   </button>
                 </>
               )}
