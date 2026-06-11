@@ -1,7 +1,7 @@
 {
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/((?!assets|sw|workbox|manifest|registerSW|api).*)", "destination": "/index.html" }
+    { "source": "/((?!assets|images|sw|workbox|manifest|registerSW|api).*)", "destination": "/index.html" }
   ],
   "crons": [
     {
