@@ -44,19 +44,17 @@ const LeaderboardPage = () => {
     } else if (boardType === 'monthly') {
       q = query(collection(db, 'userStats'), orderBy(`monthly_${monthId}`, 'desc'), limit(50));
     } else {
-      if (selectedSubject !== 'all') {
-        q = query(collection(db, 'userStats'), orderBy(`stats.${selectedSubject}.totalCorrect`, 'desc'), limit(50));
-      } else {
-        q = query(collection(db, 'userStats'), orderBy('totalScore', 'desc'), limit(50));
-      }
+      // Subject-specific queries need composite Firestore indexes.
+      // Instead, fetch top-100 by totalScore and sort client-side to avoid index errors.
+      q = query(collection(db, 'userStats'), orderBy('totalScore', 'desc'), limit(100));
     }
-    
+
     const unsubscribe = onSnapshot(q, async (snapshot) => {
       try {
-        const results = [];
+        let results = [];
         snapshot.forEach(docSnap => {
           const d = docSnap.data();
-          
+
           let score = 0;
           if (boardType === 'weekly') {
             score = d[`weekly_${weekId}`] || 0;
@@ -83,6 +81,12 @@ const LeaderboardPage = () => {
           });
         });
 
+        // Sort client-side when filtering by subject (avoids composite index requirement)
+        if (boardType === 'all' && selectedSubject !== 'all') {
+          results.sort((a, b) => b.score - a.score);
+          results = results.slice(0, 50);
+        }
+
         // "Siz" top-50 da bormi?
         const meIdx = results.findIndex(r => r.id === user.uid);
         if (meIdx !== -1) {
@@ -95,27 +99,33 @@ const LeaderboardPage = () => {
             const myDoc = await getDoc(doc(db, 'userStats', user.uid));
             if (myDoc.exists()) {
               const md = myDoc.data();
-              
+
               let myScore = 0;
-              let rankQ;
+              let rankAbove = 0;
 
               if (boardType === 'weekly') {
                 myScore = md[`weekly_${weekId}`] || 0;
-                rankQ = query(collection(db, 'userStats'), where(`weekly_${weekId}`, '>', myScore));
+                const rankQ = query(collection(db, 'userStats'), where(`weekly_${weekId}`, '>', myScore));
+                const cnt = await getCountFromServer(rankQ);
+                rankAbove = cnt.data().count;
               } else if (boardType === 'monthly') {
                 myScore = md[`monthly_${monthId}`] || 0;
-                rankQ = query(collection(db, 'userStats'), where(`monthly_${monthId}`, '>', myScore));
+                const rankQ = query(collection(db, 'userStats'), where(`monthly_${monthId}`, '>', myScore));
+                const cnt = await getCountFromServer(rankQ);
+                rankAbove = cnt.data().count;
               } else {
                 if (selectedSubject !== 'all') {
+                  // Count using client-side results (avoids composite index requirement)
                   myScore = (md.stats?.[selectedSubject]?.totalCorrect || 0) * 2;
-                  rankQ = query(collection(db, 'userStats'), where(`stats.${selectedSubject}.totalCorrect`, '>', Math.floor(myScore / 2)));
+                  rankAbove = results.filter(r => r.score > myScore).length;
                 } else {
                   myScore = md.totalScore || 0;
-                  rankQ = query(collection(db, 'userStats'), where('totalScore', '>', myScore));
+                  const rankQ = query(collection(db, 'userStats'), where('totalScore', '>', myScore));
+                  const cnt = await getCountFromServer(rankQ);
+                  rankAbove = cnt.data().count;
                 }
               }
 
-              const cnt = await getCountFromServer(rankQ);
               setMyEntry({
                 id: user.uid,
                 name: user.displayName || user.email?.split('@')[0] || 'Siz',
@@ -123,7 +133,7 @@ const LeaderboardPage = () => {
                 streak: md.dailyStreak || 0,
                 answered: md.totalAnswered || 0,
                 photoURL: user.photoURL || null,
-                rank: cnt.data().count + 1,
+                rank: rankAbove + 1,
                 isMe: true,
                 rawStats: md.stats || {},
                 totalCorrect: md.totalCorrect || 0,
