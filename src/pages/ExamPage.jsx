@@ -18,6 +18,8 @@ import { db } from '../firebase';
 import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
 import { summarizeTestResults } from '../engine/SmartQuestionEngine';
 import localforage from 'localforage';
+import { useExitGuard } from '../hooks/useExitGuard';
+import { useModalBackButton } from '../components/profile/useModalBackButton';
 
 // Savol matnidan kirish/kontekst qismini olib tashlaydi (dublikat aniqlash uchun)
 function cleanForDedup(text) {
@@ -112,6 +114,13 @@ const ExamPage = () => {
   
   const [cheatWarnings, setCheatWarnings] = useState(0);
   const [cheatDisqualified, setCheatDisqualified] = useState(false);
+
+  // Orqa tugma himoyasi: imtihon davomida orqa bosilsa to'satdan chiqib
+  // ketmasdan mavjud "Imtihonni yakunlash" tasdig'i ochiladi
+  useExitGuard(examStarted && !finished && !loading && questions.length > 0, () => setShowConfirmModal(true));
+
+  // Premium modal ochiq bo'lsa orqa tugma sahifadan emas, modaldan chiqaradi
+  useModalBackButton(showPremiumModal, () => setShowPremiumModal(false));
   const timerRef = useRef(null);
 
   const questionStartTimeRef = useRef(Date.now());

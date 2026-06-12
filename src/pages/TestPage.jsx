@@ -53,6 +53,8 @@ import SmartBottomSheet from '../components/test/SmartBottomSheet';
 import QuestionBox from '../components/test/QuestionBox';
 import FlashcardView from '../components/test/FlashcardView';
 import TestResults from '../components/test/TestResults';
+import { useExitGuard } from '../hooks/useExitGuard';
+import { useModalBackButton } from '../components/profile/useModalBackButton';
 
 const TestPage = () => {
   const navigate = useNavigate();
@@ -109,6 +111,9 @@ const TestPage = () => {
   // Bottom Sheet State
   const [showSelectorDrawer, setShowSelectorDrawer] = useState(false);
 
+  // Testdan chiqish tasdig'i (orqa tugma himoyasi)
+  const [showExitConfirm, setShowExitConfirm] = useState(false);
+
   // Objection Modal State
   const [showObjectionModal, setShowObjectionModal] = useState(false);
   const [activeReviewTab, setActiveReviewTab] = useState('analysis');
@@ -146,6 +151,20 @@ const TestPage = () => {
   // Flashcard state
   const [fcFlipped, setFcFlipped] = useState(false);
   const [fcKnown, setFcKnown] = useState({}); // { [index]: true/false }
+
+  // Orqa tugma himoyasi: javob belgilangan, natija hali saqlanmagan holatda
+  // orqa bosilsa to'satdan chiqib ketmasdan tasdiq so'raladi
+  const guardActive = questions.length > 0 && !showResults && mode !== 'flashcard' && Object.keys(answers).length > 0;
+  useExitGuard(guardActive, () => setShowExitConfirm(true));
+
+  // Drawer/Premium modal ochiq bo'lsa orqa tugma sahifadan emas, modaldan chiqaradi
+  useModalBackButton(showSelectorDrawer || showPremiumModal, () => {
+    setShowSelectorDrawer(false);
+    setShowPremiumModal(false);
+  });
+
+  // Motivatsiya timeout'ini unmount'da tozalash
+  useEffect(() => () => clearTimeout(motivationTimerRef.current), []);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -213,6 +232,10 @@ const TestPage = () => {
       setFcFlipped(false);
       setAnswers({});
       questionTimesRef.current = {};
+      // Natija ekranida bo'lim almashtirilsa yangi bo'lim savollari ko'rinishi kerak
+      setShowResults(false);
+      setComboCount(0);
+      setMotivationText('');
     } else {
       setQuestions([]);
       setCurrentQ(0);
@@ -813,7 +836,7 @@ const TestPage = () => {
               </div>
             </>
           ) : (
-            <TestResults 
+            <TestResults
               correctCount={correctCount}
               questionsLength={questions.length}
               topicName={topicName}
@@ -822,6 +845,17 @@ const TestPage = () => {
               generateQuestions={generateQuestions}
               navigate={navigate}
               showToast={showToast}
+              nextBatchLabel={(() => {
+                const totalBatches = Math.ceil(fullPool.length / BATCH_SIZE);
+                if (selectedBatch >= totalBatches - 1) return null;
+                const start = (selectedBatch + 1) * BATCH_SIZE + 1;
+                const end = Math.min((selectedBatch + 2) * BATCH_SIZE, fullPool.length);
+                return `${start}–${end}`;
+              })()}
+              onNextBatch={selectedBatch < Math.ceil(fullPool.length / BATCH_SIZE) - 1 ? () => {
+                setSelectedBatch(prev => prev + 1);
+                setShowResults(false);
+              } : null}
             />
           )}
         </div>
@@ -835,10 +869,25 @@ const TestPage = () => {
         onSubmit={handleObjection}
       />
 
-      <PremiumModal 
-        isOpen={showPremiumModal} 
-        onClose={() => setShowPremiumModal(false)} 
+      <PremiumModal
+        isOpen={showPremiumModal}
+        onClose={() => setShowPremiumModal(false)}
       />
+
+      {/* TESTDAN CHIQISH TASDIG'I (orqa tugma) */}
+      {showExitConfirm && (
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: 24, maxWidth: 320, width: '90%', borderRadius: 20, textAlign: 'center', background: 'var(--bg2)' }}>
+            <div style={{ fontSize: 40, marginBottom: 12 }}>⚠️</div>
+            <h3 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Testdan chiqish</h3>
+            <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>Testdan chiqmoqchimisiz? Joriy bo'lim javoblari saqlanmaydi.</p>
+            <div style={{ display: 'flex', gap: 12 }}>
+              <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setShowExitConfirm(false)}>Davom etish</button>
+              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { setShowExitConfirm(false); navigate('/test'); }}>Chiqish</button>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </motion.div>
   );
 };

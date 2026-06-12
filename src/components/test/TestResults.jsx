@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RefreshCw, Target, Home, Share2 } from 'lucide-react';
+import { RefreshCw, Target, Home, Share2, ArrowRight } from 'lucide-react';
 
 const TestResults = ({
   correctCount,
@@ -10,7 +10,9 @@ const TestResults = ({
   setMode,
   generateQuestions,
   navigate,
-  showToast
+  showToast,
+  nextBatchLabel,
+  onNextBatch
 }) => {
   const pct = Math.round((correctCount / questionsLength) * 100);
   const isExcellent = correctCount / questionsLength >= 0.7;
@@ -52,10 +54,22 @@ const TestResults = ({
       </div>
       
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 320, margin: '0 auto' }}>
-        <motion.button 
-          whileHover={{ scale: 1.01, y: -1 }} 
-          whileTap={{ scale: 0.98 }} 
-          style={{ padding: '14px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }} 
+        {onNextBatch && (
+          <motion.button
+            whileHover={{ scale: 1.01, y: -1 }}
+            whileTap={{ scale: 0.98 }}
+            style={{ padding: '14px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}
+            onClick={onNextBatch}
+          >
+            Keyingi bo'lim {nextBatchLabel ? `(${nextBatchLabel})` : ''} <ArrowRight size={17} />
+          </motion.button>
+        )}
+        <motion.button
+          whileHover={{ scale: 1.01, y: -1 }}
+          whileTap={{ scale: 0.98 }}
+          style={onNextBatch
+            ? { padding: '13px', background: 'var(--glass-bg)', color: 'var(--text2)', border: '1px solid var(--glass-border)', borderRadius: 16, fontWeight: 600, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }
+            : { padding: '14px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}
           onClick={generateQuestions}
         >
           <RefreshCw size={17} /> Yana ishlash
