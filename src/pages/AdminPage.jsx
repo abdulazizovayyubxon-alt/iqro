@@ -26,7 +26,12 @@ import {
 } from 'lucide-react';
 
 import './AdminPage.css';
+import PromoTab from '../components/admin/PromoTab';
 import { TOPICS } from '../data/mockData';
+import { normalizeText, trigrams, jaccard } from '../utils/textSimilarity';
+
+// Yaqin-dublikat chegarasi (0..1). Yuqori = faqat juda o'xshashlar (matching/sequence soxta-ijobiyni kamaytiradi).
+const DUP_SIM_THRESHOLD = 0.87;
 
 const getCategoryFromTopicId = (topicId) => {
   const idNum = parseInt(topicId);
@@ -59,6 +64,11 @@ const AdminPage = () => {
   const confirmAction = (text, onConfirm) => {
     setConfirmDialog({ isOpen: true, text, onConfirm });
   };
+
+  // Dublikat preview state (o'chirishdan oldin ko'rsatish uchun)
+  const [dupPreview, setDupPreview] = useState(null); // null | { groups, totalRemove, scope }
+  const [dupAnalyzing, setDupAnalyzing] = useState(false);
+  const [dupDeleting, setDupDeleting] = useState(false);
 
 
   // Question Management State
@@ -457,42 +467,100 @@ try {
     }
   };
 
-  const handleCleanDuplicates = async () => {
-    confirmAction("Barcha takroriy (dublikat) savollarni bazadan o'chirishni tasdiqlaysizmi?", async () => {
+  // Dublikatlarni tahlil qiladi (aniq + yaqin-takror), O'CHIRMAYDI — preview ochadi.
+  const analyzeDuplicates = () => {
+    setDupAnalyzing(true);
+    // og'ir hisob UI ni bloklamasligi uchun keyingi tick'da
+    setTimeout(() => {
     try {
-      showToast("Tahlil va o'chirish boshlandi, kuting...", 'info');
-      const questionMap = new Map();
-      const duplicatesToDelete = [];
-      
-      const normalize = (text) => text ? text.toLowerCase().replace(/[‘'`ʼ]/g, "'").replace(/\s+/g, " ").trim() : "";
-      
-      for (const q of questions) {
-        const normText = normalize(q.q);
-        if (questionMap.has(normText)) {
-          duplicatesToDelete.push(q.id);
-        } else {
-          questionMap.set(normText, q.id);
+      const scope = questionCategoryFilter !== 'all' ? questionCategoryFilter : 'all';
+      const pool = scope === 'all' ? questions : questions.filter(q => q.category === scope);
+      const items = pool.map(q => {
+        const norm = normalizeText(q.q);
+        return { id: q.id, q: q.q, category: q.category, topicId: q.topicId, explen: (q.explanation || '').length, norm, tris: trigrams(norm) };
+      });
+      const n = items.length;
+
+      // Union-find
+      const parent = items.map((_, i) => i);
+      const find = (x) => { while (parent[x] !== x) { parent[x] = parent[parent[x]]; x = parent[x]; } return x; };
+      const union = (a, b) => { const ra = find(a), rb = find(b); if (ra !== rb) parent[ra] = rb; };
+
+      // 1) Aniq dublikat: bir xil normalized matn
+      const byNorm = new Map();
+      items.forEach((it, i) => {
+        if (!it.norm) return;
+        if (byNorm.has(it.norm)) union(i, byNorm.get(it.norm));
+        else byNorm.set(it.norm, i);
+      });
+
+      // 2) Yaqin dublikat: trigram inverted-index bloklash → nomzod juftlar
+      const index = new Map();
+      items.forEach((it, i) => { for (const t of it.tris) { if (!index.has(t)) index.set(t, []); index.get(t).push(i); } });
+      for (let i = 0; i < n; i++) {
+        const cand = new Map();
+        for (const t of items[i].tris) {
+          const arr = index.get(t);
+          if (!arr || arr.length > 200) continue; // juda keng trigramni o'tkaz (tezlik)
+          for (const j of arr) if (j > i) cand.set(j, (cand.get(j) || 0) + 1);
+        }
+        for (const [j, shared] of cand) {
+          if (find(i) === find(j)) continue;
+          const minSize = Math.min(items[i].tris.size, items[j].tris.size);
+          if (shared < minSize * 0.5) continue; // arzon prefilter
+          if (jaccard(items[i].tris, items[j].tris) >= DUP_SIM_THRESHOLD) union(i, j);
         }
       }
 
-      if (duplicatesToDelete.length === 0) {
-        showToast("Takroriy savollar topilmadi!", 'success');
-        return;
+      // Klasterlash
+      const clusters = new Map();
+      for (let i = 0; i < n; i++) { const r = find(i); if (!clusters.has(r)) clusters.set(r, []); clusters.get(r).push(i); }
+      const groups = [];
+      let totalRemove = 0;
+      for (const idxs of clusters.values()) {
+        if (idxs.length < 2) continue;
+        idxs.sort((a, b) => items[b].explen - items[a].explen); // eng to'liq (uzun izoh) saqlanadi
+        const keepI = idxs[0];
+        const removed = idxs.slice(1).map(j => ({
+          id: items[j].id, q: items[j].q, category: items[j].category, topicId: items[j].topicId,
+          sim: Math.round(jaccard(items[keepI].tris, items[j].tris) * 100),
+        }));
+        totalRemove += removed.length;
+        groups.push({ keep: { id: items[keepI].id, q: items[keepI].q, topicId: items[keepI].topicId }, removed });
       }
+      groups.sort((a, b) => b.removed.length - a.removed.length);
 
-      for (const docId of duplicatesToDelete) {
-        await deleteDoc(doc(db, 'questions', docId));
+      if (totalRemove === 0) { showToast('Takroriy savollar topilmadi!', 'success'); setDupPreview(null); }
+      else setDupPreview({ groups, totalRemove, scope: scope === 'all' ? 'Barchasi' : scope });
+    } catch (e) {
+      showToast('Tahlilda xatolik: ' + e.message, 'error');
+    } finally {
+      setDupAnalyzing(false);
+    }
+    }, 50);
+  };
+
+  // Preview tasdiqlangach — dublikatlarni Firestore'dan o'chiradi (400 talik batch).
+  const executeDuplicateDeletion = async () => {
+    if (!dupPreview) return;
+    const removeIds = dupPreview.groups.flatMap(g => g.removed.map(r => r.id));
+    setDupDeleting(true);
+    try {
+      showToast(`${removeIds.length} ta dublikat o'chirilmoqda...`, 'info');
+      for (let i = 0; i < removeIds.length; i += 400) {
+        const batch = writeBatch(db);
+        removeIds.slice(i, i + 400).forEach(id => batch.delete(doc(db, 'questions', id)));
+        await batch.commit();
       }
-
-      showToast(`Muvaffaqiyatli! ${duplicatesToDelete.length} ta takroriy savol o'chirildi.`, 'success');
-      
-      // Ro'yxatni yangilash
+      showToast(`Muvaffaqiyatli! ${removeIds.length} ta dublikat o'chirildi. 🎉`, 'success');
       const snap = await getDocs(collection(db, 'questions'));
       setQuestions(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+      setDupPreview(null);
     } catch (e) {
-      showToast("Xatolik yuz berdi: " + e.message, 'error');
+      showToast("O'chirishda xatolik: " + e.message, 'error');
+    } finally {
+      setDupDeleting(false);
     }
-    });
   };
 
   const handlePublishBundles = async () => {
@@ -600,6 +668,23 @@ try {
     return matchSearch && matchFilter;
   });
 
+  // E'tirozlarni savol matni bo'yicha guruhlash:
+  // bir savolga ≥2 shikoyat = ehtimoliy xato savol → flag + ro'yxat boshiga
+  const objKey = (o) => (o.question || '').trim().toLowerCase().slice(0, 100);
+  const objectionCounts = {};
+  objections.forEach(o => {
+    const key = objKey(o);
+    if (key) objectionCounts[key] = (objectionCounts[key] || 0) + 1;
+  });
+  const filteredSorted = [...filtered].sort((a, b) => {
+    const ca = objectionCounts[objKey(a)] || 0;
+    const cb = objectionCounts[objKey(b)] || 0;
+    const fa = ca >= 2 && !a.solved ? 1 : 0;
+    const fb = cb >= 2 && !b.solved ? 1 : 0;
+    if (fa !== fb) return fb - fa;
+    return cb - ca;
+  });
+
   const filteredUsers = users.filter(u => {
     if (!userSearch) return true;
     const term = userSearch.toLowerCase();
@@ -692,7 +777,12 @@ try {
         <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'referrals' ? 'active' : ''}`} onClick={() => setTab('referrals')}>
           <Users size={15} /> Referral
         </motion.button>
+        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'promos' ? 'active' : ''}`} onClick={() => setTab('promos')}>
+          <Zap size={15} /> Promo
+        </motion.button>
       </div>
+
+      {tab === 'promos' && <PromoTab />}
 
       {tab === 'objections' && (
         <div>
@@ -729,7 +819,7 @@ try {
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <AnimatePresence>
-                {filtered.map((obj) => (
+                {filteredSorted.map((obj) => (
                   <motion.div
                     key={obj.fbId}
                     layout
@@ -747,6 +837,11 @@ try {
                         <span className={`status-badge-neon ${obj.solved ? 'paid' : 'pending'}`} style={{ fontSize: '10px', padding: '2px 8px', borderRadius: '6px' }}>
                           {obj.solved ? '✅ HAL QILINDI' : '⏳ YANGI'}
                         </span>
+                        {(objectionCounts[objKey(obj)] || 0) >= 2 && (
+                          <span style={{ fontSize: '10px', fontWeight: 800, background: 'var(--red-bg)', color: 'var(--red)', padding: '2px 8px', borderRadius: '6px', border: '1px solid rgba(239,68,68,0.3)' }}>
+                            ⚠ {objectionCounts[objKey(obj)]} ta shikoyat
+                          </span>
+                        )}
                         <span style={{ fontSize: '12px', color: 'var(--blue)', fontWeight: '600' }}>{obj.category === 'art' ? '🎨' : '🎖️'} {obj.topic}</span>
                         <span style={{ fontSize: '11px', color: 'var(--text3)' }}>{obj.date}</span>
                         {obj.userEmail && <span style={{ fontSize: '11px', color: 'var(--text3)' }}>📧 {obj.userEmail}</span>}
@@ -815,8 +910,8 @@ try {
               <UploadCloud size={14} /> {isSyncing ? 'Yuklanmoqda...' : '🚀 Dasturni Yangilash (Publish)'}
             </motion.button>
 
-            <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={handleCleanDuplicates}>
-              <Trash2 size={14} /> Dublikatlar
+            <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={analyzeDuplicates} disabled={dupAnalyzing}>
+              <Trash2 size={14} /> {dupAnalyzing ? 'Tahlil...' : 'Dublikatlar'}
             </motion.button>
             <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-primary" onClick={() => { setIsAdding(true); setEditingQ(null); setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' }); }}>
               <Plus size={14} /> Yangi savol
@@ -1523,6 +1618,44 @@ try {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Dublikat PREVIEW modali — o'chirishdan oldin ko'rsatadi */}
+      {dupPreview && (
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
+          <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: 20, maxWidth: 720, width: '100%', maxHeight: '85vh', borderRadius: 20, display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
+              <h3 style={{ fontSize: 18, fontWeight: 800, color: 'var(--text)', margin: 0 }}>🔍 Topilgan dublikatlar</h3>
+              <span style={{ fontSize: 12, color: 'var(--text3)' }}>Qamrov: <strong>{dupPreview.scope}</strong></span>
+            </div>
+            <p style={{ fontSize: 13, color: 'var(--text3)', marginBottom: 12 }}>
+              <strong style={{ color: 'var(--red)' }}>{dupPreview.totalRemove} ta</strong> savol o'chiriladi · {dupPreview.groups.length} guruh ·
+              har guruhda eng to'liq (izohli) variant <strong style={{ color: 'var(--green)' }}>saqlanadi</strong>.
+            </p>
+            <div style={{ overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column', gap: 10, paddingRight: 4 }}>
+              {dupPreview.groups.map((g, gi) => (
+                <div key={gi} style={{ border: '1px solid var(--glass-border)', borderRadius: 12, padding: 10, background: 'var(--glass-bg)' }}>
+                  <div style={{ display: 'flex', gap: 6, alignItems: 'flex-start', marginBottom: 6 }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--green)', background: 'var(--green-bg, rgba(34,197,94,0.12))', borderRadius: 6, padding: '2px 6px', whiteSpace: 'nowrap' }}>🟢 Saqlanadi</span>
+                    <span style={{ fontSize: 13, color: 'var(--text)', fontWeight: 600 }}>{g.keep.q}</span>
+                  </div>
+                  {g.removed.map((r, ri) => (
+                    <div key={ri} style={{ display: 'flex', gap: 6, alignItems: 'flex-start', marginTop: 4, paddingLeft: 8 }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--red)', background: 'var(--red-bg, rgba(239,68,68,0.12))', borderRadius: 6, padding: '2px 6px', whiteSpace: 'nowrap' }}>🔴 {r.sim}%</span>
+                      <span style={{ fontSize: 12, color: 'var(--text3)' }}>{r.q} <em style={{ opacity: 0.6 }}>(#{r.topicId})</em></span>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+            <div style={{ display: 'flex', gap: 12, marginTop: 16 }}>
+              <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} disabled={dupDeleting} onClick={() => setDupPreview(null)}>Bekor qilish</button>
+              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} disabled={dupDeleting} onClick={executeDuplicateDeletion}>
+                {dupDeleting ? 'O\'chirilmoqda...' : `Hammasini o'chirish (${dupPreview.totalRemove})`}
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
 
       {confirmDialog.isOpen && (
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

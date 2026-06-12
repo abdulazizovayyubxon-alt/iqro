@@ -22,6 +22,32 @@ import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firesto
 import { smartSort, summarizeTestResults } from '../engine/SmartQuestionEngine';
 import localforage from 'localforage';
 
+// Savol matnidan kirish/kontekst qismini olib tashlaydi va asosiy savolni qaytaradi.
+// Bu funksiya dublikatlarni aniqlashda ishlatiladi: masalan,
+//   "Im Unterricht, Konjunktiv II nima?" va "Dars davomida, Konjunktiv II nima?"
+// bir xil hisoblanishi uchun ikkalasidan ham kirish qismi olib tashlanadi.
+function cleanForDedup(text) {
+  let clean = (text || '').trim().toLowerCase();
+  // [Mavzu: ...] yoki [... yangi savol] prefikslarini olib tashlash
+  clean = clean.replace(/^\s*\[mavzu:\s*[^\]]+\]\s*/gi, '');
+  clean = clean.replace(/^\s*\[[^\]]+yangi\s+savol\]\s*/gi, '');
+  // Savol kodlarini olib tashlash
+  clean = clean.replace(/\s*\(\s*savol\s+kodi\s*:\s*#[a-z0-9_]+\s*\)/gi, '');
+  clean = clean.replace(/\s*#[a-z0-9_]+/gi, '');
+  // Verguldan oldingi kirish qismini olib tashlash (agar u qisqa va kontekst bo'lsa)
+  const parts = clean.split(/,\s+/);
+  if (parts.length > 1) {
+    const firstPart = parts[0].trim();
+    const isIntro =
+      /^(in|im|w\u00e4hrend|bei|f\u00fcr|dars|o'qituvchi|sinf|maktab|o'quvchi|ota-ona|attestatsiya|metodik|pedagogik|ichki|tashqi|harbiy|amaliy|kasbiy|ilmiy|seminar|muhokama)/i.test(firstPart) ||
+      firstPart.split(' ').length <= 6;
+    if (isIntro) {
+      return parts.slice(1).join(', ').trim();
+    }
+  }
+  return clean.trim();
+}
+
 import TestHeader from '../components/test/TestHeader';
 import SmartBottomSheet from '../components/test/SmartBottomSheet';
 import QuestionBox from '../components/test/QuestionBox';
@@ -264,8 +290,9 @@ const TestPage = () => {
         remoteVersion = vData.dbVersion || 0;
         storageUrls = vData.urls || {};
 
-        const cacheKey = `bundle_${state.activeCategory}`;
-        const versionKey = `version_${state.activeCategory}`;
+        // v2: old Storage-bundle caches are invalidated; fresh Firestore data will be used
+        const cacheKey = `bundle_v2_${state.activeCategory}`;
+        const versionKey = `version_v2_${state.activeCategory}`;
         
         // 2. Telefon xotirasidan izlaymiz
         const localCategoryVersion = await localforage.getItem(versionKey);
@@ -383,12 +410,13 @@ const TestPage = () => {
         // SAVOL KODLARINI UI'DAN OLIB TASHLASH VA MOSLASHTIRISH SAVOLLARINI ARALASHTIRISH
         rawList = processQuestionsOnTheFly(rawList);
 
-        // Dublikat savollarni tozalaymiz
-        const seenText = new Set();
+        // Dublikat savollarni tozalaymiz (kirish kontekst qismlarini hisobga olmagan holda)
+        const seenCore = new Set();
         rawList = rawList.filter(q => {
-          const cleanText = (q.q || '').trim().toLowerCase();
-          if (seenText.has(cleanText)) return false;
-          seenText.add(cleanText);
+          const core = cleanForDedup(q.q || '');
+          if (!core) return true;
+          if (seenCore.has(core)) return false;
+          seenCore.add(core);
           return true;
         });
 

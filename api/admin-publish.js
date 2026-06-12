@@ -74,6 +74,17 @@ export default async function handler(req, res) {
       urls: storageUrls,
       updatedAt: new Date().toISOString()
     }, { merge: true });
+
+    // Fan bo'yicha savol soni + yangilanish sanasi — ishonch badge'lari uchun
+    // (Dashboard va Onboarding fan kartalarida ko'rsatiladi)
+    const questionMeta = {};
+    for (const cat of categories) {
+      questionMeta[cat] = {
+        count: bundles[cat].length,
+        updatedAt: new Date().toISOString()
+      };
+    }
+    await db.collection('settings').doc('questionMeta').set(questionMeta, { merge: true });
     
     res.status(200).json({
       success: true,

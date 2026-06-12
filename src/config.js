@@ -26,3 +26,23 @@ export const ADMIN_EMAILS = [
 
 // Imtihon rejimida har savol uchun vaqt (soniyada)
 export const QUESTION_TIMER_SECONDS = 60;
+
+// Yillik obuna default narxi (ROI ko'rsatish uchun; haqiqiy narx Firestore settings/premium da)
+export const DEFAULT_YEARLY_PRICE = 240000;
+
+// ─── Toifa ROI kalkulyatori ───
+// DIQQAT: ustama foizlari taxminiy — rasmiy hujjat asosida TASDIQLAB SO'NG o'zgartiring.
+// base — 1 stavka o'qituvchining o'rtacha oyligi (so'm)
+export const TOIFA_SALARY = {
+  base: 3800000,
+  deltas: {
+    '2-toifa': 0.20,
+    '1-toifa': 0.30,
+    'oliy': 0.50,
+  },
+  labels: {
+    '2-toifa': '2-toifa',
+    '1-toifa': '1-toifa',
+    'oliy': 'Oliy toifa',
+  },
+};

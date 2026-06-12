@@ -1,189 +1,58 @@
 /**
- * ProfilePage.jsx — Profil sahifasi
- * Sarlavha (XP/level), tezkor boshlash, streak, statistika,
- * guruhlangan menyu (Sozlamalar / Ma'lumot / Hisob) va modallar.
+ * ProfilePage.jsx — Profil (shaxsiy dashboard)
+ * Sarlavha (XP/level + sozlamalar tugmasi), trial banner, tezkor boshlash,
+ * streak, statistika kartalari, premium holati va havolalar.
+ * Sozlamalar/hisob/FAQ alohida sahifaga ko'chirilgan: /settings (SettingsPage.jsx)
  */
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Moon, Sun, Edit3, LogOut, ChevronRight, Crown, Shield, Download, Send, Play, GraduationCap, Brain, Zap, KeyRound, Eye, EyeOff } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Settings, ChevronRight, Crown, Shield, Play, GraduationCap, Brain, Zap, Users } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
-import { ToastContext } from '../context/ToastContext';
-import { PWAContext } from '../context/PWAContext';
-import { db, auth } from '../firebase';
-import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
-import { deleteUser } from 'firebase/auth';
+import { db } from '../firebase';
+import { doc, getDoc } from 'firebase/firestore';
 import { getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
 import { REFERRAL_DISCOUNT, MONTHLY_PRICE, DISCOUNT_AMOUNT } from '../services/referral';
 import PremiumModal from '../components/PremiumModal';
+import { useModalBackButton } from '../components/profile/useModalBackButton';
 import { useAdmin } from '../hooks/useAdmin';
 import './ProfilePage.css';
 
 const DAY_NAMES = ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'];
 
-// Menyu bo'lim sarlavhasi uslubi (Sozlamalar / Ma'lumot / Hisob)
-const ppSectionLabel = {
-  fontSize: 12,
-  fontWeight: 700,
-  color: 'var(--text3)',
-  textTransform: 'uppercase',
-  letterSpacing: '0.8px',
-  margin: '14px 4px 2px',
-};
-
-export default function ProfilePage({ theme, toggleTheme }) {
-  const { user, logout, changePassword } = useAuth();
+export default function ProfilePage() {
+  const { user } = useAuth();
   const { state, updateState } = useContext(AppContext);
-  const { showToast } = useContext(ToastContext);
-  const { isInstallable, installApp } = useContext(PWAContext);
   const { isAdmin } = useAdmin();
   const navigate = useNavigate();
 
-  const [showEdit, setShowEdit] = useState(false);
   const [showPremium, setShowPremium] = useState(false);
-  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
-  const [showPrivacy, setShowPrivacy] = useState(false);
-  const [showTelegramModal, setShowTelegramModal] = useState(false);
-  const [showGuideModal, setShowGuideModal] = useState(false);
-  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-  const [deleting, setDeleting] = useState(false);
-  const [activeGuidePanel, setActiveGuidePanel] = useState(null);
-  const [openProfileFaqIdx, setOpenProfileFaqIdx] = useState(null);
-
-  // Aqlli takrorlash chastotasi (sozlama)
-  const [showRepetitionModal, setShowRepetitionModal] = useState(false);
-
-  // Parolni o'zgartirish
-  const [showPasswordModal, setShowPasswordModal] = useState(false);
-  const [newPassword, setNewPassword] = useState('');
-  const [newPassword2, setNewPassword2] = useState('');
-  const [showNewPass, setShowNewPass] = useState(false);
-  const [changingPass, setChangingPass] = useState(false);
-  const [passError, setPassError] = useState('');
-
-  const PROFILE_FAQS = [
-    {
-      q: "Premium obuna nimalarni beradi?",
-      a: "Premium obuna barcha mavzulardagi savollarni cheksiz yechish, har bir savol uchun batafsil tahlil va mnemonika (eslab qolish texnikasi) bilan tanishish hamda oflayn rejimda ishlatish imkonini beradi."
-    },
-    {
-      q: "To'lovlar qanday amalga oshiriladi va xavfsizmi?",
-      a: "To'lovlar 100% xavfsiz Click, Payme yoki Telegram bot orqali to'g'ridan-to'g'ri o'tkaziladi. Barcha tranzaksiyalar shifrlangan."
-    },
-    {
-      q: "Premium faollashishi uchun qancha vaqt ketadi?",
-      a: "Click va Payme orqali to'lovlar avtomatik tarzda 5 soniyada faollashadi. Telegram bot orqali chek yuborilganda esa admin tomonidan 5-10 daqiqada tasdiqlanadi."
-    },
-    {
-      q: "Savollar bazasi qanchalik tez-tez yangilanadi?",
-      a: "Savollarimiz professional ekspertlar tomonidan har hafta yangilanib, eng so'nggi milliy sertifikatlash va malaka oshirish standartlariga moslashtiriladi."
-    }
-  ];
-
-  const [editForm, setEditForm] = useState({ name: '', gender: '', birthDate: '' });
-  const [saving, setSaving] = useState(false);
-
-  const [downloadingOffline, setDownloadingOffline] = useState(false);
-  const [downloadProgress, setDownloadProgress] = useState('');
-
-  const handleDownloadOffline = async () => {
-    if (downloadingOffline) return;
-    setDownloadingOffline(true);
-    setDownloadProgress('Yuklanmoqda...');
-    
-    try {
-      const cat = state.activeCategory || 'chqbt';
-      const versionDocRef = doc(db, 'settings', 'version');
-      const versionSnap = await getDoc(versionDocRef);
-      
-      let remoteVersion = 0;
-      let storageUrls = {};
-      if (versionSnap.exists()) {
-        const vData = versionSnap.data();
-        remoteVersion = vData.dbVersion || 0;
-        storageUrls = vData.urls || {};
-      }
-
-      const cacheKey = `bundle_${cat}`;
-      const versionKey = `version_${cat}`;
-      
-      const downloadUrl = storageUrls[cat];
-      if (downloadUrl) {
-        const res = await fetch(downloadUrl);
-        const rawList = await res.json();
-        
-        const localforage = (await import('localforage')).default;
-        await localforage.setItem(cacheKey, rawList);
-        await localforage.setItem(versionKey, remoteVersion);
-        
-        showToast(`Tayyor! ${rawList.length} ta savol offline rejim uchun keshlandi ✅`, 'success');
-      } else {
-        showToast("Hozircha serverda offline ma'lumotlar tayyor emas.", 'error');
-      }
-    } catch (e) {
-      console.error(e);
-      showToast("Offline yuklashda xatolik yuz berdi", 'error');
-    } finally {
-      setDownloadingOffline(false);
-      setDownloadProgress('');
-    }
-  };
+  const [profileName, setProfileName] = useState('');
+  const [bonusBalance, setBonusBalance] = useState(0);
 
   // Urgency countdown (72h real-time)
   const [urgencyLeft, setUrgencyLeft] = useState(user?.urgencyMs || 0);
 
-  // Load profile data
+  // Android "orqaga" tugmasi premium modalni yopadi
+  useModalBackButton(showPremium, () => setShowPremium(false));
+
+  // Profil ma'lumotlarini yuklash (ism + imtihon sanasi sinxroni)
   useEffect(() => {
     if (!user) return;
-    const load = async () => {
-      try {
-        const snap = await getDoc(doc(db, 'users', user.uid));
-        if (snap.exists()) {
-          const d = snap.data();
-          setEditForm({
-            name: d.displayName || user.displayName || '',
-            gender: d.gender || '',
-            birthDate: d.birthDate || '',
-          });
-          if (d.examDate) {
-            localStorage.setItem('iqro_exam_date', d.examDate);
-            // Header uchun ham sinxronlaymiz (CUSTOM_EXAM_DATE formatida)
-            localStorage.setItem('CUSTOM_EXAM_DATE', new Date(d.examDate).toISOString());
-          }
+    getDoc(doc(db, 'users', user.uid)).then(snap => {
+      if (snap.exists()) {
+        const d = snap.data();
+        if (d.displayName) setProfileName(d.displayName);
+        setBonusBalance(d.referralBonus || 0);
+        if (d.examDate) {
+          localStorage.setItem('iqro_exam_date', d.examDate);
+          // Header uchun ham sinxronlaymiz (CUSTOM_EXAM_DATE formatida)
+          localStorage.setItem('CUSTOM_EXAM_DATE', new Date(d.examDate).toISOString());
         }
-      } catch (e) { console.error('Profile load error:', e); }
-    };
-    load();
-  }, [user]);
-
-  // Modal history interception for back button
-  useEffect(() => {
-    const hasOpenModal = showEdit || showPremium || showLogoutConfirm || showPrivacy || showTelegramModal || showDeleteConfirm || showPasswordModal || showRepetitionModal;
-    if (!hasOpenModal) return;
-
-    window.history.pushState({ profileModalOpen: true }, '');
-
-    const handlePopState = () => {
-      setShowEdit(false);
-      setShowPremium(false);
-      setShowLogoutConfirm(false);
-      setShowPrivacy(false);
-      setShowTelegramModal(false);
-      setShowDeleteConfirm(false);
-      setShowPasswordModal(false);
-      setShowRepetitionModal(false);
-    };
-
-    window.addEventListener('popstate', handlePopState);
-
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-      if (window.history.state?.profileModalOpen) {
-        window.history.back();
       }
-    };
-  }, [showEdit, showPremium, showLogoutConfirm, showPrivacy, showTelegramModal, showDeleteConfirm, showPasswordModal, showRepetitionModal]);
+    }).catch(e => console.error('Profile load error:', e));
+  }, [user]);
 
   // Urgency countdown interval
   useEffect(() => {
@@ -200,7 +69,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
   if (!user) return null;
 
   // Computed values
-  const displayName = editForm.name || user.displayName || 'Foydalanuvchi';
+  const displayName = profileName || user.displayName || 'Foydalanuvchi';
   const initials = displayName.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
   const isPremium = user.isPremium || false;
   const trialStatus = user.trialStatus || 'expired';
@@ -257,103 +126,13 @@ export default function ProfilePage({ theme, toggleTheme }) {
     }
   };
 
-  const handleOpenEdit = () => {
-    setEditForm({
-      name: editForm.name || user.displayName || '',
-      gender: editForm.gender || '',
-      birthDate: editForm.birthDate || '',
-    });
-    setShowEdit(true);
-  };
-
-  // Save profile
-  const handleSave = async () => {
-    setSaving(true);
-    try {
-      const profileData = {
-        displayName: editForm.name,
-        gender: editForm.gender,
-        birthDate: editForm.birthDate,
-      };
-      await setDoc(doc(db, 'users', user.uid), profileData, { merge: true });
-      showToast("Profil saqlandi ✅", 'success');
-      setShowEdit(false);
-    } catch (e) {
-      showToast("Xatolik yuz berdi", 'error');
-    }
-    setSaving(false);
-  };
-
-  const handleChangePassword = async () => {
-    if (!newPassword || newPassword.length < 6) {
-      setPassError("Parol kamida 6 ta belgidan iborat bo'lishi kerak");
-      return;
-    }
-    if (newPassword !== newPassword2) {
-      setPassError("Parollar mos kelmadi");
-      return;
-    }
-    setChangingPass(true);
-    setPassError('');
-    const result = await changePassword(newPassword);
-    setChangingPass(false);
-
-    if (result.success) {
-      setShowPasswordModal(false);
-      setNewPassword('');
-      setNewPassword2('');
-      showToast('Parol muvaffaqiyatli o\'zgartirildi! ✅', 'success');
-    } else {
-      switch (result.error) {
-        case 'weak_password':
-          setPassError("Parol juda zaif. Kamida 6 ta belgi kiriting.");
-          break;
-        case 'requires_recent_login':
-          setPassError("Xavfsizlik uchun qaytadan kiring (Telegram orqali), keyin parolni o'zgartiring.");
-          break;
-        default:
-          setPassError("Xatolik yuz berdi. Qaytadan urinib ko'ring.");
-      }
-    }
-  };
-
-  const handleLogout = async () => {
-    try { await logout(); navigate('/'); } catch { showToast("Chiqishda xatolik", 'error'); }
-  };
-
-  const handleDeleteAccount = async () => {
-    if (deleting) return;
-    setDeleting(true);
-    try {
-      const uid = user.uid;
-      // 1. Delete Firestore records (errors ignored if permissions deny, but they shouldn't)
-      await deleteDoc(doc(db, 'userStats', uid)).catch(e => console.log(e));
-      await deleteDoc(doc(db, 'users', uid)).catch(e => console.log(e));
-      
-      // 2. Delete Auth user
-      await deleteUser(auth.currentUser);
-      showToast("Hisobingiz muvaffaqiyatli o'chirildi.", 'success');
-      navigate('/');
-    } catch (e) {
-      console.error(e);
-      if (e.code === 'auth/requires-recent-login') {
-        showToast("Xavfsizlik: Iltimos, hisobdan chiqib qayta kiring va keyin o'chiring.", 'error');
-        setShowDeleteConfirm(false);
-      } else {
-        showToast("Xatolik yuz berdi. Adminga murojaat qiling.", 'error');
-      }
-    } finally {
-      setDeleting(false);
-    }
-  };
-
   return (
     <motion.div className="pp" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       {/* ═══ FOYDALANUVCHI SARLAVHASI ═══ */}
       <div className="pp-header" style={{ paddingBottom: '24px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '0 4px' }}>
-            <div style={{ 
+            <div style={{
               width: 52, height: 52, borderRadius: '16px', background: 'rgba(255,255,255,0.2)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontSize: 22, fontWeight: 800, color: '#fff', border: '1px solid rgba(255,255,255,0.3)',
@@ -361,7 +140,7 @@ export default function ProfilePage({ theme, toggleTheme }) {
             }}>
               {initials}
             </div>
-            <div>
+            <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontSize: 20, fontWeight: 800, color: '#fff', marginBottom: '4px', letterSpacing: '-0.3px' }}>
                 {displayName}
               </div>
@@ -373,17 +152,31 @@ export default function ProfilePage({ theme, toggleTheme }) {
                 }
               </div>
             </div>
+            {/* Sozlamalar tugmasi */}
+            <motion.button
+              whileTap={{ scale: 0.92 }}
+              onClick={() => navigate('/settings')}
+              title="Sozlamalar"
+              style={{
+                width: 42, height: 42, borderRadius: 12, flexShrink: 0,
+                background: 'rgba(255,255,255,0.18)', border: '1px solid rgba(255,255,255,0.3)',
+                color: '#fff', cursor: 'pointer', display: 'flex',
+                alignItems: 'center', justifyContent: 'center'
+              }}
+            >
+              <Settings size={20} />
+            </motion.button>
           </div>
 
-        {/* XP Progress */}
-        <div className="pp-xp-bar" style={{ marginTop: '16px', background: 'rgba(0,0,0,0.15)' }}>
-          <div className="pp-xp-labels" style={{ color: 'rgba(255,255,255,0.9)' }}>
-            <span>⚡ {totalXP} XP</span>
-            <span>{totalXP}/{nextXP} XP</span>
-          </div>
-          <div className="pp-xp-track" style={{ background: 'rgba(255,255,255,0.1)' }}>
-            <div className="pp-xp-fill" style={{ width: `${xpPct}%`, background: '#fff' }} />
-          </div>
+          {/* XP Progress */}
+          <div className="pp-xp-bar" style={{ marginTop: '16px', background: 'rgba(0,0,0,0.15)' }}>
+            <div className="pp-xp-labels" style={{ color: 'rgba(255,255,255,0.9)' }}>
+              <span>⚡ {totalXP} XP</span>
+              <span>{totalXP}/{nextXP} XP</span>
+            </div>
+            <div className="pp-xp-track" style={{ background: 'rgba(255,255,255,0.1)' }}>
+              <div className="pp-xp-fill" style={{ width: `${xpPct}%`, background: '#fff' }} />
+            </div>
           </div>
         </div>
       </div>
@@ -513,14 +306,13 @@ export default function ProfilePage({ theme, toggleTheme }) {
           </div>
         </div>
 
-
         {/* ═══ STAT CARDS OR EMPTY CTA ═══ */}
         {totalAnswered === 0 ? (
           <div className="pp-card" style={{ textAlign: 'center', padding: '30px 20px', border: '1.5px dashed var(--blue)' }}>
             <div style={{ fontSize: 40, marginBottom: 12 }}>🚀</div>
             <h3 style={{ margin: '0 0 8px 0', color: 'var(--text)', fontSize: 18 }}>Sizda hali natijalar yo'q</h3>
             <p style={{ margin: '0 0 20px 0', color: 'var(--text3)', fontSize: 13 }}>Tizimda o'z o'rningizni topish va XP yig'ish uchun hoziroq birinchi testingizni ishlang!</p>
-            <button 
+            <button
               onClick={() => navigate('/test')}
               style={{ background: 'var(--blue)', color: '#fff', border: 'none', padding: '12px 24px', borderRadius: '12px', fontSize: 14, fontWeight: 700, cursor: 'pointer', width: '100%', boxShadow: '0 4px 12px rgba(59,130,246,0.3)' }}
             >
@@ -541,35 +333,35 @@ export default function ProfilePage({ theme, toggleTheme }) {
             </div>
             <div className="pp-stat-card" onClick={() => navigate('/leaderboard')} style={{ cursor: 'pointer', background: 'linear-gradient(135deg, rgba(41, 182, 246, 0.12), rgba(139, 92, 246, 0.04))', border: '1px solid rgba(41, 182, 246, 0.35)' }}>
               <div className="pp-stat-icon">🏆</div>
-              <div className="pp-stat-val" style={{ color: '#29B6F6' }}>{state.totalScore || 0}</div>
-              <div className="pp-stat-lbl" style={{ color: '#0284C7', fontWeight: 700 }}>Balllar</div>
+              <div className="pp-stat-val" style={{ color: 'var(--accent)' }}>{state.totalScore || 0}</div>
+              <div className="pp-stat-lbl" style={{ color: 'var(--accent2)', fontWeight: 700 }}>Balllar</div>
             </div>
-            <div 
-              className="pp-stat-card" 
-              onClick={() => navigate('/achievements')} 
-              style={{ 
-                cursor: 'pointer', 
+            <div
+              className="pp-stat-card"
+              onClick={() => navigate('/achievements')}
+              style={{
+                cursor: 'pointer',
                 background: 'linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(245, 158, 11, 0.05))',
                 border: '1px solid rgba(245, 158, 11, 0.4)',
                 position: 'relative', overflow: 'hidden'
               }}
             >
-              <div style={{ 
-                height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 4, position: 'relative' 
+              <div style={{
+                height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 4, position: 'relative'
               }}>
                 {earnedBadges.length > 0 ? (
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     {earnedBadges.slice(0, 3).map((b, idx) => (
-                      <span key={idx} style={{ 
-                        fontSize: 22, 
-                        marginLeft: idx > 0 ? -12 : 0, 
+                      <span key={idx} style={{
+                        fontSize: 22,
+                        marginLeft: idx > 0 ? -12 : 0,
                         zIndex: 3 - idx,
                         filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))'
                       }}>{b.icon}</span>
                     ))}
                     {earnedBadges.length > 3 && (
-                      <span style={{ 
-                        fontSize: 10, fontWeight: 800, color: '#fff', background: '#F59E0B', 
+                      <span style={{
+                        fontSize: 10, fontWeight: 800, color: '#fff', background: '#F59E0B',
                         borderRadius: '10px', padding: '1px 5px', marginLeft: -8, zIndex: 4,
                         border: '2px solid var(--glass-bg)'
                       }}>+{earnedBadges.length - 3}</span>
@@ -581,25 +373,22 @@ export default function ProfilePage({ theme, toggleTheme }) {
               </div>
               <div className="pp-stat-val" style={{ color: '#D97706', textShadow: '0 2px 4px rgba(245,158,11,0.2)' }}>{earnedBadges.length}</div>
               <div className="pp-stat-lbl" style={{ color: '#B45309', fontWeight: 700 }}>Yutuqlar</div>
-              
-              <motion.div 
-                animate={{ x: ['-100%', '200%'] }} 
+
+              <motion.div
+                animate={{ x: ['-100%', '200%'] }}
                 transition={{ repeat: Infinity, duration: 4, ease: 'linear', repeatDelay: 1 }}
-                style={{ 
-                  position: 'absolute', top: 0, left: 0, bottom: 0, width: '40%', 
-                  background: 'linear-gradient(90deg, transparent, rgba(251,191,36,0.3), transparent)', 
-                  transform: 'skewX(-20deg)' 
-                }} 
+                style={{
+                  position: 'absolute', top: 0, left: 0, bottom: 0, width: '40%',
+                  background: 'linear-gradient(90deg, transparent, rgba(251,191,36,0.3), transparent)',
+                  transform: 'skewX(-20deg)'
+                }}
               />
             </div>
           </div>
         )}
 
-        {/* (Subject section and Referral Card removed from here) */}
-
-        {/* ═══ MENU ═══ */}
+        {/* ═══ PREMIUM HOLATI + HAVOLALAR ═══ */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {/* ═══ PREMIUM HOLATI KARTASI ═══ */}
           {isPremium ? (
             /* Premium foydalanuvchi — obuna holati */
             <div style={{
@@ -670,6 +459,34 @@ export default function ProfilePage({ theme, toggleTheme }) {
             </motion.button>
           )}
 
+          {/* Do'stlarni taklif qilish */}
+          <button className="pp-menu-item" onClick={() => navigate('/referral')}>
+            <div className="pp-menu-icon" style={{ background: 'var(--amber-bg)', color: 'var(--amber)' }}>
+              <Users size={20} />
+            </div>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
+              <span className="pp-menu-label">Do'stlarni taklif qilish 🎁</span>
+              <span style={{ fontSize: 11, color: bonusBalance > 0 ? 'var(--green)' : 'var(--text3)', fontWeight: bonusBalance > 0 ? 700 : 400 }}>
+                {bonusBalance > 0
+                  ? `Hisobingizda ${bonusBalance.toLocaleString()} so'm bonus — to'lovda avtomatik ayiriladi`
+                  : `Do'stingizga ${REFERRAL_DISCOUNT}% chegirma — o'zingizga ${DISCOUNT_AMOUNT.toLocaleString()} so'm`}
+              </span>
+            </div>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
+          {/* Sozlamalar */}
+          <button className="pp-menu-item" onClick={() => navigate('/settings')}>
+            <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
+              <Settings size={20} />
+            </div>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
+              <span className="pp-menu-label">Sozlamalar</span>
+              <span style={{ fontSize: 11, color: 'var(--text3)' }}>Rejim, shrift, parol, eslatma, hisob</span>
+            </div>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
           {isAdmin && (
             <button className="pp-menu-item" onClick={() => navigate('/admin')}>
               <div className="pp-menu-icon" style={{ background: 'linear-gradient(135deg, #F59E0B, #EF4444)', color: '#fff' }}>
@@ -679,668 +496,11 @@ export default function ProfilePage({ theme, toggleTheme }) {
               <ChevronRight size={18} className="pp-menu-arrow" />
             </button>
           )}
-
-          {/* ═══════ SOZLAMALAR ═══════ */}
-          <div style={ppSectionLabel}>⚙️ Sozlamalar</div>
-
-          {/* Theme Toggle */}
-          <button className="pp-menu-item" onClick={toggleTheme}>
-            <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--blue)' }}>
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </div>
-            <span className="pp-menu-label">{theme === 'dark' ? 'Yorqin rejim' : 'Tungi rejim'}</span>
-            <ChevronRight size={18} className="pp-menu-arrow" />
-          </button>
-
-          {/* Edit Profile */}
-          <button className="pp-menu-item" onClick={handleOpenEdit}>
-            <div className="pp-menu-icon" style={{ background: 'var(--purple-bg)', color: 'var(--purple)' }}>
-              <Edit3 size={20} />
-            </div>
-            <span className="pp-menu-label">Profilni tahrirlash</span>
-            <ChevronRight size={18} className="pp-menu-arrow" />
-          </button>
-
-          {/* Parolni o'zgartirish */}
-          <button className="pp-menu-item" onClick={() => { setShowPasswordModal(true); setPassError(''); setNewPassword(''); setNewPassword2(''); }}>
-            <div className="pp-menu-icon" style={{ background: 'rgba(139, 92, 246, 0.1)', color: '#8B5CF6' }}>
-              <KeyRound size={20} />
-            </div>
-            <span className="pp-menu-label">Parolni o'zgartirish</span>
-            <ChevronRight size={18} className="pp-menu-arrow" />
-          </button>
-
-          {/* Aqlli takrorlash chastotasi */}
-          <button className="pp-menu-item" onClick={() => setShowRepetitionModal(true)}>
-            <div className="pp-menu-icon" style={{ background: 'rgba(41, 182, 246, 0.1)', color: '#29B6F6' }}>
-              <Brain size={20} />
-            </div>
-            <span className="pp-menu-label">Aqlli takrorlash chastotasi</span>
-            <ChevronRight size={18} className="pp-menu-arrow" />
-          </button>
-
-          {/* Kundalik eslatma (Telegram) */}
-          <button className="pp-menu-item" onClick={() => setShowTelegramModal(true)}>
-            <div className="pp-menu-icon" style={{ background: 'rgba(41, 182, 246, 0.1)', color: '#29B6F6' }}>
-              <Send size={20} />
-            </div>
-            <span className="pp-menu-label">Kundalik eslatma (Telegram)</span>
-            <ChevronRight size={18} className="pp-menu-arrow" />
-          </button>
-
-          {/* Oflayn ishlash kafolati / Yuklab olish */}
-          <button className="pp-menu-item" onClick={handleDownloadOffline}>
-            <div className="pp-menu-icon" style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#10B981' }}>
-              <Download size={20} />
-            </div>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <span className="pp-menu-label" style={{ fontWeight: 800, color: '#10B981' }}>
-                {downloadingOffline ? downloadProgress : "Oflayn ishlash (Kafolat)"}
-              </span>
-              <span style={{ fontSize: 11, color: 'var(--text3)' }}>Internetsiz ishlash uchun savollarni yuklash</span>
-            </div>
-            <ChevronRight size={18} className="pp-menu-arrow" />
-          </button>
-
-          {/* Install App */}
-          {isInstallable && (
-            <button className="pp-menu-item" onClick={installApp}>
-              <div className="pp-menu-icon" style={{ background: 'linear-gradient(135deg, #10B981, #059669)', color: '#fff' }}>
-                <Download size={20} />
-              </div>
-              <span className="pp-menu-label" style={{ fontWeight: 800 }}>Ilovani o'rnatish (PWA)</span>
-              <ChevronRight size={18} className="pp-menu-arrow" />
-            </button>
-          )}
-
-          {/* ═══════ MA'LUMOT ═══════ */}
-          <div style={ppSectionLabel}>ℹ️ Ma'lumot</div>
-
-          {/* Qo'llanma */}
-          <button className="pp-menu-item" onClick={() => setShowGuideModal(true)}>
-            <div className="pp-menu-icon" style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#10B981' }}>
-              <div style={{ fontSize: 16 }}>📖</div>
-            </div>
-            <span className="pp-menu-label">Foydalanish qo'llanmasi</span>
-            <ChevronRight size={18} className="pp-menu-arrow" />
-          </button>
-
-          {/* Maxfiylik Siyosati */}
-          <button className="pp-menu-item" onClick={() => setShowPrivacy(true)}>
-            <div className="pp-menu-icon" style={{ background: 'rgba(236, 72, 153, 0.1)', color: '#EC4899' }}>
-              <Shield size={20} />
-            </div>
-            <span className="pp-menu-label">Maxfiylik siyosati</span>
-            <ChevronRight size={18} className="pp-menu-arrow" />
-          </button>
-
-          {/* ═══════ HISOB ═══════ */}
-          <div style={ppSectionLabel}>🔒 Hisob</div>
-
-          {/* Delete Account */}
-          <button className="pp-menu-item" onClick={() => setShowDeleteConfirm(true)}>
-            <div className="pp-menu-icon" style={{ background: 'rgba(239, 68, 68, 0.1)', color: '#EF4444' }}>
-              <Shield size={20} style={{ transform: 'rotate(180deg)' }} />
-            </div>
-            <span className="pp-menu-label" style={{ color: '#EF4444' }}>Hisobni o'chirish</span>
-            <ChevronRight size={18} className="pp-menu-arrow" />
-          </button>
-
-          {/* Logout */}
-          <button className="pp-menu-item danger" onClick={() => setShowLogoutConfirm(true)}>
-            <div className="pp-menu-icon" style={{ background: 'var(--red-bg)', color: 'var(--red)' }}>
-              <LogOut size={20} />
-            </div>
-            <span className="pp-menu-label">Chiqish</span>
-            <ChevronRight size={18} className="pp-menu-arrow" />
-          </button>
-        </div>
-
-        {/* Profile page FAQ Accordion & Trust Badges */}
-        <div className="pp-card" style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          
-          {/* Trust Badges */}
-          <div>
-            <div style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '14px' }}>
-              🛡️ Xavfsizlik va Kafolat
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '8px', textAlign: 'center' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', background: 'var(--bg3)', padding: '12px 6px', borderRadius: '12px', border: '1px solid var(--border)' }}>
-                <span style={{ fontSize: '20px' }}>🔒</span>
-                <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text)' }}>Click & Payme</span>
-                <span style={{ fontSize: '9px', color: 'var(--text3)' }}>100% Xavfsiz to'lov</span>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', background: 'var(--bg3)', padding: '12px 6px', borderRadius: '12px', border: '1px solid var(--border)' }}>
-                <span style={{ fontSize: '20px' }}>⚡</span>
-                <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text)' }}>Tezkor Faol</span>
-                <span style={{ fontSize: '9px', color: 'var(--text3)' }}>Avtomat yoqiladi</span>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', background: 'var(--bg3)', padding: '12px 6px', borderRadius: '12px', border: '1px solid var(--border)' }}>
-                <span style={{ fontSize: '20px' }}>📱</span>
-                <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text)' }}>Oflayn Kafolat</span>
-                <span style={{ fontSize: '9px', color: 'var(--text3)' }}>Internetsiz ishlaydi</span>
-              </div>
-            </div>
-          </div>
-
-          {/* FAQ Section */}
-          <div>
-            <div style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '14px' }}>
-              ❓ To'lov va Premium bo'yicha FAQ
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {PROFILE_FAQS.map((faq, idx) => {
-                const isOpen = openProfileFaqIdx === idx;
-                return (
-                  <div 
-                    key={idx} 
-                    style={{ 
-                      background: 'var(--bg3)', 
-                      border: '1px solid var(--border)', 
-                      borderRadius: '12px', 
-                      overflow: 'hidden',
-                      transition: 'all 0.2s'
-                    }}
-                  >
-                    <button
-                      onClick={() => setOpenProfileFaqIdx(isOpen ? null : idx)}
-                      style={{
-                        width: '100%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        padding: '12px 14px',
-                        background: 'transparent',
-                        border: 'none',
-                        cursor: 'pointer',
-                        textAlign: 'left',
-                        fontFamily: 'inherit',
-                        fontSize: '13px',
-                        fontWeight: '700',
-                        color: isOpen ? 'var(--blue)' : 'var(--text)',
-                        minHeight: '48px',
-                      }}
-                    >
-                      <span>{faq.q}</span>
-                      <span style={{ fontSize: '14px', transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s', color: 'var(--text3)' }}>
-                        ▾
-                      </span>
-                    </button>
-                    
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                          style={{ overflow: 'hidden' }}
-                        >
-                          <div style={{ padding: '0 14px 12px 14px', fontSize: '12px', color: 'var(--text3)', lineHeight: '1.6' }}>
-                            {faq.a}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
         </div>
       </div>
 
-      {/* ═══ EDIT MODAL ═══ */}
-      {showEdit && (
-        <div className="pp-modal-overlay" onClick={() => setShowEdit(false)}>
-          <div className="pp-modal" onClick={e => e.stopPropagation()}>
-            <div className="pp-modal-title">✏️ Profilni tahrirlash</div>
-            <div className="pp-field">
-              <label>Ism</label>
-              <input value={editForm.name} onChange={e => setEditForm(p => ({ ...p, name: e.target.value }))} placeholder="To'liq ism" />
-            </div>
-            <div className="pp-field">
-              <label>Jins</label>
-              <select value={editForm.gender} onChange={e => setEditForm(p => ({ ...p, gender: e.target.value }))}>
-                <option value="">Tanlang</option>
-                <option value="male">Erkak</option>
-                <option value="female">Ayol</option>
-              </select>
-            </div>
-            <div className="pp-field">
-              <label>Tug'ilgan sana</label>
-              <input type="date" value={editForm.birthDate} onChange={e => setEditForm(p => ({ ...p, birthDate: e.target.value }))} />
-            </div>
-
-            <div className="pp-modal-actions" style={{ marginTop: '20px' }}>
-              <button className="pp-btn-cancel" onClick={() => setShowEdit(false)}>Bekor</button>
-              <button className="pp-btn-save" onClick={handleSave} disabled={saving}>
-                {saving ? 'Saqlanmoqda...' : 'Saqlash'}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ═══ AQLLI TAKRORLASH CHASTOTASI MODAL ═══ */}
-      {showRepetitionModal && (
-        <div className="pp-modal-overlay" onClick={() => setShowRepetitionModal(false)}>
-          <div className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 420, padding: '28px 24px' }}>
-            <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-              <Brain size={22} style={{ color: '#29B6F6' }} /> Aqlli takrorlash chastotasi
-            </div>
-            <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 20 }}>
-              Xato qilingan savollar keyingi testlarda qanchalik tez-tez qaytishini tanlang.
-            </p>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
-              {[
-                { label: "O'chiq\n(0%)", value: 0 },
-                { label: "Kam\n(10%)", value: 10 },
-                { label: "O'rtacha\n(30%)", value: 30 },
-                { label: "Tez\n(50%)", value: 50 }
-              ].map(opt => {
-                const isSelected = (state.repetitionLimit ?? 10) === opt.value;
-                return (
-                  <button
-                    key={opt.value}
-                    type="button"
-                    onClick={() => { updateState({ repetitionLimit: opt.value }); showToast('Saqlandi ✅', 'success'); }}
-                    style={{
-                      padding: '8px 4px', borderRadius: '10px',
-                      border: isSelected ? '2px solid var(--blue)' : '1px solid var(--border)',
-                      background: isSelected ? 'var(--blue-bg)' : 'var(--bg2)',
-                      color: isSelected ? 'var(--blue)' : 'var(--text)',
-                      fontSize: '11px', fontWeight: isSelected ? '800' : '500',
-                      cursor: 'pointer', transition: 'all 0.2s', whiteSpace: 'pre-line',
-                      textAlign: 'center', display: 'flex', alignItems: 'center',
-                      justifyContent: 'center', lineHeight: '1.2', minHeight: '48px',
-                      fontFamily: 'inherit',
-                    }}
-                  >
-                    {opt.label}
-                  </button>
-                );
-              })}
-            </div>
-            <small style={{ display: 'block', marginTop: '10px', color: 'var(--text3)', fontSize: '11px', lineHeight: '1.4' }}>
-              Tavsiya etiladi: 10%. Tanlov darhol saqlanadi.
-            </small>
-
-            <button onClick={() => setShowRepetitionModal(false)} style={{ width: '100%', padding: '12px', borderRadius: 12, background: 'var(--blue)', color: '#fff', border: 'none', fontWeight: 700, marginTop: '20px', cursor: 'pointer', fontFamily: 'inherit' }}>
-              Yopish
-            </button>
-          </div>
-        </div>
-      )}
-
       {/* Premium Modal */}
       {showPremium && <PremiumModal isOpen={showPremium} onClose={() => setShowPremium(false)} />}
-
-      {/* ═══ LOGOUT CONFIRMATION MODAL ═══ */}
-      {showLogoutConfirm && (
-        <div className="pp-modal-overlay" onClick={() => setShowLogoutConfirm(false)}>
-          <div className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 400, textAlign: 'center', padding: '28px 24px' }}>
-            <div style={{ fontSize: 44, marginBottom: 12 }}>🧠</div>
-            <div className="pp-modal-title" style={{ marginBottom: 10, fontSize: 18, fontWeight: 800 }}>Rostdan ham chiqmoqchimisiz?</div>
-            <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-              Sertifikat olish sari boshlagan yo'lingizda to'xtab qolmang. Tizimda qolib, bilimingizni oshirishda davom eting!
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <button 
-                onClick={() => setShowLogoutConfirm(false)} 
-                style={{ 
-                  padding: '13px', borderRadius: 12, background: 'var(--blue)', color: '#fff', 
-                  border: 'none', fontWeight: 700, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit',
-                  transition: 'opacity 0.2s'
-                }}
-              >
-                Platformada qolish 🧠
-              </button>
-              <button 
-                onClick={handleLogout} 
-                style={{ 
-                  padding: '12px', borderRadius: 12, background: 'transparent', color: 'var(--red)', 
-                  border: '1.5px solid var(--red)', fontWeight: 600, fontSize: 13, cursor: 'pointer', fontFamily: 'inherit',
-                  transition: 'all 0.2s'
-                }}
-              >
-                Chiqish 🚪
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ═══ DELETE ACCOUNT CONFIRMATION MODAL ═══ */}
-      {showDeleteConfirm && (
-        <div className="pp-modal-overlay" onClick={() => setShowDeleteConfirm(false)}>
-          <div className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 400, textAlign: 'center', padding: '28px 24px' }}>
-            <div style={{ fontSize: 44, marginBottom: 12 }}>🗑️</div>
-            <div className="pp-modal-title" style={{ marginBottom: 10, fontSize: 18, fontWeight: 800, color: 'var(--red)' }}>Hisobni o'chirish</div>
-            <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-              Rostdan ham hisobingizni o'chirmoqchimisiz? Bu amalni orqaga qaytarib bo'lmaydi. Barcha ballaringiz, obunangiz va statistikangiz butunlay o'chib ketadi.
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <button 
-                onClick={handleDeleteAccount} 
-                disabled={deleting}
-                style={{ 
-                  padding: '13px', borderRadius: 12, background: 'var(--red)', color: '#fff', 
-                  border: 'none', fontWeight: 700, fontSize: 14, cursor: deleting ? 'not-allowed' : 'pointer', fontFamily: 'inherit',
-                  transition: 'opacity 0.2s', opacity: deleting ? 0.7 : 1
-                }}
-              >
-                {deleting ? "O'chirilmoqda..." : "Ha, hisobimni o'chirish"}
-              </button>
-              <button 
-                onClick={() => setShowDeleteConfirm(false)} 
-                disabled={deleting}
-                style={{ 
-                  padding: '12px', borderRadius: 12, background: 'transparent', color: 'var(--text)', 
-                  border: '1.5px solid var(--border)', fontWeight: 600, fontSize: 13, cursor: 'pointer', fontFamily: 'inherit',
-                  transition: 'all 0.2s'
-                }}
-              >
-                Bekor qilish
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ═══ PAROLNI O'ZGARTIRISH MODAL ═══ */}
-      {showPasswordModal && (
-        <div className="pp-modal-overlay" onClick={() => setShowPasswordModal(false)}>
-          <div className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 420, padding: '28px 24px' }}>
-            <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-              <KeyRound size={22} style={{ color: '#8B5CF6' }} /> Parolni o'zgartirish
-            </div>
-            <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 20 }}>
-              Yangi parolingizni kiriting. Keyingi safar telefon raqam orqali kirganda shu paroldan foydalanasiz.
-            </p>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <div>
-                <label style={{ fontSize: 12, fontWeight: 700, color: 'var(--text3)', marginBottom: 6, display: 'block' }}>
-                  YANGI PAROL
-                </label>
-                <div style={{ position: 'relative' }}>
-                  <input
-                    type={showNewPass ? 'text' : 'password'}
-                    value={newPassword}
-                    onChange={e => { setPassError(''); setNewPassword(e.target.value); }}
-                    placeholder="Kamida 6 ta belgi"
-                    style={{
-                      width: '100%', padding: '13px 48px 13px 16px', fontSize: 15, borderRadius: 12,
-                      border: '1.5px solid var(--border)', background: 'var(--bg3)',
-                      color: 'var(--text)', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box',
-                    }}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowNewPass(p => !p)}
-                    style={{ position: 'absolute', right: 4, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)', width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                  >
-                    {showNewPass ? <EyeOff size={18} /> : <Eye size={18} />}
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <label style={{ fontSize: 12, fontWeight: 700, color: 'var(--text3)', marginBottom: 6, display: 'block' }}>
-                  PAROLNI TAKRORLANG
-                </label>
-                <input
-                  type={showNewPass ? 'text' : 'password'}
-                  value={newPassword2}
-                  onChange={e => { setPassError(''); setNewPassword2(e.target.value); }}
-                  placeholder="Yana bir bor kiriting"
-                  onKeyDown={e => e.key === 'Enter' && handleChangePassword()}
-                  style={{
-                    width: '100%', padding: '13px 16px', fontSize: 15, borderRadius: 12,
-                    border: '1.5px solid var(--border)', background: 'var(--bg3)',
-                    color: 'var(--text)', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box',
-                  }}
-                />
-              </div>
-
-              {passError && (
-                <p style={{ fontSize: 13, color: '#EF4444', fontWeight: 500, margin: 0 }}>{passError}</p>
-              )}
-            </div>
-
-            <div className="pp-modal-actions" style={{ marginTop: 20 }}>
-              <button className="pp-btn-cancel" onClick={() => setShowPasswordModal(false)}>Bekor</button>
-              <button
-                onClick={handleChangePassword}
-                disabled={changingPass}
-                style={{
-                  padding: '12px 20px', borderRadius: 12, background: '#8B5CF6', color: '#fff',
-                  border: 'none', fontWeight: 700, fontSize: 14, cursor: changingPass ? 'not-allowed' : 'pointer',
-                  fontFamily: 'inherit', opacity: changingPass ? 0.7 : 1, minWidth: 140,
-                }}
-              >
-                {changingPass ? 'Saqlanmoqda...' : 'Saqlash ✅'}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ═══ PRIVACY POLICY MODAL ═══ */}
-      {showPrivacy && (
-        <div className="pp-modal-overlay" onClick={() => setShowPrivacy(false)}>
-          <div className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 500, padding: '24px' }}>
-            <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <Shield size={22} style={{ color: 'var(--blue)' }} /> Maxfiylik Siyosati
-            </div>
-            <div style={{ 
-              maxHeight: '320px', 
-              overflowY: 'auto', 
-              fontSize: '13px', 
-              lineHeight: '1.6', 
-              color: 'var(--text2)', 
-              margin: '16px 0',
-              paddingRight: '8px',
-              borderBottom: '1px solid var(--border)'
-            }} className="pp-policy-scroll">
-              <p style={{ marginBottom: '12px' }}><strong>1. Umumiy qoidalar</strong><br/>
-              Ushbu Maxfiylik Siyosati IQRO platformasi foydalanuvchilarining shaxsiy ma'lumotlarini yig'ish, saqlash va himoya qilish tartibini belgilaydi. Biz foydalanuvchilarimizning maxfiyligini hurmat qilamiz va ma'lumotlar xavfsizligini ta'minlashga mas'uliyat bilan yondashamiz.</p>
-              
-              <p style={{ marginBottom: '12px' }}><strong>2. Yig'iladigan ma'lumotlar</strong><br/>
-              Platformadan ro'yxatdan o'tish va foydalanish davomida quyidagi shaxsiy ma'lumotlar to'planishi mumkin:
-              </p>
-              <ul style={{ paddingLeft: '20px', marginBottom: '12px' }}>
-                <li>Ism va familiya;</li>
-                <li>Telefon raqami;</li>
-                <li>Tanlangan o'quv fanlari, maqsadlar va imtihon sanasi;</li>
-                <li>Ilovadan foydalanish va test natijalari statistikasi.</li>
-              </ul>
-              
-              <p style={{ marginBottom: '12px' }}><strong>3. Ma'lumotlardan foydalanish maqsadi</strong><br/>
-              Siz taqdim etgan ma'lumotlar quyidagi maqsadlarda ishlatiladi:
-              </p>
-              <ul style={{ paddingLeft: '20px', marginBottom: '12px' }}>
-                <li>O'quv jarayonini shaxsiylashtirish va fanga mos yuklash ekranlarini ko'rsatish;</li>
-                <li>Premium obuna va to'lovlarni boshqarish;</li>
-                <li>Do'stlarni taklif etish (referral) dasturini to'g'ri ishlashini ta'minlash va chegirmalarni hisoblash;</li>
-                <li>Platforma barqarorligini tahlil qilish va xatoliklarni bartaraf etish.</li>
-              </ul>
-
-              <p style={{ marginBottom: '12px' }}><strong>4. Ma'lumotlar xavfsizligi va himoyasi</strong><br/>
-              Foydalanuvchilarning ma'lumotlari Firebase xavfsizlik qoidalari orqali himoyalangan va begona shaxslarga taqdim etilmaydi. Shaxsiy ma'lumotlar uchinchi shaxslarga sotilmaydi yoki ijaraga berilmaydi.</p>
-
-              <p style={{ marginBottom: '12px' }}><strong>5. Aloqa va murojaat</strong><br/>
-              Maxfiylik siyosati bo'yicha savollaringiz yoki takliflaringiz bo'lsa, platformaning qo'llab-quvvatlash xizmati yoki admin paneli orqali murojaat qilishingiz mumkin.</p>
-            </div>
-            <button 
-              onClick={() => setShowPrivacy(false)} 
-              style={{ 
-                width: '100%',
-                padding: '12px', 
-                borderRadius: 12, 
-                background: 'var(--blue)', 
-                color: '#fff', 
-                border: 'none', 
-                fontWeight: 700, 
-                fontSize: 14, 
-                cursor: 'pointer', 
-                fontFamily: 'inherit',
-                transition: 'opacity 0.2s'
-              }}
-            >
-              Tushunarli 🤝
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* ═══ TELEGRAM INTEGRATION MODAL ═══ */}
-      {showTelegramModal && (
-        <div className="pp-modal-overlay" onClick={() => setShowTelegramModal(false)}>
-          <div className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 440, padding: '24px' }}>
-            <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '20px' }}>
-              <Send size={22} style={{ color: '#29B6F6' }} /> Telegram Sozlamalari
-            </div>
-            
-            {/* Eslatmalar bo'limi */}
-            <div style={{ background: 'var(--bg3)', borderRadius: 16, padding: '16px', marginBottom: 16, border: '1px solid var(--border)' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)' }}>⏰ Kundalik eslatmalar</span>
-                <button 
-                  onClick={async () => {
-                    const newState = !state.telegramEnabled;
-                    updateState({ telegramEnabled: newState });
-                    try {
-                      await setDoc(doc(db, 'users', user.uid), {
-                        telegramEnabled: newState,
-                        telegramCode: `IQRO-${user.uid.substring(0, 8).toUpperCase()}`
-                      }, { merge: true });
-                      showToast(newState ? "Eslatmalar yoqildi! 🔔" : "Eslatmalar o'chirildi! 🔕", "success");
-                    } catch (e) {
-                      showToast("Firebase sinxronizatsiyada xatolik", "error");
-                    }
-                  }}
-                  style={{
-                    width: 48, height: 26, borderRadius: 13, border: 'none', position: 'relative', cursor: 'pointer',
-                    background: state.telegramEnabled ? '#10B981' : 'var(--border)', transition: '0.3s'
-                  }}
-                >
-                  <div style={{
-                    width: 22, height: 22, borderRadius: '50%', background: '#fff', position: 'absolute', top: 2,
-                    left: state.telegramEnabled ? 24 : 2, transition: '0.3s', boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-                  }} />
-                </button>
-              </div>
-              <div style={{ fontSize: 12, color: 'var(--text3)', lineHeight: 1.5 }}>
-                Har kuni test ishlash eslatmalarini Telegram bot orqali oling. Buning uchun <a href="tg://resolve?domain=IQRO_testbot" style={{ color: '#29B6F6', textDecoration: 'none', fontWeight: 700 }}>@IQRO_testbot</a> botiga <code style={{background:'var(--bg)', padding:'2px 4px', borderRadius:4}}>IQRO-{user.uid.substring(0, 8).toUpperCase()}</code> kodini yuboring.
-              </div>
-            </div>
-
-            <button onClick={() => setShowTelegramModal(false)} style={{ width: '100%', padding: '12px', borderRadius: 12, background: 'var(--blue)', color: '#fff', border: 'none', fontWeight: 700, marginTop: '4px' }}>
-              Yopish
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* ═══ USER GUIDE MODAL ═══ */}
-      <AnimatePresence>
-        {showGuideModal && (
-          <div className="pp-modal-overlay" onClick={() => setShowGuideModal(false)}>
-            <motion.div 
-              initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }}
-              className="pp-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 500, padding: '24px' }}
-            >
-              <div 
-                className="pp-modal-title" 
-                style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '20px', cursor: 'pointer' }}
-                onClick={() => {
-                  // Secret trigger for testing Ambassador Modal
-                  localStorage.setItem('force_ambassador', '1');
-                  localStorage.removeItem('iqro_ambassador_thanks');
-                  showToast('Admin: Ambassador test yuborildi. Sahifani yangilang!', 'success');
-                }}
-              >
-                <span style={{ fontSize: 24 }}>📖</span> Foydalanish qo'llanmasi
-              </div>
-              
-              <div className="pp-policy-scroll" style={{ maxHeight: '400px', overflowY: 'auto', paddingRight: '8px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                
-                {/* Panel 1 */}
-                <div style={{ background: 'var(--bg3)', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border)' }}>
-                  <button 
-                    onClick={() => setActiveGuidePanel(p => p === 1 ? null : 1)}
-                    style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', background: 'transparent', border: 'none', color: 'var(--text)', fontWeight: 700, fontSize: 14, cursor: 'pointer' }}
-                  >
-                    🚀 IQRO o'zi qanday platforma?
-                    <ChevronRight size={16} style={{ transform: activeGuidePanel === 1 ? 'rotate(90deg)' : 'rotate(0deg)', transition: '0.2s' }} />
-                  </button>
-                  {activeGuidePanel === 1 && (
-                    <div style={{ padding: '10px 16px 16px', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>
-                      IQRO — attestatsiya va sertifikatlash imtihonlariga tayyorlanish uchun mo'ljallangan zamonaviy platforma. Bizda minglab testlar bazasi bo'lib, ular haqiqiy imtihon standartlariga mos keladi. Siz bu yerda o'z bilimingizni tekshirishingiz va xatolar ustida tizimli ishlashingiz mumkin.
-                    </div>
-                  )}
-                </div>
-
-                {/* Panel 2 */}
-                <div style={{ background: 'var(--bg3)', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border)' }}>
-                  <button 
-                    onClick={() => setActiveGuidePanel(p => p === 2 ? null : 2)}
-                    style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', background: 'transparent', border: 'none', color: 'var(--text)', fontWeight: 700, fontSize: 14, cursor: 'pointer' }}
-                  >
-                    🧠 "Takrorlash" bo'limi qanday ishlaydi?
-                    <ChevronRight size={16} style={{ transform: activeGuidePanel === 2 ? 'rotate(90deg)' : 'rotate(0deg)', transition: '0.2s' }} />
-                  </button>
-                  {activeGuidePanel === 2 && (
-                    <div style={{ padding: '10px 16px 16px', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>
-                      Biz <strong>"Spaced Repetition" (Oraliq takrorlash)</strong> algoritmidan foydalanamiz. Testda xato qilgan yoki qiynalgan savollaringiz darhol sizga ko'rinmaydi. Algoritm ularni xotirangizdan o'chib ketishiga yaqin qolganda aynan qulay vaqtda hisoblab sizga qayta ko'rsatadi. Shu sababli bilimingiz doimiy yodda qoladi!
-                    </div>
-                  )}
-                </div>
-
-                {/* Panel 3 */}
-                <div style={{ background: 'var(--bg3)', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border)' }}>
-                  <button 
-                    onClick={() => setActiveGuidePanel(p => p === 3 ? null : 3)}
-                    style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', background: 'transparent', border: 'none', color: 'var(--text)', fontWeight: 700, fontSize: 14, cursor: 'pointer' }}
-                  >
-                    🏆 Reyting va XP nima?
-                    <ChevronRight size={16} style={{ transform: activeGuidePanel === 3 ? 'rotate(90deg)' : 'rotate(0deg)', transition: '0.2s' }} />
-                  </button>
-                  {activeGuidePanel === 3 && (
-                    <div style={{ padding: '10px 16px 16px', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>
-                      Siz to'g'ri ishlagan har bir test uchun <strong>XP (Tajriba ochkosi)</strong> olasiz. Ketma-ket kunlar davomida kirib o'qisangiz (Streak), olingan ochkolar hajmi ortib boradi. Shuningdek, tizimli o'qisangiz Respublika bo'yicha Reytingingiz ko'tariladi va turli nishonlar olasiz.
-                    </div>
-                  )}
-                </div>
-
-                {/* Panel 4 */}
-                <div style={{ background: 'var(--bg3)', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border)' }}>
-                  <button 
-                    onClick={() => setActiveGuidePanel(p => p === 4 ? null : 4)}
-                    style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', background: 'transparent', border: 'none', color: 'var(--text)', fontWeight: 700, fontSize: 14, cursor: 'pointer' }}
-                  >
-                    🎁 Do'stlarni taklif qilish
-                    <ChevronRight size={16} style={{ transform: activeGuidePanel === 4 ? 'rotate(90deg)' : 'rotate(0deg)', transition: '0.2s' }} />
-                  </button>
-                  {activeGuidePanel === 4 && (
-                    <div style={{ padding: '10px 16px 16px', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>
-                      Tizimda <strong>50/50 Chegirma</strong> tizimi ishlaydi. Siz do'stingizga maxsus havolangizni yuborasiz. U shu orqali ro'yxatdan o'tsa 50% chegirmaga ega bo'ladi. U to'lov qilgach, <strong>Siz ham o'z navbatdagi to'lovingiz uchun juda katta chegirma yutib olasiz!</strong>
-                    </div>
-                  )}
-                </div>
-
-              </div>
-
-              <button onClick={() => setShowGuideModal(false)} style={{ width: '100%', padding: '12px', borderRadius: 12, background: 'var(--blue)', color: '#fff', border: 'none', fontWeight: 700, marginTop: '20px', cursor: 'pointer' }}>
-                Tushunarli 🤝
-              </button>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </motion.div>
   );
 }

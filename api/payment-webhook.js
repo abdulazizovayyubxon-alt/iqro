@@ -173,6 +173,9 @@ async function activatePremium(db, rawUserId, planId, paymentMethod, transId) {
     reminderSent: false,
     referralDiscount: 0, // To'lovi bo'lgandan keyin chegirma nolga tushadi
     discountExpired: true,
+    // Promo chegirma bir martalik — to'lovda sarflanadi
+    promoDiscount: null,
+    promoUsedOnPayment: userData.promoDiscount?.code || null,
   };
 
   await userRef.update(updateData);

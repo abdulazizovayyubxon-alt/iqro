@@ -9,6 +9,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy, Medal, Zap, Target, TrendingUp, BarChart3, Star, AlertCircle, Award, Flame, AlertTriangle } from 'lucide-react';
 import RadialChart from '../components/shared/RadialChart';
 import PremiumModal from '../components/PremiumModal';
+import RoiBlock from '../components/RoiBlock';
+import { DEFAULT_YEARLY_PRICE } from '../config';
 
 const AchievementsPage = () => {
   const navigate = useNavigate();
@@ -366,6 +368,18 @@ const AchievementsPage = () => {
             <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 4 }}>{speedLabel}</div>
           </div>
         </div>
+
+        {/* Toifa ROI — bashorat qilingan toifa asosida personalizatsiya */}
+        {(toifa === 'Oliy Toifa' || toifa === '1-Toifa' || toifa === '2-Toifa') && (
+          <div style={{ marginTop: 12 }}>
+            <RoiBlock
+              price={DEFAULT_YEARLY_PRICE}
+              planName="Yillik"
+              targetToifa={toifa === 'Oliy Toifa' ? 'oliy' : toifa === '1-Toifa' ? '1-toifa' : '2-toifa'}
+              variant="theme"
+            />
+          </div>
+        )}
       </div>
 
       {/* G'OYA-6: Haftalik taqqoslash */}

@@ -61,8 +61,8 @@ service cloud.firestore {
                     && request.resource.data.role == 'user' 
                     && (request.resource.data.isPremium == false || !('isPremium' in request.resource.data));
       allow update: if isAdmin() || (
-        isOwner(userId) 
-        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'isPremium', 'premiumPlan', 'premiumExpire', 'freeExpire', 'referralBonus']))
+        isOwner(userId)
+        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'isPremium', 'premiumPlan', 'premiumExpire', 'freeExpire', 'referralBonus', 'promoDiscount', 'promoRedeemed']))
       );
       allow delete: if isAdmin();
     }
@@ -90,6 +90,12 @@ service cloud.firestore {
     match /leaderboard/{userId} {
       allow read: if isLoggedIn();
       allow write: if isOwner(userId) || isAdmin();
+    }
+
+    // ── promoCodes: faqat admin boshqaradi; redemption FAQAT server
+    //    (api/redeem-promo.js, Admin SDK) orqali — mijozga yopiq ──
+    match /promoCodes/{code} {
+      allow read, write: if isAdmin();
     }
 
     // ── Qolgan hamma narsa bloklangan ──

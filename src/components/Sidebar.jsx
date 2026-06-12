@@ -15,7 +15,8 @@ import {
   Palette,
   Users,
   AlertCircle,
-  Download
+  Download,
+  Settings
 } from 'lucide-react';
 
 import { PWAContext } from '../context/PWAContext';
@@ -143,6 +144,15 @@ const Sidebar = () => {
               Do'stlarni taklif qilish
               <span style={{ animation: 'pulseGift 1.5s infinite', display: 'inline-block' }}>🎁</span>
             </span>
+          </div>
+
+          {/* Sozlamalar — faqat desktop (mobilda Profil ichidan ochiladi) */}
+          <div
+            className={`nav-item hide-mobile ${isActive('/settings') ? 'active' : ''}`}
+            onClick={() => navigate('/settings')}
+          >
+            <span className="nav-icon"><Settings size={20} /></span>
+            <span className="nav-label">Sozlamalar</span>
           </div>
 
           {/* INSTALL APP */}

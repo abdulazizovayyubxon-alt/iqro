@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
-import { Moon, Sun, LogOut, ChevronDown, Camera, Medal, Palette, Bell, Calendar, CheckCircle2, AlertCircle, Info, Trash2 } from 'lucide-react';
+import { Moon, Sun, BookOpen, LogOut, ChevronDown, Camera, Medal, Palette, Bell, Calendar, CheckCircle2, AlertCircle, Info, Trash2 } from 'lucide-react';
 import { updateProfile } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { collection, getDocs, doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore';
@@ -225,6 +225,17 @@ const Header = ({ theme, toggleTheme }) => {
             <span className="header-exam-countdown-text">{daysLeft} kun qoldi</span>
             <Calendar size={13} style={{ color: 'var(--blue)', opacity: 0.8 }} />
           </motion.div>
+
+          {/* Tema almashtirish: Kunduzgi → Sepia (o'qish) → Tungi */}
+          <motion.button
+            className="user-avatar-btn"
+            whileTap={{ scale: 0.95 }}
+            onClick={() => toggleTheme()}
+            title={theme === 'light' ? "Sepia (o'qish) rejimi" : theme === 'sepia' ? 'Tungi rejim' : 'Kunduzgi rejim'}
+            style={{ width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0 }}
+          >
+            {theme === 'dark' ? <Moon size={18} /> : theme === 'sepia' ? <BookOpen size={18} /> : <Sun size={18} />}
+          </motion.button>
 
           {/* Bildirishnomalar menyusi (Qo'ng'iroqcha) */}
           <div style={{ position: 'relative' }} ref={notifRef}>

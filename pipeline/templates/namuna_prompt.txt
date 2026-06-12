@@ -1,0 +1,31 @@
+Siz test savollarini raqamlashtiruvchi (transkripsiya qiluvchi) ekspertsiz. Quyida
+{{SUBJECT}} fanidan {{COUNT}} ta rasmiy imtihon savoli RASM (skrinshot) ko'rinishida berilgan.
+Har bir rasmdagi savolni diqqat bilan o'qib, AYNAN quyidagi JSON sxemaga o'tkaz.
+
+DIQQAT:
+- Rasmda to'g'ri javob BELGILANMAGAN. Sen mavzu bilimi asosida to'g'ri javobni ANIQLA va uni
+  "answer" ga yoz. Variant matnlarini va harf tartibini rasmdagidek SAQLA (aralashtirma).
+- Savol matnini, barcha variantlarni rasmdan to'liq va xatosiz ko'chir.
+- explanation (nega to'g'ri/xato) va mnemonic ham qo'sh.
+- difficulty va bloom_level ni savol mohiyatiga qarab belgila.
+
+Har bir savol AYNAN quyidagi JSON sxemada bo'lsin:
+{
+  "subject": "<fan nomi>",
+  "topic": "<mavzu>",
+  "subtopic": "<ost-mavzu>",
+  "difficulty": "Y1|Y2|Y3",
+  "bloom_level": "Bilish|Qo'llash|Mulohaza",
+  "source_construct": "Rasmiy namuna (attestatsiya)",
+  "requires_image": false,
+  "question": "<savol matni>",
+  "options": { "A": "<variant>", "B": "<variant>", "C": "<variant>", "D": "<variant>" },
+  "answer": "<to'g'ri variant harfi: A/B/C/D>",
+  "explanation": "<nega bu javob to'g'ri>",
+  "mnemonic": "<eslab qolish kaliti>"
+}
+
+Agar to'g'ri javobga ishoning komil bo'lmasa, eng ehtimoliy variantni yoz va explanation'da
+"(taxminiy)" deb belgila.
+
+CHIQISH: faqat JSON massiv (array) — har rasm uchun bitta obyekt. Markdown yoki izoh qo'shma.

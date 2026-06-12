@@ -43,7 +43,7 @@ const Stats = () => {
     const loadTotals = async () => {
       try {
         const localforage = (await import('localforage')).default;
-        const rawList = await localforage.getItem(`bundle_${cat}`);
+        const rawList = await localforage.getItem(`bundle_v2_${cat}`);
         if (rawList && Array.isArray(rawList)) {
           const totals = {};
           rawList.forEach(q => {

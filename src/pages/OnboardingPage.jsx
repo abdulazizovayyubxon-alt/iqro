@@ -3,10 +3,10 @@
  * Oq fon, katta sarlavha, vertikal kartochkalar, pastda yopishgan tugma
  * Desktop: markazlashgan karta | Mobil: to'liq ekran
  */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, CheckCircle } from 'lucide-react';
-import { doc, updateDoc } from 'firebase/firestore';
+import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import { useIsMobile } from '../hooks/useIsMobile';
@@ -81,6 +81,9 @@ function ListStep({ title, subtitle, items, selected, onSelect, isMobile }) {
               <div style={ss.listItemText}>
                 <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--text)' }}>{item.title}</span>
                 <span style={{ fontSize: 13, color: 'var(--text3)', marginTop: 2 }}>{item.desc}</span>
+                {item.meta && (
+                  <span style={{ fontSize: 11, color: 'var(--green)', fontWeight: 700, marginTop: 3 }}>{item.meta}</span>
+                )}
               </div>
               {isActive && <CheckCircle size={20} style={{ color: PRIMARY, flexShrink: 0 }} />}
             </motion.button>
@@ -250,6 +253,19 @@ export default function OnboardingPage({ onComplete }) {
   const [time, setTime]     = useState(null);
   const [saving, setSaving] = useState(false);
 
+  // Fan bo'yicha savol soni (ishonch badge) — admin-publish yozadi
+  const [questionMeta, setQuestionMeta] = useState(null);
+  useEffect(() => {
+    getDoc(doc(db, 'settings', 'questionMeta'))
+      .then(snap => { if (snap.exists()) setQuestionMeta(snap.data()); })
+      .catch(() => {});
+  }, []);
+
+  const subjectsWithMeta = SUBJECTS.map(s => {
+    const m = questionMeta?.[s.id];
+    return m?.count > 0 ? { ...s, meta: `📚 ${m.count.toLocaleString()} ta tasdiqlangan savol` } : s;
+  });
+
   const TOTAL_STEPS = 3; // 0,1,2
   const progress = step >= 3 ? 1 : (step + 1) / (TOTAL_STEPS + 1);
 
@@ -288,7 +304,7 @@ export default function OnboardingPage({ onComplete }) {
 
   const stepData = [
     { title: 'Maqsadingiz nima?', subtitle: null, items: GOALS, val: goal, set: setGoal },
-    { title: 'Qaysi fanda tayyorlanasiz?', subtitle: null, items: SUBJECTS, val: subject, set: setSubject },
+    { title: 'Qaysi fanda tayyorlanasiz?', subtitle: null, items: subjectsWithMeta, val: subject, set: setSubject },
     { title: 'Kunlik o\'qish vaqti?', subtitle: null, items: TIMES, val: time, set: setTime },
   ];
 

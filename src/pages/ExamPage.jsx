@@ -19,6 +19,26 @@ import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firesto
 import { summarizeTestResults } from '../engine/SmartQuestionEngine';
 import localforage from 'localforage';
 
+// Savol matnidan kirish/kontekst qismini olib tashlaydi (dublikat aniqlash uchun)
+function cleanForDedup(text) {
+  let clean = (text || '').trim().toLowerCase();
+  clean = clean.replace(/^\s*\[mavzu:\s*[^\]]+\]\s*/gi, '');
+  clean = clean.replace(/^\s*\[[^\]]+yangi\s+savol\]\s*/gi, '');
+  clean = clean.replace(/\s*\(\s*savol\s+kodi\s*:\s*#[a-z0-9_]+\s*\)/gi, '');
+  clean = clean.replace(/\s*#[a-z0-9_]+/gi, '');
+  const parts = clean.split(/,\s+/);
+  if (parts.length > 1) {
+    const firstPart = parts[0].trim();
+    const isIntro =
+      /^(in|im|w\u00e4hrend|bei|f\u00fcr|dars|o'qituvchi|sinf|maktab|o'quvchi|ota-ona|attestatsiya|metodik|pedagogik|ichki|tashqi|harbiy|amaliy|kasbiy|ilmiy|seminar|muhokama)/i.test(firstPart) ||
+      firstPart.split(' ').length <= 6;
+    if (isIntro) {
+      return parts.slice(1).join(', ').trim();
+    }
+  }
+  return clean.trim();
+}
+
 const EXAM_TOTAL = 50;
 
 const SUBJECT_BLUEPRINTS = {
@@ -143,8 +163,9 @@ const ExamPage = () => {
           storageUrls = vData.urls || {};
         }
 
-        const cacheKey = `bundle_${cat}`;
-        const versionKey = `version_${cat}`;
+        // v2: old Storage-bundle caches are invalidated; fresh Firestore data will be used
+        const cacheKey = `bundle_v2_${cat}`;
+        const versionKey = `version_v2_${cat}`;
         
         const localCategoryVersion = await localforage.getItem(versionKey);
         let allQ = await localforage.getItem(cacheKey);
@@ -181,12 +202,13 @@ const ExamPage = () => {
         allQ = allQ.filter(q => q.category === cat);
         allQ = processQuestionsOnTheFly(allQ);
 
-        // Baza yoki yuklanish jarayonida takrorlangan savollarni mutlaqo olib tashlaymiz (imtihonda takrorlanmasligi uchun)
-        const seenText = new Set();
+        // Dublikat savollarni tozalaymiz (kirish kontekst qismlarini hisobga olmagan holda)
+        const seenCore = new Set();
         allQ = allQ.filter(q => {
-          const cleanText = (q.q || '').trim().toLowerCase();
-          if (seenText.has(cleanText)) return false;
-          seenText.add(cleanText);
+          const core = cleanForDedup(q.q || '');
+          if (!core) return true;
+          if (seenCore.has(core)) return false;
+          seenCore.add(core);
           return true;
         });
 
@@ -1003,6 +1025,10 @@ const ExamPage = () => {
                       "Ushbu savol uchun tushuntirish kiritilmagan."
                     )}
                   </div>
+
+                  {q.source && (
+                    <div className="q-source">🔖 Manba: {q.source}</div>
+                  )}
                 </div>
               )}
 

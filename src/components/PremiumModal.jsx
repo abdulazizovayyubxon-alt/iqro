@@ -13,6 +13,8 @@ import { generateClickUrl, generatePaymeUrl } from '../services/payment';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { purchasePlan } from '../services/playBilling';
+import { redeemPromo, PROMO_ERRORS } from '../services/promo';
+import RoiBlock from './RoiBlock';
 
 // Default tariflar (Firestore dan yuklanmasa)
 const DEFAULT_PLANS = [
@@ -95,10 +97,17 @@ const PremiumModal = ({ isOpen, onClose }) => {
   const [step, setStep] = useState('plans'); // 'plans' | 'method' | 'telegram_guide'
   const [processing, setProcessing] = useState(false);
   const [plans, setPlans] = useState(DEFAULT_PLANS);
-  const [selectedPlan, setSelectedPlan] = useState(DEFAULT_PLANS[1]);
+  // Default — yillik plan (eng arzon kunlik narx, ROI eng kuchli)
+  const [selectedPlan, setSelectedPlan] = useState(DEFAULT_PLANS[2]);
   const [selectedMethod, setSelectedMethod] = useState('telegram');
   const [referralBonus, setReferralBonus] = useState(0);
   const [userData, setUserData] = useState(null);
+
+  // Promo-kod holati
+  const [promoOpen, setPromoOpen] = useState(false);
+  const [promoCode, setPromoCode] = useState('');
+  const [promoLoading, setPromoLoading] = useState(false);
+  const [promoMsg, setPromoMsg] = useState(null); // { type: 'ok'|'err', text }
 
   useEffect(() => {
     if (!isOpen || !user) return;
@@ -112,7 +121,8 @@ const PremiumModal = ({ isOpen, onClose }) => {
         if (docSnap.exists() && docSnap.data().plans?.length > 0) {
           const dbPlans = docSnap.data().plans;
           setPlans(dbPlans);
-          setSelectedPlan(dbPlans[Math.floor(dbPlans.length / 2)] || dbPlans[0]);
+          // Default — yillik (eng uzun) plan
+          setSelectedPlan(dbPlans.find(p => p.id === 'yearly') || dbPlans[dbPlans.length - 1] || dbPlans[0]);
         }
         const userSnap = await getDoc(doc(db, 'users', user.uid));
         if (userSnap.exists()) {
@@ -140,8 +150,12 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
   const fmt = (n) => new Intl.NumberFormat('fr-FR').format(n).replace(',', ' ') + " so'm";
   
-  const hasReferralDiscount = userData?.referralDiscount > 0;
-  const discountPercent = userData?.referralDiscount || 0;
+  // Chegirmalar STACK qilinmaydi — referral va promo'dan eng kattasi qo'llanadi
+  const referralPercent = userData?.referralDiscount || 0;
+  const promoPercent = userData?.promoDiscount?.percent || 0;
+  const discountPercent = Math.max(referralPercent, promoPercent);
+  const hasReferralDiscount = discountPercent > 0;
+  const discountSource = promoPercent > referralPercent ? 'promo' : 'referral';
 
   let finalPrice = selectedPlan ? selectedPlan.price : 0;
   if (hasReferralDiscount) {
@@ -154,6 +168,27 @@ const PremiumModal = ({ isOpen, onClose }) => {
   const isPWA = typeof window !== 'undefined' && window.matchMedia('(display-mode: standalone)').matches;
   const isAndroidApp = isPWA && /android/i.test(navigator.userAgent);
   const BOT_USERNAME = 'IQRO_testbot';
+
+  const handleRedeem = async () => {
+    const code = promoCode.trim();
+    if (!code || promoLoading) return;
+    setPromoLoading(true);
+    setPromoMsg(null);
+    const res = await redeemPromo(code);
+    setPromoLoading(false);
+    if (res.ok) {
+      if (res.type === 'percent') {
+        setUserData(prev => ({ ...(prev || {}), promoDiscount: { code: code.toUpperCase(), percent: res.value } }));
+        setPromoMsg({ type: 'ok', text: `✅ ${res.value}% chegirma qo'llandi — narx yangilandi!` });
+      } else {
+        // days/team — premium serverda darhol faollashtirildi
+        setPromoMsg({ type: 'ok', text: `🎉 Premium ${res.value} kunga faollashtirildi! Ilovani yangilang.` });
+      }
+      setPromoCode('');
+    } else {
+      setPromoMsg({ type: 'err', text: PROMO_ERRORS[res.error] || 'Xatolik yuz berdi' });
+    }
+  };
 
   const handlePay = async () => {
     if (!user || !selectedPlan) return;
@@ -289,6 +324,9 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   </div>
                 </div>
 
+                {/* Toifa ROI — obuna o'zini qachon oqlaydi */}
+                <RoiBlock price={selectedPlan?.price} planName={selectedPlan?.name} variant="light" />
+
                 {/* Tariflar */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
                   {plans.map((plan) => {
@@ -364,7 +402,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                       <Gift size={16} style={{ color: '#10B981', flexShrink: 0 }} />
                       <div style={{ flex: 1 }}>
                         <div style={{ fontSize: 12, fontWeight: 700, color: '#10B981' }}>
-                          {hasReferralDiscount && `Taklif chegirmasi: -${discountPercent}%`}
+                          {hasReferralDiscount && `${discountSource === 'promo' ? 'Promo-kod chegirmasi' : 'Taklif chegirmasi'}: -${discountPercent}%`}
                           {hasReferralDiscount && referralBonus > 0 && ' | '}
                           {referralBonus > 0 && `Do'st bonusi: -${fmt(referralBonus)}`}
                         </div>
@@ -375,6 +413,62 @@ const PremiumModal = ({ isOpen, onClose }) => {
                     </motion.div>
                   )}
                 </AnimatePresence>
+
+                {/* Promo-kod */}
+                <div style={{ marginBottom: 14 }}>
+                  {!promoOpen ? (
+                    <button
+                      onClick={() => setPromoOpen(true)}
+                      style={{
+                        background: 'none', border: 'none', cursor: 'pointer', padding: '4px 2px',
+                        fontSize: 12, fontWeight: 700, color: '#0284C7', fontFamily: 'inherit',
+                        display: 'flex', alignItems: 'center', gap: 6,
+                      }}
+                    >
+                      🎟️ Promo-kodingiz bormi?
+                    </button>
+                  ) : (
+                    <div>
+                      <div style={{ display: 'flex', gap: 8 }}>
+                        <input
+                          value={promoCode}
+                          onChange={e => { setPromoCode(e.target.value.toUpperCase()); setPromoMsg(null); }}
+                          onKeyDown={e => e.key === 'Enter' && handleRedeem()}
+                          placeholder="PROMO-KOD"
+                          maxLength={32}
+                          style={{
+                            flex: 1, padding: '11px 14px', borderRadius: 12, fontSize: 14,
+                            border: '1.5px solid rgba(0,0,0,0.1)', background: '#f8fafc',
+                            color: '#0f172a', fontFamily: 'inherit', fontWeight: 700,
+                            letterSpacing: 1, outline: 'none', textTransform: 'uppercase',
+                            boxSizing: 'border-box', minWidth: 0,
+                          }}
+                        />
+                        <button
+                          onClick={handleRedeem}
+                          disabled={promoLoading || !promoCode.trim()}
+                          style={{
+                            padding: '11px 18px', borderRadius: 12, border: 'none',
+                            background: 'linear-gradient(135deg, #29B6F6, #0284C7)', color: '#fff',
+                            fontSize: 13, fontWeight: 800, fontFamily: 'inherit',
+                            cursor: promoLoading ? 'wait' : 'pointer',
+                            opacity: promoLoading || !promoCode.trim() ? 0.6 : 1, flexShrink: 0,
+                          }}
+                        >
+                          {promoLoading ? '...' : "Qo'llash"}
+                        </button>
+                      </div>
+                      {promoMsg && (
+                        <div style={{
+                          marginTop: 8, fontSize: 12, fontWeight: 600,
+                          color: promoMsg.type === 'ok' ? '#10B981' : '#EF4444',
+                        }}>
+                          {promoMsg.text}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
 
                 {/* To'lov usullari */}
                 <div style={{ marginBottom: 16 }}>

@@ -195,10 +195,14 @@ ${refLink}
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           }}>
             <div>
-              <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>50/50 Model — ikki tomonga foyda</div>
+              <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', fontWeight: 700 }}>
+                Do'stingga {REFERRAL_DISCOUNT}% chegirma — o'zingga {DISCOUNT_AMOUNT.toLocaleString()} so'm
+              </div>
               <div style={{ fontSize: 28, fontWeight: 900, color: '#fff', margin: '4px 0' }}>{stats?.total || 0} / {dynamicMax}</div>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)' }}>
-                {stats?.total || 0} ta do'st taklif qilindi · Ikki tomonga {REFERRAL_DISCOUNT}% chegirma
+                {(stats?.totalBonus || 0) > 0
+                  ? `Yig'ilgan bonus: ${stats.totalBonus.toLocaleString()} so'm — to'lovda avtomatik ayiriladi`
+                  : `Har to'lagan do'st uchun ${DISCOUNT_AMOUNT.toLocaleString()} so'm bonus olasiz`}
               </div>
             </div>
             <div style={{ fontSize: 48 }}>🎁</div>

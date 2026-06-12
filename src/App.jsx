@@ -33,6 +33,7 @@ const AdminPage = React.lazy(() => import('./pages/AdminPage'));
 const MigrationPage = React.lazy(() => import('./pages/MigrationPage'));
 const ReferralPage = React.lazy(() => import('./pages/ReferralPage'));
 const ProfilePage = React.lazy(() => import('./pages/ProfilePage'));
+const SettingsPage = React.lazy(() => import('./pages/SettingsPage'));
 const ErrorNotebookPage = React.lazy(() => import('./pages/ErrorNotebookPage'));
 const PrivacyPage = React.lazy(() => import('./pages/PrivacyPage'));
 const TermsPage = React.lazy(() => import('./pages/TermsPage'));
@@ -157,7 +158,8 @@ function App() {
     '/': 'Test', '/dashboard': 'Dashboard', '/schedule': 'Jadval', '/stats': 'Statistika',
     '/test': 'Test', '/exam': 'Imtihon', '/review': 'Takrorlash',
     '/leaderboard': 'Reyting', '/achievements': 'Yutuqlar',
-    '/admin': 'Admin', '/migration': 'Migratsiya'
+    '/admin': 'Admin', '/migration': 'Migratsiya',
+    '/profile': 'Profil', '/settings': 'Sozlamalar'
   };
 
   useEffect(() => {
@@ -173,26 +175,35 @@ function App() {
     else clearUser();
   }, [user]);
 
+  // Tema: light → sepia (o'qish) → dark aylanasi
+  const THEMES = ['light', 'sepia', 'dark'];
+
+  const applyTheme = (t) => {
+    document.body.classList.remove('dark-theme', 'sepia-theme');
+    if (t === 'dark') document.body.classList.add('dark-theme');
+    else if (t === 'sepia') document.body.classList.add('sepia-theme');
+  };
+
   useEffect(() => {
     const savedTheme = localStorage.getItem('iqro-theme') || localStorage.getItem('chqbt-theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
-      if (savedTheme === 'dark') document.body.classList.add('dark-theme');
-    } else {
-      setTheme('light');
-      document.body.classList.remove('dark-theme');
+    const validTheme = THEMES.includes(savedTheme) ? savedTheme : 'light';
+    setTheme(validTheme);
+    applyTheme(validTheme);
+
+    // Shrift o'lchami (S/M/L/XL) — faqat o'qish yuzalariga ta'sir qiladi
+    const savedScale = parseFloat(localStorage.getItem('iqro-font-scale'));
+    if (savedScale && savedScale >= 0.8 && savedScale <= 1.5) {
+      document.documentElement.style.setProperty('--font-scale', savedScale);
     }
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+  const toggleTheme = (target) => {
+    const newTheme = THEMES.includes(target)
+      ? target
+      : THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
     setTheme(newTheme);
     localStorage.setItem('iqro-theme', newTheme);
-    if (newTheme === 'dark') {
-      document.body.classList.add('dark-theme');
-    } else {
-      document.body.classList.remove('dark-theme');
-    }
+    applyTheme(newTheme);
   };
 
   // Firebase yuklanmoqda
@@ -277,7 +288,8 @@ function App() {
                   <Route path="/migration" element={<MigrationPage />} />
                   <Route path="/referral" element={<ReferralPage />} />
                   <Route path="/errors" element={<ErrorNotebookPage />} />
-                  <Route path="/profile" element={<ProfilePage theme={theme} toggleTheme={toggleTheme} />} />
+                  <Route path="/profile" element={<ProfilePage />} />
+                  <Route path="/settings" element={<SettingsPage theme={theme} toggleTheme={toggleTheme} />} />
                   <Route path="/delete-account" element={<DeleteAccountPage />} />
                   <Route path="*" element={<Navigate to="/test" replace />} />
                 </Routes>

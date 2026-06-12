@@ -16,6 +16,8 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { EXAM_DATE, EXAM_GOAL_SCORE, EXAM_LABEL } from '../config';
+import { db } from '../firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 const PRIMARY = '#29B6F6';
 
@@ -33,6 +35,14 @@ const Dashboard = () => {
   const [daysLeft, setDaysLeft] = useState('');
   const [showExamBanner, setShowExamBanner] = useState(true);
   const [showReferralBanner, setShowReferralBanner] = useState(true);
+  const [questionMeta, setQuestionMeta] = useState(null);
+
+  // Fan bo'yicha savol soni (ishonch badge) — admin-publish yozadi
+  useEffect(() => {
+    getDoc(doc(db, 'settings', 'questionMeta'))
+      .then(snap => { if (snap.exists()) setQuestionMeta(snap.data()); })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     setShowExamBanner(localStorage.getItem('iqro_dismissed_exam_banner') !== '1');
@@ -166,6 +176,23 @@ const Dashboard = () => {
           );
         })}
       </div>
+
+      {/* ── SAVOL BAZASI BADGE (ishonch) ── */}
+      {questionMeta?.[cat]?.count > 0 && (
+        <div style={{
+          display: 'inline-flex', alignItems: 'center', gap: 6,
+          background: 'var(--green-bg)', border: '1px solid var(--border)',
+          borderRadius: 99, padding: '5px 14px', marginBottom: 16,
+          fontSize: 12, fontWeight: 700, color: 'var(--green)',
+        }}>
+          📚 {questionMeta[cat].count.toLocaleString()} ta tasdiqlangan savol
+          {questionMeta[cat].updatedAt && (
+            <span style={{ color: 'var(--text3)', fontWeight: 500 }}>
+              · yangilangan {new Date(questionMeta[cat].updatedAt).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'long' })}
+            </span>
+          )}
+        </div>
+      )}
 
       {/* ── IMTIHON BANNER ── */}
       {showExamBanner && EXAM_DATE && cat !== 'art' && (

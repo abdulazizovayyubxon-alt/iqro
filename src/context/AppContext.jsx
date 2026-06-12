@@ -16,7 +16,8 @@ import {
   getDocs,
   updateDoc,
   setDoc,
-  getDoc
+  getDoc,
+  deleteField
 } from "firebase/firestore";
 
 export const AppContext = createContext();
@@ -88,6 +89,107 @@ const buildDefaultState = () => {
 // ────────────────────────────────────────────────────────
 const getUserStateKey = (uid) => `iqro_state_${uid}`;
 
+// Shu foydalanuvchining lokal zaxirasini o'qish (kalit UID bilan izolyatsiyalangan)
+const loadLocalBackup = (uid) => {
+  try {
+    const raw = localStorage.getItem(getUserStateKey(uid));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === 'object' ? parsed : null;
+  } catch {
+    return null;
+  }
+};
+
+// Bulut va lokal zaxirani birlashtirish — qurilma almashganda "last-write-wins"
+// hisoblagichlarni o'chirib yubormasligi uchun monoton qiymatlar bo'yicha max() olinadi.
+// resetAt guard: ataylab reset qilingan statistikani eski lokal nusxa "tiriltirmasligi" kerak.
+const mergeCloudAndLocal = (cloud, local) => {
+  if (!local) return cloud;
+  if (cloud.resetAt && (local.savedAt || 0) < cloud.resetAt) return cloud;
+
+  const merged = { ...cloud };
+
+  ['totalScore', 'totalAnswered', 'totalCorrect', 'maxStreak', 'studyMinutes', 'dailyStreak']
+    .forEach(k => { merged[k] = Math.max(cloud[k] || 0, local[k] || 0); });
+
+  Object.keys(local).forEach(k => {
+    if (k.startsWith('weekly_') || k.startsWith('monthly_')) {
+      merged[k] = Math.max(cloud[k] || 0, local[k] || 0);
+    }
+  });
+
+  const catIds = new Set([...Object.keys(cloud.stats || {}), ...Object.keys(local.stats || {})]);
+  merged.stats = {};
+  catIds.forEach(cat => {
+    const c = (cloud.stats || {})[cat] || buildDefaultCatStats();
+    const l = (local.stats || {})[cat] || buildDefaultCatStats();
+    // Xatolar savol matni bo'yicha union qilinadi
+    const seen = new Set();
+    const mistakes = [...(c.mistakes || []), ...(l.mistakes || [])].filter(m => {
+      const key = m?.question || '';
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+    while (mistakes.length > MAX_MISTAKES_SAVED) mistakes.shift();
+    merged.stats[cat] = {
+      ...c,
+      totalAnswered: Math.max(c.totalAnswered || 0, l.totalAnswered || 0),
+      totalCorrect: Math.max(c.totalCorrect || 0, l.totalCorrect || 0),
+      maxStreak: Math.max(c.maxStreak || 0, l.maxStreak || 0),
+      mistakes
+    };
+  });
+
+  const topicIds = new Set([...Object.keys(cloud.topicStats || {}), ...Object.keys(local.topicStats || {})]);
+  merged.topicStats = {};
+  topicIds.forEach(t => {
+    const c = (cloud.topicStats || {})[t] || { answered: 0, correct: 0 };
+    const l = (local.topicStats || {})[t] || { answered: 0, correct: 0 };
+    merged.topicStats[t] = {
+      answered: Math.max(c.answered || 0, l.answered || 0),
+      correct: Math.max(c.correct || 0, l.correct || 0)
+    };
+  });
+
+  merged.timeStats = {
+    totalTime: Math.max(cloud.timeStats?.totalTime || 0, local.timeStats?.totalTime || 0),
+    totalQuestions: Math.max(cloud.timeStats?.totalQuestions || 0, local.timeStats?.totalQuestions || 0)
+  };
+
+  return merged;
+};
+
+// Firestore'ga yozishdan oldin tayyorlash: leaderboard maydonlari,
+// vaqtinchalik kalitlar va eski davr (weekly_/monthly_) kalitlarini tozalash.
+// Eski kalitlar deleteField() bilan hujjatdan ham o'chiriladi — aks holda doc cheksiz o'sadi.
+const prepareStatsForSave = (stateObj, currentUser) => {
+  const statsToSave = { ...stateObj };
+  const currentName = currentUser.displayName || stateObj.displayName || currentUser.email?.split('@')[0] || '';
+  statsToSave.displayName = currentName;
+  statsToSave.userName = currentName;
+  statsToSave.photoURL = currentUser.photoURL || stateObj.photoURL || null;
+  delete statsToSave.topicId;
+  delete statsToSave.testMode;
+  delete statsToSave.savedAt;
+
+  const prevMonth = new Date();
+  prevMonth.setMonth(prevMonth.getMonth() - 1);
+  const keep = new Set([
+    `weekly_${getWeekId()}`,
+    `weekly_${getWeekId(new Date(Date.now() - 7 * 86400000))}`,
+    `monthly_${getMonthId()}`,
+    `monthly_${getMonthId(prevMonth)}`
+  ]);
+  Object.keys(statsToSave).forEach(k => {
+    if ((k.startsWith('weekly_') || k.startsWith('monthly_')) && !keep.has(k)) {
+      statsToSave[k] = deleteField();
+    }
+  });
+  return statsToSave;
+};
+
 export const AppProvider = ({ children }) => {
   const { user } = useContext(AuthContext);
   const { showToast } = useContext(ToastContext);
@@ -117,11 +219,15 @@ export const AppProvider = ({ children }) => {
 
     // Foydalanuvchi statistikasini Firestore'dan yuklash
     const loadUserStats = async () => {
+      // Lokal zaxira UID bilan izolyatsiyalangan — faqat SHU foydalanuvchiniki bo'lishi mumkin
+      const backup = loadLocalBackup(user.uid);
       try {
         const statRef = doc(db, 'userStats', user.uid);
         const snap = await getDoc(statRef);
         if (snap.exists()) {
-          const data = snap.data();
+          // Bulut + lokal zaxira: hisoblagichlar max() bo'yicha birlashtiriladi,
+          // shunda bulutga yetib bormagan oxirgi sessiya natijalari yo'qolmaydi
+          const data = mergeCloudAndLocal(snap.data(), backup);
           setState(prev => ({
             ...buildDefaultState(),
             ...data,
@@ -130,16 +236,23 @@ export const AppProvider = ({ children }) => {
             customMnemonics: data.customMnemonics || {},
             timeStats: data.timeStats || { totalTime: 0, totalQuestions: 0 }
           }));
+        } else if (backup) {
+          // Bulutda hujjat yo'q, lekin shu UID ning lokal zaxirasi bor — undan tiklash
+          const { savedAt, ...localState } = backup;
+          setState({ ...buildDefaultState(), ...localState });
         } else {
           // Yangi foydalanuvchi — toza holat bilan boshlash
-          // XAVFSIZLIK: boshqa foydalanuvchining localStorage datasini
-          // hech qachon yangi foydalanuvchiga ko'chirmaymiz!
           setState(buildDefaultState());
         }
       } catch (err) {
         console.error('Foydalanuvchi statistikasini yuklashda xatolik:', err);
-        // Xatolik bo'lsa ham default state bilan davom etish
-        setState(buildDefaultState());
+        // Oflayn/xatolikda default o'rniga lokal zaxiradan tiklash
+        if (backup) {
+          const { savedAt, ...localState } = backup;
+          setState({ ...buildDefaultState(), ...localState });
+        } else {
+          setState(buildDefaultState());
+        }
       }
       setCloudSynced(true);
     };
@@ -151,34 +264,44 @@ export const AppProvider = ({ children }) => {
   // Har o'zgarishda emas, 3 soniya kutib, oxirgi holatni bir marta yozadi.
   // Bu test paytida ~50 ta write o'rniga 2-3 ta write qiladi.
   const saveTimerRef = useRef(null);
+  const flushSaveRef = useRef(null);
 
   useEffect(() => {
     if (!user || !cloudSynced) return;
 
     // User-ga tegishli localStorage ga saqlash (offline backup)
     // XAVFSIZLIK: kalit nomi user UID bilan izolyatsiya qilingan
+    // savedAt — resetAt guard uchun (mergeCloudAndLocal)
     const userKey = getUserStateKey(user.uid);
-    localStorage.setItem(userKey, JSON.stringify(state));
+    localStorage.setItem(userKey, JSON.stringify({ ...state, savedAt: Date.now() }));
+
+    const writeNow = () => {
+      saveTimerRef.current = null;
+      const statRef = doc(db, 'userStats', user.uid);
+      setDoc(statRef, prepareStatsForSave(state, user), { merge: true }).catch(console.error);
+    };
+    flushSaveRef.current = writeNow;
 
     // Firestore ga debounced yozish — 3 soniya kutib
     clearTimeout(saveTimerRef.current);
-    saveTimerRef.current = setTimeout(() => {
-      const statRef = doc(db, 'userStats', user.uid);
-      const statsToSave = { ...state };
-      // Leaderboard uchun foydalanuvchi ma'lumotlarini ham saqlash
-      const currentName = user.displayName || state.displayName || '';
-      statsToSave.displayName = currentName;
-      statsToSave.userName = currentName;
-      statsToSave.photoURL = user.photoURL || state.photoURL || null;
-      // topicId va testMode ni saqlamaymiz (navigatsiya uchun vaqtinchalik)
-      delete statsToSave.topicId;
-      delete statsToSave.testMode;
-
-      setDoc(statRef, statsToSave, { merge: true }).catch(console.error);
-    }, 3000);
+    saveTimerRef.current = setTimeout(writeNow, 3000);
 
     return () => clearTimeout(saveTimerRef.current);
   }, [state, user, cloudSynced]);
+
+  // ─── 2b. Ilova yashirilganda kutilayotgan yozuvni DARHOL bajarish ───
+  // Mobil PWA foydalanuvchilari ilovani 3 soniyalik debounce tugashidan
+  // oldin yopadi — oxirgi natijalar yo'qolmasligi uchun flush qilamiz.
+  useEffect(() => {
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'hidden' && saveTimerRef.current) {
+        clearTimeout(saveTimerRef.current);
+        flushSaveRef.current?.();
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', onVisibilityChange);
+  }, []);
 
   const updateState = (updates) => setState(prev => ({ ...prev, ...updates }));
 
@@ -424,14 +547,7 @@ export const AppProvider = ({ children }) => {
         const currentUser = userRef.current;
         if (!currentUser) return;
         const statRef = doc(db, 'userStats', currentUser.uid);
-        const statsToSave = { ...newState };
-        const currentName = currentUser.displayName || statsToSave.displayName || currentUser.email?.split('@')[0] || '';
-        statsToSave.displayName = currentName;
-        statsToSave.userName = currentName;
-        statsToSave.photoURL = currentUser.photoURL || statsToSave.photoURL || null;
-        delete statsToSave.topicId;
-        delete statsToSave.testMode;
-        setDoc(statRef, statsToSave, { merge: true }).catch(err => {
+        setDoc(statRef, prepareStatsForSave(newState, currentUser), { merge: true }).catch(err => {
           console.error('Natijalarni saqlashda xatolik:', err);
           showToast('Natijalar vaqtincha saqlanmadi. Internet aloqasini tekshiring.', 'error');
         });
@@ -454,7 +570,8 @@ export const AppProvider = ({ children }) => {
 
   // ─── Statistikani reset qilish ───
   const resetStats = async () => {
-    const fresh = buildDefaultState();
+    // resetAt — boshqa qurilmadagi eski lokal zaxira resetni "bekor qilmasligi" uchun guard
+    const fresh = { ...buildDefaultState(), resetAt: Date.now() };
     setState(fresh);
     if (user) {
       // User-specific localStorage ni tozalash

@@ -127,7 +127,9 @@ export default async function handler(req, res) {
             premiumMethod: 'telegram_manual',
             discountAvailable: false,
             discountExpired: true,
-            reminderSent: false
+            reminderSent: false,
+            // Promo chegirma bir martalik — to'lovda sarflanadi
+            promoDiscount: null
           });
 
           // pendingPayments ni o'chirish yoki completed qilish
@@ -457,12 +459,15 @@ export default async function handler(req, res) {
           if (found) { price = found.price; planName = found.name; }
         }
 
-        // Chegirma tekshirish
+        // Chegirma tekshirish — referral va promo STACK qilinmaydi, kattasi olinadi
         let finalPrice = price;
         let discountMsg = '';
-        if (linkedUser && linkedUser.referralDiscount > 0) {
-          finalPrice = Math.max(0, Math.round(price * (100 - linkedUser.referralDiscount) / 100));
-          discountMsg = `\n🎉 <i>Sizda <b>${linkedUser.referralDiscount}% chegirma</b> mavjud!</i> Narx: <s>${price.toLocaleString()}</s> → <b>${finalPrice.toLocaleString()} so'm</b>`;
+        const refPct = (linkedUser && linkedUser.referralDiscount) || 0;
+        const promoPct = (linkedUser && linkedUser.promoDiscount && linkedUser.promoDiscount.percent) || 0;
+        const bestPct = Math.max(refPct, promoPct);
+        if (bestPct > 0) {
+          finalPrice = Math.max(0, Math.round(price * (100 - bestPct) / 100));
+          discountMsg = `\n🎉 <i>Sizda <b>${bestPct}% chegirma</b> mavjud!</i> Narx: <s>${price.toLocaleString()}</s> → <b>${finalPrice.toLocaleString()} so'm</b>`;
         }
         
         // Referral bonus keshbekini hisoblash

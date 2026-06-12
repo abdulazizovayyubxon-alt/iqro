@@ -176,13 +176,13 @@ const QuestionBox = ({
             <div style={{ display: 'flex', borderBottom: '1px solid var(--border)', background: 'var(--bg3)' }}>
               <button
                 onClick={() => setActiveReviewTab('analysis')}
-                style={{ flex: 1, padding: '12px', border: 'none', background: activeReviewTab === 'analysis' ? 'var(--bg2)' : 'transparent', color: activeReviewTab === 'analysis' ? 'var(--text)' : 'var(--text3)', fontSize: '13px', fontWeight: '700', cursor: 'pointer', fontFamily: 'inherit', borderBottom: activeReviewTab === 'analysis' ? '2.5px solid #29B6F6' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', transition: 'all 0.2s' }}
+                style={{ flex: 1, padding: '12px', border: 'none', background: activeReviewTab === 'analysis' ? 'var(--bg2)' : 'transparent', color: activeReviewTab === 'analysis' ? 'var(--text)' : 'var(--text3)', fontSize: '13px', fontWeight: '700', cursor: 'pointer', fontFamily: 'inherit', borderBottom: activeReviewTab === 'analysis' ? '2.5px solid var(--accent)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', transition: 'all 0.2s' }}
               >
                 <span>📖 Tahlil</span>
               </button>
               <button
                 onClick={() => setActiveReviewTab('notes')}
-                style={{ flex: 1, padding: '12px', border: 'none', background: activeReviewTab === 'notes' ? 'var(--bg2)' : 'transparent', color: activeReviewTab === 'notes' ? 'var(--text)' : 'var(--text3)', fontSize: '13px', fontWeight: '700', cursor: 'pointer', fontFamily: 'inherit', borderBottom: activeReviewTab === 'notes' ? '2.5px solid #29B6F6' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', position: 'relative', transition: 'all 0.2s' }}
+                style={{ flex: 1, padding: '12px', border: 'none', background: activeReviewTab === 'notes' ? 'var(--bg2)' : 'transparent', color: activeReviewTab === 'notes' ? 'var(--text)' : 'var(--text3)', fontSize: '13px', fontWeight: '700', cursor: 'pointer', fontFamily: 'inherit', borderBottom: activeReviewTab === 'notes' ? '2.5px solid var(--accent)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', position: 'relative', transition: 'all 0.2s' }}
               >
                 <span>🧠 Eslatmalar</span>
                 {(() => {
@@ -230,6 +230,10 @@ const QuestionBox = ({
                     <div style={{ color: 'var(--text2)', fontSize: '14px', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
                       {questions[currentQ].explanation}
                     </div>
+
+                    {questions[currentQ].source && (
+                      <div className="q-source">🔖 Manba: {questions[currentQ].source}</div>
+                    )}
                   </div>
                 )}
 
@@ -257,7 +261,7 @@ const QuestionBox = ({
                             value={state.customMnemonics?.[qHash] || ''}
                             onChange={(e) => saveCustomMnemonic(qHash, e.target.value)}
                             style={{ width: '100%', minHeight: '80px', background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '12px', padding: '10px 12px', color: 'var(--text)', fontSize: '13px', fontFamily: 'inherit', resize: 'vertical', outline: 'none', transition: 'border-color 0.2s', lineHeight: '1.5' }}
-                            onFocus={(e) => e.target.style.borderColor = '#29B6F6'}
+                            onFocus={(e) => e.target.style.borderColor = 'var(--accent)'}
                             onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
                           />
                           <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
