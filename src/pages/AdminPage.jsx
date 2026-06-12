@@ -143,11 +143,10 @@ try {
         return;
       }
 
-      const normalize = (text) => text ? text.toLowerCase().replace(/[‘'`ʼ]/g, "'").replace(/\s+/g, " ").trim() : "";
-      
-      // Get all existing questions to filter out duplicates
-      const snap = await getDocs(collection(db, 'questions'));
-      const existingSet = new Set(snap.docs.map(d => normalize(d.data().q)));
+      const normalize = (text) => text ? text.toLowerCase().replace(/[‘’`ʼ]/g, "’").replace(/\s+/g, " ").trim() : "";
+
+      // Use already-loaded questions state — avoids re-fetching 6000+ docs
+      const existingSet = new Set(questions.map(q => normalize(q.q)));
 
       const toAdd = [];
       list.forEach(q => {
