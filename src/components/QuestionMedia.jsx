@@ -307,8 +307,37 @@ const DIAGRAMS = {
  *   question  — savol ob'ekti ({ image?, svg?, diagram? })
  *   style     — qo'shimcha CSS uslub (ixtiyoriy)
  */
+// Keng rasimni (6 ta emblem/belgi yonma-yon) 3×2 gridga aylantiradi.
+// CSS background-position orqali har bir katakda rasimning 1/6 qismi ko'rsatiladi.
+function WideImageGrid({ src, cols = 6, perRow = 3 }) {
+  const rows = Math.ceil(cols / perRow);
+  const cells = Array.from({ length: cols }, (_, i) => i);
+  // backgroundSize: '600% auto' → rasm 6× keng, har katak 1/6 ni ko'rsatadi
+  const bgSize = `${cols * 100}% auto`;
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: `repeat(${perRow}, 1fr)`, gap: '6px', marginBottom: '16px' }}>
+      {cells.map(i => (
+        <div
+          key={i}
+          style={{
+            backgroundImage: `url(${src})`,
+            backgroundSize: bgSize,
+            backgroundPosition: `${cols === 1 ? 0 : (i / (cols - 1)) * 100}% 50%`,
+            backgroundRepeat: 'no-repeat',
+            height: '100px',
+            borderRadius: '10px',
+            border: '1px solid var(--glass-border)',
+            background: `url(${src}) ${cols === 1 ? 0 : (i / (cols - 1)) * 100}% 50% / ${bgSize} no-repeat var(--bg3)`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function QuestionMedia({ question, style }) {
   const [imgError, setImgError] = useState(false);
+  const [wideInfo, setWideInfo] = useState(null); // { cols } if wide
 
   if (!question) return null;
 
@@ -344,11 +373,29 @@ export default function QuestionMedia({ question, style }) {
 
   // 4. Rasm (URL yoki base64)
   if (image && !imgError) {
+    // Keng rasm aniqlangandan so'ng grid ko'rinishda qayta render
+    if (wideInfo) {
+      return (
+        <div style={{ margin: '0 0 4px' }}>
+          <WideImageGrid src={image} cols={wideInfo.cols} perRow={3} />
+        </div>
+      );
+    }
+
     return (
       <div style={containerStyle}>
         <img
           src={image}
           alt="Savol rasmi"
+          onLoad={(e) => {
+            const { naturalWidth, naturalHeight } = e.target;
+            if (naturalHeight > 0) {
+              const ratio = naturalWidth / naturalHeight;
+              // 6 ta emblem: ~6:1 nisbat | 3 ta: ~3:1 | odatiy: ≤2.5
+              if (ratio > 4.5) setWideInfo({ cols: 6 });
+              else if (ratio > 2.5) setWideInfo({ cols: 3 });
+            }
+          }}
           onError={() => setImgError(true)}
           style={{
             maxWidth: '100%',
