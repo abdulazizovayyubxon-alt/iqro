@@ -161,6 +161,25 @@ const mergeCloudAndLocal = (cloud, local) => {
   return merged;
 };
 
+// Firestore `undefined` qiymatni qabul qilmaydi — agar saqlanadigan obyektda
+// (masalan spacedCards/mistakes ichida correct:undefined) bironta undefined bo'lsa,
+// setDoc BUTUN yozuvni rad etadi va xato jim yutiladi → bulutga ball yozilmaydi,
+// reyting 0 turadi. Shu sababli yozishdan oldin undefined'larni chuqur tozalaymiz.
+// deleteField()/FieldValue kabi maxsus sentinel obyektlarga TEGMAYMIZ
+// (faqat oddiy obyekt/massivga kiramiz — ularning constructor === Object emas).
+const stripUndefined = (value) => {
+  if (Array.isArray(value)) return value.map(stripUndefined);
+  if (value && typeof value === 'object' && value.constructor === Object) {
+    const out = {};
+    for (const [k, v] of Object.entries(value)) {
+      if (v === undefined) continue;
+      out[k] = stripUndefined(v);
+    }
+    return out;
+  }
+  return value;
+};
+
 // Firestore'ga yozishdan oldin tayyorlash: leaderboard maydonlari,
 // vaqtinchalik kalitlar va eski davr (weekly_/monthly_) kalitlarini tozalash.
 // Eski kalitlar deleteField() bilan hujjatdan ham o'chiriladi — aks holda doc cheksiz o'sadi.
@@ -187,7 +206,8 @@ const prepareStatsForSave = (stateObj, currentUser) => {
       statsToSave[k] = deleteField();
     }
   });
-  return statsToSave;
+  // undefined'larni tozalaymiz (deleteField sentinellariga tegmaydi)
+  return stripUndefined(statsToSave);
 };
 
 export const AppProvider = ({ children }) => {
