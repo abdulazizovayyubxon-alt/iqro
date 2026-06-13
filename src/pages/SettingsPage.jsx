@@ -7,13 +7,14 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Send, Brain, KeyRound } from 'lucide-react';
+import PremiumModal from '../components/PremiumModal';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
 import { ToastContext } from '../context/ToastContext';
 import { PWAContext } from '../context/PWAContext';
 import { db, auth } from '../firebase';
 import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
-import { deleteUser } from 'firebase/auth';
+import { deleteUser, updateProfile } from 'firebase/auth';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
 import EditProfileModal from '../components/profile/EditProfileModal';
 import PasswordModal from '../components/profile/PasswordModal';
@@ -24,16 +25,6 @@ import PrivacyModal from '../components/profile/PrivacyModal';
 import ConfirmLogoutModal from '../components/profile/ConfirmLogoutModal';
 import ConfirmDeleteModal from '../components/profile/ConfirmDeleteModal';
 import './ProfilePage.css';
-
-// Menyu bo'lim sarlavhasi uslubi
-const sectionLabel = {
-  fontSize: 12,
-  fontWeight: 700,
-  color: 'var(--text3)',
-  textTransform: 'uppercase',
-  letterSpacing: '0.8px',
-  margin: '14px 4px 2px',
-};
 
 const PROFILE_FAQS = [
   {
@@ -68,8 +59,11 @@ export default function SettingsPage({ theme, toggleTheme }) {
   const { isInstallable, installApp } = useContext(PWAContext);
   const navigate = useNavigate();
 
+  const isPremium = user?.isPremium || false;
+
   // Modal holatlari
   const [showEdit, setShowEdit] = useState(false);
+  const [showPremium, setShowPremium] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [showRepetitionModal, setShowRepetitionModal] = useState(false);
   const [showTelegramModal, setShowTelegramModal] = useState(false);
@@ -80,7 +74,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
   const [deleting, setDeleting] = useState(false);
   const [openFaqIdx, setOpenFaqIdx] = useState(null);
 
-  const [editForm, setEditForm] = useState({ name: '', gender: '', birthDate: '' });
+  const [editForm, setEditForm] = useState({ firstName: '', lastName: '', age: '', gender: '', birthDate: '', subject: '', teacherCategory: '' });
   const [saving, setSaving] = useState(false);
 
   const [downloadingOffline, setDownloadingOffline] = useState(false);
@@ -98,7 +92,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
 
   // Android "orqaga" tugmasi modallarni yopadi (popstate shartnomasi)
   const anyModalOpen = showEdit || showPasswordModal || showRepetitionModal || showTelegramModal
-    || showGuideModal || showPrivacy || showLogoutConfirm || showDeleteConfirm;
+    || showGuideModal || showPrivacy || showLogoutConfirm || showDeleteConfirm || showPremium;
   useModalBackButton(anyModalOpen, () => {
     setShowEdit(false);
     setShowPasswordModal(false);
@@ -108,6 +102,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
     setShowPrivacy(false);
     setShowLogoutConfirm(false);
     setShowDeleteConfirm(false);
+    setShowPremium(false);
   });
 
   // Profil ma'lumotlarini yuklash (tahrir formasi uchun)
@@ -116,10 +111,15 @@ export default function SettingsPage({ theme, toggleTheme }) {
     getDoc(doc(db, 'users', user.uid)).then(snap => {
       if (snap.exists()) {
         const d = snap.data();
+        const dn = d.displayName || user.displayName || '';
         setEditForm({
-          name: d.displayName || user.displayName || '',
+          firstName: d.firstName ?? (dn.split(' ')[0] || ''),
+          lastName: d.lastName ?? (dn.split(' ').slice(1).join(' ') || ''),
+          age: d.age || '',
           gender: d.gender || '',
           birthDate: d.birthDate || '',
+          subject: d.subject || '',
+          teacherCategory: d.teacherCategory || '',
         });
       }
     }).catch(e => console.error('Profile load error:', e));
@@ -130,11 +130,20 @@ export default function SettingsPage({ theme, toggleTheme }) {
   const handleSave = async () => {
     setSaving(true);
     try {
+      const displayName = `${editForm.firstName || ''} ${editForm.lastName || ''}`.trim();
       await setDoc(doc(db, 'users', user.uid), {
-        displayName: editForm.name,
-        gender: editForm.gender,
-        birthDate: editForm.birthDate,
+        displayName,
+        firstName: editForm.firstName || '',
+        lastName: editForm.lastName || '',
+        age: editForm.age || '',
+        gender: editForm.gender || '',
+        birthDate: editForm.birthDate || '',
+        subject: editForm.subject || '',
+        teacherCategory: editForm.teacherCategory || '',
       }, { merge: true });
+      if (displayName && auth.currentUser) {
+        try { await updateProfile(auth.currentUser, { displayName }); } catch (e) { console.warn('updateProfile:', e); }
+      }
       showToast("Profil saqlandi ✅", 'success');
       setShowEdit(false);
     } catch (e) {
@@ -239,9 +248,93 @@ export default function SettingsPage({ theme, toggleTheme }) {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {/* ═══════ KO'RINISH ═══════ */}
-          <div style={sectionLabel}>🎨 Ko'rinish</div>
+          {/* ═══════ PREMIUM BANNER (Wisdom uslubi: sozlamalar tepasida) ═══════ */}
+          {isPremium ? (
+            <motion.div
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setShowPremium(true)}
+              title="Premium obunani boshqarish"
+              style={{
+              padding: '20px 18px', borderRadius: '18px', marginTop: 4,
+              background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+              border: 'none', cursor: 'pointer',
+              display: 'flex', alignItems: 'center', gap: 16,
+              boxShadow: '0 6px 22px rgba(245, 158, 11, 0.35)',
+              position: 'relative', overflow: 'hidden'
+            }}>
+              <motion.div
+                animate={{ x: ['-100%', '200%'] }}
+                transition={{ repeat: Infinity, duration: 3, ease: 'linear', repeatDelay: 1 }}
+                style={{
+                  position: 'absolute', top: 0, left: 0, bottom: 0, width: '30%',
+                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)',
+                  transform: 'skewX(-20deg)'
+                }}
+              />
+              <div style={{
+                width: 50, height: 50, borderRadius: '14px', flexShrink: 0,
+                background: 'rgba(255,255,255,0.25)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 26,
+                position: 'relative', zIndex: 1
+              }}>👑</div>
+              <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
+                <div style={{ fontSize: 17, fontWeight: 900, color: '#fff', marginBottom: 3 }}>Premium Faol</div>
+                <div style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', fontWeight: 600 }}>
+                  {user.premiumExpire
+                    ? `Tugash: ${new Date(user.premiumExpire).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'long', year: 'numeric' })}`
+                    : 'Barcha imkoniyatlar ochiq'}
+                </div>
+              </div>
+              <span
+                style={{
+                  background: 'rgba(255,255,255,0.25)', border: '1px solid rgba(255,255,255,0.45)',
+                  color: '#fff', fontSize: 12.5, fontWeight: 800, padding: '8px 15px',
+                  borderRadius: 11, fontFamily: 'inherit',
+                  position: 'relative', zIndex: 1, flexShrink: 0
+                }}
+              >
+                Yangilash
+              </span>
+            </motion.div>
+          ) : (
+            <motion.button
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setShowPremium(true)}
+              style={{
+                width: '100%', padding: '16px', borderRadius: '16px', marginTop: 4,
+                background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)',
+                border: 'none', cursor: 'pointer', fontFamily: 'inherit',
+                display: 'flex', alignItems: 'center', gap: 14, textAlign: 'left',
+                boxShadow: '0 4px 20px rgba(139, 92, 246, 0.25)',
+                position: 'relative', overflow: 'hidden'
+              }}
+            >
+              <motion.div
+                animate={{ x: ['-100%', '200%'] }}
+                transition={{ repeat: Infinity, duration: 3, ease: 'linear', repeatDelay: 1 }}
+                style={{
+                  position: 'absolute', top: 0, left: 0, bottom: 0, width: '30%',
+                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
+                  transform: 'skewX(-20deg)'
+                }}
+              />
+              <div style={{
+                width: 44, height: 44, borderRadius: '12px', flexShrink: 0,
+                background: 'rgba(255,255,255,0.2)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22
+              }}>👑</div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 15, fontWeight: 900, color: '#fff', marginBottom: 2 }}>IQRO Premium</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.8)' }}>
+                  Ko'proq imkoniyat uchun Premium oling
+                </div>
+              </div>
+              <ChevronRight size={20} color="rgba(255,255,255,0.8)" />
+            </motion.button>
+          )}
 
+          {/* ═══════ Sozlamalar ro'yxati (Wisdom uslubi: bitta guruhlangan karta, sarlavhasiz) ═══════ */}
+          <div className="pp-group">
           {/* Tema tanlash: Kunduzgi / Sepia (o'qish) / Tungi */}
           <div className="pp-menu-item" style={{ cursor: 'default' }}>
             <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--blue)' }}>
@@ -278,10 +371,6 @@ export default function SettingsPage({ theme, toggleTheme }) {
               ))}
             </div>
           </div>
-
-          {/* ═══════ SOZLAMALAR ═══════ */}
-          <div style={sectionLabel}>⚙️ Sozlamalar</div>
-
           <button className="pp-menu-item" onClick={() => setShowEdit(true)}>
             <div className="pp-menu-icon" style={{ background: 'var(--purple-bg)', color: 'var(--purple)' }}>
               <Edit3 size={20} />
@@ -337,9 +426,6 @@ export default function SettingsPage({ theme, toggleTheme }) {
             </button>
           )}
 
-          {/* ═══════ MA'LUMOT ═══════ */}
-          <div style={sectionLabel}>ℹ️ Ma'lumot</div>
-
           <button className="pp-menu-item" onClick={() => setShowGuideModal(true)}>
             <div className="pp-menu-icon" style={{ background: 'var(--green-bg)', color: 'var(--green)' }}>
               <div style={{ fontSize: 16 }}>📖</div>
@@ -355,10 +441,10 @@ export default function SettingsPage({ theme, toggleTheme }) {
             <span className="pp-menu-label">Maxfiylik siyosati</span>
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
+          </div>
 
-          {/* ═══════ HISOB ═══════ */}
-          <div style={sectionLabel}>🔒 Hisob</div>
-
+          {/* ═══════ Hisob amallari (alohida guruh) ═══════ */}
+          <div className="pp-group">
           <button className="pp-menu-item" onClick={() => setShowDeleteConfirm(true)}>
             <div className="pp-menu-icon" style={{ background: 'var(--red-bg)', color: 'var(--red)' }}>
               <Shield size={20} style={{ transform: 'rotate(180deg)' }} />
@@ -374,6 +460,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
             <span className="pp-menu-label">Chiqish</span>
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
+          </div>
         </div>
 
         {/* ═══ TRUST BADGES + FAQ ═══ */}
@@ -512,6 +599,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
           onClose={() => setShowDeleteConfirm(false)}
         />
       )}
+      {showPremium && <PremiumModal isOpen={showPremium} onClose={() => setShowPremium(false)} />}
     </motion.div>
   );
 }

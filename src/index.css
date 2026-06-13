@@ -189,12 +189,13 @@ body.dark-theme {
 }
 
 /* HEADER */
-.header { 
-  background: var(--glass-bg); 
-  backdrop-filter: blur(20px); 
-  -webkit-backdrop-filter: blur(20px); 
-  border-bottom: 0.5px solid var(--glass-border); 
-  padding: 0 24px; 
+.header {
+  /* Wisdom uslubi: header fonga to'liq birlashadi — chegara/soya/blur yo'q.
+     Sahifa gradienti bilan bir xil (fixed), shu sababli ajratuvchi chiziq ko'rinmaydi,
+     lekin opaque bo'lgani uchun scroll'dagi kontent toza yopiladi. */
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  padding: 0 24px;
   display: flex; 
   align-items: center; 
   justify-content: space-between; 
@@ -226,7 +227,88 @@ body.dark-theme {
   color: var(--text);
   letter-spacing: 1px;
 }
-.header-stats { display: flex; gap: 24px; align-items: center; }
+.header-stats { display: flex; gap: 10px; align-items: center; }
+
+/* ===== Header salomlashish (Wisdom uslubi: avatar + ism) ===== */
+.header-greeting {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  min-width: 0;
+}
+.header-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%);
+  color: #fff;
+  font-weight: 800;
+  font-size: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(41, 182, 246, 0.25);
+}
+.header-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+/* Avatar ustidagi bildirishnoma soni (qo'ng'iroqcha o'rniga) */
+.header-avatar-wrap { position: relative; flex-shrink: 0; }
+.header-avatar-badge {
+  position: absolute; top: -4px; right: -4px;
+  min-width: 19px; height: 19px; padding: 0 5px;
+  border-radius: 99px; background: var(--red);
+  color: #fff; font-size: 11px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--bg); box-sizing: border-box;
+  box-shadow: 0 1px 4px rgba(239, 68, 68, 0.4);
+}
+.header-greeting-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.2; }
+.header-greet-hi { font-size: 12px; color: var(--text3); font-weight: 500; white-space: nowrap; }
+.header-greet-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+
+/* ===== Premium pill (Wisdom uslubi) ===== */
+.header-premium-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 99px;
+  background: linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%);
+  color: #fff;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+.header-premium-pill:hover { box-shadow: 0 6px 18px rgba(139, 92, 246, 0.4); }
+.header-premium-gem { font-size: 14px; line-height: 1; }
+
+/* ===== Mobil moslashuv: header tig'iz bo'lgani uchun ixchamlashtiramiz ===== */
+@media (max-width: 768px) {
+  .header { padding: 0 12px; }
+  .header-stats { gap: 6px; }
+  .header-avatar { width: 38px; height: 38px; font-size: 14px; }
+  .header-greet-hi { font-size: 11px; }
+  .header-greet-name { font-size: 14px; max-width: 96px; }
+  .header-premium-pill { padding: 7px 10px; font-size: 12px; gap: 4px; }
+  .header-premium-gem { font-size: 12px; }
+}
+
 .hstat { text-align: center; }
 .hstat-val { font-size: 20px; font-weight: 700; color: var(--text); line-height: 1; }
 .hstat-lbl { font-size: 10px; color: var(--text3); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }

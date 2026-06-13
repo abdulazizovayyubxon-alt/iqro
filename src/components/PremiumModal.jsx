@@ -2,7 +2,7 @@
  * PremiumModal.jsx — To'lov tizimi (Telegram + Click + Payme)
  * Telegram asosiy usul, Click/Payme qo'shimcha
  */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Crown, CheckCircle, X, CreditCard, Smartphone,
@@ -109,6 +109,12 @@ const PremiumModal = ({ isOpen, onClose }) => {
   const [promoLoading, setPromoLoading] = useState(false);
   const [promoMsg, setPromoMsg] = useState(null); // { type: 'ok'|'err', text }
 
+  // onClose'ni ref orqali ushlaymiz — ota komponent har soniyada qayta render
+  // bo'lganda (masalan ProfilePage urgency timer) popstate effekti qayta
+  // ishlab modalni o'z-o'zidan yopib qo'ymasligi uchun.
+  const onCloseRef = useRef(onClose);
+  useEffect(() => { onCloseRef.current = onClose; }, [onClose]);
+
   useEffect(() => {
     if (!isOpen || !user) return;
     setStep('plans');
@@ -138,13 +144,13 @@ const PremiumModal = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (!isOpen) return;
     window.history.pushState({ premiumModalOpen: true }, '');
-    const handlePopState = () => onClose();
+    const handlePopState = () => onCloseRef.current();
     window.addEventListener('popstate', handlePopState);
     return () => {
       window.removeEventListener('popstate', handlePopState);
       if (window.history.state?.premiumModalOpen) window.history.back();
     };
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 

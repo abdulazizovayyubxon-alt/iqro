@@ -136,6 +136,7 @@ class ErrorBoundary extends React.Component {
 function App() {
   const { user, loading } = useAuth();
   const location = useLocation();
+  const appContext = useContext(AppContext);
   const [theme, setTheme] = useState('light');
   const [needsOnboarding, setNeedsOnboarding] = useState(false);
   const [onboardingChecked, setOnboardingChecked] = useState(false);
@@ -250,8 +251,6 @@ function App() {
     return <LoginPage />;
   }
 
-  const appContext = useContext(AppContext);
-
   // Yangi foydalanuvchi — Onboarding
   if (needsOnboarding) {
     return <OnboardingPage onComplete={(subject) => {
@@ -264,9 +263,12 @@ function App() {
   }
 
   // Asosiy ilova
+  // Reyting va Siz (profil) sahifalarida yuqori header ko'rinmaydi —
+  // bu sahifalarning o'z sarlavhasi bor, global header ortiqcha.
+  const hideHeader = location.pathname === '/leaderboard' || location.pathname === '/profile';
   return (
     <div className="layout-container">
-      <Header theme={theme} toggleTheme={toggleTheme} />
+      {!hideHeader && <Header theme={theme} toggleTheme={toggleTheme} />}
       <OfflineIndicator />
       <div className="layout-body">
         <Sidebar />

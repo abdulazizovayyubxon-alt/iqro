@@ -4,18 +4,26 @@
  * streak, statistika kartalari, premium holati va havolalar.
  * Sozlamalar/hisob/FAQ alohida sahifaga ko'chirilgan: /settings (SettingsPage.jsx)
  */
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Settings, ChevronRight, Crown, Shield, Play, GraduationCap, Brain, Zap, Users } from 'lucide-react';
+import { Settings, ChevronRight, Crown, Shield, Play, GraduationCap, Brain, Zap, Users, Camera, Pencil } from 'lucide-react';
+import { SUBJECTS } from '../data/mockData';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
-import { db } from '../firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import { ToastContext } from '../context/ToastContext';
+import { db, storage, auth } from '../firebase';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { updateProfile } from 'firebase/auth';
 import { getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
 import { REFERRAL_DISCOUNT, MONTHLY_PRICE, DISCOUNT_AMOUNT } from '../services/referral';
 import PremiumModal from '../components/PremiumModal';
+import NotificationBell from '../components/NotificationBell';
+import EditProfileModal, { TOIFALAR } from '../components/profile/EditProfileModal';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
+
+const TOIFA_LABELS = Object.fromEntries(TOIFALAR.map(t => [t.value, t.label]));
 import { useAdmin } from '../hooks/useAdmin';
 import './ProfilePage.css';
 
@@ -24,18 +32,93 @@ const DAY_NAMES = ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'];
 export default function ProfilePage() {
   const { user } = useAuth();
   const { state, updateState } = useContext(AppContext);
+  const { showToast } = useContext(ToastContext);
   const { isAdmin } = useAdmin();
   const navigate = useNavigate();
 
   const [showPremium, setShowPremium] = useState(false);
   const [profileName, setProfileName] = useState('');
+  const [profileSubject, setProfileSubject] = useState('');
+  const [profileToifa, setProfileToifa] = useState('');
   const [bonusBalance, setBonusBalance] = useState(0);
+
+  // Profilni tahrirlash modali
+  const [showEdit, setShowEdit] = useState(false);
+  const [savingEdit, setSavingEdit] = useState(false);
+  const [editForm, setEditForm] = useState({ firstName: '', lastName: '', age: '', gender: '', birthDate: '', subject: '', teacherCategory: '' });
+
+  // Profil rasmi (avatar) — yuklash holati
+  const [photoURL, setPhotoURL] = useState(user?.photoURL || '');
+  const [uploadingPhoto, setUploadingPhoto] = useState(false);
+  const fileInputRef = useRef(null);
+
+  const handlePhotoChange = async (e) => {
+    const file = e.target.files?.[0];
+    e.target.value = ''; // bir xil faylni qayta tanlash mumkin bo'lsin
+    if (!file || !user) return;
+    if (!file.type.startsWith('image/')) {
+      showToast('Faqat rasm fayli yuklang', 'error');
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      showToast("Rasm hajmi 5 MB dan oshmasligi kerak", 'error');
+      return;
+    }
+    setUploadingPhoto(true);
+    try {
+      const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
+      const avatarRef = storageRef(storage, `avatars/${user.uid}/photo.${ext}`);
+      await uploadBytes(avatarRef, file);
+      const url = await getDownloadURL(avatarRef);
+      if (auth.currentUser) await updateProfile(auth.currentUser, { photoURL: url });
+      await setDoc(doc(db, 'users', user.uid), { photoURL: url }, { merge: true });
+      setPhotoURL(url);
+      showToast('Profil rasmi yangilandi ✅', 'success');
+    } catch (err) {
+      console.error('Avatar yuklash xatosi:', err);
+      showToast("Rasm yuklashda xatolik. Internet va ruxsatlarni tekshiring.", 'error');
+    } finally {
+      setUploadingPhoto(false);
+    }
+  };
+
+  // Profil ma'lumotlarini saqlash (ism/familiya/yosh/jins/sana/fan/toifa)
+  const handleSaveProfile = async () => {
+    if (!user) return;
+    setSavingEdit(true);
+    try {
+      const displayName = `${editForm.firstName || ''} ${editForm.lastName || ''}`.trim();
+      await setDoc(doc(db, 'users', user.uid), {
+        displayName,
+        firstName: editForm.firstName || '',
+        lastName: editForm.lastName || '',
+        age: editForm.age || '',
+        gender: editForm.gender || '',
+        birthDate: editForm.birthDate || '',
+        subject: editForm.subject || '',
+        teacherCategory: editForm.teacherCategory || '',
+      }, { merge: true });
+      if (displayName && auth.currentUser) {
+        try { await updateProfile(auth.currentUser, { displayName }); } catch (e) { console.warn('updateProfile:', e); }
+      }
+      if (displayName) setProfileName(displayName);
+      setProfileSubject(editForm.subject || '');
+      setProfileToifa(editForm.teacherCategory || '');
+      showToast('Profil saqlandi ✅', 'success');
+      setShowEdit(false);
+    } catch (e) {
+      console.error('Profil saqlash xatosi:', e);
+      showToast('Xatolik yuz berdi', 'error');
+    } finally {
+      setSavingEdit(false);
+    }
+  };
 
   // Urgency countdown (72h real-time)
   const [urgencyLeft, setUrgencyLeft] = useState(user?.urgencyMs || 0);
 
   // Android "orqaga" tugmasi premium modalni yopadi
-  useModalBackButton(showPremium, () => setShowPremium(false));
+  useModalBackButton(showPremium || showEdit, () => { setShowPremium(false); setShowEdit(false); });
 
   // Profil ma'lumotlarini yuklash (ism + imtihon sanasi sinxroni)
   useEffect(() => {
@@ -43,8 +126,21 @@ export default function ProfilePage() {
     getDoc(doc(db, 'users', user.uid)).then(snap => {
       if (snap.exists()) {
         const d = snap.data();
+        const dn = d.displayName || user.displayName || '';
         if (d.displayName) setProfileName(d.displayName);
+        if (d.photoURL) setPhotoURL(d.photoURL);
         setBonusBalance(d.referralBonus || 0);
+        setProfileSubject(d.subject || '');
+        setProfileToifa(d.teacherCategory || '');
+        setEditForm({
+          firstName: d.firstName ?? (dn.split(' ')[0] || ''),
+          lastName: d.lastName ?? (dn.split(' ').slice(1).join(' ') || ''),
+          age: d.age || '',
+          gender: d.gender || '',
+          birthDate: d.birthDate || '',
+          subject: d.subject || '',
+          teacherCategory: d.teacherCategory || '',
+        });
         if (d.examDate) {
           localStorage.setItem('iqro_exam_date', d.examDate);
           // Header uchun ham sinxronlaymiz (CUSTOM_EXAM_DATE formatida)
@@ -128,56 +224,94 @@ export default function ProfilePage() {
 
   return (
     <motion.div className="pp" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      {/* ═══ FOYDALANUVCHI SARLAVHASI ═══ */}
-      <div className="pp-header" style={{ paddingBottom: '24px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '0 4px' }}>
-            <div style={{
-              width: 52, height: 52, borderRadius: '16px', background: 'rgba(255,255,255,0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: 22, fontWeight: 800, color: '#fff', border: '1px solid rgba(255,255,255,0.3)',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-            }}>
-              {initials}
-            </div>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 20, fontWeight: 800, color: '#fff', marginBottom: '4px', letterSpacing: '-0.3px' }}>
-                {displayName}
-              </div>
-              <div className="pp-badges-row" style={{ marginTop: 0 }}>
-                <span className="pp-badge pp-badge-level" style={{ background: 'rgba(255,255,255,0.2)', color: '#fff', border: 'none' }}>⚡ Lv.{levelInfo.level} {levelInfo.name}</span>
-                {isPremium
-                  ? <span className="pp-badge pp-badge-premium"><Crown size={10} /> Premium</span>
-                  : <span className="pp-badge pp-badge-free" onClick={() => setShowPremium(true)} style={{ cursor: 'pointer', background: 'rgba(255,255,255,0.2)', color: '#fff', border: 'none' }}>Bepul</span>
-                }
-              </div>
-            </div>
-            {/* Sozlamalar tugmasi */}
-            <motion.button
-              whileTap={{ scale: 0.92 }}
-              onClick={() => navigate('/settings')}
-              title="Sozlamalar"
-              style={{
-                width: 42, height: 42, borderRadius: 12, flexShrink: 0,
-                background: 'rgba(255,255,255,0.18)', border: '1px solid rgba(255,255,255,0.3)',
-                color: '#fff', cursor: 'pointer', display: 'flex',
-                alignItems: 'center', justifyContent: 'center'
-              }}
-            >
-              <Settings size={20} />
-            </motion.button>
+      {/* ═══ FOYDALANUVCHI SARLAVHASI (markazlashgan hero karta) ═══ */}
+      <div className="pp-hero">
+        {/* Burchak ikonkalari: bildirishnoma + sozlamalar */}
+        <div className="pp-hero-actions">
+          <NotificationBell iconSize={18} buttonClassName="pp-hero-icon-btn" buttonStyle={{ width: 36, height: 36 }} />
+          <motion.button
+            className="pp-hero-icon-btn"
+            whileTap={{ scale: 0.92 }}
+            onClick={() => navigate('/settings')}
+            title="Sozlamalar"
+            style={{ width: 36, height: 36 }}
+          >
+            <Settings size={18} />
+          </motion.button>
+        </div>
+
+        {/* Markazda: avatar + ism + badge'lar */}
+        <div className="pp-hero-id">
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            style={{ display: 'none' }}
+            onChange={handlePhotoChange}
+          />
+          <motion.div
+            className="pp-hero-avatar"
+            whileTap={{ scale: 0.94 }}
+            onClick={() => !uploadingPhoto && fileInputRef.current?.click()}
+            title="Profil rasmini o'zgartirish"
+          >
+            {uploadingPhoto ? (
+              <div className="pp-avatar-spinner" />
+            ) : photoURL ? (
+              <img src={photoURL} alt={displayName} />
+            ) : (
+              <span>{initials}</span>
+            )}
+            <div className="pp-hero-cam"><Camera size={11} color="#fff" /></div>
+          </motion.div>
+
+          <div className="pp-hero-name-row">
+            <span className="pp-hero-name">{displayName}</span>
+            <button className="pp-hero-edit" onClick={() => setShowEdit(true)} title="Profilni tahrirlash">
+              <Pencil size={14} />
+            </button>
           </div>
 
-          {/* XP Progress */}
-          <div className="pp-xp-bar" style={{ marginTop: '16px', background: 'rgba(0,0,0,0.15)' }}>
-            <div className="pp-xp-labels" style={{ color: 'rgba(255,255,255,0.9)' }}>
-              <span>⚡ {totalXP} XP</span>
-              <span>{totalXP}/{nextXP} XP</span>
+          {(profileSubject || profileToifa) && (
+            <div className="pp-hero-sub">
+              {profileSubject && `${SUBJECTS.find(s => s.id === profileSubject)?.name || ''} o'qituvchisi`}
+              {profileSubject && profileToifa && ' · '}
+              {profileToifa && TOIFA_LABELS[profileToifa]}
             </div>
-            <div className="pp-xp-track" style={{ background: 'rgba(255,255,255,0.1)' }}>
-              <div className="pp-xp-fill" style={{ width: `${xpPct}%`, background: '#fff' }} />
-            </div>
+          )}
+
+          <div className="pp-hero-badges">
+            <span className="pp-hero-chip lv"><Zap size={11} /> Lv.{levelInfo.level}</span>
+            {isPremium
+              ? <span className="pp-hero-chip premium"><Crown size={11} /> Premium</span>
+              : <span className="pp-hero-chip free" onClick={() => setShowPremium(true)}>Bepul</span>
+            }
           </div>
+        </div>
+
+        {/* Statistika qatori: XP · Daraja · Streak */}
+        <div className="pp-hero-stats">
+          <div className="pp-hero-stat"><b>{totalXP}</b><span>XP / {nextXP}</span></div>
+          <div className="pp-hero-stat"><b>{levelInfo.level}</b><span>Daraja</span></div>
+          <div className="pp-hero-stat"><b>🔥 {dailyStreak}</b><span>Kun</span></div>
+        </div>
+
+        {/* XP progress chizig'i */}
+        <div className="pp-hero-xptrack"><div className="pp-hero-xpfill" style={{ width: `${xpPct}%` }} /></div>
+
+        {/* Haftalik streak — 7 kunlik lenta */}
+        <div className="pp-hero-streak-head">🔥 Haftalik streak</div>
+        <div className="pp-hero-streak">
+          {weekDays.map((dayIdx, i) => {
+            const isActive = i < dailyStreak;
+            const isToday = dayIdx === todayIdx;
+            return (
+              <div key={dayIdx} className={`pp-hero-day ${isActive ? 'active' : ''} ${isToday && !isActive ? 'today' : ''}`}>
+                <div className="pp-hero-day-ic">{isActive ? '🔥' : isToday ? '📍' : '○'}</div>
+                <div className="pp-hero-day-lbl">{DAY_NAMES[i]}</div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -286,26 +420,6 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* ═══ STREAK WEEK ═══ */}
-        <div className="pp-card">
-          <div className="pp-card-label">🔥 Haftalik Streak · {dailyStreak} kun</div>
-          <div className="pp-streak-row">
-            {weekDays.map((dayIdx, i) => {
-              const isActive = i < dailyStreak;
-              const isToday = dayIdx === todayIdx;
-              return (
-                <div key={dayIdx} className={`pp-streak-day ${isActive ? 'active' : ''}`}
-                  style={isToday && !isActive ? { borderColor: 'var(--blue)', background: 'var(--blue-bg)' } : {}}>
-                  <div className="pp-streak-icon">{isActive ? '🔥' : isToday ? '📍' : '○'}</div>
-                  <div className="pp-streak-lbl" style={isToday && !isActive ? { color: 'var(--blue)' } : {}}>
-                    {DAY_NAMES[i]}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
         {/* ═══ STAT CARDS OR EMPTY CTA ═══ */}
         {totalAnswered === 0 ? (
           <div className="pp-card" style={{ textAlign: 'center', padding: '30px 20px', border: '1.5px dashed var(--blue)' }}>
@@ -391,36 +505,52 @@ export default function ProfilePage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {isPremium ? (
             /* Premium foydalanuvchi — obuna holati */
-            <div style={{
-              padding: '16px', borderRadius: '16px', marginBottom: 2,
-              background: 'linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(245, 158, 11, 0.06))',
-              border: '1px solid rgba(245, 158, 11, 0.35)',
-              display: 'flex', alignItems: 'center', gap: 14
+            <motion.div
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setShowPremium(true)}
+              title="Premium obunani boshqarish"
+              style={{
+              padding: '20px 18px', borderRadius: '18px', marginBottom: 2,
+              background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+              border: 'none', cursor: 'pointer',
+              display: 'flex', alignItems: 'center', gap: 16,
+              boxShadow: '0 6px 22px rgba(245, 158, 11, 0.35)',
+              position: 'relative', overflow: 'hidden'
             }}>
+              <motion.div
+                animate={{ x: ['-100%', '200%'] }}
+                transition={{ repeat: Infinity, duration: 3, ease: 'linear', repeatDelay: 1 }}
+                style={{
+                  position: 'absolute', top: 0, left: 0, bottom: 0, width: '30%',
+                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)',
+                  transform: 'skewX(-20deg)'
+                }}
+              />
               <div style={{
-                width: 42, height: 42, borderRadius: '12px', flexShrink: 0,
-                background: 'linear-gradient(135deg, #F59E0B, #D97706)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20
+                width: 50, height: 50, borderRadius: '14px', flexShrink: 0,
+                background: 'rgba(255,255,255,0.25)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 26,
+                position: 'relative', zIndex: 1
               }}>👑</div>
-              <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 15, fontWeight: 800, color: '#F59E0B', marginBottom: 2 }}>Premium Faol</div>
-                <div style={{ fontSize: 12, color: 'var(--text3)' }}>
+              <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
+                <div style={{ fontSize: 17, fontWeight: 900, color: '#fff', marginBottom: 3 }}>Premium Faol</div>
+                <div style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', fontWeight: 600 }}>
                   {user.premiumExpire
                     ? `Tugash: ${new Date(user.premiumExpire).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'long', year: 'numeric' })}`
                     : 'Muddatsiz'}
                 </div>
               </div>
-              <button
-                onClick={() => setShowPremium(true)}
+              <span
                 style={{
-                  background: 'rgba(245, 158, 11, 0.15)', border: '1px solid rgba(245, 158, 11, 0.3)',
-                  color: '#F59E0B', fontSize: 12, fontWeight: 700, padding: '6px 12px',
-                  borderRadius: 10, cursor: 'pointer', fontFamily: 'inherit'
+                  background: 'rgba(255,255,255,0.25)', border: '1px solid rgba(255,255,255,0.45)',
+                  color: '#fff', fontSize: 12.5, fontWeight: 800, padding: '8px 15px',
+                  borderRadius: 11, fontFamily: 'inherit',
+                  position: 'relative', zIndex: 1, flexShrink: 0
                 }}
               >
                 Yangilash
-              </button>
-            </div>
+              </span>
+            </motion.div>
           ) : (
             /* Premium yo'q — sotib olish tugmasi */
             <motion.button
@@ -459,6 +589,7 @@ export default function ProfilePage() {
             </motion.button>
           )}
 
+          <div className="pp-group">
           {/* Do'stlarni taklif qilish */}
           <button className="pp-menu-item" onClick={() => navigate('/referral')}>
             <div className="pp-menu-icon" style={{ background: 'var(--amber-bg)', color: 'var(--amber)' }}>
@@ -496,11 +627,21 @@ export default function ProfilePage() {
               <ChevronRight size={18} className="pp-menu-arrow" />
             </button>
           )}
+          </div>
         </div>
       </div>
 
       {/* Premium Modal */}
       {showPremium && <PremiumModal isOpen={showPremium} onClose={() => setShowPremium(false)} />}
+      {showEdit && (
+        <EditProfileModal
+          form={editForm}
+          setForm={setEditForm}
+          saving={savingEdit}
+          onSave={handleSaveProfile}
+          onClose={() => setShowEdit(false)}
+        />
+      )}
     </motion.div>
   );
 }

@@ -4,7 +4,120 @@
 
 .pp { max-width: 600px; margin: 0 auto; padding: 0 0 100px; }
 
-/* ── Gradient Header ── */
+/* Avatar rasm yuklash spinneri */
+.pp-avatar-spinner {
+  width: 22px; height: 22px;
+  border: 2.5px solid rgba(255,255,255,0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: ppSpin 0.7s linear infinite;
+}
+@keyframes ppSpin { to { transform: rotate(360deg); } }
+
+/* ── Markazlashgan hero karta (Wisdom uslubi: toza oq karta) ── */
+.pp-hero {
+  position: relative;
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  margin: 16px 16px 0;
+  padding: 16px;
+}
+.pp-hero-actions {
+  position: absolute; top: 14px; right: 14px;
+  display: flex; gap: 8px; z-index: 2;
+}
+.pp-hero-icon-btn {
+  border-radius: 11px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0;
+}
+.pp-hero-id {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding-top: 6px;
+}
+.pp-hero-avatar {
+  position: relative; width: 72px; height: 72px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 27px; font-weight: 800; color: #fff; cursor: pointer;
+}
+.pp-hero-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.pp-hero-cam {
+  position: absolute; bottom: -2px; right: -2px;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--accent); border: 2.5px solid var(--bg2);
+  display: flex; align-items: center; justify-content: center;
+}
+.pp-hero-name-row {
+  display: flex; align-items: center; gap: 8px;
+  margin-top: 10px;
+}
+.pp-hero-name {
+  font-size: 20px; font-weight: 800; color: var(--text);
+  letter-spacing: -0.3px;
+}
+.pp-hero-edit {
+  width: 26px; height: 26px; border-radius: 8px; flex-shrink: 0;
+  background: var(--bg3); border: 1px solid var(--border);
+  color: var(--text2); cursor: pointer; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.pp-hero-sub {
+  font-size: 12px; color: var(--text3); font-weight: 600;
+  margin-top: 6px;
+}
+.pp-hero-badges {
+  display: flex; gap: 6px; margin-top: 8px;
+  flex-wrap: wrap; justify-content: center;
+}
+.pp-hero-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 10px; border-radius: 99px;
+  font-size: 11px; font-weight: 700;
+}
+.pp-hero-chip.lv { background: var(--blue-bg); color: var(--blue); }
+.pp-hero-chip.premium { background: var(--amber-bg); color: var(--amber); }
+.pp-hero-chip.free { background: var(--bg3); color: var(--text2); cursor: pointer; }
+.pp-hero-stats {
+  display: flex; margin-top: 16px;
+  border-top: 1px solid var(--border); padding-top: 14px;
+}
+.pp-hero-stat { flex: 1; text-align: center; }
+.pp-hero-stat + .pp-hero-stat { border-left: 1px solid var(--border); }
+.pp-hero-stat b { display: block; font-size: 19px; font-weight: 800; color: var(--text); line-height: 1.2; }
+.pp-hero-stat span { font-size: 10px; color: var(--text3); font-weight: 600; }
+.pp-hero-xptrack {
+  height: 7px; border-radius: 99px; background: var(--bg3);
+  overflow: hidden; margin-top: 12px;
+}
+.pp-hero-xpfill {
+  height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+.pp-hero-streak-head {
+  font-size: 11px; font-weight: 700; color: var(--text3);
+  margin: 16px 0 8px;
+}
+.pp-hero-streak { display: flex; gap: 5px; }
+.pp-hero-day {
+  flex: 1; text-align: center; padding: 6px 0;
+  border-radius: 10px; background: var(--bg3);
+  border: 1.5px solid transparent;
+}
+.pp-hero-day.active { background: linear-gradient(135deg, #F59E0B, #EF4444); }
+.pp-hero-day.active .pp-hero-day-ic,
+.pp-hero-day.active .pp-hero-day-lbl { color: #fff; }
+.pp-hero-day.today { border-color: var(--accent); background: var(--blue-bg); }
+.pp-hero-day.today .pp-hero-day-lbl { color: var(--accent); }
+.pp-hero-day-ic { font-size: 14px; line-height: 1.3; }
+.pp-hero-day-lbl { font-size: 9px; font-weight: 700; color: var(--text3); }
+
+/* ── Gradient Header (eski — endi ishlatilmaydi) ── */
 .pp-header {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
   border-radius: 0 0 28px 28px;
@@ -77,7 +190,7 @@
   background: rgba(255,255,255,0.2); color: #fff;
 }
 .pp-badge-premium {
-  background: linear-gradient(135deg, #F59E0B, #D97706);
+  background: rgba(255,255,255,0.25);
   color: #fff;
 }
 .pp-badge-free {
@@ -360,6 +473,25 @@
 .pp-menu-item.danger { border-color: rgba(239,68,68,0.2); }
 .pp-menu-item.danger .pp-menu-label { color: var(--red); }
 .pp-menu-item.danger:hover { background: var(--red-bg); }
+
+/* ── Wisdom uslubi: guruhlangan ro'yxat (iOS inset grouped) ──
+   Bir bo'lim qatorlari bitta yumaloq kartaga birlashadi, orasida ingichka chiziq */
+.pp-group {
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+}
+.pp-group .pp-menu-item {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+.pp-group .pp-menu-item + .pp-menu-item {
+  border-top: 1px solid var(--border);
+}
+.pp-group .pp-menu-item:hover { background: var(--bg3); }
+.pp-group .pp-menu-item.danger:hover { background: var(--red-bg); }
 
 /* ── Edit Modal ── */
 .pp-modal-overlay {

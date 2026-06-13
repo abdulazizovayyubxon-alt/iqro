@@ -72,16 +72,17 @@ export default function BottomNav() {
                     <img src={user.photoURL} alt="Avatar" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
                   ) : (
                     <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: 'var(--glass-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Icon size={14} style={{ color: isActive ? (isPremium ? '#F59E0B' : '#fff') : 'var(--text3)' }} />
+                      <Icon size={15} strokeWidth={2.4} style={{ color: isActive ? (isPremium ? '#F59E0B' : '#fff') : 'var(--text2)' }} />
                     </div>
                   )}
                 </div>
               ) : (
                 <Icon
-                  size={22}
+                  size={25}
+                  strokeWidth={2.4}
                   style={{
                     position: 'relative', zIndex: 1,
-                    color: isActive ? '#fff' : 'var(--text3)',
+                    color: isActive ? '#fff' : 'var(--text2)',
                     transition: 'color 0.2s',
                   }}
                 />
@@ -91,9 +92,9 @@ export default function BottomNav() {
               )}
             </div>
             <span style={{
-              fontSize: 10, fontWeight: isActive ? 700 : 500,
-              color: isActive ? 'var(--accent)' : 'var(--text3)',
-              marginTop: 3, transition: 'color 0.2s',
+              fontSize: 11, fontWeight: isActive ? 800 : 600,
+              color: isActive ? 'var(--accent)' : 'var(--text2)',
+              marginTop: 4, transition: 'color 0.2s',
             }}>
               {tab.label}
             </span>
@@ -108,13 +109,13 @@ const styles = {
   nav: {
     display: 'grid',
     position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1000,
-    background: 'var(--glass-bg)',
-    backdropFilter: 'blur(20px)',
-    WebkitBackdropFilter: 'blur(20px)',
+    // Solid (opaque) fon — yarim shaffof glass o'rniga ko'zga ko'rinarliroq;
+    // mobil backdrop-filter ishlamasligi muammosi ham bartaraf bo'ladi
+    background: 'var(--bg2)',
     borderTop: '1px solid var(--glass-border)',
     padding: '8px 0 calc(8px + env(safe-area-inset-bottom))',
     gridTemplateColumns: 'repeat(5, 1fr)',
-    boxShadow: '0 -4px 20px rgba(0,0,0,0.03)',
+    boxShadow: '0 -4px 20px rgba(0,0,0,0.05)',
   },
   tab: {
     display: 'flex', flexDirection: 'column', alignItems: 'center',
@@ -124,11 +125,11 @@ const styles = {
   },
   activePill: {
     position: 'absolute',
-    top: -9, left: -9,
-    width: 40, height: 40, borderRadius: 12,
+    top: -8, left: -8,
+    width: 41, height: 41, borderRadius: 13,
     background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)',
     zIndex: 0,
-    boxShadow: '0 4px 12px rgba(139, 92, 246, 0.25)',
+    boxShadow: '0 4px 14px rgba(139, 92, 246, 0.32)',
   },
   badge: {
     position: 'absolute', top: -6, right: -8,

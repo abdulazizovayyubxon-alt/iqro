@@ -1,0 +1,22 @@
+rules_version = '2';
+
+// Firebase Storage xavfsizlik qoidalari
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Profil avatarlari: hamma o'qiy oladi (umumiy ko'rinish uchun),
+    // faqat egasi o'z papkasiga rasm yozadi (maks 5 MB, faqat rasm fayli)
+    match /avatars/{userId}/{fileName} {
+      allow read: if true;
+      allow write: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+
+    // Boshqa barcha yo'llar: standart ravishda taqiqlangan
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

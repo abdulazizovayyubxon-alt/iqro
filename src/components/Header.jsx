@@ -3,15 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
-import { Moon, Sun, BookOpen, LogOut, ChevronDown, Camera, Medal, Palette, Bell, Calendar, CheckCircle2, AlertCircle, Info, Trash2 } from 'lucide-react';
+import { Moon, Sun, BookOpen, LogOut, ChevronDown, Camera, Medal, Palette, Calendar } from 'lucide-react';
 import { updateProfile } from 'firebase/auth';
 import { auth, db } from '../firebase';
-import { collection, getDocs, doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore';
+import { getDocs, doc, getDoc, setDoc } from 'firebase/firestore';
 import { EXAM_DATE } from '../config';
 import { getReferralStats } from '../services/referral';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { useIsMobile } from '../hooks/useIsMobile';
+import PremiumModal from './PremiumModal';
+import { useModalBackButton } from './profile/useModalBackButton';
+import { useNotifications } from '../hooks/useNotifications';
 
 const Header = ({ theme, toggleTheme }) => {
   const isMobile = useIsMobile();
@@ -22,6 +25,12 @@ const Header = ({ theme, toggleTheme }) => {
   const [daysLeft, setDaysLeft] = useState(0);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [showPremium, setShowPremium] = useState(false);
+  const isPremium = user?.isPremium || false;
+  const { unreadCount } = useNotifications();
+  useModalBackButton(showPremium, () => setShowPremium(false));
+  // O'ng tomon ikonka tugmalari o'lchami — mobil ekranda joy tig'iz bo'lgani uchun kichikroq
+  const btnSize = isMobile ? 38 : 44;
   
   // Ambassador Modal va Stats
   const [ambassadorModal, setAmbassadorModal] = useState(false);
@@ -66,22 +75,6 @@ const Header = ({ theme, toggleTheme }) => {
   const [showExamModal, setShowExamModal] = useState(false);
   const [tempDays, setTempDays] = useState('');
   const [tempDate, setTempDate] = useState('');
-
-  // --- Yangi: Bildirishnomalar holati ---
-  const [showNotifMenu, setShowNotifMenu] = useState(false);
-  const [notifications, setNotifications] = useState(() => {
-    const saved = localStorage.getItem('IQRO_NOTIFICATIONS');
-    if (saved) {
-      try { return JSON.parse(saved); } catch(e){}
-    }
-    return [
-      { id: '1', title: '🎉 IQRO Platformasiga xush kelibsiz!', message: "CHQBT va San'at bo'limlarida bilimingizni oshiring. Barcha testlar tayyor!", date: new Date().toISOString(), read: false, type: 'success' },
-      { id: '2', title: '🔥 Kunlik maqsadni unutmang', message: 'Har kuni kamida 20 ta savol yechib, olovli streak zanjirini davom ettiring!', date: new Date(Date.now() - 3600000).toISOString(), read: false, type: 'info' },
-      { id: '3', title: '💡 Takrorlash tavsiya etiladi', message: "Takrorlash bo'limida siz xato qilgan savollar kutmoqda. Bilimingizni mustahkamlang!", date: new Date(Date.now() - 86400000).toISOString(), read: true, type: 'warning' }
-    ];
-  });
-
-  const unreadCount = notifications.filter(n => !n.read).length;
 
   const calcDays = () => {
     const customSaved = localStorage.getItem('CUSTOM_EXAM_DATE');
@@ -131,67 +124,21 @@ const Header = ({ theme, toggleTheme }) => {
     };
   }, [user]);
 
-  // Firestore'dan jonli bildirishnomalarni yuklash (onSnapshot orqali)
-  useEffect(() => {
-    if (!user) return;
-    
-    const unsubscribe = onSnapshot(collection(db, 'notifications'), (notifSnap) => {
-      try {
-        const firestoreNotifs = notifSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-        
-        const relevantNotifs = firestoreNotifs.filter(n =>
-          !n.targetUser && !n.userId
-            ? true                                        // Umumiy bildirishnoma
-            : n.targetUser === user?.uid                  // targetUser orqali
-              || n.targetUser === 'all'
-              || n.userId === user?.uid                   // referral bonus userId orqali
-        );
-        
-        setNotifications(prev => {
-          const localMap = new Map(prev.map(item => [item.id, item]));
-          
-          relevantNotifs.forEach(fn => {
-            if (localMap.has(fn.id)) {
-              const existing = localMap.get(fn.id);
-              localMap.set(fn.id, { ...fn, read: existing.read });
-            } else {
-              localMap.set(fn.id, { ...fn, read: false });
-            }
-          });
-          
-          const merged = Array.from(localMap.values()).sort((a,b) => new Date(b.date) - new Date(a.date));
-          localStorage.setItem('IQRO_NOTIFICATIONS', JSON.stringify(merged));
-          return merged;
-        });
-      } catch(e) {
-        console.error("Bildirishnomalarni yuklashda xatolik:", e);
-      }
-    }, (err) => {
-      console.error("Notification snapshot xatosi:", err);
-    });
-
-    return () => unsubscribe();
-  }, [user]);
-
   const menuRef = useRef(null);
-  const notifRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setShowUserMenu(false);
       }
-      if (notifRef.current && !notifRef.current.contains(event.target)) {
-        setShowNotifMenu(false);
-      }
     };
-    if (showUserMenu || showNotifMenu) {
+    if (showUserMenu) {
       document.addEventListener('mousedown', handleClickOutside);
     }
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [showUserMenu, showNotifMenu]);
+  }, [showUserMenu]);
 
   // Foydalanuvchi ismining qisqartmasi (avatar uchun)
   const getInitials = (name) => {
@@ -204,12 +151,37 @@ const Header = ({ theme, toggleTheme }) => {
   return (
     <>
       <div className="header">
-        <div className="logo" onClick={() => navigate('/')}>
-          <div className="logo-box">IQ</div>
-          <span className="logo-text">RO</span>
+        <div className="header-greeting" onClick={() => navigate('/profile')} title="Profil">
+          <div className="header-avatar-wrap">
+            <div className="header-avatar">
+              {user?.photoURL
+                ? <img src={user.photoURL} alt={displayName} />
+                : <span>{getInitials(displayName)}</span>}
+            </div>
+            {unreadCount > 0 && (
+              <span className="header-avatar-badge" title={`${unreadCount} ta yangi bildirishnoma`}>
+                {unreadCount > 9 ? '9+' : unreadCount}
+              </span>
+            )}
+          </div>
+          <div className="header-greeting-text">
+            <span className="header-greet-hi">Xush kelibsiz 👋</span>
+            <span className="header-greet-name">{displayName}</span>
+          </div>
         </div>
 
         <div className="header-stats">
+          {/* Premium tugmasi (Wisdom uslubidagi pill) */}
+          <motion.button
+            className="header-premium-pill"
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setShowPremium(true)}
+            title={isPremium ? 'Premium faol' : 'Premium sotib olish'}
+          >
+            <span className="header-premium-gem">💎</span>
+            <span className="header-premium-label">Premium</span>
+          </motion.button>
+
           {/* Kun Countdown */}
           <motion.div 
             className="header-exam-countdown hide-mobile" 
@@ -232,115 +204,10 @@ const Header = ({ theme, toggleTheme }) => {
             whileTap={{ scale: 0.95 }}
             onClick={() => toggleTheme()}
             title={theme === 'light' ? "Sepia (o'qish) rejimi" : theme === 'sepia' ? 'Tungi rejim' : 'Kunduzgi rejim'}
-            style={{ width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0 }}
+            style={{ width: btnSize, height: btnSize, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0 }}
           >
             {theme === 'dark' ? <Moon size={18} /> : theme === 'sepia' ? <BookOpen size={18} /> : <Sun size={18} />}
           </motion.button>
-
-          {/* Bildirishnomalar menyusi (Qo'ng'iroqcha) */}
-          <div style={{ position: 'relative' }} ref={notifRef}>
-            <motion.button 
-              className="user-avatar-btn" 
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setShowNotifMenu(!showNotifMenu)}
-              title="Bildirishnomalar"
-              style={{ width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0, position: 'relative' }}
-            >
-              <Bell size={18} />
-              {unreadCount > 0 && (
-                <span className="notif-badge-pill">
-                  {unreadCount}
-                </span>
-              )}
-            </motion.button>
-
-            <AnimatePresence>
-              {showNotifMenu && (
-                <motion.div
-                  className="user-dropdown glass-panel"
-                  style={{ width: '320px', right: 0 }}
-                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <div className="user-dropdown-header">
-                    <div className="user-dropdown-header-title">Bildirishnomalar</div>
-                    {unreadCount > 0 && (
-                      <button 
-                        className="notif-clear-all-btn" 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          const updated = notifications.map(n => ({ ...n, read: true }));
-                          setNotifications(updated);
-                          localStorage.setItem('IQRO_NOTIFICATIONS', JSON.stringify(updated));
-                        }}
-                      >
-                        Barchasini o'qildi qilish
-                      </button>
-                    )}
-                  </div>
-
-                  <div className="user-dropdown-divider" style={{ margin: 0 }} />
-
-                  <div style={{ maxHeight: '340px', overflowY: 'auto' }}>
-                    {notifications.length === 0 ? (
-                      <div className="notif-empty">
-                        Bildirishnomalar yo'q
-                      </div>
-                    ) : (
-                      notifications.map((n) => (
-                        <div 
-                          key={n.id} 
-                          className={`notif-item ${n.read ? 'read' : 'unread'}`}
-                          onClick={() => {
-                            const updated = notifications.map(item => item.id === n.id ? { ...item, read: true } : item);
-                            setNotifications(updated);
-                            localStorage.setItem('IQRO_NOTIFICATIONS', JSON.stringify(updated));
-                          }}
-                        >
-                          <div className={`notif-icon-box ${n.type}`}>
-                            {n.type === 'success' ? <CheckCircle2 size={18} /> : n.type === 'warning' ? <AlertCircle size={18} /> : <Info size={18} />}
-                          </div>
-                          <div style={{ flex: 1, minWidth: 0 }}>
-                            <div className="notif-title-row">
-                              <div className={`notif-title ${n.read ? 'read' : 'unread'}`}>
-                                {n.title}
-                              </div>
-                              {!n.read && <div className="notif-dot" />}
-                            </div>
-                            <div className={`notif-msg ${n.read ? 'read' : 'unread'}`}>
-                              {n.message}
-                            </div>
-                            <div className="notif-date">
-                              {new Date(n.date).toLocaleDateString()} • {new Date(n.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                            </div>
-                          </div>
-                        </div>
-                      ))
-                    )}
-                  </div>
-
-                  {notifications.length > 0 && (
-                    <>
-                      <div className="user-dropdown-divider" style={{ margin: 0 }} />
-                      <button 
-                        className="user-dropdown-item" 
-                        style={{ justifyContent: 'center', width: '100%', padding: '12px', color: 'var(--red)', fontSize: '13px' }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setNotifications([]);
-                          localStorage.removeItem('IQRO_NOTIFICATIONS');
-                        }}
-                      >
-                        <Trash2 size={16} style={{ marginRight: '8px' }} /> Barcha bildirishnomalarni o'chirish
-                      </button>
-                    </>
-                  )}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
 
           {/* Taklif (Gift) Menu - Mavsumiy va jonli */}
           <div style={{ position: 'relative' }}>
@@ -358,7 +225,7 @@ const Header = ({ theme, toggleTheme }) => {
               transition={{ duration: 1.5, ease: "easeInOut", times: [0, 0.2, 0.4, 0.6, 0.8, 1], repeat: 2 }}
               onAnimationComplete={() => sessionStorage.setItem('iqro_gift_wiggled', 'true')}
               whileTap={{ scale: 0.9 }}
-              style={{ width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0, position: 'relative' }}
+              style={{ width: btnSize, height: btnSize, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0, position: 'relative' }}
             >
               {(() => {
                 const month = new Date().getMonth() + 1;
@@ -558,6 +425,9 @@ const Header = ({ theme, toggleTheme }) => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Premium sotib olish oynasi (header'dagi Premium tugmasi ochadi) */}
+      {showPremium && <PremiumModal isOpen={showPremium} onClose={() => setShowPremium(false)} />}
     </>
   );
 };
