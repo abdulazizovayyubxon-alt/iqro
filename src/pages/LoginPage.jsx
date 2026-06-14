@@ -29,32 +29,12 @@ export default function LoginPage() {
   const [phone, setPhone] = useState('+998');
   const [name, setName] = useState('');
   const [gender, setGender] = useState('male');
-  const [birthDate, setBirthDate] = useState('');
+  const [birthDate] = useState('');
   const [password, setPassword] = useState('');
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
   const [lockoutTimer, setLockoutTimer] = useState(null);
   const [featureIdx, setFeatureIdx] = useState(0);
-  const [openFaqIdx, setOpenFaqIdx] = useState(null);
-
-  const FAQS = [
-    {
-      q: "IQRO platformasi nima?",
-      a: "IQRO — sertifikatlashtirish imtihonlariga tayyorlanayotgan o'qituvchilar va talabalar uchun maxsus ishlab chiqilgan, zamonaviy o'quv va aqlli takrorlash platformasidir."
-    },
-    {
-      q: "Qanday qilib ro'yxatdan o'taman?",
-      a: "Telefon raqamingizni kiriting. Agar raqamingiz tizimda bo'lmasa, tizim ismingiz, jinsingiz va yangi parolni so'rab, avtomatik ravishda yangi akkaunt yaratadi."
-    },
-    {
-      q: "Tizim va ma'lumotlarim xavfsizmi?",
-      a: "Ha, ma'lumotlaringiz Google Firebase shifrlash standartlari asosida to'liq himoyalangan. Parollar va shaxsiy ma'lumotlar uchinchi shaxslarga berilmaydi."
-    },
-    {
-      q: "Telefon raqamimni parolsiz bot orqali kiritsam bo'ladimi?",
-      a: "Ha! Telegram orqali kirish tugmasini bosing va botga o'ting. Bot orqali telefon raqamingizni yuborib, parolsiz tezkor kirishingiz mumkin."
-    }
-  ];
 
   useEffect(() => {
     if (step === STEPS.PHONE) {

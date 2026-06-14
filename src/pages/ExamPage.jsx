@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, CheckCircle, XCircle, RefreshCw } from 'lucide-react';
+import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import ObjectionModal from '../components/shared/ObjectionModal';
 import { processQuestionsOnTheFly } from '../utils/questionFixer';
@@ -15,7 +15,7 @@ import PremiumModal from '../components/PremiumModal';
 import SafeHtml from '../components/shared/SafeHtml';
 import QuestionMedia from '../components/QuestionMedia';
 import { db } from '../firebase';
-import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import { summarizeTestResults } from '../engine/SmartQuestionEngine';
 import localforage from 'localforage';
 import { useExitGuard } from '../hooks/useExitGuard';
@@ -121,6 +121,16 @@ const ExamPage = () => {
 
   // Premium modal ochiq bo'lsa orqa tugma sahifadan emas, modaldan chiqaradi
   useModalBackButton(showPremiumModal, () => setShowPremiumModal(false));
+
+  // Imtihon boshlangach global header (yuqori menyu) yashiriladi — e'tibor
+  // faqat imtihonga qaratiladi. Imtihon tugashi yoki sahifadan chiqishda
+  // <body> klassi avtomatik tozalanadi.
+  useEffect(() => {
+    const active = examStarted && !finished;
+    document.body.classList.toggle('exam-fullscreen', active);
+    return () => document.body.classList.remove('exam-fullscreen');
+  }, [examStarted, finished]);
+
   const timerRef = useRef(null);
 
   const questionStartTimeRef = useRef(Date.now());
@@ -848,9 +858,6 @@ const ExamPage = () => {
     <div className="exam-layout">
       {/* TOP BAR */}
       <div className="exam-topbar glass-panel">
-        <button className="btn btn-sm btn-outline" onClick={goBack} style={{ padding: '6px 12px' }}>
-          <ChevronLeft size={16} /> Chiqish
-        </button>
         <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--text)' }}>
           {SUBJECTS.find(s => s.id === cat)?.name || "CHQBT"} — Imtihon Simulyatsiyasi
         </div>

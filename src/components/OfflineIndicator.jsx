@@ -9,7 +9,7 @@
  */
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { WifiOff, Wifi, RefreshCw, X } from 'lucide-react';
+import { WifiOff, RefreshCw } from 'lucide-react';
 
 // ── USLUBLAR ──────────────────────────────────────────────────────────────────
 
@@ -133,7 +133,6 @@ const CSS = `
 
 export default function OfflineIndicator() {
   const [isOnline,      setIsOnline     ] = useState(navigator.onLine);
-  const [showOnlineMsg, setShowOnlineMsg] = useState(false);
   const [swWorker,      setSwWorker     ] = useState(null);
   const [showUpdate,    setShowUpdate   ] = useState(false);
   const onlineTimer = useRef(null);

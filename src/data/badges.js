@@ -131,7 +131,7 @@ export const BADGES = [
     icon: '💎',
     name: "Mukammal",
     desc: "Testda 0 xato bilan yakunladi (kamida 10 savol)",
-    condition: (stats, topicStats) => {
+    condition: (_stats, _topicStats) => {
       // Bu badge faqat test natijasida beriladi, shuning uchun alohida tekshiriladi
       return false;
     },

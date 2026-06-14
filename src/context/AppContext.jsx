@@ -1,20 +1,11 @@
-import React, { createContext, useState, useEffect, useContext, useRef, useCallback } from 'react';
+import React, { createContext, useState, useEffect, useContext, useRef } from 'react';
 import { TOPICS } from '../data/mockData';
 import { MAX_MISTAKES_SAVED } from '../config';
 import { db } from '../firebase';
 import { AuthContext } from './AuthContext';
 import { ToastContext } from './ToastContext';
 import {
-  collection,
-  addDoc,
-  onSnapshot,
-  query,
-  orderBy,
   doc,
-  deleteDoc,
-  writeBatch,
-  getDocs,
-  updateDoc,
   setDoc,
   getDoc,
   deleteField
@@ -248,7 +239,7 @@ export const AppProvider = ({ children }) => {
           // Bulut + lokal zaxira: hisoblagichlar max() bo'yicha birlashtiriladi,
           // shunda bulutga yetib bormagan oxirgi sessiya natijalari yo'qolmaydi
           const data = mergeCloudAndLocal(snap.data(), backup);
-          setState(prev => ({
+          setState(() => ({
             ...buildDefaultState(),
             ...data,
             stats: data.stats || { chqbt: buildDefaultCatStats(), art: buildDefaultCatStats(), nemis: buildDefaultCatStats() },

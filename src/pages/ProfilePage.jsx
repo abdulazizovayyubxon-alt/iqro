@@ -7,8 +7,9 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Settings, ChevronRight, Crown, Shield, Play, GraduationCap, Brain, Zap, Users, Camera, Pencil } from 'lucide-react';
+import { Settings, ChevronRight, Crown, Shield, Play, GraduationCap, Brain, Zap, Users, Camera, Pencil, Trophy } from 'lucide-react';
 import { SUBJECTS } from '../data/mockData';
+import GiftBox from '../components/shared/GiftBox';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
 import { ToastContext } from '../context/ToastContext';
@@ -30,7 +31,7 @@ import './ProfilePage.css';
 const DAY_NAMES = ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'];
 
 export default function ProfilePage() {
-  const { user } = useAuth();
+  const { user, updateUserData } = useAuth();
   const { state, updateState } = useContext(AppContext);
   const { showToast } = useContext(ToastContext);
   const { isAdmin } = useAdmin();
@@ -73,6 +74,7 @@ export default function ProfilePage() {
       if (auth.currentUser) await updateProfile(auth.currentUser, { photoURL: url });
       await setDoc(doc(db, 'users', user.uid), { photoURL: url }, { merge: true });
       setPhotoURL(url);
+      updateUserData({ photoURL: url });
       showToast('Profil rasmi yangilandi ✅', 'success');
     } catch (err) {
       console.error('Avatar yuklash xatosi:', err);
@@ -101,7 +103,10 @@ export default function ProfilePage() {
       if (displayName && auth.currentUser) {
         try { await updateProfile(auth.currentUser, { displayName }); } catch (e) { console.warn('updateProfile:', e); }
       }
-      if (displayName) setProfileName(displayName);
+      if (displayName) {
+        setProfileName(displayName);
+        updateUserData({ displayName });
+      }
       setProfileSubject(editForm.subject || '');
       setProfileToifa(editForm.teacherCategory || '');
       showToast('Profil saqlandi ✅', 'success');
@@ -181,9 +186,7 @@ export default function ProfilePage() {
     return { d, h: String(h).padStart(2, '0'), m: String(m).padStart(2, '0'), s: String(s).padStart(2, '0') };
   };
   const urg = fmtUrgency();
-  const totalAnswered = Object.values(state.stats || {}).reduce((acc, curr) => acc + (curr.totalAnswered || 0), 0);
-  const totalCorrect = Object.values(state.stats || {}).reduce((acc, curr) => acc + (curr.totalCorrect || 0), 0);
-  const acc = totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
+  const totalAnswered = Object.values(state.stats || {}).reduce((sum, curr) => sum + (curr.totalAnswered || 0), 0);
   const earnedBadges = getEarnedBadges(state.stats);
   const totalXP = getTotalXP(state.stats);
   const levelInfo = getLevel(totalXP);
@@ -319,7 +322,7 @@ export default function ProfilePage() {
         {/* ═══ FREE TRIAL BANNER ═══ */}
         {trialStatus === 'trial' && (
           <div className="pp-trial-banner">
-            <div className="pp-trial-icon">🎁</div>
+            <div className="pp-trial-icon"><GiftBox size={28} /></div>
             <div className="pp-trial-text">
               <div className="pp-trial-title">Sinov muddati faol</div>
               <div className="pp-trial-desc">Barcha Premium funksiyalar {trialDaysLeft} kun bepul!</div>
@@ -366,7 +369,7 @@ export default function ProfilePage() {
         )}
 
         {/* ═══ TEZKOR BOSHLASH (QUICK START) 2x2 GRID ═══ */}
-        <div style={{ marginBottom: '24px' }}>
+        <div>
           <div className="pp-card-label" style={{ marginBottom: '12px' }}>🚀 Tezkor Boshlash</div>
           <div className="pp-quick-grid">
             {/* Dars Testi */}
@@ -420,89 +423,8 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* ═══ STAT CARDS OR EMPTY CTA ═══ */}
-        {totalAnswered === 0 ? (
-          <div className="pp-card" style={{ textAlign: 'center', padding: '30px 20px', border: '1.5px dashed var(--blue)' }}>
-            <div style={{ fontSize: 40, marginBottom: 12 }}>🚀</div>
-            <h3 style={{ margin: '0 0 8px 0', color: 'var(--text)', fontSize: 18 }}>Sizda hali natijalar yo'q</h3>
-            <p style={{ margin: '0 0 20px 0', color: 'var(--text3)', fontSize: 13 }}>Tizimda o'z o'rningizni topish va XP yig'ish uchun hoziroq birinchi testingizni ishlang!</p>
-            <button
-              onClick={() => navigate('/test')}
-              style={{ background: 'var(--blue)', color: '#fff', border: 'none', padding: '12px 24px', borderRadius: '12px', fontSize: 14, fontWeight: 700, cursor: 'pointer', width: '100%', boxShadow: '0 4px 12px rgba(59,130,246,0.3)' }}
-            >
-              Boshlash uchun test yechish
-            </button>
-          </div>
-        ) : (
-          <div className="pp-stats-grid">
-            <div className="pp-stat-card">
-              <div className="pp-stat-icon">📝</div>
-              <div className="pp-stat-val">{totalAnswered}</div>
-              <div className="pp-stat-lbl">Savollar</div>
-            </div>
-            <div className="pp-stat-card">
-              <div className="pp-stat-icon">🎯</div>
-              <div className="pp-stat-val">{acc}%</div>
-              <div className="pp-stat-lbl">Aniqlik</div>
-            </div>
-            <div className="pp-stat-card" onClick={() => navigate('/leaderboard')} style={{ cursor: 'pointer', background: 'linear-gradient(135deg, rgba(41, 182, 246, 0.12), rgba(139, 92, 246, 0.04))', border: '1px solid rgba(41, 182, 246, 0.35)' }}>
-              <div className="pp-stat-icon">🏆</div>
-              <div className="pp-stat-val" style={{ color: 'var(--accent)' }}>{state.totalScore || 0}</div>
-              <div className="pp-stat-lbl" style={{ color: 'var(--accent2)', fontWeight: 700 }}>Balllar</div>
-            </div>
-            <div
-              className="pp-stat-card"
-              onClick={() => navigate('/achievements')}
-              style={{
-                cursor: 'pointer',
-                background: 'linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(245, 158, 11, 0.05))',
-                border: '1px solid rgba(245, 158, 11, 0.4)',
-                position: 'relative', overflow: 'hidden'
-              }}
-            >
-              <div style={{
-                height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 4, position: 'relative'
-              }}>
-                {earnedBadges.length > 0 ? (
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {earnedBadges.slice(0, 3).map((b, idx) => (
-                      <span key={idx} style={{
-                        fontSize: 22,
-                        marginLeft: idx > 0 ? -12 : 0,
-                        zIndex: 3 - idx,
-                        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))'
-                      }}>{b.icon}</span>
-                    ))}
-                    {earnedBadges.length > 3 && (
-                      <span style={{
-                        fontSize: 10, fontWeight: 800, color: '#fff', background: '#F59E0B',
-                        borderRadius: '10px', padding: '1px 5px', marginLeft: -8, zIndex: 4,
-                        border: '2px solid var(--glass-bg)'
-                      }}>+{earnedBadges.length - 3}</span>
-                    )}
-                  </div>
-                ) : (
-                  <span style={{ fontSize: 26, filter: 'drop-shadow(0 2px 8px rgba(245, 158, 11, 0.5))' }}>🏆</span>
-                )}
-              </div>
-              <div className="pp-stat-val" style={{ color: '#D97706', textShadow: '0 2px 4px rgba(245,158,11,0.2)' }}>{earnedBadges.length}</div>
-              <div className="pp-stat-lbl" style={{ color: '#B45309', fontWeight: 700 }}>Yutuqlar</div>
-
-              <motion.div
-                animate={{ x: ['-100%', '200%'] }}
-                transition={{ repeat: Infinity, duration: 4, ease: 'linear', repeatDelay: 1 }}
-                style={{
-                  position: 'absolute', top: 0, left: 0, bottom: 0, width: '40%',
-                  background: 'linear-gradient(90deg, transparent, rgba(251,191,36,0.3), transparent)',
-                  transform: 'skewX(-20deg)'
-                }}
-              />
-            </div>
-          </div>
-        )}
-
-        {/* ═══ PREMIUM HOLATI + HAVOLALAR ═══ */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        {/* ═══ PREMIUM HOLATI ═══ */}
+        <div>
           {isPremium ? (
             /* Premium foydalanuvchi — obuna holati */
             <motion.div
@@ -510,7 +432,7 @@ export default function ProfilePage() {
               onClick={() => setShowPremium(true)}
               title="Premium obunani boshqarish"
               style={{
-              padding: '20px 18px', borderRadius: '18px', marginBottom: 2,
+              padding: '20px 18px', borderRadius: '18px',
               background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
               border: 'none', cursor: 'pointer',
               display: 'flex', alignItems: 'center', gap: 16,
@@ -557,7 +479,7 @@ export default function ProfilePage() {
               whileTap={{ scale: 0.98 }}
               onClick={() => setShowPremium(true)}
               style={{
-                width: '100%', padding: '16px', borderRadius: '16px', marginBottom: 2,
+                width: '100%', padding: '16px', borderRadius: '16px',
                 background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)',
                 border: 'none', cursor: 'pointer', fontFamily: 'inherit',
                 display: 'flex', alignItems: 'center', gap: 14, textAlign: 'left',
@@ -588,15 +510,47 @@ export default function ProfilePage() {
               <ChevronRight size={20} color="rgba(255,255,255,0.8)" />
             </motion.button>
           )}
+        </div>
 
+        {/* ═══ NATIJALAR YO'Q — CTA (faqat hali natija bo'lmaganda) ═══ */}
+        {totalAnswered === 0 && (
+          <div className="pp-card" style={{ textAlign: 'center', padding: '30px 20px', border: '1.5px dashed var(--blue)' }}>
+            <div style={{ fontSize: 40, marginBottom: 12 }}>🚀</div>
+            <h3 style={{ margin: '0 0 8px 0', color: 'var(--text)', fontSize: 18 }}>Sizda hali natijalar yo'q</h3>
+            <p style={{ margin: '0 0 20px 0', color: 'var(--text3)', fontSize: 13 }}>Tizimda o'z o'rningizni topish va XP yig'ish uchun hoziroq birinchi testingizni ishlang!</p>
+            <button
+              onClick={() => navigate('/test')}
+              style={{ background: 'var(--blue)', color: '#fff', border: 'none', padding: '12px 24px', borderRadius: '12px', fontSize: 14, fontWeight: 700, cursor: 'pointer', width: '100%', boxShadow: '0 4px 12px rgba(59,130,246,0.3)' }}
+            >
+              Boshlash uchun test yechish
+            </button>
+          </div>
+        )}
+
+        {/* ═══ HAVOLALAR ═══ */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           <div className="pp-group">
+          {/* Yutuqlar */}
+          <button className="pp-menu-item" onClick={() => navigate('/achievements')}>
+            <div className="pp-menu-icon" style={{ background: 'linear-gradient(135deg, #FBBF24, #F59E0B)', color: '#fff' }}>
+              <Trophy size={20} />
+            </div>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
+              <span className="pp-menu-label">Yutuqlar</span>
+              <span style={{ fontSize: 11, color: 'var(--text3)' }}>
+                {earnedBadges.length > 0 ? `${earnedBadges.length} ta nishon qo'lga kiritildi` : "Hali nishon yo'q — test ishlab qo'lga kiriting"}
+              </span>
+            </div>
+            <ChevronRight size={18} className="pp-menu-arrow" />
+          </button>
+
           {/* Do'stlarni taklif qilish */}
           <button className="pp-menu-item" onClick={() => navigate('/referral')}>
             <div className="pp-menu-icon" style={{ background: 'var(--amber-bg)', color: 'var(--amber)' }}>
               <Users size={20} />
             </div>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <span className="pp-menu-label">Do'stlarni taklif qilish 🎁</span>
+              <span className="pp-menu-label" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Do'stlarni taklif qilish <GiftBox size={15} /></span>
               <span style={{ fontSize: 11, color: bonusBalance > 0 ? 'var(--green)' : 'var(--text3)', fontWeight: bonusBalance > 0 ? 700 : 400 }}>
                 {bonusBalance > 0
                   ? `Hisobingizda ${bonusBalance.toLocaleString()} so'm bonus — to'lovda avtomatik ayiriladi`

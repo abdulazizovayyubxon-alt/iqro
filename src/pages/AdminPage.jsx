@@ -9,20 +9,12 @@ import {
   updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch, increment, setDoc
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL, uploadString } from 'firebase/storage';
-import { q0_harbiy_xizmat } from '../data/questions_0.js';
-import { q1_umumharbiy_nizomlar } from '../data/questions_1.js';
-import { q2_otish_tayyorgarligi } from '../data/questions_2.js';
-import { q3_taktik_tayyorgarlik } from '../data/questions_3.js';
-import { q4_fuqaro_muhofazasi } from '../data/questions_4.js';
-import { q5_tibbiy_bilim } from '../data/questions_5.js';
-import { q6_pedagogik_mahorat } from '../data/questions_6.js';
-import { q7_tasviriy_sanat } from '../data/questions_7.js';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Shield, MessageCircle, Users, BarChart3,
-  CheckCircle, Trash2, Clock, AlertTriangle,
+  CheckCircle, Trash2, AlertTriangle,
   ChevronDown, ChevronUp, Search, Plus, Edit3, FileText, Zap,
-  Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, RefreshCw, UploadCloud
+  Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, UploadCloud
 } from 'lucide-react';
 
 import './AdminPage.css';
@@ -79,7 +71,6 @@ const AdminPage = () => {
   const [isSyncing, setIsSyncing] = useState(false);
   const [isDraggingFile, setIsDraggingFile] = useState(false);
   const [isUploadingJSON, setIsUploadingJSON] = useState(false);
-  const [isFixing, setIsFixing] = useState(false);
 
   // Question Filters & Search State
   const [questionSearch, setQuestionSearch] = useState('');

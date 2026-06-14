@@ -49,8 +49,8 @@ const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', 
       <AnimatePresence>
         {showMenu && (
           <motion.div
-            className="user-dropdown glass-panel"
-            style={{ width: '320px', right: 0, ...dropdownStyle }}
+            className="user-dropdown glass-panel notif-dropdown"
+            style={{ ...dropdownStyle }}
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -67,7 +67,7 @@ const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', 
 
             <div className="user-dropdown-divider" style={{ margin: 0 }} />
 
-            <div style={{ maxHeight: '340px', overflowY: 'auto' }}>
+            <div className="notif-list">
               {notifications.length === 0 ? (
                 <div className="notif-empty">
                   Bildirishnomalar yo'q

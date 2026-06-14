@@ -151,7 +151,7 @@ function LoadingStep({ isMobile }) {
   );
 }
 
-function WelcomeStep({ goal, time, onDone, isMobile }) {
+function WelcomeStep({ goal, time, isMobile }) {
   const goalObj = GOALS.find(g => g.id === goal);
   const timeObj = TIMES.find(t => t.id === time);
   const ss = getStyles(isMobile);
@@ -251,7 +251,7 @@ export default function OnboardingPage({ onComplete }) {
   const [goal, setGoal]     = useState(null);
   const [subject, setSubject] = useState(null);
   const [time, setTime]     = useState(null);
-  const [saving, setSaving] = useState(false);
+  const [, setSaving] = useState(false);
 
   // Fan bo'yicha savol soni (ishonch badge) — admin-publish yozadi
   const [questionMeta, setQuestionMeta] = useState(null);
@@ -298,9 +298,6 @@ export default function OnboardingPage({ onComplete }) {
       }
     }, 350);
   };
-
-  const currentSelected = [goal, subject, time][step] ?? null;
-  const canProceed = step < 3 && currentSelected !== null;
 
   const stepData = [
     { title: 'Maqsadingiz nima?', subtitle: null, items: GOALS, val: goal, set: setGoal },

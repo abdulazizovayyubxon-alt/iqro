@@ -310,7 +310,6 @@ const DIAGRAMS = {
 // Keng rasimni (6 ta emblem/belgi yonma-yon) 3×2 gridga aylantiradi.
 // CSS background-position orqali har bir katakda rasimning 1/6 qismi ko'rsatiladi.
 function WideImageGrid({ src, cols = 6, perRow = 3 }) {
-  const rows = Math.ceil(cols / perRow);
   const cells = Array.from({ length: cols }, (_, i) => i);
   // backgroundSize: '600% auto' → rasm 6× keng, har katak 1/6 ni ko'rsatadi
   const bgSize = `${cols * 100}% auto`;

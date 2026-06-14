@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from '../context/AppContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
-import { Moon, Sun, BookOpen, LogOut, ChevronDown, Camera, Medal, Palette, Calendar } from 'lucide-react';
-import { updateProfile } from 'firebase/auth';
-import { auth, db } from '../firebase';
-import { getDocs, doc, getDoc, setDoc } from 'firebase/firestore';
+import { Moon, Sun, BookOpen, Calendar } from 'lucide-react';
+import GiftBox from './shared/GiftBox';
+import { db } from '../firebase';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { EXAM_DATE } from '../config';
 import { getReferralStats } from '../services/referral';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -19,12 +18,11 @@ import { useNotifications } from '../hooks/useNotifications';
 const Header = ({ theme, toggleTheme }) => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
-  const { state, updateState } = useContext(AppContext);
   const { toast, showToast } = useContext(ToastContext);
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const [daysLeft, setDaysLeft] = useState(0);
   const [showUserMenu, setShowUserMenu] = useState(false);
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [, setIsOnline] = useState(navigator.onLine);
   const [showPremium, setShowPremium] = useState(false);
   const isPremium = user?.isPremium || false;
   const { unreadCount } = useNotifications();
@@ -244,7 +242,7 @@ const Header = ({ theme, toggleTheme }) => {
 
                 return (
                   <>
-                    <span style={{ fontSize: '20px', zIndex: 2 }}>🎁</span>
+                    <GiftBox size={22} style={{ zIndex: 2 }} />
                     <span className="gift-season-badge">
                       {seasonBadge}
                     </span>

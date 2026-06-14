@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { useAdmin } from '../hooks/useAdmin';
-import { TOPICS, SUBJECTS } from '../data/mockData';
+import { SUBJECTS } from '../data/mockData';
+import GiftBox from './shared/GiftBox';
 import {
   LayoutDashboard,
   PenTool,
@@ -12,7 +13,6 @@ import {
   Brain,
   Trophy,
   Medal,
-  Palette,
   Users,
   AlertCircle,
   Download,
@@ -142,7 +142,7 @@ const Sidebar = () => {
             <span className="nav-icon"><Users size={20} /></span>
             <span className="nav-label" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               Do'stlarni taklif qilish
-              <span style={{ animation: 'pulseGift 1.5s infinite', display: 'inline-block' }}>🎁</span>
+              <span style={{ animation: 'pulseGift 1.5s infinite', display: 'inline-flex' }}><GiftBox size={16} /></span>
             </span>
           </div>
 

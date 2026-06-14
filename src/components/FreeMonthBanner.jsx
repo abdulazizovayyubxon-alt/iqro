@@ -10,13 +10,11 @@
  *   <FreeMonthBanner onPayClick={() => setShowPremiumModal(true)} />
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, X, Zap } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../firebase';
 
 export default function FreeMonthBanner({ onPayClick }) {
   const { user } = useAuth();

@@ -6,35 +6,14 @@ import { motion } from 'framer-motion';
 import { Trophy, Zap, Target, TrendingUp } from 'lucide-react';
 import RadialChart from '../components/shared/RadialChart';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
 import PremiumModal from '../components/PremiumModal';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 const Stats = () => {
   const navigate = useNavigate();
   const goBack = () => navigate('/test');
-  const { user } = useAuth();
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const { state } = useContext(AppContext);  const { isTrialExpired } = useTrialExpiry();
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
-
-  if (isFreeLimitReached) {
-    return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="limit-container">
-        <div className="limit-card">
-          <div className="limit-icon">🔒</div>
-          <div className="limit-title">Kunlik Bepul Limit Tugadi</div>
-          <div className="limit-text">
-            Siz bugungi 50 ta bepul savol limitiga yetdingiz! Barcha savollar va mavzularga cheksiz kirish uchun Premium rejimni faollashtiring.
-          </div>
-          <button className="limit-btn-primary" onClick={() => setShowPremiumModal(true)}>
-            ⭐ Premium Rejimni Faollashtirish
-          </button>
-          <button className="limit-btn-secondary" onClick={goBack}>← Bosh sahifaga</button>
-        </div>
-        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
-      </motion.div>
-    );
-  }
 
   const cat = state.activeCategory;
   const [topicTotals, setTopicTotals] = useState({});
@@ -59,6 +38,26 @@ const Stats = () => {
     };
     loadTotals();
   }, [cat]);
+
+  // Bepul limit tekshiruvi — BARCHA hooklardan keyin chaqiriladi (React Rules of Hooks)
+  if (isFreeLimitReached) {
+    return (
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="limit-container">
+        <div className="limit-card">
+          <div className="limit-icon">🔒</div>
+          <div className="limit-title">Kunlik Bepul Limit Tugadi</div>
+          <div className="limit-text">
+            Siz bugungi 50 ta bepul savol limitiga yetdingiz! Barcha savollar va mavzularga cheksiz kirish uchun Premium rejimni faollashtiring.
+          </div>
+          <button className="limit-btn-primary" onClick={() => setShowPremiumModal(true)}>
+            ⭐ Premium Rejimni Faollashtirish
+          </button>
+          <button className="limit-btn-secondary" onClick={goBack}>← Bosh sahifaga</button>
+        </div>
+        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
+      </motion.div>
+    );
+  }
 
   const catStats = state.stats[cat] || { totalAnswered: 0, totalCorrect: 0, streak: 0, maxStreak: 0, mistakes: [] };
 

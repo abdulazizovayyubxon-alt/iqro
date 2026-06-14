@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, ChevronDown, X, Check } from 'lucide-react';
+import { X, Check } from 'lucide-react';
 
 const SmartBottomSheet = ({ 
   showSelectorDrawer, 
@@ -15,50 +15,7 @@ const SmartBottomSheet = ({
 
   return (
     <>
-      {/* Smart Bottom Sheet Trigger */}
-      <div 
-        className="bottom-sheet-trigger"
-        onClick={() => setShowSelectorDrawer(true)}
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          background: 'var(--bg2)',
-          border: '1.5px solid var(--border)',
-          borderRadius: '16px',
-          padding: '12px 16px',
-          cursor: 'pointer',
-          marginBottom: '16px',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.02)',
-          transition: 'all 0.2s ease'
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', overflow: 'hidden' }}>
-          {(() => {
-            const activeSubj = SUBJECTS.find(s => s.id === state.activeCategory);
-            const SubjIcon = activeSubj ? activeSubj.icon : BookOpen;
-            return (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text)' }}>
-                <div style={{ color: 'var(--accent)', display: 'flex', alignItems: 'center' }}>
-                  <SubjIcon size={18} />
-                </div>
-                <span style={{ fontWeight: 700, fontSize: '14px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  {activeSubj ? activeSubj.name : 'Fan tanlang'}
-                  <span style={{ color: 'var(--text3)', margin: '0 6px', fontWeight: 500 }}>•</span>
-                  <span style={{ fontWeight: 500, color: 'var(--text2)' }}>
-                    {topicId === -1 ? 'Barcha mavzular' : (TOPICS.find(t => t.id === topicId)?.name || 'Barcha mavzular')}
-                  </span>
-                </span>
-              </div>
-            );
-          })()}
-        </div>
-        <div style={{ color: 'var(--text3)', display: 'flex', alignItems: 'center' }}>
-          <ChevronDown size={18} />
-        </div>
-      </div>
-
-      {/* Smart Bottom Sheet Modal */}
+      {/* Tanlagich (trigger) endi TestHeader sarlavhasida — bu yerda faqat modal */}
       <AnimatePresence>
         {showSelectorDrawer && (
           <>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { MessageCircle } from 'lucide-react';
 
 /**
  * ObjectionModal — Savolga e'tiroz bildirish modali

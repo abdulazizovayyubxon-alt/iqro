@@ -6,16 +6,13 @@ import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS, SUBJECTS } from '../data/mockData';
-import { BADGES, getEarnedBadges } from '../data/badges';
-import { motion, AnimatePresence } from 'framer-motion';
-import { RefreshCw, ArrowLeft, Home, Target, PenTool, Zap, MessageCircle, ThumbsUp, ThumbsDown, Clock, Share2, ChevronDown, X, Check } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { RefreshCw, ArrowLeft, X } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import ObjectionModal from '../components/shared/ObjectionModal';
 import { processQuestionsOnTheFly } from '../utils/questionFixer';
 import PremiumModal from '../components/PremiumModal';
 import FreeMonthBanner from '../components/FreeMonthBanner';
-import SafeHtml from '../components/shared/SafeHtml';
-import QuestionMedia from '../components/QuestionMedia';
 import { BATCH_SIZE, QUESTION_TIMER_SECONDS } from '../config';
 import { db, auth } from '../firebase';
 import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
@@ -59,7 +56,7 @@ import { useModalBackButton } from '../components/profile/useModalBackButton';
 const TestPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { state, addScore, addMistake, batchCommitResults, updateState, saveCustomMnemonic } = useContext(AppContext);
+  const { state, batchCommitResults, updateState, saveCustomMnemonic } = useContext(AppContext);
   const mode = state.testMode || 'exam';
   const setMode = (m) => updateState({ testMode: m });
   const topicId = state.topicId ?? -1;
@@ -105,7 +102,7 @@ const TestPage = () => {
   const [selectedBatch, setSelectedBatch] = useState(0);
 
   // New States: Difficulty Filter and Timer Mode
-  const [diffFilter, setDiffFilter] = useState('ALL'); // 'ALL', 'Y1', 'Y2', 'Y3'
+  const [diffFilter] = useState('ALL'); // 'ALL', 'Y1', 'Y2', 'Y3'
   const [timerMode, setTimerMode] = useState('countdown'); // 'countdown', 'stopwatch', 'off'
 
   // Bottom Sheet State
@@ -120,7 +117,7 @@ const TestPage = () => {
 
   // Timer
   const [timeLeft, setTimeLeft] = useState(QUESTION_TIMER_SECONDS);
-  const [timerActive, setTimerActive] = useState(false);
+  const [, setTimerActive] = useState(false);
   const timerRef = useRef(null);
   const explanationRef = useRef(null);
   const questionStartTimeRef = useRef(Date.now());
@@ -216,7 +213,6 @@ const TestPage = () => {
     return () => clearInterval(timerRef.current);
   }, [currentQ, mode, showResults, questions.length, timerMode]);
 
-  const isUsefulMnemonic = (text) => text && !["Kalit so'zga e'tibor bering va javobni vizuallashtiring.", "Kalit so'zga e'tibor bering va javobni vizuallashtiring"].includes(text.trim());
 
   const [fullPool, setFullPool] = useState([]);
 
@@ -656,13 +652,13 @@ const TestPage = () => {
       {questions.length === 0 && <FreeMonthBanner onPayClick={() => setShowPremiumModal(true)} />}
 
       {/* Header */}
-      <TestHeader 
+      <TestHeader
         topicName={topicName}
+        subjectName={SUBJECTS.find(s => s.id === state.activeCategory)?.name}
         questionsCount={questions.length}
         mode={mode}
-        setMode={setMode}
         selectedBatch={selectedBatch}
-        generateQuestions={generateQuestions}
+        onOpenSelector={() => setShowSelectorDrawer(true)}
       />
 
       {/* Smart Bottom Sheet */}
@@ -679,7 +675,7 @@ const TestPage = () => {
 
       {/* Batch Selector */}
       {mode !== 'mistakes' && (
-        <div className="batch-selector" style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '8px' }}>
+        <div className="batch-selector" style={{ display: 'flex', gap: '6px', overflowX: 'auto', paddingBottom: '6px', marginBottom: '4px' }}>
           {Array.from({ length: Math.ceil(fullPool.length / BATCH_SIZE) }).map((_, i) => {
             const start = i * BATCH_SIZE + 1;
             const end = Math.min((i + 1) * BATCH_SIZE, fullPool.length);

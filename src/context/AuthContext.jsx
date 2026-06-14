@@ -10,7 +10,7 @@ import {
   setPersistence,
   browserLocalPersistence
 } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc, collection, query, where, getDocs } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import {
   savePendingReferralCode,
   getReferralCodeFromUrl,
@@ -131,7 +131,7 @@ const hasRepeatedChars = (password, minRepeat = 4) => {
 };
 
 // Parol kuchi ballini hisoblash — haqiqiy tekshiruvlar asosida
-const calculatePasswordStrength = (password, username = '') => {
+const calculatePasswordStrength = (password, _username = '') => {
   if (!password) return { score: 0, level: 'none', label: '', checks: {} };
 
   const checks = {
@@ -600,7 +600,7 @@ export const AuthProvider = ({ children }) => {
   // Email soxta (@iqro.uz) bo'lgani uchun email orqali tiklash ishlamaydi.
   // Yechim: foydalanuvchi Telegram orqali kiradi (parolsiz), keyin Profildan
   // yangi parol o'rnatadi. Shuning uchun bu yerda yo'naltirish xabari beramiz.
-  const resetPassword = async (phone) => {
+  const resetPassword = async (_phone) => {
     setAuthError('');
     setAuthError(
       "Parolingizni unutdingizmi? Orqaga qayting va \"Telegram orqali kirish\" tugmasi orqali kiring — keyin Profil → Parolni o'zgartirish bo'limidan yangi parol o'rnatasiz."
@@ -636,6 +636,28 @@ export const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  // Foydalanuvchi ma'lumotlarini context state va keshi bilan sinxron yangilash funksiyasi
+  const updateUserData = (newData) => {
+    setUser(prev => {
+      if (!prev) return null;
+      const updated = { ...prev, ...newData };
+      localStorage.setItem('iqro_cached_user', JSON.stringify({
+        uid: updated.uid,
+        email: updated.email,
+        displayName: updated.displayName,
+        photoURL: updated.photoURL,
+        isPremium: updated.isPremium,
+        role: updated.role,
+        trialStatus: updated.trialStatus,
+        trialDaysLeft: updated.trialDaysLeft,
+        urgencyMs: updated.urgencyMs,
+        hasReferralDiscount: updated.hasReferralDiscount || false,
+        discountPercent: updated.discountPercent || 0,
+      }));
+      return updated;
+    });
+  };
+
   return (
     <AuthContext.Provider value={{
       user, loading, authError, setAuthError,
@@ -646,7 +668,8 @@ export const AuthProvider = ({ children }) => {
       changePassword,
       logout,
       calculatePasswordStrength,
-      checkLockout
+      checkLockout,
+      updateUserData
     }}>
       {children}
     </AuthContext.Provider>

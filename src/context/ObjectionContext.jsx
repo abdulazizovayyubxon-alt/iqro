@@ -58,11 +58,11 @@ export const ObjectionProvider = ({ children }) => {
         date: d.data().timestamp?.toDate()?.toLocaleString() || d.data().date
       }));
 
-      setObjections(prevObjections => {
+      setObjections(() => {
         // Yangi hal qilingan e'tirozlarni topish (faqat o'zimiz yuborganlarni tekshiramiz)
         const key = getSentObjectionKey(user.uid);
         let mySentIds = [];
-        try { mySentIds = JSON.parse(localStorage.getItem(key) || '[]'); } catch (e) {}
+        try { mySentIds = JSON.parse(localStorage.getItem(key) || '[]'); } catch { /* buzilgan format — e'tiborsiz */ }
 
         const solvedMine = cloudObjections.filter(obj =>
           obj.solved && mySentIds.includes(obj.id)

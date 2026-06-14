@@ -5,13 +5,13 @@ import { ToastContext } from '../context/ToastContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowLeft, Search, Trash2, CheckCircle2, Play, 
-  HelpCircle, Trash, RefreshCw, AlertCircle, BookOpen 
+  HelpCircle, Trash, BookOpen
 } from 'lucide-react';
-import { SUBJECTS, TOPICS } from '../data/mockData';
+import { SUBJECTS } from '../data/mockData';
 
 const ErrorNotebookPage = () => {
   const navigate = useNavigate();
-  const { state, deleteMistake, clearMistakes, updateState } = useContext(AppContext);
+  const { state, deleteMistake, updateState } = useContext(AppContext);
   const { showToast } = useContext(ToastContext);
   
   const cat = state.activeCategory;
@@ -22,7 +22,7 @@ const ErrorNotebookPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTopic, setSelectedTopic] = useState('all');
   const [expandedQuestion, setExpandedQuestion] = useState(null); // qIndex
-  const [showClearConfirm, setShowClearConfirm] = useState(false);
+  const [, setShowClearConfirm] = useState(false);
 
   const handleBack = () => navigate('/test');
 
@@ -45,12 +45,6 @@ const ErrorNotebookPage = () => {
 
   const handleClearAll = () => {
     setShowClearConfirm(true);
-  };
-
-  const executeClearAll = () => {
-    clearMistakes();
-    setShowClearConfirm(false);
-    showToast("Barcha xatolar tozalandi! ✨", "success");
   };
 
   const handlePractice = () => {

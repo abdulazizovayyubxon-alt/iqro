@@ -9,7 +9,7 @@ import { collection, getDocs, doc, setDoc, updateDoc, deleteDoc, getDoc } from '
 import { db } from '../../firebase';
 import { ToastContext } from '../../context/ToastContext';
 import { useAuth } from '../../context/AuthContext';
-import { Ticket, Plus, Trash2, Users, Percent, CalendarDays, RefreshCw } from 'lucide-react';
+import { Ticket, Plus, Trash2, Users, RefreshCw } from 'lucide-react';
 
 const TYPE_LABELS = {
   percent: { label: 'Chegirma (%)', icon: '🏷️', desc: "Keyingi to'lovdan foiz chegirma" },

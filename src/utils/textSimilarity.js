@@ -7,7 +7,7 @@ const APOSTROPHES = /[ʼʻ'`´’‘""]/g;
 export function stripMarkers(text) {
   return String(text || "")
     .replace(/\[\s*mavzu[^\]]*\]/gi, " ")
-    .replace(/#\s*[A-Za-zА-Яа-я]*\d[\w\-]*/g, " ")
+    .replace(/#\s*[A-Za-zА-Яа-я]*\d[\w-]*/g, " ")
     .replace(/\(\s*#[^)]*\)/g, " ");
 }
 

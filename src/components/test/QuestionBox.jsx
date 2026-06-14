@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, Clock, Crown, Lock } from 'lucide-react';
+import { MessageCircle, Clock, Crown } from 'lucide-react';
 import SafeHtml from '../shared/SafeHtml';
 import QuestionMedia from '../QuestionMedia';
 import { useAuth } from '../../context/AuthContext';

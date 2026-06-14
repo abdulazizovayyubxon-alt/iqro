@@ -5,8 +5,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Crown, CheckCircle, X, CreditCard, Smartphone,
-  Gift, Zap, Star, Clock, Shield, TrendingUp, Send, ChevronRight, Check
+  Crown, X, CreditCard, Smartphone,
+  Star, Shield, Send, Check
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { generateClickUrl, generatePaymeUrl } from '../services/payment';
@@ -405,7 +405,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                         display: 'flex', alignItems: 'center', gap: 10,
                       }}
                     >
-                      <Gift size={16} style={{ color: '#10B981', flexShrink: 0 }} />
+                      <span style={{ fontSize: 18, flexShrink: 0, lineHeight: 1 }}>🎁</span>
                       <div style={{ flex: 1 }}>
                         <div style={{ fontSize: 12, fontWeight: 700, color: '#10B981' }}>
                           {hasReferralDiscount && `${discountSource === 'promo' ? 'Promo-kod chegirmasi' : 'Taklif chegirmasi'}: -${discountPercent}%`}

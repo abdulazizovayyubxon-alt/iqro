@@ -1,19 +1,22 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Brain, CheckCircle, XCircle, Clock, ChevronRight, ArrowLeft, Zap, MessageCircle } from 'lucide-react';
+import { CheckCircle, XCircle, Clock, ChevronRight, ArrowLeft, Zap, MessageCircle, Brain, Play } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { updateSpacedCard } from '../engine/SmartQuestionEngine';
 import ObjectionModal from '../components/shared/ObjectionModal';
 import SafeHtml from '../components/shared/SafeHtml';
 import QuestionMedia from '../components/QuestionMedia';
-import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import PremiumModal from '../components/PremiumModal';
-import { TOPICS } from '../data/mockData';
+import { TOPICS, SUBJECTS } from '../data/mockData';
+import FlashcardView from '../components/test/FlashcardView';
+import { processQuestionsOnTheFly } from '../utils/questionFixer';
+import { auth } from '../firebase';
+import localforage from 'localforage';
 
 const SmartReviewPage = () => {
   const navigate = useNavigate();
@@ -27,17 +30,64 @@ const SmartReviewPage = () => {
   const [sessionStats, setSessionStats] = useState({ correct: 0, wrong: 0 });
   const [sessionDone, setSessionDone] = useState(false);
 
+  // Flashcard rejimi (takror navbati kartalari uchun)
+  const [studyMode, setStudyMode] = useState('mcq'); // 'mcq' | 'flashcard'
+  const [fcFlipped, setFcFlipped] = useState(false);
+  const [fcKnown, setFcKnown] = useState({});
+
+  // Fan savollari — mustaqil (standalone) flashcard
+  const [subjectFlashActive, setSubjectFlashActive] = useState(false);
+  const [subjectFlashLoading, setSubjectFlashLoading] = useState(false);
+  const [subjectQuestions, setSubjectQuestions] = useState([]);
+  const [sfIdx, setSfIdx] = useState(0);
+  const [sfFlipped, setSfFlipped] = useState(false);
+  const [sfKnown, setSfKnown] = useState({});
+
   // Objection state
   const [showObjectionModal, setShowObjectionModal] = useState(false);
-  const { user } = useAuth();
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
   const { isTrialExpired } = useTrialExpiry();
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
 
-  const hasLoadedRef = useRef(false);
+  const [now, setNow] = useState(Date.now());
+  
+  useEffect(() => {
+    const timer = setInterval(() => setNow(Date.now()), 60000);
+    return () => clearInterval(timer);
+  }, []);
 
-  // Bepul limit tekshiruvi
+  // Takror navbatini yuklash — sahifa ochilganda yoki fan almashganda qayta quriladi.
+  // state.spacedCards qasddan dependency emas: har bir javobdan keyin ro'yxat sessiya
+  // o'rtasida qayta tiklanib ketmasligi uchun (navbat sessiya davomida barqaror qoladi).
+  useEffect(() => {
+    if (!cloudSynced) return;
+    // Joriy fanga mos keladigan mavzularni ajratib olish
+    const validTopicIds = TOPICS.filter(t =>
+      Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory
+    ).map(t => t.id);
+
+    const dueCards = (state.spacedCards || [])
+      .filter(c => validTopicIds.includes(c.topicId)) // FAKAT o'z fanini chiqarish
+      .filter(c => c.nextReview <= Date.now())
+      .sort((a, b) => a.nextReview - b.nextReview)
+      .slice(0, 20); // Bir sessiyada max 20 ta
+    setCards(dueCards);
+    setCurrentIdx(0);
+    setAnswered(null);
+    setSessionDone(false);
+    setSessionStats({ correct: 0, wrong: 0 });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cloudSynced, state.activeCategory]);
+
+  // Mustaqil flashcard ochiq bo'lganda global yuqori menyu (header) yashiriladi —
+  // alohida, fokuslangan ko'rinish. Chiqishda avtomatik tiklanadi.
+  useEffect(() => {
+    document.body.classList.toggle('flashcard-fullscreen', subjectFlashActive);
+    return () => document.body.classList.remove('flashcard-fullscreen');
+  }, [subjectFlashActive]);
+
+  // Bepul limit tekshiruvi — BARCHA hooklardan keyin chaqiriladi (React Rules of Hooks)
   if (isFreeLimitReached) {
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', padding: '20px' }}>
@@ -56,34 +106,6 @@ const SmartReviewPage = () => {
       </motion.div>
     );
   }
-
-  const [now, setNow] = useState(Date.now());
-  
-  useEffect(() => {
-    const timer = setInterval(() => setNow(Date.now()), 60000);
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    if (!cloudSynced) return;
-    if (hasLoadedRef.current) return;
-    // Joriy fanga mos keladigan mavzularni ajratib olish
-    const validTopicIds = TOPICS.filter(t => 
-      Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory
-    ).map(t => t.id);
-
-    const allCards = (state.spacedCards || [])
-      .filter(c => validTopicIds.includes(c.topicId)) // FAKAT o'z fanini chiqarish
-      .filter(c => c.nextReview <= now)
-      .sort((a, b) => a.nextReview - b.nextReview)
-      .slice(0, 20); // Bir sessiyada max 20 ta
-    setCards(allCards);
-    setCurrentIdx(0);
-    setAnswered(null);
-    setSessionDone(false);
-    setSessionStats({ correct: 0, wrong: 0 });
-    hasLoadedRef.current = true;
-  }, [cloudSynced, state.activeCategory, state.spacedCards]);
 
   const handleAnswer = (optIdx) => {
     if (answered !== null) return;
@@ -125,6 +147,127 @@ const SmartReviewPage = () => {
     showToast("E'tiroz yuborildi!", 'success');
   };
 
+  // Takror navbati kartalarini flashcard sifatida o'rganish — "Bilaman/Bilmayman"
+  // bo'yicha spaced-repetition darajasi yangilanadi
+  const handleFlashKnown = (known) => {
+    const card = cards[currentIdx];
+    if (!card) return;
+    const updated = [...(state.spacedCards || [])];
+    const idx = updated.findIndex(c => c.qHash === card.qHash);
+    if (idx >= 0) {
+      updated[idx] = updateSpacedCard(updated[idx], known);
+      updateState({ spacedCards: updated });
+    }
+    setFcKnown(prev => ({ ...prev, [currentIdx]: known }));
+    const newCorrect = sessionStats.correct + (known ? 1 : 0);
+    const newWrong = sessionStats.wrong + (known ? 0 : 1);
+    setSessionStats({ correct: newCorrect, wrong: newWrong });
+    if (currentIdx + 1 >= cards.length) {
+      setSessionDone(true);
+      if (newCorrect > newWrong) confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+    } else {
+      setCurrentIdx(prev => prev + 1);
+      setFcFlipped(false);
+    }
+  };
+
+  // Tanlangan fan savollarini MUSTAQIL flashcard ko'rinishida ochish (test oynasiga kirmasdan).
+  // Savollar avval lokal keshdan, bo'lmasa API'dan yuklanadi.
+  const startSubjectFlashcards = async () => {
+    setSubjectFlashActive(true);
+    setSubjectFlashLoading(true);
+    setSubjectQuestions([]);
+    setSfIdx(0); setSfFlipped(false); setSfKnown({});
+    try {
+      let raw = await localforage.getItem(`bundle_v2_${state.activeCategory}`);
+      if (!raw || raw.length === 0) {
+        const token = await auth.currentUser?.getIdToken();
+        const res = await fetch(`/api/get-questions?category=${state.activeCategory}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        if (res.ok) raw = await res.json();
+      }
+      raw = Array.isArray(raw) ? raw : [];
+      const validTopicIds = TOPICS
+        .filter(t => Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory)
+        .map(t => t.id);
+      raw = raw.filter(q => q.category === state.activeCategory && validTopicIds.includes(q.topicId));
+      raw = processQuestionsOnTheFly(raw);
+      raw = [...raw].sort(() => 0.5 - Math.random()).slice(0, 30);
+      setSubjectQuestions(raw);
+    } catch (e) {
+      console.error('Fan savollari flashcard yuklashda xatolik:', e);
+      showToast('Savollarni yuklashda xatolik', 'error');
+    } finally {
+      setSubjectFlashLoading(false);
+    }
+  };
+
+  // Fan savollari flashcardida "Bilaman/Bilmayman" — keyingisiga o'tadi, oxirida yakunlaydi
+  const handleSubjectFlashKnown = (known) => {
+    setSfKnown(prev => ({ ...prev, [sfIdx]: known }));
+    if (sfIdx < subjectQuestions.length - 1) {
+      setSfIdx(prev => prev + 1);
+      setSfFlipped(false);
+    } else {
+      const knownCount = Object.values({ ...sfKnown, [sfIdx]: known }).filter(Boolean).length;
+      showToast(`Flashcard yakunlandi! ${knownCount}/${subjectQuestions.length} ta bilasiz 🎉`, 'info');
+      setSubjectFlashActive(false);
+    }
+  };
+
+  // Fan savollari — MUSTAQIL flashcard ko'rinishi (test oynasidan tashqarida, Takror ichida)
+  if (subjectFlashActive) {
+    const subjName = SUBJECTS.find(s => s.id === state.activeCategory)?.name || 'Fan savollari';
+    return (
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: 700, margin: '0 auto', padding: '12px 16px 80px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+          <div>
+            <h1 style={{ fontSize: 22, fontWeight: 900, color: 'var(--text)', margin: '0 0 2px' }}>📇 Flashcard</h1>
+            <div style={{ fontSize: 12, color: 'var(--text3)' }}>{subjName}</div>
+          </div>
+          <button onClick={() => setSubjectFlashActive(false)} style={{ width: 38, height: 38, borderRadius: 12, border: '1.5px solid var(--border)', background: 'var(--bg2)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+            <ArrowLeft size={18} color="var(--text2)" />
+          </button>
+        </div>
+        {subjectFlashLoading ? (
+          <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--text3)' }}>
+            <div style={{ fontSize: 40, marginBottom: 12 }}>⏳</div>
+            <div style={{ fontWeight: 600 }}>Savollar yuklanmoqda...</div>
+          </div>
+        ) : subjectQuestions.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--text3)' }}>
+            <div style={{ fontSize: 40, marginBottom: 12 }}>📭</div>
+            <div style={{ fontWeight: 700, color: 'var(--text)', marginBottom: 6 }}>Bu fan uchun savol topilmadi</div>
+            <div style={{ fontSize: 13 }}>Avval shu fandan test yeching yoki boshqa fan tanlang.</div>
+          </div>
+        ) : (
+          <FlashcardView
+            questions={subjectQuestions}
+            currentQ={sfIdx}
+            setCurrentQ={setSfIdx}
+            fcFlipped={sfFlipped}
+            setFcFlipped={setSfFlipped}
+            fcKnown={sfKnown}
+            handleFlashcardKnown={handleSubjectFlashKnown}
+            setShowObjectionModal={setShowObjectionModal}
+          />
+        )}
+        <ObjectionModal
+          isOpen={showObjectionModal}
+          onClose={() => setShowObjectionModal(false)}
+          questionText={subjectQuestions[sfIdx]?.q}
+          onSubmit={(text) => {
+            const q = subjectQuestions[sfIdx];
+            if (q) addObjection(q.topicId, state.activeCategory, q, text);
+            setShowObjectionModal(false);
+            showToast("E'tiroz yuborildi!", 'success');
+          }}
+        />
+      </motion.div>
+    );
+  }
+
   // Hech savol yo'q
   if (cards.length === 0 && !sessionDone) {
     const validTopicIds = TOPICS.filter(t => 
@@ -137,7 +280,7 @@ const SmartReviewPage = () => {
     const nextReview = totalSpaced > 0
       ? Math.min(...categorySpacedCards.map(c => c.nextReview))
       : null;
-    const waitMinutes = nextReview ? Math.max(0, Math.round((nextReview - Date.now()) / 60000)) : 0;
+    const waitMinutes = nextReview ? Math.max(0, Math.round((nextReview - now) / 60000)) : 0;
 
     // Forecast Calculation
     const todayEnd = new Date().setHours(23, 59, 59, 999);
@@ -170,8 +313,10 @@ const SmartReviewPage = () => {
 
     return (
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ maxWidth: 600, margin: '0 auto', padding: '20px 16px' }}>
-        <div style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)', borderRadius: 24, padding: '36px 24px', textAlign: 'center', marginTop: 24, boxShadow: '0 20px 40px rgba(0,0,0,0.06)' }}>
-          <div style={{ fontSize: 52, marginBottom: 14, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.08))' }}>🧠</div>
+        <div style={{ background: 'linear-gradient(135deg, rgba(41,182,246,0.07) 0%, rgba(139,92,246,0.07) 100%), var(--bg2)', border: '1.5px solid rgba(41, 182, 246, 0.22)', borderRadius: 24, padding: '36px 24px', textAlign: 'center', marginTop: 24, boxShadow: '0 16px 40px rgba(41, 182, 246, 0.10)' }}>
+          <div style={{ width: 76, height: 76, borderRadius: 22, margin: '0 auto 18px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #29B6F6, #8B5CF6)', boxShadow: '0 10px 24px rgba(139, 92, 246, 0.32)' }}>
+            <Brain size={36} color="#fff" />
+          </div>
           <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)', letterSpacing: '-0.5px' }}>Hozircha takrorlash kerak emas!</div>
           {totalSpaced > 0 ? (
             <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.7, marginBottom: 28, fontWeight: 500 }}>
@@ -239,9 +384,40 @@ const SmartReviewPage = () => {
           )}
 
           <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}>
-            <ArrowLeft size={16} /> Bosh sahifaga
+            <Play size={16} fill="currentColor" /> Test ishlash
           </motion.button>
         </div>
+
+        {/* ═══ ALOHIDA BANNER: Fan savollarini flashcard qilish ═══ */}
+        <motion.button
+          whileHover={{ scale: 1.01, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={startSubjectFlashcards}
+          style={{
+            width: '100%', marginTop: 16,
+            display: 'flex', alignItems: 'center', gap: 14, textAlign: 'left',
+            padding: '16px 18px', borderRadius: 20,
+            border: '1.5px solid rgba(41, 182, 246, 0.25)',
+            background: 'linear-gradient(135deg, rgba(41,182,246,0.10) 0%, rgba(139,92,246,0.10) 100%)',
+            cursor: 'pointer', fontFamily: 'inherit',
+            position: 'relative', overflow: 'hidden',
+            boxShadow: '0 8px 24px rgba(41, 182, 246, 0.10)'
+          }}
+        >
+          <motion.div
+            animate={{ x: ['-120%', '220%'] }}
+            transition={{ repeat: Infinity, duration: 3.5, ease: 'linear', repeatDelay: 1.5 }}
+            style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: '35%', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent)', transform: 'skewX(-20deg)' }}
+          />
+          <div style={{ width: 46, height: 46, borderRadius: 14, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #29B6F6, #8B5CF6)', boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)', position: 'relative', zIndex: 1 }}>
+            <Zap size={22} color="#fff" />
+          </div>
+          <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
+            <div style={{ fontSize: 15, fontWeight: 800, color: 'var(--text)', marginBottom: 3 }}>Fan savollarini flashcard qilish</div>
+            <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 500, lineHeight: 1.4 }}>Butun fan bo'yicha savollarni karta ko'rinishida tez takrorlang</div>
+          </div>
+          <ChevronRight size={20} color="var(--accent)" style={{ position: 'relative', zIndex: 1, flexShrink: 0 }} />
+        </motion.button>
       </motion.div>
     );
   }
@@ -270,7 +446,7 @@ const SmartReviewPage = () => {
             To'g'ri savollar keyingi bosqichga o'tdi!
           </div>
           <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}>
-            <ArrowLeft size={16} /> Bosh sahifaga
+            <Play size={16} fill="currentColor" /> Test ishlash
           </motion.button>
         </div>
       </motion.div>
@@ -280,7 +456,6 @@ const SmartReviewPage = () => {
   // Savol ko'rsatish
   const card = cards[currentIdx];
   const isCorrect = answered !== null && answered === card.correct;
-  const isWrong = answered !== null && answered !== card.correct;
   const levelNames = ['Yangi', '10 daqiqa', '1 soat', '6 soat', '1 kun', '3 kun', '1 hafta'];
 
   return (
@@ -297,11 +472,44 @@ const SmartReviewPage = () => {
         </button>
       </div>
 
-      {/* Progress */}
-      <div style={{ height: 6, borderRadius: 3, background: '#F1F5F9', marginBottom: 16, overflow: 'hidden' }}>
-        <div style={{ width: `${((currentIdx + 1) / cards.length) * 100}%`, height: '100%', background: '#29B6F6', borderRadius: 3, transition: 'width 0.3s' }} />
+      {/* O'rganish rejimi: Test / Flashcard + Fan savollari decki */}
+      <div style={{ display: 'flex', gap: 8, marginBottom: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+        <div style={{ display: 'flex', background: 'var(--bg3)', borderRadius: 12, padding: 3, gap: 2 }}>
+          {[['mcq', '📝 Test'], ['flashcard', '📇 Flashcard']].map(([m, label]) => (
+            <button key={m} onClick={() => { setStudyMode(m); setFcFlipped(false); setAnswered(null); }}
+              style={{ padding: '7px 14px', borderRadius: 9, border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 12, fontWeight: 700,
+                background: studyMode === m ? 'var(--bg)' : 'transparent',
+                color: studyMode === m ? 'var(--text)' : 'var(--text3)',
+                boxShadow: studyMode === m ? '0 1px 4px rgba(0,0,0,0.08)' : 'none' }}>
+              {label}
+            </button>
+          ))}
+        </div>
+        <button onClick={startSubjectFlashcards}
+          style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 12px', borderRadius: 12, border: '1.5px solid var(--border)', background: 'var(--bg2)', color: 'var(--text2)', cursor: 'pointer', fontFamily: 'inherit', fontSize: 12, fontWeight: 700 }}>
+          <Zap size={14} color="var(--accent)" /> Fan savollari
+        </button>
       </div>
 
+      {/* Progress (faqat test rejimida — flashcardning o'z progressi bor) */}
+      {studyMode === 'mcq' && (
+        <div style={{ height: 6, borderRadius: 3, background: '#F1F5F9', marginBottom: 16, overflow: 'hidden' }}>
+          <div style={{ width: `${((currentIdx + 1) / cards.length) * 100}%`, height: '100%', background: '#29B6F6', borderRadius: 3, transition: 'width 0.3s' }} />
+        </div>
+      )}
+
+      {studyMode === 'flashcard' ? (
+        <FlashcardView
+          questions={cards}
+          currentQ={currentIdx}
+          setCurrentQ={setCurrentIdx}
+          fcFlipped={fcFlipped}
+          setFcFlipped={setFcFlipped}
+          fcKnown={fcKnown}
+          handleFlashcardKnown={handleFlashKnown}
+          setShowObjectionModal={setShowObjectionModal}
+        />
+      ) : (
       <AnimatePresence mode="wait">
         <motion.div key={currentIdx} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.15 }}>
           <div style={{ background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 20, padding: '24px 20px', maxWidth: 700, margin: '0 auto' }}>
@@ -424,6 +632,7 @@ const SmartReviewPage = () => {
           </div>
         </motion.div>
       </AnimatePresence>
+      )}
 
       <ObjectionModal isOpen={showObjectionModal} onClose={() => setShowObjectionModal(false)} questionText={cards[currentIdx]?.q} onSubmit={handleObjection} />
     </motion.div>

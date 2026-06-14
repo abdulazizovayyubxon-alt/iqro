@@ -738,12 +738,40 @@ body.dark-theme {
   z-index: 1200;
   overflow: hidden;
 }
+/* Bildirishnoma paneli — desktopda 320px, mobilda ekranga moslashadi */
+.notif-dropdown {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+.notif-list {
+  max-height: 340px;
+  overflow-y: auto;
+}
+@media (max-width: 600px) {
+  .notif-dropdown {
+    position: fixed;
+    top: 60px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-height: calc(100vh - 80px);
+    max-height: calc(100dvh - 80px);
+  }
+  .notif-list {
+    flex: 1;
+    min-height: 0;
+    max-height: none;
+  }
+}
+
 .user-dropdown-header {
   padding: 16px;
   background: var(--bg3);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-shrink: 0;
 }
 .user-dropdown-header-title {
   font-weight: 700;
@@ -1648,6 +1676,18 @@ body.dark-theme {
   height: calc(100vh - 64px);
   overflow: hidden;
 }
+
+/* Imtihon boshlanganda global header (yuqori menyu) yashiriladi —
+   e'tibor faqat imtihonga qaratiladi. Imtihon-layout esa butun ekran
+   balandligini egallaydi (header joyi ham bo'shaydi). */
+body.exam-fullscreen .header,
+body.flashcard-fullscreen .header { display: none; }
+body.exam-fullscreen .exam-layout { height: 100vh; }
+
+/* Test sahifasidagi fan/mavzu tanlagich — bosiladigan (dropdown) ekanini bildiradi */
+.test-selector-chip { transition: border-color .15s ease, background .15s ease, box-shadow .15s ease; }
+.test-selector-chip:hover { border-color: var(--accent); background: var(--bg3); }
+.test-selector-chip:active { transform: scale(0.99); }
 
 .exam-topbar {
   display: flex;

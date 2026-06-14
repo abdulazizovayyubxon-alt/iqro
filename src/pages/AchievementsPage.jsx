@@ -6,11 +6,29 @@ import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Trophy, Medal, Zap, Target, TrendingUp, BarChart3, Star, AlertCircle, Award, Flame, AlertTriangle } from 'lucide-react';
+import { Trophy, Target, TrendingUp, AlertCircle, Award, Flame, AlertTriangle } from 'lucide-react';
 import RadialChart from '../components/shared/RadialChart';
 import PremiumModal from '../components/PremiumModal';
 import RoiBlock from '../components/RoiBlock';
 import { DEFAULT_YEARLY_PRICE } from '../config';
+
+// Canvas yordamchilari — pasportni chizish uchun
+const hexToRgba = (hex, a) => {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.substring(0, 2), 16);
+  const g = parseInt(h.substring(2, 4), 16);
+  const b = parseInt(h.substring(4, 6), 16);
+  return `rgba(${r}, ${g}, ${b}, ${a})`;
+};
+const roundRect = (ctx, x, y, w, h, r) => {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+};
 
 const AchievementsPage = () => {
   const navigate = useNavigate();
@@ -87,151 +105,188 @@ const AchievementsPage = () => {
   }
 
   const subjectName = SUBJECTS.find(s => s.id === state.activeCategory)?.name || 'CHQBT';
+  const hasEnoughData = total >= 10;
 
+  // Premium sertifikat (cream/iliq palitra — loyiha dizayniga mos)
   const drawPassport = (canvas) => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    
-    // Set dimensions
-    canvas.width = 800;
-    canvas.height = 500;
-    
-    // 1. Draw Background Gradient
-    const grad = ctx.createLinearGradient(0, 0, 800, 500);
-    grad.addColorStop(0, '#0F172A'); // Slate 900
-    grad.addColorStop(1, '#1E1B4B'); // Indigo 950
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, 800, 500);
-    
-    // 2. Draw Decorative Borders / Frames
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+    const W = 900, H = 560;
+    const dpr = Math.max(2, window.devicePixelRatio || 1);
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+
+    const gold = '#C9A227';
+    const goldLight = '#E9CB6B';
+    const ink = '#2A2118';
+    const muted = '#9A8B6E';
+    const accent = '#2BA3DC';
+
+    // Fon — iliq krem gradient
+    const bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0, '#FCF8EE');
+    bg.addColorStop(1, '#F1EAD8');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    // Yumshoq yorug'lik (tepa-markaz)
+    const glow = ctx.createRadialGradient(W / 2, 60, 20, W / 2, 60, 540);
+    glow.addColorStop(0, hexToRgba(accent, 0.07));
+    glow.addColorStop(1, hexToRgba(accent, 0));
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, W, H);
+
+    // Tashqi ramka (oltin)
     ctx.lineWidth = 2;
-    ctx.strokeRect(20, 20, 760, 460);
-    
-    ctx.strokeStyle = '#29B6F6';
+    ctx.strokeStyle = gold;
+    roundRect(ctx, 22, 22, W - 44, H - 44, 20);
+    ctx.stroke();
+    // Ichki nozik ramka (accent)
     ctx.lineWidth = 1;
-    ctx.strokeRect(25, 25, 750, 450);
-    
-    // Draw Corner Ornaments
-    const drawCorner = (x, y, dx, dy) => {
-      ctx.strokeStyle = '#29B6F6';
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      ctx.moveTo(x, y + dy * 20);
-      ctx.lineTo(x, y);
-      ctx.lineTo(x + dx * 20, y);
-      ctx.stroke();
+    ctx.strokeStyle = hexToRgba(accent, 0.45);
+    roundRect(ctx, 31, 31, W - 62, H - 62, 15);
+    ctx.stroke();
+
+    // Burchak romblari
+    const corner = (cx, cy) => {
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(Math.PI / 4);
+      ctx.fillStyle = gold;
+      ctx.fillRect(-4.5, -4.5, 9, 9);
+      ctx.restore();
     };
-    drawCorner(25, 25, 1, 1);
-    drawCorner(775, 25, -1, 1);
-    drawCorner(25, 475, 1, -1);
-    drawCorner(775, 475, -1, -1);
-    
-    // 3. Draw Watermark logo/text in background
-    ctx.font = 'bold 90px sans-serif';
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.02)';
+    corner(31, 31); corner(W - 31, 31); corner(31, H - 31); corner(W - 31, H - 31);
+
+    // Suv belgisi
+    ctx.save();
+    ctx.font = '900 150px sans-serif';
+    ctx.fillStyle = hexToRgba(ink, 0.028);
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('IQRO PLATFORM', 400, 250);
-    
-    // 4. Header text
+    ctx.fillText('IQRO', W / 2, H / 2 + 24);
+    ctx.restore();
+
     ctx.textAlign = 'center';
-    ctx.textBaseline = 'top';
-    ctx.font = '800 28px sans-serif';
-    
-    // Gold gradient for Header
-    const textGrad = ctx.createLinearGradient(0, 40, 0, 80);
-    textGrad.addColorStop(0, '#38BDF8');
-    textGrad.addColorStop(1, '#818CF8');
-    ctx.fillStyle = textGrad;
-    ctx.fillText('TAYYORGARLIK PASPORTI', 400, 45);
-    
+    ctx.textBaseline = 'alphabetic';
+
+    // Kicker
+    ctx.font = '700 13px sans-serif';
+    ctx.fillStyle = accent;
+    ctx.fillText('I Q R O   P L A T F O R M A S I', W / 2, 68);
+
+    // Sarlavha
+    ctx.font = '800 40px sans-serif';
+    ctx.fillStyle = ink;
+    ctx.fillText('TAYYORGARLIK PASPORTI', W / 2, 110);
+
+    // Subtitr
+    ctx.font = '500 14px sans-serif';
+    ctx.fillStyle = muted;
+    ctx.fillText('Attestatsiyaga tayyorgarlik va toifa prognozi', W / 2, 134);
+
+    // Oltin ajratuvchi + markazda romb
+    const dividerY = 156;
+    ctx.strokeStyle = hexToRgba(gold, 0.6);
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(W / 2 - 140, dividerY); ctx.lineTo(W / 2 - 14, dividerY); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(W / 2 + 14, dividerY); ctx.lineTo(W / 2 + 140, dividerY); ctx.stroke();
+    ctx.save(); ctx.translate(W / 2, dividerY); ctx.rotate(Math.PI / 4); ctx.fillStyle = gold; ctx.fillRect(-4, -4, 8, 8); ctx.restore();
+
+    // Taqdim etiladi
     ctx.font = '500 13px sans-serif';
-    ctx.fillStyle = '#94A3B8';
-    ctx.fillText('ATTESTATSIYA VA TOIFA PROGNOZI', 400, 82);
-    
-    // Divider
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(100, 110);
-    ctx.lineTo(700, 110);
-    ctx.stroke();
-    
-    // 5. Left Side: User Info & Subject
-    ctx.textAlign = 'left';
-    ctx.fillStyle = '#FFFFFF';
-    ctx.font = 'bold 20px sans-serif';
+    ctx.fillStyle = muted;
+    ctx.fillText('Ushbu pasport quyidagi foydalanuvchiga taqdim etiladi', W / 2, 192);
+
     const userName = user?.displayName || state.displayName || 'Hurmatli Foydalanuvchi';
-    ctx.fillText(userName, 80, 150);
-    
-    ctx.font = '500 14px sans-serif';
-    ctx.fillStyle = '#64748B';
-    ctx.fillText('Foydalanuvchi', 80, 180);
-    
-    ctx.fillStyle = '#FFFFFF';
-    ctx.font = 'bold 18px sans-serif';
-    ctx.fillText(subjectName, 80, 230);
-    
-    ctx.font = '500 14px sans-serif';
-    ctx.fillStyle = '#64748B';
-    ctx.fillText('Fan/Yo\'nalish', 80, 260);
-    
-    // 6. Right Side: Category Prediction (Toifa)
+    ctx.font = '800 30px sans-serif';
+    ctx.fillStyle = ink;
+    ctx.fillText(userName, W / 2, 228);
+
+    // Ism ostidagi accent chiziq
+    const nameW = Math.min(ctx.measureText(userName).width, 400);
+    ctx.strokeStyle = hexToRgba(accent, 0.4);
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(W / 2 - nameW / 2 - 22, 240); ctx.lineTo(W / 2 + nameW / 2 + 22, 240); ctx.stroke();
+
+    ctx.font = '600 15px sans-serif';
+    ctx.fillStyle = accent;
+    ctx.fillText(`«${subjectName}» yo'nalishi bo'yicha`, W / 2, 266);
+
+    // Markaziy medal (toifa) yoki "tayyorlanmoqda" holati
+    const medY = 352;
+    if (hasEnoughData) {
+      const r = 56;
+      const ring = ctx.createLinearGradient(W / 2 - r, medY - r, W / 2 + r, medY + r);
+      ring.addColorStop(0, goldLight);
+      ring.addColorStop(1, gold);
+      ctx.beginPath(); ctx.arc(W / 2, medY, r, 0, Math.PI * 2);
+      ctx.fillStyle = ring; ctx.fill();
+      ctx.beginPath(); ctx.arc(W / 2, medY, r - 7, 0, Math.PI * 2);
+      ctx.fillStyle = '#FCF8EE'; ctx.fill();
+      ctx.lineWidth = 2; ctx.strokeStyle = hexToRgba(toifaColor, 0.55); ctx.stroke();
+
+      ctx.fillStyle = toifaColor;
+      const parts = toifa.split(' ');
+      if (parts.length > 1) {
+        ctx.font = '800 18px sans-serif';
+        ctx.fillText(parts[0], W / 2, medY - 3);
+        ctx.fillText(parts.slice(1).join(' '), W / 2, medY + 20);
+      } else {
+        ctx.font = '800 20px sans-serif';
+        ctx.fillText(toifa, W / 2, medY + 7);
+      }
+      ctx.font = '700 12px sans-serif';
+      ctx.fillStyle = muted;
+      ctx.fillText('T O I F A   P R O G N O Z I', W / 2, medY + r + 24);
+    } else {
+      ctx.font = '800 22px sans-serif';
+      ctx.fillStyle = muted;
+      ctx.fillText('Toifa prognozi tayyorlanmoqda', W / 2, medY);
+      ctx.font = '500 14px sans-serif';
+      ctx.fillStyle = muted;
+      ctx.fillText(`Prognoz uchun kamida 10 ta savol yeching (${total}/10)`, W / 2, medY + 28);
+    }
+
+    // Statistika lentasi
+    const bandY = 466;
+    const cells = [
+      { v: `${acc}%`, l: "O'zlashtirish", c: acc >= 70 ? '#4E8A4B' : acc >= 50 ? gold : '#C64B3C' },
+      { v: `${total}`, l: 'Yechilgan savol', c: ink },
+      { v: avgTime > 0 ? `${avgTime}s` : '—', l: "O'rtacha vaqt", c: accent },
+    ];
+    const colW = (W - 120) / 3;
+    cells.forEach((s, i) => {
+      const cx = 60 + colW * i + colW / 2;
+      ctx.font = '800 26px sans-serif';
+      ctx.fillStyle = hasEnoughData ? s.c : muted;
+      ctx.fillText(hasEnoughData ? s.v : '—', cx, bandY);
+      ctx.font = '600 12px sans-serif';
+      ctx.fillStyle = muted;
+      ctx.fillText(s.l, cx, bandY + 22);
+      if (i < cells.length - 1) {
+        const sx = 60 + colW * (i + 1);
+        ctx.strokeStyle = hexToRgba(ink, 0.1);
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(sx, bandY - 22); ctx.lineTo(sx, bandY + 18); ctx.stroke();
+      }
+    });
+
+    // Footer
+    let dateStr;
+    try {
+      dateStr = new Date().toLocaleDateString('uz-UZ', { year: 'numeric', month: 'long', day: 'numeric' });
+    } catch { dateStr = new Date().toLocaleDateString(); }
+    ctx.font = '500 12px sans-serif';
+    ctx.fillStyle = muted;
+    ctx.textAlign = 'left';
+    ctx.fillText(dateStr, 48, H - 36);
     ctx.textAlign = 'right';
-    ctx.fillStyle = toifaColor;
-    ctx.font = 'bold 36px sans-serif';
-    ctx.fillText(toifa, 720, 150);
-    
-    ctx.font = '500 14px sans-serif';
-    ctx.fillStyle = '#64748B';
-    ctx.fillText('Tahminiy Toifa', 720, 195);
-    
-    ctx.fillStyle = '#FFFFFF';
-    ctx.font = 'bold 18px sans-serif';
-    ctx.fillText(nextToifaText || 'Tayyorlik darajasi ajoyib', 720, 230);
-    
-    ctx.font = '500 14px sans-serif';
-    ctx.fillStyle = '#64748B';
-    ctx.fillText('Holat/Maslahat', 720, 260);
-    
-    // Divider
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-    ctx.beginPath();
-    ctx.moveTo(100, 310);
-    ctx.lineTo(700, 310);
-    ctx.stroke();
-    
-    // 7. Bottom Row: Stats Summary
-    // Stat 1: Aniqlik
+    ctx.fillStyle = accent;
+    ctx.fillText('iqro-t41p.vercel.app', W - 48, H - 36);
     ctx.textAlign = 'center';
-    ctx.fillStyle = '#10B981';
-    ctx.font = 'bold 24px sans-serif';
-    ctx.fillText(`${acc}%`, 200, 340);
-    ctx.font = '500 13px sans-serif';
-    ctx.fillStyle = '#64748B';
-    ctx.fillText('O\'zlashtirish', 200, 375);
-    
-    // Stat 2: O'rtacha vaqt
-    ctx.fillStyle = '#F59E0B';
-    ctx.font = 'bold 24px sans-serif';
-    ctx.fillText(`${avgTime}s`, 400, 340);
-    ctx.font = '500 13px sans-serif';
-    ctx.fillStyle = '#64748B';
-    ctx.fillText('O\'rtacha vaqt', 400, 375);
-    
-    // Stat 3: Tezlik
-    ctx.fillStyle = '#8B5CF6';
-    ctx.font = 'bold 24px sans-serif';
-    ctx.fillText(speedLabel, 600, 340);
-    ctx.font = '500 13px sans-serif';
-    ctx.fillStyle = '#64748B';
-    ctx.fillText('Tezlik bahosi', 600, 375);
-    
-    // 8. Footer Info
-    ctx.fillStyle = '#475569';
-    ctx.font = '500 12px monospace';
-    ctx.fillText('IQRO PLATFORMASI ORQALI GENERATSIYA QILINGAN', 400, 440);
   };
 
   useEffect(() => {
@@ -262,6 +317,11 @@ const AchievementsPage = () => {
 
   const nextLevelXP = levelInfo.level === 1 ? 75 : levelInfo.level === 2 ? 200 : levelInfo.level === 3 ? 500 : levelInfo.level === 4 ? 1000 : 9999;
   const levelPct = Math.min(100, Math.round((totalXP / nextLevelXP) * 100));
+
+  // Umumiy (barcha fanlar bo'yicha) statistika — Lv banner ostidagi qator uchun
+  const globalAnswered = Object.values(state.stats || {}).reduce((sum, c) => sum + (c.totalAnswered || 0), 0);
+  const globalCorrect = Object.values(state.stats || {}).reduce((sum, c) => sum + (c.totalCorrect || 0), 0);
+  const globalAcc = globalAnswered > 0 ? Math.round((globalCorrect / globalAnswered) * 100) : 0;
 
   const filteredTopics = TOPICS.filter(t =>
     Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat
@@ -319,58 +379,122 @@ const AchievementsPage = () => {
         </div>
       </div>
 
+      {/* Umumiy statistika: Savollar · Aniqlik · Balllar (Lv banner ostida) */}
+      <div style={{
+        display: 'flex', padding: '18px 12px', marginBottom: 20,
+        background: 'var(--glass-bg)', backdropFilter: 'blur(20px)',
+        border: '1px solid var(--glass-border)', borderRadius: 24,
+        boxShadow: '0 8px 32px rgba(0,0,0,0.02)',
+      }}>
+        <div style={{ flex: 1, textAlign: 'center' }}>
+          <div style={{ fontSize: 22, fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{globalAnswered}</div>
+          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text3)', marginTop: 6 }}>Savollar</div>
+        </div>
+        <div style={{ width: 1, background: 'var(--border)' }} />
+        <div style={{ flex: 1, textAlign: 'center' }}>
+          <div style={{ fontSize: 22, fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{globalAcc}%</div>
+          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text3)', marginTop: 6 }}>Aniqlik</div>
+        </div>
+        <div style={{ width: 1, background: 'var(--border)' }} />
+        <div style={{ flex: 1, textAlign: 'center', cursor: 'pointer' }} onClick={() => navigate('/leaderboard')}>
+          <div style={{ fontSize: 22, fontWeight: 900, color: 'var(--accent)', lineHeight: 1 }}>{state.totalScore || 0}</div>
+          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text3)', marginTop: 6 }}>Balllar</div>
+        </div>
+      </div>
+
       {/* 📋 ATTESTATSIYA PASPORTI & PROGNOZ WIDGET */}
       <div className="glass-panel" style={{
-        padding: '24px 20px',
+        padding: 18,
         marginBottom: 20,
-        border: '1.5px solid var(--border)',
-        background: 'linear-gradient(135deg, var(--glass-bg), rgba(41, 182, 246, 0.05))',
+        border: '1px solid var(--glass-border)',
+        background: 'var(--glass-bg)',
         backdropFilter: 'blur(20px)',
-        borderRadius: 24,
-        boxShadow: '0 12px 32px rgba(0, 0, 0, 0.04)',
+        borderRadius: 22,
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.03)',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <Award size={24} color="#F59E0B" />
-            <div>
-              <div style={{ fontWeight: 800, fontSize: 16, color: 'var(--text)', letterSpacing: '-0.3px' }}>Attestatsiya Pasporti & Toifa Prognozi</div>
-              <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 500 }}>Foydalanuvchi natijalari asosida tayyorlandi</div>
+        {/* Sarlavha */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+          <div style={{
+            width: 42, height: 42, borderRadius: 13, flexShrink: 0,
+            background: 'linear-gradient(135deg, #F59E0B, #D97706)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 4px 12px rgba(217,119,6,0.25)',
+          }}>
+            <Award size={22} color="#fff" />
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--text)', letterSpacing: '-0.3px' }}>Tayyorgarlik Pasporti</div>
+            <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 500 }}>Attestatsiya &amp; toifa prognozi</div>
+          </div>
+        </div>
+
+        {/* Toifa banneri yoki "tayyorlanmoqda" progressi */}
+        {hasEnoughData ? (
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 14, padding: '14px 16px',
+            borderRadius: 16, marginBottom: 12,
+            background: hexToRgba(toifaColor, 0.08),
+            border: `1px solid ${hexToRgba(toifaColor, 0.25)}`,
+          }}>
+            <div style={{
+              width: 46, height: 46, borderRadius: '50%', flexShrink: 0,
+              background: hexToRgba(toifaColor, 0.15),
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <Award size={24} color={toifaColor} />
+            </div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Toifa prognozi</div>
+              <div style={{ fontSize: 20, fontWeight: 900, color: toifaColor, lineHeight: 1.1 }}>{toifa}</div>
+              <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2 }}>{nextToifaText}</div>
             </div>
           </div>
-          <button 
-            onClick={() => setShowShareModal(true)} 
-            style={{ 
-              background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', 
-              color: '#fff', 
-              border: 'none', 
-              borderRadius: '12px', 
-              padding: '8px 16px', 
-              fontSize: '12px', 
-              fontWeight: 700, 
-              cursor: 'pointer', 
-              fontFamily: 'inherit',
-              boxShadow: '0 4px 10px rgba(41, 182, 246, 0.2)' 
-            }}
-          >
-            📋 Pasportni Ko'rish
-          </button>
+        ) : (
+          <div style={{
+            padding: '14px 16px', borderRadius: 16, marginBottom: 12,
+            background: 'var(--bg3)', border: '1px solid var(--border)',
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+              <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)' }}>Toifa prognozi tayyorlanmoqda</span>
+              <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--accent)' }}>{total}/10</span>
+            </div>
+            <div style={{ height: 8, borderRadius: 4, background: 'var(--bg)', overflow: 'hidden', border: '1px solid var(--border)' }}>
+              <div style={{ width: `${Math.min(100, total * 10)}%`, height: '100%', borderRadius: 4, background: 'linear-gradient(90deg, var(--accent), #8B5CF6)', transition: 'width 0.5s ease' }} />
+            </div>
+            <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 6 }}>Prognoz uchun yana {Math.max(0, 10 - total)} ta savol yeching</div>
+          </div>
+        )}
+
+        {/* 3 ko'rsatkich */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 12 }}>
+          {[
+            { label: 'Aniqlik', value: hasEnoughData ? `${acc}%` : '—', color: !hasEnoughData ? 'var(--text3)' : acc >= 70 ? 'var(--green)' : acc >= 50 ? 'var(--amber)' : 'var(--red)' },
+            { label: 'Tezlik', value: avgTime > 0 ? `${avgTime}s` : '—', color: avgTime > 0 ? speedColor : 'var(--text3)' },
+            { label: 'Savollar', value: total, color: 'var(--text)' },
+          ].map((m) => (
+            <div key={m.label} style={{ background: 'var(--bg3)', padding: '12px 8px', borderRadius: 14, border: '1px solid var(--border)', textAlign: 'center' }}>
+              <div style={{ fontSize: 18, fontWeight: 900, color: m.color, lineHeight: 1 }}>{m.value}</div>
+              <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text3)', marginTop: 5 }}>{m.label}</div>
+            </div>
+          ))}
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: 12, marginTop: 12 }}>
-          <div style={{ background: 'var(--bg3)', padding: 12, borderRadius: 16, border: '1px solid var(--border)', textAlign: 'center' }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text3)', marginBottom: 4 }}>TOIFA PROGNOZI</div>
-            <div style={{ fontSize: 18, fontWeight: 800, color: toifaColor }}>{toifa}</div>
-            <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 4 }}>{nextToifaText}</div>
-          </div>
-          <div style={{ background: 'var(--bg3)', padding: 12, borderRadius: 16, border: '1px solid var(--border)', textAlign: 'center' }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text3)', marginBottom: 4 }}>O'RTACHA TEZLIK</div>
-            <div style={{ fontSize: 18, fontWeight: 800, color: speedColor }}>{avgTime > 0 ? `${avgTime}s / savol` : "Hisoblanmoqda..."}</div>
-            <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 4 }}>{speedLabel}</div>
-          </div>
-        </div>
+        {/* CTA */}
+        <button
+          onClick={() => setShowShareModal(true)}
+          style={{
+            width: '100%', padding: '13px', borderRadius: 14, border: 'none',
+            background: 'linear-gradient(135deg, var(--accent), var(--accent2))',
+            color: '#fff', fontWeight: 800, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+            boxShadow: '0 6px 16px rgba(43,163,220,0.25)',
+          }}
+        >
+          📋 Pasportni ko'rish va ulashish
+        </button>
 
         {/* Toifa ROI — bashorat qilingan toifa asosida personalizatsiya */}
-        {(toifa === 'Oliy Toifa' || toifa === '1-Toifa' || toifa === '2-Toifa') && (
+        {hasEnoughData && (toifa === 'Oliy Toifa' || toifa === '1-Toifa' || toifa === '2-Toifa') && (
           <div style={{ marginTop: 12 }}>
             <RoiBlock
               price={DEFAULT_YEARLY_PRICE}
@@ -489,7 +613,7 @@ const AchievementsPage = () => {
                 Eng ko'p xato qilingan mavzular — bu yerga ko'proq e'tibor bering!
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                {weakTopics.map((t, i) => (
+                {weakTopics.map((t) => (
                   <div
                     key={t.id}
                     onClick={() => handleNavigation(t.id, 'exam')}
@@ -779,12 +903,13 @@ const AchievementsPage = () => {
               </div>
 
               {/* Canvas rendered but scaled down responsively */}
-              <div style={{ 
-                width: '100%', 
-                overflow: 'hidden', 
-                borderRadius: '16px', 
-                border: '1.5px solid var(--border)', 
-                background: '#0F172A',
+              <div style={{
+                width: '100%',
+                overflow: 'hidden',
+                borderRadius: '16px',
+                border: '1.5px solid var(--border)',
+                background: '#FCF8EE',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.12)',
                 marginBottom: 20
               }}>
                 <canvas 

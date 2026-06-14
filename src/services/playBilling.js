@@ -39,7 +39,7 @@ export const initPlayBilling = async () => {
  * @param {string} userId - To'lov qilayotgan foydalanuvchi UID'si
  * @returns {Promise<{success: boolean, message: string, transactionId?: string}>}
  */
-export const purchasePlan = async (planId, userId) => {
+export const purchasePlan = async (planId, _userId) => {
   try {
     const productId = PLAY_PRODUCTS[planId];
     if (!productId) {

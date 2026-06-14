@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Crown, Medal, Star, Trash2, Trophy, X, Calendar, Activity, Zap } from 'lucide-react';
+import { Crown, Medal, Trash2, Trophy, X, Activity, Zap } from 'lucide-react';
 import {
-  collection, query, orderBy, limit, getDocs, onSnapshot,
+  collection, query, orderBy, limit, onSnapshot,
   doc, getDoc, where, getCountFromServer, deleteDoc
 } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -16,7 +15,6 @@ import { getWeekId, getMonthId } from '../context/AppContext';
 const PRIMARY = '#29B6F6';
 
 const LeaderboardPage = () => {
-  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const { showToast } = useContext(ToastContext);
   const { isAdmin } = useAdmin();
@@ -142,7 +140,7 @@ const LeaderboardPage = () => {
             } else {
               setMyEntry(null);
             }
-          } catch (_) {}
+          } catch { /* reyting o'qishda xato — e'tiborsiz */ }
         }
 
         results.forEach((r, i) => { if (!r.rank) r.rank = i + 1; });
@@ -198,7 +196,6 @@ const LeaderboardPage = () => {
 
   // Top 3 podium
   const top3 = leaders.slice(0, 3);
-  const rest = leaders.slice(3);
 
   const Avatar = ({ entry, size = 44 }) => {
     const isPodium = entry.rank <= 3;

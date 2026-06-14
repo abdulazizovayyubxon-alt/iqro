@@ -6,20 +6,19 @@ import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { useAdmin } from '../hooks/useAdmin';
+import GiftBox from '../components/shared/GiftBox';
 import PremiumModal from '../components/PremiumModal';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import {
-  Play, Zap, Brain, GraduationCap, Trophy,
-  ChevronRight, Clock, Target, TrendingUp,
-  Medal, Palette, CheckCircle2, Trash2,
-  MessageCircle, Download, X
+  Play, Zap, Brain, GraduationCap,
+  ChevronRight, Clock, Target,
+  CheckCircle2, Trash2,
+  MessageCircle, X
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { EXAM_DATE, EXAM_GOAL_SCORE, EXAM_LABEL } from '../config';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
-
-const PRIMARY = '#29B6F6';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -93,8 +92,6 @@ const Dashboard = () => {
 
   const cat = state.activeCategory;
   const catStats = state.stats[cat] || { totalAnswered: 0, totalCorrect: 0, streak: 0, maxStreak: 0, mistakes: [] };
-  const totalAcc = catStats.totalAnswered > 0
-    ? Math.round((catStats.totalCorrect / catStats.totalAnswered) * 100) : 0;
   const filteredMistakesCount = catStats.mistakes.length;
 
   const dueCards = (state.spacedCards || []).filter(c => c.nextReview <= Date.now()).length;
@@ -251,7 +248,7 @@ const Dashboard = () => {
         onClick={() => navigate('/referral')}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <span style={{ fontSize: 26, filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }}>🎁</span>
+          <GiftBox size={30} style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))', flexShrink: 0 }} />
           <div style={{ textAlign: 'left' }}>
             <div style={{ fontSize: 14, fontWeight: 800, color: '#78350F' }}>
               Do'stlarni taklif eting!
