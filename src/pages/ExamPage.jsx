@@ -526,22 +526,22 @@ const ExamPage = () => {
 
   if (!examStarted) {
     return (
-      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="page" style={{ maxWidth: 600, margin: '40px auto', padding: '20px 16px' }}>
-        <div className="glass-panel" style={{ padding: '36px 24px', textAlign: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.06)' }}>
-          <div style={{ fontSize: 52, marginBottom: 16 }}>🏆</div>
-          <h1 style={{ fontSize: 24, fontWeight: 900, color: 'var(--text)', marginBottom: 8, letterSpacing: '-0.5px' }}>Imtihon Simulyatori</h1>
-          <p style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 28, fontWeight: 500 }}>
+      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="page" style={{ maxWidth: 600, margin: '0 auto', padding: '16px', display: 'flex', minHeight: '100%', alignItems: 'center' }}>
+        <div className="glass-panel" style={{ padding: '24px 20px', textAlign: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.06)', width: '100%' }}>
+          <div style={{ fontSize: 40, marginBottom: 8 }}>🏆</div>
+          <h1 style={{ fontSize: 'calc(22px * var(--font-scale))', fontWeight: 900, color: 'var(--text)', marginBottom: 6, letterSpacing: '-0.5px' }}>Imtihon Simulyatori</h1>
+          <p style={{ fontSize: 'calc(13.5px * var(--font-scale))', color: 'var(--text3)', lineHeight: 1.5, marginBottom: 18, fontWeight: 500 }}>
             Attestatsiya malaka sinovi standartlariga mos ravishda 50 ta savoldan iborat real imtihon simulyatsiyasi.
           </p>
 
           {/* Exam Type Selector */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 32, textAlign: 'left' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 18, textAlign: 'left' }}>
             {/* Standard option */}
-            <div 
+            <div
               onClick={() => setExamType('standard')}
               style={{
-                padding: '16px 20px',
-                borderRadius: 16,
+                padding: '13px 16px',
+                borderRadius: 14,
                 border: '2px solid',
                 borderColor: examType === 'standard' ? 'var(--blue)' : 'var(--border)',
                 background: examType === 'standard' ? 'var(--blue-bg)' : 'var(--bg2)',
@@ -550,20 +550,20 @@ const ExamPage = () => {
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                <strong style={{ fontSize: 15, color: 'var(--text)' }}>📋 Standart Attestatsiya Imtihoni</strong>
+                <strong style={{ fontSize: 'calc(15px * var(--font-scale))', color: 'var(--text)' }}>📋 Standart Attestatsiya Imtihoni</strong>
                 <input type="radio" checked={examType === 'standard'} readOnly />
               </div>
-              <div style={{ fontSize: 12, color: 'var(--text3)', lineHeight: 1.5 }}>
+              <div style={{ fontSize: 'calc(12px * var(--font-scale))', color: 'var(--text3)', lineHeight: 1.45 }}>
                 Haqiqiy malaka sinovi formati. Barcha bo'limlardan aralash savollar va 10 ta pedagogik mahorat savollari.
               </div>
             </div>
 
             {/* Weak option */}
-            <div 
+            <div
               onClick={() => setExamType('weak')}
               style={{
-                padding: '16px 20px',
-                borderRadius: 16,
+                padding: '13px 16px',
+                borderRadius: 14,
                 border: '2px solid',
                 borderColor: examType === 'weak' ? 'var(--blue)' : 'var(--border)',
                 background: examType === 'weak' ? 'var(--blue-bg)' : 'var(--bg2)',
@@ -572,28 +572,23 @@ const ExamPage = () => {
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                <strong style={{ fontSize: 15, color: 'var(--text)' }}>🔥 Zaif mavzular bo'yicha moslashtirilgan</strong>
+                <strong style={{ fontSize: 'calc(15px * var(--font-scale))', color: 'var(--text)' }}>🔥 Zaif mavzular bo'yicha moslashtirilgan</strong>
                 <input type="radio" checked={examType === 'weak'} readOnly />
               </div>
-              <div style={{ fontSize: 12, color: 'var(--text3)', lineHeight: 1.5 }}>
+              <div style={{ fontSize: 'calc(12px * var(--font-scale))', color: 'var(--text3)', lineHeight: 1.45 }}>
                 Platformadagi shaxsiy statistikangizga asoslangan imtihon. Siz eng ko'p xato qilgan yoki aniqligi past mavzularga ko'proq urg'u beradi.
               </div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <motion.button 
-              whileHover={{ scale: 1.01, y: -1 }} 
-              whileTap={{ scale: 0.98 }} 
-              onClick={() => { setExamStarted(true); }}
-              style={{ padding: '16px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontSize: 16, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}
-            >
-              Imtihonni boshlash
-            </motion.button>
-            <button className="btn btn-outline" style={{ padding: '14px', borderRadius: 16 }} onClick={goBack}>
-              Bosh sahifaga qaytish
-            </button>
-          </div>
+          <motion.button
+            whileHover={{ scale: 1.01, y: -1 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => { setExamStarted(true); }}
+            style={{ width: '100%', padding: '15px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontSize: 16, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}
+          >
+            Imtihonni boshlash
+          </motion.button>
         </div>
       </motion.div>
     );
@@ -951,9 +946,9 @@ const ExamPage = () => {
               <QuestionMedia question={q} />
               {/* Savol matni */}
               {q.isHtml ? (
-                <SafeHtml html={q.q} style={{ fontSize: 16, fontWeight: 500, lineHeight: 1.6, marginBottom: 24, color: 'var(--text)' }} />
+                <SafeHtml html={q.q} style={{ fontSize: 'calc(16px * var(--font-scale))', fontWeight: 500, lineHeight: 1.6, marginBottom: 24, color: 'var(--text)' }} />
               ) : (
-                <div style={{ fontSize: 18, fontWeight: 600, lineHeight: 1.5, marginBottom: 24, color: 'var(--text)', whiteSpace: 'pre-line' }}>
+                <div style={{ fontSize: 'calc(18px * var(--font-scale))', fontWeight: 600, lineHeight: 1.5, marginBottom: 24, color: 'var(--text)', whiteSpace: 'pre-line' }}>
                   {q.q}
                 </div>
               )}
@@ -997,9 +992,9 @@ const ExamPage = () => {
                         padding: '14px 16px', borderRadius: 12, textAlign: 'left',
                         border: optBorder,
                         background: optBg,
-                        cursor: reviewMode ? 'default' : 'pointer', 
+                        cursor: reviewMode ? 'default' : 'pointer',
                         transition: 'all 0.15s', fontFamily: 'inherit',
-                        fontSize: 15, fontWeight: 500, color: 'var(--text)',
+                        fontSize: 'calc(15px * var(--font-scale))', fontWeight: 500, color: 'var(--text)',
                       }}
                     >
                       <div style={{

@@ -263,9 +263,9 @@ function App() {
   }
 
   // Asosiy ilova
-  // Reyting va Siz (profil) sahifalarida yuqori header ko'rinmaydi —
-  // bu sahifalarning o'z sarlavhasi bor, global header ortiqcha.
-  const hideHeader = location.pathname === '/leaderboard' || location.pathname === '/profile';
+  // Siz (profil) sahifasida yuqori header ko'rinmaydi —
+  // u sahifaning o'z sarlavhasi bor, global header ortiqcha.
+  const hideHeader = location.pathname === '/profile';
   return (
     <div className="layout-container">
       {!hideHeader && <Header theme={theme} toggleTheme={toggleTheme} />}

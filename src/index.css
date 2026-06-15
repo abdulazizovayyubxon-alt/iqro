@@ -246,12 +246,13 @@ body.dark-theme {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
   color: #fff;
   font-weight: 800;
   font-size: 16px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(41, 182, 246, 0.25);
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 .header-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 /* Avatar ustidagi bildirishnoma soni (qo'ng'iroqcha o'rniga) */
@@ -281,22 +282,22 @@ body.dark-theme {
 .header-premium-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
+  gap: 7px;
+  padding: 10px 18px;
   border: none;
   border-radius: 99px;
-  background: linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%);
+  background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 50%, #F97316 100%);
   color: #fff;
   font-family: inherit;
   font-weight: 800;
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
   white-space: nowrap;
-  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
   transition: transform 0.15s, box-shadow 0.2s;
 }
-.header-premium-pill:hover { box-shadow: 0 6px 18px rgba(139, 92, 246, 0.4); }
-.header-premium-gem { font-size: 14px; line-height: 1; }
+.header-premium-pill:hover { box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45); }
+.header-premium-gem { display: block; flex-shrink: 0; }
 
 /* ===== Mobil moslashuv: header tig'iz bo'lgani uchun ixchamlashtiramiz ===== */
 @media (max-width: 768px) {
@@ -305,8 +306,7 @@ body.dark-theme {
   .header-avatar { width: 38px; height: 38px; font-size: 14px; }
   .header-greet-hi { font-size: 11px; }
   .header-greet-name { font-size: 14px; max-width: 96px; }
-  .header-premium-pill { padding: 7px 10px; font-size: 12px; gap: 4px; }
-  .header-premium-gem { font-size: 12px; }
+  .header-premium-pill { padding: 8px 13px; font-size: 13px; gap: 5px; }
 }
 
 .hstat { text-align: center; }
@@ -1035,22 +1035,6 @@ body.dark-theme {
   border-radius: 99px;
   animation: pulse 2s infinite;
   border: 1.5px solid var(--bg2);
-}
-
-.gift-season-badge {
-  position: absolute;
-  bottom: -2px;
-  right: -2px;
-  font-size: 11px;
-  z-index: 3;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
-}
-.gift-glow-bg {
-  position: absolute;
-  inset: -4px;
-  border-radius: 14px;
-  z-index: 1;
-  pointer-events: none;
 }
 
 .ambassador-modal-inner {

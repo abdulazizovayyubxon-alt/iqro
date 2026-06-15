@@ -1,13 +1,11 @@
-/**
+﻿/**
  * ReferralPage.jsx — Yangi toza minimal dizayn
  */
 import React, { useState, useEffect, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Copy, Check, Share2, AlertCircle, Ticket, Users } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { AppContext } from '../context/AppContext';
 import { ToastContext } from '../context/ToastContext';
-import { SUBJECTS } from '../data/mockData';
 import GiftBox from '../components/shared/GiftBox';
 import { redeemPromo, PROMO_ERRORS } from '../services/promo';
 import {
@@ -21,24 +19,14 @@ import {
 
 const fmtSum = (n) => n.toLocaleString('uz-UZ') + " so'm";
 
-// Fanga moslashgan jonli sarlavhalar — bo'lmasa default ishlaydi
-const REFERRAL_HEADLINES = {
-  chqbt:       { title: '🎖️ Safingni kengaytir — safdoshlaringni chaqir!', sub: `Bitta havola — ikkalangizga ham ${REFERRAL_DISCOUNT}% chegirma 🎁` },
-  art:         { title: '🎨 Do\'stingni chaqir — birga ijod qilinglar!',     sub: `Bitta havola — ikkalangizga ham ${REFERRAL_DISCOUNT}% chegirma 🎁` },
-  tarix:       { title: '📜 Do\'stingni chaqir — birga g\'alaba qozoning!',   sub: `Bitta havola — ikkalangizga ham ${REFERRAL_DISCOUNT}% chegirma 🎁` },
-  sport:       { title: '🏃 Jamoangni to\'pla — do\'stlaringni chaqir!',      sub: `Bitta havola — ikkalangizga ham ${REFERRAL_DISCOUNT}% chegirma 🎁` },
-  info:        { title: '💻 Jamoangni yig\' — do\'stlaringni chaqir!',        sub: `Bitta havola — ikkalangizga ham ${REFERRAL_DISCOUNT}% chegirma 🎁` },
-  til:         { title: '📖 Do\'stingni chaqir — birga o\'qiylik!',           sub: `Bitta havola — ikkalangizga ham ${REFERRAL_DISCOUNT}% chegirma 🎁` },
-  nemis:       { title: '🇩🇪 Do\'stingni chaqir — birga o\'rganaylik!',        sub: `Bitta havola — ikkalangizga ham ${REFERRAL_DISCOUNT}% chegirma 🎁` },
-  default:     { title: '🤝 Do\'stingni chaqir — birga yutinglar!',          sub: `Bitta havola yuboring — ikkalangiz ham ${REFERRAL_DISCOUNT}% chegirma olasiz 🎁` },
+const HEADLINE = {
+  title: '🎁 Do\'stingga chegirma sovg\'a qil — sen ham yutasan!',
+  sub: `Havolangni ulash — ikkalangizga ${REFERRAL_DISCOUNT}% chegirma`,
 };
 
 export default function ReferralPage() {
   const { user } = useAuth();
-  const { state } = useContext(AppContext);
   const { showToast } = useContext(ToastContext);
-  const headline = REFERRAL_HEADLINES[state?.activeCategory] || REFERRAL_HEADLINES.default;
-  const subjectName = SUBJECTS.find(s => s.id === state?.activeCategory)?.name || 'kasbiy attestatsiya';
 
   const [refLink, setRefLink] = useState('');
   const [stats, setStats] = useState(null);
@@ -109,7 +97,7 @@ export default function ReferralPage() {
       // 1 — Iliq, shaxsiy tavsiya (win-win)
       `📚 Assalomu alaykum!
 
-Men ${subjectName} fanidan attestatsiyaga IQRO platformasida tayyorlanyapman — rostdan ham foydali chiqdi. Sizni ham birga o'qishga chaqirmoqchiman 🙌
+Men attestatsiyaga IQRO platformasida tayyorlanyapman — rostdan ham foydali chiqdi. Sizni ham birga o'qishga chaqirmoqchiman 🙌
 
 Bu yerda nima bor:
 ✅ Haqiqiy imtihon sharoitida testlar
@@ -122,7 +110,7 @@ Yuring, birga tayyorlanamiz 👇
 ${refLink}`,
 
       // 2 — Muammo → Yechim uslubi
-      `🎯 ${subjectName} fanidan attestatsiyaga tayyorlanayapsizmi?
+      `🎯 Attestatsiyaga tayyorlanayapsizmi?
 
 ${firstName} siz bilan IQRO da birga o'qishni taklif qilmoqda!
 
@@ -133,7 +121,7 @@ Bugundan boshlang — imtihon yaqinlashmoqda!`,
       // 3 — Statistika va ishonch uslubi
 `🏆 ${firstName} sizga ${REFERRAL_DISCOUNT}% chegirma sovg'a qilmoqda!
 
-IQRO — ${subjectName} fanidan attestatsiyaga tayyorlovchi platforma.
+IQRO — attestatsiyaga tayyorlovchi platforma.
 
 Nima uchun IQRO?
 • 7 ta fan bo'yicha 1000+ savollar bazasi
@@ -141,7 +129,7 @@ Nima uchun IQRO?
 • Xatolarni tahlil qilish tizimi
 • O'qituvchilar reytingi
 
-${subjectName} fanidan attestatsiya yaqinlashmoqda — tayyorgarlikni bugundan boshlang.
+Attestatsiya yaqinlashmoqda — tayyorgarlikni bugundan boshlang.
 
 🔗 ${refLink}`,
 
@@ -150,7 +138,7 @@ ${subjectName} fanidan attestatsiya yaqinlashmoqda — tayyorgarlikni bugundan b
 
 Men senga IQRO platformasida ${REFERRAL_DISCOUNT}% CHEGIRMA sovg'a qilyapman 🎁.
 
-IQRO — ${subjectName} fanidan, DTM standartlaridagi testlar orqali attestatsiyaga tayyorgarlik ko'rish platformasi. 
+IQRO — DTM standartlaridagi testlar orqali attestatsiyaga tayyorgarlik ko'rish platformasi.
 Eng zo'r tarafi — bu yerda xatolarni tahlil qilish va internetsiz ishlash (oflayn) funksiyasi ham bor!
 
 Hoziroq havola orqali o'tib, chegirma bilan ro'yxatdan o't:
@@ -164,7 +152,7 @@ ${refLink}
 
     if (platform === 'telegram') {
       // Telegram uchun qisqaroq variant
-      return `📚 ${firstName} sizga IQRO da ${subjectName} bo'yicha ${REFERRAL_DISCOUNT}% CHEGIRMA ulashmoqda!\n\nRo\u2018yxatdan o\u2018ting — IKKALANGIZ ${REFERRAL_DISCOUNT}% chegirma olasiz!\n\n✅ Ro\u2018yxatdan o\u2018tish: ${refLink}`;
+      return `📚 ${firstName} sizga IQRO da ${REFERRAL_DISCOUNT}% CHEGIRMA ulashmoqda!\n\nRo‘yxatdan o‘ting — IKKALANGIZ ${REFERRAL_DISCOUNT}% chegirma olasiz!\n\n✅ Ro‘yxatdan o‘tish: ${refLink}`;
     }
 
     return messages[idx];
@@ -212,10 +200,10 @@ ${refLink}
       style={{ maxWidth: 600, margin: '0 auto', padding: '20px 16px 100px' }}
     >
       <h1 style={{ fontSize: 24, fontWeight: 900, color: 'var(--text)', margin: '0 0 6px', lineHeight: 1.2 }}>
-        {headline.title}
+        {HEADLINE.title}
       </h1>
       <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 22, lineHeight: 1.5 }}>
-        {headline.sub}
+        {HEADLINE.sub}
       </p>
 
       {loading ? (

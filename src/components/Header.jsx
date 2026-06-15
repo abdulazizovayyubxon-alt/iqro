@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
-import { Moon, Sun, BookOpen, Calendar } from 'lucide-react';
+import { Moon, Sun, BookOpen, Calendar, Crown } from 'lucide-react';
 import GiftBox from './shared/GiftBox';
 import { db } from '../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
@@ -176,7 +176,15 @@ const Header = ({ theme, toggleTheme }) => {
             onClick={() => setShowPremium(true)}
             title={isPremium ? 'Premium faol' : 'Premium sotib olish'}
           >
-            <span className="header-premium-gem">💎</span>
+            <motion.span
+              className="header-premium-gem"
+              style={{ display: 'block', transformStyle: 'preserve-3d' }}
+              initial={{ rotateY: 0 }}
+              animate={{ rotateY: 360 }}
+              transition={{ duration: 1.2, ease: 'easeInOut' }}
+            >
+              <Crown size={16} strokeWidth={2.4} />
+            </motion.span>
             <span className="header-premium-label">Premium</span>
           </motion.button>
 
@@ -207,51 +215,25 @@ const Header = ({ theme, toggleTheme }) => {
             {theme === 'dark' ? <Moon size={18} /> : theme === 'sepia' ? <BookOpen size={18} /> : <Sun size={18} />}
           </motion.button>
 
-          {/* Taklif (Gift) Menu - Mavsumiy va jonli */}
-          <div style={{ position: 'relative' }}>
-            <motion.button
-              className="user-avatar-btn"
-              onClick={() => navigate('/referral')}
-              title="Do'stlarni taklif qiling"
-              initial={{ rotate: 0 }}
-              animate={
-                (!sessionStorage.getItem('iqro_gift_wiggled') && user && !isAmbassador) ? {
-                  rotate: [0, -15, 15, -15, 15, 0],
-                  scale: [1, 1.1, 1.1, 1.1, 1.1, 1]
-                } : {}
-              }
-              transition={{ duration: 1.5, ease: "easeInOut", times: [0, 0.2, 0.4, 0.6, 0.8, 1], repeat: 2 }}
-              onAnimationComplete={() => sessionStorage.setItem('iqro_gift_wiggled', 'true')}
-              whileTap={{ scale: 0.9 }}
-              style={{ width: btnSize, height: btnSize, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0, position: 'relative' }}
-            >
-              {(() => {
-                const month = new Date().getMonth() + 1;
-                let seasonBadge = '';
-                let glowColor = 'rgba(245, 158, 11, 0.4)';
-                
-                if (month >= 3 && month <= 5) {
-                  seasonBadge = '🌸'; glowColor = 'rgba(236, 72, 153, 0.4)';
-                } else if (month >= 6 && month <= 8) {
-                  seasonBadge = '☀️'; glowColor = 'rgba(239, 68, 68, 0.4)';
-                } else if (month >= 9 && month <= 11) {
-                  seasonBadge = '🍁'; glowColor = 'rgba(217, 119, 6, 0.4)';
-                } else {
-                  seasonBadge = '❄️'; glowColor = 'rgba(56, 189, 248, 0.4)';
-                }
-
-                return (
-                  <>
-                    <GiftBox size={22} style={{ zIndex: 2 }} />
-                    <span className="gift-season-badge">
-                      {seasonBadge}
-                    </span>
-                    <div className="gift-glow-bg" style={{ background: `radial-gradient(circle, ${glowColor} 0%, transparent 70%)` }} />
-                  </>
-                );
-              })()}
-            </motion.button>
-          </div>
+          {/* Taklif (Gift) tugmasi — sodda, neytral ikonka */}
+          <motion.button
+            className="user-avatar-btn"
+            onClick={() => navigate('/referral')}
+            title="Do'stlarni taklif qiling"
+            initial={{ rotate: 0 }}
+            animate={
+              (!sessionStorage.getItem('iqro_gift_wiggled') && user && !isAmbassador) ? {
+                rotate: [0, -15, 15, -15, 15, 0],
+                scale: [1, 1.1, 1.1, 1.1, 1.1, 1]
+              } : {}
+            }
+            transition={{ duration: 1.5, ease: "easeInOut", times: [0, 0.2, 0.4, 0.6, 0.8, 1], repeat: 2 }}
+            onAnimationComplete={() => sessionStorage.setItem('iqro_gift_wiggled', 'true')}
+            whileTap={{ scale: 0.9 }}
+            style={{ width: btnSize, height: btnSize, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0 }}
+          >
+            <GiftBox size={22} />
+          </motion.button>
         </div>
       </div>
 

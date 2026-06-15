@@ -30,6 +30,19 @@ export const QUESTION_TIMER_SECONDS = 60;
 // Yillik obuna default narxi (ROI ko'rsatish uchun; haqiqiy narx Firestore settings/premium da)
 export const DEFAULT_YEARLY_PRICE = 240000;
 
+// ─── Google Play build aniqlash — yagona haqiqat manbasi ───
+// Play Store ichida (APK/AAB) ishlayotganini aniqlaydi. Play'da raqamli obuna
+// FAQAT Google Play Billing orqali sotilishi shart — Click/Payme/Telegram-karta
+// to'lovlari faqat web/brauzer versiyasida ko'rsatiladi.
+// APK bundle build qilinayotganda .env da VITE_PLAY_BUILD=true qo'yiladi.
+// Build-time flag paketlash usulidan (TWA yoki Capacitor) mustaqil ishlaydi.
+export const isPlayBuild = () => {
+  if (import.meta.env.VITE_PLAY_BUILD === 'true') return true; // build-time (asosiy)
+  if (typeof window !== 'undefined' && window.Capacitor?.isNativePlatform?.()) return true; // Capacitor fallback
+  if (typeof document !== 'undefined' && document.referrer.startsWith('android-app://')) return true; // TWA fallback
+  return false;
+};
+
 // ─── Toifa ROI kalkulyatori ───
 // DIQQAT: ustama foizlari taxminiy — rasmiy hujjat asosida TASDIQLAB SO'NG o'zgartiring.
 // base — 1 stavka o'qituvchining o'rtacha oyligi (so'm)

@@ -6,7 +6,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Crown, X, CreditCard, Smartphone,
-  Star, Shield, Send, Check
+  Shield, Send, Check
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { generateClickUrl, generatePaymeUrl } from '../services/payment';
@@ -14,6 +14,7 @@ import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { purchasePlan } from '../services/playBilling';
 import { redeemPromo, PROMO_ERRORS } from '../services/promo';
+import { isPlayBuild } from '../config';
 import RoiBlock from './RoiBlock';
 
 // Default tariflar (Firestore dan yuklanmasa)
@@ -171,8 +172,8 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
   const hasBonus = (referralBonus > 0 || hasReferralDiscount) && selectedPlan;
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-  const isPWA = typeof window !== 'undefined' && window.matchMedia('(display-mode: standalone)').matches;
-  const isAndroidApp = isPWA && /android/i.test(navigator.userAgent);
+  // Play Store build'i — faqat Google Play Billing ko'rsatiladi (Click/Payme/Telegram yashiriladi)
+  const isAndroidApp = isPlayBuild();
   const BOT_USERNAME = 'IQRO_testbot';
 
   const handleRedeem = async () => {
@@ -295,17 +296,6 @@ const PremiumModal = ({ isOpen, onClose }) => {
               <motion.div key="plans" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                 {/* Hero */}
                 <div style={{ textAlign: 'center', marginBottom: 20 }}>
-                  
-                  {/* FOMO Countdown Banner */}
-                  <motion.div 
-                    initial={{ y: -10, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    style={{ background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: 12, padding: '8px 12px', display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 16 }}
-                  >
-                    <span style={{ fontSize: 16 }}>⏳</span>
-                    <span style={{ fontSize: 12, fontWeight: 700, color: '#B45309' }}>Maxsus taklif: 24 soat ichida xarid qilsangiz...</span>
-                  </motion.div>
-
                   <motion.div
                     animate={{ rotate: [0, -10, 10, -10, 0] }}
                     transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
@@ -317,17 +307,10 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   <p style={{ fontSize: 13, color: '#64748B', margin: 0 }}>Cheksiz imkoniyatlar bilan tayyorlan</p>
                 </div>
 
-                {/* Social proof */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 20, fontSize: 12, color: '#64748B' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontWeight: 600, color: '#10B981' }}>
-                    <Shield size={14} />
-                    <span>100% Xavfsiz To'lov</span>
-                  </div>
-                  <div style={{ width: 1, height: 14, background: 'rgba(0,0,0,0.1)' }} />
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                    <Star size={12} style={{ color: '#F59E0B' }} />
-                    <span>89% muvaffaqiyat</span>
-                  </div>
+                {/* Xavfsizlik belgisi */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginBottom: 20, fontSize: 12, color: '#10B981', fontWeight: 600 }}>
+                  <Shield size={14} />
+                  <span>Xavfsiz to'lov</span>
                 </div>
 
                 {/* Toifa ROI — obuna o'zini qachon oqlaydi */}
@@ -612,13 +595,13 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: '#94A3B8', fontSize: 11, fontWeight: 600 }}>
                   <Shield size={14} color="#10B981" />
-                  Xavfsiz to'lov • 100% kafolat
+                  To'lov ma'lumotlaringiz himoyalangan
                 </div>
               </motion.div>
             )}
 
-            {/* ══════ TELEGRAM YO'RIQNOMA ══════ */}
-            {step === 'telegram_guide' && (
+            {/* ══════ TELEGRAM YO'RIQNOMA (faqat web — Play build'da yashiriladi) ══════ */}
+            {step === 'telegram_guide' && !isAndroidApp && (
               <motion.div key="telegram_guide" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                 <div style={{ textAlign: 'center', marginBottom: 24 }}>
                   <div style={{ fontSize: 56, marginBottom: 12 }}>📱</div>
