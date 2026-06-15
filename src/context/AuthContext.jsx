@@ -251,7 +251,8 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       let role = 'user';
       let isPremium = false;
-      
+      let avatarId = null;
+
       try {
         let trialInfo = { status: 'expired', daysLeft: 0, urgencyMs: 0 };
         if (firebaseUser) {
@@ -262,6 +263,7 @@ export const AuthProvider = ({ children }) => {
               const data = userSnap.data();
               isPremium = data.isPremium || false;
               role = data.role || 'user';
+              avatarId = data.avatarId || null;
 
               // ═══ Premium muddati tekshiruvi ═══
               if (isPremium && data.premiumExpire && data.premiumPlan !== 'paid') {
@@ -314,6 +316,7 @@ export const AuthProvider = ({ children }) => {
             email: firebaseUser.email,
             displayName: firebaseUser.displayName,
             photoURL: firebaseUser.photoURL,
+            avatarId,
             isPremium,
             role,
             trialStatus: trialInfo.status,
@@ -330,6 +333,7 @@ export const AuthProvider = ({ children }) => {
             email: firebaseUser.email,
             displayName: firebaseUser.displayName,
             photoURL: firebaseUser.photoURL,
+            avatarId,
             isPremium,
             role,
             trialStatus: trialInfo.status,
@@ -666,6 +670,7 @@ export const AuthProvider = ({ children }) => {
         email: updated.email,
         displayName: updated.displayName,
         photoURL: updated.photoURL,
+        avatarId: updated.avatarId,
         isPremium: updated.isPremium,
         role: updated.role,
         trialStatus: updated.trialStatus,

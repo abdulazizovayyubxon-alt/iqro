@@ -7,6 +7,7 @@ import GiftBox from './shared/GiftBox';
 import { db } from '../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { EXAM_DATE } from '../config';
+import { resolveAvatar } from '../data/avatars';
 import { getReferralStats } from '../services/referral';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
@@ -152,8 +153,8 @@ const Header = ({ theme, toggleTheme }) => {
         <div className="header-greeting" onClick={() => navigate('/profile')} title="Profil">
           <div className="header-avatar-wrap">
             <div className="header-avatar">
-              {user?.photoURL
-                ? <img src={user.photoURL} alt={displayName} />
+              {resolveAvatar(user)
+                ? <img src={resolveAvatar(user)} alt={displayName} />
                 : <span>{getInitials(displayName)}</span>}
             </div>
             {unreadCount > 0 && (

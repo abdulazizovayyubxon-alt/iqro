@@ -6,6 +6,7 @@ import {
   doc, getDoc, where, getCountFromServer, deleteDoc
 } from 'firebase/firestore';
 import { db } from '../firebase';
+import { avatarUrl } from '../data/avatars';
 import { AuthContext } from '../context/AuthContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAdmin } from '../hooks/useAdmin';
@@ -62,7 +63,8 @@ const LeaderboardPage = () => {
             score: score,
             streak: d.dailyStreak || 0,
             answered: d.totalAnswered || 0,
-            photoURL: d.photoURL || null
+            photoURL: d.photoURL || null,
+            avatarId: d.avatarId || null
           });
         });
 
@@ -106,6 +108,7 @@ const LeaderboardPage = () => {
                 streak: md.dailyStreak || 0,
                 answered: md.totalAnswered || 0,
                 photoURL: user.photoURL || null,
+                avatarId: user.avatarId || null,
                 rank: rankAbove + 1,
                 isMe: true
               });
@@ -175,8 +178,8 @@ const LeaderboardPage = () => {
     return (
       <div className={`lb-av-ring${isPodium ? ' podium' : ''}`} style={{ '--sz': `${size}px`, '--ring': ring }}>
         <div className="lb-av">
-          {entry.photoURL
-            ? <img src={entry.photoURL} alt={entry.name} />
+          {(avatarUrl(entry.avatarId) || entry.photoURL)
+            ? <img src={avatarUrl(entry.avatarId) || entry.photoURL} alt={entry.name} />
             : <span style={{ fontSize: size * 0.38 }}>{(entry.name || '?').charAt(0).toUpperCase()}</span>
           }
         </div>

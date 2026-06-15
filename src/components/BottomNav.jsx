@@ -7,6 +7,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { AppContext } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
+import { resolveAvatar } from '../data/avatars';
 import {
   PenTool, Brain, Trophy, GraduationCap, User
 } from 'lucide-react';
@@ -68,8 +69,8 @@ export default function BottomNav() {
                   boxShadow: isPremium ? '0 0 10px rgba(245, 158, 11, 0.5)' : 'none',
                   marginTop: -1
                 }}>
-                  {user?.photoURL ? (
-                    <img src={user.photoURL} alt="Avatar" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
+                  {resolveAvatar(user) ? (
+                    <img src={resolveAvatar(user)} alt="Avatar" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
                   ) : (
                     <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: 'var(--glass-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <Icon size={15} strokeWidth={2.4} style={{ color: isActive ? (isPremium ? '#F59E0B' : '#fff') : 'var(--text2)' }} />

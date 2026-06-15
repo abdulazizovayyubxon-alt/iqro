@@ -4,19 +4,20 @@
  * streak, statistika kartalari, premium holati va havolalar.
  * Sozlamalar/hisob/FAQ alohida sahifaga ko'chirilgan: /settings (SettingsPage.jsx)
  */
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Settings, ChevronRight, Crown, Shield, Play, GraduationCap, Brain, Zap, Users, Camera, Pencil, Trophy } from 'lucide-react';
+import { Settings, ChevronRight, Crown, Shield, Play, GraduationCap, Brain, Zap, Users, Smile, Pencil, Trophy } from 'lucide-react';
 import { SUBJECTS } from '../data/mockData';
 import GiftBox from '../components/shared/GiftBox';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
 import { ToastContext } from '../context/ToastContext';
-import { db, storage, auth } from '../firebase';
+import { db, auth } from '../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { updateProfile } from 'firebase/auth';
+import { avatarUrl } from '../data/avatars';
+import AvatarPickerModal from '../components/profile/AvatarPickerModal';
 import { getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
 import { REFERRAL_DISCOUNT, MONTHLY_PRICE, DISCOUNT_AMOUNT } from '../services/referral';
 import PremiumModal from '../components/PremiumModal';
@@ -48,39 +49,22 @@ export default function ProfilePage() {
   const [savingEdit, setSavingEdit] = useState(false);
   const [editForm, setEditForm] = useState({ firstName: '', lastName: '', age: '', gender: '', birthDate: '', subject: '', teacherCategory: '' });
 
-  // Profil rasmi (avatar) — yuklash holati
-  const [photoURL, setPhotoURL] = useState(user?.photoURL || '');
-  const [uploadingPhoto, setUploadingPhoto] = useState(false);
-  const fileInputRef = useRef(null);
+  // Avatar — tayyor avatarlar reyestridan tanlanadi (rasm yuklash olib tashlandi)
+  const [avatarId, setAvatarId] = useState(user?.avatarId || null);
+  const [showAvatarPicker, setShowAvatarPicker] = useState(false);
+  const avatarSrc = avatarUrl(avatarId) || user?.photoURL || null;
 
-  const handlePhotoChange = async (e) => {
-    const file = e.target.files?.[0];
-    e.target.value = ''; // bir xil faylni qayta tanlash mumkin bo'lsin
-    if (!file || !user) return;
-    if (!file.type.startsWith('image/')) {
-      showToast('Faqat rasm fayli yuklang', 'error');
-      return;
-    }
-    if (file.size > 5 * 1024 * 1024) {
-      showToast("Rasm hajmi 5 MB dan oshmasligi kerak", 'error');
-      return;
-    }
-    setUploadingPhoto(true);
+  const handlePickAvatar = async (id) => {
+    setAvatarId(id);
+    setShowAvatarPicker(false);
+    if (!user) return;
     try {
-      const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
-      const avatarRef = storageRef(storage, `avatars/${user.uid}/photo.${ext}`);
-      await uploadBytes(avatarRef, file);
-      const url = await getDownloadURL(avatarRef);
-      if (auth.currentUser) await updateProfile(auth.currentUser, { photoURL: url });
-      await setDoc(doc(db, 'users', user.uid), { photoURL: url }, { merge: true });
-      setPhotoURL(url);
-      updateUserData({ photoURL: url });
-      showToast('Profil rasmi yangilandi ✅', 'success');
+      await setDoc(doc(db, 'users', user.uid), { avatarId: id || null }, { merge: true });
+      updateUserData({ avatarId: id || null });
+      showToast(id ? 'Avatar yangilandi ✅' : 'Avatar olib tashlandi', 'success');
     } catch (err) {
-      console.error('Avatar yuklash xatosi:', err);
-      showToast("Rasm yuklashda xatolik. Internet va ruxsatlarni tekshiring.", 'error');
-    } finally {
-      setUploadingPhoto(false);
+      console.error('Avatar saqlash xatosi:', err);
+      showToast('Xatolik yuz berdi', 'error');
     }
   };
 
@@ -123,7 +107,7 @@ export default function ProfilePage() {
   const [urgencyLeft, setUrgencyLeft] = useState(user?.urgencyMs || 0);
 
   // Android "orqaga" tugmasi premium modalni yopadi
-  useModalBackButton(showPremium || showEdit, () => { setShowPremium(false); setShowEdit(false); });
+  useModalBackButton(showPremium || showEdit || showAvatarPicker, () => { setShowPremium(false); setShowEdit(false); setShowAvatarPicker(false); });
 
   // Profil ma'lumotlarini yuklash (ism + imtihon sanasi sinxroni)
   useEffect(() => {
@@ -133,7 +117,7 @@ export default function ProfilePage() {
         const d = snap.data();
         const dn = d.displayName || user.displayName || '';
         if (d.displayName) setProfileName(d.displayName);
-        if (d.photoURL) setPhotoURL(d.photoURL);
+        setAvatarId(d.avatarId || null);
         setBonusBalance(d.referralBonus || 0);
         setProfileSubject(d.subject || '');
         setProfileToifa(d.teacherCategory || '');
@@ -245,27 +229,18 @@ export default function ProfilePage() {
 
         {/* Markazda: avatar + ism + badge'lar */}
         <div className="pp-hero-id">
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            style={{ display: 'none' }}
-            onChange={handlePhotoChange}
-          />
           <motion.div
             className="pp-hero-avatar"
             whileTap={{ scale: 0.94 }}
-            onClick={() => !uploadingPhoto && fileInputRef.current?.click()}
-            title="Profil rasmini o'zgartirish"
+            onClick={() => setShowAvatarPicker(true)}
+            title="Avatar tanlash"
           >
-            {uploadingPhoto ? (
-              <div className="pp-avatar-spinner" />
-            ) : photoURL ? (
-              <img src={photoURL} alt={displayName} />
+            {avatarSrc ? (
+              <img src={avatarSrc} alt={displayName} />
             ) : (
               <span>{initials}</span>
             )}
-            <div className="pp-hero-cam"><Camera size={11} color="#fff" /></div>
+            <div className="pp-hero-cam"><Smile size={11} color="#fff" /></div>
           </motion.div>
 
           <div className="pp-hero-name-row">
@@ -594,6 +569,14 @@ export default function ProfilePage() {
           saving={savingEdit}
           onSave={handleSaveProfile}
           onClose={() => setShowEdit(false)}
+        />
+      )}
+      {showAvatarPicker && (
+        <AvatarPickerModal
+          current={avatarId}
+          onSelect={handlePickAvatar}
+          onClose={() => setShowAvatarPicker(false)}
+          displayName={displayName}
         />
       )}
     </motion.div>

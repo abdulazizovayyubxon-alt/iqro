@@ -179,6 +179,7 @@ const prepareStatsForSave = (stateObj, currentUser) => {
   statsToSave.displayName = currentName;
   statsToSave.userName = currentName;
   statsToSave.photoURL = currentUser.photoURL || stateObj.photoURL || null;
+  statsToSave.avatarId = currentUser.avatarId || stateObj.avatarId || null;
   delete statsToSave.topicId;
   delete statsToSave.testMode;
   delete statsToSave.savedAt;

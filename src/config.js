@@ -34,12 +34,39 @@ export const DEFAULT_YEARLY_PRICE = 240000;
 // Play Store ichida (APK/AAB) ishlayotganini aniqlaydi. Play'da raqamli obuna
 // FAQAT Google Play Billing orqali sotilishi shart — Click/Payme/Telegram-karta
 // to'lovlari faqat web/brauzer versiyasida ko'rsatiladi.
-// APK bundle build qilinayotganda .env da VITE_PLAY_BUILD=true qo'yiladi.
-// Build-time flag paketlash usulidan (TWA yoki Capacitor) mustaqil ishlaydi.
+//
+// Bu loyiha TWA (Trusted Web Activity) — APK Vercel saytining AYNAN o'zini ochadi,
+// shuning uchun .env dagi VITE_PLAY_BUILD ilovaga yetib bormaydi (u Vercel build'ni
+// yuklaydi). Demak ilova vs brauzer farqini FAQAT runtime signallar ajratadi:
+//   1) Capacitor native platform (agar kelajakda Capacitor'ga o'tilsa)
+//   2) TWA referrer (android-app://...) — ishonchsiz, SW/SPA da yo'qolishi mumkin
+//   3) TWA launch URL'idagi ?play=1 — KAFOLATLANGAN (Bubblewrap startUrl da sozlanadi)
+// Bir marta aniqlangach localStorage'da saqlanadi — keyingi navigatsiyalarda
+// referrer yo'qolsa ham Play rejimi barqaror qoladi.
 export const isPlayBuild = () => {
-  if (import.meta.env.VITE_PLAY_BUILD === 'true') return true; // build-time (asosiy)
-  if (typeof window !== 'undefined' && window.Capacitor?.isNativePlatform?.()) return true; // Capacitor fallback
-  if (typeof document !== 'undefined' && document.referrer.startsWith('android-app://')) return true; // TWA fallback
+  // Build-time flag (Capacitor/lokal bundle build uchun — TWA da ishlamaydi)
+  if (import.meta.env.VITE_PLAY_BUILD === 'true') return true;
+
+  if (typeof window === 'undefined') return false;
+
+  // Bir marta aniqlangach — saqlab qolamiz
+  try {
+    if (window.localStorage.getItem('iqro_play_build') === '1') return true;
+  } catch (_) { /* localStorage bloklangan bo'lishi mumkin */ }
+
+  const ua = navigator.userAgent || '';
+  const isAndroid = /android/i.test(ua);
+
+  const isCapacitor = !!window.Capacitor?.isNativePlatform?.();
+  const isTWA = typeof document !== 'undefined' && document.referrer.startsWith('android-app://');
+  // TWA launch URL'iga ?play=1 qo'shilsa — kafolatlangan aniqlash (faqat Android)
+  const hasPlayParam = isAndroid && new URLSearchParams(window.location.search).get('play') === '1';
+
+  if (isCapacitor || isTWA || hasPlayParam) {
+    try { window.localStorage.setItem('iqro_play_build', '1'); } catch (_) { /* ignore */ }
+    return true;
+  }
+
   return false;
 };
 
