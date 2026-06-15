@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Eye, EyeOff, UserPlus, LogIn, Send, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff, Send, ShieldCheck } from 'lucide-react';
 import { signInWithCustomToken } from 'firebase/auth';
 import { auth } from '../firebase';
 import { useIsMobile } from '../hooks/useIsMobile';
 
 const STEPS = {
   PHONE: 'phone',
-  CHECKING: 'checking',
-  CHOOSE: 'choose',         // Yangi: foydalanuvchi tanlaydi
-  PASSWORD: 'password',
-  REGISTER_NAME: 'register_name',
+  CHECKING: 'checking',  // Fonda raqam ro'yxatdan o'tganmi tekshiriladi
+  AUTH: 'auth',          // Parol kiritish + (kerak bo'lsa) ro'yxatdan o'tish — bitta moslashuvchan ekran
 };
 
 const PRIMARY = '#29B6F6';
@@ -19,17 +17,16 @@ const PRIMARY = '#29B6F6';
 export default function LoginPage() {
   const {
     signInWithPhone, resetPassword,
-    authError, setAuthError, checkLockout
+    authError, setAuthError, checkLockout, checkUserExists
   } = useAuth();
   
   const isMobile = useIsMobile();
   const s = getStyles(isMobile);
 
   const [step, setStep] = useState(STEPS.PHONE);
+  const [authMode, setAuthMode] = useState('login'); // 'login' | 'register'
   const [phone, setPhone] = useState('+998');
   const [name, setName] = useState('');
-  const [gender, setGender] = useState('male');
-  const [birthDate] = useState('');
   const [password, setPassword] = useState('');
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -77,31 +74,36 @@ export default function LoginPage() {
   };
 
   // ── TELEFON RAQAM KIRITILGANDA ──
-  // Email soxta (@iqro.uz) bo'lgani uchun "foydalanuvchi bormi?" ni ishonchli
-  // aniqlab bo'lmaydi. Shuning uchun foydalanuvchining o'zidan so'raymiz:
-  // yangi hisob ochadimi yoki mavjud hisobga kiradimi.
-  const handlePhoneNext = () => {
+  // "Yangimisiz?" deb so'ramaymiz — fonda /api/check-user orqali raqam
+  // ro'yxatdan o'tganmi tekshiramiz va to'g'ri ekranga olib o'tamiz:
+  //   mavjud → login (parol), yangi → register (ism + parol).
+  // Havolalar qo'lda zaxira sifatida qoladi; ro'yxat/kirish o'zaro ham
+  // avtomatik tuzatiladi (band raqam → kirish, yangi raqam → ro'yxat).
+  const handlePhoneNext = async () => {
     setAuthError('');
     if (!isPhoneValid()) {
       setAuthError("To'g'ri telefon raqam kiriting");
       return;
     }
-    setStep(STEPS.CHOOSE);
+    setStep(STEPS.CHECKING);
+    try {
+      const exists = await checkUserExists(phone);
+      setAuthMode(exists ? 'login' : 'register');
+    } catch (e) {
+      console.warn('Raqamni tekshirishda xatolik:', e);
+      setAuthMode('login'); // zaxira: parol ekrani (havoladan ro'yxatga o'tsa bo'ladi)
+    } finally {
+      setStep(STEPS.AUTH);
+    }
   };
 
-  // ── FOYDALANUVCHI TANLOVI: YANGI HISOB ──
-  const handleChooseRegister = () => {
+  // Login ↔ Register rejimini almashtirish (AUTH ekranidagi havola)
+  const switchAuthMode = (mode) => {
     setAuthError('');
-    setStep(STEPS.REGISTER_NAME);
+    setAuthMode(mode);
   };
 
-  // ── FOYDALANUVCHI TANLOVI: MAVJUD HISOB ──
-  const handleChooseLogin = () => {
-    setAuthError('');
-    setStep(STEPS.PASSWORD);
-  };
-
-  // ── DAVOM ETISH TUGMASI ──
+  // ── DAVOM ETISH / KIRISH / RO'YXATDAN O'TISH TUGMASI ──
   const handleContinue = async () => {
     setAuthError('');
 
@@ -110,7 +112,8 @@ export default function LoginPage() {
       return;
     }
 
-    if (step === STEPS.REGISTER_NAME) {
+    // ── AUTH ekrani ──
+    if (authMode === 'register') {
       if (!name.trim() || name.length < 3) {
         setAuthError("Ism-familiyangizni to'liq kiriting (kamida 3 belgi)");
         return;
@@ -121,18 +124,14 @@ export default function LoginPage() {
       }
       setLoading(true);
       try {
-        const res = await signInWithPhone(name, phone, password, true, gender, birthDate);
-        if (res && !res.success) {
-          if (res.hasCustomPassword) {
-            // Bu raqam oldindan mavjud — parol so'rash kerak
-            setStep(STEPS.PASSWORD);
-          } else {
-            setStep(STEPS.PHONE);
-          }
+        const res = await signInWithPhone(name, phone, password, true, '', '');
+        if (res && !res.success && res.hasCustomPassword) {
+          // Bu raqam allaqachon ro'yxatdan o'tgan — kirish rejimiga o'tamiz
+          setAuthMode('login');
+          setAuthError("Bu raqam allaqachon ro'yxatdan o'tgan. Parolingizni kiriting.");
         }
       } catch (e) {
         console.error("Register xatosi:", e);
-        setStep(STEPS.PHONE);
         if (!authError) setAuthError("Ro'yxatdan o'tishda xatolik.");
       } finally {
         setLoading(false);
@@ -140,24 +139,29 @@ export default function LoginPage() {
       return;
     }
 
-    if (step === STEPS.PASSWORD) {
-      if (!password) { setAuthError("Parolni kiriting"); return; }
-      setLoading(true);
-      try {
-        await signInWithPhone('', phone, password, false);
-      } catch (e) {
-        console.error("Password login xatosi:", e);
-        if (!authError) setAuthError("Kirishda xatolik yuz berdi.");
-      } finally {
-        setLoading(false);
+    // authMode === 'login'
+    if (!password) { setAuthError("Parolni kiriting"); return; }
+    setLoading(true);
+    try {
+      const res = await signInWithPhone('', phone, password, false);
+      if (res && !res.success && res.notRegistered) {
+        // Bu raqam hali ro'yxatdan o'tmagan — ro'yxat rejimiga o'tamiz
+        setAuthMode('register');
+        setAuthError("Bu raqam hali ro'yxatdan o'tmagan. Ism kiritib, yangi hisob yarating.");
       }
+    } catch (e) {
+      console.error("Login xatosi:", e);
+      if (!authError) setAuthError("Kirishda xatolik yuz berdi.");
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleBack = () => {
     setAuthError('');
-    if (step === STEPS.PASSWORD || step === STEPS.REGISTER_NAME || step === STEPS.CHOOSE) {
+    if (step === STEPS.AUTH) {
       setStep(STEPS.PHONE);
+      setAuthMode('login');
     }
   };
 
@@ -207,13 +211,11 @@ export default function LoginPage() {
   };
 
   const progressMap = {
-    [STEPS.PHONE]: 0.25,
-    [STEPS.CHECKING]: 0.50,
-    [STEPS.CHOOSE]: 0.50,
-    [STEPS.REGISTER_NAME]: 0.75,
-    [STEPS.PASSWORD]: 0.75,
+    [STEPS.PHONE]: 0.4,
+    [STEPS.CHECKING]: 0.6,
+    [STEPS.AUTH]: 0.8,
   };
-  const progress = progressMap[step] || 0.25;
+  const progress = progressMap[step] || 0.4;
 
   return (
     <div style={s.pageOuter}>
@@ -230,7 +232,7 @@ export default function LoginPage() {
 
         {/* Header — faqat orqaga qaytish tugmasi */}
         <div style={s.header}>
-          {step !== STEPS.PHONE && step !== STEPS.CHECKING ? (
+          {step === STEPS.AUTH ? (
             <motion.button whileTap={{ scale: 0.9 }} style={s.backBtn} onClick={handleBack}>
               <ArrowLeft size={22} />
             </motion.button>
@@ -286,158 +288,26 @@ export default function LoginPage() {
                 </>
               )}
 
-              {/* ── STEP: CHECKING ── */}
+              {/* ── STEP: CHECKING — fonda raqam tekshirilmoqda ── */}
               {step === STEPS.CHECKING && (
                 <>
                   <h1 style={s.title}>Tekshirilmoqda...</h1>
-                  <p style={s.subtitle}>{phone}</p>
-                  <div style={{ display: 'flex', justifyContent: 'center', padding: '24px 0' }}>
-                    <div style={{ width: 40, height: 40, border: `3px solid var(--border)`, borderTopColor: PRIMARY, borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+                  <p style={s.subtitle}>
+                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong>
+                  </p>
+                  <div style={{ display: 'flex', justifyContent: 'center', padding: '32px 0' }}>
+                    <div style={{ width: 44, height: 44, border: `3px solid var(--border)`, borderTopColor: PRIMARY, borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
                   </div>
                 </>
               )}
 
-              {/* ── STEP: CHOOSE — foydalanuvchi o'zi tanlaydi ── */}
-              {step === STEPS.CHOOSE && (
+              {/* ── STEP: AUTH — kirish yoki ro'yxatdan o'tish (bitta ekran) ── */}
+              {step === STEPS.AUTH && authMode === 'login' && (
                 <>
-                  <h1 style={s.title}>Davom etamiz</h1>
+                  <h1 style={s.title}>Xush kelibsiz!</h1>
                   <p style={s.subtitle}>
-                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> — bu raqam bilan birinchi marta kiryapsizmi?
+                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> — parolingizni kiriting.
                   </p>
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '8px' }}>
-                    {/* Yangi hisob */}
-                    <motion.button
-                      id="choose-register-btn"
-                      style={s.choiceBtn}
-                      onClick={handleChooseRegister}
-                      whileHover={{ y: -2, boxShadow: '0 8px 20px rgba(0,0,0,0.03)' }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <div style={s.choiceIcon}>
-                        <UserPlus size={22} color={PRIMARY} />
-                      </div>
-                      <div style={{ flex: 1, textAlign: 'left' }}>
-                        <div style={s.choiceTitle}>Ha, yangi hisob yarataman</div>
-                        <div style={s.choiceDesc}>Birinchi marta kiryapsiz — ro'yxatdan o'ting</div>
-                      </div>
-                    </motion.button>
-
-                    {/* Mavjud hisob */}
-                    <motion.button
-                      id="choose-login-btn"
-                      style={s.choiceBtn}
-                      onClick={handleChooseLogin}
-                      whileHover={{ y: -2, boxShadow: '0 8px 20px rgba(0,0,0,0.03)' }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <div style={s.choiceIcon}>
-                        <LogIn size={22} color="#10B981" />
-                      </div>
-                      <div style={{ flex: 1, textAlign: 'left' }}>
-                        <div style={s.choiceTitle}>Yo'q, hisobim bor</div>
-                        <div style={s.choiceDesc}>Avval ro'yxatdan o'tgansiz — parol bilan kiring</div>
-                      </div>
-                    </motion.button>
-                  </div>
-                </>
-              )}
-
-              {/* ── STEP: REGISTER NAME ── */}
-              {step === STEPS.REGISTER_NAME && (
-                <>
-                  <h1 style={s.title}>Hisobingizni yarating</h1>
-                  <p style={s.subtitle}>
-                    Bilimingizni sinab ko'ring, testlarda qatnashing va malakangizni oshiring.
-                  </p>
-                  
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '10px' }}>
-                    <div>
-                      <label style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text2)', marginBottom: '6px', display: 'block' }}>Ism va familiya</label>
-                      <input
-                        id="register-name-input"
-                        style={s.input}
-                        type="text"
-                        placeholder="Ism va familiyangizni kiriting"
-                        value={name}
-                        onChange={e => { setAuthError(''); setName(e.target.value); }}
-                        autoFocus
-                      />
-                    </div>
-
-                    <div>
-                      <label style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text2)', marginBottom: '6px', display: 'block' }}>Jinsingiz</label>
-                      <div style={{ display: 'flex', gap: '10px' }}>
-                        <motion.button
-                          type="button"
-                          onClick={() => setGender('male')}
-                          whileTap={{ scale: 0.96 }}
-                          style={{
-                            flex: 1, padding: '12px', borderRadius: '14px',
-                            border: gender === 'male' ? `2px solid ${PRIMARY}` : '1.5px solid var(--border)',
-                            background: gender === 'male' ? 'var(--blue-bg)' : 'var(--bg2)',
-                            color: gender === 'male' ? PRIMARY : 'var(--text2)',
-                            fontWeight: 700, fontSize: '14px', cursor: 'pointer', fontFamily: 'inherit',
-                            transition: 'all 0.15s',
-                            boxShadow: gender === 'male' ? '0 4px 12px rgba(41, 182, 246, 0.12)' : 'none',
-                          }}
-                        >
-                          Erkak
-                        </motion.button>
-                        <motion.button
-                          type="button"
-                          onClick={() => setGender('female')}
-                          whileTap={{ scale: 0.96 }}
-                          style={{
-                            flex: 1, padding: '12px', borderRadius: '14px',
-                            border: gender === 'female' ? `2px solid ${PRIMARY}` : '1.5px solid var(--border)',
-                            background: gender === 'female' ? 'var(--blue-bg)' : 'var(--bg2)',
-                            color: gender === 'female' ? PRIMARY : 'var(--text2)',
-                            fontWeight: 700, fontSize: '14px', cursor: 'pointer', fontFamily: 'inherit',
-                            transition: 'all 0.15s',
-                            boxShadow: gender === 'female' ? '0 4px 12px rgba(41, 182, 246, 0.12)' : 'none',
-                          }}
-                        >
-                          Ayol
-                        </motion.button>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text2)', marginBottom: '6px', display: 'block' }}>Parol yarating</label>
-                      <div style={{ position: 'relative' }}>
-                        <input
-                          style={s.input}
-                          type={showPass ? 'text' : 'password'}
-                          placeholder="Kamida 6 ta belgi"
-                          value={password}
-                          onChange={e => { setAuthError(''); setPassword(e.target.value); }}
-                          onKeyDown={e => e.key === 'Enter' && handleContinue()}
-                        />
-                        <button type="button" onClick={() => setShowPass(!showPass)} style={s.eyeBtn} tabIndex={-1}>
-                          {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </>
-              )}
-
-              {/* ── STEP: PASSWORD (kirish) ── */}
-              {step === STEPS.PASSWORD && (
-                <>
-                  <h1 style={s.title}>Parolni kiriting</h1>
-                  <p style={s.subtitle}>
-                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> uchun parolingizni kiriting:
-                  </p>
-                  
-                  {/* PAROLNI UNUTGANLAR UCHUN HINT */}
-                  <div style={{ background: 'rgba(41, 182, 246, 0.1)', padding: '12px', borderRadius: '12px', marginBottom: '20px', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                    <ShieldCheck size={20} color="#29B6F6" style={{ flexShrink: 0, marginTop: '2px' }} />
-                    <p style={{ margin: 0, fontSize: '13px', color: 'var(--text2)', lineHeight: '1.4' }}>
-                      <strong>Parolingizni unutdingizmi?</strong> Orqaga qayting va <b>"Telegram orqali kirish"</b> ni tanlang — parolsiz kirasiz, so'ng Profil → <b>Parolni o'zgartirish</b> bo'limidan yangi parol o'rnatasiz.
-                    </p>
-                  </div>
 
                   <div style={{ position: 'relative' }}>
                     <input
@@ -457,6 +327,63 @@ export default function LoginPage() {
                   <button style={s.forgotBtn} onClick={handleForgotPassword}>
                     Parolni unutdingizmi?
                   </button>
+
+                  {/* Yangi foydalanuvchi uchun havola */}
+                  <div style={s.switchRow}>
+                    <span style={{ color: 'var(--text3)' }}>Hisobingiz yo'qmi?</span>
+                    <button type="button" style={s.switchLink} onClick={() => switchAuthMode('register')}>
+                      Yangi hisob yarating
+                    </button>
+                  </div>
+                </>
+              )}
+
+              {step === STEPS.AUTH && authMode === 'register' && (
+                <>
+                  <h1 style={s.title}>Hisob yarating</h1>
+                  <p style={s.subtitle}>
+                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> — bilimingizni sinab ko'ring va malakangizni oshiring.
+                  </p>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '6px' }}>
+                    <div>
+                      <label style={s.fieldLabel}>Ism va familiya</label>
+                      <input
+                        id="register-name-input"
+                        style={s.input}
+                        type="text"
+                        placeholder="Ism va familiyangizni kiriting"
+                        value={name}
+                        onChange={e => { setAuthError(''); setName(e.target.value); }}
+                        autoFocus
+                      />
+                    </div>
+
+                    <div>
+                      <label style={s.fieldLabel}>Parol yarating</label>
+                      <div style={{ position: 'relative' }}>
+                        <input
+                          style={s.input}
+                          type={showPass ? 'text' : 'password'}
+                          placeholder="Kamida 6 ta belgi"
+                          value={password}
+                          onChange={e => { setAuthError(''); setPassword(e.target.value); }}
+                          onKeyDown={e => e.key === 'Enter' && handleContinue()}
+                        />
+                        <button type="button" onClick={() => setShowPass(!showPass)} style={s.eyeBtn} tabIndex={-1}>
+                          {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Mavjud foydalanuvchi uchun havola */}
+                  <div style={s.switchRow}>
+                    <span style={{ color: 'var(--text3)' }}>Hisobingiz bormi?</span>
+                    <button type="button" style={s.switchLink} onClick={() => switchAuthMode('login')}>
+                      Kirish
+                    </button>
+                  </div>
                 </>
               )}
 
@@ -520,20 +447,18 @@ export default function LoginPage() {
                   : 'Telefon raqam bilan davom etish'}
               </motion.button>
             </>
-          ) : (
-            step !== STEPS.CHECKING && step !== STEPS.CHOOSE && (
-              <motion.button
-                id="login-submit-btn"
-                style={{ ...s.primaryBtn, opacity: loading || lockoutTimer ? 0.6 : 1 }}
-                onClick={handleContinue}
-                disabled={loading || !!lockoutTimer}
-                whileTap={{ scale: 0.98 }}
-              >
-                {loading ? 'Iltimos, kuting...'
-                  : lockoutTimer ? `Kuting (${lockoutTimer}s)`
-                  : step === STEPS.PASSWORD ? 'Kirish' : 'Davom etish'}
-              </motion.button>
-            )
+          ) : step === STEPS.AUTH && (
+            <motion.button
+              id="login-submit-btn"
+              style={{ ...s.primaryBtn, opacity: loading || lockoutTimer ? 0.6 : 1 }}
+              onClick={handleContinue}
+              disabled={loading || !!lockoutTimer}
+              whileTap={{ scale: 0.98 }}
+            >
+              {loading ? 'Iltimos, kuting...'
+                : lockoutTimer ? `Kuting (${lockoutTimer}s)`
+                : authMode === 'register' ? 'Hisob yaratish' : 'Kirish'}
+            </motion.button>
           )}
 
           {/* Trust Badges & Policies */}
@@ -648,28 +573,19 @@ const getStyles = (isMobile) => ({
     marginBottom: isMobile ? 0 : 10, transition: 'all 0.2s',
     boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
   },
-  // ── CHOOSE step styles ──
-  choiceBtn: {
-    display: 'flex', alignItems: 'center', gap: '14px',
-    padding: '16px 18px', borderRadius: 20,
-    border: '1.5px solid var(--border)', background: 'var(--bg2)',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.01)',
-    cursor: 'pointer', fontFamily: 'inherit',
-    transition: 'all 0.2s ease',
-    width: '100%', textAlign: 'left',
+  // ── AUTH step styles ──
+  fieldLabel: {
+    fontSize: '13px', fontWeight: 600, color: 'var(--text2)',
+    marginBottom: '6px', display: 'block',
   },
-  choiceIcon: {
-    width: 48, height: 48, borderRadius: 14,
-    background: 'var(--bg3)',
+  switchRow: {
     display: 'flex', alignItems: 'center', justifyContent: 'center',
-    flexShrink: 0,
-    border: '1px solid var(--border)',
+    gap: 6, marginTop: 18, fontSize: 14, flexWrap: 'wrap',
   },
-  choiceTitle: {
-    fontSize: 16, fontWeight: 700, color: 'var(--text)',
-    marginBottom: 2,
-  },
-  choiceDesc: {
-    fontSize: 13, color: 'var(--text3)', lineHeight: 1.4,
+  switchLink: {
+    background: 'none', border: 'none', color: '#29B6F6',
+    fontSize: 14, fontWeight: 700, cursor: 'pointer',
+    fontFamily: 'inherit', padding: '4px 2px',
+    textDecoration: 'underline', textUnderlineOffset: 3,
   },
 });

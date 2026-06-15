@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   Medal, ClipboardList, Target, Map, Shield, HeartPulse, GraduationCap, Palette, PaintBucket, LandPlot, Image as ImageIcon, Ruler, Settings, Home, BookOpen, Activity, Baby, Laptop, Smile, PenTool, Award,
-  Compass, Scroll, Hourglass, Globe, Heart, Swords, Trophy, Flame, Calculator, Sun, Cpu, Code, FileText, Binary, Monitor, Wifi, MessageSquare, Scale, Users
+  Compass, Scroll, Hourglass, Globe, Heart, Swords, Trophy, Flame, Calculator, Sun, Cpu, Code, FileText, Binary, Monitor, Wifi, MessageSquare, Scale, Users,
+  Microscope, Brain, Mountain, Leaf, Dna, Ear
 } from 'lucide-react';
 
 // ══════════════════════════════════════════════════════════════
@@ -178,25 +179,88 @@ const mttRahbarTopics = [
     theoryHint: "📌 Rahbar xodimning pedagogik-psixologik kompetensiyalari, boshqaruv etika qoidalari, pedagogik dizayn va bolalar rivojlanish dinamikasini metodik qo'llab-quvvatlash va baholash." }
 ];
 
-const nemisTopics = [
-  { id: 71, name: "Nemis tili: Ilmiy-ommabop matn tushunish", icon: React.createElement(BookOpen, { size: 20 }), day: 42, category: 'nemis',
-    theoryHint: "📌 Standart nemis tilida yozilgan ilmiy-ommabop matnlarni (gazeta, jurnal yoki internet maqolalari) o'qib tushunish, asosiy g'oyani aniqlash va kontekstdan so'z ma'nosini topish." },
-  { id: 72, name: "Nemis tili: Voqeaband matn tushunish", icon: React.createElement(Compass, { size: 20 }), day: 42, category: 'nemis',
-    theoryHint: "📌 Nemis tilidagi badiiy va real voqeaband matnlarni o'qib tushunish, voqealar ketma-ketligini va qahramonlar obrazlarini tahlil qilish." },
-  { id: 73, name: "Nemis tili: Matn yaxlitligi va tuzilishi", icon: React.createElement(Scroll, { size: 20 }), day: 42, category: 'nemis',
-    theoryHint: "📌 Matnning umumiy yaxlitligi va qismlari (kirish, rivojlantirish, xulosa) o'rtasidagi mantiqiy bog'liqliklar hamda bog'lovchilarni tahlil qilish." },
-  { id: 74, name: "Nemis tili: Grammatika", icon: React.createElement(Ruler, { size: 20 }), day: 42, category: 'nemis',
-    theoryHint: "📌 Nemis tili grammatikasi, kelishiklar, fe'l zamonlari (Präteritum, Perfekt, Plusquamperfekt), Passiv, Konjunktiv II, nisbiy gaplar va sintaktik o'zgarishlar." },
-  { id: 75, name: "Nemis tili: Leksika", icon: React.createElement(PenTool, { size: 20 }), day: 43, category: 'nemis',
-    theoryHint: "📌 So'z boyligi, so'z yasalishi (Suffixe, Präfixe), sinonimlar, o'xshash so'zlarni farqlash hamda kollokatsiyalar (Fraktal fe'llar, Nomen-Verb-Verbindungen)." },
-  { id: 76, name: "Nemis tili: Pragmatika", icon: React.createElement(MessageSquare, { size: 20 }), day: 43, category: 'nemis',
-    theoryHint: "📌 Turli nutqiy vaziyatlarga mos keladigan og'zaki yoki yozma nutq andozalari, suhbat strategiyalari va ijtimoiy-madaniy til normalari." },
-  { id: 77, name: "Nemis tili: Kasbiy standartlar", icon: React.createElement(Scale, { size: 20 }), day: 43, category: 'nemis',
-    theoryHint: "📌 Nemis tili o'qituvchisining kasbiy standarti, o'quv darslarini rejalashtirish, xavfsiz rivojlantiruvchi ta'lim muhitini yaratish hamda baholash mezonlari." },
-  { id: 78, name: "Nemis tili: Pedagogika va sinf boshqaruvi", icon: React.createElement(Award, { size: 20 }), day: 43, category: 'nemis',
-    theoryHint: "📌 Sinfni boshqarish usullari, o'qitish didaktikasi va pedagogik muloqot etikasini malaka sinovlarida va konkret keys vaziyatlarida qo'llash." },
-  { id: 79, name: "Nemis tili: O'qitish metodikasi", icon: React.createElement(GraduationCap, { size: 20 }), day: 43, category: 'nemis',
-    theoryHint: "📌 Nemis tilini chet tili sifatida o'qitish metodikasi (DaF), ta'lim metodlari (PPP, TBLT, CLIL, Guided Discovery, ALM) va zamonaviy yondashuvlar." }
+// ── Biologiya (test spetsifikatsiyasi 2026: 50 savol, 120 daqiqa) ──
+const biologiyaTopics = [
+  { id: 80, name: "Biologiya asoslari va tiriklikning xilma-xilligi", icon: React.createElement(Microscope, { size: 20 }), day: 1, category: 'biologiya',
+    theoryHint: "📌 Biologik hodisa va jarayonlarni boshqa fanlar bilan bog'liq holda tushunish, tiriklik darajalari, tirik organizmlar guruhlarini belgilari bo'yicha farqlash, tabiiy jarayonlarni tahlil qilish." },
+  { id: 81, name: "Hujayra biologiyasi", icon: React.createElement(Dna, { size: 20 }), day: 1, category: 'biologiya',
+    theoryHint: "📌 Organik va anorganik moddalar, hujayra tuzilmalari va organoidlari funksiyasi, moddalar almashinuvi (fotosintez, nafas olish), DNK tuzilishi va irsiy axborot bosqichlari." },
+  { id: 82, name: "Organizmlar biologiyasi", icon: React.createElement(Leaf, { size: 20 }), day: 1, category: 'biologiya',
+    theoryHint: "📌 Organizmlar tuzilishi, hayot faoliyati, ko'payishi va rivojlanishi; o'simlik, hayvon va inson organizmi sistemalari hamda ularning funksiyalarini taqqoslash." },
+  { id: 83, name: "Genetika va evolyutsiya", icon: React.createElement(Activity, { size: 20 }), day: 2, category: 'biologiya',
+    theoryHint: "📌 Irsiyat va o'zgaruvchanlik qonuniyatlari, Mendel qonunlari, genetik masalalar yechish, evolyutsion ta'limot, tabiiy tanlanish va turlarning kelib chiqishi." },
+  { id: 84, name: "Ekosistema va biosfera darajasi", icon: React.createElement(Sun, { size: 20 }), day: 2, category: 'biologiya',
+    theoryHint: "📌 Hayotning ekosistema va biosfera darajasi, oziq zanjirlari, moddalar va energiya aylanishi, populyatsiya, biotsenoz hamda ekologik muammolar." },
+  { id: 85, name: "Kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 2, category: 'biologiya',
+    theoryHint: "📌 Biologiya o'qituvchisining kasb standarti talablari, o'quv jarayonini tashkil etish va baholash mezonlari." },
+  { id: 86, name: "Pedagogik mahorat", icon: React.createElement(GraduationCap, { size: 20 }), day: 2, category: 'biologiya',
+    theoryHint: "📌 Pedagogika, didaktika va psixologiya asoslari, dars turlari va rejalashtirish, sinfni boshqarish hamda pedagogik etika." }
+];
+
+// ── Geografiya (test spetsifikatsiyasi 2026: 50 savol, 90 daqiqa) ──
+const geografiyaTopics = [
+  { id: 87, name: "Geografiyaning boshlang'ich kursi", icon: React.createElement(Globe, { size: 20 }), day: 1, category: 'geografiya',
+    theoryHint: "📌 Geografik qobiq, litosfera, atmosfera, gidrosfera, plan va xarita, geografik koordinatalar hamda boshlang'ich geografik tushunchalar." },
+  { id: 88, name: "Materiklar va okeanlar tabiiy geografiyasi", icon: React.createElement(Map, { size: 20 }), day: 1, category: 'geografiya',
+    theoryHint: "📌 Materiklar va okeanlarning tabiiy geografik o'rni, relyefi, iqlimi, ichki suvlari, tabiat zonalari va organik dunyosi." },
+  { id: 89, name: "O'rta Osiyo va O'zbekiston tabiiy geografiyasi", icon: React.createElement(Mountain, { size: 20 }), day: 1, category: 'geografiya',
+    theoryHint: "📌 O'rta Osiyo va O'zbekistonning geografik o'rni, relyefi, foydali qazilmalari, iqlimi, ichki suvlari, tuproq, o'simlik va hayvonot dunyosi." },
+  { id: 90, name: "O'zbekiston iqtisodiy va ijtimoiy geografiyasi", icon: React.createElement(LandPlot, { size: 20 }), day: 2, category: 'geografiya',
+    theoryHint: "📌 O'zbekiston aholisi, mehnat resurslari, sanoat, qishloq xo'jaligi tarmoqlari, transport va iqtisodiy rayonlar." },
+  { id: 91, name: "Jahon iqtisodiy va ijtimoiy geografiyasi", icon: React.createElement(Compass, { size: 20 }), day: 2, category: 'geografiya',
+    theoryHint: "📌 Dunyoning siyosiy xaritasi, jahon aholisi va xo'jaligi, tabiiy resurslar geografiyasi, mintaqalar va davlatlar iqtisodiyoti." },
+  { id: 92, name: "Amaliy geografiya", icon: React.createElement(Ruler, { size: 20 }), day: 2, category: 'geografiya',
+    theoryHint: "📌 Jamiyat va tabiat o'rtasidagi munosabatlar, geoekologik muammolar, tabiatdan oqilona foydalanish va atrof-muhit muhofazasi." },
+  { id: 93, name: "Geografik masala va topshiriqlar", icon: React.createElement(Calculator, { size: 20 }), day: 3, category: 'geografiya',
+    theoryHint: "📌 Masshtab, vaqt mintaqalari, mutlaq va nisbiy balandlik, harorat va bosim, aholi zichligi kabi geografik masala va misollarni yechish." },
+  { id: 94, name: "Geografik grafik materiallar", icon: React.createElement(FileText, { size: 20 }), day: 3, category: 'geografiya',
+    theoryHint: "📌 Xarita, diagramma, jadval, profil va boshqa grafik materiallarni o'qish, tahlil qilish va ulardan ma'lumot olish." },
+  { id: 95, name: "Kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 3, category: 'geografiya',
+    theoryHint: "📌 Geografiya o'qituvchisining kasb standarti talablari, o'quv jarayonini tashkil etish va baholash mezonlari." },
+  { id: 96, name: "Pedagogik mahorat", icon: React.createElement(GraduationCap, { size: 20 }), day: 3, category: 'geografiya',
+    theoryHint: "📌 Pedagogika, didaktika va psixologiya asoslari, dars turlari va rejalashtirish, sinfni boshqarish hamda pedagogik etika." }
+];
+
+// ── MTT Logopedi (test spetsifikatsiyasi 2026: 50 savol, 90 daqiqa) ──
+const mttLogopedTopics = [
+  { id: 97, name: "Tovush talaffuzi buzilishlari", icon: React.createElement(MessageSquare, { size: 20 }), day: 1, category: 'mtt_logoped',
+    theoryHint: "📌 Tovush talaffuzidagi nuqsonlar (dislaliya), ularning turlari, sabablari, aniqlash va tuzatish (korreksiya) usullari." },
+  { id: 98, name: "Markaziy (neyrogen) nutq buzilishlari", icon: React.createElement(Brain, { size: 20 }), day: 1, category: 'mtt_logoped',
+    theoryHint: "📌 Markaziy asab tizimi shikastlanishi bilan bog'liq nutq buzilishlari (afaziya, dizartriya), ularning belgilari va korreksion ishlar." },
+  { id: 99, name: "Motor nutq buzilishlari", icon: React.createElement(Ear, { size: 20 }), day: 1, category: 'mtt_logoped',
+    theoryHint: "📌 Nutqning harakat (motor) tomonidagi buzilishlar, artikulyatsion apparat faoliyati va ularni rivojlantirish mashqlari." },
+  { id: 100, name: "Nutqning ritm va ravonligi buzilishlari", icon: React.createElement(Activity, { size: 20 }), day: 2, category: 'mtt_logoped',
+    theoryHint: "📌 Duduqlanish (zaiklik) va nutq ravonligining boshqa buzilishlari, ularning sabablari, profilaktikasi va korreksiyasi." },
+  { id: 101, name: "Tovush talaffuzi va ovoz rezonansi buzilishlari", icon: React.createElement(MessageSquare, { size: 20 }), day: 2, category: 'mtt_logoped',
+    theoryHint: "📌 Ovoz va rezonans (rinolaliya) buzilishlari, ularning anatomik-fiziologik sabablari va logopedik korreksiya yo'llari." },
+  { id: 102, name: "Nutqning umumiy rivojlanmaganligi", icon: React.createElement(Heart, { size: 20 }), day: 2, category: 'mtt_logoped',
+    theoryHint: "📌 Nutqning umumiy rivojlanmaganligi (NUR) darajalari, leksik-grammatik va fonetik tomonlarini rivojlantirish bo'yicha ishlar." },
+  { id: 103, name: "Yozma nutq buzilishlari", icon: React.createElement(PenTool, { size: 20 }), day: 3, category: 'mtt_logoped',
+    theoryHint: "📌 Disgrafiya va disleksiya — yozish va o'qish buzilishlari, ularning turlari, aniqlash va tuzatish metodikasi." },
+  { id: 104, name: "O'qish va yozish bilan bog'liq buzilishlar", icon: React.createElement(BookOpen, { size: 20 }), day: 3, category: 'mtt_logoped',
+    theoryHint: "📌 O'qish va yozish ko'nikmalari shakllanishidagi buzilishlar, savod o'rgatishga tayyorgarlik va korreksion mashg'ulotlar." },
+  { id: 105, name: "Kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 3, category: 'mtt_logoped',
+    theoryHint: "📌 Logoped mutaxassisining kasb standarti talablari, faoliyatni tashkil etish va baholash mezonlari." },
+  { id: 106, name: "Pedagogik mahorat", icon: React.createElement(GraduationCap, { size: 20 }), day: 3, category: 'mtt_logoped',
+    theoryHint: "📌 Maktabgacha pedagogika, didaktika va psixologiya asoslari, mashg'ulotlarni rejalashtirish hamda pedagogik etika." }
+];
+
+// ── MTT Psixologi (test spetsifikatsiyasi 2026: 50 savol, 90 daqiqa) ──
+const mttPsixologTopics = [
+  { id: 107, name: "Psixologiya maqsadi, vazifalari va metodlari", icon: React.createElement(Brain, { size: 20 }), day: 1, category: 'mtt_psixolog',
+    theoryHint: "📌 Yosh (ontogenez) psixologiyasi fanining maqsadi, vazifalari, asosiy tushunchalari va tadqiqot metodlari." },
+  { id: 108, name: "Oila psixologiyasi", icon: React.createElement(Heart, { size: 20 }), day: 1, category: 'mtt_psixolog',
+    theoryHint: "📌 Oila va oilaviy munosabatlar psixologiyasi, bola tarbiyasida oilaning roli hamda ota-onalar bilan ishlash." },
+  { id: 109, name: "Hayotiy davrlar va rivojlanish bosqichlari", icon: React.createElement(Hourglass, { size: 20 }), day: 1, category: 'mtt_psixolog',
+    theoryHint: "📌 Inson hayotining yosh davrlari, har bir bosqichdagi psixik rivojlanish qonuniyatlari va yetakchi faoliyat turlari." },
+  { id: 110, name: "Inklyuziv ta'lim", icon: React.createElement(Users, { size: 20 }), day: 2, category: 'mtt_psixolog',
+    theoryHint: "📌 Inklyuziv ta'lim tamoyillari, alohida ehtiyojli bolalar bilan ishlash, korreksion-rivojlantiruvchi mashg'ulotlar." },
+  { id: 111, name: "Yosh psixologiyasi", icon: React.createElement(Smile, { size: 20 }), day: 2, category: 'mtt_psixolog',
+    theoryHint: "📌 Maktabgacha yoshdagi bolalar psixik jarayonlari (idrok, diqqat, xotira, tafakkur, nutq), shaxs va emotsional-irodaviy soha rivojlanishi." },
+  { id: 112, name: "Kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 3, category: 'mtt_psixolog',
+    theoryHint: "📌 Psixolog mutaxassisining kasb standarti talablari, faoliyatni tashkil etish va baholash mezonlari." },
+  { id: 113, name: "Pedagogik mahorat", icon: React.createElement(GraduationCap, { size: 20 }), day: 3, category: 'mtt_psixolog',
+    theoryHint: "📌 Maktabgacha pedagogika, didaktika asoslari, mashg'ulotlarni rejalashtirish hamda pedagogik etika va muloqot." }
 ];
 
 export const SUBJECTS = [
@@ -209,10 +273,13 @@ export const SUBJECTS = [
   { id: 'mtt', name: "MTT Tarbiyachilari", icon: Smile, desc: "Maktabgacha ta'lim pedagogikasi va metodikasi" },
   { id: 'mtt_rahbar', name: "MTT Dir. O'rinbosari", icon: Award, desc: "Metodik rahbarlik, me'yoriy hujjatlar va boshqaruv" },
   { id: 'til', name: "Ona Tili va Adabiyot", icon: PenTool, desc: "Til qoidalari, adabiyot tarixi va tahlili" },
-  { id: 'nemis', name: "Nemis Tili", icon: Globe, desc: "Til qoidalari, o'qib tushunish, pragmatika va metodika" }
+  { id: 'biologiya', name: "Biologiya", icon: Microscope, desc: "Hujayra, organizmlar, genetika, ekologiya va metodika" },
+  { id: 'geografiya', name: "Geografiya", icon: Globe, desc: "Tabiiy va iqtisodiy geografiya, xaritashunoslik va metodika" },
+  { id: 'mtt_logoped', name: "MTT Logopedi", icon: MessageSquare, desc: "Nutq buzilishlari, korreksiya va logopedik metodika" },
+  { id: 'mtt_psixolog', name: "MTT Psixologi", icon: Brain, desc: "Yosh psixologiyasi, oila, inklyuziv ta'lim va metodika" }
 ];
 
-export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...nemisTopics];
+export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics];
 
 export const SCHEDULE = [
   { day: 1, date: "2 May", topic: "Harbiy xizmat asoslari", tests: 8, goal: "Konstitutsiya, Mudofaa doktrinasi", topicId: 0 },

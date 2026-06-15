@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { useAdmin } from '../hooks/useAdmin';
 import { db, storage } from '../firebase';
 import {
-  collection, query, orderBy, onSnapshot,
+  collection, query, orderBy, onSnapshot, where, getCountFromServer,
   updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch, increment, setDoc
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL, uploadString } from 'firebase/storage';
@@ -14,7 +14,8 @@ import {
   Shield, MessageCircle, Users, BarChart3,
   CheckCircle, Trash2, AlertTriangle,
   ChevronDown, ChevronUp, Search, Plus, Edit3, FileText, Zap,
-  Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, UploadCloud
+  Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, UploadCloud,
+  Download, Crown, Database, RefreshCw
 } from 'lucide-react';
 
 import './AdminPage.css';
@@ -37,7 +38,11 @@ const AdminPage = () => {
   const { showToast } = useContext(ToastContext);
   const navigate = useNavigate();
 
-  const [tab, setTab] = useState('objections'); // objections | users | stats | questions | tariffs | notifications | referrals
+  const [tab, setTab] = useState('objections'); // objections | questions | users | stats | tariffs | notifications | referrals | promos
+
+  // ── Platforma umumiy statistikasi (arzon count so'rovlari) ──
+  const [overview, setOverview] = useState(null); // { users, premium, questions, referrals }
+  const [overviewLoading, setOverviewLoading] = useState(false);
 
   // ── Referral statistika state ──
   const [allReferrals, setAllReferrals] = useState([]);
@@ -89,6 +94,34 @@ const AdminPage = () => {
       setAdminNotifs(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     }, (err) => console.error("Notifs fetch error:", err));
     return () => unsub();
+  }, [isAdmin]);
+
+  // ── Umumiy statistika (count aggregation — barcha hujjatlarni o'qimaydi, arzon) ──
+  const loadOverview = async () => {
+    setOverviewLoading(true);
+    try {
+      const [u, p, q, r] = await Promise.all([
+        getCountFromServer(collection(db, 'users')),
+        getCountFromServer(query(collection(db, 'users'), where('isPremium', '==', true))),
+        getCountFromServer(collection(db, 'questions')),
+        getCountFromServer(collection(db, 'referrals')),
+      ]);
+      setOverview({
+        users: u.data().count,
+        premium: p.data().count,
+        questions: q.data().count,
+        referrals: r.data().count,
+      });
+    } catch (e) {
+      console.error('Overview load error:', e);
+    } finally {
+      setOverviewLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!isAdmin) return;
+    loadOverview();
   }, [isAdmin]);
 
   const handleSendNotification = async () => {
@@ -241,6 +274,7 @@ try {
   };
 
   useEffect(() => {
+    if (!isAdmin) return;
     const q = query(collection(db, 'objections'), orderBy('timestamp', 'desc'));
     const unsub = onSnapshot(q, (snap) => {
       setObjections(snap.docs.map(d => ({
@@ -251,30 +285,30 @@ try {
       setLoading(false);
     });
     return () => unsub();
-  }, []);
+  }, [isAdmin]);
 
   useEffect(() => {
-    if (tab !== 'users') return;
+    if (!isAdmin || tab !== 'users') return;
     const loadUsers = async () => {
       if (users.length > 0) return; // Keshdan o'qish (qayta yuklamaslik uchun)
       const snap = await getDocs(collection(db, 'users'));
       setUsers(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     };
     loadUsers();
-  }, [tab]);
+  }, [tab, isAdmin]);
 
   useEffect(() => {
-    if (tab !== 'questions') return;
+    if (!isAdmin || tab !== 'questions') return;
     const loadQuestions = async () => {
       if (questions.length > 0) return; // Keshdan o'qish (qayta yuklamaslik uchun)
       const snap = await getDocs(collection(db, 'questions'));
       setQuestions(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     };
     loadQuestions();
-  }, [tab]);
+  }, [tab, isAdmin]);
 
   useEffect(() => {
-    if (tab !== 'tariffs') return;
+    if (!isAdmin || tab !== 'tariffs') return;
     const unsub = onSnapshot(doc(db, 'settings', 'premium'), (docSnap) => {
       if (docSnap.exists() && docSnap.data().plans) {
         setTariffs(docSnap.data().plans);
@@ -283,11 +317,11 @@ try {
       }
     });
     return () => unsub();
-  }, [tab]);
+  }, [tab, isAdmin]);
 
   // ── Referral tab ma'lumotlarini yuklash ──
   useEffect(() => {
-    if (tab !== 'referrals') return;
+    if (!isAdmin || tab !== 'referrals') return;
     const loadReferrals = async () => {
       if (allReferrals.length > 0) return; // Keshdan o'qish
       setReferralLoading(true);
@@ -310,7 +344,7 @@ try {
       setReferralLoading(false);
     };
     loadReferrals();
-  }, [tab]);
+  }, [tab, isAdmin]);
 
   // ═══ Admin: Referral statusini "to'ladi" ga o'zgartirish ═══
   const handleMarkReferralPaid = async (refId, referrerId) => {
@@ -388,6 +422,7 @@ try {
   const togglePremium = async (userId, currentStatus) => {
     try {
       await updateDoc(doc(db, 'users', userId), { isPremium: !currentStatus });
+      setUsers(prev => prev.map(u => u.id === userId ? { ...u, isPremium: !currentStatus } : u));
       showToast("Premium holati o'zgartirildi!", 'success');
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
   };
@@ -396,6 +431,7 @@ try {
     try {
       const newRole = currentRole === 'admin' ? 'user' : 'admin';
       await updateDoc(doc(db, 'users', userId), { role: newRole });
+      setUsers(prev => prev.map(u => u.id === userId ? { ...u, role: newRole } : u));
       showToast(`Rol o'zgartirildi: ${newRole}`, 'success');
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
   };
@@ -412,6 +448,68 @@ try {
       showToast("Xatolik yuz berdi: " + e.message, 'error');
     }
     });
+  };
+
+  // ── CSV eksport (admin yozuvlari uchun) ──
+  const exportCSV = (filename, headers, rows) => {
+    if (!rows.length) { showToast("Eksport uchun ma'lumot yo'q", 'info'); return; }
+    const esc = (v) => {
+      const s = (v === undefined || v === null) ? '' : String(v);
+      return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+    };
+    const csv = [headers.join(','), ...rows.map(r => r.map(esc).join(','))].join('\n');
+    const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' }); // BOM — Excel kirillni to'g'ri o'qiydi
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${filename}_${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast(`📥 ${rows.length} ta yozuv eksport qilindi`, 'success');
+  };
+
+  const exportUsers = () => {
+    exportCSV('foydalanuvchilar',
+      ['Ism', 'Email', 'Telefon', 'Premium', 'Rol', "Ro'yxatdan o'tgan"],
+      filteredUsers.map(u => [
+        u.displayName || '',
+        u.email || '',
+        u.phone || u.phoneNumber || '',
+        u.isPremium ? 'Ha' : "Yo'q",
+        u.role || 'user',
+        u.createdAt?.toDate ? u.createdAt.toDate().toLocaleDateString('uz-UZ')
+          : (u.createdAt ? new Date(u.createdAt.seconds ? u.createdAt.seconds * 1000 : u.createdAt).toLocaleDateString('uz-UZ') : ''),
+      ])
+    );
+  };
+
+  const exportReferrals = () => {
+    exportCSV('referrallar',
+      ['Taklif qiluvchi', 'Taklif qilingan', 'Sana', 'Status', 'Bonus', "Bonus to'langan"],
+      allReferrals.map(r => [
+        r.referrerName || '',
+        r.referredName || '',
+        r.createdAt ? new Date(r.createdAt).toLocaleDateString('uz-UZ') : '',
+        r.status || 'pending',
+        r.bonusAmount || (r.bonusPaid ? 15000 : 0),
+        r.bonusPaid ? 'Ha' : "Yo'q",
+      ])
+    );
+  };
+
+  // ── Savollarni JSON'ga zaxiralash (import bilan mos format; dedup/publish'dan oldin backup) ──
+  const exportQuestionsJSON = () => {
+    if (!questions.length) { showToast("Savollar hali yuklanmagan", 'info'); return; }
+    // id'ni chiqarib tashlaymiz — fayl qayta import qilinganda toza bo'lishi uchun
+    const data = questions.map(({ id, ...rest }) => rest);
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `savollar_backup_${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast(`📥 ${data.length} ta savol JSON ga zaxiralandi`, 'success');
   };
 
 
@@ -628,14 +726,8 @@ try {
         }
         updatedTariffs.push(newTariff);
       }
-      // settings/premium hujjatini saqlash yoki yangilash
-      await updateDoc(doc(db, 'settings', 'premium'), { plans: updatedTariffs }).catch(async (err) => {
-        if (err.code === 'not-found') {
-          // hujjat yo'q bo'lsa yaratamiz
-          const { setDoc } = await import('firebase/firestore');
-          await setDoc(doc(db, 'settings', 'premium'), { plans: updatedTariffs });
-        } else throw err;
-      });
+      // settings/premium hujjatini saqlash yoki yangilash (yo'q bo'lsa yaratiladi)
+      await setDoc(doc(db, 'settings', 'premium'), { plans: updatedTariffs }, { merge: true });
       showToast("✅ Tarif saqlandi!", 'success');
       setIsAddingTariff(false);
       setEditingTariff(null);
@@ -738,7 +830,7 @@ try {
             <div className="admin-quick-stat-lbl">Hal qilindi</div>
           </div>
           <div className="admin-quick-stat">
-            <div className="admin-quick-stat-val" style={{ color: 'var(--blue)' }}>{users.length || '—'}</div>
+            <div className="admin-quick-stat-val" style={{ color: 'var(--blue)' }}>{overview?.users ?? (users.length || '—')}</div>
             <div className="admin-quick-stat-lbl">Foydalanuvchi</div>
           </div>
         </div>
@@ -903,6 +995,9 @@ try {
             <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={analyzeDuplicates} disabled={dupAnalyzing}>
               <Trash2 size={14} /> {dupAnalyzing ? 'Tahlil...' : 'Dublikatlar'}
             </motion.button>
+            <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline" onClick={exportQuestionsJSON} disabled={!questions.length} title="Barcha savollarni JSON faylga zaxiralash">
+              <Download size={14} /> Zaxira (JSON)
+            </motion.button>
             <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-primary" onClick={() => { setIsAdding(true); setEditingQ(null); setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' }); }}>
               <Plus size={14} /> Yangi savol
             </motion.button>
@@ -939,8 +1034,11 @@ try {
                   <option value="info">💻 Informatika</option>
                   <option value="mtt">🧸 MTT tarbiyachisi</option>
                   <option value="mtt_rahbar">👔 MTT rahbari</option>
-                  <option value="til">🗣️ Tillar</option>
-                  <option value="nemis">🌐 Nemis tili</option>
+                  <option value="til">🗣️ Ona tili va adabiyot</option>
+                  <option value="biologiya">🧬 Biologiya</option>
+                  <option value="geografiya">🌍 Geografiya</option>
+                  <option value="mtt_logoped">💬 MTT Logopedi</option>
+                  <option value="mtt_psixolog">🧠 MTT Psixologi</option>
                 </select>
               </div>
               <div className="admin-select-wrapper">
@@ -1049,15 +1147,20 @@ try {
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14, flexWrap: 'wrap', gap: 10 }}>
             <div className="admin-section-title" style={{ marginBottom: 0 }}><Users size={18} style={{ color: 'var(--blue)' }} /> Foydalanuvchilar ({filteredUsers.length}/{users.length})</div>
-            <div className="admin-search-wrap" style={{ maxWidth: 300, width: '100%' }}>
-              <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text3)' }} />
-              <input
-                className="admin-search"
-                style={{ padding: '8px 8px 8px 32px', fontSize: '13px', borderRadius: '10px' }}
-                placeholder="Ism, telefon yoki email..."
-                value={userSearch}
-                onChange={e => setUserSearch(e.target.value)}
-              />
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+              <div className="admin-search-wrap" style={{ maxWidth: 260, width: '100%' }}>
+                <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text3)' }} />
+                <input
+                  className="admin-search"
+                  style={{ padding: '8px 8px 8px 32px', fontSize: '13px', borderRadius: '10px' }}
+                  placeholder="Ism, telefon yoki email..."
+                  value={userSearch}
+                  onChange={e => setUserSearch(e.target.value)}
+                />
+              </div>
+              <button className="btn btn-sm btn-outline" onClick={exportUsers} disabled={!filteredUsers.length} title="CSV faylga eksport">
+                <Download size={14} /> CSV
+              </button>
             </div>
           </div>
           {users.length === 0 ? (
@@ -1115,6 +1218,33 @@ try {
 
       {tab === 'stats' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {/* ── Platforma umumiy ko'rsatkichlari ── */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
+            <div className="admin-section-title" style={{ marginBottom: 0 }}><BarChart3 size={18} style={{ color: 'var(--blue)' }} /> Platforma ko'rsatkichlari</div>
+            <button className="btn btn-sm btn-outline" onClick={loadOverview} disabled={overviewLoading}>
+              <RefreshCw size={14} className={overviewLoading ? 'spin' : ''} /> {overviewLoading ? 'Yangilanmoqda...' : 'Yangilash'}
+            </button>
+          </div>
+          <div className="admin-stats-grid">
+            <div className="stat-box glass-panel">
+              <div className="stat-box-val" style={{ color: 'var(--blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}><Users size={18} /> {overview?.users ?? '—'}</div>
+              <div className="stat-box-lbl">Foydalanuvchilar</div>
+            </div>
+            <div className="stat-box glass-panel">
+              <div className="stat-box-val" style={{ color: 'var(--amber)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}><Crown size={18} /> {overview?.premium ?? '—'}</div>
+              <div className="stat-box-lbl">Premium</div>
+            </div>
+            <div className="stat-box glass-panel">
+              <div className="stat-box-val" style={{ color: 'var(--green)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}><Database size={18} /> {overview?.questions ?? '—'}</div>
+              <div className="stat-box-lbl">Savollar</div>
+            </div>
+            <div className="stat-box glass-panel">
+              <div className="stat-box-val" style={{ color: '#8b5cf6', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>🔗 {overview?.referrals ?? '—'}</div>
+              <div className="stat-box-lbl">Referrallar</div>
+            </div>
+          </div>
+
+          <div className="admin-section-title" style={{ marginTop: 8 }}><MessageCircle size={18} style={{ color: 'var(--amber)' }} /> E'tirozlar statistikasi</div>
           <div className="admin-stats-grid">
             <div className="stat-box glass-panel">
               <div className="stat-box-val">{objections.length}</div>
@@ -1327,8 +1457,13 @@ try {
 
           {/* Referrallar jadvali */}
           <div className="glass-panel" style={{ padding: '20px', overflow: 'hidden' }}>
-            <div style={{ fontSize: '16px', fontWeight: '700', color: 'var(--text)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Users size={18} style={{ color: 'var(--blue)' }} /> Barcha referrallar ro'yxati
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, marginBottom: '16px', flexWrap: 'wrap' }}>
+              <div style={{ fontSize: '16px', fontWeight: '700', color: 'var(--text)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Users size={18} style={{ color: 'var(--blue)' }} /> Barcha referrallar ro'yxati
+              </div>
+              <button className="btn btn-sm btn-outline" onClick={exportReferrals} disabled={!allReferrals.length} title="CSV faylga eksport">
+                <Download size={14} /> CSV
+              </button>
             </div>
 
             {referralLoading ? (

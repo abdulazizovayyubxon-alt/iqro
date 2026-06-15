@@ -30,7 +30,10 @@ const SUBJECTS = [
   { id: 'mtt', badge: 'M', title: 'MTT Tarbiyachilari', desc: 'Maktabgacha ta\'lim pedagogikasi va metodikasi' },
   { id: 'mtt_rahbar', badge: 'D', title: 'MTT Dir. O\'rinbosari', desc: 'Metodik rahbarlik, me\'yoriy hujjatlar va boshqaruv' },
   { id: 'til', badge: 'O', title: 'Ona Tili va Adabiyot', desc: 'Til qoidalari, adabiyot tarixi va tahlili' },
-  { id: 'nemis', badge: 'N', title: 'Nemis Tili', desc: 'Nemis tili qoidalari, pragmatika, metodika' },
+  { id: 'biologiya', badge: 'Bi', title: 'Biologiya', desc: 'Hujayra, organizmlar, genetika, ekologiya va metodika' },
+  { id: 'geografiya', badge: 'Ge', title: 'Geografiya', desc: 'Tabiiy va iqtisodiy geografiya, xaritashunoslik va metodika' },
+  { id: 'mtt_logoped', badge: 'Lo', title: 'MTT Logopedi', desc: 'Nutq buzilishlari, korreksiya va logopedik metodika' },
+  { id: 'mtt_psixolog', badge: 'Ps', title: 'MTT Psixologi', desc: 'Yosh psixologiyasi, oila, inklyuziv ta\'lim va metodika' },
   { id: 'multi', badge: '✦', title: 'Bir nechta fan', desc: 'Barcha fanlar bo\'yicha kompleks' },
 ];
 
@@ -100,8 +103,8 @@ function LoadingStep({ isMobile }) {
   const ss = getStyles(isMobile);
 
   React.useEffect(() => {
-    const prog = setInterval(() => setProgress(p => Math.min(p + 2, 100)), 40);
-    const step = setInterval(() => setStepIdx(i => Math.min(i + 1, LOADING_STEPS.length - 1)), 800);
+    const prog = setInterval(() => setProgress(p => Math.min(p + 4, 100)), 40);
+    const step = setInterval(() => setStepIdx(i => Math.min(i + 1, LOADING_STEPS.length - 1)), 450);
     return () => { clearInterval(prog); clearInterval(step); };
   }, []);
 
@@ -115,7 +118,7 @@ function LoadingStep({ isMobile }) {
       </div>
 
       <h2 style={{ fontSize: 22, fontWeight: 800, color: 'var(--text)', margin: '24px 0 8px' }}>
-        Optimizing daily goals...
+        Rejangiz sozlanmoqda...
       </h2>
       <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 28 }}>
         Rejangiz tayyorlanmoqda, bir necha soniya kuting
@@ -233,8 +236,8 @@ function WelcomeStep({ goal, time, isMobile }) {
         gap: 8,
         lineHeight: 1.4
       }}>
-        <span style={{ fontSize: 16 }}>🏆</span>
-        <span style={{ textAlign: 'left' }}>Foydalanuvchilarning <strong style={{ color: 'var(--blue)', fontWeight: 800 }}>89%</strong> si o'z maqsadlariga erisha olishdi!</span>
+        <span style={{ fontSize: 16 }}>🎯</span>
+        <span style={{ textAlign: 'left' }}>Har kuni ozgina mashq — eng yaxshi natijaga olib boradi. Keling, boshlaymiz!</span>
       </div>
     </div>
   );
@@ -285,7 +288,7 @@ export default function OnboardingPage({ onComplete }) {
         });
       }
     } catch (e) { console.error(e); }
-    setTimeout(() => { setStep(4); setSaving(false); }, 2800);
+    setTimeout(() => { setStep(4); setSaving(false); }, 1500);
   };
 
   const handleSelect = (val) => {

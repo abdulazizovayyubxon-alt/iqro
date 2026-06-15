@@ -53,16 +53,19 @@ const SUBJECT_BLUEPRINTS = {
   mtt: { 47: 5, 48: 5, 49: 5, 50: 5, 51: 5, 52: 5, 53: 5, 54: 15 },
   til: { 55: 5, 56: 8, 57: 7, 58: 5, 59: 8, 60: 2, 61: 0, 62: 15 },
   mtt_rahbar: { 63: 5, 64: 5, 65: 5, 66: 5, 67: 5, 68: 5, 69: 5, 70: 15 },
-  nemis: { 71: 6, 72: 5, 73: 4, 74: 7, 75: 7, 76: 6, 77: 5, 78: 5, 79: 5 }
+  biologiya: { 80: 5, 81: 7, 82: 10, 83: 8, 84: 5, 85: 5, 86: 10 },
+  geografiya: { 87: 5, 88: 6, 89: 5, 90: 5, 91: 6, 92: 2, 93: 3, 94: 3, 95: 5, 96: 10 },
+  mtt_logoped: { 97: 5, 98: 3, 99: 5, 100: 5, 101: 5, 102: 4, 103: 4, 104: 4, 105: 5, 106: 10 },
+  mtt_psixolog: { 107: 3, 108: 5, 109: 5, 110: 4, 111: 18, 112: 5, 113: 10 }
 };
 
 const getExamDuration = (category) => {
   switch (category) {
     case 'boshlangich':
     case 'info':
+    case 'biologiya':
       return 120 * 60;
     case 'til':
-    case 'nemis':
       return 105 * 60;
     default:
       return 90 * 60;

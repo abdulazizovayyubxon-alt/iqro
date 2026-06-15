@@ -404,14 +404,34 @@ export const AuthProvider = ({ children }) => {
   //   - Telefon raqam ichki email sifatida ishlatiladi (foydalanuvchi ko'rmaydi)
   // ────────────────────────────────────────────────────────
   // Foydalanuvchi mavjudligini tekshirish (telefon raqam bo'yicha)
+  // ASOSIY: /api/check-user — Firebase Admin SDK orqali (getUserByEmail).
+  // Bu Email Enumeration Protection'ni chetlab o'tadi va ishonchli javob beradi.
+  // ZAXIRA: API ishlamasa (mas. lokal `vite dev`da serverless yo'q), mijoz
+  // tomon fetchSignInMethodsForEmail — enumeration himoyasi yoqilgan bo'lsa
+  // ishonchsiz (false qaytishi mumkin), shunda yangi deb hisoblanadi va
+  // ro'yxat oqimi o'zini email-already-in-use orqali tuzatadi.
   const checkUserExists = async (phone) => {
+    const cleanPhone = phone.replace(/\D/g, '');
+    try {
+      const res = await fetch('/api/check-user', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: cleanPhone }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        return !!data.exists;
+      }
+    } catch (e) {
+      console.warn("check-user API ishlamadi, zaxira usulga o'tildi:", e);
+    }
+    // Zaxira usul
     try {
       const { fetchSignInMethodsForEmail } = await import('firebase/auth');
       const internalEmail = phoneToEmail(phone);
       const methods = await fetchSignInMethodsForEmail(auth, internalEmail);
       return methods.length > 0;
     } catch (e) {
-      // Agar xatolik bo'lsa — mavjud emas deb hisoblaymiz
       return false;
     }
   };

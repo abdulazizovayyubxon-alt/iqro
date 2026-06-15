@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, Suspense } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import { AppContext } from './context/AppContext';
 import { AnimatePresence } from 'framer-motion';
@@ -136,6 +136,7 @@ class ErrorBoundary extends React.Component {
 function App() {
   const { user, loading } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
   const appContext = useContext(AppContext);
   const [theme, setTheme] = useState('light');
   const [needsOnboarding, setNeedsOnboarding] = useState(false);
@@ -259,6 +260,9 @@ function App() {
         appContext.updateState({ activeCategory: subject });
       }
       setNeedsOnboarding(false);
+      // Yangi ro'yxatdan o'tgan foydalanuvchini profil sahifasiga olib o'tamiz —
+      // u yerda jins va qolgan ma'lumotlarni to'ldiradi (kirishdan olib tashlangan).
+      navigate('/profile');
     }} />;
   }
 
