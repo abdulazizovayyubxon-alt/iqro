@@ -1904,22 +1904,6 @@
     "bloom_level": "Qo'llash"
   },
   {
-    "q": "Quyidagi gapda imlo va orfografik xatolikka yo'l qo'yilgan so'z qaysi?",
-    "opts": [
-      "A) Mashaqatli mehnatimiz tezda o'z samarasini berdi.",
-      "B) Mashaqqatli mehnatimiz tezda o'z samarasini berdi.",
-      "C) Mashaqqatli mehnatimiz tezda o'z samarasini berdi.",
-      "D) Mashaqqatli mehnatimiz tezda o'z samarasini berdi."
-    ],
-    "correct": 0,
-    "explanation": "'Mashaqqatli' so'zida ikki 'q' undoshi yozilishi shart (mashaqqat). Shuning uchun A variantidagi gap imlo jihatdan xato yozilgan (Qo'llash kognitiv darajasi).",
-    "topicId": 56,
-    "category": "til",
-    "mnemonic": "Morfologiya — so'z turkumlari va ularning grammatik shakllarini o'rganadi.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
-  },
-  {
     "q": "Imlo me'yorlariga ko'ra, qaysi javobda 'd' va 't' undoshlari to'g'ri qo'llanilgan?",
     "opts": [
       "A) Metod, metodik, matbuot, matbuotda",
@@ -2640,22 +2624,6 @@
     "bloom_level": "Bilish"
   },
   {
-    "q": "Quyidagi qaysi gapda tinish belgilari va bosh harflar bilan yoziladigan so'zlar imlosi to'g'ri berilgan?",
-    "opts": [
-      "A) Respublika Ma'naviyat va ma'rifat markazi vakillari bugun ertalab viloyatimizga yetib kelishdi.",
-      "B) Respublika ma'naviyat va ma'rifat markazi vakillari bugun ertalab viloyatimizga yetib kelishdi.",
-      "C) Respublika Ma'naviyat Va Ma'rifat Markazi vakillari bugun ertalab viloyatimizga yetib kelishdi.",
-      "D) respublika ma'naviyat va ma'rifat markazi vakillari bugun ertalab viloyatimizga yetib kelishdi."
-    ],
-    "correct": 0,
-    "explanation": "Idora va tashkilot nomlarida birinchi so'z bosh harf bilan yoziladi: Respublika Ma'naviyat va ma'rifat markazi (Qo'llash kognitiv darajasi).",
-    "topicId": 56,
-    "category": "til",
-    "mnemonic": "Morfologiya — so'z turkumlari va ularning grammatik shakllarini o'rganadi.",
-    "difficulty": "Y1",
-    "bloom_level": "Bilish"
-  },
-  {
     "q": "O'zbek tili imlosida chiziqcha orqali yoziladigan va chiziqchasiz yoziladigan so'zlarni qiyoslab, to'g'ri qatorni ko'rsating.",
     "opts": [
       "A) Tili-dili (juft so'z chiziqchali) va tilshunoslik (qo'shma so'z chiziqchasiz) to'g'ri yozilgan",
@@ -2844,22 +2812,6 @@
     "topicId": 56,
     "category": "til",
     "mnemonic": "Morfologiya — so'z turkumlari va ularning grammatik shakllarini o'rganadi.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
-  },
-  {
-    "q": "Quyidagi qaysi so'z birikmalarida qo'shma otlar va iboralarning yozilish qoidalariga rioya qilingan?",
-    "opts": [
-      "A) Oliy Majlis (oliy qonun chiqaruvchi organ), Yangi yil bayrami (xususiy nom sifatida to'g'ri yozilgan)",
-      "B) Oliy majlis (oliy qonun chiqaruvchi organ), Yangi Yil bayrami (xususiy nom sifatida xato yozilgan)",
-      "C) oliy majlis (oliy qonun chiqaruvchi organ), yangi yil bayrami (xususiy nom sifatida xato yozilgan)",
-      "D) Oliy Majlis (oliy qonun chiqaruvchi organ), Yangi Yil Bayramı (xususiy nom sifatida xato yozilgan)"
-    ],
-    "correct": 0,
-    "explanation": "'Oliy Majlis' va 'Yangi yil' bayrami kabi nomlarda orfografik va bosh harflar qoidasiga to'liq rioya etilgan (Qo'llash kognitiv darajasi).",
-    "topicId": 56,
-    "category": "til",
-    "mnemonic": "Ot — kim? nima? so'rog'iga javob berib, narsa-buyum nomidir.",
     "difficulty": "Y2",
     "bloom_level": "Qo'llash"
   },
@@ -3065,22 +3017,6 @@
     ],
     "correct": 0,
     "explanation": "Gapdagi barcha so'zlar imlo me'yorlariga (har bir, vijdoniy va h.k.) mutlaqo mos ravishda to'g'ri yozilgan (Qo'llash kognitiv darajasi).",
-    "topicId": 56,
-    "category": "til",
-    "mnemonic": "Morfologiya — so'z turkumlari va ularning grammatik shakllarini o'rganadi.",
-    "difficulty": "Y1",
-    "bloom_level": "Bilish"
-  },
-  {
-    "q": "Quyidagi qaysi gapda bosh harflar va qo'shib yoziladigan so'zlar imlosiga rioya qilingan?",
-    "opts": [
-      "A) O'zbekiston Milliy universiteti talabalari bugun xalqaro anjumanda ishtirok etdilar.",
-      "B) O'zbekiston milliy universiteti talabalari bugun xalqaro anjumanda ishtirok etdilar.",
-      "C) O'zbekiston Milliy Universiteti talabalari bugun xalqaro anjumanda ishtirok etdilar.",
-      "D) o'zbekiston milliy universiteti talabalari bugun xalqaro anjumanda ishtirok etdilar."
-    ],
-    "correct": 0,
-    "explanation": "Tashkilot nomlarida birinchi so'z bosh harf bilan boshlanadi: O'zbekiston Milliy universiteti (Qo'llash kognitiv darajasi).",
     "topicId": 56,
     "category": "til",
     "mnemonic": "Morfologiya — so'z turkumlari va ularning grammatik shakllarini o'rganadi.",
@@ -3438,22 +3374,6 @@
     "mnemonic": "Morfologiya — so'z turkumlari va ularning grammatik shakllarini o'rganadi.",
     "difficulty": "Y2",
     "bloom_level": "Qo'llash"
-  },
-  {
-    "q": "Quyidagi qaysi gapda bosh harflar va chiziqcha orqali yoziladigan so'zlar imlosiga rioya qilingan?",
-    "opts": [
-      "A) Toshkent shahridagi oliy o'quv yurtlarida bugun ilmiy-amaliy konferensiya boshlandi.",
-      "B) Toshkent shahridagi oliy o'quv yurtlarida bugun ilmiyamaliy konferensiya boshlandi.",
-      "C) Toshkent shahridagi oliy o'quv yurtlarida bugun ilmiy amaliy konferensiya boshlandi.",
-      "D) toshkent shahridagi oliy o'quv yurtlarida bugun ilmiy-amaliy konferensiya boshlandi."
-    ],
-    "correct": 0,
-    "explanation": "Toshkent - bosh harf; ilmiy-amaliy - chiziqchali juft/qo'shma sifat bo'lgani uchun chiziqcha bilan to'g'ri yozilgan (Qo'llash kognitiv darajasi).",
-    "topicId": 56,
-    "category": "til",
-    "mnemonic": "Morfologiya — so'z turkumlari va ularning grammatik shakllarini o'rganadi.",
-    "difficulty": "Y3",
-    "bloom_level": "Mulohaza qilish"
   },
   {
     "q": "Imloda qo'shib va chiziqcha bilan yozish me'yorlarini qiyoslab, to'g'ri yozilgan gapni aniqlang.",
@@ -6835,7 +6755,7 @@
     "q": "Nima sababdan ona tili ta'limida 'uslubiy savodxonlik' o'quvchilarning umumiy madaniy va intellektual salohiyati ko'zgusi hisoblanadi?",
     "opts": [
       "A) Uslubiy savodxonlik shaxsning fikrini turli vaziyatlarda (ilmiy, badiiy, rasmiy) eng maqbul tarzda yetkaza olish qobiliyatidir",
-      "B) Chunki uslubiy savodxonlik faqatгина orfografik qoidalarga 100 foiz rioya qilgan holda yozish va xatolarni topish qobiliyatidir",
+      "B) Chunki uslubiy savodxonlik faqatgina orfografik qoidalarga 100 foiz rioya qilgan holda yozish va xatolarni topish qobiliyatidir",
       "C) Uslubiy savodxonlik faqat badiiy asarlardagi ko'chma ma'nolarni topib yodlash orqali darsdan yuqori baho olish vositasidir",
       "D) Bu savodxonlik turi faqat chet tillarini mukammal o'rganish orqali bilingvizm darajasini avtomatik ravishda oshirishga xizmat qiladi"
     ],
@@ -7280,54 +7200,6 @@
     "bloom_level": "Bilish"
   },
   {
-    "q": "Quyidagi gapda '-lar' ko'plik qo'shimchasining kontekstdagi uslubiy vazifasini aniqlang:\n\n*«Biz bugun darsda ustozimizning ko'p yillik tadqiqotlarini o'rgandik va ulardan bahramand bo'ldik.»*",
-    "opts": [
-      "A) Shaxsga yoki uning faoliyatiga nisbatan hurmat ohangini (nutqiy etiket me'yorini) uslubiy ifodalash uchun",
-      "B) Harakatning mutlaqo ko'p marta va oily darajada tez bajarilishi shartligini qat'iy buyruq orqali ko'rsatish uchun",
-      "C) Tadqiqot so'zining grammatik jihatdan faqatgina kelishik qo'shimchalari bilan bog'lanishini ta'minlashda",
-      "D) Gap tarkibidagi barcha uyushiq otlar o'rtasida mantiqiy bog'liqlikni butunlay yo'q qilish uchun"
-    ],
-    "correct": 0,
-    "explanation": "'-lar' qo'shimchasi hurmat va e'tibor (ustozimiz tadqiqotlari) ma'nosini ifodalash uchun uslubiy vosita sifatida qo'llanilgan (Qo'llash kognitiv darajasi).",
-    "topicId": 58,
-    "category": "til",
-    "mnemonic": "Imlo qoidalari — so'zlarning to'g'ri yozilish me'yorlaridir.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
-  },
-  {
-    "q": "Quyidagi gapda qo'llangan 'ehtimol' modal so'zining kontekstdagi uslubiy vazifasini aniqlang:\n\n*«Ehtimol, ertaga konferensiya soat to'qqizda boshlanadi va barcha xodimlar ishtirok etishadi.»*",
-    "opts": [
-      "A) Fikrning sodir bo'lishiga nisbatan taxmin va gumon ohangini (noaniqlikni) uslubiy ifodalash uchun",
-      "B) Harakatning tezroq va qat'iy bajarilishi shartligini ko'rsatuvchi buyruq ohangini yuklash uchun",
-      "C) Konferensiyaning hayotiy xususiyatlarini ilmiy va sotsiologik jihatdan to'liq aniqlab berish uchun",
-      "D) Gap tarkibidagi ega va kesim o'rtasidagi grammatik tobelanish aloqalarini butunlay yo'q qilishda"
-    ],
-    "correct": 0,
-    "explanation": "'Ehtimol' modal so'zi gapda taxmin, gumon va noaniqlik ohangini ifodalash uchun qo'llanilgan (Qo'llash kognitiv darajasi).",
-    "topicId": 58,
-    "category": "til",
-    "mnemonic": "Imlo qoidalari — so'zlarning to'g'ri yozilish me'yorlaridir.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
-  },
-  {
-    "q": "Quyidagi gapda '-mi' yuklamasining kontekstdagi uslubiy vazifasini aniqlang:\n\n*«Ertaga majlis odatdagidek soat to'qqizda boshlanadimi?»*",
-    "opts": [
-      "A) Sof so'roq (so'zlovchi tinglovchidan majlisning boshlanish vaqtiga doir aniq va real ma'lumot olishni so'ragan)",
-      "B) Ritorik so'roq (so'roq ohangi orqali kuchli norozilik va tasdiq ma'nosini uslubiy ifodalagan)",
-      "C) Shubha-gumon (voqeaning sodir bo'lishiga ishonchsizlik va gumon ma'nosini ifodalash uchun qo'llangan)",
-      "D) Buyruq-xohish (tinglovchini zudlik bilan harakat qilishga majburlash ma'nosini yuklash uchun qo'llangan)"
-    ],
-    "correct": 0,
-    "explanation": "Ushbu gapda '-mi' yuklamasi aniq javob olish maqsadida sof so'roq sifatida qo'llangan (Qo'llash kognitiv darajasi).",
-    "topicId": 58,
-    "category": "til",
-    "mnemonic": "Imlo qoidalari — so'zlarning to'g'ri yozilish me'yorlaridir.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
-  },
-  {
     "q": "O'zbek tili uslubiyotida ilmiy uslubning asosiy va markaziy vazifasi qaysi javobda to'g'ri ko'rsatilgan?",
     "opts": [
       "A) Ilmiy haqiqatlarni, qonuniyatlarni va tadqiqot natijalarini aniq, mantiqiy, xolis va dalillar yordamida ifodalash",
@@ -7401,22 +7273,6 @@
     ],
     "correct": 0,
     "explanation": "Pleonazmning oldini olish uchun gapda bitta ma'noli ortiqcha so'zlarni (masalan, 'hayotiy real', 'shaxsiy o'z fikri') ishlatmaslik, nutq aniqligi va ixchamligini saqlash lozim (Bilish kognitiv darajasi).",
-    "topicId": 58,
-    "category": "til",
-    "mnemonic": "Imlo qoidalari — so'zlarning to'g'ri yozilish me'yorlaridir.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
-  },
-  {
-    "q": "Quyidagi gapda '-gina' cheklov yuklamasi qanday uslubiy va ma'noviy vazifani bajarganini aniqlang:\n\n*«Ertaga bo'ladigan anjumanda faqat ilmiy xodimlarning o'zigina ma'ruza qiladi.»*",
-    "opts": [
-      "A) Ta'kidlash va cheklash (harakatni faqat bir guruh bajarganini ajratib ko'rsatish orqali fikrni aniqlashtirgan)",
-      "B) Erkalash va yumshoqlik (xodimlarning harakatini yanada samimiy va erkin tarzda ifodalash uchun qo'llangan)",
-      "C) Shubha-gumon (xodimlarning gapiradiganligiga nisbatan ishonchsizlik ohangini nutqqa kiritish uchun qo'llangan)",
-      "D) Buyruq-xohish (tinglovchini zudlik bilan jim bo'lishga va faqat tinglashga majburlash ma'nosini yuklagan)"
-    ],
-    "correct": 0,
-    "explanation": "'-gina' yuklamasi 'faqat' bilan birga kelib, harakatning yakka guruhga tegishli ekanligini uslubiy ta'kidlagan (Qo'llash kognitiv darajasi).",
     "topicId": 58,
     "category": "til",
     "mnemonic": "Imlo qoidalari — so'zlarning to'g'ri yozilish me'yorlaridir.",
@@ -8992,22 +8848,6 @@
     "bloom_level": "Bilish"
   },
   {
-    "q": "Quyidagi gapdagi so'zlar o'rtasida moslashuv aloqasi orqali bog'langan so'z birikmasini aniqlang:\n\n*«Bizning vazifamiz yoshlar ta'lim-tarbiyasini yaxshilash va ularni kelajakka tayyorlashdan iboratdir.»*",
-    "opts": [
-      "A) Bizning vazifamiz (chunki qaratqich kelishigi va egalik qo'shimchalari orqali shaxslarda to'liq moslashib bog'langan)",
-      "B) Yoshlar ta'lim-tarbiyasini (chunki yoshlar otiga ta'lim-tarbiyasini oti hech qanday qo'shimchasiz, bitishuv aloqasida bog'langan)",
-      "C) Kelajakka tayyorlashdan (chunki tayyorlashdan fe'li kelajakka otini jo'nalish kelishigi qo'shimchasi orqali boshqarib bog'lagan)",
-      "D) Yaxshilash va tayyorlashdan (chunki yaxshilash harakat nomi tayyorlashdan harakat nomi bilan teng bog'lanish yordamida bog'lanadi)"
-    ],
-    "correct": 0,
-    "explanation": "'Bizning vazifamiz' birikmasida tobe so'z (bizning) qaratqich kelishigida, hokim so'z (vazifamiz) esa egalik qo'shimchasi bilan kelib, bir-biriga moslashgan (Qo'llash kognitiv darajasi).",
-    "topicId": 59,
-    "category": "til",
-    "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
-  },
-  {
     "q": "Quyidagi gapda fonetik qonuniyatlarga muvofiq to'g'ri yozilgan so'zni aniqlang:\n\n*«Bizning qishlog'imizda yetishtiriladigan shirin shaftolilar shahrimiz bozorlarida juda xaridorgirdir.»*",
     "opts": [
       "A) Shaftolilar (chunki so'z oxiridagi 'lar' qo'shimchasi qo'shilganda asosda hech qanday fonetik o'zgarish yuz bermaydi)",
@@ -9374,22 +9214,6 @@
     "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
     "difficulty": "Y1",
     "bloom_level": "Bilish"
-  },
-  {
-    "q": "Quyidagi gapdagi so'zlar o'rtasida moslashuv aloqasi orqali bog'langan so'z birikmasini aniqlang:\n\n*«Bizning intilishimiz yoshlar ta'lim-tarbiyasini yaxshilash va ularni kelajakka tayyorlashdan iboratdir.»*",
-    "opts": [
-      "A) Bizning intilishimiz (chunki qaratqich kelishigi va egalik qo'shimchalari orqali shaxslarda to'liq moslashib bog'langan)",
-      "B) Yoshlar ta'lim-tarbiyasini (chunki yoshlar otiga ta'lim-tarbiyasini oti hech qanday qo'shimchasiz, bitishuv aloqasida bog'langan)",
-      "C) Kelajakka tayyorlashdan (chunki tayyorlashdan fe'li kelajakka otini jo'nalish kelishigi qo'shimchasi orqali boshqarib bog'lagan)",
-      "D) Yaxshilash va tayyorlashdan (chunki yaxshilash harakat nomi tayyorlashdan harakat nomi bilan teng bog'lanish yordamida bog'lanadi)"
-    ],
-    "correct": 0,
-    "explanation": "'Bizning intilishimiz' birikmasida tobe so'z (bizning) qaratqich kelishigi, hokim so'z (intilishimiz) esa egalik qo'shimchasi bilan shaxs va sonda moslashgan (Qo'llash kognitiv darajasi).",
-    "topicId": 59,
-    "category": "til",
-    "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
   },
   {
     "q": "Quyidagi gapda fonetik qonuniyatlarga muvofiq to'g'ri yozilgan so'zni aniqlang:\n\n*«Bizning shahrimizda yetishtiriladigan shirin anorlar respublikamiz bozorlarida juda xaridorgirdir.»*",
@@ -9824,22 +9648,6 @@
     "bloom_level": "Bilish"
   },
   {
-    "q": "Quyidagi gapdagi so'zlar o'rtasida moslashuv aloqasi orqali bog'langan so'z birikmasini aniqlang:\n\n*«Bizning rejamiz yoshlar ta'lim-tarbiyasini yaxshilash va ularni kelajakka tayyorlashdan iboratdir.»*",
-    "opts": [
-      "A) Bizning rejamiz (chunki qaratqich kelishigi va egalik qo'shimchalari orqali shaxslarda to'liq moslashib bog'langan)",
-      "B) Yoshlar ta'lim-tarbiyasini (chunki yoshlar otiga ta'lim-tarbiyasini oti hech qanday qo'shimchasiz, bitishuv aloqasida bog'langan)",
-      "C) Kelajakka tayyorlashdan (chunki tayyorlashdan fe'li kelajakka otini jo'nalish kelishigi qo'shimchasi orqali boshqarib bog'lagan)",
-      "D) Yaxshilash va tayyorlashdan (chunki yaxshilash harakat nomi tayyorlashdan harakat nomi bilan teng bog'lanish yordamida bog'lanadi)"
-    ],
-    "correct": 0,
-    "explanation": "'Bizning rejamiz' so'z birikmasida qaratqich kelishigidagi tobe so'z (bizning) egalik qo'shimchali hokim so'z (rejamiz) bilan shaxs-sonda moslashgan (Qo'llash kognitiv darajasi).",
-    "topicId": 59,
-    "category": "til",
-    "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
-  },
-  {
     "q": "Quyidagi gapda fonetik qonuniyatlarga muvofiq to'g'ri yozilgan so'zni aniqlang:\n\n*«Bizning maktabimizda tashkil etilgan tadbirlar o'quvchilarning faolligini oshirishga katta yordam berdi.»*",
     "opts": [
       "A) Tadbirlar (chunki so'z oxiridagi 'lar' qo'shimchasi qo'shilganda asosda hech qanday fonetik o'zgarish yuz bermaydi)",
@@ -9904,22 +9712,6 @@
     "bloom_level": "Qo'llash"
   },
   {
-    "q": "Quyidagi gapdagi so'zlar o'rtasida boshqaruv aloqasi orqali bog'langan so'z birikmasini aniqlang:\n\n*«Biz bugun darsda yangi qoidalarni daftarlarimizga chizib oldik va ularni yaxshilab tushuntirdi.»*",
-    "opts": [
-      "A) Daftarlarimizga chizib (chunki chizib fe'li daftarlarimizga otini jo'nalish kelishigi qo'shimchasi orqali boshqarib bog'lagan)",
-      "B) Biz chizib (chunki olmosh va fe'l gap tarkibida ega va kesim munosabatini grammatik jihatdan ta'minlagan)",
-      "C) Yangi qoidalarni (chunki yangi sifati qoidalarni otiga faqatgina kelishik qo'shimchalari yordamida tobelanib bog'lanib keladi)",
-      "D) Chizib oldik (chunki chizish fe'li oldik fe'li bilan faqatgina teng bog'lanish yordamida bog'lanib kelgandir)"
-    ],
-    "correct": 0,
-    "explanation": "Boshqaruv aloqasida hokim so'z (chizib) tobe so'zdan (daftarlarimizga) jo'nalish kelishigida (-ga) kelishini talab qiladi (Qo'llash kognitiv darajasi).",
-    "topicId": 59,
-    "category": "til",
-    "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
-  },
-  {
     "q": "Quyidagi gapda qo'llangan 'suvchilar' so'zining morfemik tarkibini to'g'ri tahlil qiling:\n\n*«Ekinlarni sug'orish bilan shug'ullanadigan suvchilar bugun dalada ish boshlashdi va suv tarqatishdi.»*",
     "opts": [
       "A) Suv (asos), -chi (so'z yasovchi), -lar (ko'plik qo'shimchasi) qismlaridan iborat yasalma so'zdir",
@@ -9977,22 +9769,6 @@
     ],
     "correct": 0,
     "explanation": "'Paxtachilar' so'zi 'paxta' otidan yasalgan bo'lib, unga -chi (shaxs oti yasovchi) va -lar (ko'plik shakl yasovchi) qo'shilgan (Qo'llash kognitiv darajasi).",
-    "topicId": 59,
-    "category": "til",
-    "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
-  },
-  {
-    "q": "Quyidagi gap tarkibidagi 'sug'orilgan' fe'l shaklining morfologik xususiyatini aniqlang:\n\n*«Suv kamchilligi sababli sug'orilgan ekinlar bu yil hosili biroz kam bo'lishidan ogohlantirdi.»*",
-    "opts": [
-      "A) Majhul nisbatdagi sifatdosh bo'lib, harakatning boshqa shaxs tomonidan bajarilgan belgisini uslubiy ifodalaydi",
-      "B) Majhul nisbatdagi ravishdosh bo'lib, gap tarkibida faqatgina hol vazifasida keladigan grammatik shakldir",
-      "C) Aniq nisbatdagi fe'l bo'lib, bajarilishi kelajakda mutlaqo shart bo'lgan majburiy ish-harakatni ko'rsatib beradi",
-      "D) Sifat turkumi bo'lib, predmetning rang-barang xususiyatlarini faqatgina ijobiy bo'yoqda ko'rsatadigan mustaqil so'zdir"
-    ],
-    "correct": 0,
-    "explanation": "'-gan' qo'shimchali fe'l shakli majhul nisbatdagi (-il-) sifatdosh bo'lib, gapda ekinlarning aniqlovchisi bo'lib kelgan (Qo'llash kognitiv darajasi).",
     "topicId": 59,
     "category": "til",
     "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
@@ -12000,22 +11776,6 @@
     "bloom_level": "Qo'llash"
   },
   {
-    "q": "Quyidagi gapda tovush ortishi fonetik hodisasi yuz bergan so'zni va uning to'g'ri sababini aniqlang:\n\n*«Biz maktabda yetti yosh o'quvchini taqdirladik va ularning kelajak rejalarini o'rganib chiqdik.»*",
-    "opts": [
-      "A) Yettovini (chunki yetti soniga -ov qo'shimchasi qo'shilganda v undosh tovushi ortib yozilishi me'yordir)",
-      "B) O'quvchini (chunki ko'plik qo'shimchasi qo'shilganda asos tarkibidagi undoshlar ohang jihatdan moslashib qolgan)",
-      "C) Taqdirladik (chunki harakat nomi qo'shimchasi qo'shilganda o'zak tarkibidagi tovushda o'zgarish bo'lmagan)",
-      "D) Kelajak (chunki o'zlashgan ushbu ot tarkibida talaffuzda ham, yozuvda ham hech qanday fonetik hodisa bo'lmagan)"
-    ],
-    "correct": 0,
-    "explanation": "'Yetti' soniga jamlovchi son qo'shimchasi '-ov' qo'shilganda 'v' undoshining ortishi (yettov) tovush ortishiga misoldir (Qo'llash kognitiv darajasi).",
-    "topicId": 59,
-    "category": "til",
-    "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
-  },
-  {
     "q": "Leksik barqarorlikning til tizimidagi o'rni va uning matnda fikriy aniqlikni ta'minlashdagi roli qanday baholanadi?",
     "opts": [
       "A) U so'zlarni ularga tegishli semantik doirada to'g'ri qo'llashni tartibga solib, so'z chalkashliklarini bartaraf etadi",
@@ -12185,22 +11945,6 @@
     ],
     "correct": 0,
     "explanation": "'Vatan' (ot) asosiga -dosh (soha/doshlik ma'nosi) qo'shilib 'vatandosh' yasalgan, unga -lar ko'plik va -imiz egalik affikslari qo'shilgan (Qo'llash kognitiv darajasi).",
-    "topicId": 59,
-    "category": "til",
-    "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
-    "difficulty": "Y1",
-    "bloom_level": "Bilish"
-  },
-  {
-    "q": "Quyidagi gapda omonim so'z ishtirok etgan gapni va ularning grammatik vazifasini aniqlang:\n\n*«Biz bugun darsda go'zal g'azallarni daftarlarimizga yozib oldik va ularni tahlil qildik.»*",
-    "opts": [
-      "A) Yozib (chunki bu so'z fasl va harakat ma'nolarini ifodalaydigan omonim so'zdir)",
-      "B) Darsda (chunki bu so'z faqat predmet ma'nosini ifodalab gapda o'rin holi bo'ladi)",
-      "C) G'azallarni (chunki bu so'z faqat badiiy ma'noni ifodalaydigan va gapda to'ldiruvchi bo'ladigan so'zdir)",
-      "D) Daftarlarimizga (chunki bu so'z faqat o'rin-joy ma'nosini ifodalash uchun qo'llaniladigan mustaqil so'zdir)"
-    ],
-    "correct": 0,
-    "explanation": "'Yoz' so'zi fasl (yoz) va yozmoq fe'li (harakat) ma'nolariga ega bo'lgan omonim so'zdir (Qo'llash kognitiv darajasi).",
     "topicId": 59,
     "category": "til",
     "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
@@ -12473,22 +12217,6 @@
     ],
     "correct": 0,
     "explanation": "Undoshlar to'siq hosil qilish usuliga ko'ra portlovchi va sirg'aluvchi guruhlarga bo'linadi (Bilish kognitiv darajasi).",
-    "topicId": 59,
-    "category": "til",
-    "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
-    "difficulty": "Y1",
-    "bloom_level": "Bilish"
-  },
-  {
-    "q": "Hozirgi o'zbek adabiy tilida sifat turkumi va uning yasalishiga ko'ra grammatik turlari qaysi javobda to'g'ri ko'rsatilgan?",
-    "opts": [
-      "A) Sodda, qo'shma, murakkab hamda juft sifatlar",
-      "B) Aniq va mavhum, atoqli va turdosh sifatlar",
-      "C) Sifatdosh va ravishdosh, harakat nomi sifatlari",
-      "D) Harakat va holat, ish-harakat nomi sifatlari"
-    ],
-    "correct": 0,
-    "explanation": "Sifatlar tuzilishiga ko'ra sodda (oq), qo'shma (ko'k ko'z), murakkab (to'q qizil) va juft sifatlarga (eski-tuski) bo'linadi (Bilish kognitiv darajasi).",
     "topicId": 59,
     "category": "til",
     "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
@@ -12873,22 +12601,6 @@
     ],
     "correct": 0,
     "explanation": "Unlilar lab ishtirokiga ko'ra lablangan (o, u, o') va lablanmagan (a, i, e) guruhlariga bo'linadi (Bilish kognitiv darajasi).",
-    "topicId": 59,
-    "category": "til",
-    "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
-    "difficulty": "Y1",
-    "bloom_level": "Bilish"
-  },
-  {
-    "q": "Hozirgi o'zbek adabiy tilida son turkumi va uning ma'noviy guruhlari soni to'g'ri ko'rsatilgan javobni aniqlang.",
-    "opts": [
-      "A) Oltita leksik-semantik ma'noviy guruhlariga",
-      "B) Beshta leksik-semantik ma'noviy guruhlariga",
-      "C) To'rtta leksik-semantik ma'noviy guruhlariga",
-      "D) Uchta leksik-semantik ma'noviy guruhlariga"
-    ],
-    "correct": 0,
-    "explanation": "Sonlar ma'no guruhlariga ko'ra 6 ta guruhga bo'linadi: dona, chamalash, jamlovchi, taqsimot, kasr hamda tartib sonlar (Bilish kognitiv darajasi).",
     "topicId": 59,
     "category": "til",
     "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
@@ -13369,22 +13081,6 @@
     ],
     "correct": 0,
     "explanation": "'O'sha besh' birikmasida 'o'sha' ko'rsatish olmoshi (tobe so'z) 'besh' soniga (bosh so'z) qo'shimchasiz, bitishuv aloqasi yordamida bog'langan (Qo'llash kognitiv darajasi).",
-    "topicId": 59,
-    "category": "til",
-    "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
-  },
-  {
-    "q": "Quyidagi gapdagi so'zlar o'rtasida boshqaruv aloqasi orqali bog'langan so'z birikmasini aniqlang:\n\n*«Ustozlar darsda yangi qoidalarni o'quvchilarga tushuntirib, yozishni so'rashdi.»*",
-    "opts": [
-      "A) O'quvchilarga tushuntirib (chunki tushuntirib ravishdoshi o'quvchilarga otini jo'nalish kelishigi yordamida bog'lagan)",
-      "B) Yangi qoidalarni (chunki yangi sifati qoidalarni otiga hech qanday kelishik qo'shimchasisiz bitishib bog'langan)",
-      "C) Yozishni so'rashdi (chunki so'rashdi fe'li yozishni oti bilan faqat ohang va tartib orqali bog'langan)",
-      "D) Ustozlar so'rashdi (chunki ot va fe'l gap tarkibida ega va kesim bo'lib moslashuv aloqasida bog'langan)"
-    ],
-    "correct": 0,
-    "explanation": "'O'quvchilarga tushuntirib' birikmasida 'tushuntirib' (ravishdosh bosh so'z) 'o'quvchilarga' ot tobe so'zini jo'nalish kelishigida (-ga) bo'lishini talab qilgan (Qo'llash kognitiv darajasi).",
     "topicId": 59,
     "category": "til",
     "mnemonic": "Uslubiyat — badiiy, ilmiy, rasmiy yoki so'zlashuv uslubining o'ziga xos xususiyatlaridir.",
@@ -15184,38 +14880,6 @@
     "bloom_level": "Bilish"
   },
   {
-    "q": "Matndagi «loy naqshlariga tikildi» gapida qo'llangan «tikildi» fe'lining kontekstdagi leksik ma'nosi va vazifasini aniqlang.",
-    "opts": [
-      "A) Qaradi va bo'yladi ma'nosini anglatib, gap tarkibida yakuniy kesim vazifasini bajaradi",
-      "B) Eshatdi va gapirdi ma'nosini anglatib, gap tarkibida yakuniy kesim vazifasini bajaradi",
-      "C) Kesdi va qaytdi ma'nosini anglatib, gap tarkibida yakuniy kesim vazifasini bajaradi",
-      "D) Yurdi va to'xtadi ma'nosini anglatib, gap tarkibida yakuniy kesim vazifasini bajaradi"
-    ],
-    "correct": 0,
-    "explanation": "'Tikildi' fe'li loydagi tasvir va naqshlarga diqqat bilan termulib qarash ma'nosida ishlatilgan gapdagi kesimdir (Qo'llash kognitiv darajasi).",
-    "topicId": 60,
-    "category": "adabiyot",
-    "mnemonic": "Adabiyot — so'z san'ati bo'lib, inson ruhiyatini tasvirlaydi.",
-    "difficulty": "Y1",
-    "bloom_level": "Bilish"
-  },
-  {
-    "q": "Matndagi «Quyosh nurlari ko'zadagi ko'k naqshlarni yanada yorqinroq ko'rsatdi» gapida «ko'zadagi» so'zi qaysi grammatik turkumga mansub?",
-    "opts": [
-      "A) Ko'za otidan -dagi qo'shimchasi yordamida yasalgan o'rin-payt ma'noli sifat bo'lib hisoblanadi",
-      "B) Ko'za fe'lidan -dagi qo'shimchasi yordamida yasalgan o'rin-payt ma'noli sifat bo'lib hisoblanadi",
-      "C) Ko'za otidan -dagi qo'shimchasi yordamida yasalgan o'rin-payt ma'noli ot bo'lib hisoblanadi",
-      "D) Ko'za sifatidan -dagi qo'shimchasi yordamida yasalgan o'rin-payt ma'noli sifat bo'lib hisoblanadi"
-    ],
-    "correct": 0,
-    "explanation": "'Ko'za' otiga -dagi qo'shimchasi qo'shilishi orqali o'rin va makonga oid sifat yasalgan (Qo'llash kognitiv darajasi).",
-    "topicId": 60,
-    "category": "adabiyot",
-    "mnemonic": "Adabiyot — so'z san'ati bo'lib, inson ruhiyatini tasvirlaydi.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
-  },
-  {
     "q": "Matndagi «Rishtonning qadimiy bir ko'chasida yashovchi... Mahmud ota» jumlasi tarkibidagi «yashovchi» sifatdoshi gapda qaysi bo'lak vazifasida kelgan?",
     "opts": [
       "A) Ota otini aniqlab keladigan aniqlovchi vazifasida to'liq to'g'ri qo'llangandir",
@@ -15225,22 +14889,6 @@
     ],
     "correct": 0,
     "explanation": "'Yashovchi' sifatdosh bo'lib gap tarkibida 'ota' otini sifatlovchi aniqlovchi vazifasida keladi (Qo'llash kognitiv darajasi).",
-    "topicId": 60,
-    "category": "adabiyot",
-    "mnemonic": "Adabiyot — so'z san'ati bo'lib, inson ruhiyatini tasvirlaydi.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
-  },
-  {
-    "q": "Ushbu asar parchasida ko'zalar va dastgoh timsolining tanlanishi asar g'oyasini falsafiy jihatdan qanday yoritib bergan?",
-    "opts": [
-      "A) Ko'za qadriyat ramzi bo'lib, inson qalbidagi ezgulik va mehnat go'zalligini ko'rsatib beradi",
-      "B) Ko'za qadriyat ramzi bo'lib, inson qalbidagi texnika va mehnat go'zalligini ko'rsatib beradi",
-      "C) Ko'za qadriyat ramzi bo'lib, inson qalbidagi boylik va mehnat go'zalligini ko'rsatib beradi",
-      "D) Ko'za qadriyat ramzi bo'lib, inson qalbidagi taraqqiyot va mehnat go'zalligini ko'rsatib beradi"
-    ],
-    "correct": 0,
-    "explanation": "Ko'za rishtonda loy, suv va bo'yoqlardan ko'ra usta mehridan yaraladigan buyuk milliy madaniy qadriyat ramzi sifatida falsafiy teran ochilgan (Mulohaza qilish kognitiv darajasi).",
     "topicId": 60,
     "category": "adabiyot",
     "mnemonic": "Adabiyot — so'z san'ati bo'lib, inson ruhiyatini tasvirlaydi.",
@@ -15328,22 +14976,6 @@
     "bloom_level": "Bilish"
   },
   {
-    "q": "Matndagi «Toshkentning» so'zining yozilishi va bosh harf bilan boshlanishi qaysi imlo qoidasiga muvofiq keladi?",
-    "opts": [
-      "A) Safe: Atoqli ot bo'lganligi sababli bosh harf bilan to'g'ri yozilgandir",
-      "B) Safe: Turkumdosh ot bo'lganligi sababli bosh harf bilan to'g'ri yozilgandir",
-      "C) Safe: Yasama ot bo'lganligi sababli bosh harf bilan to'g'ri yozilgandir",
-      "D) Safe: Sodda ot bo'lganligi sababli bosh harf bilan to'g'ri yozilgandir"
-    ],
-    "correct": 0,
-    "explanation": "Toshkent - respublika poytaxti nomi (atoqli ot) bo'lgani sababli bosh harf bilan imlo qoidasiga ko'ra to'g'ri yoziladi (Qo'llash kognitiv darajasi).",
-    "topicId": 60,
-    "category": "adabiyot",
-    "mnemonic": "Adabiyot — so'z san'ati bo'lib, inson ruhiyatini tasvirlaydi.",
-    "difficulty": "Y1",
-    "bloom_level": "Bilish"
-  },
-  {
     "q": "Matndagi «novvoy» so'zining o'zbek tilidagi leksik-semantik xususiyati qaysi javobda to'g'ri ko'rsatilgan?",
     "opts": [
       "A) Non yopib sotuvchi hunarmand shaxsni ifodalovchi sodda ot bo'lib hisoblanadi",
@@ -15390,22 +15022,6 @@
     "mnemonic": "Adabiyot — so'z san'ati bo'lib, inson ruhiyatini tasvirlaydi.",
     "difficulty": "Y3",
     "bloom_level": "Mulohaza qilish"
-  },
-  {
-    "q": "Ushbu asar parchasida nonlar va tandir timsolining tanlanishi asar g'oyasini falsafiy jihatdan qanday yoritib bergan?",
-    "opts": [
-      "A) Non qadriyat ramzi bo'lib, inson qalbidagi ezgulik va mehnat go'zalligini ko'rsatib beradi",
-      "B) Non qadriyat ramzi bo'lib, inson qalbidagi texnika va mehnat go'zalligini ko'rsatib beradi",
-      "C) Non qadriyat ramzi bo'lib, inson qalbidagi boylik va mehnat go'zalligini ko'rsatib beradi",
-      "D) Non qadriyat ramzi bo'lib, inson qalbidagi taraqqiyot va mehnat go'zalligini ko'rsatib beradi"
-    ],
-    "correct": 0,
-    "explanation": "Non va tandir asarda madaniy meros, mehnat va insonning mehr-muhabbat ramzi sifatida yuksak falsafiy darajada yoritib berilgan (Mulohaza qilish kognitiv darajasi).",
-    "topicId": 60,
-    "category": "adabiyot",
-    "mnemonic": "Adabiyot — so'z san'ati bo'lib, inson ruhiyatini tasvirlaydi.",
-    "difficulty": "Y2",
-    "bloom_level": "Qo'llash"
   },
   {
     "q": "Badiiy tahlil yuzasidan quyidagi notanish asar parchasini diqqat bilan o'qing va savollarga javob bering:\n\n*“Samarqandning ko'hna hunarmandlar mahallasida yashovchi yetmish yoshli yog'och o'ymakori Akram ota tong sahar uyg'onib, o'zining eski o'ymakorlik dastgohi yoniga o'tirdi. Xonadagi yong'oq va o'rik yog'ochining o'ziga xos shirin isi uning ko'nglini to'ldirdi, derazadan tushayotgan quyosh nurlarida rang-barang o'yilgan naqshlar oltindek yaltirab turardi. Akram ota umrining ellik yilini qadimiy 'Samarqand panjara o'ymakorligi' sirlarini saqlab qolishga va tabiiy yog'ochlar yordamida nafis ustunlar yasashga bag'ishlagan taniqli usta edi. Biroq uning jiyani Zafar zamonaviy ishlab chiqarish texnologiyalarini qo'llab, kimyoviy bo'yoqlar va lazerli o'ymakorlik dastgohlari yordamida tez bitadigan avtomat usullarni o'rnatish shashtida edi. Zafar amakisining har bir ustunni soatlab, ba'zan kunlab qo'lda shakllantirib, naqsh o'yishini ortiqcha vaqt sarfi deb hisoblardi. 'Amakijon, bugungi kunda yangi lazerlar va sun'iy materiallar yordamida bir kunda o'nta ustun o'yish va ko'p pul topish mumkin, nega o'zingizni bunchalik qiynaysiz?' deb so'radi Zafar sabrsizlik bilan. Akram ota shoshilmasdan qo'lidagi iskana asbobini qo'yib, ustun ustidagi shirin naqshlarni mayin siladi. Keyin jiyaniga ma'noli nigoh bilan qaradi: 'O'g'lim, u lazerli dastgohlardan chiqqan ustunlarning rangi yaltiroq, ammo naqshlarida haqiqiy san'atning ruhi yo'q. Ular shunchaki sun'iy kimyoviy materiallar yig'indisidir, xolos. Bizning qo'lda yasalgan ustunlarimiz esa mana shu daraxtlarning issiq tarixi, tabiiy iskana va har bir harakatga singdirilgan mehr bilan tirikdir. Haqiqiy o'ymakorlik faqatgina inson qo'li va qalbi birlashgan joyda tug'iladi.' Zafar amakisining bu gaplaridan so'ng jimgina dastgohga qaradi. U kompyuterda rejalashtirgan jonsiz biznes loyihalariga, keyin esa amakisining qavargan, ammo o'ta nafis harakatlanuvchi barmoqlari bilan o'yilayotgan nurli yog'och naqshlariga tikildi. Haqiqatan ham, u tayyorlamoqchi bo'lgan kimyoviy ustunlarda qandaydir tabiiylik yetishmasdi, ular shunchaki tashqi ko'rinishdan yaltiroq edi, xolos. Amakisining yuzidagi chuqur ajinlar har bir naqshning tarixi bilan bog'langandek edi. Bu lahzada Zafar tushundiki, texnika har qancha rivojlanmasin, insonning yaratuvchanlik qudrati, sabr-bardoshi va qadimiy qadriyatlarga bo'lgan yuksak hurmati o'zgarmas meros bo'lib qolaveradi. Quyosh nurlari ustundagi ko'k naqshlarni yanada yorqinroq ko'rsatdi, ular go'yo tirik yoqutlardek jilvalana boshladi. Zafar o'z rejasini o'zgartirib, amakisining yoniga o'tirdi va unga yordam bera boshladi. Qadimiy yog'ochning shirin isi uning ko'nglini ma'naviy dunyo bilan to'ldirgandek bo'ldi.”*\n\nBadiiy tahlil yuzasidan berilgan notanish asar parchasiga ko'ra, Akram otaning yoshi va u saqlab qolgan qadimiy yog'och o'ymakorligi turi nomi qaysi javobda to'g'ri ko'rsatilgan?",
@@ -15504,22 +15120,6 @@
     "bloom_level": "Qo'llash"
   },
   {
-    "q": "Matndagi «Quyosh nurlari ustundagi ko'k naqshlarni yanada yorqinroq ko'rsatdi» gapida «ustundagi» so'zi qaysi grammatik turkumga mansub?",
-    "opts": [
-      "A) Ustun otidan -dagi qo'shimchasi yordamida yasalgan o'rin-payt ma'noli sifat bo'lib hisoblanadi",
-      "B) Ustun fe'lidan -dagi qo'shimchasi yordamida yasalgan o'rin-payt ma'noli sifat bo'lib hisoblanadi",
-      "C) Ustun otidan -dagi qo'shimchasi yordamida yasalgan o'rin-payt ma'noli ot bo'lib hisoblanadi",
-      "D) Ustun sifatidan -dagi qo'shimchasi yordamida yasalgan o'rin-payt ma'noli sifat bo'lib hisoblanadi"
-    ],
-    "correct": 0,
-    "explanation": "'Ustun' otiga -dagi qo'shimchasi qo'shilishi orqali o'rin-makon ma'noli sifat yasalgan (Qo'llash kognitiv darajasi).",
-    "topicId": 60,
-    "category": "adabiyot",
-    "mnemonic": "Adabiyot — so'z san'ati bo'lib, inson ruhiyatini tasvirlaydi.",
-    "difficulty": "Y1",
-    "bloom_level": "Bilish"
-  },
-  {
     "q": "Matndagi «lazerli o'ymakorlik» birikmasida lazerli so'zining orfografik me'yorga muvofiq to'g'ri yozilishi qaysi javobda ko'rsatilgan?",
     "opts": [
       "A) O'zlashma so'z bo'lib, leksik me'yorlarga ko'ra lazerli tarzida doimo to'g'ri yoziladi",
@@ -15534,22 +15134,6 @@
     "mnemonic": "Adabiyot — so'z san'ati bo'lib, inson ruhiyatini tasvirlaydi.",
     "difficulty": "Y2",
     "bloom_level": "Qo'llash"
-  },
-  {
-    "q": "Ushbu asar parchasida ustunlar va dastgoh timsolining tanlanishi asar g'oyasini falsafiy jihatdan qanday yoritib bergan?",
-    "opts": [
-      "A) Ustun qadriyat ramzi bo'lib, inson qalbidagi ezgulik va mehnat go'zalligini ko'rsatib beradi",
-      "B) Ustun qadriyat ramzi bo'lib, inson qalbidagi texnika va mehnat go'zalligini ko'rsatib beradi",
-      "C) Ustun qadriyat ramzi bo'lib, inson qalbidagi boylik va mehnat go'zalligini ko'rsatib beradi",
-      "D) Ustun qadriyat ramzi bo'lib, inson qalbidagi taraqqiyot va mehnat go'zalligini ko'rsatib beradi"
-    ],
-    "correct": 0,
-    "explanation": "Ustun qo'lda o'yiladigan tirik naqshlari bilan milliy madaniyat, sabr, mehr va inson yaratuvchanlik qudratining teran ramzi hisoblanadi (Mulohaza qilish kognitiv darajasi).",
-    "topicId": 60,
-    "category": "adabiyot",
-    "mnemonic": "Adabiyot — so'z san'ati bo'lib, inson ruhiyatini tasvirlaydi.",
-    "difficulty": "Y1",
-    "bloom_level": "Bilish"
   },
   {
     "q": "Badiiy tahlil yuzasidan quyidagi notanish asar parchasini diqqat bilan o'qing va savollarga javob bering:\n\n*“Xivaning qadimiy devorlari soyasida joylashgan kichik ustaxonada yetmish yoshli misgar Rustam usta ko'zoynagini to'g'rilab, mis patnis yuzasidagi chizgilarga diqqat bilan tikildi. Tashqarida sayyohlarning shovqini eshitilib turar, ammo bu sokin xonada faqat metallga urilayotgan bolg'aning mayin ovozi va ustaning og'ir nafasi aks sado berardi. Patnis sahifalarida Buxoro va Xiva me'morchiligining murakkab islimiy naqshlari oltindek tovlanib jilvalanardi. Rustam usta umrining ellik yildan ortiq vaqtini mana shu ko'hna misgarlik sirlarini saqlashga, jonsiz metallga qalb haroratini singdirishga bag'ishlagan taniqli hunarmand edi. Uning ro'parasida o'tirgan yosh shogirdi Anvar esa kompyuter ekranidagi turli raqamli chizmalarni tahlil qilish bilan band edi. Anvar zamonaviy texnologiyalar va shtamplash dastgohlari yordamida mis plastinalarni tezroq va ko'proq ishlab chiqarish tarafdori edi. U ustozining har bir naqshni kunlab, ba'zan haftalab mayda iskana bilan o'yib chiqishini vaqtni behuda yo'qotish deb hisoblardi. 'Ustoz, bugungi kunda avtomatlashtirilgan presslar va tayyor qoliplar yordamida bu patnisni bir necha daqiqada tayyorlash va ko'proq sayyohlarga sotish mumkin, nega o'zingizni bunchalik qiynaysiz?' deb so'radi Anvar sabrsizlik bilan. Rustam usta shoshilmasdan qo'lidagi bolg'ani qo'ydi, chuqur nafas olib, bo'sh metall chetiga mayin chiziq tortdi. Keyin shogirdiga ma'noli nigoh bilan qaradi: 'O'g'lim, mashina naqshning shaklini va o'lchamini mukammal nusxalay oladi, biroq u ustoning qalb haroratini, o'sha daqiqadagi ruhiy holatini va har bir zarb ortiga yashiringan hayotiy tajribani aslo his qila olmaydi. Haqiqiy san'at va milliy qadriyat faqatgina inson qo'li va qalbi birlashgan joyda tiriladi.' Anvar ustozining bu gaplaridan so'ng jim bo'lib qoldi. U kompyuterdagi sovuq chizmalarga, keyin esa Rustam ustaning qavargan, ammo harakatlari o'ta nafis va tirik barmoqlariga qaradi. Haqiqatan ham, u tayyorlamoqchi bo'lgan avtomat nusxalarda qandaydir ruh yetishmasdi, ular shunchaki metall bo'lagi edi, xolos. Rustam ustaning yuzidagi chuqur ajinlar har bir naqsh kabi uzoq tarixdan so'zlayotgandek edi. Bu lahzada Anvar tushundiki, texnika har qancha rivojlanmasin, insonning yaratuvchanlik qudrati, an'anaga bo'lgan sadoqati o'zgarmas qadriyat bo'lib qolaveradi. Tashqaridagi g'ala-g'ovur asta-sekin tindi, derazadan Xivaning ko'hna minoralari ortidan ko'tarilayotgan oltin quyosh nurlari sokin xonani yoritdi. Anvar kompyuterini o'chirib, ustozining yoniga yaqinroq keldi va uning har bir harakatini chuqur hurmat bilan kuzatishda davom etdi. Xonadagi mis va ko'hna asboblar hidi unga o'zligini topish yo'lini ko'rsatgandek bo'ldi.”*\n\nBadiiy tahlil asosida berilgan notanish asar parchasiga ko'ra, misgar Rustam ustaning yoshi va u qo'llagan an'anaviy naqshlar turi qaysi javobda to'g'ri ko'rsatilgan?",
@@ -23380,7 +22964,7 @@
     "opts": [
       "A) She'rdagi barcha tasviriy vositalarni aniqlash, keyin ular o'rtasidagi munosabatni ochish",
       "B) She'rdagi barcha so'zlarni lug'atdan izlash, keyin sinonimlarini topish",
-      "C) She'rdagi barcha misralarni sanaш, keyin vaznini hisoblash",
+      "C) She'rdagi barcha misralarni sanash, keyin vaznini hisoblash",
       "D) She'rdagi barcha qofiyalarni ajratish, keyin ohangdoshligini tekshirish"
     ],
     "correct": 0,
@@ -23624,7 +23208,7 @@
       "D) Haqiqiy tarixiy voqea badiiy ijod bilan almashtirilib tasvirlanadi"
     ],
     "correct": 0,
-    "explanation": "Tarixiy romanda tarixan yuz bergan voqealar va real shaxslar (masalan, amirlар, podshohlar) badiiy to'qima bilan qorishtiriladi. Muallif tarixiy haqiqatga sadoqat va badiiy erkinlikni muvozanatlaydi.",
+    "explanation": "Tarixiy romanda tarixan yuz bergan voqealar va real shaxslar (masalan, amirlar, podshohlar) badiiy to'qima bilan qorishtiriladi. Muallif tarixiy haqiqatga sadoqat va badiiy erkinlikni muvozanatlaydi.",
     "topicId": 62,
     "category": "adabiyot",
     "mnemonic": "O'qitish metodikasi — ona tili va adabiyotini samarali o'rgatish yo'l va vositalaridir.",
@@ -24088,7 +23672,7 @@
       "D) Akt — tragediyaga xos, ko'rinish — komediyaga xos termin hisoblanadi"
     ],
     "correct": 0,
-    "explanation": "Akt (parda) — dramatik asarning asosiy yirik bo'limi. Ko'rinish (sahnа) — akt ichidagi kichikroq bo'lim, odatda personajlar tarkibining o'zgarishi bilan chegaralanadi.",
+    "explanation": "Akt (parda) — dramatik asarning asosiy yirik bo'limi. Ko'rinish (sahna) — akt ichidagi kichikroq bo'lim, odatda personajlar tarkibining o'zgarishi bilan chegaralanadi.",
     "topicId": 62,
     "category": "adabiyot",
     "mnemonic": "O'qitish metodikasi — ona tili va adabiyotini samarali o'rgatish yo'l va vositalaridir.",
@@ -24274,7 +23858,7 @@
   {
     "q": "O'qituvchi drama janrini o'rgatishda o'quvchilardan bitta sahnani o'qib, unda o'ynashi mumkin bo'lgan personajni tanlashni va uning ruhiyatiga kirgan holda qisqa monolog yozishni so'radi. Bu qaysi o'quv faoliyati?",
     "opts": [
-      "A) Dramaga empatiк kirib, personaj ichki ovozini ijodiy yozma ifodalash faoliyati",
+      "A) Dramaga empatik kirib, personaj ichki ovozini ijodiy yozma ifodalash faoliyati",
       "B) Dramani boshidan oxirigacha yod olib sahna oldida aytib berish faoliyati",
       "C) Dramaning grammatik qurilishini tahlil qilib, murakkab gaplarni topish faoliyati",
       "D) Dramadagi personajlar sonini sanab, ularni guruhlash faoliyati"
@@ -24974,22 +24558,6 @@
     "mnemonic": "O'qitish metodikasi — ona tili va adabiyotini samarali o'rgatish yo'l va vositalaridir.",
     "difficulty": "Y2",
     "bloom_level": "Qo'llash"
-  },
-  {
-    "q": "Adabiyotshunoslik nazariyasi fanining so'nggi tadqiqotlariga ko'ra, Basit bahri tushunchasining ilmiy-nazariy yoki metodik jihatdan ta'riflanishi qaysi javobda eng to'g'ri berilgan?",
-    "opts": [
-      "A) Basit bahri — ruknlari 'mustaf'ilun failun' va uning tarmoqlaridan tashkil topgan aruz tizimidir",
-      "B) Saj' tizimi — ruknlari 'mustaf'ilun failun' va uning tarmoqlaridan farqli bo'lgan nasriy she'r",
-      "C) Ritm tizimi — ruknlari 'mustaf'ilun failun' va uning tarmoqlaridan farqli bo'lgan erkin she'r",
-      "D) Vazn tizimi — ruknlari 'mustaf'ilun failun' va uning tarmoqlaridan farqli bo'lgan barmoq she'r"
-    ],
-    "correct": 0,
-    "explanation": "Kasbiy standart va didaktik tamoyillarga mos keladigan eng asosli, ilmiy va to'g'ri ta'rif ushbu variantda ko'rsatilgan.",
-    "topicId": 62,
-    "category": "adabiyot",
-    "mnemonic": "O'qitish metodikasi — ona tili va adabiyotini samarali o'rgatish yo'l va vositalaridir.",
-    "difficulty": "Y1",
-    "bloom_level": "Bilish"
   },
   {
     "q": "Adabiyotshunoslik nazariyasi fanining so'nggi tadqiqotlariga ko'ra, Tashbih san'ati tushunchasining ilmiy-nazariy yoki metodik jihatdan ta'riflanishi qaysi javobda eng to'g'ri berilgan?",

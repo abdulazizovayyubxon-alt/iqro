@@ -40,6 +40,8 @@ const A = (n, d) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : d
 const slug = A("--subject");
 const per = parseInt(A("--per", "15"), 10);
 const target = parseInt(A("--target", "2000"), 10);
+const limit = parseInt(A("--limit", "0"), 10); // 0 = barcha bo'laklar; >0 = faqat birinchi N bo'lak
+const offset = parseInt(A("--offset", "0"), 10); // boshidagi N bo'lakni tashlab yuborish (limit'dan oldin)
 const delayMs = parseInt(A("--delay", "1500"), 10);
 const blocks = (A("--blocks", "") || "").split(",").map((s) => s.trim()).filter(Boolean); // mas: pedagogika,kasb
 const outPath = A("--out"); // alohida chiqish fayli (gen_api_progress.json o'rniga)
@@ -60,6 +62,27 @@ let chunks = chunkSpec(fs.readFileSync(mutSource, "utf8"), { maxChars: 2400 });
 if (fs.existsSync(SHARED_PED.spec)) chunks = chunks.concat(chunkSpec(fs.readFileSync(SHARED_PED.spec, "utf8"), { maxChars: 2400 }).filter((c) => c.block !== "mutaxassislik"));
 // Faqat tanlangan bloklar (mas: --blocks pedagogika,kasb)
 if (blocks.length) chunks = chunks.filter((c) => blocks.includes(c.block));
+if (offset > 0) chunks = chunks.slice(offset); // boshidagi N bo'lakni tashla (mas: --offset 10 = metodika)
+if (limit > 0) chunks = chunks.slice(0, limit); // faqat birinchi N bo'lak (mas: --limit 9 = toza mutaxassislik konstruktlari)
+
+// DARSLIK GROUNDING (sub.book bo'lsa): har MUTAXASSISLIK mavzusiga darslikdan FAQAT shu mavzuga oid
+// parchani topib qo'shadi (butun kitob emas) — faktik aniqlik, on-spec. make-prompts.mjs dagi bilan bir xil.
+const STOPW = new Set("uchun bilan bo'lgan ushbu ularning hamda shuning bo'lib bo'ladi qilish kerak orqali asosan bo'yicha mumkin hisoblanadi quyidagi amalga uning bo'lishi bo'ladigan birlik".split(" "));
+const gnorm = (s) => String(s).toLowerCase().replace(/[`‘’]/g, "'");
+const gtoks = (s) => (gnorm(s).match(/[a-z']{5,}/g) || []).filter((w) => !STOPW.has(w));
+const bookText = (sub.book && fs.existsSync(sub.book)) ? fs.readFileSync(sub.book, "utf8").replace(/[ \t]+/g, " ") : "";
+const bookWins = [];
+for (let i = 0; bookText && i < bookText.length; i += 1000) bookWins.push(bookText.slice(i, i + 1300).trim());
+const winSets = bookWins.map((w) => new Set(gtoks(w)));
+function bookGrounding(topicText) {
+  if (!bookWins.length) return "";
+  const qt = [...new Set(gtoks(topicText))];
+  const top = winSets.map((s, idx) => { let n = 0; for (const t of qt) if (s.has(t)) n++; return [n, idx]; })
+    .sort((a, b) => b[0] - a[0]).slice(0, 2).filter(([n]) => n >= 3);
+  if (!top.length) return "";
+  return `\n\n--- DARSLIKDAN (faktlar shu yerdan: sana/son/nom/atama AYNAN shu matndan olinsin, o'ylab topma) ---\n${top.map(([, idx]) => bookWins[idx]).join("\n[...]\n")}`;
+}
+if (bookText) console.log(`  darslik grounding: ${sub.book} (${bookWins.length} oyna) — mutaxassislik mavzulariga qo'shiladi`);
 
 // Dedup indeksi: oltin korpus + mavjud korpus + fan/<slug> dagi avvalgilar (DAVOM ETTIRISH uchun)
 const subjDir = path.join("fan", slug);
@@ -121,17 +144,19 @@ function extract(text) {
   return objs.length ? objs : null;
 }
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// Qat'iy wall-clock timeout — AbortSignal stalled-soketni o'tkazib yuborsa ham await BLOKLANMAYDI (jim osilish oldini oladi).
+const withTimeout = (p, ms, label) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error(`wall-timeout:${label}:${ms}ms`)), ms))]);
 
 async function callLLM(prompt, tries = 5) {
   for (let k = 0; k < tries; k++) {
     try {
       const activeKey = keys.length > 0 ? keys[currentKeyIdx % keys.length] : KEY;
-      const res = await fetch(`${BASE}/chat/completions`, {
+      const res = await withTimeout(fetch(`${BASE}/chat/completions`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${activeKey}` },
         body: JSON.stringify({ model: MODEL, messages: [{ role: "user", content: prompt }], temperature: 0.8, max_tokens: MAXTOK, ...(REASONING ? { reasoning_effort: REASONING } : {}) }),
         signal: AbortSignal.timeout(60000),
-      });
+      }), 70000, "fetch");
       if (res.status === 429 || res.status >= 500) {
         const ra = parseFloat(res.headers.get("retry-after")) || (5 * (k + 1));
         console.log(`[Limit/Error ${res.status}, kalit index: ${currentKeyIdx % keys.length}, urinish ${k + 1}/${tries}]`);
@@ -144,8 +169,8 @@ async function callLLM(prompt, tries = 5) {
         }
         continue;
       }
-      if (!res.ok) throw new Error(`API ${res.status}: ${(await res.text()).slice(0, 160)}`);
-      const data = await res.json();
+      if (!res.ok) throw new Error(`API ${res.status}: ${(await withTimeout(res.text(), 10000, "text")).slice(0, 160)}`);
+      const data = await withTimeout(res.json(), 20000, "json");
       const content = data.choices?.[0]?.message?.content;
       if (!content) { 
         console.log(`[Bo'sh javob, urinish ${k + 1}/${tries}]`);
@@ -205,7 +230,8 @@ while (already + accepted.length < target) {
     process.stdout.write(`[aylanish ${pass} · ${i + 1}/${chunks.length}] ${c.block} "${c.title.slice(0, 32)}" ... `);
     try {
       const useAnchors = (c.block === "pedagogika" || c.block === "kasb") && pedAnchors.length ? pedAnchors : anchors;
-      let prompt = buildGenPrompt({ subjectName: sub.name, topicTitle: c.title, specChunk: c.text.trim(), anchors: useAnchors, existingTitles: sampleTitles(), count: per, block: c.block });
+      const specChunk = c.block === "mutaxassislik" ? c.text.trim() + bookGrounding(c.title + " " + c.text) : c.text.trim();
+      let prompt = buildGenPrompt({ subjectName: sub.name, topicTitle: c.title, specChunk, anchors: useAnchors, existingTitles: sampleTitles(), count: per, block: c.block });
       if (specialOnly) prompt += `\n\n⚠️ MAXSUS REJIM: bu so'rovda FAQAT "matching" va "sequence" formatdagi savollar yoz — "single" YOZMA!
 Taxminan yarmi matching, yarmi sequence. FAQAT manba matnida ANIQ ro'yxat/juftlik/tartib bo'lsa tuz — to'qima.
 Agar bu bo'lakda mos ro'yxat/tartib bo'lmasa, KAM savol qaytar (bo'sh massiv ham mumkin).`;

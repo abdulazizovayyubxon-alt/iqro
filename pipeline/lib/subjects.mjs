@@ -30,7 +30,8 @@ export const SUBJECTS = {
     name: "Tasviriy san'at", category: "art",
     corpus: ["fan/art", "src/data/questions_7.js"],
     namuna: ["fan/tasviriy_savollar.json", "fan/art_spec_images", "fan/rasm_namuna"],
-    spec: "scratch/art_spec_text.txt",
+    spec: "fan/spes/_txt/Тасвирий санъат ва чизмачилик т.txt",
+    book: "scratch/art_book.txt",   // 5-sinf tasviriy + 9-sinf chizmachilik darsligi (matnli) — mutaxassislik grounding
   },
   tarix: {
     name: "Tarix", category: "tarix",
