@@ -67,13 +67,21 @@ if (fs.existsSync(subjDir)) for (const f of fs.readdirSync(subjDir).filter((x) =
 const existing = await loadMany(existPaths);
 const index = buildIndex(existing);
 
-// Few-shot langar: oltin korpusdan format xilma-xilligi bilan tanlab olamiz (uslub/sifat etaloni)
+// Few-shot langar — ENG yaxshi etalon: RASMIY NAMUNA (fan/<fan>_savollar.json = real demotest savollari).
+// Parser rasm/matnga bog'liq savollarni oxiriga surgan → boshidan teng oraliqda 5 ta olamiz (toza, o'z-o'zicha yetarli).
 let anchors = [];
-if (goldPath && fs.existsSync(goldPath)) {
+const namunaJson = (sub.namuna || []).filter((p) => /\.json$/i.test(p) && fs.existsSync(p));
+if (namunaJson.length) {
+  const nm = (await loadMany(namunaJson)).filter((q) => (q.question || q.q) && q.options);
+  const step = Math.max(1, Math.floor(nm.length / 5));
+  for (let i = 0; i < nm.length && anchors.length < 5; i += step) anchors.push(nm[i]);
+}
+// NAMUNA bo'lmasa — oltin korpusdan format xilma-xilligi bilan langar (zaxira)
+if (!anchors.length && goldPath && fs.existsSync(goldPath)) {
   const gold = await loadMany([goldPath]);
-  const byType = { single: [], matching: [], sequence: [] };
+  const byType = { single: [], matching: [], sequence: [], combo: [] };
   for (const q of gold) (byType[q.qtype] || byType.single).push(q);
-  anchors = [...byType.single.slice(0, 3), ...byType.matching.slice(0, 1), ...byType.sequence.slice(0, 1)].filter(Boolean);
+  anchors = [...byType.single.slice(0, 2), ...byType.combo.slice(0, 1), ...byType.matching.slice(0, 1), ...byType.sequence.slice(0, 1)].filter(Boolean);
 }
 
 const titles = existing.map((q) => q.question ?? q.q ?? "").filter(Boolean);
@@ -109,21 +117,32 @@ async function callLLM(prompt, tries = 5) {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${KEY}` },
         body: JSON.stringify({ model: MODEL, messages: [{ role: "user", content: prompt }], temperature: 0.8, max_tokens: MAXTOK, ...(REASONING ? { reasoning_effort: REASONING } : {}) }),
+        signal: AbortSignal.timeout(60000),
       });
       if (res.status === 429 || res.status >= 500) { // tezlik/server limiti — Retry-After ni hisobga olib kutamiz
-        const ra = parseFloat(res.headers.get("retry-after")) || 3 * (k + 1);
-        await sleep(Math.min(ra * 1000 + 300, 20000));
+        const ra = parseFloat(res.headers.get("retry-after")) || (5 * (k + 1));
+        console.log(`[Limit/Error ${res.status}, kutish: ${ra}s, urinish ${k + 1}/${tries}]`);
+        await sleep(Math.min(ra * 1000 + 1000, 120000));
         continue;
       }
       if (!res.ok) throw new Error(`API ${res.status}: ${(await res.text()).slice(0, 160)}`);
       const data = await res.json();
       const content = data.choices?.[0]?.message?.content;
-      if (!content) { await sleep(2000 * (k + 1)); continue; } // bo'sh — qayta
+      if (!content) { 
+        console.log(`[Bo'sh javob, urinish ${k + 1}/${tries}]`);
+        await sleep(2000 * (k + 1)); 
+        continue; 
+      }
       return content;
-    } catch (e) { if (k === tries - 1) throw e; await sleep(2000 * (k + 1)); }
+    } catch (e) { 
+      console.log(`[API xato: ${e.message}, urinish ${k + 1}/${tries}]`);
+      if (k === tries - 1) throw e; 
+      await sleep(3000 * (k + 1)); 
+    }
   }
   return "";
 }
+
 
 // Mavjud progress faylini yuklash (davom ettirish uchun)
 let accepted = [];
@@ -141,10 +160,14 @@ if (!fresh && fs.existsSync(progressPath)) {
 const already = 0; // accepted[] ga kiritildi, already endi 0
 let dup = 0, bad = 0, pass = 0, nSpecial = 0, specialSkip = 0;
 const SPECIAL_CAP = Math.ceil(target * 0.20); // matching+sequence ko'pi bilan ~20% (qolgani ishonchli single)
+// "Maxsus" = faqat matching/sequence (model ro'yxat/tartibni to'qishi xavfli). combo esa 1 javobli,
+// namuna uslubining o'zagi — single kabi cheklovsiz oqadi.
+const isSpecial = (qt) => qt === "matching" || qt === "sequence";
 // Mavjud nSpecial sanagichini tiklaymiz
-for (const q of accepted) if (q.qtype && q.qtype !== "single") nSpecial++;
+for (const q of accepted) if (isSpecial(q.qtype)) nSpecial++;
 console.log(`▶ ${sub.name}: maqsad ${target} (hozir ${accepted.length}), ${chunks.length} bo'lim, model ${MODEL}${specialOnly ? " | FAQAT matching/sequence" : ""}`);
-console.log(`   manba: ${mutSource}${goldPath ? ` | gold: ${goldPath} (langar ${anchors.length}, dedup ${existing.length})` : ""}${fresh ? " | FRESH" : ""}`);
+const langarSrc = namunaJson.length ? `namuna: ${namunaJson.map((p) => path.basename(p)).join(", ")}` : (goldPath ? "gold (zaxira)" : "YO'Q");
+console.log(`   manba: ${mutSource} | few-shot langar: ${anchors.length} ta [${langarSrc}] | dedup baza: ${existing.length}${goldPath ? " (+gold)" : ""}${fresh ? " | FRESH" : ""}`);
 
 // Maqsadga yetguncha bo'limlar bo'ylab AYLANAMIZ (har aylanishda har bo'limdan yana so'raymiz)
 outer:
@@ -167,12 +190,12 @@ Agar bu bo'lakda mos ro'yxat/tartib bo'lmasa, KAM savol qaytar (bo'sh massiv ham
         q0.subject = q0.subject || sub.name;
         const qt = q0.qtype || "single";
         if (validateQuestion(q0).length) { bad++; continue; }
-        if (specialOnly && qt === "single") { specialSkip++; continue; } // maxsus rejim: single qabul qilinmaydi
-        if (!specialOnly && qt !== "single" && nSpecial >= SPECIAL_CAP) { specialSkip++; continue; } // format balansi (single ustun)
+        if (specialOnly && !isSpecial(qt)) { specialSkip++; continue; } // maxsus rejim: faqat matching/sequence
+        if (!specialOnly && isSpecial(qt) && nSpecial >= SPECIAL_CAP) { specialSkip++; continue; } // format balansi (single+combo ustun)
         if (findDuplicate(index, q0)) { dup++; continue; }
         const q = shuffleOptions(q0);
         accepted.push(q); addToIndex(index, q); ok++;
-        if (qt !== "single") nSpecial++;
+        if (isSpecial(qt)) nSpecial++;
         titles.push(q.question);
       }
       console.log(`+${ok}  (jami ${already + accepted.length}/${target})`);

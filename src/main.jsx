@@ -7,6 +7,7 @@ import { ObjectionProvider } from './context/ObjectionContext'
 import { AppProvider } from './context/AppContext'
 import { PWAProvider } from './context/PWAContext'
 import App from './App.jsx'
+import './i18n'
 import './index.css'
 
 // ── Monitoring va Analytics ──

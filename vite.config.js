@@ -3,6 +3,30 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  build: {
+    // ── Vendor chunk splitting ──
+    // Avval barcha kutubxonalar bitta 1.18MB chunk'ga tushardi. Endi ular
+    // alohida, kamdan-kam o'zgaradigan chunk'larga bo'linadi — brauzer ularni
+    // bir marta keshlaydi va keyingi tashriflarda qayta yuklamaydi.
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return;
+          // Firebase'ning ixtiyoriy/kechiktiriladigan qismlarini alohida chunk'ga ajratamiz:
+          // messaging faqat push yoqilganda (Settings), storage faqat admin yuklashlarida kerak.
+          // Shunda dastlabki 'firebase' (auth+firestore) chunk'i kichikroq bo'ladi.
+          if (id.includes('@firebase/messaging') || id.includes('firebase/messaging')) return 'fb-messaging';
+          if (id.includes('@firebase/storage') || id.includes('firebase/storage')) return 'fb-storage';
+          if (id.includes('firebase') || id.includes('@firebase')) return 'firebase';
+          if (id.includes('framer-motion') || id.includes('popmotion') || id.includes('motion-dom')) return 'motion';
+          if (id.includes('lucide-react')) return 'icons';
+          if (id.includes('react-router')) return 'router';
+          if (id.includes('/react/') || id.includes('/react-dom/') || id.includes('scheduler')) return 'react-vendor';
+          return 'vendor';
+        },
+      },
+    },
+  },
   plugins: [
     react(),
     VitePWA({
@@ -81,10 +105,10 @@ export default defineConfig({
 
       manifest: {
         name: 'IQRO Kasbiy Sertifikatlash',
-        short_name: 'IQRO Test',
-        description: 'Chaqiruvga qadar boshlangʻich tayyorgarlik fanidan kasbiy sertifikatlash platformasi',
-        theme_color: '#007AFF',
-        background_color: '#F2F2F7',
+        short_name: 'IQRO',
+        description: "O'qituvchilar uchun kasbiy sertifikatlash va malaka attestatsiyasiga tayyorgarlik platformasi",
+        theme_color: '#F4F3EF',
+        background_color: '#F4F3EF',
         display: 'standalone',
         start_url: '/',
         scope: '/',

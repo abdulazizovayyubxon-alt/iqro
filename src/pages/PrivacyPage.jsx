@@ -1,10 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Shield } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
 
 export default function PrivacyPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const p2List = t('privacyPage.p2List', { returnObjects: true });
+  const p3List = t('privacyPage.p3List', { returnObjects: true });
 
   return (
     <div style={s.page}>
@@ -12,7 +16,7 @@ export default function PrivacyPage() {
         <button style={s.backBtn} onClick={() => navigate(-1)}>
           <ArrowLeft size={24} />
         </button>
-        <h1 style={s.title}>Maxfiylik Siyosati</h1>
+        <h1 style={s.title}>{t('privacyPage.title')}</h1>
         <div style={{ width: 24 }} />
       </div>
 
@@ -25,53 +29,34 @@ export default function PrivacyPage() {
           <Shield size={48} color="#29B6F6" />
         </div>
 
-        <h2 style={s.heading}>1. Umumiy qoidalar</h2>
-        <p style={s.text}>
-          Ushbu Maxfiylik siyosati IQRO platformasi (keyingi o'rinlarda "Platforma") tomonidan foydalanuvchilarning shaxsiy ma'lumotlarini qanday yig'ish, saqlash, ishlatish va himoya qilish tartibini belgilaydi. Platformadan foydalanish orqali Siz ushbu siyosat shartlariga rozi bo'lasiz.
-        </p>
+        <h2 style={s.heading}>{t('privacyPage.h1')}</h2>
+        <p style={s.text}>{t('privacyPage.p1')}</p>
 
-        <h2 style={s.heading}>2. Yig'iladigan ma'lumotlar</h2>
-        <p style={s.text}>
-          Biz quyidagi ma'lumotlarni yig'ishimiz mumkin:
-        </p>
+        <h2 style={s.heading}>{t('privacyPage.h2')}</h2>
+        <p style={s.text}>{t('privacyPage.p2')}</p>
         <ul style={s.list}>
-          <li>Ism, familiya va profil rasmi;</li>
-          <li>Telefon raqami va elektron pochta manzili;</li>
-          <li>Telegram ID (agar bot orqali kirgan bo'lsangiz);</li>
-          <li>Platformadagi faollik, test natijalari va statistikangiz.</li>
+          {p2List.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
 
-        <h2 style={s.heading}>3. Ma'lumotlardan qanday foydalanamiz?</h2>
-        <p style={s.text}>
-          Sizning ma'lumotlaringiz faqat quyidagi maqsadlarda ishlatiladi:
-        </p>
+        <h2 style={s.heading}>{t('privacyPage.h3')}</h2>
+        <p style={s.text}>{t('privacyPage.p3')}</p>
         <ul style={s.list}>
-          <li>Shaxsiy kabinetingizni yaratish va xavfsizligini ta'minlash;</li>
-          <li>Sizga mos testlar va xizmatlarni taqdim etish;</li>
-          <li>Reyting (Leaderboard) tizimida ishtirokingizni ko'rsatish (faqat ism va rasm chiqadi, telefon raqamingiz to'liq sir saqlanadi);</li>
-          <li>Platforma yangiliklari, to'lov xabarlari haqida sizni ogohlantirish.</li>
+          {p3List.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
 
-        <h2 style={s.heading}>4. Uchinchi shaxslarga uzatish</h2>
+        <h2 style={s.heading}>{t('privacyPage.h4')}</h2>
+        <p style={s.text}>{t('privacyPage.p4')}</p>
+
+        <h2 style={s.heading}>{t('privacyPage.h5')}</h2>
         <p style={s.text}>
-          Foydalanuvchilarning shaxsiy ma'lumotlari uchinchi shaxslarga sotilmaydi yoki ijaraga berilmaydi. Faqat qonun hujjatlarida ko'zda tutilgan majburiy holatlardagina huquqni muhofaza qiluvchi organlarga taqdim etilishi mumkin.
+          {t('privacyPage.p5a')}<b>{t('privacyPage.p5Profile')}</b>{t('privacyPage.p5b')}<Link to="/delete-account" style={{ color: 'var(--accent2)', textDecoration: 'underline' }}>{t('privacyPage.p5Link')}</Link>{t('privacyPage.p5c')}
         </p>
 
-        <h2 style={s.heading}>5. Ma'lumotlarni o'chirish</h2>
-        <p style={s.text}>
-          Siz istalgan vaqtda o'z hisobingizni va barcha shaxsiy ma'lumotlaringizni o'chirish huquqiga egasiz. 
-          Buning uchun Platformaning <b>Profil</b> sahifasidagi "Hisobni o'chirish" tugmasidan foydalanishingiz yoki tizimga kirmasdan turib <Link to="/delete-account" style={{ color: '#29B6F6', textDecoration: 'underline' }}>bu yerda</Link> hisobni o'chirish so'rovini yuborishingiz mumkin.
-        </p>
+        <h2 style={s.heading}>{t('privacyPage.h6')}</h2>
+        <p style={s.text}>{t('privacyPage.p6')}</p>
 
-        <h2 style={s.heading}>6. Xavfsizlik</h2>
-        <p style={s.text}>
-          Biz sizning ma'lumotlaringizni ruxsatsiz kirish, o'zgartirish, yo'q qilish yoki oshkor qilishdan himoya qilish uchun zamonaviy texnik va tashkiliy xavfsizlik choralarini ko'ramiz (jumladan, Firebase tomonidan taqdim etilgan eng yuqori himoya tizimlari qo'llaniladi).
-        </p>
-
-        <h2 style={s.heading}>7. O'zgarishlar kiritish</h2>
-        <p style={s.text}>
-          Platforma rahbariyati ushbu Maxfiylik siyosatiga istalgan vaqtda o'zgartirishlar kiritish huquqini saqlab qoladi. Har qanday o'zgarishlar ushbu sahifada e'lon qilinadi.
-        </p>
+        <h2 style={s.heading}>{t('privacyPage.h7')}</h2>
+        <p style={s.text}>{t('privacyPage.p7')}</p>
       </motion.div>
     </div>
   );

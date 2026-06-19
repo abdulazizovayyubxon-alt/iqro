@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { ToastContext } from '../context/ToastContext';
@@ -10,12 +11,13 @@ import {
 import { SUBJECTS } from '../data/mockData';
 
 const ErrorNotebookPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { state, deleteMistake, updateState } = useContext(AppContext);
   const { showToast } = useContext(ToastContext);
-  
+
   const cat = state.activeCategory;
-  const currentSubjectName = SUBJECTS.find(s => s.id === cat)?.name || "Fan";
+  const currentSubjectName = SUBJECTS.find(s => s.id === cat)?.name || t('errorNotebook.subjectFallback');
   const mistakes = state.stats?.[cat]?.mistakes || [];
 
   // Search & Filter State
@@ -40,7 +42,7 @@ const ErrorNotebookPage = () => {
   const handleDelete = (questionText, e) => {
     e.stopPropagation();
     deleteMistake(questionText);
-    showToast("Xato savol ro'yxatdan olib tashlandi!", "info");
+    showToast(t('errorNotebook.toastRemoved'), "info");
   };
 
   const handleClearAll = () => {
@@ -69,8 +71,8 @@ const ErrorNotebookPage = () => {
           <ArrowLeft size={18} color="var(--text2)" />
         </button>
         <div style={{ minWidth: 0, flex: 1 }}>
-          <h1 style={{ fontSize: 20, fontWeight: 900, color: 'var(--text)', margin: '0 0 2px' }}>❌ Xatolar kitobi</h1>
-          <div style={{ fontSize: 11, color: 'var(--text3)' }}>{currentSubjectName} bo'yicha yo'l qo'yilgan xatolar</div>
+          <h1 style={{ fontSize: 20, fontWeight: 900, color: 'var(--text)', margin: '0 0 2px' }}>{t('errorNotebook.title')}</h1>
+          <div style={{ fontSize: 11, color: 'var(--text3)' }}>{t('errorNotebook.subtitle', { subject: currentSubjectName })}</div>
         </div>
       </div>
 
@@ -82,10 +84,10 @@ const ErrorNotebookPage = () => {
             <div style={{ position: 'absolute', width: '120px', height: '120px', background: 'radial-gradient(circle, rgba(239, 68, 68, 0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', pointerEvents: 'none' }} />
             
             <div style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ fontSize: 12, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4, fontWeight: 700 }}>Umumiy Xatolar</div>
+              <div style={{ fontSize: 12, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4, fontWeight: 700 }}>{t('errorNotebook.totalErrors')}</div>
               <div style={{ fontSize: 44, fontWeight: 900, color: 'var(--red)', lineHeight: 1, marginBottom: 8 }}>{mistakes.length}</div>
               <p style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.5, marginBottom: 20 }}>
-                Xatolar ustida ishlash orqali bilimingizni 100% ga yetkazing!
+                {t('errorNotebook.improveText')}
               </p>
               
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -95,7 +97,7 @@ const ErrorNotebookPage = () => {
                   onClick={handlePractice} 
                   style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 24px', background: 'linear-gradient(135deg, #EF4444 0%, #F59E0B 100%)', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(239, 68, 68, 0.2)' }}
                 >
-                  <Play size={16} fill="white" /> Xatolar ustida ishlash
+                  <Play size={16} fill="white" /> {t('errorNotebook.practice')}
                 </motion.button>
                 
                 <motion.button 
@@ -105,7 +107,7 @@ const ErrorNotebookPage = () => {
                   className="btn btn-outline"
                   style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '12px 18px', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 14, color: 'var(--text2)', background: 'var(--bg2)' }}
                 >
-                  <Trash size={15} /> Tozalash
+                  <Trash size={15} /> {t('dashboard.clear')}
                 </motion.button>
               </div>
             </div>
@@ -123,7 +125,7 @@ const ErrorNotebookPage = () => {
               type="text" 
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              placeholder="Xato savollardan qidirish..."
+              placeholder={t('errorNotebook.searchPlaceholder')}
               style={{
                 width: '100%',
                 padding: '14px 16px 14px 44px',
@@ -158,7 +160,7 @@ const ErrorNotebookPage = () => {
                   whiteSpace: 'nowrap'
                 }}
               >
-                📚 Barcha mavzular ({mistakes.length})
+                {t('errorNotebook.allTopicsCount', { count: mistakes.length })}
               </button>
               {uniqueTopics.map((topic, i) => {
                 const count = mistakes.filter(m => m.topic === topic).length;
@@ -244,7 +246,7 @@ const ErrorNotebookPage = () => {
 
                   {/* Expander indicator */}
                   <div style={{ fontSize: 11, color: 'var(--text3)', display: 'flex', alignItems: 'center', gap: 4, fontWeight: 500 }}>
-                    <HelpCircle size={12} /> {isExpanded ? "Variantlarni yashirish" : "Variantlarni ko'rish"}
+                    <HelpCircle size={12} /> {isExpanded ? t('errorNotebook.hideOptions') : t('errorNotebook.showOptions')}
                   </div>
 
                   {/* Expanded contents (details) */}
@@ -290,7 +292,7 @@ const ErrorNotebookPage = () => {
                         <div style={{ display: 'flex', gap: 6, alignItems: 'center', padding: '10px 12px', borderRadius: 10, background: 'rgba(16, 185, 129, 0.08)', border: '1px solid rgba(16, 185, 129, 0.15)' }}>
                           <CheckCircle2 size={15} color="var(--green)" />
                           <div style={{ fontSize: 12, color: 'var(--text2)', fontWeight: 500 }}>
-                            <strong>To'g'ri javob:</strong> {m.correct.replace(/^[A-D]\)\s*/, '')}
+                            <strong>{t('test.correctAnswer')}</strong> {m.correct.replace(/^[A-D]\)\s*/, '')}
                           </div>
                         </div>
                       </motion.div>
@@ -319,12 +321,12 @@ const ErrorNotebookPage = () => {
                 {mistakes.length === 0 ? '🏆' : '🔍'}
               </div>
               <h3 style={{ fontSize: 18, fontWeight: 800, color: 'var(--text)', marginBottom: 8 }}>
-                {mistakes.length === 0 ? "Tabriklaymiz, xatolar yo'q!" : "Natija topilmadi"}
+                {mistakes.length === 0 ? t('errorNotebook.emptyTitle') : t('errorNotebook.noResults')}
               </h3>
               <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24, maxWidth: 320, margin: '0 auto 24px' }}>
-                {mistakes.length === 0 
-                  ? "Siz hali birorta ham xato qilmadingiz yoki barcha xatolaringizni o'chirdingiz. Bilimingiz toifalar olish uchun yetarli!" 
-                  : "Qidiruv so'rovi yoki tanlangan filtr bo'yicha birorta ham xato savol topilmadi. Boshqa so'rov kiriting."}
+                {mistakes.length === 0
+                  ? t('errorNotebook.emptyText')
+                  : t('errorNotebook.noResultsText')}
               </p>
               {mistakes.length === 0 ? (
                 <motion.button
@@ -333,7 +335,7 @@ const ErrorNotebookPage = () => {
                   onClick={() => navigate('/test')}
                   style={{
                     padding: '12px 24px',
-                    background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)',
+                    background: 'var(--grad-primary)',
                     color: '#fff',
                     border: 'none',
                     borderRadius: 14,
@@ -347,7 +349,7 @@ const ErrorNotebookPage = () => {
                     gap: 6
                   }}
                 >
-                  <BookOpen size={16} /> Testlarni boshlash
+                  <BookOpen size={16} /> {t('errorNotebook.startTests')}
                 </motion.button>
               ) : (
                 <button 
@@ -355,7 +357,7 @@ const ErrorNotebookPage = () => {
                   className="btn btn-outline"
                   style={{ margin: '0 auto' }}
                 >
-                  Filtrlarni tozalash
+                  {t('errorNotebook.clearFilters')}
                 </button>
               )}
             </motion.div>

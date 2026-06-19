@@ -3,6 +3,8 @@
  * Telegram asosiy usul, Click/Payme qo'shimcha
  */
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import i18n from '../i18n';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Crown, X, CreditCard, Smartphone,
@@ -14,6 +16,7 @@ import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { purchasePlan } from '../services/playBilling';
 import { redeemPromo, PROMO_ERRORS } from '../services/promo';
+import { AnalyticsEvents } from '../services/analytics';
 import { isPlayBuild } from '../config';
 import RoiBlock from './RoiBlock';
 
@@ -51,50 +54,54 @@ const DEFAULT_PLANS = [
 ];
 
 const FEATURES = [
-  { icon: '📚', text: "Barcha mavzular to'liq ochiq" },
-  { icon: '🎯', text: 'Imtihon simulyatsiyasi (50 savol)' },
-  { icon: '🧠', text: 'Aqlli takrorlash — cheklanmagan' },
-  { icon: '📊', text: "Batafsil statistika va tahlil" },
-  { icon: '🏆', text: 'Reyting va yutuqlar tizimi' },
-  { icon: '⚡', text: "Yangi savollar har hafta qo'shiladi" },
+  { icon: '📚', key: 'premium.feat1' },
+  { icon: '🎯', key: 'premium.feat2' },
+  { icon: '🧠', key: 'premium.feat3' },
+  { icon: '📊', key: 'premium.feat4' },
+  { icon: '🏆', key: 'premium.feat5' },
+  { icon: '⚡', key: 'premium.feat6' },
 ];
 
 // To'lov usullari
 const PAY_METHODS = [
   {
     id: 'telegram',
-    label: 'Telegram orqali',
-    sublabel: 'Maxsus kod orqali → Darhol yoqish',
+    labelKey: 'premium.payTelegram',
+    subKey: 'premium.payTelegramSub',
     icon: '📱',
     color: '#29B6F6',
     bgColor: 'rgba(41, 182, 246, 0.15)',
     borderColor: 'rgba(41, 182, 246, 0.4)',
-    badge: 'ASOSIY',
+    badgeKey: 'premium.payTelegramBadge',
   },
   {
     id: 'click',
     label: "Click",
-    sublabel: "Karta yoki Click Wallet",
+    subKey: "premium.payClickSub",
     icon: '💳',
     color: '#0EA5E9',
     bgColor: 'rgba(14, 165, 233, 0.1)',
     borderColor: 'rgba(14, 165, 233, 0.25)',
-    badge: null,
+    badgeKey: null,
   },
   {
     id: 'payme',
     label: "Payme",
-    sublabel: "Payme ilovasi yoki karta",
+    subKey: "premium.payPaymeSub",
     icon: '🏦',
     color: '#14B8A6',
     bgColor: 'rgba(20, 184, 166, 0.1)',
     borderColor: 'rgba(20, 184, 166, 0.25)',
-    badge: null,
+    badgeKey: null,
   },
 ];
 
 const PremiumModal = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
   const { user } = useAuth();
+  const planNameMap = { monthly: t('premium.planMonthly'), quarterly: t('premium.planQuarterly'), yearly: t('premium.planYearly') };
+  const badgeMap = { 'ENG OMMABOP': t('premium.badgePopular'), 'TEJAMKOR': t('premium.badgeSaver') };
+  const planLabel = (p) => p ? (planNameMap[p.id] || p.name) : '';
   const [step, setStep] = useState('plans'); // 'plans' | 'method' | 'telegram_guide'
   const [processing, setProcessing] = useState(false);
   const [plans, setPlans] = useState(DEFAULT_PLANS);
@@ -155,7 +162,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  const fmt = (n) => new Intl.NumberFormat('fr-FR').format(n).replace(',', ' ') + " so'm";
+  const fmt = (n) => new Intl.NumberFormat('fr-FR').format(n).replace(',', ' ') + ' ' + i18n.t('premium.currency');
   
   // Chegirmalar STACK qilinmaydi — referral va promo'dan eng kattasi qo'llanadi
   const referralPercent = userData?.referralDiscount || 0;
@@ -186,19 +193,22 @@ const PremiumModal = ({ isOpen, onClose }) => {
     if (res.ok) {
       if (res.type === 'percent') {
         setUserData(prev => ({ ...(prev || {}), promoDiscount: { code: code.toUpperCase(), percent: res.value } }));
-        setPromoMsg({ type: 'ok', text: `✅ ${res.value}% chegirma qo'llandi — narx yangilandi!` });
+        setPromoMsg({ type: 'ok', text: t('premium.promoRedeemOk', { value: res.value }) });
       } else {
         // days/team — premium serverda darhol faollashtirildi
-        setPromoMsg({ type: 'ok', text: `🎉 Premium ${res.value} kunga faollashtirildi! Ilovani yangilang.` });
+        setPromoMsg({ type: 'ok', text: t('premium.promoPremiumOk', { value: res.value }) });
       }
       setPromoCode('');
     } else {
-      setPromoMsg({ type: 'err', text: PROMO_ERRORS[res.error] || 'Xatolik yuz berdi' });
+      setPromoMsg({ type: 'err', text: PROMO_ERRORS[res.error] || t('exam.toastError') });
     }
   };
 
   const handlePay = async () => {
     if (!user || !selectedPlan) return;
+
+    // Analitika: to'lov niyati (yuqori-niyat signali — voronka konversiyasi uchun)
+    AnalyticsEvents.premiumClick(isAndroidApp ? 'play_billing' : selectedMethod);
 
     if (isAndroidApp) {
       setProcessing(true);
@@ -207,6 +217,9 @@ const PremiumModal = ({ isOpen, onClose }) => {
       if (!res.success) {
         alert(res.message);
       } else {
+        // Analitika: xarid yakunlandi (Play Billing — yagona mijoz tomonida tasdiqlanadigan oqim;
+        // web Click/Payme redirect qiladi va konversiya server webhook'ida hisoblanadi)
+        AnalyticsEvents.purchase(selectedPlan.id, 'play_billing', finalPrice);
         alert(res.message);
         onClose();
       }
@@ -225,7 +238,15 @@ const PremiumModal = ({ isOpen, onClose }) => {
     const url = selectedMethod === 'click'
       ? generateClickUrl(user.uid, user.phone || '', finalPrice, selectedPlan.id)
       : generatePaymeUrl(user.uid, finalPrice, selectedPlan.id);
-    if (url) window.location.href = url;
+    // To'lov tizimi sozlanmagan bo'lsa (merchant ID .env'da yo'q) URL null bo'ladi —
+    // jimgina muvaffaqiyatsiz bo'lish o'rniga foydalanuvchini Telegram usuliga yo'naltiramiz.
+    if (!url) {
+      setProcessing(false);
+      setSelectedMethod('telegram');
+      alert(t('premium.payMethodUnavailable'));
+      return;
+    }
+    window.location.href = url;
     setTimeout(() => setProcessing(false), 3000);
   };
 
@@ -276,13 +297,14 @@ const PremiumModal = ({ isOpen, onClose }) => {
                 onClick={() => setStep('plans')}
                 style={{ background: 'rgba(0,0,0,0.05)', border: 'none', borderRadius: 8, padding: '5px 8px', cursor: 'pointer', color: '#64748B', fontSize: 12, fontWeight: 600 }}
               >
-                ← Orqaga
+                ← {t('common.back')}
               </button>
             )}
           </div>
           <button
             onClick={onClose}
-            style={{ background: 'rgba(0,0,0,0.05)', border: 'none', borderRadius: 10, padding: '6px', cursor: 'pointer', color: '#64748B', marginLeft: 'auto' }}
+            aria-label={t('common.close')}
+            style={{ background: 'rgba(0,0,0,0.05)', border: 'none', borderRadius: 10, width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#64748B', marginLeft: 'auto' }}
           >
             <X size={18} />
           </button>
@@ -304,17 +326,17 @@ const PremiumModal = ({ isOpen, onClose }) => {
                     👑
                   </motion.div>
                   <h2 style={{ fontSize: 22, fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>IQRO Premium</h2>
-                  <p style={{ fontSize: 13, color: '#64748B', margin: 0 }}>Cheksiz imkoniyatlar bilan tayyorlan</p>
+                  <p style={{ fontSize: 13, color: '#64748B', margin: 0 }}>{t('premium.subtitle')}</p>
                 </div>
 
                 {/* Xavfsizlik belgisi */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginBottom: 20, fontSize: 12, color: '#10B981', fontWeight: 600 }}>
                   <Shield size={14} />
-                  <span>Xavfsiz to'lov</span>
+                  <span>{t('premium.securePay')}</span>
                 </div>
 
                 {/* Toifa ROI — obuna o'zini qachon oqlaydi */}
-                <RoiBlock price={selectedPlan?.price} planName={selectedPlan?.name} variant="light" />
+                <RoiBlock price={selectedPlan?.price} planName={planLabel(selectedPlan)} variant="light" />
 
                 {/* Tariflar */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
@@ -344,13 +366,13 @@ const PremiumModal = ({ isOpen, onClose }) => {
                             color: '#fff', fontSize: 9, fontWeight: 900,
                             padding: '3px 10px', borderRadius: '0 0 8px 8px', letterSpacing: 0.8,
                           }}>
-                            {plan.badge}
+                            {badgeMap[plan.badge] || plan.badge}
                           </div>
                         )}
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                           <div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                              <span style={{ fontSize: 15, fontWeight: 800, color: '#0f172a' }}>{plan.name}</span>
+                              <span style={{ fontSize: 15, fontWeight: 800, color: '#0f172a' }}>{planLabel(plan)}</span>
                               {plan.savings && (
                                 <span style={{ fontSize: 10, fontWeight: 700, background: 'rgba(16,185,129,0.15)', color: '#10B981', padding: '2px 6px', borderRadius: 5 }}>
                                   -{plan.savings}
@@ -358,7 +380,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                               )}
                             </div>
                             <div style={{ fontSize: 11, color: '#64748B', marginTop: 2, fontWeight: 500 }}>
-                              {plan.perDay ? `Kuniga ${plan.perDay.toLocaleString()} so'm` : `${plan.durationMonths} oy`}
+                              {plan.perDay ? t('premium.perDay', { amount: plan.perDay.toLocaleString() }) : t('premium.months', { count: plan.durationMonths })}
                             </div>
                           </div>
                           <div style={{ textAlign: 'right' }}>
@@ -391,12 +413,12 @@ const PremiumModal = ({ isOpen, onClose }) => {
                       <span style={{ fontSize: 18, flexShrink: 0, lineHeight: 1 }}>🎁</span>
                       <div style={{ flex: 1 }}>
                         <div style={{ fontSize: 12, fontWeight: 700, color: '#10B981' }}>
-                          {hasReferralDiscount && `${discountSource === 'promo' ? 'Promo-kod chegirmasi' : 'Taklif chegirmasi'}: -${discountPercent}%`}
+                          {hasReferralDiscount && t('premium.discountLine', { label: discountSource === 'promo' ? t('premium.discountPromo') : t('premium.discountReferral'), percent: discountPercent })}
                           {hasReferralDiscount && referralBonus > 0 && ' | '}
-                          {referralBonus > 0 && `Do'st bonusi: -${fmt(referralBonus)}`}
+                          {referralBonus > 0 && t('premium.friendBonus', { amount: fmt(referralBonus) })}
                         </div>
                         <div style={{ fontSize: 11, color: '#475569' }}>
-                          Jami: <s style={{ opacity: 0.5 }}>{fmt(selectedPlan?.price)}</s> → <strong style={{ color: '#10B981' }}>{fmt(finalPrice)}</strong>
+                          {t('premium.total')} <s style={{ opacity: 0.5 }}>{fmt(selectedPlan?.price)}</s> → <strong style={{ color: '#10B981' }}>{fmt(finalPrice)}</strong>
                         </div>
                       </div>
                     </motion.div>
@@ -414,7 +436,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                         display: 'flex', alignItems: 'center', gap: 6,
                       }}
                     >
-                      🎟️ Promo-kodingiz bormi?
+                      {t('premium.havePromo')}
                     </button>
                   ) : (
                     <div>
@@ -423,7 +445,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                           value={promoCode}
                           onChange={e => { setPromoCode(e.target.value.toUpperCase()); setPromoMsg(null); }}
                           onKeyDown={e => e.key === 'Enter' && handleRedeem()}
-                          placeholder="PROMO-KOD"
+                          placeholder={t('premium.promoPlaceholder')}
                           maxLength={32}
                           style={{
                             flex: 1, padding: '11px 14px', borderRadius: 12, fontSize: 14,
@@ -444,7 +466,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                             opacity: promoLoading || !promoCode.trim() ? 0.6 : 1, flexShrink: 0,
                           }}
                         >
-                          {promoLoading ? '...' : "Qo'llash"}
+                          {promoLoading ? '...' : t('premium.apply')}
                         </button>
                       </div>
                       {promoMsg && (
@@ -463,15 +485,15 @@ const PremiumModal = ({ isOpen, onClose }) => {
                 <div style={{ marginBottom: 16 }}>
                   {isAndroidApp ? (
                     <div style={{ padding: '16px', background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)', borderRadius: 12, marginBottom: 16 }}>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: '#1D4ED8', marginBottom: 4 }}>Google Play orqali xarid qilish</div>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: '#1D4ED8', marginBottom: 4 }}>{t('premium.googlePlayTitle')}</div>
                       <div style={{ fontSize: 12, color: '#1E3A8A', lineHeight: 1.4 }}>
-                        Siz tanlagan {selectedPlan.name} ta'rifi to'g'ridan-to'g'ri Google Play orqali xarid qilinadi. To'lov mutlaqo xavfsiz.
+                        {t('premium.googlePlayDesc', { plan: planLabel(selectedPlan) })}
                       </div>
                     </div>
                   ) : (
                     <>
-                      <div style={{ fontSize: 11, fontWeight: 800, color: '#94A3B8', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
-                        To'lov usulini tanlang
+                      <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--text3)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
+                        {t('premium.choosePayMethod')}
                       </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                     {PAY_METHODS.map((m) => {
@@ -489,23 +511,23 @@ const PremiumModal = ({ isOpen, onClose }) => {
                             position: 'relative',
                           }}
                         >
-                          {m.badge && (
+                          {m.badgeKey && (
                             <div style={{
                               position: 'absolute', top: -8, left: 12,
                               background: 'linear-gradient(135deg, #29B6F6, #0284C7)',
                               color: '#fff', fontSize: 8, fontWeight: 900,
                               padding: '2px 8px', borderRadius: 6, letterSpacing: 1,
                             }}>
-                              {m.badge}
+                              {t(m.badgeKey)}
                             </div>
                           )}
                           <span style={{ fontSize: 22 }}>{m.icon}</span>
                           <div style={{ flex: 1 }}>
                             <div style={{ fontSize: 14, fontWeight: 700, color: isActive ? m.color : '#334155' }}>
-                              {m.label}
+                              {m.labelKey ? t(m.labelKey) : m.label}
                             </div>
                             <div style={{ fontSize: 11, color: '#64748B', fontWeight: 500 }}>
-                              {m.sublabel}
+                              {t(m.subKey)}
                             </div>
                           </div>
                           <div style={{
@@ -529,14 +551,14 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   background: '#f8fafc', border: '1px solid #e2e8f0',
                   borderRadius: 14, padding: '14px', marginBottom: 18,
                 }}>
-                  <div style={{ fontSize: 11, fontWeight: 800, color: '#94A3B8', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
-                    Nimalar kiradi
+                  <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--text3)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
+                    {t('premium.whatIncluded')}
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
                     {FEATURES.map((f, i) => (
                       <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         <span style={{ fontSize: 14 }}>{f.icon}</span>
-                        <span style={{ fontSize: 11, color: '#475569', lineHeight: 1.3, fontWeight: 600 }}>{f.text}</span>
+                        <span style={{ fontSize: 11, color: '#475569', lineHeight: 1.3, fontWeight: 600 }}>{t(f.key)}</span>
                       </div>
                     ))}
                   </div>
@@ -560,7 +582,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                       marginBottom: 12,
                     }}
                   >
-                    <><Crown size={18} /> Google Play bilan to'lash — {fmt(finalPrice)}</>
+                    <><Crown size={18} /> {t('premium.payGooglePlay', { price: fmt(finalPrice) })}</>
                   </motion.button>
                 ) : (
                   <motion.button
@@ -584,18 +606,18 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   }}
                 >
                   {selectedMethod === 'telegram' ? (
-                    <><Send size={18} /> Telegram orqali to'lash — {fmt(finalPrice)}</>
+                    <><Send size={18} /> {t('premium.payViaTelegram', { price: fmt(finalPrice) })}</>
                   ) : selectedMethod === 'click' ? (
-                    <><CreditCard size={18} /> Click — {fmt(finalPrice)}</>
+                    <><CreditCard size={18} /> {t('premium.payClickBtn', { price: fmt(finalPrice) })}</>
                   ) : (
-                    <><Smartphone size={18} /> Payme — {fmt(finalPrice)}</>
+                    <><Smartphone size={18} /> {t('premium.payPaymeBtn', { price: fmt(finalPrice) })}</>
                   )}
                 </motion.button>
                 )}
 
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: '#94A3B8', fontSize: 11, fontWeight: 600 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'var(--text3)', fontSize: 11, fontWeight: 600 }}>
                   <Shield size={14} color="#10B981" />
-                  To'lov ma'lumotlaringiz himoyalangan
+                  {t('premium.paymentProtected')}
                 </div>
               </motion.div>
             )}
@@ -605,19 +627,19 @@ const PremiumModal = ({ isOpen, onClose }) => {
               <motion.div key="telegram_guide" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                 <div style={{ textAlign: 'center', marginBottom: 24 }}>
                   <div style={{ fontSize: 56, marginBottom: 12 }}>📱</div>
-                  <h2 style={{ fontSize: 20, fontWeight: 900, color: '#0f172a', margin: '0 0 8px' }}>Telegram Bot ochildi!</h2>
+                  <h2 style={{ fontSize: 20, fontWeight: 900, color: '#0f172a', margin: '0 0 8px' }}>{t('premium.tgGuideTitle')}</h2>
                   <p style={{ fontSize: 13, color: '#64748B', margin: 0, lineHeight: 1.6 }}>
-                    Bot sizga to'lov yo'riqnomasini yubordi. Quyidagi qadamlarni bajaring:
+                    {t('premium.tgGuideDesc')}
                   </p>
                 </div>
 
                 {/* Qadamlar */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 24 }}>
                   {[
-                    { step: '1', icon: '💳', text: 'Botdagi karta raqamiga to\'lov summasini o\'tkazing' },
-                    { step: '2', icon: '📸', text: 'To\'lov tasdiqlovchi chek (skrinshot) rasmini oling' },
-                    { step: '3', icon: '💬', text: 'Ushbu chek (skrinshot) rasmini botga yuboring' },
-                    { step: '4', icon: '⚡', text: 'Admin tekshirib, premiumingizni faollashtiradi!' },
+                    { step: '1', icon: '💳', text: t('premium.tgStep1') },
+                    { step: '2', icon: '📸', text: t('premium.tgStep2') },
+                    { step: '3', icon: '💬', text: t('premium.tgStep3') },
+                    { step: '4', icon: '⚡', text: t('premium.tgStep4') },
                   ].map((item) => (
                     <div
                       key={item.step}
@@ -649,7 +671,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   borderRadius: 14, padding: '14px 16px', marginBottom: 20,
                   textAlign: 'center',
                 }}>
-                  <div style={{ fontSize: 11, color: '#64748B', marginBottom: 6, fontWeight: 700 }}>To'lov kartasi</div>
+                  <div style={{ fontSize: 11, color: '#64748B', marginBottom: 6, fontWeight: 700 }}>{t('premium.payCard')}</div>
                   <div style={{ fontSize: 20, fontWeight: 900, color: '#29B6F6', letterSpacing: 3, fontFamily: 'monospace' }}>
                     9860 3501 4333 3655
                   </div>
@@ -670,7 +692,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   }}
                 >
                   <Send size={18} />
-                  Botga o'tish → @IQRO_testbot
+                  {t('premium.goToBot')}
                 </motion.button>
 
                 <button
@@ -681,7 +703,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                     fontWeight: 600, fontSize: 13, cursor: 'pointer', fontFamily: 'inherit',
                   }}
                 >
-                  Yopish (chek yuborgandan keyin)
+                  {t('premium.closeAfterReceipt')}
                 </button>
               </motion.div>
             )}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Trash2, Send, CheckCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../firebase';
@@ -7,6 +8,7 @@ import { collection, addDoc } from 'firebase/firestore';
 
 export default function DeleteAccountPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [reason, setReason] = useState('');
@@ -32,12 +34,12 @@ export default function DeleteAccountPage() {
 
     const cleanPhone = phone.replace(/\D/g, '');
     if (!cleanPhone.startsWith('998') || cleanPhone.length !== 12) {
-      setError("Iltimos, O'zbekiston telefon raqamini to'g'ri kiriting (+998XXXXXXXXX)");
+      setError(t('deleteAccount.errPhone'));
       return;
     }
 
     if (!name.trim()) {
-      setError("Iltimos, ismingizni kiriting");
+      setError(t('deleteAccount.errName'));
       return;
     }
 
@@ -53,7 +55,7 @@ export default function DeleteAccountPage() {
       setSubmitted(true);
     } catch (err) {
       console.error("Account deletion request error:", err);
-      setError("So'rov yuborishda xatolik yuz berdi. Iltimos keyinroq qayta urining.");
+      setError(t('deleteAccount.errSubmit'));
     } finally {
       setLoading(false);
     }
@@ -65,7 +67,7 @@ export default function DeleteAccountPage() {
         <button style={s.backBtn} onClick={() => navigate(-1)}>
           <ArrowLeft size={24} />
         </button>
-        <h1 style={s.title}>Hisobni o'chirish</h1>
+        <h1 style={s.title}>{t('deleteAccount.title')}</h1>
         <div style={{ width: 24 }} />
       </div>
 
@@ -83,20 +85,17 @@ export default function DeleteAccountPage() {
                 <div style={s.iconWrap}>
                   <Trash2 size={40} color="#F44336" />
                 </div>
-                <h2 style={s.subtitle}>Hisobingizni o'chirish so'rovi</h2>
-                <p style={s.description}>
-                  Google Play qoidalariga muvofiq, IQRO platformasidagi akkauntingizni o'chirishni so'rashingiz mumkin.
-                  Sizning profilingiz, test natijalaringiz, statistika va barcha shaxsiy ma'lumotlaringiz tizimdan butunlay o'chiriladi.
-                </p>
+                <h2 style={s.subtitle}>{t('deleteAccount.subtitle')}</h2>
+                <p style={s.description}>{t('deleteAccount.description')}</p>
 
                 {error && <div style={s.errorBox}>{error}</div>}
 
                 <form onSubmit={handleSubmit} style={s.form}>
                   <div style={s.inputGroup}>
-                    <label style={s.label}>Ism va Familiya</label>
+                    <label style={s.label}>{t('deleteAccount.nameLabel')}</label>
                     <input
                       type="text"
-                      placeholder="Ismingizni kiriting"
+                      placeholder={t('deleteAccount.namePlaceholder')}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       style={s.input}
@@ -105,7 +104,7 @@ export default function DeleteAccountPage() {
                   </div>
 
                   <div style={s.inputGroup}>
-                    <label style={s.label}>Telefon Raqam</label>
+                    <label style={s.label}>{t('deleteAccount.phoneLabel')}</label>
                     <input
                       type="tel"
                       placeholder="+998 (__) ___-__-__"
@@ -117,9 +116,9 @@ export default function DeleteAccountPage() {
                   </div>
 
                   <div style={s.inputGroup}>
-                    <label style={s.label}>Hisobni o'chirish sababi (ixtiyoriy)</label>
+                    <label style={s.label}>{t('deleteAccount.reasonLabel')}</label>
                     <textarea
-                      placeholder="Nima uchun hisobingizni o'chirishni xohlaysiz?"
+                      placeholder={t('deleteAccount.reasonPlaceholder')}
                       value={reason}
                       onChange={(e) => setReason(e.target.value)}
                       style={{ ...s.input, ...s.textarea }}
@@ -132,11 +131,11 @@ export default function DeleteAccountPage() {
                     style={loading ? { ...s.submitBtn, ...s.btnDisabled } : s.submitBtn}
                   >
                     {loading ? (
-                      "Yuborilmoqda..."
+                      t('deleteAccount.submitting')
                     ) : (
                       <>
                         <Send size={18} style={{ marginRight: 8 }} />
-                        So'rovni Yuborish
+                        {t('deleteAccount.submit')}
                       </>
                     )}
                   </button>
@@ -154,13 +153,10 @@ export default function DeleteAccountPage() {
               <div style={s.iconWrapSuccess}>
                 <CheckCircle size={60} color="#4CAF50" />
               </div>
-              <h2 style={s.subtitle}>So'rovingiz qabul qilindi</h2>
-              <p style={s.description}>
-                Hisobingizni o'chirish bo'yicha so'rov muvaffaqiyatli yuborildi. 
-                Shaxsingizni tasdiqlash uchun adminlarimiz 24-48 soat ichida Siz bilan bog'lanishadi yoki so'rovingiz avtomatik bajariladi.
-              </p>
+              <h2 style={s.subtitle}>{t('deleteAccount.successTitle')}</h2>
+              <p style={s.description}>{t('deleteAccount.successText')}</p>
               <button onClick={() => navigate('/')} style={s.homeBtn}>
-                Bosh sahifaga qaytish
+                {t('deleteAccount.homeBtn')}
               </button>
             </motion.div>
           )}

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import i18n from '../i18n';
 import { TOIFA_SALARY } from '../config';
 
-const fmtSum = (n) => new Intl.NumberFormat('fr-FR').format(Math.round(n)).replace(/,/g, ' ') + " so'm";
+const fmtSum = (n) => new Intl.NumberFormat('fr-FR').format(Math.round(n)).replace(/,/g, ' ') + ' ' + i18n.t('roi.currency');
 
 /**
  * Toifa ROI kalkulyatori — obuna narxini toifa oshganda keladigan
@@ -14,12 +16,14 @@ const fmtSum = (n) => new Intl.NumberFormat('fr-FR').format(Math.round(n)).repla
  *  - variant: 'light' (PremiumModal oq kartasi ichida) | 'theme' (tema ranglarida)
  */
 export default function RoiBlock({ price, planName, targetToifa = '1-toifa', variant = 'light' }) {
+  const { t } = useTranslation();
   const delta = TOIFA_SALARY.deltas[targetToifa];
   if (!delta || !price) return null;
 
   const monthlyGain = TOIFA_SALARY.base * delta;
   const paybackDays = Math.max(1, Math.ceil(price / (monthlyGain / 30)));
-  const label = TOIFA_SALARY.labels[targetToifa] || targetToifa;
+  const labelMap = { oliy: t('roi.labelOliy'), '1-toifa': t('roi.label1'), '2-toifa': t('roi.label2') };
+  const label = labelMap[targetToifa] || TOIFA_SALARY.labels[targetToifa] || targetToifa;
 
   const isLight = variant === 'light';
   const colors = isLight
@@ -35,11 +39,11 @@ export default function RoiBlock({ price, planName, targetToifa = '1-toifa', var
       <span style={{ fontSize: 20, lineHeight: 1 }}>📈</span>
       <div>
         <div style={{ fontSize: 12.5, fontWeight: 800, color: colors.title, marginBottom: 3 }}>
-          {label} = oyligingizga +{fmtSum(monthlyGain)}
+          {t('roi.gainLine', { label, amount: fmtSum(monthlyGain) })}
         </div>
         <div style={{ fontSize: 11.5, color: colors.text, lineHeight: 1.5 }}>
-          {planName ? `${planName} obuna` : 'Obuna'} ({fmtSum(price)}) toifa olganingizda o'zini{' '}
-          <strong style={{ color: colors.strong }}>~{paybackDays} kunda</strong> oqlaydi.
+          {t('roi.paybackP1', { sub: planName ? t('roi.subscription', { plan: planName }) : t('roi.subscriptionGeneric'), price: fmtSum(price) })}{' '}
+          <strong style={{ color: colors.strong }}>{t('roi.days', { days: paybackDays })}</strong>{t('roi.paybackP2')}
         </div>
       </div>
     </div>

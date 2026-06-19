@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, XCircle, Clock, ChevronRight, ArrowLeft, Zap, MessageCircle, Brain, Play } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { prefersReducedMotion } from '../utils/motion';
 import { updateSpacedCard } from '../engine/SmartQuestionEngine';
 import ObjectionModal from '../components/shared/ObjectionModal';
 import SafeHtml from '../components/shared/SafeHtml';
@@ -20,6 +22,7 @@ import localforage from 'localforage';
 
 const SmartReviewPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const goBack = () => navigate('/test');
   const { state, updateState, cloudSynced, saveCustomMnemonic } = useContext(AppContext);
   const { addObjection } = useContext(ObjectionContext);
@@ -93,14 +96,14 @@ const SmartReviewPage = () => {
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', padding: '20px' }}>
         <div style={{ maxWidth: 400, width: '100%', background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 24, padding: '40px 28px', textAlign: 'center' }}>
           <div style={{ fontSize: 52, marginBottom: 16 }}>🔒</div>
-          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 8, color: 'var(--text)' }}>Kunlik Bepul Limit Tugadi</div>
+          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 8, color: 'var(--text)' }}>{t('test.limitTitle')}</div>
           <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 28 }}>
-            Siz bugungi 50 ta bepul savol limitiga yetdingiz! Barcha savollar va mavzularga cheksiz kirish uchun Premium rejimni faollashtiring.
+            {t('test.limitText')}
           </div>
           <button style={{ width: '100%', padding: '15px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 16, cursor: 'pointer', fontFamily: 'inherit', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
-            ⭐ Premium Rejimni Faollashtirish
+            {t('test.limitActivate')}
           </button>
-          <button style={{ width: '100%', padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit' }} onClick={() => navigate('/')}>← Bosh sahifaga</button>
+          <button style={{ width: '100%', padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit' }} onClick={() => navigate('/')}>{t('test.backHomeArrow')}</button>
         </div>
         <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
       </motion.div>
@@ -131,8 +134,10 @@ const SmartReviewPage = () => {
   const nextCard = () => {
     if (currentIdx + 1 >= cards.length) {
       setSessionDone(true);
-      if (sessionStats.correct > sessionStats.wrong) {
-        confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+      // Konfetti faqat kuchli sessiyaga (kamida 5 ta to'g'ri va ≥80% aniqlik)
+      const acc = sessionStats.correct / Math.max(1, sessionStats.correct + sessionStats.wrong);
+      if (sessionStats.correct >= 5 && acc >= 0.8 && !prefersReducedMotion()) {
+        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
       }
       return;
     }
@@ -144,7 +149,7 @@ const SmartReviewPage = () => {
     const card = cards[currentIdx];
     addObjection(card.topicId, state.activeCategory, card, text);
     setShowObjectionModal(false);
-    showToast("E'tiroz yuborildi!", 'success');
+    showToast(t('exam.toastObjectionSent'), 'success');
   };
 
   // Takror navbati kartalarini flashcard sifatida o'rganish — "Bilaman/Bilmayman"
@@ -164,7 +169,8 @@ const SmartReviewPage = () => {
     setSessionStats({ correct: newCorrect, wrong: newWrong });
     if (currentIdx + 1 >= cards.length) {
       setSessionDone(true);
-      if (newCorrect > newWrong) confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+      const acc = newCorrect / Math.max(1, newCorrect + newWrong);
+      if (newCorrect >= 5 && acc >= 0.8 && !prefersReducedMotion()) confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
     } else {
       setCurrentIdx(prev => prev + 1);
       setFcFlipped(false);
@@ -197,7 +203,7 @@ const SmartReviewPage = () => {
       setSubjectQuestions(raw);
     } catch (e) {
       console.error('Fan savollari flashcard yuklashda xatolik:', e);
-      showToast('Savollarni yuklashda xatolik', 'error');
+      showToast(t('review.toastLoadError'), 'error');
     } finally {
       setSubjectFlashLoading(false);
     }
@@ -211,19 +217,19 @@ const SmartReviewPage = () => {
       setSfFlipped(false);
     } else {
       const knownCount = Object.values({ ...sfKnown, [sfIdx]: known }).filter(Boolean).length;
-      showToast(`Flashcard yakunlandi! ${knownCount}/${subjectQuestions.length} ta bilasiz 🎉`, 'info');
+      showToast(t('test.toastFlashcardDone', { known: knownCount, total: subjectQuestions.length }), 'info');
       setSubjectFlashActive(false);
     }
   };
 
   // Fan savollari — MUSTAQIL flashcard ko'rinishi (test oynasidan tashqarida, Takror ichida)
   if (subjectFlashActive) {
-    const subjName = SUBJECTS.find(s => s.id === state.activeCategory)?.name || 'Fan savollari';
+    const subjName = SUBJECTS.find(s => s.id === state.activeCategory)?.name || t('review.subjectQuestions');
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: 700, margin: '0 auto', padding: '12px 16px 80px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
           <div>
-            <h1 style={{ fontSize: 22, fontWeight: 900, color: 'var(--text)', margin: '0 0 2px' }}>📇 Flashcard</h1>
+            <h1 style={{ fontSize: 22, fontWeight: 900, color: 'var(--text)', margin: '0 0 2px' }}>{t('review.flashcard')}</h1>
             <div style={{ fontSize: 12, color: 'var(--text3)' }}>{subjName}</div>
           </div>
           <button onClick={() => setSubjectFlashActive(false)} style={{ width: 38, height: 38, borderRadius: 12, border: '1.5px solid var(--border)', background: 'var(--bg2)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
@@ -233,13 +239,13 @@ const SmartReviewPage = () => {
         {subjectFlashLoading ? (
           <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--text3)' }}>
             <div style={{ fontSize: 40, marginBottom: 12 }}>⏳</div>
-            <div style={{ fontWeight: 600 }}>Savollar yuklanmoqda...</div>
+            <div style={{ fontWeight: 600 }}>{t('review.loadingQuestions')}</div>
           </div>
         ) : subjectQuestions.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--text3)' }}>
             <div style={{ fontSize: 40, marginBottom: 12 }}>📭</div>
-            <div style={{ fontWeight: 700, color: 'var(--text)', marginBottom: 6 }}>Bu fan uchun savol topilmadi</div>
-            <div style={{ fontSize: 13 }}>Avval shu fandan test yeching yoki boshqa fan tanlang.</div>
+            <div style={{ fontWeight: 700, color: 'var(--text)', marginBottom: 6 }}>{t('review.noQuestionsForSubject')}</div>
+            <div style={{ fontSize: 13 }}>{t('review.noQuestionsHint')}</div>
           </div>
         ) : (
           <FlashcardView
@@ -261,7 +267,7 @@ const SmartReviewPage = () => {
             const q = subjectQuestions[sfIdx];
             if (q) addObjection(q.topicId, state.activeCategory, q, text);
             setShowObjectionModal(false);
-            showToast("E'tiroz yuborildi!", 'success');
+            showToast(t('exam.toastObjectionSent'), 'success');
           }}
         />
       </motion.div>
@@ -287,11 +293,11 @@ const SmartReviewPage = () => {
     const oneDayMs = 24 * 60 * 60 * 1000;
     
     const forecast = [
-      { label: 'Bugun', count: 0 },
-      { label: 'Ertaga', count: 0 },
-      { label: '3-kuni', count: 0 },
-      { label: '4-7 kunlar', count: 0 },
-      { label: 'Keyinroq', count: 0 },
+      { label: t('review.fToday'), count: 0 },
+      { label: t('review.fTomorrow'), count: 0 },
+      { label: t('review.fDay3'), count: 0 },
+      { label: t('review.fDays47'), count: 0 },
+      { label: t('review.fLater'), count: 0 },
     ];
 
     for (const card of categorySpacedCards) {
@@ -317,16 +323,16 @@ const SmartReviewPage = () => {
           <div style={{ width: 76, height: 76, borderRadius: 22, margin: '0 auto 18px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #29B6F6, #8B5CF6)', boxShadow: '0 10px 24px rgba(139, 92, 246, 0.32)' }}>
             <Brain size={36} color="#fff" />
           </div>
-          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)', letterSpacing: '-0.5px' }}>Hozircha takrorlash kerak emas!</div>
+          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)', letterSpacing: '-0.5px' }}>{t('review.noReviewTitle')}</div>
           {totalSpaced > 0 ? (
             <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.7, marginBottom: 28, fontWeight: 500 }}>
-              Jami <strong style={{ color: 'var(--text)' }}>{totalSpaced}</strong> ta savol kuzatilmoqda.<br />
-              Keyingi takrorlash: <strong style={{ color: '#29B6F6' }}>{waitMinutes < 60 ? `${waitMinutes} daqiqa` : waitMinutes < 1440 ? `${Math.round(waitMinutes / 60)} soat` : `${Math.round(waitMinutes / 1440)} kun`}</strong> dan keyin
+              {t('review.trackingCount', { count: totalSpaced })}<br />
+              {t('review.nextReview', { wait: waitMinutes < 60 ? t('review.waitMinutes', { n: waitMinutes }) : waitMinutes < 1440 ? t('review.waitHours', { n: Math.round(waitMinutes / 60) }) : t('review.waitDays', { n: Math.round(waitMinutes / 1440) }) })}
             </div>
           ) : (
             <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.7, marginBottom: 28, fontWeight: 500 }}>
-              Testlarda xato qilganingizda savollar avtomatik ravishda bu yerga qo'shiladi.<br />
-              Boshqa testlarni yechib boring!
+              {t('review.emptyHint1')}<br />
+              {t('review.emptyHint2')}
             </div>
           )}
 
@@ -340,8 +346,8 @@ const SmartReviewPage = () => {
               border: '1.5px solid var(--border)',
               textAlign: 'left'
             }}>
-              <div style={{ fontSize: 13, fontWeight: 800, color: 'var(--text)', marginBottom: 2 }}>📊 Takrorlash navbati prognozi</div>
-              <div style={{ fontSize: 11, color: 'var(--text3)', marginBottom: 16 }}>Kelgusi kunlar davomida takrorlanadigan savollar hajmi.</div>
+              <div style={{ fontSize: 13, fontWeight: 800, color: 'var(--text)', marginBottom: 2 }}>{t('review.forecastTitle')}</div>
+              <div style={{ fontSize: 11, color: 'var(--text3)', marginBottom: 16 }}>{t('review.forecastSubtitle')}</div>
               
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 8, alignItems: 'end', minHeight: 80, paddingBottom: 6 }}>
                 {forecast.map((day, i) => {
@@ -383,8 +389,8 @@ const SmartReviewPage = () => {
             </div>
           )}
 
-          <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}>
-            <Play size={16} fill="currentColor" /> Test ishlash
+          <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}>
+            <Play size={16} fill="currentColor" /> {t('review.doTest')}
           </motion.button>
         </div>
 
@@ -413,8 +419,8 @@ const SmartReviewPage = () => {
             <Zap size={22} color="#fff" />
           </div>
           <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
-            <div style={{ fontSize: 15, fontWeight: 800, color: 'var(--text)', marginBottom: 3 }}>Fan savollarini flashcard qilish</div>
-            <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 500, lineHeight: 1.4 }}>Butun fan bo'yicha savollarni karta ko'rinishida tez takrorlang</div>
+            <div style={{ fontSize: 15, fontWeight: 800, color: 'var(--text)', marginBottom: 3 }}>{t('review.subjectFlashTitle')}</div>
+            <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 500, lineHeight: 1.4 }}>{t('review.subjectFlashDesc')}</div>
           </div>
           <ChevronRight size={20} color="var(--accent)" style={{ position: 'relative', zIndex: 1, flexShrink: 0 }} />
         </motion.button>
@@ -430,23 +436,22 @@ const SmartReviewPage = () => {
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ maxWidth: 560, margin: '0 auto', padding: '20px 16px' }}>
         <div style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)', borderRadius: 24, padding: '40px 28px', textAlign: 'center', marginTop: 40, boxShadow: '0 20px 40px rgba(0,0,0,0.06)' }}>
           <div style={{ fontSize: 52, marginBottom: 12, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.08))' }}>{pct >= 70 ? '🎉' : '💪'}</div>
-          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 20, color: 'var(--text)', letterSpacing: '-0.5px' }}>Takrorlash tugadi!</div>
+          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 20, color: 'var(--text)', letterSpacing: '-0.5px' }}>{t('review.sessionDone')}</div>
           <div style={{ display: 'flex', gap: 24, justifyContent: 'center', marginBottom: 20 }}>
             <div style={{ textAlign: 'center', background: 'rgba(22, 163, 74, 0.08)', border: '1px solid rgba(22, 163, 74, 0.15)', borderRadius: 16, padding: '16px 24px' }}>
               <div style={{ fontSize: 32, fontWeight: 900, color: '#16A34A' }}>{sessionStats.correct}</div>
-              <div style={{ fontSize: 11, color: '#16A34A', fontWeight: 700, marginTop: 4 }}>TO'G'RI</div>
+              <div style={{ fontSize: 11, color: '#16A34A', fontWeight: 700, marginTop: 4 }}>{t('exam.statCorrect')}</div>
             </div>
             <div style={{ textAlign: 'center', background: 'rgba(220, 38, 38, 0.08)', border: '1px solid rgba(220, 38, 38, 0.15)', borderRadius: 16, padding: '16px 24px' }}>
               <div style={{ fontSize: 32, fontWeight: 900, color: '#DC2626' }}>{sessionStats.wrong}</div>
-              <div style={{ fontSize: 11, color: '#DC2626', fontWeight: 700, marginTop: 4 }}>XATO</div>
+              <div style={{ fontSize: 11, color: '#DC2626', fontWeight: 700, marginTop: 4 }}>{t('exam.statWrong')}</div>
             </div>
           </div>
           <div style={{ fontSize: 13, color: 'var(--text3)', marginBottom: 24, lineHeight: 1.7, fontWeight: 500 }}>
-            Xato savollar <strong style={{ color: 'var(--text)' }}>10 daqiqa</strong>dan keyin qaytadan ko'rsatiladi.<br />
-            To'g'ri savollar keyingi bosqichga o'tdi!
+            {t('review.doneHint')}
           </div>
-          <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}>
-            <Play size={16} fill="currentColor" /> Test ishlash
+          <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}>
+            <Play size={16} fill="currentColor" /> {t('review.doTest')}
           </motion.button>
         </div>
       </motion.div>
@@ -456,7 +461,7 @@ const SmartReviewPage = () => {
   // Savol ko'rsatish
   const card = cards[currentIdx];
   const isCorrect = answered !== null && answered === card.correct;
-  const levelNames = ['Yangi', '10 daqiqa', '1 soat', '6 soat', '1 kun', '3 kun', '1 hafta'];
+  const levelNames = t('review.levels', { returnObjects: true });
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: 700, margin: '0 auto', padding: '12px 16px 80px' }}>
@@ -464,8 +469,8 @@ const SmartReviewPage = () => {
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
         <div>
-          <h1 style={{ fontSize: 22, fontWeight: 900, color: 'var(--text)', margin: '0 0 2px' }}>🧠 Aqlli Takrorlash</h1>
-          <div style={{ fontSize: 12, color: 'var(--text3)' }}>{currentIdx + 1} / {cards.length} savol</div>
+          <h1 style={{ fontSize: 22, fontWeight: 900, color: 'var(--text)', margin: '0 0 2px' }}>{t('review.title')}</h1>
+          <div style={{ fontSize: 12, color: 'var(--text3)' }}>{t('review.cardCount', { current: currentIdx + 1, total: cards.length })}</div>
         </div>
         <button onClick={goBack} style={{ width: 38, height: 38, borderRadius: 12, border: '1.5px solid var(--border)', background: 'var(--bg2)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
           <ArrowLeft size={18} color="var(--text2)" />
@@ -475,7 +480,7 @@ const SmartReviewPage = () => {
       {/* O'rganish rejimi: Test / Flashcard + Fan savollari decki */}
       <div style={{ display: 'flex', gap: 8, marginBottom: 14, flexWrap: 'wrap', alignItems: 'center' }}>
         <div style={{ display: 'flex', background: 'var(--bg3)', borderRadius: 12, padding: 3, gap: 2 }}>
-          {[['mcq', '📝 Test'], ['flashcard', '📇 Flashcard']].map(([m, label]) => (
+          {[['mcq', t('review.modeTest')], ['flashcard', t('review.modeFlashcard')]].map(([m, label]) => (
             <button key={m} onClick={() => { setStudyMode(m); setFcFlipped(false); setAnswered(null); }}
               style={{ padding: '7px 14px', borderRadius: 9, border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 12, fontWeight: 700,
                 background: studyMode === m ? 'var(--bg)' : 'transparent',
@@ -487,7 +492,7 @@ const SmartReviewPage = () => {
         </div>
         <button onClick={startSubjectFlashcards}
           style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 12px', borderRadius: 12, border: '1.5px solid var(--border)', background: 'var(--bg2)', color: 'var(--text2)', cursor: 'pointer', fontFamily: 'inherit', fontSize: 12, fontWeight: 700 }}>
-          <Zap size={14} color="var(--accent)" /> Fan savollari
+          <Zap size={14} color="var(--accent)" /> {t('review.subjectQuestionsBtn')}
         </button>
       </div>
 
@@ -524,7 +529,7 @@ const SmartReviewPage = () => {
                 <span style={{ fontSize: 12, fontWeight: 700, color: '#16A34A' }}>✅ {sessionStats.correct}</span>
                 <span style={{ fontSize: 12, fontWeight: 700, color: '#DC2626' }}>❌ {sessionStats.wrong}</span>
                 <button onClick={() => setShowObjectionModal(true)} style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '5px 10px', borderRadius: 8, border: '1px solid var(--border)', background: 'var(--bg3)', fontSize: 11, fontWeight: 600, color: 'var(--text3)', cursor: 'pointer', fontFamily: 'inherit' }}>
-                  <MessageCircle size={13} /> E'tiroz
+                  <MessageCircle size={13} /> {t('test.objection')}
                 </button>
               </div>
             </div>
@@ -569,7 +574,7 @@ const SmartReviewPage = () => {
             {answered !== null && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} style={{ marginTop: 16 }}>
                 <div style={{ padding: '14px 16px', borderRadius: 12, fontSize: 14, lineHeight: 1.6, background: isCorrect ? 'rgba(22, 163, 74, 0.12)' : 'rgba(220, 38, 38, 0.12)', border: `1px solid ${isCorrect ? 'rgba(22, 163, 74, 0.25)' : 'rgba(220, 38, 38, 0.25)'}`, color: 'var(--text2)', marginBottom: 14 }}>
-                  <strong style={{ color: isCorrect ? '#22c55e' : '#ef4444' }}>{isCorrect ? '✅ To\'g\'ri!' : '❌ Noto\'g\'ri!'}</strong>{' '}{card.explanation || ''}
+                  <strong style={{ color: isCorrect ? '#22c55e' : '#ef4444' }}>{isCorrect ? t('review.correctMark') : t('review.wrongMark')}</strong>{' '}{card.explanation || ''}
                 </div>
 
                 {(() => {
@@ -579,7 +584,7 @@ const SmartReviewPage = () => {
                       {state.customMnemonics?.[qHash] && (
                         <div style={{ borderColor: 'var(--amber)', background: 'rgba(245, 158, 11, 0.05)', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 10, padding: 12, borderRadius: 12, border: '1px solid var(--border)' }}>
                           <div style={{ fontSize: 18 }}>🧠</div>
-                          <div style={{ fontSize: 13, color: 'var(--text2)' }}><strong>Sizning eslatmangiz:</strong><br />{state.customMnemonics[qHash]}</div>
+                          <div style={{ fontSize: 13, color: 'var(--text2)' }}><strong>{t('review.yourNote')}</strong><br />{state.customMnemonics[qHash]}</div>
                         </div>
                       )}
                       <div className="custom-mnemonic-box" style={{
@@ -591,10 +596,10 @@ const SmartReviewPage = () => {
                         transition: 'all 0.3s ease'
                       }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', fontSize: '13px', fontWeight: '700', color: 'var(--text2)' }}>
-                          <span>🧠 Shaxsiy mnemonika (Eslatma)</span>
+                          <span>{t('review.personalMnemonic')}</span>
                         </div>
                         <textarea
-                          placeholder="Ushbu savol uchun shaxsiy eslatma yoki assotsiatsiya yozing..."
+                          placeholder={t('review.notePlaceholder')}
                           value={state.customMnemonics?.[qHash] || ''}
                           onChange={(e) => saveCustomMnemonic(qHash, e.target.value)}
                           style={{
@@ -616,7 +621,7 @@ const SmartReviewPage = () => {
                         />
                         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
                           <span style={{ fontSize: '11px', color: 'var(--text3)' }}>
-                            {(state.customMnemonics?.[qHash] || '').trim() ? '✓ Saqlandi' : "Yozilgan eslatma keyingi safar ham ko'rsatiladi"}
+                            {(state.customMnemonics?.[qHash] || '').trim() ? t('test.noteSaved') : t('review.noteHint')}
                           </span>
                         </div>
                       </div>
@@ -625,7 +630,7 @@ const SmartReviewPage = () => {
                 })()}
 
                 <button onClick={nextCard} style={{ width: '100%', padding: '14px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                  {currentIdx + 1 >= cards.length ? 'Yakunlash' : 'Keyingi savol'} <ChevronRight size={18} />
+                  {currentIdx + 1 >= cards.length ? t('review.finish') : t('review.nextCard')} <ChevronRight size={18} />
                 </button>
               </motion.div>
             )}

@@ -1,4 +1,5 @@
 import React, { useContext, useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
@@ -31,12 +32,14 @@ const roundRect = (ctx, x, y, w, h, r) => {
 };
 
 const AchievementsPage = () => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { user } = useAuth();
   const { state, updateState } = useContext(AppContext);
   const [activeTab, setActiveTab] = useState('achievements');
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
+  const [topicTotals, setTopicTotals] = useState({});
   const canvasRef = useRef(null);
   const { isTrialExpired } = useTrialExpiry();
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
@@ -58,17 +61,17 @@ const AchievementsPage = () => {
   const totalQuestionsTime = state.timeStats?.totalQuestions || 0;
   const avgTime = totalQuestionsTime > 0 ? Math.round(totalTime / totalQuestionsTime) : 0;
 
-  let speedLabel = "Ma'lumot yo'q";
+  let speedLabel = t('achievements.speedNoData');
   let speedColor = "var(--text3)";
   if (avgTime > 0) {
     if (avgTime < 45) {
-      speedLabel = "Tezkor (Ajoyib!)";
+      speedLabel = t('achievements.speedFast');
       speedColor = "#10B981"; // Green
     } else if (avgTime <= 90) {
-      speedLabel = "O'rtacha";
+      speedLabel = t('achievements.speedMedium');
       speedColor = "#F59E0B"; // Amber
     } else {
-      speedLabel = "Sekin";
+      speedLabel = t('achievements.speedSlow');
       speedColor = "#EF4444"; // Red
     }
   }
@@ -78,30 +81,30 @@ const AchievementsPage = () => {
   const acc = total > 0 ? Math.round((correct / total) * 100) : 0;
 
   // Predict Category (Toifa)
-  let toifa = "Mutaxassis";
+  let toifa = t('achievements.toifaSpecialist');
   let toifaColor = "#3b82f6"; // Blue
   let nextToifaText = "";
   if (total >= 10) {
     if (acc >= 80) {
-      toifa = "Oliy Toifa";
+      toifa = t('achievements.toifaHigh');
       toifaColor = "#F59E0B"; // Gold
-      nextToifaText = "Tayyorlik darajasi ajoyib!";
+      nextToifaText = t('achievements.toifaHighNext');
     } else if (acc >= 70) {
-      toifa = "1-Toifa";
+      toifa = t('achievements.toifa1');
       toifaColor = "#10B981"; // Green
-      nextToifaText = `Oliy toifa uchun yana ${80 - acc}% kerak`;
+      nextToifaText = t('achievements.toifaNeedHigh', { pct: 80 - acc });
     } else if (acc >= 60) {
-      toifa = "2-Toifa";
+      toifa = t('achievements.toifa2');
       toifaColor = "#8B5CF6"; // Purple
-      nextToifaText = `1-toifa uchun yana ${70 - acc}% kerak`;
+      nextToifaText = t('achievements.toifaNeed1', { pct: 70 - acc });
     } else {
-      toifa = "Mutaxassis";
+      toifa = t('achievements.toifaSpecialist');
       toifaColor = "#EF4444"; // Red
-      nextToifaText = `2-toifa uchun yana ${60 - acc}% kerak`;
+      nextToifaText = t('achievements.toifaNeed2', { pct: 60 - acc });
     }
   } else {
-    toifa = "Hisoblanmoqda...";
-    nextToifaText = "Kamida 10 ta savol yeching";
+    toifa = t('achievements.toifaCalculating');
+    nextToifaText = t('achievements.toifaNeedMin');
   }
 
   const subjectName = SUBJECTS.find(s => s.id === state.activeCategory)?.name || 'CHQBT';
@@ -122,7 +125,7 @@ const AchievementsPage = () => {
     const goldLight = '#E9CB6B';
     const ink = '#2A2118';
     const muted = '#9A8B6E';
-    const accent = '#2BA3DC';
+    const accent = '#1180B8'; // quyuqroq — krem passport fonida o'qilishi yaxshiroq (a11y)
 
     // Fon — iliq krem gradient
     const bg = ctx.createLinearGradient(0, 0, W, H);
@@ -175,17 +178,17 @@ const AchievementsPage = () => {
     // Kicker
     ctx.font = '700 13px sans-serif';
     ctx.fillStyle = accent;
-    ctx.fillText('I Q R O   P L A T F O R M A S I', W / 2, 68);
+    ctx.fillText(t('achievements.passportKicker'), W / 2, 68);
 
     // Sarlavha
     ctx.font = '800 40px sans-serif';
     ctx.fillStyle = ink;
-    ctx.fillText('TAYYORGARLIK PASPORTI', W / 2, 110);
+    ctx.fillText(t('achievements.passportTitle'), W / 2, 110);
 
     // Subtitr
     ctx.font = '500 14px sans-serif';
     ctx.fillStyle = muted;
-    ctx.fillText('Attestatsiyaga tayyorgarlik va toifa prognozi', W / 2, 134);
+    ctx.fillText(t('achievements.passportSubtitle'), W / 2, 134);
 
     // Oltin ajratuvchi + markazda romb
     const dividerY = 156;
@@ -198,9 +201,9 @@ const AchievementsPage = () => {
     // Taqdim etiladi
     ctx.font = '500 13px sans-serif';
     ctx.fillStyle = muted;
-    ctx.fillText('Ushbu pasport quyidagi foydalanuvchiga taqdim etiladi', W / 2, 192);
+    ctx.fillText(t('achievements.passportPresented'), W / 2, 192);
 
-    const userName = user?.displayName || state.displayName || 'Hurmatli Foydalanuvchi';
+    const userName = user?.displayName || state.displayName || t('achievements.passportUserFallback');
     ctx.font = '800 30px sans-serif';
     ctx.fillStyle = ink;
     ctx.fillText(userName, W / 2, 228);
@@ -213,7 +216,7 @@ const AchievementsPage = () => {
 
     ctx.font = '600 15px sans-serif';
     ctx.fillStyle = accent;
-    ctx.fillText(`«${subjectName}» yo'nalishi bo'yicha`, W / 2, 266);
+    ctx.fillText(t('achievements.passportDirection', { subject: subjectName }), W / 2, 266);
 
     // Markaziy medal (toifa) yoki "tayyorlanmoqda" holati
     const medY = 352;
@@ -240,22 +243,22 @@ const AchievementsPage = () => {
       }
       ctx.font = '700 12px sans-serif';
       ctx.fillStyle = muted;
-      ctx.fillText('T O I F A   P R O G N O Z I', W / 2, medY + r + 24);
+      ctx.fillText(t('achievements.passportToifaLabel'), W / 2, medY + r + 24);
     } else {
       ctx.font = '800 22px sans-serif';
       ctx.fillStyle = muted;
-      ctx.fillText('Toifa prognozi tayyorlanmoqda', W / 2, medY);
+      ctx.fillText(t('achievements.passportPrepTitle'), W / 2, medY);
       ctx.font = '500 14px sans-serif';
       ctx.fillStyle = muted;
-      ctx.fillText(`Prognoz uchun kamida 10 ta savol yeching (${total}/10)`, W / 2, medY + 28);
+      ctx.fillText(t('achievements.passportPrepHint', { total }), W / 2, medY + 28);
     }
 
     // Statistika lentasi
     const bandY = 466;
     const cells = [
-      { v: `${acc}%`, l: "O'zlashtirish", c: acc >= 70 ? '#4E8A4B' : acc >= 50 ? gold : '#C64B3C' },
-      { v: `${total}`, l: 'Yechilgan savol', c: ink },
-      { v: avgTime > 0 ? `${avgTime}s` : '—', l: "O'rtacha vaqt", c: accent },
+      { v: `${acc}%`, l: t('achievements.passportCellAccuracy'), c: acc >= 70 ? '#4E8A4B' : acc >= 50 ? gold : '#C64B3C' },
+      { v: `${total}`, l: t('achievements.passportCellSolved'), c: ink },
+      { v: avgTime > 0 ? `${avgTime}s` : '—', l: t('achievements.passportCellAvgTime'), c: accent },
     ];
     const colW = (W - 120) / 3;
     cells.forEach((s, i) => {
@@ -277,7 +280,7 @@ const AchievementsPage = () => {
     // Footer
     let dateStr;
     try {
-      dateStr = new Date().toLocaleDateString('uz-UZ', { year: 'numeric', month: 'long', day: 'numeric' });
+      dateStr = new Date().toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : 'uz-UZ', { year: 'numeric', month: 'long', day: 'numeric' });
     } catch { dateStr = new Date().toLocaleDateString(); }
     ctx.font = '500 12px sans-serif';
     ctx.fillStyle = muted;
@@ -295,6 +298,22 @@ const AchievementsPage = () => {
     }
   }, [showShareModal]);
 
+  // Mavzu bo'yicha umumiy savol sonini lokal keshdan yuklash (qamrov bari uchun) —
+  // avval topicTotal=answered qilingani sababli qamrov doimo 100% ko'rinardi.
+  useEffect(() => {
+    (async () => {
+      try {
+        const localforage = (await import('localforage')).default;
+        const rawList = await localforage.getItem(`bundle_v2_${cat}`);
+        if (Array.isArray(rawList)) {
+          const totals = {};
+          rawList.forEach(q => { if (q.category === cat) totals[q.topicId] = (totals[q.topicId] || 0) + 1; });
+          setTopicTotals(totals);
+        }
+      } catch { /* kesh yo'q — qamrov ko'rsatilmaydi */ }
+    })();
+  }, [cat]);
+
   const downloadPassport = () => {
     if (!canvasRef.current) return;
     const link = document.createElement('a');
@@ -304,9 +323,7 @@ const AchievementsPage = () => {
   };
 
   const shareToTelegram = () => {
-    const pct = acc;
-    const toifaText = toifa;
-    const text = `🏆 IQRO platformasida attestatsiyaga tayyorgarlik darajasi pasportimni oldim!\n\n📚 Fan: ${subjectName}\n🎯 Aniqlik ko'rsatkichi: ${pct}%\n⏱ O'rtacha tezlik: ${avgTime}s (${speedLabel})\n⚡ Toifa prognozi: ${toifaText}\n\nSiz ham o'z toifangizni sinab ko'ring: iqro-t41p.vercel.app`;
+    const text = t('achievements.shareTgText', { subject: subjectName, acc, avg: avgTime, speed: speedLabel, toifa });
     window.open(`https://t.me/share/url?url=https://iqro-t41p.vercel.app&text=${encodeURIComponent(text)}`, '_blank');
   };
 
@@ -336,8 +353,8 @@ const AchievementsPage = () => {
       style={{ maxWidth: 700, margin: '0 auto', padding: '20px 16px 32px' }}
     >
       {/* Header */}
-      <h1 style={{ fontSize: 26, fontWeight: 900, color: 'var(--text)', margin: '0 0 4px' }}>🏅 Yutuqlar</h1>
-      <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>Statistika va natijalaringiz</p>
+      <h1 style={{ fontSize: 26, fontWeight: 900, color: 'var(--text)', margin: '0 0 4px' }}>{t('achievements.title')}</h1>
+      <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>{t('achievements.subtitle')}</p>
 
       {/* Level Header */}
       <div style={{
@@ -363,13 +380,13 @@ const AchievementsPage = () => {
                 {levelInfo.name} <span style={{ color: levelInfo.color, fontWeight: 800 }}>Lv.{levelInfo.level}</span>
               </div>
               <div style={{ fontSize: 13, color: 'var(--text3)', marginTop: 2, fontWeight: 500 }}>
-                ⚡ {totalXP} XP · {earnedBadges.length}/{BADGES.length} badge
+                {t('achievements.xpBadgeLine', { xp: totalXP, earned: earnedBadges.length, total: BADGES.length })}
               </div>
             </div>
           </div>
           <div style={{ flex: 1, minWidth: 180 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, fontSize: 12, color: 'var(--text3)', fontWeight: 500 }}>
-              <span>Keyingi daraja</span>
+              <span>{t('achievements.nextLevel')}</span>
               <span style={{ fontWeight: 700, color: levelInfo.color }}>{totalXP}/{nextLevelXP} XP</span>
             </div>
             <div style={{ height: 8, background: 'var(--bg3)', borderRadius: 4, overflow: 'hidden', border: '1px solid var(--glass-border)' }}>
@@ -388,17 +405,17 @@ const AchievementsPage = () => {
       }}>
         <div style={{ flex: 1, textAlign: 'center' }}>
           <div style={{ fontSize: 22, fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{globalAnswered}</div>
-          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text3)', marginTop: 6 }}>Savollar</div>
+          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text3)', marginTop: 6 }}>{t('achievements.questions')}</div>
         </div>
         <div style={{ width: 1, background: 'var(--border)' }} />
         <div style={{ flex: 1, textAlign: 'center' }}>
           <div style={{ fontSize: 22, fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{globalAcc}%</div>
-          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text3)', marginTop: 6 }}>Aniqlik</div>
+          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text3)', marginTop: 6 }}>{t('achievements.accuracy')}</div>
         </div>
         <div style={{ width: 1, background: 'var(--border)' }} />
         <div style={{ flex: 1, textAlign: 'center', cursor: 'pointer' }} onClick={() => navigate('/leaderboard')}>
-          <div style={{ fontSize: 22, fontWeight: 900, color: 'var(--accent)', lineHeight: 1 }}>{state.totalScore || 0}</div>
-          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text3)', marginTop: 6 }}>Balllar</div>
+          <div style={{ fontSize: 22, fontWeight: 900, color: 'var(--accent2)', lineHeight: 1 }}>{state.totalScore || 0}</div>
+          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text3)', marginTop: 6 }}>{t('achievements.points')}</div>
         </div>
       </div>
 
@@ -423,8 +440,8 @@ const AchievementsPage = () => {
             <Award size={22} color="#fff" />
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--text)', letterSpacing: '-0.3px' }}>Tayyorgarlik Pasporti</div>
-            <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 500 }}>Attestatsiya &amp; toifa prognozi</div>
+            <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--text)', letterSpacing: '-0.3px' }}>{t('achievements.widgetTitle')}</div>
+            <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 500 }}>{t('achievements.widgetSubtitle')}</div>
           </div>
         </div>
 
@@ -444,7 +461,7 @@ const AchievementsPage = () => {
               <Award size={24} color={toifaColor} />
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Toifa prognozi</div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{t('achievements.toifaForecast')}</div>
               <div style={{ fontSize: 20, fontWeight: 900, color: toifaColor, lineHeight: 1.1 }}>{toifa}</div>
               <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2 }}>{nextToifaText}</div>
             </div>
@@ -455,22 +472,22 @@ const AchievementsPage = () => {
             background: 'var(--bg3)', border: '1px solid var(--border)',
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-              <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)' }}>Toifa prognozi tayyorlanmoqda</span>
-              <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--accent)' }}>{total}/10</span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)' }}>{t('achievements.passportPrepTitle')}</span>
+              <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--accent2)' }}>{total}/10</span>
             </div>
             <div style={{ height: 8, borderRadius: 4, background: 'var(--bg)', overflow: 'hidden', border: '1px solid var(--border)' }}>
               <div style={{ width: `${Math.min(100, total * 10)}%`, height: '100%', borderRadius: 4, background: 'linear-gradient(90deg, var(--accent), #8B5CF6)', transition: 'width 0.5s ease' }} />
             </div>
-            <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 6 }}>Prognoz uchun yana {Math.max(0, 10 - total)} ta savol yeching</div>
+            <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 6 }}>{t('achievements.prepRemaining', { count: Math.max(0, 10 - total) })}</div>
           </div>
         )}
 
         {/* 3 ko'rsatkich */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 12 }}>
           {[
-            { label: 'Aniqlik', value: hasEnoughData ? `${acc}%` : '—', color: !hasEnoughData ? 'var(--text3)' : acc >= 70 ? 'var(--green)' : acc >= 50 ? 'var(--amber)' : 'var(--red)' },
-            { label: 'Tezlik', value: avgTime > 0 ? `${avgTime}s` : '—', color: avgTime > 0 ? speedColor : 'var(--text3)' },
-            { label: 'Savollar', value: total, color: 'var(--text)' },
+            { label: t('achievements.accuracy'), value: hasEnoughData ? `${acc}%` : '—', color: !hasEnoughData ? 'var(--text3)' : acc >= 70 ? 'var(--green)' : acc >= 50 ? 'var(--amber)' : 'var(--red)' },
+            { label: t('achievements.metricSpeed'), value: avgTime > 0 ? `${avgTime}s` : '—', color: avgTime > 0 ? speedColor : 'var(--text3)' },
+            { label: t('achievements.questions'), value: total, color: 'var(--text)' },
           ].map((m) => (
             <div key={m.label} style={{ background: 'var(--bg3)', padding: '12px 8px', borderRadius: 14, border: '1px solid var(--border)', textAlign: 'center' }}>
               <div style={{ fontSize: 18, fontWeight: 900, color: m.color, lineHeight: 1 }}>{m.value}</div>
@@ -490,7 +507,7 @@ const AchievementsPage = () => {
             boxShadow: '0 6px 16px rgba(43,163,220,0.25)',
           }}
         >
-          📋 Pasportni ko'rish va ulashish
+          {t('achievements.viewSharePassport')}
         </button>
 
         {/* Toifa ROI — bashorat qilingan toifa asosida personalizatsiya */}
@@ -498,7 +515,7 @@ const AchievementsPage = () => {
           <div style={{ marginTop: 12 }}>
             <RoiBlock
               price={DEFAULT_YEARLY_PRICE}
-              planName="Yillik"
+              planName={t('achievements.yearly')}
               targetToifa={toifa === 'Oliy Toifa' ? 'oliy' : toifa === '1-Toifa' ? '1-toifa' : '2-toifa'}
               variant="theme"
             />
@@ -514,12 +531,12 @@ const AchievementsPage = () => {
           </div>
           <div style={{ flex: 1 }}>
             <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>
-              {acc >= 70 ? "Ajoyib natija! " : acc >= 50 ? "Yaxshi yo'ldasiz! " : "Davom eting! "}
-              {acc}% aniqlik
+              {acc >= 70 ? t('achievements.weekExcellent') : acc >= 50 ? t('achievements.weekGood') : t('achievements.weekKeep')}
+              {t('achievements.weekAccuracy', { acc })}
             </div>
             <div style={{ fontSize: 12, color: 'var(--text3)' }}>
-              {catStats.totalAnswered} ta savoldan {catStats.totalCorrect} tasiga to'g'ri javob berdingiz
-              {catStats.maxStreak > 3 && ` • Eng uzun seriya: ${catStats.maxStreak} ta ketma-ket`}
+              {t('achievements.weekSummary', { answered: catStats.totalAnswered, correct: catStats.totalCorrect })}
+              {catStats.maxStreak > 3 && t('achievements.weekStreak', { count: catStats.maxStreak })}
             </div>
           </div>
           {acc >= 70 && <div style={{ fontSize: 28 }}>🎯</div>}
@@ -549,10 +566,10 @@ const AchievementsPage = () => {
                 {dg.completed ? <Award size={24} color="var(--green)" /> : <Target size={24} color="var(--accent)" />}
                 <div>
                   <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--text)', letterSpacing: '-0.3px' }}>
-                    {dg.completed ? 'Bugungi maqsad bajarildi!' : 'Bugungi maqsad'}
+                    {dg.completed ? t('achievements.goalDoneTitle') : t('achievements.goalTitle')}
                   </div>
                   <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 500 }}>
-                    {dg.answered} / {dg.target} savol yechildi
+                    {t('achievements.goalProgress', { answered: dg.answered, target: dg.target })}
                   </div>
                 </div>
               </div>
@@ -564,7 +581,7 @@ const AchievementsPage = () => {
                   fontWeight: 800, fontSize: 12,
                   boxShadow: '0 4px 10px rgba(244, 81, 30, 0.2)'
                 }}>
-                  <Flame size={14} /> {ds} kun streak
+                  <Flame size={14} /> {t('achievements.goalStreak', { count: ds })}
                 </div>
               )}
             </div>
@@ -578,8 +595,8 @@ const AchievementsPage = () => {
               }} />
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6, fontSize: 11, color: 'var(--text3)', fontWeight: 500 }}>
-              <span>{pct}% bajarildi</span>
-              <span>{Math.max(0, dg.target - dg.answered)} ta qoldi</span>
+              <span>{t('achievements.goalPctDone', { pct })}</span>
+              <span>{t('achievements.goalRemaining', { count: Math.max(0, dg.target - dg.answered) })}</span>
             </div>
           </div>
         );
@@ -607,16 +624,16 @@ const AchievementsPage = () => {
 
         return (
           <div style={{ marginBottom: 24 }}>
-            <div className="section-header" style={{ color: 'var(--red)', display: 'flex', alignItems: 'center', gap: '8px' }}><AlertTriangle size={20} /> Zaif Nuqtalaringiz</div>
+            <div className="section-header" style={{ color: 'var(--red)', display: 'flex', alignItems: 'center', gap: '8px' }}><AlertTriangle size={20} /> {t('achievements.weakTitle')}</div>
             <div className="glass-panel" style={{ padding: '20px', border: '1px solid rgba(239,68,68,0.15)', background: 'rgba(239,68,68,0.03)' }}>
               <div style={{ fontSize: 12, color: 'var(--text3)', marginBottom: 16 }}>
-                Eng ko'p xato qilingan mavzular — bu yerga ko'proq e'tibor bering!
+                {t('achievements.weakHint')}
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                {weakTopics.map((t) => (
+                {weakTopics.map((tp) => (
                   <div
-                    key={t.id}
-                    onClick={() => handleNavigation(t.id, 'exam')}
+                    key={tp.id}
+                    onClick={() => handleNavigation(tp.id, 'exam')}
                     style={{
                       display: 'flex', alignItems: 'center', gap: 14, padding: '12px 14px',
                       background: 'var(--bg2)', borderRadius: 12, cursor: 'pointer',
@@ -626,42 +643,42 @@ const AchievementsPage = () => {
                   >
                     <div style={{
                       width: 36, height: 36, borderRadius: 10, flexShrink: 0,
-                      background: t.acc < 40 ? 'var(--red-bg)' : t.acc < 70 ? 'var(--amber-bg)' : 'var(--green-bg)',
+                      background: tp.acc < 40 ? 'var(--red-bg)' : tp.acc < 70 ? 'var(--amber-bg)' : 'var(--green-bg)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18
                     }}>
-                      {t.icon}
+                      {tp.icon}
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        {t.name}
+                        {tp.name}
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         <div style={{ flex: 1, height: 6, borderRadius: 3, background: 'var(--bg3)', overflow: 'hidden' }}>
                           <div style={{
-                            width: `${t.acc}%`, height: '100%', borderRadius: 3,
-                            background: t.acc < 40 ? 'var(--red)' : t.acc < 70 ? 'var(--amber)' : 'var(--green)',
+                            width: `${tp.acc}%`, height: '100%', borderRadius: 3,
+                            background: tp.acc < 40 ? 'var(--red)' : tp.acc < 70 ? 'var(--amber)' : 'var(--green)',
                             transition: 'width 0.5s ease'
                           }} />
                         </div>
-                        <span style={{ fontSize: 12, fontWeight: 700, color: t.acc < 40 ? 'var(--red)' : t.acc < 70 ? 'var(--amber)' : 'var(--green)', flexShrink: 0 }}>
-                          {t.acc}%
+                        <span style={{ fontSize: 12, fontWeight: 700, color: tp.acc < 40 ? 'var(--red)' : tp.acc < 70 ? 'var(--amber)' : 'var(--green)', flexShrink: 0 }}>
+                          {tp.acc}%
                         </span>
                       </div>
                     </div>
                     <div style={{ textAlign: 'right', flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-                      <div style={{ fontSize: 16, fontWeight: 800, color: 'var(--red)' }}>{t.wrong}</div>
-                      <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 600 }}>XATO</div>
+                      <div style={{ fontSize: 16, fontWeight: 800, color: 'var(--red)' }}>{tp.wrong}</div>
+                      <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 600 }}>{t('achievements.weakError')}</div>
                     </div>
-                    <button 
+                    <button
                       className="btn btn-sm"
-                      onClick={(e) => { e.stopPropagation(); handleNavigation(t.id, 'exam'); }}
-                      style={{ 
-                        background: 'var(--red)', color: 'white', border: 'none', 
+                      onClick={(e) => { e.stopPropagation(); handleNavigation(tp.id, 'exam'); }}
+                      style={{
+                        background: 'var(--red)', color: 'white', border: 'none',
                         fontSize: 11, padding: '6px 10px', borderRadius: 8, flexShrink: 0,
                         fontWeight: 700
                       }}
                     >
-                      Mashq qil
+                      {t('achievements.weakPractice')}
                     </button>
                   </div>
                 ))}
@@ -673,7 +690,7 @@ const AchievementsPage = () => {
 
       {/* Tabs */}
       <div style={{ display: 'flex', background: 'var(--bg3)', borderRadius: 12, padding: 3, gap: 3, marginBottom: 24 }}>
-        {[{ id: 'achievements', label: '🏅 Yutuqlar' }, { id: 'statistics', label: '📊 Statistika' }].map(tab => (
+        {[{ id: 'achievements', label: t('achievements.tabAchievements') }, { id: 'statistics', label: t('achievements.tabStats') }].map(tab => (
           <button
             key={tab.id}
             style={{
@@ -700,7 +717,7 @@ const AchievementsPage = () => {
             exit={{ opacity: 0, x: 20 }}
           >
             <div className="section-header" style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Trophy size={20} style={{ color: 'var(--amber)' }} /> Kolleksiya
+              <Trophy size={20} style={{ color: 'var(--amber)' }} /> {t('achievements.collection')}
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: 12 }}>
               {BADGES.map((badge) => {
@@ -745,25 +762,25 @@ const AchievementsPage = () => {
             {/* Radial grafiklar */}
             <div className="glass-panel" style={{ padding: '28px', marginBottom: '24px' }}>
               <div style={{ fontWeight: '700', fontSize: '16px', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <TrendingUp size={18} style={{ color: 'var(--blue)' }} /> Umumiy Ko'rsatkichlar
+                <TrendingUp size={18} style={{ color: 'var(--blue)' }} /> {t('achievements.overallMetrics')}
               </div>
               <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', justifyContent: 'space-around', alignItems: 'center' }}>
-                <RadialChart pct={acc} size={130} stroke={12} color={acc >= 70 ? 'var(--green)' : acc >= 50 ? 'var(--amber)' : 'var(--red)'} label="Aniqlik" />
+                <RadialChart pct={acc} size={130} stroke={12} color={acc >= 70 ? 'var(--green)' : acc >= 50 ? 'var(--amber)' : 'var(--red)'} label={t('achievements.accuracy')} />
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', flex: 1, minWidth: '160px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '14px', color: 'var(--text2)', fontWeight: '500' }}>✅ To'g'ri</span>
+                    <span style={{ fontSize: '14px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.correctLabel')}</span>
                     <span style={{ fontSize: '20px', fontWeight: '800', color: 'var(--green)' }}>{correct}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '14px', color: 'var(--text2)', fontWeight: '500' }}>❌ Xato</span>
+                    <span style={{ fontSize: '14px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.wrongLabel')}</span>
                     <span style={{ fontSize: '20px', fontWeight: '800', color: 'var(--red)' }}>{wrong}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '14px', color: 'var(--text2)', fontWeight: '500' }}>📝 Jami</span>
+                    <span style={{ fontSize: '14px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.totalLabel')}</span>
                     <span style={{ fontSize: '20px', fontWeight: '800', color: 'var(--text)' }}>{total}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '14px', color: 'var(--text2)', fontWeight: '500' }}>⚡ Max Streak</span>
+                    <span style={{ fontSize: '14px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.maxStreak')}</span>
                     <span style={{ fontSize: '20px', fontWeight: '800', color: 'var(--amber)' }}>{catStats.maxStreak}</span>
                   </div>
                 </div>
@@ -772,12 +789,12 @@ const AchievementsPage = () => {
 
             {/* Bo'limlar bo'yicha grafik */}
             <div className="section-header" style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Target size={20} style={{ color: 'var(--blue)' }} /> Bo'limlar bo'yicha natijalar
+              <Target size={20} style={{ color: 'var(--blue)' }} /> {t('achievements.byTopic')}
             </div>
             <div className="glass-panel" style={{ padding: '20px', marginBottom: '24px' }}>
               {filteredTopics.map((t, idx) => {
                 const s = state.topicStats[t.id];
-                const topicTotal = s?.answered || 0;
+                const topicTotal = topicTotals[t.id] || 0;
                 const answered = s?.answered || 0;
                 const topicCorrect = s?.correct || 0;
                 const pct = answered > 0 ? Math.round((topicCorrect / answered) * 100) : 0;
@@ -825,17 +842,17 @@ const AchievementsPage = () => {
 
             {/* Oxirgi Xatolar */}
             <div className="section-header" style={{ marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <AlertCircle size={18} style={{ color: 'var(--red)' }} /> Oxirgi Xatolar (Top 5)
+              <AlertCircle size={18} style={{ color: 'var(--red)' }} /> {t('achievements.recentMistakes')}
             </div>
             <div style={{ marginBottom: '24px' }}>
               {catStats.mistakes.length === 0 ? (
-                <div style={{ color: 'var(--text3)', fontSize: '13px', padding: '12px 0' }}>Hali xato yo'q — ajoyib!</div>
+                <div style={{ color: 'var(--text3)', fontSize: '13px', padding: '12px 0' }}>{t('achievements.noMistakes')}</div>
               ) : (
                 [...catStats.mistakes].reverse().slice(0, 5).map((m, i) => (
                   <div key={i} className="glass-panel" style={{ borderLeft: '3px solid var(--red)', padding: '12px 16px', marginBottom: '8px' }}>
                     <div style={{ fontSize: '12px', color: 'var(--red)', fontFamily: "'IBM Plex Mono', monospace", marginBottom: '4px' }}>{m.topic}</div>
                     <div style={{ fontSize: '13px', color: 'var(--text)', lineHeight: '1.5' }}>{m.question}</div>
-                    <div style={{ fontSize: '12px', color: 'var(--green)', marginTop: '6px' }}>✓ To'g'ri: {m.correct}</div>
+                    <div style={{ fontSize: '12px', color: 'var(--green)', marginTop: '6px' }}>{t('achievements.mistakeCorrect', { correct: m.correct })}</div>
                   </div>
                 ))
               )}
@@ -886,7 +903,7 @@ const AchievementsPage = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-                <h3 style={{ margin: 0, color: 'var(--text)', fontSize: '18px', fontWeight: 800 }}>Tayyorgarlik Pasporti</h3>
+                <h3 style={{ margin: 0, color: 'var(--text)', fontSize: '18px', fontWeight: 800 }}>{t('achievements.widgetTitle')}</h3>
                 <button 
                   onClick={() => setShowShareModal(false)}
                   style={{
@@ -936,7 +953,7 @@ const AchievementsPage = () => {
                     fontFamily: 'inherit'
                   }}
                 >
-                  📥 Yuklab Olish (PNG)
+                  {t('achievements.downloadPng')}
                 </button>
                 <button 
                   onClick={shareToTelegram}
@@ -951,11 +968,11 @@ const AchievementsPage = () => {
                     fontFamily: 'inherit'
                   }}
                 >
-                  ✈️ Telegramda Ulashish
+                  {t('achievements.shareTelegram')}
                 </button>
               </div>
               <div style={{ marginTop: 12, fontSize: 11, color: 'var(--text3)' }}>
-                Pasport rasmini yuklab olib, Telegram guruhlarida do'stlaringizga yuborishingiz mumkin!
+                {t('achievements.shareModalHint')}
               </div>
             </motion.div>
           </motion.div>

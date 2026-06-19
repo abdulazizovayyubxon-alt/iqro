@@ -1,0 +1,291 @@
+Siz O'zbekiston pedagog kadrlar attestatsiyasi (malaka sinovi) bo'yicha yuqori malakali ekspert va professional test-maker (savol tuzuvchi)siz. Sizning savollaringiz RASMIY DEMOTEST NAMUNALARI bilan bir xil chuqurlik va sifatda bo'lishi shart.
+
+FAN: Harbiy ta'lim (CHQBT)
+BAHOLASH BLOKI: Mutaxassislik fani
+MAVZU: 1.1. Harbiy xizmat asoslari - “Umumharbiy majburiyat va harbiy xizmat 8 ta
+VAZIFA: shu mavzu bo'yicha 12 ta YANGI, noyob, namuna darajasidagi test savoli tuz.
+Eslatma: attestatsiya 3 blokdan iborat — Mutaxassislik fani, Kasb standartlari, Pedagogik
+mahorat. Savollar AYNAN yuqorida ko'rsatilgan blok va mavzu doirasida bo'lsin.
+
+═══════════════════════════════════════════════════════════════════
+A) IKKI MUSTAQIL O'Q — bularni ARALASHTIRMA (eng muhim tushuncha):
+═══════════════════════════════════════════════════════════════════
+
+  ◆ 1-O'Q — KOGNITIV DARAJA ("difficulty" + "bloom_level"). Spetsifikatsiya nisbati:
+     • Y1 = Bilish     → ~15% (atama, ta'rif, qoida, fakt — ESLAB QOLISH)
+     • Y2 = Qo'llash   → ~70% (bilimni NOTANISH/real vaziyatda QO'LLASH) ← USTUVOR, ko'pchilik shu
+     • Y3 = Mulohaza   → ~15% (tahlil, taqqoslash, sabab-oqibat, xulosa, qaror)
+     "difficulty" va "bloom_level" DOIM mos: Y1↔Bilish, Y2↔Qo'llash, Y3↔Mulohaza.
+     ⚠️ Eng katta ulush Qo'llash (Y2) — quruq yodlash savoli OZ bo'lsin, vaziyatli savol KO'P.
+
+  ◆ 2-O'Q — FORMAT ("qtype"). Bu kognitiv darajaga BOG'LIQ EMAS — har format ixtiyoriy darajada bo'lishi mumkin (single ham Bilish, ham Qo'llash, ham Mulohaza bo'la oladi).
+     Har 10 savoldan taxminan: 7-8 ta "single", 1-2 ta "matching", 0-1 ta "sequence".
+     • "single"   — 4 variant, bittasi to'g'ri (rost/yolg'on mulohaza tanlash ham shu formatda).
+     • "matching" — savol o'zagiga 3-4 raqamli (1,2,3,4) va 3-4 harfli (A,B,C,D) ro'yxat;
+                    "options" A-D = to'liq mosliklar ("1-C, 2-A, 3-D, 4-B"). To'g'risi "A" da.
+     • "sequence" — savol o'zagiga 3-4 raqamli element (voqea/qadam/sana);
+                    "options" A-D = turli tartiblar ("3, 1, 4, 2"). To'g'ri tartib "A" da.
+     MUHIM: "matching"/"sequence" ni FAQAT manbada aniq RO'YXAT yoki TABIIY TARTIB bo'lsa tuz
+     (nizom turlari, bosqichlar, sanalar, ketma-ketlik). Aks holda elementlarni o'ylab topma — "single" yoz.
+     matching/sequence da raqamli elementlar savol MATNI ichida (\n bilan yangi qatorda), variantlar esa faqat mapping/tartib satrlari.
+
+═══════════════════════════════════════════════════════════════════
+B) NAMUNA DARAJASI — CHUQURLIK (savollar AYNAN demotest darajasida bo'lsin):
+═══════════════════════════════════════════════════════════════════
+  • Asosan VAZIYATLI (keys) savol: real dars/kasbiy/hayotiy holat tasvirlanadi, so'ng savol beriladi.
+    ("O'qituvchi ... qildi. Bu qaysi metod?" / "Pedagog ... holatga duch keldi. Eng maqbul harakat?")
+  • Ko'p bosqichli mulohaza yoki hisob talab qilsin — javobni bir qarashda topib bo'lmasin.
+  • Fan tabiatiga mos savol turidan foydalan (manba shuni qo'llab-quvvatlasa):
+      – Informatika: kod (Python/JS/Scratch) izidan natija topish, sanoq sistemasi, IP/maska hisobi, rostlik jadvali, HTML/CSS natijasi, blok-sxema tahlili.
+      – Biologiya / Geografiya / Matematika: hisob-masala (Mendel chatishtirish, soat mintaqasi, daryo suv sarfi, formula, foiz), grafik/jadval/sxema talqini.
+      – Tarix: xronologik ketma-ketlik (sequence), sabab-oqibat, tarixiy shaxs/sana, voqealar bog'liqligi.
+      – Ona tili / Boshlang'ich (o'qish): savol o'zagiga QISQA matn/gap kiritib, lingvistik yoki mazmuniy tahlil so'ra (matnni savol ichida ber).
+      – Tasviriy san'at: asar/janr/uslub xususiyatini SO'Z bilan tavsiflab so'ra (rasmsiz tushunarli bo'lsin).
+  • Har savol o'z-o'zicha YETARLI bo'lsin: kerakli ma'lumot (jadval, kod, qiymat, matn) savol matnida bo'lsin.
+    Tashqi rasm/xarita/diagrammaga MUHTOJ savol YOZMA — ko'rinmagan tasvirsiz javob berib bo'lmaydigan savol ishlatma. ("requires_image" doim false; barcha kerakli ma'lumotni matnga joyla.)
+
+═══════════════════════════════════════════════════════════════════
+C) QAT'IY QOIDALAR:
+═══════════════════════════════════════════════════════════════════
+
+1) MANBADAN CHIQMA (ENG MUHIM) — FAQAT yuqoridagi MANBA/SPEC MATNida AYNAN yozilgan ma'lumotdan
+   foydalan. Sana, raqam, yil, ism, modda, tasnif kabi aniq faktni MANBADA bo'lmasa — savolda
+   ISHLATMA va O'YLAB TOPMA. Umumiy bilimingdan "ehtimol shunaqa" deb fakt qo'shma. Ishonching komil
+   bo'lmasa — o'sha savolni yozma. Lekin SAVOL MANBADAN KO'CHIRILMASIN: manbadagi tushuncha/tamoyilni
+   YANGI, notanish vaziyatga ko'chir (namuna shunaqa). "source_construct" da qaysi konstruktga asoslanganini ko'rsat.
+
+2) SIFAT > SON — haqiqatan noyob, namuna sifatidagi savollar soni 12 dan kam chiqsa, KAMROQ
+   qaytar. Son uchun fakt to'qima, mavzuni suyultirma yoki mavjud savolni takrorlama.
+
+3) TO'G'RI JAVOB doimo "A" da yozilsin — TIZIM variantlarni AVTOMATIK aralashtiradi, shuning uchun
+   yakuniy testda to'g'ri javob A/B/C/D bo'ylab teng taqsimlanadi. (Sen faqat A ga yoz.)
+   ⚠️ Shu sababli savol matni va explanationda variant HARFINI ("A", "B variant", "A to'g'ri") MUTLAQO
+   yozma — aralashtirgandan keyin harflar o'zgaradi. B/C/D'ni A bilan BIR XIL sifat va uzunlikda yoz —
+   go'yo har biri to'g'ri bo'lishi mumkindek. Har chalg'ituvchi alohida, TIPIK konseptual xatoga asoslansin.
+   Ikki variant bir ma'noni bermasin. Kulgili yoki aniq noto'g'ri variant berma.
+
+4) VARIANTLAR — UZUNLIK VA ISHORALAR (tizim cue-leak'ni avtomatik rad etadi):
+   • Har variant lo'nda: ko'pi bilan 12 so'z, bitta qatorga sig'sin.
+   • To'g'ri javob (A) eng uzun/eng batafsil bo'lib qolmasin — eng uzun variant eng qisqasidan ~1.5 baravardan oshmasin.
+   • Qavs/tire/izoh yoki "chunki, ya'ni, natijasida, sababli" kabi bog'lovchini FAQAT to'g'ri javobga qo'yma —
+     agar ishlatilsa, chalg'ituvchilarda ham bo'lsin (aks holda to'g'ri javob ko'rinib qoladi).
+   • "har doim/hech qachon/faqat" kabi mutlaq so'zlar faqat chalg'ituvchilarda to'planmasin.
+   • "Yuqoridagilarning barchasi / hech biri" variantini ISHLATMA.
+   • Barcha variant savol o'zagiga grammatik jihatdan bir xil mos tushsin.
+
+5) explanation — lo'nda (ko'pi bilan 4 jumla): to'g'ri javobni MAZMUNAN (fakt/tushuncha bilan) asosla va
+   tipik xato variantlar nega noto'g'ri ekanini MAZMUN bilan ko'rsat. Variant HARFINI (A/B/C/D) YOZMA —
+   faqat tushuncha/fakt NOMI bilan tushuntir. "Manbada/Matnda/Darslikda ... aytilgan" kabi boshlama yozma —
+   o'quvchi manbani ko'rmaydi; faktning O'ZINI tushuntir.
+
+6) mnemonic — 1 qator O'ZBEK tilida: quruq takror emas, qisqa so'z o'yini / qofiya / assotsiatsiya.
+
+7) TAKRORLAMA — quyidagi "mavjud savollar" bilan bir xil yoki perefraz (ozgina o'zgartirilgan) savol
+   YOZMA. Har savol yangi mikro-tushuncha yoki yangi RAKURS (boshqa vaziyat, boshqa qadam, boshqa
+   misol)ni sinasin — shunda 12 ta savol ham bir-birini takrorlamaydi.
+
+8) TIL VA IMLO — barcha QIYMATLAR (savol, variantlar, explanation, mnemonic) o'zbek LOTIN alifbosida
+   (JSON kalitlari ingliz tilida qoladi).
+   • FAQAT lotin: krill harflarini (ҳ, қ, ў, ғ, ш, ч, ц, я, ю va h.k.) ARALASHTIRMA.
+   • Imlo to'g'ri: o', g', sh, ch, ng aniq; tutuq belgisi joyida (ma'no, ta'lim, san'at, ta'sir).
+   • o' va g' uchun oddiy apostrof (') ishlat. Imloviy/terish xatosi yoki yarim-krill so'z BO'LMASIN.
+
+HAR BIR SAVOL AYNAN SHU JSON SXEMADA:
+{
+  "subject": "", "topic": "", "subtopic": "",
+  "difficulty": "Y1|Y2|Y3", "bloom_level": "Bilish|Qo'llash|Mulohaza",
+  "qtype": "single|matching|sequence",
+  "source_construct": "", "requires_image": false,
+  "question": "",
+  "options": { "A": "", "B": "", "C": "", "D": "" },
+  "answer": "A",
+  "explanation": "", "mnemonic": ""
+}
+
+NAMUNALAR (faqat FORMAT uchun — mazmunan ko'chirma):
+
+A) "single" + Qo'llash (vaziyatli — eng ko'p shu turdan bo'lsin):
+{
+  "subject": "Pedagogika", "topic": "Ta'lim metodlari", "subtopic": "Faol ta'lim metodlari",
+  "difficulty": "Y2", "bloom_level": "Qo'llash", "qtype": "single",
+  "source_construct": "Spetsifikatsiya: zamonaviy ta'lim texnologiyalarini darsda qo'llash",
+  "requires_image": false,
+  "question": "O'qituvchi sinfni kichik guruhlarga bo'lib, har biriga muammoli vaziyat berib, yechimni muhokama qildirmoqda. Bu qaysi metod?",
+  "options": { "A": "Hamkorlikda o'rganish", "B": "Frontal so'rov", "C": "Tushuntirish metodi", "D": "Mustaqil o'qish" },
+  "answer": "A",
+  "explanation": "Kichik guruhlarda muammoni birga hal qilish — hamkorlikda o'rganishning asosiy belgisi. Frontal so'rov butun sinfga qaratiladi, guruh ishi emas. Tushuntirish o'qituvchi markazli va passiv. Mustaqil o'qish yakka tartibda, muhokamasiz.",
+  "mnemonic": "Guruh + muammo = Hamkorlik."
+}
+
+B) "matching" — moslashtirish (raqamli elementlar savol matnida, variantlar = mosliklar):
+{
+  "subject": "Pedagogika", "topic": "Baholash", "subtopic": "Baholash turlari",
+  "difficulty": "Y2", "bloom_level": "Qo'llash", "qtype": "matching",
+  "source_construct": "Spetsifikatsiya: baholash turlarini farqlash va qo'llash",
+  "requires_image": false,
+  "question": "Baholash turlarini ularning maqsadi bilan moslashtiring:\n1. Diagnostik\n2. Joriy\n3. Yakuniy\nA. Dars davomida o'zlashtirishni kuzatish\nB. Boshlang'ich bilim darajasini aniqlash\nC. Bo'lim/chorak yakunida natijani o'lchash",
+  "options": { "A": "1-B, 2-A, 3-C", "B": "1-A, 2-B, 3-C", "C": "1-C, 2-A, 3-B", "D": "1-B, 2-C, 3-A" },
+  "answer": "A",
+  "explanation": "Diagnostik boshlang'ich darajani aniqlaydi, joriy dars davomida kuzatadi, yakuniy esa yakunda o'lchaydi. Shu sabab 1-B, 2-A, 3-C mosligi to'g'ri keladi.",
+  "mnemonic": "Diagnoz boshda, Joriy yo'lda, Yakun oxirida."
+}
+
+C) "sequence" — ketma-ketlik (raqamli qadamlar savol matnida, variantlar = tartiblar):
+{
+  "subject": "Pedagogika", "topic": "Dars loyihalash", "subtopic": "Dars bosqichlari",
+  "difficulty": "Y3", "bloom_level": "Mulohaza", "qtype": "sequence",
+  "source_construct": "Spetsifikatsiya: o'quv jarayonini bosqichma-bosqich loyihalash",
+  "requires_image": false,
+  "question": "Zamonaviy darsning bosqichlarini to'g'ri ketma-ketlikda joylashtiring:\n1. Yangi mavzuni mustahkamlash\n2. Tashkiliy qism va motivatsiya\n3. Yangi bilim berish\n4. Baholash va uyga vazifa",
+  "options": { "A": "2, 3, 1, 4", "B": "2, 1, 3, 4", "C": "3, 2, 1, 4", "D": "2, 3, 4, 1" },
+  "answer": "A",
+  "explanation": "Dars tashkiliy qism va motivatsiyadan boshlanadi, so'ng yangi bilim beriladi, mustahkamlanadi, nihoyat baholash va uyga vazifa bilan yakunlanadi. Shu sabab 2,3,1,4 tartibi to'g'ri.",
+  "mnemonic": "Tashkil → Bilim → Mustahkam → Baho."
+}
+
+=== SPETSIFIKATSIYA / MANBA (faqat shu doirada) ===
+1.1. Harbiy xizmat asoslari - “Umumharbiy majburiyat va harbiy xizmat 8 ta
+
+toʻgʻrisida”gi qonun va “Oʻzbekiston
+
+Respublikasi fuqarolarining harbiy xizmatni
+
+oʻtash tartibi toʻgʻrisida” gi qonunlarning
+
+mazmun-mohiyatini bilish, berilgan vaziyatda
+
+qoʻllash, taqqoslash, tahlil qilish;
+
+- Oʻzbekiston Respublikasi Qurolli kuchlari
+
+tashkil etilishining maqsadi va ahamiyatini
+
+bilish, uning vazifalarini tahlil qilish;
+
+2.Umumharbiy nizomlar (9-16 savollar)
+
+- Oʻzbekiston Respublikasi Qurolli
+
+Kuchlarining Ichki xizmat nizomining mazmun mohiyatini bilish, farqlash hamda hayotiy
+
+vaziyatlarda qoʻllash, ularni tahlil qilish; - Oʻzbekiston Respublikasi Qurolli kuchlarining Intizomiy nizomining mazmun-
+
+mohiyatini bilish, farqlash, taqqoslash hamda hayotiy vaziyatlarda qoʻllash, ularni tahlil qilish;
+
+--- DARSLIKDAN (faktlar shu yerdan: sana/son/nom/atama AYNAN shu matndan olinsin, o'ylab topma) ---
+z haqida ma’lumot tayyorlang.
+
+***
+
+***
+
+19
+
+II BOB.
+HARBIY XIZMAT ASOSLARI
+
+4 UMUMIY HARBIY MAJBURIYAT VA VATANGA QASAMYOD
+
+Dars davomida
+▸“Umumiy harbiy majburiyat va harbiy xizmat toʻgʻrisida”gi Qonun; ▸umumiy harbiy majburiyat va Vatanga qasamyod tushunchasi bilan tanishasiz.
+? O‘ylab ko‘ring
+Harbiy xizmat majburiymi yoki ixtiyoriy? Nima uchun harbiy xizmatchi xalqi va Prezidentiga qasamyod qiladi?
+
+1
+
+“Umumiy harbiy majburiyat va harbiy xizmat toʻgʻrisida”gi Qonun
+
+“Umumiy harbiy majburiyat va harbiy xizmat toʻgʻrisida”gi Qonun 2002-yil 12-dekabrda Oliy Majlis tomonidan qabul qilingan.
+Qonunning maqsadi Oʻzbekiston Respublikasi fuqarolarining umumiy harbiy majburiyatini bajarish va harbiy xizmatni oʻtash bilan bogʻliq
+20 munosabatlarni tartibga solishdan iborat.
+
+“Umumiy harbiy
+majburiyat va harbiy
+xizmat toʻgʻrisida”gi Qonun 9 boʻlim,
+51 moddadan iborat:
+
+1. Umumiy qoidalar.
+2. Fuqarolarni harbiy xizmatga tayyorlash.
+3. Fuqarolarni chaqiruv uchastkalarida qayd etish, harbiy xizmatga chaqirilish va kirish.
+4. Harbiy xizmatni oʻtash. 5. Rezervdagi xizmat.
+6. Muqobil xizmat. 7. Harbiy roʻyxat. 8. Safarbarlik boʻyicha chaqirilish toʻgʻrisida va
+harbiy xizmatdan boʻshatish. 9. Yakunlovchi qoidalar.
+
+2 Umumiy harbiy majburiyat va Vatanga qa
+[...]
+stkalarida qayd etish, harbiy xizmatga chaqirilish va kirish.
+4. Harbiy xizmatni oʻtash. 5. Rezervdagi xizmat.
+6. Muqobil xizmat. 7. Harbiy roʻyxat. 8. Safarbarlik boʻyicha chaqirilish toʻgʻrisida va
+harbiy xizmatdan boʻshatish. 9. Yakunlovchi qoidalar.
+
+2 Umumiy harbiy majburiyat va Vatanga qasamyod
+Umumiy harbiy majburiyat – fuqarolarning Oʻzbekiston Respublikasini himoya qilishga majburiy harbiy tayyorgarligidan iborat bo‘lib, Qurolli Kuchlar safini toʻldirish va ularning rezervini tayyorlashni taʼminlash maqsadida joriy etiladi.
+Umumiy harbiy majburiyat fuqarolarni harbiy xizmatga tayyorlashni, harbiy xizmatga chaqirishni (kirishni), chaqiruv yoki kontrakt boʻyicha harbiy xizmat oʻtashni, rezervdagi xizmat va muqobil xizmatni, harbiy roʻyxatdan oʻtish qoidalariga rioya etishni, favqulodda vaziyatlarda yoki Oʻzbekiston Respublikasiga qarshi harbiy tajovuz boʻlgan taqdirda aholini muhofaza etish chora-tadbirlarini qamrab oladi.
+
+21
+
+Harbiy xizmat – Oʻzbekiston Respublikasi fuqarolarining Qurolli Kuchlar safida umumiy harbiy majburiyatini bajarish borasidagi davlat xizmatining alohida turi.
+Chaqiriluvchilar – harbiy xizmatga chaqiriladigan va tuman (shahar) chaqiruv uchastkalarida qayd etilgan shaxslar.
+Harbiy xizmatchi – haqiqiy harbiy xizmatdagi shaxs. Harbiy xiz
+
+
+=== RASMIY IMTIHON NAMUNA SAVOLLARI (shu USLUB va qiyinlikda yoz; nusxa ko'chirma) ===
+Namuna 1: Qurolli mojaro va harbiy mojaro o'rtasidagi asosiy farq qaysi javobda to'g'ri ko'rsatilgan?
+   A) Qurolli mojaro siyosiy sabablar bilan, harbiy mojaro esa faqat iqtisodiy sabablar bilan yuzaga keladi.
+   B) Harbiy mojaro faqat qisqa muddatli bo'ladi, qurolli mojaro esa uzoq davom etadi.
+   C) Qurolli mojaro faqat davlatlar o'rtasida bo'ladi, harbiy mojaro esa faqat ichki qarama-qarshiliklarda yuz beradi.
+   D) Qurolli mojaro urush holati e'lon qilinmagan, miqyosi cheklangan to'qnashuv bo'lsa, harbiy mojaro qurolli kurashning barcha shakllarini, jumladan urushlarni ham qamrab oladi.
+
+Namuna 2: Quyidagilardan qaysi biri jang paytida askarning majburiyatlariga kirmaydi?
+   A) PJM (ZTR) va tank buzilganda, ularni tuzatish chora-tadbirlarini ko'rish
+   B) o'q-dorilar, PJM (ZTR) va tank yonilg'ilari sarfini kuzatib turish, o'z vaqtida komandiriga o'q-dorilar va yonilg'i zaxirasi bo'yicha bildiruv berish
+   C) safdoshining quroli soz holatdaligidan xabardor bo'lish
+   D) vzvodi, jangovar guruhi (tanki) va o'zining jangovar vazifalarini bilish
+
+Namuna 3: Quyidagi qaysi holatda qorovul boshlig'i ogohlantirishsiz qurol qo'llashi mumkin?
+   A) Qo'riqlovda saqlanayotgan harbiy xizmatchi qurol bilan qochayotganda
+   B) Qo'riqlovda saqlanayotgan harbiy xizmatchi tartibsizlik qilganda
+   C) Harbiy xizmatchining buyrug'iga qaramasdan harakatlangan fuqarolarga
+   D) Harbiy xizmatchilar o'rtasida tartibsizlik kelib chiqqanda
+
+Namuna 4: Kimyoviy binar qurol tarkibida komponentlar alohida zaharsiz bo'lsa-da, aralashganda yuqori darajada zaharli moddaga aylanadi. Bu qanday strategik ustunlik beradi?
+   A) Komponentlar alohida bo'lgani uchun qurolni yashirish va saqlash qulay bo'ladi.
+   B) Bunday qurol faqat dushman harbiylariga ta'sir qiladi.
+   C) Bu qurol tashishda xavfsizlikni ta'minlaydi va havoni kam ifloslantiradi.
+   D) Qurolni ishlab chiqish jarayonida olimlar ishtirokining muhimlik darajasini oshiradi.
+
+Namuna 5: Kuyish natijasida bemor terisida pufakchalar hosil bo'lgan holatda, quyidagilardan qaysi biri NOto'g'ri (chora) harakat hisoblanadi?
+   A) Pufakchalarni teshib toza mato bilan yopish
+   B) Zararlangan joyga steril bint qo'yish
+   C) Tez tibbiy yordam chaqirish
+   D) Kuygan joyni steril doka yoki yumshoq, toza mato bilan yopish
+
+=== MAVJUD SAVOLLAR (bularni TAKRORLAMA — yangi mavzu/rakurs top) ===
+1. Yosh askar o'zini qo'shimcha tayyorgarlik kursiga yozdi. Bu harbiy xizmatga qo'shimcha majburiyatni qaysi bandi qamrab o
+2. Quyidagilardan qaysi biri suyak sinishi alomatidir?
+3. O‘qituvchi o‘simlik va hayvon hujayrasi haqida avvalgi bilimlarni eslab, savollar beradi; o‘quvchilar javob berib, yangi
+4. Xaritada 30% qiya tog'ning ko'tarilgan joyi qayerda ko'rsatilgan?
+5. Muammoli ta'lim texnologiyasi asosiy afzalligi qaysi?
+6. Dars oxirida o'qituvchi har bir o'quvchiga 3 ta ochiq savol beradi. Bu baholash usuli qanday nomlanadi?
+7. Qorovullik xizmatining asosiy vazifasi qaysi?
+8. O'qituvchi ota-onalarga dars jadvalini elektron pochta orqali yuboradi. Qaysi etika tamoyili bu xatti-harakatni qo‘llab-
+9. Manguberdi janglarida dushman pozitsiyasini buzish uchun birinchi qadam "to'liq zarba berish" bo'lsa, bu harakat qaysi t
+10. O'zbekiston Respublikasida muqobil (alternativ) xizmat necha oylik muddatni tashkil etadi?
+11. 21-modda). Chaqiriluvchini boqayotgan shaxslar qanday hollarda ota-onaga tenglashtiriladi?
+12. Marsh paytida (kolonnada harakatlanishda) bo'linmalar orasidagi masofa nega doim uzoq bo'lishi talab etiladi?
+13. "Mudofaa to'g'risida"gi Qonun prinsiplari va talablariga muvofiq, O'zbekiston Respublikasi fuqarolarining mudofaa sohasi
+14. Askarning 'Sutkalik Naryadga' tayinlanishi, unga dam olinishi bo'yicha necha soatlik muddatni yopiq va ruhan og'ir xizma
+15. 28-modda) OHTMdan ikkinchi o‘quv yilida chetlashtirilgan kursantlar (intizomsizligi va sog‘lig‘idan tashqari) qanday imk
+16. Postda xizmat o'tayotgan soqchining texnik aloqa vositalari (telefon yoki signalizatsiya liniyasi) to'satdan dushman div
+17. Minomyot nishoni va Atilleriya snaryadining parvoz yoyilarik dushmanga kelishi asosan kim ko'rsatmasiz ostda muayyanlana
+18. SVD miltig'ining o'qdonida (magazinida) nechta patron joylashadi?
+19. AK-47 va AKM avtomatlari o‘rtasidagi farq to‘g‘ri berilgan javobni toping.
+20. Poligonda bir xil quroldan ikki xil nishonga qarata o'q uzilmoqda: birinchi nishon erda yotgan askar shakli (balandligi 
+21. OZM-72 piyodalarga qarshi minasining ichki konstruktiv tuzilishiga ko'ra, u er ostidan havoga sakrab chiqqan soniyada at
+22. Darslik matnidagi qat'iy ma'lumotlarga ko'ra, topografik xaritada relyef gorizontallari bir-biridan o'ta uzoq, keng va s
+23. O'qituvchi o'quvchilarga global zilzilalar tarqalish xaritasi asosida O'rta yer dengizi - Osiyo seysmik kamarining umumi
+24. Jarohatda dorilar (antiseptik) qanday ishlatiladi?
+25. Qaysi ta'lim paradigmalari mavjud?
+
+CHIQISH: FAQAT to'g'ri JSON massiv. Markdown (```), izoh, kirish yoki yakuniy matn YO'Q.
+Qo'shtirnoq (") ishlat, oxirgi vergul (trailing comma) qo'yma. 12 (yoki undan kam) obyekt.

@@ -19,6 +19,7 @@ import {
   URGENCY_DAYS,
   REFERRAL_DISCOUNT,
 } from '../services/referral';
+import { AnalyticsEvents } from '../services/analytics';
 
 // Synchronously capture and save the referral code on script load
 try {
@@ -42,9 +43,28 @@ function computeTrialStatus(data) {
     const exp = new Date(data.premiumExpire);
     if (exp > new Date()) return { status: 'premium', daysLeft: Math.ceil((exp - new Date()) / 86400000), urgencyMs: 0 };
   }
+  // isPremium=true, lekin muddat sanasi yo'q (admin/muddatsiz premium) — doimiy 'premium'.
+  // Aks holda bunday hisob xato ravishda createdAt bo'yicha trial/urgency'ga tushib,
+  // "Premium" nishoni bilan "Sinov tugadi" banneri bir vaqtda ko'rinardi.
+  if (data.isPremium && !data.premiumExpire) {
+    return { status: 'premium', daysLeft: 0, urgencyMs: 0 };
+  }
+
+  // Referral orqali kelgan (B) — bepul oyi tugamagan bo'lsa cheksiz (legacy holat)
+  if (data.referredBy && data.freeMonthExpire) {
+    const freeEnd = new Date(data.freeMonthExpire);
+    if (freeEnd > new Date()) {
+      return { status: 'premium', daysLeft: Math.ceil((freeEnd - new Date()) / 86400000), urgencyMs: 0 };
+    }
+  }
+
+  // createdAt yo'q — eski foydalanuvchi. Unga yangidan trial bermaymiz ('expired').
+  if (!data.createdAt) {
+    return { status: 'expired', daysLeft: 0, urgencyMs: 0 };
+  }
 
   // createdAt asosida hisoblash
-  const createdAt = data.createdAt?.toDate ? data.createdAt.toDate() : new Date(data.createdAt || Date.now());
+  const createdAt = data.createdAt.toDate ? data.createdAt.toDate() : new Date(data.createdAt);
   const now = new Date();
   const daysSinceReg = Math.floor((now - createdAt) / 86400000);
 
@@ -251,6 +271,10 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       let role = 'user';
       let isPremium = false;
+      // isTruePremium — faqat HAQIQIY (to'langan/referral) premium. isPremium
+      // trial/urgency davrida ham true bo'ladi (funksiyalarni ochish uchun),
+      // lekin "Premium" nishonini ko'rsatishda shu xom holatdan foydalanamiz.
+      let isTruePremium = false;
       let avatarId = null;
 
       try {
@@ -277,12 +301,23 @@ export const AuthProvider = ({ children }) => {
                 }
               }
 
+              // Shu nuqtada isPremium = xom (muddati tekshirilgan) Firestore qiymati —
+              // trial users'da u false, faqat to'langan/referral premiumda true.
+              isTruePremium = isPremium;
+
               // ═══ TRIAL STATUS HISOBLASH ═══
               trialInfo = computeTrialStatus({ ...data, isPremium });
 
               // Trial davomida premium funksiyalar ochiq
               if (trialInfo.status === 'trial' || trialInfo.status === 'urgency') {
                 isPremium = true;
+              }
+
+              // Muddat to'liq tugagach referral chegirmasini Firestore'da ham bekor
+              // qilamiz (avval useTrialExpiry hooki qilardi — endi yagona joyda).
+              if (trialInfo.status === 'expired' && data.referralDiscount > 0) {
+                updateDoc(userRef, { referralDiscount: 0, discountExpired: true })
+                  .catch(e => console.warn('Discount expire update xatosi:', e));
               }
             } else {
               await setDoc(userRef, {
@@ -318,6 +353,7 @@ export const AuthProvider = ({ children }) => {
             photoURL: firebaseUser.photoURL,
             avatarId,
             isPremium,
+            isTruePremium,
             role,
             trialStatus: trialInfo.status,
             trialDaysLeft: trialInfo.daysLeft,
@@ -335,6 +371,7 @@ export const AuthProvider = ({ children }) => {
             photoURL: firebaseUser.photoURL,
             avatarId,
             isPremium,
+            isTruePremium,
             role,
             trialStatus: trialInfo.status,
             trialDaysLeft: trialInfo.daysLeft,
@@ -383,6 +420,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const userCred = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(userCred.user, { displayName });
+      AnalyticsEvents.register('email');
       return true;
     } catch (err) {
       if (err.code === 'auth/email-already-in-use') {
@@ -416,6 +454,16 @@ export const AuthProvider = ({ children }) => {
   // ro'yxat oqimi o'zini email-already-in-use orqali tuzatadi.
   const checkUserExists = async (phone) => {
     const cleanPhone = phone.replace(/\D/g, '');
+
+    // DEV: lokal `vite dev`da serverless funksiyalar yo'q → /api/check-user 404 beradi
+    // va zaxira usul (enumeration himoyasi bilan) doim 'yangi' deb qaytaradi. Lokal
+    // sinov uchun deterministik mock: raqamda "77" bo'lsa MAVJUD (login oqimi),
+    // aks holda YANGI (register oqimi). Production'da bu blok umuman ishlamaydi.
+    if (import.meta.env.DEV) {
+      await new Promise(r => setTimeout(r, 600));
+      return cleanPhone.includes('77');
+    }
+
     try {
       const res = await fetch('/api/check-user', {
         method: 'POST',
@@ -515,10 +563,12 @@ export const AuthProvider = ({ children }) => {
           displayName: name,
           photoURL: null,
           isPremium: true,  // Trial davomida premium funksiyalar ochiq
+          isTruePremium: false,  // Yangi foydalanuvchi — hali to'lov yo'q
           trialStatus: 'trial',
           trialDaysLeft: FREE_TRIAL_DAYS,
           _firebaseUser: userCred.user
         });
+        AnalyticsEvents.register('phone');
         return { success: true };
       }
       
@@ -544,6 +594,7 @@ export const AuthProvider = ({ children }) => {
         displayName: currentFbUser.displayName || name || phone,
         photoURL: currentFbUser.photoURL,
         isPremium,
+        isTruePremium: isPremium,  // bu yerda isPremium = xom Firestore qiymati
         _firebaseUser: currentFbUser
       });
       return { success: true };
@@ -672,6 +723,7 @@ export const AuthProvider = ({ children }) => {
         photoURL: updated.photoURL,
         avatarId: updated.avatarId,
         isPremium: updated.isPremium,
+        isTruePremium: updated.isTruePremium,
         role: updated.role,
         trialStatus: updated.trialStatus,
         trialDaysLeft: updated.trialDaysLeft,

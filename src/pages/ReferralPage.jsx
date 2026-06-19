@@ -2,6 +2,8 @@
  * ReferralPage.jsx — Yangi toza minimal dizayn
  */
 import React, { useState, useEffect, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+import i18n from '../i18n';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Copy, Check, Share2, AlertCircle, Ticket, Users } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -17,14 +19,10 @@ import {
   REFERRAL_DISCOUNT,
 } from '../services/referral';
 
-const fmtSum = (n) => n.toLocaleString('uz-UZ') + " so'm";
-
-const HEADLINE = {
-  title: '🎁 Do\'stingga chegirma sovg\'a qil — sen ham yutasan!',
-  sub: `Havolangni ulash — ikkalangizga ${REFERRAL_DISCOUNT}% chegirma`,
-};
+const fmtSum = (n) => n.toLocaleString(i18n.language === 'ru' ? 'ru-RU' : 'uz-UZ') + ' ' + i18n.t('referral.currency');
 
 export default function ReferralPage() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const { showToast } = useContext(ToastContext);
 
@@ -47,14 +45,14 @@ export default function ReferralPage() {
     setPromoLoading(false);
     if (res.ok) {
       if (res.type === 'percent') {
-        setPromoMsg({ type: 'ok', text: `Promo-kod muvaffaqiyatli faollashtirildi! Keyingi to'lovda ${res.value}% chegirma qo'llanadi.` });
+        setPromoMsg({ type: 'ok', text: t('referral.promoPercentOk', { value: res.value }) });
       } else {
-        setPromoMsg({ type: 'ok', text: `Promo-kod faollashtirildi! Premium ${res.value} kunga ochildi — ilovani yangilang.` });
+        setPromoMsg({ type: 'ok', text: t('referral.promoDaysOk', { value: res.value }) });
       }
       setPromoCode('');
-      showToast('Promo-kod faollashtirildi! ✅', 'success');
+      showToast(t('referral.promoActivated'), 'success');
     } else {
-      setPromoMsg({ type: 'err', text: PROMO_ERRORS[res.error] || 'Xatolik yuz berdi' });
+      setPromoMsg({ type: 'err', text: PROMO_ERRORS[res.error] || t('exam.toastError') });
     }
   };
 
@@ -72,7 +70,7 @@ export default function ReferralPage() {
       setRefLink(link);
       setStats(st);
     } catch {
-      showToast("Ma'lumotlarni yuklashda xatolik", 'error');
+      showToast(t('referral.loadError'), 'error');
     }
     setLoading(false);
   };
@@ -81,80 +79,30 @@ export default function ReferralPage() {
     try {
       await navigator.clipboard.writeText(text);
       setCopied(type);
-      showToast(type === 'code' ? "Kod nusxalandi! ✅" : "Havola nusxalandi! ✅", 'success');
+      showToast(type === 'code' ? t('referral.codeCopied') : t('referral.linkCopied'), 'success');
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      showToast("Nusxalab bo'lmadi", 'error');
+      showToast(t('referral.copyFailed'), 'error');
     }
   };
 
   // ── Jalb qiluvchi matnlar — har safar biri tasodifiy tanlanadi ──
   const getShareMessage = (senderName, platform = 'general') => {
-    const name = senderName || 'Do\'stingiz';
+    const name = senderName || t('referral.shareDefaultName');
     const firstName = name.split(' ')[0];
 
-    const messages = [
-      // 1 — Iliq, shaxsiy tavsiya (win-win)
-      `📚 Assalomu alaykum!
-
-Men attestatsiyaga IQRO platformasida tayyorlanyapman — rostdan ham foydali chiqdi. Sizni ham birga o'qishga chaqirmoqchiman 🙌
-
-Bu yerda nima bor:
-✅ Haqiqiy imtihon sharoitida testlar
-✅ Xatolaringizni "aqlli takrorlash" bilan tuzatadi
-✅ Internetsiz (oflayn) ham ishlaydi
-
-Eng yaxshisi — havolam orqali kirsangiz, ${REFERRAL_DISCOUNT}% chegirma SIZGA HAM, MENGA HAM tegadi 🎁
-
-Yuring, birga tayyorlanamiz 👇
-${refLink}`,
-
-      // 2 — Muammo → Yechim uslubi
-      `🎯 Attestatsiyaga tayyorlanayapsizmi?
-
-${firstName} siz bilan IQRO da birga o'qishni taklif qilmoqda!
-
-Ro'yxatdan o'tish: ${refLink}
-
-Bugundan boshlang — imtihon yaqinlashmoqda!`,
-
-      // 3 — Statistika va ishonch uslubi
-`🏆 ${firstName} sizga ${REFERRAL_DISCOUNT}% chegirma sovg'a qilmoqda!
-
-IQRO — attestatsiyaga tayyorlovchi platforma.
-
-Nima uchun IQRO?
-• 7 ta fan bo'yicha 1000+ savollar bazasi
-• Haqiqiy imtihon sharoitida mashq
-• Xatolarni tahlil qilish tizimi
-• O'qituvchilar reytingi
-
-Attestatsiya yaqinlashmoqda — tayyorgarlikni bugundan boshlang.
-
-🔗 ${refLink}`,
-
-      // 4 — Qisqa va ta'sirchan
-`👋 Salom!
-
-Men senga IQRO platformasida ${REFERRAL_DISCOUNT}% CHEGIRMA sovg'a qilyapman 🎁.
-
-IQRO — DTM standartlaridagi testlar orqali attestatsiyaga tayyorgarlik ko'rish platformasi.
-Eng zo'r tarafi — bu yerda xatolarni tahlil qilish va internetsiz ishlash (oflayn) funksiyasi ham bor!
-
-Hoziroq havola orqali o'tib, chegirma bilan ro'yxatdan o't:
-${refLink}
-
-⏳ Taklif muddatli — o'tkazib yuborma!`,
-    ];
-
-    // Tasodifiy matn tanlash
-    const idx = Math.floor(Math.random() * messages.length);
-
     if (platform === 'telegram') {
-      // Telegram uchun qisqaroq variant
-      return `📚 ${firstName} sizga IQRO da ${REFERRAL_DISCOUNT}% CHEGIRMA ulashmoqda!\n\nRo‘yxatdan o‘ting — IKKALANGIZ ${REFERRAL_DISCOUNT}% chegirma olasiz!\n\n✅ Ro‘yxatdan o‘tish: ${refLink}`;
+      return t('referral.shareMsgTelegram', { firstName, percent: REFERRAL_DISCOUNT, link: refLink });
     }
 
+    const messages = [
+      t('referral.shareMsg1', { percent: REFERRAL_DISCOUNT, link: refLink }),
+      t('referral.shareMsg2', { firstName, link: refLink }),
+      t('referral.shareMsg3', { firstName, percent: REFERRAL_DISCOUNT, link: refLink }),
+      t('referral.shareMsg4', { percent: REFERRAL_DISCOUNT, link: refLink }),
+    ];
+
+    const idx = Math.floor(Math.random() * messages.length);
     return messages[idx];
   };
 
@@ -164,7 +112,7 @@ ${refLink}
     if (navigator.share && isMobile) {
       try {
         await navigator.share({
-          title: 'IQRO — Kasbiy Sertifikatlash Platformasi',
+          title: t('referral.shareTitle'),
           text: msg,
           url: refLink
         });
@@ -183,9 +131,9 @@ ${refLink}
   if (!user) {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
-        <div style={{ textAlign: 'center', color: '#94A3B8' }}>
+        <div style={{ textAlign: 'center', color: 'var(--text3)' }}>
           <AlertCircle size={40} style={{ marginBottom: 12 }} />
-          <div>Iltimos, avval tizimga kiring</div>
+          <div>{t('referral.loginFirst')}</div>
         </div>
       </div>
     );
@@ -194,25 +142,54 @@ ${refLink}
   // Dynamic max limit: If user successfully invited 5 (paid), give them +2 slots.
   const dynamicMax = stats?.paid >= 5 ? 7 : 5;
 
+  // ── Motivatsion daraja (tier) — ko'proq taklifga undaydi ──
+  const paidCount = stats?.paid || 0;
+  const tier = paidCount >= 5
+    ? { name: t('referral.tierAmbName'), desc: t('referral.tierAmbDesc'), color: 'var(--amber)', bg: 'var(--amber-bg)', pct: 100 }
+    : paidCount >= 3
+    ? { name: t('referral.tierOnWayName'), desc: t('referral.tierOnWayDesc', { count: 5 - paidCount }), color: 'var(--purple)', bg: 'var(--purple-bg)', pct: (paidCount / 5) * 100 }
+    : paidCount >= 1
+    ? { name: t('referral.tierActiveName'), desc: t('referral.tierActiveDesc', { count: 3 - paidCount }), color: 'var(--green)', bg: 'var(--green-bg)', pct: (paidCount / 5) * 100 }
+    : { name: t('referral.tierStartName'), desc: t('referral.tierStartDesc'), color: 'var(--accent)', bg: 'var(--blue-bg)', pct: 4 };
+
   return (
     <motion.div
       initial={{ opacity: 0 }} animate={{ opacity: 1 }}
       style={{ maxWidth: 600, margin: '0 auto', padding: '20px 16px 100px' }}
     >
       <h1 style={{ fontSize: 24, fontWeight: 900, color: 'var(--text)', margin: '0 0 6px', lineHeight: 1.2 }}>
-        {HEADLINE.title}
+        {t('referral.headlineTitle')}
       </h1>
       <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 22, lineHeight: 1.5 }}>
-        {HEADLINE.sub}
+        {t('referral.headlineSub', { percent: REFERRAL_DISCOUNT })}
       </p>
 
       {loading ? (
-        <div style={{ textAlign: 'center', padding: 60, color: '#94A3B8' }}>
+        <div style={{ textAlign: 'center', padding: 60, color: 'var(--text3)' }}>
           <div style={{ fontSize: 36, marginBottom: 12 }}>⏳</div>
-          <div>Yuklanmoqda...</div>
+          <div>{t('common.loading')}</div>
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+
+          {/* ── Motivatsion daraja (tier) ── */}
+          <div style={{ background: tier.bg, border: `1.5px solid ${tier.color}`, borderRadius: 16, padding: '14px 16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+              <span style={{ fontSize: 15, fontWeight: 800, color: tier.color }}>{tier.name}</span>
+              <span style={{ fontSize: 12, fontWeight: 700, color: tier.color, background: 'var(--bg2)', padding: '3px 10px', borderRadius: 20, whiteSpace: 'nowrap' }}>
+                {paidCount}/5
+              </span>
+            </div>
+            <div style={{ fontSize: 12.5, color: 'var(--text2)', lineHeight: 1.45, marginBottom: 10 }}>{tier.desc}</div>
+            <div style={{ height: 6, borderRadius: 3, background: 'var(--bg3)', overflow: 'hidden' }}>
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${Math.min(100, tier.pct)}%` }}
+                transition={{ duration: 0.9, ease: 'easeOut' }}
+                style={{ height: '100%', borderRadius: 3, background: tier.color }}
+              />
+            </div>
+          </div>
 
           {/* ── Bonus & Mukofotlar (birlashtirilgan) ── */}
           <div style={{ background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 18, overflow: 'hidden' }}>
@@ -220,10 +197,10 @@ ${refLink}
             <div style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent2))', padding: '20px 18px', color: '#fff' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
                 <div style={{ minWidth: 0 }}>
-                  <div style={{ fontSize: 12.5, fontWeight: 700, color: 'rgba(255,255,255,0.85)', letterSpacing: 0.3 }}>YIG'ILGAN BONUS</div>
+                  <div style={{ fontSize: 12.5, fontWeight: 700, color: 'rgba(255,255,255,0.85)', letterSpacing: 0.3 }}>{t('referral.collectedBonus')}</div>
                   <div style={{ fontSize: 34, fontWeight: 900, margin: '2px 0', lineHeight: 1.05 }}>{fmtSum(stats?.totalBonus || 0)}</div>
                   <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.78)' }}>
-                    Har to'lagan do'st uchun +{fmtSum(REFERRAL_BONUS)} — to'lovda ayiriladi
+                    {t('referral.perPaidFriend', { amount: fmtSum(REFERRAL_BONUS) })}
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.2)', padding: '7px 13px', borderRadius: 20, fontWeight: 800, fontSize: 14, flexShrink: 0, whiteSpace: 'nowrap' }}>
@@ -241,8 +218,8 @@ ${refLink}
                 />
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 7, fontSize: 11, color: 'rgba(255,255,255,0.8)', fontWeight: 600 }}>
-                <span>{stats?.paid || 0} ta to'ladi</span>
-                <span>Maqsad: {dynamicMax} ta = {fmtSum(REFERRAL_BONUS * dynamicMax)}</span>
+                <span>{t('referral.paidCountLine', { count: stats?.paid || 0 })}</span>
+                <span>{t('referral.goalLine', { count: dynamicMax, amount: fmtSum(REFERRAL_BONUS * dynamicMax) })}</span>
               </div>
             </div>
 
@@ -272,7 +249,7 @@ ${refLink}
                         {isPending ? <span style={{ fontSize: 22 }}>⏳</span> : <GiftBox size={27} />}
                       </motion.div>
                       <div style={{ fontSize: 9.5, fontWeight: 800, color: isPaid ? 'var(--green)' : isPending ? 'var(--amber)' : 'var(--text3)', whiteSpace: 'nowrap' }}>
-                        {isPaid ? 'Olindi' : isPending ? 'Kutish' : '+15k'}
+                        {isPaid ? t('referral.rewardGot') : isPending ? t('referral.rewardWaiting') : '+15k'}
                       </div>
                     </motion.div>
                   );
@@ -280,7 +257,7 @@ ${refLink}
               </div>
               {!stats?.canInviteMore && (
                 <div style={{ marginTop: 12, background: 'var(--green-bg)', border: '1px solid var(--green)', borderRadius: 10, padding: '10px 14px', fontSize: 13, color: 'var(--green)', display: 'flex', alignItems: 'center', gap: 8 }}>
-                  🏆 Maksimal {MAX_REFERRALS} ta taklif limitiga yetdingiz!
+                  {t('referral.maxReached', { count: MAX_REFERRALS })}
                 </div>
               )}
             </div>
@@ -288,25 +265,25 @@ ${refLink}
 
           {/* ── Ulashish (soddalashtirilgan) ── */}
           <div style={s.card}>
-            <div style={s.label}>Sizning havolangiz</div>
+            <div style={s.label}>{t('referral.yourLink')}</div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'var(--bg3)', border: '1.5px solid var(--border)', borderRadius: 14, padding: '10px 14px', marginBottom: 12 }}>
               <span style={{ fontSize: 12, color: 'var(--text2)', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 {refLink}
               </span>
               <motion.button whileTap={{ scale: 0.95 }} style={s.copyBtn} onClick={() => copyToClipboard(refLink, 'link')}>
                 {copied === 'link' ? <Check size={14} /> : <Copy size={14} />}
-                {copied === 'link' ? 'Nusxalandi' : 'Nusxa'}
+                {copied === 'link' ? t('referral.copied') : t('referral.copy')}
               </motion.button>
             </div>
 
             <div style={{ display: 'flex', gap: 10 }}>
               <motion.button whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.98 }} onClick={shareReferral} style={{ ...s.primaryBtn, flex: 1 }}>
-                <Share2 size={17} /> Do'stlarni taklif qilish
+                <Share2 size={17} /> {t('referral.inviteFriends')}
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}
                 onClick={shareViaTelegram}
-                title="Telegram orqali ulashish"
+                title={t('referral.shareViaTelegram')}
                 style={{ ...s.outlineBtn, width: 54, flexShrink: 0, padding: 0, borderColor: 'var(--accent)', color: '#0088cc' }}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -320,8 +297,8 @@ ${refLink}
           <div style={s.card}>
             <div style={{ display: 'flex', alignItems: 'flex-start' }}>
               {[
-                { icon: '🔗', t: 'Havola yubor' },
-                { icon: '🤝', t: "Do'sting qo'shilsin" },
+                { icon: '🔗', t: t('referral.howStep1') },
+                { icon: '🤝', t: t('referral.howStep2') },
                 { icon: '💰', t: `+${fmtSum(REFERRAL_BONUS)}` },
               ].map((st, i) => (
                 <React.Fragment key={i}>
@@ -338,7 +315,7 @@ ${refLink}
           {/* Referrallar ro'yxati */}
           {stats?.referrals?.length > 0 && (
             <div style={s.card}>
-              <div style={s.label}>Taklif qilganlarim ({stats.referrals.length}/{MAX_REFERRALS})</div>
+              <div style={s.label}>{t('referral.myInvites', { count: stats.referrals.length, max: MAX_REFERRALS })}</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {stats.referrals.map((r) => (
                   <div key={r.id} style={{ display: 'flex', alignItems: 'center', gap: 11, padding: '8px 12px', background: 'var(--bg3)', borderRadius: 12, border: '1px solid var(--border)' }}>
@@ -346,14 +323,14 @@ ${refLink}
                       {r.referredName?.[0]?.toUpperCase() || '?'}
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r.referredName || "Noma'lum"}</div>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r.referredName || t('referral.unknownName')}</div>
                       <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 2, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '2px 8px' }}>
-                        <span>{new Date(r.createdAt).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'short' })}</span>
+                        <span>{new Date(r.createdAt).toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : 'uz-UZ', { day: 'numeric', month: 'short' })}</span>
                         {(() => {
                           if (r.freeExpire) {
                             return (
                               <span style={{ color: 'var(--text2)', fontWeight: 500 }}>
-                                🎁 Chegirma: 50% faol
+                                {t('referral.discountActive')}
                               </span>
                             );
                           }
@@ -364,24 +341,24 @@ ${refLink}
                           if (diffDays < 7) {
                             return (
                               <span style={{ color: 'var(--accent)', fontWeight: 600 }}>
-                                🎁 Trial: {7 - diffDays} kun qoldi
+                                {t('referral.trialDaysLeft', { count: 7 - diffDays })}
                               </span>
                             );
                           } else if (diffDays < 10) {
                             return (
                               <span style={{ color: '#F59E0B', fontWeight: 600 }}>
-                                ⏳ Chegirma: {10 - diffDays} kun qoldi
+                                {t('referral.discountDaysLeft', { count: 10 - diffDays })}
                               </span>
                             );
                           } else {
-                            return <span style={{ color: 'var(--text3)' }}>❌ Muddati tugagan</span>;
+                            return <span style={{ color: 'var(--text3)' }}>{t('referral.expired')}</span>;
                           }
                         })()}
                       </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 3, flexShrink: 0 }}>
                       <span style={{ fontSize: 11, fontWeight: 700, padding: '2px 10px', borderRadius: 20, background: r.status === 'paid' ? 'var(--green-bg)' : 'var(--amber-bg)', color: r.status === 'paid' ? 'var(--green)' : 'var(--amber)' }}>
-                        {r.status === 'paid' ? "✓ To'ladi" : '⏳ Kutilmoqda'}
+                        {r.status === 'paid' ? t('referral.statusPaid') : t('referral.statusPending')}
                       </span>
                       {r.status === 'paid' && <span style={{ fontSize: 11, color: 'var(--green)', fontWeight: 700 }}>+{fmtSum(REFERRAL_BONUS)}</span>}
                     </div>
@@ -395,10 +372,10 @@ ${refLink}
           <div style={s.card}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
               <Ticket size={18} color="var(--accent)" />
-              <div style={{ fontSize: 15, fontWeight: 800, color: 'var(--text)' }}>Promo-kodingiz bormi?</div>
+              <div style={{ fontSize: 15, fontWeight: 800, color: 'var(--text)' }}>{t('referral.promoTitle')}</div>
             </div>
             <div style={{ fontSize: 12.5, color: 'var(--text3)', marginBottom: 14, lineHeight: 1.45 }}>
-              Aksiya kodini kiriting — chegirma yoki bonusingizni darhol oling 🎉
+              {t('referral.promoSubtitle')}
             </div>
 
             <div style={{ display: 'flex', gap: 8 }}>
@@ -406,7 +383,7 @@ ${refLink}
                 value={promoCode}
                 onChange={e => { setPromoCode(e.target.value.toUpperCase()); setPromoMsg(null); }}
                 onKeyDown={e => e.key === 'Enter' && handleRedeemPromo()}
-                placeholder="Promo-kodni kiriting"
+                placeholder={t('referral.promoPlaceholder')}
                 maxLength={32}
                 style={{
                   flex: 1, padding: '12px 14px', borderRadius: 12, fontSize: 14,
@@ -427,7 +404,7 @@ ${refLink}
                   cursor: promoLoading ? 'wait' : (!promoCode.trim() ? 'not-allowed' : 'pointer'),
                 }}
               >
-                {promoLoading ? '...' : 'Faollashtirish'}
+                {promoLoading ? '...' : t('referral.promoActivate')}
               </motion.button>
             </div>
 

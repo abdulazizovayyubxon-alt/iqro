@@ -5,10 +5,12 @@
  */
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { Bell, CheckCircle2, AlertCircle, Info, Trash2 } from 'lucide-react';
 import { useNotifications } from '../hooks/useNotifications';
 
 const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', buttonStyle = {}, dropdownStyle = {} }) => {
+  const { t } = useTranslation();
   const { notifications, unreadCount, markAllRead, markOneRead, clearAll } = useNotifications();
   const [showMenu, setShowMenu] = useState(false);
   const wrapRef = useRef(null);
@@ -37,7 +39,7 @@ const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', 
         className={buttonClassName}
         whileTap={{ scale: 0.95 }}
         onClick={() => setShowMenu(!showMenu)}
-        title="Bildirishnomalar"
+        title={t('notifications.title')}
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0, position: 'relative', ...buttonStyle }}
       >
         <Bell size={iconSize} />
@@ -57,10 +59,10 @@ const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', 
             transition={{ duration: 0.15 }}
           >
             <div className="user-dropdown-header">
-              <div className="user-dropdown-header-title">Bildirishnomalar</div>
+              <div className="user-dropdown-header-title">{t('notifications.title')}</div>
               {unreadCount > 0 && (
                 <button className="notif-clear-all-btn" onClick={handleMarkAll}>
-                  Barchasini o'qildi qilish
+                  {t('notifications.markAllRead')}
                 </button>
               )}
             </div>
@@ -70,7 +72,7 @@ const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', 
             <div className="notif-list">
               {notifications.length === 0 ? (
                 <div className="notif-empty">
-                  Bildirishnomalar yo'q
+                  {t('notifications.empty')}
                 </div>
               ) : (
                 notifications.map((n) => (
@@ -109,7 +111,7 @@ const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', 
                   style={{ justifyContent: 'center', width: '100%', padding: '12px', color: 'var(--red)', fontSize: '13px' }}
                   onClick={handleClearAll}
                 >
-                  <Trash2 size={16} style={{ marginRight: '8px' }} /> Barcha bildirishnomalarni o'chirish
+                  <Trash2 size={16} style={{ marginRight: '8px' }} /> {t('notifications.clearAll')}
                 </button>
               </>
             )}

@@ -9,6 +9,7 @@
  */
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { WifiOff, RefreshCw } from 'lucide-react';
 
 // ── USLUBLAR ──────────────────────────────────────────────────────────────────
@@ -132,6 +133,7 @@ const CSS = `
 // ── ASOSIY KOMPONENT ──────────────────────────────────────────────────────────
 
 export default function OfflineIndicator() {
+  const { t } = useTranslation();
   const [isOnline,      setIsOnline     ] = useState(navigator.onLine);
   const [swWorker,      setSwWorker     ] = useState(null);
   const [showUpdate,    setShowUpdate   ] = useState(false);
@@ -212,7 +214,7 @@ export default function OfflineIndicator() {
         {showUpdate && (
           <div style={STYLES.update}>
             <span style={{ flex: 1, lineHeight: 1.5 }}>
-              Yangi versiya parvozga tayyor! 🚀 Tizimni 1 soniyada yangilang.
+              {t('offline.updateReady')}
             </span>
 
             {/* Yangilash tugmasi */}
@@ -229,7 +231,7 @@ export default function OfflineIndicator() {
               }}
             >
               <RefreshCw size={12} />
-              Yangilash
+              {t('offline.update')}
             </button>
           </div>
         )}
@@ -238,7 +240,7 @@ export default function OfflineIndicator() {
         {!isOnline && (
           <div style={STYLES.offline}>
             <WifiOff size={15} />
-            <span>Internet yo'q — offline rejim</span>
+            <span>{t('offline.offlineMode')}</span>
             <div style={STYLES.dot} />
           </div>
         )}

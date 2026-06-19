@@ -4,8 +4,9 @@
  * Desktop: markazlashgan karta | Mobil: to'liq ekran
  */
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, CheckCircle } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Search } from 'lucide-react';
 import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
@@ -14,51 +15,67 @@ import { useIsMobile } from '../hooks/useIsMobile';
 const PRIMARY = '#29B6F6';
 
 const GOALS = [
-  { id: 'second_category', badge: '🥈', title: 'Ikkinchi toifa', desc: 'Navbatdagi malaka toifasini olish' },
-  { id: 'first_category',  badge: '🥇', title: 'Birinchi toifa',  desc: 'Malaka toifasini oshirish' },
-  { id: 'highest_category',badge: '🏆', title: 'Oliy toifa',      desc: 'Eng yuqori toifaga erishish' },
-  { id: 'professional',    badge: '🎯', title: 'Kasbiy sertifikat uchun', desc: 'Milliy va kasbiy sertifikat imtihoni' },
+  { id: 'second_category', badge: '🥈' },
+  { id: 'first_category',  badge: '🥇' },
+  { id: 'highest_category',badge: '🏆' },
+  { id: 'professional',    badge: '🎯' },
 ];
 
 const SUBJECTS = [
-  { id: 'chqbt', badge: 'Q', title: 'CHQBT', desc: 'O\'zbekiston tarixi, huquqi, Konstitutsiya' },
-  { id: 'art',   badge: 'S', title: 'Tasviriy San\'at', desc: 'Badiiy ta\'lim va san\'at nazariyasi' },
-  { id: 'tarix', badge: 'T', title: 'Tarix', desc: 'O\'zbekiston va Jahon tarixi, metodika' },
-  { id: 'sport', badge: 'J', title: 'Jismoniy Tarbiya', desc: 'Sport nazariyasi va metodikasi' },
-  { id: 'boshlangich', badge: 'B', title: 'Boshlang\'ich Ta\'lim', desc: 'Ona tili, matematika, tabiiy fanlar, metodika' },
-  { id: 'info', badge: 'I', title: 'Informatika va AT', desc: 'Kompyuter tizimlari, algoritmlash va dasturlash' },
-  { id: 'mtt', badge: 'M', title: 'MTT Tarbiyachilari', desc: 'Maktabgacha ta\'lim pedagogikasi va metodikasi' },
-  { id: 'mtt_rahbar', badge: 'D', title: 'MTT Dir. O\'rinbosari', desc: 'Metodik rahbarlik, me\'yoriy hujjatlar va boshqaruv' },
-  { id: 'til', badge: 'O', title: 'Ona Tili va Adabiyot', desc: 'Til qoidalari, adabiyot tarixi va tahlili' },
-  { id: 'biologiya', badge: 'Bi', title: 'Biologiya', desc: 'Hujayra, organizmlar, genetika, ekologiya va metodika' },
-  { id: 'geografiya', badge: 'Ge', title: 'Geografiya', desc: 'Tabiiy va iqtisodiy geografiya, xaritashunoslik va metodika' },
-  { id: 'mtt_logoped', badge: 'Lo', title: 'MTT Logopedi', desc: 'Nutq buzilishlari, korreksiya va logopedik metodika' },
-  { id: 'mtt_psixolog', badge: 'Ps', title: 'MTT Psixologi', desc: 'Yosh psixologiyasi, oila, inklyuziv ta\'lim va metodika' },
-  { id: 'multi', badge: '✦', title: 'Bir nechta fan', desc: 'Barcha fanlar bo\'yicha kompleks' },
+  { id: 'chqbt', badge: 'Q' },
+  { id: 'art',   badge: 'S' },
+  { id: 'tarix', badge: 'T' },
+  { id: 'sport', badge: 'J' },
+  { id: 'boshlangich', badge: 'B' },
+  { id: 'info', badge: 'I' },
+  { id: 'mtt', badge: 'M' },
+  { id: 'mtt_rahbar', badge: 'D' },
+  { id: 'til', badge: 'O' },
+  { id: 'biologiya', badge: 'Bi' },
+  { id: 'geografiya', badge: 'Ge' },
+  { id: 'mtt_logoped', badge: 'Lo' },
+  { id: 'mtt_psixolog', badge: 'Ps' },
+  { id: 'multi', badge: '✦' },
 ];
 
 const TIMES = [
-  { id: '10', badge: '10', title: '10 daqiqa',  desc: 'Tez va ixcham — har kuni ozgina' },
-  { id: '20', badge: '20', title: '20 daqiqa',  desc: 'Maqbul — ko\'pchilik shu tanlaydi' },
-  { id: '30', badge: '30', title: '30 daqiqa',  desc: 'Yaxshi natija uchun' },
-  { id: '60', badge: '60', title: '1 soat +',   desc: 'Jiddiy va chuqur tayyorlanish' },
-];
-
-const LOADING_STEPS = [
-  'Profilingiz yaratilmoqda...',
-  'Maqsadlaringiz sozlanmoqda...',
-  'Kunlik reja tayyorlanmoqda...',
+  { id: '10', badge: '10' },
+  { id: '20', badge: '20' },
+  { id: '30', badge: '30' },
+  { id: '60', badge: '60' },
 ];
 
 // ── Qadam komponentlari ──
-function ListStep({ title, subtitle, items, selected, onSelect, isMobile }) {
+function ListStep({ title, subtitle, items, selected, onSelect, isMobile, searchable, searchPlaceholder }) {
+  const { t } = useTranslation();
   const ss = getStyles(isMobile);
+  const [query, setQuery] = useState('');
+  const q = query.trim().toLowerCase();
+  // Faqat fan bosqichida (14 ta element) qidiruv — boshqalarda ro'yxat to'liq qoladi.
+  const visibleItems = searchable && q
+    ? items.filter(it => `${it.title} ${it.desc || ''}`.toLowerCase().includes(q))
+    : items;
   return (
     <>
       <h1 style={ss.title}>{title}</h1>
       {subtitle && <p style={ss.subtitle}>{subtitle}</p>}
+      {searchable && (
+        <div style={ss.searchWrap}>
+          <Search size={18} style={ss.searchIcon} />
+          <input
+            style={ss.searchInput}
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            placeholder={searchPlaceholder}
+            autoComplete="off"
+          />
+        </div>
+      )}
+      {visibleItems.length === 0 && (
+        <p style={ss.searchEmpty}>{t('onboarding.searchEmpty')}</p>
+      )}
       <div style={ss.list}>
-        {items.map(item => {
+        {visibleItems.map(item => {
           const isActive = selected === item.id;
           return (
             <motion.button
@@ -98,6 +115,8 @@ function ListStep({ title, subtitle, items, selected, onSelect, isMobile }) {
 }
 
 function LoadingStep({ isMobile }) {
+  const { t } = useTranslation();
+  const LOADING_STEPS = t('onboarding.loading', { returnObjects: true });
   const [stepIdx, setStepIdx] = React.useState(0);
   const [progress, setProgress] = React.useState(0);
   const ss = getStyles(isMobile);
@@ -106,7 +125,7 @@ function LoadingStep({ isMobile }) {
     const prog = setInterval(() => setProgress(p => Math.min(p + 4, 100)), 40);
     const step = setInterval(() => setStepIdx(i => Math.min(i + 1, LOADING_STEPS.length - 1)), 450);
     return () => { clearInterval(prog); clearInterval(step); };
-  }, []);
+  }, [LOADING_STEPS.length]);
 
   return (
     <div style={{ textAlign: 'center', padding: '40px 0' }}>
@@ -118,10 +137,10 @@ function LoadingStep({ isMobile }) {
       </div>
 
       <h2 style={{ fontSize: 22, fontWeight: 800, color: 'var(--text)', margin: '24px 0 8px' }}>
-        Rejangiz sozlanmoqda...
+        {t('onboarding.loadingTitle')}
       </h2>
       <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 28 }}>
-        Rejangiz tayyorlanmoqda, bir necha soniya kuting
+        {t('onboarding.loadingSubtitle')}
       </p>
 
       {/* Progress bar */}
@@ -155,15 +174,16 @@ function LoadingStep({ isMobile }) {
 }
 
 function WelcomeStep({ goal, time, isMobile }) {
+  const { t } = useTranslation();
   const goalObj = GOALS.find(g => g.id === goal);
-  const timeObj = TIMES.find(t => t.id === time);
+  const timeObj = TIMES.find(x => x.id === time);
   const ss = getStyles(isMobile);
 
   return (
     <div style={{ textAlign: 'center', padding: '10px 0 20px' }}>
       <div style={{ fontSize: 64, marginBottom: 16 }}>🎉</div>
-      <h1 style={{ ...ss.title, textAlign: 'center', fontSize: 32, fontWeight: 900, marginBottom: 6 }}>Hammasi tayyor!</h1>
-      <p style={{ ...ss.subtitle, textAlign: 'center', fontSize: 15, color: 'var(--text3)', marginBottom: 24 }}>IQRO platformasiga xush kelibsiz</p>
+      <h1 style={{ ...ss.title, textAlign: 'center', fontSize: 32, fontWeight: 900, marginBottom: 6 }}>{t('onboarding.doneTitle')}</h1>
+      <p style={{ ...ss.subtitle, textAlign: 'center', fontSize: 15, color: 'var(--text3)', marginBottom: 24 }}>{t('onboarding.doneSubtitle')}</p>
 
       <div style={{
         background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
@@ -185,8 +205,8 @@ function WelcomeStep({ goal, time, isMobile }) {
               {goalObj.badge}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>Sizning toifangiz</span>
-              <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{goalObj.title}</span>
+              <span style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>{t('onboarding.yourCategory')}</span>
+              <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t(`onboarding.goals.${goalObj.id}.title`)}</span>
             </div>
           </div>
         )}
@@ -201,8 +221,8 @@ function WelcomeStep({ goal, time, isMobile }) {
               ⏱
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>Kunlik reja</span>
-              <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{timeObj.title}</span>
+              <span style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>{t('onboarding.dailyPlan')}</span>
+              <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t(`onboarding.times.${timeObj.id}.title`)}</span>
             </div>
           </div>
         )}
@@ -216,8 +236,8 @@ function WelcomeStep({ goal, time, isMobile }) {
             ⭐
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>Sinov muddati</span>
-            <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>7 kunlik bepul sinov</span>
+            <span style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>{t('onboarding.trialPeriod')}</span>
+            <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t('onboarding.trialValue')}</span>
           </div>
         </div>
       </div>
@@ -237,7 +257,7 @@ function WelcomeStep({ goal, time, isMobile }) {
         lineHeight: 1.4
       }}>
         <span style={{ fontSize: 16 }}>🎯</span>
-        <span style={{ textAlign: 'left' }}>Har kuni ozgina mashq — eng yaxshi natijaga olib boradi. Keling, boshlaymiz!</span>
+        <span style={{ textAlign: 'left' }}>{t('onboarding.motivation')}</span>
       </div>
     </div>
   );
@@ -245,6 +265,7 @@ function WelcomeStep({ goal, time, isMobile }) {
 
 // ── Asosiy komponent ──
 export default function OnboardingPage({ onComplete }) {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const isMobile = useIsMobile();
   const ss = getStyles(isMobile);
@@ -264,9 +285,12 @@ export default function OnboardingPage({ onComplete }) {
       .catch(() => {});
   }, []);
 
+  const goalsItems = GOALS.map(g => ({ ...g, title: t(`onboarding.goals.${g.id}.title`), desc: t(`onboarding.goals.${g.id}.desc`) }));
+  const timesItems = TIMES.map(tm => ({ ...tm, title: t(`onboarding.times.${tm.id}.title`), desc: t(`onboarding.times.${tm.id}.desc`) }));
   const subjectsWithMeta = SUBJECTS.map(s => {
     const m = questionMeta?.[s.id];
-    return m?.count > 0 ? { ...s, meta: `📚 ${m.count.toLocaleString()} ta tasdiqlangan savol` } : s;
+    const base = { ...s, title: t(`onboarding.subjects.${s.id}.title`), desc: t(`onboarding.subjects.${s.id}.desc`) };
+    return m?.count > 0 ? { ...base, meta: t('onboarding.meta', { count: m.count.toLocaleString() }) } : base;
   });
 
   const TOTAL_STEPS = 3; // 0,1,2
@@ -303,9 +327,9 @@ export default function OnboardingPage({ onComplete }) {
   };
 
   const stepData = [
-    { title: 'Maqsadingiz nima?', subtitle: null, items: GOALS, val: goal, set: setGoal },
-    { title: 'Qaysi fanda tayyorlanasiz?', subtitle: null, items: subjectsWithMeta, val: subject, set: setSubject },
-    { title: 'Kunlik o\'qish vaqti?', subtitle: null, items: TIMES, val: time, set: setTime },
+    { title: t('onboarding.goalTitle'), subtitle: t('onboarding.goalSubtitle'), items: goalsItems, val: goal, set: setGoal },
+    { title: t('onboarding.subjectTitle'), subtitle: t('onboarding.subjectSubtitle'), items: subjectsWithMeta, val: subject, set: setSubject, searchable: true },
+    { title: t('onboarding.timeTitle'), subtitle: t('onboarding.timeSubtitle'), items: timesItems, val: time, set: setTime },
   ];
 
   return (
@@ -328,7 +352,7 @@ export default function OnboardingPage({ onComplete }) {
                 <ArrowLeft size={22} />
               </motion.button>
             ) : <div style={{ width: 36 }} />}
-            <span style={{ fontSize: 13, color: '#94A3B8', fontWeight: 600 }}>
+            <span style={{ fontSize: 13, color: 'var(--text3)', fontWeight: 600 }}>
               {step + 1} / {TOTAL_STEPS}
             </span>
             <div style={{ width: 36 }} />
@@ -359,6 +383,8 @@ export default function OnboardingPage({ onComplete }) {
                   selected={stepData[step].val}
                   onSelect={handleSelect}
                   isMobile={isMobile}
+                  searchable={stepData[step].searchable}
+                  searchPlaceholder={t('onboarding.searchPlaceholder')}
                 />
               )}
               {step === 3 && <LoadingStep isMobile={isMobile} />}
@@ -375,7 +401,7 @@ export default function OnboardingPage({ onComplete }) {
               onClick={() => onComplete(subject)}
               whileTap={{ scale: 0.98 }}
             >
-              Platformani boshlash 🚀
+              {t('onboarding.startBtn')}
             </motion.button>
           </div>
         )}
@@ -425,6 +451,18 @@ const getStyles = (isMobile) => ({
   title: { fontSize: 26, fontWeight: 800, lineHeight: 1.25, marginBottom: 8, color: 'var(--text)' },
   subtitle: { fontSize: 14, color: 'var(--text3)', marginBottom: 20, lineHeight: 1.5 },
   list: { display: 'flex', flexDirection: 'column', gap: 10, marginTop: 8 },
+  searchWrap: { position: 'relative', marginTop: 4, marginBottom: 4 },
+  searchIcon: {
+    position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)',
+    color: 'var(--text3)', pointerEvents: 'none',
+  },
+  searchInput: {
+    width: '100%', padding: '13px 16px 13px 42px', fontSize: 15,
+    border: '1.5px solid var(--border)', borderRadius: 14,
+    background: 'var(--bg3)', color: 'var(--text)', fontFamily: 'inherit',
+    outline: 'none', boxSizing: 'border-box',
+  },
+  searchEmpty: { textAlign: 'center', color: 'var(--text3)', fontSize: 14, padding: '24px 0' },
   listItem: {
     display: 'flex', alignItems: 'center', gap: 14,
     padding: '16px 18px', borderRadius: 18,
@@ -444,7 +482,7 @@ const getStyles = (isMobile) => ({
   },
   primaryBtn: {
     width: '100%', padding: '16px', borderRadius: 16,
-    background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff',
+    background: 'var(--grad-primary)', color: '#fff',
     border: 'none', fontWeight: 700, fontSize: 16,
     cursor: 'pointer', fontFamily: 'inherit', transition: 'all 0.2s',
     boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)',
@@ -459,7 +497,7 @@ const getStyles = (isMobile) => ({
   },
   loaderInner: {
     width: 60, height: 60, borderRadius: '50%',
-    background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)',
+    background: 'var(--grad-primary)',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     color: '#fff',
     boxShadow: '0 4px 12px rgba(139, 92, 246, 0.2)',

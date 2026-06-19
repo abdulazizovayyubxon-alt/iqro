@@ -28,6 +28,54 @@ export const getMonthId = (date = new Date()) => {
   return `${date.getFullYear()}_M${String(date.getMonth() + 1).padStart(2, '0')}`;
 };
 
+// ── Kunlik streak + bepul avtomatik "muzlatish" (freeze/restore) ──────────
+// 1 kun o'tkazib yuborilsa, muzlatish zaxirasi streakni avtomatik saqlaydi —
+// foydalanuvchi qaytib kelganda zanjir uzilmaydi (bepul, avtomatik tiklash).
+export const STREAK_FREEZE_START = 2;     // boshlang'ich zaxira
+export const STREAK_FREEZE_MAX = 3;       // maksimal zaxira
+export const STREAK_FREEZE_MILESTONE = 7; // har 7 kunlik bosqichda +1 zaxira
+
+// Ikki toDateString() qiymati orasidagi to'liq kun farqi
+const dayDiff = (fromStr, toStr) => {
+  const a = new Date(fromStr); const b = new Date(toStr);
+  if (isNaN(a) || isNaN(b)) return Infinity;
+  a.setHours(0, 0, 0, 0); b.setHours(0, 0, 0, 0);
+  return Math.round((b - a) / 86400000);
+};
+
+// Maqsad bajarilganda kunlik streakni yangilaydi. Aynan 1 kun o'tkazib yuborilgan
+// bo'lsa (diff === 2) va zaxira bo'lsa — muzlatishni sarflab streakni davom ettiradi.
+const advanceDailyStreak = (prev, today, dgCompleted) => {
+  let dailyStreak = prev.dailyStreak || 0;
+  let lastGoalDate = prev.lastGoalDate;
+  let streakFreezes = prev.streakFreezes ?? STREAK_FREEZE_START;
+  let streakFrozenDate = prev.streakFrozenDate || null;
+
+  if (dgCompleted && lastGoalDate !== today) {
+    if (!lastGoalDate) {
+      dailyStreak = 1;
+    } else {
+      const diff = dayDiff(lastGoalDate, today);
+      if (diff === 1) {
+        dailyStreak += 1;
+      } else if (diff === 2 && streakFreezes > 0) {
+        streakFreezes -= 1;          // aynan 1 kun o'tkazildi → muzlatish ishlaydi
+        streakFrozenDate = today;
+        dailyStreak += 1;
+      } else {
+        dailyStreak = 1;             // 2+ kun yoki zaxira yo'q → qaytadan boshlanadi
+      }
+    }
+    lastGoalDate = today;
+
+    // Har 7 kunlik bosqichda zaxira to'ldiriladi (cap bilan)
+    if (dailyStreak > 0 && dailyStreak % STREAK_FREEZE_MILESTONE === 0) {
+      streakFreezes = Math.min(STREAK_FREEZE_MAX, streakFreezes + 1);
+    }
+  }
+  return { dailyStreak, lastGoalDate, streakFreezes, streakFrozenDate };
+};
+
 const buildDefaultCatStats = () => ({
   totalAnswered: 0,
   totalCorrect: 0,
@@ -64,6 +112,8 @@ const buildDefaultState = () => {
     },
     dailyStreak: 0,
     lastGoalDate: null,
+    streakFreezes: STREAK_FREEZE_START,
+    streakFrozenDate: null,
     spacedCards: [],
     customMnemonics: {},
     repetitionLimit: 10,
@@ -337,19 +387,8 @@ export const AppProvider = ({ children }) => {
         : { date: today, answered: 1, target: prev.dailyGoal?.target || 20, completed: false };
       if (!dg.completed && dg.answered >= dg.target) dg.completed = true;
 
-      // Kunlik streak
-      let dailyStreak = prev.dailyStreak || 0;
-      let lastGoalDate = prev.lastGoalDate;
-      if (dg.completed && lastGoalDate !== today) {
-        const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        if (lastGoalDate === yesterday.toDateString()) {
-          dailyStreak += 1;
-        } else if (lastGoalDate !== today) {
-          dailyStreak = 1;
-        }
-        lastGoalDate = today;
-      }
+      // Kunlik streak (+ bepul avtomatik muzlatish)
+      const { dailyStreak, lastGoalDate, streakFreezes, streakFrozenDate } = advanceDailyStreak(prev, today, dg.completed);
 
       const weekId = getWeekId();
       const monthId = getMonthId();
@@ -367,6 +406,8 @@ export const AppProvider = ({ children }) => {
         dailyGoal: dg,
         dailyStreak,
         lastGoalDate,
+        streakFreezes,
+        streakFrozenDate,
         stats: {
           ...prev.stats,
           [cat]: {
@@ -407,15 +448,7 @@ export const AppProvider = ({ children }) => {
         : { date: today, answered: 1, target: prev.dailyGoal?.target || 20, completed: false };
       if (!dg.completed && dg.answered >= dg.target) dg.completed = true;
 
-      let dailyStreak = prev.dailyStreak || 0;
-      let lastGoalDate = prev.lastGoalDate;
-      if (dg.completed && lastGoalDate !== today) {
-        const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        if (lastGoalDate === yesterday.toDateString()) dailyStreak += 1;
-        else if (lastGoalDate !== today) dailyStreak = 1;
-        lastGoalDate = today;
-      }
+      const { dailyStreak, lastGoalDate, streakFreezes, streakFrozenDate } = advanceDailyStreak(prev, today, dg.completed);
 
       // SMART REVIEW: Spaced Repetition Logic
       const qHash = (question || '').substring(0, 100);
@@ -456,6 +489,8 @@ export const AppProvider = ({ children }) => {
         dailyGoal: dg,
         dailyStreak,
         lastGoalDate,
+        streakFreezes,
+        streakFrozenDate,
         spacedCards,
         stats: {
           ...prev.stats,
@@ -500,15 +535,7 @@ export const AppProvider = ({ children }) => {
       if (!dg.completed && dg.answered >= dg.target) dg.completed = true;
 
       // Kunlik streak
-      let dailyStreak = prev.dailyStreak || 0;
-      let lastGoalDate = prev.lastGoalDate;
-      if (dg.completed && lastGoalDate !== today) {
-        const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        if (lastGoalDate === yesterday.toDateString()) dailyStreak += 1;
-        else if (lastGoalDate !== today) dailyStreak = 1;
-        lastGoalDate = today;
-      }
+      const { dailyStreak, lastGoalDate, streakFreezes, streakFrozenDate } = advanceDailyStreak(prev, today, dg.completed);
 
       // Streak
       const newStreak = results.wrongCount > 0 ? 0 : catStats.streak + results.correctCount;
@@ -535,6 +562,8 @@ export const AppProvider = ({ children }) => {
         dailyGoal: dg,
         dailyStreak,
         lastGoalDate,
+        streakFreezes,
+        streakFrozenDate,
         spacedCards: results.updatedSpacedCards || prev.spacedCards,
         timeStats: {
           totalTime: currentTimeStats.totalTime + sessionTime,

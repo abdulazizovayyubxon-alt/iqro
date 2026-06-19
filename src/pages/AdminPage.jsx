@@ -3,19 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useAdmin } from '../hooks/useAdmin';
-import { db, storage } from '../firebase';
+import { db, auth } from '../firebase';
 import {
   collection, query, orderBy, onSnapshot, where, getCountFromServer,
   updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch, increment, setDoc
 } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL, uploadString } from 'firebase/storage';
+import { getStorage, ref, uploadBytes, getDownloadURL, uploadString } from 'firebase/storage';
+
+// storage faqat shu sahifada kerak (lazy route) — default app'dan olamiz.
+// Bu firebase.js'dan eager eksport qilinmaydi → dastlabki yuklanish yengilroq.
+const storage = getStorage();
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Shield, MessageCircle, Users, BarChart3,
   CheckCircle, Trash2, AlertTriangle,
   ChevronDown, ChevronUp, Search, Plus, Edit3, FileText, Zap,
   Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, UploadCloud,
-  Download, Crown, Database, RefreshCw
+  Download, Crown, Database, RefreshCw, Inbox
 } from 'lucide-react';
 
 import './AdminPage.css';
@@ -38,7 +42,7 @@ const AdminPage = () => {
   const { showToast } = useContext(ToastContext);
   const navigate = useNavigate();
 
-  const [tab, setTab] = useState('objections'); // objections | questions | users | stats | tariffs | notifications | referrals | promos
+  const [tab, setTab] = useState('objections'); // objections | requests | questions | users | stats | tariffs | notifications | referrals | promos
 
   // ── Platforma umumiy statistikasi (arzon count so'rovlari) ──
   const [overview, setOverview] = useState(null); // { users, premium, questions, referrals }
@@ -49,6 +53,7 @@ const AdminPage = () => {
   const [referralLoading, setReferralLoading] = useState(false);
   const [referralSummary, setReferralSummary] = useState({ total: 0, paid: 0, pending: 0, totalBonus: 0 });
   const [objections, setObjections] = useState([]);
+  const [questionRequests, setQuestionRequests] = useState([]); // "Ko'proq savol kerak" so'rovlari
   const [users, setUsers] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -135,6 +140,20 @@ const AdminPage = () => {
         ...newNotif,
         date: new Date().toISOString()
       });
+      // FCM push (best-effort) — VAPID kalit + foydalanuvchi tokenlari sozlangan bo'lsa
+      // ilova yopiq bo'lsa ham yetib boradi. Sozlanmagan bo'lsa jimgina o'tkazib yuboriladi.
+      try {
+        const idToken = await auth.currentUser?.getIdToken();
+        if (idToken) {
+          await fetch('/api/notify-admin', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${idToken}` },
+            body: JSON.stringify({ action: 'push', title: newNotif.title, body: newNotif.message, target: newNotif.targetUser }),
+          });
+        }
+      } catch (pushErr) {
+        console.warn('Push yuborishda xato (zararsiz):', pushErr);
+      }
       showToast("✅ Bildirishnoma muvaffaqiyatli yuborildi!", 'success');
       setNewNotif({ title: '', message: '', type: 'info', targetUser: 'all' });
     } catch (e) {
@@ -287,6 +306,20 @@ try {
     return () => unsub();
   }, [isAdmin]);
 
+  // ── "Ko'proq savol kerak" so'rovlari (tirik halqa) — real-time ──
+  useEffect(() => {
+    if (!isAdmin) return;
+    const qReq = query(collection(db, 'questionRequests'), orderBy('timestamp', 'desc'));
+    const unsub = onSnapshot(qReq, (snap) => {
+      setQuestionRequests(snap.docs.map(d => ({
+        ...d.data(),
+        fbId: d.id,
+        date: d.data().timestamp?.toDate()?.toLocaleString() || d.data().date
+      })));
+    }, (err) => console.error('questionRequests fetch error:', err));
+    return () => unsub();
+  }, [isAdmin]);
+
   useEffect(() => {
     if (!isAdmin || tab !== 'users') return;
     const loadUsers = async () => {
@@ -416,6 +449,49 @@ try {
       await deleteDoc(doc(db, 'objections', fbId));
       showToast("🗑️ O'chirildi", 'info');
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+    });
+  };
+
+  // ── "Savol qo'shildi" deb belgilash + so'ragan foydalanuvchilarga bildirishnoma ──
+  const handleFulfillRequest = (group) => {
+    const pendingItems = group.items.filter(i => !i.fulfilled);
+    if (pendingItems.length === 0) return;
+    confirmAction(`"${group.topicName}" mavzusiga savol qo'shildi deb belgilab, so'rov yuborgan ${pendingItems.length} ta foydalanuvchiga bildirishnoma yuborilsinmi?`, async () => {
+      try {
+        // 1) So'rovlarni "bajarildi" deb belgilash (400 talik batch)
+        const fulfilledAt = new Date().toISOString();
+        for (let i = 0; i < pendingItems.length; i += 400) {
+          const batch = writeBatch(db);
+          pendingItems.slice(i, i + 400).forEach(it =>
+            batch.update(doc(db, 'questionRequests', it.fbId), { fulfilled: true, fulfilledAt })
+          );
+          await batch.commit();
+        }
+        // 2) Har bir foydalanuvchiga bildirishnoma (mavjud notifications tizimi orqali)
+        await Promise.all(pendingItems.map(it => addDoc(collection(db, 'notifications'), {
+          title: '✅ Yangi savollar qo\'shildi!',
+          message: `Siz so'ragan "${group.topicName}" mavzusiga yangi savollar qo'shildi. Hoziroq sinab ko'ring!`,
+          type: 'success',
+          targetUser: it.uid,
+          date: new Date().toISOString(),
+        })));
+        showToast(`✅ Bajarildi! ${pendingItems.length} ta foydalanuvchiga bildirishnoma yuborildi`, 'success');
+      } catch (e) {
+        showToast('Xatolik: ' + e.message, 'error');
+      }
+    });
+  };
+
+  const handleDeleteRequestGroup = (group) => {
+    confirmAction(`"${group.topicName}" bo'yicha ${group.items.length} ta so'rovni o'chirishni tasdiqlaysizmi?`, async () => {
+      try {
+        for (let i = 0; i < group.items.length; i += 400) {
+          const batch = writeBatch(db);
+          group.items.slice(i, i + 400).forEach(it => batch.delete(doc(db, 'questionRequests', it.fbId)));
+          await batch.commit();
+        }
+        showToast("🗑️ So'rovlar o'chirildi", 'info');
+      } catch (e) { showToast('Xatolik: ' + e.message, 'error'); }
     });
   };
 
@@ -791,6 +867,41 @@ try {
   const unsolvedCount = objections.filter(o => !o.solved).length;
   const solvedCount = objections.filter(o => o.solved).length;
 
+  // ── "Ko'proq savol kerak" so'rovlarini mavzu bo'yicha guruhlash (talab darajasi) ──
+  const requestGroups = Object.values(
+    questionRequests.reduce((acc, r) => {
+      const key = `${r.category}:${r.topicId}`;
+      if (!acc[key]) {
+        acc[key] = {
+          key,
+          category: r.category,
+          categoryName: r.categoryName || r.category,
+          topicId: r.topicId,
+          topicName: r.topicName || 'Aralash',
+          items: [],
+        };
+      }
+      acc[key].items.push(r);
+      return acc;
+    }, {})
+  )
+    .map(g => ({
+      ...g,
+      count: g.items.length,
+      pending: g.items.filter(i => !i.fulfilled).length,
+      latest: g.items.reduce((max, i) => {
+        const t = i.timestamp?.toDate ? i.timestamp.toDate().getTime() : new Date(i.date || 0).getTime();
+        return t > max ? t : max;
+      }, 0),
+    }))
+    .sort((a, b) => {
+      // Faol talab (bajarilmagan) tepada, keyin so'rovlar soni bo'yicha
+      if ((a.pending > 0) !== (b.pending > 0)) return a.pending > 0 ? -1 : 1;
+      if (b.count !== a.count) return b.count - a.count;
+      return b.latest - a.latest;
+    });
+  const pendingReqGroups = requestGroups.filter(g => g.pending > 0).length;
+
   if (!isAdmin) {
     return (
       <div className="page" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh', gap: '16px' }}>
@@ -840,6 +951,10 @@ try {
         <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'objections' ? 'active' : ''}`} onClick={() => setTab('objections')}>
           <MessageCircle size={15} /> E'tirozlar
           {unsolvedCount > 0 && <span className="admin-tab-badge">{unsolvedCount}</span>}
+        </motion.button>
+        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'requests' ? 'active' : ''}`} onClick={() => setTab('requests')}>
+          <Inbox size={15} /> So'rovlar
+          {pendingReqGroups > 0 && <span className="admin-tab-badge">{pendingReqGroups}</span>}
         </motion.button>
         <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'questions' ? 'active' : ''}`} onClick={() => setTab('questions')}>
           <FileText size={15} /> Savollar
@@ -978,6 +1093,70 @@ try {
                   </motion.div>
                 ))}
               </AnimatePresence>
+            </div>
+          )}
+        </div>
+      )}
+
+      {tab === 'requests' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div className="admin-section-title"><Inbox size={18} style={{ color: 'var(--blue)' }} /> Savol so'rovlari ({questionRequests.length})</div>
+          <div className="admin-info-box">
+            <div className="admin-info-text">
+              Foydalanuvchilar savol yetishmagan mavzular uchun <strong>"Ko'proq savol kerak"</strong> so'rovini yuboradi. Eng ko'p so'ralgan mavzular tepada turadi. Savol qo'shgach <strong>"Savol qo'shildi"</strong> tugmasini bosing — so'rov yuborgan barcha foydalanuvchilarga avtomatik bildirishnoma boradi.
+            </div>
+          </div>
+
+          {questionRequests.length === 0 ? (
+            <div className="glass-panel" style={{ padding: '60px', textAlign: 'center' }}>
+              <div style={{ fontSize: '40px', marginBottom: '12px' }}>📥</div>
+              <div style={{ color: 'var(--text2)', fontWeight: '600' }}>Hali savol so'rovlari yo'q</div>
+              <div style={{ color: 'var(--text3)', fontSize: '13px', marginTop: '6px' }}>Foydalanuvchilar savol yetishmagan bo'limlardan so'rov yuborganda shu yerda paydo bo'ladi.</div>
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {requestGroups.map(group => (
+                <motion.div
+                  key={group.key}
+                  layout
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="glass-panel"
+                  style={{ padding: '16px', border: group.pending > 0 ? '1px solid rgba(59,130,246,0.3)' : '1px solid rgba(16,185,129,0.25)', opacity: group.pending > 0 ? 1 : 0.8 }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, flexWrap: 'wrap' }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 6 }}>
+                        <span style={{ fontSize: 11, fontWeight: 800, background: 'var(--blue-bg)', color: 'var(--blue)', padding: '3px 10px', borderRadius: 8 }}>
+                          🔥 {group.count} ta so'rov
+                        </span>
+                        {group.pending === 0 ? (
+                          <span className="status-badge-neon paid" style={{ fontSize: 10, padding: '2px 8px', borderRadius: 6 }}>✅ BAJARILDI</span>
+                        ) : (
+                          <span className="status-badge-neon pending" style={{ fontSize: 10, padding: '2px 8px', borderRadius: 6 }}>⏳ {group.pending} KUTMOQDA</span>
+                        )}
+                        <span style={{ fontSize: 12, color: 'var(--text3)' }}>{group.categoryName}</span>
+                      </div>
+                      <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>
+                        {group.topicName} <span style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 500 }}>#{group.topicId}</span>
+                      </div>
+                      <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 6 }}>
+                        So'raganlar: {group.items.slice(0, 5).map(i => i.userName || i.userEmail || 'Anonim').join(', ')}{group.items.length > 5 ? ` +${group.items.length - 5}` : ''}
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>
+                      {group.pending > 0 && (
+                        <button className="btn btn-sm" style={{ background: 'var(--green)', color: '#fff', border: 'none' }} onClick={() => handleFulfillRequest(group)}>
+                          <CheckCircle size={14} /> Savol qo'shildi
+                        </button>
+                      )}
+                      <button className="btn btn-sm btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={() => handleDeleteRequestGroup(group)} title="So'rovlarni o'chirish">
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           )}
         </div>

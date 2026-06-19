@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, Clock, Crown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import SafeHtml from '../shared/SafeHtml';
 import QuestionMedia from '../QuestionMedia';
 import { useAuth } from '../../context/AuthContext';
@@ -29,6 +30,7 @@ const QuestionBox = ({
   onPremiumClick
 }) => {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const isPremium = user?.isPremium || false;
   const isUsefulMnemonic = (text) => text && !["Kalit so'zga e'tibor bering va javobni vizuallashtiring.", "Kalit so'zga e'tibor bering va javobni vizuallashtiring"].includes(text.trim());
 
@@ -39,17 +41,17 @@ const QuestionBox = ({
         {/* ── Sarlavha qatori: savol raqami + qiyinlik + mavzu + e'tiroz ── */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '6px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <div className="q-num">Savol {currentQ + 1} / {questions.length}</div>
+            <div className="q-num">{t('test.questionNum', { current: currentQ + 1, total: questions.length })}</div>
             {questions[currentQ].difficulty !== undefined && (
               <span style={{
                 width: '8px', height: '8px', borderRadius: '50%',
                 display: 'inline-block', flexShrink: 0, opacity: 0.6,
                 background: questions[currentQ].difficulty >= 3 ? 'var(--red)' : questions[currentQ].difficulty >= 1 ? 'var(--amber)' : 'var(--green)',
-              }} title={questions[currentQ].difficulty >= 3 ? 'Qiyin' : questions[currentQ].difficulty >= 1 ? "O'rtacha" : 'Oson'} />
+              }} title={questions[currentQ].difficulty >= 3 ? t('test.difficultyHard') : questions[currentQ].difficulty >= 1 ? t('test.difficultyMedium') : t('test.difficultyEasy')} />
             )}
             {topicId >= 0 && <div style={{ fontSize: '11px', color: 'var(--blue)', fontWeight: '600', background: 'var(--blue-bg)', padding: '2px 8px', borderRadius: '6px' }}>{topicName}</div>}
           </div>
-          <button className="objection-btn" style={{ position: 'relative', top: 'auto', right: 'auto', margin: 0 }} onClick={() => setShowObjectionModal(true)}><MessageCircle size={14} /> E'tiroz</button>
+          <button className="objection-btn" style={{ position: 'relative', top: 'auto', right: 'auto', margin: 0 }} onClick={() => setShowObjectionModal(true)}><MessageCircle size={14} /> {t('test.objection')}</button>
         </div>
 
         {/* ── Progress bar ── */}
@@ -90,13 +92,13 @@ const QuestionBox = ({
               border: '1px solid var(--border)',
               transition: 'all 0.2s ease'
             }}
-            title="Taymer rejimini o'zgartirish uchun bosing (Countdown -> Sekundomer -> O'chiq)"
+            title={t('test.timerToggleTitle')}
           >
             <Clock size={14} color="var(--text2)" />
             <span style={{ fontWeight: 700, fontSize: '12px', color: 'var(--text2)' }}>
-              {timerMode === 'countdown' && `${timeLeft}s (Taymer)`}
-              {timerMode === 'stopwatch' && `${timeLeft}s (Sekundomer)`}
-              {timerMode === 'off' && "Taymer: O'chiq"}
+              {timerMode === 'countdown' && t('test.timerCountdown', { sec: timeLeft })}
+              {timerMode === 'stopwatch' && t('test.timerStopwatch', { sec: timeLeft })}
+              {timerMode === 'off' && t('test.timerOff')}
             </span>
             {timerMode === 'countdown' && (
               <div className="timer-bar-wrap" style={{ width: '40px', height: '4px', background: 'var(--border)', borderRadius: '2px', overflow: 'hidden' }}>
@@ -105,7 +107,7 @@ const QuestionBox = ({
             )}
           </div>
         )}
-        {answers[currentQ] === -1 && <div style={{ color: 'var(--red)', fontSize: '13px', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '12px' }}>⏰ Vaqt tugadi!</div>}
+        {answers[currentQ] === -1 && <div style={{ color: 'var(--red)', fontSize: '13px', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '12px' }}>{t('test.timeUp')}</div>}
 
         {/* ── Aqlli Badglar (Takrorlash & Zaif Nuqta) ── */}
         {(() => {
@@ -117,12 +119,12 @@ const QuestionBox = ({
             <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
               {isSpaced && (
                 <span style={{ fontSize: '11px', fontWeight: '800', color: '#1E40AF', background: '#DBEAFE', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid #BFDBFE' }}>
-                  🔄 Takrorlash
+                  {t('test.badgeReview')}
                 </span>
               )}
               {isWeak && (
                 <span style={{ fontSize: '11px', fontWeight: '800', color: '#92400E', background: '#FEF3C7', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid #FDE68A' }}>
-                  ⚠️ Zaif Nuqta
+                  {t('test.badgeWeak')}
                 </span>
               )}
             </div>
@@ -178,13 +180,13 @@ const QuestionBox = ({
                 onClick={() => setActiveReviewTab('analysis')}
                 style={{ flex: 1, padding: '12px', border: 'none', background: activeReviewTab === 'analysis' ? 'var(--bg2)' : 'transparent', color: activeReviewTab === 'analysis' ? 'var(--text)' : 'var(--text3)', fontSize: '13px', fontWeight: '700', cursor: 'pointer', fontFamily: 'inherit', borderBottom: activeReviewTab === 'analysis' ? '2.5px solid var(--accent)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', transition: 'all 0.2s' }}
               >
-                <span>📖 Tahlil</span>
+                <span>{t('test.tabAnalysis')}</span>
               </button>
               <button
                 onClick={() => setActiveReviewTab('notes')}
                 style={{ flex: 1, padding: '12px', border: 'none', background: activeReviewTab === 'notes' ? 'var(--bg2)' : 'transparent', color: activeReviewTab === 'notes' ? 'var(--text)' : 'var(--text3)', fontSize: '13px', fontWeight: '700', cursor: 'pointer', fontFamily: 'inherit', borderBottom: activeReviewTab === 'notes' ? '2.5px solid var(--accent)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', position: 'relative', transition: 'all 0.2s' }}
               >
-                <span>🧠 Eslatmalar</span>
+                <span>{t('test.tabNotes')}</span>
                 {(() => {
                   const qHash = (questions[currentQ]?.q || '').substring(0, 100);
                   if (state.customMnemonics?.[qHash]) {
@@ -211,17 +213,17 @@ const QuestionBox = ({
                 {activeReviewTab === 'analysis' && (
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '800', fontSize: '14px', color: answers[currentQ] === questions[currentQ].correct ? 'var(--green)' : 'var(--red)', marginBottom: '12px' }}>
-                      <span>{answers[currentQ] === questions[currentQ].correct ? "✓ To'g'ri" : "✗ Noto'g'ri"}</span>
+                      <span>{answers[currentQ] === questions[currentQ].correct ? t('test.correct') : t('test.wrong')}</span>
                     </div>
 
                     {answers[currentQ] !== questions[currentQ].correct && answers[currentQ] >= 0 && (
                       <div style={{ marginBottom: '12px', padding: '10px 12px', background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.1)', borderRadius: '12px', fontSize: '13px', lineHeight: '1.5' }}>
                         <div style={{ marginBottom: '4px' }}>
-                          <span style={{ color: 'var(--text3)' }}>Siz tanladingiz:</span>{' '}
+                          <span style={{ color: 'var(--text3)' }}>{t('test.youChose')}</span>{' '}
                           <span style={{ color: 'var(--red)', fontWeight: '600' }}>{questions[currentQ].opts[answers[currentQ]]?.replace(/^[A-D]\)\s*/, '')}</span>
                         </div>
                         <div>
-                          <span style={{ color: 'var(--text3)' }}>To'g'ri javob:</span>{' '}
+                          <span style={{ color: 'var(--text3)' }}>{t('test.correctAnswer')}</span>{' '}
                           <span style={{ color: 'var(--green)', fontWeight: '600' }}>{questions[currentQ].opts[questions[currentQ].correct]?.replace(/^[A-D]\)\s*/, '')}</span>
                         </div>
                       </div>
@@ -232,7 +234,7 @@ const QuestionBox = ({
                     </div>
 
                     {questions[currentQ].source && (
-                      <div className="q-source">🔖 Manba: {questions[currentQ].source}</div>
+                      <div className="q-source">{t('test.source', { source: questions[currentQ].source })}</div>
                     )}
                   </div>
                 )}
@@ -243,7 +245,7 @@ const QuestionBox = ({
                       <div style={{ background: 'rgba(245, 158, 11, 0.04)', border: '1px dashed var(--amber)', borderRadius: '12px', padding: '12px', display: 'flex', gap: '10px', marginBottom: '14px', textAlign: 'left' }}>
                         <div style={{ fontSize: '18px' }}>💡</div>
                         <div style={{ fontSize: '13px', color: 'var(--text2)', lineHeight: '1.5' }}>
-                          <strong>Tavsiya etilgan mnemonika:</strong><br />
+                          <strong>{t('test.recommendedMnemonic')}</strong><br />
                           {questions[currentQ].mnemonic}
                         </div>
                       </div>
@@ -254,10 +256,10 @@ const QuestionBox = ({
                       return (
                         <div style={{ textAlign: 'left' }}>
                           <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: 'var(--text3)', marginBottom: '6px' }}>
-                            Shaxsiy eslatmangiz:
+                            {t('test.personalNote')}
                           </label>
                           <textarea
-                            placeholder="Ushbu savolni eslab qolish uchun shaxsiy assotsiatsiya yozing..."
+                            placeholder={t('test.personalNotePlaceholder')}
                             value={state.customMnemonics?.[qHash] || ''}
                             onChange={(e) => saveCustomMnemonic(qHash, e.target.value)}
                             style={{ width: '100%', minHeight: '80px', background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '12px', padding: '10px 12px', color: 'var(--text)', fontSize: '13px', fontFamily: 'inherit', resize: 'vertical', outline: 'none', transition: 'border-color 0.2s', lineHeight: '1.5' }}
@@ -266,7 +268,7 @@ const QuestionBox = ({
                           />
                           <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
                             <span style={{ fontSize: '11px', color: 'var(--text3)' }}>
-                              {(state.customMnemonics?.[qHash] || '').trim() ? '✓ Saqlandi' : "Eslatma keyingi safar ham ko'rsatiladi"}
+                              {(state.customMnemonics?.[qHash] || '').trim() ? t('test.noteSaved') : t('test.noteHint')}
                             </span>
                           </div>
                         </div>
@@ -315,15 +317,15 @@ const QuestionBox = ({
                       <Crown size={22} color="#fff" />
                     </div>
                     <h4 style={{ margin: '0 0 6px 0', fontSize: '15px', fontWeight: 800, color: 'var(--text)' }}>
-                      Premium Tahlil & Mnemonika
+                      {t('test.paywallTitle')}
                     </h4>
                     <p style={{ margin: '0 0 16px 0', fontSize: '12px', color: 'var(--text3)', lineHeight: '1.5' }}>
-                      Savollarning to'liq ilmiy tahlili va eslab qolishni osonlashtiruvchi mnemonikalar faqat Premium foydalanuvchilar uchun ochiq.
+                      {t('test.paywallText')}
                     </p>
                     <button
                       onClick={onPremiumClick}
                       style={{
-                        background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)',
+                        background: 'var(--grad-primary)',
                         color: '#fff',
                         border: 'none',
                         padding: '10px 20px',
@@ -338,7 +340,7 @@ const QuestionBox = ({
                         fontFamily: 'inherit',
                       }}
                     >
-                      <span>Premiumga O'tish</span>
+                      <span>{t('test.paywallCta')}</span>
                       <Crown size={12} />
                     </button>
                   </div>

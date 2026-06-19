@@ -22,8 +22,6 @@ import BottomNav from './components/BottomNav';
 // Bu bundle'ni ~60% ga kamaytiradi (1.8MB → ~700KB asosiy chunk)
 // ══════════════════════════════════════════════════════════════
 const Dashboard = React.lazy(() => import('./pages/Dashboard'));
-const Schedule = React.lazy(() => import('./pages/Schedule'));
-const Stats = React.lazy(() => import('./pages/Stats'));
 const TestPage = React.lazy(() => import('./pages/TestPage'));
 const ExamPage = React.lazy(() => import('./pages/ExamPage'));
 const SmartReviewPage = React.lazy(() => import('./pages/SmartReviewPage'));
@@ -32,12 +30,14 @@ const AchievementsPage = React.lazy(() => import('./pages/AchievementsPage'));
 const AdminPage = React.lazy(() => import('./pages/AdminPage'));
 const MigrationPage = React.lazy(() => import('./pages/MigrationPage'));
 const ReferralPage = React.lazy(() => import('./pages/ReferralPage'));
+const PremiumPage = React.lazy(() => import('./pages/PremiumPage'));
 const ProfilePage = React.lazy(() => import('./pages/ProfilePage'));
 const SettingsPage = React.lazy(() => import('./pages/SettingsPage'));
 const ErrorNotebookPage = React.lazy(() => import('./pages/ErrorNotebookPage'));
 const PrivacyPage = React.lazy(() => import('./pages/PrivacyPage'));
 const TermsPage = React.lazy(() => import('./pages/TermsPage'));
 const DeleteAccountPage = React.lazy(() => import('./pages/DeleteAccountPage'));
+const AboutPage = React.lazy(() => import('./pages/AboutPage'));
 
 // ── Skeleton Loader — sahifa yuklanayotganda chiroyli ko'rinish ──
 const PageSkeleton = () => {
@@ -157,11 +157,11 @@ function App() {
 
   // ── Sahifa kuzatuvi (Analytics) ──
   const PAGE_NAMES = {
-    '/': 'Test', '/dashboard': 'Dashboard', '/schedule': 'Jadval', '/stats': 'Statistika',
+    '/': 'Test', '/dashboard': 'Dashboard',
     '/test': 'Test', '/exam': 'Imtihon', '/review': 'Takrorlash',
     '/leaderboard': 'Reyting', '/achievements': 'Yutuqlar',
     '/admin': 'Admin', '/migration': 'Migratsiya',
-    '/profile': 'Profil', '/settings': 'Sozlamalar'
+    '/profile': 'Profil', '/settings': 'Sozlamalar', '/premium': 'Premium', '/about': 'Biz haqimizda'
   };
 
   useEffect(() => {
@@ -246,6 +246,13 @@ function App() {
       </Suspense>
     );
   }
+  if (location.pathname === '/about') {
+    return (
+      <Suspense fallback={<PageSkeleton />}>
+        <AboutPage />
+      </Suspense>
+    );
+  }
 
   // Tizimga kirmagan foydalanuvchi
   if (!user) {
@@ -256,13 +263,17 @@ function App() {
   if (needsOnboarding) {
     return <OnboardingPage onComplete={(subject) => {
       localStorage.setItem(`iqro_onboarding_${user.uid}`, '1');
-      if (subject) {
+      if (subject && subject !== 'multi') {
         appContext.updateState({ activeCategory: subject });
       }
       setNeedsOnboarding(false);
-      // Yangi ro'yxatdan o'tgan foydalanuvchini profil sahifasiga olib o'tamiz —
-      // u yerda jins va qolgan ma'lumotlarni to'ldiradi (kirishdan olib tashlangan).
-      navigate('/profile');
+      // 'multi' ("Bir nechta fan") haqiqiy kategoriya emas — TOPICS/savollar yo'q,
+      // shuning uchun uni o'rnatmaymiz (default fan saqlanadi), aks holda barcha
+      // sahifa bo'm-bo'sh "Mavzu tayyorlanmoqda" holatiga tushib qolardi.
+      // "Boshlash" bosilgach foydalanuvchini TO'G'RIDAN-TO'G'RI testga olib o'tamiz —
+      // onboarding qizg'inligi profil formasida so'nmasligi uchun. Jins kabi ixtiyoriy
+      // ma'lumotlar keyin Profilda to'ldiriladi (testga/avatarga ta'sir qilmaydi).
+      navigate('/test');
     }} />;
   }
 
@@ -283,8 +294,6 @@ function App() {
                 <Routes location={location} key={location.pathname}>
                   <Route path="/" element={<Navigate to="/test" replace />} />
                   <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/schedule" element={<Schedule />} />
-                  <Route path="/stats" element={<Stats />} />
                   <Route path="/test" element={<TestPage />} />
                   <Route path="/exam" element={<ExamPage />} />
                   <Route path="/review" element={<SmartReviewPage />} />
@@ -293,6 +302,7 @@ function App() {
                   <Route path="/admin" element={<AdminPage />} />
                   <Route path="/migration" element={<MigrationPage />} />
                   <Route path="/referral" element={<ReferralPage />} />
+                  <Route path="/premium" element={<PremiumPage />} />
                   <Route path="/errors" element={<ErrorNotebookPage />} />
                   <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/settings" element={<SettingsPage theme={theme} toggleTheme={toggleTheme} />} />

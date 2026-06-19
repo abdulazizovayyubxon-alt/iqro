@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const TestHeader = ({
   topicName,
@@ -9,6 +10,7 @@ const TestHeader = ({
   selectedBatch,
   onOpenSelector,
 }) => {
+  const { t } = useTranslation();
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 10, paddingBottom: 10, borderBottom: '1px solid var(--border)', marginBottom: 12 }}>
       {/* Bosib fan/mavzu almashtirish — tanlagich (dropdown) ko'rinishida */}
@@ -28,7 +30,7 @@ const TestHeader = ({
             <span style={{ fontWeight: 700, color: 'var(--text)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{topicName}</span>
           </span>
           <span style={{ fontSize: 11, color: 'var(--text3)' }}>
-            {questionsCount} savol{mode !== 'mistakes' && selectedBatch + 1 > 0 ? ` · Blok ${selectedBatch + 1}` : ''}
+            {t('test.questionsCount', { count: questionsCount })}{mode !== 'mistakes' && selectedBatch + 1 > 0 ? ` · ${t('test.block', { n: selectedBatch + 1 })}` : ''}
           </span>
         </span>
         <span style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 26, height: 26, borderRadius: 8, background: 'var(--bg3)', color: 'var(--text2)' }}>

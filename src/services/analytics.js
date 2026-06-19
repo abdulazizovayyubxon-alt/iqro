@@ -104,8 +104,27 @@ export const AnalyticsEvents = {
   premiumClick: (method) =>
     trackEvent('premium_click', { method, category: 'monetization' }),
 
+  // Ro'yxatdan o'tish — GA4 standart `sign_up` (user acquisition hisobotlari uchun)
+  register: (method) =>
+    trackEvent('sign_up', { method, category: 'auth' }),
+
+  // Xarid yakunlandi — GA4 standart `purchase` (monetizatsiya hisobotlari uchun)
+  purchase: (planId, method, amount) =>
+    trackEvent('purchase', {
+      transaction_id: `${planId}_${Date.now()}`,
+      plan: planId,
+      method,
+      value: amount,
+      currency: 'UZS',
+      category: 'monetization'
+    }),
+
   objectionSubmit: (topicName) =>
     trackEvent('objection_submit', { topic: topicName, category: 'feedback' }),
+
+  // "Ko'proq savol kerak" so'rovi (tirik halqa — questionRequests)
+  questionRequest: (topicName) =>
+    trackEvent('question_request', { topic: topicName, category: 'feedback' }),
 
   reviewSession: (cardCount) =>
     trackEvent('review_session', { card_count: cardCount, category: 'review' })

@@ -1,14 +1,16 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import ModalShell from './ModalShell';
 
 /** Chiqishni tasdiqlash — foydalanuvchini qolishga undaydi */
 export default function ConfirmLogoutModal({ onLogout, onClose }) {
+  const { t } = useTranslation();
   return (
     <ModalShell onClose={onClose} maxWidth={400} style={{ textAlign: 'center', padding: '28px 24px' }}>
       <div style={{ fontSize: 44, marginBottom: 12 }}>🧠</div>
-      <div className="pp-modal-title" style={{ marginBottom: 10, fontSize: 18, fontWeight: 800 }}>Rostdan ham chiqmoqchimisiz?</div>
+      <div className="pp-modal-title" style={{ marginBottom: 10, fontSize: 18, fontWeight: 800 }}>{t('modals.logoutTitle')}</div>
       <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-        Sertifikat olish sari boshlagan yo'lingizda to'xtab qolmang. Tizimda qolib, bilimingizni oshirishda davom eting!
+        {t('modals.logoutText')}
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
         <button
@@ -19,7 +21,7 @@ export default function ConfirmLogoutModal({ onLogout, onClose }) {
             transition: 'opacity 0.2s'
           }}
         >
-          Platformada qolish 🧠
+          {t('modals.logoutStay')}
         </button>
         <button
           onClick={onLogout}
@@ -29,7 +31,7 @@ export default function ConfirmLogoutModal({ onLogout, onClose }) {
             transition: 'all 0.2s'
           }}
         >
-          Chiqish 🚪
+          {t('modals.logoutBtn')}
         </button>
       </div>
     </ModalShell>

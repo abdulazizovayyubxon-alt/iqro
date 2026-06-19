@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Crown, Medal, Trash2 } from 'lucide-react';
+import { Crown, Medal, Trash2, AlertTriangle } from 'lucide-react';
 import {
   collection, query, orderBy, limit, onSnapshot,
   doc, getDoc, where, getCountFromServer, deleteDoc
@@ -11,9 +12,24 @@ import { AuthContext } from '../context/AuthContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAdmin } from '../hooks/useAdmin';
 import { getWeekId, getMonthId } from '../context/AppContext';
+import { getLeague, nextLeague, leagueProgress } from '../utils/league';
 import './LeaderboardPage.css';
 
+// Anti-farm — skoring o'zgartirilmaydi; faqat admin uchun shubhali hisoblarni belgilash.
+// (har javobga maksimal 2 ball; to'g'ri ≤ jami javoblar bo'lishi kerak)
+const farmFlags = (e, t) => {
+  const flags = [];
+  const answered = e.answered || 0;
+  const correct = e.correct || 0;
+  const score = e.totalScore || 0;
+  const acc = answered > 0 ? correct / answered : 0;
+  if (answered > 0 && score > answered * 2 + 10) flags.push(t('leaderboard.flagScore'));
+  if (answered >= 200 && acc >= 0.98) flags.push(t('leaderboard.flagAccuracy'));
+  return flags;
+};
+
 const LeaderboardPage = () => {
+  const { t } = useTranslation();
   const { user } = useContext(AuthContext);
   const { showToast } = useContext(ToastContext);
   const { isAdmin } = useAdmin();
@@ -61,6 +77,8 @@ const LeaderboardPage = () => {
             id: docSnap.id,
             name: d.displayName || d.userName || d.name || `#${docSnap.id.slice(0, 6)}`,
             score: score,
+            totalScore: d.totalScore || 0,
+            correct: d.totalCorrect || 0,
             streak: d.dailyStreak || 0,
             answered: d.totalAnswered || 0,
             photoURL: d.photoURL || null,
@@ -103,8 +121,10 @@ const LeaderboardPage = () => {
 
               setMyEntry({
                 id: user.uid,
-                name: user.displayName || user.email?.split('@')[0] || 'Siz',
+                name: user.displayName || user.email?.split('@')[0] || t('leaderboard.you'),
                 score: myScore,
+                totalScore: md.totalScore || 0,
+                correct: md.totalCorrect || 0,
                 streak: md.dailyStreak || 0,
                 answered: md.totalAnswered || 0,
                 photoURL: user.photoURL || null,
@@ -161,9 +181,9 @@ const LeaderboardPage = () => {
   const executeDelete = async () => {
     try {
       await deleteDoc(doc(db, 'userStats', deleteConfirm.id));
-      showToast('Natija o\'chirildi', 'success');
+      showToast(t('leaderboard.toastDeleted'), 'success');
     } catch (e) {
-      showToast('Xatolik yuz berdi', 'error');
+      showToast(t('exam.toastError'), 'error');
     } finally {
       setDeleteConfirm({ show: false, id: null, name: '' });
     }
@@ -207,24 +227,33 @@ const LeaderboardPage = () => {
       <div className="lb-info">
         <div className="lb-name-row">
           <span className="lb-name">{entry.name}</span>
-          {entry.isMe && <span className="lb-badge me">SIZ</span>}
+          {entry.isMe && <span className="lb-badge me">{t('leaderboard.youBadge')}</span>}
           {entry.isMe && sessionRankChange !== 0 && (
             <span className={`lb-delta ${sessionRankChange > 0 ? 'up' : 'down'}`}>
               {sessionRankChange > 0 ? `▲ ${sessionRankChange}` : `▼ ${Math.abs(sessionRankChange)}`}
             </span>
           )}
           {pinned && !entry.isMe && <span className="lb-badge pin">PIN</span>}
+          {isAdmin && farmFlags(entry, t).length > 0 && (
+            <span
+              title={t('leaderboard.suspiciousTitle', { flags: farmFlags(entry, t).join(', ') })}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 2, fontSize: 10, fontWeight: 800, color: 'var(--red)', background: 'var(--red-bg)', borderRadius: 6, padding: '1px 6px' }}
+            >
+              <AlertTriangle size={11} /> {t('leaderboard.suspicious')}
+            </span>
+          )}
         </div>
         <div className="lb-meta">
-          <span>{entry.answered} savol</span>
-          {entry.streak > 0 && <span>🔥 {entry.streak} kun</span>}
+          <span title={t('leaderboard.leagueTitle', { name: getLeague(entry.totalScore).name })}>{getLeague(entry.totalScore).icon}</span>
+          <span>{t('test.questionsCount', { count: entry.answered })}</span>
+          {entry.streak > 0 && <span>{t('leaderboard.streakDays', { count: entry.streak })}</span>}
         </div>
       </div>
       <div className="lb-score-wrap">
         <div className={`lb-score${entry.isMe ? ' me' : ''}`}>
           {entry.score.toLocaleString()}
         </div>
-        <div className="lb-score-lbl">BALL</div>
+        <div className="lb-score-lbl">{t('leaderboard.points')}</div>
       </div>
       {isAdmin && (
         <button
@@ -240,16 +269,16 @@ const LeaderboardPage = () => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="lb-page">
       <div className="lb-header">
-        <h1 className="lb-title">Reyting</h1>
-        <p className="lb-subtitle">Har bir to'g'ri javob uchun bir ball</p>
+        <h1 className="lb-title">{t('leaderboard.title')}</h1>
+        <p className="lb-subtitle">{t('leaderboard.subtitle')}</p>
       </div>
 
       {/* Board type tabs */}
       <div className="lb-tabs">
         {[
-          { id: 'all', label: 'Barchasi' },
-          { id: 'weekly', label: 'Haftalik' },
-          { id: 'monthly', label: 'Oylik' }
+          { id: 'all', label: t('leaderboard.tabAll') },
+          { id: 'weekly', label: t('leaderboard.tabWeekly') },
+          { id: 'monthly', label: t('leaderboard.tabMonthly') }
         ].map(tab => (
           <button
             key={tab.id}
@@ -260,6 +289,33 @@ const LeaderboardPage = () => {
           </button>
         ))}
       </div>
+
+      {/* Mening ligam — kosmetik daraja + keyingi darajaga progress */}
+      {!loading && (() => {
+        const myStat = leaders.find(r => r.isMe) || myEntry;
+        const myScore = myStat?.totalScore || 0;
+        const lg = getLeague(myScore);
+        const nxt = nextLeague(myScore);
+        const prog = leagueProgress(myScore);
+        return (
+          <div className="glass-panel" style={{ padding: '14px 16px', borderRadius: 16, marginBottom: 14 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <span style={{ fontSize: 28, lineHeight: 1 }}>{lg.icon}</span>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontWeight: 800, fontSize: 15, color: lg.color }}>{t('leaderboard.leagueSuffix', { name: lg.name })}</div>
+                <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2 }}>
+                  {nxt ? t('leaderboard.toNextLeague', { name: nxt.name, points: (nxt.min - myScore).toLocaleString() }) : t('leaderboard.topLeague')}
+                </div>
+              </div>
+            </div>
+            {nxt && (
+              <div style={{ height: 7, background: 'var(--bg3)', borderRadius: 4, overflow: 'hidden', marginTop: 10 }}>
+                <div style={{ width: `${prog * 100}%`, height: '100%', background: lg.color, borderRadius: 4, transition: 'width 0.5s ease' }} />
+              </div>
+            )}
+          </div>
+        );
+      })()}
 
       {!loading && top3.length >= 3 && (
         <div className="lb-podium">
@@ -284,9 +340,9 @@ const LeaderboardPage = () => {
 
       <div className="lb-list-wrap">
         {loading ? (
-          <div className="lb-empty">Yuklanmoqda...</div>
+          <div className="lb-empty">{t('common.loading')}</div>
         ) : leaders.length === 0 ? (
-          <div className="lb-empty">Hozircha reyting bo'sh</div>
+          <div className="lb-empty">{t('leaderboard.empty')}</div>
         ) : (
           <div className="lb-list">
             {/* Podium ko'rsatilganda top-3 ro'yxatda takrorlanmaydi — 4-o'rindan boshlaymiz */}
@@ -312,11 +368,11 @@ const LeaderboardPage = () => {
         <div className="lb-modal-overlay">
           <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel lb-confirm">
             <div className="lb-confirm-emoji">⚠️</div>
-            <h3 className="lb-confirm-title">O'chirishni tasdiqlang</h3>
-            <p className="lb-confirm-text">"{deleteConfirm.name}" ning reyting natijasini rostdan ham o'chirasizmi?</p>
+            <h3 className="lb-confirm-title">{t('leaderboard.deleteTitle')}</h3>
+            <p className="lb-confirm-text">{t('leaderboard.deleteText', { name: deleteConfirm.name })}</p>
             <div className="lb-confirm-actions">
-              <button className="btn btn-outline" onClick={() => setDeleteConfirm({ show: false, id: null, name: '' })}>Bekor qilish</button>
-              <button className="btn lb-confirm-del" onClick={executeDelete}>O'chirish</button>
+              <button className="btn btn-outline" onClick={() => setDeleteConfirm({ show: false, id: null, name: '' })}>{t('common.cancel')}</button>
+              <button className="btn lb-confirm-del" onClick={executeDelete}>{t('common.delete')}</button>
             </div>
           </motion.div>
         </div>

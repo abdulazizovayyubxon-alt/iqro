@@ -5,9 +5,10 @@
  * Sozlamalar/hisob/FAQ alohida sahifaga ko'chirilgan: /settings (SettingsPage.jsx)
  */
 import React, { useState, useEffect, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Settings, ChevronRight, Crown, Shield, Play, GraduationCap, Brain, Zap, Users, Smile, Pencil, Trophy } from 'lucide-react';
+import { Settings, ChevronRight, Crown, Shield, Zap, Users, Smile, Pencil, Trophy } from 'lucide-react';
 import { SUBJECTS } from '../data/mockData';
 import GiftBox from '../components/shared/GiftBox';
 import { useAuth } from '../context/AuthContext';
@@ -22,18 +23,17 @@ import { getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
 import { REFERRAL_DISCOUNT, MONTHLY_PRICE, DISCOUNT_AMOUNT } from '../services/referral';
 import PremiumModal from '../components/PremiumModal';
 import NotificationBell from '../components/NotificationBell';
-import EditProfileModal, { TOIFALAR } from '../components/profile/EditProfileModal';
+import EditProfileModal from '../components/profile/EditProfileModal';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
-
-const TOIFA_LABELS = Object.fromEntries(TOIFALAR.map(t => [t.value, t.label]));
 import { useAdmin } from '../hooks/useAdmin';
 import './ProfilePage.css';
 
 const DAY_NAMES = ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'];
 
 export default function ProfilePage() {
+  const { t, i18n } = useTranslation();
   const { user, updateUserData } = useAuth();
-  const { state, updateState } = useContext(AppContext);
+  const { state } = useContext(AppContext);
   const { showToast } = useContext(ToastContext);
   const { isAdmin } = useAdmin();
   const navigate = useNavigate();
@@ -61,10 +61,10 @@ export default function ProfilePage() {
     try {
       await setDoc(doc(db, 'users', user.uid), { avatarId: id || null }, { merge: true });
       updateUserData({ avatarId: id || null });
-      showToast(id ? 'Avatar yangilandi ✅' : 'Avatar olib tashlandi', 'success');
+      showToast(id ? t('profile.avatarUpdated') : t('profile.avatarRemoved'), 'success');
     } catch (err) {
       console.error('Avatar saqlash xatosi:', err);
-      showToast('Xatolik yuz berdi', 'error');
+      showToast(t('exam.toastError'), 'error');
     }
   };
 
@@ -93,11 +93,11 @@ export default function ProfilePage() {
       }
       setProfileSubject(editForm.subject || '');
       setProfileToifa(editForm.teacherCategory || '');
-      showToast('Profil saqlandi ✅', 'success');
+      showToast(t('profile.profileSaved'), 'success');
       setShowEdit(false);
     } catch (e) {
       console.error('Profil saqlash xatosi:', e);
-      showToast('Xatolik yuz berdi', 'error');
+      showToast(t('exam.toastError'), 'error');
     } finally {
       setSavingEdit(false);
     }
@@ -154,9 +154,13 @@ export default function ProfilePage() {
   if (!user) return null;
 
   // Computed values
-  const displayName = profileName || user.displayName || 'Foydalanuvchi';
+  const displayName = profileName || user.displayName || t('common.userFallback');
   const initials = displayName.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
   const isPremium = user.isPremium || false;
+  // Haqiqiy (to'langan) premium — "Premium" nishonini ko'rsatish uchun. Trial/urgency
+  // davrida isPremium=true bo'lsa-da, bu false bo'ladi, shu sababli "Premium" nishoni
+  // bilan "Sinov tugadi" banneri bir vaqtda chiqib qolmaydi.
+  const isTruePremium = user.isTruePremium || false;
   const trialStatus = user.trialStatus || 'expired';
   const trialDaysLeft = user.trialDaysLeft || 0;
 
@@ -179,35 +183,9 @@ export default function ProfilePage() {
 
   // Streak week
   const dailyStreak = state.dailyStreak || 0;
+  const streakFreezes = state.streakFreezes ?? 2;
   const todayIdx = new Date().getDay(); // 0=Sun
   const weekDays = [1, 2, 3, 4, 5, 6, 0]; // Mon-Sun
-
-  // ── Tezkor Boshlash Variables ──
-  const cat = state.activeCategory || 'boshlangich';
-  const catStats = state.stats[cat] || { mistakes: [] };
-  const filteredMistakesCount = catStats.mistakes ? catStats.mistakes.length : 0;
-  const dueCards = (state.spacedCards || []).filter(c => c.nextReview <= Date.now()).length;
-
-  const handleNav = (topicId, testMode) => {
-    if (trialStatus === 'expired' && !isPremium) {
-      setShowPremium(true);
-      return;
-    }
-    updateState({ topicId, testMode });
-    navigate('/test');
-  };
-
-  const getExamDurationMinutes = (category) => {
-    switch (category) {
-      case 'boshlangich':
-      case 'info':
-        return 120;
-      case 'til':
-        return 105;
-      default:
-        return 90;
-    }
-  };
 
   return (
     <motion.div className="pp" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -220,7 +198,7 @@ export default function ProfilePage() {
             className="pp-hero-icon-btn"
             whileTap={{ scale: 0.92 }}
             onClick={() => navigate('/settings')}
-            title="Sozlamalar"
+            title={t('settings.title')}
             style={{ width: 36, height: 36 }}
           >
             <Settings size={18} />
@@ -233,7 +211,7 @@ export default function ProfilePage() {
             className="pp-hero-avatar"
             whileTap={{ scale: 0.94 }}
             onClick={() => setShowAvatarPicker(true)}
-            title="Avatar tanlash"
+            title={t('profile.avatarPick')}
           >
             {avatarSrc ? (
               <img src={avatarSrc} alt={displayName} />
@@ -245,40 +223,48 @@ export default function ProfilePage() {
 
           <div className="pp-hero-name-row">
             <span className="pp-hero-name">{displayName}</span>
-            <button className="pp-hero-edit" onClick={() => setShowEdit(true)} title="Profilni tahrirlash">
+            <button className="pp-hero-edit" onClick={() => setShowEdit(true)} title={t('settings.editProfile')}>
               <Pencil size={14} />
             </button>
           </div>
 
           {(profileSubject || profileToifa) && (
             <div className="pp-hero-sub">
-              {profileSubject && `${SUBJECTS.find(s => s.id === profileSubject)?.name || ''} o'qituvchisi`}
+              {profileSubject && t('profile.teacherOf', { subject: SUBJECTS.find(s => s.id === profileSubject)?.name || '' })}
               {profileSubject && profileToifa && ' · '}
-              {profileToifa && TOIFA_LABELS[profileToifa]}
+              {profileToifa && t(`modals.toifa.${profileToifa}`)}
             </div>
           )}
 
           <div className="pp-hero-badges">
             <span className="pp-hero-chip lv"><Zap size={11} /> Lv.{levelInfo.level}</span>
-            {isPremium
-              ? <span className="pp-hero-chip premium"><Crown size={11} /> Premium</span>
-              : <span className="pp-hero-chip free" onClick={() => setShowPremium(true)}>Bepul</span>
+            {isTruePremium
+              ? <span className="pp-hero-chip premium"><Crown size={11} /> {t('header.premium')}</span>
+              : <span className="pp-hero-chip free" onClick={() => setShowPremium(true)}>{t('profile.free')}</span>
             }
           </div>
         </div>
 
         {/* Statistika qatori: XP · Daraja · Streak */}
         <div className="pp-hero-stats">
-          <div className="pp-hero-stat"><b>{totalXP}</b><span>XP / {nextXP}</span></div>
-          <div className="pp-hero-stat"><b>{levelInfo.level}</b><span>Daraja</span></div>
-          <div className="pp-hero-stat"><b>🔥 {dailyStreak}</b><span>Kun</span></div>
+          <div className="pp-hero-stat"><b>{totalXP}</b><span>{t('profile.statXp', { next: nextXP })}</span></div>
+          <div className="pp-hero-stat"><b>{levelInfo.level}</b><span>{t('profile.statLevel')}</span></div>
+          <div className="pp-hero-stat"><b>🔥 {dailyStreak}</b><span>{t('profile.statDay')}</span></div>
         </div>
 
         {/* XP progress chizig'i */}
         <div className="pp-hero-xptrack"><div className="pp-hero-xpfill" style={{ width: `${xpPct}%` }} /></div>
 
         {/* Haftalik streak — 7 kunlik lenta */}
-        <div className="pp-hero-streak-head">🔥 Haftalik streak</div>
+        <div className="pp-hero-streak-head" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+          <span>{t('profile.weeklyStreak')}</span>
+          <span
+            title={t('profile.freezeTooltip')}
+            style={{ fontSize: 12, fontWeight: 700, color: 'var(--accent2)', background: 'var(--blue-bg)', borderRadius: 8, padding: '2px 8px', whiteSpace: 'nowrap' }}
+          >
+            {t('profile.freezeCount', { count: streakFreezes })}
+          </span>
+        </div>
         <div className="pp-hero-streak">
           {weekDays.map((dayIdx, i) => {
             const isActive = i < dailyStreak;
@@ -299,12 +285,12 @@ export default function ProfilePage() {
           <div className="pp-trial-banner">
             <div className="pp-trial-icon"><GiftBox size={28} /></div>
             <div className="pp-trial-text">
-              <div className="pp-trial-title">Sinov muddati faol</div>
-              <div className="pp-trial-desc">Barcha Premium funksiyalar {trialDaysLeft} kun bepul!</div>
+              <div className="pp-trial-title">{t('profile.trialActive')}</div>
+              <div className="pp-trial-desc">{t('profile.trialActiveDesc', { days: trialDaysLeft })}</div>
             </div>
             <div className="pp-trial-days">
               <div className="pp-trial-days-num">{trialDaysLeft}</div>
-              <div className="pp-trial-days-lbl">kun qoldi</div>
+              <div className="pp-trial-days-lbl">{t('profile.daysLeft')}</div>
             </div>
           </div>
         )}
@@ -313,22 +299,22 @@ export default function ProfilePage() {
         {trialStatus === 'urgency' && urgencyLeft > 0 && (
           <div className="pp-urgency-banner" onClick={() => setShowPremium(true)}>
             <div className="pp-urgency-top">
-              <span>⚠️ Sinov muddati tugadi!</span>
-              {user.hasReferralDiscount && <span className="pp-urgency-badge">{REFERRAL_DISCOUNT}% CHEGIRMA</span>}
+              <span>{t('profile.urgencyExpired')}</span>
+              {user.hasReferralDiscount && <span className="pp-urgency-badge">{t('profile.discountBadge', { percent: REFERRAL_DISCOUNT })}</span>}
             </div>
             <div className="pp-urgency-timer">
-              <div className="pp-urg-block"><span>{urg.d}</span><small>kun</small></div>
+              <div className="pp-urg-block"><span>{urg.d}</span><small>{t('profile.urgDay')}</small></div>
               <div className="pp-urg-sep">:</div>
-              <div className="pp-urg-block"><span>{urg.h}</span><small>soat</small></div>
+              <div className="pp-urg-block"><span>{urg.h}</span><small>{t('profile.urgHour')}</small></div>
               <div className="pp-urg-sep">:</div>
-              <div className="pp-urg-block"><span>{urg.m}</span><small>daq</small></div>
+              <div className="pp-urg-block"><span>{urg.m}</span><small>{t('profile.urgMin')}</small></div>
               <div className="pp-urg-sep">:</div>
-              <div className="pp-urg-block"><span>{urg.s}</span><small>son</small></div>
+              <div className="pp-urg-block"><span>{urg.s}</span><small>{t('profile.urgSec')}</small></div>
             </div>
             <div className="pp-urgency-cta">
               {user.hasReferralDiscount
-                ? `Hozir sotib oling: ${(MONTHLY_PRICE - DISCOUNT_AMOUNT).toLocaleString()} so'm (${MONTHLY_PRICE.toLocaleString()} o'rniga)`
-                : `Chegirma muddati tugamoqda — obunani faollashtiring!`
+                ? t('profile.urgencyCtaDiscount', { price: (MONTHLY_PRICE - DISCOUNT_AMOUNT).toLocaleString(), original: MONTHLY_PRICE.toLocaleString() })
+                : t('profile.urgencyCtaDefault')
               }
             </div>
           </div>
@@ -338,74 +324,21 @@ export default function ProfilePage() {
         {trialStatus === 'expired' && !isPremium && (
           <div className="pp-expired-banner" onClick={() => setShowPremium(true)}>
             <div className="pp-expired-text">
-              <span>🔒</span> Sinov muddati tugadi. <strong>Premium obunani faollashtiring</strong> →
+              <span>🔒</span> {t('profile.expiredP1')} <strong>{t('profile.expiredStrong')}</strong> →
             </div>
           </div>
         )}
 
-        {/* ═══ TEZKOR BOSHLASH (QUICK START) 2x2 GRID ═══ */}
-        <div>
-          <div className="pp-card-label" style={{ marginBottom: '12px' }}>🚀 Tezkor Boshlash</div>
-          <div className="pp-quick-grid">
-            {/* Dars Testi */}
-            <motion.div whileTap={{ scale: 0.96 }} onClick={() => handleNav(-1, 'exam')} className="pp-quick-card blue">
-              <div className="pp-quick-card-icon">
-                <Play size={20} fill="currentColor" />
-              </div>
-              <div>
-                <div className="pp-quick-card-title">Dars Testi</div>
-                <div className="pp-quick-card-subtitle">Barcha mavzular</div>
-              </div>
-            </motion.div>
-
-            {/* Imtihon */}
-            <motion.div whileTap={{ scale: 0.96 }} onClick={() => { if (trialStatus === 'expired' && !isPremium) { setShowPremium(true); return; } navigate('/exam'); }} className="pp-quick-card purple">
-              <div className="pp-quick-card-icon">
-                <GraduationCap size={22} />
-              </div>
-              <div>
-                <div className="pp-quick-card-title">Imtihon</div>
-                <div className="pp-quick-card-subtitle">50 savol · {getExamDurationMinutes(cat)} daqiqa</div>
-              </div>
-            </motion.div>
-
-            {/* Takrorlash */}
-            <motion.div whileTap={{ scale: 0.96 }} onClick={() => navigate('/review')} className="pp-quick-card green">
-              {dueCards > 0 && (
-                <div className="pp-quick-badge">
-                  {dueCards}
-                </div>
-              )}
-              <div className="pp-quick-card-icon">
-                <Brain size={22} />
-              </div>
-              <div>
-                <div className="pp-quick-card-title">Takrorlash</div>
-                <div className="pp-quick-card-subtitle">{dueCards > 0 ? `${dueCards} savol kutmoqda` : 'Hozircha yo\'q'}</div>
-              </div>
-            </motion.div>
-
-            {/* Xatolar */}
-            <motion.div whileTap={{ scale: 0.96 }} onClick={() => handleNav(-1, 'mistakes')} className="pp-quick-card amber">
-              <div className="pp-quick-card-icon">
-                <Zap size={22} />
-              </div>
-              <div>
-                <div className="pp-quick-card-title">Xatolar</div>
-                <div className="pp-quick-card-subtitle">{filteredMistakesCount} ta xato</div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
+        {/* Tezkor Boshlash olib tashlandi — BottomNav (Test/Imtihon/Takror) bilan dublikat edi */}
 
         {/* ═══ PREMIUM HOLATI ═══ */}
         <div>
-          {isPremium ? (
+          {isTruePremium ? (
             /* Premium foydalanuvchi — obuna holati */
             <motion.div
               whileTap={{ scale: 0.98 }}
               onClick={() => setShowPremium(true)}
-              title="Premium obunani boshqarish"
+              title={t('profile.premiumManage')}
               style={{
               padding: '20px 18px', borderRadius: '18px',
               background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
@@ -430,11 +363,11 @@ export default function ProfilePage() {
                 position: 'relative', zIndex: 1
               }}>👑</div>
               <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
-                <div style={{ fontSize: 17, fontWeight: 900, color: '#fff', marginBottom: 3 }}>Premium Faol</div>
+                <div style={{ fontSize: 17, fontWeight: 900, color: '#fff', marginBottom: 3 }}>{t('profile.premiumActive')}</div>
                 <div style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.85)', fontWeight: 600 }}>
                   {user.premiumExpire
-                    ? `Tugash: ${new Date(user.premiumExpire).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'long', year: 'numeric' })}`
-                    : 'Muddatsiz'}
+                    ? t('profile.premiumExpires', { date: new Date(user.premiumExpire).toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : 'uz-UZ', { day: 'numeric', month: 'long', year: 'numeric' }) })
+                    : t('profile.premiumLifetime')}
                 </div>
               </div>
               <span
@@ -445,7 +378,7 @@ export default function ProfilePage() {
                   position: 'relative', zIndex: 1, flexShrink: 0
                 }}
               >
-                Yangilash
+                {t('profile.renew')}
               </span>
             </motion.div>
           ) : (
@@ -455,7 +388,7 @@ export default function ProfilePage() {
               onClick={() => setShowPremium(true)}
               style={{
                 width: '100%', padding: '16px', borderRadius: '16px',
-                background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)',
+                background: 'var(--grad-primary)',
                 border: 'none', cursor: 'pointer', fontFamily: 'inherit',
                 display: 'flex', alignItems: 'center', gap: 14, textAlign: 'left',
                 boxShadow: '0 4px 20px rgba(139, 92, 246, 0.25)',
@@ -477,9 +410,9 @@ export default function ProfilePage() {
                 display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20
               }}>👑</div>
               <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 15, fontWeight: 900, color: '#fff', marginBottom: 2 }}>Premium olish</div>
+                <div style={{ fontSize: 15, fontWeight: 900, color: '#fff', marginBottom: 2 }}>{t('profile.premiumBuy')}</div>
                 <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.75)' }}>
-                  Telegram orqali • Oyiga 30,000 so'm
+                  {t('profile.premiumBuyDesc')}
                 </div>
               </div>
               <ChevronRight size={20} color="rgba(255,255,255,0.8)" />
@@ -491,13 +424,13 @@ export default function ProfilePage() {
         {totalAnswered === 0 && (
           <div className="pp-card" style={{ textAlign: 'center', padding: '30px 20px', border: '1.5px dashed var(--blue)' }}>
             <div style={{ fontSize: 40, marginBottom: 12 }}>🚀</div>
-            <h3 style={{ margin: '0 0 8px 0', color: 'var(--text)', fontSize: 18 }}>Sizda hali natijalar yo'q</h3>
-            <p style={{ margin: '0 0 20px 0', color: 'var(--text3)', fontSize: 13 }}>Tizimda o'z o'rningizni topish va XP yig'ish uchun hoziroq birinchi testingizni ishlang!</p>
+            <h3 style={{ margin: '0 0 8px 0', color: 'var(--text)', fontSize: 18 }}>{t('profile.noResultsTitle')}</h3>
+            <p style={{ margin: '0 0 20px 0', color: 'var(--text3)', fontSize: 13 }}>{t('profile.noResultsText')}</p>
             <button
               onClick={() => navigate('/test')}
               style={{ background: 'var(--blue)', color: '#fff', border: 'none', padding: '12px 24px', borderRadius: '12px', fontSize: 14, fontWeight: 700, cursor: 'pointer', width: '100%', boxShadow: '0 4px 12px rgba(59,130,246,0.3)' }}
             >
-              Boshlash uchun test yechish
+              {t('profile.noResultsBtn')}
             </button>
           </div>
         )}
@@ -511,9 +444,9 @@ export default function ProfilePage() {
               <Trophy size={20} />
             </div>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <span className="pp-menu-label">Yutuqlar</span>
+              <span className="pp-menu-label">{t('profile.achievements')}</span>
               <span style={{ fontSize: 11, color: 'var(--text3)' }}>
-                {earnedBadges.length > 0 ? `${earnedBadges.length} ta nishon qo'lga kiritildi` : "Hali nishon yo'q — test ishlab qo'lga kiriting"}
+                {earnedBadges.length > 0 ? t('profile.badgesEarned', { count: earnedBadges.length }) : t('profile.badgesNone')}
               </span>
             </div>
             <ChevronRight size={18} className="pp-menu-arrow" />
@@ -525,11 +458,11 @@ export default function ProfilePage() {
               <Users size={20} />
             </div>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <span className="pp-menu-label" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>Do'stlarni taklif qilish <GiftBox size={15} /></span>
+              <span className="pp-menu-label" style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>{t('profile.inviteFriends')} <GiftBox size={15} /></span>
               <span style={{ fontSize: 11, color: bonusBalance > 0 ? 'var(--green)' : 'var(--text3)', fontWeight: bonusBalance > 0 ? 700 : 400 }}>
                 {bonusBalance > 0
-                  ? `Hisobingizda ${bonusBalance.toLocaleString()} so'm bonus — to'lovda avtomatik ayiriladi`
-                  : `Do'stingizga ${REFERRAL_DISCOUNT}% chegirma — o'zingizga ${DISCOUNT_AMOUNT.toLocaleString()} so'm`}
+                  ? t('profile.bonusBalance', { amount: bonusBalance.toLocaleString() })
+                  : t('profile.inviteDesc', { percent: REFERRAL_DISCOUNT, amount: DISCOUNT_AMOUNT.toLocaleString() })}
               </span>
             </div>
             <ChevronRight size={18} className="pp-menu-arrow" />
@@ -541,8 +474,8 @@ export default function ProfilePage() {
               <Settings size={20} />
             </div>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <span className="pp-menu-label">Sozlamalar</span>
-              <span style={{ fontSize: 11, color: 'var(--text3)' }}>Rejim, shrift, parol, eslatma, hisob</span>
+              <span className="pp-menu-label">{t('settings.title')}</span>
+              <span style={{ fontSize: 11, color: 'var(--text3)' }}>{t('profile.settingsDesc')}</span>
             </div>
             <ChevronRight size={18} className="pp-menu-arrow" />
           </button>
@@ -552,7 +485,7 @@ export default function ProfilePage() {
               <div className="pp-menu-icon" style={{ background: 'linear-gradient(135deg, #F59E0B, #EF4444)', color: '#fff' }}>
                 <Shield size={20} />
               </div>
-              <span className="pp-menu-label">Admin Panel</span>
+              <span className="pp-menu-label">{t('profile.adminPanel')}</span>
               <ChevronRight size={18} className="pp-menu-arrow" />
             </button>
           )}

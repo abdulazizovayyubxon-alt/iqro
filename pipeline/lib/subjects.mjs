@@ -10,6 +10,8 @@ export const TARGET_DEFAULT = 2000;
 // Har fan generatsiyasida mutaxassislik (fan spec) + shu umumiy manba ishlatiladi.
 export const SHARED_PED = {
   spec: "scratch/ped_spec_text.txt",
+  manbaDir: "fan/_ped_manba",        // darslik kutubxonasi (kasb standarti + 9 ped darslik) — --ped-extra bilan ishlatiladi
+  namuna: "fan/_ped_namuna.json",    // umumiy pedagogika namuna langarlari (real tushgan savol uslubi)
   name: "Pedagogik mahorat va kasb standartlari",
 };
 
@@ -20,49 +22,50 @@ export const SUBJECTS = {
     corpus: ["fan/chqbt", "src/data/questions_0.js", "src/data/questions_1.js",
              "src/data/questions_2.js", "src/data/questions_3.js",
              "src/data/questions_4.js", "src/data/questions_5.js", "src/data/questions_6.js"],
-    namuna: ["fan/CHQBT NAMUNA", "fan/chqbt_namuna", "fan/tibbiy_namuna"],
-    spec: "scratch/chqbt_spec_text.txt",
+    namuna: ["fan/CHQBT_savollar.json"],
+    spec: "fan/spes/_txt/ЧҚБТ т.txt",
+    book: "scratch/chqbt_book.txt",   // darslik (10+11 sinf, toza) — mutaxassislik mavzulariga per-mavzu fakt grounding
   },
   art: {
     name: "Tasviriy san'at", category: "art",
     corpus: ["fan/art", "src/data/questions_7.js"],
-    namuna: ["fan/art_spec_images", "fan/rasm_namuna"],
+    namuna: ["fan/tasviriy_savollar.json", "fan/art_spec_images", "fan/rasm_namuna"],
     spec: "scratch/art_spec_text.txt",
   },
   tarix: {
     name: "Tarix", category: "tarix",
     corpus: ["fan/tarix", "src/data/questions_tarix.json"],
-    namuna: [],
+    namuna: ["fan/tarix_savollar.json"],
     spec: "scratch/Тарих т_text.txt",
   },
   boshlangich: {
     name: "Boshlang'ich ta'lim", category: "boshlangich",
     corpus: ["fan/boshlangich"],
-    namuna: [],
+    namuna: ["fan/boshlangich_savollar.json"],
     spec: "scratch/Бошланғич таълим ўзбек я_text.txt",
   },
   informatika: {
     name: "Informatika va AT", category: "info",
     corpus: ["fan/informatika"],
-    namuna: ["scratch/extracted_info/word/media"],
+    namuna: ["fan/informatika_savollar.json", "scratch/extracted_info/word/media"],
     spec: "scratch/Информатика ва АТ т_text.txt",
   },
   jismoniy_tarbiya: {
     name: "Jismoniy tarbiya", category: "sport",
     corpus: ["fan/jismoniy_tarbiya"],
-    namuna: ["scratch/extracted_docx/word/media"],
+    namuna: ["fan/jismoniy_savollar.json", "scratch/extracted_docx/word/media"],
     spec: "scratch/Jismoniy tarbiya spets-yasi_text.txt",
   },
   mtt_tarbiyachi: {
     name: "MTT tarbiyachi", category: "mtt",
     corpus: ["fan/mtt_tarbiyachi"],
-    namuna: ["scratch/extracted_mtt/word/media"],
+    namuna: ["fan/mtt_tarbiyachi_savollar.json", "scratch/extracted_mtt/word/media"],
     spec: "scratch/МТТ тарбиячи педагоглари я_text.txt",
   },
   mtt_rahbar: {
     name: "MTT rahbar (direktor o'rinbosari)", category: "mtt_rahbar",
     corpus: ["fan/mtt_rahbar"],
-    namuna: ["scratch/extracted_mtt_rahbar/word/media"],
+    namuna: ["fan/mtt_rahbar_savollar.json", "scratch/extracted_mtt_rahbar/word/media"],
     spec: "scratch/МТТ директор ўринбосари_text.txt",
   },
 
@@ -76,7 +79,7 @@ export const SUBJECTS = {
   ona_tili: {
     name: "Ona tili va adabiyot", category: "til",
     corpus: ["src/data/questions_ona_tili.json"],
-    namuna: [],
+    namuna: ["fan/ona_tili_savollar.json"],
     spec: "scratch/Она тили ва адабиёт_text.txt",
   },
 
@@ -84,13 +87,13 @@ export const SUBJECTS = {
   biologiya: {
     name: "Biologiya", category: "biologiya", isNew: true,
     corpus: [],
-    namuna: ["fan 2/biologiya  namuna"],
+    namuna: ["fan/biologiya_savollar.json", "fan 2/biologiya  namuna"],
     spec: "scratch/biologiya_spec.txt", specPdf: "fan 2/Биология т.pdf",
   },
   geografiya: {
     name: "Geografiya", category: "geografiya", isNew: true,
     corpus: [],
-    namuna: ["fan 2/geografiya namuna"],
+    namuna: ["fan/geografiya_savollar.json", "fan 2/geografiya namuna"],
     spec: "scratch/geografiya_spec.txt", specPdf: "fan 2/География  т.pdf",
   },
   ingliz: {
@@ -102,13 +105,13 @@ export const SUBJECTS = {
   mtt_logoped: {
     name: "MTT logoped", category: "mtt_logoped", isNew: true,
     corpus: [],
-    namuna: ["fan 2/MTT logoped"],
+    namuna: ["fan/mtt_logoped_savollar.json", "fan 2/MTT logoped"],
     spec: "scratch/mtt_logoped_spec.txt", specPdf: "fan 2/МТТ логопедия я.pdf",
   },
   mtt_psixolog: {
     name: "MTT psixolog", category: "mtt_psixolog", isNew: true,
     corpus: [],
-    namuna: ["fan 2/MTT psixolog"],
+    namuna: ["fan/mtt_psixolog_savollar.json", "fan 2/MTT psixolog"],
     spec: "scratch/mtt_psixolog_spec.txt", specPdf: "fan 2/МТТ психологлари я.pdf",
   },
 };

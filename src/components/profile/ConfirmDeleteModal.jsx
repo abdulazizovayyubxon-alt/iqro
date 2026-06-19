@@ -1,14 +1,16 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import ModalShell from './ModalShell';
 
 /** Hisobni o'chirishni tasdiqlash */
 export default function ConfirmDeleteModal({ deleting, onConfirm, onClose }) {
+  const { t } = useTranslation();
   return (
     <ModalShell onClose={onClose} maxWidth={400} style={{ textAlign: 'center', padding: '28px 24px' }}>
       <div style={{ fontSize: 44, marginBottom: 12 }}>🗑️</div>
-      <div className="pp-modal-title" style={{ marginBottom: 10, fontSize: 18, fontWeight: 800, color: 'var(--red)' }}>Hisobni o'chirish</div>
+      <div className="pp-modal-title" style={{ marginBottom: 10, fontSize: 18, fontWeight: 800, color: 'var(--red)' }}>{t('modals.deleteTitle')}</div>
       <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-        Rostdan ham hisobingizni o'chirmoqchimisiz? Bu amalni orqaga qaytarib bo'lmaydi. Barcha ballaringiz, obunangiz va statistikangiz butunlay o'chib ketadi.
+        {t('modals.deleteText')}
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
         <button
@@ -20,7 +22,7 @@ export default function ConfirmDeleteModal({ deleting, onConfirm, onClose }) {
             transition: 'opacity 0.2s', opacity: deleting ? 0.7 : 1
           }}
         >
-          {deleting ? "O'chirilmoqda..." : "Ha, hisobimni o'chirish"}
+          {deleting ? t('modals.deleting') : t('modals.deleteConfirm')}
         </button>
         <button
           onClick={onClose}
@@ -31,7 +33,7 @@ export default function ConfirmDeleteModal({ deleting, onConfirm, onClose }) {
             transition: 'all 0.2s'
           }}
         >
-          Bekor qilish
+          {t('modals.cancel')}
         </button>
       </div>
     </ModalShell>

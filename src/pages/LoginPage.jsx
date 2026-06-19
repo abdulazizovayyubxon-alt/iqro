@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Eye, EyeOff, Send, ShieldCheck } from 'lucide-react';
@@ -15,11 +16,12 @@ const STEPS = {
 const PRIMARY = '#29B6F6';
 
 export default function LoginPage() {
+  const { t } = useTranslation();
   const {
-    signInWithPhone, resetPassword,
+    signInWithPhone,
     authError, setAuthError, checkLockout, checkUserExists
   } = useAuth();
-  
+
   const isMobile = useIsMobile();
   const s = getStyles(isMobile);
 
@@ -32,6 +34,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [lockoutTimer, setLockoutTimer] = useState(null);
   const [featureIdx, setFeatureIdx] = useState(0);
+  const [tgPolling, setTgPolling] = useState(false);
 
   useEffect(() => {
     if (step === STEPS.PHONE) {
@@ -43,9 +46,9 @@ export default function LoginPage() {
   }, [step]);
 
   const FEATURES = [
-    { icon: '🚀', title: 'Tezkor va Qulay', desc: 'Imtihonga zamonaviy usulda tayyorlaning' },
-    { icon: '🧠', title: 'Aqlli Takrorlash', desc: 'Xatolarni tahlil qilib, eslab qolishni osonlashtiring' },
-    { icon: '📵', title: 'Oflayn Rejim', desc: 'Internetsiz ham test ishlashda davom eting' }
+    { icon: '🚀', title: t('login.f1Title'), desc: t('login.f1Desc') },
+    { icon: '🧠', title: t('login.f2Title'), desc: t('login.f2Desc') },
+    { icon: '📵', title: t('login.f3Title'), desc: t('login.f3Desc') }
   ];
 
   useEffect(() => {
@@ -55,6 +58,18 @@ export default function LoginPage() {
     }, 1000);
     return () => clearInterval(interval);
   }, [checkLockout]);
+
+  // Komponent yo'q qilinganda Telegram polling va focus/visibility listenerlarini
+  // tozalaymiz (xotira oqishi va "yetim" so'rovlarning oldini olish uchun).
+  useEffect(() => () => {
+    window.tgActive = false;
+    if (window.tgTimer) clearTimeout(window.tgTimer);
+    if (window.tgVisHandler) {
+      document.removeEventListener('visibilitychange', window.tgVisHandler);
+      window.removeEventListener('focus', window.tgVisHandler);
+      window.tgVisHandler = null;
+    }
+  }, []);
 
   const handlePhoneChange = (e) => {
     setAuthError('');
@@ -82,7 +97,7 @@ export default function LoginPage() {
   const handlePhoneNext = async () => {
     setAuthError('');
     if (!isPhoneValid()) {
-      setAuthError("To'g'ri telefon raqam kiriting");
+      setAuthError(t('login.errPhone'));
       return;
     }
     setStep(STEPS.CHECKING);
@@ -115,11 +130,11 @@ export default function LoginPage() {
     // ── AUTH ekrani ──
     if (authMode === 'register') {
       if (!name.trim() || name.length < 3) {
-        setAuthError("Ism-familiyangizni to'liq kiriting (kamida 3 belgi)");
+        setAuthError(t('login.errName'));
         return;
       }
       if (!password || password.length < 6) {
-        setAuthError("Parol kamida 6 ta belgidan iborat bo'lishi kerak");
+        setAuthError(t('login.errPassword'));
         return;
       }
       setLoading(true);
@@ -128,11 +143,11 @@ export default function LoginPage() {
         if (res && !res.success && res.hasCustomPassword) {
           // Bu raqam allaqachon ro'yxatdan o'tgan — kirish rejimiga o'tamiz
           setAuthMode('login');
-          setAuthError("Bu raqam allaqachon ro'yxatdan o'tgan. Parolingizni kiriting.");
+          setAuthError(t('login.errAlreadyReg'));
         }
       } catch (e) {
         console.error("Register xatosi:", e);
-        if (!authError) setAuthError("Ro'yxatdan o'tishda xatolik.");
+        if (!authError) setAuthError(t('login.errRegisterFail'));
       } finally {
         setLoading(false);
       }
@@ -140,18 +155,18 @@ export default function LoginPage() {
     }
 
     // authMode === 'login'
-    if (!password) { setAuthError("Parolni kiriting"); return; }
+    if (!password) { setAuthError(t('login.errEnterPass')); return; }
     setLoading(true);
     try {
       const res = await signInWithPhone('', phone, password, false);
       if (res && !res.success && res.notRegistered) {
         // Bu raqam hali ro'yxatdan o'tmagan — ro'yxat rejimiga o'tamiz
         setAuthMode('register');
-        setAuthError("Bu raqam hali ro'yxatdan o'tmagan. Ism kiritib, yangi hisob yarating.");
+        setAuthError(t('login.errNotReg'));
       }
     } catch (e) {
       console.error("Login xatosi:", e);
-      if (!authError) setAuthError("Kirishda xatolik yuz berdi.");
+      if (!authError) setAuthError(t('login.errLoginFail'));
     } finally {
       setLoading(false);
     }
@@ -166,54 +181,97 @@ export default function LoginPage() {
   };
 
   const handleForgotPassword = async () => {
-    if (!isPhoneValid()) { setAuthError("Avval telefon raqamni kiriting"); return; }
-    await resetPassword(phone);
+    if (!isPhoneValid()) { setAuthError(t('login.errEnterPhone')); return; }
+    // Telefon hisoblarining emaili soxta (@iqro.uz) — email orqali tiklash ishlamaydi.
+    // Yagona ishonchli tiklash kanali: Telegram orqali parolsiz kirib, so'ng Profil →
+    // "Parolni o'zgartirish" orqali yangi parol o'rnatiladi. Avval bu tugma faqat matnli
+    // ko'rsatma berardi; endi tiklash oqimini (Telegram) to'g'ridan-to'g'ri ishga tushiradi.
+    await handleTelegramLogin();
+  };
+
+  // Telegram kuzatuvini to'liq to'xtatish: polling timer + focus/visibility listenerlar.
+  const stopTgWatch = () => {
+    window.tgActive = false;
+    if (window.tgTimer) clearTimeout(window.tgTimer);
+    if (window.tgVisHandler) {
+      document.removeEventListener('visibilitychange', window.tgVisHandler);
+      window.removeEventListener('focus', window.tgVisHandler);
+      window.tgVisHandler = null;
+    }
   };
 
   const handleTelegramLogin = async () => {
     const sessionId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     window.location.href = `tg://resolve?domain=IQRO_testbot&start=login_${sessionId}`;
     setLoading(true);
-    setAuthError('⏳ Telegram orqali tasdiqlash kutilmoqda... Botga o\'tib "📱 Telefon raqamni yuborish" tugmasini bosing.');
-    
-    if (window.tgInterval) clearInterval(window.tgInterval);
-    window.tgInterval = setInterval(async () => {
+    setTgPolling(true);
+    setAuthError(t('login.tgWaiting'));
+
+    // Avvalgi kuzatuv (timer + listenerlar) bo'lsa tozalaymiz, keyin yangisini boshlaymiz.
+    stopTgWatch();
+    window.tgActive = true;
+    const deadline = Date.now() + 120000; // 2 daqiqa
+    let delay = 2500;
+
+    // Sekin-asta orqaga chekinuvchi polling (2.5s → 6s) — setInterval o'rniga rekursiv
+    // setTimeout. So'rovlar sonini ~yarmiga kamaytiradi (server yuki + batareya tejaladi).
+    const poll = async () => {
+      if (!window.tgActive) return;
+      if (Date.now() > deadline) {
+        stopTgWatch();
+        setLoading(false);
+        setTgPolling(false);
+        setAuthError(t('login.tgTimeout'));
+        return;
+      }
       try {
         const res = await fetch(`/api/telegram-auth?sessionId=${sessionId}`);
         const data = await res.json();
         if (data.success && data.token) {
-          clearInterval(window.tgInterval);
+          stopTgWatch();
+          setTgPolling(false);
           setAuthError('');
           setLoading(false);
           await signInWithCustomToken(auth, data.token);
-          // onAuthStateChanged o'zi user ni set qiladi
+          return; // onAuthStateChanged o'zi user ni set qiladi
         }
       } catch (e) {
         console.error(e);
       }
-    }, 2500);
-    
-    setTimeout(() => {
-      if (window.tgInterval) {
-        clearInterval(window.tgInterval);
-        setLoading(false);
-        setAuthError('Vaqt tugadi. Qaytadan urinib ko\'ring.');
-      }
-    }, 120000); // 2 min timeout
+      if (!window.tgActive) return;
+      delay = Math.min(delay + 500, 6000); // backoff
+      window.tgTimer = setTimeout(poll, delay);
+    };
+
+    // Foydalanuvchi Telegram'dan ilovaga QAYTGAN payti — odatda aynan shunda tasdiq
+    // tayyor bo'ladi. Qaytishi bilan kutishni to'xtatib darhol tekshiramiz va keyingi
+    // urinishlarni tezlashtiramiz (6s backoff o'rniga 1.5s). Bu kutish vaqtini
+    // keskin qisqartiradi va aniq "Tekshirilmoqda..." statusini ko'rsatadi.
+    const onReturn = () => {
+      if (!window.tgActive || document.visibilityState === 'hidden') return;
+      setAuthError(t('login.tgChecking'));
+      delay = 1500;
+      if (window.tgTimer) clearTimeout(window.tgTimer);
+      poll();
+    };
+    window.tgVisHandler = onReturn;
+    document.addEventListener('visibilitychange', onReturn);
+    window.addEventListener('focus', onReturn);
+
+    window.tgTimer = setTimeout(poll, delay);
   };
 
   const cancelTelegramLogin = () => {
-    if (window.tgInterval) {
-      clearInterval(window.tgInterval);
-    }
+    stopTgWatch();
     setLoading(false);
+    setTgPolling(false);
     setAuthError('');
   };
 
   const progressMap = {
-    [STEPS.PHONE]: 0.4,
-    [STEPS.CHECKING]: 0.6,
-    [STEPS.AUTH]: 0.8,
+    [STEPS.PHONE]: 0.45,
+    [STEPS.CHECKING]: 0.7,
+    [STEPS.AUTH]: 1,
   };
   const progress = progressMap[step] || 0.4;
 
@@ -269,7 +327,7 @@ export default function LoginPage() {
                         </div>
                         <div>
                           <h1 style={{ ...s.title, marginBottom: 6, fontSize: 24, lineHeight: 1.1 }}>{FEATURES[featureIdx].title}</h1>
-                          <p style={{ ...s.subtitle, margin: 0, fontSize: 13, lineHeight: 1.4 }}>{FEATURES[featureIdx].desc}</p>
+                          <p style={{ ...s.subtitle, marginBottom: 0, fontSize: 13, lineHeight: 1.4 }}>{FEATURES[featureIdx].desc}</p>
                         </div>
                       </motion.div>
                     </AnimatePresence>
@@ -291,7 +349,7 @@ export default function LoginPage() {
               {/* ── STEP: CHECKING — fonda raqam tekshirilmoqda ── */}
               {step === STEPS.CHECKING && (
                 <>
-                  <h1 style={s.title}>Tekshirilmoqda...</h1>
+                  <h1 style={s.title}>{t('login.checking')}</h1>
                   <p style={s.subtitle}>
                     <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong>
                   </p>
@@ -304,9 +362,9 @@ export default function LoginPage() {
               {/* ── STEP: AUTH — kirish yoki ro'yxatdan o'tish (bitta ekran) ── */}
               {step === STEPS.AUTH && authMode === 'login' && (
                 <>
-                  <h1 style={s.title}>Xush kelibsiz!</h1>
+                  <h1 style={s.title}>{t('login.loginTitle')}</h1>
                   <p style={s.subtitle}>
-                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> — parolingizni kiriting.
+                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> {t('login.loginSubtitleSuffix')}
                   </p>
 
                   <div style={{ position: 'relative' }}>
@@ -314,7 +372,7 @@ export default function LoginPage() {
                       id="login-password-input"
                       style={s.input}
                       type={showPass ? 'text' : 'password'}
-                      placeholder="Parolingiz"
+                      placeholder={t('login.passwordPlaceholder')}
                       value={password}
                       onChange={e => { setAuthError(''); setPassword(e.target.value); }}
                       autoFocus
@@ -325,14 +383,14 @@ export default function LoginPage() {
                     </button>
                   </div>
                   <button style={s.forgotBtn} onClick={handleForgotPassword}>
-                    Parolni unutdingizmi?
+                    {t('login.forgot')}
                   </button>
 
                   {/* Yangi foydalanuvchi uchun havola */}
                   <div style={s.switchRow}>
-                    <span style={{ color: 'var(--text3)' }}>Hisobingiz yo'qmi?</span>
+                    <span style={{ color: 'var(--text3)' }}>{t('login.noAccount')}</span>
                     <button type="button" style={s.switchLink} onClick={() => switchAuthMode('register')}>
-                      Yangi hisob yarating
+                      {t('login.createAccount')}
                     </button>
                   </div>
                 </>
@@ -340,19 +398,19 @@ export default function LoginPage() {
 
               {step === STEPS.AUTH && authMode === 'register' && (
                 <>
-                  <h1 style={s.title}>Hisob yarating</h1>
+                  <h1 style={s.title}>{t('login.registerTitle')}</h1>
                   <p style={s.subtitle}>
-                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> — bilimingizni sinab ko'ring va malakangizni oshiring.
+                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> {t('login.registerSubtitleSuffix')}
                   </p>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '6px' }}>
                     <div>
-                      <label style={s.fieldLabel}>Ism va familiya</label>
+                      <label style={s.fieldLabel}>{t('login.nameLabel')}</label>
                       <input
                         id="register-name-input"
                         style={s.input}
                         type="text"
-                        placeholder="Ism va familiyangizni kiriting"
+                        placeholder={t('login.namePlaceholder')}
                         value={name}
                         onChange={e => { setAuthError(''); setName(e.target.value); }}
                         autoFocus
@@ -360,12 +418,12 @@ export default function LoginPage() {
                     </div>
 
                     <div>
-                      <label style={s.fieldLabel}>Parol yarating</label>
+                      <label style={s.fieldLabel}>{t('login.passwordLabel')}</label>
                       <div style={{ position: 'relative' }}>
                         <input
                           style={s.input}
                           type={showPass ? 'text' : 'password'}
-                          placeholder="Kamida 6 ta belgi"
+                          placeholder={t('login.passwordCreatePlaceholder')}
                           value={password}
                           onChange={e => { setAuthError(''); setPassword(e.target.value); }}
                           onKeyDown={e => e.key === 'Enter' && handleContinue()}
@@ -379,9 +437,9 @@ export default function LoginPage() {
 
                   {/* Mavjud foydalanuvchi uchun havola */}
                   <div style={s.switchRow}>
-                    <span style={{ color: 'var(--text3)' }}>Hisobingiz bormi?</span>
+                    <span style={{ color: 'var(--text3)' }}>{t('login.haveAccount')}</span>
                     <button type="button" style={s.switchLink} onClick={() => switchAuthMode('login')}>
-                      Kirish
+                      {t('login.signIn')}
                     </button>
                   </div>
                 </>
@@ -396,12 +454,12 @@ export default function LoginPage() {
                   <p style={s.errorText}>
                     {authError}
                   </p>
-                  {authError.includes('Telegram orqali tasdiqlash kutilmoqda') && (
-                    <button 
+                  {tgPolling && (
+                    <button
                       onClick={cancelTelegramLogin}
                       style={{ background: 'transparent', border: '1px solid #FF3B30', color: '#FF3B30', padding: '6px 16px', borderRadius: '20px', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}
                     >
-                      Bekor qilish
+                      {t('common.cancel')}
                     </button>
                   )}
                 </motion.div>
@@ -422,15 +480,15 @@ export default function LoginPage() {
                 disabled={loading}
                 whileTap={{ scale: 0.98 }}
               >
-                <Send size={20} color="#fff" /> Telegram orqali kirish
+                <Send size={20} color="#fff" /> {t('login.telegramLogin')}
               </motion.button>
               <div style={{ textAlign: 'center', fontSize: 12, color: 'var(--text3)', marginBottom: 14 }}>
-                ✨ Parolsiz — eng oson va tavsiya etilgan usul
+                {t('login.telegramHint')}
               </div>
 
               <div style={s.orRow}>
                 <div style={s.orLine} />
-                <span style={s.orText}>yoki telefon raqam bilan</span>
+                <span style={s.orText}>{t('login.orPhone')}</span>
                 <div style={s.orLine} />
               </div>
 
@@ -442,9 +500,9 @@ export default function LoginPage() {
                 disabled={loading || !!lockoutTimer}
                 whileTap={{ scale: 0.98 }}
               >
-                {loading ? 'Iltimos, kuting...'
-                  : lockoutTimer ? `Kuting (${lockoutTimer}s)`
-                  : 'Telefon raqam bilan davom etish'}
+                {loading ? t('login.pleaseWait')
+                  : lockoutTimer ? t('login.wait', { sec: lockoutTimer })
+                  : t('login.continuePhone')}
               </motion.button>
             </>
           ) : step === STEPS.AUTH && (
@@ -455,20 +513,20 @@ export default function LoginPage() {
               disabled={loading || !!lockoutTimer}
               whileTap={{ scale: 0.98 }}
             >
-              {loading ? 'Iltimos, kuting...'
-                : lockoutTimer ? `Kuting (${lockoutTimer}s)`
-                : authMode === 'register' ? 'Hisob yaratish' : 'Kirish'}
+              {loading ? t('login.pleaseWait')
+                : lockoutTimer ? t('login.wait', { sec: lockoutTimer })
+                : authMode === 'register' ? t('login.createAccountBtn') : t('login.signIn')}
             </motion.button>
           )}
 
           {/* Trust Badges & Policies */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', marginTop: '24px' }}>
             <div style={{ fontSize: '11px', color: 'var(--text3)', textAlign: 'center', maxWidth: 280, lineHeight: 1.5 }}>
-              Tizimga kirish orqali siz bizning <a href="/privacy" style={{color: '#29B6F6', textDecoration: 'none', fontWeight: 600}}>Maxfiylik Siyosati</a> va <a href="/terms" style={{color: '#29B6F6', textDecoration: 'none', fontWeight: 600}}>Foydalanish Shartlari</a>ga rozi bo'lasiz.
+              {t('login.policyP1')} <a href="/privacy" style={{color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600}}>{t('login.privacyLink')}</a> {t('login.policyMid')} <a href="/terms" style={{color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600}}>{t('login.termsLink')}</a>{t('login.policyP2')}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', opacity: 0.6 }}>
               <ShieldCheck size={16} color="var(--text)" />
-              <span style={{ fontSize: '12px', color: 'var(--text)', fontWeight: 500 }}>Ma'lumotlaringiz xavfsiz himoyalangan</span>
+              <span style={{ fontSize: '12px', color: 'var(--text)', fontWeight: 500 }}>{t('login.dataSecure')}</span>
             </div>
           </div>
         </div>
@@ -540,7 +598,7 @@ const getStyles = (isMobile) => ({
     width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center',
   },
   forgotBtn: {
-    background: 'none', border: 'none', color: '#29B6F6',
+    background: 'none', border: 'none', color: 'var(--accent2)',
     fontSize: 14, fontWeight: 600, cursor: 'pointer',
     fontFamily: 'inherit', marginTop: '6px', padding: '12px 0px',
     textDecoration: 'underline', textUnderlineOffset: 3,
@@ -556,7 +614,7 @@ const getStyles = (isMobile) => ({
   },
   primaryBtn: {
     width: '100%', padding: '16px', borderRadius: 16,
-    background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none',
+    background: 'var(--grad-primary)', color: '#fff', border: 'none',
     fontWeight: 700, fontSize: 16, cursor: 'pointer',
     fontFamily: 'inherit', transition: 'all 0.2s', marginBottom: isMobile ? 8 : 12,
     boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)',
@@ -583,7 +641,7 @@ const getStyles = (isMobile) => ({
     gap: 6, marginTop: 18, fontSize: 14, flexWrap: 'wrap',
   },
   switchLink: {
-    background: 'none', border: 'none', color: '#29B6F6',
+    background: 'none', border: 'none', color: 'var(--accent2)',
     fontSize: 14, fontWeight: 700, cursor: 'pointer',
     fontFamily: 'inherit', padding: '4px 2px',
     textDecoration: 'underline', textUnderlineOffset: 3,

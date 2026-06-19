@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
@@ -22,6 +23,7 @@ import { doc, getDoc } from 'firebase/firestore';
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
   const { user } = useAuth();
   const { isAdmin } = useAdmin();
   const { state, updateState } = useContext(AppContext);
@@ -58,11 +60,11 @@ const Dashboard = () => {
       }
       if (!target) target = EXAM_DATE;
 
-      if (!target) { setDaysLeft('Bilimingizni oshirishda davom eting!'); return; }
-      
+      if (!target) { setDaysLeft(t('dashboard.examNoDate')); return; }
+
       const diff = target - new Date();
-      if (isNaN(diff) || diff <= 0) setDaysLeft('Imtihon kuni!');
-      else setDaysLeft(`${Math.floor(diff / 86400000)} kun ${Math.floor((diff % 86400000) / 3600000)} soat`);
+      if (isNaN(diff) || diff <= 0) setDaysLeft(t('dashboard.examToday'));
+      else setDaysLeft(t('dashboard.examCountdown', { days: Math.floor(diff / 86400000), hours: Math.floor((diff % 86400000) / 3600000) }));
     };
     calc();
     window.addEventListener('storage', calc);
@@ -71,7 +73,7 @@ const Dashboard = () => {
       clearInterval(int);
       window.removeEventListener('storage', calc);
     };
-  }, []);
+  }, [t]);
 
   // ═══ REFERRAL WELCOME TOAST ═══
   useEffect(() => {
@@ -79,7 +81,7 @@ const Dashboard = () => {
     if (flag === 'true') {
       localStorage.removeItem('iqro_referral_welcome');
       setTimeout(() => {
-        showToast("🎉 Tabriklaymiz! Do'stingiz orqali 50% chegirmaga ega bo'ldingiz!", 'success');
+        showToast(t('dashboard.referralWelcome'), 'success');
       }, 1500);
     }
   }, []);
@@ -96,7 +98,17 @@ const Dashboard = () => {
 
   const dueCards = (state.spacedCards || []).filter(c => c.nextReview <= Date.now()).length;
 
-  const userName = user?.displayName?.split(' ')[0] || 'Foydalanuvchi';
+  const userName = user?.displayName?.split(' ')[0] || t('common.userFallback');
+
+  // Vaqtga bog'liq salom — global header allaqachon "Xush kelibsiz" deydi,
+  // shu sababli Dashboard hero'sida takrorlamay, kun davriga mos salom beramiz.
+  const greetingHi = (() => {
+    const h = new Date().getHours();
+    if (h >= 5 && h < 12) return t('dashboard.greetMorning');
+    if (h >= 12 && h < 18) return t('dashboard.greetDay');
+    if (h >= 18 && h < 23) return t('dashboard.greetEvening');
+    return t('dashboard.greetNight');
+  })();
 
   const getExamDurationMinutes = (category) => {
     switch (category) {
@@ -112,23 +124,23 @@ const Dashboard = () => {
 
   const quickActions = [
     {
-      id: 'test', icon: Play, label: 'Dars Testi', desc: 'Barcha mavzular',
+      id: 'test', icon: Play, label: t('dashboard.actionTest'), desc: t('dashboard.actionTestDesc'),
       color: 'var(--blue)', bg: 'var(--blue-bg)',
       onClick: () => handleNav(-1, 'exam'),
     },
     {
-      id: 'exam', icon: GraduationCap, label: 'Imtihon', desc: `50 savol · ${getExamDurationMinutes(cat)} daqiqa`,
+      id: 'exam', icon: GraduationCap, label: t('dashboard.actionExam'), desc: t('dashboard.actionExamDesc', { count: 50, min: getExamDurationMinutes(cat) }),
       color: 'var(--purple)', bg: 'var(--purple-bg)',
       onClick: () => { if (isFreeLimitReached) { setShowPremiumModal(true); return; } navigate('/exam'); },
     },
     {
-      id: 'review', icon: Brain, label: 'Takrorlash', desc: dueCards > 0 ? `${dueCards} savol kutmoqda` : 'Hozircha yo\'q',
+      id: 'review', icon: Brain, label: t('dashboard.actionReview'), desc: dueCards > 0 ? t('dashboard.actionReviewWaiting', { count: dueCards }) : t('dashboard.actionReviewEmpty'),
       color: 'var(--green)', bg: 'var(--green-bg)',
       badge: dueCards > 0 ? dueCards : null,
       onClick: () => navigate('/review'),
     },
     {
-      id: 'mistakes', icon: Zap, label: 'Xatolar', desc: `${filteredMistakesCount} ta xato`,
+      id: 'mistakes', icon: Zap, label: t('dashboard.actionMistakes'), desc: t('dashboard.actionMistakesDesc', { count: filteredMistakesCount }),
       color: 'var(--amber)', bg: 'var(--amber-bg)',
       onClick: () => handleNav(-1, 'mistakes'),
     },
@@ -144,7 +156,7 @@ const Dashboard = () => {
       {/* ── GREETING ── */}
       <div className="dashboard-greeting">
         <div>
-          <div className="dashboard-greet-sub">Xush kelibsiz 👋</div>
+          <div className="dashboard-greet-sub">{greetingHi} 👋</div>
           <h1 className="dashboard-greet-name">{userName}</h1>
         </div>
       </div>
@@ -182,10 +194,10 @@ const Dashboard = () => {
           borderRadius: 99, padding: '5px 14px', marginBottom: 16,
           fontSize: 12, fontWeight: 700, color: 'var(--green)',
         }}>
-          📚 {questionMeta[cat].count.toLocaleString()} ta tasdiqlangan savol
+          📚 {t('dashboard.approvedQuestions', { count: questionMeta[cat].count.toLocaleString() })}
           {questionMeta[cat].updatedAt && (
             <span style={{ color: 'var(--text3)', fontWeight: 500 }}>
-              · yangilangan {new Date(questionMeta[cat].updatedAt).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'long' })}
+              {' · '}{t('dashboard.updatedOn', { date: new Date(questionMeta[cat].updatedAt).toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : 'uz-UZ', { day: 'numeric', month: 'long' }) })}
             </span>
           )}
         </div>
@@ -194,8 +206,9 @@ const Dashboard = () => {
       {/* ── IMTIHON BANNER ── */}
       {showExamBanner && EXAM_DATE && cat !== 'art' && (
         <div className="dashboard-exam-banner">
-          <button 
-            style={{ position: 'absolute', top: 4, right: 4, background: 'transparent', border: 'none', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', cursor: 'pointer', borderRadius: '50%' }}
+          <button
+            aria-label={t('dashboard.bannerClose')}
+            style={{ position: 'absolute', top: 4, right: 4, background: 'transparent', border: 'none', width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', cursor: 'pointer', borderRadius: '50%' }}
             onClick={(e) => { e.stopPropagation(); setShowExamBanner(false); localStorage.setItem('iqro_dismissed_exam_banner', '1'); }}
           >
             <X size={18} />
@@ -211,7 +224,7 @@ const Dashboard = () => {
           </div>
           <div className="dashboard-exam-goal">
             <Target size={14} />
-            <span>Maqsad: {EXAM_GOAL_SCORE} ball</span>
+            <span>{t('dashboard.goal', { score: EXAM_GOAL_SCORE })}</span>
           </div>
         </div>
       )}
@@ -223,20 +236,21 @@ const Dashboard = () => {
             <span style={{ fontSize: 24 }}>⚡</span>
             <div style={{ textAlign: 'left' }}>
               <div style={{ fontSize: 14, fontWeight: 700, color: '#92400E' }}>
-                {isTrialExpired ? `Bugun yana ${questionsLeft} ta bepul savol qoldi` : `Bepul sinov: ${trialDaysLeft !== null ? `${trialDaysLeft} kun qoldi` : '—'}`}
+                {isTrialExpired ? t('dashboard.trialFreeLeft', { count: questionsLeft }) : (trialDaysLeft !== null ? t('dashboard.trialDaysLeft', { days: trialDaysLeft }) : t('dashboard.trialNoData'))}
               </div>
-              <div style={{ fontSize: 12, color: '#B45309' }}>Premium ga o'tib cheksiz ishlang</div>
+              <div style={{ fontSize: 12, color: '#B45309' }}>{t('dashboard.trialUnlimited')}</div>
             </div>
           </div>
-          <div className="dashboard-trial-btn">Faollashtirish</div>
+          <div className="dashboard-trial-btn">{t('common.activate')}</div>
         </button>
       )}
 
       {/* ── REFERRAL BANNER (Do'stlarni Taklif Qilish) ── */}
       {showReferralBanner && (
       <div style={{ position: 'relative', width: '100%', maxWidth: 600, margin: '0 auto' }}>
-        <button 
-          style={{ position: 'absolute', top: 4, right: 4, zIndex: 10, background: 'transparent', border: 'none', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', borderRadius: '50%' }}
+        <button
+          aria-label={t('dashboard.bannerClose')}
+          style={{ position: 'absolute', top: 4, right: 4, zIndex: 10, background: 'transparent', border: 'none', width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', borderRadius: '50%' }}
           onClick={(e) => { e.stopPropagation(); setShowReferralBanner(false); localStorage.setItem('iqro_dismissed_ref_banner', '1'); }}
         >
           <X size={18} color="#B45309" />
@@ -251,20 +265,20 @@ const Dashboard = () => {
           <GiftBox size={30} style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))', flexShrink: 0 }} />
           <div style={{ textAlign: 'left' }}>
             <div style={{ fontSize: 14, fontWeight: 800, color: '#78350F' }}>
-              Do'stlarni taklif eting!
+              {t('dashboard.referralTitle')}
             </div>
             <div style={{ fontSize: 12, color: '#92400E', marginTop: 2, fontWeight: 500 }}>
-              Taklif qiling va ikkalangiz ham 50% chegirma oling!
+              {t('dashboard.referralSubtitle')}
             </div>
           </div>
         </div>
-        <div className="dashboard-referral-btn">Taklif qilish</div>
+        <div className="dashboard-referral-btn">{t('dashboard.referralBtn')}</div>
       </motion.button>
       </div>
       )}
 
       {/* ── TEZKOR HARAKATLAR ── */}
-      <div className="dashboard-section-label">Tezkor boshlash</div>
+      <div className="dashboard-section-label">{t('dashboard.quickStart')}</div>
       <div className="dashboard-actions-grid">
         {quickActions.map((action) => {
           const Icon = action.icon;
@@ -299,7 +313,7 @@ const Dashboard = () => {
       </div>
 
       {/* ── BO'LIMLAR XARITASI ── */}
-      <div className="dashboard-section-label">Bo'limlar xaritasi</div>
+      <div className="dashboard-section-label">{t('dashboard.sectionsMap')}</div>
       <div className="dashboard-topics-grid">
         {categoryTopics.map((t) => {
           const ts = state.topicStats[t.id];
@@ -338,7 +352,7 @@ const Dashboard = () => {
                 {t.name}
               </div>
               <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 3 }}>
-                {hasStats ? `${ts.answered} savol` : 'Boshlanmagan'}
+                {hasStats ? t('dashboard.topicQuestions', { count: ts.answered }) : t('dashboard.topicNotStarted')}
               </div>
             </motion.button>
           );
@@ -350,11 +364,11 @@ const Dashboard = () => {
         <div className="dashboard-admin-box">
           <div className="dashboard-admin-header">
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 700, color: 'var(--blue)' }}>
-              <MessageCircle size={18} /> E'tirozlar ({objections.length})
+              <MessageCircle size={18} /> {t('dashboard.objections', { count: objections.length })}
             </div>
             <button className="dashboard-admin-clear"
-              onClick={() => { if (confirm('Barchasini o\'chirasizmi?')) clearObjections(); }}>
-              <Trash2 size={14} /> Tozalash
+              onClick={() => { if (confirm(t('dashboard.clearConfirm'))) clearObjections(); }}>
+              <Trash2 size={14} /> {t('dashboard.clear')}
             </button>
           </div>
           {[...objections].reverse().slice(0, 5).map((obj, i) => (
@@ -364,11 +378,11 @@ const Dashboard = () => {
               <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
                 {!obj.solved && (
                   <button className="dashboard-obj-btn" style={{ border: '1px solid #10B98120', background: '#10B98110', color: '#10B981' }} onClick={() => solveObjection(obj.fbId)}>
-                    <CheckCircle2 size={12} /> Tuzatildi
+                    <CheckCircle2 size={12} /> {t('dashboard.fixed')}
                   </button>
                 )}
                 <button className="dashboard-obj-btn" style={{ border: '1px solid #EF444420', background: '#EF444410', color: '#EF4444' }} onClick={() => deleteObjection(obj.fbId)}>
-                  <Trash2 size={12} /> O'chirish
+                  <Trash2 size={12} /> {t('common.delete')}
                 </button>
               </div>
             </div>

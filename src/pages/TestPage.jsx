@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
@@ -9,6 +10,7 @@ import { TOPICS, SUBJECTS } from '../data/mockData';
 import { motion } from 'framer-motion';
 import { RefreshCw, ArrowLeft, X } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { prefersReducedMotion } from '../utils/motion';
 import ObjectionModal from '../components/shared/ObjectionModal';
 import { processQuestionsOnTheFly } from '../utils/questionFixer';
 import PremiumModal from '../components/PremiumModal';
@@ -17,6 +19,8 @@ import { BATCH_SIZE, QUESTION_TIMER_SECONDS } from '../config';
 import { db, auth } from '../firebase';
 import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
 import { smartSort, summarizeTestResults } from '../engine/SmartQuestionEngine';
+import { AnalyticsEvents } from '../services/analytics';
+import { submitQuestionRequest, hasRequested } from '../services/questionRequests';
 import localforage from 'localforage';
 
 // Savol matnidan kirish/kontekst qismini olib tashlaydi va asosiy savolni qaytaradi.
@@ -55,6 +59,7 @@ import { useModalBackButton } from '../components/profile/useModalBackButton';
 
 const TestPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { user } = useAuth();
   const { state, batchCommitResults, updateState, saveCustomMnemonic } = useContext(AppContext);
   const mode = state.testMode || 'exam';
@@ -63,6 +68,7 @@ const TestPage = () => {
   const goBack = () => navigate('/test');
   const { addObjection } = useContext(ObjectionContext);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
+  const [reqJustSent, setReqJustSent] = useState(false);
   const [showRepetitionBanner, setShowRepetitionBanner] = useState(() => {
     try {
       return localStorage.getItem('hide_repetition_banner') !== 'true';
@@ -274,14 +280,14 @@ const TestPage = () => {
                 correct: m.opts.findIndex(o =>
                   o.replace(/^[A-D]\)\s*/, '') === m.correct.replace(/^[A-D]\)\s*/, '')
                 ),
-                explanation: `✓ To'g'ri javob: ${m.correct}`
+                explanation: t('test.correctAnswerWas', { answer: m.correct })
               };
             }
             return {
               q: cleanQ,
               opts: [`A) ${m.correct}`, 'B) —', 'C) —', 'D) —'],
               correct: 0,
-              explanation: `✓ To'g'ri javob: ${m.correct}`
+              explanation: t('test.correctAnswerWas', { answer: m.correct })
             };
           });
         }
@@ -360,14 +366,21 @@ const TestPage = () => {
               });
               if (!res.ok) {
                 if (res.status === 403) {
-                  showToast("Premium yoki sinov muddati talab qilinadi", 'error');
+                  showToast(t('test.toastPremiumRequired'), 'error');
                   setShowPremiumModal(true);
                 }
                 throw new Error('Server error: ' + res.status);
               }
+              // Dev muhitida /api/* serverless funksiyalari ishlamaydi va HTML/JS
+              // qaytaradi — JSON.parse cryptic xato beradi. Avval content-type ni
+              // tekshiramiz; JSON bo'lmasa, bu kutilgan holat (Firestore fallback bor).
+              const contentType = res.headers.get('content-type') || '';
+              if (!contentType.includes('application/json')) {
+                throw new Error('API JSON qaytarmadi (dev muhitida normal holat)');
+              }
               rawList = await res.json();
             } catch (err) {
-              console.error("API orqali bundle yuklashda xatolik:", err);
+              console.warn("API bundle mavjud emas — Firestore fallback ishlatiladi:", err.message);
               rawList = [];
             }
           }
@@ -458,9 +471,14 @@ const TestPage = () => {
         finalPool = qList.filter(q => q.difficulty === diffFilter);
       }
       setFullPool(finalPool);
+      // Analitika: yangi test sessiyasi boshlandi (bo'lim navigatsiyasida emas — bu effekt
+      // faqat fan/mavzu/rejim o'zgarganda ishlaydi)
+      if (finalPool.length > 0) {
+        AnalyticsEvents.testStart(topicName, mode);
+      }
     } catch (error) {
       console.error("Firestore Error:", error);
-      showToast("Savollarni yuklashda xatolik yuz berdi", 'error');
+      showToast(t('test.toastLoadError'), 'error');
     } finally {
       setIsGenerating(false);
     }
@@ -486,23 +504,26 @@ const TestPage = () => {
       setComboCount(newCombo);
 
       const MOTIVATIONS = [
-        { min: 1, words: ["To'g'ri! ✓", "Yaxshi! 👍", "Ha! ✅"] },
-        { min: 3, words: ["Zo'r! 🔥", "Ajoyib! ⚡", "Davom eting! 💪"] },
-        { min: 5, words: ["Daho! 🧠", "Mukammal! 🌟", "Qoyil! 🏆"] },
-        { min: 10, words: ["LEGENDA! 👑", "CHEMPION! 🥇", "FENOMENAL! 🚀"] },
+        { min: 1, words: t('test.motiv.t1', { returnObjects: true }) },
+        { min: 3, words: t('test.motiv.t3', { returnObjects: true }) },
+        { min: 5, words: t('test.motiv.t5', { returnObjects: true }) },
+        { min: 10, words: t('test.motiv.t10', { returnObjects: true }) },
       ];
       const tier = [...MOTIVATIONS].reverse().find(m => newCombo >= m.min);
-      const word = tier ? tier.words[Math.floor(Math.random() * tier.words.length)] : "To'g'ri!";
-      setMotivationText(newCombo >= 3 ? `${word} (${newCombo}x combo!)` : word);
+      const word = (tier && Array.isArray(tier.words)) ? tier.words[Math.floor(Math.random() * tier.words.length)] : t('test.motivFallback');
+      setMotivationText(newCombo >= 3 ? t('test.motivCombo', { word, combo: newCombo }) : word);
       clearTimeout(motivationTimerRef.current);
       motivationTimerRef.current = setTimeout(() => setMotivationText(''), 2000);
 
-      confetti({
-        particleCount: newCombo >= 10 ? 200 : newCombo >= 5 ? 120 : 80,
-        spread: newCombo >= 5 ? 90 : 60,
-        origin: { y: 0.7 },
-        colors: newCombo >= 10 ? ['#FFD700', '#FFA500', '#FF4500'] : ['#34D399', '#10B981', '#ffffff']
-      });
+      // Konfetti — har to'g'ri javobda emas, faqat katta combo bosqichlarida (5, 10, 15...)
+      if (newCombo >= 5 && newCombo % 5 === 0 && !prefersReducedMotion()) {
+        confetti({
+          particleCount: newCombo >= 10 ? 200 : 120,
+          spread: 90,
+          origin: { y: 0.7 },
+          colors: newCombo >= 10 ? ['#FFD700', '#FFA500', '#FF4500'] : ['#34D399', '#10B981', '#ffffff']
+        });
+      }
     } else {
       setComboCount(0);
       setMotivationText('');
@@ -517,7 +538,7 @@ const TestPage = () => {
     const qObj = questions[currentQ];
     addObjection(topicId, state.activeCategory, qObj, text);
     setShowObjectionModal(false);
-    showToast("E'tiroz qabul qilindi. Rahmat!", 'success');
+    showToast(t('test.toastObjectionThanks'), 'success');
   };
 
   const handleFlashcardKnown = (known) => {
@@ -527,16 +548,41 @@ const TestPage = () => {
       setFcFlipped(false);
     } else {
       const knownCount = Object.values({ ...fcKnown, [currentQ]: known }).filter(Boolean).length;
-      showToast(`Flashcard yakunlandi! ${knownCount}/${questions.length} ta bilasiz 🎉`, 'info');
+      showToast(t('test.toastFlashcardDone', { known: knownCount, total: questions.length }), 'info');
     }
   };
 
   useEffect(() => {
     setSelectedBatch(0);
+    setReqJustSent(false); // mavzu o'zgarsa so'rov tugma holatini tiklash
   }, [topicId, mode]);
 
   const topicObj = TOPICS.find(t => t.id === topicId);
-  const topicName = topicId === -1 ? "Barcha bo'limlar" : (topicObj?.name || "Barcha bo'limlar");
+  const topicName = topicId === -1 ? t('test.allSections') : (topicObj?.name || t('test.allSections'));
+
+  // Shu mavzu uchun avval so'rov yuborilganmi (localStorage) yoki shu sessiyada yuborildimi
+  const reqAlreadySent = reqJustSent || (user ? hasRequested(user.uid, state.activeCategory, topicId) : false);
+
+  // "Ko'proq savol kerak" — tirik halqa so'rovi (questionRequests)
+  const handleRequestMore = async () => {
+    if (!user) { showToast(t('test.toastLoginToRequest'), 'error'); return; }
+    const categoryName = SUBJECTS.find(s => s.id === state.activeCategory)?.name || state.activeCategory;
+    const res = await submitQuestionRequest(user, {
+      category: state.activeCategory,
+      categoryName,
+      topicId,
+      topicName,
+    });
+    if (res.ok) {
+      setReqJustSent(true);
+      showToast(t('test.toastRequestOk'), 'success');
+    } else if (res.reason === 'duplicate') {
+      setReqJustSent(true);
+      showToast(t('test.toastRequestDup'), 'info');
+    } else {
+      showToast(t('test.toastRequestErr'), 'error');
+    }
+  };
 
   useEffect(() => {
     if (topicObj?.theoryHint && questions.length > 0) {
@@ -563,6 +609,7 @@ const TestPage = () => {
     // Send result to Telegram
     const correctCount = Object.keys(answers).filter(k => answers[k] === questions[parseInt(k)]?.correct).length;
     const wrongCount = Object.keys(answers).length - correctCount;
+    AnalyticsEvents.testComplete(topicName, correctCount, questions.length);
     fetch('/api/send-result', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -607,9 +654,9 @@ const TestPage = () => {
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="theory-container">
         <div className="theory-card">
           <div className="theory-icon">📚</div>
-          <h2 className="theory-title">Qisqacha Eslatma</h2>
+          <h2 className="theory-title">{t('test.theoryTitle')}</h2>
           <p className="theory-subtitle">
-            Testni boshlashdan oldin quyidagi ma'lumotlarni yodga oling:
+            {t('test.theorySubtitle')}
           </p>
           <div className="theory-content">
             {topicObj?.theoryHint}
@@ -620,7 +667,7 @@ const TestPage = () => {
             className="theory-btn"
             onClick={() => setShowTheory(false)}
           >
-            O'qib chiqdim — Testni boshlash
+            {t('test.theoryBtn')}
           </motion.button>
         </div>
       </motion.div>
@@ -633,14 +680,14 @@ const TestPage = () => {
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="limit-container">
         <div className="limit-card">
           <div className="limit-icon">🔒</div>
-          <div className="limit-title">Kunlik Bepul Limit Tugadi</div>
+          <div className="limit-title">{t('test.limitTitle')}</div>
           <div className="limit-text">
-            Siz bugungi 50 ta bepul savol limitiga yetdingiz! Barcha savollar va mavzularga cheksiz kirish uchun Premium rejimni faollashtiring.
+            {t('test.limitText')}
           </div>
           <button className="limit-btn-primary" onClick={() => setShowPremiumModal(true)}>
-            ⭐ Premium Rejimni Faollashtirish
+            {t('test.limitActivate')}
           </button>
-          <button className="limit-btn-secondary" onClick={goBack}>← Bosh sahifaga</button>
+          <button className="limit-btn-secondary" onClick={goBack}>{t('test.backHomeArrow')}</button>
         </div>
         <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
       </motion.div>
@@ -700,26 +747,33 @@ const TestPage = () => {
             {mode === 'mistakes' ? (
               <>
                 <div className="empty-state-icon success float-animation">🏆</div>
-                <h3 className="empty-state-title">Hozircha xatolar yo'q</h3>
+                <h3 className="empty-state-title">{t('test.emptyMistakesTitle')}</h3>
                 <p className="empty-state-text">
-                  Ajoyib natija! Siz hali birorta ham xato qilmadingiz yoki barcha xatolaringizni muvaffaqiyatli tuzatdingiz.
+                  {t('test.emptyMistakesText')}
                 </p>
                 <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
-                  <button className="btn btn-outline" onClick={goBack}><ArrowLeft size={16} /> Fanni almashtirish</button>
+                  <button className="btn btn-outline" onClick={goBack}><ArrowLeft size={16} /> {t('test.changeSubject')}</button>
                 </div>
               </>
             ) : (
               <>
                 <div className="empty-state-icon info float-animation">⏳</div>
-                <h3 className="empty-state-title">Mavzu tayyorlanmoqda</h3>
+                <h3 className="empty-state-title">{t('test.emptyInfoTitle')}</h3>
                 <p className="empty-state-text">
-                  Ushbu bo'lim uchun savollar hozirda yuklanish jarayonida yoki tez orada qo'shiladi. Boshqa bo'lim yoki fanni sinab ko'ring.
+                  {t('test.emptyInfoText')}
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center' }}>
-                  {topicId !== -1 && (
-                    <button className="btn btn-primary" style={{ width: '220px' }} onClick={() => setTopicId(-1)}>📚 Barcha mavzular</button>
+                  {reqAlreadySent ? (
+                    <div style={{ width: '220px', padding: '12px', borderRadius: '14px', background: 'var(--green-bg)', color: 'var(--green)', fontWeight: 700, fontSize: '13px', textAlign: 'center', border: '1px solid rgba(16,185,129,0.25)' }}>
+                      {t('test.requestSent')}
+                    </div>
+                  ) : (
+                    <button className="btn btn-primary" style={{ width: '220px' }} onClick={handleRequestMore}>{t('test.needMore')}</button>
                   )}
-                  <button className="btn btn-outline" style={{ width: '220px' }} onClick={goBack}><ArrowLeft size={16} /> Boshqa fanni tanlash</button>
+                  {topicId !== -1 && (
+                    <button className="btn btn-outline" style={{ width: '220px' }} onClick={() => setTopicId(-1)}>{t('test.allTopicsBtn')}</button>
+                  )}
+                  <button className="btn btn-outline" style={{ width: '220px' }} onClick={goBack}><ArrowLeft size={16} /> {t('test.chooseOtherSubject')}</button>
                 </div>
               </>
             )}
@@ -775,11 +829,12 @@ const TestPage = () => {
                       <RefreshCw size={16} />
                     </div>
                     <div style={{ fontSize: '12px', lineHeight: '1.4', color: 'var(--text2)' }}>
-                      <strong style={{ color: 'var(--text)' }}>Aqlli Takrorlash Faol:</strong> Noto'g'ri yechilgan savollar mustahkamlash uchun qayta ko'rsatiladi (ulush: {state.repetitionLimit ?? 10}%). Sozlamalarni profildan o'zgartirishingiz mumkin.
+                      <strong style={{ color: 'var(--text)' }}>{t('test.repetitionActive')}</strong> {t('test.repetitionText', { pct: state.repetitionLimit ?? 10 })}
                     </div>
                   </div>
-                  <button 
+                  <button
                     onClick={handleDismissBanner}
+                    aria-label={t('common.close')}
                     style={{
                       background: 'transparent',
                       border: 'none',
@@ -823,11 +878,11 @@ const TestPage = () => {
                 onPremiumClick={() => setShowPremiumModal(true)}
               />
               <div className="q-nav" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px' }}>
-                <button disabled={currentQ === 0} className="btn btn-outline" onClick={() => { accumulateTime(); setCurrentQ(prev => prev - 1); }}>Orqaga</button>
+                <button disabled={currentQ === 0} className="btn btn-outline" onClick={() => { accumulateTime(); setCurrentQ(prev => prev - 1); }}>{t('common.back')}</button>
                 {Object.keys(answers).length === questions.length ? (
-                  <button className="btn btn-primary" onClick={handleShowResults}>Natijani Ko'rish</button>
+                  <button className="btn btn-primary" onClick={handleShowResults}>{t('test.viewResults')}</button>
                 ) : (
-                  <button disabled={currentQ === questions.length - 1} className="btn btn-outline" onClick={() => { accumulateTime(); setCurrentQ(prev => prev + 1); }}>Keyingi</button>
+                  <button disabled={currentQ === questions.length - 1} className="btn btn-outline" onClick={() => { accumulateTime(); setCurrentQ(prev => prev + 1); }}>{t('test.next')}</button>
                 )}
               </div>
             </>
@@ -875,11 +930,11 @@ const TestPage = () => {
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: 24, maxWidth: 320, width: '90%', borderRadius: 20, textAlign: 'center', background: 'var(--bg2)' }}>
             <div style={{ fontSize: 40, marginBottom: 12 }}>⚠️</div>
-            <h3 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Testdan chiqish</h3>
-            <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>Testdan chiqmoqchimisiz? Joriy bo'lim javoblari saqlanmaydi.</p>
+            <h3 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>{t('test.exitTitle')}</h3>
+            <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>{t('test.exitText')}</p>
             <div style={{ display: 'flex', gap: 12 }}>
-              <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setShowExitConfirm(false)}>Davom etish</button>
-              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { setShowExitConfirm(false); navigate('/test'); }}>Chiqish</button>
+              <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setShowExitConfirm(false)}>{t('test.continueBtn')}</button>
+              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { setShowExitConfirm(false); navigate('/test'); }}>{t('test.exit')}</button>
             </div>
           </motion.div>
         </div>

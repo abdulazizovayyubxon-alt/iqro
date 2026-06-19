@@ -15,6 +15,7 @@
   --accent: #2BA3DC; /* Wisdom/IQRO blue — biroz to'yinmagan */
   --accent2: #1180B8;
   --accent3: #0B5C85;
+  --grad-primary: linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%); /* brend gradienti — temaga moslashadi */
   --text: #1E2A3A;
   --text2: #3D4C5E;
   --text3: #6B7886;
@@ -46,6 +47,7 @@ body.dark-theme {
   --accent: #29B6F6;
   --accent2: #38BDF8;
   --accent3: #7DD3FC;
+  --grad-primary: linear-gradient(135deg, #29B6F6 0%, #A78BFA 100%);
   --text: #F8FAFC;
   --text2: #CBD5E1;
   --text3: #94A3B8;
@@ -78,6 +80,7 @@ body.sepia-theme {
   --accent: #3F7FAE;
   --accent2: #2D618A;
   --accent3: #1F4663;
+  --grad-primary: linear-gradient(135deg, #3F7FAE 0%, #7C5CB0 100%);
   --text: #3B2F1B;
   --text2: #5C4F35;
   --text3: #8A7A5C;
@@ -141,8 +144,9 @@ body.dark-theme {
   gap: 8px;
 }
 .btn:active { transform: scale(0.96); }
-.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--bg); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
-.btn-primary:hover { background: var(--accent2); border-color: var(--accent2); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); }
+/* a11y: accent o'rniga accent2 — och matn (var(--bg)) bilan kontrast ~2.8→~4:1 (har temada saqlanadi) */
+.btn-primary { background: var(--accent2); border-color: var(--accent2); color: var(--bg); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+.btn-primary:hover { background: var(--accent3); border-color: var(--accent3); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); }
 .btn-outline { background: var(--bg2); border-color: var(--border); color: var(--text); box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
 .btn-outline:hover { background: var(--surface2); }
 .btn-sm { padding: 6px 14px; font-size: 13px; border-radius: 8px; }
@@ -1784,8 +1788,9 @@ body.exam-fullscreen .exam-layout { height: 100vh; }
     order: 2;
   }
   .exam-q-grid {
-    grid-template-columns: repeat(10, 1fr);
-    gap: 4px;
+    /* a11y: 10 ustun ~27px teginish zonasi berardi — 7 ustun ~40px qiladi */
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
   }
   .exam-layout {
     height: auto;
@@ -2024,4 +2029,17 @@ input:focus, textarea:focus, select:focus {
 }
 .bottom-sheet-trigger:active {
   transform: translateY(1px);
+}
+
+/* ── Harakatni kamaytirish — tizim sozlamasiga hurmat (a11y + past quvvatli qurilmalar) ──
+   Foydalanuvchi OS'da "Reduce Motion" yoqsa, cheksiz (spin/pulse/float/shimmer/timerPulse)
+   va boshqa animatsiyalarni deyarli to'xtatamiz — batareya va ishlash tejaladi. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .float-animation { animation: none !important; }
 }

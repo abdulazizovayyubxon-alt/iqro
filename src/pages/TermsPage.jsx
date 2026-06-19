@@ -1,10 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, FileText } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function TermsPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const p2List = t('termsPage.p2List', { returnObjects: true });
+  const p3List = t('termsPage.p3List', { returnObjects: true });
 
   return (
     <div style={s.page}>
@@ -12,7 +16,7 @@ export default function TermsPage() {
         <button style={s.backBtn} onClick={() => navigate(-1)}>
           <ArrowLeft size={24} />
         </button>
-        <h1 style={s.title}>Foydalanish Shartlari</h1>
+        <h1 style={s.title}>{t('termsPage.title')}</h1>
         <div style={{ width: 24 }} />
       </div>
 
@@ -25,45 +29,29 @@ export default function TermsPage() {
           <FileText size={48} color="#29B6F6" />
         </div>
 
-        <h2 style={s.heading}>1. Umumiy qoidalar</h2>
-        <p style={s.text}>
-          Ushbu Foydalanish shartlari (keyingi o'rinlarda "Shartlar") foydalanuvchilarning IQRO platformasidan (keyingi o'rinlarda "Platforma") foydalanish tartibini belgilaydi. Platformadan ro'yxatdan o'tish orqali Siz ushbu shartlarga to'liq rozi bo'lasiz.
-        </p>
+        <h2 style={s.heading}>{t('termsPage.h1')}</h2>
+        <p style={s.text}>{t('termsPage.p1')}</p>
 
-        <h2 style={s.heading}>2. Foydalanuvchining majburiyatlari</h2>
-        <p style={s.text}>
-          Foydalanuvchi quyidagilarga majburdir:
-        </p>
+        <h2 style={s.heading}>{t('termsPage.h2')}</h2>
+        <p style={s.text}>{t('termsPage.p2')}</p>
         <ul style={s.list}>
-          <li>Ro'yxatdan o'tishda aniq va to'g'ri ma'lumotlarni taqdim etish;</li>
-          <li>Platformadan g'arazli maqsadlarda, xakerlik hujumlari yoki tizimga zarar yetkazadigan harakatlar uchun foydalanmaslik;</li>
-          <li>O'z hisobi xavfsizligini ta'minlash va parolni uchinchi shaxslarga bermaslik;</li>
-          <li>Boshqa foydalanuvchilarga nisbatan hurmat bilan munosabatda bo'lish.</li>
+          {p2List.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
 
-        <h2 style={s.heading}>3. Xizmatlar va To'lovlar</h2>
-        <p style={s.text}>
-          Platforma bepul (Trial) va pullik (Premium) xizmatlarni taklif etadi.
-        </p>
+        <h2 style={s.heading}>{t('termsPage.h3')}</h2>
+        <p style={s.text}>{t('termsPage.p3')}</p>
         <ul style={s.list}>
-          <li><b>Premium xizmatlar:</b> Qo'shimcha funksiyalar va testlar bazasiga to'liq kirish imkonini beradi.</li>
-          <li><b>To'lovlar:</b> To'lovlar xavfsiz to'lov tizimlari orqali amalga oshiriladi. To'langan mablag'lar qaytarib berilmaydi (qonunchilikda ko'rsatilgan hollar bundan mustasno).</li>
+          {p3List.map((item, i) => <li key={i}><b>{item.b}</b>{item.d}</li>)}
         </ul>
 
-        <h2 style={s.heading}>4. Mualliflik huquqi</h2>
-        <p style={s.text}>
-          Platformadagi barcha kontent (testlar, maqolalar, dizayn, logotip) IQRO platformasining intellektual mulki hisoblanadi. Kontentni ko'chirish, tarqatish yoki tijorat maqsadida foydalanish qat'iyan man etiladi.
-        </p>
+        <h2 style={s.heading}>{t('termsPage.h4')}</h2>
+        <p style={s.text}>{t('termsPage.p4')}</p>
 
-        <h2 style={s.heading}>5. Javobgarlikni cheklash</h2>
-        <p style={s.text}>
-          Platforma faqatgina tayyorgarlik ko'rish uchun yordamchi vosita hisoblanadi va real imtihonlardan 100% muvaffaqiyatli o'tishga kafolat bermaydi. Tizimda yuz berishi mumkin bo'lgan texnik uzilishlar uchun Platforma ma'muriyati harakat qilsa-da, uzluksiz ishlashiga mutlaq kafolat bermaydi.
-        </p>
+        <h2 style={s.heading}>{t('termsPage.h5')}</h2>
+        <p style={s.text}>{t('termsPage.p5')}</p>
 
-        <h2 style={s.heading}>6. Shartlarni o'zgartirish</h2>
-        <p style={s.text}>
-          Platforma ushbu Foydalanish shartlariga istalgan vaqtda o'zgartirishlar kiritishi mumkin. O'zgarishlar e'lon qilingan vaqtdan boshlab kuchga kiradi.
-        </p>
+        <h2 style={s.heading}>{t('termsPage.h6')}</h2>
+        <p style={s.text}>{t('termsPage.p6')}</p>
       </motion.div>
     </div>
   );

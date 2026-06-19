@@ -11,12 +11,14 @@
  */
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, X, Zap } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 
 export default function FreeMonthBanner({ onPayClick }) {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const { daysLeft: trialDaysLeft, isTrialExpired } = useTrialExpiry();
   const [dismissed, setDismissed] = useState(false);
@@ -54,12 +56,12 @@ export default function FreeMonthBanner({ onPayClick }) {
         <div style={{ flex: 1, fontSize: 13, color: 'var(--text)', fontWeight: 500 }}>
           {isExpired ? (
             <strong style={{ color }}>
-              7 kunlik sinov muddatingiz tugadi. Davom etish uchun to'lang.
+              {t('banner.expired')}
             </strong>
           ) : (
             <>
-              Bepul sinov muddatingizga{' '}
-              <strong style={{ color }}>{daysLeft} kun</strong> qoldi. To'lovni unutmang!
+              {t('banner.daysP1')}{' '}
+              <strong style={{ color }}>{t('banner.days', { count: daysLeft })}</strong> {t('banner.daysP2')}
             </>
           )}
         </div>
@@ -74,11 +76,11 @@ export default function FreeMonthBanner({ onPayClick }) {
             display: 'flex', alignItems: 'center', gap: 4
           }}
         >
-          <Zap size={12} /> To'lash
+          <Zap size={12} /> {t('banner.pay')}
         </motion.button>
-        <button onClick={() => setDismissed(true)} style={{
+        <button onClick={() => setDismissed(true)} aria-label={t('common.close')} style={{
           background: 'none', border: 'none', cursor: 'pointer',
-          color: 'var(--text3)', padding: 4, flexShrink: 0
+          color: 'var(--text3)', width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0
         }}>
           <X size={14} />
         </button>

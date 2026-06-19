@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Check } from 'lucide-react';
 import ModalShell from './ModalShell';
 import { AVATARS } from '../../data/avatars';
@@ -10,13 +11,14 @@ import { AVATARS } from '../../data/avatars';
  * props: current (tanlangan avatarId), onSelect(id|null), onClose, displayName
  */
 export default function AvatarPickerModal({ current, onSelect, onClose, displayName = '' }) {
+  const { t } = useTranslation();
   const initials = (displayName || '?').split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
 
   return (
     <ModalShell onClose={onClose} maxWidth={460} style={{ maxHeight: '88vh', overflowY: 'auto' }}>
-      <div className="pp-modal-title">🙂 Avatar tanlash</div>
+      <div className="pp-modal-title">{t('modals.avatarTitle')}</div>
       <p style={{ fontSize: 13, color: '#64748B', margin: '0 0 16px', lineHeight: 1.5 }}>
-        O'zingizga mos avatarni tanlang. Istalgan vaqtda o'zgartirishingiz mumkin.
+        {t('modals.avatarDesc')}
       </p>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14 }}>
@@ -24,7 +26,7 @@ export default function AvatarPickerModal({ current, onSelect, onClose, displayN
         <button
           type="button"
           onClick={() => onSelect(null)}
-          title="Boshlang'ich harf"
+          title={t('modals.avatarInitial')}
           style={avatarBtnStyle(!current)}
         >
           <div style={{

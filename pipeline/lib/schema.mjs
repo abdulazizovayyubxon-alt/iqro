@@ -3,10 +3,10 @@
 // Shuning uchun ikkalasini ham qabul qilamiz, lekin MOHIYAT bir xil tekshiriladi.
 
 import { hasCyrillic, cyrillicChars } from "./normalize.mjs";
-import { cueLeakReasons } from "./quality.mjs";
+import { cueLeakReasons, comboReasons } from "./quality.mjs";
 
 const DIFFICULTIES = new Set(["Y1", "Y2", "Y3"]);
-const QTYPES = new Set(["single", "matching", "sequence"]);
+const QTYPES = new Set(["single", "matching", "sequence", "combo"]);
 const LETTERS = ["A", "B", "C", "D"];
 
 // Kiruvchi (xom) savolni kanonik ko'rinishga keltiradi — maydon nomlarini birlashtiradi.
@@ -65,7 +65,7 @@ export function validateQuestion(raw) {
 
   // qtype (agar berilgan bo'lsa) to'g'ri bo'lsin
   if (q.qtype && !QTYPES.has(q.qtype)) {
-    errors.push(`qtype "${q.qtype}" single/matching/sequence dan biri emas`);
+    errors.push(`qtype "${q.qtype}" single/matching/sequence/combo dan biri emas`);
   }
 
   // LOTIN-ONLY (9-qoida): qiymatlarda krill harf bo'lmasin
@@ -83,6 +83,9 @@ export function validateQuestion(raw) {
 
   // Javob-ishora (cue leakage): to'g'ri javobni o'qimasdan topib bo'lmasin
   errors.push(...cueLeakReasons(q));
+
+  // Kombinatsiya (combo) tuzilmasi: o'zakdagi mulohazalar bilan variantlar mos kelsin
+  errors.push(...comboReasons(q));
 
   return errors;
 }

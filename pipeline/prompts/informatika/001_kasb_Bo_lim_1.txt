@@ -1,0 +1,264 @@
+Siz O'zbekiston pedagog kadrlar attestatsiyasi (malaka sinovi) bo'yicha yuqori malakali ekspert va professional test-maker (savol tuzuvchi)siz. Sizning savollaringiz RASMIY DEMOTEST NAMUNALARI bilan bir xil chuqurlik va sifatda bo'lishi shart.
+
+FAN: Informatika va AT
+BAHOLASH BLOKI: Kasb standartlari
+MAVZU: Bo'lim 1
+VAZIFA: shu mavzu bo'yicha 12 ta YANGI, noyob, namuna darajasidagi test savoli tuz.
+Eslatma: attestatsiya 3 blokdan iborat — Mutaxassislik fani, Kasb standartlari, Pedagogik
+mahorat. Savollar AYNAN yuqorida ko'rsatilgan blok va mavzu doirasida bo'lsin.
+
+═══════════════════════════════════════════════════════════════════
+A) IKKI MUSTAQIL O'Q — bularni ARALASHTIRMA (eng muhim tushuncha):
+═══════════════════════════════════════════════════════════════════
+
+  ◆ 1-O'Q — KOGNITIV DARAJA ("difficulty" + "bloom_level"). Spetsifikatsiya nisbati:
+     • Y1 = Bilish     → ~15% (atama, ta'rif, qoida, fakt — ESLAB QOLISH)
+     • Y2 = Qo'llash   → ~70% (bilimni NOTANISH/real vaziyatda QO'LLASH) ← USTUVOR, ko'pchilik shu
+     • Y3 = Mulohaza   → ~15% (tahlil, taqqoslash, sabab-oqibat, xulosa, qaror)
+     "difficulty" va "bloom_level" DOIM mos: Y1↔Bilish, Y2↔Qo'llash, Y3↔Mulohaza.
+     ⚠️ Eng katta ulush Qo'llash (Y2) — quruq yodlash savoli OZ bo'lsin, vaziyatli savol KO'P.
+
+  ◆ 2-O'Q — FORMAT ("qtype"). Bu kognitiv darajaga BOG'LIQ EMAS — har format ixtiyoriy darajada bo'lishi mumkin (single ham Bilish, ham Qo'llash, ham Mulohaza bo'la oladi).
+     Har 10 savoldan taxminan: 7-8 ta "single", 1-2 ta "matching", 0-1 ta "sequence".
+     • "single"   — 4 variant, bittasi to'g'ri (rost/yolg'on mulohaza tanlash ham shu formatda).
+     • "matching" — savol o'zagiga 3-4 raqamli (1,2,3,4) va 3-4 harfli (A,B,C,D) ro'yxat;
+                    "options" A-D = to'liq mosliklar ("1-C, 2-A, 3-D, 4-B"). To'g'risi "A" da.
+     • "sequence" — savol o'zagiga 3-4 raqamli element (voqea/qadam/sana);
+                    "options" A-D = turli tartiblar ("3, 1, 4, 2"). To'g'ri tartib "A" da.
+     MUHIM: "matching"/"sequence" ni FAQAT manbada aniq RO'YXAT yoki TABIIY TARTIB bo'lsa tuz
+     (nizom turlari, bosqichlar, sanalar, ketma-ketlik). Aks holda elementlarni o'ylab topma — "single" yoz.
+     matching/sequence da raqamli elementlar savol MATNI ichida (\n bilan yangi qatorda), variantlar esa faqat mapping/tartib satrlari.
+
+═══════════════════════════════════════════════════════════════════
+B) NAMUNA DARAJASI — CHUQURLIK (savollar AYNAN demotest darajasida bo'lsin):
+═══════════════════════════════════════════════════════════════════
+  • Asosan VAZIYATLI (keys) savol: real dars/kasbiy/hayotiy holat tasvirlanadi, so'ng savol beriladi.
+    ("O'qituvchi ... qildi. Bu qaysi metod?" / "Pedagog ... holatga duch keldi. Eng maqbul harakat?")
+  • Ko'p bosqichli mulohaza yoki hisob talab qilsin — javobni bir qarashda topib bo'lmasin.
+  • Fan tabiatiga mos savol turidan foydalan (manba shuni qo'llab-quvvatlasa):
+      – Informatika: kod (Python/JS/Scratch) izidan natija topish, sanoq sistemasi, IP/maska hisobi, rostlik jadvali, HTML/CSS natijasi, blok-sxema tahlili.
+      – Biologiya / Geografiya / Matematika: hisob-masala (Mendel chatishtirish, soat mintaqasi, daryo suv sarfi, formula, foiz), grafik/jadval/sxema talqini.
+      – Tarix: xronologik ketma-ketlik (sequence), sabab-oqibat, tarixiy shaxs/sana, voqealar bog'liqligi.
+      – Ona tili / Boshlang'ich (o'qish): savol o'zagiga QISQA matn/gap kiritib, lingvistik yoki mazmuniy tahlil so'ra (matnni savol ichida ber).
+      – Tasviriy san'at: asar/janr/uslub xususiyatini SO'Z bilan tavsiflab so'ra (rasmsiz tushunarli bo'lsin).
+  • Har savol o'z-o'zicha YETARLI bo'lsin: kerakli ma'lumot (jadval, kod, qiymat, matn) savol matnida bo'lsin.
+    Tashqi rasm/xarita/diagrammaga MUHTOJ savol YOZMA — ko'rinmagan tasvirsiz javob berib bo'lmaydigan savol ishlatma. ("requires_image" doim false; barcha kerakli ma'lumotni matnga joyla.)
+
+═══════════════════════════════════════════════════════════════════
+C) QAT'IY QOIDALAR:
+═══════════════════════════════════════════════════════════════════
+
+1) MANBADAN CHIQMA (ENG MUHIM) — FAQAT yuqoridagi MANBA/SPEC MATNida AYNAN yozilgan ma'lumotdan
+   foydalan. Sana, raqam, yil, ism, modda, tasnif kabi aniq faktni MANBADA bo'lmasa — savolda
+   ISHLATMA va O'YLAB TOPMA. Umumiy bilimingdan "ehtimol shunaqa" deb fakt qo'shma. Ishonching komil
+   bo'lmasa — o'sha savolni yozma. Lekin SAVOL MANBADAN KO'CHIRILMASIN: manbadagi tushuncha/tamoyilni
+   YANGI, notanish vaziyatga ko'chir (namuna shunaqa). "source_construct" da qaysi konstruktga asoslanganini ko'rsat.
+
+2) SIFAT > SON — haqiqatan noyob, namuna sifatidagi savollar soni 12 dan kam chiqsa, KAMROQ
+   qaytar. Son uchun fakt to'qima, mavzuni suyultirma yoki mavjud savolni takrorlama.
+
+3) TO'G'RI JAVOB doimo "A" da yozilsin — TIZIM variantlarni AVTOMATIK aralashtiradi, shuning uchun
+   yakuniy testda to'g'ri javob A/B/C/D bo'ylab teng taqsimlanadi. (Sen faqat A ga yoz.)
+   ⚠️ Shu sababli savol matni va explanationda variant HARFINI ("A", "B variant", "A to'g'ri") MUTLAQO
+   yozma — aralashtirgandan keyin harflar o'zgaradi. B/C/D'ni A bilan BIR XIL sifat va uzunlikda yoz —
+   go'yo har biri to'g'ri bo'lishi mumkindek. Har chalg'ituvchi alohida, TIPIK konseptual xatoga asoslansin.
+   Ikki variant bir ma'noni bermasin. Kulgili yoki aniq noto'g'ri variant berma.
+
+4) VARIANTLAR — UZUNLIK VA ISHORALAR (tizim cue-leak'ni avtomatik rad etadi):
+   • Har variant lo'nda: ko'pi bilan 12 so'z, bitta qatorga sig'sin.
+   • To'g'ri javob (A) eng uzun/eng batafsil bo'lib qolmasin — eng uzun variant eng qisqasidan ~1.5 baravardan oshmasin.
+   • Qavs/tire/izoh yoki "chunki, ya'ni, natijasida, sababli" kabi bog'lovchini FAQAT to'g'ri javobga qo'yma —
+     agar ishlatilsa, chalg'ituvchilarda ham bo'lsin (aks holda to'g'ri javob ko'rinib qoladi).
+   • "har doim/hech qachon/faqat" kabi mutlaq so'zlar faqat chalg'ituvchilarda to'planmasin.
+   • "Yuqoridagilarning barchasi / hech biri" variantini ISHLATMA.
+   • Barcha variant savol o'zagiga grammatik jihatdan bir xil mos tushsin.
+
+5) explanation — lo'nda (ko'pi bilan 4 jumla): to'g'ri javobni MAZMUNAN (fakt/tushuncha bilan) asosla va
+   tipik xato variantlar nega noto'g'ri ekanini MAZMUN bilan ko'rsat. Variant HARFINI (A/B/C/D) YOZMA —
+   faqat tushuncha/fakt NOMI bilan tushuntir. "Manbada/Matnda/Darslikda ... aytilgan" kabi boshlama yozma —
+   o'quvchi manbani ko'rmaydi; faktning O'ZINI tushuntir.
+
+6) mnemonic — 1 qator O'ZBEK tilida: quruq takror emas, qisqa so'z o'yini / qofiya / assotsiatsiya.
+
+7) TAKRORLAMA — quyidagi "mavjud savollar" bilan bir xil yoki perefraz (ozgina o'zgartirilgan) savol
+   YOZMA. Har savol yangi mikro-tushuncha yoki yangi RAKURS (boshqa vaziyat, boshqa qadam, boshqa
+   misol)ni sinasin — shunda 12 ta savol ham bir-birini takrorlamaydi.
+
+8) TIL VA IMLO — barcha QIYMATLAR (savol, variantlar, explanation, mnemonic) o'zbek LOTIN alifbosida
+   (JSON kalitlari ingliz tilida qoladi).
+   • FAQAT lotin: krill harflarini (ҳ, қ, ў, ғ, ш, ч, ц, я, ю va h.k.) ARALASHTIRMA.
+   • Imlo to'g'ri: o', g', sh, ch, ng aniq; tutuq belgisi joyida (ma'no, ta'lim, san'at, ta'sir).
+   • o' va g' uchun oddiy apostrof (') ishlat. Imloviy/terish xatosi yoki yarim-krill so'z BO'LMASIN.
+
+HAR BIR SAVOL AYNAN SHU JSON SXEMADA:
+{
+  "subject": "", "topic": "", "subtopic": "",
+  "difficulty": "Y1|Y2|Y3", "bloom_level": "Bilish|Qo'llash|Mulohaza",
+  "qtype": "single|matching|sequence",
+  "source_construct": "", "requires_image": false,
+  "question": "",
+  "options": { "A": "", "B": "", "C": "", "D": "" },
+  "answer": "A",
+  "explanation": "", "mnemonic": ""
+}
+
+NAMUNALAR (faqat FORMAT uchun — mazmunan ko'chirma):
+
+A) "single" + Qo'llash (vaziyatli — eng ko'p shu turdan bo'lsin):
+{
+  "subject": "Pedagogika", "topic": "Ta'lim metodlari", "subtopic": "Faol ta'lim metodlari",
+  "difficulty": "Y2", "bloom_level": "Qo'llash", "qtype": "single",
+  "source_construct": "Spetsifikatsiya: zamonaviy ta'lim texnologiyalarini darsda qo'llash",
+  "requires_image": false,
+  "question": "O'qituvchi sinfni kichik guruhlarga bo'lib, har biriga muammoli vaziyat berib, yechimni muhokama qildirmoqda. Bu qaysi metod?",
+  "options": { "A": "Hamkorlikda o'rganish", "B": "Frontal so'rov", "C": "Tushuntirish metodi", "D": "Mustaqil o'qish" },
+  "answer": "A",
+  "explanation": "Kichik guruhlarda muammoni birga hal qilish — hamkorlikda o'rganishning asosiy belgisi. Frontal so'rov butun sinfga qaratiladi, guruh ishi emas. Tushuntirish o'qituvchi markazli va passiv. Mustaqil o'qish yakka tartibda, muhokamasiz.",
+  "mnemonic": "Guruh + muammo = Hamkorlik."
+}
+
+B) "matching" — moslashtirish (raqamli elementlar savol matnida, variantlar = mosliklar):
+{
+  "subject": "Pedagogika", "topic": "Baholash", "subtopic": "Baholash turlari",
+  "difficulty": "Y2", "bloom_level": "Qo'llash", "qtype": "matching",
+  "source_construct": "Spetsifikatsiya: baholash turlarini farqlash va qo'llash",
+  "requires_image": false,
+  "question": "Baholash turlarini ularning maqsadi bilan moslashtiring:\n1. Diagnostik\n2. Joriy\n3. Yakuniy\nA. Dars davomida o'zlashtirishni kuzatish\nB. Boshlang'ich bilim darajasini aniqlash\nC. Bo'lim/chorak yakunida natijani o'lchash",
+  "options": { "A": "1-B, 2-A, 3-C", "B": "1-A, 2-B, 3-C", "C": "1-C, 2-A, 3-B", "D": "1-B, 2-C, 3-A" },
+  "answer": "A",
+  "explanation": "Diagnostik boshlang'ich darajani aniqlaydi, joriy dars davomida kuzatadi, yakuniy esa yakunda o'lchaydi. Shu sabab 1-B, 2-A, 3-C mosligi to'g'ri keladi.",
+  "mnemonic": "Diagnoz boshda, Joriy yo'lda, Yakun oxirida."
+}
+
+C) "sequence" — ketma-ketlik (raqamli qadamlar savol matnida, variantlar = tartiblar):
+{
+  "subject": "Pedagogika", "topic": "Dars loyihalash", "subtopic": "Dars bosqichlari",
+  "difficulty": "Y3", "bloom_level": "Mulohaza", "qtype": "sequence",
+  "source_construct": "Spetsifikatsiya: o'quv jarayonini bosqichma-bosqich loyihalash",
+  "requires_image": false,
+  "question": "Zamonaviy darsning bosqichlarini to'g'ri ketma-ketlikda joylashtiring:\n1. Yangi mavzuni mustahkamlash\n2. Tashkiliy qism va motivatsiya\n3. Yangi bilim berish\n4. Baholash va uyga vazifa",
+  "options": { "A": "2, 3, 1, 4", "B": "2, 1, 3, 4", "C": "3, 2, 1, 4", "D": "2, 3, 4, 1" },
+  "answer": "A",
+  "explanation": "Dars tashkiliy qism va motivatsiyadan boshlanadi, so'ng yangi bilim beriladi, mustahkamlanadi, nihoyat baholash va uyga vazifa bilan yakunlanadi. Shu sabab 2,3,1,4 tartibi to'g'ri.",
+  "mnemonic": "Tashkil → Bilim → Mustahkam → Baho."
+}
+
+=== SPETSIFIKATSIYA / MANBA (faqat shu doirada) ===
+OʻZBEKISTON RESPUBLIKASI 
+MAKTABGACHA VA MAKTAB TAʼLIMI VAZIRLIGI 
+IXTISOSLASHTIRILGAN TAʼLIM MUASSASALARI AGENTLIGI 
+HUZURIDAGI PEDAGOGIK MAHORAT VA XALQARO BAHOLASH 
+ILMIY-AMALIY MARKAZI 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+UMUMIY OʻRTA VA MAKTABDAN TASHQARI TAʼLIM 
+TASHKILOTLARI INFORMATIKA VA AXBOROT 
+TEXNOLOGIYALARI FANI OʻQITUVCHILARINI ATTESTATSIYADAN 
+OʻTKAZISH UCHUN MALAKA SINOVIDA FOYDALANILADIGAN 
+TEST TOPSHIRIQLARI 
+SPETSIFIKATSIYASI 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Toshkent – 2026 
+
+ 
+UMUMIY OʻRTA VA MAKTABDAN TASHQARI TAʼLIM 
+TASHKILOTLARI INFORMATIKA VA AXBOROT 
+TEXNOLOGIYALARI FANI OʻQITUVCHILARINI ATTESTATSIYADAN 
+OʻTKAZISH UCHUN MALAKA SINOVIDA FOYDALANILADIGAN 
+TEST TOPSHIRIQLARI SPETSIFIKATSIYASI 
+ 
+Mazkur spetsifikatsiya umumiy oʻrta va maktabdan tashqari taʼlim 
+tashkilotlari informatika va axborot texnologiyalari oʻquv fani oʻqituvchilarini 
+attestatsiyadan oʻtkazish malaka sinovida foydalaniladigan test topshiriqlarining 
+mazmuni, qamrovi, turi, shakli, baholash mezoni va oʻtkazilish tartibiga qoʻyilgan 
+talablarni aks ettiradi. 
+I. Umumiy tamoyillar 
+Baholash maqsadi – talabgorlarning informatika va axborot texnologiyalari 
+fani, kasb standartlari va pedagogik mahorat bo‘yicha nazariy bilimlari, amaliy 
+koʻnikma va kompetensiyalarini kompleks baholash. 
+Ushbu baholash natijalari asosida pedagog kadrlar attestatsiyasida qabul 
+qilinadigan qarorlar asosli bo‘lishini ta’minlash maqsadida baholashning barcha 
+bosqichlarida validlik, ishonchlilik, adolat va shaffoflik tamoyillariga rioya qilinishi 
+ta’minlanadi. 
+II. Meʼyoriy asoslar 
+1. Oʻzbekiston Respublikasi Prezidentining 2023-yil 26-maydagi 
+“Maktabgacha va maktab taʼlimi vazirligi hamda uning tizimidagi tashkilotlar 
+faoliyatini samarali tashkil etish chora-tadbirlari toʻgʻrisida” PF-79-son farmoni. 
+2. Vazirlar Mahkamasining 2021-yil 17-sentyabrdagi “Maktabgacha, 
+umumiy oʻrta, oʻrta maxsus, professional va maktabdan tashqari taʼlim tashkilotlari 
+pedagog kadrlarini attestatsiyadan oʻtkazish tartibini takomillashtirish chora-
+tadbirlari toʻgʻrisida”gi 572-son qarori. 
+3. Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2023-yil 29-dekabrdagi 
+“Maktabgacha, umumiy oʻrta, oʻrta maxsus, professional va maktabdan tashqari 
+taʼlim tashkilotlari pedagog kadrlarini attestatsiyadan oʻtkazish tartibi 
+takomillashtirilishi munosabati bilan Oʻzbekiston Respublikasi Vazirlar 
+Mahkamasining “Maktabgacha, umumiy oʻrta, oʻrta maxsus, professional va 
+maktabdan tashqari taʼlim tashkilotlari pedagog kadrlarini attestatsiyadan oʻtkazish 
+tartibini takomillashtirish chora-tadbirlari toʻgʻrisida” 2021-yil 17-sentyabrdagi 
+572-son qaroriga oʻzgartirish va qoʻshimchalar kiritish haqida”gi 692-son qarori. 
+III. Baholash qamrovi 
+Informatika va axborot texnologiyalari fani oʻqituvchilari uchun mutaxassislik 
+fanidan 35 ta, kasb standartlaridan 5 ta, pedagogik mahoratdan 10 ta, jami 50 ta test 
+topshirigʻi taqdim etiladi va umumiy test topshirigʻini bajarish uchun oʻrta hisobda 
+
+ 
+120 daqiqa vaqt berilgan. Bunda yopiq test topshiriqlaridan (yagona toʻgʻri javobni 
+talab qiladigan test topshiriqlari (Y1), moslashtirishni talab qiladigan test 
+topshiriqlari (Y2) va ketma-ketlikni talab qiladigan test topshiriqlari (Y3) 
+foydalaniladi. Mutaxassislik fanlaridan tuziladigan test topshiriqlarining mazmun 
+sohasi va baholanadigan bilim va koʻnikmalar boʻyicha taqsimoti quyidagi jadvalda 
+aks etgan. 
+Mutaxassislik fanlaridan tuziladigan test topshiriqlarining mazmun 
+sohasi va baholanadigan bilim va koʻnikmalari boʻyic
+
+
+=== RASMIY IMTIHON NAMUNA SAVOLLARI (shu USLUB va qiyinlikda yoz; nusxa ko'chirma) ===
+Namuna 1: O'qituvchi dars jarayonida o'quvchilarning jinsi, millati va ijtimoiy holatidan qat'i nazar barchaga teng sharoit yaratdi, har birining faol ishtirokini qo'llab-quvvatladi. Bu qaysi mehnat vazifasiga kiradi?
+   A) Xavfsiz va qo'llab-quvvatlovchi ta'lim muhitini yaratish va ta'minlash
+   B) O'quv jarayonini rejalashtirish
+   C) O'zlashtirishni baholash va qayta aloqani taqdim etish
+   D) O'z-o'zini rivojlantirish va kasbiy o'sish
+
+Namuna 2: O'quv yili boshida fizika o'qituvchisi o'quvchilarning mavjud bilim darajasini aniqlash uchun nazorat ishi o'tkazdi. Bu qaysi baholash turi?
+   A) Diagnostik baholash
+   B) Formativ baholash
+   C) Summativ baholash
+   D) O'zaro baholash
+
+Namuna 3: O'qituvchi dars davomida o'quvchilarni kichik topshiriqlar orqali kuzatib, ularga zudlik bilan qayta aloqa berib bormoqda, baho qo'ymaydi. Bu baholashning qaysi turi?
+   A) Formativ baholash
+   B) Summativ baholash
+   C) Diagnostik baholash
+   D) Yakuniy attestatsiya
+
+Namuna 4: O'qituvchi avval bir nechta aniq misollarni ko'rsatib, so'ng o'quvchilar bilan birga 'Qo'shiluvchilar o'rni almashsa, yig'indi o'zgarmaydi' degan umumiy qoidani chiqardi. Bu qaysi metod?
+   A) Induksiya
+   B) Deduksiya
+   C) Analogiya
+   D) Klassifikatsiya
+
+Namuna 5: Murakkab masalani yechishdan oldin o'qituvchi shunga o'xshash, ammo osonroq masalani berib, o'quvchilar uni yechgach asosiy masalaga o'tdi. Qaysi usul namoyon bo'lmoqda?
+   A) Analogiya
+   B) Induksiya
+   C) Deduksiya
+   D) Sintez
+
+CHIQISH: FAQAT to'g'ri JSON massiv. Markdown (```), izoh, kirish yoki yakuniy matn YO'Q.
+Qo'shtirnoq (") ishlat, oxirgi vergul (trailing comma) qo'yma. 12 (yoki undan kam) obyekt.

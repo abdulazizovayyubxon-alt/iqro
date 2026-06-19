@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
@@ -7,9 +8,11 @@ import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle } from 'lucide-react';
+import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, Share2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { prefersReducedMotion } from '../utils/motion';
 import ObjectionModal from '../components/shared/ObjectionModal';
+import ResultShareCard from '../components/shared/ResultShareCard';
 import { processQuestionsOnTheFly } from '../utils/questionFixer';
 import PremiumModal from '../components/PremiumModal';
 import SafeHtml from '../components/shared/SafeHtml';
@@ -17,6 +20,7 @@ import QuestionMedia from '../components/QuestionMedia';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { summarizeTestResults } from '../engine/SmartQuestionEngine';
+import { AnalyticsEvents } from '../services/analytics';
 import localforage from 'localforage';
 import { useExitGuard } from '../hooks/useExitGuard';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
@@ -83,6 +87,7 @@ function shuffleArray(arr) {
 
 const ExamPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const goBack = () => navigate('/test');
   const { user } = useAuth();
   const { state, batchCommitResults, updateState } = useContext(AppContext);
@@ -110,13 +115,11 @@ const ExamPage = () => {
   const [showObjectionModal, setShowObjectionModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [reviewMode, setReviewMode] = useState(false);
+  const [showShareCard, setShowShareCard] = useState(false);
   
   const [examStarted, setExamStarted] = useState(false);
   const [examType, setExamType] = useState('standard');
   const [loading, setLoading] = useState(false);
-  
-  const [cheatWarnings, setCheatWarnings] = useState(0);
-  const [cheatDisqualified, setCheatDisqualified] = useState(false);
 
   // Orqa tugma himoyasi: imtihon davomida orqa bosilsa to'satdan chiqib
   // ketmasdan mavjud "Imtihonni yakunlash" tasdig'i ochiladi
@@ -165,8 +168,6 @@ const ExamPage = () => {
     setPacing(null);
     setWeakTopicsSorted([]);
     setCurrentQ(0);
-    setCheatWarnings(0);
-    setCheatDisqualified(false);
     questionTimesRef.current = {};
     questionStartTimeRef.current = Date.now();
 
@@ -353,6 +354,17 @@ const ExamPage = () => {
           finalQuestions = [...pedSelected, ...otherSelected];
         }
 
+        // ── BACKFILL: blueprint ba'zi mavzulardan mavjuddan ko'proq savol so'rasa,
+        // jami EXAM_TOTAL (50) ga yetmay qolardi (masalan, 37 ta). Bazada savol yetarli
+        // bo'lsa, qolgan (ishlatilmagan) savollardan to'ldiramiz — imtihon har doim to'liq.
+        if (finalQuestions.length < EXAM_TOTAL) {
+          const usedKeys = new Set(finalQuestions.map(q => q.id || q.q));
+          const remaining = shuffleArray(allQ.filter(q => !usedKeys.has(q.id || q.q)));
+          finalQuestions = finalQuestions.concat(
+            remaining.slice(0, EXAM_TOTAL - finalQuestions.length)
+          );
+        }
+
         const final = shuffleArray(finalQuestions);
         setQuestions(final);
 
@@ -367,7 +379,7 @@ const ExamPage = () => {
         setTopicGroups(regrouped);
       } catch (err) {
         console.error("Exam load error:", err);
-        showToast("Xatolik yuz berdi", 'error');
+        showToast(t('exam.toastError'), 'error');
       } finally {
         setLoading(false);
       }
@@ -466,7 +478,8 @@ const ExamPage = () => {
 
     const correct = results.correctCount;
     const pct = results.accuracy;
-    if (pct >= 60) {
+    AnalyticsEvents.examComplete(correct, questions.length);
+    if (pct >= 60 && !prefersReducedMotion()) {
       confetti({ particleCount: 150, spread: 80, origin: { y: 0.5 } });
     }
 
@@ -486,38 +499,19 @@ const ExamPage = () => {
     }).catch(e => console.error(e));
   };
 
-  // Anti-Cheat: Tab switch detection (Play Market safe)
-  useEffect(() => {
-    if (loading || finished || questions.length === 0 || cheatDisqualified) return;
-
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        setCheatWarnings(prev => {
-          const next = prev + 1;
-          if (next >= 3) {
-            setCheatDisqualified(true);
-            showToast("Boshqa sahifaga o'tish qoidalari 3 marta buzilganligi sababli imtihon yakunlandi!", 'error');
-            handleFinish(true);
-          } else {
-            showToast(`Diqqat! Imtihondan chalg'imang. Ogohlantirish: ${next}/3`, 'warning');
-          }
-          return next;
-        });
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, [loading, finished, questions.length, answers, cheatDisqualified]);
+  // ANTI-CHEAT OLIB TASHLANDI (2026-06-17):
+  // Avval `visibilitychange` 3 marta sodir bo'lsa imtihon avtomatik
+  // diskvalifikatsiya qilinardi. Mobil qurilmada bu hodisa bildirishnoma kelganda,
+  // qo'ng'iroq tushganda, ekran qulflanganda yoki boshqa ilovaga o'tilganda ham
+  // ishlaydi — natijada halol foydalanuvchi nohaq jazolanardi. IQRO rasmiy DTM
+  // imtihoni emas, balki tayyorgarlik platformasi bo'lgani uchun bu cheklov
+  // foydadan ko'ra ko'proq zarar keltirardi (Play Market past sharhlar manbai).
 
   const handleObjectionSubmit = (text) => {
     const q = questions[currentQ];
     addObjection(q.topicId, cat, q, text);
     setShowObjectionModal(false);
-    showToast("E'tiroz yuborildi!", 'success');
+    showToast(t('exam.toastObjectionSent'), 'success');
   };
 
   const answeredCount = Object.keys(answers).length;
@@ -532,9 +526,9 @@ const ExamPage = () => {
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="page" style={{ maxWidth: 600, margin: '0 auto', padding: '16px', display: 'flex', minHeight: '100%', alignItems: 'center' }}>
         <div className="glass-panel" style={{ padding: '24px 20px', textAlign: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.06)', width: '100%' }}>
           <div style={{ fontSize: 40, marginBottom: 8 }}>🏆</div>
-          <h1 style={{ fontSize: 'calc(22px * var(--font-scale))', fontWeight: 900, color: 'var(--text)', marginBottom: 6, letterSpacing: '-0.5px' }}>Imtihon Simulyatori</h1>
+          <h1 style={{ fontSize: 'calc(22px * var(--font-scale))', fontWeight: 900, color: 'var(--text)', marginBottom: 6, letterSpacing: '-0.5px' }}>{t('exam.simulatorTitle')}</h1>
           <p style={{ fontSize: 'calc(13.5px * var(--font-scale))', color: 'var(--text3)', lineHeight: 1.5, marginBottom: 18, fontWeight: 500 }}>
-            Attestatsiya malaka sinovi standartlariga mos ravishda 50 ta savoldan iborat real imtihon simulyatsiyasi.
+            {t('exam.simulatorDesc')}
           </p>
 
           {/* Exam Type Selector */}
@@ -553,11 +547,11 @@ const ExamPage = () => {
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                <strong style={{ fontSize: 'calc(15px * var(--font-scale))', color: 'var(--text)' }}>📋 Standart Attestatsiya Imtihoni</strong>
+                <strong style={{ fontSize: 'calc(15px * var(--font-scale))', color: 'var(--text)' }}>{t('exam.standardTitle')}</strong>
                 <input type="radio" checked={examType === 'standard'} readOnly />
               </div>
               <div style={{ fontSize: 'calc(12px * var(--font-scale))', color: 'var(--text3)', lineHeight: 1.45 }}>
-                Haqiqiy malaka sinovi formati. Barcha bo'limlardan aralash savollar va 10 ta pedagogik mahorat savollari.
+                {t('exam.standardDesc')}
               </div>
             </div>
 
@@ -575,11 +569,11 @@ const ExamPage = () => {
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                <strong style={{ fontSize: 'calc(15px * var(--font-scale))', color: 'var(--text)' }}>🔥 Zaif mavzular bo'yicha moslashtirilgan</strong>
+                <strong style={{ fontSize: 'calc(15px * var(--font-scale))', color: 'var(--text)' }}>{t('exam.weakTitle')}</strong>
                 <input type="radio" checked={examType === 'weak'} readOnly />
               </div>
               <div style={{ fontSize: 'calc(12px * var(--font-scale))', color: 'var(--text3)', lineHeight: 1.45 }}>
-                Platformadagi shaxsiy statistikangizga asoslangan imtihon. Siz eng ko'p xato qilgan yoki aniqligi past mavzularga ko'proq urg'u beradi.
+                {t('exam.weakDesc')}
               </div>
             </div>
           </div>
@@ -587,10 +581,10 @@ const ExamPage = () => {
           <motion.button
             whileHover={{ scale: 1.01, y: -1 }}
             whileTap={{ scale: 0.98 }}
-            onClick={() => { setExamStarted(true); }}
-            style={{ width: '100%', padding: '15px', background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)', color: '#fff', border: 'none', borderRadius: 16, fontSize: 16, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}
+            onClick={() => { setExamStarted(true); AnalyticsEvents.examStart(); }}
+            style={{ width: '100%', padding: '15px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontSize: 16, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}
           >
-            Imtihonni boshlash
+            {t('exam.start')}
           </motion.button>
         </div>
       </motion.div>
@@ -603,14 +597,14 @@ const ExamPage = () => {
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="limit-container">
         <div className="limit-card">
           <div className="limit-icon">🔒</div>
-          <div className="limit-title">Kunlik Bepul Limit Tugadi</div>
+          <div className="limit-title">{t('test.limitTitle')}</div>
           <div className="limit-text">
-            Siz bugungi 50 ta bepul savol limitiga yetdingiz! Barcha savollar va mavzularga cheksiz kirish uchun Premium rejimni faollashtiring.
+            {t('test.limitText')}
           </div>
           <button className="limit-btn-primary" onClick={() => setShowPremiumModal(true)}>
-            ⭐ Premium Rejimni Faollashtirish
+            {t('test.limitActivate')}
           </button>
-          <button className="limit-btn-secondary" onClick={() => navigate('/')}>← Bosh sahifaga</button>
+          <button className="limit-btn-secondary" onClick={() => navigate('/')}>{t('test.backHomeArrow')}</button>
         </div>
         <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
       </motion.div>
@@ -651,26 +645,11 @@ const ExamPage = () => {
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="page">
         {/* Natija kartasi */}
         <div className="glass-panel exam-result-card">
-          {cheatDisqualified && (
-            <div style={{
-              background: 'var(--red-bg)',
-              border: '1px solid var(--red)',
-              borderRadius: 14,
-              padding: '12px 16px',
-              color: 'var(--red)',
-              fontSize: 13,
-              fontWeight: 700,
-              textAlign: 'center',
-              marginBottom: 20
-            }}>
-              ⚠️ Imtihon boshqa sahifaga o'tish qoidalari buzilganligi sababli (3 marta chalg'ish) avtomatik yakunlandi!
-            </div>
-          )}
           <div style={{ textAlign: 'center', marginBottom: 24 }}>
             <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 4 }}>
-              {cheatDisqualified ? '❌ Imtihondan chetlashtirildingiz' : (pct >= 70 ? '🎉 Tabriklaymiz!' : pct >= 50 ? '📊 Yaxshi harakat!' : '💪 Davom eting!')}
+              {pct >= 70 ? t('exam.resultExcellent') : pct >= 50 ? t('exam.resultGood') : t('exam.resultKeep')}
             </div>
-            <div style={{ fontSize: 13, color: 'var(--text3)' }}>{cheatDisqualified ? 'Qoidabuzarlik aniqlandi' : 'Imtihon yakunlandi'}</div>
+            <div style={{ fontSize: 13, color: 'var(--text3)' }}>{t('exam.finished')}</div>
           </div>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 32, justifyContent: 'center', alignItems: 'center', marginBottom: 32 }}>
@@ -684,7 +663,7 @@ const ExamPage = () => {
                 <text x="50%" y="46%" textAnchor="middle" dominantBaseline="middle"
                   fontSize={22} fontWeight={800} fill="var(--text)">{pct}%</text>
                 <text x="50%" y="62%" textAnchor="middle" dominantBaseline="middle"
-                  fontSize={11} fill="var(--text3)">Bajarildi</text>
+                  fontSize={11} fill="var(--text3)">{t('exam.done')}</text>
               </svg>
             </div>
 
@@ -693,25 +672,25 @@ const ExamPage = () => {
               <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
                 <div style={{ textAlign: 'center', minWidth: 60 }}>
                   <div style={{ fontSize: 26, fontWeight: 900, color: 'var(--green)' }}>{correctCount}</div>
-                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>TO'G'RI</div>
+                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>{t('exam.statCorrect')}</div>
                 </div>
                 <div style={{ textAlign: 'center', minWidth: 60 }}>
                   <div style={{ fontSize: 26, fontWeight: 900, color: 'var(--red)' }}>{wrongCount}</div>
-                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>XATO</div>
+                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>{t('exam.statWrong')}</div>
                 </div>
                 <div style={{ textAlign: 'center', minWidth: 70 }}>
                   <div style={{ fontSize: 26, fontWeight: 900, color: 'var(--text)' }}>{questions.length - answeredCount}</div>
-                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>QOLDIRILDI</div>
+                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>{t('exam.statSkipped')}</div>
                 </div>
                 <div style={{ textAlign: 'center', minWidth: 80 }}>
-                  <div style={{ fontSize: 26, fontWeight: 900, color: '#29B6F6' }}>+{correctCount * 2}</div>
-                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>REYTING BALL</div>
+                  <div style={{ fontSize: 26, fontWeight: 900, color: 'var(--accent2)' }}>+{correctCount * 2}</div>
+                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>{t('exam.statRating')}</div>
                 </div>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 13, color: 'var(--text2)' }}>
-                <div>📅 Sanasi: <strong>{startTime.toLocaleDateString()}</strong></div>
-                <div>▶ Boshlandi: <strong>{startTime.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</strong></div>
-                <div>⏹ Yakunlandi: <strong>{endTime?.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</strong></div>
+                <div>{t('exam.date')} <strong>{startTime.toLocaleDateString()}</strong></div>
+                <div>{t('exam.started')} <strong>{startTime.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</strong></div>
+                <div>{t('exam.ended')} <strong>{endTime?.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</strong></div>
               </div>
             </div>
           </div>
@@ -729,26 +708,26 @@ const ExamPage = () => {
             }}>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 12 }}>
                 <Clock size={16} style={{ color: 'var(--blue)' }} />
-                <strong style={{ fontSize: 14, color: 'var(--text)', fontWeight: 800 }}>Vaqt va Tezlik Tahlili</strong>
+                <strong style={{ fontSize: 14, color: 'var(--text)', fontWeight: 800 }}>{t('exam.pacingTitle')}</strong>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', gap: 12 }}>
                 <div style={{ background: 'var(--bg3)', padding: 10, borderRadius: 8, textAlign: 'center', border: '1px solid var(--border)' }}>
-                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600, marginBottom: 2 }}>Oson (Y1)</div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{pacing.avgY1} soniya</div>
+                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600, marginBottom: 2 }}>{t('exam.easyY1')}</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t('exam.seconds', { n: pacing.avgY1 })}</div>
                 </div>
                 <div style={{ background: 'var(--bg3)', padding: 10, borderRadius: 8, textAlign: 'center', border: '1px solid var(--border)' }}>
-                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600, marginBottom: 2 }}>Oʻrta (Y2)</div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{pacing.avgY2} soniya</div>
+                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600, marginBottom: 2 }}>{t('exam.midY2')}</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t('exam.seconds', { n: pacing.avgY2 })}</div>
                 </div>
                 <div style={{ background: 'var(--bg3)', padding: 10, borderRadius: 8, textAlign: 'center', border: '1px solid var(--border)' }}>
-                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600, marginBottom: 2 }}>Qiyin (Y3)</div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{pacing.avgY3} soniya</div>
+                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600, marginBottom: 2 }}>{t('exam.hardY3')}</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t('exam.seconds', { n: pacing.avgY3 })}</div>
                 </div>
               </div>
               <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 10, lineHeight: 1.4 }}>
-                {pacing.avgY3 > 60 
-                  ? "💡 Maslahat: Murakkab (Y3) keys savollariga koʻp vaqt (60 soniyadan ortiq) yoʻqotyapsiz. Haqiqiy imtihonda ulgurish uchun tezroq fikrlashga harakat qiling." 
-                  : "⚡ Barakalla! Vaqtni har bir qiyinchilik darajasida juda toʻgʻri taqsimladingiz."}
+                {pacing.avgY3 > 60
+                  ? t('exam.pacingSlow')
+                  : t('exam.pacingGood')}
               </div>
             </div>
           )}
@@ -766,10 +745,10 @@ const ExamPage = () => {
             }}>
               <div style={{ display: 'flex', gap: 10, alignItems: 'center', marginBottom: 8 }}>
                 <span style={{ fontSize: 18 }}>💡</span>
-                <strong style={{ fontSize: 14, color: 'var(--text)', fontWeight: 800 }}>Siz uchun Shaxsiy Tavsiya</strong>
+                <strong style={{ fontSize: 14, color: 'var(--text)', fontWeight: 800 }}>{t('exam.adviceTitle')}</strong>
               </div>
               <p style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.5, margin: '0 0 12px 0' }}>
-                Imtihon natijalariga koʻra, sizda <strong>{weakTopicsSorted[0].name}</strong> boʻlimidan bilim koʻrsatkichi pastroq boʻldi ({weakTopicsSorted[0].correct} ta to'g'ri, {weakTopicsSorted[0].total} ta savoldan). Ushbu boʻlimdagi boʻshliqlarni toʻldirish uchun mavzuli testlarni bajarishni tavsiya qilamiz.
+                {t('exam.adviceP1')} <strong>{weakTopicsSorted[0].name}</strong> {t('exam.adviceP2', { correct: weakTopicsSorted[0].correct, total: weakTopicsSorted[0].total })}
               </p>
               <button 
                 className="btn btn-sm btn-primary"
@@ -779,7 +758,7 @@ const ExamPage = () => {
                 }}
                 style={{ padding: '8px 16px', borderRadius: 10, fontSize: 13, fontWeight: 700 }}
               >
-                🎯 Mavzuni Qayta Mashq Qilish
+                {t('exam.practiceTopic')}
               </button>
             </div>
           )}
@@ -788,15 +767,15 @@ const ExamPage = () => {
           <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 28, fontSize: 13 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <div style={{ width: 24, height: 24, borderRadius: 6, background: 'var(--green-bg)', border: '2px solid var(--green)' }} />
-              <span>To'g'ri javoblar</span>
+              <span>{t('exam.legendCorrect')}</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <div style={{ width: 24, height: 24, borderRadius: 6, background: 'var(--red-bg)', border: '2px dashed var(--red)' }} />
-              <span>Noto'g'ri javoblar</span>
+              <span>{t('exam.legendWrong')}</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <div style={{ width: 24, height: 24, borderRadius: 6, background: 'var(--bg3)', border: '1.5px solid var(--border2)' }} />
-              <span>Qoldirilgan</span>
+              <span>{t('exam.legendSkipped')}</span>
             </div>
           </div>
 
@@ -835,15 +814,34 @@ const ExamPage = () => {
             </div>
           ))}
 
-          <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
+          <button
+            className="btn btn-primary"
+            style={{ width: '100%', marginTop: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+            onClick={() => setShowShareCard(true)}
+          >
+            <Share2 size={17} /> {t('exam.shareImage')}
+          </button>
+
+          <div style={{ display: 'flex', gap: 12, marginTop: 12 }}>
             <button className="btn btn-primary" style={{ flex: 1 }} onClick={() => navigate(0)}>
-              Qaytadan urinish
+              {t('exam.retry')}
             </button>
             <button className="btn btn-outline" style={{ flex: 1 }} onClick={() => navigate('/test')}>
-              Bosh sahifaga
+              {t('results.toHome')}
             </button>
           </div>
         </div>
+
+        <ResultShareCard
+          open={showShareCard}
+          onClose={() => setShowShareCard(false)}
+          score={correctCount}
+          total={questions.length}
+          title={SUBJECTS.find(s => s.id === cat)?.name || t('exam.examWord')}
+          mode="exam"
+          userName={user?.displayName}
+          showToast={showToast}
+        />
       </motion.div>
     );
   }
@@ -857,7 +855,7 @@ const ExamPage = () => {
       {/* TOP BAR */}
       <div className="exam-topbar glass-panel">
         <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--text)' }}>
-          {SUBJECTS.find(s => s.id === cat)?.name || "CHQBT"} — Imtihon Simulyatsiyasi
+          {t('exam.simHeader', { subject: SUBJECTS.find(s => s.id === cat)?.name || "CHQBT" })}
         </div>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           {reviewMode ? (
@@ -869,36 +867,20 @@ const ExamPage = () => {
                 setReviewMode(false);
               }}
             >
-              📊 Natijaga Qaytish
+              {t('exam.backToResults')}
             </button>
           ) : (
             <>
-              {cheatWarnings > 0 && (
-                <div style={{
-                  background: 'var(--red-bg)',
-                  border: '1px solid var(--red)',
-                  borderRadius: 8,
-                  padding: '6px 12px',
-                  fontSize: 12,
-                  fontWeight: 700,
-                  color: 'var(--red)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 6
-                }}>
-                  <span>⚠️ Ogohlantirish: {cheatWarnings}/3</span>
-                </div>
-              )}
               <div className={`exam-timer ${isUrgent ? 'timer-danger' : isWarning ? 'timer-warning' : ''}`}>
                 <Clock size={16} />
-                <span>Qolgan vaqt: <strong>{formatTime(timeLeft)}</strong></span>
+                <span>{t('exam.timeLeft')} <strong>{formatTime(timeLeft)}</strong></span>
               </div>
               <button
                 className="btn btn-sm"
                 style={{ background: 'var(--red)', color: 'white', border: 'none' }}
                 onClick={() => handleFinish(false)}
               >
-                <Flag size={14} /> Yakunlash
+                <Flag size={14} /> {t('exam.finish')}
               </button>
             </>
           )}
@@ -919,7 +901,7 @@ const ExamPage = () => {
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
                 <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                  Savol {currentQ + 1} / {questions.length}
+                  {t('test.questionNum', { current: currentQ + 1, total: questions.length })}
                 </div>
                 <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                   <button
@@ -927,7 +909,7 @@ const ExamPage = () => {
                     style={{ position: 'static', display: 'flex', alignItems: 'center', gap: 6, padding: '6px 12px', borderRadius: 8, fontSize: 13, fontWeight: 600, border: '1px solid var(--border)' }}
                     onClick={() => setShowObjectionModal(true)}
                   >
-                    <AlertCircle size={13} /> E'tiroz
+                    <AlertCircle size={13} /> {t('test.objection')}
                   </button>
                   <button
                     onClick={() => setFlagged(prev => ({ ...prev, [currentQ]: !prev[currentQ] }))}
@@ -940,7 +922,7 @@ const ExamPage = () => {
                     }}
                   >
                     <Flag size={13} fill={flagged[currentQ] ? 'var(--amber)' : 'none'} />
-                    {flagged[currentQ] ? 'Belgilangan' : 'Belgilash'}
+                    {flagged[currentQ] ? t('exam.flagged') : t('exam.flag')}
                   </button>
                 </div>
               </div>
@@ -1026,7 +1008,7 @@ const ExamPage = () => {
                 }}>
                   <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 10 }}>
                     <span style={{ fontSize: 18 }}>📖</span>
-                    <strong style={{ fontSize: 14, color: 'var(--text)', fontWeight: 800 }}>Tushuntirish:</strong>
+                    <strong style={{ fontSize: 14, color: 'var(--text)', fontWeight: 800 }}>{t('exam.explanation')}</strong>
                   </div>
                   <div style={{ fontSize: 14, color: 'var(--text2)', lineHeight: 1.6 }}>
                     {q.explanation ? (
@@ -1036,12 +1018,12 @@ const ExamPage = () => {
                         q.explanation
                       )
                     ) : (
-                      "Ushbu savol uchun tushuntirish kiritilmagan."
+                      t('exam.noExplanation')
                     )}
                   </div>
 
                   {q.source && (
-                    <div className="q-source">🔖 Manba: {q.source}</div>
+                    <div className="q-source">{t('test.source', { source: q.source })}</div>
                   )}
                 </div>
               )}
@@ -1053,14 +1035,14 @@ const ExamPage = () => {
                   disabled={currentQ === 0}
                   onClick={() => handleQuestionSwitch(currentQ - 1)}
                 >
-                  <ChevronLeft size={18} /> Orqaga
+                  <ChevronLeft size={18} /> {t('common.back')}
                 </button>
                 <button
                   className="btn btn-primary"
                   disabled={currentQ === questions.length - 1}
                   onClick={() => handleQuestionSwitch(currentQ + 1)}
                 >
-                  Keyingi <ChevronRight size={18} />
+                  {t('test.next')} <ChevronRight size={18} />
                 </button>
               </div>
             </motion.div>
@@ -1072,7 +1054,7 @@ const ExamPage = () => {
           <div style={{ marginBottom: 16 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
               <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                Savollar
+                {t('exam.questions')}
               </div>
               <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--blue)' }}>
                 {answeredCount} / {questions.length}
@@ -1083,19 +1065,19 @@ const ExamPage = () => {
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, fontSize: 11, color: 'var(--text2)', marginBottom: 16 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <div style={{ width: 12, height: 12, borderRadius: 4, background: 'var(--blue)' }} />
-                <span>Javob berilgan</span>
+                <span>{t('exam.legendAnswered')}</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <div style={{ width: 12, height: 12, borderRadius: 4, background: 'var(--amber)' }} />
-                <span>Belgilangan 🚩</span>
+                <span>{t('exam.legendFlagged')}</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <div style={{ width: 12, height: 12, borderRadius: 4, background: 'var(--bg3)', border: '1px solid var(--border)' }} />
-                <span>Qoldirilgan</span>
+                <span>{t('exam.legendSkipped')}</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <div style={{ width: 12, height: 12, borderRadius: 4, background: 'transparent', border: '2px solid var(--text)' }} />
-                <span>Joriy</span>
+                <span>{t('exam.legendCurrent')}</span>
               </div>
             </div>
 
@@ -1165,7 +1147,7 @@ const ExamPage = () => {
                 setReviewMode(false);
               }}
             >
-              📊 Natijaga Qaytish
+              {t('exam.backToResults')}
             </button>
           ) : (
             <button
@@ -1173,7 +1155,7 @@ const ExamPage = () => {
               style={{ width: '100%', background: 'var(--red)', borderColor: 'var(--red)' }}
               onClick={() => setShowConfirmModal(true)}
             >
-              <Flag size={16} /> Yakunlash ({answeredCount}/{questions.length})
+              <Flag size={16} /> {t('exam.finishCount', { answered: answeredCount, total: questions.length })}
             </button>
           )}
         </div>
@@ -1183,11 +1165,11 @@ const ExamPage = () => {
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: 24, maxWidth: 320, width: '90%', borderRadius: 20, textAlign: 'center' }}>
             <div style={{ fontSize: 40, marginBottom: 12 }}>🚩</div>
-            <h3 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Imtihonni yakunlash</h3>
-            <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>Rostdan ham imtihonni yakunlamoqchimisiz? Barcha belgilangan javoblar saqlanadi.</p>
+            <h3 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>{t('exam.confirmTitle')}</h3>
+            <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>{t('exam.confirmText')}</p>
             <div style={{ display: 'flex', gap: 12 }}>
-              <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setShowConfirmModal(false)}>Yo'q</button>
-              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { setShowConfirmModal(false); handleFinish(true); }}>Ha, yakunlash</button>
+              <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setShowConfirmModal(false)}>{t('exam.no')}</button>
+              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { setShowConfirmModal(false); handleFinish(true); }}>{t('exam.yesFinish')}</button>
             </div>
           </motion.div>
         </div>

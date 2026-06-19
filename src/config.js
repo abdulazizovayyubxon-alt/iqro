@@ -5,6 +5,7 @@ const RAW_EXAM_DATE = new Date('2026-05-13T09:00:00');
 export const EXAM_DATE = RAW_EXAM_DATE > new Date() ? RAW_EXAM_DATE : null;
 
 export const APP_NAME = 'IQRO';
+export const APP_VERSION = '1.0.0'; // Ilova versiyasi (Sozlamalar pastida ko'rsatiladi; relizda bu yerni yangilang)
 export const APP_SUBTITLE = 'Kasbiy Sertifikatlash Tayyorgarligi';
 export const EXAM_LABEL = EXAM_DATE ? '13 May — IQRO Kasbiy Sertifikatlash Imtihoni' : 'IQRO Kasbiy Sertifikatlash Platformasi';
 export const EXAM_GOAL_SCORE = 70;

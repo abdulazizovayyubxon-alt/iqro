@@ -3,8 +3,9 @@ import { db } from '../firebase';
 import { AuthContext } from './AuthContext';
 import { ToastContext } from './ToastContext';
 import { TOPICS } from '../data/mockData';
+import { AnalyticsEvents } from '../services/analytics';
 import {
-  collection, query, orderBy, onSnapshot,
+  collection, query, where, onSnapshot,
   addDoc, deleteDoc, updateDoc, doc, getDocs, writeBatch
 } from "firebase/firestore";
 
@@ -50,7 +51,9 @@ export const ObjectionProvider = ({ children }) => {
   useEffect(() => {
     if (!user) return;
 
-    const q = query(collection(db, "objections"), orderBy("timestamp", "desc"));
+    // Faqat O'Z e'tirozlari (firestore.rules: oddiy user boshqasinikini o'qiy olmaydi).
+    // Yagona maqsad — "siz yuborgan xato tuzatildi" bildirishnomasi; tartib shart emas.
+    const q = query(collection(db, "objections"), where("uid", "==", user.uid));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const cloudObjections = snapshot.docs.map(d => ({
         ...d.data(),
@@ -115,6 +118,7 @@ export const ObjectionProvider = ({ children }) => {
 
     try {
       await addDoc(collection(db, "objections"), { ...newObjection, timestamp: new Date() });
+      AnalyticsEvents.objectionSubmit(newObjection.topic);
     } catch (err) {
       console.error("Firebase write error:", err);
     }

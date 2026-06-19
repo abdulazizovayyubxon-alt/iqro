@@ -21,6 +21,7 @@ const slug = arg("--subject");
 const per = parseInt(arg("--per", "15"), 10);
 const limit = parseInt(arg("--limit", "0"), 10); // 0 = barchasi
 const noPed = args.includes("--no-ped");
+const pedExtra = args.includes("--ped-extra"); // qo'shimcha: ped darslik kutubxonasini ham (fan/_ped_manba) chunk qiladi
 
 if (!slug) { console.error("Xato: --subject <fan> kerak"); process.exit(1); }
 
@@ -50,6 +51,16 @@ if (!noPed && fs.existsSync(SHARED_PED.spec)) {
     .filter((c) => c.block !== "mutaxassislik"); // umumiy manbadan faqat pedagogika/kasb
   chunks = chunks.concat(pedChunks);
 }
+// Ixtiyoriy: pedagogika darslik kutubxonasini (kasb standarti + 9 darslik) ham qo'shish.
+// Standart oqimni to'ldirmaslik uchun faqat --ped-extra bilan yoqiladi (katta hajm).
+if (!noPed && pedExtra && SHARED_PED.manbaDir && fs.existsSync(SHARED_PED.manbaDir)) {
+  for (const f of fs.readdirSync(SHARED_PED.manbaDir).filter((x) => x.endsWith(".txt")).sort()) {
+    const manbaChunks = chunkSpec(fs.readFileSync(path.join(SHARED_PED.manbaDir, f), "utf8"))
+      .filter((c) => c.block !== "mutaxassislik")
+      .map((c) => ({ ...c, title: `${f.replace(/\.txt$/, "")}: ${c.title}` }));
+    chunks = chunks.concat(manbaChunks);
+  }
+}
 if (limit > 0) chunks = chunks.slice(0, limit);
 
 // 3) Namuna langarlar (agar JSONga o'tkazilgan bo'lsa) — fan bo'yicha
@@ -76,6 +87,29 @@ function sampleExisting(n = 25) {
 
 const anchors = await loadAnchors();
 const pedAnchors = anchors.filter((a) => /pedagog|metod|tarbiya|baholash/i.test((a.topic || "") + (a.subtopic || "")));
+// Umumiy pedagogika namuna langarlari (real tushgan savol uslubi) — ped/kasb bloklarida ustun ishlatiladi.
+const pedNamuna = (SHARED_PED.namuna && fs.existsSync(SHARED_PED.namuna)) ? await loadMany([SHARED_PED.namuna]) : [];
+
+// 4b) DARSLIK GROUNDING (ixtiyoriy, sub.book bo'lsa): har MUTAXASSISLIK mavzusiga darslikdan
+// FAQAT shu mavzuga oid parchani topib qo'shadi (butun kitob emas) — faktik aniqlik + on-spec,
+// butun-kitob drift va takroridan xoli. Mos parcha = mavzu so'zlari bilan eng ko'p kesishgan oyna.
+const STOPW = new Set("uchun bilan bo'lgan ushbu ularning hamda shuning bo'lib bo'ladi qilish kerak orqali asosan bo'yicha mumkin hisoblanadi quyidagi amalga uning bo'lishi bo'ladigan birlik".split(" "));
+const norm = (s) => String(s).toLowerCase().replace(/[`‘’]/g, "'");
+const toks = (s) => (norm(s).match(/[a-z']{5,}/g) || []).filter((w) => !STOPW.has(w));
+const bookText = (sub.book && fs.existsSync(sub.book)) ? fs.readFileSync(sub.book, "utf8").replace(/[ \t]+/g, " ") : "";
+const bookWins = [];
+for (let i = 0; bookText && i < bookText.length; i += 1000) bookWins.push(bookText.slice(i, i + 1300).trim());
+const winSets = bookWins.map((w) => new Set(toks(w)));
+function bookGrounding(topicText) {
+  if (!bookWins.length) return "";
+  const qt = [...new Set(toks(topicText))];
+  const top = winSets.map((s, idx) => { let n = 0; for (const t of qt) if (s.has(t)) n++; return [n, idx]; })
+    .sort((a, b) => b[0] - a[0]).slice(0, 2).filter(([n]) => n >= 3);
+  if (!top.length) return "";
+  const ex = top.map(([, idx]) => bookWins[idx]).join("\n[...]\n");
+  return `\n\n--- DARSLIKDAN (faktlar shu yerdan: sana/son/nom/atama AYNAN shu matndan olinsin, o'ylab topma) ---\n${ex}`;
+}
+if (bookText) console.log(`  darslik grounding: ${sub.book} (${bookWins.length} oyna) — mutaxassislik mavzulariga qo'shiladi`);
 
 // 5) Promptlarni yozish
 const outDir = path.join("pipeline", "prompts", slug);
@@ -92,11 +126,13 @@ const indexLines = [`# ${sub.name} — generatsiya promptlari`, "",
 
 chunks.forEach((c, i) => {
   const n = String(i + 1).padStart(3, "0");
-  const useAnchors = c.block === "pedagogika" || c.block === "kasb" ? (pedAnchors.length ? pedAnchors : anchors) : anchors;
+  const useAnchors = (c.block === "pedagogika" || c.block === "kasb")
+    ? (pedNamuna.length || pedAnchors.length ? [...pedNamuna, ...pedAnchors] : anchors)
+    : anchors;
   const prompt = buildGenPrompt({
     subjectName: sub.name,
     topicTitle: c.title,
-    specChunk: c.text.trim(),
+    specChunk: c.block === "mutaxassislik" ? c.text.trim() + bookGrounding(c.title + " " + c.text) : c.text.trim(),
     anchors: useAnchors,
     existingTitles: sampleExisting(),
     count: per,

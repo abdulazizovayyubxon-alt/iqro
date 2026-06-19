@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
-const SmartBottomSheet = ({ 
+const SmartBottomSheet = ({
   showSelectorDrawer, 
   setShowSelectorDrawer, 
   state, 
@@ -10,8 +11,9 @@ const SmartBottomSheet = ({
   topicId, 
   setTopicId, 
   SUBJECTS, 
-  TOPICS 
+  TOPICS
 }) => {
+  const { t } = useTranslation();
 
   return (
     <>
@@ -60,10 +62,11 @@ const SmartBottomSheet = ({
               }}
             >
               <div style={{ padding: '20px 20px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border)' }}>
-                <h3 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--text)', margin: 0 }}>Fan va Bo'limni Tanlash</h3>
-                <button 
+                <h3 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--text)', margin: 0 }}>{t('smartSheet.title')}</h3>
+                <button
                   onClick={() => setShowSelectorDrawer(false)}
-                  style={{ background: 'var(--bg3)', border: 'none', width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text2)', cursor: 'pointer' }}
+                  aria-label={t('common.close')}
+                  style={{ background: 'var(--bg3)', border: 'none', width: '44px', height: '44px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text2)', cursor: 'pointer' }}
                 >
                   <X size={18} />
                 </button>
@@ -72,7 +75,7 @@ const SmartBottomSheet = ({
               <div style={{ flex: 1, overflowY: 'auto', padding: '16px 20px 30px' }}>
                 {/* Subjects Grid */}
                 <div style={{ marginBottom: '24px' }}>
-                  <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text3)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Fanlar</div>
+                  <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text3)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{t('smartSheet.subjects')}</div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '8px' }}>
                     {SUBJECTS.map(subj => {
                       const Icon = subj.icon;
@@ -82,11 +85,11 @@ const SmartBottomSheet = ({
                           key={subj.id}
                           onClick={() => updateState({ activeCategory: subj.id, topicId: -1 })}
                           style={{
-                            display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 12px',
+                            display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 12px', minHeight: 44,
                             borderRadius: '14px', border: '1.5px solid',
                             background: isSelected ? 'var(--blue-bg)' : 'var(--bg3)',
                             borderColor: isSelected ? 'var(--accent)' : 'transparent',
-                            color: isSelected ? 'var(--accent)' : 'var(--text2)',
+                            color: isSelected ? 'var(--accent2)' : 'var(--text2)',
                             fontSize: '13px', fontWeight: 700, cursor: 'pointer', transition: 'all 0.2s',
                             textAlign: 'left'
                           }}
@@ -101,7 +104,7 @@ const SmartBottomSheet = ({
 
                 {/* Topics List */}
                 <div>
-                  <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text3)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Mavzular</div>
+                  <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text3)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{t('smartSheet.topics')}</div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                     <button
                       onClick={() => { setTopicId(-1); setShowSelectorDrawer(false); }}
@@ -115,7 +118,7 @@ const SmartBottomSheet = ({
                       }}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <span style={{ fontSize: '16px' }}>📚</span> Barcha mavzular
+                        <span style={{ fontSize: '16px' }}>📚</span> {t('common.allTopics')}
                       </div>
                       {topicId === -1 && <Check size={16} color="var(--accent)" />}
                     </button>

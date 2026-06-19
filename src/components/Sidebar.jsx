@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
 import { useAdmin } from '../hooks/useAdmin';
 import { SUBJECTS } from '../data/mockData';
@@ -22,6 +23,7 @@ import {
 import { PWAContext } from '../context/PWAContext';
 
 const Sidebar = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const { state, updateState } = useContext(AppContext);
@@ -46,7 +48,7 @@ const Sidebar = () => {
       <div className="sidebar">
         {/* DESKTOP ONLY: Platform Switcher */}
         <div className="sidebar-section hide-mobile" style={{ borderBottom: '1px solid var(--border)', marginBottom: '15px', paddingBottom: '15px' }}>
-          <div className="sidebar-title">Fanlar</div>
+          <div className="sidebar-title">{t('sidebar.subjects')}</div>
           {SUBJECTS.map(subj => {
             const Icon = subj.icon;
             const isSelected = state.activeCategory === subj.id;
@@ -65,14 +67,14 @@ const Sidebar = () => {
 
         {/* MAIN NAVIGATION */}
         <div className="sidebar-section">
-          <div className="sidebar-title hide-mobile">Asosiy</div>
+          <div className="sidebar-title hide-mobile">{t('sidebar.main')}</div>
           {isAdmin && (
             <div
               className={`nav-item ${isActive('/dashboard') ? 'active' : ''}`}
               onClick={() => navigate('/dashboard')}
             >
               <span className="nav-icon"><LayoutDashboard size={20} /></span>
-              <span className="nav-label">Dashboard</span>
+              <span className="nav-label">{t('sidebar.dashboard')}</span>
             </div>
           )}
 
@@ -82,7 +84,7 @@ const Sidebar = () => {
             onClick={() => navigateToTest(-1, 'exam')}
           >
             <span className="nav-icon"><PenTool size={20} /></span>
-            <span className="nav-label">Test</span>
+            <span className="nav-label">{t('sidebar.test')}</span>
           </div>
 
           <div
@@ -90,7 +92,7 @@ const Sidebar = () => {
             onClick={() => navigate('/exam')}
           >
             <span className="nav-icon"><GraduationCap size={20} /></span>
-            <span className="nav-label">Imtihon</span>
+            <span className="nav-label">{t('sidebar.exam')}</span>
           </div>
 
           <div
@@ -98,7 +100,7 @@ const Sidebar = () => {
             onClick={() => navigate('/review')}
           >
             <span className="nav-icon"><Brain size={20} /></span>
-            <span className="nav-label">Takrorlash</span>
+            <span className="nav-label">{t('sidebar.review')}</span>
             {(() => {
               const now = Date.now();
               const due = (state.spacedCards || []).filter(c => c.nextReview <= now).length;
@@ -111,7 +113,7 @@ const Sidebar = () => {
             onClick={() => navigate('/errors')}
           >
             <span className="nav-icon"><AlertCircle size={20} /></span>
-            <span className="nav-label">Xatolar kitobi</span>
+            <span className="nav-label">{t('sidebar.errors')}</span>
             {(() => {
               const cat = state.activeCategory;
               const mistakesCount = (state.stats?.[cat]?.mistakes || []).length;
@@ -124,7 +126,7 @@ const Sidebar = () => {
             onClick={() => navigate('/leaderboard')}
           >
             <span className="nav-icon"><Trophy size={20} /></span>
-            <span className="nav-label">Reyting</span>
+            <span className="nav-label">{t('sidebar.leaderboard')}</span>
           </div>
 
           <div
@@ -132,7 +134,7 @@ const Sidebar = () => {
             onClick={() => navigate('/achievements')}
           >
             <span className="nav-icon"><Medal size={20} /></span>
-            <span className="nav-label">Yutuqlar</span>
+            <span className="nav-label">{t('sidebar.achievements')}</span>
           </div>
 
           <div
@@ -141,7 +143,7 @@ const Sidebar = () => {
           >
             <span className="nav-icon"><Users size={20} /></span>
             <span className="nav-label" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              Do'stlarni taklif qilish
+              {t('sidebar.invite')}
               <span style={{ animation: 'pulseGift 1.5s infinite', display: 'inline-flex' }}><GiftBox size={16} /></span>
             </span>
           </div>
@@ -152,7 +154,7 @@ const Sidebar = () => {
             onClick={() => navigate('/settings')}
           >
             <span className="nav-icon"><Settings size={20} /></span>
-            <span className="nav-label">Sozlamalar</span>
+            <span className="nav-label">{t('sidebar.settings')}</span>
           </div>
 
           {/* INSTALL APP */}
@@ -163,7 +165,7 @@ const Sidebar = () => {
               style={{ background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05))', border: '1px solid rgba(16, 185, 129, 0.2)' }}
             >
               <span className="nav-icon" style={{ color: '#10B981' }}><Download size={20} /></span>
-              <span className="nav-label" style={{ color: '#10B981', fontWeight: 800 }}>Ilovani o'rnatish</span>
+              <span className="nav-label" style={{ color: '#10B981', fontWeight: 800 }}>{t('sidebar.install')}</span>
             </div>
           )}
 
@@ -174,7 +176,7 @@ const Sidebar = () => {
               onClick={() => navigate('/admin')}
             >
               <span className="nav-icon"><Shield size={20} /></span>
-              <span className="nav-label">Admin Panel</span>
+              <span className="nav-label">{t('sidebar.admin')}</span>
             </div>
           )}
 
@@ -185,7 +187,7 @@ const Sidebar = () => {
             style={{ display: 'none' }}
           >
             <span className="nav-icon"><BookOpen size={20} /></span>
-            <span className="nav-label">Fanlar</span>
+            <span className="nav-label">{t('sidebar.subjects')}</span>
           </div>
         </div>
 
@@ -196,8 +198,8 @@ const Sidebar = () => {
       {showMobSubjects && (
         <div className="modal-overlay" onClick={() => setShowMobSubjects(false)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <div className="modal-title">Fanni tanlang</div>
-            <div className="modal-text">Hozirgi fan: <strong>{activeCategoryName}</strong></div>
+            <div className="modal-title">{t('sidebar.chooseSubject')}</div>
+            <div className="modal-text">{t('sidebar.currentSubject')} <strong>{activeCategoryName}</strong></div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {SUBJECTS.map(subj => {
                 const Icon = subj.icon;
@@ -215,7 +217,7 @@ const Sidebar = () => {
               })}
             </div>
             <button className="btn btn-outline" style={{ width: '100%', marginTop: '20px' }} onClick={() => setShowMobSubjects(false)}>
-              Yopish
+              {t('common.close')}
             </button>
           </div>
         </div>

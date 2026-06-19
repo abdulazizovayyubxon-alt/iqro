@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * ObjectionModal — Savolga e'tiroz bildirish modali
@@ -11,6 +12,7 @@ import React, { useState } from 'react';
  *  - onSubmit: (text: string) => void
  */
 const ObjectionModal = ({ isOpen, onClose, questionText, onSubmit }) => {
+  const { t } = useTranslation();
   const [text, setText] = useState('');
 
   React.useEffect(() => {
@@ -49,19 +51,19 @@ const ObjectionModal = ({ isOpen, onClose, questionText, onSubmit }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <div className="modal-title">⚠️ E'tiroz bildirish</div>
+        <div className="modal-title">{t('objection.title')}</div>
         <div className="modal-text" style={{ fontSize: 13, lineHeight: 1.5 }}>
-          <strong>Savol:</strong> {questionText}
+          <strong>{t('objection.questionLabel')}</strong> {questionText}
         </div>
         <textarea
           className="modal-input"
-          placeholder="Muammo yoki xatolikni tushuntiring..."
+          placeholder={t('objection.placeholder')}
           value={text}
           onChange={e => setText(e.target.value)}
         />
         <div className="modal-actions">
-          <button className="btn btn-outline" onClick={onClose}>Bekor</button>
-          <button className="btn btn-primary" onClick={handleSubmit}>Yuborish</button>
+          <button className="btn btn-outline" onClick={onClose}>{t('objection.cancel')}</button>
+          <button className="btn btn-primary" onClick={handleSubmit}>{t('objection.submit')}</button>
         </div>
       </div>
     </div>

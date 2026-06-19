@@ -5,6 +5,7 @@
 import React, { useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
 import { resolveAvatar } from '../data/avatars';
@@ -23,10 +24,12 @@ const TABS = [
 export default function BottomNav() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
   const { state, updateState } = useContext(AppContext);
   const { user } = useAuth();
   
-  const isPremium = user?.isPremium || false;
+  // Oltin avatar halqasi faqat haqiqiy (to'langan) premiumda — trial/urgency emas.
+  const isPremium = user?.isTruePremium || false;
 
   const dueCount = (state.spacedCards || []).filter(c => c.nextReview <= Date.now()).length;
 
@@ -97,7 +100,7 @@ export default function BottomNav() {
               color: isActive ? 'var(--accent)' : 'var(--text2)',
               marginTop: 4, transition: 'color 0.2s',
             }}>
-              {tab.label}
+              {t(`nav.${tab.id}`)}
             </span>
           </button>
         );
@@ -128,7 +131,7 @@ const styles = {
     position: 'absolute',
     top: -8, left: -8,
     width: 41, height: 41, borderRadius: 13,
-    background: 'linear-gradient(135deg, #29B6F6 0%, #8B5CF6 100%)',
+    background: 'var(--grad-primary)',
     zIndex: 0,
     boxShadow: '0 4px 14px rgba(139, 92, 246, 0.32)',
   },

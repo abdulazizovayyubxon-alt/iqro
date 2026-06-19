@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { Moon, Sun, BookOpen, Calendar, Crown } from 'lucide-react';
@@ -11,6 +12,7 @@ import { resolveAvatar } from '../data/avatars';
 import { getReferralStats } from '../services/referral';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
+import { prefersReducedMotion } from '../utils/motion';
 import { useIsMobile } from '../hooks/useIsMobile';
 import PremiumModal from './PremiumModal';
 import { useModalBackButton } from './profile/useModalBackButton';
@@ -19,6 +21,7 @@ import { useNotifications } from '../hooks/useNotifications';
 const Header = ({ theme, toggleTheme }) => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { toast, showToast } = useContext(ToastContext);
   const { user } = useAuth();
   const [daysLeft, setDaysLeft] = useState(0);
@@ -28,8 +31,8 @@ const Header = ({ theme, toggleTheme }) => {
   const isPremium = user?.isPremium || false;
   const { unreadCount } = useNotifications();
   useModalBackButton(showPremium, () => setShowPremium(false));
-  // O'ng tomon ikonka tugmalari o'lchami — mobil ekranda joy tig'iz bo'lgani uchun kichikroq
-  const btnSize = isMobile ? 38 : 44;
+  // O'ng tomon ikonka tugmalari o'lchami — a11y teginish zonasi min 44px (WCAG 2.5.5)
+  const btnSize = 44;
   
   // Ambassador Modal va Stats
   const [ambassadorModal, setAmbassadorModal] = useState(false);
@@ -46,7 +49,7 @@ const Header = ({ theme, toggleTheme }) => {
           // Agar oldin ko'rsatilmagan bo'lsa, modalni chiqaramiz
           if (!localStorage.getItem('iqro_ambassador_thanks')) {
             setAmbassadorModal(true);
-            confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+            if (!prefersReducedMotion()) confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
             if (forceTest) {
               localStorage.removeItem('force_ambassador');
             }
@@ -145,12 +148,12 @@ const Header = ({ theme, toggleTheme }) => {
     return name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
   };
 
-  const displayName = user?.displayName || user?.email?.split('@')[0] || 'Foydalanuvchi';
+  const displayName = user?.displayName || user?.email?.split('@')[0] || t('common.userFallback');
 
   return (
     <>
       <div className="header">
-        <div className="header-greeting" onClick={() => navigate('/profile')} title="Profil">
+        <div className="header-greeting" onClick={() => navigate('/profile')} title={t('header.profile')}>
           <div className="header-avatar-wrap">
             <div className="header-avatar">
               {resolveAvatar(user)
@@ -158,13 +161,13 @@ const Header = ({ theme, toggleTheme }) => {
                 : <span>{getInitials(displayName)}</span>}
             </div>
             {unreadCount > 0 && (
-              <span className="header-avatar-badge" title={`${unreadCount} ta yangi bildirishnoma`}>
+              <span className="header-avatar-badge" title={t('header.newNotifications', { count: unreadCount })}>
                 {unreadCount > 9 ? '9+' : unreadCount}
               </span>
             )}
           </div>
           <div className="header-greeting-text">
-            <span className="header-greet-hi">Xush kelibsiz 👋</span>
+            <span className="header-greet-hi">{t('header.greeting')}</span>
             <span className="header-greet-name">{displayName}</span>
           </div>
         </div>
@@ -174,8 +177,8 @@ const Header = ({ theme, toggleTheme }) => {
           <motion.button
             className="header-premium-pill"
             whileTap={{ scale: 0.95 }}
-            onClick={() => setShowPremium(true)}
-            title={isPremium ? 'Premium faol' : 'Premium sotib olish'}
+            onClick={() => navigate('/premium')}
+            title={isPremium ? t('header.premiumActive') : t('header.premiumBuy')}
           >
             <motion.span
               className="header-premium-gem"
@@ -186,7 +189,7 @@ const Header = ({ theme, toggleTheme }) => {
             >
               <Crown size={16} strokeWidth={2.4} />
             </motion.span>
-            <span className="header-premium-label">Premium</span>
+            <span className="header-premium-label">{t('header.premium')}</span>
           </motion.button>
 
           {/* Kun Countdown */}
@@ -198,10 +201,10 @@ const Header = ({ theme, toggleTheme }) => {
             }} 
             whileHover={{ y: -1 }}
             whileTap={{ scale: 0.96 }}
-            title="Imtihon sanasini o'zgartirish"
+            title={t('header.examDateChange')}
             style={{ minHeight: '48px', display: 'flex', alignItems: 'center', gap: '6px', boxSizing: 'border-box' }}
           >
-            <span className="header-exam-countdown-text">{daysLeft} kun qoldi</span>
+            <span className="header-exam-countdown-text">{t('header.daysLeft', { count: daysLeft })}</span>
             <Calendar size={13} style={{ color: 'var(--blue)', opacity: 0.8 }} />
           </motion.div>
 
@@ -210,7 +213,8 @@ const Header = ({ theme, toggleTheme }) => {
             className="user-avatar-btn"
             whileTap={{ scale: 0.95 }}
             onClick={() => toggleTheme()}
-            title={theme === 'light' ? "Sepia (o'qish) rejimi" : theme === 'sepia' ? 'Tungi rejim' : 'Kunduzgi rejim'}
+            title={theme === 'light' ? t('header.themeNextSepia') : theme === 'sepia' ? t('header.themeNextDark') : t('header.themeNextLight')}
+            aria-label={theme === 'light' ? t('header.themeAriaSepia') : theme === 'sepia' ? t('header.themeAriaDark') : t('header.themeAriaLight')}
             style={{ width: btnSize, height: btnSize, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0 }}
           >
             {theme === 'dark' ? <Moon size={18} /> : theme === 'sepia' ? <BookOpen size={18} /> : <Sun size={18} />}
@@ -220,7 +224,8 @@ const Header = ({ theme, toggleTheme }) => {
           <motion.button
             className="user-avatar-btn"
             onClick={() => navigate('/referral')}
-            title="Do'stlarni taklif qiling"
+            title={t('header.inviteFriends')}
+            aria-label={t('header.inviteFriendsAria')}
             initial={{ rotate: 0 }}
             animate={
               (!sessionStorage.getItem('iqro_gift_wiggled') && user && !isAmbassador) ? {
@@ -243,30 +248,30 @@ const Header = ({ theme, toggleTheme }) => {
         <div className="modal-overlay" onClick={() => setShowExamModal(false)}>
           <div className="modal-content glass-panel" onClick={e => e.stopPropagation()} style={{ maxWidth: '400px' }}>
             <div className="modal-title">
-              <Calendar size={22} style={{ color: 'var(--blue)' }} /> Imtihon sanasini sozlash
+              <Calendar size={22} style={{ color: 'var(--blue)' }} /> {t('header.examModal.title')}
             </div>
             <div className="modal-text">
-              Imtihonga necha kun qolganini o'zingiz belgilang. Tizim har kuni avtomatik ravishda teskari sanoqni hisoblab boradi.
+              {t('header.examModal.text')}
             </div>
             
             <div className="flex-col-gap-16" style={{ marginBottom: '24px' }}>
               <div>
-                <label className="input-label-sm">Qolgan kunlar sonini kiriting:</label>
-                <input 
-                  type="number" 
-                  className="modal-input" 
-                  value={tempDays} 
+                <label className="input-label-sm">{t('header.examModal.daysLabel')}</label>
+                <input
+                  type="number"
+                  className="modal-input"
+                  value={tempDays}
                   onChange={(e) => setTempDays(e.target.value)}
-                  placeholder="Masalan: 30"
+                  placeholder={t('header.examModal.daysPlaceholder')}
                   min="1"
                   max="1000"
                 />
               </div>
               
-              <div className="text-center-or">YOKI</div>
-              
+              <div className="text-center-or">{t('header.examModal.or')}</div>
+
               <div>
-                <label className="input-label-sm">Aniq sanani tanlang:</label>
+                <label className="input-label-sm">{t('header.examModal.dateLabel')}</label>
                 <input 
                   type="date" 
                   className="modal-input" 
@@ -284,7 +289,7 @@ const Header = ({ theme, toggleTheme }) => {
 
             <div className="modal-actions" style={{ display: 'flex', gap: '12px' }}>
               <button className="btn btn-outline" style={{ flex: 1 }} onClick={() => setShowExamModal(false)}>
-                Bekor qilish
+                {t('common.cancel')}
               </button>
               <button 
                 className="btn btn-primary" 
@@ -311,12 +316,12 @@ const Header = ({ theme, toggleTheme }) => {
                       }
                     }
                     calcDays();
-                    showToast("Imtihon sanasi muvaffaqiyatli saqlandi!", 'success');
+                    showToast(t('header.examModal.saved'), 'success');
                   }
                   setShowExamModal(false);
                 }}
               >
-                Saqlash
+                {t('common.save')}
               </button>
             </div>
           </div>
@@ -385,13 +390,13 @@ const Header = ({ theme, toggleTheme }) => {
             >
               <div className="ambassador-emoji">🌟</div>
               <h2 className="ambassador-title">
-                Katta Rahmat!
+                {t('header.ambassador.title')}
               </h2>
               <p className="ambassador-text">
-                Sizning yordamingiz bilan 5 ta yangi do'stimiz loyihaga qo'shildi! Platformamiz rivojiga qo'shgan ushbu ulkan hissangiz uchun sizdan juda minnatdormiz.
+                {t('header.ambassador.text')}
               </p>
               <div className="ambassador-highlight">
-                Siz uchun maxsus: yana 2 ta do'stingizni taklif qilib chegirmalar olish imkoniyatini taqdim etamiz! (Limit +2)
+                {t('header.ambassador.highlight')}
               </div>
               <button
                 className="btn btn-primary ambassador-btn"
@@ -400,7 +405,7 @@ const Header = ({ theme, toggleTheme }) => {
                   localStorage.setItem('iqro_ambassador_thanks', 'true');
                 }}
               >
-                Ajoyib!
+                {t('header.ambassador.cta')}
               </button>
             </motion.div>
           </motion.div>

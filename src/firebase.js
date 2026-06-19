@@ -1,13 +1,12 @@
 import { initializeApp } from "firebase/app";
 import { initializeFirestore, persistentLocalCache, persistentSingleTabManager } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { getStorage } from "firebase/storage";
 
 // ────────────────────────────────────────────────────────
 // Firebase konfiguratsiyasi — .env faylidan olinadi
 // Hech qachon kalitlarni to'g'ridan-to'g'ri kodga yozmang!
 // ────────────────────────────────────────────────────────
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
@@ -38,4 +37,6 @@ export const db = initializeFirestore(app, {
 
 // Auth
 export const auth = getAuth(app);
-export const storage = getStorage(app);
+// Eslatma: `storage` (firebase/storage) ataylab shu yerda eksport QILINMAYDI —
+// u faqat AdminPage'da kerak. Eager import dastlabki yuklanishni ~og'irlashtirardi.
+// AdminPage o'zi `getStorage()` ni chaqiradi (default app, lazy chunk: fb-storage).
