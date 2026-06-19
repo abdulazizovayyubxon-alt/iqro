@@ -20,6 +20,7 @@ function arg(name, def) { const i = args.indexOf(name); return i >= 0 ? args[i +
 const slug = arg("--subject");
 const per = parseInt(arg("--per", "15"), 10);
 const limit = parseInt(arg("--limit", "0"), 10); // 0 = barchasi
+const blocks = (arg("--blocks", "") || "").split(",").map((s) => s.trim()).filter(Boolean); // mas: pedagogika,kasb
 const noPed = args.includes("--no-ped");
 const pedExtra = args.includes("--ped-extra"); // qo'shimcha: ped darslik kutubxonasini ham (fan/_ped_manba) chunk qiladi
 
@@ -61,6 +62,8 @@ if (!noPed && pedExtra && SHARED_PED.manbaDir && fs.existsSync(SHARED_PED.manbaD
     chunks = chunks.concat(manbaChunks);
   }
 }
+// Faqat tanlangan bloklar (mas: --blocks pedagogika,kasb) — boshqa bloklarni tashlab yuboradi
+if (blocks.length) chunks = chunks.filter((c) => blocks.includes(c.block));
 if (limit > 0) chunks = chunks.slice(0, limit);
 
 // 3) Namuna langarlar (agar JSONga o'tkazilgan bo'lsa) — fan bo'yicha

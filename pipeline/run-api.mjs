@@ -27,7 +27,9 @@ if (fs.existsSync(".env")) {
   }
 }
 const BASE = process.env.PIPELINE_API_BASE, KEY = process.env.PIPELINE_API_KEY, MODEL = process.env.PIPELINE_API_MODEL;
-if (!BASE || !KEY || !MODEL) {
+const keys = KEY ? KEY.split(",").map((k) => k.trim()).filter(Boolean) : [];
+let currentKeyIdx = 0;
+if (!BASE || keys.length === 0 || !MODEL) {
   console.error("Xato: .env da PIPELINE_API_BASE, PIPELINE_API_KEY, PIPELINE_API_MODEL kerak.");
   console.error("Bepul kalit: openrouter.ai yoki console.groq.com (UZ'da ochiladi).");
   process.exit(1);
@@ -39,13 +41,14 @@ const slug = A("--subject");
 const per = parseInt(A("--per", "15"), 10);
 const target = parseInt(A("--target", "2000"), 10);
 const delayMs = parseInt(A("--delay", "1500"), 10);
+const blocks = (A("--blocks", "") || "").split(",").map((s) => s.trim()).filter(Boolean); // mas: pedagogika,kasb
+const outPath = A("--out"); // alohida chiqish fayli (gen_api_progress.json o'rniga)
 const sourceFile = A("--source");       // darslik matni (ixtiyoriy) — mutaxassislik bo'laklari shu fayldan
 const goldPath = A("--gold");           // oltin korpus (papka/fayl) — dedup langari + few-shot namuna
 const fresh = args.includes("--fresh"); // padded sub.corpus'ni e'tiborsiz qoldir (faqat gold+yangi bilan dedup)
 const specialOnly = args.includes("--special-only"); // FAQAT matching/sequence yig'adi (format to'ldirish rejimi)
 if (!slug) { console.error("--subject kerak"); process.exit(1); }
-// Groq bepul TPM (~12k token/daqiqa) cheklovi: max_tokens'ni per'ga moslab kichik tutamiz (429/bo'sh javob oldini olish)
-const MAXTOK = Math.max(3000, Math.min(8000, per * 380 + 1500)); // reasoning modellar uchun zaxira ham
+const MAXTOK = Math.max(8192, per * 500 + 3000); // reasoning modellar uchun zaxira ham
 const REASONING = process.env.PIPELINE_REASONING || ""; // gpt-oss kabi reasoning modellar: "low"/"medium"/"high"
 
 const sub = resolveSubject(slug);
@@ -55,10 +58,12 @@ if (!sub.specExists && sub.specPdf && fs.existsSync(sub.specPdf)) execFileSync("
 const mutSource = sourceFile && fs.existsSync(sourceFile) ? sourceFile : sub.spec;
 let chunks = chunkSpec(fs.readFileSync(mutSource, "utf8"), { maxChars: 2400 });
 if (fs.existsSync(SHARED_PED.spec)) chunks = chunks.concat(chunkSpec(fs.readFileSync(SHARED_PED.spec, "utf8"), { maxChars: 2400 }).filter((c) => c.block !== "mutaxassislik"));
+// Faqat tanlangan bloklar (mas: --blocks pedagogika,kasb)
+if (blocks.length) chunks = chunks.filter((c) => blocks.includes(c.block));
 
 // Dedup indeksi: oltin korpus + mavjud korpus + fan/<slug> dagi avvalgilar (DAVOM ETTIRISH uchun)
 const subjDir = path.join("fan", slug);
-const progressPath = path.join(subjDir, "gen_api_progress.json");
+const progressPath = outPath || path.join(subjDir, "gen_api_progress.json");
 
 // Mavjud progress faylidan DAVOM ETTIRISH: accepted[] ga yuklaymiz (yo'qolmasin)
 const existPaths = fresh ? [] : [...sub.corpus];
@@ -82,6 +87,13 @@ if (!anchors.length && goldPath && fs.existsSync(goldPath)) {
   const byType = { single: [], matching: [], sequence: [], combo: [] };
   for (const q of gold) (byType[q.qtype] || byType.single).push(q);
   anchors = [...byType.single.slice(0, 2), ...byType.combo.slice(0, 1), ...byType.matching.slice(0, 1), ...byType.sequence.slice(0, 1)].filter(Boolean);
+}
+
+// Ped/kasb bloklari uchun ALOHIDA langar — umumiy pedagogika namunasi (mutaxassislik harbiy emas).
+// make-prompts kabi: ped/kasb chunk'larida shu langar, mutaxassislikda fan namunasi ishlatiladi.
+let pedAnchors = [];
+if (SHARED_PED.namuna && fs.existsSync(SHARED_PED.namuna)) {
+  pedAnchors = (await loadMany([SHARED_PED.namuna])).filter((q) => (q.question || q.q) && q.options).slice(0, 5);
 }
 
 const titles = existing.map((q) => q.question ?? q.q ?? "").filter(Boolean);
@@ -113,16 +125,23 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 async function callLLM(prompt, tries = 5) {
   for (let k = 0; k < tries; k++) {
     try {
+      const activeKey = keys.length > 0 ? keys[currentKeyIdx % keys.length] : KEY;
       const res = await fetch(`${BASE}/chat/completions`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${KEY}` },
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${activeKey}` },
         body: JSON.stringify({ model: MODEL, messages: [{ role: "user", content: prompt }], temperature: 0.8, max_tokens: MAXTOK, ...(REASONING ? { reasoning_effort: REASONING } : {}) }),
         signal: AbortSignal.timeout(60000),
       });
-      if (res.status === 429 || res.status >= 500) { // tezlik/server limiti — Retry-After ni hisobga olib kutamiz
+      if (res.status === 429 || res.status >= 500) {
         const ra = parseFloat(res.headers.get("retry-after")) || (5 * (k + 1));
-        console.log(`[Limit/Error ${res.status}, kutish: ${ra}s, urinish ${k + 1}/${tries}]`);
-        await sleep(Math.min(ra * 1000 + 1000, 120000));
+        console.log(`[Limit/Error ${res.status}, kalit index: ${currentKeyIdx % keys.length}, urinish ${k + 1}/${tries}]`);
+        if (keys.length > 1) {
+          currentKeyIdx++;
+          console.log(`🔄 Keyingi API kalitga o'tilmoqda: index ${currentKeyIdx % keys.length}`);
+          await sleep(1000);
+        } else {
+          await sleep(Math.min(ra * 1000 + 1000, 120000));
+        }
         continue;
       }
       if (!res.ok) throw new Error(`API ${res.status}: ${(await res.text()).slice(0, 160)}`);
@@ -133,9 +152,16 @@ async function callLLM(prompt, tries = 5) {
         await sleep(2000 * (k + 1)); 
         continue; 
       }
+      if (keys.length > 1) {
+        currentKeyIdx++;
+      }
       return content;
     } catch (e) { 
       console.log(`[API xato: ${e.message}, urinish ${k + 1}/${tries}]`);
+      if (keys.length > 1) {
+        currentKeyIdx++;
+        console.log(`🔄 API xato tufayli keyingi API kalitga o'tilmoqda: index ${currentKeyIdx % keys.length}`);
+      }
       if (k === tries - 1) throw e; 
       await sleep(3000 * (k + 1)); 
     }
@@ -178,7 +204,8 @@ while (already + accepted.length < target) {
     const c = chunks[i];
     process.stdout.write(`[aylanish ${pass} · ${i + 1}/${chunks.length}] ${c.block} "${c.title.slice(0, 32)}" ... `);
     try {
-      let prompt = buildGenPrompt({ subjectName: sub.name, topicTitle: c.title, specChunk: c.text.trim(), anchors, existingTitles: sampleTitles(), count: per, block: c.block });
+      const useAnchors = (c.block === "pedagogika" || c.block === "kasb") && pedAnchors.length ? pedAnchors : anchors;
+      let prompt = buildGenPrompt({ subjectName: sub.name, topicTitle: c.title, specChunk: c.text.trim(), anchors: useAnchors, existingTitles: sampleTitles(), count: per, block: c.block });
       if (specialOnly) prompt += `\n\n⚠️ MAXSUS REJIM: bu so'rovda FAQAT "matching" va "sequence" formatdagi savollar yoz — "single" YOZMA!
 Taxminan yarmi matching, yarmi sequence. FAQAT manba matnida ANIQ ro'yxat/juftlik/tartib bo'lsa tuz — to'qima.
 Agar bu bo'lakda mos ro'yxat/tartib bo'lmasa, KAM savol qaytar (bo'sh massiv ham mumkin).`;
