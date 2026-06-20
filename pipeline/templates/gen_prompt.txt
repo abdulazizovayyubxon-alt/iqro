@@ -6,6 +6,7 @@ MAVZU: {{TOPIC}}
 VAZIFA: shu mavzu bo'yicha {{COUNT}} ta YANGI, noyob, namuna darajasidagi test savoli tuz.
 Eslatma: attestatsiya 3 blokdan iborat — Mutaxassislik fani, Kasb standartlari, Pedagogik
 mahorat. Savollar AYNAN yuqorida ko'rsatilgan blok va mavzu doirasida bo'lsin.
+{{BLOCK_GUIDANCE}}
 
 ═══════════════════════════════════════════════════════════════════
 A) IKKI MUSTAQIL O'Q — bularni ARALASHTIRMA (eng muhim tushuncha):

@@ -27,18 +27,19 @@ async function main() {
   console.log("========================================================\n");
 
   // 1. Tizimga kirish (ixtiyoriy)
-  const password = process.argv[2];
-  if (password) {
-    console.log("🔑 Kiritilgan parol orqali tizimga kirilmoqda...");
+  const email = process.env.ADMIN_EMAIL || "998999154686@iqro.uz";
+  const password = process.env.ADMIN_PASSWORD || process.argv[2];
+  if (password && password !== 'sizning_parolingiz') {
+    console.log(`🔑 Tizimga kirilmoqda (${email})...`);
     try {
-      await signInWithEmailAndPassword(auth, "998999154686@iqro.uz", password);
+      await signInWithEmailAndPassword(auth, email, password);
       console.log("✅ Tizimga muvaffaqiyatli kirildi!");
     } catch (authErr) {
       console.error("❌ Tizimga kirishda xatolik:", authErr.message);
       process.exit(1);
     }
   } else {
-    console.log("ℹ️ Parol kiritilmadi. Amallarni parolsiz bajarishga urinib ko'ramiz...");
+    console.log("ℹ️ Parol kiritilmadi va .env da ADMIN_PASSWORD topilmadi. Amallarni parolsiz bajarishga urinib ko'ramiz...");
   }
 
   // 2. Local faylni o'qish

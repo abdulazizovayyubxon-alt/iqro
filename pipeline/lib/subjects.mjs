@@ -49,7 +49,8 @@ export const SUBJECTS = {
     name: "Informatika va AT", category: "info",
     corpus: ["fan/informatika"],
     namuna: ["fan/informatika_savollar.json", "scratch/extracted_info/word/media"],
-    spec: "scratch/Информатика ва АТ т_text.txt",
+    spec: "scratch/info_spec_clean.txt",   // rasmiy spec'dan toza markerli (1.1-1.12) ko'chirma — chunkSpec to'g'ri bo'laklashi uchun
+    book: "scratch/info_book.txt",   // 5-9 + 10-sinf darsliklari (matnli) — mutaxassislik grounding
   },
   jismoniy_tarbiya: {
     name: "Jismoniy tarbiya", category: "sport",

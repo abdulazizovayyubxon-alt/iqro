@@ -1,0 +1,32 @@
+[
+  {
+    "q": "Chizmada (1.1-chizma) detallar qanday aksonometrik proyeksiyada tasvirlangan?",
+    "opts": [
+      "A) Izometrik proyeksiya",
+      "B) Frontal dimetrik proyeksiya",
+      "C) Gorizontal izometrik proyeksiya",
+      "D) Frontal izometrik proyeksiya"
+    ],
+    "correct": 0,
+    "explanation": "Uchala koordinata o'qi o'zaro 120° burchak ostida joylashgan va o'lcham koeffitsienti barcha o'qlar bo'ylab bir xil (1,0) bo'lgani uchun bu izometrik proyeksiya hisoblanadi.",
+    "mnemonic": "120° + teng o'qlar = Izometrik.",
+    "image": "/art_img/ch9_p5_fig1.png",
+    "topicId": 11,
+    "difficulty": "Y2"
+  },
+  {
+    "q": "Chizmada (1.2-chizma) har bir detal qaysi ko'rinishlar yordamida ifodalangan?",
+    "opts": [
+      "A) Old va ustdan ko'rinish",
+      "B) Faqat old ko'rinish",
+      "C) Old, ustdan va chapdan ko'rinish",
+      "D) Old va chapdan ko'rinish"
+    ],
+    "correct": 0,
+    "explanation": "Har bir detal uchun ikkita ko'rinish berilgan: yuqorida — old (frontal) ko'rinish, pastida — ustdan ko'rinish (ko'rinmas qirralar shtrix chiziq bilan). Bu detal shaklini to'liq ifodalashga yetarli.",
+    "mnemonic": "Yuqorida old, pastida ustdan.",
+    "image": "/art_img/ch9_p5_fig2.png",
+    "topicId": 11,
+    "difficulty": "Y2"
+  }
+]

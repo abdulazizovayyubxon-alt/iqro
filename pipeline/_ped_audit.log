@@ -1,0 +1,183 @@
+▶ Hakam: jami 306, tekshirilgan 0, navbatda 306 (model zai-glm-4.7)
+[1-5/306] ... ok (shubhali jami: 0)
+[6-10/306] ... ok (shubhali jami: 0)
+[11-15/306] ... ok (shubhali jami: 0)
+[16-20/306] ... ok (shubhali jami: 0)
+[21-25/306] ... ok (shubhali jami: 0)
+[26-30/306] ... ok (shubhali jami: 0)
+[31-35/306] ... ok (shubhali jami: 0)
+[36-40/306] ... ok (shubhali jami: 0)
+[41-45/306] ... ok (shubhali jami: 0)
+[46-50/306] ... ok (shubhali jami: 0)
+[51-55/306] ... ok (shubhali jami: 0)
+[56-60/306] ... ok (shubhali jami: 1)
+[61-65/306] ... ok (shubhali jami: 2)
+[66-70/306] ... ok (shubhali jami: 2)
+[71-75/306] ... ok (shubhali jami: 2)
+[76-80/306] ... ok (shubhali jami: 2)
+[81-85/306] ... ok (shubhali jami: 2)
+[86-90/306] ... ok (shubhali jami: 2)
+[91-95/306] ... ok (shubhali jami: 2)
+[96-100/306] ... ok (shubhali jami: 2)
+[101-105/306] ... ok (shubhali jami: 2)
+[106-110/306] ... ok (shubhali jami: 2)
+[111-115/306] ... ok (shubhali jami: 2)
+[116-120/306] ... ok (shubhali jami: 2)
+[121-125/306] ... ok (shubhali jami: 2)
+[126-130/306] ... ok (shubhali jami: 2)
+[131-135/306] ... ok (shubhali jami: 2)
+[136-140/306] ... ok (shubhali jami: 2)
+[141-145/306] ... ok (shubhali jami: 2)
+[146-150/306] ... ok (shubhali jami: 2)
+[151-155/306] ... ok (shubhali jami: 2)
+[156-160/306] ... ok (shubhali jami: 2)
+[161-165/306] ... ok (shubhali jami: 2)
+[166-170/306] ... ok (shubhali jami: 4)
+[171-175/306] ... ok (shubhali jami: 4)
+[176-180/306] ... ok (shubhali jami: 4)
+[181-185/306] ... ok (shubhali jami: 4)
+[186-190/306] ... ok (shubhali jami: 4)
+[191-195/306] ... ok (shubhali jami: 4)
+[196-200/306] ... ok (shubhali jami: 4)
+[201-205/306] ... ok (shubhali jami: 4)
+[206-210/306] ... ok (shubhali jami: 4)
+[211-215/306] ... ok (shubhali jami: 4)
+[216-220/306] ... ok (shubhali jami: 4)
+[221-225/306] ... ok (shubhali jami: 4)
+[226-230/306] ... ok (shubhali jami: 4)
+[231-235/306] ... ok (shubhali jami: 4)
+[236-240/306] ... ok (shubhali jami: 4)
+[241-245/306] ... ok (shubhali jami: 4)
+[246-250/306] ... ok (shubhali jami: 4)
+[251-255/306] ... ok (shubhali jami: 4)
+[256-260/306] ... ok (shubhali jami: 4)
+[261-265/306] ... ok (shubhali jami: 4)
+[266-270/306] ... ok (shubhali jami: 4)
+[271-275/306] ... ok (shubhali jami: 4)
+[276-280/306] ... ok (shubhali jami: 4)
+[281-285/306] ... ok (shubhali jami: 4)
+[286-290/306] ... ok (shubhali jami: 4)
+[291-295/306] ... ok (shubhali jami: 4)
+[296-300/306] ... ok (shubhali jami: 4)
+[301-305/306] ... ok (shubhali jami: 4)
+[306-306/306] ... ok (shubhali jami: 4)
+
+✓ Tekshirildi: 306/306 | SHUBHALI: 4
+Hisobot: pipeline/verify_report_chqbt_pednew.json
+
+--- SHUBHALILAR (birinchi 20) ---
+✗ id=59: Belgilangan javob noto'g'ri. Savolda tasvirlangan 'noma'lum (talab qilinadigan) miqdordan boshlab, ma'lumotlarga qarab yechim topish' usuli Analitik usul (D) xarakteriga ega. Sintetik usul esa ma'lumotlardan boshlanib, noma'lumni topishga qaratiladi.
+   Zahiraskar ofitser o'quvchilarga mudofaa hududini rejalashtirish masalasini berd
+✗ id=61: Tartib-intizomni ta'minlash va o'quvchilarga qat'iy talablar qo'yish pedagogikada 'Tashkiliy qobiliyat' (C)ga tegishli. 'Avtoritar qobiliyat' (B) standart pedagogik qobiliyatlar tizimiga (tashkiliy, konstruktiv, kommunikativ, gnostik) kirmaydi, u odatda boshqaruv uslubini ifodalaydi.
+   O'qituvchi jismoniy tayyorgarlik mashg'ulotini o'tayotganda o'quvchilarga vazifa
+✗ id=168: Belgilangan javob noto'g'ri. Savolda berilgan ta'rif (noma'lum kattalikdan boshlab, ma'lumotlarga qarab harakatlanish) Analitik usulga xosdir. Sintetik usulda esa ma'lumotlardan boshlab noma'lum tomonga boriladi.
+   O'qituvchi matematika masalasini yechishni o'rgatayotganda, yechimni topish uchu
+✗ id=170: Belgilangan javob noto'g'ri. Sinfni boshqarish, intizomni saqlash va o'quvchilarga ta'sir ko'rsatish pedagogikada 'Organizator qobiliyati' deb ataladi. 'Avtoritar qobiliyat' pedagogik qobiliyatlar tasnifida standart birlik emas (u odatda boshqarish uslubi sifatida qaraladi).
+   O'qituvchu yuqori sinflarda dars o'tadi, fan bo'yicha chuqur bilimga ega va dars
+▶ Hakam: jami 202, tekshirilgan 0, navbatda 202 (model zai-glm-4.7)
+[1-5/202] ... ok (shubhali jami: 0)
+[6-10/202] ... ok (shubhali jami: 0)
+[11-15/202] ... ok (shubhali jami: 0)
+[16-20/202] ... ok (shubhali jami: 1)
+[21-25/202] ... ok (shubhali jami: 1)
+[26-30/202] ... ok (shubhali jami: 1)
+[31-35/202] ... ok (shubhali jami: 1)
+[36-40/202] ... ok (shubhali jami: 4)
+[41-45/202] ... ok (shubhali jami: 4)
+[46-50/202] ... ok (shubhali jami: 4)
+[51-55/202] ... ok (shubhali jami: 4)
+[56-60/202] ... ok (shubhali jami: 4)
+[61-65/202] ... ok (shubhali jami: 4)
+[66-70/202] ... ok (shubhali jami: 5)
+[71-75/202] ... ok (shubhali jami: 5)
+[76-80/202] ... ok (shubhali jami: 5)
+[81-85/202] ... ok (shubhali jami: 6)
+[86-90/202] ... ok (shubhali jami: 6)
+[91-95/202] ... ok (shubhali jami: 6)
+[96-100/202] ... ok (shubhali jami: 6)
+[101-105/202] ... ok (shubhali jami: 6)
+[106-110/202] ... ok (shubhali jami: 6)
+[111-115/202] ... ok (shubhali jami: 6)
+[116-120/202] ... ok (shubhali jami: 6)
+[121-125/202] ... ok (shubhali jami: 6)
+[126-130/202] ... ok (shubhali jami: 6)
+[131-135/202] ... ok (shubhali jami: 7)
+[136-140/202] ... ok (shubhali jami: 7)
+[141-145/202] ... ok (shubhali jami: 7)
+[146-150/202] ... ok (shubhali jami: 7)
+[151-155/202] ... ok (shubhali jami: 7)
+[156-160/202] ... ok (shubhali jami: 7)
+[161-165/202] ... ok (shubhali jami: 7)
+[166-170/202] ... ok (shubhali jami: 7)
+[171-175/202] ... ok (shubhali jami: 7)
+[176-180/202] ... ok (shubhali jami: 7)
+[181-185/202] ... ok (shubhali jami: 7)
+[186-190/202] ... ok (shubhali jami: 7)
+[191-195/202] ... ok (shubhali jami: 7)
+[196-200/202] ... ok (shubhali jami: 7)
+[201-202/202] ... ok (shubhali jami: 7)
+
+✓ Tekshirildi: 202/202 | SHUBHALI: 7
+Hisobot: pipeline/verify_report_info_pednew.json
+
+--- SHUBHALILAR (birinchi 20) ---
+✗ id=16: Bir nechta obyekt (Windows, Linux, macOS) xususiyatlarini solishtirib, ular uchun umumiy bo'lgan xususiyatlarni ajratib olish jarayoni 'Umumlashtirish' metodiga to'g'ri keladi, 'Bosh g'oyani ajratish' emas.
+   'Operatsion tizimlar' mavzusini o'qitishda o'qituvchi Windows, Linux va macOS ti
+✗ id=36: An'anaviy dars tuzilishida o'quvchilarning bilimlarini yangilash (4) odatda dars maqsadini belgilashdan (2) oldin keladi. To'g'ri ketma-ketlik B (4, 2, 1, 3) variantida bo'lishi kerak.
+   Zamonaviy pedagogikada qabul qilingan an'anaviy dars tuzilishining asosiy bosqic
+✗ id=39: Savolda berilgan ta'rif (noma'lum miqdordan boshlab berilgan miqdorlarga o'tish) Analitik usulga xosdir. Sintetik usul berilgan ma'lumotlardan boshlanadi. Belgilangan javob noto'g'ri.
+   O'qituvchi masalani yechishni o'rgatayotganda, yechimni topishda talab qilinayot
+✗ id=40: Sinfni boshqarish va intizomni ta'minlash qobiliyati pedagogikada 'Organizatorlik qobiliyati' (A variant) hisoblanadi. 'Avtoritar qobiliyat' standart pedagogik qobiliyat turi sifatida qabul qilinmaydi (u boshqaruv uslubidir).
+   O'qituvchi fan bo'yicha chuqur bilimga ega, darsni zamonaviy uslubda tashkil qil
+✗ id=67: Dars maqsadlarining uch tasi an'anaviy ravishda 'Ta'limiy', 'Tarbiyaviy' va 'Rivojlantiruvchi' hisoblanadi. 'Ma'naviy' odatda 'Tarbiyaviy' tarkibiga kiradi yoki alohida tushuncha sifatida ishlatilsa ham, dars maqsadlari uchligida 'Ta'limiy' o'rnini bosmaydi. Variantlar orasida to'g'ri javob ('Ta'limiy') yo'q.
+   Pedagogik jarayonni rejalashtirishda o'qituvchi dars maqsadlarini uch darajada b
+✗ id=81: Tashkiliy qism darsning birinchi bosqichi bo'lib, u maqsad belgilashdan oldin kelishi shart. To'g'ri ketma-ketlik: 4, 2, 1, 3.
+   Zamonaviy pedagogikada qabul qilingan dars o'tish bosqichlarini mantiqiy ketma-k
+✗ id=132: Tartib mantiqsiz: motivatsiya (1) dars oxirida emas, boshida bo'lishi kerak. C varianti (4, 2, 1, 3) eng to'g'ri ketma-kelikni (tayyorgarlik -> motivatsiya -> jarayon) ifodalaydi.
+   O'qituvchi dars samaradorligini ta'minlash uchun quyidagi amaliy harakatlarni am
+▶ Hakam: jami 168, tekshirilgan 0, navbatda 168 (model zai-glm-4.7)
+[1-5/168] ... ok (shubhali jami: 0)
+[6-10/168] ... ok (shubhali jami: 0)
+[11-15/168] ... ok (shubhali jami: 0)
+[16-20/168] ... ok (shubhali jami: 0)
+[21-25/168] ... ok (shubhali jami: 0)
+[26-30/168] ... ok (shubhali jami: 0)
+[31-35/168] ... ok (shubhali jami: 0)
+[36-40/168] ... ok (shubhali jami: 0)
+[41-45/168] ... ok (shubhali jami: 0)
+[46-50/168] ... ok (shubhali jami: 0)
+[51-55/168] ... ok (shubhali jami: 0)
+[56-60/168] ... ok (shubhali jami: 0)
+[61-65/168] ... ok (shubhali jami: 1)
+[66-70/168] ... ok (shubhali jami: 2)
+[71-75/168] ... ok (shubhali jami: 2)
+[76-80/168] ... ok (shubhali jami: 2)
+[81-85/168] ... ok (shubhali jami: 2)
+[86-90/168] ... ok (shubhali jami: 2)
+[91-95/168] ... ok (shubhali jami: 2)
+[96-100/168] ... ok (shubhali jami: 2)
+[101-105/168] ... ok (shubhali jami: 2)
+[106-110/168] ... ok (shubhali jami: 2)
+[111-115/168] ... ok (shubhali jami: 2)
+[116-120/168] ... ok (shubhali jami: 2)
+[121-125/168] ... ok (shubhali jami: 2)
+[126-130/168] ... ok (shubhali jami: 2)
+[131-135/168] ... ok (shubhali jami: 2)
+[136-140/168] ... ok (shubhali jami: 2)
+[141-145/168] ... ok (shubhali jami: 2)
+[146-150/168] ... ok (shubhali jami: 2)
+[151-155/168] ... ok (shubhali jami: 2)
+[156-160/168] ... ok (shubhali jami: 2)
+[161-165/168] ... ok (shubhali jami: 3)
+[166-168/168] ... ok (shubhali jami: 3)
+
+✓ Tekshirildi: 168/168 | SHUBHALI: 3
+Hisobot: pipeline/verify_report_art_pednew.json
+
+--- SHUBHALILAR (birinchi 20) ---
+✗ id=64: Pedagogikada 'Avtoritar qobiliyat' degan standart atama mavjud emas (bu boshqaruv uslubi). Sinfni boshqarish, tartibni saqlash va guruhlarga rahbarlik qilish 'Organizator qobiliyat'ga kiradi.
+   Tasviriy san'at darsida o'quvchilar guruhlarga bo'linib, devorga plakat tayyorla
+✗ id=69: Tasviriy san'at darsida badiiy asardagi his-tuyg'ular va obrazlarni tahlil qilish asosan 'obrazli tafakkur' (A variant) rivojlanishiga xos jarayon hisoblanadi. 'Abstrakt tafakkur' ko'proq mantiqiy va tushunchaviy fikrlash bilan bog'liq bo'lib, san'at asarini idrok etishda emas balki nazariy tahlillarda qo'llanadi. Shuning uchun javob 'A' variant to'g'riroq bo'lishi mumkin.
+   Tasviriy san'at darsida o'quvchilar rassomning suratdagi obyektlarni emas, balki
+✗ id=161: Birinchi yordam ko'rsatish standart tartibiga ko'ra, zarar manbaini to'xtatgach (2), darhol tibbiy yordam chaqirish (1), keyin bemorni qulay holatga keltirish (3) kerak. B variant (2, 1, 3, 4) tibbiy protokolga mos keladi.
+   O'quvchi rassomchilik darsida xom ashyo (gips) yoki bo'yoq zaharlanishi alomatla

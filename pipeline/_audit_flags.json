@@ -1,0 +1,159 @@
+{
+ "struktura": [
+  {
+   "i": 255,
+   "q": "Saf nima?",
+   "reasons": [
+    "savol matni juda qisqa"
+   ]
+  }
+ ],
+ "latin": [],
+ "cue": [
+  {
+   "i": 935,
+   "q": "Shifokor turlari bilan ularning asosiy mutaxassislik sohasini moslasht",
+   "reasons": [
+    "javob-ishora: izoh variant HARFiga ishora qiladi (aralashtirishdan keyin buziladi) — mazmunan yozilsin"
+   ]
+  },
+  {
+   "i": 998,
+   "q": "Kolonnada harbiy qismlar bir-biriga nisbatan qanday harakatlanadi?",
+   "reasons": [
+    "javob-ishora: distraktorlar bir xil 'Faqat ...' qolipida (2 ta), to'g'ri javob naqshdan ajralib turadi"
+   ]
+  },
+  {
+   "i": 1067,
+   "q": "Harbiycha salom berish qoidalariga ko'ra, safdan tashqarida qanday hol",
+   "reasons": [
+    "javob-ishora: distraktorlar bir xil 'Faqat ...' qolipida (2 ta), to'g'ri javob naqshdan ajralib turadi"
+   ]
+  },
+  {
+   "i": 1137,
+   "q": "Qurolli kuchlarni tashkil etuvchi tibbiyot xodimlari harbiy obyektga k",
+   "reasons": [
+    "javob-ishora: distraktorlar bir xil 'Faqat ...' qolipida (2 ta), to'g'ri javob naqshdan ajralib turadi"
+   ]
+  },
+  {
+   "i": 1195,
+   "q": "Hayvon kasalliklari keng tarqalishi qachon epizootiya deb ataladi?",
+   "reasons": [
+    "javob-ishora: distraktorlar bir xil 'Faqat ...' qolipida (2 ta), to'g'ri javob naqshdan ajralib turadi"
+   ]
+  },
+  {
+   "i": 1223,
+   "q": "Quyidagi joylarning muhofaza inshooti sifatida foydalanish mosligini b",
+   "reasons": [
+    "javob-ishora: izoh variant HARFiga ishora qiladi (aralashtirishdan keyin buziladi) — mazmunan yozilsin"
+   ]
+  },
+  {
+   "i": 1225,
+   "q": "Harbiy harakat bosqichlarini to‘g‘ri ketma‑ketlikda joylashtiring:\n1. ",
+   "reasons": [
+    "javob-ishora: izoh variant HARFiga ishora qiladi (aralashtirishdan keyin buziladi) — mazmunan yozilsin"
+   ]
+  },
+  {
+   "i": 1283,
+   "q": "Sinfda kimyoviy xavf yuzaga kelganda qo‘lqopni qanday qo‘llash lozim?",
+   "reasons": [
+    "javob-ishora: distraktorlar bir xil 'Faqat ...' qolipida (2 ta), to'g'ri javob naqshdan ajralib turadi"
+   ]
+  },
+  {
+   "i": 1296,
+   "q": "UHT va L-1 kostyumining umumiy jihati nima?",
+   "reasons": [
+    "javob-ishora: distraktorlar bir xil 'Faqat ...' qolipida (2 ta), to'g'ri javob naqshdan ajralib turadi"
+   ]
+  },
+  {
+   "i": 1679,
+   "q": "Komandir rag'batlantirgandan so'ng askar qaysi yon tomoniga qadam tash",
+   "reasons": [
+    "javob-ishora: distraktorlar bir xil 'Faqat ...' qolipida (2 ta), to'g'ri javob naqshdan ajralib turadi"
+   ]
+  },
+  {
+   "i": 1744,
+   "q": "Panoh joyda shaxsiy muhofaza vositalarini qanday holatda ishlatish to‘",
+   "reasons": [
+    "javob-ishora: distraktorlar bir xil 'Faqat ...' qolipida (2 ta), to'g'ri javob naqshdan ajralib turadi"
+   ]
+  }
+ ],
+ "combo": [],
+ "aniq_dup": [],
+ "yaqin_dup": [
+  {
+   "i": 90,
+   "q": "F-1 granatasining o'ldiruvchi parchalari uchish radiusi qancha?",
+   "reasons": [
+    "o'xshashlik 0.82: \"RGD-5 granatasining o'ldiruvchi parchalari uchish \""
+   ]
+  },
+  {
+   "i": 248,
+   "q": "Quyidagilardan qaysi biri rag'batlantirish turlaridan biridir?",
+   "reasons": [
+    "o'xshashlik 0.91: \"Quyidagilardan qaysi biri rag'batlantirish turidir\""
+   ]
+  },
+  {
+   "i": 303,
+   "q": "Guruhda xizmatchilar orasidagi masofani qisqartirish uchun qaysi koman",
+   "reasons": [
+    "o'xshashlik 0.83: \"Guruhda xizmatchilar orasidagi masofani kengaytiri\""
+   ]
+  },
+  {
+   "i": 311,
+   "q": "Guruhning yonma-yon (sherengali) safdan kolonnali safga qayta saflanis",
+   "reasons": [
+    "o'xshashlik 0.87: \"Guruhning kolonnali safdan yonma-yon (sherengali) \""
+   ]
+  },
+  {
+   "i": 472,
+   "q": "'Umumharbiy majburiyat...' qonunining 8-bo'limi nimaga bag'ishlangan?",
+   "reasons": [
+    "o'xshashlik 0.91: \"Umumharbiy majburiyat qonunining 6-bo'limi nimaga \""
+   ]
+  },
+  {
+   "i": 473,
+   "q": "'Umumharbiy majburiyat...' qonunining 7-bo'limi nimaga bag'ishlangan?",
+   "reasons": [
+    "o'xshashlik 0.91: \"Umumharbiy majburiyat qonunining 6-bo'limi nimaga \""
+   ]
+  },
+  {
+   "i": 491,
+   "q": "'Mudofaa to'g'risida'gi Qonunning 5-bo'limi nimaga bag'ishlangan?",
+   "reasons": [
+    "o'xshashlik 0.90: \"'Mudofaa to'g'risida'gi Qonunning 4-bo'limi nimaga\""
+   ]
+  },
+  {
+   "i": 492,
+   "q": "'Mudofaa to'g'risida'gi Qonunning 2-bo'limi nimaga bag'ishlangan?",
+   "reasons": [
+    "o'xshashlik 0.90: \"'Mudofaa to'g'risida'gi Qonunning 4-bo'limi nimaga\""
+   ]
+  },
+  {
+   "i": 2118,
+   "q": "Rasmdagi raqamlar va qo'shin turlarining TO'G'RI mosligini tanlang.",
+   "reasons": [
+    "o'xshashlik 0.85: \"Rasmdagi raqamlar va qo'shin turlari (xizmatlar)ni\""
+   ]
+  }
+ ],
+ "rasm_yoq": []
+}

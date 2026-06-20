@@ -1,0 +1,810 @@
+{
+ "1": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "3": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "4": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "5": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "6": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "7": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "8": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "9": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "10": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "11": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "12": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "13": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "14": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "15": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "16": {
+  "verdict": "SHUBHALI",
+  "sabab": "Bir nechta obyekt (Windows, Linux, macOS) xususiyatlarini solishtirib, ular uchun umumiy bo'lgan xususiyatlarni ajratib olish jarayoni 'Umumlashtirish' metodiga to'g'ri keladi, 'Bosh g'oyani ajratish' emas."
+ },
+ "17": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "18": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "19": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "20": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "21": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "22": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "23": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "24": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "25": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "26": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "27": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "28": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "29": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "30": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "31": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "32": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "33": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "34": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "35": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "36": {
+  "verdict": "SHUBHALI",
+  "sabab": "An'anaviy dars tuzilishida o'quvchilarning bilimlarini yangilash (4) odatda dars maqsadini belgilashdan (2) oldin keladi. To'g'ri ketma-ketlik B (4, 2, 1, 3) variantida bo'lishi kerak."
+ },
+ "37": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "38": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "39": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savolda berilgan ta'rif (noma'lum miqdordan boshlab berilgan miqdorlarga o'tish) Analitik usulga xosdir. Sintetik usul berilgan ma'lumotlardan boshlanadi. Belgilangan javob noto'g'ri."
+ },
+ "40": {
+  "verdict": "SHUBHALI",
+  "sabab": "Sinfni boshqarish va intizomni ta'minlash qobiliyati pedagogikada 'Organizatorlik qobiliyati' (A variant) hisoblanadi. 'Avtoritar qobiliyat' standart pedagogik qobiliyat turi sifatida qabul qilinmaydi (u boshqaruv uslubidir)."
+ },
+ "41": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "42": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "43": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "44": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "45": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "46": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "47": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "48": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "49": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "50": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "51": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "52": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "53": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "54": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "55": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "56": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "57": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "58": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "59": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "60": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "61": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "62": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "63": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "64": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "65": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "66": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "67": {
+  "verdict": "SHUBHALI",
+  "sabab": "Dars maqsadlarining uch tasi an'anaviy ravishda 'Ta'limiy', 'Tarbiyaviy' va 'Rivojlantiruvchi' hisoblanadi. 'Ma'naviy' odatda 'Tarbiyaviy' tarkibiga kiradi yoki alohida tushuncha sifatida ishlatilsa ham, dars maqsadlari uchligida 'Ta'limiy' o'rnini bosmaydi. Variantlar orasida to'g'ri javob ('Ta'limiy') yo'q."
+ },
+ "68": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "69": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "70": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "71": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "72": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "73": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "74": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "75": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "76": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "77": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "78": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "79": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "80": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "81": {
+  "verdict": "SHUBHALI",
+  "sabab": "Tashkiliy qism darsning birinchi bosqichi bo'lib, u maqsad belgilashdan oldin kelishi shart. To'g'ri ketma-ketlik: 4, 2, 1, 3."
+ },
+ "82": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "83": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "84": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "85": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "86": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "87": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "88": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "89": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "90": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "91": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "92": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "93": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "94": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "95": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "96": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "97": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "98": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "99": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "100": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "101": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "102": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "103": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "104": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "105": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "106": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "107": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "108": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "109": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "110": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "111": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "112": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "113": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "114": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "115": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "116": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "117": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "118": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "119": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "120": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "121": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "122": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "123": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "124": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "125": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "126": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "127": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "128": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "129": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "130": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "131": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "132": {
+  "verdict": "SHUBHALI",
+  "sabab": "Tartib mantiqsiz: motivatsiya (1) dars oxirida emas, boshida bo'lishi kerak. C varianti (4, 2, 1, 3) eng to'g'ri ketma-kelikni (tayyorgarlik -> motivatsiya -> jarayon) ifodalaydi."
+ },
+ "133": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "134": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "135": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "136": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "137": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "138": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "139": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "140": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "141": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "142": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "143": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "144": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "145": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "146": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "147": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "148": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "149": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "150": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "151": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "152": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "153": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "154": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "155": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "156": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "157": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "158": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "159": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "160": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "161": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "162": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "163": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "164": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "165": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "166": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "167": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "168": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "169": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "170": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "171": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "172": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "173": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "174": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "175": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "176": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "177": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "178": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "179": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "180": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "181": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "182": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "183": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "184": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "185": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "186": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "187": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "188": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "189": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "190": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "191": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "192": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "193": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "194": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "195": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "196": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "197": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "198": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "199": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "200": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "201": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "202": {
+  "verdict": "OK",
+  "sabab": ""
+ }
+}

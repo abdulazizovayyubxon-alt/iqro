@@ -1,0 +1,206 @@
+▶ Harbiy ta'lim (CHQBT): maqsad 330 (hozir 0), 22 bo'lim, model zai-glm-4.7
+   manba: fan/spes/_txt/ЧҚБТ т.txt | few-shot langar: 5 ta [namuna: CHQBT_savollar.json] | dedup baza: 0 | FRESH
+[aylanish 1 · 1/22] pedagogika "2.1. Umumiy muloqotda pedagogik " ... +6  (jami 6/330)
+[aylanish 1 · 2/22] pedagogika "2.1. Umumiy muloqotda pedagogik " ... +8  (jami 14/330)
+[aylanish 1 · 3/22] pedagogika "2.1. Umumiy muloqotda pedagogik " ... +8  (jami 22/330)
+[aylanish 1 · 4/22] pedagogika "Bo'lim 2" ... +9  (jami 31/330)
+[aylanish 1 · 5/22] pedagogika "Bo'lim 3" ... +8  (jami 39/330)
+[aylanish 1 · 6/22] pedagogika "Bo'lim 4" ... +9  (jami 48/330)
+[aylanish 1 · 7/22] pedagogika "Bo'lim 5" ... +11  (jami 59/330)
+[aylanish 1 · 8/22] pedagogika "Bo'lim 6" ... +9  (jami 68/330)
+[aylanish 1 · 9/22] pedagogika "Bo'lim 7" ... +4  (jami 72/330)
+[aylanish 1 · 10/22] pedagogika "Bo'lim 8" ... +12  (jami 84/330)
+[aylanish 1 · 11/22] pedagogika "Bo'lim 9" ... +6  (jami 90/330)
+[aylanish 1 · 12/22] pedagogika "Bo'lim 10" ... +6  (jami 96/330)
+[aylanish 1 · 13/22] pedagogika "Bo'lim 11" ... +10  (jami 106/330)
+[aylanish 1 · 14/22] pedagogika "Bo'lim 14" ... +8  (jami 114/330)
+[aylanish 1 · 15/22] pedagogika "Bo'lim 15" ... +10  (jami 124/330)
+[aylanish 1 · 16/22] pedagogika "Bo'lim 16" ... +7  (jami 131/330)
+[aylanish 1 · 17/22] pedagogika "Bo'lim 17" ... +3  (jami 134/330)
+[aylanish 1 · 18/22] pedagogika "Bo'lim 18" ... +9  (jami 143/330)
+[aylanish 1 · 19/22] pedagogika "Bo'lim 19" ... +3  (jami 146/330)
+[aylanish 1 · 20/22] pedagogika "Bo'lim 20" ... +9  (jami 155/330)
+[aylanish 1 · 21/22] pedagogika "Bo'lim 21" ... +7  (jami 162/330)
+[aylanish 1 · 22/22] pedagogika "Bo'lim 22" ... +10  (jami 172/330)
+[aylanish 2 · 1/22] pedagogika "2.1. Umumiy muloqotda pedagogik " ... +5  (jami 177/330)
+[aylanish 2 · 2/22] pedagogika "2.1. Umumiy muloqotda pedagogik " ... +12  (jami 189/330)
+[aylanish 2 · 3/22] pedagogika "2.1. Umumiy muloqotda pedagogik " ... +12  (jami 201/330)
+[aylanish 2 · 4/22] pedagogika "Bo'lim 2" ... +8  (jami 209/330)
+[aylanish 2 · 5/22] pedagogika "Bo'lim 3" ... +5  (jami 214/330)
+[aylanish 2 · 6/22] pedagogika "Bo'lim 4" ... +11  (jami 225/330)
+[aylanish 2 · 7/22] pedagogika "Bo'lim 5" ... +7  (jami 232/330)
+[aylanish 2 · 8/22] pedagogika "Bo'lim 6" ... +5  (jami 237/330)
+[aylanish 2 · 9/22] pedagogika "Bo'lim 7" ... +8  (jami 245/330)
+[aylanish 2 · 10/22] pedagogika "Bo'lim 8" ... +10  (jami 255/330)
+[aylanish 2 · 11/22] pedagogika "Bo'lim 9" ... +10  (jami 265/330)
+[aylanish 2 · 12/22] pedagogika "Bo'lim 10" ... +7  (jami 272/330)
+[aylanish 2 · 13/22] pedagogika "Bo'lim 11" ... +6  (jami 278/330)
+[aylanish 2 · 14/22] pedagogika "Bo'lim 14" ... +6  (jami 284/330)
+[aylanish 2 · 15/22] pedagogika "Bo'lim 15" ... +8  (jami 292/330)
+[aylanish 2 · 16/22] pedagogika "Bo'lim 16" ... +8  (jami 300/330)
+[aylanish 2 · 17/22] pedagogika "Bo'lim 17" ... +8  (jami 308/330)
+[aylanish 2 · 18/22] pedagogika "Bo'lim 18" ... +7  (jami 315/330)
+[aylanish 2 · 19/22] pedagogika "Bo'lim 19" ... +2  (jami 317/330)
+[aylanish 2 · 20/22] pedagogika "Bo'lim 20" ... +7  (jami 324/330)
+[aylanish 2 · 21/22] pedagogika "Bo'lim 21" ... +8  (jami 332/330)
+
+✓ Jami: 332/330 (single 224, matching 32, sequence 24) | takror: 0 | yaroqsiz: 74 | format-cap skip: 0
+   → fan/_ped_hovuz.json
+  ↩ Davom ettirish: 332 ta savol yuklandi
+▶ Harbiy ta'lim (CHQBT): maqsad 480 (hozir 332), 3 bo'lim, model zai-glm-4.7
+   manba: fan/spes/_txt/ЧҚБТ т.txt | few-shot langar: 5 ta [namuna: CHQBT_savollar.json] | dedup baza: 3139
+[aylanish 1 · 1/3] kasb "Bo'lim 1" ... +7  (jami 339/480)
+[aylanish 1 · 2/3] kasb "Bo'lim 12" ... +7  (jami 346/480)
+[aylanish 1 · 3/3] kasb "Bo'lim 13" ... +4  (jami 350/480)
+[aylanish 2 · 1/3] kasb "Bo'lim 1" ... +6  (jami 356/480)
+[aylanish 2 · 2/3] kasb "Bo'lim 12" ... +8  (jami 364/480)
+[aylanish 2 · 3/3] kasb "Bo'lim 13" ... +3  (jami 367/480)
+[aylanish 3 · 1/3] kasb "Bo'lim 1" ... +6  (jami 373/480)
+[aylanish 3 · 2/3] kasb "Bo'lim 12" ... +6  (jami 379/480)
+[aylanish 3 · 3/3] kasb "Bo'lim 13" ... +3  (jami 382/480)
+[aylanish 4 · 1/3] kasb "Bo'lim 1" ... +5  (jami 387/480)
+[aylanish 4 · 2/3] kasb "Bo'lim 12" ... +7  (jami 394/480)
+[aylanish 4 · 3/3] kasb "Bo'lim 13" ... +6  (jami 400/480)
+[aylanish 5 · 1/3] kasb "Bo'lim 1" ... +1  (jami 401/480)
+[aylanish 5 · 2/3] kasb "Bo'lim 12" ... +3  (jami 404/480)
+[aylanish 5 · 3/3] kasb "Bo'lim 13" ... +9  (jami 413/480)
+[aylanish 6 · 1/3] kasb "Bo'lim 1" ... +6  (jami 419/480)
+[aylanish 6 · 2/3] kasb "Bo'lim 12" ... +3  (jami 422/480)
+[aylanish 6 · 3/3] kasb "Bo'lim 13" ... +4  (jami 426/480)
+[aylanish 7 · 1/3] kasb "Bo'lim 1" ... parse xato
+[aylanish 7 · 2/3] kasb "Bo'lim 12" ... +6  (jami 432/480)
+[aylanish 7 · 3/3] kasb "Bo'lim 13" ... +5  (jami 437/480)
+[aylanish 8 · 1/3] kasb "Bo'lim 1" ... +4  (jami 441/480)
+[aylanish 8 · 2/3] kasb "Bo'lim 12" ... +6  (jami 447/480)
+[aylanish 8 · 3/3] kasb "Bo'lim 13" ... +8  (jami 455/480)
+[aylanish 9 · 1/3] kasb "Bo'lim 1" ... +9  (jami 464/480)
+[aylanish 9 · 2/3] kasb "Bo'lim 12" ... +5  (jami 469/480)
+[aylanish 9 · 3/3] kasb "Bo'lim 13" ... +6  (jami 475/480)
+[aylanish 10 · 1/3] kasb "Bo'lim 1" ... +8  (jami 483/480)
+
+✓ Jami: 483/480 (single 321, matching 45, sequence 36) | takror: 4 | yaroqsiz: 67 | format-cap skip: 0
+   → fan/_ped_hovuz.json
+[1-4/483] ... tuzatildi 4/4
+[5-8/483] ... tuzatildi 4/4
+[9-12/483] ... tuzatildi 4/4
+[13-16/483] ... tuzatildi 4/4
+[17-20/483] ... tuzatildi 4/4
+[21-24/483] ... tuzatildi 4/4
+[25-28/483] ... tuzatildi 4/4
+[29-32/483] ... tuzatildi 4/4
+[33-36/483] ... parse xato — asl saqlandi
+[37-40/483] ... tuzatildi 4/4
+[41-44/483] ... parse xato — asl saqlandi
+[45-48/483] ... parse xato — asl saqlandi
+[49-52/483] ... parse xato — asl saqlandi
+[53-56/483] ... tuzatildi 4/4
+[57-60/483] ... tuzatildi 4/4
+[61-64/483] ... parse xato — asl saqlandi
+[65-68/483] ... tuzatildi 4/4
+[69-72/483] ... tuzatildi 4/4
+[73-76/483] ... parse xato — asl saqlandi
+[77-80/483] ... tuzatildi 4/4
+[81-84/483] ... parse xato — asl saqlandi
+[85-88/483] ... tuzatildi 4/4
+[89-92/483] ... parse xato — asl saqlandi
+[93-96/483] ... tuzatildi 4/4
+[97-100/483] ... tuzatildi 4/4
+[101-104/483] ... tuzatildi 4/4
+[105-108/483] ... tuzatildi 4/4
+[109-112/483] ... tuzatildi 4/4
+[113-116/483] ... tuzatildi 4/4
+[117-120/483] ... tuzatildi 4/4
+[121-124/483] ... parse xato — asl saqlandi
+[125-128/483] ... tuzatildi 4/4
+[129-132/483] ... parse xato — asl saqlandi
+[133-136/483] ... tuzatildi 4/4
+[137-140/483] ... tuzatildi 4/4
+[141-144/483] ... tuzatildi 4/4
+[145-148/483] ... parse xato — asl saqlandi
+[149-152/483] ... tuzatildi 4/4
+[153-156/483] ... tuzatildi 4/4
+[157-160/483] ... tuzatildi 4/4
+[161-164/483] ... parse xato — asl saqlandi
+[165-168/483] ... tuzatildi 4/4
+[169-172/483] ... parse xato — asl saqlandi
+[173-176/483] ... tuzatildi 4/4
+[177-180/483] ... parse xato — asl saqlandi
+[181-184/483] ... tuzatildi 4/4
+[185-188/483] ... tuzatildi 4/4
+[189-192/483] ... tuzatildi 4/4
+[193-196/483] ... parse xato — asl saqlandi
+[197-200/483] ... tuzatildi 4/4
+[201-204/483] ... tuzatildi 4/4
+[205-208/483] ... tuzatildi 4/4
+[209-212/483] ... parse xato — asl saqlandi
+[213-216/483] ... tuzatildi 4/4
+[217-220/483] ... tuzatildi 4/4
+[221-224/483] ... tuzatildi 4/4
+[225-228/483] ... parse xato — asl saqlandi
+[229-232/483] ... tuzatildi 4/4
+[233-236/483] ... tuzatildi 4/4
+[237-240/483] ... tuzatildi 4/4
+[241-244/483] ... tuzatildi 4/4
+[245-248/483] ... tuzatildi 4/4
+[249-252/483] ... parse xato — asl saqlandi
+[253-256/483] ... tuzatildi 4/4
+[257-260/483] ... tuzatildi 4/4
+[261-264/483] ... tuzatildi 4/4
+[265-268/483] ... tuzatildi 4/4
+[269-272/483] ... tuzatildi 4/4
+[273-276/483] ... parse xato — asl saqlandi
+[277-280/483] ... parse xato — asl saqlandi
+[281-284/483] ... parse xato — asl saqlandi
+[285-288/483] ... parse xato — asl saqlandi
+[289-292/483] ... parse xato — asl saqlandi
+[293-296/483] ... tuzatildi 4/4
+[297-300/483] ... tuzatildi 4/4
+[301-304/483] ... parse xato — asl saqlandi
+[305-308/483] ... parse xato — asl saqlandi
+[309-312/483] ... tuzatildi 4/4
+[313-316/483] ... tuzatildi 4/4
+[317-320/483] ... tuzatildi 4/4
+[321-324/483] ... tuzatildi 4/4
+[325-328/483] ... tuzatildi 4/4
+[329-332/483] ... tuzatildi 4/4
+[333-336/483] ... tuzatildi 4/4
+[337-340/483] ... tuzatildi 4/4
+[341-344/483] ... parse xato — asl saqlandi
+[345-348/483] ... tuzatildi 4/4
+[349-352/483] ... parse xato — asl saqlandi
+[353-356/483] ... tuzatildi 4/4
+[357-360/483] ... tuzatildi 4/4
+[361-364/483] ... tuzatildi 4/4
+[365-368/483] ... tuzatildi 4/4
+[369-372/483] ... tuzatildi 4/4
+[373-376/483] ... tuzatildi 4/4
+[377-380/483] ... tuzatildi 4/4
+[381-384/483] ... tuzatildi 4/4
+[385-388/483] ... parse xato — asl saqlandi
+[389-392/483] ... parse xato — asl saqlandi
+[393-396/483] ... tuzatildi 4/4
+[397-400/483] ... tuzatildi 4/4
+[401-404/483] ... parse xato — asl saqlandi
+[405-408/483] ... tuzatildi 4/4
+[409-412/483] ... tuzatildi 4/4
+[413-416/483] ... tuzatildi 4/4
+[417-420/483] ... parse xato — asl saqlandi
+[421-424/483] ... tuzatildi 4/4
+[425-428/483] ... tuzatildi 4/4
+[429-432/483] ... tuzatildi 4/4
+[433-436/483] ... parse xato — asl saqlandi
+[437-440/483] ... tuzatildi 4/4
+[441-444/483] ... tuzatildi 4/4
+[445-448/483] ... tuzatildi 4/4
+[449-452/483] ... parse xato — asl saqlandi
+[453-456/483] ... parse xato — asl saqlandi
+[457-460/483] ... tuzatildi 4/4
+[461-464/483] ... parse xato — asl saqlandi
+[465-468/483] ... tuzatildi 4/4
+[469-472/483] ... tuzatildi 4/4
+[473-476/483] ... parse xato — asl saqlandi
+[477-480/483] ... tuzatildi 4/4
+[481-483/483] ... tuzatildi 3/3
+
+✓ Imlo-fix tugadi: 339 tuzatildi, 144 asl saqlandi (batch parse xato: 36)
+   → fan/_ped_hovuz.json

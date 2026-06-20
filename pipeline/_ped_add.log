@@ -1,0 +1,117 @@
+
+### chqbt framed → 112 (hozir 0) → fan/chqbt/_ped_add_framed.json ###
+  darslik grounding: scratch/chqbt_book.txt (538 oyna) — mutaxassislik mavzulariga qo'shiladi
+▶ Harbiy ta'lim (CHQBT): maqsad 112 (hozir 0), 22 bo'lim, model zai-glm-4.7
+   manba: fan/spes/_txt/ЧҚБТ т.txt | few-shot langar: 5 ta [namuna: CHQBT_savollar.json] | dedup baza: 3545
+[aylanish 1 · 1/22] pedagogika "2.1. Umumiy muloqotda pedagogik " ... +13  (jami 13/112)
+[aylanish 1 · 2/22] pedagogika "2.1. Umumiy muloqotda pedagogik " ... +15  (jami 28/112)
+[aylanish 1 · 3/22] pedagogika "2.1. Umumiy muloqotda pedagogik " ... +14  (jami 42/112)
+[aylanish 1 · 4/22] pedagogika "Bo'lim 2" ... +14  (jami 56/112)
+[aylanish 1 · 5/22] pedagogika "Bo'lim 3" ... +13  (jami 69/112)
+[aylanish 1 · 6/22] pedagogika "Bo'lim 4" ... +7  (jami 76/112)
+[aylanish 1 · 7/22] pedagogika "Bo'lim 5" ... +13  (jami 89/112)
+[aylanish 1 · 8/22] pedagogika "Bo'lim 6" ... +8  (jami 97/112)
+[aylanish 1 · 9/22] pedagogika "Bo'lim 7" ... +10  (jami 107/112)
+[aylanish 1 · 10/22] pedagogika "Bo'lim 8" ... +14  (jami 121/112)
+
+✓ Jami: 121/112 (single 94, matching 8, sequence 7) | takror: 0 | yaroqsiz: 9 | format-cap skip: 0 | ifloslanish rad: 0
+   → fan/chqbt/_ped_add_framed.json
+
+### chqbt neutral → 183 (hozir 0) → fan/chqbt/_ped_add_neutral.json ###
+  darslik grounding: scratch/chqbt_book.txt (538 oyna) — mutaxassislik mavzulariga qo'shiladi
+▶ Harbiy ta'lim (CHQBT): maqsad 183 (hozir 0), 22 bo'lim, model zai-glm-4.7
+   manba: fan/spes/_txt/ЧҚБТ т.txt | few-shot langar: 5 ta [namuna: CHQBT_savollar.json] | dedup baza: 3666
+[aylanish 1 · 1/22] pedagogika "2.1. Umumiy muloqotda pedagogik " ... +12  (jami 12/183)
+[aylanish 1 · 2/22] pedagogika "2.1. Umumiy muloqotda pedagogik " ... +12  (jami 24/183)
+[aylanish 1 · 3/22] pedagogika "2.1. Umumiy muloqotda pedagogik " ... +12  (jami 36/183)
+[aylanish 1 · 4/22] pedagogika "Bo'lim 2" ... +8  (jami 44/183)
+[aylanish 1 · 5/22] pedagogika "Bo'lim 3" ... +13  (jami 57/183)
+[aylanish 1 · 6/22] pedagogika "Bo'lim 4" ... +8  (jami 65/183)
+[aylanish 1 · 7/22] pedagogika "Bo'lim 5" ... +12  (jami 77/183)
+[aylanish 1 · 8/22] pedagogika "Bo'lim 6" ... +5  (jami 82/183)
+[aylanish 1 · 9/22] pedagogika "Bo'lim 7" ... +14  (jami 96/183)
+[aylanish 1 · 10/22] pedagogika "Bo'lim 8" ... +9  (jami 105/183)
+[aylanish 1 · 11/22] pedagogika "Bo'lim 9" ... +13  (jami 118/183)
+[aylanish 1 · 12/22] pedagogika "Bo'lim 10" ... +15  (jami 133/183)
+[aylanish 1 · 13/22] pedagogika "Bo'lim 11" ... +9  (jami 142/183)
+[aylanish 1 · 14/22] pedagogika "Bo'lim 14" ... +11  (jami 153/183)
+[aylanish 1 · 15/22] pedagogika "Bo'lim 15" ... +3  (jami 156/183)
+[aylanish 1 · 16/22] pedagogika "Bo'lim 16" ... +10  (jami 166/183)
+[aylanish 1 · 17/22] pedagogika "Bo'lim 17" ... +7  (jami 173/183)
+[aylanish 1 · 18/22] pedagogika "Bo'lim 18" ... +8  (jami 181/183)
+[aylanish 1 · 19/22] pedagogika "Bo'lim 19" ... +4  (jami 185/183)
+
+✓ Jami: 185/183 (single 126, matching 17, sequence 15) | takror: 0 | yaroqsiz: 62 | format-cap skip: 0 | ifloslanish rad: 0
+   → fan/chqbt/_ped_add_neutral.json
+
+### informatika framed → 21 (hozir 0) → fan/informatika/_ped_add_framed.json ###
+  darslik grounding: scratch/info_book.txt (1035 oyna) — mutaxassislik mavzulariga qo'shiladi
+▶ Informatika va AT: maqsad 21 (hozir 0), 19 bo'lim, model zai-glm-4.7
+   manba: scratch/info_spec_clean.txt | few-shot langar: 5 ta [namuna: informatika_savollar.json] | dedup baza: 6852
+[aylanish 1 · 1/19] pedagogika "Bo'lim 2" ... +10  (jami 10/21)
+[aylanish 1 · 2/19] pedagogika "Bo'lim 3" ... +8  (jami 18/21)
+[aylanish 1 · 3/19] pedagogika "Bo'lim 4" ... +10  (jami 28/21)
+
+✓ Jami: 28/21 (single 20, matching 2, sequence 3) | takror: 0 | yaroqsiz: 13 | format-cap skip: 0 | ifloslanish rad: 0
+   → fan/informatika/_ped_add_framed.json
+
+### informatika neutral → 174 (hozir 0) → fan/informatika/_ped_add_neutral.json ###
+  darslik grounding: scratch/info_book.txt (1035 oyna) — mutaxassislik mavzulariga qo'shiladi
+▶ Informatika va AT: maqsad 174 (hozir 0), 19 bo'lim, model zai-glm-4.7
+   manba: scratch/info_spec_clean.txt | few-shot langar: 5 ta [namuna: informatika_savollar.json] | dedup baza: 6880
+[aylanish 1 · 1/19] pedagogika "Bo'lim 2" ... +8  (jami 8/174)
+[aylanish 1 · 2/19] pedagogika "Bo'lim 3" ... +12  (jami 20/174)
+[aylanish 1 · 3/19] pedagogika "Bo'lim 4" ... +12  (jami 32/174)
+[aylanish 1 · 4/19] pedagogika "Bo'lim 5" ... +9  (jami 41/174)
+[aylanish 1 · 5/19] pedagogika "Bo'lim 6" ... +9  (jami 50/174)
+[aylanish 1 · 6/19] pedagogika "Bo'lim 7" ... +4  (jami 54/174)
+[aylanish 1 · 7/19] pedagogika "Bo'lim 8" ... +13  (jami 67/174)
+[aylanish 1 · 8/19] pedagogika "Bo'lim 9" ... +13  (jami 80/174)
+[aylanish 1 · 9/19] pedagogika "Bo'lim 10" ... +10  (jami 90/174)
+[aylanish 1 · 10/19] pedagogika "Bo'lim 11" ... +14  (jami 104/174)
+[aylanish 1 · 11/19] pedagogika "Bo'lim 14" ... +7  (jami 111/174)
+[aylanish 1 · 12/19] pedagogika "Bo'lim 15" ... +3  (jami 114/174)
+[aylanish 1 · 13/19] pedagogika "Bo'lim 16" ... +10  (jami 124/174)
+[aylanish 1 · 14/19] pedagogika "Bo'lim 17" ... +11  (jami 135/174)
+[aylanish 1 · 15/19] pedagogika "Bo'lim 18" ... +0  (jami 135/174)
+[aylanish 1 · 16/19] pedagogika "Bo'lim 19" ... +10  (jami 145/174)
+[aylanish 1 · 17/19] pedagogika "Bo'lim 20" ... +11  (jami 156/174)
+[aylanish 1 · 18/19] pedagogika "Bo'lim 21" ... +6  (jami 162/174)
+[aylanish 1 · 19/19] pedagogika "Bo'lim 22" ... +12  (jami 174/174)
+
+✓ Jami: 174/174 (single 118, matching 16, sequence 15) | takror: 0 | yaroqsiz: 57 | format-cap skip: 0 | ifloslanish rad: 0
+   → fan/informatika/_ped_add_neutral.json
+
+### art framed → 165 (hozir 0) → fan/art/_ped_add_framed.json ###
+  darslik grounding: scratch/art_book.txt (253 oyna) — mutaxassislik mavzulariga qo'shiladi
+▶ Tasviriy san'at: maqsad 165 (hozir 0), 20 bo'lim, model zai-glm-4.7
+   manba: fan/spes/_txt/Тасвирий санъат ва чизмачилик т.txt | few-shot langar: 5 ta [namuna: tasviriy_savollar.json] | dedup baza: 6556
+[aylanish 1 · 1/20] pedagogika "2.1. Umumiy muloqotda pedagogik " ... +10  (jami 10/165)
+[aylanish 1 · 2/20] pedagogika "Bo'lim 2" ... +9  (jami 19/165)
+[aylanish 1 · 3/20] pedagogika "Bo'lim 3" ... +13  (jami 32/165)
+[aylanish 1 · 4/20] pedagogika "Bo'lim 4" ... +15  (jami 47/165)
+[aylanish 1 · 5/20] pedagogika "Bo'lim 5" ... +10  (jami 57/165)
+[aylanish 1 · 6/20] pedagogika "Bo'lim 6" ... +2  (jami 59/165)
+[aylanish 1 · 7/20] pedagogika "Bo'lim 7" ... +12  (jami 71/165)
+[aylanish 1 · 8/20] pedagogika "Bo'lim 8" ... +8  (jami 79/165)
+[aylanish 1 · 9/20] pedagogika "Bo'lim 9" ... +9  (jami 88/165)
+[aylanish 1 · 10/20] pedagogika "Bo'lim 10" ... +8  (jami 96/165)
+[aylanish 1 · 11/20] pedagogika "Bo'lim 11" ... +1  (jami 97/165)
+[aylanish 1 · 12/20] pedagogika "Bo'lim 14" ... +12  (jami 109/165)
+[aylanish 1 · 13/20] pedagogika "Bo'lim 15" ... +12  (jami 121/165)
+[aylanish 1 · 14/20] pedagogika "Bo'lim 16" ... +4  (jami 125/165)
+[aylanish 1 · 15/20] pedagogika "Bo'lim 17" ... +8  (jami 133/165)
+[aylanish 1 · 16/20] pedagogika "Bo'lim 18" ... +12  (jami 145/165)
+[aylanish 1 · 17/20] pedagogika "Bo'lim 19" ... +8  (jami 153/165)
+[aylanish 1 · 18/20] pedagogika "Bo'lim 20" ... +11  (jami 164/165)
+[aylanish 1 · 19/20] pedagogika "Bo'lim 21" ... +4  (jami 168/165)
+
+✓ Jami: 168/165 (single 123, matching 14, sequence 15) | takror: 0 | yaroqsiz: 76 | format-cap skip: 0 | ifloslanish rad: 1
+   → fan/art/_ped_add_framed.json
+
+=== ORKESTRATOR YAKUNI ===
+  chqbt framed: 121/112
+  chqbt neutral: 185/183
+  informatika framed: 28/21
+  informatika neutral: 174/174
+  art framed: 168/165

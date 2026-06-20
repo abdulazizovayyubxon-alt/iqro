@@ -12,8 +12,8 @@
  *  7. Batafsil hisobot chiqarish
  *
  * Ishga tushirish:
- *   node upload_ona_tili_safe.js
- */
+import dotenv from "dotenv";
+dotenv.config();
 
 import { initializeApp } from "firebase/app";
 import {
@@ -50,6 +50,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
+const auth = getAuth(app);
 
 // ─────────────────────────────────────────────
 //  SOZLAMALAR
@@ -130,7 +131,20 @@ const askQuestion = (query) => {
 async function main() {
   header();
 
-  console.log("🔓 Bypassing authentication since Firestore is writable without auth...");
+  const email = process.env.ADMIN_EMAIL || "998999154686@iqro.uz";
+  const password = process.env.ADMIN_PASSWORD;
+  if (password && password !== 'sizning_parolingiz') {
+    console.log(`🔑 Tizimga kirilmoqda (${email})...`);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log("✅ Tizimga muvaffaqiyatli kirildi!");
+    } catch (err) {
+      console.error("❌ Tizimga kirishda xatolik:", err.message);
+      process.exit(1);
+    }
+  } else {
+    console.log("ℹ️ Parol kiritilmadi va .env da ADMIN_PASSWORD topilmadi. Parolsiz urinib ko'ramiz...");
+  }
 
   // 1. FAYLNI O'QISH
 

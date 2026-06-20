@@ -19,13 +19,14 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 async function main() {
-  const password = process.argv[2];
-  if (!password) {
-    console.error("❌ Parolni kiriting: node count_all.js <parol>");
+  const email = process.env.ADMIN_EMAIL || "998999154686@iqro.uz";
+  const password = process.env.ADMIN_PASSWORD || process.argv[2];
+  if (!password || password === 'sizning_parolingiz') {
+    console.error("❌ Parolni kiriting: node count_all.js <parol> yoki .env faylida ADMIN_PASSWORD ni to'ldiring");
     process.exit(1);
   }
 
-  await signInWithEmailAndPassword(auth, "998999154686@iqro.uz", password);
+  await signInWithEmailAndPassword(auth, email, password);
   console.log("✅ Kirildi\n");
 
   const categories = ['chqbt', 'art', 'tarix', 'sport', 'boshlangich', 'info', 'mtt', 'til', 'mtt_rahbar'];

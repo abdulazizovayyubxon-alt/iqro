@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
@@ -8,6 +11,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { readFileSync, existsSync } from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
@@ -28,6 +32,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
+const auth = getAuth(app);
 
 // ─────────────────────────────────────────────
 //  SOZLAMALAR
@@ -62,6 +67,21 @@ async function main() {
   console.log("\n=========================================");
   console.log("🚀 GERMAN LANGUAGE QUESTIONS UPLOADER v1");
   console.log("=========================================\n");
+
+  const email = process.env.ADMIN_EMAIL || "998999154686@iqro.uz";
+  const password = process.env.ADMIN_PASSWORD;
+  if (password && password !== 'sizning_parolingiz') {
+    console.log(`🔑 Tizimga kirilmoqda (${email})...`);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log("✅ Tizimga muvaffaqiyatli kirildi!");
+    } catch (err) {
+      console.error("❌ Tizimga kirishda xatolik:", err.message);
+      process.exit(1);
+    }
+  } else {
+    console.log("ℹ️ Parol kiritilmadi va .env da ADMIN_PASSWORD topilmadi. Parolsiz urinib ko'ramiz...");
+  }
 
   if (!existsSync(QUESTIONS_FILE)) {
     console.error(`❌ File not found: ${QUESTIONS_FILE}`);

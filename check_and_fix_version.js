@@ -19,13 +19,13 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 async function main() {
-  const password = process.argv[2];
-  if (!password) {
-    console.error("❌ Parolni kiriting: node check_and_fix_version.js <parol>");
+  const email = process.env.ADMIN_EMAIL || "998999154686@iqro.uz";
+  const password = process.env.ADMIN_PASSWORD || process.argv[2];
+  if (!password || password === 'sizning_parolingiz') {
+    console.error("❌ Parolni kiriting: node check_and_fix_version.js <parol> yoki .env faylida ADMIN_PASSWORD ni to'ldiring");
     process.exit(1);
   }
 
-  const email = "998999154686@iqro.uz";
   try {
     await signInWithEmailAndPassword(auth, email, password);
     console.log("✅ Tizimga kirildi!");

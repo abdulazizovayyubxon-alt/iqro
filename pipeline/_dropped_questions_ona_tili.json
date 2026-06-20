@@ -1,0 +1,137 @@
+[
+ {
+  "i": 119,
+  "sabab": "struktura: takror variant / !=4",
+  "q": "Quyidagi gapda imlo va orfografik xatolikka yo'l qo'yilgan so'z qaysi?"
+ },
+ {
+  "i": 165,
+  "sabab": "struktura: takror variant / !=4",
+  "q": "Quyidagi qaysi gapda tinish belgilari va bosh harflar bilan yoziladigan so'zlar "
+ },
+ {
+  "i": 178,
+  "sabab": "struktura: takror variant / !=4",
+  "q": "Quyidagi qaysi so'z birikmalarida qo'shma otlar va iboralarning yozilish qoidala"
+ },
+ {
+  "i": 192,
+  "sabab": "struktura: takror variant / !=4",
+  "q": "Quyidagi qaysi gapda bosh harflar va qo'shib yoziladigan so'zlar imlosiga rioya "
+ },
+ {
+  "i": 215,
+  "sabab": "struktura: takror variant / !=4",
+  "q": "Quyidagi qaysi gapda bosh harflar va chiziqcha orqali yoziladigan so'zlar imlosi"
+ },
+ {
+  "i": 455,
+  "sabab": "qat'iy dublikat (#437, savol 0.90/javob 1.00)",
+  "q": "Quyidagi gapda '-lar' ko'plik qo'shimchasining kontekstdagi uslubiy vazifasini a"
+ },
+ {
+  "i": 456,
+  "sabab": "qat'iy dublikat (#439, savol 0.88/javob 1.00)",
+  "q": "Quyidagi gapda qo'llangan 'ehtimol' modal so'zining kontekstdagi uslubiy vazifas"
+ },
+ {
+  "i": 457,
+  "sabab": "qat'iy dublikat (#440, savol 0.87/javob 0.90)",
+  "q": "Quyidagi gapda '-mi' yuklamasining kontekstdagi uslubiy vazifasini aniqlang:\n\n*«"
+ },
+ {
+  "i": 463,
+  "sabab": "qat'iy dublikat (#435, savol 0.91/javob 1.00)",
+  "q": "Quyidagi gapda '-gina' cheklov yuklamasi qanday uslubiy va ma'noviy vazifani baj"
+ },
+ {
+  "i": 562,
+  "sabab": "qat'iy dublikat (#543, savol 0.91/javob 0.86)",
+  "q": "Quyidagi gapdagi so'zlar o'rtasida moslashuv aloqasi orqali bog'langan so'z biri"
+ },
+ {
+  "i": 586,
+  "sabab": "qat'iy dublikat (#543, savol 0.90/javob 0.88)",
+  "q": "Quyidagi gapdagi so'zlar o'rtasida moslashuv aloqasi orqali bog'langan so'z biri"
+ },
+ {
+  "i": 614,
+  "sabab": "qat'iy dublikat (#543, savol 0.91/javob 0.87)",
+  "q": "Quyidagi gapdagi so'zlar o'rtasida moslashuv aloqasi orqali bog'langan so'z biri"
+ },
+ {
+  "i": 619,
+  "sabab": "qat'iy dublikat (#601, savol 0.87/javob 1.00)",
+  "q": "Quyidagi gapdagi so'zlar o'rtasida boshqaruv aloqasi orqali bog'langan so'z biri"
+ },
+ {
+  "i": 624,
+  "sabab": "qat'iy dublikat (#600, savol 0.95/javob 0.94)",
+  "q": "Quyidagi gap tarkibidagi 'sug'orilgan' fe'l shaklining morfologik xususiyatini a"
+ },
+ {
+  "i": 750,
+  "sabab": "qat'iy dublikat (#705, savol 0.93/javob 0.84)",
+  "q": "Quyidagi gapda tovush ortishi fonetik hodisasi yuz bergan so'zni va uning to'g'r"
+ },
+ {
+  "i": 762,
+  "sabab": "qat'iy dublikat (#742, savol 0.89/javob 1.00)",
+  "q": "Quyidagi gapda omonim so'z ishtirok etgan gapni va ularning grammatik vazifasini"
+ },
+ {
+  "i": 780,
+  "sabab": "qat'iy dublikat (#757, savol 0.91/javob 0.80)",
+  "q": "Hozirgi o'zbek adabiy tilida sifat turkumi va uning yasalishiga ko'ra grammatik "
+ },
+ {
+  "i": 805,
+  "sabab": "qat'iy dublikat (#689, savol 0.90/javob 0.81)",
+  "q": "Hozirgi o'zbek adabiy tilida son turkumi va uning ma'noviy guruhlari soni to'g'r"
+ },
+ {
+  "i": 836,
+  "sabab": "qat'iy dublikat (#729, savol 0.89/javob 1.00)",
+  "q": "Quyidagi gapdagi so'zlar o'rtasida boshqaruv aloqasi orqali bog'langan so'z biri"
+ },
+ {
+  "i": 949,
+  "sabab": "qat'iy dublikat (#932, savol 0.86/javob 1.00)",
+  "q": "Matndagi «loy naqshlariga tikildi» gapida qo'llangan «tikildi» fe'lining konteks"
+ },
+ {
+  "i": 950,
+  "sabab": "qat'iy dublikat (#934, savol 0.82/javob 0.86)",
+  "q": "Matndagi «Quyosh nurlari ko'zadagi ko'k naqshlarni yanada yorqinroq ko'rsatdi» g"
+ },
+ {
+  "i": 952,
+  "sabab": "qat'iy dublikat (#941, savol 0.89/javob 0.88)",
+  "q": "Ushbu asar parchasida ko'zalar va dastgoh timsolining tanlanishi asar g'oyasini "
+ },
+ {
+  "i": 958,
+  "sabab": "qat'iy dublikat (#899, savol 0.82/javob 0.91)",
+  "q": "Matndagi «Toshkentning» so'zining yozilishi va bosh harf bilan boshlanishi qaysi"
+ },
+ {
+  "i": 962,
+  "sabab": "qat'iy dublikat (#923, savol 0.84/javob 0.87)",
+  "q": "Ushbu asar parchasida nonlar va tandir timsolining tanlanishi asar g'oyasini fal"
+ },
+ {
+  "i": 969,
+  "sabab": "qat'iy dublikat (#961, savol 0.90/javob 0.89)",
+  "q": "Matndagi «Quyosh nurlari ustundagi ko'k naqshlarni yanada yorqinroq ko'rsatdi» g"
+ },
+ {
+  "i": 971,
+  "sabab": "qat'iy dublikat (#941, savol 0.90/javob 0.86)",
+  "q": "Ushbu asar parchasida ustunlar va dastgoh timsolining tanlanishi asar g'oyasini "
+ },
+ {
+  "i": 1561,
+  "sabab": "qat'iy dublikat (#1554, savol 0.92/javob 0.81)",
+  "q": "Adabiyotshunoslik nazariyasi fanining so'nggi tadqiqotlariga ko'ra, Basit bahri "
+ }
+]

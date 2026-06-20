@@ -11,6 +11,8 @@ if (fs.existsSync(".env")) {
   }
 }
 const BASE = process.env.PIPELINE_API_BASE, KEY = process.env.PIPELINE_API_KEY, MODEL = process.env.PIPELINE_API_MODEL;
+const keys = KEY ? KEY.split(",").map((k) => k.trim()).filter(Boolean) : [];
+let currentKeyIdx = 0;
 const REASONING = process.env.PIPELINE_REASONING || "";
 
 const args = process.argv.slice(2);
@@ -18,10 +20,17 @@ const A = (n, d) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : d
 const inPath = A("--in", "fan/chqbt/gen_api_progress.json");
 const BATCH = parseInt(A("--batch", "5"), 10);
 const LIMIT = parseInt(A("--limit", "0"), 10); // 0 = hammasi
-const reportPath = "pipeline/verify_report.json";
+// Hisobot fanga XOS bo'lsin — id'lar fanlar bo'ylab takrorlanadi (1..N), umumiy fayl to'qnashadi.
+const slugMatch = inPath.replace(/\\/g, "/").match(/fan\/([^/]+)\//);
+const REPORT_SLUG = A("--slug", slugMatch ? slugMatch[1] : "bank");
+const reportPath = `pipeline/verify_report_${REPORT_SLUG}.json`;
 
 const data = JSON.parse(fs.readFileSync(inPath, "utf8"));
 const items = LIMIT > 0 ? data.slice(0, LIMIT) : data;
+// Fan nomini ma'lumotdan aniqlaymiz (eng ko'p uchragan subject) — hakam promti shu fanga moslanadi.
+const subjCount = {};
+for (const q of data) { const s = (q.subject || "").trim(); if (s) subjCount[s] = (subjCount[s] || 0) + 1; }
+const SUBJECT_NAME = A("--subject", Object.entries(subjCount).sort((a, b) => b[1] - a[1])[0]?.[0] || "umumiy");
 
 // Davom ettirish: avvalgi hisobot bo'lsa, tekshirilganlarni o'tkazib yuboramiz
 let report = {};
@@ -34,7 +43,7 @@ function buildPrompt(batch) {
     const opts = ["A", "B", "C", "D"].map((k) => `${k}) ${q.options[k]}`).join("\n");
     return `--- SAVOL ${i + 1} (id=${q.id}) ---\nTuri: ${q.qtype}\n${q.question}\n${opts}\nBelgilangan javob: ${q.answer}\nIzoh: ${q.explanation || ""}`;
   }).join("\n\n");
-  return `Sen O'zbekiston CHQBT (Chaqiruvga qadar boshlang'ich tayyorgarlik) fani bo'yicha imtihon savollari sifat nazoratchisisan.
+  return `Sen O'zbekiston "${SUBJECT_NAME}" fani bo'yicha o'qituvchilar attestatsiya imtihoni savollari sifat nazoratchisisan.
 Har bir savolni tekshir va FAQAT JSON massiv qaytar (boshqa matn yozma):
 [{"id":<id>,"verdict":"OK"|"SHUBHALI","sabab":"<agar SHUBHALI bo'lsa qisqa sabab, aks holda bo'sh>"}]
 
@@ -52,18 +61,38 @@ ${qs}`;
 async function callLLM(prompt, tries = 4) {
   for (let k = 0; k < tries; k++) {
     try {
+      const activeKey = keys.length > 0 ? keys[currentKeyIdx % keys.length] : KEY;
       const res = await fetch(`${BASE}/chat/completions`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${KEY}` },
-        body: JSON.stringify({ model: MODEL, messages: [{ role: "user", content: prompt }], temperature: 0.1, max_tokens: 2000, ...(REASONING ? { reasoning_effort: REASONING } : {}) }),
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${activeKey}` },
+        body: JSON.stringify({ model: MODEL, messages: [{ role: "user", content: prompt }], temperature: 0.1, max_tokens: 8192, ...(REASONING ? { reasoning_effort: REASONING } : {}) }),
       });
-      if (res.status === 429 || res.status >= 500) { const ra = parseFloat(res.headers.get("retry-after")) || 3 * (k + 1); await sleep(Math.min(ra * 1000 + 300, 20000)); continue; }
+      if (res.status === 429 || res.status >= 500) {
+        const ra = parseFloat(res.headers.get("retry-after")) || 3 * (k + 1);
+        console.log(`[Limit/Error ${res.status}, kalit index: ${currentKeyIdx % keys.length}, urinish ${k + 1}/${tries}]`);
+        if (keys.length > 1) {
+          currentKeyIdx++;
+          await sleep(500);
+        } else {
+          await sleep(Math.min(ra * 1000 + 300, 20000));
+        }
+        continue;
+      }
       if (!res.ok) throw new Error(`API ${res.status}`);
       const data = await res.json();
       const c = data.choices?.[0]?.message?.content;
       if (!c) { await sleep(2000 * (k + 1)); continue; }
+      if (keys.length > 1) {
+        currentKeyIdx++;
+      }
       return c;
-    } catch (e) { if (k === tries - 1) throw e; await sleep(2000 * (k + 1)); }
+    } catch (e) {
+      if (keys.length > 1) {
+        currentKeyIdx++;
+      }
+      if (k === tries - 1) throw e;
+      await sleep(2000 * (k + 1));
+    }
   }
   return "";
 }

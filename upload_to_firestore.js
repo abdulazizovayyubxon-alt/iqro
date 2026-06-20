@@ -1,6 +1,9 @@
+import dotenv from "dotenv";
+dotenv.config();
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, writeBatch, doc } from "firebase/firestore";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { q0_harbiy_xizmat } from './src/data/questions_0.js';
 import { q1_umumharbiy_nizomlar } from './src/data/questions_1.js';
 import { q2_otish_tayyorgarligi } from './src/data/questions_2.js';
@@ -13,17 +16,17 @@ import qTarix from './src/data/questions_tarix.json';
 import qOnaTili from './src/data/questions_ona_tili.json';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDUlD2LaZegs0ifhNY2wLBDenB2oNX5sVU",
-  authDomain: "iqro-platforma.firebaseapp.com",
-  projectId: "iqro-platforma",
-  storageBucket: "iqro-platforma.firebasestorage.app",
-  messagingSenderId: "637089963772",
-  appId: "1:637089963772:web:a4165d8ae157986cbac179",
-  measurementId: "G-GPTQZDZ79J"
+  apiKey: process.env.VITE_FIREBASE_API_KEY || "AIzaSyDUlD2LaZegs0ifhNY2wLBDenB2oNX5sVU",
+  authDomain: process.env.VITE_FIREBASE_AUTH_DOMAIN || "iqro-platforma.firebaseapp.com",
+  projectId: process.env.VITE_FIREBASE_PROJECT_ID || "iqro-platforma",
+  storageBucket: process.env.VITE_FIREBASE_STORAGE_BUCKET || "iqro-platforma.firebasestorage.app",
+  messagingSenderId: process.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "637089963772",
+  appId: process.env.VITE_FIREBASE_APP_ID || "1:637089963772:web:a4165d8ae157986cbac179",
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 const allData = [
   { id: 0, data: q0_harbiy_xizmat, cat: 'chqbt' },
@@ -53,6 +56,21 @@ function getCategoryFromTopicId(topicId) {
 }
 
 async function migrate() {
+  const email = process.env.ADMIN_EMAIL || "998999154686@iqro.uz";
+  const password = process.env.ADMIN_PASSWORD;
+  if (password && password !== 'sizning_parolingiz') {
+    console.log(`🔑 Tizimga kirilmoqda (${email})...`);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log("✅ Tizimga muvaffaqiyatli kirildi!");
+    } catch (err) {
+      console.error("❌ Tizimga kirishda xatolik:", err.message);
+      process.exit(1);
+    }
+  } else {
+    console.log("ℹ️ Parol kiritilmadi va .env da ADMIN_PASSWORD topilmadi. Parolsiz urinib ko'ramiz...");
+  }
+
   const qRef = collection(db, 'questions');
   console.log("Starting migration...");
 

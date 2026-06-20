@@ -39,13 +39,13 @@ const shuffleWithCorrect = (opts, correctIdx) => {
 };
 
 async function main() {
-  const password = process.argv[2];
-  if (!password) {
-    console.error("❌ Iltimos, parolni argument sifatida kiriting: node fix_shuffle_answers_auth.js <password>");
+  const email = process.env.ADMIN_EMAIL || "998999154686@iqro.uz";
+  const password = process.env.ADMIN_PASSWORD || process.argv[2];
+  if (!password || password === 'sizning_parolingiz') {
+    console.error("❌ Iltimos, parolni argument sifatida kiriting: node fix_shuffle_answers_auth.js <password> yoki .env faylida ADMIN_PASSWORD ni to'ldiring");
     process.exit(1);
   }
 
-  const email = "998999154686@iqro.uz";
   try {
     await signInWithEmailAndPassword(auth, email, password);
     console.log("✅ Tizimga muvaffaqiyatli kirildi!");

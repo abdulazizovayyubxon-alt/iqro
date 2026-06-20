@@ -59,14 +59,15 @@ function getCorrectCategory(topicId) {
 }
 
 async function main() {
-  const password = process.argv[2];
-  if (!password) {
-    console.error("❌ Parolni argument sifatida kiriting: node fix_topic62_category.js <parol>");
+  const password = process.env.ADMIN_PASSWORD || process.argv[2];
+  if (!password || password === 'sizning_parolingiz') {
+    console.error("❌ Parolni argument sifatida kiriting: node fix_topic62_category.js <parol> yoki .env faylida ADMIN_PASSWORD ni to'ldiring");
     process.exit(1);
   }
 
   // Admin login
-  const adminEmails = ["abdulazizovayyubxon@gmail.com", "998999154686@iqro.uz"];
+  const envEmail = process.env.ADMIN_EMAIL;
+  const adminEmails = envEmail ? [envEmail] : ["abdulazizovayyubxon@gmail.com", "998999154686@iqro.uz"];
   let loggedIn = false;
   for (const email of adminEmails) {
     try {

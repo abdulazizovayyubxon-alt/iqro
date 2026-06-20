@@ -1,0 +1,12050 @@
+{
+ "1": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "3": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "4": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "5": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "6": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "7": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "8": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "9": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "10": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "11": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "12": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "13": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "14": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "15": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "16": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "17": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "18": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "19": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "20": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "21": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "22": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "23": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "24": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "25": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "26": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "27": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "28": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "29": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "30": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "31": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "32": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "33": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "34": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "35": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "36": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "37": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "38": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "39": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "40": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "41": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "42": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "43": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "44": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "45": {
+  "verdict": "SHUBHALI",
+  "sabab": "Hisob-kitobga ko'ra asos 7 bo'lishi kerak (A variant), lekin belgilangan javob D (5) ko'rsatilgan. Izohda ham x=7 deyilgan."
+ },
+ "46": {
+  "verdict": "SHUBHALI",
+  "sabab": "Izohda faktik xato bor: chap tomoniga nol qo'yilsa $1010_2$ emas, balki $0101_2$ hosil bo'ladi. $1010_2$ o'ng tomoniga nol qo'yish (chapga siljitish) natijasidir. Savol matni ham izoh bilan ziddiyatli."
+ },
+ "47": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "48": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "49": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "50": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "51": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "52": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "53": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "54": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "55": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "56": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "57": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "58": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "59": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "60": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "61": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "62": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "63": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "64": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "65": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "66": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "67": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "68": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "69": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "70": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "71": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "72": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "73": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "74": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "75": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "76": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "77": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "78": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "79": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "80": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "81": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "82": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "83": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "84": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "85": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "86": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "87": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "88": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "89": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "90": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "91": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "92": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "93": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "94": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "95": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "96": {
+  "verdict": "SHUBHALI",
+  "sabab": "a, b va e mulohazalari to'g'ri. B variant (a, b) va C variant (b, e) ham to'g'ri mulohazalarni o'z ichiga olganligi sababli, yagona to'g'ri javob aniqlashtirilmagan."
+ },
+ "97": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "98": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "99": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "100": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "101": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "102": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "103": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "104": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "105": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "106": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "107": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "108": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "109": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "110": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "111": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "112": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "113": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "114": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "115": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "116": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "117": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "118": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "119": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "120": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "121": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "122": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "123": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "124": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "125": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "126": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "127": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "128": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "129": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "130": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "131": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "132": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "133": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "134": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "135": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "136": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "137": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "138": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "139": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "140": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "141": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "142": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "143": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "144": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "145": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "146": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "147": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "148": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "149": {
+  "verdict": "SHUBHALI",
+  "sabab": "Izohda o'nlik sanoq sistemasini tanlash osonlashishi aytilgan va shu asosda tushuntirilgan, ammo belgilangan javob noto'g'ri (A) belgilangan. To'g'ri javob C (O'nlik sanoq sistema) bo'lishi kerak."
+ },
+ "150": {
+  "verdict": "SHUBHALI",
+  "sabab": "Izoh belgilangan javob (A) bilan ziddiyatli. Izohda o'nliklar xonasidagi raqam (0) asosida tushuntirilgan, ammo 2405 sonini 10 ga bo'lganda 240 ta to'liq o'nlik guruhi hosil bo'ladi (Javob A to'g'ri, lekin izoh noto'g'ri)."
+ },
+ "151": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "152": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob (C) noto'g'ri. Izohda o'nlik sistema hisob-kitoblarni osonlashtirishi (B variant to'g'ri) aytilgan, ammo javob sifatida Rim sistemi ko'rsatilgan."
+ },
+ "153": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "154": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "155": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "156": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "157": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "158": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "159": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "160": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "161": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "162": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "163": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "164": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "165": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "166": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "167": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "168": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "169": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "170": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "171": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "172": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "173": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "174": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "175": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "176": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "177": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "178": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "179": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "180": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "181": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "182": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "183": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "184": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "185": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "186": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "187": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "188": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "189": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "190": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "191": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "192": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "193": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "194": {
+  "verdict": "SHUBHALI",
+  "sabab": "Elementning umumiy eni (content+padding+border) 350px (C variant) hisoblanadi, margin element o'lchamiga kirmaydi. Izohda 350px to'g'ri ekanligi aytilganiga qaramay, D variant belgilangan."
+ },
+ "195": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "196": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "197": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "198": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "199": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "200": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "201": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "202": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "203": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "204": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "205": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "206": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "207": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "208": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "209": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "210": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "211": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "212": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "213": {
+  "verdict": "SHUBHALI",
+  "sabab": "Fred Cohen Ogayo shtati universitetida emas, Janubiy Kaliforniya universitetida (USC) ishlagan."
+ },
+ "214": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "215": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "216": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "217": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "218": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "219": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "220": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "221": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "222": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "223": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "224": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "225": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "226": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "227": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "228": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "229": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "230": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "231": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "232": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "233": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "234": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "235": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "236": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "237": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "238": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "239": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "240": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "241": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "242": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "243": {
+  "verdict": "SHUBHALI",
+  "sabab": "a) mulohazasida faktik xato bor: Microsoft Office paketi birinchi marta 1992-yilda emas, balki 1989 (Mac) va 1990 (Windows) yillarda yaratilgan."
+ },
+ "244": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "245": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "246": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "247": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "248": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "249": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "250": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "251": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "252": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "253": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "254": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "255": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "256": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "257": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "258": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "259": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "260": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "261": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "262": {
+  "verdict": "SHUBHALI",
+  "sabab": "101(2)=5 va 5(10)=5 sonlari teng bo'lgani uchun B va C variantlari ham to'g'ri"
+ },
+ "263": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "264": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "265": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "266": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "267": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "268": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "269": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "270": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "271": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "272": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "273": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "274": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "275": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "276": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "277": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "278": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "279": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "280": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "281": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "282": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "283": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "284": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "285": {
+  "verdict": "SHUBHALI",
+  "sabab": "Scratch dasturida Pen bloklari Yashil (Dark Green), Control bloklari esa Sariq (Events) yoki Apelsin (Scratch 2.0) rangda bo'ladi. Izohda va variantlarda bloklar ranglari faktik noto'g'ri ko'rsatilgan."
+ },
+ "286": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "287": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "288": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "289": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "290": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "291": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "292": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "293": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "294": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "295": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "296": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "297": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "298": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "299": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "300": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "301": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "302": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "303": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "304": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "305": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "306": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "307": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "308": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "309": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "310": {
+  "verdict": "SHUBHALI",
+  "sabab": "Izohda MS Access so'rov dizayni mantiqi noto'g'ri tushuntirilgan. \"Yoki\" (Or) satridagi shartlar \"Qator\" (Criteria) satridagi shartlar bilan YOKI (OR) mantiqida ishlaydi, VA (AND) mantiqida emas. To'g'ri natija: (Fizika va 70 dan yuqori) YOKI (10-A) YOKI (10-B)."
+ },
+ "311": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "312": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "313": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "314": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "315": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "316": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "317": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "318": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "319": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "320": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "321": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "322": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "323": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "324": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "325": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "326": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "327": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "328": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "329": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "330": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "331": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "332": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "333": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "334": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "335": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "336": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "337": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "338": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "339": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "340": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "341": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "342": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "343": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "344": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "345": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "346": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "347": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "348": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "349": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "350": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "351": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "352": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "353": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "354": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "355": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "356": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "357": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "358": {
+  "verdict": "SHUBHALI",
+  "sabab": "B (a, e) va D (a, d) variantlaridagi barcha fikrlar to'g'ri, javobni aniqlash imkonsiz."
+ },
+ "359": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "360": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "361": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "362": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "363": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "364": {
+  "verdict": "SHUBHALI",
+  "sabab": "MS Office dasturining birinchi versiyasi 1990-yilda (Office 1.0) chiqarilgan, 1992-yilda esa Office 3.0 chiqqan. Savolda tarixiy sana bo'yicha faktik xato mavjud."
+ },
+ "365": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "366": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "367": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "368": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "369": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "370": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "371": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "372": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "373": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "374": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "375": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "376": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "377": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "378": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "379": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "380": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "381": {
+  "verdict": "SHUBHALI",
+  "sabab": "2-qadam ('pastdan yuqoriga yozish') va 4-qadam ('teskari tartibda joylashtirish') mazmuni bir xil, ularning ketma-ketligi (2 keyin 4) mantiqsiz. Izoh matni savol matniga zid."
+ },
+ "382": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "383": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "384": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "385": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "386": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "387": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "388": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "389": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "390": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "391": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "392": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "393": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "394": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "395": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "396": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "397": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "398": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "399": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "400": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "401": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "402": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "403": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "404": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "405": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "406": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "407": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "408": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "409": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "410": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "411": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "412": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "413": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "414": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "415": {
+  "verdict": "SHUBHALI",
+  "sabab": "(e) varianti ham to'g'ri (PHP veb-saytlar uchun ishlatiladi), shuning uchun A (a, e) va C (a, d) javoblari teng darajada to'g'ri."
+ },
+ "416": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "417": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "418": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "419": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "420": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "421": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "422": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "423": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "424": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "425": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "426": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "427": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "428": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "429": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "430": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "431": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "432": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "433": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "434": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "435": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "436": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "437": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "438": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "439": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "440": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "441": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "442": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "443": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "444": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "445": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "446": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "447": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "448": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "449": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "450": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "451": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "452": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "453": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "454": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "455": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "456": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "457": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "458": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "459": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "460": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "461": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "462": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savol 'xususiyat' (feature) so'rayapti, variantlar esa OS nomlaridan iborat (mantiqiy xato). Shuningdek, tasvirlangan imkoniyatlar (bo'limlarga bo'linish, Word tahrirlash) Android va boshqa zamonaviy tizimlar uchun ham xos, javobni noaniq qiladi."
+ },
+ "463": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "464": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "465": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "466": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "467": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "468": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "469": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "470": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "471": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "472": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "473": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "474": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "475": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "476": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "477": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "478": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "479": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "480": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "481": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "482": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "483": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "484": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "485": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "486": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "487": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "488": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "489": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "490": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "491": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "492": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "493": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "494": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "495": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "496": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "497": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "498": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "499": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "500": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "501": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "502": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "503": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "504": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "505": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "506": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "507": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "508": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "509": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "510": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "511": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "512": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "513": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "514": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "515": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "516": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "517": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "518": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "519": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "520": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "521": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "522": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "523": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "524": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "525": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "526": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "527": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "528": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "529": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "530": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "531": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "532": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "533": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "534": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "535": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "536": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "537": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "538": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "539": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "540": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "541": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "542": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "543": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "544": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "545": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "546": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "547": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "548": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "549": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "550": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "551": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "552": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "553": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "554": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "555": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "556": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "557": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "558": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "559": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "560": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "561": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob (D) noto'g'ri. 'Axborotni qayta ishlash' ma'lumotlarni tizimlashtirish yoki yangi ko'rinishga keltirishni (jadval tuzish, grafik chizish) anglatadi, bu A variantga to'g'ri keladi. Izohda ham A variant to'g'ri ekanligi keltirilgan."
+ },
+ "562": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "563": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "564": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "565": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "566": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "567": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "568": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "569": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "570": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "571": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "572": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "573": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "574": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "575": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "576": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "577": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "578": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "579": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "580": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "581": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "582": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "583": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "584": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "585": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "586": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "587": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "588": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "589": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "590": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "591": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "592": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "593": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob noto'g'ri. Ifoda natijasi 'True' bo'lishi kerak, lekin 'B' (False) belgilangan."
+ },
+ "594": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "595": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "596": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "597": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "598": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "599": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "600": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "601": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "602": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "603": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "604": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "605": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "606": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "607": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "608": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "609": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "610": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "611": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "612": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "613": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "614": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "615": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "616": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "617": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "618": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "619": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "620": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "621": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "622": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "623": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "624": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "625": {
+  "verdict": "SHUBHALI",
+  "sabab": "Hisoblash xato: (0,0) nuqtadan 100 qadam o'ngga (X=100) va keyin 100 qadam yuqoriga (Y=100) harakatlanganda natija (100, 100) bo'ladi, belgilangan javob (0, 100) noto'g'ri."
+ },
+ "626": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "627": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "628": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "629": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "630": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "631": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "632": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "633": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "634": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "635": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "636": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "637": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "638": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savolda berilgan kod bo'yicha ro'yxatda 30 soni yo'q, faqat 15 soni 3 ga bo'linadi. Natija 15 bo'lishi kerak, lekin javob 45 deb belgilangan."
+ },
+ "639": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "640": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "641": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "642": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "643": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "644": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "645": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "646": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "647": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob (B) noto'g'ri. Arifmetik amallar bajarish uchun 'Raqam' (C) turini tanlash maqbul. Izoh ham shuni tasdiqlaydi."
+ },
+ "648": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob (A) noto'g'ri. Bog'langan jadvalda bosh jadvalga ishora qiluvchi maydon 'Tashqi kalit' (C) deb ataladi. Izoh ham shuni tasdiqlaydi."
+ },
+ "649": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob (B) noto'g'ri. Eng yuqori ballni topish uchun 'Max' (C) funksiyasi ishlatiladi. Izoh ham shuni tasdiqlaydi."
+ },
+ "650": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob (C) noto'g'ri. Jadvallarni bog'lash asosiy maqsadi turli jadvallardagi ma'lumotlarni bir joyga jamlash (D)dir. Izoh ham shuni tasdiqlaydi."
+ },
+ "651": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "652": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "653": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "654": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "655": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "656": {
+  "verdict": "SHUBHALI",
+  "sabab": "Ma'lumotlar bazasida jadvallar o'rtasidagi bog'lanish (o'tish kalitlari) odatda ma'lumotlar kiritilishidan oldin tuzilma bosqichida belgilanadi. To'g'ri mantiqiy ketma-ketlik: 2 (Tuzilma), 3 (Bog'lanish), 4 (Ma'lumot kiritish), 1 (So'rov), ya'ni B variant."
+ },
+ "657": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "658": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "659": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "660": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "661": {
+  "verdict": "SHUBHALI",
+  "sabab": "CSS standartlariga ko'ra, qo'shni blok elementlarning vertikal marginlari 'margin collapsing' (birlashish) qoidasiga binoan qo'shilmaydi, balki ularning kattasi (30px) qabul qilinadi. 20px+30px=50px degani xato."
+ },
+ "662": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "663": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "664": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "665": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "666": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "667": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "668": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "669": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "670": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "671": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "672": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "673": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "674": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "675": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "676": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "677": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "678": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "679": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "680": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "681": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "682": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "683": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "684": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "685": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "686": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "687": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "688": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "689": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "690": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "691": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "692": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "693": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "694": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "695": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "696": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "697": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "698": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "699": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "700": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "701": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "702": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "703": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "704": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "705": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "706": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "707": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "708": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "709": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "710": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "711": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "712": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "713": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "714": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "715": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "716": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "717": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "718": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "719": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "720": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "721": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "722": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "723": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "724": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "725": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "726": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "727": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "728": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "729": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "730": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "731": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "732": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "733": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "734": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "735": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "736": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "737": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "738": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "739": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "740": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "741": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "742": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "743": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "744": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "745": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "746": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob A (1) noto'g'ri. Kod natijasi 3 bo'ladi (10 // 3 = 3), to'g'ri javob B."
+ },
+ "747": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "748": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "749": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "750": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "751": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "752": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "753": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "754": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "755": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "756": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "757": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "758": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "759": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "760": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "761": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "762": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "763": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "764": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "765": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "766": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "767": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "768": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "769": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "770": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "771": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "772": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "773": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "774": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "775": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "776": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "777": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "778": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "779": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "780": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "781": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "782": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "783": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "784": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "785": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "786": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "787": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "788": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "789": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savolda ko'rsatilgan `https://maktab.uz/index.php` qismi to'liq URL manzil bo'lib, u protokol, domen va yo'ldan iborat. Javobda esa bu butun qism 'Bog'lanish protokoli' deb belgilangan, bu faktik xatodir."
+ },
+ "790": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "791": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "792": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "793": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob noto'g'ri. 10.0.0.1 manzili A klassga (1-126 oraliq) kiradi, C klassga emas. Izohda ham A klass ekanligi aytilgan."
+ },
+ "794": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "795": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "796": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "797": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "798": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "799": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "800": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "801": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "802": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "803": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "804": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "805": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "806": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "807": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "808": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "809": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "810": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "811": {
+  "verdict": "SHUBHALI",
+  "sabab": "1 gigabit 1024 kilobitga teng emas (1024 megabitga teng). Variant A'dagi qiymat xato ko'rsatilgan."
+ },
+ "812": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "813": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "814": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "815": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "816": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "817": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "818": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "819": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "820": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "821": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "822": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "823": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "824": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "825": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "826": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "827": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "828": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "829": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "830": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "831": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "832": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "833": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "834": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "835": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "836": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "837": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "838": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "839": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "840": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "841": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "842": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "843": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "844": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "845": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "846": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "847": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "848": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "849": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "850": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "851": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "852": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "853": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "854": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "855": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "856": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "857": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "858": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "859": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "860": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "861": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "862": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "863": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "864": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "865": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "866": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "867": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "868": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "869": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "870": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "871": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "872": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "873": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "874": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "875": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "876": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "877": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "878": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "879": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "880": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "881": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "882": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "883": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "884": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "885": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "886": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "887": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "888": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "889": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "890": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "891": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "892": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "893": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "894": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "895": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "896": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "897": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "898": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "899": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "900": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "901": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "902": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "903": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "904": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "905": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "906": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "907": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "908": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "909": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "910": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "911": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "912": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "913": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "914": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "915": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "916": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "917": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "918": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "919": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "920": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "921": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "922": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "923": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "924": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savol katta birlikdan (MB) kichik birlikka (bit) o'tishni so'raydi, ammo berilgan amallar (1: Bayt->KB, 2: KB->MB) kichikdan kattaga o'tishni ko'rsatadi, shuning uchun yechim mantiqsiz."
+ },
+ "925": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "926": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "927": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "928": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "929": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "930": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "931": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "932": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "933": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "934": {
+  "verdict": "SHUBHALI",
+  "sabab": "Android va iOS operatsion tizimlari ham Office dasturlari bilan ishlashi va ma'lumotlarni shu tarzda tashkillashi mumkin, ya'ni bir nechta variant to'g'ri."
+ },
+ "935": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "936": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "937": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "938": {
+  "verdict": "SHUBHALI",
+  "sabab": "Tizim dasturlari yuklanishidan (4) oldin tarmoqqa ulanishni tekshirish (3) imkonsiz, ketma-ketlik mantiqiy xato."
+ },
+ "939": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "940": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "941": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "942": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "943": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "944": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "945": {
+  "verdict": "SHUBHALI",
+  "sabab": "Microsoft Office paketi ilk bor 1989-yilda (Mac uchun) va 1990-yilda (Windows uchun) 3 ta ilova (Word, Excel, PowerPoint) tarkibida yaratilgan. 1992-yil Office 3.0 versiyasiga to'g'ri keladi, u 4 ta ilovani o'z ichiga olgan."
+ },
+ "946": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "947": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "948": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "949": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "950": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "951": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "952": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "953": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "954": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "955": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "956": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "957": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "958": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "959": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "960": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "961": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "962": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "963": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "964": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "965": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "966": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "967": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "968": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "969": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "970": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "971": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "972": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "973": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "974": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "975": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "976": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "977": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "978": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "979": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "980": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "981": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "982": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "983": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "984": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "985": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "986": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "987": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "988": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "989": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "990": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "991": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "992": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "993": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "994": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "995": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "996": {
+  "verdict": "SHUBHALI",
+  "sabab": "'Informatika' so'zida 'k' harfi 9-indeksda joylashgan (0-I, 1-n, 2-f, 3-o, 4-r, 5-m, 6-a, 7-t, 8-i, 9-k). 7-indeksda esa 't' harfi bor. Berilgan javob va izohda xato bor."
+ },
+ "997": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "998": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "999": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1000": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1001": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1002": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1003": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1004": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1005": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1006": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1007": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1008": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1009": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1010": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1011": {
+  "verdict": "SHUBHALI",
+  "sabab": "So'rov yaratish jarayonida avval jadvallar so'rovga qo'shiladi (1), keyin ular o'rtasida bog'lanish o'rnatiladi (4). To'g'ri ketma-ketlik: 1, 4, 3, 2 (B variant)."
+ },
+ "1012": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1013": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1014": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1015": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1016": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1017": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1018": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1019": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1020": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1021": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1022": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1023": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1024": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1025": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1026": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1027": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1028": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1029": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1030": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1031": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1032": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1033": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1034": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1035": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1036": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1037": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1038": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1039": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1040": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1041": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1042": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob noto'g'ri. Savol informatika o'rgatmaydigan jarayonni so'rayapti. Informatika ta'rifiga ko'ra axborotni izlash va to'plash (A variant) o'rgatiladi, ammo kompyuter uskunasini jismoniy ta'mirlash (B variant) o'rgatilmaydi. To'g'ri javob B bo'lishi kerak."
+ },
+ "1043": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1044": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1045": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1046": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1047": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1048": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1049": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1050": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1051": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1052": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1053": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1054": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1055": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1056": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1057": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1058": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1059": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1060": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1061": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1062": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1063": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1064": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1065": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1066": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1067": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1068": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1069": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1070": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1071": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1072": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1073": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1074": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1075": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1076": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1077": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1078": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1079": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1080": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1081": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1082": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1083": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1084": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1085": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1086": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1087": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1088": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1089": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1090": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1091": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1092": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1093": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1094": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1095": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1096": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1097": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1098": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1099": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1100": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1101": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1102": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1103": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1104": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1105": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1106": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1107": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1108": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1109": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1110": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1111": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1112": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1113": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1114": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1115": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1116": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1117": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1118": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1119": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1120": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1121": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1122": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1123": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1124": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1125": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1126": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1127": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1128": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1129": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1130": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1131": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1132": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1133": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1134": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1135": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1136": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1137": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1138": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1139": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1140": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1141": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1142": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1143": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1144": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1145": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1146": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1147": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1148": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1149": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1150": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1151": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1152": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1153": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1154": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1155": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1156": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1157": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savoldagi kod (range(2, 8, 3)) natijasi 7 bo'lishi kerak, bu variantlar orasida yo'q. Izohda esa boshqa kod (range(1, 9, 3)) tahlil qilingan."
+ },
+ "1158": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1159": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1160": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1161": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1162": {
+  "verdict": "SHUBHALI",
+  "sabab": "Izohda sikl davom etish sharti noto'g'ri tushuntirilgan ('bo'yi >= 7 bo'lguncha davom etadi' deyilgan, bu xato, chunki boshlang'ich qiymat 5). Shuningdek, '7 metrdan oshguncha' sharti uchun > 7 to'g'ri bo'lar edi, >= 7 esa yetguncha degan ma'noni beradi."
+ },
+ "1163": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1164": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1165": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1166": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1167": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1168": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1169": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1170": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1171": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1172": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1173": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1174": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1175": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1176": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1177": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1178": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1179": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1180": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1181": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1182": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1183": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1184": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1185": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1186": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1187": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1188": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1189": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1190": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1191": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1192": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1193": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1194": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1195": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1196": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savolda 'qatorni (row) gorizontal yo'nalishda birlashtirish' so'ralgan, ammo `colspan` kataklarni gorizontal (ustunlar bo'ylab) birlashtirish uchun ishlatiladi. Qatorlarni vertikal birlashtirish `rowspan` bilan amalga oshiradi. Savol matnida terminologik ziddiyat bor."
+ },
+ "1197": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1198": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1199": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1200": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1201": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1202": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1203": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1204": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1205": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1206": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1207": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1208": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1209": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1210": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1211": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1212": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1213": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1214": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1215": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1216": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1217": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1218": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1219": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1220": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1221": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1222": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1223": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1224": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1225": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1226": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1227": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1228": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1229": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1230": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1231": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1232": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1233": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1234": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1235": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1236": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1237": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1238": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1239": {
+  "verdict": "SHUBHALI",
+  "sabab": "Formulada $B$1 (absolyut manzil) ishlatilgani uchun, nusxalanganda B1 (5) ishlatiladi, B2 emas. Natija 20*5=100 bo'lishi kerak, 0 emas."
+ },
+ "1240": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1241": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1242": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1243": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1244": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1245": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1246": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1247": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1248": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1249": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1250": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savol matnida moslikni aniqlash uchun zarur bo'lgan funksiyalar ro'yxati keltirilmagan (faqat elementlar nomi berilgan). Izohda ham 'saval o'zagida funksiyalari to'liq berilmagan' qayd etilgan, shuning uchun javobni tekshirib bo'lmaydi."
+ },
+ "1251": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1252": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1253": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1254": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1255": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1256": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1257": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1258": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1259": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1260": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1261": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1262": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1263": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1264": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1265": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1266": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1267": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1268": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1269": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1270": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1271": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1272": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1273": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1274": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savol matnida 'to'g'ri burchakli uchburchak' deyilgan, ammo berilgan to'g'ri javob (120 daraja) va izoh 'teng tomonli uchburchak' chizish algoritmidir. To'g'ri burchakli uchburchak chizish uchun 120 daraja burilish noto'g'ri."
+ },
+ "1275": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1276": {
+  "verdict": "SHUBHALI",
+  "sabab": "Izohda Variant A to'g'ri ekanligi aytilgan, ammo belgilangan javob C. Shuningdek, C variantidagi ketma-ketlik 'T' harfini to'g'ri chizmaydi (qalamni ko'tarib joy o'zgartirgani sababli)."
+ },
+ "1277": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1278": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1279": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1280": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1281": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob (A) noto'g'ri. Toshbaqa pastki o'ng burchakda o'ngga qarab turgan bo'lsa, BK 40 chapga olib boradi, RT 90 pastga buriladi, FD 80 esa pastga davom etadi (boshlang'ich nuqtadan uzoqlashadi). To'g'ri marshrut: BK 40, LT 90, FD 80 bo'lishi kerak."
+ },
+ "1282": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1283": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1284": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1285": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1286": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1287": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1288": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1289": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1290": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1291": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1292": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1293": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1294": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1295": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1296": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1297": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1298": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1299": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1300": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1301": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1302": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1303": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1304": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1305": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1306": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1307": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1308": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1309": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1310": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1311": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1312": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1313": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1314": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1315": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1316": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1317": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1318": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1319": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1320": {
+  "verdict": "SHUBHALI",
+  "sabab": "Variantdagi 'e' bandi (\"Shaxsiy kompyuterni hech qachon himoyasiz qoldirish\") to'g'ri tavsiya hisoblanadi. Shunday qilib, A (a, e) va D (a, d) variantlari ikkalasi ham to'g'ri javoblardir."
+ },
+ "1321": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1322": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1323": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1324": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1325": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1326": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1327": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1328": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1329": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1330": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1331": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1332": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1333": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1334": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1335": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1336": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1337": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1338": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1339": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1340": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1341": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1342": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1343": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1344": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1345": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1346": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1347": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1348": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1349": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1350": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1351": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1352": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1353": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1354": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1355": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1356": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1357": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1358": {
+  "verdict": "SHUBHALI",
+  "sabab": "b) $10_8 = 8_{10}$ ham to'g'ri ekanligi sababli, B (b, d) va D (a, b) variantlari ham to'g'ri javob bo'lishi mumkin (bir nechta variant teng darajada to'g'ri)."
+ },
+ "1359": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1360": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1361": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1362": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1363": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1364": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1365": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1366": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1367": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1368": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1369": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1370": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1371": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1372": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1373": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1374": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1375": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1376": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1377": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1378": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1379": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1380": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1381": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savol matnida moslashtirish (matching) uchun kerak bo'lgan ta'riflar ro'yxati berilmagan, shuning sababli javobni aniqlashtirib bo'lmaydi."
+ },
+ "1382": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1383": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1384": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1385": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1386": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1387": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1388": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1389": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1390": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1391": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1392": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1393": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1394": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1395": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1396": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1397": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1398": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1399": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1400": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1401": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1402": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1403": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1404": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1405": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1406": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1407": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1408": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1409": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1410": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1411": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1412": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1413": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1414": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1415": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1416": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1417": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1418": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1419": {
+  "verdict": "SHUBHALI",
+  "sabab": "Google.com ham qidiruv tizimi hisoblanadi, shuning uchun B va C variantlari teng darajada to'g'ri."
+ },
+ "1420": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1421": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1422": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1423": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1424": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1425": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1426": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1427": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1428": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1429": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1430": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1431": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1432": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1433": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1434": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1435": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1436": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1437": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1438": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1439": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1440": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1441": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1442": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1443": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1444": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1445": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1446": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1447": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1448": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1449": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1450": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1451": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1452": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1453": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1454": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1455": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1456": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1457": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1458": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1459": {
+  "verdict": "SHUBHALI",
+  "sabab": "Bir nechta variant teng darajada to'g'ri: 'b' va 'e' mulohazalari ham to'g'ri, shuning uchun B variant ham to'g'ri javob hisoblanadi."
+ },
+ "1460": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1461": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1462": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1463": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1464": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1465": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1466": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1467": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1468": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1469": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1470": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1471": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savol matni va izoh o'rtasida ziddiyat bor. 4-bosqich matnida 'yuqoridan pastga' (to'g'ri tartib) deyilgan, izohda esa 'teskari tartibda' (pastki yuqori) tushuntirilgan. Shuningdek, belgilangan javob (2,3,4,1) mantiqsiz, chunki qoldiqlarni 'yuqoridan pastga' qatorlash (4) natijani olishdan oldin amalga oshiriladi, bu algoritmga zid."
+ },
+ "1472": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1473": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1474": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1475": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1476": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1477": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1478": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1479": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1480": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1481": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1482": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1483": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1484": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1485": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1486": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1487": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1488": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1489": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1490": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1491": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1492": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1493": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1494": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1495": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1496": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1497": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1498": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1499": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1500": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1501": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1502": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1503": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1504": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1505": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1506": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1507": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1508": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1509": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1510": {
+  "verdict": "SHUBHALI",
+  "sabab": "'b' varianti matniga ko'ra (\"ishlatilmaydi\") to'g'ri bayon hisoblanadi (JSda bloklar otstip bilan emas, {} bilan ajraladi), shuning uchun A (b, e) javob varianti ham to'g'ri. D (d, e) varianti ham to'g'ri. Bir nechta to'g'ri javoblar mavjud."
+ },
+ "1511": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1512": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1513": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1514": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1515": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1516": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1517": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1518": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1519": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1520": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1521": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1522": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1523": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1524": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1525": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1526": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1527": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1528": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1529": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1530": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1531": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1532": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1533": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1534": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1535": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1536": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1537": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1538": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1539": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1540": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1541": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1542": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1543": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1544": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1545": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1546": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1547": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1548": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1549": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1550": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1551": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1552": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1553": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1554": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1555": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1556": {
+  "verdict": "SHUBHALI",
+  "sabab": "Mantiqiy ketma-ketlik noto'g'ri belgilangan. Odatda avval yangi texnologiya paydo bo'ladi (2), keyin unga asoslangan qurilmalar va dasturlar yaratiladi (3), so'ng operatsion tizim ularni qo'llab-quvvatlash uchun yangilanadi (1). To'g'ri javob D (2, 3, 1) bo'lishi kerak."
+ },
+ "1557": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1558": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1559": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1560": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1561": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1562": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1563": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1564": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1565": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1566": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1567": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1568": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1569": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1570": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1571": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1572": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1573": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1574": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1575": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1576": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1577": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1578": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1579": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1580": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1581": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1582": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1583": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1584": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1585": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1586": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1587": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1588": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1589": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1590": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1591": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1592": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1593": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1594": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1595": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1596": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1597": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1598": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1599": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1600": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1601": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1602": {
+  "verdict": "SHUBHALI",
+  "sabab": "Scratchda Qalam (Pen) bloklari to'q yashil, Hodisalar (Events) bloklari esa sariq rangda bo'ladi. Izohdagi mosliklar noto'g'ri."
+ },
+ "1603": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1604": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1605": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1606": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1607": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1608": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1609": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1610": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1611": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1612": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1613": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1614": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1615": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1616": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1617": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1618": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1619": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1620": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1621": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1622": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1623": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1624": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1625": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1626": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1627": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1628": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1629": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1630": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1631": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1632": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1633": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1634": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1635": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1636": {
+  "verdict": "SHUBHALI",
+  "sabab": "Bir nechta variant teng darajada to'g'ri (A variantidagi 'b' va 'd' ham to'g'ri, D variantidagi 'b' va 'e' ham to'g'ri)"
+ },
+ "1637": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1638": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1639": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1640": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1641": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1642": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1643": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1644": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1645": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1646": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1647": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1648": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1649": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1650": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1651": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1652": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1653": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1654": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1655": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1656": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1657": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1658": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1659": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1660": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1661": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1662": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1663": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1664": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1665": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1666": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1667": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1668": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savol fayllar sonini so'rayapti (3+2=5). Variant B orqali '5 ta fayl' javobi berilgan, ammo belgilangan javob noto'g'ri tarzda 'C' (6 ta) qilib belgilangan. Izohda variantlarda 5 yo'q deyilgan, ammo aslida B variantida 5 ta mavjud."
+ },
+ "1669": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1670": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1671": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1672": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1673": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1674": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1675": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1676": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1677": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1678": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1679": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1680": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1681": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1682": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1683": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1684": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1685": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1686": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1687": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1688": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1689": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1690": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1691": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1692": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1693": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1694": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1695": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1696": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1697": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1698": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1699": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1700": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1701": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1702": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1703": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1704": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1705": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1706": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1707": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1708": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1709": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1710": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1711": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1712": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1713": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1714": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1715": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1716": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1717": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1718": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1719": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob noto'g'ri. Ma'lumot kiritish/chiqarish uchun parallelogram (A) ishlatiladi, izoh ham shuni tasdiqlaydi."
+ },
+ "1720": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob noto'g'ri. Blok-sxema asosida kod yozish 'Dasturlash tiliga o'tkazish' (A) bosqichiga tegishli."
+ },
+ "1721": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1722": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1723": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1724": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1725": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob (C) izohga zid. Izohda ikkinchi o'quvchi (formula) tezroq ekanligi to'g'ri aytilgan, demak, samaraliroq algoritm ikkinchisiniki (A javobi)."
+ },
+ "1726": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1727": {
+  "verdict": "SHUBHALI",
+  "sabab": "Berilgan ta'rif 'Algoritm'ga mos keladi, belgilangan javob 'Dastur' noto'g'ri."
+ },
+ "1728": {
+  "verdict": "SHUBHALI",
+  "sabab": "Tavsif 'Dasturni tuzatish (Debugging)' jarayoniga mos keladi, belgilangan javob 'Algoritmni tuzish' noto'g'ri."
+ },
+ "1729": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1730": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1731": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1732": {
+  "verdict": "SHUBHALI",
+  "sabab": "Scratch dasturida yashirin (hidden) holatdagi ob'ekt 'de' (say) bloki orqali matn pufakchasi chiqarmaydi. Izoh va belgilangan javob dasturning haqiqiy ishlash mantiqiga zid."
+ },
+ "1733": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1734": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1735": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1736": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1737": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1738": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1739": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1740": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1741": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1742": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1743": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1744": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1745": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1746": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1747": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1748": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1749": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1750": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1751": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1752": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1753": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1754": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1755": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1756": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1757": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1758": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1759": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1760": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1761": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1762": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1763": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1764": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1765": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1766": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1767": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1768": {
+  "verdict": "SHUBHALI",
+  "sabab": "'e' varianti (\"Viruslar faqat fayllarga shikast yetkazmaydi\") grammatik jihatdan to'g'ri (ya'ni ular boshqa joylarga ham shikast yetkazadi), lekin izohda noto'g'ri deb tushuntirilgan. Javob kaliti xato."
+ },
+ "1769": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1770": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1771": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1772": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1773": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1774": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1775": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1776": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1777": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1778": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1779": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1780": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1781": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1782": {
+  "verdict": "SHUBHALI",
+  "sabab": "Hisoblash natijasi 2 GB (1,5+0,5+0,002) bo'lishi kerak, belgilangan javob 2,5 GB noto'g'ri."
+ },
+ "1783": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1784": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1785": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1786": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1787": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1788": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1789": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1790": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1791": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1792": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1793": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1794": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1795": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1796": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1797": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1798": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1799": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1800": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1801": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1802": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1803": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1804": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1805": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1806": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1807": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1808": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1809": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1810": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1811": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1812": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1813": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1814": {
+  "verdict": "SHUBHALI",
+  "sabab": "C1 dan D2 ga nusxalashda A1 nisbiy manzili B2 ga o'zgaradi (ustun ham o'zgaradi), A2 ga emas. Javob C1->C2 ga mos keladi."
+ },
+ "1815": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1816": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1817": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1818": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1819": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1820": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1821": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1822": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1823": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1824": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1825": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob (C) noto'g'ri. Hisob-kitoblarga ko'ra eng katta qiymat 301_{10} (B variant) bo'lishi kerak, izoh ham shuni tasdiqlaydi, ammo javob xato belgilangan."
+ },
+ "1826": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1827": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1828": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1829": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1830": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1831": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1832": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1833": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1834": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1835": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1836": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1837": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1838": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1839": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1840": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1841": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1842": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1843": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1844": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1845": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1846": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1847": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1848": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1849": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1850": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1851": {
+  "verdict": "SHUBHALI",
+  "sabab": "Sprayt gorizontal o'q bo'yicha to'g'ri chiziqli harakat qiladi (Y o'zgarmas), diagonal (qiyshiq) emas. Javob va izohda geometrik xato bor."
+ },
+ "1852": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1853": {
+  "verdict": "SHUBHALI",
+  "sabab": "B (chapga burilish) va C (o'nga burilish) variantlari ham kvadrat chizadi, ikkalasi ham to'g'ri javob. Izoh matnida ziddiyat mavjud."
+ },
+ "1854": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1855": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1856": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1857": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1858": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1859": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1860": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1861": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1862": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1863": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1864": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1865": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1866": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1867": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1868": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1869": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1870": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1871": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1872": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1873": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1874": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1875": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1876": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1877": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1878": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1879": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1880": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1881": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1882": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1883": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1884": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1885": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1886": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1887": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1888": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1889": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1890": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1891": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1892": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1893": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1894": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1895": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1896": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1897": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1898": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1899": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1900": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1901": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1902": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1903": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1904": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1905": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1906": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1907": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1908": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1909": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1910": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1911": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1912": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1913": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1914": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1915": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1916": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1917": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1918": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1919": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1920": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1921": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1922": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1923": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1924": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1925": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1926": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1927": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1928": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1929": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1930": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1931": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1932": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1933": {
+  "verdict": "SHUBHALI",
+  "sabab": "Implikatsiya uchun A variantidagi ta'rif ('Faqat A yolg'on, B rost bo'lganda yolg'on') noto'g'ri. Implikatsiya faqat A rost, B yolg'on bo'lganda yolg'on bo'ladi."
+ },
+ "1934": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1935": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1936": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1937": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1938": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1939": {
+  "verdict": "SHUBHALI",
+  "sabab": "Ikkilik sanoq sistemasida faqat 0 va 1 raqamlari ishlatiladi, '23' soni ikkilik sistemada mavjud emas."
+ },
+ "1940": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1941": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1942": {
+  "verdict": "SHUBHALI",
+  "sabab": "3056 sonida 0 raqami yuzliklar o'rinda turadi (A variant to'g'ri), o'nliklar o'rinda emas. Izohda 3506 soni tahlil qilingan."
+ },
+ "1943": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1944": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1945": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1946": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1947": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1948": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1949": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1950": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1951": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1952": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1953": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1954": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1955": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1956": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1957": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1958": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1959": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1960": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1961": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1962": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1963": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1964": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1965": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1966": {
+  "verdict": "SHUBHALI",
+  "sabab": "Scratchda Boshqaruv (Control) bloklari To'q sariq (Orange), Binafsha (Purple) bloklar esa Ko'rinish (Looks) bloklaridir. Savolda ranglar va blok funksiyalari noto'g'ri moslashtirilgan."
+ },
+ "1967": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1968": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1969": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1970": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1971": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1972": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1973": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1974": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1975": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1976": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1977": {
+  "verdict": "SHUBHALI",
+  "sabab": "[2:5] kesmasi 'stu' ni beradi (2-s, 3-t, 4-u), variantlar orasida to'g'ri javob yo'q. Izohda indekslar (4-r, 5-u) noto'g'ri ko'rsatilgan."
+ },
+ "1978": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1979": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1980": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1981": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1982": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1983": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1984": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1985": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1986": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1987": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1988": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1989": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1990": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1991": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1992": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1993": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1994": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1995": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1996": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1997": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1998": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "1999": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2000": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2001": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2002": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2003": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2004": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2005": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2006": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2007": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2008": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2009": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2010": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2011": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2012": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2013": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2014": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2015": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2016": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2017": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2018": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2019": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2020": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2021": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2022": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2023": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savol ma'lumotlarni uzatishdan *oldin* amalga oshiriladigan choralar tartibini so'raydi. Mantiqan: Avval tizimni antivirus bilan tekshirish (3), manbani ishonchli ekanini tasdiqlash (2), ma'lumot mosligini tekshirish (4) va oxirgi bosqichda shifrlash (1) kerak. To'g'ri javob D (3,2,4,1). Belgilangan B javobi (2,4,1,3) shifrlashdan keyin antivirus qilishni ko'rsatadi, bu mantiqsiz. Shuningdek, izohda ham variantlar belgisi bilan ketma-ketlik ziddiyatli."
+ },
+ "2024": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2025": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2026": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2027": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2028": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2029": {
+  "verdict": "SHUBHALI",
+  "sabab": "Tarixiy xato: V.Q. Qobulov faoliyati (1950-60 yillar) jahon miqyosida kompyuter ilmining rivojlanish davri (70-80 yillar) va O'zbekistonga kirib kelishidan oldin bo'lgan. Voqealar tartibi noto'g'ri tuzilgan."
+ },
+ "2030": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2031": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2032": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2033": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savolda keltirilgan xususiyatlar (Office dasturlari bilan ishlash, ma'lumotlarning bo'limlarga bo'linishi) Android va iOS tizimlariga ham xos, shuning uchun javob noaniq."
+ },
+ "2034": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2035": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2036": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2037": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2038": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2039": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2040": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2041": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2042": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2043": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2044": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2045": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2046": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2047": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2048": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2049": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2050": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2051": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2052": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2053": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2054": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2055": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2056": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2057": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2058": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2059": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2060": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2061": {
+  "verdict": "SHUBHALI",
+  "sabab": "77(16) soni ham to'g'ri (o'n oltilikda 7 raqami qatnashishi mumkin), shuning uchun to'g'ri javoblar a, d, e. Variantlar orasida A (a, e) va B (a, d) ham to'g'ri juftliklarni o'z ichiga oladi, javob aniq emas."
+ },
+ "2062": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2063": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2064": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2065": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2066": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2067": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2068": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2069": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2070": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2071": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2072": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2073": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2074": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2075": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2076": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2077": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2078": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2079": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2080": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2081": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2082": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2083": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2084": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2085": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2086": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2087": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2088": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2089": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2090": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2091": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2092": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2093": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2094": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2095": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2096": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2097": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2098": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2099": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2100": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2101": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2102": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2103": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2104": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2105": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2106": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2107": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2108": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2109": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2110": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2111": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2112": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2113": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2114": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2115": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2116": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2117": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2118": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2119": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savolda qaysi funksional guruhni tanlash kerakligi (masalan, brauzerlar yoki qidiruv tizimlari) aniq ko'rsatilmagan. Yandex va Rambler ham bir guruhni (qidiruv tizimlari) tashkil qiladi, shuning uchun B variant ham to'g'ri bo'lishi mumkin."
+ },
+ "2120": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2121": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2122": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2123": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2124": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2125": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2126": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2127": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2128": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2129": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2130": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2131": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2132": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2133": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2134": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2135": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2136": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2137": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2138": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2139": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2140": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2141": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2142": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2143": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2144": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2145": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2146": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2147": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2148": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2149": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2150": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2151": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2152": {
+  "verdict": "SHUBHALI",
+  "sabab": "Faktik xato: Microsoft Office dastlabki versiyasi (Office 1.0) 1990-yilda (Windows uchun) chiqarilgan va tarkibiga 3 ta ilova (Word, Excel, PowerPoint) kirgan. 1992-yil va 4 ta ilova (Mail qo'shilgan) Office 3.0 versiyasiga tegishli."
+ },
+ "2153": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2154": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2155": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2156": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2157": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2158": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2159": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2160": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2161": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2162": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2163": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2164": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2165": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2166": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2167": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2168": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2169": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2170": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2171": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2172": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2173": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2174": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2175": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2176": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2177": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2178": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2179": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob (B) noto'g'ri, to'g'ri javob (D): $5+5=10_{10}=1010_2$"
+ },
+ "2180": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2181": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2182": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2183": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2184": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2185": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2186": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2187": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2188": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2189": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2190": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2191": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2192": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2193": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2194": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2195": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2196": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2197": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2198": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2199": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2200": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2201": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2202": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2203": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2204": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2205": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2206": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2207": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2208": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2209": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2210": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2211": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2212": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2213": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2214": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2215": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2216": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2217": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2218": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2219": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2220": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2221": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2222": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2223": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2224": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2225": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2226": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2227": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2228": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2229": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2230": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2231": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2232": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2233": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2234": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2235": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2236": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2237": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2238": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2239": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2240": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2241": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2242": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2243": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2244": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2245": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2246": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2247": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2248": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2249": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2250": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2251": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2252": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2253": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2254": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2255": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2256": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2257": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2258": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2259": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2260": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2261": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2262": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2263": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2264": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2265": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2266": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2267": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2268": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2269": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2270": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2271": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2272": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2273": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2274": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2275": {
+  "verdict": "SHUBHALI",
+  "sabab": "O'zgaruvchi talqini xato. 'M=mikrofon' bo'lsa, 'mikrofon o'chiriq bo'lmasligi' (mikrofon yoniq) sharti M ga to'g'ri keladi. To'g'ri formula 'M & K' bo'lishi kerak, ammo variantlar orasida yo'q. Belgilangan javob (¬M & K) M 'mikrofon o'chiriq' degan noto'g'ri taxminga asoslangan."
+ },
+ "2276": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2277": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2278": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2279": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2280": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2281": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2282": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2283": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2284": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2285": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2286": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2287": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2288": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2289": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2290": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2291": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2292": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2293": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2294": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2295": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2296": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2297": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2298": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2299": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2300": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2301": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2302": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2303": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2304": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2305": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2306": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2307": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2308": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2309": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2310": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2311": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2312": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2313": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2314": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2315": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2316": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2317": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2318": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2319": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2320": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2321": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2322": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2323": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2324": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2325": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2326": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2327": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2328": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2329": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2330": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2331": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2332": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2333": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2334": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2335": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2336": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2337": {
+  "verdict": "SHUBHALI",
+  "sabab": "Paint.NET dasturida amallar tarixi oynasi 'History' (Tarix) deb ataladi, 'Jurnal' noto'g'ri terminologiya."
+ },
+ "2338": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2339": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2340": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2341": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2342": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2343": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2344": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2345": {
+  "verdict": "SHUBHALI",
+  "sabab": "'d' variantidagi 'domen bo'lagi nuqta bilan tugashi shart' degan mulohaza faktik noto'g'ri, chunki elektron pochta manzillari odatda nuqta bilan tugamaydi."
+ },
+ "2346": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2347": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2348": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2349": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2350": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2351": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2352": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2353": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2354": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2355": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2356": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2357": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2358": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2359": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2360": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2361": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2362": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2363": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2364": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2365": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2366": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2367": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2368": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2369": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2370": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2371": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2372": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2373": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2374": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2375": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2376": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2377": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2378": {
+  "verdict": "SHUBHALI",
+  "sabab": "Microsoft Office paketining Windows uchun birinchi versiyasi 1990-yilda (Mac uchun 1989-yilda) chiqarilgan. 1992-yilda Office 3.0 (Office 92) chiqarilgan bo'lib, u dastlabki versiya emas."
+ },
+ "2379": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2380": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2381": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2382": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2383": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2384": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2385": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2386": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2387": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2388": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2389": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2390": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2391": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2392": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2393": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2394": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2395": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2396": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2397": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2398": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2399": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2400": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2401": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2402": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2403": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2404": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2405": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2406": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2407": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2408": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2409": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2410": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2411": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2412": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2413": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2414": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2415": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2416": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2417": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2418": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2419": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2420": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2421": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2422": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2423": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2424": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2425": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2426": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2427": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2428": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2429": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2430": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2431": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2432": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2433": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2434": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2435": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2436": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2437": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2438": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2439": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2440": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2441": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2442": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2443": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2444": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2445": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2446": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2447": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2448": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2449": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2450": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2451": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2452": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2453": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2454": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2455": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2456": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2457": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2458": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2459": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2460": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2461": {
+  "verdict": "SHUBHALI",
+  "sabab": "Fred Cohen ta'rifiga ko'ra virus dasturi avval ishga tushishi (3), keyin nusxa olishi (2) va oxirida zarar yetkazishi (1) kerak. Belgilangan A javobi (2, 3, 1) mantiqiy xatolikni o'z ichiga oladi, to'g'ri javob D (3, 2, 1)."
+ },
+ "2462": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2463": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2464": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2465": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2466": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2467": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2468": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2469": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2470": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2471": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2472": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2473": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2474": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2475": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2476": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2477": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2478": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2479": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2480": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2481": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2482": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2483": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2484": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2485": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2486": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2487": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2488": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2489": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2490": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2491": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2492": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2493": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2494": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2495": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob (D) noto'g'ri. 'Elektron kitob yoki Audio kitob' sharti 'Elektron kitob' (B varianti) uchun to'g'ri keladi (True OR False = True). Izohda ham B varianti to'g'ri deb tushuntirilgan, ammo javob noto'g'ri belgilangan."
+ },
+ "2496": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2497": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2498": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2499": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2500": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2501": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2502": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2503": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2504": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2505": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2506": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2507": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2508": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2509": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2510": {
+  "verdict": "SHUBHALI",
+  "sabab": "4-band (2 soni) A variant (1000_2) bilan moslashtirilgan, bu noto'g'ri (2!=8). Savol matni va izoh o'rtasida ziddiyat bor (A variant 1000_2 yoki 10_2?)."
+ },
+ "2511": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savol matnida 9 sanoq sistemasi ko'rsatilgan, izoh va hisoblash esa 16 sanoq sistemasiga nisbatan bajarilgan. Bundan tashqari, 9 sanoq sistemasida 'A' (10) raqami mavjud bo'la olmaydi."
+ },
+ "2512": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2513": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2514": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2515": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2516": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2517": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2518": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2519": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2520": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2521": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2522": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2523": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2524": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2525": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2526": {
+  "verdict": "SHUBHALI",
+  "sabab": "b) bayonoti to'g'ri (sprayt har doim boshlang'ich nuqtaga qaytadi), lekin belgilangan B javobi uni o'z ichiga olmaydi. Izohda boshlang'ich yo'nalish o'zgarishi natijasida qaytmasligi haqida noto'g'ri fikr bildirilgan."
+ },
+ "2527": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2528": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2529": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2530": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2531": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2532": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2533": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2534": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2535": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2536": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2537": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2538": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2539": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2540": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2541": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2542": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2543": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2544": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2545": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2546": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2547": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2548": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2549": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2550": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2551": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2552": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2553": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2554": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2555": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2556": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2557": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2558": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2559": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2560": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2561": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2562": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2563": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2564": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2565": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2566": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2567": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2568": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2569": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2570": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2571": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2572": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2573": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2574": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2575": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2576": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2577": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2578": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2579": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2580": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2581": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2582": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2583": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2584": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2585": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob noto'g'ri. To'g'ri javob B (8,53 Mbit/sekund). Hisoblash: 256 MB = 2048 Mbit, 4 minut = 240 sekund. 2048 / 240 = 8,53 Mbit/sek. Izohdagi hisobda xato qilingan."
+ },
+ "2586": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2587": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2588": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2589": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2590": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2591": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2592": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2593": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2594": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2595": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2596": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2597": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2598": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2599": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2600": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2601": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2602": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2603": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2604": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2605": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2606": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2607": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2608": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2609": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2610": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2611": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2612": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2613": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2614": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2615": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2616": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2617": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2618": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2619": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2620": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2621": {
+  "verdict": "SHUBHALI",
+  "sabab": "Parol uzunligi 8 ta belgi ('parol123'), shartda '8 ta belgidan uzun' deyilgan. 8 soni 8 dan katta emas, shart bajarilmaydi ('Qabul qilinmaydi' bo'lishi kerak). Izohda parol uzunligi 9 ta deb xato ko'rsatilgan."
+ },
+ "2622": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2623": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2624": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2625": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2626": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2627": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2628": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2629": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2630": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2631": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2632": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2633": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2634": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2635": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2636": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2637": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2638": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2639": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2640": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2641": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2642": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2643": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2644": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2645": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2646": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2647": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2648": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2649": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2650": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2651": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2652": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2653": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2654": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2655": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2656": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2657": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2658": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2659": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2660": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2661": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2662": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2663": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2664": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2665": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2666": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2667": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2668": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2669": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2670": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2671": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2672": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2673": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2674": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2675": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2676": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2677": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2678": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2679": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2680": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2681": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2682": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2683": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2684": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2685": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2686": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2687": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2688": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2689": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2690": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2691": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2692": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2693": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2694": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2695": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2696": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2697": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2698": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2699": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2700": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2701": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2702": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2703": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2704": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2705": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2706": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2707": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2708": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2709": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2710": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2711": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2712": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2713": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2714": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2715": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2716": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2717": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2718": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2719": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2720": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2721": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2722": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2723": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2724": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2725": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2726": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2727": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2728": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2729": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2730": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2731": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2732": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2733": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2734": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2735": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savol matnida x=3 berilgan (natija False/0), lekin belgilangan javob D (True/1). Izohda x=-2 uchun hisoblangan, matn va javob ziddiyatli."
+ },
+ "2736": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2737": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2738": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2739": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2740": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2741": {
+  "verdict": "SHUBHALI",
+  "sabab": "Algoritm bosqichlari mantiqiy tartibda berilmagan. Qoldiqni yodlash (4) bo'lish (3) va shartni tekshirish (1) siklida amalga oshirilishi kerak. Variant A noto'g'ri, to'g'ri tartib: 3, 4, 1, 2."
+ },
+ "2742": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2743": {
+  "verdict": "SHUBHALI",
+  "sabab": "Izohda hisoblash xatosi bor: 9+1 yig'indisi o'n oltilik sanoq sistemasida A ga teng, 10 emas (shuning uchun 0 yozib 1 o'tkazish shart emas). Izohning o'zi ziddiyatli."
+ },
+ "2744": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2745": {
+  "verdict": "SHUBHALI",
+  "sabab": "1991 sonida birlik xonasi (o'ng tomonda) 1 ga teng, 9 emas. Izohda 'o'ngdagi 9 — birlik' deyilgan, bu faktik xato. To'g'ri javob variantlar orasida yo'q."
+ },
+ "2746": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2747": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2748": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2749": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2750": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2751": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2752": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2753": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2754": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2755": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2756": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2757": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2758": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2759": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2760": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2761": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2762": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2763": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2764": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2765": {
+  "verdict": "SHUBHALI",
+  "sabab": "Savol kodida 'Informatika' so'zi berilgan (soz[2]='f', soz[5]='m', natija 'fm'), lekin variantlar va izoh 'Python' so'ziga (natija 'tn') mos tuzilgan. Kod va javob variantlari bir-biriga zid."
+ },
+ "2766": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2767": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2768": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2769": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2770": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2771": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2772": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2773": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2774": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2775": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2776": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2777": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2778": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2779": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2780": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2781": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2782": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2783": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2784": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2785": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2786": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2787": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2788": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2789": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2790": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2791": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2792": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2793": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2794": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2795": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2796": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2797": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2798": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2799": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2800": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2801": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2802": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2803": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2804": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2805": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2806": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2807": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2808": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2809": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2810": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2811": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2812": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2813": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2814": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2815": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2816": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2817": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2818": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2819": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2820": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2821": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2822": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2823": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2824": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2825": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2826": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2827": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2828": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2829": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2830": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2831": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2832": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2833": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2834": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2835": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2836": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2837": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2838": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2839": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2840": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2841": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2842": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2843": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2844": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2845": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2846": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2847": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2848": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2849": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2850": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2851": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2852": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2853": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2854": {
+  "verdict": "SHUBHALI",
+  "sabab": "Belgilangan javob noto'g'ri. 'Truth table' atamasi o'zbek tilida standart ravishda 'Haqiqat jadvali' (A varianti) deb tarjima qilinadi va darsliklarda shu ishlatiladi."
+ },
+ "2855": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2856": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2857": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2858": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2859": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2860": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2861": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2862": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2863": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2864": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2865": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2866": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2867": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2868": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2869": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2870": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2871": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2872": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2873": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2874": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2875": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2876": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2877": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2878": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2879": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2880": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2881": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2882": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2883": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2884": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2885": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2886": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2887": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2888": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2889": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2890": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2891": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2892": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2893": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2894": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2895": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2896": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2897": {
+  "verdict": "SHUBHALI",
+  "sabab": "Izohda keltirilgan amallar tartibi (2, 4, 3, 1, 5, 6) variantlarda keltirilmagan. D javobi (2, 4, 3, 6, 5, 1) bo'yicha esa 'L' harfi emas, balki 'U' shakli (qavs) chiziladi."
+ },
+ "2898": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2899": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2900": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2901": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2902": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2903": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2904": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2905": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2906": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2907": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2908": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2909": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2910": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2911": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2912": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2913": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2914": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2915": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2916": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2917": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2918": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2919": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2920": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2921": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2922": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2923": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2924": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2925": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2926": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2927": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2928": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2929": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2930": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2931": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2932": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2933": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2934": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2935": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2936": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2937": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2938": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2939": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2940": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2941": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2942": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2943": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2944": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2945": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2946": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2947": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2948": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2949": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2950": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2951": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2952": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2953": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2954": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2955": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2956": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2957": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2958": {
+  "verdict": "SHUBHALI",
+  "sabab": "Izohda berilgan mantiqga ko'ra avval hajmni to'liq o'tkazish (2 va 3 qadamlar), keyin vaqtni o'tkazish (1 qadam) kerak, bu D variant (2, 3, 1, 4) ga mos keladi. Belgilangan B variant (2, 1, 3, 4) izohdagi tartibga zid va mantiqan to'g'ri kelmaydi."
+ },
+ "2959": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2960": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2961": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2962": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2963": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2964": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2965": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2966": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2967": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2968": {
+  "verdict": "SHUBHALI",
+  "sabab": "Hisoblash natijasi 80 bo'lishi kerak (10+40+30), variantlarda 80 yo'q va belgilangan javob (90) noto'g'ri."
+ },
+ "2969": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2970": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2971": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2972": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2973": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2974": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2975": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2976": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2977": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2978": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2979": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2980": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2981": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2982": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2983": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2984": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2985": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2986": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2987": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2988": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2989": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2990": {
+  "verdict": "SHUBHALI",
+  "sabab": "Matematik formula (S=v*t) yozilishi o'zi 'matematik modelni tuzish' bosqichidir. Dasturchi 'algoritm tuzish' bosqichini (sxema, blok-diagramma) o'tkazib yuborgan. Izohda 'model' tushunchasi noto'g'ri tushuntirilgan (sxema algoritmni ifodalaydi)."
+ },
+ "2991": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2992": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2993": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2994": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2995": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2996": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2997": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2998": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "2999": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "3000": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "3001": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "3002": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "3003": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "3004": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "3005": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "3006": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "3007": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "3008": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "3009": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "3010": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "3011": {
+  "verdict": "OK",
+  "sabab": ""
+ },
+ "3012": {
+  "verdict": "OK",
+  "sabab": ""
+ }
+}

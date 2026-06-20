@@ -13,6 +13,8 @@ if (fs.existsSync(".env")) {
   }
 }
 const BASE = process.env.PIPELINE_API_BASE, KEY = process.env.PIPELINE_API_KEY, MODEL = process.env.PIPELINE_API_MODEL;
+const keys = KEY ? KEY.split(",").map((k) => k.trim()).filter(Boolean) : [];
+let currentKeyIdx = 0;
 const REASONING = process.env.PIPELINE_REASONING || "";
 
 const args = process.argv.slice(2);
@@ -64,18 +66,38 @@ ${qs}`;
 async function callLLM(prompt, tries = 4) {
   for (let k = 0; k < tries; k++) {
     try {
+      const activeKey = keys.length > 0 ? keys[currentKeyIdx % keys.length] : KEY;
       const res = await fetch(`${BASE}/chat/completions`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${KEY}` },
-        body: JSON.stringify({ model: MODEL, messages: [{ role: "user", content: prompt }], temperature: 0.3, max_tokens: 2500, ...(REASONING ? { reasoning_effort: REASONING } : {}) }),
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${activeKey}` },
+        body: JSON.stringify({ model: MODEL, messages: [{ role: "user", content: prompt }], temperature: 0.3, max_tokens: 8192, ...(REASONING ? { reasoning_effort: REASONING } : {}) }),
       });
-      if (res.status === 429 || res.status >= 500) { const ra = parseFloat(res.headers.get("retry-after")) || 3 * (k + 1); await sleep(Math.min(ra * 1000 + 300, 20000)); continue; }
+      if (res.status === 429 || res.status >= 500) {
+        const ra = parseFloat(res.headers.get("retry-after")) || 3 * (k + 1);
+        console.log(`[Limit/Error ${res.status}, kalit index: ${currentKeyIdx % keys.length}, urinish ${k + 1}/${tries}]`);
+        if (keys.length > 1) {
+          currentKeyIdx++;
+          await sleep(500);
+        } else {
+          await sleep(Math.min(ra * 1000 + 300, 20000));
+        }
+        continue;
+      }
       if (!res.ok) throw new Error(`API ${res.status}`);
       const d = await res.json();
       const c = d.choices?.[0]?.message?.content;
       if (!c) { await sleep(2000 * (k + 1)); continue; }
+      if (keys.length > 1) {
+        currentKeyIdx++;
+      }
       return c;
-    } catch (e) { if (k === tries - 1) throw e; await sleep(2000 * (k + 1)); }
+    } catch (e) {
+      if (keys.length > 1) {
+        currentKeyIdx++;
+      }
+      if (k === tries - 1) throw e;
+      await sleep(2000 * (k + 1));
+    }
   }
   return "";
 }

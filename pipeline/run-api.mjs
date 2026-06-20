@@ -49,6 +49,7 @@ const sourceFile = A("--source");       // darslik matni (ixtiyoriy) — mutaxas
 const goldPath = A("--gold");           // oltin korpus (papka/fayl) — dedup langari + few-shot namuna
 const fresh = args.includes("--fresh"); // padded sub.corpus'ni e'tiborsiz qoldir (faqat gold+yangi bilan dedup)
 const specialOnly = args.includes("--special-only"); // FAQAT matching/sequence yig'adi (format to'ldirish rejimi)
+const pedStyle = A("--ped-style", "framed"); // ped/kasb uslubi: "framed" (fan-xos) yoki "neutral" (umumiy)
 if (!slug) { console.error("--subject kerak"); process.exit(1); }
 const MAXTOK = Math.max(8192, per * 500 + 3000); // reasoning modellar uchun zaxira ham
 const REASONING = process.env.PIPELINE_REASONING || ""; // gpt-oss kabi reasoning modellar: "low"/"medium"/"high"
@@ -58,7 +59,14 @@ if (!sub.specExists && sub.specPdf && fs.existsSync(sub.specPdf)) execFileSync("
 
 // Bo'laklar: mutaxassislik manbasi (darslik bo'lsa o'sha, aks holda spec) + umumiy ped (kasb/pedagogika)
 const mutSource = sourceFile && fs.existsSync(sourceFile) ? sourceFile : sub.spec;
-let chunks = chunkSpec(fs.readFileSync(mutSource, "utf8"), { maxChars: 2400 });
+// Mutaxassislik manbasini FAQAT mutaxassislik kerak bo'lganda o'qiymiz — ped/kasb-only generatsiyada (mas:
+// --blocks pedagogika,kasb) fan spec'i ishlatilmaydi, shuning uchun yo'q bo'lsa ham crash bo'lmasligi kerak.
+const needMut = !blocks.length || blocks.includes("mutaxassislik");
+let chunks = [];
+if (needMut) {
+  if (!fs.existsSync(mutSource)) { console.error(`Xato: mutaxassislik manbasi yo'q: ${mutSource}\n(faqat ped/kasb uchun --blocks pedagogika,kasb bering)`); process.exit(1); }
+  chunks = chunkSpec(fs.readFileSync(mutSource, "utf8"), { maxChars: 2400 });
+}
 if (fs.existsSync(SHARED_PED.spec)) chunks = chunks.concat(chunkSpec(fs.readFileSync(SHARED_PED.spec, "utf8"), { maxChars: 2400 }).filter((c) => c.block !== "mutaxassislik"));
 // Faqat tanlangan bloklar (mas: --blocks pedagogika,kasb)
 if (blocks.length) chunks = chunks.filter((c) => blocks.includes(c.block));
@@ -209,11 +217,16 @@ if (!fresh && fs.existsSync(progressPath)) {
   } catch { /* yuklash xatosi — yangidan boshlaymiz */ }
 }
 const already = 0; // accepted[] ga kiritildi, already endi 0
-let dup = 0, bad = 0, pass = 0, nSpecial = 0, specialSkip = 0;
+let dup = 0, bad = 0, pass = 0, nSpecial = 0, specialSkip = 0, contam = 0;
 const SPECIAL_CAP = Math.ceil(target * 0.20); // matching+sequence ko'pi bilan ~20% (qolgani ishonchli single)
 // "Maxsus" = faqat matching/sequence (model ro'yxat/tartibni to'qishi xavfli). combo esa 1 javobli,
 // namuna uslubining o'zagi — single kabi cheklovsiz oqadi.
 const isSpecial = (qt) => qt === "matching" || qt === "sequence";
+// ANTI-IFLOSLANISH darvozasi: CHQBT bo'lmagan fan ped/kasb (UMUMIY) blokida harbiy/CHQBT konteksti rad etiladi.
+const MIL_RE = /\b(harbiy|jangovar|mudofaa|qurol|otishma?|askar(lar)?|kursant(lar)?|qo['’`]?mondon|snayper|safarbarlik|jangchi(lar)?|batalon|polki?)\b/i;
+const isPedKasb = (b) => b === "pedagogika" || b === "kasb";
+const guardCrossDomain = (q, block) => slug !== "chqbt" && isPedKasb(block) &&
+  MIL_RE.test(`${q.question || ""} ${Object.values(q.options || {}).join(" ")} ${q.explanation || ""}`);
 // Mavjud nSpecial sanagichini tiklaymiz
 for (const q of accepted) if (isSpecial(q.qtype)) nSpecial++;
 console.log(`▶ ${sub.name}: maqsad ${target} (hozir ${accepted.length}), ${chunks.length} bo'lim, model ${MODEL}${specialOnly ? " | FAQAT matching/sequence" : ""}`);
@@ -231,7 +244,7 @@ while (already + accepted.length < target) {
     try {
       const useAnchors = (c.block === "pedagogika" || c.block === "kasb") && pedAnchors.length ? pedAnchors : anchors;
       const specChunk = c.block === "mutaxassislik" ? c.text.trim() + bookGrounding(c.title + " " + c.text) : c.text.trim();
-      let prompt = buildGenPrompt({ subjectName: sub.name, topicTitle: c.title, specChunk, anchors: useAnchors, existingTitles: sampleTitles(), count: per, block: c.block });
+      let prompt = buildGenPrompt({ subjectName: sub.name, subjectSlug: slug, topicTitle: c.title, specChunk, anchors: useAnchors, existingTitles: sampleTitles(), count: per, block: c.block, pedStyle });
       if (specialOnly) prompt += `\n\n⚠️ MAXSUS REJIM: bu so'rovda FAQAT "matching" va "sequence" formatdagi savollar yoz — "single" YOZMA!
 Taxminan yarmi matching, yarmi sequence. FAQAT manba matnida ANIQ ro'yxat/juftlik/tartib bo'lsa tuz — to'qima.
 Agar bu bo'lakda mos ro'yxat/tartib bo'lmasa, KAM savol qaytar (bo'sh massiv ham mumkin).`;
@@ -243,6 +256,7 @@ Agar bu bo'lakda mos ro'yxat/tartib bo'lmasa, KAM savol qaytar (bo'sh massiv ham
         q0.subject = q0.subject || sub.name;
         const qt = q0.qtype || "single";
         if (validateQuestion(q0).length) { bad++; continue; }
+        if (guardCrossDomain(q0, c.block)) { contam++; continue; } // anti-ifloslanish: harbiy/CHQBT misol boshqa fan ped/kasb'ida
         if (specialOnly && !isSpecial(qt)) { specialSkip++; continue; } // maxsus rejim: faqat matching/sequence
         if (!specialOnly && isSpecial(qt) && nSpecial >= SPECIAL_CAP) { specialSkip++; continue; } // format balansi (single+combo ustun)
         if (findDuplicate(index, q0)) { dup++; continue; }
@@ -267,5 +281,5 @@ function saveProgress() {
 }
 saveProgress();
 const fmt = accepted.reduce((a, q) => { a[q.qtype] = (a[q.qtype] || 0) + 1; return a; }, {});
-console.log(`\n✓ Jami: ${accepted.length}/${target} (single ${fmt.single || 0}, matching ${fmt.matching || 0}, sequence ${fmt.sequence || 0}) | takror: ${dup} | yaroqsiz: ${bad} | format-cap skip: ${specialSkip}`);
+console.log(`\n✓ Jami: ${accepted.length}/${target} (single ${fmt.single || 0}, matching ${fmt.matching || 0}, sequence ${fmt.sequence || 0}) | takror: ${dup} | yaroqsiz: ${bad} | format-cap skip: ${specialSkip} | ifloslanish rad: ${contam}`);
 console.log(`   → ${progressPath}`);

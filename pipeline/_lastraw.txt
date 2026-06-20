@@ -1,0 +1,20 @@
+```json
+[
+  {
+    "subject": "Geografiya",
+    "topic": "Kasb standartlari",
+    "subtopic": "Bo'lim 12: O'quv jarayonini rejalashtirish",
+    "difficulty": "Y2",
+    "bloom_level": "Qo'llash",
+    "qtype": "single",
+    "source_construct": "Spetsifikatsiya: O'quv jarayonini rejalashtirish vazifasi (ehtiyojlarni tahlil qilish va o'lchanadigan natijalar belgilash)",
+    "requires_image": false,
+    "question": "Geografiya o'qituvchisi 'O'zbekiston iqtisodiy rayonlari' mavzusiga dars tayyorlayotganda, o'quvchilarning oldingi sinflardan olgan 'Tabiiy resurslar' bo'yicha bilim darajasini tahlil qildi va dars maqsadini 'O'quvchi iqtisodiy rayonning ikkita asosiy tabiiy resursini nomlab, unga asoslangan tarmoqni ko'rsata oladi' ko'rinishida belgiladi. Bu qaysi mehnat vazifasiga mos keladi?",
+    "options": {
+      "A": "O'quv jarayonini rejalashtirish",
+      "B": "O'quvchilarni baholash",
+      "C": "Xavfsiz muhit yaratish",
+      "D": "O'z-o'zini rivojlantirish"
+    },
+    "answer": "A",
+    "explanation": "O'qituvchi o'quvchilarning ehtiyojlar

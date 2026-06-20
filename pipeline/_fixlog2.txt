@@ -1,0 +1,124 @@
+[1-4/483] ... tuzatildi 4/4
+[5-8/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[9-12/483] ... batch kesildi → 1talik: 3/4 tuzatildi
+[13-16/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[17-20/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[21-24/483] ... tuzatildi 4/4
+[25-28/483] ... tuzatildi 4/4
+[29-32/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[33-36/483] ... tuzatildi 4/4
+[37-40/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[41-44/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[45-48/483] ... tuzatildi 4/4
+[49-52/483] ... tuzatildi 4/4
+[53-56/483] ... tuzatildi 4/4
+[57-60/483] ... tuzatildi 4/4
+[61-64/483] ... tuzatildi 4/4
+[65-68/483] ... tuzatildi 4/4
+[69-72/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[73-76/483] ... batch kesildi → 1talik: 3/4 tuzatildi
+[77-80/483] ... tuzatildi 4/4
+[81-84/483] ... tuzatildi 4/4
+[85-88/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[89-92/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[93-96/483] ... tuzatildi 4/4
+[97-100/483] ... tuzatildi 4/4
+[101-104/483] ... tuzatildi 4/4
+[105-108/483] ... tuzatildi 4/4
+[109-112/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[113-116/483] ... tuzatildi 4/4
+[117-120/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[121-124/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[125-128/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[129-132/483] ... tuzatildi 4/4
+[133-136/483] ... tuzatildi 4/4
+[137-140/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[141-144/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[145-148/483] ... tuzatildi 4/4
+[149-152/483] ... tuzatildi 4/4
+[153-156/483] ... tuzatildi 4/4
+[157-160/483] ... tuzatildi 4/4
+[161-164/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[165-168/483] ... tuzatildi 4/4
+[169-172/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[173-176/483] ... tuzatildi 4/4
+[177-180/483] ... tuzatildi 4/4
+[181-184/483] ... batch kesildi → 1talik: 3/4 tuzatildi
+[185-188/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[189-192/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[193-196/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[197-200/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[201-204/483] ... tuzatildi 4/4
+[205-208/483] ... tuzatildi 4/4
+[209-212/483] ... tuzatildi 4/4
+[213-216/483] ... tuzatildi 4/4
+[217-220/483] ... tuzatildi 4/4
+[221-224/483] ... batch kesildi → 1talik: 2/4 tuzatildi
+[225-228/483] ... batch kesildi → 1talik: 3/4 tuzatildi
+[229-232/483] ... tuzatildi 4/4
+[233-236/483] ... batch kesildi → 1talik: 4/4 tuzatildi
+[237-240/483] ... batch kesildi → 1talik: 2/4 tuzatildi
+[241-244/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[245-248/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[249-252/483] ... batch kesildi → 1talik: 2/4 tuzatildi
+[253-256/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[257-260/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[261-264/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[265-268/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[269-272/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[273-276/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[277-280/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[281-284/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[285-288/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[289-292/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[293-296/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[297-300/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[301-304/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[305-308/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[309-312/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[313-316/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[317-320/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[321-324/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[325-328/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[329-332/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[333-336/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[337-340/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[341-344/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[345-348/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[349-352/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[353-356/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[357-360/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[361-364/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[365-368/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[369-372/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[373-376/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[377-380/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[381-384/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[385-388/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[389-392/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[393-396/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[397-400/483] ... batch kesildi → 1talik: 2/4 tuzatildi
+[401-404/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[405-408/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[409-412/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[413-416/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[417-420/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[421-424/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[425-428/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[429-432/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[433-436/483] ... batch kesildi → 1talik: 3/4 tuzatildi
+[437-440/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[441-444/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[445-448/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[449-452/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[453-456/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[457-460/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[461-464/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[465-468/483] ... batch kesildi → 1talik: 0/4 tuzatildi
+[469-472/483] ... batch kesildi → 1talik: 1/4 tuzatildi
+[473-476/483] ... batch kesildi → 1talik: 2/4 tuzatildi
+[477-480/483] ... batch kesildi → 1talik: 2/4 tuzatildi
+[481-483/483] ... batch kesildi → 1talik: 1/3 tuzatildi
+
+✓ Imlo-fix tugadi: 261 tuzatildi, 222 asl saqlandi (batch parse xato: 89)
+   → fan/_ped_hovuz.json

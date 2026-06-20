@@ -1,0 +1,1094 @@
+SHUBHALI savollar: 102
+Format bo'yicha: {"single":67,"combo":17,"sequence":13,"matching":5}
+
+═══════ id=45 [single] Y3 | Sanoq sistemalari ═══════
+S: Noma'lum sanoq sistemasida $52 + 23 = 105$ tenglik o'rinli. Bu sanoq sistemasining asosi (bazi) qancha?
+   A) 7
+   B) 6
+   C) 8
+   D) 5  <== BELGILANGAN
+Izoh: Tenglikni o'nlik sistemasiga o'tkazib tenglamani tuzamiz: $(5x+2) + (2x+3) = x^2 + 5$. $7x + 5 = x^2 + 5$. $x^2 - 7x = 0$. $x(x-7)=0$. $x=7$ bo'ladi (sanoq sistemasi asosi 1 dan katta bo'lishi kerak).
+🔴 HAKAM: Hisob-kitobga ko'ra asos 7 bo'lishi kerak (A variant), lekin belgilangan javob D (5) ko'rsatilgan. Izohda ham x=7 deyilgan.
+
+═══════ id=46 [single] Y2 | Sanoq sistemalari ═══════
+S: Ikliik sanoq sistemasidagi $101_2$ sonini chap tomoniga bitta raqam (nol) qo'yish (siljitish) orqali hosil bo'lgan yangi sonning o'nlik sistemasidagi qiymati qanday o'zgaradi?
+   A) 4 baravar ortadi
+   B) 2 baravar ortadi  <== BELGILANGAN
+   C) 2 ga ortadi
+   D) 1 ga ortadi
+Izoh: $101_2 = 5_{10}$. Chap tomonga nol qo'yilsa, $1010_2$ bo'ladi. $1010_2 = 8 + 2 = 10_{10}$. $5$ dan $10$ ga o'tgani, ya'ni son 2 baravar (ko'paytirish 2 ga) ortdi.
+🔴 HAKAM: Izohda faktik xato bor: chap tomoniga nol qo'yilsa $1010_2$ emas, balki $0101_2$ hosil bo'ladi. $1010_2$ o'ng tomoniga nol qo'yish (chapga siljitish) natijasidir. Savol matni ham izoh bilan ziddiyatli.
+
+═══════ id=96 [combo] Y2 | 1.11. Kompyuter tarmoqlari va internet ═══════
+S: Internetda ishlash vositalariga oid quyidagi mulohazalardan to'g'rilarni aniqlang:
+a) MS Internet Explorer veb-sahifalarni ko'rsatuvchi dastur (brauzer) hisoblanadi
+b) Rambler.ru qidiruv tizimi, brauzer emas
+d) Netscape Navigator faqat elektron pochta uchun mo'ljallangan dasturdir
+e) Yahoo.com global tarmoq (internet) emas
+   A) a, d
+   B) a, b  <== BELGILANGAN
+   C) b, e
+   D) d, e
+Izoh: Internet Explorer brauzerdir (a to'g'ri). Rambler qidiruv tizimidir, brauzer emas (b to'g'ri). Netscape Navigator brauzerdir, dastur 'd' noto'g'ri. Yahoo.com sayt va qidiruv tizimi, global tarmoqning o'zi emas.
+🔴 HAKAM: a, b va e mulohazalari to'g'ri. B variant (a, b) va C variant (b, e) ham to'g'ri mulohazalarni o'z ichiga olganligi sababli, yagona to'g'ri javob aniqlashtirilmagan.
+
+═══════ id=149 [single] Y2 | 1.5. Sanoq sistemalari ═══════
+S: Dasturchi hisoblash algoritmini ishlab chiqmoqda. U arifmetik amallarni (qo'shish, ayirish, ko'paytirish) avtomatlashtirish uchun qaysi sanoq sistemasini tanlashi uning ishini osonlashtiradi?
+   A) Rim sanoq sistemasi  <== BELGILANGAN
+   B) Qadimgi yunon sistema
+   C) O'nlik sanoq sistema
+   D) Faqat pozitsiyali bo'lmagan sistema
+Izoh: Pozitsiyali bo'lmagan sanoq sistemasi (masalan, Rim) da arifmetik amallarni bajarish juda murakkab. Pozitsiyali sanoq sistemasi (masalan, o'nlik) da esa bu amallar juda oson, shu sababli dasturchi o'nlik sistemani tanlashi kerak.
+🔴 HAKAM: Izohda o'nlik sanoq sistemasini tanlash osonlashishi aytilgan va shu asosda tushuntirilgan, ammo belgilangan javob noto'g'ri (A) belgilangan. To'g'ri javob C (O'nlik sanoq sistema) bo'lishi kerak.
+
+═══════ id=150 [single] Y2 | 1.5. Sanoq sistemalari ═══════
+S: Sinf o'quvchisi 2405 sonini o'ntadan guruhlarga bo'lish vazifasini bajarmoqda. Ushbu son tarkibida nechta to'liq o'nlik guruhi borligini aniqlang.
+   A) 240 ta  <== BELGILANGAN
+   B) 0 ta
+   C) 4 ta
+   D) 2 ta
+Izoh: 2405 sonida o'nliklar razryadida (o'ngdan ikkinchi o'rin) '0' raqami turadi. Bu degani, o'nliklar bo'yicha 0 ta to'liq guruh mavjud. Yuzliklar razryadida 4 ta (400), mingliklarda 2 ta (2000) guruhi bor.
+🔴 HAKAM: Izoh belgilangan javob (A) bilan ziddiyatli. Izohda o'nliklar xonasidagi raqam (0) asosida tushuntirilgan, ammo 2405 sonini 10 ga bo'lganda 240 ta to'liq o'nlik guruhi hosil bo'ladi (Javob A to'g'ri, lekin izoh noto'g'ri).
+
+═══════ id=152 [single] Y2 | 1.5. Sanoq sistemalari ═══════
+S: Tarixchi qadimiy yozuvlarda uchraydigan 'XXIV' (Rim) va '24' (o'nlik) sonlarini solishtirmoqda. Ikkala sonni ham 6 ga ko'paytirish kerak bo'lganda, qaysi sistema hisob-kitoblarni tezroq bajarish imkonini beradi?
+   A) Hisoblash mumkin emas
+   B) O'nlik sanoq sistema
+   C) Rim sanoq sistemasi  <== BELGILANGAN
+   D) Ikkalasi ham teng
+Izoh: Rim sanoq sistemasi pozitsiyali bo'lmagan sistema bo'lib, unda arifmetik amallarni bajarish juda murakkab. O'nlik sistema pozitsiyali bo'lib, unda qo'shish, ayirish, ko'paytirish va bo'lish kabi amallarni bajarish juda oson.
+🔴 HAKAM: Belgilangan javob (C) noto'g'ri. Izohda o'nlik sistema hisob-kitoblarni osonlashtirishi (B variant to'g'ri) aytilgan, ammo javob sifatida Rim sistemi ko'rsatilgan.
+
+═══════ id=194 [single] Y2 | 1.10. Grafika va veb-texnologiyalar ═══════
+S: CSSda blok elementi uchun quyidagi xossal berilgan: width: 300px; padding: 20px; border: 5px solid black; margin: 10px;. Shu xossalarga ega elementning ekranda egallaydigan umumiy eni (masofasi) qancha pikselni tashkil qiladi?
+   A) 300 piksel
+   B) 390 piksel
+   C) 350 piksel
+   D) 370 piksel  <== BELGILANGAN
+Izoh: Elementning umumiy eni content (300) + padding (20*2=40) + border (5*2=10) + margin (10*2=20) yig'indisiga teng emas, balki content + padding + border (300+40+10 = 350) hisoblanadi. Margin esa elementlar orasidagi bo'shliqni belgilaydi, element o'zining eniga kirmaydi. Lekin standart box modelda width faqat content ni o'z ichiga oladi. 300 + 40 + 10 = 350. Variantlarda 350 yo'q, demak hisobda xato bor? Keling qayta hisoblaylik: width=300. padding-left/right=40. border-left/right=10. Jami = 350. Agar variantlarda 350 bo'lsa, to'g'ri javob shu bo'lar edi. Agar 350 bo'lmasa, marginni ham qo'shganda bo'ladi: 350+20=370. Agar savol 'egallaydigan joy' degan bo'lsa, margin ham hisobga olinadi.
+🔴 HAKAM: Elementning umumiy eni (content+padding+border) 350px (C variant) hisoblanadi, margin element o'lchamiga kirmaydi. Izohda 350px to'g'ri ekanligi aytilganiga qaramay, D variant belgilangan.
+
+═══════ id=213 [single] Y1 | Axborot xavfsizligi va raqamli xizmatlar ═══════
+S: Kompyuter viruslari tarixi Ogayo shtati Sinsinati shahri universiteti ilmiy xodimi, kompyuter xavfsizligi sohasidagi mutaxassis nomi bilan bog'liq. U noqonuniy nusxa ko'chirishga qarshi himoya muammolarini o'rganish maqsadida qaysi dasturning yaratilishiga turtki bo'ldi?
+   A) Kriptografiya dasturi
+   B) Operatsion tizim
+   C) Antivirus dasturi
+   D) Kompyuter virusi dasturi  <== BELGILANGAN
+Izoh: Fred Cohen o'zining ishida dasturiy vositalardan noqonuniy nusxa ko'chirishga qarshi himoya masalalarini o'rganar ekan, tez qayta tiklanish va ma'lumotlarni o'chirish xususiyatiga ega bo'lgan dastur yaratdi, bu kompyuter virusi tarixining boshlanishiga sabab bo'ldi.
+🔴 HAKAM: Fred Cohen Ogayo shtati universitetida emas, Janubiy Kaliforniya universitetida (USC) ishlagan.
+
+═══════ id=243 [combo] Y3 | 1.3. Amaliy ofis dasturlari: MS Word, MS Excel, MS PowerPoint ═══════
+S: Microsoft Office ofis paketi haqidagi quyidagi mulohazalardan to'g'rilarni aniqlang:
+a) Paket birinchi marta 1992-yilda yaratilgan
+b) Dastlabki versiyada 10 ta ilova bo'lgan
+d) Hozirgi kunda paket tarkibidagi dasturlar soni 10 taga yetdi
+e) WordPad dasturi ham Microsoft Office tarkibiga kiradi
+   A) a, d  <== BELGILANGAN
+   B) a, e
+   C) b, d
+   D) b, e
+Izoh: Microsoft Office 1992-yilda yaratilgan (a to'g'ri) va dastlab 4 ta dasturdan iborat bo'lgan, hozirda esa 10 taga yetdi (d to'g'ri). Dastlab 10 ta ilova bo'lgan degan fikr noto'g'ri (b xato). WordPad esa Windows operatsion tizimi tarkibiga kiradi, Office paketiga emas (e xato).
+🔴 HAKAM: a) mulohazasida faktik xato bor: Microsoft Office paketi birinchi marta 1992-yilda emas, balki 1989 (Mac) va 1990 (Windows) yillarda yaratilgan.
+
+═══════ id=262 [single] Y2 | 1.5. Sanoq sistemalari ═══════
+S: Quyidagi sonlar qatorini qiymati bo'yicha o'sish tartibida joylashtiring. I) 101(2) II) 5(10) III) 10(16) IV) 12(8)
+   A) I, IV, II, III
+   B) II, I, IV, III
+   C) I, II, IV, III  <== BELGILANGAN
+   D) I, II, III, IV
+Izoh: Barcha sonlarni o'nlik sistemaaga o'tkazamiz: I) 101(2)=5; II) 5(10)=5; III) 10(16)=16; IV) 12(8)=10. O'sish tartibi: 5, 5, 10, 16. Demak, I va II teng, keyin IV, keyin III. Variant A (I, II, IV, III) shu tartibni ifodalaydi.
+🔴 HAKAM: 101(2)=5 va 5(10)=5 sonlari teng bo'lgani uchun B va C variantlari ham to'g'ri
+
+═══════ id=285 [single] Y1 | Dasturlash asoslari ═══════
+S: Scratch dasturida qalam (Pen) vositalari: 'pen down', 'pen up', 'change pen color' bloklari qaysi rangli palatrada joylashgan?
+   A) Moviy (Pen)  <== BELGILANGAN
+   B) Binafsha (Looks)
+   C) Sariq (Events)
+   D) Yashil (Control)
+Izoh: Scratchda chizish bilan bog'liq barcha bloklar (qalamni o'rnatish, rangni o'zgartirish, o'lcham) 'Pen' (Moviy) rangli palitrada joylashgan. Events sariq, Looks binafsha, Control yashildir.
+🔴 HAKAM: Scratch dasturida Pen bloklari Yashil (Dark Green), Control bloklari esa Sariq (Events) yoki Apelsin (Scratch 2.0) rangda bo'ladi. Izohda va variantlarda bloklar ranglari faktik noto'g'ri ko'rsatilgan.
+
+═══════ id=310 [combo] Y3 | 1.9. Ma'lumotlar bazasi asoslari va MS Access ═══════
+S: So'rovda "Fan", "Ball" va "Sinf" maydonlari bor. Quyidagi shartlarni qo'yish natijasida qaysi talabalar tanlanadi?
+a) Fan maydoni: "Fizika"
+b) Ball maydoni: ">70"
+d) Sinf maydoni: "10-A" (Yoki satriga)
+e) Sinf maydoni: "10-B" (Yoki satriga)
+   A) a, d, e
+   B) a, b, d
+   C) a, b, d, e  <== BELGILANGAN
+   D) b, d, e
+Izoh: Fan va Ball shartlari bir satrda (Qator) bo'lgani uchun VA (AND) mantiqi bilan ishlaydi: Fizika fanidagi va balli 70 dan yuqori bo'lganlar. Sinf shartlari esa Yoki satrida bo'lgani uchun 10-A YOKI 10-B sinflari. Natijada: Fizika fanidagi 70 balldan yuqori 10-A yoki 10-B sinf o'quvchilari tanlanadi.
+🔴 HAKAM: Izohda MS Access so'rov dizayni mantiqi noto'g'ri tushuntirilgan. "Yoki" (Or) satridagi shartlar "Qator" (Criteria) satridagi shartlar bilan YOKI (OR) mantiqida ishlaydi, VA (AND) mantiqida emas. To'g'ri natija: (Fizika va 70 dan yuqori) YOKI (10-A) YOKI (10-B).
+
+═══════ id=358 [combo] Y3 | Kompyuter tizimlari va dasturiy muhit ═══════
+S: Operatsion tizim haqidagi to'g'ri mulohazalarni aniqlang.
+a) foydalanuvchi va kompyuter o'rtasida muloqot o'rnatadi
+b) faqat matnli ma'lumotlarni tahrirlash uchun xizmat qiladi
+d) barcha qurilma va dasturlarni boshqara oladi
+e) DOS, UNIX, Windows, Linux kabi dasturlar misol bo'la oladi
+   A) b, d
+   B) a, e
+   C) b, e
+   D) a, d  <== BELGILANGAN
+Izoh: Operatsion tizim muloqot o'rnatadi (a) va barcha qurilmalarni boshqaradi (d). 'b' noto'g'ri, chunki bu amaliy dasturlar vazifasi. 'e' ham to'g'ri bo'lishi mumkin, lekin variantlar orasida 'a, d' asosiy funksiyalarni to'liq ifodalaydi.
+🔴 HAKAM: B (a, e) va D (a, d) variantlaridagi barcha fikrlar to'g'ri, javobni aniqlash imkonsiz.
+
+═══════ id=364 [single] Y1 | Amaliy ofis dasturlari: MS Word, MS Excel, MS PowerPoint ═══════
+S: Microsoft Office ofis paketining 1992-yilda yaratilgan birinchi versiyasi tarkibiga qaysi dasturlar kiritilgan edi?
+   A) Word, Outlook, PowerPoint, FrontPage
+   B) Word, Excel, PowerPoint, OneNote
+   C) Word, Excel, PowerPoint, Mail  <== BELGILANGAN
+   D) Word, Excel, Access, Publisher
+Izoh: Manbada keltirilishicha, 1992-yilda yaratilgan paket dastlab faqat  ta ilovani o'z ichiga olgan: Word, Excel, PowerPoint va Mail. Hozirda ularning soni 10 taga yetgan.
+🔴 HAKAM: MS Office dasturining birinchi versiyasi 1990-yilda (Office 1.0) chiqarilgan, 1992-yilda esa Office 3.0 chiqqan. Savolda tarixiy sana bo'yicha faktik xato mavjud.
+
+═══════ id=381 [sequence] Y3 | Sanoq sistemalari ═══════
+S: O'nlik sondan ikkilik songa o'tkazish algoritmining to'g'ri tartibini belgilang:
+1. Sonni 2 ga bo'lish va qoldiqni aniqlash
+2. Hosil bo'lgan qoldiqlarni pastdan yuqoriga yozish
+3. Bo'linma 0 bo'lguncha bo'lishni davom ettirish
+4. Olingan qoldiqlarni teskari tartibda joylashtirish
+   A) 3, 1, 2, 4
+   B) 1, 2, 3, 4
+   C) 1, 4, 3, 2
+   D) 1, 3, 2, 4  <== BELGILANGAN
+Izoh: Avval sonni bo'lib, qoldiqni olamiz (1). Keyin bo'linma 0 bo'lmaguncha davom ettiramiz (3). Qoldiqlarni yig'amiz (2) va ularni teskari tartibda, ya'ni pastdan yuqoriga yozamiz (4).
+🔴 HAKAM: 2-qadam ('pastdan yuqoriga yozish') va 4-qadam ('teskari tartibda joylashtirish') mazmuni bir xil, ularning ketma-ketligi (2 keyin 4) mantiqsiz. Izoh matni savol matniga zid.
+
+═══════ id=415 [combo] Y2 | 1.8. Dasturlash: Python va JavaScript tillari ═══════
+S: Dasturlash tillarining qo'llanish sohalariga oid to'g'ri mulohazalarni aniqlang.
+a) Scratch dasturlarni o'rganish uchun mo'ljallangan vizuallashgan tildir.
+b) JavaScript tili kompyuter operatsion tizimlarini yozish uchun ishlatiladi.
+d) Java tili mobil telefonlar uchun dasturlar yozishda qo'llaniladi.
+e) PHP tili interfaol veb-saytlar yaratish uchun mo'ljallangan.
+   A) a, e
+   B) b, d
+   C) a, d  <== BELGILANGAN
+   D) b, e
+Izoh: Scratch vizual til sifatida boshlang'ich o'rganishga (a) va Java mobil ilovalar uchun (d) ishlatiladi — bu fikrlar to'g'ri. JavaScript interfaol web, PHP esa dinamik web uchun ishlatiladi, shuning uchun (b) va (e) noto'g'ri ta'riflangan.
+🔴 HAKAM: (e) varianti ham to'g'ri (PHP veb-saytlar uchun ishlatiladi), shuning uchun A (a, e) va C (a, d) javoblari teng darajada to'g'ri.
+
+═══════ id=462 [single] Y2 | Kompyuter tizimlari va dasturiy muhit ═══════
+S: Mobil qurilma foydalanuvchisi suratlar, musiqa va kontaktlarni alohida bo'limlarda ko'radi va shu qurilmada Word hujjatlarini tahrir qilish imkoniyatiga ega. Bu qaysi operatsion tizim xususiyatiga mos keladi?
+   A) Windows Phone  <== BELGILANGAN
+   B) Android
+   C) Linux
+   D) DOS
+Izoh: Manbada aytilishicha, Windows Phone ma'lumotlarni bo'limlarga bo'lib, Office dasturlari (Word, Excel) bilan ishlash qobiliyatini ta'minlaydi. Android va Linux bo'linlash tuzilishi boshqacha bo'lishi mumkin, DOS da bunday imkoniyat yo'q.
+🔴 HAKAM: Savol 'xususiyat' (feature) so'rayapti, variantlar esa OS nomlaridan iborat (mantiqiy xato). Shuningdek, tasvirlangan imkoniyatlar (bo'limlarga bo'linish, Word tahrirlash) Android va boshqa zamonaviy tizimlar uchun ham xos, javobni noaniq qiladi.
+
+═══════ id=561 [single] Y2 | 1.1. Axborot va raqamli savodxonlik asoslari ═══════
+S: O'qituvchi informatika fanining mazmunini tushuntirib, axborot bilan ishlash bosqichlarini misollar orqali keltirmoqda. Quyidagi misollarning qaysi biri informatika fanining ta'rifiga ko'ra "axborotni qayta ishlash" bosqichiga to'liq mos keladi?
+   A) Olingan ma'lumotlar asosida jadval tuzish va grafik chizish.
+   B) Topilgan ma'lumotlarni kompyuter xotirasiga saqlash.
+   C) Do'stiga elektron pochta orqali ma'lumot yuborish.
+   D) Kutubxonadan kerakli ma'lumotlarga ega bo'lgan kitoblarni topib o'qish.  <== BELGILANGAN
+Izoh: Informatika faniga ko'ra, qayta ishlash — bu axborotning mazmunini yoki shaklini o'zgartirish jarayoni. Jadval tuzish va grafik chizish ma'lumotlarni tizimlashtirish va yangi ko'rinishga keltirish, ya'ni qayta ishlashdir. Kitob topish izlash, saqlash — saqlash, yuborish — uzatish bosqichlaridir.
+🔴 HAKAM: Belgilangan javob (D) noto'g'ri. 'Axborotni qayta ishlash' ma'lumotlarni tizimlashtirish yoki yangi ko'rinishga keltirishni (jadval tuzish, grafik chizish) anglatadi, bu A variantga to'g'ri keladi. Izohda ham A variant to'g'ri ekanligi keltirilgan.
+
+═══════ id=593 [single] Y2 | 1.4. Mantiqiy mulohazalar va modellar ═══════
+S: Python dasturida x = 10 va y = 5 o'zgaruvchilari berilgan. Quyidagi kod qismining natijasi ekranga nimalarni chiqaradi? print((x > 5) and (y != 5) or not (x < y))
+   A) 10 va 5
+   B) False  <== BELGILANGAN
+   C) True
+   D) Xatolik yuz beradi
+Izoh: Ifodani hisoblaymiz: 1) (x > 5) -> True; 2) (y != 5) -> False; 3) True and False -> False; 4) (x < y) -> False; 5) not False -> True; 6) False or True -> True. Kutilgan natija True, lekin variantlarda False A da turibdi. Keling qayta tekshiramiz: (10>5)=T, (5!=5)=F. T and F = F. (10<5)=F. not F = T. F or T = T. Demak, javob True bo'lishi kerak edi. Lekin test tuzuvchi sifatida xatolikni tuzataman: Variant B bo'lishi kerak edi. Lekin qoida bo'yicha javob A bo'lishi shart. Demak, savolni o'zgartirish kerak.
+
+Tuzatilgan savol: print((x > 12) and (y != 5) or (x < y)).
+Hisob: (10>12)=F. F and (anything)=F. (10<5)=F. F or F = F. Javob False.
+🔴 HAKAM: Belgilangan javob noto'g'ri. Ifoda natijasi 'True' bo'lishi kerak, lekin 'B' (False) belgilangan.
+
+═══════ id=625 [single] Y3 | Dasturlash asoslari: Scratch va LOGO muhiti ═══════
+S: Scratch sahna markazida (koordinatalari 0; 0) turgan spraytga quyidagi skript berildi: '100 qadam yurish', so'ng '90 gradus chapga burilish' va yana '100 qadam yurish'. Bu amallardan so'ng spraytning koordinatasi qanday bo'ladi?
+   A) X: 100, Y: 100
+   B) X: 0, Y: 100  <== BELGILANGAN
+   C) X: -100, Y: 100
+   D) X: 100, Y: 0
+Izoh: Boshlang'ich nuqta (0,0). '100 qadam yurish' bilan X o'qi bo'yicha o'ngga boriladi (100,0). '90 gradus chapga burilish' shimolga (yuqoriga) yo'naltiradi. Yana '100 qadam yurish' esa Y o'qi bo'yicha yuqoriga ko'tariladi. Natija (0, 100) bo'ladi.
+🔴 HAKAM: Hisoblash xato: (0,0) nuqtadan 100 qadam o'ngga (X=100) va keyin 100 qadam yuqoriga (Y=100) harakatlanganda natija (100, 100) bo'ladi, belgilangan javob (0, 100) noto'g'ri.
+
+═══════ id=638 [single] Y3 | 1.8. Dasturlash: Python va JavaScript tillari ═══════
+S: Python dasturida berilgan kodning natijasini aniqlang: s = 0; for i in [5, 10, 15, 20, 25]: if i % 3 == 0: s += i print(s)
+   A) 45  <== BELGILANGAN
+   B) 30
+   C) 15
+   D) 60
+Izoh: Ro'yxatdagi [15, 30] sonlarini tekshiramiz. 15 soni 3 ga qoldiqsiz bo'linadi (s=15), 30 soni ham 3 ga qoldiqsiz bo'linadi (s=45). Umumiy yig'indi 45 ga teng.
+🔴 HAKAM: Savolda berilgan kod bo'yicha ro'yxatda 30 soni yo'q, faqat 15 soni 3 ga bo'linadi. Natija 15 bo'lishi kerak, lekin javob 45 deb belgilangan.
+
+═══════ id=647 [single] Y2 | 1.9. Ma'lumotlar bazasi asoslari va MS Access ═══════
+S: O'qituvchi 'Kutubxona' ma'lumotlar bazasida kitoblar jadvalini yaratmoqda. 'Nashr yili' maydoni uchun arifmetik amallar (masalan, necha yil bo'lganini hisoblash) bajarish rejada bo'lsa, qaysi ma'lumot turini tanlash maqbul?
+   A) Sana/Time (Date/Time)
+   B) Matn (Text)  <== BELGILANGAN
+   C) Raqam (Number)
+   D) Mantiqiy (Yes/No)
+Izoh: Raqam turini tanlash orqali yil ustida arifmetik amallarni (ayirish, qo'shish) bajarish mumkin bo'ladi, masalan, kitob necha yoshda ekanini hisoblash uchun. Matn turida hisob-kitoblar amalga oshirilmaydi.
+🔴 HAKAM: Belgilangan javob (B) noto'g'ri. Arifmetik amallar bajarish uchun 'Raqam' (C) turini tanlash maqbul. Izoh ham shuni tasdiqlaydi.
+
+═══════ id=648 [single] Y2 | 1.9. Ma'lumotlar bazasi asoslari va MS Access ═══════
+S: Ma'lumotlar bazasida 'Viloyatlar' (bosh jadval) va 'Tumanlar' (bog'langan jadval) nomli ikkita jadval mavjud. 'Tumanlar' jadvalida har bir tuman qaysi viloyatga tegishli ekanligini ko'rsatuvchi maydon qanday nomlanadi?
+   A) Bosh kalit (Primary Key)  <== BELGILANGAN
+   B) Indeks kaliti (Index Key)
+   C) Tashqi kalit (Foreign Key)
+   D) Umumiy kalit (Common Key)
+Izoh: Bog'langan jadvalda bosh jadvalning bosh kalitiga ishora qiluvchi maydon tashqi kalit deb ataladi va u jadvallar o'rtasidagi bog'lanishni ta'minlaydi.
+🔴 HAKAM: Belgilangan javob (A) noto'g'ri. Bog'langan jadvalda bosh jadvalga ishora qiluvchi maydon 'Tashqi kalit' (C) deb ataladi. Izoh ham shuni tasdiqlaydi.
+
+═══════ id=649 [single] Y2 | 1.9. Ma'lumotlar bazasi asoslari va MS Access ═══════
+S: O'quvchi MS Access dasturida 'Natijalar' jadvalidagi ballar ustunidagi eng yuqori ballni aniqlash so'rovini tuzmoqchi. U qaysi yig'indiy (aggregate) funksiyadan foydalanishi kerak?
+   A) Count
+   B) Sum  <== BELGILANGAN
+   C) Max
+   D) Avg
+Izoh: Berilgan qiymatlar orasidan eng kattasini topish uchun Max funksiyasi ishlatiladi. Sum yig'indini, Avg o'rta arifmetikni, Count esa qatorlar sonini hisoblaydi.
+🔴 HAKAM: Belgilangan javob (B) noto'g'ri. Eng yuqori ballni topish uchun 'Max' (C) funksiyasi ishlatiladi. Izoh ham shuni tasdiqlaydi.
+
+═══════ id=650 [single] Y2 | 1.9. Ma'lumotlar bazasi asoslari va MS Access ═══════
+S: Darslikda keltirilishicha, bir nechta jadvallarni bog'lashning asosiy maqsadi nima ekanligini izohlang.
+   A) Jadvallarning tuzilishini murakkablashtirish
+   B) Ma'lumotlarni tashqi foydalanuvchilardan himoya qilish
+   C) Ma'lumotlar bazasining hajmini ko'paytirish  <== BELGILANGAN
+   D) Turli jadvallardagi kerakli ma'lumotlarni bir joyga jamlash
+Izoh: Jadvallarni bog'lash orqali ularning o'zaro aloqador ma'lumotlarini bitta so'rov yoki jadval ko'rinishida olish (bir joyga jamlash) mumkin bo'ladi.
+🔴 HAKAM: Belgilangan javob (C) noto'g'ri. Jadvallarni bog'lash asosiy maqsadi turli jadvallardagi ma'lumotlarni bir joyga jamlash (D)dir. Izoh ham shuni tasdiqlaydi.
+
+═══════ id=656 [sequence] Y3 | 1.9. Ma'lumotlar bazasi asoslari va MS Access ═══════
+S: Relatsion ma'lumotlar bazasida ma'lumotlarni kompleks qayta ishlash uchun kerakli amallarning mantiqiy ketma-ketligini belgilang:
+1. Bog'langan jadvallar asosida so'rov yaratish
+2. Jadval tuzilishini belgilash va yaratish
+3. Jadvallarni umumiy maydonlar (kalitlar) orqali bog'lash
+4. Jadvallarga ma'lumotlarni kiritish
+   A) 1, 2, 3, 4
+   B) 2, 3, 4, 1
+   C) 4, 2, 3, 1
+   D) 2, 4, 3, 1  <== BELGILANGAN
+Izoh: Avval jadvallar yaratiladi (2), keyin ularga ma'lumot kiritiladi (4), so'ng jadvallar o'rtasida bog'lanish o'rnatiladi (3) va nihoyat, bog'langan ma'lumotlar asosida so'rovlar tuziladi (1).
+🔴 HAKAM: Ma'lumotlar bazasida jadvallar o'rtasidagi bog'lanish (o'tish kalitlari) odatda ma'lumotlar kiritilishidan oldin tuzilma bosqichida belgilanadi. To'g'ri mantiqiy ketma-ketlik: 2 (Tuzilma), 3 (Bog'lanish), 4 (Ma'lumot kiritish), 1 (So'rov), ya'ni B variant.
+
+═══════ id=661 [single] Y2 | Grafika va veb-texnologiyalar ═══════
+S: HTML hujjatida styles.css fayliga bog'langan ikkita div elementi ketma-ket kelmoqda. Birinchi div uchun `margin-bottom: 20px;`, ikkinchi div uchun `margin-top: 30px;` xossalari berilgan. Ushbu ikki element o'rtasidagi masofa necha pikselga teng bo'ladi?
+   A) 10 px
+   B) 20 px
+   C) 50 px  <== BELGILANGAN
+   D) 30 px
+Izoh: Standart test mantiqiga ko'ra (margin collapsing hisobga olinmaganda yoki oddiy qo'shish modelida), ketma-ket kelgan elementlarning tashqi chekkalari (margin) qo'shiladi: 20px + 30px = 50px.
+🔴 HAKAM: CSS standartlariga ko'ra, qo'shni blok elementlarning vertikal marginlari 'margin collapsing' (birlashish) qoidasiga binoan qo'shilmaydi, balki ularning kattasi (30px) qabul qilinadi. 20px+30px=50px degani xato.
+
+═══════ id=746 [single] Y2 | 1.6. Algoritmlash ═══════
+S: Python tilida yozilgan kod bo'yicha ekranga qanday qiymat chiqadi?
+x = 10
+if x % 3 == 1:
+    print(x // 3)
+else:
+    print(x % 3)
+   A) 1  <== BELGILANGAN
+   B) 3
+   C) 10
+   D) 0
+Izoh: x=10. 10 % 3 = 1 (qoldiq 1). Shart (1 == 1) to'g'ri, shuning uchun 'if' bloki ishlaydi: 10 // 3 = 3 (butun qism). Ekranga 3 chiqadi. Tuzatma: Savolda // va % chalkashib ketgan bo'lishi mumkin, kodi qayta tekshiramiz. Agar x=10, x%3==1 True. print(x//3) -> 3. Javob 3 bo'lishi kerak. Variantlarni A=3 qilib qo'yaman.
+🔴 HAKAM: Belgilangan javob A (1) noto'g'ri. Kod natijasi 3 bo'ladi (10 // 3 = 3), to'g'ri javob B.
+
+═══════ id=789 [single] Y1 | 1.11. Kompyuter tarmoqlari va internet ═══════
+S: Brauzer manzillar satriga kiritilgan quyidagi URL manzilning https://maktab.uz/index.php qismi qaysi komponentni bildiradi?
+   A) Provayder manzili
+   B) Server nomi (domen)
+   C) Fayl yo'li
+   D) Bog'lanish protokoli  <== BELGILANGAN
+Izoh: URL (Uniform Resource Locator) tuzilishida birinchi qism protokolni (http, https, ftp) bildiradi. maktab.uz — bu domen nomi, /index.php — fayl yo'li. Savolda so'ralgan qism butun boshli protokol va domen ko'rinishida berilgan bo'lsa ham, variantlar tahlil qilinganda, eng asosiy identifikator — bu protokol (https) qismi hisoblanadi. Variantlarda aniq protokol nomi berilgan.
+🔴 HAKAM: Savolda ko'rsatilgan `https://maktab.uz/index.php` qismi to'liq URL manzil bo'lib, u protokol, domen va yo'ldan iborat. Javobda esa bu butun qism 'Bog'lanish protokoli' deb belgilangan, bu faktik xatodir.
+
+═══════ id=793 [single] Y2 | 1.11. Kompyuter tarmoqlari va internet ═══════
+S: Berilgan 10.0.0.1 IP manzili qaysi klassga mansub?
+   A) B klassi
+   B) D klassi
+   C) A klassi  <== BELGILANGAN
+   D) C klassi
+Izoh: IP manzil birinchi oktetining qiymatiga qarab klasslanadi. A klass uchun 1-126 oraliq, B klass 128-191, C klass 192-223. 10 soni 1-126 oraliqda joylashganligi sababli, bu A klass manzilidir.
+🔴 HAKAM: Belgilangan javob noto'g'ri. 10.0.0.1 manzili A klassga (1-126 oraliq) kiradi, C klassga emas. Izohda ham A klass ekanligi aytilgan.
+
+═══════ id=811 [matching] Y2 | 1.1. Axborot va raqamli savodxonlik asoslari ═══════
+S: Axborot o'lchov birliklarini ularning mos qiymatlari bilan bog'lang:
+1. 1 gigabit
+2. 1 kilobayt
+3. 1 bod
+A. 1024 kilobit
+B. 1024 bayt
+C. 1 bit/sekund
+   A) 1-A, 2-B, 3-C  <== BELGILANGAN
+   B) 1-A, 2-C, 3-B
+   C) 1-C, 2-A, 3-B
+   D) 1-B, 2-A, 3-C
+Izoh: 1 gigabit = 1024 megabit (A). 1 kilobayt = 1024 bayt (B). 1 bod = 1 bit/sekund (C). Demak, 1-A, 2-B, 3-C mosligi to'g'ri.
+🔴 HAKAM: 1 gigabit 1024 kilobitga teng emas (1024 megabitga teng). Variant A'dagi qiymat xato ko'rsatilgan.
+
+═══════ id=924 [sequence] Y3 | 1.1. Axborot va raqamli savodxonlik asoslari ═══════
+S: "Megabayt/sekund" da berilgan fayl hajmini "bod/sekund" (bit/sekund) ga aylantirish uchun hisoblash tartibini to'g'ri belgilang:
+1. Hajmni baytdan kilobaytga aylantirish
+2. Hajmni kilobaytdan megabaytga aylantirish
+3. Natijani 8 ga ko'paytirish (bitga o'tkazish)
+4. Vaqt (sekund) ga bo'lish
+   A) 1, 2, 3, 4
+   B) 2, 3, 1, 4
+   C) 3, 2, 1, 4
+   D) 2, 1, 3, 4  <== BELGILANGAN
+Izoh: Avval asosiy birlikka (MB) chiqamiz, keyin kichik birliklarga (KB -> Bayt) tushamiz, so'ng bitga (x8) o'tkazamiz va oxirida vaqtga bo'lamiz. Shu tartib 2,1,3,4 ga mos keladi.
+🔴 HAKAM: Savol katta birlikdan (MB) kichik birlikka (bit) o'tishni so'raydi, ammo berilgan amallar (1: Bayt->KB, 2: KB->MB) kichikdan kattaga o'tishni ko'rsatadi, shuning uchun yechim mantiqsiz.
+
+═══════ id=934 [single] Y2 | Kompyuter tizimlari va dasturiy muhit ═══════
+S: Foydalanuvchi mobil qurilmada ma'lumotlar fotosuratlar, musiqa, kontaktlar va o'yinlar bo'limlariga bo'lingan hamda Office dasturlari (Word, Excel) bilan ishlash imkoniyatiga ega bo'lgan tizimdan foydalanmoqda. Bu qaysi operatsion tizim?
+   A) Linux
+   B) iOS
+   C) Android
+   D) Windows Phone  <== BELGILANGAN
+Izoh: Darslikda Windows Phone tizimining aynan shu xususiyatlari (ma'lumotlarning bo'limlarga bo'linishi va Office dasturlari bilan ishlash qobiliyati) keltirilgan. Android va iOS boshqa kompaniyalar tomonidan ishlab chiqarilgan va boshqa interfeysga ega.
+🔴 HAKAM: Android va iOS operatsion tizimlari ham Office dasturlari bilan ishlashi va ma'lumotlarni shu tarzda tashkillashi mumkin, ya'ni bir nechta variant to'g'ri.
+
+═══════ id=938 [sequence] Y2 | Kompyuter tizimlari va dasturiy muhit ═══════
+S: Kompyuter ishga tushirilganda operatsion tizimning bajaradigan asosiy vazifalarini mantiqiy ketma-ketlikda joylashtiring:
+1. Foydalanuvchi va kompyuter o'rtasida muloqot o'rnatish
+2. Kompyuter qurilmalarini boshqarishni boshlash
+3. Tarmoqqa ulanishni tekshirish va moslashish
+4. Barcha tizim dasturlarini yuklash
+   A) 3, 4, 2, 1  <== BELGILANGAN
+   B) 1, 2, 3, 4
+   C) 4, 3, 2, 1
+   D) 2, 4, 1, 3
+Izoh: Avval tarmoqqa ulanish (3) va tizim yuklanadi (4), so'ng qurilmalar boshqariladi (2) va nihoyat foydalanuvchi bilan muloqot o'rnatiladi (1). Bu jarayon tizimning to'liq ishga tushish tartibini aks ettiradi.
+🔴 HAKAM: Tizim dasturlari yuklanishidan (4) oldin tarmoqqa ulanishni tekshirish (3) imkonsiz, ketma-ketlik mantiqiy xato.
+
+═══════ id=945 [single] Y1 | Amaliy ofis dasturlari: MS Word, MS Excel, MS PowerPoint ═══════
+S: Darslikda keltirilishicha, Microsoft Office ofis paketi ilk bor qaysi yilda va nechta asosiy ilovadan iborat bo'lgan holda yaratilgan?
+   A) 1998-yilda, 6 ta ilova
+   B) 1995-yilda, 5 ta ilova
+   C) 1990-yilda, 3 ta ilova
+   D) 1992-yilda, 4 ta ilova  <== BELGILANGAN
+Izoh: Manbada ko'rsatilishicha, Microsoft Office paketi 1992-yilda yaratilgan bo'lib, dastlab tarkibiga 4 ta ilova (Word, Excel, PowerPoint, Mail) kiritilgan.
+🔴 HAKAM: Microsoft Office paketi ilk bor 1989-yilda (Mac uchun) va 1990-yilda (Windows uchun) 3 ta ilova (Word, Excel, PowerPoint) tarkibida yaratilgan. 1992-yil Office 3.0 versiyasiga to'g'ri keladi, u 4 ta ilovani o'z ichiga olgan.
+
+═══════ id=996 [single] Y2 | 1.8. Dasturlash: Python va JavaScript tillari ═══════
+S: Python dasturida so'z = 'Informatika' o'zgaruvchisi berilgan. Quyidagi kodlardan qaysi biri ekranga 'k' harfini chiqaradi?
+   A) print(so'z(8))
+   B) print(so'z['k'])
+   C) print(so'z[6])
+   D) print(so'z[7])  <== BELGILANGAN
+Izoh: Python satrlari 0-indexlangan. 'I'(0), 'n'(1), 'f'(2), 'o'(3), 'r'(4), 'm'(5), 'a'(6), 't'(7). 'k' harfi 8-o'rinda, ya'ni indeksi 7 ga teng. Kvadrat qavs [] indekslash uchun ishlatiladi.
+🔴 HAKAM: 'Informatika' so'zida 'k' harfi 9-indeksda joylashgan (0-I, 1-n, 2-f, 3-o, 4-r, 5-m, 6-a, 7-t, 8-i, 9-k). 7-indeksda esa 't' harfi bor. Berilgan javob va izohda xato bor.
+
+═══════ id=1011 [sequence] Y3 | 1.9. Ma'lumotlar bazasi asoslari va MS Access ═══════
+S: Ikkita bog'langan jadval asosida ma'lumotlarni chiqaruvchi so'rovni (Query) yaratish uchun zarur bo'lgan amallarning mantiqiy ketma-ketligini belgilang:
+1. So'rovga jadvallarni qo'shish
+2. So'rovni ishga tushirish natijasini ko'rish
+3. Kerakli maydonlarni tanlash
+4. Bog'lanish oynasida jadvallar o'rtasida bog'lanish o'rnatish
+   A) 4, 3, 1, 2
+   B) 1, 4, 3, 2
+   C) 4, 1, 3, 2  <== BELGILANGAN
+   D) 1, 3, 4, 2
+Izoh: Avval jadvallar o'rtasida bog'lanish o'rnatiladi (4), keyin so'rov yaratilib, unga jadvallar qo'shiladi (1), so'ng kerakli maydonlar tanlanadi (3) va nihoyat so'rov ishga tushirilib natija ko'riladi (2).
+🔴 HAKAM: So'rov yaratish jarayonida avval jadvallar so'rovga qo'shiladi (1), keyin ular o'rtasida bog'lanish o'rnatiladi (4). To'g'ri ketma-ketlik: 1, 4, 3, 2 (B variant).
+
+═══════ id=1042 [single] Y1 | 1.1. Axborot va raqamli savodxonlik asoslari ═══════
+S: Darslikda keltirilgan ta'rifga ko'ra, informatika quyidagi jarayonlarning qaysi birini o'rgatuvchi fan sifatida belgilanmaydi?
+   A) Axborotni izlash va to'plash usullarini o'rgatadi  <== BELGILANGAN
+   B) Kompyuter uskunasini jismoniy ta'mirlash usullarini o'rgatadi
+   C) Axborotni saqlash va qayta ishlash usullarini o'rgatadi
+   D) Axborotni uzatish usullarini o'rgatadi
+Izoh: Darslikda informatika kompyuter va kommunikatsion texnologiyalar yordamida axborotni izlash, to'plash, saqlash, qayta ishlash va uzatish usullarini o'rgatuvchi fan deb ta'riflangan. Uskunani ta'mirlash texnika fanining yoki servis xizmatining vazifasi emas.
+🔴 HAKAM: Belgilangan javob noto'g'ri. Savol informatika o'rgatmaydigan jarayonni so'rayapti. Informatika ta'rifiga ko'ra axborotni izlash va to'plash (A variant) o'rgatiladi, ammo kompyuter uskunasini jismoniy ta'mirlash (B variant) o'rgatilmaydi. To'g'ri javob B bo'lishi kerak.
+
+═══════ id=1157 [single] Y2 | 1.6. Algoritmlash ═══════
+S: Python tilida quyidagi kod parchasi ijro etilganda ekranga qanday qiymat chiqadi?
+
+s = 0
+for i in range(2, 8, 3):
+    s = s + i
+print(s)
+   A) 12  <== BELGILANGAN
+   B) 6
+   C) 9
+   D) 15
+Izoh: range(1, 9, 3) ketma-ketligi 1, 4, 7 sonlarini o'z ichiga oladi (9 chegaradan tashqari). Dastur s=0 dan boshlab, sikl davomida bu sonlarni qo'shib boradi: 0+1=1, 1+4=5, 5+7=12. Natija 12 bo'ladi.
+🔴 HAKAM: Savoldagi kod (range(2, 8, 3)) natijasi 7 bo'lishi kerak, bu variantlar orasida yo'q. Izohda esa boshqa kod (range(1, 9, 3)) tahlil qilingan.
+
+═══════ id=1162 [single] Y2 | 1.6. Algoritmlash ═══════
+S: "Daraxt bo'yi 5 metr, har yili 20 sm o'sadi. Bo'yi 7 metrdan oshguncha necha yil o'tadi?" masalasi uchun quyidagi shartlardan qaysi biri siklni to'xtash sharti sifatida to'g'ri tanlanadi?
+   A) Bo'yi <= 7 bo'lguncha
+   B) Bo'yi != 7 bo'lguncha
+   C) Bo'yi >= 7 bo'lguncha  <== BELGILANGAN
+   D) Yil soni 20 dan kam bo'lguncha
+Izoh: Sikl maqsadi daraxt bo'yi 7 metrga yetguncha o'sish jarayonini simulyatsiya qilish. Shuning uchun sikl bo'yi 7 metrdan katta yoki teng bo'lguncha davom etishi kerak (>=). Shart bajarilganda (7 metrdan oshganda) sikl to'xtaydi.
+🔴 HAKAM: Izohda sikl davom etish sharti noto'g'ri tushuntirilgan ('bo'yi >= 7 bo'lguncha davom etadi' deyilgan, bu xato, chunki boshlang'ich qiymat 5). Shuningdek, '7 metrdan oshguncha' sharti uchun > 7 to'g'ri bo'lar edi, >= 7 esa yetguncha degan ma'noni beradi.
+
+═══════ id=1196 [single] Y2 | 1.10. Grafika va veb-texnologiyalar ═══════
+S: HTML jadvalida ikkita qatorni (row) gorizontal yo'nalishda birlashtirish (merge) uchun qaysi atribut ishlatiladi?
+   A) merge
+   B) rowspan
+   C) colspan  <== BELGILANGAN
+   D) cellpadding
+Izoh: `colspan` atributi ustunlarni (gorizontal birlashish), `rowspan` esa qatorlarni (vertikal birlashish) birlashtirish uchun ishlatiladi. `cellpadding` katak ichidagi bo'shliqni belgilaydi.
+🔴 HAKAM: Savolda 'qatorni (row) gorizontal yo'nalishda birlashtirish' so'ralgan, ammo `colspan` kataklarni gorizontal (ustunlar bo'ylab) birlashtirish uchun ishlatiladi. Qatorlarni vertikal birlashtirish `rowspan` bilan amalga oshiradi. Savol matnida terminologik ziddiyat bor.
+
+═══════ id=1239 [single] Y2 | Amaliy ofis dasturlari ═══════
+S: MS Excel dasturida A1 katakchasida 10 soni, B1 katakchasida esa 5 soni yozilgan. C1 katakchasiga =A1*$B$1 formulasi kiritildi va natija 50 chiqdi. Agar C1 katakchasidagi formulani nusxalab, C2 katakchasiga qo'yilsa (A2 katakchasida 20 soni bor) va B2 katakchasi bo'sh bo'lsa, C2 katakchasida qanday natija ko'rsatiladi?
+   A) 20
+   B) #VALUE!
+   C) 0  <== BELGILANGAN
+   D) 100
+Izoh: Formulada $B$1 absolyut manzil olinib, doimiy 5 sonini ko'rsatadi. B2 katakchasi bo'sh bo'lsa, Excel uni 0 deb qabul qiladi. Shunday qilib, C2 dagi hisob: A2(20) * B1(5) emas, balki nusxalanayotgan joydagi o'zgarishga qarab: A2(20) * 0 (bo'sh katakka o'rin bosgani uchun) = 0 bo'ladi. Agar B2 ham 5 bo'lganida 100 chiqardi, lekin bo'sh katakka ko'paytiruvchi sifatida nol ta'sir qiladi.
+🔴 HAKAM: Formulada $B$1 (absolyut manzil) ishlatilgani uchun, nusxalanganda B1 (5) ishlatiladi, B2 emas. Natija 20*5=100 bo'lishi kerak, 0 emas.
+
+═══════ id=1250 [combo] Y1 | Amaliy ofis dasturlari ═══════
+S: MS Word dasturining ishchi oynasidagi elementlar va ular funksiyalari ko'rsatilgan. To'g'ri mosliklarni aniqlang:
+a) Holat paneli (Status Bar)
+b) Gorizontal chiziq (Ruler)
+d) Aylantirish tugmasi (Scroll button)
+e) Tezkor kirish paneli (Quick Access)
+   A) b, d
+   B) b, e
+   C) a, d
+   D) a, e  <== BELGILANGAN
+Izoh: Holat paneli (Status bar) pastki qismda sahifa raqami va tili kabi ma'lumotlarni ko'rsatadi. Tezkor kirish paneli yuqorida qutish, qaytarish va saqlash tugmalarini o'z ichiga oladi. Gorizontal chiziq (Ruler) chap va o'ng chekalamalarni o'lchaydi, Scroll button esa sahifalarni aylantirish uchun xizmat qiladi (ular funksional jihatdan Status bar/Quick Access ga qaraganda boshqacharoq tasniflanadi, ammo savol o'zagida funksiyalari to'liq berilmagan, shuning uchun eng mos juftlik a va e).
+🔴 HAKAM: Savol matnida moslikni aniqlash uchun zarur bo'lgan funksiyalar ro'yxati keltirilmagan (faqat elementlar nomi berilgan). Izohda ham 'saval o'zagida funksiyalari to'liq berilmagan' qayd etilgan, shuning uchun javobni tekshirib bo'lmaydi.
+
+═══════ id=1274 [single] Y2 | Dasturlash asoslari: Scratch va LOGO muhiti ═══════
+S: O'quvchi Scratch'da to'g'ri burchakli uchburchak chizmoqchi bo'ldi. Har bir tomoni 50 qadam bo'lgan uchburchakni chizish uchun 'takrorlash' (repeat) bloki ichiga qanday ketma-ketlikni joylashtirishi to'g'ri bo'ladi?
+   A) 50 qadam yur, 360 daraja buril
+   B) 50 qadam yur, 90 daraja buril
+   C) 50 qadam yur, 180 daraja buril
+   D) 50 qadam yur, 120 daraja buril  <== BELGILANGAN
+Izoh: To'g'ri burchakli uchburchakning tashqi burchagi 120 darajani tashkil qiladi (360 / 3 = 120). Shuning uchun har bir qadamdan keyin 120 daraja burilish kerak. 90 daraja kvadrat, 180 esa to'g'ri chiziq uchun ishlatiladi.
+🔴 HAKAM: Savol matnida 'to'g'ri burchakli uchburchak' deyilgan, ammo berilgan to'g'ri javob (120 daraja) va izoh 'teng tomonli uchburchak' chizish algoritmidir. To'g'ri burchakli uchburchak chizish uchun 120 daraja burilish noto'g'ri.
+
+═══════ id=1276 [single] Y2 | Dasturlash asoslari: Scratch va LOGO muhiti ═══════
+S: LOGO muhitida 'T' harfini chizish uchun quyidagi buyruqlarning qaysi biri to'g'ri ketma-ketlikni ifodalaydi? (FD — oldinga, RT — o'nga buril, BK — orqaga, PU — qalamni ko'tar).
+   A) FD 40, RT 90, FD 25, RT 90, FD 50
+   B) FD 50, RT 90, FD 25, LT 90, FD 50
+   C) FD 50, RT 90, BK 25, PU, FD 50, PD, RT 90, FD 40  <== BELGILANGAN
+   D) BK 50, RT 90, FD 25, RT 90, FD 40
+Izoh: 'T' harfi vertikel va gorizontal chiziqlardan iborat. Avval vertikal qismning yuqori qismi chiziladi (FD 50), keyin pastga tushiladi (RT 90, BK 25, qalam ko'tarilib, FD 50 bilan pastga tushish uchun). Keyin gorizontal qism chiziladi (PD, RT 90, FD 40). Variant A mantiqiy ketma-ketlikni beradi.
+🔴 HAKAM: Izohda Variant A to'g'ri ekanligi aytilgan, ammo belgilangan javob C. Shuningdek, C variantidagi ketma-ketlik 'T' harfini to'g'ri chizmaydi (qalamni ko'tarib joy o'zgartirgani sababli).
+
+═══════ id=1281 [single] Y2 | Dasturlash asoslari: Scratch va LOGO muhiti ═══════
+S: O'quvchi LOGO tilida katta 'L' harfini chizmoqchi. U quyidagi algoritmdan foydalandi: avval vertikal pastga 80 qadam, keyin gorizontal o'ngga 40 qadam. Chizish tugagach, toshbaqani boshlang'ich holatiga qaytarish uchun qanday buyruqlar ketma-ketligi to'g'ri keladi?
+   A) PU, BK 40, RT 90, FD 80, RT 180, PD  <== BELGILANGAN
+   B) PU, BK 80, RT 90, FD 40, PD
+   C) HOME, RT 180, PU
+   D) BK 40, LT 90, BK 80, PU
+Izoh: L harfi chizilgandan so'ng, toshbaqa pastki o'ng burchakda turadi. Qaytish uchun: avval qalamni ko'tarish (PU), gorizontalni orqaga qaytarish (BK 40), 90 daraja o'ngga burilib (RT 90), vertikalni orqaga qaytarish (FD 80), yuzini o'zgartirish (RT 180), qalamni tushirish (PD). Variant A eng aniq qaytish marshrutini beradi.
+🔴 HAKAM: Belgilangan javob (A) noto'g'ri. Toshbaqa pastki o'ng burchakda o'ngga qarab turgan bo'lsa, BK 40 chapga olib boradi, RT 90 pastga buriladi, FD 80 esa pastga davom etadi (boshlang'ich nuqtadan uzoqlashadi). To'g'ri marshrut: BK 40, LT 90, FD 80 bo'lishi kerak.
+
+═══════ id=1320 [combo] Y2 | 1.12. Axborot xavfsizligi va raqamli xizmatlar ═══════
+S: Axborot xavfsizligi bo'yicha tavsiya etilgan choratadbirlardan to'g'rilarni aniqlang:
+a) Internet orqali faqat ishonchli manbalardan axborot olish
+b) Xavfli dasturlarni maxsus o'rganish uchun o'rnatish
+d) Ma'lumotlarni uzatishda kriptografiya usullaridan foydalanish
+e) Shaxsiy kompyuterni hech qachon himoyasiz qoldirish
+   A) a, e
+   B) b, e
+   C) b, d
+   D) a, d  <== BELGILANGAN
+Izoh: Ishonchli manbalardan olish (a) va kriptografiyadan foydalanish (d) himoya choralaridir. Xavfli dasturlarni o'rnatish (b) va himoyasiz qoldirish (e) xavfsizlikni buzadi.
+🔴 HAKAM: Variantdagi 'e' bandi ("Shaxsiy kompyuterni hech qachon himoyasiz qoldirish") to'g'ri tavsiya hisoblanadi. Shunday qilib, A (a, e) va D (a, d) variantlari ikkalasi ham to'g'ri javoblardir.
+
+═══════ id=1358 [combo] Y2 | 1.5. Sanoq sistemalari ═══════
+S: Quyidagi o'tkazishlarni to'g'ri bajargan mulohazalarni aniqlang:
+a) $101_2 = 5_{10}$
+b) $10_8 = 8_{10}$
+d) $A_{16} = 10_{10}$
+e) $11_2 = 3_{10}$
+   A) d, e
+   B) b, d
+   C) a, d, e  <== BELGILANGAN
+   D) a, b
+Izoh: $101_2 = 4+1=5$ to'g'ri. $10_8 = 8$ to'g'ri, lekin variantda yo'q. $A_{16} = 10$ to'g'ri. $11_2 = 3$ to'g'ri. Shunday qilib, a, d, e to'g'ri mulohazalar.
+🔴 HAKAM: b) $10_8 = 8_{10}$ ham to'g'ri ekanligi sababli, B (b, d) va D (a, b) variantlari ham to'g'ri javob bo'lishi mumkin (bir nechta variant teng darajada to'g'ri).
+
+═══════ id=1381 [combo] Y2 | Dasturlash asoslari: Scratch va LOGO muhiti ═══════
+S: Scratch muhitidagi bloklar va ular vazifalari mosligi to'g'ri bo'lgan juftliklarni aniqlang:
+a) O'zgaruvchilar (Variables)
+b) Harakat (Motion)
+d) Boshqaruv (Control)
+e) Kiyimlar (Looks)
+   A) a, d  <== BELGILANGAN
+   B) a, e
+   C) b, d
+   D) b, e
+Izoh: O'zgaruvchilar ma'lumot saqlash uchun, Boshqaruv bloki esa dastur oqimini (shart, takrorlash) boshqarish uchun ishlatiladi. Harakat bloki koordinata bo'yicha siljishni, Kiyimlar esa ko'rinishni o'zgartirishni ta'minlaydi.
+🔴 HAKAM: Savol matnida moslashtirish (matching) uchun kerak bo'lgan ta'riflar ro'yxati berilmagan, shuning sababli javobni aniqlashtirib bo'lmaydi.
+
+═══════ id=1419 [single] Y2 | 1.11. Kompyuter tarmoqlari va internet ═══════
+S: Foydalanuvchi Internetda 'Informatika darsliklari' haqida ma'lumot izlash uchun maxusi serverlardan foydalanmoqchi. Quyidagi domen nomlaridan qaysisi qidiruv tizimi serveriga tegishli?
+   A) mail.ru
+   B) rambler.ru  <== BELGILANGAN
+   C) google.com (manbada keltirilmagan variant o'rniga manbaga mos variant tanlandi)
+   D) bk.ru
+Izoh: Manbada keltirilgan `rambler.ru`, `yahoo.com` va `aport.ru` qidiruv tizimlariga misol sifatida keltirilgan. Shuning uchun `rambler.ru` to'g'ri javobdir.
+🔴 HAKAM: Google.com ham qidiruv tizimi hisoblanadi, shuning uchun B va C variantlari teng darajada to'g'ri.
+
+═══════ id=1459 [combo] Y2 | 1.4. Mantiqiy mulohazalar va modellar ═══════
+S: Mantiqiy amallar haqidagi quyidagi mulohazalardan to'g'rilarni aniqlang.
+a) Konyunksiya natijasi 1 bo'lishi uchun barcha operandlar 1 bo'lishi kerak
+b) Dizyunksiya natijasi 0 bo'lishi uchun operandlarning barchasi 0 bo'lishi kerak
+d) Implikatsiya natijasi faqat 1->1 holatida 1 bo'ladi
+e) Inversiya amali operand qiymatini o'zgartirib yuboradi
+   A) a, d
+   B) b, e
+   C) a, b  <== BELGILANGAN
+   D) d, e
+Izoh: Konyunksiya (VA) faqat hammasi 1 bo'lganda 1 bo'ladi (a to'g'ri). Dizyunksiya (YOKI) faqat hammasi 0 bo'lganda 0 bo'ladi (b to'g'ri). Implikatsiya (agar-u holda) 1->0 holatidan tashqari hamma holatda 1 bo'ladi, shu sababli d noto'g'ri. Inversiya qiymatni teskariga o'zgartiradi, bu uning asosiy vazifasi, shuning uchun e ham to'g'ri bo'lishi mumkin, lekin variantlarni tahlil qilganda a va b eng aniq xususiyatlardir.
+🔴 HAKAM: Bir nechta variant teng darajada to'g'ri: 'b' va 'e' mulohazalari ham to'g'ri, shuning uchun B variant ham to'g'ri javob hisoblanadi.
+
+═══════ id=1471 [sequence] Y3 | Sanoq sistemalari ═══════
+S: $25$ sonini o'nlik sanoq sistemasidan ikkilik sanoq sistemasiga o'tkazish algoritmining bosqichlarini to'g'ri ketma-ketlikda tartiblang:
+1. Hosil bo'lgan qoldiqlarni pastki yuqori qilib yozish.
+2. Sonni 2 ga bo'lib, bo'linma va qoldiqni olish.
+3. Bo'linma 0 bo'lguncha bo'lish jarayonini davom ettirish.
+4. Hosil bo'lgan qoldiqlarni yuqoridan pastga qatorlash.
+   A) 1, 2, 3, 4
+   B) 3, 2, 1, 4
+   C) 2, 3, 4, 1  <== BELGILANGAN
+   D) 2, 1, 3, 4
+Izoh: Avval sonni bo'lib qoldiq olinadi (2), jarayon tugaguncha davom etiladi (3). Keyin qoldiqlar teskari tartibda (oxirgi qoldiq eng yuqori) yoziladi (4). 1-variant noto'g'ri tartibni anglatadi.
+🔴 HAKAM: Savol matni va izoh o'rtasida ziddiyat bor. 4-bosqich matnida 'yuqoridan pastga' (to'g'ri tartib) deyilgan, izohda esa 'teskari tartibda' (pastki yuqori) tushuntirilgan. Shuningdek, belgilangan javob (2,3,4,1) mantiqsiz, chunki qoldiqlarni 'yuqoridan pastga' qatorlash (4) natijani olishdan oldin amalga oshiriladi, bu algoritmga zid.
+
+═══════ id=1510 [combo] Y3 | 1.8. Dasturlash: Python va JavaScript tillari ═══════
+S: Python va JavaScript dasturlash tillari haqidagi quyidagi mulohazalardan to'g'rilarni tanlang:
+a) Pythonda kod blokini belgilash uchun figurali qavslar {} ishlatiladi.
+b) JavaScriptda kod blokini ajratish uchun o'zgaruvchanligi bo'yichasiz bo'shliq tab ishlatilmaydi.
+d) Python va JavaScriptning ikkalasida ham funksiya tushunchasi mavjud.
+e) JavaScript asosan veb-sahifalarni interfaol qilish uchun ishlatiladi.
+   A) b, e
+   B) a, b
+   C) a, d
+   D) d, e  <== BELGILANGAN
+Izoh: Pythonda bloklar { } bilan emas, balki otstip (indentation) bilan belgilanadi, shuning uchun a noto'g'ri. JavaScriptda bloklar { } bilan yopiladi, b noto'g'ri. Ikkala tilda ham funksiya bor (d to'g'ri) va JS veb uchun mo'ljallangan (e to'g'ri).
+🔴 HAKAM: 'b' varianti matniga ko'ra ("ishlatilmaydi") to'g'ri bayon hisoblanadi (JSda bloklar otstip bilan emas, {} bilan ajraladi), shuning uchun A (b, e) javob varianti ham to'g'ri. D (d, e) varianti ham to'g'ri. Bir nechta to'g'ri javoblar mavjud.
+
+═══════ id=1556 [sequence] Y3 | 1.2. Kompyuter tizimlari va dasturiy muhit ═══════
+S: Matndagi mazmunga ko'ra, quyidagi hodisalarni mantiqiy ketma-ketlikda joylashtiring:
+1. Operatsion tizim yangilanadi
+2. Yangi texnologiyalar paydo bo'ladi
+3. Yangi qurilmalar va dasturlar yaratiladi
+   A) 3, 2, 1  <== BELGILANGAN
+   B) 1, 3, 2
+   C) 1, 2, 3
+   D) 2, 3, 1
+Izoh: Matnda yangilanish yangi texnologiyalar (qurilmalar va dasturlar) yaratilishiga bog'liq deyilgan. Demak, avval qurilmalar va dasturlar yaratiladi (3), so'ng yangi texnologiya sifatida paydo bo'ladi (2), natijada OT yangilanadi (1).
+🔴 HAKAM: Mantiqiy ketma-ketlik noto'g'ri belgilangan. Odatda avval yangi texnologiya paydo bo'ladi (2), keyin unga asoslangan qurilmalar va dasturlar yaratiladi (3), so'ng operatsion tizim ularni qo'llab-quvvatlash uchun yangilanadi (1). To'g'ri javob D (2, 3, 1) bo'lishi kerak.
+
+═══════ id=1602 [matching] Y1 | 1.7. Dasturlash asoslari: Scratch va LOGO muhiti ═══════
+S: Scratchdagi blok to'plamlarini ularning ranglari bilan moslashtiring:
+1. Harakat (Motion)
+2. Hodisalar (Events)
+3. O'zgaruvchilar (Variables)
+4. Qalam (Pen)
+A. To'q sariq rang
+B. Ko'k rang
+C. Moviy rang
+D. Qizil-jigarrang rang
+   A) 1-B, 2-C, 3-A, 4-D
+   B) 1-A, 2-B, 3-C, 4-D
+   C) 1-C, 2-D, 3-A, 4-B
+   D) 1-B, 2-A, 3-D, 4-C  <== BELGILANGAN
+Izoh: Scratch interfeysida Harakat bloklari ko'k (B), Hodisalar to'q sariq (A), O'zgaruvchilar qizil-jigarrang (D), Qalam bloklari esa moviy (C) rangda bo'ladi.
+🔴 HAKAM: Scratchda Qalam (Pen) bloklari to'q yashil, Hodisalar (Events) bloklari esa sariq rangda bo'ladi. Izohdagi mosliklar noto'g'ri.
+
+═══════ id=1636 [combo] Y3 | 1.11. Kompyuter tarmoqlari va internet ═══════
+S: Elektron pochta manzilining tuzilishiga oid to'g'ri mulohazalarni aniqlang.
+a) manzil '@' belgisiz bo'lishi mumkin
+b) manzil 'foydalanuvchi_nom@domen' ko'rinishida bo'ladi
+d) domen qismi nuqta bilan tugashi shart emas
+e) '@' belgisidan oldin foydalanuvchi nomi keladi
+   A) b, d
+   B) a, e
+   C) a, d
+   D) b, e  <== BELGILANGAN
+Izoh: Elektron pochta manzili standart tuzilishga ega: foydalanuvchi nomi, '@' belgisi va domen nomi (masalan, info@rambler.ru). '@' belgisiz manzil to'g'ri emas.
+🔴 HAKAM: Bir nechta variant teng darajada to'g'ri (A variantidagi 'b' va 'd' ham to'g'ri, D variantidagi 'b' va 'e' ham to'g'ri)
+
+═══════ id=1668 [single] Y2 | 1.2. Kompyuter tizimlari va dasturiy muhit ═══════
+S: "Darslar" nomli papkada 3 ta fayl va bitta "Mavzular" nomli ichki papka mavjud. "Mavzular" papkasining o'zida 2 ta fayl bor. "Darslar" papkasini butunlay tashlaganda, qancha fayl o'chiriladi?
+   A) 2 ta fayl
+   B) 5 ta fayl
+   C) 6 ta fayl  <== BELGILANGAN
+   D) 3 ta fayl
+Izoh: Papkani o'chirganda uning ichidagi barcha fayllar va ichki papkalar (ularning ichidagi fayllar bilan birga) o'chiriladi. Asosiy papkada 3 ta, ichki papkada 2 ta fayl bo'lib, jami 5 ta fayl va 1 ta ichki papka (jami 6 ta obyekt) o'chiriladi. Savol fayl sonini so'rayapti, agar obyekt deb soralsa 6 bo'ladi, lekin odatda fayllar deyilganda ichki papkadagi fayllar ham hisoblanadi. Jami fayllar: 3 + 2 = 5. Variantlarda 5 yo'q, demak, obyektlar (fayl+papka) yoki hisoblash tartibi farqli bo'lishi mumkin. Keling, variantlarni qayta ko'rib chiqaylik. Asosiy papka: 3 fayl. Ichki papka: 2 fayl. Jami fayllar 5 ta. Lekin kompyuter tizimida papka ham alohida obyekt sifatida hisoblanadi. Agar savol nechta obyekt o'chiriladi desa edi, 6 bo'ladi. Variant A: 6 ta. Bu eng to'liq javob (paplarni ham fayl sifatida hisoblaganda). Informatikada papkalar ham maxsus fayl sifatida qaraladi.
+🔴 HAKAM: Savol fayllar sonini so'rayapti (3+2=5). Variant B orqali '5 ta fayl' javobi berilgan, ammo belgilangan javob noto'g'ri tarzda 'C' (6 ta) qilib belgilangan. Izohda variantlarda 5 yo'q deyilgan, ammo aslida B variantida 5 ta mavjud.
+
+═══════ id=1719 [single] Y2 | 1.6. Algoritmlash ═══════
+S: Blok-sxemada ma'lumotlarni kiritish yoki natijani chiqarish amalini ifodalovchi geometrik shakl qaysi biri?
+   A) Parallelogram
+   B) Romb
+   C) To'rtburchak  <== BELGILANGAN
+   D) Oval
+Izoh: Darslikda keltirilganidek, parallelogram shakli ma'lumotlarni kiritish (input) yoki natijani chiqarish (output) uchun ishlatiladi. To'rtburchak hisoblash yoki amallarni bajarishni, romb shartni tekshirishni, oval esa boshlash va tugashni bildiradi.
+🔴 HAKAM: Belgilangan javob noto'g'ri. Ma'lumot kiritish/chiqarish uchun parallelogram (A) ishlatiladi, izoh ham shuni tasdiqlaydi.
+
+═══════ id=1720 [single] Y2 | 1.6. Algoritmlash ═══════
+S: Dasturchi tuzgan blok-sxema asosida kodni Python tilida yozmoqda. U qaysi bosqichda faoliyat olib bormoqda?
+   A) Dasturlash tiliga o'tkazish bosqichida
+   B) Algoritmni tuzish bosqichida
+   C) Matematik usulni tanlash bosqichida  <== BELGILANGAN
+   D) Dasturni ishga tushirish va tahlil qilish bosqichida
+Izoh: 4-bosqichda algoritmdagi ko'rsatmalarning ketma-ketligi tayyor holatga keltirilgandan so'ng, uning asosida kompyuter bajara oladigan tilga (Python) o'tkaziladi. Buning oldingi bosqichlari model va algoritmnii tuzish, keyingisi esa kodni kiritish va tekshirishdir.
+🔴 HAKAM: Belgilangan javob noto'g'ri. Blok-sxema asosida kod yozish 'Dasturlash tiliga o'tkazish' (A) bosqichiga tegishli.
+
+═══════ id=1725 [single] Y3 | 1.6. Algoritmlash ═══════
+S: Ikkita o'quvchi bir xil masalani (1 dan 100 gacha bo'lgan juft sonlar yig'indisini) yechish uchun algoritm tuzishdi. Birinchisi har bir sonni tekshirib, qo'shadi. Ikkinchisi esa arifmetik progressiya formulasidan foydalanadi. Qaysi o'quvchining algoritmi samaraliroq?
+   A) Ikkinchisiniki, chunki u tezroq hisoblaydi.
+   B) Ikkalasi bir xil, chunki natija teng.
+   C) Birinchisiniki, chunki u tushunarliroq.  <== BELGILANGAN
+   D) Birinchisiniki, chunki u kompyuter uchun qulayroq.
+Izoh: Masalani hal qilishda eng maqbul algoritm — eng kam resurs (vaqt, xotira) sarflashni talab qiladigan algoritmdir. Formula yordamida hisoblash (ikkinchi o'quvchi) sikl yordamida hisoblashdan (birinchi o'quvchi) ancha tezroq bajariladi.
+🔴 HAKAM: Belgilangan javob (C) izohga zid. Izohda ikkinchi o'quvchi (formula) tezroq ekanligi to'g'ri aytilgan, demak, samaraliroq algoritm ikkinchisiniki (A javobi).
+
+═══════ id=1727 [single] Y1 | 1.6. Algoritmlash ═══════
+S: Muayyan muammoni hal qilish uchun kerakli amallarning ketma-ketligini belgilab beruvchi aniq qoidalar majmuasi nima deyiladi?
+   A) Model
+   B) Protokol
+   C) Algoritm
+   D) Dastur  <== BELGILANGAN
+Izoh: Algoritm — muammoni hal qilish uchun bajariladigan amallarning ketma-ketligini belgilovchi aniq qoidalar to'plami. Dastur — algoritmning kompyuter tushunadigan tilidagi yozilishi. Model — obyektning soddalashtirilgan tasviri.
+🔴 HAKAM: Berilgan ta'rif 'Algoritm'ga mos keladi, belgilangan javob 'Dastur' noto'g'ri.
+
+═══════ id=1728 [single] Y2 | 1.6. Algoritmlash ═══════
+S: Dasturchi dastur yozib tugatgach, uni turli test ma'lumotlar bilan ishga tushirdi va natijani kutgan natija bilan solishtirdi. Bu qaysi bosqich amali?
+   A) Matematik usulni tanlash
+   B) Algoritmni tuzish  <== BELGILANGAN
+   C) Dasturni tuzatish (Debugging)
+   D) Dasturlash tilini o'rganish
+Izoh: Darslikda 6-bosqichda aytilishicha, dastur ishga tushiriladi, natijasi tahlil qilinadi va to'g'riligi testlar yordamida tekshiriladi. Agar xato bo'lsa, bartaraf etiladi. Bu jarayon dasturni tekshirish va tuzatish (debugging) bosqichidir.
+🔴 HAKAM: Tavsif 'Dasturni tuzatish (Debugging)' jarayoniga mos keladi, belgilangan javob 'Algoritmni tuzish' noto'g'ri.
+
+═══════ id=1732 [single] Y3 | 1.7. Dasturlash asoslari: Scratch va LOGO muhiti ═══════
+S: Scratch dasturida quyidagi skript ishga tushirildi: 1. 'Ko'rinmas holatda' (Hide); 2. '2 soniya kutish'; 3. 'Salom!' de; 4. 'Ko'rinmas holatda tugadi' (Show). Dastur ishlashi davomida foydalanuvchi nima ko'radi?
+   A) Faqat paydo bo'ladigan va yo'qolayotgan ob'ektni, matn pufakchasisiz.
+   B) 'Salom!' degan pufakchani, lekin ob'ekt hech qachon ekranda paydo bo'lmaydi.
+   C) 2 soniya bo'sh ekrandan so'ng, hech kim ko'rinmasa ham 'Salom!' degan pufakchani va undan keyin paydo bo'lgan ob'ekt.  <== BELGILANGAN
+   D) Darhol 'Salom!' degan pufakchani, so'ng 2 soniya kutgach, paydo bo'ladigan ob'ektni.
+Izoh: Dastlab ob'ekt yashiriladi. 2 soniya kutgach, 'de' (Say) bloki ishlaydi (ob'ekt yashirin bo'lsa ham uning yonidagi matn pufakchasi ko'rinadi), so'ng 'Ko'rsat' (Show) bloki ob'ektni ekranga chiqaradi.
+🔴 HAKAM: Scratch dasturida yashirin (hidden) holatdagi ob'ekt 'de' (say) bloki orqali matn pufakchasi chiqarmaydi. Izoh va belgilangan javob dasturning haqiqiy ishlash mantiqiga zid.
+
+═══════ id=1768 [combo] Y2 | 1.11. Kompyuter tarmoqlari va internet ═══════
+S: Kompyuter xavfsizligi bo'yicha quyidagi mulohazalardan qaysilari to'g'ri?
+a) Trojan foydali dastur qiyofasida yashirinadi
+b) Cherv (worm) tarmoq orqali o'zini avtomat tarqatadi
+d) Replikator o'z nusxalarini ko'paytiradi
+e) Viruslar faqat fayllarga shikast yetkazmaydi
+   A) a, e
+   B) a, b, d  <== BELGILANGAN
+   C) a, b, e
+   D) b, d, e
+Izoh: Troyan yashirin dastur, cherv tarqaluvchi, replikator ko'paytiruvchi virus hisoblanadi. Viruslar asosiy vazifasi fayllarga yoki tizimga shikast yetkazishdir, shu sabab 'e' noto'g'ri.
+🔴 HAKAM: 'e' varianti ("Viruslar faqat fayllarga shikast yetkazmaydi") grammatik jihatdan to'g'ri (ya'ni ular boshqa joylarga ham shikast yetkazadi), lekin izohda noto'g'ri deb tushuntirilgan. Javob kaliti xato.
+
+═══════ id=1782 [single] Y2 | 1.1. Axborot va raqamli savodxonlik asoslari ═══════
+S: Qattiq diskda 3 ta fayl mavjud: 1-fayl 1,5 GB, 2-fayl 512 MB, 3-fayl 2048 KB. Ushbu fayllarning umumiy hajmini gigabaytda (GB) hisoblang.
+   A) 3,5 GB
+   B) 2,5 GB  <== BELGILANGAN
+   C) 2 GB
+   D) 4 GB
+Izoh: Hisoblash: Barcha birliklarni eng kattasiga (GB) o'tkazamiz. 1,5 GB = 1,5 GB. 512 MB = 0,5 GB (chunki 1024 MB = 1 GB). 2048 KB = 2 MB = 0,002 GB ≈ 0 GB. Yig'indi: 1,5 + 0,5 = 2 GB. Agar aniq hisoblasak: 1.5 + 0.5 + 0.002 = 2.002 GB, ya'ni taxminan 2 GB. Variantlarda 2,5 GB (agar 512MB=0.5 va 2048KB=2MB=0.002 deb hisoblasa, eng mosi), lekin eng mantiqiy yig'indi 1.5 + 0.5 = 2.0 GB. Variantlarda 2 GB bor.
+🔴 HAKAM: Hisoblash natijasi 2 GB (1,5+0,5+0,002) bo'lishi kerak, belgilangan javob 2,5 GB noto'g'ri.
+
+═══════ id=1814 [single] Y2 | Amaliy ofis dasturlari ═══════
+S: A1 katakchasida 5, B1 katakchasida 10 soni bor. C1 katakchasiga =A1*$B$1 formulasi kiritildi va C1 dan D2 ga nusxa ko'chirildi. D2 katakchasidagi formula qanday bo'ladi (agar A2=6, B2=20 bo'lsa)?
+   A) =A2*$B$1  <== BELGILANGAN
+   B) =B2*$B$2
+   C) =A2*$B$2
+   D) =A1*$B$1
+Izoh: Nusxa ko'chirishda A1 nisbiy manzil bo'lgani uchun A2 ga aylanadi. $B$1 esa aralashmanzil (mutlaq) bo'lgani uchun o'zgarmaydi, shu sababli $B$1 qoladi.
+🔴 HAKAM: C1 dan D2 ga nusxalashda A1 nisbiy manzili B2 ga o'zgaradi (ustun ham o'zgaradi), A2 ga emas. Javob C1->C2 ga mos keladi.
+
+═══════ id=1825 [single] Y3 | Sanoq sistemalari ═══════
+S: Quyidagi sonlarning barchasi o'nlik sanoq sistemasidagi qiymatlari bo'yicha taqqoslanganda, eng katta qiymatga ega bo'lgan sonni toping.
+   A) 256_8
+   B) 301_{10}
+   C) 1101_2  <== BELGILANGAN
+   D) 11A_{16}
+Izoh: Barcha sonlarni o'nlik sistemaaga o'tkazamiz: 1101_2 = 13; 256_8 = 174; 301_10 = 301; 11A_16 = 282. 301 soni qolganlaridan katta.
+🔴 HAKAM: Belgilangan javob (C) noto'g'ri. Hisob-kitoblarga ko'ra eng katta qiymat 301_{10} (B variant) bo'lishi kerak, izoh ham shuni tasdiqlaydi, ammo javob xato belgilangan.
+
+═══════ id=1851 [single] Y3 | Dasturlash asoslari: Scratch va LOGO muhiti ═══════
+S: Sprayt (-100; 100) nuqtada joylashgan va 90 gradus yo'nalishda (o'ngga) qarab turibdi. 'X o'qi bo'yicha 100 ga borish' (go to x: 100) bloki bajarilsa, sprayt qanday harakat qiladi?
+   A) Pastga tushib, keyin o'nga buriladi
+   B) Faqat o'ngga to'g'ri chiziqli bo'ylab 100 qadam yuradi
+   C) O'ngga qiyshay holda 200 qadam masofani bosib o'tadi  <== BELGILANGAN
+   D) O'z o'rnida qolib, faqat yo'nalishini o'zgartiradi
+Izoh: Spraytning boshlang'ich X si -100. U 100 ga borishi kerak, ya'ni gorizontal o'q bo'yicha 200 birlik siljiydi. Y o'qi 100 da qoladi. Shuning uchun u o'ngga qiyshiq (diagonal) harakat qilib, yangi nuqtaga yetib boradi (koordinatalari keskin o'zgaradi).
+🔴 HAKAM: Sprayt gorizontal o'q bo'yicha to'g'ri chiziqli harakat qiladi (Y o'zgarmas), diagonal (qiyshiq) emas. Javob va izohda geometrik xato bor.
+
+═══════ id=1853 [single] Y2 | Dasturlash asoslari: Scratch va LOGO muhiti ═══════
+S: LOGO muhitida to'g'ri burchakli kvadrat chizish uchun quyidagi buyruqlarning qaysi biri to'liq va to'g'ri ketma-ketlikni ifodalaydi?
+   A) REPEAT 5 [FD 50 RT 72]
+   B) REPEAT 4 [FD 50 LT 90]
+   C) REPEAT 4 [FD 50 RT 90]  <== BELGILANGAN
+   D) REPEAT 3 [FD 50 RT 120]
+Izoh: Kvadrat 4 tomondan iborat, har bir burchagi 90 gradus. Shuning uchun 4 marta takrorlanib, har safar 50 qadam oldinga (FD) va 90 gradus o'nga (RT) burilish zarur. Variant B chapga buriladi, C va D boshqa shakllar.
+🔴 HAKAM: B (chapga burilish) va C (o'nga burilish) variantlari ham kvadrat chizadi, ikkalasi ham to'g'ri javob. Izoh matnida ziddiyat mavjud.
+
+═══════ id=1933 [matching] Y2 | 1.4. Mantiqiy mulohazalar va modellar ═══════
+S: Mantiqiy amallarni ularning "natija rost bo'lish sharti" bilan moslashtiring:
+1. Konyunksiya (A va B)
+2. Dizyunksiya (A yoki B)
+3. Implikatsiya (Agar A u holda B)
+4. Ekvivalensiya (A ekvivalent B)
+A. Faqat A yolg'on, B rost bo'lganda yolg'on
+B. Ikkala operand ham rost bo'lishi kerak
+C. Ikkalasi ham bir xil qiymatga ega bo'lishi kerak
+D. Kamida bitta operand rost bo'lishi kerak
+   A) 1-D, 2-B, 3-C, 4-A
+   B) 1-B, 2-D, 3-A, 4-C  <== BELGILANGAN
+   C) 1-B, 2-A, 3-D, 4-C
+   D) 1-A, 2-B, 3-D, 4-C
+Izoh: Konyunksiya faqat ikkalasi rost bo'lganda rost (B). Dizyunksiya kamida bittasi rost bo'lganda rost (D). Implikatsiya faqat birinchi rost, ikkinchi yolg'on bo'lganda yolg'on (A). Ekvivalensiya qiymatlar teng bo'lganda rost (C).
+🔴 HAKAM: Implikatsiya uchun A variantidagi ta'rif ('Faqat A yolg'on, B rost bo'lganda yolg'on') noto'g'ri. Implikatsiya faqat A rost, B yolg'on bo'lganda yolg'on bo'ladi.
+
+═══════ id=1939 [single] Y3 | 1.5. Sanoq sistemalari ═══════
+S: O'quvchi "23" soni ikkilik sanoq sistemasida 5 ga, o'nlik sistemasida esa yigirma uchga teng ekanligini kuzatdi. Ushbu holat qaysi xossasiga ishora qiladi?
+   A) Sanoq sistemasining pozitsiyaliligi  <== BELGILANGAN
+   B) Raqamlarning umumiyligi
+   C) Arifmetik amallarning o'zgarishi
+   D) Sonlarning juftligi
+Izoh: Bir xil raqamlar (2 va 3) turgan o'rniga va sistema asosiga ko'ra turli qiymatga ega bo'lishi — bu pozitsiyali sanoq sistemasining asosiy xossasidir.
+🔴 HAKAM: Ikkilik sanoq sistemasida faqat 0 va 1 raqamlari ishlatiladi, '23' soni ikkilik sistemada mavjud emas.
+
+═══════ id=1942 [single] Y2 | 1.5. Sanoq sistemalari ═══════
+S: O'nlik sanoq sistemasida 3056 sonidagi 0 raqami qanday miqdorni ifodalaydi?
+   A) Yuzlarda (0 ta yuz)
+   B) Minglarda (0 ta ming)
+   C) O'nlarda (0 ta o'n)  <== BELGILANGAN
+   D) Hech narsani (nol)
+Izoh: 3056 sonida 3-minglik, 0-o'nlik, 5-yuzlik, 6-birlik. Nol raqami o'z o'rnida (o'nlik razryad) turib, 0 ta o'nni bildiradi. Darslikdagi 1991 misolidagi o'rniga bog'liqlik xossasiga asosan.
+🔴 HAKAM: 3056 sonida 0 raqami yuzliklar o'rinda turadi (A variant to'g'ri), o'nliklar o'rinda emas. Izohda 3506 soni tahlil qilingan.
+
+═══════ id=1966 [matching] Y2 | Dasturlash asoslari: Scratch va LOGO muhiti ═══════
+S: Scratchdagi bloklarning rangi va nomini ularning vazifasi bilan moslashtiring:
+1. Moviy rangli bloklar
+2. Sariq rangli bloklar
+3. Binafsha rangli bloklar
+4. To'q sariq rangli bloklar
+A. Hodisalar (boshlash, tugma bosish)
+B. Boshqaruv (takrorlash, shartlar)
+C. Harakat (qadam yurish, burilish)
+D. O'zgaruvchilar (ro'yxatlar, sonlar)
+   A) 1-B, 2-D, 3-A, 4-C
+   B) 1-D, 2-B, 3-C, 4-A
+   C) 1-A, 2-C, 3-D, 4-B
+   D) 1-C, 2-A, 3-B, 4-D  <== BELGILANGAN
+Izoh: Moviy bloklar harakatni (1-C), sariq bloklar hodisalarni (2-A), binafsha bloklar boshqaruvni (3-B), to'q sariq bloklar esa o'zgaruvchilarni (4-D) boshqaradi.
+🔴 HAKAM: Scratchda Boshqaruv (Control) bloklari To'q sariq (Orange), Binafsha (Purple) bloklar esa Ko'rinish (Looks) bloklaridir. Savolda ranglar va blok funksiyalari noto'g'ri moslashtirilgan.
+
+═══════ id=1977 [single] Y2 | 1.8. Dasturlash: Python va JavaScript tillari ═══════
+S: Python da `soz = 'Dasturlash'` bo‘lsa, `print(soz[2:5])` ifodasi qanday natijani beradi?
+   A) tur
+   B) ast
+   C) str
+   D) stru  <== BELGILANGAN
+Izoh: Indekslash 0 dan boshlanadi. 2-indeks 's', 3 't', 4 'r', 5 'u'. Slicing [2:5] 2-chi indeksdan boshlab, 5-chi indeksgacha (5 kirmaydi) oladi: s, t, r. Natija 'stru'. (Dasturlash: D(0)a(1)s(2)t(3)u(4)r(5)...).
+🔴 HAKAM: [2:5] kesmasi 'stu' ni beradi (2-s, 3-t, 4-u), variantlar orasida to'g'ri javob yo'q. Izohda indekslar (4-r, 5-u) noto'g'ri ko'rsatilgan.
+
+═══════ id=2023 [sequence] Y3 | Axborot xavfsizligi va raqamli xizmatlar ═══════
+S: Internet orqali muhim ma'lumotlarni uzatishdan oldin amalga oshiriladigan xavfsizlik choralarini mantiqiy ketma-ketlikda joylashtiring:
+1. Ma'lumotlarni uzatishda kriptografiya (kodlash) usullaridan foydalanish
+2. Internet orqali faqat ishonchli manbalardan axborot olish
+3. Antivirus dasturlaridan foydalanib tizimni tekshirish
+4. Olingan axborotning asl nusxasiga mosligini tekshirish
+   A) 3, 1, 2, 4
+   B) 2, 4, 1, 3  <== BELGILANGAN
+   C) 2, 1, 4, 3
+   D) 3, 2, 4, 1
+Izoh: Avval manba ishonchli bo'lishi (2) va ma'lumot tekshirilishi (4) kerak. Keyin uzatish jarayonida xavfsizlik uchun shifrlash (1) qo'llaniladi. Tizimni tekshirish (3) esa uzatishdan oldin yoki jarayon davomida doimiy bo'lishi mumkin, ammo mazmunan ma'lumot olish va uzatishga tayyorgarlik ketma-ketligida 2-4-1-1 mantiqiy ketma-ketlikni hosil qiladi, bu yerda variantlar orasida mantiqiy oqish: Manba -> Tekshirish -> Shifrlash (uzatish). Uchinchi qadam (antivirus) umumiy himoya, lekin berilgan variantlar ichida A (2,4,1,3) eng mantiqiy tartibni aks ettiradi: ma'lumotni olish va tayyorlash, so'ng himoya vositalarini joriy etish.
+🔴 HAKAM: Savol ma'lumotlarni uzatishdan *oldin* amalga oshiriladigan choralar tartibini so'raydi. Mantiqan: Avval tizimni antivirus bilan tekshirish (3), manbani ishonchli ekanini tasdiqlash (2), ma'lumot mosligini tekshirish (4) va oxirgi bosqichda shifrlash (1) kerak. To'g'ri javob D (3,2,4,1). Belgilangan B javobi (2,4,1,3) shifrlashdan keyin antivirus qilishni ko'rsatadi, bu mantiqsiz. Shuningdek, izohda ham variantlar belgisi bilan ketma-ketlik ziddiyatli.
+
+═══════ id=2029 [sequence] Y3 | 1.1. Axborot va raqamli savodxonlik asoslari ═══════
+S: O'zbekistonda informatika fanining shakllanishi va rivojlanishiga oid voqealarni tarixiy tartibda joylashtiring:
+1. O'zbekistonda informatika fanining kirib kelishi
+2. V.Q. Qobulovning 'Kibernetika' ilmiy ishlab chiqarish birlashmasiga rahbarlik qilishi
+3. Kompyuter ilmining jahon jamoatchiligini qamrab olishi (70—80-yillar)
+4. Ishlab chiqarish korxonalari va jamiyatda kompyuter texnologiyalarini joriy etilishi
+   A) 1, 3, 2, 4
+   B) 3, 2, 1, 4
+   C) 1, 2, 3, 4
+   D) 3, 1, 2, 4  <== BELGILANGAN
+Izoh: Avval kompyuter ilmi jahon miqyosida rivojlandi (3), so'ng O'zbekistonga kirdi (1), keyin V.Q. Qobulov faoliyati boshlandi (2), oxirida esa ishlab chiqarishda joriy etildi (4).
+🔴 HAKAM: Tarixiy xato: V.Q. Qobulov faoliyati (1950-60 yillar) jahon miqyosida kompyuter ilmining rivojlanish davri (70-80 yillar) va O'zbekistonga kirib kelishidan oldin bo'lgan. Voqealar tartibi noto'g'ri tuzilgan.
+
+═══════ id=2033 [single] Y2 | 1.2. Kompyuter tizimlari va dasturiy muhit ═══════
+S: Foydalanuvchi mobil telefonida Word, Excel va PowerPoint kabi Office dasturlari bilan ishlash qobiliyatiga ega bo'lgan tizimdan foydalanmoqda. Ma'lumotlar fotosuratlar, musiqa va bo'limlarga bo'lingan bu tizim qaysi operating system turi hisoblanadi?
+   A) Windows Phone  <== BELGILANGAN
+   B) iOS
+   C) Android
+   D) Linux
+Izoh: Matnda Windows Phone tizimining barcha ma'lumotlar bo'limlarga bo'linishi va Office dasturlari bilan ishlash qobiliyatiga egaligi aytilgan. Android va iOS boshqa kompaniyalar tomonidan ishlab chiqarilgan tizimlar.
+🔴 HAKAM: Savolda keltirilgan xususiyatlar (Office dasturlari bilan ishlash, ma'lumotlarning bo'limlarga bo'linishi) Android va iOS tizimlariga ham xos, shuning uchun javob noaniq.
+
+═══════ id=2061 [combo] Y2 | 1.5. Sanoq sistemalari ═══════
+S: Quyidagi sanoq sistemalari uchun keltirilgan raqamlar to'g'ri keladiganini aniqlang:
+a) 101(2)
+b) 1A(8)
+d) 77(16)
+e) 10(10)
+   A) a, e  <== BELGILANGAN
+   B) a, d
+   C) b, d
+   D) b, e
+Izoh: 101(2) — ikkilik uchun to'g'ri (faqat 0,1). 10(10) — o'nlik uchun to'g'ri. 1A(8) — noto'g'ri, chunki sakkizlikda A harfi (10) bo'lmaydi. 77(16) — noto'g'ri, chunki o'n oltilikda 7 dan keyin raqam yoki harf bo'lishi kerak, ammo 77 o'zi to'g'ri raqam, lekin variantda b,d deb aytilgan, ular to'g'ri deb baholangan variantda bo'lishi kerak edi. Keling, qayta tekshiramiz: 77(16) to'g'ri son. 10(10) to'g'ri. 101(2) to'g'ri. 1A(8) noto'g'ri. Demak, a, d, e to'g'ri. Lekin 3 ta to'g'ri javob bo'lishi mumkin emas degan qoida yo'q, ammo variantlarda juftlik berilgan. A varianti a, e ni o'z ichiga oladi. C varianti a, d ni o'z ichiga oladi (ikkalasi ham to'g'ri). Demak, C ham to'g'ri bo'lishi mumkin. Keling, shartni o'zgartiramiz: d) 7G(16). Endi noto'g'ri. Demak faqat a va e to'g'ri.
+🔴 HAKAM: 77(16) soni ham to'g'ri (o'n oltilikda 7 raqami qatnashishi mumkin), shuning uchun to'g'ri javoblar a, d, e. Variantlar orasida A (a, e) va B (a, d) ham to'g'ri juftliklarni o'z ichiga oladi, javob aniq emas.
+
+═══════ id=2119 [combo] Y2 | Kompyuter tarmoqlari va internet ═══════
+S: Quyidagi dasturlar va xizmatlarni ularning funksional belgilariga ko'ra tasniflang:
+a) Google Chrome
+b) Yandex
+d) Firefox
+e) Rambler
+   A) b, d
+   B) b, e
+   C) a, d  <== BELGILANGAN
+   D) a, b
+Izoh: Google Chrome va Firefox veb-sahifalarni ko'rsatish uchun mo'ljallangan veb-brauzerlardir — shu sabab a va d to'g'ri. Yandex va Rambler asosan qidiruv tizimlari (portallar) hisoblanadi, ular brauzer sifatida ishlatilmaydi (lekin brauzer orqali ishlaydi).
+🔴 HAKAM: Savolda qaysi funksional guruhni tanlash kerakligi (masalan, brauzerlar yoki qidiruv tizimlari) aniq ko'rsatilmagan. Yandex va Rambler ham bir guruhni (qidiruv tizimlari) tashkil qiladi, shuning uchun B variant ham to'g'ri bo'lishi mumkin.
+
+═══════ id=2152 [single] Y1 | 1.3. Amaliy ofis dasturlari: MS Word, MS Excel, MS PowerPoint ═══════
+S: Microsoft Office ofis paketi qachon yaratilgan va dastlabki versiyasida nechta ilova bo'lgan?
+   A) 1990-yilda yaratilgan, 5 ta ilova
+   B) 1995-yilda yaratilgan, 10 ta ilova
+   C) 1985-yilda yaratilgan, 3 ta ilova
+   D) 1992-yilda yaratilgan, 4 ta ilova  <== BELGILANGAN
+Izoh: Manbada keltirilishicha, bu ofis paketi 1992-yilda yaratilgan bo'lib, dastlab tarkibiga faqat 4 ta ilova (Word, Excel, PowerPoint va Mail) kiritilgan.
+🔴 HAKAM: Faktik xato: Microsoft Office dastlabki versiyasi (Office 1.0) 1990-yilda (Windows uchun) chiqarilgan va tarkibiga 3 ta ilova (Word, Excel, PowerPoint) kirgan. 1992-yil va 4 ta ilova (Mail qo'shilgan) Office 3.0 versiyasiga tegishli.
+
+═══════ id=2179 [single] Y3 | Sanoq sistemalari ═══════
+S: Agar $X = 101_2$ va $Y = 5_8$ bo'lsa, $X + Y$ yig'indisini ikkilik sanoq sistemasida ifodalang.
+   A) 10010_2
+   B) 1110_2  <== BELGILANGAN
+   C) 1101_2
+   D) 1010_2
+Izoh: Avval barcha sonlarni o'nlikka o'tkazamiz: $X = 101_2 = 4+1=5_{10}$. $Y = 5_8 = 5_{10}$. Yig'indi: $5+5=10_{10}$. Endi $10_{10}$ ni ikkilikka o'tkazamiz: $10 / 2 = 5$ (0), $5/2 = 2$ (1), $2/2=1$ (0), $1/2=0$ (1). Qoldiqlarni pastdan yuqoriga: $1010_2$. Xato variantlarni hisoblab ko'ramiz: $1110_2 = 14_{10}$; $1010_2 = 10_{10}$ (to'g'ri).
+🔴 HAKAM: Belgilangan javob (B) noto'g'ri, to'g'ri javob (D): $5+5=10_{10}=1010_2$
+
+═══════ id=2275 [single] Y2 | 1.4. Mantiqiy mulohazalar va modellar ═══════
+S: "Suhbat davom etishi uchun mikrofon o'chiriq bo'lmasligi kerak va kamera yoniq bo'lishi shart" sharti mantiqiy ifodada qanday yoziladi (M=mikrofon, K=kamera)?
+   A) M v K
+   B) ¬M v ¬K
+   C) M & ¬K
+   D) ¬M & K  <== BELGILANGAN
+Izoh: "Mikrofon o'chiriq bo'lmasligi" M ning inkorini (¬M) talab qiladi. "Kamera yoniq" esa K ni. Ikkala shart ham bir vaqtda bajarilishi kerak, ya'ni ular orasida "va" (konyunksiya, &) bog'lovchisi bo'ladi. Natija: ¬M & K.
+🔴 HAKAM: O'zgaruvchi talqini xato. 'M=mikrofon' bo'lsa, 'mikrofon o'chiriq bo'lmasligi' (mikrofon yoniq) sharti M ga to'g'ri keladi. To'g'ri formula 'M & K' bo'lishi kerak, ammo variantlar orasida yo'q. Belgilangan javob (¬M & K) M 'mikrofon o'chiriq' degan noto'g'ri taxminga asoslangan.
+
+═══════ id=2337 [single] Y1 | 1.10. Grafika va veb-texnologiyalar ═══════
+S: Paint.NET dasturida bajarilgan amallar tarixini ko'rish, ba'zi amallarga qaytish va ularni boshqarish mumkin bo'lgan oynacha qanday nomlanadi?
+   A) Tarix
+   B) Asboblar paneli
+   C) Jurnal  <== BELGILANGAN
+   D) Qatlamlar
+Izoh: Darslikda berilishicha, amallar tarixini kuzatuvchi va boshqaruvchi oynacha 'Jurnal' deb ataladi. Qatlamlar (Layers) paneli qatlamlar bilan ishlash uchun xizmat qiladi.
+🔴 HAKAM: Paint.NET dasturida amallar tarixi oynasi 'History' (Tarix) deb ataladi, 'Jurnal' noto'g'ri terminologiya.
+
+═══════ id=2345 [combo] Y2 | 1.11. Kompyuter tarmoqlari va internet ═══════
+S: Elektron pochta manzilining tuzilishiga oid to'g'ri mulohazalarni toping:
+a) '@' belgisi pochtta qabul qiluvchi server nomidan oldin keladi
+b) manzilda bo'shliq (space) bo'lishi mumkin
+d) domen bo'lagi nuqta bilan tugashi shart
+e) 'user name' qismida faqat harflar ishlatiladi
+   A) b, e
+   B) d, e
+   C) a, d  <== BELGILANGAN
+   D) a, b
+Izoh: Elektron pochta manzili `foydalanuvchi@server.domen` ko'rinishida bo'ladi. '@' belgisi foydalanuvchi va server orasida turadi (a to'g'ri). Domen bo'lagi nuqta bilan tugaydi (d to'g'ri). Bo'shliq bo'lishi mumkin emas va foydalanuvchi nomida raqam, nuqta va belgilar ham bo'lishi mumkin.
+🔴 HAKAM: 'd' variantidagi 'domen bo'lagi nuqta bilan tugashi shart' degan mulohaza faktik noto'g'ri, chunki elektron pochta manzillari odatda nuqta bilan tugamaydi.
+
+═══════ id=2378 [single] Y1 | 1.3. Amaliy ofis dasturlari: MS Word, MS Excel, MS PowerPoint ═══════
+S: Microsoft Office ofis paketi dastlabki marta qachon yaratilgan va qaysi yilda dastlabki versiyasi foydalanuvchilarga taqdim etilgan?
+   A) 1990-yilda
+   B) 1995-yilda
+   C) 1992-yilda  <== BELGILANGAN
+   D) 1985-yilda
+Izoh: Manbada keltirilishicha, Microsoft Office ofis paketi 1992-yilda yaratilgan. Dastlabki to'plamga 4 ta ilova kiritilgan.
+🔴 HAKAM: Microsoft Office paketining Windows uchun birinchi versiyasi 1990-yilda (Mac uchun 1989-yilda) chiqarilgan. 1992-yilda Office 3.0 (Office 92) chiqarilgan bo'lib, u dastlabki versiya emas.
+
+═══════ id=2461 [sequence] Y2 | 1.12. Axborot xavfsizligi va raqamli xizmatlar ═══════
+S: Fred Koenni ta'riflagan virusning ishlash jarayonini to'g'ri ketma-ketlikda joylashtiring:
+1. Tizim fayllarini buzish va ma'lumotlarni o'chirish
+2. Dasturiy vositani noqonuniy nusxa olish jarayoni
+3. Virus dasturining ishga tushishi
+   A) 2, 3, 1  <== BELGILANGAN
+   B) 1, 2, 3
+   C) 2, 1, 3
+   D) 3, 2, 1
+Izoh: Darslikda virus dasturiy vositalardan noqonuniy nusxa olish vaqtida (2) ishga tushadi (3), so'ng muhim ma'lumotlarni o'chiradi va sistema fayllarini buzadi (1). Shu sabab 2-3-1 tartibi to'g'ri.
+🔴 HAKAM: Fred Cohen ta'rifiga ko'ra virus dasturi avval ishga tushishi (3), keyin nusxa olishi (2) va oxirida zarar yetkazishi (1) kerak. Belgilangan A javobi (2, 3, 1) mantiqiy xatolikni o'z ichiga oladi, to'g'ri javob D (3, 2, 1).
+
+═══════ id=2495 [single] Y2 | Mantiqiy mulohazalar va modellar ═══════
+S: Internet do'konida 'Elektron kitob yoki Audio kitob' filteri ishga tushirildi. Quyidagi mahsulotlardan qaysi biri bu qidiruv shartiga (mantiqiy qo'shish amaliga) ko'ra javob beradi?
+   A) Hech qanday kitob emas
+   B) Elektron kitob
+   C) Qog'ozli kitob va Audio kitob
+   D) Qog'ozli kitob  <== BELGILANGAN
+Izoh: Dizyunksiya (yoki) amalida shartlardan kamida bittasi rost bo'lsa, natija rost bo'ladi. 'Elektron kitob' variantida birinchi shart rost, demak, butun ifoda rost.
+🔴 HAKAM: Belgilangan javob (D) noto'g'ri. 'Elektron kitob yoki Audio kitob' sharti 'Elektron kitob' (B varianti) uchun to'g'ri keladi (True OR False = True). Izohda ham B varianti to'g'ri deb tushuntirilgan, ammo javob noto'g'ri belgilangan.
+
+═══════ id=2510 [matching] Y2 | Sanoq sistemalari ═══════
+S: O'nlik sanoq sistemasidagi sonlarni mos keladigan sanoq sistemasidagi ko'rinishi bilan moslashtiring:
+1. 10
+2. 8
+3. 16
+4. 2
+A. 1000_2
+B. 10_8
+C. 10_16
+D. 1010_2
+   A) 1-D, 2-A, 3-C, 4-A  <== BELGILANGAN
+   B) 1-D, 2-A, 3-B, 4-C
+   C) 1-A, 2-B, 3-C, 4-D
+   D) 1-D, 2-B, 3-C, 4-A
+Izoh: 10 (o'nlik) = 1010_2 (D) va 10_16 (C). 8 (o'nlik) = 1000_2 (A) va 10_8 (B). 2 (o'nlik) = 10_2 (A). Shunday qilib, 1-D, 2-A, 3-C, 4-A mos keladi.
+🔴 HAKAM: 4-band (2 soni) A variant (1000_2) bilan moslashtirilgan, bu noto'g'ri (2!=8). Savol matni va izoh o'rtasida ziddiyat bor (A variant 1000_2 yoki 10_2?).
+
+═══════ id=2511 [single] Y2 | Sanoq sistemalari ═══════
+S: 1A_9 soni o'nlik sanoq sistemasida qanday qiymatga ega?
+   A) 30
+   B) 26  <== BELGILANGAN
+   C) 27
+   D) 25
+Izoh: 1A_16 sonini o'nlikka o'tkazamiz: 1 * 16^1 + A(10) * 16^0 = 16 + 10 = 26.
+🔴 HAKAM: Savol matnida 9 sanoq sistemasi ko'rsatilgan, izoh va hisoblash esa 16 sanoq sistemasiga nisbatan bajarilgan. Bundan tashqari, 9 sanoq sistemasida 'A' (10) raqami mavjud bo'la olmaydi.
+
+═══════ id=2526 [combo] Y3 | 1.7. Dasturlash asoslari: Scratch va LOGO muhiti ═══════
+S: Quyidagi Scratch skripti haqidagi mulohazalarni tahlil qiling (Skript: Repeat 4 [move 100 steps; turn 90 degrees]):
+a) Natijada to'g'ri to'rtburchak shakli hosil bo'ladi.
+b) Skript tugagandan so'ng sprayt boshlang'ich nuqtaga qaytadi.
+d) Har bir iteratsiyada sprayt 90 daraja buriladi.
+e) Skript ishlashi uchun 'Pen down' blok majburiy emas.
+   A) a, b, d
+   B) a, d, e  <== BELGILANGAN
+   C) a, b, e
+   D) b, d, e
+Izoh: Berilgan skript 4 marta 100 qadam yurib, 90 graduso'nga buriladi, bu to'g'ri to'rtburchak hosil qiladi (a to'g'ri). Har siklda 90 graduso'nga buriladi (d to'g'ri). Agar qalam pastga tushirilmagan bo'lsa (pen down), shakl ko'rinmaydi, lekin algoritm (siljishlar) bajariladi, shuning uchun bu blok shart emas (e to'g'ri). Agar boshlang'ich yo'nalishi o'zgargan bo'lsa, boshlang'ich nuqtaga qaytmasligi mumkin (b noto'g'ri).
+🔴 HAKAM: b) bayonoti to'g'ri (sprayt har doim boshlang'ich nuqtaga qaytadi), lekin belgilangan B javobi uni o'z ichiga olmaydi. Izohda boshlang'ich yo'nalish o'zgarishi natijasida qaytmasligi haqida noto'g'ri fikr bildirilgan.
+
+═══════ id=2585 [single] Y2 | 1.1. Axborot va raqamli savodxonlik asoslari ═══════
+S: Foydalanuvchi 256 megabayt hajmli ma'lumotlarni 4 minut davomida tarmoq orqali yuklab oldi. Ma'lumotlar uzatish tezligi qanday qiymatda (megabit/sekund) bo'lgan?
+   A) 68,26 Mbit/sekund  <== BELGILANGAN
+   B) 8,53 Mbit/sekund
+   C) 34,13 Mbit/sekund
+   D) 1,07 Mbit/sekund
+Izoh: Avval hajmni bitga, vaqtni sekundga o'tkazamiz: 256 MB = 256 * 1024 * 1024 * 8 bit; 4 min = 240 sekund. Tezlik = Hajm / Vaqt. Hisob: (256 * 8 * 1024 * 1024) / 240 = 68,26 * 1024 * 1024 bit/sekund. Demak, tezlik ~68,26 Mbit/sekundni tashkil qiladi.
+🔴 HAKAM: Belgilangan javob noto'g'ri. To'g'ri javob B (8,53 Mbit/sekund). Hisoblash: 256 MB = 2048 Mbit, 4 minut = 240 sekund. 2048 / 240 = 8,53 Mbit/sek. Izohdagi hisobda xato qilingan.
+
+═══════ id=2621 [single] Y2 | 1.4. Mantiqiy mulohazalar va modellar ═══════
+S: Foydalanuvchi tizimga kirishda 'parol123' so'zini kiritdi. Tizimda quyidagi shart bajariladi: 'Parol 8 ta belgidan uzun bo'lishi VA unda raqam BO'LISHI kerak'. Kiritilgan parol tizim tomonidan qabul qilinadimi?
+   A) Qabul qilinadi  <== BELGILANGAN
+   B) Faqat raqamlarni o'zgartirish kerak
+   C) Qabul qilinmaydi
+   D) Faqat uzunlikni o'zgartirish kerak
+Izoh: Shart ikkita talabni konyunksiya (VA) bilan bog'laydi. 1) Parol 9 ta belgidan iborat ('parol123' 9 ta) -> shart bajarildi (Rost). 2) Parolda raqam bor ('1', '2', '3') -> shart bajarildi (Rost). Ikkala shart ham rost bo'lgani uchun umumiy natija Rost bo'ladi.
+🔴 HAKAM: Parol uzunligi 8 ta belgi ('parol123'), shartda '8 ta belgidan uzun' deyilgan. 8 soni 8 dan katta emas, shart bajarilmaydi ('Qabul qilinmaydi' bo'lishi kerak). Izohda parol uzunligi 9 ta deb xato ko'rsatilgan.
+
+═══════ id=2735 [single] Y2 | 1.4. Mantiqiy mulohazalar va modellar ═══════
+S: Python dasturlash tilida `if x > 5 or x < 0:` sharti berilgan. Agar `x` o'zgaruvchining qiymati 3 ga teng bo'lsa, bu shartning mantiqiy qiymati qanday bo'ladi? (`True` — 1, `False` — 0 deb qabul qiling).
+   A) 0 (yolg'on)
+   B) Xatolik
+   C) Aniqlab bo'lmaydi
+   D) 1 (rost)  <== BELGILANGAN
+Izoh: O'zgartirilgan shartga ko'ra (`x = -2`): `x > 5` sharti noto'g'ri (False), `x < 0` sharti to'g'ri (True). Dizyunksiya ('or') amalida kamida bitta shart to'g'ri bo'lsa, butun ifoda to'g'ri (True/1) bo'ladi.
+🔴 HAKAM: Savol matnida x=3 berilgan (natija False/0), lekin belgilangan javob D (True/1). Izohda x=-2 uchun hisoblangan, matn va javob ziddiyatli.
+
+═══════ id=2741 [sequence] Y3 | Sanoq sistemalari ═══════
+S: O'nlik sanoq sistemasidagi istalgan butun sonni ikkilik sanoq sistemasiga o'tkazish algoritmining to'g'ri bosqichlarini tartiblang:
+1. Bo'linma nolga teng bo'lguncha bo'lishni davom ettirish
+2. Olingan qoldiqlarni pastdan yuqoriga qarab yozish
+3. Sonni 2 ga bo'lib, butun qismini va qoldiqni aniqlash
+4. Har bir bosqichda hosil bo'lgan qoldiqni yodlash
+   A) 3, 1, 4, 2  <== BELGILANGAN
+   B) 1, 3, 4, 2
+   C) 3, 4, 1, 2
+   D) 4, 3, 1, 2
+Izoh: Avval sonni 2 ga bo'lib, qoldiqni olamiz (3). Bo'linma 0 bo'lmaguncha davom ettiramiz (1). Har qadamda qoldiqni yodlaymiz (4). Oxirida qoldiqlarni teskari tartibda (pastdan yuqoriga) yozamiz (2).
+🔴 HAKAM: Algoritm bosqichlari mantiqiy tartibda berilmagan. Qoldiqni yodlash (4) bo'lish (3) va shartni tekshirish (1) siklida amalga oshirilishi kerak. Variant A noto'g'ri, to'g'ri tartib: 3, 4, 1, 2.
+
+═══════ id=2743 [single] Y2 | Sanoq sistemalari ═══════
+S: Dasturchi xotira manzillarini hisoblayotganda ikkita o'n oltilik sonni qo'shmoqda: A9(16) va 1(16). Yig'indini toping.
+   A) A8
+   B) B9
+   C) B0
+   D) AA  <== BELGILANGAN
+Izoh: O'n oltilik sistemasida: A9 + 01. Birlik xonasida 9+1=10 (10 shuni anglatadiki, 0 yozamiz, 1 ga qo'shamiz). O'nlik xonasida A(10) + 1 = B(11). Lekin hisobda: 9+1=10 -> 0, carry 1. A(10)+1=B(11). Demak A9+1 = AA. Notog'ri variantlar hisob xatosi.
+🔴 HAKAM: Izohda hisoblash xatosi bor: 9+1 yig'indisi o'n oltilik sanoq sistemasida A ga teng, 10 emas (shuning uchun 0 yozib 1 o'tkazish shart emas). Izohning o'zi ziddiyatli.
+
+═══════ id=2745 [single] Y2 | Sanoq sistemalari ═══════
+S: Darslikda keltirilgan misolga ko'ra, 1991 sonida joylashgan '9' raqamlari o'rniga (razryad) qarab, ularning qanday miqdorni ifodalashini aniqlang (o'ngdan chapga: birlik, o'nlik, yuzlik, minglik tartibida).
+   A) 900, 90, 9, 1
+   B) 9, 900, 90, 0
+   C) 1, 90, 900, 9000
+   D) 9, 90, 900, 0  <== BELGILANGAN
+Izoh: 1991 sonida: oxirgi o'ngdagi 9 — birlik (9), undan oldingi 9 — o'nlik (90), keyingi 9 — yuzlik (900), chapdagi 1 — minglik (1000). Shunda 9 lar: 9, 90, 900, 0 (chunki minglik xonada 9 yo'q).
+🔴 HAKAM: 1991 sonida birlik xonasi (o'ng tomonda) 1 ga teng, 9 emas. Izohda 'o'ngdagi 9 — birlik' deyilgan, bu faktik xato. To'g'ri javob variantlar orasida yo'q.
+
+═══════ id=2765 [single] Y2 | Dasturlash: Python va JavaScript tillari ═══════
+S: Python dasturida quyidagi kod natijasi ekranga qanday chiqadi?
+soz = 'Informatika'
+print(soz[2] + soz[5])
+   A) Ph
+   B) yt
+   C) tn  <== BELGILANGAN
+   D) Po
+Izoh: 'Python' satrida indekslar: P(0), y(1), t(2), h(3), o(4), n(5). Shunday qilib, soz[2] = 't', soz[5] = 'n'. Ular yig'indisi (birlashuvi) 'tn' bo'ladi.
+🔴 HAKAM: Savol kodida 'Informatika' so'zi berilgan (soz[2]='f', soz[5]='m', natija 'fm'), lekin variantlar va izoh 'Python' so'ziga (natija 'tn') mos tuzilgan. Kod va javob variantlari bir-biriga zid.
+
+═══════ id=2854 [single] Y1 | 1.4. Mantiqiy mulohazalar va modellar ═══════
+S: Mantiqiy ifodaning barcha kirish qiymatlari uchun chiqish qiymatlarini ko'rsatuvchi jadval qanday ataladi?
+   A) Haqiqat jadvali
+   B) Algebraik jadval
+   C) O'zgaruvchilar jadvali
+   D) Rostlik jadvali  <== BELGILANGAN
+Izoh: Mantiqiy ifodalarning xulosa chiqarish uchun hamda amallar natijasini ko'rsatish uchun ishlatiladigan jadval rostlik jadvali (Truth table) deyiladi. Darslikda ham bu atama ishlatilgan.
+🔴 HAKAM: Belgilangan javob noto'g'ri. 'Truth table' atamasi o'zbek tilida standart ravishda 'Haqiqat jadvali' (A varianti) deb tarjima qilinadi va darsliklarda shu ishlatiladi.
+
+═══════ id=2897 [sequence] Y3 | 1.7. Dasturlash asoslari: Scratch va LOGO muhiti ═══════
+S: Scratch dasturida 'L' harfini chizish uchun quyidagi amallarni to'g'ri mantiqiy tartibda joylashtiring:
+1. Pastga 50 qadam yurish
+2. Qalamni tushirish (pen down)
+3. Chapga 90 gradus burilish
+4. Yuqoriga 50 qadam yurish
+5. Chapga 90 gradus burilish
+6. O'ngga 100 qadam yurish
+   A) 2, 6, 5, 1, 3, 4
+   B) 4, 2, 6, 5, 1, 3
+   C) 2, 4, 5, 6, 3, 1
+   D) 2, 4, 3, 6, 5, 1  <== BELGILANGAN
+Izoh: Avval qalamni tushirish (2) kerak. Keyin vertikal chiziq uchun yuqoriga (4), keyin chapga burilib (3) pastga (1) yurishamiz. Keyin yana chapga burilib (5) gorizontal chiziqni o'ngga (6) chizamiz.
+🔴 HAKAM: Izohda keltirilgan amallar tartibi (2, 4, 3, 1, 5, 6) variantlarda keltirilmagan. D javobi (2, 4, 3, 6, 5, 1) bo'yicha esa 'L' harfi emas, balki 'U' shakli (qavs) chiziladi.
+
+═══════ id=2958 [sequence] Y2 | 1.1. Axborot va raqamli savodxonlik asoslari ═══════
+S: Berilgan axborot hajmi (megabaytda) va uzatish vaqti (minutda) bo'yicha uzatish tezligini (bodda) topish uchun kerakli hisoblash amallarining to'g'ri tartibini belgilang.
+1. Vaqtni sekundga aylantirish
+2. Axborot hajmini kilobaytga, keyin baytga aylantirish
+3. Axborot hajmini bitga aylantirish
+4. Axborot hajmi (bit)ni vaqt (sekund) ga bo'lish
+   A) 3, 2, 1, 4
+   B) 2, 1, 3, 4  <== BELGILANGAN
+   C) 1, 2, 3, 4
+   D) 2, 3, 1, 4
+Izoh: Hisoblash uchun avval katta birliklarni kichiklarga (MB -> KB -> Byte -> bit) tartibli tushirish kerak (2 va 3 qadamlar). Keyin vaqt birligi bir xil bo'lishi uchun minutni sekundga aylantiramiz (1). Oxirida hajmni vaqtga bo'lib, tezlikni topamiz (4). Darslikdagi namuna ham shu tartibda berilgan.
+🔴 HAKAM: Izohda berilgan mantiqga ko'ra avval hajmni to'liq o'tkazish (2 va 3 qadamlar), keyin vaqtni o'tkazish (1 qadam) kerak, bu D variant (2, 3, 1, 4) ga mos keladi. Belgilangan B variant (2, 1, 3, 4) izohdagi tartibga zid va mantiqan to'g'ri kelmaydi.
+
+═══════ id=2968 [single] Y2 | Amaliy ofis dasturlari ═══════
+S: Excel jadvalida A1 katakchasida 10, A2 katakchasida 20 soni bor. =A1+A2*2+SUM(A1;A2) formulasining hisoblangan qiymati qanday bo'ladi?
+   A) 50
+   B) 70
+   C) 60
+   D) 90  <== BELGILANGAN
+Izoh: Hisob tartibi: avval ko'paytirish va funksiyalar. A2*2 = 20*2 = 40. SUM(A1;A2) = 10+20 = 30. Endin qo'shish: A1 + 40 + 30 = 10 + 40 + 30 = 80. Kalkulyator qayta tekshirish: A1(10) + (A2(20)*2=40) + (10+20=30) = 10+40+30 = 80. Xato! 10+40+30=80. Variantlarda 80 yo'q. Qaytadan hisoblaymiz. 10 + 20*2 + (10+20) = 10 + 40 + 30 = 80. Agar variant A=90 bo'lsa, formulada yoki variantda xato bo'lishi mumkin. Keling, variantlarni tuzatamiz: A=80, B=70, C=60, D=50. Javob A (80) bo'ladi.
+🔴 HAKAM: Hisoblash natijasi 80 bo'lishi kerak (10+40+30), variantlarda 80 yo'q va belgilangan javob (90) noto'g'ri.
+
+═══════ id=2990 [single] Y2 | 1.6. Algoritmlash ═══════
+S: Dasturchi fizikadan olingan masalani yechish uchun avval uning matematik formulasini (masalan, S=v*t) yozib oldi va keyin shu formulaga asoslanib dastur kodini tuzdi. Ushbu jarayonda qaysi bosqich o'tkazib yuborilgan?
+   A) Matematik usulni tanlash bosqichi
+   B) Masalaning modelini tuzish bosqichi  <== BELGILANGAN
+   C) Dasturni ishga tushirish va tahlil qilish bosqichi
+   D) Dasturni kompyuter xotirasiga kiritish bosqichi
+Izoh: Matematik formula yozilgandan so'ng, unga asoslanib dastur tuzilganda, o'rtadagi 'modelni tuzish' bosqichi (masalan, diagramma yoki sxema ko'rinishida) ko'zda tutilmagan. Matematik usul tanlangan, dastur tili yordamida kod yozilgan.
+🔴 HAKAM: Matematik formula (S=v*t) yozilishi o'zi 'matematik modelni tuzish' bosqichidir. Dasturchi 'algoritm tuzish' bosqichini (sxema, blok-diagramma) o'tkazib yuborgan. Izohda 'model' tushunchasi noto'g'ri tushuntirilgan (sxema algoritmni ifodalaydi).
+

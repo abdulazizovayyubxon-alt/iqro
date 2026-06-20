@@ -1,0 +1,490 @@
+
+### jismoniy_tarbiya [pedagogika] fan-xos → 450 (hozir 98) → fan/jismoniy_tarbiya/_ped5_framed.json ###
+  ↩ Davom ettirish: 98 ta savol yuklandi
+▶ Jismoniy tarbiya: maqsad 450 (hozir 98), 21 bo'lim, model zai-glm-4.7
+   manba: scratch/Jismoniy tarbiya spets-yasi_text.txt | few-shot langar: 5 ta [namuna: jismoniy_savollar.json] | dedup baza: 98
+[aylanish 1 · 1/21] pedagogika "Bo'lim 1" ... +12  (jami 110/450)
+[aylanish 1 · 2/21] pedagogika "Bo'lim 4" ... +5  (jami 115/450)
+[aylanish 1 · 3/21] pedagogika "Bo'lim 2" ... +2  (jami 117/450)
+[aylanish 1 · 4/21] pedagogika "Bo'lim 3" ... +6  (jami 123/450)
+[aylanish 1 · 5/21] pedagogika "Bo'lim 4" ... +12  (jami 135/450)
+[aylanish 1 · 6/21] pedagogika "Bo'lim 5" ... +10  (jami 145/450)
+[aylanish 1 · 7/21] pedagogika "Bo'lim 6" ... +8  (jami 153/450)
+[aylanish 1 · 8/21] pedagogika "Bo'lim 7" ... +7  (jami 160/450)
+[aylanish 1 · 9/21] pedagogika "Bo'lim 8" ... +7  (jami 167/450)
+[aylanish 1 · 10/21] pedagogika "Bo'lim 9" ... +10  (jami 177/450)
+[aylanish 1 · 11/21] pedagogika "Bo'lim 10" ... +13  (jami 190/450)
+[aylanish 1 · 12/21] pedagogika "Bo'lim 11" ... +7  (jami 197/450)
+[aylanish 1 · 13/21] pedagogika "Bo'lim 14" ... +6  (jami 203/450)
+[aylanish 1 · 14/21] pedagogika "Bo'lim 15" ... +4  (jami 207/450)
+[aylanish 1 · 15/21] pedagogika "Bo'lim 16" ... +9  (jami 216/450)
+[aylanish 1 · 16/21] pedagogika "Bo'lim 17" ... +8  (jami 224/450)
+[aylanish 1 · 17/21] pedagogika "Bo'lim 18" ... +10  (jami 234/450)
+[aylanish 1 · 18/21] pedagogika "Bo'lim 19" ... +10  (jami 244/450)
+[aylanish 1 · 19/21] pedagogika "Bo'lim 20" ... +11  (jami 255/450)
+[aylanish 1 · 20/21] pedagogika "Bo'lim 21" ... +10  (jami 265/450)
+[aylanish 1 · 21/21] pedagogika "Bo'lim 22" ... +13  (jami 278/450)
+[aylanish 2 · 1/21] pedagogika "Bo'lim 1" ... +12  (jami 290/450)
+[aylanish 2 · 2/21] pedagogika "Bo'lim 4" ... +9  (jami 299/450)
+[aylanish 2 · 3/21] pedagogika "Bo'lim 2" ... +7  (jami 306/450)
+[aylanish 2 · 4/21] pedagogika "Bo'lim 3" ... +7  (jami 313/450)
+[aylanish 2 · 5/21] pedagogika "Bo'lim 4" ... +9  (jami 322/450)
+[aylanish 2 · 6/21] pedagogika "Bo'lim 5" ... +8  (jami 330/450)
+[aylanish 2 · 7/21] pedagogika "Bo'lim 6" ... +10  (jami 340/450)
+[aylanish 2 · 8/21] pedagogika "Bo'lim 7" ... +11  (jami 351/450)
+[aylanish 2 · 9/21] pedagogika "Bo'lim 8" ... +9  (jami 360/450)
+[aylanish 2 · 10/21] pedagogika "Bo'lim 9" ... +11  (jami 371/450)
+[aylanish 2 · 11/21] pedagogika "Bo'lim 10" ... +9  (jami 380/450)
+[aylanish 2 · 12/21] pedagogika "Bo'lim 11" ... +5  (jami 385/450)
+[aylanish 2 · 13/21] pedagogika "Bo'lim 14" ... +8  (jami 393/450)
+[aylanish 2 · 14/21] pedagogika "Bo'lim 15" ... +11  (jami 404/450)
+[aylanish 2 · 15/21] pedagogika "Bo'lim 16" ... +10  (jami 414/450)
+[aylanish 2 · 16/21] pedagogika "Bo'lim 17" ... +5  (jami 419/450)
+[aylanish 2 · 17/21] pedagogika "Bo'lim 18" ... +12  (jami 431/450)
+[aylanish 2 · 18/21] pedagogika "Bo'lim 19" ... +7  (jami 438/450)
+[aylanish 2 · 19/21] pedagogika "Bo'lim 20" ... +7  (jami 445/450)
+[aylanish 2 · 20/21] pedagogika "Bo'lim 21" ... +5  (jami 450/450)
+
+✓ Jami: 450/450 (single 301, matching 42, sequence 44) | takror: 0 | yaroqsiz: 175 | format-cap skip: 0 | ifloslanish rad: 0
+   → fan/jismoniy_tarbiya/_ped5_framed.json
+
+### jismoniy_tarbiya [kasb] fan-xos → 150 (hozir 0) → fan/jismoniy_tarbiya/_ped5_kasb.json ###
+▶ Jismoniy tarbiya: maqsad 150 (hozir 0), 6 bo'lim, model zai-glm-4.7
+   manba: scratch/Jismoniy tarbiya spets-yasi_text.txt | few-shot langar: 5 ta [namuna: jismoniy_savollar.json] | dedup baza: 450
+[aylanish 1 · 1/6] kasb "Bo'lim 2" ... +12  (jami 12/150)
+[aylanish 1 · 2/6] kasb "Bo'lim 3" ... +10  (jami 22/150)
+[aylanish 1 · 3/6] kasb "Bo'lim 5" ... +5  (jami 27/150)
+[aylanish 1 · 4/6] kasb "Bo'lim 1" ... +1  (jami 28/150)
+[aylanish 1 · 5/6] kasb "Bo'lim 12" ... +8  (jami 36/150)
+[aylanish 1 · 6/6] kasb "Bo'lim 13" ... +13  (jami 49/150)
+[aylanish 2 · 1/6] kasb "Bo'lim 2" ... +12  (jami 61/150)
+[aylanish 2 · 2/6] kasb "Bo'lim 3" ... +7  (jami 68/150)
+[aylanish 2 · 3/6] kasb "Bo'lim 5" ... +9  (jami 77/150)
+[aylanish 2 · 4/6] kasb "Bo'lim 1" ... +13  (jami 90/150)
+[aylanish 2 · 5/6] kasb "Bo'lim 12" ... +12  (jami 102/150)
+[aylanish 2 · 6/6] kasb "Bo'lim 13" ... +2  (jami 104/150)
+[aylanish 3 · 1/6] kasb "Bo'lim 2" ... +11  (jami 115/150)
+[aylanish 3 · 2/6] kasb "Bo'lim 3" ... +9  (jami 124/150)
+[aylanish 3 · 3/6] kasb "Bo'lim 5" ... +11  (jami 135/150)
+[aylanish 3 · 4/6] kasb "Bo'lim 1" ... +7  (jami 142/150)
+[aylanish 3 · 5/6] kasb "Bo'lim 12" ... +7  (jami 149/150)
+[aylanish 3 · 6/6] kasb "Bo'lim 13" ... +5  (jami 154/150)
+
+✓ Jami: 154/150 (single 106, matching 15, sequence 15) | takror: 0 | yaroqsiz: 66 | format-cap skip: 1 | ifloslanish rad: 0
+   → fan/jismoniy_tarbiya/_ped5_kasb.json
+
+### boshlangich [pedagogika] fan-xos → 450 (hozir 0) → fan/boshlangich/_ped5_framed.json ###
+▶ Boshlang'ich ta'lim: maqsad 450 (hozir 0), 19 bo'lim, model zai-glm-4.7
+   manba: scratch/Бошланғич таълим ўзбек я_text.txt | few-shot langar: 5 ta [namuna: boshlangich_savollar.json] | dedup baza: 0
+[aylanish 1 · 1/19] pedagogika "Bo'lim 2" ... +14  (jami 14/450)
+[aylanish 1 · 2/19] pedagogika "Bo'lim 3" ... +13  (jami 27/450)
+[aylanish 1 · 3/19] pedagogika "Bo'lim 4" ... +9  (jami 36/450)
+[aylanish 1 · 4/19] pedagogika "Bo'lim 5" ... +10  (jami 46/450)
+[aylanish 1 · 5/19] pedagogika "Bo'lim 6" ... +8  (jami 54/450)
+[aylanish 1 · 6/19] pedagogika "Bo'lim 7" ... +13  (jami 67/450)
+[aylanish 1 · 7/19] pedagogika "Bo'lim 8" ... +11  (jami 78/450)
+[aylanish 1 · 8/19] pedagogika "Bo'lim 9" ... +11  (jami 89/450)
+[aylanish 1 · 9/19] pedagogika "Bo'lim 10" ... +8  (jami 97/450)
+[aylanish 1 · 10/19] pedagogika "Bo'lim 11" ... +5  (jami 102/450)
+[aylanish 1 · 11/19] pedagogika "Bo'lim 14" ... +5  (jami 107/450)
+[aylanish 1 · 12/19] pedagogika "Bo'lim 15" ... +5  (jami 112/450)
+[aylanish 1 · 13/19] pedagogika "Bo'lim 16" ... +8  (jami 120/450)
+[aylanish 1 · 14/19] pedagogika "Bo'lim 17" ... +10  (jami 130/450)
+[aylanish 1 · 15/19] pedagogika "Bo'lim 18" ... +9  (jami 139/450)
+[aylanish 1 · 16/19] pedagogika "Bo'lim 19" ... +11  (jami 150/450)
+[aylanish 1 · 17/19] pedagogika "Bo'lim 20" ... +4  (jami 154/450)
+[aylanish 1 · 18/19] pedagogika "Bo'lim 21" ... +5  (jami 159/450)
+[aylanish 1 · 19/19] pedagogika "Bo'lim 22" ... +14  (jami 173/450)
+[aylanish 2 · 1/19] pedagogika "Bo'lim 2" ... +14  (jami 187/450)
+[aylanish 2 · 2/19] pedagogika "Bo'lim 3" ... +12  (jami 199/450)
+[aylanish 2 · 3/19] pedagogika "Bo'lim 4" ... +9  (jami 208/450)
+[aylanish 2 · 4/19] pedagogika "Bo'lim 5" ... +9  (jami 217/450)
+[aylanish 2 · 5/19] pedagogika "Bo'lim 6" ... +10  (jami 227/450)
+[aylanish 2 · 6/19] pedagogika "Bo'lim 7" ... +5  (jami 232/450)
+[aylanish 2 · 7/19] pedagogika "Bo'lim 8" ... +10  (jami 242/450)
+[aylanish 2 · 8/19] pedagogika "Bo'lim 9" ... +10  (jami 252/450)
+[aylanish 2 · 9/19] pedagogika "Bo'lim 10" ... +10  (jami 262/450)
+[aylanish 2 · 10/19] pedagogika "Bo'lim 11" ... +11  (jami 273/450)
+[aylanish 2 · 11/19] pedagogika "Bo'lim 14" ... +10  (jami 283/450)
+[aylanish 2 · 12/19] pedagogika "Bo'lim 15" ... +6  (jami 289/450)
+[aylanish 2 · 13/19] pedagogika "Bo'lim 16" ... +10  (jami 299/450)
+[aylanish 2 · 14/19] pedagogika "Bo'lim 17" ... +9  (jami 308/450)
+[aylanish 2 · 15/19] pedagogika "Bo'lim 18" ... +11  (jami 319/450)
+[aylanish 2 · 16/19] pedagogika "Bo'lim 19" ... +11  (jami 330/450)
+[aylanish 2 · 17/19] pedagogika "Bo'lim 20" ... +7  (jami 337/450)
+[aylanish 2 · 18/19] pedagogika "Bo'lim 21" ... +8  (jami 345/450)
+[aylanish 2 · 19/19] pedagogika "Bo'lim 22" ... +9  (jami 354/450)
+[aylanish 3 · 1/19] pedagogika "Bo'lim 2" ... +7  (jami 361/450)
+[aylanish 3 · 2/19] pedagogika "Bo'lim 3" ... +13  (jami 374/450)
+[aylanish 3 · 3/19] pedagogika "Bo'lim 4" ... +9  (jami 383/450)
+[aylanish 3 · 4/19] pedagogika "Bo'lim 5" ... +11  (jami 394/450)
+[aylanish 3 · 5/19] pedagogika "Bo'lim 6" ... +7  (jami 401/450)
+[aylanish 3 · 6/19] pedagogika "Bo'lim 7" ... [API xato: The operation was aborted due to timeout, urinish 1/5]
+🔄 API xato tufayli keyingi API kalitga o'tilmoqda: index 0
++11  (jami 412/450)
+[aylanish 3 · 7/19] pedagogika "Bo'lim 8" ... +11  (jami 423/450)
+[aylanish 3 · 8/19] pedagogika "Bo'lim 9" ... +10  (jami 433/450)
+[aylanish 3 · 9/19] pedagogika "Bo'lim 10" ... +12  (jami 445/450)
+[aylanish 3 · 10/19] pedagogika "Bo'lim 11" ... +10  (jami 455/450)
+
+✓ Jami: 455/450 (single 315, matching 41, sequence 38) | takror: 0 | yaroqsiz: 140 | format-cap skip: 0 | ifloslanish rad: 3
+   → fan/boshlangich/_ped5_framed.json
+
+### boshlangich [kasb] fan-xos → 150 (hozir 0) → fan/boshlangich/_ped5_kasb.json ###
+▶ Boshlang'ich ta'lim: maqsad 150 (hozir 0), 3 bo'lim, model zai-glm-4.7
+   manba: scratch/Бошланғич таълим ўзбек я_text.txt | few-shot langar: 5 ta [namuna: boshlangich_savollar.json] | dedup baza: 455
+[aylanish 1 · 1/3] kasb "Bo'lim 1" ... +1  (jami 1/150)
+[aylanish 1 · 2/3] kasb "Bo'lim 12" ... +12  (jami 13/150)
+[aylanish 1 · 3/3] kasb "Bo'lim 13" ... +7  (jami 20/150)
+[aylanish 2 · 1/3] kasb "Bo'lim 1" ... +8  (jami 28/150)
+[aylanish 2 · 2/3] kasb "Bo'lim 12" ... +10  (jami 38/150)
+[aylanish 2 · 3/3] kasb "Bo'lim 13" ... +6  (jami 44/150)
+[aylanish 3 · 1/3] kasb "Bo'lim 1" ... +9  (jami 53/150)
+[aylanish 3 · 2/3] kasb "Bo'lim 12" ... +13  (jami 66/150)
+[aylanish 3 · 3/3] kasb "Bo'lim 13" ... +8  (jami 74/150)
+[aylanish 4 · 1/3] kasb "Bo'lim 1" ... +8  (jami 82/150)
+[aylanish 4 · 2/3] kasb "Bo'lim 12" ... +5  (jami 87/150)
+[aylanish 4 · 3/3] kasb "Bo'lim 13" ... +9  (jami 96/150)
+[aylanish 5 · 1/3] kasb "Bo'lim 1" ... +9  (jami 105/150)
+[aylanish 5 · 2/3] kasb "Bo'lim 12" ... +8  (jami 113/150)
+[aylanish 5 · 3/3] kasb "Bo'lim 13" ... +8  (jami 121/150)
+[aylanish 6 · 1/3] kasb "Bo'lim 1" ... +8  (jami 129/150)
+[aylanish 6 · 2/3] kasb "Bo'lim 12" ... +6  (jami 135/150)
+[aylanish 6 · 3/3] kasb "Bo'lim 13" ... +7  (jami 142/150)
+[aylanish 7 · 1/3] kasb "Bo'lim 1" ... +9  (jami 151/150)
+
+✓ Jami: 151/150 (single 100, matching 14, sequence 16) | takror: 0 | yaroqsiz: 88 | format-cap skip: 0 | ifloslanish rad: 1
+   → fan/boshlangich/_ped5_kasb.json
+
+### ona_tili [pedagogika] fan-xos → 313 (hozir 0) → fan/ona_tili/_ped5_framed.json ###
+▶ Ona tili va adabiyot: maqsad 313 (hozir 0), 19 bo'lim, model zai-glm-4.7
+   manba: scratch/Она тили ва адабиёт_text.txt | few-shot langar: 5 ta [namuna: ona_tili_savollar.json] | dedup baza: 1593
+[aylanish 1 · 1/19] pedagogika "Bo'lim 2" ... +12  (jami 12/313)
+[aylanish 1 · 2/19] pedagogika "Bo'lim 3" ... +13  (jami 25/313)
+[aylanish 1 · 3/19] pedagogika "Bo'lim 4" ... +5  (jami 30/313)
+[aylanish 1 · 4/19] pedagogika "Bo'lim 5" ... +12  (jami 42/313)
+[aylanish 1 · 5/19] pedagogika "Bo'lim 6" ... +10  (jami 52/313)
+[aylanish 1 · 6/19] pedagogika "Bo'lim 7" ... +11  (jami 63/313)
+[aylanish 1 · 7/19] pedagogika "Bo'lim 8" ... +12  (jami 75/313)
+[aylanish 1 · 8/19] pedagogika "Bo'lim 9" ... +11  (jami 86/313)
+[aylanish 1 · 9/19] pedagogika "Bo'lim 10" ... +12  (jami 98/313)
+[aylanish 1 · 10/19] pedagogika "Bo'lim 11" ... +11  (jami 109/313)
+[aylanish 1 · 11/19] pedagogika "Bo'lim 14" ... +5  (jami 114/313)
+[aylanish 1 · 12/19] pedagogika "Bo'lim 15" ... +5  (jami 119/313)
+[aylanish 1 · 13/19] pedagogika "Bo'lim 16" ... +7  (jami 126/313)
+[aylanish 1 · 14/19] pedagogika "Bo'lim 17" ... +8  (jami 134/313)
+[aylanish 1 · 15/19] pedagogika "Bo'lim 18" ... +11  (jami 145/313)
+[aylanish 1 · 16/19] pedagogika "Bo'lim 19" ... +5  (jami 150/313)
+[aylanish 1 · 17/19] pedagogika "Bo'lim 20" ... +11  (jami 161/313)
+[aylanish 1 · 18/19] pedagogika "Bo'lim 21" ... +7  (jami 168/313)
+[aylanish 1 · 19/19] pedagogika "Bo'lim 22" ... +4  (jami 172/313)
+[aylanish 2 · 1/19] pedagogika "Bo'lim 2" ... +9  (jami 181/313)
+[aylanish 2 · 2/19] pedagogika "Bo'lim 3" ... +9  (jami 190/313)
+[aylanish 2 · 3/19] pedagogika "Bo'lim 4" ... +7  (jami 197/313)
+[aylanish 2 · 4/19] pedagogika "Bo'lim 5" ... +15  (jami 212/313)
+[aylanish 2 · 5/19] pedagogika "Bo'lim 6" ... +12  (jami 224/313)
+[aylanish 2 · 6/19] pedagogika "Bo'lim 7" ... +11  (jami 235/313)
+[aylanish 2 · 7/19] pedagogika "Bo'lim 8" ... +6  (jami 241/313)
+[aylanish 2 · 8/19] pedagogika "Bo'lim 9" ... +7  (jami 248/313)
+[aylanish 2 · 9/19] pedagogika "Bo'lim 10" ... +12  (jami 260/313)
+[aylanish 2 · 10/19] pedagogika "Bo'lim 11" ... +8  (jami 268/313)
+[aylanish 2 · 11/19] pedagogika "Bo'lim 14" ... +11  (jami 279/313)
+[aylanish 2 · 12/19] pedagogika "Bo'lim 15" ... +4  (jami 283/313)
+[aylanish 2 · 13/19] pedagogika "Bo'lim 16" ... +11  (jami 294/313)
+[aylanish 2 · 14/19] pedagogika "Bo'lim 17" ... +8  (jami 302/313)
+[aylanish 2 · 15/19] pedagogika "Bo'lim 18" ... +5  (jami 307/313)
+[aylanish 2 · 16/19] pedagogika "Bo'lim 19" ... +8  (jami 315/313)
+
+✓ Jami: 315/313 (single 212, matching 28, sequence 29) | takror: 0 | yaroqsiz: 135 | format-cap skip: 0 | ifloslanish rad: 1
+   → fan/ona_tili/_ped5_framed.json
+
+### ona_tili [kasb] fan-xos → 104 (hozir 0) → fan/ona_tili/_ped5_kasb.json ###
+▶ Ona tili va adabiyot: maqsad 104 (hozir 0), 3 bo'lim, model zai-glm-4.7
+   manba: scratch/Она тили ва адабиёт_text.txt | few-shot langar: 5 ta [namuna: ona_tili_savollar.json] | dedup baza: 1593
+[aylanish 1 · 1/3] kasb "Bo'lim 1" ... +9  (jami 9/104)
+[aylanish 1 · 2/3] kasb "Bo'lim 12" ... +15  (jami 24/104)
+[aylanish 1 · 3/3] kasb "Bo'lim 13" ... +7  (jami 31/104)
+[aylanish 2 · 1/3] kasb "Bo'lim 1" ... +1  (jami 32/104)
+[aylanish 2 · 2/3] kasb "Bo'lim 12" ... +13  (jami 45/104)
+[aylanish 2 · 3/3] kasb "Bo'lim 13" ... +6  (jami 51/104)
+[aylanish 3 · 1/3] kasb "Bo'lim 1" ... +11  (jami 62/104)
+[aylanish 3 · 2/3] kasb "Bo'lim 12" ... +10  (jami 72/104)
+[aylanish 3 · 3/3] kasb "Bo'lim 13" ... +11  (jami 83/104)
+[aylanish 4 · 1/3] kasb "Bo'lim 1" ... +8  (jami 91/104)
+[aylanish 4 · 2/3] kasb "Bo'lim 12" ... +8  (jami 99/104)
+[aylanish 4 · 3/3] kasb "Bo'lim 13" ... +11  (jami 110/104)
+
+✓ Jami: 110/104 (single 75, matching 9, sequence 10) | takror: 0 | yaroqsiz: 36 | format-cap skip: 0 | ifloslanish rad: 0
+   → fan/ona_tili/_ped5_kasb.json
+
+### biologiya [pedagogika] fan-xos → 450 (hozir 0) → fan/biologiya/_ped5_framed.json ###
+▶ Biologiya: maqsad 450 (hozir 0), 20 bo'lim, model zai-glm-4.7
+   manba: scratch/biologiya_spec.txt | few-shot langar: 5 ta [namuna: biologiya_savollar.json] | dedup baza: 0
+[aylanish 1 · 1/20] pedagogika "2.1. Umumiy pedagogika" ... +15  (jami 15/450)
+[aylanish 1 · 2/20] pedagogika "Bo'lim 2" ... +12  (jami 27/450)
+[aylanish 1 · 3/20] pedagogika "Bo'lim 3" ... +10  (jami 37/450)
+[aylanish 1 · 4/20] pedagogika "Bo'lim 4" ... +10  (jami 47/450)
+[aylanish 1 · 5/20] pedagogika "Bo'lim 5" ... +12  (jami 59/450)
+[aylanish 1 · 6/20] pedagogika "Bo'lim 6" ... +5  (jami 64/450)
+[aylanish 1 · 7/20] pedagogika "Bo'lim 7" ... +11  (jami 75/450)
+[aylanish 1 · 8/20] pedagogika "Bo'lim 8" ... +12  (jami 87/450)
+[aylanish 1 · 9/20] pedagogika "Bo'lim 9" ... +10  (jami 97/450)
+[aylanish 1 · 10/20] pedagogika "Bo'lim 10" ... +10  (jami 107/450)
+[aylanish 1 · 11/20] pedagogika "Bo'lim 11" ... +9  (jami 116/450)
+[aylanish 1 · 12/20] pedagogika "Bo'lim 14" ... +8  (jami 124/450)
+[aylanish 1 · 13/20] pedagogika "Bo'lim 15" ... +8  (jami 132/450)
+[aylanish 1 · 14/20] pedagogika "Bo'lim 16" ... +7  (jami 139/450)
+[aylanish 1 · 15/20] pedagogika "Bo'lim 17" ... +11  (jami 150/450)
+[aylanish 1 · 16/20] pedagogika "Bo'lim 18" ... +7  (jami 157/450)
+[aylanish 1 · 17/20] pedagogika "Bo'lim 19" ... +12  (jami 169/450)
+[aylanish 1 · 18/20] pedagogika "Bo'lim 20" ... +7  (jami 176/450)
+[aylanish 1 · 19/20] pedagogika "Bo'lim 21" ... +7  (jami 183/450)
+[aylanish 1 · 20/20] pedagogika "Bo'lim 22" ... +9  (jami 192/450)
+[aylanish 2 · 1/20] pedagogika "2.1. Umumiy pedagogika" ... +12  (jami 204/450)
+[aylanish 2 · 2/20] pedagogika "Bo'lim 2" ... +12  (jami 216/450)
+[aylanish 2 · 3/20] pedagogika "Bo'lim 3" ... +11  (jami 227/450)
+[aylanish 2 · 4/20] pedagogika "Bo'lim 4" ... +10  (jami 237/450)
+[aylanish 2 · 5/20] pedagogika "Bo'lim 5" ... +12  (jami 249/450)
+[aylanish 2 · 6/20] pedagogika "Bo'lim 6" ... +8  (jami 257/450)
+[aylanish 2 · 7/20] pedagogika "Bo'lim 7" ... +6  (jami 263/450)
+[aylanish 2 · 8/20] pedagogika "Bo'lim 8" ... +10  (jami 273/450)
+[aylanish 2 · 9/20] pedagogika "Bo'lim 9" ... +11  (jami 284/450)
+[aylanish 2 · 10/20] pedagogika "Bo'lim 10" ... +10  (jami 294/450)
+[aylanish 2 · 11/20] pedagogika "Bo'lim 11" ... +10  (jami 304/450)
+[aylanish 2 · 12/20] pedagogika "Bo'lim 14" ... +9  (jami 313/450)
+[aylanish 2 · 13/20] pedagogika "Bo'lim 15" ... +8  (jami 321/450)
+[aylanish 2 · 14/20] pedagogika "Bo'lim 16" ... +12  (jami 333/450)
+[aylanish 2 · 15/20] pedagogika "Bo'lim 17" ... +10  (jami 343/450)
+[aylanish 2 · 16/20] pedagogika "Bo'lim 18" ... +5  (jami 348/450)
+[aylanish 2 · 17/20] pedagogika "Bo'lim 19" ... +2  (jami 350/450)
+[aylanish 2 · 18/20] pedagogika "Bo'lim 20" ... +1  (jami 351/450)
+[aylanish 2 · 19/20] pedagogika "Bo'lim 21" ... +10  (jami 361/450)
+[aylanish 2 · 20/20] pedagogika "Bo'lim 22" ... +8  (jami 369/450)
+[aylanish 3 · 1/20] pedagogika "2.1. Umumiy pedagogika" ... +13  (jami 382/450)
+[aylanish 3 · 2/20] pedagogika "Bo'lim 2" ... +6  (jami 388/450)
+[aylanish 3 · 3/20] pedagogika "Bo'lim 3" ... +12  (jami 400/450)
+[aylanish 3 · 4/20] pedagogika "Bo'lim 4" ... +12  (jami 412/450)
+[aylanish 3 · 5/20] pedagogika "Bo'lim 5" ... +14  (jami 426/450)
+[aylanish 3 · 6/20] pedagogika "Bo'lim 6" ... +9  (jami 435/450)
+[aylanish 3 · 7/20] pedagogika "Bo'lim 7" ... +13  (jami 448/450)
+[aylanish 3 · 8/20] pedagogika "Bo'lim 8" ... +8  (jami 456/450)
+
+✓ Jami: 456/450 (single 314, matching 44, sequence 40) | takror: 0 | yaroqsiz: 137 | format-cap skip: 0 | ifloslanish rad: 2
+   → fan/biologiya/_ped5_framed.json
+
+### biologiya [kasb] fan-xos → 150 (hozir 0) → fan/biologiya/_ped5_kasb.json ###
+▶ Biologiya: maqsad 150 (hozir 0), 3 bo'lim, model zai-glm-4.7
+   manba: scratch/biologiya_spec.txt | few-shot langar: 5 ta [namuna: biologiya_savollar.json] | dedup baza: 0
+[aylanish 1 · 1/3] kasb "Bo'lim 1" ... +12  (jami 12/150)
+[aylanish 1 · 2/3] kasb "Bo'lim 12" ... [Limit/Error 429, kalit index: 1, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 2
+[Limit/Error 429, kalit index: 2, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 3
+[Limit/Error 429, kalit index: 3, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 4
+[Limit/Error 429, kalit index: 4, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 5
+[Limit/Error 429, kalit index: 5, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 6
+parse xato
+[aylanish 1 · 3/3] kasb "Bo'lim 13" ... +4  (jami 16/150)
+[aylanish 2 · 1/3] kasb "Bo'lim 1" ... [Limit/Error 429, kalit index: 7, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 8
+[Limit/Error 429, kalit index: 8, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 9
++8  (jami 24/150)
+[aylanish 2 · 2/3] kasb "Bo'lim 12" ... +8  (jami 32/150)
+[aylanish 2 · 3/3] kasb "Bo'lim 13" ... [API xato: The operation was aborted due to timeout, urinish 1/5]
+🔄 API xato tufayli keyingi API kalitga o'tilmoqda: index 12
++13  (jami 45/150)
+[aylanish 3 · 1/3] kasb "Bo'lim 1" ... +14  (jami 59/150)
+[aylanish 3 · 2/3] kasb "Bo'lim 12" ... +10  (jami 69/150)
+[aylanish 3 · 3/3] kasb "Bo'lim 13" ... +4  (jami 73/150)
+[aylanish 4 · 1/3] kasb "Bo'lim 1" ... +11  (jami 84/150)
+[aylanish 4 · 2/3] kasb "Bo'lim 12" ... +7  (jami 91/150)
+[aylanish 4 · 3/3] kasb "Bo'lim 13" ... [API xato: The operation was aborted due to timeout, urinish 1/5]
+🔄 API xato tufayli keyingi API kalitga o'tilmoqda: index 19
++7  (jami 98/150)
+[aylanish 5 · 1/3] kasb "Bo'lim 1" ... +4  (jami 102/150)
+[aylanish 5 · 2/3] kasb "Bo'lim 12" ... +10  (jami 112/150)
+[aylanish 5 · 3/3] kasb "Bo'lim 13" ... +6  (jami 118/150)
+[aylanish 6 · 1/3] kasb "Bo'lim 1" ... +6  (jami 124/150)
+[aylanish 6 · 2/3] kasb "Bo'lim 12" ... +10  (jami 134/150)
+[aylanish 6 · 3/3] kasb "Bo'lim 13" ... +12  (jami 146/150)
+[aylanish 7 · 1/3] kasb "Bo'lim 1" ... +8  (jami 154/150)
+
+✓ Jami: 154/150 (single 104, matching 18, sequence 12) | takror: 0 | yaroqsiz: 65 | format-cap skip: 0 | ifloslanish rad: 2
+   → fan/biologiya/_ped5_kasb.json
+
+### geografiya [pedagogika] fan-xos → 450 (hozir 0) → fan/geografiya/_ped5_framed.json ###
+node:fs:440
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open 'C:\Users\User\Desktop\CHQBT PLATFORMA\scratch\geografiya_spec.txt'
+    at Object.readFileSync (node:fs:440:20)
+    at file:///C:/Users/User/Desktop/CHQBT%20PLATFORMA/pipeline/run-api.mjs:62:27
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\User\\Desktop\\CHQBT PLATFORMA\\scratch\\geografiya_spec.txt'
+}
+
+Node.js v24.14.1
+[geografiya pedagogika] uzildi: Command failed: node pipeline/run-api.mjs --subject geografiya --blocks pedagogi
+
+### geografiya [kasb] fan-xos → 150 (hozir 0) → fan/geografiya/_ped5_kasb.json ###
+node:fs:440
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open 'C:\Users\User\Desktop\CHQBT PLATFORMA\scratch\geografiya_spec.txt'
+    at Object.readFileSync (node:fs:440:20)
+    at file:///C:/Users/User/Desktop/CHQBT%20PLATFORMA/pipeline/run-api.mjs:62:27
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\User\\Desktop\\CHQBT PLATFORMA\\scratch\\geografiya_spec.txt'
+}
+
+Node.js v24.14.1
+[geografiya kasb] uzildi: Command failed: node pipeline/run-api.mjs --subject geografiya --blocks kasb --p
+
+=== YAKUN ===
+  jismoniy_tarbiya pedagogika: 450/450
+  jismoniy_tarbiya kasb: 154/150
+  boshlangich pedagogika: 455/450
+  boshlangich kasb: 151/150
+  ona_tili pedagogika: 315/313
+  ona_tili kasb: 110/104
+  biologiya pedagogika: 456/450
+  biologiya kasb: 154/150
+  geografiya pedagogika: 0/450
+  geografiya kasb: 0/150
+
+### jismoniy_tarbiya pedagogika: 450/450 — TAYYOR ###
+
+### jismoniy_tarbiya kasb: 154/150 — TAYYOR ###
+
+### boshlangich pedagogika: 455/450 — TAYYOR ###
+
+### boshlangich kasb: 151/150 — TAYYOR ###
+
+### ona_tili pedagogika: 315/313 — TAYYOR ###
+
+### ona_tili kasb: 110/104 — TAYYOR ###
+
+### biologiya pedagogika: 456/450 — TAYYOR ###
+
+### biologiya kasb: 154/150 — TAYYOR ###
+
+### geografiya [pedagogika] fan-xos → 450 (hozir 0) → fan/geografiya/_ped5_framed.json ###
+▶ Geografiya: maqsad 450 (hozir 0), 19 bo'lim, model zai-glm-4.7
+   manba: scratch/geografiya_spec.txt | few-shot langar: 5 ta [namuna: geografiya_savollar.json] | dedup baza: 0
+[aylanish 1 · 1/19] pedagogika "Bo'lim 2" ... +11  (jami 11/450)
+[aylanish 1 · 2/19] pedagogika "Bo'lim 3" ... [Limit/Error 429, kalit index: 1, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 2
++11  (jami 22/450)
+[aylanish 1 · 3/19] pedagogika "Bo'lim 4" ... +14  (jami 36/450)
+[aylanish 1 · 4/19] pedagogika "Bo'lim 5" ... [Limit/Error 429, kalit index: 4, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 5
++8  (jami 44/450)
+[aylanish 1 · 5/19] pedagogika "Bo'lim 6" ... +12  (jami 56/450)
+[aylanish 1 · 6/19] pedagogika "Bo'lim 7" ... +8  (jami 64/450)
+[aylanish 1 · 7/19] pedagogika "Bo'lim 8" ... +9  (jami 73/450)
+[aylanish 1 · 8/19] pedagogika "Bo'lim 9" ... +11  (jami 84/450)
+[aylanish 1 · 9/19] pedagogika "Bo'lim 10" ... +13  (jami 97/450)
+[aylanish 1 · 10/19] pedagogika "Bo'lim 11" ... +4  (jami 101/450)
+[aylanish 1 · 11/19] pedagogika "Bo'lim 14" ... +0  (jami 101/450)
+[aylanish 1 · 12/19] pedagogika "Bo'lim 15" ... +10  (jami 111/450)
+[aylanish 1 · 13/19] pedagogika "Bo'lim 16" ... +10  (jami 121/450)
+[aylanish 1 · 14/19] pedagogika "Bo'lim 17" ... +12  (jami 133/450)
+[aylanish 1 · 15/19] pedagogika "Bo'lim 18" ... [Limit/Error 429, kalit index: 16, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 17
++4  (jami 137/450)
+[aylanish 1 · 16/19] pedagogika "Bo'lim 19" ... +12  (jami 149/450)
+[aylanish 1 · 17/19] pedagogika "Bo'lim 20" ... +10  (jami 159/450)
+[aylanish 1 · 18/19] pedagogika "Bo'lim 21" ... +4  (jami 163/450)
+[aylanish 1 · 19/19] pedagogika "Bo'lim 22" ... +5  (jami 168/450)
+[aylanish 2 · 1/19] pedagogika "Bo'lim 2" ... +10  (jami 178/450)
+[aylanish 2 · 2/19] pedagogika "Bo'lim 3" ... +13  (jami 191/450)
+[aylanish 2 · 3/19] pedagogika "Bo'lim 4" ... +11  (jami 202/450)
+[aylanish 2 · 4/19] pedagogika "Bo'lim 5" ... +10  (jami 212/450)
+[aylanish 2 · 5/19] pedagogika "Bo'lim 6" ... +4  (jami 216/450)
+[aylanish 2 · 6/19] pedagogika "Bo'lim 7" ... [Bo'sh javob, urinish 1/5]
++13  (jami 229/450)
+[aylanish 2 · 7/19] pedagogika "Bo'lim 8" ... +13  (jami 242/450)
+[aylanish 2 · 8/19] pedagogika "Bo'lim 9" ... +8  (jami 250/450)
+[aylanish 2 · 9/19] pedagogika "Bo'lim 10" ... +14  (jami 264/450)
+[aylanish 2 · 10/19] pedagogika "Bo'lim 11" ... [API xato: The operation was aborted due to timeout, urinish 1/5]
+🔄 API xato tufayli keyingi API kalitga o'tilmoqda: index 10
++5  (jami 269/450)
+[aylanish 2 · 11/19] pedagogika "Bo'lim 14" ... +10  (jami 279/450)
+[aylanish 2 · 12/19] pedagogika "Bo'lim 15" ... +10  (jami 289/450)
+[aylanish 2 · 13/19] pedagogika "Bo'lim 16" ... +7  (jami 296/450)
+[aylanish 2 · 14/19] pedagogika "Bo'lim 17" ... +13  (jami 309/450)
+[aylanish 2 · 15/19] pedagogika "Bo'lim 18" ... +13  (jami 322/450)
+[aylanish 2 · 16/19] pedagogika "Bo'lim 19" ... +9  (jami 331/450)
+[aylanish 2 · 17/19] pedagogika "Bo'lim 20" ... +11  (jami 342/450)
+[aylanish 2 · 18/19] pedagogika "Bo'lim 21" ... +14  (jami 356/450)
+[aylanish 2 · 19/19] pedagogika "Bo'lim 22" ... +7  (jami 363/450)
+[aylanish 3 · 1/19] pedagogika "Bo'lim 2" ... +11  (jami 374/450)
+[aylanish 3 · 2/19] pedagogika "Bo'lim 3" ... +4  (jami 378/450)
+[aylanish 3 · 3/19] pedagogika "Bo'lim 4" ... +9  (jami 387/450)
+[aylanish 3 · 4/19] pedagogika "Bo'lim 5" ... +13  (jami 400/450)
+[aylanish 3 · 5/19] pedagogika "Bo'lim 6" ... [API xato: The operation was aborted due to timeout, urinish 1/5]
+🔄 API xato tufayli keyingi API kalitga o'tilmoqda: index 3
+[API xato: The operation was aborted due to timeout, urinish 2/5]
+🔄 API xato tufayli keyingi API kalitga o'tilmoqda: index 4
++9  (jami 409/450)
+[aylanish 3 · 6/19] pedagogika "Bo'lim 7" ... +13  (jami 422/450)
+[aylanish 3 · 7/19] pedagogika "Bo'lim 8" ... +13  (jami 435/450)
+[aylanish 3 · 8/19] pedagogika "Bo'lim 9" ... +10  (jami 445/450)
+[aylanish 3 · 9/19] pedagogika "Bo'lim 10" ... +5  (jami 450/450)
+
+✓ Jami: 450/450 (single 303, matching 40, sequence 41) | takror: 0 | yaroqsiz: 162 | format-cap skip: 0 | ifloslanish rad: 0
+   → fan/geografiya/_ped5_framed.json
+
+### geografiya [kasb] fan-xos → 150 (hozir 0) → fan/geografiya/_ped5_kasb.json ###
+▶ Geografiya: maqsad 150 (hozir 0), 3 bo'lim, model zai-glm-4.7
+   manba: scratch/geografiya_spec.txt | few-shot langar: 5 ta [namuna: geografiya_savollar.json] | dedup baza: 0
+[aylanish 1 · 1/3] kasb "Bo'lim 1" ... +5  (jami 5/150)
+[aylanish 1 · 2/3] kasb "Bo'lim 12" ... +5  (jami 10/150)
+[aylanish 1 · 3/3] kasb "Bo'lim 13" ... +8  (jami 18/150)
+[aylanish 2 · 1/3] kasb "Bo'lim 1" ... +8  (jami 26/150)
+[aylanish 2 · 2/3] kasb "Bo'lim 12" ... +7  (jami 33/150)
+[aylanish 2 · 3/3] kasb "Bo'lim 13" ... +6  (jami 39/150)
+[aylanish 3 · 1/3] kasb "Bo'lim 1" ... +13  (jami 52/150)
+[aylanish 3 · 2/3] kasb "Bo'lim 12" ... +8  (jami 60/150)
+[aylanish 3 · 3/3] kasb "Bo'lim 13" ... +9  (jami 69/150)
+[aylanish 4 · 1/3] kasb "Bo'lim 1" ... +12  (jami 81/150)
+[aylanish 4 · 2/3] kasb "Bo'lim 12" ... +8  (jami 89/150)
+[aylanish 4 · 3/3] kasb "Bo'lim 13" ... +7  (jami 96/150)
+[aylanish 5 · 1/3] kasb "Bo'lim 1" ... +12  (jami 108/150)
+[aylanish 5 · 2/3] kasb "Bo'lim 12" ... +5  (jami 113/150)
+[aylanish 5 · 3/3] kasb "Bo'lim 13" ... +8  (jami 121/150)
+[aylanish 6 · 1/3] kasb "Bo'lim 1" ... +13  (jami 134/150)
+[aylanish 6 · 2/3] kasb "Bo'lim 12" ... parse xato
+[aylanish 6 · 3/3] kasb "Bo'lim 13" ... +11  (jami 145/150)
+[aylanish 7 · 1/3] kasb "Bo'lim 1" ... +6  (jami 151/150)
+
+✓ Jami: 151/150 (single 98, matching 14, sequence 15) | takror: 0 | yaroqsiz: 82 | format-cap skip: 0 | ifloslanish rad: 0
+   → fan/geografiya/_ped5_kasb.json
+
+=== YAKUN ===
+  jismoniy_tarbiya pedagogika: 450/450
+  jismoniy_tarbiya kasb: 154/150
+  boshlangich pedagogika: 455/450
+  boshlangich kasb: 151/150
+  ona_tili pedagogika: 315/313
+  ona_tili kasb: 110/104
+  biologiya pedagogika: 456/450
+  biologiya kasb: 154/150
+  geografiya pedagogika: 450/450
+  geografiya kasb: 151/150

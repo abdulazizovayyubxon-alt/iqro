@@ -1,0 +1,694 @@
+  darslik grounding: scratch/art_book.txt (253 oyna) — mutaxassislik mavzulariga qo'shiladi
+▶ Tasviriy san'at: maqsad 2300 (hozir 0), 9 bo'lim, model zai-glm-4.7
+   manba: fan/spes/_txt/Тасвирий санъат ва чизмачилик т.txt | few-shot langar: 5 ta [namuna: tasviriy_savollar.json] | dedup baza: 1656
+[aylanish 1 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +5  (jami 5/2300)
+[aylanish 1 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +11  (jami 16/2300)
+[aylanish 1 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +2  (jami 18/2300)
+[aylanish 1 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +6  (jami 24/2300)
+[aylanish 1 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +9  (jami 33/2300)
+[aylanish 1 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +3  (jami 36/2300)
+[aylanish 1 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +7  (jami 43/2300)
+[aylanish 1 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +8  (jami 51/2300)
+[aylanish 1 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +9  (jami 60/2300)
+[aylanish 2 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +7  (jami 67/2300)
+[aylanish 2 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +10  (jami 77/2300)
+[aylanish 2 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +8  (jami 85/2300)
+[aylanish 2 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +11  (jami 96/2300)
+[aylanish 2 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +5  (jami 101/2300)
+[aylanish 2 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +9  (jami 110/2300)
+[aylanish 2 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +6  (jami 116/2300)
+[aylanish 2 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +6  (jami 122/2300)
+[aylanish 2 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +1  (jami 123/2300)
+[aylanish 3 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +10  (jami 133/2300)
+[aylanish 3 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +6  (jami 139/2300)
+[aylanish 3 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +3  (jami 142/2300)
+[aylanish 3 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +4  (jami 146/2300)
+[aylanish 3 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +7  (jami 153/2300)
+[aylanish 3 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +4  (jami 157/2300)
+[aylanish 3 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +1  (jami 158/2300)
+[aylanish 3 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +9  (jami 167/2300)
+[aylanish 3 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +7  (jami 174/2300)
+[aylanish 4 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +9  (jami 183/2300)
+[aylanish 4 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +9  (jami 192/2300)
+[aylanish 4 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +7  (jami 199/2300)
+[aylanish 4 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +9  (jami 208/2300)
+[aylanish 4 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +2  (jami 210/2300)
+[aylanish 4 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +10  (jami 220/2300)
+[aylanish 4 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... [Bo'sh javob, urinish 1/5]
++4  (jami 224/2300)
+[aylanish 4 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +7  (jami 231/2300)
+[aylanish 4 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +7  (jami 238/2300)
+[aylanish 5 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +11  (jami 249/2300)
+[aylanish 5 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +11  (jami 260/2300)
+[aylanish 5 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +8  (jami 268/2300)
+[aylanish 5 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +6  (jami 274/2300)
+[aylanish 5 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +9  (jami 283/2300)
+[aylanish 5 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +8  (jami 291/2300)
+[aylanish 5 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +10  (jami 301/2300)
+[aylanish 5 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +10  (jami 311/2300)
+[aylanish 5 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +6  (jami 317/2300)
+[aylanish 6 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +5  (jami 322/2300)
+[aylanish 6 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... [Bo'sh javob, urinish 1/5]
++6  (jami 328/2300)
+[aylanish 6 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +6  (jami 334/2300)
+[aylanish 6 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... [Bo'sh javob, urinish 1/5]
++4  (jami 338/2300)
+[aylanish 6 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +8  (jami 346/2300)
+[aylanish 6 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +3  (jami 349/2300)
+[aylanish 6 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +7  (jami 356/2300)
+[aylanish 6 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +8  (jami 364/2300)
+[aylanish 6 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +4  (jami 368/2300)
+[aylanish 7 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +3  (jami 371/2300)
+[aylanish 7 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +7  (jami 378/2300)
+[aylanish 7 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... parse xato
+[aylanish 7 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +4  (jami 382/2300)
+[aylanish 7 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +9  (jami 391/2300)
+[aylanish 7 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +9  (jami 400/2300)
+[aylanish 7 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +7  (jami 407/2300)
+[aylanish 7 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +9  (jami 416/2300)
+[aylanish 7 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +1  (jami 417/2300)
+[aylanish 8 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +5  (jami 422/2300)
+[aylanish 8 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +4  (jami 426/2300)
+[aylanish 8 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +7  (jami 433/2300)
+[aylanish 8 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +10  (jami 443/2300)
+[aylanish 8 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +2  (jami 445/2300)
+[aylanish 8 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +9  (jami 454/2300)
+[aylanish 8 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +4  (jami 458/2300)
+[aylanish 8 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +9  (jami 467/2300)
+[aylanish 8 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +8  (jami 475/2300)
+[aylanish 9 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +3  (jami 478/2300)
+[aylanish 9 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +9  (jami 487/2300)
+[aylanish 9 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +2  (jami 489/2300)
+[aylanish 9 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +3  (jami 492/2300)
+[aylanish 9 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +5  (jami 497/2300)
+[aylanish 9 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +12  (jami 509/2300)
+[aylanish 9 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +9  (jami 518/2300)
+[aylanish 9 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +6  (jami 524/2300)
+[aylanish 9 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +6  (jami 530/2300)
+[aylanish 10 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +5  (jami 535/2300)
+[aylanish 10 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +8  (jami 543/2300)
+[aylanish 10 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +5  (jami 548/2300)
+[aylanish 10 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +7  (jami 555/2300)
+[aylanish 10 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +11  (jami 566/2300)
+[aylanish 10 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +8  (jami 574/2300)
+[aylanish 10 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +4  (jami 578/2300)
+[aylanish 10 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +5  (jami 583/2300)
+[aylanish 10 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... [Limit/Error 429, kalit index: 9, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 10
+[Limit/Error 429, kalit index: 10, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 11
+[Limit/Error 429, kalit index: 11, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 12
+[Limit/Error 429, kalit index: 12, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 13
+[Limit/Error 429, kalit index: 13, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 14
+parse xato
+[aylanish 11 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... [Limit/Error 429, kalit index: 14, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 15
+[Limit/Error 429, kalit index: 15, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 16
+[Limit/Error 429, kalit index: 16, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 17
+[Limit/Error 429, kalit index: 17, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 18
+[Limit/Error 429, kalit index: 18, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 19
+parse xato
+[aylanish 11 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... [Limit/Error 429, kalit index: 19, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 0
+[Limit/Error 429, kalit index: 0, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 1
+[Limit/Error 429, kalit index: 1, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 2
+[Limit/Error 429, kalit index: 2, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 3
+[Limit/Error 429, kalit index: 3, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 4
+parse xato
+[aylanish 11 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... [Limit/Error 429, kalit index: 4, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 5
+[Limit/Error 429, kalit index: 5, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 6
+[Limit/Error 429, kalit index: 6, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 7
+[Limit/Error 429, kalit index: 7, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 8
+[Limit/Error 429, kalit index: 8, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 9
+parse xato
+[aylanish 11 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... [Limit/Error 429, kalit index: 9, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 10
+[Limit/Error 429, kalit index: 10, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 11
+[Limit/Error 429, kalit index: 11, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 12
+[Limit/Error 429, kalit index: 12, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 13
+[Limit/Error 429, kalit index: 13, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 14
+parse xato
+[aylanish 11 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... [Limit/Error 429, kalit index: 14, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 15
+[Limit/Error 429, kalit index: 15, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 16
+[Limit/Error 429, kalit index: 16, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 17
+[Limit/Error 429, kalit index: 17, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 18
+[Limit/Error 429, kalit index: 18, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 19
+parse xato
+[aylanish 11 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +11  (jami 594/2300)
+[aylanish 11 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +3  (jami 597/2300)
+[aylanish 11 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +5  (jami 602/2300)
+[aylanish 11 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +5  (jami 607/2300)
+[aylanish 12 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +6  (jami 613/2300)
+[aylanish 12 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +6  (jami 619/2300)
+[aylanish 12 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +11  (jami 630/2300)
+[aylanish 12 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +7  (jami 637/2300)
+[aylanish 12 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +7  (jami 644/2300)
+[aylanish 12 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... [Limit/Error 429, kalit index: 8, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 9
++7  (jami 651/2300)
+[aylanish 12 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +7  (jami 658/2300)
+[aylanish 12 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +4  (jami 662/2300)
+[aylanish 12 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... [Limit/Error 429, kalit index: 12, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 13
+[Limit/Error 429, kalit index: 13, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 14
+[Limit/Error 429, kalit index: 14, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 15
++6  (jami 668/2300)
+[aylanish 13 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... [Limit/Error 429, kalit index: 16, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 17
+[Limit/Error 429, kalit index: 17, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 18
+[Limit/Error 429, kalit index: 18, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 19
+[Limit/Error 429, kalit index: 19, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 0
+[Limit/Error 429, kalit index: 0, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 1
+parse xato
+[aylanish 13 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +9  (jami 677/2300)
+[aylanish 13 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +7  (jami 684/2300)
+[aylanish 13 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +9  (jami 693/2300)
+[aylanish 13 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +9  (jami 702/2300)
+[aylanish 13 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +6  (jami 708/2300)
+[aylanish 13 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +7  (jami 715/2300)
+[aylanish 13 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +7  (jami 722/2300)
+[aylanish 13 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +8  (jami 730/2300)
+[aylanish 14 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +9  (jami 739/2300)
+[aylanish 14 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... [API xato: The operation was aborted due to timeout, urinish 1/5]
+🔄 API xato tufayli keyingi API kalitga o'tilmoqda: index 11
++9  (jami 748/2300)
+[aylanish 14 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... parse xato
+[aylanish 14 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +4  (jami 752/2300)
+[aylanish 14 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +6  (jami 758/2300)
+[aylanish 14 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +5  (jami 763/2300)
+[aylanish 14 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... [Bo'sh javob, urinish 1/5]
+=== QAYTA BOSHLANDI 21:54:22 ===
+  darslik grounding: scratch/art_book.txt (253 oyna) — mutaxassislik mavzulariga qo'shiladi
+  ↩ Davom ettirish: 763 ta savol yuklandi
+▶ Tasviriy san'at: maqsad 2300 (hozir 763), 9 bo'lim, model zai-glm-4.7
+   manba: fan/spes/_txt/Тасвирий санъат ва чизмачилик т.txt | few-shot langar: 5 ta [namuna: tasviriy_savollar.json] | dedup baza: 3182
+[aylanish 1 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +5  (jami 768/2300)
+[aylanish 1 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... parse xato
+[aylanish 1 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +9  (jami 777/2300)
+[aylanish 1 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +9  (jami 786/2300)
+[aylanish 1 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +8  (jami 794/2300)
+[aylanish 1 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +8  (jami 802/2300)
+[aylanish 1 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +5  (jami 807/2300)
+[aylanish 1 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... [Limit/Error 429, kalit index: 7, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 8
++11  (jami 818/2300)
+[aylanish 1 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +8  (jami 826/2300)
+[aylanish 2 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +7  (jami 833/2300)
+[aylanish 2 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +9  (jami 842/2300)
+[aylanish 2 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +3  (jami 845/2300)
+[aylanish 2 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +7  (jami 852/2300)
+[aylanish 2 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... [Limit/Error 429, kalit index: 14, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 15
+[Limit/Error 429, kalit index: 15, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 16
++8  (jami 860/2300)
+[aylanish 2 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... [API xato: The operation was aborted due to timeout, urinish 1/5]
+🔄 API xato tufayli keyingi API kalitga o'tilmoqda: index 18
++7  (jami 867/2300)
+[aylanish 2 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +7  (jami 874/2300)
+[aylanish 2 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... [Limit/Error 429, kalit index: 0, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 1
+[Limit/Error 429, kalit index: 1, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 2
+[Limit/Error 429, kalit index: 2, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 3
+[Limit/Error 429, kalit index: 3, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 4
+[Limit/Error 429, kalit index: 4, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 5
+parse xato
+[aylanish 2 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... [Limit/Error 429, kalit index: 5, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 6
+[Limit/Error 429, kalit index: 6, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 7
+[Limit/Error 429, kalit index: 7, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 8
+[Limit/Error 429, kalit index: 8, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 9
+[Limit/Error 429, kalit index: 9, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 10
+parse xato
+[aylanish 3 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +10  (jami 884/2300)
+[aylanish 3 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +9  (jami 893/2300)
+[aylanish 3 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +5  (jami 898/2300)
+[aylanish 3 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +4  (jami 902/2300)
+[aylanish 3 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +10  (jami 912/2300)
+[aylanish 3 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +11  (jami 923/2300)
+[aylanish 3 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +8  (jami 931/2300)
+[aylanish 3 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +3  (jami 934/2300)
+[aylanish 3 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +1  (jami 935/2300)
+[aylanish 4 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... [Bo'sh javob, urinish 1/5]
++4  (jami 939/2300)
+[aylanish 4 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +9  (jami 948/2300)
+[aylanish 4 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +10  (jami 958/2300)
+[aylanish 4 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +9  (jami 967/2300)
+[aylanish 4 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +10  (jami 977/2300)
+[aylanish 4 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... parse xato
+[aylanish 4 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +6  (jami 983/2300)
+[aylanish 4 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +6  (jami 989/2300)
+[aylanish 4 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +6  (jami 995/2300)
+[aylanish 5 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +3  (jami 998/2300)
+[aylanish 5 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +6  (jami 1004/2300)
+[aylanish 5 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +8  (jami 1012/2300)
+[aylanish 5 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +9  (jami 1021/2300)
+[aylanish 5 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +6  (jami 1027/2300)
+[aylanish 5 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +10  (jami 1037/2300)
+[aylanish 5 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +9  (jami 1046/2300)
+[aylanish 5 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +8  (jami 1054/2300)
+[aylanish 5 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +6  (jami 1060/2300)
+[aylanish 6 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +5  (jami 1065/2300)
+[aylanish 6 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +7  (jami 1072/2300)
+[aylanish 6 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +8  (jami 1080/2300)
+[aylanish 6 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +5  (jami 1085/2300)
+[aylanish 6 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +7  (jami 1092/2300)
+[aylanish 6 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +7  (jami 1099/2300)
+[aylanish 6 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +6  (jami 1105/2300)
+[aylanish 6 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +8  (jami 1113/2300)
+[aylanish 6 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... === DAVOM (resume) 22:22:16 ===
+  darslik grounding: scratch/art_book.txt (253 oyna) — mutaxassislik mavzulariga qo'shiladi
+  ↩ Davom ettirish: 1113 ta savol yuklandi
+▶ Tasviriy san'at: maqsad 2300 (hozir 1113), 9 bo'lim, model zai-glm-4.7
+   manba: fan/spes/_txt/Тасвирий санъат ва чизмачилик т.txt | few-shot langar: 5 ta [namuna: tasviriy_savollar.json] | dedup baza: 3882
+[aylanish 1 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... [Limit/Error 429, kalit index: 0, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 1
++6  (jami 1119/2300)
+[aylanish 1 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +8  (jami 1127/2300)
+[aylanish 1 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +3  (jami 1130/2300)
+[aylanish 1 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... parse xato
+[aylanish 1 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +4  (jami 1134/2300)
+[aylanish 1 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +10  (jami 1144/2300)
+[aylanish 1 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +7  (jami 1151/2300)
+[aylanish 1 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +11  (jami 1162/2300)
+[aylanish 1 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +6  (jami 1168/2300)
+[aylanish 2 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +8  (jami 1176/2300)
+[aylanish 2 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +10  (jami 1186/2300)
+[aylanish 2 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +5  (jami 1191/2300)
+[aylanish 2 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +8  (jami 1199/2300)
+[aylanish 2 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +4  (jami 1203/2300)
+[aylanish 2 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +7  (jami 1210/2300)
+[aylanish 2 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +6  (jami 1216/2300)
+[aylanish 2 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +4  (jami 1220/2300)
+[aylanish 2 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +10  (jami 1230/2300)
+[aylanish 3 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +8  (jami 1238/2300)
+[aylanish 3 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... [Limit/Error 429, kalit index: 0, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 1
+[Limit/Error 429, kalit index: 1, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 2
+[Limit/Error 429, kalit index: 2, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 3
+[Limit/Error 429, kalit index: 3, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 4
++11  (jami 1249/2300)
+[aylanish 3 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +7  (jami 1256/2300)
+[aylanish 3 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +9  (jami 1265/2300)
+[aylanish 3 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +8  (jami 1273/2300)
+[aylanish 3 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +3  (jami 1276/2300)
+[aylanish 3 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +5  (jami 1281/2300)
+[aylanish 3 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +9  (jami 1290/2300)
+[aylanish 3 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +6  (jami 1296/2300)
+[aylanish 4 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +6  (jami 1302/2300)
+[aylanish 4 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +11  (jami 1313/2300)
+[aylanish 4 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +3  (jami 1316/2300)
+[aylanish 4 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +6  (jami 1322/2300)
+[aylanish 4 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +8  (jami 1330/2300)
+[aylanish 4 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... [Bo'sh javob, urinish 1/5]
++10  (jami 1340/2300)
+[aylanish 4 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +5  (jami 1345/2300)
+[aylanish 4 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +5  (jami 1350/2300)
+[aylanish 4 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +0  (jami 1350/2300)
+[aylanish 5 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +8  (jami 1358/2300)
+[aylanish 5 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... parse xato
+[aylanish 5 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... [Limit/Error 429, kalit index: 3, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 4
++4  (jami 1362/2300)
+[aylanish 5 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +8  (jami 1370/2300)
+[aylanish 5 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +3  (jami 1373/2300)
+[aylanish 5 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +10  (jami 1383/2300)
+[aylanish 5 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +8  (jami 1391/2300)
+[aylanish 5 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +8  (jami 1399/2300)
+[aylanish 5 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +11  (jami 1410/2300)
+[aylanish 6 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +7  (jami 1417/2300)
+[aylanish 6 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +9  (jami 1426/2300)
+[aylanish 6 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +9  (jami 1435/2300)
+[aylanish 6 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +5  (jami 1440/2300)
+[aylanish 6 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +10  (jami 1450/2300)
+[aylanish 6 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +7  (jami 1457/2300)
+[aylanish 6 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +3  (jami 1460/2300)
+[aylanish 6 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +3  (jami 1463/2300)
+[aylanish 6 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +5  (jami 1468/2300)
+[aylanish 7 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... [Limit/Error 429, kalit index: 0, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 1
+[Limit/Error 429, kalit index: 1, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 2
+[Limit/Error 429, kalit index: 2, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 3
+[Limit/Error 429, kalit index: 3, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 4
+[Limit/Error 429, kalit index: 4, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 5
+parse xato
+[aylanish 7 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... [Limit/Error 429, kalit index: 5, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 6
+[Limit/Error 429, kalit index: 6, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 7
++9  (jami 1477/2300)
+[aylanish 7 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... [Limit/Error 429, kalit index: 8, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 9
++1  (jami 1478/2300)
+[aylanish 7 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +7  (jami 1485/2300)
+[aylanish 7 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +6  (jami 1491/2300)
+[aylanish 7 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +7  (jami 1498/2300)
+[aylanish 7 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +3  (jami 1501/2300)
+[aylanish 7 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +7  (jami 1508/2300)
+[aylanish 7 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +6  (jami 1514/2300)
+[aylanish 8 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +7  (jami 1521/2300)
+[aylanish 8 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +8  (jami 1529/2300)
+[aylanish 8 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +7  (jami 1536/2300)
+[aylanish 8 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +5  (jami 1541/2300)
+[aylanish 8 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... [Limit/Error 429, kalit index: 0, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 1
+[Limit/Error 429, kalit index: 1, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 2
+[Limit/Error 429, kalit index: 2, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 3
++7  (jami 1548/2300)
+[aylanish 8 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... [Limit/Error 429, kalit index: 4, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 5
+[Limit/Error 429, kalit index: 5, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 6
+[Limit/Error 429, kalit index: 6, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 7
+[Limit/Error 429, kalit index: 7, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 8
+[Limit/Error 429, kalit index: 8, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 9
+parse xato
+[aylanish 8 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... [Bo'sh javob, urinish 1/5]
++1  (jami 1549/2300)
+[aylanish 8 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +8  (jami 1557/2300)
+[aylanish 8 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +10  (jami 1567/2300)
+[aylanish 9 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +5  (jami 1572/2300)
+[aylanish 9 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +11  (jami 1583/2300)
+[aylanish 9 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +10  (jami 1593/2300)
+[aylanish 9 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +4  (jami 1597/2300)
+[aylanish 9 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +8  (jami 1605/2300)
+[aylanish 9 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +4  (jami 1609/2300)
+[aylanish 9 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +7  (jami 1616/2300)
+[aylanish 9 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +4  (jami 1620/2300)
+[aylanish 9 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... [Limit/Error 429, kalit index: 0, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 1
+[Limit/Error 429, kalit index: 1, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 2
+[Limit/Error 429, kalit index: 2, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 3
+[Limit/Error 429, kalit index: 3, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 4
+[Limit/Error 429, kalit index: 4, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 5
+parse xato
+[aylanish 10 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +1  (jami 1621/2300)
+[aylanish 10 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... [Limit/Error 429, kalit index: 6, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 7
+[Limit/Error 429, kalit index: 7, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 8
+[Limit/Error 429, kalit index: 8, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 9
++7  (jami 1628/2300)
+[aylanish 10 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +11  (jami 1639/2300)
+[aylanish 10 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +11  (jami 1650/2300)
+[aylanish 10 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +6  (jami 1656/2300)
+[aylanish 10 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +4  (jami 1660/2300)
+[aylanish 10 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +7  (jami 1667/2300)
+[aylanish 10 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +8  (jami 1675/2300)
+[aylanish 10 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +7  (jami 1682/2300)
+[aylanish 11 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +3  (jami 1685/2300)
+[aylanish 11 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +9  (jami 1694/2300)
+[aylanish 11 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +9  (jami 1703/2300)
+[aylanish 11 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... [Limit/Error 429, kalit index: 0, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 1
+[Limit/Error 429, kalit index: 1, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 2
+[Limit/Error 429, kalit index: 2, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 3
+[Limit/Error 429, kalit index: 3, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 4
++6  (jami 1709/2300)
+[aylanish 11 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... [Limit/Error 429, kalit index: 5, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 6
+[Limit/Error 429, kalit index: 6, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 7
++6  (jami 1715/2300)
+[aylanish 11 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +7  (jami 1722/2300)
+[aylanish 11 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +3  (jami 1725/2300)
+[aylanish 11 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +5  (jami 1730/2300)
+[aylanish 11 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +4  (jami 1734/2300)
+[aylanish 12 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +7  (jami 1741/2300)
+[aylanish 12 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +5  (jami 1746/2300)
+[aylanish 12 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +2  (jami 1748/2300)
+[aylanish 12 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +8  (jami 1756/2300)
+[aylanish 12 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +1  (jami 1757/2300)
+[aylanish 12 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +8  (jami 1765/2300)
+[aylanish 12 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +7  (jami 1772/2300)
+[aylanish 12 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +9  (jami 1781/2300)
+[aylanish 12 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +6  (jami 1787/2300)
+[aylanish 13 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +8  (jami 1795/2300)
+[aylanish 13 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +6  (jami 1801/2300)
+[aylanish 13 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... [Limit/Error 429, kalit index: 3, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 4
+[Limit/Error 429, kalit index: 4, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 5
+[Limit/Error 429, kalit index: 5, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 6
++4  (jami 1805/2300)
+[aylanish 13 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... [Limit/Error 429, kalit index: 7, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 8
+[Limit/Error 429, kalit index: 8, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 9
++6  (jami 1811/2300)
+[aylanish 13 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +6  (jami 1817/2300)
+[aylanish 13 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +7  (jami 1824/2300)
+[aylanish 13 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +9  (jami 1833/2300)
+[aylanish 13 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +8  (jami 1841/2300)
+[aylanish 13 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +11  (jami 1852/2300)
+[aylanish 14 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +2  (jami 1854/2300)
+[aylanish 14 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... === DAVOM (manual+loop) 23:21:02 ===
+  darslik grounding: scratch/art_book.txt (253 oyna) — mutaxassislik mavzulariga qo'shiladi
+  ↩ Davom ettirish: 1854 ta savol yuklandi
+▶ Tasviriy san'at: maqsad 2300 (hozir 1854), 9 bo'lim, model zai-glm-4.7
+   manba: fan/spes/_txt/Тасвирий санъат ва чизмачилик т.txt | few-shot langar: 5 ta [namuna: tasviriy_savollar.json] | dedup baza: 5364
+[aylanish 1 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +6  (jami 1860/2300)
+[aylanish 1 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +1  (jami 1861/2300)
+[aylanish 1 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +7  (jami 1868/2300)
+[aylanish 1 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +12  (jami 1880/2300)
+[aylanish 1 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +2  (jami 1882/2300)
+[aylanish 1 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +8  (jami 1890/2300)
+[aylanish 1 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +6  (jami 1896/2300)
+[aylanish 1 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +10  (jami 1906/2300)
+[aylanish 1 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +9  (jami 1915/2300)
+[aylanish 2 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +9  (jami 1924/2300)
+[aylanish 2 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +8  (jami 1932/2300)
+[aylanish 2 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +6  (jami 1938/2300)
+[aylanish 2 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +2  (jami 1940/2300)
+[aylanish 2 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +5  (jami 1945/2300)
+[aylanish 2 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +1  (jami 1946/2300)
+[aylanish 2 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +7  (jami 1953/2300)
+[aylanish 2 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +10  (jami 1963/2300)
+[aylanish 2 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +6  (jami 1969/2300)
+[aylanish 3 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +4  (jami 1973/2300)
+[aylanish 3 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +9  (jami 1982/2300)
+[aylanish 3 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... [Limit/Error 429, kalit index: 0, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 1
+[Limit/Error 429, kalit index: 1, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 2
+[Limit/Error 429, kalit index: 2, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 3
++8  (jami 1990/2300)
+[aylanish 3 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... [Limit/Error 429, kalit index: 4, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 5
+[Limit/Error 429, kalit index: 5, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 6
+[Limit/Error 429, kalit index: 6, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 7
+[Limit/Error 429, kalit index: 7, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 8
+[Limit/Error 429, kalit index: 8, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 9
+parse xato
+[aylanish 3 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +6  (jami 1996/2300)
+[aylanish 3 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +3  (jami 1999/2300)
+[aylanish 3 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +4  (jami 2003/2300)
+[aylanish 3 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +2  (jami 2005/2300)
+[aylanish 3 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +3  (jami 2008/2300)
+[aylanish 4 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... [Bo'sh javob, urinish 1/5]
++6  (jami 2014/2300)
+[aylanish 4 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +8  (jami 2022/2300)
+[aylanish 4 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +7  (jami 2029/2300)
+[aylanish 4 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +6  (jami 2035/2300)
+[aylanish 4 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +7  (jami 2042/2300)
+[aylanish 4 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +8  (jami 2050/2300)
+[aylanish 4 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... [Limit/Error 429, kalit index: 0, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 1
+[Limit/Error 429, kalit index: 1, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 2
+[Limit/Error 429, kalit index: 2, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 3
+[Limit/Error 429, kalit index: 3, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 4
+[Limit/Error 429, kalit index: 4, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 5
+parse xato
+[aylanish 4 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... [Limit/Error 429, kalit index: 5, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 6
+[Limit/Error 429, kalit index: 6, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 7
+[Limit/Error 429, kalit index: 7, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 8
+[Limit/Error 429, kalit index: 8, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 9
++7  (jami 2057/2300)
+[aylanish 4 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +2  (jami 2059/2300)
+[aylanish 5 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +9  (jami 2068/2300)
+[aylanish 5 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +8  (jami 2076/2300)
+[aylanish 5 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +6  (jami 2082/2300)
+[aylanish 5 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +8  (jami 2090/2300)
+[aylanish 5 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +9  (jami 2099/2300)
+[aylanish 5 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +9  (jami 2108/2300)
+[aylanish 5 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +10  (jami 2118/2300)
+[aylanish 5 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +9  (jami 2127/2300)
+[aylanish 5 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +8  (jami 2135/2300)
+[aylanish 6 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... [Limit/Error 429, kalit index: 0, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 1
+[Limit/Error 429, kalit index: 1, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 2
+[Limit/Error 429, kalit index: 2, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 3
+[Limit/Error 429, kalit index: 3, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 4
+[Limit/Error 429, kalit index: 4, urinish 5/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 5
+parse xato
+[aylanish 6 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +7  (jami 2142/2300)
+[aylanish 6 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... [Limit/Error 429, kalit index: 6, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 7
+[Limit/Error 429, kalit index: 7, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 8
+[Limit/Error 429, kalit index: 8, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 9
++9  (jami 2151/2300)
+[aylanish 6 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +9  (jami 2160/2300)
+[aylanish 6 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +9  (jami 2169/2300)
+[aylanish 6 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +8  (jami 2177/2300)
+[aylanish 6 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... [Bo'sh javob, urinish 1/5]
++9  (jami 2186/2300)
+[aylanish 6 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +5  (jami 2191/2300)
+[aylanish 6 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +6  (jami 2197/2300)
+[aylanish 7 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... parse xato
+[aylanish 7 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +3  (jami 2200/2300)
+[aylanish 7 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +3  (jami 2203/2300)
+[aylanish 7 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +6  (jami 2209/2300)
+[aylanish 7 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... [Limit/Error 429, kalit index: 0, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 1
+[Limit/Error 429, kalit index: 1, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 2
+[Limit/Error 429, kalit index: 2, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 3
+[Limit/Error 429, kalit index: 3, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 4
++10  (jami 2219/2300)
+[aylanish 7 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... [Limit/Error 429, kalit index: 5, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 6
+[Limit/Error 429, kalit index: 6, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 7
++8  (jami 2227/2300)
+[aylanish 7 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +9  (jami 2236/2300)
+[aylanish 7 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +8  (jami 2244/2300)
+[aylanish 7 · 9/9] mutaxassislik "2.9. Qurilish chizmalari (32-35-" ... +8  (jami 2252/2300)
+[aylanish 8 · 1/9] mutaxassislik "1.1. Tasviriy san’at asoslari (1" ... +2  (jami 2254/2300)
+[aylanish 8 · 2/9] mutaxassislik "1.2. Amaliy bezak san’at (11-13-" ... +9  (jami 2263/2300)
+[aylanish 8 · 3/9] mutaxassislik "1.3. Me’morlik san’ati (14-15-sa" ... +8  (jami 2271/2300)
+[aylanish 8 · 4/9] mutaxassislik "1.4. Miniatyura san’ati (16-17-s" ... +2  (jami 2273/2300)
+[aylanish 8 · 5/9] mutaxassislik "1.5. Dizayn san’ati (18-savol)" ... +3  (jami 2276/2300)
+[aylanish 8 · 6/9] mutaxassislik "1.6. Zamonaviy tasviriy san’at t" ... +7  (jami 2283/2300)
+[aylanish 8 · 7/9] mutaxassislik "2.7. Grafik savodxonlik asoslari" ... +11  (jami 2294/2300)
+[aylanish 8 · 8/9] mutaxassislik "2.8. Mashinasozlik chizmalari (2" ... +10  (jami 2304/2300)
+
+✓ Jami: 2304/2300 (single 1654, matching 230, sequence 154) | takror: 20 | yaroqsiz: 81 | format-cap skip: 0
+   → fan/art/gen_art_mutaxassislik.json
+=== METODIKA gen 23:58:22 ===
+  darslik grounding: scratch/art_book.txt (253 oyna) — mutaxassislik mavzulariga qo'shiladi
+▶ Tasviriy san'at: maqsad 140 (hozir 0), 2 bo'lim, model zai-glm-4.7
+   manba: fan/spes/_txt/Тасвирий санъат ва чизмачилик т.txt | few-shot langar: 5 ta [namuna: tasviriy_savollar.json] | dedup baza: 6264
+[aylanish 1 · 1/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (1" ... +4  (jami 4/140)
+[aylanish 1 · 2/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (2" ... +5  (jami 9/140)
+[aylanish 2 · 1/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (1" ... +8  (jami 17/140)
+[aylanish 2 · 2/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (2" ... +7  (jami 24/140)
+[aylanish 3 · 1/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (1" ... [Limit/Error 429, kalit index: 4, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 5
++6  (jami 30/140)
+[aylanish 3 · 2/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (2" ... +5  (jami 35/140)
+[aylanish 4 · 1/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (1" ... [Limit/Error 429, kalit index: 7, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 8
+[Limit/Error 429, kalit index: 8, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 9
++7  (jami 42/140)
+[aylanish 4 · 2/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (2" ... +8  (jami 50/140)
+[aylanish 5 · 1/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (1" ... +3  (jami 53/140)
+[aylanish 5 · 2/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (2" ... +9  (jami 62/140)
+[aylanish 6 · 1/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (1" ... +10  (jami 72/140)
+[aylanish 6 · 2/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (2" ... +6  (jami 78/140)
+[aylanish 7 · 1/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (1" ... +8  (jami 86/140)
+[aylanish 7 · 2/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (2" ... +6  (jami 92/140)
+[aylanish 8 · 1/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (1" ... +10  (jami 102/140)
+[aylanish 8 · 2/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (2" ... +6  (jami 108/140)
+[aylanish 9 · 1/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (1" ... +8  (jami 116/140)
+[aylanish 9 · 2/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (2" ... [Limit/Error 429, kalit index: 0, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 1
+[Limit/Error 429, kalit index: 1, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 2
+[Limit/Error 429, kalit index: 2, urinish 3/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 3
+[Limit/Error 429, kalit index: 3, urinish 4/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 4
++7  (jami 123/140)
+[aylanish 10 · 1/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (1" ... [Limit/Error 429, kalit index: 5, urinish 1/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 6
+[Limit/Error 429, kalit index: 6, urinish 2/5]
+🔄 Keyingi API kalitga o'tilmoqda: index 7
++4  (jami 127/140)
+[aylanish 10 · 2/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (2" ... +6  (jami 133/140)
+[aylanish 11 · 1/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (1" ... +6  (jami 139/140)
+[aylanish 11 · 2/2] mutaxassislik "2.2. Tasviriy san’at o‘qitish (2" ... +7  (jami 146/140)
+
+✓ Jami: 146/140 (single 103, matching 14, sequence 10) | takror: 0 | yaroqsiz: 40 | format-cap skip: 0
+   → fan/art/gen_art_metodika.json
