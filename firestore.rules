@@ -25,7 +25,7 @@ service cloud.firestore {
       allow write: if isOwner(userId) || isAdmin();
     }
 
-    // ── questions: hamma o'qiy oladi, faqat admin yoza oladi ──
+    // ── questions: hamma o'qiy oladi, faqat admin yoza oladi (topicId↔category oralig'i bilan) ──
     match /questions/{docId} {
       allow read: if isLoggedIn();
       allow create, update: if isAdmin() && (
@@ -36,10 +36,12 @@ service cloud.firestore {
         (request.resource.data.topicId >= 31 && request.resource.data.topicId <= 38 && request.resource.data.category == 'boshlangich') ||
         (request.resource.data.topicId >= 39 && request.resource.data.topicId <= 46 && request.resource.data.category == 'info') ||
         (request.resource.data.topicId >= 47 && request.resource.data.topicId <= 54 && request.resource.data.category == 'mtt') ||
-        // til (adabiyot -> til ko'chirildi; endi faqat 'til')
-        (request.resource.data.topicId >= 55 && request.resource.data.topicId <= 62 && request.resource.data.category == 'til') ||
+        // til va adabiyot (adabiyot -> til ko'chirilishi uchun vaqtincha ruxsat)
+        (request.resource.data.topicId >= 55 && request.resource.data.topicId <= 62 && (request.resource.data.category == 'til' || request.resource.data.category == 'adabiyot')) ||
         // mtt_rahbar (63-70)
-        (request.resource.data.topicId >= 63 && request.resource.data.topicId <= 70 && request.resource.data.category == 'mtt_rahbar') ||
+        (request.resource.data.topicId >= 63 && request.resource.data.topicId <= 70 && (request.resource.data.category == 'mtt_rahbar' || request.resource.data.category == 'adabiyot')) ||
+        // nemis tili (71-79)
+        (request.resource.data.topicId >= 71 && request.resource.data.topicId <= 79 && request.resource.data.category == 'nemis') ||
         // ── YANGI fanlar (fan 2), topicId 80-113 ──
         (request.resource.data.topicId >= 80 && request.resource.data.topicId <= 86 && request.resource.data.category == 'biologiya') ||
         (request.resource.data.topicId >= 87 && request.resource.data.topicId <= 96 && request.resource.data.category == 'geografiya') ||
@@ -49,17 +51,15 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
-    // ── objections: foydalanuvchi faqat O'Z e'tirozini yuboradi/o'qiydi;
-    //    boshqalarnikini o'qish/o'zgartirish/o'chirish faqat admin ──
+    // ── objections: foydalanuvchi faqat O'Z e'tirozini o'qiydi (maxfiylik); admin hammasini boshqaradi ──
     match /objections/{docId} {
       allow read: if isAdmin() || (isLoggedIn() && resource.data.uid == request.auth.uid);
-      allow create: if isLoggedIn() && request.resource.data.uid == request.auth.uid;
-      allow update, delete: if isAdmin();
+      allow create: if isLoggedIn();
+      allow update: if isLoggedIn();
+      allow delete: if isAdmin();
     }
 
-    // ── questionRequests: "Ko'proq savol kerak" so'rovi (tirik halqa).
-    //    objections kabi — foydalanuvchi faqat O'Z so'rovini yuboradi/o'qiydi;
-    //    boshqalarnikini o'qish/bajardi-belgilash/o'chirish faqat admin ──
+    // ── questionRequests: "Ko'proq savol kerak" so'rovi — foydalanuvchi o'z so'rovini yuboradi/o'qiydi, admin boshqaradi ──
     match /questionRequests/{docId} {
       allow read: if isAdmin() || (isLoggedIn() && resource.data.uid == request.auth.uid);
       allow create: if isLoggedIn() && request.resource.data.uid == request.auth.uid;
@@ -69,8 +69,8 @@ service cloud.firestore {
     // ── users: foydalanuvchi profili (faqat o'zini o'qiydi yoki admin) ──
     match /users/{userId} {
       allow read: if isOwner(userId) || isAdmin();
-      allow create: if isOwner(userId) 
-                    && request.resource.data.role == 'user' 
+      allow create: if isOwner(userId)
+                    && request.resource.data.role == 'user'
                     && (request.resource.data.isPremium == false || !('isPremium' in request.resource.data));
       allow update: if isAdmin() || (
         isOwner(userId)
@@ -104,8 +104,7 @@ service cloud.firestore {
       allow write: if isOwner(userId) || isAdmin();
     }
 
-    // ── promoCodes: faqat admin boshqaradi; redemption FAQAT server
-    //    (api/redeem-promo.js, Admin SDK) orqali — mijozga yopiq ──
+    // ── promoCodes: faqat admin boshqaradi; redemption FAQAT server (Admin SDK) orqali ──
     match /promoCodes/{code} {
       allow read, write: if isAdmin();
     }
