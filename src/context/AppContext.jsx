@@ -364,7 +364,20 @@ export const AppProvider = ({ children }) => {
     return () => document.removeEventListener('visibilitychange', onVisibilityChange);
   }, []);
 
-  const updateState = (updates) => setState(prev => ({ ...prev, ...updates }));
+  const updateState = (updates) => setState(prev => {
+    // Fan almashtirilganda tanlangan mavzuni tiklaymiz — eski fanning mavzu IDsi
+    // yangi fanda mavjud bo'lmaydi va savollar bo'sh "Mavzu tayyorlanmoqda"
+    // holatiga tushib qolardi. Agar chaqiruvchi topicId ni o'zi bersa (masalan
+    // SmartBottomSheet), uni buzmaymiz.
+    if (
+      updates.activeCategory &&
+      updates.activeCategory !== prev.activeCategory &&
+      updates.topicId === undefined
+    ) {
+      return { ...prev, ...updates, topicId: -1 };
+    }
+    return { ...prev, ...updates };
+  });
 
   // ─── addScore ───
   const addScore = (points, topicId) => {
