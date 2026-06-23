@@ -271,7 +271,7 @@ Agar bu bo'lakda mos ro'yxat/tartib bo'lmasa, KAM savol qaytar (bo'sh massiv ham
     if (accepted.length && accepted.length % 1 === 0) saveProgress();
     await sleep(delayMs);
   }
-  if (pass > 50) break; // cheksiz aylanishdan himoya
+  if (pass > 150) break; // cheksiz aylanishdan himoya (yuqori target uchun 50→150: 3000-scale ~90 aylanish kerak)
 }
 
 function saveProgress() {

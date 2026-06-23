@@ -34,7 +34,16 @@ const SUBJECT_NAME = A("--subject", Object.entries(subjCount).sort((a, b) => b[1
 
 // Davom ettirish: avvalgi hisobot bo'lsa, tekshirilganlarni o'tkazib yuboramiz
 let report = {};
-if (fs.existsSync(reportPath)) report = JSON.parse(fs.readFileSync(reportPath, "utf8"));
+if (fs.existsSync(reportPath)) {
+  try {
+    report = JSON.parse(fs.readFileSync(reportPath, "utf8"));
+  } catch {
+    // Buzilgan hisobot (non-atomik yozuv jarayon o'lganda) — zaxiraga ol, noldan boshla (crash qilma)
+    try { fs.renameSync(reportPath, reportPath + ".bak-corrupt"); } catch {}
+    report = {};
+    console.log(`⚠ ${reportPath} buzilgan edi → .bak-corrupt ga ko'chirildi, noldan boshlanadi`);
+  }
+}
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -121,7 +130,9 @@ for (let i = 0; i < todo.length; i += BATCH) {
         if (v.verdict === "SHUBHALI") flagged++;
       }
     }
-    fs.writeFileSync(reportPath, JSON.stringify(report, null, 1), "utf8");
+    // Atomik yozuv: avval .tmp ga yoz, keyin rename — jarayon o'rtada o'lsa ham hisobot buzilmaydi
+    fs.writeFileSync(reportPath + ".tmp", JSON.stringify(report, null, 1), "utf8");
+    fs.renameSync(reportPath + ".tmp", reportPath);
     console.log(`ok (shubhali jami: ${Object.values(report).filter((r) => r.verdict === "SHUBHALI").length})`);
   } catch (e) { console.log("XATO:", String(e.message).slice(0, 60)); }
   await sleep(600);

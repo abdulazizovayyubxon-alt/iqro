@@ -1,0 +1,652 @@
+[
+ {
+  "q": "Mashg'ulotlar paytida kursant jarohatlangan askarning chap qo'liga \"qo'lqopsimon bog'lam\" usulida bintlashmoqda. Bintlash jarayonini qulaylashtirish uchun u bintlashni qaysi barmoqdan boshlashi kerak?",
+  "opts": [
+   "A) Bosh barmoqdan",
+   "B) Ko'rsatkich barmoqdan",
+   "C) O'rta barmoqdan",
+   "D) Jimjiloqdan"
+  ],
+  "correct": 3,
+  "explanation": "Qo'lqopsimon bog'lamda chap qo'lni bintlashni jimjiloqdan boshlash kerak, o'ng qo'lni esa bosh barmoqdan boshlash talab etiladi, bu esa qo'lqop shaklida butun panjani o'rash imkonini beradi.",
+  "mnemonic": "Chap qo'l jimjiloqdan boshlanadi, o'ng qo'l bosh barmoqdan.",
+  "topicId": 5
+ },
+ {
+  "q": "Oshxona mashg'ulotlari jarayonida harbiy xizmatchi qo'lining bilagiga qaynoq suv tomib ketdi. Birinchi tibbiy yordam ko'rsatish bo'yicha ko'rsatma asosida, kuygan joyni issiqlik ta'sirini to'xtatish va to'qima shikastini cheklash maqsadida qancha vaqt davomida salqin suv bilan yuvish tavsiya etiladi?",
+  "opts": [
+   "A) 1-2 daqiqa",
+   "B) 5-7 daqiqa",
+   "C) 10-15 daqiqa",
+   "D) 20-30 daqiqa"
+  ],
+  "correct": 2,
+  "explanation": "Kuygan joyni 10-15 daqiqa davomida salqin, lekin muzdek bo'lmagan suv bilan yuvish kerak, bu issiqlik ta'sirini to'xtatadi va to'qima shikastlanishini cheklaydi.",
+  "mnemonic": "Kuyishni o'n besh daqiqaga salqin suv bilan davola.",
+  "topicId": 5
+ },
+ {
+  "q": "Jismoniy tayyorgarlik nazorati vaqtida harbiy xizmatchi yarador askarni jang maydonidan 15 metr masofaga sudrab olib chiqmoqda. Uning bu masofani bosib o'tish uchun sarflagan vaqti 1 daqiqa 20 sekundni tashkil etdi. Bu natija uchun unga qanday baho qo'yiladi?",
+  "opts": [
+   "A) Qoniqarli",
+   "B) Yaxshi",
+   "C) A'lo",
+   "D) O'ta yomon"
+  ],
+  "correct": 2,
+  "explanation": "Yaradorni jang maydonidan sudrab olib chiqish (15 metr) me'yorida a'lo baho uchun 1 daqiqa 20 sekund vaqt belgilangan, bu eng yuqori natijadir.",
+  "mnemonic": "O'n besh metr - bir yirmog', baho a'lo.",
+  "topicId": 5
+ },
+ {
+  "q": "Sport maydonchasida askarning tizzasi chiqib ketdi. Shifokor bo'g'im sohasini tekshirganda, chiqqan bo'g'im oxiri yumshoq to'qimani bo'rtirib turganini, shu sohaning cho'kkan ko'rinishini aniqladi. Bu kuzatilgan belgi quyidagi bo'g'im chiqish alomatlarining qaysi biri bilan izohlanadi?",
+  "opts": [
+   "A) Qo'l-oyoq uzunligi o'zgarishi",
+   "B) Bo'g'imda harakatning kamayishi",
+   "C) Deformatsiya",
+   "D) Kuchli og'riq"
+  ],
+  "correct": 2,
+  "explanation": "Deformatsiya belgisi chiqqan bo'g'im oxiri yumshoq to'qimani bo'rtirib turishi va bo'g'im sohasining cho'kkan ko'rinishi bilan tavsiflanadi.",
+  "mnemonic": "Deformatsiya - shakl buzilib, cho'kib qoladi.",
+  "topicId": 5
+ },
+ {
+  "q": "Mashg'ulot paytida askar boshiga qattiq zarba berib, hushidan ketdi. Tekshiruvda uning quloqlaridan tiniq suyuqlik oqayotgani va ko'z atrofida ko'karish ('ko'zoynak simptomi') kuzatildi. Shifokor bu belgilari qaysi patologiyaga xos ekanini aniqladi?",
+  "opts": [
+   "A) Bosh miya shishi",
+   "B) Bosh suyagi sinishi",
+   "C) Yuz nervi shikastlanishi",
+   "D) O'rta quloq yallig'lanishi"
+  ],
+  "correct": 1,
+  "explanation": "Bosh suyagi sinishi belgilariga quloq yoki burundan qon yoki tiniq suyuqlik oqishi, ko'z atrofida ko'karish ('ko'zoynak simptomi') va hushdan ketish kiradi, bu berilgan vaziyatga to'liq mos keladi.",
+  "mnemonic": "Bosh suyagi singanida — suyuqlik oqar va ko'z ko'karar",
+  "topicId": 5
+ },
+ {
+  "q": "Marsot paytida askarning son suyagi yopiq holda singani aniqlandi. Tibbiy xizmatchi birinchi yordam ko'rsatish uchun quyidagi ketma-ketlikni belgilashi kerak:",
+  "opts": [
+   "A) Shikastlangan sohani shina bilan qotirish -> Og'riq qoldiruvchi berish -> Shifoxonaga olib borish",
+   "B) Og'riq qoldiruvchi vosita berish -> Shikastlangan sohani shina bilan qotirish -> Shifoxonaga olib borish",
+   "C) Bemorni darhol shifoxonaga olib borish -> Og'riq qoldiruvchi berish -> Immobilizatsiya",
+   "D) Immobilizatsiya -> Shifoxonaga olib borish -> Og'riq qoldiruvchi berish"
+  ],
+  "correct": 1,
+  "explanation": "Yopiq suyak sinishida avval og'riq qoldiruvchi vosita berilib shokning oldi olinadi, so'ngra shikastlangan soha immobilizatsiya qilinadi va shundan keyin bemor shifoxonaga olib boriladi.",
+  "mnemonic": "Og'riqni oldin bos, so'ng shina sol, keyin shifoxonaga",
+  "topicId": 5
+ },
+ {
+  "q": "Kursant jarohatlangan askarga yurak-qon tomir reanimatsiyasini (YQR) o'tkazmoqda. U ko'krak qafasiga 30 marta bosim o'tkazgandan so'ng, zamonaviy protokolga muvofiq darhol qanday amalni bajashi kerak?",
+  "opts": [
+   "A) 5 marta sun'iy nafas o'tkazish",
+   "B) 10 marta sun'iy nafas o'tkazish",
+   "C) 2 marta sun'iy nafas o'tkazish",
+   "D) Nafas o'tkazmasdan bosishni davom ettirish"
+  ],
+  "correct": 2,
+  "explanation": "Zamonaviy YQR me'yorlariga ko'ra, kattalar uchun '30 bosim: 2 nafas' sikli qo'llaniladi, ya'ni 30 marta bosimdan so'ng 2 marta sun'iy nafas beriladi.",
+  "mnemonic": "O'ttiz ikki — qutqaruv omili",
+  "topicId": 5
+ },
+ {
+  "q": "Jangovar vazifa paytida askar oq jarohati olib, ko'p miqdorda qon yo'qotmoqda. Terisi oqarib, qon bosimi keskin tushib, tez urush kuzatilmoqda. Shifokor qon yo'qotilishi sababli aylanma qon hajmining kamayishi tufayli rivojlanayotgan qaysi shok turini aniqladi?",
+  "opts": [
+   "A) Kardiyogen shok",
+   "B) Nevrotik shok",
+   "C) Anafilaktik shok",
+   "D) Hipovolemik shok"
+  ],
+  "correct": 3,
+  "explanation": "Hipovolemik shok aylanma qon hajmining kamayishi, ya'ni qon yoki plazma yo'qotilishi sababli yuzaga keladi, bu esa klinik vaziyatdagi belgilarga mos keladi.",
+  "mnemonic": "Qon kam bo'lsa — hipovolemik shok",
+  "topicId": 5
+ },
+ {
+  "q": "Mashg'ulot paytida quyosh ostida uzoq vaqt turib qolgan askar hushidan ketib, yiqilib tushdi. Uning tanasi juda qizib ketgan. Unga birinchi yordam ko'rsatuvchi shifokor qaysi tartibda harakat qilishi kerak?",
+  "opts": [
+   "A) Iliq suv ichirish -> Soyaga o'tkazish -> Kiyimlarni yechish -> Muzli kompress",
+   "B) Soyaga o'tkazish -> Kiyimlarni bo'shatish -> Muzli kompress -> Suv ichirish",
+   "C) Muzli kompress -> Kiyimlarni yechish -> Soyaga o'tkazish -> Iliq suv ichirish",
+   "D) Kiyimlarni bo'shatish -> Suv ichirish -> Soyaga o'tkazish -> Muzli kompress"
+  ],
+  "correct": 1,
+  "explanation": "Birinchi navbatda zararlanuvchini issiq joydan salqin, soyali joyga o'tkazish, keyin badan erkin bo'lishi uchun kiyimlarni bo'shatish, so'ngra sovitish choralari va oxirida suyuqlik berish tartibi bajariladi.",
+  "mnemonic": "Avval soyaga, keyin kiyimni yech, sovit va suv ber.",
+  "topicId": 5
+ },
+ {
+  "q": "Tibbiy tayyorgarlik darsida rasmda bosim nuqtalari belgilangan arteriyalar ko'rsatilgan. Agar rasmda 3-raqam o'mrov suyagi sohasiga, 4-raqam qo'ltiq chuqurchasiga, 6-raqam esa bilakning yuqori qismiga to'g'ri kelsa, bu raqamlar qaysi arteriyalarni bildiradi?",
+  "opts": [
+   "A) 3-yelka, 4-qo'ltiq osti, 6-bilak",
+   "B) 3-o'mrov osti, 4-yelka, 6-bilak",
+   "C) 3-o'mrov osti, 4-qo'ltiq osti, 6-bilak",
+   "D) 3-uyqu, 4-o'mrov osti, 6-son"
+  ],
+  "correct": 2,
+  "explanation": "O'mrov osti arteriyasi o'mrov suyagi sohasida (3), qo'ltiq osti arteriyasi qo'ltiq chuqurchasida (4) va bilak arteriyasi bilakning yuqori qismida (6) joylashgan bo'ladi.",
+  "mnemonic": "Uch (3) o'mrovda, to'rt (4) qo'ltiqda, olti (6) bilakda.",
+  "topicId": 5
+ },
+ {
+  "q": "Harbiy mashga'otlar chog'ida avariya sodir bo'ldi, natijada haydovchi oyog'idan keskin zarba oldi va kuchli arterial qon ketishi boshlandi. Avtotransport tibbiy to'plamidan (aptechkasidan) qon oqimini darhol to'liq to'xtatish uchun qaysi vositadan foydalanish eng samarali bo'ladi?",
+  "opts": [
+   "A) Individual bint",
+   "B) Turniket rezina jgut",
+   "C) Validol",
+   "D) Pechka"
+  ],
+  "correct": 1,
+  "explanation": "Arterial qon ketishini to'xtatishning eng samarali usuli a'zoni yuqorisidan siqib qo'yishdir, buning uchun avtotransport dori qutisidagi 'Turniket rezina jgut'dan foydalaniladi.",
+  "mnemonic": "Arterial qon - jgut bilan bos, shoshilinch.",
+  "topicId": 5
+ },
+ {
+  "q": "Field mashg'uloti vaqtida askarga zaharli ilon chaqib olgan. Jabrlanuvchiga tez yordam ko'rsatayotgan harbiy xizmatchi quyidagi harakatlardan qaysi birini qat'iyan man etilganini bilishi lozim?",
+  "opts": [
+   "A) Jabrlanuvchini harakatsizlantirish",
+   "B) Ko'p miqdorda suyuqlik berish",
+   "C) Turniket bilan tortib bog'lash",
+   "D) Jarohatni yuvish"
+  ],
+  "correct": 2,
+  "explanation": "Ilon chaqqan joyga turniket bog'lash qat'iyan man etiladi, chunki bu zaharning to'qimalarda to'planib nekroz (to'qima o'limiga) olib kelishiga sabab bo'ladi.",
+  "mnemonic": "Ilon chaqsa - jgut qo'yma, qon oqib ketib, zaxarni yuvib ket.",
+  "topicId": 5
+ },
+ {
+  "q": "Tibbiy ko'rik materiallarida sonning yuqori qismi jarohatlanganda qo'yiladigan bog'lam tasvirlangan rasmda ma'lum bir raqam bilan belgilangan. Bint son aylanasidan o'tkazilib, bel-chanoq sohasida kesishtirilgan va sirg'alib tushmasligi uchun belga mahkamlangan bog'lam rasmda qaysi raqamda ko'rsatilgan?",
+  "opts": [
+   "A) 1-raqam",
+   "B) 2-raqam",
+   "C) 3-raqam",
+   "D) 4-raqam"
+  ],
+  "correct": 2,
+  "explanation": "Sonning yuqori qismini bog'lash uchun ishlatiladigan bog'lam (bint son aylanasidan va bel-chanoq orqali kesishtirilib o'tkaziladi) rasmda 3-raqam bilan belgilanadi.",
+  "mnemonic": "Son usti bog'lam - uch (3) raqam, belga mahkamlangan.",
+  "topicId": 5
+ },
+ {
+  "q": "Qishki mashg'ulotlar paytida harbiy xizmatchining tanasi qattiq qaltiramoqda, nutqi burushib ketgan va harakatlari sezilarli darajada sustlashgan. U qaysi bosqichdagi sovuq urishi alomatlarini namoyon etmoqda?",
+  "opts": [
+   "A) Yengil bosqich",
+   "B) O'rta bosqich",
+   "C) Og'ir bosqich",
+   "D) Umumiy gipotermiya"
+  ],
+  "correct": 1,
+  "explanation": "O'rta bosqichda qaltirash kuchayadi, gapirishda qiyinchilik va harakatlarning sustlashishi kuzatiladi. Yengil bosqichda faqat qaltirash va terining oqarigi, og'ir bosqichda esa ongning buzilishi va terining ko'karishi kuzatiladi.",
+  "mnemonic": "O'rtacha bosqich — nutqi burushadi, harakati sekinlashadi.",
+  "topicId": 5
+ },
+ {
+  "q": "Tibbiy ko'rik jarayonida jarohatlangan harbiy xizmatchida qon ketishi aniqlandi. Quyidagi qon ketish turlaridan qaysi biri anatomik tasnifga kiradi: arterial, venoz, kapillyar va parenximatoz?",
+  "opts": [
+   "A) Klinikasiga ko'ra",
+   "B) Aniqlanish vaqtiga ko'ra",
+   "C) Anatomiyasiga ko'ra",
+   "D) Kelib chiqish sababiga ko'ra"
+  ],
+  "correct": 2,
+  "explanation": "Qon ketishining anatomiyasiga ko'ra tasnifida u arterial, venoz, kapillyar va parenximatoz turlarga bo'linadi. Klinikasiga ko'ra tashqi, ichki va yashirin, vaqtiga ko'ra esa birlamchi va ikkilamchi turlari mavjud.",
+  "mnemonic": "Anatomiyasi — arteriya, vena, kapillyar; klinikasi — tashqi, ichki.",
+  "topicId": 5
+ },
+ {
+  "q": "Kimyoviy xavfli obyekt yaqinida joylashgan harbiy qismda 'Diqqat, hammaga!' signali berildi va avariya haqida ma'lumot olindi. Shu paytda xonadondagi askar qanday birinchi harakatni amalga oshirishi shart?",
+  "opts": [
+   "A) Derazalar va eshiklarni ochib, kondisionerni yoqish",
+   "B) Gaz, elektr energiyasi va kondisionerni o'chirib, teshiklarni yopish",
+   "C) Ochoqni yoqib, ovqat tayyorlashni boshlash",
+   "D) Darhol tashqariga chiqib, hududni tark etish"
+  ],
+  "correct": 1,
+  "explanation": "Kimyoviy xavfli obyektdagi avariya paytida aholi derazalar, eshiklar, shamollatish teshiklarini yopishi, shuningdek kondisioner, elektr energiyasi va gazni o'chirishi lozim. Bu zararli moddalarning xonaga kirishining oldini oladi.",
+  "mnemonic": "Kimyoviy xavf — eshikni yop, gazni o'chir, himoyalan.",
+  "topicId": 5
+ },
+ {
+  "q": "Jang maydonida jangchining o'ng ko'ziga shrapnel tegib, jarohat oldi. Sanitar shifokor ko'rsatmasiga ko'ra, rasmda ko'rsatilgan 4-raqamli bog'lam usulini qo'llashi kerak. U qanday amaliyotni bajaradi?",
+  "opts": [
+   "A) Bint boshning orqa qismidan boshlanib, faqat peshonada kesishtirilib, ko'zga tegmaydi.",
+   "B) Bint jag' uchun sopqonsimon tarzda pastki jag' ostidan o'tkazilib, bosh aylanasi bo'ylab bog'lanadi.",
+   "C) Bint bosh aylanasidan va jarohatlangan ko'z ustidan kesishtirilib o'raladi.",
+   "D) Bint faqat zararlangan ko'z atrofida halqa shaklida qaytarilib bog'lanadi."
+  ],
+  "correct": 2,
+  "explanation": "Ko'zga bog'lam (4-raqam) qo'yishda bint bosh aylanasidan va jarohatlangan ko'z ustidan kesishtirilib o'raladi, bu esa ko'zni ishonchli yopib turadi.",
+  "mnemonic": "Ko'zni bosh bilan bog'la, xavfsiz bo'la.",
+  "topicId": 5
+ },
+ {
+  "q": "Tibbiy tayyorgarlik imtihonida harbiy xizmatchi ko'krak qafasiga sakkizsimon bog'lamni o'rnatdi. Sekundomer 2 daqiqa 10 sekundni ko'rsatdi. Amaliyot qanday baholangan bo'ladi?",
+  "opts": [
+   "A) Qoniqarli, chunki 2 daqiqa 50 sekund chegarasidan o'tmagan.",
+   "B) Yaxshi, chunki vaqt normativga mos keladi.",
+   "C) A'lo, chunki eng yuqori natija uchun eng kam vaqt sarflangan.",
+   "D) Qoniqarsiz, chunki bunday ish tezligi sifatni pasaytiradi."
+  ],
+  "correct": 2,
+  "explanation": "Ko'krakqa sakkizsimon bog'lam qo'yish bo'yicha 'a'lo' bahoga 2 daqiqa 10 sekund vaqt ajratiladi, 'yaxshi' bahoga esa 2 daqiqa 20 sekund beriladi.",
+  "mnemonic": "Tez sakkiz qoying — a'lo baho oling.",
+  "topicId": 5
+ },
+ {
+  "q": "Rasmda qon to'xtash nuqtalari raqamlar bilan belgilangan. Shifokor qon tomirini bosish nuqtalarini aniqlashda qaysi moslik to'g'ri ekanini aytadi?",
+  "opts": [
+   "A) 1 – uyqu arteriyasi, 5 – chakka arteriyasi, 8 – boldir arteriyasi.",
+   "B) 1 – chakka arteriyasi, 5 – yelka arteriyasi, 8 – son arteriyasi.",
+   "C) 1 – yelka arteriyasi, 5 – son arteriyasi, 8 – chakka arteriyasi.",
+   "D) 1 – boldir arteriyasi, 5 – uyqu arteriyasi, 8 – yelka arteriyasi."
+  ],
+  "correct": 1,
+  "explanation": "To'g'ri moslik: 1 — chakka arteriyasi (quloq oldida), 5 — yelka arteriyasi (yelka ichki yuzasida), 8 — son arteriyasi (son ichki yuzasida).",
+  "mnemonic": "Besh yelkaga, sakkiz songa, boshqa chakkaga.",
+  "topicId": 5
+ },
+ {
+  "q": "Bino vayronagarchiligi ostida qolgan jabrlanuvchining bo'yni harakatlantirilganda og'riyapti. Bo'yin umurtqasi shikastlanishidan shubhalanib, birinchi yordam bosqichlarini to'g'ri tartibda belgilang.",
+  "opts": [
+   "A) Tez tibbiy yordam chaqirish, bemorni mashinaga o'tkazish, yo'lda bo'yinturug' qo'yish.",
+   "B) Bemorni tekis va qattiq yuzaga yotqizish, bo'yinga ortopedik shina yoki yostiq qo'yib harakatni cheklash, shifoxonaga yetkazish.",
+   "C) Bo'yinga ortopedik shina yoki yostiq qo'yib harakatni cheklash, bemorni tekis va qattiq yuzaga yotqizish, tez tibbiy yordamni chaqirish.",
+   "D) Bemorni o'tirgan holatga keltirish, bo'yni qattiq bog'lab, shifokor kutish."
+  ],
+  "correct": 2,
+  "explanation": "Bo'yin umurtqasi shikastlanishida avval bo'yinni shina yoki yostiq bilan harakatsizlantirish, keyin tekis yuzaga yotqizish va so'ng shifokor chaqirish tartibi belgilangan.",
+  "mnemonic": "Avval qotir yostiq, keyin yotqizish, shifokorni chaqirish.",
+  "topicId": 5
+ },
+ {
+  "q": "Xalqaro gumanitar huquq darsida talabalarga 'Tibbiy xizmat va insonparvarlik ob'ektlari' mavzusida tushuntirilmoqda. Darslikdagi ma'lumotga ko'ra, 'rangli bitta katta qalqon' belgisi nimani anglatadi?",
+  "opts": [
+   "A) Xavfli kuchlarni tutib turuvchi qurilma va inshootlarni, masalan, atom elektr stansiyalarini anglatadi.",
+   "B) Sulh tuzish yoki taslim bo'lish haqida kelishish uchun yuboriluvchi elchilar, parlamentyorlar belgisidir.",
+   "C) Madaniy qadriyatlar: yodgorliklar, masjidlar, muzeylarni himoya qilishni anglatadi.",
+   "D) Umumiy himoya timsoli bo'lib, harbiy, fuqaroviy tibbiy xizmat va shunga o'xshash tashkilotlarni ifodalaydi."
+  ],
+  "correct": 3,
+  "explanation": "Darslikda keltirilishicha, rangli bitta katta qalqon umumiy himoya timsolidir va u harbiy, fuqaroviy tibbiy xizmat hamda diniy xodimlarni ifodalaydi.",
+  "mnemonic": "Qalqon qizil — tibbiyot belgil.",
+  "topicId": 5
+ },
+ {
+  "q": "Issiq ob-havoda uzun masofaga yugurishdan so'ng harbiy xizmatchi hushidan ketdi, terisi qizarib, quruqlashdi. Siz quyidagi birinchi yordam choralarini to'g'ri tartib bilan amalga oshirishingiz kerak: 1) Iliq suv ichirish; 2) Soyali joyga o'tkazish; 3) Tor kiyimlarni bo'shatish; 4) Muzli kompress qo'yish.",
+  "opts": [
+   "A) 2, 3, 4, 1",
+   "B) 2, 4, 3, 1",
+   "C) 3, 2, 1, 4",
+   "D) 1, 2, 3, 4"
+  ],
+  "correct": 0,
+  "explanation": "Avval bemor issiq joydan soyali joyga olib chiqiladi, keyin badani erkin bo'lishi uchun kiyimlari bo'shatiladi, so'ngra sovitish choralari ko'riladi va oxirida suv ichiriladi.",
+  "mnemonic": "Oftob urganda — soyaga, yeching, sovuting, suv bering.",
+  "topicId": 5
+ },
+ {
+  "q": "Jangovar vaziyatda yarador askarning qorin bo'shlig'iga zarba yetgan. Tashqi qon ketishi kuzatilmaydi, biroq teri tez oqarib, holati keskin yomonlashmoqda. Shifokor qonning tanada yopiq bo'shliqqa to'planishini aniqladi.",
+  "opts": [
+   "A) Kapillyar qon ketishi",
+   "B) Yashirin qon ketishi",
+   "C) Ichki qon ketishi",
+   "D) Arterial qon ketishi"
+  ],
+  "correct": 2,
+  "explanation": "Qonning tashqi alomatlar bo'lmasdan tananing yopiq bo'shliqlariga (masalan, qorin bo'shlig'iga) to'planishi klinik jihatdan ichki qon ketishiga mos keladi.",
+  "mnemonic": "Ichki qon ketish — qon bo'shliqqa yig'ilib, tashqariga chiqmaydi.",
+  "topicId": 5
+ },
+ {
+  "q": "Yopiq o'rmon hududida patrul xizmatini o'tayotgan askar qoraqurt chaqib olgan. Chaqish joyi qizarib, shishgan, qurtning o'ji pinset bilan olib tashlangan. Allergik reaksiyani oldini olish maqsadida qanday dori berilishi kerak?",
+  "opts": [
+   "A) Antibiotik preparat",
+   "B) Antigistamin preparat",
+   "C) Og'riq qoldiruvchi dori",
+   "D) Vazodilatator dori"
+  ],
+  "correct": 1,
+  "explanation": "Qoraqurt chaqishida allergiyaga qarshi ta'sir ko'rsatish va shishni kamaytirish uchun antigistamin dorilar (suprastin, diazolin va hokazo) berish zarur.",
+  "mnemonic": "Qurt chaqsa — antigistamin ichir, sovuq qo'y.",
+  "topicId": 5
+ },
+ {
+  "q": "Oshxona mashg'uloti paytida harbiy xizmatchi qo'liga qaynoq suv to'kib yubordi. Terisi qizarib, shishib ketdi, lekin pufakchalar hosil bo'lmadi. Kuyishning qaysi darajasi to'g'ri tasniflanadi?",
+  "opts": [
+   "A) 1-darajali kuyish",
+   "B) 2-darajali kuyish",
+   "C) 3-darajali kuyish",
+   "D) 4-darajali kuyish"
+  ],
+  "correct": 0,
+  "explanation": "Birinchi darajali kuyishda teri qizaradi, yengil shish va achishish kuzatiladi, ammo pufakchalar hosil bo'lmaydi va u 3-5 kunda tuzalib ketadi.",
+  "mnemonic": "1-daraja kuyish — teri faqat qizarib, pufakcha hosil qilmaydi.",
+  "topicId": 5
+ },
+ {
+  "q": "Yozgi o'quv mashg'ulotlari paytida askarni ilon chaqdi. Jabrlanuvchini gospitalga yetkazish uchun ko'pchilik harakat qilishga majbur. Nega jabrlanuvchining harakati minimal darajada saqlashi zarur?",
+  "opts": [
+   "A) Harakat qon aylanishini tezlashtirib, zahar tarqalishini kuchaytiradi",
+   "B) Harakat jarohat joyidagi og'riqni yanada kuchaytirib yuboradi",
+   "C) Harakat tana haroratini oshirib, immunitetni tushiradi",
+   "D) Harakat qilganda zahar teri orqali tashqariga chiqib ketadi"
+  ],
+  "correct": 0,
+  "explanation": "Ilon zahari tezda qon orqali tarqaladi. Harakat qon aylanishini tezlashtirib, zaharning tarqalishini kuchaytiradi, shu sababli harakatni minimal darajaga tushirish zarur.",
+  "mnemonic": "Qonsiz tinch tur — zaharsiz yashur.",
+  "topicId": 5
+ },
+ {
+  "q": "Taktik tayyorgarlik jarayonida askar qo'li boshbarmog'i terasi shikastlanadi. Sanitar bintni 'bilak-kaft' orqali sakkizsimon yurishlar bilan belgilangan usulda qo'yayotgan bo'lsa (6-rasm ko'rsatilgan), bu bog'lash qaysi a'zoga tatbiq etilmoqda?",
+  "opts": [
+   "A) Bilak bo'g'imiga",
+   "B) Tirsak bo'g'imiga",
+   "C) Qo'l boshbarmog'iga",
+   "D) Ko'rsatkich barmog'iga"
+  ],
+  "correct": 2,
+  "explanation": "6-raqamli rasm va tavsifga ko'ra, bint bilak-kaft orqali sakkizsimon yurishlar bilan boshbarmoqni o'rab boradi, bu usul aynan qo'l boshbarmog'iga bog'lash uchun mo'ljallangan.",
+  "mnemonic": "Bosh barmoq — sakkizsimon bint, bu qoida unutmasin.",
+  "topicId": 5
+ },
+ {
+  "q": "Harbiy qismdagi muntazam tibbiy ko'rik davomida bir askar uzoq davom etgan tashvish, asabiylashish va ruhiy salomatlik buzilishining boshqa belgilarini ko'rsatmoqda. Bemorning holatini baholash va davolash mas'uliyati qaysi mutaxassis shifokorga yuklanadi?",
+  "opts": [
+   "A) Nevropatolog",
+   "B) Jarroh",
+   "C) Terapevt",
+   "D) Psixiatr"
+  ],
+  "correct": 3,
+  "explanation": "Manbaga ko'ra, ruhiy muammolarni hal qilish va davolash psixiatr mutaxassisining bevosita mas'uliyatidir, terapevt esa ichki organlar kasalliklari bilan shug'ullanadi.",
+  "mnemonic": "Ruhiy kasal — psixiatr, boshqa shifokor bunga aralashmaydi.",
+  "topicId": 5
+ },
+ {
+  "q": "Qishki mashg'ulotlarda sovuq ta'sirida bo'lgan askarda terining oqarib sovishi va qaltirash kuzatilmoqda. Ushbu belgilar sovuq urishining qaysi bosqichiga xosdir?",
+  "opts": [
+   "A) O'rta bosqich",
+   "B) Og'ir bosqich",
+   "C) Yengil bosqich",
+   "D) Kritik bosqich"
+  ],
+  "correct": 2,
+  "explanation": "Yengil bosqichning asosiy belgilari qaltirash, terining oqarishi va sovuq bo'lishidan iborat bo'lib, bu holatda ong hali saqlanib qoladi.",
+  "mnemonic": "Yengil sovuq — teri oq, qaltirash bor, og'ir emas.",
+  "topicId": 5
+ },
+ {
+  "q": "Avtokolonnaning texnik xizmat ko'rsatish vaqtida boshqaruvchi akkumulyatorni to'ldirayotganda kislota tomchisi qo'liga tushirib yuboradi. Kimyoviy kuyish holatida birinchi tibbiy yordam ko'rsatishning eng to'g'ri va xavfsiz usuli qanday bo'lishi kerak?",
+  "opts": [
+   "A) Ishqorli eritma bilan neytrallash va quruq gazlama bilan o'rab qo'yish",
+   "B) Ta'sir qilgan maydonni ko'p miqdorda oqim suv bilan yuvib, shifokorga murojaat qilish",
+   "C) Zararlangan joyni surtmasdan quruq matoga o'rab, issiq qo'yish",
+   "D) Darhol yo'g'on qatlamli antiseptik moy surtish"
+  ],
+  "correct": 1,
+  "explanation": "Kislota teriga chuqur singib borishi mumkin, shuning uchun asosiy yordam uni darhol oqim suv bilan yuvib tashlashdan iborat. Neytrallashga urinish yoki surtish kuyish maydonini kengaytirishi va qo'shimcha zarar yetkazishi xavfli.",
+  "mnemonic": "Kislota yeyursa — suv oqiz, neytrallashtirma, shifokorga boring.",
+  "topicId": 5
+ },
+ {
+  "q": "Jangovar vaziyyatni o'zlashtirish paytida askar balanddan tushib, oyoq suyagi yopiq sinishiga shubha qilinmoqda (teri shikastlanmagan). Bemorni shifoxonaga yetkazish uchun birinchi tibbiy yordam harakatlarining to'g'ri ketma-ketligini belgilang.",
+  "opts": [
+   "A) Shikastlangan sohani immobilizatsiya qilish, og'riq qoldiruvchi vosita berish, shifoxonaga olib borish",
+   "B) Bemorni shifoxonaga olib borish, og'riq qoldiruvchi vosita berish, immobilizatsiya qilish",
+   "C) Og'riqni qoldiruvchi vosita berish, shikastlangan sohani immobilizatsiya qilish, shifoxonaga olib borish",
+   "D) Immobilizatsiya qilish, shifoxonaga olib borish, yo'lda og'riq qoldiruvchi berish"
+  ],
+  "correct": 2,
+  "explanation": "Yopiq sinishda avval og'riq qoldiruvchi vosita berilib shok oldi olinadi, so'ngra shikastlangan soha immobilizatsiya qilinadi va shundan keyin bemor shifoxonaga yetkaziladi.",
+  "mnemonic": "Sinish bo'lsa — og'riq oldin, keyin shina, oxiri transport.",
+  "topicId": 5
+ },
+ {
+  "q": "Mashg'ulot paytida askar yiqilib tushib, boldir qismini kuchli urib oldi. Urilgan joy shishib, og'riyapti, ammo terining butunligi buzilmagan. Berilgan belgilarga ko'ra, bu qanday turdagi shikastlanish?",
+  "opts": [
+   "A) Yara (teri yorilishi)",
+   "B) Lat yeyish",
+   "C) Suyak sinishi (fraktura)",
+   "D) Bog'lamning uzilishi"
+  ],
+  "correct": 1,
+  "explanation": "To'qimalarning siqilishi yoki urilishi natijasida teri butunligi saqlanib qolgan shikastlanish turi lat yeyish deb ataladi.",
+  "mnemonic": "Teri butun, ichki shish — demak, bu lat yeyish.",
+  "topicId": 5
+ },
+ {
+  "q": "Issiq iqlimdagi uzoq marsh paytida askar hushini yo'qotib, yerga yiqildi. Terisi issiq va quruq, nafasi tezlashgan. Birinchi tibbiy yordam ko'rsatuvchi unga nima qilishi kerak?",
+  "opts": [
+   "A) Askarni issiq joyda yotqizib, ko'p suv ichirish.",
+   "B) Yaradorni salqin joyga olib chiqib, kiyimlarini bo'shaytirish va sovitish.",
+   "C) Darhol yurak sohasiga muz solib, qattiq massaj qilish.",
+   "D) Turniket qo'yib, qon aylanishini tiklash."
+  ],
+  "correct": 1,
+  "explanation": "Oftob urishi (haddan tashqari isishi) holatida yaradorni soyali joyga olib chiqish, kiyimlarni bo'shashitirish va badanni sovitish asosiy yordam choralaridir.",
+  "mnemonic": "Quyosh urib hushini yo'qotsa — soyaga olib chiq, kiyimni bo'shat, sovit.",
+  "topicId": 5
+ },
+ {
+  "q": "Feldsher ko'krak qafasiga spiralsimon bog'lam qo'yayotgan bo'lsa, uslubiy jihatdan bintning har bir yangi qatlami qoidaga ko'ra qanday o'ralishi kerak?",
+  "opts": [
+   "A) Oldingi qatlamni butunlay yopib o'tib, hech qanday joyi ko'rinmasligi.",
+   "B) Oldingi qatlam bilan bir xil chiziq bo'ylab, qoplanmasdan o'tish.",
+   "C) Oldingi qatlamning yarmini yopib o'ralishi.",
+   "D) Faqat pastki qismidan, keng qoldirib o'ralishi."
+  ],
+  "correct": 2,
+  "explanation": "Spiralsimon bog'lam qo'yish texnikasida bint aylanib o'tganda, har bir yangi qatlam oldingi qatlamning yarmini yopib borishi shart hisoblanadi.",
+  "mnemonic": "Spiral bog'lamda — yangi qatlam oldingining yarmini yopadi.",
+  "topicId": 5
+ },
+ {
+  "q": "Jangovar mashg'ulotda askarning ko'krak qafasiga o'q tegib, teshik hosil bo'ldi. Nafas olayotganda jarohat orqali havo o'tib, o'ziga xos 'shillillab' ovoz eshitilmoqda. O'pkaning tushib ketishining (pnevmotoraks) oldini olish uchun qanday chorani ko'rish lozim?",
+  "opts": [
+   "A) Jarohat teshigidagi jismni tortib olish va yod bilan yuvish.",
+   "B) Ko'krak qafasiga turniket qo'yish va qon oqimini to'xtatish.",
+   "C) Jarohat joyini steril qoplama yoki toza doka bilan yopib, havo kirishiga to'sqinlik qilish.",
+   "D) Askarni orqaga yotqizib, oyoqlarini yuqoriga ko'tarish."
+  ],
+  "correct": 2,
+  "explanation": "Ochiq ko'krak jarohatida tashqi havo o'pka plevrasiga kirib, uning tushib ketishiga sabab bo'ladi, shuning uchun asosiy vazifa yarani yopib, havo kirishini oldini olishdan iborat.",
+  "mnemonic": "Ko'krak teshilib, havo kirsa — doka bilan yop, plevra tushmasin.",
+  "topicId": 5
+ },
+ {
+  "q": "O'tloqda dam olayotgan askar qoraqurt chaqib olganini sezdi, chaqilgan joy qattiq og'riyapti va shishmoqda. Sizga topshirilgan birinchi tibbiy yordam vazifasini tibbiy ko'rsatmaga muvofiq bajarish uchun qanday tartibda harakat qilasiz?",
+  "opts": [
+   "A) Chaqalgan joyni qaynoq suv bilan yuvib, issiq kompress qo'yish va spirt surtish.",
+   "B) Chaqalgan joyni sovuq suv bilan yuvish, sovuq kompres qo'yish, antigistamin dori berish.",
+   "C) Turniket qo'yib, chaqilgan joyni kesib, zaharni chiqarib olishga harakat qilish.",
+   "D) Faqat mahalliy krem surtib, shifokor kelgunicha hech narsa qilmaslik."
+  ],
+  "correct": 1,
+  "explanation": "Qoraqurt chaqishida sovuq ta'siri qon tomirlarini toraytirib, zaharning tarqalishini sekinlashtiradi va og'riqni kamaytiradi, shu sababli sovuq suv, kompres va antigistamin preparati qo'llaniladi.",
+  "mnemonic": "Qoraqurt chaqsa — sovuq suv, kompres va antigistamin uning dushmani.",
+  "topicId": 5
+ },
+ {
+  "q": "Mashg'ulotlar paytida harbiy mashina to'satdan oldinida paydo bo'lgan to'siqqa urilib ketish xavfi tug'di. Siz old o'rindiqda o'tirib, xavfsizlik kamari taqilmagansiz. Muqarrar bo'lgan zarba oqibatini kamaytirish uchun qanday harakat qilish kerak?",
+  "opts": [
+   "A) Rulni mahkam ushlab, oldinga qarab o'tirib turish.",
+   "B) Boshini qo'llari bilan yopib, yon tomonga yotib, o'rindiqqa suyanish.",
+   "C) Orqa o'rindiqqa o'tib, boshini tizzalariga qo'yib yig'lash.",
+   "D) Darhol oynani sindirib, mashinadan sakrab tushishga harakat qilish."
+  ],
+  "correct": 1,
+  "explanation": "Avtomobil transporti avariyalari bo'yicha ko'rsatmaga ko'ra, old o'rindiqdagi yo'lovchi to'qnashuv muqarrar bo'lganda boshini qo'llari bilan yopib, yon tomonga yotib o'rindiqqa suyanishi, orqa o'rindiqdagi yo'lovchi esa polga yiqilishi kerak.",
+  "mnemonic": "Old o'rindiqda: boshni qop, yonbola yot.",
+  "topicId": 5
+ },
+ {
+  "q": "Mashg'ulotlar paytidagi uzun turish natijasida askar quyosh urib, hushidan ketdi. Birinchi navbatda unga qanday yordam ko'rsatish kerak?",
+  "opts": [
+   "A) Yaradorni quyosh tushadigan joyda yotqizib, unga ko'p miqdorda issiq choy berish.",
+   "B) Yaradorni salqin joyga olib chiqib, kiyimlarini bo'shaytirish va sovitish choralarini ko'rish.",
+   "C) Yaradorni qattiq silkitib, hushiga keltirish va qovoqlariga ammiak tutatish.",
+   "D) Yaradorni yopiq xonaga olib kirib, issiq ko'rpa bilan o'rab yotqizish."
+  ],
+  "correct": 1,
+  "explanation": "Oftob urganda yaradorni salqin joyga olib chiqish, kiyimlarini bo'shaytirish, badanini sovuq suv bilan yuvib, nam sochiq va muzli kompresslar qo'yish orqali sovitish choralarini ko'rish asosiy yordam hisoblanadi.",
+  "mnemonic": "Oftob urganda: salqin joy, kiyimni bo'shat.",
+  "topicId": 5
+ },
+ {
+  "q": "Harbiy shifokor askarning ko'krak qafasiga spiralsimon bog'lam qo'yishmoqda. U bog'lamning mustahkam turishi uchun har bir yangi qatlamni qanday o'rayotganini tekshirmoqda. Bu uslubning to'g'ri bajarilishi qanday bo'ladi?",
+  "opts": [
+   "A) Har bir yangi qatlam oldingi qatlamning uchiga borib tugaydi.",
+   "B) Har bir yangi qatlam oldingi qatlamni to'liq yopib o'raladi.",
+   "C) Har bir yangi qatlam oldingi qatlamning yarmini yopib o'raladi.",
+   "D) Qatlamlar bir-biriga tegmasligi uchun orasiga bo'shliq qoldiriladi."
+  ],
+  "correct": 2,
+  "explanation": "Spiralsimon bog'lamda bint ko'krak yoki qorin atrofidan aylantirilib, har bir yangi qatlam oldingisining yarmini yopib boradi, bu bog'lamning mustahkamligini ta'minlaydi.",
+  "mnemonic": "Spiral bog'lam: yangisi oldingisini yarmini yop.",
+  "topicId": 5
+ },
+ {
+  "q": "Mashg'ulot paytida balandlikdan tushib, askar bo'yin umurtqasi shikastlanishidan shubhalanmoqda. Birinchi yordam ko'rsatayotgan shifokor bo'yni harakatsizlantirish uchun yostiq olib kelmoqda. Amaliyotni to'g'ri tartibda belgilang.",
+  "opts": [
+   "A) Bemorni tekis va qattiq yuzaga yotqizish, bo'yinga shina qo'yish, tez tibbiy yordam chaqirish.",
+   "B) Bo'yinga ortopedik shina yoki yostiq qo'yib harakatni cheklash, bemorni tekis va qattiq yuzaga yotqizish, tez tibbiy yordam chaqirish.",
+   "C) Tez tibbiy yordamni chaqirish, bo'yinga shina qo'yish, bemorni tekis va qattiq yuzaga yotqizish.",
+   "D) Bemorni tekis yotqizish, tez tibbiy yordam chaqirish, bo'yinga shina qo'yish."
+  ],
+  "correct": 1,
+  "explanation": "Avval bo'yinni harakatsizlantirish uchun shina yoki yostiq qo'yiladi, so'ngra bemor tekis va qattiq yuzaga yotqiziladi va keyin tez tibbiy yordam chaqiriladi.",
+  "mnemonic": "Bo'yni qotir (yostiq), keyin yotqaz, shifoxonaga olib ket.",
+  "topicId": 5
+ },
+ {
+  "q": "Askar qorin sohasiga zarba olib, yopiq jarohat (shish va og'riq) borligi sababli o'zini yomon his qilmoqda. Bemorni qulay holatga keltirish va parvarishlash qoidalari bo'yicha, unga qanday yordam ko'rsatish to'g'ri bo'ladi?",
+  "opts": [
+   "A) Bemorni orqasi qattiq yuzaga, oyoqlari tik holatda yotqizish va ko'p miqdorda suv ichirish.",
+   "B) Bemorni chap tomonga yonboshlatib, oyoqlarini biroz bukib yotqizish va suyuqlik ichishga ruxsat bermaslik.",
+   "C) Bemorni o'ng tomonga yonboshlatib, qoriniga issiq kompress qo'yish va issiq choy ichirish.",
+   "D) Bemorni yarim o'tirgan holatga keltirib, qorin sohasini qattiq bog'lash va ovqat yedirish."
+  ],
+  "correct": 1,
+  "explanation": "Qorindagi bosimni kamaytirish uchun bemor chap tomonga yonboshlatib, oyoqlari bukilgan holda yotqiziladi va jarrohlik aralashuvi talab qilinadigan holatda suyuqlik ichishga ruxsat berilmaydi.",
+  "mnemonic": "Qorin og'riyapti — chapga burilib, oyoqni buk, suv ichma.",
+  "topicId": 5
+ },
+ {
+  "q": "Harbiy xizmatchilarni tibbiy ko'rikdan o'tkazish jarayonida bir askarda ruhiy salomatlik muammosi aniqlandi. Ushbu muammoni hal qilish va davolash uchun mas'ul bo'ladigan mutaxassisni belgilang.",
+  "opts": [
+   "A) Terapevt (ichki organlar shifokori).",
+   "B) Jarroh (jarrohlik yo'li bilan davolaydigan shifokor).",
+   "C) Psixiatr (ruhiy kasalliklar mutaxassisi).",
+   "D) Nevropatolog (asab tizimi shifokori)."
+  ],
+  "correct": 2,
+  "explanation": "Ruhiy muammolarni aniqlash va davolashda psixiatr mutaxassisi bevosita mas'ul bo'ladi, terapevt ichki organlar, nevropatolog asab tizimi jarohatlari bilan shug'ullanadi.",
+  "mnemonic": "Ruhiy muammo — Psixiatr yordam berar.",
+  "topicId": 5
+ },
+ {
+  "q": "Mudofaa vazirligi tibbiy komissiyasida harbiy xizmatchini ko'rikdan o'tkazish vaqtida uning xatti-harakatlarida g'alatiyonlik, nutqida chalkashlik va ruhiy tushkunlik kuzatildi. Uning holatini aniqlash va tashxislash mas'uliyati qaysi shifokorga tegishli?",
+  "opts": [
+   "A) Terapevt (ichki organlar mutaxassisi)",
+   "B) Psixiatr (ruhiy kasalliklar mutaxassisi)",
+   "C) Nevropatolog (asab tizimi mutaxassisi)",
+   "D) Jarroh (jarrohlik amaliyoti mutaxassisi)"
+  ],
+  "correct": 1,
+  "explanation": "Agar fuqaroning ko'rik natijasida ruhiy salomatlik muammosi aniqlansa, mas'ul shifokor psixiatr hisoblanadi. Terapevt ichki organlar, nevropatolog asab tizimi, jarroh esa jarrohlik muammolari bilan shug'ullanadi.",
+  "mnemonic": "Ruhiy tushkunlik — psixiatr yordami.",
+  "topicId": 5
+ },
+ {
+  "q": "Harbiy lagerda tun bo'yi patrul xizmatini o'tayotgan askar chayon tomonidan chaqib yuborildi. Bu holat odatda ko'pchilikda yengil reaksiya keltirib chiqaradi, ammo ayniqsa qaysi toifadagi odamlar uchun eng xavfli hisoblanadi?",
+  "opts": [
+   "A) Faqat sportchi va jismonan baquvvat harbiy xizmatchilar",
+   "B) Shifokorlik ko'rikidan o'tgan, o'rta yoshdagi sog'lom insonlar",
+   "C) Bolalar, keksalar va allergiyasi bor insonlar",
+   "D) Faqat ichki kasalliklari (diabet, gastrit) bo'lgan bemorlar"
+  ],
+  "correct": 2,
+  "explanation": "Chayon chaqishi bolalar, keksalar va allergiyasi bor insonlar uchun ayniqsa xavflidir, chunki ularning organizmi zaharlanishga sezgirroq bo'lishi mumkin. Umumiy holatda ko'pchilikda yengil reaksiya kuzatiladi.",
+  "mnemonic": "Chayon chaqsa — bola, kecha va allergiyaga ehtiyot.",
+  "topicId": 5
+ },
+ {
+  "q": "Mashg'ulotlar paytida to'rtta askar turli xil shikastlanish holatiga uchradi: 1-pichoq bilan jarohatlandi, 2-issiq suv bilan kuydi, 3-kislota tomchisi tegdi, 4-sovuqqa tushib qoldi. Ushbu shikastlanish turlariga ko'rsatiladigan birinchi yordam choralari (A: issiq ichimlik va quruq kiyim; B: sovuq suv va steril bog'lam; C: qon to'xtatish va antiseptik; D: suv bilan yuvish va shifokor) bilan moslashtiring.",
+  "opts": [
+   "A) 1-B, 2-D, 3-A, 4-C",
+   "B) 1-C, 2-B, 3-D, 4-A",
+   "C) 1-D, 2-A, 3-C, 4-B",
+   "D) 1-A, 2-C, 3-B, 4-D"
+  ],
+  "correct": 1,
+  "explanation": "Jarohatda qon ketishi to'xtatilib, antiseptik bog'lam qo'yiladi ; yonishda sovuq suv bilan yuvilib, steril bog'lam qo'yiladi ; kimyoviy kuyishda modda yuvib tashlanadi ; sovuq urug'ida esa issiq ichimlik berilib, quruq kiyim kiydiriladi.",
+  "mnemonic": "Jarohat — bos, Kuyish — sovuq, Kimyoviy — yuv, Sovuq — isit.",
+  "topicId": 5
+ },
+ {
+  "q": "Jang maydonida nafas olmayotgan va yurak urishi sezilmaydigan yaralangan askarga birinchi tibbiy yordam ko'rsatilmoqda. Sun'iy nafas berish va yo'ldosh (yopiq) yurak massaji (SLR)ni amalga oshirishda massaj va sun'iy nafas nisbati qanday bo'lishi kerak?",
+  "opts": [
+   "A) Har 15 marta yurak massajidan keyin 2 marta sun'iy nafas.",
+   "B) Har 5 marta yurak massajidan keyin 1 marta sun'iy nafas.",
+   "C) Har 30 marta yurak massajidan keyin 2 marta sun'iy nafas.",
+   "D) Har 10 marta yurak massajidan keyin 1 marta sun'iy nafas."
+  ],
+  "correct": 2,
+  "explanation": "Nafas olmayotgan jabrlanuvchiga bir kishi yordam ko'rsatayotgan bo'lsa, har 30 ta yurak massajidan keyin 2 marta sun'iy nafas berish (30:2 nisbati) qoidasiga amal qilinadi.",
+  "mnemonic": "O'ttiz ikki — qon aylanadi, nafas keladi.",
+  "topicId": 5
+ },
+ {
+  "q": "Futbolchi o'yinda tushib, bilagi bo'g'imidan shikastlandi. Shikastlangan joy kuchli og'riyapti, qo'li odatdagidek turmaydi va biroz kalta ko'rinmoqda. Bu belgilar qaysi turdagi shikastlanishga xos?",
+  "opts": [
+   "A) Yopiq suyak sinishi — suyak uchlarining o'zaro tegishi va krepitatsiya.",
+   "B) Bog'lamlar va mushaklar cho'zilishi — harakat qaytarilganda og'riq bo'lmasligi.",
+   "C) Bo'g'im chiqishi — kuchli og'riq, harakatning cheklanishi va a'zo shaklining o'zgarishi.",
+   "D) Ochiq jarohat — terining yorilishi va tashqi qonash."
+  ],
+  "correct": 2,
+  "explanation": "Bo'g'im chiqishining asosiy belgilariga kuchli og'riq, bo'g'imda harakatning keskin kamayishi, a'zoning odatdagidek turmasligi va deformatsiyasi (uzunligining o'zgarishi) kiradi.",
+  "mnemonic": "Chiqish — og'riq, turmaydi, shakli o'zgaradi.",
+  "topicId": 5
+ },
+ {
+  "q": "Mashg'ulotlar vaqtida askarning ko'krak qafasi jarohatlandi. Jabrlanuvchi tez-tez va sayoz nafas olmoqda, og'riqdan qiynalmoqda, nafas yo'llarida qon va shilliq moddalari to'plangan. Bemorga ko'rsatiladigan birinchi tibbiy yordam qanday tartibda bo'lishi kerak?",
+  "opts": [
+   "A) Og'riq qoldiruvchi dori berib, nafas yo'llarini tozalab, aseptik bog'lov qo'yish va immobilizatsiya qilish.",
+   "B) Darhol qonni to'xtatish uchun ko'krak qafasiga qattiq bosim o'tkazish va oyoqlariga issiq kompress qo'yish.",
+   "C) Faqat og'riq qoldiruvchi dori berib, jarohat joyini ochiq qoldirib, shifokor kutiladi.",
+   "D) Bemorni orqasi bilan yotqizib, ko'krak qafasiga issiq bog'lam qo'yish va suyuq ozuqa berish."
+  ],
+  "correct": 0,
+  "explanation": "Ko'krak qafasi shikastlanishida og'riq qoldiruvchi beriladi, nafas yo'llari qon va shilliqdan tozalanadi, aseptik bog'lov qo'yiladi va immobilizatsiya (harakatni cheklash) amalga oshiriladi.",
+  "mnemonic": "Ko'krak jarohati — nafasni tozala, bog'la, harakatni chekla.",
+  "topicId": 5
+ },
+ {
+  "q": "Jangovar harakatlar paytida qizil hududda yaradorning oyoq qismidan kuchli arterial qon ketmoqda. Turniketni qo'yish bo'yicha to'g'ri tartibni tanlang.",
+  "opts": [
+   "A) Kiyimni ochib, qon ketish joyiga bevosita tegishli holda qattiq qilib qo'yish.",
+   "B) Kiyim ustidan, qon ketish joyidan quyiroqqa, shikastlangan joyga yaqinroqqa qo'yish.",
+   "C) Kiyim ustidan, qon ketish joyidan iloji boricha teparoqqa qattiq qilib qo'yish.",
+   "D) Kiyimni ochib, qon ketish joyidan tepaga, ammo bo'sh qilib qo'yish."
+  ],
+  "correct": 2,
+  "explanation": "Qon ketishni to'xtatish uchun turniketni kiyim ustidan, qon ketish joyidan yuqorida, iloji boricha teparoqqa qo'yish kerak. Bu turiketning samarali bo'lishi va shikastlanish joyiga qo'shimcha zarar yetkazmasligini ta'minlaydi.",
+  "mnemonic": "Kiyim ustiga, tepaga — qonni to'xtat.",
+  "topicId": 5
+ },
+ {
+  "q": "Harbiy shifokor darsda kimyoviy tahdidlar haqida gapirar ekan, shrapnel zarbasi natijasida zaharli moddaning to'g'ridan-to'g'ri qonga aralashib ketishi holatini misol tariqasida keltirdi. Ushbu holatda zaharli moddaning organizmga kirish yo'li qaysi turdaga kiradi?",
+  "opts": [
+   "A) Nafas yo'llari orqali (inhalatsiya)",
+   "B) Tersi orqali (resorbsiya)",
+   "C) Ichak yo'li orqali (ingestiya)",
+   "D) Parenteral yo'l orqali"
+  ],
+  "correct": 3,
+  "explanation": "Teri yoki shilliq qavatning buzilishi (masalan, shrapnel zarbasi) tufayli zaharli moddaning qonga kirishi parenteral yo'lga kiradi. Nafas yo'llari, teri yoki ichak orqali kirish esa boshqa yo'llardir.",
+  "mnemonic": "Parenteral — parda yorilib, qonga kirganda.",
+  "topicId": 5
+ }
+]

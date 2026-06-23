@@ -40,6 +40,17 @@ A) IKKI MUSTAQIL O'Q — bularni ARALASHTIRMA (eng muhim tushuncha):
 ═══════════════════════════════════════════════════════════════════
 B) NAMUNA DARAJASI — CHUQURLIK (savollar AYNAN demotest darajasida bo'lsin):
 ═══════════════════════════════════════════════════════════════════
+  • ⛔ PASTKI CHEGARA = NAMUNA. Quyida keltirilgan "RASMIY IMTIHON NAMUNA SAVOLLARI" — sifat va
+    qiyinlikning ENG PAST chegarasi. Har bir savol KAMIDA o'sha darajada bo'lsin; undan soddaroq,
+    yuzaroq yoki "lug'atdan ta'rif" bo'lsa — UMUMAN YOZMA. Namuna qanchalik ko'p qadamli/faktga boy
+    bo'lsa, sening savoling ham shunday chuqur bo'lsin.
+  • Namuna uslubidagi MURAKKABLIK shakllaridan foydalan (fan/manba qo'llab-quvvatlasa):
+      – savol o'zagiga ANIQ SONLI qiymat berib hisob/tahlil so'ra (mas: "640 kJ ... 5800 kJ bo'lsa, ...");
+      – 4 ta belgi/xususiyat/mulohaza berib QAYSILARI to'g'ri/mos kelishini so'ra (combo uslubi);
+      – vaziyat yoki tuzilma tavsifini berib OBYEKTNI ANIQLATTIR (mas: organoid/to'qima/jarayonni tavsifdan top);
+      – ikki obyektni 3-4 belgi bo'yicha solishtirib, FARQ/O'XSHASHLIKni topishni so'ra.
+  • Y1 (Bilish) ham QURUQ ta'rif bo'lmasin — kamida bitta qo'llash/farqlash/tanlash qadamini talab qilsin.
+    Bir so'z eslab javob beriladigan "atama-ta'rif" savolini yozma.
   • Asosan VAZIYATLI (keys) savol: real dars/kasbiy/hayotiy holat tasvirlanadi, so'ng savol beriladi.
     ("O'qituvchi ... qildi. Bu qaysi metod?" / "Pedagog ... holatga duch keldi. Eng maqbul harakat?")
   • Ko'p bosqichli mulohaza yoki hisob talab qilsin — javobni bir qarashda topib bo'lmasin.

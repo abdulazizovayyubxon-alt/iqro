@@ -50,3 +50,10 @@ tasviriy/
 fan/
 scratch/
 .vercel
+
+# Lokal zaxira nusxalar va vaqtinchalik checkpoint/intermediate artefaktlar — repo'ga kerak emas
+*.bak-*
+*.bak-corrupt
+pipeline/_chqbt_enrich_ckpt.json
+pipeline/_chqbt_audit_report.json
+pipeline/_lastraw.txt

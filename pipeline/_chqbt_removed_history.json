@@ -1,0 +1,1653 @@
+[
+ {
+  "q": "Jaloliddin Manguberdi qaysi davrda yashab, Xorazmshohlar davlatining oxirgi hukmdori bo‘lgan?",
+  "opts": [
+   "A) 1198–1231",
+   "B) 1240–1280",
+   "C) 1150–1190",
+   "D) 1300–1350"
+  ],
+  "correct": 0,
+  "explanation": "Jaloliddin Manguberdi to‘liq ismi Jaloliddin ibn Alovuddin Muhammad bo‘lib, 1198‑1231 yillarda yashagan.",
+  "mnemonic": "Jaloliddin 1198‑1231, Xorazmning oxiri",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi harbiy mahoratining asosiy jihati nima edi?",
+  "opts": [
+   "A) Yuqori texnologik qurol ishlatish",
+   "B) Moskva bilan alyans tuzish",
+   "C) Navbatda harbiy lagerlarni qurish",
+   "D) Jangga tayyorgarlik darajasi va qo‘shinni boshqarish"
+  ],
+  "correct": 3,
+  "explanation": "Jangga tayyorgarlik darajasi va sarkardaning jang olib borish mahorati g‘alabaga bevosita bog‘liq ekani aytilgan.",
+  "mnemonic": "Tayyorgarlik + boshqarish = mahorat",
+  "topicId": 3
+ },
+ {
+  "q": "Zahiriddin Muhammad Bobur qaysi asar muallifi hisoblanadi?",
+  "opts": [
+   "A) Sharqiy yodgorlik",
+   "B) Boburnoma",
+   "C) Alifbo",
+   "D) Maqsad"
+  ],
+  "correct": 1,
+  "explanation": "Bobur o‘zining tarixiy asari \"Boburnoma\" bilan mashhur.",
+  "mnemonic": "Bobur – Boburnoma",
+  "topicId": 3
+ },
+ {
+  "q": "Quyidagi sarkardalar umumiy jihatlari bilan moslashtiring:\n1. Jaloliddin Manguberdi\n2. Amir Temur\n3. Zahiriddin Muhammad Bobur\nA. Harbiy mahoratni mustahkamlash\nB. O‘z davrining siyosiy yetakchisi\nC. Strategik jang taktikalarini rivojlantirish",
+  "opts": [
+   "A) 1-C, 2-A, 3-B",
+   "B) 1-B, 2-C, 3-A",
+   "C) 1-A, 2-C, 3-B",
+   "D) 1-A, 2-B, 3-C"
+  ],
+  "correct": 2,
+  "explanation": "Jaloliddin – mahorat (A), Amir Temur – strategik taktikalar (C), Bobur – siyosiy yetakchilik (B).",
+  "mnemonic": "Manguberdi‑mahorat, Temur‑taktika, Bobur‑siyosat",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi harbiy tamoyillarini moslashtiring:\n1. Birinchi tamoyil\n2. Ikkinchi tamoyil\n3. Uchinchi tamoyil\nA. G‘alabaga erishish uchun hamma kuchni jamlash\nB. Dushmanni qo‘llab-quvvatlaydigan muhitni yaratish\nC. Har bir jangda o‘z pozitsiyasini mustahkamlash",
+  "opts": [
+   "A) 1-C, 2-A, 3-B",
+   "B) 1-A, 2-C, 3-B",
+   "C) 1-A, 2-B, 3-C",
+   "D) 1-B, 2-C, 3-A"
+  ],
+  "correct": 2,
+  "explanation": "Birinchi tamoyil – g‘alabaga erishish uchun hamma kuchni jamlash (A); ikkinchi – dushmanga zarba berish uchun qulay sharoit yaratish (B); uchinchi – har bir jangda o‘z pozitsiyasini mustahkamlash (C).",
+  "mnemonic": "G‘alaba‑jamlash, Zarba‑sharoit, Pozitsiya‑mustahkam",
+  "topicId": 3
+ },
+ {
+  "q": "Parvon dashtidagi jangda Jaloliddin Manguberdi qo‘llagan harbiy amallarni to‘g‘ri tartibda joylashtiring:\n1. Otli askarlarni tayyorlash\n2. Dushmanga atda zarba berish\n3. Jang maydonini kuzatish\n4. Qozonilgan hududni mustahkamlash",
+  "opts": [
+   "A) 1, 3, 2, 4",
+   "B) 2, 1, 3, 4",
+   "C) 1, 2, 3, 4",
+   "D) 3, 1, 2, 4"
+  ],
+  "correct": 2,
+  "explanation": "Jaloliddin avvalo otli askarlarni tayyorlaydi (1), so‘ng dushmanga atda zarba beradi (2), jang maydonini kuzatadi (3) va oxirida hududni mustahkamlaydi (4).",
+  "mnemonic": "Tayyor → Zarba → Kuzat → Mustahkam",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur harbiy yutuqlarining asosiy sababi nima deb hisoblanadi?",
+  "opts": [
+   "A) Yuqori texnologik qurollardan foydalanish",
+   "B) Tinchlik shartnomasini imzolash",
+   "C) Keng dengiz flotiga ega bo‘lish",
+   "D) Harbiy taktikalarni puxta rejalashtirish"
+  ],
+  "correct": 3,
+  "explanation": "Amir Temurning g‘alabalari asosan puxta rejalashtirilgan harbiy taktikalariga asoslangan.",
+  "mnemonic": "Temur – taktikalar puxta",
+  "topicId": 3
+ },
+ {
+  "q": "Bobur o‘zining harbiy kampaniyasida qaysi taktikani muvaffaqiyatli qo‘llagan?",
+  "opts": [
+   "A) Sanoat qurollarini import qilish",
+   "B) Keng dengiz flotini yaratish",
+   "C) Qurilma va otli birliklarni birlashtirish",
+   "D) Xavfsizlik devorlarini qurish"
+  ],
+  "correct": 2,
+  "explanation": "Bobur harbiy kampaniyalarda piyoda va otli birliklarni birlashtirishga e'tibor qaratgan.",
+  "mnemonic": "Bobur – piyoda + otli",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi, Amir Temur va Zahiriddin Muhammad Boburning harbiy yutuqlariga bir xil ta'sir etuvchi omil nima?",
+  "opts": [
+   "A) Ularning milliy musiqiy an'analari",
+   "B) Sarkardalarning jangga tayyorgarlik darajasi",
+   "C) Dengiz savdo yo‘llariga egalik",
+   "D) Yuqori ilmiy ilm-fan sohalarida ishlash"
+  ],
+  "correct": 1,
+  "explanation": "Jangga tayyorgarlik darajasi harbiy g‘alabaga bevosita bog‘liq ekanligi aytilgan.",
+  "mnemonic": "Tayyorgarlik – har biriga umumiy",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur qo‘shini qanday sonli bo‘linmalarga bo‘ldi?",
+  "opts": [
+   "A) 3 ta qo‘llarga",
+   "B) 7 ta qo‘llarga",
+   "C) 9 ta qo‘llarga",
+   "D) 5 ta qo‘llarga"
+  ],
+  "correct": 1,
+  "explanation": "Amir Temur qo‘shini aniq 7 ta qo‘llarga bo‘lgani ko‘rsatilgan; boshqa raqamlar matnda yo‘q.",
+  "mnemonic": "Temur – yeddi qo‘l",
+  "topicId": 3
+ },
+ {
+  "q": "Temur jangda an'anaviy qanot tuzilmasidan voz kechib, qanday yangi usulni joriy etdi?",
+  "opts": [
+   "A) Maqsadga qarshi yengil armiya yo‘llash",
+   "B) Qo‘shini 7 ta qo‘llikga bo‘lish",
+   "C) Markaziy qatlamni kuchaytirish",
+   "D) Yashirin harakatlarni qo‘llash"
+  ],
+  "correct": 1,
+  "explanation": "Temur an'anaviy qanotlardan voz kechib, qo‘shini 7 ta qo‘llikga bo‘lishi ta'kidlangan; boshqa usullar tasvirlanmagan.",
+  "mnemonic": "Temur – yeddi qo‘llik",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi taktikasi elementlarini ularning tavsifi bilan moslashtiring:\n1. Shiddatli harakat\n2. Yirik kuchlarni jamlash\n3. To‘qatdan zarba\n4. Tez natija\nA. Dushmanga to‘liq kuch bilan urish\nB. Barcha mavjud kuchlarni maksimal tezlikda harakatga keltirish\nC. G'alabani darhol mustahkamlash\nD. Katta birliklarni bosh zarba yo'nalishida birlashtirish",
+  "opts": [
+   "A) 1-C, 2-A, 3-D, 4-B",
+   "B) 1-D, 2-C, 3-B, 4-A",
+   "C) 1-A, 2-B, 3-C, 4-D",
+   "D) 1-B, 2-D, 3-A, 4-C"
+  ],
+  "correct": 3,
+  "explanation": "1‑B shiddatli harakatni, 2‑D yirik kuchlarni jamlashni, 3‑A to‘qatdan zarbani, 4‑C tez natijani ifodalaydi. Boshqa tartibda mos kelmaydi.",
+  "mnemonic": "Shiddat – B, Yirik – D, To‘qat – A, Tez – C",
+  "topicId": 3
+ },
+ {
+  "q": "Quyidagi voqealarni to‘g‘ri vaqt tartibida joylashtiring:\n1. To‘xtamishxon 7 qo‘llik usulini qo‘lladi\n2. Amir Temur 1391-yilda To‘xtamishxon qo‘shiniga qarshi jang o'tkazdi\n3. 1395-yilda Terek daryosi jangida kamondan o‘q uzish usuli ishlatildi\n4. Amir Temur qo‘shini 7 qo‘llikga bo‘lishi amalga oshirildi",
+  "opts": [
+   "A) 2, 4, 1, 3",
+   "B) 2, 1, 4, 3",
+   "C) 4, 2, 3, 1",
+   "D) 1, 2, 3, 4"
+  ],
+  "correct": 0,
+  "explanation": "Birinchi voqea 1391-yildagi jang (2), undan keyin qo‘shini 7 qo‘llikga bo‘lish (4), keyin To‘xtamishxon ham usulni qabul qilgan (1), so‘ng 1395-yildagi Terek daryosi jangida kamondan o‘q uzish (3).",
+  "mnemonic": "Jang – bo‘lish – usul – kamon",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi strategiyasida erishilgan g‘alabani qanday qilib mustahkamlaydi?",
+  "opts": [
+   "A) Uzoq muddatli rejalashtirish bilan",
+   "B) Resurslarni saqlab qolish orqali",
+   "C) Taktikani o‘zgartirish orqali",
+   "D) Natijani darhol qo‘llash orqali"
+  ],
+  "correct": 3,
+  "explanation": "Tamoyilga ko‘ra, g‘alaba darhol foydalaniladi; boshqa variantlar bu tamoyilga zid.",
+  "mnemonic": "G'alaba – darhol qo‘llash",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi ikkinchi darajali hududlarda yirik kuchlarni jamlashni qanday maqsadda amalga oshiradi?",
+  "opts": [
+   "A) Mudofaa chizig‘ini mustahkamlash",
+   "B) Bosh zarba yo‘nalishida samarali urish",
+   "C) Resurslarni tejash",
+   "D) Taktikani soddalashtirish"
+  ],
+  "correct": 1,
+  "explanation": "Yirik kuchlarni bosh zarba yo‘nalishida jamlash maqsadi ko‘rsatilgan; boshqa variantlar maqsadga mos kelmaydi.",
+  "mnemonic": "Yirik – bosh zarba",
+  "topicId": 3
+ },
+ {
+  "q": "Bobur jangida qo'llanilgan qurol turlarini ularning funksiyalari bilan moslashtiring:\n1. To'fangdoz\n2. Farangi (miltiq)\n3. Arava\n4. Qalqon\nA. Yengil piyoda hujumini qo'llab-quvvatlash\nB. Jang maydonida og'ir artilleriyaviy zarba\nC. Harbiy birliklarni birlashtirish, transport\nD. Harbiy pozitsiyani mustahkamlash",
+  "opts": [
+   "A) 1-C, 2-D, 3-B, 4-A",
+   "B) 1-B, 2-A, 3-C, 4-D",
+   "C) 1-A, 2-B, 3-D, 4-C",
+   "D) 1-D, 2-C, 3-A, 4-B"
+  ],
+  "correct": 1,
+  "explanation": "To'fangdoz – og'ir artilleriyaviy zarba (B); Farangi miltiq – yengil piyoda hujumini qo'llab-quvvatlaydi (A); Arava – transport va birliklarni birlashtiradi (C); Qalqon – pozitsiyani mustahkamlaydi (D).",
+  "mnemonic": "To'fang – B, Farangi – A, Arava – C, Qalqon – D",
+  "topicId": 3
+ },
+ {
+  "q": "Bobur strategiyasida \"burongkor\" usulining maqsadi nima?",
+  "opts": [
+   "A) Havo qo'shinlarini qo'llash",
+   "B) Uzoq muddatli qo'shinlarni erkin harakatlantirish",
+   "C) Markaziy qismni to'g'ridan-to'g'ri zarba bilan mag'lub qilish",
+   "D) Dushmanning asosiy kuchini qo'shni tomondan bosib o'tish"
+  ],
+  "correct": 3,
+  "explanation": "Burongkor usul dushmanning asosiy, ya'ni markaziy kuchini qo'shni tomondan bosib o'tishni ko'zda tutadi. B markaziy to'g'ridan-to'g'ri hujum, C harakatlanishga, D havo qo'shinlariga oid.",
+  "mnemonic": "Burongkor – yon tomondan bosadi",
+  "topicId": 3
+ },
+ {
+  "q": "Bobur jangining bosqichlarini to'g'ri ketma-ketlikda joylashtiring:\n1. Aravalar, qalqonlar bilan harbiy birliklarni tayyorlash\n2. To'fangdoz va farangi bilan og'ir zarba berish\n3. Dushman sarosimaga tushib, tartibsizlanadi\n4. Dehli va Agrani hududini egallash",
+  "opts": [
+   "A) 1, 3, 2, 4",
+   "B) 1, 2, 3, 4",
+   "C) 2, 1, 3, 4",
+   "D) 3, 1, 2, 4"
+  ],
+  "correct": 1,
+  "explanation": "Bobur avvalo tayyorlanadi (1), keyin og'ir qurol bilan zarba beradi (2), dushman sarosimaga tushadi (3), oxirida hududni egallaydi (4). B, C, D tartiblari noto'g'ri.",
+  "mnemonic": "Tayyor → Zarba → Sarosima → Egallash",
+  "topicId": 3
+ },
+ {
+  "q": "Temur tuzuklari bo‘yicha jang maydonini baholash jarayonini to‘g‘ri ketma‑ketlikda joylashtiring:\n1. Jang maydonining suvga yaqinligini o‘rganish\n2. Dushman lashkari sonini aniqlash\n3. Qo‘shinning joylashtirilish tartibini belgilash\n4. Dushmanni baholash mezoniga qarab harakat rejasini tuzish",
+  "opts": [
+   "A) 1, 2, 3, 4",
+   "B) 3, 2, 1, 4",
+   "C) 2, 1, 3, 4",
+   "D) 2, 3, 1, 4"
+  ],
+  "correct": 0,
+  "explanation": "Avval suvga yaqinlik o‘rganiladi (1), keyin dushman soni aniqlanadi (2), keyin qo‘shinning joylashuvi (3), oxirida dushmonga qarshi harakat rejasi (4) tuziladi. Shuning uchun 1‑2‑3‑4 tartibi to‘g‘ri.",
+  "mnemonic": "Suv‑son‑joy‑reja",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur harbiy yurishini tashkil etish bosqichlarini to‘g‘ri tartibda joylashtiring:\n1. Jang hududini egallash\n2. Kuch va vositalarni tashkil etish\n3. Muhoraba hududini o‘rganish",
+  "opts": [
+   "A) 2, 3, 1",
+   "B) 3, 1, 2",
+   "C) 1, 2, 3",
+   "D) 3, 2, 1"
+  ],
+  "correct": 3,
+  "explanation": "Avvalo muhoraba hududini o‘rganish, keyin kuch va vositalarni tashkil etish, oxirida jang hududini egallash tavsiya qilingan. Shuning uchun 3‑2‑1 to‘g‘ri.",
+  "mnemonic": "O‘rgan, tashkil, egalla.",
+  "topicId": 3
+ },
+ {
+  "q": "Ikkinchi jahon urushining umumiy xarakteristikalarini to‘g‘ri tartibda keltiring:\n1. 1939‑1945 yillar oralig‘ida sodir bo‘ldi\n2. 50 millingdan ortiq inson halok bo‘ldi\n3. Yer sharining 80% aholisi ta’sirda bo‘ldi\n4. 61 davlat qatnashdi",
+  "opts": [
+   "A) 1, 2, 3, 4",
+   "B) 3, 1, 2, 4",
+   "C) 1, 3, 2, 4",
+   "D) 2, 1, 3, 4"
+  ],
+  "correct": 0,
+  "explanation": "Avval urushning davri (1939‑1945) keltirilgan, keyin qurbonlar soni (50 million), keyin ta'sir ko‘lam (80% aholi), oxirida qatnashgan davlatlar (61) tavsiflangan.",
+  "mnemonic": "Davr, Qurbon, Ta'sir, Davlat",
+  "topicId": 0
+ },
+ {
+  "q": "Jaloliddin Manguberdi qaysi davlatning oxirgi hukmdori bo'lgan Alovuddin Muhammadning o‘g‘li edi?",
+  "opts": [
+   "A) Samarqand sultonligi",
+   "B) Xorazmshohlar davlatining",
+   "C) Buxoro amirligi",
+   "D) Qozog‘iston xonligi"
+  ],
+  "correct": 1,
+  "explanation": "Jaloliddin Manguberdi Xorazmshohlar davlatining so‘nggi hukmdori Alovuddin Muhammadning o‘g‘li deb aytilgan.",
+  "mnemonic": "Xorazm o‘g‘li Manguberdi",
+  "topicId": 3
+ },
+ {
+  "q": "1221-yilning noyabrida bo‘lib o‘tgan Sind daryosi jangida Jaloliddin Manguberdi qanday harakat qilgan?",
+  "opts": [
+   "A) Yangi qo‘shin bilan daryoni ko‘prik qurib, dushmanni aldan bosib o'tgan",
+   "B) Ushbu jangda to‘liq orqaga chekinib, dushmanni qochirgan",
+   "C) 4000 jangchi bilan daryoning o‘ng sohiliga suzib o‘tib, cho‘l ichkarisiga kirgan",
+   "D) Daryoga qarshi qattiq aralashma otgan"
+  ],
+  "correct": 2,
+  "explanation": "4000 jangchi bilan Sind daryosining o‘ng sohiliga suzib, cho‘l ichkarisiga kirganligi keltirilgan.",
+  "mnemonic": "4000 so‘ng cho‘lda",
+  "topicId": 3
+ },
+ {
+  "q": "Quyidagi qaysi xususiyat Jaloliddin Manguberdi sarkardlik qobiliyatining asosiy elementidir?",
+  "opts": [
+   "A) Mahalliy xalqning siyosiy qo‘llab-quvvatlashi",
+   "B) Yuqori darajadagi ilm-fan bilimlari",
+   "C) Jasurlik va vatanparvarlik",
+   "D) Keng iqtisodiy resurslarga ega bo‘lish"
+  ],
+  "correct": 2,
+  "explanation": "Jaloliddinning sarkardalik qobiliyati, jasurligi va vatanparvarligi alohida ta’kidlangan.",
+  "mnemonic": "Jasur, vatanparvar – sarkarda",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi 33 yillik umrining qancha yilini janglarda o'tkazgan?",
+  "opts": [
+   "A) 20 yil",
+   "B) 15 yil",
+   "C) 7 yil",
+   "D) 11 yil"
+  ],
+  "correct": 3,
+  "explanation": "33 yillik umrining 11 yilini turli janglarda o'tkazgani yozilgan.",
+  "mnemonic": "33 ichida 11 jang",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi janglarini ularning joyiga moslashtiring:\n1. Parvon dashti\n2. Sind daryosi\nA. Tog‘li va toshloq yerda, otli harakatlar\nB. O‘ng sohil, cho‘l ichkarisiga kirish",
+  "opts": [
+   "A) 1-A, 2-B",
+   "B) 1-B, 2-A",
+   "C) 1-B, 2-B",
+   "D) 1-A, 2-A"
+  ],
+  "correct": 0,
+  "explanation": "Parvon dashti – tog‘li, toshloq yerda, otli harakatlar; Sind daryosi – o‘ng sohil, cho‘l ichkarisi.",
+  "mnemonic": "Parvon tog‘, Sind sohil",
+  "topicId": 3
+ },
+ {
+  "q": "Quyidagi tarixiy voqealarni to‘g‘ri vaqt tartibida joylashtiring:\n1. Jaloliddin Manguberdi tug‘ilgan\n2. Parvon dashti jangi\n3. Sind daryosi jangi\n4. Jaloliddin vafot etgan",
+  "opts": [
+   "A) 1, 2, 4, 3",
+   "B) 1, 2, 3, 4",
+   "C) 2, 1, 3, 4",
+   "D) 1, 3, 2, 4"
+  ],
+  "correct": 1,
+  "explanation": "1198 – tug‘ilgan, 1221 Parvon dashti, 1221 noyabr Sind daryosi, 1231 – vafot.",
+  "mnemonic": "1198, 1221, 1221, 1231",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi, Amir Temur va Zahiriddin Muhammad Boburning umumiy jihati nima?",
+  "opts": [
+   "A) Har birining harbiy mahorati va strategik fikrlash qobiliyati",
+   "B) Ular bir xil diniy qo‘shiq ijro etgan",
+   "C) Barcha birinchi o‘qituvchi sifatida tanilgan",
+   "D) Ularning hammasi shahar quruvchilari bo‘lgan"
+  ],
+  "correct": 0,
+  "explanation": "Ularning harbiy mahorati va strategiyalarini tahlil qilishga eʼtibor qaratilgan.",
+  "mnemonic": "Harbiy mahorat, strategik fikr",
+  "topicId": 3
+ },
+ {
+  "q": "Temur tomonidan tashkil etilgan 7 ta qo'lda qaysi raqam birinchi bo'ladi?",
+  "opts": [
+   "A) 3",
+   "B) 1",
+   "C) 7",
+   "D) 5"
+  ],
+  "correct": 1,
+  "explanation": "Qo'lda raqamlanish har doim birinchi element 1 bilan boshlanadi. Shuning uchun to'g'ri javob 1.",
+  "mnemonic": "Birinchi qo'l – 1.",
+  "topicId": 3
+ },
+ {
+  "q": "Quyidagi taktikalarni ularning asosiy xususiyati bilan moslashtiring:\n1. Manguberdi \"to'xtatib zarba\" tamoyili\n2. Temur 7 ta qo'l tuzilishi\nA. Tez va uzluksiz natija\nB. An'anaviy markazsiz struktura\n",
+  "opts": [
+   "A) 1-B, 2-A",
+   "B) 1-A, 2-A",
+   "C) 1-B, 2-B",
+   "D) 1-A, 2-B"
+  ],
+  "correct": 3,
+  "explanation": "Manguberdi \"to'xtatib zarba\" tez va uzluksiz natijaga erishishga yo'naltirilgan, shuning uchun A ga mos. Temur 7 ta qo'l an'anaviy markazsiz struktura, B ga mos.",
+  "mnemonic": "Mangiberdi – tez, Temur – an'anaviy emas.",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi taktikasi bosqichlarini to'g'ri ketma-ketlikda joylashtiring:\n1. Muvaffaqiyatdan tez foydalanish\n2. Yirik kuchlarni bosh zarba yo'nalishida jamlash\n3. Kuchlarni shiddat bilan harakatlantirish\n4. To'xtatib zarba berish",
+  "opts": [
+   "A) 2, 3, 4, 1",
+   "B) 3, 4, 2, 1",
+   "C) 3, 2, 4, 1",
+   "D) 3, 2, 1, 4"
+  ],
+  "correct": 2,
+  "explanation": "1‑bosqich – kuchlarni shiddat bilan harakatlantirish (3); 2‑bosqich – yirik kuchlarni bosh zarba yo'nalishida jamlash (2); 3‑bosqich – to'xtatib zarba berish (4); 4‑bosqich – muvaffaqiyatdan tez foydalanish (1). Shuning uchun 3,2,4,1 to'g'ri.",
+  "mnemonic": "Harakat → Jam → To'xta → Foyda.",
+  "topicId": 3
+ },
+ {
+  "q": "Bobur jangidagi bosqichlarni to'g'ri ketma-ketlikda joylashtiring:\n1. To'fangdozlarni tashlash\n2. Aravalar va qalqonlar joylashuvi\n3. Fillar chekinishi\n4. Hindlar sarosimada qolishi",
+  "opts": [
+   "A) 2, 3, 1, 4",
+   "B) 3, 2, 1, 4",
+   "C) 2, 1, 3, 4",
+   "D) 1, 2, 3, 4"
+  ],
+  "correct": 2,
+  "explanation": "Avval aravalar va qalqonlar (2), keyin tofangdozlar (1), undan so'ng fillar (3) va nihoyat hindlar (4) tasvirlangan. Shuning uchun 2,1,3,4 to'g'ri.",
+  "mnemonic": "Arava → To'fang → Fill → Hind.",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur tuzuklarida armiyaning asosiy tarkibiy qismi qaysi bo‘linma bo‘ladi?",
+  "opts": [
+   "A) Moliya vazirligi",
+   "B) Sipohlar",
+   "C) Kengashlar",
+   "D) Havo kuchlari"
+  ],
+  "correct": 1,
+  "explanation": "Armiyaning tuzilishi, sipoh saqlash, jang qoidalari haqida gap boradi; sipohlar asosiy harbiy bo‘linma hisoblanadi. Havo kuchlari, kengashlar, moliya vazirligi matnda ko‘rsatilmagan.",
+  "mnemonic": "Sipoh – armiyaning yadro",
+  "topicId": 3
+ },
+ {
+  "q": "Temur tuzuklari bo‘yicha harbiy xizmatni boshqarish tartibini to‘g‘ri ketma‑ketlikda joylashtiring:\n1. Vazir va qo‘shin boshliqlarini tanlash\n2. Sipohlarni saqlash va boshqarish\n3. Harbiy maoshni aniqlash\n4. Jangovar qoidalarni belgilash",
+  "opts": [
+   "A) 1, 4, 2, 3",
+   "B) 1, 2, 3, 4",
+   "C) 4, 1, 2, 3",
+   "D) 1, 2, 4, 3"
+  ],
+  "correct": 0,
+  "explanation": "Avvalo vazir va qo‘shin boshliqlarini tanlash, keyin jangovar qoidalarni (4‑bosqich) belgilash, undan sipohlarni saqlash‑boshqarish, oxirida maoshni aniqlash keltirilgan. Shuning uchun to‘g‘ri tartib 1‑4‑2‑3.",
+  "mnemonic": "Tanla → Qoidalar → Sipoh → Maosh",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur ijtimoiy‑siyosiy faoliyatining maqsadlarini ularning tavsiflari bilan moslashtiring:\n1. Siyosiy barqarorlikni ta’minlash\n2. Harbiy kengayishni qo‘llab‑quvvatlash\n3. Ijtimoiy tabaqalarni birlashtirish\nA. Yangi davlatchilik tuzilmasi yaratish\nB. Dovlatni mustahkamlash uchun harbiy kampaniyalar\nC. Turli ijtimoiy guruhlar o‘rtasida hamkorlikni yo‘lga qo‘yish",
+  "opts": [
+   "A) 1-A, 2-C, 3-B",
+   "B) 1-C, 2-A, 3-B",
+   "C) 1-B, 2-C, 3-A",
+   "D) 1-A, 2-B, 3-C"
+  ],
+  "correct": 3,
+  "explanation": "Amir Temur siyosiy barqarorlik, harbiy kengayish va ijtimoiy tabaqalarni birlashtirishga alohida e’tibor bergani yozilgan. Shuning uchun 1‑A (yangi davlatchilik), 2‑B (harbiy kampaniyalar), 3‑C (tabaqalar o‘rtasida hamkorlik) mos keladi. B, C, D variantlari bu ketma‑ketlikni noto‘g‘ri tasvirlaydi.",
+  "mnemonic": "Barqaror – Yangi, Kengayish – Kampaniya, Birlashtirish – Hamkorlik",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur Hindistonga qancha qo‘shin bilan chiqgan?",
+  "opts": [
+   "A) 90 ming",
+   "B) 70 ming",
+   "C) 50 ming",
+   "D) 30 ming"
+  ],
+  "correct": 0,
+  "explanation": "Hindistonga 90 ming qo‘shin bilan yurish boshlaganligi aniq keltirilgan.",
+  "mnemonic": "Hindistonda to‘ttiz ming emas, to‘qson ming",
+  "topicId": 3
+ },
+ {
+  "q": "Safarbarlik e'lon qilganda Amir Temur qanday ustunlikka erishgan?",
+  "opts": [
+   "A) Taktik mahorat ustunligi",
+   "B) Strategik joylashuv ustunligi",
+   "C) Son jihatdan ustunlik",
+   "D) Silah turlari ustunligi"
+  ],
+  "correct": 2,
+  "explanation": "Safarbarlik e'lon qilganda son jihatdan ustunlikka erishgani yozilgan.",
+  "mnemonic": "Safarbarlik – son ustun",
+  "topicId": 3
+ },
+ {
+  "q": "Muhoraba hududida Amir Temur qanday mudofaa inshootlarini yaratgan?",
+  "opts": [
+   "A) Havo maydonlari",
+   "B) Xandaqlar va to‘siqlar",
+   "C) Qal’a va minoralar",
+   "D) Suv omborlari"
+  ],
+  "correct": 1,
+  "explanation": "Muhoraba hududida xandaqlar qazilib, to‘siqlar barpo etilgani ko'rsatilgan.",
+  "mnemonic": "Xandaq + to‘siq = mudofaa",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur muhoraba hududini tahlil qilishda qaysi elementni e'tiborga olmagan?",
+  "opts": [
+   "A) Relief",
+   "B) Suv manbalari",
+   "C) Qurollar turlari",
+   "D) Iqlim"
+  ],
+  "correct": 2,
+  "explanation": "Qurollar turlari alohida ahamiyatga ega deyilgan, lekin muhoraba hududi tahlilida iqlim, suv, relief, motlar ko'rsatilgan.",
+  "mnemonic": "Iqlim, suv, relief – qurolga alohida e'tibor",
+  "topicId": 3
+ },
+ {
+  "q": "Quyidagi harbiy yurishlarni ularning yili bilan moslashtiring:\n1. To‘xtamishxon\n2. Hindiston\n3. Sulton Boyazid",
+  "opts": [
+   "A) 1-1395, 2-1402, 3-1398",
+   "B) 1-1395, 2-1398, 3-1402",
+   "C) 1-1398, 2-1395, 3-1402",
+   "D) 1-1402, 2-1395, 3-1398"
+  ],
+  "correct": 1,
+  "explanation": "1395 To‘xtamishxon, 1398 Hindiston, 1402 Sulton Boyazidga qarshi yurishlari tasdiqlangan.",
+  "mnemonic": "To‘xtamish 95, Hindiston 98, Boyazid 02",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur harbiy yurishining to‘g‘ri bosqichlarini ketma-ketlikda joylashtiring:\n1. Hududni egallash\n2. Xandaqlarni qazish\n3. To‘siqlar barpo etish\n4. Operativ jihozlash",
+  "opts": [
+   "A) 1, 3, 2, 4",
+   "B) 2, 1, 3, 4",
+   "C) 2, 3, 1, 4",
+   "D) 1, 2, 3, 4"
+  ],
+  "correct": 3,
+  "explanation": "Muhoraba hududini oldindan egallash, keyin xandaqlar qazish, to‘siqlar barpo etish, oxirida operativ jihozlash ketma-ketligi tasvirlangan.",
+  "mnemonic": "Egallash → Xandaq → To‘siq → Jihozlash",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi qaysi jangda mo'g'ul bosqinchilariga qarshi kurashda eng yirik g'alabaga erishgan?",
+  "opts": [
+   "A) Parvon dashtidagi jang",
+   "B) Samarkand jang",
+   "C) Xorazm jang",
+   "D) Sind daryosi bo'yidagi jang"
+  ],
+  "correct": 0,
+  "explanation": "Jaloliddin Manguberdi Parvon dashtidagi jangda mo'g'ul bosqinchilariga qarshi kurashda eng yirik g'alabaga erishgan.",
+  "mnemonic": "Parvon dashti - Manguberdi g'alabasi",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi kimning o'g'li edi?",
+  "opts": [
+   "A) Zahiriddin Muhammad Bobur",
+   "B) Alovuddin Muhammad Xorazmshoh",
+   "C) Amir Temur",
+   "D) Chingizxon"
+  ],
+  "correct": 1,
+  "explanation": "Jaloliddin Manguberdi Alovuddin Muhammad Xorazmshohning o'g'li edi.",
+  "mnemonic": "Manguberdi - Xorazmshoh o'g'li",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi qanday yoshda vafot etgan?",
+  "opts": [
+   "A) 33 yosh",
+   "B) 60 yosh",
+   "C) 50 yosh",
+   "D) 40 yosh"
+  ],
+  "correct": 0,
+  "explanation": "Jaloliddin Manguberdi 33 yoshda vafot etgan.",
+  "mnemonic": "Manguberdi - 33 yosh",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi qanday davrda yashagan?",
+  "opts": [
+   "A) 13-asr",
+   "B) 12-asr",
+   "C) 15-asr",
+   "D) 14-asr"
+  ],
+  "correct": 0,
+  "explanation": "Jaloliddin Manguberdi 13-asrda yashagan.",
+  "mnemonic": "Manguberdi - 13-asr",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdining otasi kim edi?",
+  "opts": [
+   "A) Alovuddin Muhammad Xorazmshoh",
+   "B) Chingizxon",
+   "C) Zahiriddin Muhammad Bobur",
+   "D) Amir Temur"
+  ],
+  "correct": 0,
+  "explanation": "Jaloliddin Manguberdi Xorazmshohlar davlatining so'nggi hukmdori Alovuddin Muhammad Xorazmshohning o'g'li.",
+  "mnemonic": "Jaloliddin - Alovuddin o'g'li",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temurning asl ismi nima edi?",
+  "opts": [
+   "A) Temur",
+   "B) Amir Temur ibn Taragay",
+   "C) Amir Temur",
+   "D) Temur Malik"
+  ],
+  "correct": 0,
+  "explanation": "Amir Temurning asl ismi Temur edi.",
+  "mnemonic": "Amir Temur - Temur",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temurning tug'ilgan yili qaysi?",
+  "opts": [
+   "A) 1336",
+   "B) 1334",
+   "C) 1340",
+   "D) 1338"
+  ],
+  "correct": 0,
+  "explanation": "Amir Temur 1336-yilda tug'ilgan.",
+  "mnemonic": "Amir Temur - 1336",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temurning vafot etgan yili qaysi?",
+  "opts": [
+   "A) 1405",
+   "B) 1407",
+   "C) 1409",
+   "D) 1403"
+  ],
+  "correct": 0,
+  "explanation": "Amir Temur 1405-yilda vafot etgan.",
+  "mnemonic": "Amir Temur - 1405",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi qo'shinlari Mo'g'ul qo'shinlariga qarshi qanday tamoyillarga karta e'tibor qaratgan?",
+  "opts": [
+   "A) To'satdan zarba berish",
+   "B) Urushning birinchi va muhim tamoyili – g'alabaga erishish uchun hamma kuchlarni shiddat bilan harakatlantirish",
+   "C) Ikkinchi darajali hududlarni kuchsizlantirsa ham, imkoni boricha yirik kuchlarni bosh zarba berish yo'nalishlarida jamlash",
+   "D) Hujumkor urushning o'ziga xos xususiyati bu – tez va to'xtalishsiz pirovard natijaga erishish ekaniga ishonish"
+  ],
+  "correct": 1,
+  "explanation": "Jaloliddin Manguberdi urushning birinchi va muhim tamoyili – g'alabaga erishish uchun hamma kuchlarni shiddat bilan harakatlantirish ekaniga karta e'tibor qaratgan.",
+  "mnemonic": "Jaloliddin Manguberdi – g'alaba uchun hamma kuchlarni shiddat bilan harakatlantirish",
+  "topicId": 0
+ },
+ {
+  "q": "Amir Temur qo'shinlari To'xtamish qo'shinlariga qarshi qanday taktikani qo'llagan?",
+  "opts": [
+   "A) Qo'shinni 7 ta qo'lga taqsimlash",
+   "B) Ikkinchi darajali hududlarni kuchsizlantirsa ham, imkoni boricha yirik kuchlarni bosh zarba berish yo'nalishlarida jamlash",
+   "C) Hujumkor urushning o'ziga xos xususiyati bu – tez va to'xtalishsiz pirovard natijaga erishish ekaniga ishonish",
+   "D) To'satdan zarba berish"
+  ],
+  "correct": 0,
+  "explanation": "Amir Temur qo'shinlari To'xtamish qo'shinlariga qarshi qo'shinni 7 ta qo'lga taqsimlash taktikasini qo'llagan.",
+  "mnemonic": "Amir Temur – qo'shinni 7 ta qo'lga taqsimlash",
+  "topicId": 0
+ },
+ {
+  "q": "Jaloliddin Manguberdi qanday tamoyillarga karta e'tibor qaratgan?",
+  "opts": [
+   "A) Ikkinchi darajali hududlarni kuchsizlantirsa ham, imkoni boricha yirik kuchlarni bosh zarba berish yo'nalishlarida jamlash",
+   "B) Hujumkor urushning o'ziga xos xususiyati bu – tez va to'xtalishsiz pirovard natijaga erishish ekaniga ishonish",
+   "C) Urushning birinchi va muhim tamoyili – g'alabaga erishish uchun hamma kuchlarni shiddat bilan harakatlantirish",
+   "D) To'satdan zarba berish"
+  ],
+  "correct": 2,
+  "explanation": "Jaloliddin Manguberdi urushning birinchi va muhim tamoyili – g'alabaga erishish uchun hamma kuchlarni shiddat bilan harakatlantirish ekaniga karta e'tibor qaratgan.",
+  "mnemonic": "Jaloliddin Manguberdi – urushning birinchi va muhim tamoyili",
+  "topicId": 0
+ },
+ {
+  "q": "Sind daryosi bo‘yi jangdan keyin qaysi nom bilan tanilgan?",
+  "opts": [
+   "A) Qal’a Qashqiri",
+   "B) Buxoro Qishlog‘i",
+   "C) Cho‘li Jaloliy",
+   "D) Yangi Qorovul"
+  ],
+  "correct": 2,
+  "explanation": "Jangdan keyin joyning hozirgi nomi Cho‘li Jaloliy deb ataladi, boshqa variantlar matnda yo‘q.",
+  "mnemonic": "Sindda jang – Cho‘li Jaloliy.",
+  "topicId": 3
+ },
+ {
+  "q": "Boburning \"burongkor\" usulining asosiy maqsadi nima?",
+  "opts": [
+   "A) Harbiy texnikani tezlashtirish",
+   "B) Uchburchak taktikasi yaratish",
+   "C) Jangchilarning sonini kamaytirish",
+   "D) Dushmanni orqa tomoniga o'tkazish"
+  ],
+  "correct": 3,
+  "explanation": "Bobur \"burongkor\" usuli dushmanning ort tomoniga o'tib, unga kuchli zarbalar berish deb aytilgan.",
+  "mnemonic": "Burongkor – ortga otish",
+  "topicId": 3
+ },
+ {
+  "q": "Bobur qo'shinida 700 ta arava qanday materialdan bog'langan edi?",
+  "opts": [
+   "A) Plastik",
+   "B) Qog'oz",
+   "C) Charm",
+   "D) Xom teri"
+  ],
+  "correct": 3,
+  "explanation": "Aravalar xom teri bilan bog'langanligi ko'rsatilgan.",
+  "mnemonic": "Xom teri – arava bog'i",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur o'z davlatini qanday tamoyil asosida boshqargan deb hisoblanadi?",
+  "opts": [
+   "A) Din asosida",
+   "B) Adolat va qattiq intizom",
+   "C) Erkinlik va demokrafiya",
+   "D) Savdo-sotiq asosida"
+  ],
+  "correct": 1,
+  "explanation": "Temur tuzuklari uning adolat va qat'iy intizomga asoslanganligi ko'rsatilgan.",
+  "mnemonic": "Temur – adolatli intizom",
+  "topicId": 3
+ },
+ {
+  "q": "Boburning jangga jo'nagan askari soni qancha edi?",
+  "opts": [
+   "A) 20 ming",
+   "B) 15 ming",
+   "C) 10 ming",
+   "D) 12 ming"
+  ],
+  "correct": 3,
+  "explanation": "Bobur 12 ming askari bilan jangga chiqqanligi aytilgan.",
+  "mnemonic": "Bobur – 12k askar",
+  "topicId": 3
+ },
+ {
+  "q": "Agar dushman lashkari 12 000 otliqdan kam bo'lsa, Amir Temur qanday darajadagi sardorlikni amalga oshiradi?",
+  "opts": [
+   "A) Kengash raisligi",
+   "B) Bosh qo'mondonlik",
+   "C) Amir ul-umaro sardorlik",
+   "D) Mamlakat boshqaruvi"
+  ],
+  "correct": 2,
+  "explanation": "Metinda dushman lashkari 12 ming otliqdan kam bo'lsa, Amir Temur ul-umaro sardorlik qilishi belgilangan. Boshqa variantlar bu shartga mos kelmaydi.",
+  "mnemonic": "12k — ul-umaro sardorlik",
+  "topicId": 0
+ },
+ {
+  "q": "Amir Temur vasiyatida davlatni idora etishda kimlarga tayanish tavsiya etilgan?",
+  "opts": [
+   "A) Mahalliy qishloq boshlariga",
+   "B) Toj-u taxt egalariga",
+   "C) Tashqi ittifoqchilarga",
+   "D) Xalq yig'inlariga"
+  ],
+  "correct": 1,
+  "explanation": "Vasiyatda davlatni boshqarishda toj-u taxt egalariga tayanish kerakligi aytilgan. Boshqa variantlar matnda keltirilmagan.",
+  "mnemonic": "Toj – boshqaruv kaliti",
+  "topicId": 0
+ },
+ {
+  "q": "Amir Temur davrida qo‘shinlarning eng katta qismi qancha kishidan iborat bo‘lgan?",
+  "opts": [
+   "A) 12 ming",
+   "B) 10 ming",
+   "C) 15 ming",
+   "D) 8 ming"
+  ],
+  "correct": 0,
+  "explanation": "Amir Temur qo‘shinlarida eng katta qism 12 000 kishi deb berilgan.",
+  "mnemonic": "Temur — on ikki ming",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur davrida qaysi hududlar markaziy harbiy boshqaruvga kirgan?",
+  "opts": [
+   "A) Buxoro va Farg‘ona",
+   "B) Movarounnahr va Xorazm",
+   "C) Andijon va Namangan",
+   "D) Qashqadaryo va Surxondaryo"
+  ],
+  "correct": 1,
+  "explanation": "Markaziy qism Movarounnahr va Xorazm bo‘lgani ko‘rsatilgan.",
+  "mnemonic": "Markaz — Movarounnahr, Xorazm",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur harbiy yurishidan oldin qaysi jihatlarni o'rganishni birinchi bosqich deb hisoblagan?",
+  "opts": [
+   "A) Yaqin qo'shinlarning ruhiy holati",
+   "B) Dushmanning siyosiy tuzilishi",
+   "C) Hududning geografik xususiyatlari va zaxiralar",
+   "D) Mahalliy xalqning madiyasi"
+  ],
+  "correct": 2,
+  "explanation": "Muhoraba hududi, relief, suv manbalari, oziq-ovqat zaxirasi kabi geografik xususiyatlarni aniqlash zarurati ta'kidlangan.",
+  "mnemonic": "Geografiya + zaxira = tayyorgarlik",
+  "topicId": 3
+ },
+ {
+  "q": "Toʻkitamishxonga qarshi yurishda Amir Temur qanday usul bilan ustunlikka erishgan?",
+  "opts": [
+   "A) Dushmanni diplomatik yo'l bilan bo'ysundirgan",
+   "B) Oqibatli bo'shliq yaratgan",
+   "C) Yuqori texnologiyali otlarni sotib olgan",
+   "D) Safarbarlik e'lon qilish orqali qo'shin sonini oshirgan"
+  ],
+  "correct": 3,
+  "explanation": "Amir Temur Toʻkitamishxonga qarshi safarbarlik e'lon qilgan va son jihatdan ustunlikka erishganligi ko'rsatilgan.",
+  "mnemonic": "Safarbarlik = sonli ustunlik",
+  "topicId": 3
+ },
+ {
+  "q": "Harbiy yurishdan oldin Amir Temur suv manbalarini nega tekshirardi?",
+  "opts": [
+   "A) Qo'shinni ichimlik suv bilan ta'minlash uchun",
+   "B) Qishloq xo'jaligi rivojini baholash uchun",
+   "C) Yangi suv inshootlarini qurish uchun",
+   "D) Dushmanning suv quvvatlarini yo'q qilish uchun"
+  ],
+  "correct": 0,
+  "explanation": "Suv manbalarining mavjudligi qo'shin (ichimlik, oziq-ovqat) uchun muhimligi aytilgan.",
+  "mnemonic": "Suv = qo'shin ichimlik",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur qo‘shinlari qaysi ikki asosiy turga bo‘linadi?",
+  "opts": [
+   "A) Piyoda va otliq",
+   "B) Havo va kosmik",
+   "C) Mashinaviy va suv osti",
+   "D) Tenglikchilar va daryochilar"
+  ],
+  "correct": 0,
+  "explanation": "Qo‘shinlar piyoda va otliq askarlar deb aniq ko‘rsatilgan. Boshqa variantlar bu davrga tegishli emas.",
+  "mnemonic": "Piyoda‑ot, ikki yo‘l.",
+  "topicId": 3
+ },
+ {
+  "q": "Agar asosiy rejalar bajarilmasa, Amir Temur qanday yo‘nalishdan foydalanadi?",
+  "opts": [
+   "A) Hujjatlarni bekor qilish",
+   "B) Boshqa davlatga qo‘shilish",
+   "C) Tashqi diplomatiya",
+   "D) Zaxira rejalar"
+  ],
+  "correct": 3,
+  "explanation": "Zaxira rejalar sharoitga qarab qo‘llanilishi ko‘rsatilgan. Diplomatiya yoki boshqa davlatga qo‘shilish bu kontekstda yo‘q.",
+  "mnemonic": "Zaxira – zaxira.",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur qo‘shin boshqaruvini qanday qilib takomillashtirgan?",
+  "opts": [
+   "A) Boshqaruvni o‘zgartirmaslik",
+   "B) Yagona boshqaruv tizimi",
+   "C) Maqsadli bo‘linma yo‘q",
+   "D) Har bir bo‘linma alohida"
+  ],
+  "correct": 1,
+  "explanation": "Yagona boshqaruv tizimi yaratgani aytilgan, bu boshqaruvning markazlashganligini ko‘rsatadi. Boshqa variantlar tizim yo‘qligini tasvirlaydi.",
+  "mnemonic": "Bitta bosh, bitta yo‘l.",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi qaysi sultonlar sulolasiga mansub edi?",
+  "opts": [
+   "A) Qoraxoniylar",
+   "B) Xorazmshohlar",
+   "C) Temuriylar",
+   "D) Somoniyler"
+  ],
+  "correct": 1,
+  "explanation": "Jaloliddin Manguberdi Xorazmshohlar sulolasining so'nggi hukmdori Alovuddin Muhammad Xorazmshohning o'g'li edi.",
+  "mnemonic": "Jaloliddin Xorazmshoh",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur qanday harbiy taktikani afzal ko'rgan?",
+  "opts": [
+   "A) Chekinish",
+   "B) Qurshov",
+   "C) Qamal",
+   "D) Frontal hujum"
+  ],
+  "correct": 1,
+  "explanation": "Amir Temur qo'shini dushmanning orqa tomoniga o'tib, uni qurshab olish taktikasini afzal ko'rgan.",
+  "mnemonic": "Temur qurshovni afzal ko'radi",
+  "topicId": 3
+ },
+ {
+  "q": "Zahiriddin Muhammad Bobur qanday harbiy strategiyani tanlagan?",
+  "opts": [
+   "A) Dushmanning urush taktikasini o'rgana olib, uni qo'llash",
+   "B) Kuchsiz dushmanga qarshi katta qo'shin",
+   "C) Dushmanning ichki nizolari va ziddiyatlardan foydalanish",
+   "D) Kuchli dushmanga qarshi kichik qo'shin"
+  ],
+  "correct": 2,
+  "explanation": "Bobur dushmanning ichki nizolari va ziddiyatlardan foydalanib, ularni zaiflashtirish orqali g'alaba qozongan.",
+  "mnemonic": "Bobur dushmanni ichidan zaiflashtiradi",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi qanday jangda g'alaba qozongan?",
+  "opts": [
+   "A) Xorazm shahridagi jang",
+   "B) Parvon dashtidagi jang",
+   "C) Sind daryosi bo'yidagi jang",
+   "D) Buxoro shahridagi jang"
+  ],
+  "correct": 1,
+  "explanation": "Jaloliddin Manguberdi Parvon dashtidagi jangda mo'g'ul bosqinchilariga qarshi g'alaba qozongan.",
+  "mnemonic": "Jaloliddin Parvonda g'alaba qozonadi",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur qanday davlatni bosib olgan?",
+  "opts": [
+   "A) Qoraxoniylar davlati",
+   "B) Xorazmshohlar davlati",
+   "C) Temuriylar davlati",
+   "D) Somoniyler davlati"
+  ],
+  "correct": 1,
+  "explanation": "Amir Temur Xorazmshohlar davlatini bosib olgan.",
+  "mnemonic": "Temur Xorazmni bosadi",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur qanday harbiy taktikani qo'llagan?",
+  "opts": [
+   "A) Qamal",
+   "B) Frontal hujum",
+   "C) Chekinish",
+   "D) Qurshov"
+  ],
+  "correct": 3,
+  "explanation": "Amir Temur qo'shini dushmanning orqa tomoniga o'tib, uni qurshab olish taktikasini qo'llagan.",
+  "mnemonic": "Temur qurshovni qo'llaydi",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi qanday sulolaga mansub edi?",
+  "opts": [
+   "A) Somoniyler",
+   "B) Qoraxoniylar",
+   "C) Xorazmshohlar",
+   "D) Temuriylar"
+  ],
+  "correct": 2,
+  "explanation": "Jaloliddin Manguberdi Xorazmshohlar sulolasiga mansub edi.",
+  "mnemonic": "Jaloliddin Xorazmshoh",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur qanday davlatni asos solgan?",
+  "opts": [
+   "A) Xorazmshohlar davlati",
+   "B) Temuriylar davlati",
+   "C) Somoniyler davlati",
+   "D) Qoraxoniylar davlati"
+  ],
+  "correct": 1,
+  "explanation": "Amir Temur Temuriylar davlatini asos solgan.",
+  "mnemonic": "Temur Temuriylar davlatini asos soladi",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi tamoyillaridan qaysi biri \"tez va to'xtalmas natija\"ga e'tibor berishini ifodalaydi?",
+  "opts": [
+   "A) Tez va to'xtalmas pirovard natijaga erishish",
+   "B) Ikkinchi darajali hududlarni kuchsizlantirish",
+   "C) G'alabaga erishish uchun hamma kuchlarni harakatlantirish",
+   "D) To'qtasdan zarba berish"
+  ],
+  "correct": 0,
+  "explanation": "Tamoyil \"tez va to'xtalmas pirovard natijaga erishish\" aniq shu iborani o'z ichiga oladi. B boshqa tamoyil ikkinchi darajali hududlarni kuchsizlantirishni bildiradi. C to'qtasdan zarba berishga tegishli, D esa g'alabaga erishish uchun kuchlarni harakatlantirishni ta'riflaydi.",
+  "mnemonic": "Tez natija — Manguberdi tez.",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi tamoyillariga muvofiq, darsda talabalarni biror maqsadga intilishga qanday rag'batlantirish kerak?",
+  "opts": [
+   "A) Ularni kichik guruhlarga bo'lib, muhokama qilish",
+   "B) Talabalarni shiddat bilan harakatga chaqirish",
+   "C) Tajribasiz mashq qilish",
+   "D) Faqat nazariy ma'lumot berish"
+  ],
+  "correct": 1,
+  "explanation": "Tamoyil shiddatli harakatga urg'u beradi, shuning uchun talabalarga ham shu yo'nalishda rag'bat berish to'g'ri. B guruhda muhokama, C nazariy, D tajribasiz – tamoyilni qo'llamaydigan yondashuvlar.",
+  "mnemonic": "Shiddatli harakat — shiddatli natija.",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temurning 7 guruhli qo'lin tizimida eng muhim vazifa qaysi guruhga yuklanadi?",
+  "opts": [
+   "A) Markaziy hujum guruhiga",
+   "B) Chap qanot guruhiga",
+   "C) Rezerv guruhiga",
+   "D) O'ng qanot guruhiga"
+  ],
+  "correct": 0,
+  "explanation": "Markaziy guruh har doim asosiy hujumni amalga oshiradi; boshqa guruhlar an'anaviy bo'lgani uchun asosiy vazifa markazga berilgan. Manbada bu guruhga alohida e'tibor berilgan.",
+  "mnemonic": "Markaz — markaziy kuch.",
+  "topicId": 3
+ },
+ {
+  "q": "Dushman lashkari 10 000 otliqdan iborat bo'lsa, Amir Temur qanday rolni bajaradi?",
+  "opts": [
+   "A) O'quvchi bo'ladi",
+   "B) Yordamchi bo'ladi",
+   "C) Ul-umaro sardorlik qiladi",
+   "D) Harakat qilmaydi"
+  ],
+  "correct": 2,
+  "explanation": "Dushman 12 000 otliqdan kam bo'lsa, Amir temur ul-umaro sardorlik qiladi.",
+  "mnemonic": "Kichik dushman – Amir bosh.",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdining tug‘ilgan yili qaysi?",
+  "opts": [
+   "A) 1198",
+   "B) 1212",
+   "C) 1205",
+   "D) 1220"
+  ],
+  "correct": 0,
+  "explanation": "Jaloliddin Manguberdi 1198‑1231 yillarda yashaganligi ko‘rsatilgan.",
+  "mnemonic": "1198 – birinchi boshlash.",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi harbiy yurishlarida qaysi xususiyat ko‘proq ta’kidlangan?",
+  "opts": [
+   "A) Jasurlik va vatanparvarlik",
+   "B) Texnikaviy yangilik",
+   "C) Diplomatik aloqalar",
+   "D) Taktikaviy intizom"
+  ],
+  "correct": 0,
+  "explanation": "Uning sarkardalik qobiliyati, jasurligi va vatanparvarligi dushmani bosib o'tganligi aytilgan.",
+  "mnemonic": "Jasur—vatanparvar.",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi sarkardalik qobiliyatining asosiy elementi qaysi?",
+  "opts": [
+   "A) Texnologik bilim",
+   "B) Tadbirkorlik",
+   "C) Jasurlik",
+   "D) Ingliz tili"
+  ],
+  "correct": 2,
+  "explanation": "Uning sarkardalik qobiliyati, jasurligi va vatanparvarligi alohida ta’kidlangan.",
+  "mnemonic": "Jasur – sarkarda.",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi tamoyillaridan qaysi biri \"g'alaba uchun hamma kuchlarni shiddat bilan harakatlantirish\"ni bildiradi?",
+  "opts": [
+   "A) Muvaffaqiyatdan unumli foydalanish",
+   "B) To'xtatsiz zarba berish",
+   "C) Birlamchi kuchlarni maksimal darajada qo'llash",
+   "D) Ikkinchi darajali hududlarni zaiflashtirish"
+  ],
+  "correct": 2,
+  "explanation": "Birlamchi tamoyil g'alabaga erishish uchun barcha kuchlarni shiddat bilan harakatlantirishni talab qiladi. Ikkinchi darajali hududlarni zaiflashtirish boshqa tamoyilga tegishli. To'xtatsiz zarba berish va muvaffaqiyatdan unumli foydalanish ham boshqa tamoyillar.",
+  "mnemonic": "Birlamchi – Barcha, Birlamchi.",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi ikkinchi tamoyilida qaysi hududlarga e'tibor qaratiladi?",
+  "opts": [
+   "A) Markaziy front",
+   "B) Dushmanning logistika bazalari",
+   "C) Ikkinchi darajali hududlar",
+   "D) Yirik kuchlar joylashuvi"
+  ],
+  "correct": 2,
+  "explanation": "Ikkinchi darajali hududlar kuchsizlanadi, shunda yirik kuchlar bosh zarbaga yo'naltiriladi. Markaziy front va logistika bazalari boshqa konseptlar.",
+  "mnemonic": "Ikkinchi – Ikkilik hudud.",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi tamoyillaridan to'xtasiz zarba berish nima bilan bog'liq?",
+  "opts": [
+   "A) Uzluksiz hujum tempi",
+   "B) Qurilish muddatini qisqartirish",
+   "C) Resurslarni qayta taqsimlash",
+   "D) Dushman pozitsiyasini himoya qilish"
+  ],
+  "correct": 0,
+  "explanation": "To'xtasiz zarba berish harakatni uzluksiz davom ettirishni nazarda tutadi. Qolgan variantlar boshqa jarayonlarga tegishli.",
+  "mnemonic": "To'xtasiz – Tizimni to'xtatmas.",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi tamoyillaridan \"erishilgan muvaffaqiyatdan tez va unumli foydalanish\" qaysi maqsadni ko'rsatadi?",
+  "opts": [
+   "A) Natijalarni darhol qo'llash",
+   "B) Yangi qurol ishlab chiqarish",
+   "C) Taktikaviy rejalashtirishni kechiktirish",
+   "D) Dushmanga qarshi mudofaa tayyorlash"
+  ],
+  "correct": 0,
+  "explanation": "Muvaffaqiyatni darhol qo'llash – temir yo'lda natijani samarali ishlatish demakdir. Boshqa variantlar natijani kechiktiradi yoki aloqasiz.",
+  "mnemonic": "Muvaffaqiyat – Mehnat.",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur jangida qo'shinni 7 ta qo'lda bo'linishi qanday taktik afzallik beradi?",
+  "opts": [
+   "A) Markaziy kuchlarni mustahkamlaydi",
+   "B) Ko'p yo'nalishda hujum imkonini beradi",
+   "C) Dushman qarshiligini bir tomonlama kuchaytiradi",
+   "D) Logistik xarajatlarni kamaytiradi"
+  ],
+  "correct": 1,
+  "explanation": "Qo'lda bo'linish ko'p yo'nalishli harakatga imkon yaratadi, shu orqali dushmanni bir nechta tomondan bosadi. Markaziy kuchlarni mustahkamlash, logistika va dushman qarshiligini kamaytirish boshqa sabablarga bog'liq emas.",
+  "mnemonic": "Yetti qo'l – Yiqilmas.",
+  "topicId": 3
+ },
+ {
+  "q": "Terek daryosi jangida Amir Temurning kamondan o'q uzish taktikasi qaysi xususiyatga asoslangan?",
+  "opts": [
+   "A) Kuchli zaxiralardan foydalanish",
+   "B) Artileriya bilan qo'shinni qo'llab-quvvatlash",
+   "C) Otliqlarni to'g'ridan-to'g'ri otish",
+   "D) Dushman otliqlarni kutilmagan o'q bilan zararlash"
+  ],
+  "correct": 3,
+  "explanation": "Kamon o'q uzish otliqlarga kutilmagan zarba berish imkonini yaratadi, bu esa dushman harakatini tormozlaydi. To'g'ridan-to'g'ri otish yoki artileriya boshqa metodlar.",
+  "mnemonic": "Kamon – Kutilmagan o'q.",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi tamoyillariga ko'ra, to'xtasiz zarba berishning amaliyotdagi asosiy vazifasi nima?",
+  "opts": [
+   "A) Dushmanni keskin bosib, qarshilikni yo'qotish",
+   "B) Qurilma xizmat muddatini uzaytirish",
+   "C) Harbiy logistika tizimini mustahkamlash",
+   "D) Mudofaa chizig'ini qayta tiklash"
+  ],
+  "correct": 0,
+  "explanation": "To'xtasiz zarba dushmanni tez bosib, uning qarshiligini yo'qotadi. Logistika, mudofaa yoki texnik xizmat bu tamoyilga tegishli emas.",
+  "mnemonic": "To'xtasiz – Toshga urish.",
+  "topicId": 3
+ },
+ {
+  "q": "Bobur jangida qaysi birlik harbiy texnika bilan eng ko'p bog‘liq edi?",
+  "opts": [
+   "A) To‘fang",
+   "B) Fillar",
+   "C) Piyodalar",
+   "D) Arava"
+  ],
+  "correct": 1,
+  "explanation": "Fillar jangovar bo‘lib, katta massali harbiy texnika sifatida ta’riflangan. Piyodalar yengil, to‘fang tez harakat, arava transport vazifasini bajaradi.",
+  "mnemonic": "Fillar – katta texnika",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur qaysi davrda 27 mamlakatni o'z hududiga qo'shgan?",
+  "opts": [
+   "A) XV asr oxiri",
+   "B) XVI asr o'rtasi",
+   "C) XIII asr boshida",
+   "D) XIV asr oxiri"
+  ],
+  "correct": 3,
+  "explanation": "Amir Temur 27 mamlakatni, jumladan Eron, Afg'oniston va Hindiston, o'z tasarrufiga kiritgani, bu XIV asr oxirida sodir bo'lgan.",
+  "mnemonic": "XIVda Temur kengaydi",
+  "topicId": 3
+ },
+ {
+  "q": "Temur tuzuklarida sipoh maoshi qanday belgilanadi?",
+  "opts": [
+   "A) Ota-onaning statusiga",
+   "B) Harbiy vazifaga qarab",
+   "C) Yillik daromadga asoslanadi",
+   "D) Bir xil miqdor"
+  ],
+  "correct": 1,
+  "explanation": "Sipohlarning maoshi vazifalariga mos ravishda belgilanadi, standart bir miqdor emas.",
+  "mnemonic": "Vazifa maosh belgilaydi",
+  "topicId": 3
+ },
+ {
+  "q": "Quyidagi davlatlardan qaysi biri Temur tuzuklarida sanalgan?",
+  "opts": [
+   "A) Marokash",
+   "B) Qozog'iston",
+   "C) Yaponiya",
+   "D) Gruziya"
+  ],
+  "correct": 3,
+  "explanation": "Gruziya Temur tuzuklari ichiga kirgan mamlakatlar ro'yxatida keltirilgan.",
+  "mnemonic": "Gruziya temurda",
+  "topicId": 3
+ },
+ {
+  "q": "Temur tuzuklarida kimlar harbiy qo'shin boshlig'i bo'lishi mumkin?",
+  "opts": [
+   "A) O'qituvchi",
+   "B) Vazir tanlagan shaxs",
+   "C) Mahalliy qishloq boshchisi",
+   "D) Savdogar"
+  ],
+  "correct": 1,
+  "explanation": "Vazirlar va qo'shin boshliqlari tanlanishi, shuning uchun vazir tanlagan shaxs qo'shin boshlig'i bo'lishi mumkin.",
+  "mnemonic": "Vazir tanlaydi",
+  "topicId": 3
+ },
+ {
+  "q": "1395-yili To‘xtamishxonga qarshi yurishda jang hududini qanday tayyorlash amalga oshirilgan?",
+  "opts": [
+   "A) Yuqori tog‘lar egallangan",
+   "B) Dengizga yaqin joy tanlangan",
+   "C) Ko‘priklar qurilgan",
+   "D) Xandaqlar qazib, to‘siqlar barpo etilgan"
+  ],
+  "correct": 3,
+  "explanation": "To‘xtamishxonga qarshi yurishda xandaqlar qazilib, to‘siqlar barpo etilganligi aytilgan.",
+  "mnemonic": "To‘xtamishxon – xandaq, to‘siq.",
+  "topicId": 3
+ },
+ {
+  "q": "Harbiy yurishdan oldin Amir Temur nima ishni amalga oshirgan?",
+  "opts": [
+   "A) Faqat harbiy taktika o‘rganish",
+   "B) Maktabga tashrif buyurish",
+   "C) Kuch va vositalarni tashkil qilish",
+   "D) Mahalliy savdo-sotiqqa e'tibor berish"
+  ],
+  "correct": 2,
+  "explanation": "Har bir yurishdan oldin Amir Temur kuch va vositalarni tashkil qilganligi aytilgan.",
+  "mnemonic": "Yurish – kuch, vosita, tayyor.",
+  "topicId": 3
+ },
+ {
+  "q": "To‘xtamishxonga qarshi yurishda Amir Temur qanday chorani qo‘llagan?",
+  "opts": [
+   "A) Tibbiy yordam tashkil qilgan",
+   "B) Diplomatik muzokaralar o‘tkazgan",
+   "C) Safarbarlik e’lon qilgan",
+   "D) Qishloqni evakuatsiya qilgan"
+  ],
+  "correct": 2,
+  "explanation": "To‘xtamishxonga qarshi yurishda safarbarlik e’lon qilinganligi aytilgan.",
+  "mnemonic": "To‘xtamish – safarbarlik.",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temur harbiy yurishlarida muhoraba hududi egallash qanday usul bilan amalga oshirilgan?",
+  "opts": [
+   "A) Jangdan keyin",
+   "B) Dushmanga nisbatan ancha oldinroq",
+   "C) Jangda to‘g‘ridan‑to‘g‘ri",
+   "D) Faqat dushman tarkibiga qarab"
+  ],
+  "correct": 1,
+  "explanation": "Muhoraba hududi dushmanga nisbatan ancha oldinroq egallashga e'tibor qaratilganligi ko‘rsatilgan.",
+  "mnemonic": "Oldin egallash – Amir Temur.",
+  "topicId": 3
+ },
+ {
+  "q": "Ikkinchi jahon urushi boshida O'zbekistonda nechta diviziya qurilgan?",
+  "opts": [
+   "A) 14 diviziya",
+   "B) 12 diviziya",
+   "C) 16 diviziya",
+   "D) 10 diviziya"
+  ],
+  "correct": 0,
+  "explanation": "14 diviziya tashkil etilgani aniq ko'rsatilgan. B boshqa son, C va D esa matnda yo'q.",
+  "mnemonic": "O'zbekiston 14 diviziya – urushning boshlanishi.",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdining to‘liq ismi qanday?",
+  "opts": [
+   "A) Jaloliddin ibn Alovuddin Muhammad",
+   "B) Jaloliddin al-Manguberdin",
+   "C) Jaloliddin al-Muhammad",
+   "D) Jaloliddin ibn Muhammad"
+  ],
+  "correct": 0,
+  "explanation": "To‘liq ismi Jaloliddin ibn Alovuddin Muhammad bo‘lib, bu matnda aniq keltirilgan.",
+  "mnemonic": "Jaloliddin – ibn – Alovuddin – Muhammad",
+  "topicId": 3
+ },
+ {
+  "q": "Parvon dashti jangi qaysi yilda bo‘lib o‘tgan?",
+  "opts": [
+   "A) 1221",
+   "B) 1215",
+   "C) 1230",
+   "D) 1245"
+  ],
+  "correct": 0,
+  "explanation": "1221-yilgi Parvon dashtidagi jang haqida gap boradi.",
+  "mnemonic": "Parvon – 1221‑yil",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi hayoti davomida jangga qancha yil qatnashgan?",
+  "opts": [
+   "A) 11 yil",
+   "B) 8 yil",
+   "C) 20 yil",
+   "D) 15 yil"
+  ],
+  "correct": 0,
+  "explanation": "Uning 33 yillik umrining 11 yilini janglarda o'tkazgani aytilgan.",
+  "mnemonic": "Umr33 → jang11",
+  "topicId": 3
+ },
+ {
+  "q": "Sind daryosi jangida Xorazmshoh qo‘shinlari qanchalik kuchli bo‘lgan?",
+  "opts": [
+   "A) 6000 jangchi",
+   "B) 1500 jangchi",
+   "C) 4000 jangchi",
+   "D) 2500 jangchi"
+  ],
+  "correct": 2,
+  "explanation": "Xorazmshohning 4000 jangchisi bilan kurashgani ko‘rsatilgan.",
+  "mnemonic": "Sind – 4000",
+  "topicId": 3
+ },
+ {
+  "q": "Quyidagi buyuk sarkardalarning umumiy xususiyatlarini moslashtiring:\n1. Jaloliddin Manguberdi\n2. Amir Temur\n3. Zahiriddin Muhammad Bobur\nA. Harbiy mahorat va strategik fikrlash\nB. Siyosiy ittifoq qurish\nC. Diniy tarbiya berish\nD. Ijtimoiy islohotlar",
+  "opts": [
+   "A) 1-A, 2-B, 3-D",
+   "B) 1-D, 2-C, 3-A",
+   "C) 1-C, 2-A, 3-B",
+   "D) 1-A, 2-A, 3-A"
+  ],
+  "correct": 3,
+  "explanation": "Uchala shaxs ham harbiy mahorat va strategik fikrlashga asoslangan; boshqa variantlar matnda keltirilmagan.",
+  "mnemonic": "Uchala – harbiy mahorat",
+  "topicId": 3
+ },
+ {
+  "q": "Parvon dashti jangida to‘g‘ri harakatlar ketma‑ketligini tanlang:\n1. Otlarni bellarga bog‘lash\n2. Yayov holda dushmanga o‘q tutish\n3. Jang davomida otlarni boshqarish\n4. Natijani baholash",
+  "opts": [
+   "A) 2, 1, 3, 4",
+   "B) 3, 1, 2, 4",
+   "C) 1, 3, 2, 4",
+   "D) 1, 2, 3, 4"
+  ],
+  "correct": 3,
+  "explanation": "Qayd etilgan tartib: avvalo otlarni bellarga bog‘lash (1), keyin yayov holda dushmanga o‘q tutish (2), otlarni jang davomida boshqarish (3), oxirida natijani baholash (4).",
+  "mnemonic": "Bell‑o‘q‑boshqar‑baholash",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi qaysi xususiyati bilan mashhur?",
+  "opts": [
+   "A) Iqtisodiy islohotlari",
+   "B) Matematik ilm-fani",
+   "C) Din arbobligi",
+   "D) Jasurligi va vatanparvarligi"
+  ],
+  "correct": 3,
+  "explanation": "Uning jasurligi va vatanparvarligi dushmanga qarshi kurashda asosiy omil bo‘lganligi aytilgan.",
+  "mnemonic": "Jasur – vatanparvar",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi harbiy faoliyatini qachonga qadar davom ettirgan?",
+  "opts": [
+   "A) 1220 yilga qadar",
+   "B) 1231 yilga qadar",
+   "C) 1215 yilga qadar",
+   "D) 1240 yilga qadar"
+  ],
+  "correct": 1,
+  "explanation": "Uning hayoti 1198–1231 yillarga to‘g‘ri keladi, shuning uchun harbiy faoliyati 1231 yilga qadar davom etgan.",
+  "mnemonic": "Hayot – 1198‑1231",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi tamoyillaridan qaysi biri g'alabaga erishish uchun barcha kuchlarni shiddat bilan harakatlantirishni talab qiladi?",
+  "opts": [
+   "A) Birinchi tamoyil",
+   "B) To'rtinchi tamoyil",
+   "C) Ikkinchi tamoyil",
+   "D) Uchinchi tamoyil"
+  ],
+  "correct": 0,
+  "explanation": "Birinchi tamoyil g'alabaga erishish uchun barcha kuchlarni shiddat bilan harakatlantirishni nazarda tutadi. Ikkinchi – hududlarni kuchsizlantirish, uchinchi – to'satdan zarba, to'rtinchi – tez natija olish.",
+  "mnemonic": "Birinchi – barcha kuch, g'alaba.",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi qanday holatda ham yirik kuchlarni bosh zarba berish yo'nalishlariga jamlashni tavsiya qiladi?",
+  "opts": [
+   "A) Ikkinchi darajali hududlar kuchsizlanayotganida",
+   "B) Uchinchi bosqichda dushman zaiflashganda",
+   "C) Yakuniy bosqichda qo'shinlar charchaganda",
+   "D) Birinchi darajali hududlar to'liq egallanganida"
+  ],
+  "correct": 0,
+  "explanation": "Ikkinchi darajali hududlarni kuchsizlantirsa ham, yirik kuchlarni bosh zarba berish yo'nalishlariga jamlash zarurati aytilgan. Boshqa variantlar matnda mavjud emas.",
+  "mnemonic": "Kuchsiz hudud – yirik zarba.",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi taktikalarida \"to'satdan zarba berish\" tamoyili qaysi holatda qo‘llanadi?",
+  "opts": [
+   "A) Dushman kuchli mudofaqa qurganida",
+   "B) Dushmanga kutilmagan paytda hujum qilishda",
+   "C) Birlamchi harakatdan keyin orqaga tortishda",
+   "D) Tashqi yordamchi kuchlar kelguncha kutishda"
+  ],
+  "correct": 1,
+  "explanation": "To'satdan zarba berish dushmanga kutilmagan paytda hujum qilishni bildiradi. Boshqa variantlar kutilgan yoki pasif holatlarni tasvirlaydi.",
+  "mnemonic": "Kutilmagan zarba – to'satdan.",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temurning 1391-yildagi jangida qo‘shini qanday yangi usul bilan tashkil etgan?",
+  "opts": [
+   "A) 3 ta bo‘linmaga ajratish",
+   "B) 10 ta alohida divizionga bo‘lish",
+   "C) 7 ta qo‘lga bo‘lish",
+   "D) 5 ta birja guruhiga biriktirish"
+  ],
+  "correct": 2,
+  "explanation": "Amir Temur an'anaviy markaz, o'ng va chap qanotdan voz kechib, qo‘shini 7 ta qo‘lga taqsimlaganligi ko‘rsatilgan. Boshqa variantlar tasvirlanmagan.",
+  "mnemonic": "Temur – 7 qo‘l.",
+  "topicId": 3
+ },
+ {
+  "q": "Terek daryosi jangida Amir Temur qo‘shini qanday yangi usul bilan harakatga qo‘shgan?",
+  "opts": [
+   "A) Suv osti yurishini qo‘llash",
+   "B) Kengaytirilgan topga otish",
+   "C) O‘qdan tushish va kamondan o‘q uzish",
+   "D) Artileriya qoplamasini oshirish"
+  ],
+  "correct": 2,
+  "explanation": "Amir Temur o‘qdan tushib, kamondan o‘q uzish usulini birinchi marta qo‘llaganligi qayd etilgan. Boshqa usullar matnda yo‘q.",
+  "mnemonic": "O‘q‑kamon – yangi harakat.",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi taktikalarini to‘g‘ri ketma‑ketlikda joylang:\n1. Shiddat bilan harakat\n2. Yirik kuchlarni jamlash\n3. To'satdan zarba berish\n4. Tez natija olish",
+  "opts": [
+   "A) 1, 2, 3, 4",
+   "B) 3, 1, 2, 4",
+   "C) 1, 3, 2, 4",
+   "D) 2, 1, 3, 4"
+  ],
+  "correct": 0,
+  "explanation": "Manguberdi tamoyillari birinchi bosqichda shiddat bilan harakat, keyin yirik kuchlarni jamlash, to'satdan zarba, oxirida tez natija olishni belgilaydi. Shuning uchun 1‑2‑3‑4 to‘g‘ri.",
+  "mnemonic": "Shiddat → Yirik → To'satdan → Tez.",
+  "topicId": 3
+ },
+ {
+  "q": "Amir Temurning 1391‑yildagi jang rejasini to‘g‘ri tartibda joylang:\n1. An'anaviy tarkibdan voz kechish\n2. 7 ta qo‘lga taqsimlash\n3. Har bir qo‘lga vazifa berish\n4. Natijani tahlil qilish",
+  "opts": [
+   "A) 1, 2, 3, 4",
+   "B) 2, 1, 3, 4",
+   "C) 1, 3, 2, 4",
+   "D) 3, 2, 1, 4"
+  ],
+  "correct": 0,
+  "explanation": "Avvalo an'anaviy tarkibdan voz kechish, keyin qo‘shini 7 ta qo‘lga bo‘lish, har biriga maxsus vazifa, oxirida natijani tahlil qilish tasvirlangan. Shuning uchun 1‑2‑3‑4 to‘g‘ri tartib.",
+  "mnemonic": "An'anaviy → 7 qo‘l → Vazifa → Tahlil.",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi tamoyillarini ularning maqsadi bilan moslashtiring:\n1. Shiddat bilan harakat\n2. Yirik kuchlarni jamlash\n3. To'satdan zarba\n4. Tez natija olish\nA. Dushmanni kutilmagan paytda mag‘lub etish\nB. Jang maydonida kuchlarni konsentratsiya qilish\nC. Harakatni yuqori intensivda boshlash\nD. Natijani qisqa muddat ichida olish",
+  "opts": [
+   "A) 1-A, 2-C, 3-B, 4-D",
+   "B) 1-B, 2-A, 3-D, 4-C",
+   "C) 1-D, 2-C, 3-B, 4-A",
+   "D) 1-C, 2-B, 3-A, 4-D"
+  ],
+  "correct": 3,
+  "explanation": "Shiddat bilan harakat – yuqori intensivlik (C); yirik kuchlarni jamlash – konsentratsiya (B); to'satdan zarba – dushmanni kutilmagan paytda mag‘lub etish (A); tez natija – qisqa muddat ichida (D).",
+  "mnemonic": "Shiddat‑C, Yirik‑B, To'satdan‑A, Tez‑D.",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi qaysi tamoyilida natijaga tez va to'xtalishsiz erishishni ta'kidlamoqda?",
+  "opts": [
+   "A) Birinchi tamoyil",
+   "B) To'rtinchi tamoyil",
+   "C) Ikkinchi tamoyil",
+   "D) Uchinchi tamoyil"
+  ],
+  "correct": 1,
+  "explanation": "To'rtinchi tamoyil tez va to'xtalishsiz pirovard natijaga erishish kerakligini bildiradi. Boshqa tamoyillar boshqa jihatlarni qamrab oladi.",
+  "mnemonic": "To'rtinchi – tez natija.",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi qachon tug'ilgan?",
+  "opts": [
+   "A) 1212 yilda",
+   "B) 1198 yilda",
+   "C) 1205 yilda",
+   "D) 1220 yilda"
+  ],
+  "correct": 1,
+  "explanation": "Jaloliddin Manguberdi 1198‑1231 yillari orasida yashaganligi ko'rsatilgan, shu sabab 1198 yili to'g'ri.",
+  "mnemonic": "Jaloliddin 1198‑yilda dunyoga kelgan",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi Sind daryosi bo'yida qaysi yilda mag'lubiyatga uchragan?",
+  "opts": [
+   "A) 1218 yilda",
+   "B) 1224 yilda",
+   "C) 1221 yilda",
+   "D) 1230 yilda"
+  ],
+  "correct": 2,
+  "explanation": "1221‑yilning noyabrida bo'lib o'tgan Sind daryosi jangida Jaloliddin mag'lubiyatga uchragani ko'rsatilgan.",
+  "mnemonic": "Sind – 1221‑yil mag'lub",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi jangda manyovr qilishni qanday maqsadda qo'llagan?",
+  "opts": [
+   "A) Suv bo'yi harakatni tezlashtirish",
+   "B) Logistikani soddalashtirish",
+   "C) Aviatsiya qo'shinini himoya qilish",
+   "D) Dushmanga zarba berishda qulay sharoit yaratish"
+  ],
+  "correct": 3,
+  "explanation": "Manyovr qilish dushmanga zarba berish uchun qulay sharoit yaratish maqsadida ishlatilgani aytilgan.",
+  "mnemonic": "Manyovr – zarba qulayligi",
+  "topicId": 3
+ },
+ {
+  "q": "Parvon dashtidagi jangda qaysi geografik sharoit jang harakatlarini cheklagan?",
+  "opts": [
+   "A) Keng daryo bo'yida",
+   "B) Yassi cho'lda",
+   "C) Ochiq dala",
+   "D) Tog'li va toshloq yer"
+  ],
+  "correct": 3,
+  "explanation": "Parvon dashti tog'li va toshloq bo'lgani, shuning uchun jang harakatlari qiyinlashgani ko'rsatilgan.",
+  "mnemonic": "Parvon – tog'li toshloq",
+  "topicId": 3
+ },
+ {
+  "q": "Jaloliddin Manguberdi tamoyillaridan qaysi biri \"hamma kuchlarni shiddat bilan harakatlantirish\" ni ta'kidlaydi?",
+  "opts": [
+   "A) Erishilgan muvaffaqiyatdan unumli foydalanish",
+   "B) G'alabaga erishish uchun barcha kuchlarni shiddat bilan harakatlantirish",
+   "C) Tez va to'xtalishsiz pirovard natijaga erishish",
+   "D) Yirik kuchlarni bosh zarba berish yo'nalishida jamlash"
+  ],
+  "correct": 1,
+  "explanation": "Birinchi tamoyil sifatida g'alabaga erishish uchun hamma kuchlarni shiddat bilan harakatlantirish belgilangan.",
+  "mnemonic": "Hammasi shiddat, g'alaba birga",
+  "topicId": 3
+ },
+ {
+  "q": "1391-yilda Amir Temur jangida qo'shinini nechta qo'lda tashkil etdi?",
+  "opts": [
+   "A) Olti ta",
+   "B) To'qqiz ta",
+   "C) Sakkiz ta",
+   "D) Yetti ta"
+  ],
+  "correct": 3,
+  "explanation": "Amir Temur qo'shinini aniq 7 ta qo'lga bo'lgani ko'rsatilgan.",
+  "mnemonic": "Temurning yetti qo'li",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi jangda ikkinchi darajali hududlar qanday ishlatiladi?",
+  "opts": [
+   "A) Kuchsizlantiriladi, lekin yirik kuchlar jamlanadi",
+   "B) Ular asosiy front bo'lib xizmat qiladi",
+   "C) Har doim xavfsiz hudud sifatida saqlanadi",
+   "D) Faqat qo'shinni qayta yig'ish uchun ishlatiladi"
+  ],
+  "correct": 0,
+  "explanation": "Ikkinchi darajali hududlar kuchsizlantiriladi, lekin yirik kuchlar bosh zarba yo'nalishida jamlanadi deb aytilgan.",
+  "mnemonic": "Kuchsiz, lekin katta jamlanadi",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi har qanday urushda qaysi tamoyilga ko'proq e'tibor beradi?",
+  "opts": [
+   "A) Muddatli mudofaa",
+   "B) Tez va to'xtalmaslik",
+   "C) Kuchli obro'",
+   "D) Qattiq himoya"
+  ],
+  "correct": 1,
+  "explanation": "Harakatning tez va to'xtalmaslik tamoyili alohida ta'kidlangan.",
+  "mnemonic": "Tez harakat – g'alaba",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi muvaffaqiyatni qanday yo'nalishda ishlatadi?",
+  "opts": [
+   "A) Faqat xavfsiz hududda saqlash",
+   "B) Uzoq muddatli rejalashtirish",
+   "C) Tez va unumli foydalanish",
+   "D) Ko'p bosqichli tekshirish"
+  ],
+  "correct": 2,
+  "explanation": "Erishilgan muvaffaqiyatni tez va unumli foydalanish tamoyili keltirilgan.",
+  "mnemonic": "Muvaffaqiyat – tez foydalanish",
+  "topicId": 3
+ },
+ {
+  "q": "Terek daryosi jangida Temur qanday yangi usulni joriy qilgan?",
+  "opts": [
+   "A) Ko'p qatlamli mudofaa",
+   "B) Balistik raketa yondashuvi",
+   "C) Tosh bilan qamalash",
+   "D) Kamondan o'q uzish"
+  ],
+  "correct": 3,
+  "explanation": "Temur Kamondan o'q uzish usulini birinchi marta qo'llaganligi aniq ko'rsatilgan.",
+  "mnemonic": "Temur – kamondan o'q",
+  "topicId": 3
+ },
+ {
+  "q": "Manguberdi g'alabaga erishish uchun har qanday harakatda qanday natijaga erishish kerak?",
+  "opts": [
+   "A) To'xtalmas natija",
+   "B) Uzoq muddatli qayta qurish",
+   "C) Keng tarqatilgan himoya",
+   "D) Yuqori darajadagi qayta aloqa"
+  ],
+  "correct": 0,
+  "explanation": "To'xtalmas natijaga erishish tamoyili qat'iy ta'kidlangan.",
+  "mnemonic": "To'xtalmas – g'alaba",
+  "topicId": 3
+ }
+]

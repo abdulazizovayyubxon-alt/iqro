@@ -1,0 +1,644 @@
+[
+  {
+    "id": 73,
+    "sabab": "Qatvon jangi (1141 y.) Qoraxoniylar va Saljuqiylar o‘rtasida bo‘lmagan, balki ular birgalikda Qoraxitoylarga qarshi kurashgan. Variantdagi (A) va izohdagi ma'lumot tarixiy haqiqatga zid.",
+    "question": "Tarixiy joylarni ular bilan bog‘liq bo‘lgan voqealar bilan moslashtiring:\n1. Qatvon tepasi\n2. Talas (Atlax) jangi\n3. O‘tror\n4. Jand\nA. Qoraxoniylar va Saljuqiylar o‘rtasidagi jang\nB. Mo‘g‘ullar tomonidan shaharning vayron qilinishi\nC. Arablar va xitoyliklar o‘rtasidagi jang (751 y.)\nD. Xorazmshoh qo‘shini va mo‘g‘ullar o‘rtasidagi qonli jang",
+    "answer": "D"
+  },
+  {
+    "id": 86,
+    "sabab": "Savol mazmuniga ko'ra, dehqon o'z yerida ishlab, hosilning bir qismini natural holda to'laydi — bu 'Mahsulot renti (obrok)'ning ta'rifidir. 'Ijarachilik renti (chensh)' noto'g'ri belgilangan. Shuningdek, izohda obrok ta'rifi faktik xato bilan berilgan.",
+    "question": "O‘rta asr Yevropasida dehqon o‘z eridan hosil olib, shundan senyorga bir qismini natural shaklda to‘laydi. Qolgan hosili va mehnat qurollari uning shaxsiy mulki hisoblanadi. Feodal rentning qaysi turi tasvirlangan?",
+    "answer": "B"
+  },
+  {
+    "id": 104,
+    "sabab": "Belgilangan javob (B) noto'g'ri. Izohda va tarixiy haqiqatga ko'ra, Amir Temur Hindistonni o'z davlatiga qo'shib, uzoq muddat boshqarishni rejalashtirmagan, balki o'lja olish va obro' maqsadida yurish qilgan. To'g'ri javob C variantidir.",
+    "question": "Amir Temur 1398-yilda Hindistonga yurish qildi va Dehlini egallab oldi. Ushbu yurish natijasida Amir Temur asosan qaysi maqsadga erishdi?",
+    "answer": "B"
+  },
+  {
+    "id": 121,
+    "sabab": "Matching savolda bir variant (C) ikkita elementga (3 va 4) moslashtirilgan, bu test metodikasiga zid. Shuningdek, Qoraxitoylar poytaxti asosan Balasag'un bo'lgan, Qoraxoniylar esa Samarqand, Balasag'un va Qashqarni poytaxt qilgan; ularni bir variantda aralashtirib yuborish va Qoraxitoylarni ham shu variantga kiritish faktik xatodir.",
+    "question": "Davlatlarni ularning poytaxtlari bilan moslashtiring:\n1. G‘uriylar davlati\n2. Xorazmshohlar davlati\n3. Qoraxitoylar (Kara-Khitay)\n4. Qoraxoniylar\nA. G‘urganj (Urgench)\nB. Balx, keyin Firuzko‘h\nC. Samarqand, keyin Balasag‘un va Qashqar\nD. Buxoro",
+    "answer": "A"
+  },
+  {
+    "id": 125,
+    "sabab": "Savol tuzilishida jiddiy xato bor: shaxslar ro'yxatida 4 ta element berilgan, ammo javob variantlarida faqat 3 tasi (1, 2, 4) moslashtirilgan, 3-element (Xorazmshohlar) tushib qolgan. Shuningdek, tarixiy jihatdan Movarounnahrda davlat barpo etish odatda Ilkxonlar (Nasr ibn Ali) faoliyati bilan bog'lanadi, To'g'rulxon nomi noto'g'ri berilgan.",
+    "question": "Tarixiy shaxslarni ular faoliyatiga oid voqea/yutuqlar bilan moslashtiring:\n1. Satuq Bughraxon\n2. To‘g‘rulxon\n3. Xorazmshohlar sulolasi (Anushteginiylar)\n4. Mahmud G‘aznaviy\nA. Movarounnahrda birinchi yirik turkiy-musulmon davlatini barpo etish\nB. Islom dinini qabul qilib, qoraxoniylarning musulmonlashishiga boshchilik qilish\nC. O‘rta Osiyoning janubiy hududlarini bosib olishga urinish\nD. Amudaryo quyi oqimidagi yerlarni mustaqil boshqarishni boshlash",
+    "answer": "A"
+  },
+  {
+    "id": 165,
+    "sabab": "Baqtriya (Baqtra) davlatining poytaxti Marv emas, balki Baxtra (Bolx) shahri bo‘lgan. Marv Margiana (Marg‘ush) davlatining poytaxti hisoblanadi.",
+    "question": "Qadimgi davr davlatlarini ularning poytaxtlari bilan moslashtiring:\n1. So‘g‘diana\n2. Baqtra (Baqtriya)\n3. Xorazm\nA. Marv\nB. Afrasiyob (Samarkand)\nC. Toproqqal’a (Qiyat qal’asi)",
+    "answer": "D"
+  },
+  {
+    "id": 206,
+    "sabab": "Bir nechta variant (A va C) teng darajada to'g'ri, chunki a, b va e mulohazalari hammasi to'g'ri.",
+    "question": "Temuriyllar davri (XIV–XV asrlar) tarixiga oid quyidagi mulohazalardan to‘g‘rilarni aniqlang.\na) Amir Temurning_Anqara jangi_fatxi bilan O‘smalilar turk imperiyasining kuchini vaqtincha zaiflashtirdi.\nb) Ulug‘bekning_sayyoralar harakati_tog‘risidagi ilmiy ishlari Yevropaning keyingi kashfiyotlariga ta'sir ko‘rsatdi.\nd) Movarounnahrdagi_monarxik_tizim XV asrda tugatilib, respublika tizimi o‘rnatildi.\ne) Bobur_xonligining_tugatilishi Hindistonda Boboriylar imperiyasiga asos solishiga sabab bo‘ldi.",
+    "answer": "A"
+  },
+  {
+    "id": 208,
+    "sabab": "Savol matnida 'Konstantinopel (Qohira)' deb yozilgan, bu faktik xatodir (shahar nomi noto'g'ri ko'rsatilgan).",
+    "question": "O‘rta asrlarning oxirgi davrida (XIII–XV asrlar) jahon iqtisodiyotidagi o‘rnini belgilab beruvchi shaharlarni ularning asosiy xususiyatlari bilan moslashtiring:\n1. Genuya va Venetsiya\n2. Konstantinopel (Qohira)\n3. Samarqand\n4. Brugga (Flandriya)\nA. Temuriyllar davrta ilm-fan va hunarmandchilik markazi, Buyuk ipak yo‘lidagi chorraha\nB. O‘rta dengiz orqali Sharq bilan savdo qilishga ixtisoslashgan italyan respublikalari\nC. Yevropaning shimoliy qismidagi gilam va matolar savdosi markazi\nD. G‘arbiy Sharq va Yevropa o‘rtasidagi savdo aylanmasida muhim istehkom shahar",
+    "answer": "C"
+  },
+  {
+    "id": 221,
+    "sabab": "Kujula Kadfiz davrida ham o'z nomi yozilgan tangalar zarb qilingan, Kanishka birinchi bo'lmagan.",
+    "question": "Kushon podsholigida qaysi hukmdor davrida hukmdor nomi yozilgan tangalar zarb qilina boshlangan?",
+    "answer": "B"
+  },
+  {
+    "id": 223,
+    "sabab": "Asar mualliflari noto'g'ri ko'rsatilgan: 'Masalik va Mamalik' Istaxriy, 'Ahror ul-balog'a' esa Beruniy asari emas.",
+    "question": "Somoniylar davrida yashab ijod etgan olimlarni ularning asarlari bilan moslashtiring:\n1. Abu Nasr Farobi\n2. Abu Rayhon Beruniy\n3. Abu Ali ibn Sino (Avitsenna)\nA. \"Al-Qonun fit-tib\" (Tib qonuni)\nB. \"Kitob al-Masalik va-l-Mamalik\" (Yo‘llar va mamlakatlar kitobi)\nC. \"Ahror ul-balog‘a\" (Balog‘at egalari)",
+    "answer": "C"
+  },
+  {
+    "id": 227,
+    "sabab": "\"Devonu lug‘otit-turk\" asari arab tilida yozilgan, fors tilida emas. Shuning uchun 'd' varianti noto'g'ri, bu esa belgilangan javobning (C) xato ekanligini ko'rsatadi.",
+    "question": "XI asrda yashagan olim Qashqarlik Mahmud va uning \"Devonu lug‘otit-turk\" asari haqidagi to‘g‘ri mulohazalarni belgilang.\na) Bu asar turkiy tillarning birinchi yirik izohli lug‘atidir.\nb) Asarda turkiy qabilalarning hayoti, urf-odatlari va geografik joylashuvi haqida ma’lumotlar berilgan.\nd) Asar fors tilida yozilgan bo‘lib, arab alifbosidan foydalanilgan.\ne) Olim Somoniylar saroyida xizmat qilib, asarni ular homiyligida yozgan.",
+    "answer": "C"
+  },
+  {
+    "id": 244,
+    "sabab": "Kushon podsholigining asosiy poytaxtlari Kapisa, Peshavar va Maturo bo‘lgan; Termiz poytaxt emas, balki muhim savdo markazi hisoblangan.",
+    "question": "Kushon podsholigi davrida (I-III asrlar) O'rta Osiyo xalqlari tarixida katta ijobiy o'zgarishlar ro'y berdi. Tarixiy manbalar shu davrda podsholik poytaxti bo'lgan shaharni «uyushmaning uchrashgusi», «savdogarlar shahri» deb ta'riflaydi. Qu yidagi shaharlardan qaysi biri bu tavsifga to'liq mos keladi?",
+    "answer": "A"
+  },
+  {
+    "id": 255,
+    "sabab": "Xronologik tartib noto'g'ri. Yuz yillik urush 1337-yilda boshlangan, Kulikovo jangi esa 1380-yilda bo'lib o'tgan. To'g'ri ketma-ketlik: 2, 3, 4, 1.",
+    "question": "O‘rta asr tarixidagi quyidagi voqealarni xronologik tartibda (qadimgi zamonidan yangi zamon tomon) joylashtiring:\n1. Konstantinopolning qulashi\n2. Magna Karta (Buyuk erkinlik xartiya)ning qabul qilinishi\n3. Yuz yillik urushning boshlanishi\n4. Kulikovo jangi",
+    "answer": "D"
+  },
+  {
+    "id": 271,
+    "sabab": "'Buyuk meridianal yo'l' nomi ilmiy atama bo'lib, S.P. Tolstov tomonidan XX asrda kiritilgan (1877-yildan keyin). Shuning uchun 3-voqea 1-voqeadan oldin bo'lishi kerak. To'g'ri tartib: 2, 3, 1.",
+    "question": "Buyuk Ipak yo‘li nomlanish tarixini o‘rganishda quyidagi voqealarni xronologik tartibda joylashtiring:\n1. Yo‘lga 'Buyuk meridianal yo‘l' nomi beriladi\n2. Yo‘l miloddan avvalgi II asrda vujudga keladi\n3. F. Rixtgofen tomonidan 'Ipak yo‘li' nomi taklif etiladi",
+    "answer": "C"
+  },
+  {
+    "id": 273,
+    "sabab": "Eftaliylar davlati (V–VI asr) G'arbiy Turk qagonligidan (VI–VII asr) oldin mavjud bo'lgan va turk qagonligi tomonidan tugatilgan. Tarixiy ketma-ketlik noto'g'ri tuzilgan. To'g'ri javob: 2, 4, 3, 1.",
+    "question": "O'zbekiston hududida mavjud bo'lgan quyidagi davlatlarning tashkil topish va yuksalish davrini tarixiy xronologik tartibda joylashtiring:\n1. Qoraxoniylar davlati\n2. Eftaliylar davlati\n3. Somoniylar davlati\n4. G'arbiy Turk qagonligi",
+    "answer": "A"
+  },
+  {
+    "id": 277,
+    "sabab": "Belgilangan javob noto'g'ri. Izoh va tarixiy ma'lumotlarga ko'ra, Il-Arslon (4) ichki nizolarni bartaraf etgan (D), Qutbiddin Muhammad (1) esa qoraxitoylarga qarshi kurashgan (A). Bu moslik B variantiga (1-A, 2-C, 3-B, 4-D) to'g'ri keladi.",
+    "question": "Xorazmshohlar davlati hukmdorlarini ularning faoliyati bilan moslashtiring:\n1. Qutbiddin Muhammad\n2. Ala ad-Din Tekesh\n3. Jaloliddin Manguberdi\n4. Il-Arslon\nA. G'arbiy Qoraxitoylarni tor-mor etib, davlat hududini kengaytirish\nB. Mo'g'ullarga qarshi shijoatli kurash olib borish\nC. Abbosiylar xalifasidan \"Sulton\" unvonini olish\nD. O'g'uzlar va qipchoqlar o'rtasidagi nizolarni bartaraf etish",
+    "answer": "D"
+  },
+  {
+    "id": 309,
+    "sabab": "Qadimgi Xorazm davlati (2) Iskandar Maqduniy bosqinidan (3) ancha oldin mavjud bo'lgan, shuning uchun u bosqindan keyin kelishi tarixiy xatodir. Izohda ham 1 va 2 3-dan oldin ekanligi aytilgan, ammo belgilangan javob boshqacha.",
+    "question": "O'zbekiston hududida miloddan avvalgi IV asrdan milodiy III asrgacha bo'lgan davrda mavjud bo'lgan qadimgi davlatlarni ularning tarixiy xronologiyasi (kelib chiqishi va rivojlanishi) asosida to'g'ri tartibda joylashtiring:\n1. Sug'diana va Baqtra mustaqilligi\n2. Qadimgi Xorazm davlati\n3. O'rta Osiyoning Iskandar Maqduniy tomonidan bosib olinishi\n4. Kushon podsholigining yuksalishi",
+    "answer": "B"
+  },
+  {
+    "id": 316,
+    "sabab": "Variant 'a' da faktik xato bor: G‘arbiy Turk qagonligi faqat 'On oq' qabilalar ittifoqidan iborat bo‘lgan, 'Toquz oq' Sharqiy Turk qagonligiga tegishli. Variant 'd' ham noto‘g‘ri (poytaxt asosan Suyab bo‘lgan). To‘g‘ri javob variant yo‘q.",
+    "question": "VI–VII asrlarda mavjud bo‘lgan G‘arbiy Turk qagonligining davlat tuzilmasiga oid to‘g‘ri mulohazalarni aniqlang.\na) davlat “On oq” va “Toquz oq” qabilalar ittifoqiga bo‘lingan\nb) hokimiyat qag‘on qo‘lida jamlanib, u mutlaq hukmdor sanalgan\nd) davlat poytaxti Taroz shahri bo‘lgan\ne) davlat dini sifatida buddizm rasman qabul qilingan",
+    "answer": "B"
+  },
+  {
+    "id": 365,
+    "sabab": "Belgilangan javob (C) noto'g'ri. Talas jangi Xitoyning Movarounnahrdan siyosiy ta'sirini tugatdi va ularni surib chiqarib yubordi (D variant to'g'ri), arablarning esa Xitoy hududlariga siyosiy ta'siri kengaymagan.",
+    "question": "751-yildagi Talas jangi O‘rta Osiyo xalqlari tarixida burilish nuqtasi bo‘ldi. Bu jangning xalqaro miqyosdagi eng muhim oqibatini quyidagilar qaysi biri ifodalaydi?",
+    "answer": "C"
+  },
+  {
+    "id": 410,
+    "sabab": "Savol matnida yodgorlik joyi 'hozirgi Navoiy shahri' va 'zardushtiylikdan islomga o'tish davrini aks ettiruvchi' deb berilgan. Bu belgilar Mir Said Bahrom maqbarasiga (A variant) to'g'ri keladi. Ismo'il Somoniy maqbarasi Buxoro shahrida joylashgan. Shuning uchun belgilangan javob (C) savol tavsifiga mos kelmaydi.",
+    "question": "Buxoro yaqinidagi (hozirgi Navoiy shahri) IX–X asrlarga oid, pishiq g'ishtdan qurilgan, sirti ganchkor naqshlar va geometrik shakllar bilan bezatilgan, dunyodagi eng qadimiy zardushtiylik va islom o'tash davrini aks ettiruvchi yodgorlik qaysi?",
+    "answer": "C"
+  },
+  {
+    "id": 411,
+    "sabab": "Savolda keltirilgan 'On ok' G'arbiy Turk xoqonligi (qabila ittifoqi) nomi bo'lib, amaldor unvoni emas; 'To'g'on o'g'lon' ham tarixiy ma'lum bo'lgan amaldor unvoni sifatida noto'g'ri berilgan.",
+    "question": "Tarixchi manbalarda VI asrda O‘rta Osiyoda hukmronlik qilgan Turk xoqonligi tarkibiga 'On ok', 'To'g‘on o‘g‘lon' kabi unvonli amaldorlar kirishi qayd etilgan. Ular asosan qaysi vazifani bajargan?",
+    "answer": "B"
+  },
+  {
+    "id": 443,
+    "sabab": "Varna jangi 1444-yilda bo'lib o'tgan, savol matnida 1447 deb xato ko'rsatilgan.",
+    "question": "Quyidagi tarixiy voqealarni xronologik tartibda (qadimiydan yangisiga) joylashtiring:\n1. Varna jangi (1447)\n2. Angliyada Uot Teylor qo‘zg‘oloni (1381)\n3. Konstantinopolning bosib olinishi (1453)\n4. Angora jangi (1402)",
+    "answer": "B"
+  },
+  {
+    "id": 484,
+    "sabab": "Savol matnida faktik xato: Kastiliya qiroli Genrix III elchilari (Ruy Gonsales de Klavixo) Temurga 1403-1406-yillarda (XV asr boshi) kelgan, XIV asr boshi emas.",
+    "question": "Tarixiy shaxslar va ularning faoliyati bilan bog‘liq diplomatik voqealarni moslashtiring:\n1. Rabban Bar Sauma (XIII asr oxiri)\n2. Kastiliya qiroli Genrix III elchilari (XIV asr boshi)\n3. Afanasiy Nikitin (XV asr)",
+    "answer": "C"
+  },
+  {
+    "id": 542,
+    "sabab": "Savol kodeks ta'sir qilgan san'at sohasini so'rayapti, javob variantida esa kodeksning o'zi (Bushido) keltirilgan. Savol mazmuni va javob o'rtasida mantiqiy ziddiyat mavjud.",
+    "question": "Yaponiyada XII–XIII asrlarda shakllangan harbiy tabaqaning o‘ziga xos «jangchi yo‘li» deb ataladigan qat'iy xulq-atvor kodeksi qaysi san'at sohasiga katta ta'sir ko‘rsatgan?",
+    "answer": "B"
+  },
+  {
+    "id": 548,
+    "sabab": "Savol matnida '1492-yilda Granadaning turklarga qarshi qulashi' deyilgan. Bu tarixiy jihatdan noto'g'ri ma'lumot, chunki Granada Ispaniya tomonidan mavrlar (arablar)ga qarshi bosib olingan, turklar (usmonlilar) bilan bevosita aloqasi yo'q.",
+    "question": "XV asrda yuz bergan muhim voqealarni tegishli davlat yoki hudud bilan moslashtiring:\n1. 1453-yilda Konstantinopolning bosib olinishi\n2. 1492-yilda Granadaning turklarga qarshi qulashi\n3. 1453-yilda Kastilyon jangi bilan Yuz yillik urushning tugashi\n4. 1492-yilda Kristofor Kolumbning sayohati\nA. Fransiya\nB. Usmonli turk imperiyasi\nC. Ispaniya\nD. Amerika",
+    "answer": "A"
+  },
+  {
+    "id": 565,
+    "sabab": "a, d va e bayonlari hammasi tarixiy jihatdan to'g'ri bo'lgani uchun A (a, d) va C (a, e) variantlari teng darajada to'g'ri javob hisoblanadi.",
+    "question": "Kushon podsholigi, xususan, Kanishka davri tarixiga oid quyidagi mulohazalardan to‘g‘rilarni tanlang.\na) Hukmdor nomi yozilgan tangalar zarb qilina boshlandi\nb) Tanganing faqat bir tomoni zarb qilingan\nd) Yozuv, san’at va diniy e’tiqod rivojlandi\ne) Podsholik poytaxti Baqtra shahriga ko‘chirilmagan",
+    "answer": "A"
+  },
+  {
+    "id": 580,
+    "sabab": "Faktik xato: Hammurapi qonunlariga ko'ra, uy qulab tushib egasi vafot etsa, me'morning o'zi o'ldiriladi (229-modda). Me'morning o'g'li o'ldirilishi faqat egasining o'g'li halok bo'lganda (230-modda) nazarda tutilgan.",
+    "question": "Qadimgi Bobil shohi Hammurapi qonunlariga ko'ra, me'mor tomonidan qurilgan uy qulab tushib, egasi vafot etsa, qonunga ko'ra me'mor nima jazoga tortiladi?",
+    "answer": "A"
+  },
+  {
+    "id": 598,
+    "sabab": "Voqealar xronologiyasi buzilgan: Las Navas de Tolosa jangi (1212) Kordova qulashidan (1236) oldin bo'lgan. To'g'ri tartib: 3, 4, 1, 2 (B varianti).",
+    "question": "Iberiya yarim orolida musulmonlar hukmronligiga barham beruvchi Rekonquista jarayonining muhim bosqichlarini xronologik tartibda joylashtiring:\n1. Kordova amirligining qulashi\n2. Granada amirligining tugatilishi\n3. Toledo shahrining qo‘lga kiritilishi\n4. Las Navas de Tolosa jangi",
+    "answer": "D"
+  },
+  {
+    "id": 606,
+    "sabab": "Saroyning vayron qilinishi 1395-yilda bo'lib, Dehli yurishi (1398) va Anqara jangi (1402) dan oldin sodir bo'lgan. To'g'ri tartib (3, 4, 1, 2) variantlar orasida keltirilmagan.",
+    "question": "Amir Temurning G'arbga qilgan yurishi va O'rta Osiyo tarixidagi o'rniga oid voqealarni vaqti bo'yicha tartiblang:\n1. Anqara jangi (1402)\n2. Amir Temur vafoti (1405)\n3. Oltin O'rda poytaxti Saroyning vayron qilinishi\n4. Dehlidagi yurish",
+    "answer": "A"
+  },
+  {
+    "id": 622,
+    "sabab": "\"Qonuni Mas'udiy\" asari Sulton Mas'ud G'aznaviyga bag'ishlangan, Mahmud G'aznaviyga emas.",
+    "question": "Abu Rayhon Beruniy \"Qonuni Mas‘udiy\" asarini yozib tugatgach, uni qaysi hukmdorgi bag‘ishladi? Bu asar astronomiya va geodeziya sohasidagi yutuqlarni o‘z ichiga oladi.",
+    "answer": "A"
+  },
+  {
+    "id": 660,
+    "sabab": "Savolda 'to'g'ri mulohazalar' so'ralgan. 'b' varianti (erkin savdoga xalaqit berishi) ham tarixan to'g'ri mulohazadir. Shunday qilib, B (a, d) va C (b, d) variantlari ham to'g'ri javob bo'lishi mumkin, chunki ularning tarkibidagi barcha fikrlar to'g'ri.",
+    "question": "O‘rta asr shaharlarida hunarmandlar birlashmalari — esnaf (gildiya) keng tarqalgan edi. Esnaf faoliyatiga oid to‘g‘ri mulohazalarni aniqlang.\na) mahsulot sifati va narxini nazorat qilish\nb) mahalliy bozorda erkin savdo-sotiqni rivojlantirishga xalaqit berish\nd) hunarmandchilik maxfiyliklarini saqlash va shogirdlar tayyorlash\ne) ishlab chiqarish vositalariga xususiy mulkchilikni bekor qilish",
+    "answer": "B"
+  },
+  {
+    "id": 687,
+    "sabab": "Fermoal (Termopil) jangi miloddan avvalgi 480-yilda bo'lib o'tgan va Salamin jangidan oldin sodir bo'lgan. To'g'ri tartib: 1, 3, 2 (D variant). C variant noto'g'ri belgilangan.",
+    "question": "Miloddan avvalgi V asrda bo'lib o'tgan Greko-fors urushlaridagi asosiy voqealarni xronologik tartibda joylashtiring:\n1. Marafon jangi\n2. Salamin dengiz jangi\n3. Fermoal jangi",
+    "answer": "C"
+  },
+  {
+    "id": 727,
+    "sabab": "Variant 'a' da tarixiy xato bor: Samarqand shahri Il-Arslon davrida emas, balki Ala ad-Din Muhammad davrida (1207 yil) bosib olingan.",
+    "question": "Xorazmshohlar davlatining (XII–XIII asr boshi) siyosiy kuchayishi va tashki siyosatiga oid to‘g‘ri mulohazalarni belgilang.\na) Il-Arslon davrida davlat hududi kengayib, Samarqand egallandi\nb) Ala ad-Din Muhammad davrida butun Movarounnahr birlashtirildi\nd) Davlat poytaxti G‘urganj shahri bo‘lib, iqtisodiy markazga aylandi\ne) Xorazmshohlar har doim Xitoy bilan do‘stona munosabatlarda bo‘lgan",
+    "answer": "B"
+  },
+  {
+    "id": 796,
+    "sabab": "Faktik xato: Baybars mo'g'ullarni Mansuriya jangida emas, Ayn Jalut jangida mag'lub etgan. Mansuriya jangi salibchilarga qarshi bo'lgan.",
+    "question": "Tarixiy shaxslarni ular bilan bog‘liq bo‘lgan voqea/hodisa bilan moslashtiring:\n1. Mehmed II Fotih\n2. Janne d'Ark\n3. Baybars\n4. Ulug‘bek\nA. Orlean qamalini yengishda muhim rol o‘ynadi\nB. Konstantinopolni bosib oldi va Vizantiyani tugatdi\nC. Mansuriya jangida mo‘g‘ullarni mag‘lub etdi\nD. Samarkandda observatoriya qurdi va 'Ziji Guragoni' yaratdi",
+    "answer": "B"
+  },
+  {
+    "id": 802,
+    "sabab": "Xronologik tartib noto'g'ri tarqatilgan. Iskandariya shahri (4) mil. av. 329-yilda, Spiyamenning o'ldirilishi (2) esa mil. av. 328-yilda sodir bo'lgan. To'g'ri tartib: 3, 1, 4, 2 (B varianti).",
+    "question": "Iskandar Maqduniyning O‘rta Osiyoga yurishi va shu yerda sodir bo‘lgan tarixiy voqealarni xronologik tartibda joylashtiring.\n1. Marokanda (Samarqand) shahrini egallash va devorlarini vayron qilish.\n2. Sug‘d qo‘zg‘olonchilari boshlig‘i Spiyamenning o‘ldirilishi.\n3. Baqtra shahrini qamal qilish va qo‘lga kiritish.\n4. Oks (Amudaryo) va Yaksart (Sirdaryo) orasida “Iskandariya” shahrini bunyod etish.",
+    "answer": "C"
+  },
+  {
+    "id": 804,
+    "sabab": "Moslashtirishda jiddiy xatolar bor. Zarautsoy rasmlari yozma yodgorlik emas (4-D noto'g'ri). Shuningdek, 'Tuyadagi chavandoz' (tuya) ta'rifi 'ot minganlik' (ot) deb berilgan, mazmuniy mos kelmaydi (2-C noto'g'ri).",
+    "question": "Qadimgi O‘rta Osiyo tarixiy va madaniy obyektlarini ularning xususiyatlari bilan moslashtiring.\n1. Teshiktosh g‘ori\n2. “Tuyadagi chavandoz” haykalchasi\n3. Avesto\n4. Zarautsoy rasmlari\nA. Miloddan avvalgi II mingyillikda yashagan neandertal odam qoldiqlari.\nB. Olovga sig‘inish va tabiat kuchlariga oid diniy yodgorlik.\nC. O‘rta Osiyoda ot minganlikning paydo bo‘lishini ko‘rsatuvchi san’at asari.\nD. O‘rta Osiyoning eng qadimgi yozma yodgorligi.",
+    "answer": "D"
+  },
+  {
+    "id": 809,
+    "sabab": "Xronologik tartib noto'g'ri. Qoraxoniylar davlati (840-yillar) G'aznaviylar davlatidan (977-yil) oldin vujudga kelgan.",
+    "question": "Quyidagi davlatlarning vujudga kelish tartibini (xronologik ketma-ketlikda) belgilang:\n1. Qoraxoniylar\n2. Somoniylar\n3. G'aznaviylar\n4. Xorazmshohlar",
+    "answer": "D"
+  },
+  {
+    "id": 811,
+    "sabab": "«Kitob at-tasrif» asari Abu Rayhon Beruniyga emas, Zamaxshariyga tegishli.",
+    "question": "Olimlarni ularning asarlari bilan moslashtiring:\n1. Abu Nasr Farobiy\n2. Abu Ali ibn Sino\n3. Abu Rayhon Beruniy\n4. Mahmud Koshgariy\nA. «Devonu lug'otit turk»\nB. «Kitob at-tasrif»\nC. «Al-Qonun fit-tib»\nD. «Ta'limot al-musiqiy»",
+    "answer": "C"
+  },
+  {
+    "id": 819,
+    "sabab": "C (a, b) va D (a, e) variantlaridagi barcha fikrlar tarixan to'g'ri, shuning uchun bitta to'g'ri javobni aniqlab bo'lmaydi.",
+    "question": "Qoraxoniylar davlati tarixiga oid to'g'ri mulohazalarni aniqlang.\na) Islom dinini rasmiy din sifatida qabul qilindi\nb) \"Qutadg'u bilig\" asari yaratildi\nd) Davlat tili faqat sug'diy tilida e'lon qilindi\ne) Poytaxti Balasag'un va Qashqar bo'lgan",
+    "answer": "D"
+  },
+  {
+    "id": 823,
+    "sabab": "Belgilangan javob (C) izohdagi mantiq va tarixiy sanalarga zid. Yunon-Baqtriya mustaqilligi (mil. avv. 250 y.) Salavkiylar davlatining inqirozidan oldin sodir bo'lgan. To'g'ri tartib: 2, 1, 4, 3 (Javob D).",
+    "question": "O'rta Osiyo hududida ellinizm davrining boshlanishi va rivojlanishiga ta'sir ko'rsatgan tarixiy voqealarni xronologik tartibda joylashtiring:\n1. Yunon-Baqtriya podsholigining mustaqillikka erishishi\n2. Iskandar Maqduniyning O'rta Osiyoni bosib olishi\n3. Kushon podsholigining tashkil topishi va gullab-yashnashi\n4. Salavkiylar davlatining inqirozi",
+    "answer": "C"
+  },
+  {
+    "id": 833,
+    "sabab": "Tarixiy shaxs nomida jiddiy xato ('Yuiji Qosiyon' o'rniga 'Jo'chi' yoki 'Chingizxon' bo'lishi kerak) va tavsifda faktik xato (O'rta Osiyoni istilo qilishga Chingizxon boshchilik qilgan).",
+    "question": "XIII–XV asr tarixiy shaxslarini ularning faoliyat yo‘nalishi bilan moslashtiring:\n1. Mehmet II\n2. Amir Temur\n3. Ivan III\n4. Yuiji Qosiyon\nA. Oltin O‘rdadan mustaqillikka erishgan Rossiya davlatining asoschisi\nB. Konstantinopolni bosib olib, Usmonli imperiyasini qudratli davlatga aylantiruvchi\nC. O‘rta Osiyo va Yaqin Sharqni birlashtirgan, Buyuk ipak yo‘lini tiklovchi\nD. Mo‘g‘ul istilochisi, O‘rta Osiyoni istilo qilishiga boshchilik qiluvchi",
+    "answer": "D"
+  },
+  {
+    "id": 859,
+    "sabab": "Xronologik ketma-ketlik noto'g'ri. Marvning zabt etilishi (651 yil) Amudaryodan o'tish va Termizni bosib olishdan (670-yillar) oldin sodir bo'lgan. To'g'ri javob B varianti (2, 4, 1, 3).",
+    "question": "O‘rta Osiyoning arablar tomonidan bosib olinishi jarayonidagi tarixiy voqealarni xronologik ketma-ketlikda joylashtiring:\n1. Qutayba ibn Muslimning Movarounnahrni tugatgan istilolari\n2. Marv shahrining zabt etilishi (Sosoniylar davlati tugashi)\n3. Talas jangi (Xitoylar ustidan g‘alaba)\n4. Amudaryo bo‘yidagi ilk to‘qnashuvlar va Termizning bosib olinishi",
+    "answer": "A"
+  },
+  {
+    "id": 864,
+    "sabab": "Tarixiy jihatdan 'd' (qul mehnati asosiy rol o'ynamagan) fikri to'g'ri bo'lgani uchun A (b, d) variant ham to'g'ri hisoblanadi. Shunday qilib, A va B variantlari teng darajada to'g'ri. Bundan tashqari, izohda 'd' haqida birinchi gapda to'g'ri deyilgan, ikkinchi qavsda esa noto'g'ri deyilgan (mantiqiy ziddiyat).",
+    "question": "Qadimgi Misr davlatining ijtimoiy-iqtisodiy tuzilishiga oid quyidagi mulohazalardan to'g'rilarni aniqlang:\na) Jamiyatning asosiy ishlab chiqaruvchi kuchi dehqonlar va hunarmandlar edir\nb) Yerlarning katta qismi fir'avn va ibodatxonalarga qarashli bo'lgan\nd) Qul mehnati jamiyat hayotida asosiy rol o'ynamagan\ne) Savdo-sotiq rivojlangan va pul vositasi sifatida mis tangalar ishlatilgan",
+    "answer": "B"
+  },
+  {
+    "id": 875,
+    "sabab": "Voqealar xronologik tartibi noto'g'ri. Avinion papaligi 1309-yilda (boshida), Katta Split 1378-yilda (oxirida) sodir bo'lgan. Jakeriya qo'zg'oloni 1358-yilda bo'lib o'tgan. To'g'ri ketma-kelik (Avinion boshlanishi bo'yicha) 3-1-2-4 bo'lishi kerak edi (D varianti).",
+    "question": "XIV asr o‘rtalaridan XV asr boshlarigacha bo‘lgan davrda Yevropada sodir bo‘lgan voqealarni xronologik ketma-ketlikda joylashtiring:\n1. Yuz yillik urush boshlanishi\n2. «Qora o‘lim» vabosi tarqalishi\n3. Katolik cherkovidagi Katta Split (Avinionliklik)\n4. Fransiyadagi Jakeriya dehqonlar qo‘zg‘oloni",
+    "answer": "C"
+  },
+  {
+    "id": 878,
+    "sabab": "Belgilangan B variantida Vasco da Gamani Tinch okeanini kashf etganligi aytilgan, bu faktik xato (u Hindistonga dengiz yo'lini topgan). Shuningdek, izoh matni C variantni to'g'ri deb ko'rsatayotgan bo'lsa-da, variant matnida ham tarixiy xatolar mavjud.",
+    "question": "Quyidagi davlat yoki shaxslarni ularning geografik kashfiyotlardagi roli bilan moslashtiring:\n1. Portugaliya\n2. Xristofor Kolumb\n3. Bartolomeu Dias\n4. Vasco da Gama",
+    "answer": "B"
+  },
+  {
+    "id": 919,
+    "sabab": "d variantidagi yeryong'oq va kakao ekinlari Afrikaga XV asrdan keyin (Amerika qit'asi kashf etilgandan so'ng) kirib kelgan, V-XIII asrlarda yetishtirilmagan.",
+    "question": "V–XIII asrlarda Afrika xalqlari hayoti va iqtisodiyoti haqidagi to'g'ri mulohazalarni aniqlang:\na) Efiopiya, Misr va Tunis kabi davlatlarda feodal monarxiya qaror topgan\nb) Afrikaning barcha hududlarida ibtidoiy jamoa tuzumi hukmronlik qilgan\nd) G'arbiy Afrikadagi ayrim xalqlar qahva, yeryong'oq va kakao yetishtirish bilan shug'ullangan\ne) Qabilalar metallga ishlov berishni va metall qurollardan foydalanishni bilmasgan",
+    "answer": "C"
+  },
+  {
+    "id": 933,
+    "sabab": "Belgilangan javob (D) noto'g'ri. IV-VIII asrlarda feodal munosabatlar shakllanishi jarayonida yer feodal mulki bo'lib, dehqonlar uni ijara asosida ishlagan va rent to'lagan (A variant to'g'ri).",
+    "question": "IV–VIII asrlarda O‘rta Osiyoda feodal munosabatlarning shakllanishi davom etdi. Quyidagi xususiyatlardan qaysi biri bu davr uchun xarakterli bo‘lgan dehqonlar holatini tasviflaydi?",
+    "answer": "D"
+  },
+  {
+    "id": 934,
+    "sabab": "Belgilangan javob (A) noto'g'ri. Qog'oz yasash texnologiyasi qo'lyozmalar ko'payishi va ilm-fan, adabiyotning rivojlanishiga ijobiy ta'sir ko'rsatgan (D variant to'g'ri).",
+    "question": "751-yildagi Talas jangida arab qo‘shini Tan sulolasi qo‘shinini mag‘lub etgach, Xitoy asirlaridan qog‘oz yasash sirini o‘rgandilar. Bu texnologiya O‘rta Osiyo madaniyatiga qanday ijobiy ta'sir ko‘rsatdi?",
+    "answer": "A"
+  },
+  {
+    "id": 973,
+    "sabab": "Somoniyalar maqbarasi Buxoro shahrida joylashgan, Samarqandda emas. Shuningdek, Minorai Kalon ham Buxoroda bo'lib, berilgan variantlarda 1 va 4-tartib raqamli obidalar bir xil shaharga (Buxoro) mos kelmaydi.",
+    "question": "Quyidagi tarixiy obidalarni ular bilan bog'liq shaharlar bilan moslashtiring:\n1. Minorai Kalon\n2. Ko'yxilroz\n3. Shahriston va Ark\n4. Mausoleum of Samanids\nA. Buxoro\nB. Samarqand\nC. Urganch (Gurganj)\nD. Termiz",
+    "answer": "A"
+  },
+  {
+    "id": 980,
+    "sabab": "Belgilangan javob (D) noto'g'ri. To'g'ri xronologik tartib: Turk xoqonligi (VI asr) -> Arablar istilosi (VII-VIII asr) -> Qoraxoniylar islomni qabul qilishi (960 y.) -> Somoniyollar qulashi (999 y.). To'g'ri javob B (2, 3, 4, 1).",
+    "question": "Quyidagi tarixiy voqealarni xronologik ketma-ketlikda (qadimgi davrdan boshlab) joylashtiring:\n1. Somoniyollar davlatining qulashi\n2. Turk xoqonligining tashkil topishi\n3. O'rta Osiyoning arablar tomonidan istilo qilinishi\n4. Qoraxoniylar davlatida islom dinini qabul qilinishi",
+    "answer": "D"
+  },
+  {
+    "id": 997,
+    "sabab": "Savol matnida Temuriylar sulolasi davri 'V asr' deb noto'g'ri ko'rsatilgan (XIV asr bo'lishi kerak).",
+    "question": "O‘rta asr hukmdorlarini ularning tarixiy yutuqlari bilan moslashtiring:\n1. Mahmud G‘aznaviy\n2. Ismoil Somoniy\n3. Temuriylar sulolasi (keyinchalik, V asr oxiri)\n4. Chingizxon\nA. Somoniylar davlatini mustaqillikka erishtirdi\nB. Hindistonga yurishlar qilib, G‘aznaviylar imperiyasini kengaytirdi\nC. Yer yuzining katta qismini egallagan ulkan imperiyaga asos soldi\nD. Samarqandni poytaxt qilib, markazlashgan davlat tizimini yaratdi",
+    "answer": "D"
+  },
+  {
+    "id": 1017,
+    "sabab": "Tarixiy xatolar mavjud: Somoniylar davlati Nasr ibn Ahmad vafot etgandan (943 y.) keyin ham yarim asr davom etgan, davlat ag‘darilishi 999 yilga to‘g‘ri keladi. Islom dinini davlat dini qilib e’lon qilgan Satuq Bughra Xon bo‘lib, Mas’ud Qoraxoni bilan adashtirilgan.",
+    "question": "Tarixiy shaxslarni ular faoliyatiga oid xronologik voqea yoki hodisa bilan moslashtiring:\n1. Qutayba ibn Muslim\n2. Nasr ibn Ahmad\n3. Il-Arslon\n4. Mas’ud Qoraxoni\nA. Somoniylar davlatining oqsuyuqlar tomonidan ag‘darilishi\nB. Xorazmshohlar davlatining qisqa muddatga gullab-yashnashi\nC. Arablar tomonidan Buxoroning bosib olinishi\nD. Qoraxoniylar davlatida islom dinini davlat dini qilib e’lon qilinishi",
+    "answer": "D"
+  },
+  {
+    "id": 1043,
+    "sabab": "Belgilangan D javobi xronologik jihatdan noto'g'ri. To'qtamish mag'lubiyati (1391-95) Amir Temur hokimiyatga kelgandan (1370) keyin bo'lgan. To'g'ri tartib: 2, 1, 4, 3 (B varianti).",
+    "question": "XIV–XV asrlarda O‘rta Osiyo tarixida yuz bergan quyidagi voqealarni xronologik tartibda (qadimgi davrdan keyingiga) joylashtiring:\n1. Amir Temurning hokimiyat tepasiga kelishi\n2. Mo‘g‘ullarning Movarounnahrga bostirib kirishi\n3. Amir Temurning vafoti va davlatning inqirozga uchrashi boshlanishi\n4. Oltin O‘rda qo‘shinining To‘qtamish boshchiligida tor-mor etilishi",
+    "answer": "D"
+  },
+  {
+    "id": 1060,
+    "sabab": "Hammurapi qonunlariga ko'ra, 'avilum'ning ko'zini o'chirgan 'avilum'ga nisbatan 'ko'z uchun ko'z' (talon qonuni) qo'llanadi (C variant). 1 mina kumush jarimasi 'mushkenum' uchun belgilangan. Belgilangan javob (A) noto'g'ri.",
+    "question": "Qadimgi Bobil davlatida Hammurapi qonunlari asosida jamiyat tabaqalanadi. Aga bir \"avilum\" (erkin aholi) boshqa bir \"avilum\"ning ko'zini o'chirib yuborsa, qonunga ko'ra unga qanday jarima belgilanadi?",
+    "answer": "A"
+  },
+  {
+    "id": 1154,
+    "sabab": "Savolda faktik xato bor: Abu Nasr Farobiy 'Tarixi Tabari' asari muallifi emas (bu asar Muhammad at-Tabariyga tegishli).",
+    "question": "Olim va mutafakkirlarni ularning asarlari bilan moslashtiring:\n1. Abu Nasr Farobiy\n2. Abu Ali ibn Sino\n3. Mahmud Qoshg‘ariy\nA. «Devonu lug‘otit-turk»\nB. «Al-Qonun fit-tib»\nC. «Tarixi Tabari»",
+    "answer": "D"
+  },
+  {
+    "id": 1174,
+    "sabab": "Belgilangan javob (B) noto'g'ri. Izohda C variant (uzoq masofadan otuvchi kamonchilar) to'g'ri deb tushuntirilgan va tarixiy haqiqat ham shuni tasdiqlaydi.",
+    "question": "Yuz yillik urush davomida Kressi va Poitye janglarida ingliz qo'shinlari fransuz og'ir qo'shinlariga qarshi qaysi yangi taktikadan foydalanib g'alaba qozondi?",
+    "answer": "B"
+  },
+  {
+    "id": 1177,
+    "sabab": "Belgilangan javob (D) noto'g'ri. To'g'ri javob (B) — konservativ diniy kuchlar va amaldorlar. Izoh ham B variantiga mos keladi.",
+    "question": "Mirzo Ulug'bekning Samarqanddagi faoliyati davomida tuzgan 'Ziji Jadidi Sultani' astronomik jadvali uzoq vaqtgacha shuhrat qozondi. Biroq uning ilmiy ishlari qaysi ijtimoiy kuchlar qarshiligiga uchrab, fojiali yakunlandi?",
+    "answer": "D"
+  },
+  {
+    "id": 1178,
+    "sabab": "Belgilangan javob (D) noto'g'ri. Payza egasiga erkin harakatlanish va ta'minot (variant A) huquqini berar edi. Izoh ham A variantini tasdiqlaydi.",
+    "question": "Mo'g'ullar imperiyasida saroyda xizmat qilgan yevropalik sayohatchilarning xotirasida 'oltin belgi' (payza) haqida ko'p zikr qilinadi. Ushbu belgi egasiga qanday imkoniyatni berardi?",
+    "answer": "D"
+  },
+  {
+    "id": 1187,
+    "sabab": "Ahmad Yugnakiy 'Qutadgu bilig' asari muallifi emas (u 'Hibat ul-haqoyiq' muallifi), 'Qutadgu bilig' Yusuf Xos Hojib asaridir. Savolda faktik xato mavjud.",
+    "question": "Olim va mutafakkirlarni ularning asari yoki faoliyat yo‘nalishi bilan moslashtiring:\n1. Abu Nasr Farobi\n2. Abu Rayhon Beruniy\n3. Mahmud Kashgariy\n4. Ahmad Yugnakiy\nA. \"Qutadgu bilig\" asari muallifi (boshqa variant sifatida berilsa)\nB. \"Devonu lug‘otit-turk\" tuzumchisi\nC. \"Hindiston tarixi\" (\"Tahqiq ma li-l-Hind\") asari muallifi\nD. \"Ikkinchi o‘qituvchi\" (\"al-Mu'allim as-Sani\") falsafiy asari muallifi",
+    "answer": "B"
+  },
+  {
+    "id": 1196,
+    "sabab": "Hammurabi qonunlariga ko'ra, uy qulab tushib egasi vafot etsa, me'morning o'zi o'lim bilan jazolanadi. Me'morning o'g'li faqat egasining o'g'li vafot etsa jazolanadi. Javob noto'g'ri belgilangan.",
+    "question": "Qadimgi Bobil qonunlariga ko'ra, me'mor qurgan uy egasi qulab tushib, egasi vafot etsa, qonunga muvofiq qanday jarima qo'llanilgan?",
+    "answer": "A"
+  },
+  {
+    "id": 1248,
+    "sabab": "Savolda faktik xato bor: \"Qutadg'u bilig\" asari muallifi Yusuf Xos Hojib bo'lib, u Jaloliddin al-Burniy emas.",
+    "question": "Quyidagi tarixiy shaxslarni ularning faoliyat bilan moslashtiring:\n1. Satuq Bug'ro xon\n2. Bog'ro xon Qoraxon\n3. Ibrohim Tamg'achxon\n4. Jaloliddin al-Burniy (shoir)\nA. Islom dinini qabul qilish va uni davlat dini ekanligini e'lon qilish\nB. Qoraxoniylar davlatini rasmiylashtirish va Buxoroni egallash\nC. Fan va madaniyatni rivojlantirish, Samarqandda ilm markazlarini yaratish\nD. Balasag'un shahrida \"Qutadg'u bilig\" asarini yozish",
+    "answer": "B"
+  },
+  {
+    "id": 1309,
+    "sabab": "Xronologik tartib noto'g'ri belgilangan. Tarixiy ma'lumotlarga ko'ra, Xorazm 712-yilda, Toshkent (Choch) esa 714-yilda bosib olingan. To'g'ri ketma-ketlik: Buxoro/Paykand (2) -> Xorazm (4) -> Toshkent (1) -> Talas jangi (3), ya'ni C varianti to'g'ri bo'lishi kerak edi.",
+    "question": "VIII asrda O‘rta Osiyoni arablar bosib olish jarayonida sodir bo‘lgan voqealarni xronologik tartibda joylashtiring:\n1. Toshkent (Choch) shahrining arablar tomonidan egallanishi\n2. Buxoro va Paykand shaharlari qo‘lga kiritilishi\n3. Talas jangi (Qarluk qabilalari ishtirokida)\n4. Xorazmning arablarga bo‘ysunishi",
+    "answer": "A"
+  },
+  {
+    "id": 1356,
+    "sabab": "Belgilangan javob noto'g'ri. Savol dehqonlarning yeridan ayrilib, bog'liqlikka tushishi natijasida vujudga kelgan qatlamni (serflar) so'rayapti, lekin javob sifatida 'vassallar' ko'rsatilgan. Izohda ham 'serf qatlami shakllangan' deyilgan.",
+    "question": "O‘rta asr Yevropasida dehqonlarning shaxsiy yerlaridan ayrilib, yer egasiga bo‘ysunishi jarayoni natijasida vujudga kelgan ijtimoiy qatlam qaysi nom bilan yuritilgan?",
+    "answer": "D"
+  },
+  {
+    "id": 1357,
+    "sabab": "Belgilangan javob noto'g'ri. 800-yilda imperator toji kiydirilgan shaxs Karl Buyuk (B variant), Xlodvig (D variant) emas. Izoh ham Karl Buyuk haqida.",
+    "question": "800-yilda Rim papasi tomonidan imperator toji kiydirilgan va bu voqea bilan G‘arbiy Yevropada yangi davr — Karolinglar renessansi boshlangan qiroli kim?",
+    "answer": "D"
+  },
+  {
+    "id": 1362,
+    "sabab": "Belgilangan javob noto'g'ri. XIII asr boshlarida Dehli sultonligi tashkil topgan (B varianti), Boburiylar imperiyasi esa XVI asrda vujudga kelgan.",
+    "question": "XIII asr boshlarda Shimoliy Hindistonda musulmon hukmdorlari sulolasi tomonidan tashkil etilgan va Dehli shahrini poytaxt qilib olgan davlat qaysi?",
+    "answer": "A"
+  },
+  {
+    "id": 1363,
+    "sabab": "Belgilangan javob noto'g'ri. Iyeroglifik yozuv, matematika va aniq taqvim tizimini Mayya qabilasi yaratgan (D varianti), Asteklar keyingi davrda (XIV-XVI asr) rivojlangan.",
+    "question": "V–XIII asrlarda Markaziy Amerikada yashagan, iyeroglifik yozuvni, matematikani va aniq taqvim tizimini yaratgan qadimgi hindu qabilasi qaysi sivilizatsiyaga mansub?",
+    "answer": "C"
+  },
+  {
+    "id": 1372,
+    "sabab": "Kalka jangi (1223-yil may) Volga Bulg‘oriyasi yurishi (1223-yil kuz/qish)dan oldin bo‘lib o‘tgan. Belgilangan javobda (C) Volga Bulg‘oriyasi Kalkadan oldin qo‘yilgan, xronologik tartib buzilgan.",
+    "question": "Mo‘g‘ullarning O‘rta Osiyo va Sharqiy Yevropaga qilgan yirik yurishlarini xronologik ketma-ketlikda joylashtiring:\n1. Kalka daryosi bo‘yidagi jang\n2. Xorazmshohlar davlatining bosib olinishi\n3. Volga Bulg‘oriyasi yurishi\n4. Sibiya va Qipchoq dashtlarini egallash",
+    "answer": "C"
+  },
+  {
+    "id": 1386,
+    "sabab": "Paykand 706 yilda, Buxoro shahri esa 709 yilda bosib olingan. Tarixiy xronologiyaga ko'ra Paykand Buxorodan oldin keladi (to'g'ri javob D bo'lishi kerak).",
+    "question": "Qutayba ibn Muslim boshchiligidagi arab qo‘shinlarining O‘rta Osiyoni bosib olish bosqichlarini to‘g‘ri xronologik tartibda joylashtiring:\n1. Merv va Xorazmning istilosi\n2. Buxoroning bosib olinishi\n3. Samarqandga qarshi yurish\n4. Paykand va Sog‘diyaning bosib olinishi",
+    "answer": "A"
+  },
+  {
+    "id": 1391,
+    "sabab": "Savolda tarixiy xato bor: 'Abu ibn Muhammad' degan Somoniy hukmdori mavjud emas (asoschilar Ahmad, Nuh, Yahya va Ilyas ibn Asadlar). Shuningdek, Ahmad ibn Asad asosan Farg'ona va Samarqandda hukmronlik qilgan, Xurosonda emas.",
+    "question": "Somoniylar sulolasi hukmdorlarini ularning faoliyat tafsilotlari bilan moslashtiring:\n1. Ahmad ibn Asad\n2. Ismoil Somoniy\n3. Nasr ibn Ahmad\n4. Abu ibn Muhammad\nA. Movarounnahrdagi amirliklarni birlashtirib, mustaqil davlat barpo etdi\nB. Somoniylar sulolasining asoschisi hisoblanadi, Xurosonda hokimlik qildi\nC. Amirligi davrida madaniyat va ilm-fan yuksak darajada rivojlandi\nD. Farg‘ona vodiysi hokimi bo‘lib, sulola hokimiyatiga asos soldi",
+    "answer": "C"
+  },
+  {
+    "id": 1417,
+    "sabab": "Konstantinopolning qulashi (1453) Atirgullar urushi boshlanishidan (1455) oldin sodir bo'lgan. Ketma-ketlik 4-2-3-1 bo'lishi kerak edi, belgilangan javobda esa 4-2-1-3 keltirilgan.",
+    "question": "Quyidagi voqealarni tarixiy xronologiyasiga ko‘ra tartib bilan joylashtiring:\n1. Angliyada Qizil va Oq atirgullar urushi\n2. Amir Temurning Samarqand taxtiga o‘tirishi\n3. Konstantinopolning qulashi\n4. Mo‘g‘ullar O‘rta Osiyoga yurishi",
+    "answer": "D"
+  },
+  {
+    "id": 1421,
+    "sabab": "Iskandar Maqduniy yurishi (1) Salavkiylar davlati tashkil topishidan (3) oldin bo'lgan. To'g'ri ketma-ketlik 1-3-2-4, belgilangan javob (A) esa 3-1-2-4 ni ko'rsatadi.",
+    "question": "Qadimgi O'rta Osiyoda antik madaniyat elementlarining kirib kelishi va ta'sir ko'rsatish bosqichlarini xronologik tartibda joylashtiring:\n1. Iskandar Maqduniyning yurishi va shaharlarga asos solinishi\n2. O'rta Osiyo hududida Yunon-Baqtriya podsholigining tashkil topishi\n3. Salavkiylar davlatining O'rta Osiyoning janubiy hududlarini bosib olishi\n4. Ellinistik madaniyat elementlarining mahalliy an'analar bilan uyg'unlashuvi",
+    "answer": "A"
+  },
+  {
+    "id": 1568,
+    "sabab": "Xronologik xato: Tokhtamish bilan urush (1391) va Saroy-Berke vayron qilinishi (1395) Hindiston yurishi (1398) dan oldin bo'lgan. To'g'ri tartib: 1, 4, 2, 3.",
+    "question": "Amir Temurning quyidagi harbiy yurishlarini xronologik ketma-ketlikda (vaqt tartibida) joylashtiring:\n1. Tokhtamish bilan urush (Qipchoq dashti)\n2. Hindiston yurishi (Dehli fathi)\n3. Anqara jangi (Usmonlilarga qarshi)\n4. Oltin O‘rda poytaxti Saroy-Berkening vayron qilinishi",
+    "answer": "A"
+  },
+  {
+    "id": 1642,
+    "sabab": "4-element tavsifi 'Chig'atoy ulusi'ga tegishli bo'lsa-da, sarlavhada 'Elxonlar' deb yozilgan, bu tarixiy xatodir.",
+    "question": "XIII asr boshidagi Xorazmshohlar davlati tarixi shaxslarini ularning faoliyati bilan moslashtiring:\n1. Muhammad Xorazmshoh\n2. Jaloliddin Manguberdi\n3. Inonch xonim\n4. Elxonlar davlati hukmdorlari (keyinchalik)\nA. Mo'g'ullarga qarshi shiddatli kurash olib borgan, Hindistonda faoliyat yuritgan\nB. O'zaro ichki nizolar va tashqi tahdidlar tufayli davlatni mustahkamlay olmagan\nC. Xorazmshohlar davlatida ayollar faoliyatiga oid o'rnak\nD. Movarounnahrda mo'g'ul hokimiyatini o'rnatgan (Chig'atoy ulusi)",
+    "answer": "B"
+  },
+  {
+    "id": 1681,
+    "sabab": "Rudakiyga \"Kitob ash-she’r ash-sho’aroyn al-arab\" asari moslashtirilgan, ammo bu asar Ibn Qutaybahga tegishli. Rudakiy she'riy devonlari bilan mashhur.",
+    "question": "Somoniylar davri ilm-fan va madaniyat arboblari bilan ularning asarlarini moslashtiring.\n1. Abu Nasr Farobiy\n2. Abu Rayhon Beruniy\n3. Abu Abdullo Rudakiy\n4. Ahmad Farg‘oniyy\nA. “Al-Mas’ala al-faloniy” asari muallifi, astronomiya sohasida\nB. “Kitob ash-she’r ash-sho’aroyn al-arab” she’riy antologiyasi\nC. “Madina al-falasifa” falsafiy risolasi muallifi\nD. “Qonuni Mas’udiy” astronomik asari muallifi",
+    "answer": "B"
+  },
+  {
+    "id": 1683,
+    "sabab": "Najmiddin Kubro Kubraviya tariqatining asoschisi, Mojaviylik emas. Variantdagi tavsifda faktik xato bor.",
+    "question": "Tarixiy shaxslarni ular faoliyat yuritgan soha bilan moslashtiring.\n1. Burhoniddin Marg‘inoniy\n2. Najmiddin Kubro\n3. Mahmud Az-Zamaxshariy\n4. Jaloliddin Manguberdi\nA. “Al-Hidoya” fiqh asari muallifi\nB. Mojaviylik tariqatining asoschisi\nC. “Al-Kashshof” tafsiri muallifi\nD. Xorazmshohlar davlatining so‘nggi hukmdori",
+    "answer": "A"
+  },
+  {
+    "id": 1774,
+    "sabab": "Xronologik tartib noto'g'ri. Qutayba ibn Muslimning Buxoro va Samarqandni zabt etishi (2) 706-712-yillarda bo'lib o'tgan. Sog'd va turk qabilalarining keng ko'lamli qo'shma qarshiligi (3) esa ayniqsa 720-730-yillarda (Qutayba vafotidan keyin) kuchaygan. To'g'ri tartib: 2, 3, 1, 4.",
+    "question": "VIII asrda Movarounnahrga arab qo'shinlari tomonidan o'tkazilgan yurishlar va voqealarning xronologik tartibini belgilang.\n1. Talas jangi (Xitoyliklar bilan)\n2. Qutayba ibn Muslim boshchiligida Buxoro va Samarqandni zabt etish\n3. Sog'd va Turk qabilalarining qo'shma qarshilik ko'rsatishi\n4. Arablar tomonidan O'rta Osiyoda islom dinining rasmiy e'lon qilinishi",
+    "answer": "D"
+  },
+  {
+    "id": 1786,
+    "sabab": "Izohda tarixiy xato bor: O‘tror voqeasi (1218) urush boshlanishiga sabab bo‘lib, chegaraviy shaharlarga hujumdan oldin sodir bo‘lgan. Izohda esa voqealar tartibi noto‘g‘ri (4, 1) berilgan.",
+    "question": "O‘rta asr Sharq hukmdorlarini ularning tarixiy faoliyati yoki natijasi bilan moslashtiring:\n1. Mahmud G‘aznaviy\n2. Malikshoh\n3. Xorazmshoh Muhammad\n4. Chingizxon\nA. Hindistonga 17 marta yurish qilib, boyliklarni o‘zlashtirdi\nB. Nizomulmulk islohotlari davrida davlat kuchli bosqichga ko‘tarildi\nC. O‘zaro ziddiyatlar va tashqi tahdidlarga qarshi kurasha olmadi\nD. Movarounnahrni istilo qilib, sug‘orish tizimiga qattiq zarba berdi",
+    "answer": "B"
+  },
+  {
+    "id": 1787,
+    "sabab": "Savolda faktik xato: Porox VI asrda emas, IX asrda ixtiro qilingan. Shuningdek, matnda mantiqiy ziddiyat bor (porox o‘zi porox tayyorlashda ishlatilmaydi).",
+    "question": "Mo‘g‘ullarning O‘rta Osiyoga qilgan istilosining boshlang‘ich bosqichlarini xronologik tartibda joylashtiring:\n1. O‘tror voqeasi va Chingizxonning e'lon qilgan urushi\n2. Buxoro va Samarqandning bosib olinishi\n3. Xorazmshoh Jaloliddin Manguberdi bilan Hind daryosi bo‘yidagi jang\n4. Sayram va Banakat shaharlariga hujum",
+    "answer": "A"
+  },
+  {
+    "id": 1802,
+    "sabab": "Ioann III va Vasiliy III ikki xil tarixiy shaxs (otasi va o'g'li), ularni qavs ichida bir xil shaxsdek ko'rsatish faktik xatodir.",
+    "question": "Quyidagi tarixiy shaxslarni ular faoliyat yuritgan davlat yoki sodir bo‘lgan voqea bilan moslashtiring.\n1. Xristofer Kolumb\n2. Ioann III (Vasiliy III)\n3. Ferdinand va Izabella\n4. Mehmet II\nA. Ispaniya qirolligi (Rekonkistaning tugashi)\nB. Usmonli imperiyasi (Konstantinopolning zabt etilishi)\nC. Moskva knyazligi (Markaziy Rossiyaning birlashuvi)\nD. Amerika qit’asining kashf etilishi",
+    "answer": "B"
+  },
+  {
+    "id": 1831,
+    "sabab": "B variantida Baqtriya poytaxti sifatida 'Qoratepa' ko'rsatilgan. Qoratepa poytaxt emas, balki budda ibodatxonasi majmuasidir. Poytaxt Balx (Bactra) bo'lishi kerak edi. Variant matnida nom xatoligi mavjud.",
+    "question": "Qadimgi O'rta Osiyo davlatlarini ularning poytaxtlari bilan moslashtiring:\n1. Baqtriya (Yunon-Baqtriya)\n2. Xorazm\n3. Sug'diana\n4. Parfiya\nA. Marv (Niso ham bo'lishi mumkin, lekin Marv katta shahar)\nB. Qoratepa (Baqtriya poytaxtlari: Bactra/Balx)\nC. Afrosiyob (Samarqand)\nD. Toproqqal'a (Xorazmning qadimiy poytaxtlaridan biri)",
+    "answer": "A"
+  },
+  {
+    "id": 1863,
+    "sabab": "4-voqeada 'Chingizxon qo'shinlarining o'ldirilishi' deyilgan, ammo tarixiy voqea O'trorda savdo karvoni va elchilar o'ldirilishi (O'trod fojiasi) bilan bog'liq, qo'shin emas.",
+    "question": "O'zbekiston hududida sodir bo'lgan quyidagi tarixiy voqealarni xronologik ketma-ketlikda joylashtiring:\n1. Arab qo'shinlari tomonatan Samarqandni egallashi\n2. Turk qo'gonligining tashkil topishi\n3. Somoniylar davlatining mustaqillikka erishishi\n4. Chingizxon qo'shinlarining O'trorda o'ldirilishi",
+    "answer": "A"
+  },
+  {
+    "id": 1902,
+    "sabab": "Savol matnida 'X asr' (10-asr) deb xato ko'rsatilgan, 'Qora o'lim' vabosi XIV asrda (1330-yillarda) sodir bo'lgan. Matndagi xato tufayli talaba noto'g'ri xulosa chiqarishi mumkin.",
+    "question": "Quyidagi tarixiy voqealarni xronologik tartibda joylashtiring:\n1. Yuz yillik urushning boshlanishi\n2. Amir Temurning vafoti\n3. Konstantinopolning qulashi\n4. X asrda O‘rta Osiyoda qora o‘lim vabosi boshlanishi",
+    "answer": "C"
+  },
+  {
+    "id": 1960,
+    "sabab": "Xorazmshoh Muhammad 1220-yil oxirida vafot etgan, Urganch shahri esa 1221-yilda vayron qilingan. Xronologik jihatdan 3-voqea (vafoti) 4-voqeadan (vayron bo'lishi) oldin sodir bo'lgan. To'g'ri javob D (1, 2, 3, 4) bo'lishi kerak edi.",
+    "question": "XIII asr boshlarida O‘rta Osiyoni mo‘g‘ullar istilo qilishi bilan bog‘liq voqealarni xronologik tartibda joylashtiring:\n1. O‘tror voqeasi va savdo karvonining o‘ldirilishi\n2. Buxoro va Samarqand shaharlarining ishg‘ol qilinishi\n3. Xorazmshoh Muhammad vafoti va davlatning inqirozi\n4. Xorazmshohlar davlatining poytaxti Urganchning vayron qilinishi",
+    "answer": "C"
+  },
+  {
+    "id": 1997,
+    "sabab": "Tarixiy voqealar ketma-ketligi noto'g'ri belgilangan. Seleukklar davlati mil.avv. 312-yilda tashkil topgan, Greko-Baqtriya podsholigi esa mil.avv. 250-yilda Seleukklardan ajralib chiqqan. Shuning uchun 2-band (Seleukklar) 4-band (Greko-Baqtriya)dan oldin kelishi kerak edi (1-2-4-3).",
+    "question": "Quyidagi tarixiy voqealarni xronologik ketma-ketlikda (qadimiydan yangisiga) joylashtiring:\n1. Makedoniyalik Iskandarning O‘rta Osiyoga yurishi\n2. Seleukklar davlatining tashkil topishi va inqirozi\n3. Kushon podsholigining gullab-yashnashi\n4. Greko-Baqtriya podsholigining mustaqillikka erashishi",
+    "answer": "B"
+  },
+  {
+    "id": 2015,
+    "sabab": "Savol matnida Konfutsiylik va Buddizm ta'limotlari haqida so'ralgan, ammo belgilangan javob (C) faqat Konfutsiylikka oid mulohazalarni (a, d) o'z ichiga oladi. D varianti (a, b) ikkala ta'limotning ham asosiy g'oyalarini o'z ichiga olgani uchun to'g'riroqdir.",
+    "question": "Qadimgi Xitoyda Konfutsiy ta'limoti va qadimgi Hindistonda buddizm ta'limotiga oid quyidagi mulohazalarni aniqlang.\na) jamiyat tartibi oilaviy va davlat ierarxiyasiga asoslangan\nb) inson hayotidagi azob-uqubatlar manbai istak va ehtiyoslardir\nd) jamiyatning asosiy birliklari \"besh munosabat\" (ota-bola, er-xotin va h.k.)\ne) jamiyat tuzilmasiga qarshi chiqib, \"barcha teng\" degan g'oyani ilgari surgan",
+    "answer": "C"
+  },
+  {
+    "id": 2055,
+    "sabab": "Belgilangan javob noto'g'ri. Savol 'Yasa'ga xos emasligini so'raydi. Yasa'ga ko'ra o'lim jazosi (B variant) mavjud bo'lgan, ammo yerni xususiy mulkka bo'lib berish va sotish (D variant) mo'g'ullarga xos emas edi. To'g'ri javob D bo'lishi kerak.",
+    "question": "Chingizxon tomonidan joriy etilgan 'Buyuk Yasa' qonunlar majmuasining asosiy maqsadi shundaki, u davlatni mustahkamlash, tartibga solish va ko‘chmanchi turmush tarzini qonun bilan tartibga solishga qaratilgan edi. Quyidagi xususiyatlardan qaysi biri 'Yasa'ga xos emas?",
+    "answer": "B"
+  },
+  {
+    "id": 2056,
+    "sabab": "Belgilangan javob noto'g'ri. Xublayxon dinlarga bag'rikeng bo'lib, ularni taqiq qilmagan (B variant unga xos emas). Shuningdek, u Yuan sulolasini tashkil etgan (A variant sodir bo'lgan). Ikkala variant ham noaniq, lekin B variant tarixan aniq noto'g'ri bayon.",
+    "question": "XIII asr oxirida mo‘g‘ul xoni Xublay Xitoyni bosib olib, Yuan sulolasiga asos soldi. Uning amaldagi siyosati mahalliy xitoyliklarga nisbatan nafaqat qattiq bo‘lgan, balki ma'muriy tizimda ham o‘zgarishlar kiritgan. Quyidagi siyosatlardan qaysi biri Xublayxon davriga xos emas?",
+    "answer": "A"
+  },
+  {
+    "id": 2087,
+    "sabab": "Bir nechta variant teng darajada to'g'ri: a, b va d mulohazalari ham tarixan to'g'ri, shuning uchun A (b, d) va C (a, d) javob variantlari ham mos keladi.",
+    "question": "VIII asr boshlarida Movarounnahrni arablar bosib olish jarayonida Qutayba ibn Muslimning amaliy faoliyatiga oid quyidagi mulohazalardan to'g'rilarni aniqlang.\na) Buxoro istilosi chog'ida shahar devorlarini buzib tashlash, qo'zg'olon oldini olish maqsadida.\nb) Samarqanddagi afrosiyob devori va qal'asini saqlab qolish, shahar obro'sini oshirish.\nd) Sug'diya hokimlarining Turk xoqonligi bilan bo'lgan diplomatik aloqalarini uzishga harakat qilish.\ne) Mahalliy aholiga soliqlarni oshirib, islom dinini majburan qabul qildirish.",
+    "answer": "C"
+  },
+  {
+    "id": 2133,
+    "sabab": "Finikiya yozuvi (abjad) 22 ta undosh tovushdan iborat bo'lib, unli tovushlarni to'liq ifodalamagan (ularni yunonlar keyinroq qo'shgan). Variant A va izohda yozuv tuzilishi haqida faktik xato bor.",
+    "question": "Finikiyaliklar qadimgi dunyo madaniyatiga katta hissa qo'shgan bo'lib, ular yaratgan yozuv turi boshqa yozuvlardan qanday asosiy farqqa ega edi?",
+    "answer": "A"
+  },
+  {
+    "id": 2169,
+    "sabab": "Iqta tizimi dehqonlarning xo'jaliklarini mustahkamlashga xizmat qilmagan, aksincha ularning feodal qaramligini oshirishga va holining og'irlashishiga olib kelgan. Shuning uchun 'd' mulohazasi noto'g'ri. To'g'ri javob 'a, e' (C varianti) bo'lishi kerak.",
+    "question": "IX–XI asrlarda Movarounnahrda 'iqta' (yer-ehson) tizimi joriy qilingan bo'lib, bu davrda yerga egalik qilish va undan foydalanish shakli o'zgargan. Quyidagi mulohazalardan to'g'rilarni aniqlang:\na) Iqta yerlari dastlab xizmat evaziga vaqtinchalik berilgan\nb) Iqtadorlar mulki davlat mulki hisoblangan va u meros qilib o'tkazilmagan\nd) Iqta tizimi dehqonlarning yer usti xo'jaliklarini mustahkamlashga xizmat qildi\ne) Bu tizim feudal qaramlikning kuchayishiga va soliq yukining oshishiga olib keldi",
+    "answer": "D"
+  },
+  {
+    "id": 2179,
+    "sabab": "Kakao va yeryong'oq (yer yong'og'i) Amerikadan kelgan ekinlar bo'lib, ular Afrikaga XV asr oxiridan keyin (Kolumb almashinuvi) kirib kelgan. O'rta asrlardagi Gana va Mali davlatlari mavjud bo'lgan davrda bu ekinlar uchramagan (tarixiy anaxronizm).",
+    "question": "G‘arbiy Afrikadagi Gana va Mali davlatlarining qishloq xo‘jaligi iqtisodiyoti rivojlanishiga qaysi ekinlar katta hissa qo‘shgan?",
+    "answer": "D"
+  },
+  {
+    "id": 2227,
+    "sabab": "Savol matnida Muqaddas Sofiya tarixi haqida faktik xato bor: u hech qachon budda ibodatxonasi bo'lmagan.",
+    "question": "Salibchilar Sharqqa yurishlari davomida ilk bor budda ibodatxonasiga aylantirilgan, keyin cherkovga, keyin masjidga aylantirilgan va nihoyat muzeyga aylantirilgan \"Muqaddas Sofiya\" ibodatxonasini ko'rgan bo'lishadi. Bu tarixiy obyekt qaysi shaharda joylashgan va qaysi davlat poytaxti bo'lgan?",
+    "answer": "C"
+  },
+  {
+    "id": 2230,
+    "sabab": "Izohda 'd' varianti to'g'ri ekanligi tasdiqlangan (Quipu faqat savdo uchun emas), ammo belgilangan javob (D) uni o'z ichiga olmaydi. To'g'ri javoblar to'plami (a, b, d) variantlar orasida yo'q.",
+    "question": "Markaziy va Janubiy Amerikada XV asrda mavjud bo‘lgan Inka imperiyasining davlat boshqaruvi va iqtisodiyotiga oid to‘g‘ri mulohazalarni toping.\na) imperiya boshlig‘i «Inka» deb atalib, qonun hujjatlariga ega emas edi\nb) barcha yerlar davlat mulki hisoblanib, dehqonlarga ijaraga berilardi\nd) yozuv tizimi (knotlar — quipu) faqat savdo hisob-kitoblari uchun ishlatilmagan\ne) jamiyatda qullar va oddiy fuqarolar o‘rtasida keskin ijtimoiy farq bo‘lmagan",
+    "answer": "D"
+  },
+  {
+    "id": 2301,
+    "sabab": "Savol matnida 1206-yilgi qurultoy Qoraqurumda bo'lgani aytilgan, ammo tarixiy manbalarga ko'ra u Onon daryosi bo'yida o'tkazilgan. Shuningdek, C variantida 1206-yilda allaqachon tugagan (907 y.) 'Tam sulolasi' keltirilgan.",
+    "question": "1206-yilda Qoraqurumda bo'lib o'tgan qurultoyda mo'g'ul zodagonlari Temuchinni 'Chingizxon' deb e'lon qilib, ulkan davlat boshlig'i etib sayladilar. Bu voqea qaysi tarixiy jarayonning boshlanishi bo'ldi?",
+    "answer": "D"
+  },
+  {
+    "id": 2392,
+    "sabab": "O‘rta Osiyoda islom dinining davlat dini sifatida rasman qabul qilinishi (Qoraxoniylar davri) X asrga to‘g‘ri keladi. VIII asrda arablar bosqinchiligi va islomning kirib kelishi davri bo‘lgan, rasman qabul qilinish jarayoni emas.",
+    "question": "O‘rta Osiyoda islom dinining davlat dini sifatida rasman qabul qilinishi qaysi asrda sodir bo‘lgan?",
+    "answer": "C"
+  },
+  {
+    "id": 2394,
+    "sabab": "Hammurabi qonunlariga ko‘ra, uy egasi vafot etsa me‘mor o‘zi o‘ldiriladi (229-maddda). Agar eganing o‘g‘li vafot etsa, me‘morning o‘g‘li o‘ldiriladi (230-maddda). Savolda uy egasi vafot etgani aytilgan, lekin javob va izohda boshqa holat (o‘g‘li o‘lgandagi qoida) keltirilgan.",
+    "question": "Qadimgi Bobil qonunlarida me'mor tomonidan qurilgan uy egasiga oqib tushib, egasi vafot etsa, me'morning javobgarligi qanday belgilab qo'yilgan bo'lar edi?",
+    "answer": "C"
+  },
+  {
+    "id": 2486,
+    "sabab": "1220-yilda mo'g'ullar tomonidan 'to'plar' (artilleriya) ishlatilishi tarixiy jihatdan noto'g'ri (artilleriya keyinroq paydo bo'lgan). Shuningdek, Xo'jand qamalida asosiy usul daryo oqimini o'zgartirish (to'siq qurish) bo'lgan, bu B variantiga mos keladi.",
+    "question": "1220-yilda Xo'jand yaqinidagi O'qrot jangida mo'g'ullar qarshilik ko'rsatgan shahar mudofaa chizig'ini yorib o'tish uchun uslubiy o'zgarish qilishdi. Ular shahar devorlarini vayron qilish uchun qaysi yangi harbiy usuldan foydalanishdi?",
+    "answer": "A"
+  },
+  {
+    "id": 2550,
+    "sabab": "Izoh matni belgilangan javob bilan ziddiyatli (izohda (a) variant ustunlik qilgani aytilgan, javob esa B). Bundan tashqari, izohda A variant iqtisodiy-siyosiy deb noto'g'ri ta'riflangan.",
+    "question": "Papa Urbanning chaqirig‘i bilan boshlangan Salibchilar yurishlari rasman Quddusni ozod qilish uchun o‘tkazildi, ammo uning ijtimoiy-iqtisodiy sabablari ham katta rol o‘ynadi. Quyidagi sabablardan qaysi biri Yevropa zodagonlarini bu yurishga ko‘proq jalb qildi?",
+    "answer": "B"
+  },
+  {
+    "id": 2617,
+    "sabab": "b va e shartlari ham tarixan to'g'ri (O'rta asr tugashi va 53 kun mudofaa). Shunday bo'lsa-da, A (a,b,d) va B (a,d,e) variantlari faqat to'g'ri bayonotlarni o'z ichiga oladi, bu esa bir nechta to'g'ri javob yuzaga kelishiga olib keladi.",
+    "question": "1453-yilda Konstantinopolning qulashi va Usmonli imperiyasining kuchayishi bilan bog'liq quyidagi mulohazalardan to'g'rilarni aniqlang.\na) Mehmet II «Fotih» (G'olib) unvonini oldi.\nb) Bu voqea O'rta asr tarixining tugashini bildiradi.\nd) Vizantiya imperiyasi rasman o'z faoliyatini to'xtatdi.\ne) Shahar mudofaasi 53 kun davom etdi.",
+    "answer": "A"
+  },
+  {
+    "id": 2640,
+    "sabab": "Savol matnida 751-yilda Qoraxoniylar davlati ishtirok etgani aytilgan (tarixiy xato: davlat keyinchalik vujudga kelgan, jangda Abbosiylar va qarluqlar ishtirok etgan). Shuningdek, A variantida qog‘oz ishlab chiqarish sirining 'Sharqqa o‘tishi' noto‘g‘ri ko‘rsatilgan (u G‘arbga — musulmon olamiga va Yevropaga tarqalgan).",
+    "question": "751-yildagi Talas jangida Abbosiylar xalifaligi va Qoraxoniylar qo‘shinlarining Xitoy (Tan sulolasi) qo‘shinlari ustidan qozonilgan g‘alabasi O‘rta Osiyo tarixi uchun qanday asosiy oqibatga olib keldi?",
+    "answer": "A"
+  },
+  {
+    "id": 2655,
+    "sabab": "Savol matnida 'Tuyadagi chavandoz' (tuya) haykalchasi haqida so'ralgan, biroq belgilangan javob (D) va izohda 'ot' xonakilashtirilgani aytilmoqda. Savol mazmuni va javob o'rtasida mantiqiy va faktik ziddiyat bor.",
+    "question": "Arxeologik qazishmalar davomida O‘zbekiston hududidan topilgan “Tuyadagi chavandoz” haykalchasi qadimgi davr aholisining jamiyat hayotidagi qaysi jarayonini bilvosita tasdiqlaydi?",
+    "answer": "D"
+  },
+  {
+    "id": 2661,
+    "sabab": "Tarixiy fakt xato. Qog'oz yasash sirini xitoyliklar emas, balki arablar (musulmonlar) xitoylik asirlardan o'rgangan. Variantda ma'lumot noto'g'ri berilgan.",
+    "question": "751-yili Talas vodiysida Arab xalifaligi va Xitoy (Tan sulolasi) o'rtasida bo'lib o'tgan jang tarixda katta ahamiyatga ega bo'ldi. Bu jangning oqibati sifatida quyidagi jarayonlardan qaysi biri vujudga keldi?",
+    "answer": "A"
+  },
+  {
+    "id": 2780,
+    "sabab": "B variant matnida Zardushtiylik dinining 'hukmron tabaqalarga manfaat keltirmasligi' aytilgan, bu tarixiy jihatdan noto'g'ri (din hukmron tabaqa manfaatini himoya qilgan). Izohda esa 'oddiy xalq uchun og'ir' deyilgan, variant matni va izoh o'rtasida mazmuniy ziddiyat bor.",
+    "question": "VIII asr boshlarida Qutayba ibn Muslim boshchiligidagi arab qo‘shinlari Movarounnahr shaharlarini bosib olish jarayonida aholining qattiq qarshiligiga duch keldi. Biroq, ma'lum vaqtdan so‘ng mahalliy aholi orasida islom dini keng tarqala boshladi. Bu jarayonning tezlashishiga asosiy sabab qaysi omil bo‘lgan?",
+    "answer": "B"
+  },
+  {
+    "id": 2825,
+    "sabab": "a) bandida faktik xato bor: Angliya qiroli Fransiya taxtiga da'vo qilgan, savolda esa aksincha yozilgan.",
+    "question": "Yuz yillik urushning (1337–1453) Yevropa tarixidagi o‘rniga oid quyidagi mulohazalarni aniqlang.\na) Fransiya qiroli Angliya qiroli bo‘lish huquqiga ega edi\nb) urushning birinchi bosqichida inglizlar katta muvaffaqiyatga erishdilar\nd) urush natijasida Fransiya mustaqilligini saqlab qoldi\ne) urushdan so‘ng Angliya Fransiyadagi barcha mulklarini saqlab qoldi",
+    "answer": "C"
+  },
+  {
+    "id": 2853,
+    "sabab": "Savol matnida keltirilgan 'hayvonlarni qo'ylashgan' va 'tosh yo'llar qurganlar' degan belgilar Inklar (C) sivilizatsiyasiga xos bo'lib, Asteklar (A) da chorva mollarining yo'qligi va keng ko'lamli tosh yo'llar tarmog'i bo'lmagan. Belgilangan javob faktik xatolarga ega.",
+    "question": "Tarixchi o'z tadqiqotida shunday sivilizatsiyani tasvirlab berdi: 'Ular temirni bilishmagan, hayvonlarni qo'ylashgan, lekin paxta yetishtirishda ustun edilar. Qurilishda piramidasimon zikkuratlar va tosh yo'llar qurganlar. Quyosh va o'lim madaniyatiga sig'inishgan'. U qaysi sivilizatsiya haqida gapirayapti?",
+    "answer": "A"
+  },
+  {
+    "id": 2933,
+    "sabab": "Hamurabi qonunlariga ko'ra, uy qulab egasi vafot etsa, me'morning o'zi o'lim jazosiga hukm qilinadi. Me'morning o'g'li o'ldirilishi esa faqat uy egasining o'g'li vafot etgan taqdirda (230-moddada) ko'zda tutilgan.",
+    "question": "Hamurabi qonunlariga ko'ra, me'mor tomonidan qurilgan uy og'irlik ta'sirida qulab, u yerdaning mulk egasi vafot etsa, me'mor nima jazoga tortiladi?",
+    "answer": "A"
+  },
+  {
+    "id": 2964,
+    "sabab": "B variantida tarixiy faktga zid xato bor: Hannibal Rim hududiga 'ikkinchi marta' emas, balki 'Ikkinchi Pun urushi davomida' yurish qilgan. Matndagi xato tufayli variant noto'g'ri ko'rinishda.",
+    "question": "Rim va Kartago o'rtasidagi Pun urushlari (miloddan avvalgi III–II asrlar) haqidagi quyidagi mulohazalardan to'g'rilarni aniqlang:\na) Birinchi Pun urushi asosan Sitsiliya oroli nazorati uchun kurashgan bo'lib, dengizda o'tgan.\nb) Hannibal Alp tog'larini bosib o'tib, Rim hududiga ikkinchi marta yurish qilgan.\nd) Uchinchi Pun urushida Rim shahri vayron qilingan va Kartago mustamlaka qilingan.\ne) Pun urushlari natijasida Rim G'arbiy O'rta dengizning to'liq egasiga aylanmagan.",
+    "answer": "D"
+  }
+]

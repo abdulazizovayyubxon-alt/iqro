@@ -1,0 +1,788 @@
+[
+  {
+    "id": 14,
+    "sabab": "\"She'r va qo'shiqlar\" birikma bo'lmaydi, \"va\" bog'lovchisi orqali tuzilgan so'z birikmalari ajratib yoziladi. To'g'ri javob D varianti bo'lishi kerak.",
+    "question": "Quyidagi gaplarda qo'shma (birikib) yozilgan so'zlarning imlosi bo'yicha to'g'ri tushuntirishni aniqlang: “O‘zbekiston Respublikasi Mustaqilligi kuni munosabati bilan tashkil etilgan kechada o‘quvchilar she’r va qo‘shiqlar bilan chiqish qilishdi.”",
+    "answer": "A"
+  },
+  {
+    "id": 15,
+    "sabab": "\"Qaytardim\" so'zida \"chet\" qo'shimchasi yo'q (qo'shimcha \"-tar\"), shuningdek 'd' varianti ham to'g'ri. To'g'ri javob B (a, d) bo'lishi kerak.",
+    "question": "“Kitobni o‘qib chiqqanimdan keyin kutubxonaga qaytardim” gapidagi fonetik o‘zgarishlarga oid to‘g‘ri mulohazalarni toping.\na) “o‘qib” so‘zida unli tovush tushishi sodir bo‘lgan\nb) “chet” qo‘shimchasi qo‘shilganda “qaytardim” so‘zi yasalgan\nd) “kitob” so‘zida asosidagi tovushlar o‘zgarmasdan saqlanib qolgan\ne) “chiquvchi” fe‘lidan davr fe‘li yasalganda “chi” qo‘shimchasi ortgan",
+    "answer": "D"
+  },
+  {
+    "id": 17,
+    "sabab": "2-gapda vergul 'to‘ldiruvchi qismdan oldin' sababi bilan qo‘yilmaydi, chunki 'imtihon' so‘zi to‘ldiruvchi emas, egadir. Vergul kirish so‘z birikmasidan keyin qo‘yilgan.",
+    "question": "Gapdagi tinish belgilarining qo‘llanish sabablarini moslashtiring:\n1. Bahor kelganda tabiat qayta jonlandi.\n2. O‘qituvchining aytishicha, imtihon qiyin bo‘ladi.\n3. Odamlar, qushlar, hayvonlar — hammasi quyoshdan hayratda edi.\nA. O‘zgalashtiruvchi so‘zdan keyin\nB. Keskin o‘tishni bildirish uchun\nC. So‘z o‘rtasiga, bog‘lanishni bildirish uchun\nD. To‘ldiruvchi qismdan oldin",
+    "answer": "B"
+  },
+  {
+    "id": 18,
+    "sabab": "(b) va (e) gaplari imlo qoidalariga ko'ra to'g'ri tuzilgan, ammo ular noto'g'ri deb topilgan. (b) da to'g'ridan-to'g'ri nutq uchun tire, (e) da umumlashtiruvchi so'z oldidan tire qo'yish qoidalari buzilmagan.",
+    "question": "Quyidagi gaplardagi tinish belgilari qo‘llanishiga doir to‘g‘ri mulohazalarni aniqlang.\na) Biz shunday fikrga keldik: ishni tez boshlash kerak.\nb) Qachon kelasiz? — deb so‘radi u.\nd) Yomg‘ir yog‘di... hamma uylarga sakrab chiqdi.\ne) Kitob, daftar, ruchka — hammasini tayyorlab qo‘ydim.",
+    "answer": "D"
+  },
+  {
+    "id": 19,
+    "sabab": "Belgilangan javob (C) 'vergul va chiziqcha'ni taklif qilsa, izohda 'vergul va vergul' deyilgan. Qavs o'rniga asosan vergul qo'yiladi, chiziqcha emas. Javob varianti, izoh va grammatik qoida o'rtasida ziddiyat bor.",
+    "question": "“Qishloq maktabi (u yerda 20 yil ishlaganman) hali ham xotiramda” gapidagi qavs ichidagi izohni tinish belgilariisiz gapga kiritilsa, qaysi o‘zgarish ro‘y beradi?",
+    "answer": "C"
+  },
+  {
+    "id": 20,
+    "sabab": "Belgilangan javob noto'g'ri. Bir xil ma'noni ifodalovchi so'zlar (boshlaydi - kirishadi) o'zaro almashtirilganda leksik ma’nodoshlik ro'y beradi. Morfologik ma’nodoshlik bir grammatik ma'noni turli shakllarda (masalan, zamon shakllari) ifodalashdir.",
+    "question": "Matnda bir xil tushunchani ifodalash uchun “boshlaydi” fe‘lining o‘rniga unga ma’nodosh “kirishadi” fe‘lini qo‘llash orqali takrordan qochinildi. Bu qaysi darajadagi ma’nodoshlik misolidir?",
+    "answer": "A"
+  },
+  {
+    "id": 22,
+    "sabab": "Savolda bir nechta variant (A, C va D) o'zbek tilining grammatik me'yorlariga to'liq mos keladi, ya'ni bir nechta to'g'ri javob mavjud.",
+    "question": "Quyidagi gaplarning qaysi biri o‘zbek adabiy tili morfologik me’yorlariga to‘liq mos keladi?",
+    "answer": "D"
+  },
+  {
+    "id": 28,
+    "sabab": "Variant matnida mantiqiy ziddiyat bor (\"Yo‘q, keladi\"). Shuningdek, izohda keltirilgan \"-gachi\" affiksi o‘zbek tilining me’yorlariga mos kelmaydi (\"-gich\" yoki \"-gunchi\" bilan adashtirilgan), \"suzgichi\" so‘zi noto‘g‘ri yasalgan.",
+    "question": "O‘quvchi “suzmoq” fe‘lidan “suzgichi” so‘zini yasadi. Bu so‘z o‘zbek tilining so‘z yasalishi me’yorlariga mos keladimi?",
+    "answer": "C"
+  },
+  {
+    "id": 61,
+    "sabab": "Variant B matni \"o'zlashma so'zlar birikmasi\" (masalan, Amudaryo) qoidasiga ishora qiladi, ammo \"Samarqand shahri\" iborasi geografik nom va umumiy ot birikmasi bo'lib, qo'shma so'z emas. Izohda geografik nomlar qoidasi berilgan, variant matni esa boshqa grammatik hodidaga tegishli.",
+    "question": "O'qituvchi 6-sinf o'quvchisiga qo'lda yozilgan matnni tahlil qilib, quyidagi gapdagi xatoni topishni topshirdi: «Samarqand shahrida Amir Temur davriga oid ko'plab tarixiy obidalar saqlanib qolgan.» O'quvchi imlo xatosi qilgan so'z qaysi qoidaga asoslangan holda to'g'ri yozilishi kerak?",
+    "answer": "B"
+  },
+  {
+    "id": 63,
+    "sabab": "Savol \"assimilyatsiya\" (o'xshashlik) jarayoni so'ralgan, belgilangan javob (A) esa \"unli tovush tushishi\" haqida. Javob savolning mazmuniga mos kelmaydi. Shuningdek, \"yoz\" so'zida ham \"yaz\" ildizidagi o'zgarish (unli tushishi) mavjudligi sababli izohdagi \"jarayon yo'q\" degan fikr xato.",
+    "question": "O'qituvchi o'quvchilarga «yoz» va «yozuv» so'zlaridagi tovush o'zgarishlarini tushuntirib, ularning qaysi birida assimilyatsiya jarayoni sodir bo'lganini so'radi. Quyidagi javoblardan qaysi biri to'g'ri?",
+    "answer": "A"
+  },
+  {
+    "id": 67,
+    "sabab": "Belgilangan javob noto'g'ri. 'Quloq — qulog'im' juftligida unli tovush tushib ketadi (quloq -> qulog'im), 'oyoq — oyoqchi' esa o'zgarishsiz talaffuz qilinadi.",
+    "question": "O'zbek tilida ayrim so'zlar talaffuzda unli tovushlar tushishi natijasida imloda o'zgarishga uchraydi. Quyidagi juftliklardan qaysi birida shunday o'zgarish mavjud?",
+    "answer": "B"
+  },
+  {
+    "id": 147,
+    "sabab": "\"Boshlang'ich\" so'zi prefiks yordamida emas, balki ildizga suffikslar (-lan, -g'ich) qo'shilishi orqali yasalgan. Savolda 4-variant uchun to'g'ri moslama yo'q va izohda \"bosh\" so'zi prefiks deb noto'g'ri ko'rsatilgan.",
+    "question": "So'zlarning morfemik tuzilishini ularning yasalish uslubi bilan moslashtiring:\n1. O'quvchi\n2. Qayta-ishlash\n3. Oq-yarim\n4. Boshlang'ich\nA. Suffix yordamida yasalish\nB. Prefiks va suffix yordamida yasalish\nC. So'zlar qo'shilishidan (qo'shma) yasalish\nD. Prefiks yordamida yasalish",
+    "answer": "D"
+  },
+  {
+    "id": 233,
+    "sabab": "Savol 'badiiy adabiyot ta'rifiga mos keladigan matnni topish'ni so'raydi, ammo berilgan matn ilmiy (fotossintez haqida). Javob (B) matn ilmiy ekanligini tasdiqlaydi, ya'ni u badiiy adabiyotga mos kelmaydi. Savol so'rovi berilgan javob bilan ziddiyatli.",
+    "question": "Quyidagi matnlarning qaysi biri manbada keltirilgan 'badiiy adabiyot' ta'rifiga va uning vazifasiga to'liq mos keladi?\nMatn: 'Yozgi tongda quyosh nurlari tabiatga zarba berib, osmon moviy rangga kiradi. Yer yuzasi quyosh energiyasini yutib, fotossintez jarayonini boshlaydi.'",
+    "answer": "B"
+  },
+  {
+    "id": 248,
+    "sabab": "Savolda berilgan gapda umumlashtiruvchi so‘z (“bular”) ro‘yxatdan keyin kelgani uchun undan keyin ikki nuqta (:) qo‘yilmaydi. Biroq, barcha variantlar va belgilangan javob (B) ikki nuqta qo‘yish (3-qadam)ni o‘z ichiga oladi, bu esa berilgan gap tuzilishiga zid. Shuningdek, 3-2-1-4 tartibi grammatik jihatdan noto‘g‘ri.",
+    "question": "“Kitob, daftar, qalam – bular bizning o‘quv qurollarimiz” gapini tuzishda tinish belgilarini qo‘yish tartibini aniqlang:\n1. Ro‘yxat elementlarini vergul bilan ajratish\n2. Ro‘yxatdan keyin tire qo‘yish\n3. Umumlashtiruvchi so‘zdan keyin ikki nuqta qo‘yish\n4. Gap oxirida nuqta qo‘yish",
+    "answer": "B"
+  },
+  {
+    "id": 275,
+    "sabab": "She'r tahlilida mantiqiy ketma-ketlik: avval matnni mazmunan tushunish (4), keyin janr (2), vazn (1) va badiiy vositalar (3) aniqlanadi. B variantida mazmunni tushunish oxirgi bosqichda qo'yilgan, bu noto'g'ri. To'g'ri javob A (4, 2, 1, 3).",
+    "question": "O'qituvchi o'quvchilarga noma'lum she'r matnini berib, uning badiiy tahlilini qilishni topshirdi. Tahlil bosqichlarini to'g'ri ketma-ketlikda tartiblang:\n1. She'rning vazni (aruzi) va qofiya tizimini aniqlash\n2. Asarning janrini belgilash\n3. She'rdagi badiiy vositalar (tashbih, istiora va h.k.)ni topish\n4. Matnni mazmunan chuqur tushunish va taxlil qilish",
+    "answer": "B"
+  },
+  {
+    "id": 283,
+    "sabab": "Savolda keltirilgan «tushunmoq» dan «tushmoq» hosil bo‘lishi misoli lingvistik jihatdan noto‘g‘ri (bu ikki xil ildiz fe‘l) va berilgan variantlarning hech birida o‘zakdagi tovush tushishi hodisasi kuzatilmaydi.",
+    "question": "O‘quvchi «tushunmoq» fe‘lining asosida «u» tovushining tushib ketishini (tushmoq) kuzatgan. Quyidagi so‘zlarning qaysi birida shunga o‘xshash fonetik o‘zgarish (tovush tushishi) sodir bo‘ladi?",
+    "answer": "D"
+  },
+  {
+    "id": 386,
+    "sabab": "Berilgan matnning birinchi misrasi «o'tmasa», ikkinchisi «o'tkur» so'zi bilan tugaydi. Radif misra oxirida takrorlanadigan so'z bo'lgani uchun, bu misrada radif yo'q. Shunga ko'ra, to'g'ri javob «Radif yo'q, faqat qofiya ishlatilgan» (A) bo'lishi kerak, belgilangan B javobi noto'g'ri.",
+    "question": "Ayniy Navoiy g'azalining quyidagi baytlarida qofiya va radifning qanday qo'llanganini aniqlang:\n«Kecha o'tdi, bu o'tkun o'tkur, jonim o'tkur, o'tmasa,\nO'tkun masra, jonim o'tkur, o'tkun, o'tmasa, o'tkur...»",
+    "answer": "B"
+  },
+  {
+    "id": 393,
+    "sabab": "Jumlada 'dek' qo'shimchasi qo'llanilgani uchun bu Tashbeh (o'xshatish) san'atiga miso bo'lishi kerak. Ijobiy san'ati odatda inkor vositalari orqali (masalan, 'axmoq emas') ifodalanadi, bu yerda esa inkor yo'q.",
+    "question": "«Menga ustozdek bo'lgan o'sha oquvchimga bir barmog'imdek mehr uyg'otadi» gapida qaysi san'at qo'llangan?",
+    "answer": "B"
+  },
+  {
+    "id": 447,
+    "sabab": "Izohda keltirilgan maqol ma'nosi ('so'zga sodiqlik') haqiqiy ma'nosiga ('so'zlashish zarurligi/disretsiyasi') zid bo'lgani uchun javob asosi shubhali. Shuningdek, vaziyatga (va'dani bajarish) B variant ('So‘z — oltin') ham mos keladi.",
+    "question": "Siz o'tgan yili sinfdoshingiz kutubxondan olib qolgan kitobni hali ham qaytarmayapti. Unga bu haqda eslatma o'tkazishingiz va so'zga turishingiz kerak. Quyidagi maqolalardan qaysi biri nutqingizni mazmunli ta'minlash uchun eng mos keladi?",
+    "answer": "C"
+  },
+  {
+    "id": 452,
+    "sabab": "\"li\" qo‘shimchasi o‘zbek tilida asosga qo‘shib yoziladi (masalan, \"gulli\"). Izohda \"paxta\" so‘ziga \"li\" qo‘shilgani noto‘g‘ri ko‘rsatilgan va qo‘shimchani ajratib yozish qoidasi xato berilgan.",
+    "question": "\"Paxta gulli chinni piyola\" iborasida so'z yasalishi qoidalariga ko'ra, qaysi qism qo'shimcha hisoblanadi va u qanday yoziladi?",
+    "answer": "D"
+  },
+  {
+    "id": 455,
+    "sabab": "\"Hadya\" so‘zida aslida ‘g’ tovushi mavjud emas, u o‘zlashma so‘z sifatida o‘z shaklini saqlab qolgan. Izohda ‘g’ ning ‘y’ ga o‘tishi haqida noto‘g‘ri ma'lumot berilgan (masalan keltirilgan \"qog‘oz\" so‘zida ham ‘z’ tovushi bor).",
+    "question": "\"Men piyolani ularga hadya qildim\" gapida \"hadya\" so'zi fonetik o'zgarishga uchragan. Uning imlosi qoida asosida quyidagicha izohlanadi:",
+    "answer": "C"
+  },
+  {
+    "id": 456,
+    "sabab": "\"Madaniy\" so'zida \"-li\" qo'shimchasi yo'q, u \"-iy\" qo'shimchasi orqali yasalgan sifat. Savolda morfologik tahlil bo'yicha faktik xato mavjud.",
+    "question": "\"Madaniy nutq\" va \"madaniyatli inson\" iboralaridagi \"li\" qo'shimchalarining vazifasini farqlang.",
+    "answer": "D"
+  },
+  {
+    "id": 496,
+    "sabab": "\"O'q – o'quvchi\" juftligida ham asos so'z oxiridagi 'q' tovushi tushadi (o'q+uvchi), shuning uchun B va D variantlari ham to'g'ri javob bo'lishi mumkin.",
+    "question": "O'qituvchi o'quvchilarga so'z yasalishida fonetik o'zgarishlar sodir bo'lishini misollar orqali tushuntirmoqda. Quyidagi juftliklarning qaysi birida asos so'z oxiridagi tovush yangi hosila bo'lganda tushib ketgan?",
+    "answer": "D"
+  },
+  {
+    "id": 501,
+    "sabab": "Morfemik tahlil odatda 'Ma'no -> Asos -> Qo'shimcha -> Turi' tartibida (2-4-1-3) o'qitiladi. C variantida (2-1-4-3) qo'shimchani asosni topmasdan turib ajratish talab qilinadi, bu pedagogik jihatdan noto'g'ri tartib hisoblanadi.",
+    "question": "O'qituvchi o'quvchilarga \"Vatandosh\" so'zining morfemik tarkibini tahlil qilishni topshirdi. To'g'ri tahlil ketma-ketligini belgilang:\n1. Qo'shimchani ajratib olish\n2. So'z ma'nosini aniqlash\n3. So'z yasovchi qo'shimchani aniqlash\n4. So'zning asosini topish",
+    "answer": "C"
+  },
+  {
+    "id": 504,
+    "sabab": "D variantidagi 'Borib' va 'Kelib' so'zlari ma'nodosh emas, balki qarama-qarshi (antanim) ma'nolarga ega. Shuningdek, izohda C qatoridagi fe'llar 'sifat' deb xato tavsiflangan.",
+    "question": "Matnda ma’nodoshlik faqat so‘zlar doirasida emas, balki morfologik birliklar doirasida ham keng tarqalgani ta'kidlangan. Quyidagi qatorlarning qaysi biri morfologik ma’nodoshlarga misol bo'la oladi?",
+    "answer": "D"
+  },
+  {
+    "id": 516,
+    "sabab": "Faktik xato: Og'zaki ijod (folklor) badiiy adabiyotning boshlang'ich davri hisoblanadi, u badiiy adabiyotdan keyin emas, balki undan oldin vujudga kelgan. Izohdagi 'Avval badiiy adabiyot paydo bo'ladi...' degan fikr noto'g'ri.",
+    "question": "Darslikdagi tushunchalarga ko'ra, adabiyotning paydo bo'lishi va turlarga bo'linishidagi mantiqiy tartibni tiklang:\n1. Badiiy adabiyotning paydo bo'lishi\n2. Og'zaki ijod (folklor)ning vujudga kelishi\n3. Yaratilish maqsadi (kuylash, ko'rsatish, o'qish) va ifoda vositalariga qarab turlarga (lirik, epik, dramatik) bo'linishi\n4. Yozma adabiyotning rivojlanishi",
+    "answer": "C"
+  },
+  {
+    "id": 538,
+    "sabab": "Savol matnida fe'l 'beradi' (birlik) ko'rinishida berilgan, ammo 'a' varianti va izohda kesimning ko'plikda kelishi haqida gap boriladi ('beradilar' bo'lishi kerak edi). Matn va javob orasida ziddiyat mavjud.",
+    "question": "\"Baliqlar chashma suvini tozalashga yordam beradi\" misolida kuzatilayotgan grammatik hodisa haqidagi to'g'ri mulohazalarni aniqlang.\na) Bu yerda kesim ko'plik qo'shimchasini olgan.\nb) Ega shaxs bo'lgani uchun kesim ko'plikda kelgan to'g'ri.\nd) Bu hodisa badiiy adabiyotda estetik maqsadda me'yordan chekinishdir.\ne) Har qanday matnda shunday qo'llash mumkin.",
+    "answer": "D"
+  },
+  {
+    "id": 547,
+    "sabab": "Izohda obrazlilik vositasi mubolag'a deb noto'g'ri tushuntirilgan. Aslida misrada mubolag'a (o'tkirib yuborish) yo'q, shuning uchun 'd' varianti ham to'g'ri bo'lishi mumkin edi. Javob variantlari va izohda ziddiyat mavjud.",
+    "question": "\"Oltin kosa, gulgun sharob ichildi maydon ichinda\" misralari tahliliga oid quyidagi mulohazalardan to'g'rilarni aniqlang:\na) \"Oltin kosa\" iborasi sharobning narxi va qimmatbaho ekanini anglatadi\nb) \"Gulgun sharob\" obrazli ifoda bo'lib, maroq va bayram muhitini yaratadi\nd) Bu misralarda mubolag'a vositasi qo'llanilmagan\ne) \"Ichildi maydon ichinda\" ifodasi harakatning kenglik va omadli kechishini bildiradi",
+    "answer": "A"
+  },
+  {
+    "id": 569,
+    "sabab": "Gapda izohlik ma'no emas, balki bog'lanish ma'nosi ifodalangan. Gap boshi kelgan ayrim qism (og'zaki ravishdagi savolga) vergul bilan ajratiladi, tire emas.",
+    "question": "O'qituvchi darsda quyidagi gapni yozib chiqdi: «Vatan tuprog'idan bir nishona bormi degan savolga hazratchilar o'z javoblarini bildirishdi». Gapda nafaqat bog'lanish, balki izohlik ma'nosi ham ifodalangan. Shu ma'noga ko'ra, gap ikki qismga bo'lingan bo'lsa, qaysi tinish belgisi qo'yilishi kerak?",
+    "answer": "D"
+  },
+  {
+    "id": 571,
+    "sabab": "a) variantida o'zbek imlosi tarixiy tamoyilga asoslangani aytilgan, bu faktik xato (asosiy tamoyil morfologik va fonetik). Shuningdek, e) varianti ham to'g'ri bo'lgani sababli B va C variantlari teng darajada to'g'ri bo'lib qoladi.",
+    "question": "O'zbek tilidagi fonetik o'zgarishlar va imlo qoidalari bilan bog'liq quyidagi mulohazalardan to'g'rilarni aniqlang.\na) Tovushlar talaffuzda o'zgarishi mumkin, ammo imloda istoriyat asosida saqlanib qoladi\nb) Tovush ortishi faqat so'z boshida sodir bo'ladi\nd) Suffixlar yozilishida o'zgarishsiz qo'shimcha tamoyili asosiy o'rinda turadi\ne) «Kitob» so'zida talaffuzda [k] tovushi, imloda esa «k» harfi qo'yiladi",
+    "answer": "C"
+  },
+  {
+    "id": 613,
+    "sabab": "Izohda 'olam - dildor' so'zlaridagi 'a' va 'o' unlilari mos keladi deyilgan, ammo ular fonetik jihatdan farqli qofiyalanmaydi. Shuningdek, aruzda misralar tugaguncha davom etadigan ritmik birlik 'bahr' hisoblanadi, 'rukn' emas.",
+    "question": "Aruz bahrida she'r misralari tugaguncha keladigan ritmik birlikma nima deyiladi va quyidagi qofiyalardan qaysi biri 'sodda' qofiyaga misol bo'la oladi: 'olam - dildor'?",
+    "answer": "D"
+  },
+  {
+    "id": 614,
+    "sabab": "Belgilangan javob (D) noto'g'ri. Izohda badiiy obraz haqiqatni 'nusxa ko'chirish emas', balki 'badiiy umumlashtirish' (C varianti) ekanligi aytilgan, ammo javob sifatida D belgilangan.",
+    "question": "Darslikda badiiy adabiyot 'olamni obrazli ko'rish va timsollar asosida aks ettirish mahsuli' deb ta'riflanadi. Bu ta'rifga ko'ra, badiiy obrazning asosiy vazifasi nima?",
+    "answer": "D"
+  },
+  {
+    "id": 620,
+    "sabab": "Izohda 'qoplab' fe'li 'qop' ot asosidan yasalgan deyilgan, bu faktik xatodir ('qoplab' 'qopmoq/qoplash' fe'lidan hosil bo'ladi). Lug'aviy (dastlabki) shakl 'qoplash' (A variant) bo'lishi kerak, D variant noto'g'ri asoslangan.",
+    "question": "5-sinf o‘quvchisi yozma ishida ‘Bulutlar osmonni qoplab tursa ham, quyosh nurlari orasidan o‘tib kelardi’ gapini yozdi. O‘qituvchi bu gapdagi ‘qoplab’ fe‘lining asosidagi fonetik o‘zgarishni tushuntirish uchun uning dastlabki shaklini so‘radi. Fe‘lning dastlabki (lug‘aviy) shakli qaysi bo‘lishi mumkin?",
+    "answer": "D"
+  },
+  {
+    "id": 621,
+    "sabab": "B variantida tire qo‘yilish sababi noto‘g‘ri tushuntirilgan (‘fe‘l yoki ot bo‘lmaganda’ degani qoidaga zid, chunki tire ot yoki otlik ma’nodagilar o‘rtasida qo‘yiladi). Shuningdek, izohda kesim (‘ranji g‘urbat...’) noto‘g‘ri ravishda fe‘l deb ko‘rsatilgan, u ot bo‘lakli iborat.",
+    "question": "\"Navoiy fikricha, Vatani tark etmoq – ranji g‘urbat, alamga to‘la ayriliq\" gapidagi tire (—) belgisining qo‘yilish sababini aniqlang.",
+    "answer": "B"
+  },
+  {
+    "id": 623,
+    "sabab": "O‘quvchining xatosi tire (-) belgisini noto‘g‘ri joyda ishlatishidadir (birikib yozilishi kerak edi). Biroq variantlarda xatoni tavsiflovchi to‘g‘ri javob yo‘q: B variantida tire qo‘yilmagan deyilgan (aslida qo‘yilgan), D variantida qo‘shimchalar alohida yozilgan deyilgan (aslida ular qo‘shib yozilgan, xato ildizlar orasidagi tire). Izoh ham noaniq.",
+    "question": "O‘quvchi matnda ‘O‘zbekiston — bu boy-tabiatli, mehnatkash-aholi mamlakat’ degan gapni yozdi. Undagi qo‘shma so‘zlar tarkibidagi qo‘shimchalar (yordamchi so‘zlar) yozilishida qaysi xato kuzatilgan?",
+    "answer": "D"
+  },
+  {
+    "id": 634,
+    "sabab": "Savol matnida noto'g'ri talaffuz misoli sifatida bir xil so'zlar ('ta'lim' so'zini 'ta'lim' kabi) keltirilgan, xato aniq ko'rsatilmagan.",
+    "question": "O'qituvchi darsda o'quvchining nutqida \"ta'lim\" so'zini \"ta'lim\" kabi, \"telefon\" so'zini \"telefon\" kabi noto'g'ri talaffuz qilayotganini payqadi. Bu xato qaysi me’yor buzilishiga misoldir?",
+    "answer": "C"
+  },
+  {
+    "id": 635,
+    "sabab": "Keltirilgan 'Kitoblar stolga qo'yildi' jumlasida kesim ('qo'yildi') birlikda, ammo savol matnida kesimning ko'plikda kelishi baholanmoqda (matn va savol zid).",
+    "question": "\"Kitoblar stolga qo'yildi\" jumlasida kesimning ko'plikda kelishi grammatik me’yor nuqtai nazaridan qanday baholanadi?",
+    "answer": "B"
+  },
+  {
+    "id": 671,
+    "sabab": "Jumla grammatik jihatdan to'g'ri. 'Kechikishdi' fe'lining ko'plik shakli o'tmas fe'llar uchun xato emas (kesim eganing soniga mos keladi). Izohda keltirilgan 'ko'plikdagi -lar qo'shimchasi xarakterli emas' degan qoida o'zbek adabiy tili me'yorlariga zid.",
+    "question": "“Bugun sinfdoshlarimiz darsga kechikishdi” gapida morfologik me’yorlar nuqtai nazaridan xato qilingan qismni aniqlang.",
+    "answer": "D"
+  },
+  {
+    "id": 704,
+    "sabab": "Savolda moslik xato: 'Tor ma'noda badiiy adabiyot' obrazli vositalar (C) bilan, 'Keng ma'noda adabiyot' esa yozma asarlar (B) bilan tavsiflanadi. To'g'ri juftlik (1-C, 2-B) variantlar orasida yo'q. Izoh ham matnga mos kelmaydi.",
+    "question": "Quyidagi adabiyot turlarini ularning xususiyatlari bilan moslashtiring:\n1. Tor ma'noda badiiy adabiyot\n2. Keng ma'noda adabiyot\n3. Ilmiy adabiyot\nA. Og'zaki ijodni ham qamrab oladi\nB. Har qanday yozma asarni o'z ichiga oladi\nC. Obrazli vositalar orqali hissiyotga ta'sir qiladi",
+    "answer": "C"
+  },
+  {
+    "id": 742,
+    "sabab": "Savolda 'kichik birlikdan katta birlikkacha' tartib so'ralgan. Til birliklari ierarxiyasiga (tovush < morfema < so'z < gap) ko'ra, morfemik tahlil leksik tahlildan oldin kelishi kerak. To'g'ri javob A varianti (2,4,5,1,3) bo'lishi kerak edi.",
+    "question": "Matnni to‘liq lingvistik tahlil qilishda o‘rganish obyektlari tartibini belgilang (kichik birlikdan katta birlikkacha):\n1. Morfologik tahlil\n2. Fonetik tahlil\n3. Sintaktik tahlil\n4. Morfemik tahlil\n5. Leksik tahlil",
+    "answer": "C"
+  },
+  {
+    "id": 774,
+    "sabab": "Savol matnida regressiv assimilyatsiya qoidasi noto'g'ri tushuntirilgan ('oldin kelgan' o'rniga 'keyin kelgan' bo'lishi kerak). Shuningdek, izoh matni variantlar bilan mos kelmaydi (A variant 'Yubordim' bo'lsa, izohda 'izboshim' deb keltirilgan).",
+    "question": "O'zbek tilining talaffuz me'yorlariga ko'ra, so'z oxiridagi jarangli undoshlar o'zidan oldin kelgan jarangsiz undosh ta'sirida jarangsizlashadi (masalan: 'kitob' deb emas, 'kitob' deb talaffuz etiladi). Quyidagi so'zlarning qaysi birida ushbu fonetik qoida (regressiv assimilyatsiya) buzilib ko'rsatilgan?",
+    "answer": "C"
+  },
+  {
+    "id": 806,
+    "sabab": "d variantida 'Qiz kelguncha, biz kutib turamiz' gapi murakkablashgan gap deb berilgan, ammo bu gap ikki grammatik asosga ega bo'lgani uchun qo'shma gap (fe'ldosh bog'liq gap) hisoblanadi. Shuning uchun d varianti noto'g'ri, D javobi (a, d, e) ham xato. To'g'ri javob B (a, e) bo'lishi kerak.",
+    "question": "Quyidagi gaplarning sintaktik tahlili haqidagi mulohazalardan to'g'ri bo'lganlarini toping:\na) 'Qiz kitob o'qiyapti' — sodda gap.\nb) 'Qiz o'qiyotgan kitob juda qiziqarli' — qo'shma gap.\nd) 'Qiz kelguncha, biz kutib turamiz' — murakkablashgan gap.\ne) 'Kelgan qiz kitob o'qiyapti' — sodda gap.",
+    "answer": "D"
+  },
+  {
+    "id": 807,
+    "sabab": "Savol shartida so'z 'o'zagini birikma so'zdan olgan' deb talab qilinmoqda, ammo variantlardagi barcha so'zlar (Fikr, Ruhiyatingiz, Sindiradi, Iloji) ildizlari tub so'zlardan (masalan: ruh, ilaj, sin, fikr) tarkib topgan. Hech bir variant birikma so'zdan olingan emas. Savol mantiqiy xatoga ega.",
+    "question": "'Iloji yo'q degan fikr ruhiyatingizni sindiradi' gapidagi so'zlarning morfemik tarkibini tahlil qiling. Qaysi so'z faqat ildiz va qo'shimchalardan iborat emas, balki o'zagini birikma so'zdan olgan?",
+    "answer": "B"
+  },
+  {
+    "id": 824,
+    "sabab": "A variant (a, e) ham to'g'ri mulohazalardan iborat bo'lgani uchun javob aniq emas.",
+    "question": "Xalq og‘zaki ijodi xususiyatlariga oid to‘g‘ri mulohazalarni tanlang.\na) Muallifini aniq belgilab bo‘lmaydi.\nb) Yozma adabiyotdan mustaqil, unga hech qanday ta’sir ko‘rsatmaydi.\nd) Og‘zaki ravishda yaratilib, avloddan-avlodga o‘tadi.\ne) Yozma adabiyot uchun tayanch vazifasini bajaradi.",
+    "answer": "C"
+  },
+  {
+    "id": 873,
+    "sabab": "Belgilangan javob noto'g'ri. Savol adabiyotning uchta asosiy turga xos bo'lmagan ro'yxatni so'raydi. D variantida 'lirik-epik' (aralash janr) keltirilganligi sababli, u asosiy uch turga kirmaydi va javob D bo'lishi kerak edi. B variant esa to'g'ri ro'yxatni (lirik, epik, dramatik) aks ettiradi.",
+    "question": "Badiiy adabiyot ifoda xususiyatiga ko'ra uchta asosiy turga bo'linadi. Quyidagi ro'yxatda qaysi biri adabiy turlariga xos emas?",
+    "answer": "B"
+  },
+  {
+    "id": 884,
+    "sabab": "Izohda voqealar tartibi 2-1-4-3 (B variant) deb izohlangan, ammo belgilangan javob C (2-4-1-3) varianti bilan zid.",
+    "question": "298-mashqdagi matnda tasvirlangan voqealarni voqea rivojlanish tartibiga ko‘ra joylashtiring:\n1. Qahramon darsga kech qoladi.\n2. Qahramon 'a'lo' baholari uchun tuni bilan yig‘ladi.\n3. Qahramon shoshib borayotgan sinfdoshi qizni ko‘radi.\n4. Qahramon yig‘lagudek holatda yugurib ketayotgan bo‘ladi.",
+    "answer": "C"
+  },
+  {
+    "id": 928,
+    "sabab": "\"Kitobim\" shaklida 'b' tovushi 'p' ga o'zgarmaydi, u jarangli holda qoladi. O'zgarish (jaranglilashuv) faqat undan keyin jarangsiz undosh kelganda (masalan, 'kitobda') ro'y beradi.",
+    "question": "\"Kitob\" so'zi \"kitobim\" shaklida o'zgarayotganda qanday fonetik hodisa ro'y beradi?",
+    "answer": "A"
+  },
+  {
+    "id": 1017,
+    "sabab": "C variantida 'yuqori sifatga ega' degan subyektiv baholash (epitet) mavjud, shu sababli u to'liq obyektiv fakt (xabar) bo'la olmaydi.",
+    "question": "Quyidagi jumlalardan qaysi biri obyektiv fakt (xabar) sifatida berilgan, subyektiv baholash yoki o'ziga xos sifatni bildiruvchi epitetlarsiz?",
+    "answer": "C"
+  },
+  {
+    "id": 1018,
+    "sabab": "A (b, e) va C (b, d) variantlaridagi barcha fikrlar to'g'ri, ya'ni bir nechta variant teng darajada to'g'ri.",
+    "question": "53-mashq matniga ko'ra, nutqdagi \"parazit so'zlar\" haqidagi to'g'ri mulohazalarni aniqlang:\na) ular nutqning mazmuniy qurilishi uchun kerakli \"g'ishtcha\" hisoblanadi\nb) ular fikrlar o'rtasidagi tizimli munosabat idrokining yetishmasligidan kelib chiqadi\nd) bu so'zlar ko'proq og'zaki nutqda kuzatiladi\ne) ular nutqning sofligiga xalaqit beradigan keraksiz unsurdur",
+    "answer": "C"
+  },
+  {
+    "id": 1036,
+    "sabab": "Savolda keltirilgan 'o'qimishli' so'zi to'g'ri yasalgan so'z bo'lib, uni noto'g'ri ma'noda ishlatish leksik xatodir (paronimlar). 'Kitobhon' esa fonetik yoki imloviy xatoga yaqin. Ikkala xato ham 'so'z yasalishi me'yorlari' (C)ga kirmaydi. Shuningdek, savolda ikki xil turdagi xato (leksik va fonetik) aralashtirib yuborilgan, bitta javob ularni qamrab olmaydi.",
+    "question": "O'quvchi nutqida 'kitobxona' so'zi o'rniga 'kitobhon', 'o'quvchi' o'rniga 'o'qimishli' ma'nosida yangi, noto'g'ri yasalgan so'zlarni qo'llayapti. Bu xato qaysi me'yor buzilishiga olib keladi?",
+    "answer": "C"
+  },
+  {
+    "id": 1065,
+    "sabab": "Savolda 'o‘zakli so‘z' tushunchasi noto‘g‘ri talqin qilingan. Sifatdosh ('yuqori') va fe'l ('qilindi') ham o‘zakli so‘zlar hisoblanadi, ammo ular javob va izohda asossiz chetlashtirilgan. Shuningdek, 'ega' so‘zi ham hisobga olinmagan. Javob variantlari to‘liq emas.",
+    "question": "«Maktabimizda yuqori sifatga ega smart-class tashkil qilindi» gapida nechta va qanday o‘zakli so‘z ishtirok etgan?",
+    "answer": "B"
+  },
+  {
+    "id": 1069,
+    "sabab": "Variant D dagi 'Kechasi uyg'onib' ifodasi 'tunda uyg'onib' degan ma'noni beradi (noto'g'ri ishlatilgan), 'ertalab kech uyg'onib' bo'lishi kerak edi. Shuningdek, matnda asosiy sabab sifatida 'tun bilan yig'lash' (Variant C) ko'rsatilgan, belgilangan javob va izoh mazmuni bilan ziddiyatli.",
+    "question": "298-mashq matnida o‘quvchi ('Men')ning sinfga kech kelishiga asosiy sabab sifatida qaysi fakt keltirilgan?",
+    "answer": "D"
+  },
+  {
+    "id": 1112,
+    "sabab": "Belgilangan D javobi noto'g'ri. Xalq og'zaki ijodi asarlari muallifi aniq bo'lmaydi (anonim), to'g'ri javob B variantidir.",
+    "question": "Adabiyot darsida o‘qituvchi xalq og‘zaki ijodi namunalarini tahlil qilib, ularning yozma adabiyotdan farqini tushuntirmoqda. O‘quvchilarning e'tiborini og‘zaki ijodning quyidagi xususiyatiga qaratish eng to‘g‘ri bo‘ladi, chunki u bu janrning mohiyatini ochib beradi:",
+    "answer": "D"
+  },
+  {
+    "id": 1135,
+    "sabab": "'Hushtak chalib' ovozlashuvi odatda Said Ahmadning 'Sarob' asari bilan bog'lanadi, S. Anorboyev asarlarida bunday misol keltirilmagan (muallif nomi xato).",
+    "question": "Quyidagi mualliflarning ular asaridagi tovush obrazlari (ovozlashuvlar) bilan mos keluvchi variantini toping:\n1. S. Anorboyev\n2. A. Muqimov\n3. N. Toshpo'latov\nA. Milt-milt (yonib-o'char)\nB. Hushtak chalib\nC. Duv-duv (uchib keldi)",
+    "answer": "B"
+  },
+  {
+    "id": 1147,
+    "sabab": "Matn ma'lumotnoma (informatsion) uslubida yozilgan. Tavsifda badiiy tasvir yoki she'riy unsurlar yo'q. To'g'ri javob 'C' bo'lishi kerak, belgilangan javob 'D' noto'g'ri.",
+    "question": "Quyidagi matn parchasini o'qing: 'Sirdaryo viloyatining hududi 52700 kvadrat kilometrni tashkil etadi. Uning markazi — Guliston shahri. Viloyatda qishloq xo'jaligi, xususan, paxtachilik rivojlangan.' Ushbu matnning asosiy stilistik xususiyatini hisobga olgan holda, unga eng munosib sarlavhani aniqlang.",
+    "answer": "D"
+  },
+  {
+    "id": 1150,
+    "sabab": "Mubolaga (o'tkirish) badiiy vosita sifatida qahramonning jasoratini va kuch-qudratini ko'rsatish (ulug'lash) uchun ishlatiladi. To'g'ri javob 'C' bo'lishi kerak, belgilangan javob 'B' noto'g'ri.",
+    "question": "\"Ravshan\" dostonida Hasanxonning jangga kirish oldidajavharlarining mubolag'ali tasviri berilgan. Masalan, uning qaddi qomatiga, kuch-qudratiga nisbatan haddan tashqari ulug'lashlar ishlatilgan. Badiiy matn tahlili nuqtai nazaridan, mubolag'aning shu joydagi asosiy vazifasi nimada?",
+    "answer": "B"
+  },
+  {
+    "id": 1153,
+    "sabab": "Izohda D variant (o'zbeklik g'ururi) to'g'ri deb asoslangan, ammo belgilangan javob A (manmanlik).",
+    "question": "Doston qahramonining: «Aziz boshing oyog‘imga teng emas...», — degan iqrorida manmanlik tuyg‘usi kuchlimi yoki o‘zbeklik g‘ururi? Ushbu so'zlar matndagi kontekstda qanday talqin etilishi kerak?",
+    "answer": "A"
+  },
+  {
+    "id": 1154,
+    "sabab": "Izohda D variant (ruhiy titrash) to'g'ri deb asoslangan, ammo belgilangan javob C (sovuq).",
+    "question": "Matnda «Ravshanbek eshik oldiga kelib, uzoq vaqt turgandi. Deraza orqali tushayotgan soya uning yuziga tushdi, u birdan titray boshladi», — deyilgan. Matnda ochiq bayon qilinmagan, lekin mazmunan mavjud bo'lgan fikrni aniqlang.",
+    "answer": "C"
+  },
+  {
+    "id": 1156,
+    "sabab": "Belgilangan javob (A) noto'g'ri. Doston yirik hajmli epik asar bo'lib, to'g'ri javob D variantidir.",
+    "question": "Adabiyotshunoslikda «doston» atamasi qanday asarlarni anglatishini aniqlang.",
+    "answer": "A"
+  },
+  {
+    "id": 1180,
+    "sabab": "Izohda (b) variantining to'g'riligi ('tonnada' ko'p gapirish parazit so'zlarga olib keladi) tan olingan, shuning uchun B (b, d) javobi ham to'g'ri bo'lishi mumkin. D javobidagi (a) bandi mazmunan ziddiyatli ('ma'nosiz gramm' degan tushuncha mavjud emas) va noto'g'ri talqin qilingan.",
+    "question": "Abdulla Qahhorning 'so'zni grammlab sotish' haqidagi fikrini 53-mashqdagi 'parazit so'zlar' haqidagi ma'lumotlar bilan bog'lab, quyidagi xulosalardan to'g'rilarni toping.\na) Parazit so'zlar nutqning 'grammidan' (mazmuniy qismlari) ayrilib ketgan qismlaridir.\nb) So'zning 'tonnada' bo'lishi parazit so'zlar ko'payishiga olib keladi.\nd) Nutq sofligi uchun so'zning har bir 'grammi' (birlik) ma'no kasb etishi kerak.\ne) 'Grammda sotish' deganda so'zning imlo jihatidan to'g'ri yozilishi nazarda tutilgan.",
+    "answer": "D"
+  },
+  {
+    "id": 1219,
+    "sabab": "Savolda keltirilgan 'Bog‘lar gullab-yashnadi' misoli berilgan qoidaga (shaxs bo‘lmagan ko‘plikdagi ega uchun kesim ko‘plik qo‘shimchasini olmaydi) to‘liq mos keladi, shuning uchun 'Biroq' bog‘lanishchi va izohdagi 'me’yorlardan chekinish' fikri mantiqiy xatolikka ega.",
+    "question": "Adabiy til grammatik me’yorlariga ko‘ra, ega shaxs bo‘lmasa, u ko‘plik sonda bo‘lsa-da, kesim ko‘plik qo‘shimchasini olmaydi. Biroq, Abdulla Qodiriyning „O‘tgan kunlar“ romanida „Bog‘lar gullab-yashnadi, daraxtlar barglariini to‘kdi“ kabi (shartiy) iboralar uchrab turadi. Bunday hodisani qanday izohlash mumkin?",
+    "answer": "A"
+  },
+  {
+    "id": 1234,
+    "sabab": "Matnning asosiy fikri (g'oyasi) butun matn mazmunini, ya'ni texnologiyalar yordamida tabiatning o'zgaruvchanligiga qarshi kurashishni aks ettirishi kerak. A varianti mazmunan to'liqroq bo'lsa, D varianti faqat birinchi gapni ifodalaydi.",
+    "question": "\"Sun'iy yo'ldoshlar orqali ob-havo ma'lumotlari aniq olinmoqda. Bu ma'lumotlar dehqonchilikda samarali foydalanilmoqda. Shunday bo'lsa ham, ob-havoning o'zgaruvchanligi tabiiy hodisadir.\" Bu matnning asosiy fikri qaysi satrda ifodalangan?",
+    "answer": "D"
+  },
+  {
+    "id": 1244,
+    "sabab": "'O'zbeklashtirdi' so'zi o'zbek tilida to'g'ri yasalgan so'z bo'lib, bu yerda ma'no jihatidan noto'g'ri tanlangan. Bu holat so'z yasalishi (D) emas, balki leksik ma'nodoshlik (C) me'yorlariga oid xatodir.",
+    "question": "O‘quvchi matnda 'U bu ishni o‘zbekcha qildi' o‘rniga 'U bu ishni o‘zbeklashtirdi' deb yozdi. Bu holat qaysi me’yor doirasida tahlil qilinishi kerak?",
+    "answer": "D"
+  },
+  {
+    "id": 1291,
+    "sabab": "Belgilangan javob va izoh darslik matniga zid. S. Anorboyevning 'Tong' asarida qushlar uchishi (A), A. Muqimovning 'Oqshom' asarida lampochkalar (C), N. Toshpo‘latovning 'Bahor' asarida cho‘ponlar hushtagi (B) tasvirlangan. To‘g‘ri javob 1-A, 2-C, 3-B bo‘lishi kerak edi, ammo bu variantlar orasida yo‘q.",
+    "question": "Quyidagi mualliflar nomlarini ular asarlarida keltirilgan badiiy tasvir vositalari (obrazlar) bilan moslashtiring:\n1. S. Anorboyev\n2. A. Muqimov\n3. N. Toshpo‘latov\nA. Qushlarning uchishi va tabiatning uyg‘onishi („Duv-duv uchib keldi qushchalar“)\nB. Cho‘ponlarning hushtak chalishi va haydash ovozi („hinakam cho‘ponlarday hushtak chalib“)\nC. Lampochkalar milt-milt yonib o‘chishi („Lampochkalar milt-milt yonib-o‘char edi“)",
+    "answer": "B"
+  },
+  {
+    "id": 1299,
+    "sabab": "Savol matnida B variantidagi so'zlar (bugdoydon, kuzgi, oqshom) to'g'ri (qo'shib) yozilgan, ammo javob sifatida xato deb belgilangan. Izohda esa ular ajratib yozilganligi aytilgan, bu esa matnga zid.",
+    "question": "O‘zbek tilida qo‘shma so‘zlar va qo‘shma ot yasovchi qo‘shimchalar yordamida yasalgan so‘zlarning imlosida qoida buzilishi ko‘p uchraydi. Quyidagi qatorning qaysi barchasida ajratib yozish qoidasi buzilgan?",
+    "answer": "B"
+  },
+  {
+    "id": 1301,
+    "sabab": "Berilgan tartib (4, 1, 3) natijasida 'O‘qituvchi keldi. va dars boshlandi' ko‘rinishidagi grammatik noto‘g‘ri gap hosil bo‘ladi. Bog‘lovchi oldidan nuqta qo‘yib bo‘lmaydi.",
+    "question": "Quyidagi murakkab gapdagi tinish belgilarini joylashtirish mantiqiy ketma-ketligini aniqlang:\nGap: 'O‘qituvchi keldi va dars boshlandi'\nQadamlar:\n1. 'O‘qituvchi keldi' sodda gap oxiriga nuqta qo‘yish\n2. 'va’ bog‘lovchisi oldidan vergul qo‘yish\n3. 'dars boshlandi’ sodda gap oxiriga nuqta qo‘yish\n4. Bog‘lovchi oldidagi vergulni olib tashlash.",
+    "answer": "B"
+  },
+  {
+    "id": 1302,
+    "sabab": "'Maktab' so‘zida oxiridagi jarangli 'b' tovushi talaffuzda jarangsiz 'p' ga o‘tadi (assimilyatsiya qonuniyatiga ko‘ra). Shuning uchun talaffuz imlaga mos kelmaydi, B javobi xato.",
+    "question": "\"Maktab\" so‘zini talaffuz qilganda tovushlar tarkibi imlosiga mos keladimi? Agar kelmasa, qaysi fonetik hodisa kuzatiladi?",
+    "answer": "B"
+  },
+  {
+    "id": 1351,
+    "sabab": "Morfemik tahlilda '-uv' qo'shimchasi bitta butun sifatida qabul qilinadi, uni '-u-' va '-v-' ga ajratish o'quv dasturiga zid. To'g'ri javob A varianti.",
+    "question": "Quyidagi gapdagi 'o'quvchilarimiz' so'zining morfemik tarkibini to'g'ri tahlil qiluvchi variantni toping: 'O'quvchilarimiz bilimdon bo'lishdi.'",
+    "answer": "D"
+  },
+  {
+    "id": 1356,
+    "sabab": "Sog'liqni saqlash iborasida asosiy so'z 'saqlash' (masdar) bo'lib, u fe'l kabi obyekt boshqaradi ('sog'liqni'). Shuning uchun bu 'Feldan iborat, fe'l boshqaruvidagi so'z birikmalari' (D variant) to'g'riroqdir. C variantdagi izohda asosiy so'z 'ot' deyilishi masdarlarning sintaktik xususiyatiga zid.",
+    "question": "'Sog'liqni saqlash', 'bilim olish', 'yaxshi ko'rish' iboralari sintaktik jihatdan tahlil qilinsa, ular qaysi turdagi so'z birikmalariga misol bo'ladi?",
+    "answer": "C"
+  },
+  {
+    "id": 1357,
+    "sabab": "Izohda '-chi' qo'shimchasining ikkala so'zda ham borligi aytilgan, ammo 'Cho'pon' so'zida '-chi' qo'shimchasi yo'q. 'Cho'pon' va 'Cho'ponchalar' o'rtasida '-chi' va '-lar' qo'shimchalari farqi mavjud.",
+    "question": "'Cho'pon' va 'cho'ponchalar' so'zlari morfemik jihatdan solishtirilganda, ularning qaysi qismi farq qiladi va bu nima haqida ma'lumot beradi?",
+    "answer": "C"
+  },
+  {
+    "id": 1378,
+    "sabab": "Gapda bitta grammatik asos ('Lampochkalar' - ega, 'yonib-o'char edi' - kesim) bo'lgani sababli u 'Sodda gap' hisoblanadi. 'Qo'shma gap' esa kamida ikkita grammatik asosni talab qiladi. Berilgan variantlar orasida to'g'ri javob ('qo'shma tarkibli sodda gap') yo'q, belgilangan javob noto'g'ri.",
+    "question": "\"Lampochkalar milt-milt yonib-o'char edi\" gapida qaysi gramatik hodisa kuzatiladi?",
+    "answer": "B"
+  },
+  {
+    "id": 1387,
+    "sabab": "Izohda savol nutq madaniyatining 'ko'nikma va malaka' (birinchi ma'no) ekanini ta'kidlangan, ammo belgilangan javob (C) 'tilshunoslik bo'limi sifatida o'rganish' (ikkinchi ma'no)ni anglatadi. To'g'ri javob B bo'lishi kerak edi.",
+    "question": "I. Karimovning \"O‘z fikrini mutlaqo mustaqil, ona tilida ravon, go‘zal va lo‘nda ifoda eta olmaydigan mutaxassisni... oqlash ham qiyin\" fikrini tahlil qilsangiz, muallif qaysi \"nutq madaniyati\" tarkibiy qismini ta'kidlab o'tmoqda?",
+    "answer": "C"
+  },
+  {
+    "id": 1389,
+    "sabab": "Izohda faktik xato bor: 'Vatan' so'zi o'zbek imlosiga ko'ra 'doim' katta harf bilan yozilmaydi (faqat ma'nosiga qarab). Shuningdek, A variantidagi 'ma'nodor bo'lgani uchun' degan asoslash ham grammatik jihatdan asossiz.",
+    "question": "S. Mustafoyevning \"Vatan tuprog‘idan tumor yasaymiz, uyimiz to‘riga qadab qo‘yamiz\" gapida imlo va bosh harf qoidalariga muvofiqlikni aniqlang.",
+    "answer": "A"
+  },
+  {
+    "id": 1390,
+    "sabab": "\"A\" variantidagi maqol so‘zga ehtiyotkorlikka oid bo‘lib, mashaqqatli ishni o‘z zimmangizga olish yoki rad etish vaziyatiga to‘g‘ridan-to‘g‘ri mos kelmaydi. \"C\" varianti (\"Bug‘doy so‘zing bo‘lsin\") berilgan va‘da yoki qaror sodiqligini ifodalab, vaziyatga ko‘proq mos keladi.",
+    "question": "Suhbatdoshingiz sizga mashaqqatli ishni o'z zimmangizga olishni maslahat berayotgan bo'lsa, unga qaysi maqolni vaziyatga mos aytib, o'z fikringizni asoslaysiz?",
+    "answer": "A"
+  },
+  {
+    "id": 1391,
+    "sabab": "Savol \"qoidalarga zid\" (xato) yozilgan variantni so‘raydi, ammo belgilangan \"A\" javobi (\"Sariq-bug'doy\") izohda ham to‘g‘ri ekanligi (chiziqcha bilan yozilishi) tasdiqlangan. Savol mantiqi va javob o‘zaro zid.",
+    "question": "Quyidagi birikmalar qaysi variantda qoidalarga zid holda yozilgan?",
+    "answer": "A"
+  },
+  {
+    "id": 1431,
+    "sabab": "Belgilangan javob (B) izohga zid. Izohda 'Samarqand' to'g'ri yozilgani aytilgan, javob esa uni noto'g'ri deb ko'rsatgan. Aslida 'o'zbekistonlik' so'zida xato bor (O'zbekistonlik bo'lishi kerak).",
+    "question": "O'quvchi o'z inshosida 'Samarqand shahrida yashaydigan o'zbekistonlik tabiatshunos olimlarimiz yoshlarga ishonch bildiradi' degan gapni yozgan. Ushbu gapda bosh harf va qo'shimchalardan qaysi biri imlo jihatidan noto'g'ri ishlatilgan?",
+    "answer": "B"
+  },
+  {
+    "id": 1437,
+    "sabab": "Savolda kesimning ko‘plik qo‘shimchasini olishi haqida so‘ralayotgan bo‘lsa-da, keltirilgan misrada (‘Yurt bu kun karvonlar boshinda nordir’) kesim (‘nordir’) birlik shaklda kelgan. Savol matni va misr o‘rtasida mantiqiy ziddiyat bor.",
+    "question": "Quyidagi she’riy misrada grammatik me’yorlardan qaysi maqsadda chingan holda kesim ko‘plik qo‘shimchasini olgani aniqlansin: 'Yurt bu kun karvonlar boshinda nordir, Yurt bu kun Sharq ichra tengsiz ifatlarning poydevori vazifasini bajaradi.'",
+    "answer": "A"
+  },
+  {
+    "id": 1443,
+    "sabab": "Izoh matni belgilangan javob bilan zid. C varianti (1-A, 2-B) mazmunan to'g'ri bo'lsa-da, izohda 'C varianti noto'g'ri' deyilgan.",
+    "question": "Matn turlarini ularning asosiy xususiyatlari bilan moslashtiring:\n1. Ma’lumotnoma matn\n2. Ijodiy-tavsifiy matn\nA. So‘zlovchi axborotni o‘z nuqtayi nazarisiz, xolis bayon qiladi.\nB. Dalillar so‘zlovchining shaxsiy munosabati, nuqtayi nazari asosida ifodalanadi.\nC. Faqat ilmiy hisobotlarda uchraydi.",
+    "answer": "C"
+  },
+  {
+    "id": 1496,
+    "sabab": "Berilgan baytda 1 va 4, 2 va 3 misralar qofiyalashgan (abba sxemasi), bu 'Qavariq qofiya' hisoblanadi. 'O'zaro qofiya' (abab) deb belgilangan javob noto'g'ri.",
+    "question": "Mumtoz she'r tahlili darsida o'qituvchi quyidagi baytni qofiya tizimini aniqlashga berdi:\n\"Keldi, ko'rdim, hammadur g'amga shod olamni,\nYomon, yomon, ko'rdim bu zamona holatni.\nKo'rgali kelur yomon bu zamona holatni,\nKeldi, ko'rdim, hammadur g'amga shod olamni.\"\nUshbu she'r qaysi qofiya tizimida yozilgan?",
+    "answer": "B"
+  },
+  {
+    "id": 1501,
+    "sabab": "Masnaviy uchun to'g'ri ta'rif berilmagan. A variantida Ruboiy tuzilishi (aaba) keltirilgan, biroq javob kaliti Masnaviyni shu A variantiga moslashtirgan. Izoh ham ziddiyatli (Masnaviy juft qofiyali deyilgan, A variantida esa 1,2,4 qofiyalash deyilgan).",
+    "question": "Quyidagi lirik janrlarini ularning tuzilish xususiyati bilan moslashtiring:\n1. G'azal\n2. Ruboiy\n3. Masnaviy\nA. To'rt misradan iborat, 1, 2, 4-misralar qofiyalashadi.\nB. Yetti yoki undan ortiq baytdan iborat, aa, ba, ca qofiya tizimi.\nC. To'rt misrali she'r, odatda hikmatli ma'no ifodalaydi.",
+    "answer": "C"
+  },
+  {
+    "id": 1504,
+    "sabab": "Izohda «q» tovushi «sh» ga aylanishi (sh-q -> sh-sh) aytilgan, ammo «boshqa» so'zida «q» tovushi saqlanib qoladi va o'zgarmaydi. Faktik xato va noto'g'ri izoh asosida javob berilgan.",
+    "question": "O‘quvchi «bosh» so‘ziga «-qa» qo‘shimchasini qo‘shganda, «boshqa» shaklini hosil qildi. Bu jarayonda qaysi fonetik hodisa ro‘y berdi?",
+    "answer": "A"
+  },
+  {
+    "id": 1572,
+    "sabab": "Savol matnida javobni asoslash uchun zarur bo‘lgan \"Yig‘lagudek bo‘lib yugurib ketayotsam\" degan parcha keltirilmagan, shuning uchun berilgan matn asosida javobni aniqlab bo‘lmaydi.",
+    "question": "\"Maktabda a’loqa o‘qirdim... Bir kuni nimayam bo‘lib, darsga kech qoldim...\" matnida qahramon darsga kech qolishiga qanday munosabatda bo‘lgan?",
+    "answer": "C"
+  },
+  {
+    "id": 1576,
+    "sabab": "Matnda o‘xshash so‘zlar ('ranji g‘urbat' va 'alamga to‘la ayriliq') o‘rtasida vergul qo‘yilgan, izoh va javob (B variant) esa tire qo‘yilganini ko‘rsatadi. Asosiy tire izohli munosabatni bildiradi (A variant), shuning uchun belgilangan javob noto‘g‘ri.",
+    "question": "\"Navoiy fikricha, Vatanni tark etmoq – ranji g‘urbat, alamga to‘la ayriliq\" gapiga tinish belgilarini qo‘yishda qaysi qoida qo'llanildi?",
+    "answer": "B"
+  },
+  {
+    "id": 1579,
+    "sabab": "'Bug‘doy so‘zi' birikmasi chiziqcha bilan yozilmaydi (alohida yoziladi), izohdagi gramatik tushuntirish xato.",
+    "question": "O‘qituvchi o‘quvchilarga 'Bug‘doy so‘zing bo‘lsin' maqolini yozdirayotganda, qaysi gramatik hodisaga e'tibor qaratishi lozim?",
+    "answer": "B"
+  },
+  {
+    "id": 1584,
+    "sabab": "Izoh ro‘yxat ichidagi bo‘laklarni ajratish uchun nuqtali vergul qoidasini keltiradi, ammo javob (D) esa ikki nuqta (:) o‘rniga nuqtali vergulni o‘zgartirishni taklif qiladi. Tushuntirish belgilangan javobni asoslamaydi.",
+    "question": "\"Nutq madaniyatining ikki xil ma’nosi bor: birinchisi — ko‘nikma, ikkinchisi — fan bo‘limi\" gapidagi xatolikni toping.",
+    "answer": "D"
+  },
+  {
+    "id": 1585,
+    "sabab": "Savolda 'Hadya qildim' (fel + ot) berilgan, izoh esa 'Hadyadim' shaklini tahlil qilmoqda (qo‘shimcha bevosita qo‘shilishi degani). Savol matni va izoh o‘rtasida mazmun ziddiyati bor.",
+    "question": "Matnda keltirilgan 'Hadya qildim' so‘zidagi imlo xususiyatini tushuntiring.",
+    "answer": "B"
+  },
+  {
+    "id": 1604,
+    "sabab": "Variant B ham to'g'ri, chunki muallif uslubini aniqlashda faqat lug'at tarkibini o'rganish yetarli emas (b to'g'ri). Demak, B (b, d) va C (a, d) variantlari teng darajada to'g'ri bo'lib qoladi.",
+    "question": "Badiiy matnni tahlil qilishda quyidagi mulohazalarning qaysilari to'g'ri ekanini aniqlang:\na) Matndagi umumiy jihatlarni aniqlash uchun fragmentlarni solishtirish kerak\nb) Muallif uslubini aniqlash uchun lug'at va iboralar tarkibini o'rganish yetarli emas\nd) Qahramonning ruhiy holatini tushunish uchun uning nutqi va harakatiga e'tibor beriladi\ne) Ochiq aytilmagan fikrlarni faqat matndagi aniq ma'lumotlar bilan cheklanib tushunish mumkin",
+    "answer": "C"
+  },
+  {
+    "id": 1623,
+    "sabab": "Gapning ikkinchi qismi ('ranji g'urbat...') o'zlashtiruvchi gap emas, balki ot birikmasi. Shuning uchun C variantdagi ta'rif va izoh grammatik jihatdan noto'g'ri.",
+    "question": "«Navoiy fikricha, Vatanni tark etmoq – ranji g'urbat, alamga to'la ayriliq» gapida ishlatilgan tire belgisi qanday vazifani bajaradi?",
+    "answer": "C"
+  },
+  {
+    "id": 1624,
+    "sabab": "'Kelmoqda' so'zida yordamchi unli (e) tushib qolmaydi (masalan, 'tushmoqda' so'zida bo'lgani kabi). Savolda keltirilgan misol va izoh grammatik xatoga ega.",
+    "question": "Quyidagi so'zlarning qaysi birida tovush tushishi hodisasi ro'y beradi?",
+    "answer": "A"
+  },
+  {
+    "id": 1633,
+    "sabab": "Savol matnida 'juftlashgan holda talaffuz etilishi mumkin emas' degan ifoda berilgan javob (tovushning so'zda bo'lmasligi) mantiqiga mos kelmaydi. Savol so'z tarkibida bo'lmagan tovushni topishga qaratilgan bo'lsa-da, uning tuzilishi noto'g'ri va tushunarsiz.",
+    "question": "O‘zbek adabiy tilining talaffuz me’yorlariga ko‘ra, “kitob” so‘zida qaysi undosh tovush juftlashgan holda talaffuz etilishi mumkin emas?",
+    "answer": "A"
+  },
+  {
+    "id": 1635,
+    "sabab": "\"sh\" va \"k\" tovushlari o'rtasida assimilyatsiya bo'lmaydi. \"Toshkent\" so'zida \"n\" tovushi \"t\" oldidan o'zgarishi (n>m) kuzatiladi, shuning uchun to'g'ri javob D variantidir.",
+    "question": "“Toshkent” so‘zini fonetik tahlil qilishda, qaysi tovush juftlashishi (assimilyatsiyasi) kuzatiladi?",
+    "answer": "C"
+  },
+  {
+    "id": 1644,
+    "sabab": "Mantiqiy xato: Matn mazmunini tushunmasdan (1) unga mos sarlavha tanlab bo'lmaydi (3). To'g'ri tartib: 1-3-2-4.",
+    "question": "Badiiy matnni chuqur tahlil qilish tartibini (bosqichma-bosqich) to'g'ri joylashtiring:\n1. Matnning umumiy mazmunini va asosiy g'oyasini anglash\n2. Muallif uslubini va badiiy vositalarini aniqlash\n3. Matn mazmuniga mos sarlavha tanlash\n4. Ochiq aytilmagan fikrlar va ehtimollarni asoslab fikr yuritish",
+    "answer": "D"
+  },
+  {
+    "id": 1726,
+    "sabab": "'Til elning o'zagi' iborasida 'til' so'zi bevosita nutq vositasi (til) ma'nosida ishlatilgan, oila va qarindoshlik ma'nosida emas. To'g'ri javob C bo'lishi kerak.",
+    "question": "“Bu yerda tilni bilish juda muhim, chunki til elning o‘zagi” degan gapda 'til' so‘zi qanday ma'noda ishlatilgan?",
+    "answer": "A"
+  },
+  {
+    "id": 1762,
+    "sabab": "Ikki nuqta belgisi shu gapda sabab-oqibat munosabatini ifodalash uchun ishlatilgan (A variant to'g'ri), umumlashtiruvchi so'zdan keyin emas.",
+    "question": "O‘quvchi yozma ishida quyidagi gapni yozgan: «Sababi sodda edi: hamma dam olmoqchi edi». Ushbu gapda ikki nuqta qo‘yilishining asosiy sababi nimada?",
+    "answer": "D"
+  },
+  {
+    "id": 1763,
+    "sabab": "Belgilangan javob (C) savoldagi «Menga» so‘zini o‘zgartirib «Meni» qilib yozilgan, bu esa «kelib tur» fe’li bilan grammatik jihatdan bog‘lanmaydi (noto‘g‘ri kelishik). Shuningdek, to‘g‘ri punktuatsiya varianti «— Menga, dedi u, kelib tur.» bo‘lishi kerak edi, ammo bunday variant keltirilmagan.",
+    "question": "«Menga dedi u kelib tur» gapining tinish belgilari bilan to‘g‘ri yozilgan variantini toping.",
+    "answer": "C"
+  },
+  {
+    "id": 1767,
+    "sabab": "Savolda keltirilgan fonetik misollar va izohlar faktik xatolarga ega. «Boshqa» so‘zida jarayon juftlashishi (assimilyatsiya) sodir bo‘lmaydi (SH -> Q o‘zgarmaydi). «Kelgan» so‘zida unlilar tushishi hodisasi kuzatilmaydi (e tovushi saqlanib qoladi). «Tashqi» va «boshqa» ikkalasi ham unlilar o‘zgarishiga misol bo‘lishi mumkin, shu sababli moslashtirish noto‘g‘ri.",
+    "question": "Fonetik hodisalarni ularning namunalari bilan moslashtiring:\n1. Jarayon juftlashishi\n2. Unlilar o‘zgarishi\n3. Unlilar tushishi\nA. *tashqi* (A → I)\nB. *boshqa* (SH → Q)\nC. *kelgan* (E → tushadi)",
+    "answer": "B"
+  },
+  {
+    "id": 1807,
+    "sabab": "Jumlada 'bulbullar' aniq ega sifatida qatnashganligi sababli kesim (fe'l) ko'plikda kelishi kerak ('qo'shnishdi' yoki 'qo'shnidilar'). 'Qo'shnidi' shakli shaxssizlik kategoriyasiga oid bo'lib, bu yerda ega aniq bo'lgani uchun ishlatilmaydi. Izohda 'ega bo'lmasa' deyilganligi savol matnidagi 'bulbullar' so'ziga zid.",
+    "question": "Nutq madaniyati va adabiy me'yorlar haqidagi quyidagi mulohazalardan to‘g‘rilarni aniqlang:\na) Nutqning to‘g‘riligi uning madaniyatining ilk bosqichi hisoblanadi.\nb) Oddiy nutqda adabiy til me'yorlaridan chekinish mumkin.\nd) Badiiy adabiyotda ma'lum bir estetik maqsad uchun grammatik me'yorlar buzilishi mumkin.\ne) Me'yorlarga amal qilinmasdan tuzilgan nutq to‘g‘ri nutq bo‘la olmaydi.",
+    "answer": "A"
+  },
+  {
+    "id": 1822,
+    "sabab": "Variant 'a' (U o‘z hayotini vatanidan azizroq biladi) qahramonning vatanparvarlik g'oyasiga zid. Belgilangan javobda noto'g'ri variant ham qatnashgan.",
+    "question": "Ravshanbek qahramonining «Men o‘lmasam, o‘z elimdan kechmayman!» degan irodasiga asoslanib, quyidagi xulosalardan to‘g‘rilarni belgilang.\na) U o‘z hayotini vatanidan azizroq biladi.\nb) Bu so‘zlar uning jahldorligini ko‘rsatadi.\nd) Vatanparvarlik uning asosiy sifatidir.\ne) U dushmandan qo‘rqmoqda.",
+    "answer": "C"
+  },
+  {
+    "id": 1892,
+    "sabab": "a, b va e variantlaridagi barcha so'zlar imlo jihatidan to'g'ri. Shunday qilib, A (a, b) va B (a, e) variantlari ham to'g'ri javob bo'lishi mumkin, ya'ni bir nechta variant teng darajada to'g'ri.",
+    "question": "Quyidagi so'z yoki birikmalarning imlosi qoidaga muvofiq bo'lgan juftliklarni toping.\na) O‘zbekiston\nb) o‘qituvchi-o‘quvchi\nd) bugdoy-zor\ne) Toshkent shahri",
+    "answer": "A"
+  },
+  {
+    "id": 1918,
+    "sabab": "Savol matnida voqealar syujetli ravishda bayon etilishi ta'kidlangan (bu epik adabiyotga xos), ammo belgilangan javob 'Lirik' deb ko'rsatilgan. Izohda esa lirikada voqealar syujet sifatida emasligi aytilgan, ya'ni savol matni, javob va izoh o'zaro zid.",
+    "question": "O'qituvchi o'quvchilarga adabiyot turlarini tushuntirib, quyidagi tasnifni keltiradi: \"Bu adabiy turda voqealar, qahramonlar va ular o'rtasidagi munosabatlar katta bo'lmagan hajmda, syujetli ravishda bayon etiladi, lirik qahramonning his-tuyg'ulari esa boshqa vositalar orqali ifodalanadi\". Ushbu tavsif qaysi adabiy turga xos?",
+    "answer": "D"
+  },
+  {
+    "id": 1937,
+    "sabab": "Variant 'a' da etimologik xato bor ('tong' so'zi 'tok' ildizidan emas). Variant 'd' to'g'ri ('siz' so'zidagi 'z' tovushi 's' dan o'zgarishi fonetik qoidaga mos), ammo u noto'g'ri deb topilgan. Shuningdek, 'b' variant ham bahsli.",
+    "question": "Fonetik o'zgarishlar (tovushning tushishi va almashinuvi) hodisalariga doir to'g'ri mulohazalarni toping.\na) «Tong» so'zidagi «k» tovushi tushib ketishi natijasida hosil bo'lgan.\nb) «Tegirmon» so'zida «k» tovushi «g» ga almashinuvi kuzatiladi.\nd) «Siz» so'zida «z» tovushi o'zakdagi «s» ning o'zgarishidan kelib chiqqan.\ne) Tovush tushishi faqat qo'shimchalarda sodir bo'ladi.",
+    "answer": "C"
+  },
+  {
+    "id": 1958,
+    "sabab": "Javob kaliti noto'g'ri belgilangan. Matnda imlo xatosi D variantida ('Poytaxtimiz' so'zi kichik harf bilan yozilishi kerak) bo'lishiga qaramay, to'g'ri javob sifatida A ko'rsatilgan.",
+    "question": "Quyidagi gaplarda bosh harflar va imlo qoidalariga xato qilingan javobni aniqlang:\nA) O'zbekiston — mustaqil davlat.\nB) Uyimizda televizor va kompyuter bor.\nC) Maktab direktori lavozimiga ishga qabul qilindi.\nD) Poytaxtimiz Toshkentda ko'plab institutlar mavjud.",
+    "answer": "A"
+  },
+  {
+    "id": 2038,
+    "sabab": "'a' variantida faktik xato bor ('Iloji yo'q' iborasida 'i' tovushi tushmaydi), 'e' varianti to'g'ri (so'z boshi unlisi tushmaydi), ammo ular noto'g'ri deb baholangan. Javob mantiqsiz.",
+    "question": "Quyidagi mulohazalardan to'g'riilarini tanlang.\na) \"Iloji yo'q\" degandagi \"i\" tovushi talaffuzda tushib qoladi, ammo yozuvda saqlanib qoladi.\nb) \"Bug'doy\" so'zidagi \"g\" tovushi so'z oxirida bo'g'iztovush talaffuz etiladi.\nd) \"Men piyolani ularga hadya qildim\" gapida \"hadya\" so'zi to'g'ri yozilgan.\ne) O'zbek tilida so'z boshidagi unli tovush hech qachon tushmaydi.",
+    "answer": "C"
+  },
+  {
+    "id": 2082,
+    "sabab": "\"O'qib\" fe'lida o'zagi va -b qo'shimchasi orasidagi 'y' tovushi tushib talaffuz qilinadi (tovush tushishi). \"Kitobni\" so'zida 'b' tovushi 'p' ga aylanmaydi (chunki 'n' undoshi jarangli). Belgilangan javob noto'g'ri, izohda faktik xato bor.",
+    "question": "\"Keling, kitobni o'qib chiqamiz.\" gapida qaysi so'zda fonetik o'zgarish (tovush tushishi) sodir bo'lgan?",
+    "answer": "A"
+  },
+  {
+    "id": 2127,
+    "sabab": "Savol 'so‘z yasovchi qo‘shimcha noto‘g‘ri qo‘llangan' variantini so‘raydi, lekin javobda to‘g‘ri yasalgan 'o‘quvchi' so‘zi ko‘rsatilgan. Savol mantiqan noto'g'ri tuzilgan (ehtimol 'to'g'ri' so'zi o'rniga 'noto'g'ri' yozilgan).",
+    "question": "Qaysi variantda so‘z yasovchi qo‘shimcha noto‘g‘ri qo‘llangan?",
+    "answer": "D"
+  },
+  {
+    "id": 2128,
+    "sabab": "Savol mantiqsiz: variantlardagi gaplarda mos tinish belgilari mavjud emas (masalan, A gapda undov belgisi yo‘q). Shuningdek, izoh C variantini to‘g‘ri deb tushuntirib, belgilangan javob (B) bilan zidlik yaratmoqda.",
+    "question": "Tinish belgilarini ularning vazifasi bilan moslashtiring:\n1. Undov belgisi (!)\n2. Ikkita nuqta (:)\n3. Tire (—)\nA. O‘quvchilarga e’tibor ber: dars boshlandi.\nB. Vatan — bu muqaddas beshik.\nC. Qachon kelasiz? — deb so‘radi u.",
+    "answer": "B"
+  },
+  {
+    "id": 2222,
+    "sabab": "A variantidagi ta'rif ('Ikki misra bo'lib...') G'azalga emas, balki 'Bayt'ga xosdir. G'azal bir necha baytdan tashkil topgan she'r shaklidir, faqat ikki misradan iborat bo'lmaydi.",
+    "question": "O'zbek she'riyati tizimida uchraydigan she'r shakllari va ularning o'lchov xususiyatlarini moslashtiring:\n1. G'azal\n2. Masnaviy\n3. Aruz\nA. Ikki misra bo'lib, har misra o'zaro qofiyalanadi\nB. O'nlab, yuzlab baytlardan tashkil topadi, juft misralar qofiyalanadi\nC. She'r o'lchovi bo'yicha, bo'g'inlar soniga qarab emas, vazn-bo'lgor qoidalari asosida",
+    "answer": "C"
+  },
+  {
+    "id": 2227,
+    "sabab": "Belgilangan javob (C) noto'g'ri. Savol badiiy adabiyotning obrazli (timsollar asosida) aks ettirishiga oid, C variant esa tabiat o'zgarishlarini 'ilmiy izohlash'ni bayon qiladi. To'g'ri javob B bo'lishi kerak, chunki u 'Ona' obrazi orqali obrazli tasvirni ko'rsatadi. Izoh ham B variantni tasdiqlaydi.",
+    "question": "Matnda 'Badiiy adabiyot tushunchasi olamni obrazli ko'rish va timsollar asosida aks ettirish mahsuli' deyiladi. Quyidagi misollardan qaysi biri bu ta'rifga to'liq mos keladi?",
+    "answer": "C"
+  },
+  {
+    "id": 2241,
+    "sabab": "D variantida 'zarar' (zararli) so'zi o'rniga 'zarur' so'zi keltirilgan, bu variant mazmunini buzadi.",
+    "question": "Matnga ko'ra, nutq tarkibiga kiritilgan so'z yoki ibora nutqning mazmuniy qurilishi uchun bir 'g'ishtcha' bo'lmasa, u qanday unsurga aylanadi?",
+    "answer": "D"
+  },
+  {
+    "id": 2260,
+    "sabab": "Savol matnida ma'lumotnoma matni xususiyati sifatida 'obrazli ifodalari uchrayapti' (bor) deyilgan, bu esa ma'lumotnoma matniga xos emas. Matnda 'uchramayapti' degan ma'no berilishi kerak edi.",
+    "question": "O'quvchi dars jarayonida biror tarixiy voqeaga bag'ishlangan matnni tahlil qilib, uni shunday ta'riflab berdi: \"Bu matnda voqea haqida quruq faktlar, sanalar va raqamlar keltirilgan. Muallifning shaxsiy munosabati yoki obrazli ifodalari uchrayapti, hamma narsa xolis va oddiy bayon qilingan.\" Ushbu ta'rif qaysi matn turiga xos?",
+    "answer": "C"
+  },
+  {
+    "id": 2275,
+    "sabab": "Izoh matnida variantlar ro'yxatida keltirilmagan 'lug'at' haqida so'z borilgan, bu esa savol tuzilishidagi xatoni ko'rsatadi. Shuningdek, 'keng ma'noda adabiyot' ta'rifiga ko'ra barcha yozma asarlar (shu jumladan, shaxsiy xotira ham) kiradi, shu sababli javobning aniq D varianti ekanligi shubhali.",
+    "question": "Matnda \"keng ma'noda adabiyot\" tushunchasi izohlangan. Ushbu tushunchaga ko'ra, quyidagi asarlarning qaysi biri \"keng ma'dodagi adabiyot\" doirasiga kiradi?",
+    "answer": "D"
+  },
+  {
+    "id": 2282,
+    "sabab": "Belgilangan javob (D) noto'g'ri. Sarlavhadagi 'O'zbekiston Respublikasi' so'zlari katta harf bilan yozilishi B variantidagi qoidaga (geografik va rasmiy nomlarning bosh harfi katta yozilishi) mos keladi. Izoh ham aynan shu qoidani asoslab berayapti.",
+    "question": "O'quvchi inshoda «O'zbekiston Respublikasi mustaqilligi sharafiga» degan sarlavhani yozgan. Ushbu sarlavhani imlo jihatdan tahlil qilinganda, qaysi qoidaga amal qilinganligini aniqlang.",
+    "answer": "D"
+  },
+  {
+    "id": 2286,
+    "sabab": "Belgilangan javob (D) noto'g'ri. Izohda so'zning ma'nosi «bilimni yetkazib berish, o'rgatish» (B varianti) ekanligi tasdiqlangan, ammo javob sifatida D ko'rsatilgan.",
+    "question": "«O'qituvchi bilimini o'quvchilarga o'tkazish jarayoni» matnida «o'tkazish» so'zi qaysi ma'noda ishlatilgan?",
+    "answer": "D"
+  },
+  {
+    "id": 2287,
+    "sabab": "Belgilangan javob (A) noto'g'ri. «Sariq-qizil» (C) va «ilmiy-texnikaviy» (D) variantlari imlo jihatidan to'g'ri yozilgan. «O'zbek-tilshunos» so'zi noto'g'ri yozilgan (bitta so'z yoki bo'shliq bilan yoziladi). Shuningdek, izohda «ilmiy-texnikaviy»ni chiziqchasiz yozish haqida xato ma'lumot berilgan.",
+    "question": "Quyidagi qaysi qo'shma so'zlar to'g'ri yozilgan?",
+    "answer": "A"
+  },
+  {
+    "id": 2351,
+    "sabab": "Javob varianti (D) noto'g'ri formatda yozilgan ('1-A, C, 2-B, 3-B'), izohda 3-element ('Madaniy o'zlik') uchun asos berilmagan va mantiqan 'Madaniy o'zlik' 'vosita' (B) emas, balki saqlanish obyekti hisoblanadi.",
+    "question": "Matndagi tarixiy jarayonlar va ularning natijalari o'rtasidagi munosabatni aniqlang:\n\n1. Bosqinchilar siyosati\n2. Til va adabiyot\n3. Madaniy o'zlik\n\nA. Chegaralarni buzish, yerlarni bosib olish\nB. Millatning o'zligini saqlab qolish vositasi\nC. Xalqlarni o'ziga qo'shib olishga urinish",
+    "answer": "D"
+  },
+  {
+    "id": 2380,
+    "sabab": "a) fikrida fonetik xato bor: «kunda» so‘zida «n» tovushi «d» tovushiga o‘zgarmaydi (assimilyatsiya qoidasiga ko‘ra «n» faqat labiy undoshlar oldida «m» ga o‘zgaradi). Shuningdek, d) va e) fikrlari ham to‘g‘ri bo‘lgani uchun D javobi noto‘g‘ri, to‘g‘ri javob B (d, e) bo‘lishi kerak.",
+    "question": "Quyidagi fikrlardan to‘g‘rilari aniqlang.\na) «Kun» so‘zi «kunda» shaklida ishlatilganda, «n» tovushi keyingi «d» tovushi ta’sirida undoshlashadi.\nb) «Yopishmoq» fe‘lidan yasalgan «yopmoq» shaklida «ish» qo‘shimchasi tushib qoladi.\nd) «Tushunmoq» so‘zida «sh» tovushi unli oldida «s» ga o‘zgarmaydi.\ne) «Bosh» so‘zidagi «sh» tovushi jarangsiz undosh hisoblanadi.",
+    "answer": "D"
+  },
+  {
+    "id": 2427,
+    "sabab": "Bir nechta variant teng darajada to'g'ri (B va D variantlaridagi fikrlar mazmuni jihatidan to'g'ri). Izohda 'a' fikrni noto'g'ri deb asoslash mantiqiy emas (ma'lumotnoma matn obyektiv bo'lgani uchun unda munosabat bo'lmasligi tabiiy).",
+    "question": "Matn turlarining xususiyatlariga oid to'g'ri mulohazalarni aniqlang.\na) Ma'lumotnoma matnida so'zlovchining shaxsiy munosabati bo'lmasligi mumkin.\nb) Ijodiy-tavsifiy matnda dalillar so'zlovchining nuqtayi nazari asosida ifodalanadi.\nd) Rasmiy matnlar ma'lumotnoma matniga misol bo'la oladi.\ne) Ijodiy matn obrazlilikdan xoli bo'lishi mumkin.",
+    "answer": "D"
+  },
+  {
+    "id": 2562,
+    "sabab": "Belgilangan javob (C) noto'g'ri. Savol nutq madaniyatiga kirmaydigan xususiyatni so'raydi. 'Vaziyatga mos foydalanish' (C) nutq madaniyatining muhim tarkibiy qismi hisoblanadi. 'Faqat chet tilida so'zlashuv' (D) degan variant to'g'ri javob bo'lishi kerak, chunki iqtibos ona tiliga urg'u beradi.",
+    "question": "I. Karimovning «O'z fikrini mutlaqo mustaqil, ona tilida ravon, go'zal va lo'nda ifoda eta olmaydigan mutaxassisni... bugun tushunish ham, oqlash ham qiyin» degan fikri asosida, quyidagi xususiyatlarning qaysi biri «nutq madaniyati» tushunchasiga kirmaydi?",
+    "answer": "C"
+  },
+  {
+    "id": 2604,
+    "sabab": "«al-amga» so‘zida defis ishlatilishi noto‘g‘ri («alamga» yoziladi). Shuning uchun «d» varianti xato. To‘g‘ri javob «a» va «e» variantlarini o‘z ichiga olgan C variantidir. Izohdagi «manafoiy qo‘shimcha» degan dalil ham asossiz.",
+    "question": "«Navoiy fikricha, Vatanni tark etmoq – ranji g‘urbat, alamga to‘la ayriliq» gapidagi tinish belgilari haqidagi to‘g‘ri mulohazalarni toping.\na) «fikricha» so‘zidan keyin vergul, kirish so‘zini ajratish uchun qo‘yilgan.\nb) «etmoq» va «ranji» o‘rtasidagi tire bog‘lovchi vazifasida emas.\nd) «al-amga» so‘zidagi chiziqcha so‘zni ajratib yozish uchun ishlatilgan.\ne) Gap oxiridagi nuqta xabarni tugatuvchi sifatida ishlatilgan.",
+    "answer": "D"
+  },
+  {
+    "id": 2611,
+    "sabab": "Belgilangan javob (B) noto'g'ri. Navoiy forsiy tilida ham ijod qilgan va Jomiyning o'zi uning bu qobiliyatini yuqori baholagan. Jomiyning so'zi Navoiyning forsiy adabiyotini soyada qoldirishiga qodir ulkan iste'dod ekanini maqtash uchun aytilgan. To'g'ri javob mazmunan C variantiga mos keladi.",
+    "question": "Abdurahmon Jomiy Alisher Navoiy ijodi haqida: «Shukrlar bo'lsinki, u she'rlarini turkiy tilida ijod qilgan. Agar u forsiy tilda ijod qilganda, bizning asarlarimizni hech kim o'qimas edi», — deb yozgan. Ushbu fikrning mazmuni nimani ko'rsatadi?",
+    "answer": "B"
+  },
+  {
+    "id": 2732,
+    "sabab": "Izohda 'sariq' so'zi ham chiziqcha bilan yozilishi keltirilgan, ammo 'sariq' sifati odatda birlashtirib yoziladi (imlo qoidasiga zid faktik xato).",
+    "question": "O'quvchilar darsda 'sariq', 'qizg'ish', 'o'ta baland' kabi so'zlarni noto'g'ri yozib qo'yishdi. Bu xato qaysi imlo qoidasiga asoslangan holda tuzatilishi kerak?",
+    "answer": "B"
+  },
+  {
+    "id": 2766,
+    "sabab": "b, d va e mulohazalari ham to'g'ri, shuning uchun B (b, d) va D (b, e) variantlari ham to'g'ri bo'lib, javob aniqlashtirilmagan.",
+    "question": "\"Ravshan\" dostonidagi voqealar va ifodalarga oid quyidagi mulohazalardan to'g'rilarni aniqlang.\na) Hasanxonning jangga kirish oldidagi holati sodda va realistik tasvirlangan.\nb) \"Aziz boshing oyog‘imga teng emas...\" degan so'zlar qahramonning o'zbeklik g'ururini aks ettiradi.\nd) \"Qoraxonning diniga\" ifodasi o'sha davrdagi tarixiy va diniy o'ziga xoslikni anglatadi.\ne) Doston qahramonlari orasida ijobiy va salbiy xarakterlar aniq ajratib o'rin olgan.",
+    "answer": "B"
+  },
+  {
+    "id": 2779,
+    "sabab": "Izohda to'g'ri javob 'Insonning pokiza ko'ngili' (D) ekanligi izohlangan, belgilangan javob esa 'Insonning iqtisodiy qudrati' (C).",
+    "question": "\"Dunyoni go'zallik qutqaradi\" degan fikr muallifiga ko'ra, qanday xususiyat olamni pokiza saqlab qolish imkoniyatiga ega?",
+    "answer": "C"
+  },
+  {
+    "id": 2782,
+    "sabab": "Izohda to'g'ri javob 'Badiiy tahlil' (B) ekanligi aytilgan, belgilangan javob esa 'Faktlarni yodlash' (A).",
+    "question": "Adabiyot darsida o'quvchi she'rdagi obrazlar orqali muallifning inson taqdiriga bo'lgan munosabatini izohlayapti. Bu qaysi turdagi faoliyatga misol bo'la oladi?",
+    "answer": "A"
+  },
+  {
+    "id": 2788,
+    "sabab": "Izohda ildizda 's' tovushi borligi va u 'sh' ga aylanishi aytilgan, ammo 'tegishli' so'zining ildizi 'teg-' bo'lib, unda 's' tovushi yo'q. 'sh' tovushi '-ish' qo'shimchasidan olingan.",
+    "question": "\"Bu ish menga tegishli emas\" gapidagi tegishli so'zida qaysi fonetik o'zgarish yuz beradi?",
+    "answer": "D"
+  },
+  {
+    "id": 2823,
+    "sabab": "Madaniy va ma'rifiy so'zlari qarama-qarshi (zid) ma'no bildirmaydi, balki bir-birini to'ldiruvchi tushunchalardir. Chiziqcha qo'yish sababi sifatida keltirilgan A variantidagi izoh noto'g'ri.",
+    "question": "Matnda «madaniy-ma'rifiy ishlar» degan birikma uchrayapti. Agar o'qituvchi ushbu birikma imlosini izohlashga majbur bo'lsa, quyidagi qoidalardan qaysi biri asos qilib olinadi?",
+    "answer": "A"
+  },
+  {
+    "id": 2824,
+    "sabab": "Gap bog'lovchisiz (asindetik) bog'langan bo'lgani uchun u 'bog'lanishsiz qo'shma gap' hisoblanadi. 'Bog'lanishli qo'shma gap' atamasi faqat bog'lovchilar yordamida bog'langan gaplarga nisbatan ishlatiladi. Izohda ham terminologik ziddiyat mavjud.",
+    "question": "S. Mustafoyev matnida: «Birdan yodimga xaltamdagi paxta gulli chinni piyola keldi, ularga berdim» gapi berilgan. Bu gapda vergul qo'yilishining sababi nimada?",
+    "answer": "C"
+  },
+  {
+    "id": 2827,
+    "sabab": "d) variantida 'mustaqil so‘z birikmasi' atamasi noto‘g‘ri ishlatilgan ('o‘xshash bo‘laklar' bo‘lishi kerak edi).",
+    "question": "«Yaxshi til davlat, dunyo keltirar» maqolining punktuatsiya jihatidan tahlilini o‘tkazing.\na) Gap oxirida so‘roq belgisi qo‘yilishi kerak.\nb) «davlat» so‘zidan keyin vergul qo‘yilgan.\nd) Gapda ikkita mustaqil so‘z birikmasi bor.\ne) «dunyo» so‘zi oldidan bo‘shliq qo‘yilmagan.",
+    "answer": "D"
+  },
+  {
+    "id": 2829,
+    "sabab": "«Lison ut-tayr» dostonida so‘z birikmasi joy zarrasi bo‘lib, oldidan vergul qo‘yilmasligi kerak (aylanma emas).",
+    "question": "O'qituvchi darsda shunday gap yozdi: «Navoiy «Lison ut-tayr» dostonida usturlob haqida ma’lumot beradi». Bu gapdagi xatoni toping.",
+    "answer": "C"
+  },
+  {
+    "id": 2989,
+    "sabab": "Maktab so‘zida urg‘u oxirgi bo‘lakda (mak-**tab**), Qalam so‘zida esa birinchi bo‘lakda (**qa**-lam) turadi. Belgilangan B javobi noto‘g‘ri, to‘g‘ri javob A bo‘lishi kerak.",
+    "question": "Qaysi so‘zning urg‘usi (tezligi) oxirgi bo‘lakda keladi?",
+    "answer": "B"
+  },
+  {
+    "id": 2990,
+    "sabab": "To‘g‘ridan-to‘g‘ri nutqni ifodalovchi «deb» so‘zidan oldin vergul qo‘yiladi va u qo‘shhtirnoq ichiga yoziladi («Qalesiz», deb). B variantida vergulni qo‘shhtirnoqdan keyin qo‘yish talab qilinayotgani imlo qoidalariga zid. To‘g‘ri javob A bo‘lishi kerak.",
+    "question": "«U bizga «Qalesiz» deb so‘radi» gapida qo‘yilgan vergulning o‘rni to‘g‘ri mi?",
+    "answer": "B"
+  }
+]

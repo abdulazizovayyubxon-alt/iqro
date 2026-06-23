@@ -35,15 +35,17 @@ export const SUBJECTS = {
   },
   tarix: {
     name: "Tarix", category: "tarix",
-    corpus: ["fan/tarix", "src/data/questions_tarix.json"],
+    corpus: ["fan/tarix"],   // eski padded src/data bankni dedup bazasidan chiqardik — toza regeneratsiya (informatika/jismoniy patterni)
     namuna: ["fan/tarix_savollar.json"],
-    spec: "scratch/Тарих т_text.txt",
+    spec: "scratch/tarix_spec_clean.txt",   // TOZA marker (1.1-2.3 mutaxassislik) — xom spec ped/kasb dumini (1.1 Kasbiy/2.1 Umumiy/2.2 o'qitish metodikasi) mutaxassislik deb chalkashtirardi
+    book: "scratch/tarix_book.txt",   // jahon+o'zbekiston tarixi 6-11 sinf (11 PDF, ~2.9M, lotin) — sana/sulola/voqea/nom fakt grounding
   },
   boshlangich: {
     name: "Boshlang'ich ta'lim", category: "boshlangich",
     corpus: ["fan/boshlangich"],
     namuna: ["fan/boshlangich_savollar.json"],
-    spec: "scratch/Бошланғич таълим ўзбек я_text.txt",
+    spec: "scratch/boshlangich_spec_clean.txt",   // TOZA marker (1.1-1.23 fan mazmuni: ona tili/o'qish/matematika/tabiiy/tarbiya) — xom spec bir-darajali marker bilan fan tushib qolardi
+    book: "scratch/boshlangich_book.txt",   // 1-4 sinf 17 darslik (ona tili/o'qish/matematika/tabiiy/tarbiya, matnli ~95% lotin) — mutaxassislik mavzulariga fakt grounding
   },
   informatika: {
     name: "Informatika va AT", category: "info",
@@ -56,7 +58,8 @@ export const SUBJECTS = {
     name: "Jismoniy tarbiya", category: "sport",
     corpus: ["fan/jismoniy_tarbiya"],
     namuna: ["fan/jismoniy_savollar.json", "scratch/extracted_docx/word/media"],
-    spec: "scratch/Jismoniy tarbiya spets-yasi_text.txt",
+    spec: "scratch/jismoniy_spec_clean.txt",   // rasmiy spec'dan toza markerli (1.1-1.12) ko'chirma — chunkSpec to'g'ri bo'laklashi uchun (xom: "Jismoniy tarbiya spets-yasi_text.txt")
+    book: "scratch/jismoniy_book.txt",   // 2-8 sinf darsliklari (matnli, lotin dominant) — mutaxassislik mavzulariga fakt grounding (o'lcham/qoida/texnika)
   },
   mtt_tarbiyachi: {
     name: "MTT tarbiyachi", category: "mtt",
@@ -80,23 +83,26 @@ export const SUBJECTS = {
   },
   ona_tili: {
     name: "Ona tili va adabiyot", category: "til",
-    corpus: ["src/data/questions_ona_tili.json"],
+    corpus: ["fan/ona_tili"],   // eski padded src/data bankni chiqardik; fan/ona_tili da _ped5 (ped+kasb) bor — dedup bazasi
     namuna: ["fan/ona_tili_savollar.json"],
-    spec: "scratch/Она тили ва адабиёт_text.txt",
+    spec: "scratch/ona_tili_spec_clean.txt",   // TOZA marker (1.1-2.3 mutaxassislik) — xom spec ped/kasb dumini mutaxassislik deb chalkashtirardi
+    book: "scratch/ona_tili_book.txt",   // ona tili+adabiyot 5-11 sinf (13 PDF, ~3.85M, lotin) — qoida/muallif/asar/sana fakt grounding. Ped/kasb=_ped5 da tayyor → faqat --blocks mutaxassislik gen
   },
 
   // ── C) YANGI qiloqchi (fan 2) — korpus YO'Q, namuna + PDF spec ──
   biologiya: {
     name: "Biologiya", category: "biologiya", isNew: true,
     corpus: [],
-    namuna: ["fan/biologiya_savollar.json", "fan 2/biologiya  namuna"],
-    spec: "scratch/biologiya_spec.txt", specPdf: "fan 2/Биология т.pdf",
+    namuna: ["fan/biologiya_savollar.json", "fan/Rasim/biologiya namuna"],
+    spec: "scratch/biologiya_spec_clean.txt", specPdf: "fan/spes/Биология т.pdf",   // TOZA marker (1.1-1.23 fan mazmuni) — xom spec chunkSpec'ni buzardi (bir-darajali marker→fan tushib qolardi)
+    book: "scratch/biologiya_book.txt",   // 5-11 sinf bio + botanika/zoologiya/odam darsliklari (matnli, ~97% lotin) — fakt grounding (botanika_6/odam_8 skan=kam matn)
   },
   geografiya: {
     name: "Geografiya", category: "geografiya", isNew: true,
     corpus: [],
-    namuna: ["fan/geografiya_savollar.json", "fan 2/geografiya namuna"],
-    spec: "scratch/geografiya_spec.txt", specPdf: "fan 2/География  т.pdf",
+    namuna: ["fan/geografiya_savollar.json", "fan/Rasim/geografiya namuna"],
+    spec: "scratch/geografiya_spec_clean.txt", specPdf: "fan/spes/География  т.pdf",   // TOZA marker (1.1-1.23 fan mazmuni) — xom spec ped/kasb 1.1/2.2 markerlarini mutaxassislik deb chalkashtirardi
+    book: "scratch/geografiya_book.txt",   // 5-10 sinf geografiya darsliklari (matnli, ~95% lotin) — fakt grounding (soat mintaqasi/iqlim/relief)
   },
   ingliz: {
     name: "Ingliz tili", category: "ingliz", isNew: true,
