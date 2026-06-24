@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect, useContext, useRef } from 'react';
-import { TOPICS } from '../data/mockData';
 import { MAX_MISTAKES_SAVED } from '../config';
 import { db } from '../firebase';
 import { AuthContext } from './AuthContext';
@@ -379,149 +378,11 @@ export const AppProvider = ({ children }) => {
     return { ...prev, ...updates };
   });
 
-  // ─── addScore ───
-  const addScore = (points, topicId) => {
-    setState(prev => {
-      const cat = prev.activeCategory;
-      const catStats = prev.stats[cat] || buildDefaultCatStats();
-      const newStreak = catStats.streak + 1;
-      const newMaxStreak = Math.max(catStats.maxStreak, newStreak);
-
-      const newTopicStats = { ...prev.topicStats };
-      if (topicId >= 0) {
-        const ts = newTopicStats[topicId] || { answered: 0, correct: 0 };
-        newTopicStats[topicId] = { answered: ts.answered + 1, correct: ts.correct + 1 };
-      }
-
-      // Kunlik maqsad yangilanishi
-      const today = new Date().toDateString();
-      const dg = prev.dailyGoal?.date === today
-        ? { ...prev.dailyGoal, answered: (prev.dailyGoal.answered || 0) + 1 }
-        : { date: today, answered: 1, target: prev.dailyGoal?.target || 20, completed: false };
-      if (!dg.completed && dg.answered >= dg.target) dg.completed = true;
-
-      // Kunlik streak (+ bepul avtomatik muzlatish)
-      const { dailyStreak, lastGoalDate, streakFreezes, streakFrozenDate } = advanceDailyStreak(prev, today, dg.completed);
-
-      const weekId = getWeekId();
-      const monthId = getMonthId();
-      const currentWeeklyScore = prev[`weekly_${weekId}`] || 0;
-      const currentMonthlyScore = prev[`monthly_${monthId}`] || 0;
-
-      return {
-        ...prev,
-        totalScore: (prev.totalScore || 0) + points,
-        [`weekly_${weekId}`]: currentWeeklyScore + points,
-        [`monthly_${monthId}`]: currentMonthlyScore + points,
-        totalAnswered: prev.totalAnswered + 1,
-        totalCorrect: prev.totalCorrect + 1,
-        topicStats: newTopicStats,
-        dailyGoal: dg,
-        dailyStreak,
-        lastGoalDate,
-        streakFreezes,
-        streakFrozenDate,
-        stats: {
-          ...prev.stats,
-          [cat]: {
-            ...catStats,
-            totalAnswered: catStats.totalAnswered + 1,
-            totalCorrect: catStats.totalCorrect + 1,
-            streak: newStreak,
-            maxStreak: newMaxStreak
-          }
-        }
-      };
-    });
-  };
-
-  // ─── addMistake ───
-  const addMistake = (topicId, question, correctOpt, opts) => {
-    setState(prev => {
-      const cat = prev.activeCategory;
-      const catStats = prev.stats[cat] || buildDefaultCatStats();
-
-      const newTopicStats = { ...prev.topicStats };
-      if (topicId >= 0) {
-        const ts = newTopicStats[topicId] || { answered: 0, correct: 0 };
-        newTopicStats[topicId] = { ...ts, answered: ts.answered + 1 };
-      }
-
-      const newMistakes = [...catStats.mistakes, {
-        topic: topicId >= 0 ? TOPICS.find(t => t.id === topicId)?.name || 'Aralash' : 'Aralash',
-        question,
-        correct: correctOpt,
-        opts: opts || []
-      }];
-      if (newMistakes.length > MAX_MISTAKES_SAVED) newMistakes.shift();
-
-      const today = new Date().toDateString();
-      const dg = prev.dailyGoal?.date === today
-        ? { ...prev.dailyGoal, answered: (prev.dailyGoal.answered || 0) + 1 }
-        : { date: today, answered: 1, target: prev.dailyGoal?.target || 20, completed: false };
-      if (!dg.completed && dg.answered >= dg.target) dg.completed = true;
-
-      const { dailyStreak, lastGoalDate, streakFreezes, streakFrozenDate } = advanceDailyStreak(prev, today, dg.completed);
-
-      // SMART REVIEW: Spaced Repetition Logic
-      const qHash = (question || '').substring(0, 100);
-      let spacedCards = [...(prev.spacedCards || [])];
-      const existingIdx = spacedCards.findIndex(c => c.qHash === qHash);
-
-      if (existingIdx >= 0) {
-        // Xato qilindi -> Level 0 ga tushadi va tezroq qaytadi
-        spacedCards[existingIdx] = {
-          ...spacedCards[existingIdx],
-          level: 0,
-          correctStreak: 0,
-          nextReview: Date.now() + 10 * 60 * 1000, // 10 min keyin
-          lastReview: Date.now(),
-          difficulty: (spacedCards[existingIdx].difficulty || 1) + 1
-        };
-      } else {
-        // Yangi xato savol
-        spacedCards.push({
-          qHash,
-          q: question,
-          opts: opts || [],
-          correct: opts ? opts.findIndex(o => o === correctOpt) : 0,
-          topicId,
-          level: 0,
-          correctStreak: 0,
-          nextReview: Date.now(),
-          lastReview: Date.now(),
-          difficulty: 1
-        });
-      }
-      if (spacedCards.length > 200) spacedCards = spacedCards.slice(-200);
-
-      return {
-        ...prev,
-        totalAnswered: prev.totalAnswered + 1,
-        topicStats: newTopicStats,
-        dailyGoal: dg,
-        dailyStreak,
-        lastGoalDate,
-        streakFreezes,
-        streakFrozenDate,
-        spacedCards,
-        stats: {
-          ...prev.stats,
-          [cat]: {
-            ...catStats,
-            totalAnswered: catStats.totalAnswered + 1,
-            streak: 0,
-            mistakes: newMistakes
-          }
-        }
-      };
-    });
-  };
-
   // ─── batchCommitResults: Test yakunida natijalarni BIR MARTA saqlash ───
-  // TestPage test tugaganda addScore/addMistake o'rniga shu funksiyani chaqiradi.
-  // Bu Firestore write'larni drastik kamaytiradi (50 write → 1 write).
+  // TestPage test tugaganda har savol uchun alohida emas, shu funksiyani bir marta
+  // chaqiradi. Bu Firestore write'larni drastik kamaytiradi (50 write → 1 write).
   const batchCommitResults = (results) => {
+    let snapshot = null;
     setState(prev => {
       const cat = prev.activeCategory;
       const catStats = prev.stats[cat] || buildDefaultCatStats();
@@ -595,18 +456,20 @@ export const AppProvider = ({ children }) => {
         }
       };
 
-      // Force immediate sync to Firestore — userRef orqali stale closure muammosi hal qilinadi
-      setTimeout(() => {
-        const currentUser = userRef.current;
-        if (!currentUser) return;
-        const statRef = doc(db, 'userStats', currentUser.uid);
-        setDoc(statRef, prepareStatsForSave(newState, currentUser), { merge: true }).catch(err => {
-          console.error('Natijalarni saqlashda xatolik:', err);
-          showToast('Natijalar vaqtincha saqlanmadi. Internet aloqasini tekshiring.', 'error');
-        });
-      }, 100);
-
+      snapshot = newState; // updater toza — faqat hisoblaydi va natijani capture qiladi
       return newState;
+    });
+
+    // Yon ta'sir (Firestore yozuvi) setState updater'idan TASHQARIDA bajariladi —
+    // React 18 StrictMode updater'ni ikki marta chaqirganda dublikat write bo'lmaydi.
+    // Natija debounce kutmasdan darhol saqlanadi (test yakunida yo'qolmasligi uchun).
+    if (!snapshot) return;
+    const currentUser = userRef.current;
+    if (!currentUser) return;
+    const statRef = doc(db, 'userStats', currentUser.uid);
+    setDoc(statRef, prepareStatsForSave(snapshot, currentUser), { merge: true }).catch(err => {
+      console.error('Natijalarni saqlashda xatolik:', err);
+      showToast('Natijalar vaqtincha saqlanmadi. Internet aloqasini tekshiring.', 'error');
     });
   };
 
@@ -674,8 +537,6 @@ export const AppProvider = ({ children }) => {
     <AppContext.Provider value={{
       state,
       updateState,
-      addScore,
-      addMistake,
       batchCommitResults,
       resetStats,
       deleteMistake,

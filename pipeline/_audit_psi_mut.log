@@ -1,0 +1,59 @@
+▶ Hakam: jami 2301, tekshirilgan 2257, navbatda 44 (model zai-glm-4.7)
+[1-4/44] ... ok (shubhali jami: 28)
+[5-8/44] ... ok (shubhali jami: 28)
+[9-12/44] ... ok (shubhali jami: 29)
+[13-16/44] ... ok (shubhali jami: 29)
+[17-20/44] ... ok (shubhali jami: 29)
+[21-24/44] ... ok (shubhali jami: 30)
+[25-28/44] ... ok (shubhali jami: 30)
+[29-32/44] ... ok (shubhali jami: 30)
+[33-36/44] ... ok (shubhali jami: 30)
+[37-40/44] ... ok (shubhali jami: 30)
+[41-44/44] ... ok (shubhali jami: 30)
+
+✓ Tekshirildi: 2301/2301 | SHUBHALI: 30
+Hisobot: pipeline/verify_report_mtt_psixolog.json
+
+--- SHUBHALILAR (birinchi 20) ---
+✗ id=40: Belgilangan javob noto'g'ri. Ta'limiy vazifa bilim berishni (B), Tarbiyaviy vazifa dunyoqarashni kengaytirishni (C), Rivojlantiruvchi vazifa esa psixik rivojlanish mohiyatini anglashni (A) anglatadi. To'g'ri moslik: 1-B, 2-C, 3-A (D varianti).
+   Yosh psixologiyasi fanining vazifalarini ularning mazmuniga moslashtiring:
+1. Ta
+✗ id=367: Tadqiqot maqsadi va vazifalari odatda gipotezadan oldin belgilanadi (1-4-2-3 tartibi to'g'riroq).
+   Psixologik tadqiqot o'tkazishning mantiqiy bosqichlarini tartib bilan joylashtir
+✗ id=399: Yosh davri noto'g'ri nomlangan: 15-17 yosh 'Ilk o'spirinlik' emas, balki 'Yoshlik' (yoki 'Kechki o'smirlik') davri hisoblanadi.
+   Ilk o'spirinlik davrida (15-17 yosh) yoshlarning shaxsiy va axloqiy dunyoqarashi
+✗ id=606: 3-bandda 'faqatchilik inqirozi tugadi' deb ko'rsatilgan, bu erta yoshdagi (3 yosh) inqiroz bo'lib, o'smirlar davridagi o'z-o'zini anglash bosqichlariga kirmaydi. Shuningdek, odatda ideal obraz (4) tanqidiy baholashdan (2) oldin shakllanadi.
+   O'smirda o'z-o'zini anglash (self-consciousness) rivojlanishining mantiqiy bosqi
+✗ id=614: Izohda keltirilgan mantiq (1-predmet, 2-metodlar, 3-siyosat, 4-kodeks) belgilangan javob (C) dagi juftliklar bilan mos kelmaydi. Izohdagi xulosa va berilgan variantlar o'zaro ziddiyatli.
+   Seminar mashg'uloti rejasidagi mavzularni ularning tartib raqami bilan moslashti
+✗ id=679: O'smirlik davrining yetakchi faoliyati o'qish (D) emas, balki tengdoshlar bilan intim-shaxsiy muloqot (B) hisoblanadi. Savol mazmuni ham muloqotga e'tiborni tasdiqlaydi.
+   O'smir ota-onasining maslahatlariga qaraganda, tengdoshlari (do'stlari) fikrini 
+✗ id=680: Belgilangan javob (B) noto'g'ri. Izohda to'g'ri sabab (C variant - gormonal o'zgarishlar) keltirilgan, ammo javob ro'yxatida noto'g'ri variant tanlangan.
+   O'smir kundalik hayotda ahamiyatsiz voqealarga ham o'tkir reaksiya beradi, kayfi
+✗ id=712: Variant B tarkibida 'Jest-alomlar' (ishora tili) ko'rish nuqsoni bolalarga mos kelmaydi, u eshitish nuqsoni uchun xarakterlidir. Juftlik noto'g'ri tuzilgan.
+   Maxsus ehtiyojli bolalar toifalarini ular uchun zarur bo'lgan asosiy pedagogik y
+✗ id=861: Izoh matnida D variant noto'g'ri ekanligi ('B, C va D variantlarida mantiqiy zanjir buzilgan') aytilgan, ammo belgilangan javob D sifatida ko'rsatilgan. Javob va izoh o'rtasida ziddiyat mavjud.
+   Maktabda inklyuziv ta'limni joriy etish bo'yicha pedagogik va tashkiliy ishlarni
+✗ id=954: Pedagogik ta'sir ko'rsatish sharoitlarini o'rgatish bilim berishga qaratilgan bo'lib, bu 'O'quv (ta'limiy) vazifalar' (D variant)ga tegishli. 'Tarbiyaviy vazifalar' esa shaxsning qarashlari, e'tiqodi va munosabatlarini shakllantirishga xizmat qiladi.
+   Yosh psixologiyasi fani bo'yicha o'tilayotgan mashg'ulotda talabalarga o'quvchi 
+✗ id=976: d) variantida mantiqiy xato bor: 'o'zidan oldingisini tayyorlab' degan ifoda rivojlanish mantiqiga zid (oldingi davr keyingisini tayyorlaydi).
+   Yosh davrlarini davrlashtirish mezonlari haqidagi to'g'ri mulohazalarni aniqlang
+✗ id=999: "Bilim, malaka va ko'nikmalarni shakllantirish" Ta'limiy vazifaning ta'rifi bo'lib, Tarbiyaviy vazifaga (qarashlar, e'tiqodlar shakllantirish) mos kelmaydi.
+   Yosh psixologiyasi fanining vazifalarini ularning mazmuniga moslashtiring:
+1. Ta
+✗ id=1021: Mantiqiy xato: Pedagogik jarayonda o'quvchining xususiyatlarini aniqlash (1) rejalashtirish (2)dan oldin bo'lishi kerak. Tashxissiz reja tuzib bo'lmaydi.
+   Pedagog psixolog sifatida siz inklyuziv ta'lim jarayonini to'g'ri tashkil etish 
+✗ id=1067: Savol matnida keltirilgan 'bilim, malaka va ko'nikmalarni shakllantirish' ta'rifi pedagogikada 'O'quv vazifasi'ga xosdir. 'Tarbiyaviy vazifa' esa qarashlar, e'tiqod va dunyoqarashni shakllantirishni anglatadi. Shuningdek, pedagoglarni amaliy tayyorlash jarayoni 'Amaliy-psixologik' vazifaga to'g'ri keladi.
+   Yosh psixologiyasi fani bo'lajak pedagoglarda o'quvchi shaxsiga pedagogik jihatd
+✗ id=1088: Bola 3 yoshda ekanligi ko'rsatilgan, bu esa 'Operatsiyagacha tafakkur davri' (2-7 yosh)ga to'g'ri keladi. 'Sensomotor davr' 0-2 yoshni qamrab oladi, shuning uchun belgilangan javob noto'g'ri.
+   3 yoshli bola xonadagi stulni ko'tarolmayapti. U stul orqasiga turgan kichik qut
+✗ id=1120: a, d va e variantlari hammasi to'g'ri fikrlarni ifodalaydi, shuning uchun A (d, e) va B (a, d) javob variantlari teng darajada to'g'ri bo'lib, yagona to'g'ri javobni aniqlab bo'lmaydi.
+   Yosh psixologiyasi fani bo'yicha tarbiyaviy vazifalarga oid to'g'ri mulohazalarn
+✗ id=1133: Piajet nazariyasida aql-idrokning doimiy vazifalari 'Tashkil etish' (Organization) va 'Moslashuv' (Adaptation) hisoblanadi. 'Ko'nikish' atamasi bu kontekstda ilmiy asossiz.
+   Shveysariyalik psixolog J. Piajening aql-idrok nazariyasiga ko'ra, aql-idrokning
+✗ id=1153: Ta'limiy, tarbiyaviy va rivojlantiruvchi maqsadlar ta'riflari standart pedagogik psixologiyaga zid. Tarbiyaviy maqsad odatda dunyoqarashni (B), ta'limiy maqsad esa bilim va ko'nikmalarni (A) shakllantirishni o'z ichiga oladi. Javob kalitida bu tushunchalar noto'g'ri moslashtirilgan.
+   Yosh psixologiyasini o'rganishning maqsadlarini ularning mazmuniga moslashtiring
+✗ id=1265: Savol matnida mazmuniy ziddiyat bor: 'o'z xohish-istagini boshqa bolalar manfaatiga ortiq qo'yishi' degan ibora egoizmni anglatadi, ammo savolning birinchi qismi, izoh va to'g'ri javob (B) ijtimoiylashuv (bo'ysunish) jarayoniga to'g'ri keladi. Matndagi xato tufayli savol mantiqsiz ko'rinadi.
+   5-6 yoshli bolalar guruhida ular o'rtasida o'yin qoidalari bo'yicha ziddiyat yuz
+✗ id=1312: Pedagogikada 'Tarbiyaviy' va 'Ma'rifiy' vazifalar tushunchalari noto'g'ri izohlangan. Bilim berish (a, d) odatda 'ma'rifiy', dunyoqarashni kengaytirish (b) esa 'tarbiyaviy' vazifa hisoblanadi.
+   Yosh psixologiyasi fanining tarbiyaviy vazifalariga oid to'g'ri mulohazalarni an

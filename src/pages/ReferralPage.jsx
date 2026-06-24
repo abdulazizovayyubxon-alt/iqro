@@ -142,16 +142,6 @@ export default function ReferralPage() {
   // Dynamic max limit: If user successfully invited 5 (paid), give them +2 slots.
   const dynamicMax = stats?.paid >= 5 ? 7 : 5;
 
-  // ── Motivatsion daraja (tier) — ko'proq taklifga undaydi ──
-  const paidCount = stats?.paid || 0;
-  const tier = paidCount >= 5
-    ? { name: t('referral.tierAmbName'), desc: t('referral.tierAmbDesc'), color: 'var(--amber)', bg: 'var(--amber-bg)', pct: 100 }
-    : paidCount >= 3
-    ? { name: t('referral.tierOnWayName'), desc: t('referral.tierOnWayDesc', { count: 5 - paidCount }), color: 'var(--purple)', bg: 'var(--purple-bg)', pct: (paidCount / 5) * 100 }
-    : paidCount >= 1
-    ? { name: t('referral.tierActiveName'), desc: t('referral.tierActiveDesc', { count: 3 - paidCount }), color: 'var(--green)', bg: 'var(--green-bg)', pct: (paidCount / 5) * 100 }
-    : { name: t('referral.tierStartName'), desc: t('referral.tierStartDesc'), color: 'var(--accent)', bg: 'var(--blue-bg)', pct: 4 };
-
   return (
     <motion.div
       initial={{ opacity: 0 }} animate={{ opacity: 1 }}
@@ -171,25 +161,6 @@ export default function ReferralPage() {
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-
-          {/* ── Motivatsion daraja (tier) ── */}
-          <div style={{ background: tier.bg, border: `1.5px solid ${tier.color}`, borderRadius: 16, padding: '14px 16px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-              <span style={{ fontSize: 15, fontWeight: 800, color: tier.color }}>{tier.name}</span>
-              <span style={{ fontSize: 12, fontWeight: 700, color: tier.color, background: 'var(--bg2)', padding: '3px 10px', borderRadius: 20, whiteSpace: 'nowrap' }}>
-                {paidCount}/5
-              </span>
-            </div>
-            <div style={{ fontSize: 12.5, color: 'var(--text2)', lineHeight: 1.45, marginBottom: 10 }}>{tier.desc}</div>
-            <div style={{ height: 6, borderRadius: 3, background: 'var(--bg3)', overflow: 'hidden' }}>
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: `${Math.min(100, tier.pct)}%` }}
-                transition={{ duration: 0.9, ease: 'easeOut' }}
-                style={{ height: '100%', borderRadius: 3, background: tier.color }}
-              />
-            </div>
-          </div>
 
           {/* ── Bonus & Mukofotlar (birlashtirilgan) ── */}
           <div style={{ background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 18, overflow: 'hidden' }}>

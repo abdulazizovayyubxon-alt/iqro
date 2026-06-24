@@ -325,7 +325,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   >
                     👑
                   </motion.div>
-                  <h2 style={{ fontSize: 22, fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>IQRO Premium</h2>
+                  <h2 style={{ fontSize: 22, fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>IQRO Pro</h2>
                   <p style={{ fontSize: 13, color: '#64748B', margin: 0 }}>{t('premium.subtitle')}</p>
                 </div>
 

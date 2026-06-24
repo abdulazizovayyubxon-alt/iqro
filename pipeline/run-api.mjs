@@ -65,7 +65,10 @@ const needMut = !blocks.length || blocks.includes("mutaxassislik");
 let chunks = [];
 if (needMut) {
   if (!fs.existsSync(mutSource)) { console.error(`Xato: mutaxassislik manbasi yo'q: ${mutSource}\n(faqat ped/kasb uchun --blocks pedagogika,kasb bering)`); process.exit(1); }
-  chunks = chunkSpec(fs.readFileSync(mutSource, "utf8"), { maxChars: 2400 });
+  // mutSource = MUTAXASSISLIK manbasi (toza fan spec/darslik) — barcha bo'lagi mutaxassislik blokiga tegishli.
+  // classifyBlock matnda "pedagog/metodika" ko'rsa pedagogika deb teglashi mumkin (ayniqsa MTT/pedagogik fanlarda
+  // domen so'zlari shu) — bu mutaxassislik chunklarini --blocks mutaxassislik dan tushirib qoldiradi. Majburan tuzatamiz.
+  chunks = chunkSpec(fs.readFileSync(mutSource, "utf8"), { maxChars: 2400 }).map((c) => ({ ...c, block: "mutaxassislik" }));
 }
 if (fs.existsSync(SHARED_PED.spec)) chunks = chunks.concat(chunkSpec(fs.readFileSync(SHARED_PED.spec, "utf8"), { maxChars: 2400 }).filter((c) => c.block !== "mutaxassislik"));
 // Faqat tanlangan bloklar (mas: --blocks pedagogika,kasb)

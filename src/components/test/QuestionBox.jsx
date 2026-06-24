@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, Clock, Crown } from 'lucide-react';
+import { MessageCircle, Crown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import SafeHtml from '../shared/SafeHtml';
 import QuestionMedia from '../QuestionMedia';
+import TimerPill from './TimerPill';
 import { useAuth } from '../../context/AuthContext';
 
 const QuestionBox = ({
@@ -15,9 +16,9 @@ const QuestionBox = ({
   mode,
   timerMode,
   setTimerMode,
-  timeLeft,
   QUESTION_TIMER_SECONDS,
   accumulateTime,
+  onTimeExpire,
   motivationText,
   comboCount,
   state,
@@ -64,48 +65,21 @@ const QuestionBox = ({
           <motion.div initial={{ opacity: 0, scale: 0.8, y: -10 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0 }} style={{ textAlign: 'center', fontWeight: '800', fontSize: comboCount >= 10 ? '20px' : comboCount >= 5 ? '18px' : '16px', color: comboCount >= 10 ? '#FFD700' : comboCount >= 5 ? 'var(--amber)' : 'var(--green)', padding: '4px 0', marginBottom: '4px', textShadow: comboCount >= 10 ? '0 0 10px rgba(255,215,0,0.5)' : 'none' }}>{motivationText}</motion.div>
         )}
 
-        {/* ── Taymer / Sekundomer ── */}
+        {/* ── Taymer / Sekundomer (wall-clock, TimerPill) ── */}
         {mode === 'exam' && answers[currentQ] === undefined && (
-          <div 
-            onClick={() => {
+          <TimerPill
+            timerMode={timerMode}
+            duration={QUESTION_TIMER_SECONDS}
+            onExpire={onTimeExpire}
+            onToggle={() => {
               accumulateTime();
-              if (timerMode === 'countdown') {
-                setTimerMode('stopwatch');
-              } else if (timerMode === 'stopwatch') {
-                setTimerMode('off');
-              } else {
-                setTimerMode('countdown');
-              }
+              setTimerMode(
+                timerMode === 'countdown' ? 'stopwatch'
+                : timerMode === 'stopwatch' ? 'off'
+                : 'countdown'
+              );
             }}
-            className={`question-timer ${timerMode === 'countdown' && timeLeft <= 10 ? 'timer-danger' : timerMode === 'countdown' && timeLeft <= 20 ? 'timer-warning' : ''}`}
-            style={{ 
-              cursor: 'pointer', 
-              userSelect: 'none', 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '8px', 
-              padding: '6px 12px', 
-              background: 'var(--bg3)', 
-              borderRadius: '10px', 
-              width: 'fit-content', 
-              marginBottom: '12px',
-              border: '1px solid var(--border)',
-              transition: 'all 0.2s ease'
-            }}
-            title={t('test.timerToggleTitle')}
-          >
-            <Clock size={14} color="var(--text2)" />
-            <span style={{ fontWeight: 700, fontSize: '12px', color: 'var(--text2)' }}>
-              {timerMode === 'countdown' && t('test.timerCountdown', { sec: timeLeft })}
-              {timerMode === 'stopwatch' && t('test.timerStopwatch', { sec: timeLeft })}
-              {timerMode === 'off' && t('test.timerOff')}
-            </span>
-            {timerMode === 'countdown' && (
-              <div className="timer-bar-wrap" style={{ width: '40px', height: '4px', background: 'var(--border)', borderRadius: '2px', overflow: 'hidden' }}>
-                <div className="timer-bar-fill" style={{ height: '100%', width: `${(timeLeft / QUESTION_TIMER_SECONDS) * 100}%`, background: timeLeft <= 10 ? 'var(--red)' : timeLeft <= 20 ? 'var(--amber)' : 'var(--green)' }} />
-              </div>
-            )}
-          </div>
+          />
         )}
         {answers[currentQ] === -1 && <div style={{ color: 'var(--red)', fontSize: '13px', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '12px' }}>{t('test.timeUp')}</div>}
 
@@ -145,17 +119,15 @@ const QuestionBox = ({
               else bg = 'disabled';
             }
             return (
-              <motion.div
+              <div
                 key={i}
-                whileHover={!answered ? { y: -1, scale: 1.005 } : {}}
-                whileTap={!answered ? { scale: 0.99 } : {}}
                 className={`option ${bg} ${!answered ? 'hoverable' : ''}`}
                 onClick={() => handleSelect(currentQ, i)}
                 style={{ cursor: answered ? 'default' : 'pointer' }}
               >
                 <div className="opt-letter">{['A', 'B', 'C', 'D'][i]}</div>
                 <div className="opt-text">{opt.replace(/^[A-D]\)\s*/, '')}</div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

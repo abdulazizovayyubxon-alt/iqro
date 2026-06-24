@@ -14,8 +14,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
 import { useIsMobile } from '../hooks/useIsMobile';
-import PremiumModal from './PremiumModal';
-import { useModalBackButton } from './profile/useModalBackButton';
 import { useNotifications } from '../hooks/useNotifications';
 
 const Header = ({ theme, toggleTheme }) => {
@@ -27,10 +25,10 @@ const Header = ({ theme, toggleTheme }) => {
   const [daysLeft, setDaysLeft] = useState(0);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [, setIsOnline] = useState(navigator.onLine);
-  const [showPremium, setShowPremium] = useState(false);
-  const isPremium = user?.isPremium || false;
+  // isTruePremium = haqiqatda TO'LANGAN premium. Trial/urgency paytida isPremium=true
+  // bo'lsa-da bu false bo'ladi — shu sabab "status chip"ni faqat shu bilan ko'rsatamiz.
+  const isTruePremium = user?.isTruePremium || false;
   const { unreadCount } = useNotifications();
-  useModalBackButton(showPremium, () => setShowPremium(false));
   // O'ng tomon ikonka tugmalari o'lchami — a11y teginish zonasi min 44px (WCAG 2.5.5)
   const btnSize = 44;
   
@@ -173,12 +171,14 @@ const Header = ({ theme, toggleTheme }) => {
         </div>
 
         <div className="header-stats">
-          {/* Premium tugmasi (Wisdom uslubidagi pill) */}
+          {/* "Pro" pill — oltin ko'rinish; navigatsiya holatga qarab:
+              to'langan → profil (boshqarish), aks holda → sotib olish */}
           <motion.button
             className="header-premium-pill"
             whileTap={{ scale: 0.95 }}
-            onClick={() => navigate('/premium')}
-            title={isPremium ? t('header.premiumActive') : t('header.premiumBuy')}
+            onClick={() => navigate(isTruePremium ? '/profile' : '/premium')}
+            title={isTruePremium ? t('header.premiumActive') : t('header.premiumBuy')}
+            aria-label={isTruePremium ? t('header.premiumActive') : t('header.premiumBuy')}
           >
             <motion.span
               className="header-premium-gem"
@@ -189,7 +189,7 @@ const Header = ({ theme, toggleTheme }) => {
             >
               <Crown size={16} strokeWidth={2.4} />
             </motion.span>
-            <span className="header-premium-label">{t('header.premium')}</span>
+            <span className="header-premium-label">{t('header.pro')}</span>
           </motion.button>
 
           {/* Kun Countdown */}
@@ -412,8 +412,6 @@ const Header = ({ theme, toggleTheme }) => {
         )}
       </AnimatePresence>
 
-      {/* Premium sotib olish oynasi (header'dagi Premium tugmasi ochadi) */}
-      {showPremium && <PremiumModal isOpen={showPremium} onClose={() => setShowPremium(false)} />}
     </>
   );
 };

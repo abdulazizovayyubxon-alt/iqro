@@ -1,0 +1,51 @@
+▶ Hakam: jami 2306, tekshirilgan 2302, navbatda 4 (model zai-glm-4.7)
+[1-4/4] ... [Limit/Error 429, kalit index: 0, urinish 1/4]
+[Limit/Error 429, kalit index: 1, urinish 2/4]
+[Limit/Error 429, kalit index: 2, urinish 3/4]
+[Limit/Error 429, kalit index: 3, urinish 4/4]
+parse xato
+
+✓ Tekshirildi: 2302/2306 | SHUBHALI: 52
+Hisobot: pipeline/verify_report_mtt_logoped.json
+
+--- SHUBHALILAR (birinchi 20) ---
+✗ id=143: Izohda 'd' varianti ham to'g'ri ekanligi ('tovushlar buziladi (a, d)') tasdiqlangan. Agar 'd' to'g'ri bo'lsa, 'b' va 'd' ni o'z ichiga olgan B javob varianti ham to'g'ri bo'ladi. Natijada ikkita to'g'ri variant (B va D) mavjud bo'lib, javob aniq emas.
+   Rinolaliya va dislaliya nutq nuqsonlarini farqlashga oid to'g'ri mulohazalarni a
+✗ id=145: Savolda keltirilgan 'qo'pol artikulatsion buzilishlari bo'lmagan noto'g'ri talaffuz' ta'rifi Dislaliya (A variant) ga mos keladi. Rinofoniya (D variant) ovoz tembri buzilishi (burun ovozi) bo'lib, umumiy talaffuz buzilishi emas. Izohdagi ma'lumot ham ilmiy jihatdan shubhali.
+   Vatanimizdagi so'nggi yillarda olib borilgan ilmiy ishlarda qo'pol artikulatsion
+✗ id=263: Tartib noto'g'ri belgilangan. Logopedik amaliyotda odatiy tartib: avval tovushni izolyatsiyada o'rgatish (3), keyin uni nutqqa (so'zlarga) kiritib mustahkamlash (1), so'ngra o'xshash tovushlardan farqlash (differensiatsiya) (2) bosqichlari davom etadi. Differensiatsiya jarayoni avtomatizatsiyadan keyin o'tiladi.
+   Logopedik korreksiya jarayonida tovushlarni to'g'ri talaffuz qilishni shakllanti
+✗ id=270: Logopedik fizkulturasi odatda tayyorgarlik bosqichida o'tkazilib, bolani asosiy tuzatish bosqichi (artikulyatsion apparatni shakllantirish)ga tayyorlaydi. 'Nazorat bosqichiga' o'tishni yengillashtirishi metodologik jihatdan asossiz, to'g'riroq javob 'C' bo'lishi kerak.
+   Logopedik davolash fizkulturasi majmuini o'tkazish bolaning organizmini jismoniy
+✗ id=327: Belgilangan D javobi va izohdagi mantiq noto'g'ri. Alaliyali bolalarda nutq rivojlanish bosqichlari mantiqiy tartibda: avval tovush-bo'g'in tuzilishi (3) va lug'at (1) rivojlanadi, so'ngra mustaqil nutq (4) to'g'rilanadi, eng oxirida esa murakkab monologik nutq (2) shakllanadi. To'g'ri javob B (3, 1, 4, 2) bo'lishi kerak.
+   Alaliyali bolaning nutqiy imkoniyatlarining rivojlanish bosqichlarini to'g'ri ke
+✗ id=421: Savolda berilgan 'qo'pol artikulatsion buzilishlari bo'lmagan noto'g'ri talaffuz' ta'rifi logopediyada Dislaliya (C) tushunchasiga to'g'ri keladi. Rinofoniya (D) ovoz tembri buzilishi (burunlashgan ovoz) bilan bog'liq bo'lib, u odatda anatomik nuqsonlar (qo'pol buzilishlar) natijasida yuzaga keladi.
+   O'zbekiston logopediyasida so'nggi yillarda qo'pol artikulatsion buzilishlari bo
+✗ id=462: Ketma-ketlik mantiqsiz: logopedik ta'sir odatda tovush-bo'g'in tuzilishi va lug'atni rivojlantirishdan boshlanadi, monolog nutqda sabab-oqibat munosabatlarini egallash esa murakkabroq, keyingi bosqich hisoblanadi.
+   Alaliyali bolada logopedik ta'sir ostida nutq imkoniyatlari ijobiy o'zgarganidag
+✗ id=526: Rezina trubka bilan davolash (intubatsiya) muddati odatda 1-2 oy (D variant)ni tashkil qiladi, 3-5 oy (A variant) davom etishi tibbiy jihatdan asossiz va shilliq qavatga zarar yetkazishi xavfi bor.
+   Bo'g'izdagi teshikni davolash va retsidivga qarshi kurashish maqsadida rezina tr
+✗ id=625: Gutsman testida ochiq rinolaliya belgisi sifatida burunni berkitganda tovushning 'eshitilmasligi yoki pasayishi' noto'g'ri ko'rsatilgan. Ochiq rinolaliyada burunni berkitganda tovush (rezonans) normallashadi (burunlashuvi yo'qoladi), yo'qolmaydi. Izohdagi 'a' tovushi uchun burun rezonansi zarur degan fikr ham faktik xatodir.
+   Logoped bolada ochiq rinolaliya shubhasi bilan Gutsman funksional tekshiruv usul
+✗ id=649: Logopedik ishda diagnostika (2) o'tkazilgandan so'ng, olingan ma'lumotlar tahlil qilinib (1), keyin korreksiya vazifalari tanlanadi (3). D variant (2, 1, 3, 4) mantiqiy, belgilangan A variantida tahlil jarayondan keyin qoldirilgan.
+   Logoped disgrafiyali bola bilan ishlayotganda, korreksiyalash davrining ma'lum b
+✗ id=656: Lug'at zaxirasi (4) nutqning asosi bo'lgani uchun mustaqil nutq (1) shakllanishidan oldin yoki bir vaqtda rivojlanadi. Lug'at o'sishi nutq to'g'rilanishidan keyin kelishi (A variant) metodik jihatdan noto'g'ri.
+   Alaliyali bolada tuzatish ishlari olib borilganda nutqiy imkoniyatlar rivojlanis
+✗ id=690: Izohda berilgan mantiqiy ketma-ketlik (1-4-3-2) belgilangan javob (B: 1-3-4-2) bilan mos kelmaydi.
+   Logoped bolada buzilgan tovushni to'g'rilash jarayonida quyidagi bosqichlarni ma
+✗ id=722: Lug'atning o'sishi (3) mustaqil nutqning to'g'rilanishi (2) dan oldin sodir bo'ladi. Lug'at bo'lmay nutq to'g'rilanishi mumkin emas. Mantiqiy ketma-ketlik noto'g'ri belgilangan (to'g'ri variant: 1, 3, 2, 4).
+   Tuzatish ishlari natijasida alaliyali bolaning nutqida kuzatiladigan ijobiy o'zg
+✗ id=733: Ontogenez tamoyiliga ko'ra, bola rivojlanishi odatda predmetli-amaliy faoliyatdan (3) boshlanib, keyin o'yin faoliyatiga (2) va so'ngra o'quv faoliyatiga (1) o'tadi. Belgilangan javob (D) va izohdagi tartib faktik jihatdan noto'g'ri, to'g'ri javob (C) bo'lishi kerak.
+   Disleksiya bilan og'rigan bola bilan tuzatish ishlarini ontogenez tamoyiliga aso
+✗ id=760: Berilgan alomatlar (noto'g'ri gaplar, gapni tugatolmaslik) nutqning grammatik tuzilishi buzilishini, ya'ni 'Agrammatizm'ni ko'rsatadi. 'Fikrlar tarqoqligi' esa kengroq psixologik tushuncha bo'lib, logopedik nuqtai nazardan aniq nutq qoidabuzarligi (agrammatizm) ko'rsatilgan variant to'g'riroq javob bo'lishi kerak.
+   Alaliyali bola o'qituvchi beradigan savolga javob berayotganda, bir nechta noto'
+✗ id=776: Savol va izohda faktik xato bor: ochiq rinolaliyada burun yo'li bekitilganda 'a' tovushi 'eshitilmaydi' degan fikr noto'g'ri (tovush og'iz orqali eshitiladi, faqat burun ohangi yo'qoladi). Izoh ham mazmunan javobni tasdiqlmaydi.
+   Logoped bolada ochiq rinolaliyani aniqlash maqsadida Gutsman usulini qo'llaydi. 
+✗ id=887: Tovushni o'zlashtirishning odatiy logopedik ketma-ketligi: izolyatsiyalangan talaffuz (3) -> nutqqa kiritish va mustahkamlash (1) -> differensiatsiya (2). D javobidagi 3-2-1 tartibi (avval farqlash, keyin nutqqa kiritish) metodik jihatdan asossiz.
+   Logopedik ishda tovushlarni to'g'ri talaffuz qilish, ularni farqlash va nutqga m
+✗ id=1003: Tahlil va rejalashtirish jarayonining mantiqiy ketma-ketligi odatda: Baholash (1) -> Nuqson belgilarini aniqlash (2) -> Ikkilamchi kamchiliklarning oldini olish choralarini belgilash (3) -> Tuzatish kompleksini ishlab chiqish (4) bo'ladi (Variant B). Belgilangan D javobi (2, 1, 4, 3) mantiqiy emas, chunki reja (4) oldin profilaktika choralarini (3) belgilash lozim.
+   Logoped disleksiya shubhasi bilan kelgan bola holatini tuzatish nuqtayi nazarida
+✗ id=1050: Savol 'nutq tizimi' nomini so'rayapti. Defektologiyada nutq tizimlari odatda fonetik-fonematik va leksik-grammatik tizimlarga bo'linadi. Fazoviy munosabatlarni ifodalash 'leksik-grammatik nutq tizimi'ga kiradi. 'Mantiqiy-grammatik nutq tizimi' atamasi mustaqil tizim sifatida ishlatilmaydi, balki leksik-grammatik tizim tarkibidagi qurilmalarni anglatadi. Shuning uchun C variant to'g'riroq javob.
+   Logoped alaliyali boladan rasm asosida hikoya qilishni so'radi. Bola 'kitob stol
+✗ id=1055: Mantiqiy xato: Nutq rivojlanishida lug'at tarkibi (4) mustaqil nutq (3) va sabab-oqibat munosabatlari (2) dan oldin shakllanadi. Berilgan javob (B: 2, 3, 4, 1) va boshqa variantlar ham nutq rivojlanish psixologiyasi va logopedik amaliyotga zid tartibni taklif qiladi.
+   Alaliyali bolada logopedik ta'sir natijasida nutq ijobiy o'zgarishlarning quyida

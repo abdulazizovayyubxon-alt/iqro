@@ -75,8 +75,8 @@ const SmartBottomSheet = ({
               <div style={{ flex: 1, overflowY: 'auto', padding: '16px 20px 30px' }}>
                 {/* Subjects Grid */}
                 <div style={{ marginBottom: '24px' }}>
-                  <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text3)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{t('smartSheet.subjects')}</div>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '8px' }}>
+                  <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text3)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.6px' }}>{t('smartSheet.subjects')}</div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
                     {SUBJECTS.map(subj => {
                       const Icon = subj.icon;
                       const isSelected = subj.id === state.activeCategory;
@@ -85,17 +85,23 @@ const SmartBottomSheet = ({
                           key={subj.id}
                           onClick={() => updateState({ activeCategory: subj.id, topicId: -1 })}
                           style={{
-                            display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 12px', minHeight: 44,
-                            borderRadius: '14px', border: '1.5px solid',
+                            display: 'flex', alignItems: 'center', gap: '10px', padding: '11px 12px', minHeight: 60,
+                            borderRadius: '16px', border: '1.5px solid',
                             background: isSelected ? 'var(--blue-bg)' : 'var(--bg3)',
                             borderColor: isSelected ? 'var(--accent)' : 'transparent',
-                            color: isSelected ? 'var(--accent2)' : 'var(--text2)',
-                            fontSize: '13px', fontWeight: 700, cursor: 'pointer', transition: 'all 0.2s',
-                            textAlign: 'left'
+                            color: isSelected ? 'var(--accent2)' : 'var(--text)',
+                            cursor: 'pointer', transition: 'all 0.18s', textAlign: 'left'
                           }}
                         >
-                          <Icon size={16} />
-                          <span style={{ flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{subj.name}</span>
+                          <span style={{
+                            flexShrink: 0, width: 34, height: 34, borderRadius: 11,
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            background: isSelected ? 'var(--accent)' : 'var(--bg2)',
+                            color: isSelected ? '#fff' : 'var(--accent2)'
+                          }}>
+                            <Icon size={17} />
+                          </span>
+                          <span style={{ flex: 1, fontSize: '13px', fontWeight: 700, lineHeight: 1.25, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{subj.name}</span>
                         </button>
                       );
                     })}
@@ -104,43 +110,44 @@ const SmartBottomSheet = ({
 
                 {/* Topics List */}
                 <div>
-                  <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text3)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{t('smartSheet.topics')}</div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text3)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.6px' }}>{t('smartSheet.topics')}</div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     <button
                       onClick={() => { setTopicId(-1); setShowSelectorDrawer(false); }}
                       style={{
-                        display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px',
-                        borderRadius: '14px', border: '1px solid',
-                        background: topicId === -1 ? 'var(--bg2)' : 'transparent',
+                        display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '13px 16px', minHeight: 52,
+                        borderRadius: '14px', border: '1.5px solid',
+                        background: topicId === -1 ? 'var(--blue-bg)' : 'var(--bg3)',
                         borderColor: topicId === -1 ? 'var(--accent)' : 'transparent',
-                        color: topicId === -1 ? 'var(--text)' : 'var(--text2)',
-                        fontSize: '14px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s', textAlign: 'left'
+                        color: topicId === -1 ? 'var(--accent2)' : 'var(--text)',
+                        fontSize: '14px', fontWeight: 700, cursor: 'pointer', transition: 'all 0.18s', textAlign: 'left'
                       }}
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <span style={{ fontSize: '16px' }}>📚</span> {t('common.allTopics')}
-                      </div>
-                      {topicId === -1 && <Check size={16} color="var(--accent)" />}
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <span style={{ fontSize: '17px' }}>📚</span> {t('common.allTopics')}
+                      </span>
+                      {topicId === -1 && <Check size={17} color="var(--accent)" style={{ flexShrink: 0 }} />}
                     </button>
-                    {TOPICS.filter(t => Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory).map(t => {
-                      const isSelected = topicId === t.id;
+                    {TOPICS.filter(top => Array.isArray(top.category) ? top.category.includes(state.activeCategory) : top.category === state.activeCategory).map(top => {
+                      const isSelected = topicId === top.id;
                       return (
                         <button
-                          key={t.id}
-                          onClick={() => { setTopicId(t.id); setShowSelectorDrawer(false); }}
+                          key={top.id}
+                          onClick={() => { setTopicId(top.id); setShowSelectorDrawer(false); }}
                           style={{
-                            display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px',
-                            borderRadius: '14px', border: '1px solid',
-                            background: isSelected ? 'var(--bg2)' : 'transparent',
+                            display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '13px 16px', minHeight: 52,
+                            borderRadius: '14px', border: '1.5px solid',
+                            background: isSelected ? 'var(--blue-bg)' : 'var(--bg3)',
                             borderColor: isSelected ? 'var(--accent)' : 'transparent',
-                            color: isSelected ? 'var(--text)' : 'var(--text2)',
-                            fontSize: '14px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s', textAlign: 'left'
+                            color: isSelected ? 'var(--accent2)' : 'var(--text)',
+                            fontSize: '14px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.18s', textAlign: 'left'
                           }}
                         >
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                            <span style={{ fontSize: '16px' }}>{t.icon}</span> {t.name}
-                          </div>
-                          {isSelected && <Check size={16} color="var(--accent)" />}
+                          <span style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+                            <span style={{ fontSize: '17px', flexShrink: 0 }}>{top.icon}</span>
+                            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{top.name}</span>
+                          </span>
+                          {isSelected && <Check size={17} color="var(--accent)" style={{ flexShrink: 0 }} />}
                         </button>
                       );
                     })}

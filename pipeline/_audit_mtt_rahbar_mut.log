@@ -1,0 +1,59 @@
+▶ Hakam: jami 2300, tekshirilgan 2256, navbatda 44 (model zai-glm-4.7)
+[1-4/44] ... ok (shubhali jami: 56)
+[5-8/44] ... ok (shubhali jami: 57)
+[9-12/44] ... ok (shubhali jami: 57)
+[13-16/44] ... ok (shubhali jami: 57)
+[17-20/44] ... ok (shubhali jami: 57)
+[21-24/44] ... ok (shubhali jami: 57)
+[25-28/44] ... ok (shubhali jami: 57)
+[29-32/44] ... ok (shubhali jami: 58)
+[33-36/44] ... ok (shubhali jami: 58)
+[37-40/44] ... ok (shubhali jami: 58)
+[41-44/44] ... ok (shubhali jami: 58)
+
+✓ Tekshirildi: 2300/2300 | SHUBHALI: 58
+Hisobot: pipeline/verify_report_mtt_rahbar_mut.json
+
+--- SHUBHALILAR (birinchi 20) ---
+✗ id=24: Maktabgacha ta'lim tashkilotlarida pedagogik diagnostika odatda o'quv yilining boshida, o'rtasida va oxirida (3 marta) amalga oshiriladi. Savolda faqat 'o'rtasida va oxirida' variantlari berilgan bo'lib, boshlang'ich davr tushurib qoldirilgan.
+   Maktabgacha ta'lim muassasalarida pedagogik diagnostika amalga oshiriladigan bel
+✗ id=38: "Ilk qadam" o'quv dasturi 2017 yil 5 sentyabrda O'zbekiston Respublikasi Vazirlar Mahkamasining 831-son qarori bilan tasdiqlangan, 2018 yilda emas.
+   Maktabgacha ta'lim tashkilotlarida qo'llaniladigan takomillashtirilgan "Ilk qada
+✗ id=107: Maktabgacha ta'lim davlat standartiga ko'ra, bolalardan lotin alifbosida 'mukammal o'qish va yozish' talab qilinmaydi, balki o'qish va yozishga tayyorgarlik ko'rish ko'zda tutiladi. Savolda yosh psixologiyasi va davlat talablariga zid talab qo'yilgan.
+   Maktabgacha ta'lim muassasasi maktab bilan aloqa o'rnatib, bir yilga mo'ljallang
+✗ id=149: Maktabgacha ta'lim muassasalari pedagogik kengashi (yig'ilish) 'Maktabgacha ta'lim tashkilotlari to'g'risida'gi Nizomga ko'ra kamida chorakda bir marta o'tkaziladi. 1-2 yoshli guruh uchun maxsus 'har oyda' o'tkazish talabi mavjud emas. Sentyabr oyida o'tkazilgandan keyingi navbatdagi yig'ilish dekabr oyida bo'lishi kerak (C javobi to'g'ri).
+   MTT o'rinbosari 1 yoshdan 2 yoshgacha bo'lgan 'Kaptarlar' guruhida navbatdagi pe
+✗ id=180: Maktabgacha ta'lim muassasalarida pedagogik diagnostika (monitoring) o'quv yilida 3 marta (boshida, o'rtasida, oxirida) o'tkazilishi davlat talablariga muvofiq belgilangan. Javobda boshlang'ich diagnostika hisobga olinmagan.
+   Maktabgacha ta'lim muassasasida pedagogik diagnostika o'tkazish tartibi belgilab
+✗ id=207: Ketma-ketlik mantiqsiz: Psixolog-pedagogik xulosadan so'ng avval individual ta'lim dasturi (2) ishlab chiqilishi, keyin shunga asosan sharoitlar (3) jihozlanishi kerak. Dastur sharoitlar talabini belgilab beradi, shuning uchun to'g'ri javob D (1-2-3-4) bo'lishi kerak edi.
+   Alohida ehtiyojga ega bo'lgan bolani MTTga qabul qilish va ta'lim jarayonini tas
+✗ id=216: Pedagogik diagnostika odatda o'quv yilining boshida (kirish nazorati) va oxirida (yakuniy nazorati) o'tkaziladi. Boshlang'ich ko'rsatkichsiz dinamikani aniqlab bo'lmaydi, shuning uchun A variant (boshida va oxirida) aniqroq to'g'ri javob hisoblanadi.
+   Maktabgacha ta'lim muassasalarida pedagogik diagnostika o'tkaziladigan muddatni 
+✗ id=229: Belgilangan javob (D) noto'g'ri. Fiziologik xususiyatlarga mos keluvchi to'g'ri harakat A variantida (dinamik va statik faoliyatni almashtirish) keltirilgan. Izoh ham shuni tasdiqlaydi.
+   Maktabgacha ta'lim muassasasi rahbari kun tartibini tuzish jarayonida bolalarnin
+✗ id=261: Izohda mantiqiy ziddiyat va xato mavjud: Izohda 'Variant B: 1, 2, 3, 4' deb ko'rsatilgan (aslida bu A variant), shu bilan birga izoh mantiqi 'me'yoriy hujjatlar asosida konsepsiya ishlab chiqiladi' degani D variant (1, 2, 4, 3) to'g'riligini ko'rsatadi, lekin javob sifatida A belgilangan.
+   Maktabgacha ta'lim konsepsiyasining huquqiy-nazariy asosini tashkil etuvchi hujj
+✗ id=269: "Kalendar reja" tushunchasiga mos keladigan ta'rif sifatida keltirilgan C variant (bolalarning rivojlanishini kuzatuv hujjati) noto'g'ri, bu esa savolda mazmunan xatoga olib keladi.
+   Pedagoglarni asosiy ish hujjatlarini ularning mazmuniga moslashtiring:
+1. Ish ju
+✗ id=316: Davlat o'quv dasturlari barcha MTTda majburiy emas, xususiy MTTlarda muqobil dasturlar qo'llanishi mumkin. Shuning uchun 'a' mulohazasi noto'g'ri, to'g'ri javob 'b, d' bo'lishi kerak.
+   Maktabgacha ta'lim dasturlari turlari va qo'llanilishiga oid to'g'ri mulohazalar
+✗ id=389: Savol matnida qaysi tarbiya turiga oid vaziyatlarni aniqlash kerakligi ko'rsatilmagan (masalan, 'mehnat tarbiyasiga oid' degan shart yo'q). B variant (mehnat/ekologik) va D variant (estetik) ham o'z ichiga mos juftliklarni olgani uchun javob aniq emas.
+   Quyidagi vaziyatlarda amalga oshirayotgan tarbiya turlarini to'g'ri aniqlang:
+a)
+✗ id=403: Maktabgacha yoshdagi bolalar rivojlanishiga qo'yiladigan davlat talablari 2017 yilda (06.09.2017, PQ-841) tasdiqlangan, 2018 yilda emas.
+   Maktabgacha yoshdagi bolalar rivojlanishiga qo'yiladigan davlat talablari qaysi 
+✗ id=451: Mantiqiy ketma-ketlik buzilgan: 'Davlat talablariga muvofiqligi asosida' (4) boshqa qadamlar uchun asos bo'lgani uchun boshida kelishi kerak. To'g'ri javob D (4, 3, 1, 2).
+   Maktabgacha ta'lim muassasasida pedagogik diagnostika o'tkazish muddatlarini to'
+✗ id=460: Metodik tavsiyalarga ko'ra, 1-3 yoshli bolalar guruhlari uchun pedagogik yig'ilishlar yiliga 2 marta, 3-7 yoshli bolalar uchun 4 marta o'tkazilishi belgilangan. 2.5 yosh 1-3 yosh toifasiga kiradi, shuning uchun to'g'ri javob 2 marta (D) bo'lishi kerak.
+   MTT direktor o'rinbosari kelgusi chorakdagi pedagogik yig'ilishlar jadvalini tuz
+✗ id=467: Maktabgacha ta'lim tashkilotlari to'g'risida gi Nizom 2018-yilda (06.11.2018, 839-son) tasdiqlangan, 2017-yil esa 'Maktabgacha ta'lim va tarbiya to'g'risida'gi Qonun qabul qilingan yil hisoblanadi.
+   Maktabgacha ta'lim muassasalari faoliyatini tartibga soluvchi 'Maktabgacha ta'li
+✗ id=485: Maktabgacha ta'lim muassasalarida pedagogik diagnostika o'tkazish tartibi-qoidasiga ko'ra, diagnostika o'quv yilining boshida (sentyabr-oktabr) va oxirida (aprel-may) o'tkaziladi. 'O'rtasida va oxirida' degan variant va belgilangan javob faktik xatodir.
+   Maktabgacha ta'lim muassasalarida pedagogik diagnostika o'tkazish tartibi-qoidas
+✗ id=529: C varianti (o'yin vaqtini cheklash) Bola huquqlari to'g'risidagi konventsiyaning 31-moddasiga (dam olish va o'ynash huquqi) zid bo'lishi mumkin, izohda esa bu noto'g'ri tarbiya usuli sifatida keltirilgan. Majburan MTTga berish (A varianti) esa ta'lim olish huquqining buzilishi emas, balki ota-onaning vasiylik vazifasi doirasidagi qaror hisoblanadi.
+   MTTda "Bolaning huquqlari" mavzusida ota-onalar uchun seminar o'tkazilmoqda. Sem
+✗ id=579: Buzilgan buyumni ta'mirlash ko'nikmasi 'Mehnat tarbiyasi'ning (ayniqsa qo'lda mehnat turi) asosiy tarkibiy qismi hisoblanadi, shuning uchun A variant belgilangan javobdan ko'ra to'g'riroqdir.
+   MTT direktor o'rinbosari moddiy-texnika bazasini yangilash jarayonida pedagoglar
+✗ id=648: 'Ilk qadam' dasturi 2017 yil (sentyabr)da qabul qilingan, 'Nizom' esa 2017 yil (noyabr)da. To'g'ri ketma-ketlik 2, 1, 4, 3 bo'lishi kerak edi, ammo bunday variant yo'q. Izohdagi sana (2018) xato.
+   Maktabgacha ta'lim sohasidagi quyidagi asosiy normativ-hujjatlarning qabul qilin

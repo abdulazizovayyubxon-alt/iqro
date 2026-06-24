@@ -346,7 +346,7 @@ try {
       if (docSnap.exists() && docSnap.data().plans) {
         setTariffs(docSnap.data().plans);
       } else {
-        setTariffs([{ id: 'lifetime', name: 'Cheksiz Premium', price: 15000, durationMonths: 999 }]);
+        setTariffs([{ id: 'lifetime', name: 'Cheksiz Pro', price: 15000, durationMonths: 999 }]);
       }
     });
     return () => unsub();
@@ -499,7 +499,7 @@ try {
     try {
       await updateDoc(doc(db, 'users', userId), { isPremium: !currentStatus });
       setUsers(prev => prev.map(u => u.id === userId ? { ...u, isPremium: !currentStatus } : u));
-      showToast("Premium holati o'zgartirildi!", 'success');
+      showToast("Pro holati o'zgartirildi!", 'success');
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
   };
 
@@ -546,7 +546,7 @@ try {
 
   const exportUsers = () => {
     exportCSV('foydalanuvchilar',
-      ['Ism', 'Email', 'Telefon', 'Premium', 'Rol', "Ro'yxatdan o'tgan"],
+      ['Ism', 'Email', 'Telefon', 'Pro', 'Rol', "Ro'yxatdan o'tgan"],
       filteredUsers.map(u => [
         u.displayName || '',
         u.email || '',
@@ -1359,7 +1359,7 @@ try {
                     <div className="admin-user-details">
                       <div className="admin-user-name-line">
                         <span className="admin-user-name-sm">{u.displayName || '—'}</span>
-                        {u.isPremium && <span style={{ fontSize: 11 }} title="Premium">⭐</span>}
+                        {u.isPremium && <span style={{ fontSize: 11 }} title="Pro">⭐</span>}
                         {u.role === 'admin' && <span style={{ fontSize: 11 }} title="Admin">🛡️</span>}
                       </div>
                       <div className="admin-user-subtext">{u.email || u.phoneNumber || 'Identifikator yo\'q'}</div>
@@ -1369,7 +1369,7 @@ try {
                     <button 
                       onClick={() => togglePremium(u.id, u.isPremium)} 
                       className={`action-btn-sm ${u.isPremium ? 'premium-active' : ''}`}
-                      title={u.isPremium ? "Premium statusini bekor qilish" : "Premium statusini yoqish"}
+                      title={u.isPremium ? "Pro statusini bekor qilish" : "Pro statusini yoqish"}
                     >
                       ⭐
                     </button>
@@ -1411,7 +1411,7 @@ try {
             </div>
             <div className="stat-box glass-panel">
               <div className="stat-box-val" style={{ color: 'var(--amber)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}><Crown size={18} /> {overview?.premium ?? '—'}</div>
-              <div className="stat-box-lbl">Premium</div>
+              <div className="stat-box-lbl">Pro</div>
             </div>
             <div className="stat-box glass-panel">
               <div className="stat-box-val" style={{ color: 'var(--green)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}><Database size={18} /> {overview?.questions ?? '—'}</div>
@@ -1472,7 +1472,7 @@ try {
       {tab === 'tariffs' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
-            <div className="admin-section-title"><Zap size={18} style={{ color: 'var(--amber)' }} /> Premium Tariflar</div>
+            <div className="admin-section-title"><Zap size={18} style={{ color: 'var(--amber)' }} /> Pro Tariflar</div>
             <button className="btn btn-primary" onClick={() => { setIsAddingTariff(true); setEditingTariff(null); setNewTariff({ id: '', name: '', price: 0, durationMonths: 1 }); }}>
               <Plus size={14} /> Yangi tarif
             </button>
@@ -1740,7 +1740,7 @@ try {
                                 onClick={() => handleCancelReferralPremium(r.referredId, r.id)}
                                 title="Bepul premiumni bekor qilish"
                               >
-                                ✕ Premium bekor qilish
+                                ✕ Pro bekor qilish
                               </button>
                             )}
                           </td>

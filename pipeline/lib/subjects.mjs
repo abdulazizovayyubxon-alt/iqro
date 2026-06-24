@@ -65,13 +65,15 @@ export const SUBJECTS = {
     name: "MTT tarbiyachi", category: "mtt",
     corpus: ["fan/mtt_tarbiyachi"],
     namuna: ["fan/mtt_tarbiyachi_savollar.json", "scratch/extracted_mtt/word/media"],
-    spec: "scratch/МТТ тарбиячи педагоглари я_text.txt",
+    spec: "fan/spes/_txt/mtt_tarbiyachi_spec_clean.txt",   // TOZA mutaxassislik (1.1-1.3, ped/kasb dumi+adabiyot kesilgan). Ped+kasb=--blocks bilan SHARED_PED dan
+    book: "scratch/mtt_tarbiyachi_book.txt",   // Babayeva nutq o'stirish metodikasi (lotin matn-qatlamli) — mutaxassislik fakt grounding. Qodirova/Yusupova/Shodmonova maktabgacha=skan (kam matn, tashlangan)
   },
   mtt_rahbar: {
     name: "MTT rahbar (direktor o'rinbosari)", category: "mtt_rahbar",
     corpus: ["fan/mtt_rahbar"],
     namuna: ["fan/mtt_rahbar_savollar.json", "scratch/extracted_mtt_rahbar/word/media"],
-    spec: "scratch/МТТ директор ўринбосари_text.txt",
+    spec: "fan/spes/_txt/mtt_rahbar_spec_clean.txt",   // TOZA mutaxassislik (1.1-1.2 boshqaruv, ped/kasb dumi+adabiyot kesilgan). Ped+kasb=--blocks bilan SHARED_PED dan
+    book: "scratch/mtt_rahbar_book.txt",   // Sadikova Maktabgacha pedagogika 2013 (lotin) — boshqaruv/mutaxassislik grounding. Qodirova maktabgacha=skan (tashlangan)
   },
 
   // ── B) App kategoriya, allaqachon to'la (src/data) ──
@@ -114,13 +116,15 @@ export const SUBJECTS = {
     name: "MTT logoped", category: "mtt_logoped", isNew: true,
     corpus: [],
     namuna: ["fan/mtt_logoped_savollar.json", "fan 2/MTT logoped"],
-    spec: "scratch/mtt_logoped_spec.txt", specPdf: "fan 2/МТТ логопедия я.pdf",
+    spec: "fan/spes/_txt/mtt_logoped_spec_clean.txt",   // TOZA mutaxassislik (1.1-1.8, ped/kasb dumi+adabiyot kesilgan). Ped+kasb=o'rta ta'lim SHARED_PED dan (logoped maktabda ishlaydi)
+    book: "scratch/mtt_logoped_book.txt",   // Ayupova Logopediya (lotin, o'zak) + Filicheva Osnovy — mutaxassislik fakt grounding. Arxipova/Volkova/ndpi=skan yoki rus-kirill (tashlangan)
   },
   mtt_psixolog: {
     name: "MTT psixolog", category: "mtt_psixolog", isNew: true,
     corpus: [],
     namuna: ["fan/mtt_psixolog_savollar.json", "fan 2/MTT psixolog"],
-    spec: "scratch/mtt_psixolog_spec.txt", specPdf: "fan 2/МТТ психологлари я.pdf",
+    spec: "fan/spes/_txt/mtt_psixolog_spec_clean.txt",   // TOZA mutaxassislik (1.1-1.5, ped/kasb dumi+adabiyot kesilgan). Ped+kasb=--blocks bilan SHARED_PED dan
+    book: "scratch/mtt_psixolog_book.txt",   // Jalilova/Nishonova/Yosh davrlari/Abdullaeva/Hudoyqulov/Inklyuziv + G'oziev (qisman matn) — psixologiya fakt grounding
   },
 };
 

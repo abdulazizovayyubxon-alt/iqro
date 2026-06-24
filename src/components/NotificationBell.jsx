@@ -72,7 +72,8 @@ const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', 
             <div className="notif-list">
               {notifications.length === 0 ? (
                 <div className="notif-empty">
-                  {t('notifications.empty')}
+                  <Bell size={30} style={{ opacity: 0.25 }} />
+                  <span>{t('notifications.empty')}</span>
                 </div>
               ) : (
                 notifications.map((n) => (

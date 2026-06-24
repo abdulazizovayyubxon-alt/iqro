@@ -161,7 +161,7 @@ function App() {
     '/test': 'Test', '/exam': 'Imtihon', '/review': 'Takrorlash',
     '/leaderboard': 'Reyting', '/achievements': 'Yutuqlar',
     '/admin': 'Admin', '/migration': 'Migratsiya',
-    '/profile': 'Profil', '/settings': 'Sozlamalar', '/premium': 'Premium', '/about': 'Biz haqimizda'
+    '/profile': 'Profil', '/settings': 'Sozlamalar', '/premium': 'Pro', '/about': 'Biz haqimizda'
   };
 
   useEffect(() => {

@@ -13,7 +13,7 @@ import { Ticket, Plus, Trash2, Users, RefreshCw } from 'lucide-react';
 
 const TYPE_LABELS = {
   percent: { label: 'Chegirma (%)', icon: '🏷️', desc: "Keyingi to'lovdan foiz chegirma" },
-  days: { label: 'Premium kunlar', icon: '⏰', desc: 'Darhol premium kunlar beradi' },
+  days: { label: 'Pro kunlar', icon: '⏰', desc: 'Darhol Pro kunlar beradi' },
   team: { label: 'Maktab paketi', icon: '🏫', desc: "Jamoaviy kod — har o'qituvchi o'zi kiritadi" },
 };
 
@@ -238,7 +238,7 @@ export default function PromoTab() {
 
         <div style={{ fontSize: 11, color: 'var(--text3)', marginBottom: 12 }}>
           {TYPE_LABELS[form.type].desc}
-          {form.type === 'team' && " — sotuv Telegram orqali kelishilgach, kodni maktabga bering; har o'qituvchi Premium oynasida o'zi kiritadi."}
+          {form.type === 'team' && " — sotuv Telegram orqali kelishilgach, kodni maktabga bering; har o'qituvchi Pro oynasida o'zi kiritadi."}
         </div>
 
         <button className="btn btn-primary" onClick={handleCreate} disabled={creating}>

@@ -1,0 +1,16 @@
+▶ Hakam: jami 609, tekshirilgan 599, navbatda 10 (model zai-glm-4.7)
+[1-5/10] ... ok (shubhali jami: 4)
+[6-10/10] ... ok (shubhali jami: 4)
+
+✓ Tekshirildi: 609/609 | SHUBHALI: 4
+Hisobot: pipeline/verify_report_mtt_psixolog_pedkasb.json
+
+--- SHUBHALILAR (birinchi 20) ---
+✗ id=151: C (b, e) variantidagi ikkala mulohaza ham to'g'ri. 'e' varianti (o'quvchini rag'batlantirish) qo'llab-quvvatlovchi muhitning muhim tarkibiy qismi hisoblanadi. Shunday qilib, D (b, d) bilan bir qatorda C varianti ham to'liq to'g'ri javob bo'lishi mumkin, bu esa savolni shubhaliga soladi.
+   Xavfsiz va qo'llab-quvvatlovchi ta'lim muhitini tashkil etishga oid to'g'ri mulo
+✗ id=302: Mantiqiy ketma-ketlik noto'g'ri. Hamkorlikda avvalo muloqot o'rnatiladi (3), keyin strategiya (4) va reja (1) ishlab chiqiladi. Variant B (2, 3, 4, 1) mantiqan to'g'riroq.
+   Psixolog o'quvchining o'qishini yaxshilash maqsadida ota-onalar bilan hamkorlik 
+✗ id=386: "Sug'urta" (eski bilimlarni tekshirish) bosqichi dars oxirida emas, balki yangi mavzuni tushuntirishdan oldin kelishi kerak. Belgilangan javob (C) noto'g'ri, to'g'ri ketma-ketlik B (1-2-4-3) yoki A (2-1-4-3) bo'lishi mumkin.
+   MTT psixologi yangi mavzu bo'yicha dars tuzilishini loyihalashtirmoqda. Dars vaq
+✗ id=404: Mantiqiy xato: Ziddiyatning sabablarini aniqlash (2) ishtirokchilarning fikrini tinglashdan (4) oldin bo'lishi mumkin emas. To'g'ri ketma-ketlik 4-2-1-3 bo'lishi kerak.
+   Psixolog darsda ikki talaba o'rtasidagi kelishmovchilikni (nizoni) hal qilish uc

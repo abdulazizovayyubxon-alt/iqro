@@ -1,0 +1,38 @@
+[
+  {
+    "id": 83,
+    "sabab": "Barcha bayonotlar (a, b, d, e) mazmunan to'g'ri ekanligi sababli, ularning har qanday juftligi (A, B, C, D variantlari) to'g'ri javob bo'lishi mumkin.",
+    "question": "Kasb standartidagi 'Ta'lim va tarbiya jarayonini boshqarish' yo'nalishi bo'yicha mehnat vazifalari haqidagi to'g'ri mulohazalarni tanlang:\na) Bu yo'nalishda 5 ta asosiy vazifa belgilangan\nb) 'O'z-o'zini rivojlantirish' bu yo'nalishga kirmaydi\nd) 'Tarbiyaviy faoliyatni tashkil etish' shu vazifalardan biridir\ne) 'Hamkorlik' faqat boshqa yo'nalishning vazifasidir",
+    "answer": "C"
+  },
+  {
+    "id": 207,
+    "sabab": "Savol matnida ikkita vazifa ('Tarbiyaviy faoliyatni tashkil etish' va 'Xavfsiz rivojlantiruvchi ta'lim muhitini yaratish') ko'rsatilgan, ammo javobda faqat ikkinchi vazifaga oid amallar (a, d) to'g'ri deb qabul qilingan. Birinchi vazifaga oid amallar (b, e) javob tarkibiga kiritilmagan, bu mantiqiy xatolik.",
+    "question": "\"Tarbiyaviy faoliyatni tashkil etish\" va \"Xavfsiz rivojlantiruvchi ta'lim muhitini yaratish\" vazifalariga mos keladigan amaliy harakatlarni aniqlang:\na) O'quvchilarni tenglik, adolat va o'zaro hurmat tamoyillari asosida boshqalar bilan munosabatlarni o'rganishga moslash\nb) O'quvchilarning umumiy ta'limiy ehtiyojlarini aniqlash uchun nazorat ishlari o'tkazish\nd) O'quvchilarning maxsus ta'limiy ehtiyojlari asosida individuallashtirilgan ish olib borish\ne) O'quvchilarning ota-onalarini maktab hayotiga jalb qilish",
+    "answer": "C"
+  },
+  {
+    "id": 352,
+    "sabab": "Savol matnida faktik xato mavjud: 'Chumoli va bo'ri' degan ertak yo'q, odatda 'Chumoli va chigirtka' ertagi keltiriladi.",
+    "question": "Tarbiyachi bolalarga 'Mehnatkashlik' tushunchasini tushuntirish uchun, ularning 'Chumoli va bo'ri' ertagini eslab, chumolining kichik bo'lishiga qaramay, qishga tayyorgarlik ko'rish uchun mehnat qilishiga misol keltirdi. Bu qaysi pedagogik usul?",
+    "answer": "C"
+  },
+  {
+    "id": 508,
+    "sabab": "Savolda tasvirlangan jarayon (namoyish qilish va oddiydan murakkabga o'tish) 'analogiya' usuliga emas, balki 'ko'rgazmalilik' usuliga yoki 'oddiydan murakkabga' tamoyiliga mos keladi. Analogiya o'xshashlikka asoslangan bo'lishi kerak, bu yerda esa kvadrat uychaning tarkibiy qismi sifatida ishlatilmoqda.",
+    "question": "Konstruktor yig'ish mashg'ulotida tarbiyachi avval bolalarga oddiq kvadrat shaklni yig'ishni ko'rsatib berdi. Bolalar buni egallab olgach, ularga shu kvadratlar asosida murakkabroq uycha qurishni topshirdi. Tarbiyachi qaysi usuldan foydalandi?",
+    "answer": "B"
+  },
+  {
+    "id": 517,
+    "sabab": "An'anaviy pedagogikada dars maqsadini aniqlash (2) odatda o'quvchilarning tayyorligini tekshirish (4) jarayonidan keyin yoki uning davomida sodir bo'ladi. O'quvchilar tayyorligini tekshirmasdan (masalan, uy vazifasini tekshirmasdan) dars maqsadini belgilash mantiqan to'g'ri kelmaydi. To'g'ri ketma-ketlik: 4 (tayyorlikni tekshirish) -> 2 (maqsad) -> 1 (yangi bilim) -> 3 (mustahkamlash), ya'ni A variant to'g'riroq.",
+    "question": "Zamonaviy pedagogikada dars mashg'ulotining mantiqiy bosqichlarini to'g'ri ketma-ketlikda joylashtiring:\n1. Yangi bilimlarni shakllantirish\n2. Dars maqsadini va vazifalarini aniqlash\n3. Bilim, ko'nikma va malakalarni mustahkamlash\n4. O'quvchilarning tayyorligini tekshirish (suhbat)",
+    "answer": "D"
+  },
+  {
+    "id": 598,
+    "sabab": "Variant B (1-B, 2-D, 3-C, 4-A) mantiqan aniqroq: 'Bolalar o'yini jarayoni' (3) 'Milliy urf-odatlar va o'yinlarni jamoa o'yiniga kiritish' (C) bilan, 'Milliy taomlar kuni' (1) esa 'Har bir madaniyatning an'analarini hurmat bilan yondashish' (B) bilan bevosita mos keladi.",
+    "question": "Madaniyatlararo kompetensiyaga oid vaziyatlarni pedagogning tegishli harakatlari bilan moslashtiring:\n1. Milliy taomlar kuni o'tkazilmoqda\n2. Ota-onalar yig'ilishi\n3. Bolalar o'yini jarayonida\n4. Bayram tantanalarini tayyorlash\nA. Turli madaniyat vakillari o'rtasida muloqot va hamkorlikni yo'lga qo'yish\nB. Har bir madaniyatning an'analarini hurmat bilan yondashishni namoyish etish\nC. Milliy urf-odatlar va o'yinlarni jamoa o'yiniga kiritish\nD. Ota-onalar bilan madaniy qadriyatlar tarbiyasida hamkorlik qilish",
+    "answer": "A"
+  }
+]

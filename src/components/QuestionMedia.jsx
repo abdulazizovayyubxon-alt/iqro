@@ -11,6 +11,7 @@
  */
 
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 
 // ── OLDINDAN TAYYOR DIAGRAMMALAR ──────────────────────────────────────────────
 // "diagram" maydoniga shu kalitlardan birini yozing — SVG avtomatik chiziladi
@@ -307,8 +308,9 @@ const DIAGRAMS = {
  *   question  — savol ob'ekti ({ image?, svg?, diagram? })
  *   style     — qo'shimcha CSS uslub (ixtiyoriy)
  */
-// Keng rasimni (6 ta emblem/belgi yonma-yon) 3×2 gridga aylantiradi.
-// CSS background-position orqali har bir katakda rasimning 1/6 qismi ko'rsatiladi.
+// Emblem-tasma (6 ta belgi yonma-yon) kabi rasmni gridga aylantiradi.
+// FAQAT savol `imageCols` maydoni bilan aniq belgilaganda ishlatiladi (avtomatik emas).
+// CSS background-position orqali har bir katakda rasimning 1/N qismi ko'rsatiladi.
 function WideImageGrid({ src, cols = 6, perRow = 3 }) {
   const cells = Array.from({ length: cols }, (_, i) => i);
   // backgroundSize: '600% auto' → rasm 6× keng, har katak 1/6 ni ko'rsatadi
@@ -336,11 +338,11 @@ function WideImageGrid({ src, cols = 6, perRow = 3 }) {
 
 export default function QuestionMedia({ question, style }) {
   const [imgError, setImgError] = useState(false);
-  const [wideInfo, setWideInfo] = useState(null); // { cols } if wide
+  const [zoomed, setZoomed] = useState(false);
 
   if (!question) return null;
 
-  const { image, svg, diagram } = question;
+  const { image, svg, diagram, imageCols } = question;
 
   // 1. Hech narsa yo'q — ko'rsatmaslik
   if (!image && !svg && !diagram) return null;
@@ -372,39 +374,58 @@ export default function QuestionMedia({ question, style }) {
 
   // 4. Rasm (URL yoki base64)
   if (image && !imgError) {
-    // Keng rasm aniqlangandan so'ng grid ko'rinishda qayta render
-    if (wideInfo) {
+    // Grid faqat ANIQ belgilanganda (masalan emblem-tasma: `imageCols: 6`).
+    // Avtomatik nisbatga qarab bo'lish YO'Q — u butun diagrammalarni kesib tashlardi.
+    if (imageCols && imageCols > 1) {
       return (
-        <div style={{ margin: '0 0 4px' }}>
-          <WideImageGrid src={image} cols={wideInfo.cols} perRow={3} />
+        <div style={{ margin: '0 0 16px' }}>
+          <WideImageGrid src={image} cols={imageCols} perRow={Math.min(imageCols, 3)} />
         </div>
       );
     }
 
+    // Odatiy: rasm to'liq, kenglikka moslab — hech qachon kesilmaydi. Bosilsa kattalashadi.
     return (
-      <div style={containerStyle}>
-        <img
-          src={image}
-          alt="Savol rasmi"
-          onLoad={(e) => {
-            const { naturalWidth, naturalHeight } = e.target;
-            if (naturalHeight > 0) {
-              const ratio = naturalWidth / naturalHeight;
-              // 6 ta emblem: ~6:1 nisbat | 3 ta: ~3:1 | odatiy: ≤2.5
-              if (ratio > 4.5) setWideInfo({ cols: 6 });
-              else if (ratio > 2.5) setWideInfo({ cols: 3 });
-            }
-          }}
-          onError={() => setImgError(true)}
-          style={{
-            maxWidth: '100%',
-            maxHeight: '280px',
-            borderRadius: '16px',
-            border: '1px solid var(--glass-border)',
-            objectFit: 'contain',
-          }}
-        />
-      </div>
+      <>
+        <div style={containerStyle}>
+          <img
+            src={image}
+            alt="Savol rasmi"
+            onClick={() => setZoomed(true)}
+            onError={() => setImgError(true)}
+            style={{
+              maxWidth: '100%',
+              width: 'auto',
+              height: 'auto',
+              maxHeight: '340px',
+              borderRadius: '16px',
+              border: '1px solid var(--glass-border)',
+              objectFit: 'contain',
+              cursor: 'zoom-in',
+            }}
+          />
+        </div>
+        {zoomed && createPortal(
+          <div
+            onClick={() => setZoomed(false)}
+            role="dialog"
+            aria-label="Rasm"
+            style={{
+              position: 'fixed', inset: 0, zIndex: 99999,
+              background: 'rgba(0,0,0,0.88)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              padding: '16px', cursor: 'zoom-out',
+            }}
+          >
+            <img
+              src={image}
+              alt="Savol rasmi (kattalashtirilgan)"
+              style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '8px' }}
+            />
+          </div>,
+          document.body
+        )}
+      </>
     );
   }
 

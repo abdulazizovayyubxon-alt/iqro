@@ -1,0 +1,28 @@
+[13:23:24] ===== MTT GEN START (psixolog + logoped) =====
+[13:23:24] ▶ mtt_psixolog/mutaxassislik iter 1: 0/2300 ...
+[aylanish 61 · 1/5] mutaxassislik "1.1. Yosh psixologiyasining maqs" ... +11  (jami 2301/2300)
+
+✓ Jami: 2301/2300 (single 1514, matching 222, sequence 184) | takror: 18 | yaroqsiz: 841 | format-cap skip: 0 | ifloslanish rad: 0
+   → fan/mtt_psixolog/gen_mut.json
+[15:19:13] ✓ mtt_psixolog/mutaxassislik DONE 2301/2300
+[15:19:13] ▶ mtt_psixolog/pedagogika,kasb iter 1: 0/600 ...
+[aylanish 8 · 2/22] pedagogika "Bo'lim 2" ... +11  (jami 609/600)
+
+✓ Jami: 609/600 (single 396, matching 58, sequence 61) | takror: 0 | yaroqsiz: 242 | format-cap skip: 0 | ifloslanish rad: 1
+   → fan/mtt_psixolog/gen_pedkasb.json
+[15:57:39] ✓ mtt_psixolog/pedagogika,kasb DONE 609/600
+[15:57:39] ▶ mtt_logoped/mutaxassislik iter 1: 0/2300 ...
++8  (jami 2306/2300)
+
+✓ Jami: 2306/2300 (single 1460, matching 228, sequence 232) | takror: 23 | yaroqsiz: 767 | format-cap skip: 3 | ifloslanish rad: 0
+   → fan/mtt_logoped/gen_mut.json
+[19:29:52] ✓ mtt_logoped/mutaxassislik DONE 2306/2300
+[19:29:52] ▶ mtt_logoped/pedagogika,kasb iter 1: 0/600 ...
++5  (jami 603/600)
+
+✓ Jami: 603/600 (single 398, matching 57, sequence 63) | takror: 0 | yaroqsiz: 295 | format-cap skip: 5 | ifloslanish rad: 1
+   → fan/mtt_logoped/gen_pedkasb.json
+[19:57:12] ✓ mtt_logoped/pedagogika,kasb DONE 603/600
+[19:57:12] ===== HAMMA GEN TUGADI =====
+psixolog: mut=2301 pedkasb=609
+logoped:  mut=2306 pedkasb=603

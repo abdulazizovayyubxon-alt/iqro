@@ -7,8 +7,8 @@ import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS, SUBJECTS } from '../data/mockData';
-import { motion } from 'framer-motion';
-import { RefreshCw, ArrowLeft, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { RefreshCw, ArrowLeft, X, ChevronLeft, ChevronRight, LayoutGrid } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
 import ObjectionModal from '../components/shared/ObjectionModal';
@@ -106,6 +106,7 @@ const TestPage = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [selectedBatch, setSelectedBatch] = useState(0);
+  const [showBatchGrid, setShowBatchGrid] = useState(false); // Blok tanlash grid modali
 
   // New States: Difficulty Filter and Timer Mode
   const [diffFilter] = useState('ALL'); // 'ALL', 'Y1', 'Y2', 'Y3'
@@ -121,13 +122,20 @@ const TestPage = () => {
   const [showObjectionModal, setShowObjectionModal] = useState(false);
   const [activeReviewTab, setActiveReviewTab] = useState('analysis');
 
-  // Timer
-  const [timeLeft, setTimeLeft] = useState(QUESTION_TIMER_SECONDS);
-  const [, setTimerActive] = useState(false);
-  const timerRef = useRef(null);
+  // Timer — har soniyalik wall-clock holati TimerPill komponentida yashaydi
+  // (fon/qo'ng'iroqqa chidamli va butun sahifani qayta render qilmaydi).
   const explanationRef = useRef(null);
   const questionStartTimeRef = useRef(Date.now());
   const questionTimesRef = useRef({});
+  // Test natijasini ikki marta saqlashdan himoya (double-tap / sekin tarmoq)
+  const committedRef = useRef(false);
+
+  // Vaqt tugaganda (countdown) — javobni -1 ("vaqt tugadi") deb belgilaymiz.
+  // TimerPill onExpire orqali chaqiradi.
+  const handleTimeExpire = () => {
+    setAnswers(prev => (prev[currentQ] === undefined ? { ...prev, [currentQ]: -1 } : prev));
+    questionTimesRef.current[currentQ] = QUESTION_TIMER_SECONDS;
+  };
 
   const accumulateTime = () => {
     if (answers[currentQ] === undefined && questionStartTimeRef.current) {
@@ -172,52 +180,10 @@ const TestPage = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setActiveReviewTab('analysis');
-  }, [currentQ]);
-
-  useEffect(() => {
-    // Reset start time whenever currentQ changes and is not answered yet
+    // Yangi savolga o'tilganda vaqt o'lchovini boshlash
+    // (taymer effekti TimerPill'ga ko'chgani uchun shu yerda tiklanadi).
     questionStartTimeRef.current = Date.now();
-
-    if (mode !== 'exam' || showResults || questions.length === 0 || showTheory || timerMode === 'off') {
-      setTimerActive(false);
-      clearInterval(timerRef.current);
-      return;
-    }
-    if (answers[currentQ] !== undefined) {
-      setTimerActive(false);
-      clearInterval(timerRef.current);
-      return;
-    }
-
-    if (timerMode === 'countdown') {
-      setTimeLeft(QUESTION_TIMER_SECONDS);
-      setTimerActive(true);
-      clearInterval(timerRef.current);
-      timerRef.current = setInterval(() => {
-        setTimeLeft(prev => {
-          if (prev <= 1) {
-            clearInterval(timerRef.current);
-            const q = questions[currentQ];
-            if (q && answers[currentQ] === undefined) {
-              setAnswers(prev2 => ({ ...prev2, [currentQ]: -1 })); // -1 = vaqt tugadi
-              questionTimesRef.current[currentQ] = QUESTION_TIMER_SECONDS;
-            }
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-    } else if (timerMode === 'stopwatch') {
-      setTimeLeft(0);
-      setTimerActive(true);
-      clearInterval(timerRef.current);
-      timerRef.current = setInterval(() => {
-        setTimeLeft(prev => prev + 1);
-      }, 1000);
-    }
-
-    return () => clearInterval(timerRef.current);
-  }, [currentQ, mode, showResults, questions.length, timerMode]);
+  }, [currentQ]);
 
 
   const [fullPool, setFullPool] = useState([]);
@@ -234,6 +200,7 @@ const TestPage = () => {
       setFcFlipped(false);
       setAnswers({});
       questionTimesRef.current = {};
+      committedRef.current = false; // yangi bo'lim → natijani qayta saqlashga ruxsat
       // Natija ekranida bo'lim almashtirilsa yangi bo'lim savollari ko'rinishi kerak
       setShowResults(false);
       setComboCount(0);
@@ -490,8 +457,6 @@ const TestPage = () => {
 
   const handleSelect = (qIndex, optIdx) => {
     if (answers[qIndex] !== undefined) return;
-    clearInterval(timerRef.current);
-    setTimerActive(false);
 
     const elapsed = Math.min(QUESTION_TIMER_SECONDS, Math.round((Date.now() - questionStartTimeRef.current) / 1000));
     questionTimesRef.current[qIndex] = (questionTimesRef.current[qIndex] || 0) + elapsed;
@@ -595,6 +560,8 @@ const TestPage = () => {
   }, [topicId, mode, questions.length]);
 
   const handleShowResults = () => {
+    if (committedRef.current) return; // ikki marta bosish / sekin tarmoq himoyasi
+    committedRef.current = true;
     setShowResults(true);
     // 🧠 SMART ENGINE: Natijalarni tahlil qilish va bir marta saqlash
     const results = summarizeTestResults(questions, answers, state.spacedCards || [], topicId);
@@ -720,25 +687,110 @@ const TestPage = () => {
         TOPICS={TOPICS}
       />
 
+      {/* Blok tanlash grid modali */}
+      <AnimatePresence>
+        {showBatchGrid && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              onClick={() => setShowBatchGrid(false)}
+              style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(3px)', zIndex: 1000 }}
+            />
+            <motion.div
+              initial={{ y: '100%', x: '-50%' }} animate={{ y: 0, x: '-50%' }} exit={{ y: '100%', x: '-50%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              style={{
+                position: 'fixed', bottom: 0, left: '50%', width: '100%', maxWidth: 700,
+                background: 'var(--bg2)', borderTopLeftRadius: 24, borderTopRightRadius: 24,
+                border: '1px solid var(--glass-border)', borderBottom: 'none',
+                boxShadow: '0 -10px 40px rgba(0,0,0,0.15)', zIndex: 1001,
+                display: 'flex', flexDirection: 'column', maxHeight: '70vh', overflow: 'hidden'
+              }}
+            >
+              <div style={{ padding: '20px 20px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border)' }}>
+                <h3 style={{ fontSize: 18, fontWeight: 800, color: 'var(--text)', margin: 0 }}>{t('test.selectBlock')}</h3>
+                <button onClick={() => setShowBatchGrid(false)} aria-label={t('common.close')} style={{ background: 'var(--bg3)', border: 'none', width: 44, height: 44, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text2)', cursor: 'pointer' }}>
+                  <X size={18} />
+                </button>
+              </div>
+              <div style={{ flex: 1, overflowY: 'auto', padding: '16px 20px 30px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(92px, 1fr))', gap: 8 }}>
+                  {Array.from({ length: Math.ceil(fullPool.length / BATCH_SIZE) }).map((_, i) => {
+                    const start = i * BATCH_SIZE + 1;
+                    const end = Math.min((i + 1) * BATCH_SIZE, fullPool.length);
+                    const isSel = selectedBatch === i;
+                    return (
+                      <button
+                        key={i}
+                        onClick={() => { setSelectedBatch(i); setShowBatchGrid(false); }}
+                        style={{
+                          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 2,
+                          minHeight: 54, borderRadius: 12, border: '1.5px solid',
+                          background: isSel ? 'var(--accent)' : 'var(--bg3)',
+                          borderColor: isSel ? 'var(--accent)' : 'transparent',
+                          color: isSel ? '#fff' : 'var(--text)', cursor: 'pointer', transition: 'all 0.15s'
+                        }}
+                      >
+                        <span style={{ fontSize: 13, fontWeight: 800 }}>{t('test.block', { n: i + 1 })}</span>
+                        <span style={{ fontSize: 10, fontWeight: 600, opacity: 0.75 }}>{start}–{end}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
       {/* Batch Selector */}
-      {mode !== 'mistakes' && (
-        <div className="batch-selector" style={{ display: 'flex', gap: '6px', overflowX: 'auto', paddingBottom: '6px', marginBottom: '4px' }}>
-          {Array.from({ length: Math.ceil(fullPool.length / BATCH_SIZE) }).map((_, i) => {
-            const start = i * BATCH_SIZE + 1;
-            const end = Math.min((i + 1) * BATCH_SIZE, fullPool.length);
-            return (
-              <button
-                key={i}
-                className={`btn btn-sm ${selectedBatch === i ? 'btn-primary' : 'btn-outline'}`}
-                onClick={() => setSelectedBatch(i)}
-                style={{ flexShrink: 0, fontSize: '12px' }}
-              >
-                {start}–{end}
-              </button>
-            );
-          })}
-        </div>
-      )}
+      {mode !== 'mistakes' && Math.ceil(fullPool.length / BATCH_SIZE) > 1 && (() => {
+        const totalBatches = Math.ceil(fullPool.length / BATCH_SIZE);
+        const start = selectedBatch * BATCH_SIZE + 1;
+        const end = Math.min((selectedBatch + 1) * BATCH_SIZE, fullPool.length);
+        const atStart = selectedBatch === 0;
+        const atEnd = selectedBatch >= totalBatches - 1;
+        const arrowStyle = (disabled) => ({
+          flexShrink: 0, width: 44, height: 44, borderRadius: 14,
+          border: '1px solid var(--border)', background: 'var(--bg2)',
+          color: 'var(--text)', opacity: disabled ? 0.4 : 1,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          cursor: disabled ? 'default' : 'pointer', transition: 'opacity 0.15s'
+        });
+        return (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
+            <button
+              onClick={() => !atStart && setSelectedBatch(b => Math.max(0, b - 1))}
+              disabled={atStart}
+              aria-label={t('test.block', { n: selectedBatch })}
+              style={arrowStyle(atStart)}
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={() => setShowBatchGrid(true)}
+              style={{
+                flex: 1, height: 44, borderRadius: 14, border: '1.5px solid var(--accent)',
+                background: 'var(--blue-bg)', display: 'flex', alignItems: 'center',
+                justifyContent: 'center', gap: '8px', cursor: 'pointer', padding: '0 10px',
+                overflow: 'hidden'
+              }}
+            >
+              <LayoutGrid size={16} color="var(--accent2)" style={{ flexShrink: 0 }} />
+              <span style={{ fontWeight: 800, fontSize: 14, color: 'var(--accent2)', whiteSpace: 'nowrap' }}>{t('test.block', { n: selectedBatch + 1 })} / {totalBatches}</span>
+              <span style={{ fontWeight: 600, fontSize: 12, color: 'var(--text3)', whiteSpace: 'nowrap' }}>· {start}–{end}</span>
+            </button>
+            <button
+              onClick={() => !atEnd && setSelectedBatch(b => Math.min(totalBatches - 1, b + 1))}
+              disabled={atEnd}
+              aria-label={t('test.block', { n: selectedBatch + 2 })}
+              style={arrowStyle(atEnd)}
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        );
+      })()}
 
       {questions.length === 0 ? (
         <div className="empty-state-card">
@@ -863,9 +915,9 @@ const TestPage = () => {
                 mode={mode}
                 timerMode={timerMode}
                 setTimerMode={setTimerMode}
-                timeLeft={timeLeft}
                 QUESTION_TIMER_SECONDS={QUESTION_TIMER_SECONDS}
                 accumulateTime={accumulateTime}
+                onTimeExpire={handleTimeExpire}
                 motivationText={motivationText}
                 comboCount={comboCount}
                 state={state}

@@ -1,0 +1,51 @@
+▶ Hakam: jami 2302, tekshirilgan 2298, navbatda 4 (model zai-glm-4.7)
+[1-4/4] ... ok (shubhali jami: 33)
+
+✓ Tekshirildi: 2302/2302 | SHUBHALI: 33
+Hisobot: pipeline/verify_report_mtt_tarbiyachi_mut.json
+
+--- SHUBHALILAR (birinchi 20) ---
+✗ id=160: O'yin tizimini ishlab chiqish va kuzatish jadvallarini tuzish vazifasi pedagogik-metodik ish bo'lib, asosan bog'cha metodisti (B) zimmasiga yuklatiladi. Mudira (A) umumiy boshqaruv va nazorat funksiyasini bajaradi.
+   Maktabgacha ta'lim tashkilotida turli yosh guruhlaridagi o'yin tizimini 'Ilk qad
+✗ id=329: a, d va e mulohazalari ham to'g'ri, shuning uchun A (d, e) va D (a, d) variantlari ham to'g'ri javob bo'lishi mumkin (bir nechta to'g'ri variant).
+   Maktabgacha ta'lim muassasasida bolalar mehnatini tashkil etish shakllariga oid 
+✗ id=331: Mantiqiy xato. 'Bolalar yasagan buyumlardan foydalanish' (2) amaliy mehnat jarayoni (3) tugagandan keyin sodir bo'lishi kerak, belgilangan javobda esa foydalanish jarayondan oldin kelmoqda.
+   Bolalarda mehnat qilish motivi va sababini shakllantirish uchun zarur bo'lgan pe
+✗ id=373: Savol aylanaga misol bo'la olmaydigan buyumni so'raydi. Tovuq tuxumi (oval) va oyna (to'rtburchak) ikkalasi ham aylana shaklida emas, shuning uchun B va C variantlari teng darajada to'g'ri javob hisoblanadi.
+   "Geometrik shakllar" mavzusida tarbiyachi bolalarga guruhxona ichidan "Aylana" s
+✗ id=498: O'zbekiston Respublikasi Vazirlar Mahkamasining qarorlariga ko'ra, tarbiyachi lavozimiga o'rta maxsus (pedagogik) yoki oliy ma'lumotga ega bo'lgan shaxslar qabul qilinadi. O'rta maxsus ma'lumot ham yetarli hisoblanadi, shuning uchun 'kamida bakalavr' degan talab (C variant) noto'g'ri. To'g'ri javob A variantidir.
+   Maktabgacha ta'lim muassasalarida tarbiyachi lavozimiga ishga qabul qilinadigan 
+✗ id=586: "e" fikri ham to'g'ri bo'lgani sababli A variant ham to'g'ri javob sifatida qabul qilinishi mumkin (bir nechta to'g'ri variant mavjud).
+   Bolalar mehnat faoliyatini egallab olish jarayoniga oid to'g'ri mulohazalarni an
+✗ id=612: Savolda keltirilgan talablar (bakalavr, xorijiy til, 3 yil staj) barcha tarbiyachilar uchun umumiy talab emas, balki ma'lum bir toifaga (masalan, oliy toifa) xos. O'rta maxsus ma'lumot ham tarbiyachi bo'lish uchun yetarli hisoblanadi va staj shart emas.
+   Maktabgacha ta'lim tarbiyachisi uchun belgilangan malaka talablariga oid quyidag
+✗ id=618: 3-soha (Ijtimoiy-hissiy rivojlanish) D variant (Bilish jarayonining rivojlanishi) bilan mos kelmaydi, bu ikki xil rivojlanish sohasidir.
+   Quyidagi ta'lim sohalari nomlarini ularning tarkibiga kiruvchi asosiy elementlar
+✗ id=687: Izohda 'Pirog yoki non' uchburchak shaklida ekanligi aytilgan, biroq u 'Kvadrat' (3) bilan moslashtirilgan. Mantiqiy ziddiyat va moslik xatosi mavjud.
+   Geometrik shakllarni ular bilan bog'liq bo'lgan tasviriy faoliyat turlari yoki o
+✗ id=711: Izohda 'e' variant (shaxs asosi bo'lib xizmat qiladi) to'g'ri ekanligi tasdiqlangan, ammo belgilangan javob (D) unda o'rin olmagan. Shuningdek, 'a', 'd' va 'e' variantlari ham to'g'ri bo'lib, ularni o'z ichiga olgan variant yo'q.
+   "Kompetensiya" tushunchasiga oid to'g'ri mulohazalarni aniqlang.
+a) Kompetensiya
+✗ id=755: Pedagogik diagnostika metodikasi Adliya vazirligi tomonidan qayd etilmaydi, balki Maktabgacha ta'lim vazirligi tomonidan tasdiqlanadi. 'd' varianti noto'g'ri, shuning uchun belgilangan B javobi ham xato.
+   Pedagogik diagnostikani tashkil etishga oid to'g'ri mulohazalarni aniqlang.
+a) M
+✗ id=795: Maktabgacha ta'lim muassasasining kun tartibiga ko'ra, faol mashg'ulotlar (1) ertalab, tungi uyqudan keyin o'tkaziladi, kunduzgi uyqudan (3) keyin esa asosan erkin faoliyat (o'yinlar) bo'ladi. To'g'ri fiziologik sikl: Faollik -> Ovqatlanish -> Uyqu (1-2-3). Variant A (4, 1, 2, 3) mantiqan to'g'ri, belgilangan B javobi esa (3, 4, 1, 2) jadvalning mantiqiga zid (uyqudan keyin dars bo'lmaydi).
+   Kun tartibini tuzish va ta'lim jarayonini rejalashtirishda bolaning fiziologik v
+✗ id=898: Izohda 'e' fikr ham to'g'ri ekanligi tasdiqlangan, shuning uchun 'a, d' (C variant) bilan bir qatorda 'a, e' (D variant) ham to'g'ri javob bo'lishi mumkin.
+   Pedagogik diagnostika maqsadiga oid to'g'ri mulohazalarni tanlang.
+a) Bolaning i
+✗ id=937: a) variantida 'kamida bakalavr darajasidagi oliy ma'lumot' shart deyilgan, ammo O'zbekiston qonunchiligiga (Maktabgacha ta'lim to'g'risida qonun) ko'ra, tarbiyachining o'rta maxsus ma'lumoti ham bo'lishi mumkin. Shuning uchun a) variant faktik jihatdan noto'g'ri. Bundan tashqari, e) variant (staj talabi) lavozim talabnomasiga ko'ra to'g'ri bo'lishi mumkin, ammo variantlar orasida 'd, e' juftligi keltirilmagan.
+   Maktabgacha ta'lim tarbiyachisi uchun belgilangan professional malaka talablarig
+✗ id=992: a) variantida bakalavr darajasi majburiy deb ko'rsatilgan, ammo o'rta-maxsus pedagogik ma'lumot ham qabul qilinadi (Lavozim malaka talablariga ko'ra). Shuningdek, d va e variantlari ham to'g'ri, lekin ularni o'z ichiga olgan javob varianti yo'q.
+   Maktabgacha ta'lim muassasasiga tarbiyachi lavozimiga nomzod tanlab olinmoqda. Q
+✗ id=1053: Amaldagi lavozim malaka talablariga ko'ra, tarbiyachi va metodist lavozimlari uchun pedagogik staj talab qilinmaydi (to'g'ri javob B).
+   Maktabgacha ta'lim tarbiyachisiga (metodistga) qo'yiladigan malaka talablariga k
+✗ id=1149: Ishga qabul qilish uchun 3 yil pedagogik staj talabi mavjud emas (staj attestatsiya toifalari uchun talab qilinadi). Shuning uchun b variant noto'g'ri.
+   Maktabgacha ta'lim muassasasida pedagog lavozimiga ishga qabul qilinadigan shaxs
+✗ id=1150: B variantida nonushta (obyash) uyqadan keyin keltirilgan, bu kun tartibiga zid. Odatda nonushta ertalab, mashg'ulotlardan oldin bo'ladi (D variant: 1, 4, 2, 3, 5).
+   Maktabgacha ta'lim tashkilotida bolalarning kundalik hayotini tashkil etishda ku
+✗ id=1152: 'Nizom' va 'Davlat talablari' qonunchilik hujjatlari (qonunlar) emas, balki O'zbekiston Respublikasi Vazirlar Mahkamasi qarorlari bilan tasdiqlangan me'yoriy huquqiy hujjatlardir. Faqat 'Ta'lim to'g'risida'gi Qonun va 'Kadrlar tayyorlash milliy dasturi' qonun kuchiga ega.
+   Maktabgacha ta'lim tizimini tartibga soluvchi quyidagi hujjatlarning qaysilari O
+✗ id=1278: 2-variant (Ijtimoiy-hissiy rivojlanish) uchun mos ta'riflar orasida to'g'ri javob yo'q, javob kaliti (2-D) noto'g'ri belgilangan.
+   Ta'lim sohasini unga mos keladigan kompetensiya turi bilan juqlashtiring:
+1. Jis
