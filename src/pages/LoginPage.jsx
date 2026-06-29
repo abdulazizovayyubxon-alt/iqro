@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Eye, EyeOff, Send, ShieldCheck } from 'lucide-react';
-import { signInWithCustomToken } from 'firebase/auth';
-import { auth } from '../firebase';
+import { ArrowLeft, Eye, EyeOff, ShieldCheck } from 'lucide-react';
+
 import { useIsMobile } from '../hooks/useIsMobile';
 import BrandLogo from '../components/shared/BrandLogo';
 
@@ -35,7 +34,6 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [lockoutTimer, setLockoutTimer] = useState(null);
   const [featureIdx, setFeatureIdx] = useState(0);
-  const [tgPolling, setTgPolling] = useState(false);
 
   useEffect(() => {
     if (step === STEPS.PHONE) {
@@ -60,17 +58,7 @@ export default function LoginPage() {
     return () => clearInterval(interval);
   }, [checkLockout]);
 
-  // Komponent yo'q qilinganda Telegram polling va focus/visibility listenerlarini
-  // tozalaymiz (xotira oqishi va "yetim" so'rovlarning oldini olish uchun).
-  useEffect(() => () => {
-    window.tgActive = false;
-    if (window.tgTimer) clearTimeout(window.tgTimer);
-    if (window.tgVisHandler) {
-      document.removeEventListener('visibilitychange', window.tgVisHandler);
-      window.removeEventListener('focus', window.tgVisHandler);
-      window.tgVisHandler = null;
-    }
-  }, []);
+
 
   const handlePhoneChange = (e) => {
     setAuthError('');
@@ -181,92 +169,8 @@ export default function LoginPage() {
     }
   };
 
-  const handleForgotPassword = async () => {
-    if (!isPhoneValid()) { setAuthError(t('login.errEnterPhone')); return; }
-    // Telefon hisoblarining emaili soxta (@iqro.uz) — email orqali tiklash ishlamaydi.
-    // Yagona ishonchli tiklash kanali: Telegram orqali parolsiz kirib, so'ng Profil →
-    // "Parolni o'zgartirish" orqali yangi parol o'rnatiladi. Avval bu tugma faqat matnli
-    // ko'rsatma berardi; endi tiklash oqimini (Telegram) to'g'ridan-to'g'ri ishga tushiradi.
-    await handleTelegramLogin();
-  };
-
-  // Telegram kuzatuvini to'liq to'xtatish: polling timer + focus/visibility listenerlar.
-  const stopTgWatch = () => {
-    window.tgActive = false;
-    if (window.tgTimer) clearTimeout(window.tgTimer);
-    if (window.tgVisHandler) {
-      document.removeEventListener('visibilitychange', window.tgVisHandler);
-      window.removeEventListener('focus', window.tgVisHandler);
-      window.tgVisHandler = null;
-    }
-  };
-
-  const handleTelegramLogin = async () => {
-    const sessionId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    window.location.href = `tg://resolve?domain=IQRO_testbot&start=login_${sessionId}`;
-    setLoading(true);
-    setTgPolling(true);
-    setAuthError(t('login.tgWaiting'));
-
-    // Avvalgi kuzatuv (timer + listenerlar) bo'lsa tozalaymiz, keyin yangisini boshlaymiz.
-    stopTgWatch();
-    window.tgActive = true;
-    const deadline = Date.now() + 120000; // 2 daqiqa
-    let delay = 2500;
-
-    // Sekin-asta orqaga chekinuvchi polling (2.5s → 6s) — setInterval o'rniga rekursiv
-    // setTimeout. So'rovlar sonini ~yarmiga kamaytiradi (server yuki + batareya tejaladi).
-    const poll = async () => {
-      if (!window.tgActive) return;
-      if (Date.now() > deadline) {
-        stopTgWatch();
-        setLoading(false);
-        setTgPolling(false);
-        setAuthError(t('login.tgTimeout'));
-        return;
-      }
-      try {
-        const res = await fetch(`/api/telegram-auth?sessionId=${sessionId}`);
-        const data = await res.json();
-        if (data.success && data.token) {
-          stopTgWatch();
-          setTgPolling(false);
-          setAuthError('');
-          setLoading(false);
-          await signInWithCustomToken(auth, data.token);
-          return; // onAuthStateChanged o'zi user ni set qiladi
-        }
-      } catch (e) {
-        console.error(e);
-      }
-      if (!window.tgActive) return;
-      delay = Math.min(delay + 500, 6000); // backoff
-      window.tgTimer = setTimeout(poll, delay);
-    };
-
-    // Foydalanuvchi Telegram'dan ilovaga QAYTGAN payti — odatda aynan shunda tasdiq
-    // tayyor bo'ladi. Qaytishi bilan kutishni to'xtatib darhol tekshiramiz va keyingi
-    // urinishlarni tezlashtiramiz (6s backoff o'rniga 1.5s). Bu kutish vaqtini
-    // keskin qisqartiradi va aniq "Tekshirilmoqda..." statusini ko'rsatadi.
-    const onReturn = () => {
-      if (!window.tgActive || document.visibilityState === 'hidden') return;
-      setAuthError(t('login.tgChecking'));
-      delay = 1500;
-      if (window.tgTimer) clearTimeout(window.tgTimer);
-      poll();
-    };
-    window.tgVisHandler = onReturn;
-    document.addEventListener('visibilitychange', onReturn);
-    window.addEventListener('focus', onReturn);
-
-    window.tgTimer = setTimeout(poll, delay);
-  };
-
-  const cancelTelegramLogin = () => {
-    stopTgWatch();
-    setLoading(false);
-    setTgPolling(false);
-    setAuthError('');
+  const handleForgotPassword = () => {
+    setAuthError(t('login.forgotPasswordHint') || 'Parolni tiklash uchun administrator bilan bog\'laning.');
   };
 
   const progressMap = {
@@ -456,14 +360,6 @@ export default function LoginPage() {
                   <p style={s.errorText}>
                     {authError}
                   </p>
-                  {tgPolling && (
-                    <button
-                      onClick={cancelTelegramLogin}
-                      style={{ background: 'transparent', border: '1px solid #FF3B30', color: '#FF3B30', padding: '6px 16px', borderRadius: '20px', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}
-                    >
-                      {t('common.cancel')}
-                    </button>
-                  )}
                 </motion.div>
               )}
             </motion.div>
@@ -472,54 +368,18 @@ export default function LoginPage() {
 
         {/* Footer */}
         <div style={s.footer}>
-          {/* ── PHONE qadami: telefon ASOSIY, Telegram ikkinchi darajali (lekin sezilarli) ── */}
-          {step === STEPS.PHONE ? (
-            <>
-              {/* Telefon — ASOSIY */}
-              <motion.button
-                id="login-submit-btn"
-                style={{ ...s.primaryBtn, opacity: loading || lockoutTimer ? 0.6 : 1, marginBottom: 12 }}
-                onClick={handleContinue}
-                disabled={loading || !!lockoutTimer}
-                whileTap={{ scale: 0.98 }}
-              >
-                {loading ? t('login.pleaseWait')
-                  : lockoutTimer ? t('login.wait', { sec: lockoutTimer })
-                  : t('login.continuePhone')}
-              </motion.button>
-
-              <div style={s.orRow}>
-                <div style={s.orLine} />
-                <span style={s.orText}>{t('login.orTelegram')}</span>
-                <div style={s.orLine} />
-              </div>
-
-              {/* Telegram — IKKINCHI DARAJALI, lekin sezilarli (azure rangli) */}
-              <motion.button
-                style={s.telegramBtn}
-                onClick={handleTelegramLogin}
-                disabled={loading}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Send size={20} color="var(--accent)" /> {t('login.telegramLogin')}
-              </motion.button>
-              <div style={{ textAlign: 'center', fontSize: 12, color: 'var(--text3)', marginTop: 8 }}>
-                {t('login.telegramHint')}
-              </div>
-            </>
-          ) : step === STEPS.AUTH && (
-            <motion.button
-              id="login-submit-btn"
-              style={{ ...s.primaryBtn, opacity: loading || lockoutTimer ? 0.6 : 1 }}
-              onClick={handleContinue}
-              disabled={loading || !!lockoutTimer}
-              whileTap={{ scale: 0.98 }}
-            >
-              {loading ? t('login.pleaseWait')
-                : lockoutTimer ? t('login.wait', { sec: lockoutTimer })
-                : authMode === 'register' ? t('login.createAccountBtn') : t('login.signIn')}
-            </motion.button>
-          )}
+          <motion.button
+            id="login-submit-btn"
+            style={{ ...s.primaryBtn, opacity: loading || lockoutTimer ? 0.6 : 1 }}
+            onClick={handleContinue}
+            disabled={loading || !!lockoutTimer}
+            whileTap={{ scale: 0.98 }}
+          >
+            {loading ? t('login.pleaseWait')
+              : lockoutTimer ? t('login.wait', { sec: lockoutTimer })
+              : step === STEPS.PHONE ? t('login.continuePhone')
+              : authMode === 'register' ? t('login.createAccountBtn') : t('login.signIn')}
+          </motion.button>
 
           {/* Trust Badges & Policies */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', marginTop: '24px' }}>
