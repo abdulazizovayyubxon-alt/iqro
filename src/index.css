@@ -33,6 +33,10 @@
 
   --glass-bg: rgba(253, 252, 249, 0.85);
   --glass-border: rgba(86, 110, 130, 0.16);
+
+  /* Logo colors from the new design mockup */
+  --logo-toifa: #112B42;
+  --logo-pro: #56AFDB;
 }
 
 body.dark-theme {
@@ -65,6 +69,10 @@ body.dark-theme {
   
   --glass-bg: rgba(15, 23, 42, 0.8);
   --glass-border: rgba(255, 255, 255, 0.12);
+
+  /* Logo colors from the new design mockup */
+  --logo-toifa: #F8FAFC;
+  --logo-pro: #56AFDB;
 }
 
 /* Sepia — uzoq o'qish/test sessiyalari uchun "kitob" rejimi */
@@ -98,6 +106,10 @@ body.sepia-theme {
 
   --glass-bg: rgba(251, 246, 233, 0.85);
   --glass-border: rgba(139, 108, 57, 0.18);
+
+  /* Logo colors from the new design mockup */
+  --logo-toifa: #3B2F1B;
+  --logo-pro: #2E7FB0;
 }
 
 * { 

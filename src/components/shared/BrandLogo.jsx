@@ -29,8 +29,8 @@ export default function BrandLogo({ size = 28, style = {}, className = '', as: T
         ...style,
       }}
     >
-      <span style={{ fontWeight: 700, color: 'var(--text)' }}>toifa</span>
-      <span style={{ fontWeight: 500, color: 'var(--accent)', marginLeft: '0.09em' }}>pro</span>
+      <span style={{ fontWeight: 700, color: 'var(--logo-toifa, var(--text))' }}>toifa</span>
+      <span style={{ fontWeight: 500, color: 'var(--logo-pro, var(--accent))', marginLeft: '0.09em' }}>pro</span>
     </Tag>
   );
 }
