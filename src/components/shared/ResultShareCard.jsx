@@ -60,10 +60,22 @@ export default function ResultShareCard({ open, onClose, score, total, title, mo
 
     ctx.textAlign = 'center';
 
-    // ── Sarlavha: IQRO ──
+    // ── Sarlavha: toifa pro (so'z-logo) — "toifa" qora, "pro" azure ──
+    const wmFont = (w) => `${w} 40px "Plus Jakarta Sans", Inter, system-ui, sans-serif`;
+    ctx.textAlign = 'left';
+    ctx.font = wmFont(700);
+    const wmW1 = ctx.measureText('toifa').width;
+    ctx.font = wmFont(500);
+    const wmW2 = ctx.measureText('pro').width;
+    const wmGap = 4;
+    const wmX = W / 2 - (wmW1 + wmGap + wmW2) / 2;
+    ctx.fillStyle = '#2A2118';
+    ctx.font = wmFont(700);
+    ctx.fillText('toifa', wmX, 110);
     ctx.fillStyle = '#1180B8';
-    ctx.font = '900 40px Inter, system-ui, sans-serif';
-    ctx.fillText('IQRO', W / 2, 110);
+    ctx.font = wmFont(500);
+    ctx.fillText('pro', wmX + wmW1 + wmGap, 110);
+    ctx.textAlign = 'center';
     ctx.fillStyle = '#8A7A5C';
     ctx.font = '600 16px Inter, system-ui, sans-serif';
     ctx.fillText(t('shareCard.subtitle'), W / 2, 138);
@@ -150,7 +162,7 @@ export default function ResultShareCard({ open, onClose, score, total, title, mo
     try {
       const blob = await getBlob();
       if (!blob) return;
-      const file = new File([blob], 'iqro-natija.png', { type: 'image/png' });
+      const file = new File([blob], 'toifapro-natija.png', { type: 'image/png' });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
           files: [file],
@@ -168,7 +180,7 @@ export default function ResultShareCard({ open, onClose, score, total, title, mo
   const handleDownload = () => {
     if (!canvasRef.current) return;
     const link = document.createElement('a');
-    link.download = 'iqro-natija.png';
+    link.download = 'toifapro-natija.png';
     link.href = canvasRef.current.toDataURL('image/png');
     link.click();
     showToast?.(t('shareCard.downloaded'), 'success');

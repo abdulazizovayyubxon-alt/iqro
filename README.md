@@ -1,6 +1,6 @@
-# IQRO — Harbiy va San'at Fanlari Imtihon Platformasi
+# Toifa Pro — Kasbiy Sertifikatlash Tayyorgarligi Platformasi
 
-IQRO — CHQBT (Harbiy ta'lim) va Tasviriy san'at fanlaridan o'quvchilar bilimini sinash, takrorlash va imtihon topshirish uchun mo'ljallangan zamonaviy, premium dizaynga ega web-platforma.
+Toifa Pro — CHQBT (Harbiy ta'lim) va Tasviriy san'at fanlaridan o'qituvchilar attestatsiyasi, kasbiy sertifikatlash va bilimini sinash uchun mo'ljallangan zamonaviy, premium dizaynga ega web-platforma.
 
 ## 🚀 Imkoniyatlar
 - **Ikki xil yo'nalish:** CHQBT va Tasviriy san'at yo'nalishlari o'rtasida oson almashish.
@@ -22,11 +22,11 @@ IQRO — CHQBT (Harbiy ta'lim) va Tasviriy san'at fanlaridan o'quvchilar bilimin
 ## 📦 O'rnatish va ishga tushirish
 1. Repozitoriyani yuklab oling:
    ```bash
-   git clone https://github.com/USER_NAME/iqro-platform.git
+   git clone https://github.com/USER_NAME/toifapro.git
    ```
 2. Loyiha papkasiga kiring:
    ```bash
-   cd iqro-platform
+   cd toifapro
    ```
 3. Kerakli kutubxonalarni o'rnating:
    ```bash

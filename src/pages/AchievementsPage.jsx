@@ -165,11 +165,11 @@ const AchievementsPage = () => {
 
     // Suv belgisi
     ctx.save();
-    ctx.font = '900 150px sans-serif';
+    ctx.font = '900 92px sans-serif';
     ctx.fillStyle = hexToRgba(ink, 0.028);
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('IQRO', W / 2, H / 2 + 24);
+    ctx.fillText('Toifa Pro', W / 2, H / 2 + 24);
     ctx.restore();
 
     ctx.textAlign = 'center';
@@ -288,7 +288,7 @@ const AchievementsPage = () => {
     ctx.fillText(dateStr, 48, H - 36);
     ctx.textAlign = 'right';
     ctx.fillStyle = accent;
-    ctx.fillText('iqro-t41p.vercel.app', W - 48, H - 36);
+    ctx.fillText('toifapro-t41p.vercel.app', W - 48, H - 36);
     ctx.textAlign = 'center';
   };
 
@@ -317,14 +317,14 @@ const AchievementsPage = () => {
   const downloadPassport = () => {
     if (!canvasRef.current) return;
     const link = document.createElement('a');
-    link.download = `iqro_passport_${user?.displayName || 'user'}.png`;
+    link.download = `toifapro_passport_${user?.displayName || 'user'}.png`;
     link.href = canvasRef.current.toDataURL('image/png');
     link.click();
   };
 
   const shareToTelegram = () => {
     const text = t('achievements.shareTgText', { subject: subjectName, acc, avg: avgTime, speed: speedLabel, toifa });
-    window.open(`https://t.me/share/url?url=https://iqro-t41p.vercel.app&text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://t.me/share/url?url=https://toifapro-t41p.vercel.app&text=${encodeURIComponent(text)}`, '_blank');
   };
 
 
@@ -944,7 +944,7 @@ const AchievementsPage = () => {
                   onClick={downloadPassport}
                   style={{
                     padding: '14px',
-                    background: '#29B6F6',
+                    background: '#0E97E0',
                     color: '#fff',
                     border: 'none',
                     borderRadius: '14px',

@@ -5,6 +5,7 @@
       "name": "iqro-dev",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
+      "autoPort": true,
       "port": 5173
     }
   ]

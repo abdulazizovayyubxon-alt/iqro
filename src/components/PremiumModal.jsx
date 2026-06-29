@@ -1,17 +1,14 @@
 /**
- * PremiumModal.jsx — To'lov tizimi (Telegram + Click + Payme)
- * Telegram asosiy usul, Click/Payme qo'shimcha
+ * PremiumModal.jsx — To'lov tizimi (Telegram orqali — karta, operator tasdiqlaydi)
  */
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Crown, X, CreditCard, Smartphone,
-  Shield, Send, Check
+  Crown, X, Shield, Send
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { generateClickUrl, generatePaymeUrl } from '../services/payment';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { purchasePlan } from '../services/playBilling';
@@ -62,40 +59,6 @@ const FEATURES = [
   { icon: '⚡', key: 'premium.feat6' },
 ];
 
-// To'lov usullari
-const PAY_METHODS = [
-  {
-    id: 'telegram',
-    labelKey: 'premium.payTelegram',
-    subKey: 'premium.payTelegramSub',
-    icon: '📱',
-    color: '#29B6F6',
-    bgColor: 'rgba(41, 182, 246, 0.15)',
-    borderColor: 'rgba(41, 182, 246, 0.4)',
-    badgeKey: 'premium.payTelegramBadge',
-  },
-  {
-    id: 'click',
-    label: "Click",
-    subKey: "premium.payClickSub",
-    icon: '💳',
-    color: '#0EA5E9',
-    bgColor: 'rgba(14, 165, 233, 0.1)',
-    borderColor: 'rgba(14, 165, 233, 0.25)',
-    badgeKey: null,
-  },
-  {
-    id: 'payme',
-    label: "Payme",
-    subKey: "premium.payPaymeSub",
-    icon: '🏦',
-    color: '#14B8A6',
-    bgColor: 'rgba(20, 184, 166, 0.1)',
-    borderColor: 'rgba(20, 184, 166, 0.25)',
-    badgeKey: null,
-  },
-];
-
 const PremiumModal = ({ isOpen, onClose }) => {
   const { t } = useTranslation();
   const { user } = useAuth();
@@ -107,7 +70,6 @@ const PremiumModal = ({ isOpen, onClose }) => {
   const [plans, setPlans] = useState(DEFAULT_PLANS);
   // Default — yillik plan (eng arzon kunlik narx, ROI eng kuchli)
   const [selectedPlan, setSelectedPlan] = useState(DEFAULT_PLANS[2]);
-  const [selectedMethod, setSelectedMethod] = useState('telegram');
   const [referralBonus, setReferralBonus] = useState(0);
   const [userData, setUserData] = useState(null);
 
@@ -126,7 +88,6 @@ const PremiumModal = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (!isOpen || !user) return;
     setStep('plans');
-    setSelectedMethod('telegram');
     setProcessing(false);
 
     const fetchData = async () => {
@@ -208,7 +169,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
     if (!user || !selectedPlan) return;
 
     // Analitika: to'lov niyati (yuqori-niyat signali — voronka konversiyasi uchun)
-    AnalyticsEvents.premiumClick(isAndroidApp ? 'play_billing' : selectedMethod);
+    AnalyticsEvents.premiumClick(isAndroidApp ? 'play_billing' : 'telegram');
 
     if (isAndroidApp) {
       setProcessing(true);
@@ -217,8 +178,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
       if (!res.success) {
         alert(res.message);
       } else {
-        // Analitika: xarid yakunlandi (Play Billing — yagona mijoz tomonida tasdiqlanadigan oqim;
-        // web Click/Payme redirect qiladi va konversiya server webhook'ida hisoblanadi)
+        // Analitika: xarid yakunlandi (Play Billing — mijoz tomonida tasdiqlanadigan oqim)
         AnalyticsEvents.purchase(selectedPlan.id, 'play_billing', finalPrice);
         alert(res.message);
         onClose();
@@ -226,28 +186,10 @@ const PremiumModal = ({ isOpen, onClose }) => {
       return;
     }
 
-    if (selectedMethod === 'telegram') {
-      // Telegram orqali — botga yo'naltirish (pay_planId parametri bilan)
-      const tgUrl = `https://t.me/${BOT_USERNAME}?start=pay_${selectedPlan.id}`;
-      window.open(tgUrl, '_blank');
-      setStep('telegram_guide');
-      return;
-    }
-
-    setProcessing(true);
-    const url = selectedMethod === 'click'
-      ? generateClickUrl(user.uid, user.phone || '', finalPrice, selectedPlan.id)
-      : generatePaymeUrl(user.uid, finalPrice, selectedPlan.id);
-    // To'lov tizimi sozlanmagan bo'lsa (merchant ID .env'da yo'q) URL null bo'ladi —
-    // jimgina muvaffaqiyatsiz bo'lish o'rniga foydalanuvchini Telegram usuliga yo'naltiramiz.
-    if (!url) {
-      setProcessing(false);
-      setSelectedMethod('telegram');
-      alert(t('premium.payMethodUnavailable'));
-      return;
-    }
-    window.location.href = url;
-    setTimeout(() => setProcessing(false), 3000);
+    // Web — yagona to'lov usuli: Telegram (karta orqali, operator tasdiqlaydi)
+    const tgUrl = `https://t.me/${BOT_USERNAME}?start=pay_${selectedPlan.id}`;
+    window.open(tgUrl, '_blank');
+    setStep('telegram_guide');
   };
 
   return (
@@ -325,7 +267,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   >
                     👑
                   </motion.div>
-                  <h2 style={{ fontSize: 22, fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>IQRO Pro</h2>
+                  <h2 style={{ fontSize: 22, fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>Toifa Pro</h2>
                   <p style={{ fontSize: 13, color: '#64748B', margin: 0 }}>{t('premium.subtitle')}</p>
                 </div>
 
@@ -460,7 +402,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                           disabled={promoLoading || !promoCode.trim()}
                           style={{
                             padding: '11px 18px', borderRadius: 12, border: 'none',
-                            background: 'linear-gradient(135deg, #29B6F6, #0284C7)', color: '#fff',
+                            background: 'linear-gradient(135deg, #0E97E0, #0284C7)', color: '#fff',
                             fontSize: 13, fontWeight: 800, fontFamily: 'inherit',
                             cursor: promoLoading ? 'wait' : 'pointer',
                             opacity: promoLoading || !promoCode.trim() ? 0.6 : 1, flexShrink: 0,
@@ -493,55 +435,23 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   ) : (
                     <>
                       <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--text3)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
-                        {t('premium.choosePayMethod')}
+                        {t('premium.payMethodTitle', "To'lov usuli")}
                       </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    {PAY_METHODS.map((m) => {
-                      const isActive = selectedMethod === m.id;
-                      return (
-                        <div
-                          key={m.id}
-                          onClick={() => setSelectedMethod(m.id)}
-                          style={{
-                            display: 'flex', alignItems: 'center', gap: 12,
-                            padding: '12px 14px', borderRadius: 14, cursor: 'pointer',
-                            border: isActive ? `2px solid ${m.color}` : `1.5px solid ${m.borderColor}`,
-                            background: isActive ? m.bgColor : 'rgba(255,255,255,0.03)',
-                            transition: 'all 0.18s',
-                            position: 'relative',
-                          }}
-                        >
-                          {m.badgeKey && (
-                            <div style={{
-                              position: 'absolute', top: -8, left: 12,
-                              background: 'linear-gradient(135deg, #29B6F6, #0284C7)',
-                              color: '#fff', fontSize: 8, fontWeight: 900,
-                              padding: '2px 8px', borderRadius: 6, letterSpacing: 1,
-                            }}>
-                              {t(m.badgeKey)}
-                            </div>
-                          )}
-                          <span style={{ fontSize: 22 }}>{m.icon}</span>
-                          <div style={{ flex: 1 }}>
-                            <div style={{ fontSize: 14, fontWeight: 700, color: isActive ? m.color : '#334155' }}>
-                              {m.labelKey ? t(m.labelKey) : m.label}
-                            </div>
-                            <div style={{ fontSize: 11, color: '#64748B', fontWeight: 500 }}>
-                              {t(m.subKey)}
-                            </div>
-                          </div>
-                          <div style={{
-                            width: 20, height: 20, borderRadius: '50%',
-                            border: isActive ? `2px solid ${m.color}` : '2px solid rgba(0,0,0,0.1)',
-                            background: isActive ? m.color : 'transparent',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                          }}>
-                            {isActive && <Check size={11} color="#fff" />}
-                          </div>
+                      <div style={{
+                        display: 'flex', alignItems: 'center', gap: 12,
+                        padding: '14px 16px', borderRadius: 14,
+                        border: '1.5px solid rgba(14,151,224,0.35)',
+                        background: 'rgba(14,151,224,0.08)',
+                      }}>
+                        <span style={{ width: 42, height: 42, borderRadius: 12, flexShrink: 0, background: 'rgba(14,151,224,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <Send size={20} color="#0E97E0" />
+                        </span>
+                        <div style={{ flex: 1 }}>
+                          <div style={{ fontSize: 14, fontWeight: 800, color: '#0f172a' }}>{t('premium.payTelegram')}</div>
+                          <div style={{ fontSize: 11.5, color: '#64748B', fontWeight: 500, lineHeight: 1.4 }}>{t('premium.payTelegramSub')}</div>
                         </div>
-                      );
-                    })}
-                  </div>
+                        <span style={{ flexShrink: 0, fontSize: 9, fontWeight: 900, color: '#fff', background: 'linear-gradient(135deg,#0E97E0,#0284C7)', padding: '3px 8px', borderRadius: 6, letterSpacing: 0.5 }}>{t('premium.payTelegramBadge')}</span>
+                      </div>
                     </>
                   )}
                 </div>
@@ -586,33 +496,23 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   </motion.button>
                 ) : (
                   <motion.button
-                  whileTap={{ scale: 0.98 }}
-                  onClick={handlePay}
-                  disabled={processing}
-                  style={{
-                    width: '100%', padding: '16px', borderRadius: 16,
-                    background: selectedMethod === 'telegram'
-                      ? 'linear-gradient(135deg, #29B6F6, #0284C7)'
-                      : selectedMethod === 'click'
-                      ? 'linear-gradient(135deg, #0EA5E9, #0284C7)'
-                      : 'linear-gradient(135deg, #14B8A6, #0D9488)',
-                    color: '#fff', fontWeight: 800, fontSize: 16,
-                    border: 'none', cursor: processing ? 'wait' : 'pointer',
-                    fontFamily: 'inherit',
-                    boxShadow: '0 4px 20px rgba(41,182,246,0.35)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-                    opacity: processing ? 0.7 : 1,
-                    marginBottom: 12,
-                  }}
-                >
-                  {selectedMethod === 'telegram' ? (
-                    <><Send size={18} /> {t('premium.payViaTelegram', { price: fmt(finalPrice) })}</>
-                  ) : selectedMethod === 'click' ? (
-                    <><CreditCard size={18} /> {t('premium.payClickBtn', { price: fmt(finalPrice) })}</>
-                  ) : (
-                    <><Smartphone size={18} /> {t('premium.payPaymeBtn', { price: fmt(finalPrice) })}</>
-                  )}
-                </motion.button>
+                    whileTap={{ scale: 0.98 }}
+                    onClick={handlePay}
+                    disabled={processing}
+                    style={{
+                      width: '100%', padding: '16px', borderRadius: 16,
+                      background: 'linear-gradient(135deg, #0E97E0, #0284C7)',
+                      color: '#fff', fontWeight: 800, fontSize: 16,
+                      border: 'none', cursor: processing ? 'wait' : 'pointer',
+                      fontFamily: 'inherit',
+                      boxShadow: '0 4px 20px rgba(14,151,224,0.35)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+                      opacity: processing ? 0.7 : 1,
+                      marginBottom: 12,
+                    }}
+                  >
+                    <Send size={18} /> {t('premium.payViaTelegram', { price: fmt(finalPrice) })}
+                  </motion.button>
                 )}
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'var(--text3)', fontSize: 11, fontWeight: 600 }}>
@@ -651,7 +551,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                     >
                       <div style={{
                         width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
-                        background: 'linear-gradient(135deg, #29B6F6, #0284C7)',
+                        background: 'linear-gradient(135deg, #0E97E0, #0284C7)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         fontSize: 13, fontWeight: 900, color: '#fff',
                       }}>
@@ -672,7 +572,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   textAlign: 'center',
                 }}>
                   <div style={{ fontSize: 11, color: '#64748B', marginBottom: 6, fontWeight: 700 }}>{t('premium.payCard')}</div>
-                  <div style={{ fontSize: 20, fontWeight: 900, color: '#29B6F6', letterSpacing: 3, fontFamily: 'monospace' }}>
+                  <div style={{ fontSize: 20, fontWeight: 900, color: '#0E97E0', letterSpacing: 3, fontFamily: 'monospace' }}>
                     9860 3501 4333 3655
                   </div>
                   <div style={{ fontSize: 12, color: '#475569', marginTop: 4, fontWeight: 600 }}>Ayyubxon Abdulazizov</div>
@@ -684,7 +584,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   onClick={() => window.open(`https://t.me/${BOT_USERNAME}`, '_blank')}
                   style={{
                     width: '100%', padding: '15px', borderRadius: 16,
-                    background: 'linear-gradient(135deg, #29B6F6, #0284C7)',
+                    background: 'linear-gradient(135deg, #0E97E0, #0284C7)',
                     color: '#fff', fontWeight: 800, fontSize: 15,
                     border: 'none', cursor: 'pointer', fontFamily: 'inherit',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,

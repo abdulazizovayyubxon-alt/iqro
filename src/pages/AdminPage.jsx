@@ -919,8 +919,8 @@ try {
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="admin-page">
       {/* Back button */}
-      <button className="admin-back-btn" onClick={() => navigate('/profile')}>
-        <ArrowLeft size={16} /> Profilga qaytish
+      <button className="admin-back-btn" onClick={() => navigate('/dashboard')}>
+        <ArrowLeft size={16} /> Bosh sahifaga qaytish
       </button>
 
       <div className="admin-header">

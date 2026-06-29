@@ -26,7 +26,7 @@ export default function TermsPage() {
         style={s.content}
       >
         <div style={s.iconWrap}>
-          <FileText size={48} color="#29B6F6" />
+          <FileText size={48} color="#0E97E0" />
         </div>
 
         <h2 style={s.heading}>{t('termsPage.h1')}</h2>

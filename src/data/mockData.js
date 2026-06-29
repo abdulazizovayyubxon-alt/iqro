@@ -263,20 +263,22 @@ const mttPsixologTopics = [
     theoryHint: "📌 Maktabgacha pedagogika, didaktika asoslari, mashg'ulotlarni rejalashtirish hamda pedagogik etika va muloqot." }
 ];
 
+// group: 'school' (umumiy o'rta ta'lim, 9 fan) | 'mtt' (maktabgacha ta'lim, 4 fan)
+// Fan tanlash UI shu guruhlar bo'yicha ajratiladi (README Variant B).
 export const SUBJECTS = [
-  { id: 'chqbt', name: "CHQBT", icon: Medal, desc: "Harbiy bilimlar, Konstitutsiya va birinchi yordam" },
-  { id: 'art', name: "Tasviriy San'at", icon: Palette, desc: "Chizmachilik va san'at tarixi" },
-  { id: 'tarix', name: "Tarix", icon: BookOpen, desc: "O'zbekiston va Jahon tarixi, pedagogik mahorat" },
-  { id: 'sport', name: "Jismoniy Tarbiya", icon: Activity, desc: "Sport nazariyasi va metodikasi" },
-  { id: 'boshlangich', name: "Boshlang'ich Ta'lim", icon: Baby, desc: "Ona tili, matematika, tabiiy fanlar, metodika" },
-  { id: 'info', name: "Informatika va AT", icon: Laptop, desc: "Kompyuter tizimlari, algoritmlash va dasturlash" },
-  { id: 'mtt', name: "MTT Tarbiyachilari", icon: Smile, desc: "Maktabgacha ta'lim pedagogikasi va metodikasi" },
-  { id: 'mtt_rahbar', name: "MTT Dir. O'rinbosari", icon: Award, desc: "Metodik rahbarlik, me'yoriy hujjatlar va boshqaruv" },
-  { id: 'til', name: "Ona Tili va Adabiyot", icon: PenTool, desc: "Til qoidalari, adabiyot tarixi va tahlili" },
-  { id: 'biologiya', name: "Biologiya", icon: Microscope, desc: "Hujayra, organizmlar, genetika, ekologiya va metodika" },
-  { id: 'geografiya', name: "Geografiya", icon: Globe, desc: "Tabiiy va iqtisodiy geografiya, xaritashunoslik va metodika" },
-  { id: 'mtt_logoped', name: "MTT Logopedi", icon: MessageSquare, desc: "Nutq buzilishlari, korreksiya va logopedik metodika" },
-  { id: 'mtt_psixolog', name: "MTT Psixologi", icon: Brain, desc: "Yosh psixologiyasi, oila, inklyuziv ta'lim va metodika" }
+  { id: 'chqbt', name: "CHQBT", icon: Medal, group: 'school', desc: "Harbiy bilimlar, Konstitutsiya va birinchi yordam" },
+  { id: 'art', name: "Tasviriy San'at", icon: Palette, group: 'school', desc: "Chizmachilik va san'at tarixi" },
+  { id: 'tarix', name: "Tarix", icon: BookOpen, group: 'school', desc: "O'zbekiston va Jahon tarixi, pedagogik mahorat" },
+  { id: 'sport', name: "Jismoniy Tarbiya", icon: Activity, group: 'school', desc: "Sport nazariyasi va metodikasi" },
+  { id: 'boshlangich', name: "Boshlang'ich Ta'lim", icon: Baby, group: 'school', desc: "Ona tili, matematika, tabiiy fanlar, metodika" },
+  { id: 'info', name: "Informatika va AT", icon: Laptop, group: 'school', desc: "Kompyuter tizimlari, algoritmlash va dasturlash" },
+  { id: 'mtt', name: "MTT Tarbiyachilari", icon: Smile, group: 'mtt', desc: "Maktabgacha ta'lim pedagogikasi va metodikasi" },
+  { id: 'mtt_rahbar', name: "MTT Dir. O'rinbosari", icon: Award, group: 'mtt', desc: "Metodik rahbarlik, me'yoriy hujjatlar va boshqaruv" },
+  { id: 'til', name: "Ona Tili va Adabiyot", icon: PenTool, group: 'school', desc: "Til qoidalari, adabiyot tarixi va tahlili" },
+  { id: 'biologiya', name: "Biologiya", icon: Microscope, group: 'school', desc: "Hujayra, organizmlar, genetika, ekologiya va metodika" },
+  { id: 'geografiya', name: "Geografiya", icon: Globe, group: 'school', desc: "Tabiiy va iqtisodiy geografiya, xaritashunoslik va metodika" },
+  { id: 'mtt_logoped', name: "MTT Logopedi", icon: MessageSquare, group: 'mtt', desc: "Nutq buzilishlari, korreksiya va logopedik metodika" },
+  { id: 'mtt_psixolog', name: "MTT Psixologi", icon: Brain, group: 'mtt', desc: "Yosh psixologiyasi, oila, inklyuziv ta'lim va metodika" }
 ];
 
 export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics];

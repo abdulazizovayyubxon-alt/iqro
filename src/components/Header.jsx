@@ -3,12 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
-import { Moon, Sun, BookOpen, Calendar, Crown } from 'lucide-react';
+import { Moon, Sun, BookOpen, Calendar } from 'lucide-react';
 import GiftBox from './shared/GiftBox';
+import ProfileDrawer from './ProfileDrawer';
 import { db } from '../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { EXAM_DATE } from '../config';
 import { resolveAvatar } from '../data/avatars';
+import { getTotalXP, getLevel } from '../data/badges';
+import { AppContext } from '../context/AppContext';
 import { getReferralStats } from '../services/referral';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
@@ -22,13 +25,37 @@ const Header = ({ theme, toggleTheme }) => {
   const { t } = useTranslation();
   const { toast, showToast } = useContext(ToastContext);
   const { user } = useAuth();
+  const { state } = useContext(AppContext);
+
+  // Profil drawer'dagi kompakt statistika — ProfilePage bilan bir manba
+  const totalXP = getTotalXP(state.stats);
+  const levelInfo = getLevel(totalXP);
+  const nextXP = levelInfo.level === 1 ? 75 : levelInfo.level === 2 ? 200 : levelInfo.level === 3 ? 500 : levelInfo.level === 4 ? 1000 : 9999;
+  const drawerStats = { xp: totalXP, xpMax: nextXP, level: levelInfo.level, streak: state.dailyStreak || 0 };
   const [daysLeft, setDaysLeft] = useState(0);
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showProfileDrawer, setShowProfileDrawer] = useState(false);
   const [, setIsOnline] = useState(navigator.onLine);
-  // isTruePremium = haqiqatda TO'LANGAN premium. Trial/urgency paytida isPremium=true
-  // bo'lsa-da bu false bo'ladi — shu sabab "status chip"ni faqat shu bilan ko'rsatamiz.
-  const isTruePremium = user?.isTruePremium || false;
   const { unreadCount } = useNotifications();
+
+  // ── Salomlashish: kuniga BIRINCHI marta kirganda "Xush kelibsiz",
+  //    keyingi kirishlarda kun vaqtiga qarab "Xayrli tong/kun/kech/tun" ──
+  // Qaror mount paytida bir marta olinadi (oxirgi salomlashish sanasini solishtirib).
+  // StrictMode double-render'da barqaror bo'lishi uchun localStorage'ga YOZISH alohida
+  // effektda — initializer faqat o'qiydi, shuning uchun ikkala render ham bir xil qaror beradi.
+  const [greetKey] = useState(() => {
+    const today = new Date().toLocaleDateString('en-CA'); // YYYY-MM-DD (lokal)
+    if (localStorage.getItem('iqro_last_greet_date') !== today) return 'header.greeting';
+    const h = new Date().getHours();
+    if (h >= 5 && h < 11) return 'dashboard.greetMorning';
+    if (h >= 11 && h < 17) return 'dashboard.greetDay';
+    if (h >= 17 && h < 22) return 'dashboard.greetEvening';
+    return 'dashboard.greetNight';
+  });
+  useEffect(() => {
+    localStorage.setItem('iqro_last_greet_date', new Date().toLocaleDateString('en-CA'));
+  }, []);
+
   // O'ng tomon ikonka tugmalari o'lchami — a11y teginish zonasi min 44px (WCAG 2.5.5)
   const btnSize = 44;
   
@@ -147,11 +174,13 @@ const Header = ({ theme, toggleTheme }) => {
   };
 
   const displayName = user?.displayName || user?.email?.split('@')[0] || t('common.userFallback');
+  // Faqat ism (familiyasiz) — header tor, "..." bilan kesilmasligi uchun
+  const firstName = displayName.trim().split(/\s+/)[0];
 
   return (
     <>
       <div className="header">
-        <div className="header-greeting" onClick={() => navigate('/profile')} title={t('header.profile')}>
+        <div className="header-greeting" onClick={() => setShowProfileDrawer(true)} title={t('header.profile')}>
           <div className="header-avatar-wrap">
             <div className="header-avatar">
               {resolveAvatar(user)
@@ -165,36 +194,15 @@ const Header = ({ theme, toggleTheme }) => {
             )}
           </div>
           <div className="header-greeting-text">
-            <span className="header-greet-hi">{t('header.greeting')}</span>
-            <span className="header-greet-name">{displayName}</span>
+            <span className="header-greet-hi">{t(greetKey)}</span>
+            <span className="header-greet-name">{firstName}</span>
           </div>
         </div>
 
         <div className="header-stats">
-          {/* "Pro" pill — oltin ko'rinish; navigatsiya holatga qarab:
-              to'langan → profil (boshqarish), aks holda → sotib olish */}
-          <motion.button
-            className="header-premium-pill"
-            whileTap={{ scale: 0.95 }}
-            onClick={() => navigate(isTruePremium ? '/profile' : '/premium')}
-            title={isTruePremium ? t('header.premiumActive') : t('header.premiumBuy')}
-            aria-label={isTruePremium ? t('header.premiumActive') : t('header.premiumBuy')}
-          >
-            <motion.span
-              className="header-premium-gem"
-              style={{ display: 'block', transformStyle: 'preserve-3d' }}
-              initial={{ rotateY: 0 }}
-              animate={{ rotateY: 360 }}
-              transition={{ duration: 1.2, ease: 'easeInOut' }}
-            >
-              <Crown size={16} strokeWidth={2.4} />
-            </motion.span>
-            <span className="header-premium-label">{t('header.pro')}</span>
-          </motion.button>
-
           {/* Kun Countdown */}
-          <motion.div 
-            className="header-exam-countdown hide-mobile" 
+          <motion.div
+            className="header-exam-countdown hide-mobile"
             onClick={() => {
               setTempDays(daysLeft);
               setShowExamModal(true);
@@ -215,7 +223,7 @@ const Header = ({ theme, toggleTheme }) => {
             onClick={() => toggleTheme()}
             title={theme === 'light' ? t('header.themeNextSepia') : theme === 'sepia' ? t('header.themeNextDark') : t('header.themeNextLight')}
             aria-label={theme === 'light' ? t('header.themeAriaSepia') : theme === 'sepia' ? t('header.themeAriaDark') : t('header.themeAriaLight')}
-            style={{ width: btnSize, height: btnSize, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0 }}
+            style={{ width: btnSize, height: btnSize, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0, background: 'var(--bg2)' }}
           >
             {theme === 'dark' ? <Moon size={18} /> : theme === 'sepia' ? <BookOpen size={18} /> : <Sun size={18} />}
           </motion.button>
@@ -236,7 +244,7 @@ const Header = ({ theme, toggleTheme }) => {
             transition={{ duration: 1.5, ease: "easeInOut", times: [0, 0.2, 0.4, 0.6, 0.8, 1], repeat: 2 }}
             onAnimationComplete={() => sessionStorage.setItem('iqro_gift_wiggled', 'true')}
             whileTap={{ scale: 0.9 }}
-            style={{ width: btnSize, height: btnSize, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0 }}
+            style={{ width: btnSize, height: btnSize, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0, background: 'var(--bg2)' }}
           >
             <GiftBox size={22} />
           </motion.button>
@@ -411,6 +419,16 @@ const Header = ({ theme, toggleTheme }) => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Profil drawer — avatarni bosganda chapdan chiqadi */}
+      <ProfileDrawer
+        open={showProfileDrawer}
+        onClose={() => setShowProfileDrawer(false)}
+        theme={theme}
+        toggleTheme={toggleTheme}
+        user={user}
+        stats={drawerStats}
+      />
 
     </>
   );

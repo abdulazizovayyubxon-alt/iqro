@@ -1,12 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, Send, Mail, ShieldCheck, BookOpen, Users, Sparkles } from 'lucide-react';
+import { ArrowLeft, Send, ShieldCheck, BookOpen, Users, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { APP_NAME } from '../config';
+import { APP_NAME, SUPPORT_URL } from '../config';
 
-const SUPPORT_TG = 'IQRO_testbot';
-const SUPPORT_EMAIL = 'abdulazizovayyubxon@gmail.com';
+const SUPPORT_HANDLE = 'Toifapro';
 const CARD_ICONS = [BookOpen, ShieldCheck, Users];
 
 export default function AboutPage() {
@@ -30,7 +29,7 @@ export default function AboutPage() {
         style={s.content}
       >
         <div style={s.iconWrap}>
-          <Sparkles size={44} color="#29B6F6" />
+          <Sparkles size={44} color="#0E97E0" />
         </div>
 
         <h2 style={s.lead}>{t('aboutPage.lead', { app: APP_NAME })}</h2>
@@ -43,7 +42,7 @@ export default function AboutPage() {
             const Icon = CARD_ICONS[i];
             return (
               <div key={i} style={s.card}>
-                <div style={s.cardIcon}><Icon size={20} color="#29B6F6" /></div>
+                <div style={s.cardIcon}><Icon size={20} color="#0E97E0" /></div>
                 <div>
                   <div style={s.cardTitle}>{c.t}</div>
                   <div style={s.cardDesc}>{c.d}</div>
@@ -57,11 +56,8 @@ export default function AboutPage() {
         <h3 style={s.heading}>{t('aboutPage.contactTitle')}</h3>
         <p style={s.text}>{t('aboutPage.contactText')}</p>
 
-        <a href={`https://t.me/${SUPPORT_TG}`} target="_blank" rel="noopener noreferrer" style={s.contactBtn}>
-          <Send size={18} /> {t('aboutPage.telegramBtn', { handle: SUPPORT_TG })}
-        </a>
-        <a href={`mailto:${SUPPORT_EMAIL}`} style={{ ...s.contactBtn, ...s.contactBtnOutline }}>
-          <Mail size={18} /> {SUPPORT_EMAIL}
+        <a href={SUPPORT_URL} target="_blank" rel="noopener noreferrer" style={s.contactBtn}>
+          <Send size={18} /> {t('aboutPage.telegramBtn', { handle: SUPPORT_HANDLE })}
         </a>
 
         <div style={s.footerNote}>
@@ -115,7 +111,7 @@ const s = {
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
     width: '100%', boxSizing: 'border-box', marginTop: 12,
     padding: '14px', borderRadius: 14, textDecoration: 'none',
-    background: 'linear-gradient(135deg, #29B6F6, #0284C7)', color: '#fff',
+    background: 'linear-gradient(135deg, #0E97E0, #0284C7)', color: '#fff',
     fontWeight: 700, fontSize: 15,
   },
   contactBtnOutline: {

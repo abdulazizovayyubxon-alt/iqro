@@ -4,12 +4,13 @@
 const RAW_EXAM_DATE = new Date('2026-05-13T09:00:00');
 export const EXAM_DATE = RAW_EXAM_DATE > new Date() ? RAW_EXAM_DATE : null;
 
-export const APP_NAME = 'IQRO';
+export const APP_NAME = 'Toifa Pro';
 export const APP_VERSION = '1.0.0'; // Ilova versiyasi (Sozlamalar pastida ko'rsatiladi; relizda bu yerni yangilang)
 export const APP_SUBTITLE = 'Kasbiy Sertifikatlash Tayyorgarligi';
-export const EXAM_LABEL = EXAM_DATE ? '13 May — IQRO Kasbiy Sertifikatlash Imtihoni' : 'IQRO Kasbiy Sertifikatlash Platformasi';
+export const EXAM_LABEL = EXAM_DATE ? '13 May — Toifa Pro Kasbiy Sertifikatlash Imtihoni' : 'Toifa Pro Kasbiy Sertifikatlash Platformasi';
 export const EXAM_GOAL_SCORE = 70;
-export const APP_URL = 'https://iqro-t41p.vercel.app'; // Haqiqiy domen (agar o'zgarsa shu yerni tahrirlaysiz)
+export const APP_URL = 'https://toifapro-t41p.vercel.app'; // Haqiqiy domen (agar o'zgarsa shu yerni tahrirlaysiz)
+export const SUPPORT_URL = 'https://t.me/Toifapro'; // Qo'llab-quvvatlash / Biz bilan bog'lanish Telegram kanali
 
 export const BATCH_SIZE = 50; // Har bir blokdagi savollar soni
 export const MAX_MISTAKES_SAVED = 50; // Maksimal saqlanadigan xatolar soni
@@ -72,14 +73,14 @@ export const isPlayBuild = () => {
 };
 
 // ─── Toifa ROI kalkulyatori ───
-// DIQQAT: ustama foizlari taxminiy — rasmiy hujjat asosida TASDIQLAB SO'NG o'zgartiring.
-// base — 1 stavka o'qituvchining o'rtacha oyligi (so'm)
+// gains — toifa ortidan OYLIKKA qo'shiladigan SOF farq (oddiy mutaxassisga nisbatan), so'm.
+// Haqiqiy hisob (2026): 2-toifa mutaxassisdan +445 928; 1-toifa +923 245 (2-toifadan +477 317);
+// oliy toifa +1 412 147 (1-toifadan +488 902). Yangilanса shu yerni tahrirlang.
 export const TOIFA_SALARY = {
-  base: 3800000,
-  deltas: {
-    '2-toifa': 0.20,
-    '1-toifa': 0.30,
-    'oliy': 0.50,
+  gains: {
+    '2-toifa': 445928,
+    '1-toifa': 923245,
+    'oliy': 1412147,
   },
   labels: {
     '2-toifa': '2-toifa',

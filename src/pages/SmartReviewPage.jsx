@@ -100,7 +100,7 @@ const SmartReviewPage = () => {
           <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 28 }}>
             {t('test.limitText')}
           </div>
-          <button style={{ width: '100%', padding: '15px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 16, cursor: 'pointer', fontFamily: 'inherit', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
+          <button style={{ width: '100%', padding: '15px', background: '#0E97E0', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 16, cursor: 'pointer', fontFamily: 'inherit', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
             {t('test.limitActivate')}
           </button>
           <button style={{ width: '100%', padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit' }} onClick={() => navigate('/')}>{t('test.backHomeArrow')}</button>
@@ -319,8 +319,8 @@ const SmartReviewPage = () => {
 
     return (
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ maxWidth: 600, margin: '0 auto', padding: '20px 16px' }}>
-        <div style={{ background: 'linear-gradient(135deg, rgba(41,182,246,0.07) 0%, rgba(139,92,246,0.07) 100%), var(--bg2)', border: '1.5px solid rgba(41, 182, 246, 0.22)', borderRadius: 24, padding: '36px 24px', textAlign: 'center', marginTop: 24, boxShadow: '0 16px 40px rgba(41, 182, 246, 0.10)' }}>
-          <div style={{ width: 76, height: 76, borderRadius: 22, margin: '0 auto 18px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #29B6F6, #8B5CF6)', boxShadow: '0 10px 24px rgba(139, 92, 246, 0.32)' }}>
+        <div style={{ background: 'linear-gradient(135deg, rgba(14,151,224,0.07) 0%, rgba(14,151,224,0.07) 100%), var(--bg2)', border: '1.5px solid rgba(14, 151, 224, 0.22)', borderRadius: 24, padding: '36px 24px', textAlign: 'center', marginTop: 24, boxShadow: '0 16px 40px rgba(14, 151, 224, 0.10)' }}>
+          <div style={{ width: 76, height: 76, borderRadius: 22, margin: '0 auto 18px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #0E97E0, #0B79B8)', boxShadow: '0 10px 24px rgba(14, 151, 224, 0.32)' }}>
             <Brain size={36} color="#fff" />
           </div>
           <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)', letterSpacing: '-0.5px' }}>{t('review.noReviewTitle')}</div>
@@ -354,7 +354,7 @@ const SmartReviewPage = () => {
                   const pct = (day.count / maxCount) * 100;
                   return (
                     <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: day.count > 0 ? '#29B6F6' : 'var(--text3)' }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: day.count > 0 ? '#0E97E0' : 'var(--text3)' }}>
                         {day.count}
                       </span>
                       {/* Vertical progress bar */}
@@ -374,7 +374,7 @@ const SmartReviewPage = () => {
                           transition={{ duration: 0.8, ease: 'easeOut', delay: i * 0.1 }}
                           style={{ 
                             width: '100%', 
-                            background: day.count > 0 ? 'linear-gradient(0deg, #29B6F6 0%, #8B5CF6 100%)' : 'var(--border)', 
+                            background: day.count > 0 ? 'linear-gradient(0deg, #0E97E0 0%, #0B79B8 100%)' : 'var(--border)', 
                             borderRadius: '0 0 6px 6px' 
                           }}
                         />
@@ -389,7 +389,7 @@ const SmartReviewPage = () => {
             </div>
           )}
 
-          <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}>
+          <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}>
             <Play size={16} fill="currentColor" /> {t('review.doTest')}
           </motion.button>
         </div>
@@ -403,11 +403,11 @@ const SmartReviewPage = () => {
             width: '100%', marginTop: 16,
             display: 'flex', alignItems: 'center', gap: 14, textAlign: 'left',
             padding: '16px 18px', borderRadius: 20,
-            border: '1.5px solid rgba(41, 182, 246, 0.25)',
-            background: 'linear-gradient(135deg, rgba(41,182,246,0.10) 0%, rgba(139,92,246,0.10) 100%)',
+            border: '1.5px solid rgba(14, 151, 224, 0.25)',
+            background: 'linear-gradient(135deg, rgba(14,151,224,0.10) 0%, rgba(14,151,224,0.10) 100%)',
             cursor: 'pointer', fontFamily: 'inherit',
             position: 'relative', overflow: 'hidden',
-            boxShadow: '0 8px 24px rgba(41, 182, 246, 0.10)'
+            boxShadow: '0 8px 24px rgba(14, 151, 224, 0.10)'
           }}
         >
           <motion.div
@@ -415,7 +415,7 @@ const SmartReviewPage = () => {
             transition={{ repeat: Infinity, duration: 3.5, ease: 'linear', repeatDelay: 1.5 }}
             style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: '35%', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent)', transform: 'skewX(-20deg)' }}
           />
-          <div style={{ width: 46, height: 46, borderRadius: 14, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #29B6F6, #8B5CF6)', boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)', position: 'relative', zIndex: 1 }}>
+          <div style={{ width: 46, height: 46, borderRadius: 14, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #0E97E0, #0B79B8)', boxShadow: '0 4px 12px rgba(14, 151, 224, 0.3)', position: 'relative', zIndex: 1 }}>
             <Zap size={22} color="#fff" />
           </div>
           <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
@@ -450,7 +450,7 @@ const SmartReviewPage = () => {
           <div style={{ fontSize: 13, color: 'var(--text3)', marginBottom: 24, lineHeight: 1.7, fontWeight: 500 }}>
             {t('review.doneHint')}
           </div>
-          <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}>
+          <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}>
             <Play size={16} fill="currentColor" /> {t('review.doTest')}
           </motion.button>
         </div>
@@ -499,7 +499,7 @@ const SmartReviewPage = () => {
       {/* Progress (faqat test rejimida — flashcardning o'z progressi bor) */}
       {studyMode === 'mcq' && (
         <div style={{ height: 6, borderRadius: 3, background: '#F1F5F9', marginBottom: 16, overflow: 'hidden' }}>
-          <div style={{ width: `${((currentIdx + 1) / cards.length) * 100}%`, height: '100%', background: '#29B6F6', borderRadius: 3, transition: 'width 0.3s' }} />
+          <div style={{ width: `${((currentIdx + 1) / cards.length) * 100}%`, height: '100%', background: '#0E97E0', borderRadius: 3, transition: 'width 0.3s' }} />
         </div>
       )}
 
@@ -616,7 +616,7 @@ const SmartReviewPage = () => {
                             outline: 'none',
                             transition: 'border-color 0.2s'
                           }}
-                          onFocus={(e) => e.target.style.borderColor = '#29B6F6'}
+                          onFocus={(e) => e.target.style.borderColor = '#0E97E0'}
                           onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
                         />
                         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
@@ -629,7 +629,7 @@ const SmartReviewPage = () => {
                   );
                 })()}
 
-                <button onClick={nextCard} style={{ width: '100%', padding: '14px', background: '#29B6F6', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                <button onClick={nextCard} style={{ width: '100%', padding: '14px', background: '#0E97E0', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
                   {currentIdx + 1 >= cards.length ? t('review.finish') : t('review.nextCard')} <ChevronRight size={18} />
                 </button>
               </motion.div>

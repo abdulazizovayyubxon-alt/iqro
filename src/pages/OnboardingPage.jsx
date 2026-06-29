@@ -12,7 +12,11 @@ import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import { useIsMobile } from '../hooks/useIsMobile';
 
-const PRIMARY = '#29B6F6';
+// Tema-xavfsiz: tun/sepia da --accent avtomatik o'zgaradi (qattiq-kodlangan ko'k emas)
+const PRIMARY = 'var(--accent)';
+
+// MTT (maktabgacha) yo'nalishlari
+const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog'];
 
 const GOALS = [
   { id: 'second_category', badge: '🥈' },
@@ -46,7 +50,42 @@ const TIMES = [
 ];
 
 // ── Qadam komponentlari ──
-function ListStep({ title, subtitle, items, selected, onSelect, isMobile, searchable, searchPlaceholder }) {
+function renderListItem(item, selected, onSelect, ss) {
+  const isActive = selected === item.id;
+  return (
+    <motion.button
+      key={item.id}
+      style={{
+        ...ss.listItem,
+        border: isActive ? `2px solid ${PRIMARY}` : '1px solid var(--border)',
+        background: isActive ? 'var(--blue-bg)' : 'var(--bg2)',
+        boxShadow: isActive ? '0 8px 22px rgba(14, 151, 224, 0.16)' : '0 2px 8px rgba(0,0,0,0.01)',
+      }}
+      onClick={() => onSelect(item.id)}
+      whileHover={{ y: -2, boxShadow: '0 8px 20px rgba(0,0,0,0.03)' }}
+      whileTap={{ scale: 0.98 }}
+    >
+      <div style={{
+        ...ss.badge,
+        background: isActive ? PRIMARY : 'var(--bg3)',
+        color: isActive ? '#fff' : 'var(--text3)',
+        boxShadow: isActive ? '0 4px 12px rgba(14, 151, 224, 0.22)' : 'none',
+      }}>
+        {item.badge}
+      </div>
+      <div style={ss.listItemText}>
+        <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--text)' }}>{item.title}</span>
+        <span style={{ fontSize: 13, color: 'var(--text3)', marginTop: 2 }}>{item.desc}</span>
+        {item.meta && (
+          <span style={{ fontSize: 11, color: 'var(--green)', fontWeight: 700, marginTop: 3 }}>{item.meta}</span>
+        )}
+      </div>
+      {isActive && <CheckCircle size={20} style={{ color: PRIMARY, flexShrink: 0 }} />}
+    </motion.button>
+  );
+}
+
+function ListStep({ title, subtitle, items, selected, onSelect, isMobile, searchable, searchPlaceholder, groups }) {
   const { t } = useTranslation();
   const ss = getStyles(isMobile);
   const [query, setQuery] = useState('');
@@ -75,40 +114,18 @@ function ListStep({ title, subtitle, items, selected, onSelect, isMobile, search
         <p style={ss.searchEmpty}>{t('onboarding.searchEmpty')}</p>
       )}
       <div style={ss.list}>
-        {visibleItems.map(item => {
-          const isActive = selected === item.id;
-          return (
-            <motion.button
-              key={item.id}
-              style={{
-                ...ss.listItem,
-                border: isActive ? `2.5px solid ${PRIMARY}` : '1.5px solid var(--border)',
-                background: isActive ? 'var(--blue-bg)' : 'var(--bg2)',
-                boxShadow: isActive ? '0 8px 24px rgba(41, 182, 246, 0.12)' : '0 2px 8px rgba(0,0,0,0.01)',
-              }}
-              onClick={() => onSelect(item.id)}
-              whileHover={{ y: -2, boxShadow: '0 8px 20px rgba(0,0,0,0.03)' }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <div style={{
-                ...ss.badge,
-                background: isActive ? PRIMARY : 'var(--bg3)',
-                color: isActive ? '#fff' : 'var(--text3)',
-                boxShadow: isActive ? '0 4px 12px rgba(41, 182, 246, 0.2)' : 'none',
-              }}>
-                {item.badge}
-              </div>
-              <div style={ss.listItemText}>
-                <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--text)' }}>{item.title}</span>
-                <span style={{ fontSize: 13, color: 'var(--text3)', marginTop: 2 }}>{item.desc}</span>
-                {item.meta && (
-                  <span style={{ fontSize: 11, color: 'var(--green)', fontWeight: 700, marginTop: 3 }}>{item.meta}</span>
-                )}
-              </div>
-              {isActive && <CheckCircle size={20} style={{ color: PRIMARY, flexShrink: 0 }} />}
-            </motion.button>
-          );
-        })}
+        {(groups && !q)
+          ? groups.map(g => {
+              const groupItems = visibleItems.filter(it => it.group === g.id);
+              if (!groupItems.length) return null;
+              return (
+                <React.Fragment key={g.id}>
+                  <div style={ss.groupHeader}>{g.label}</div>
+                  {groupItems.map(item => renderListItem(item, selected, onSelect, ss))}
+                </React.Fragment>
+              );
+            })
+          : visibleItems.map(item => renderListItem(item, selected, onSelect, ss))}
       </div>
     </>
   );
@@ -198,9 +215,9 @@ function WelcomeStep({ goal, time, isMobile }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18, borderBottom: '1px solid var(--border)', paddingBottom: 14 }}>
             <div style={{
               width: 38, height: 38, borderRadius: 12,
-              background: 'rgba(59, 130, 246, 0.12)',
+              background: 'var(--blue-bg)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: 18, color: '#3B82F6'
+              fontSize: 18, color: 'var(--accent)'
             }}>
               {goalObj.badge}
             </div>
@@ -243,8 +260,8 @@ function WelcomeStep({ goal, time, isMobile }) {
       </div>
 
       <div style={{
-        background: 'linear-gradient(90deg, rgba(59, 130, 246, 0.08) 0%, rgba(147, 51, 234, 0.08) 100%)',
-        border: '1px solid rgba(59, 130, 246, 0.15)',
+        background: 'linear-gradient(90deg, rgba(14, 151, 224, 0.08) 0%, rgba(14, 151, 224, 0.03) 100%)',
+        border: '1px solid rgba(14, 151, 224, 0.15)',
         borderRadius: 14,
         padding: '14px 18px',
         fontSize: 13,
@@ -289,9 +306,16 @@ export default function OnboardingPage({ onComplete }) {
   const timesItems = TIMES.map(tm => ({ ...tm, title: t(`onboarding.times.${tm.id}.title`), desc: t(`onboarding.times.${tm.id}.desc`) }));
   const subjectsWithMeta = SUBJECTS.map(s => {
     const m = questionMeta?.[s.id];
-    const base = { ...s, title: t(`onboarding.subjects.${s.id}.title`), desc: t(`onboarding.subjects.${s.id}.desc`) };
+    const group = s.id === 'multi' ? 'other' : (MTT_IDS.includes(s.id) ? 'mtt' : 'school');
+    const base = { ...s, group, title: t(`onboarding.subjects.${s.id}.title`), desc: t(`onboarding.subjects.${s.id}.desc`) };
     return m?.count > 0 ? { ...base, meta: t('onboarding.meta', { count: m.count.toLocaleString() }) } : base;
   });
+
+  const SUBJECT_GROUPS = [
+    { id: 'school', label: t('onboarding.schoolGroup', 'Maktab fanlari') },
+    { id: 'mtt', label: t('onboarding.mttGroup', "Maktabgacha · MTT") },
+    { id: 'other', label: t('onboarding.otherGroup', 'Boshqa') },
+  ];
 
   const TOTAL_STEPS = 3; // 0,1,2
   const progress = step >= 3 ? 1 : (step + 1) / (TOTAL_STEPS + 1);
@@ -328,7 +352,7 @@ export default function OnboardingPage({ onComplete }) {
 
   const stepData = [
     { title: t('onboarding.goalTitle'), subtitle: t('onboarding.goalSubtitle'), items: goalsItems, val: goal, set: setGoal },
-    { title: t('onboarding.subjectTitle'), subtitle: t('onboarding.subjectSubtitle'), items: subjectsWithMeta, val: subject, set: setSubject, searchable: true },
+    { title: t('onboarding.subjectTitle'), subtitle: t('onboarding.subjectSubtitle'), items: subjectsWithMeta, val: subject, set: setSubject, searchable: true, groups: SUBJECT_GROUPS },
     { title: t('onboarding.timeTitle'), subtitle: t('onboarding.timeSubtitle'), items: timesItems, val: time, set: setTime },
   ];
 
@@ -385,6 +409,7 @@ export default function OnboardingPage({ onComplete }) {
                   isMobile={isMobile}
                   searchable={stepData[step].searchable}
                   searchPlaceholder={t('onboarding.searchPlaceholder')}
+                  groups={stepData[step].groups}
                 />
               )}
               {step === 3 && <LoadingStep isMobile={isMobile} />}
@@ -437,7 +462,7 @@ const getStyles = (isMobile) => ({
     overflow: 'hidden',
   },
   progressTrack: { height: 4, background: 'var(--border)', flexShrink: 0 },
-  progressFill: { height: '100%', background: 'linear-gradient(90deg, #29B6F6, #8B5CF6)', borderRadius: '0 2px 2px 0' },
+  progressFill: { height: '100%', background: 'var(--accent)', borderRadius: '0 2px 2px 0' },
   header: {
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     padding: '16px 20px 0',
@@ -451,6 +476,7 @@ const getStyles = (isMobile) => ({
   title: { fontSize: 26, fontWeight: 800, lineHeight: 1.25, marginBottom: 8, color: 'var(--text)' },
   subtitle: { fontSize: 14, color: 'var(--text3)', marginBottom: 20, lineHeight: 1.5 },
   list: { display: 'flex', flexDirection: 'column', gap: 10, marginTop: 8 },
+  groupHeader: { fontSize: 11, fontWeight: 800, letterSpacing: 0.6, color: 'var(--text3)', textTransform: 'uppercase', margin: '14px 2px 2px' },
   searchWrap: { position: 'relative', marginTop: 4, marginBottom: 4 },
   searchIcon: {
     position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)',
@@ -485,14 +511,14 @@ const getStyles = (isMobile) => ({
     background: 'var(--grad-primary)', color: '#fff',
     border: 'none', fontWeight: 700, fontSize: 16,
     cursor: 'pointer', fontFamily: 'inherit', transition: 'all 0.2s',
-    boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)',
+    boxShadow: '0 8px 20px rgba(14, 151, 224, 0.28)',
   },
   loaderCircle: {
     width: 90, height: 90, borderRadius: '50%',
-    border: `3px solid ${PRIMARY}20`,
+    border: '3px solid var(--blue-bg)',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     margin: '0 auto',
-    boxShadow: `0 0 0 12px ${PRIMARY}10`,
+    boxShadow: '0 0 0 12px var(--blue-bg)',
     animation: 'skeletonPulse 2.5s ease infinite',
   },
   loaderInner: {
@@ -500,12 +526,12 @@ const getStyles = (isMobile) => ({
     background: 'var(--grad-primary)',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     color: '#fff',
-    boxShadow: '0 4px 12px rgba(139, 92, 246, 0.2)',
+    boxShadow: '0 4px 12px rgba(14, 151, 224, 0.25)',
   },
   spinnerSmall: {
     width: 20, height: 20, borderRadius: '50%',
-    border: `2px solid ${PRIMARY}40`,
-    borderTopColor: PRIMARY,
+    border: '2px solid var(--blue-bg)',
+    borderTopColor: 'var(--accent)',
     animation: 'spin 0.8s linear infinite',
     flexShrink: 0,
   },

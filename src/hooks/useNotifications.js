@@ -7,7 +7,7 @@ const STORAGE_KEY = 'IQRO_NOTIFICATIONS';
 const DELETED_KEY = 'IQRO_NOTIFICATIONS_DELETED';
 
 const DEFAULT_NOTIFS = () => ([
-  { id: '1', title: '🎉 IQRO Platformasiga xush kelibsiz!', message: "CHQBT va San'at bo'limlarida bilimingizni oshiring. Barcha testlar tayyor!", date: new Date().toISOString(), read: false, type: 'success' },
+  { id: '1', title: '🎉 Toifa Pro platformasiga xush kelibsiz!', message: "CHQBT va San'at bo'limlarida bilimingizni oshiring. Barcha testlar tayyor!", date: new Date().toISOString(), read: false, type: 'success' },
   { id: '2', title: '🔥 Kunlik maqsadni unutmang', message: 'Har kuni kamida 20 ta savol yechib, olovli streak zanjirini davom ettiring!', date: new Date(Date.now() - 3600000).toISOString(), read: false, type: 'info' },
   { id: '3', title: '💡 Takrorlash tavsiya etiladi', message: "Takrorlash bo'limida siz xato qilgan savollar kutmoqda. Bilimingizni mustahkamlang!", date: new Date(Date.now() - 86400000).toISOString(), read: true, type: 'warning' }
 ]);

@@ -6,6 +6,7 @@ import { ArrowLeft, Eye, EyeOff, Send, ShieldCheck } from 'lucide-react';
 import { signInWithCustomToken } from 'firebase/auth';
 import { auth } from '../firebase';
 import { useIsMobile } from '../hooks/useIsMobile';
+import BrandLogo from '../components/shared/BrandLogo';
 
 const STEPS = {
   PHONE: 'phone',
@@ -13,7 +14,7 @@ const STEPS = {
   AUTH: 'auth',          // Parol kiritish + (kerak bo'lsa) ro'yxatdan o'tish — bitta moslashuvchan ekran
 };
 
-const PRIMARY = '#29B6F6';
+const PRIMARY = '#0E97E0';
 
 export default function LoginPage() {
   const { t } = useTranslation();
@@ -295,6 +296,7 @@ export default function LoginPage() {
               <ArrowLeft size={22} />
             </motion.button>
           ) : <div style={{ width: 36 }} />}
+          <BrandLogo size={22} />
           <div style={{ width: 36 }} />
         </div>
 
@@ -470,32 +472,13 @@ export default function LoginPage() {
 
         {/* Footer */}
         <div style={s.footer}>
-          {/* ── PHONE qadami: Telegram ASOSIY, telefon ikkinchi darajali ── */}
+          {/* ── PHONE qadami: telefon ASOSIY, Telegram ikkinchi darajali (lekin sezilarli) ── */}
           {step === STEPS.PHONE ? (
             <>
-              {/* Telegram — ASOSIY (tavsiya etiladi) */}
-              <motion.button
-                style={{ ...s.primaryBtn, background: 'linear-gradient(135deg, #29B6F6 0%, #1E88E5 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 6, boxShadow: '0 4px 15px rgba(41, 182, 246, 0.3)' }}
-                onClick={handleTelegramLogin}
-                disabled={loading}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Send size={20} color="#fff" /> {t('login.telegramLogin')}
-              </motion.button>
-              <div style={{ textAlign: 'center', fontSize: 12, color: 'var(--text3)', marginBottom: 14 }}>
-                {t('login.telegramHint')}
-              </div>
-
-              <div style={s.orRow}>
-                <div style={s.orLine} />
-                <span style={s.orText}>{t('login.orPhone')}</span>
-                <div style={s.orLine} />
-              </div>
-
-              {/* Telefon — IKKINCHI DARAJALI */}
+              {/* Telefon — ASOSIY */}
               <motion.button
                 id="login-submit-btn"
-                style={{ ...s.outlineBtn, opacity: loading || lockoutTimer ? 0.6 : 1 }}
+                style={{ ...s.primaryBtn, opacity: loading || lockoutTimer ? 0.6 : 1, marginBottom: 12 }}
                 onClick={handleContinue}
                 disabled={loading || !!lockoutTimer}
                 whileTap={{ scale: 0.98 }}
@@ -504,6 +487,25 @@ export default function LoginPage() {
                   : lockoutTimer ? t('login.wait', { sec: lockoutTimer })
                   : t('login.continuePhone')}
               </motion.button>
+
+              <div style={s.orRow}>
+                <div style={s.orLine} />
+                <span style={s.orText}>{t('login.orTelegram')}</span>
+                <div style={s.orLine} />
+              </div>
+
+              {/* Telegram — IKKINCHI DARAJALI, lekin sezilarli (azure rangli) */}
+              <motion.button
+                style={s.telegramBtn}
+                onClick={handleTelegramLogin}
+                disabled={loading}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Send size={20} color="var(--accent)" /> {t('login.telegramLogin')}
+              </motion.button>
+              <div style={{ textAlign: 'center', fontSize: 12, color: 'var(--text3)', marginTop: 8 }}>
+                {t('login.telegramHint')}
+              </div>
             </>
           ) : step === STEPS.AUTH && (
             <motion.button
@@ -562,7 +564,7 @@ const getStyles = (isMobile) => ({
     overflow: 'hidden',
   },
   progressTrack: { height: 4, background: 'var(--border)', flexShrink: 0 },
-  progressFill: { height: '100%', background: 'linear-gradient(90deg, #29B6F6, #8B5CF6)', borderRadius: '0 2px 2px 0' },
+  progressFill: { height: '100%', background: 'linear-gradient(90deg, #0E97E0, #0B79B8)', borderRadius: '0 2px 2px 0' },
   header: {
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     padding: isMobile ? '16px 16px 0' : '20px 20px 0',
@@ -617,7 +619,7 @@ const getStyles = (isMobile) => ({
     background: 'var(--grad-primary)', color: '#fff', border: 'none',
     fontWeight: 700, fontSize: 16, cursor: 'pointer',
     fontFamily: 'inherit', transition: 'all 0.2s', marginBottom: isMobile ? 8 : 12,
-    boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)',
+    boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)',
   },
   orRow: { display: 'flex', alignItems: 'center', gap: 12, marginBottom: isMobile ? 8 : 12 },
   orLine: { flex: 1, height: 1, background: 'var(--border)' },
@@ -630,6 +632,15 @@ const getStyles = (isMobile) => ({
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
     marginBottom: isMobile ? 0 : 10, transition: 'all 0.2s',
     boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
+  },
+  // Telegram — ikkinchi darajali, lekin azure rangi bilan sezilarli
+  telegramBtn: {
+    width: '100%', padding: '15px', borderRadius: 16,
+    border: '1.5px solid var(--accent)', background: 'var(--blue-bg)',
+    color: 'var(--accent2)', fontWeight: 700, fontSize: 15,
+    cursor: 'pointer', fontFamily: 'inherit',
+    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+    transition: 'all 0.2s',
   },
   // ── AUTH step styles ──
   fieldLabel: {

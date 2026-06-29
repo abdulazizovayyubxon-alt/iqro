@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
@@ -8,7 +8,7 @@ import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
-import { RefreshCw, ArrowLeft, X, ChevronLeft, ChevronRight, LayoutGrid } from 'lucide-react';
+import { RefreshCw, ArrowLeft, X } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
 import ObjectionModal from '../components/shared/ObjectionModal';
@@ -49,8 +49,7 @@ function cleanForDedup(text) {
   return clean.trim();
 }
 
-import TestHeader from '../components/test/TestHeader';
-import SmartBottomSheet from '../components/test/SmartBottomSheet';
+import SubjectTopicChips, { Chip } from '../components/SubjectTopicChips';
 import QuestionBox from '../components/test/QuestionBox';
 import FlashcardView from '../components/test/FlashcardView';
 import TestResults from '../components/test/TestResults';
@@ -59,6 +58,7 @@ import { useModalBackButton } from '../components/profile/useModalBackButton';
 
 const TestPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { t } = useTranslation();
   const { user } = useAuth();
   const { state, batchCommitResults, updateState, saveCustomMnemonic } = useContext(AppContext);
@@ -106,14 +106,11 @@ const TestPage = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [selectedBatch, setSelectedBatch] = useState(0);
-  const [showBatchGrid, setShowBatchGrid] = useState(false); // Blok tanlash grid modali
+  const [showBlockPicker, setShowBlockPicker] = useState(false); // Blok tanlash oynasi (blok chipi orqali)
 
   // New States: Difficulty Filter and Timer Mode
   const [diffFilter] = useState('ALL'); // 'ALL', 'Y1', 'Y2', 'Y3'
   const [timerMode, setTimerMode] = useState('countdown'); // 'countdown', 'stopwatch', 'off'
-
-  // Bottom Sheet State
-  const [showSelectorDrawer, setShowSelectorDrawer] = useState(false);
 
   // Testdan chiqish tasdig'i (orqa tugma himoyasi)
   const [showExitConfirm, setShowExitConfirm] = useState(false);
@@ -168,10 +165,11 @@ const TestPage = () => {
   const guardActive = questions.length > 0 && !showResults && mode !== 'flashcard' && Object.keys(answers).length > 0;
   useExitGuard(guardActive, () => setShowExitConfirm(true));
 
-  // Drawer/Premium modal ochiq bo'lsa orqa tugma sahifadan emas, modaldan chiqaradi
-  useModalBackButton(showSelectorDrawer || showPremiumModal, () => {
-    setShowSelectorDrawer(false);
+  // Premium/blok modali ochiq bo'lsa orqa tugma sahifadan emas, modaldan chiqaradi
+  // (fan/mavzu tanlagichlarning orqa-tugma himoyasi SubjectTopicChips ichida)
+  useModalBackButton(showPremiumModal || showBlockPicker, () => {
     setShowPremiumModal(false);
+    setShowBlockPicker(false);
   });
 
   // Motivatsiya timeout'ini unmount'da tozalash
@@ -211,6 +209,16 @@ const TestPage = () => {
       setAnswers({});
     }
   }, [selectedBatch, fullPool]);
+
+  // Dashboard'dagi blok chipidan kelinganda (navigate state.openBlocks) — hovuz
+  // yuklangach blok tanlagichni bir marta avtomatik ochamiz.
+  const blockIntentRef = useRef(location.state?.openBlocks === true);
+  useEffect(() => {
+    if (blockIntentRef.current && fullPool.length > BATCH_SIZE && mode !== 'mistakes') {
+      blockIntentRef.current = false;
+      setShowBlockPicker(true);
+    }
+  }, [fullPool, mode]);
 
   const generateFullPool = async () => {
     setIsGenerating(true);
@@ -665,35 +673,52 @@ const TestPage = () => {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: 700, margin: '0 auto', padding: '12px 16px 80px' }}>
       {questions.length === 0 && <FreeMonthBanner onPayClick={() => setShowPremiumModal(true)} />}
 
-      {/* Header */}
-      <TestHeader
-        topicName={topicName}
-        subjectName={SUBJECTS.find(s => s.id === state.activeCategory)?.name}
-        questionsCount={questions.length}
-        mode={mode}
-        selectedBatch={selectedBatch}
-        onOpenSelector={() => setShowSelectorDrawer(true)}
-      />
+      {/* Header — fan + mavzu + blok chiplari (Dashboard bilan bir xil), pastida jami savol soni */}
+      {(() => {
+        const totalBatches = Math.ceil(fullPool.length / BATCH_SIZE);
+        const hasBlocks = mode !== 'mistakes' && totalBatches > 1;
+        const rangeStart = selectedBatch * BATCH_SIZE + 1;
+        const rangeEnd = Math.min((selectedBatch + 1) * BATCH_SIZE, fullPool.length);
+        const openBlockPicker = () => {
+          if (guardActive && !window.confirm(t('test.changeWarn'))) return;
+          setShowBlockPicker(true);
+        };
+        return (
+          <div style={{ paddingBottom: 12, borderBottom: '1px solid var(--border)', marginBottom: 12 }}>
+            <SubjectTopicChips
+              state={state}
+              updateState={updateState}
+              SUBJECTS={SUBJECTS}
+              TOPICS={TOPICS}
+              setTopicId={setTopicId}
+              guardChange={guardActive}
+              extraChip={hasBlocks ? (
+                <Chip
+                  label={t('test.blockChip', { n: selectedBatch + 1, total: totalBatches })}
+                  onClick={openBlockPicker}
+                  ariaLabel={t('test.selectBlock')}
+                  noShrink
+                />
+              ) : null}
+            />
+            {fullPool.length > 0 && mode !== 'mistakes' && (
+              <div style={{ fontSize: 12.5, color: 'var(--text3)', marginTop: 10, paddingLeft: 2 }}>
+                {hasBlocks
+                  ? `${t('test.questionRange', { start: rangeStart, end: rangeEnd })} · ${t('test.totalAvailable', { count: fullPool.length })}`
+                  : t('test.totalAvailable', { count: fullPool.length })}
+              </div>
+            )}
+          </div>
+        );
+      })()}
 
-      {/* Smart Bottom Sheet */}
-      <SmartBottomSheet 
-        showSelectorDrawer={showSelectorDrawer}
-        setShowSelectorDrawer={setShowSelectorDrawer}
-        state={state}
-        updateState={updateState}
-        topicId={topicId}
-        setTopicId={setTopicId}
-        SUBJECTS={SUBJECTS}
-        TOPICS={TOPICS}
-      />
-
-      {/* Blok tanlash grid modali */}
+      {/* Blok tanlash oynasi (blok chipi orqali) */}
       <AnimatePresence>
-        {showBatchGrid && (
+        {showBlockPicker && (
           <>
             <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              onClick={() => setShowBatchGrid(false)}
+              onClick={() => setShowBlockPicker(false)}
               style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(3px)', zIndex: 1000 }}
             />
             <motion.div
@@ -707,9 +732,12 @@ const TestPage = () => {
                 display: 'flex', flexDirection: 'column', maxHeight: '70vh', overflow: 'hidden'
               }}
             >
-              <div style={{ padding: '20px 20px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border)' }}>
-                <h3 style={{ fontSize: 18, fontWeight: 800, color: 'var(--text)', margin: 0 }}>{t('test.selectBlock')}</h3>
-                <button onClick={() => setShowBatchGrid(false)} aria-label={t('common.close')} style={{ background: 'var(--bg3)', border: 'none', width: 44, height: 44, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text2)', cursor: 'pointer' }}>
+              <div style={{ padding: '20px 20px 14px', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', borderBottom: '1px solid var(--border)' }}>
+                <div style={{ minWidth: 0 }}>
+                  <h3 style={{ fontSize: 22, fontWeight: 800, color: 'var(--text)', margin: 0, letterSpacing: '-0.01em' }}>{t('test.selectBlock')}</h3>
+                  <div style={{ fontSize: 13, color: 'var(--text3)', marginTop: 2 }}>{t('test.totalAvailable', { count: fullPool.length })}</div>
+                </div>
+                <button onClick={() => setShowBlockPicker(false)} aria-label={t('common.close')} style={{ flexShrink: 0, background: 'var(--bg3)', border: 'none', width: 44, height: 44, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text2)', cursor: 'pointer' }}>
                   <X size={18} />
                 </button>
               </div>
@@ -722,7 +750,7 @@ const TestPage = () => {
                     return (
                       <button
                         key={i}
-                        onClick={() => { setSelectedBatch(i); setShowBatchGrid(false); }}
+                        onClick={() => { setSelectedBatch(i); setShowBlockPicker(false); }}
                         style={{
                           display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 2,
                           minHeight: 54, borderRadius: 12, border: '1.5px solid',
@@ -742,55 +770,6 @@ const TestPage = () => {
           </>
         )}
       </AnimatePresence>
-
-      {/* Batch Selector */}
-      {mode !== 'mistakes' && Math.ceil(fullPool.length / BATCH_SIZE) > 1 && (() => {
-        const totalBatches = Math.ceil(fullPool.length / BATCH_SIZE);
-        const start = selectedBatch * BATCH_SIZE + 1;
-        const end = Math.min((selectedBatch + 1) * BATCH_SIZE, fullPool.length);
-        const atStart = selectedBatch === 0;
-        const atEnd = selectedBatch >= totalBatches - 1;
-        const arrowStyle = (disabled) => ({
-          flexShrink: 0, width: 44, height: 44, borderRadius: 14,
-          border: '1px solid var(--border)', background: 'var(--bg2)',
-          color: 'var(--text)', opacity: disabled ? 0.4 : 1,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          cursor: disabled ? 'default' : 'pointer', transition: 'opacity 0.15s'
-        });
-        return (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-            <button
-              onClick={() => !atStart && setSelectedBatch(b => Math.max(0, b - 1))}
-              disabled={atStart}
-              aria-label={t('test.block', { n: selectedBatch })}
-              style={arrowStyle(atStart)}
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <button
-              onClick={() => setShowBatchGrid(true)}
-              style={{
-                flex: 1, height: 44, borderRadius: 14, border: '1.5px solid var(--accent)',
-                background: 'var(--blue-bg)', display: 'flex', alignItems: 'center',
-                justifyContent: 'center', gap: '8px', cursor: 'pointer', padding: '0 10px',
-                overflow: 'hidden'
-              }}
-            >
-              <LayoutGrid size={16} color="var(--accent2)" style={{ flexShrink: 0 }} />
-              <span style={{ fontWeight: 800, fontSize: 14, color: 'var(--accent2)', whiteSpace: 'nowrap' }}>{t('test.block', { n: selectedBatch + 1 })} / {totalBatches}</span>
-              <span style={{ fontWeight: 600, fontSize: 12, color: 'var(--text3)', whiteSpace: 'nowrap' }}>· {start}–{end}</span>
-            </button>
-            <button
-              onClick={() => !atEnd && setSelectedBatch(b => Math.min(totalBatches - 1, b + 1))}
-              disabled={atEnd}
-              aria-label={t('test.block', { n: selectedBatch + 2 })}
-              style={arrowStyle(atEnd)}
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
-        );
-      })()}
 
       {questions.length === 0 ? (
         <div className="empty-state-card">
@@ -853,8 +832,8 @@ const TestPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, height: 0 }}
                   style={{
-                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%)',
-                    border: '1px solid rgba(59, 130, 246, 0.25)',
+                    background: 'var(--blue-bg)',
+                    border: '1px solid rgba(14, 151, 224, 0.25)',
                     borderRadius: '16px',
                     padding: '12px 16px',
                     marginBottom: '16px',
@@ -871,7 +850,7 @@ const TestPage = () => {
                       width: '32px',
                       height: '32px',
                       borderRadius: '10px',
-                      background: 'rgba(59, 130, 246, 0.15)',
+                      background: 'var(--blue-bg)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',

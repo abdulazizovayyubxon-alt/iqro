@@ -116,10 +116,10 @@ export default async function handler(req, res) {
 
         let msg = "";
         if (isSunday) {
-          msg = `🏆 <b>Haftalik Hisobot!</b>\n\nPlatformada shu kungacha jami <b>${score} ball</b> yig'dingiz.\nUmumiy reytingda <b>${rank}-o'rindasiz!</b>\n\nKeyingi hafta top reytingga chiqishga harakat qiling! Keling, bitta test ishlaymiz👇\n\n👉 <a href="https://iqro-t41p.vercel.app">Platformaga kirish</a>`;
+          msg = `🏆 <b>Haftalik Hisobot!</b>\n\nPlatformada shu kungacha jami <b>${score} ball</b> yig'dingiz.\nUmumiy reytingda <b>${rank}-o'rindasiz!</b>\n\nKeyingi hafta top reytingga chiqishga harakat qiling! Keling, bitta test ishlaymiz👇\n\n👉 <a href="https://toifapro-t41p.vercel.app">Platformaga kirish</a>`;
         } else {
           scoreMsg = `\n\n📊 Joriy yig'gan ballingiz: <b>${score}</b>. Reytingda ko'tarilish uchun test ishlashni davom ettiring!`;
-          msg = `📚 <b>Vaqt bo'ldi!</b>\n\nAttestatsiya imtihoniga tayyorgarlikni tizimli davom ettiramiz. Bugungi takrorlash testlaringiz sizni kutmoqda.${scoreMsg}\n\n👉 <a href="https://iqro-t41p.vercel.app">Platformaga kirish</a>`;
+          msg = `📚 <b>Vaqt bo'ldi!</b>\n\nAttestatsiya imtihoniga tayyorgarlikni tizimli davom ettiramiz. Bugungi takrorlash testlaringiz sizni kutmoqda.${scoreMsg}\n\n👉 <a href="https://toifapro-t41p.vercel.app">Platformaga kirish</a>`;
         }
 
         tgPromises.push(

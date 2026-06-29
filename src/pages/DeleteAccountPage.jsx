@@ -302,7 +302,7 @@ const s = {
     marginTop: '8px',
   },
   homeBtn: {
-    background: '#29B6F6',
+    background: '#0E97E0',
     border: 'none',
     color: '#fff',
     padding: '12px 24px',

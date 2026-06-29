@@ -26,7 +26,7 @@ export default function PrivacyPage() {
         style={s.content}
       >
         <div style={s.iconWrap}>
-          <Shield size={48} color="#29B6F6" />
+          <Shield size={48} color="#0E97E0" />
         </div>
 
         <h2 style={s.heading}>{t('privacyPage.h1')}</h2>

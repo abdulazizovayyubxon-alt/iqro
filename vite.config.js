@@ -3,6 +3,13 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  // Preview/launch vositasi PORT env orqali bo'sh port tayinlaydi; uni hurmat
+  // qilamiz (aks holda Vite 5173 band bo'lsa jimgina 5174'ga sirpanib ketadi
+  // va proxy ulana olmaydi). PORT bo'lmasa odatdagi 5173.
+  server: {
+    host: true,
+    port: process.env.PORT ? Number(process.env.PORT) : 5173,
+  },
   build: {
     // ── Vendor chunk splitting ──
     // Avval barcha kutubxonalar bitta 1.18MB chunk'ga tushardi. Endi ular
@@ -104,8 +111,8 @@ export default defineConfig({
       },
 
       manifest: {
-        name: 'IQRO Kasbiy Sertifikatlash',
-        short_name: 'IQRO',
+        name: 'Toifa Pro — Kasbiy Sertifikatlash',
+        short_name: 'Toifa Pro',
         description: "O'qituvchilar uchun kasbiy sertifikatlash va malaka attestatsiyasiga tayyorgarlik platformasi",
         theme_color: '#F4F3EF',
         background_color: '#F4F3EF',

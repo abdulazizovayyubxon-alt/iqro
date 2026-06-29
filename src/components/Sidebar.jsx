@@ -6,7 +6,7 @@ import { useAdmin } from '../hooks/useAdmin';
 import { SUBJECTS } from '../data/mockData';
 import GiftBox from './shared/GiftBox';
 import {
-  LayoutDashboard,
+  Home,
   PenTool,
   BookOpen,
   Shield,
@@ -68,15 +68,13 @@ const Sidebar = () => {
         {/* MAIN NAVIGATION */}
         <div className="sidebar-section">
           <div className="sidebar-title hide-mobile">{t('sidebar.main')}</div>
-          {isAdmin && (
-            <div
-              className={`nav-item ${isActive('/dashboard') ? 'active' : ''}`}
-              onClick={() => navigate('/dashboard')}
-            >
-              <span className="nav-icon"><LayoutDashboard size={20} /></span>
-              <span className="nav-label">{t('sidebar.dashboard')}</span>
-            </div>
-          )}
+          <div
+            className={`nav-item ${isActive('/dashboard') ? 'active' : ''}`}
+            onClick={() => navigate('/dashboard')}
+          >
+            <span className="nav-icon"><Home size={20} /></span>
+            <span className="nav-label">{t('sidebar.dashboard')}</span>
+          </div>
 
 
           <div

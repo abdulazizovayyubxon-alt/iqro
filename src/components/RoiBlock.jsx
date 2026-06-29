@@ -17,10 +17,9 @@ const fmtSum = (n) => new Intl.NumberFormat('fr-FR').format(Math.round(n)).repla
  */
 export default function RoiBlock({ price, planName, targetToifa = '1-toifa', variant = 'light' }) {
   const { t } = useTranslation();
-  const delta = TOIFA_SALARY.deltas[targetToifa];
-  if (!delta || !price) return null;
+  const monthlyGain = TOIFA_SALARY.gains[targetToifa];
+  if (!monthlyGain || !price) return null;
 
-  const monthlyGain = TOIFA_SALARY.base * delta;
   const paybackDays = Math.max(1, Math.ceil(price / (monthlyGain / 30)));
   const labelMap = { oliy: t('roi.labelOliy'), '1-toifa': t('roi.label1'), '2-toifa': t('roi.label2') };
   const label = labelMap[targetToifa] || TOIFA_SALARY.labels[targetToifa] || targetToifa;

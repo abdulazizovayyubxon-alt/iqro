@@ -92,7 +92,7 @@ const QuestionBox = ({
           return (
             <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
               {isSpaced && (
-                <span style={{ fontSize: '11px', fontWeight: '800', color: '#1E40AF', background: '#DBEAFE', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid #BFDBFE' }}>
+                <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--accent2)', background: 'var(--blue-bg)', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid var(--accent)' }}>
                   {t('test.badgeReview')}
                 </span>
               )}
@@ -279,7 +279,7 @@ const QuestionBox = ({
                   }}>
                     <div style={{
                       width: '48px', height: '48px', borderRadius: '50%',
-                      background: 'linear-gradient(135deg, #F59E0B, #8B5CF6)',
+                      background: 'linear-gradient(135deg, #F59E0B, #F97316)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -308,7 +308,7 @@ const QuestionBox = ({
                         display: 'flex',
                         alignItems: 'center',
                         gap: '6px',
-                        boxShadow: '0 4px 12px rgba(139, 92, 246, 0.25)',
+                        boxShadow: '0 4px 12px rgba(14, 151, 224, 0.25)',
                         fontFamily: 'inherit',
                       }}
                     >

@@ -24,7 +24,7 @@ if (config.apiKey && config.projectId) {
   const messaging = firebase.messaging();
 
   messaging.onBackgroundMessage((payload) => {
-    const title = (payload.notification && payload.notification.title) || 'IQRO';
+    const title = (payload.notification && payload.notification.title) || 'Toifa Pro';
     const options = {
       body: (payload.notification && payload.notification.body) || '',
       icon: '/pwa-192x192.png',

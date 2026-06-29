@@ -151,7 +151,7 @@ export default async function handler(req, res) {
           // Mijozga xabar yuborish
           if (userData.telegramChatId) {
             await sendMessage(userData.telegramChatId,
-              `🎉 <b>Tabriklaymiz!</b>\n\nTo'lovingiz tasdiqlandi va sizga <b>${durationMonths} oylik Premium</b> yoqildi! 🏆\n\nSaytga kirib bemalol ishlatavering!\n\n👉 https://iqro-t41p.vercel.app`,
+              `🎉 <b>Tabriklaymiz!</b>\n\nTo'lovingiz tasdiqlandi va sizga <b>${durationMonths} oylik Premium</b> yoqildi! 🏆\n\nSaytga kirib bemalol ishlatavering!\n\n👉 https://toifapro-t41p.vercel.app`,
               keyboardMarkup
             );
           }
@@ -505,7 +505,7 @@ export default async function handler(req, res) {
           );
         } else {
           await sendMessage(chatId,
-            "<b>Xush kelibsiz!</b> 🎓\n\nIQRO — O'qituvchilar attestatsiyasi platformasi.\n\nBotdan to'liq foydalanish uchun saytda ro'yxatdan o'teb va Profilingizdagi <b>IQRO-...</b> kodingizni shu yerga yuboring.\n\n👉 https://iqro-t41p.vercel.app"
+            "<b>Xush kelibsiz!</b> 🎓\n\nToifa Pro — O'qituvchilar attestatsiyasi platformasi.\n\nBotdan to'liq foydalanish uchun saytda ro'yxatdan o'teb va Profilingizdagi <b>IQRO-...</b> kodingizni shu yerga yuboring.\n\n👉 https://toifapro-t41p.vercel.app"
           );
         }
         return res.status(200).send('Start handled');
@@ -539,7 +539,7 @@ export default async function handler(req, res) {
     // Tizimga ulanmaganlar uchun blok
     if (!linkedUser) {
       await sendMessage(chatId,
-        "Iltimos, botdan to'liq foydalanish uchun saytdan olingan <b>IQRO-...</b> kodingizni yuboring.\n\n👉 https://iqro-t41p.vercel.app"
+        "Iltimos, botdan to'liq foydalanish uchun saytdan olingan <b>IQRO-...</b> kodingizni yuboring.\n\n👉 https://toifapro-t41p.vercel.app"
       );
       return res.status(200).send('Not linked');
     }
@@ -633,7 +633,7 @@ export default async function handler(req, res) {
       );
 
     } else if (incomingText === "🔗 Do'stlarni taklif qilish" || incomingText === '/referal') {
-      const refLink = `https://iqro-t41p.vercel.app/register?ref=${linkedUid}`;
+      const refLink = `https://toifapro-t41p.vercel.app/register?ref=${linkedUid}`;
       await sendMessage(chatId,
         `🔗 <b>Do'stlarni taklif qilish</b>\n\nQuyidagi havolani do'stlaringizga yuboring. Ular ro'yxatdan o'tsa va premium olsa, sizga avtomatik <b>15,000 so'm bonus</b> beriladi!\n\n${refLink}`,
         keyboardMarkup

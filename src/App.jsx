@@ -12,6 +12,7 @@ import { db } from './firebase';
 // Components (har doim kerak — code split qilinmaydi)
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import BrandLogo from './components/shared/BrandLogo';
 import LoginPage from './pages/LoginPage';
 import OfflineIndicator from './components/OfflineIndicator';
 import OnboardingPage from './pages/OnboardingPage';
@@ -31,7 +32,6 @@ const AdminPage = React.lazy(() => import('./pages/AdminPage'));
 const MigrationPage = React.lazy(() => import('./pages/MigrationPage'));
 const ReferralPage = React.lazy(() => import('./pages/ReferralPage'));
 const PremiumPage = React.lazy(() => import('./pages/PremiumPage'));
-const ProfilePage = React.lazy(() => import('./pages/ProfilePage'));
 const SettingsPage = React.lazy(() => import('./pages/SettingsPage'));
 const ErrorNotebookPage = React.lazy(() => import('./pages/ErrorNotebookPage'));
 const PrivacyPage = React.lazy(() => import('./pages/PrivacyPage'));
@@ -161,14 +161,14 @@ function App() {
     '/test': 'Test', '/exam': 'Imtihon', '/review': 'Takrorlash',
     '/leaderboard': 'Reyting', '/achievements': 'Yutuqlar',
     '/admin': 'Admin', '/migration': 'Migratsiya',
-    '/profile': 'Profil', '/settings': 'Sozlamalar', '/premium': 'Pro', '/about': 'Biz haqimizda'
+    '/settings': 'Sozlamalar', '/premium': 'Pro', '/about': 'Biz haqimizda'
   };
 
   useEffect(() => {
     const pageName = PAGE_NAMES[location.pathname] || location.pathname;
     trackPageView(pageName, location.pathname);
     startPageTimer(pageName);
-    document.title = `${pageName} | IQRO`;
+    document.title = `${pageName} | Toifa Pro`;
   }, [location.pathname]);
 
   // ── Sentry foydalanuvchi konteksti ──
@@ -216,9 +216,9 @@ function App() {
         justifyContent: 'center', flexDirection: 'column',
         gap: '16px', background: 'var(--bg)'
       }}>
-        <RefreshCw className="spin" size={36} style={{ color: 'var(--accent)' }} />
-        <div style={{ color: 'var(--text2)', fontFamily: "'IBM Plex Mono', monospace", fontSize: '14px' }}>
-          IQRO yuklanmoqda...
+        <BrandLogo size={40} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--text3)', fontSize: '13px' }}>
+          <RefreshCw className="spin" size={14} style={{ color: 'var(--accent)' }} /> yuklanmoqda...
         </div>
       </div>
     );
@@ -278,12 +278,9 @@ function App() {
   }
 
   // Asosiy ilova
-  // Siz (profil) sahifasida yuqori header ko'rinmaydi —
-  // u sahifaning o'z sarlavhasi bor, global header ortiqcha.
-  const hideHeader = location.pathname === '/profile';
   return (
     <div className="layout-container">
-      {!hideHeader && <Header theme={theme} toggleTheme={toggleTheme} />}
+      <Header theme={theme} toggleTheme={toggleTheme} />
       <OfflineIndicator />
       <div className="layout-body">
         <Sidebar />
@@ -292,7 +289,7 @@ function App() {
             <Suspense fallback={<PageSkeleton />}>
               <AnimatePresence mode="wait">
                 <Routes location={location} key={location.pathname}>
-                  <Route path="/" element={<Navigate to="/test" replace />} />
+                  <Route path="/" element={<Navigate to="/dashboard" replace />} />
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/test" element={<TestPage />} />
                   <Route path="/exam" element={<ExamPage />} />
@@ -304,7 +301,6 @@ function App() {
                   <Route path="/referral" element={<ReferralPage />} />
                   <Route path="/premium" element={<PremiumPage />} />
                   <Route path="/errors" element={<ErrorNotebookPage />} />
-                  <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/settings" element={<SettingsPage theme={theme} toggleTheme={toggleTheme} />} />
                   <Route path="/delete-account" element={<DeleteAccountPage />} />
                   <Route path="*" element={<Navigate to="/test" replace />} />

@@ -60,7 +60,7 @@ export default async function handler(req, res) {
   // Vercel da joylashgan loyihamizning URL si
   // Har doim asosiy (production) domenni ishlatamiz!
   // Shunda har bir yangilanishda eski url ga qolib ketmaydi.
-  const baseUrl = 'https://iqro-t41p.vercel.app';
+  const baseUrl = 'https://toifapro-t41p.vercel.app';
 
   const webhookUrl = `${baseUrl}/api/telegram-webhook`;
 

@@ -25,7 +25,7 @@ const TestResults = ({
   const handleTelegramShare = () => {
     const emoji = pct >= 70 ? '🏆' : pct >= 50 ? '📊' : '💪';
     const text = t('results.shareTgText', { emoji, topic: topicName, correct: correctCount, total: questionsLength, pct });
-    window.open(`https://t.me/share/url?url=https://iqro-t41p.vercel.app&text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://t.me/share/url?url=https://toifapro-t41p.vercel.app&text=${encodeURIComponent(text)}`, '_blank');
   };
 
   const handleCopyShare = () => {
@@ -62,7 +62,7 @@ const TestResults = ({
           <motion.button
             whileHover={{ scale: 1.01, y: -1 }}
             whileTap={{ scale: 0.98 }}
-            style={{ padding: '14px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}
+            style={{ padding: '14px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
             onClick={onNextBatch}
           >
             {t('results.nextSection')} {nextBatchLabel ? `(${nextBatchLabel})` : ''} <ArrowRight size={17} />
@@ -73,7 +73,7 @@ const TestResults = ({
           whileTap={{ scale: 0.98 }}
           style={onNextBatch
             ? { padding: '13px', background: 'var(--glass-bg)', color: 'var(--text2)', border: '1px solid var(--glass-border)', borderRadius: 16, fontWeight: 600, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }
-            : { padding: '14px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)' }}
+            : { padding: '14px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
           onClick={generateQuestions}
         >
           <RefreshCw size={17} /> {t('results.retry')}

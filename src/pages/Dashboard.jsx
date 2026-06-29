@@ -16,8 +16,9 @@ import {
   CheckCircle2, Trash2,
   MessageCircle, X
 } from 'lucide-react';
+import SubjectTopicChips, { Chip } from '../components/SubjectTopicChips';
 import { motion } from 'framer-motion';
-import { EXAM_DATE, EXAM_GOAL_SCORE, EXAM_LABEL } from '../config';
+import { EXAM_DATE, EXAM_GOAL_SCORE, EXAM_LABEL, BATCH_SIZE } from '../config';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 
@@ -93,22 +94,13 @@ const Dashboard = () => {
   };
 
   const cat = state.activeCategory;
+  // Joriy mavzu ("Dars Testi" tezkor harakati uchun) — -1 = barcha mavzular
+  const activeTopicId = state.topicId ?? -1;
+  const activeTopic = TOPICS.find(tp => tp.id === activeTopicId);
   const catStats = state.stats[cat] || { totalAnswered: 0, totalCorrect: 0, streak: 0, maxStreak: 0, mistakes: [] };
   const filteredMistakesCount = catStats.mistakes.length;
 
   const dueCards = (state.spacedCards || []).filter(c => c.nextReview <= Date.now()).length;
-
-  const userName = user?.displayName?.split(' ')[0] || t('common.userFallback');
-
-  // Vaqtga bog'liq salom — global header allaqachon "Xush kelibsiz" deydi,
-  // shu sababli Dashboard hero'sida takrorlamay, kun davriga mos salom beramiz.
-  const greetingHi = (() => {
-    const h = new Date().getHours();
-    if (h >= 5 && h < 12) return t('dashboard.greetMorning');
-    if (h >= 12 && h < 18) return t('dashboard.greetDay');
-    if (h >= 18 && h < 23) return t('dashboard.greetEvening');
-    return t('dashboard.greetNight');
-  })();
 
   const getExamDurationMinutes = (category) => {
     switch (category) {
@@ -124,9 +116,10 @@ const Dashboard = () => {
 
   const quickActions = [
     {
-      id: 'test', icon: Play, label: t('dashboard.actionTest'), desc: t('dashboard.actionTestDesc'),
+      id: 'test', icon: Play, label: t('dashboard.actionTest'),
+      desc: (activeTopicId !== -1 && activeTopic) ? activeTopic.name : t('dashboard.actionTestDesc'),
       color: 'var(--blue)', bg: 'var(--blue-bg)',
-      onClick: () => handleNav(-1, 'exam'),
+      onClick: () => handleNav(activeTopicId, 'exam'),
     },
     {
       id: 'exam', icon: GraduationCap, label: t('dashboard.actionExam'), desc: t('dashboard.actionExamDesc', { count: 50, min: getExamDurationMinutes(cat) }),
@@ -153,37 +146,35 @@ const Dashboard = () => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="dashboard-page">
 
-      {/* ── GREETING ── */}
-      <div className="dashboard-greeting">
-        <div>
-          <div className="dashboard-greet-sub">{greetingHi} 👋</div>
-          <h1 className="dashboard-greet-name">{userName}</h1>
-        </div>
-      </div>
-
-      {/* ── SUBJECT TABS (Dinamik) ── */}
-      <div className="dashboard-subj-tabs">
-        {SUBJECTS.map(subj => {
-          const Icon = subj.icon;
-          const isSelected = subj.id === cat;
-          return (
-              <motion.button
-                key={subj.id}
-                whileTap={{ scale: 0.95 }}
-                className="dashboard-subj-tab"
-                style={{
-                  background: isSelected ? 'var(--blue)' : 'var(--bg3)',
-                  color: isSelected ? '#fff' : 'var(--text2)',
-                  border: isSelected ? '1px solid var(--blue)' : '1.5px solid var(--border)',
-                  boxShadow: isSelected ? '0 4px 12px rgba(41, 182, 246, 0.25)' : 'none',
+      {/* ── FAN + MAVZU + BLOK CHIPLARI (test sahifasi bilan bir xil) ── */}
+      <div style={{ marginBottom: 16 }}>
+        <SubjectTopicChips
+          state={state}
+          updateState={updateState}
+          SUBJECTS={SUBJECTS}
+          TOPICS={TOPICS}
+          extraChip={(() => {
+            // Bloklar soni faqat test sahifasida aniq bo'ladi; Dashboard'da
+            // questionMeta'dagi fan savol sonidan taxminlaymiz. Faqat 1 tadan
+            // ko'p blok bo'lganda ko'rsatamiz. Bosilganda testga o'tib, blok
+            // tanlagichni ochadi (test 1-blokdan boshlanadi → "1-blok").
+            const metaCount = questionMeta?.[cat]?.count;
+            const blockCount = metaCount ? Math.ceil(metaCount / BATCH_SIZE) : null;
+            if (blockCount !== null && blockCount <= 1) return null;
+            return (
+              <Chip
+                label={t('test.blockChip', { n: 1 })}
+                ariaLabel={t('test.selectBlock')}
+                onClick={() => {
+                  if (isFreeLimitReached) { setShowPremiumModal(true); return; }
+                  updateState({ testMode: 'exam' });
+                  navigate('/test', { state: { openBlocks: true } });
                 }}
-                onClick={() => updateState({ activeCategory: subj.id })}
-              >
-              <Icon size={16} />
-              <span>{subj.name}</span>
-            </motion.button>
-          );
-        })}
+                noShrink
+              />
+            );
+          })()}
+        />
       </div>
 
       {/* ── SAVOL BAZASI BADGE (ishonch) ── */}
@@ -315,8 +306,8 @@ const Dashboard = () => {
       {/* ── BO'LIMLAR XARITASI ── */}
       <div className="dashboard-section-label">{t('dashboard.sectionsMap')}</div>
       <div className="dashboard-topics-grid">
-        {categoryTopics.map((t) => {
-          const ts = state.topicStats[t.id];
+        {categoryTopics.map((topic) => {
+          const ts = state.topicStats[topic.id];
           const hasStats = ts && ts.answered > 0;
           const pct = hasStats ? Math.round((ts.correct / ts.answered) * 100) : 0;
           const color = !hasStats ? 'var(--text3)' : pct >= 70 ? '#10B981' : pct >= 40 ? '#F59E0B' : '#EF4444';
@@ -324,11 +315,11 @@ const Dashboard = () => {
 
           return (
             <motion.button
-              key={t.id}
+              key={topic.id}
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
               className="dashboard-topic-card"
-              onClick={() => handleNav(t.id, 'exam')}
+              onClick={() => handleNav(topic.id, 'exam')}
             >
               {/* Donut */}
               <div style={{ position: 'relative', width: 64, height: 64, margin: '0 auto 8px' }}>
@@ -345,11 +336,11 @@ const Dashboard = () => {
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: hasStats ? 13 : 18, fontWeight: 800, color,
                 }}>
-                  {hasStats ? `${pct}%` : t.icon}
+                  {hasStats ? `${pct}%` : topic.icon}
                 </div>
               </div>
               <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text)', textAlign: 'center', lineHeight: 1.3 }}>
-                {t.name}
+                {topic.name}
               </div>
               <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 3 }}>
                 {hasStats ? t('dashboard.topicQuestions', { count: ts.answered }) : t('dashboard.topicNotStarted')}

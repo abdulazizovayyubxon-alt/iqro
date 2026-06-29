@@ -25,6 +25,7 @@ import TelegramReminderModal from '../components/profile/TelegramReminderModal';
 import GuideModal from '../components/profile/GuideModal';
 import PrivacyModal from '../components/profile/PrivacyModal';
 import ConfirmLogoutModal from '../components/profile/ConfirmLogoutModal';
+import BrandLogo from '../components/shared/BrandLogo';
 import ConfirmDeleteModal from '../components/profile/ConfirmDeleteModal';
 import './ProfilePage.css';
 
@@ -235,7 +236,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
         {/* ═══ SARLAVHA ═══ */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 4 }}>
           <button
-            onClick={() => navigate('/profile')}
+            onClick={() => navigate('/dashboard')}
             aria-label={t('settings.back')}
             style={{
               width: 44, height: 44, borderRadius: 12, border: '1px solid var(--border)',
@@ -473,8 +474,8 @@ export default function SettingsPage({ theme, toggleTheme }) {
           </div>
 
           {/* ═══ VERSIYA ═══ */}
-          <div style={{ textAlign: 'center', fontSize: 11, color: 'var(--text3)', padding: '4px 0 8px' }}>
-            IQRO · versiya {APP_VERSION}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, fontSize: 11, color: 'var(--text3)', padding: '4px 0 8px' }}>
+            <BrandLogo size={14} /> · versiya {APP_VERSION}
           </div>
         </div>
       </div>
