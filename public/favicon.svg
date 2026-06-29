@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <rect width="512" height="512" rx="112" fill="#ffffff" />
-  <rect x="57" y="156" width="180" height="200" rx="40" fill="#2563EB" />
-  <text x="147" y="298" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="120" fill="#ffffff" text-anchor="middle" letter-spacing="-2">T</text>
-  <text x="253" y="298" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="132" fill="#0f172a" text-anchor="start" letter-spacing="-3">P</text>
+  <text x="256" y="270" font-family="'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif" font-size="84" text-anchor="middle" dominant-baseline="middle" letter-spacing="-0.045em">
+    <tspan font-weight="700" fill="#0f172a">toifa</tspan><tspan font-weight="500" fill="#2563EB" dx="8">pro</tspan>
+  </text>
 </svg>
