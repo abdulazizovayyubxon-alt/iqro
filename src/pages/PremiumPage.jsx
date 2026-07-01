@@ -157,7 +157,7 @@ const s = {
     padding: '20px', background: 'var(--bg2)', borderBottom: '1px solid var(--border)',
     position: 'sticky', top: 0, zIndex: 10,
   },
-  backBtn: { background: 'none', border: 'none', color: 'var(--text)', cursor: 'pointer', padding: 4, display: 'flex', alignItems: 'center' },
+  backBtn: { background: 'none', border: 'none', color: 'var(--text)', cursor: 'pointer', minWidth: 48, minHeight: 48, justifyContent: 'center', display: 'flex', alignItems: 'center', margin: '-12px 0' },
   title: { fontSize: 18, fontWeight: 700, margin: 0 },
   content: { padding: '24px 20px', maxWidth: 600, margin: '0 auto' },
   heroTitle: { fontSize: 22, fontWeight: 800, margin: '0 0 8px', color: 'var(--text)' },

@@ -6,7 +6,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Send, Brain, KeyRound, Crown, FileText, Bell, Languages } from 'lucide-react';
+import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Send, Brain, KeyRound, Crown, FileText, Bell, Languages, MessageCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
@@ -253,6 +253,19 @@ export default function SettingsPage({ theme, toggleTheme }) {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 8 }}>
+          {/* ═══ YORDAM VA ALOQA ═══ */}
+          <div style={{ background: 'var(--blue-bg)', borderRadius: 16, padding: 16, display: 'flex', alignItems: 'center', gap: 14, border: '1px solid rgba(14, 151, 224, 0.2)' }}>
+            <div style={{ width: 44, height: 44, borderRadius: 12, background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
+              <MessageCircle size={24} />
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--accent)' }}>Yordam kerakmi?</div>
+              <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 2 }}>Bizning jamoa har qanday savolga javob beradi</div>
+            </div>
+            <button onClick={() => window.open('https://t.me/IQRO_testbot', '_blank')} style={{ padding: '8px 16px', background: 'var(--accent)', color: '#fff', border: 'none', borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>
+              Yozish
+            </button>
+          </div>
 
           {/* ═══ KO'RINISH ═══ */}
           <div>

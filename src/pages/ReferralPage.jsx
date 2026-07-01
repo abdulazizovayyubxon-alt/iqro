@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ReferralPage.jsx — Yangi toza minimal dizayn
  */
 import React, { useState, useEffect, useContext } from 'react';
@@ -60,6 +60,20 @@ export default function ReferralPage() {
     if (!user) return;
     loadData();
   }, [user]);
+
+  // Yangi do'st qo'shilganda konfetti
+  useEffect(() => {
+    if (stats?.paid > 0) {
+      const lastSeenPaid = parseInt(localStorage.getItem('iqro_last_seen_paid') || '0', 10);
+      if (stats.paid > lastSeenPaid) {
+        import('canvas-confetti').then((module) => {
+          const confetti = module.default;
+          confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+        });
+        localStorage.setItem('iqro_last_seen_paid', stats.paid.toString());
+      }
+    }
+  }, [stats?.paid]);
 
   const loadData = async () => {
     setLoading(true);
@@ -189,8 +203,13 @@ export default function ReferralPage() {
                 />
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 7, fontSize: 11, color: 'rgba(255,255,255,0.8)', fontWeight: 600 }}>
-                <span>{t('referral.paidCountLine', { count: stats?.paid || 0 })}</span>
-                <span>{t('referral.goalLine', { count: dynamicMax, amount: fmtSum(REFERRAL_BONUS * dynamicMax) })}</span>
+                {stats?.paid < dynamicMax ? (
+                  <span style={{ color: '#FCD34D' }}>
+                    Yana {fmtSum(REFERRAL_BONUS * (dynamicMax - (stats?.paid || 0)))} yig'sangiz Premium sizniki!
+                  </span>
+                ) : (
+                  <span style={{ color: '#10B981' }}>Tabriklaymiz, siz to'liq maqsadga yetdingiz! 👑</span>
+                )}
               </div>
             </div>
 

@@ -122,10 +122,15 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{padding: '20px', color: '#EF4444', background: '#FEF2F2', height: '100vh'}}>
-          <h1>Xatolik yuz berdi!</h1>
-          <pre style={{whiteSpace: 'pre-wrap', wordBreak: 'break-all'}}>{String(this.state.error?.stack || this.state.error)}</pre>
-          <button onClick={() => window.location.reload()} style={{marginTop: 20, padding: '10px 20px'}}>Yangilash</button>
+        <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)', padding: '20px', textAlign: 'center', color: 'var(--text)' }}>
+          <div style={{ fontSize: 80, marginBottom: 16 }}>🌿</div>
+          <h1 style={{ fontSize: 24, fontWeight: 800, marginBottom: 8 }}>Kechirasiz, kichik nosozlik yuz berdi</h1>
+          <p style={{ fontSize: 14, color: 'var(--text3)', maxWidth: 400, marginBottom: 24, lineHeight: 1.5 }}>
+            Xavotir olmang, ma'lumotlaringiz xavfsiz. Tizimda kutilmagan xatolik chiqdi. Ilovani qayta yuklasangiz, hammasi joyiga tushadi.
+          </p>
+          <button onClick={() => window.location.reload()} style={{ padding: '14px 28px', background: 'var(--accent)', color: '#fff', border: 'none', borderRadius: 12, fontWeight: 700, fontSize: 15, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8 }}>
+            Ilovani yangilash
+          </button>
         </div>
       );
     }

@@ -78,6 +78,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
   const [promoCode, setPromoCode] = useState('');
   const [promoLoading, setPromoLoading] = useState(false);
   const [promoMsg, setPromoMsg] = useState(null); // { type: 'ok'|'err', text }
+  const [payMethod, setPayMethod] = useState('telegram'); // 'telegram' | 'payme' | 'click'
 
   // onClose'ni ref orqali ushlaymiz — ota komponent har soniyada qayta render
   // bo'lganda (masalan ProfilePage urgency timer) popstate effekti qayta
@@ -187,9 +188,15 @@ const PremiumModal = ({ isOpen, onClose }) => {
     }
 
     // Web — yagona to'lov usuli: Telegram (karta orqali, operator tasdiqlaydi)
-    const tgUrl = `https://t.me/${BOT_USERNAME}?start=pay_${selectedPlan.id}`;
-    window.open(tgUrl, '_blank');
-    setStep('telegram_guide');
+    if (payMethod === 'telegram') {
+      const tgUrl = `https://t.me/${BOT_USERNAME}?start=pay_${selectedPlan.id}`;
+      window.open(tgUrl, '_blank');
+      setStep('telegram_guide');
+    } else {
+      // Payme / Click kelajakda qo'shiladi
+      alert("Bu to'lov usuli tez kunda ishga tushadi! Hozircha Telegram orqali to'lov qiling.");
+      setPayMethod('telegram');
+    }
   };
 
   return (
@@ -237,7 +244,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
             {step !== 'plans' && (
               <button
                 onClick={() => setStep('plans')}
-                style={{ background: 'rgba(0,0,0,0.05)', border: 'none', borderRadius: 8, padding: '5px 8px', cursor: 'pointer', color: '#64748B', fontSize: 12, fontWeight: 600 }}
+                style={{ background: 'rgba(0,0,0,0.05)', border: 'none', borderRadius: 8, padding: '0 16px', minHeight: 48, cursor: 'pointer', color: '#64748B', fontSize: 13, fontWeight: 600, display: 'flex', alignItems: 'center' }}
               >
                 ← {t('common.back')}
               </button>
@@ -246,7 +253,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
           <button
             onClick={onClose}
             aria-label={t('common.close')}
-            style={{ background: 'rgba(0,0,0,0.05)', border: 'none', borderRadius: 10, width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#64748B', marginLeft: 'auto' }}
+            style={{ background: 'rgba(0,0,0,0.05)', border: 'none', borderRadius: 12, width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#64748B', marginLeft: 'auto' }}
           >
             <X size={18} />
           </button>
@@ -437,23 +444,72 @@ const PremiumModal = ({ isOpen, onClose }) => {
                       <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--text3)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
                         {t('premium.payMethodTitle', "To'lov usuli")}
                       </div>
-                      <div style={{
-                        display: 'flex', alignItems: 'center', gap: 12,
-                        padding: '14px 16px', borderRadius: 14,
-                        border: '1.5px solid rgba(14,151,224,0.35)',
-                        background: 'rgba(14,151,224,0.08)',
-                      }}>
-                        <span style={{ width: 42, height: 42, borderRadius: 12, flexShrink: 0, background: 'rgba(14,151,224,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                          <Send size={20} color="#0E97E0" />
-                        </span>
-                        <div style={{ flex: 1 }}>
-                          <div style={{ fontSize: 14, fontWeight: 800, color: '#0f172a' }}>{t('premium.payTelegram')}</div>
-                          <div style={{ fontSize: 11.5, color: '#64748B', fontWeight: 500, lineHeight: 1.4 }}>{t('premium.payTelegramSub')}</div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                        {/* Telegram */}
+                        <div
+                          onClick={() => setPayMethod('telegram')}
+                          style={{
+                            display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer',
+                            padding: '14px 16px', borderRadius: 14,
+                            border: payMethod === 'telegram' ? '2px solid #0E97E0' : '1px solid rgba(0,0,0,0.08)',
+                            background: payMethod === 'telegram' ? 'rgba(14,151,224,0.08)' : '#fff',
+                            transition: 'all 0.2s',
+                          }}>
+                          <span style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(14,151,224,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Send size={18} color="#0E97E0" />
+                          </span>
+                          <div style={{ flex: 1 }}>
+                            <div style={{ fontSize: 14, fontWeight: 800, color: '#0f172a' }}>{t('premium.payTelegram')}</div>
+                          </div>
+                          <div style={{ width: 20, height: 20, borderRadius: '50%', border: payMethod === 'telegram' ? '6px solid #0E97E0' : '2px solid #cbd5e1' }} />
                         </div>
-                        <span style={{ flexShrink: 0, fontSize: 9, fontWeight: 900, color: '#fff', background: 'linear-gradient(135deg,#0E97E0,#0284C7)', padding: '3px 8px', borderRadius: 6, letterSpacing: 0.5 }}>{t('premium.payTelegramBadge')}</span>
+
+                        {/* Payme & Click (Coming soon) */}
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+                          <div
+                            onClick={() => setPayMethod('payme')}
+                            style={{
+                              display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer',
+                              padding: '10px 12px', borderRadius: 12,
+                              border: payMethod === 'payme' ? '2px solid #31c48d' : '1px solid rgba(0,0,0,0.08)',
+                              background: payMethod === 'payme' ? 'rgba(49,196,141,0.08)' : '#fff',
+                            }}>
+                            <span style={{ fontSize: 13, fontWeight: 800, color: '#31c48d', flex: 1 }}>Payme</span>
+                            <div style={{ width: 16, height: 16, borderRadius: '50%', border: payMethod === 'payme' ? '5px solid #31c48d' : '2px solid #cbd5e1' }} />
+                          </div>
+                          <div
+                            onClick={() => setPayMethod('click')}
+                            style={{
+                              display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer',
+                              padding: '10px 12px', borderRadius: 12,
+                              border: payMethod === 'click' ? '2px solid #00a2ff' : '1px solid rgba(0,0,0,0.08)',
+                              background: payMethod === 'click' ? 'rgba(0,162,255,0.08)' : '#fff',
+                            }}>
+                            <span style={{ fontSize: 13, fontWeight: 800, color: '#00a2ff', flex: 1 }}>Click</span>
+                            <div style={{ width: 16, height: 16, borderRadius: '50%', border: payMethod === 'click' ? '5px solid #00a2ff' : '2px solid #cbd5e1' }} />
+                          </div>
+                        </div>
                       </div>
                     </>
                   )}
+                </div>
+
+                {/* Ishonch belgilari (Trust Badges) */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 18 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', background: 'rgba(16,185,129,0.08)', borderRadius: 12, border: '1px solid rgba(16,185,129,0.2)' }}>
+                    <div style={{ width: 32, height: 32, borderRadius: 8, background: '#10B981', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontWeight: 'bold' }}>✓</div>
+                    <div>
+                      <div style={{ fontSize: 13, fontWeight: 800, color: '#065F46' }}>Muntazam yangilanib boruvchi baza</div>
+                      <div style={{ fontSize: 11, color: '#047857', marginTop: 2 }}>Eng so'nggi standartlar asosida</div>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', background: 'rgba(59,130,246,0.08)', borderRadius: 12, border: '1px solid rgba(59,130,246,0.2)' }}>
+                    <div style={{ width: 32, height: 32, borderRadius: 8, background: '#3B82F6', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontWeight: 'bold' }}>✓</div>
+                    <div>
+                      <div style={{ fontSize: 13, fontWeight: 800, color: '#1E3A8A' }}>Keng qamrovli izohlar</div>
+                      <div style={{ fontSize: 11, color: '#1D4ED8', marginTop: 2 }}>Har bir savol uchun tushunarli yechimlar</div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Features */}

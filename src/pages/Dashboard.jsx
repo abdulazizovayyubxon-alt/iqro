@@ -178,21 +178,25 @@ const Dashboard = () => {
       </div>
 
       {/* ── SAVOL BAZASI BADGE (ishonch) ── */}
-      {questionMeta?.[cat]?.count > 0 && (
-        <div style={{
-          display: 'inline-flex', alignItems: 'center', gap: 6,
-          background: 'var(--green-bg)', border: '1px solid var(--border)',
-          borderRadius: 99, padding: '5px 14px', marginBottom: 16,
-          fontSize: 12, fontWeight: 700, color: 'var(--green)',
-        }}>
-          📚 {t('dashboard.approvedQuestions', { count: questionMeta[cat].count.toLocaleString() })}
-          {questionMeta[cat].updatedAt && (
-            <span style={{ color: 'var(--text3)', fontWeight: 500 }}>
-              {' · '}{t('dashboard.updatedOn', { date: new Date(questionMeta[cat].updatedAt).toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : 'uz-UZ', { day: 'numeric', month: 'long' }) })}
-            </span>
-          )}
+      <div style={{
+        display: 'inline-flex', alignItems: 'center', gap: 8,
+        background: 'var(--green-bg)', border: '1px solid var(--border)',
+        borderRadius: 12, padding: '10px 16px', marginBottom: 16,
+        boxShadow: '0 4px 12px rgba(16,185,129,0.1)',
+        width: '100%', maxWidth: 600
+      }}>
+        <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'rgba(16,185,129,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <Brain size={20} color="var(--green)" />
         </div>
-      )}
+        <div>
+          <div style={{ fontSize: 15, fontWeight: 800, color: 'var(--green)' }}>
+            40 000+ ta tasdiqlangan savollar
+          </div>
+          <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 500, marginTop: 2 }}>
+            O'zbekistondagi eng katta va to'liq tahlil qilingan baza
+          </div>
+        </div>
+      </div>
 
       {/* ── IMTIHON BANNER ── */}
       {showExamBanner && EXAM_DATE && cat !== 'art' && (
