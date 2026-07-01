@@ -186,6 +186,8 @@ const TestPage = () => {
 
   const [fullPool, setFullPool] = useState([]);
 
+  const generateReqRef = useRef(0);
+
   useEffect(() => {
     generateFullPool();
   }, [topicId, mode, state.activeCategory, diffFilter]);
@@ -221,6 +223,7 @@ const TestPage = () => {
   }, [fullPool, mode]);
 
   const generateFullPool = async () => {
+    const currentReq = ++generateReqRef.current;
     setIsGenerating(true);
     setShowResults(false);
     setAnswers({});
@@ -445,17 +448,24 @@ const TestPage = () => {
       if (diffFilter !== 'ALL') {
         finalPool = qList.filter(q => q.difficulty === diffFilter);
       }
-      setFullPool(finalPool);
-      // Analitika: yangi test sessiyasi boshlandi (bo'lim navigatsiyasida emas — bu effekt
-      // faqat fan/mavzu/rejim o'zgarganda ishlaydi)
-      if (finalPool.length > 0) {
-        AnalyticsEvents.testStart(topicName, mode);
+
+      if (currentReq === generateReqRef.current) {
+        setFullPool(finalPool);
+        // Analitika: yangi test sessiyasi boshlandi (bo'lim navigatsiyasida emas — bu effekt
+        // faqat fan/mavzu/rejim o'zgarganda ishlaydi)
+        if (finalPool.length > 0) {
+          AnalyticsEvents.testStart(topicName, mode);
+        }
       }
     } catch (error) {
       console.error("Firestore Error:", error);
-      showToast(t('test.toastLoadError'), 'error');
+      if (currentReq === generateReqRef.current) {
+        showToast(t('test.toastLoadError'), 'error');
+      }
     } finally {
-      setIsGenerating(false);
+      if (currentReq === generateReqRef.current) {
+        setIsGenerating(false);
+      }
     }
   };
 

@@ -143,7 +143,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
   // Play Store build'i — faqat Google Play Billing ko'rsatiladi (Click/Payme/Telegram yashiriladi)
   const isAndroidApp = isPlayBuild();
-  const BOT_USERNAME = 'IQRO_testbot';
+  const CHANNEL_USERNAME = 'Toifapro';
 
   const handleRedeem = async () => {
     const code = promoCode.trim();
@@ -189,7 +189,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
     // Web — yagona to'lov usuli: Telegram (karta orqali, operator tasdiqlaydi)
     if (payMethod === 'telegram') {
-      const tgUrl = `https://t.me/${BOT_USERNAME}?start=pay_${selectedPlan.id}`;
+      const tgUrl = `https://t.me/${CHANNEL_USERNAME}?direct`;
       window.open(tgUrl, '_blank');
       setStep('telegram_guide');
     } else {
@@ -634,10 +634,10 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   <div style={{ fontSize: 12, color: '#475569', marginTop: 4, fontWeight: 600 }}>Ayyubxon Abdulazizov</div>
                 </div>
 
-                {/* Bot ga qayta o'tish */}
+                {/* Kanalga o'tish */}
                 <motion.button
                   whileTap={{ scale: 0.97 }}
-                  onClick={() => window.open(`https://t.me/${BOT_USERNAME}`, '_blank')}
+                  onClick={() => window.open(`https://t.me/${CHANNEL_USERNAME}?direct`, '_blank')}
                   style={{
                     width: '100%', padding: '15px', borderRadius: 16,
                     background: 'linear-gradient(135deg, #0E97E0, #0284C7)',
@@ -648,7 +648,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   }}
                 >
                   <Send size={18} />
-                  {t('premium.goToBot')}
+                  Kanalga o'tish
                 </motion.button>
 
                 <button

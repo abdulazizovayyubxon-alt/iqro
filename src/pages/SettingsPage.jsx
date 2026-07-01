@@ -262,7 +262,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
               <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--accent)' }}>Yordam kerakmi?</div>
               <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 2 }}>Bizning jamoa har qanday savolga javob beradi</div>
             </div>
-            <button onClick={() => window.open('https://t.me/IQRO_testbot', '_blank')} style={{ padding: '8px 16px', background: 'var(--accent)', color: '#fff', border: 'none', borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>
+            <button onClick={() => window.open('https://t.me/Toifapro?direct', '_blank')} style={{ padding: '8px 16px', background: 'var(--accent)', color: '#fff', border: 'none', borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>
               Yozish
             </button>
           </div>
