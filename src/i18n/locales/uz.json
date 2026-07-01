@@ -661,6 +661,23 @@
     "currency": "so'm"
   },
   "login": {
+    "welcome": {
+      "s1Title": "Keng qamrovli testlar bazasi",
+      "s1Desc": "Attestatsiya va milliy sertifikat imtihonlariga eng so'nggi standartlar asosida tayyorlaning.",
+      "s2Title": "Tahlil va tushuntirishlar",
+      "s2Desc": "Har bir savolning to'g'ri javobi uchun batafsil ilmiy izohlarni o'qing va o'rganing.",
+      "s3Title": "Intellektual takrorlash",
+      "s3Desc": "Xotirani mustahkamlovchi ilmiy uslub yordamida savollarni tizimli eslab qoling.",
+      "s4Title": "O'z toifangizni oshiring!",
+      "s4Desc": "O'zingizga mos kunlik reja belgilang, tayyorgarlik ko'ring va yuqori natijalarga erishing.",
+      "next": "Keyingi",
+      "start": "Boshlash",
+      "terms1": "Tugmani bosish orqali siz ",
+      "terms2": "Foydalanish shartlari",
+      "terms3": " hamda ",
+      "terms4": "Maxfiylik siyosati",
+      "terms5": "ga rozilik bildirasiz."
+    },
     "f1Title": "Tezkor va Qulay",
     "f1Desc": "Imtihonga zamonaviy usulda tayyorlaning",
     "f2Title": "Aqlli Takrorlash",
@@ -1117,69 +1134,71 @@
   "privacyPage": {
     "title": "Maxfiylik Siyosati va Shaxsiy Ma'lumotlarni Qayta Ishlash Kelishuvi",
     "h1": "1. Umumiy qoidalar va huquqiy asoslar",
-    "p1": "Ushbu Maxfiylik siyosati O‘zbekiston Respublikasining 2019-yil 2-iyuldagi O‘RQ-547-sonli «Shaxsiy ma'lumotlar to'g'risida»gi Qonuniga muvofiq ishlab chiqilgan bo‘lib, Toifa Pro platformasi (keyingi o'rinlarda «Platforma») tomonidan foydalanuvchilar (keyingi o'rinlarda «Mijoz» yoki «Foydalanuvchi»)ning shaxsiy ma'lumotlarini to'plash, tizimlashtirish, saqlash, qayta ishlash va himoya qilish tartibini belgilaydi. Platformadan ro'yxatdan o'tish yoki xizmatlardan foydalanish orqali Foydalanuvchi ushbu siyosat shartlariga va o'z shaxsiy ma'lumotlarini qayta ishlashga so'zsiz rozilik beradi.",
-    "h2": "2. Qayta ishlanadigan shaxsiy ma'lumotlar tarkibi",
-    "p2": "Foydalanuvchining shaxsiy kabinetini yaratish va xizmat ko'rsatish doirasida quyidagi shaxsiy ma'lumotlar to'planishi va qayta ishlanishi mumkin:",
+    "p1": "Ushbu Maxfiylik siyosati O‘zbekiston Respublikasining 2019-yil 2-iyuldagi O‘RQ-547-sonli «Shaxsiy ma'lumotlar to'g'risida»gi Qonuniga muvofiq ishlab chiqilgan bo‘lib, Toifa Pro platformasi (keyingi o'rinlarda «Platforma») tomonidan foydalanuvchilar (keyingi o'rinlarda «Mijoz» yoki «Foydalanuvchi»)ning shaxsiy ma'lumotlarini to'plash, tizimlashtirish, saqlash, qayta ishlash va himoya qilish tartibini belgilaydi. Platformadan ro'yxatdan o'tish yoki xizmatlardan foydalanish orqali Foydalanuvchi ushbu siyosat shartlariga va o'z shaxsiy ma'lumotlarini ushbu hujjatda belgilangan tartibda qayta ishlashga so'zsiz va ixtiyoriy rozilik beradi. Agar ushbu shartlarga rozi bo'lmasangiz, Platformadan foydalanishni darhol to'xtatishingiz so'raladi.",
+    "h2": "2. Qayta ishlanadigan ma'lumotlar tarkibi",
+    "p2": "Foydalanuvchining shaxsiy kabinetini yaratish va unga yuqori sifatli xizmat ko'rsatish doirasida quyidagi turdagi ma'lumotlar to'planishi va qayta ishlanishi mumkin:",
     "p2List": [
-      "Foydalanuvchining familiyasi, ismi va otasining ismi (identifikatsiya qilish maqsadida);",
-      "Mobil telefon raqami (tizimga login sifatida kirish va to'lovlarni tasdiqlash uchun);",
-      "Elektron pochta manzili (tizimli bildirishnomalar va qayta aloqa uchun);",
-      "Telegram ID raqami (agar ro'yxatdan o'tish yoki kirish Telegram bot yoki autentifikatsiya orqali amalga oshirilgan bo'lsa);",
-      "Foydalanuvchi tomonidan profilga yuklangan shaxsiy surat (ixtiyoriy ravishda);",
-      "Pedagogik ma'lumotlar: dars beradigan fani, pedagogik toifasi va yashash hududi (test materiallarini moslashtirish uchun);",
-      "Tizim ichidagi faollik: yechilgan testlar tarixi, xato javoblar statistikasi, olingan ballar va reyting tizimidagi ko'rsatkichlar."
+      "Ro'yxatdan o'tish ma'lumotlari: Familiya, ism, otasining ismi, mobil telefon raqami, elektron pochta manzili, hudud va tuman;",
+      "Profil ma'lumotlari: Dars beradigan fan (yo'nalish), joriy pedagogik toifasi, ish joyi va profilga yuklangan shaxsiy surat (avatar);",
+      "Avtomatik to'planadigan ma'lumotlar: IP-manzil, qurilma turi, operatsion tizim, brauzer versiyasi va Platformaga kirish vaqtlari (xavfsizlikni ta'minlash uchun);",
+      "Tizim ichidagi faollik: yechilgan testlar tarixi, xato javoblar statistikasi, o'rganish tezligi, olingan ballar (XP) va reyting tizimidagi ko'rsatkichlar;",
+      "Tranzaksiya ma'lumotlari: To'lov tizimlari (Click, Payme va boshqalar) orqali to'lov qilingan sana, vaqt va summa (diqqat: bank karta raqamlari saqlanmaydi)."
     ],
-    "h3": "3. Shaxsiy ma'lumotlarni qayta ishlash maqsadlari",
+    "h3": "3. Shaxsiy ma'lumotlarni to'plash va qayta ishlash maqsadlari",
     "p3": "Foydalanuvchilarning shaxsiy ma'lumotlari faqat quyidagi qonuniy va aniq maqsadlarda qayta ishlanadi:",
     "p3List": [
       "Foydalanuvchini identifikatsiya qilish, shaxsiy hisobvarag'i (profil) xavfsizligini ta'minlash va ruxsatsiz kirishlarning oldini olish;",
-      "Mijozning tanloviga ko'ra tegishli o'quv va test materiallarini shakllantirish hamda taqdim etish;",
-      "Platformaning reyting (Leaderboard) tizimida Foydalanuvchining faolligini ko'rsatish (bunda faqat Foydalanuvchining ismi va surati ko'rsatiladi, telefon raqami yoki shaxsni aniqlovchi boshqa ma'lumotlar sir saqlanadi);",
-      "Platformadagi to'lovlarni rasmiylashtirish, obuna holati haqida bildirishnomalar yuborish va texnik qo'llab-quvvatlash xizmati bilan bog'lanish;",
-      "Tizim sifatini yaxshilash maqsadida test natijalari bo'yicha anonim va statistik tahlillarni amalga oshirish."
+      "Mijozning tanloviga va tayyorgarlik darajasiga moslashtirilgan (shaxsiylashtirilgan) test materiallari va kunlik rejalarni shakllantirish;",
+      "Platformaning ommaviy reyting (Leaderboard) tizimida Foydalanuvchining faolligini ko'rsatish (faqat ism-sharif va surat ko'rsatiladi, aloqa ma'lumotlari qat'iy sir saqlanadi);",
+      "Platformadagi to'lovlarni rasmiylashtirish, elektron cheklar yuborish, obuna holati haqida bildirishnomalar yuborish va texnik qo'llab-quvvatlash xizmati doirasida Foydalanuvchi bilan bog'lanish;",
+      "Tizim faoliyati va test sifatini yaxshilash maqsadida agregatsiya qilingan (anonimlashtirilgan) statistik tahlillarni amalga oshirish."
     ],
-    "h4": "4. Shaxsiy ma'lumotlarning uchinchi shaxslarga uzatilishi",
-    "p4": "Platforma ma'muriyati shaxsiy ma'lumotlarning maxfiyligini qat'iy kafolatlaydi. Foydalanuvchining shaxsiy ma'lumotlari uchinchi shaxslarga sotilmaydi, ijaraga berilmaydi va almashilmaydi. Ma'lumotlar uchinchi shaxslarga faqat quyidagi hollarda uzatilishi mumkin: 1) Foydalanuvchi tomonidan to'lovlarni amalga oshirish vaqtida to'lov tizimlari (Click, Payme, Google Play Billing) protsessingi uchun zarur bo'lgan hajmda; 2) O'zbekiston Respublikasining amaldagi qonunchiligida belgilangan tartibda vakolatli davlat va huquqni muhofaza qiluvchi organlarning rasmiy so'roviga asosan.",
-    "h5": "5. Shaxsiy ma'lumotlarni saqlash muddati va o'chirish tartibi",
-    "p5a": "Shaxsiy ma'lumotlar Foydalanuvchining Platformadagi hisobi (akkaunti) faol bo'lgan davrda saqlanadi. Foydalanuvchi istalgan vaqtda o'z akkauntini va barcha shaxsiy ma'lumotlarini o'chirish huquqiga ega. Buning uchun Platformaning ",
+    "h4": "4. Ma'lumotlarning uchinchi shaxslarga uzatilishi",
+    "p4": "Platforma ma'muriyati Foydalanuvchilarning shaxsiy ma'lumotlari maxfiyligini qat'iy kafolatlaydi. Shaxsiy ma'lumotlar uchinchi shaxslarga tijorat maqsadida sotilmaydi, ijaraga berilmaydi va ommaviy almashilmaydi. Ma'lumotlar faqat quyidagi istisno hollarda uchinchi shaxslarga uzatilishi mumkin: 1) Foydalanuvchi tomonidan to'lovlarni amalga oshirish vaqtida to'lov tizimlari (Click, Payme, Google Play Billing) protsessingi uchun zarur bo'lgan minimal hajmda; 2) O'zbekiston Respublikasining amaldagi qonunchiligida belgilangan tartibda sud yoki vakolatli huquqni muhofaza qiluvchi organlarning rasmiy, qonuniy so'roviga asosan.",
+    "h5": "5. Shaxsiy ma'lumotlarni saqlash va o'chirish huquqi (Sizning huquqlaringiz)",
+    "p5a": "Foydalanuvchilarning shaxsiy ma'lumotlari ularning akkaunti faol bo'lgan butun davr mobaynida saqlanadi. Foydalanuvchi har qanday vaqtda o'ziga tegishli ma'lumotlarni o'zgartirish, yangilash yoki to'liq o'chirib tashlash huquqiga ega. Hisobni va shaxsiy ma'lumotlarni butunlay o'chirish uchun Platformaning ",
     "p5Profile": "Profil (Sozlamalar)",
-    "p5b": " bo'limidagi «Hisobni o'chirish» tugmasini bosishi yoki tizimga kirmasdan turib maxsus hisobni o'chirish so'rovini yuborish uchun ",
+    "p5b": " bo'limidagi «Hisobni o'chirish» opsiyasidan foydalanishingiz yoki tizimga kirmasdan turib maxsus ariza qoldirish uchun ",
     "p5Link": "ushbu sahifaga",
-    "p5c": " o'tishi lozim. So'rov yuborilgandan so'ng barcha shaxsiy ma'lumotlar, test natijalari va obuna tarixi 30 kalendar kun ichida serverlardan butunlay va qaytarib bo'lmaydigan qilib o'chiriladi.",
+    "p5c": " o'tishingiz lozim. So'rov yuborilgandan so'ng, arxivlashtirilgan va zaxira ma'lumotlari ham 30 kalendar kun ichida barcha serverlardan qayta tiklanmaydigan holatda butunlay o'chiriladi.",
     "h6": "6. Ma'lumotlar xavfsizligini ta'minlash choralari",
-    "p6": "Biz foydalanuvchilar ma'lumotlarini tasodifiy yo'qolishi, ruxsatsiz kirish, o'zgartirish yoki oshkor qilinishidan himoya qilish uchun zamonaviy tashkiliy va texnik xavfsizlik choralarini qo'llaymiz. Ma'lumotlar Firebase Cloud Firestore xavfsiz bulutli tizimida saqlanadi va HTTPS protokoli orqali shifrlangan holda uzatiladi. Biroq, Internet tarmog'i orqali ma'lumot uzatishning 100% xavfsizligiga mutlaq kafolat berib bo'lmasligini Foydalanuvchi inobatga olishi lozim.",
+    "p6": "Biz Foydalanuvchilar ma'lumotlarini ruxsatsiz kirish, yo'qolish, o'zgartirish yoki oshkor qilinishidan himoya qilish uchun ilg'or shifrlash texnologiyalari va tashkiliy xavfsizlik choralarini qo'llaymiz. Barcha ma'lumotlar yuqori darajadagi himoyaga ega xalqaro bulutli tizimlarda saqlanadi va qurilma hamda server o'rtasidagi almashinuv HTTPS xavfsiz protokoli orqali shifrlanadi. Shunga qaramay, Foydalanuvchi o'z paroli xavfsizligiga o'zi mas'ul hisoblanadi va qurilmasi yoki parolini uchinchi shaxslarga bermasligi kerak.",
     "h7": "7. Maxfiylik siyosatiga o'zgartirishlar kiritish",
-    "p7": "Platforma rahbariyati ushbu Maxfiylik siyosatiga bir tomonlama tartibda istalgan vaqtda o'zgartirishlar kiritish huquqini saqlab qoladi. Yangi tahrir e'lon qilingan vaqtdan boshlab kuchga kiradi. Foydalanuvchilarga shartlar bilan muntazam ravishda tanishib borish tavsiya etiladi. Xizmatlardan foydalanishni davom ettirish shartlarning yangi tahririga rozilik sifatida baholanadi."
+    "p7": "Platforma ma'muriyati davlat qonunchiligidagi o'zgarishlar yoki xizmatlarning takomillashishi munosabati bilan ushbu Maxfiylik siyosatiga bir tomonlama tartibda o'zgartirishlar kiritish huquqini saqlab qoladi. Siyosatning yangi tahriri Platformada e'lon qilingan vaqtdan boshlab kuchga kiradi. Foydalanuvchilar siyosat shartlari bilan muntazam ravishda tanishib borishlari tavsiya etiladi. O'zgarishlar e'lon qilingandan so'ng Platformadan foydalanishni davom ettirish yangi shartlarga to'liq rozilik sifatida baholanadi."
   },
   "termsPage": {
     "title": "Foydalanish Shartlari va Ommaviy Oferta Kelishuvi",
-    "h1": "1. Umumiy qoidalar va shartnomaning tuzilishi",
-    "p1": "Ushbu shartnoma O‘zbekiston Respublikasi Fuqarolik kodeksining 367, 369 va 370-moddalariga muvofiq rasmiy ommaviy oferta (taklif) hisoblanadi. Toifa Pro platformasida (keyingi o'rinlarda «Platforma») ro'yxatdan o'tgan yoki to'lovlarni amalga oshirgan jismoniy shaxs (keyingi o'rinlarda «Foydalanuvchi») shartnomaning barcha shartlarini to'liq va so'zsiz qabul qilgan (aksept qilgan) hisoblanadi va ushbu kelishuv qog'ozda imzolangan ikki tomonlama shartnoma bilan teng huquqiy kuchga ega bo'ladi.",
-    "h2": "2. Foydalanuvchining majburiyatlari va huquqlari",
-    "p2": "Platformadan foydalanish jarayonida Foydalanuvchi quyidagilarga amal qilishi shart:",
+    "h1": "1. Shartnomaning huquqiy maqomi",
+    "p1": "Ushbu shartnoma O‘zbekiston Respublikasi Fuqarolik kodeksining 367, 369 va 370-moddalariga muvofiq rasmiy ommaviy oferta (taklif) hisoblanadi. Toifa Pro platformasida (keyingi o'rinlarda «Platforma») ro'yxatdan o'tgan, akkaunt yaratgan yoki har qanday turdagi to'lovlarni amalga oshirgan jismoniy shaxs (keyingi o'rinlarda «Foydalanuvchi») shartnomaning barcha shartlarini to'liq tushungan va so'zsiz qabul qilgan (aksept qilgan) hisoblanadi. Ushbu kelishuv qog'oz shaklida tomonlar imzolagan ikki tomonlama shartnoma bilan bir xil huquqiy kuchga ega.",
+    "h2": "2. Tomonlarning huquq va majburiyatlari",
+    "p2": "Platformadan maqsadli va xavfsiz foydalanishni ta'minlash maqsadida Foydalanuvchi quyidagilarga amal qilishi shart:",
     "p2List": [
-      "Ro'yxatdan o'tish va identifikatsiya qilish vaqtida o'zi haqida faqat to'g'ri, dolzarb va to'liq ma'lumotlarni taqdim etish;",
-      "Tizimdagi shaxsiy profil login va parolini uchinchi shaxslarga bermaslik, hisob xavfsizligi uchun shaxsan javobgar bo'lish;",
-      "Platformaga har qanday noqonuniy yo'l bilan kirishga urinish, xakerlik hujumlari, skriptlar yoki avtomatlashtirilgan dasturlar (parserlar, skreyperlar) yordamida testlar bazasini ko'chirishga harakat qilmaslik;",
-      "Platforma ma'muriyati yoki boshqa foydalanuvchilar sha'niga putur yetkazadigan harakatlarni amalga oshirmaslik."
+      "Shaxsiy ma'lumotlar ishonchliligi: Ro'yxatdan o'tish va profilni to'ldirish vaqtida o'zi haqida faqat aniq, dolzarb va to'g'ri ma'lumotlarni taqdim etish;",
+      "Akkaunt xavfsizligi va shaxsiy mas'uliyat: Tizimdagi shaxsiy profil login (telefon raqami) va parolini sir saqlash hamda uchinchi shaxslarga (jumladan hamkasblarga yoki do'stlarga) bermaslik. Bitta akkauntdan bir vaqtning o'zida bir nechta odam (qurilma) foydalanishi qat'iyan man etiladi;",
+      "Intellektual mulkni himoya qilish: Platformadagi testlar, savollar, tushuntirishlar va dizayn elementlaridan faqat shaxsiy tayyorgarlik uchun foydalanish. Tizimga xakerlik hujumlari uyushtirish, test bazasini botlar (skreyperlar/parserlar) yordamida ommaviy ko'chirib olish yoki skrinshot/skrinkastlar orqali pullik guruhlarda tarqatishga urinmaslik;",
+      "Platformadagi odob-axloq: Ommaviy reyting tizimida yoki mijozlarni qo'llab-quvvatlash xizmati bilan muloqotda odobsiz so'zlar ishlatmaslik, ma'muriyat yoki boshqa foydalanuvchilar sha'niga putur yetkazadigan xatti-harakatlarni amalga oshirmaslik."
     ],
-    "h3": "3. Pullik xizmatlar (obuna) va to'lov shartlari",
-    "p3": "Platforma foydalanuvchilarga bepul sinov (Trial) va pullik (Pro) obuna rejalarini taklif etadi. Pullik xizmatlar quyidagi qoidalar asosida amalga oshiriladi:",
+    "h3": "3. Pullik xizmatlar (Pro Obuna), to'lovlar va qaytarish (Refund) siyosati",
+    "p3": "Platforma foydalanuvchilarga ma'lum qismlardan bepul foydalanish va to'liq bazadan foydalanish uchun pullik (Pro) obuna rejalarini taklif etadi. Pullik xizmatlar quyidagi qat'iy qoidalar asosida taqdim etiladi:",
     "p3List": [
       {
-        "b": "Pro obuna shartlari:",
-        "d": " Pullik tariflar (1 oylik, 3 oylik, 12 oylik) foydalanuvchiga barcha yopiq test bloklari, tushuntirishlar va tahliliy materiallarga to'liq kirish imkonini beradi. Tariflar narxlari istalgan vaqtda bank va to'lov tizimlari talablari yoki ma'muriyat qaroriga ko'ra o'zgartirilishi mumkin."
+        "b": "Pro tarif shartlari: ",
+        "d": "Pullik tariflar (masalan: 1 oylik, 3 oylik, 12 oylik) Foydalanuvchiga barcha yopiq mavzular, imtihon simulyatsiyasi, batafsil ilmiy izohlar va chuqurlashtirilgan analitikaga to'liq kirish huquqini beradi. Har bir ta'rifning amal qilish muddati hisob to'ldirilgan soniyadan boshlanadi."
       },
       {
-        "b": "To'lovlar va mablag'ni qaytarish:",
-        "d": " To'lovlar xavfsiz hamkor to'lov tizimlari (Click, Payme, Telegram direct to'lov yoki Google Play Billing) orqali amalga oshiriladi. Platforma raqamli axborot xizmati turiga kirganligi sababli, to'lov amalga oshirilganidan so'ng taqdim etilgan xizmatlar iste'mol qilingan deb hisoblanadi va to'langan mablag'lar qaytarib berilmaydi (O'zbekiston Respublikasining iste'molchilar huquqlarini himoya qilish to'g'risidagi qonun hujjatlarida ko'rsatilgan haqiqatda xizmat ko'rsatilmagan favqulodda holatlar bundan mustasno)."
+        "b": "To'lovni amalga oshirish: ",
+        "d": "To'lovlar ishonchli mahalliy to'lov tizimlari (Click, Payme, Uzcard, Humo) yoki xalqaro platformalar (Google Play Billing, App Store) orqali O'zbekiston milliy valyutasida (so'm) avtomatlashtirilgan tarzda amalga oshiriladi."
+      },
+      {
+        "b": "Mablag'larni qaytarish siyosati (No Refund): ",
+        "d": "Toifa Pro raqamli ta'lim mahsuloti (SaaS) bo'lganligi sababli, to'lov amalga oshirilib, Premium (Pro) xizmatlari profilga avtomatik biriktirilgandan so'ng xizmat ko'rsatilgan hisoblanadi. O'zbekiston Respublikasining Iste'molchilar huquqlarini himoya qilish to'g'risidagi qonunchiligiga muvofiq, bunday turdagi elektron raqamli tovarlar va xizmatlar uchun to'langan mablag'lar qaytarilmaydi (Faqatgina texnik nosozlik tufayli to'lov qabul qilinib, lekin xizmat aktivlashmagan holatlar bundan mustasno)."
       }
     ],
-    "h4": "4. Mualliflik huquqi va intellektual mulk himoyasi",
-    "p4": "Platformada joylashtirilgan barcha materiallar (savollar bazasi, izohlar, uslubiy tavsiyalar, dizayn elementlari, logotiplar va kodlar) Toifa Pro loyihasining mutlaq intellektual mulki hisoblanadi va mualliflik huquqi to'g'risidagi qonunlar bilan himoya qilinadi. Ushbu materiallarni ma'muriyatning yozma ruxsatisiz ko'chirish, ijtimoiy tarmoqlarda tarqatish, kitob yoki qo'llanma holida chop etish yoki boshqa tijorat maqsadlarida foydalanish qat'iyan man etiladi va qonuniy javobgarlikka sabab bo'ladi.",
-    "h5": "5. Kafolatlar yo'qligi va mas'uliyatni cheklash (Disclaimer)",
-    "p5": "Platforma faqatgina pedagog kadrlarga o'z toifalarini oshirish imtihonlariga mustaqil tayyorgarlik ko'rish uchun yordamchi o'quv-metodik vosita sifatida taqdim etiladi. Platforma O'zbekiston Respublikasi Maktabgacha va maktab ta'limi vazirligi yoki boshqa biron-bir davlat idorasi nomidan faoliyat yuritmaydi va rasmiy davlat organi hisoblanmaydi. Platforma real davlat attestatsiyasi imtihonlaridan 100% muvaffaqiyatli o'tishni kafolatlamaydi. Tizim testlar tarkibining real imtihondagi savollar bilan aynan bir xil bo'lishiga majburiyat olmaydi. Platforma ma'muriyati texnik uzilishlar yoki server xatoliklari sababli yuzaga keladigan vaqtinchalik cheklovlar uchun javobgar bo'lmaydi.",
-    "h6": "6. Shartnomaning amal qilish muddati va o'zgartirishlar",
-    "p6": "Ushbu shartnoma e'lon qilingan paytdan boshlab doimiy amal qiladi. Ma'muriyat ushbu foydalanish shartlariga istalgan vaqtda o'zgartirish kiritish huquqiga ega. Yangilangan shartlar e'lon qilingan kundan boshlab kuchga kiradi va foydalanuvchi Platformadan foydalanishni davom ettirsa, yangi shartlarga rozilik bergan hisoblanadi."
+    "h4": "4. Mualliflik huquqi va sanksiyalar",
+    "p4": "Platformadagi mavjud barcha materiallar: savollar matni, ilmiy izohlar, algoritmlar, interfeys dizayni va brend logotiplari \"Toifa Pro\" jamoasining mutlaq intellektual mulki hisoblanadi. Ma'lumotlarni har qanday shaklda nusxalash, Telegram yoki boshqa messenjerlarda tarqatish, tijoriy maqsadlarda boshqa saytlarda ishlatish O'zbekiston Respublikasining intellektual mulkni himoya qilish to'g'risidagi qonunlariga zid hisoblanadi. Qoidabuzarlik aniqlangan holatda, Platforma ma'muriyati Foydalanuvchi akkauntini ogohlantirishsiz va pulini qaytarmasdan bloklash (ban qilish), shuningdek qonuniy tartibda javobgarlikka tortish huquqini o'zida saqlab qoladi.",
+    "h5": "5. Mas'uliyatni cheklash (Disclaimer)",
+    "p5": "Toifa Pro platformasi faqatgina o'qituvchilar va pedagoglarga o'z malaka toifalarini oshirish hamda attestatsiya imtihonlariga sifatli mustaqil tayyorgarlik ko'rishlari uchun yordamchi o'quv-metodik simulyator sifatida ishlab chiqilgan. Platforma O'zbekiston Respublikasi Maktabgacha va maktab ta'limi vazirligi yoki boshqa davlat idoralari qoshidagi rasmiy tashkilot hisoblanmaydi. Biz platformadagi test ko'rsatkichlari asosida real davlat attestatsiyasi imtihonlaridan 100% o'tishni yuridik jihatdan kafolatlamaymiz, chunki yakuniy natija foydalanuvchining shaxsiy sa'y-harakatlari va imtihondagi psixologik holatiga bog'liq. Tizim vaqtincha texnik profilaktika ishlari tufayli yoki internet-provayderlar aybi bilan yuzaga kelgan uzilishlar uchun javobgar emas.",
+    "h6": "6. Yakuniy qoidalar",
+    "p6": "Ushbu Ommaviy Oferta e'lon qilingan paytdan boshlab kuchga kiradi va noma'lum muddatga amal qiladi. Ma'muriyat bozor talablari, tizim yangilanishlari yoki qonunchilikdagi o'zgarishlarga asosan ushbu foydalanish shartlariga mustaqil ravishda va oldindan ogohlantirmasdan o'zgartirishlar kiritish huquqiga ega. O'zgartirish kiritilgandan so'ng Platformadan foydalanishni davom ettirish – yangilangan shartlarga rozilik hisoblanadi."
   }
 }

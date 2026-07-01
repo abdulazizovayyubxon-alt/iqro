@@ -8,6 +8,7 @@ import { useIsMobile } from '../hooks/useIsMobile';
 import BrandLogo from '../components/shared/BrandLogo';
 
 const STEPS = {
+  WELCOME: 'welcome',
   PHONE: 'phone',
   CHECKING: 'checking',  // Fonda raqam ro'yxatdan o'tganmi tekshiriladi
   AUTH: 'auth',          // Parol kiritish + (kerak bo'lsa) ro'yxatdan o'tish — bitta moslashuvchan ekran
@@ -25,7 +26,10 @@ export default function LoginPage() {
   const isMobile = useIsMobile();
   const s = getStyles(isMobile);
 
-  const [step, setStep] = useState(STEPS.PHONE);
+  const [step, setStep] = useState(() => {
+    return localStorage.getItem('toifa_welcome_seen') ? STEPS.PHONE : STEPS.WELCOME;
+  });
+  const [welcomeSlide, setWelcomeSlide] = useState(0);
   const [authMode, setAuthMode] = useState('login'); // 'login' | 'register'
   const [phone, setPhone] = useState('+998');
   const [name, setName] = useState('');
@@ -34,6 +38,13 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [lockoutTimer, setLockoutTimer] = useState(null);
   const [featureIdx, setFeatureIdx] = useState(0);
+
+  const WELCOME_SLIDES = [
+    { id: 1, icon: '✦', title: t('login.welcome.s1Title'), desc: t('login.welcome.s1Desc') },
+    { id: 2, icon: '📊', title: t('login.welcome.s2Title'), desc: t('login.welcome.s2Desc') },
+    { id: 3, icon: '🧠', title: t('login.welcome.s3Title'), desc: t('login.welcome.s3Desc') },
+    { id: 4, icon: '🏆', title: t('login.welcome.s4Title'), desc: t('login.welcome.s4Desc') }
+  ];
 
   useEffect(() => {
     if (step === STEPS.PHONE) {
@@ -111,6 +122,16 @@ export default function LoginPage() {
   const handleContinue = async () => {
     setAuthError('');
 
+    if (step === STEPS.WELCOME) {
+      if (welcomeSlide < WELCOME_SLIDES.length - 1) {
+        setWelcomeSlide(prev => prev + 1);
+      } else {
+        localStorage.setItem('toifa_welcome_seen', 'true');
+        setStep(STEPS.PHONE);
+      }
+      return;
+    }
+
     if (step === STEPS.PHONE) {
       await handlePhoneNext();
       return;
@@ -185,24 +206,37 @@ export default function LoginPage() {
       <div style={s.page}>
 
         {/* Progress bar */}
-        <div style={s.progressTrack}>
-          <motion.div
-            animate={{ width: `${progress * 100}%` }}
-            transition={{ duration: 0.4, ease: 'easeInOut' }}
-            style={s.progressFill}
-          />
-        </div>
+        {step !== STEPS.WELCOME && (
+          <div style={s.progressTrack}>
+            <motion.div
+              animate={{ width: `${progress * 100}%` }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              style={s.progressFill}
+            />
+          </div>
+        )}
+
+        {/* Welcome Slider Progress Bars */}
+        {step === STEPS.WELCOME && (
+          <div style={{ display: 'flex', gap: 6, marginBottom: 24, marginTop: 12, width: '100%' }}>
+            {WELCOME_SLIDES.map((_, i) => (
+              <div key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i === welcomeSlide ? 'var(--text)' : 'var(--border)' }} />
+            ))}
+          </div>
+        )}
 
         {/* Header — faqat orqaga qaytish tugmasi */}
-        <div style={s.header}>
-          {step === STEPS.AUTH ? (
-            <motion.button whileTap={{ scale: 0.9 }} style={s.backBtn} onClick={handleBack}>
-              <ArrowLeft size={22} />
-            </motion.button>
-          ) : <div style={{ width: 36 }} />}
-          <BrandLogo size={22} />
-          <div style={{ width: 36 }} />
-        </div>
+        {step !== STEPS.WELCOME && (
+          <div style={s.header}>
+            {step === STEPS.AUTH ? (
+              <motion.button whileTap={{ scale: 0.9 }} style={s.backBtn} onClick={handleBack}>
+                <ArrowLeft size={22} />
+              </motion.button>
+            ) : <div style={{ width: 36 }} />}
+            <BrandLogo size={22} />
+            <div style={{ width: 36 }} />
+          </div>
+        )}
 
         {/* Content */}
         <div style={s.content}>
@@ -214,6 +248,38 @@ export default function LoginPage() {
               exit={{ opacity: 0, x: -24 }}
               transition={{ duration: 0.22 }}
             >
+
+              {/* ── STEP: WELCOME ── */}
+              {step === STEPS.WELCOME && (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', minHeight: 300, justifyContent: 'center' }}>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={welcomeSlide}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
+                      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24, width: '100%' }}
+                    >
+                      <div style={{ 
+                        width: 120, height: 120, borderRadius: 32, 
+                        background: 'rgba(255,255,255,0.03)', 
+                        border: '1px solid rgba(255,255,255,0.08)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        fontSize: 64, boxShadow: '0 16px 40px rgba(0,0,0,0.2)'
+                      }}>
+                        {WELCOME_SLIDES[welcomeSlide].icon}
+                      </div>
+                      <div>
+                        <h1 style={{ ...s.title, marginBottom: 12, fontSize: 26, fontWeight: 800 }}>{WELCOME_SLIDES[welcomeSlide].title}</h1>
+                        <p style={{ ...s.subtitle, fontSize: 15, lineHeight: 1.5, opacity: 0.8, maxWidth: 300, margin: '0 auto' }}>
+                          {WELCOME_SLIDES[welcomeSlide].desc}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              )}
 
               {/* ── STEP: PHONE ── */}
               {step === STEPS.PHONE && (
@@ -377,20 +443,27 @@ export default function LoginPage() {
           >
             {loading ? t('login.pleaseWait')
               : lockoutTimer ? t('login.wait', { sec: lockoutTimer })
+              : step === STEPS.WELCOME ? (welcomeSlide === WELCOME_SLIDES.length - 1 ? t('login.welcome.start') : t('login.welcome.next'))
               : step === STEPS.PHONE ? t('login.continuePhone')
               : authMode === 'register' ? t('login.createAccountBtn') : t('login.signIn')}
           </motion.button>
 
           {/* Trust Badges & Policies */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', marginTop: '24px' }}>
-            <div style={{ fontSize: '11px', color: 'var(--text3)', textAlign: 'center', maxWidth: 280, lineHeight: 1.5 }}>
-              {t('login.policyP1')} <a href="/privacy" style={{color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600}}>{t('login.privacyLink')}</a> {t('login.policyMid')} <a href="/terms" style={{color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600}}>{t('login.termsLink')}</a>{t('login.policyP2')}
+          {step === STEPS.WELCOME && welcomeSlide === WELCOME_SLIDES.length - 1 ? (
+             <div style={{ fontSize: '12px', color: 'var(--text3)', textAlign: 'center', marginTop: '24px', lineHeight: 1.5 }}>
+               {t('login.welcome.terms1')}<a href="/terms" style={{color: 'var(--accent)', textDecoration: 'none'}}>{t('login.welcome.terms2')}</a>{t('login.welcome.terms3')}<a href="/privacy" style={{color: 'var(--accent)', textDecoration: 'none'}}>{t('login.welcome.terms4')}</a>{t('login.welcome.terms5')}
+             </div>
+          ) : step !== STEPS.WELCOME ? (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', marginTop: '24px' }}>
+              <div style={{ fontSize: '11px', color: 'var(--text3)', textAlign: 'center', maxWidth: 280, lineHeight: 1.5 }}>
+                {t('login.policyP1')} <a href="/privacy" style={{color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600}}>{t('login.privacyLink')}</a> {t('login.policyMid')} <a href="/terms" style={{color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600}}>{t('login.termsLink')}</a>{t('login.policyP2')}
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', opacity: 0.6 }}>
+                <ShieldCheck size={16} color="var(--text)" />
+                <span style={{ fontSize: '12px', color: 'var(--text)', fontWeight: 500 }}>{t('login.dataSecure')}</span>
+              </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', opacity: 0.6 }}>
-              <ShieldCheck size={16} color="var(--text)" />
-              <span style={{ fontSize: '12px', color: 'var(--text)', fontWeight: 500 }}>{t('login.dataSecure')}</span>
-            </div>
-          </div>
+          ) : null}
         </div>
       </div>
     </div>

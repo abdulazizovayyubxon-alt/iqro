@@ -53,7 +53,7 @@ const TestResults = ({
         </div>
         <div style={{ fontSize: 20, marginTop: 8, color: 'var(--text2)', fontWeight: 800 }}>{pct}%</div>
         <div style={{ fontSize: 13, color: 'var(--accent2)', fontWeight: 700, marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
-          {t('results.ratingAdded', { points: correctCount * 2 })}
+          {t('results.ratingAdded', { points: correctCount })}
         </div>
       </div>
       

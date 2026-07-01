@@ -394,6 +394,7 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
   return {
     correctCount,
     wrongCount,
+    newCorrectCount,
     totalAnswered: correctCount + wrongCount,
     accuracy: questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0,
     newMistakes,
