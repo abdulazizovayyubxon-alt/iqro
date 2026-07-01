@@ -322,17 +322,20 @@ const LeaderboardPage = () => {
           <div className="lb-podium-item">
             <Avatar entry={top3[1]} size={52} />
             <div className="lb-podium-name">{top3[1].name}</div>
+            <div className="lb-podium-score">{top3[1].score.toLocaleString()}</div>
             <div className="lb-podium-block silver">2</div>
           </div>
           <div className="lb-podium-item first">
             <Crown size={28} className="lb-crown" />
             <Avatar entry={top3[0]} size={64} />
             <div className="lb-podium-name">{top3[0].name}</div>
+            <div className="lb-podium-score">{top3[0].score.toLocaleString()}</div>
             <div className="lb-podium-block gold">1</div>
           </div>
           <div className="lb-podium-item">
             <Avatar entry={top3[2]} size={52} />
             <div className="lb-podium-name">{top3[2].name}</div>
+            <div className="lb-podium-score">{top3[2].score.toLocaleString()}</div>
             <div className="lb-podium-block bronze">3</div>
           </div>
         </div>

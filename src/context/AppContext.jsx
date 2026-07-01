@@ -425,11 +425,14 @@ export const AppProvider = ({ children }) => {
       const currentWeeklyScore = prev[`weekly_${weekId}`] || 0;
       const currentMonthlyScore = prev[`monthly_${monthId}`] || 0;
 
+      // Ball hisoblash: Har bir BIRINCHI MARTA to'g'ri topilgan savol uchun 1 ball
+      const earnedPoints = (results.newCorrectCount || 0) * 1;
+
       const newState = {
         ...prev,
-        totalScore: (prev.totalScore || 0) + results.correctCount * 2,
-        [`weekly_${weekId}`]: currentWeeklyScore + results.correctCount * 2,
-        [`monthly_${monthId}`]: currentMonthlyScore + results.correctCount * 2,
+        totalScore: (prev.totalScore || 0) + earnedPoints,
+        [`weekly_${weekId}`]: currentWeeklyScore + earnedPoints,
+        [`monthly_${monthId}`]: currentMonthlyScore + earnedPoints,
         totalAnswered: prev.totalAnswered + results.totalAnswered,
         totalCorrect: prev.totalCorrect + results.correctCount,
         topicStats: newTopicStats,

@@ -317,6 +317,7 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
   }
 
   let correctCount = 0;
+  let newCorrectCount = 0;
   let wrongCount = 0;
   const newMistakes = [];
   const updatedCards = new Map(spacedCards.map(c => [c.qHash, { ...c }]));
@@ -336,6 +337,7 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
       if (updatedCards.has(qHash)) {
         updatedCards.set(qHash, updateSpacedCard(updatedCards.get(qHash), true));
       } else {
+        newCorrectCount++;
         // Yangi to'g'ri javob — spacedCards ga qo'shamiz (level 1), 
         // to'g'ri javob berilgan savollar darhol takrorlanmasligi uchun
         const newCard = {
