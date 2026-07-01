@@ -132,11 +132,11 @@ const Dashboard = () => {
       badge: dueCards > 0 ? dueCards : null,
       onClick: () => navigate('/review'),
     },
-    {
-      id: 'mistakes', icon: Zap, label: t('dashboard.actionMistakes'), desc: t('dashboard.actionMistakesDesc', { count: filteredMistakesCount }),
-      color: 'var(--amber)', bg: 'var(--amber-bg)',
-      onClick: () => handleNav(-1, 'mistakes'),
-    },
+    // {
+    //   id: 'mistakes', icon: Zap, label: t('dashboard.actionMistakes'), desc: t('dashboard.actionMistakesDesc', { count: filteredMistakesCount }),
+    //   color: 'var(--amber)', bg: 'var(--amber-bg)',
+    //   onClick: () => handleNav(-1, 'mistakes'),
+    // },
   ];
 
   const categoryTopics = TOPICS.filter(t =>
