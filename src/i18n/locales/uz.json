@@ -636,7 +636,10 @@
     "tgStep4": "Admin tekshirib, premiumingizni faollashtiradi!",
     "payCard": "To'lov kartasi",
     "goToBot": "Botga o'tish → @IQRO_testbot",
-    "closeAfterReceipt": "Yopish (chek yuborgandan keyin)"
+    "closeAfterReceipt": "Yopish (chek yuborgandan keyin)",
+    "termsAccept1": "To'lovni amalga oshirish orqali siz ",
+    "termsLinkText": "Foydalanish shartlari va Ommaviy oferta",
+    "termsAccept2": "ga rozilik bildirasiz."
   },
   "banner": {
     "expired": "7 kunlik sinov muddatingiz tugadi. Davom etish uchun to'lang.",
