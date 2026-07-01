@@ -177,13 +177,29 @@
     "selectBlock": "Blokni tanlang",
     "sectionsCount": "{{count}} bo'lim",
     "allSections": "Barcha bo'limlar",
-    "changeSubject": "Fanni o'zgartirish",
+    "changeSubject": "Fanni almashtirish",
     "correctAnswerWas": "✓ To'g'ri javob: {{answer}}",
     "motiv": {
-      "t1": ["To'g'ri! ✓", "Yaxshi! 👍", "Ha! ✅"],
-      "t3": ["Zo'r! 🔥", "Ajoyib! ⚡", "Davom eting! 💪"],
-      "t5": ["Daho! 🧠", "Mukammal! 🌟", "Qoyil! 🏆"],
-      "t10": ["LEGENDA! 👑", "CHEMPION! 🥇", "FENOMENAL! 🚀"]
+      "t1": [
+        "To'g'ri! ✓",
+        "Yaxshi! 👍",
+        "Ha! ✅"
+      ],
+      "t3": [
+        "Zo'r! 🔥",
+        "Ajoyib! ⚡",
+        "Davom eting! 💪"
+      ],
+      "t5": [
+        "Daho! 🧠",
+        "Mukammal! 🌟",
+        "Qoyil! 🏆"
+      ],
+      "t10": [
+        "LEGENDA! 👑",
+        "CHEMPION! 🥇",
+        "FENOMENAL! 🚀"
+      ]
     },
     "motivCombo": "{{word}} ({{combo}}x combo!)",
     "motivFallback": "To'g'ri!",
@@ -204,7 +220,6 @@
     "backHomeArrow": "← Bosh sahifaga",
     "emptyMistakesTitle": "Hozircha xatolar yo'q",
     "emptyMistakesText": "Ajoyib natija! Siz hali birorta ham xato qilmadingiz yoki barcha xatolaringizni muvaffaqiyatli tuzatdingiz.",
-    "changeSubject": "Fanni almashtirish",
     "emptyInfoTitle": "Mavzu tayyorlanmoqda",
     "emptyInfoText": "Ushbu bo'lim uchun savollar hozirda yuklanish jarayonida yoki tez orada qo'shiladi. So'rov yuboring — savollar qo'shilganda sizga birinchi bo'lib xabar beramiz.",
     "requestSent": "✓ So'rov yuborildi",
@@ -342,7 +357,15 @@
     "modeTest": "📝 Test",
     "modeFlashcard": "📇 Flashcard",
     "subjectQuestionsBtn": "Fan savollari",
-    "levels": ["Yangi", "10 daqiqa", "1 soat", "6 soat", "1 kun", "3 kun", "1 hafta"],
+    "levels": [
+      "Yangi",
+      "10 daqiqa",
+      "1 soat",
+      "6 soat",
+      "1 kun",
+      "3 kun",
+      "1 hafta"
+    ],
     "correctMark": "✅ To'g'ri!",
     "wrongMark": "❌ Noto'g'ri!",
     "finish": "Yakunlash",
@@ -696,35 +719,105 @@
     "mttGroup": "Maktabgacha · MTT",
     "otherGroup": "Boshqa",
     "goals": {
-      "second_category": { "title": "Ikkinchi toifa", "desc": "Navbatdagi malaka toifasini olish" },
-      "first_category": { "title": "Birinchi toifa", "desc": "Malaka toifasini oshirish" },
-      "highest_category": { "title": "Oliy toifa", "desc": "Eng yuqori toifaga erishish" },
-      "professional": { "title": "Kasbiy sertifikat uchun", "desc": "Milliy va kasbiy sertifikat imtihoni" }
+      "second_category": {
+        "title": "Ikkinchi toifa",
+        "desc": "Navbatdagi malaka toifasini olish"
+      },
+      "first_category": {
+        "title": "Birinchi toifa",
+        "desc": "Malaka toifasini oshirish"
+      },
+      "highest_category": {
+        "title": "Oliy toifa",
+        "desc": "Eng yuqori toifaga erishish"
+      },
+      "professional": {
+        "title": "Kasbiy sertifikat uchun",
+        "desc": "Milliy va kasbiy sertifikat imtihoni"
+      }
     },
     "subjects": {
-      "chqbt": { "title": "CHQBT", "desc": "O'zbekiston tarixi, huquqi, Konstitutsiya" },
-      "art": { "title": "Tasviriy San'at", "desc": "Badiiy ta'lim va san'at nazariyasi" },
-      "tarix": { "title": "Tarix", "desc": "O'zbekiston va Jahon tarixi, metodika" },
-      "sport": { "title": "Jismoniy Tarbiya", "desc": "Sport nazariyasi va metodikasi" },
-      "boshlangich": { "title": "Boshlang'ich Ta'lim", "desc": "Ona tili, matematika, tabiiy fanlar, metodika" },
-      "info": { "title": "Informatika va AT", "desc": "Kompyuter tizimlari, algoritmlash va dasturlash" },
-      "mtt": { "title": "MTT Tarbiyachilari", "desc": "Maktabgacha ta'lim pedagogikasi va metodikasi" },
-      "mtt_rahbar": { "title": "MTT Dir. O'rinbosari", "desc": "Metodik rahbarlik, me'yoriy hujjatlar va boshqaruv" },
-      "til": { "title": "Ona Tili va Adabiyot", "desc": "Til qoidalari, adabiyot tarixi va tahlili" },
-      "biologiya": { "title": "Biologiya", "desc": "Hujayra, organizmlar, genetika, ekologiya va metodika" },
-      "geografiya": { "title": "Geografiya", "desc": "Tabiiy va iqtisodiy geografiya, xaritashunoslik va metodika" },
-      "mtt_logoped": { "title": "MTT Logopedi", "desc": "Nutq buzilishlari, korreksiya va logopedik metodika" },
-      "mtt_psixolog": { "title": "MTT Psixologi", "desc": "Yosh psixologiyasi, oila, inklyuziv ta'lim va metodika" },
-      "multi": { "title": "Bir nechta fan", "desc": "Barcha fanlar bo'yicha kompleks" }
+      "chqbt": {
+        "title": "CHQBT",
+        "desc": "O'zbekiston tarixi, huquqi, Konstitutsiya"
+      },
+      "art": {
+        "title": "Tasviriy San'at",
+        "desc": "Badiiy ta'lim va san'at nazariyasi"
+      },
+      "tarix": {
+        "title": "Tarix",
+        "desc": "O'zbekiston va Jahon tarixi, metodika"
+      },
+      "sport": {
+        "title": "Jismoniy Tarbiya",
+        "desc": "Sport nazariyasi va metodikasi"
+      },
+      "boshlangich": {
+        "title": "Boshlang'ich Ta'lim",
+        "desc": "Ona tili, matematika, tabiiy fanlar, metodika"
+      },
+      "info": {
+        "title": "Informatika va AT",
+        "desc": "Kompyuter tizimlari, algoritmlash va dasturlash"
+      },
+      "mtt": {
+        "title": "MTT Tarbiyachilari",
+        "desc": "Maktabgacha ta'lim pedagogikasi va metodikasi"
+      },
+      "mtt_rahbar": {
+        "title": "MTT Dir. O'rinbosari",
+        "desc": "Metodik rahbarlik, me'yoriy hujjatlar va boshqaruv"
+      },
+      "til": {
+        "title": "Ona Tili va Adabiyot",
+        "desc": "Til qoidalari, adabiyot tarixi va tahlili"
+      },
+      "biologiya": {
+        "title": "Biologiya",
+        "desc": "Hujayra, organizmlar, genetika, ekologiya va metodika"
+      },
+      "geografiya": {
+        "title": "Geografiya",
+        "desc": "Tabiiy va iqtisodiy geografiya, xaritashunoslik va metodika"
+      },
+      "mtt_logoped": {
+        "title": "MTT Logopedi",
+        "desc": "Nutq buzilishlari, korreksiya va logopedik metodika"
+      },
+      "mtt_psixolog": {
+        "title": "MTT Psixologi",
+        "desc": "Yosh psixologiyasi, oila, inklyuziv ta'lim va metodika"
+      },
+      "multi": {
+        "title": "Bir nechta fan",
+        "desc": "Barcha fanlar bo'yicha kompleks"
+      }
     },
     "times": {
-      "10": { "title": "10 daqiqa", "desc": "Tez va ixcham — har kuni ozgina" },
-      "20": { "title": "20 daqiqa", "desc": "Maqbul — ko'pchilik shu tanlaydi" },
-      "30": { "title": "30 daqiqa", "desc": "Yaxshi natija uchun" },
-      "60": { "title": "1 soat +", "desc": "Jiddiy va chuqur tayyorlanish" }
+      "10": {
+        "title": "10 daqiqa",
+        "desc": "Tez va ixcham — har kuni ozgina"
+      },
+      "20": {
+        "title": "20 daqiqa",
+        "desc": "Maqbul — ko'pchilik shu tanlaydi"
+      },
+      "30": {
+        "title": "30 daqiqa",
+        "desc": "Yaxshi natija uchun"
+      },
+      "60": {
+        "title": "1 soat +",
+        "desc": "Jiddiy va chuqur tayyorlanish"
+      }
     },
     "meta": "📚 {{count}} ta tasdiqlangan savol",
-    "loading": ["Fan dasturi tahlil qilinmoqda...", "Toifangizga mos savollar saralanmoqda...", "Shaxsiy reja tayyorlanmoqda..."],
+    "loading": [
+      "Fan dasturi tahlil qilinmoqda...",
+      "Toifangizga mos savollar saralanmoqda...",
+      "Shaxsiy reja tayyorlanmoqda..."
+    ],
     "loadingTitle": "Rejangiz sozlanmoqda...",
     "loadingSubtitle": "Rejangiz tayyorlanmoqda, bir necha soniya kuting",
     "doneTitle": "Hammasi tayyor, Ustoz!",
@@ -743,7 +836,20 @@
       "birinchi": "Birinchi toifa",
       "oliy": "Oliy toifa"
     },
-    "months": ["Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun", "Iyul", "Avgust", "Sentabr", "Oktabr", "Noyabr", "Dekabr"],
+    "months": [
+      "Yanvar",
+      "Fevral",
+      "Mart",
+      "Aprel",
+      "May",
+      "Iyun",
+      "Iyul",
+      "Avgust",
+      "Sentabr",
+      "Oktabr",
+      "Noyabr",
+      "Dekabr"
+    ],
     "editTitle": "✏️ Profilni tahrirlash",
     "firstName": "Ism",
     "lastName": "Familiya",
@@ -823,10 +929,20 @@
     "privacyP1Body": "Ushbu Maxfiylik Siyosati Toifa Pro platformasi foydalanuvchilarining shaxsiy ma'lumotlarini yig'ish, saqlash va himoya qilish tartibini belgilaydi. Biz foydalanuvchilarimizning maxfiyligini hurmat qilamiz va ma'lumotlar xavfsizligini ta'minlashga mas'uliyat bilan yondashamiz.",
     "privacyP2Title": "2. Yig'iladigan ma'lumotlar",
     "privacyP2Body": "Platformadan ro'yxatdan o'tish va foydalanish davomida quyidagi shaxsiy ma'lumotlar to'planishi mumkin:",
-    "privacyP2List": ["Ism va familiya;", "Telefon raqami;", "Tanlangan o'quv fanlari, maqsadlar va imtihon sanasi;", "Ilovadan foydalanish va test natijalari statistikasi."],
+    "privacyP2List": [
+      "Ism va familiya;",
+      "Telefon raqami;",
+      "Tanlangan o'quv fanlari, maqsadlar va imtihon sanasi;",
+      "Ilovadan foydalanish va test natijalari statistikasi."
+    ],
     "privacyP3Title": "3. Ma'lumotlardan foydalanish maqsadi",
     "privacyP3Body": "Siz taqdim etgan ma'lumotlar quyidagi maqsadlarda ishlatiladi:",
-    "privacyP3List": ["O'quv jarayonini shaxsiylashtirish va fanga mos yuklash ekranlarini ko'rsatish;", "Pro obuna va to'lovlarni boshqarish;", "Do'stlarni taklif etish (referral) dasturini to'g'ri ishlashini ta'minlash va chegirmalarni hisoblash;", "Platforma barqarorligini tahlil qilish va xatoliklarni bartaraf etish."],
+    "privacyP3List": [
+      "O'quv jarayonini shaxsiylashtirish va fanga mos yuklash ekranlarini ko'rsatish;",
+      "Pro obuna va to'lovlarni boshqarish;",
+      "Do'stlarni taklif etish (referral) dasturini to'g'ri ishlashini ta'minlash va chegirmalarni hisoblash;",
+      "Platforma barqarorligini tahlil qilish va xatoliklarni bartaraf etish."
+    ],
     "privacyP4Title": "4. Ma'lumotlar xavfsizligi va himoyasi",
     "privacyP4Body": "Foydalanuvchilarning ma'lumotlari Firebase xavfsizlik qoidalari orqali himoyalangan va begona shaxslarga taqdim etilmaydi. Shaxsiy ma'lumotlar uchinchi shaxslarga sotilmaydi yoki ijaraga berilmaydi.",
     "privacyP5Title": "5. Aloqa va murojaat",
@@ -900,9 +1016,18 @@
     "securePay": "Xavfsiz to'lov · sinov davrida karta so'ralmaydi",
     "trustLabel": "🛡️ Xavfsizlik va Kafolat",
     "trustBadges": [
-      { "title": "Click & Payme", "sub": "Xavfsiz to'lov" },
-      { "title": "Tezkor Faol", "sub": "Avtomat yoqiladi" },
-      { "title": "Oflayn Kafolat", "sub": "Internetsiz ishlaydi" }
+      {
+        "title": "Click & Payme",
+        "sub": "Xavfsiz to'lov"
+      },
+      {
+        "title": "Tezkor Faol",
+        "sub": "Avtomat yoqiladi"
+      },
+      {
+        "title": "Oflayn Kafolat",
+        "sub": "Internetsiz ishlaydi"
+      }
     ],
     "faqLabel": "❓ To'lov va Pro bo'yicha savollar",
     "faqs": [
@@ -950,9 +1075,18 @@
     "intro": "{{app}} — O'zbekiston o'qituvchilarini kasbiy sertifikatlash va malaka attestatsiyasiga tayyorlash uchun yaratilgan platforma. Maqsadimiz — har bir o'qituvchiga ishonch bilan, o'z tezligida va istalgan joyda tayyorlanish imkonini berish.",
     "whyTrust": "Nega bizga ishonishingiz mumkin?",
     "cards": [
-      { "t": "Real imtihon formati", "d": "Savollar rasmiy malaka sinovi standartlari va fan dasturlari asosida tuzilgan." },
-      { "t": "Kartangiz so'ralmaydi", "d": "7 kunlik bepul sinov — avtomatik to'lov yo'q. Pro faqat o'zingiz xohlagan paytda." },
-      { "t": "Tirik jamoa", "d": "Har bir e'tiroz va xato bo'yicha xabaringizni o'qiymiz va savollar bazasini doimiy yangilaymiz." }
+      {
+        "t": "Real imtihon formati",
+        "d": "Savollar rasmiy malaka sinovi standartlari va fan dasturlari asosida tuzilgan."
+      },
+      {
+        "t": "Kartangiz so'ralmaydi",
+        "d": "7 kunlik bepul sinov — avtomatik to'lov yo'q. Pro faqat o'zingiz xohlagan paytda."
+      },
+      {
+        "t": "Tirik jamoa",
+        "d": "Har bir e'tiroz va xato bo'yicha xabaringizni o'qiymiz va savollar bazasini doimiy yangilaymiz."
+      }
     ],
     "contactTitle": "Biz bilan bog'lanish",
     "contactText": "Savol, taklif yoki muammo bo'lsa — bemalol murojaat qiling. Odatda 24 soat ichida javob beramiz.",
@@ -978,46 +1112,71 @@
     "homeBtn": "Bosh sahifaga qaytish"
   },
   "privacyPage": {
-    "title": "Maxfiylik Siyosati",
-    "h1": "1. Umumiy qoidalar",
-    "p1": "Ushbu Maxfiylik siyosati Toifa Pro platformasi (keyingi o'rinlarda \"Platforma\") tomonidan foydalanuvchilarning shaxsiy ma'lumotlarini qanday yig'ish, saqlash, ishlatish va himoya qilish tartibini belgilaydi. Platformadan foydalanish orqali Siz ushbu siyosat shartlariga rozi bo'lasiz.",
-    "h2": "2. Yig'iladigan ma'lumotlar",
-    "p2": "Biz quyidagi ma'lumotlarni yig'ishimiz mumkin:",
-    "p2List": ["Ism, familiya va profil rasmi;", "Telefon raqami va elektron pochta manzili;", "Telegram ID (agar bot orqali kirgan bo'lsangiz);", "Platformadagi faollik, test natijalari va statistikangiz."],
-    "h3": "3. Ma'lumotlardan qanday foydalanamiz?",
-    "p3": "Sizning ma'lumotlaringiz faqat quyidagi maqsadlarda ishlatiladi:",
-    "p3List": ["Shaxsiy kabinetingizni yaratish va xavfsizligini ta'minlash;", "Sizga mos testlar va xizmatlarni taqdim etish;", "Reyting (Leaderboard) tizimida ishtirokingizni ko'rsatish (faqat ism va rasm chiqadi, telefon raqamingiz to'liq sir saqlanadi);", "Platforma yangiliklari, to'lov xabarlari haqida sizni ogohlantirish."],
-    "h4": "4. Uchinchi shaxslarga uzatish",
-    "p4": "Foydalanuvchilarning shaxsiy ma'lumotlari uchinchi shaxslarga sotilmaydi yoki ijaraga berilmaydi. Faqat qonun hujjatlarida ko'zda tutilgan majburiy holatlardagina huquqni muhofaza qiluvchi organlarga taqdim etilishi mumkin.",
-    "h5": "5. Ma'lumotlarni o'chirish",
-    "p5a": "Siz istalgan vaqtda o'z hisobingizni va barcha shaxsiy ma'lumotlaringizni o'chirish huquqiga egasiz. Buning uchun Platformaning ",
-    "p5Profile": "Profil",
-    "p5b": " sahifasidagi \"Hisobni o'chirish\" tugmasidan foydalanishingiz yoki tizimga kirmasdan turib ",
-    "p5Link": "bu yerda",
-    "p5c": " hisobni o'chirish so'rovini yuborishingiz mumkin.",
-    "h6": "6. Xavfsizlik",
-    "p6": "Biz sizning ma'lumotlaringizni ruxsatsiz kirish, o'zgartirish, yo'q qilish yoki oshkor qilishdan himoya qilish uchun zamonaviy texnik va tashkiliy xavfsizlik choralarini ko'ramiz (jumladan, Firebase tomonidan taqdim etilgan eng yuqori himoya tizimlari qo'llaniladi).",
-    "h7": "7. O'zgarishlar kiritish",
-    "p7": "Platforma rahbariyati ushbu Maxfiylik siyosatiga istalgan vaqtda o'zgartirishlar kiritish huquqini saqlab qoladi. Har qanday o'zgarishlar ushbu sahifada e'lon qilinadi."
+    "title": "Maxfiylik Siyosati va Shaxsiy Ma'lumotlarni Qayta Ishlash Kelishuvi",
+    "h1": "1. Umumiy qoidalar va huquqiy asoslar",
+    "p1": "Ushbu Maxfiylik siyosati O‘zbekiston Respublikasining 2019-yil 2-iyuldagi O‘RQ-547-sonli «Shaxsiy ma'lumotlar to'g'risida»gi Qonuniga muvofiq ishlab chiqilgan bo‘lib, Toifa Pro platformasi (keyingi o'rinlarda «Platforma») tomonidan foydalanuvchilar (keyingi o'rinlarda «Mijoz» yoki «Foydalanuvchi»)ning shaxsiy ma'lumotlarini to'plash, tizimlashtirish, saqlash, qayta ishlash va himoya qilish tartibini belgilaydi. Platformadan ro'yxatdan o'tish yoki xizmatlardan foydalanish orqali Foydalanuvchi ushbu siyosat shartlariga va o'z shaxsiy ma'lumotlarini qayta ishlashga so'zsiz rozilik beradi.",
+    "h2": "2. Qayta ishlanadigan shaxsiy ma'lumotlar tarkibi",
+    "p2": "Foydalanuvchining shaxsiy kabinetini yaratish va xizmat ko'rsatish doirasida quyidagi shaxsiy ma'lumotlar to'planishi va qayta ishlanishi mumkin:",
+    "p2List": [
+      "Foydalanuvchining familiyasi, ismi va otasining ismi (identifikatsiya qilish maqsadida);",
+      "Mobil telefon raqami (tizimga login sifatida kirish va to'lovlarni tasdiqlash uchun);",
+      "Elektron pochta manzili (tizimli bildirishnomalar va qayta aloqa uchun);",
+      "Telegram ID raqami (agar ro'yxatdan o'tish yoki kirish Telegram bot yoki autentifikatsiya orqali amalga oshirilgan bo'lsa);",
+      "Foydalanuvchi tomonidan profilga yuklangan shaxsiy surat (ixtiyoriy ravishda);",
+      "Pedagogik ma'lumotlar: dars beradigan fani, pedagogik toifasi va yashash hududi (test materiallarini moslashtirish uchun);",
+      "Tizim ichidagi faollik: yechilgan testlar tarixi, xato javoblar statistikasi, olingan ballar va reyting tizimidagi ko'rsatkichlar."
+    ],
+    "h3": "3. Shaxsiy ma'lumotlarni qayta ishlash maqsadlari",
+    "p3": "Foydalanuvchilarning shaxsiy ma'lumotlari faqat quyidagi qonuniy va aniq maqsadlarda qayta ishlanadi:",
+    "p3List": [
+      "Foydalanuvchini identifikatsiya qilish, shaxsiy hisobvarag'i (profil) xavfsizligini ta'minlash va ruxsatsiz kirishlarning oldini olish;",
+      "Mijozning tanloviga ko'ra tegishli o'quv va test materiallarini shakllantirish hamda taqdim etish;",
+      "Platformaning reyting (Leaderboard) tizimida Foydalanuvchining faolligini ko'rsatish (bunda faqat Foydalanuvchining ismi va surati ko'rsatiladi, telefon raqami yoki shaxsni aniqlovchi boshqa ma'lumotlar sir saqlanadi);",
+      "Platformadagi to'lovlarni rasmiylashtirish, obuna holati haqida bildirishnomalar yuborish va texnik qo'llab-quvvatlash xizmati bilan bog'lanish;",
+      "Tizim sifatini yaxshilash maqsadida test natijalari bo'yicha anonim va statistik tahlillarni amalga oshirish."
+    ],
+    "h4": "4. Shaxsiy ma'lumotlarning uchinchi shaxslarga uzatilishi",
+    "p4": "Platforma ma'muriyati shaxsiy ma'lumotlarning maxfiyligini qat'iy kafolatlaydi. Foydalanuvchining shaxsiy ma'lumotlari uchinchi shaxslarga sotilmaydi, ijaraga berilmaydi va almashilmaydi. Ma'lumotlar uchinchi shaxslarga faqat quyidagi hollarda uzatilishi mumkin: 1) Foydalanuvchi tomonidan to'lovlarni amalga oshirish vaqtida to'lov tizimlari (Click, Payme, Google Play Billing) protsessingi uchun zarur bo'lgan hajmda; 2) O'zbekiston Respublikasining amaldagi qonunchiligida belgilangan tartibda vakolatli davlat va huquqni muhofaza qiluvchi organlarning rasmiy so'roviga asosan.",
+    "h5": "5. Shaxsiy ma'lumotlarni saqlash muddati va o'chirish tartibi",
+    "p5a": "Shaxsiy ma'lumotlar Foydalanuvchining Platformadagi hisobi (akkaunti) faol bo'lgan davrda saqlanadi. Foydalanuvchi istalgan vaqtda o'z akkauntini va barcha shaxsiy ma'lumotlarini o'chirish huquqiga ega. Buning uchun Platformaning ",
+    "p5Profile": "Profil (Sozlamalar)",
+    "p5b": " bo'limidagi «Hisobni o'chirish» tugmasini bosishi yoki tizimga kirmasdan turib maxsus hisobni o'chirish so'rovini yuborish uchun ",
+    "p5Link": "ushbu sahifaga",
+    "p5c": " o'tishi lozim. So'rov yuborilgandan so'ng barcha shaxsiy ma'lumotlar, test natijalari va obuna tarixi 30 kalendar kun ichida serverlardan butunlay va qaytarib bo'lmaydigan qilib o'chiriladi.",
+    "h6": "6. Ma'lumotlar xavfsizligini ta'minlash choralari",
+    "p6": "Biz foydalanuvchilar ma'lumotlarini tasodifiy yo'qolishi, ruxsatsiz kirish, o'zgartirish yoki oshkor qilinishidan himoya qilish uchun zamonaviy tashkiliy va texnik xavfsizlik choralarini qo'llaymiz. Ma'lumotlar Firebase Cloud Firestore xavfsiz bulutli tizimida saqlanadi va HTTPS protokoli orqali shifrlangan holda uzatiladi. Biroq, Internet tarmog'i orqali ma'lumot uzatishning 100% xavfsizligiga mutlaq kafolat berib bo'lmasligini Foydalanuvchi inobatga olishi lozim.",
+    "h7": "7. Maxfiylik siyosatiga o'zgartirishlar kiritish",
+    "p7": "Platforma rahbariyati ushbu Maxfiylik siyosatiga bir tomonlama tartibda istalgan vaqtda o'zgartirishlar kiritish huquqini saqlab qoladi. Yangi tahrir e'lon qilingan vaqtdan boshlab kuchga kiradi. Foydalanuvchilarga shartlar bilan muntazam ravishda tanishib borish tavsiya etiladi. Xizmatlardan foydalanishni davom ettirish shartlarning yangi tahririga rozilik sifatida baholanadi."
   },
   "termsPage": {
-    "title": "Foydalanish Shartlari",
-    "h1": "1. Umumiy qoidalar",
-    "p1": "Ushbu Foydalanish shartlari (keyingi o'rinlarda \"Shartlar\") foydalanuvchilarning Toifa Pro platformasidan (keyingi o'rinlarda \"Platforma\") foydalanish tartibini belgilaydi. Platformadan ro'yxatdan o'tish orqali Siz ushbu shartlarga to'liq rozi bo'lasiz.",
-    "h2": "2. Foydalanuvchining majburiyatlari",
-    "p2": "Foydalanuvchi quyidagilarga majburdir:",
-    "p2List": ["Ro'yxatdan o'tishda aniq va to'g'ri ma'lumotlarni taqdim etish;", "Platformadan g'arazli maqsadlarda, xakerlik hujumlari yoki tizimga zarar yetkazadigan harakatlar uchun foydalanmaslik;", "O'z hisobi xavfsizligini ta'minlash va parolni uchinchi shaxslarga bermaslik;", "Boshqa foydalanuvchilarga nisbatan hurmat bilan munosabatda bo'lish."],
-    "h3": "3. Xizmatlar va To'lovlar",
-    "p3": "Platforma bepul (Trial) va pullik (Pro) xizmatlarni taklif etadi.",
-    "p3List": [
-      { "b": "Pro xizmatlar:", "d": " Qo'shimcha funksiyalar va testlar bazasiga to'liq kirish imkonini beradi." },
-      { "b": "To'lovlar:", "d": " To'lovlar xavfsiz to'lov tizimlari orqali amalga oshiriladi. To'langan mablag'lar qaytarib berilmaydi (qonunchilikda ko'rsatilgan hollar bundan mustasno)." }
+    "title": "Foydalanish Shartlari va Ommaviy Oferta Kelishuvi",
+    "h1": "1. Umumiy qoidalar va shartnomaning tuzilishi",
+    "p1": "Ushbu shartnoma O‘zbekiston Respublikasi Fuqarolik kodeksining 367, 369 va 370-moddalariga muvofiq rasmiy ommaviy oferta (taklif) hisoblanadi. Toifa Pro platformasida (keyingi o'rinlarda «Platforma») ro'yxatdan o'tgan yoki to'lovlarni amalga oshirgan jismoniy shaxs (keyingi o'rinlarda «Foydalanuvchi») shartnomaning barcha shartlarini to'liq va so'zsiz qabul qilgan (aksept qilgan) hisoblanadi va ushbu kelishuv qog'ozda imzolangan ikki tomonlama shartnoma bilan teng huquqiy kuchga ega bo'ladi.",
+    "h2": "2. Foydalanuvchining majburiyatlari va huquqlari",
+    "p2": "Platformadan foydalanish jarayonida Foydalanuvchi quyidagilarga amal qilishi shart:",
+    "p2List": [
+      "Ro'yxatdan o'tish va identifikatsiya qilish vaqtida o'zi haqida faqat to'g'ri, dolzarb va to'liq ma'lumotlarni taqdim etish;",
+      "Tizimdagi shaxsiy profil login va parolini uchinchi shaxslarga bermaslik, hisob xavfsizligi uchun shaxsan javobgar bo'lish;",
+      "Platformaga har qanday noqonuniy yo'l bilan kirishga urinish, xakerlik hujumlari, skriptlar yoki avtomatlashtirilgan dasturlar (parserlar, skreyperlar) yordamida testlar bazasini ko'chirishga harakat qilmaslik;",
+      "Platforma ma'muriyati yoki boshqa foydalanuvchilar sha'niga putur yetkazadigan harakatlarni amalga oshirmaslik."
     ],
-    "h4": "4. Mualliflik huquqi",
-    "p4": "Platformadagi barcha kontent (testlar, maqolalar, dizayn, logotip) Toifa Pro platformasining intellektual mulki hisoblanadi. Kontentni ko'chirish, tarqatish yoki tijorat maqsadida foydalanish qat'iyan man etiladi.",
-    "h5": "5. Javobgarlikni cheklash",
-    "p5": "Platforma faqatgina tayyorgarlik ko'rish uchun yordamchi vosita hisoblanadi va real imtihonlardan 100% muvaffaqiyatli o'tishga kafolat bermaydi. Tizimda yuz berishi mumkin bo'lgan texnik uzilishlar uchun Platforma ma'muriyati harakat qilsa-da, uzluksiz ishlashiga mutlaq kafolat bermaydi.",
-    "h6": "6. Shartlarni o'zgartirish",
-    "p6": "Platforma ushbu Foydalanish shartlariga istalgan vaqtda o'zgartirishlar kiritishi mumkin. O'zgarishlar e'lon qilingan vaqtdan boshlab kuchga kiradi."
+    "h3": "3. Pullik xizmatlar (obuna) va to'lov shartlari",
+    "p3": "Platforma foydalanuvchilarga bepul sinov (Trial) va pullik (Pro) obuna rejalarini taklif etadi. Pullik xizmatlar quyidagi qoidalar asosida amalga oshiriladi:",
+    "p3List": [
+      {
+        "b": "Pro obuna shartlari:",
+        "d": " Pullik tariflar (1 oylik, 3 oylik, 12 oylik) foydalanuvchiga barcha yopiq test bloklari, tushuntirishlar va tahliliy materiallarga to'liq kirish imkonini beradi. Tariflar narxlari istalgan vaqtda bank va to'lov tizimlari talablari yoki ma'muriyat qaroriga ko'ra o'zgartirilishi mumkin."
+      },
+      {
+        "b": "To'lovlar va mablag'ni qaytarish:",
+        "d": " To'lovlar xavfsiz hamkor to'lov tizimlari (Click, Payme, Telegram direct to'lov yoki Google Play Billing) orqali amalga oshiriladi. Platforma raqamli axborot xizmati turiga kirganligi sababli, to'lov amalga oshirilganidan so'ng taqdim etilgan xizmatlar iste'mol qilingan deb hisoblanadi va to'langan mablag'lar qaytarib berilmaydi (O'zbekiston Respublikasining iste'molchilar huquqlarini himoya qilish to'g'risidagi qonun hujjatlarida ko'rsatilgan haqiqatda xizmat ko'rsatilmagan favqulodda holatlar bundan mustasno)."
+      }
+    ],
+    "h4": "4. Mualliflik huquqi va intellektual mulk himoyasi",
+    "p4": "Platformada joylashtirilgan barcha materiallar (savollar bazasi, izohlar, uslubiy tavsiyalar, dizayn elementlari, logotiplar va kodlar) Toifa Pro loyihasining mutlaq intellektual mulki hisoblanadi va mualliflik huquqi to'g'risidagi qonunlar bilan himoya qilinadi. Ushbu materiallarni ma'muriyatning yozma ruxsatisiz ko'chirish, ijtimoiy tarmoqlarda tarqatish, kitob yoki qo'llanma holida chop etish yoki boshqa tijorat maqsadlarida foydalanish qat'iyan man etiladi va qonuniy javobgarlikka sabab bo'ladi.",
+    "h5": "5. Kafolatlar yo'qligi va mas'uliyatni cheklash (Disclaimer)",
+    "p5": "Platforma faqatgina pedagog kadrlarga o'z toifalarini oshirish imtihonlariga mustaqil tayyorgarlik ko'rish uchun yordamchi o'quv-metodik vosita sifatida taqdim etiladi. Platforma O'zbekiston Respublikasi Maktabgacha va maktab ta'limi vazirligi yoki boshqa biron-bir davlat idorasi nomidan faoliyat yuritmaydi va rasmiy davlat organi hisoblanmaydi. Platforma real davlat attestatsiyasi imtihonlaridan 100% muvaffaqiyatli o'tishni kafolatlamaydi. Tizim testlar tarkibining real imtihondagi savollar bilan aynan bir xil bo'lishiga majburiyat olmaydi. Platforma ma'muriyati texnik uzilishlar yoki server xatoliklari sababli yuzaga keladigan vaqtinchalik cheklovlar uchun javobgar bo'lmaydi.",
+    "h6": "6. Shartnomaning amal qilish muddati va o'zgartirishlar",
+    "p6": "Ushbu shartnoma e'lon qilingan paytdan boshlab doimiy amal qiladi. Ma'muriyat ushbu foydalanish shartlariga istalgan vaqtda o'zgartirish kiritish huquqiga ega. Yangilangan shartlar e'lon qilingan kundan boshlab kuchga kiradi va foydalanuvchi Platformadan foydalanishni davom ettirsa, yangi shartlarga rozilik bergan hisoblanadi."
   }
 }
