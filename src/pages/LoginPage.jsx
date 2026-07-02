@@ -202,8 +202,44 @@ export default function LoginPage() {
   const progress = progressMap[step] || 0.4;
 
   return (
-    <div style={s.pageOuter}>
-      <div style={s.page}>
+    <div style={{
+      ...s.pageOuter,
+      background: step === STEPS.WELCOME ? '#09090b' : s.pageOuter.background,
+      color: step === STEPS.WELCOME ? '#ffffff' : 'var(--text)',
+      transition: 'background 0.5s ease, color 0.5s ease'
+    }}>
+      
+      {/* Animated Glowing Orbs for Glassmorphism Background (Faqat Welcome uchun) */}
+      {step === STEPS.WELCOME && (
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 0 }}>
+          <motion.div
+            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3], x: [0, 50, 0], y: [0, 30, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+            style={{
+              position: 'absolute', top: '-10%', left: '-20%', width: '60vw', height: '60vw',
+              background: WELCOME_SLIDES[welcomeSlide].color,
+              filter: 'blur(80px)', borderRadius: '50%', opacity: 0.4
+            }}
+          />
+          <motion.div
+            animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2], x: [0, -40, 0], y: [0, -50, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+            style={{
+              position: 'absolute', bottom: '-10%', right: '-10%', width: '70vw', height: '70vw',
+              background: welcomeSlide === 0 ? '#8b5cf6' : welcomeSlide === 1 ? '#0ea5e9' : welcomeSlide === 2 ? '#f43f5e' : '#10b981',
+              filter: 'blur(90px)', borderRadius: '50%', opacity: 0.3
+            }}
+          />
+        </div>
+      )}
+
+      <div style={{
+        ...s.page,
+        background: step === STEPS.WELCOME ? 'transparent' : s.page.background,
+        border: step === STEPS.WELCOME ? 'none' : s.page.border,
+        boxShadow: step === STEPS.WELCOME ? 'none' : s.page.boxShadow,
+        zIndex: 1
+      }}>
 
         {/* Progress bar */}
         {step !== STEPS.WELCOME && (
@@ -213,15 +249,6 @@ export default function LoginPage() {
               transition={{ duration: 0.4, ease: 'easeInOut' }}
               style={s.progressFill}
             />
-          </div>
-        )}
-
-        {/* Welcome Slider Progress Bars */}
-        {step === STEPS.WELCOME && (
-          <div style={{ display: 'flex', gap: 6, marginBottom: 16, marginTop: isMobile ? 12 : 20, padding: '0 20px', width: '100%', boxSizing: 'border-box' }}>
-            {WELCOME_SLIDES.map((_, i) => (
-              <div key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i === welcomeSlide ? 'var(--text)' : 'var(--border)', transition: 'background 0.3s' }} />
-            ))}
           </div>
         )}
 
@@ -239,7 +266,10 @@ export default function LoginPage() {
         )}
 
         {/* Content */}
-        <div style={s.content}>
+        <div style={{
+          ...s.content,
+          padding: step === STEPS.WELCOME ? (isMobile ? '16px 20px 0' : '28px 24px 0') : s.content.padding
+        }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={step}
@@ -247,52 +277,77 @@ export default function LoginPage() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -24 }}
               transition={{ duration: 0.22 }}
+              style={step === STEPS.WELCOME ? { display: 'flex', flexDirection: 'column', height: '100%' } : {}}
             >
 
               {/* ── STEP: WELCOME ── */}
               {step === STEPS.WELCOME && (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', minHeight: 380, justifyContent: 'center' }}>
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={welcomeSlide}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      transition={{ duration: 0.3 }}
-                      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}
-                    >
-                      <div style={{ 
-                        width: 'calc(100% + 40px)', // Ekran kengligini to'liq qoplash uchun paddingni yopish
-                        height: 280, 
-                        background: `linear-gradient(135deg, ${WELCOME_SLIDES[welcomeSlide].color}15 0%, ${WELCOME_SLIDES[welcomeSlide].color}05 100%)`, 
-                        borderBottom: `1px solid ${WELCOME_SLIDES[welcomeSlide].color}22`,
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        position: 'relative', overflow: 'hidden',
-                        marginTop: -16, marginBottom: 32,
-                        borderBottomLeftRadius: 32, borderBottomRightRadius: 32
-                      }}>
-                        {/* Glowing Orb */}
-                        <div style={{
-                          position: 'absolute', width: 160, height: 160,
-                          background: WELCOME_SLIDES[welcomeSlide].color,
-                          filter: 'blur(70px)', opacity: 0.4
-                        }} />
-                        
-                        {React.createElement(WELCOME_SLIDES[welcomeSlide].icon, {
-                          size: 110,
-                          color: WELCOME_SLIDES[welcomeSlide].color,
-                          strokeWidth: 1.5,
-                          style: { filter: 'drop-shadow(0 12px 24px rgba(0,0,0,0.15))', zIndex: 1 }
-                        })}
-                      </div>
-                      <div style={{ padding: '0 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <h1 style={{ ...s.title, marginBottom: 16, fontSize: 28, fontWeight: 800, lineHeight: 1.2 }}>{WELCOME_SLIDES[welcomeSlide].title}</h1>
-                        <p style={{ ...s.subtitle, fontSize: 16, lineHeight: 1.5, opacity: 0.85, margin: '0 auto', maxWidth: 320 }}>
-                          {WELCOME_SLIDES[welcomeSlide].desc}
-                        </p>
-                      </div>
-                    </motion.div>
-                  </AnimatePresence>
+                <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                  
+                  {/* Glassmorphism Progress Bars */}
+                  <div style={{ display: 'flex', gap: 8, marginBottom: 32, marginTop: 12, width: '100%' }}>
+                    {WELCOME_SLIDES.map((_, i) => (
+                      <div key={i} style={{ 
+                        flex: 1, height: 5, borderRadius: 3, 
+                        background: i === welcomeSlide ? '#ffffff' : 'rgba(255,255,255,0.2)', 
+                        transition: 'background 0.4s ease' 
+                      }} />
+                    ))}
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', flex: 1, justifyContent: 'center' }}>
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={welcomeSlide}
+                        initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 1.05, y: -10 }}
+                        transition={{ duration: 0.4, ease: 'easeOut' }}
+                        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}
+                      >
+                        {/* 3D Glassmorphism Card */}
+                        <div style={{ 
+                          width: '100%', maxWidth: 320, aspectRatio: '1/1',
+                          background: 'linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%)',
+                          backdropFilter: 'blur(30px)',
+                          WebkitBackdropFilter: 'blur(30px)',
+                          border: '1px solid rgba(255,255,255,0.15)',
+                          borderRadius: 40,
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          position: 'relative', overflow: 'hidden',
+                          marginBottom: 40,
+                          boxShadow: '0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2)'
+                        }}>
+                          {/* Inner glowing highlight */}
+                          <div style={{
+                            position: 'absolute', top: 0, left: 0, right: 0, height: '50%',
+                            background: 'linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 100%)',
+                            pointerEvents: 'none'
+                          }} />
+                          
+                          <motion.div
+                            animate={{ y: [-5, 5, -5] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                          >
+                            {React.createElement(WELCOME_SLIDES[welcomeSlide].icon, {
+                              size: 140,
+                              color: '#ffffff',
+                              strokeWidth: 1.2,
+                              style: { filter: `drop-shadow(0 0 40px ${WELCOME_SLIDES[welcomeSlide].color})` }
+                            })}
+                          </motion.div>
+                        </div>
+                        <div style={{ padding: '0 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                          <h1 style={{ ...s.title, marginBottom: 16, fontSize: 32, fontWeight: 800, lineHeight: 1.2, color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
+                            {WELCOME_SLIDES[welcomeSlide].title}
+                          </h1>
+                          <p style={{ ...s.subtitle, fontSize: 16, lineHeight: 1.6, color: 'rgba(255,255,255,0.7)', margin: '0 auto', maxWidth: 320 }}>
+                            {WELCOME_SLIDES[welcomeSlide].desc}
+                          </p>
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
                 </div>
               )}
 
@@ -448,10 +503,19 @@ export default function LoginPage() {
         </div>
 
         {/* Footer */}
-        <div style={s.footer}>
+        <div style={{
+          ...s.footer,
+          borderTop: step === STEPS.WELCOME ? '1px solid rgba(255,255,255,0.05)' : s.footer.borderTop
+        }}>
           <motion.button
             id="login-submit-btn"
-            style={{ ...s.primaryBtn, opacity: loading || lockoutTimer ? 0.6 : 1 }}
+            style={{ 
+              ...s.primaryBtn, 
+              opacity: loading || lockoutTimer ? 0.6 : 1,
+              background: step === STEPS.WELCOME ? '#ffffff' : s.primaryBtn.background,
+              color: step === STEPS.WELCOME ? '#09090b' : '#fff',
+              boxShadow: step === STEPS.WELCOME ? '0 8px 24px rgba(255,255,255,0.2)' : s.primaryBtn.boxShadow
+            }}
             onClick={handleContinue}
             disabled={loading || !!lockoutTimer}
             whileTap={{ scale: 0.98 }}
@@ -463,10 +527,11 @@ export default function LoginPage() {
               : authMode === 'register' ? t('login.createAccountBtn') : t('login.signIn')}
           </motion.button>
 
+
           {/* Trust Badges & Policies */}
           {step === STEPS.WELCOME && welcomeSlide === WELCOME_SLIDES.length - 1 ? (
-             <div style={{ fontSize: '12px', color: 'var(--text3)', textAlign: 'center', marginTop: '24px', lineHeight: 1.5 }}>
-               {t('login.welcome.terms1')}<a href="/terms" style={{color: 'var(--accent)', textDecoration: 'none'}}>{t('login.welcome.terms2')}</a>{t('login.welcome.terms3')}<a href="/privacy" style={{color: 'var(--accent)', textDecoration: 'none'}}>{t('login.welcome.terms4')}</a>{t('login.welcome.terms5')}
+             <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)', textAlign: 'center', marginTop: '24px', lineHeight: 1.5 }}>
+               {t('login.welcome.terms1')}<a href="/terms" style={{color: '#ffffff', textDecoration: 'none', fontWeight: 600}}>{t('login.welcome.terms2')}</a>{t('login.welcome.terms3')}<a href="/privacy" style={{color: '#ffffff', textDecoration: 'none', fontWeight: 600}}>{t('login.welcome.terms4')}</a>{t('login.welcome.terms5')}
              </div>
           ) : step !== STEPS.WELCOME ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', marginTop: '24px' }}>
