@@ -40,10 +40,135 @@ export default function LoginPage() {
   const [featureIdx, setFeatureIdx] = useState(0);
 
   const WELCOME_SLIDES = [
-    { id: 1, icon: Target, color: '#0ea5e9', title: t('login.welcome.s1Title'), desc: t('login.welcome.s1Desc') },
-    { id: 2, icon: BarChart2, color: '#10b981', title: t('login.welcome.s2Title'), desc: t('login.welcome.s2Desc') },
-    { id: 3, icon: BrainCircuit, color: '#8b5cf6', title: t('login.welcome.s3Title'), desc: t('login.welcome.s3Desc') },
-    { id: 4, icon: Trophy, color: '#f59e0b', title: t('login.welcome.s4Title'), desc: t('login.welcome.s4Desc') }
+    { 
+      id: 1, 
+      icon: () => (
+        <svg viewBox="0 0 100 100" width="130" height="130" style={{ filter: 'drop-shadow(0 10px 20px rgba(14,151,224,0.3))' }}>
+          <defs>
+            <linearGradient id="gradTarget" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#38bdf8" />
+              <stop offset="50%" stop-color="#0ea5e9" />
+              <stop offset="100%" stop-color="#0284c7" />
+            </linearGradient>
+            <radialGradient id="glowTarget" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="50" cy="50" r="42" fill="url(#glowTarget)"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="url(#gradTarget)" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.4"/>
+          <circle cx="50" cy="50" r="28" fill="none" stroke="url(#gradTarget)" stroke-width="3" opacity="0.8"/>
+          <circle cx="50" cy="50" r="20" fill="none" stroke="#ffffff" stroke-width="4.5" filter="drop-shadow(0 0 8px #38bdf8)"/>
+          <circle cx="50" cy="50" r="11" fill="url(#gradTarget)"/>
+          <circle cx="50" cy="50" r="4.5" fill="#ffffff"/>
+        </svg>
+      ),
+      color: '#0ea5e9', 
+      title: t('login.welcome.s1Title'), 
+      desc: t('login.welcome.s1Desc') 
+    },
+    { 
+      id: 2, 
+      icon: () => (
+        <svg viewBox="0 0 100 100" width="130" height="130" style={{ filter: 'drop-shadow(0 10px 20px rgba(16,185,129,0.3))' }}>
+          <defs>
+            <linearGradient id="chartGrad1" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#059669" />
+              <stop offset="100%" stop-color="#34d399" />
+            </linearGradient>
+            <linearGradient id="chartGrad2" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#047857" />
+              <stop offset="100%" stop-color="#059669" />
+            </linearGradient>
+            <radialGradient id="glowChart" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#34d399" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="50" cy="50" r="42" fill="url(#glowChart)"/>
+          <line x1="20" y1="80" x2="80" y2="80" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="20" y1="60" x2="80" y2="60" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+          <line x1="20" y1="40" x2="80" y2="40" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+          <rect x="26" y="52" width="11" height="28" rx="4" fill="url(#chartGrad2)" />
+          <rect x="44.5" y="32" width="11" height="48" rx="4" fill="url(#chartGrad1)" filter="drop-shadow(0 0 10px rgba(52,211,153,0.5))"/>
+          <rect x="63" y="44" width="11" height="36" rx="4" fill="url(#chartGrad2)" />
+          <path d="M31.5 46 L50 26 L68.5 38" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" filter="drop-shadow(0 2px 6px rgba(255,255,255,0.4))"/>
+          <circle cx="68.5" cy="38" r="4.5" fill="#ffffff" filter="drop-shadow(0 0 4px #ffffff)"/>
+        </svg>
+      ),
+      color: '#10b981', 
+      title: t('login.welcome.s2Title'), 
+      desc: t('login.welcome.s2Desc') 
+    },
+    { 
+      id: 3, 
+      icon: () => (
+        <svg viewBox="0 0 100 100" width="135" height="135" style={{ filter: 'drop-shadow(0 10px 25px rgba(139,92,246,0.3))' }}>
+          <defs>
+            <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#c084fc" />
+              <stop offset="50%" stop-color="#8b5cf6" />
+              <stop offset="100%" stop-color="#ec4899" />
+            </linearGradient>
+            <radialGradient id="glowBrain" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="50" cy="50" r="42" fill="url(#glowBrain)"/>
+          <path d="M50 24 C38 24 30 30 30 41 C30 45 32 48 35 50 C33 53 33 58 36 61 C36 66 41 70 47 70 C49 70 50 69 51 69 C52 69 53 70 55 70 C61 70 65 66 65 61 C68 58 68 53 66 50 C69 48 71 45 71 41 C71 30 63 24 51 24 Z" fill="none" stroke="url(#brainGrad)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" filter="drop-shadow(0 0 12px rgba(139,92,246,0.4))"/>
+          <path d="M50 24 L50 69" stroke="url(#brainGrad)" stroke-width="2.5" stroke-dasharray="2 3" opacity="0.6"/>
+          <path d="M40 36 C43 39 47 41 50 41 M60 36 C57 39 53 41 50 41" fill="none" stroke="url(#brainGrad)" stroke-width="2" stroke-linecap="round"/>
+          <path d="M38 50 C42 50 46 50 50 54 M62 50 C58 50 54 50 50 54" fill="none" stroke="url(#brainGrad)" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="40" cy="36" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 5px #c084fc)"/>
+          <circle cx="60" cy="36" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 5px #c084fc)"/>
+          <circle cx="38" cy="50" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 5px #ec4899)"/>
+          <circle cx="62" cy="50" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 5px #ec4899)"/>
+        </svg>
+      ),
+      color: '#8b5cf6', 
+      title: t('login.welcome.s3Title'),
+      desc: t('login.welcome.s3Desc')
+    },
+    { 
+      id: 4, 
+      icon: () => (
+        <svg viewBox="0 0 100 100" width="135" height="135" style={{ filter: 'drop-shadow(0 10px 25px rgba(245,158,11,0.35))' }}>
+          <defs>
+            <linearGradient id="gold1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fffbeb" />
+              <stop offset="30%" stop-color="#fef08a" />
+              <stop offset="70%" stop-color="#eab308" />
+              <stop offset="100%" stop-color="#ca8a04" />
+            </linearGradient>
+            <linearGradient id="gold2" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#fef08a" />
+              <stop offset="100%" stop-color="#a16207" />
+            </linearGradient>
+            <linearGradient id="podiumGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#4b5563" />
+              <stop offset="100%" stop-color="#1f2937" />
+            </linearGradient>
+            <radialGradient id="glowTrophy" cx="50%" cy="40%" r="50%">
+              <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="50" cy="45" r="35" fill="url(#glowTrophy)"/>
+          <rect x="32" y="70" width="36" height="11" rx="3" fill="url(#podiumGrad)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <path d="M41 64 L59 64 L56 70 L44 70 Z" fill="url(#gold2)"/>
+          <rect x="46.5" y="56" width="7" height="9" fill="url(#gold1)"/>
+          <path d="M31 35 C27 35 27 46 34 48 M69 35 C73 35 73 46 66 48" fill="none" stroke="url(#gold1)" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M34 28 L66 28 C66 47 59 57 50 57 C41 57 34 47 34 28 Z" fill="url(#gold1)"/>
+          <ellipse cx="50" cy="28" rx="16" ry="3.5" fill="url(#gold2)"/>
+          <path d="M28 20 L29.5 23 L33 23.5 L30.5 26 L31 29.5 L28 27.5 L25 29.5 L25.5 26 L23 23.5 L26.5 23 Z" fill="#ffffff" filter="drop-shadow(0 0 5px #ffffff)"/>
+          <path d="M70 48 L71 50 L73 50 L71.5 51.5 L72 53.5 L70 52.5 L68 53.5 L68.5 51.5 L67 50 L69 50 Z" fill="#ffffff" filter="drop-shadow(0 0 3px #ffffff)"/>
+        </svg>
+      ),
+      color: '#f59e0b', 
+      title: t('login.welcome.s4Title'),
+      desc: t('login.welcome.s4Desc')
+    }
   ];
 
   useEffect(() => {
@@ -365,14 +490,7 @@ export default function LoginPage() {
                             zIndex: 1,
                             display: 'flex', alignItems: 'center', justifyContent: 'center'
                           }}>
-                            {React.createElement(WELCOME_SLIDES[welcomeSlide].icon, {
-                              size: 110,
-                              color: '#ffffff',
-                              strokeWidth: 1.2,
-                              style: { 
-                                filter: `drop-shadow(0 8px 20px ${WELCOME_SLIDES[welcomeSlide].color}55) drop-shadow(0 0 1px rgba(255,255,255,0.5))`
-                              }
-                            })}
+                            {WELCOME_SLIDES[welcomeSlide].icon()}
                           </div>
                         </div>
                         <div style={{ padding: '0 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
