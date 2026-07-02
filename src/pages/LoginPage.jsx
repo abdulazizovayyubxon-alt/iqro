@@ -43,24 +43,32 @@ export default function LoginPage() {
     { 
       id: 1, 
       icon: () => (
-        <svg viewBox="0 0 100 100" width="130" height="130" style={{ filter: 'drop-shadow(0 10px 20px rgba(14,151,224,0.3))' }}>
+        <svg viewBox="0 0 200 200" width="220" height="220" style={{ overflow: 'visible' }}>
           <defs>
-            <linearGradient id="gradTarget" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#38bdf8" />
-              <stop offset="50%" stop-color="#0ea5e9" />
-              <stop offset="100%" stop-color="#0284c7" />
+            <linearGradient id="shieldGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255, 255, 255, 0.15)" />
+              <stop offset="100%" stop-color="rgba(255, 255, 255, 0.02)" />
             </linearGradient>
-            <radialGradient id="glowTarget" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6"/>
-              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
-            </radialGradient>
+            <linearGradient id="starGold" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fffbeb" />
+              <stop offset="30%" stop-color="#fef08a" />
+              <stop offset="70%" stop-color="#eab308" />
+              <stop offset="100%" stop-color="#ca8a04" />
+            </linearGradient>
+            <linearGradient id="cyanBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#22d3ee" />
+              <stop offset="100%" stop-color="#0ea5e9" />
+            </linearGradient>
           </defs>
-          <circle cx="50" cy="50" r="42" fill="url(#glowTarget)"/>
-          <circle cx="50" cy="50" r="36" fill="none" stroke="url(#gradTarget)" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.4"/>
-          <circle cx="50" cy="50" r="28" fill="none" stroke="url(#gradTarget)" stroke-width="3" opacity="0.8"/>
-          <circle cx="50" cy="50" r="20" fill="none" stroke="#ffffff" stroke-width="4.5" filter="drop-shadow(0 0 8px #38bdf8)"/>
-          <circle cx="50" cy="50" r="11" fill="url(#gradTarget)"/>
-          <circle cx="50" cy="50" r="4.5" fill="#ffffff"/>
+          <circle cx="100" cy="100" r="75" fill="none" stroke="url(#cyanBlue)" stroke-width="1.5" stroke-dasharray="5 6" opacity="0.25"/>
+          <circle cx="100" cy="100" r="62" fill="none" stroke="url(#cyanBlue)" stroke-width="2" opacity="0.4"/>
+          <path d="M100 40 C125 40 145 48 145 48 C145 85 125 125 100 145 C75 125 55 85 55 48 C55 48 75 40 100 40 Z" fill="url(#shieldGlass)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" filter="drop-shadow(0 15px 30px rgba(0,0,0,0.4))"/>
+          <path d="M100 48 C120 48 136 55 136 55 C136 85 120 118 100 135 C80 118 64 85 64 55 C64 55 80 48 100 48 Z" fill="none" stroke="url(#cyanBlue)" stroke-width="1.5" opacity="0.6"/>
+          <g transform="translate(100, 92)" filter="drop-shadow(0 8px 16px rgba(234,179,8,0.4))">
+            <path d="M0 -26 L6 -8 L24 -8 L10 3 L15 21 L0 10 L-15 21 L-10 3 L-24 -8 L-6 -8 Z" fill="url(#starGold)"/>
+            <path d="M0 -18 L4 -6 L16 -6 L7 2 L11 13 L0 6 L-11 13 L-7 2 L-16 -6 L-4 -6 Z" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+            <circle cx="0" cy="0" r="5" fill="#ffffff" filter="drop-shadow(0 0 4px #ffffff)"/>
+          </g>
         </svg>
       ),
       color: '#0ea5e9', 
@@ -70,30 +78,33 @@ export default function LoginPage() {
     { 
       id: 2, 
       icon: () => (
-        <svg viewBox="0 0 100 100" width="130" height="130" style={{ filter: 'drop-shadow(0 10px 20px rgba(16,185,129,0.3))' }}>
+        <svg viewBox="0 0 200 200" width="220" height="220" style={{ overflow: 'visible' }}>
           <defs>
-            <linearGradient id="chartGrad1" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="#059669" />
-              <stop offset="100%" stop-color="#34d399" />
-            </linearGradient>
-            <linearGradient id="chartGrad2" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="#047857" />
+            <linearGradient id="gradEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#34d399" />
               <stop offset="100%" stop-color="#059669" />
             </linearGradient>
-            <radialGradient id="glowChart" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#34d399" stop-opacity="0.5"/>
-              <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
-            </radialGradient>
+            <linearGradient id="glassSheetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255, 255, 255, 0.12)" />
+              <stop offset="100%" stop-color="rgba(255, 255, 255, 0.02)" />
+            </linearGradient>
           </defs>
-          <circle cx="50" cy="50" r="42" fill="url(#glowChart)"/>
-          <line x1="20" y1="80" x2="80" y2="80" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="20" y1="60" x2="80" y2="60" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-          <line x1="20" y1="40" x2="80" y2="40" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-          <rect x="26" y="52" width="11" height="28" rx="4" fill="url(#chartGrad2)" />
-          <rect x="44.5" y="32" width="11" height="48" rx="4" fill="url(#chartGrad1)" filter="drop-shadow(0 0 10px rgba(52,211,153,0.5))"/>
-          <rect x="63" y="44" width="11" height="36" rx="4" fill="url(#chartGrad2)" />
-          <path d="M31.5 46 L50 26 L68.5 38" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" filter="drop-shadow(0 2px 6px rgba(255,255,255,0.4))"/>
-          <circle cx="68.5" cy="38" r="4.5" fill="#ffffff" filter="drop-shadow(0 0 4px #ffffff)"/>
+          <rect x="35" y="35" width="130" height="130" rx="20" fill="url(#glassSheetGrad)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5" filter="drop-shadow(0 15px 30px rgba(0,0,0,0.4))"/>
+          <rect x="50" y="55" width="100" height="24" rx="8" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+          <circle cx="65" cy="67" r="5" fill="#10b981"/>
+          <path d="M62 67 L64 69 L67 65" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="80" y="65" width="55" height="4" rx="2" fill="rgba(255,255,255,0.35)"/>
+          <rect x="50" y="87" width="100" height="24" rx="8" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.25)" stroke-width="1"/>
+          <circle cx="65" cy="99" r="5" fill="#ef4444"/>
+          <path d="M62 96 L68 102 M68 96 L62 102" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+          <rect x="80" y="97" width="55" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+          <g transform="translate(105, 105)" filter="drop-shadow(0 10px 20px rgba(16,185,129,0.3))">
+            <rect x="0" y="0" width="70" height="50" rx="12" fill="#1f2937" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <rect x="12" y="23" width="8" height="17" rx="2" fill="url(#gradEmerald)"/>
+            <rect x="25" y="13" width="8" height="27" rx="2" fill="url(#gradEmerald)"/>
+            <rect x="38" y="18" width="8" height="22" rx="2" fill="url(#gradEmerald)"/>
+            <rect x="51" y="8" width="8" height="32" rx="2" fill="#ffffff" filter="drop-shadow(0 0 5px rgba(255,255,255,0.5))"/>
+          </g>
         </svg>
       ),
       color: '#10b981', 
@@ -103,27 +114,37 @@ export default function LoginPage() {
     { 
       id: 3, 
       icon: () => (
-        <svg viewBox="0 0 100 100" width="135" height="135" style={{ filter: 'drop-shadow(0 10px 25px rgba(139,92,246,0.3))' }}>
+        <svg viewBox="0 0 200 200" width="220" height="220" style={{ overflow: 'visible' }}>
           <defs>
             <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#c084fc" />
               <stop offset="50%" stop-color="#8b5cf6" />
               <stop offset="100%" stop-color="#ec4899" />
             </linearGradient>
-            <radialGradient id="glowBrain" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.6"/>
-              <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
-            </radialGradient>
+            <linearGradient id="gearGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.15)" />
+              <stop offset="100%" stop-color="rgba(255,255,255,0.03)" />
+            </linearGradient>
           </defs>
-          <circle cx="50" cy="50" r="42" fill="url(#glowBrain)"/>
-          <path d="M50 24 C38 24 30 30 30 41 C30 45 32 48 35 50 C33 53 33 58 36 61 C36 66 41 70 47 70 C49 70 50 69 51 69 C52 69 53 70 55 70 C61 70 65 66 65 61 C68 58 68 53 66 50 C69 48 71 45 71 41 C71 30 63 24 51 24 Z" fill="none" stroke="url(#brainGrad)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" filter="drop-shadow(0 0 12px rgba(139,92,246,0.4))"/>
-          <path d="M50 24 L50 69" stroke="url(#brainGrad)" stroke-width="2.5" stroke-dasharray="2 3" opacity="0.6"/>
-          <path d="M40 36 C43 39 47 41 50 41 M60 36 C57 39 53 41 50 41" fill="none" stroke="url(#brainGrad)" stroke-width="2" stroke-linecap="round"/>
-          <path d="M38 50 C42 50 46 50 50 54 M62 50 C58 50 54 50 50 54" fill="none" stroke="url(#brainGrad)" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="40" cy="36" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 5px #c084fc)"/>
-          <circle cx="60" cy="36" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 5px #c084fc)"/>
-          <circle cx="38" cy="50" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 5px #ec4899)"/>
-          <circle cx="62" cy="50" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 5px #ec4899)"/>
+          <g transform="translate(130, 65)" stroke="url(#gearGrad)" stroke-width="1.5" fill="none" opacity="0.6">
+            <circle cx="0" cy="0" r="32" stroke-dasharray="8 6"/>
+            <circle cx="0" cy="0" r="24"/>
+            <circle cx="0" cy="0" r="8"/>
+          </g>
+          <g transform="translate(145, 115)" stroke="url(#gearGrad)" stroke-width="1.5" fill="none" opacity="0.4">
+            <circle cx="0" cy="0" r="20" stroke-dasharray="6 4"/>
+            <circle cx="0" cy="0" r="14"/>
+          </g>
+          <g transform="translate(35, 35)" filter="drop-shadow(0 15px 30px rgba(139,92,246,0.35))">
+            <path d="M50 20 C36 20 28 27 28 40 C28 45 30 49 33 51 C31 54 31 60 34 63 C34 69 40 73 47 73 C49 73 50 72 51 72 C52 72 53 73 55 73 C61 73 65 69 65 63 C68 60 68 54 66 51 C69 49 71 45 71 40 C71 27 63 20 50 20 Z" fill="none" stroke="url(#brainGrad)" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M50 20 L50 72" stroke="url(#brainGrad)" stroke-width="3" stroke-dasharray="3 3"/>
+            <path d="M62 40 L85 40 M64 50 L95 55 M60 60 L80 68" stroke="url(#brainGrad)" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 3"/>
+            <circle cx="85" cy="40" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 5px #c084fc)"/>
+            <circle cx="95" cy="55" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 5px #6366f1)"/>
+            <circle cx="80" cy="68" r="3.5" fill="#ffffff" filter="drop-shadow(0 0 5px #c084fc)"/>
+            <circle cx="42" cy="32" r="3" fill="#ffffff" opacity="0.9"/>
+            <circle cx="58" cy="32" r="3" fill="#ffffff" opacity="0.9"/>
+          </g>
         </svg>
       ),
       color: '#8b5cf6', 
@@ -133,36 +154,49 @@ export default function LoginPage() {
     { 
       id: 4, 
       icon: () => (
-        <svg viewBox="0 0 100 100" width="135" height="135" style={{ filter: 'drop-shadow(0 10px 25px rgba(245,158,11,0.35))' }}>
+        <svg viewBox="0 0 200 200" width="220" height="220" style={{ overflow: 'visible' }}>
           <defs>
-            <linearGradient id="gold1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#fffbeb" />
-              <stop offset="30%" stop-color="#fef08a" />
-              <stop offset="70%" stop-color="#eab308" />
+            <linearGradient id="goldCup" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffe066" />
+              <stop offset="30%" stop-color="#f59e0b" />
+              <stop offset="70%" stop-color="#d97706" />
+              <stop offset="100%" stop-color="#b45309" />
+            </linearGradient>
+            <linearGradient id="goldPlate" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#fef08a" />
+              <stop offset="50%" stop-color="#fbbf24" />
               <stop offset="100%" stop-color="#ca8a04" />
             </linearGradient>
-            <linearGradient id="gold2" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#fef08a" />
-              <stop offset="100%" stop-color="#a16207" />
+            <linearGradient id="podiumBlock" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#2d3748" />
+              <stop offset="100%" stop-color="#111827" />
             </linearGradient>
-            <linearGradient id="podiumGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#4b5563" />
-              <stop offset="100%" stop-color="#1f2937" />
+            <linearGradient id="glassCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255, 255, 255, 0.08)" />
+              <stop offset="100%" stop-color="rgba(255, 255, 255, 0.01)" />
             </linearGradient>
-            <radialGradient id="glowTrophy" cx="50%" cy="40%" r="50%">
-              <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.4"/>
-              <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
-            </radialGradient>
           </defs>
-          <circle cx="50" cy="45" r="35" fill="url(#glowTrophy)"/>
-          <rect x="32" y="70" width="36" height="11" rx="3" fill="url(#podiumGrad)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-          <path d="M41 64 L59 64 L56 70 L44 70 Z" fill="url(#gold2)"/>
-          <rect x="46.5" y="56" width="7" height="9" fill="url(#gold1)"/>
-          <path d="M31 35 C27 35 27 46 34 48 M69 35 C73 35 73 46 66 48" fill="none" stroke="url(#gold1)" stroke-width="4.5" stroke-linecap="round"/>
-          <path d="M34 28 L66 28 C66 47 59 57 50 57 C41 57 34 47 34 28 Z" fill="url(#gold1)"/>
-          <ellipse cx="50" cy="28" rx="16" ry="3.5" fill="url(#gold2)"/>
-          <path d="M28 20 L29.5 23 L33 23.5 L30.5 26 L31 29.5 L28 27.5 L25 29.5 L25.5 26 L23 23.5 L26.5 23 Z" fill="#ffffff" filter="drop-shadow(0 0 5px #ffffff)"/>
-          <path d="M70 48 L71 50 L73 50 L71.5 51.5 L72 53.5 L70 52.5 L68 53.5 L68.5 51.5 L67 50 L69 50 Z" fill="#ffffff" filter="drop-shadow(0 0 3px #ffffff)"/>
+          <rect x="75" y="20" width="70" height="120" rx="12" fill="url(#glassCardGrad)" stroke="rgba(255,255,255,0.12)" stroke-width="1.2" filter="drop-shadow(0 10px 20px rgba(0,0,0,0.3))"/>
+          <circle cx="90" cy="35" r="5" fill="rgba(255,255,255,0.2)"/>
+          <rect x="102" y="33" width="30" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+          <circle cx="90" cy="55" r="5" fill="#f59e0b" opacity="0.8"/>
+          <rect x="102" y="53" width="30" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+          <circle cx="90" cy="75" r="5" fill="rgba(255,255,255,0.2)"/>
+          <rect x="102" y="73" width="30" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+          <circle cx="90" cy="95" r="5" fill="rgba(255,255,255,0.2)"/>
+          <rect x="102" y="93" width="30" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+          <rect x="40" y="110" width="35" height="45" rx="3" fill="url(#podiumBlock)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+          <rect x="40" y="110" width="35" height="4" fill="url(#goldPlate)"/>
+          <rect x="110" y="120" width="35" height="35" rx="3" fill="url(#podiumBlock)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+          <rect x="110" y="120" width="35" height="4" fill="url(#goldPlate)"/>
+          <rect x="70" y="95" width="45" height="60" rx="4" fill="url(#podiumBlock)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5" filter="drop-shadow(0 10px 20px rgba(0,0,0,0.4))"/>
+          <rect x="70" y="95" width="45" height="5" fill="url(#goldPlate)"/>
+          <path d="M88 85 L97 85 L95 95 L89 95 Z" fill="url(#goldCup)"/>
+          <path d="M85 94 L100 94 L97 96 L87 96 Z" fill="url(#goldCup)"/>
+          <path d="M78 68 C73 68 73 78 83 80" fill="none" stroke="url(#goldCup)" stroke-width="3" stroke-linecap="round"/>
+          <path d="M107 68 C112 68 112 78 102 80" fill="none" stroke="url(#goldCup)" stroke-width="3" stroke-linecap="round"/>
+          <path d="M82 60 L103 60 C103 76 97 84 92.5 84 C88 84 82 76 82 60 Z" fill="url(#goldCup)" filter="drop-shadow(0 5px 10px rgba(234,179,8,0.25))"/>
+          <ellipse cx="92.5" cy="60" rx="10.5" ry="2.5" fill="url(#goldPlate)"/>
         </svg>
       ),
       color: '#f59e0b', 
@@ -434,11 +468,11 @@ export default function LoginPage() {
                 <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                   
                   {/* Glassmorphism Progress Bars */}
-                  <div style={{ display: 'flex', gap: 8, marginBottom: 32, marginTop: 12, width: '100%' }}>
+                  <div style={{ display: 'flex', gap: 8, marginBottom: 20, marginTop: 12, width: '100%' }}>
                     {WELCOME_SLIDES.map((_, i) => (
                       <div key={i} style={{ 
-                        flex: 1, height: 5, borderRadius: 3, 
-                        background: i === welcomeSlide ? '#ffffff' : 'rgba(255,255,255,0.2)', 
+                        flex: 1, height: 4, borderRadius: 2, 
+                        background: i === welcomeSlide ? '#ffffff' : 'rgba(255,255,255,0.15)', 
                         transition: 'background 0.4s ease' 
                       }} />
                     ))}
@@ -448,56 +482,43 @@ export default function LoginPage() {
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={welcomeSlide}
-                        initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                        initial={{ opacity: 0, scale: 0.96, y: 8 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 1.05, y: -10 }}
-                        transition={{ duration: 0.4, ease: 'easeOut' }}
+                        exit={{ opacity: 0, scale: 1.04, y: -8 }}
+                        transition={{ duration: 0.35, ease: 'easeOut' }}
                         style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}
                       >
-                        {/* 3D Glassmorphism Card (Pure CSS, no images) */}
+                        {/* 3D Illustration Area (Directly floating, NO outer box container) */}
                         <div style={{ 
-                          width: '100%', maxWidth: 280, aspectRatio: '1/1',
-                          background: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%)',
-                          backdropFilter: 'blur(20px)',
-                          WebkitBackdropFilter: 'blur(20px)',
-                          border: '1px solid rgba(255,255,255,0.12)',
-                          borderRadius: 36,
+                          width: '100%', 
+                          height: 240, 
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          position: 'relative', overflow: 'hidden',
-                          marginBottom: 40,
-                          boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15)'
+                          position: 'relative',
+                          marginBottom: 20,
+                          animation: 'floatAnim 5s infinite ease-in-out'
                         }}>
-                          {/* Card inner neon glow */}
-                          <div style={{
-                            position: 'absolute', width: '130px', height: '130px',
-                            background: WELCOME_SLIDES[welcomeSlide].color,
-                            filter: 'blur(45px)',
-                            borderRadius: '50%',
-                            animation: 'glowPulse 5s infinite ease-in-out',
-                            zIndex: 0
-                          }} />
-                          
-                          {/* Inner diagonal highlight reflection */}
-                          <div style={{
-                            position: 'absolute', top: 0, left: 0, right: 0, height: '50%',
-                            background: 'linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 100%)',
-                            pointerEvents: 'none'
-                          }} />
-
-                          {/* Floating Icon */}
-                          <div style={{ 
-                            animation: 'floatAnim 5s infinite ease-in-out', 
-                            zIndex: 1,
-                            display: 'flex', alignItems: 'center', justifyContent: 'center'
-                          }}>
-                            {WELCOME_SLIDES[welcomeSlide].icon()}
-                          </div>
+                          {WELCOME_SLIDES[welcomeSlide].icon()}
                         </div>
-                        <div style={{ padding: '0 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                          <h1 style={{ ...s.title, marginBottom: 16, fontSize: 32, fontWeight: 800, lineHeight: 1.2, color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
+                        <div style={{ padding: '0 15px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                          <h1 style={{ 
+                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                            fontSize: 30, 
+                            fontWeight: 800, 
+                            lineHeight: 1.2, 
+                            color: '#ffffff', 
+                            marginBottom: 12,
+                            letterSpacing: '-0.5px'
+                          }}>
                             {WELCOME_SLIDES[welcomeSlide].title}
                           </h1>
-                          <p style={{ ...s.subtitle, fontSize: 16, lineHeight: 1.6, color: 'rgba(255,255,255,0.7)', margin: '0 auto', maxWidth: 320 }}>
+                          <p style={{ 
+                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                            fontSize: 15.5, 
+                            lineHeight: 1.6, 
+                            color: 'rgba(255,255,255,0.65)', 
+                            margin: '0 auto', 
+                            maxWidth: 340 
+                          }}>
                             {WELCOME_SLIDES[welcomeSlide].desc}
                           </p>
                         </div>
