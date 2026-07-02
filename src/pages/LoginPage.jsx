@@ -348,13 +348,44 @@ export default function LoginPage() {
                         transition={{ duration: 0.35, ease: 'easeOut' }}
                         style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}
                       >
-                        {/* Flat Front-facing Glassmorphism Illustration Area */}
+                        {/* 1. Title and Description (Moved UP) */}
+                        <div style={{ 
+                          padding: isMobile ? '0 8px 16px' : '0 12px 24px', 
+                          display: 'flex', 
+                          flexDirection: 'column', 
+                          alignItems: 'center',
+                          textAlign: 'center'
+                        }}>
+                          <h1 style={{ 
+                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                            fontSize: isMobile ? 26 : 32, 
+                            fontWeight: 800, 
+                            lineHeight: 1.25, 
+                            color: '#ffffff', 
+                            marginBottom: 8,
+                            letterSpacing: '-0.5px'
+                          }}>
+                            {WELCOME_SLIDES[welcomeSlide].title}
+                          </h1>
+                          <p style={{ 
+                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                            fontSize: 16, 
+                            lineHeight: 1.6, 
+                            color: 'rgba(255,255,255,0.65)', 
+                            margin: '0 auto', 
+                            maxWidth: 350 
+                          }}>
+                            {WELCOME_SLIDES[welcomeSlide].desc}
+                          </p>
+                        </div>
+
+                        {/* 2. Flat Front-facing Glassmorphism Illustration Area (Moved DOWN & Made Larger) */}
                         <div style={{ 
                           width: '100%', 
-                          height: isMobile ? 220 : 255, 
+                          height: isMobile ? 240 : 275, 
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
                           position: 'relative',
-                          marginBottom: isMobile ? 12 : 20
+                          marginBottom: isMobile ? 8 : 12
                         }}>
                           {/* Render Flat Front-Facing glass cards natively in code */}
                           <motion.div
@@ -367,12 +398,12 @@ export default function LoginPage() {
                             }}
                             transition={{ duration: 0.3, ease: 'easeOut' }}
                             style={{
-                              width: '100%',
-                              maxWidth: '290px',
+                              width: '92%',
+                              maxWidth: '315px',
                               background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%)',
                               border: '1px solid rgba(255, 255, 255, 0.12)',
                               borderRadius: '24px',
-                              padding: '18px',
+                              padding: '20px',
                               backdropFilter: 'blur(20px)',
                               WebkitBackdropFilter: 'blur(20px)',
                               boxShadow: '0 15px 35px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255,255,255,0.15)',
@@ -659,29 +690,6 @@ export default function LoginPage() {
                               </>
                             )}
                           </motion.div>
-                        </div>
-                        <div style={{ padding: isMobile ? '0 10px' : '0 15px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                          <h1 style={{ 
-                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                            fontSize: isMobile ? 25 : 30, 
-                            fontWeight: 800, 
-                            lineHeight: 1.2, 
-                            color: '#ffffff', 
-                            marginBottom: isMobile ? 8 : 12,
-                            letterSpacing: '-0.5px'
-                          }}>
-                            {WELCOME_SLIDES[welcomeSlide].title}
-                          </h1>
-                          <p style={{ 
-                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                            fontSize: 15.5, 
-                            lineHeight: 1.6, 
-                            color: 'rgba(255,255,255,0.65)', 
-                            margin: '0 auto', 
-                            maxWidth: 340 
-                          }}>
-                            {WELCOME_SLIDES[welcomeSlide].desc}
-                          </p>
                         </div>
                       </motion.div>
                     </AnimatePresence>
