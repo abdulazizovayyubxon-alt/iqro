@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Onboarding Dizayn Namunasi - Toifa Pro</title>
+  <title>Onboarding Dizayn Variantlari - Toifa Pro</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -79,6 +79,15 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
+    /* Container for layout */
+    .preview-container {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     /* Mobile Frame Preview */
     .mobile-frame {
       width: 375px;
@@ -91,6 +100,26 @@
       flex-direction: column;
       overflow: hidden;
       position: relative;
+    }
+
+    /* Static Render Image Frame */
+    .render-frame {
+      width: 375px;
+      height: 640px;
+      border-radius: 40px;
+      background: #0d121c;
+      border: 8px solid #1f2937;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .render-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     /* Ambient background glow */
@@ -145,7 +174,7 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      perspective: 1000px; /* Crucial for Variant 2 3D perspective */
+      perspective: 1000px;
     }
 
     /* MICRO-UI ELEMENTS (SLIDE CARDS) */
@@ -202,7 +231,6 @@
       background: rgba(14, 151, 224, 0.12);
       color: var(--primary);
       margin-bottom: 12px;
-      transition: all 0.3s;
     }
     .quiz-title {
       font-size: 13px;
@@ -271,7 +299,6 @@
       font-size: 11px;
       line-height: 1.4;
       color: #fbbf24;
-      transition: all 0.3s;
     }
 
     /* Slide 3 Styles: Spaced Repetition Timeline */
@@ -457,7 +484,7 @@
 
   <div class="title-banner">
     <h1>Onboarding Dizayn Variantlari</h1>
-    <p>Quyidagi tablar orqali Variant A (Yassi) va Variant B (3D Izometrik) solishtirib ko'ring</p>
+    <p>Interaktiv variantni boshqaring yoki yonidagi yuqori aniqlikdagi render tasvirini ko'ring</p>
   </div>
 
   <div class="variant-tabs">
@@ -465,100 +492,94 @@
     <button class="tab-btn" id="tab-iso" onclick="switchVariant('iso')">Variant B (3D Izometrik Oyna)</button>
   </div>
 
-  <div class="mobile-frame" id="preview-frame">
-    <!-- Ambient Blur Background -->
-    <div class="ambient-glow" id="glow"></div>
-
-    <!-- Progress dots -->
-    <div class="progress-tracker">
-      <div class="progress-dot active"></div>
-      <div class="progress-dot"></div>
-      <div class="progress-dot"></div>
-      <div class="progress-dot"></div>
+  <div class="preview-container">
+    <!-- Left: Interactive Mobile Screen Mockup -->
+    <div class="mobile-frame" id="preview-frame">
+      <div class="ambient-glow" id="glow"></div>
+      <div class="progress-tracker">
+        <div class="progress-dot active"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
+      </div>
+      <div class="slider-content">
+        <div class="illustration-box" id="illustration-container">
+          <!-- Slide 1 Content -->
+          <div class="micro-card active" id="card-1">
+            <div class="slide-badge float-3d">Keng qamrovli testlar</div>
+            <div class="quiz-title">Konstitutsiyaning nechanchi moddasida o'qituvchilar sha'ni himoya qilinishi belgilangan?</div>
+            <div class="quiz-option correct float-3d">
+              <span class="check-circle">✓</span>
+              <span>52-modda</span>
+            </div>
+            <div class="quiz-option">
+              <span class="check-circle"></span>
+              <span>41-modda</span>
+            </div>
+          </div>
+          <!-- Slide 2 Content -->
+          <div class="micro-card" id="card-2">
+            <div class="explain-badge float-3d">📖 Izohli va tushunarli</div>
+            <div class="explain-text">52-modda: O'zbekiston Respublikasida o'qituvchining mehnati jamiyat va davlatni rivojlantirish asosi deb e'tirof etiladi.</div>
+            <div class="mnemonic-box float-3d">
+              <span>💡</span>
+              <span>Mnemonika: 52 - "O'qituvchi Besh bahoga ikki marta himoya ostida".</span>
+            </div>
+          </div>
+          <!-- Slide 3 Content -->
+          <div class="micro-card" id="card-3">
+            <div class="slide-badge float-3d" style="background: rgba(139, 92, 246, 0.12); color: #a78bfa;">Aqlli takrorlash</div>
+            <div class="timeline float-3d">
+              <div class="timeline-node passed">
+                <span>10m</span>
+                <span class="node-title">O'rganildi</span>
+              </div>
+              <div class="timeline-node active">
+                <span>1 kun</span>
+                <span class="node-title">Qaytarish</span>
+              </div>
+              <div class="timeline-node">
+                <span>7 kun</span>
+                <span class="node-title">Yodda qoldi</span>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 4 Content -->
+          <div class="micro-card" id="card-4">
+            <div class="passport-header">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div class="avatar">👨‍🏫</div>
+                <span style="font-size: 11px; font-weight: 700;">Tayyorgarlik pasporti</span>
+              </div>
+              <span class="pro-badge float-3d">PRO</span>
+            </div>
+            <div class="passport-body">
+              <div class="progress-circle float-3d">
+                <svg width="60" height="60">
+                  <circle cx="30" cy="30" r="26" stroke="rgba(255,255,255,0.04)" stroke-width="5" fill="transparent" />
+                  <circle cx="30" cy="30" r="26" stroke="#10b981" stroke-width="5" fill="transparent"
+                    stroke-dasharray="163.36" stroke-dashoffset="24.5" stroke-linecap="round" />
+                </svg>
+                <div class="progress-text">85%</div>
+              </div>
+              <div class="passport-info">
+                <div class="passport-lbl">Toifa Prognozi</div>
+                <div class="passport-val" style="color: #10b981;">Oliy Toifa</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-area">
+          <h2 class="slide-title" id="slide-title">Keng qamrovli testlar bazasi</h2>
+          <p class="slide-desc" id="slide-desc">Attestatsiya va milliy sertifikat imtihonlariga eng so'nggi standartlar asosida tayyorlaning.</p>
+        </div>
+        <button class="action-button" id="next-btn" onclick="nextSlide()">Keyingi</button>
+      </div>
     </div>
 
-    <div class="slider-content">
-      <!-- Illustration Area -->
-      <div class="illustration-box" id="illustration-container">
-        
-        <!-- Slide 1 Content -->
-        <div class="micro-card active" id="card-1">
-          <div class="slide-badge float-3d">Keng qamrovli testlar</div>
-          <div class="quiz-title">Konstitutsiyaning nechanchi moddasida o'qituvchilar sha'ni himoya qilinishi belgilangan?</div>
-          <div class="quiz-option correct float-3d">
-            <span class="check-circle">✓</span>
-            <span>52-modda</span>
-          </div>
-          <div class="quiz-option">
-            <span class="check-circle"></span>
-            <span>41-modda</span>
-          </div>
-        </div>
-
-        <!-- Slide 2 Content -->
-        <div class="micro-card" id="card-2">
-          <div class="explain-badge float-3d">📖 Izohli va tushunarli</div>
-          <div class="explain-text">52-modda: O'zbekiston Respublikasida o'qituvchining mehnati jamiyat va davlatni rivojlantirish asosi deb e'tirof etiladi.</div>
-          <div class="mnemonic-box float-3d">
-            <span>💡</span>
-            <span>Mnemonika: 52 - "O'qituvchi Besh bahoga ikki marta himoya ostida".</span>
-          </div>
-        </div>
-
-        <!-- Slide 3 Content -->
-        <div class="micro-card" id="card-3">
-          <div class="slide-badge float-3d" style="background: rgba(139, 92, 246, 0.12); color: #a78bfa;">Aqlli takrorlash</div>
-          <div class="timeline float-3d">
-            <div class="timeline-node passed">
-              <span>10m</span>
-              <span class="node-title">O'rganildi</span>
-            </div>
-            <div class="timeline-node active">
-              <span>1 kun</span>
-              <span class="node-title">Qaytarish</span>
-            </div>
-            <div class="timeline-node">
-              <span>7 kun</span>
-              <span class="node-title">Yodda qoldi</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 4 Content -->
-        <div class="micro-card" id="card-4">
-          <div class="passport-header">
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <div class="avatar">👨‍🏫</div>
-              <span style="font-size: 11px; font-weight: 700;">Tayyorgarlik pasporti</span>
-            </div>
-            <span class="pro-badge float-3d">PRO</span>
-          </div>
-          <div class="passport-body">
-            <div class="progress-circle float-3d">
-              <svg width="60" height="60">
-                <circle cx="30" cy="30" r="26" stroke="rgba(255,255,255,0.04)" stroke-width="5" fill="transparent" />
-                <circle cx="30" cy="30" r="26" stroke="#10b981" stroke-width="5" fill="transparent"
-                  stroke-dasharray="163.36" stroke-dashoffset="24.5" stroke-linecap="round" />
-              </svg>
-              <div class="progress-text">85%</div>
-            </div>
-            <div class="passport-info">
-              <div class="passport-lbl">Toifa Prognozi</div>
-              <div class="passport-val" style="color: #10b981;">Oliy Toifa</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Text details -->
-      <div class="text-area">
-        <h2 class="slide-title" id="slide-title">Keng qamrovli testlar bazasi</h2>
-        <p class="slide-desc" id="slide-desc">Attestatsiya va milliy sertifikat imtihonlariga eng so'nggi standartlar asosida tayyorlaning.</p>
-      </div>
-
-      <!-- Button -->
-      <button class="action-button" id="next-btn" onclick="nextSlide()">Keyingi</button>
+    <!-- Right: High-fidelity Render Image View -->
+    <div class="render-frame">
+      <img src="./dizayin/onboarding_option_microui.png" id="render-img" alt="Render ko'rinishi">
     </div>
   </div>
 
@@ -591,11 +612,17 @@
       }
     ];
 
+    function getRenderSrc(slide, variant) {
+      const prefix = variant === 'iso' ? './dizayin/onboarding_option_isometric' : './dizayin/onboarding_option_microui';
+      return slide === 0 ? `${prefix}.png` : `${prefix}_slide${slide + 1}.png`;
+    }
+
     function switchVariant(variant) {
       activeVariant = variant;
       const container = document.getElementById('illustration-container');
       const tabFlat = document.getElementById('tab-flat');
       const tabIso = document.getElementById('tab-iso');
+      const renderImg = document.getElementById('render-img');
 
       if (variant === 'iso') {
         container.classList.add('isometric-mode');
@@ -606,6 +633,9 @@
         tabFlat.classList.add('active');
         tabIso.classList.remove('active');
       }
+      
+      // Update image source based on current active slide and variant
+      renderImg.src = getRenderSrc(currentSlide, variant);
     }
 
     function nextSlide() {
@@ -626,6 +656,10 @@
       // Update color and glow
       const glow = document.getElementById('glow');
       glow.style.background = slidesData[currentSlide].color;
+
+      // Update render image based on slide change
+      const renderImg = document.getElementById('render-img');
+      renderImg.src = getRenderSrc(currentSlide, activeVariant);
 
       // Update button text
       const btn = document.getElementById('next-btn');

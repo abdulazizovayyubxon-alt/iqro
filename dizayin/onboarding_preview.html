@@ -612,6 +612,11 @@
       }
     ];
 
+    function getRenderSrc(slide, variant) {
+      const prefix = variant === 'iso' ? './onboarding_option_isometric' : './onboarding_option_microui';
+      return slide === 0 ? `${prefix}.png` : `${prefix}_slide${slide + 1}.png`;
+    }
+
     function switchVariant(variant) {
       activeVariant = variant;
       const container = document.getElementById('illustration-container');
@@ -623,13 +628,14 @@
         container.classList.add('isometric-mode');
         tabIso.classList.add('active');
         tabFlat.classList.remove('active');
-        renderImg.src = './onboarding_option_isometric.png';
       } else {
         container.classList.remove('isometric-mode');
         tabFlat.classList.add('active');
         tabIso.classList.remove('active');
-        renderImg.src = './onboarding_option_microui.png';
       }
+      
+      // Update image source based on current active slide and variant
+      renderImg.src = getRenderSrc(currentSlide, variant);
     }
 
     function nextSlide() {
@@ -650,6 +656,10 @@
       // Update color and glow
       const glow = document.getElementById('glow');
       glow.style.background = slidesData[currentSlide].color;
+
+      // Update render image based on slide change
+      const renderImg = document.getElementById('render-img');
+      renderImg.src = getRenderSrc(currentSlide, activeVariant);
 
       // Update button text
       const btn = document.getElementById('next-btn');
