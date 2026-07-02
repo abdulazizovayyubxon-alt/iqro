@@ -40,10 +40,10 @@ export default function LoginPage() {
   const [featureIdx, setFeatureIdx] = useState(0);
 
   const WELCOME_SLIDES = [
-    { id: 1, icon: Target, color: '#0ea5e9', title: t('login.welcome.s1Title'), desc: t('login.welcome.s1Desc') },
-    { id: 2, icon: BarChart2, color: '#10b981', title: t('login.welcome.s2Title'), desc: t('login.welcome.s2Desc') },
-    { id: 3, icon: BrainCircuit, color: '#8b5cf6', title: t('login.welcome.s3Title'), desc: t('login.welcome.s3Desc') },
-    { id: 4, icon: Trophy, color: '#f59e0b', title: t('login.welcome.s4Title'), desc: t('login.welcome.s4Desc') }
+    { id: 1, icon: Target, img: '/images/slide1.png', color: '#0ea5e9', title: t('login.welcome.s1Title'), desc: t('login.welcome.s1Desc') },
+    { id: 2, icon: BarChart2, img: '/images/slide2.png', color: '#10b981', title: t('login.welcome.s2Title'), desc: t('login.welcome.s2Desc') },
+    { id: 3, icon: BrainCircuit, img: '/images/slide3.png', color: '#8b5cf6', title: t('login.welcome.s3Title'), desc: t('login.welcome.s3Desc') },
+    { id: 4, icon: Trophy, img: '/images/slide4.png', color: '#f59e0b', title: t('login.welcome.s4Title'), desc: t('login.welcome.s4Desc') }
   ];
 
   useEffect(() => {
@@ -305,37 +305,40 @@ export default function LoginPage() {
                         transition={{ duration: 0.4, ease: 'easeOut' }}
                         style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}
                       >
-                        {/* 3D Glassmorphism Card */}
+                        {/* 3D Mockup Asset (Cropped to hide text) */}
                         <div style={{ 
                           width: '100%', maxWidth: 320, aspectRatio: '1/1',
-                          background: 'linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%)',
-                          backdropFilter: 'blur(30px)',
-                          WebkitBackdropFilter: 'blur(30px)',
-                          border: '1px solid rgba(255,255,255,0.15)',
                           borderRadius: 40,
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
                           position: 'relative', overflow: 'hidden',
                           marginBottom: 40,
-                          boxShadow: '0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2)'
+                          boxShadow: '0 30px 60px rgba(0,0,0,0.5)',
+                          background: '#1a1a24' // qora fonga mos zaxira
                         }}>
-                          {/* Inner glowing highlight */}
-                          <div style={{
-                            position: 'absolute', top: 0, left: 0, right: 0, height: '50%',
-                            background: 'linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 100%)',
-                            pointerEvents: 'none'
-                          }} />
+                          <motion.img
+                            initial={{ scale: 1.1, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 0.5, ease: 'easeOut' }}
+                            src={WELCOME_SLIDES[welcomeSlide].img}
+                            alt="3D object"
+                            style={{
+                              width: '100%',
+                              height: '170%',
+                              objectFit: 'cover',
+                              objectPosition: 'top center',
+                              position: 'absolute',
+                              top: 0
+                            }}
+                          />
                           
-                          <motion.div
-                            animate={{ y: [-5, 5, -5] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                          >
-                            {React.createElement(WELCOME_SLIDES[welcomeSlide].icon, {
-                              size: 140,
-                              color: '#ffffff',
-                              strokeWidth: 1.2,
-                              style: { filter: `drop-shadow(0 0 40px ${WELCOME_SLIDES[welcomeSlide].color})` }
-                            })}
-                          </motion.div>
+                          {/* Inner glowing highlight to simulate glass edge over the image */}
+                          <div style={{
+                            position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+                            border: '1.5px solid rgba(255,255,255,0.15)',
+                            borderRadius: 40,
+                            pointerEvents: 'none',
+                            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.2)'
+                          }} />
                         </div>
                         <div style={{ padding: '0 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                           <h1 style={{ ...s.title, marginBottom: 16, fontSize: 32, fontWeight: 800, lineHeight: 1.2, color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
@@ -505,6 +508,7 @@ export default function LoginPage() {
         {/* Footer */}
         <div style={{
           ...s.footer,
+          background: step === STEPS.WELCOME ? 'transparent' : s.footer.background,
           borderTop: step === STEPS.WELCOME ? '1px solid rgba(255,255,255,0.05)' : s.footer.borderTop
         }}>
           <motion.button
