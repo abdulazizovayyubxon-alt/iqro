@@ -348,25 +348,22 @@ export default function LoginPage() {
                         transition={{ duration: 0.35, ease: 'easeOut' }}
                         style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}
                       >
-                        {/* 3D Illustration Area (Directly floating, NO outer box container) */}
+                        {/* Flat Front-facing Glassmorphism Illustration Area */}
                         <div style={{ 
                           width: '100%', 
-                          height: isMobile ? 220 : 260, 
+                          height: isMobile ? 220 : 255, 
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
                           position: 'relative',
-                          perspective: '1200px',
-                          transformStyle: 'preserve-3d',
                           marginBottom: isMobile ? 12 : 20
                         }}>
-                          {/* Render 3D Isometric glass cards natively in code */}
+                          {/* Render Flat Front-Facing glass cards natively in code */}
                           <motion.div
-                            initial={{ rotateX: 50, rotateY: 0, rotateZ: -30, z: 0 }}
+                            initial={{ scale: 0.95, y: 10, opacity: 0 }}
+                            animate={{ scale: 1, y: 0, opacity: 1 }}
                             whileHover={{
-                              rotateX: 46,
-                              rotateY: 0,
-                              rotateZ: -28,
-                              z: 20,
-                              boxShadow: '-28px 28px 60px rgba(0,0,0,0.65)'
+                              scale: 1.02,
+                              y: -4,
+                              boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5)'
                             }}
                             transition={{ duration: 0.3, ease: 'easeOut' }}
                             style={{
@@ -378,8 +375,7 @@ export default function LoginPage() {
                               padding: '18px',
                               backdropFilter: 'blur(20px)',
                               WebkitBackdropFilter: 'blur(20px)',
-                              boxShadow: '-20px 20px 50px rgba(0,0,0,0.55), inset 0 1px 1px rgba(255,255,255,0.2)',
-                              transformStyle: 'preserve-3d',
+                              boxShadow: '0 15px 35px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255,255,255,0.15)',
                               textAlign: 'left',
                               cursor: 'pointer'
                             }}
@@ -397,9 +393,7 @@ export default function LoginPage() {
                                   border: '1px solid rgba(14, 151, 224, 0.25)',
                                   marginBottom: '12px',
                                   letterSpacing: '0.5px',
-                                  textTransform: 'uppercase',
-                                  transform: 'translateZ(35px)',
-                                  boxShadow: '-12px 12px 24px rgba(0,0,0,0.5)'
+                                  textTransform: 'uppercase'
                                 }}>
                                   Keng qamrovli testlar
                                 </div>
@@ -415,8 +409,7 @@ export default function LoginPage() {
                                   border: '1px solid rgba(16, 185, 129, 0.4)',
                                   background: 'rgba(16, 185, 129, 0.12)',
                                   color: '#34d399',
-                                  boxShadow: '0 0 15px rgba(16, 185, 129, 0.15), -12px 12px 24px rgba(0,0,0,0.5)',
-                                  transform: 'translateZ(35px)',
+                                  boxShadow: '0 0 12px rgba(16, 185, 129, 0.1)',
                                   marginBottom: '8px',
                                   fontSize: '12.5px',
                                   fontWeight: 600
@@ -475,9 +468,7 @@ export default function LoginPage() {
                                   border: '1px solid rgba(16, 185, 129, 0.25)',
                                   marginBottom: '12px',
                                   letterSpacing: '0.5px',
-                                  textTransform: 'uppercase',
-                                  transform: 'translateZ(35px)',
-                                  boxShadow: '-12px 12px 24px rgba(0,0,0,0.5)'
+                                  textTransform: 'uppercase'
                                 }}>
                                   📖 Izohli va tushunarli
                                 </div>
@@ -494,8 +485,7 @@ export default function LoginPage() {
                                   fontSize: '11px',
                                   lineHeight: 1.45,
                                   color: '#fbbf24',
-                                  boxShadow: '0 4px 12px rgba(245, 158, 11, 0.05), -12px 12px 24px rgba(0,0,0,0.5)',
-                                  transform: 'translateZ(35px)'
+                                  boxShadow: '0 4px 12px rgba(245, 158, 11, 0.05)'
                                 }}>
                                   <span style={{ flexShrink: 0 }}>💡</span>
                                   <span>Mnemonika: 52 - "5 harfli U-S-T-O-Z va uning 2 ta vazifasi (Ta'lim va Tarbiya)!"</span>
@@ -516,9 +506,7 @@ export default function LoginPage() {
                                   border: '1px solid rgba(139, 92, 246, 0.25)',
                                   marginBottom: '12px',
                                   letterSpacing: '0.5px',
-                                  textTransform: 'uppercase',
-                                  transform: 'translateZ(35px)',
-                                  boxShadow: '-12px 12px 24px rgba(0,0,0,0.5)'
+                                  textTransform: 'uppercase'
                                 }}>
                                   Aqlli takrorlash
                                 </div>
@@ -527,9 +515,7 @@ export default function LoginPage() {
                                   justifyContent: 'space-between',
                                   alignItems: 'center',
                                   position: 'relative',
-                                  padding: '28px 0 16px',
-                                  transform: 'translateZ(35px)',
-                                  boxShadow: '-12px 12px 24px rgba(0,0,0,0.5)'
+                                  padding: '28px 0 16px'
                                 }}>
                                   <div style={{
                                     position: 'absolute',
@@ -639,9 +625,8 @@ export default function LoginPage() {
                                     borderRadius: '6px',
                                     background: 'linear-gradient(135deg, #ffe066 0%, #f59e0b 50%, #b45309 100%)',
                                     color: '#000',
-                                    boxShadow: '0 4px 10px rgba(245, 158, 11, 0.3), -12px 12px 24px rgba(0,0,0,0.5)',
-                                    letterSpacing: '0.5px',
-                                    transform: 'translateZ(35px)'
+                                    boxShadow: '0 4px 10px rgba(245, 158, 11, 0.3)',
+                                    letterSpacing: '0.5px'
                                   }}>PRO</span>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
@@ -649,9 +634,7 @@ export default function LoginPage() {
                                     position: 'relative',
                                     width: '64px',
                                     height: '64px',
-                                    filter: 'drop-shadow(0 0 8px rgba(16, 185, 129, 0.2))',
-                                    transform: 'translateZ(35px)',
-                                    boxShadow: '-12px 12px 24px rgba(0,0,0,0.5)'
+                                    filter: 'drop-shadow(0 0 8px rgba(16, 185, 129, 0.2))'
                                   }}>
                                     <svg width="64" height="64" style={{ transform: 'rotate(-90deg)' }}>
                                       <circle cx="32" cy="32" r="28" stroke="rgba(255,255,255,0.04)" strokeWidth="5" fill="transparent" />
