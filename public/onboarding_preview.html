@@ -14,8 +14,6 @@
       --amber: #F59E0B;
       --text: #ffffff;
       --text-muted: rgba(255, 255, 255, 0.65);
-      --glass-bg: rgba(255, 255, 255, 0.03);
-      --glass-border: rgba(255, 255, 255, 0.08);
     }
 
     * {
@@ -26,7 +24,7 @@
 
     body {
       font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-      background: #090b11;
+      background: #07090e;
       color: var(--text);
       display: flex;
       flex-direction: column;
@@ -55,7 +53,7 @@
 
     .variant-tabs {
       display: flex;
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.03);
       padding: 4px;
       border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -169,26 +167,27 @@
     /* Illustration container */
     .illustration-box {
       width: 100%;
-      height: 220px;
+      height: 230px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      perspective: 1000px;
+      perspective: 1200px;
     }
 
     /* MICRO-UI ELEMENTS (SLIDE CARDS) */
     .micro-card {
       width: 100%;
       max-width: 290px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
-      padding: 16px;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 18px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255,255,255,0.15);
       display: none;
-      animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: slideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .micro-card.active {
@@ -199,72 +198,77 @@
     .isometric-mode .micro-card {
       transform-style: preserve-3d;
       transform: rotateX(50deg) rotateZ(-30deg) translateZ(0);
-      box-shadow: -15px 15px 40px rgba(0,0,0,0.5), -5px 5px 15px rgba(255,255,255,0.01);
-      transition: all 0.4s ease;
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: -20px 20px 50px rgba(0,0,0,0.55), inset 0 1px 1px rgba(255,255,255,0.2);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     .isometric-mode .micro-card:hover {
-      transform: rotateX(46deg) rotateZ(-28deg) translateZ(15px);
-      box-shadow: -22px 22px 50px rgba(0,0,0,0.6), -5px 5px 20px rgba(255,255,255,0.02);
+      transform: rotateX(46deg) rotateZ(-28deg) translateZ(20px);
+      box-shadow: -28px 28px 60px rgba(0,0,0,0.65);
     }
 
     /* Floating Sub-Elements in 3D */
     .isometric-mode .float-3d {
-      transform: translateZ(30px);
-      box-shadow: -10px 10px 20px rgba(0,0,0,0.4);
+      transform: translateZ(35px);
+      box-shadow: -12px 12px 24px rgba(0,0,0,0.5);
     }
 
     @keyframes slideIn {
-      from { opacity: 0; transform: translateY(12px) scale(0.96); }
+      from { opacity: 0; transform: translateY(16px) scale(0.95); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     /* Slide 1 Styles: Quiz Question */
     .slide-badge {
       display: inline-block;
-      padding: 4px 8px;
+      padding: 5px 10px;
       font-size: 11px;
-      font-weight: 700;
-      border-radius: 6px;
-      background: rgba(14, 151, 224, 0.12);
-      color: var(--primary);
+      font-weight: 800;
+      border-radius: 8px;
+      background: rgba(14, 151, 224, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(14, 151, 224, 0.25);
       margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
     .quiz-title {
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 700;
-      line-height: 1.4;
-      margin-bottom: 12px;
+      line-height: 1.45;
+      margin-bottom: 14px;
+      color: #fff;
     }
     .quiz-option {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 10px;
+      gap: 12px;
+      padding: 11px 14px;
+      border-radius: 12px;
       background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.06);
       margin-bottom: 8px;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 600;
       transition: all 0.3s ease;
+      color: rgba(255,255,255,0.8);
     }
     .quiz-option.correct {
-      border-color: rgba(16, 185, 129, 0.3);
-      background: rgba(16, 185, 129, 0.08);
-      color: #10b981;
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.12);
+      color: #34d399;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
     }
     .check-circle {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
-      border: 1.5px solid rgba(255,255,255,0.2);
+      border: 1.5px solid rgba(255,255,255,0.25);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
+      font-size: 11px;
+      font-weight: 800;
     }
     .correct .check-circle {
       border-color: #10b981;
@@ -275,30 +279,34 @@
     /* Slide 2 Styles: Explanation */
     .explain-badge {
       display: inline-block;
-      padding: 4px 8px;
+      padding: 5px 10px;
       font-size: 11px;
-      font-weight: 700;
-      border-radius: 6px;
-      background: rgba(16, 185, 129, 0.12);
-      color: var(--success);
-      margin-bottom: 10px;
+      font-weight: 800;
+      border-radius: 8px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
     .explain-text {
-      font-size: 11.5px;
-      line-height: 1.5;
+      font-size: 12px;
+      line-height: 1.55;
       color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .mnemonic-box {
       display: flex;
-      gap: 8px;
-      padding: 10px;
-      background: rgba(245, 158, 11, 0.06);
-      border: 1px dashed rgba(245, 158, 11, 0.2);
-      border-radius: 10px;
+      gap: 10px;
+      padding: 12px;
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px dashed rgba(245, 158, 11, 0.3);
+      border-radius: 12px;
       font-size: 11px;
-      line-height: 1.4;
-      color: #fbbf24;
+      line-height: 1.45;
+      color: #fbbbf24;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.05);
     }
 
     /* Slide 3 Styles: Spaced Repetition Timeline */
@@ -307,58 +315,59 @@
       justify-content: space-between;
       align-items: center;
       position: relative;
-      padding: 24px 0 12px;
+      padding: 28px 0 16px;
     }
     .timeline::before {
       content: '';
       position: absolute;
       top: 50%;
-      left: 10px;
-      right: 10px;
+      left: 15px;
+      right: 15px;
       height: 2px;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.1);
       z-index: 1;
       transform: translateY(-50%);
     }
     .timeline-node {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1.5px solid rgba(255,255,255,0.1);
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+      border: 1.5px solid rgba(255,255,255,0.12);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       z-index: 2;
       position: relative;
-      font-size: 10px;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 800;
       color: var(--text-muted);
-      transition: all 0.3s;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
     }
     .timeline-node.passed {
-      border-color: rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.25);
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
       color: #fff;
     }
     .timeline-node.active {
-      border-color: var(--violet);
-      background: rgba(139, 92, 246, 0.15);
-      color: #c084fc;
-      box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+      border-color: #a78bfa;
+      background: radial-gradient(circle at 30% 30%, #c084fc 0%, #8b5cf6 60%, #5b21b6 100%);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.5), inset 0 1px 2px rgba(255,255,255,0.3);
     }
     .node-title {
       position: absolute;
-      bottom: -22px;
+      bottom: -24px;
       white-space: nowrap;
-      font-size: 9px;
-      font-weight: 600;
-      opacity: 0.7;
+      font-size: 9.5px;
+      font-weight: 700;
+      opacity: 0.65;
     }
     .timeline-node.active .node-title {
       opacity: 1;
       color: #c084fc;
+      text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
     }
 
     /* Slide 4 Styles: Passport Progress */
@@ -366,38 +375,41 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      padding-bottom: 10px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 12px;
     }
     .avatar {
-      width: 28px;
-      height: 28px;
-      background: rgba(255,255,255,0.1);
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.08);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 15px;
+      border: 1px solid rgba(255,255,255,0.15);
     }
     .pro-badge {
-      font-size: 9px;
-      font-weight: 800;
-      padding: 2px 6px;
-      border-radius: 4px;
-      background: linear-gradient(135deg, #fbbf24, #d97706);
+      font-size: 9.5px;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #ffe066 0%, #f59e0b 50%, #b45309 100%);
       color: #000;
+      box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+      letter-spacing: 0.5px;
     }
     .passport-body {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
     }
     .progress-circle {
       position: relative;
-      width: 60px;
-      height: 60px;
-      transition: all 0.3s;
+      width: 64px;
+      height: 64px;
+      filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.2));
     }
     .progress-circle svg {
       transform: rotate(-90deg);
@@ -407,9 +419,9 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--success);
+      font-size: 12px;
+      font-weight: 900;
+      color: #34d399;
     }
     .passport-info {
       flex: 1;
@@ -417,10 +429,11 @@
     .passport-lbl {
       font-size: 10px;
       color: var(--text-muted);
-      margin-bottom: 2px;
+      margin-bottom: 3px;
+      font-weight: 600;
     }
     .passport-val {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 800;
       color: #fff;
     }
