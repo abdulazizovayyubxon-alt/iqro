@@ -316,18 +316,19 @@ export default function LoginPage() {
                           background: '#1a1a24' // qora fonga mos zaxira
                         }}>
                           <motion.img
-                            initial={{ scale: 1.1, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
+                            initial={{ scale: 2.3, opacity: 0 }}
+                            animate={{ scale: 2.2, opacity: 1 }}
                             transition={{ duration: 0.5, ease: 'easeOut' }}
                             src={WELCOME_SLIDES[welcomeSlide].img}
                             alt="3D object"
                             style={{
                               width: '100%',
-                              height: '170%',
+                              height: '100%',
                               objectFit: 'cover',
-                              objectPosition: 'top center',
+                              transformOrigin: 'center 38%',
                               position: 'absolute',
-                              top: 0
+                              top: 0,
+                              left: 0
                             }}
                           />
                           
