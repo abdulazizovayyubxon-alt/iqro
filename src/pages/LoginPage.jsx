@@ -354,8 +354,7 @@ export default function LoginPage() {
                           height: 240, 
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
                           position: 'relative',
-                          marginBottom: 20,
-                          animation: 'floatAnim 5s infinite ease-in-out'
+                          marginBottom: 20
                         }}>
                           {/* Render Cropped 3D Mockup Image natively */}
                           <img 
