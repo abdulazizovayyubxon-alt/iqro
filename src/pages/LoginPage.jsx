@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Eye, EyeOff, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff, ShieldCheck, Target, BarChart2, BrainCircuit, Trophy } from 'lucide-react';
 
 import { useIsMobile } from '../hooks/useIsMobile';
 import BrandLogo from '../components/shared/BrandLogo';
@@ -40,10 +40,10 @@ export default function LoginPage() {
   const [featureIdx, setFeatureIdx] = useState(0);
 
   const WELCOME_SLIDES = [
-    { id: 1, img: '/images/slide1.png', title: t('login.welcome.s1Title'), desc: t('login.welcome.s1Desc') },
-    { id: 2, img: '/images/slide2.png', title: t('login.welcome.s2Title'), desc: t('login.welcome.s2Desc') },
-    { id: 3, img: '/images/slide3.png', title: t('login.welcome.s3Title'), desc: t('login.welcome.s3Desc') },
-    { id: 4, img: '/images/slide4.png', title: t('login.welcome.s4Title'), desc: t('login.welcome.s4Desc') }
+    { id: 1, icon: Target, color: '#0ea5e9', title: t('login.welcome.s1Title'), desc: t('login.welcome.s1Desc') },
+    { id: 2, icon: BarChart2, color: '#10b981', title: t('login.welcome.s2Title'), desc: t('login.welcome.s2Desc') },
+    { id: 3, icon: BrainCircuit, color: '#8b5cf6', title: t('login.welcome.s3Title'), desc: t('login.welcome.s3Desc') },
+    { id: 4, icon: Trophy, color: '#f59e0b', title: t('login.welcome.s4Title'), desc: t('login.welcome.s4Desc') }
   ];
 
   useEffect(() => {
@@ -218,9 +218,9 @@ export default function LoginPage() {
 
         {/* Welcome Slider Progress Bars */}
         {step === STEPS.WELCOME && (
-          <div style={{ display: 'flex', gap: 6, marginBottom: 24, marginTop: 12, width: '100%' }}>
+          <div style={{ display: 'flex', gap: 6, marginBottom: 16, marginTop: isMobile ? 12 : 20, padding: '0 20px', width: '100%', boxSizing: 'border-box' }}>
             {WELCOME_SLIDES.map((_, i) => (
-              <div key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i === welcomeSlide ? 'var(--text)' : 'var(--border)' }} />
+              <div key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i === welcomeSlide ? 'var(--text)' : 'var(--border)', transition: 'background 0.3s' }} />
             ))}
           </div>
         )}
@@ -259,25 +259,35 @@ export default function LoginPage() {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -20 }}
                       transition={{ duration: 0.3 }}
-                      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 32, width: '100%' }}
+                      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}
                     >
                       <div style={{ 
-                        width: '100%', height: 260, borderRadius: 24, 
-                        background: 'rgba(255,255,255,0.02)', 
-                        border: '1px solid rgba(255,255,255,0.06)',
+                        width: 'calc(100% + 40px)', // Ekran kengligini to'liq qoplash uchun paddingni yopish
+                        height: 280, 
+                        background: `linear-gradient(135deg, ${WELCOME_SLIDES[welcomeSlide].color}15 0%, ${WELCOME_SLIDES[welcomeSlide].color}05 100%)`, 
+                        borderBottom: `1px solid ${WELCOME_SLIDES[welcomeSlide].color}22`,
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        boxShadow: '0 24px 60px rgba(0,0,0,0.2)',
-                        overflow: 'hidden'
+                        position: 'relative', overflow: 'hidden',
+                        marginTop: -16, marginBottom: 32,
+                        borderBottomLeftRadius: 32, borderBottomRightRadius: 32
                       }}>
-                        <img 
-                          src={WELCOME_SLIDES[welcomeSlide].img} 
-                          alt="welcome slide" 
-                          style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                        />
+                        {/* Glowing Orb */}
+                        <div style={{
+                          position: 'absolute', width: 160, height: 160,
+                          background: WELCOME_SLIDES[welcomeSlide].color,
+                          filter: 'blur(70px)', opacity: 0.4
+                        }} />
+                        
+                        {React.createElement(WELCOME_SLIDES[welcomeSlide].icon, {
+                          size: 110,
+                          color: WELCOME_SLIDES[welcomeSlide].color,
+                          strokeWidth: 1.5,
+                          style: { filter: 'drop-shadow(0 12px 24px rgba(0,0,0,0.15))', zIndex: 1 }
+                        })}
                       </div>
-                      <div>
-                        <h1 style={{ ...s.title, marginBottom: 14, fontSize: 28, fontWeight: 800 }}>{WELCOME_SLIDES[welcomeSlide].title}</h1>
-                        <p style={{ ...s.subtitle, fontSize: 15, lineHeight: 1.6, opacity: 0.85, maxWidth: 320, margin: '0 auto' }}>
+                      <div style={{ padding: '0 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <h1 style={{ ...s.title, marginBottom: 16, fontSize: 28, fontWeight: 800, lineHeight: 1.2 }}>{WELCOME_SLIDES[welcomeSlide].title}</h1>
+                        <p style={{ ...s.subtitle, fontSize: 16, lineHeight: 1.5, opacity: 0.85, margin: '0 auto', maxWidth: 320 }}>
                           {WELCOME_SLIDES[welcomeSlide].desc}
                         </p>
                       </div>
