@@ -360,10 +360,12 @@ export default function LoginPage() {
                         }}>
                           {/* Render 3D Isometric glass cards natively in code */}
                           <motion.div
+                            initial={{ rotateX: 50, rotateY: 0, rotateZ: -30, z: 0 }}
                             whileHover={{
                               rotateX: 46,
+                              rotateY: 0,
                               rotateZ: -28,
-                              translateZ: 20,
+                              z: 20,
                               boxShadow: '-28px 28px 60px rgba(0,0,0,0.65)'
                             }}
                             transition={{ duration: 0.3, ease: 'easeOut' }}
@@ -378,9 +380,7 @@ export default function LoginPage() {
                               WebkitBackdropFilter: 'blur(20px)',
                               boxShadow: '-20px 20px 50px rgba(0,0,0,0.55), inset 0 1px 1px rgba(255,255,255,0.2)',
                               transformStyle: 'preserve-3d',
-                              transform: 'rotateX(50deg) rotateZ(-30deg) translateZ(0px)',
                               textAlign: 'left',
-                              transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
                               cursor: 'pointer'
                             }}
                           >
