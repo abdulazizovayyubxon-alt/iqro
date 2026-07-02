@@ -351,10 +351,10 @@ export default function LoginPage() {
                         {/* 3D Illustration Area (Directly floating, NO outer box container) */}
                         <div style={{ 
                           width: '100%', 
-                          height: 240, 
+                          height: isMobile ? 180 : 240, 
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
                           position: 'relative',
-                          marginBottom: 20
+                          marginBottom: isMobile ? 12 : 20
                         }}>
                           {/* Render Cropped 3D Mockup Image natively */}
                           <img 
@@ -364,19 +364,19 @@ export default function LoginPage() {
                               width: '100%', 
                               height: '100%', 
                               objectFit: 'contain',
-                              maxHeight: 230,
-                              filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.45))'
+                              maxHeight: isMobile ? 180 : 230,
+                              filter: 'drop-shadow(0 12px 24px rgba(0,0,0,0.4))'
                             }} 
                           />
                         </div>
-                        <div style={{ padding: '0 15px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <div style={{ padding: isMobile ? '0 10px' : '0 15px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                           <h1 style={{ 
                             fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                            fontSize: 30, 
+                            fontSize: isMobile ? 25 : 30, 
                             fontWeight: 800, 
                             lineHeight: 1.2, 
                             color: '#ffffff', 
-                            marginBottom: 12,
+                            marginBottom: isMobile ? 8 : 12,
                             letterSpacing: '-0.5px'
                           }}>
                             {WELCOME_SLIDES[welcomeSlide].title}
