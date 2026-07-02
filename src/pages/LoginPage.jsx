@@ -351,23 +351,331 @@ export default function LoginPage() {
                         {/* 3D Illustration Area (Directly floating, NO outer box container) */}
                         <div style={{ 
                           width: '100%', 
-                          height: isMobile ? 180 : 240, 
+                          height: isMobile ? 220 : 260, 
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
                           position: 'relative',
+                          perspective: '1200px',
+                          transformStyle: 'preserve-3d',
                           marginBottom: isMobile ? 12 : 20
                         }}>
-                          {/* Render Cropped 3D Mockup Image natively */}
-                          <img 
-                            src={WELCOME_SLIDES[welcomeSlide].img} 
-                            alt="3D Asset" 
-                            style={{ 
-                              width: '100%', 
-                              height: '100%', 
-                              objectFit: 'contain',
-                              maxHeight: isMobile ? 180 : 230,
-                              filter: 'drop-shadow(0 12px 24px rgba(0,0,0,0.4))'
-                            }} 
-                          />
+                          {/* Render 3D Isometric glass cards natively in code */}
+                          <motion.div
+                            whileHover={{
+                              rotateX: 46,
+                              rotateZ: -28,
+                              translateZ: 20,
+                              boxShadow: '-28px 28px 60px rgba(0,0,0,0.65)'
+                            }}
+                            transition={{ duration: 0.3, ease: 'easeOut' }}
+                            style={{
+                              width: '100%',
+                              maxWidth: '290px',
+                              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%)',
+                              border: '1px solid rgba(255, 255, 255, 0.12)',
+                              borderRadius: '24px',
+                              padding: '18px',
+                              backdropFilter: 'blur(20px)',
+                              WebkitBackdropFilter: 'blur(20px)',
+                              boxShadow: '-20px 20px 50px rgba(0,0,0,0.55), inset 0 1px 1px rgba(255,255,255,0.2)',
+                              transformStyle: 'preserve-3d',
+                              transform: 'rotateX(50deg) rotateZ(-30deg) translateZ(0px)',
+                              textAlign: 'left',
+                              transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                              cursor: 'pointer'
+                            }}
+                          >
+                            {welcomeSlide === 0 && (
+                              <>
+                                <div style={{
+                                  display: 'inline-block',
+                                  padding: '5px 10px',
+                                  fontSize: '11px',
+                                  fontWeight: 800,
+                                  borderRadius: '8px',
+                                  background: 'rgba(14, 151, 224, 0.15)',
+                                  color: '#38bdf8',
+                                  border: '1px solid rgba(14, 151, 224, 0.25)',
+                                  marginBottom: '12px',
+                                  letterSpacing: '0.5px',
+                                  textTransform: 'uppercase',
+                                  transform: 'translateZ(35px)',
+                                  boxShadow: '-12px 12px 24px rgba(0,0,0,0.5)'
+                                }}>
+                                  Keng qamrovli testlar
+                                </div>
+                                <div style={{ fontSize: '13.5px', fontWeight: 700, lineHeight: 1.45, marginBottom: '14px', color: '#fff' }}>
+                                  Konstitutsiyaning nechanchi moddasida o'qituvchilar sha'ni himoya qilinishi belgilangan?
+                                </div>
+                                <div style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  gap: '12px',
+                                  padding: '11px 14px',
+                                  borderRadius: '12px',
+                                  border: '1px solid rgba(16, 185, 129, 0.4)',
+                                  background: 'rgba(16, 185, 129, 0.12)',
+                                  color: '#34d399',
+                                  boxShadow: '0 0 15px rgba(16, 185, 129, 0.15), -12px 12px 24px rgba(0,0,0,0.5)',
+                                  transform: 'translateZ(35px)',
+                                  marginBottom: '8px',
+                                  fontSize: '12.5px',
+                                  fontWeight: 600
+                                }}>
+                                  <span style={{
+                                    width: '18px',
+                                    height: '18px',
+                                    borderRadius: '50%',
+                                    border: '1.5px solid #10b981',
+                                    background: '#10b981',
+                                    color: '#fff',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    fontSize: '11px',
+                                    fontWeight: 800
+                                  }}>✓</span>
+                                  <span>52-modda</span>
+                                </div>
+                                <div style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  gap: '12px',
+                                  padding: '11px 14px',
+                                  borderRadius: '12px',
+                                  background: 'rgba(255,255,255,0.02)',
+                                  border: '1px solid rgba(255,255,255,0.06)',
+                                  fontSize: '12.5px',
+                                  fontWeight: 600,
+                                  color: 'rgba(255,255,255,0.8)'
+                                }}>
+                                  <span style={{
+                                    width: '18px',
+                                    height: '18px',
+                                    borderRadius: '50%',
+                                    border: '1.5px solid rgba(255,255,255,0.25)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                  }} />
+                                  <span>41-modda</span>
+                                </div>
+                              </>
+                            )}
+
+                            {welcomeSlide === 1 && (
+                              <>
+                                <div style={{
+                                  display: 'inline-block',
+                                  padding: '5px 10px',
+                                  fontSize: '11px',
+                                  fontWeight: 800,
+                                  borderRadius: '8px',
+                                  background: 'rgba(16, 185, 129, 0.15)',
+                                  color: '#34d399',
+                                  border: '1px solid rgba(16, 185, 129, 0.25)',
+                                  marginBottom: '12px',
+                                  letterSpacing: '0.5px',
+                                  textTransform: 'uppercase',
+                                  transform: 'translateZ(35px)',
+                                  boxShadow: '-12px 12px 24px rgba(0,0,0,0.5)'
+                                }}>
+                                  📖 Izohli va tushunarli
+                                </div>
+                                <div style={{ fontSize: '12px', lineHeight: 1.55, color: 'rgba(255, 255, 255, 0.85)', marginBottom: '14px' }}>
+                                  52-modda: O'zbekiston Respublikasida o'qituvchining mehnati jamiyat va davlatni rivojlantirish asosi deb e'tirof etiladi.
+                                </div>
+                                <div style={{
+                                  display: 'flex',
+                                  gap: '10px',
+                                  padding: '12px',
+                                  background: 'rgba(245, 158, 11, 0.08)',
+                                  border: '1px dashed rgba(245, 158, 11, 0.3)',
+                                  borderRadius: '12px',
+                                  fontSize: '11px',
+                                  lineHeight: 1.45,
+                                  color: '#fbbf24',
+                                  boxShadow: '0 4px 12px rgba(245, 158, 11, 0.05), -12px 12px 24px rgba(0,0,0,0.5)',
+                                  transform: 'translateZ(35px)'
+                                }}>
+                                  <span style={{ flexShrink: 0 }}>💡</span>
+                                  <span>Mnemonika: 52 - "5 harfli U-S-T-O-Z va uning 2 ta vazifasi (Ta'lim va Tarbiya)!"</span>
+                                </div>
+                              </>
+                            )}
+
+                            {welcomeSlide === 2 && (
+                              <>
+                                <div style={{
+                                  display: 'inline-block',
+                                  padding: '5px 10px',
+                                  fontSize: '11px',
+                                  fontWeight: 800,
+                                  borderRadius: '8px',
+                                  background: 'rgba(139, 92, 246, 0.12)',
+                                  color: '#a78bfa',
+                                  border: '1px solid rgba(139, 92, 246, 0.25)',
+                                  marginBottom: '12px',
+                                  letterSpacing: '0.5px',
+                                  textTransform: 'uppercase',
+                                  transform: 'translateZ(35px)',
+                                  boxShadow: '-12px 12px 24px rgba(0,0,0,0.5)'
+                                }}>
+                                  Aqlli takrorlash
+                                </div>
+                                <div style={{
+                                  display: 'flex',
+                                  justifyContent: 'space-between',
+                                  alignItems: 'center',
+                                  position: 'relative',
+                                  padding: '28px 0 16px',
+                                  transform: 'translateZ(35px)',
+                                  boxShadow: '-12px 12px 24px rgba(0,0,0,0.5)'
+                                }}>
+                                  <div style={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    left: '15px',
+                                    right: '15px',
+                                    height: '2px',
+                                    background: 'rgba(255, 255, 255, 0.1)',
+                                    zIndex: 1,
+                                    transform: 'translateY(-50%)'
+                                  }} />
+                                  
+                                  <div style={{
+                                    width: '48px',
+                                    height: '48px',
+                                    borderRadius: '50%',
+                                    background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+                                    border: '1.5px solid rgba(255,255,255,0.25)',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    zIndex: 2,
+                                    position: 'relative',
+                                    fontSize: '11px',
+                                    fontWeight: 800,
+                                    color: '#fff',
+                                    boxShadow: '0 8px 16px rgba(0,0,0,0.25)'
+                                  }}>
+                                    <span>10m</span>
+                                    <span style={{ position: 'absolute', bottom: '-24px', fontSize: '9.5px', fontWeight: 700, color: 'rgba(255,255,255,0.65)' }}>O'rganildi</span>
+                                  </div>
+
+                                  <div style={{
+                                    width: '48px',
+                                    height: '48px',
+                                    borderRadius: '50%',
+                                    border: '1.5px solid #a78bfa',
+                                    background: 'radial-gradient(circle at 30% 30%, #c084fc 0%, #8b5cf6 60%, #5b21b6 100%)',
+                                    color: '#fff',
+                                    boxShadow: '0 0 20px rgba(139, 92, 246, 0.5), inset 0 1px 2px rgba(255,255,255,0.3)',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    zIndex: 2,
+                                    position: 'relative',
+                                    fontSize: '11px',
+                                    fontWeight: 800
+                                  }}>
+                                    <span>1 kun</span>
+                                    <span style={{ position: 'absolute', bottom: '-24px', fontSize: '9.5px', fontWeight: 700, color: '#c084fc', textShadow: '0 0 8px rgba(139, 92, 246, 0.4)' }}>Qaytarish</span>
+                                  </div>
+
+                                  <div style={{
+                                    width: '48px',
+                                    height: '48px',
+                                    borderRadius: '50%',
+                                    background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
+                                    border: '1.5px solid rgba(255,255,255,0.12)',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    zIndex: 2,
+                                    position: 'relative',
+                                    fontSize: '11px',
+                                    fontWeight: 800,
+                                    color: 'rgba(255, 255, 255, 0.65)',
+                                    boxShadow: '0 8px 16px rgba(0,0,0,0.25)'
+                                  }}>
+                                    <span>7 kun</span>
+                                    <span style={{ position: 'absolute', bottom: '-24px', fontSize: '9.5px', fontWeight: 700, color: 'rgba(255,255,255,0.65)' }}>Yodda qoldi</span>
+                                  </div>
+                                </div>
+                              </>
+                            )}
+
+                            {welcomeSlide === 3 && (
+                              <>
+                                <div style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'space-between',
+                                  marginBottom: '16px',
+                                  borderBottom: '1px solid rgba(255,255,255,0.08)',
+                                  paddingBottom: '12px'
+                                }}>
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    <div style={{
+                                      width: '32px',
+                                      height: '32px',
+                                      background: 'rgba(255,255,255,0.08)',
+                                      borderRadius: '50%',
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                      fontSize: '15px',
+                                      border: '1px solid rgba(255,255,255,0.15)'
+                                    }}>👨‍🏫</div>
+                                    <span style={{ fontSize: '11.5px', fontWeight: 700, color: '#fff' }}>Tayyorgarlik pasporti</span>
+                                  </div>
+                                  <span style={{
+                                    fontSize: '9.5px',
+                                    fontWeight: 900,
+                                    padding: '3px 8px',
+                                    borderRadius: '6px',
+                                    background: 'linear-gradient(135deg, #ffe066 0%, #f59e0b 50%, #b45309 100%)',
+                                    color: '#000',
+                                    boxShadow: '0 4px 10px rgba(245, 158, 11, 0.3), -12px 12px 24px rgba(0,0,0,0.5)',
+                                    letterSpacing: '0.5px',
+                                    transform: 'translateZ(35px)'
+                                  }}>PRO</span>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                                  <div style={{
+                                    position: 'relative',
+                                    width: '64px',
+                                    height: '64px',
+                                    filter: 'drop-shadow(0 0 8px rgba(16, 185, 129, 0.2))',
+                                    transform: 'translateZ(35px)',
+                                    boxShadow: '-12px 12px 24px rgba(0,0,0,0.5)'
+                                  }}>
+                                    <svg width="64" height="64" style={{ transform: 'rotate(-90deg)' }}>
+                                      <circle cx="32" cy="32" r="28" stroke="rgba(255,255,255,0.04)" strokeWidth="5" fill="transparent" />
+                                      <circle cx="32" cy="32" r="28" stroke="#10b981" strokeWidth="5" fill="transparent"
+                                        strokeDasharray="175.93" stroke-dashoffset="26.39" strokeLinecap="round" />
+                                    </svg>
+                                    <div style={{
+                                      position: 'absolute',
+                                      top: '50%',
+                                      left: '50%',
+                                      transform: 'translate(-50%, -50%)',
+                                      fontSize: '12px',
+                                      fontWeight: 900,
+                                      color: '#34d399'
+                                    }}>85%</div>
+                                  </div>
+                                  <div style={{ flex: 1 }}>
+                                    <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.65)', marginBottom: '3px', fontWeight: 600 }}>Toifa Prognozi</div>
+                                    <div style={{ fontSize: '15px', fontWeight: 800, color: '#34d399' }}>Oliy Toifa</div>
+                                  </div>
+                                </div>
+                              </>
+                            )}
+                          </motion.div>
                         </div>
                         <div style={{ padding: isMobile ? '0 10px' : '0 15px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                           <h1 style={{ 
