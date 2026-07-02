@@ -40,10 +40,10 @@ export default function LoginPage() {
   const [featureIdx, setFeatureIdx] = useState(0);
 
   const WELCOME_SLIDES = [
-    { id: 1, icon: '✦', title: t('login.welcome.s1Title'), desc: t('login.welcome.s1Desc') },
-    { id: 2, icon: '📊', title: t('login.welcome.s2Title'), desc: t('login.welcome.s2Desc') },
-    { id: 3, icon: '🧠', title: t('login.welcome.s3Title'), desc: t('login.welcome.s3Desc') },
-    { id: 4, icon: '🏆', title: t('login.welcome.s4Title'), desc: t('login.welcome.s4Desc') }
+    { id: 1, img: '/images/slide1.png', title: t('login.welcome.s1Title'), desc: t('login.welcome.s1Desc') },
+    { id: 2, img: '/images/slide2.png', title: t('login.welcome.s2Title'), desc: t('login.welcome.s2Desc') },
+    { id: 3, img: '/images/slide3.png', title: t('login.welcome.s3Title'), desc: t('login.welcome.s3Desc') },
+    { id: 4, img: '/images/slide4.png', title: t('login.welcome.s4Title'), desc: t('login.welcome.s4Desc') }
   ];
 
   useEffect(() => {
@@ -251,7 +251,7 @@ export default function LoginPage() {
 
               {/* ── STEP: WELCOME ── */}
               {step === STEPS.WELCOME && (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', minHeight: 300, justifyContent: 'center' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', minHeight: 380, justifyContent: 'center' }}>
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={welcomeSlide}
@@ -259,20 +259,25 @@ export default function LoginPage() {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -20 }}
                       transition={{ duration: 0.3 }}
-                      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24, width: '100%' }}
+                      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 32, width: '100%' }}
                     >
                       <div style={{ 
-                        width: 120, height: 120, borderRadius: 32, 
-                        background: 'rgba(255,255,255,0.03)', 
-                        border: '1px solid rgba(255,255,255,0.08)',
+                        width: '100%', height: 260, borderRadius: 24, 
+                        background: 'rgba(255,255,255,0.02)', 
+                        border: '1px solid rgba(255,255,255,0.06)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 64, boxShadow: '0 16px 40px rgba(0,0,0,0.2)'
+                        boxShadow: '0 24px 60px rgba(0,0,0,0.2)',
+                        overflow: 'hidden'
                       }}>
-                        {WELCOME_SLIDES[welcomeSlide].icon}
+                        <img 
+                          src={WELCOME_SLIDES[welcomeSlide].img} 
+                          alt="welcome slide" 
+                          style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                        />
                       </div>
                       <div>
-                        <h1 style={{ ...s.title, marginBottom: 12, fontSize: 26, fontWeight: 800 }}>{WELCOME_SLIDES[welcomeSlide].title}</h1>
-                        <p style={{ ...s.subtitle, fontSize: 15, lineHeight: 1.5, opacity: 0.8, maxWidth: 300, margin: '0 auto' }}>
+                        <h1 style={{ ...s.title, marginBottom: 14, fontSize: 28, fontWeight: 800 }}>{WELCOME_SLIDES[welcomeSlide].title}</h1>
+                        <p style={{ ...s.subtitle, fontSize: 15, lineHeight: 1.6, opacity: 0.85, maxWidth: 320, margin: '0 auto' }}>
                           {WELCOME_SLIDES[welcomeSlide].desc}
                         </p>
                       </div>
