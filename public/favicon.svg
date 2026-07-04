@@ -1,30 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <!-- Background -->
-  <rect width="512" height="512" rx="112" fill="#F4F3EF" />
-
-  <!-- "toifa" - bold, dark, top -->
-  <text
-    x="256"
-    y="238"
-    font-family="'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif"
-    font-size="168"
-    font-weight="800"
-    fill="#0f172a"
-    text-anchor="middle"
-    dominant-baseline="alphabetic"
-    letter-spacing="-7"
-  >toifa</text>
-
-  <!-- "pro" - medium, accent blue, bottom -->
-  <text
-    x="256"
-    y="370"
-    font-family="'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif"
-    font-size="168"
-    font-weight="500"
-    fill="#2563EB"
-    text-anchor="middle"
-    dominant-baseline="alphabetic"
-    letter-spacing="-7"
-  >pro</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    
+  </defs>
+  <rect width="1024" height="1024" rx="232" fill="#0E97E0"></rect>
+  <text x="496" y="500" text-anchor="middle" dominant-baseline="central" font-family="&#39;Plus Jakarta Sans&#39;, ui-rounded, sans-serif" font-size="532" font-weight="800" letter-spacing="-32" fill="#ffffff">tp</text>
 </svg>

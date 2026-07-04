@@ -359,27 +359,68 @@ export default function OnboardingPage({ onComplete }) {
   return (
     <div style={ss.pageOuter}>
       <div style={ss.page}>
-        {/* Progress bar */}
-        <div style={ss.progressTrack}>
-          <motion.div
-            animate={{ width: `${progress * 100}%` }}
-            transition={{ duration: 0.4, ease: 'easeInOut' }}
-            style={ss.progressFill}
-          />
-        </div>
-
         {/* Header */}
         {step < 3 && (
-          <div style={ss.header}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '16px 20px 8px',
+          }}>
             {step > 0 ? (
               <motion.button whileTap={{ scale: 0.9 }} style={ss.backBtn} onClick={goBack}>
                 <ArrowLeft size={22} />
               </motion.button>
             ) : <div style={{ width: 36 }} />}
-            <span style={{ fontSize: 13, color: 'var(--text3)', fontWeight: 600 }}>
-              {step + 1} / {TOTAL_STEPS}
-            </span>
+
+            {/* Centered logo lockup */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+              {/* 24px ikonka */}
+              <div style={{
+                width: '24px',
+                height: '24px',
+                borderRadius: '7px',
+                background: '#0E97E0',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0
+              }}>
+                <span style={{
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  fontSize: '13px',
+                  fontWeight: 800,
+                  color: '#ffffff',
+                  letterSpacing: '-0.05em',
+                  lineHeight: 1,
+                  marginTop: '-1.5px'
+                }}>tp</span>
+              </div>
+              {/* ToifaPro Wordmark */}
+              <span style={{
+                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                fontSize: '15px',
+                fontWeight: 800,
+                color: 'var(--text)',
+                letterSpacing: '-0.02em',
+                lineHeight: 1
+              }}>
+                Toifa<span style={{ color: '#0E97E0' }}>Pro</span>
+              </span>
+            </div>
+
             <div style={{ width: 36 }} />
+          </div>
+        )}
+
+        {/* Progress bar (under the header) */}
+        {step < 3 && (
+          <div style={ss.progressTrack}>
+            <motion.div
+              animate={{ width: `${progress * 100}%` }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              style={ss.progressFill}
+            />
           </div>
         )}
 

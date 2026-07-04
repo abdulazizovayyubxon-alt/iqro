@@ -18,6 +18,7 @@ import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { useNotifications } from '../hooks/useNotifications';
+import BrandLogo from './shared/BrandLogo';
 
 const Header = ({ theme, toggleTheme }) => {
   const isMobile = useIsMobile();
@@ -179,7 +180,7 @@ const Header = ({ theme, toggleTheme }) => {
 
   return (
     <>
-      <div className="header">
+      <div className="header" style={{ position: 'relative' }}>
         <div className="header-greeting" onClick={() => setShowProfileDrawer(true)} title={t('header.profile')}>
           <div className="header-avatar-wrap">
             <div className="header-avatar">
@@ -193,10 +194,22 @@ const Header = ({ theme, toggleTheme }) => {
               </span>
             )}
           </div>
-          <div className="header-greeting-text">
-            <span className="header-greet-hi">{t(greetKey)}</span>
-            <span className="header-greet-name">{firstName}</span>
-          </div>
+        </div>
+
+        {/* Centered Brand Logo */}
+        <div
+          style={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            display: 'flex',
+            alignItems: 'center',
+            cursor: 'pointer',
+            pointerEvents: 'auto'
+          }}
+          onClick={() => navigate('/dashboard')}
+        >
+          <BrandLogo size={28} />
         </div>
 
         <div className="header-stats">

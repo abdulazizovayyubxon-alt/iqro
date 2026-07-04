@@ -1,6 +1,6 @@
 /**
  * ╔══════════════════════════════════════════════════════════════╗
- * ║     QuestionMedia.jsx — IQRO Platformasi                    ║
+ * ║     QuestionMedia.jsx — Toifa Pro Platformasi               ║
  * ╠══════════════════════════════════════════════════════════════╣
  * ║  Savol uchun universal media komponenti.                     ║
  * ║  Uch xil media turini qo'llab-quvvatlaydi:                  ║

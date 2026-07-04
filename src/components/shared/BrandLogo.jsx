@@ -13,24 +13,68 @@ import React from 'react';
  * @param {string} as    qaysi teg sifatida render qilinsin (default: 'span')
  */
 export default function BrandLogo({ size = 28, style = {}, className = '', as: Tag = 'span' }) {
+  const squircleSize = size;
+  const borderRadius = Math.round(squircleSize * 0.25);
+  const tpFontSize = Math.round(squircleSize * 0.52);
+  const gapSize = Math.round(squircleSize * 0.28);
+  const textFontSize = Math.round(squircleSize * 0.64);
+  const marginTopOffset = -Math.round(squircleSize * 0.07);
+
   return (
     <Tag
       className={className}
-      aria-label="toifa pro"
+      aria-label="ToifaPro"
       style={{
-        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-        fontSize: size,
-        letterSpacing: '-0.045em',
-        lineHeight: 1,
-        whiteSpace: 'nowrap',
-        userSelect: 'none',
         display: 'inline-flex',
-        alignItems: 'baseline',
+        alignItems: 'center',
+        gap: `${gapSize}px`,
+        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+        userSelect: 'none',
         ...style,
       }}
     >
-      <span style={{ fontWeight: 700, color: 'var(--logo-toifa, var(--text))' }}>toifa</span>
-      <span style={{ fontWeight: 500, color: 'var(--logo-pro, var(--accent))', marginLeft: '0.09em' }}>pro</span>
+      {/* Squircle "tp" Mark */}
+      <span
+        style={{
+          width: `${squircleSize}px`,
+          height: `${squircleSize}px`,
+          borderRadius: `${borderRadius}px`,
+          background: '#0E97E0', // Always brand blue
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0,
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+            fontSize: `${tpFontSize}px`,
+            fontWeight: 800,
+            color: '#ffffff',
+            letterSpacing: '-0.05em',
+            lineHeight: 1,
+            marginTop: `${marginTopOffset}px`,
+          }}
+        >
+          tp
+        </span>
+      </span>
+
+      {/* "ToifaPro" Wordmark */}
+      <span
+        style={{
+          fontSize: `${textFontSize}px`,
+          fontWeight: 800,
+          letterSpacing: '-0.02em',
+          lineHeight: 1,
+          whiteSpace: 'nowrap',
+          display: 'inline-flex',
+        }}
+      >
+        <span style={{ color: 'var(--logo-toifa)' }}>Toifa</span>
+        <span style={{ color: 'var(--logo-pro)' }}>Pro</span>
+      </span>
     </Tag>
   );
 }

@@ -493,8 +493,8 @@ export default async function handler(req, res) {
         return res.status(200).send('Pay info sent');
       }
 
-      // IQRO kodi /start orqali
-      if (param.startsWith('IQRO-')) {
+      // IQRO / TOIFAPRO kodi /start orqali
+      if (param.startsWith('IQRO-') || param.startsWith('TOIFAPRO-')) {
         incomingText = param;
       } else {
         if (linkedUser) {
@@ -505,15 +505,15 @@ export default async function handler(req, res) {
           );
         } else {
           await sendMessage(chatId,
-            "<b>Xush kelibsiz!</b> 🎓\n\nToifa Pro — O'qituvchilar attestatsiyasi platformasi.\n\nBotdan to'liq foydalanish uchun saytda ro'yxatdan o'teb va Profilingizdagi <b>IQRO-...</b> kodingizni shu yerga yuboring.\n\n👉 https://toifapro-t41p.vercel.app"
+            "<b>Xush kelibsiz!</b> 🎓\n\nToifa Pro — O'qituvchilar attestatsiyasi platformasi.\n\nBotdan to'liq foydalanish uchun saytda ro'yxatdan o'tib va Profilingizdagi <b>TOIFAPRO-...</b> kodingizni shu yerga yuboring.\n\n👉 https://toifapro-t41p.vercel.app"
           );
         }
         return res.status(200).send('Start handled');
       }
     }
 
-    // IQRO kod orqali ulanish
-    if (incomingText.startsWith('IQRO-')) {
+    // IQRO / TOIFAPRO kod orqali ulanish
+    if (incomingText.startsWith('IQRO-') || incomingText.startsWith('TOIFAPRO-')) {
       const code = incomingText;
       const searchSnap = await db.collection('users').where('telegramCode', '==', code).get();
 
@@ -539,7 +539,7 @@ export default async function handler(req, res) {
     // Tizimga ulanmaganlar uchun blok
     if (!linkedUser) {
       await sendMessage(chatId,
-        "Iltimos, botdan to'liq foydalanish uchun saytdan olingan <b>IQRO-...</b> kodingizni yuboring.\n\n👉 https://toifapro-t41p.vercel.app"
+        "Iltimos, botdan to'liq foydalanish uchun saytdan olingan <b>TOIFAPRO-...</b> kodingizni yuboring.\n\n👉 https://toifapro-t41p.vercel.app"
       );
       return res.status(200).send('Not linked');
     }

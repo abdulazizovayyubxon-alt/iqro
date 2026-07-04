@@ -1,6 +1,6 @@
 /**
  * ╔══════════════════════════════════════════════════════════════╗
- * ║     OfflineIndicator.jsx — IQRO Platformasi                 ║
+ * ║     OfflineIndicator.jsx — Toifa Pro Platformasi            ║
  * ╠══════════════════════════════════════════════════════════════╣
  * ║  Internet ulanishi holatini kuzatadi va foydalanuvchiga      ║
  * ║  qulay xabarlar ko'rsatadi. PWA ServiceWorker bilan          ║

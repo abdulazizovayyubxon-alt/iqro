@@ -35,8 +35,8 @@
   --glass-border: rgba(86, 110, 130, 0.16);
 
   /* Logo colors from the new design mockup */
-  --logo-toifa: #112B42;
-  --logo-pro: #56AFDB;
+  --logo-toifa: #0F1B2D;
+  --logo-pro: #0E97E0;
 }
 
 body.dark-theme {
@@ -72,7 +72,7 @@ body.dark-theme {
 
   /* Logo colors from the new design mockup */
   --logo-toifa: #F8FAFC;
-  --logo-pro: #56AFDB;
+  --logo-pro: #36ABEC;
 }
 
 /* Sepia — uzoq o'qish/test sessiyalari uchun "kitob" rejimi */

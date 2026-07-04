@@ -10,14 +10,27 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <title>Toifa Pro — Kasbiy Sertifikatlash Tayyorgarligi</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>@keyframes toifapro-spin{to{transform:rotate(360deg)}}</style>
   </head>
   <body>
     <div id="root">
-      <!-- JS yuklanguncha oq ekran o'rniga spinner (React mount bo'lganda almashtiriladi) -->
-      <div style="height:100vh;display:flex;align-items:center;justify-content:center;background:#F4F3EF">
-        <div style="width:36px;height:36px;border:3px solid rgba(0,0,0,0.1);border-top-color:#2563EB;border-radius:50%;animation:toifapro-spin 0.8s linear infinite"></div>
+      <!-- JS yuklanguncha oq ekran o'rniga splash screen (React mount bo'lganda almashtiriladi) -->
+      <div style="height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0E97E0;color:#ffffff;font-family:'Plus Jakarta Sans','Inter',sans-serif;user-select:none;margin:0;padding:0;">
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;">
+          <!-- 112px white squircle -->
+          <div style="width:112px;height:112px;border-radius:28px;background-color:#ffffff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,0.1);margin-bottom:26px;">
+            <span style="font-size:58px;font-weight:800;color:#0E97E0;letter-spacing:-0.05em;line-height:1;margin-top:-4px;">tp</span>
+          </div>
+          <!-- "ToifaPro" Title -->
+          <h1 style="font-size:34px;font-weight:800;letter-spacing:-0.02em;margin:0 0 14px;color:#ffffff;line-height:1;">
+            Toifa<span style="color:#A5DDF9;">Pro</span>
+          </h1>
+          <!-- Tagline -->
+          <p style="font-size:11px;font-weight:700;letter-spacing:0.26em;color:rgba(255, 255, 255, 0.75);margin:0;white-space:nowrap;text-transform:uppercase;">
+            ATTESTATSIYA PLATFORMASI
+          </p>
+        </div>
       </div>
     </div>
     <script type="module" src="/src/main.jsx"></script>

@@ -8,7 +8,7 @@ import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, Share2 } from 'lucide-react';
+import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, Share2, GraduationCap, FileText, BookOpen, ClipboardList, Crosshair, History, Check } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
 import ObjectionModal from '../components/shared/ObjectionModal';
@@ -163,8 +163,11 @@ const ExamPage = () => {
       uid: user?.uid || null,
       cat,
       examType,
-      questions,
-      topicGroups,
+      // topicIcon/icon — React elementlari, IndexedDB ularni qabul qilmaydi
+      // (DataCloneError, butun yozuv rad etiladi). Saqlashdan oldin olib
+      // tashlaymiz, resume'da TOPICS'dan qayta biriktiriladi.
+      questions: questions.map(({ topicIcon, ...q }) => q),
+      topicGroups: topicGroups.map(({ icon, ...g }) => g),
       answers,
       flagged,
       currentQ,
@@ -172,7 +175,7 @@ const ExamPage = () => {
       questionTimes: questionTimesRef.current,
       startTimeMs,
       savedAt: Date.now()
-    }).catch(() => {});
+    }).catch(err => console.error('Imtihon sessiyasini saqlashda xato:', err));
   };
 
   useEffect(() => { persistRef.current?.(); }, [answers, flagged, currentQ]);
@@ -219,8 +222,18 @@ const ExamPage = () => {
   const resumeExam = () => {
     const s = savedSession;
     if (!s) return;
-    setQuestions(s.questions);
-    setTopicGroups(s.topicGroups || []);
+    // Saqlashda olib tashlangan ikonkalarni TOPICS'dan qayta biriktiramiz
+    const catTopics = TOPICS.filter(t =>
+      Array.isArray(t.category) ? t.category.includes(s.cat) : t.category === s.cat
+    );
+    setQuestions(s.questions.map(q => {
+      const topic = catTopics.find(t => t.id === q.topicId);
+      return { ...q, topicIcon: topic ? topic.icon : null };
+    }));
+    setTopicGroups((s.topicGroups || []).map(g => {
+      const topic = catTopics.find(t => t.name === g.name);
+      return { ...g, icon: topic ? topic.icon : null };
+    }));
     setAnswers(s.answers || {});
     setFlagged(s.flagged || {});
     setCurrentQ(s.currentQ || 0);
@@ -638,42 +651,51 @@ const ExamPage = () => {
     const durationMin = Math.round(getExamDuration(cat) / 60);
     const subjName = SUBJECTS.find(s => s.id === cat)?.name || '';
 
-    // Rejim kartalari — katta belgi + qisqa bitta qator tavsif, tanlov aniq ko'rinadi
+    // Rejim kartalari — chiziqli professional ikonkalar (emoji emas):
+    // auditoriya attestatsiyaga tayyorlanayotgan pedagoglar, muhit jiddiy bo'lishi kerak
     const modeCards = [
-      { id: 'standard', icon: '📋', title: t('exam.standardTitle'), desc: t('exam.standardDesc') },
-      { id: 'weak', icon: '🎯', title: t('exam.weakTitle'), desc: t('exam.weakDesc') }
+      { id: 'standard', Icon: ClipboardList, title: t('exam.standardTitle'), desc: t('exam.standardDesc') },
+      { id: 'weak', Icon: Crosshair, title: t('exam.weakTitle'), desc: t('exam.weakDesc') }
     ];
 
     const chipStyle = {
       display: 'inline-flex', alignItems: 'center', gap: 6,
-      padding: '7px 13px', borderRadius: 999,
+      padding: '6px 12px', borderRadius: 8,
       background: 'var(--bg3)', border: '1px solid var(--border)',
-      fontSize: 'calc(13px * var(--font-scale))', fontWeight: 700, color: 'var(--text2)'
+      fontSize: 'calc(13px * var(--font-scale))', fontWeight: 600, color: 'var(--text2)'
     };
+    const chipIconStyle = { color: 'var(--text3)', flexShrink: 0 };
 
     return (
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="page" style={{ maxWidth: 600, margin: '0 auto', padding: '16px', display: 'flex', minHeight: '100%', alignItems: 'center' }}>
-        <div className="glass-panel" style={{ padding: '26px 20px', textAlign: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.06)', width: '100%' }}>
-          <div style={{ fontSize: 44, marginBottom: 8 }}>🏆</div>
-          <h1 style={{ fontSize: 'calc(23px * var(--font-scale))', fontWeight: 900, color: 'var(--text)', marginBottom: 12, letterSpacing: '-0.5px' }}>{t('exam.simulatorTitle')}</h1>
+        <div className="glass-panel" style={{ padding: '28px 20px', textAlign: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.06)', width: '100%' }}>
+          <div style={{
+            width: 56, height: 56, borderRadius: 16, margin: '0 auto 14px',
+            background: 'var(--blue-bg)', border: '1px solid var(--border)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center'
+          }}>
+            <GraduationCap size={28} style={{ color: 'var(--blue)' }} />
+          </div>
+          <h1 style={{ fontSize: 'calc(22px * var(--font-scale))', fontWeight: 800, color: 'var(--text)', marginBottom: 14, letterSpacing: '-0.5px' }}>{t('exam.simulatorTitle')}</h1>
 
           {/* Uzun matn o'rniga — bir qarashda o'qiladigan chiplar */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 20 }}>
-            <span style={chipStyle}>📝 {t('exam.chipQuestions', { n: EXAM_TOTAL })}</span>
-            <span style={chipStyle}>⏱ {t('exam.chipMinutes', { n: durationMin })}</span>
-            {subjName && <span style={chipStyle}>📚 {subjName}</span>}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 22 }}>
+            <span style={chipStyle}><FileText size={14} style={chipIconStyle} /> {t('exam.chipQuestions', { n: EXAM_TOTAL })}</span>
+            <span style={chipStyle}><Clock size={14} style={chipIconStyle} /> {t('exam.chipMinutes', { n: durationMin })}</span>
+            {subjName && <span style={chipStyle}><BookOpen size={14} style={chipIconStyle} /> {subjName}</span>}
           </div>
 
           {/* Tugallanmagan imtihon — davom ettirish taklifi */}
           {savedSession && (
             <div style={{
-              padding: '14px 16px', borderRadius: 16, marginBottom: 16, textAlign: 'left',
-              background: 'var(--amber-bg)', border: '1.5px solid var(--amber)'
+              padding: '14px 16px', borderRadius: 14, marginBottom: 16, textAlign: 'left',
+              background: 'var(--bg2)', border: '1px solid var(--border)',
+              borderLeft: '3px solid var(--amber)'
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-                <span style={{ fontSize: 22 }}>⏸️</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+                <History size={20} style={{ color: 'var(--amber)', flexShrink: 0 }} />
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: 'calc(15px * var(--font-scale))', fontWeight: 800, color: 'var(--text)' }}>{t('exam.resumeTitle')}</div>
+                  <div style={{ fontSize: 'calc(15px * var(--font-scale))', fontWeight: 700, color: 'var(--text)' }}>{t('exam.resumeTitle')}</div>
                   <div style={{ fontSize: 'calc(13px * var(--font-scale))', color: 'var(--text2)', marginTop: 2 }}>
                     {t('exam.resumeInfo', {
                       answered: Object.keys(savedSession.answers || {}).length,
@@ -685,15 +707,15 @@ const ExamPage = () => {
               </div>
               <button
                 onClick={resumeExam}
-                style={{ width: '100%', padding: '12px', background: 'var(--amber)', color: '#fff', border: 'none', borderRadius: 12, fontSize: 15, fontWeight: 800, cursor: 'pointer', fontFamily: 'inherit' }}
+                style={{ width: '100%', padding: '12px', background: 'var(--text)', color: 'var(--bg)', border: 'none', borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}
               >
-                ▶ {t('exam.resume')}
+                {t('exam.resume')}
               </button>
             </div>
           )}
 
           {/* Rejim tanlash */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 18, textAlign: 'left' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 20, textAlign: 'left' }}>
             {modeCards.map(m => {
               const active = examType === m.id;
               return (
@@ -703,35 +725,35 @@ const ExamPage = () => {
                   style={{
                     display: 'flex', alignItems: 'center', gap: 12,
                     padding: '14px 14px',
-                    borderRadius: 16,
-                    border: '2px solid',
-                    borderColor: active ? 'var(--blue)' : 'var(--border)',
+                    borderRadius: 14,
+                    border: active ? '1.5px solid var(--blue)' : '1.5px solid var(--border)',
                     background: active ? 'var(--blue-bg)' : 'var(--bg2)',
                     cursor: 'pointer',
                     transition: 'all 0.2s'
                   }}
                 >
                   <div style={{
-                    width: 46, height: 46, borderRadius: 13, flexShrink: 0,
+                    width: 42, height: 42, borderRadius: 11, flexShrink: 0,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 24, background: active ? 'var(--bg2)' : 'var(--bg3)',
-                    border: '1px solid var(--border)'
+                    background: active ? 'var(--blue)' : 'var(--bg3)',
+                    border: active ? 'none' : '1px solid var(--border)',
+                    transition: 'all 0.2s'
                   }}>
-                    {m.icon}
+                    <m.Icon size={20} style={{ color: active ? '#fff' : 'var(--text3)' }} />
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 'calc(15.5px * var(--font-scale))', fontWeight: 800, color: 'var(--text)', marginBottom: 3 }}>{m.title}</div>
+                    <div style={{ fontSize: 'calc(15.5px * var(--font-scale))', fontWeight: 700, color: 'var(--text)', marginBottom: 3 }}>{m.title}</div>
                     <div style={{ fontSize: 'calc(13px * var(--font-scale))', color: 'var(--text3)', lineHeight: 1.4 }}>{m.desc}</div>
                   </div>
                   {/* Tanlov belgisi — radio o'rniga aniq ko'rinadigan doira */}
                   <div style={{
-                    width: 24, height: 24, borderRadius: '50%', flexShrink: 0,
-                    border: active ? 'none' : '2px solid var(--border2)',
+                    width: 22, height: 22, borderRadius: '50%', flexShrink: 0,
+                    border: active ? 'none' : '1.5px solid var(--border2)',
                     background: active ? 'var(--blue)' : 'transparent',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: '#fff', fontSize: 14, fontWeight: 900
+                    transition: 'all 0.2s'
                   }}>
-                    {active ? '✓' : ''}
+                    {active && <Check size={13} strokeWidth={3.5} style={{ color: '#fff' }} />}
                   </div>
                 </div>
               );

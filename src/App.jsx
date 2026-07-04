@@ -217,13 +217,84 @@ function App() {
   if (loading || !onboardingChecked) {
     return (
       <div style={{
-        height: '100vh', display: 'flex', alignItems: 'center',
-        justifyContent: 'center', flexDirection: 'column',
-        gap: '16px', background: 'var(--bg)'
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        background: '#0E97E0',
+        color: '#ffffff',
+        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+        userSelect: 'none',
+        position: 'relative',
+        overflow: 'hidden',
       }}>
-        <BrandLogo size={40} />
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--text3)', fontSize: '13px' }}>
-          <RefreshCw className="spin" size={14} style={{ color: 'var(--accent)' }} /> yuklanmoqda...
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+        }}>
+          {/* 112px white squircle */}
+          <div style={{
+            width: '112px',
+            height: '112px',
+            borderRadius: '28px',
+            backgroundColor: '#ffffff',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 8px 30px rgba(0,0,0,0.1)',
+            marginBottom: '26px'
+          }}>
+            <span style={{
+              fontSize: '58px',
+              fontWeight: 800,
+              color: '#0E97E0',
+              letterSpacing: '-0.05em',
+              lineHeight: 1,
+              marginTop: '-4px'
+            }}>tp</span>
+          </div>
+
+          {/* "ToifaPro" Title */}
+          <h1 style={{
+            fontSize: '34px',
+            fontWeight: 800,
+            letterSpacing: '-0.02em',
+            margin: '0 0 14px',
+            color: '#ffffff',
+            lineHeight: 1
+          }}>
+            Toifa<span style={{ color: '#A5DDF9' }}>Pro</span>
+          </h1>
+
+          {/* Tagline */}
+          <p style={{
+            fontSize: '11px',
+            fontWeight: 700,
+            letterSpacing: '0.26em',
+            color: 'rgba(255, 255, 255, 0.75)',
+            margin: 0,
+            whiteSpace: 'nowrap',
+            textTransform: 'uppercase'
+          }}>
+            ATTESTATSIYA PLATFORMASI
+          </p>
+        </div>
+
+        {/* Small subtle loading spinner at the bottom */}
+        <div style={{
+          position: 'absolute',
+          bottom: '40px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 8,
+          color: 'rgba(255, 255, 255, 0.7)',
+          fontSize: '12px',
+          fontWeight: 600
+        }}>
+          <RefreshCw className="spin" size={12} style={{ color: '#ffffff' }} /> yuklanmoqda...
         </div>
       </div>
     );

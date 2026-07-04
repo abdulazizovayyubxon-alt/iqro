@@ -336,7 +336,7 @@ const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user, stats }) => {
               <div style={{ flex: 1, minHeight: 12 }} />
 
               {/* ── Ilovani ulashish + Biz bilan bog'lanish (Click uslubi) ── */}
-              <div style={{ padding: '8px 16px 22px', display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div style={{ padding: '8px 16px 10px', display: 'flex', flexDirection: 'column', gap: 10 }}>
                 <button onClick={shareApp} style={cardBtn}>
                   <span style={iconCircleSolid}><Share2 size={20} color="#fff" /></span>
                   <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t('drawer.shareApp', 'Ilovani ulashish')}</span>
@@ -345,6 +345,60 @@ const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user, stats }) => {
                   <span style={iconCircleSolid}><Send size={19} color="#fff" /></span>
                   <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t('drawer.contact', "Biz bilan bog'lanish")}</span>
                 </button>
+              </div>
+
+              {/* ── Drawer footer (versiya va logo) ── */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '7px',
+                padding: '12px 0 20px',
+                userSelect: 'none',
+                flexShrink: 0
+              }}>
+                {/* 22px ikonka */}
+                <div style={{
+                  width: '22px',
+                  height: '22px',
+                  borderRadius: '6px',
+                  background: '#0E97E0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0
+                }}>
+                  <span style={{
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                    fontSize: '12px',
+                    fontWeight: 800,
+                    color: '#ffffff',
+                    letterSpacing: '-0.05em',
+                    lineHeight: 1,
+                    marginTop: '-1.5px'
+                  }}>tp</span>
+                </div>
+                {/* ToifaPro Wordmark */}
+                <span style={{
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  fontSize: '13.5px',
+                  fontWeight: 800,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1
+                }}>
+                  <span style={{ color: theme === 'dark' ? '#F4F6F9' : '#0F1B2D' }}>Toifa</span>
+                  <span style={{ color: theme === 'dark' ? '#36ABEC' : '#0E97E0' }}>Pro</span>
+                </span>
+                {/* v2.0 */}
+                <span style={{
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  fontSize: '11.5px',
+                  fontWeight: 500,
+                  color: theme === 'dark' ? '#5A606A' : '#94A3B8',
+                  marginLeft: '2px'
+                }}>
+                  v2.0
+                </span>
               </div>
             </motion.div>
           </>
