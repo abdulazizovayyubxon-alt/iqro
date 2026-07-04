@@ -234,7 +234,8 @@ const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user, stats }) => {
             >
               {/* ── Shaxsiy sarlavha ── */}
               <div style={{ padding: '22px 18px 10px' }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 13 }}>
+                {/* 1-qator: Avatar chapda, Tahrirlash va Bildirishnoma o'ngda */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
                   {/* Avatar — bosilganda tanlagich ochiladi */}
                   <button
                     onClick={() => setShowAvatarPicker(true)}
@@ -251,21 +252,22 @@ const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user, stats }) => {
                     </span>
                   </button>
 
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--text)', lineHeight: 1.25, wordBreak: 'break-word' }}>{displayName}</div>
-                    {phoneDisplay && <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text2)', marginTop: 3 }}>{phoneDisplay}</div>}
-                    <div style={{ fontSize: 12, fontWeight: 600, color: isTruePremium ? 'var(--amber)' : 'var(--text3)', marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
-                      {isTruePremium && <Crown size={12} />}
-                      {isTruePremium ? t('profile.premiumActive', 'Obuna faol') : t('header.freeAccount', 'Oddiy hisob')}
-                    </div>
-                  </div>
-
                   {/* Tahrirlash + bildirishnoma */}
                   <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>
                     <button onClick={() => setShowEdit(true)} title={t('settings.editProfile', 'Profilni tahrirlash')} aria-label={t('settings.editProfile', 'Profilni tahrirlash')} style={actionBtn}>
                       <Pencil size={18} />
                     </button>
                     <NotificationBell iconSize={19} buttonClassName="" buttonStyle={actionBtn} />
+                  </div>
+                </div>
+
+                {/* 2-qator: Ism-familiya, telefon va status */}
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--text)', lineHeight: 1.25, overflowWrap: 'break-word' }}>{displayName}</div>
+                  {phoneDisplay && <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text2)', marginTop: 3 }}>{phoneDisplay}</div>}
+                  <div style={{ fontSize: 12, fontWeight: 600, color: isTruePremium ? 'var(--amber)' : 'var(--text3)', marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
+                    {isTruePremium && <Crown size={12} />}
+                    {isTruePremium ? t('profile.premiumActive', 'Obuna faol') : t('header.freeAccount', 'Oddiy hisob')}
                   </div>
                 </div>
 
@@ -280,21 +282,23 @@ const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user, stats }) => {
                   onClick={() => setShowPremium(true)}
                   style={{ width: '100%', textAlign: 'left', borderRadius: 18, padding: 18, border: '1px solid var(--border)', background: 'linear-gradient(135deg, var(--blue-bg), var(--surface))', cursor: 'pointer', fontFamily: 'inherit', position: 'relative', overflow: 'hidden' }}
                 >
-                  <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--text)' }}>{subTitle}</div>
-                  {(trialStatus === 'urgency' && urgencyLeft > 0 && !isTruePremium) ? (
-                    <div style={{ display: 'flex', gap: 6, marginTop: 10, maxWidth: 230 }}>
-                      <span style={urgBlk}>{urg.d}<small style={urgSmall}>{t('profile.urgDay', 'kun')}</small></span>
-                      <span style={urgBlk}>{urg.h}<small style={urgSmall}>{t('profile.urgHour', 'soat')}</small></span>
-                      <span style={urgBlk}>{urg.m}<small style={urgSmall}>{t('profile.urgMin', 'daq')}</small></span>
-                      <span style={urgBlk}>{urg.s}<small style={urgSmall}>{t('profile.urgSec', 'son')}</small></span>
+                  <div style={{ paddingRight: 52 }}>
+                    <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--text)' }}>{subTitle}</div>
+                    {(trialStatus === 'urgency' && urgencyLeft > 0 && !isTruePremium) ? (
+                      <div style={{ display: 'flex', gap: 6, marginTop: 10 }}>
+                        <span style={urgBlk}>{urg.d}<small style={urgSmall}>{t('profile.urgDay', 'kun')}</small></span>
+                        <span style={urgBlk}>{urg.h}<small style={urgSmall}>{t('profile.urgHour', 'soat')}</small></span>
+                        <span style={urgBlk}>{urg.m}<small style={urgSmall}>{t('profile.urgMin', 'daq')}</small></span>
+                        <span style={urgBlk}>{urg.s}<small style={urgSmall}>{t('profile.urgSec', 'son')}</small></span>
+                      </div>
+                    ) : (
+                      <div style={{ fontSize: 13, color: 'var(--text2)', marginTop: 5, lineHeight: 1.45 }}>{subDesc}</div>
+                    )}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 14, color: isTruePremium ? 'var(--amber)' : 'var(--accent)', fontWeight: 800, fontSize: 13.5 }}>
+                      {isTruePremium
+                        ? <><Check size={15} /> {t('profile.premiumManage', 'Boshqarish')}</>
+                        : <>{t('header.premiumBuy', "Obuna bo'lish")} <ChevronRight size={15} /></>}
                     </div>
-                  ) : (
-                    <div style={{ fontSize: 13, color: 'var(--text2)', marginTop: 5, lineHeight: 1.45, maxWidth: 210 }}>{subDesc}</div>
-                  )}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 14, color: isTruePremium ? 'var(--amber)' : 'var(--accent)', fontWeight: 800, fontSize: 13.5 }}>
-                    {isTruePremium
-                      ? <><Check size={15} /> {t('profile.premiumManage', 'Boshqarish')}</>
-                      : <>{t('header.premiumBuy', "Obuna bo'lish")} <ChevronRight size={15} /></>}
                   </div>
                   <div style={{ position: 'absolute', right: 16, bottom: 14, width: 50, height: 50, borderRadius: 15, background: 'var(--bg2)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 6px 16px rgba(0,0,0,0.08)' }}>
                     <Crown size={26} color={isTruePremium ? 'var(--amber)' : 'var(--accent)'} />

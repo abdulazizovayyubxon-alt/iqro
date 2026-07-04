@@ -6,6 +6,7 @@ import ResultShareCard from '../shared/ResultShareCard';
 
 const TestResults = ({
   correctCount,
+  earnedPoints,
   questionsLength,
   topicName,
   state,
@@ -52,9 +53,11 @@ const TestResults = ({
           {correctCount} <span style={{ fontSize: 28, color: 'var(--text3)' }}>/ {questionsLength}</span>
         </div>
         <div style={{ fontSize: 20, marginTop: 8, color: 'var(--text2)', fontWeight: 800 }}>{pct}%</div>
-        <div style={{ fontSize: 13, color: 'var(--accent2)', fontWeight: 700, marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
-          {t('results.ratingAdded', { points: correctCount })}
-        </div>
+        {(earnedPoints ?? 0) > 0 && (
+          <div style={{ fontSize: 13, color: 'var(--accent2)', fontWeight: 700, marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
+            {t('results.ratingAdded', { points: earnedPoints })}
+          </div>
+        )}
       </div>
       
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 320, margin: '0 auto' }}>

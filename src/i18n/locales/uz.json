@@ -26,7 +26,8 @@
     "loading": "Yuklanmoqda...",
     "back": "Orqaga",
     "allTopics": "Barcha mavzular",
-    "userFallback": "Foydalanuvchi"
+    "userFallback": "Foydalanuvchi",
+    "copied": "Havola nusxalandi"
   },
   "settings": {
     "title": "Sozlamalar",
@@ -66,7 +67,25 @@
     "aboutHint": "Loyiha, qo'llab-quvvatlash va bog'lanish",
     "deleteAccount": "Hisobni o'chirish",
     "logout": "Chiqish",
-    "version": "Toifa Pro · versiya {{version}}"
+    "version": "Toifa Pro · versiya {{version}}",
+    "toasts": {
+      "pushAlreadyEnabled": "Push bildirishnomalar allaqachon yoqilgan",
+      "pushBlocked": "Bildirishnomalar brauzerda bloklangan. Brauzer sozlamalaridan ruxsat bering.",
+      "pushEnabled": "✅ Push bildirishnomalar yoqildi!",
+      "pushNoVapid": "Push hali sozlanmagan (server kaliti yo'q).",
+      "pushDenied": "Ruxsat berilmadi.",
+      "pushUnsupported": "Bu qurilma/brauzer push'ni qo'llab-quvvatlamaydi.",
+      "pushError": "Push yoqishda xatolik.",
+      "generalError": "Xatolik yuz berdi",
+      "logoutError": "Chiqishda xatolik",
+      "deleteAccountSuccess": "Hisobingiz muvaffaqiyatli o'chirildi.",
+      "deleteAccountRequiresRecentLogin": "Xavfsizlik: Iltimos, hisobdan chiqib qayta kiring va keyin o'chiring.",
+      "deleteAccountError": "Xatolik yuz berdi. Adminga murojaat qiling.",
+      "offlineSuccess": "Tayyor! {{count}} ta savol oflayn rejim uchun keshlandi ✅",
+      "offlineNotReady": "Hozircha serverda offline ma'lumotlar tayyor emas.",
+      "offlineError": "Offline yuklashda xatolik yuz berdi",
+      "saved": "Saqlandi ✅"
+    }
   },
   "header": {
     "greeting": "Xush kelibsiz",
@@ -100,7 +119,13 @@
       "text": "Sizning yordamingiz bilan 5 ta yangi do'stimiz loyihaga qo'shildi! Platformamiz rivojiga qo'shgan ushbu ulkan hissangiz uchun sizdan juda minnatdormiz.",
       "highlight": "Siz uchun maxsus: yana 2 ta do'stingizni taklif qilib chegirmalar olish imkoniyatini taqdim etamiz! (Limit +2)",
       "cta": "Ajoyib!"
-    }
+    },
+    "freeAccount": "Oddiy hisob",
+    "themeLight": "Kunduzgi",
+    "themeSepia": "Sepia",
+    "themeDark": "Tungi",
+    "tapToSwitch": "Bosing",
+    "appearance": "Ko'rinish"
   },
   "dashboard": {
     "greetMorning": "Xayrli tong",
@@ -269,10 +294,16 @@
     "toastObjectionSent": "E'tiroz yuborildi!",
     "simulatorTitle": "Imtihon Simulyatori",
     "simulatorDesc": "Attestatsiya malaka sinovi standartlariga mos ravishda 50 ta savoldan iborat real imtihon simulyatsiyasi.",
-    "standardTitle": "📋 Standart Attestatsiya Imtihoni",
-    "standardDesc": "Haqiqiy malaka sinovi formati. Barcha bo'limlardan aralash savollar va 10 ta pedagogik mahorat savollari.",
-    "weakTitle": "🔥 Zaif mavzular bo'yicha moslashtirilgan",
-    "weakDesc": "Platformadagi shaxsiy statistikangizga asoslangan imtihon. Siz eng ko'p xato qilgan yoki aniqligi past mavzularga ko'proq urg'u beradi.",
+    "standardTitle": "Standart imtihon",
+    "standardDesc": "Haqiqiy attestatsiya formati — barcha bo'limlardan aralash savollar",
+    "weakTitle": "Zaif mavzularga urg'u",
+    "weakDesc": "Siz ko'p xato qilgan mavzulardan ko'proq savol tushadi",
+    "chipQuestions": "{{n}} ta savol",
+    "chipMinutes": "{{n}} daqiqa",
+    "resumeTitle": "Tugallanmagan imtihon bor",
+    "resumeInfo": "{{answered}}/{{total}} javob berilgan · {{time}} vaqt qolgan",
+    "resume": "Davom ettirish",
+    "startNew": "Yangi imtihon boshlash",
     "start": "Imtihonni boshlash",
     "resultExcellent": "🎉 Tabriklaymiz!",
     "resultGood": "📊 Yaxshi harakat!",
@@ -377,7 +408,7 @@
     "toastDeleted": "Natija o'chirildi",
     "you": "Siz",
     "title": "Reyting",
-    "subtitle": "Har bir to'g'ri javob uchun bir ball",
+    "subtitle": "Yangi savol 2 ball · o'z vaqtida takror 1 ball · kunlik maqsad +5",
     "tabAll": "Barchasi",
     "tabWeekly": "Haftalik",
     "tabMonthly": "Oylik",
@@ -985,7 +1016,8 @@
     "install": "Ilovani o'rnatish",
     "admin": "Admin Panel",
     "chooseSubject": "Fanni tanlang",
-    "currentSubject": "Hozirgi fan:"
+    "currentSubject": "Hozirgi fan:",
+    "about": "Dastur haqida"
   },
   "notifications": {
     "title": "Bildirishnomalar",
@@ -1200,5 +1232,11 @@
     "p5": "Toifa Pro platformasi faqatgina o'qituvchilar va pedagoglarga o'z malaka toifalarini oshirish hamda attestatsiya imtihonlariga sifatli mustaqil tayyorgarlik ko'rishlari uchun yordamchi o'quv-metodik simulyator sifatida ishlab chiqilgan. Platforma O'zbekiston Respublikasi Maktabgacha va maktab ta'limi vazirligi yoki boshqa davlat idoralari qoshidagi rasmiy tashkilot hisoblanmaydi. Biz platformadagi test ko'rsatkichlari asosida real davlat attestatsiyasi imtihonlaridan 100% o'tishni yuridik jihatdan kafolatlamaymiz, chunki yakuniy natija foydalanuvchining shaxsiy sa'y-harakatlari va imtihondagi psixologik holatiga bog'liq. Tizim vaqtincha texnik profilaktika ishlari tufayli yoki internet-provayderlar aybi bilan yuzaga kelgan uzilishlar uchun javobgar emas.",
     "h6": "6. Yakuniy qoidalar",
     "p6": "Ushbu Ommaviy Oferta e'lon qilingan paytdan boshlab kuchga kiradi va noma'lum muddatga amal qiladi. Ma'muriyat bozor talablari, tizim yangilanishlari yoki qonunchilikdagi o'zgarishlarga asosan ushbu foydalanish shartlariga mustaqil ravishda va oldindan ogohlantirmasdan o'zgartirishlar kiritish huquqiga ega. O'zgartirish kiritilgandan so'ng Platformadan foydalanishni davom ettirish – yangilangan shartlarga rozilik hisoblanadi."
+  },
+  "drawer": {
+    "shareText": "Toifa Pro — kasbiy attestatsiyaga tayyorgarlik platformasi",
+    "subTitle": "Toifa Pro Obunasi",
+    "shareApp": "Ilovani ulashish",
+    "contact": "Biz bilan bog'lanish"
   }
 }

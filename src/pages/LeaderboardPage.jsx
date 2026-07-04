@@ -16,14 +16,14 @@ import { getLeague, nextLeague, leagueProgress } from '../utils/league';
 import './LeaderboardPage.css';
 
 // Anti-farm — skoring o'zgartirilmaydi; faqat admin uchun shubhali hisoblarni belgilash.
-// (har javobga maksimal 2 ball; to'g'ri ≤ jami javoblar bo'lishi kerak)
+// (har javobga maks 2 ball + kunlik maqsad bonusi +5 → o'rtacha ≤ ~2.5 ball/javob)
 const farmFlags = (e, t) => {
   const flags = [];
   const answered = e.answered || 0;
   const correct = e.correct || 0;
   const score = e.totalScore || 0;
   const acc = answered > 0 ? correct / answered : 0;
-  if (answered > 0 && score > answered * 2 + 10) flags.push(t('leaderboard.flagScore'));
+  if (answered > 0 && score > answered * 3 + 20) flags.push(t('leaderboard.flagScore'));
   if (answered >= 200 && acc >= 0.98) flags.push(t('leaderboard.flagAccuracy'));
   return flags;
 };

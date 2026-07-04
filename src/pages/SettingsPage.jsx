@@ -71,17 +71,17 @@ export default function SettingsPage({ theme, toggleTheme }) {
   const [pushBusy, setPushBusy] = useState(false);
 
   const handleEnablePush = async () => {
-    if (pushStatus === 'granted') { showToast("Push bildirishnomalar allaqachon yoqilgan", 'info'); return; }
-    if (pushStatus === 'denied') { showToast("Bildirishnomalar brauzerda bloklangan. Brauzer sozlamalaridan ruxsat bering.", 'error'); return; }
+    if (pushStatus === 'granted') { showToast(t('settings.toasts.pushAlreadyEnabled'), 'info'); return; }
+    if (pushStatus === 'denied') { showToast(t('settings.toasts.pushBlocked'), 'error'); return; }
     setPushBusy(true);
     const res = await enablePush(user);
     setPushBusy(false);
     setPushStatus(pushPermission());
-    if (res.ok) showToast("✅ Push bildirishnomalar yoqildi!", 'success');
-    else if (res.reason === 'no_vapid') showToast("Push hali sozlanmagan (server kaliti yo'q).", 'info');
-    else if (res.reason === 'denied') showToast("Ruxsat berilmadi.", 'error');
-    else if (res.reason === 'unsupported') showToast("Bu qurilma/brauzer push'ni qo'llab-quvvatlamaydi.", 'error');
-    else showToast("Push yoqishda xatolik.", 'error');
+    if (res.ok) showToast(t('settings.toasts.pushEnabled'), 'success');
+    else if (res.reason === 'no_vapid') showToast(t('settings.toasts.pushNoVapid'), 'info');
+    else if (res.reason === 'denied') showToast(t('settings.toasts.pushDenied'), 'error');
+    else if (res.reason === 'unsupported') showToast(t('settings.toasts.pushUnsupported'), 'error');
+    else showToast(t('settings.toasts.pushError'), 'error');
   };
 
   // Shrift o'lchami — faqat savol/variant/izoh matnlariga ta'sir qiladi
@@ -148,16 +148,16 @@ export default function SettingsPage({ theme, toggleTheme }) {
       if (displayName && auth.currentUser) {
         try { await updateProfile(auth.currentUser, { displayName }); } catch (e) { console.warn('updateProfile:', e); }
       }
-      showToast("Profil saqlandi ✅", 'success');
+      showToast(t('profile.profileSaved'), 'success');
       setShowEdit(false);
     } catch (e) {
-      showToast("Xatolik yuz berdi", 'error');
+      showToast(t('settings.toasts.generalError'), 'error');
     }
     setSaving(false);
   };
 
   const handleLogout = async () => {
-    try { await logout(); navigate('/'); } catch { showToast("Chiqishda xatolik", 'error'); }
+    try { await logout(); navigate('/'); } catch { showToast(t('settings.toasts.logoutError'), 'error'); }
   };
 
   const handleDeleteAccount = async () => {
@@ -168,15 +168,15 @@ export default function SettingsPage({ theme, toggleTheme }) {
       await deleteDoc(doc(db, 'userStats', uid)).catch(e => console.log(e));
       await deleteDoc(doc(db, 'users', uid)).catch(e => console.log(e));
       await deleteUser(auth.currentUser);
-      showToast("Hisobingiz muvaffaqiyatli o'chirildi.", 'success');
+      showToast(t('settings.toasts.deleteAccountSuccess'), 'success');
       navigate('/');
     } catch (e) {
       console.error(e);
       if (e.code === 'auth/requires-recent-login') {
-        showToast("Xavfsizlik: Iltimos, hisobdan chiqib qayta kiring va keyin o'chiring.", 'error');
+        showToast(t('settings.toasts.deleteAccountRequiresRecentLogin'), 'error');
         setShowDeleteConfirm(false);
       } else {
-        showToast("Xatolik yuz berdi. Adminga murojaat qiling.", 'error');
+        showToast(t('settings.toasts.deleteAccountError'), 'error');
       }
     } finally {
       setDeleting(false);
@@ -208,13 +208,13 @@ export default function SettingsPage({ theme, toggleTheme }) {
         await localforage.setItem(`bundle_v2_${cat}`, rawList);
         await localforage.setItem(`version_v2_${cat}`, remoteVersion);
 
-        showToast(`Tayyor! ${rawList.length} ta savol offline rejim uchun keshlandi ✅`, 'success');
+        showToast(t('settings.toasts.offlineSuccess', { count: rawList.length }), 'success');
       } else {
-        showToast("Hozircha serverda offline ma'lumotlar tayyor emas.", 'error');
+        showToast(t('settings.toasts.offlineNotReady'), 'error');
       }
     } catch (e) {
       console.error(e);
-      showToast("Offline yuklashda xatolik yuz berdi", 'error');
+      showToast(t('settings.toasts.offlineError'), 'error');
     } finally {
       setDownloadingOffline(false);
     }
@@ -513,7 +513,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
       {showRepetitionModal && (
         <RepetitionModal
           value={state.repetitionLimit ?? 10}
-          onChange={(v) => { updateState({ repetitionLimit: v }); showToast('Saqlandi ✅', 'success'); }}
+          onChange={(v) => { updateState({ repetitionLimit: v }); showToast(t('settings.toasts.saved'), 'success'); }}
           onClose={() => setShowRepetitionModal(false)}
         />
       )}

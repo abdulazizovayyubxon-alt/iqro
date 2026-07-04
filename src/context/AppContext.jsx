@@ -34,6 +34,14 @@ export const STREAK_FREEZE_START = 2;     // boshlang'ich zaxira
 export const STREAK_FREEZE_MAX = 3;       // maksimal zaxira
 export const STREAK_FREEZE_MILESTONE = 7; // har 7 kunlik bosqichda +1 zaxira
 
+// ── Ball tizimi ──────────────────────────────────────────────────────────
+// Yangi savol to'g'ri — 2 ball; spaced repetition bo'yicha vaqti kelgan
+// takror to'g'ri — 1 ball; vaqti kelmagan takror — 0 (farmingdan himoya);
+// kunlik maqsad kunida birinchi marta bajarilganda — +5 bonus.
+export const POINTS_NEW_CORRECT = 2;
+export const POINTS_DUE_REVIEW = 1;
+export const DAILY_GOAL_BONUS = 5;
+
 // Ikki toDateString() qiymati orasidagi to'liq kun farqi
 const dayDiff = (fromStr, toStr) => {
   const a = new Date(fromStr); const b = new Date(toStr);
@@ -383,6 +391,7 @@ export const AppProvider = ({ children }) => {
   // chaqiradi. Bu Firestore write'larni drastik kamaytiradi (50 write → 1 write).
   const batchCommitResults = (results) => {
     let snapshot = null;
+    let earnedOut = 0; // UI ga qaytariladi ("+N ball" ko'rsatish uchun)
     setState(prev => {
       const cat = prev.activeCategory;
       const catStats = prev.stats[cat] || buildDefaultCatStats();
@@ -403,6 +412,8 @@ export const AppProvider = ({ children }) => {
 
       // Kunlik maqsad
       const today = new Date().toDateString();
+      // Bonus uchun: maqsad bugun ALLAQACHON bajarilgan bo'lsa, qayta bonus berilmaydi
+      const wasCompletedToday = prev.dailyGoal?.date === today && !!prev.dailyGoal?.completed;
       const dg = prev.dailyGoal?.date === today
         ? { ...prev.dailyGoal, answered: (prev.dailyGoal.answered || 0) + results.totalAnswered }
         : { date: today, answered: results.totalAnswered, target: prev.dailyGoal?.target || 20, completed: false };
@@ -425,8 +436,13 @@ export const AppProvider = ({ children }) => {
       const currentWeeklyScore = prev[`weekly_${weekId}`] || 0;
       const currentMonthlyScore = prev[`monthly_${monthId}`] || 0;
 
-      // Ball hisoblash: Har bir BIRINCHI MARTA to'g'ri topilgan savol uchun 1 ball
-      const earnedPoints = (results.newCorrectCount || 0) * 1;
+      // Ball hisoblash: yangi savol — 2, vaqti kelgan takror — 1,
+      // kunlik maqsad shu sessiyada birinchi marta bajarilsa — +5 bonus
+      const goalBonus = dg.completed && !wasCompletedToday ? DAILY_GOAL_BONUS : 0;
+      const earnedPoints =
+        (results.newCorrectCount || 0) * POINTS_NEW_CORRECT +
+        (results.dueReviewCorrectCount || 0) * POINTS_DUE_REVIEW +
+        goalBonus;
 
       const newState = {
         ...prev,
@@ -460,20 +476,22 @@ export const AppProvider = ({ children }) => {
       };
 
       snapshot = newState; // updater toza — faqat hisoblaydi va natijani capture qiladi
+      earnedOut = earnedPoints;
       return newState;
     });
 
     // Yon ta'sir (Firestore yozuvi) setState updater'idan TASHQARIDA bajariladi —
     // React 18 StrictMode updater'ni ikki marta chaqirganda dublikat write bo'lmaydi.
     // Natija debounce kutmasdan darhol saqlanadi (test yakunida yo'qolmasligi uchun).
-    if (!snapshot) return;
+    if (!snapshot) return earnedOut;
     const currentUser = userRef.current;
-    if (!currentUser) return;
+    if (!currentUser) return earnedOut;
     const statRef = doc(db, 'userStats', currentUser.uid);
     setDoc(statRef, prepareStatsForSave(snapshot, currentUser), { merge: true }).catch(err => {
       console.error('Natijalarni saqlashda xatolik:', err);
       showToast('Natijalar vaqtincha saqlanmadi. Internet aloqasini tekshiring.', 'error');
     });
+    return earnedOut;
   };
 
   // Shaxsiy mnemonika saqlash

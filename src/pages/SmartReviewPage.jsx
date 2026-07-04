@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { AppContext } from '../context/AppContext';
+import { AppContext, getWeekId, getMonthId, POINTS_DUE_REVIEW } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -123,7 +123,21 @@ const SmartReviewPage = () => {
     if (cardIdx >= 0) {
       updatedCards[cardIdx] = updateSpacedCard(updatedCards[cardIdx], isCorrect);
     }
-    updateState({ spacedCards: updatedCards });
+
+    // Vaqti kelgan takrorga to'g'ri javob — 1 ball (bu navbatda faqat due kartalar bor).
+    // Flashcard "Bilaman/Bilmayman" rejimi ball bermaydi — o'z-o'zini baholash farmga ochiq.
+    const weekId = getWeekId();
+    const monthId = getMonthId();
+    updateState({
+      spacedCards: updatedCards,
+      totalAnswered: (state.totalAnswered || 0) + 1,
+      ...(isCorrect ? {
+        totalScore: (state.totalScore || 0) + POINTS_DUE_REVIEW,
+        [`weekly_${weekId}`]: (state[`weekly_${weekId}`] || 0) + POINTS_DUE_REVIEW,
+        [`monthly_${monthId}`]: (state[`monthly_${monthId}`] || 0) + POINTS_DUE_REVIEW,
+        totalCorrect: (state.totalCorrect || 0) + 1
+      } : {})
+    });
 
     setSessionStats(prev => ({
       correct: prev.correct + (isCorrect ? 1 : 0),

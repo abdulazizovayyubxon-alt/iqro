@@ -65,7 +65,10 @@ const TestPage = () => {
   const mode = state.testMode || 'exam';
   const setMode = (m) => updateState({ testMode: m });
   const topicId = state.topicId ?? -1;
-  const goBack = () => navigate('/test');
+  const goBack = () => {
+    localforage.removeItem('test_session').catch(() => {});
+    navigate('/test');
+  };
   const { addObjection } = useContext(ObjectionContext);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [reqJustSent, setReqJustSent] = useState(false);
@@ -105,6 +108,7 @@ const TestPage = () => {
   const [answers, setAnswers] = useState({});
   const [isGenerating, setIsGenerating] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const [earnedPoints, setEarnedPoints] = useState(0); // shu sessiyada yig'ilgan reyting balli
   const [selectedBatch, setSelectedBatch] = useState(0);
   const [showBlockPicker, setShowBlockPicker] = useState(false); // Blok tanlash oynasi (blok chipi orqali)
 
@@ -126,6 +130,8 @@ const TestPage = () => {
   const questionTimesRef = useRef({});
   // Test natijasini ikki marta saqlashdan himoya (double-tap / sekin tarmoq)
   const committedRef = useRef(false);
+  const sessionCheckedRef = useRef(false);
+  const isResumingRef = useRef(false);
 
   // Vaqt tugaganda (countdown) — javobni -1 ("vaqt tugadi") deb belgilaymiz.
   // TimerPill onExpire orqali chaqiradi.
@@ -193,6 +199,10 @@ const TestPage = () => {
   }, [topicId, mode, state.activeCategory, diffFilter]);
 
   useEffect(() => {
+    if (isResumingRef.current) {
+      isResumingRef.current = false;
+      return;
+    }
     if (fullPool.length > 0) {
       const start = selectedBatch * BATCH_SIZE;
       setQuestions(fullPool.slice(start, start + BATCH_SIZE));
@@ -225,6 +235,30 @@ const TestPage = () => {
   const generateFullPool = async () => {
     const currentReq = ++generateReqRef.current;
     setIsGenerating(true);
+
+    // session check on initial mount
+    if (!sessionCheckedRef.current) {
+      sessionCheckedRef.current = true;
+      try {
+        const s = await localforage.getItem('test_session');
+        const valid = s && s.activeCategory === state.activeCategory && s.mode === mode && s.topicId === topicId && (!s.uid || s.uid === user?.uid) && Array.isArray(s.questions) && s.questions.length > 0;
+        if (valid && currentReq === generateReqRef.current) {
+          isResumingRef.current = true;
+          setFullPool(s.fullPool || []);
+          setSelectedBatch(s.selectedBatch || 0);
+          setQuestions(s.questions || []);
+          setCurrentQ(s.currentQ || 0);
+          setAnswers(s.answers || {});
+          setComboCount(s.comboCount || 0);
+          questionTimesRef.current = s.questionTimes || {};
+          setIsGenerating(false);
+          return;
+        }
+      } catch (err) {
+        console.error("Load test session error:", err);
+      }
+    }
+
     setShowResults(false);
     setAnswers({});
     questionTimesRef.current = {};
@@ -535,6 +569,25 @@ const TestPage = () => {
     }
   };
 
+  // Sessiyani localforage'da avtomatik saqlash
+  useEffect(() => {
+    if (questions.length === 0 || showResults) return;
+    localforage.setItem('test_session', {
+      uid: user?.uid || null,
+      activeCategory: state.activeCategory,
+      mode,
+      topicId,
+      questions,
+      fullPool,
+      answers,
+      currentQ,
+      selectedBatch,
+      comboCount,
+      questionTimes: questionTimesRef.current,
+      savedAt: Date.now()
+    }).catch(e => console.error("Save test session error:", e));
+  }, [questions, answers, currentQ, selectedBatch, comboCount, showResults, mode, topicId, state.activeCategory, user?.uid, fullPool]);
+
   useEffect(() => {
     setSelectedBatch(0);
     setReqJustSent(false); // mavzu o'zgarsa so'rov tugma holatini tiklash
@@ -580,6 +633,7 @@ const TestPage = () => {
   const handleShowResults = () => {
     if (committedRef.current) return; // ikki marta bosish / sekin tarmoq himoyasi
     committedRef.current = true;
+    localforage.removeItem('test_session').catch(() => {});
     setShowResults(true);
     // 🧠 SMART ENGINE: Natijalarni tahlil qilish va bir marta saqlash
     const results = summarizeTestResults(questions, answers, state.spacedCards || [], topicId);
@@ -589,7 +643,7 @@ const TestPage = () => {
     results.sessionTime = totalSessionTime;
     results.topicId = topicId;
 
-    batchCommitResults(results);
+    setEarnedPoints(batchCommitResults(results) || 0);
 
     // Send result to Telegram
     const correctCount = Object.keys(answers).filter(k => answers[k] === questions[parseInt(k)]?.correct).length;
@@ -930,6 +984,7 @@ const TestPage = () => {
           ) : (
             <TestResults
               correctCount={correctCount}
+              earnedPoints={earnedPoints}
               questionsLength={questions.length}
               topicName={topicName}
               state={state}
@@ -975,7 +1030,7 @@ const TestPage = () => {
             <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>{t('test.exitText')}</p>
             <div style={{ display: 'flex', gap: 12 }}>
               <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setShowExitConfirm(false)}>{t('test.continueBtn')}</button>
-              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { setShowExitConfirm(false); navigate('/test'); }}>{t('test.exit')}</button>
+              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { setShowExitConfirm(false); localforage.removeItem('test_session').catch(() => {}); navigate('/test'); }}>{t('test.exit')}</button>
             </div>
           </motion.div>
         </div>

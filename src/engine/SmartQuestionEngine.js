@@ -318,9 +318,11 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
 
   let correctCount = 0;
   let newCorrectCount = 0;
+  let dueReviewCorrectCount = 0;
   let wrongCount = 0;
   const newMistakes = [];
   const updatedCards = new Map(spacedCards.map(c => [c.qHash, { ...c }]));
+  const sessionNow = Date.now();
 
   for (let i = 0; i < questions.length; i++) {
     const q = questions[i];
@@ -335,6 +337,13 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
 
       // Spaced Repetition: to'g'ri javob → level ko'tariladi
       if (updatedCards.has(qHash)) {
+        // Ball uchun faqat vaqti kelgan takror sanaladi — sessiya boshidagi
+        // asl kartaning nextReview muddati bo'yicha (vaqti kelmagani 0 ball,
+        // bir savolni qayta-qayta ishlab ball yig'ishdan himoya)
+        const originalCard = spacedMap.get(qHash);
+        if (originalCard && (originalCard.nextReview || 0) <= sessionNow) {
+          dueReviewCorrectCount++;
+        }
         updatedCards.set(qHash, updateSpacedCard(updatedCards.get(qHash), true));
       } else {
         newCorrectCount++;
@@ -395,6 +404,7 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
     correctCount,
     wrongCount,
     newCorrectCount,
+    dueReviewCorrectCount,
     totalAnswered: correctCount + wrongCount,
     accuracy: questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0,
     newMistakes,

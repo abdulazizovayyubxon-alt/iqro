@@ -47,6 +47,10 @@ function cleanForDedup(text) {
 
 const EXAM_TOTAL = 50;
 
+// Tugallanmagan imtihon sessiyasi shu kalit ostida localforage'da saqlanadi —
+// foydalanuvchi chiqib ketsa, qaytganda o'sha joydan davom ettira oladi.
+const EXAM_SESSION_KEY = 'exam_session_v1';
+
 const SUBJECT_BLUEPRINTS = {
   chqbt: { 0: 8, 1: 8, 2: 7, 3: 4, 4: 4, 5: 4, 6: 15 },
   art: { 7: 10, 8: 3, 9: 4, 10: 3, 11: 7, 12: 4, 13: 4, 14: 15 },
@@ -110,8 +114,10 @@ const ExamPage = () => {
   const [currentQ, setCurrentQ] = useState(0);
   const [timeLeft, setTimeLeft] = useState(() => getExamDuration(cat));
   const [finished, setFinished] = useState(false);
-  const [startTime] = useState(new Date());
+  const [startTimeMs, setStartTimeMs] = useState(Date.now());
   const [endTime, setEndTime] = useState(null);
+  const [examEarnedPoints, setExamEarnedPoints] = useState(0); // haqiqiy yig'ilgan reyting balli
+  const [savedSession, setSavedSession] = useState(null); // tugallanmagan imtihon (resume)
   const [showObjectionModal, setShowObjectionModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [reviewMode, setReviewMode] = useState(false);
@@ -141,6 +147,93 @@ const ExamPage = () => {
 
   const questionStartTimeRef = useRef(Date.now());
   const questionTimesRef = useRef({});
+  const committedRef = useRef(false);   // natija ikki marta yozilishidan himoya
+  const resumingRef = useRef(false);    // resume'da savollar qayta yuklanmasligi uchun
+  const sessionCheckedRef = useRef(false);
+  const timeLeftRef = useRef(timeLeft); // sessiya saqlashda oxirgi qiymatni olish uchun
+  useEffect(() => { timeLeftRef.current = timeLeft; }, [timeLeft]);
+
+  // ── Sessiyani saqlash (resume) ──────────────────────────────────────────
+  // Faol imtihon holatini localforage'ga yozadi. Har javob/savol almashishida,
+  // ilova yashirilganda va har 30 soniyada yangilanadi.
+  const persistRef = useRef(null);
+  persistRef.current = () => {
+    if (!examStarted || finished || reviewMode || loading || questions.length === 0) return;
+    localforage.setItem(EXAM_SESSION_KEY, {
+      uid: user?.uid || null,
+      cat,
+      examType,
+      questions,
+      topicGroups,
+      answers,
+      flagged,
+      currentQ,
+      timeLeft: timeLeftRef.current,
+      questionTimes: questionTimesRef.current,
+      startTimeMs,
+      savedAt: Date.now()
+    }).catch(() => {});
+  };
+
+  useEffect(() => { persistRef.current?.(); }, [answers, flagged, currentQ]);
+
+  useEffect(() => {
+    const onHide = () => { if (document.visibilityState === 'hidden') persistRef.current?.(); };
+    document.addEventListener('visibilitychange', onHide);
+    const iv = setInterval(() => persistRef.current?.(), 30000);
+    return () => { document.removeEventListener('visibilitychange', onHide); clearInterval(iv); };
+  }, []);
+
+  // Kirish oynasida vaqtinchalik saqlangan sessiyani avtomatik tiklash (Resume)
+  useEffect(() => {
+    if (examStarted || sessionCheckedRef.current) return;
+    sessionCheckedRef.current = true;
+    localforage.getItem(EXAM_SESSION_KEY).then(s => {
+      const valid = s && s.cat === cat && (!s.uid || s.uid === user?.uid)
+        && Array.isArray(s.questions) && s.questions.length > 0 && s.timeLeft > 0;
+      if (valid) {
+        setQuestions(s.questions);
+        setTopicGroups(s.topicGroups || []);
+        setAnswers(s.answers || {});
+        setFlagged(s.flagged || {});
+        setCurrentQ(s.currentQ || 0);
+        setTimeLeft(s.timeLeft);
+        setExamType(s.examType || 'standard');
+        setStartTimeMs(s.startTimeMs || Date.now());
+        questionTimesRef.current = s.questionTimes || {};
+        questionStartTimeRef.current = Date.now();
+        committedRef.current = false;
+        resumingRef.current = true;
+        setExamStarted(true);
+      }
+    }).catch(e => console.error("Error restoring exam session:", e));
+  }, [cat, user?.uid, examStarted]);
+
+  const clearSavedSession = () => {
+    localforage.removeItem(EXAM_SESSION_KEY).catch(() => {});
+    setSavedSession(null);
+  };
+
+  // Saqlangan sessiyadan davom ettirish — savollar qayta yuklanmaydi,
+  // javoblar, bayroqlar, joriy savol va qolgan vaqt aynan tiklanadi
+  const resumeExam = () => {
+    const s = savedSession;
+    if (!s) return;
+    setQuestions(s.questions);
+    setTopicGroups(s.topicGroups || []);
+    setAnswers(s.answers || {});
+    setFlagged(s.flagged || {});
+    setCurrentQ(s.currentQ || 0);
+    setTimeLeft(s.timeLeft);
+    setExamType(s.examType || 'standard');
+    setStartTimeMs(s.startTimeMs || Date.now());
+    questionTimesRef.current = s.questionTimes || {};
+    questionStartTimeRef.current = Date.now();
+    committedRef.current = false;
+    resumingRef.current = true;
+    setSavedSession(null);
+    setExamStarted(true);
+  };
 
   const accumulateTime = () => {
     if (questionStartTimeRef.current) {
@@ -159,6 +252,11 @@ const ExamPage = () => {
   // Savollarni yuklash (Firestore dan)
   useEffect(() => {
     if (!examStarted) return;
+    // Resume orqali kirilgan bo'lsa — savollar allaqachon tiklangan, qayta yuklamaymiz
+    if (resumingRef.current) {
+      resumingRef.current = false;
+      return;
+    }
 
     setTimeLeft(getExamDuration(cat));
     setFinished(false);
@@ -168,6 +266,8 @@ const ExamPage = () => {
     setPacing(null);
     setWeakTopicsSorted([]);
     setCurrentQ(0);
+    setStartTimeMs(Date.now());
+    committedRef.current = false;
     questionTimesRef.current = {};
     questionStartTimeRef.current = Date.now();
 
@@ -388,9 +488,12 @@ const ExamPage = () => {
     loadExamQuestions();
   }, [cat, examStarted, examType]);
 
-  // Taymer
+  // Taymer — FAQAT faol imtihon paytida ishlaydi.
+  // Avval kirish oynasida, yuklanishda va natijadan "ko'rib chiqish"ga
+  // o'tilganda ham hisoblab turardi (review'da vaqt tugasa imtihon ikkinchi
+  // marta yakunlanib, ball ikki marta yozilardi).
   useEffect(() => {
-    if (finished) return;
+    if (!examStarted || finished || reviewMode || loading || questions.length === 0) return;
     timerRef.current = setInterval(() => {
       setTimeLeft(prev => {
         if (prev <= 1) {
@@ -402,7 +505,7 @@ const ExamPage = () => {
       });
     }, 1000);
     return () => clearInterval(timerRef.current);
-  }, [finished]);
+  }, [examStarted, finished, reviewMode, loading, questions.length]);
 
   const formatTime = (secs) => {
     const h = Math.floor(secs / 3600);
@@ -422,8 +525,15 @@ const ExamPage = () => {
       setShowConfirmModal(true);
       return;
     }
+    // Ikki marta yakunlashdan himoya: taymer 0 ga yetishi bilan foydalanuvchi
+    // "Yakunlash"ni bossa (yoki StrictMode updater ikki marta chaqirsa) —
+    // natija faqat bir marta yoziladi
+    if (committedRef.current) return;
+    committedRef.current = true;
+
     accumulateTime();
     clearInterval(timerRef.current);
+    clearSavedSession(); // imtihon yakunlandi — resume sessiyasi endi kerak emas
     setFinished(true);
     setEndTime(new Date());
 
@@ -473,8 +583,11 @@ const ExamPage = () => {
     // 🧠 SMART ENGINE
     const results = summarizeTestResults(questions, answers, state.spacedCards || [], -1);
     results.topicId = -1;
-    results.sessionTime = Math.round((Date.now() - startTime) / 1000); // optional if startTime is available
-    batchCommitResults(results);
+    // Sessiya vaqti — savollarga sarflangan haqiqiy vaqt yig'indisi.
+    // Wall-clock (Date.now - startTime) resume'dan keyin noto'g'ri bo'lardi
+    // (ilovadan tashqarida o'tgan vaqtni ham qo'shib yuborardi).
+    results.sessionTime = Object.values(questionTimesRef.current).reduce((a, b) => a + b, 0);
+    setExamEarnedPoints(batchCommitResults(results) || 0);
 
     const correct = results.correctCount;
     const pct = results.accuracy;
@@ -493,7 +606,7 @@ const ExamPage = () => {
         wrong: questions.length - correct,
         total: questions.length,
         time: formatTime(Object.values(times).reduce((a, b) => a + b, 0)),
-        mode: 'Standart Attestatsiya Imtihoni',
+        mode: examType === 'weak' ? 'Zaif mavzular imtihoni' : 'Standart Attestatsiya Imtihoni',
         title: 'Barcha bo\'limlar'
       })
     }).catch(e => console.error(e));
@@ -522,69 +635,121 @@ const ExamPage = () => {
   const isWarning = timeLeft <= 600; // 10 daqiqa
 
   if (!examStarted) {
+    const durationMin = Math.round(getExamDuration(cat) / 60);
+    const subjName = SUBJECTS.find(s => s.id === cat)?.name || '';
+
+    // Rejim kartalari — katta belgi + qisqa bitta qator tavsif, tanlov aniq ko'rinadi
+    const modeCards = [
+      { id: 'standard', icon: '📋', title: t('exam.standardTitle'), desc: t('exam.standardDesc') },
+      { id: 'weak', icon: '🎯', title: t('exam.weakTitle'), desc: t('exam.weakDesc') }
+    ];
+
+    const chipStyle = {
+      display: 'inline-flex', alignItems: 'center', gap: 6,
+      padding: '7px 13px', borderRadius: 999,
+      background: 'var(--bg3)', border: '1px solid var(--border)',
+      fontSize: 'calc(13px * var(--font-scale))', fontWeight: 700, color: 'var(--text2)'
+    };
+
     return (
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="page" style={{ maxWidth: 600, margin: '0 auto', padding: '16px', display: 'flex', minHeight: '100%', alignItems: 'center' }}>
-        <div className="glass-panel" style={{ padding: '24px 20px', textAlign: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.06)', width: '100%' }}>
-          <div style={{ fontSize: 40, marginBottom: 8 }}>🏆</div>
-          <h1 style={{ fontSize: 'calc(22px * var(--font-scale))', fontWeight: 900, color: 'var(--text)', marginBottom: 6, letterSpacing: '-0.5px' }}>{t('exam.simulatorTitle')}</h1>
-          <p style={{ fontSize: 'calc(13.5px * var(--font-scale))', color: 'var(--text3)', lineHeight: 1.5, marginBottom: 18, fontWeight: 500 }}>
-            {t('exam.simulatorDesc')}
-          </p>
+        <div className="glass-panel" style={{ padding: '26px 20px', textAlign: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.06)', width: '100%' }}>
+          <div style={{ fontSize: 44, marginBottom: 8 }}>🏆</div>
+          <h1 style={{ fontSize: 'calc(23px * var(--font-scale))', fontWeight: 900, color: 'var(--text)', marginBottom: 12, letterSpacing: '-0.5px' }}>{t('exam.simulatorTitle')}</h1>
 
-          {/* Exam Type Selector */}
+          {/* Uzun matn o'rniga — bir qarashda o'qiladigan chiplar */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 20 }}>
+            <span style={chipStyle}>📝 {t('exam.chipQuestions', { n: EXAM_TOTAL })}</span>
+            <span style={chipStyle}>⏱ {t('exam.chipMinutes', { n: durationMin })}</span>
+            {subjName && <span style={chipStyle}>📚 {subjName}</span>}
+          </div>
+
+          {/* Tugallanmagan imtihon — davom ettirish taklifi */}
+          {savedSession && (
+            <div style={{
+              padding: '14px 16px', borderRadius: 16, marginBottom: 16, textAlign: 'left',
+              background: 'var(--amber-bg)', border: '1.5px solid var(--amber)'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+                <span style={{ fontSize: 22 }}>⏸️</span>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 'calc(15px * var(--font-scale))', fontWeight: 800, color: 'var(--text)' }}>{t('exam.resumeTitle')}</div>
+                  <div style={{ fontSize: 'calc(13px * var(--font-scale))', color: 'var(--text2)', marginTop: 2 }}>
+                    {t('exam.resumeInfo', {
+                      answered: Object.keys(savedSession.answers || {}).length,
+                      total: savedSession.questions.length,
+                      time: formatTime(savedSession.timeLeft)
+                    })}
+                  </div>
+                </div>
+              </div>
+              <button
+                onClick={resumeExam}
+                style={{ width: '100%', padding: '12px', background: 'var(--amber)', color: '#fff', border: 'none', borderRadius: 12, fontSize: 15, fontWeight: 800, cursor: 'pointer', fontFamily: 'inherit' }}
+              >
+                ▶ {t('exam.resume')}
+              </button>
+            </div>
+          )}
+
+          {/* Rejim tanlash */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 18, textAlign: 'left' }}>
-            {/* Standard option */}
-            <div
-              onClick={() => setExamType('standard')}
-              style={{
-                padding: '13px 16px',
-                borderRadius: 14,
-                border: '2px solid',
-                borderColor: examType === 'standard' ? 'var(--blue)' : 'var(--border)',
-                background: examType === 'standard' ? 'var(--blue-bg)' : 'var(--bg2)',
-                cursor: 'pointer',
-                transition: 'all 0.2s'
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                <strong style={{ fontSize: 'calc(15px * var(--font-scale))', color: 'var(--text)' }}>{t('exam.standardTitle')}</strong>
-                <input type="radio" checked={examType === 'standard'} readOnly />
-              </div>
-              <div style={{ fontSize: 'calc(12px * var(--font-scale))', color: 'var(--text3)', lineHeight: 1.45 }}>
-                {t('exam.standardDesc')}
-              </div>
-            </div>
-
-            {/* Weak option */}
-            <div
-              onClick={() => setExamType('weak')}
-              style={{
-                padding: '13px 16px',
-                borderRadius: 14,
-                border: '2px solid',
-                borderColor: examType === 'weak' ? 'var(--blue)' : 'var(--border)',
-                background: examType === 'weak' ? 'var(--blue-bg)' : 'var(--bg2)',
-                cursor: 'pointer',
-                transition: 'all 0.2s'
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                <strong style={{ fontSize: 'calc(15px * var(--font-scale))', color: 'var(--text)' }}>{t('exam.weakTitle')}</strong>
-                <input type="radio" checked={examType === 'weak'} readOnly />
-              </div>
-              <div style={{ fontSize: 'calc(12px * var(--font-scale))', color: 'var(--text3)', lineHeight: 1.45 }}>
-                {t('exam.weakDesc')}
-              </div>
-            </div>
+            {modeCards.map(m => {
+              const active = examType === m.id;
+              return (
+                <div
+                  key={m.id}
+                  onClick={() => setExamType(m.id)}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: 12,
+                    padding: '14px 14px',
+                    borderRadius: 16,
+                    border: '2px solid',
+                    borderColor: active ? 'var(--blue)' : 'var(--border)',
+                    background: active ? 'var(--blue-bg)' : 'var(--bg2)',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s'
+                  }}
+                >
+                  <div style={{
+                    width: 46, height: 46, borderRadius: 13, flexShrink: 0,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: 24, background: active ? 'var(--bg2)' : 'var(--bg3)',
+                    border: '1px solid var(--border)'
+                  }}>
+                    {m.icon}
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 'calc(15.5px * var(--font-scale))', fontWeight: 800, color: 'var(--text)', marginBottom: 3 }}>{m.title}</div>
+                    <div style={{ fontSize: 'calc(13px * var(--font-scale))', color: 'var(--text3)', lineHeight: 1.4 }}>{m.desc}</div>
+                  </div>
+                  {/* Tanlov belgisi — radio o'rniga aniq ko'rinadigan doira */}
+                  <div style={{
+                    width: 24, height: 24, borderRadius: '50%', flexShrink: 0,
+                    border: active ? 'none' : '2px solid var(--border2)',
+                    background: active ? 'var(--blue)' : 'transparent',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: '#fff', fontSize: 14, fontWeight: 900
+                  }}>
+                    {active ? '✓' : ''}
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           <motion.button
             whileHover={{ scale: 1.01, y: -1 }}
             whileTap={{ scale: 0.98 }}
-            onClick={() => { setExamStarted(true); AnalyticsEvents.examStart(); }}
+            onClick={() => {
+              // Yangi imtihon boshlansa, eski tugallanmagan sessiya bekor qilinadi
+              clearSavedSession();
+              setExamStarted(true);
+              AnalyticsEvents.examStart();
+            }}
             style={{ width: '100%', padding: '15px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontSize: 16, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
           >
-            {t('exam.start')}
+            {savedSession ? t('exam.startNew') : t('exam.start')}
           </motion.button>
         </div>
       </motion.div>
@@ -683,13 +848,13 @@ const ExamPage = () => {
                   <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>{t('exam.statSkipped')}</div>
                 </div>
                 <div style={{ textAlign: 'center', minWidth: 80 }}>
-                  <div style={{ fontSize: 26, fontWeight: 900, color: 'var(--accent2)' }}>+{correctCount * 2}</div>
+                  <div style={{ fontSize: 26, fontWeight: 900, color: 'var(--accent2)' }}>+{examEarnedPoints}</div>
                   <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>{t('exam.statRating')}</div>
                 </div>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 13, color: 'var(--text2)' }}>
-                <div>{t('exam.date')} <strong>{startTime.toLocaleDateString()}</strong></div>
-                <div>{t('exam.started')} <strong>{startTime.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</strong></div>
+                <div>{t('exam.date')} <strong>{new Date(startTimeMs).toLocaleDateString()}</strong></div>
+                <div>{t('exam.started')} <strong>{new Date(startTimeMs).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</strong></div>
                 <div>{t('exam.ended')} <strong>{endTime?.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</strong></div>
               </div>
             </div>

@@ -351,8 +351,8 @@ const Header = ({ theme, toggleTheme }) => {
               bottom: isMobile ? '90px' : '32px',
               left: '50%',
               transform: 'translateX(-50%)',
-              padding: '12px 24px',
-              borderRadius: '99px',
+              padding: isMobile ? '12px 18px' : '12px 24px',
+              borderRadius: isMobile ? '16px' : '99px',
               fontSize: '14px',
               fontWeight: 700,
               zIndex: 10000,
@@ -366,15 +366,17 @@ const Header = ({ theme, toggleTheme }) => {
               WebkitBackdropFilter: 'blur(10px)',
               border: '1px solid rgba(255,255,255,0.15)',
               pointerEvents: 'none',
-              whiteSpace: 'nowrap',
+              whiteSpace: 'normal',
+              width: 'fit-content',
+              maxWidth: 'calc(100vw - 32px)',
             }}
           >
-            <span style={{ fontSize: '16px', fontWeight: 800 }}>
+            <span style={{ fontSize: '16px', fontWeight: 800, flexShrink: 0 }}>
               {toast.type === 'success' && '✓'}
               {toast.type === 'error' && '✗'}
               {toast.type === 'info' && 'ℹ'}
             </span>
-            <span>{toast.message}</span>
+            <span style={{ textAlign: 'left' }}>{toast.message}</span>
           </motion.div>
         )}
       </AnimatePresence>
