@@ -487,8 +487,24 @@ export default function SettingsPage({ theme, toggleTheme }) {
           </div>
 
           {/* ═══ VERSIYA ═══ */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, fontSize: 11, color: 'var(--text3)', padding: '4px 0 8px' }}>
-            <BrandLogo size={14} /> · versiya {APP_VERSION}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            padding: '24px 0 16px',
+            userSelect: 'none'
+          }}>
+            <BrandLogo size={22} />
+            <span style={{
+              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+              fontSize: '13px',
+              color: 'var(--text3)',
+              fontWeight: 500,
+              marginLeft: '2px'
+            }}>
+              · versiya {APP_VERSION}
+            </span>
           </div>
         </div>
       </div>

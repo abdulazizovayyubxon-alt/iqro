@@ -9,7 +9,7 @@ import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { updateProfile } from 'firebase/auth';
 import { resolveAvatar, avatarUrl } from '../data/avatars';
 import { SUBJECTS } from '../data/mockData';
-import { APP_URL, SUPPORT_URL } from '../config';
+import { APP_URL, SUPPORT_URL, APP_VERSION } from '../config';
 import NotificationBell from './NotificationBell';
 import PremiumModal from './PremiumModal';
 import EditProfileModal from './profile/EditProfileModal';
@@ -397,7 +397,7 @@ const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user, stats }) => {
                   color: theme === 'dark' ? '#5A606A' : '#94A3B8',
                   marginLeft: '2px'
                 }}>
-                  v2.0
+                  v{APP_VERSION}
                 </span>
               </div>
             </motion.div>
