@@ -194,6 +194,21 @@ const Header = ({ theme, toggleTheme }) => {
               </span>
             )}
           </div>
+          <span 
+            className="header-greet-name" 
+            style={{ 
+              fontSize: '14px', 
+              fontWeight: 700, 
+              color: 'var(--text)', 
+              marginLeft: '8px',
+              maxWidth: '85px',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap'
+            }}
+          >
+            {firstName}
+          </span>
         </div>
 
         {/* Centered Brand Logo */}
