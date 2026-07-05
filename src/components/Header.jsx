@@ -29,7 +29,7 @@ const Header = ({ theme, toggleTheme }) => {
   const { state } = useContext(AppContext);
 
   // Profil drawer'dagi kompakt statistika — ProfilePage bilan bir manba
-  const totalXP = getTotalXP(state.stats, state);
+  const totalXP = getTotalXP(state.stats);
   const levelInfo = getLevel(totalXP);
   const nextXP = levelInfo.level === 1 ? 75 : levelInfo.level === 2 ? 200 : levelInfo.level === 3 ? 500 : levelInfo.level === 4 ? 1000 : 9999;
   const drawerStats = { xp: totalXP, xpMax: nextXP, level: levelInfo.level, streak: state.dailyStreak || 0 };
@@ -180,7 +180,7 @@ const Header = ({ theme, toggleTheme }) => {
 
   return (
     <>
-      <div className="header" style={{ position: 'relative' }}>
+      <div className="header">
         <div className="header-greeting" onClick={() => setShowProfileDrawer(true)} title={t('header.profile')}>
           <div className="header-avatar-wrap">
             <div className="header-avatar">
@@ -194,37 +194,10 @@ const Header = ({ theme, toggleTheme }) => {
               </span>
             )}
           </div>
-          <span 
-            className="header-greet-name" 
-            style={{ 
-              fontSize: '14px', 
-              fontWeight: 700, 
-              color: 'var(--text)', 
-              marginLeft: '8px',
-              maxWidth: '85px',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              whiteSpace: 'nowrap'
-            }}
-          >
-            {firstName}
-          </span>
-        </div>
-
-        {/* Centered Brand Logo */}
-        <div
-          style={{
-            position: 'absolute',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            display: 'flex',
-            alignItems: 'center',
-            cursor: 'pointer',
-            pointerEvents: 'auto'
-          }}
-          onClick={() => navigate('/dashboard')}
-        >
-          <BrandLogo size={28} />
+          <div className="header-greeting-text">
+            <span className="header-greet-hi">{t(greetKey)}</span>
+            <span className="header-greet-name">{firstName}</span>
+          </div>
         </div>
 
         <div className="header-stats">
