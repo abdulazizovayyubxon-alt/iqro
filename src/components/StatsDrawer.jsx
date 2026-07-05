@@ -5,6 +5,7 @@ import { AppContext } from '../context/AppContext';
 import { TOPICS } from '../data/mockData';
 import RadialChart from './shared/RadialChart';
 import { TrendingUp, Target, AlertCircle, X } from 'lucide-react';
+import { useModalBackButton } from './profile/useModalBackButton';
 
 // ── Sokin/jiddiy uslub — ProfileDrawer bilan bir xil tokenlar ──
 const card = { background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 16, boxShadow: '0 2px 8px rgba(15,27,45,0.04)' };
@@ -19,6 +20,9 @@ const statRow = { display: 'flex', justifyContent: 'space-between', alignItems: 
 const StatsDrawer = ({ open, onClose, topicTotals = {} }) => {
   const { t } = useTranslation();
   const { state } = useContext(AppContext);
+
+  // Close on back button
+  useModalBackButton(open, onClose);
 
   const cat = state.activeCategory;
   const catStats = state.stats[cat] || { totalAnswered: 0, totalCorrect: 0, maxStreak: 0, mistakes: [] };

@@ -37,52 +37,15 @@ export default function LoginPage() {
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
   const [lockoutTimer, setLockoutTimer] = useState(null);
-  const [featureIdx, setFeatureIdx] = useState(0);
 
+  // Sokin, jiddiy, ishonchli — barcha slaydlarda YAGONA brend azure rangi.
+  // Oldin har slayd o'z rangida (ko'k/yashil/binafsha/sariq) edi va fon
+  // "rang-barang" bo'lib ketardi. Endi fon doim azure — bank/Click uslubi.
   const WELCOME_SLIDES = [
-    { 
-      id: 1, 
-      img: '/images/slide1_clean.png',
-      color: '#0ea5e9', 
-      title: t('login.welcome.s1Title'), 
-      desc: t('login.welcome.s1Desc') 
-    },
-    { 
-      id: 2, 
-      img: '/images/slide2_clean.png',
-      color: '#10b981', 
-      title: t('login.welcome.s2Title'), 
-      desc: t('login.welcome.s2Desc') 
-    },
-    { 
-      id: 3, 
-      img: '/images/slide3_clean.png',
-      color: '#8b5cf6', 
-      title: t('login.welcome.s3Title'),
-      desc: t('login.welcome.s3Desc')
-    },
-    { 
-      id: 4, 
-      img: '/images/slide4_clean.png',
-      color: '#f59e0b', 
-      title: t('login.welcome.s4Title'),
-      desc: t('login.welcome.s4Desc')
-    }
-  ];
-
-  useEffect(() => {
-    if (step === STEPS.PHONE) {
-      const int = setInterval(() => {
-        setFeatureIdx(prev => (prev + 1) % 3);
-      }, 3000);
-      return () => clearInterval(int);
-    }
-  }, [step]);
-
-  const FEATURES = [
-    { icon: '🚀', title: t('login.f1Title'), desc: t('login.f1Desc') },
-    { icon: '🧠', title: t('login.f2Title'), desc: t('login.f2Desc') },
-    { icon: '📵', title: t('login.f3Title'), desc: t('login.f3Desc') }
+    { id: 1, title: t('login.welcome.s1Title'), desc: t('login.welcome.s1Desc') },
+    { id: 2, title: t('login.welcome.s2Title'), desc: t('login.welcome.s2Desc') },
+    { id: 3, title: t('login.welcome.s3Title'), desc: t('login.welcome.s3Desc') },
+    { id: 4, title: t('login.welcome.s4Title'), desc: t('login.welcome.s4Desc') },
   ];
 
   useEffect(() => {
@@ -228,7 +191,7 @@ export default function LoginPage() {
   return (
     <div style={{
       ...s.pageOuter,
-      background: step === STEPS.WELCOME ? 'radial-gradient(circle at 50% 30%, #151c2a 0%, #0d121c 100%)' : s.pageOuter.background,
+      background: step === STEPS.WELCOME ? 'radial-gradient(circle at 50% 25%, #0F1B2D 0%, #070B16 100%)' : s.pageOuter.background,
       color: step === STEPS.WELCOME ? '#ffffff' : 'var(--text)',
       transition: 'background 0.5s ease, color 0.5s ease'
     }}>
@@ -254,23 +217,24 @@ export default function LoginPage() {
         `}</style>
       )}
 
-      {/* Animated Glowing Orbs for Glassmorphism Background (Faqat Welcome uchun) */}
+      {/* Sokin fon nurlanishi — YAGONA azure tus (rang almashmaydi). Jiddiy va
+          ishonchli ko'rinish uchun past shaffoflik, faqat chuqurlik beradi. */}
       {step === STEPS.WELCOME && (
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 0 }}>
           <div
             style={{
-              position: 'absolute', top: '-10%', left: '-10%', width: '70vw', height: '70vw',
-              background: WELCOME_SLIDES[welcomeSlide].color,
-              filter: 'blur(110px)', borderRadius: '50%', opacity: 0.22,
-              animation: 'backgroundOrb 12s infinite ease-in-out'
+              position: 'absolute', top: '-12%', left: '-10%', width: '70vw', height: '70vw',
+              background: '#0E97E0',
+              filter: 'blur(120px)', borderRadius: '50%', opacity: 0.14,
+              animation: 'backgroundOrb 16s infinite ease-in-out'
             }}
           />
           <div
             style={{
-              position: 'absolute', bottom: '-10%', right: '-15%', width: '80vw', height: '80vw',
-              background: welcomeSlide === 0 ? '#8b5cf6' : welcomeSlide === 1 ? '#0ea5e9' : welcomeSlide === 2 ? '#f43f5e' : '#10b981',
-              filter: 'blur(130px)', borderRadius: '50%', opacity: 0.18,
-              animation: 'backgroundOrbSecondary 15s infinite ease-in-out'
+              position: 'absolute', bottom: '-12%', right: '-15%', width: '75vw', height: '75vw',
+              background: '#0B79B8',
+              filter: 'blur(140px)', borderRadius: '50%', opacity: 0.10,
+              animation: 'backgroundOrbSecondary 20s infinite ease-in-out'
             }}
           />
         </div>
@@ -494,9 +458,9 @@ export default function LoginPage() {
                                   fontSize: '11px',
                                   fontWeight: 800,
                                   borderRadius: '8px',
-                                  background: 'rgba(16, 185, 129, 0.15)',
-                                  color: '#34d399',
-                                  border: '1px solid rgba(16, 185, 129, 0.25)',
+                                  background: 'rgba(14, 151, 224, 0.15)',
+                                  color: '#38bdf8',
+                                  border: '1px solid rgba(14, 151, 224, 0.25)',
                                   marginBottom: '12px',
                                   letterSpacing: '0.5px',
                                   textTransform: 'uppercase'
@@ -532,9 +496,9 @@ export default function LoginPage() {
                                   fontSize: '11px',
                                   fontWeight: 800,
                                   borderRadius: '8px',
-                                  background: 'rgba(139, 92, 246, 0.12)',
-                                  color: '#a78bfa',
-                                  border: '1px solid rgba(139, 92, 246, 0.25)',
+                                  background: 'rgba(14, 151, 224, 0.12)',
+                                  color: '#38bdf8',
+                                  border: '1px solid rgba(14, 151, 224, 0.25)',
                                   marginBottom: '12px',
                                   letterSpacing: '0.5px',
                                   textTransform: 'uppercase'
@@ -584,10 +548,10 @@ export default function LoginPage() {
                                     width: '48px',
                                     height: '48px',
                                     borderRadius: '50%',
-                                    border: '1.5px solid #a78bfa',
-                                    background: 'radial-gradient(circle at 30% 30%, #c084fc 0%, #8b5cf6 60%, #5b21b6 100%)',
+                                    border: '1.5px solid #38bdf8',
+                                    background: 'radial-gradient(circle at 30% 30%, #5EC2F5 0%, #0E97E0 60%, #0B5E90 100%)',
                                     color: '#fff',
-                                    boxShadow: '0 0 20px rgba(139, 92, 246, 0.5), inset 0 1px 2px rgba(255,255,255,0.3)',
+                                    boxShadow: '0 0 20px rgba(14, 151, 224, 0.5), inset 0 1px 2px rgba(255,255,255,0.3)',
                                     display: 'flex',
                                     flexDirection: 'column',
                                     alignItems: 'center',
@@ -598,7 +562,7 @@ export default function LoginPage() {
                                     fontWeight: 800
                                   }}>
                                     <span>1 kun</span>
-                                    <span style={{ position: 'absolute', bottom: '-24px', fontSize: '9.5px', fontWeight: 700, color: '#c084fc', textShadow: '0 0 8px rgba(139, 92, 246, 0.4)' }}>Qaytarish</span>
+                                    <span style={{ position: 'absolute', bottom: '-24px', fontSize: '9.5px', fontWeight: 700, color: '#5EC2F5', textShadow: '0 0 8px rgba(14, 151, 224, 0.4)' }}>Qaytarish</span>
                                   </div>
 
                                   <div style={{
@@ -700,25 +664,11 @@ export default function LoginPage() {
               {/* ── STEP: PHONE ── */}
               {step === STEPS.PHONE && (
                 <>
-                  <div style={{ marginBottom: 32, minHeight: 80, display: 'flex', alignItems: 'center' }}>
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={featureIdx}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.3 }}
-                        style={{ display: 'flex', alignItems: 'center', gap: 16 }}
-                      >
-                        <div style={{ fontSize: 48, filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.1))' }}>
-                          {FEATURES[featureIdx].icon}
-                        </div>
-                        <div>
-                          <h1 style={{ ...s.title, marginBottom: 6, fontSize: 24, lineHeight: 1.1 }}>{FEATURES[featureIdx].title}</h1>
-                          <p style={{ ...s.subtitle, marginBottom: 0, fontSize: 13, lineHeight: 1.4 }}>{FEATURES[featureIdx].desc}</p>
-                        </div>
-                      </motion.div>
-                    </AnimatePresence>
+                  {/* Sokin, statik sarlavha — aylanuvchi emoji karuseli o'rniga.
+                      Diqqat raqam kiritishga qaratiladi (bank/jiddiy uslub). */}
+                  <div style={{ marginBottom: 28 }}>
+                    <h1 style={{ ...s.title, marginBottom: 8 }}>{t('login.phoneTitle')}</h1>
+                    <p style={{ ...s.subtitle, marginBottom: 0 }}>{t('login.phoneSubtitle')}</p>
                   </div>
                   <div style={s.phoneWrap}>
                     <input

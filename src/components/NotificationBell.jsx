@@ -8,12 +8,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Bell, CheckCircle2, AlertCircle, Info, Trash2 } from 'lucide-react';
 import { useNotifications } from '../hooks/useNotifications';
+import { useModalBackButton } from './profile/useModalBackButton';
 
 const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', buttonStyle = {}, dropdownStyle = {} }) => {
   const { t } = useTranslation();
   const { notifications, unreadCount, markAllRead, markOneRead, clearAll } = useNotifications();
   const [showMenu, setShowMenu] = useState(false);
   const wrapRef = useRef(null);
+
+  // Android back button closes notification popover
+  useModalBackButton(showMenu, () => setShowMenu(false));
 
   // Tashqariga bosilganda menyuni yopish
   useEffect(() => {

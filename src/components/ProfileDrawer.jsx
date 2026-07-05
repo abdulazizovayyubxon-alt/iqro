@@ -62,6 +62,9 @@ const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user }) => {
   const [editForm, setEditForm] = useState({ firstName: '', lastName: '', age: '', gender: '', birthDate: '', subject: '', teacherCategory: '' });
   const [urgencyLeft, setUrgencyLeft] = useState(user?.urgencyMs || 0);
 
+  // Drawerning o'zi uchun orqaga qaytish tugmasini boshqarish
+  useModalBackButton(open, onClose);
+
   useModalBackButton(showPremium || showEdit || showAvatarPicker, () => {
     setShowPremium(false); setShowEdit(false); setShowAvatarPicker(false);
   });
