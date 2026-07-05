@@ -729,8 +729,6 @@
     "tgChecking": "🔄 Подтвердили в Telegram? Проверяем...",
     "tgTimeout": "Время истекло. Попробуйте ещё раз.",
     "checking": "Проверка...",
-    "phoneTitle": "Ваш номер телефона",
-    "phoneSubtitle": "Введите номер, чтобы войти или создать новый аккаунт.",
     "loginTitle": "Добро пожаловать!",
     "loginSubtitleSuffix": "— введите свой пароль.",
     "passwordPlaceholder": "Ваш пароль",

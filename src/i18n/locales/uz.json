@@ -729,8 +729,6 @@
     "tgChecking": "🔄 Telegram'da tasdiqladingizmi? Tekshirilmoqda...",
     "tgTimeout": "Vaqt tugadi. Qaytadan urinib ko'ring.",
     "checking": "Tekshirilmoqda...",
-    "phoneTitle": "Telefon raqamingiz",
-    "phoneSubtitle": "Kirish yoki yangi hisob yaratish uchun raqamingizni kiriting.",
     "loginTitle": "Xush kelibsiz!",
     "loginSubtitleSuffix": "— parolingizni kiriting.",
     "passwordPlaceholder": "Parolingiz",

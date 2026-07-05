@@ -5,7 +5,6 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signInWithCustomToken,
   updateProfile,
   updatePassword,
   setPersistence,
@@ -324,12 +323,10 @@ export const AuthProvider = ({ children }) => {
               await setDoc(userRef, {
                 uid: firebaseUser.uid,
                 email: firebaseUser.email,
-                phone: firebaseUser.email?.split('@')[0]?.replace(/\D/g, '') || null,
                 displayName: firebaseUser.displayName || firebaseUser.email?.split('@')[0],
                 photoURL: firebaseUser.photoURL || null,
                 role: 'user',
                 isPremium: false,
-                phoneVerified: true, // Yangi hisoblar faqat OTP (SMS) orqali ochiladi
                 createdAt: new Date(),
               }, { merge: true }).catch(e => console.warn('Yangi profil yaratishda xato:', e));
 
@@ -656,70 +653,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // ────────────────────────────────────────────────────────
-  // SMS OTP (Eskiz.uz) — raqamni tasdiqlab kirish/ro'yxatdan o'tish
-  // Parol o'rniga: foydalanuvchi telefoniga yuborilgan 6 xonali kodни kiritadi.
-  // Bu bir vaqtda (a) raqam egaligini isbotlaydi, (b) tizimga kiritadi.
-  // ────────────────────────────────────────────────────────
-  const sendOtp = async (phone) => {
-    setAuthError('');
-    const cleanPhone = phone.replace(/\D/g, '');
-    if (!cleanPhone.startsWith('998') || cleanPhone.length !== 12) {
-      setAuthError("Faqat O'zbekiston telefon raqamlari (+998) orqali kirish mumkin.");
-      return { success: false, error: 'invalid_phone' };
-    }
-
-    // DEV: lokal `vite dev`da /api yo'q → mock. Raqamda "77" bo'lsa MAVJUD
-    // (login), aks holda YANGI (ro'yxat). Kod doim '111111'. Prod'da ishlamaydi.
-    if (import.meta.env.DEV) {
-      await new Promise(r => setTimeout(r, 600));
-      return { success: true, isNew: !cleanPhone.includes('77'), cooldown: 60, devCode: '111111' };
-    }
-
-    try {
-      const res = await fetch('/api/send-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone: cleanPhone }),
-      });
-      return await res.json(); // { success, isNew, cooldown, retryAfter?, error? }
-    } catch (e) {
-      console.warn('send-otp xatosi:', e);
-      return { success: false, error: 'network' };
-    }
-  };
-
-  const verifyOtp = async (phone, code, name = '') => {
-    setAuthError('');
-    const cleanPhone = phone.replace(/\D/g, '');
-
-    // DEV: backendsiz UI oqimini sinash uchun mock (haqiqiy kirish bo'lmaydi)
-    if (import.meta.env.DEV) {
-      await new Promise(r => setTimeout(r, 500));
-      if (code === '111111') return { success: true, dev: true, isNew: !cleanPhone.includes('77') };
-      return { success: false, error: 'invalid' };
-    }
-
-    try {
-      const res = await fetch('/api/verify-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone: cleanPhone, code, name }),
-      });
-      const data = await res.json();
-      if (data.success && data.token) {
-        await signInWithCustomToken(auth, data.token);
-        resetLoginAttempts();
-        // Qolganini onAuthStateChanged bajaradi (Firestore doc, referral, trial)
-        if (data.isNew) AnalyticsEvents.register('phone');
-      }
-      return data; // { success, isNew, error?, remaining? }
-    } catch (e) {
-      console.warn('verify-otp xatosi:', e);
-      return { success: false, error: 'network' };
-    }
-  };
-
   // ─── Parolni o'zgartirish (joriy foydalanuvchi uchun) ───
   // Telegram orqali kirgan yoki tizimda bo'lgan foydalanuvchi yangi parol o'rnatadi.
   const changePassword = async (newPassword) => {
@@ -807,7 +740,6 @@ export const AuthProvider = ({ children }) => {
       user, loading, authError, setAuthError,
       signInWithEmail, registerWithEmail,
       signInWithPhone,
-      sendOtp, verifyOtp,
       checkUserExists,
       resetPassword,
       changePassword,
