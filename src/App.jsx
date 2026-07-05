@@ -12,7 +12,6 @@ import { db } from './firebase';
 // Components (har doim kerak — code split qilinmaydi)
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import BrandLogo from './components/shared/BrandLogo';
 import LoginPage from './pages/LoginPage';
 import OfflineIndicator from './components/OfflineIndicator';
 import OnboardingPage from './pages/OnboardingPage';

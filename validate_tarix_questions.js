@@ -1,5 +1,4 @@
 import fs from 'fs';
-import path from 'url';
 import nodePath from 'path';
 import { fileURLToPath } from 'url';
 

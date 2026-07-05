@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, writeBatch, doc } from "firebase/firestore";
+import { getFirestore, collection, writeBatch, doc } from "firebase/firestore";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { q0_harbiy_xizmat } from './src/data/questions_0.js';
 import { q1_umumharbiy_nizomlar } from './src/data/questions_1.js';

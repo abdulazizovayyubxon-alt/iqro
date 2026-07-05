@@ -8,7 +8,7 @@
  * ╚══════════════════════════════════════════════════════════════╝
  */
 
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { WifiOff, RefreshCw } from 'lucide-react';
 
@@ -137,7 +137,6 @@ export default function OfflineIndicator() {
   const [isOnline,      setIsOnline     ] = useState(navigator.onLine);
   const [swWorker,      setSwWorker     ] = useState(null);
   const [showUpdate,    setShowUpdate   ] = useState(false);
-  const onlineTimer = useRef(null);
 
   // ── Internet holati ──────────────────────────────────────────
   useEffect(() => {
@@ -155,7 +154,6 @@ export default function OfflineIndicator() {
     return () => {
       window.removeEventListener('online',  handleOnline);
       window.removeEventListener('offline', handleOffline);
-      if (onlineTimer.current) clearTimeout(onlineTimer.current);
     };
   }, []);
 

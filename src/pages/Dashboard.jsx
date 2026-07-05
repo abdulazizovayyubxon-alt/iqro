@@ -11,7 +11,7 @@ import GiftBox from '../components/shared/GiftBox';
 import PremiumModal from '../components/PremiumModal';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import {
-  Play, Zap, Brain, GraduationCap,
+  Play, Brain, GraduationCap,
   ChevronRight, Clock, Target,
   CheckCircle2, Trash2,
   MessageCircle, X
@@ -24,7 +24,7 @@ import { doc, getDoc } from 'firebase/firestore';
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { user } = useAuth();
   const { isAdmin } = useAdmin();
   const { state, updateState } = useContext(AppContext);
@@ -97,8 +97,7 @@ const Dashboard = () => {
   // Joriy mavzu ("Dars Testi" tezkor harakati uchun) — -1 = barcha mavzular
   const activeTopicId = state.topicId ?? -1;
   const activeTopic = TOPICS.find(tp => tp.id === activeTopicId);
-  const catStats = state.stats[cat] || { totalAnswered: 0, totalCorrect: 0, streak: 0, maxStreak: 0, mistakes: [] };
-  const filteredMistakesCount = catStats.mistakes.length;
+
 
   const dueCards = (state.spacedCards || []).filter(c => c.nextReview <= Date.now()).length;
 

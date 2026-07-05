@@ -39,7 +39,7 @@ function isJunkMnemonic(m) {
   const t = m.trim().replace(/[.\s]+$/, '');
   if (!t) return true;
   if (GENERIC_MNEMONICS.has(t.toLowerCase())) return true;
-  if (/^(to'?g'?ri\s+)?javob\s*[:\-]?\s*[a-d]\b/i.test(t)) return true; // "To'g'ri javob: C"
+  if (/^(to'?g'?ri\s+)?javob\s*[:-]?\s*[a-d]\b/i.test(t)) return true; // "To'g'ri javob: C"
   if (/^[a-d]$/i.test(t)) return true; // yolg'iz "C"
   return false;
 }

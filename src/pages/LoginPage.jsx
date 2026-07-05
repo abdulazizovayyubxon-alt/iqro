@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Eye, EyeOff, ShieldCheck, Target, BarChart2, BrainCircuit, Trophy } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff, ShieldCheck } from 'lucide-react';
 
 import { useIsMobile } from '../hooks/useIsMobile';
 import BrandLogo from '../components/shared/BrandLogo';
@@ -670,7 +670,7 @@ export default function LoginPage() {
                                     <svg width="64" height="64" style={{ transform: 'rotate(-90deg)' }}>
                                       <circle cx="32" cy="32" r="28" stroke="rgba(255,255,255,0.04)" strokeWidth="5" fill="transparent" />
                                       <circle cx="32" cy="32" r="28" stroke="#10b981" strokeWidth="5" fill="transparent"
-                                        strokeDasharray="175.93" stroke-dashoffset="26.39" strokeLinecap="round" />
+                                        strokeDasharray="175.93" strokeDashoffset="26.39" strokeLinecap="round" />
                                     </svg>
                                     <div style={{
                                       position: 'absolute',

@@ -18,7 +18,6 @@ import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { useNotifications } from '../hooks/useNotifications';
-import BrandLogo from './shared/BrandLogo';
 
 const Header = ({ theme, toggleTheme }) => {
   const isMobile = useIsMobile();

@@ -44,7 +44,7 @@ const formatPhone = (raw) => {
  * Statistika /achievements (Yutuqlar)ga ko'chirildi — bu yerda faqat "Darajangiz" kartasi.
  * Chiqish Sozlamalar ichida (tasodifan chiqib ketmaslik uchun).
  */
-const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user, stats }) => {
+const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user }) => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { updateUserData } = useAuth();

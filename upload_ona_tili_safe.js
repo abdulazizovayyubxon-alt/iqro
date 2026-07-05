@@ -12,6 +12,7 @@
  *  7. Batafsil hisobot chiqarish
  *
  * Ishga tushirish:
+ */
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -26,14 +27,11 @@ import {
   where,
 } from "firebase/firestore";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import readline from "readline";
 import { readFileSync, existsSync } from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
-import { createRequire } from "module";
 
 
-const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // ─────────────────────────────────────────────
@@ -114,16 +112,6 @@ const header = () => {
   console.log("══════════════════════════════════════════════\n");
 };
 
-const askQuestion = (query) => {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-  return new Promise((resolve) => rl.question(query, (ans) => {
-    rl.close();
-    resolve(ans);
-  }));
-};
 
 // ─────────────────────────────────────────────
 //  ASOSIY JARAYON

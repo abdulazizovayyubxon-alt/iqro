@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef, useEffect } from 'react';
+import React, { useContext, useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
@@ -111,7 +111,7 @@ const AchievementsPage = () => {
   const hasEnoughData = total >= 10;
 
   // Premium sertifikat (cream/iliq palitra — loyiha dizayniga mos)
-  const drawPassport = (canvas) => {
+  const drawPassport = useCallback((canvas) => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     const W = 900, H = 560;
@@ -290,13 +290,13 @@ const AchievementsPage = () => {
     ctx.fillStyle = accent;
     ctx.fillText('toifapro-t41p.vercel.app', W - 48, H - 36);
     ctx.textAlign = 'center';
-  };
+  }, [t, i18n.language, user, state.displayName, subjectName, hasEnoughData, toifaColor, toifa, total, acc, avgTime]);
 
   useEffect(() => {
     if (showShareModal && canvasRef.current) {
       drawPassport(canvasRef.current);
     }
-  }, [showShareModal]);
+  }, [showShareModal, drawPassport]);
 
   // Mavzu bo'yicha umumiy savol sonini lokal keshdan yuklash (qamrov bari uchun) —
   // avval topicTotal=answered qilingani sababli qamrov doimo 100% ko'rinardi.

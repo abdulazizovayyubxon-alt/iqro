@@ -47,7 +47,9 @@ export default defineConfig([
       globals: globals.node,
     },
     rules: {
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      // Bir martalik maintenance skriptlarida ishlatilmagan o'zgaruvchi xato emas — faqat ogohlantirish
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_', caughtErrors: 'none', ignoreRestSiblings: true }],
+      'no-empty': ['error', { allowEmptyCatch: true }],
     },
   },
 
@@ -60,7 +62,9 @@ export default defineConfig([
       globals: globals.node,
     },
     rules: {
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      // Bir martalik maintenance skriptlarida ishlatilmagan o'zgaruvchi xato emas — faqat ogohlantirish
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_', caughtErrors: 'none', ignoreRestSiblings: true }],
+      'no-empty': ['error', { allowEmptyCatch: true }],
     },
   },
 ])
