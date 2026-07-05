@@ -125,6 +125,9 @@ const buildDefaultState = () => {
     customMnemonics: {},
     repetitionLimit: 10,
     timeStats: { totalTime: 0, totalQuestions: 0 },
+    nightQuestions: 0,
+    earlyQuestions: 0,
+    perfectExamsCount: 0,
     [`weekly_${weekId}`]: 0,
     [`monthly_${monthId}`]: 0
   };
@@ -157,7 +160,7 @@ const mergeCloudAndLocal = (cloud, local) => {
 
   const merged = { ...cloud };
 
-  ['totalScore', 'totalAnswered', 'totalCorrect', 'maxStreak', 'studyMinutes', 'dailyStreak']
+  ['totalScore', 'totalAnswered', 'totalCorrect', 'maxStreak', 'studyMinutes', 'dailyStreak', 'nightQuestions', 'earlyQuestions', 'perfectExamsCount']
     .forEach(k => { merged[k] = Math.max(cloud[k] || 0, local[k] || 0); });
 
   Object.keys(local).forEach(k => {
@@ -444,6 +447,20 @@ export const AppProvider = ({ children }) => {
         (results.dueReviewCorrectCount || 0) * POINTS_DUE_REVIEW +
         goalBonus;
 
+      // Night owl / Early bird / Perfect exam metrics
+      const currentHour = new Date().getHours();
+      let nightQuestionsAdded = 0;
+      let earlyQuestionsAdded = 0;
+      if (currentHour >= 0 && currentHour < 5) {
+        nightQuestionsAdded = results.totalAnswered || 0;
+      } else if (currentHour >= 5 && currentHour < 8) {
+        earlyQuestionsAdded = results.totalAnswered || 0;
+      }
+      let perfectExamAdded = 0;
+      if (results.totalAnswered >= 20 && results.wrongCount === 0 && results.correctCount === results.totalAnswered) {
+        perfectExamAdded = 1;
+      }
+
       const newState = {
         ...prev,
         totalScore: (prev.totalScore || 0) + earnedPoints,
@@ -451,6 +468,9 @@ export const AppProvider = ({ children }) => {
         [`monthly_${monthId}`]: currentMonthlyScore + earnedPoints,
         totalAnswered: prev.totalAnswered + results.totalAnswered,
         totalCorrect: prev.totalCorrect + results.correctCount,
+        nightQuestions: (prev.nightQuestions || 0) + nightQuestionsAdded,
+        earlyQuestions: (prev.earlyQuestions || 0) + earlyQuestionsAdded,
+        perfectExamsCount: (prev.perfectExamsCount || 0) + perfectExamAdded,
         topicStats: newTopicStats,
         dailyGoal: dg,
         dailyStreak,

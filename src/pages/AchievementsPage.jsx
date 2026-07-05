@@ -328,8 +328,47 @@ const AchievementsPage = () => {
   };
 
 
-  const earnedBadges = getEarnedBadges(state.stats);
-  const totalXP = getTotalXP(state.stats);
+  const getBadgeProgress = (badge) => {
+    if (!state.stats) return null;
+    
+    // helper to sum answered
+    const sumAnswered = (st) => Object.keys(st).reduce((sum, k) => sum + (st[k]?.totalAnswered || 0), 0);
+    // helper to get max streak
+    const getStreak = (st) => Object.keys(st).reduce((max, k) => Math.max(max, st[k]?.maxStreak || 0), 0);
+    
+    if (badge.id === 'first_step') return { current: sumAnswered(state.stats), target: 1 };
+    if (badge.id === 'ten_answers') return { current: sumAnswered(state.stats), target: 10 };
+    if (badge.id === 'fifty_answers') return { current: sumAnswered(state.stats), target: 50 };
+    if (badge.id === 'hundred_answers') return { current: sumAnswered(state.stats), target: 100 };
+    if (badge.id === 'five_hundred') return { current: sumAnswered(state.stats), target: 500 };
+    if (badge.id === 'one_thousand') return { current: sumAnswered(state.stats), target: 1000 };
+    
+    if (badge.id === 'streak_5') return { current: getStreak(state.stats), target: 5 };
+    if (badge.id === 'streak_10') return { current: getStreak(state.stats), target: 10 };
+    if (badge.id === 'streak_25') return { current: getStreak(state.stats), target: 25 };
+    if (badge.id === 'streak_50') return { current: getStreak(state.stats), target: 50 };
+    
+    if (badge.id === 'daily_3day') return { current: state.dailyStreak || 0, target: 3 };
+    if (badge.id === 'daily_7day') return { current: state.dailyStreak || 0, target: 7 };
+    if (badge.id === 'daily_15day') return { current: state.dailyStreak || 0, target: 15 };
+    
+    if (badge.id === 'night_owl') return { current: state.nightQuestions || 0, target: 10 };
+    if (badge.id === 'early_bird') return { current: state.earlyQuestions || 0, target: 10 };
+    
+    if (badge.id === 'subject_chqbt_100') return { current: state.stats?.chqbt?.totalAnswered || 0, target: 100 };
+    if (badge.id === 'subject_tarix_100') return { current: state.stats?.tarix?.totalAnswered || 0, target: 100 };
+    if (badge.id === 'subject_til_100') return { current: state.stats?.til?.totalAnswered || 0, target: 100 };
+    if (badge.id === 'subject_boshlangich_100') return { current: state.stats?.boshlangich?.totalAnswered || 0, target: 100 };
+    if (badge.id === 'subject_info_100') return { current: state.stats?.info?.totalAnswered || 0, target: 100 };
+    
+    if (badge.id === 'perfect_exam') return { current: state.perfectExamsCount || 0, target: 1 };
+    if (badge.id === 'no_mistakes') return { current: getStreak(state.stats), target: 10 };
+
+    return null;
+  };
+
+  const earnedBadges = getEarnedBadges(state.stats, state);
+  const totalXP = getTotalXP(state.stats, state);
   const levelInfo = getLevel(totalXP);
 
   const nextLevelXP = levelInfo.level === 1 ? 75 : levelInfo.level === 2 ? 200 : levelInfo.level === 3 ? 500 : levelInfo.level === 4 ? 1000 : 9999;
@@ -354,352 +393,87 @@ const AchievementsPage = () => {
     >
       {/* Header */}
       <h1 style={{ fontSize: 26, fontWeight: 900, color: 'var(--text)', margin: '0 0 4px' }}>{t('achievements.title')}</h1>
-      <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>{t('achievements.subtitle')}</p>
+      <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 20 }}>{t('achievements.subtitle')}</p>
 
-      {/* Level Header */}
+      {/* Level Header - Modern and Compact */}
       <div style={{
-        padding: '24px 20px', marginBottom: 20,
+        padding: '18px 20px', marginBottom: 16,
         background: 'var(--glass-bg)',
         backdropFilter: 'blur(20px)',
         border: `1px solid var(--glass-border)`,
-        borderRadius: 24,
-        boxShadow: '0 8px 32px rgba(0,0,0,0.02)',
+        borderRadius: 20,
+        boxShadow: '0 4px 24px rgba(0,0,0,0.01)',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 14 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <div style={{
-              width: 56, height: 56, borderRadius: 16,
+              width: 48, height: 48, borderRadius: 12,
               background: `linear-gradient(135deg, ${levelInfo.color} 0%, #8B5CF6 100%)`,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: `0 4px 15px ${levelInfo.color}30`,
+              boxShadow: `0 4px 12px ${levelInfo.color}25`,
             }}>
-              <Trophy size={26} color="white" />
+              <Trophy size={22} color="white" />
             </div>
             <div>
-              <div style={{ fontSize: 20, fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.5px' }}>
+              <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.3px' }}>
                 {levelInfo.name} <span style={{ color: levelInfo.color, fontWeight: 800 }}>Lv.{levelInfo.level}</span>
               </div>
-              <div style={{ fontSize: 13, color: 'var(--text3)', marginTop: 2, fontWeight: 500 }}>
+              <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2, fontWeight: 500 }}>
                 {t('achievements.xpBadgeLine', { xp: totalXP, earned: earnedBadges.length, total: BADGES.length })}
               </div>
             </div>
           </div>
-          <div style={{ flex: 1, minWidth: 180 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, fontSize: 12, color: 'var(--text3)', fontWeight: 500 }}>
+          <div style={{ flex: 1, minWidth: 160 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, fontSize: 11, color: 'var(--text3)', fontWeight: 500 }}>
               <span>{t('achievements.nextLevel')}</span>
               <span style={{ fontWeight: 700, color: levelInfo.color }}>{totalXP}/{nextLevelXP} XP</span>
             </div>
-            <div style={{ height: 8, background: 'var(--bg3)', borderRadius: 4, overflow: 'hidden', border: '1px solid var(--glass-border)' }}>
-              <div style={{ width: `${levelPct}%`, height: '100%', background: `linear-gradient(90deg, ${levelInfo.color}, #8B5CF6)`, borderRadius: 4, transition: 'width 1s ease' }} />
+            <div style={{ height: 6, background: 'var(--bg3)', borderRadius: 3, overflow: 'hidden', border: '0.5px solid var(--glass-border)' }}>
+              <div style={{ width: `${levelPct}%`, height: '100%', background: `linear-gradient(90deg, ${levelInfo.color}, #8B5CF6)`, borderRadius: 3, transition: 'width 1s ease' }} />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Umumiy statistika: Savollar · Aniqlik · Balllar (Lv banner ostida) */}
+      {/* Global stats summary */}
       <div style={{
-        display: 'flex', padding: '18px 12px', marginBottom: 20,
+        display: 'flex', padding: '14px 12px', marginBottom: 20,
         background: 'var(--glass-bg)', backdropFilter: 'blur(20px)',
-        border: '1px solid var(--glass-border)', borderRadius: 24,
-        boxShadow: '0 8px 32px rgba(0,0,0,0.02)',
+        border: '1px solid var(--glass-border)', borderRadius: 20,
+        boxShadow: '0 4px 24px rgba(0,0,0,0.01)',
       }}>
         <div style={{ flex: 1, textAlign: 'center' }}>
-          <div style={{ fontSize: 22, fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{globalAnswered}</div>
-          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text3)', marginTop: 6 }}>{t('achievements.questions')}</div>
+          <div style={{ fontSize: 18, fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{globalAnswered}</div>
+          <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--text3)', marginTop: 4 }}>{t('achievements.questions')}</div>
         </div>
         <div style={{ width: 1, background: 'var(--border)' }} />
         <div style={{ flex: 1, textAlign: 'center' }}>
-          <div style={{ fontSize: 22, fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{globalAcc}%</div>
-          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text3)', marginTop: 6 }}>{t('achievements.accuracy')}</div>
+          <div style={{ fontSize: 18, fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{globalAcc}%</div>
+          <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--text3)', marginTop: 4 }}>{t('achievements.accuracy')}</div>
         </div>
         <div style={{ width: 1, background: 'var(--border)' }} />
         <div style={{ flex: 1, textAlign: 'center', cursor: 'pointer' }} onClick={() => navigate('/leaderboard')}>
-          <div style={{ fontSize: 22, fontWeight: 900, color: 'var(--accent2)', lineHeight: 1 }}>{state.totalScore || 0}</div>
-          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text3)', marginTop: 6 }}>{t('achievements.points')}</div>
+          <div style={{ fontSize: 18, fontWeight: 900, color: 'var(--accent2)', lineHeight: 1 }}>{state.totalScore || 0}</div>
+          <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--text3)', marginTop: 4 }}>{t('achievements.points')}</div>
         </div>
       </div>
 
-      {/* 📋 ATTESTATSIYA PASPORTI & PROGNOZ WIDGET */}
-      <div className="glass-panel" style={{
-        padding: 18,
-        marginBottom: 20,
-        border: '1px solid var(--glass-border)',
-        background: 'var(--glass-bg)',
-        backdropFilter: 'blur(20px)',
-        borderRadius: 22,
-        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.03)',
-      }}>
-        {/* Sarlavha */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-          <div style={{
-            width: 42, height: 42, borderRadius: 13, flexShrink: 0,
-            background: 'linear-gradient(135deg, #F59E0B, #D97706)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 4px 12px rgba(217,119,6,0.25)',
-          }}>
-            <Award size={22} color="#fff" />
-          </div>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--text)', letterSpacing: '-0.3px' }}>{t('achievements.widgetTitle')}</div>
-            <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 500 }}>{t('achievements.widgetSubtitle')}</div>
-          </div>
-        </div>
-
-        {/* Toifa banneri yoki "tayyorlanmoqda" progressi */}
-        {hasEnoughData ? (
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: 14, padding: '14px 16px',
-            borderRadius: 16, marginBottom: 12,
-            background: hexToRgba(toifaColor, 0.08),
-            border: `1px solid ${hexToRgba(toifaColor, 0.25)}`,
-          }}>
-            <div style={{
-              width: 46, height: 46, borderRadius: '50%', flexShrink: 0,
-              background: hexToRgba(toifaColor, 0.15),
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-              <Award size={24} color={toifaColor} />
-            </div>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{t('achievements.toifaForecast')}</div>
-              <div style={{ fontSize: 20, fontWeight: 900, color: toifaColor, lineHeight: 1.1 }}>{toifa}</div>
-              <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2 }}>{nextToifaText}</div>
-            </div>
-          </div>
-        ) : (
-          <div style={{
-            padding: '14px 16px', borderRadius: 16, marginBottom: 12,
-            background: 'var(--bg3)', border: '1px solid var(--border)',
-          }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-              <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)' }}>{t('achievements.passportPrepTitle')}</span>
-              <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--accent2)' }}>{total}/10</span>
-            </div>
-            <div style={{ height: 8, borderRadius: 4, background: 'var(--bg)', overflow: 'hidden', border: '1px solid var(--border)' }}>
-              <div style={{ width: `${Math.min(100, total * 10)}%`, height: '100%', borderRadius: 4, background: 'linear-gradient(90deg, var(--accent), #8B5CF6)', transition: 'width 0.5s ease' }} />
-            </div>
-            <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 6 }}>{t('achievements.prepRemaining', { count: Math.max(0, 10 - total) })}</div>
-          </div>
-        )}
-
-        {/* 3 ko'rsatkich */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 12 }}>
-          {[
-            { label: t('achievements.accuracy'), value: hasEnoughData ? `${acc}%` : '—', color: !hasEnoughData ? 'var(--text3)' : acc >= 70 ? 'var(--green)' : acc >= 50 ? 'var(--amber)' : 'var(--red)' },
-            { label: t('achievements.metricSpeed'), value: avgTime > 0 ? `${avgTime}s` : '—', color: avgTime > 0 ? speedColor : 'var(--text3)' },
-            { label: t('achievements.questions'), value: total, color: 'var(--text)' },
-          ].map((m) => (
-            <div key={m.label} style={{ background: 'var(--bg3)', padding: '12px 8px', borderRadius: 14, border: '1px solid var(--border)', textAlign: 'center' }}>
-              <div style={{ fontSize: 18, fontWeight: 900, color: m.color, lineHeight: 1 }}>{m.value}</div>
-              <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text3)', marginTop: 5 }}>{m.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <button
-          onClick={() => setShowShareModal(true)}
-          style={{
-            width: '100%', padding: '13px', borderRadius: 14, border: 'none',
-            background: 'linear-gradient(135deg, var(--accent), var(--accent2))',
-            color: '#fff', fontWeight: 800, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-            boxShadow: '0 6px 16px rgba(43,163,220,0.25)',
-          }}
-        >
-          {t('achievements.viewSharePassport')}
-        </button>
-
-        {/* Toifa ROI — bashorat qilingan toifa asosida personalizatsiya */}
-        {hasEnoughData && (toifa === 'Oliy Toifa' || toifa === '1-Toifa' || toifa === '2-Toifa') && (
-          <div style={{ marginTop: 12 }}>
-            <RoiBlock
-              price={DEFAULT_YEARLY_PRICE}
-              planName={t('achievements.yearly')}
-              targetToifa={toifa === 'Oliy Toifa' ? 'oliy' : toifa === '1-Toifa' ? '1-toifa' : '2-toifa'}
-              variant="theme"
-            />
-          </div>
-        )}
-      </div>
-
-      {/* G'OYA-6: Haftalik taqqoslash */}
-      {catStats.totalAnswered > 10 && (
-        <div className="glass-panel" style={{ padding: '16px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 14, border: '1px solid rgba(59,130,246,0.15)', background: 'rgba(59,130,246,0.03)' }}>
-          <div style={{ width: 40, height: 40, borderRadius: 12, background: 'var(--blue-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <TrendingUp size={20} color="var(--blue)" />
-          </div>
-          <div style={{ flex: 1 }}>
-            <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>
-              {acc >= 70 ? t('achievements.weekExcellent') : acc >= 50 ? t('achievements.weekGood') : t('achievements.weekKeep')}
-              {t('achievements.weekAccuracy', { acc })}
-            </div>
-            <div style={{ fontSize: 12, color: 'var(--text3)' }}>
-              {t('achievements.weekSummary', { answered: catStats.totalAnswered, correct: catStats.totalCorrect })}
-              {catStats.maxStreak > 3 && t('achievements.weekStreak', { count: catStats.maxStreak })}
-            </div>
-          </div>
-          {acc >= 70 && <div style={{ fontSize: 28 }}>🎯</div>}
-          {acc >= 50 && acc < 70 && <div style={{ fontSize: 28 }}>📈</div>}
-          {acc < 50 && <div style={{ fontSize: 28 }}>💪</div>}
-        </div>
-      )}
-
-      {/* 📌 Kunlik Maqsad */}
-      {(() => {
-        const today = new Date().toDateString();
-        const dg = state.dailyGoal?.date === today ? state.dailyGoal : { date: today, answered: 0, target: 20, completed: false };
-        const pct = Math.min(100, Math.round((dg.answered / dg.target) * 100));
-        const ds = state.dailyStreak || 0;
-
-        return (
-          <div className="glass-panel" style={{
-            padding: '20px 24px', marginBottom: 24,
-            border: dg.completed ? '1.5px solid var(--green)' : '1px solid var(--glass-border)',
-            background: dg.completed ? 'rgba(16,185,129,0.04)' : 'var(--glass-bg)',
-            backdropFilter: 'blur(20px)',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.02)',
-            transition: 'all 0.3s'
-          }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12, flexWrap: 'wrap', gap: 8 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                {dg.completed ? <Award size={24} color="var(--green)" /> : <Target size={24} color="var(--accent)" />}
-                <div>
-                  <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--text)', letterSpacing: '-0.3px' }}>
-                    {dg.completed ? t('achievements.goalDoneTitle') : t('achievements.goalTitle')}
-                  </div>
-                  <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 500 }}>
-                    {t('achievements.goalProgress', { answered: dg.answered, target: dg.target })}
-                  </div>
-                </div>
-              </div>
-              {ds > 0 && (
-                <div style={{
-                  display: 'flex', alignItems: 'center', gap: 6,
-                  background: 'linear-gradient(135deg, #FFB300, #F4511E)',
-                  color: 'white', padding: '6px 14px', borderRadius: 20,
-                  fontWeight: 800, fontSize: 12,
-                  boxShadow: '0 4px 10px rgba(244, 81, 30, 0.2)'
-                }}>
-                  <Flame size={14} /> {t('achievements.goalStreak', { count: ds })}
-                </div>
-              )}
-            </div>
-            <div style={{ height: 10, borderRadius: 5, background: 'var(--bg3)', overflow: 'hidden', border: '1px solid var(--glass-border)' }}>
-              <div style={{
-                width: `${pct}%`, height: '100%', borderRadius: 5,
-                background: dg.completed
-                  ? 'linear-gradient(90deg, #10b981, #34d399)'
-                  : pct > 50 ? 'linear-gradient(90deg, #3b82f6, #60a5fa)' : 'linear-gradient(90deg, #6366f1, #818cf8)',
-                transition: 'width 0.5s ease'
-              }} />
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6, fontSize: 11, color: 'var(--text3)', fontWeight: 500 }}>
-              <span>{t('achievements.goalPctDone', { pct })}</span>
-              <span>{t('achievements.goalRemaining', { count: Math.max(0, dg.target - dg.answered) })}</span>
-            </div>
-          </div>
-        );
-      })()}
-
-      {/* ⚠️ Zaif Nuqtalar Paneli */}
-      {(() => {
-        const weakTopics = TOPICS
-          .filter(t => {
-            const match = Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat;
-            const ts = state.topicStats[t.id];
-            return match && ts && ts.answered > 0;
-          })
-          .map(t => {
-            const ts = state.topicStats[t.id];
-            const wrong = ts.answered - ts.correct;
-            const topicAcc = Math.round((ts.correct / ts.answered) * 100);
-            return { ...t, wrong, acc: topicAcc, answered: ts.answered, correct: ts.correct };
-          })
-          .filter(t => t.wrong > 0)
-          .sort((a, b) => b.wrong - a.wrong || a.acc - b.acc)
-          .slice(0, 5);
-
-        if (weakTopics.length === 0) return null;
-
-        return (
-          <div style={{ marginBottom: 24 }}>
-            <div className="section-header" style={{ color: 'var(--red)', display: 'flex', alignItems: 'center', gap: '8px' }}><AlertTriangle size={20} /> {t('achievements.weakTitle')}</div>
-            <div className="glass-panel" style={{ padding: '20px', border: '1px solid rgba(239,68,68,0.15)', background: 'rgba(239,68,68,0.03)' }}>
-              <div style={{ fontSize: 12, color: 'var(--text3)', marginBottom: 16 }}>
-                {t('achievements.weakHint')}
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                {weakTopics.map((tp) => (
-                  <div
-                    key={tp.id}
-                    onClick={() => handleNavigation(tp.id, 'exam')}
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: 14, padding: '12px 14px',
-                      background: 'var(--bg2)', borderRadius: 12, cursor: 'pointer',
-                      border: '0.5px solid var(--border)', transition: 'all 0.2s'
-                    }}
-                    className="hoverable"
-                  >
-                    <div style={{
-                      width: 36, height: 36, borderRadius: 10, flexShrink: 0,
-                      background: tp.acc < 40 ? 'var(--red-bg)' : tp.acc < 70 ? 'var(--amber-bg)' : 'var(--green-bg)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18
-                    }}>
-                      {tp.icon}
-                    </div>
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        {tp.name}
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <div style={{ flex: 1, height: 6, borderRadius: 3, background: 'var(--bg3)', overflow: 'hidden' }}>
-                          <div style={{
-                            width: `${tp.acc}%`, height: '100%', borderRadius: 3,
-                            background: tp.acc < 40 ? 'var(--red)' : tp.acc < 70 ? 'var(--amber)' : 'var(--green)',
-                            transition: 'width 0.5s ease'
-                          }} />
-                        </div>
-                        <span style={{ fontSize: 12, fontWeight: 700, color: tp.acc < 40 ? 'var(--red)' : tp.acc < 70 ? 'var(--amber)' : 'var(--green)', flexShrink: 0 }}>
-                          {tp.acc}%
-                        </span>
-                      </div>
-                    </div>
-                    <div style={{ textAlign: 'right', flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-                      <div style={{ fontSize: 16, fontWeight: 800, color: 'var(--red)' }}>{tp.wrong}</div>
-                      <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 600 }}>{t('achievements.weakError')}</div>
-                    </div>
-                    <button
-                      className="btn btn-sm"
-                      onClick={(e) => { e.stopPropagation(); handleNavigation(tp.id, 'exam'); }}
-                      style={{
-                        background: 'var(--red)', color: 'white', border: 'none',
-                        fontSize: 11, padding: '6px 10px', borderRadius: 8, flexShrink: 0,
-                        fontWeight: 700
-                      }}
-                    >
-                      {t('achievements.weakPractice')}
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        );
-      })()}
-
-      {/* Tabs */}
-      <div style={{ display: 'flex', background: 'var(--bg3)', borderRadius: 12, padding: 3, gap: 3, marginBottom: 24 }}>
-        {[{ id: 'achievements', label: t('achievements.tabAchievements') }, { id: 'statistics', label: t('achievements.tabStats') }].map(tab => (
+      {/* Reorganized Tabs */}
+      <div style={{ display: 'flex', background: 'var(--bg3)', borderRadius: 12, padding: 3, gap: 3, marginBottom: 20 }}>
+        {[
+          { id: 'achievements', label: t('achievements.tabAchievements', '🏅 Yutuqlar') },
+          { id: 'passport', label: t('achievements.tabPassport', '📋 Pasport') },
+          { id: 'statistics', label: t('achievements.tabStats', '📊 Statistika') }
+        ].map(tab => (
           <button
             key={tab.id}
             style={{
-              flex: 1, padding: '10px', borderRadius: 10, border: 'none',
+              flex: 1, padding: '10px 6px', borderRadius: 10, border: 'none',
               background: activeTab === tab.id ? 'var(--bg2)' : 'transparent',
               color: activeTab === tab.id ? 'var(--text)' : 'var(--text3)',
-              fontWeight: 700, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit',
-              boxShadow: activeTab === tab.id ? '0 1px 4px rgba(0,0,0,0.08)' : 'none',
-              transition: 'all 0.18s',
+              fontWeight: 700, fontSize: 13, cursor: 'pointer', fontFamily: 'inherit',
+              boxShadow: activeTab === tab.id ? '0 1px 4px rgba(0,0,0,0.06)' : 'none',
+              transition: 'all 0.15s',
             }}
             onClick={() => setActiveTab(tab.id)}
           >
@@ -709,89 +483,401 @@ const AchievementsPage = () => {
       </div>
 
       <AnimatePresence mode="wait">
-        {activeTab === 'achievements' ? (
+        {activeTab === 'achievements' && (
           <motion.div
             key="achievements"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.2 }}
           >
-            <div className="section-header" style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Trophy size={20} style={{ color: 'var(--amber)' }} /> {t('achievements.collection')}
+            {/* Daily Goal inside Achievements Tab */}
+            {(() => {
+              const today = new Date().toDateString();
+              const dg = state.dailyGoal?.date === today ? state.dailyGoal : { date: today, answered: 0, target: 20, completed: false };
+              const pct = Math.min(100, Math.round((dg.answered / dg.target) * 100));
+              const ds = state.dailyStreak || 0;
+
+              return (
+                <div className="glass-panel" style={{
+                  padding: '16px 20px', marginBottom: 20,
+                  border: dg.completed ? '1.5px solid var(--green)' : '1px solid var(--glass-border)',
+                  background: dg.completed ? 'rgba(16,185,129,0.03)' : 'var(--glass-bg)',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.01)',
+                  transition: 'all 0.3s'
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10, flexWrap: 'wrap', gap: 8 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                      {dg.completed ? <Award size={22} color="var(--green)" /> : <Target size={22} color="var(--accent)" />}
+                      <div>
+                        <div style={{ fontWeight: 800, fontSize: 14, color: 'var(--text)', letterSpacing: '-0.3px' }}>
+                          {dg.completed ? t('achievements.goalDoneTitle') : t('achievements.goalTitle')}
+                        </div>
+                        <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 500 }}>
+                          {t('achievements.goalProgress', { answered: dg.answered, target: dg.target })}
+                        </div>
+                      </div>
+                    </div>
+                    {ds > 0 && (
+                      <div style={{
+                        display: 'flex', alignItems: 'center', gap: 5,
+                        background: 'linear-gradient(135deg, #FFB300, #F4511E)',
+                        color: 'white', padding: '4px 10px', borderRadius: 20,
+                        fontWeight: 800, fontSize: 11,
+                        boxShadow: '0 2px 6px rgba(244, 81, 30, 0.15)'
+                      }}>
+                        <Flame size={12} /> {t('achievements.goalStreak', { count: ds })}
+                      </div>
+                    )}
+                  </div>
+                  <div style={{ height: 6, borderRadius: 3, background: 'var(--bg3)', overflow: 'hidden', border: '0.5px solid var(--glass-border)' }}>
+                    <div style={{
+                      width: `${pct}%`, height: '100%', borderRadius: 3,
+                      background: dg.completed
+                        ? 'linear-gradient(90deg, #10b981, #34d399)'
+                        : pct > 50 ? 'linear-gradient(90deg, #3b82f6, #60a5fa)' : 'linear-gradient(90deg, #6366f1, #818cf8)',
+                      transition: 'width 0.5s ease'
+                    }} />
+                  </div>
+                </div>
+              );
+            })()}
+
+            {/* Redesigned Badge Collection */}
+            <div className="section-header" style={{ marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: '800' }}>
+              <Trophy size={18} style={{ color: 'var(--amber)' }} /> {t('achievements.collection')}
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: 12 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: 10 }}>
               {BADGES.map((badge) => {
                 const earned = earnedBadges.some(b => b.id === badge.id);
+                const progress = getBadgeProgress(badge);
+
                 return (
                   <motion.div
                     key={badge.id}
-                    whileHover={{ y: -2, scale: 1.02 }}
+                    whileHover={{ y: -2 }}
                     style={{
-                      padding: '20px 12px 16px', borderRadius: 20, textAlign: 'center',
-                      border: earned ? `1px solid ${badge.color}40` : '1px solid var(--glass-border)',
-                      background: earned ? `${badge.color}08` : 'var(--glass-bg)',
+                      padding: '16px 12px', borderRadius: 16, textAlign: 'center',
+                      border: earned ? `1.2px solid ${badge.color}35` : '1px solid var(--glass-border)',
+                      background: earned ? `linear-gradient(135deg, ${badge.color}05, ${badge.color}0d)` : 'var(--glass-bg)',
                       backdropFilter: 'blur(10px)',
-                      opacity: earned ? 1 : 0.45,
-                      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
-                      boxShadow: earned ? `0 4px 20px ${badge.color}0F` : 'none',
+                      opacity: earned ? 1 : 0.65,
+                      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
+                      boxShadow: earned ? `0 4px 15px ${badge.color}05` : 'none',
+                      position: 'relative'
                     }}
                   >
+                    {/* Medal circular badge frame */}
                     <div style={{
-                      fontSize: 36,
-                      filter: earned ? 'none' : 'grayscale(1)',
-                      marginBottom: 4,
-                      transform: earned ? 'scale(1)' : 'scale(0.95)'
+                      width: 46, height: 46, borderRadius: '50%',
+                      background: earned ? `${badge.color}15` : 'var(--bg3)',
+                      border: `1.5px solid ${earned ? badge.color : 'var(--border)'}`,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: 22,
+                      filter: earned ? 'none' : 'grayscale(1) opacity(0.65)',
+                      marginBottom: 4
                     }}>
                       {earned ? badge.icon : '🔒'}
                     </div>
-                    <div style={{ fontSize: 13, fontWeight: 800, color: 'var(--text)', lineHeight: 1.3, letterSpacing: '-0.3px' }}>{badge.name}</div>
-                    <div style={{ fontSize: 11, color: 'var(--text3)', lineHeight: 1.4, fontWeight: 500 }}>{badge.desc}</div>
-                    <div style={{ fontSize: 12, fontWeight: 800, color: earned ? badge.color : 'var(--text3)', background: earned ? `${badge.color}15` : 'var(--bg3)', padding: '2px 8px', borderRadius: 8, marginTop: 4 }}>+{badge.xp} XP</div>
+
+                    <div style={{ fontSize: 13, fontWeight: 800, color: 'var(--text)', lineHeight: 1.25, letterSpacing: '-0.2px' }}>
+                      {t(`badges.${badge.id}.name`, badge.name)}
+                    </div>
+                    <div style={{ fontSize: 10, color: 'var(--text3)', lineHeight: 1.3, fontWeight: 500, flexGrow: 1 }}>
+                      {t(`badges.${badge.id}.desc`, badge.desc)}
+                    </div>
+
+                    {/* Progress tracking for locked badges */}
+                    {!earned && progress && (
+                      <div style={{ width: '100%', marginTop: 4, marginBottom: 4 }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9, color: 'var(--text3)', fontWeight: 700, marginBottom: 2 }}>
+                          <span>Jarayon</span>
+                          <span>{progress.current}/{progress.target}</span>
+                        </div>
+                        <div style={{ height: 3, background: 'var(--bg3)', borderRadius: 1.5, overflow: 'hidden' }}>
+                          <div style={{ width: `${Math.min(100, (progress.current / progress.target) * 100)}%`, height: '100%', background: 'var(--accent)', borderRadius: 1.5 }} />
+                        </div>
+                      </div>
+                    )}
+
+                    <div style={{
+                      fontSize: 9, fontWeight: 800,
+                      color: earned ? badge.color : 'var(--text3)',
+                      background: earned ? `${badge.color}12` : 'var(--bg3)',
+                      padding: '2px 8px', borderRadius: 6, marginTop: 'auto'
+                    }}>
+                      +{badge.xp} XP
+                    </div>
                   </motion.div>
                 );
               })}
             </div>
           </motion.div>
-        ) : (
+        )}
+
+        {activeTab === 'passport' && (
+          <motion.div
+            key="passport"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.2 }}
+          >
+            {/* 📋 ATTESTATSIYA PASPORTI & PROGNOZ WIDGET */}
+            <div className="glass-panel" style={{
+              padding: 18,
+              marginBottom: 16,
+              border: '1px solid var(--glass-border)',
+              background: 'var(--glass-bg)',
+              backdropFilter: 'blur(20px)',
+              borderRadius: 20,
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.01)',
+            }}>
+              {/* Sarlavha */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+                <div style={{
+                  width: 40, height: 40, borderRadius: 12, flexShrink: 0,
+                  background: 'linear-gradient(135deg, #F59E0B, #D97706)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  boxShadow: '0 4px 10px rgba(217,119,6,0.18)',
+                }}>
+                  <Award size={20} color="#fff" />
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontWeight: 800, fontSize: 14, color: 'var(--text)', letterSpacing: '-0.3px' }}>{t('achievements.widgetTitle')}</div>
+                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 500 }}>{t('achievements.widgetSubtitle')}</div>
+                </div>
+              </div>
+
+              {/* Toifa banneri yoki "tayyorlanmoqda" progressi */}
+              {hasEnoughData ? (
+                <div style={{
+                  display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px',
+                  borderRadius: 14, marginBottom: 12,
+                  background: hexToRgba(toifaColor, 0.06),
+                  border: `1.2px solid ${hexToRgba(toifaColor, 0.18)}`,
+                }}>
+                  <div style={{
+                    width: 42, height: 42, borderRadius: '50%', flexShrink: 0,
+                    background: hexToRgba(toifaColor, 0.12),
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}>
+                    <Award size={22} color={toifaColor} />
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{t('achievements.toifaForecast')}</div>
+                    <div style={{ fontSize: 18, fontWeight: 900, color: toifaColor, lineHeight: 1.1 }}>{toifa}</div>
+                    <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 2 }}>{nextToifaText}</div>
+                  </div>
+                </div>
+              ) : (
+                <div style={{
+                  padding: '12px 14px', borderRadius: 14, marginBottom: 12,
+                  background: 'var(--bg3)', border: '1px solid var(--border)',
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                    <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--text)' }}>{t('achievements.passportPrepTitle')}</span>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--accent2)' }}>{total}/10</span>
+                  </div>
+                  <div style={{ height: 6, borderRadius: 3, background: 'var(--bg)', overflow: 'hidden', border: '1px solid var(--border)' }}>
+                    <div style={{ width: `${Math.min(100, total * 10)}%`, height: '100%', borderRadius: 3, background: 'linear-gradient(90deg, var(--accent), #8B5CF6)', transition: 'width 0.5s ease' }} />
+                  </div>
+                  <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 5 }}>{t('achievements.prepRemaining', { count: Math.max(0, 10 - total) })}</div>
+                </div>
+              )}
+
+              {/* 3 ko'rsatkich */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6, marginBottom: 12 }}>
+                {[
+                  { label: t('achievements.accuracy'), value: hasEnoughData ? `${acc}%` : '—', color: !hasEnoughData ? 'var(--text3)' : acc >= 70 ? 'var(--green)' : acc >= 50 ? 'var(--amber)' : 'var(--red)' },
+                  { label: t('achievements.metricSpeed'), value: avgTime > 0 ? `${avgTime}s` : '—', color: avgTime > 0 ? speedColor : 'var(--text3)' },
+                  { label: t('achievements.questions'), value: total, color: 'var(--text)' },
+                ].map((m) => (
+                  <div key={m.label} style={{ background: 'var(--bg3)', padding: '10px 6px', borderRadius: 12, border: '1px solid var(--border)', textAlign: 'center' }}>
+                    <div style={{ fontSize: 16, fontWeight: 900, color: m.color, lineHeight: 1 }}>{m.value}</div>
+                    <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--text3)', marginTop: 4 }}>{m.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <button
+                onClick={() => setShowShareModal(true)}
+                style={{
+                  width: '100%', padding: '12px', borderRadius: 12, border: 'none',
+                  background: 'linear-gradient(135deg, var(--accent), var(--accent2))',
+                  color: '#fff', fontWeight: 800, fontSize: 13, cursor: 'pointer', fontFamily: 'inherit',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                  boxShadow: '0 4px 10px rgba(43,163,220,0.15)',
+                }}
+              >
+                {t('achievements.viewSharePassport')}
+              </button>
+
+              {/* Toifa ROI */}
+              {hasEnoughData && (toifa === 'Oliy Toifa' || toifa === '1-Toifa' || toifa === '2-Toifa') && (
+                <div style={{ marginTop: 10 }}>
+                  <RoiBlock
+                    price={DEFAULT_YEARLY_PRICE}
+                    planName={t('achievements.yearly')}
+                    targetToifa={toifa === 'Oliy Toifa' ? 'oliy' : toifa === '1-Toifa' ? '1-toifa' : '2-toifa'}
+                    variant="theme"
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Weekly Status Banner */}
+            {catStats.totalAnswered > 10 && (
+              <div className="glass-panel" style={{ padding: '14px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 12, border: '1.2px solid rgba(59,130,246,0.12)', background: 'rgba(59,130,246,0.01)' }}>
+                <div style={{ width: 36, height: 36, borderRadius: 10, background: 'var(--blue-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <TrendingUp size={18} color="var(--blue)" />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>
+                    {acc >= 70 ? t('achievements.weekExcellent') : acc >= 50 ? t('achievements.weekGood') : t('achievements.weekKeep')}
+                    {t('achievements.weekAccuracy', { acc })}
+                  </div>
+                  <div style={{ fontSize: 11, color: 'var(--text3)' }}>
+                    {t('achievements.weekSummary', { answered: catStats.totalAnswered, correct: catStats.totalCorrect })}
+                    {catStats.maxStreak > 3 && t('achievements.weekStreak', { count: catStats.maxStreak })}
+                  </div>
+                </div>
+                {acc >= 70 && <div style={{ fontSize: 24 }}>🎯</div>}
+                {acc >= 50 && acc < 70 && <div style={{ fontSize: 24 }}>📈</div>}
+                {acc < 50 && <div style={{ fontSize: 24 }}>💪</div>}
+              </div>
+            )}
+
+            {/* ⚠️ Zaif Nuqtalar Paneli */}
+            {(() => {
+              const weakTopics = TOPICS
+                .filter(t => {
+                  const match = Array.isArray(t.category) ? t.category.includes(cat) : t.category === cat;
+                  const ts = state.topicStats[t.id];
+                  return match && ts && ts.answered > 0;
+                })
+                .map(t => {
+                  const ts = state.topicStats[t.id];
+                  const wrong = ts.answered - ts.correct;
+                  const topicAcc = Math.round((ts.correct / ts.answered) * 100);
+                  return { ...t, wrong, acc: topicAcc, answered: ts.answered, correct: ts.correct };
+                })
+                .filter(t => t.wrong > 0)
+                .sort((a, b) => b.wrong - a.wrong || a.acc - b.acc)
+                .slice(0, 5);
+
+              if (weakTopics.length === 0) return null;
+
+              return (
+                <div style={{ marginBottom: 16 }}>
+                  <div className="section-header" style={{ color: 'var(--red)', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: '800', marginBottom: 10 }}><AlertTriangle size={18} /> {t('achievements.weakTitle')}</div>
+                  <div className="glass-panel" style={{ padding: '16px', border: '1px solid rgba(239,68,68,0.1)', background: 'rgba(239,68,68,0.01)' }}>
+                    <div style={{ fontSize: 11, color: 'var(--text3)', marginBottom: 12 }}>
+                      {t('achievements.weakHint')}
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                      {weakTopics.map((tp) => (
+                        <div
+                          key={tp.id}
+                          onClick={() => handleNavigation(tp.id, 'exam')}
+                          style={{
+                            display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px',
+                            background: 'var(--bg2)', borderRadius: 12, cursor: 'pointer',
+                            border: '0.5px solid var(--border)', transition: 'all 0.2s'
+                          }}
+                          className="hoverable"
+                        >
+                          <div style={{
+                            width: 32, height: 32, borderRadius: 8, flexShrink: 0,
+                            background: tp.acc < 40 ? 'var(--red-bg)' : tp.acc < 70 ? 'var(--amber-bg)' : 'var(--green-bg)',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16
+                          }}>
+                            {tp.icon}
+                          </div>
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 3, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                              {tp.name}
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                              <div style={{ flex: 1, height: 4, borderRadius: 2, background: 'var(--bg3)', overflow: 'hidden' }}>
+                                <div style={{
+                                  width: `${tp.acc}%`, height: '100%', borderRadius: 2,
+                                  background: tp.acc < 40 ? 'var(--red)' : tp.acc < 70 ? 'var(--amber)' : 'var(--green)',
+                                  transition: 'width 0.5s ease'
+                                }} />
+                              </div>
+                              <span style={{ fontSize: 11, fontWeight: 700, color: tp.acc < 40 ? 'var(--red)' : tp.acc < 70 ? 'var(--amber)' : 'var(--green)', flexShrink: 0 }}>
+                                {tp.acc}%
+                              </span>
+                            </div>
+                          </div>
+                          <div style={{ textAlign: 'right', flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2, paddingLeft: 6 }}>
+                            <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--red)' }}>{tp.wrong}</div>
+                            <div style={{ fontSize: 9, color: 'var(--text3)', fontWeight: 600 }}>{t('achievements.weakError')}</div>
+                          </div>
+                          <button
+                            className="btn btn-sm"
+                            onClick={(e) => { e.stopPropagation(); handleNavigation(tp.id, 'exam'); }}
+                            style={{
+                              background: 'var(--red)', color: 'white', border: 'none',
+                              fontSize: 10, padding: '5px 8px', borderRadius: 8, flexShrink: 0,
+                              fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit'
+                            }}
+                          >
+                            {t('achievements.weakPractice')}
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+          </motion.div>
+        )}
+
+        {activeTab === 'statistics' && (
           <motion.div
             key="statistics"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.2 }}
           >
-            {/* Radial grafiklar */}
-            <div className="glass-panel" style={{ padding: '28px', marginBottom: '24px' }}>
-              <div style={{ fontWeight: '700', fontSize: '16px', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            {/* Radial charts */}
+            <div className="glass-panel" style={{ padding: '24px', marginBottom: '20px' }}>
+              <div style={{ fontWeight: '700', fontSize: '15px', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <TrendingUp size={18} style={{ color: 'var(--blue)' }} /> {t('achievements.overallMetrics')}
               </div>
-              <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', justifyContent: 'space-around', alignItems: 'center' }}>
-                <RadialChart pct={acc} size={130} stroke={12} color={acc >= 70 ? 'var(--green)' : acc >= 50 ? 'var(--amber)' : 'var(--red)'} label={t('achievements.accuracy')} />
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', flex: 1, minWidth: '160px' }}>
+              <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'space-around', alignItems: 'center' }}>
+                <RadialChart pct={acc} size={120} stroke={10} color={acc >= 70 ? 'var(--green)' : acc >= 50 ? 'var(--amber)' : 'var(--red)'} label={t('achievements.accuracy')} />
+                <div style={{ display: 'flex', flexName: 'stats-list', flexDirection: 'column', gap: '12px', flex: 1, minWidth: '150px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '14px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.correctLabel')}</span>
-                    <span style={{ fontSize: '20px', fontWeight: '800', color: 'var(--green)' }}>{correct}</span>
+                    <span style={{ fontSize: '13px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.correctLabel')}</span>
+                    <span style={{ fontSize: '18px', fontWeight: '800', color: 'var(--green)' }}>{correct}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '14px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.wrongLabel')}</span>
-                    <span style={{ fontSize: '20px', fontWeight: '800', color: 'var(--red)' }}>{wrong}</span>
+                    <span style={{ fontSize: '13px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.wrongLabel')}</span>
+                    <span style={{ fontSize: '18px', fontWeight: '800', color: 'var(--red)' }}>{wrong}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '14px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.totalLabel')}</span>
-                    <span style={{ fontSize: '20px', fontWeight: '800', color: 'var(--text)' }}>{total}</span>
+                    <span style={{ fontSize: '13px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.totalLabel')}</span>
+                    <span style={{ fontSize: '18px', fontWeight: '800', color: 'var(--text)' }}>{total}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '14px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.maxStreak')}</span>
-                    <span style={{ fontSize: '20px', fontWeight: '800', color: 'var(--amber)' }}>{catStats.maxStreak}</span>
+                    <span style={{ fontSize: '13px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.maxStreak')}</span>
+                    <span style={{ fontSize: '18px', fontWeight: '800', color: 'var(--amber)' }}>{catStats.maxStreak}</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Bo'limlar bo'yicha grafik */}
-            <div className="section-header" style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Target size={20} style={{ color: 'var(--blue)' }} /> {t('achievements.byTopic')}
+            <div className="section-header" style={{ marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: '800' }}>
+              <Target size={18} style={{ color: 'var(--blue)' }} /> {t('achievements.byTopic')}
             </div>
-            <div className="glass-panel" style={{ padding: '20px', marginBottom: '24px' }}>
+            <div className="glass-panel" style={{ padding: '18px', marginBottom: '20px' }}>
               {filteredTopics.map((t, idx) => {
                 const s = state.topicStats[t.id];
                 const topicTotal = topicTotals[t.id] || 0;
@@ -806,31 +892,31 @@ const AchievementsPage = () => {
                     key={t.id}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.05 }}
+                    transition={{ delay: idx * 0.04 }}
                     className="stats-topic-row"
                   >
-                    <div style={{ minWidth: '120px', maxWidth: '180px', fontSize: '14px', fontWeight: '500', color: 'var(--text)', display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
+                    <div style={{ minWidth: '110px', maxWidth: '170px', fontSize: '13px', fontWeight: '500', color: 'var(--text)', display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
                       {t.icon} {t.name}
                     </div>
                     <div style={{ flex: 1 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                        <div style={{ flex: 1, height: '8px', background: 'var(--bg3)', borderRadius: '4px', overflow: 'hidden' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
+                        <div style={{ flex: 1, height: '6px', background: 'var(--bg3)', borderRadius: '3px', overflow: 'hidden' }}>
                           <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: `${pct}%` }}
-                            transition={{ duration: 0.8, delay: idx * 0.05 }}
-                            style={{ height: '100%', borderRadius: '4px', background: barColor }}
+                            transition={{ duration: 0.8, delay: idx * 0.04 }}
+                            style={{ height: '100%', borderRadius: '3px', background: barColor }}
                           />
                         </div>
-                        <div style={{ fontSize: '13px', fontWeight: '700', minWidth: '40px', textAlign: 'right', color: barColor }}>
+                        <div style={{ fontSize: '12px', fontWeight: '700', minWidth: '35px', textAlign: 'right', color: barColor }}>
                           {pct > 0 ? `${pct}%` : '—'}
                         </div>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <div style={{ flex: 1, height: '4px', background: 'var(--bg3)', borderRadius: '2px', overflow: 'hidden' }}>
-                          <div style={{ width: `${coveragePct}%`, height: '100%', borderRadius: '2px', background: 'var(--blue)', opacity: 0.5 }} />
+                        <div style={{ flex: 1, height: '3px', background: 'var(--bg3)', borderRadius: '1.5px', overflow: 'hidden' }}>
+                          <div style={{ width: `${coveragePct}%`, height: '100%', borderRadius: '1.5px', background: 'var(--blue)', opacity: 0.5 }} />
                         </div>
-                        <div style={{ fontSize: '11px', color: 'var(--text3)', minWidth: '60px', textAlign: 'right' }}>
+                        <div style={{ fontSize: '10px', color: 'var(--text3)', minWidth: '50px', textAlign: 'right' }}>
                           {answered}/{topicTotal}
                         </div>
                       </div>
@@ -841,18 +927,18 @@ const AchievementsPage = () => {
             </div>
 
             {/* Oxirgi Xatolar */}
-            <div className="section-header" style={{ marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div className="section-header" style={{ marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: '800' }}>
               <AlertCircle size={18} style={{ color: 'var(--red)' }} /> {t('achievements.recentMistakes')}
             </div>
-            <div style={{ marginBottom: '24px' }}>
+            <div style={{ marginBottom: '20px' }}>
               {catStats.mistakes.length === 0 ? (
                 <div style={{ color: 'var(--text3)', fontSize: '13px', padding: '12px 0' }}>{t('achievements.noMistakes')}</div>
               ) : (
                 [...catStats.mistakes].reverse().slice(0, 5).map((m, i) => (
-                  <div key={i} className="glass-panel" style={{ borderLeft: '3px solid var(--red)', padding: '12px 16px', marginBottom: '8px' }}>
-                    <div style={{ fontSize: '12px', color: 'var(--red)', fontFamily: "'IBM Plex Mono', monospace", marginBottom: '4px' }}>{m.topic}</div>
-                    <div style={{ fontSize: '13px', color: 'var(--text)', lineHeight: '1.5' }}>{m.question}</div>
-                    <div style={{ fontSize: '12px', color: 'var(--green)', marginTop: '6px' }}>{t('achievements.mistakeCorrect', { correct: m.correct })}</div>
+                  <div key={i} className="glass-panel" style={{ borderLeft: '3px solid var(--red)', padding: '10px 14px', marginBottom: '6px' }}>
+                    <div style={{ fontSize: '11px', color: 'var(--red)', fontFamily: "'IBM Plex Mono', monospace", marginBottom: '3px' }}>{m.topic}</div>
+                    <div style={{ fontSize: '13px', color: 'var(--text)', lineHeight: '1.4' }}>{m.question}</div>
+                    <div style={{ fontSize: '11px', color: 'var(--green)', marginTop: '5px' }}>{t('achievements.mistakeCorrect', { correct: m.correct })}</div>
                   </div>
                 ))
               )}

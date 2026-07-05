@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AppContext, getWeekId, getMonthId, POINTS_DUE_REVIEW } from '../context/AppContext';
@@ -32,6 +32,7 @@ const SmartReviewPage = () => {
   const [answered, setAnswered] = useState(null); // null | index
   const [sessionStats, setSessionStats] = useState({ correct: 0, wrong: 0 });
   const [sessionDone, setSessionDone] = useState(false);
+  const nextButtonRef = useRef(null);
 
   // Flashcard rejimi (takror navbati kartalari uchun)
   const [studyMode, setStudyMode] = useState('mcq'); // 'mcq' | 'flashcard'
@@ -143,6 +144,10 @@ const SmartReviewPage = () => {
       correct: prev.correct + (isCorrect ? 1 : 0),
       wrong: prev.wrong + (isCorrect ? 0 : 1)
     }));
+
+    setTimeout(() => {
+      nextButtonRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 400);
   };
 
   const nextCard = () => {
@@ -643,7 +648,7 @@ const SmartReviewPage = () => {
                   );
                 })()}
 
-                <button onClick={nextCard} style={{ width: '100%', padding: '14px', background: '#0E97E0', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                <button ref={nextButtonRef} onClick={nextCard} style={{ width: '100%', padding: '14px', background: '#0E97E0', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
                   {currentIdx + 1 >= cards.length ? t('review.finish') : t('review.nextCard')} <ChevronRight size={18} />
                 </button>
               </motion.div>

@@ -29,7 +29,7 @@ const Header = ({ theme, toggleTheme }) => {
   const { state } = useContext(AppContext);
 
   // Profil drawer'dagi kompakt statistika — ProfilePage bilan bir manba
-  const totalXP = getTotalXP(state.stats);
+  const totalXP = getTotalXP(state.stats, state);
   const levelInfo = getLevel(totalXP);
   const nextXP = levelInfo.level === 1 ? 75 : levelInfo.level === 2 ? 200 : levelInfo.level === 3 ? 500 : levelInfo.level === 4 ? 1000 : 9999;
   const drawerStats = { xp: totalXP, xpMax: nextXP, level: levelInfo.level, streak: state.dailyStreak || 0 };
