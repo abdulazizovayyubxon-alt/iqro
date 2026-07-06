@@ -45,6 +45,13 @@ export default function PrivacyModal({ onClose }) {
 
         <p style={{ marginBottom: '12px' }}><strong>{t('modals.privacyP5Title')}</strong><br />
           {t('modals.privacyP5Body')}</p>
+
+        <p style={{ marginBottom: '12px' }}>
+          <a href="/privacy" target="_blank" rel="noopener noreferrer"
+            style={{ color: 'var(--blue)', fontWeight: 700, textDecoration: 'none' }}>
+            {t('modals.privacyFullLink')}
+          </a>
+        </p>
       </div>
       <button
         onClick={onClose}

@@ -207,8 +207,17 @@ const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user }) => {
       : (trialStatus === 'urgency' && urgencyLeft > 0)
         ? t('profile.urgencyExpired', 'Sinov tugadi')
         : t('drawer.subTitle', 'Toifa Pro Obunasi');
+  const premiumExpireDate = user.premiumExpire ? new Date(user.premiumExpire) : null;
+  const premiumDaysLeft = premiumExpireDate
+    ? Math.max(0, Math.ceil((premiumExpireDate.getTime() - Date.now()) / 86400000))
+    : null;
   const subDesc = isTruePremium
-    ? (user.premiumExpire ? t('profile.premiumExpires', { date: new Date(user.premiumExpire).toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : 'uz-UZ', { day: 'numeric', month: 'long', year: 'numeric' }) }) : t('profile.premiumLifetime', 'Muddatsiz obuna'))
+    ? (premiumExpireDate
+        ? t('profile.premiumExpires', {
+            date: premiumExpireDate.toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : 'uz-UZ', { day: 'numeric', month: 'long', year: 'numeric' }),
+            days: premiumDaysLeft,
+          })
+        : t('profile.premiumLifetime', 'Muddatsiz'))
     : trialStatus === 'trial'
       ? t('profile.trialActiveDesc', { days: trialDaysLeft })
       : t('profile.premiumBuyDesc', 'Cheksiz testlar, reklamasiz, batafsil tahlil');
@@ -268,6 +277,7 @@ const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user }) => {
                 <div style={{ minWidth: 0 }}>
                   <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--text)', lineHeight: 1.25, overflowWrap: 'break-word' }}>{displayName}</div>
                   {phoneDisplay && <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text2)', marginTop: 3 }}>{phoneDisplay}</div>}
+                  {user.shortId && <div style={{ fontSize: 11.5, fontWeight: 700, color: 'var(--text3)', marginTop: 3, letterSpacing: 0.3 }}>ID: {user.shortId}</div>}
                   <div style={{ fontSize: 12, fontWeight: 600, color: isTruePremium ? 'var(--amber)' : 'var(--text3)', marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
                     {isTruePremium && <Crown size={12} />}
                     {isTruePremium ? t('profile.premiumActive', 'Obuna faol') : t('header.freeAccount', 'Oddiy hisob')}

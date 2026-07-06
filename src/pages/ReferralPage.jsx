@@ -23,7 +23,7 @@ const fmtSum = (n) => n.toLocaleString(i18n.language === 'ru' ? 'ru-RU' : 'uz-UZ
 
 export default function ReferralPage() {
   const { t } = useTranslation();
-  const { user } = useAuth();
+  const { user, updateUserData } = useAuth();
   const { showToast } = useContext(ToastContext);
 
   const [refLink, setRefLink] = useState('');
@@ -47,6 +47,11 @@ export default function ReferralPage() {
       if (res.type === 'percent') {
         setPromoMsg({ type: 'ok', text: t('referral.promoPercentOk', { value: res.value }) });
       } else {
+        // days/team — profil muddatini reload kutmasdan yangilaymiz
+        const base = user?.premiumExpire && new Date(user.premiumExpire) > new Date()
+          ? new Date(user.premiumExpire) : new Date();
+        const newExpire = new Date(base.getTime() + Number(res.value) * 86400000).toISOString();
+        updateUserData({ isPremium: true, isTruePremium: true, premiumExpire: newExpire, trialStatus: 'premium' });
         setPromoMsg({ type: 'ok', text: t('referral.promoDaysOk', { value: res.value }) });
       }
       setPromoCode('');

@@ -10,8 +10,6 @@ import { db } from '../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { EXAM_DATE } from '../config';
 import { resolveAvatar } from '../data/avatars';
-import { getTotalXP, getLevel } from '../data/badges';
-import { AppContext } from '../context/AppContext';
 import { getReferralStats } from '../services/referral';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
@@ -25,13 +23,7 @@ const Header = ({ theme, toggleTheme }) => {
   const { t } = useTranslation();
   const { toast, showToast } = useContext(ToastContext);
   const { user } = useAuth();
-  const { state } = useContext(AppContext);
 
-  // Profil drawer'dagi kompakt statistika — ProfilePage bilan bir manba
-  const totalXP = getTotalXP(state.stats);
-  const levelInfo = getLevel(totalXP);
-  const nextXP = levelInfo.level === 1 ? 75 : levelInfo.level === 2 ? 200 : levelInfo.level === 3 ? 500 : levelInfo.level === 4 ? 1000 : 9999;
-  const drawerStats = { xp: totalXP, xpMax: nextXP, level: levelInfo.level, streak: state.dailyStreak || 0 };
   const [daysLeft, setDaysLeft] = useState(0);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showProfileDrawer, setShowProfileDrawer] = useState(false);
@@ -429,7 +421,6 @@ const Header = ({ theme, toggleTheme }) => {
         theme={theme}
         toggleTheme={toggleTheme}
         user={user}
-        stats={drawerStats}
       />
 
     </>

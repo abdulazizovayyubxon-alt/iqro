@@ -1370,7 +1370,7 @@
       "A) O‘z yashash joylaridagi jamoat tartibini saqlash va patrullik xizmatini o‘tash tadbirlariga.",
       "B) Jangovar tayyorgarlikni saqlash va harbiy ixtisoslik bo‘yicha ko‘nikmalarni takomillashtirish uchun harbiy yig‘inlarga.",
       "C) Qishloq xo‘jaligi ishlarida yordam berish va strategik ob’ektlarni qo‘riqlash bo‘yicha navbatchilikka.",
-      "D) xalqaro harbiy mashqlarda O‘zbekiston nomidan ishtirok etish uchun maxsus tayyorgarliklarga."
+      "D) Xalqaro harbiy mashqlarda O‘zbekiston nomidan ishtirok etish uchun maxsus tayyorgarliklarga."
     ],
     "correct": 1,
     "explanation": "Rezervchilar tinchlik davrida jangovar tayyorgarlikni saqlash va harbiy ixtisoslik bo‘yicha ko‘nikmalarni takomillashtirish uchun harbiy yig‘inlarga jalb etilishi mumkin.",
@@ -1434,7 +1434,7 @@
     "opts": [
       "A) Oliy ma’lumotga ega bo‘lish",
       "B) Tayyorgarlik tugaganidan keyin harbiy xizmatga chaqirilishi lozimligi",
-      "C) Kamida bitta xorijiy telni bilishi",
+      "C) Kamida bitta xorijiy tilni bilishi",
       "D) Haydovchilik guvohnomasiga ega bo‘lish"
     ],
     "correct": 1,
@@ -1511,9 +1511,9 @@
     "q": "3-modda. Umumiy harbiy majburiyat o‘z ichiga qaysi tadbirlarni qamrab oladi?",
     "opts": [
       "A) Harbiy xizmatga tayyorlash va chaqirish, xizmat o‘tash, rezervdagi xizmat, muqobil xizmat hamda harbiy ro‘yxat qoidalariga rioya etish.",
-      "B) harbiy qismda o'taladigan muddatli harbiy xizmatni va ofitserlar tarkibining malakasini oshirish kurslarini.",
-      "C) Fuqarolarni xorijiy davlatlarning harbiy oliy o'quv yurtlarida o'qitish va ularni moddiy jihatdan ta'minlashni.",
-      "D) Harbiy-vatanparvarlik lagerlarida qatnashish va umumta'lim maktablarida chaqiruvga qadar tayyorgarlik fanini o'qishni."
+      "B) Harbiy qismda o‘tadigan muddatli harbiy xizmatni va ofitserlar tarkibining malakasini oshirish kurslarini.",
+      "C) Fuqarolarni xorijiy davlatlarning harbiy oliy o‘quv yurtlarida o‘qitish va ularni moddiy jihatdan ta’minlashni.",
+      "D) Harbiy-vatanparvarlik lagerlarida qatnashish va umumta’lim maktablarida chaqiruvga qadar tayyorgarlik fanini o‘qishni."
     ],
     "correct": 0,
     "explanation": "Umumiy harbiy majburiyat harbiy xizmatga tayyorlash va chaqirish, xizmat o‘tash, rezervdagi xizmat, muqobil xizmat va harbiy ro‘yxat qoidalariga rioya etishni qamrab oladi.",

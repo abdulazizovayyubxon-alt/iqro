@@ -1,10 +1,10 @@
 /**
- * Click/Payme to'lov integratsiyasi
+ * Click to'lov integratsiyasi (tez kunda ishga tushadi)
  *
  * ARXITEKTURA:
- * 1. Frontend → Click/Payme checkout URL ochadi (userId bilan)
+ * 1. Frontend → Click checkout URL ochadi (userId bilan)
  * 2. Foydalanuvchi to'lov qiladi
- * 3. Click/Payme → /api/payment-webhook ga POST yuboradi
+ * 3. Click → /api/payment-webhook ga POST yuboradi
  * 4. Webhook Firestore'da isPremium = true qiladi
  *
  * MUHIM: merchant_id va secret_key faqat .env da bo'lishi kerak!
@@ -36,28 +36,6 @@ export const generateClickUrl = (userId, userPhone, planPrice = PREMIUM_PRICE, p
   });
 
   return `https://my.click.uz/services/pay?${params.toString()}`;
-};
-
-// ── Payme checkout URL generatori ──
-export const generatePaymeUrl = (userId, planPrice = PREMIUM_PRICE, planId = 'lifetime') => {
-  const merchantId = import.meta.env.VITE_PAYME_MERCHANT_ID;
-
-  if (!merchantId) {
-    console.error('Payme merchant sozlamalari topilmadi (.env)');
-    return null;
-  }
-
-  // Payme checkout parametrlari (Base64 encoded)
-  const params = {
-    m: merchantId,
-    'ac.user_id': `${userId}__${planId}`,
-    a: planPrice * 100, // Payme tiyinda ishlaydi (1 so'm = 100 tiyin)
-    c: `${window.location.origin}/?payment=success`
-  };
-
-  // Payme URL: https://checkout.paycom.uz/base64_encoded_params
-  const encoded = btoa(JSON.stringify(params));
-  return `https://checkout.paycom.uz/${encoded}`;
 };
 
 // ── To'lov holatini tekshirish (frontend polling) ──

@@ -20,6 +20,7 @@ import {
   REFERRAL_DISCOUNT,
 } from '../services/referral';
 import { AnalyticsEvents } from '../services/analytics';
+import { getNextShortId } from '../utils/shortId';
 
 // Synchronously capture and save the referral code on script load
 try {
@@ -276,6 +277,8 @@ export const AuthProvider = ({ children }) => {
       // lekin "Premium" nishonini ko'rsatishda shu xom holatdan foydalanamiz.
       let isTruePremium = false;
       let avatarId = null;
+      let premiumExpire = null; // ISO sana yoki null (muddatsiz)
+      let shortId = null;
 
       try {
         let trialInfo = { status: 'expired', daysLeft: 0, urgencyMs: 0 };
@@ -288,9 +291,14 @@ export const AuthProvider = ({ children }) => {
               isPremium = data.isPremium || false;
               role = data.role || 'user';
               avatarId = data.avatarId || null;
+              premiumExpire = data.premiumExpire || null;
+              shortId = data.shortId || null;
 
               // ═══ Premium muddati tekshiruvi ═══
-              if (isPremium && data.premiumExpire && data.premiumPlan !== 'paid') {
+              // premiumExpire (sana) — obuna tugash vaqtining yagona manbasi.
+              // Sana o'tgan bo'lsa obuna tugaydi (to'lov, promo va admin — barchasi
+              // uchun bir xil). premiumExpire yo'q bo'lsa — muddatsiz, tugamaydi.
+              if (isPremium && data.premiumExpire) {
                 const expDate = new Date(data.premiumExpire);
                 if (expDate < new Date()) {
                   isPremium = false;
@@ -320,8 +328,10 @@ export const AuthProvider = ({ children }) => {
                   .catch(e => console.warn('Discount expire update xatosi:', e));
               }
             } else {
+              shortId = await getNextShortId(db).catch(e => { console.warn('ShortId generatsiya xatosi:', e); return null; });
               await setDoc(userRef, {
                 uid: firebaseUser.uid,
+                shortId,
                 email: firebaseUser.email,
                 displayName: firebaseUser.displayName || firebaseUser.email?.split('@')[0],
                 photoURL: firebaseUser.photoURL || null,
@@ -352,8 +362,10 @@ export const AuthProvider = ({ children }) => {
             displayName: firebaseUser.displayName,
             photoURL: firebaseUser.photoURL,
             avatarId,
+            shortId,
             isPremium,
             isTruePremium,
+            premiumExpire,
             role,
             trialStatus: trialInfo.status,
             trialDaysLeft: trialInfo.daysLeft,
@@ -370,8 +382,10 @@ export const AuthProvider = ({ children }) => {
             displayName: firebaseUser.displayName,
             photoURL: firebaseUser.photoURL,
             avatarId,
+            shortId,
             isPremium,
             isTruePremium,
+            premiumExpire,
             role,
             trialStatus: trialInfo.status,
             trialDaysLeft: trialInfo.daysLeft,
@@ -530,8 +544,10 @@ export const AuthProvider = ({ children }) => {
         const userCred = await createUserWithEmailAndPassword(auth, internalEmail, password);
         await updateProfile(userCred.user, { displayName: name });
 
+        const shortId = await getNextShortId(db).catch(e => { console.warn('ShortId generatsiya xatosi:', e); return null; });
         await setDoc(doc(db, 'users', userCred.user.uid), {
           uid: userCred.user.uid,
+          shortId,
           email: internalEmail,
           phone: cleanPhone,
           displayName: name,
@@ -559,6 +575,7 @@ export const AuthProvider = ({ children }) => {
 
         setUser({
           uid: userCred.user.uid,
+          shortId,
           email: internalEmail,
           displayName: name,
           photoURL: null,
@@ -653,6 +670,8 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+
+
   // ─── Parolni o'zgartirish (joriy foydalanuvchi uchun) ───
   // Telegram orqali kirgan yoki tizimda bo'lgan foydalanuvchi yangi parol o'rnatadi.
   const changePassword = async (newPassword) => {
@@ -722,8 +741,10 @@ export const AuthProvider = ({ children }) => {
         displayName: updated.displayName,
         photoURL: updated.photoURL,
         avatarId: updated.avatarId,
+        shortId: updated.shortId,
         isPremium: updated.isPremium,
         isTruePremium: updated.isTruePremium,
+        premiumExpire: updated.premiumExpire ?? null,
         role: updated.role,
         trialStatus: updated.trialStatus,
         trialDaysLeft: updated.trialDaysLeft,

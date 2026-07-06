@@ -49,33 +49,35 @@ export function useNotifications() {
   useEffect(() => {
     if (!user) return;
 
-    const unsubscribe = onSnapshot(collection(db, 'notifications'), (notifSnap) => {
-      try {
-        const deleted = loadDeleted();
-        const firestoreNotifs = notifSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+    // Ikkala manbadan kelgan bildirishnomalarni lokal holatga singdirish
+    const absorb = (incoming) => {
+      const deleted = loadDeleted();
+      const fresh = incoming.filter(n => !deleted.has(n.id));
+      setNotifications(prev => {
+        const localMap = new Map(prev.map(item => [item.id, item]));
+        fresh.forEach(fn => {
+          const existing = localMap.get(fn.id);
+          localMap.set(fn.id, { ...fn, read: existing ? existing.read : false });
+        });
+        const merged = Array.from(localMap.values())
+          .filter(n => !deleted.has(n.id))
+          .sort((a, b) => new Date(b.date) - new Date(a.date));
+        persist(merged);
+        return merged;
+      });
+    };
 
-        const relevantNotifs = firestoreNotifs.filter(n =>
+    // 1) Global e'lonlar (admin yozadi)
+    const unsubGlobal = onSnapshot(collection(db, 'notifications'), (notifSnap) => {
+      try {
+        const firestoreNotifs = notifSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+        absorb(firestoreNotifs.filter(n =>
           !n.targetUser && !n.userId
             ? true                                        // Umumiy bildirishnoma
             : n.targetUser === user?.uid                  // targetUser orqali
               || n.targetUser === 'all'
               || n.userId === user?.uid                   // referral bonus userId orqali
-        ).filter(n => !deleted.has(n.id));                // o'chirilganlarni qayta tiklamaymiz
-
-        setNotifications(prev => {
-          const localMap = new Map(prev.map(item => [item.id, item]));
-
-          relevantNotifs.forEach(fn => {
-            const existing = localMap.get(fn.id);
-            localMap.set(fn.id, { ...fn, read: existing ? existing.read : false });
-          });
-
-          const merged = Array.from(localMap.values())
-            .filter(n => !deleted.has(n.id))
-            .sort((a, b) => new Date(b.date) - new Date(a.date));
-          persist(merged);
-          return merged;
-        });
+        ));
       } catch (e) {
         console.error("Bildirishnomalarni yuklashda xatolik:", e);
       }
@@ -83,7 +85,19 @@ export function useNotifications() {
       console.error("Notification snapshot xatosi:", err);
     });
 
-    return () => unsubscribe();
+    // 2) Shaxsiy bildirishnomalar (yutuqlar) — users/{uid}/notifications
+    const unsubPersonal = onSnapshot(collection(db, 'users', user.uid, 'notifications'), (snap) => {
+      try {
+        absorb(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+      } catch (e) {
+        console.error("Shaxsiy bildirishnomalarni yuklashda xatolik:", e);
+      }
+    }, (err) => {
+      // Rules hali deploy qilinmagan bo'lsa permission-denied bo'ladi — ilova ishlashda davom etadi
+      console.warn("Shaxsiy notification snapshot xatosi:", err?.code || err);
+    });
+
+    return () => { unsubGlobal(); unsubPersonal(); };
   }, [user]);
 
   const markAllRead = () => {

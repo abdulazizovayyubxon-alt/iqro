@@ -323,6 +323,9 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
   const newMistakes = [];
   const updatedCards = new Map(spacedCards.map(c => [c.qHash, { ...c }]));
   const sessionNow = Date.now();
+  // Har savolning O'Z mavzusi bo'yicha hisob — aralash test/imtihonda (topicId=-1)
+  // ham har bo'lim o'z ulushini oladi (Dashboard "Bo'limlar xaritasi" shu yerdan o'qiydi)
+  const topicDeltas = {};
 
   for (let i = 0; i < questions.length; i++) {
     const q = questions[i];
@@ -331,6 +334,14 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
 
     const qHash = (q.q || '').substring(0, 100);
     const wasCorrect = selected === q.correct;
+
+    const qTopicId = q.topicId ?? topicId;
+    if (qTopicId !== undefined && qTopicId !== null && qTopicId >= 0) {
+      const td = topicDeltas[qTopicId] || { answered: 0, correct: 0 };
+      td.answered += 1;
+      if (wasCorrect) td.correct += 1;
+      topicDeltas[qTopicId] = td;
+    }
 
     if (wasCorrect) {
       correctCount++;
@@ -408,6 +419,7 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
     totalAnswered: correctCount + wrongCount,
     accuracy: questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0,
     newMistakes,
+    topicDeltas,
     updatedSpacedCards: Array.from(updatedCards.values()).slice(-200) // Maks 200 ta
   };
 };

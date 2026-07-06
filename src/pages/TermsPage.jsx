@@ -9,6 +9,8 @@ export default function TermsPage() {
   const { t } = useTranslation();
   const p2List = t('termsPage.p2List', { returnObjects: true });
   const p3List = t('termsPage.p3List', { returnObjects: true });
+  const p4List = t('termsPage.p4List', { returnObjects: true });
+  const p5List = t('termsPage.p5List', { returnObjects: true });
 
   return (
     <div style={s.page}>
@@ -20,7 +22,7 @@ export default function TermsPage() {
         <div style={{ width: 24 }} />
       </div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         style={s.content}
@@ -28,6 +30,7 @@ export default function TermsPage() {
         <div style={s.iconWrap}>
           <FileText size={48} color="#0E97E0" />
         </div>
+        <p style={s.updated}>{t('termsPage.updated')}</p>
 
         <h2 style={s.heading}>{t('termsPage.h1')}</h2>
         <p style={s.text}>{t('termsPage.p1')}</p>
@@ -41,17 +44,32 @@ export default function TermsPage() {
         <h2 style={s.heading}>{t('termsPage.h3')}</h2>
         <p style={s.text}>{t('termsPage.p3')}</p>
         <ul style={s.list}>
-          {p3List.map((item, i) => <li key={i}><b>{item.b}</b>{item.d}</li>)}
+          {p3List.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
 
         <h2 style={s.heading}>{t('termsPage.h4')}</h2>
         <p style={s.text}>{t('termsPage.p4')}</p>
+        <ul style={s.list}>
+          {p4List.map((item, i) => <li key={i}>{item}</li>)}
+        </ul>
 
         <h2 style={s.heading}>{t('termsPage.h5')}</h2>
         <p style={s.text}>{t('termsPage.p5')}</p>
+        <ul style={s.list}>
+          {p5List.map((item, i) => <li key={i}>{item}</li>)}
+        </ul>
 
         <h2 style={s.heading}>{t('termsPage.h6')}</h2>
         <p style={s.text}>{t('termsPage.p6')}</p>
+
+        <h2 style={s.heading}>{t('termsPage.h7')}</h2>
+        <p style={s.text}>{t('termsPage.p7')}</p>
+
+        <h2 style={s.heading}>{t('termsPage.h8')}</h2>
+        <p style={s.text}>{t('termsPage.p8')}</p>
+
+        <h2 style={s.heading}>{t('termsPage.h9')}</h2>
+        <p style={s.text}>{t('termsPage.p9')}</p>
       </motion.div>
     </div>
   );
@@ -86,6 +104,9 @@ const s = {
   iconWrap: {
     display: 'flex', justifyContent: 'center', marginBottom: 24,
     padding: 20, background: 'var(--bg2)', borderRadius: '50%', width: 88, height: 88, margin: '0 auto 24px'
+  },
+  updated: {
+    fontSize: 13, color: 'var(--text3)', textAlign: 'center', marginBottom: 8
   },
   heading: {
     fontSize: 18, fontWeight: 700, marginTop: 24, marginBottom: 12, color: 'var(--text)'

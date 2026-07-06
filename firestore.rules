@@ -98,6 +98,12 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    // ── users/{uid}/notifications: shaxsiy bildirishnomalar (akademik yutuqlar) —
+    // faqat egasi o'qiydi/yozadi, admin ham boshqara oladi ──
+    match /users/{userId}/notifications/{notifId} {
+      allow read, write: if isOwner(userId) || isAdmin();
+    }
+
     // ── leaderboard: hamma o'qiy oladi, faqat o'zi/admin yoza oladi ──
     match /leaderboard/{userId} {
       allow read: if isLoggedIn();
@@ -107,6 +113,32 @@ service cloud.firestore {
     // ── promoCodes: faqat admin boshqaradi; redemption FAQAT server (Admin SDK) orqali ──
     match /promoCodes/{code} {
       allow read, write: if isAdmin();
+    }
+
+    // ── deletionRequests: hisobni o'chirish arizasi (/delete-account) — sahifa ochiq,
+    // shuning uchun create autentifikatsiyasiz ham ruxsat etiladi, lekin maydonlar qat'iy
+    // tekshiriladi va o'qish/boshqarish faqat adminda ──
+    match /deletionRequests/{docId} {
+      allow create: if request.resource.data.keys().hasOnly(['name', 'phone', 'reason', 'status', 'createdAt'])
+        && request.resource.data.status == 'pending'
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 100
+        && request.resource.data.phone is string
+        && request.resource.data.phone.size() == 12
+        && request.resource.data.reason is string
+        && request.resource.data.reason.size() <= 1000
+        && request.resource.data.createdAt is string;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ── meta/counters: ro'yxatdan o'tishda qisqa foydalanuvchi ID (shortId) generatsiya qilish uchun
+    // ketma-ket hisoblagich. Faqat +1 oshirishga ruxsat — boshqa manipulyatsiya bloklangan ──
+    match /meta/counters {
+      allow read: if isLoggedIn();
+      allow create: if isLoggedIn() && request.resource.data.keys().hasOnly(['userSeq']) && request.resource.data.userSeq == 1;
+      allow update: if isLoggedIn()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['userSeq'])
+        && request.resource.data.userSeq == resource.data.userSeq + 1;
     }
 
     // ── Qolgan hamma narsa bloklangan ──

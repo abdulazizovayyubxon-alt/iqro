@@ -5,10 +5,12 @@ import { AppContext } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS, SUBJECTS } from '../data/mockData';
-import { BADGES, getEarnedBadges, getTotalXP, getLevel } from '../data/badges';
+import { TRACKS, reconcileAchievements } from '../data/tracks';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy, Target, TrendingUp, AlertCircle, Award, Flame, AlertTriangle } from 'lucide-react';
 import RadialChart from '../components/shared/RadialChart';
+import AmiCard from '../components/achievements/AmiCard';
+import TrackCard from '../components/achievements/TrackCard';
 import PremiumModal from '../components/PremiumModal';
 import RoiBlock from '../components/RoiBlock';
 import { DEFAULT_YEARLY_PRICE } from '../config';
@@ -328,51 +330,17 @@ const AchievementsPage = () => {
   };
 
 
-  const getBadgeProgress = (badge) => {
-    if (!state.stats) return null;
-    
-    // helper to sum answered
-    const sumAnswered = (st) => Object.keys(st).reduce((sum, k) => sum + (st[k]?.totalAnswered || 0), 0);
-    // helper to get max streak
-    const getStreak = (st) => Object.keys(st).reduce((max, k) => Math.max(max, st[k]?.maxStreak || 0), 0);
-    
-    if (badge.id === 'first_step') return { current: sumAnswered(state.stats), target: 1 };
-    if (badge.id === 'ten_answers') return { current: sumAnswered(state.stats), target: 10 };
-    if (badge.id === 'fifty_answers') return { current: sumAnswered(state.stats), target: 50 };
-    if (badge.id === 'hundred_answers') return { current: sumAnswered(state.stats), target: 100 };
-    if (badge.id === 'five_hundred') return { current: sumAnswered(state.stats), target: 500 };
-    if (badge.id === 'one_thousand') return { current: sumAnswered(state.stats), target: 1000 };
-    
-    if (badge.id === 'streak_5') return { current: getStreak(state.stats), target: 5 };
-    if (badge.id === 'streak_10') return { current: getStreak(state.stats), target: 10 };
-    if (badge.id === 'streak_25') return { current: getStreak(state.stats), target: 25 };
-    if (badge.id === 'streak_50') return { current: getStreak(state.stats), target: 50 };
-    
-    if (badge.id === 'daily_3day') return { current: state.dailyStreak || 0, target: 3 };
-    if (badge.id === 'daily_7day') return { current: state.dailyStreak || 0, target: 7 };
-    if (badge.id === 'daily_15day') return { current: state.dailyStreak || 0, target: 15 };
-    
-    if (badge.id === 'night_owl') return { current: state.nightQuestions || 0, target: 10 };
-    if (badge.id === 'early_bird') return { current: state.earlyQuestions || 0, target: 10 };
-    
-    if (badge.id === 'subject_chqbt_100') return { current: state.stats?.chqbt?.totalAnswered || 0, target: 100 };
-    if (badge.id === 'subject_tarix_100') return { current: state.stats?.tarix?.totalAnswered || 0, target: 100 };
-    if (badge.id === 'subject_til_100') return { current: state.stats?.til?.totalAnswered || 0, target: 100 };
-    if (badge.id === 'subject_boshlangich_100') return { current: state.stats?.boshlangich?.totalAnswered || 0, target: 100 };
-    if (badge.id === 'subject_info_100') return { current: state.stats?.info?.totalAnswered || 0, target: 100 };
-    
-    if (badge.id === 'perfect_exam') return { current: state.perfectExamsCount || 0, target: 1 };
-    if (badge.id === 'no_mistakes') return { current: getStreak(state.stats), target: 10 };
-
-    return null;
-  };
-
-  const earnedBadges = getEarnedBadges(state.stats, state);
-  const totalXP = getTotalXP(state.stats, state);
-  const levelInfo = getLevel(totalXP);
-
-  const nextLevelXP = levelInfo.level === 1 ? 75 : levelInfo.level === 2 ? 200 : levelInfo.level === 3 ? 500 : levelInfo.level === 4 ? 1000 : 9999;
-  const levelPct = Math.min(100, Math.round((totalXP / nextLevelXP) * 100));
+  // Akademik yutuqlar: saqlangan darajalar (monoton) + jonli progress (sof hisob).
+  // reconcileAchievements bu yerda faqat O'QISH uchun — yozish AppContext'da bo'ladi.
+  const achView = reconcileAchievements(state, state.achievements);
+  const ami = achView.achievements.ami;
+  const radarAxes = TRACKS.map(tr => {
+    const lv = achView.live[tr.id] || { tier: 0, progress: 0 };
+    return {
+      label: t(`tracks.${tr.id}.name`),
+      value: lv.tier >= 3 ? 1 : Math.min(1, (lv.tier + lv.progress) / 3)
+    };
+  });
 
   // Umumiy (barcha fanlar bo'yicha) statistika — Lv banner ostidagi qator uchun
   const globalAnswered = Object.values(state.stats || {}).reduce((sum, c) => sum + (c.totalAnswered || 0), 0);
@@ -395,45 +363,8 @@ const AchievementsPage = () => {
       <h1 style={{ fontSize: 26, fontWeight: 900, color: 'var(--text)', margin: '0 0 4px' }}>{t('achievements.title')}</h1>
       <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 20 }}>{t('achievements.subtitle')}</p>
 
-      {/* Level Header - Modern and Compact */}
-      <div style={{
-        padding: '18px 20px', marginBottom: 16,
-        background: 'var(--glass-bg)',
-        backdropFilter: 'blur(20px)',
-        border: `1px solid var(--glass-border)`,
-        borderRadius: 20,
-        boxShadow: '0 4px 24px rgba(0,0,0,0.01)',
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 14 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{
-              width: 48, height: 48, borderRadius: 12,
-              background: `linear-gradient(135deg, ${levelInfo.color} 0%, #8B5CF6 100%)`,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: `0 4px 12px ${levelInfo.color}25`,
-            }}>
-              <Trophy size={22} color="white" />
-            </div>
-            <div>
-              <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.3px' }}>
-                {levelInfo.name} <span style={{ color: levelInfo.color, fontWeight: 800 }}>Lv.{levelInfo.level}</span>
-              </div>
-              <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2, fontWeight: 500 }}>
-                {t('achievements.xpBadgeLine', { xp: totalXP, earned: earnedBadges.length, total: BADGES.length })}
-              </div>
-            </div>
-          </div>
-          <div style={{ flex: 1, minWidth: 160 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, fontSize: 11, color: 'var(--text3)', fontWeight: 500 }}>
-              <span>{t('achievements.nextLevel')}</span>
-              <span style={{ fontWeight: 700, color: levelInfo.color }}>{totalXP}/{nextLevelXP} XP</span>
-            </div>
-            <div style={{ height: 6, background: 'var(--bg3)', borderRadius: 3, overflow: 'hidden', border: '0.5px solid var(--glass-border)' }}>
-              <div style={{ width: `${levelPct}%`, height: '100%', background: `linear-gradient(90deg, ${levelInfo.color}, #8B5CF6)`, borderRadius: 3, transition: 'width 1s ease' }} />
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Akademik mahorat indeksi + radar */}
+      <AmiCard ami={ami} axes={radarAxes} />
 
       {/* Global stats summary */}
       <div style={{
@@ -461,9 +392,9 @@ const AchievementsPage = () => {
       {/* Reorganized Tabs */}
       <div style={{ display: 'flex', background: 'var(--bg3)', borderRadius: 12, padding: 3, gap: 3, marginBottom: 20 }}>
         {[
-          { id: 'achievements', label: t('achievements.tabAchievements', '🏅 Yutuqlar') },
-          { id: 'passport', label: t('achievements.tabPassport', '📋 Pasport') },
-          { id: 'statistics', label: t('achievements.tabStats', '📊 Statistika') }
+          { id: 'achievements', label: t('achievements.tabAchievements', 'Yutuqlar') },
+          { id: 'passport', label: t('achievements.tabPassport', 'Pasport') },
+          { id: 'statistics', label: t('achievements.tabStats', 'Statistika') }
         ].map(tab => (
           <button
             key={tab.id}
@@ -521,10 +452,9 @@ const AchievementsPage = () => {
                     {ds > 0 && (
                       <div style={{
                         display: 'flex', alignItems: 'center', gap: 5,
-                        background: 'linear-gradient(135deg, #FFB300, #F4511E)',
-                        color: 'white', padding: '4px 10px', borderRadius: 20,
+                        background: 'var(--amber-bg)',
+                        color: 'var(--amber)', padding: '4px 10px', borderRadius: 20,
                         fontWeight: 800, fontSize: 11,
-                        boxShadow: '0 2px 6px rgba(244, 81, 30, 0.15)'
                       }}>
                         <Flame size={12} /> {t('achievements.goalStreak', { count: ds })}
                       </div>
@@ -533,9 +463,7 @@ const AchievementsPage = () => {
                   <div style={{ height: 6, borderRadius: 3, background: 'var(--bg3)', overflow: 'hidden', border: '0.5px solid var(--glass-border)' }}>
                     <div style={{
                       width: `${pct}%`, height: '100%', borderRadius: 3,
-                      background: dg.completed
-                        ? 'linear-gradient(90deg, #10b981, #34d399)'
-                        : pct > 50 ? 'linear-gradient(90deg, #3b82f6, #60a5fa)' : 'linear-gradient(90deg, #6366f1, #818cf8)',
+                      background: dg.completed ? 'var(--green)' : 'var(--accent)',
                       transition: 'width 0.5s ease'
                     }} />
                   </div>
@@ -543,72 +471,15 @@ const AchievementsPage = () => {
               );
             })()}
 
-            {/* Redesigned Badge Collection */}
+            {/* Yo'nalishlar bo'yicha akademik darajalar */}
             <div className="section-header" style={{ marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: '800' }}>
-              <Trophy size={18} style={{ color: 'var(--amber)' }} /> {t('achievements.collection')}
+              <Trophy size={18} style={{ color: 'var(--accent2)' }} /> {t('tracks.sectionTitle')}
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: 10 }}>
-              {BADGES.map((badge) => {
-                const earned = earnedBadges.some(b => b.id === badge.id);
-                const progress = getBadgeProgress(badge);
-
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 10 }}>
+              {TRACKS.map((track) => {
+                const lv = achView.live[track.id] || { tier: 0, progress: 0 };
                 return (
-                  <motion.div
-                    key={badge.id}
-                    whileHover={{ y: -2 }}
-                    style={{
-                      padding: '16px 12px', borderRadius: 16, textAlign: 'center',
-                      border: earned ? `1.2px solid ${badge.color}35` : '1px solid var(--glass-border)',
-                      background: earned ? `linear-gradient(135deg, ${badge.color}05, ${badge.color}0d)` : 'var(--glass-bg)',
-                      backdropFilter: 'blur(10px)',
-                      opacity: earned ? 1 : 0.65,
-                      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
-                      boxShadow: earned ? `0 4px 15px ${badge.color}05` : 'none',
-                      position: 'relative'
-                    }}
-                  >
-                    {/* Medal circular badge frame */}
-                    <div style={{
-                      width: 46, height: 46, borderRadius: '50%',
-                      background: earned ? `${badge.color}15` : 'var(--bg3)',
-                      border: `1.5px solid ${earned ? badge.color : 'var(--border)'}`,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: 22,
-                      filter: earned ? 'none' : 'grayscale(1) opacity(0.65)',
-                      marginBottom: 4
-                    }}>
-                      {earned ? badge.icon : '🔒'}
-                    </div>
-
-                    <div style={{ fontSize: 13, fontWeight: 800, color: 'var(--text)', lineHeight: 1.25, letterSpacing: '-0.2px' }}>
-                      {t(`badges.${badge.id}.name`, badge.name)}
-                    </div>
-                    <div style={{ fontSize: 10, color: 'var(--text3)', lineHeight: 1.3, fontWeight: 500, flexGrow: 1 }}>
-                      {t(`badges.${badge.id}.desc`, badge.desc)}
-                    </div>
-
-                    {/* Progress tracking for locked badges */}
-                    {!earned && progress && (
-                      <div style={{ width: '100%', marginTop: 4, marginBottom: 4 }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9, color: 'var(--text3)', fontWeight: 700, marginBottom: 2 }}>
-                          <span>Jarayon</span>
-                          <span>{progress.current}/{progress.target}</span>
-                        </div>
-                        <div style={{ height: 3, background: 'var(--bg3)', borderRadius: 1.5, overflow: 'hidden' }}>
-                          <div style={{ width: `${Math.min(100, (progress.current / progress.target) * 100)}%`, height: '100%', background: 'var(--accent)', borderRadius: 1.5 }} />
-                        </div>
-                      </div>
-                    )}
-
-                    <div style={{
-                      fontSize: 9, fontWeight: 800,
-                      color: earned ? badge.color : 'var(--text3)',
-                      background: earned ? `${badge.color}12` : 'var(--bg3)',
-                      padding: '2px 8px', borderRadius: 6, marginTop: 'auto'
-                    }}>
-                      +{badge.xp} XP
-                    </div>
-                  </motion.div>
+                  <TrackCard key={track.id} track={track} tier={lv.tier} progress={lv.progress} />
                 );
               })}
             </div>

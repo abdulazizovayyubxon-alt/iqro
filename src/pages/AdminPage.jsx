@@ -497,9 +497,45 @@ try {
 
   const togglePremium = async (userId, currentStatus) => {
     try {
-      await updateDoc(doc(db, 'users', userId), { isPremium: !currentStatus });
-      setUsers(prev => prev.map(u => u.id === userId ? { ...u, isPremium: !currentStatus } : u));
-      showToast("Pro holati o'zgartirildi!", 'success');
+      // ── Bekor qilish: Pro ni olib tashlash ──
+      if (currentStatus) {
+        await updateDoc(doc(db, 'users', userId), {
+          isPremium: false,
+          premiumExpire: null,
+          premiumPlan: 'expired',
+        });
+        setUsers(prev => prev.map(u => u.id === userId ? { ...u, isPremium: false, premiumExpire: null } : u));
+        showToast("Pro bekor qilindi", 'info');
+        return;
+      }
+
+      // ── Berish: necha kunga? (bo'sh qoldirilsa — muddatsiz) ──
+      const input = window.prompt("Necha kunga Pro berilsin?\n(bo'sh qoldiring — muddatsiz)", "30");
+      if (input === null) return; // admin bekor qildi
+      let premiumExpire = null;
+      let days = null;
+      if (input.trim() !== '') {
+        days = parseInt(input, 10);
+        if (!Number.isFinite(days) || days <= 0) {
+          showToast("Kun soni noto'g'ri", 'error');
+          return;
+        }
+        const d = new Date();
+        d.setDate(d.getDate() + days);
+        premiumExpire = d.toISOString();
+      }
+
+      // premiumPlan: 'admin' — 'paid' EMAS. Shu bois muddat o'tganda AuthContext
+      // avtomatik tugatadi (to'lov/promo obunalariga tegmaydi).
+      await updateDoc(doc(db, 'users', userId), {
+        isPremium: true,
+        premiumExpire,
+        premiumPlan: 'admin',
+        premiumSince: new Date().toISOString(),
+        premiumMethod: 'admin',
+      });
+      setUsers(prev => prev.map(u => u.id === userId ? { ...u, isPremium: true, premiumExpire } : u));
+      showToast(premiumExpire ? `Pro berildi — ${days} kun ✅` : "Pro berildi — muddatsiz ✅", 'success');
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
   };
 
@@ -546,8 +582,9 @@ try {
 
   const exportUsers = () => {
     exportCSV('foydalanuvchilar',
-      ['Ism', 'Email', 'Telefon', 'Pro', 'Rol', "Ro'yxatdan o'tgan"],
+      ['ID', 'Ism', 'Email', 'Telefon', 'Pro', 'Rol', "Ro'yxatdan o'tgan"],
       filteredUsers.map(u => [
+        u.shortId || '',
         u.displayName || '',
         u.email || '',
         u.phone || u.phoneNumber || '',
@@ -849,7 +886,8 @@ try {
     const nameMatch = u.displayName?.toLowerCase().includes(term);
     const emailMatch = u.email?.toLowerCase().includes(term);
     const phoneMatch = u.phoneNumber?.toLowerCase().includes(term) || u.phone?.toLowerCase().includes(term);
-    return nameMatch || emailMatch || phoneMatch;
+    const shortIdMatch = u.shortId?.toLowerCase().includes(term);
+    return nameMatch || emailMatch || phoneMatch || shortIdMatch;
   });
 
   const filteredQuestions = questions.filter(q => {
@@ -1332,7 +1370,7 @@ try {
                 <input
                   className="admin-search"
                   style={{ padding: '8px 8px 8px 32px', fontSize: '13px', borderRadius: '10px' }}
-                  placeholder="Ism, telefon yoki email..."
+                  placeholder="Ism, ID, telefon yoki email..."
                   value={userSearch}
                   onChange={e => setUserSearch(e.target.value)}
                 />
@@ -1359,6 +1397,7 @@ try {
                     <div className="admin-user-details">
                       <div className="admin-user-name-line">
                         <span className="admin-user-name-sm">{u.displayName || '—'}</span>
+                        {u.shortId && <span style={{ fontSize: 10.5, fontWeight: 700, color: 'var(--text3)', border: '1px solid var(--border)', borderRadius: 6, padding: '1px 5px' }}>{u.shortId}</span>}
                         {u.isPremium && <span style={{ fontSize: 11 }} title="Pro">⭐</span>}
                         {u.role === 'admin' && <span style={{ fontSize: 11 }} title="Admin">🛡️</span>}
                       </div>

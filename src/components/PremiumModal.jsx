@@ -1,12 +1,13 @@
 /**
- * PremiumModal.jsx — To'lov tizimi (Telegram orqali — karta, operator tasdiqlaydi)
+ * PremiumModal.jsx — To'lov tizimi (Telegram orqali — operator tasdiqlaydi)
+ * Oqim: tariflar → to'lov usuli (promokod + Telegram to'lov → t.me/Toifapro)
  */
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Crown, X, Shield, Send
+  Crown, X, Shield, Send, BadgePercent, Check
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
@@ -35,7 +36,7 @@ const DEFAULT_PLANS = [
     durationMonths: 3,
     perDay: 833,
     badge: 'ENG OMMABOP',
-    color: '#8B5CF6',
+    color: '#0E97E0',
     savings: '17%',
   },
   {
@@ -51,21 +52,21 @@ const DEFAULT_PLANS = [
 ];
 
 const FEATURES = [
-  { icon: '📚', key: 'premium.feat1' },
-  { icon: '🎯', key: 'premium.feat2' },
-  { icon: '🧠', key: 'premium.feat3' },
-  { icon: '📊', key: 'premium.feat4' },
-  { icon: '🏆', key: 'premium.feat5' },
-  { icon: '⚡', key: 'premium.feat6' },
+  'premium.feat1',
+  'premium.feat2',
+  'premium.feat3',
+  'premium.feat4',
+  'premium.feat5',
+  'premium.feat6',
 ];
 
 const PremiumModal = ({ isOpen, onClose }) => {
   const { t } = useTranslation();
-  const { user } = useAuth();
+  const { user, updateUserData } = useAuth();
   const planNameMap = { monthly: t('premium.planMonthly'), quarterly: t('premium.planQuarterly'), yearly: t('premium.planYearly') };
   const badgeMap = { 'ENG OMMABOP': t('premium.badgePopular'), 'TEJAMKOR': t('premium.badgeSaver') };
   const planLabel = (p) => p ? (planNameMap[p.id] || p.name) : '';
-  const [step, setStep] = useState('plans'); // 'plans' | 'method' | 'telegram_guide'
+  const [step, setStep] = useState('plans'); // 'plans' | 'method'
   const [processing, setProcessing] = useState(false);
   const [plans, setPlans] = useState(DEFAULT_PLANS);
   // Default — yillik plan (eng arzon kunlik narx, ROI eng kuchli)
@@ -74,11 +75,9 @@ const PremiumModal = ({ isOpen, onClose }) => {
   const [userData, setUserData] = useState(null);
 
   // Promo-kod holati
-  const [promoOpen, setPromoOpen] = useState(false);
   const [promoCode, setPromoCode] = useState('');
   const [promoLoading, setPromoLoading] = useState(false);
   const [promoMsg, setPromoMsg] = useState(null); // { type: 'ok'|'err', text }
-  const [payMethod, setPayMethod] = useState('telegram'); // 'telegram' | 'payme' | 'click'
 
   // onClose'ni ref orqali ushlaymiz — ota komponent har soniyada qayta render
   // bo'lganda (masalan ProfilePage urgency timer) popstate effekti qayta
@@ -125,7 +124,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const fmt = (n) => new Intl.NumberFormat('fr-FR').format(n).replace(',', ' ') + ' ' + i18n.t('premium.currency');
-  
+
   // Chegirmalar STACK qilinmaydi — referral va promo'dan eng kattasi qo'llanadi
   const referralPercent = userData?.referralDiscount || 0;
   const promoPercent = userData?.promoDiscount?.percent || 0;
@@ -141,7 +140,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
   const hasBonus = (referralBonus > 0 || hasReferralDiscount) && selectedPlan;
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-  // Play Store build'i — faqat Google Play Billing ko'rsatiladi (Click/Payme/Telegram yashiriladi)
+  // Play Store build'i — faqat Google Play Billing ko'rsatiladi
   const isAndroidApp = isPlayBuild();
   const CHANNEL_USERNAME = 'Toifapro';
 
@@ -157,7 +156,13 @@ const PremiumModal = ({ isOpen, onClose }) => {
         setUserData(prev => ({ ...(prev || {}), promoDiscount: { code: code.toUpperCase(), percent: res.value } }));
         setPromoMsg({ type: 'ok', text: t('premium.promoRedeemOk', { value: res.value }) });
       } else {
-        // days/team — premium serverda darhol faollashtirildi
+        // days/team — premium serverda darhol faollashtirildi.
+        // Reload kutmasdan, profil muddatini shu zahoti yangilaymiz (server mantig'i:
+        // max(hozir, joriy muddat) + kunlar).
+        const base = user?.premiumExpire && new Date(user.premiumExpire) > new Date()
+          ? new Date(user.premiumExpire) : new Date();
+        const newExpire = new Date(base.getTime() + Number(res.value) * 86400000).toISOString();
+        updateUserData({ isPremium: true, isTruePremium: true, premiumExpire: newExpire, trialStatus: 'premium' });
         setPromoMsg({ type: 'ok', text: t('premium.promoPremiumOk', { value: res.value }) });
       }
       setPromoCode('');
@@ -166,20 +171,18 @@ const PremiumModal = ({ isOpen, onClose }) => {
     }
   };
 
-  const handlePay = async () => {
+  // 1-qadam CTA: Android — Google Play xarid; Web — to'lov usuli qadamiga o'tish
+  const handleContinue = async () => {
     if (!user || !selectedPlan) return;
 
-    // Analitika: to'lov niyati (yuqori-niyat signali — voronka konversiyasi uchun)
-    AnalyticsEvents.premiumClick(isAndroidApp ? 'play_billing' : 'telegram');
-
     if (isAndroidApp) {
+      AnalyticsEvents.premiumClick('play_billing');
       setProcessing(true);
       const res = await purchasePlan(selectedPlan.id, user.uid);
       setProcessing(false);
       if (!res.success) {
         alert(res.message);
       } else {
-        // Analitika: xarid yakunlandi (Play Billing — mijoz tomonida tasdiqlanadigan oqim)
         AnalyticsEvents.purchase(selectedPlan.id, 'play_billing', finalPrice);
         alert(res.message);
         onClose();
@@ -187,17 +190,92 @@ const PremiumModal = ({ isOpen, onClose }) => {
       return;
     }
 
-    // Web — yagona to'lov usuli: Telegram (karta orqali, operator tasdiqlaydi)
-    if (payMethod === 'telegram') {
-      const tgUrl = `https://t.me/${CHANNEL_USERNAME}?direct`;
-      window.open(tgUrl, '_blank');
-      setStep('telegram_guide');
-    } else {
-      // Payme / Click kelajakda qo'shiladi
-      alert("Bu to'lov usuli tez kunda ishga tushadi! Hozircha Telegram orqali to'lov qiling.");
-      setPayMethod('telegram');
-    }
+    setStep('method');
   };
+
+  // 2-qadam CTA: to'g'ridan-to'g'ri Telegram'ga yo'naltiramiz (operator tasdiqlaydi)
+  const handlePay = () => {
+    if (!user || !selectedPlan) return;
+    AnalyticsEvents.premiumClick('telegram');
+    window.open(`https://t.me/${CHANNEL_USERNAME}?direct`, '_blank');
+  };
+
+  // Promokod kartasi — method qadamida (webda) va plans qadamida (Android'da,
+  // chunki Play build'da method qadami yo'q)
+  const promoCard = (
+    <div style={{
+      background: '#ffffff', border: '1px solid rgba(2,132,199,0.25)',
+      borderRadius: 16, padding: 14, marginBottom: 14,
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+        <span style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(14,151,224,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <BadgePercent size={20} color="#0284C7" />
+        </span>
+        <div>
+          <div style={{ fontSize: 14, fontWeight: 800, color: '#0f172a' }}>{t('premium.promoTitle')}</div>
+          <div style={{ fontSize: 11, color: '#64748B' }}>{t('premium.promoSub')}</div>
+        </div>
+      </div>
+      <div style={{ display: 'flex', gap: 8 }}>
+        <input
+          value={promoCode}
+          onChange={e => { setPromoCode(e.target.value.toUpperCase()); setPromoMsg(null); }}
+          onKeyDown={e => e.key === 'Enter' && handleRedeem()}
+          placeholder={t('premium.promoPlaceholder')}
+          maxLength={32}
+          style={{
+            flex: 1, padding: '11px 14px', borderRadius: 12, fontSize: 14,
+            border: '1.5px solid rgba(0,0,0,0.1)', background: '#f8fafc',
+            color: '#0f172a', fontFamily: 'inherit', fontWeight: 700,
+            letterSpacing: 1, outline: 'none', textTransform: 'uppercase',
+            boxSizing: 'border-box', minWidth: 0,
+          }}
+        />
+        <button
+          onClick={handleRedeem}
+          disabled={promoLoading || !promoCode.trim()}
+          style={{
+            padding: '11px 18px', borderRadius: 12, border: 'none',
+            background: '#0284C7', color: '#fff',
+            fontSize: 13, fontWeight: 800, fontFamily: 'inherit',
+            cursor: promoLoading ? 'wait' : 'pointer',
+            opacity: promoLoading || !promoCode.trim() ? 0.6 : 1, flexShrink: 0,
+          }}
+        >
+          {promoLoading ? '...' : t('premium.apply')}
+        </button>
+      </div>
+      {promoMsg && (
+        <div style={{
+          marginTop: 8, fontSize: 12, fontWeight: 600,
+          color: promoMsg.type === 'ok' ? '#10B981' : '#EF4444',
+        }}>
+          {promoMsg.text}
+        </div>
+      )}
+    </div>
+  );
+
+  // Chegirma / do'st bonusi banneri
+  const bonusBanner = hasBonus && (
+    <div style={{
+      background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)',
+      borderRadius: 12, padding: '10px 14px', marginBottom: 14,
+      display: 'flex', alignItems: 'center', gap: 10,
+    }}>
+      <span style={{ fontSize: 18, flexShrink: 0, lineHeight: 1 }}>🎁</span>
+      <div style={{ flex: 1 }}>
+        <div style={{ fontSize: 12, fontWeight: 700, color: '#10B981' }}>
+          {hasReferralDiscount && t('premium.discountLine', { label: discountSource === 'promo' ? t('premium.discountPromo') : t('premium.discountReferral'), percent: discountPercent })}
+          {hasReferralDiscount && referralBonus > 0 && ' | '}
+          {referralBonus > 0 && t('premium.friendBonus', { amount: fmt(referralBonus) })}
+        </div>
+        <div style={{ fontSize: 11, color: '#475569' }}>
+          {t('premium.total')} <s style={{ opacity: 0.5 }}>{fmt(selectedPlan?.price)}</s> → <strong style={{ color: '#10B981' }}>{fmt(finalPrice)}</strong>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div
@@ -231,13 +309,6 @@ const PremiumModal = ({ isOpen, onClose }) => {
           position: 'relative',
         }}
       >
-        {/* Glow */}
-        <div style={{
-          position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
-          width: 300, height: 150, pointerEvents: 'none',
-          background: 'radial-gradient(ellipse, rgba(41,182,246,0.12) 0%, transparent 70%)',
-        }} />
-
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 20px 0' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -261,8 +332,8 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
         <div style={{ padding: '16px 20px 32px' }}>
 
-          {/* ══════ STEP 1: TARIFLAR VA TO'LOV USULI ══════ */}
           <AnimatePresence mode="wait">
+            {/* ══════ 1-QADAM: TARIFLAR ══════ */}
             {step === 'plans' && (
               <motion.div key="plans" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                 {/* Hero */}
@@ -278,14 +349,8 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   <p style={{ fontSize: 13, color: '#64748B', margin: 0 }}>{t('premium.subtitle')}</p>
                 </div>
 
-                {/* Xavfsizlik belgisi */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginBottom: 20, fontSize: 12, color: '#10B981', fontWeight: 600 }}>
-                  <Shield size={14} />
-                  <span>{t('premium.securePay')}</span>
-                </div>
-
                 {/* Toifa ROI — obuna o'zini qachon oqlaydi */}
-                <RoiBlock price={selectedPlan?.price} planName={planLabel(selectedPlan)} variant="light" />
+                <RoiBlock price={selectedPlan?.price} variant="light" />
 
                 {/* Tariflar */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
@@ -301,7 +366,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                           cursor: 'pointer',
                           border: isSelected ? `2px solid ${plan.color}` : '1.5px solid rgba(0,0,0,0.06)',
                           background: isSelected
-                            ? `rgba(${plan.id === 'monthly' ? '59,130,246' : plan.id === 'quarterly' ? '139,92,246' : '16,185,129'}, 0.08)`
+                            ? `rgba(${plan.id === 'monthly' ? '59,130,246' : plan.id === 'quarterly' ? '14,151,224' : '16,185,129'}, 0.08)`
                             : '#ffffff',
                           boxShadow: isSelected ? '0 4px 12px rgba(0,0,0,0.03)' : 'none',
                           transition: 'all 0.2s',
@@ -311,7 +376,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                         {plan.badge && (
                           <div style={{
                             position: 'absolute', top: 0, right: 14,
-                            background: isPopular ? 'linear-gradient(135deg, #8B5CF6, #6D28D9)' : 'linear-gradient(135deg, #10B981, #059669)',
+                            background: isPopular ? '#0284C7' : '#059669',
                             color: '#fff', fontSize: 9, fontWeight: 900,
                             padding: '3px 10px', borderRadius: '0 0 8px 8px', letterSpacing: 0.8,
                           }}>
@@ -346,172 +411,6 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   })}
                 </div>
 
-                {/* Referral bonus / chegirma */}
-                <AnimatePresence>
-                  {hasBonus && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      style={{
-                        background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)',
-                        borderRadius: 12, padding: '10px 14px', marginBottom: 14,
-                        display: 'flex', alignItems: 'center', gap: 10,
-                      }}
-                    >
-                      <span style={{ fontSize: 18, flexShrink: 0, lineHeight: 1 }}>🎁</span>
-                      <div style={{ flex: 1 }}>
-                        <div style={{ fontSize: 12, fontWeight: 700, color: '#10B981' }}>
-                          {hasReferralDiscount && t('premium.discountLine', { label: discountSource === 'promo' ? t('premium.discountPromo') : t('premium.discountReferral'), percent: discountPercent })}
-                          {hasReferralDiscount && referralBonus > 0 && ' | '}
-                          {referralBonus > 0 && t('premium.friendBonus', { amount: fmt(referralBonus) })}
-                        </div>
-                        <div style={{ fontSize: 11, color: '#475569' }}>
-                          {t('premium.total')} <s style={{ opacity: 0.5 }}>{fmt(selectedPlan?.price)}</s> → <strong style={{ color: '#10B981' }}>{fmt(finalPrice)}</strong>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                {/* Promo-kod */}
-                <div style={{ marginBottom: 14 }}>
-                  {!promoOpen ? (
-                    <button
-                      onClick={() => setPromoOpen(true)}
-                      style={{
-                        background: 'none', border: 'none', cursor: 'pointer', padding: '4px 2px',
-                        fontSize: 12, fontWeight: 700, color: '#0284C7', fontFamily: 'inherit',
-                        display: 'flex', alignItems: 'center', gap: 6,
-                      }}
-                    >
-                      {t('premium.havePromo')}
-                    </button>
-                  ) : (
-                    <div>
-                      <div style={{ display: 'flex', gap: 8 }}>
-                        <input
-                          value={promoCode}
-                          onChange={e => { setPromoCode(e.target.value.toUpperCase()); setPromoMsg(null); }}
-                          onKeyDown={e => e.key === 'Enter' && handleRedeem()}
-                          placeholder={t('premium.promoPlaceholder')}
-                          maxLength={32}
-                          style={{
-                            flex: 1, padding: '11px 14px', borderRadius: 12, fontSize: 14,
-                            border: '1.5px solid rgba(0,0,0,0.1)', background: '#f8fafc',
-                            color: '#0f172a', fontFamily: 'inherit', fontWeight: 700,
-                            letterSpacing: 1, outline: 'none', textTransform: 'uppercase',
-                            boxSizing: 'border-box', minWidth: 0,
-                          }}
-                        />
-                        <button
-                          onClick={handleRedeem}
-                          disabled={promoLoading || !promoCode.trim()}
-                          style={{
-                            padding: '11px 18px', borderRadius: 12, border: 'none',
-                            background: 'linear-gradient(135deg, #0E97E0, #0284C7)', color: '#fff',
-                            fontSize: 13, fontWeight: 800, fontFamily: 'inherit',
-                            cursor: promoLoading ? 'wait' : 'pointer',
-                            opacity: promoLoading || !promoCode.trim() ? 0.6 : 1, flexShrink: 0,
-                          }}
-                        >
-                          {promoLoading ? '...' : t('premium.apply')}
-                        </button>
-                      </div>
-                      {promoMsg && (
-                        <div style={{
-                          marginTop: 8, fontSize: 12, fontWeight: 600,
-                          color: promoMsg.type === 'ok' ? '#10B981' : '#EF4444',
-                        }}>
-                          {promoMsg.text}
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-
-                {/* To'lov usullari */}
-                <div style={{ marginBottom: 16 }}>
-                  {isAndroidApp ? (
-                    <div style={{ padding: '16px', background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)', borderRadius: 12, marginBottom: 16 }}>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: '#1D4ED8', marginBottom: 4 }}>{t('premium.googlePlayTitle')}</div>
-                      <div style={{ fontSize: 12, color: '#1E3A8A', lineHeight: 1.4 }}>
-                        {t('premium.googlePlayDesc', { plan: planLabel(selectedPlan) })}
-                      </div>
-                    </div>
-                  ) : (
-                    <>
-                      <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--text3)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
-                        {t('premium.payMethodTitle', "To'lov usuli")}
-                      </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                        {/* Telegram */}
-                        <div
-                          onClick={() => setPayMethod('telegram')}
-                          style={{
-                            display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer',
-                            padding: '14px 16px', borderRadius: 14,
-                            border: payMethod === 'telegram' ? '2px solid #0E97E0' : '1px solid rgba(0,0,0,0.08)',
-                            background: payMethod === 'telegram' ? 'rgba(14,151,224,0.08)' : '#fff',
-                            transition: 'all 0.2s',
-                          }}>
-                          <span style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(14,151,224,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <Send size={18} color="#0E97E0" />
-                          </span>
-                          <div style={{ flex: 1 }}>
-                            <div style={{ fontSize: 14, fontWeight: 800, color: '#0f172a' }}>{t('premium.payTelegram')}</div>
-                          </div>
-                          <div style={{ width: 20, height: 20, borderRadius: '50%', border: payMethod === 'telegram' ? '6px solid #0E97E0' : '2px solid #cbd5e1' }} />
-                        </div>
-
-                        {/* Payme & Click (Coming soon) */}
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
-                          <div
-                            onClick={() => setPayMethod('payme')}
-                            style={{
-                              display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer',
-                              padding: '10px 12px', borderRadius: 12,
-                              border: payMethod === 'payme' ? '2px solid #31c48d' : '1px solid rgba(0,0,0,0.08)',
-                              background: payMethod === 'payme' ? 'rgba(49,196,141,0.08)' : '#fff',
-                            }}>
-                            <span style={{ fontSize: 13, fontWeight: 800, color: '#31c48d', flex: 1 }}>Payme</span>
-                            <div style={{ width: 16, height: 16, borderRadius: '50%', border: payMethod === 'payme' ? '5px solid #31c48d' : '2px solid #cbd5e1' }} />
-                          </div>
-                          <div
-                            onClick={() => setPayMethod('click')}
-                            style={{
-                              display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer',
-                              padding: '10px 12px', borderRadius: 12,
-                              border: payMethod === 'click' ? '2px solid #00a2ff' : '1px solid rgba(0,0,0,0.08)',
-                              background: payMethod === 'click' ? 'rgba(0,162,255,0.08)' : '#fff',
-                            }}>
-                            <span style={{ fontSize: 13, fontWeight: 800, color: '#00a2ff', flex: 1 }}>Click</span>
-                            <div style={{ width: 16, height: 16, borderRadius: '50%', border: payMethod === 'click' ? '5px solid #00a2ff' : '2px solid #cbd5e1' }} />
-                          </div>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-
-                {/* Ishonch belgilari (Trust Badges) */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 18 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', background: 'rgba(16,185,129,0.08)', borderRadius: 12, border: '1px solid rgba(16,185,129,0.2)' }}>
-                    <div style={{ width: 32, height: 32, borderRadius: 8, background: '#10B981', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontWeight: 'bold' }}>✓</div>
-                    <div>
-                      <div style={{ fontSize: 13, fontWeight: 800, color: '#065F46' }}>Muntazam yangilanib boruvchi baza</div>
-                      <div style={{ fontSize: 11, color: '#047857', marginTop: 2 }}>Eng so'nggi standartlar asosida</div>
-                    </div>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', background: 'rgba(59,130,246,0.08)', borderRadius: 12, border: '1px solid rgba(59,130,246,0.2)' }}>
-                    <div style={{ width: 32, height: 32, borderRadius: 8, background: '#3B82F6', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontWeight: 'bold' }}>✓</div>
-                    <div>
-                      <div style={{ fontSize: 13, fontWeight: 800, color: '#1E3A8A' }}>Keng qamrovli izohlar</div>
-                      <div style={{ fontSize: 11, color: '#1D4ED8', marginTop: 2 }}>Har bir savol uchun tushunarli yechimlar</div>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Features */}
                 <div style={{
                   background: '#f8fafc', border: '1px solid #e2e8f0',
@@ -521,55 +420,137 @@ const PremiumModal = ({ isOpen, onClose }) => {
                     {t('premium.whatIncluded')}
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-                    {FEATURES.map((f, i) => (
+                    {FEATURES.map((key, i) => (
                       <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <span style={{ fontSize: 14 }}>{f.icon}</span>
-                        <span style={{ fontSize: 11, color: '#475569', lineHeight: 1.3, fontWeight: 600 }}>{t(f.key)}</span>
+                        <span style={{ width: 18, height: 18, borderRadius: '50%', background: 'rgba(14,151,224,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                          <Check size={11} color="#0284C7" strokeWidth={3} />
+                        </span>
+                        <span style={{ fontSize: 11.5, color: '#334155', lineHeight: 1.3, fontWeight: 600 }}>{t(key)}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Asosiy tugma */}
-                {isAndroidApp ? (
-                  <motion.button
-                    whileTap={{ scale: 0.98 }}
-                    onClick={handlePay}
-                    disabled={processing}
-                    style={{
-                      width: '100%', padding: '16px', borderRadius: 16,
-                      background: 'linear-gradient(135deg, #3B82F6, #2563EB)',
-                      color: '#fff', fontWeight: 800, fontSize: 16,
-                      border: 'none', cursor: processing ? 'wait' : 'pointer',
-                      fontFamily: 'inherit',
-                      boxShadow: '0 4px 20px rgba(59,130,246,0.35)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-                      opacity: processing ? 0.7 : 1,
-                      marginBottom: 12,
-                    }}
-                  >
-                    <><Crown size={18} /> {t('premium.payGooglePlay', { price: fmt(finalPrice) })}</>
-                  </motion.button>
-                ) : (
-                  <motion.button
-                    whileTap={{ scale: 0.98 }}
-                    onClick={handlePay}
-                    disabled={processing}
-                    style={{
-                      width: '100%', padding: '16px', borderRadius: 16,
-                      background: 'linear-gradient(135deg, #0E97E0, #0284C7)',
-                      color: '#fff', fontWeight: 800, fontSize: 16,
-                      border: 'none', cursor: processing ? 'wait' : 'pointer',
-                      fontFamily: 'inherit',
-                      boxShadow: '0 4px 20px rgba(14,151,224,0.35)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-                      opacity: processing ? 0.7 : 1,
-                      marginBottom: 12,
-                    }}
-                  >
-                    <Send size={18} /> {t('premium.payViaTelegram', { price: fmt(finalPrice) })}
-                  </motion.button>
+                {/* Android: Google Play ma'lumoti + promokod */}
+                {isAndroidApp && (
+                  <>
+                    <div style={{ padding: '16px', background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)', borderRadius: 12, marginBottom: 14 }}>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: '#1D4ED8', marginBottom: 4 }}>{t('premium.googlePlayTitle')}</div>
+                      <div style={{ fontSize: 12, color: '#1E3A8A', lineHeight: 1.4 }}>
+                        {t('premium.googlePlayDesc', { plan: planLabel(selectedPlan) })}
+                      </div>
+                    </div>
+                    {promoCard}
+                    {bonusBanner}
+                  </>
                 )}
+
+                {/* Asosiy tugma */}
+                <motion.button
+                  whileTap={{ scale: 0.98 }}
+                  onClick={handleContinue}
+                  disabled={processing}
+                  style={{
+                    width: '100%', padding: '16px', borderRadius: 16,
+                    background: '#0284C7',
+                    color: '#fff', fontWeight: 800, fontSize: 16,
+                    border: 'none', cursor: processing ? 'wait' : 'pointer',
+                    fontFamily: 'inherit',
+                    boxShadow: '0 4px 20px rgba(14,151,224,0.35)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+                    opacity: processing ? 0.7 : 1,
+                    marginBottom: 12,
+                  }}
+                >
+                  {isAndroidApp
+                    ? <><Crown size={18} /> {t('premium.payGooglePlay', { price: fmt(finalPrice) })}</>
+                    : <>{t('premium.continueBtn')}</>}
+                </motion.button>
+
+                {isAndroidApp && (
+                  <div style={{ fontSize: '10px', color: 'var(--text3)', textAlign: 'center', marginTop: 4, marginBottom: 12, lineHeight: 1.4 }}>
+                    {t('premium.termsAccept1')}<a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600 }}>{t('premium.termsLinkText')}</a>{t('premium.termsAccept2')}
+                  </div>
+                )}
+
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'var(--text3)', fontSize: 11, fontWeight: 600 }}>
+                  <Shield size={14} color="#10B981" />
+                  {t('premium.securePay')}
+                </div>
+              </motion.div>
+            )}
+
+            {/* ══════ 2-QADAM: TO'LOV USULI (faqat web) ══════ */}
+            {step === 'method' && !isAndroidApp && (
+              <motion.div key="method" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+                <div style={{ textAlign: 'center', marginBottom: 18 }}>
+                  <h2 style={{ fontSize: 19, fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>{t('premium.choosePayMethod')}</h2>
+                  <p style={{ fontSize: 12, color: '#64748B', margin: 0 }}>Toifa Pro — {planLabel(selectedPlan)}</p>
+                </div>
+
+                {/* Promokod — ko'zga tashlanadigan joyda */}
+                {promoCard}
+
+                {bonusBanner}
+
+                {/* To'lov usullari */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
+                  {/* Telegram — asosiy to'lov usuli */}
+                  <div style={{
+                    display: 'flex', alignItems: 'center', gap: 12,
+                    padding: '14px 16px', borderRadius: 14,
+                    border: '2px solid #0284C7',
+                    background: 'rgba(14,151,224,0.06)',
+                  }}>
+                    <span style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(14,151,224,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Send size={19} color="#0284C7" />
+                    </span>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: 14, fontWeight: 800, color: '#0f172a' }}>{t('premium.payTgTitle')}</div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>{t('premium.payTgSub')}</div>
+                    </div>
+                    <div style={{ width: 20, height: 20, borderRadius: '50%', border: '6px solid #0284C7', flexShrink: 0 }} />
+                  </div>
+
+                  {/* Click — tez kunda */}
+                  <div style={{
+                    display: 'flex', alignItems: 'center', gap: 12,
+                    padding: '14px 16px', borderRadius: 14,
+                    border: '1px solid rgba(0,0,0,0.08)', background: '#fff',
+                    opacity: 0.55,
+                  }}>
+                    <span style={{ fontSize: 14, fontWeight: 900, color: '#00a2ff', flex: 1 }}>Click</span>
+                    <span style={{ fontSize: 10, fontWeight: 800, color: '#64748B', background: 'rgba(0,0,0,0.05)', padding: '3px 8px', borderRadius: 6, letterSpacing: 0.5, textTransform: 'uppercase' }}>
+                      {t('premium.comingSoon')}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Jami summa */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '0 2px 12px' }}>
+                  <span style={{ fontSize: 15, fontWeight: 800, color: '#0f172a' }}>{t('premium.toPay')}</span>
+                  <span>
+                    {hasBonus && <s style={{ color: '#94a3b8', fontWeight: 600, fontSize: 13, marginRight: 8 }}>{fmt(selectedPlan?.price)}</s>}
+                    <strong style={{ fontSize: 18, fontWeight: 900, color: '#0284C7' }}>{fmt(finalPrice)}</strong>
+                  </span>
+                </div>
+
+                {/* To'lash */}
+                <motion.button
+                  whileTap={{ scale: 0.98 }}
+                  onClick={handlePay}
+                  style={{
+                    width: '100%', padding: '16px', borderRadius: 16,
+                    background: '#0284C7',
+                    color: '#fff', fontWeight: 800, fontSize: 16,
+                    border: 'none', cursor: 'pointer', fontFamily: 'inherit',
+                    boxShadow: '0 4px 20px rgba(14,151,224,0.35)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+                    marginBottom: 12,
+                  }}
+                >
+                  <Send size={18} /> {t('premium.payNow')}
+                </motion.button>
 
                 <div style={{ fontSize: '10px', color: 'var(--text3)', textAlign: 'center', marginTop: 4, marginBottom: 12, lineHeight: 1.4 }}>
                   {t('premium.termsAccept1')}<a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600 }}>{t('premium.termsLinkText')}</a>{t('premium.termsAccept2')}
@@ -582,91 +563,6 @@ const PremiumModal = ({ isOpen, onClose }) => {
               </motion.div>
             )}
 
-            {/* ══════ TELEGRAM YO'RIQNOMA (faqat web — Play build'da yashiriladi) ══════ */}
-            {step === 'telegram_guide' && !isAndroidApp && (
-              <motion.div key="telegram_guide" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                <div style={{ textAlign: 'center', marginBottom: 24 }}>
-                  <div style={{ fontSize: 56, marginBottom: 12 }}>📱</div>
-                  <h2 style={{ fontSize: 20, fontWeight: 900, color: '#0f172a', margin: '0 0 8px' }}>{t('premium.tgGuideTitle')}</h2>
-                  <p style={{ fontSize: 13, color: '#64748B', margin: 0, lineHeight: 1.6 }}>
-                    {t('premium.tgGuideDesc')}
-                  </p>
-                </div>
-
-                {/* Qadamlar */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 24 }}>
-                  {[
-                    { step: '1', icon: '💳', text: t('premium.tgStep1') },
-                    { step: '2', icon: '📸', text: t('premium.tgStep2') },
-                    { step: '3', icon: '💬', text: t('premium.tgStep3') },
-                    { step: '4', icon: '⚡', text: t('premium.tgStep4') },
-                  ].map((item) => (
-                    <div
-                      key={item.step}
-                      style={{
-                        display: 'flex', alignItems: 'center', gap: 14,
-                        padding: '14px 16px', borderRadius: 14,
-                        background: '#f8fafc', border: '1px solid rgba(0,0,0,0.06)',
-                      }}
-                    >
-                      <div style={{
-                        width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
-                        background: 'linear-gradient(135deg, #0E97E0, #0284C7)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 13, fontWeight: 900, color: '#fff',
-                      }}>
-                        {item.step}
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                        <span style={{ fontSize: 18 }}>{item.icon}</span>
-                        <span style={{ fontSize: 13, color: '#334155', lineHeight: 1.4, fontWeight: 600 }}>{item.text}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Karta raqami */}
-                <div style={{
-                  background: 'rgba(41,182,246,0.1)', border: '1px solid rgba(41,182,246,0.3)',
-                  borderRadius: 14, padding: '14px 16px', marginBottom: 20,
-                  textAlign: 'center',
-                }}>
-                  <div style={{ fontSize: 11, color: '#64748B', marginBottom: 6, fontWeight: 700 }}>{t('premium.payCard')}</div>
-                  <div style={{ fontSize: 20, fontWeight: 900, color: '#0E97E0', letterSpacing: 3, fontFamily: 'monospace' }}>
-                    9860 3501 4333 3655
-                  </div>
-                  <div style={{ fontSize: 12, color: '#475569', marginTop: 4, fontWeight: 600 }}>Ayyubxon Abdulazizov</div>
-                </div>
-
-                {/* Kanalga o'tish */}
-                <motion.button
-                  whileTap={{ scale: 0.97 }}
-                  onClick={() => window.open(`https://t.me/${CHANNEL_USERNAME}?direct`, '_blank')}
-                  style={{
-                    width: '100%', padding: '15px', borderRadius: 16,
-                    background: 'linear-gradient(135deg, #0E97E0, #0284C7)',
-                    color: '#fff', fontWeight: 800, fontSize: 15,
-                    border: 'none', cursor: 'pointer', fontFamily: 'inherit',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-                    marginBottom: 10,
-                  }}
-                >
-                  <Send size={18} />
-                  Kanalga o'tish
-                </motion.button>
-
-                <button
-                  onClick={onClose}
-                  style={{
-                    width: '100%', padding: '12px', borderRadius: 14, background: 'transparent',
-                    color: '#64748B', border: '1px solid rgba(0,0,0,0.1)',
-                    fontWeight: 600, fontSize: 13, cursor: 'pointer', fontFamily: 'inherit',
-                  }}
-                >
-                  {t('premium.closeAfterReceipt')}
-                </button>
-              </motion.div>
-            )}
           </AnimatePresence>
         </div>
       </motion.div>

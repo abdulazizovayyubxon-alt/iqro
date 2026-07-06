@@ -3,11 +3,15 @@ import { MAX_MISTAKES_SAVED } from '../config';
 import { db } from '../firebase';
 import { AuthContext } from './AuthContext';
 import { ToastContext } from './ToastContext';
+import { reconcileAchievements, EXAM_MIN_QUESTIONS } from '../data/tracks';
+import i18n from '../i18n';
 import {
   doc,
   setDoc,
   getDoc,
-  deleteField
+  deleteField,
+  collection,
+  addDoc
 } from "firebase/firestore";
 
 export const AppContext = createContext();
@@ -128,6 +132,8 @@ const buildDefaultState = () => {
     nightQuestions: 0,
     earlyQuestions: 0,
     perfectExamsCount: 0,
+    examStreak90: 0,                        // ketma-ket 90%+ natijali testlar (sinov yo'nalishi)
+    achievements: { ami: 0, tracks: {} },   // akademik yutuqlar: daraja + earnedAt (tracks.js)
     [`weekly_${weekId}`]: 0,
     [`monthly_${monthId}`]: 0
   };
@@ -160,7 +166,7 @@ const mergeCloudAndLocal = (cloud, local) => {
 
   const merged = { ...cloud };
 
-  ['totalScore', 'totalAnswered', 'totalCorrect', 'maxStreak', 'studyMinutes', 'dailyStreak', 'nightQuestions', 'earlyQuestions', 'perfectExamsCount']
+  ['totalScore', 'totalAnswered', 'totalCorrect', 'maxStreak', 'studyMinutes', 'dailyStreak', 'nightQuestions', 'earlyQuestions', 'perfectExamsCount', 'examStreak90']
     .forEach(k => { merged[k] = Math.max(cloud[k] || 0, local[k] || 0); });
 
   Object.keys(local).forEach(k => {
@@ -208,7 +214,36 @@ const mergeCloudAndLocal = (cloud, local) => {
     totalQuestions: Math.max(cloud.timeStats?.totalQuestions || 0, local.timeStats?.totalQuestions || 0)
   };
 
+  // Yutuqlar: daraja monoton (max), earnedAt esa eng birinchi sana saqlanadi
+  const cTracks = cloud.achievements?.tracks || {};
+  const lTracks = local.achievements?.tracks || {};
+  const trackIds = new Set([...Object.keys(cTracks), ...Object.keys(lTracks)]);
+  const mergedTracks = {};
+  trackIds.forEach(id => {
+    const c = cTracks[id] || {};
+    const l = lTracks[id] || {};
+    const earnedAt = {};
+    new Set([...Object.keys(c.earnedAt || {}), ...Object.keys(l.earnedAt || {})]).forEach(lv => {
+      const cv = (c.earnedAt || {})[lv];
+      const lvv = (l.earnedAt || {})[lv];
+      earnedAt[lv] = cv && lvv ? Math.min(cv, lvv) : (cv || lvv);
+    });
+    mergedTracks[id] = { tier: Math.max(c.tier || 0, l.tier || 0), earnedAt };
+  });
+  merged.achievements = {
+    ami: Math.max(cloud.achievements?.ami || 0, local.achievements?.ami || 0),
+    tracks: mergedTracks
+  };
+
   return merged;
+};
+
+// Eski foydalanuvchi uchun jim backfill: mavjud statistikadan darajalarni hisoblab
+// achievements'ni to'ldiradi. gained E'TIBORSIZ qoldiriladi — migratsiya paytida
+// ilgari qozonilgan yutuqlar uchun bildirishnoma yog'ilib ketmasligi kerak.
+const withAchievements = (stateObj) => {
+  const { achievements } = reconcileAchievements(stateObj, stateObj.achievements);
+  return { ...stateObj, achievements };
 };
 
 // Firestore `undefined` qiymatni qabul qilmaydi — agar saqlanadigan obyektda
@@ -299,7 +334,7 @@ export const AppProvider = ({ children }) => {
           // Bulut + lokal zaxira: hisoblagichlar max() bo'yicha birlashtiriladi,
           // shunda bulutga yetib bormagan oxirgi sessiya natijalari yo'qolmaydi
           const data = mergeCloudAndLocal(snap.data(), backup);
-          setState(() => ({
+          setState(() => withAchievements({
             ...buildDefaultState(),
             ...data,
             stats: data.stats || { chqbt: buildDefaultCatStats(), art: buildDefaultCatStats() },
@@ -310,7 +345,7 @@ export const AppProvider = ({ children }) => {
         } else if (backup) {
           // Bulutda hujjat yo'q, lekin shu UID ning lokal zaxirasi bor — undan tiklash
           const { savedAt, ...localState } = backup;
-          setState({ ...buildDefaultState(), ...localState });
+          setState(withAchievements({ ...buildDefaultState(), ...localState }));
         } else {
           // Yangi foydalanuvchi — toza holat bilan boshlash
           setState(buildDefaultState());
@@ -320,7 +355,7 @@ export const AppProvider = ({ children }) => {
         // Oflayn/xatolikda default o'rniga lokal zaxiradan tiklash
         if (backup) {
           const { savedAt, ...localState } = backup;
-          setState({ ...buildDefaultState(), ...localState });
+          setState(withAchievements({ ...buildDefaultState(), ...localState }));
         } else {
           setState(buildDefaultState());
         }
@@ -395,17 +430,19 @@ export const AppProvider = ({ children }) => {
   const batchCommitResults = (results) => {
     let snapshot = null;
     let earnedOut = 0; // UI ga qaytariladi ("+N ball" ko'rsatish uchun)
+    let gainedOut = []; // shu sessiyada YANGI olingan akademik darajalar
     setState(prev => {
       const cat = prev.activeCategory;
       const catStats = prev.stats[cat] || buildDefaultCatStats();
 
-      // Topic stats yangilash
+      // Topic stats yangilash — har mavzu o'z ulushi bo'yicha (aralash test/imtihonda
+      // ham har bo'lim alohida hisoblanadi, summarizeTestResults'dagi topicDeltas orqali)
       const newTopicStats = { ...prev.topicStats };
-      if (results.topicId >= 0) {
-        const ts = newTopicStats[results.topicId] || { answered: 0, correct: 0 };
-        newTopicStats[results.topicId] = {
-          answered: ts.answered + results.totalAnswered,
-          correct: ts.correct + results.correctCount
+      for (const [tid, delta] of Object.entries(results.topicDeltas || {})) {
+        const ts = newTopicStats[tid] || { answered: 0, correct: 0 };
+        newTopicStats[tid] = {
+          answered: ts.answered + delta.answered,
+          correct: ts.correct + delta.correct
         };
       }
 
@@ -461,6 +498,13 @@ export const AppProvider = ({ children }) => {
         perfectExamAdded = 1;
       }
 
+      // Sinov yo'nalishi (tracks.js): 10+ savollik sessiya "imtihon" hisoblanadi.
+      // 90%+ natija zanjirni davom ettiradi, undan past natija uzadi.
+      let examStreak90 = prev.examStreak90 || 0;
+      if ((results.totalAnswered || 0) >= EXAM_MIN_QUESTIONS) {
+        examStreak90 = results.correctCount / results.totalAnswered >= 0.9 ? examStreak90 + 1 : 0;
+      }
+
       const newState = {
         ...prev,
         totalScore: (prev.totalScore || 0) + earnedPoints,
@@ -471,6 +515,7 @@ export const AppProvider = ({ children }) => {
         nightQuestions: (prev.nightQuestions || 0) + nightQuestionsAdded,
         earlyQuestions: (prev.earlyQuestions || 0) + earlyQuestionsAdded,
         perfectExamsCount: (prev.perfectExamsCount || 0) + perfectExamAdded,
+        examStreak90,
         topicStats: newTopicStats,
         dailyGoal: dg,
         dailyStreak,
@@ -495,6 +540,12 @@ export const AppProvider = ({ children }) => {
         }
       };
 
+      // Akademik darajalarni qayta baholash — yangi metrikalar asosida (sof hisob).
+      // gained faqat capture qilinadi; bildirishnoma yon ta'siri updater TASHQARISIDA.
+      const { achievements, gained } = reconcileAchievements(newState, prev.achievements);
+      newState.achievements = achievements;
+      gainedOut = gained;
+
       snapshot = newState; // updater toza — faqat hisoblaydi va natijani capture qiladi
       earnedOut = earnedPoints;
       return newState;
@@ -511,6 +562,33 @@ export const AppProvider = ({ children }) => {
       console.error('Natijalarni saqlashda xatolik:', err);
       showToast('Natijalar vaqtincha saqlanmadi. Internet aloqasini tekshiring.', 'error');
     });
+
+    // Yangi akademik daraja: sokin toast + shaxsiy bildirishnoma (NotificationBell uchun).
+    // addDoc xatosi asosiy oqimga ta'sir qilmaydi (masalan, rules hali deploy qilinmagan bo'lsa).
+    if (gainedOut.length > 0) {
+      const first = gainedOut[0];
+      showToast(
+        i18n.t('tracks.toast', {
+          track: i18n.t(`tracks.${first.trackId}.name`),
+          tier: i18n.t(`tracks.tier${first.tier}`)
+        }),
+        'success'
+      );
+      gainedOut.forEach(g => {
+        addDoc(collection(db, 'users', currentUser.uid, 'notifications'), {
+          type: 'achievement',
+          trackId: g.trackId,
+          tier: g.tier,
+          title: i18n.t('tracks.notifTitle'),
+          message: i18n.t('tracks.notifBody', {
+            track: i18n.t(`tracks.${g.trackId}.name`),
+            tier: i18n.t(`tracks.tier${g.tier}`)
+          }),
+          date: new Date().toISOString(),
+          read: false
+        }).catch(err => console.warn('Yutuq bildirishnomasi yozilmadi:', err?.code || err));
+      });
+    }
     return earnedOut;
   };
 

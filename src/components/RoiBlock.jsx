@@ -1,21 +1,22 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n';
+import { TrendingUp } from 'lucide-react';
 import { TOIFA_SALARY } from '../config';
 
 const fmtSum = (n) => new Intl.NumberFormat('fr-FR').format(Math.round(n)).replace(/,/g, ' ') + ' ' + i18n.t('roi.currency');
 
 /**
- * Toifa ROI kalkulyatori — obuna narxini toifa oshganda keladigan
- * oylik qo'shimcha daromad bilan solishtiradi.
+ * Toifa ROI — qisqa qiymat kartasi: katta raqam (oylik maosh farqi) +
+ * "~N kunda oqlanadi" chipi. Uzun tushuntirish o'rniga raqam-birinchi,
+ * ikki qatorli format — tez o'qiladi, ishonchli ko'rinadi.
  *
  * props:
  *  - price: solishtiriladigan obuna narxi (so'm)
- *  - planName: plan nomi (masalan "12 Oylik")
  *  - targetToifa: 'oliy' | '1-toifa' | '2-toifa' (default '1-toifa')
  *  - variant: 'light' (PremiumModal oq kartasi ichida) | 'theme' (tema ranglarida)
  */
-export default function RoiBlock({ price, planName, targetToifa = '1-toifa', variant = 'light' }) {
+export default function RoiBlock({ price, targetToifa = '1-toifa', variant = 'light' }) {
   const { t } = useTranslation();
   const monthlyGain = TOIFA_SALARY.gains[targetToifa];
   if (!monthlyGain || !price) return null;
@@ -25,25 +26,39 @@ export default function RoiBlock({ price, planName, targetToifa = '1-toifa', var
   const label = labelMap[targetToifa] || TOIFA_SALARY.labels[targetToifa] || targetToifa;
 
   const isLight = variant === 'light';
-  const colors = isLight
-    ? { bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.25)', title: '#047857', text: '#334155', strong: '#10B981' }
-    : { bg: 'var(--green-bg)', border: 'var(--border)', title: 'var(--green)', text: 'var(--text2)', strong: 'var(--green)' };
+  const c = isLight
+    ? {
+        bg: 'rgba(16,185,129,0.06)', border: 'rgba(16,185,129,0.25)',
+        num: '#047857', cap: '#64748B',
+        iconBg: 'rgba(16,185,129,0.12)', icon: '#10B981',
+        chipBg: 'rgba(14,151,224,0.1)', chip: '#0284C7',
+      }
+    : {
+        bg: 'var(--green-bg)', border: 'var(--border)',
+        num: 'var(--green)', cap: 'var(--text3)',
+        iconBg: 'var(--bg3)', icon: 'var(--green)',
+        chipBg: 'var(--blue-bg)', chip: 'var(--accent2)',
+      };
 
   return (
     <div style={{
-      background: colors.bg, border: `1px solid ${colors.border}`,
-      borderRadius: 14, padding: '12px 14px', marginBottom: 14,
-      display: 'flex', alignItems: 'flex-start', gap: 10,
+      background: c.bg, border: `1px solid ${c.border}`,
+      borderRadius: 14, padding: '11px 14px', marginBottom: 14,
+      display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap',
     }}>
-      <span style={{ fontSize: 20, lineHeight: 1 }}>📈</span>
-      <div>
-        <div style={{ fontSize: 12.5, fontWeight: 800, color: colors.title, marginBottom: 3 }}>
-          {t('roi.gainLine', { label, amount: fmtSum(monthlyGain) })}
+      <span style={{ width: 34, height: 34, borderRadius: 9, background: c.iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <TrendingUp size={17} color={c.icon} />
+      </span>
+      <div style={{ flex: 1, minWidth: 130 }}>
+        <div style={{ fontSize: 15.5, fontWeight: 900, color: c.num, letterSpacing: -0.2, whiteSpace: 'nowrap' }}>
+          {t('roi.gainValue', { amount: fmtSum(monthlyGain) })}
         </div>
-        <div style={{ fontSize: 11.5, color: colors.text, lineHeight: 1.5 }}>
-          {t('roi.paybackP1', { sub: planName ? t('roi.subscription', { plan: planName }) : t('roi.subscriptionGeneric'), price: fmtSum(price) })}{' '}
-          <strong style={{ color: colors.strong }}>{t('roi.days', { days: paybackDays })}</strong>{t('roi.paybackP2')}
+        <div style={{ fontSize: 10.5, color: c.cap, fontWeight: 600, marginTop: 1 }}>
+          {t('roi.gainCaption', { label })}
         </div>
+      </div>
+      <div style={{ background: c.chipBg, color: c.chip, fontSize: 11, fontWeight: 800, padding: '6px 10px', borderRadius: 9, whiteSpace: 'nowrap' }}>
+        {t('roi.payback', { days: paybackDays })}
       </div>
     </div>
   );

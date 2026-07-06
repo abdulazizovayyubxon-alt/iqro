@@ -52,7 +52,7 @@ export default function PremiumPage() {
         </div>
 
         {/* ROI */}
-        <RoiBlock price={DEFAULT_YEARLY_PRICE} planName={t('premiumPage.yearly')} variant="theme" />
+        <RoiBlock price={DEFAULT_YEARLY_PRICE} variant="theme" />
 
         {/* Features */}
         <div style={s.card}>
