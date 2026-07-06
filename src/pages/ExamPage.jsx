@@ -600,7 +600,8 @@ const ExamPage = () => {
     // Wall-clock (Date.now - startTime) resume'dan keyin noto'g'ri bo'lardi
     // (ilovadan tashqarida o'tgan vaqtni ham qo'shib yuborardi).
     results.sessionTime = Object.values(questionTimesRef.current).reduce((a, b) => a + b, 0);
-    setExamEarnedPoints(batchCommitResults(results) || 0);
+    const commitResult = batchCommitResults(results);
+    setExamEarnedPoints(commitResult?.earnedPoints || 0);
 
     const correct = results.correctCount;
     const pct = results.accuracy;

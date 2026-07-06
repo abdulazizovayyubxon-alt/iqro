@@ -108,7 +108,7 @@ const TestPage = () => {
   const [answers, setAnswers] = useState({});
   const [isGenerating, setIsGenerating] = useState(false);
   const [showResults, setShowResults] = useState(false);
-  const [earnedPoints, setEarnedPoints] = useState(0); // shu sessiyada yig'ilgan reyting balli
+  const [amiDelta, setAmiDelta] = useState(0); // shu sessiyada AMI necha ballga o'zgargani
   const [selectedBatch, setSelectedBatch] = useState(0);
   const [showBlockPicker, setShowBlockPicker] = useState(false); // Blok tanlash oynasi (blok chipi orqali)
 
@@ -643,7 +643,8 @@ const TestPage = () => {
     results.sessionTime = totalSessionTime;
     results.topicId = topicId;
 
-    setEarnedPoints(batchCommitResults(results) || 0);
+    const commitResult = batchCommitResults(results);
+    setAmiDelta(commitResult?.amiDelta || 0);
 
     // Send result to Telegram
     const correctCount = Object.keys(answers).filter(k => answers[k] === questions[parseInt(k)]?.correct).length;
@@ -984,13 +985,12 @@ const TestPage = () => {
           ) : (
             <TestResults
               correctCount={correctCount}
-              earnedPoints={earnedPoints}
+              amiDelta={amiDelta}
               questionsLength={questions.length}
               topicName={topicName}
               state={state}
               setMode={setMode}
               generateQuestions={generateQuestions}
-              navigate={navigate}
               showToast={showToast}
               nextBatchLabel={(() => {
                 const totalBatches = Math.ceil(fullPool.length / BATCH_SIZE);

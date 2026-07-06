@@ -261,20 +261,15 @@
     "exit": "Chiqish"
   },
   "results": {
-    "copied": "Nusxalandi! 📋",
-    "excellent": "Ajoyib Natija!",
-    "keepGoing": "Davom eting!",
+    "reportEyebrow": "Yakuniy hisobot",
+    "reportTitle": "Mavzu bo'yicha natija",
     "summary": "{{total}} ta savoldan {{correct}} tasiga to'g'ri javob berdingiz.",
-    "resultLabel": "Natija",
-    "ratingAdded": "🏆 +{{points}} reyting ball qo'shildi!",
-    "nextSection": "Keyingi bo'lim",
+    "amiAdded": "+{{delta}} ball",
+    "nextBlock": "Keyingi blok",
     "retry": "Yana ishlash",
     "workOnMistakes": "Xatolar ustida ishlash",
     "toHome": "Bosh sahifaga",
-    "shareResult": "Natijani ulashing",
-    "shareImage": "Rasm bilan ulashish",
-    "shareTgText": "{{emoji}} Toifa Pro platformasida test yechdim!\n📚 Mavzu: {{topic}}\n✅ Natija: {{correct}}/{{total}} ({{pct}}%)\n🎯 Imtihonga tayyorgarlik!",
-    "shareCopyText": "Toifa Pro platformasida test: {{correct}}/{{total}} ({{pct}}%) - {{topic}}"
+    "shareResult": "Natijani ulashing"
   },
   "smartSheet": {
     "title": "Fan tanlash",
@@ -553,6 +548,9 @@
     "notifTitle": "Yangi akademik daraja",
     "notifBody": "Tabriklaymiz! «{{track}}» yo'nalishida siz {{tier}} darajasiga erishdingiz. Bu belgi profilingizdagi Akademik mahorat indeksini oshirdi.",
     "toast": "«{{track}}» yo'nalishida {{tier}} darajasi qo'lga kiritildi",
+    "unvonNotifTitle": "Akademik Pasport yangilandi",
+    "unvonNotifBody": "Tizimli tahlil natijalariga ko'ra, ko'rsatkichlaringiz «{{unvon}}» unvoni talablariga muvofiq keldi. Akademik Pasportingiz yangilandi.",
+    "unvonToast": "Akademik Pasportingiz yangilandi: «{{unvon}}» unvoniga erishdingiz",
     "aniqlik": {
       "name": "Aniqlik",
       "hint1": "Izlanuvchi: 50 savolda kamida 70% aniqlik",

@@ -38,6 +38,21 @@ export const SPEED_MIN_ACC = 80;
 
 const clamp01 = (v) => Math.max(0, Math.min(1, v));
 
+// ── Pasport darajasidagi yagona unvon (AMI shkalasining tabiiy davomi) ───
+// Formula o'zidan chegara beradi: bitta yo'nalish o'z tier bosag'asiga endi
+// yetganda score = tier/3, ya'ni barcha yo'nalishlar bir xil bo'lganda
+// tier1 ~= 33, tier2 ~= 67. Shu sababli bu qat'iy raqamlar emas — AMI
+// formulasining o'zidan kelib chiqadigan tabiiy davomiylik.
+export const UNVON_AMI_THRESHOLDS = [33, 67]; // [Mutaxassis bosagi, Ekspert bosagi]
+
+// Har doim 1,2 yoki 3 qaytaradi — pasport unvoni hech qachon "boshlanmagan" bo'lmaydi,
+// hamma "Izlanuvchi"dan boshlaydi (tracks.tier1/tier2/tier3 kalitlari bilan mos).
+export function unvonTierFromAmi(ami) {
+  if (ami >= UNVON_AMI_THRESHOLDS[1]) return 3;
+  if (ami >= UNVON_AMI_THRESHOLDS[0]) return 2;
+  return 1;
+}
+
 // n/acc juftligi bosag'alar ro'yxatidan qaysi darajaga yetganini aniqlaydi
 const tierFromPairs = (n, acc, tiers) => {
   let tier = 0;
@@ -149,10 +164,11 @@ export const TRACKS = [
 
 // ── Saqlangan yutuqlar bilan solishtirish ────────────────────────────────
 // state       — joriy AppContext holati (metrikalar manbai)
-// stored      — state.achievements (oldingi { ami, tracks } yoki undefined)
+// stored      — state.achievements (oldingi { ami, unvonTier, tracks } yoki undefined)
 // Qaytaradi:
 //   achievements — saqlash uchun yangi obyekt (tier monoton, earnedAt sanalari bilan)
-//   gained       — AYNAN shu chaqiruvda YANGI olingan darajalar (bildirishnoma uchun)
+//   gained       — shu chaqiruvda YANGI olingan track darajalari (KICHIK — faqat Bell)
+//   gainedUnvon  — shu chaqiruvda unvon oshgan bo'lsa {tier} (KATTA — toast + Bell)
 //   live         — UI uchun: { [id]: { tier, progress } }
 export function reconcileAchievements(state, stored) {
   const prevTracks = stored?.tracks || {};
@@ -182,9 +198,18 @@ export function reconcileAchievements(state, stored) {
     ami += TRACK_WEIGHTS[tr.id] * score;
   }
 
+  ami = Math.round(ami);
+
+  // Pasport unvoni — AMI'dan hisoblanadi, monoton (pastga tushmaydi).
+  const prevUnvonTier = stored?.unvonTier || 1;
+  const mergedUnvonTier = Math.max(unvonTierFromAmi(ami), prevUnvonTier);
+  const gainedUnvon = mergedUnvonTier > prevUnvonTier ? { tier: mergedUnvonTier } : null;
+  const unvonSince = gainedUnvon ? Date.now() : (stored?.unvonSince || null);
+
   return {
-    achievements: { ami: Math.round(ami), tracks: tracksOut },
+    achievements: { ami, unvonTier: mergedUnvonTier, unvonSince, tracks: tracksOut },
     gained,
+    gainedUnvon,
     live
   };
 }

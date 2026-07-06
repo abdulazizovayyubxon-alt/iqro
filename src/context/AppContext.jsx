@@ -133,7 +133,7 @@ const buildDefaultState = () => {
     earlyQuestions: 0,
     perfectExamsCount: 0,
     examStreak90: 0,                        // ketma-ket 90%+ natijali testlar (sinov yo'nalishi)
-    achievements: { ami: 0, tracks: {} },   // akademik yutuqlar: daraja + earnedAt (tracks.js)
+    achievements: { ami: 0, unvonTier: 1, unvonSince: null, tracks: {} }, // akademik yutuqlar: daraja + unvon (tracks.js)
     [`weekly_${weekId}`]: 0,
     [`monthly_${monthId}`]: 0
   };
@@ -230,8 +230,12 @@ const mergeCloudAndLocal = (cloud, local) => {
     });
     mergedTracks[id] = { tier: Math.max(c.tier || 0, l.tier || 0), earnedAt };
   });
+  const cUnvonTier = cloud.achievements?.unvonTier || 1;
+  const lUnvonTier = local.achievements?.unvonTier || 1;
   merged.achievements = {
     ami: Math.max(cloud.achievements?.ami || 0, local.achievements?.ami || 0),
+    unvonTier: Math.max(cUnvonTier, lUnvonTier),
+    unvonSince: cUnvonTier >= lUnvonTier ? (cloud.achievements?.unvonSince || null) : (local.achievements?.unvonSince || null),
     tracks: mergedTracks
   };
 
@@ -364,7 +368,12 @@ export const AppProvider = ({ children }) => {
     };
 
     loadUserStats();
-  }, [user]);
+    // Faqat UID o'zgarganda (kirish/chiqish) qayta yuklaymiz — onAuthStateChanged
+    // token yangilanishi yoki tab fokusi tufayli bir xil user uchun YANGI obyekt
+    // qaytarishi mumkin. Butun `user` obyektiga bog'lansak, bu har safar
+    // Firestore'dan qayta yozib, joriy testdagi topicId/testMode'ni (ular bulutga
+    // saqlanmaydi) defaultga qaytarib, test yechilayotganda 1-bo'limga otib ketardi.
+  }, [user?.uid]);
 
   // ─── 2. Statistika o'zgarganda Firestore'ga saqlash (DEBOUNCED) ───
   // Har o'zgarishda emas, 3 soniya kutib, oxirgi holatni bir marta yozadi.
@@ -430,7 +439,9 @@ export const AppProvider = ({ children }) => {
   const batchCommitResults = (results) => {
     let snapshot = null;
     let earnedOut = 0; // UI ga qaytariladi ("+N ball" ko'rsatish uchun)
-    let gainedOut = []; // shu sessiyada YANGI olingan akademik darajalar
+    let gainedOut = []; // shu sessiyada YANGI olingan track darajalari (kichik — faqat Bell)
+    let gainedUnvonOut = null; // shu sessiyada unvon oshgan bo'lsa (katta — toast + Bell)
+    let amiDeltaOut = 0; // shu sessiyada AMI necha ballga o'zgargani (natija ekrani uchun)
     setState(prev => {
       const cat = prev.activeCategory;
       const catStats = prev.stats[cat] || buildDefaultCatStats();
@@ -542,9 +553,12 @@ export const AppProvider = ({ children }) => {
 
       // Akademik darajalarni qayta baholash — yangi metrikalar asosida (sof hisob).
       // gained faqat capture qilinadi; bildirishnoma yon ta'siri updater TASHQARISIDA.
-      const { achievements, gained } = reconcileAchievements(newState, prev.achievements);
+      const prevAmi = prev.achievements?.ami || 0;
+      const { achievements, gained, gainedUnvon } = reconcileAchievements(newState, prev.achievements);
       newState.achievements = achievements;
       gainedOut = gained;
+      gainedUnvonOut = gainedUnvon;
+      amiDeltaOut = achievements.ami - prevAmi;
 
       snapshot = newState; // updater toza — faqat hisoblaydi va natijani capture qiladi
       earnedOut = earnedPoints;
@@ -554,7 +568,7 @@ export const AppProvider = ({ children }) => {
     // Yon ta'sir (Firestore yozuvi) setState updater'idan TASHQARIDA bajariladi —
     // React 18 StrictMode updater'ni ikki marta chaqirganda dublikat write bo'lmaydi.
     // Natija debounce kutmasdan darhol saqlanadi (test yakunida yo'qolmasligi uchun).
-    if (!snapshot) return earnedOut;
+    if (!snapshot) return { earnedPoints: earnedOut, amiDelta: amiDeltaOut };
     const currentUser = userRef.current;
     if (!currentUser) return earnedOut;
     const statRef = doc(db, 'userStats', currentUser.uid);
@@ -563,17 +577,11 @@ export const AppProvider = ({ children }) => {
       showToast('Natijalar vaqtincha saqlanmadi. Internet aloqasini tekshiring.', 'error');
     });
 
-    // Yangi akademik daraja: sokin toast + shaxsiy bildirishnoma (NotificationBell uchun).
+    // Ikki darajali sokin bildirishnoma (achievements-tracks-v2 dizayni):
+    // KICHIK (bitta yo'nalish tier'i oshdi) — faqat Bell'ga, toast YO'Q (chalg'itmaslik uchun).
+    // KATTA (pasport unvoni o'zgardi) — toast + Bell, akademik/passiv ohangda.
     // addDoc xatosi asosiy oqimga ta'sir qilmaydi (masalan, rules hali deploy qilinmagan bo'lsa).
     if (gainedOut.length > 0) {
-      const first = gainedOut[0];
-      showToast(
-        i18n.t('tracks.toast', {
-          track: i18n.t(`tracks.${first.trackId}.name`),
-          tier: i18n.t(`tracks.tier${first.tier}`)
-        }),
-        'success'
-      );
       gainedOut.forEach(g => {
         addDoc(collection(db, 'users', currentUser.uid, 'notifications'), {
           type: 'achievement',
@@ -589,7 +597,19 @@ export const AppProvider = ({ children }) => {
         }).catch(err => console.warn('Yutuq bildirishnomasi yozilmadi:', err?.code || err));
       });
     }
-    return earnedOut;
+    if (gainedUnvonOut) {
+      const unvonLabel = i18n.t(`tracks.tier${gainedUnvonOut.tier}`);
+      showToast(i18n.t('tracks.unvonToast', { unvon: unvonLabel }), 'success');
+      addDoc(collection(db, 'users', currentUser.uid, 'notifications'), {
+        type: 'unvon',
+        tier: gainedUnvonOut.tier,
+        title: i18n.t('tracks.unvonNotifTitle'),
+        message: i18n.t('tracks.unvonNotifBody', { unvon: unvonLabel }),
+        date: new Date().toISOString(),
+        read: false
+      }).catch(err => console.warn('Unvon bildirishnomasi yozilmadi:', err?.code || err));
+    }
+    return { earnedPoints: earnedOut, amiDelta: amiDeltaOut };
   };
 
   // Shaxsiy mnemonika saqlash

@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { RefreshCw, Target, Home, Share2, ArrowRight, Image } from 'lucide-react';
+import { RefreshCw, Target, Share2, ArrowRight, FileText } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import ResultShareCard from '../shared/ResultShareCard';
 
 const TestResults = ({
   correctCount,
-  earnedPoints,
+  amiDelta,
   questionsLength,
   topicName,
   state,
   setMode,
   generateQuestions,
-  navigate,
   showToast,
   nextBatchLabel,
   onNextBatch
@@ -20,122 +19,67 @@ const TestResults = ({
   const { t } = useTranslation();
   const [showShareCard, setShowShareCard] = useState(false);
   const pct = Math.round((correctCount / questionsLength) * 100);
-  const isExcellent = correctCount / questionsLength >= 0.7;
-  const isGood = correctCount / questionsLength >= 0.5;
-
-  const handleTelegramShare = () => {
-    const emoji = pct >= 70 ? '🏆' : pct >= 50 ? '📊' : '💪';
-    const text = t('results.shareTgText', { emoji, topic: topicName, correct: correctCount, total: questionsLength, pct });
-    window.open(`https://t.me/share/url?url=https://toifapro-t41p.vercel.app&text=${encodeURIComponent(text)}`, '_blank');
-  };
-
-  const handleCopyShare = () => {
-    const text = t('results.shareCopyText', { correct: correctCount, total: questionsLength, pct, topic: topicName });
-    navigator.clipboard?.writeText(text);
-    showToast(t('results.copied'), 'info');
-  };
 
   return (
-    <div style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)', borderRadius: 24, padding: '36px 24px', textAlign: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.06)' }}>
-      <div style={{ fontSize: 52, marginBottom: 12, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.08))' }}>
-        {isExcellent ? '🏆' : isGood ? '📊' : '💪'}
+    <div style={{ background: 'var(--surface)', border: '1px solid var(--glass-border)', borderRadius: 24, padding: '28px 24px 24px', boxShadow: '0 20px 40px rgba(0,0,0,0.06)', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', top: 0, left: 24, right: 24, height: 3, background: 'var(--border2)', borderRadius: '0 0 3px 3px' }} />
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 14 }}>
+        <FileText size={14} style={{ color: 'var(--text3)' }} />
+        <span style={{ fontSize: 11, letterSpacing: '0.6px', color: 'var(--text3)', textTransform: 'uppercase', fontWeight: 700 }}>{t('results.reportEyebrow')}</span>
       </div>
-      <div style={{ fontSize: 22, color: 'var(--text)', fontWeight: 800, marginBottom: 6, letterSpacing: '-0.5px' }}>
-        {isExcellent ? t('results.excellent') : t('results.keepGoing')}
+
+      <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--text)', marginBottom: 4 }}>{t('results.reportTitle')}</div>
+      <div style={{ fontSize: 13, color: 'var(--text3)', marginBottom: 22, lineHeight: 1.5 }}>{t('results.summary', { total: questionsLength, correct: correctCount })}</div>
+
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 10 }}>
+        <span style={{ fontSize: 42, fontWeight: 800, color: 'var(--text)', letterSpacing: '-1px' }}>{correctCount}</span>
+        <span style={{ fontSize: 16, color: 'var(--text3)' }}>/ {questionsLength}</span>
+        <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--text2)', marginLeft: 'auto' }}>{pct}%</span>
       </div>
-      <div style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24, fontWeight: 500 }}>
-        {t('results.summary', { total: questionsLength, correct: correctCount })}
+
+      <div style={{ height: 3, background: 'var(--bg3)', borderRadius: 2, overflow: 'hidden', marginBottom: 20 }}>
+        <div style={{ height: '100%', width: `${pct}%`, background: 'var(--accent)', borderRadius: 2, transition: 'width 0.6s cubic-bezier(0.25,1,0.5,1)' }} />
       </div>
-      
-      <div style={{ background: 'var(--bg3)', border: '1px solid var(--glass-border)', borderRadius: 20, padding: '24px 32px', display: 'inline-block', marginBottom: 28 }}>
-        <div style={{ fontSize: 12, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8, fontWeight: 700 }}>{t('results.resultLabel')}</div>
-        <div style={{ fontSize: 52, fontWeight: 900, color: isExcellent ? '#10B981' : isGood ? '#F59E0B' : '#EF4444', lineHeight: 1 }}>
-          {correctCount} <span style={{ fontSize: 28, color: 'var(--text3)' }}>/ {questionsLength}</span>
+
+      {(amiDelta ?? 0) > 0 && (
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--glass-border)', paddingTop: 14, marginBottom: 22 }}>
+          <span style={{ fontSize: 12, color: 'var(--text3)' }}>{t('tracks.amiLabel')}</span>
+          <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text2)', background: 'var(--bg3)', padding: '4px 12px', borderRadius: 8, border: '1px solid var(--glass-border)' }}>
+            {t('results.amiAdded', { delta: amiDelta })}
+          </span>
         </div>
-        <div style={{ fontSize: 20, marginTop: 8, color: 'var(--text2)', fontWeight: 800 }}>{pct}%</div>
-        {(earnedPoints ?? 0) > 0 && (
-          <div style={{ fontSize: 13, color: 'var(--accent2)', fontWeight: 700, marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
-            {t('results.ratingAdded', { points: earnedPoints })}
-          </div>
-        )}
-      </div>
-      
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 320, margin: '0 auto' }}>
-        {onNextBatch && (
-          <motion.button
-            whileHover={{ scale: 1.01, y: -1 }}
-            whileTap={{ scale: 0.98 }}
-            style={{ padding: '14px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
-            onClick={onNextBatch}
-          >
-            {t('results.nextSection')} {nextBatchLabel ? `(${nextBatchLabel})` : ''} <ArrowRight size={17} />
-          </motion.button>
-        )}
+      )}
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6, maxWidth: 320, margin: '0 auto' }}>
         <motion.button
           whileHover={{ scale: 1.01, y: -1 }}
           whileTap={{ scale: 0.98 }}
-          style={onNextBatch
-            ? { padding: '13px', background: 'var(--glass-bg)', color: 'var(--text2)', border: '1px solid var(--glass-border)', borderRadius: 16, fontWeight: 600, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }
-            : { padding: '14px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
-          onClick={generateQuestions}
+          style={{ padding: '14px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
+          onClick={onNextBatch || generateQuestions}
         >
-          <RefreshCw size={17} /> {t('results.retry')}
+          {onNextBatch ? (
+            <>{t('results.nextBlock')} {nextBatchLabel ? `(${nextBatchLabel})` : ''} <ArrowRight size={17} /></>
+          ) : (
+            <><RefreshCw size={17} /> {t('results.retry')}</>
+          )}
         </motion.button>
-        
+
         {state.mistakes?.length > 0 && (
-          <motion.button 
-            whileHover={{ scale: 1.01, y: -1 }} 
-            whileTap={{ scale: 0.98 }} 
-            style={{ padding: '13px', background: 'var(--glass-bg)', color: 'var(--text2)', border: '1px solid var(--glass-border)', borderRadius: 16, fontWeight: 600, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }} 
+          <button
             onClick={() => setMode('mistakes')}
+            style={{ background: 'none', border: 'none', color: 'var(--text3)', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '10px', fontFamily: 'inherit' }}
           >
-            <Target size={16} /> {t('results.workOnMistakes')}
-          </motion.button>
+            <Target size={14} /> {t('results.workOnMistakes')}
+          </button>
         )}
-        
-        <motion.button 
-          whileHover={{ scale: 1.01, y: -1 }} 
-          whileTap={{ scale: 0.98 }} 
-          style={{ padding: '13px', background: 'var(--glass-bg)', color: 'var(--text2)', border: '1px solid var(--glass-border)', borderRadius: 16, fontWeight: 600, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }} 
-          onClick={() => navigate('/test')}
+
+        <button
+          onClick={() => setShowShareCard(true)}
+          style={{ background: 'none', border: 'none', color: 'var(--text3)', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '10px', fontFamily: 'inherit' }}
         >
-          <Home size={16} /> {t('results.toHome')}
-        </motion.button>
-        
-        <div style={{ marginTop: '8px', paddingTop: '16px', borderTop: '1px solid var(--glass-border)' }}>
-          <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}>
-            <Share2 size={13} /> {t('results.shareResult')}
-          </div>
-          {/* Asosiy: vizual ulashish kartasi (canvas rasm) */}
-          <motion.button
-            whileHover={{ scale: 1.01, y: -1 }}
-            whileTap={{ scale: 0.98 }}
-            style={{ width: '100%', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: '12px', padding: '12px', fontWeight: 700, fontSize: 14, fontFamily: 'inherit', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginBottom: 8 }}
-            onClick={() => setShowShareCard(true)}
-          >
-            <Image size={16} /> {t('results.shareImage')}
-          </motion.button>
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="btn btn-sm"
-              style={{ flex: 1, background: 'var(--accent2)', color: 'white', border: 'none', borderRadius: '12px', padding: '10px' }}
-              onClick={handleTelegramShare}
-            >
-              Telegram
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="btn btn-sm btn-outline"
-              style={{ borderRadius: '12px', padding: '10px', border: '1px solid var(--glass-border)' }}
-              onClick={handleCopyShare}
-            >
-              📋
-            </motion.button>
-          </div>
-        </div>
+          <Share2 size={14} /> {t('results.shareResult')}
+        </button>
       </div>
 
       <ResultShareCard

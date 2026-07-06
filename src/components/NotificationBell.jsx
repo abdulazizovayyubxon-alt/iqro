@@ -6,7 +6,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Bell, CheckCircle2, AlertCircle, Info, Trash2, Award } from 'lucide-react';
+import { Bell, CheckCircle2, AlertCircle, Info, Trash2, Award, BadgeCheck } from 'lucide-react';
 import { useNotifications } from '../hooks/useNotifications';
 import { useModalBackButton } from './profile/useModalBackButton';
 
@@ -86,8 +86,8 @@ const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', 
                     className={`notif-item ${n.read ? 'read' : 'unread'}`}
                     onClick={() => markOneRead(n.id)}
                   >
-                    <div className={`notif-icon-box ${n.type === 'achievement' ? 'success' : n.type}`}>
-                      {n.type === 'achievement' ? <Award size={18} /> : n.type === 'success' ? <CheckCircle2 size={18} /> : n.type === 'warning' ? <AlertCircle size={18} /> : <Info size={18} />}
+                    <div className={`notif-icon-box ${n.type === 'achievement' || n.type === 'unvon' ? 'success' : n.type}`}>
+                      {n.type === 'unvon' ? <BadgeCheck size={18} /> : n.type === 'achievement' ? <Award size={18} /> : n.type === 'success' ? <CheckCircle2 size={18} /> : n.type === 'warning' ? <AlertCircle size={18} /> : <Info size={18} />}
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div className="notif-title-row">

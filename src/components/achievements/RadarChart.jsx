@@ -5,8 +5,18 @@ import React from 'react';
  * props:
  *   axes: [{ label: string, value: 0..1 }] — aynan 6 ta o'q
  *   width: piksel (ixtiyoriy, default 280)
+ *   ringColor/gridColor/dataColor/labelColor: ixtiyoriy — to'q fonli (masalan,
+ *   navy pasport karta) kontekstda mavzu o'zgaruvchilariga bog'liq bo'lmagan
+ *   qattiq ranglar berish uchun (standart holatda ilova mavzusiga moslashadi)
  */
-const RadarChart = ({ axes = [], width = 280 }) => {
+const RadarChart = ({
+  axes = [],
+  width = 280,
+  ringColor = 'var(--border)',
+  gridColor = 'var(--bg3)',
+  dataColor = 'var(--accent)',
+  labelColor = 'var(--text3)'
+}) => {
   const W = 280, H = 200;
   const cx = 148, cy = 105, R = 62;
 
@@ -40,15 +50,15 @@ const RadarChart = ({ axes = [], width = 280 }) => {
       style={{ display: 'block', margin: '0 auto', maxWidth: '100%' }}
     >
       {[1, 2 / 3, 1 / 3].map((f, i) => (
-        <polygon key={i} points={ring(R * f)} fill="none" stroke={i === 0 ? 'var(--border)' : 'var(--bg3)'} strokeWidth="1" />
+        <polygon key={i} points={ring(R * f)} fill="none" stroke={i === 0 ? ringColor : gridColor} strokeWidth="1" />
       ))}
       {Array.from({ length: 6 }, (_, k) => {
         const [x, y] = point(R, k);
-        return <line key={k} x1={cx} y1={cy} x2={x.toFixed(1)} y2={y.toFixed(1)} stroke="var(--bg3)" strokeWidth="1" />;
+        return <line key={k} x1={cx} y1={cy} x2={x.toFixed(1)} y2={y.toFixed(1)} stroke={gridColor} strokeWidth="1" />;
       })}
-      <polygon points={dataPoly} fill="var(--accent)" fillOpacity="0.16" stroke="var(--accent)" strokeWidth="1.5" strokeLinejoin="round" />
+      <polygon points={dataPoly} fill={dataColor} fillOpacity="0.16" stroke={dataColor} strokeWidth="1.5" strokeLinejoin="round" />
       {dataPoints.map(([x, y], k) => (
-        <circle key={k} cx={x.toFixed(1)} cy={y.toFixed(1)} r="2.5" fill="var(--accent)" />
+        <circle key={k} cx={x.toFixed(1)} cy={y.toFixed(1)} r="2.5" fill={dataColor} />
       ))}
       {axes.map((ax, k) => (
         <text
@@ -58,7 +68,7 @@ const RadarChart = ({ axes = [], width = 280 }) => {
           textAnchor={labelPos[k].anchor}
           fontSize="11"
           fontWeight="600"
-          fill="var(--text3)"
+          fill={labelColor}
         >
           {ax.label}
         </text>

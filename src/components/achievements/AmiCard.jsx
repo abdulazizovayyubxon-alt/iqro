@@ -18,12 +18,13 @@ const Diamond = ({ filled }) => (
 );
 
 /**
- * AmiCard — Akademik Mahorat Indeksi: katta raqam + 6 o'qli radar + daraja legendasi.
+ * AmiCard — Akademik Mahorat Indeksi: katta raqam + pasport unvoni + 6 o'qli radar + daraja legendasi.
  * props:
  *   ami: 0-100
+ *   unvonTier: 1|2|3 — pasport darajasidagi yagona unvon (tracks.unvonTierFromAmi)
  *   axes: [{ label, value 0..1 }] — RadarChart uchun
  */
-const AmiCard = ({ ami = 0, axes = [] }) => {
+const AmiCard = ({ ami = 0, unvonTier = 1, axes = [] }) => {
   const { t } = useTranslation();
 
   return (
@@ -46,6 +47,22 @@ const AmiCard = ({ ami = 0, axes = [] }) => {
       </div>
       <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--text2)', margin: '6px 0 2px' }}>
         {t('tracks.amiLabel')}
+      </div>
+      <div
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: 6,
+          margin: '4px 0 6px',
+          padding: '4px 14px',
+          borderRadius: 20,
+          background: 'var(--blue-bg)',
+          color: 'var(--accent2)',
+          fontSize: 13,
+          fontWeight: 700
+        }}
+      >
+        {t(`tracks.tier${unvonTier}`)}
       </div>
 
       <RadarChart axes={axes} />
