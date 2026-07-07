@@ -1,0 +1,27 @@
+# Vercel Deployment uchun kerak bo'lmagan fayl va papkalar
+
+# Darsliklar va darslik PDF fayllari (juda katta hajmda)
+fan/
+*.pdf
+
+# Dizayn va logolar
+dizayin/
+design_handoff_iqro_redesign/
+design_handoff_toifapro_logo/
+
+# Qo'shimcha materiallar va bekaplar
+ped M/
+ped mahorat/
+Qoshimcha 3/
+scratch/
+pipeline/
+
+# Mahalliy build va dependensiyalar
+dist/
+node_modules/
+.env
+
+# Vercel Hobby limit (12 Serverless functions) uchun foydalanilmaydigan yoki birlashtirilgan API-lar
+api/set-webhook.js
+api/send-otp.js
+api/verify-otp.js

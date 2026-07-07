@@ -1,5 +1,7 @@
 {
   "rewrites": [
+    { "source": "/api/send-otp", "destination": "/api/otp?action=send" },
+    { "source": "/api/verify-otp", "destination": "/api/otp?action=verify" },
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/((?!assets|images|sw|workbox|manifest|registerSW|api).*)", "destination": "/index.html" }
   ],
