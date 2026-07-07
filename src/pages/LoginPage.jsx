@@ -72,9 +72,11 @@ export default function LoginPage() {
   const handlePhoneChange = (e) => {
     setAuthError('');
     let digits = e.target.value.replace(/\D/g, '');
-    if (!digits.startsWith('998')) digits = '998' + digits;
-    digits = digits.slice(0, 12); // 998 + 9 xonali raqam
-    setPhone(formatPhoneDisplay(digits));
+    // Foydalanuvchi to'liq raqamni (998...) yoki milliy 0 bilan yozib yuborsa ham
+    // to'g'rilaymiz: oldindagi barcha "998" va "0" prefikslarni olib tashlab, sof
+    // 9 xonali milliy raqamni ajratamiz — natija har doim to'g'ri +998XXXXXXXXX.
+    digits = digits.replace(/^(?:998)+/, '').replace(/^0+/, '').slice(0, 9);
+    setPhone(formatPhoneDisplay('998' + digits));
   };
 
   const isPhoneValid = () => {

@@ -172,7 +172,7 @@ export default async function handler(req, res) {
       try {
         await sendCynoxSms(phone, message);
       } catch (smsErr) {
-        console.error('Cynox SMS xatosi:', smsErr.message);
+        console.error('Cynox SMS xatosi:', smsErr.message, '| phone:', phone);
         return res.status(502).json({ success: false, error: 'sms_failed' });
       }
     } else {
