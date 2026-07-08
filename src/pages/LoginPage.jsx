@@ -2,81 +2,74 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff, ShieldCheck } from 'lucide-react';
 
 import { useIsMobile } from '../hooks/useIsMobile';
 import BrandLogo from '../components/shared/BrandLogo';
 
 const STEPS = {
   PHONE: 'phone',
-  OTP: 'otp',    // SMS kodni kiritish (+ yangi bo'lsa ism) — parol o'rniga
+  CHECKING: 'checking',  // Fonda raqam ro'yxatdan o'tganmi tekshiriladi
+  AUTH: 'auth',          // Parol kiritish + (kerak bo'lsa) ro'yxatdan o'tish — bitta moslashuvchan ekran
 };
 
 const PRIMARY = '#0E97E0';
 
-// Cynox qamrovidagi operator kodlari (998'dan keyingi 2 xona). Boshqasiga SMS yuborilmaydi.
-const SUPPORTED_OPERATOR_CODES = new Set([
-  '97', '88', '87', '93', '94', '50', '33', '98', '80',
-  '90', '91', '92', '99', '77', '70', '95', '20',
-]);
-
 export default function LoginPage() {
   const { t } = useTranslation();
   const {
-    sendOtp, verifyOtp,
-    authError, setAuthError, checkLockout
+    signInWithPhone,
+    authError, setAuthError, checkLockout, checkUserExists
   } = useAuth();
 
   const isMobile = useIsMobile();
   const s = getStyles(isMobile);
 
   const [step, setStep] = useState(STEPS.PHONE);
+  const [authMode, setAuthMode] = useState('login'); // 'login' | 'register'
   const [phone, setPhone] = useState('+998');
   const [name, setName] = useState('');
-  const [code, setCode] = useState('');
-  const [otpIsNew, setOtpIsNew] = useState(false); // OTP ekranida ism so'ralsinmi
+  const [password, setPassword] = useState('');
+  const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [resendIn, setResendIn] = useState(0);     // Qayta yuborishgacha soniya
   const [lockoutTimer, setLockoutTimer] = useState(null);
+  const [featureIdx, setFeatureIdx] = useState(0);
+
+  useEffect(() => {
+    if (step === STEPS.PHONE) {
+      const int = setInterval(() => {
+        setFeatureIdx(prev => (prev + 1) % 3);
+      }, 3000);
+      return () => clearInterval(int);
+    }
+  }, [step]);
+
+  const FEATURES = [
+    { icon: '🚀', title: t('login.f1Title'), desc: t('login.f1Desc') },
+    { icon: '🧠', title: t('login.f2Title'), desc: t('login.f2Desc') },
+    { icon: '📵', title: t('login.f3Title'), desc: t('login.f3Desc') }
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const st = checkLockout();
-      setLockoutTimer(st.locked ? Math.ceil(st.remainingMs / 1000) : null);
+      const s = checkLockout();
+      setLockoutTimer(s.locked ? Math.ceil(s.remainingMs / 1000) : null);
     }, 1000);
     return () => clearInterval(interval);
   }, [checkLockout]);
 
-  // Qayta yuborish (resend) countdown
-  useEffect(() => {
-    if (resendIn <= 0) return;
-    const timer = setTimeout(() => setResendIn(v => v - 1), 1000);
-    return () => clearTimeout(timer);
-  }, [resendIn]);
 
-  // Ko'rsatish uchun guruhlab formatlash: +998 90 123 45 67
-  const formatPhoneDisplay = (digits) => {
-    const rest = digits.slice(3);
-    let out = '+998';
-    if (rest.length > 0) out += ' ' + rest.slice(0, 2);
-    if (rest.length > 2) out += ' ' + rest.slice(2, 5);
-    if (rest.length > 5) out += ' ' + rest.slice(5, 7);
-    if (rest.length > 7) out += ' ' + rest.slice(7, 9);
-    return out;
-  };
-
-  // Qayta yuborish hisoblagichi: 120 → "2:00", 45 → "0:45"
-  const formatCountdown = (sec) =>
-    `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`;
 
   const handlePhoneChange = (e) => {
     setAuthError('');
-    let digits = e.target.value.replace(/\D/g, '');
-    // Foydalanuvchi to'liq raqamni (998...) yoki milliy 0 bilan yozib yuborsa ham
-    // to'g'rilaymiz: oldindagi barcha "998" va "0" prefikslarni olib tashlab, sof
-    // 9 xonali milliy raqamni ajratamiz — natija har doim to'g'ri +998XXXXXXXXX.
-    digits = digits.replace(/^(?:998)+/, '').replace(/^0+/, '').slice(0, 9);
-    setPhone(formatPhoneDisplay('998' + digits));
+    let v = e.target.value.replace(/[^\d+]/g, '');
+    if (!v.startsWith('+998')) {
+      if (v.startsWith('998')) v = '+' + v;
+      else if (v.startsWith('+')) v = '+998';
+      else v = '+998' + v;
+    }
+    if (v.length > 13) v = v.slice(0, 13);
+    setPhone(v);
   };
 
   const isPhoneValid = () => {
@@ -84,121 +77,106 @@ export default function LoginPage() {
     return c.startsWith('998') && c.length === 12;
   };
 
-  // Xato kodini foydalanuvchi matniga aylantirish
-  const otpErrorText = (err, remaining) => {
-    switch (err) {
-      case 'invalid': return remaining > 0
-        ? t('login.otpErrInvalidLeft', { n: remaining })
-        : t('login.otpErrInvalid');
-      case 'expired': return t('login.otpErrExpired');
-      case 'too_many': return t('login.otpErrTooMany');
-      case 'cooldown': return t('login.otpErrCooldown');
-      case 'too_many_sends': return t('login.otpErrTooManySends');
-      case 'sms_failed': return t('login.otpErrSmsFailed');
-      case 'rate_limited': return t('login.otpErrTooManySends');
-      case 'unsupported_operator': return t('login.errOperator');
-      case 'invalid_phone': return t('login.errPhone');
-      default: return t('login.otpErrSend');
-    }
-  };
-
-  // ── TELEFON RAQAM → KOD YUBORISH ──
-  const handleSendCode = async () => {
+  // ── TELEFON RAQAM KIRITILGANDA ──
+  // "Yangimisiz?" deb so'ramaymiz — fonda /api/check-user orqali raqam
+  // ro'yxatdan o'tganmi tekshiramiz va to'g'ri ekranga olib o'tamiz:
+  //   mavjud → login (parol), yangi → register (ism + parol).
+  // Havolalar qo'lda zaxira sifatida qoladi; ro'yxat/kirish o'zaro ham
+  // avtomatik tuzatiladi (band raqam → kirish, yangi raqam → ro'yxat).
+  const handlePhoneNext = async () => {
     setAuthError('');
     if (!isPhoneValid()) {
       setAuthError(t('login.errPhone'));
       return;
     }
-    // Faqat Cynox qo'llab-quvvatlaydigan operatorlarga SMS yuboramiz (tejamkorlik)
-    if (!SUPPORTED_OPERATOR_CODES.has(phone.replace(/\D/g, '').slice(3, 5))) {
-      setAuthError(t('login.errOperator'));
-      return;
-    }
-    setLoading(true);
+    setStep(STEPS.CHECKING);
     try {
-      const res = await sendOtp(phone);
-      if (res && res.success) {
-        setOtpIsNew(!!res.isNew);
-        setCode('');
-        setResendIn(res.cooldown || 120);
-        setStep(STEPS.OTP);
-        if (res.devCode) {
-          // Faqat DEV/Cynox ulanmagan holat — kodni ko'rsatib turamiz
-          setAuthError(t('login.otpDevCode', { code: res.devCode }));
-        }
-      } else {
-        if (!authError) setAuthError(otpErrorText(res && res.error, res && res.retryAfter));
-        if (res && res.retryAfter) setResendIn(res.retryAfter);
-      }
+      const exists = await checkUserExists(phone);
+      setAuthMode(exists ? 'login' : 'register');
     } catch (e) {
-      console.error('Kod yuborish xatosi:', e);
-      setAuthError(t('login.otpErrSend'));
+      console.warn('Raqamni tekshirishda xatolik:', e);
+      setAuthMode('login'); // zaxira: parol ekrani (havoladan ro'yxatga o'tsa bo'ladi)
     } finally {
-      setLoading(false);
+      setStep(STEPS.AUTH);
     }
   };
 
-  // ── KODNI TASDIQLASH ──
-  const handleVerify = async () => {
+  // Login ↔ Register rejimini almashtirish (AUTH ekranidagi havola)
+  const switchAuthMode = (mode) => {
     setAuthError('');
-    if (code.replace(/\D/g, '').length !== 6) {
-      setAuthError(t('login.otpErrLen'));
-      return;
-    }
-    if (otpIsNew && (!name.trim() || name.trim().length < 3)) {
-      setAuthError(t('login.errName'));
-      return;
-    }
-    setLoading(true);
-    try {
-      const res = await verifyOtp(phone, code.replace(/\D/g, ''), name.trim());
-      if (res && res.success) {
-        if (res.dev) {
-          // DEV rejim — backendsiz haqiqiy kirish bo'lmaydi
-          setAuthError(t('login.otpDevNotice'));
-        }
-        // Aks holda onAuthStateChanged foydalanuvchini kiritadi (App qayta render)
-      } else {
-        setAuthError(otpErrorText(res && res.error, res && res.remaining));
-      }
-    } catch (e) {
-      console.error('Tasdiqlash xatosi:', e);
-      setAuthError(t('login.otpErrSend'));
-    } finally {
-      setLoading(false);
-    }
+    setAuthMode(mode);
   };
 
-  const handleResend = async () => {
-    if (resendIn > 0 || loading) return;
-    await handleSendCode();
-  };
-
-  // ── DAVOM ETISH TUGMASI (PHONE/OTP) ──
+  // ── DAVOM ETISH / KIRISH / RO'YXATDAN O'TISH TUGMASI ──
   const handleContinue = async () => {
     setAuthError('');
+
     if (step === STEPS.PHONE) {
-      await handleSendCode();
+      await handlePhoneNext();
       return;
     }
-    if (step === STEPS.OTP) {
-      await handleVerify();
+
+    // ── AUTH ekrani ──
+    if (authMode === 'register') {
+      if (!name.trim() || name.length < 3) {
+        setAuthError(t('login.errName'));
+        return;
+      }
+      if (!password || password.length < 6) {
+        setAuthError(t('login.errPassword'));
+        return;
+      }
+      setLoading(true);
+      try {
+        const res = await signInWithPhone(name, phone, password, true, '', '');
+        if (res && !res.success && res.hasCustomPassword) {
+          // Bu raqam allaqachon ro'yxatdan o'tgan — kirish rejimiga o'tamiz
+          setAuthMode('login');
+          setAuthError(t('login.errAlreadyReg'));
+        }
+      } catch (e) {
+        console.error("Register xatosi:", e);
+        if (!authError) setAuthError(t('login.errRegisterFail'));
+      } finally {
+        setLoading(false);
+      }
       return;
+    }
+
+    // authMode === 'login'
+    if (!password) { setAuthError(t('login.errEnterPass')); return; }
+    setLoading(true);
+    try {
+      const res = await signInWithPhone('', phone, password, false);
+      if (res && !res.success && res.notRegistered) {
+        // Bu raqam hali ro'yxatdan o'tmagan — ro'yxat rejimiga o'tamiz
+        setAuthMode('register');
+        setAuthError(t('login.errNotReg'));
+      }
+    } catch (e) {
+      console.error("Login xatosi:", e);
+      if (!authError) setAuthError(t('login.errLoginFail'));
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleBack = () => {
     setAuthError('');
-    if (step === STEPS.OTP) {
+    if (step === STEPS.AUTH) {
       setStep(STEPS.PHONE);
-      setCode('');
-      setOtpIsNew(false);
+      setAuthMode('login');
     }
   };
 
+  const handleForgotPassword = () => {
+    setAuthError(t('login.forgotPasswordHint') || 'Parolni tiklash uchun administrator bilan bog\'laning.');
+  };
+
   const progressMap = {
-    [STEPS.PHONE]: 0.5,
-    [STEPS.OTP]: 1,
+    [STEPS.PHONE]: 0.45,
+    [STEPS.CHECKING]: 0.7,
+    [STEPS.AUTH]: 1,
   };
   const progress = progressMap[step] || 0.4;
 
@@ -207,24 +185,24 @@ export default function LoginPage() {
       <div style={{ ...s.page, zIndex: 1 }}>
 
         {/* Progress bar */}
-        <div style={s.progressTrack}>
-          <motion.div
-            animate={{ width: `${progress * 100}%` }}
-            transition={{ duration: 0.4, ease: 'easeInOut' }}
-            style={s.progressFill}
-          />
-        </div>
+          <div style={s.progressTrack}>
+            <motion.div
+              animate={{ width: `${progress * 100}%` }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              style={s.progressFill}
+            />
+          </div>
 
         {/* Header — faqat orqaga qaytish tugmasi */}
-        <div style={s.header}>
-          {step === STEPS.OTP ? (
-            <motion.button whileTap={{ scale: 0.9 }} style={s.backBtn} onClick={handleBack}>
-              <ArrowLeft size={22} />
-            </motion.button>
-          ) : <div style={{ width: 36 }} />}
-          <BrandLogo size={22} />
-          <div style={{ width: 36 }} />
-        </div>
+          <div style={s.header}>
+            {step === STEPS.AUTH ? (
+              <motion.button whileTap={{ scale: 0.9 }} style={s.backBtn} onClick={handleBack}>
+                <ArrowLeft size={22} />
+              </motion.button>
+            ) : <div style={{ width: 36 }} />}
+            <BrandLogo size={22} />
+            <div style={{ width: 36 }} />
+          </div>
 
         {/* Content */}
         <div style={s.content}>
@@ -240,11 +218,25 @@ export default function LoginPage() {
               {/* ── STEP: PHONE ── */}
               {step === STEPS.PHONE && (
                 <>
-                  {/* Sokin, statik sarlavha — aylanuvchi emoji karuseli o'rniga.
-                      Diqqat raqam kiritishga qaratiladi (bank/jiddiy uslub). */}
-                  <div style={{ marginBottom: 28 }}>
-                    <h1 style={{ ...s.title, marginBottom: 8 }}>{t('login.phoneTitle')}</h1>
-                    <p style={{ ...s.subtitle, marginBottom: 0 }}>{t('login.phoneSubtitle')}</p>
+                  <div style={{ marginBottom: 32, minHeight: 80, display: 'flex', alignItems: 'center' }}>
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={featureIdx}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                        style={{ display: 'flex', alignItems: 'center', gap: 16 }}
+                      >
+                        <div style={{ fontSize: 48, filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.1))' }}>
+                          {FEATURES[featureIdx].icon}
+                        </div>
+                        <div>
+                          <h1 style={{ ...s.title, marginBottom: 6, fontSize: 24, lineHeight: 1.1 }}>{FEATURES[featureIdx].title}</h1>
+                          <p style={{ ...s.subtitle, marginBottom: 0, fontSize: 13, lineHeight: 1.4 }}>{FEATURES[featureIdx].desc}</p>
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
                   <div style={s.phoneWrap}>
                     <input
@@ -254,23 +246,71 @@ export default function LoginPage() {
                       value={phone}
                       onChange={handlePhoneChange}
                       placeholder="+998 00 000 00 00"
-                      onKeyDown={e => e.key === 'Enter' && handleSendCode()}
+                      onKeyDown={e => e.key === 'Enter' && handlePhoneNext()}
                     />
                   </div>
                 </>
               )}
 
-              {/* ── STEP: OTP — SMS kod (+ yangi bo'lsa ism). Parol o'rniga. ── */}
-              {step === STEPS.OTP && (
+              {/* ── STEP: CHECKING — fonda raqam tekshirilmoqda ── */}
+              {step === STEPS.CHECKING && (
                 <>
-                  <h1 style={s.title}>{t('login.otpTitle')}</h1>
+                  <h1 style={s.title}>{t('login.checking')}</h1>
                   <p style={s.subtitle}>
-                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> {t('login.otpSubtitleSuffix')}
+                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong>
+                  </p>
+                  <div style={{ display: 'flex', justifyContent: 'center', padding: '32px 0' }}>
+                    <div style={{ width: 44, height: 44, border: `3px solid var(--border)`, borderTopColor: PRIMARY, borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+                  </div>
+                </>
+              )}
+
+              {/* ── STEP: AUTH — kirish yoki ro'yxatdan o'tish (bitta ekran) ── */}
+              {step === STEPS.AUTH && authMode === 'login' && (
+                <>
+                  <h1 style={s.title}>{t('login.loginTitle')}</h1>
+                  <p style={s.subtitle}>
+                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> {t('login.loginSubtitleSuffix')}
                   </p>
 
-                  {/* Yangi foydalanuvchi — ismni shu yerda so'raymiz */}
-                  {otpIsNew && (
-                    <div style={{ marginBottom: 14 }}>
+                  <div style={{ position: 'relative' }}>
+                    <input
+                      id="login-password-input"
+                      style={s.input}
+                      type={showPass ? 'text' : 'password'}
+                      placeholder={t('login.passwordPlaceholder')}
+                      value={password}
+                      onChange={e => { setAuthError(''); setPassword(e.target.value); }}
+                      autoFocus
+                      onKeyDown={e => e.key === 'Enter' && handleContinue()}
+                    />
+                    <button type="button" onClick={() => setShowPass(!showPass)} style={s.eyeBtn} tabIndex={-1}>
+                      {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
+                    </button>
+                  </div>
+                  <button style={s.forgotBtn} onClick={handleForgotPassword}>
+                    {t('login.forgot')}
+                  </button>
+
+                  {/* Yangi foydalanuvchi uchun havola */}
+                  <div style={s.switchRow}>
+                    <span style={{ color: 'var(--text3)' }}>{t('login.noAccount')}</span>
+                    <button type="button" style={s.switchLink} onClick={() => switchAuthMode('register')}>
+                      {t('login.createAccount')}
+                    </button>
+                  </div>
+                </>
+              )}
+
+              {step === STEPS.AUTH && authMode === 'register' && (
+                <>
+                  <h1 style={s.title}>{t('login.registerTitle')}</h1>
+                  <p style={s.subtitle}>
+                    <strong style={{ color: 'var(--text)', fontWeight: 700 }}>{phone}</strong> {t('login.registerSubtitleSuffix')}
+                  </p>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '6px' }}>
+                    <div>
                       <label style={s.fieldLabel}>{t('login.nameLabel')}</label>
                       <input
                         id="register-name-input"
@@ -282,32 +322,31 @@ export default function LoginPage() {
                         autoFocus
                       />
                     </div>
-                  )}
 
-                  <label style={s.fieldLabel}>{t('login.otpCodeLabel')}</label>
-                  <input
-                    id="login-otp-input"
-                    style={s.otpInput}
-                    type="tel"
-                    inputMode="numeric"
-                    autoComplete="one-time-code"
-                    maxLength={6}
-                    placeholder="— — — — — —"
-                    value={code}
-                    onChange={e => { setAuthError(''); setCode(e.target.value.replace(/\D/g, '').slice(0, 6)); }}
-                    autoFocus={!otpIsNew}
-                    onKeyDown={e => e.key === 'Enter' && handleVerify()}
-                  />
+                    <div>
+                      <label style={s.fieldLabel}>{t('login.passwordLabel')}</label>
+                      <div style={{ position: 'relative' }}>
+                        <input
+                          style={s.input}
+                          type={showPass ? 'text' : 'password'}
+                          placeholder={t('login.passwordCreatePlaceholder')}
+                          value={password}
+                          onChange={e => { setAuthError(''); setPassword(e.target.value); }}
+                          onKeyDown={e => e.key === 'Enter' && handleContinue()}
+                        />
+                        <button type="button" onClick={() => setShowPass(!showPass)} style={s.eyeBtn} tabIndex={-1}>
+                          {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
 
-                  {/* Qayta yuborish */}
+                  {/* Mavjud foydalanuvchi uchun havola */}
                   <div style={s.switchRow}>
-                    {resendIn > 0 ? (
-                      <span style={{ color: 'var(--text3)' }}>{t('login.otpResendIn', { time: formatCountdown(resendIn) })}</span>
-                    ) : (
-                      <button type="button" style={s.switchLink} onClick={handleResend} disabled={loading}>
-                        {t('login.otpResend')}
-                      </button>
-                    )}
+                    <span style={{ color: 'var(--text3)' }}>{t('login.haveAccount')}</span>
+                    <button type="button" style={s.switchLink} onClick={() => switchAuthMode('login')}>
+                      {t('login.signIn')}
+                    </button>
                   </div>
                 </>
               )}
@@ -341,8 +380,8 @@ export default function LoginPage() {
           >
             {loading ? t('login.pleaseWait')
               : lockoutTimer ? t('login.wait', { sec: lockoutTimer })
-              : step === STEPS.PHONE ? t('login.otpGetCode')
-              : t('login.otpVerify')}
+              : step === STEPS.PHONE ? t('login.continuePhone')
+              : authMode === 'register' ? t('login.createAccountBtn') : t('login.signIn')}
           </motion.button>
 
 
@@ -419,15 +458,6 @@ const getStyles = (isMobile) => ({
     boxSizing: 'border-box',
     boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.01)',
   },
-  // OTP kod maydoni — katta, markazlashgan, keng oraliqli (jiddiy uslub)
-  otpInput: {
-    width: '100%', padding: '16px 18px', fontSize: 30, fontWeight: 800,
-    textAlign: 'center', letterSpacing: 10,
-    border: '1.5px solid var(--border)', borderRadius: 16,
-    background: 'var(--bg3)', color: 'var(--text)', fontFamily: 'inherit',
-    caretColor: PRIMARY, outline: 'none', marginBottom: 4,
-    boxSizing: 'border-box', transition: 'all 0.25s ease',
-  },
   eyeBtn: {
     position: 'absolute', right: '4px', top: '50%', transform: 'translateY(-50%)',
     background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)',
@@ -441,12 +471,12 @@ const getStyles = (isMobile) => ({
     display: 'inline-block', minHeight: '44px',
   },
   errorText: { marginTop: 10, fontSize: 13, color: '#EF4444', fontWeight: 500 },
-  footer: {
-    padding: isMobile
-      ? '12px 20px calc(12px + env(safe-area-inset-bottom))'
-      : '16px 24px calc(24px + env(safe-area-inset-bottom))',
-    borderTop: '1px solid var(--border)',
-    background: isMobile ? 'var(--bg2)' : 'transparent'
+  footer: { 
+    padding: isMobile 
+      ? '12px 20px calc(12px + env(safe-area-inset-bottom))' 
+      : '16px 24px calc(24px + env(safe-area-inset-bottom))', 
+    borderTop: '1px solid var(--border)', 
+    background: isMobile ? 'var(--bg2)' : 'transparent' 
   },
   primaryBtn: {
     width: '100%', padding: '16px', borderRadius: 16,
