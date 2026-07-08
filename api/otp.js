@@ -70,17 +70,19 @@ async function sendCynoxSms(phone, message) {
   const token = process.env.CYNOX_API_TOKEN;
   if (!token) throw new Error('CYNOX_API_TOKEN is not configured');
 
+  // Cynox (PHP) tanani form-urlencoded ($_POST) sifatida o'qiydi — JSON'da telefon
+  // "bo'sh" ko'rinib, "raqam noto'g'ri" xatosi chiqadi. Shuning uchun form yuboramiz.
   const res = await fetch(CYNOX_BASE, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: JSON.stringify({ phone, message })
+    body: new URLSearchParams({ phone, message }).toString()
   });
 
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) {
+  if (!res.ok || data.status === false) {
     throw new Error('Cynox send failed: ' + JSON.stringify(data));
   }
   return data;
