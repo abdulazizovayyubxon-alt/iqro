@@ -147,7 +147,7 @@ async function handleSendOtp(req, res, ip) {
   });
 
   const cynoxConfigured = !!process.env.CYNOX_API_TOKEN;
-  const message = `Toifa Pro — tasdiqlash kodi: ${code}. Kodni hech kimga bermang.`;
+  const message = `Toifa Pro tasdiqlash kodi: ${code}. Kodni hech kimga bermang.`;
 
   if (cynoxConfigured) {
     try {
