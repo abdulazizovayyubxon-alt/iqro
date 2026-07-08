@@ -129,7 +129,7 @@ async function processReferralBonus(db, payingUserId) {
 }
 
 // ── To'lovni Firestorega yozish (umumiy funksiya) ──
-async function activatePremium(db, rawUserId, planId, paymentMethod, transId) {
+async function activatePremium(db, rawUserId, planId, paymentMethod, transId, paidAmount) {
   let userId = rawUserId;
   if (rawUserId && rawUserId.includes('__')) {
     const parts = rawUserId.split('__');
@@ -139,17 +139,51 @@ async function activatePremium(db, rawUserId, planId, paymentMethod, transId) {
 
   if (!userId) throw new Error('userId topilmadi');
 
-  // Muddatni hisoblash
+  const userRef = db.collection('users').doc(userId);
+  const userSnap = await userRef.get();
+  const userData = userSnap.exists ? userSnap.data() : {};
+
+  // ── Idempotentlik: aynan shu tranzaksiya allaqachon qayd etilgan bo'lsa,
+  // qayta faollashtirmaymiz (Click/Payme timeout'da retry yuborishi mumkin). ──
+  if (transId && userData.premiumTransId === transId && userData.isPremium) {
+    return userId;
+  }
+
+  // ── Reja (narx + muddat) ni settings/premium dan olamiz ──
   let durationMonths = 999;
+  let planPrice = null;
   try {
     const settingsDoc = await db.collection('settings').doc('premium').get();
     if (settingsDoc.exists) {
       const plans = settingsDoc.data().plans || [];
       const matchedPlan = plans.find(p => p.id === planId);
-      if (matchedPlan) durationMonths = matchedPlan.durationMonths;
+      if (matchedPlan) {
+        durationMonths = matchedPlan.durationMonths;
+        planPrice = Number(matchedPlan.price);
+      }
     }
   } catch (e) { console.error('Plan fetch error', e); }
 
+  // ── Summa tekshiruvi (faqat chegirmasiz foydalanuvchilar uchun qat'iy) ──
+  // Chegirma/bonus summani dinamik pasaytiradi (hatto 0 gacha), shuning uchun
+  // chegirmasi bo'lganlarni bu yerda ishonchli tekshirib bo'lmaydi (buning uchun
+  // server tomonda "pending order" yozuvi kerak). Ammo hech qanday chegirmasi
+  // yo'q foydalanuvchi reja narxidan kam to'lasa — bu manipulyatsiya, rad etamiz.
+  if (Number.isFinite(paidAmount) && paidAmount > 0 && planPrice != null && !Number.isNaN(planPrice)) {
+    const hasDiscount =
+      (userData.referralDiscount || 0) > 0 ||
+      (userData.promoDiscount?.percent || 0) > 0 ||
+      (userData.referralBonus || 0) > 0;
+    if (!hasDiscount && paidAmount + 1 < planPrice) {
+      const err = new Error(`AMOUNT_MISMATCH: kutilgan ${planPrice}, kelgan ${paidAmount}`);
+      err.code = 'AMOUNT_MISMATCH';
+      throw err;
+    }
+  }
+
+  // ── Muddatni hisoblash ──
+  // premiumExpire — obuna tugash vaqtining yagona manbasi. null bo'lsa muddatsiz.
+  // AuthContext premiumExpire o'tgach isPremium'ni false qiladi (premiumPlan'dan qat'i nazar).
   let expireDate = null;
   if (durationMonths && durationMonths !== 999) {
     const d = new Date();
@@ -157,21 +191,15 @@ async function activatePremium(db, rawUserId, planId, paymentMethod, transId) {
     expireDate = d.toISOString();
   }
 
-  // B → isPremium = true (premiumPlan = 'paid' — AuthContext da expire check skip qiladi)
-  const userRef = db.collection('users').doc(userId);
-  const userSnap = await userRef.get();
-  const userData = userSnap.exists ? userSnap.data() : {};
-
-  // Agar referral orqali kelgan va chegirmasi bor bo'lsa — eslatma qo'shamiz
   const updateData = {
     isPremium: true,
     premiumSince: new Date().toISOString(),
     premiumExpire: expireDate,
-    premiumPlan: 'paid',  // ═══ MUHIM: 'paid' bo'lsa AuthContext expire check ni skip qiladi
+    premiumPlan: 'paid',
     premiumMethod: paymentMethod,
     premiumTransId: transId,
     reminderSent: false,
-    referralDiscount: 0, // To'lovi bo'lgandan keyin chegirma nolga tushadi
+    referralDiscount: 0, // To'lovdan keyin chegirma nolga tushadi
     discountExpired: true,
     // Promo chegirma bir martalik — to'lovda sarflanadi
     promoDiscount: null,
@@ -190,15 +218,20 @@ async function activatePremium(db, rawUserId, planId, paymentMethod, transId) {
 async function handleClick(req, res) {
   const {
     click_trans_id, service_id, merchant_trans_id,
-    amount, action, sign_time, sign_string, error
+    merchant_prepare_id, amount, action, sign_time, sign_string, error
   } = req.body;
 
   const secretKey = process.env.CLICK_SECRET_KEY;
 
-  const signCheck = crypto
-    .createHash('md5')
-    .update(`${click_trans_id}${service_id}${secretKey}${merchant_trans_id}${amount}${action}${sign_time}`)
-    .digest('hex');
+  // Click imzoni ikki bosqichda HAR XIL formula bilan hisoblaydi:
+  //   Prepare  (action=0): click_trans_id + service_id + secret + merchant_trans_id + amount + action + sign_time
+  //   Complete (action=1): ... merchant_trans_id + merchant_prepare_id + amount ...
+  // merchant_prepare_id qo'shilmasa, Complete imzosi DOIM mos kelmaydi va to'lov yakunlanmaydi.
+  const signSource = parseInt(action) === 1
+    ? `${click_trans_id}${service_id}${secretKey}${merchant_trans_id}${merchant_prepare_id}${amount}${action}${sign_time}`
+    : `${click_trans_id}${service_id}${secretKey}${merchant_trans_id}${amount}${action}${sign_time}`;
+
+  const signCheck = crypto.createHash('md5').update(signSource).digest('hex');
 
   if (signCheck !== sign_string) {
     return res.status(200).json({ error: -1, error_note: 'SIGN CHECK FAILED' });
@@ -223,7 +256,7 @@ async function handleClick(req, res) {
 
     try {
       const db = getDb();
-      await activatePremium(db, merchant_trans_id, 'monthly', 'click', click_trans_id);
+      await activatePremium(db, merchant_trans_id, 'monthly', 'click', click_trans_id, Number(amount));
 
       return res.status(200).json({
         click_trans_id, merchant_trans_id,
@@ -231,6 +264,13 @@ async function handleClick(req, res) {
         error: 0, error_note: 'Success'
       });
     } catch (err) {
+      if (err.code === 'AMOUNT_MISMATCH') {
+        console.warn('Click amount mismatch:', err.message);
+        return res.status(200).json({
+          click_trans_id, merchant_trans_id,
+          error: -2, error_note: 'Incorrect parameter amount'
+        });
+      }
       console.error('Click Firestore error:', err);
       return res.status(200).json({ error: -9, error_note: 'DB_ERROR' });
     }

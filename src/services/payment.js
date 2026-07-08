@@ -24,11 +24,19 @@ export const generateClickUrl = (userId, userPhone, planPrice = PREMIUM_PRICE, p
     return null;
   }
 
+  // Click butun sonli summa kutadi; chegirma/bonus kasr son hosil qilishi mumkin.
+  const amount = Math.max(0, Math.round(Number(planPrice) || 0));
+  if (amount <= 0) {
+    // 0 so'm — Click qabul qilmaydi. Chaqiruvchi tomon boshqa yo'l tutishi kerak.
+    console.error('Click: to\'lov summasi 0 — checkout ochilmaydi');
+    return null;
+  }
+
   // Click checkout parametrlari
   const params = new URLSearchParams({
     service_id: serviceId,
     merchant_id: merchantId,
-    amount: planPrice,
+    amount,
     transaction_param: `${userId}__${planId}`, // Firestore user ID + planId — webhook da ishlatiladi
     return_url: `${window.location.origin}/?payment=success`,
     // Qo'shimcha ma'lumot

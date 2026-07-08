@@ -14,6 +14,7 @@ import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { purchasePlan } from '../services/playBilling';
 import { redeemPromo, PROMO_ERRORS } from '../services/promo';
+import { generateClickUrl } from '../services/payment';
 import { AnalyticsEvents } from '../services/analytics';
 import { isPlayBuild } from '../config';
 import RoiBlock from './RoiBlock';
@@ -67,6 +68,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
   const badgeMap = { 'ENG OMMABOP': t('premium.badgePopular'), 'TEJAMKOR': t('premium.badgeSaver') };
   const planLabel = (p) => p ? (planNameMap[p.id] || p.name) : '';
   const [step, setStep] = useState('plans'); // 'plans' | 'method'
+  const [payMethod, setPayMethod] = useState('click'); // 'click' | 'telegram'
   const [processing, setProcessing] = useState(false);
   const [plans, setPlans] = useState(DEFAULT_PLANS);
   // Default — yillik plan (eng arzon kunlik narx, ROI eng kuchli)
@@ -193,11 +195,30 @@ const PremiumModal = ({ isOpen, onClose }) => {
     setStep('method');
   };
 
-  // 2-qadam CTA: to'g'ridan-to'g'ri Telegram'ga yo'naltiramiz (operator tasdiqlaydi)
+  // 2-qadam CTA: tanlangan usul bo'yicha to'lov
   const handlePay = () => {
     if (!user || !selectedPlan) return;
-    AnalyticsEvents.premiumClick('telegram');
-    window.open(`https://t.me/${CHANNEL_USERNAME}?direct`, '_blank');
+    
+    if (payMethod === 'click') {
+      const amount = Math.round(finalPrice);
+      // Bonus/chegirma summani to'liq qoplasa (0 so'm) — Click 0 ni qabul qilmaydi.
+      // Bunday holatda operator orqali qo'lda faollashtiramiz (Telegram).
+      if (amount <= 0) {
+        AnalyticsEvents.premiumClick('telegram');
+        window.open(`https://t.me/${CHANNEL_USERNAME}?direct`, '_blank');
+        return;
+      }
+      AnalyticsEvents.premiumClick('click');
+      const clickUrl = generateClickUrl(user.uid, user.phoneNumber || user.phone || '', amount, selectedPlan.id);
+      if (clickUrl) {
+        window.open(clickUrl, '_blank');
+      } else {
+        alert('Click sozlamalari topilmadi (.env).');
+      }
+    } else {
+      AnalyticsEvents.premiumClick('telegram');
+      window.open(`https://t.me/${CHANNEL_USERNAME}?direct`, '_blank');
+    }
   };
 
   // Promokod kartasi — method qadamida (webda) va plans qadamida (Android'da,
@@ -495,13 +516,36 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
                 {/* To'lov usullari */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
-                  {/* Telegram — asosiy to'lov usuli */}
-                  <div style={{
-                    display: 'flex', alignItems: 'center', gap: 12,
-                    padding: '14px 16px', borderRadius: 14,
-                    border: '2px solid #0284C7',
-                    background: 'rgba(14,151,224,0.06)',
-                  }}>
+                  {/* Click usuli */}
+                  <div 
+                    onClick={() => setPayMethod('click')}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: 12,
+                      padding: '14px 16px', borderRadius: 14, cursor: 'pointer', transition: 'all 0.2s',
+                      border: payMethod === 'click' ? '2px solid #00a2ff' : '1.5px solid rgba(0,0,0,0.06)',
+                      background: payMethod === 'click' ? 'rgba(0,162,255,0.06)' : '#fff',
+                    }}
+                  >
+                    <span style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(0,162,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <span style={{ fontSize: 14, fontWeight: 900, color: '#00a2ff', letterSpacing: 0.5 }}>C</span>
+                    </span>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: 14, fontWeight: 800, color: '#0f172a' }}>{t('premium.payClickTitle', 'Click orqali')}</div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>{t('premium.payClickSub', 'Karta yoki Click ilovasi orqali')}</div>
+                    </div>
+                    <div style={{ width: 20, height: 20, borderRadius: '50%', border: payMethod === 'click' ? '6px solid #00a2ff' : '2px solid #cbd5e1', flexShrink: 0 }} />
+                  </div>
+
+                  {/* Telegram usuli */}
+                  <div 
+                    onClick={() => setPayMethod('telegram')}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: 12,
+                      padding: '14px 16px', borderRadius: 14, cursor: 'pointer', transition: 'all 0.2s',
+                      border: payMethod === 'telegram' ? '2px solid #0284C7' : '1.5px solid rgba(0,0,0,0.06)',
+                      background: payMethod === 'telegram' ? 'rgba(14,151,224,0.06)' : '#fff',
+                    }}
+                  >
                     <span style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(14,151,224,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <Send size={19} color="#0284C7" />
                     </span>
@@ -509,20 +553,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                       <div style={{ fontSize: 14, fontWeight: 800, color: '#0f172a' }}>{t('premium.payTgTitle')}</div>
                       <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>{t('premium.payTgSub')}</div>
                     </div>
-                    <div style={{ width: 20, height: 20, borderRadius: '50%', border: '6px solid #0284C7', flexShrink: 0 }} />
-                  </div>
-
-                  {/* Click — tez kunda */}
-                  <div style={{
-                    display: 'flex', alignItems: 'center', gap: 12,
-                    padding: '14px 16px', borderRadius: 14,
-                    border: '1px solid rgba(0,0,0,0.08)', background: '#fff',
-                    opacity: 0.55,
-                  }}>
-                    <span style={{ fontSize: 14, fontWeight: 900, color: '#00a2ff', flex: 1 }}>Click</span>
-                    <span style={{ fontSize: 10, fontWeight: 800, color: '#64748B', background: 'rgba(0,0,0,0.05)', padding: '3px 8px', borderRadius: 6, letterSpacing: 0.5, textTransform: 'uppercase' }}>
-                      {t('premium.comingSoon')}
-                    </span>
+                    <div style={{ width: 20, height: 20, borderRadius: '50%', border: payMethod === 'telegram' ? '6px solid #0284C7' : '2px solid #cbd5e1', flexShrink: 0 }} />
                   </div>
                 </div>
 

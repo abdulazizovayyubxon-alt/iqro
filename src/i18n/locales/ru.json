@@ -672,6 +672,8 @@
     "feat6": "Новые вопросы каждую неделю",
     "payTgTitle": "Оплата через Telegram",
     "payTgSub": "Перейдёте в Telegram — оператор быстро подтвердит оплату",
+    "payClickTitle": "Оплата через Click",
+    "payClickSub": "Картой или через приложение Click",
     "comingSoon": "Скоро",
     "planMonthly": "1 месяц",
     "planQuarterly": "3 месяца",

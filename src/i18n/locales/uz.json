@@ -672,6 +672,8 @@
     "feat6": "Har hafta yangi savollar",
     "payTgTitle": "Telegram orqali to'lov",
     "payTgSub": "Telegram'ga o'tasiz — operator to'lovni tez tasdiqlaydi",
+    "payClickTitle": "Click orqali to'lov",
+    "payClickSub": "Karta yoki Click ilovasi orqali",
     "comingSoon": "Tez kunda",
     "planMonthly": "1 Oylik",
     "planQuarterly": "3 Oylik",
