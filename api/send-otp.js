@@ -80,25 +80,20 @@ async function sendCynoxSms(phone, message) {
   const token = process.env.CYNOX_API_TOKEN;
   if (!token) throw new Error('CYNOX_API_TOKEN is not configured');
 
-  // Cynox hujjatida JSON ko'rsatilgan, lekin server PHP — ba'zan form-urlencoded
-  // ($_POST) kutadi. Ikkalasini ham sinaymiz: birinchisi ketsa, ikkinchisi umuman
-  // yuborilmaydi (takroriy SMS bo'lmaydi).
-  const variants = [
-    { ct: 'application/json', body: JSON.stringify({ phone, message }) },
-    { ct: 'application/x-www-form-urlencoded', body: new URLSearchParams({ phone, message }).toString() },
-  ];
-  let last = {};
-  for (const v of variants) {
-    const res = await fetch(CYNOX_BASE, {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': v.ct },
-      body: v.body,
-    });
-    const data = await res.json().catch(() => ({}));
-    if (res.ok && data.status !== false) return data;
-    last = data;
-  }
-  throw new Error('Cynox send failed: ' + JSON.stringify(last));
+  // Cynox support tavsiyasiga ko'ra faqat form-urlencoded (x-www-form-urlencoded) formatda yuboramiz.
+  // JSON formatida qabul qilsa ham, ba'zida PHP server $_POST massividan o'qishi sababli SMS yetib bormasligi mumkin.
+  const res = await fetch(CYNOX_BASE, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ phone, message }),
+  });
+
+  const data = await res.json().catch(() => ({}));
+  if (res.ok && data.status !== false) return data;
+  throw new Error('Cynox send failed: ' + JSON.stringify(data));
 }
 
 export default async function handler(req, res) {
