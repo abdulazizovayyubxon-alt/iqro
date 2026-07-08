@@ -23,7 +23,7 @@ const MAX_SENDS_PER_HOUR = 5;             // Bir raqamga soatiga maksimal SMS
 const MAX_ATTEMPTS = 5;
 const OTP_SECRET = process.env.OTP_SECRET || 'toifa-otp-fallback-secret';
 
-const CYNOX_BASE = 'https://cabinet.cynox.uz/api/';
+const CYNOX_BASE = 'https://cabinet.cynox.uz/api/index.php';
 
 // ── Cynox qamrovidagi operatorlar (998'dan keyingi 2 xonali kod) ──
 // Faqat shu kodlar bilan boshlanuvchi raqamlarga SMS yuboriladi — qolganiga yo'q (tejamkorlik).
