@@ -57,5 +57,7 @@ scratch/
 pipeline/_chqbt_enrich_ckpt.json
 pipeline/_chqbt_audit_report.json
 pipeline/_lastraw.txt
+src/data/firestore_backup_*.json
+src/data/fix_report_*.md
 
 .vercel

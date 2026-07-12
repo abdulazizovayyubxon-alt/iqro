@@ -1,5 +1,6 @@
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
+import { getAuth } from 'firebase-admin/auth';
 
 function getDb() {
   if (getApps().length === 0) {
@@ -39,12 +40,25 @@ export default async function handler(req, res) {
     return res.status(405).send('Method Not Allowed');
   }
 
-  const { uid, correct, wrong, total, time, mode, title } = req.body;
-  
-  if (!uid) return res.status(400).send('No uid');
+  // XAVFSIZLIK: uid tanadan OLINMAYDI — Firebase ID token'dan olinadi.
+  // Avval har kim istalgan uid yuborib, boshqa foydalanuvchining Telegramiga
+  // soxta natija spam qila olardi. Endi faqat o'z natijasini yubora oladi.
+  const authHeader = req.headers.authorization || '';
+  if (!authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ success: false, error: 'unauthorized' });
+  }
+
+  const { correct, wrong, total, time, mode, title } = req.body;
 
   try {
     const db = getDb();
+    let uid;
+    try {
+      const decoded = await getAuth().verifyIdToken(authHeader.split('Bearer ')[1]);
+      uid = decoded.uid;
+    } catch (e) {
+      return res.status(401).json({ success: false, error: 'invalid_token' });
+    }
     const userSnap = await db.collection('users').doc(uid).get();
     
     if (userSnap.exists) {

@@ -82,6 +82,25 @@ async function handlePush(req, res) {
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}`;
 
+// ── IP bo'yicha rate limiting (spam himoyasi) ──
+// Bu yo'nak (register/oddiy eslatma) auth'siz — har kim admin Telegramiga xabar
+// yubora olardi. Rate-limit toshqinni to'xtatadi.
+const rateLimitMap = new Map();
+const RL_LIMIT = 10;              // daqiqasiga maksimal 10 so'rov
+const RL_WINDOW_MS = 60 * 1000;
+function isRateLimited(ip) {
+  const now = Date.now();
+  if (rateLimitMap.size > 5000) {
+    for (const [k, v] of rateLimitMap.entries()) {
+      if (v.filter(t => now - t < RL_WINDOW_MS).length === 0) rateLimitMap.delete(k);
+    }
+  }
+  const times = (rateLimitMap.get(ip) || []).filter(t => now - t < RL_WINDOW_MS);
+  times.push(now);
+  rateLimitMap.set(ip, times);
+  return times.length > RL_LIMIT;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).send('Method Not Allowed');
@@ -95,6 +114,12 @@ export default async function handler(req, res) {
       console.error('Push error:', error);
       return res.status(500).json({ success: false, error: error.message });
     }
+  }
+
+  // Rate limit — auth'siz yo'nak uchun
+  const ip = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'anonymous';
+  if (isRateLimited(ip)) {
+    return res.status(429).json({ success: false, error: 'too_many_requests' });
   }
 
   try {

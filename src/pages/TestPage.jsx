@@ -650,19 +650,22 @@ const TestPage = () => {
     const correctCount = Object.keys(answers).filter(k => answers[k] === questions[parseInt(k)]?.correct).length;
     const wrongCount = Object.keys(answers).length - correctCount;
     AnalyticsEvents.testComplete(topicName, correctCount, questions.length);
-    fetch('/api/send-result', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        uid: user?.uid,
-        correct: correctCount,
-        wrong: wrongCount,
-        total: questions.length,
-        time: Math.round(totalSessionTime / 60) + ' daqiqa',
-        mode: mode === 'exam' ? 'Imtihon rejim' : 'O\'rganish rejim',
-        title: topicName
-      })
-    }).catch(e => console.error(e));
+    // Telegramga natija — ID token bilan (server uid'ni TOKEN'dan oladi, tanaga ishonmaydi)
+    auth.currentUser?.getIdToken().then(token => {
+      if (!token) return;
+      fetch('/api/send-result', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({
+          correct: correctCount,
+          wrong: wrongCount,
+          total: questions.length,
+          time: Math.round(totalSessionTime / 60) + ' daqiqa',
+          mode: mode === 'exam' ? 'Imtihon rejim' : 'O\'rganish rejim',
+          title: topicName
+        })
+      }).catch(e => console.error(e));
+    }).catch(() => {});
   };
 
   const correctCount = Object.keys(answers).filter(k => answers[k] === questions[parseInt(k)]?.correct).length;

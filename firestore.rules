@@ -141,6 +141,14 @@ service cloud.firestore {
         && request.resource.data.userSeq == resource.data.userSeq + 1;
     }
 
+    // ── errorLogs: kuzatuv (observability) — faqat admin o'qiydi/boshqaradi.
+    // Client TO'G'RIDAN yozmaydi — yozuv faqat /api/log-error (Admin SDK) orqali,
+    // u rules'ni chetlab o'tadi. Shu sababli client uchun write bloklangan. ──
+    match /errorLogs/{docId} {
+      allow read, update, delete: if isAdmin();
+      allow create: if false;
+    }
+
     // ── Qolgan hamma narsa bloklangan ──
     match /{document=**} {
       allow read, write: if false;

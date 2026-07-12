@@ -92,7 +92,9 @@ export default async function handler(req, res) {
 
     let allStats = [];
     if (isSunday) {
-      const statsSnap = await db.collection('userStats').orderBy('totalScore', 'desc').get();
+      // Masshtab: barcha userStats'ni emas, faqat top 5000'ni o'qiymiz (reyting uchun).
+      // 5000'dan pastdagilar taxminiy "5000+" o'rin oladi — haftalik motivatsion xabar uchun yetarli.
+      const statsSnap = await db.collection('userStats').orderBy('totalScore', 'desc').limit(5000).get();
       allStats = statsSnap.docs.map(d => ({ id: d.id, score: d.data().totalScore || 0 }));
     }
 
@@ -162,59 +164,72 @@ export default async function handler(req, res) {
     }
 
     // ═══ 2. ESLATMA YUBORISH ═══
-    const allUsers = await db.collection('users').get();
+    // Masshtab: barcha foydalanuvchini bir vaqtda xotiraga YUKLAMAYMIZ — 500 tadan
+    // sahifalab o'qiymiz (aks holda o'n minglab user'da Vercel funksiyasi OOM/timeout bo'lardi).
+    // Har foydalanuvchi bo'yicha mantiq aynan o'zgarishsiz.
+    const USER_PAGE = 500;
+    let lastUserDoc = null;
+    while (true) {
+      let uq = db.collection('users').orderBy('__name__').limit(USER_PAGE);
+      if (lastUserDoc) uq = uq.startAfter(lastUserDoc);
+      const usersBatch = await uq.get();
+      if (usersBatch.empty) break;
 
-    for (const userDoc of allUsers.docs) {
-      const data = userDoc.data();
-      const userId = userDoc.id;
+      for (const userDoc of usersBatch.docs) {
+        const data = userDoc.data();
+        const userId = userDoc.id;
 
-      // A. Referral bepul oyi tugashiga 3 kun qolganlar
-      if (data.freeMonthExpire && !data.reminderSent) {
-        const freeEnd = new Date(data.freeMonthExpire);
-        const daysToExpire = Math.ceil((freeEnd - now) / 86400000);
+        // A. Referral bepul oyi tugashiga 3 kun qolganlar
+        if (data.freeMonthExpire && !data.reminderSent) {
+          const freeEnd = new Date(data.freeMonthExpire);
+          const daysToExpire = Math.ceil((freeEnd - now) / 86400000);
 
-        if (daysToExpire <= 3 && daysToExpire > 0) {
-          try {
-            await db.collection('notifications').add({
-              userId,
-              type: 'premium_expiring',
-              title: '⏰ Bepul Premium tugamoqda!',
-              message: `Sizning bepul Premium muddatingiz ${daysToExpire} kunda tugaydi. Cheksiz davom etish uchun obunani yangilang!`,
-              read: false,
-              createdAt: now.toISOString(),
-            });
-            await userDoc.ref.update({ reminderSent: true });
-            results.remindersSent++;
-          } catch (e) {
-            results.errors.push(`Reminder ${userId}: ${e.message}`);
+          if (daysToExpire <= 3 && daysToExpire > 0) {
+            try {
+              await db.collection('users').doc(userId).collection('notifications').add({
+                type: 'premium_expiring',
+                title: '⏰ Bepul Premium tugamoqda!',
+                message: `Sizning bepul Premium muddatingiz ${daysToExpire} kunda tugaydi. Cheksiz davom etish uchun obunani yangilang!`,
+                read: false,
+                date: now.toISOString(),
+                createdAt: now.toISOString(),
+              });
+              await userDoc.ref.update({ reminderSent: true });
+              results.remindersSent++;
+            } catch (e) {
+              results.errors.push(`Reminder ${userId}: ${e.message}`);
+            }
+          }
+        }
+
+        // B. Trial tugashiga 1 kun qolganlar
+        if (data.createdAt && !data.isPremium && !data.trialReminderSent) {
+          const createdAt = data.createdAt?.toDate
+            ? data.createdAt.toDate()
+            : new Date(data.createdAt);
+          const daysSinceReg = Math.floor((now - createdAt) / 86400000);
+
+          if (daysSinceReg === FREE_TRIAL_DAYS - 1) {
+            try {
+              await db.collection('users').doc(userId).collection('notifications').add({
+                type: 'trial_expiring',
+                title: '⚡ Sinov muddati ertaga tugaydi!',
+                message: 'Ertaga sinov muddatingiz tugaydi. Premium obunani faollashtiring — barcha funksiyalar cheksiz!',
+                read: false,
+                date: now.toISOString(),
+                createdAt: now.toISOString(),
+              });
+              await userDoc.ref.update({ trialReminderSent: true });
+              results.remindersSent++;
+            } catch (e) {
+              results.errors.push(`Trial reminder ${userId}: ${e.message}`);
+            }
           }
         }
       }
 
-      // B. Trial tugashiga 1 kun qolganlar
-      if (data.createdAt && !data.isPremium && !data.trialReminderSent) {
-        const createdAt = data.createdAt?.toDate
-          ? data.createdAt.toDate()
-          : new Date(data.createdAt);
-        const daysSinceReg = Math.floor((now - createdAt) / 86400000);
-
-        if (daysSinceReg === FREE_TRIAL_DAYS - 1) {
-          try {
-            await db.collection('notifications').add({
-              userId,
-              type: 'trial_expiring',
-              title: '⚡ Sinov muddati ertaga tugaydi!',
-              message: 'Ertaga sinov muddatingiz tugaydi. Premium obunani faollashtiring — barcha funksiyalar cheksiz!',
-              read: false,
-              createdAt: now.toISOString(),
-            });
-            await userDoc.ref.update({ trialReminderSent: true });
-            results.remindersSent++;
-          } catch (e) {
-            results.errors.push(`Trial reminder ${userId}: ${e.message}`);
-          }
-        }
-      }
+      lastUserDoc = usersBatch.docs[usersBatch.docs.length - 1];
+      if (usersBatch.size < USER_PAGE) break;
     }
 
     // ═══ 3. CHEGIRMA MUDDATI TOZALASH ═══

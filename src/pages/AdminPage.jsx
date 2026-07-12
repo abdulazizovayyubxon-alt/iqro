@@ -6,7 +6,7 @@ import { useAdmin } from '../hooks/useAdmin';
 import { db, auth } from '../firebase';
 import {
   collection, query, orderBy, onSnapshot, where, getCountFromServer,
-  updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch, increment, setDoc
+  updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch, increment, setDoc, limit
 } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL, uploadString } from 'firebase/storage';
 
@@ -42,7 +42,30 @@ const AdminPage = () => {
   const { showToast } = useContext(ToastContext);
   const navigate = useNavigate();
 
-  const [tab, setTab] = useState('objections'); // objections | requests | questions | users | stats | tariffs | notifications | referrals | promos
+  const [tab, setTab] = useState('objections'); // objections | requests | questions | users | stats | tariffs | notifications | referrals | promos | errors
+
+  // ── Kuzatuv: client xatolari (errorLogs) ──
+  const [errorLogs, setErrorLogs] = useState([]);
+  const [errorsLoading, setErrorsLoading] = useState(false);
+  const loadErrorLogs = () => {
+    setErrorsLoading(true);
+    getDocs(query(collection(db, 'errorLogs'), orderBy('ts', 'desc'), limit(100)))
+      .then(snap => setErrorLogs(snap.docs.map(d => ({ id: d.id, ...d.data() }))))
+      .catch(e => console.error('errorLogs load:', e))
+      .finally(() => setErrorsLoading(false));
+  };
+  const deleteErrorLog = async (id) => {
+    try {
+      await deleteDoc(doc(db, 'errorLogs', id));
+      setErrorLogs(prev => prev.filter(e => e.id !== id));
+    } catch (e) {
+      showToast("O'chirishda xato", 'error');
+    }
+  };
+  useEffect(() => {
+    if (!isAdmin || tab !== 'errors') return;
+    loadErrorLogs();
+  }, [tab, isAdmin]);
 
   // ── Platforma umumiy statistikasi (arzon count so'rovlari) ──
   const [overview, setOverview] = useState(null); // { users, premium, questions, referrals }
@@ -1015,9 +1038,55 @@ try {
         <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'promos' ? 'active' : ''}`} onClick={() => setTab('promos')}>
           <Zap size={15} /> Promo
         </motion.button>
+        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'errors' ? 'active' : ''}`} onClick={() => setTab('errors')}>
+          <AlertTriangle size={15} /> Xatolar
+        </motion.button>
       </div>
 
       {tab === 'promos' && <PromoTab />}
+
+      {tab === 'errors' && (
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
+            <div style={{ fontSize: 13, color: 'var(--text3)' }}>
+              Client xatolari — oxirgi {errorLogs.length} ta (eng yangi tepada)
+            </div>
+            <button className="btn btn-outline" onClick={loadErrorLogs} disabled={errorsLoading}>
+              <RefreshCw size={14} /> {errorsLoading ? 'Yuklanmoqda...' : 'Yangilash'}
+            </button>
+          </div>
+          {errorLogs.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '40px 20px', color: 'var(--text3)' }}>
+              <CheckCircle size={40} style={{ color: 'var(--green)', marginBottom: 10 }} />
+              <div style={{ fontWeight: 700 }}>Xatolar yo'q</div>
+              <div style={{ fontSize: 13 }}>Production'da qayd etilgan client xatosi topilmadi.</div>
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {errorLogs.map(log => (
+                <div key={log.id} style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 12, padding: '12px 14px' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10 }}>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', wordBreak: 'break-word', flex: 1 }}>
+                      {log.message}
+                    </div>
+                    <button onClick={() => deleteErrorLog(log.id)} title="O'chirish" style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)', flexShrink: 0 }}>
+                      <Trash2 size={15} />
+                    </button>
+                  </div>
+                  {log.stack && (
+                    <pre style={{ margin: '8px 0 0', fontSize: 11, color: 'var(--text3)', whiteSpace: 'pre-wrap', wordBreak: 'break-word', maxHeight: 120, overflow: 'auto' }}>{log.stack}</pre>
+                  )}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 8, fontSize: 11, color: 'var(--text3)' }}>
+                    {log.url && <span>🔗 {log.url.replace(/^https?:\/\//, '')}</span>}
+                    {log.uid && <span>👤 {log.uid.slice(0, 8)}</span>}
+                    {log.createdAt && <span>🕒 {new Date(log.createdAt).toLocaleString()}</span>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       {tab === 'objections' && (
         <div>

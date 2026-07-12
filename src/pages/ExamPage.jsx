@@ -17,7 +17,7 @@ import { processQuestionsOnTheFly } from '../utils/questionFixer';
 import PremiumModal from '../components/PremiumModal';
 import SafeHtml from '../components/shared/SafeHtml';
 import QuestionMedia from '../components/QuestionMedia';
-import { db } from '../firebase';
+import { db, auth } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { summarizeTestResults } from '../engine/SmartQuestionEngine';
 import { AnalyticsEvents } from '../services/analytics';
@@ -144,6 +144,11 @@ const ExamPage = () => {
   }, [examStarted, finished]);
 
   const timerRef = useRef(null);
+  // Taymer intervali IMTIHON BOSHIDA yaratiladi va `answers` uning dependency'si emas.
+  // Agar interval to'g'ridan handleFinish'ni chaqirsa, u eski (bo'sh answers'li) closure'ni
+  // ushlab qolib, vaqt tugaganda natijani 0 ball hisoblardi. Ref har renderda yangilanadi —
+  // shuning uchun avto-yakun HAR DOIM eng so'nggi javoblar bilan hisoblanadi.
+  const handleFinishRef = useRef(null);
 
   const questionStartTimeRef = useRef(Date.now());
   const questionTimesRef = useRef({});
@@ -511,7 +516,7 @@ const ExamPage = () => {
       setTimeLeft(prev => {
         if (prev <= 1) {
           clearInterval(timerRef.current);
-          handleFinish(true);
+          handleFinishRef.current?.(true);
           return 0;
         }
         return prev - 1;
@@ -610,21 +615,26 @@ const ExamPage = () => {
       confetti({ particleCount: 150, spread: 80, origin: { y: 0.5 } });
     }
 
-    // Send result to Telegram
-    fetch('/api/send-result', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        uid: user?.uid,
-        correct,
-        wrong: questions.length - correct,
-        total: questions.length,
-        time: formatTime(Object.values(times).reduce((a, b) => a + b, 0)),
-        mode: examType === 'weak' ? 'Zaif mavzular imtihoni' : 'Standart Attestatsiya Imtihoni',
-        title: 'Barcha bo\'limlar'
-      })
-    }).catch(e => console.error(e));
+    // Telegramga natija — ID token bilan (server uid'ni TOKEN'dan oladi, tanaga ishonmaydi)
+    auth.currentUser?.getIdToken().then(token => {
+      if (!token) return;
+      fetch('/api/send-result', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({
+          correct,
+          wrong: questions.length - correct,
+          total: questions.length,
+          time: formatTime(Object.values(times).reduce((a, b) => a + b, 0)),
+          mode: examType === 'weak' ? 'Zaif mavzular imtihoni' : 'Standart Attestatsiya Imtihoni',
+          title: 'Barcha bo\'limlar'
+        })
+      }).catch(e => console.error(e));
+    }).catch(() => {});
   };
+  // Har renderda eng so'nggi handleFinish'ni ref'ga yozamiz — taymer avto-yakuni
+  // (yuqoridagi interval) doim joriy `answers`/`questions` bilan ishlashi uchun.
+  handleFinishRef.current = handleFinish;
 
   // ANTI-CHEAT OLIB TASHLANDI (2026-06-17):
   // Avval `visibilitychange` 3 marta sodir bo'lsa imtihon avtomatik

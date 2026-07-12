@@ -21,7 +21,10 @@ function getDbAndStorage() {
 
 export default async function handler(req, res) {
   const { secret } = req.query;
-  if (secret !== 'iqro-publish-2026') {
+  // Maxfiy kalit FAQAT env'dan olinadi — kodga qattiq yozilmaydi.
+  // PUBLISH_SECRET Vercel env'da sozlanmagan bo'lsa, endpoint umuman ishlamaydi (deny-by-default).
+  const expectedSecret = process.env.PUBLISH_SECRET;
+  if (!expectedSecret || secret !== expectedSecret) {
     return res.status(403).json({ error: 'Unauthorized: Invalid secret' });
   }
 

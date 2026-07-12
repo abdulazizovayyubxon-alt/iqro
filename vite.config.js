@@ -105,8 +105,13 @@ export default defineConfig({
         navigateFallback: 'index.html',
         navigateFallbackDenylist: [/^\/api/],
 
-        // SW hajmini optimallashtirish
-        skipWaiting: true,
+        // ── Yangilanish oqimi: PROMPT rejimi ──
+        // registerType:'prompt' bilan mos — yangi SW DARHOL faollashmaydi, "waiting"
+        // holatida turadi. OfflineIndicator foydalanuvchiga "Yangilash" tugmasini
+        // ko'rsatadi; bosilganda SKIP_WAITING xabari yuboriladi → SW faollashadi →
+        // controllerchange → reload. Bu test/imtihon O'RTASIDA to'satdan majburiy
+        // reload bo'lishining oldini oladi (avval skipWaiting:true buni keltirardi).
+        skipWaiting: false,
         clientsClaim: true
       },
 

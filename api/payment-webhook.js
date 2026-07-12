@@ -102,10 +102,13 @@ async function processReferralBonus(db, payingUserId) {
       bonusAmount: REFERRAL_BONUS,
     });
 
-    // 6. A ga notification (ixtiyoriy — Firestore notifications koleksiyasi orqali)
+    // 6. A ga notification — SHAXSIY subkolleksiyaga (users/{uid}/notifications).
+    // MAXFIYLIK: avval yuqori darajadagi `notifications` kolleksiyasiga yozilardi,
+    // u esa hamma uchun o'qish ochiq edi → boshqa foydalanuvchilar do'st ismini
+    // (referredName) ko'ra olardi. Subkolleksiya faqat egasi/adminga ochiq.
     try {
-      await db.collection('notifications').add({
-        userId: referrerId,
+      const nowIso = new Date().toISOString();
+      await db.collection('users').doc(referrerId).collection('notifications').add({
         type: 'referral_bonus',
         title: '🎉 Bonus oldingiz!',
         message: `Do'stingiz (${refData.referredName || 'do\'stingiz'}) to'lov qildi! Hisobingizga ${REFERRAL_BONUS.toLocaleString()} so'm bonus qo'shildi.`,
@@ -113,7 +116,8 @@ async function processReferralBonus(db, payingUserId) {
         totalBonus: (referrerData.referralBonus || 0) + REFERRAL_BONUS,
         referredName: refData.referredName || '',
         read: false,
-        createdAt: new Date().toISOString(),
+        date: nowIso,
+        createdAt: nowIso,
       });
     } catch (notifErr) {
       console.error('Notification yaratishda xato:', notifErr);
@@ -150,32 +154,35 @@ async function activatePremium(db, rawUserId, planId, paymentMethod, transId, pa
   }
 
   // ── Reja (narx + muddat) ni settings/premium dan olamiz ──
-  let durationMonths = 999;
-  let planPrice = null;
-  try {
-    const settingsDoc = await db.collection('settings').doc('premium').get();
-    if (settingsDoc.exists) {
-      const plans = settingsDoc.data().plans || [];
-      const matchedPlan = plans.find(p => p.id === planId);
-      if (matchedPlan) {
-        durationMonths = matchedPlan.durationMonths;
-        planPrice = Number(matchedPlan.price);
-      }
-    }
-  } catch (e) { console.error('Plan fetch error', e); }
+  // XAVFSIZLIK: noma'lum planId'ni 999 oy (muddatsiz) premiumga aylantirmaymiz.
+  // Reja topilmasa — tranzaksiya RAD ETILADI. Aks holda soxta/noto'g'ri planId bilan
+  // abadiy premium olish va summa tekshiruvini chetlab o'tish mumkin edi.
+  // settings fetch xatosi ataylab yutilmaydi — tashqi catch DB_ERROR qaytaradi, Click retry qiladi.
+  const settingsDoc = await db.collection('settings').doc('premium').get();
+  const plans = settingsDoc.exists ? (settingsDoc.data().plans || []) : [];
+  const matchedPlan = plans.find(p => p.id === planId);
+  if (!matchedPlan) {
+    const err = new Error(`PLAN_NOT_FOUND: planId=${planId}`);
+    err.code = 'PLAN_NOT_FOUND';
+    throw err;
+  }
+  const durationMonths = matchedPlan.durationMonths;
+  const planPrice = Number(matchedPlan.price);
 
-  // ── Summa tekshiruvi (faqat chegirmasiz foydalanuvchilar uchun qat'iy) ──
-  // Chegirma/bonus summani dinamik pasaytiradi (hatto 0 gacha), shuning uchun
-  // chegirmasi bo'lganlarni bu yerda ishonchli tekshirib bo'lmaydi (buning uchun
-  // server tomonda "pending order" yozuvi kerak). Ammo hech qanday chegirmasi
-  // yo'q foydalanuvchi reja narxidan kam to'lasa — bu manipulyatsiya, rad etamiz.
+  // ── Summa tekshiruvi ──
+  // Kutilgan narxni SERVER hisoblaydi — mijoz yuborgan summaga ishonmaymiz.
+  // Formula PremiumModal bilan aynan bir xil: max(0, narx*(1-chegirma%) - bonus).
+  // Chegirmalar STACK qilinmaydi (referral va promo'dan eng kattasi olinadi).
   if (Number.isFinite(paidAmount) && paidAmount > 0 && planPrice != null && !Number.isNaN(planPrice)) {
-    const hasDiscount =
-      (userData.referralDiscount || 0) > 0 ||
-      (userData.promoDiscount?.percent || 0) > 0 ||
-      (userData.referralBonus || 0) > 0;
-    if (!hasDiscount && paidAmount + 1 < planPrice) {
-      const err = new Error(`AMOUNT_MISMATCH: kutilgan ${planPrice}, kelgan ${paidAmount}`);
+    const referralPct = userData.referralDiscount || 0;
+    const promoPct = userData.promoDiscount?.percent || 0;
+    const discountPct = Math.max(referralPct, promoPct);
+    const bonus = userData.referralBonus || 0;
+    let expected = planPrice;
+    if (discountPct > 0) expected = expected * (100 - discountPct) / 100;
+    expected = Math.max(0, Math.round(expected - bonus));
+    if (paidAmount + 1 < expected) {
+      const err = new Error(`AMOUNT_MISMATCH: kutilgan ${expected}, kelgan ${paidAmount}`);
       err.code = 'AMOUNT_MISMATCH';
       throw err;
     }
@@ -200,6 +207,10 @@ async function activatePremium(db, rawUserId, planId, paymentMethod, transId, pa
     premiumTransId: transId,
     reminderSent: false,
     referralDiscount: 0, // To'lovdan keyin chegirma nolga tushadi
+    // Referral bonus balansi to'lovda SARFLANADI — nolga tushiriladi. Aks holda
+    // (avvalgi holat) PremiumModal narxdan ayirgan bonus balansda qolib, qayta-qayta
+    // ishlatilishi mumkin edi. Summa tekshiruvi bu qatordan OLDIN o'qigan, order to'g'ri.
+    referralBonus: 0,
     discountExpired: true,
     // Promo chegirma bir martalik — to'lovda sarflanadi
     promoDiscount: null,
@@ -271,6 +282,13 @@ async function handleClick(req, res) {
           error: -2, error_note: 'Incorrect parameter amount'
         });
       }
+      if (err.code === 'PLAN_NOT_FOUND') {
+        console.warn('Click plan not found:', err.message);
+        return res.status(200).json({
+          click_trans_id, merchant_trans_id,
+          error: -8, error_note: 'Plan not found'
+        });
+      }
       console.error('Click Firestore error:', err);
       return res.status(200).json({ error: -9, error_note: 'DB_ERROR' });
     }
@@ -282,6 +300,13 @@ async function handleClick(req, res) {
 // ── Payme webhook handler ──
 async function handlePayme(req, res) {
   const { method, params, id } = req.body;
+
+  // XAVFSIZLIK: PAYME_SECRET_KEY sozlanmagan bo'lsa — Payme YOQILMAGAN, hamma so'rov rad etiladi.
+  // Aks holda imzo `Paycom:undefined` bo'yicha hisoblanib, hujumchi uni soxtalashtirib
+  // to'lovsiz premium olishi mumkin edi.
+  if (!process.env.PAYME_SECRET_KEY) {
+    return res.status(200).json({ id, error: { code: -32504, message: 'Auth error' } });
+  }
 
   const authHeader = req.headers.authorization || '';
   const expectedAuth = 'Basic ' + Buffer.from(`Paycom:${process.env.PAYME_SECRET_KEY}`).toString('base64');
