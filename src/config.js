@@ -15,6 +15,10 @@ export const SUPPORT_URL = 'https://t.me/Toifapro'; // Qo'llab-quvvatlash / Biz 
 export const BATCH_SIZE = 50; // Har bir blokdagi savollar soni
 export const MAX_MISTAKES_SAVED = 50; // Maksimal saqlanadigan xatolar soni
 
+// Tugallanmagan imtihon sessiyasi localforage kaliti — ExamPage yozadi/tiklaydi,
+// Dashboard "Davom etish" kartasi shu kalitni o'qiydi (magic-string ikkilanmasin)
+export const EXAM_SESSION_KEY = 'exam_session_v1';
+
 
 // Bepul sinov muddati (kun) — ro'yxatdan o'tgan sanadan boshlab hisoblanadi
 // Faqat shu yerda o'zgartirish yetarli — barcha sahifalar avtomatik yangilanadi

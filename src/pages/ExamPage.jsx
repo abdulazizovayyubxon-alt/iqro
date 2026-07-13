@@ -22,6 +22,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { summarizeTestResults } from '../engine/SmartQuestionEngine';
 import { AnalyticsEvents } from '../services/analytics';
 import localforage from 'localforage';
+import { EXAM_SESSION_KEY } from '../config';
 import { useExitGuard } from '../hooks/useExitGuard';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
 
@@ -46,10 +47,6 @@ function cleanForDedup(text) {
 }
 
 const EXAM_TOTAL = 50;
-
-// Tugallanmagan imtihon sessiyasi shu kalit ostida localforage'da saqlanadi —
-// foydalanuvchi chiqib ketsa, qaytganda o'sha joydan davom ettira oladi.
-const EXAM_SESSION_KEY = 'exam_session_v1';
 
 const SUBJECT_BLUEPRINTS = {
   chqbt: { 0: 8, 1: 8, 2: 7, 3: 4, 4: 4, 5: 4, 6: 15 },

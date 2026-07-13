@@ -15,13 +15,28 @@ import {
   Play, Brain, GraduationCap,
   ChevronRight, Clock, Target,
   CheckCircle2, Trash2,
-  MessageCircle, X, Zap
+  MessageCircle, X, Zap, History, Crown
 } from 'lucide-react';
 import SubjectTopicChips, { Chip } from '../components/SubjectTopicChips';
 import { motion } from 'framer-motion';
-import { EXAM_DATE, EXAM_GOAL_SCORE, EXAM_LABEL, BATCH_SIZE } from '../config';
+import localforage from 'localforage';
+import { EXAM_DATE, EXAM_GOAL_SCORE, EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY } from '../config';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
+
+// Kunlik narx = to'liq narx / (oy × 30). Firestore settings/premium'dagi tariflardan
+// eng arzon kunlik qiymat olinadi; hujjat bo'lmasa 12-oylik default (240 000/360 ≈ 667).
+const DEFAULT_PRICE_FROM = Math.round(240000 / (12 * 30));
+// Obuna tugashiga shuncha yoki kamroq kun qolganda ogohlantiruvchi holat + "Uzaytirish"
+const PREMIUM_WARN_DAYS = 7;
+const perDayOf = (p) => (p?.price > 0 && p?.durationMonths > 0)
+  ? Math.round(p.price / (p.durationMonths * 30)) : null;
+// MM:SS yoki HH:MM:SS — ExamPage formatTime bilan bir xil ko'rinish
+const fmtClock = (secs) => {
+  const h = Math.floor(secs / 3600), m = Math.floor((secs % 3600) / 60), s = secs % 60;
+  const pad = (n) => String(n).padStart(2, '0');
+  return h > 0 ? `${pad(h)}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
+};
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -34,12 +49,22 @@ const Dashboard = () => {
   const { isTrialExpired, daysLeft: trialDaysLeft } = useTrialExpiry();
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
   const questionsLeft = Math.max(0, 50 - (state.dailyGoal?.answered || 0));
+  // Premium (to'langan obuna) muddati — ProfileDrawer bilan bir xil manba/hisob.
+  // isTruePremium: faqat haqiqiy to'langan premium (trial emas). premiumExpire yo'q =
+  // muddatsiz. To'langan premiumda isPremium=true, shu bois trial banner yashirin bo'ladi.
+  const premiumExpireDate = user?.premiumExpire ? new Date(user.premiumExpire) : null;
+  const premiumDaysLeft = premiumExpireDate
+    ? Math.max(0, Math.ceil((premiumExpireDate.getTime() - Date.now()) / 86400000))
+    : null;
+  const premiumExpiringSoon = premiumDaysLeft !== null && premiumDaysLeft <= PREMIUM_WARN_DAYS;
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [showClearConfirm, setShowClearConfirm] = useState(false); // e'tirozlarni tozalash tasdig'i
   const [daysLeft, setDaysLeft] = useState('');
   const [showExamBanner, setShowExamBanner] = useState(true);
   const [showReferralBanner, setShowReferralBanner] = useState(true);
   const [questionMeta, setQuestionMeta] = useState(null);
+  const [priceFrom, setPriceFrom] = useState(DEFAULT_PRICE_FROM);
+  const [resumeSession, setResumeSession] = useState(null);
 
   // Fan bo'yicha savol soni (ishonch badge) — admin-publish yozadi
   useEffect(() => {
@@ -47,6 +72,35 @@ const Dashboard = () => {
       .then(snap => { if (snap.exists()) setQuestionMeta(snap.data()); })
       .catch(() => {});
   }, []);
+
+  // Obuna bannerida ko'rsatiladigan "kuniga … so'm dan" — eng arzon kunlik tarif.
+  // Firestore'da hujjat/tariflar bo'lmasa default (DEFAULT_PRICE_FROM) qoladi;
+  // PremiumModal ham xuddi shu hujjatni o'qigani uchun banner va modal mos bo'ladi.
+  useEffect(() => {
+    getDoc(doc(db, 'settings', 'premium'))
+      .then(snap => {
+        const plans = snap.exists() ? snap.data().plans : null;
+        if (!Array.isArray(plans) || plans.length === 0) return;
+        const perDays = plans.map(perDayOf).filter(v => v != null);
+        if (perDays.length) setPriceFrom(Math.min(...perDays));
+      })
+      .catch(() => {});
+  }, []);
+
+  // Tugallanmagan imtihon (ExamPage localforage'ga yozadi) — "Davom etish" kartasi.
+  // Faqat shu foydalanuvchiniki, savollari bor va vaqti tugamagan sessiya ko'rsatiladi.
+  useEffect(() => {
+    let cancelled = false;
+    localforage.getItem(EXAM_SESSION_KEY)
+      .then(s => {
+        if (cancelled) return;
+        const valid = s && Array.isArray(s.questions) && s.questions.length > 0
+          && s.timeLeft > 0 && (!s.uid || s.uid === user?.uid);
+        setResumeSession(valid ? s : null);
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [user?.uid]);
 
   useEffect(() => {
     setShowExamBanner(localStorage.getItem('iqro_dismissed_exam_banner') !== '1');
@@ -93,6 +147,16 @@ const Dashboard = () => {
     if (isFreeLimitReached) { setShowPremiumModal(true); return; }
     updateState({ topicId, testMode: mode });
     navigate('/test');
+  };
+
+  // Saqlangan imtihonni davom ettirish — ExamPage /exam ochilganda sessiyani avtomatik
+  // tiklaydi (faqat s.cat joriy faol fanga teng bo'lsa). Sessiya boshqa fanники bo'lsa,
+  // avval o'sha fanga o'tkazamiz, aks holda /exam yangi imtihon boshlab yuborardi.
+  const handleResume = () => {
+    if (resumeSession?.cat && resumeSession.cat !== cat) {
+      updateState({ activeCategory: resumeSession.cat });
+    }
+    navigate('/exam');
   };
 
   const cat = state.activeCategory;
@@ -180,6 +244,35 @@ const Dashboard = () => {
 
 
 
+      {/* ── TUGALLANMAGAN IMTIHONNI DAVOM ETTIRISH ── */}
+      {resumeSession && (
+        <motion.button
+          initial={{ opacity: 0, y: -6 }}
+          animate={{ opacity: 1, y: 0 }}
+          whileHover={{ scale: 1.01, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          className="dashboard-resume-banner"
+          onClick={handleResume}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0 }}>
+            <div style={{ background: 'var(--blue-bg)', borderRadius: 10, padding: '8px 10px', flexShrink: 0, display: 'flex' }}>
+              <History size={20} style={{ color: 'var(--accent)' }} />
+            </div>
+            <div style={{ textAlign: 'left', minWidth: 0 }}>
+              <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--text)' }}>{t('exam.resumeTitle')}</div>
+              <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {t('exam.resumeInfo', {
+                  answered: Object.keys(resumeSession.answers || {}).length,
+                  total: resumeSession.questions.length,
+                  time: fmtClock(resumeSession.timeLeft)
+                })}
+              </div>
+            </div>
+          </div>
+          <div className="dashboard-resume-btn">{t('exam.resume')}</div>
+        </motion.button>
+      )}
+
       {/* ── IMTIHON BANNER ── */}
       {showExamBanner && EXAM_DATE && cat !== 'art' && (
         <div className="dashboard-exam-banner">
@@ -254,11 +347,43 @@ const Dashboard = () => {
               <div style={{ fontSize: 14, fontWeight: 800, color: '#fff' }}>
                 {isTrialExpired ? t('dashboard.trialFreeLeft', { count: questionsLeft }) : (trialDaysLeft !== null ? t('dashboard.trialDaysLeft', { days: trialDaysLeft }) : t('dashboard.trialNoData'))}
               </div>
-              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', marginTop: 2 }}>{t('dashboard.trialUnlimited')}</div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', marginTop: 2 }}>
+                {t('dashboard.trialUnlimited')}{priceFrom ? ` · ${t('dashboard.trialPriceFrom', { amount: new Intl.NumberFormat('fr-FR').format(priceFrom) })}` : ''}
+              </div>
             </div>
           </div>
           <div className="dashboard-trial-btn">{t('common.activate')}</div>
         </motion.button>
+      )}
+
+      {/* ── PREMIUM OBUNA HOLATI (to'langan foydalanuvchiga muddat eslatmasi) ── */}
+      {user?.isTruePremium && (
+        premiumExpiringSoon ? (
+          <motion.button
+            whileHover={{ scale: 1.01, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="dashboard-premium-strip warn"
+            onClick={() => setShowPremiumModal(true)}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
+              <Crown size={18} style={{ color: 'var(--amber)', flexShrink: 0 }} />
+              <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {t('dashboard.premiumExpiring', { days: premiumDaysLeft })}
+              </span>
+            </div>
+            <span className="dashboard-premium-extend">{t('dashboard.premiumExtend')}</span>
+          </motion.button>
+        ) : (
+          <div className="dashboard-premium-strip">
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
+              <Crown size={18} style={{ color: 'var(--accent)', flexShrink: 0 }} />
+              <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)' }}>{t('dashboard.premiumActive')}</span>
+            </div>
+            <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--text3)' }}>
+              {premiumDaysLeft !== null ? t('dashboard.premiumDaysLeft', { days: premiumDaysLeft }) : t('dashboard.premiumLifetime')}
+            </span>
+          </div>
+        )
       )}
 
       {/* ── TEZKOR HARAKATLAR ── */}
