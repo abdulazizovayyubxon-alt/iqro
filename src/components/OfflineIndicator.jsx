@@ -63,7 +63,7 @@ const STYLES = {
 
   update: {
     ...baseCard,
-    background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)',
+    background: 'rgba(14, 151, 224, 0.97)',
     color: '#fff',
     border: '1px solid rgba(255,255,255,0.25)',
     padding: '12px 24px',
@@ -78,7 +78,7 @@ const STYLES = {
     padding: '6px 14px',
     borderRadius: '99px',
     background: '#fff',
-    color: '#6366F1',
+    color: '#0B79B8',
     border: 'none',
     fontSize: '12px',
     fontWeight: 800,

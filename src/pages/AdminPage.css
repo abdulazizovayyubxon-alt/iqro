@@ -11,7 +11,7 @@
 }
 .admin-badge {
   display: inline-flex; align-items: center; gap: 6px;
-  background: linear-gradient(135deg, #F59E0B, #EF4444);
+  background: var(--accent3); /* gradientsiz — to'q azure, oq matn bilan ~7:1 */
   color: #fff; font-weight: 800; font-size: 11px;
   padding: 4px 12px; border-radius: 8px;
   letter-spacing: 1px;
@@ -79,78 +79,32 @@
   outline: none; transition: border-color 0.2s;
 }
 .admin-search:focus { border-color: var(--blue); }
-.admin-filter-btns {
-  display: flex; gap: 6px; flex-wrap: wrap;
-}
+
 
 /* ── Objection Card ── */
 .admin-objection-card {
   padding: 14px 16px; border-radius: 16px;
   background: var(--bg2);
 }
-.admin-obj-header {
-  display: flex; justify-content: space-between;
-  align-items: flex-start; cursor: pointer; gap: 8px;
-}
-.admin-obj-meta {
-  display: flex; align-items: center; gap: 8px;
-  flex-wrap: wrap; flex: 1;
-}
-.admin-obj-status {
-  font-size: 10px; font-weight: 700; color: #fff;
-  padding: 3px 8px; border-radius: 6px;
-  white-space: nowrap;
-}
-.admin-obj-topic {
-  font-size: 12px; color: var(--blue); font-weight: 600;
-}
-.admin-obj-date {
-  font-size: 11px; color: var(--text3);
-}
-.admin-obj-question {
-  margin-top: 8px; font-size: 14px; color: var(--text);
-  font-weight: 500; line-height: 1.4;
-}
-.admin-obj-details {
-  margin-top: 14px; display: flex; flex-direction: column; gap: 10px;
-}
-.admin-obj-actions {
-  display: flex; gap: 8px; justify-content: flex-end;
-  flex-wrap: wrap;
-}
+
 
 /* ── User Card (mobile) ── */
-.admin-user-card {
-  padding: 14px 16px; border-radius: 16px;
-  background: var(--bg2); border: 1.5px solid var(--border);
-}
-.admin-user-top {
-  display: flex; align-items: center; gap: 12px;
-  margin-bottom: 10px;
-}
+
+
 .admin-user-avatar {
   width: 40px; height: 40px; border-radius: 12px;
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  background: var(--accent);
   display: flex; align-items: center; justify-content: center;
   color: #fff; font-weight: 800; font-size: 16px;
   flex-shrink: 0;
 }
-.admin-user-info { flex: 1; min-width: 0; }
+
 .admin-user-name {
   font-size: 15px; font-weight: 700; color: var(--text);
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
-.admin-user-email {
-  font-size: 12px; color: var(--text3);
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-.admin-user-badges {
-  display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;
-}
-.admin-user-badge {
-  font-size: 11px; font-weight: 700;
-  padding: 3px 10px; border-radius: 6px;
-}
+
+
 .admin-user-actions {
   display: flex; gap: 6px; flex-wrap: wrap;
 }
@@ -163,10 +117,7 @@
   transition: all 0.2s; white-space: nowrap;
 }
 .admin-user-actions button:hover { background: var(--surface2); }
-.admin-user-actions .danger-btn {
-  border-color: rgba(239,68,68,0.3); color: var(--red);
-}
-.admin-user-actions .danger-btn:hover { background: var(--red-bg); }
+
 
 /* ── Question Card (mobile) ── */
 .admin-q-card {
@@ -209,20 +160,7 @@
 }
 
 /* ── Referral card (mobile) ── */
-.admin-ref-card {
-  padding: 14px; border-radius: 14px;
-  background: var(--bg2); border: 1.5px solid var(--border);
-}
-.admin-ref-row {
-  display: flex; justify-content: space-between;
-  align-items: center; gap: 8px; margin-bottom: 4px;
-}
-.admin-ref-name {
-  font-size: 14px; font-weight: 700; color: var(--text);
-}
-.admin-ref-sub {
-  font-size: 11px; color: var(--text3);
-}
+
 
 /* ── Tariff Card (mobile) ── */
 .admin-tariff-card {
@@ -244,37 +182,10 @@
 }
 
 /* ── Notification Card ── */
-.admin-notif-card {
-  padding: 14px 16px; border-radius: 16px;
-  background: var(--bg3); border: 1px solid var(--border);
-  display: flex; gap: 12px; align-items: flex-start;
-}
-.admin-notif-icon {
-  width: 38px; height: 38px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.admin-notif-content { flex: 1; min-width: 0; }
-.admin-notif-title {
-  font-size: 14px; font-weight: 700; color: var(--text);
-  margin-bottom: 3px;
-}
-.admin-notif-msg {
-  font-size: 13px; color: var(--text2); margin-bottom: 6px;
-  line-height: 1.4;
-}
-.admin-notif-meta {
-  display: flex; gap: 10px; font-size: 11px;
-  color: var(--text3); flex-wrap: wrap;
-}
+
 
 /* ── Notification Form ── */
-.admin-notif-form {
-  display: flex; flex-direction: column; gap: 14px;
-}
-.admin-notif-form-row {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-}
+
 
 /* ── Section Title ── */
 .admin-section-title {
@@ -295,8 +206,8 @@
 /* ── Info Box ── */
 .admin-info-box {
   padding: 14px 16px; border-radius: 14px;
-  background: rgba(59,130,246,0.05);
-  border: 1px solid rgba(59,130,246,0.2);
+  background: var(--blue-bg);
+  border: 1px solid rgba(14, 151, 224, 0.2);
 }
 .admin-info-title {
   font-size: 13px; font-weight: 700; color: var(--blue);
@@ -334,12 +245,16 @@
 
   .admin-tab { padding: 8px 12px; font-size: 12px; }
 
-  .admin-notif-form-row { grid-template-columns: 1fr; }
+  
   .admin-ref-grid { grid-template-columns: repeat(2, 1fr); }
   .admin-stats-grid { grid-template-columns: repeat(2, 1fr); }
 
   .admin-action-bar { flex-direction: column; }
   .admin-action-bar button { min-width: 0; }
+
+  /* Admin jadvallarini mobil uchun scrollable qilish */
+  .admin-page .glass-panel { overflow-x: auto; }
+  .admin-page table { min-width: 600px; }
 }
 
 /* Compact User Row Design */
@@ -366,7 +281,7 @@
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  background: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -442,7 +357,7 @@
 .action-btn-sm.admin-active {
   background: var(--blue-bg);
   color: var(--blue);
-  border-color: rgba(59,130,246,0.3);
+  border-color: rgba(14, 151, 224, 0.3);
 }
 
 .action-btn-sm.delete-btn {
@@ -503,7 +418,7 @@
 
 .admin-select:focus {
   border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  box-shadow: 0 0 0 3px rgba(14, 151, 224, 0.15);
 }
 
 .admin-stats-indicator {
@@ -523,7 +438,7 @@
   color: var(--blue);
 }
 
-/* Neon glow status badges */
+/* Holat badge'lari — sokin, token-asosli (glow'siz) */
 .status-badge-neon {
   font-size: 11px;
   font-weight: 700;
@@ -537,24 +452,21 @@
 }
 
 .status-badge-neon.paid {
-  background: rgba(34, 197, 94, 0.12);
-  color: #22c55e;
-  border: 1px solid rgba(34, 197, 94, 0.25);
-  box-shadow: 0 0 8px rgba(34, 197, 94, 0.15);
+  background: var(--green-bg);
+  color: var(--green);
+  border: 1px solid rgba(16, 185, 129, 0.25);
 }
 
 .status-badge-neon.pending {
-  background: rgba(234, 179, 8, 0.12);
-  color: #eab308;
-  border: 1px solid rgba(234, 179, 8, 0.25);
-  box-shadow: 0 0 8px rgba(234, 179, 8, 0.15);
+  background: var(--amber-bg);
+  color: var(--amber);
+  border: 1px solid rgba(245, 158, 11, 0.25);
 }
 
 .status-badge-neon.active {
-  background: rgba(59, 130, 246, 0.12);
-  color: #3b82f6;
-  border: 1px solid rgba(59, 130, 246, 0.25);
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.15);
+  background: var(--blue-bg);
+  color: var(--accent2);
+  border: 1px solid rgba(14, 151, 224, 0.25);
 }
 
 /* Premium Card Hover Effects */
@@ -565,20 +477,13 @@
 .admin-q-card:hover, .admin-user-row:hover, .admin-objection-card:hover, .admin-tariff-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  border-color: rgba(59, 130, 246, 0.3) !important;
+  border-color: rgba(14, 151, 224, 0.3) !important;
 }
 
-/* Modal Overlay Backdrop Blur */
-.modal-overlay {
-  background: rgba(15, 23, 42, 0.4) !important;
-  backdrop-filter: blur(8px);
-}
-
-.modal-content {
-  border-radius: 20px !important;
-  border: 1px solid var(--border);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
+/* ESLATMA: bu fayl lazy yuklanadi va sahifadan chiqilgach ham DOM'da qoladi.
+   Shu sababli global klasslarni (.modal-overlay, .btn, ...) bu yerda QAYTA
+   BELGILAMANG — aks holda admin sahifasiga bir kirish butun ilova ko'rinishini
+   o'zgartirib yuboradi. Faqat .admin-* prefiksli klasslar ishlatilsin. */
 
 @media (max-width: 768px) {
   .admin-filter-selects {

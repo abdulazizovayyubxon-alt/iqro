@@ -160,10 +160,10 @@ const Sidebar = () => {
             <div
               className={`nav-item`}
               onClick={installApp}
-              style={{ background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05))', border: '1px solid rgba(16, 185, 129, 0.2)' }}
+              style={{ background: 'var(--green-bg)', border: '1px solid rgba(16, 185, 129, 0.25)' }}
             >
-              <span className="nav-icon" style={{ color: '#10B981' }}><Download size={20} /></span>
-              <span className="nav-label" style={{ color: '#10B981', fontWeight: 800 }}>{t('sidebar.install')}</span>
+              <span className="nav-icon" style={{ color: 'var(--green)' }}><Download size={20} /></span>
+              <span className="nav-label" style={{ color: 'var(--green)', fontWeight: 800 }}>{t('sidebar.install')}</span>
             </div>
           )}
 

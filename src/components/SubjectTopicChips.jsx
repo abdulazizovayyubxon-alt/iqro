@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import SmartBottomSheet from './test/SmartBottomSheet';
+import ConfirmDialog from './shared/ConfirmDialog';
 import { useModalBackButton } from './profile/useModalBackButton';
 
 // Chip uslubi — yengil, ikonkasiz (Telegram-uslub): faqat matn + kichik ▾.
@@ -57,11 +58,14 @@ const SubjectTopicChips = ({
   const { t } = useTranslation();
   const [showSubjectPicker, setShowSubjectPicker] = useState(false);
   const [showTopicPicker, setShowTopicPicker] = useState(false);
+  // Test o'rtasida chip bosilganda tasdiq: kutayotgan ochish funksiyasi saqlanadi
+  const [pendingOpen, setPendingOpen] = useState(null);
 
-  // Android/iOS "orqaga" tugmasi ochiq tanlagichni yopadi (sahifadan chiqarmaydi)
-  useModalBackButton(showSubjectPicker || showTopicPicker, () => {
+  // Android/iOS "orqaga" tugmasi ochiq tanlagich/tasdiqni yopadi (sahifadan chiqarmaydi)
+  useModalBackButton(showSubjectPicker || showTopicPicker || !!pendingOpen, () => {
     setShowSubjectPicker(false);
     setShowTopicPicker(false);
+    setPendingOpen(null);
   });
 
   const cat = state.activeCategory;
@@ -70,9 +74,9 @@ const SubjectTopicChips = ({
   const activeTopic = TOPICS.find(tp => tp.id === activeTopicId);
   const topicChipLabel = (activeTopicId !== -1 && activeTopic) ? activeTopic.name : t('common.allTopics');
 
-  // Test o'rtasida (javob belgilangan) chip bosilsa — tasdiq so'raymiz
+  // Test o'rtasida (javob belgilangan) chip bosilsa — ilova modali orqali tasdiq
   const openGuarded = (open) => () => {
-    if (guardChange && !window.confirm(t('test.changeWarn'))) return;
+    if (guardChange) { setPendingOpen(() => open); return; }
     open(true);
   };
 
@@ -125,6 +129,18 @@ const SubjectTopicChips = ({
         SUBJECTS={SUBJECTS}
         TOPICS={TOPICS}
         topicsOnly
+      />
+
+      {/* Test o'rtasida fan/mavzu almashtirish tasdig'i */}
+      <ConfirmDialog
+        open={!!pendingOpen}
+        title={t('test.changeWarn')}
+        onConfirm={() => {
+          const open = pendingOpen;
+          setPendingOpen(null);
+          if (open) open(true);
+        }}
+        onCancel={() => setPendingOpen(null)}
       />
     </>
   );

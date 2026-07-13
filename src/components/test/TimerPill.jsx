@@ -78,24 +78,10 @@ const TimerPill = ({ timerMode, duration, onExpire, onToggle }) => {
     <div
       onClick={onToggle}
       className={`question-timer ${danger ? 'timer-danger' : warning ? 'timer-warning' : ''}`}
-      style={{
-        cursor: 'pointer',
-        userSelect: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        padding: '6px 12px',
-        background: 'var(--bg3)',
-        borderRadius: '10px',
-        width: 'fit-content',
-        marginBottom: '12px',
-        border: '1px solid var(--border)',
-        transition: 'all 0.2s ease'
-      }}
       title={t('test.timerToggleTitle')}
     >
-      <Clock size={14} color="var(--text2)" />
-      <span style={{ fontWeight: 700, fontSize: '12px', color: 'var(--text2)' }}>
+      <Clock size={14} />
+      <span style={{ fontWeight: 700, fontSize: '12px' }}>
         {timerMode === 'countdown' && t('test.timerCountdown', { sec: display })}
         {timerMode === 'stopwatch' && t('test.timerStopwatch', { sec: display })}
         {timerMode === 'off' && t('test.timerOff')}

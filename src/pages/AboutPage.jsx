@@ -72,7 +72,7 @@ const s = {
   page: {
     minHeight: '100dvh',
     background: 'var(--bg)',
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
     color: 'var(--text)',
     paddingBottom: '80px',
   },

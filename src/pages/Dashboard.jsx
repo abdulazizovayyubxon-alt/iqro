@@ -9,12 +9,13 @@ import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { useAdmin } from '../hooks/useAdmin';
 import GiftBox from '../components/shared/GiftBox';
 import PremiumModal from '../components/PremiumModal';
+import ConfirmDialog from '../components/shared/ConfirmDialog';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import {
   Play, Brain, GraduationCap,
   ChevronRight, Clock, Target,
   CheckCircle2, Trash2,
-  MessageCircle, X
+  MessageCircle, X, Zap
 } from 'lucide-react';
 import SubjectTopicChips, { Chip } from '../components/SubjectTopicChips';
 import { motion } from 'framer-motion';
@@ -34,6 +35,7 @@ const Dashboard = () => {
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
   const questionsLeft = Math.max(0, 50 - (state.dailyGoal?.answered || 0));
   const [showPremiumModal, setShowPremiumModal] = useState(false);
+  const [showClearConfirm, setShowClearConfirm] = useState(false); // e'tirozlarni tozalash tasdig'i
   const [daysLeft, setDaysLeft] = useState('');
   const [showExamBanner, setShowExamBanner] = useState(true);
   const [showReferralBanner, setShowReferralBanner] = useState(true);
@@ -122,7 +124,7 @@ const Dashboard = () => {
     },
     {
       id: 'exam', icon: GraduationCap, label: t('dashboard.actionExam'), desc: t('dashboard.actionExamDesc', { count: 50, min: getExamDurationMinutes(cat) }),
-      color: 'var(--purple)', bg: 'var(--purple-bg)',
+      color: 'var(--accent3)', bg: 'var(--blue-bg)',
       onClick: () => { if (isFreeLimitReached) { setShowPremiumModal(true); return; } navigate('/exam'); },
     },
     {
@@ -204,22 +206,6 @@ const Dashboard = () => {
         </div>
       )}
 
-      {/* ── PREMIUM TRIAL BANNER ── */}
-      {!user?.isPremium && (
-        <button className="dashboard-trial-banner" onClick={() => setShowPremiumModal(true)}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <span style={{ fontSize: 24 }}>⚡</span>
-            <div style={{ textAlign: 'left' }}>
-              <div style={{ fontSize: 14, fontWeight: 700, color: '#92400E' }}>
-                {isTrialExpired ? t('dashboard.trialFreeLeft', { count: questionsLeft }) : (trialDaysLeft !== null ? t('dashboard.trialDaysLeft', { days: trialDaysLeft }) : t('dashboard.trialNoData'))}
-              </div>
-              <div style={{ fontSize: 12, color: '#B45309' }}>{t('dashboard.trialUnlimited')}</div>
-            </div>
-          </div>
-          <div className="dashboard-trial-btn">{t('common.activate')}</div>
-        </button>
-      )}
-
       {/* ── REFERRAL BANNER (Do'stlarni Taklif Qilish) ── */}
       {showReferralBanner && (
       <div style={{ position: 'relative', width: '100%', maxWidth: 600, margin: '0 auto' }}>
@@ -228,7 +214,7 @@ const Dashboard = () => {
           style={{ position: 'absolute', top: 4, right: 4, zIndex: 10, background: 'transparent', border: 'none', width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', borderRadius: '50%' }}
           onClick={(e) => { e.stopPropagation(); setShowReferralBanner(false); localStorage.setItem('iqro_dismissed_ref_banner', '1'); }}
         >
-          <X size={18} color="#B45309" />
+          <X size={18} color="var(--amber)" />
         </button>
       <motion.button
         whileHover={{ scale: 1.01, y: -2 }}
@@ -239,10 +225,10 @@ const Dashboard = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <GiftBox size={30} style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))', flexShrink: 0 }} />
           <div style={{ textAlign: 'left' }}>
-            <div style={{ fontSize: 14, fontWeight: 800, color: '#78350F' }}>
+            <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--text)' }}>
               {t('dashboard.referralTitle')}
             </div>
-            <div style={{ fontSize: 12, color: '#92400E', marginTop: 2, fontWeight: 500 }}>
+            <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 2, fontWeight: 500 }}>
               {t('dashboard.referralSubtitle')}
             </div>
           </div>
@@ -250,6 +236,29 @@ const Dashboard = () => {
         <div className="dashboard-referral-btn">{t('dashboard.referralBtn')}</div>
       </motion.button>
       </div>
+      )}
+
+      {/* ── OBUNA (PREMIUM) BANNER — asosiy harakat tugmalari ustida ── */}
+      {!user?.isPremium && (
+        <motion.button
+          whileHover={{ scale: 1.01, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          className="dashboard-trial-banner"
+          onClick={() => setShowPremiumModal(true)}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ background: 'rgba(255,255,255,0.2)', borderRadius: 10, padding: '8px 10px', flexShrink: 0, display: 'flex' }}>
+              <Zap size={20} color="#fff" />
+            </div>
+            <div style={{ textAlign: 'left' }}>
+              <div style={{ fontSize: 14, fontWeight: 800, color: '#fff' }}>
+                {isTrialExpired ? t('dashboard.trialFreeLeft', { count: questionsLeft }) : (trialDaysLeft !== null ? t('dashboard.trialDaysLeft', { days: trialDaysLeft }) : t('dashboard.trialNoData'))}
+              </div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', marginTop: 2 }}>{t('dashboard.trialUnlimited')}</div>
+            </div>
+          </div>
+          <div className="dashboard-trial-btn">{t('common.activate')}</div>
+        </motion.button>
       )}
 
       {/* ── TEZKOR HARAKATLAR ── */}
@@ -269,7 +278,7 @@ const Dashboard = () => {
                 boxShadow: action.id === 'test' ? '0 0 0 2px var(--blue)' : '0 2px 8px rgba(0,0,0,0.01)'
               }}
               onClick={action.onClick}
-              animate={action.id === 'test' ? { boxShadow: ['0 0 0 2px rgba(41,182,246,0.3)', '0 0 0 6px rgba(41,182,246,0)'], transition: { repeat: Infinity, duration: 1.5 } } : {}}
+              animate={action.id === 'test' ? { boxShadow: ['0 0 0 2px rgba(14,151,224,0.3)', '0 0 0 6px rgba(14,151,224,0)'], transition: { repeat: Infinity, duration: 1.5 } } : {}}
             >
               <div className="dashboard-action-icon" style={{ background: action.color }}>
                 <Icon size={20} color="#fff" />
@@ -294,7 +303,7 @@ const Dashboard = () => {
           const ts = state.topicStats[topic.id];
           const hasStats = ts && ts.answered > 0;
           const pct = hasStats ? Math.round((ts.correct / ts.answered) * 100) : 0;
-          const color = !hasStats ? 'var(--text3)' : pct >= 70 ? '#10B981' : pct >= 40 ? '#F59E0B' : '#EF4444';
+          const color = !hasStats ? 'var(--text3)' : pct >= 70 ? 'var(--green)' : pct >= 40 ? 'var(--amber)' : 'var(--red)';
           const r = 28, circ = 2 * Math.PI * r;
 
           return (
@@ -310,7 +319,7 @@ const Dashboard = () => {
                 <svg width={64} height={64} viewBox="0 0 64 64">
                   <circle cx={32} cy={32} r={r} fill="none" stroke="var(--bg3)" strokeWidth={4} />
                   {hasStats && (
-                    <circle cx={32} cy={32} r={r} fill="none" stroke={color} strokeWidth={4}
+                    <circle cx={32} cy={32} r={r} fill="none" style={{ stroke: color }} strokeWidth={4}
                       strokeDasharray={`${(pct / 100) * circ} ${circ}`}
                       strokeLinecap="round" transform="rotate(-90 32 32)" />
                   )}
@@ -342,7 +351,7 @@ const Dashboard = () => {
               <MessageCircle size={18} /> {t('dashboard.objections', { count: objections.length })}
             </div>
             <button className="dashboard-admin-clear"
-              onClick={() => { if (confirm(t('dashboard.clearConfirm'))) clearObjections(); }}>
+              onClick={() => setShowClearConfirm(true)}>
               <Trash2 size={14} /> {t('dashboard.clear')}
             </button>
           </div>
@@ -352,11 +361,11 @@ const Dashboard = () => {
               <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 6 }}>{obj.question}</div>
               <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
                 {!obj.solved && (
-                  <button className="dashboard-obj-btn" style={{ border: '1px solid #10B98120', background: '#10B98110', color: '#10B981' }} onClick={() => solveObjection(obj.fbId)}>
+                  <button className="dashboard-obj-btn" style={{ border: '1px solid rgba(16,185,129,0.2)', background: 'var(--green-bg)', color: 'var(--green)' }} onClick={() => solveObjection(obj.fbId)}>
                     <CheckCircle2 size={12} /> {t('dashboard.fixed')}
                   </button>
                 )}
-                <button className="dashboard-obj-btn" style={{ border: '1px solid #EF444420', background: '#EF444410', color: '#EF4444' }} onClick={() => deleteObjection(obj.fbId)}>
+                <button className="dashboard-obj-btn" style={{ border: '1px solid rgba(239,68,68,0.2)', background: 'var(--red-bg)', color: 'var(--red)' }} onClick={() => deleteObjection(obj.fbId)}>
                   <Trash2 size={12} /> {t('common.delete')}
                 </button>
               </div>
@@ -366,6 +375,16 @@ const Dashboard = () => {
       )}
 
       <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
+
+      {/* E'tirozlarni tozalash tasdig'i (window.confirm o'rniga) */}
+      <ConfirmDialog
+        open={showClearConfirm}
+        danger
+        title={t('dashboard.clearConfirm')}
+        confirmLabel={t('dashboard.clear')}
+        onConfirm={() => { setShowClearConfirm(false); clearObjections(); }}
+        onCancel={() => setShowClearConfirm(false)}
+      />
     </motion.div>
   );
 };

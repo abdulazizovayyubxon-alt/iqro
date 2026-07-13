@@ -162,7 +162,7 @@ const SmartBottomSheet = ({
 
                 {/* HERO — Faol fan kartasi (qidiruvsiz holatda) */}
                 {activeSubject && !q && (
-                  <div style={{ background: 'var(--accent)', borderRadius: 18, padding: 16, marginBottom: 22, boxShadow: '0 12px 28px rgba(14,151,224,0.32)' }}>
+                  <div style={{ background: 'var(--cta)', borderRadius: 18, padding: 16, marginBottom: 22, boxShadow: '0 12px 28px rgba(14,151,224,0.32)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                       <span style={{ width: 48, height: 48, borderRadius: 14, background: 'rgba(255,255,255,0.18)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                         {ActiveIcon && <ActiveIcon size={25} strokeWidth={2} />}

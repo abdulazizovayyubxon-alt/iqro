@@ -428,7 +428,7 @@ const getStyles = (isMobile) => ({
     overflow: 'hidden',
   },
   progressTrack: { height: 4, background: 'var(--border)', flexShrink: 0 },
-  progressFill: { height: '100%', background: 'linear-gradient(90deg, #0E97E0, #0B79B8)', borderRadius: '0 2px 2px 0' },
+  progressFill: { height: '100%', background: 'var(--accent)', borderRadius: '0 2px 2px 0' },
   header: {
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     padding: isMobile ? '16px 16px 0' : '20px 20px 0',
@@ -470,7 +470,7 @@ const getStyles = (isMobile) => ({
     textDecoration: 'underline', textUnderlineOffset: 3,
     display: 'inline-block', minHeight: '44px',
   },
-  errorText: { marginTop: 10, fontSize: 13, color: '#EF4444', fontWeight: 500 },
+  errorText: { marginTop: 10, fontSize: 13, color: 'var(--red)', fontWeight: 500 },
   footer: { 
     padding: isMobile 
       ? '12px 20px calc(12px + env(safe-area-inset-bottom))' 
@@ -480,7 +480,8 @@ const getStyles = (isMobile) => ({
   },
   primaryBtn: {
     width: '100%', padding: '16px', borderRadius: 16,
-    background: 'var(--grad-primary)', color: '#fff', border: 'none',
+    /* a11y: accent (~3.2:1) o'rniga --cta — oq matn bilan har temada ≥4.5:1 */
+    background: 'var(--cta)', color: '#fff', border: 'none',
     fontWeight: 700, fontSize: 16, cursor: 'pointer',
     fontFamily: 'inherit', transition: 'all 0.2s', marginBottom: isMobile ? 8 : 12,
     boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)',

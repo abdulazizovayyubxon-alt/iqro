@@ -45,7 +45,7 @@ const PageSkeleton = () => {
   
   // Icon select based on category
   let WatermarkIcon = Shield;
-  let themeColor = 'rgba(37, 99, 235, 0.04)'; // default blue
+  let themeColor = 'rgba(14, 151, 224, 0.05)'; // default azure
   
   if (activeCategory === 'ona_tili') {
     WatermarkIcon = BookOpen;
@@ -55,7 +55,7 @@ const PageSkeleton = () => {
     themeColor = 'rgba(245, 158, 11, 0.04)'; // amber
   } else if (activeCategory === 'art') {
     WatermarkIcon = Palette;
-    themeColor = 'rgba(139, 92, 246, 0.04)'; // purple
+    themeColor = 'rgba(8, 95, 144, 0.04)'; // deep azure
   }
 
   return (

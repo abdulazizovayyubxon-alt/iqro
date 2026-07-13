@@ -780,7 +780,7 @@ const ExamPage = () => {
               setExamStarted(true);
               AnalyticsEvents.examStart();
             }}
-            style={{ width: '100%', padding: '15px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontSize: 16, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
+            style={{ width: '100%', padding: '15px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 16, fontSize: 16, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
           >
             {savedSession ? t('exam.startNew') : t('exam.start')}
           </motion.button>

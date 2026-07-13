@@ -46,7 +46,7 @@ export default function PasswordModal({ changePassword, showToast, onClose }) {
   return (
     <ModalShell onClose={onClose} maxWidth={420} style={{ padding: '28px 24px' }}>
       <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-        <KeyRound size={22} style={{ color: 'var(--purple)' }} /> {t('modals.passTitle')}
+        <KeyRound size={22} style={{ color: 'var(--accent)' }} /> {t('modals.passTitle')}
       </div>
       <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 20 }}>
         {t('modals.passDesc')}
@@ -108,7 +108,7 @@ export default function PasswordModal({ changePassword, showToast, onClose }) {
           onClick={handleChangePassword}
           disabled={changingPass}
           style={{
-            padding: '12px 20px', borderRadius: 12, background: 'var(--purple)', color: '#fff',
+            padding: '12px 20px', borderRadius: 12, background: 'var(--accent)', color: '#fff',
             border: 'none', fontWeight: 700, fontSize: 14, cursor: changingPass ? 'not-allowed' : 'pointer',
             fontFamily: 'inherit', opacity: changingPass ? 0.7 : 1, minWidth: 140,
           }}

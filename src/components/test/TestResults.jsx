@@ -55,7 +55,7 @@ const TestResults = ({
         <motion.button
           whileHover={{ scale: 1.01, y: -1 }}
           whileTap={{ scale: 0.98 }}
-          style={{ padding: '14px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
+          style={{ padding: '14px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
           onClick={onNextBatch || generateQuestions}
         >
           {onNextBatch ? (

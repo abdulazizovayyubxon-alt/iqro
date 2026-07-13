@@ -57,12 +57,12 @@ const QuestionBox = ({
 
         {/* ── Progress bar ── */}
         <div style={{ width: '100%', height: '4px', borderRadius: '2px', background: 'var(--bg3)', marginBottom: '10px', overflow: 'hidden' }}>
-          <div style={{ width: `${((Object.keys(answers).length) / questions.length) * 100}%`, height: '100%', borderRadius: '2px', background: 'linear-gradient(90deg, var(--blue), var(--accent))', transition: 'width 0.5s ease' }} />
+          <div style={{ width: `${((Object.keys(answers).length) / questions.length) * 100}%`, height: '100%', borderRadius: '2px', background: 'var(--accent)', transition: 'width 0.5s ease' }} />
         </div>
 
         {/* ── Motivatsiya matni ── */}
         {motivationText && (
-          <motion.div initial={{ opacity: 0, scale: 0.8, y: -10 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0 }} style={{ textAlign: 'center', fontWeight: '800', fontSize: comboCount >= 10 ? '20px' : comboCount >= 5 ? '18px' : '16px', color: comboCount >= 10 ? '#FFD700' : comboCount >= 5 ? 'var(--amber)' : 'var(--green)', padding: '4px 0', marginBottom: '4px', textShadow: comboCount >= 10 ? '0 0 10px rgba(255,215,0,0.5)' : 'none' }}>{motivationText}</motion.div>
+          <motion.div initial={{ opacity: 0, scale: 0.8, y: -10 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0 }} style={{ textAlign: 'center', fontWeight: '800', fontSize: comboCount >= 10 ? '20px' : comboCount >= 5 ? '18px' : '16px', color: comboCount >= 5 ? 'var(--amber)' : 'var(--green)', padding: '4px 0', marginBottom: '4px' }}>{motivationText}</motion.div>
         )}
 
         {/* ── Taymer / Sekundomer (wall-clock, TimerPill) ── */}
@@ -97,7 +97,7 @@ const QuestionBox = ({
                 </span>
               )}
               {isWeak && (
-                <span style={{ fontSize: '11px', fontWeight: '800', color: '#92400E', background: '#FEF3C7', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid #FDE68A' }}>
+                <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text2)', background: 'var(--amber-bg)', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid var(--amber)' }}>
                   {t('test.badgeWeak')}
                 </span>
               )}
@@ -279,7 +279,7 @@ const QuestionBox = ({
                   }}>
                     <div style={{
                       width: '48px', height: '48px', borderRadius: '50%',
-                      background: 'linear-gradient(135deg, #F59E0B, #F97316)',
+                      background: 'var(--amber)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -297,7 +297,7 @@ const QuestionBox = ({
                     <button
                       onClick={onPremiumClick}
                       style={{
-                        background: 'var(--grad-primary)',
+                        background: 'var(--cta)',
                         color: '#fff',
                         border: 'none',
                         padding: '10px 20px',

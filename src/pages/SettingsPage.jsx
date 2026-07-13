@@ -259,11 +259,11 @@ export default function SettingsPage({ theme, toggleTheme }) {
               <MessageCircle size={24} />
             </div>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--accent)' }}>Yordam kerakmi?</div>
-              <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 2 }}>Bizning jamoa har qanday savolga javob beradi</div>
+              <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--accent2)' }}>{t('settings.helpTitle')}</div>
+              <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 2 }}>{t('settings.helpText')}</div>
             </div>
-            <button onClick={() => window.open('https://t.me/Toifapro?direct', '_blank')} style={{ padding: '8px 16px', background: 'var(--accent)', color: '#fff', border: 'none', borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>
-              Yozish
+            <button onClick={() => window.open('https://t.me/Toifapro?direct', '_blank')} style={{ padding: '8px 16px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
+              {t('settings.helpCta')}
             </button>
           </div>
 
@@ -303,7 +303,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
 
               {/* Shrift o'lchami */}
               <div className="pp-menu-item" style={{ cursor: 'default' }}>
-                <div className="pp-menu-icon" style={{ background: 'var(--purple-bg)', color: 'var(--purple)' }}>
+                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
                   <Type size={20} />
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -326,7 +326,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
             <div style={sectionLabel}>{t('settings.sections.account')}</div>
             <div className="pp-group">
               <button className="pp-menu-item" onClick={() => setShowEdit(true)}>
-                <div className="pp-menu-icon" style={{ background: 'var(--purple-bg)', color: 'var(--purple)' }}>
+                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
                   <Edit3 size={20} />
                 </div>
                 <span className="pp-menu-label">{t('settings.editProfile')}</span>
@@ -334,7 +334,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
               </button>
 
               <button className="pp-menu-item" onClick={() => setShowPasswordModal(true)}>
-                <div className="pp-menu-icon" style={{ background: 'var(--purple-bg)', color: 'var(--purple)' }}>
+                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
                   <KeyRound size={20} />
                 </div>
                 <span className="pp-menu-label">{t('settings.changePassword')}</span>
@@ -401,7 +401,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
             <div className="pp-group">
               {isInstallable && (
                 <button className="pp-menu-item" onClick={installApp}>
-                  <div className="pp-menu-icon" style={{ background: 'linear-gradient(135deg, #10B981, #059669)', color: '#fff' }}>
+                  <div className="pp-menu-icon" style={{ background: 'var(--green-bg)', color: 'var(--green)' }}>
                     <Download size={20} />
                   </div>
                   <span className="pp-menu-label" style={{ fontWeight: 800 }}>{t('settings.installPWA')}</span>
@@ -436,7 +436,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
               </button>
 
               <button className="pp-menu-item" onClick={() => setShowPrivacy(true)}>
-                <div className="pp-menu-icon" style={{ background: 'rgba(236, 72, 153, 0.1)', color: '#EC4899' }}>
+                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
                   <Shield size={20} />
                 </div>
                 <span className="pp-menu-label">{t('settings.privacy')}</span>
@@ -488,7 +488,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
 
           {/* ═══ VERSIYA ═══ */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, fontSize: 11, color: 'var(--text3)', padding: '4px 0 8px' }}>
-            <BrandLogo size={14} /> · versiya {APP_VERSION}
+            <BrandLogo size={14} /> · {t('settings.version')} {APP_VERSION}
           </div>
         </div>
       </div>

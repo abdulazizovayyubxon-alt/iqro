@@ -1229,7 +1229,7 @@ try {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="glass-panel"
-                  style={{ padding: '16px', border: group.pending > 0 ? '1px solid rgba(59,130,246,0.3)' : '1px solid rgba(16,185,129,0.25)', opacity: group.pending > 0 ? 1 : 0.8 }}
+                  style={{ padding: '16px', border: group.pending > 0 ? '1px solid rgba(14,151,224,0.3)' : '1px solid rgba(16,185,129,0.25)', opacity: group.pending > 0 ? 1 : 0.8 }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, flexWrap: 'wrap' }}>
                     <div style={{ flex: 1, minWidth: 0 }}>
@@ -1373,7 +1373,7 @@ try {
               transition: 'all 0.25s ease',
               cursor: 'pointer',
               position: 'relative',
-              boxShadow: isDraggingFile ? '0 8px 30px rgba(59, 130, 246, 0.15)' : 'none',
+              boxShadow: isDraggingFile ? '0 8px 30px rgba(14, 151, 224, 0.15)' : 'none',
             }}
             onClick={() => document.getElementById('json-file-input').click()}
           >
@@ -1526,7 +1526,7 @@ try {
               <div className="stat-box-lbl">Savollar</div>
             </div>
             <div className="stat-box glass-panel">
-              <div className="stat-box-val" style={{ color: '#8b5cf6', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>🔗 {overview?.referrals ?? '—'}</div>
+              <div className="stat-box-val" style={{ color: 'var(--accent2)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>🔗 {overview?.referrals ?? '—'}</div>
               <div className="stat-box-lbl">Referrallar</div>
             </div>
           </div>
@@ -1730,9 +1730,9 @@ try {
           <div className="admin-ref-grid">
             {[
               { label: 'Jami referrallar', value: referralSummary.total, icon: '🔗', color: 'var(--blue)' },
-              { label: "To'lagan", value: referralSummary.paid, icon: '✅', color: '#22c55e' },
-              { label: 'Kutilmoqda', value: referralSummary.pending, icon: '⏳', color: '#eab308' },
-              { label: "Jami bonus", value: referralSummary.totalBonus.toLocaleString() + " so'm", icon: '💰', color: '#8b5cf6' },
+              { label: "To'lagan", value: referralSummary.paid, icon: '✅', color: 'var(--green)' },
+              { label: 'Kutilmoqda', value: referralSummary.pending, icon: '⏳', color: 'var(--amber)' },
+              { label: "Jami bonus", value: referralSummary.totalBonus.toLocaleString() + " so'm", icon: '💰', color: 'var(--accent2)' },
             ].map((card, i) => (
               <div key={i} className="admin-stat-card">
                 <div style={{ fontSize: 22, marginBottom: 4 }}>{card.icon}</div>
@@ -1795,7 +1795,7 @@ try {
                               <span className="status-badge-neon pending">⏳ Kutilmoqda</span>
                             )}
                           </td>
-                          <td style={{ padding: '10px 12px', color: r.bonusPaid ? '#22c55e' : 'var(--text3)', fontWeight: r.bonusPaid ? 700 : 400, fontSize: 13 }}>
+                          <td style={{ padding: '10px 12px', color: r.bonusPaid ? 'var(--green)' : 'var(--text3)', fontWeight: r.bonusPaid ? 700 : 400, fontSize: 13 }}>
                             {r.bonusPaid ? `+${(r.bonusAmount || 15000).toLocaleString()} so'm` : '—'}
                           </td>
                           <td style={{ padding: '10px 12px', fontSize: 12 }}>

@@ -353,7 +353,7 @@ const Header = ({ theme, toggleTheme }) => {
               alignItems: 'center',
               gap: '8px',
               color: '#fff',
-              background: toast.type === 'success' ? 'rgba(16, 185, 129, 0.92)' : toast.type === 'error' ? 'rgba(239, 68, 68, 0.92)' : 'rgba(37, 99, 235, 0.92)',
+              background: toast.type === 'success' ? 'rgba(16, 185, 129, 0.92)' : toast.type === 'error' ? 'rgba(239, 68, 68, 0.92)' : 'rgba(11, 121, 184, 0.95)',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
               border: '1px solid rgba(255,255,255,0.15)',

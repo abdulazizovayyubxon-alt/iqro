@@ -12,6 +12,7 @@ import { RefreshCw, ArrowLeft, X } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
 import ObjectionModal from '../components/shared/ObjectionModal';
+import ConfirmDialog from '../components/shared/ConfirmDialog';
 import { processQuestionsOnTheFly } from '../utils/questionFixer';
 import PremiumModal from '../components/PremiumModal';
 import FreeMonthBanner from '../components/FreeMonthBanner';
@@ -111,6 +112,7 @@ const TestPage = () => {
   const [amiDelta, setAmiDelta] = useState(0); // shu sessiyada AMI necha ballga o'zgargani
   const [selectedBatch, setSelectedBatch] = useState(0);
   const [showBlockPicker, setShowBlockPicker] = useState(false); // Blok tanlash oynasi (blok chipi orqali)
+  const [showBlockConfirm, setShowBlockConfirm] = useState(false); // Test o'rtasida blok almashtirish tasdig'i
 
   // New States: Difficulty Filter and Timer Mode
   const [diffFilter] = useState('ALL'); // 'ALL', 'Y1', 'Y2', 'Y3'
@@ -738,7 +740,7 @@ const TestPage = () => {
   }
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: 700, margin: '0 auto', padding: '12px 16px 80px' }}>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: 720, margin: '0 auto', padding: '12px 16px 80px' }}>
       {questions.length === 0 && <FreeMonthBanner onPayClick={() => setShowPremiumModal(true)} />}
 
       {/* Header — fan + mavzu + blok chiplari (Dashboard bilan bir xil), pastida jami savol soni */}
@@ -748,7 +750,7 @@ const TestPage = () => {
         const rangeStart = selectedBatch * BATCH_SIZE + 1;
         const rangeEnd = Math.min((selectedBatch + 1) * BATCH_SIZE, fullPool.length);
         const openBlockPicker = () => {
-          if (guardActive && !window.confirm(t('test.changeWarn'))) return;
+          if (guardActive) { setShowBlockConfirm(true); return; }
           setShowBlockPicker(true);
         };
         return (
@@ -793,7 +795,7 @@ const TestPage = () => {
               initial={{ y: '100%', x: '-50%' }} animate={{ y: 0, x: '-50%' }} exit={{ y: '100%', x: '-50%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               style={{
-                position: 'fixed', bottom: 0, left: '50%', width: '100%', maxWidth: 700,
+                position: 'fixed', bottom: 0, left: '50%', width: '100%', maxWidth: 720,
                 background: 'var(--bg2)', borderTopLeftRadius: 24, borderTopRightRadius: 24,
                 border: '1px solid var(--glass-border)', borderBottom: 'none',
                 boxShadow: '0 -10px 40px rgba(0,0,0,0.15)', zIndex: 1001,
@@ -1022,6 +1024,14 @@ const TestPage = () => {
       <PremiumModal
         isOpen={showPremiumModal}
         onClose={() => setShowPremiumModal(false)}
+      />
+
+      {/* Test o'rtasida blok almashtirish tasdig'i (window.confirm o'rniga) */}
+      <ConfirmDialog
+        open={showBlockConfirm}
+        title={t('test.changeWarn')}
+        onConfirm={() => { setShowBlockConfirm(false); setShowBlockPicker(true); }}
+        onCancel={() => setShowBlockConfirm(false)}
       />
 
       {/* TESTDAN CHIQISH TASDIG'I (orqa tugma) */}
