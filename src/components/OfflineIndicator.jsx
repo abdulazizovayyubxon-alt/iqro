@@ -1,6 +1,6 @@
 /**
  * ╔══════════════════════════════════════════════════════════════╗
- * ║     OfflineIndicator.jsx — Toifa Pro Platformasi            ║
+ * ║     OfflineIndicator.jsx — Zehin Platformasi            ║
  * ╠══════════════════════════════════════════════════════════════╣
  * ║  Internet ulanishi holatini kuzatadi va foydalanuvchiga      ║
  * ║  qulay xabarlar ko'rsatadi. PWA ServiceWorker bilan          ║

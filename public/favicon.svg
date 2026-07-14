@@ -1,7 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
-  <defs>
-    
-  </defs>
-  <rect width="1024" height="1024" rx="232" fill="#0E97E0"></rect>
-  <text x="496" y="500" text-anchor="middle" dominant-baseline="central" font-family="&#39;Plus Jakarta Sans&#39;, ui-rounded, sans-serif" font-size="532" font-weight="800" letter-spacing="-32" fill="#ffffff">tp</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#0E97E0"/>
+  <path d="M158 165 H354 L158 347 H354" fill="none" stroke="#ffffff"
+        stroke-width="50" stroke-linejoin="round" stroke-linecap="round"/>
 </svg>

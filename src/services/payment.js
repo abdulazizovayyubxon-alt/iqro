@@ -12,7 +12,7 @@
 
 // ── Narxlar ──
 export const PREMIUM_PRICE = 30000; // 30,000 so'm
-export const PREMIUM_LABEL = "Toifa Pro — Barcha bo'limlar";
+export const PREMIUM_LABEL = "Zehin — Barcha bo'limlar";
 
 // ── Click checkout URL generatori ──
 export const generateClickUrl = (userId, userPhone, planPrice = PREMIUM_PRICE, planId = 'lifetime') => {

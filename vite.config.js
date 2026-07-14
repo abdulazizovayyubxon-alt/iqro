@@ -120,8 +120,8 @@ export default defineConfig({
       },
 
       manifest: {
-        name: 'Toifa Pro — Kasbiy Sertifikatlash',
-        short_name: 'Toifa Pro',
+        name: 'Zehin — Kasbiy Sertifikatlash',
+        short_name: 'Zehin',
         description: "O'qituvchilar uchun kasbiy sertifikatlash va malaka attestatsiyasiga tayyorgarlik platformasi",
         lang: 'uz',
         dir: 'ltr',

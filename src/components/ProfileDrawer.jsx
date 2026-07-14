@@ -172,7 +172,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
   const shareApp = async () => {
     try {
       if (navigator.share) {
-        await navigator.share({ title: 'Toifa Pro', text: t('drawer.shareText', 'Toifa Pro — kasbiy attestatsiyaga tayyorgarlik platformasi'), url: APP_URL });
+        await navigator.share({ title: 'Zehin', text: t('drawer.shareText', 'Zehin — kasbiy attestatsiyaga tayyorgarlik platformasi'), url: APP_URL });
       } else if (navigator.clipboard) {
         await navigator.clipboard.writeText(APP_URL);
         showToast(t('common.copied', 'Havola nusxalandi'), 'success');
@@ -198,7 +198,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
       ? t('profile.trialActive', 'Bepul sinov faol')
       : (trialStatus === 'urgency' && urgencyLeft > 0)
         ? t('profile.urgencyExpired', 'Sinov tugadi')
-        : t('drawer.subTitle', 'Toifa Pro Obunasi');
+        : t('drawer.subTitle', 'Zehin Obunasi');
   const premiumExpireDate = user.premiumExpire ? new Date(user.premiumExpire) : null;
   const premiumDaysLeft = premiumExpireDate
     ? Math.max(0, Math.ceil((premiumExpireDate.getTime() - Date.now()) / 86400000))
@@ -389,7 +389,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
                     marginTop: '-1.5px'
                   }}>tp</span>
                 </div>
-                {/* ToifaPro Wordmark */}
+                {/* Zehin Wordmark */}
                 <span style={{
                   fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                   fontSize: '13.5px',
@@ -397,8 +397,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
                   letterSpacing: '-0.02em',
                   lineHeight: 1
                 }}>
-                  <span style={{ color: theme === 'dark' ? '#F4F6F9' : '#0F1B2D' }}>Toifa</span>
-                  <span style={{ color: theme === 'dark' ? '#36ABEC' : '#0E97E0' }}>Pro</span>
+                  <span style={{ color: theme === 'dark' ? '#F4F6F9' : '#0F1B2D' }}>Zehin</span>
                 </span>
                 {/* v2.0 */}
                 <span style={{

@@ -366,7 +366,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   >
                     👑
                   </motion.div>
-                  <h2 style={{ fontSize: 22, fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>Toifa Pro</h2>
+                  <h2 style={{ fontSize: 22, fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>Zehin</h2>
                   <p style={{ fontSize: 13, color: '#64748B', margin: 0 }}>{t('premium.subtitle')}</p>
                 </div>
 
@@ -506,7 +506,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
               <motion.div key="method" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                 <div style={{ textAlign: 'center', marginBottom: 18 }}>
                   <h2 style={{ fontSize: 19, fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>{t('premium.choosePayMethod')}</h2>
-                  <p style={{ fontSize: 12, color: '#64748B', margin: 0 }}>Toifa Pro — {planLabel(selectedPlan)}</p>
+                  <p style={{ fontSize: 12, color: '#64748B', margin: 0 }}>Zehin — {planLabel(selectedPlan)}</p>
                 </div>
 
                 {/* Promokod — ko'zga tashlanadigan joyda */}

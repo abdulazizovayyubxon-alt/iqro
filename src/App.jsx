@@ -172,7 +172,7 @@ function App() {
     const pageName = PAGE_NAMES[location.pathname] || location.pathname;
     trackPageView(pageName, location.pathname);
     startPageTimer(pageName);
-    document.title = `${pageName} | Toifa Pro`;
+    document.title = `${pageName} | Zehin`;
   }, [location.pathname]);
 
   // ── Sentry foydalanuvchi konteksti ──
@@ -256,7 +256,7 @@ function App() {
             }}>tp</span>
           </div>
 
-          {/* "ToifaPro" Title */}
+          {/* "Zehin" Title */}
           <h1 style={{
             fontSize: '34px',
             fontWeight: 800,
@@ -265,7 +265,7 @@ function App() {
             color: '#ffffff',
             lineHeight: 1
           }}>
-            Toifa<span style={{ color: '#A5DDF9' }}>Pro</span>
+            Zehin
           </h1>
 
           {/* Tagline */}

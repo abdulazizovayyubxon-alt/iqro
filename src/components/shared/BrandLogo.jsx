@@ -1,12 +1,13 @@
 import React from 'react';
 
 /**
- * BrandLogo — "toifa pro" so'z-logosi (yagona brend belgisi).
+ * BrandLogo — "Zehin" so'z-logosi (yagona brend belgisi).
  *
- * Variant C (lowercase, zamonaviy): "toifa" qora (--text), "pro" azure (--accent).
+ * Azure squircle ichida oq "Z" monogrammasi + "Zehin" wordmark (--logo-toifa rangi).
  * Faqat matn — alohida rasm/asset kerak emas, shuning uchun favikondan splash va
  * ulashish kartasigacha hamma joyda bir xil ko'rinadi. Rang temaga (kunduzgi/sepia/
  * tungi) avtomatik moslashadi, chunki CSS o'zgaruvchilaridan foydalanadi.
+ * (Vaqtinchalik interim logo — professional logo tayyor bo'lganda almashtiriladi.)
  *
  * @param {number} size  font-size (px). Boshqa hammasi shunga nisbatan (em) o'lchanadi.
  * @param {object} style tashqi uslublar (margin, vh. k.)
@@ -15,7 +16,7 @@ import React from 'react';
 export default function BrandLogo({ size = 28, style = {}, className = '', as: Tag = 'span' }) {
   const squircleSize = size;
   const borderRadius = Math.round(squircleSize * 0.25);
-  const tpFontSize = Math.round(squircleSize * 0.52);
+  const tpFontSize = Math.round(squircleSize * 0.6);
   const gapSize = Math.round(squircleSize * 0.28);
   const textFontSize = Math.round(squircleSize * 0.64);
   const marginTopOffset = -Math.round(squircleSize * 0.07);
@@ -23,7 +24,7 @@ export default function BrandLogo({ size = 28, style = {}, className = '', as: T
   return (
     <Tag
       className={className}
-      aria-label="ToifaPro"
+      aria-label="Zehin"
       style={{
         display: 'inline-flex',
         alignItems: 'center',
@@ -33,7 +34,7 @@ export default function BrandLogo({ size = 28, style = {}, className = '', as: T
         ...style,
       }}
     >
-      {/* Squircle "tp" Mark */}
+      {/* Squircle "Z" Mark */}
       <span
         style={{
           width: `${squircleSize}px`,
@@ -57,11 +58,11 @@ export default function BrandLogo({ size = 28, style = {}, className = '', as: T
             marginTop: `${marginTopOffset}px`,
           }}
         >
-          tp
+          Z
         </span>
       </span>
 
-      {/* "ToifaPro" Wordmark */}
+      {/* "Zehin" Wordmark */}
       <span
         style={{
           fontSize: `${textFontSize}px`,
@@ -72,8 +73,7 @@ export default function BrandLogo({ size = 28, style = {}, className = '', as: T
           display: 'inline-flex',
         }}
       >
-        <span style={{ color: 'var(--logo-toifa)' }}>Toifa</span>
-        <span style={{ color: 'var(--logo-pro)' }}>Pro</span>
+        <span style={{ color: 'var(--logo-toifa)' }}>Zehin</span>
       </span>
     </Tag>
   );

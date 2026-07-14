@@ -1,6 +1,6 @@
 /**
  * ╔══════════════════════════════════════════════════════════════╗
- * ║     QuestionMedia.jsx — Toifa Pro Platformasi               ║
+ * ║     QuestionMedia.jsx — Zehin Platformasi               ║
  * ╠══════════════════════════════════════════════════════════════╣
  * ║  Savol uchun universal media komponenti.                     ║
  * ║  Uch xil media turini qo'llab-quvvatlaydi:                  ║

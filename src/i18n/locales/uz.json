@@ -72,7 +72,7 @@
     "aboutHint": "Loyiha, qo'llab-quvvatlash va bog'lanish",
     "deleteAccount": "Hisobni o'chirish",
     "logout": "Chiqish",
-    "version": "Toifa Pro · versiya {{version}}",
+    "version": "Zehin · versiya {{version}}",
     "toasts": {
       "pushAlreadyEnabled": "Push bildirishnomalar allaqachon yoqilgan",
       "pushBlocked": "Bildirishnomalar brauzerda bloklangan. Brauzer sozlamalaridan ruxsat bering.",
@@ -505,7 +505,7 @@
     "passportCellSolved": "Yechilgan savol",
     "passportCellAvgTime": "O'rtacha vaqt",
     "passportToifaLabel": "T O I F A   P R O G N O Z I",
-    "shareTgText": "🏆 Toifa Pro platformasida attestatsiyaga tayyorgarlik darajasi pasportimni oldim!\n\n📚 Fan: {{subject}}\n🎯 Aniqlik ko'rsatkichi: {{acc}}%\n⏱ O'rtacha tezlik: {{avg}}s ({{speed}})\n⚡ Toifa prognozi: {{toifa}}\n\nSiz ham o'z toifangizni sinab ko'ring: toifapro-t41p.vercel.app",
+    "shareTgText": "🏆 Zehin platformasida attestatsiyaga tayyorgarlik darajasi pasportimni oldim!\n\n📚 Fan: {{subject}}\n🎯 Aniqlik ko'rsatkichi: {{acc}}%\n⏱ O'rtacha tezlik: {{avg}}s ({{speed}})\n⚡ Toifa prognozi: {{toifa}}\n\nSiz ham o'z toifangizni sinab ko'ring: toifapro-t41p.vercel.app",
     "questions": "Savollar",
     "accuracy": "Aniqlik",
     "points": "Balllar",
@@ -610,9 +610,9 @@
     "codeCopied": "Kod nusxalandi! ✅",
     "linkCopied": "Havola nusxalandi! ✅",
     "copyFailed": "Nusxalab bo'lmadi",
-    "shareTitle": "Toifa Pro — Kasbiy Sertifikatlash Platformasi",
+    "shareTitle": "Zehin — Kasbiy Sertifikatlash Platformasi",
     "loginFirst": "Iltimos, avval tizimga kiring",
-    "tierAmbName": "🌟 Toifa Pro Ambassadori",
+    "tierAmbName": "🌟 Zehin Ambassadori",
     "tierAmbDesc": "Eng yuqori daraja! +2 qo'shimcha taklif sloti ochildi.",
     "tierOnWayName": "🔥 Ambassador yoʻlida",
     "tierOnWayDesc": "Yana {{count}} ta doʻst toʻlasa — Ambassador boʻlasiz (+2 slot).",
@@ -647,11 +647,11 @@
     "promoPlaceholder": "Promo-kodni kiriting",
     "promoActivate": "Faollashtirish",
     "shareDefaultName": "Do'stingiz",
-    "shareMsg1": "📚 Assalomu alaykum!\n\nMen attestatsiyaga Toifa Pro platformasida tayyorlanyapman — rostdan ham foydali chiqdi. Sizni ham birga o'qishga chaqirmoqchiman 🙌\n\nBu yerda nima bor:\n✅ Haqiqiy imtihon sharoitida testlar\n✅ Xatolaringizni \"aqlli takrorlash\" bilan tuzatadi\n✅ Internetsiz (oflayn) ham ishlaydi\n\nEng yaxshisi — havolam orqali kirsangiz, {{percent}}% chegirma SIZGA HAM, MENGA HAM tegadi 🎁\n\nYuring, birga tayyorlanamiz 👇\n{{link}}",
-    "shareMsg2": "🎯 Attestatsiyaga tayyorlanayapsizmi?\n\n{{firstName}} siz bilan Toifa Pro da birga o'qishni taklif qilmoqda!\n\nRo'yxatdan o'tish: {{link}}\n\nBugundan boshlang — imtihon yaqinlashmoqda!",
-    "shareMsg3": "🏆 {{firstName}} sizga {{percent}}% chegirma sovg'a qilmoqda!\n\nToifa Pro — attestatsiyaga tayyorlovchi platforma.\n\nNima uchun Toifa Pro?\n• 13 ta fan bo'yicha 40 000+ savollar bazasi\n• Haqiqiy imtihon sharoitida mashq\n• Xatolarni tahlil qilish tizimi\n• O'qituvchilar reytingi\n\nAttestatsiya yaqinlashmoqda — tayyorgarlikni bugundan boshlang.\n\n🔗 {{link}}",
-    "shareMsg4": "👋 Salom!\n\nMen senga Toifa Pro platformasida {{percent}}% CHEGIRMA sovg'a qilyapman 🎁.\n\nToifa Pro — DTM standartlaridagi testlar orqali attestatsiyaga tayyorgarlik ko'rish platformasi.\nEng zo'r tarafi — bu yerda xatolarni tahlil qilish va internetsiz ishlash (oflayn) funksiyasi ham bor!\n\nHoziroq havola orqali o'tib, chegirma bilan ro'yxatdan o't:\n{{link}}\n\n⏳ Taklif muddatli — o'tkazib yuborma!",
-    "shareMsgTelegram": "📚 {{firstName}} sizga Toifa Pro da {{percent}}% CHEGIRMA ulashmoqda!\n\nRo'yxatdan o'ting — IKKALANGIZ {{percent}}% chegirma olasiz!\n\n✅ Ro'yxatdan o'tish: {{link}}"
+    "shareMsg1": "📚 Assalomu alaykum!\n\nMen attestatsiyaga Zehin platformasida tayyorlanyapman — rostdan ham foydali chiqdi. Sizni ham birga o'qishga chaqirmoqchiman 🙌\n\nBu yerda nima bor:\n✅ Haqiqiy imtihon sharoitida testlar\n✅ Xatolaringizni \"aqlli takrorlash\" bilan tuzatadi\n✅ Internetsiz (oflayn) ham ishlaydi\n\nEng yaxshisi — havolam orqali kirsangiz, {{percent}}% chegirma SIZGA HAM, MENGA HAM tegadi 🎁\n\nYuring, birga tayyorlanamiz 👇\n{{link}}",
+    "shareMsg2": "🎯 Attestatsiyaga tayyorlanayapsizmi?\n\n{{firstName}} siz bilan Zehin da birga o'qishni taklif qilmoqda!\n\nRo'yxatdan o'tish: {{link}}\n\nBugundan boshlang — imtihon yaqinlashmoqda!",
+    "shareMsg3": "🏆 {{firstName}} sizga {{percent}}% chegirma sovg'a qilmoqda!\n\nZehin — attestatsiyaga tayyorlovchi platforma.\n\nNima uchun Zehin?\n• 13 ta fan bo'yicha 40 000+ savollar bazasi\n• Haqiqiy imtihon sharoitida mashq\n• Xatolarni tahlil qilish tizimi\n• O'qituvchilar reytingi\n\nAttestatsiya yaqinlashmoqda — tayyorgarlikni bugundan boshlang.\n\n🔗 {{link}}",
+    "shareMsg4": "👋 Salom!\n\nMen senga Zehin platformasida {{percent}}% CHEGIRMA sovg'a qilyapman 🎁.\n\nZehin — DTM standartlaridagi testlar orqali attestatsiyaga tayyorgarlik ko'rish platformasi.\nEng zo'r tarafi — bu yerda xatolarni tahlil qilish va internetsiz ishlash (oflayn) funksiyasi ham bor!\n\nHoziroq havola orqali o'tib, chegirma bilan ro'yxatdan o't:\n{{link}}\n\n⏳ Taklif muddatli — o'tkazib yuborma!",
+    "shareMsgTelegram": "📚 {{firstName}} sizga Zehin da {{percent}}% CHEGIRMA ulashmoqda!\n\nRo'yxatdan o'ting — IKKALANGIZ {{percent}}% chegirma olasiz!\n\n✅ Ro'yxatdan o'tish: {{link}}"
   },
   "errorNotebook": {
     "subjectFallback": "Fan",
@@ -981,8 +981,8 @@
     "errGeneric": "Xatolik yuz berdi. Qaytadan urinib ko'ring.",
     "guideTitle": "Foydalanish qo'llanmasi",
     "guideAdminToast": "Admin: Ambassador test yuborildi. Sahifani yangilang!",
-    "guideP1Title": "🚀 Toifa Pro o'zi qanday platforma?",
-    "guideP1Body": "Toifa Pro — attestatsiya va sertifikatlash imtihonlariga tayyorlanish uchun mo'ljallangan zamonaviy platforma. Bizda minglab testlar bazasi bo'lib, ular haqiqiy imtihon standartlariga mos keladi. Siz bu yerda o'z bilimingizni tekshirishingiz va xatolar ustida tizimli ishlashingiz mumkin.",
+    "guideP1Title": "🚀 Zehin o'zi qanday platforma?",
+    "guideP1Body": "Zehin — attestatsiya va sertifikatlash imtihonlariga tayyorlanish uchun mo'ljallangan zamonaviy platforma. Bizda minglab testlar bazasi bo'lib, ular haqiqiy imtihon standartlariga mos keladi. Siz bu yerda o'z bilimingizni tekshirishingiz va xatolar ustida tizimli ishlashingiz mumkin.",
     "guideP2Title": "🧠 \"Takrorlash\" bo'limi qanday ishlaydi?",
     "guideP2a": "Biz",
     "guideP2bold": "\"Spaced Repetition\" (Oraliq takrorlash)",
@@ -1022,7 +1022,7 @@
     "deleteConfirm": "Ha, hisobimni o'chirish",
     "privacyTitle": "Maxfiylik Siyosati",
     "privacyP1Title": "1. Umumiy qoidalar",
-    "privacyP1Body": "Ushbu qisqacha bayon Toifa Pro platformasida shaxsiy ma'lumotlar qanday qayta ishlanishini tushuntiradi va O'zbekiston Respublikasining «Shaxsiy ma'lumotlar to'g'risida»gi Qonuniga (O'RQ-547) asoslanadi. To'liq huquqiy matn Maxfiylik siyosati sahifasida joylashgan.",
+    "privacyP1Body": "Ushbu qisqacha bayon Zehin platformasida shaxsiy ma'lumotlar qanday qayta ishlanishini tushuntiradi va O'zbekiston Respublikasining «Shaxsiy ma'lumotlar to'g'risida»gi Qonuniga (O'RQ-547) asoslanadi. To'liq huquqiy matn Maxfiylik siyosati sahifasida joylashgan.",
     "privacyP2Title": "2. Yig'iladigan ma'lumotlar",
     "privacyP2Body": "Faqat xizmat uchun zarur bo'lgan minimal ma'lumotlar to'planadi:",
     "privacyP2List": [
@@ -1095,7 +1095,7 @@
     "next": "Keyingi →"
   },
   "premiumPage": {
-    "title": "Toifa Pro",
+    "title": "Zehin",
     "heroTitle": "Cheksiz imkoniyatlar bilan tayyorlaning",
     "heroSub": "Bepul rejada kunlik chegara bor. Pro bilan barcha fanlar, imtihon simulyatori va aqlli takrorlash to'liq ochiladi.",
     "yearly": "Yillik",
@@ -1163,9 +1163,9 @@
     "header": "Natijani ulashing",
     "share": "Ulashish",
     "downloaded": "Rasm yuklab olindi ✅",
-    "shareTitle": "Toifa Pro natijam",
-    "shareImageText": "Toifa Pro'da {{mode}}: {{pct}}% aniqlik!",
-    "telegramText": "{{emoji}} Toifa Pro'da {{mode}}: {{score}}/{{total}} ({{pct}}% aniqlik){{titleLine}}\n\nSiz ham toifangizni sinab ko'ring 👇"
+    "shareTitle": "Zehin natijam",
+    "shareImageText": "Zehin'da {{mode}}: {{pct}}% aniqlik!",
+    "telegramText": "{{emoji}} Zehin'da {{mode}}: {{score}}/{{total}} ({{pct}}% aniqlik){{titleLine}}\n\nSiz ham toifangizni sinab ko'ring 👇"
   },
   "aboutPage": {
     "title": "Biz haqimizda",
@@ -1194,7 +1194,7 @@
   "deleteAccount": {
     "title": "Hisobni o'chirish",
     "subtitle": "Hisobingizni o'chirish so'rovi",
-    "description": "Google Play qoidalariga muvofiq, Toifa Pro platformasidagi akkauntingizni o'chirishni so'rashingiz mumkin. Sizning profilingiz, test natijalaringiz, statistika va barcha shaxsiy ma'lumotlaringiz tizimdan butunlay o'chiriladi.",
+    "description": "Google Play qoidalariga muvofiq, Zehin platformasidagi akkauntingizni o'chirishni so'rashingiz mumkin. Sizning profilingiz, test natijalaringiz, statistika va barcha shaxsiy ma'lumotlaringiz tizimdan butunlay o'chiriladi.",
     "nameLabel": "Ism va Familiya",
     "namePlaceholder": "Ismingizni kiriting",
     "phoneLabel": "Telefon Raqam",
@@ -1213,7 +1213,7 @@
     "title": "Maxfiylik siyosati va shaxsiy ma'lumotlarni qayta ishlash kelishuvi",
     "updated": "Amaldagi tahrir: 2026-yil 6-iyul",
     "h1": "1. Umumiy qoidalar va huquqiy asoslar",
-    "p1": "Ushbu Maxfiylik siyosati (keyingi o'rinlarda — «Siyosat») O'zbekiston Respublikasining 2019-yil 2-iyuldagi O'RQ-547-sonli «Shaxsiy ma'lumotlar to'g'risida»gi Qonuni va boshqa amaldagi qonun hujjatlariga muvofiq ishlab chiqilgan bo'lib, «Toifa Pro» platformasi (keyingi o'rinlarda — «Platforma») ma'muriyati (keyingi o'rinlarda — «Ma'muriyat») tomonidan foydalanuvchilarning (keyingi o'rinlarda — «Foydalanuvchi») shaxsiy ma'lumotlarini to'plash, tizimlashtirish, saqlash, qayta ishlash va himoya qilish tartibini belgilaydi. Platformada ro'yxatdan o'tish yoki undan foydalanish orqali Foydalanuvchi ushbu Siyosat shartlariga va o'z shaxsiy ma'lumotlarining quyida belgilangan tartibda qayta ishlanishiga ixtiyoriy ravishda rozilik bildiradi. Shartlarga rozi bo'lmagan taqdirda Platformadan foydalanishni to'xtatish so'raladi. Siyosat yuzasidan murojaatlar uchun rasmiy aloqa kanali: Telegram — https://t.me/Toifapro.",
+    "p1": "Ushbu Maxfiylik siyosati (keyingi o'rinlarda — «Siyosat») O'zbekiston Respublikasining 2019-yil 2-iyuldagi O'RQ-547-sonli «Shaxsiy ma'lumotlar to'g'risida»gi Qonuni va boshqa amaldagi qonun hujjatlariga muvofiq ishlab chiqilgan bo'lib, «Zehin» platformasi (keyingi o'rinlarda — «Platforma») ma'muriyati (keyingi o'rinlarda — «Ma'muriyat») tomonidan foydalanuvchilarning (keyingi o'rinlarda — «Foydalanuvchi») shaxsiy ma'lumotlarini to'plash, tizimlashtirish, saqlash, qayta ishlash va himoya qilish tartibini belgilaydi. Platformada ro'yxatdan o'tish yoki undan foydalanish orqali Foydalanuvchi ushbu Siyosat shartlariga va o'z shaxsiy ma'lumotlarining quyida belgilangan tartibda qayta ishlanishiga ixtiyoriy ravishda rozilik bildiradi. Shartlarga rozi bo'lmagan taqdirda Platformadan foydalanishni to'xtatish so'raladi. Siyosat yuzasidan murojaatlar uchun rasmiy aloqa kanali: Telegram — https://t.me/Toifapro.",
     "h2": "2. Qayta ishlanadigan ma'lumotlar tarkibi",
     "p2": "Ma'muriyat faqat xizmat ko'rsatish uchun zarur bo'lgan minimal hajmdagi ma'lumotlarni to'playdi. Platformadan foydalanish davomida quyidagi ma'lumotlar qayta ishlanadi:",
     "p2List": [
@@ -1269,7 +1269,7 @@
     "title": "Foydalanish shartlari va ommaviy oferta",
     "updated": "Amaldagi tahrir: 2026-yil 6-iyul",
     "h1": "1. Shartnomaning huquqiy maqomi va tomonlar",
-    "p1": "Ushbu hujjat O'zbekiston Respublikasi Fuqarolik kodeksining 367, 369 va 370-moddalariga muvofiq rasmiy ommaviy oferta hisoblanadi. «Toifa Pro» platformasida (keyingi o'rinlarda — «Platforma») ro'yxatdan o'tish, undan foydalanish yoki to'lov qilish orqali jismoniy shaxs (keyingi o'rinlarda — «Foydalanuvchi») ushbu shartlarni to'liq tushungan va so'zsiz qabul qilgan (aksept qilgan) hisoblanadi; bu qog'ozda imzolangan ikki tomonlama shartnoma bilan teng yuridik kuchga ega. Platforma pedagog xodimlarning attestatsiya va malaka toifasini oshirish imtihonlariga mustaqil tayyorgarligi uchun mo'ljallangan bo'lib, undan voyaga yetgan shaxslar foydalanishi nazarda tutilgan. Platforma ma'muriyati (keyingi o'rinlarda — «Ma'muriyat») bilan rasmiy aloqa kanali: Telegram — https://t.me/Toifapro.",
+    "p1": "Ushbu hujjat O'zbekiston Respublikasi Fuqarolik kodeksining 367, 369 va 370-moddalariga muvofiq rasmiy ommaviy oferta hisoblanadi. «Zehin» platformasida (keyingi o'rinlarda — «Platforma») ro'yxatdan o'tish, undan foydalanish yoki to'lov qilish orqali jismoniy shaxs (keyingi o'rinlarda — «Foydalanuvchi») ushbu shartlarni to'liq tushungan va so'zsiz qabul qilgan (aksept qilgan) hisoblanadi; bu qog'ozda imzolangan ikki tomonlama shartnoma bilan teng yuridik kuchga ega. Platforma pedagog xodimlarning attestatsiya va malaka toifasini oshirish imtihonlariga mustaqil tayyorgarligi uchun mo'ljallangan bo'lib, undan voyaga yetgan shaxslar foydalanishi nazarda tutilgan. Platforma ma'muriyati (keyingi o'rinlarda — «Ma'muriyat») bilan rasmiy aloqa kanali: Telegram — https://t.me/Toifapro.",
     "h2": "2. Hisob qaydnomasi va kirish xavfsizligi",
     "p2": "Platformaga kirish telefon raqami va parol asosida amalga oshiriladi. Foydalanuvchi quyidagilarga majbur:",
     "p2List": [
@@ -1301,20 +1301,20 @@
     "p5List": [
       "To'lov usullari: rasmiy Telegram operatori (https://t.me/Toifapro) orqali, shuningdek Platformaga ulangan to'lov tizimlari (Click, Payme va boshqalar — joriy mavjud usullar ilovaning to'lov oynasida ko'rsatiladi) orqali;",
       "Faollashtirish: to'lov tasdiqlangach, Pro obuna Foydalanuvchi profiliga biriktiriladi. Operator orqali to'lovda faollashtirish qisqa muddat (odatda bir necha daqiqadan bir necha soatgacha) talab qilishi mumkin;",
-      "Qaytarish siyosati: Toifa Pro raqamli ta'lim xizmati bo'lgani uchun obuna faollashtirilgach, xizmat ko'rsatilgan hisoblanadi va to'langan mablag' qaytarilmaydi. Istisno: to'lov qabul qilinib, texnik nosozlik tufayli xizmat umuman faollashmagan holatlar — bunda Ma'muriyat muammoni bartaraf etadi yoki mablag'ni to'liq qaytaradi. Bunday holatda https://t.me/Toifapro orqali murojaat qilish lozim."
+      "Qaytarish siyosati: Zehin raqamli ta'lim xizmati bo'lgani uchun obuna faollashtirilgach, xizmat ko'rsatilgan hisoblanadi va to'langan mablag' qaytarilmaydi. Istisno: to'lov qabul qilinib, texnik nosozlik tufayli xizmat umuman faollashmagan holatlar — bunda Ma'muriyat muammoni bartaraf etadi yoki mablag'ni to'liq qaytaradi. Bunday holatda https://t.me/Toifapro orqali murojaat qilish lozim."
     ],
     "h6": "6. Referral dasturi va promo-kodlar",
     "p6": "Platformada do'stlarni taklif qilish (referral) dasturi va promo-kodlar amal qilishi mumkin. Ular bo'yicha beriladigan chegirma, bonus kunlar va boshqa imtiyozlarning aniq shartlari Platformaning tegishli bo'limlarida e'lon qilinadi. Ma'muriyat dastur shartlarini o'zgartirish, muddatini cheklash hamda soxta hisoblar yoki suiiste'mol aniqlangan taqdirda berilgan imtiyozlarni bekor qilish huquqini saqlab qoladi. Referral bonuslari va chegirmalar pul ko'rinishida to'lanmaydi va naqdlashtirilmaydi.",
     "h7": "7. Intellektual mulk va javobgarlik choralari",
-    "p7": "Platformadagi barcha materiallar — savollar bazasi, tushuntirishlar, metodik izohlar, dastur kodi, interfeys dizayni va brend elementlari — «Toifa Pro» loyihasining intellektual mulki bo'lib, mualliflik huquqi to'g'risidagi qonun hujjatlari bilan himoyalanadi. Materiallardan faqat shaxsiy tayyorgarlik maqsadida foydalanishga ruxsat etiladi. Qoidabuzarlik (ushbu ofertaning 2 va 3-bo'limlaridagi taqiqlarni buzish) aniqlangan taqdirda Ma'muriyat Foydalanuvchi hisobini ogohlantirishsiz cheklash yoki bloklash (bunda to'langan mablag' qaytarilmaydi) hamda qonunda belgilangan tartibda javobgarlikka tortish choralarini ko'rish huquqiga ega.",
+    "p7": "Platformadagi barcha materiallar — savollar bazasi, tushuntirishlar, metodik izohlar, dastur kodi, interfeys dizayni va brend elementlari — «Zehin» loyihasining intellektual mulki bo'lib, mualliflik huquqi to'g'risidagi qonun hujjatlari bilan himoyalanadi. Materiallardan faqat shaxsiy tayyorgarlik maqsadida foydalanishga ruxsat etiladi. Qoidabuzarlik (ushbu ofertaning 2 va 3-bo'limlaridagi taqiqlarni buzish) aniqlangan taqdirda Ma'muriyat Foydalanuvchi hisobini ogohlantirishsiz cheklash yoki bloklash (bunda to'langan mablag' qaytarilmaydi) hamda qonunda belgilangan tartibda javobgarlikka tortish choralarini ko'rish huquqiga ega.",
     "h8": "8. Mas'uliyatni cheklash (Disclaimer)",
     "p8": "Platforma attestatsiyaga mustaqil tayyorgarlik uchun yordamchi o'quv-metodik vosita bo'lib, davlat organi yoki uning rasmiy resursi hisoblanmaydi. Platformadagi savollar mustaqil ishlab chiqilgan metodik materiallar bo'lib, real imtihon savollari bilan to'liq mos kelishi kafolatlanmaydi. Ma'muriyat testlardagi natijalar asosida real davlat attestatsiyasidan muvaffaqiyatli o'tishni kafolatlamaydi — yakuniy natija Foydalanuvchining shaxsiy tayyorgarligi va sa'y-harakatlariga bog'liq. Texnik profilaktika ishlari, uchinchi tomon xizmatlari (hosting, to'lov tizimlari) yoki internet-provayderlar aybi bilan yuzaga kelgan vaqtinchalik uzilishlar uchun Ma'muriyat javobgar emas, biroq ularni imkon qadar tez bartaraf etishga intiladi.",
     "h9": "9. Nizolarni hal etish va yakuniy qoidalar",
     "p9": "Tomonlar o'rtasida yuzaga kelgan kelishmovchiliklar avvalo muzokara yo'li bilan (https://t.me/Toifapro orqali yozma murojaat asosida) hal qilinadi; kelishuvga erishilmagan taqdirda nizo O'zbekiston Respublikasi qonunchiligida belgilangan sud tartibida ko'rib chiqiladi. Ushbu oferta e'lon qilingan paytdan kuchga kiradi va muddatsiz amal qiladi. Ma'muriyat shartlarga o'zgartirish kiritish huquqiga ega; yangi tahrir e'lon qilingach Platformadan foydalanishni davom ettirish unga rozilik hisoblanadi. Ofertaning ayrim qoidasi haqiqiy emas deb topilsa, qolgan qoidalari o'z kuchini saqlab qoladi."
   },
   "drawer": {
-    "shareText": "Toifa Pro — kasbiy attestatsiyaga tayyorgarlik platformasi",
-    "subTitle": "Toifa Pro Obunasi",
+    "shareText": "Zehin — kasbiy attestatsiyaga tayyorgarlik platformasi",
+    "subTitle": "Zehin Obunasi",
     "connect": "Ulanish",
     "shareApp": "Ilovani ulashish",
     "contact": "Biz bilan bog'lanish"

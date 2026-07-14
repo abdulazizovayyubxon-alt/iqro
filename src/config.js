@@ -4,10 +4,10 @@
 const RAW_EXAM_DATE = new Date('2026-05-13T09:00:00');
 export const EXAM_DATE = RAW_EXAM_DATE > new Date() ? RAW_EXAM_DATE : null;
 
-export const APP_NAME = 'Toifa Pro';
+export const APP_NAME = 'Zehin';
 export const APP_VERSION = '2.0'; // Ilova versiyasi (Sozlamalar pastida ko'rsatiladi; relizda bu yerni yangilang)
 export const APP_SUBTITLE = 'Kasbiy Sertifikatlash Tayyorgarligi';
-export const EXAM_LABEL = EXAM_DATE ? '13 May — Toifa Pro Kasbiy Sertifikatlash Imtihoni' : 'Toifa Pro Kasbiy Sertifikatlash Platformasi';
+export const EXAM_LABEL = EXAM_DATE ? '13 May — Zehin Kasbiy Sertifikatlash Imtihoni' : 'Zehin Kasbiy Sertifikatlash Platformasi';
 export const EXAM_GOAL_SCORE = 70;
 export const APP_URL = 'https://toifapro-t41p.vercel.app'; // Haqiqiy domen (agar o'zgarsa shu yerni tahrirlaysiz)
 export const SUPPORT_URL = 'https://t.me/Toifapro'; // Qo'llab-quvvatlash / Biz bilan bog'lanish Telegram kanali

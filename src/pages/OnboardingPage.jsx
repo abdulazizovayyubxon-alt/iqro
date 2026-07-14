@@ -396,7 +396,7 @@ export default function OnboardingPage({ onComplete }) {
                   marginTop: '-1.5px'
                 }}>tp</span>
               </div>
-              {/* ToifaPro Wordmark */}
+              {/* Zehin Wordmark */}
               <span style={{
                 fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                 fontSize: '15px',
@@ -405,7 +405,7 @@ export default function OnboardingPage({ onComplete }) {
                 letterSpacing: '-0.02em',
                 lineHeight: 1
               }}>
-                Toifa<span style={{ color: '#0E97E0' }}>Pro</span>
+                Zehin
               </span>
             </div>
 
