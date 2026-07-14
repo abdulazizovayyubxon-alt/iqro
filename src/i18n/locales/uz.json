@@ -463,7 +463,7 @@
     "premiumLifetime": "Muddatsiz",
     "renew": "Yangilash",
     "premiumBuy": "Pro olish",
-    "premiumBuyDesc": "Telegram orqali • Oyiga 30,000 so'm",
+    "premiumBuyDesc": "Cheksiz testlar, batafsil tahlil va barcha fanlar — bitta obunada",
     "noResultsTitle": "Sizda hali natijalar yo'q",
     "noResultsText": "Tizimda o'z o'rningizni topish va XP yig'ish uchun hoziroq birinchi testingizni ishlang!",
     "noResultsBtn": "Boshlash uchun test yechish",
@@ -1315,6 +1315,7 @@
   "drawer": {
     "shareText": "Toifa Pro — kasbiy attestatsiyaga tayyorgarlik platformasi",
     "subTitle": "Toifa Pro Obunasi",
+    "connect": "Ulanish",
     "shareApp": "Ilovani ulashish",
     "contact": "Biz bilan bog'lanish"
   }

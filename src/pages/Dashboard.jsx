@@ -15,7 +15,7 @@ import {
   Play, Brain, GraduationCap,
   ChevronRight, Clock, Target,
   CheckCircle2, Trash2,
-  MessageCircle, X, Zap, History, Crown
+  MessageCircle, X, Zap, History
 } from 'lucide-react';
 import SubjectTopicChips, { Chip } from '../components/SubjectTopicChips';
 import { motion } from 'framer-motion';
@@ -27,8 +27,6 @@ import { doc, getDoc } from 'firebase/firestore';
 // Kunlik narx = to'liq narx / (oy × 30). Firestore settings/premium'dagi tariflardan
 // eng arzon kunlik qiymat olinadi; hujjat bo'lmasa 12-oylik default (240 000/360 ≈ 667).
 const DEFAULT_PRICE_FROM = Math.round(240000 / (12 * 30));
-// Obuna tugashiga shuncha yoki kamroq kun qolganda ogohlantiruvchi holat + "Uzaytirish"
-const PREMIUM_WARN_DAYS = 7;
 const perDayOf = (p) => (p?.price > 0 && p?.durationMonths > 0)
   ? Math.round(p.price / (p.durationMonths * 30)) : null;
 // MM:SS yoki HH:MM:SS — ExamPage formatTime bilan bir xil ko'rinish
@@ -49,14 +47,6 @@ const Dashboard = () => {
   const { isTrialExpired, daysLeft: trialDaysLeft } = useTrialExpiry();
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
   const questionsLeft = Math.max(0, 50 - (state.dailyGoal?.answered || 0));
-  // Premium (to'langan obuna) muddati — ProfileDrawer bilan bir xil manba/hisob.
-  // isTruePremium: faqat haqiqiy to'langan premium (trial emas). premiumExpire yo'q =
-  // muddatsiz. To'langan premiumda isPremium=true, shu bois trial banner yashirin bo'ladi.
-  const premiumExpireDate = user?.premiumExpire ? new Date(user.premiumExpire) : null;
-  const premiumDaysLeft = premiumExpireDate
-    ? Math.max(0, Math.ceil((premiumExpireDate.getTime() - Date.now()) / 86400000))
-    : null;
-  const premiumExpiringSoon = premiumDaysLeft !== null && premiumDaysLeft <= PREMIUM_WARN_DAYS;
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [showClearConfirm, setShowClearConfirm] = useState(false); // e'tirozlarni tozalash tasdig'i
   const [daysLeft, setDaysLeft] = useState('');
@@ -354,36 +344,6 @@ const Dashboard = () => {
           </div>
           <div className="dashboard-trial-btn">{t('common.activate')}</div>
         </motion.button>
-      )}
-
-      {/* ── PREMIUM OBUNA HOLATI (to'langan foydalanuvchiga muddat eslatmasi) ── */}
-      {user?.isTruePremium && (
-        premiumExpiringSoon ? (
-          <motion.button
-            whileHover={{ scale: 1.01, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            className="dashboard-premium-strip warn"
-            onClick={() => setShowPremiumModal(true)}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
-              <Crown size={18} style={{ color: 'var(--amber)', flexShrink: 0 }} />
-              <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                {t('dashboard.premiumExpiring', { days: premiumDaysLeft })}
-              </span>
-            </div>
-            <span className="dashboard-premium-extend">{t('dashboard.premiumExtend')}</span>
-          </motion.button>
-        ) : (
-          <div className="dashboard-premium-strip">
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
-              <Crown size={18} style={{ color: 'var(--accent)', flexShrink: 0 }} />
-              <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)' }}>{t('dashboard.premiumActive')}</span>
-            </div>
-            <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--text3)' }}>
-              {premiumDaysLeft !== null ? t('dashboard.premiumDaysLeft', { days: premiumDaysLeft }) : t('dashboard.premiumLifetime')}
-            </span>
-          </div>
-        )
       )}
 
       {/* ── TEZKOR HARAKATLAR ── */}

@@ -17,8 +17,8 @@ import AvatarPickerModal from './profile/AvatarPickerModal';
 import { useModalBackButton } from './profile/useModalBackButton';
 import { useAdmin } from '../hooks/useAdmin';
 import {
-  Award, AlertCircle, Settings, Info, Users, Shield, Crown, Check, ChevronRight,
-  Sun, BookOpen, Moon, Pencil, Camera, Share2, Send
+  Award, AlertCircle, Settings, Info, Users, Shield, Crown, ChevronRight,
+  Pencil, Camera, Share2, Send
 } from 'lucide-react';
 
 // ── Sokin/jiddiy uslub — kir kulrang (--bg3) o'rniga chegarali --surface ──
@@ -44,7 +44,7 @@ const formatPhone = (raw) => {
  * Statistika /achievements (Yutuqlar)ga ko'chirildi — bu yerda faqat "Darajangiz" kartasi.
  * Chiqish Sozlamalar ichida (tasodifan chiqib ketmaslik uchun).
  */
-const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user }) => {
+const ProfileDrawer = ({ open, onClose, theme, user }) => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { updateUserData } = useAuth();
@@ -182,14 +182,6 @@ const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user }) => {
 
   const contactSupport = () => { window.open(SUPPORT_URL, '_blank', 'noopener,noreferrer'); };
 
-  // Joriy tema yorlig'i
-  const themeMeta = theme === 'dark'
-    ? { Icon: Moon, label: t('header.themeDark', 'Tungi') }
-    : theme === 'sepia'
-      ? { Icon: BookOpen, label: t('header.themeSepia', 'Sepia') }
-      : { Icon: Sun, label: t('header.themeLight', 'Kunduzgi') };
-  const ThemeIcon = themeMeta.Icon;
-
   const menuItems = [
     { icon: Award, label: t('sidebar.achievements', 'Yutuqlarim'), path: '/achievements' },
     { icon: Users, label: t('sidebar.invite', "Do'stni taklif qilish"), path: '/referral' },
@@ -278,7 +270,7 @@ const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user }) => {
                   <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--text)', lineHeight: 1.25, overflowWrap: 'break-word' }}>{displayName}</div>
                   {phoneDisplay && <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text2)', marginTop: 3 }}>{phoneDisplay}</div>}
                   {user.shortId && <div style={{ fontSize: 11.5, fontWeight: 700, color: 'var(--text3)', marginTop: 3, letterSpacing: 0.3 }}>ID: {user.shortId}</div>}
-                  <div style={{ fontSize: 12, fontWeight: 600, color: isTruePremium ? 'var(--amber)' : 'var(--text3)', marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <div style={{ fontSize: 12, fontWeight: 600, color: isTruePremium ? 'var(--accent)' : 'var(--text3)', marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
                     {isTruePremium && <Crown size={12} />}
                     {isTruePremium ? t('profile.premiumActive', 'Obuna faol') : t('header.freeAccount', 'Oddiy hisob')}
                   </div>
@@ -287,36 +279,6 @@ const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user }) => {
                 {subjectLine && (
                   <div style={{ fontSize: 12.5, fontWeight: 500, color: 'var(--text3)', marginTop: 12, paddingLeft: 2 }}>{subjectLine}</div>
                 )}
-              </div>
-
-              {/* ── Obuna banneri (Click uslubi) ── */}
-              <div style={{ padding: '12px 16px 0' }}>
-                <button
-                  onClick={() => setShowPremium(true)}
-                  style={{ width: '100%', textAlign: 'left', borderRadius: 18, padding: 18, border: '1px solid var(--border)', background: 'linear-gradient(135deg, var(--blue-bg), var(--surface))', cursor: 'pointer', fontFamily: 'inherit', position: 'relative', overflow: 'hidden' }}
-                >
-                  <div style={{ paddingRight: 52 }}>
-                    <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--text)' }}>{subTitle}</div>
-                    {(trialStatus === 'urgency' && urgencyLeft > 0 && !isTruePremium) ? (
-                      <div style={{ display: 'flex', gap: 6, marginTop: 10 }}>
-                        <span style={urgBlk}>{urg.d}<small style={urgSmall}>{t('profile.urgDay', 'kun')}</small></span>
-                        <span style={urgBlk}>{urg.h}<small style={urgSmall}>{t('profile.urgHour', 'soat')}</small></span>
-                        <span style={urgBlk}>{urg.m}<small style={urgSmall}>{t('profile.urgMin', 'daq')}</small></span>
-                        <span style={urgBlk}>{urg.s}<small style={urgSmall}>{t('profile.urgSec', 'son')}</small></span>
-                      </div>
-                    ) : (
-                      <div style={{ fontSize: 13, color: 'var(--text2)', marginTop: 5, lineHeight: 1.45 }}>{subDesc}</div>
-                    )}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 14, color: isTruePremium ? 'var(--amber)' : 'var(--accent)', fontWeight: 800, fontSize: 13.5 }}>
-                      {isTruePremium
-                        ? <><Check size={15} /> {t('profile.premiumManage', 'Boshqarish')}</>
-                        : <>{t('header.premiumBuy', "Obuna bo'lish")} <ChevronRight size={15} /></>}
-                    </div>
-                  </div>
-                  <div style={{ position: 'absolute', right: 16, bottom: 14, width: 50, height: 50, borderRadius: 15, background: 'var(--bg2)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 6px 16px rgba(0,0,0,0.08)' }}>
-                    <Crown size={26} color={isTruePremium ? 'var(--amber)' : 'var(--accent)'} />
-                  </div>
-                </button>
               </div>
 
               {/* ── Menyu (doira ikonkalar) ── */}
@@ -333,16 +295,52 @@ const ProfileDrawer = ({ open, onClose, theme, toggleTheme, user }) => {
                 })}
               </div>
 
-              {/* ── Ko'rinish (tema) ── */}
-              <div style={{ padding: '14px 16px 4px' }}>
-                <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: 0.6, color: 'var(--text3)', textTransform: 'uppercase', marginBottom: 8 }}>{t('header.appearance', "Ko'rinish")}</div>
+              {/* ── Obuna banneri (Click uslubi: yirik karta, azure gradient, katta toj) ── */}
+              <div style={{ padding: '16px 16px 4px' }}>
                 <button
-                  onClick={() => toggleTheme && toggleTheme()}
-                  style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 12, background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 13, padding: '11px 14px', cursor: 'pointer', fontFamily: 'inherit' }}
+                  onClick={() => setShowPremium(true)}
+                  style={{
+                    width: '100%', textAlign: 'left', borderRadius: 22, padding: '22px 20px 20px',
+                    border: '1px solid var(--border)',
+                    background: 'linear-gradient(135deg, var(--surface) 0%, var(--blue-bg) 72%, rgba(14,151,224,0.18) 100%)',
+                    cursor: 'pointer', fontFamily: 'inherit', position: 'relative', overflow: 'hidden',
+                    boxShadow: '0 10px 26px rgba(15,27,45,0.06)',
+                  }}
                 >
-                  <ThemeIcon size={19} style={{ color: 'var(--accent)', flexShrink: 0 }} />
-                  <span style={{ flex: 1, textAlign: 'left', fontSize: 14.5, fontWeight: 700, color: 'var(--text)' }}>{themeMeta.label}</span>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--text3)' }}>{t('header.tapToSwitch', 'Bosing')}</span>
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    <div style={{ paddingRight: 88 }}>
+                      <div style={{ fontSize: 21, fontWeight: 800, color: 'var(--text)', letterSpacing: -0.2, lineHeight: 1.2 }}>{subTitle}</div>
+                      {(trialStatus === 'urgency' && urgencyLeft > 0 && !isTruePremium) ? (
+                        <div style={{ display: 'flex', gap: 6, marginTop: 12 }}>
+                          <span style={urgBlk}>{urg.d}<small style={urgSmall}>{t('profile.urgDay', 'kun')}</small></span>
+                          <span style={urgBlk}>{urg.h}<small style={urgSmall}>{t('profile.urgHour', 'soat')}</small></span>
+                          <span style={urgBlk}>{urg.m}<small style={urgSmall}>{t('profile.urgMin', 'daq')}</small></span>
+                          <span style={urgBlk}>{urg.s}<small style={urgSmall}>{t('profile.urgSec', 'son')}</small></span>
+                        </div>
+                      ) : (
+                        <div style={{ fontSize: 14, fontWeight: 500, color: 'var(--text2)', marginTop: 8, lineHeight: 1.5 }}>{subDesc}</div>
+                      )}
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginTop: 20, color: 'var(--accent)', fontWeight: 800, fontSize: 15 }}>
+                      {isTruePremium ? t('profile.premiumManage', 'Obunani boshqarish') : t('drawer.connect', 'Ulanish')}
+                      <ChevronRight size={17} strokeWidth={2.6} />
+                    </div>
+                  </div>
+                  {/* Katta dekorativ toj — Click'dagi 3D grafika o'rnida, azure gradient */}
+                  <svg width={112} height={112} viewBox="0 0 64 64" fill="none" aria-hidden="true"
+                    style={{ position: 'absolute', right: -8, bottom: -14, transform: 'rotate(-10deg)', filter: 'drop-shadow(0 12px 20px rgba(14,151,224,0.28))' }}>
+                    <defs>
+                      <linearGradient id="tpCrownGrad" x1="0" y1="0" x2="0.35" y2="1">
+                        <stop offset="0" stopColor="#5FBBEE" />
+                        <stop offset="1" stopColor="#0E97E0" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M10 22 L21 31 L32 15 L43 31 L54 22 L50.5 44 L13.5 44 Z" fill="url(#tpCrownGrad)" strokeLinejoin="round" />
+                    <circle cx="10" cy="18.5" r="3.4" fill="url(#tpCrownGrad)" />
+                    <circle cx="32" cy="11.5" r="3.6" fill="url(#tpCrownGrad)" />
+                    <circle cx="54" cy="18.5" r="3.4" fill="url(#tpCrownGrad)" />
+                    <rect x="13" y="48" width="38" height="6" rx="3" fill="url(#tpCrownGrad)" />
+                  </svg>
                 </button>
               </div>
 
