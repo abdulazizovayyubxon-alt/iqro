@@ -43,8 +43,12 @@ export default defineConfig({
       // ── Workbox: Offline caching strategiyalari ──
       workbox: {
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
-        // Precache: Barcha build fayllarini oldindan keshlash
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        // Precache: Ilova qobig'i (JS/CSS/HTML/ikon/shrift) oldindan keshlanadi.
+        globPatterns: ['**/*.{js,css,html,ico,svg,woff2}', 'pwa-*.png', 'apple-touch-icon.png', 'favicon.*'],
+        // Savol RASMLARI (images/**, ~18MB) precache'dan CHIQARILDI — ular birinchi
+        // ko'rilganda runtimeCaching (CacheFirst 'images-cache') orqali keshlanadi.
+        // Shu bilan birinchi o'rnatishda ~20MB o'rniga ~2MB yuklanadi (mobil trafik tejaladi).
+        globIgnores: ['**/images/**'],
 
         // Runtime caching: Firestore va boshqa API so'rovlari uchun
         runtimeCaching: [

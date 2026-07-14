@@ -32,14 +32,17 @@
 
 ---
 
-## 3. 🟠 MEN (Claude) QILA OLADIGAN — sizning qaroringizni kutmaydigan tayyorgarlik
+## 3. ✅ BAJARILDI (2026-07-14) — tayyorgarlik ishlari
 
-- [ ] **Do'kon listingi matnlari** (uz + ru): qisqa tavsif (80 belgи), to'liq tavsif, kalit so'zlar
-- [ ] **Data Safety formasi javoblari** (kod tahlilidan): qaysi ma'lumot yig'iladi
-- [ ] **Content Rating (IARC) anketa** javoblari bo'yicha maslahat
-- [ ] **Precache optimizatsiyasi** (birinchi yuklashni yengillashtirish) — ixtiyoriy
-- [ ] `test_groq.mjs` qoldiq faylni o'chirish
-- [ ] Firestore/Storage rules jonli holatini qayta tasdiqlash
+- [x] **Do'kon listingi matnlari** (uz + ru) → `PLAY_LISTING_VA_DATA_SAFETY.md`
+- [x] **Data Safety formasi javoblari** (kod tahlilidan) → `PLAY_LISTING_VA_DATA_SAFETY.md`
+- [x] **Content Rating (IARC)** bo'yicha maslahat (Everyone/3+) → yuqoridagi faylda
+- [x] **Precache optimizatsiyasi** — 20MB → ~2MB (savol rasmlari runtime-cache'ga o'tdi)
+- [x] `test_groq.mjs` qoldiq fayl o'chirildi
+- [x] Firestore/Storage rules tasdiqlandi — lokal = 07-12 deploy versiyasi, o'zgarishsiz
+- [x] Lint bloklovchi xatosi tuzatildi + manifest tili `uz`
+
+**Qoladi (topshirishda, nom/dizayn kerak):** feature grafik 1024×500, telefon skrinshotlari.
 
 ---
 
