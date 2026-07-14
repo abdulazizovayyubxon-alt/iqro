@@ -36,11 +36,6 @@ const FONT_SCALES = [
   { label: 'XL', value: 1.25 },
 ];
 
-// Bo'lim sarlavhasi uslubi
-const sectionLabel = {
-  fontSize: 12, fontWeight: 700, color: 'var(--text3)',
-  textTransform: 'uppercase', letterSpacing: '0.6px', margin: '4px 4px 8px',
-};
 
 export default function SettingsPage({ theme, toggleTheme }) {
   const { t, i18n } = useTranslation();
@@ -220,16 +215,6 @@ export default function SettingsPage({ theme, toggleTheme }) {
     }
   };
 
-  // Segmentli tanlov tugmasi uslubi
-  const segBtn = (selected) => ({
-    padding: '6px 12px', borderRadius: 8, border: 'none', cursor: 'pointer',
-    fontFamily: 'inherit', fontSize: 12, fontWeight: 700,
-    background: selected ? 'var(--bg2)' : 'transparent',
-    color: selected ? 'var(--accent2)' : 'var(--text3)',
-    boxShadow: selected ? '0 2px 8px rgba(30,42,58,0.08)' : 'none',
-    transition: 'all 0.2s',
-  });
-
   return (
     <motion.div className="pp" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <div className="pp-content" style={{ paddingTop: 16 }}>
@@ -238,11 +223,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
           <button
             onClick={() => navigate('/dashboard')}
             aria-label={t('settings.back')}
-            style={{
-              width: 44, height: 44, borderRadius: 12, border: '1px solid var(--border)',
-              background: 'var(--bg2)', cursor: 'pointer', display: 'flex',
-              alignItems: 'center', justifyContent: 'center', color: 'var(--text2)', flexShrink: 0
-            }}
+            className="pp-back-btn"
           >
             <ArrowLeft size={20} />
           </button>
@@ -254,22 +235,22 @@ export default function SettingsPage({ theme, toggleTheme }) {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 8 }}>
           {/* ═══ YORDAM VA ALOQA ═══ */}
-          <div style={{ background: 'var(--blue-bg)', borderRadius: 16, padding: 16, display: 'flex', alignItems: 'center', gap: 14, border: '1px solid rgba(14, 151, 224, 0.2)' }}>
-            <div style={{ width: 44, height: 44, borderRadius: 12, background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
+          <div className="pp-support-card">
+            <div className="pp-support-icon">
               <MessageCircle size={24} />
             </div>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--accent2)' }}>{t('settings.helpTitle')}</div>
-              <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 2 }}>{t('settings.helpText')}</div>
+            <div className="pp-support-body">
+              <div className="pp-support-title">{t('settings.helpTitle')}</div>
+              <div className="pp-support-text">{t('settings.helpText')}</div>
             </div>
-            <button onClick={() => window.open('https://t.me/Toifapro?direct', '_blank')} style={{ padding: '8px 16px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
+            <button onClick={() => window.open('https://t.me/Toifapro?direct', '_blank')} className="pp-support-btn">
               {t('settings.helpCta')}
             </button>
           </div>
 
           {/* ═══ KO'RINISH ═══ */}
           <div>
-            <div style={sectionLabel}>{t('settings.sections.appearance')}</div>
+            <div className="pp-section-label">{t('settings.sections.appearance')}</div>
             <div className="pp-group">
               {/* Til tanlash: O'zbekcha / Ruscha */}
               <div className="pp-menu-item" style={{ cursor: 'default' }}>
@@ -277,9 +258,13 @@ export default function SettingsPage({ theme, toggleTheme }) {
                   <Languages size={20} />
                 </div>
                 <span className="pp-menu-label">{t('lang.label')}</span>
-                <div style={{ display: 'flex', gap: 3, background: 'var(--bg3)', padding: 3, borderRadius: 10, flexShrink: 0 }}>
+                <div className="pp-segment-container">
                   {[{ id: 'uz', label: "O'zbekcha" }, { id: 'ru', label: 'Русский' }].map(opt => (
-                    <button key={opt.id} onClick={() => i18n.changeLanguage(opt.id)} style={segBtn((i18n.resolvedLanguage || i18n.language) === opt.id)}>
+                    <button
+                      key={opt.id}
+                      onClick={() => i18n.changeLanguage(opt.id)}
+                      className={`pp-segment-btn ${(i18n.resolvedLanguage || i18n.language) === opt.id ? 'active' : ''}`}
+                    >
                       {opt.label}
                     </button>
                   ))}
@@ -292,9 +277,13 @@ export default function SettingsPage({ theme, toggleTheme }) {
                   {theme === 'dark' ? <Moon size={20} /> : theme === 'sepia' ? <BookOpen size={20} /> : <Sun size={20} />}
                 </div>
                 <span className="pp-menu-label">{t('settings.themeMode')}</span>
-                <div style={{ display: 'flex', gap: 3, background: 'var(--bg3)', padding: 3, borderRadius: 10, flexShrink: 0 }}>
+                <div className="pp-segment-container">
                   {[{ id: 'light' }, { id: 'sepia' }, { id: 'dark' }].map(opt => (
-                    <button key={opt.id} onClick={() => toggleTheme(opt.id)} style={segBtn(theme === opt.id)}>
+                    <button
+                      key={opt.id}
+                      onClick={() => toggleTheme(opt.id)}
+                      className={`pp-segment-btn ${theme === opt.id ? 'active' : ''}`}
+                    >
                       {t(`theme.${opt.id}`)}
                     </button>
                   ))}
@@ -308,11 +297,16 @@ export default function SettingsPage({ theme, toggleTheme }) {
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
                   <span className="pp-menu-label">{t('settings.fontSize')}</span>
-                  <span style={{ fontSize: 11, color: 'var(--text3)' }}>{t('settings.fontSizeHint')}</span>
+                  <span className="pp-menu-sublabel">{t('settings.fontSizeHint')}</span>
                 </div>
-                <div style={{ display: 'flex', gap: 3, background: 'var(--bg3)', padding: 3, borderRadius: 10, flexShrink: 0 }}>
+                <div className="pp-segment-container">
                   {FONT_SCALES.map(f => (
-                    <button key={f.label} onClick={() => applyFontScale(f.value)} style={{ ...segBtn(fontScale === f.value), padding: '6px 10px' }}>
+                    <button
+                      key={f.label}
+                      onClick={() => applyFontScale(f.value)}
+                      className={`pp-segment-btn ${fontScale === f.value ? 'active' : ''}`}
+                      style={{ padding: '6px 10px' }}
+                    >
                       {f.label}
                     </button>
                   ))}
@@ -323,7 +317,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
 
           {/* ═══ HISOB ═══ */}
           <div>
-            <div style={sectionLabel}>{t('settings.sections.account')}</div>
+            <div className="pp-section-label">{t('settings.sections.account')}</div>
             <div className="pp-group">
               <button className="pp-menu-item" onClick={() => setShowEdit(true)}>
                 <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
@@ -345,7 +339,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
 
           {/* ═══ O'RGANISH ═══ */}
           <div>
-            <div style={sectionLabel}>{t('settings.sections.learning')}</div>
+            <div className="pp-section-label">{t('settings.sections.learning')}</div>
             <div className="pp-group">
               <button className="pp-menu-item" onClick={() => setShowRepetitionModal(true)}>
                 <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
@@ -369,13 +363,13 @@ export default function SettingsPage({ theme, toggleTheme }) {
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
                   <span className="pp-menu-label">{t('settings.push')}</span>
-                  <span style={{ fontSize: 11, color: 'var(--text3)' }}>
+                  <span className="pp-menu-sublabel">
                     {pushStatus === 'granted' ? t('settings.pushOn')
                       : pushStatus === 'denied' ? t('settings.pushBlocked')
                       : t('settings.pushHint')}
                   </span>
                 </div>
-                <span style={{ fontSize: 12, fontWeight: 700, color: pushStatus === 'granted' ? 'var(--green)' : 'var(--accent2)', whiteSpace: 'nowrap' }}>
+                <span style={{ fontSize: 12, fontWeight: 700, color: pushStatus === 'granted' ? 'var(--green)' : 'var(--accent2)', whiteSpace: 'nowrap', paddingRight: 4 }}>
                   {pushBusy ? '...' : pushStatus === 'granted' ? t('settings.pushEnabled') : t('settings.pushEnable')}
                 </span>
               </button>
@@ -388,7 +382,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
                   <span className="pp-menu-label" style={{ fontWeight: 800, color: 'var(--green)' }}>
                     {downloadingOffline ? t('settings.offlineLoading') : t('settings.offline')}
                   </span>
-                  <span style={{ fontSize: 11, color: 'var(--text3)' }}>{t('settings.offlineHint')}</span>
+                  <span className="pp-menu-sublabel">{t('settings.offlineHint')}</span>
                 </div>
                 <ChevronRight size={18} className="pp-menu-arrow" />
               </button>
@@ -397,7 +391,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
 
           {/* ═══ ILOVA ═══ */}
           <div>
-            <div style={sectionLabel}>{t('settings.sections.app')}</div>
+            <div className="pp-section-label">{t('settings.sections.app')}</div>
             <div className="pp-group">
               {isInstallable && (
                 <button className="pp-menu-item" onClick={installApp}>
@@ -421,7 +415,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
 
           {/* ═══ MA'LUMOT VA HUQUQIY ═══ */}
           <div>
-            <div style={sectionLabel}>{t('settings.sections.info')}</div>
+            <div className="pp-section-label">{t('settings.sections.info')}</div>
             <div className="pp-group">
               {/* Premium — marketing /premium sahifasida; bu yerda faqat sodda kirish havolasi */}
               <button className="pp-menu-item" onClick={() => navigate('/premium')}>
@@ -430,7 +424,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
                   <span className="pp-menu-label">{t('settings.premium')}</span>
-                  <span style={{ fontSize: 11, color: 'var(--text3)' }}>{t('settings.premiumHint')}</span>
+                  <span className="pp-menu-sublabel">{t('settings.premiumHint')}</span>
                 </div>
                 <ChevronRight size={18} className="pp-menu-arrow" />
               </button>
@@ -457,7 +451,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
                   <span className="pp-menu-label">{t('settings.about')}</span>
-                  <span style={{ fontSize: 11, color: 'var(--text3)' }}>{t('settings.aboutHint')}</span>
+                  <span className="pp-menu-sublabel">{t('settings.aboutHint')}</span>
                 </div>
                 <ChevronRight size={18} className="pp-menu-arrow" />
               </button>
@@ -466,7 +460,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
 
           {/* ═══ HISOB AMALLARI ═══ */}
           <div>
-            <div style={sectionLabel}>{t('settings.sections.accountActions')}</div>
+            <div className="pp-section-label">{t('settings.sections.accountActions')}</div>
             <div className="pp-group">
               <button className="pp-menu-item" onClick={() => setShowDeleteConfirm(true)}>
                 <div className="pp-menu-icon" style={{ background: 'var(--red-bg)', color: 'var(--red)' }}>

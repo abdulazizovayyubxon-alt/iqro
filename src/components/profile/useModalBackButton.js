@@ -5,7 +5,7 @@ if (typeof window !== 'undefined') {
   window._modalBackStack = window._modalBackStack || [];
   
   if (!window._modalBackStackListenerRegistered) {
-    window.addEventListener('popstate', (event) => {
+    window.addEventListener('popstate', () => {
       const stack = window._modalBackStack;
       if (stack.length > 0) {
         // Pop the topmost handler and run it

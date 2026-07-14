@@ -119,6 +119,8 @@ export default defineConfig({
         name: 'Toifa Pro — Kasbiy Sertifikatlash',
         short_name: 'Toifa Pro',
         description: "O'qituvchilar uchun kasbiy sertifikatlash va malaka attestatsiyasiga tayyorgarlik platformasi",
+        lang: 'uz',
+        dir: 'ltr',
         theme_color: '#F4F3EF',
         background_color: '#F4F3EF',
         display: 'standalone',
