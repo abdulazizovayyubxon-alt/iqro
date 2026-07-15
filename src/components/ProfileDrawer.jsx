@@ -16,6 +16,8 @@ import EditProfileModal from './profile/EditProfileModal';
 import AvatarPickerModal from './profile/AvatarPickerModal';
 import { useModalBackButton } from './profile/useModalBackButton';
 import { useAdmin } from '../hooks/useAdmin';
+import BrandLogo from './shared/BrandLogo';
+
 import {
   Award, AlertCircle, Settings, Info, Users, Shield, Crown, ChevronRight,
   Pencil, Camera, Share2, Send
@@ -363,49 +365,18 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '7px',
+                gap: '8px',
                 padding: '12px 0 20px',
                 userSelect: 'none',
                 flexShrink: 0
               }}>
-                {/* 22px ikonka */}
-                <div style={{
-                  width: '22px',
-                  height: '22px',
-                  borderRadius: '6px',
-                  background: '#0E97E0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0
-                }}>
-                  <span style={{
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontSize: '12px',
-                    fontWeight: 800,
-                    color: '#ffffff',
-                    letterSpacing: '-0.05em',
-                    lineHeight: 1,
-                    marginTop: '-1.5px'
-                  }}>tp</span>
-                </div>
-                {/* Zehin Wordmark */}
-                <span style={{
-                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                  fontSize: '13.5px',
-                  fontWeight: 800,
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1
-                }}>
-                  <span style={{ color: theme === 'dark' ? '#F4F6F9' : '#0F1B2D' }}>Zehin</span>
-                </span>
+                <BrandLogo size={18} />
                 {/* v2.0 */}
                 <span style={{
                   fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                   fontSize: '11.5px',
                   fontWeight: 500,
                   color: theme === 'dark' ? '#5A606A' : '#94A3B8',
-                  marginLeft: '2px'
                 }}>
                   v{APP_VERSION}
                 </span>

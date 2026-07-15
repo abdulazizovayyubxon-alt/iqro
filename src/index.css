@@ -55,6 +55,10 @@
   /* Logo colors from the new design mockup */
   --logo-toifa: #0F1B2D;
   --logo-pro: #0E97E0;
+
+  /* Multiline SVG logo strokes */
+  --logo-stroke: #0F1B2D;   /* asosiy harf chiziqlari */
+  --logo-accent: #0E97E0;   /* ichki accent chiziqlar (azure) */
 }
 
 body.dark-theme {
@@ -90,6 +94,10 @@ body.dark-theme {
   /* Logo colors from the new design mockup */
   --logo-toifa: #F8FAFC;
   --logo-pro: #36ABEC;
+
+  /* Multiline SVG logo strokes — tungi rejim */
+  --logo-stroke: #F0F6FF;   /* oq-ko'kimtir — qorong'i fonda aniq ko'rinadi */
+  --logo-accent: #36ABEC;   /* neon azure */
 }
 
 /* Sepia — uzoq o'qish/test sessiyalari uchun "kitob" rejimi */
@@ -126,6 +134,10 @@ body.sepia-theme {
   /* Logo colors from the new design mockup */
   --logo-toifa: #3B2F1B;
   --logo-pro: #2E7FB0;
+
+  /* Multiline SVG logo strokes — sepia (tongi) rejim */
+  --logo-stroke: #3B2F1B;   /* iliq jigarrang-qoʻngʻir */
+  --logo-accent: #2E7FB0;   /* iliq chuqur azure */
 }
 
 * { 
