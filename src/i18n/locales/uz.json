@@ -670,7 +670,11 @@
     "emptyText": "Siz hali birorta ham xato qilmadingiz yoki barcha xatolaringizni o'chirdingiz. Bilimingiz toifalar olish uchun yetarli!",
     "noResultsText": "Qidiruv so'rovi yoki tanlangan filtr bo'yicha birorta ham xato savol topilmadi. Boshqa so'rov kiriting.",
     "startTests": "Testlarni boshlash",
-    "clearFilters": "Filtrlarni tozalash"
+    "clearFilters": "Filtrlarni tozalash",
+    "clearConfirmTitle": "Barcha xatolarni o'chirish",
+    "clearConfirmText": "Ro'yxatdagi barcha xato savollar o'chiriladi. Bu amalni orqaga qaytarib bo'lmaydi.",
+    "clearConfirmBtn": "Ha, tozalash",
+    "toastCleared": "Barcha xatolar tozalandi!"
   },
   "premium": {
     "subtitle": "Cheksiz imkoniyatlar bilan tayyorlan",
@@ -1011,7 +1015,7 @@
     "repLow": "Kam\n(10%)",
     "repMid": "O'rtacha\n(30%)",
     "repHigh": "Tez\n(50%)",
-    "repRecommend": "Tavsiya etiladi: 10%. Tanlov darhol saqlanadi.",
+    "repRecommend": "Standart holatda o'chiq — testlar 100% yangi savoldan iborat. Xatolar ustida alohida \"Xatolar daftari\" va \"Takror navbati\" bo'limlarida ishlashingiz mumkin. Tanlov darhol saqlanadi.",
     "logoutTitle": "Rostdan ham chiqmoqchimisiz?",
     "logoutText": "Sertifikat olish sari boshlagan yo'lingizda to'xtab qolmang. Tizimda qolib, bilimingizni oshirishda davom eting!",
     "logoutStay": "Platformada qolish 🧠",

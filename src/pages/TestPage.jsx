@@ -277,7 +277,9 @@ const TestPage = () => {
         
         const filteredMistakes = mistakesSource.filter(m => {
           const topic = TOPICS.find(t => t.name === m.topic);
-          if (!topic) return false;
+          // Xatolar allaqachon fan bo'yicha saqlanadi (stats[cat].mistakes) —
+          // topic nomi TOPICS'da topilmasa ham (eski "Aralash" yozuvlari) shu fanga tegishli
+          if (!topic) return true;
           return Array.isArray(topic.category)
             ? topic.category.includes(state.activeCategory)
             : topic.category === state.activeCategory;
@@ -476,7 +478,7 @@ const TestPage = () => {
           activeCategory: state.activeCategory,
           batchSize: rawList.length,
           topicId,
-          repetitionLimit: state.repetitionLimit ?? 10
+          repetitionLimit: state.repetitionLimit ?? 0
         });
       }
 
@@ -896,7 +898,7 @@ const TestPage = () => {
           {!showResults ? (
             <>
               {/* Repetition Informational Banner */}
-              {(state.repetitionLimit ?? 10) > 0 && showRepetitionBanner && (
+              {(state.repetitionLimit ?? 0) > 0 && showRepetitionBanner && (
                 <motion.div 
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -930,7 +932,7 @@ const TestPage = () => {
                       <RefreshCw size={16} />
                     </div>
                     <div style={{ fontSize: '12px', lineHeight: '1.4', color: 'var(--text2)' }}>
-                      <strong style={{ color: 'var(--text)' }}>{t('test.repetitionActive')}</strong> {t('test.repetitionText', { pct: state.repetitionLimit ?? 10 })}
+                      <strong style={{ color: 'var(--text)' }}>{t('test.repetitionActive')}</strong> {t('test.repetitionText', { pct: state.repetitionLimit ?? 0 })}
                     </div>
                   </div>
                   <button

@@ -506,7 +506,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
       )}
       {showRepetitionModal && (
         <RepetitionModal
-          value={state.repetitionLimit ?? 10}
+          value={state.repetitionLimit ?? 0}
           onChange={(v) => { updateState({ repetitionLimit: v }); showToast(t('settings.toasts.saved'), 'success'); }}
           onClose={() => setShowRepetitionModal(false)}
         />

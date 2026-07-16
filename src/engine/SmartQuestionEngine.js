@@ -171,7 +171,7 @@ export const smartSort = (allQuestions, options = {}) => {
     activeCategory = 'chqbt',
     batchSize = 50,
     topicId = -1,
-    repetitionLimit = 10
+    repetitionLimit = 0
   } = options;
 
   if (!allQuestions || allQuestions.length === 0) return [];
@@ -379,9 +379,11 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
     } else {
       wrongCount++;
 
-      // Xato ma'lumotlarini yig'ish
+      // Xato ma'lumotlarini yig'ish — mavzu har savolning O'Z topicId'sidan olinadi,
+      // aks holda aralash testda (topicId=-1) hamma xato "Aralash" bo'lib qolardi
       newMistakes.push({
-        topic: topicId >= 0 ? TOPICS.find(t => t.id === topicId)?.name || 'Aralash' : 'Aralash',
+        topic: TOPICS.find(t => t.id === qTopicId)?.name || 'Aralash',
+        topicId: qTopicId,
         question: q.q,
         correct: q.opts[q.correct],
         opts: q.opts || []
