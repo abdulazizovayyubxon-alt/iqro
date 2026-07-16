@@ -51,6 +51,10 @@ fan/
 scratch/
 .vercel
 
+# Tesseract OCR til modellari — lokal ish quroli, ilova kodi emas (~13MB).
+# Kerak bo'lsa: https://github.com/tesseract-ocr/tessdata dan yuklab olinadi.
+*.traineddata
+
 # Lokal zaxira nusxalar va vaqtinchalik checkpoint/intermediate artefaktlar — repo'ga kerak emas
 *.bak-*
 *.bak-corrupt

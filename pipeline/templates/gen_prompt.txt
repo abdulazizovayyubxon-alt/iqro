@@ -76,16 +76,12 @@ C) QAT'IY QOIDALAR:
 2) SIFAT > SON — haqiqatan noyob, namuna sifatidagi savollar soni {{COUNT}} dan kam chiqsa, KAMROQ
    qaytar. Son uchun fakt to'qima, mavzuni suyultirma yoki mavjud savolni takrorlama.
 
-3) TO'G'RI JAVOB doimo "A" da yozilsin — TIZIM variantlarni AVTOMATIK aralashtiradi, shuning uchun
-   yakuniy testda to'g'ri javob A/B/C/D bo'ylab teng taqsimlanadi. (Sen faqat A ga yoz.)
-   ⚠️ Shu sababli savol matni va explanationda variant HARFINI ("A", "B variant", "A to'g'ri") MUTLAQO
-   yozma — aralashtirgandan keyin harflar o'zgaradi. B/C/D'ni A bilan BIR XIL sifat va uzunlikda yoz —
-   go'yo har biri to'g'ri bo'lishi mumkindek. Har chalg'ituvchi alohida, TIPIK konseptual xatoga asoslansin.
-   Ikki variant bir ma'noni bermasin. Kulgili yoki aniq noto'g'ri variant berma.
+3) TO'G'RI JAVOB variantlar bo'ylab teng taqsimlansin — tuziladigan savollar to'plamida to'g'ri javoblar A, B, C, D variantlari bo'ylab taxminan teng ravishda (25% dan) taqsimlanishi kerak. "answer" maydoniga to'g'ri variant harfini (A, B, C yoki D) yoz.
+   ⚠️ Savol matni va explanationda variant HARFINI ("A", "B variant", "A to'g'ri") MUTLAQO yozma — tizim variantlarni aralashtirgandan keyin harflar o'zgaradi. Barcha variantlarni bir xil sifat va uzunlikda yoz — go'yo har biri to'g'ri bo'lishi mumkindek. Har chalg'ituvchi alohida, TIPIK konseptual xatoga asoslansin. Ikki variant bir ma'noni bermasin. Kulgili yoki aniq noto'g'ri variant berma.
 
 4) VARIANTLAR — UZUNLIK VA ISHORALAR (tizim cue-leak'ni avtomatik rad etadi):
    • Har variant lo'nda: ko'pi bilan 12 so'z, bitta qatorga sig'sin.
-   • To'g'ri javob (A) eng uzun/eng batafsil bo'lib qolmasin — eng uzun variant eng qisqasidan ~1.5 baravardan oshmasin.
+   • To'g'ri javob eng uzun/eng batafsil bo'lib qolmasin — eng uzun variant eng qisqasidan ~1.5 baravardan oshmasin.
    • Qavs/tire/izoh yoki "chunki, ya'ni, natijasida, sababli" kabi bog'lovchini FAQAT to'g'ri javobga qo'yma —
      agar ishlatilsa, chalg'ituvchilarda ham bo'lsin (aks holda to'g'ri javob ko'rinib qoladi).
    • "har doim/hech qachon/faqat" kabi mutlaq so'zlar faqat chalg'ituvchilarda to'planmasin.
