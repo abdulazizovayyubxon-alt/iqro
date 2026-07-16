@@ -127,7 +127,7 @@ const buildDefaultState = () => {
     streakFrozenDate: null,
     spacedCards: [],
     customMnemonics: {},
-    repetitionLimit: 10,
+    repetitionLimit: 0,
     timeStats: { totalTime: 0, totalQuestions: 0 },
     nightQuestions: 0,
     earlyQuestions: 0,

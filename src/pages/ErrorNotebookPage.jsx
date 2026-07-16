@@ -9,11 +9,12 @@ import {
   HelpCircle, Trash, BookOpen
 } from 'lucide-react';
 import { SUBJECTS } from '../data/mockData';
+import ConfirmDialog from '../components/shared/ConfirmDialog';
 
 const ErrorNotebookPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { state, deleteMistake, updateState } = useContext(AppContext);
+  const { state, deleteMistake, clearMistakes, updateState } = useContext(AppContext);
   const { showToast } = useContext(ToastContext);
 
   const cat = state.activeCategory;
@@ -24,7 +25,7 @@ const ErrorNotebookPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTopic, setSelectedTopic] = useState('all');
   const [expandedQuestion, setExpandedQuestion] = useState(null); // qIndex
-  const [, setShowClearConfirm] = useState(false);
+  const [showClearConfirm, setShowClearConfirm] = useState(false);
 
   const handleBack = () => navigate('/test');
 
@@ -364,6 +365,20 @@ const ErrorNotebookPage = () => {
           )}
         </AnimatePresence>
       </div>
+
+      <ConfirmDialog
+        open={showClearConfirm}
+        title={t('errorNotebook.clearConfirmTitle')}
+        text={t('errorNotebook.clearConfirmText')}
+        confirmLabel={t('errorNotebook.clearConfirmBtn')}
+        danger
+        onConfirm={() => {
+          clearMistakes();
+          setShowClearConfirm(false);
+          showToast(t('errorNotebook.toastCleared'), 'info');
+        }}
+        onCancel={() => setShowClearConfirm(false)}
+      />
     </motion.div>
   );
 };
