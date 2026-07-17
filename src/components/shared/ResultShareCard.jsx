@@ -8,6 +8,17 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Download, Share2, Send } from 'lucide-react';
 import { APP_URL } from '../../config';
+import logoUrl from '../../assets/brand/zehin_logo.png';
+
+// Brend logotipi (bir marta yuklanadi, canvas'ga chiziladi)
+let logoImgCache = null;
+const loadLogo = () => new Promise((resolve) => {
+  if (logoImgCache) return resolve(logoImgCache);
+  const img = new Image();
+  img.onload = () => { logoImgCache = img; resolve(img); };
+  img.onerror = () => resolve(null);
+  img.src = logoUrl;
+});
 
 const roundRect = (ctx, x, y, w, h, r) => {
   ctx.beginPath();
@@ -37,7 +48,7 @@ export default function ResultShareCard({ open, onClose, score, total, title, mo
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
-  const draw = (canvas) => {
+  const draw = async (canvas) => {
     const W = 640, H = 800;
     const dpr = window.devicePixelRatio || 1;
     canvas.width = W * dpr;
@@ -60,22 +71,13 @@ export default function ResultShareCard({ open, onClose, score, total, title, mo
 
     ctx.textAlign = 'center';
 
-    // ── Sarlavha: toifa pro (so'z-logo) — "toifa" qora, "pro" azure ──
-    const wmFont = (w) => `${w} 40px "Plus Jakarta Sans", Inter, system-ui, sans-serif`;
-    ctx.textAlign = 'left';
-    ctx.font = wmFont(700);
-    const wmW1 = ctx.measureText('toifa').width;
-    ctx.font = wmFont(500);
-    const wmW2 = ctx.measureText('pro').width;
-    const wmGap = 4;
-    const wmX = W / 2 - (wmW1 + wmGap + wmW2) / 2;
-    ctx.fillStyle = '#2A2118';
-    ctx.font = wmFont(700);
-    ctx.fillText('toifa', wmX, 110);
-    ctx.fillStyle = '#1180B8';
-    ctx.font = wmFont(500);
-    ctx.fillText('pro', wmX + wmW1 + wmGap, 110);
-    ctx.textAlign = 'center';
+    // ── Sarlavha: Zehin logotipi (krem fonda asl ranglar) ──
+    const logo = await loadLogo();
+    if (logo) {
+      const lw = 200;
+      const lh = lw * (logo.naturalHeight / logo.naturalWidth);
+      ctx.drawImage(logo, W / 2 - lw / 2, 112 - lh, lw, lh);
+    }
     ctx.fillStyle = '#8A7A5C';
     ctx.font = '600 16px Inter, system-ui, sans-serif';
     ctx.fillText(t('shareCard.subtitle'), W / 2, 138);
@@ -162,7 +164,7 @@ export default function ResultShareCard({ open, onClose, score, total, title, mo
     try {
       const blob = await getBlob();
       if (!blob) return;
-      const file = new File([blob], 'toifapro-natija.png', { type: 'image/png' });
+      const file = new File([blob], 'zehin-natija.png', { type: 'image/png' });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
           files: [file],
@@ -180,7 +182,7 @@ export default function ResultShareCard({ open, onClose, score, total, title, mo
   const handleDownload = () => {
     if (!canvasRef.current) return;
     const link = document.createElement('a');
-    link.download = 'toifapro-natija.png';
+    link.download = 'zehin-natija.png';
     link.href = canvasRef.current.toDataURL('image/png');
     link.click();
     showToast?.(t('shareCard.downloaded'), 'success');

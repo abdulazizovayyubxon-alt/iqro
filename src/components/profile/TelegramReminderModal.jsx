@@ -8,7 +8,7 @@ import ModalShell from './ModalShell';
 /** Kundalik eslatma (Telegram bot) sozlamasi */
 export default function TelegramReminderModal({ user, enabled, updateState, showToast, onClose }) {
   const { t } = useTranslation();
-  const telegramCode = `TOIFAPRO-${user.uid.substring(0, 8).toUpperCase()}`;
+  const telegramCode = `ZEHIN-${user.uid.substring(0, 8).toUpperCase()}`;
 
   const handleToggle = async () => {
     const newState = !enabled;

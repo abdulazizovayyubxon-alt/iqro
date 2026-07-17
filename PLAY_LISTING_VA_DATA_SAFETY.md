@@ -1,6 +1,6 @@
 # Google Play — Do'kon listingi + Data Safety (kod tahlilidan)
 
-> `[NOM]` = yakuniy ilova nomi (Toifa Pro yoki Zehin) — hal bo'lgach almashtiring.
+> `[NOM]` = yakuniy ilova nomi — **Zehin** (2026-07-17 qat'iylashtirildi).
 
 ---
 

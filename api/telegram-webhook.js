@@ -493,8 +493,8 @@ export default async function handler(req, res) {
         return res.status(200).send('Pay info sent');
       }
 
-      // IQRO / TOIFAPRO kodi /start orqali
-      if (param.startsWith('IQRO-') || param.startsWith('TOIFAPRO-')) {
+      // ZEHIN (yoki eski IQRO / TOIFAPRO) kodi /start orqali
+      if (param.startsWith('ZEHIN-') || param.startsWith('IQRO-') || param.startsWith('TOIFAPRO-')) {
         incomingText = param;
       } else {
         if (linkedUser) {
@@ -505,17 +505,21 @@ export default async function handler(req, res) {
           );
         } else {
           await sendMessage(chatId,
-            "<b>Xush kelibsiz!</b> 🎓\n\nToifa Pro — O'qituvchilar attestatsiyasi platformasi.\n\nBotdan to'liq foydalanish uchun saytda ro'yxatdan o'tib va Profilingizdagi <b>TOIFAPRO-...</b> kodingizni shu yerga yuboring.\n\n👉 https://toifapro-t41p.vercel.app"
+            "<b>Xush kelibsiz!</b> 🎓\n\nZehin — O'qituvchilar attestatsiyasi platformasi.\n\nBotdan to'liq foydalanish uchun saytda ro'yxatdan o'tib va Profilingizdagi <b>ZEHIN-...</b> kodingizni shu yerga yuboring.\n\n👉 https://toifapro-t41p.vercel.app"
           );
         }
         return res.status(200).send('Start handled');
       }
     }
 
-    // IQRO / TOIFAPRO kod orqali ulanish
-    if (incomingText.startsWith('IQRO-') || incomingText.startsWith('TOIFAPRO-')) {
+    // ZEHIN (yoki eski IQRO / TOIFAPRO) kod orqali ulanish
+    if (incomingText.startsWith('ZEHIN-') || incomingText.startsWith('IQRO-') || incomingText.startsWith('TOIFAPRO-')) {
       const code = incomingText;
-      const searchSnap = await db.collection('users').where('telegramCode', '==', code).get();
+      // Eski foydalanuvchilarda Firestore'da TOIFAPRO-/IQRO- prefiksli kod saqlangan
+      // bo'lishi mumkin — suffiks bo'yicha barcha variantlarni qidiramiz.
+      const suffix = code.replace(/^(ZEHIN|TOIFAPRO|IQRO)-/, '');
+      const candidates = [...new Set([code, `ZEHIN-${suffix}`, `TOIFAPRO-${suffix}`, `IQRO-${suffix}`])];
+      const searchSnap = await db.collection('users').where('telegramCode', 'in', candidates).get();
 
       if (searchSnap.empty) {
         await sendMessage(chatId,
@@ -539,7 +543,7 @@ export default async function handler(req, res) {
     // Tizimga ulanmaganlar uchun blok
     if (!linkedUser) {
       await sendMessage(chatId,
-        "Iltimos, botdan to'liq foydalanish uchun saytdan olingan <b>TOIFAPRO-...</b> kodingizni yuboring.\n\n👉 https://toifapro-t41p.vercel.app"
+        "Iltimos, botdan to'liq foydalanish uchun saytdan olingan <b>ZEHIN-...</b> kodingizni yuboring.\n\n👉 https://toifapro-t41p.vercel.app"
       );
       return res.status(200).send('Not linked');
     }

@@ -22,8 +22,8 @@
 
 ## 2. 🔴 MENING (foydalanuvchi) ZIMMAMDAGI — qaror va rasmiylashtirish
 
-- [ ] **Yakuniy nom + brend** (Toifa Pro yoki Zehin) — trademark tekshiruvidan keyin qat'iylashtirish.
-      Nom hal bo'lgach: manifest, ilova nomi, ekran matnlari, do'kon listingi yangilanadi.
+- [x] **Yakuniy nom + brend** — **Zehin** qat'iylashtirildi (2026-07-17): manifest, ilova nomi,
+      logo va ekran matnlari yangilandi. Do'kon listingi shu nom bilan tayyorlanadi.
 - [ ] **Click uchun statik-IP server** (VPS, ideal TAS-IX) — webhook shu yerga ko'chadi.
       *(keyinga qoldirildi — ilova bunisiz ham chiqadi, avval Telegram-operator zaxirasi bilan)*
 - [ ] **Google Play Developer hisob** — $25 (bir martalik) + shaxsni tasdiqlash.

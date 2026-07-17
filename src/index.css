@@ -52,13 +52,6 @@
   --glass-bg: rgba(253, 252, 249, 0.85);
   --glass-border: rgba(86, 110, 130, 0.16);
 
-  /* Logo colors from the new design mockup */
-  --logo-toifa: #0F1B2D;
-  --logo-pro: #0E97E0;
-
-  /* Multiline SVG logo strokes */
-  --logo-stroke: #0F1B2D;   /* asosiy harf chiziqlari */
-  --logo-accent: #0E97E0;   /* ichki accent chiziqlar (azure) */
 }
 
 body.dark-theme {
@@ -90,14 +83,6 @@ body.dark-theme {
   
   --glass-bg: rgba(15, 23, 42, 0.8);
   --glass-border: rgba(255, 255, 255, 0.12);
-
-  /* Logo colors from the new design mockup */
-  --logo-toifa: #F8FAFC;
-  --logo-pro: #36ABEC;
-
-  /* Multiline SVG logo strokes — tungi rejim */
-  --logo-stroke: #F0F6FF;   /* oq-ko'kimtir — qorong'i fonda aniq ko'rinadi */
-  --logo-accent: #36ABEC;   /* neon azure */
 }
 
 /* Sepia — uzoq o'qish/test sessiyalari uchun "kitob" rejimi */
@@ -130,14 +115,13 @@ body.sepia-theme {
 
   --glass-bg: rgba(251, 246, 233, 0.85);
   --glass-border: rgba(139, 108, 57, 0.18);
+}
 
-  /* Logo colors from the new design mockup */
-  --logo-toifa: #3B2F1B;
-  --logo-pro: #2E7FB0;
-
-  /* Multiline SVG logo strokes — sepia (tongi) rejim */
-  --logo-stroke: #3B2F1B;   /* iliq jigarrang-qoʻngʻir */
-  --logo-accent: #2E7FB0;   /* iliq chuqur azure */
+/* Brend logotipi (rasm) — tungi rejimda navy harflar ko'rinmay qoladi,
+   shu sabab oq siluetga o'tkazamiz (shaffof fon saqlanadi) */
+body.dark-theme .brand-logo-img {
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
 }
 
 * { 

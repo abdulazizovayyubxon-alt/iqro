@@ -1,6 +1,6 @@
-# Toifa Pro — Kasbiy Sertifikatlash Tayyorgarligi Platformasi
+# Zehin — Kasbiy Sertifikatlash Tayyorgarligi Platformasi
 
-Toifa Pro — CHQBT (Harbiy ta'lim) va Tasviriy san'at fanlaridan o'qituvchilar attestatsiyasi, kasbiy sertifikatlash va bilimini sinash uchun mo'ljallangan zamonaviy, premium dizaynga ega web-platforma.
+Zehin — CHQBT (Harbiy ta'lim) va Tasviriy san'at fanlaridan o'qituvchilar attestatsiyasi, kasbiy sertifikatlash va bilimini sinash uchun mo'ljallangan zamonaviy, premium dizaynga ega web-platforma.
 
 ## 🚀 Imkoniyatlar
 - **Ikki xil yo'nalish:** CHQBT va Tasviriy san'at yo'nalishlari o'rtasida oson almashish.
@@ -22,11 +22,11 @@ Toifa Pro — CHQBT (Harbiy ta'lim) va Tasviriy san'at fanlaridan o'qituvchilar 
 ## 📦 O'rnatish va ishga tushirish
 1. Repozitoriyani yuklab oling:
    ```bash
-   git clone https://github.com/USER_NAME/toifapro.git
+   git clone https://github.com/USER_NAME/zehin.git
    ```
 2. Loyiha papkasiga kiring:
    ```bash
-   cd toifapro
+   cd zehin
    ```
 3. Kerakli kutubxonalarni o'rnating:
    ```bash

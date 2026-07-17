@@ -13,7 +13,7 @@ Siz taqdim etgan va `.env` hamda Vercel sozlamalarida ishlatiladigan Click ma'lu
 
 ## 2. Click Kabinetini Sozlash (Deploy'dan keyin)
 
-Loyihangiz serverda (masalan: `https://toifapro.uz`) to'liq ishlashni boshlagach, **merchant.click.uz** kabinetiga kiring va quyidagi amallarni bajaring:
+Loyihangiz serverda (masalan: `https://zehin.uz`) to'liq ishlashni boshlagach, **merchant.click.uz** kabinetiga kiring va quyidagi amallarni bajaring:
 
 1. Chap tomondagi menyudan **"Сервисы" (Xizmatlar)** bo'limiga o'ting.
 2. Jadvalning oxirgi ustunidagi **"Действие" (Harakat)** maydonidagi qalamcha tugmasini bosing.
@@ -29,7 +29,7 @@ Loyihangiz serverda (masalan: `https://toifapro.uz`) to'liq ishlashni boshlagach
 Agar sizning serveringiz (masalan, Vercel) O'zbekistondagi TAS-IX tarmog'ida joylashmagan bo'lsa, **birinchi real to'lovni o'tkazishdan oldin** bu haqida Click guruhiga xabar berishingiz shart.
 
 Click xodimlariga quyidagilarni yuboring:
-- Domeningiz (masalan: `toifapro.uz`)
+- Domeningiz (masalan: `zehin.uz`)
 - Serveringizning IP-manzili va porti (Agar Vercel ishlatsangiz, ularda dinamik IP bo'lishi mumkin. Bunday holatda Click guruhiga siz "Vercel" platformasidan foydalanayotganingizni va maxsus firewall sozlamalari qanday bo'lishini so'rashingiz mumkin).
 - **Muhim:** Server IP manzili iloji boricha statik bo'lishi talab qilinadi.
 
