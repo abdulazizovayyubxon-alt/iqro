@@ -42,18 +42,25 @@
 - [x] Firestore/Storage rules tasdiqlandi — lokal = 07-12 deploy versiyasi, o'zgarishsiz
 - [x] Lint bloklovchi xatosi tuzatildi + manifest tili `uz`
 
-**Qoladi (topshirishda, nom/dizayn kerak):** feature grafik 1024×500, telefon skrinshotlari.
+**Qoladi (topshirishda):** telefon skrinshotlari.
+
+- [x] **Yakuniy (27a) belgi assetlari tadbiq qilindi (2026-07-17):** PWA ikonlar
+      (`pwa-192/512` + alohida `pwa-maskable-192/512`), `apple-touch-icon`, `favicon.ico`,
+      push badge (`notification-96.png`), azure splash. Do'kon materiallari `store_assets/`
+      papkasida: ikonka 512, feature grafik 1024×500, splash 1080×1920.
 
 ---
 
 ## 4. Google Play topshirish bosqichlari (nom + hisob tayyor bo'lgach)
 
 1. **`.aab` yasash** — PWABuilder yoki Bubblewrap orqali (paket `uz.iqro.app` + mavjud kalit).
+   TWA konfiguratsiyasida launcher ikonka PWA manifestdan (maskable variant) olinadi;
+   push bildirishnoma ikonkasi so'ralsa `public/notification-96.png` (oq, alpha) ko'rsatiladi.
 2. **Play App Signing** — Google imzolasa, `assetlinks.json`dagi SHA256 **Google kalitiga yangilanadi**
    (aks holda ilova brauzer manzil satri bilan ochiladi — TWA "toza" bo'lmaydi).
 3. **Do'kon materiallari:**
-   - Ikonka 512×512 (bor)
-   - Feature grafik 1024×500 (yasash kerak)
+   - Ikonka 512×512 (bor — `store_assets/icon-512.png`)
+   - Feature grafik 1024×500 (bor — `store_assets/play-banner-1024x500.png`)
    - Kamida 2 telefon skrinshot (yasash kerak)
    - Qisqa + to'liq tavsif, kategoriya (Education)
 4. **Content Rating** anketasi (IARC)

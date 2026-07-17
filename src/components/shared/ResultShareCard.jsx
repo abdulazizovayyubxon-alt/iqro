@@ -8,17 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Download, Share2, Send } from 'lucide-react';
 import { APP_URL } from '../../config';
-import logoUrl from '../../assets/brand/zehin_logo.png';
-
-// Brend logotipi (bir marta yuklanadi, canvas'ga chiziladi)
-let logoImgCache = null;
-const loadLogo = () => new Promise((resolve) => {
-  if (logoImgCache) return resolve(logoImgCache);
-  const img = new Image();
-  img.onload = () => { logoImgCache = img; resolve(img); };
-  img.onerror = () => resolve(null);
-  img.src = logoUrl;
-});
+import { drawZehinLockup } from './BrandLogo';
 
 const roundRect = (ctx, x, y, w, h, r) => {
   ctx.beginPath();
@@ -71,13 +61,10 @@ export default function ResultShareCard({ open, onClose, score, total, title, mo
 
     ctx.textAlign = 'center';
 
-    // ── Sarlavha: Zehin logotipi (krem fonda asl ranglar) ──
-    const logo = await loadLogo();
-    if (logo) {
-      const lw = 200;
-      const lh = lw * (logo.naturalHeight / logo.naturalWidth);
-      ctx.drawImage(logo, W / 2 - lw / 2, 112 - lh, lw, lh);
-    }
+    // ── Sarlavha: Zehin lockup'i (krem fonda navy + azure buklama) ──
+    // Shrift yuklanmagan bo'lsa fallback bilan chiziladi — bloklamaymiz
+    try { await document.fonts.load('800 44px "Plus Jakarta Sans"'); } catch { /* ignore */ }
+    drawZehinLockup(ctx, W / 2, 104, 44, { text: '#12305A', fold: '#05A3FA' });
     ctx.fillStyle = '#8A7A5C';
     ctx.font = '600 16px Inter, system-ui, sans-serif';
     ctx.fillText(t('shareCard.subtitle'), W / 2, 138);

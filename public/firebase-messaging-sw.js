@@ -28,7 +28,8 @@ if (config.apiKey && config.projectId) {
     const options = {
       body: (payload.notification && payload.notification.body) || '',
       icon: '/pwa-192x192.png',
-      badge: '/pwa-192x192.png',
+      // badge Android status-barida bir rangli ko'rsatiladi — oq/alpha belgi shart
+      badge: '/notification-96.png',
       data: payload.data || {},
     };
     self.registration.showNotification(title, options);

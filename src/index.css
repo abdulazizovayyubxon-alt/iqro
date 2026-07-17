@@ -1,13 +1,15 @@
 /* Plus Jakarta Sans — lokal VARIABLE font (Google Fonts'dan ko'chirilgan):
    render-blocking @import va tashqi CDN'ga bog'liqlik yo'q, PWA offline'da ham ishlaydi.
    Bitta fayl 200–800 barcha vaznlarni qamraydi. Cyrillic bu shriftda yo'q — ruscha matn
-   font-family zaxirasiga (system-ui) tushadi (avval ham shunday edi). */
+   font-family zaxirasiga (system-ui) tushadi (avval ham shunday edi).
+   Fayllar public/fonts'da: index.html splash ham AYNI URL'ni preload qiladi —
+   src/assets'da qolsa Vite hash qo'shib, splash bilan ikki nusxa yuklanardi. */
 @font-face {
   font-family: 'Plus Jakarta Sans';
   font-style: normal;
   font-weight: 200 800;
   font-display: swap;
-  src: url('./assets/fonts/pjs-variable-latin-ext.woff2') format('woff2');
+  src: url('/fonts/pjs-variable-latin-ext.woff2') format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
@@ -15,7 +17,7 @@
   font-style: normal;
   font-weight: 200 800;
   font-display: swap;
-  src: url('./assets/fonts/pjs-variable-latin.woff2') format('woff2');
+  src: url('/fonts/pjs-variable-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -117,11 +119,20 @@ body.sepia-theme {
   --glass-border: rgba(139, 108, 57, 0.18);
 }
 
-/* Brend logotipi (rasm) — tungi rejimda navy harflar ko'rinmay qoladi,
-   shu sabab oq siluetga o'tkazamiz (shaffof fon saqlanadi) */
-body.dark-theme .brand-logo-img {
-  filter: brightness(0) invert(1);
-  opacity: 0.92;
+/* Zehin lockup — "i" nuqtasi belgi bilan almashtirilgan wordmark (BrandLogo.jsx).
+   Doira currentColor'dan oladi: och fonda navy, tungi rejimda oq (brend qoidasi). */
+.brand-lockup { color: #12305A; }
+body.dark-theme .brand-lockup { color: #fff; }
+.brand-lockup--azure,
+body.dark-theme .brand-lockup--azure { color: #fff; }
+.brand-lockup .bl-i { position: relative; }
+.brand-lockup .bl-i > svg {
+  position: absolute;
+  width: 0.34em;
+  height: 0.34em;
+  left: 50%;
+  top: 0.11em; /* ustun bilan ~0.05em bo'shliq (brauzerda o'lchab sozlangan) */
+  transform: translateX(-50%);
 }
 
 * { 

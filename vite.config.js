@@ -126,7 +126,9 @@ export default defineConfig({
         lang: 'uz',
         dir: 'ltr',
         theme_color: '#F4F3EF',
-        background_color: '#F4F3EF',
+        // OS splash foni ilova ichidagi azure splash bilan uzluksiz ulanishi uchun
+        // gradientning yuqori rangi (#0E97E0) ishlatiladi.
+        background_color: '#0E97E0',
         display: 'standalone',
         start_url: '/',
         scope: '/',
@@ -139,8 +141,21 @@ export default defineConfig({
           {
             src: 'pwa-512x512.png',
             sizes: '512x512',
+            type: 'image/png'
+          },
+          // maskable alohida: 'any' ikonda shaffof burchak bor, maskalansa oq
+          // burchak ko'rinadi — shu sabab to'liq navy variant ishlatiladi
+          {
+            src: 'pwa-maskable-192.png',
+            sizes: '192x192',
             type: 'image/png',
-            purpose: 'any maskable'
+            purpose: 'maskable'
+          },
+          {
+            src: 'pwa-maskable-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
           }
         ]
       }

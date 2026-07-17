@@ -11,24 +11,127 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <title>Zehin — Kasbiy Sertifikatlash Tayyorgarligi</title>
 
-    <!-- Shriftlar lokal: src/index.css'dagi @font-face (Plus Jakarta Sans variable).
-         Bebas Neue / IBM Plex Sans ishlatilmasdi; IBM Plex Mono va Inter tizim
-         zaxiralariga tushadi — tashqi CDN'ga bog'liqlik yo'q. -->
+    <!-- Shrift lokal (public/fonts): splash birinchi bo'yoqdan PJS bilan chiqishi
+         uchun shu yerda preload + @font-face; src/index.css AYNI URL'ni ishlatadi,
+         shuning uchun fayl faqat bir marta yuklanadi. -->
+    <link rel="preload" href="/fonts/pjs-variable-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <style>
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 200 800;
+        font-display: swap;
+        src: url('/fonts/pjs-variable-latin.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      /* ── Zehin splash (React mount bo'lganda #root bilan birga almashtiriladi) ──
+         Spetsifikatsiya: belgi 500ms scale+fade → wordmark 400ms (250ms delay) →
+         tagline 300ms (450ms delay). Jami 750ms ≤ 900ms. */
+      .zh-splash {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(180deg, #0E97E0 0%, #0A6FB8 100%);
+        font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+        user-select: none;
+        -webkit-user-select: none;
+        overflow: hidden;
+      }
+      .zh-splash-icon {
+        width: 112px;
+        height: 112px;
+        background: #fff;
+        border-radius: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 14px 36px rgba(6, 40, 70, 0.30);
+        animation: zh-icon-in 500ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      }
+      .zh-splash-icon svg { display: block; width: 88px; height: 88px; }
+      /* Buklama: belgi bilan birga -8°→0° ochiladi (origin: o'ng-past) */
+      .zh-fold {
+        transform-box: fill-box;
+        transform-origin: 100% 100%;
+        animation: zh-fold-in 500ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      }
+      .zh-splash-word {
+        margin-top: 30px;
+        font-size: 42px;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        color: #fff;
+        animation: zh-word-in 400ms cubic-bezier(0.2, 0.8, 0.2, 1) 250ms both;
+      }
+      /* "i" nuqtasi belgi bilan almashtiriladi: dotsiz "ı" + belgi (azure fonda:
+         doira oq, buklama #0A2440 SOLID; 32px dan kichik — lip yo'q) */
+      .zh-splash-word .zh-i { position: relative; }
+      /* nuqta-belgi: ustun ustida ~0.05em bo'shliq, markazi baseline'dan 0.77em
+         balandda (brauzerda o'lchab sozlangan — README'dagi -0.58em boshqa
+         koordinata tizimiga nisbatan edi) */
+      .zh-splash-word .zh-i svg {
+        position: absolute;
+        width: 0.34em;
+        height: 0.34em;
+        left: 50%;
+        top: 0.11em;
+        transform: translateX(-50%);
+      }
+      .zh-splash-tag {
+        margin: 16px 0 0;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        color: rgba(255, 255, 255, 0.85);
+        animation: zh-tag-in 300ms ease-out 450ms both;
+      }
+      @keyframes zh-icon-in {
+        from { opacity: 0; transform: scale(0.85); }
+        to   { opacity: 1; transform: scale(1); }
+      }
+      @keyframes zh-fold-in {
+        from { transform: rotate(-8deg); }
+        to   { transform: rotate(0deg); }
+      }
+      @keyframes zh-word-in {
+        from { opacity: 0; transform: translateY(12px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes zh-tag-in {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .zh-splash-icon, .zh-fold, .zh-splash-word, .zh-splash-tag { animation: none; }
+      }
+    </style>
   </head>
   <body>
     <div id="root">
-      <!-- JS yuklanguncha oq ekran o'rniga splash screen (React mount bo'lganda almashtiriladi) -->
-      <div style="height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#F4F3EF;font-family:'Plus Jakarta Sans','Inter',sans-serif;user-select:none;margin:0;padding:0;">
-        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;">
-          <!-- Zehin rasmiy logotipi (krem fonda asl ranglar) -->
-          <img src="/images/zehin_logo.png" alt="Zehin" width="230" height="71" style="display:block;width:230px;height:auto;margin-bottom:26px;" />
-          <!-- Tagline -->
-          <p style="font-size:11px;font-weight:700;letter-spacing:0.26em;color:rgba(15, 27, 45, 0.65);margin:0;white-space:nowrap;text-transform:uppercase;">
-            ATTESTATSIYA PLATFORMASI
-          </p>
+      <!-- JS yuklanguncha oq ekran o'rniga splash (React mount bo'lganda almashtiriladi) -->
+      <div class="zh-splash">
+        <div class="zh-splash-icon">
+          <!-- Belgi, oq fonda: doira #12305A, buklama #05A3FA + lip #4FB4F7 (88px ≥ 32px) -->
+          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="21" fill="#12305A"/>
+            <g transform="rotate(45 24 24)">
+              <g class="zh-fold">
+                <path d="M45 24 A21 21 0 0 1 24 45 Q41.06 38.44 37.78 27.28 Q37.13 24 45 24 Z" fill="#05A3FA"/>
+                <path d="M45 24 Q37.13 24 37.78 27.28 Q39.75 35.81 29.91 42.38 Q42.38 35.81 45 24 Z" fill="#4FB4F7"/>
+              </g>
+            </g>
+          </svg>
         </div>
+        <div class="zh-splash-word">Zeh<span class="zh-i">&#305;<svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#fff"/><g transform="rotate(45 24 24)"><path d="M45 24 A21 21 0 0 1 24 45 Q41.06 38.44 37.78 27.28 Q37.13 24 45 24 Z" fill="#0A2440"/></g></svg></span>n</div>
+        <p class="zh-splash-tag">Attestatsiya platformasi</p>
       </div>
-
     </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
