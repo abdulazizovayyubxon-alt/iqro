@@ -1358,6 +1358,20 @@ body.exam-fullscreen .exam-layout { height: 100vh; }
 }
 .spin { animation: spin 1s linear infinite; }
 
+/* Yangilash halqasi (brend-kitob §7): azure halqa 1.2s tezlikda aylanadi */
+@keyframes zh-ring-rot {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.zh-ring-rot {
+  animation: zh-ring-rot 1.2s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+/* Brauzerning o'z pull-to-refresh'i bizning indikator bilan to'qnashmasin */
+html, body { overscroll-behavior-y: none; }
+.main-content { overscroll-behavior-y: contain; }
+
 /* Global Input Focus styling */
 input:focus, textarea:focus, select:focus {
   border-color: var(--accent) !important;

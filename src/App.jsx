@@ -3,7 +3,9 @@ import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-
 import { useAuth } from './context/AuthContext';
 import { AppContext } from './context/AppContext';
 import { AnimatePresence } from 'framer-motion';
-import { RefreshCw, Shield, BookOpen, Clock, Palette } from 'lucide-react';
+import { Shield, BookOpen, Clock, Palette } from 'lucide-react';
+import BrandLogo, { ZehinMark } from './components/shared/BrandLogo';
+import PullToRefresh, { RefreshRing } from './components/shared/PullToRefresh';
 import { trackPageView, startPageTimer } from './services/analytics';
 import { setUser, clearUser } from './services/sentry';
 import { doc, getDoc } from 'firebase/firestore';
@@ -212,7 +214,8 @@ function App() {
     applyTheme(newTheme);
   };
 
-  // Firebase yuklanmoqda
+  // Firebase yuklanmoqda — index.html splash'ining aynan davomi (brend-kitob:
+  // to'q navy fon, oq doira belgi, oq lockup; pastda §7 dagi halqa-indikator)
   if (loading || !onboardingChecked) {
     return (
       <div style={{
@@ -221,7 +224,7 @@ function App() {
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        background: '#0E97E0',
+        background: '#0A2440',
         color: '#ffffff',
         fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
         userSelect: 'none',
@@ -234,66 +237,35 @@ function App() {
           alignItems: 'center',
           textAlign: 'center',
         }}>
-          {/* 112px white squircle */}
-          <div style={{
-            width: '112px',
-            height: '112px',
-            borderRadius: '28px',
-            backgroundColor: '#ffffff',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 8px 30px rgba(0,0,0,0.1)',
-            marginBottom: '26px'
-          }}>
-            <span style={{
-              fontSize: '58px',
-              fontWeight: 800,
-              color: '#0E97E0',
-              letterSpacing: '-0.05em',
-              lineHeight: 1,
-              marginTop: '-4px'
-            }}>tp</span>
-          </div>
-
-          {/* "Zehin" Title */}
-          <h1 style={{
-            fontSize: '34px',
-            fontWeight: 800,
-            letterSpacing: '-0.02em',
-            margin: '0 0 14px',
-            color: '#ffffff',
-            lineHeight: 1
-          }}>
-            Zehin
-          </h1>
-
-          {/* Tagline */}
+          <ZehinMark size={104} variant="navy" />
+          <BrandLogo size={51} style={{ color: '#ffffff', marginTop: '30px' }} />
           <p style={{
             fontSize: '11px',
             fontWeight: 700,
             letterSpacing: '0.26em',
-            color: 'rgba(255, 255, 255, 0.75)',
-            margin: 0,
+            color: '#5E7FA3',
+            margin: '16px 0 0',
             whiteSpace: 'nowrap',
             textTransform: 'uppercase'
           }}>
-            ATTESTATSIYA PLATFORMASI
+            Attestatsiya platformasi
           </p>
         </div>
 
-        {/* Small subtle loading spinner at the bottom */}
+        {/* Halqa-indikator (brend-kitob §7) */}
         <div style={{
           position: 'absolute',
           bottom: '40px',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
-          gap: 8,
+          gap: 10,
           color: 'rgba(255, 255, 255, 0.7)',
           fontSize: '12px',
           fontWeight: 600
         }}>
-          <RefreshCw className="spin" size={12} style={{ color: '#ffffff' }} /> yuklanmoqda...
+          <RefreshRing size={44} spinning />
+          yuklanmoqda...
         </div>
       </div>
     );
@@ -353,10 +325,15 @@ function App() {
   }
 
   // Asosiy ilova
+  // Pull-to-refresh test/imtihon jarayonida o'chiq — tasodifiy tortish
+  // natijasida jarayon yo'qolmasligi uchun
+  const ptrOff = ['/test', '/exam', '/review', '/admin', '/migration']
+    .some((p) => location.pathname.startsWith(p));
   return (
     <div className="layout-container">
       <Header theme={theme} toggleTheme={toggleTheme} />
       <OfflineIndicator />
+      <PullToRefresh disabled={ptrOff} />
       <div className="layout-body">
         <Sidebar />
         <main className="main-content">

@@ -16,7 +16,7 @@ import React from 'react';
 
 const MARK_COLORS = {
   light: { circle: '#12305A', fold: '#05A3FA', lip: '#4FB4F7' },
-  navy: { circle: '#FFFFFF', fold: '#05A3FA', lip: '#4FB4F7' },
+  navy: { circle: '#FFFFFF', fold: '#05A3FA', lip: '#6FC5FB' },
   azure: { circle: '#FFFFFF', fold: '#0A2440', lip: null },
 };
 

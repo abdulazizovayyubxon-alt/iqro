@@ -126,9 +126,9 @@ export default defineConfig({
         lang: 'uz',
         dir: 'ltr',
         theme_color: '#F4F3EF',
-        // OS splash foni ilova ichidagi azure splash bilan uzluksiz ulanishi uchun
-        // gradientning yuqori rangi (#0E97E0) ishlatiladi.
-        background_color: '#0E97E0',
+        // OS splash foni ilova ichidagi navy splash bilan uzluksiz ulanishi
+        // uchun brend-kitobdagi "To'q navy" (splash va ikonka foni) ishlatiladi.
+        background_color: '#0A2440',
         display: 'standalone',
         start_url: '/',
         scope: '/',

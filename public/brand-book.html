@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Zehin — Brend qo'llanmasi (v1.0)</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<!--
+  Zehin — Brend qo'llanmasi, v1.0 (2026-iyul).
+  Claude Design "Zehin Brand Book" maketidan ko'chirilgan mustaqil sahifa:
+  ekranda A4 varaq ko'rinishida, chop etishda (Chrome -> Print) A4 sahifalarga
+  bo'linadi, har sahifada pastki kolontitul takrorlanadi.
+  Shrift — ilovaning lokal Plus Jakarta Sans'i (public/fonts).
+-->
+<style>
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 200 800;
+    font-display: swap;
+    src: url('fonts/pjs-variable-latin-ext.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 200 800;
+    font-display: swap;
+    src: url('fonts/pjs-variable-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  /* ============ Varaq (doc-page ekvivalenti) ============ */
+  body {
+    margin: 0;
+    padding: 48px 24px;
+    background: #ece8dd;
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: #0E97E0; }
+  a:hover { color: #12305A; }
+  :where(h1, h2, h3, h4, h5, h6) { text-wrap: balance; }
+  :where(p, li, blockquote, figcaption) { text-wrap: pretty; }
+
+  .sheet {
+    width: 210mm;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 2px 14px rgba(20, 20, 19, 0.12);
+    border-radius: 2px;
+    box-sizing: border-box;
+    padding: 16mm;
+  }
+  .frame { width: 100%; border-collapse: collapse; }
+  .frame td, .frame th { padding: 0; text-align: left; font-weight: inherit; vertical-align: top; }
+  .hdr-space { height: 0; }
+
+  .page-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+    font-weight: 600;
+    color: #94A3B8;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-top: 6px;
+  }
+
+  @page { size: A4; margin: 0; }
+  @media print {
+    html, body { margin: 0 !important; padding: 0 !important; background: none !important; height: auto !important; overflow: visible !important; }
+    .sheet { width: auto; margin: 0; box-shadow: none; border-radius: 0; padding: 0 16mm; }
+    /* thead/tfoot oraliqlari har sahifada takrorlanadi — vertikal marja shular orqali */
+    .hdr-space { height: 16mm; }
+    .ftr-space { height: 16mm; }
+    .page-footer { position: fixed; bottom: 0; left: 0; right: 0; margin: 0; padding: 6px 16mm 7.2mm; }
+    h1, h2, h3 { break-after: avoid; }
+    img, svg { break-inside: avoid; }
+    p, li { orphans: 3; widows: 3; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* ============ Belgi (mark) va lockup ============ */
+  /* Ranglar CSS o'zgaruvchilar orqali <symbol>ga uzatiladi:
+     --zc doira, --zf buklama, --zl lip (och ichki qatlam). */
+  .zm-light { --zc: #12305A; --zf: #05A3FA; --zl: #4FB4F7; }
+  .zm-navy  { --zc: #FFFFFF; --zf: #05A3FA; --zl: #6FC5FB; }
+
+  .lockup {
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    --zc: currentColor;
+    --zf: #05A3FA;
+  }
+  /* Nuqta-belgi geometriyasi ilovadagi .bl-i bilan AYNAN bir xil (index.css):
+     handoff'dagi -0.58em/0.36em Google statik shrift metrikasiga mo'ljallangan
+     bo'lib, lokal variable-shriftda nuqtani harfdan uzib yuboradi. */
+  .lockup .li { position: relative; }
+  .lockup .li > svg {
+    position: absolute;
+    left: 50%;
+    top: 0.11em;
+    transform: translateX(-50%);
+    width: 0.34em;
+    height: 0.34em;
+  }
+  .lockup--azure { --zf: #0A2440; }
+
+  /* ============ Hujjat ============ */
+  .doc { font-family: 'Plus Jakarta Sans', sans-serif; color: #0F1B2D; }
+
+  .cover {
+    height: 960px;
+    border-radius: 16px;
+    background: #0A2440;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 52px;
+    box-sizing: border-box;
+    break-inside: avoid;
+  }
+  .cover-top { display: flex; justify-content: space-between; align-items: center; }
+  .cover-top .k { font-size: 12px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.85); }
+  .cover-top .v { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.7); }
+  .cover-center { display: flex; flex-direction: column; align-items: center; gap: 34px; }
+  .cover-tag { font-size: 13px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: #5E7FA3; white-space: nowrap; }
+  .cover-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+  .cover-bottom span { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); }
+
+  .section { margin-top: 56px; break-inside: avoid; }
+  .sec-head { display: flex; align-items: baseline; gap: 14px; border-bottom: 2px solid #0F1B2D; padding-bottom: 12px; }
+  .sec-head .num { font-size: 14px; font-weight: 800; color: #0E97E0; }
+  .sec-head h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; margin: 0; }
+  .lead { font-size: 15px; line-height: 1.65; margin: 18px 0 0; max-width: 620px; }
+
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 22px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+  .row { display: flex; gap: 14px; margin-top: 14px; }
+  .row.mt22 { margin-top: 22px; }
+  .mt14 { margin-top: 14px; }
+
+  .tile { background: #F4F6F9; border-radius: 12px; padding: 18px; }
+  .icard { flex: 1; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px; }
+  .t { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #0E97E0; }
+  .d { font-size: 13px; line-height: 1.55; color: #4A5568; margin-top: 6px; }
+
+  .showcase { background: #F4F6F9; border-radius: 14px; padding: 48px; margin-top: 22px; display: flex; align-items: center; justify-content: center; gap: 40px; }
+  .show-item { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .show-cap { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #94A3B8; }
+
+  .vtile { border-radius: 12px; padding: 28px 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+  .vcap { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .clearbox { position: relative; border: 1.5px dashed #0E97E0; padding: 26px 30px; }
+  .x1 { position: absolute; font-size: 10px; font-weight: 800; color: #0E97E0; }
+  .minirow { border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 14px; }
+  .minitxt { font-size: 12px; line-height: 1.5; color: #4A5568; }
+
+  .mis { border: 1px solid #E2E8F0; border-radius: 12px; overflow: hidden; }
+  .mis-stage { height: 110px; display: flex; align-items: center; justify-content: center; background: #FAFBFC; }
+  .mis-cap { padding: 10px 14px; font-size: 11px; font-weight: 700; color: #E5484D; border-top: 1px solid #F1F5F9; }
+
+  .cc { border: 1px solid #E2E8F0; border-radius: 12px; overflow: hidden; }
+  .cc .sw { height: 96px; }
+  .cc .in { padding: 14px; }
+  .cc .nm { font-size: 13px; font-weight: 800; }
+  .cc .code { font-size: 11px; color: #64748B; margin-top: 4px; line-height: 1.6; }
+  .cc .use { font-size: 11px; color: #4A5568; margin-top: 6px; }
+
+  .wlist { display: flex; flex-direction: column; margin-top: 22px; border: 1px solid #E2E8F0; border-radius: 14px; overflow: hidden; }
+  .wrow { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; }
+  .wrow + .wrow { border-top: 1px solid #F1F5F9; }
+  .wtag { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #94A3B8; }
+
+  .panel { border: 1px solid #E2E8F0; border-radius: 14px; padding: 24px; }
+  .cap { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #94A3B8; }
+  .cap12 { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #94A3B8; }
+  .wide { margin-top: 14px; break-inside: avoid; border: 1px solid #E2E8F0; border-radius: 14px; padding: 24px; }
+
+  .timeline { display: flex; flex-direction: column; margin-top: 22px; border: 1px solid #E2E8F0; border-radius: 14px; overflow: hidden; }
+  .tl-head { display: grid; grid-template-columns: 110px 1fr 180px; gap: 16px; padding: 14px 24px; background: #F4F6F9; font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #94A3B8; }
+  .tl-row { display: grid; grid-template-columns: 110px 1fr 180px; gap: 16px; padding: 16px 24px; border-top: 1px solid #F1F5F9; font-size: 13px; align-items: center; }
+  .tl-row .tm { font-weight: 800; color: #0E97E0; }
+  .tl-row .mv { color: #4A5568; }
+  .tl-row .es { color: #64748B; font-size: 12px; }
+
+  .gnote { background: #F4F6F9; border-radius: 12px; padding: 16px 20px; margin-top: 14px; font-size: 12px; line-height: 1.6; color: #4A5568; }
+  .fnote { flex: 1; background: #F4F6F9; border-radius: 12px; padding: 16px; font-size: 12px; line-height: 1.6; color: #4A5568; }
+  .ncard { border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; font-size: 12px; line-height: 1.6; color: #4A5568; }
+
+  .tone { border-radius: 12px; padding: 18px; }
+  .tone .lbl { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+  .tone .ex { font-size: 13px; line-height: 1.8; color: #1E2A3A; margin-top: 10px; }
+
+  .uic { border: 1px solid #E2E8F0; border-radius: 14px; padding: 20px; background: #F4F3EF; }
+  .unote { font-size: 11px; line-height: 1.6; color: #4A5568; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Zehin belgisi: yumaloq varaq + 45° buklama (kichik o'lcham — lipsz) -->
+    <symbol id="zmark" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="21" style="fill:var(--zc, #12305A)"></circle>
+      <g transform="rotate(45 24 24)">
+        <path d="M45 24 A21 21 0 0 1 24 45 Q41.06 38.44 37.78 27.28 Q37.13 24 45 24 Z" style="fill:var(--zf, #05A3FA)"></path>
+      </g>
+    </symbol>
+    <!-- Katta o'lcham (≥48px): och lip qatlami bilan -->
+    <symbol id="zmark-lip" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="21" style="fill:var(--zc, #12305A)"></circle>
+      <g transform="rotate(45 24 24)">
+        <path d="M45 24 A21 21 0 0 1 24 45 Q41.06 38.44 37.78 27.28 Q37.13 24 45 24 Z" style="fill:var(--zf, #05A3FA)"></path>
+        <path d="M45 24 Q37.13 24 37.78 27.28 Q39.75 35.81 29.91 42.38 Q42.38 35.81 45 24 Z" style="fill:var(--zl, #4FB4F7)"></path>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="sheet">
+  <table class="frame" role="presentation">
+    <thead><tr><th><div class="hdr-space"></div></th></tr></thead>
+    <tbody><tr><td>
+      <div class="doc">
+
+        <!-- ============ MUQOVA ============ -->
+        <div class="cover">
+          <div class="cover-top">
+            <span class="k">Brend qo'llanmasi</span>
+            <span class="v">v1.0</span>
+          </div>
+          <div class="cover-center">
+            <svg class="zm-navy" width="120" height="120" aria-hidden="true"><use href="#zmark-lip"></use></svg>
+            <div class="lockup" style="font-size:64px; color:#fff;">Zeh<span class="li">ı<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+            <div class="cover-tag">Attestatsiya platformasi</div>
+          </div>
+          <div class="cover-bottom">
+            <span>2026-yil iyul</span>
+            <span>zehin.uz</span>
+          </div>
+        </div>
+
+        <!-- ============ 01 BREND ============ -->
+        <section class="section">
+          <div class="sec-head"><span class="num">01</span><h1>Brend haqida</h1></div>
+          <p class="lead"><b>Zehin</b> — o'qituvchilarni malaka toifasi attestatsiyasiga tayyorlovchi platforma. Nom o'zbek tilidagi «zehn» so'zidan: aql o'tkirligi, idrok va tez fahm. Bilim to'plash emas — zehnni charxlash.</p>
+          <div class="grid3">
+            <div class="tile">
+              <div class="t">Jiddiy</div>
+              <div class="d">Rasmiy imtihonga tayyorlaydi — yengil o'yin emas.</div>
+            </div>
+            <div class="tile">
+              <div class="t">Ishonchli</div>
+              <div class="d">Natija va ball — aniq, o'lchanadigan va'da.</div>
+            </div>
+            <div class="tile">
+              <div class="t">Akademik</div>
+              <div class="d">Bilim va metodika — ta'lim sohasining tili.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 02 LOGO ============ -->
+        <section class="section">
+          <div class="sec-head"><span class="num">02</span><h1>Logo</h1></div>
+          <p class="lead">Logo ikki qismdan iborat: <b>belgi</b> — past qismi ochilib yuqoriga buklangan yumaloq varaq (sahifa aylanmoqda, bilim harakatda) va <b>yozuv</b> — Zehin. Yozuvdagi «i» harfining nuqtasi — belgining o'zi.</p>
+          <div class="grid3">
+            <div class="tile">
+              <div class="t">Varaq — bilim</div>
+              <div class="d">Toza yumaloq doira — ochiq varaq, bilim sahifasi. Zehnning ish maydoni.</div>
+            </div>
+            <div class="tile">
+              <div class="t">Buklama — harakat</div>
+              <div class="d">Burchak ochilib buklangan — sahifa aylanmoqda: har kuni yangi mavzu, o'qish to'xtamaydi.</div>
+            </div>
+            <div class="tile">
+              <div class="t">Pastdan tepaga — o'sish</div>
+              <div class="d">Buklama pastdan yuqoriga ochiladi — quyi toifadan oliy toifa sari o'sish yo'li.</div>
+            </div>
+          </div>
+
+          <div class="showcase">
+            <div class="show-item">
+              <svg class="zm-light" width="104" height="104" aria-hidden="true"><use href="#zmark-lip"></use></svg>
+              <span class="show-cap">Belgi — varaq</span>
+            </div>
+            <div class="show-item">
+              <div class="lockup" style="font-size:56px; line-height:104px; color:#12305A;">Zeh<span class="li">ı<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+              <span class="show-cap">Yozuv — nuqta belgining o'zi</span>
+            </div>
+          </div>
+
+          <div class="grid3 mt14">
+            <div class="vtile" style="border:1px solid #E2E8F0;">
+              <div class="lockup" style="font-size:30px; color:#12305A;">Zeh<span class="li">ı<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+              <span class="vcap" style="color:#94A3B8;">Asosiy — oq fonda</span>
+            </div>
+            <div class="vtile" style="background:#0A2440;">
+              <div class="lockup" style="font-size:30px; color:#fff;">Zeh<span class="li">ı<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+              <span class="vcap" style="color:#5E7FA3;">Navy fonda</span>
+            </div>
+            <div class="vtile" style="background:#0E97E0;">
+              <div class="lockup lockup--azure" style="font-size:30px; color:#fff;">Zeh<span class="li">ı<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+              <span class="vcap" style="color:rgba(255,255,255,0.75);">Azure fonda</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="icard">
+              <div class="t">Qachon yozuv</div>
+              <div class="d">Splash, sarlavha, banner, hujjatlar — joy yetarli bo'lganda doim yozuv ishlatiladi.</div>
+            </div>
+            <div class="icard">
+              <div class="t">Qachon belgi</div>
+              <div class="d">Ilova ikonkasi, favicon, avatar, push-bildirishnoma — kvadrat va kichik joylarda faqat belgi.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 03 HIMOYA MAYDONI ============ -->
+        <section class="section">
+          <div class="sec-head"><span class="num">03</span><h1>Himoya maydoni va minimal o'lcham</h1></div>
+          <p class="lead">Himoya birligi <b>X = «i» nuqtasining diametri</b>. Logo atrofida har tomondan kamida 1X bo'sh joy qoladi — boshqa element, matn yoki ramka bu maydonga kirmaydi.</p>
+          <div class="row mt22" style="align-items:stretch;">
+            <div style="flex:1.4; background:#F4F6F9; border-radius:14px; padding:44px; display:flex; align-items:center; justify-content:center;">
+              <div class="clearbox">
+                <div class="lockup" style="font-size:40px; color:#12305A;">Zeh<span class="li">ı<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+                <span class="x1" style="top:2px; left:6px;">1X</span>
+                <span class="x1" style="bottom:2px; right:6px;">1X</span>
+              </div>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; gap:12px;">
+              <div class="minirow">
+                <div class="lockup" style="font-size:24px; color:#12305A; flex-shrink:0;">Zeh<span class="li">ı<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+                <div class="minitxt">Yozuv minimal balandligi — <b>24px</b> (chop etishda 8mm).</div>
+              </div>
+              <div class="minirow">
+                <svg class="zm-light" width="16" height="16" style="flex-shrink:0;" aria-hidden="true"><use href="#zmark"></use></svg>
+                <div class="minitxt">Belgi minimal o'lchami — <b>16px</b> (chop etishda 5mm).</div>
+              </div>
+              <div class="minirow">
+                <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+                  <svg class="zm-light" width="34" height="34" aria-hidden="true"><use href="#zmark-lip"></use></svg>
+                  <svg class="zm-light" width="20" height="20" aria-hidden="true"><use href="#zmark"></use></svg>
+                </div>
+                <div class="minitxt"><b>48px dan kichikda</b> ikkinchi (och) qatlam olib tashlanadi — bitta buklama qoladi.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 04 NOTO'G'RI QO'LLASH ============ -->
+        <section class="section">
+          <div class="sec-head"><span class="num">04</span><h1>Noto'g'ri qo'llash</h1></div>
+          <div class="grid3">
+            <div class="mis">
+              <div class="mis-stage">
+                <div class="lockup" style="font-size:26px; color:#E5484D; --zf:#F5B944;">Zeh<span class="li">ı<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+              </div>
+              <div class="mis-cap">✕ Rangini o'zgartirish</div>
+            </div>
+            <div class="mis">
+              <div class="mis-stage">
+                <div class="lockup" style="font-size:26px; color:#12305A; transform:scaleX(1.55);">Zeh<span class="li">ı<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+              </div>
+              <div class="mis-cap">✕ Cho'zish yoki siqish</div>
+            </div>
+            <div class="mis">
+              <div class="mis-stage">
+                <div class="lockup" style="font-size:26px; color:#12305A; transform:rotate(-14deg);">Zeh<span class="li">ı<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+              </div>
+              <div class="mis-cap">✕ Burish</div>
+            </div>
+            <div class="mis">
+              <div class="mis-stage">
+                <div class="lockup" style="font-size:26px; color:#12305A; text-shadow:3px 3px 6px rgba(14,151,224,0.55);">Zeh<span class="li">ı<svg viewBox="0 0 48 48" style="filter:drop-shadow(3px 3px 4px rgba(14,151,224,0.55));" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+              </div>
+              <div class="mis-cap">✕ Soya yoki effekt qo'shish</div>
+            </div>
+            <div class="mis">
+              <div class="mis-stage">
+                <div style="font-size:26px; font-weight:800; letter-spacing:-0.04em; line-height:1; color:#12305A;">Zehin</div>
+              </div>
+              <div class="mis-cap">✕ Nuqtani oddiy qoldirish</div>
+            </div>
+            <div class="mis">
+              <div class="mis-stage" style="background:#0E97E0;">
+                <div class="lockup" style="font-size:26px; color:#12305A;">Zeh<span class="li">ı<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+              </div>
+              <div class="mis-cap">✕ Past kontrastli fon</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 RANGLAR ============ -->
+        <section class="section">
+          <div class="sec-head"><span class="num">05</span><h1>Ranglar</h1></div>
+          <div class="grid3">
+            <div class="cc">
+              <div class="sw" style="background:#05A3FA;"></div>
+              <div class="in">
+                <div class="nm">Yorqin azure</div>
+                <div class="code">HEX #05A3FA<br>RGB 5 · 163 · 250</div>
+                <div class="use">Belgi buklamasi, aksent.</div>
+              </div>
+            </div>
+            <div class="cc">
+              <div class="sw" style="background:#0E97E0;"></div>
+              <div class="in">
+                <div class="nm">Asosiy azure</div>
+                <div class="code">HEX #0E97E0<br>RGB 14 · 151 · 224</div>
+                <div class="use">Ilova interfeysi, tugmalar.</div>
+              </div>
+            </div>
+            <div class="cc">
+              <div class="sw" style="background:#6FC5FB;"></div>
+              <div class="in">
+                <div class="nm">Och azure</div>
+                <div class="code">HEX #6FC5FB<br>RGB 111 · 197 · 251</div>
+                <div class="use">Buklama lipi (faqat katta belgi).</div>
+              </div>
+            </div>
+            <div class="cc">
+              <div class="sw" style="background:#12305A;"></div>
+              <div class="in">
+                <div class="nm">Navy</div>
+                <div class="code">HEX #12305A<br>RGB 18 · 48 · 90</div>
+                <div class="use">Yozuv va belgi oq fonda.</div>
+              </div>
+            </div>
+            <div class="cc">
+              <div class="sw" style="background:#0A2440;"></div>
+              <div class="in">
+                <div class="nm">To'q navy</div>
+                <div class="code">HEX #0A2440<br>RGB 10 · 36 · 64</div>
+                <div class="use">Splash va ikonka foni.</div>
+              </div>
+            </div>
+            <div class="cc">
+              <div class="sw" style="background:#FFFFFF; border-bottom:1px solid #F1F5F9;"></div>
+              <div class="in">
+                <div class="nm">Oq</div>
+                <div class="code">HEX #FFFFFF<br>RGB 255 · 255 · 255</div>
+                <div class="use">Yozuv va belgi to'q fonda.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 06 TIPOGRAFIKA ============ -->
+        <section class="section">
+          <div class="sec-head"><span class="num">06</span><h1>Tipografika</h1></div>
+          <p class="lead">Brend shrifti — <b>Plus Jakarta Sans</b>. Yozuv doim ExtraBold 800, harf oralig'i −0.04em; boshqa shrift yoki vazn bilan terish mumkin emas.</p>
+          <div class="wlist">
+            <div class="wrow">
+              <span style="font-size:30px; font-weight:800; letter-spacing:-0.02em;">ExtraBold 800</span>
+              <span class="wtag">Logo · sarlavhalar</span>
+            </div>
+            <div class="wrow">
+              <span style="font-size:30px; font-weight:700; letter-spacing:-0.01em;">Bold 700</span>
+              <span class="wtag">Kichik sarlavha · urg'u</span>
+            </div>
+            <div class="wrow">
+              <span style="font-size:30px; font-weight:600;">SemiBold 600</span>
+              <span class="wtag">Tugmalar · yorliqlar</span>
+            </div>
+            <div class="wrow">
+              <span style="font-size:30px; font-weight:500;">Medium 500</span>
+              <span class="wtag">Asosiy matn</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 07 QO'LLANILISHI ============ -->
+        <section class="section">
+          <div class="sec-head"><span class="num">07</span><h1>Qo'llanilishi</h1></div>
+          <div class="grid2">
+            <div class="panel">
+              <div class="cap">Ilova ikonkasi</div>
+              <div style="display:flex; align-items:flex-end; gap:16px; margin-top:16px;">
+                <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                  <div style="width:76px; height:76px; border-radius:20px; background:#0A2440; display:flex; align-items:center; justify-content:center;"><svg class="zm-navy" width="68" height="68" aria-hidden="true"><use href="#zmark-lip"></use></svg></div>
+                  <div style="font-size:10px; color:#94A3B8;">76px</div>
+                </div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                  <div style="width:48px; height:48px; border-radius:13px; background:#0A2440; display:flex; align-items:center; justify-content:center;"><svg class="zm-navy" width="43" height="43" aria-hidden="true"><use href="#zmark"></use></svg></div>
+                  <div style="font-size:10px; color:#94A3B8;">48px</div>
+                </div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                  <div style="width:32px; height:32px; border-radius:9px; background:#0A2440; display:flex; align-items:center; justify-content:center;"><svg class="zm-navy" width="29" height="29" aria-hidden="true"><use href="#zmark"></use></svg></div>
+                  <div style="font-size:10px; color:#94A3B8;">32px</div>
+                </div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                  <div style="width:24px; height:24px; border-radius:7px; background:#0A2440; display:flex; align-items:center; justify-content:center;"><svg class="zm-navy" width="22" height="22" aria-hidden="true"><use href="#zmark"></use></svg></div>
+                  <div style="font-size:10px; color:#94A3B8;">24px</div>
+                </div>
+              </div>
+              <div style="font-size:12px; line-height:1.55; color:#4A5568; margin-top:14px;">Fon doim to'q navy, varaq oq. Android adaptive icon: <b>foreground</b> — belgi 432px, <b>background</b> — #0A2440.</div>
+            </div>
+            <div class="panel" style="display:flex; flex-direction:column;">
+              <div class="cap">Ilova sarlavhasi</div>
+              <div style="background:#fff; border:1px solid #EEF1F5; border-radius:12px; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; margin-top:16px;">
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <svg class="zm-light" width="26" height="26" aria-hidden="true"><use href="#zmark"></use></svg>
+                  <div class="lockup" style="font-size:21px; color:#12305A;">Zeh<span class="li">ı<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+                </div>
+                <div style="display:flex; gap:5px;"><div style="width:6px; height:6px; border-radius:50%; background:#CBD5DF;"></div><div style="width:6px; height:6px; border-radius:50%; background:#CBD5DF;"></div><div style="width:6px; height:6px; border-radius:50%; background:#CBD5DF;"></div></div>
+              </div>
+              <div style="background:#0A2440; border-radius:12px; padding:22px; display:flex; flex-direction:column; align-items:center; gap:10px; margin-top:12px; flex:1; justify-content:center;">
+                <svg class="zm-navy" width="40" height="40" aria-hidden="true"><use href="#zmark-lip"></use></svg>
+                <div class="lockup" style="font-size:24px; color:#fff;">Zeh<span class="li">ı<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+                <div style="font-size:9px; font-weight:700; letter-spacing:0.26em; text-transform:uppercase; color:#5E7FA3;">Splash ekran</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="wide">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="cap">Google Play banner</div>
+            <div style="font-size:10px; font-weight:700; color:#94A3B8;">1024 × 500</div>
+          </div>
+          <div style="aspect-ratio:1024/500; background:#0A2440; border-radius:12px; margin-top:16px; display:flex; align-items:center; justify-content:center; gap:38px;">
+            <svg class="zm-navy" width="124" height="124" style="flex-shrink:0;" aria-hidden="true"><use href="#zmark-lip"></use></svg>
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <div class="lockup" style="font-size:58px; color:#fff;">Zeh<span class="li">ı<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+              <div style="font-size:16px; font-weight:700; color:#6FC5FB;">O'qituvchilarni attestatsiyaga tayyorlaydi</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wide" style="display:flex; align-items:center; gap:24px;">
+          <div style="flex:1.2; background:#F7F6F1; border-radius:12px; padding:34px 20px; display:flex; align-items:center; justify-content:center; gap:9px;">
+            <svg class="zm-light" width="23" height="23" style="flex-shrink:0;" aria-hidden="true"><use href="#zmark"></use></svg>
+            <div class="lockup" style="font-size:23px; color:#12305A;">Zeh<span class="li">ı<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#zmark"></use></svg></span>n</div>
+            <div style="font-size:14px; font-weight:600; color:#94A3B8; margin-left:4px;">v2.0</div>
+          </div>
+          <div style="flex:1;">
+            <div class="cap">Sozlamalar · profil footeri</div>
+            <div style="font-size:12px; line-height:1.6; color:#4A5568; margin-top:8px;">Sozlamalar, profil va shu kabi bo'limlarda yozuv <b>yolg'iz turmaydi</b> — chap tomonida belgi (navy doira, azure buklama) qo'yiladi. Versiya raqami kulrang, yozuvdan 12px masofada.</div>
+          </div>
+        </div>
+
+        <div class="wide" style="display:flex; align-items:center; gap:24px;">
+          <div style="flex:1.2; background:#F7F6F1; border-radius:12px; padding:26px 20px; display:flex; flex-direction:column; align-items:center; gap:14px;">
+            <div style="position:relative; width:54px; height:54px; border-radius:50%; background:#fff; box-shadow:0 6px 18px rgba(18,48,90,0.16); display:flex; align-items:center; justify-content:center;">
+              <svg width="54" height="54" viewBox="0 0 54 54" style="position:absolute; left:0; top:0;" aria-hidden="true"><circle cx="27" cy="27" r="24" fill="none" stroke="#E4F3FC" stroke-width="3"></circle><path d="M27 3 A24 24 0 0 1 51 27" fill="none" stroke="#05A3FA" stroke-width="3" stroke-linecap="round"></path></svg>
+              <svg class="zm-light" width="26" height="26" aria-hidden="true"><use href="#zmark"></use></svg>
+            </div>
+            <div style="width:120px; height:8px; border-radius:99px; background:#E8E6DF;"></div>
+            <div style="width:88px; height:8px; border-radius:99px; background:#EEECE5;"></div>
+          </div>
+          <div style="flex:1;">
+            <div class="cap">Yangilash indikatori (pull-to-refresh)</div>
+            <div style="font-size:12px; line-height:1.6; color:#4A5568; margin-top:8px;">Ekranni tepadan pastga tortib yangilashda <b>eski ToifaPro logosi olib tashlanadi</b>. O'rniga: oq doira ichida belgi, atrofida azure (#05A3FA) progress halqa — 1.2s tezlikda aylanadi. Belgi 32px dan kichik bo'lsa — bitta buklama.</div>
+          </div>
+        </div>
+
+        <!-- ============ 08 ANIMATSIYA ============ -->
+        <section class="section">
+          <div class="sec-head"><span class="num">08</span><h1>Splash animatsiyasi</h1></div>
+          <p class="lead">Umumiy davomiylik — <b>900ms</b>, bir marta o'ynaydi, takrorlanmaydi.</p>
+          <div class="timeline">
+            <div class="tl-head"><span>Vaqt</span><span>Element va harakat</span><span>Easing</span></div>
+            <div class="tl-row" style="border-top:none;">
+              <span class="tm">0–350ms</span>
+              <span class="mv">Belgi: scale 0.6 → 1.0, opacity 0 → 1</span>
+              <span class="es">easeOutBack</span>
+            </div>
+            <div class="tl-row">
+              <span class="tm">250–600ms</span>
+              <span class="mv">Yozuv harflari: pastdan 12px, ketma-ket (stagger 40ms)</span>
+              <span class="es">easeOutCubic</span>
+            </div>
+            <div class="tl-row">
+              <span class="tm">600–900ms</span>
+              <span class="mv">Tagline: opacity 0 → 1</span>
+              <span class="es">linear</span>
+            </div>
+          </div>
+          <div class="gnote">Texnik topshiriq va tayyor fayllar: <b>design_handoff_toifapro_logo</b> paketida (PNG/SVG, adaptive icon, favicon, splash 1080×1920, banner 1024×500).</div>
+        </section>
+
+        <!-- ============ 09 IJTIMOIY TARMOQLAR ============ -->
+        <section class="section">
+          <div class="sec-head"><span class="num">09</span><h1>Ijtimoiy tarmoqlar</h1></div>
+          <div class="grid2">
+            <div class="panel">
+              <div class="cap">Avatar (Telegram, Instagram)</div>
+              <div style="display:flex; align-items:center; gap:18px; margin-top:16px;">
+                <div style="width:84px; height:84px; border-radius:50%; background:#0A2440; display:flex; align-items:center; justify-content:center;"><svg class="zm-navy" width="66" height="66" aria-hidden="true"><use href="#zmark-lip"></use></svg></div>
+                <div style="width:44px; height:44px; border-radius:50%; background:#0A2440; display:flex; align-items:center; justify-content:center;"><svg class="zm-navy" width="36" height="36" aria-hidden="true"><use href="#zmark"></use></svg></div>
+                <div style="font-size:12px; line-height:1.6; color:#4A5568; flex:1;">Doira ichida <b>faqat belgi</b> — yozuv avatarga sig'maydi. Fon to'q navy, kichik o'lchamda bitta buklama.</div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="cap">Post shabloni</div>
+              <div style="margin-top:16px; width:200px; aspect-ratio:1; border-radius:12px; background:#0A2440; padding:18px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:space-between;">
+                <svg class="zm-navy" width="26" height="26" aria-hidden="true"><use href="#zmark"></use></svg>
+                <div>
+                  <div style="font-size:15px; font-weight:800; color:#fff; line-height:1.3;">Attestatsiyaga 30 kun qoldi</div>
+                  <div style="font-size:9px; font-weight:700; color:#6FC5FB; margin-top:6px;">zehin.uz</div>
+                </div>
+              </div>
+              <div style="font-size:12px; line-height:1.6; color:#4A5568; margin-top:12px;">Belgi chap yuqorida 1X maydonda, sarlavha pastda, azure faqat urg'u uchun.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 10 SERTIFIKAT VA HUJJATLAR ============ -->
+        <section class="section">
+          <div class="sec-head"><span class="num">10</span><h1>Sertifikat va hujjatlar</h1></div>
+          <div class="row mt22" style="align-items:stretch;">
+            <div style="flex:1.3; border:1px solid #E2E8F0; border-radius:14px; background:#FDFCF9; padding:28px; display:flex; flex-direction:column;">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <svg class="zm-light" width="20" height="20" aria-hidden="true"><use href="#zmark"></use></svg>
+                  <span style="font-size:14px; font-weight:800; letter-spacing:-0.02em; color:#12305A;">Zehin</span>
+                </div>
+                <span style="font-size:8px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#94A3B8;">Natija varaqasi</span>
+              </div>
+              <div style="border-top:1px solid #E8E6DF; margin-top:14px; padding-top:14px; flex:1;">
+                <div style="width:150px; height:7px; border-radius:99px; background:#E8E6DF;"></div>
+                <div style="width:110px; height:7px; border-radius:99px; background:#EEECE5; margin-top:8px;"></div>
+                <div style="display:flex; gap:10px; margin-top:16px;">
+                  <div style="flex:1; height:34px; border-radius:8px; background:#F4F3EF;"></div>
+                  <div style="flex:1; height:34px; border-radius:8px; background:#F4F3EF;"></div>
+                </div>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:14px;">
+                <div style="font-size:8px; color:#94A3B8;">zehin.uz</div>
+                <svg class="zm-light" width="26" height="26" style="opacity:0.18;" aria-hidden="true"><use href="#zmark"></use></svg>
+              </div>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; gap:12px;">
+              <div class="ncard"><b>Sarlavhada:</b> belgi 20px + «Zehin» yozuvi, chap yuqori burchak.</div>
+              <div class="ncard"><b>Muhr/vatermark:</b> belgi 18% shaffoflikda, o'ng past burchak. PDF natija varaqasi, diplom va ma'lumotnomalarda.</div>
+              <div class="ncard"><b>Rasmiy hujjat</b> oq fonda — logo doim navy (#12305A), rangli fon ishlatilmaydi.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 11 OHANG ============ -->
+        <section class="section">
+          <div class="sec-head"><span class="num">11</span><h1>Ohang — qanday gapiramiz</h1></div>
+          <p class="lead">Zehin o'qituvchi bilan <b>hamkasb kabi</b> gaplashadi: hurmat bilan, aniq, ortiqcha hayajonsiz. Siz-lab murojaat, buyruq ohangi yo'q.</p>
+          <div class="grid2">
+            <div class="tone" style="border:1px solid #D9F0E4; background:#F4FBF7;">
+              <div class="lbl" style="color:#10B981;">✓ Shunday</div>
+              <div class="ex">«Natijangiz tayyor — 87 ball»<br>«Bugungi mashg'ulot: Pedagogika, 15 savol»<br>«3 kun ketma-ket — davom eting»</div>
+            </div>
+            <div class="tone" style="border:1px solid #F5D9D9; background:#FDF6F6;">
+              <div class="lbl" style="color:#E5484D;">✕ Bunday emas</div>
+              <div class="ex">«Tabriklaymiz!!! Siz zo'rsiz! 🎉»<br>«URA! Yangi daraja ochildi!»<br>«Testni YECHMASANGIZ toifadan qolasiz»</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="fnote"><b>Raqam — asosiy dalil.</b> Ball, foiz, kun soni aniq ko'rsatiladi; «ajoyib natija» kabi mavhum maqtov ishlatilmaydi.</div>
+            <div class="fnote"><b>Emoji ishlatilmaydi</b> — interfeys, push va rasmiy postlarda. Istisno: Telegram kanalda kamdan-kam, faqat neytral belgi.</div>
+          </div>
+        </section>
+
+        <!-- ============ 12 UI KOMPONENTLAR ============ -->
+        <section class="section">
+          <div class="sec-head"><span class="num">12</span><h1>Ilova interfeysi</h1></div>
+          <p class="lead">Interfeys ranglari brend palitrasidan keladi: aksent — <b>#0E97E0</b>, gradient ishlatilmaydi. Kunduz foni iliq qog'oz (#F4F3EF), tun — to'q navy (#070B16).</p>
+          <div class="grid3">
+            <div class="uic">
+              <div class="cap12">Asosiy tugma</div>
+              <div style="margin-top:14px; background:#0E97E0; border-radius:12px; padding:13px 0; text-align:center; font-size:14px; font-weight:700; color:#fff;">Testni boshlash</div>
+              <div class="unote">Sof azure, gradientsiz. Matn oq, 600–700 vazn.</div>
+            </div>
+            <div class="uic">
+              <div class="cap12">Ikkilamchi</div>
+              <div style="margin-top:14px; background:rgba(14,151,224,0.08); border:1px solid rgba(14,151,224,0.35); border-radius:12px; padding:13px 0; text-align:center; font-size:14px; font-weight:700; color:#0B79B8;">Natijani ko'rish</div>
+              <div class="unote">Azure 8% fon + 35% chegara, matn #0B79B8.</div>
+            </div>
+            <div class="uic">
+              <div class="cap12">Holat ranglari</div>
+              <div style="display:flex; flex-direction:column; gap:8px; margin-top:14px;">
+                <div style="display:flex; align-items:center; gap:8px;"><div style="width:14px; height:14px; border-radius:4px; background:#10B981;"></div><span style="font-size:12px; color:#1E2A3A;">To'g'ri · #10B981</span></div>
+                <div style="display:flex; align-items:center; gap:8px;"><div style="width:14px; height:14px; border-radius:4px; background:#EF4444;"></div><span style="font-size:12px; color:#1E2A3A;">Xato · #EF4444</span></div>
+                <div style="display:flex; align-items:center; gap:8px;"><div style="width:14px; height:14px; border-radius:4px; background:#F59E0B;"></div><span style="font-size:12px; color:#1E2A3A;">Ogohlantirish · #F59E0B</span></div>
+              </div>
+              <div class="unote">To'liq token bloki: <b>IQRO yangi ranglar.css</b></div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </td></tr></tbody>
+    <tfoot><tr><td>
+      <div class="ftr-space">
+        <footer class="page-footer">
+          <span>Zehin · Brend qo'llanmasi</span>
+          <span>v1.0 · 2026</span>
+        </footer>
+      </div>
+    </td></tr></tfoot>
+  </table>
+</div>
+
+</body>
+</html>
