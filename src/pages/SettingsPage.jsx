@@ -15,7 +15,7 @@ import { PWAContext } from '../context/PWAContext';
 import { db, auth } from '../firebase';
 import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
 import { deleteUser, updateProfile } from 'firebase/auth';
-import { APP_VERSION } from '../config';
+import { APP_VERSION, SUPPORT_URL } from '../config';
 import { enablePush, pushPermission } from '../services/push';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
 import EditProfileModal from '../components/profile/EditProfileModal';
@@ -243,7 +243,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
               <div className="pp-support-title">{t('settings.helpTitle')}</div>
               <div className="pp-support-text">{t('settings.helpText')}</div>
             </div>
-            <button onClick={() => window.open('https://t.me/Toifapro?direct', '_blank')} className="pp-support-btn">
+            <button onClick={() => window.open(SUPPORT_URL, '_blank')} className="pp-support-btn">
               {t('settings.helpCta')}
             </button>
           </div>

@@ -10,7 +10,8 @@ export const APP_SUBTITLE = 'Attestatsiya platformasi';
 export const EXAM_LABEL = EXAM_DATE ? '13 May — Malaka toifa imtihoni' : 'Zehin — attestatsiya platformasi';
 export const EXAM_GOAL_SCORE = 70;
 export const APP_URL = 'https://toifapro-t41p.vercel.app'; // Haqiqiy domen (agar o'zgarsa shu yerni tahrirlaysiz)
-export const SUPPORT_URL = 'https://t.me/Toifapro'; // Qo'llab-quvvatlash / Biz bilan bog'lanish Telegram kanali
+export const SUPPORT_URL = 'https://t.me/zehinuz?direct'; // Shaxsiy murojaat (kanal DM) — support, to'lov operatori, huquqiy murojaatlar
+export const CHANNEL_URL = 'https://t.me/zehinuz'; // Rasmiy Telegram kanal — yangiliklar/obuna (murojaat uchun emas)
 
 export const BATCH_SIZE = 50; // Har bir blokdagi savollar soni
 export const MAX_MISTAKES_SAVED = 50; // Maksimal saqlanadigan xatolar soni

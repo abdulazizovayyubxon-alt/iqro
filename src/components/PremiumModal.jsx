@@ -1,6 +1,6 @@
 /**
  * PremiumModal.jsx — To'lov tizimi (Telegram orqali — operator tasdiqlaydi)
- * Oqim: tariflar → to'lov usuli (promokod + Telegram to'lov → t.me/Toifapro)
+ * Oqim: tariflar → to'lov usuli (promokod + Telegram to'lov → operator DM, config.SUPPORT_URL)
  */
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -16,7 +16,7 @@ import { purchasePlan } from '../services/playBilling';
 import { redeemPromo, PROMO_ERRORS } from '../services/promo';
 import { generateClickUrl } from '../services/payment';
 import { AnalyticsEvents } from '../services/analytics';
-import { isPlayBuild } from '../config';
+import { isPlayBuild, SUPPORT_URL } from '../config';
 import RoiBlock from './RoiBlock';
 
 // Default tariflar (Firestore dan yuklanmasa)
@@ -144,7 +144,6 @@ const PremiumModal = ({ isOpen, onClose }) => {
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
   // Play Store build'i — faqat Google Play Billing ko'rsatiladi
   const isAndroidApp = isPlayBuild();
-  const CHANNEL_USERNAME = 'Toifapro';
 
   const handleRedeem = async () => {
     const code = promoCode.trim();
@@ -205,7 +204,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
       // Bunday holatda operator orqali qo'lda faollashtiramiz (Telegram).
       if (amount <= 0) {
         AnalyticsEvents.premiumClick('telegram');
-        window.open(`https://t.me/${CHANNEL_USERNAME}?direct`, '_blank');
+        window.open(SUPPORT_URL, '_blank');
         return;
       }
       AnalyticsEvents.premiumClick('click');
@@ -217,7 +216,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
       }
     } else {
       AnalyticsEvents.premiumClick('telegram');
-      window.open(`https://t.me/${CHANNEL_USERNAME}?direct`, '_blank');
+      window.open(SUPPORT_URL, '_blank');
     }
   };
 

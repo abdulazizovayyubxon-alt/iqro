@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, Send, ShieldCheck, BookOpen, Users, Sparkles } from 'lucide-react';
+import { ArrowLeft, Send, ShieldCheck, BookOpen, Users, Sparkles, Megaphone } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { APP_NAME, SUPPORT_URL } from '../config';
+import { APP_NAME, SUPPORT_URL, CHANNEL_URL } from '../config';
 
-const SUPPORT_HANDLE = 'Toifapro';
+const SUPPORT_HANDLE = 'zehinuz';
 const CARD_ICONS = [BookOpen, ShieldCheck, Users];
 
 export default function AboutPage() {
@@ -59,6 +59,9 @@ export default function AboutPage() {
         <a href={SUPPORT_URL} target="_blank" rel="noopener noreferrer" style={s.contactBtn}>
           <Send size={18} /> {t('aboutPage.telegramBtn', { handle: SUPPORT_HANDLE })}
         </a>
+        <a href={CHANNEL_URL} target="_blank" rel="noopener noreferrer" style={{ ...s.contactBtn, ...s.contactBtnOutline }}>
+          <Megaphone size={18} /> {t('aboutPage.channelBtn')}
+        </a>
 
         <div style={s.footerNote}>
           {t('aboutPage.footer', { app: APP_NAME, year: new Date().getFullYear() })}
@@ -111,7 +114,7 @@ const s = {
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
     width: '100%', boxSizing: 'border-box', marginTop: 12,
     padding: '14px', borderRadius: 14, textDecoration: 'none',
-    background: 'linear-gradient(135deg, #0E97E0, #0284C7)', color: '#fff',
+    background: 'var(--cta)', color: '#fff',
     fontWeight: 700, fontSize: 15,
   },
   contactBtnOutline: {

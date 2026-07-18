@@ -1046,7 +1046,7 @@
     "privacyP4Title": "4. Uchinchi shaxslar va xavfsizlik",
     "privacyP4Body": "Ma'lumotlar sotilmaydi va ijaraga berilmaydi. Ular faqat xizmat ko'rsatuvchi texnologik hamkorlarga minimal hajmda uzatiladi: Google Firebase (ma'lumotlar bazasi va autentifikatsiya), Google Analytics (shaxssizlantirilgan statistika) va to'lov tizimlari (to'lov protsessingi). Almashinuv HTTPS orqali shifrlanadi, bazaga kirish xavfsizlik qoidalari bilan cheklanadi.",
     "privacyP5Title": "5. O'chirish huquqi va aloqa",
-    "privacyP5Body": "Hisobni istalgan vaqtda Sozlamalar → «Hisobni o'chirish» orqali butunlay o'chirishingiz mumkin — zaxira nusxalar ham 30 kun ichida yo'q qilinadi. Savollar uchun rasmiy aloqa kanali: Telegram — https://t.me/Toifapro.",
+    "privacyP5Body": "Hisobni istalgan vaqtda Sozlamalar → «Hisobni o'chirish» orqali butunlay o'chirishingiz mumkin — zaxira nusxalar ham 30 kun ichida yo'q qilinadi. Savollar uchun rasmiy aloqa kanali: Telegram — https://t.me/zehinuz?direct.",
     "privacyFullLink": "To'liq matnni o'qish →",
     "understood": "Tushunarli 🤝",
     "close": "Yopish"
@@ -1193,6 +1193,7 @@
     "contactTitle": "Biz bilan bog'lanish",
     "contactText": "Savol, taklif yoki muammo bo'lsa — bemalol murojaat qiling. Odatda 24 soat ichida javob beramiz.",
     "telegramBtn": "Telegram orqali yozish (@{{handle}})",
+    "channelBtn": "Rasmiy Telegram kanalimiz",
     "footer": "{{app}} jamoasi · O'zbekiston · {{year}}"
   },
   "deleteAccount": {
@@ -1217,7 +1218,7 @@
     "title": "Maxfiylik siyosati va shaxsiy ma'lumotlarni qayta ishlash kelishuvi",
     "updated": "Amaldagi tahrir: 2026-yil 6-iyul",
     "h1": "1. Umumiy qoidalar va huquqiy asoslar",
-    "p1": "Ushbu Maxfiylik siyosati (keyingi o'rinlarda — «Siyosat») O'zbekiston Respublikasining 2019-yil 2-iyuldagi O'RQ-547-sonli «Shaxsiy ma'lumotlar to'g'risida»gi Qonuni va boshqa amaldagi qonun hujjatlariga muvofiq ishlab chiqilgan bo'lib, «Zehin» platformasi (keyingi o'rinlarda — «Platforma») ma'muriyati (keyingi o'rinlarda — «Ma'muriyat») tomonidan foydalanuvchilarning (keyingi o'rinlarda — «Foydalanuvchi») shaxsiy ma'lumotlarini to'plash, tizimlashtirish, saqlash, qayta ishlash va himoya qilish tartibini belgilaydi. Platformada ro'yxatdan o'tish yoki undan foydalanish orqali Foydalanuvchi ushbu Siyosat shartlariga va o'z shaxsiy ma'lumotlarining quyida belgilangan tartibda qayta ishlanishiga ixtiyoriy ravishda rozilik bildiradi. Shartlarga rozi bo'lmagan taqdirda Platformadan foydalanishni to'xtatish so'raladi. Siyosat yuzasidan murojaatlar uchun rasmiy aloqa kanali: Telegram — https://t.me/Toifapro.",
+    "p1": "Ushbu Maxfiylik siyosati (keyingi o'rinlarda — «Siyosat») O'zbekiston Respublikasining 2019-yil 2-iyuldagi O'RQ-547-sonli «Shaxsiy ma'lumotlar to'g'risida»gi Qonuni va boshqa amaldagi qonun hujjatlariga muvofiq ishlab chiqilgan bo'lib, «Zehin» platformasi (keyingi o'rinlarda — «Platforma») ma'muriyati (keyingi o'rinlarda — «Ma'muriyat») tomonidan foydalanuvchilarning (keyingi o'rinlarda — «Foydalanuvchi») shaxsiy ma'lumotlarini to'plash, tizimlashtirish, saqlash, qayta ishlash va himoya qilish tartibini belgilaydi. Platformada ro'yxatdan o'tish yoki undan foydalanish orqali Foydalanuvchi ushbu Siyosat shartlariga va o'z shaxsiy ma'lumotlarining quyida belgilangan tartibda qayta ishlanishiga ixtiyoriy ravishda rozilik bildiradi. Shartlarga rozi bo'lmagan taqdirda Platformadan foydalanishni to'xtatish so'raladi. Siyosat yuzasidan murojaatlar uchun rasmiy aloqa kanali: Telegram — https://t.me/zehinuz?direct.",
     "h2": "2. Qayta ishlanadigan ma'lumotlar tarkibi",
     "p2": "Ma'muriyat faqat xizmat ko'rsatish uchun zarur bo'lgan minimal hajmdagi ma'lumotlarni to'playdi. Platformadan foydalanish davomida quyidagi ma'lumotlar qayta ishlanadi:",
     "p2List": [
@@ -1273,7 +1274,7 @@
     "title": "Foydalanish shartlari va ommaviy oferta",
     "updated": "Amaldagi tahrir: 2026-yil 6-iyul",
     "h1": "1. Shartnomaning huquqiy maqomi va tomonlar",
-    "p1": "Ushbu hujjat O'zbekiston Respublikasi Fuqarolik kodeksining 367, 369 va 370-moddalariga muvofiq rasmiy ommaviy oferta hisoblanadi. «Zehin» platformasida (keyingi o'rinlarda — «Platforma») ro'yxatdan o'tish, undan foydalanish yoki to'lov qilish orqali jismoniy shaxs (keyingi o'rinlarda — «Foydalanuvchi») ushbu shartlarni to'liq tushungan va so'zsiz qabul qilgan (aksept qilgan) hisoblanadi; bu qog'ozda imzolangan ikki tomonlama shartnoma bilan teng yuridik kuchga ega. Platforma pedagog xodimlarning attestatsiya va malaka toifasini oshirish imtihonlariga mustaqil tayyorgarligi uchun mo'ljallangan bo'lib, undan voyaga yetgan shaxslar foydalanishi nazarda tutilgan. Platforma ma'muriyati (keyingi o'rinlarda — «Ma'muriyat») bilan rasmiy aloqa kanali: Telegram — https://t.me/Toifapro.",
+    "p1": "Ushbu hujjat O'zbekiston Respublikasi Fuqarolik kodeksining 367, 369 va 370-moddalariga muvofiq rasmiy ommaviy oferta hisoblanadi. «Zehin» platformasida (keyingi o'rinlarda — «Platforma») ro'yxatdan o'tish, undan foydalanish yoki to'lov qilish orqali jismoniy shaxs (keyingi o'rinlarda — «Foydalanuvchi») ushbu shartlarni to'liq tushungan va so'zsiz qabul qilgan (aksept qilgan) hisoblanadi; bu qog'ozda imzolangan ikki tomonlama shartnoma bilan teng yuridik kuchga ega. Platforma pedagog xodimlarning attestatsiya va malaka toifasini oshirish imtihonlariga mustaqil tayyorgarligi uchun mo'ljallangan bo'lib, undan voyaga yetgan shaxslar foydalanishi nazarda tutilgan. Platforma ma'muriyati (keyingi o'rinlarda — «Ma'muriyat») bilan rasmiy aloqa kanali: Telegram — https://t.me/zehinuz?direct.",
     "h2": "2. Hisob qaydnomasi va kirish xavfsizligi",
     "p2": "Platformaga kirish telefon raqami va parol asosida amalga oshiriladi. Foydalanuvchi quyidagilarga majbur:",
     "p2List": [
@@ -1303,9 +1304,9 @@
     "h5": "5. To'lov tartibi va mablag'ni qaytarish (Refund) siyosati",
     "p5": "To'lovlar O'zbekiston milliy valyutasida (so'm) Platformada ko'rsatilgan usullar orqali amalga oshiriladi:",
     "p5List": [
-      "To'lov usullari: rasmiy Telegram operatori (https://t.me/Toifapro) orqali, shuningdek Platformaga ulangan to'lov tizimlari (Click, Payme va boshqalar — joriy mavjud usullar ilovaning to'lov oynasida ko'rsatiladi) orqali;",
+      "To'lov usullari: rasmiy Telegram operatori (https://t.me/zehinuz?direct) orqali, shuningdek Platformaga ulangan to'lov tizimlari (Click, Payme va boshqalar — joriy mavjud usullar ilovaning to'lov oynasida ko'rsatiladi) orqali;",
       "Faollashtirish: to'lov tasdiqlangach, Pro obuna Foydalanuvchi profiliga biriktiriladi. Operator orqali to'lovda faollashtirish qisqa muddat (odatda bir necha daqiqadan bir necha soatgacha) talab qilishi mumkin;",
-      "Qaytarish siyosati: Zehin raqamli ta'lim xizmati bo'lgani uchun obuna faollashtirilgach, xizmat ko'rsatilgan hisoblanadi va to'langan mablag' qaytarilmaydi. Istisno: to'lov qabul qilinib, texnik nosozlik tufayli xizmat umuman faollashmagan holatlar — bunda Ma'muriyat muammoni bartaraf etadi yoki mablag'ni to'liq qaytaradi. Bunday holatda https://t.me/Toifapro orqali murojaat qilish lozim."
+      "Qaytarish siyosati: Zehin raqamli ta'lim xizmati bo'lgani uchun obuna faollashtirilgach, xizmat ko'rsatilgan hisoblanadi va to'langan mablag' qaytarilmaydi. Istisno: to'lov qabul qilinib, texnik nosozlik tufayli xizmat umuman faollashmagan holatlar — bunda Ma'muriyat muammoni bartaraf etadi yoki mablag'ni to'liq qaytaradi. Bunday holatda https://t.me/zehinuz?direct orqali murojaat qilish lozim."
     ],
     "h6": "6. Referral dasturi va promo-kodlar",
     "p6": "Platformada do'stlarni taklif qilish (referral) dasturi va promo-kodlar amal qilishi mumkin. Ular bo'yicha beriladigan chegirma, bonus kunlar va boshqa imtiyozlarning aniq shartlari Platformaning tegishli bo'limlarida e'lon qilinadi. Ma'muriyat dastur shartlarini o'zgartirish, muddatini cheklash hamda soxta hisoblar yoki suiiste'mol aniqlangan taqdirda berilgan imtiyozlarni bekor qilish huquqini saqlab qoladi. Referral bonuslari va chegirmalar pul ko'rinishida to'lanmaydi va naqdlashtirilmaydi.",
@@ -1314,7 +1315,7 @@
     "h8": "8. Mas'uliyatni cheklash (Disclaimer)",
     "p8": "Platforma attestatsiyaga mustaqil tayyorgarlik uchun yordamchi o'quv-metodik vosita bo'lib, davlat organi yoki uning rasmiy resursi hisoblanmaydi. Platformadagi savollar mustaqil ishlab chiqilgan metodik materiallar bo'lib, real imtihon savollari bilan to'liq mos kelishi kafolatlanmaydi. Ma'muriyat testlardagi natijalar asosida real davlat attestatsiyasidan muvaffaqiyatli o'tishni kafolatlamaydi — yakuniy natija Foydalanuvchining shaxsiy tayyorgarligi va sa'y-harakatlariga bog'liq. Texnik profilaktika ishlari, uchinchi tomon xizmatlari (hosting, to'lov tizimlari) yoki internet-provayderlar aybi bilan yuzaga kelgan vaqtinchalik uzilishlar uchun Ma'muriyat javobgar emas, biroq ularni imkon qadar tez bartaraf etishga intiladi.",
     "h9": "9. Nizolarni hal etish va yakuniy qoidalar",
-    "p9": "Tomonlar o'rtasida yuzaga kelgan kelishmovchiliklar avvalo muzokara yo'li bilan (https://t.me/Toifapro orqali yozma murojaat asosida) hal qilinadi; kelishuvga erishilmagan taqdirda nizo O'zbekiston Respublikasi qonunchiligida belgilangan sud tartibida ko'rib chiqiladi. Ushbu oferta e'lon qilingan paytdan kuchga kiradi va muddatsiz amal qiladi. Ma'muriyat shartlarga o'zgartirish kiritish huquqiga ega; yangi tahrir e'lon qilingach Platformadan foydalanishni davom ettirish unga rozilik hisoblanadi. Ofertaning ayrim qoidasi haqiqiy emas deb topilsa, qolgan qoidalari o'z kuchini saqlab qoladi."
+    "p9": "Tomonlar o'rtasida yuzaga kelgan kelishmovchiliklar avvalo muzokara yo'li bilan (https://t.me/zehinuz?direct orqali yozma murojaat asosida) hal qilinadi; kelishuvga erishilmagan taqdirda nizo O'zbekiston Respublikasi qonunchiligida belgilangan sud tartibida ko'rib chiqiladi. Ushbu oferta e'lon qilingan paytdan kuchga kiradi va muddatsiz amal qiladi. Ma'muriyat shartlarga o'zgartirish kiritish huquqiga ega; yangi tahrir e'lon qilingach Platformadan foydalanishni davom ettirish unga rozilik hisoblanadi. Ofertaning ayrim qoidasi haqiqiy emas deb topilsa, qolgan qoidalari o'z kuchini saqlab qoladi."
   },
   "drawer": {
     "shareText": "Zehin — kasbiy attestatsiyaga tayyorgarlik platformasi",
