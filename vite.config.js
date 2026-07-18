@@ -120,7 +120,7 @@ export default defineConfig({
       },
 
       manifest: {
-        name: 'Zehin — Kasbiy Sertifikatlash',
+        name: 'Zehin — Malaka toifa testlari',
         short_name: 'Zehin',
         description: "O'qituvchilar uchun kasbiy sertifikatlash va malaka attestatsiyasiga tayyorgarlik platformasi",
         lang: 'uz',

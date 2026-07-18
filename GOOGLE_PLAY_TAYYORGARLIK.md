@@ -23,7 +23,8 @@
 ## 2. 🔴 MENING (foydalanuvchi) ZIMMAMDAGI — qaror va rasmiylashtirish
 
 - [x] **Yakuniy nom + brend** — **Zehin** qat'iylashtirildi (2026-07-17): manifest, ilova nomi,
-      logo va ekran matnlari yangilandi. Do'kon listingi shu nom bilan tayyorlanadi.
+      logo va ekran matnlari yangilandi. Yakuniy do'kon nomi (2026-07-18):
+      **«Zehin — Malaka toifa testlari»** (PWA manifest, sayt title/og teglari shunga moslandi).
 - [ ] **Click uchun statik-IP server** (VPS, ideal TAS-IX) — webhook shu yerga ko'chadi.
       *(keyinga qoldirildi — ilova bunisiz ham chiqadi, avval Telegram-operator zaxirasi bilan)*
 - [ ] **Google Play Developer hisob** — $25 (bir martalik) + shaxsni tasdiqlash.

@@ -1,6 +1,6 @@
 # Google Play — Do'kon listingi + Data Safety (kod tahlilidan)
 
-> `[NOM]` = yakuniy ilova nomi — **Zehin** (2026-07-17 qat'iylashtirildi).
+> Yakuniy brend nomi — **Zehin** (2026-07-17); do'kon nomi — **«Zehin — Malaka toifa testlari»** (2026-07-18 tasdiqlandi).
 
 ---
 
@@ -42,17 +42,18 @@
 # B) DO'KON LISTINGI (uz + ru)
 
 ## Ilova nomi (≤30 belgi)
-- UZ: `[NOM] — Attestatsiya testlari`
-- RU: `[NOM] — Тесты аттестации`
+- UZ: `Zehin — Malaka toifa testlari` (29 belgi ✓ — **2026-07-18 tasdiqlandi**)
+- RU: `Zehin — Тесты на категорию` (26 belgi; muqobil: `Zehin — Тесты аттестации`)
 
 ## Qisqa tavsif (≤80 belgi)
-- UZ: `O'qituvchilar attestatsiyasiga tayyorgarlik: 40 000+ savol, imtihon rejimi`
-- RU: `Подготовка к аттестации учителей: 40 000+ вопросов, режим экзамена`
+- UZ: `O'qituvchilarni attestatsiyaga tayyorlaydi` *(brend brifi, 2026-07-18)*
+- RU: `Готовит учителей к аттестации`
+- Muqobil (savol soni bilan): `O'qituvchilar attestatsiyasiga tayyorgarlik: 40 000+ savol, imtihon rejimi`
 
 ## To'liq tavsif (UZ)
 
 ```
-[NOM] — o'qituvchilar va ta'lim xodimlari uchun kasbiy attestatsiya va malaka
+Zehin — o'qituvchilar va ta'lim xodimlari uchun malaka toifa (attestatsiya)
 imtihonlariga zamonaviy tayyorgarlik platformasi.
 
 📚 40 000+ savol, 13+ fan bo'yicha
@@ -82,8 +83,8 @@ Premium obuna barcha savollar va imkoniyatlarni ochadi.
 ## To'liq tavsif (RU)
 
 ```
-[NOM] — современная платформа подготовки к профессиональной аттестации и
-квалификационным экзаменам для учителей и работников образования.
+Zehin — современная платформа подготовки к квалификационной (аттестационной)
+категории для учителей и работников образования.
 
 📚 40 000+ вопросов по 13+ предметам
 Каждый предмет разбит по темам — тренируйтесь в нужном разделе.

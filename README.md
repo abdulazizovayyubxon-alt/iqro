@@ -1,6 +1,6 @@
-# Zehin — Kasbiy Sertifikatlash Tayyorgarligi Platformasi
+# Zehin — Malaka toifa testlari (attestatsiya platformasi)
 
-Zehin — CHQBT (Harbiy ta'lim) va Tasviriy san'at fanlaridan o'qituvchilar attestatsiyasi, kasbiy sertifikatlash va bilimini sinash uchun mo'ljallangan zamonaviy, premium dizaynga ega web-platforma.
+Zehin — o'qituvchilar va ta'lim xodimlarini malaka toifa (attestatsiya) imtihonlariga tayyorlaydigan zamonaviy web-platforma (13+ fan, 40 000+ savol).
 
 ## 🚀 Imkoniyatlar
 - **Ikki xil yo'nalish:** CHQBT va Tasviriy san'at yo'nalishlari o'rtasida oson almashish.
