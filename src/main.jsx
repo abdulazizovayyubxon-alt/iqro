@@ -17,6 +17,14 @@ import { initSentry } from './services/sentry'
 initSentry()    // Xatolarni kuzatish (async, lazy)
 initAnalytics() // Google Analytics
 
+// Ilova qobig'i (SPA) har doim tepadan ochiladi: reload'dan keyin brauzer
+// eski scroll o'rnini tiklamasin (aks holda dashboard o'rtasidan ochilib,
+// yuqoridagi fan tanlash "yo'qolib qolgan"dek ko'rinadi). Route ichidagi
+// scroll'ni App.jsx o'zi boshqaradi.
+if ('scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual'
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>

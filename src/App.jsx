@@ -177,6 +177,20 @@ function App() {
     document.title = `${pageName} | Zehin`;
   }, [location.pathname]);
 
+  // ── Route almashganda scroll tepaga qaytadi ──
+  // SPA'da brauzer buni o'zi qilmaydi: chuqur scroll holatida boshqa sahifaga
+  // o'tilsa (masalan Dashboard pastidan Sozlamalarga), yangi sahifa o'sha
+  // chuqurlikda ochilib qolardi. Hujjat ham, ichki konteyner ham tozalanadi.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const sc = document.querySelector('.main-content');
+    if (sc) {
+      // scroll-behavior:smooth CSS'ini chetlab o'tish uchun 'instant'
+      try { sc.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }
+      catch { sc.scrollTop = 0; }
+    }
+  }, [location.pathname]);
+
   // ── Sentry foydalanuvchi konteksti ──
   useEffect(() => {
     if (user) setUser(user);

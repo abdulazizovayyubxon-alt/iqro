@@ -56,11 +56,16 @@ export function RefreshRing({ size = 54, spinning = true, progress = 1, style = 
 
 const THRESHOLD = 64; // shu masofada qo'yib yuborilsa — yangilanadi
 const MAX_PULL = 108;
+// Tortish shu masofadan oshgachgina PTR "jiddiy" hisoblanadi. Ungacha
+// preventDefault chaqirilmaydi — aks holda barmoqning 1-2px pastga titrashi
+// Chrome'da butun gesture uchun tabiiy scroll'ni o'chirib qo'yadi
+// (sahifa "qotib qolgan"dek tuyuladi).
+const SLOP = 12;
 
 /**
  * Ekranni tepadan pastga tortib yangilash. Faqat touch qurilmalarda,
- * .main-content scroll'i eng tepada turganda ishlaydi; ichki scroll'ga
- * ega elementlar (ro'yxat, modal) ustida aralashmaydi.
+ * sahifa eng tepada turganda ishlaydi; ichki scroll'ga ega elementlar
+ * (ro'yxat, modal) ustida aralashmaydi.
  */
 export default function PullToRefresh({ disabled = false }) {
   const [dist, setDist] = useState(0);
@@ -79,6 +84,15 @@ export default function PullToRefresh({ disabled = false }) {
       setDist(v);
     };
 
+    // Haqiqiy scroll qaysi darajada bo'lishidan qat'i nazar (mobilda layout
+    // min-height tufayli HUJJAT scroll qiladi, .main-content esa 0 da qoladi)
+    // "tepadamiz" deyish uchun ikkalasi ham tepada bo'lishi shart. Aks holda
+    // sahifa o'rtasida turib tortish reload'ga olib borardi va reload'dan
+    // keyin sahifa o'rtasidan ochilib, yuqoridagi bloklar "yo'qolib" qolardi.
+    const atTop = () =>
+      scroller.scrollTop <= 0 &&
+      (!document.scrollingElement || document.scrollingElement.scrollTop <= 0);
+
     // Target va .main-content orasida o'z scroll'iga ega element bo'lsa —
     // unga tegmaymiz (bottom-sheet, modal, gorizontal bo'lmagan ro'yxatlar).
     const innerScrollable = (el) => {
@@ -95,35 +109,59 @@ export default function PullToRefresh({ disabled = false }) {
 
     const onStart = (e) => {
       if (e.touches.length !== 1) return;
-      if (scroller.scrollTop > 0) return;
+      if (!atTop()) return;
       if (innerScrollable(e.target)) return;
-      touch.current = { y: e.touches[0].clientY, active: true };
+      // Modal/dialog ustida tortish reload qilmasin (jarayon yo'qolmasligi uchun)
+      if (e.target.closest && e.target.closest('.modal-overlay, [role="dialog"]')) return;
+      touch.current = { y: e.touches[0].clientY, active: true, engaged: false };
     };
 
     const onMove = (e) => {
       const t = touch.current;
       if (!t || !t.active) return;
       const dy = e.touches[0].clientY - t.y;
-      if (dy <= 0 || scroller.scrollTop > 0) {
-        if (dy < -4) t.active = false; // yuqoriga scroll boshlandi — bekor
+
+      // Yuqoriga surildi yoki sahifa tepadan ketdi — bu oddiy scroll,
+      // gesture oxirigacha aralashmaymiz.
+      if (dy < 0 || !atTop()) {
+        t.active = false;
         setPulling(false);
         setD(0);
         return;
       }
-      e.preventDefault(); // scroller tepada — tortishni biz boshqaramiz
+
+      // SLOP'gacha indikator ham, preventDefault ham yo'q — tabiiy scroll saqlanadi
+      if (dy < SLOP) {
+        if (t.engaged) {
+          t.engaged = false;
+          setPulling(false);
+          setD(0);
+        }
+        return;
+      }
+
+      t.engaged = true;
+      if (e.cancelable) e.preventDefault(); // tortishni endi biz boshqaramiz
       setPulling(true);
-      setD(Math.min(dy * 0.45, MAX_PULL));
+      setD(Math.min((dy - SLOP) * 0.45, MAX_PULL));
     };
 
     const onEnd = () => {
       const t = touch.current;
       touch.current = null;
       setPulling(false);
-      if (t && t.active && distRef.current >= THRESHOLD) {
+      if (t && t.engaged && distRef.current >= THRESHOLD) {
         setRefreshing(true);
         setD(THRESHOLD);
         // Halqa aylanishi ko'rinishga ulgursin, keyin qayta yuklash
-        setTimeout(() => window.location.reload(), 600);
+        setTimeout(() => {
+          // Reload HAR DOIM tepadan ochilsin — brauzer eski scroll o'rnini
+          // tiklamasin (aks holda yuqoridagi fan tanlash ko'rinmay qoladi)
+          try { window.history.scrollRestoration = 'manual'; } catch { /* eski brauzer */ }
+          window.scrollTo(0, 0);
+          scroller.scrollTop = 0;
+          window.location.reload();
+        }, 600);
       } else {
         setD(0);
       }
