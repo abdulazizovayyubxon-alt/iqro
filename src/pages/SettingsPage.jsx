@@ -6,7 +6,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Send, Brain, KeyRound, Crown, FileText, Bell, Languages, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Send, Brain, KeyRound, Crown, FileText, Bell, Languages, MessageCircle, Info, Trash2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
@@ -233,7 +233,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
           </div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 8 }}>
+        <div className="sp-sections">
           {/* ═══ YORDAM VA ALOQA ═══ */}
           <div className="pp-support-card">
             <div className="pp-support-icon">
@@ -254,7 +254,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
             <div className="pp-group">
               {/* Til tanlash: O'zbekcha / Ruscha */}
               <div className="pp-menu-item" style={{ cursor: 'default' }}>
-                <div className="pp-menu-icon" style={{ background: 'var(--green-bg)', color: 'var(--green)' }}>
+                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
                   <Languages size={20} />
                 </div>
                 <span className="pp-menu-label">{t('lang.label')}</span>
@@ -379,7 +379,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
                   <Download size={20} />
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <span className="pp-menu-label" style={{ fontWeight: 800, color: 'var(--green)' }}>
+                  <span className="pp-menu-label">
                     {downloadingOffline ? t('settings.offlineLoading') : t('settings.offline')}
                   </span>
                   <span className="pp-menu-sublabel">{t('settings.offlineHint')}</span>
@@ -398,14 +398,14 @@ export default function SettingsPage({ theme, toggleTheme }) {
                   <div className="pp-menu-icon" style={{ background: 'var(--green-bg)', color: 'var(--green)' }}>
                     <Download size={20} />
                   </div>
-                  <span className="pp-menu-label" style={{ fontWeight: 800 }}>{t('settings.installPWA')}</span>
+                  <span className="pp-menu-label">{t('settings.installPWA')}</span>
                   <ChevronRight size={18} className="pp-menu-arrow" />
                 </button>
               )}
 
               <button className="pp-menu-item" onClick={() => setShowGuideModal(true)}>
-                <div className="pp-menu-icon" style={{ background: 'var(--green-bg)', color: 'var(--green)' }}>
-                  <div style={{ fontSize: 16 }}>📖</div>
+                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
+                  <BookOpen size={20} />
                 </div>
                 <span className="pp-menu-label">{t('settings.guide')}</span>
                 <ChevronRight size={18} className="pp-menu-arrow" />
@@ -424,7 +424,13 @@ export default function SettingsPage({ theme, toggleTheme }) {
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
                   <span className="pp-menu-label">{t('settings.premium')}</span>
-                  <span className="pp-menu-sublabel">{t('settings.premiumHint')}</span>
+                  <span className="pp-menu-sublabel" style={user.isTruePremium ? { color: 'var(--green)', fontWeight: 700 } : undefined}>
+                    {user.isTruePremium
+                      ? (user.premiumExpire
+                          ? t('settings.premiumActiveUntil', { date: new Date(user.premiumExpire).toLocaleDateString((i18n.resolvedLanguage || i18n.language) === 'ru' ? 'ru-RU' : 'uz-UZ') })
+                          : t('settings.premiumUnlimited'))
+                      : t('settings.premiumHint')}
+                  </span>
                 </div>
                 <ChevronRight size={18} className="pp-menu-arrow" />
               </button>
@@ -447,7 +453,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
 
               <button className="pp-menu-item" onClick={() => navigate('/about')}>
                 <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
-                  <div style={{ fontSize: 16 }}>ℹ️</div>
+                  <Info size={20} />
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
                   <span className="pp-menu-label">{t('settings.about')}</span>
@@ -464,7 +470,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
             <div className="pp-group">
               <button className="pp-menu-item" onClick={() => setShowDeleteConfirm(true)}>
                 <div className="pp-menu-icon" style={{ background: 'var(--red-bg)', color: 'var(--red)' }}>
-                  <Shield size={20} style={{ transform: 'rotate(180deg)' }} />
+                  <Trash2 size={20} />
                 </div>
                 <span className="pp-menu-label" style={{ color: 'var(--red)' }}>{t('settings.deleteAccount')}</span>
                 <ChevronRight size={18} className="pp-menu-arrow" />
@@ -482,7 +488,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
 
           {/* ═══ VERSIYA ═══ */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, fontSize: 11, color: 'var(--text3)', padding: '4px 0 8px' }}>
-            <BrandLogo size={14} /> · {t('settings.version')} {APP_VERSION}
+            <BrandLogo size={14} /> · {t('settings.version', { version: APP_VERSION })}
           </div>
         </div>
       </div>

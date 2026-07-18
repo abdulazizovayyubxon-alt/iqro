@@ -243,6 +243,16 @@
   }
 }
 
+/* ── Sozlamalar: bo'limlar oralig'i (gap + label/group marginlari qo'shilib ketmasin) ── */
+.sp-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+.sp-sections .pp-group { margin-bottom: 0; }
+.sp-sections .pp-section-label { margin: 14px 6px 8px; }
+
 .pp-section-label {
   font-size: 11.5px;
   font-weight: 700;

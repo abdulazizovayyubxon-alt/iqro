@@ -66,6 +66,8 @@
     "guide": "Foydalanish qo'llanmasi",
     "premium": "Pro obuna",
     "premiumHint": "Imkoniyatlar, narxlar va FAQ",
+    "premiumActiveUntil": "Faol — {{date}} gacha",
+    "premiumUnlimited": "Faol — muddatsiz",
     "privacy": "Maxfiylik siyosati",
     "terms": "Foydalanish shartlari",
     "about": "Biz haqimizda va Aloqa",
