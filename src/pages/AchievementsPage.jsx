@@ -1,15 +1,16 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from '../context/AppContext';
+import { AppContext, getWeekId } from '../context/AppContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS } from '../data/mockData';
-import { TRACKS, reconcileAchievements } from '../data/tracks';
+import { TRACKS, reconcileAchievements, nextMilestones } from '../data/tracks';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Trophy, Target, TrendingUp, AlertCircle, Award, Flame, AlertTriangle } from 'lucide-react';
+import { Trophy, Target, TrendingUp, AlertCircle, Award, Flame, AlertTriangle, Shield } from 'lucide-react';
 import RadialChart from '../components/shared/RadialChart';
 import AmiCard from '../components/achievements/AmiCard';
 import TrackCard from '../components/achievements/TrackCard';
+import NextMilestoneCard from '../components/achievements/NextMilestoneCard';
 import PremiumModal from '../components/PremiumModal';
 
 const AchievementsPage = () => {
@@ -59,6 +60,12 @@ const AchievementsPage = () => {
   const achView = reconcileAchievements(state, state.achievements);
   const ami = achView.achievements.ami;
   const unvonTier = achView.achievements.unvonTier;
+
+  // Keyingi bosqich nomzodlari (eng yaqini birinchi) + haftalik AMI o'sishi
+  const milestones = nextMilestones(state, achView.live);
+  const weeklyDelta = state.amiWeekly?.weekId === getWeekId()
+    ? Math.max(0, ami - (state.amiWeekly.startAmi || 0))
+    : 0;
   const radarAxes = TRACKS.map(tr => {
     const lv = achView.live[tr.id] || { tier: 0, progress: 0 };
     return {
@@ -89,7 +96,7 @@ const AchievementsPage = () => {
       <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 20 }}>{t('achievements.subtitle')}</p>
 
       {/* Akademik mahorat indeksi + radar */}
-      <AmiCard ami={ami} unvonTier={unvonTier} axes={radarAxes} />
+      <AmiCard ami={ami} unvonTier={unvonTier} axes={radarAxes} weeklyDelta={weeklyDelta} />
 
       {/* Global stats summary */}
       <div style={{
@@ -146,6 +153,13 @@ const AchievementsPage = () => {
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.2 }}
           >
+            {/* Keyingi bosqich — eng yaqin daraja + aniq shart + CTA */}
+            <NextMilestoneCard
+              milestone={milestones[0]}
+              second={milestones[1]}
+              onStart={(m) => handleNavigation(m.topicId ?? -1, 'exam')}
+            />
+
             {/* Daily Goal inside Achievements Tab */}
             {(() => {
               const today = new Date().toDateString();
@@ -173,16 +187,28 @@ const AchievementsPage = () => {
                         </div>
                       </div>
                     </div>
-                    {ds > 0 && (
-                      <div style={{
-                        display: 'flex', alignItems: 'center', gap: 5,
-                        background: 'var(--amber-bg)',
-                        color: 'var(--amber)', padding: '4px 10px', borderRadius: 20,
-                        fontWeight: 800, fontSize: 11,
-                      }}>
-                        <Flame size={12} /> {t('achievements.goalStreak', { count: ds })}
-                      </div>
-                    )}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+                      {ds > 0 && (
+                        <div style={{
+                          display: 'flex', alignItems: 'center', gap: 5,
+                          background: 'var(--amber-bg)',
+                          color: 'var(--amber)', padding: '4px 10px', borderRadius: 20,
+                          fontWeight: 800, fontSize: 11,
+                        }}>
+                          <Flame size={12} /> {t('achievements.goalStreak', { count: ds })}
+                        </div>
+                      )}
+                      {(state.streakFreezes ?? 0) > 0 && (
+                        <div style={{
+                          display: 'flex', alignItems: 'center', gap: 5,
+                          background: 'var(--blue-bg)', color: 'var(--accent2)',
+                          padding: '4px 10px', borderRadius: 20,
+                          fontWeight: 700, fontSize: 11,
+                        }}>
+                          <Shield size={12} /> {t('achievements.freezeCount', { count: state.streakFreezes })}
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <div style={{ height: 6, borderRadius: 3, background: 'var(--bg3)', overflow: 'hidden', border: '0.5px solid var(--glass-border)' }}>
                     <div style={{
@@ -191,6 +217,11 @@ const AchievementsPage = () => {
                       transition: 'width 0.5s ease'
                     }} />
                   </div>
+                  {state.streakFrozenDate === today && (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: 'var(--accent2)', fontWeight: 600, marginTop: 8 }}>
+                      <Shield size={12} /> {t('achievements.freezeUsed')}
+                    </div>
+                  )}
                 </div>
               );
             })()}
@@ -203,7 +234,13 @@ const AchievementsPage = () => {
               {TRACKS.map((track) => {
                 const lv = achView.live[track.id] || { tier: 0, progress: 0 };
                 return (
-                  <TrackCard key={track.id} track={track} tier={lv.tier} progress={lv.progress} />
+                  <TrackCard
+                    key={track.id}
+                    track={track}
+                    tier={lv.tier}
+                    progress={lv.progress}
+                    earnedAt={achView.achievements.tracks[track.id]?.earnedAt}
+                  />
                 );
               })}
             </div>

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { RefreshCw, Target, Share2, ArrowRight, FileText } from 'lucide-react';
+import { RefreshCw, Target, Share2, ArrowRight, FileText, BadgeCheck } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import ResultShareCard from '../shared/ResultShareCard';
+import { reconcileAchievements, nextMilestones } from '../../data/tracks';
+import NextMilestoneLine from '../achievements/NextMilestoneLine';
 
 const TestResults = ({
   correctCount,
   amiDelta,
+  gained = [],
   questionsLength,
   topicName,
   state,
@@ -19,6 +22,10 @@ const TestResults = ({
   const { t } = useTranslation();
   const [showShareCard, setShowShareCard] = useState(false);
   const pct = Math.round((correctCount / questionsLength) * 100);
+
+  // Keyingi bosqich — commit'dan keyingi yangilangan holatdan sof hisob
+  const achView = reconcileAchievements(state, state.achievements);
+  const milestone = nextMilestones(state, achView.live)[0] || null;
 
   return (
     <div style={{ background: 'var(--surface)', border: '1px solid var(--glass-border)', borderRadius: 24, padding: '28px 24px 24px', boxShadow: '0 20px 40px rgba(0,0,0,0.06)', position: 'relative', overflow: 'hidden' }}>
@@ -42,12 +49,38 @@ const TestResults = ({
         <div style={{ height: '100%', width: `${pct}%`, background: 'var(--accent)', borderRadius: 2, transition: 'width 0.6s cubic-bezier(0.25,1,0.5,1)' }} />
       </div>
 
+      {/* Sessiyada olingan darajalar — sokin muhr-qatorlar */}
+      {gained.length > 0 && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 14 }}>
+          {gained.map(g => (
+            <div
+              key={`${g.trackId}_${g.tier}`}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 8, padding: '10px 12px',
+                borderRadius: 12, background: 'var(--blue-bg)', color: 'var(--accent2)',
+                fontSize: 12, fontWeight: 700
+              }}
+            >
+              <BadgeCheck size={15} style={{ flexShrink: 0 }} />
+              {t('results.gainedTier', { track: t(`tracks.${g.trackId}.name`), tier: t(`tracks.tier${g.tier}`) })}
+            </div>
+          ))}
+        </div>
+      )}
+
       {(amiDelta ?? 0) > 0 && (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--glass-border)', paddingTop: 14, marginBottom: 22 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--glass-border)', paddingTop: 14, marginBottom: 14 }}>
           <span style={{ fontSize: 12, color: 'var(--text3)' }}>{t('tracks.amiLabel')}</span>
           <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text2)', background: 'var(--bg3)', padding: '4px 12px', borderRadius: 8, border: '1px solid var(--glass-border)' }}>
             {t('results.amiAdded', { delta: amiDelta })}
           </span>
+        </div>
+      )}
+
+      {/* Keyingi bosqich — davom etish uchun aniq sabab */}
+      {milestone && (
+        <div style={{ borderTop: '1px solid var(--glass-border)', paddingTop: 14, marginBottom: 22, textAlign: 'left' }}>
+          <NextMilestoneLine milestone={milestone} />
         </div>
       )}
 

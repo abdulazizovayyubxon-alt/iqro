@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
@@ -8,7 +8,9 @@ import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, Share2, GraduationCap, FileText, BookOpen, ClipboardList, Crosshair, History, Check } from 'lucide-react';
+import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, Share2, GraduationCap, FileText, BookOpen, ClipboardList, Crosshair, History, Check, BadgeCheck } from 'lucide-react';
+import { reconcileAchievements, nextMilestones } from '../data/tracks';
+import NextMilestoneLine from '../components/achievements/NextMilestoneLine';
 import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
 import ObjectionModal from '../components/shared/ObjectionModal';
@@ -114,6 +116,14 @@ const ExamPage = () => {
   const [startTimeMs, setStartTimeMs] = useState(Date.now());
   const [endTime, setEndTime] = useState(null);
   const [examEarnedPoints, setExamEarnedPoints] = useState(0); // haqiqiy yig'ilgan reyting balli
+  const [examGained, setExamGained] = useState([]); // shu imtihonda olingan track darajalari (muhr-qator)
+
+  // Natija ekrani uchun keyingi bosqich — sof hisob; memo, chunki taymer
+  // har soniya re-render qiladi (context state o'zgarmaguncha qayta hisoblanmaydi)
+  const nextMs = useMemo(() => {
+    const { live } = reconcileAchievements(state, state.achievements);
+    return nextMilestones(state, live)[0] || null;
+  }, [state]);
   const [savedSession, setSavedSession] = useState(null); // tugallanmagan imtihon (resume)
   const [showObjectionModal, setShowObjectionModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -604,6 +614,7 @@ const ExamPage = () => {
     results.sessionTime = Object.values(questionTimesRef.current).reduce((a, b) => a + b, 0);
     const commitResult = batchCommitResults(results);
     setExamEarnedPoints(commitResult?.earnedPoints || 0);
+    setExamGained(commitResult?.gained || []);
 
     const correct = results.correctCount;
     const pct = results.accuracy;
@@ -889,6 +900,26 @@ const ExamPage = () => {
               </div>
             </div>
           </div>
+
+          {/* Sessiyada olingan darajalar + keyingi bosqich (akademik sokin) */}
+          {(examGained.length > 0 || nextMs) && (
+            <div style={{
+              background: 'var(--bg2)', border: '1px solid var(--border)',
+              borderRadius: 16, padding: '14px 16px', marginBottom: 16,
+              textAlign: 'left', display: 'flex', flexDirection: 'column', gap: 10
+            }}>
+              {examGained.map(g => (
+                <div
+                  key={`${g.trackId}_${g.tier}`}
+                  style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 700, color: 'var(--accent2)' }}
+                >
+                  <BadgeCheck size={15} style={{ flexShrink: 0 }} />
+                  {t('results.gainedTier', { track: t(`tracks.${g.trackId}.name`), tier: t(`tracks.tier${g.tier}`) })}
+                </div>
+              ))}
+              {nextMs && <NextMilestoneLine milestone={nextMs} />}
+            </div>
+          )}
 
           {/* ⚡ PACING ANALYTICS CARD */}
           {pacing && (

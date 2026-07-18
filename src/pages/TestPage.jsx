@@ -110,6 +110,7 @@ const TestPage = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [amiDelta, setAmiDelta] = useState(0); // shu sessiyada AMI necha ballga o'zgargani
+  const [gainedTiers, setGainedTiers] = useState([]); // shu sessiyada olingan track darajalari (muhr-qator)
   const [selectedBatch, setSelectedBatch] = useState(0);
   const [showBlockPicker, setShowBlockPicker] = useState(false); // Blok tanlash oynasi (blok chipi orqali)
   const [showBlockConfirm, setShowBlockConfirm] = useState(false); // Test o'rtasida blok almashtirish tasdig'i
@@ -649,6 +650,7 @@ const TestPage = () => {
 
     const commitResult = batchCommitResults(results);
     setAmiDelta(commitResult?.amiDelta || 0);
+    setGainedTiers(commitResult?.gained || []);
 
     // Send result to Telegram
     const correctCount = Object.keys(answers).filter(k => answers[k] === questions[parseInt(k)]?.correct).length;
@@ -993,6 +995,7 @@ const TestPage = () => {
             <TestResults
               correctCount={correctCount}
               amiDelta={amiDelta}
+              gained={gainedTiers}
               questionsLength={questions.length}
               topicName={topicName}
               state={state}

@@ -162,6 +162,103 @@ export const TRACKS = [
   }
 ];
 
+// ── Keyingi bosqich nomzodlari ───────────────────────────────────────────
+// Har bir tier<3 yo'nalish uchun keyingi daraja, jonli progress va aniq
+// «qolgan shart» matni (i18n key + params). topicId bo'lsa — CTA o'sha
+// bo'lim bilan mashqqa olib boradi. Sof funksiyalar: faqat state'dan o'qiydi.
+
+const topicsOfActiveCat = (state) => TOPICS.filter(t =>
+  Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory
+);
+
+const NEXT_HINTS = {
+  aniqlik(state, tier) {
+    const target = ANIQLIK_TIERS[tier];
+    let best = { n: 0, acc: 0, p: -1 };
+    Object.values(state.stats || {}).forEach(cat => {
+      const n = cat?.totalAnswered || 0;
+      const acc = n > 0 ? (cat.totalCorrect / n) * 100 : 0;
+      const p = Math.min(n / target.n, acc / target.acc);
+      if (p > best.p) best = { n, acc, p };
+    });
+    if (best.n < target.n) return { key: 'aniqlik.remainQ', params: { count: target.n - best.n, acc: target.acc } };
+    return { key: 'aniqlik.remainAcc', params: { need: target.acc, now: Math.round(best.acc) } };
+  },
+  chuqurlik(state, tier) {
+    const need = CHUQURLIK_TIERS[tier];
+    const mastered = Object.values(state.topicStats || {}).filter(ts => {
+      const n = ts?.answered || 0;
+      return n >= MASTERY_MIN_ANSWERED && (ts.correct / n) * 100 >= MASTERY_MIN_ACC;
+    }).length;
+    // CTA: o'zlashtirishga eng yaqin (lekin hali o'zlashtirilmagan) bo'lim
+    const candidate = topicsOfActiveCat(state)
+      .map(t => {
+        const ts = state.topicStats?.[t.id];
+        const n = ts?.answered || 0;
+        const acc = n > 0 ? (ts.correct / n) * 100 : 0;
+        const done = n >= MASTERY_MIN_ANSWERED && acc >= MASTERY_MIN_ACC;
+        return { id: t.id, n, score: done ? -1 : Math.min(n / MASTERY_MIN_ANSWERED, 1) + Math.min(acc / MASTERY_MIN_ACC, 1) };
+      })
+      .filter(c => c.score >= 0 && c.n > 0)
+      .sort((a, b) => b.score - a.score)[0];
+    return { key: 'chuqurlik.remain', params: { count: Math.max(1, need - mastered) }, topicId: candidate?.id || null };
+  },
+  sinov(state, tier) {
+    const need = SINOV_TIERS[tier];
+    const have = state.examStreak90 || 0;
+    return { key: 'sinov.remain', params: { count: Math.max(1, need - have), have: Math.min(have, need), need } };
+  },
+  qamrov(state, tier) {
+    const cats = topicsOfActiveCat(state);
+    const needPct = QAMROV_TIERS[tier];
+    const practiced = cats.filter(t => (state.topicStats?.[t.id]?.answered || 0) >= COVERAGE_MIN_ANSWERED).length;
+    const needCount = Math.max(1, Math.ceil((needPct / 100) * cats.length) - practiced);
+    // CTA: boshlangan-u tugallanmagan bo'lim (eng oson g'alaba), bo'lmasa yangi bo'lim
+    const candidate = [...cats]
+      .filter(t => (state.topicStats?.[t.id]?.answered || 0) < COVERAGE_MIN_ANSWERED)
+      .sort((a, b) => (state.topicStats?.[b.id]?.answered || 0) - (state.topicStats?.[a.id]?.answered || 0))[0];
+    return { key: 'qamrov.remain', params: { count: needCount }, topicId: candidate?.id || null };
+  },
+  barqarorlik(state, tier) {
+    const need = BARQARORLIK_TIERS[tier];
+    const have = state.dailyStreak || 0;
+    return { key: 'barqarorlik.remain', params: { count: Math.max(1, need - have), have: Math.min(have, need), need } };
+  },
+  samaradorlik(state, tier) {
+    const need = SAMARADORLIK_TIERS[tier];
+    const tq = state.timeStats?.totalQuestions || 0;
+    const tt = state.timeStats?.totalTime || 0;
+    const avg = tq > 0 ? tt / tq : 0;
+    const answered = Object.values(state.stats || {}).reduce((s, c) => s + (c?.totalAnswered || 0), 0);
+    const correct = Object.values(state.stats || {}).reduce((s, c) => s + (c?.totalCorrect || 0), 0);
+    const acc = answered > 0 ? (correct / answered) * 100 : 0;
+    if (avg >= SPEED_MAX_AVG) return { key: 'samaradorlik.remainSpeed', params: { max: SPEED_MAX_AVG, now: Math.round(avg) } };
+    if (answered > 0 && acc < SPEED_MIN_ACC) return { key: 'samaradorlik.remainAcc', params: { need: SPEED_MIN_ACC, now: Math.round(acc) } };
+    return { key: 'samaradorlik.remainQ', params: { count: Math.max(1, need - tq) } };
+  }
+};
+
+// live — reconcileAchievements(...).live. Progress bo'yicha kamayish tartibida
+// (eng yaqin bosqich birinchi); teng bo'lsa AMI og'irligi kattasi ustun.
+export function nextMilestones(state, live) {
+  const out = [];
+  for (const tr of TRACKS) {
+    const lv = live?.[tr.id] || { tier: 0, progress: 0 };
+    if (lv.tier >= 3) continue;
+    let hint = null;
+    try { hint = NEXT_HINTS[tr.id](state, lv.tier); } catch { /* metrika buzilgan — hint'siz nomzod */ }
+    out.push({
+      trackId: tr.id,
+      icon: tr.icon,
+      nextTier: lv.tier + 1,
+      progress: Math.max(0, Math.min(1, lv.progress || 0)),
+      hint: hint ? { key: `tracks.${hint.key}`, params: hint.params } : null,
+      topicId: hint?.topicId || null
+    });
+  }
+  return out.sort((a, b) => (b.progress - a.progress) || (TRACK_WEIGHTS[b.trackId] - TRACK_WEIGHTS[a.trackId]));
+}
+
 // ── Saqlangan yutuqlar bilan solishtirish ────────────────────────────────
 // state       — joriy AppContext holati (metrikalar manbai)
 // stored      — state.achievements (oldingi { ami, unvonTier, tracks } yoki undefined)

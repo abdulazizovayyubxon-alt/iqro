@@ -134,6 +134,7 @@ const buildDefaultState = () => {
     perfectExamsCount: 0,
     examStreak90: 0,                        // ketma-ket 90%+ natijali testlar (sinov yo'nalishi)
     achievements: { ami: 0, unvonTier: 1, unvonSince: null, tracks: {} }, // akademik yutuqlar: daraja + unvon (tracks.js)
+    amiWeekly: { weekId, startAmi: 0 },     // haftalik AMI o'sishi uchun boshlang'ich nuqta (AmiCard «+N shu hafta»)
     [`weekly_${weekId}`]: 0,
     [`monthly_${monthId}`]: 0
   };
@@ -238,6 +239,16 @@ const mergeCloudAndLocal = (cloud, local) => {
     unvonSince: cUnvonTier >= lUnvonTier ? (cloud.achievements?.unvonSince || null) : (local.achievements?.unvonSince || null),
     tracks: mergedTracks
   };
+
+  // Haftalik AMI boshlang'ich nuqtasi: yangiroq hafta g'olib; bir xil hafta —
+  // kichik startAmi olinadi (ikki qurilmadagi o'sish to'liq ko'rinishi uchun).
+  const cW = cloud.amiWeekly, lW = local.amiWeekly;
+  const mergedAmiWeekly = cW && lW
+    ? (cW.weekId === lW.weekId
+      ? { weekId: cW.weekId, startAmi: Math.min(cW.startAmi || 0, lW.startAmi || 0) }
+      : ((cW.weekId || '') > (lW.weekId || '') ? cW : lW))
+    : (cW || lW);
+  if (mergedAmiWeekly) merged.amiWeekly = mergedAmiWeekly;
 
   return merged;
 };
@@ -560,6 +571,12 @@ export const AppProvider = ({ children }) => {
       gainedUnvonOut = gainedUnvon;
       amiDeltaOut = achievements.ami - prevAmi;
 
+      // Haftalik AMI o'sishi: hafta almashganda commit-dan OLDINGI AMI
+      // boshlang'ich nuqta qilib yoziladi.
+      newState.amiWeekly = prev.amiWeekly?.weekId === weekId
+        ? prev.amiWeekly
+        : { weekId, startAmi: prevAmi };
+
       snapshot = newState; // updater toza — faqat hisoblaydi va natijani capture qiladi
       earnedOut = earnedPoints;
       return newState;
@@ -568,9 +585,9 @@ export const AppProvider = ({ children }) => {
     // Yon ta'sir (Firestore yozuvi) setState updater'idan TASHQARIDA bajariladi —
     // React 18 StrictMode updater'ni ikki marta chaqirganda dublikat write bo'lmaydi.
     // Natija debounce kutmasdan darhol saqlanadi (test yakunida yo'qolmasligi uchun).
-    if (!snapshot) return { earnedPoints: earnedOut, amiDelta: amiDeltaOut };
+    if (!snapshot) return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut };
     const currentUser = userRef.current;
-    if (!currentUser) return earnedOut;
+    if (!currentUser) return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut };
     const statRef = doc(db, 'userStats', currentUser.uid);
     setDoc(statRef, prepareStatsForSave(snapshot, currentUser), { merge: true }).catch(err => {
       console.error('Natijalarni saqlashda xatolik:', err);
@@ -609,7 +626,7 @@ export const AppProvider = ({ children }) => {
         read: false
       }).catch(err => console.warn('Unvon bildirishnomasi yozilmadi:', err?.code || err));
     }
-    return { earnedPoints: earnedOut, amiDelta: amiDeltaOut };
+    return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut };
   };
 
   // Shaxsiy mnemonika saqlash

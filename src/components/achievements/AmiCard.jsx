@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import RadarChart from './RadarChart';
+import { UNVON_AMI_THRESHOLDS } from '../../data/tracks';
 
 // Legend uchun kichik romb
 const Diamond = ({ filled }) => (
@@ -23,9 +24,14 @@ const Diamond = ({ filled }) => (
  *   ami: 0-100
  *   unvonTier: 1|2|3 — pasport darajasidagi yagona unvon (tracks.unvonTierFromAmi)
  *   axes: [{ label, value 0..1 }] — RadarChart uchun
+ *   weeklyDelta: shu haftada AMI necha ballga o'sgani (0 bo'lsa ko'rsatilmaydi)
  */
-const AmiCard = ({ ami = 0, unvonTier = 1, axes = [] }) => {
+const AmiCard = ({ ami = 0, unvonTier = 1, axes = [], weeklyDelta = 0 }) => {
   const { t } = useTranslation();
+
+  // Keyingi unvon bosag'asi (tier1→33, tier2→67); tier3 — eng yuqori unvon
+  const nextThreshold = unvonTier < 3 ? UNVON_AMI_THRESHOLDS[unvonTier - 1] : null;
+  const unvonPct = nextThreshold ? Math.min(100, Math.round((ami / nextThreshold) * 100)) : 100;
 
   return (
     <div
@@ -44,6 +50,17 @@ const AmiCard = ({ ami = 0, unvonTier = 1, axes = [] }) => {
           {ami}
         </span>
         <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text3)' }}>/100</span>
+        {weeklyDelta > 0 && (
+          <span
+            style={{
+              marginLeft: 8, padding: '2px 8px', borderRadius: 12,
+              background: 'var(--blue-bg)', color: 'var(--accent2)',
+              fontSize: 11, fontWeight: 700
+            }}
+          >
+            {t('tracks.amiWeekly', { count: weeklyDelta })}
+          </span>
+        )}
       </div>
       <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--text2)', margin: '6px 0 2px' }}>
         {t('tracks.amiLabel')}
@@ -63,6 +80,18 @@ const AmiCard = ({ ami = 0, unvonTier = 1, axes = [] }) => {
         }}
       >
         {t(`tracks.tier${unvonTier}`)}
+      </div>
+
+      {/* Keyingi unvon progressi — ingichka chiziq + qolgan ball */}
+      <div style={{ maxWidth: 210, margin: '2px auto 0' }}>
+        <div style={{ height: 3, borderRadius: 1.5, background: 'var(--bg3)', overflow: 'hidden' }}>
+          <div style={{ width: `${unvonPct}%`, height: '100%', borderRadius: 1.5, background: 'var(--accent)', transition: 'width 0.5s ease' }} />
+        </div>
+        <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--text3)', marginTop: 4 }}>
+          {nextThreshold
+            ? t('tracks.unvonProgress', { unvon: t(`tracks.tier${unvonTier + 1}`), count: Math.max(1, nextThreshold - ami) })
+            : t('tracks.unvonMax')}
+        </div>
       </div>
 
       <RadarChart axes={axes} />

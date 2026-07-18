@@ -276,6 +276,7 @@
     "reportTitle": "Mavzu bo'yicha natija",
     "summary": "{{total}} ta savoldan {{correct}} tasiga to'g'ri javob berdingiz.",
     "amiAdded": "+{{delta}} ball",
+    "gainedTier": "«{{track}}» — {{tier}} darajasi qo'lga kiritildi",
     "nextBlock": "Keyingi blok",
     "retry": "Yana ishlash",
     "workOnMistakes": "Xatolar ustida ishlash",
@@ -526,6 +527,8 @@
     "goalTitle": "Bugungi maqsad",
     "goalProgress": "{{answered}} / {{target}} savol yechildi",
     "goalStreak": "{{count}} kun streak",
+    "freezeCount": "Zaxira: {{count}}",
+    "freezeUsed": "Zaxira ishlatildi — seriya saqlanib qoldi",
     "goalPctDone": "{{pct}}% bajarildi",
     "goalRemaining": "{{count}} ta qoldi",
     "weakTitle": "Zaif Nuqtalaringiz",
@@ -556,6 +559,13 @@
     "tier2": "Mutaxassis",
     "tier3": "Ekspert",
     "maxReached": "Eng yuqori daraja qo'lga kiritilgan",
+    "nextUp": "Keyingi bosqich",
+    "startCta": "Boshlash",
+    "thenNext": "Keyin: {{title}} ({{pct}}%)",
+    "amiWeekly": "+{{count}} shu hafta",
+    "unvonProgress": "«{{unvon}}» unvonigacha: {{count}} ball",
+    "unvonMax": "Eng yuqori unvon qo'lga kiritilgan",
+    "newBadge": "Yangi",
     "notifTitle": "Yangi akademik daraja",
     "notifBody": "Tabriklaymiz! «{{track}}» yo'nalishida siz {{tier}} darajasiga erishdingiz. Bu belgi profilingizdagi Akademik mahorat indeksini oshirdi.",
     "toast": "«{{track}}» yo'nalishida {{tier}} darajasi qo'lga kiritildi",
@@ -566,37 +576,46 @@
       "name": "Aniqlik",
       "hint1": "Izlanuvchi: 50 savolda kamida 70% aniqlik",
       "hint2": "Mutaxassis: 150 savolda kamida 85% aniqlik",
-      "hint3": "Ekspert: 300 savolda kamida 93% aniqlik"
+      "hint3": "Ekspert: 300 savolda kamida 93% aniqlik",
+      "remainQ": "Yana {{count}} ta savol yeching — aniqlikni {{acc}}% dan yuqori saqlang",
+      "remainAcc": "Aniqlikni {{need}}% ga yetkazing (hozir {{now}}%)"
     },
     "chuqurlik": {
       "name": "Chuqurlik",
       "hint1": "Izlanuvchi: 1 bo'limni 90%+ bilan o'zlashtirish (kamida 30 savol)",
       "hint2": "Mutaxassis: 3 bo'limni 90%+ bilan o'zlashtirish",
-      "hint3": "Ekspert: 6 bo'limni 90%+ bilan o'zlashtirish"
+      "hint3": "Ekspert: 6 bo'limni 90%+ bilan o'zlashtirish",
+      "remain": "Yana {{count}} ta bo'limni 90%+ bilan o'zlashtiring (bo'limda kamida 30 savol)"
     },
     "sinov": {
       "name": "Sinov natijasi",
       "hint1": "Izlanuvchi: ketma-ket 2 ta testda 90%+ natija",
       "hint2": "Mutaxassis: ketma-ket 5 ta testda 90%+ natija",
-      "hint3": "Ekspert: ketma-ket 10 ta testda 90%+ natija"
+      "hint3": "Ekspert: ketma-ket 10 ta testda 90%+ natija",
+      "remain": "Yana {{count}} ta ketma-ket 90%+ natijali test ({{have}}/{{need}})"
     },
     "qamrov": {
       "name": "Qamrov",
       "hint1": "Izlanuvchi: fan bo'limlarining 40% ida amaliyot (har birida 10+ savol)",
       "hint2": "Mutaxassis: bo'limlarning 70% ida amaliyot",
-      "hint3": "Ekspert: barcha bo'limlarda amaliyot"
+      "hint3": "Ekspert: barcha bo'limlarda amaliyot",
+      "remain": "Yana {{count}} ta bo'limda amaliyot qiling (har birida 10+ savol)"
     },
     "barqarorlik": {
       "name": "Barqarorlik",
       "hint1": "Izlanuvchi: 7 kun uzluksiz kunlik maqsad",
       "hint2": "Mutaxassis: 15 kun uzluksiz kunlik maqsad",
-      "hint3": "Ekspert: 30 kun uzluksiz kunlik maqsad"
+      "hint3": "Ekspert: 30 kun uzluksiz kunlik maqsad",
+      "remain": "Yana {{count}} kun kunlik maqsadni bajaring ({{have}}/{{need}})"
     },
     "samaradorlik": {
       "name": "Samaradorlik",
       "hint1": "Izlanuvchi: 100 savolda o'rtacha 45 soniyadan tez va 80%+ aniqlik",
       "hint2": "Mutaxassis: 300 savolda o'rtacha 45 soniyadan tez va 80%+ aniqlik",
-      "hint3": "Ekspert: 600 savolda o'rtacha 45 soniyadan tez va 80%+ aniqlik"
+      "hint3": "Ekspert: 600 savolda o'rtacha 45 soniyadan tez va 80%+ aniqlik",
+      "remainQ": "Yana {{count}} ta savol — tezlik va aniqlikni saqlagan holda",
+      "remainSpeed": "O'rtacha vaqtni {{max}} soniyadan pastga tushiring (hozir {{now}} s)",
+      "remainAcc": "Umumiy aniqlikni {{need}}% ga yetkazing (hozir {{now}}%)"
     }
   },
   "referral": {

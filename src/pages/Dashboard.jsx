@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
@@ -11,6 +11,8 @@ import GiftBox from '../components/shared/GiftBox';
 import PremiumModal from '../components/PremiumModal';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
 import { TOPICS, SUBJECTS } from '../data/mockData';
+import { reconcileAchievements, nextMilestones } from '../data/tracks';
+import NextMilestoneLine from '../components/achievements/NextMilestoneLine';
 import {
   Play, Brain, GraduationCap,
   ChevronRight, Clock, Target,
@@ -55,6 +57,12 @@ const Dashboard = () => {
   const [questionMeta, setQuestionMeta] = useState(null);
   const [priceFrom, setPriceFrom] = useState(DEFAULT_PRICE_FROM);
   const [resumeSession, setResumeSession] = useState(null);
+
+  // Keyingi bosqich — yutuqlar bo'limiga sokin kirish nuqtasi (sof hisob)
+  const nextMs = useMemo(() => {
+    const { live } = reconcileAchievements(state, state.achievements);
+    return nextMilestones(state, live)[0] || null;
+  }, [state]);
 
   // Fan bo'yicha savol soni (ishonch badge) — admin-publish yozadi
   useEffect(() => {
@@ -380,6 +388,13 @@ const Dashboard = () => {
           );
         })}
       </div>
+
+      {/* ── KEYINGI BOSQICH — yutuqlar bo'limiga kirish nuqtasi ── */}
+      {nextMs && (
+        <div className="glass-panel" style={{ padding: '12px 14px', marginTop: 14 }}>
+          <NextMilestoneLine milestone={nextMs} onClick={() => navigate('/achievements')} />
+        </div>
+      )}
 
       {/* ── BO'LIMLAR XARITASI ── */}
       <div className="dashboard-section-label">{t('dashboard.sectionsMap')}</div>
