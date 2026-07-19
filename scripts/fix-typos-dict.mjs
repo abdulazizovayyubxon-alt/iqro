@@ -52,6 +52,8 @@ const DICT = [
   ['detalar', 'detallar'],  // detal+lar (detalarning/detalarni/detalarga)
   ['komunikativ', 'kommunikativ'],
   ['kontast', 'kontrast'],  // LLM #1266 da "qo'shni"→"kontast" xato kiritgan; to'g'risi kontrast
+  // — info skaneri topgan (matni→matnni RAD: izafat "matni" ≠ tushum "matnni") —
+  ['ikilik', 'ikkilik'], ['protsesor', 'protsessor'],
 ];
 
 const SPELLING_STEM = /(imlo|to'g'ri yozilgan|xato yozilgan|to‘g‘ri yozilgan|xato yozil|qaysi so'z|qaysi so‘z)/i;
