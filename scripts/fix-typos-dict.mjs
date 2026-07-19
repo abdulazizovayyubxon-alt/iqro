@@ -54,6 +54,8 @@ const DICT = [
   ['kontast', 'kontrast'],  // LLM #1266 da "qo'shni"→"kontast" xato kiritgan; to'g'risi kontrast
   // — info skaneri topgan (matni→matnni RAD: izafat "matni" ≠ tushum "matnni") —
   ['ikilik', 'ikkilik'], ['protsesor', 'protsessor'],
+  // — geografiya skaneri (so'ngi→so'nggi RAD: "so'ngi"=uning so'ngi ham bo'ladi) —
+  ['zonaligi', 'zonalligi'], ['hududa', 'hududda'],
 ];
 
 const SPELLING_STEM = /(imlo|to'g'ri yozilgan|xato yozilgan|to‘g‘ri yozilgan|xato yozil|qaysi so'z|qaysi so‘z)/i;
