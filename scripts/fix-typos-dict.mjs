@@ -73,6 +73,15 @@ const DICT = [
   ['ikilamchi', 'ikkilamchi'], ['aparati', 'apparati'],
   // — mtt_psixolog skaneri —
   ['pasiv', 'passiv'],
+  // — 3 yangi fan (kimyo/rus_tili/ingliz) LLM bir-o'tish nomzodlaridan vetdan o'tganlar —
+  // (inglizcha matnga xavfsiz: bu yozuvlar ingliz tilida mavjud emas)
+  ['labaratoriya', 'laboratoriya'],
+  ['differentsial', 'differensial'],
+  ['pasif', 'passiv'],
+  ['sosial', 'sotsial'],
+  ['xozirgi', 'hozirgi'],
+  ['intrinsek', 'intrinsik'],
+  ['mojoro', 'mojaro'],  // mojoroni/mojorolar ham
 ];
 
 const SPELLING_STEM = /(imlo|to'g'ri yozilgan|xato yozilgan|to‘g‘ri yozilgan|xato yozil|qaysi so'z|qaysi so‘z)/i;
@@ -111,7 +120,13 @@ function applyDict(text) {
 async function main() {
   const fan = process.argv[2];
   const dryRun = process.argv.includes('--dry-run');
-  if (!fan) { console.error('Foydalanish: node scripts/fix-typos-dict.mjs <fan> [--dry-run]'); process.exit(1); }
+  // --topics 135,136 → faqat shu topicId'lar. Aralash tilli fanlar (rus_tili, ingliz)
+  // uchun SHART: lug'at o'zbek imlosi uchun, ruscha/inglizcha matnga soxta-pozitiv
+  // beradi (masalan inglizcha "metal" to'g'ri so'z).
+  const tIdx = process.argv.indexOf('--topics');
+  const topics = tIdx > -1 && process.argv[tIdx + 1]
+    ? new Set(process.argv[tIdx + 1].split(',').map(Number)) : null;
+  if (!fan) { console.error('Foydalanish: node scripts/fix-typos-dict.mjs <fan> [--dry-run] [--topics 135,136]'); process.exit(1); }
 
   const app = initializeApp({
     apiKey: process.env.VITE_FIREBASE_API_KEY,
@@ -124,6 +139,11 @@ async function main() {
   const snap = await getDocs(query(collection(db, 'questions'), where('category', '==', fan)));
   const rows = [];
   snap.forEach((d) => rows.push({ id: d.id, data: d.data() }));
+  if (topics) {
+    const before = rows.length;
+    for (let i = rows.length - 1; i >= 0; i--) if (!topics.has(rows[i].data.topicId)) rows.splice(i, 1);
+    console.log(`🎯 --topics ${[...topics].join(',')}: ${before} → ${rows.length} savol`);
+  }
   console.log(`📄 category=${fan}: ${rows.length} savol | rejim: ${dryRun ? 'DRY-RUN' : 'JONLI'}\n`);
   if (!rows.length) { console.error('❌ Savol topilmadi'); process.exit(1); }
 
