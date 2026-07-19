@@ -1368,9 +1368,14 @@ body.exam-fullscreen .exam-layout { height: 100vh; }
   transform-origin: 50% 50%;
 }
 
-/* Brauzerning o'z pull-to-refresh'i bizning indikator bilan to'qnashmasin */
+/* Brauzerning o'z pull-to-refresh'i bizning indikator bilan to'qnashmasin.
+   DIQQAT: bu qoida FAQAT haqiqiy scroller'da (hujjat) turishi kerak.
+   .main-content'ga overscroll-behavior-y:contain qo'yish MUMKIN EMAS —
+   u scroll-konteyner (overflow-y:auto), lekin layout tufayli hech qachon
+   ichki scroll qilmaydi (balandligi kontentiga teng). contain esa g'ildirak/
+   barmoq harakatini hujjatga UZATMAY yutib yuborardi — butun ilovada
+   scroll ishlamay qolgan edi (2026-07-19 regressiyasi). */
 html, body { overscroll-behavior-y: none; }
-.main-content { overscroll-behavior-y: contain; }
 
 /* Global Input Focus styling */
 input:focus, textarea:focus, select:focus {
