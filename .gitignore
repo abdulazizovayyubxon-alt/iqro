@@ -63,5 +63,11 @@ pipeline/_chqbt_audit_report.json
 pipeline/_lastraw.txt
 src/data/firestore_backup_*.json
 src/data/fix_report_*.md
+# Savol fabrikasi: generatsiya loglari, pilot namunalari va korrektura checkpointlari
+pipeline/_gen_*.log
+pipeline/_pilot_*.json
+src/data/.fix-progress-*.json
+# Yangi fanlar manba to'plami (spetsifikatsiya PDF/txt, darsliklar, namuna rasmlar — ~100MB)
+fan 2/
 
 .vercel

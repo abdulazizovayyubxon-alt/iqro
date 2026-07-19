@@ -176,6 +176,33 @@ const FAN_SOURCES = {
       "Maktabgacha ta'lim psixologik xizmati me'yoriy hujjatlari",
     ],
   },
+  kimyo: {
+    title: "Kimyo",
+    sources: [
+      "Amaldagi 7–11-sinf Kimyo darsliklari",
+      "Kimyoviy element, birikma va atamalarning rasmiy o'zbekcha nomlari (IUPAC transkripsiyasi)",
+      "\"O'zbek tilining imlo lug'ati\" (amaldagi rasmiy nashr)",
+    ],
+  },
+  // DIQQAT: rus_tili va ingliz banklarida MUTAXASSISLIK savollari rus/ingliz tilida.
+  // Bu skript FAQAT o'zbek imlosi uchun — ularni tekshirishda --topics bilan
+  // faqat O'ZBEKCHA pedagogika/kasb mavzularini bering (rus: 127,128 | ingliz: 135,136).
+  rus_tili: {
+    title: "Rus tili (RKI) — pedagogika va kasb standarti bloki (o'zbekcha)",
+    sources: [
+      "Pedagogika va metodika atamalarining rasmiy o'zbekcha shakllari",
+      "Umumiy o'rta ta'lim maktab o'qituvchisi kasb standarti",
+      "\"O'zbek tilining imlo lug'ati\" (amaldagi rasmiy nashr)",
+    ],
+  },
+  ingliz: {
+    title: "Ingliz tili — pedagogika va kasb standarti bloki (o'zbekcha)",
+    sources: [
+      "Pedagogika va metodika atamalarining rasmiy o'zbekcha shakllari",
+      "Umumiy o'rta ta'lim maktab o'qituvchisi kasb standarti",
+      "\"O'zbek tilining imlo lug'ati\" (amaldagi rasmiy nashr)",
+    ],
+  },
 };
 
 const DEFAULT_SOURCES = (fan) => ({
@@ -278,6 +305,7 @@ function parseArgs(argv) {
   const args = {
     fan: null, provider: null, model: null, batch: 15, delay: null,
     limit: Infinity, dryRun: false, single: false, fresh: false, reasoning: null, fs: false,
+    topics: null, // --topics 127,128 → faqat shu topicId'lar (til fanlarida o'zbekcha ped/kasb bloki uchun)
   };
   const rest = argv.slice(2);
   for (let k = 0; k < rest.length; k++) {
@@ -292,6 +320,7 @@ function parseArgs(argv) {
     else if (a === '--batch') args.batch = Math.min(15, parseInt(rest[++k], 10) || 15);
     else if (a === '--delay') args.delay = parseInt(rest[++k], 10) || 800;
     else if (a === '--limit') args.limit = parseInt(rest[++k], 10) || Infinity;
+    else if (a === '--topics') args.topics = new Set(String(rest[++k] || '').split(',').map((s) => parseInt(s.trim(), 10)).filter(Number.isInteger));
     else if (!a.startsWith('--') && !args.fan) args.fan = a;
   }
   return args;
@@ -330,7 +359,7 @@ function resolveProvider(args) {
 }
 
 // ── Firestore'dan yuklash ─────────────────────────────────────────────────
-async function loadFromFirestore(fan) {
+async function loadFromFirestore(fan, topics = null) {
   const email = process.env.ADMIN_EMAIL, password = process.env.ADMIN_PASSWORD;
   if (!email || !password) throw new Error(".env da ADMIN_EMAIL / ADMIN_PASSWORD yo'q (--fs rejimi uchun kerak)");
   const app = initializeApp({
@@ -344,6 +373,13 @@ async function loadFromFirestore(fan) {
   const snap = await getDocs(query(collection(db, 'questions'), where('category', '==', fan)));
   const rows = [];
   snap.forEach((d) => rows.push({ id: d.id, data: d.data() }));
+  // --topics: faqat berilgan mavzular (til fanlarida o'zbekcha ped/kasb blokini ajratish uchun —
+  // rus/ingliz mutaxassislik savollari o'z tilida, o'zbek imlo korrektorига berilmasligi kerak).
+  if (topics && topics.size) {
+    const before = rows.length;
+    for (let i = rows.length - 1; i >= 0; i--) if (!topics.has(rows[i].data.topicId)) rows.splice(i, 1);
+    console.log(`🔎 --topics filtri: ${before} → ${rows.length} ta savol (mavzular: ${[...topics].join(', ')})`);
+  }
   rows.sort((a, b) => (a.id < b.id ? -1 : 1)); // barqaror tartib (checkpoint uchun)
   return { db, docIds: rows.map((r) => r.id), questions: rows.map((r) => r.data) };
 }
@@ -562,7 +598,7 @@ async function main() {
   // ── Manba: Firestore yoki lokal JSON ────────────────────────────────────
   let questions, dataFile = null, docIds = null, fbDb = null;
   if (args.fs) {
-    const fb = await loadFromFirestore(args.fan);
+    const fb = await loadFromFirestore(args.fan, args.topics);
     questions = fb.questions; docIds = fb.docIds; fbDb = fb.db;
     if (!questions.length) { console.error(`❌ Firestore'da '${args.fan}' kategoriyasida savol topilmadi`); process.exit(1); }
   } else {
