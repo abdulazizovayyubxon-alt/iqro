@@ -59,6 +59,8 @@ const DICT = [
   // — biologiya skaneri (qatiq→qattiq RAD: biologiyada "qatiq"=yogurt/sut mahsuloti!) —
   ['disimilyatsiya', 'dissimilyatsiya'], ['aferent', 'afferent'],
   ['ikala', 'ikkala'], ['avloda', 'avlodda'],
+  // — boshlangich skaneri (matni/matning RAD: izafat/morfologik) —
+  ['ikinchi', 'ikkinchi'],
 ];
 
 const SPELLING_STEM = /(imlo|to'g'ri yozilgan|xato yozilgan|to‘g‘ri yozilgan|xato yozil|qaysi so'z|qaysi so‘z)/i;
