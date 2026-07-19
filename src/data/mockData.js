@@ -2,7 +2,8 @@ import React from 'react';
 import {
   Medal, ClipboardList, Target, Map, Shield, HeartPulse, GraduationCap, Palette, PaintBucket, LandPlot, Image as ImageIcon, Ruler, Settings, Home, BookOpen, Activity, Baby, Laptop, Smile, PenTool, Award,
   Compass, Scroll, Hourglass, Globe, Heart, Swords, Trophy, Flame, Calculator, Sun, Cpu, Code, FileText, Binary, Monitor, Wifi, MessageSquare, Scale, Users,
-  Microscope, Brain, Mountain, Leaf, Dna, Ear
+  Microscope, Brain, Mountain, Leaf, Dna, Ear,
+  FlaskConical, Atom, Beaker, TestTube2, TestTubes, Languages, Type, SpellCheck, Speech, BookText, Puzzle, Feather, Combine
 } from 'lucide-react';
 
 // ══════════════════════════════════════════════════════════════
@@ -263,6 +264,64 @@ const mttPsixologTopics = [
     theoryHint: "📌 Maktabgacha pedagogika, didaktika asoslari, mashg'ulotlarni rejalashtirish hamda pedagogik etika va muloqot." }
 ];
 
+// ── Kimyo (test spetsifikatsiyasi 2026: 50 savol, 120 daqiqa) ──
+const kimyoTopics = [
+  { id: 114, name: "Umumiy kimyo", icon: React.createElement(Atom, { size: 20 }), day: 1, category: 'kimyo',
+    theoryHint: "📌 Atom-molekula ta'limoti, davriy qonun va atom tuzilishi; elektrolitik dissotsiatsiya, eritmalar, elektroliz, gidroliz, oksidlanish-qaytarilish reaksiyalari; kimyoviy kinetika, muvozanat va termodinamika asoslari." },
+  { id: 115, name: "Anorganik kimyo", icon: React.createElement(FlaskConical, { size: 20 }), day: 1, category: 'kimyo',
+    theoryHint: "📌 Anorganik birikmalarning muhim sinflari (oksidlar, asoslar, kislotalar, tuzlar) va genetik bog'lanishlari; metallar (I-A, II-A, III-A, Cu, Fe, Cr, Mn) hamda metallmaslarning olinishi va xossalari." },
+  { id: 116, name: "Organik kimyo: uglevodorodlar", icon: React.createElement(Beaker, { size: 20 }), day: 2, category: 'kimyo',
+    theoryHint: "📌 Organik kimyo tuzilish nazariyasi, izomeriya, IUPAC nomenklaturasi; alkanlar, alkenlar, alkadiyenlar, alkinlar, sikloalkanlar va aromatik uglevodorodlarning tuzilishi, olinishi va xossalari." },
+  { id: 117, name: "Organik kimyo: kislorodli va azotli birikmalar", icon: React.createElement(TestTube2, { size: 20 }), day: 2, category: 'kimyo',
+    theoryHint: "📌 Spirtlar, fenollar, aldegidlar, ketonlar, karbon kislotalar, efirlar, yog'lar, uglevodlar; aminlar, aminokislotalar, oqsillar hamda polimerlar, kauchuk va tolalarning tuzilishi va xossalari." },
+  { id: 118, name: "Laboratoriya mashg'ulotlari", icon: React.createElement(TestTubes, { size: 20 }), day: 3, category: 'kimyo',
+    theoryHint: "📌 Kimyo laboratoriya jihozlari va ulardan foydalanish tartibi; anorganik va organik birikmalarning olinishi hamda ularga xos sifat reaksiyalari va kimyoviy tajribalar." },
+  { id: 119, name: "Kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 3, category: 'kimyo',
+    theoryHint: "📌 Kimyo o'qituvchisining kasb standarti talablari, o'quv jarayonini rejalashtirish, ta'lim samaradorligi va baholash mezonlari." },
+  { id: 120, name: "Pedagogik mahorat", icon: React.createElement(GraduationCap, { size: 20 }), day: 3, category: 'kimyo',
+    theoryHint: "📌 Pedagogika, didaktika va psixologiya asoslari, kimyo o'qitish metodikasi, dars turlari va rejalashtirish, sinfni boshqarish hamda pedagogik etika." }
+];
+
+// ── Rus tili — RKI (test spetsifikatsiyasi 2026: 50 savol, 105 daqiqa) ──
+const rusTiliTopics = [
+  { id: 121, name: "O'qish savodxonligi", icon: React.createElement(BookText, { size: 20 }), day: 1, category: 'rus_tili',
+    theoryHint: "📌 Badiiy, publitsistik va ilmiy matnlarni o'qib tushunish va talqin qilish; fakt va fikrni farqlash, matnni tahlil qilish va xulosa chiqarish, so'zning to'g'ri va ko'chma ma'nosini ajratish." },
+  { id: 122, name: "San'at asarini talqin qilish", icon: React.createElement(Palette, { size: 20 }), day: 1, category: 'rus_tili',
+    theoryHint: "📌 Tasviriy san'at asarini g'oyaviy-mavzuviy jihatdan tahlil qilish, adabiyot va boshqa san'at turlari (rangtasvir, musiqa, teatr, kino) bilan taqqoslash, rassom niyatini anglash." },
+  { id: 123, name: "Leksika, orfoepiya va so'z tarkibi", icon: React.createElement(SpellCheck, { size: 20 }), day: 2, category: 'rus_tili',
+    theoryHint: "📌 Omonim, paronim, sinonim, antonim va frazeologizmlar; urg'u va talaffuz (orfoepiya) normalari; so'z tarkibi va so'z yasalishi usullari." },
+  { id: 124, name: "Morfologiya va orfografiya", icon: React.createElement(Type, { size: 20 }), day: 2, category: 'rus_tili',
+    theoryHint: "📌 Mustaqil va yordamchi so'z turkumlari hamda ularning morfologik belgilari; rus orfografiyasi tamoyillari, o'zakda undosh va unlilar imlosi." },
+  { id: 125, name: "Sintaksis va punktuatsiya", icon: React.createElement(Puzzle, { size: 20 }), day: 3, category: 'rus_tili',
+    theoryHint: "📌 So'z birikmasi va bog'lanish turlari (kelishuv, boshqaruv, bitishuv); sodda va qo'shma gaplar (BSP, SSP, SPP) tuzilishi hamda ularda tinish belgilari." },
+  { id: 126, name: "Til nazariyasi va lingvistik tahlil", icon: React.createElement(Feather, { size: 20 }), day: 3, category: 'rus_tili',
+    theoryHint: "📌 Matnni fonetik, leksik, morfem, morfologik va sintaktik normalar asosida lingvistik tahlil qilish; zamonaviy rus adabiy tili normalarini qo'llash." },
+  { id: 127, name: "Kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'rus_tili',
+    theoryHint: "📌 Rus tili o'qituvchisining kasb standarti talablari, o'quv jarayonini rejalashtirish, ta'lim samaradorligi va baholash mezonlari." },
+  { id: 128, name: "Pedagogik mahorat", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'rus_tili',
+    theoryHint: "📌 Pedagogika, didaktika va psixologiya asoslari, rus tilini o'qitish metodikasi, dars turlari va rejalashtirish, sinfni boshqarish hamda pedagogik etika." }
+];
+
+// ── Ingliz tili (test spetsifikatsiyasi 2026: 50 savol, 105 daqiqa) ──
+const inglizTopics = [
+  { id: 129, name: "Reading: ilmiy-ommabop matn", icon: React.createElement(BookOpen, { size: 20 }), day: 1, category: 'ingliz',
+    theoryHint: "📌 Ilmiy-ommabop matnning asosiy g'oyasi, maqsadi, auditoriyasi va muallif pozitsiyasini aniqlash; ochiq va yashirin ma'lumotlarni anglash, fakt va fikrni farqlash, leksik birliklar ma'nosini kontekstdan tushunish." },
+  { id: 130, name: "Reading: voqeaband matn", icon: React.createElement(BookText, { size: 20 }), day: 1, category: 'ingliz',
+    theoryHint: "📌 Voqeaband matnning asosiy g'oyasi, muhim detallari va yashirin ma'lumotlarini tushunish; voqealar ketma-ketligini va ishtirokchilarini aniqlash, leksik birliklar ma'nosini kontekstdan anglash." },
+  { id: 131, name: "Reading: matn yaxlitligi", icon: React.createElement(Combine, { size: 20 }), day: 2, category: 'ingliz',
+    theoryHint: "📌 Matnning mazmuniy birligi va yaxlitligini tushunish; gap yoki xat boshi tartibini tiklash, matn qismlari o'rtasidagi mantiqiy va diskursiv bog'lanishlarni (sabab-oqibat, qarama-qarshilik, ketma-ketlik) aniqlash." },
+  { id: 132, name: "Grammatika", icon: React.createElement(Type, { size: 20 }), day: 2, category: 'ingliz',
+    theoryHint: "📌 Grammatik strukturaning nomi va qo'llanilishini aniqlash; kontekstga mos grammatik birlik tanlash, grammatik xatoni topish va tushuntirish, gaplarni grammatik transformatsiya qilish." },
+  { id: 133, name: "Leksika (Vocabulary)", icon: React.createElement(SpellCheck, { size: 20 }), day: 3, category: 'ingliz',
+    theoryHint: "📌 Kontekstga mos leksik birlik va sinonim tanlash; so'z yasalishi, ma'nosi yaqin so'zlarni (say/tell/speak/talk) farqlash, leksik xato va kollokatsiya nomuvofiqligini aniqlash." },
+  { id: 134, name: "Pragmatika", icon: React.createElement(Speech, { size: 20 }), day: 3, category: 'ingliz',
+    theoryHint: "📌 Vaziyatga mos nutq namunasini tanlash; ko'zda tutilgan ma'noni (literal, ironic, exaggerated) anglash, ijtimoiy-kommunikativ moslikni baholash, muloqot strategiyasi va niyatni aniqlash." },
+  { id: 135, name: "Kasb standarti", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'ingliz',
+    theoryHint: "📌 Ingliz tili o'qituvchisining kasb standarti talablari, o'quv jarayonini rejalashtirish, ta'lim samaradorligi va baholash mezonlari." },
+  { id: 136, name: "Pedagogik mahorat va ELT", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'ingliz',
+    theoryHint: "📌 Pedagogika asoslari va ingliz tili o'qitish metodikasi hamda yondashuvlar (Structural, TBLT, PPP, Lexical, Communicative, CLIL, Grammar-Translation); dars rejalashtirish va sinfni boshqarish." }
+];
+
 // group: 'school' (umumiy o'rta ta'lim, 9 fan) | 'mtt' (maktabgacha ta'lim, 4 fan)
 // Fan tanlash UI shu guruhlar bo'yicha ajratiladi (README Variant B).
 export const SUBJECTS = [
@@ -278,10 +337,13 @@ export const SUBJECTS = [
   { id: 'biologiya', name: "Biologiya", icon: Microscope, group: 'school', desc: "Hujayra, organizmlar, genetika, ekologiya va metodika" },
   { id: 'geografiya', name: "Geografiya", icon: Globe, group: 'school', desc: "Tabiiy va iqtisodiy geografiya, xaritashunoslik va metodika" },
   { id: 'mtt_logoped', name: "MTT Logopedi", icon: MessageSquare, group: 'mtt', desc: "Nutq buzilishlari, korreksiya va logopedik metodika" },
-  { id: 'mtt_psixolog', name: "MTT Psixologi", icon: Brain, group: 'mtt', desc: "Yosh psixologiyasi, oila, inklyuziv ta'lim va metodika" }
+  { id: 'mtt_psixolog', name: "MTT Psixologi", icon: Brain, group: 'mtt', desc: "Yosh psixologiyasi, oila, inklyuziv ta'lim va metodika" },
+  { id: 'kimyo', name: "Kimyo", icon: FlaskConical, group: 'school', desc: "Umumiy, anorganik, organik kimyo va metodika" },
+  { id: 'rus_tili', name: "Rus tili", icon: Languages, group: 'school', desc: "RKI: matn tahlili, grammatika, leksika va metodika" },
+  { id: 'ingliz', name: "Ingliz tili", icon: Speech, group: 'school', desc: "Reading, grammar, vocabulary, pragmatics va ELT metodika" }
 ];
 
-export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics];
+export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics, ...kimyoTopics, ...rusTiliTopics, ...inglizTopics];
 
 export const SCHEDULE = [
   { day: 1, date: "2 May", topic: "Harbiy xizmat asoslari", tests: 8, goal: "Konstitutsiya, Mudofaa doktrinasi", topicId: 0 },

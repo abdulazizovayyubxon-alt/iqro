@@ -40,6 +40,9 @@ const SUBJECTS = [
   { id: 'geografiya', badge: 'Ge' },
   { id: 'mtt_logoped', badge: 'Lo' },
   { id: 'mtt_psixolog', badge: 'Ps' },
+  { id: 'kimyo', badge: 'Ki' },
+  { id: 'rus_tili', badge: 'Ru' },
+  { id: 'ingliz', badge: 'En' },
   { id: 'multi', badge: '✦' },
 ];
 

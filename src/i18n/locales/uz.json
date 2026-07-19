@@ -913,6 +913,18 @@
         "title": "MTT Psixologi",
         "desc": "Yosh psixologiyasi, oila, inklyuziv ta'lim va metodika"
       },
+      "kimyo": {
+        "title": "Kimyo",
+        "desc": "Umumiy, anorganik, organik kimyo va metodika"
+      },
+      "rus_tili": {
+        "title": "Rus tili",
+        "desc": "RKI: matn tahlili, grammatika, leksika va metodika"
+      },
+      "ingliz": {
+        "title": "Ingliz tili",
+        "desc": "Reading, grammar, vocabulary, pragmatics va ELT metodika"
+      },
       "multi": {
         "title": "Bir nechta fan",
         "desc": "Barcha fanlar bo'yicha kompleks"

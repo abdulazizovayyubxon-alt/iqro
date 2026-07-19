@@ -1325,6 +1325,9 @@ try {
                   <option value="geografiya">🌍 Geografiya</option>
                   <option value="mtt_logoped">💬 MTT Logopedi</option>
                   <option value="mtt_psixolog">🧠 MTT Psixologi</option>
+                  <option value="kimyo">🧪 Kimyo</option>
+                  <option value="rus_tili">📕 Rus tili</option>
+                  <option value="ingliz">📗 Ingliz tili</option>
                 </select>
               </div>
               <div className="admin-select-wrapper">

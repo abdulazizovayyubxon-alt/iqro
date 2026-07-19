@@ -46,7 +46,11 @@ service cloud.firestore {
         (request.resource.data.topicId >= 80 && request.resource.data.topicId <= 86 && request.resource.data.category == 'biologiya') ||
         (request.resource.data.topicId >= 87 && request.resource.data.topicId <= 96 && request.resource.data.category == 'geografiya') ||
         (request.resource.data.topicId >= 97 && request.resource.data.topicId <= 106 && request.resource.data.category == 'mtt_logoped') ||
-        (request.resource.data.topicId >= 107 && request.resource.data.topicId <= 113 && request.resource.data.category == 'mtt_psixolog')
+        (request.resource.data.topicId >= 107 && request.resource.data.topicId <= 113 && request.resource.data.category == 'mtt_psixolog') ||
+        // ── YANGI fanlar (fan 2 — 2-to'plam), topicId 114-136 ──
+        (request.resource.data.topicId >= 114 && request.resource.data.topicId <= 120 && request.resource.data.category == 'kimyo') ||
+        (request.resource.data.topicId >= 121 && request.resource.data.topicId <= 128 && request.resource.data.category == 'rus_tili') ||
+        (request.resource.data.topicId >= 129 && request.resource.data.topicId <= 136 && request.resource.data.category == 'ingliz')
       );
       allow delete: if isAdmin();
     }
