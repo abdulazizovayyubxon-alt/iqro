@@ -6,6 +6,7 @@ import { AnimatePresence } from 'framer-motion';
 import { Shield, BookOpen, Clock, Palette } from 'lucide-react';
 import BrandLogo, { ZehinMark } from './components/shared/BrandLogo';
 import PullToRefresh, { RefreshRing } from './components/shared/PullToRefresh';
+import ScrollDebugOverlay from './components/shared/ScrollDebugOverlay';
 import { trackPageView, startPageTimer } from './services/analytics';
 import { setUser, clearUser } from './services/sentry';
 import { doc, getDoc } from 'firebase/firestore';
@@ -348,6 +349,8 @@ function App() {
       <Header theme={theme} toggleTheme={toggleTheme} />
       <OfflineIndicator />
       <PullToRefresh disabled={ptrOff} />
+      {/* VAQTINCHALIK: #sdebug bilan ochilganda scroll diagnostikasi */}
+      {window.location.hash.includes('sdebug') && <ScrollDebugOverlay />}
       <div className="layout-body">
         <Sidebar />
         <main className="main-content">
