@@ -71,6 +71,8 @@ const DICT = [
   // — mtt_logoped skaneri (matni RAD; mo'ljalangan apostrof-skip) —
   ['koreksiya', 'korreksiya'], ['chiqan', 'chiqqan'], ['intelektual', 'intellektual'],
   ['ikilamchi', 'ikkilamchi'], ['aparati', 'apparati'],
+  // — mtt_psixolog skaneri —
+  ['pasiv', 'passiv'],
 ];
 
 const SPELLING_STEM = /(imlo|to'g'ri yozilgan|xato yozilgan|to‘g‘ri yozilgan|xato yozil|qaysi so'z|qaysi so‘z)/i;
