@@ -34,6 +34,10 @@ const DICT = [
   ['gramatik', 'grammatik'],      // gramatika, gramatikaga ham
   ['tayorgarlik', 'tayyorgarlik'],
   ['modiy', 'moddiy'],
+  // — chqbt skaneri topgan (vetdan o'tgan; soxta-pozitivlar rad etildi) —
+  ['imobilizatsiya', 'immobilizatsiya'],  // tibbiy termin, hech qachon ambiguity yo'q
+  ['metal', 'metall'],                     // superset — buildRe lookahead "metall"ni himoya qiladi; art/musiqa "heavy metal" dry-run'da ko'rilsin
+  ['mudofa', 'mudofaa'],                   // superset — lookahead "mudofaa"ni himoya qiladi
   // — ma'lum x/h va boshqa imlo xatolari (boshqa fanlarda uchraydi) —
   ['ximoya', 'himoya'], ['xarbiy', 'harbiy'], ['fukaro', 'fuqaro'], ['fuqoro', 'fuqaro'],
   ['muxim', 'muhim'], ['xujjat', 'hujjat'], ['xuquq', 'huquq'], ['xukumat', 'hukumat'],
@@ -44,12 +48,27 @@ const DICT = [
 const SPELLING_STEM = /(imlo|to'g'ri yozilgan|xato yozilgan|to‘g‘ri yozilgan|xato yozil|qaysi so'z|qaysi so‘z)/i;
 const isUpper = (ch) => ch && ch === ch.toUpperCase() && ch !== ch.toLowerCase();
 
+// So'z-boshidan moslashadi (o'zbek qo'shimchalarini ushlaydi). SUPERSET juftlik
+// (to'g'ri so'z xato bilan boshlanadi, mas. metal⊂metall) uchun negativ-lookahead
+// qo'shiladi — aks holda \bmetal "metall"ni ushlab "metalll" qilib buzardi.
+function buildRe(bad, good) {
+  const superset = good.toLowerCase().startsWith(bad.toLowerCase());
+  const re = superset
+    ? new RegExp(`\\b${bad}(?!${good[bad.length]})`, 'gi') // to'g'ri so'zni davom ettiruvchi harf kelmasa
+    : new RegExp(`\\b${bad}`, 'gi');
+  // O'Z-TEST: regex TO'G'RI so'z `good`ni hech qachon o'zgartirmasligi shart.
+  const unsafe = re.test(good);
+  re.lastIndex = 0;
+  if (unsafe) throw new Error(`Xavfsiz emas lug'at juftligi: "${bad}"→"${good}" — to'g'ri so'zni buzadi, tool to'xtatildi`);
+  return re;
+}
+const COMPILED = DICT.map(([bad, good]) => ({ good, re: buildRe(bad, good) }));
+
 function applyDict(text) {
   if (typeof text !== 'string' || !text) return { out: text, changes: [] };
   let out = text;
   const changes = [];
-  for (const [bad, good] of DICT) {
-    const re = new RegExp(`\\b${bad}`, 'gi'); // so'z-boshidan (qo'shimchalar qoladi)
+  for (const { good, re } of COMPILED) {
     out = out.replace(re, (m) => {
       const g = isUpper(m[0]) ? good[0].toUpperCase() + good.slice(1) : good;
       changes.push(`${m}→${g}`);
