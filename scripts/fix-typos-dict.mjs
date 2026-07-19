@@ -61,6 +61,8 @@ const DICT = [
   ['ikala', 'ikkala'], ['avloda', 'avlodda'],
   // — boshlangich skaneri (matni/matning RAD: izafat/morfologik) —
   ['ikinchi', 'ikkinchi'],
+  // — sport skaneri (o'yining→o'yinning RAD: "o'yining"=sening o'ying) —
+  ['tizadan', 'tizzadan'], ['klasik', 'klassik'], ['uzoqa', 'uzoqqa'],
 ];
 
 const SPELLING_STEM = /(imlo|to'g'ri yozilgan|xato yozilgan|to‘g‘ri yozilgan|xato yozil|qaysi so'z|qaysi so‘z)/i;
