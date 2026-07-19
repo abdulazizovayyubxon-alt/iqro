@@ -121,6 +121,8 @@ const TestPage = () => {
 
   // Testdan chiqish tasdig'i (orqa tugma himoyasi)
   const [showExitConfirm, setShowExitConfirm] = useState(false);
+  // Javobsiz savollar qolganda oxirgi savolda yakunlash tasdig'i
+  const [showFinishConfirm, setShowFinishConfirm] = useState(false);
 
   // Objection Modal State
   const [showObjectionModal, setShowObjectionModal] = useState(false);
@@ -984,10 +986,19 @@ const TestPage = () => {
               />
               <div className="q-nav" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px' }}>
                 <button disabled={currentQ === 0} className="btn btn-outline" onClick={() => { accumulateTime(); setCurrentQ(prev => prev - 1); }}>{t('common.back')}</button>
-                {Object.keys(answers).length === questions.length ? (
-                  <button className="btn btn-primary" onClick={handleShowResults}>{t('test.viewResults')}</button>
+                {(Object.keys(answers).length === questions.length || currentQ === questions.length - 1) ? (
+                  <button className="btn btn-primary" onClick={() => {
+                    accumulateTime();
+                    // Oxirgi savolda javobsiz savollar qolgan bo'lsa — avval tasdiq so'raymiz,
+                    // aks holda foydalanuvchi tugmani bosolmay "qamalib" qolardi.
+                    if (Object.keys(answers).length < questions.length) {
+                      setShowFinishConfirm(true);
+                    } else {
+                      handleShowResults();
+                    }
+                  }}>{t('test.viewResults')}</button>
                 ) : (
-                  <button disabled={currentQ === questions.length - 1} className="btn btn-outline" onClick={() => { accumulateTime(); setCurrentQ(prev => prev + 1); }}>{t('test.next')}</button>
+                  <button className="btn btn-outline" onClick={() => { accumulateTime(); setCurrentQ(prev => prev + 1); }}>{t('test.next')}</button>
                 )}
               </div>
             </>
@@ -1037,6 +1048,16 @@ const TestPage = () => {
         title={t('test.changeWarn')}
         onConfirm={() => { setShowBlockConfirm(false); setShowBlockPicker(true); }}
         onCancel={() => setShowBlockConfirm(false)}
+      />
+
+      {/* Javobsiz savollar qolganda yakunlash tasdig'i */}
+      <ConfirmDialog
+        open={showFinishConfirm}
+        title={t('test.finishTitle')}
+        text={t('test.finishUnanswered', { count: questions.length - Object.keys(answers).length })}
+        confirmLabel={t('test.finishAnyway')}
+        onConfirm={() => { setShowFinishConfirm(false); handleShowResults(); }}
+        onCancel={() => setShowFinishConfirm(false)}
       />
 
       {/* TESTDAN CHIQISH TASDIG'I (orqa tugma) */}
