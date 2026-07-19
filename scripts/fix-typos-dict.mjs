@@ -56,6 +56,9 @@ const DICT = [
   ['ikilik', 'ikkilik'], ['protsesor', 'protsessor'],
   // — geografiya skaneri (so'ngi→so'nggi RAD: "so'ngi"=uning so'ngi ham bo'ladi) —
   ['zonaligi', 'zonalligi'], ['hududa', 'hududda'],
+  // — biologiya skaneri (qatiq→qattiq RAD: biologiyada "qatiq"=yogurt/sut mahsuloti!) —
+  ['disimilyatsiya', 'dissimilyatsiya'], ['aferent', 'afferent'],
+  ['ikala', 'ikkala'], ['avloda', 'avlodda'],
 ];
 
 const SPELLING_STEM = /(imlo|to'g'ri yozilgan|xato yozilgan|to‘g‘ri yozilgan|xato yozil|qaysi so'z|qaysi so‘z)/i;
