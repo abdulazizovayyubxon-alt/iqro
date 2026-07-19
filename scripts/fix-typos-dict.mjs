@@ -48,6 +48,10 @@ const DICT = [
   ['budizm', 'buddizm'], ['renesans', 'renessans'], ['samarqanda', 'samarqandda'],
   ['omaviy', 'ommaviy'], ['egalash', 'egallash'], ['itifoqi', 'ittifoqi'],
   ['hamurapi', 'hammurapi'],
+  // — art skaneri topgan (vetdan o'tgan; qatiq→qattiq RAD; metal=material, "heavy metal" YO'Q) —
+  ['detalar', 'detallar'],  // detal+lar (detalarning/detalarni/detalarga)
+  ['komunikativ', 'kommunikativ'],
+  ['kontast', 'kontrast'],  // LLM #1266 da "qo'shni"→"kontast" xato kiritgan; to'g'risi kontrast
 ];
 
 const SPELLING_STEM = /(imlo|to'g'ri yozilgan|xato yozilgan|to‘g‘ri yozilgan|xato yozil|qaysi so'z|qaysi so‘z)/i;
