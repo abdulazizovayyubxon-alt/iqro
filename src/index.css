@@ -21,8 +21,16 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* Root font-size — shrift kattalashtirish tizimi (SettingsPage orqali boshqariladi).
+   Standart: 16px. Foydalanuvchi S/M/L/XL tanlaganda JS ushbu qiymatni o'zgartiradi:
+   document.documentElement.style.fontSize = '16px' | '17.6px' | '19.2px' | '20px'
+   O'qish matnlarida rem ishlatiladi — ular shu root size ga nisbatan o'zgaradi.
+   UI elementlari (BottomNav, Header, tugmalar) px da — dizayn buzilmaydi. */
+html {
+  font-size: 16px;
+}
+
 :root {
-  --font-scale: 1;
 
   /* Iliq "qog'oz" kunduzgi palitra — sof oq ko'zni charchatadi */
   --bg-gradient: linear-gradient(180deg, #E7F0F7 0%, #F4F3EF 420px, #F4F3EF 100%);
@@ -355,7 +363,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 
 .exam-mode-container { max-width: 800px; margin: 0 auto; }
 .q-num { font-size: 13px; font-weight: 600; color: var(--text3); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-.q-text { font-size: calc(20px * var(--font-scale)); font-weight: 600; line-height: 1.45; margin-bottom: 28px; color: var(--text); letter-spacing: -0.3px; }
+.q-text { font-size: 1.25rem; font-weight: 600; line-height: 1.45; margin-bottom: 28px; color: var(--text); letter-spacing: -0.3px; }
 .options { display: flex; flex-direction: column; gap: 12px; }
 .option { display: flex; align-items: center; gap: 16px; padding: 16px; border-radius: 14px; border: 1.5px solid var(--border); background: var(--bg2); transition: all 0.2s; }
 .option.hoverable:hover { border-color: var(--accent); background: var(--blue-bg); cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
@@ -366,7 +374,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 .opt-letter { width: 32px; height: 32px; border-radius: 8px; background: var(--bg3); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; flex-shrink: 0; color: var(--text2); }
 .option.correct .opt-letter { background: var(--green); color: white; }
 .option.wrong .opt-letter { background: var(--red); color: white; }
-.opt-text { font-size: calc(16px * var(--font-scale)); line-height: 1.4; font-weight: 500; color: var(--text2); }
+.opt-text { font-size: 1rem; line-height: 1.4; font-weight: 500; color: var(--text2); }
 .option.correct .opt-text, .option.wrong .opt-text { color: var(--text); }
 
 
@@ -426,8 +434,8 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   background: var(--bg2);
   border: 0.5px solid var(--border);
 }
-.flashcard-front-text { font-size: calc(22px * var(--font-scale)); font-weight: 600; line-height: 1.4; color: var(--text); letter-spacing: -0.3px; }
-.flashcard-back-text { font-size: calc(18px * var(--font-scale)); font-weight: 500; color: var(--text2); line-height: 1.5; }
+.flashcard-front-text { font-size: 1.375rem; font-weight: 600; line-height: 1.4; color: var(--text); letter-spacing: -0.3px; }
+.flashcard-back-text { font-size: 1.125rem; font-weight: 500; color: var(--text2); line-height: 1.5; }
 
 /* SCHEDULE & STATS */
 
@@ -954,8 +962,8 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   
   .flashcard-wrap { height: 280px; }
   .flashcard-face { padding: 24px 16px; border-radius: 16px; }
-  .flashcard-front-text { font-size: calc(15px * var(--font-scale)); }
-  .flashcard-back-text { font-size: calc(14px * var(--font-scale)); }
+  .flashcard-front-text { font-size: 0.9375rem; }
+  .flashcard-back-text { font-size: 0.875rem; }
 
   
   /* Section header adjustments */
@@ -1189,7 +1197,7 @@ body.exam-fullscreen .exam-layout { height: 100vh; }
     font-weight: 700;
   }
   .q-text {
-    font-size: calc(17px * var(--font-scale));
+    font-size: 1.0625rem;
     line-height: 1.45;
     margin-bottom: 20px;
     font-weight: 700;
@@ -1216,7 +1224,7 @@ body.exam-fullscreen .exam-layout { height: 100vh; }
     font-weight: 800;
   }
   .opt-text {
-    font-size: calc(14.5px * var(--font-scale));
+    font-size: 0.90625rem;
     font-weight: 600;
   }
   

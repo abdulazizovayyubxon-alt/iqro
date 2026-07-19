@@ -681,7 +681,7 @@ const ExamPage = () => {
       display: 'inline-flex', alignItems: 'center', gap: 6,
       padding: '6px 12px', borderRadius: 8,
       background: 'var(--bg3)', border: '1px solid var(--border)',
-      fontSize: 'calc(13px * var(--font-scale))', fontWeight: 600, color: 'var(--text2)'
+      fontSize: '0.8125rem', fontWeight: 600, color: 'var(--text2)'
     };
     const chipIconStyle = { color: 'var(--text3)', flexShrink: 0 };
 
@@ -695,7 +695,7 @@ const ExamPage = () => {
           }}>
             <GraduationCap size={28} style={{ color: 'var(--blue)' }} />
           </div>
-          <h1 style={{ fontSize: 'calc(22px * var(--font-scale))', fontWeight: 800, color: 'var(--text)', marginBottom: 14, letterSpacing: '-0.5px' }}>{t('exam.simulatorTitle')}</h1>
+          <h1 style={{ fontSize: '1.375rem', fontWeight: 800, color: 'var(--text)', marginBottom: 14, letterSpacing: '-0.5px' }}>{t('exam.simulatorTitle')}</h1>
 
           {/* Uzun matn o'rniga — bir qarashda o'qiladigan chiplar */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 22 }}>
@@ -714,8 +714,8 @@ const ExamPage = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
                 <History size={20} style={{ color: 'var(--amber)', flexShrink: 0 }} />
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: 'calc(15px * var(--font-scale))', fontWeight: 700, color: 'var(--text)' }}>{t('exam.resumeTitle')}</div>
-                  <div style={{ fontSize: 'calc(13px * var(--font-scale))', color: 'var(--text2)', marginTop: 2 }}>
+                  <div style={{ fontSize: '0.9375rem', fontWeight: 700, color: 'var(--text)' }}>{t('exam.resumeTitle')}</div>
+                  <div style={{ fontSize: '0.8125rem', color: 'var(--text2)', marginTop: 2 }}>
                     {t('exam.resumeInfo', {
                       answered: Object.keys(savedSession.answers || {}).length,
                       total: savedSession.questions.length,
@@ -761,8 +761,8 @@ const ExamPage = () => {
                     <m.Icon size={20} style={{ color: active ? '#fff' : 'var(--text3)' }} />
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 'calc(15.5px * var(--font-scale))', fontWeight: 700, color: 'var(--text)', marginBottom: 3 }}>{m.title}</div>
-                    <div style={{ fontSize: 'calc(13px * var(--font-scale))', color: 'var(--text3)', lineHeight: 1.4 }}>{m.desc}</div>
+                    <div style={{ fontSize: '0.96875rem', fontWeight: 700, color: 'var(--text)', marginBottom: 3 }}>{m.title}</div>
+                    <div style={{ fontSize: '0.8125rem', color: 'var(--text3)', lineHeight: 1.4 }}>{m.desc}</div>
                   </div>
                   {/* Tanlov belgisi — radio o'rniga aniq ko'rinadigan doira */}
                   <div style={{
@@ -1157,9 +1157,9 @@ const ExamPage = () => {
               <QuestionMedia question={q} />
               {/* Savol matni */}
               {q.isHtml ? (
-                <SafeHtml html={q.q} style={{ fontSize: 'calc(16px * var(--font-scale))', fontWeight: 500, lineHeight: 1.6, marginBottom: 24, color: 'var(--text)' }} />
+                <SafeHtml html={q.q} style={{ fontSize: '1rem', fontWeight: 500, lineHeight: 1.6, marginBottom: 24, color: 'var(--text)' }} />
               ) : (
-                <div style={{ fontSize: 'calc(18px * var(--font-scale))', fontWeight: 600, lineHeight: 1.5, marginBottom: 24, color: 'var(--text)', whiteSpace: 'pre-line' }}>
+                <div style={{ fontSize: '1.125rem', fontWeight: 600, lineHeight: 1.5, marginBottom: 24, color: 'var(--text)', whiteSpace: 'pre-line' }}>
                   {q.q}
                 </div>
               )}
@@ -1205,7 +1205,7 @@ const ExamPage = () => {
                         background: optBg,
                         cursor: reviewMode ? 'default' : 'pointer',
                         transition: 'all 0.15s', fontFamily: 'inherit',
-                        fontSize: 'calc(15px * var(--font-scale))', fontWeight: 500, color: 'var(--text)',
+                        fontSize: '0.9375rem', fontWeight: 500, color: 'var(--text)',
                       }}
                     >
                       <div style={{

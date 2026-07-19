@@ -79,7 +79,9 @@ export default function SettingsPage({ theme, toggleTheme }) {
     else showToast(t('settings.toasts.pushError'), 'error');
   };
 
-  // Shrift o'lchami — faqat savol/variant/izoh matnlariga ta'sir qiladi
+  // Shrift o'lchami — root font-size (html.fontSize) orqali boshqariladi.
+  // 16px standart baza. S=0.9, M=1, L=1.1, XL=1.25 koeffitsiyentlarga ko'paytiradi.
+  // rem da yozilgan matnlar (savol, variant, flashcard) shu baZA ga nisbatan o'zgaradi.
   const [fontScale, setFontScale] = useState(() => {
     const saved = parseFloat(localStorage.getItem('iqro-font-scale'));
     return saved && saved >= 0.8 && saved <= 1.5 ? saved : 1;
@@ -87,7 +89,8 @@ export default function SettingsPage({ theme, toggleTheme }) {
   const applyFontScale = (v) => {
     setFontScale(v);
     localStorage.setItem('iqro-font-scale', String(v));
-    document.documentElement.style.setProperty('--font-scale', v);
+    // root font-size ni o'zgartirish — barcha rem elementlari avtomatik moslashadi
+    document.documentElement.style.fontSize = `${16 * v}px`;
   };
 
   // Android "orqaga" tugmasi modallarni yopadi (popstate shartnomasi)
