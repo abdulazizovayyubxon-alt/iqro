@@ -66,6 +66,8 @@ const DICT = [
   // — mtt skaneri (o'yining/matni/qatiq RAD; qatiq=yogurt) —
   ['tayorlash', 'tayyorlash'], ['faolik', 'faollik'],
   ['komunikatsiya', 'kommunikatsiya'], ['aplikatsiya', 'applikatsiya'],
+  // — mtt_rahbar skaneri —
+  ['tamoyilarga', 'tamoyillarga'],
 ];
 
 const SPELLING_STEM = /(imlo|to'g'ri yozilgan|xato yozilgan|to‘g‘ri yozilgan|xato yozil|qaysi so'z|qaysi so‘z)/i;
