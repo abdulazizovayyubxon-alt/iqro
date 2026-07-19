@@ -43,6 +43,11 @@ const DICT = [
   ['muxim', 'muhim'], ['xujjat', 'hujjat'], ['xuquq', 'huquq'], ['xukumat', 'hukumat'],
   ['shaxar', 'shahar'], ['raxbar', 'rahbar'], ['jaroxat', 'jarohat'],
   ['konstututsiya', 'konstitutsiya'],
+  // — tarix skaneri topgan (vetdan o'tgan; qatiq→qattiq RAD — "qatiq" ovqat) —
+  ['somoniyollar', 'somoniylar'], ['somoniyolar', 'somoniylar'], // sulola nomi — 63 savol
+  ['budizm', 'buddizm'], ['renesans', 'renessans'], ['samarqanda', 'samarqandda'],
+  ['omaviy', 'ommaviy'], ['egalash', 'egallash'], ['itifoqi', 'ittifoqi'],
+  ['hamurapi', 'hammurapi'],
 ];
 
 const SPELLING_STEM = /(imlo|to'g'ri yozilgan|xato yozilgan|to‘g‘ri yozilgan|xato yozil|qaysi so'z|qaysi so‘z)/i;
