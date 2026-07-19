@@ -18,6 +18,7 @@ import { generateClickUrl } from '../services/payment';
 import { AnalyticsEvents } from '../services/analytics';
 import { isPlayBuild, SUPPORT_URL } from '../config';
 import RoiBlock from './RoiBlock';
+import BrandLogo from './shared/BrandLogo';
 
 // Default tariflar (Firestore dan yuklanmasa)
 const DEFAULT_PLANS = [
@@ -365,7 +366,8 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   >
                     👑
                   </motion.div>
-                  <h2 style={{ fontSize: 22, fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>Zehin</h2>
+                  {/* Karta doim och fonda — rang qattiq beriladi (tungi temada oq bo'lib ketmasin) */}
+                  <h2 style={{ margin: '0 0 4px' }}><BrandLogo size={26} style={{ color: '#12305A' }} /></h2>
                   <p style={{ fontSize: 13, color: '#64748B', margin: 0 }}>{t('premium.subtitle')}</p>
                 </div>
 

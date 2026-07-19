@@ -1,7 +1,9 @@
 /**
  * i18n — ko'p tillilik (react-i18next).
  * Standart til: uz (o'zbek-lotin). Qo'shimcha: ru (rus).
- * Til localStorage `iqro-lang` da saqlanadi; yo'q bo'lsa brauzer tilidan aniqlanadi.
+ * Til localStorage `iqro-lang` da saqlanadi. Brauzer/qurilma tili ATAYIN
+ * e'tiborga olinmaydi: ilova birinchi ochilishda doim o'zbekcha — foydalanuvchi
+ * Sozlamalardan boshqa til tanlasa, o'sha tanlov saqlanadi va ishlatiladi.
  *
  * Matnlarni bosqichma-bosqich ko'chiramiz — hozircha tarjima qilingan yuzalar
  * (BottomNav, Settings) tilga moslashadi; qolgani uz-lotin'da qoladi (fallback).
@@ -24,7 +26,7 @@ i18n
     supportedLngs: ['uz', 'ru'],
     nonExplicitSupportedLngs: true, // 'ru-RU' → 'ru'
     detection: {
-      order: ['localStorage', 'navigator'],
+      order: ['localStorage'],
       lookupLocalStorage: 'iqro-lang',
       caches: ['localStorage'],
     },

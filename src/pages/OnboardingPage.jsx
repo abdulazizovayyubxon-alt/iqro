@@ -11,6 +11,7 @@ import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import { useIsMobile } from '../hooks/useIsMobile';
+import BrandLogo from '../components/shared/BrandLogo';
 
 // Tema-xavfsiz: tun/sepia da --accent avtomatik o'zgaradi (qattiq-kodlangan ko'k emas)
 const PRIMARY = 'var(--accent)';
@@ -374,40 +375,7 @@ export default function OnboardingPage({ onComplete }) {
             ) : <div style={{ width: 36 }} />}
 
             {/* Centered logo lockup */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
-              {/* 24px ikonka */}
-              <div style={{
-                width: '24px',
-                height: '24px',
-                borderRadius: '7px',
-                background: '#0E97E0',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0
-              }}>
-                <span style={{
-                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                  fontSize: '13px',
-                  fontWeight: 800,
-                  color: '#ffffff',
-                  letterSpacing: '-0.05em',
-                  lineHeight: 1,
-                  marginTop: '-1.5px'
-                }}>tp</span>
-              </div>
-              {/* Zehin Wordmark */}
-              <span style={{
-                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                fontSize: '15px',
-                fontWeight: 800,
-                color: 'var(--text)',
-                letterSpacing: '-0.02em',
-                lineHeight: 1
-              }}>
-                Zehin
-              </span>
-            </div>
+            <BrandLogo size={22} />
 
             <div style={{ width: 36 }} />
           </div>

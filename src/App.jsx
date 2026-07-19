@@ -254,7 +254,7 @@ function App() {
           textAlign: 'center',
         }}>
           <ZehinMark size={104} variant="navy" />
-          <BrandLogo size={51} style={{ color: '#ffffff', marginTop: '30px' }} />
+          <BrandLogo size={51} withMark={false} style={{ color: '#ffffff', marginTop: '30px' }} />
           <p style={{
             fontSize: '11px',
             fontWeight: 700,
