@@ -107,10 +107,25 @@ export const SUBJECTS = {
     book: "scratch/geografiya_book.txt",   // 5-10 sinf geografiya darsliklari (matnli, ~95% lotin) — fakt grounding (soat mintaqasi/iqlim/relief)
   },
   ingliz: {
-    name: "Ingliz tili", category: "ingliz", isNew: true,
+    name: "Ingliz tili", category: "ingliz", isNew: true, lang: "en",  // mutaxassislik bloki INGLIZ tilida; ped/kasb o'zbekcha (SHARED_PED)
     corpus: [],
-    namuna: ["fan 2/Ingiliz tili namuna"],
-    spec: "scratch/ingliz_spec.txt", specPdf: "fan 2/Инглиз тили я.pdf",
+    namuna: ["pipeline/inbox/ingliz_namuna.json", "fan 2/Ingiliz tili namuna"],
+    spec: "scratch/ingliz_spec_clean.txt", specPdf: "fan 2/Инглиз тили я.pdf",   // TOZA marker (1.1-2.3 mutaxassislik, inglizcha) — book grounding inglizcha darslik bilan mos
+    book: "scratch/ingliz_book.txt",   // Prepare! 7-11 + Guess What 5-6 (Cambridge, matnli) — reading/grammar/vocab/pragmatics grounding
+  },
+  kimyo: {
+    name: "Kimyo", category: "kimyo", isNew: true,   // o'zbek tilida (biologiya/geografiya patterni)
+    corpus: [],
+    namuna: ["pipeline/inbox/kimyo_namuna.json", "fan 2/Kimyo"],
+    spec: "scratch/kimyo_spec_clean.txt", specPdf: "fan 2/Кимё т.pdf",   // TOZA marker (1.1-4.1 mutaxassislik: umumiy/anorganik/organik/laboratoriya)
+    book: "scratch/kimyo_book.txt",   // 7-11 sinf kimyo darsliklari (matnli, lotin) — formula/xossa/reaksiya fakt grounding
+  },
+  rus_tili: {
+    name: "Rus tili", category: "rus_tili", isNew: true, lang: "ru",  // BUTUN test RUS tilida (kirill) — RKI; ped/kasb ham ruscha
+    corpus: [],
+    namuna: ["pipeline/inbox/rus_tili_namuna.json", "fan 2/Rus tili"],
+    spec: "scratch/rus_tili_spec_clean.txt", specPdf: "fan 2/Рус тили миллий я.pdf",   // TOZA marker (1.1-1.9 mutaxassislik, ruscha)
+    book: "scratch/rus_tili_book.txt",   // RKI 2-11 sinf darsliklari (kirill) — grounding cheklangan (kirill), lekin manba sifatida
   },
   mtt_logoped: {
     name: "MTT logoped", category: "mtt_logoped", isNew: true,

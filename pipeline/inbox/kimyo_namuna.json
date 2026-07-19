@@ -1,0 +1,26 @@
+[
+  {
+    "question": "405 gramm qo'sh superfosfat tarkibidagi ozuqa elementi (P2O5) massasini (g) aniqlang. Qo'sh superfosfat – Ca(H2PO4)2·2H2O.",
+    "options": { "A": "355", "B": "405", "C": "213", "D": "284" },
+    "subject": "Kimyo",
+    "answer": "C"
+  },
+  {
+    "question": "Qizdirilgan mis (II) oksidi ustidan ammiak gazi o'tkazildi. Reaksiya natijasida hosil bo'lgan azot gazi etan gazi bilan aralashtirilganda hajmi 89,6 litr (n.sh.), vodorodga nisbatan zichligi 14,75 bo'lgan gazlar aralashmasi hosil bo'ldi. Reaksiyada ishtirok etgan mis (II) oksid massasini (g) va gazlar aralashmasini hosil qilishda azotga qo'shilgan etan hajmini (litr; n.sh.) aniqlang.\n1) CuO – 160 g; 2) CuO – 240 g; 3) CuO – 320 g; 4) CuO – 400 g;\n5) C2H6 – 22,4 litr; 6) C2H6 – 44,8 litr; 7) C2H6 – 67,2 litr; 8) C2H6 – 89,6 litr",
+    "options": { "A": "4, 8", "B": "3, 6", "C": "1, 5", "D": "2, 7" },
+    "subject": "Kimyo",
+    "answer": "B"
+  },
+  {
+    "question": "Bir atomli to'yingan spirt (X) molekulasidagi C–H bog'lar soni a ga, C–C bog'lar soni esa (a−4) ga teng. Noma'lum X spirt formulasini va uning tarkibidagi turli bog'lar (1–3) sonini (a–f) aniqlang.\n1. Qutbli bog'lar soni\n2. Qutbsiz bog'lar soni\n3. σ-bog'lar soni\na) 7   b) 8   d) 2   e) 9   f) 10",
+    "options": { "A": "1-a; 2-d; 3-b", "B": "1-b; 2-d; 3-e", "C": "1-b; 2-a; 3-f", "D": "1-f; 2-d; 3-b" },
+    "subject": "Kimyo",
+    "answer": "A"
+  },
+  {
+    "question": "CH3Cl va R–Cl (R = CnH2n+1) aralashmasi natriy metali bilan to'liq ta'sirlashganda reaksiya natijasida A, B, C alkanlar va 1170 gramm NaCl hosil bo'ldi. Mr(B)=Mr(A)+14 va Mr(C)=Mr(A)+28 ekanligi ma'lum. Hosil bo'layotgan organik moddalar massalari 30-sekundda A=348 g, B=132 g, C=30 g bo'lgan bo'lsa, quyidagi mulohazalardan qaysilari to'g'ri/noto'g'ri ekanligini aniqlang.\n1) C moddaning formulasi C4H10\n2) C moddaning formulasi C9H20\n3) Reaksiyada 252,5 gramm CH3Cl ishtirok etgan\n4) Reaksiyada 454,5 gramm CH3Cl ishtirok etgan\n5) Reaksiya natijasida hosil bo'lgan alkanlar miqdorlarining (mol) nisbati 1:3:6\n6) Reaksiya natijasida hosil bo'lgan alkanlar miqdorlarining (mol) nisbati 1:2:3",
+    "options": { "A": "2,3,6 – to'g'ri; 1,4,5 – noto'g'ri", "B": "1,3,5 – to'g'ri; 2,4,6 – noto'g'ri", "C": "2,4,6 – to'g'ri; 1,3,5 – noto'g'ri", "D": "1,4,5 – to'g'ri; 2,3,6 – noto'g'ri" },
+    "subject": "Kimyo",
+    "answer": "A"
+  }
+]

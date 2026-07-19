@@ -57,6 +57,22 @@ const REASONING = process.env.PIPELINE_REASONING || ""; // gpt-oss kabi reasonin
 const sub = resolveSubject(slug);
 if (!sub.specExists && sub.specPdf && fs.existsSync(sub.specPdf)) execFileSync("pdftotext", ["-enc", "UTF-8", sub.specPdf, sub.spec]);
 
+// ── TIL DIREKTIVASI — gen_prompt shabloni o'zbekcha yozadi; til fanida chiqish tilini majburlaymiz ──
+// kimyo/default = o'zbek (lotin); rus_tili = butun test rus (kirill); ingliz = mutaxassislik inglizcha, ped/kasb o'zbekcha.
+const LANG = sub.lang || "uz";
+const allowCyrillic = LANG === "ru";
+function langDirective(block) {
+  // RUS/INGLIZ: FAQAT mutaxassislik bloki fan tilida; ped/kasb bloklari o'zbekcha (SHARED_PED) —
+  // real imtihonda ham til fanlarining pedagogika/kasb bloki o'zbek tilida (namuna rasmlar shuni tasdiqladi).
+  if (LANG === "ru" && block === "mutaxassislik") {
+    return `\n\n⚠️ ЯЗЫК: Весь вопрос (условие), ВСЕ варианты ответа (A, B, C, D) и объяснение (explanation) пиши ТОЛЬКО НА РУССКОМ ЯЗЫКЕ (кириллицей). Не используй узбекский язык или латиницу в тексте вопроса, вариантов и объяснения. Для заданий по чтению встрой короткий русский текст (отрывок) прямо в условие вопроса, чтобы задание было самодостаточным.`;
+  }
+  if (LANG === "en" && block === "mutaxassislik") {
+    return `\n\n⚠️ LANGUAGE: Write the question stem, ALL answer options (A, B, C, D) and the explanation ENTIRELY IN ENGLISH. Do not use Uzbek in the question, options or explanation. For reading tasks, embed a short English text (passage) directly in the question stem so the item is self-contained.`;
+  }
+  return "";
+}
+
 // Bo'laklar: mutaxassislik manbasi (darslik bo'lsa o'sha, aks holda spec) + umumiy ped (kasb/pedagogika)
 const mutSource = sourceFile && fs.existsSync(sourceFile) ? sourceFile : sub.spec;
 // Mutaxassislik manbasini FAQAT mutaxassislik kerak bo'lganda o'qiymiz — ped/kasb-only generatsiyada (mas:
@@ -251,6 +267,7 @@ while (already + accepted.length < target) {
       if (specialOnly) prompt += `\n\n⚠️ MAXSUS REJIM: bu so'rovda FAQAT "matching" va "sequence" formatdagi savollar yoz — "single" YOZMA!
 Taxminan yarmi matching, yarmi sequence. FAQAT manba matnida ANIQ ro'yxat/juftlik/tartib bo'lsa tuz — to'qima.
 Agar bu bo'lakda mos ro'yxat/tartib bo'lmasa, KAM savol qaytar (bo'sh massiv ham mumkin).`;
+      prompt += langDirective(c.block);
       const rawContent = await callLLM(prompt);
       const out = extract(rawContent);
       if (!out) { console.log("parse xato"); try { fs.writeFileSync("pipeline/_lastraw.txt", rawContent); } catch {} continue; }
@@ -258,7 +275,7 @@ Agar bu bo'lakda mos ro'yxat/tartib bo'lmasa, KAM savol qaytar (bo'sh massiv ham
       for (const q0 of out) {
         q0.subject = q0.subject || sub.name;
         const qt = q0.qtype || "single";
-        if (validateQuestion(q0).length) { bad++; continue; }
+        if (validateQuestion(q0, { allowCyrillic }).length) { bad++; continue; }
         if (guardCrossDomain(q0, c.block)) { contam++; continue; } // anti-ifloslanish: harbiy/CHQBT misol boshqa fan ped/kasb'ida
         if (specialOnly && !isSpecial(qt)) { specialSkip++; continue; } // maxsus rejim: faqat matching/sequence
         if (!specialOnly && isSpecial(qt) && nSpecial >= SPECIAL_CAP) { specialSkip++; continue; } // format balansi (single+combo ustun)

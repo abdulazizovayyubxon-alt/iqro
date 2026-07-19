@@ -29,7 +29,9 @@ export function canonical(q) {
 }
 
 // Bitta savolni tekshiradi -> xatolar ro'yxati (bo'sh bo'lsa = yaroqli).
-export function validateQuestion(raw) {
+// opts.allowCyrillic — RUS tili (RKI) kabi fanlarda savol KIRILL alifbosida bo'ladi;
+// bunday fanlarda krill-taqiqi o'chiriladi (aks holda barcha ruscha savol rad etiladi).
+export function validateQuestion(raw, { allowCyrillic = false } = {}) {
   const q = canonical(raw);
   const errors = [];
 
@@ -75,9 +77,11 @@ export function validateQuestion(raw) {
     explanation: q.explanation, mnemonic: q.mnemonic,
     topic: q.topic, subtopic: q.subtopic,
   };
-  for (const [field, val] of Object.entries(textFields)) {
-    if (hasCyrillic(val)) {
-      errors.push(`${field} da krill harf bor (lotin bo'lishi kerak): "${cyrillicChars(val)}"`);
+  if (!allowCyrillic) {
+    for (const [field, val] of Object.entries(textFields)) {
+      if (hasCyrillic(val)) {
+        errors.push(`${field} da krill harf bor (lotin bo'lishi kerak): "${cyrillicChars(val)}"`);
+      }
     }
   }
 

@@ -1,0 +1,26 @@
+[
+  {
+    "question": "Choose the best pair of words to complete the sentence naturally.\n\"Amazing! ____ a miracle _____ she wasn't hurt!\"",
+    "options": { "A": "This's / as", "B": "It's / because", "C": "That's / that", "D": "It's / that" },
+    "subject": "Ingliz tili",
+    "answer": "D"
+  },
+  {
+    "question": "Choose the best definition of 'off-colour'.",
+    "options": { "A": "Lacking originality or creativity", "B": "Slightly dishonest or unethical in behaviour", "C": "Deliberately exaggerated for comic effect", "D": "Showing signs of mild illness or not feeling well" },
+    "subject": "Ingliz tili",
+    "answer": "D"
+  },
+  {
+    "question": "Read the passage:\n\"In late June, Swan was finally observed posting a letter containing indecent words. She was charged under the Post Office Act, convicted at Lewes, and sentenced to one year in prison, finally ending the three-year ordeal that had rocked the seaside town.\"\nWhich meaning of 'quashed' best fits the sentence \"In July 1921 the Court of Criminal Appeal quashed both convictions\"?",
+    "options": { "A": "Reopened the convictions to allow the jury to reconsider the evidence", "B": "Officially cancelled the convictions and declared them no longer valid", "C": "Postponed the convictions until new witnesses could testify", "D": "Confirmed the convictions while reducing the severity of the punishment" },
+    "subject": "Ingliz tili",
+    "answer": "B"
+  },
+  {
+    "question": "Read the excerpt: \"She had prepared for months, yet the moment she stepped onto the stage, every word she had rehearsed seemed to vanish.\"\nWhat can be inferred about the speaker?",
+    "options": { "A": "She had not prepared enough for the performance.", "B": "She felt a sudden loss of confidence despite her preparation.", "C": "She deliberately changed her speech at the last moment.", "D": "She was not interested in the performance." },
+    "subject": "Ingliz tili",
+    "answer": "B"
+  }
+]
