@@ -1456,7 +1456,7 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
 }
 .splash-video-skip {
   position: absolute;
-  bottom: max(28px, env(safe-area-inset-bottom, 20px));
+  top: max(28px, env(safe-area-inset-top, 20px));
   right: 20px;
   padding: 8px 20px;
   background: rgba(255, 255, 255, 0.15);

@@ -7,6 +7,7 @@ import { ObjectionProvider } from './context/ObjectionContext'
 import { AppProvider } from './context/AppContext'
 import { PWAProvider } from './context/PWAContext'
 import App from './App.jsx'
+import SplashVideo, { shouldShowSplash } from './components/shared/SplashVideo.jsx'
 import './i18n'
 import './index.css'
 
@@ -25,6 +26,19 @@ if ('scrollRestoration' in window.history) {
   window.history.scrollRestoration = 'manual'
 }
 
+// AppRoot - eng yuqori darajadagi render
+// Splash video ilova qanday holatdaligidan qat'i nazar (kirmagan bo'lsa ham)
+// eng birinchi bo'lib ko'rinishini ta'minlaydi.
+const AppRoot = () => {
+  const [showSplash, setShowSplash] = React.useState(() => shouldShowSplash());
+  return (
+    <>
+      {showSplash && <SplashVideo onComplete={() => setShowSplash(false)} />}
+      <App />
+    </>
+  );
+};
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -33,7 +47,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <ObjectionProvider>
             <AppProvider>
               <PWAProvider>
-                <App />
+                <AppRoot />
               </PWAProvider>
             </AppProvider>
           </ObjectionProvider>

@@ -7,7 +7,6 @@ import { Shield, BookOpen, Clock, Palette } from 'lucide-react';
 import BrandLogo, { ZehinMark } from './components/shared/BrandLogo';
 import PullToRefresh, { RefreshRing } from './components/shared/PullToRefresh';
 import ScrollDebugOverlay from './components/shared/ScrollDebugOverlay';
-import SplashVideo, { shouldShowSplash } from './components/shared/SplashVideo';
 import { trackPageView, startPageTimer } from './services/analytics';
 import { setUser, clearUser } from './services/sentry';
 import { doc, getDoc } from 'firebase/firestore';
@@ -149,8 +148,6 @@ function App() {
   const [theme, setTheme] = useState('light');
   const [needsOnboarding, setNeedsOnboarding] = useState(false);
   const [onboardingChecked, setOnboardingChecked] = useState(false);
-  // Splash video — faqat ilova birinchi ochilganda (sessiya boshlanishi)
-  const [showSplash, setShowSplash] = useState(() => shouldShowSplash());
 
   // Yangi foydalanuvchimi tekshirish
   useEffect(() => {
@@ -350,10 +347,6 @@ function App() {
     .some((p) => location.pathname.startsWith(p));
   return (
     <div className="layout-container">
-      {/* Splash video — faqat sessiya boshida bir marta ko'rsatiladi */}
-      {showSplash && (
-        <SplashVideo onComplete={() => setShowSplash(false)} />
-      )}
       <Header theme={theme} toggleTheme={toggleTheme} />
       <OfflineIndicator />
       <PullToRefresh disabled={ptrOff} />
