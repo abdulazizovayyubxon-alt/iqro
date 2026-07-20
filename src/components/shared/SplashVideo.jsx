@@ -1,8 +1,9 @@
 /**
- * SplashVideo.jsx — Zehin logo animatsiyasi (splash ekran)
+ * SplashVideo.jsx — Zehin logo VIDEO animatsiyasi (splash ekran)
  *
- * Faqat ilova BIRINCHI ochilganda (sessiya boshlanishi) ko'rsatiladi.
- * Pull-to-refresh yoki route almashtirishda PAYDO BO'LMAYDI.
+ * Faqat ilova BIRINCHI ochilganda (yangi sessiya) ko'rsatiladi.
+ * Refresh (F5/pull-to-refresh) da ko'rsatilMAYDI — buning o'rniga
+ * SimpleSplash (oddiy statik splash) ishlaydi.
  *
  * Xususiyatlar:
  * - Video telefon ekraniga to'liq mos (object-fit: cover)
@@ -14,7 +15,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 const SPLASH_VIDEO_URL = '/videos/zehin-splash.mp4';
-const SESSION_KEY = 'zehin-splash-shown';
+export const SPLASH_SESSION_KEY = 'zehin-splash-shown';
 const VIBRATION_KEY = 'iqro-vibration';
 
 /**
@@ -48,7 +49,7 @@ export default function SplashVideo({ onComplete }) {
     setFading(true);
     setTimeout(() => {
       setVisible(false);
-      sessionStorage.setItem(SESSION_KEY, '1');
+      sessionStorage.setItem(SPLASH_SESSION_KEY, '1');
       onComplete?.();
     }, 500);
   }, [onComplete]);
@@ -63,12 +64,12 @@ export default function SplashVideo({ onComplete }) {
     setFading(true);
     setTimeout(() => {
       setVisible(false);
-      sessionStorage.setItem(SESSION_KEY, '1');
+      sessionStorage.setItem(SPLASH_SESSION_KEY, '1');
       onComplete?.();
     }, 300);
   }, [onComplete]);
 
-  // Video yuklanmasa — 5 soniyadan keyin avtomatik skip
+  // Video yuklanmasa — 8 soniyadan keyin avtomatik skip
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (!fadeDone.current) {
@@ -106,14 +107,4 @@ export default function SplashVideo({ onComplete }) {
       </button>
     </div>
   );
-}
-
-/**
- * Splash ko'rsatilishi kerakmi?
- * sessionStorage'da belgi bo'lmasa — ko'rsatiladi (yangi sessiya)
- */
-export function shouldShowSplash() {
-  // sessionStorage tab/brauzer yopilganda tozalanadi → qayta ochganda ko'rsatiladi
-  // Refresh (F5/pull-to-refresh) da esa sessiya davom etadi → ko'rsatilmaydi
-  return !sessionStorage.getItem(SESSION_KEY);
 }

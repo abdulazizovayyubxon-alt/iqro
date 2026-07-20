@@ -7,7 +7,8 @@ import { ObjectionProvider } from './context/ObjectionContext'
 import { AppProvider } from './context/AppContext'
 import { PWAProvider } from './context/PWAContext'
 import App from './App.jsx'
-import SplashVideo, { shouldShowSplash } from './components/shared/SplashVideo.jsx'
+import SplashVideo, { SPLASH_SESSION_KEY } from './components/shared/SplashVideo.jsx'
+import SimpleSplash from './components/shared/SimpleSplash.jsx'
 import './i18n'
 import './index.css'
 
@@ -27,13 +28,27 @@ if ('scrollRestoration' in window.history) {
 }
 
 // AppRoot - eng yuqori darajadagi render
-// Splash video ilova qanday holatdaligidan qat'i nazar (kirmagan bo'lsa ham)
-// eng birinchi bo'lib ko'rinishini ta'minlaydi.
+// Splash rejimi:
+//   - Ilova BIRINCHI ochilganda (sessionStorage bo'sh) → VIDEO splash
+//   - Sahifa YANGILANGANDA (sessionStorage mavjud)     → ODDIY splash (faqat logo)
 const AppRoot = () => {
-  const [showSplash, setShowSplash] = React.useState(() => shouldShowSplash());
+  const isFirstOpen = !sessionStorage.getItem(SPLASH_SESSION_KEY);
+  // 'video' | 'simple' | 'done'
+  const [splashMode, setSplashMode] = React.useState(isFirstOpen ? 'video' : 'simple');
+
+  const handleVideoComplete = React.useCallback(() => {
+    // sessionStorage video ichida o'zi setItem qiladi
+    setSplashMode('done');
+  }, []);
+
+  const handleSimpleComplete = React.useCallback(() => {
+    setSplashMode('done');
+  }, []);
+
   return (
     <>
-      {showSplash && <SplashVideo onComplete={() => setShowSplash(false)} />}
+      {splashMode === 'video' && <SplashVideo onComplete={handleVideoComplete} />}
+      {splashMode === 'simple' && <SimpleSplash onComplete={handleSimpleComplete} />}
       <App />
     </>
   );
