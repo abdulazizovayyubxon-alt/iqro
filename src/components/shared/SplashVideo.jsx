@@ -28,19 +28,17 @@ export default function SplashVideo({ onComplete }) {
   const [fading, setFading] = useState(false);
   const [visible, setVisible] = useState(true);
   const fadeDone = useRef(false);
+  const vibrated = useRef(false);
 
-  // Vibratsiya — video boshlanishida bir marta
+  // Vibratsiya — foydalanuvchi bosganida bir marta
   const triggerVibration = useCallback(() => {
+    if (vibrated.current) return;
+    vibrated.current = true;
     const vibrationEnabled = localStorage.getItem(VIBRATION_KEY) !== 'off';
     if (vibrationEnabled && navigator.vibrate) {
-      try { navigator.vibrate(200); } catch (e) { /* brauzer qo'llab-quvvatlamasligi mumkin */ }
+      try { navigator.vibrate(200); } catch (e) { /* ignore */ }
     }
   }, []);
-
-  // Video o'ynay boshlaganda
-  const handlePlay = useCallback(() => {
-    triggerVibration();
-  }, [triggerVibration]);
 
   // Video tugaganda — fade-out boshlash
   const handleEnded = useCallback(() => {
@@ -69,13 +67,22 @@ export default function SplashVideo({ onComplete }) {
     }, 300);
   }, [onComplete]);
 
+  // Ekranga birinchi bosish — vibratsiya; ikkinchi bosish — skip
+  const handleOverlayTap = useCallback(() => {
+    if (!vibrated.current) {
+      triggerVibration();
+      return; // birinchi bosish faqat vibratsiya, skip qilmaydi
+    }
+    handleSkip(); // ikkinchi bosish — skip
+  }, [triggerVibration, handleSkip]);
+
   // Video yuklanmasa — 8 soniyadan keyin avtomatik skip
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (!fadeDone.current) {
         handleSkip();
       }
-    }, 8000); // max 8 soniya kutish (video 4.7s + buffer)
+    }, 8000);
     return () => clearTimeout(timeout);
   }, [handleSkip]);
 
@@ -84,7 +91,7 @@ export default function SplashVideo({ onComplete }) {
   return (
     <div
       className={`splash-video-overlay ${fading ? 'splash-video-fadeout' : ''}`}
-      onClick={handleSkip}
+      onClick={handleOverlayTap}
       role="button"
       tabIndex={0}
       aria-label="Splash animatsiyani o'tkazib yuborish"
@@ -97,12 +104,11 @@ export default function SplashVideo({ onComplete }) {
         muted
         playsInline
         preload="auto"
-        onPlay={handlePlay}
         onEnded={handleEnded}
         onError={handleSkip}
       />
-      {/* Skip tugma */}
-      <button className="splash-video-skip" onClick={handleSkip}>
+      {/* Skip tugma — doim skip qiladi (vibratsiyasiz) */}
+      <button className="splash-video-skip" onClick={(e) => { e.stopPropagation(); handleSkip(); }}>
         O'tkazish
       </button>
     </div>
