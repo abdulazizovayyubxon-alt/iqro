@@ -10,7 +10,8 @@
   "lang": {
     "label": "Til",
     "uz": "O'zbekcha",
-    "ru": "Русский"
+    "ru": "Русский",
+    "en": "English"
   },
   "theme": {
     "light": "Kun",
@@ -49,6 +50,10 @@
     "themeMode": "Rejim",
     "fontSize": "Shrift o'lchami",
     "fontSizeHint": "Savol va javob matnlariga ta'sir qiladi",
+    "vibration": "Vibratsiya",
+    "vibrationHint": "Logo animatsiyasida telefon vibratsiyasi",
+    "vibrationOn": "Yoqilgan",
+    "vibrationOff": "O'chirilgan",
     "editProfile": "Profilni tahrirlash",
     "changePassword": "Parolni o'zgartirish",
     "smartReview": "Aqlli takrorlash chastotasi",

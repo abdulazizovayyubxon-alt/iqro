@@ -1,0 +1,78 @@
+🔐 998999154686@iqro.uz bilan Firestore'ga kirilmoqda...
+🔎 --topics filtri: 3000 → 906 ta savol (mavzular: 135, 136)
+
+📚 Fan: Ingliz tili — pedagogika va kasb standarti bloki (o'zbekcha)
+📄 Manba: Firestore 'questions' (category=ingliz) — 906 savol, 61 batch (15 tadan)
+🤖 Provider: pipeline | model: gpt-oss-120b | kalitlar: 27 ta | reasoning: low
+🛡️  Ikki bosqichli tekshiruv: YOQILGAN (har batch 2 marta) | JONLI rejim
+
+💾 Zaxira (Firestore dump): src\data\firestore_backup_ingliz_2026-07-19T22-28-07.json
+
+Batch 1/61 (savol 0–14)... ✅ 0 ta tuzatish
+Batch 2/61 (savol 15–29)... ✅ 0 ta tuzatish
+Batch 3/61 (savol 30–44)... ✅ 0 ta tuzatish
+Batch 4/61 (savol 45–59)... ✅ 0 ta tuzatish
+Batch 5/61 (savol 60–74)... ✅ 0 ta tuzatish
+Batch 6/61 (savol 75–89)... ✅ 0 ta tuzatish
+Batch 7/61 (savol 90–104)... ✅ 0 ta tuzatish
+Batch 8/61 (savol 105–119)... ✅ 0 ta tuzatish
+Batch 9/61 (savol 120–134)... ✅ 0 ta tuzatish
+Batch 10/61 (savol 135–149)... ✅ 0 ta tuzatish
+Batch 11/61 (savol 150–164)... ✅ 0 ta tuzatish
+Batch 12/61 (savol 165–179)... ✅ 0 ta tuzatish
+Batch 13/61 (savol 180–194)... ✅ 0 ta tuzatish
+Batch 14/61 (savol 195–209)... ✅ 0 ta tuzatish
+Batch 15/61 (savol 210–224)... ✅ 0 ta tuzatish
+Batch 16/61 (savol 225–239)... ✅ 0 ta tuzatish
+Batch 17/61 (savol 240–254)... ✅ 0 ta tuzatish
+Batch 18/61 (savol 255–269)... ✅ 0 ta tuzatish
+Batch 19/61 (savol 270–284)... ✅ 0 ta tuzatish
+Batch 20/61 (savol 285–299)... ✅ 0 ta tuzatish
+Batch 21/61 (savol 300–314)... ✅ 0 ta tuzatish
+Batch 22/61 (savol 315–329)... ✅ 0 ta tuzatish
+Batch 23/61 (savol 330–344)... ✅ 0 ta tuzatish
+Batch 24/61 (savol 345–359)... ✅ 0 ta tuzatish
+Batch 25/61 (savol 360–374)... ✅ 0 ta tuzatish
+Batch 26/61 (savol 375–389)... ✅ 2 ta tuzatish
+Batch 27/61 (savol 390–404)... ✅ 0 ta tuzatish
+Batch 28/61 (savol 405–419)... ✅ 0 ta tuzatish
+Batch 29/61 (savol 420–434)... ✅ 0 ta tuzatish
+Batch 30/61 (savol 435–449)... ✅ 0 ta tuzatish
+Batch 31/61 (savol 450–464)... ✅ 0 ta tuzatish
+Batch 32/61 (savol 465–479)... ✅ 0 ta tuzatish
+Batch 33/61 (savol 480–494)... ✅ 0 ta tuzatish
+Batch 34/61 (savol 495–509)... ✅ 0 ta tuzatish
+Batch 35/61 (savol 510–524)... ✅ 0 ta tuzatish
+Batch 36/61 (savol 525–539)... ✅ 0 ta tuzatish
+Batch 37/61 (savol 540–554)... ✅ 0 ta tuzatish
+Batch 38/61 (savol 555–569)... ✅ 1 ta tuzatish
+Batch 39/61 (savol 570–584)... ✅ 0 ta tuzatish
+Batch 40/61 (savol 585–599)... ✅ 0 ta tuzatish
+Batch 41/61 (savol 600–614)... ✅ 0 ta tuzatish
+Batch 42/61 (savol 615–629)... ✅ 1 ta tuzatish
+Batch 43/61 (savol 630–644)... ✅ 0 ta tuzatish
+Batch 44/61 (savol 645–659)... ✅ 0 ta tuzatish
+Batch 45/61 (savol 660–674)... ✅ 0 ta tuzatish
+Batch 46/61 (savol 675–689)... ✅ 0 ta tuzatish
+Batch 47/61 (savol 690–704)... ✅ 0 ta tuzatish
+Batch 48/61 (savol 705–719)... ✅ 0 ta tuzatish
+Batch 49/61 (savol 720–734)... ✅ 0 ta tuzatish
+Batch 50/61 (savol 735–749)... ✅ 0 ta tuzatish
+Batch 51/61 (savol 750–764)... ✅ 0 ta tuzatish
+Batch 52/61 (savol 765–779)... ✅ 0 ta tuzatish
+Batch 53/61 (savol 780–794)... ✅ 0 ta tuzatish
+Batch 54/61 (savol 795–809)... ✅ 0 ta tuzatish
+Batch 55/61 (savol 810–824)... ✅ 0 ta tuzatish
+Batch 56/61 (savol 825–839)... ✅ 1 ta tuzatish
+Batch 57/61 (savol 840–854)... ✅ 1 ta tuzatish
+Batch 58/61 (savol 855–869)... ✅ 0 ta tuzatish
+Batch 59/61 (savol 870–884)... ✅ 0 ta tuzatish
+Batch 60/61 (savol 885–899)... ✅ 1 ta tuzatish
+Batch 61/61 (savol 900–905)...     ⏳ HTTP 429 — barcha kalitlar band, 5s kutamiz...
+✅ 0 ta tuzatish
+
+✍️  Firestore yangilandi: 7 ta hujjat
+📋 Hisobot: src\data\fix_report_ingliz_2026-07-19T22-30-25.md
+🧹 Checkpoint tozalandi — fan to'liq tekshirildi.
+
+👀 O'zgarishlar hisobot faylida. Kerak bo'lsa zaxira dump'dan tiklash mumkin.

@@ -1,0 +1,173 @@
+{
+ "fan": "ingliz",
+ "checked": 118,
+ "high": 111,
+ "lowConf": 2,
+ "conflicts": [
+  {
+   "id": "aT3BTeoRO8y3OSwCXx2u",
+   "topicId": 133,
+   "stored": "B",
+   "model": "C",
+   "conf": "medium",
+   "why": "\"make a cake\" is the least typical collocation among the options",
+   "q": "Which word does NOT collocate with \"make\"?\nA) decision\nB) a cake\nC) an appointment\nD) a mistake",
+   "opts": [
+    "A) a mistake",
+    "B) an appointment",
+    "C) a cake",
+    "D) decision"
+   ]
+  },
+  {
+   "id": "BouD0DPSgkCmgkFOo6LX",
+   "topicId": 132,
+   "stored": "C",
+   "model": "B",
+   "conf": "high",
+   "why": "The sentence is grammatically correct",
+   "q": "Identify the grammatical error in the sentence: \"I saw an owl sitting on a branch.\"",
+   "opts": [
+    "A) Verb tense should be past perfect",
+    "B) No error; sentence is correct",
+    "C) Use of 'an' before 'owl' is incorrect",
+    "D) Missing article before 'branch'"
+   ]
+  },
+  {
+   "id": "IPGCKXzuBAS5I4RVQ8X4",
+   "topicId": 129,
+   "stored": "B",
+   "model": "C",
+   "conf": "high",
+   "why": "Captures the main finding that a fungus may reduce ocean plastic",
+   "q": "Passage: \"Researchers discovered that a certain fungus can degrade plastic in seawater within weeks, offering a potential solution to marine pollution. The study, conducted over two years, showed a 70% reduction in micro‑plastic particles in test tanks.\" Which sentence best summarizes the passage?\nA) The fungus was harmful to marine life.\nB) Plastic cannot be broken down in seawater.\nC) A fungus may help reduce plastic pollution in oceans.\nD) The study lasted only a few months.",
+   "opts": [
+    "A) The fungus was harmful to marine life.",
+    "B) A fungus may help reduce plastic pollution in oceans.",
+    "C) The study lasted only a few months.",
+    "D) Plastic cannot be broken down in seawater."
+   ]
+  },
+  {
+   "id": "ka1qzvJbz6jWZ3EY3T5d",
+   "topicId": 133,
+   "stored": "A",
+   "model": "C",
+   "conf": "medium",
+   "why": "Heavy and noisy traffic are the typical collocations",
+   "q": "Select the statements that correctly describe typical collocations with the noun \"traffic\".\na) heavy traffic\nb) bright traffic\nd) smooth traffic\ne) noisy traffic",
+   "opts": [
+    "A) a, d",
+    "B) b, e",
+    "C) a, e",
+    "D) b, d"
+   ]
+  },
+  {
+   "id": "o7M1GoS3nHJERfkj2lrj",
+   "topicId": 131,
+   "stored": "B",
+   "model": "D",
+   "conf": "high",
+   "why": "\"although\" correctly shows contrast.",
+   "q": "In the sentence \"The researcher examined the sample and recorded the results, ___ they were surprising,\" which cohesive device correctly completes the sentence?",
+   "opts": [
+    "A) and",
+    "B) which",
+    "C) because",
+    "D) although"
+   ]
+  },
+  {
+   "id": "pndRctbAryFhT17ZQUgV",
+   "topicId": 134,
+   "stored": "C",
+   "model": "A",
+   "conf": "high",
+   "why": "The phrasing mitigates the request, typical of negative politeness.",
+   "q": "In a meeting, a colleague says, \"I think we might need to reconsider the deadline.\" Which politeness strategy is being used?",
+   "opts": [
+    "A) Negative politeness",
+    "B) Off record",
+    "C) Positive politeness",
+    "D) Bald on record"
+   ]
+  },
+  {
+   "id": "QnnHbPmYftbzVovxWmYi",
+   "topicId": 131,
+   "stored": "A",
+   "model": "D",
+   "conf": "high",
+   "why": "Uses a different noun, avoiding repetition.",
+   "q": "Which sentence uses ellipsis correctly to avoid repetition?",
+   "opts": [
+    "A) She likes apples; she also likes them.",
+    "B) She likes apples; she also likes the other one.",
+    "C) She likes apples; she also likes the same fruit.",
+    "D) She likes apples; she also likes oranges."
+   ]
+  },
+  {
+   "id": "VLLLhD5Sp6I6uQjxy4Pn",
+   "topicId": 133,
+   "stored": "A",
+   "model": "D",
+   "conf": "medium",
+   "why": "\"make decision\" is less natural without an article",
+   "q": "Which word does NOT naturally collocate with \"make\"?",
+   "opts": [
+    "A) mistake",
+    "B) promise",
+    "C) effort",
+    "D) decision"
+   ]
+  },
+  {
+   "id": "w3ShHbFanU9mEb4ygrrQ",
+   "topicId": 129,
+   "stored": "A",
+   "model": "B",
+   "conf": "high",
+   "why": "a, b and d are true while c is false",
+   "q": "Read the two sentences:\n1) \"The experiment showed a 15% increase in yield when fertilizer X was applied.\"\n2) \"Applying fertilizer X leads to higher crop production than without it.\"\nWhich statements are true?\na) Sentence 1 provides a quantitative result.\nb) Sentence 2 is a qualitative generalisation.\nc) Both sentences refer to the same experimental condition.\nd) Sentence 1 mentions the specific percentage increase.\n",
+   "opts": [
+    "A) a, c, d",
+    "B) a, b, d",
+    "C) a, d",
+    "D) b, c"
+   ]
+  },
+  {
+   "id": "wZQjF1atfa0eqBqmksHw",
+   "topicId": 132,
+   "stored": "D",
+   "model": "C",
+   "conf": "high",
+   "why": "Standard drafting sequence",
+   "q": "Arrange the steps of writing a short descriptive paragraph in the correct order:\n1. Review and edit for grammar.\n2. Brainstorm sensory details.\n3. Write the first draft.\n4. Choose a clear topic sentence.",
+   "opts": [
+    "A) 3, 2, 4, 1",
+    "B) 2, 3, 4, 1",
+    "C) 4, 2, 3, 1",
+    "D) 2, 4, 3, 1"
+   ]
+  },
+  {
+   "id": "XfLjj11syD8Oq7hLwuAp",
+   "topicId": 132,
+   "stored": "D",
+   "model": "C",
+   "conf": "high",
+   "why": "Uses conjunction to link two independent clauses correctly",
+   "q": "Combine the sentences correctly: \"The teacher praised the student. The student won the competition.\"",
+   "opts": [
+    "A) The teacher praised the student because the student won the competition.",
+    "B) The teacher praised the student; the student who won the competition.",
+    "C) The teacher praised the student and the student won the competition.",
+    "D) The teacher praised the student, who won the competition."
+   ]
+  }
+ ]
+}

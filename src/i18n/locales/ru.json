@@ -10,7 +10,8 @@
   "lang": {
     "label": "Язык",
     "uz": "O'zbekcha",
-    "ru": "Русский"
+    "ru": "Русский",
+    "en": "English"
   },
   "theme": {
     "light": "День",
@@ -49,6 +50,10 @@
     "themeMode": "Режим",
     "fontSize": "Размер шрифта",
     "fontSizeHint": "Влияет на текст вопросов и ответов",
+    "vibration": "Вибрация",
+    "vibrationHint": "Вибрация телефона при анимации логотипа",
+    "vibrationOn": "Включена",
+    "vibrationOff": "Выключена",
     "editProfile": "Редактировать профиль",
     "changePassword": "Изменить пароль",
     "smartReview": "Частота умного повторения",

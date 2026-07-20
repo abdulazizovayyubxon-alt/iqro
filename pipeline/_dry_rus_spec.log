@@ -1,0 +1,164 @@
+🔐 998999154686@iqro.uz bilan Firestore'ga kirilmoqda...
+🔎 --topics filtri: 3001 → 2225 ta savol (mavzular: 121, 122, 123, 124, 125, 126)
+
+📚 Fan: Аттестация учителей русского языка — чтение, лексика, морфология, синтаксис [--lang ru]
+📄 Manba: Firestore 'questions' (category=rus_tili) — 2225 savol, 149 batch (15 tadan)
+🤖 Provider: pipeline | model: gpt-oss-120b | kalitlar: 27 ta | reasoning: low
+🛡️  Ikki bosqichli tekshiruv: YOQILGAN (har batch 2 marta) | DRY-RUN (fayl o'zgarmaydi)
+
+Batch 1/149 (savol 0–14)... ✅ 0 ta tuzatish
+Batch 2/149 (savol 15–29)... ✅ 0 ta tuzatish
+Batch 3/149 (savol 30–44)... ✅ 0 ta tuzatish
+Batch 4/149 (savol 45–59)... ✅ 2 ta tuzatish
+Batch 5/149 (savol 60–74)... ✅ 0 ta tuzatish
+Batch 6/149 (savol 75–89)... ✅ 0 ta tuzatish
+Batch 7/149 (savol 90–104)... ✅ 0 ta tuzatish
+Batch 8/149 (savol 105–119)... ✅ 0 ta tuzatish
+Batch 9/149 (savol 120–134)... ✅ 0 ta tuzatish
+Batch 10/149 (savol 135–149)... ✅ 0 ta tuzatish
+Batch 11/149 (savol 150–164)... ✅ 0 ta tuzatish
+Batch 12/149 (savol 165–179)... ✅ 0 ta tuzatish
+Batch 13/149 (savol 180–194)... ✅ 0 ta tuzatish
+Batch 14/149 (savol 195–209)... ✅ 0 ta tuzatish
+Batch 15/149 (savol 210–224)... ✅ 0 ta tuzatish
+Batch 16/149 (savol 225–239)... ✅ 0 ta tuzatish
+Batch 17/149 (savol 240–254)... ✅ 0 ta tuzatish
+Batch 18/149 (savol 255–269)... ✅ 0 ta tuzatish
+Batch 19/149 (savol 270–284)... ✅ 0 ta tuzatish
+Batch 20/149 (savol 285–299)... ✅ 0 ta tuzatish
+Batch 21/149 (savol 300–314)... ✅ 1 ta tuzatish
+Batch 22/149 (savol 315–329)... ✅ 0 ta tuzatish
+Batch 23/149 (savol 330–344)... ✅ 0 ta tuzatish
+Batch 24/149 (savol 345–359)... ✅ 0 ta tuzatish
+Batch 25/149 (savol 360–374)... ✅ 0 ta tuzatish
+Batch 26/149 (savol 375–389)... ✅ 0 ta tuzatish
+Batch 27/149 (savol 390–404)... ✅ 0 ta tuzatish
+Batch 28/149 (savol 405–419)... ✅ 0 ta tuzatish
+Batch 29/149 (savol 420–434)... ✅ 0 ta tuzatish
+Batch 30/149 (savol 435–449)... ✅ 0 ta tuzatish
+Batch 31/149 (savol 450–464)... ✅ 0 ta tuzatish
+Batch 32/149 (savol 465–479)... ✅ 0 ta tuzatish
+Batch 33/149 (savol 480–494)... ✅ 0 ta tuzatish
+Batch 34/149 (savol 495–509)... ✅ 0 ta tuzatish
+Batch 35/149 (savol 510–524)... ✅ 0 ta tuzatish
+Batch 36/149 (savol 525–539)... ✅ 0 ta tuzatish
+Batch 37/149 (savol 540–554)... ✅ 0 ta tuzatish
+Batch 38/149 (savol 555–569)... ✅ 1 ta tuzatish
+Batch 39/149 (savol 570–584)... ✅ 0 ta tuzatish
+Batch 40/149 (savol 585–599)... ✅ 0 ta tuzatish
+Batch 41/149 (savol 600–614)... ✅ 0 ta tuzatish
+Batch 42/149 (savol 615–629)... ✅ 0 ta tuzatish
+Batch 43/149 (savol 630–644)... ✅ 0 ta tuzatish
+Batch 44/149 (savol 645–659)... ✅ 0 ta tuzatish
+Batch 45/149 (savol 660–674)... ✅ 0 ta tuzatish
+Batch 46/149 (savol 675–689)... ✅ 0 ta tuzatish
+Batch 47/149 (savol 690–704)... ✅ 0 ta tuzatish
+Batch 48/149 (savol 705–719)... ✅ 0 ta tuzatish
+Batch 49/149 (savol 720–734)... ✅ 0 ta tuzatish
+Batch 50/149 (savol 735–749)... ✅ 0 ta tuzatish
+Batch 51/149 (savol 750–764)... ✅ 0 ta tuzatish
+Batch 52/149 (savol 765–779)... ✅ 0 ta tuzatish
+Batch 53/149 (savol 780–794)... ✅ 0 ta tuzatish
+Batch 54/149 (savol 795–809)... ✅ 0 ta tuzatish
+Batch 55/149 (savol 810–824)... ✅ 0 ta tuzatish
+Batch 56/149 (savol 825–839)... ✅ 0 ta tuzatish
+Batch 57/149 (savol 840–854)... ✅ 0 ta tuzatish
+Batch 58/149 (savol 855–869)... ✅ 0 ta tuzatish
+Batch 59/149 (savol 870–884)... ✅ 0 ta tuzatish
+Batch 60/149 (savol 885–899)...     ⏳ HTTP 429 — barcha kalitlar band, 5s kutamiz...
+✅ 0 ta tuzatish
+Batch 61/149 (savol 900–914)... ✅ 0 ta tuzatish
+Batch 62/149 (savol 915–929)... ✅ 0 ta tuzatish
+Batch 63/149 (savol 930–944)... ✅ 0 ta tuzatish
+Batch 64/149 (savol 945–959)... ✅ 0 ta tuzatish
+Batch 65/149 (savol 960–974)... ✅ 0 ta tuzatish
+Batch 66/149 (savol 975–989)... ✅ 1 ta tuzatish
+Batch 67/149 (savol 990–1004)... ✅ 0 ta tuzatish
+Batch 68/149 (savol 1005–1019)... ✅ 0 ta tuzatish
+Batch 69/149 (savol 1020–1034)... ✅ 0 ta tuzatish
+Batch 70/149 (savol 1035–1049)... ✅ 0 ta tuzatish
+Batch 71/149 (savol 1050–1064)... ✅ 0 ta tuzatish
+Batch 72/149 (savol 1065–1079)... ✅ 0 ta tuzatish
+Batch 73/149 (savol 1080–1094)... ✅ 0 ta tuzatish
+Batch 74/149 (savol 1095–1109)... ✅ 0 ta tuzatish
+Batch 75/149 (savol 1110–1124)... ✅ 0 ta tuzatish
+Batch 76/149 (savol 1125–1139)... ✅ 0 ta tuzatish
+Batch 77/149 (savol 1140–1154)... ✅ 0 ta tuzatish
+Batch 78/149 (savol 1155–1169)... ✅ 0 ta tuzatish
+Batch 79/149 (savol 1170–1184)... ✅ 0 ta tuzatish
+Batch 80/149 (savol 1185–1199)... ✅ 1 ta tuzatish
+Batch 81/149 (savol 1200–1214)... ✅ 0 ta tuzatish
+Batch 82/149 (savol 1215–1229)... ✅ 0 ta tuzatish
+Batch 83/149 (savol 1230–1244)... ✅ 0 ta tuzatish
+Batch 84/149 (savol 1245–1259)... ✅ 0 ta tuzatish
+Batch 85/149 (savol 1260–1274)... ✅ 0 ta tuzatish
+Batch 86/149 (savol 1275–1289)... ✅ 0 ta tuzatish
+Batch 87/149 (savol 1290–1304)... ✅ 0 ta tuzatish
+Batch 88/149 (savol 1305–1319)... ✅ 0 ta tuzatish
+Batch 89/149 (savol 1320–1334)... ✅ 0 ta tuzatish
+Batch 90/149 (savol 1335–1349)... ✅ 0 ta tuzatish
+Batch 91/149 (savol 1350–1364)... ✅ 0 ta tuzatish
+Batch 92/149 (savol 1365–1379)... ✅ 0 ta tuzatish
+Batch 93/149 (savol 1380–1394)... ✅ 0 ta tuzatish
+Batch 94/149 (savol 1395–1409)... ✅ 0 ta tuzatish
+Batch 95/149 (savol 1410–1424)... ✅ 0 ta tuzatish
+Batch 96/149 (savol 1425–1439)... ✅ 0 ta tuzatish
+Batch 97/149 (savol 1440–1454)... ✅ 0 ta tuzatish
+Batch 98/149 (savol 1455–1469)... ✅ 0 ta tuzatish
+Batch 99/149 (savol 1470–1484)... ✅ 0 ta tuzatish
+Batch 100/149 (savol 1485–1499)... ✅ 1 ta tuzatish
+Batch 101/149 (savol 1500–1514)... ✅ 0 ta tuzatish
+Batch 102/149 (savol 1515–1529)... ✅ 0 ta tuzatish
+Batch 103/149 (savol 1530–1544)... ✅ 0 ta tuzatish
+Batch 104/149 (savol 1545–1559)... ✅ 0 ta tuzatish
+Batch 105/149 (savol 1560–1574)... ✅ 0 ta tuzatish
+Batch 106/149 (savol 1575–1589)... ✅ 0 ta tuzatish
+Batch 107/149 (savol 1590–1604)... ✅ 0 ta tuzatish
+Batch 108/149 (savol 1605–1619)... ✅ 0 ta tuzatish
+Batch 109/149 (savol 1620–1634)... ✅ 0 ta tuzatish
+Batch 110/149 (savol 1635–1649)... ✅ 1 ta tuzatish
+Batch 111/149 (savol 1650–1664)... ✅ 0 ta tuzatish
+Batch 112/149 (savol 1665–1679)... ✅ 0 ta tuzatish
+Batch 113/149 (savol 1680–1694)... ✅ 0 ta tuzatish
+Batch 114/149 (savol 1695–1709)... ✅ 0 ta tuzatish
+Batch 115/149 (savol 1710–1724)... ✅ 0 ta tuzatish
+Batch 116/149 (savol 1725–1739)... ✅ 0 ta tuzatish
+Batch 117/149 (savol 1740–1754)... ✅ 0 ta tuzatish
+Batch 118/149 (savol 1755–1769)... ✅ 0 ta tuzatish
+Batch 119/149 (savol 1770–1784)... ✅ 0 ta tuzatish
+Batch 120/149 (savol 1785–1799)... ✅ 0 ta tuzatish
+Batch 121/149 (savol 1800–1814)... ✅ 0 ta tuzatish
+Batch 122/149 (savol 1815–1829)... ✅ 2 ta tuzatish
+Batch 123/149 (savol 1830–1844)... ✅ 0 ta tuzatish
+Batch 124/149 (savol 1845–1859)...     ⏳ HTTP 429 — barcha kalitlar band, 5s kutamiz...
+✅ 0 ta tuzatish
+Batch 125/149 (savol 1860–1874)... ✅ 0 ta tuzatish
+Batch 126/149 (savol 1875–1889)... ✅ 1 ta tuzatish
+Batch 127/149 (savol 1890–1904)... ✅ 0 ta tuzatish
+Batch 128/149 (savol 1905–1919)... ✅ 0 ta tuzatish
+Batch 129/149 (savol 1920–1934)... ✅ 0 ta tuzatish
+Batch 130/149 (savol 1935–1949)... ✅ 0 ta tuzatish
+Batch 131/149 (savol 1950–1964)... ✅ 0 ta tuzatish
+Batch 132/149 (savol 1965–1979)... ✅ 0 ta tuzatish
+Batch 133/149 (savol 1980–1994)... ✅ 0 ta tuzatish
+Batch 134/149 (savol 1995–2009)... ✅ 0 ta tuzatish
+Batch 135/149 (savol 2010–2024)... ✅ 0 ta tuzatish
+Batch 136/149 (savol 2025–2039)... ✅ 0 ta tuzatish
+Batch 137/149 (savol 2040–2054)... ✅ 0 ta tuzatish
+Batch 138/149 (savol 2055–2069)... ✅ 0 ta tuzatish
+Batch 139/149 (savol 2070–2084)... ✅ 0 ta tuzatish
+Batch 140/149 (savol 2085–2099)... ✅ 0 ta tuzatish
+Batch 141/149 (savol 2100–2114)... ✅ 0 ta tuzatish
+Batch 142/149 (savol 2115–2129)... ✅ 0 ta tuzatish
+Batch 143/149 (savol 2130–2144)... ✅ 0 ta tuzatish
+Batch 144/149 (savol 2145–2159)... ✅ 0 ta tuzatish
+Batch 145/149 (savol 2160–2174)... ✅ 1 ta tuzatish
+Batch 146/149 (savol 2175–2189)... ✅ 0 ta tuzatish
+Batch 147/149 (savol 2190–2204)... ✅ 0 ta tuzatish
+Batch 148/149 (savol 2205–2219)... ✅ 0 ta tuzatish
+Batch 149/149 (savol 2220–2224)... ✅ 0 ta tuzatish
+
+🔍 DRY-RUN: 12 savolga tuzatish topildi, fayl o'zgartirilmadi
+📋 Hisobot: src\data\fix_report_rus_tili_2026-07-20T03-41-17.md
+
+👀 O'zgarishlar hisobot faylida. Kerak bo'lsa zaxira dump'dan tiklash mumkin.

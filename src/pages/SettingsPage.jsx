@@ -6,7 +6,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Send, Brain, KeyRound, Crown, FileText, Bell, Languages, MessageCircle, Info, Trash2 } from 'lucide-react';
+import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Send, Brain, KeyRound, Crown, FileText, Bell, Languages, MessageCircle, Info, Trash2, Smartphone } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
@@ -91,6 +91,17 @@ export default function SettingsPage({ theme, toggleTheme }) {
     localStorage.setItem('iqro-font-scale', String(v));
     // root font-size ni o'zgartirish — barcha rem elementlari avtomatik moslashadi
     document.documentElement.style.fontSize = `${16 * v}px`;
+  };
+
+  // Vibratsiya sozlamasi — splash animatsiyada telefon vibratsiyasi
+  const [vibrationOn, setVibrationOn] = useState(() => {
+    return localStorage.getItem('iqro-vibration') !== 'off';
+  });
+  const toggleVibration = () => {
+    const newVal = !vibrationOn;
+    setVibrationOn(newVal);
+    localStorage.setItem('iqro-vibration', newVal ? 'on' : 'off');
+    showToast(newVal ? t('settings.vibrationOn') : t('settings.vibrationOff'), 'success');
   };
 
   // Android "orqaga" tugmasi modallarni yopadi (popstate shartnomasi)
@@ -262,7 +273,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
                 </div>
                 <span className="pp-menu-label">{t('lang.label')}</span>
                 <div className="pp-segment-container">
-                  {[{ id: 'uz', label: "O'zbekcha" }, { id: 'ru', label: 'Русский' }].map(opt => (
+                  {[{ id: 'uz', label: "O'zbekcha" }, { id: 'ru', label: 'Русский' }, { id: 'en', label: 'English' }].map(opt => (
                     <button
                       key={opt.id}
                       onClick={() => i18n.changeLanguage(opt.id)}
@@ -313,6 +324,31 @@ export default function SettingsPage({ theme, toggleTheme }) {
                       {f.label}
                     </button>
                   ))}
+                </div>
+              </div>
+
+              {/* Vibratsiya */}
+              <div className="pp-menu-item" style={{ cursor: 'default' }}>
+                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
+                  <Smartphone size={20} />
+                </div>
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  <span className="pp-menu-label">{t('settings.vibration')}</span>
+                  <span className="pp-menu-sublabel">{t('settings.vibrationHint')}</span>
+                </div>
+                <div className="pp-segment-container">
+                  <button
+                    onClick={() => { if (!vibrationOn) toggleVibration(); }}
+                    className={`pp-segment-btn ${vibrationOn ? 'active' : ''}`}
+                  >
+                    {t('settings.vibrationOn')}
+                  </button>
+                  <button
+                    onClick={() => { if (vibrationOn) toggleVibration(); }}
+                    className={`pp-segment-btn ${!vibrationOn ? 'active' : ''}`}
+                  >
+                    {t('settings.vibrationOff')}
+                  </button>
                 </div>
               </div>
             </div>

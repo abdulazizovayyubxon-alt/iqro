@@ -1,0 +1,192 @@
+🔐 998999154686@iqro.uz bilan Firestore'ga kirilmoqda...
+
+📚 Fan: Kimyo
+📄 Manba: Firestore 'questions' (category=kimyo) — 2597 savol, 174 batch (15 tadan)
+🤖 Provider: pipeline | model: gpt-oss-120b | kalitlar: 27 ta | reasoning: low
+🛡️  Ikki bosqichli tekshiruv: YOQILGAN (har batch 2 marta) | JONLI rejim
+
+♻️  Checkpoint topildi: 2 batch avval qilingan, davom etamiz (boshidan boshlash uchun --fresh)
+
+💾 Zaxira (Firestore dump): src\data\firestore_backup_kimyo_2026-07-19T22-09-49.json
+
+Batch 3/174 (savol 30–44)... ✅ 0 ta tuzatish
+Batch 4/174 (savol 45–59)... ✅ 1 ta tuzatish
+Batch 5/174 (savol 60–74)... ✅ 0 ta tuzatish
+Batch 6/174 (savol 75–89)... ✅ 0 ta tuzatish
+Batch 7/174 (savol 90–104)... ✅ 2 ta tuzatish
+Batch 8/174 (savol 105–119)... ✅ 1 ta tuzatish
+Batch 9/174 (savol 120–134)... ✅ 2 ta tuzatish
+Batch 10/174 (savol 135–149)... ✅ 0 ta tuzatish
+Batch 11/174 (savol 150–164)... ✅ 0 ta tuzatish
+Batch 12/174 (savol 165–179)... ✅ 0 ta tuzatish
+Batch 13/174 (savol 180–194)... ✅ 0 ta tuzatish
+Batch 14/174 (savol 195–209)... ✅ 0 ta tuzatish
+Batch 15/174 (savol 210–224)... ✅ 0 ta tuzatish
+Batch 16/174 (savol 225–239)... ✅ 0 ta tuzatish
+Batch 17/174 (savol 240–254)... ✅ 1 ta tuzatish
+Batch 18/174 (savol 255–269)... ✅ 0 ta tuzatish
+Batch 19/174 (savol 270–284)... ✅ 3 ta tuzatish
+Batch 20/174 (savol 285–299)... ✅ 0 ta tuzatish
+Batch 21/174 (savol 300–314)... ✅ 0 ta tuzatish
+Batch 22/174 (savol 315–329)... ✅ 0 ta tuzatish
+Batch 23/174 (savol 330–344)... ✅ 0 ta tuzatish
+Batch 24/174 (savol 345–359)... ✅ 1 ta tuzatish
+Batch 25/174 (savol 360–374)... ✅ 0 ta tuzatish
+Batch 26/174 (savol 375–389)... ✅ 0 ta tuzatish
+Batch 27/174 (savol 390–404)... ✅ 0 ta tuzatish
+Batch 28/174 (savol 405–419)... ✅ 0 ta tuzatish
+Batch 29/174 (savol 420–434)... ✅ 0 ta tuzatish
+Batch 30/174 (savol 435–449)... ✅ 1 ta tuzatish
+Batch 31/174 (savol 450–464)... ✅ 0 ta tuzatish
+Batch 32/174 (savol 465–479)... ✅ 0 ta tuzatish
+Batch 33/174 (savol 480–494)... ✅ 0 ta tuzatish
+Batch 34/174 (savol 495–509)... ✅ 1 ta tuzatish
+Batch 35/174 (savol 510–524)... ✅ 0 ta tuzatish
+Batch 36/174 (savol 525–539)... ✅ 0 ta tuzatish
+Batch 37/174 (savol 540–554)... ✅ 3 ta tuzatish
+Batch 38/174 (savol 555–569)... ✅ 0 ta tuzatish
+Batch 39/174 (savol 570–584)... ✅ 0 ta tuzatish
+Batch 40/174 (savol 585–599)... ✅ 0 ta tuzatish
+Batch 41/174 (savol 600–614)... ✅ 0 ta tuzatish
+Batch 42/174 (savol 615–629)... ✅ 0 ta tuzatish
+Batch 43/174 (savol 630–644)... ✅ 0 ta tuzatish
+Batch 44/174 (savol 645–659)... ✅ 0 ta tuzatish
+Batch 45/174 (savol 660–674)... ✅ 1 ta tuzatish
+Batch 46/174 (savol 675–689)... ✅ 0 ta tuzatish
+Batch 47/174 (savol 690–704)... ✅ 0 ta tuzatish
+Batch 48/174 (savol 705–719)... ✅ 0 ta tuzatish
+Batch 49/174 (savol 720–734)... ✅ 0 ta tuzatish
+Batch 50/174 (savol 735–749)... ✅ 0 ta tuzatish
+Batch 51/174 (savol 750–764)... ✅ 0 ta tuzatish
+Batch 52/174 (savol 765–779)... ✅ 0 ta tuzatish
+Batch 53/174 (savol 780–794)... ✅ 0 ta tuzatish
+Batch 54/174 (savol 795–809)... ✅ 1 ta tuzatish
+Batch 55/174 (savol 810–824)... ✅ 0 ta tuzatish
+Batch 56/174 (savol 825–839)... ✅ 0 ta tuzatish
+Batch 57/174 (savol 840–854)... ✅ 1 ta tuzatish
+Batch 58/174 (savol 855–869)... ✅ 1 ta tuzatish
+Batch 59/174 (savol 870–884)... ✅ 0 ta tuzatish
+Batch 60/174 (savol 885–899)... ✅ 0 ta tuzatish
+Batch 61/174 (savol 900–914)...     ⏳ HTTP 429 — barcha kalitlar band, 5s kutamiz...
+✅ 1 ta tuzatish
+Batch 62/174 (savol 915–929)... ✅ 0 ta tuzatish
+Batch 63/174 (savol 930–944)... ✅ 0 ta tuzatish
+Batch 64/174 (savol 945–959)... ✅ 0 ta tuzatish
+Batch 65/174 (savol 960–974)... ✅ 3 ta tuzatish
+Batch 66/174 (savol 975–989)... ✅ 0 ta tuzatish
+Batch 67/174 (savol 990–1004)... ✅ 0 ta tuzatish
+Batch 68/174 (savol 1005–1019)... ✅ 2 ta tuzatish
+Batch 69/174 (savol 1020–1034)... ✅ 0 ta tuzatish
+Batch 70/174 (savol 1035–1049)... ✅ 2 ta tuzatish
+Batch 71/174 (savol 1050–1064)... ✅ 2 ta tuzatish
+Batch 72/174 (savol 1065–1079)... ✅ 0 ta tuzatish
+Batch 73/174 (savol 1080–1094)... ✅ 1 ta tuzatish
+Batch 74/174 (savol 1095–1109)... ✅ 1 ta tuzatish
+Batch 75/174 (savol 1110–1124)... ✅ 0 ta tuzatish
+Batch 76/174 (savol 1125–1139)... ✅ 0 ta tuzatish
+Batch 77/174 (savol 1140–1154)... ✅ 1 ta tuzatish
+Batch 78/174 (savol 1155–1169)... ✅ 1 ta tuzatish
+Batch 79/174 (savol 1170–1184)... ✅ 0 ta tuzatish
+Batch 80/174 (savol 1185–1199)... ✅ 0 ta tuzatish
+Batch 81/174 (savol 1200–1214)... ✅ 0 ta tuzatish
+Batch 82/174 (savol 1215–1229)... ✅ 1 ta tuzatish
+Batch 83/174 (savol 1230–1244)... ✅ 0 ta tuzatish
+Batch 84/174 (savol 1245–1259)... ✅ 4 ta tuzatish
+Batch 85/174 (savol 1260–1274)... ✅ 0 ta tuzatish
+Batch 86/174 (savol 1275–1289)... ✅ 1 ta tuzatish
+Batch 87/174 (savol 1290–1304)... ✅ 0 ta tuzatish
+Batch 88/174 (savol 1305–1319)... ✅ 0 ta tuzatish
+Batch 89/174 (savol 1320–1334)... ✅ 0 ta tuzatish
+Batch 90/174 (savol 1335–1349)... ✅ 0 ta tuzatish
+Batch 91/174 (savol 1350–1364)... ✅ 0 ta tuzatish
+Batch 92/174 (savol 1365–1379)... ✅ 0 ta tuzatish
+Batch 93/174 (savol 1380–1394)... ✅ 1 ta tuzatish
+Batch 94/174 (savol 1395–1409)... ✅ 2 ta tuzatish
+Batch 95/174 (savol 1410–1424)... ✅ 0 ta tuzatish
+Batch 96/174 (savol 1425–1439)... ✅ 1 ta tuzatish
+Batch 97/174 (savol 1440–1454)... ✅ 0 ta tuzatish
+Batch 98/174 (savol 1455–1469)... ✅ 0 ta tuzatish
+Batch 99/174 (savol 1470–1484)... ✅ 0 ta tuzatish
+Batch 100/174 (savol 1485–1499)... ✅ 0 ta tuzatish
+Batch 101/174 (savol 1500–1514)... ✅ 0 ta tuzatish
+Batch 102/174 (savol 1515–1529)... ✅ 0 ta tuzatish
+Batch 103/174 (savol 1530–1544)... ✅ 4 ta tuzatish
+Batch 104/174 (savol 1545–1559)... ✅ 0 ta tuzatish
+Batch 105/174 (savol 1560–1574)... ✅ 0 ta tuzatish
+Batch 106/174 (savol 1575–1589)... ✅ 2 ta tuzatish
+Batch 107/174 (savol 1590–1604)... ✅ 0 ta tuzatish
+Batch 108/174 (savol 1605–1619)... ✅ 0 ta tuzatish
+Batch 109/174 (savol 1620–1634)... ✅ 2 ta tuzatish
+Batch 110/174 (savol 1635–1649)... ✅ 1 ta tuzatish
+Batch 111/174 (savol 1650–1664)... ✅ 1 ta tuzatish
+Batch 112/174 (savol 1665–1679)... ✅ 1 ta tuzatish
+Batch 113/174 (savol 1680–1694)... ✅ 0 ta tuzatish
+Batch 114/174 (savol 1695–1709)... ✅ 0 ta tuzatish
+Batch 115/174 (savol 1710–1724)... ✅ 0 ta tuzatish
+Batch 116/174 (savol 1725–1739)...     ⏳ HTTP 429 — barcha kalitlar band, 5s kutamiz...
+✅ 0 ta tuzatish
+Batch 117/174 (savol 1740–1754)... ✅ 1 ta tuzatish
+Batch 118/174 (savol 1755–1769)... ✅ 0 ta tuzatish
+Batch 119/174 (savol 1770–1784)... ✅ 0 ta tuzatish
+Batch 120/174 (savol 1785–1799)... ✅ 0 ta tuzatish
+Batch 121/174 (savol 1800–1814)... ✅ 2 ta tuzatish
+Batch 122/174 (savol 1815–1829)... ✅ 0 ta tuzatish
+Batch 123/174 (savol 1830–1844)... ✅ 0 ta tuzatish
+Batch 124/174 (savol 1845–1859)... ✅ 0 ta tuzatish
+Batch 125/174 (savol 1860–1874)... ✅ 0 ta tuzatish
+Batch 126/174 (savol 1875–1889)... ✅ 0 ta tuzatish
+Batch 127/174 (savol 1890–1904)... ✅ 1 ta tuzatish
+Batch 128/174 (savol 1905–1919)... ✅ 1 ta tuzatish
+Batch 129/174 (savol 1920–1934)... ✅ 0 ta tuzatish
+Batch 130/174 (savol 1935–1949)... ✅ 0 ta tuzatish
+Batch 131/174 (savol 1950–1964)... ✅ 1 ta tuzatish
+Batch 132/174 (savol 1965–1979)... ✅ 6 ta tuzatish
+Batch 133/174 (savol 1980–1994)... ✅ 1 ta tuzatish
+Batch 134/174 (savol 1995–2009)... ✅ 0 ta tuzatish
+Batch 135/174 (savol 2010–2024)... ✅ 3 ta tuzatish
+Batch 136/174 (savol 2025–2039)... ✅ 1 ta tuzatish
+Batch 137/174 (savol 2040–2054)... ✅ 0 ta tuzatish
+Batch 138/174 (savol 2055–2069)... ✅ 0 ta tuzatish
+Batch 139/174 (savol 2070–2084)... ✅ 0 ta tuzatish
+Batch 140/174 (savol 2085–2099)... ✅ 1 ta tuzatish
+Batch 141/174 (savol 2100–2114)... ✅ 0 ta tuzatish
+Batch 142/174 (savol 2115–2129)... ✅ 0 ta tuzatish
+Batch 143/174 (savol 2130–2144)... ✅ 1 ta tuzatish
+Batch 144/174 (savol 2145–2159)... ✅ 0 ta tuzatish
+Batch 145/174 (savol 2160–2174)... ✅ 1 ta tuzatish
+Batch 146/174 (savol 2175–2189)... ✅ 0 ta tuzatish
+Batch 147/174 (savol 2190–2204)... ✅ 0 ta tuzatish
+Batch 148/174 (savol 2205–2219)... ✅ 1 ta tuzatish
+Batch 149/174 (savol 2220–2234)... ✅ 0 ta tuzatish
+Batch 150/174 (savol 2235–2249)... ✅ 1 ta tuzatish
+Batch 151/174 (savol 2250–2264)... ✅ 0 ta tuzatish
+Batch 152/174 (savol 2265–2279)... ✅ 0 ta tuzatish
+Batch 153/174 (savol 2280–2294)... ✅ 0 ta tuzatish
+Batch 154/174 (savol 2295–2309)... ✅ 0 ta tuzatish
+Batch 155/174 (savol 2310–2324)... ✅ 4 ta tuzatish
+Batch 156/174 (savol 2325–2339)... ✅ 1 ta tuzatish
+Batch 157/174 (savol 2340–2354)... ✅ 0 ta tuzatish
+Batch 158/174 (savol 2355–2369)... ✅ 1 ta tuzatish
+Batch 159/174 (savol 2370–2384)... ✅ 0 ta tuzatish
+Batch 160/174 (savol 2385–2399)... ✅ 1 ta tuzatish
+Batch 161/174 (savol 2400–2414)... ✅ 0 ta tuzatish
+Batch 162/174 (savol 2415–2429)... ✅ 0 ta tuzatish
+Batch 163/174 (savol 2430–2444)... ✅ 0 ta tuzatish
+Batch 164/174 (savol 2445–2459)... ✅ 0 ta tuzatish
+Batch 165/174 (savol 2460–2474)... ✅ 1 ta tuzatish
+Batch 166/174 (savol 2475–2489)... ✅ 1 ta tuzatish
+Batch 167/174 (savol 2490–2504)... ✅ 2 ta tuzatish
+Batch 168/174 (savol 2505–2519)... ✅ 1 ta tuzatish
+Batch 169/174 (savol 2520–2534)... ✅ 0 ta tuzatish
+Batch 170/174 (savol 2535–2549)... ✅ 0 ta tuzatish
+Batch 171/174 (savol 2550–2564)... ✅ 0 ta tuzatish
+Batch 172/174 (savol 2565–2579)... ✅ 0 ta tuzatish
+Batch 173/174 (savol 2580–2594)...     ⏳ HTTP 429 — barcha kalitlar band, 5s kutamiz...
+✅ 0 ta tuzatish
+Batch 174/174 (savol 2595–2596)... ✅ 0 ta tuzatish
+
+✍️  Firestore yangilandi: 90 ta hujjat
+📋 Hisobot: src\data\fix_report_kimyo_2026-07-19T22-18-12.md
+🧹 Checkpoint tozalandi — fan to'liq tekshirildi.
+
+👀 O'zgarishlar hisobot faylida. Kerak bo'lsa zaxira dump'dan tiklash mumkin.

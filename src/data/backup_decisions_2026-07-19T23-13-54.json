@@ -1,0 +1,581 @@
+[
+ {
+  "__docId": "8wIX466eLsUBobvS1uae",
+  "opts": [
+   "A) Yo‘l dastlab “Buyuk meridianal yo‘l” deb atalgan, “Ipak yo‘li” nomini 1877-yilda F. Rixtgofen bergan.",
+   "B) Yo‘l dastlab “Sug‘d yo‘li” deb atalgan, “Ipak yo‘li” nomini XIX asr o‘zbek sayyohlari bergan.",
+   "C) Yo‘l dastlab “Buyuk Ipak yo‘li” deb atalgan, nomini 1877-yilda马克·波罗 (Marko Polo) bergan.",
+   "D) Yo‘l dastlab “Zardushtiyo yo‘li” deb atalgan, “Ipak yo‘li” nomini milodiy I asrda qadimgi yunonlar bergan."
+  ],
+  "topicId": 17,
+  "explanation": "Manbada keltirilishicha, yo‘l mil.avv. II asrda vujudga kelgan va “Buyuk meridianal yo‘l” deb atalgan. “Ipak yo‘li” nomi esa ancha keyin, 1877-yilda nemis geografi F. Rixtgofen tomonidan berilgan. Boshqa variantlar tarixiy manbalarga mos kelmaydi.",
+  "createdAt": "2026-06-23T02:09:40.551Z",
+  "q": "O‘qituvchi darsda “Buyuk Ipak yo‘li” nomining tarixiy kelib chiqishini tushuntirib, talabalarga quyidagi topshirmani berdi: “Bu yo‘l miloddan avvalgi II asrda vujudga kelganida qanday nomlangan va hozirgi nomni qaysi olim bergan?”. Sizning javobingiz nima bo‘ladi?",
+  "category": "tarix",
+  "correct": 0
+ },
+ {
+  "__docId": "SpL2wBiWOdOUcscEhvQg",
+  "correct": 3,
+  "category": "tarix",
+  "q": "Oʻrta asrlarda Buxoro va Samarqand kabi shaharlarning rivojlanishiga asosiy turtki boʻlgan Buyuk Ipak yoʻlining ne哪种 iqtisodiy funksiyasi eng muhim boʻlgan?",
+  "createdAt": "2026-06-23T02:09:40.547Z",
+  "topicId": 15,
+  "explanation": "Bu shaharlar xalqaro tranzit savdo yoʻllarining chorrahasida joylashgan boʻlib, Sharq (Xitoy, Hindiston) bilan Gʻarb (Vizantiya, Yevropa) oʻrtasidagi savdoda asosiy vositachi rolini oʻynagan.",
+  "opts": [
+   "A) Dengiz orqali harbiy kemalar qurish va taʼminot",
+   "B) Yirik qishloq xoʻjaligi mahsulotlarini yetishtirish va eksport qilish",
+   "C) Faqat mahalliy aholi ehtiyojini qondirish uchun ichki savdo",
+   "D) Sharq bilan Gʻarb oʻrtasida tranzit savdo va tovar ayirboshlash"
+  ]
+ },
+ {
+  "__docId": "gNskhHBeZoEnFRAKasKB",
+  "explanation": "Dante \"Ilohiy komediya\", Choser \"Kenterberi ertaklari\" va Ulug‘bek天文 jadvallari bilan mashhur.",
+  "topicId": 20,
+  "opts": [
+   "A) 1-C, 2-A, 3-B",
+   "B) 1-A, 2-B, 3-C",
+   "C) 1-A, 2-C, 3-B",
+   "D) 1-B, 2-C, 3-A"
+  ],
+  "q": "Quyidagi shaxslarni ularning faoliyat yoki asarlari bilan moslashtiring:\n1. Dante Alighieri\n2. Joffrey Choser\n3. Ulug‘bek\nA. \"Ilohiy komediya\" dostoni\nB. Astronomiya jadvallari (Ziji)\nC. \"Kenterberi ertaklari\"\nD. \"Uyg‘onish davri\" risolalari",
+  "createdAt": "2026-06-23T02:09:40.545Z",
+  "category": "tarix",
+  "correct": 2
+ },
+ {
+  "__docId": "o9sAOCmAOx0wpnInxAp8",
+  "correct": 2,
+  "category": "tarix",
+  "q": "1429-yilda inglizlar qoʻshini tomonidan qamal qilinayotgan Orlean shahrini ozod qilish, fransuzlarning jangovar ruhini koʻtarish va Karl VII ning taxtga oʻtirishiga sharoit yaratgan tarixiy shaxs kim?",
+  "createdAt": "2026-06-23T02:09:40.547Z",
+  "explanation": "Janna d'Ark xalq qahramoni sifatida Orlean qamalini yechib, Yuz yillik urush oqibatini fransuzlar foydasiga o'zgartirib berdi. Karl VII taxtga o'tirdi, Genrix V ingliz qiroli, Uellilik shahzoda esa ingliz qo'mondoni edi.",
+  "topicId": 19,
+  "opts": [
+   "A) Genrix V",
+   "B) 卡尔七世",
+   "C) Janna d'Ark",
+   "D) Uelllik shahzoda"
+  ]
+ },
+ {
+  "__docId": "sC83WRS1vTqSVyhmokHN",
+  "q": "Qadimgi Rimda huquqiy munosabatlarni tartibga soluvchi va plebeylarning talabi bilan miloddan avvalgi V asrda bronza表中larga yozib qo'yilgan ilk dastlabki qonunlar majmuasi qanday nomlanadi?",
+  "createdAt": "2026-06-23T02:09:40.553Z",
+  "topicId": 21,
+  "explanation": "O'n ikki jadval qonunlari (Leges XII Tabularum) Rim huquqining eng qadimgi yodgorligi bo'lib, patrisiylar va plebeylar o'rtasidagi kurash natijasida yaratilgan. Ular jamo va xususiy huquqqa oid bir qator normalarni o'z ichiga olgan.",
+  "opts": [
+   "A) O'n ikki jadval qonunlari",
+   "B) Hammurapi qonunlari",
+   "C) Justinian kodeksi",
+   "D) Solon qonunlari"
+  ],
+  "correct": 0,
+  "category": "tarix"
+ },
+ {
+  "__docId": "0JOUqSUHxn8Rw0o6ILLL",
+  "opts": [
+   "A) Voqealarni摄影 suratga olish kabi aniq tasvirlash",
+   "B) Faqat muallifning shaxsiy hayotini hikoya qilish",
+   "C) Ilmiy dalillarni tartibli ravishda bayon qilish",
+   "D) Badiiy obraz yaratish orqali haqiqatni umumlashtirish"
+  ],
+  "explanation": "'Obrazli ko'rish' deganda voqelikni shunchaki takrorlanish emas, balki badiiy obrazlar va timsollar orqali umumlashtirib, insonlarga ta'sir kurash aynan yodga tushadi. Bu badiiy adabiyotning asosiy usuli hisoblanadi.",
+  "topicId": 57,
+  "createdAt": "2026-06-23T02:10:10.959Z",
+  "q": "Matnda 'olamni obrazli ko'rish va timsollar asosida aks ettirish' degan ibora ishlatilgan. Bu qanday adabiy hodisaga ishora qiladi?",
+  "category": "til",
+  "correct": 3
+ },
+ {
+  "__docId": "EJZQ5Jx0pU6gWMf90eZj",
+  "q": "298-mashq matnida qahramon 'To'rt' olsa, tuni bilan yig'lab chiqaradi, deb ma'lumot beradi. Keyin esa darsga kech qoladi. Bu ikki fakt o'rtasidagi mantiqiy bog'liqlik nimani anglatadi?",
+  "createdAt": "2026-06-23T02:10:10.955Z",
+  "explanation": "Matnda 'To'rt' olsa yig'lash (yuqori mas'uliyat va stress) va keyingi qatorda 'nimayam bo'lib, darsga kech qoldim' deyilishi, o'rtasida psixologik bog'liqlik borligini ko'rsatadi. Stressli holat vaqt boshqaruviga ta'sir qilishi mumkinligi (shoshinish, asabiylik) orqali kechikish sababi bo'lishi mumkin.",
+  "topicId": 55,
+  "opts": [
+   "A) Matndagi ma'lumotlar o'rtasida hech qanday sabab-oqibat bog'liqligi yo'q, bu tasodifiy hodisadir.",
+   "B) Qahramon o'qishdagi yuqori talablari tufayli psixologik应力stress va shoshilinch holatda darsga kech qolish ehtimolini yashiradi.",
+   "C) Qahramon 'to'rt' bahosidan uyalgani uchun maktabga umuman bormoqchi bo'lmagan, ammo majburlab kelgan.",
+   "D) Qahramon o'qish bilan shug'ullanmasligini, balki tashqi sabablarga ko'ra kech qolganini isbotlaydi."
+  ],
+  "correct": 1,
+  "category": "til"
+ },
+ {
+  "__docId": "djYuLg64YFigGiW102Tz",
+  "q": "5-sinf o'quvchilaridan biri o'qish jarayonida harflarni almashtirib yozadi, ammo boshqa fanlarda yaxshi o'qiydi. Ona tili o'qituvchisi bu holatni aniqlab, buning sababini topish uchun maktab logopedi (nutq terapevti) bilan maslahatlashdi. Bu qaysi mehnat harakati?",
+  "mnemonic": "Muammo bo'lsa — mutaxassisga murojaat qil.",
+  "createdAt": "2026-06-20T17:38:48.732Z",
+  "explanation": "O'quvchilarda uchraydigan o'quv qiyinchiliklarini (masalan, disg rafiya) hal qilish uchun o'qituvchi相关专业 mutaxassislar (logoped, psixolog) bilan maslahatlashish kerak. Bu professional yondashuvdir. Boshqa variantlar masalani hal qilmaydi.",
+  "topicId": 62,
+  "opts": [
+   "A) Ota-onani darhol chaqirib o'ynamoq",
+   "B) Tegishli soha mutaxassislari bilan maslahatlashish",
+   "C) O'quvchini ortda qolgan deb topshirish",
+   "D) Baho oshirib yuborish"
+  ],
+  "correct": 1,
+  "category": "til"
+ },
+ {
+  "__docId": "lRgLQENTTD8KcSv3GcM4",
+  "correct": 1,
+  "category": "til",
+  "createdAt": "2026-06-23T02:10:10.957Z",
+  "q": "\"Gazetadan\" olingan parchalarda uchraydigan atamalarni ular tegishli bo'lgan soha bilan moslashtiring:\n1. Mundial saralash\n2. Smart-class\n3. Overtime\nA. Sport termini\nB. Ta'lim texnologiyalari\nC. Vaqt tushunchasi (ish vaqti)",
+  "opts": [
+   "A) 1-C, 2-B, 3-A",
+   "B) 1-A, 2-B, 3-C",
+   "C) 1-A, 2-C, 3-B",
+   "D) 1-B, 2-A, 3-C"
+  ],
+  "explanation": "\"Mundial\" (jahon chempionati) sportga, \"Smart-class\" zamonaviy ta'lim texnologiyasiga, \"Overtime\" (qo'shimcha ish vaqti) esa vaqt va mehnat sho'ba术语iga oid. Shu sababli moslik 1-A, 2-B, 3-C shaklida bo'ladi.",
+  "topicId": 55
+ },
+ {
+  "__docId": "uawuFvdCnjyVkq9UJM9M",
+  "q": "«Ravshan» dostonidagi Kallar qarindoshlari tabiatini tahlil qilishda quyidagi mulohazalardan qaysilari to'g'ri?\na) Ularning hammasiga xos umumiy (tipik) jihatlarni aniqlash lozim\nb) Har bir qahramonning o'ziga xos個別 (alohida) qirralarini hisobga olish shart\nd) Ular bir-biriga o'xshash, lekin xarakteri jihatidan farqi yo'q\ne) Ularning harakatlaridagi milliy xususiyatlarni ignore qilish mumkin",
+  "createdAt": "2026-06-23T02:10:10.955Z",
+  "topicId": 59,
+  "explanation": "Doston qahramonlarini tahlil qilishda avval umumiy tipik jihatlarni (a), keyin esa har biriga xos alohida xususiyatlarni (b) ko'rsatish talab etiladi. Qahramonlar o'rtasidagi farqni inkor etish (d) va milliy xususiyatlarni e'tiborsiz qoldirish (e) noto'g'ri yondashuvdir.",
+  "opts": [
+   "A) b, d",
+   "B) d, e",
+   "C) a, b",
+   "D) a, e"
+  ],
+  "correct": 2,
+  "category": "til"
+ },
+ {
+  "__docId": "6ZICZIcQSNVe7ocKxjvW",
+  "correct": 2,
+  "category": "art",
+  "mnemonic": "Quruq qo'l — elektr moll.",
+  "createdAt": "2026-06-20T14:12:58.565Z",
+  "q": "Tasviriy san'at darsida多媒体 (multimedia) proyektor, kompyuter yoki boshqa elektr qurilmalari ishlatilganda, o'qituvchi va o'quvchilar uchun eng muhim xavfsizlik qoidasi quyidagilardan qaysisidir?",
+  "opts": [
+   "A) Rozetkalar soni ko'p bo'lgan ko'chma uzatkichlardan (troyan) foydalanish",
+   "B) Elektr qurilmalarini polga yaqin joylashtirish",
+   "C) Elektr qurilmalarini quruq qo'llar bilan ishlatish va ulardan foydalanish tugagach, rozetkadan olib qo'yish",
+   "D) Elektr qurilmalarini hech qachon o'chirmaslik, ular har doim ishga tayyor holatda turishi"
+  ],
+  "explanation": "Elektr xavfsizligining asosiy qoidasi — quruq qo'llar bilan ishlash va foydalanib bo'lingach, manbani uzish (rozetkadan olib qo'yish), chunki bu qisqa tutash va o't olish xavfini oldini oladi.",
+  "topicId": 14
+ },
+ {
+  "__docId": "u88i0EG8LD71xMwqXs90",
+  "category": "art",
+  "createdAt": "2026-06-19T19:20:49.123Z",
+  "q": "O'qituvchi sinf o'quvchilariga detalning haqiqiy o'lchami 1000 mm ekanligini, ammo chizmada u 20 mm da tasvirlanganini ko'rsatdi. Bu qaysi masshtabda bajarilganini aniqlang.",
+  "topicId": 11,
+  "image": "",
+  "correct": 2,
+  "mnemonic": "Haqiqiy 1000, chizmada 20 — 50 marta kichik.",
+  "opts": [
+   "A) 2:1",
+   "B) 1:5",
+   "C) 1:50",
+   "D) 1:100"
+  ],
+  "explanation": "Masshtab — bu chizmadagi chiziq uzunligining haqiqiy uzunligiga nisbati. 20 mm / 1000 mm = 1/50. Demak, chizma haqiqiy obyektdan 50 marta kichiklashtirilgan。"
+ },
+ {
+  "__docId": "uwRoIFCFhcBYjfpGNNkx",
+  "topicId": 7,
+  "q": "Zahiriddin Bobur \"Boburnoma\" asarida o'z davrining voqealari, Hindiston tabiati va hayotini tasvirlab bergan. Bu asarning qo'lyozmalari bezaklarida qaysi san'at turi yetakchi o'rinni egallaydi?",
+  "createdAt": "2026-06-19T19:20:49.126Z",
+  "category": "art",
+  "explanation": "\"Boburnoma\" asari qo'lyozmalari, boshqa o'rta asr qo'lyozmalari kabi, miniatyura san'ati yordamida bezatilgan. Unda voqealar, mansublar, urushlar va tabiat manzaralari miniatyura uslubida tasvirlangan.",
+  "opts": [
+   "A) Mono类型 graffitisi",
+   "B) Alohida haykaltaroshlik",
+   "C) Miniatyura san'ati",
+   "D) Devor rassomligi"
+  ],
+  "mnemonic": "Boburnoma — tarix, miniatyura — tasvir.",
+  "correct": 2,
+  "image": ""
+ },
+ {
+  "__docId": "36QudnKtX0riWHdPO5Gv",
+  "q": "O'qituvchining o'z-o'zini rivojlantirish jarayonida \"kuchli tomonlarni aniqlash\" qanday turkumga kiradi?",
+  "createdAt": {
+   "seconds": 1784496891,
+   "nanoseconds": 202000000
+  },
+  "explanation": "Kuchli tomonlarni aniqlash o'z-o'zini rivojlantirishning muhim bosqichi bo'lib, u o'qituvchining professional kuchli tomonlarini belgilaydi. Samarali kompetensiyalar umumiy qobiliyatlar, kasbiy maqsadlar yo'nalishni ko'rsatadi, zaif tomonlar esa kamchiliklarni bildiradi.",
+  "topicId": 126,
+  "opts": [
+   "A) Kuchli tomonlar",
+   "B) Zaif tomonlar",
+   "C) Samarali kompetensiyalar",
+   "D) Kasbiy maqsadlar"
+  ],
+  "correct": 0,
+  "category": "rus_tili"
+ },
+ {
+  "__docId": "M59YfC4hsdGeYnZ0KiXN",
+  "correct": 1,
+  "category": "rus_tili",
+  "createdAt": {
+   "seconds": 1784496891,
+   "nanoseconds": 202000000
+  },
+  "q": "O'qituvchi darsni qisqa motivatsion so'zlar bilan boshlab, o'quvchilarni yangi mavzuga qiziqtirdi. Bu qaysi metod?",
+  "opts": [
+   "A) Frontal so'rov",
+   "B) Motivatsion yondashuv",
+   "C) Mustaqil o'qish",
+   "D) Konspektga asoslangan"
+  ],
+  "topicId": 126,
+  "explanation": "Motivatsion yondashuv dars boshlanishida qisqa ilhomlantiruvchi iboralar berib, o'quvchilarning e'tiborini jalb qiladi. Frontal so'rov savol-javobga qaratilgan, konspektga asoslangan faqat ma'lumot beradi, mustaqil o'qish yakka ishni talab qiladi."
+ },
+ {
+  "__docId": "iQgdH1PPBuZRmsrXkCG0",
+  "q": "O'qituvchi sinfni to'rtta kichik guruhga bo'lib, har bir guruhga muammoli vazifa beradi va yechimni muhokama qilishni talab qiladi. Bu metod qaysi?",
+  "createdAt": {
+   "seconds": 1784496891,
+   "nanoseconds": 202000000
+  },
+  "explanation": "Kichik guruhlarda muammoli vazifani muhokama qilish hamkorlikda o'rganish metodining asosiy belgisidir. Frontal dars bitta o'qituvchiga qaratilgan, individual ish yakka bajariladi, leksik ma'ruzada faqat ma'lumot beriladi.",
+  "topicId": 126,
+  "opts": [
+   "A) Leksik ma'ruzasi",
+   "B) Frontal dars",
+   "C) Individual ish",
+   "D) Hamkorlikda o'rganish"
+  ],
+  "correct": 3,
+  "category": "rus_tili"
+ },
+ {
+  "__docId": "lq8g3WxQ631xnd4sZECR",
+  "createdAt": {
+   "seconds": 1784496891,
+   "nanoseconds": 202000000
+  },
+  "q": "O'qituvchi o'quvchilarning individual ehtiyojlariga mos ravishda turli topshiriqlar beradi. Bu qaysi metod?",
+  "opts": [
+   "A) Frontal metod",
+   "B) Differensial yondashuv",
+   "C) Monoton o'qitish",
+   "D) Sinf nazorati"
+  ],
+  "explanation": "Differensial yondashuv o'quvchilarning turli qobiliyatlari, ehtiyojlari va qiziqishlariga mos topshiriqlar va resurslar taqdim etadi. Frontal metod bitta yo'nalishga qaratilgan, monotoniya o'zgarishsiz, sinf nazorati esa tartibni saqlashga e'tibor beradi.",
+  "topicId": 126,
+  "correct": 1,
+  "category": "rus_tili"
+ },
+ {
+  "__docId": "m5EFLWcqW8t64OUN3yHR",
+  "topicId": 126,
+  "explanation": "Debat jamoaviy muhokamaga asoslanadi (1‑A), rollar o'ynash amaliy vazifalarni bajarishni talab qiladi (2‑B), projekt asosida ishlash mustaqil tadqiqotga yo'naltirilgan (3‑C). Boshqa kombinatsiyalar mos kelmaydi.",
+  "opts": [
+   "A) 1-A, 2-C, 3-B",
+   "B) 1-A, 2-B, 3-C",
+   "C) 1-C, 2-A, 3-B",
+   "D) 1-B, 2-A, 3-C"
+  ],
+  "q": "Quyidagi faol metodlarni ularning asosiy xususiyati bilan moslashtiring:\n1. Debat\n2. Rollar o'ynash\n3. Projekt asosida ishlash\nA. Jamoaviy muhokama\nB. Amaliy vazifalarni bajarish\nC. Mustaqil tadqiqot",
+  "createdAt": {
+   "seconds": 1784496891,
+   "nanoseconds": 202000000
+  },
+  "category": "rus_tili",
+  "correct": 1
+ },
+ {
+  "__docId": "muSw0YD68hQwXsk4YHMu",
+  "opts": [
+   "A) Individual baholash",
+   "B) Darsni rejalashtirish",
+   "C) Materiallarni tanlash",
+   "D) Ota-onalar bilan hamkorlik"
+  ],
+  "topicId": 126,
+  "explanation": "Ota-onalar bilan hamkorlik pedagogik jarayonni kengaytiradi, ularni qaror qabul qilishda va o'quvchilarning rivojlanishida ishtirok etishga jalb qiladi. Boshqa variantlar darsni tayyorlash yoki baholashga oid.",
+  "createdAt": {
+   "seconds": 1784496891,
+   "nanoseconds": 202000000
+  },
+  "q": "O'qituvchi ota-onalarni darsga taklif qilib, ularni o'quvchilarning rivojlanishida faol ishtirok etishga chaqiradi. Bu qaysi pedagogik vazifa?",
+  "category": "rus_tili",
+  "correct": 3
+ },
+ {
+  "__docId": "os6ss4MiEC0qWiON9NoV",
+  "category": "rus_tili",
+  "correct": 0,
+  "opts": [
+   "A) Kasbiy o'zini baholash",
+   "B) O'quvchini baholash",
+   "C) Motivatsiya yaratish",
+   "D) Darsni rejalashtirish"
+  ],
+  "topicId": 126,
+  "explanation": "Kasbiy o'zini baholash o'qituvchiga o'z faoliyatini tahlil qilish, kuchli va zaif tomonlarini aniqlash, takomillashtirish yo'nalishini belgilash imkonini beradi. Darsni rejalashtirish oldindan, o'quvchini baholash va motivatsiya yaratish boshqa vazifalardir.",
+  "createdAt": {
+   "seconds": 1784496891,
+   "nanoseconds": 202000000
+  },
+  "q": "O'qituvchi darsdan so'ng o'z ishini tahlil qilib, qaysi metodni takomillashtirish kerakligini aniqlaydi. Bu qaysi pedagogik vazifaga kiradi?"
+ },
+ {
+  "__docId": "ot3CIKTsS2eXz9ziYTle",
+  "createdAt": {
+   "seconds": 1784496891,
+   "nanoseconds": 202000000
+  },
+  "q": "Yangi bo'limni boshlashdan oldin qisqa test o'tkazib, o'quvchilarning oldingi bilim darajasini aniqlash qaysi baholash turiga kiradi?",
+  "opts": [
+   "A) Formativ baholash",
+   "B) Kurs baholash",
+   "C) Summativ baholash",
+   "D) Diagnostik baholash"
+  ],
+  "topicId": 126,
+  "explanation": "Diagnostik baholash dars boshlanishida o'quvchilarning oldingi bilim darajasini aniqlashga yo'naltirilgan. Formativ baholash davomiy jarayonni kuzatadi, summativ yakuniy natijani o'lchaydi, kurs baholash esa butun kursni baholaydi.",
+  "correct": 3,
+  "category": "rus_tili"
+ },
+ {
+  "__docId": "owtZCBXeDBjJAhono4IT",
+  "category": "rus_tili",
+  "correct": 0,
+  "opts": [
+   "A) Dars maqsadlarini aniq belgilash",
+   "B) Xavfsiz o‘quv muhitini yaratish",
+   "C) O‘quvchilarni baholash",
+   "D) O‘z-o‘zini rivojlantirish"
+  ],
+  "explanation": "Motivatsiya berish va dars maqsadini aniq belgilash – bu dars rejalashtirish vazifasining bir qismi. Xavfsiz muhit yaratish, baholash yoki o‘z-o‘zini rivojlantirish boshqa vazifalarga tegishli.",
+  "topicId": 126,
+  "createdAt": {
+   "seconds": 1784496894,
+   "nanoseconds": 25000000
+  },
+  "q": "O‘qituvchi dars boshida qisqa motivatsion so‘zlar aytib, dars maqsadini aniq belgilaydi. Bu qaysi pedagogik vazifaga kiradi?"
+ },
+ {
+  "__docId": "sIIZ3oDeB0KekgqNrfUS",
+  "correct": 1,
+  "category": "rus_tili",
+  "createdAt": {
+   "seconds": 1784496891,
+   "nanoseconds": 202000000
+  },
+  "q": "Induktiv metodga oid to'g'ri mulohazalarni aniqlang.\na) O'quvchilar avval misollarni hal qiladi\nb) O'qituvchi umumiy qoidani avval aytadi\nd) O'quvchilar mustaqil ravishda umumiy qonuniylikni topadi\ne) Qoidani tasdiqlash uchun yakuniy sinov beriladi",
+  "opts": [
+   "A) b, d",
+   "B) a, d",
+   "C) a, e",
+   "D) b, e"
+  ],
+  "explanation": "Induktiv metodda o'quvchilar birinchi navbatda misollarni hal qilishadi (a) va keyin umumiy qoidani mustaqil topishadi (d). Boshqa variantlarda o'qituvchi avval qoidani aytadi yoki yakuniy sinov beriladi – bu deduktiv yoki summativ yondashuvga tegishli.",
+  "topicId": 126
+ },
+ {
+  "__docId": "taiH5lptyTyBAjX9oxEf",
+  "category": "rus_tili",
+  "correct": 1,
+  "topicId": 126,
+  "explanation": "Formativ baholash jarayon davomida o'quvchini kuzatib, qayta aloqa berish orqali o'rganishni yo'naltiradi; ball qo'yilmaydi. Summativ yakuniy natijani o'lchaydi, diagnostik boshlang'ich darajani aniqlashga qaratilgan, kurs baholash umumiy kurs natijasini ko'rib chiqadi.",
+  "opts": [
+   "A) Summativ baholash",
+   "B) Formativ baholash",
+   "C) Diagnostik baholash",
+   "D) Kurs baholash"
+  ],
+  "q": "O'qituvchi yozma topshiriqni kuzatib, xatolarni darhol tuzatib, tavsiyalar beradi, lekin yakuniy ball qo'ymaydi. Bu qanday baholash turi?",
+  "createdAt": {
+   "seconds": 1784496891,
+   "nanoseconds": 202000000
+  }
+ },
+ {
+  "__docId": "zfntoWEsXfoQDahaZe4N",
+  "createdAt": {
+   "seconds": 1784496891,
+   "nanoseconds": 202000000
+  },
+  "q": "Dars rejasini tuzishda to'g'ri ketma-ketlikni tanlang:\n1. Maqsadlarni belgilash\n2. Resurslarni aniqlash\n3. Dars strukturasini ishlab chiqish\n4. Baholash usullarini tanlash",
+  "opts": [
+   "A) 3, 1, 2, 4",
+   "B) 1, 3, 2, 4",
+   "C) 1, 2, 3, 4",
+   "D) 2, 1, 3, 4"
+  ],
+  "topicId": 126,
+  "explanation": "Dars rejasini tuzishda avvalo maqsadlar belgilanadi, keyin kerakli resurslar aniqlanadi, dars strukturasini ishlab chiqish va oxirida baholash usullari tanlanadi. Bu tartib maqsadga erishishning lo'gik ketma-ketligini aks ettiradi.",
+  "correct": 2,
+  "category": "rus_tili"
+ },
+ {
+  "__docId": "5rb6rIphJbvdJDVaLj6h",
+  "topicId": 115,
+  "explanation": "Na atom massasi 23 g mol⁻¹. 0,1 mol Na⁺ ionini olish uchun 0,1 mol Na kerak, ya'ni 0,1 mol × 23 g mol⁻¹ = 2,3 g. Shuning uchun kerakli Na massasi 2,30 g ga yaqin bo‘ladi, bu A variantiga mos keladi.",
+  "opts": [
+   "A) 2,30 g",
+   "B) 0,58 g",
+   "C) 1,15 g",
+   "D) 4,60 g"
+  ],
+  "q": "O'qituvchi laboratoriyada 0,5 mol NaCl eritmasini tayyorlayapti. Natriy (I‑A guruh) metallini suvda eritib, 0,1 mol Na⁺ ionini olish uchun qancha gram Na metallini qo'shishi kerak?",
+  "createdAt": {
+   "seconds": 1784496873,
+   "nanoseconds": 524000000
+  },
+  "category": "kimyo",
+  "correct": 2
+ },
+ {
+  "__docId": "6yIrNGMbe5b47tjlQ2Rj",
+  "createdAt": {
+   "seconds": 1784496876,
+   "nanoseconds": 108000000
+  },
+  "q": "Calcium karbonat (CaCO₃) ning molar massasi taxminan necha gram‑mol⁻¹? (Ca=40, C=12, O=16)",
+  "opts": [
+   "A) 84",
+   "B) 100",
+   "C) 68",
+   "D) 56"
+  ],
+  "topicId": 114,
+  "explanation": "Molar massa = 40 + 12 + 3·16 = 40 + 12 + 48 = **100 g·mol⁻¹**. To'g'ri javob **B** variantidir.",
+  "correct": 0,
+  "category": "kimyo"
+ },
+ {
+  "__docId": "tJQsTIuTjP3kyVMUooYr",
+  "topicId": 116,
+  "explanation": "Bu birikma bir karbongrupga teng bo‘lgan alken bo‘lib, C‑C ikkinchi karbon bo‘ylab ikkinchi pozitsiyada double bog‘ga ega, ya’ni 1‑buten.",
+  "opts": [
+   "A) 2‑penten",
+   "B) 1‑buten",
+   "C) 1‑penten",
+   "D) 2‑buten"
+  ],
+  "q": "CH2=CH‑CH2‑CH3 ning nomini tanlang:",
+  "createdAt": {
+   "seconds": 1784496876,
+   "nanoseconds": 108000000
+  },
+  "category": "kimyo",
+  "correct": 3
+ },
+ {
+  "__docId": "tST5FoO9FggBWUVIPNiH",
+  "category": "kimyo",
+  "correct": 1,
+  "opts": [
+   "A) 0,10 mol·L⁻¹",
+   "B) 0,30 mol·L⁻¹",
+   "C) 0,45 mol·L⁻¹",
+   "D) 0,15 mol·L⁻¹"
+  ],
+  "explanation": "K = [C]/([A]^2 [B]), shuning uchun [C] = K·[A]^2·[B] = 0,1·(1,5)^2·3 = 0,1·2,25·3 = 0,675 ≈ 0,68 mol·L⁻¹.",
+  "topicId": 115,
+  "createdAt": {
+   "seconds": 1784496876,
+   "nanoseconds": 108000000
+  },
+  "q": "Berilgan K=0,1, [A]=1,5 mol·L⁻¹, [B]=3 mol·L⁻¹ bo‘lsa, muvozanatda C konsentratsiyasi qancha bo‘ladi?"
+ },
+ {
+  "__docId": "pTuOKXiuYYTSUfhvxPiL",
+  "createdAt": {
+   "seconds": 1784496871,
+   "nanoseconds": 565000000
+  },
+  "q": "Nodir gazlar qatoridan qaysi biri tibbiyotda sterilizatsiya vositasi sifatida ishlatiladi?",
+  "opts": [
+   "A) Argon",
+   "B) Ksenon",
+   "C) Xelod",
+   "D) Yod"
+  ],
+  "explanation": "Ksenon (Xe) tibbiyotda sterilizatsiya, ayniqsa yuqori haroratli sterilizatsiya jarayonida ishlatiladi. Argon va ksenon inert gazlar, lekin sterilizatsiyaga qo‘llanilmaydi. Yod esa kimyoviy reagent sifatida ishlatiladi.",
+  "topicId": 115,
+  "correct": 2,
+  "category": "kimyo"
+ },
+ {
+  "__docId": "lL75CHe4sVsYF0sgUi2J",
+  "category": "kimyo",
+  "correct": 2,
+  "topicId": 115,
+  "explanation": "Krom (Cr) elementining atom raqami 24 ga teng. 6‑guruh va 4‑chi periodda joylashgan metalloidlarning atom raqamlari aniq jadvalda ko‘rsatilgan. Boshqa variantlar boshqa elementlarga tegishli.",
+  "opts": [
+   "A) 24",
+   "B) 30",
+   "C) 26",
+   "D) 28"
+  ],
+  "q": "Metalloid Krom (Cr) 6‑guruhda joylashgan. Ushbu elementning davri 4‑chi periodda bo‘lsa, uning atom raqami qaysi?",
+  "createdAt": {
+   "seconds": 1784496880,
+   "nanoseconds": 944000000
+  }
+ },
+ {
+  "__docId": "tfqeDisP78sSp99Easbw",
+  "opts": [
+   "A) 30 va 1",
+   "B) 30 va 2",
+   "C) 29 va 1",
+   "D) 29 va 2"
+  ],
+  "topicId": 115,
+  "explanation": "Kremniy (Cu) elementining atom raqami 29 ga teng, valensiya elektronlari odatda 2 (Cu²⁺) bo'ladi, bu uning kimyoviy xossalariga ta'sir qiladi.",
+  "createdAt": {
+   "seconds": 1784496878,
+   "nanoseconds": 369000000
+  },
+  "q": "Kremniy (Cu) ning atom raqami va valensiya elektronlari soni mos ravishda necha?",
+  "category": "kimyo",
+  "correct": 3
+ },
+ {
+  "__docId": "U94Yq4iVtVg7yQ0NOUL6",
+  "category": "kimyo",
+  "correct": 1,
+  "topicId": 115,
+  "explanation": "Cr₂(CO₃)₃ → 3 CO₂ + Cr₂O₃. 0,5 mol → 0,5·3 = 1,5 mol CO₂. Massa = 1,5 mol·44 g·mol⁻¹ = 66 g.",
+  "opts": [
+   "A) 33 g",
+   "B) 66 g",
+   "C) 88 g",
+   "D) 44 g"
+  ],
+  "q": "kremniy(III) karbonat (Cr₂(CO₃)₃) 250 °C da issiqlikda parchalanadi. Agar 0,5 mol Cr₂(CO₃)₃ parchalanishi natijasida qancha gram CO₂ chiqariladi? (CO₂ mol mass 44 g·mol⁻¹)",
+  "createdAt": {
+   "seconds": 1784496876,
+   "nanoseconds": 108000000
+  }
+ },
+ {
+  "__docId": "jluO4mXGF3OKqn2rFypo",
+  "correct": 1,
+  "category": "kimyo",
+  "createdAt": {
+   "seconds": 1784496871,
+   "nanoseconds": 565000000
+  },
+  "q": "Quyidagi elektrod elementlarini ularning vazifasi bilan moslashtiring:\n1. Anod\n2. Katod\n3. Elektrolit\n4. G'alvanometr\nA. Oksidlanishni amalga oshiradi\nB. Reduksiya uchun elektronlarni qabul qiladi\nC. Ion o'tkazuvchan bo‘lib, ionlarni harakatlantiradi\nD. Elektr tokini oqim sifatida o‘lchaydi",
+  "opts": [
+   "A) 1-C, 2-D, 3-A, 4-B",
+   "B) 1-A, 2-B, 3-C, 4-D",
+   "C) 1-D, 2-C, 3-B, 4-A",
+   "D) 1-B, 2-A, 3-D, 4-C"
+  ],
+  "topicId": 114,
+  "explanation": "Anodda oksidlanish (A), katodda reduksiya (B), elektrolit ion o'tkazuvchanligi (C), g'alvanometr tokni o‘lchash (D). Boshqa variantlar elementlar va vazifalarini almashadi."
+ }
+]
