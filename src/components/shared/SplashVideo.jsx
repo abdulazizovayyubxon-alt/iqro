@@ -48,6 +48,7 @@ export default function SplashVideo({ onComplete }) {
     setFading(true);
     setTimeout(() => {
       setVisible(false);
+      sessionStorage.setItem(SESSION_KEY, '1');
       onComplete?.();
     }, 500);
   }, [onComplete]);
@@ -62,6 +63,7 @@ export default function SplashVideo({ onComplete }) {
     setFading(true);
     setTimeout(() => {
       setVisible(false);
+      sessionStorage.setItem(SESSION_KEY, '1');
       onComplete?.();
     }, 300);
   }, [onComplete]);
@@ -111,5 +113,7 @@ export default function SplashVideo({ onComplete }) {
  * sessionStorage'da belgi bo'lmasa — ko'rsatiladi (yangi sessiya)
  */
 export function shouldShowSplash() {
-  return true; // Har safar (refresh qilinganda ham) ko'rsatiladi
+  // sessionStorage tab/brauzer yopilganda tozalanadi → qayta ochganda ko'rsatiladi
+  // Refresh (F5/pull-to-refresh) da esa sessiya davom etadi → ko'rsatilmaydi
+  return !sessionStorage.getItem(SESSION_KEY);
 }
