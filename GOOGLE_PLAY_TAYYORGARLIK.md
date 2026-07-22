@@ -1,7 +1,7 @@
 # Google Play'ga chiqarish — Tayyorgarlik yo'l xaritasi
 
 > Holat sanasi: 2026-07-14. Ilova = PWA (Vite+React) → **TWA** (Trusted Web Activity) qobig'i.
-> Paket nomi: `uz.iqro.app`. Backend: Firebase + Vercel (`toifapro-t41p.vercel.app`).
+> Paket nomi: `uz.iqro.app`. Backend: Firebase + Vercel (`zehin-t41p.vercel.app`).
 
 ---
 
