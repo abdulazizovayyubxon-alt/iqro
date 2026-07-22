@@ -21,7 +21,6 @@ import { useModalBackButton } from '../components/profile/useModalBackButton';
 import EditProfileModal from '../components/profile/EditProfileModal';
 import PasswordModal from '../components/profile/PasswordModal';
 import RepetitionModal from '../components/profile/RepetitionModal';
-import TelegramReminderModal from '../components/profile/TelegramReminderModal';
 import GuideModal from '../components/profile/GuideModal';
 import PrivacyModal from '../components/profile/PrivacyModal';
 import ConfirmLogoutModal from '../components/profile/ConfirmLogoutModal';
@@ -49,7 +48,6 @@ export default function SettingsPage({ theme, toggleTheme }) {
   const [showEdit, setShowEdit] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [showRepetitionModal, setShowRepetitionModal] = useState(false);
-  const [showTelegramModal, setShowTelegramModal] = useState(false);
   const [showGuideModal, setShowGuideModal] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
@@ -105,7 +103,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
   };
 
   // Android "orqaga" tugmasi modallarni yopadi (popstate shartnomasi)
-  const anyModalOpen = showEdit || showPasswordModal || showRepetitionModal || showTelegramModal
+  const anyModalOpen = showEdit || showPasswordModal || showRepetitionModal
     || showGuideModal || showPrivacy || showLogoutConfirm || showDeleteConfirm;
   useModalBackButton(anyModalOpen, () => {
     setShowEdit(false);
@@ -554,15 +552,6 @@ export default function SettingsPage({ theme, toggleTheme }) {
           value={state.repetitionLimit ?? 0}
           onChange={(v) => { updateState({ repetitionLimit: v }); showToast(t('settings.toasts.saved'), 'success'); }}
           onClose={() => setShowRepetitionModal(false)}
-        />
-      )}
-      {showTelegramModal && (
-        <TelegramReminderModal
-          user={user}
-          enabled={!!state.telegramEnabled}
-          updateState={updateState}
-          showToast={showToast}
-          onClose={() => setShowTelegramModal(false)}
         />
       )}
       <AnimatePresence>

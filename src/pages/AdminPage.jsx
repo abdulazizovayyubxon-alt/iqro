@@ -1870,7 +1870,7 @@ try {
               • <strong>Taklif qilingan do'st (B)</strong> ro'yxatdan o'tganda keyingi oylik to'loviga <strong>50% chegirma</strong> oladi (bepul premium yo'q).<br/>
               • <strong>Taklif qiluvchi (A)</strong> do'sti (B) birinchi to'lovni muvaffaqiyatli qilgandan so'ng <strong>15 000 so'm</strong> bonus oladi.<br/>
               • Maksimal takliflar soni: <strong>5 ta do'st</strong> (maksimal 75 000 so'm bonus).<br/>
-              • To'lov amalga oshirilganda (Click/Payme orqali) referral statusi avtomatik ravishda <strong>"To'ladi"</strong>ga o'tadi va bonus avtomatik beriladi.<br/>
+              • To'lov amalga oshirilganda (Click orqali) referral statusi avtomatik ravishda <strong>"To'ladi"</strong>ga o'tadi va bonus avtomatik beriladi.<br/>
               • <strong>Amal (✓ To'ladi)</strong> tugmasi faqat favqulodda holatlar (qo'lda to'lov qilinganda) uchun admin qo'shimcha boshqaruvi sifatida qoldirilgan.
             </div>
           </div>

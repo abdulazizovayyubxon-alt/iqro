@@ -9,18 +9,23 @@ import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
 
+let dbInstance = null;
+
 function getDb() {
-  if (getApps().length === 0) {
-    let serviceAccountStr = process.env.FIREBASE_SERVICE_ACCOUNT || '{}';
-    let serviceAccount;
-    try {
-      serviceAccount = JSON.parse(serviceAccountStr);
-    } catch (e) {
-      serviceAccount = JSON.parse(Buffer.from(serviceAccountStr, 'base64').toString());
+  if (!dbInstance) {
+    if (getApps().length === 0) {
+      let serviceAccountStr = process.env.FIREBASE_SERVICE_ACCOUNT || '{}';
+      let serviceAccount;
+      try {
+        serviceAccount = JSON.parse(serviceAccountStr);
+      } catch (e) {
+        serviceAccount = JSON.parse(Buffer.from(serviceAccountStr, 'base64').toString());
+      }
+      initializeApp({ credential: cert(serviceAccount) });
     }
-    initializeApp({ credential: cert(serviceAccount) });
+    dbInstance = getFirestore();
   }
-  return getFirestore();
+  return dbInstance;
 }
 
 function getAuthAdmin() {

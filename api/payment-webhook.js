@@ -24,19 +24,24 @@ const REFERRAL_BONUS = 15000;   // so'm — har bir to'lagan do'st uchun
 const MAX_REFERRALS  = 5;        // A maksimal 5 ta bonus olishi mumkin
 const REFERRAL_DISCOUNT = 50;    // 50% chegirma
 
-// Firebase Admin SDK (server-side)
+// Global instance caching for serverless warm starts
+let dbInstance = null;
+
 function getDb() {
-  if (getApps().length === 0) {
-    let serviceAccountStr = process.env.FIREBASE_SERVICE_ACCOUNT || '{}';
-    let serviceAccount;
-    try {
-      serviceAccount = JSON.parse(serviceAccountStr);
-    } catch (e) {
-      serviceAccount = JSON.parse(Buffer.from(serviceAccountStr, 'base64').toString());
+  if (!dbInstance) {
+    if (getApps().length === 0) {
+      let serviceAccountStr = process.env.FIREBASE_SERVICE_ACCOUNT || '{}';
+      let serviceAccount;
+      try {
+        serviceAccount = JSON.parse(serviceAccountStr);
+      } catch (e) {
+        serviceAccount = JSON.parse(Buffer.from(serviceAccountStr, 'base64').toString());
+      }
+      initializeApp({ credential: cert(serviceAccount) });
     }
-    initializeApp({ credential: cert(serviceAccount) });
+    dbInstance = getFirestore();
   }
-  return getFirestore();
+  return dbInstance;
 }
 
 // ── Referral bonusini hisoblash va berish ──
@@ -297,60 +302,12 @@ async function handleClick(req, res) {
   return res.status(200).json({ error: -3, error_note: 'Action not found' });
 }
 
-// ── Payme webhook handler ──
-async function handlePayme(req, res) {
-  const { method, params, id } = req.body;
-
-  // XAVFSIZLIK: PAYME_SECRET_KEY sozlanmagan bo'lsa — Payme YOQILMAGAN, hamma so'rov rad etiladi.
-  // Aks holda imzo `Paycom:undefined` bo'yicha hisoblanib, hujumchi uni soxtalashtirib
-  // to'lovsiz premium olishi mumkin edi.
-  if (!process.env.PAYME_SECRET_KEY) {
-    return res.status(200).json({ id, error: { code: -32504, message: 'Auth error' } });
-  }
-
-  const authHeader = req.headers.authorization || '';
-  const expectedAuth = 'Basic ' + Buffer.from(`Paycom:${process.env.PAYME_SECRET_KEY}`).toString('base64');
-
-  if (authHeader !== expectedAuth) {
-    return res.status(200).json({
-      id, error: { code: -32504, message: 'Auth error' }
-    });
-  }
-
-  if (method === 'PerformTransaction') {
-    try {
-      const db = getDb();
-      const rawUserId = params.account?.user_id;
-      await activatePremium(db, rawUserId, 'monthly', 'payme', params.id);
-
-      return res.status(200).json({
-        id,
-        result: { transaction: params.id, perform_time: Date.now(), state: 2 }
-      });
-    } catch (err) {
-      console.error('Payme Firestore error:', err);
-      return res.status(200).json({
-        id, error: { code: -31008, message: 'DB error' }
-      });
-    }
-  }
-
-  if (method === 'CheckPerformTransaction') {
-    return res.status(200).json({ id, result: { allow: true } });
-  }
-
-  return res.status(200).json({
-    id, error: { code: -32601, message: 'Method not found' }
-  });
-}
-
 // ── Asosiy handler ──
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  const isPayme = req.body.method && req.body.params;
-  if (isPayme) return handlePayme(req, res);
   return handleClick(req, res);
 }
+
 

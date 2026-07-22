@@ -39,7 +39,7 @@ export const DEFAULT_YEARLY_PRICE = 240000;
 
 // ─── Google Play build aniqlash — yagona haqiqat manbasi ───
 // Play Store ichida (APK/AAB) ishlayotganini aniqlaydi. Play'da raqamli obuna
-// FAQAT Google Play Billing orqali sotilishi shart — Click/Payme/Telegram-karta
+// FAQAT Google Play Billing orqali sotilishi shart — Click/Telegram-karta
 // to'lovlari faqat web/brauzer versiyasida ko'rsatiladi.
 //
 // Bu loyiha TWA (Trusted Web Activity) — APK Vercel saytining AYNAN o'zini ochadi,

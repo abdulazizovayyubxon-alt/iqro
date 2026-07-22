@@ -9,6 +9,7 @@ import PullToRefresh, { RefreshRing } from './components/shared/PullToRefresh';
 import ScrollDebugOverlay from './components/shared/ScrollDebugOverlay';
 import { trackPageView, startPageTimer } from './services/analytics';
 import { setUser, clearUser } from './services/sentry';
+import { enablePush, listenForegroundPush } from './services/push';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from './firebase';
 
@@ -196,6 +197,20 @@ function App() {
   useEffect(() => {
     if (user) setUser(user);
     else clearUser();
+  }, [user]);
+
+  // ── FCM Push notification avto-sinxronizatsiya ──
+  useEffect(() => {
+    if (!user) return;
+    if (typeof window !== 'undefined' && 'Notification' in window && Notification.permission === 'granted') {
+      enablePush(user).catch(() => {});
+    }
+    const unsubPromise = listenForegroundPush((payload) => {
+      console.log('FCM Foreground Message:', payload);
+    });
+    return () => {
+      unsubPromise.then(unsub => { if (typeof unsub === 'function') unsub(); }).catch(() => {});
+    };
   }, [user]);
 
   // Tema: light → sepia (o'qish) → dark aylanasi

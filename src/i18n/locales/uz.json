@@ -1160,7 +1160,7 @@
     "trustLabel": "🛡️ Xavfsizlik va Kafolat",
     "trustBadges": [
       {
-        "title": "Click & Payme",
+        "title": "Click",
         "sub": "Xavfsiz to'lov"
       },
       {
@@ -1180,11 +1180,11 @@
       },
       {
         "q": "To'lovlar qanday amalga oshiriladi va xavfsizmi?",
-        "a": "To'lovlar xavfsiz Click, Payme yoki Telegram bot orqali to'g'ridan-to'g'ri o'tkaziladi. Tranzaksiyalar shifrlangan kanallar orqali amalga oshiriladi."
+        "a": "To'lovlar xavfsiz Click yoki Telegram bot orqali to'g'ridan-to'g'ri o'tkaziladi. Tranzaksiyalar shifrlangan kanallar orqali amalga oshiriladi."
       },
       {
         "q": "Pro faollashishi uchun qancha vaqt ketadi?",
-        "a": "Click va Payme orqali to'lovlar avtomatik tarzda 5 soniyada faollashadi. Telegram bot orqali chek yuborilganda esa admin tomonidan 5-10 daqiqada tasdiqlanadi."
+        "a": "Click orqali to'lovlar avtomatik tarzda 5 soniyada faollashadi. Telegram bot orqali chek yuborilganda esa admin tomonidan 5-10 daqiqada tasdiqlanadi."
       },
       {
         "q": "Savollar bazasi qanchalik tez-tez yangilanadi?",
@@ -1287,7 +1287,7 @@
     "p4List": [
       "Google Firebase (Google LLC) — autentifikatsiya, ma'lumotlar bazasi va hostingni ta'minlovchi bulut infratuzilmasi; ma'lumotlar himoyalangan serverlarda shifrlangan holda saqlanadi;",
       "Google Analytics — Platformadan foydalanish bo'yicha shaxssizlantirilgan statistika (sahifa ko'rishlari, umumiy faollik) to'plash uchun;",
-      "To'lov tizimlari (Click, Payme va Platformada ko'rsatilgan boshqa usullar) — to'lovlarni qayta ishlash uchun zarur bo'lgan minimal hajmda;",
+      "To'lov tizimlari (Click va Platformada ko'rsatilgan boshqa usullar) — to'lovlarni qayta ishlash uchun zarur bo'lgan minimal hajmda;",
       "Davlat organlari — faqat O'zbekiston Respublikasi qonunchiligida belgilangan tartibda sud yoki vakolatli organning rasmiy va qonuniy so'roviga asosan."
     ],
     "h5": "5. Boshqa foydalanuvchilarga ko'rinadigan ma'lumotlar",
@@ -1345,7 +1345,7 @@
     "h5": "5. To'lov tartibi va mablag'ni qaytarish (Refund) siyosati",
     "p5": "To'lovlar O'zbekiston milliy valyutasida (so'm) Platformada ko'rsatilgan usullar orqali amalga oshiriladi:",
     "p5List": [
-      "To'lov usullari: rasmiy Telegram operatori (https://t.me/zehinuz?direct) orqali, shuningdek Platformaga ulangan to'lov tizimlari (Click, Payme va boshqalar — joriy mavjud usullar ilovaning to'lov oynasida ko'rsatiladi) orqali;",
+      "To'lov usullari: rasmiy Telegram operatori (https://t.me/zehinuz?direct) orqali, shuningdek Platformaga ulangan to'lov tizimlari (Click va boshqalar — joriy mavjud usullar ilovaning to'lov oynasida ko'rsatiladi) orqali;",
       "Faollashtirish: to'lov tasdiqlangach, Pro obuna Foydalanuvchi profiliga biriktiriladi. Operator orqali to'lovda faollashtirish qisqa muddat (odatda bir necha daqiqadan bir necha soatgacha) talab qilishi mumkin;",
       "Qaytarish siyosati: Zehin raqamli ta'lim xizmati bo'lgani uchun obuna faollashtirilgach, xizmat ko'rsatilgan hisoblanadi va to'langan mablag' qaytarilmaydi. Istisno: to'lov qabul qilinib, texnik nosozlik tufayli xizmat umuman faollashmagan holatlar — bunda Ma'muriyat muammoni bartaraf etadi yoki mablag'ni to'liq qaytaradi. Bunday holatda https://t.me/zehinuz?direct orqali murojaat qilish lozim."
     ],

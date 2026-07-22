@@ -195,29 +195,17 @@ const PremiumModal = ({ isOpen, onClose }) => {
     setStep('method');
   };
 
-  // 2-qadam CTA: tanlangan usul bo'yicha to'lov
+  // 2-qadam CTA: Click orqali to'lov
   const handlePay = () => {
     if (!user || !selectedPlan) return;
     
-    if (payMethod === 'click') {
-      const amount = Math.round(finalPrice);
-      // Bonus/chegirma summani to'liq qoplasa (0 so'm) — Click 0 ni qabul qilmaydi.
-      // Bunday holatda operator orqali qo'lda faollashtiramiz (Telegram).
-      if (amount <= 0) {
-        AnalyticsEvents.premiumClick('telegram');
-        window.open(SUPPORT_URL, '_blank');
-        return;
-      }
-      AnalyticsEvents.premiumClick('click');
-      const clickUrl = generateClickUrl(user.uid, user.phoneNumber || user.phone || '', amount, selectedPlan.id);
-      if (clickUrl) {
-        window.open(clickUrl, '_blank');
-      } else {
-        alert('Click sozlamalari topilmadi (.env).');
-      }
+    const amount = Math.round(finalPrice);
+    AnalyticsEvents.premiumClick('click');
+    const clickUrl = generateClickUrl(user.uid, user.phoneNumber || user.phone || '', amount, selectedPlan.id);
+    if (clickUrl) {
+      window.open(clickUrl, '_blank');
     } else {
-      AnalyticsEvents.premiumClick('telegram');
-      window.open(SUPPORT_URL, '_blank');
+      alert('Click sozlamalari topilmadi (.env).');
     }
   };
 
@@ -515,46 +503,24 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
                 {bonusBanner}
 
-                {/* To'lov usullari */}
+                {/* To'lov usuli: Click */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
-                  {/* Click usuli */}
                   <div 
-                    onClick={() => setPayMethod('click')}
                     style={{
                       display: 'flex', alignItems: 'center', gap: 12,
-                      padding: '14px 16px', borderRadius: 14, cursor: 'pointer', transition: 'all 0.2s',
-                      border: payMethod === 'click' ? '2px solid #00a2ff' : '1.5px solid rgba(0,0,0,0.06)',
-                      background: payMethod === 'click' ? 'rgba(0,162,255,0.06)' : '#fff',
+                      padding: '14px 16px', borderRadius: 14,
+                      border: '2px solid #00a2ff',
+                      background: 'rgba(0,162,255,0.06)',
                     }}
                   >
                     <span style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(0,162,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <span style={{ fontSize: 14, fontWeight: 900, color: '#00a2ff', letterSpacing: 0.5 }}>C</span>
                     </span>
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 14, fontWeight: 800, color: '#0f172a' }}>{t('premium.payClickTitle', 'Click orqali')}</div>
-                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>{t('premium.payClickSub', 'Karta yoki Click ilovasi orqali')}</div>
+                      <div style={{ fontSize: 14, fontWeight: 800, color: '#0f172a' }}>{t('premium.payClickTitle', 'Click orqali to\'lov')}</div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>{t('premium.payClickSub', 'Bank kartasi (Uzcard/Humo) yoki Click ilovasi orqali')}</div>
                     </div>
-                    <div style={{ width: 20, height: 20, borderRadius: '50%', border: payMethod === 'click' ? '6px solid #00a2ff' : '2px solid #cbd5e1', flexShrink: 0 }} />
-                  </div>
-
-                  {/* Telegram usuli */}
-                  <div 
-                    onClick={() => setPayMethod('telegram')}
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: 12,
-                      padding: '14px 16px', borderRadius: 14, cursor: 'pointer', transition: 'all 0.2s',
-                      border: payMethod === 'telegram' ? '2px solid #0284C7' : '1.5px solid rgba(0,0,0,0.06)',
-                      background: payMethod === 'telegram' ? 'rgba(14,151,224,0.06)' : '#fff',
-                    }}
-                  >
-                    <span style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(14,151,224,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <Send size={19} color="#0284C7" />
-                    </span>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 14, fontWeight: 800, color: '#0f172a' }}>{t('premium.payTgTitle')}</div>
-                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>{t('premium.payTgSub')}</div>
-                    </div>
-                    <div style={{ width: 20, height: 20, borderRadius: '50%', border: payMethod === 'telegram' ? '6px solid #0284C7' : '2px solid #cbd5e1', flexShrink: 0 }} />
+                    <div style={{ width: 20, height: 20, borderRadius: '50%', border: '6px solid #00a2ff', flexShrink: 0 }} />
                   </div>
                 </div>
 

@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, useContext, useRef } from 'react';
+import localforage from 'localforage';
 import { MAX_MISTAKES_SAVED } from '../config';
 import { db } from '../firebase';
 import { AuthContext } from './AuthContext';
@@ -146,16 +147,28 @@ const buildDefaultState = () => {
 // ────────────────────────────────────────────────────────
 const getUserStateKey = (uid) => `iqro_state_${uid}`;
 
-// Shu foydalanuvchining lokal zaxirasini o'qish (kalit UID bilan izolyatsiyalangan)
-const loadLocalBackup = (uid) => {
+// Shu foydalanuvchining lokal zaxirasini o'qish (localStorage + localforage zaxirasi)
+const loadLocalBackup = async (uid) => {
+  const userKey = getUserStateKey(uid);
   try {
-    const raw = localStorage.getItem(getUserStateKey(uid));
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
-    return parsed && typeof parsed === 'object' ? parsed : null;
+    const raw = localStorage.getItem(userKey);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object') return parsed;
+    }
   } catch {
-    return null;
+    // localStorage xatosi — localforage ga o'tamiz
   }
+  try {
+    const forageVal = await localforage.getItem(userKey);
+    if (forageVal) {
+      const parsed = typeof forageVal === 'string' ? JSON.parse(forageVal) : forageVal;
+      if (parsed && typeof parsed === 'object') return parsed;
+    }
+  } catch {
+    // localforage xatosi
+  }
+  return null;
 };
 
 // Bulut va lokal zaxirani birlashtirish — qurilma almashganda "last-write-wins"
@@ -341,7 +354,7 @@ export const AppProvider = ({ children }) => {
     // Foydalanuvchi statistikasini Firestore'dan yuklash
     const loadUserStats = async () => {
       // Lokal zaxira UID bilan izolyatsiyalangan — faqat SHU foydalanuvchiniki bo'lishi mumkin
-      const backup = loadLocalBackup(user.uid);
+      const backup = await loadLocalBackup(user.uid);
       try {
         const statRef = doc(db, 'userStats', user.uid);
         const snap = await getDoc(statRef);
@@ -395,11 +408,13 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     if (!user || !cloudSynced) return;
 
-    // User-ga tegishli localStorage ga saqlash (offline backup)
+    // User-ga tegishli localStorage va localforage ga saqlash (offline dual-backup)
     // XAVFSIZLIK: kalit nomi user UID bilan izolyatsiya qilingan
     // savedAt — resetAt guard uchun (mergeCloudAndLocal)
     const userKey = getUserStateKey(user.uid);
-    localStorage.setItem(userKey, JSON.stringify({ ...state, savedAt: Date.now() }));
+    const serialized = JSON.stringify({ ...state, savedAt: Date.now() });
+    try { localStorage.setItem(userKey, serialized); } catch (e) { console.warn('LocalStorage save error:', e); }
+    localforage.setItem(userKey, serialized).catch(() => {});
 
     const writeNow = () => {
       saveTimerRef.current = null;

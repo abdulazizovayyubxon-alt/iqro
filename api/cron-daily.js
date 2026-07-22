@@ -26,18 +26,23 @@ import { getFirestore } from 'firebase-admin/firestore';
 const FREE_TRIAL_DAYS = 7;
 const URGENCY_DAYS = 3;
 
+let dbInstance = null;
+
 function getDb() {
-  if (getApps().length === 0) {
-    let serviceAccountStr = process.env.FIREBASE_SERVICE_ACCOUNT || '{}';
-    let serviceAccount;
-    try {
-      serviceAccount = JSON.parse(serviceAccountStr);
-    } catch (e) {
-      serviceAccount = JSON.parse(Buffer.from(serviceAccountStr, 'base64').toString());
+  if (!dbInstance) {
+    if (getApps().length === 0) {
+      let serviceAccountStr = process.env.FIREBASE_SERVICE_ACCOUNT || '{}';
+      let serviceAccount;
+      try {
+        serviceAccount = JSON.parse(serviceAccountStr);
+      } catch (e) {
+        serviceAccount = JSON.parse(Buffer.from(serviceAccountStr, 'base64').toString());
+      }
+      initializeApp({ credential: cert(serviceAccount) });
     }
-    initializeApp({ credential: cert(serviceAccount) });
+    dbInstance = getFirestore();
   }
-  return getFirestore();
+  return dbInstance;
 }
 
 export default async function handler(req, res) {
@@ -49,90 +54,16 @@ export default async function handler(req, res) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-  const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}`;
-
-  async function sendTelegramMessage(chatId, text) {
-    if (!TELEGRAM_BOT_TOKEN || !chatId) return false;
-    try {
-      const resp = await fetch(`${TELEGRAM_API_URL}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: text,
-          parse_mode: 'HTML'
-        })
-      });
-      return resp.ok;
-    } catch (e) {
-      console.error("TG Send Error:", e);
-      return false;
-    }
-  }
-
-
   const db = getDb();
   const now = new Date();
   const results = {
     premiumExpired: 0,
     remindersSent: 0,
-    telegramSent: 0,
     discountsCleared: 0,
     errors: [],
   };
 
   try {
-    // ═══ 0. TELEGRAM KUNDALIK ESLATMALAR ═══
-    const isSunday = now.getDay() === 0;
-
-    const tgUsers = await db.collection('users')
-      .where('telegramEnabled', '==', true)
-      .get();
-
-    let allStats = [];
-    if (isSunday) {
-      // Masshtab: barcha userStats'ni emas, faqat top 5000'ni o'qiymiz (reyting uchun).
-      // 5000'dan pastdagilar taxminiy "5000+" o'rin oladi — haftalik motivatsion xabar uchun yetarli.
-      const statsSnap = await db.collection('userStats').orderBy('totalScore', 'desc').limit(5000).get();
-      allStats = statsSnap.docs.map(d => ({ id: d.id, score: d.data().totalScore || 0 }));
-    }
-
-    const tgPromises = [];
-    for (const userDoc of tgUsers.docs) {
-      const data = userDoc.data();
-      if (data.telegramChatId) {
-        let scoreMsg = "";
-        let score = 0;
-        let rank = 0;
-        try {
-          const statSnap = await db.collection('userStats').doc(userDoc.id).get();
-          if (statSnap.exists) {
-            score = statSnap.data().totalScore || 0;
-            if (isSunday) {
-              const rIndex = allStats.findIndex(s => s.id === userDoc.id);
-              rank = rIndex >= 0 ? rIndex + 1 : allStats.length + 1;
-            }
-          }
-        } catch(e) {}
-
-        let msg = "";
-        if (isSunday) {
-          msg = `🏆 <b>Haftalik Hisobot!</b>\n\nPlatformada shu kungacha jami <b>${score} ball</b> yig'dingiz.\nUmumiy reytingda <b>${rank}-o'rindasiz!</b>\n\nKeyingi hafta top reytingga chiqishga harakat qiling! Keling, bitta test ishlaymiz👇\n\n👉 <a href="https://toifapro-t41p.vercel.app">Platformaga kirish</a>`;
-        } else {
-          scoreMsg = `\n\n📊 Joriy yig'gan ballingiz: <b>${score}</b>. Reytingda ko'tarilish uchun test ishlashni davom ettiring!`;
-          msg = `📚 <b>Vaqt bo'ldi!</b>\n\nAttestatsiya imtihoniga tayyorgarlikni tizimli davom ettiramiz. Bugungi takrorlash testlaringiz sizni kutmoqda.${scoreMsg}\n\n👉 <a href="https://toifapro-t41p.vercel.app">Platformaga kirish</a>`;
-        }
-
-        tgPromises.push(
-          sendTelegramMessage(data.telegramChatId, msg).then(success => {
-            if (success) results.telegramSent++;
-          })
-        );
-      }
-    }
-    // Parallelda yuborish
-    await Promise.all(tgPromises);
 
     // ═══ 1. PREMIUM MUDDATI TEKSHIRUVI ═══
     // premiumExpire o'tgan va premiumPlan !== 'paid' bo'lganlarni topamiz

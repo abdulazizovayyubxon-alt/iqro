@@ -2,18 +2,23 @@ import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
 
+let dbInstance = null;
+
 function getDb() {
-  if (getApps().length === 0) {
-    let serviceAccountStr = process.env.FIREBASE_SERVICE_ACCOUNT || '{}';
-    let serviceAccount;
-    try {
-      serviceAccount = JSON.parse(serviceAccountStr);
-    } catch (e) {
-      serviceAccount = JSON.parse(Buffer.from(serviceAccountStr, 'base64').toString());
+  if (!dbInstance) {
+    if (getApps().length === 0) {
+      let serviceAccountStr = process.env.FIREBASE_SERVICE_ACCOUNT || '{}';
+      let serviceAccount;
+      try {
+        serviceAccount = JSON.parse(serviceAccountStr);
+      } catch (e) {
+        serviceAccount = JSON.parse(Buffer.from(serviceAccountStr, 'base64').toString());
+      }
+      initializeApp({ credential: cert(serviceAccount) });
     }
-    initializeApp({ credential: cert(serviceAccount) });
+    dbInstance = getFirestore();
   }
-  return getFirestore();
+  return dbInstance;
 }
 
 export default async function handler(req, res) {
@@ -80,8 +85,8 @@ export default async function handler(req, res) {
     
     const data = await response.json();
     
-    // Return the actual JSON payload
-    res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate'); // optional caching
+    // Return the actual JSON payload with Edge CDN caching
+    res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400');
     res.status(200).json(data);
     
   } catch (error) {
