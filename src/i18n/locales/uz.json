@@ -516,7 +516,7 @@
     "passportCellSolved": "Yechilgan savol",
     "passportCellAvgTime": "O'rtacha vaqt",
     "passportToifaLabel": "T O I F A   P R O G N O Z I",
-    "shareTgText": "🏆 Zehin platformasida attestatsiyaga tayyorgarlik darajasi pasportimni oldim!\n\n📚 Fan: {{subject}}\n🎯 Aniqlik ko'rsatkichi: {{acc}}%\n⏱ O'rtacha tezlik: {{avg}}s ({{speed}})\n⚡ Toifa prognozi: {{toifa}}\n\nSiz ham o'z toifangizni sinab ko'ring: toifapro-t41p.vercel.app",
+    "shareTgText": "🏆 Zehin platformasida attestatsiyaga tayyorgarlik darajasi pasportimni oldim!\n\n📚 Fan: {{subject}}\n🎯 Aniqlik ko'rsatkichi: {{acc}}%\n⏱ O'rtacha tezlik: {{avg}}s ({{speed}})\n⚡ Toifa prognozi: {{toifa}}\n\nSiz ham o'z toifangizni sinab ko'ring: zehin.vercel.app",
     "questions": "Savollar",
     "accuracy": "Aniqlik",
     "points": "Balllar",

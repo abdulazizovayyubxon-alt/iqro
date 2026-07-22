@@ -9,7 +9,7 @@ export const APP_VERSION = '2.0'; // Ilova versiyasi (Sozlamalar pastida ko'rsat
 export const APP_SUBTITLE = 'Attestatsiya platformasi';
 export const EXAM_LABEL = EXAM_DATE ? '13 May — Malaka toifa imtihoni' : 'Zehin — attestatsiya platformasi';
 export const EXAM_GOAL_SCORE = 70;
-export const APP_URL = 'https://toifapro-t41p.vercel.app'; // Haqiqiy domen (agar o'zgarsa shu yerni tahrirlaysiz)
+export const APP_URL = 'https://zehin.vercel.app'; // Haqiqiy domen (Vercel loyiha nomi: zehin)
 export const SUPPORT_URL = 'https://t.me/zehinuz?direct'; // Shaxsiy murojaat (kanal DM) — support, to'lov operatori, huquqiy murojaatlar
 export const CHANNEL_URL = 'https://t.me/zehinuz'; // Rasmiy Telegram kanal — yangiliklar/obuna (murojaat uchun emas)
 
