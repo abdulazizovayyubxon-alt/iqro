@@ -227,13 +227,9 @@ function App() {
     const validTheme = THEMES.includes(savedTheme) ? savedTheme : 'light';
     setTheme(validTheme);
     applyTheme(validTheme);
-
-    // Shrift o'lchami (S/M/L/XL) — root font-size orqali boshqariladi.
-    // rem da yozilgan matnlar avtomatik mutanosib kattalashadi / kichrayadi.
-    const savedScale = parseFloat(localStorage.getItem('iqro-font-scale'));
-    if (savedScale && savedScale >= 0.8 && savedScale <= 1.5) {
-      document.documentElement.style.fontSize = `${16 * savedScale}px`;
-    }
+    // Shrift o'lchami (S/M/L/XL) boot'da index.html'dagi inline skript orqali
+    // React'dan OLDIN qo'llanadi (flash'ni oldini olish uchun). Runtime
+    // o'zgarishi SettingsPage'da; bu yerda takror qo'llash SHART EMAS.
   }, []);
 
   const toggleTheme = (target) => {

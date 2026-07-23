@@ -6,6 +6,22 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/pwa-192x192.png" />
     <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <meta name="theme-color" content="#F4F3EF" />
+
+    <!-- Shrift o'lchami (S/M/L/XL) React yuklanishidan OLDIN qo'llanadi — aks holda
+         matn avval M (16px) holda chizilib, keyin tanlangan o'lchamga "sakrardi"
+         (flash). Bu YAGONA boshlang'ich manba; runtime o'zgarishini SettingsPage
+         boshqaradi. rem'dagi matnlar shu root o'lchamiga nisbatan masshtablanadi. -->
+    <script>
+      (function () {
+        try {
+          var s = parseFloat(localStorage.getItem('iqro-font-scale'));
+          if (s && s >= 0.8 && s <= 1.5) {
+            document.documentElement.style.fontSize = (16 * s) + 'px';
+          }
+        } catch (e) { /* localStorage bloklangan bo'lishi mumkin */ }
+      })();
+    </script>
+
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
