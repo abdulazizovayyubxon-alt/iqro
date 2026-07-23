@@ -48,18 +48,27 @@ export const DEFAULT_YEARLY_PRICE = 240000;
 //   1) Capacitor native platform (agar kelajakda Capacitor'ga o'tilsa)
 //   2) TWA referrer (android-app://...) — ishonchsiz, SW/SPA da yo'qolishi mumkin
 //   3) TWA launch URL'idagi ?play=1 — KAFOLATLANGAN (Bubblewrap startUrl da sozlanadi)
-// Bir marta aniqlangach localStorage'da saqlanadi — keyingi navigatsiyalarda
-// referrer yo'qolsa ham Play rejimi barqaror qoladi.
+// Bir marta aniqlangach sessionStorage'da saqlanadi — keyingi navigatsiyalarda
+// referrer/?play=1 yo'qolsa ham Play rejimi shu SESSIYA davomida barqaror qoladi.
+// DIQQAT: localStorage ISHLATILMAYDI — TWA va Chrome brauzer ayni origin'ni
+// bo'lishadi, localStorage esa ular o'rtasida umumiy. localStorage'ga yozilsa,
+// ilovani ochgan foydalanuvchi keyin o'sha telefonda saytni brauzerda ochganda
+// ham Play rejimida qolib, Click to'lovi yashirinib qolardi (to'lov imkonsiz).
 export const isPlayBuild = () => {
   // Build-time flag (Capacitor/lokal bundle build uchun — TWA da ishlamaydi)
   if (import.meta.env.VITE_PLAY_BUILD === 'true') return true;
 
   if (typeof window === 'undefined') return false;
 
-  // Bir marta aniqlangach — saqlab qolamiz
+  // Eski (bug'li) versiya bayroqni localStorage'ga yozgan bo'lishi mumkin — u TWA'dan
+  // brauzerga oqib, to'lovni to'sib qo'yardi. Har chaqiruvda tozalab, affected
+  // brauzer foydalanuvchilarini davolaymiz.
+  try { window.localStorage.removeItem('iqro_play_build'); } catch (_) { /* ignore */ }
+
+  // Bir marta aniqlangach — SESSIYA davomida saqlab qolamiz (brauzerga oqmaydi)
   try {
-    if (window.localStorage.getItem('iqro_play_build') === '1') return true;
-  } catch (_) { /* localStorage bloklangan bo'lishi mumkin */ }
+    if (window.sessionStorage.getItem('iqro_play_build') === '1') return true;
+  } catch (_) { /* sessionStorage bloklangan bo'lishi mumkin */ }
 
   const ua = navigator.userAgent || '';
   const isAndroid = /android/i.test(ua);
@@ -70,7 +79,7 @@ export const isPlayBuild = () => {
   const hasPlayParam = isAndroid && new URLSearchParams(window.location.search).get('play') === '1';
 
   if (isCapacitor || isTWA || hasPlayParam) {
-    try { window.localStorage.setItem('iqro_play_build', '1'); } catch (_) { /* ignore */ }
+    try { window.sessionStorage.setItem('iqro_play_build', '1'); } catch (_) { /* ignore */ }
     return true;
   }
 
