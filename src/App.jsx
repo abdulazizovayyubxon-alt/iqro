@@ -225,11 +225,11 @@ function App() {
   useEffect(() => {
     const savedTheme = localStorage.getItem('iqro-theme') || localStorage.getItem('chqbt-theme');
     const validTheme = THEMES.includes(savedTheme) ? savedTheme : 'light';
+    // React STATE'ini sinxronlaymiz. DOM (body class) va shrift o'lchami boot'da
+    // index.html'dagi inline skriptlar orqali React'dan OLDIN qo'llanadi
+    // (flash'ni oldini olish uchun) — bu yerda takror qo'llash SHART EMAS.
+    // Runtime almashinuvi: tema toggleTheme'da, o'lcham SettingsPage'da.
     setTheme(validTheme);
-    applyTheme(validTheme);
-    // Shrift o'lchami (S/M/L/XL) boot'da index.html'dagi inline skript orqali
-    // React'dan OLDIN qo'llanadi (flash'ni oldini olish uchun). Runtime
-    // o'zgarishi SettingsPage'da; bu yerda takror qo'llash SHART EMAS.
   }, []);
 
   const toggleTheme = (target) => {

@@ -140,6 +140,21 @@
         <p class="zh-splash-tag">Attestatsiya platformasi</p>
       </div>
     </div>
+    <!-- Tema (light/sepia/dark) React yuklanishidan OLDIN body'ga qo'llanadi —
+         aks holda kontent avval light holda chizilib, keyin dark/sepia'ga
+         "sakrardi" (flash). body shu nuqtada mavjud (skript <body> oxirida) va
+         bu main.jsx'dan oldin ishlaydi. Splash navy fonli (temadan mustaqil),
+         shuning uchun ko'rinishi o'zgarmaydi. Runtime almashinuv — App.jsx
+         toggleTheme'da; eski 'chqbt-theme' kaliti moslik uchun o'qiladi. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('iqro-theme') || localStorage.getItem('chqbt-theme');
+          if (t === 'dark') document.body.classList.add('dark-theme');
+          else if (t === 'sepia') document.body.classList.add('sepia-theme');
+        } catch (e) { /* localStorage bloklangan bo'lishi mumkin */ }
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
