@@ -152,6 +152,11 @@
           var t = localStorage.getItem('iqro-theme') || localStorage.getItem('chqbt-theme');
           if (t === 'dark') document.body.classList.add('dark-theme');
           else if (t === 'sepia') document.body.classList.add('sepia-theme');
+          // Status-bar / brauzer chrome rangi ham temaning fon rangiga mos bo'lsin
+          // (index.css --bg qiymatlari). Runtime almashinuv App.jsx applyTheme'da.
+          var bg = t === 'dark' ? '#070B16' : t === 'sepia' ? '#F5EEDD' : '#F4F3EF';
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', bg);
         } catch (e) { /* localStorage bloklangan bo'lishi mumkin */ }
       })();
     </script>

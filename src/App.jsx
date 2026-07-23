@@ -215,11 +215,16 @@ function App() {
 
   // Tema: light → sepia (o'qish) → dark aylanasi
   const THEMES = ['light', 'sepia', 'dark'];
+  // Status-bar / brauzer chrome rangi — index.css --bg qiymatlari bilan bir xil
+  // (boot varianti index.html inline skriptida takrorlangan).
+  const THEME_COLORS = { light: '#F4F3EF', sepia: '#F5EEDD', dark: '#070B16' };
 
   const applyTheme = (t) => {
     document.body.classList.remove('dark-theme', 'sepia-theme');
     if (t === 'dark') document.body.classList.add('dark-theme');
     else if (t === 'sepia') document.body.classList.add('sepia-theme');
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', THEME_COLORS[t] || THEME_COLORS.light);
   };
 
   useEffect(() => {
