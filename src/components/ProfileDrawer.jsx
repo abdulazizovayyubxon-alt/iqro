@@ -20,7 +20,7 @@ import BrandLogo from './shared/BrandLogo';
 
 import {
   Award, AlertCircle, Settings, Info, Users, Shield, Crown, ChevronRight,
-  Pencil, Camera, Share2, Send
+  Pencil, Camera, Share2, Send, Activity, School
 } from 'lucide-react';
 
 // ── Sokin/jiddiy uslub — kir kulrang (--bg3) o'rniga chegarali --surface ──
@@ -186,6 +186,8 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
 
   const menuItems = [
     { icon: Award, label: t('sidebar.achievements', 'Yutuqlarim'), path: '/achievements' },
+    { icon: Activity, label: t('sidebar.analysis', 'Tahlil'), path: '/analysis' },
+    { icon: School, label: t('sidebar.school', 'Maktab'), path: '/school' },
     { icon: Users, label: t('sidebar.invite', "Do'stni taklif qilish"), path: '/referral' },
     { icon: AlertCircle, label: t('sidebar.errors', 'Xatolar daftari'), path: '/errors' },
     { icon: Settings, label: t('sidebar.settings', 'Sozlamalar'), path: '/settings' },

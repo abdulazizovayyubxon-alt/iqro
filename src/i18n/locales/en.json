@@ -737,11 +737,10 @@
     "promoSub": "Kodni kiriting va darhol faollashtiring",
     "promoPlaceholder": "PROMO-KOD",
     "apply": "Qo'llash",
-    "googlePlayTitle": "Google Play orqali xarid qilish",
-    "googlePlayDesc": "Siz tanlagan {{plan}} ta'rifi to'g'ridan-to'g'ri Google Play orqali xarid qilinadi. To'lov mutlaqo xavfsiz.",
+    "lockedTitle": "This section opens with a Zehin Pro subscription",
+    "lockedDesc": "Once a subscription is linked to your account, it unlocks here automatically. If you have a promo code, you can enter it below.",
     "choosePayMethod": "To'lov usulini tanlang",
     "whatIncluded": "Nimalar kiradi",
-    "payGooglePlay": "Google Play bilan to'lash — {{price}}",
     "continueBtn": "Davom etish",
     "toPay": "To'lov uchun",
     "payNow": "To'lash",
@@ -752,10 +751,13 @@
   },
   "banner": {
     "expired": "7 kunlik sinov muddatingiz tugadi. Davom etish uchun to'lang.",
+    "expiredPlay": "Your 7-day trial has ended. A Zehin Pro subscription is required to continue.",
     "daysP1": "Bepul sinov muddatingizga",
     "days": "{{count}} kun",
     "daysP2": "qoldi. To'lovni unutmang!",
-    "pay": "To'lash"
+    "daysP2Play": "left.",
+    "pay": "To'lash",
+    "payPlay": "Details"
   },
   "roi": {
     "labelOliy": "Oliy toifa",
@@ -1107,7 +1109,9 @@
     "admin": "Admin Panel",
     "chooseSubject": "Fanni tanlang",
     "currentSubject": "Hozirgi fan:",
-    "about": "Dastur haqida"
+    "about": "Dastur haqida",
+    "analysis": "Analysis",
+    "school": "School"
   },
   "notifications": {
     "title": "Bildirishnomalar",
@@ -1155,6 +1159,7 @@
     "priceNote": "Oyiga 30 000 so'mdan boshlab · yillik rejada eng tejamkor",
     "ctaActive": "Pro faol — rahmat!",
     "ctaChoose": "Pro tarifini tanlash",
+    "ctaLocked": "Subscription & promo code",
     "securePay": "Xavfsiz to'lov · sinov davrida karta so'ralmaydi",
     "trustLabel": "🛡️ Xavfsizlik va Kafolat",
     "trustBadges": [
@@ -1189,7 +1194,11 @@
         "q": "Savollar bazasi qanchalik tez-tez yangilanadi?",
         "a": "Savollarimiz professional ekspertlar tomonidan har hafta yangilanib, eng so'nggi milliy sertifikatlash va malaka oshirish standartlariga moslashtiriladi."
       }
-    ]
+    ],
+    "b2bLabel": "FOR SCHOOLS",
+    "b2bTitle": "Team subscription",
+    "b2bDesc": "For a school or district education department: one contract, Pro access for all teachers and a preparation report for the administration.",
+    "b2bCta": "Learn more"
   },
   "shareCard": {
     "subtitle": "Kasbiy sertifikatlash tayyorgarligi",
@@ -1363,5 +1372,150 @@
     "connect": "Ulanish",
     "shareApp": "Ilovani ulashish",
     "contact": "Biz bilan bog'lanish"
+  },
+  "analysis": {
+    "title": "Smart analysis",
+    "subtitle": "Based on your results: where you stand and exactly what to work on",
+    "readinessTitle": "Readiness level",
+    "predicted": "About {{correct}} correct answers in a {{total}}-question test",
+    "goalMark": "Goal {{score}}%",
+    "band": {
+      "low": "Early",
+      "mid": "Moderate",
+      "good": "Good",
+      "high": "High"
+    },
+    "gapToGoal": "{{count}} points to the goal ({{goal}}%)",
+    "goalReached": "Goal reached — you are above {{goal}}%",
+    "lowConfidence": "The estimate is still rough (confidence {{pct}}%). Answer more questions and it will sharpen.",
+    "noData": "No results yet. Take your first test — readiness is calculated after that.",
+    "biggestLoss": "Biggest losses",
+    "lossHint": "Questions you are expected to lose on this section in a {{total}}-question test",
+    "notStarted": "Not started",
+    "openFull": "Full analysis",
+    "tabDiagnosis": "Analysis",
+    "tabPlan": "Plan",
+    "coverageLabel": "Coverage",
+    "masteredLabel": "Mastered",
+    "confidenceLabel": "Confidence",
+    "byTopicTitle": "By section",
+    "qShort": "q.",
+    "status": {
+      "untouched": "Not started",
+      "thin": "Thin data",
+      "weak": "Weak",
+      "medium": "Medium",
+      "strong": "Strong",
+      "mastered": "Mastered"
+    },
+    "methodNote": "Readiness is computed from your per-section results. A section with few answers is pulled toward your average level — so 100% out of 3 questions does not mark a whole section as mastered.",
+    "planIntro": "The plan is built from your results automatically and updates after every test. Steps are ordered by impact."
+  },
+  "trajectory": {
+    "retentionTitle": "Clear the review queue",
+    "retentionDesc": "{{count}} cards are due. This is where knowledge leaks away first.",
+    "retentionCta": "Review",
+    "practiceTitle": "{{topic}}",
+    "practiceDesc": "Current accuracy {{acc}}%. Answer {{batch}} questions — target {{target}}%.",
+    "practiceCta": "{{count}} questions",
+    "coverageTitle": "{{topic}} — start",
+    "coverageDesc": "Not enough data on this section ({{answered}}/{{target}}). Close it for an accurate estimate.",
+    "coverageCta": "Start",
+    "mistakesTitle": "Mistake notebook",
+    "mistakesDesc": "{{count}} mistakes collected. Reviewing them gives the fastest gain.",
+    "mistakesCta": "Review",
+    "examTitle": "Control exam",
+    "examDesc": "Your readiness is above the goal. Confirm it under exam conditions.",
+    "examCta": "Exam",
+    "gain": "+{{count}} pts",
+    "emptyTitle": "Plan is empty",
+    "emptyDesc": "No specific recommendation yet — take a few tests and the plan will build itself.",
+    "focus": "What to focus on"
+  },
+  "milestones": {
+    "sectionTitle": "Personal milestones",
+    "sectionHint": "Milestones measure habit — consistency, volume, streaks. They do not affect the Academic Mastery Index.",
+    "progress": "{{value}} / {{next}} {{unit}}",
+    "maxed": "Completed — {{value}} {{unit}}",
+    "notifTitle": "New milestone",
+    "notifBody": "Milestone \"{{name}}\": {{target}} {{unit}}.",
+    "unit": {
+      "day": "days",
+      "q": "questions",
+      "test": "tests",
+      "topic": "sections"
+    },
+    "kunlik": {
+      "name": "Daily streak",
+      "desc": "Consecutive days"
+    },
+    "zanjir": {
+      "name": "Correct-answer streak",
+      "desc": "Correct answers in a row"
+    },
+    "hajm": {
+      "name": "Practice volume",
+      "desc": "Total questions answered"
+    },
+    "kunlar": {
+      "name": "Goal days",
+      "desc": "Days the daily goal was met"
+    },
+    "benuqson": {
+      "name": "Flawless tests",
+      "desc": "Tests finished without a mistake"
+    },
+    "ozlashtirish": {
+      "name": "Mastered sections",
+      "desc": "With 90%+ accuracy"
+    }
+  },
+  "school": {
+    "title": "School",
+    "subtitle": "Team package and an administration report",
+    "joinTitle": "Join a school",
+    "joinDesc": "Enter the code you received from the administration. If the school subscription is active, Pro access opens automatically.",
+    "codeLabel": "Join code",
+    "consent": "I agree that my overall readiness figures are visible to the school administration. My mistakes, questions and answers are never shown to anyone.",
+    "joinBtn": "Join",
+    "joined": "You joined \"{{school}}\"",
+    "joinedWithPremium": "You joined \"{{school}}\" — Pro access is now open",
+    "memberTitle": "School member",
+    "memberDesc": "You are attached to a school package. The administration sees aggregate figures only.",
+    "noRegion": "Region not specified",
+    "seatsUsed": "{{used}}/{{seats}} seats",
+    "subscriptionUntil": "Subscription until {{date}}",
+    "stTeachers": "Teachers",
+    "stActive": "Active in 7 days",
+    "stReadiness": "Avg. readiness",
+    "stSupport": "Need support",
+    "privacyNote": "You only see aggregate figures: readiness, accuracy, activity. A teacher's mistakes, questions and answers are never shown. A teacher without consent appears without numbers.",
+    "membersTitle": "Teachers",
+    "membersEmpty": "Nobody has joined yet — share the code with the team",
+    "memberMeta": "{{answered}} questions · accuracy {{acc}} · streak {{streak}} days",
+    "hiddenRow": "Report closed (no consent)",
+    "readinessShort": "readiness",
+    "unnamed": "No name",
+    "supportHint": "{{count}} teachers need extra support: they have not started or their readiness is below 50%.",
+    "adminHint": "The list starts with the lowest readiness — planning support in that order is more effective.",
+    "b2bTitle": "School package",
+    "b2bDesc": "Team subscription: one contract, one payment, Pro access for every teacher.",
+    "b2bPoint1": "No separate payment per teacher — everyone joins with a single code",
+    "b2bPoint2": "Preparation report for the administration (aggregate figures)",
+    "b2bPoint3": "Formalised with a contract, invoice and closing documents",
+    "reqOpen": "Leave a request",
+    "reqTelegram": "Contact on Telegram",
+    "reqSchool": "School name",
+    "reqSchoolPh": "e.g. School No. 24",
+    "reqRegion": "Region",
+    "reqRegionPh": "Region, district",
+    "reqPhone": "Phone",
+    "reqTeachers": "Number of teachers",
+    "reqNote": "Note",
+    "reqNotePh": "optional",
+    "reqSubmit": "Send",
+    "reqRequired": "Enter the school name and phone number",
+    "reqSent": "Request sent — we will contact you soon",
+    "reqSentBox": "Your request has been received. An operator will contact you."
   }
 }

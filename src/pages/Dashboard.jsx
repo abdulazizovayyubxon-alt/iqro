@@ -13,6 +13,9 @@ import ConfirmDialog from '../components/shared/ConfirmDialog';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { reconcileAchievements, nextMilestones } from '../data/tracks';
 import NextMilestoneLine from '../components/achievements/NextMilestoneLine';
+import ReadinessCard from '../components/diagnostics/ReadinessCard';
+import { computeDiagnostics } from '../engine/DiagnosticsEngine';
+import { useTopicTotals } from '../hooks/useTopicTotals';
 import {
   Play, Brain, GraduationCap,
   ChevronRight, Clock, Target,
@@ -22,7 +25,7 @@ import {
 import SubjectTopicChips, { Chip } from '../components/SubjectTopicChips';
 import { motion } from 'framer-motion';
 import localforage from 'localforage';
-import { EXAM_DATE, EXAM_GOAL_SCORE, EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY } from '../config';
+import { EXAM_DATE, EXAM_GOAL_SCORE, EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY, isPlayBuild } from '../config';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 
@@ -57,6 +60,18 @@ const Dashboard = () => {
   const [questionMeta, setQuestionMeta] = useState(null);
   const [priceFrom, setPriceFrom] = useState(DEFAULT_PRICE_FROM);
   const [resumeSession, setResumeSession] = useState(null);
+
+  // Tayyorlik darajasi — sof diagnostika (DiagnosticsEngine); bazadagi savol
+  // soni og'irlik uchun ishlatiladi, kesh bo'lmasa bo'limlar teng hisoblanadi.
+  const topicTotals = useTopicTotals(state.activeCategory);
+  const diag = useMemo(
+    () => computeDiagnostics(state, {
+      topicTotals,
+      goalScore: EXAM_GOAL_SCORE,
+      examQuestions: BATCH_SIZE,
+    }),
+    [state, topicTotals]
+  );
 
   // Keyingi bosqich — yutuqlar bo'limiga sokin kirish nuqtasi (sof hisob)
   const nextMs = useMemo(() => {
@@ -346,7 +361,8 @@ const Dashboard = () => {
                 {isTrialExpired ? t('dashboard.trialFreeLeft', { count: questionsLeft }) : (trialDaysLeft !== null ? t('dashboard.trialDaysLeft', { days: trialDaysLeft }) : t('dashboard.trialNoData'))}
               </div>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', marginTop: 2 }}>
-                {t('dashboard.trialUnlimited')}{priceFrom ? ` · ${t('dashboard.trialPriceFrom', { amount: new Intl.NumberFormat('fr-FR').format(priceFrom) })}` : ''}
+                {/* Play build'da narx ko'rsatilmaydi — PremiumModal.jsx izohiga qarang */}
+                {t('dashboard.trialUnlimited')}{priceFrom && !isPlayBuild() ? ` · ${t('dashboard.trialPriceFrom', { amount: new Intl.NumberFormat('fr-FR').format(priceFrom) })}` : ''}
               </div>
             </div>
           </div>
@@ -387,6 +403,16 @@ const Dashboard = () => {
             </motion.button>
           );
         })}
+      </div>
+
+      {/* ── TAYYORLIK DARAJASI — diagnostika (Tahlil sahifasiga kirish nuqtasi) ── */}
+      <div style={{ marginTop: 14 }}>
+        <ReadinessCard
+          diag={diag}
+          compact
+          onOpen={() => navigate('/analysis')}
+          onTopic={(topicId) => handleNav(topicId, 'exam')}
+        />
       </div>
 
       {/* ── KEYINGI BOSQICH — yutuqlar bo'limiga kirish nuqtasi ── */}

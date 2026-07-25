@@ -1,22 +1,28 @@
 /**
- * PremiumModal.jsx — To'lov tizimi (Telegram orqali — operator tasdiqlaydi)
- * Oqim: tariflar → to'lov usuli (promokod + Telegram to'lov → operator DM, config.SUPPORT_URL)
+ * PremiumModal.jsx — obuna oynasi
+ *
+ * Web: tariflar → to'lov usuli (Click / Telegram operator) + promokod.
+ * Play build (isPlayBuild): sotuv UI'si YO'Q — narx, tarif, to'lov tugmasi va
+ * tashqi havola ko'rsatilmaydi. Google Play Payments siyosati ta'lim obunasini
+ * ilova ichida faqat Play Billing orqali sotishga ruxsat beradi, O'zbekiston
+ * esa alternativ/tashqi to'lov dasturlariga kirmaydi. Shuning uchun Play
+ * versiyasida faqat "yopiq" holat va promokod qoladi; obuna saytda
+ * rasmiylashtiriladi va AuthContext kuzatuvchisi orqali avtomatik ochiladi.
  */
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Crown, X, Shield, Send, BadgePercent, Check
+  Lock, X, Shield, Send, BadgePercent, Check
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
-import { purchasePlan } from '../services/playBilling';
 import { redeemPromo, PROMO_ERRORS } from '../services/promo';
 import { generateClickUrl } from '../services/payment';
 import { AnalyticsEvents } from '../services/analytics';
-import { isPlayBuild, SUPPORT_URL } from '../config';
+import { isPlayBuild } from '../config';
 import RoiBlock from './RoiBlock';
 import BrandLogo from './shared/BrandLogo';
 
@@ -70,7 +76,6 @@ const PremiumModal = ({ isOpen, onClose }) => {
   const planLabel = (p) => p ? (planNameMap[p.id] || p.name) : '';
   const [step, setStep] = useState('plans'); // 'plans' | 'method'
   const [payMethod, setPayMethod] = useState('click'); // 'click' | 'telegram'
-  const [processing, setProcessing] = useState(false);
   const [plans, setPlans] = useState(DEFAULT_PLANS);
   // Default — yillik plan (eng arzon kunlik narx, ROI eng kuchli)
   const [selectedPlan, setSelectedPlan] = useState(DEFAULT_PLANS[2]);
@@ -82,8 +87,6 @@ const PremiumModal = ({ isOpen, onClose }) => {
   const [promoLoading, setPromoLoading] = useState(false);
   const [promoMsg, setPromoMsg] = useState(null); // { type: 'ok'|'err', text }
 
-  const [isReviewMode, setIsReviewMode] = useState(false);
-
   // onClose'ni ref orqali ushlaymiz — ota komponent har soniyada qayta render
   // bo'lganda (masalan ProfilePage urgency timer) popstate effekti qayta
   // ishlab modalni o'z-o'zidan yopib qo'ymasligi uchun.
@@ -93,7 +96,6 @@ const PremiumModal = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (!isOpen || !user) return;
     setStep('plans');
-    setProcessing(false);
 
     const fetchData = async () => {
       try {
@@ -105,11 +107,6 @@ const PremiumModal = ({ isOpen, onClose }) => {
             setPlans(dbPlans);
             // Default — yillik (eng uzun) plan
             setSelectedPlan(dbPlans.find(p => p.id === 'yearly') || dbPlans[dbPlans.length - 1] || dbPlans[0]);
-          }
-          if (typeof data.isReviewMode === 'boolean') {
-            setIsReviewMode(data.isReviewMode);
-          } else if (typeof data.googlePlayReview === 'boolean') {
-            setIsReviewMode(data.googlePlayReview);
           }
         }
         const userSnap = await getDoc(doc(db, 'users', user.uid));
@@ -153,9 +150,8 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
   const hasBonus = (referralBonus > 0 || hasReferralDiscount) && selectedPlan;
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-  // Play Store build'i yoki Firestore serverdan Review Mode yoqilgan bo'lsa — faqat Google Play Billing + Promokod ko'rsatiladi
+  // Play build — sotuv UI'si ko'rsatilmaydi (yuqoridagi izohga qarang)
   const isAndroidApp = isPlayBuild();
-  const isGoogleReviewActive = isAndroidApp || isReviewMode;
 
   const handleRedeem = async () => {
     const code = promoCode.trim();
@@ -181,25 +177,9 @@ const PremiumModal = ({ isOpen, onClose }) => {
     }
   };
 
-  // 1-qadam CTA: Moderatsiyada — Google Play Billing; Odatiy — to'lov usuliga o'tish
-  const handleContinue = async () => {
+  // 1-qadam CTA: to'lov usuliga o'tish (faqat web — Play build'da bu tugma yo'q)
+  const handleContinue = () => {
     if (!user || !selectedPlan) return;
-
-    if (isGoogleReviewActive) {
-      AnalyticsEvents.premiumClick('play_billing');
-      setProcessing(true);
-      const res = await purchasePlan(selectedPlan.id, user.uid);
-      setProcessing(false);
-      if (!res.success) {
-        alert(res.message);
-      } else {
-        AnalyticsEvents.purchase(selectedPlan.id, 'play_billing', finalPrice);
-        alert(res.message);
-        onClose();
-      }
-      return;
-    }
-
     setStep('method');
   };
 
@@ -303,6 +283,28 @@ const PremiumModal = ({ isOpen, onClose }) => {
     </div>
   );
 
+  // Obunaga nimalar kirishi — ikkala rejimda ham ko'rsatiladi (narxga bog'liq emas)
+  const featuresBox = (
+    <div style={{
+      background: '#f8fafc', border: '1px solid #e2e8f0',
+      borderRadius: 14, padding: '14px', marginBottom: 18,
+    }}>
+      <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--text3)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
+        {t('premium.whatIncluded')}
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+        {FEATURES.map((key, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ width: 18, height: 18, borderRadius: '50%', background: 'rgba(14,151,224,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <Check size={11} color="#0284C7" strokeWidth={3} />
+            </span>
+            <span style={{ fontSize: 11.5, color: '#334155', lineHeight: 1.3, fontWeight: 600 }}>{t(key)}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <div
       onClick={onClose}
@@ -358,6 +360,46 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
         <div style={{ padding: '16px 20px 32px' }}>
 
+          {/* ══════ PLAY BUILD: yopiq holat — sotuv UI'si yo'q ══════ */}
+          {isAndroidApp && (
+            <div>
+              <div style={{ textAlign: 'center', marginBottom: 20 }}>
+                <span style={{
+                  width: 62, height: 62, borderRadius: 18, margin: '0 auto 12px',
+                  background: 'rgba(14,151,224,0.12)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <Lock size={26} color="#0284C7" strokeWidth={2.4} />
+                </span>
+                {/* Karta doim och fonda — rang qattiq beriladi (tungi temada oq bo'lib ketmasin) */}
+                <h2 style={{ margin: '0 0 8px' }}><BrandLogo size={26} style={{ color: '#12305A' }} /></h2>
+                <p style={{ fontSize: 14, fontWeight: 800, color: '#0f172a', margin: '0 0 6px', lineHeight: 1.35 }}>
+                  {t('premium.lockedTitle')}
+                </p>
+                <p style={{ fontSize: 12.5, color: '#64748B', margin: 0, lineHeight: 1.5 }}>
+                  {t('premium.lockedDesc')}
+                </p>
+              </div>
+
+              {featuresBox}
+
+              {promoCard}
+
+              <button
+                onClick={onClose}
+                style={{
+                  width: '100%', padding: '16px', borderRadius: 16,
+                  background: 'rgba(0,0,0,0.05)', color: '#334155',
+                  fontWeight: 800, fontSize: 15, border: 'none',
+                  cursor: 'pointer', fontFamily: 'inherit',
+                }}
+              >
+                {t('common.close')}
+              </button>
+            </div>
+          )}
+
+          {!isAndroidApp && (
           <AnimatePresence mode="wait">
             {/* ══════ 1-QADAM: TARIFLAR ══════ */}
             {step === 'plans' && (
@@ -438,67 +480,25 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   })}
                 </div>
 
-                {/* Features */}
-                <div style={{
-                  background: '#f8fafc', border: '1px solid #e2e8f0',
-                  borderRadius: 14, padding: '14px', marginBottom: 18,
-                }}>
-                  <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--text3)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
-                    {t('premium.whatIncluded')}
-                  </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-                    {FEATURES.map((key, i) => (
-                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <span style={{ width: 18, height: 18, borderRadius: '50%', background: 'rgba(14,151,224,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                          <Check size={11} color="#0284C7" strokeWidth={3} />
-                        </span>
-                        <span style={{ fontSize: 11.5, color: '#334155', lineHeight: 1.3, fontWeight: 600 }}>{t(key)}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Android: Google Play ma'lumoti + promokod */}
-                {isAndroidApp && (
-                  <>
-                    <div style={{ padding: '16px', background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)', borderRadius: 12, marginBottom: 14 }}>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: '#1D4ED8', marginBottom: 4 }}>{t('premium.googlePlayTitle')}</div>
-                      <div style={{ fontSize: 12, color: '#1E3A8A', lineHeight: 1.4 }}>
-                        {t('premium.googlePlayDesc', { plan: planLabel(selectedPlan) })}
-                      </div>
-                    </div>
-                    {promoCard}
-                    {bonusBanner}
-                  </>
-                )}
+                {featuresBox}
 
                 {/* Asosiy tugma */}
                 <motion.button
                   whileTap={{ scale: 0.98 }}
                   onClick={handleContinue}
-                  disabled={processing}
                   style={{
                     width: '100%', padding: '16px', borderRadius: 16,
                     background: '#0284C7',
                     color: '#fff', fontWeight: 800, fontSize: 16,
-                    border: 'none', cursor: processing ? 'wait' : 'pointer',
+                    border: 'none', cursor: 'pointer',
                     fontFamily: 'inherit',
                     boxShadow: '0 4px 20px rgba(14,151,224,0.35)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-                    opacity: processing ? 0.7 : 1,
                     marginBottom: 12,
                   }}
                 >
-                  {isAndroidApp
-                    ? <><Crown size={18} /> {t('premium.payGooglePlay', { price: fmt(finalPrice) })}</>
-                    : <>{t('premium.continueBtn')}</>}
+                  {t('premium.continueBtn')}
                 </motion.button>
-
-                {isAndroidApp && (
-                  <div style={{ fontSize: '10px', color: 'var(--text3)', textAlign: 'center', marginTop: 4, marginBottom: 12, lineHeight: 1.4 }}>
-                    {t('premium.termsAccept1')}<a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600 }}>{t('premium.termsLinkText')}</a>{t('premium.termsAccept2')}
-                  </div>
-                )}
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'var(--text3)', fontSize: 11, fontWeight: 600 }}>
                   <Shield size={14} color="#10B981" />
@@ -507,8 +507,8 @@ const PremiumModal = ({ isOpen, onClose }) => {
               </motion.div>
             )}
 
-            {/* ══════ 2-QADAM: TO'LOV USULI (faqat post-review / web) ══════ */}
-            {step === 'method' && !isGoogleReviewActive && (
+            {/* ══════ 2-QADAM: TO'LOV USULI (faqat web) ══════ */}
+            {step === 'method' && (
               <motion.div key="method" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                 <div style={{ textAlign: 'center', marginBottom: 18 }}>
                   <h2 style={{ fontSize: 19, fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>{t('premium.choosePayMethod', 'To\'lov turini tanlang')}</h2>
@@ -613,6 +613,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
             )}
 
           </AnimatePresence>
+          )}
         </div>
       </motion.div>
     </div>

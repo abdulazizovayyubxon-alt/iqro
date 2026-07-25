@@ -1,12 +1,17 @@
 /**
  * SettingsPage.jsx — Sozlamalar sahifasi (/settings)
- * Bo'limlarga ajratilgan: Ko'rinish, Hisob, O'rganish, Ilova, Ma'lumot, Hisob amallari.
+ * Bo'limlar: Ko'rinish, Hisob, O'rganish, Ilova, Ma'lumot, Hisob amallari.
  * Marketing (premium banner / ishonch nishonlari / FAQ) /premium sahifasiga ko'chirildi.
+ *
+ * Qatorlar quyidagi uch ko'rinishdan biri: ActionRow (bosiladigan),
+ * ChoiceRow (segment tanlov) va SwitchRow (yoq/o'chir). Segment har doim
+ * yorliq OSTIDA, to'liq kenglikda — ilgari yonma-yon edi va 360px ekranda
+ * kartadan chiqib ketardi.
  */
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Send, Brain, KeyRound, Crown, FileText, Bell, Languages, MessageCircle, Info, Trash2, Smartphone } from 'lucide-react';
+import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Brain, KeyRound, Crown, FileText, Bell, Languages, MessageCircle, Info, Trash2, Smartphone } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
@@ -35,6 +40,80 @@ const FONT_SCALES = [
   { label: 'XL', value: 1.25 },
 ];
 
+/* ── Qayta ishlatiladigan qator bloklari ───────────────────────────
+   Barcha qatorlar bir xil skeletdan quriladi: ikonka + matn + o'ng
+   element. Tanlov qatorlarida segment yorliq OSTIDA, to'liq kenglikda —
+   shu sabab tor ekranda ham hech narsa siqilib qolmaydi. */
+
+function RowIcon({ tone = 'accent', children }) {
+  return <div className={`pp-menu-icon${tone === 'accent' ? '' : ` is-${tone}`}`}>{children}</div>;
+}
+
+function RowText({ label, sublabel, labelTone, sublabelTone }) {
+  if (!sublabel) {
+    return <span className={`pp-menu-label${labelTone ? ` is-${labelTone}` : ''}`}>{label}</span>;
+  }
+  return (
+    <div className="pp-menu-text">
+      <span className={`pp-menu-label${labelTone ? ` is-${labelTone}` : ''}`}>{label}</span>
+      <span className={`pp-menu-sublabel${sublabelTone ? ` is-${sublabelTone}` : ''}`}>{sublabel}</span>
+    </div>
+  );
+}
+
+/** Bosiladigan qator — o'ngida strelka yoki ixtiyoriy element */
+function ActionRow({ icon, tone, label, sublabel, labelTone, sublabelTone, right, danger, onClick, disabled }) {
+  return (
+    <button className={`pp-menu-item${danger ? ' danger' : ''}`} onClick={onClick} disabled={disabled}>
+      <RowIcon tone={tone}>{icon}</RowIcon>
+      <RowText label={label} sublabel={sublabel} labelTone={labelTone} sublabelTone={sublabelTone} />
+      {right ?? <ChevronRight size={18} className="pp-menu-arrow" />}
+    </button>
+  );
+}
+
+/** Tanlov qatori — segment yorliq ostida, to'liq kenglikda */
+function ChoiceRow({ icon, tone, label, sublabel, options, value, onSelect }) {
+  return (
+    <div className="pp-menu-item sp-row--choice">
+      <div className="sp-row-head">
+        <RowIcon tone={tone}>{icon}</RowIcon>
+        <RowText label={label} sublabel={sublabel} />
+      </div>
+      <div className="pp-segment-container" role="group" aria-label={label}>
+        {options.map(opt => (
+          <button
+            key={opt.id}
+            type="button"
+            onClick={() => onSelect(opt.id)}
+            aria-pressed={value === opt.id}
+            className={`pp-segment-btn ${value === opt.id ? 'active' : ''}`}
+          >
+            {opt.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Yoqish/o'chirish qatori */
+function SwitchRow({ icon, tone, label, sublabel, checked, onToggle }) {
+  return (
+    <div className="pp-menu-item">
+      <RowIcon tone={tone}>{icon}</RowIcon>
+      <RowText label={label} sublabel={sublabel} />
+      <button
+        type="button"
+        role="switch"
+        aria-checked={checked}
+        aria-label={label}
+        onClick={onToggle}
+        className={`sp-switch${checked ? ' on' : ''}`}
+      />
+    </div>
+  );
+}
 
 export default function SettingsPage({ theme, toggleTheme }) {
   const { t, i18n } = useTranslation();
@@ -109,7 +188,6 @@ export default function SettingsPage({ theme, toggleTheme }) {
     setShowEdit(false);
     setShowPasswordModal(false);
     setShowRepetitionModal(false);
-    setShowTelegramModal(false);
     setShowGuideModal(false);
     setShowPrivacy(false);
     setShowLogoutConfirm(false);
@@ -227,306 +305,219 @@ export default function SettingsPage({ theme, toggleTheme }) {
     }
   };
 
+  const activeLang = i18n.resolvedLanguage || i18n.language;
+  const dateLocale = activeLang === 'ru' ? 'ru-RU' : activeLang === 'en' ? 'en-US' : 'uz-UZ';
+
   return (
     <motion.div className="pp" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <div className="pp-content" style={{ paddingTop: 16 }}>
-        {/* ═══ SARLAVHA ═══ */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 4 }}>
-          <button
-            onClick={() => navigate('/dashboard')}
-            aria-label={t('settings.back')}
-            className="pp-back-btn"
-          >
-            <ArrowLeft size={20} />
-          </button>
-          <div>
-            <div style={{ fontSize: 20, fontWeight: 800, color: 'var(--text)' }}>{t('settings.title')}</div>
-            <div style={{ fontSize: 12, color: 'var(--text3)' }}>{user.displayName || t('settings.userFallback')}</div>
-          </div>
+      {/* ═══ SARLAVHA ═══ */}
+      <div className="sp-head">
+        <button
+          onClick={() => navigate('/dashboard')}
+          aria-label={t('settings.back')}
+          className="pp-back-btn"
+        >
+          <ArrowLeft size={20} />
+        </button>
+        <div className="sp-head-text">
+          <h1 className="sp-title">{t('settings.title')}</h1>
+          <div className="sp-subtitle">{user.displayName || t('settings.userFallback')}</div>
         </div>
+      </div>
 
-        <div className="sp-sections">
-          {/* ═══ YORDAM VA ALOQA ═══ */}
-          <div className="pp-support-card">
-            <div className="pp-support-icon">
-              <MessageCircle size={24} />
-            </div>
-            <div className="pp-support-body">
-              <div className="pp-support-title">{t('settings.helpTitle')}</div>
-              <div className="pp-support-text">{t('settings.helpText')}</div>
-            </div>
-            <button onClick={() => window.open(SUPPORT_URL, '_blank')} className="pp-support-btn">
-              {t('settings.helpCta')}
-            </button>
+      {/* ═══ YORDAM VA ALOQA ═══ */}
+      <div className="pp-support-card">
+        <div className="pp-support-icon">
+          <MessageCircle size={22} />
+        </div>
+        <div className="pp-support-body">
+          <div className="pp-support-title">{t('settings.helpTitle')}</div>
+          <div className="pp-support-text">{t('settings.helpText')}</div>
+        </div>
+        <button onClick={() => window.open(SUPPORT_URL, '_blank')} className="pp-support-btn">
+          {t('settings.helpCta')}
+        </button>
+      </div>
+
+      <div className="sp-sections">
+        {/* ═══ KO'RINISH ═══ */}
+        <section className="sp-section">
+          <div className="pp-section-label">{t('settings.sections.appearance')}</div>
+          <div className="pp-group">
+            <ChoiceRow
+              icon={<Languages size={20} />}
+              label={t('lang.label')}
+              value={activeLang}
+              onSelect={(id) => i18n.changeLanguage(id)}
+              options={[
+                { id: 'uz', label: "O'zbekcha" },
+                { id: 'ru', label: 'Русский' },
+                { id: 'en', label: 'English' },
+              ]}
+            />
+
+            <ChoiceRow
+              icon={theme === 'dark' ? <Moon size={20} /> : theme === 'sepia' ? <BookOpen size={20} /> : <Sun size={20} />}
+              label={t('settings.themeMode')}
+              value={theme}
+              onSelect={toggleTheme}
+              options={['light', 'sepia', 'dark'].map(id => ({ id, label: t(`theme.${id}`) }))}
+            />
+
+            <ChoiceRow
+              icon={<Type size={20} />}
+              label={t('settings.fontSize')}
+              sublabel={t('settings.fontSizeHint')}
+              value={fontScale}
+              onSelect={applyFontScale}
+              options={FONT_SCALES.map(f => ({ id: f.value, label: f.label }))}
+            />
+
+            <SwitchRow
+              icon={<Smartphone size={20} />}
+              label={t('settings.vibration')}
+              sublabel={t('settings.vibrationHint')}
+              checked={vibrationOn}
+              onToggle={toggleVibration}
+            />
           </div>
+        </section>
 
-          {/* ═══ KO'RINISH ═══ */}
-          <div>
-            <div className="pp-section-label">{t('settings.sections.appearance')}</div>
-            <div className="pp-group">
-              {/* Til tanlash: O'zbekcha / Ruscha */}
-              <div className="pp-menu-item" style={{ cursor: 'default' }}>
-                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
-                  <Languages size={20} />
-                </div>
-                <span className="pp-menu-label">{t('lang.label')}</span>
-                <div className="pp-segment-container">
-                  {[{ id: 'uz', label: "O'zbekcha" }, { id: 'ru', label: 'Русский' }, { id: 'en', label: 'English' }].map(opt => (
-                    <button
-                      key={opt.id}
-                      onClick={() => i18n.changeLanguage(opt.id)}
-                      className={`pp-segment-btn ${(i18n.resolvedLanguage || i18n.language) === opt.id ? 'active' : ''}`}
-                    >
-                      {opt.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Tema tanlash: Kunduzgi / Sepia (o'qish) / Tungi */}
-              <div className="pp-menu-item" style={{ cursor: 'default' }}>
-                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--blue)' }}>
-                  {theme === 'dark' ? <Moon size={20} /> : theme === 'sepia' ? <BookOpen size={20} /> : <Sun size={20} />}
-                </div>
-                <span className="pp-menu-label">{t('settings.themeMode')}</span>
-                <div className="pp-segment-container">
-                  {[{ id: 'light' }, { id: 'sepia' }, { id: 'dark' }].map(opt => (
-                    <button
-                      key={opt.id}
-                      onClick={() => toggleTheme(opt.id)}
-                      className={`pp-segment-btn ${theme === opt.id ? 'active' : ''}`}
-                    >
-                      {t(`theme.${opt.id}`)}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Shrift o'lchami */}
-              <div className="pp-menu-item" style={{ cursor: 'default' }}>
-                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
-                  <Type size={20} />
-                </div>
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <span className="pp-menu-label">{t('settings.fontSize')}</span>
-                  <span className="pp-menu-sublabel">{t('settings.fontSizeHint')}</span>
-                </div>
-                <div className="pp-segment-container">
-                  {FONT_SCALES.map(f => (
-                    <button
-                      key={f.label}
-                      onClick={() => applyFontScale(f.value)}
-                      className={`pp-segment-btn ${fontScale === f.value ? 'active' : ''}`}
-                      style={{ padding: '6px 10px' }}
-                    >
-                      {f.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Vibratsiya */}
-              <div className="pp-menu-item" style={{ cursor: 'default' }}>
-                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
-                  <Smartphone size={20} />
-                </div>
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <span className="pp-menu-label">{t('settings.vibration')}</span>
-                  <span className="pp-menu-sublabel">{t('settings.vibrationHint')}</span>
-                </div>
-                <div className="pp-segment-container">
-                  <button
-                    onClick={() => { if (!vibrationOn) toggleVibration(); }}
-                    className={`pp-segment-btn ${vibrationOn ? 'active' : ''}`}
-                  >
-                    {t('settings.vibrationOn')}
-                  </button>
-                  <button
-                    onClick={() => { if (vibrationOn) toggleVibration(); }}
-                    className={`pp-segment-btn ${!vibrationOn ? 'active' : ''}`}
-                  >
-                    {t('settings.vibrationOff')}
-                  </button>
-                </div>
-              </div>
-            </div>
+        {/* ═══ HISOB ═══ */}
+        <section className="sp-section">
+          <div className="pp-section-label">{t('settings.sections.account')}</div>
+          <div className="pp-group">
+            <ActionRow
+              icon={<Edit3 size={20} />}
+              label={t('settings.editProfile')}
+              onClick={() => setShowEdit(true)}
+            />
+            <ActionRow
+              icon={<KeyRound size={20} />}
+              label={t('settings.changePassword')}
+              onClick={() => setShowPasswordModal(true)}
+            />
+            {/* Pro obuna — marketing /premium sahifasida; bu yerda holat + kirish havolasi */}
+            <ActionRow
+              icon={<Crown size={20} />}
+              tone="amber"
+              label={t('settings.premium')}
+              sublabel={user.isTruePremium
+                ? (user.premiumExpire
+                    ? t('settings.premiumActiveUntil', { date: new Date(user.premiumExpire).toLocaleDateString(dateLocale) })
+                    : t('settings.premiumUnlimited'))
+                : t('settings.premiumHint')}
+              sublabelTone={user.isTruePremium ? 'green' : undefined}
+              onClick={() => navigate('/premium')}
+            />
           </div>
+        </section>
 
-          {/* ═══ HISOB ═══ */}
-          <div>
-            <div className="pp-section-label">{t('settings.sections.account')}</div>
-            <div className="pp-group">
-              <button className="pp-menu-item" onClick={() => setShowEdit(true)}>
-                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
-                  <Edit3 size={20} />
-                </div>
-                <span className="pp-menu-label">{t('settings.editProfile')}</span>
-                <ChevronRight size={18} className="pp-menu-arrow" />
-              </button>
+        {/* ═══ O'RGANISH ═══ */}
+        <section className="sp-section">
+          <div className="pp-section-label">{t('settings.sections.learning')}</div>
+          <div className="pp-group">
+            <ActionRow
+              icon={<Brain size={20} />}
+              label={t('settings.smartReview')}
+              onClick={() => setShowRepetitionModal(true)}
+            />
 
-              <button className="pp-menu-item" onClick={() => setShowPasswordModal(true)}>
-                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
-                  <KeyRound size={20} />
-                </div>
-                <span className="pp-menu-label">{t('settings.changePassword')}</span>
-                <ChevronRight size={18} className="pp-menu-arrow" />
-              </button>
-            </div>
-          </div>
-
-          {/* ═══ O'RGANISH ═══ */}
-          <div>
-            <div className="pp-section-label">{t('settings.sections.learning')}</div>
-            <div className="pp-group">
-              <button className="pp-menu-item" onClick={() => setShowRepetitionModal(true)}>
-                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
-                  <Brain size={20} />
-                </div>
-                <span className="pp-menu-label">{t('settings.smartReview')}</span>
-                <ChevronRight size={18} className="pp-menu-arrow" />
-              </button>
-
-              <button className="pp-menu-item" onClick={() => setShowTelegramModal(true)}>
-                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
-                  <Send size={20} />
-                </div>
-                <span className="pp-menu-label">{t('settings.dailyReminder')}</span>
-                <ChevronRight size={18} className="pp-menu-arrow" />
-              </button>
-
-              <button className="pp-menu-item" onClick={handleEnablePush} disabled={pushBusy}>
-                <div className="pp-menu-icon" style={{ background: 'var(--amber-bg)', color: 'var(--amber)' }}>
-                  <Bell size={20} />
-                </div>
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <span className="pp-menu-label">{t('settings.push')}</span>
-                  <span className="pp-menu-sublabel">
-                    {pushStatus === 'granted' ? t('settings.pushOn')
-                      : pushStatus === 'denied' ? t('settings.pushBlocked')
-                      : t('settings.pushHint')}
-                  </span>
-                </div>
-                <span style={{ fontSize: 12, fontWeight: 700, color: pushStatus === 'granted' ? 'var(--green)' : 'var(--accent2)', whiteSpace: 'nowrap', paddingRight: 4 }}>
-                  {pushBusy ? '...' : pushStatus === 'granted' ? t('settings.pushEnabled') : t('settings.pushEnable')}
+            <ActionRow
+              icon={<Bell size={20} />}
+              tone="amber"
+              label={t('settings.push')}
+              sublabel={pushStatus === 'granted' ? t('settings.pushOn')
+                : pushStatus === 'denied' ? t('settings.pushBlocked')
+                : t('settings.pushHint')}
+              onClick={handleEnablePush}
+              disabled={pushBusy}
+              right={
+                <span className={`sp-pill${pushStatus === 'granted' ? ' is-on' : pushStatus === 'denied' ? ' is-off' : ''}`}>
+                  {pushBusy ? '…' : pushStatus === 'granted' ? t('settings.pushEnabled') : t('settings.pushEnable')}
                 </span>
-              </button>
+              }
+            />
 
-              <button className="pp-menu-item" onClick={handleDownloadOffline}>
-                <div className="pp-menu-icon" style={{ background: 'var(--green-bg)', color: 'var(--green)' }}>
-                  <Download size={20} />
-                </div>
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <span className="pp-menu-label">
-                    {downloadingOffline ? t('settings.offlineLoading') : t('settings.offline')}
-                  </span>
-                  <span className="pp-menu-sublabel">{t('settings.offlineHint')}</span>
-                </div>
-                <ChevronRight size={18} className="pp-menu-arrow" />
-              </button>
-            </div>
+            <ActionRow
+              icon={<Download size={20} />}
+              tone="green"
+              label={downloadingOffline ? t('settings.offlineLoading') : t('settings.offline')}
+              sublabel={t('settings.offlineHint')}
+              onClick={handleDownloadOffline}
+              disabled={downloadingOffline}
+            />
           </div>
+        </section>
 
-          {/* ═══ ILOVA ═══ */}
-          <div>
-            <div className="pp-section-label">{t('settings.sections.app')}</div>
-            <div className="pp-group">
-              {isInstallable && (
-                <button className="pp-menu-item" onClick={installApp}>
-                  <div className="pp-menu-icon" style={{ background: 'var(--green-bg)', color: 'var(--green)' }}>
-                    <Download size={20} />
-                  </div>
-                  <span className="pp-menu-label">{t('settings.installPWA')}</span>
-                  <ChevronRight size={18} className="pp-menu-arrow" />
-                </button>
-              )}
-
-              <button className="pp-menu-item" onClick={() => setShowGuideModal(true)}>
-                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
-                  <BookOpen size={20} />
-                </div>
-                <span className="pp-menu-label">{t('settings.guide')}</span>
-                <ChevronRight size={18} className="pp-menu-arrow" />
-              </button>
-            </div>
+        {/* ═══ ILOVA ═══ */}
+        <section className="sp-section">
+          <div className="pp-section-label">{t('settings.sections.app')}</div>
+          <div className="pp-group">
+            {isInstallable && (
+              <ActionRow
+                icon={<Download size={20} />}
+                tone="green"
+                label={t('settings.installPWA')}
+                onClick={installApp}
+              />
+            )}
+            <ActionRow
+              icon={<BookOpen size={20} />}
+              label={t('settings.guide')}
+              onClick={() => setShowGuideModal(true)}
+            />
           </div>
+        </section>
 
-          {/* ═══ MA'LUMOT VA HUQUQIY ═══ */}
-          <div>
-            <div className="pp-section-label">{t('settings.sections.info')}</div>
-            <div className="pp-group">
-              {/* Premium — marketing /premium sahifasida; bu yerda faqat sodda kirish havolasi */}
-              <button className="pp-menu-item" onClick={() => navigate('/premium')}>
-                <div className="pp-menu-icon" style={{ background: 'var(--amber-bg)', color: 'var(--amber)' }}>
-                  <Crown size={20} />
-                </div>
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <span className="pp-menu-label">{t('settings.premium')}</span>
-                  <span className="pp-menu-sublabel" style={user.isTruePremium ? { color: 'var(--green)', fontWeight: 700 } : undefined}>
-                    {user.isTruePremium
-                      ? (user.premiumExpire
-                          ? t('settings.premiumActiveUntil', { date: new Date(user.premiumExpire).toLocaleDateString((i18n.resolvedLanguage || i18n.language) === 'ru' ? 'ru-RU' : (i18n.resolvedLanguage || i18n.language) === 'en' ? 'en-US' : 'uz-UZ') })
-                          : t('settings.premiumUnlimited'))
-                      : t('settings.premiumHint')}
-                  </span>
-                </div>
-                <ChevronRight size={18} className="pp-menu-arrow" />
-              </button>
-
-              <button className="pp-menu-item" onClick={() => setShowPrivacy(true)}>
-                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
-                  <Shield size={20} />
-                </div>
-                <span className="pp-menu-label">{t('settings.privacy')}</span>
-                <ChevronRight size={18} className="pp-menu-arrow" />
-              </button>
-
-              <button className="pp-menu-item" onClick={() => navigate('/terms')}>
-                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
-                  <FileText size={20} />
-                </div>
-                <span className="pp-menu-label">{t('settings.terms')}</span>
-                <ChevronRight size={18} className="pp-menu-arrow" />
-              </button>
-
-              <button className="pp-menu-item" onClick={() => navigate('/about')}>
-                <div className="pp-menu-icon" style={{ background: 'var(--blue-bg)', color: 'var(--accent)' }}>
-                  <Info size={20} />
-                </div>
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <span className="pp-menu-label">{t('settings.about')}</span>
-                  <span className="pp-menu-sublabel">{t('settings.aboutHint')}</span>
-                </div>
-                <ChevronRight size={18} className="pp-menu-arrow" />
-              </button>
-            </div>
+        {/* ═══ MA'LUMOT VA HUQUQIY ═══ */}
+        <section className="sp-section">
+          <div className="pp-section-label">{t('settings.sections.info')}</div>
+          <div className="pp-group">
+            <ActionRow
+              icon={<Shield size={20} />}
+              label={t('settings.privacy')}
+              onClick={() => setShowPrivacy(true)}
+            />
+            <ActionRow
+              icon={<FileText size={20} />}
+              label={t('settings.terms')}
+              onClick={() => navigate('/terms')}
+            />
+            <ActionRow
+              icon={<Info size={20} />}
+              label={t('settings.about')}
+              sublabel={t('settings.aboutHint')}
+              onClick={() => navigate('/about')}
+            />
           </div>
+        </section>
 
-          {/* ═══ HISOB AMALLARI ═══ */}
-          <div>
-            <div className="pp-section-label">{t('settings.sections.accountActions')}</div>
-            <div className="pp-group">
-              <button className="pp-menu-item" onClick={() => setShowDeleteConfirm(true)}>
-                <div className="pp-menu-icon" style={{ background: 'var(--red-bg)', color: 'var(--red)' }}>
-                  <Trash2 size={20} />
-                </div>
-                <span className="pp-menu-label" style={{ color: 'var(--red)' }}>{t('settings.deleteAccount')}</span>
-                <ChevronRight size={18} className="pp-menu-arrow" />
-              </button>
-
-              <button className="pp-menu-item danger" onClick={() => setShowLogoutConfirm(true)}>
-                <div className="pp-menu-icon" style={{ background: 'var(--red-bg)', color: 'var(--red)' }}>
-                  <LogOut size={20} />
-                </div>
-                <span className="pp-menu-label">{t('settings.logout')}</span>
-                <ChevronRight size={18} className="pp-menu-arrow" />
-              </button>
-            </div>
+        {/* ═══ HISOB AMALLARI ═══ */}
+        <section className="sp-section">
+          <div className="pp-section-label">{t('settings.sections.accountActions')}</div>
+          <div className="pp-group">
+            {/* Chiqish qaytariladigan amal — neytral; o'chirish esa qaytarilmaydi */}
+            <ActionRow
+              icon={<LogOut size={20} />}
+              tone="muted"
+              label={t('settings.logout')}
+              onClick={() => setShowLogoutConfirm(true)}
+            />
+            <ActionRow
+              icon={<Trash2 size={20} />}
+              tone="red"
+              label={t('settings.deleteAccount')}
+              labelTone="red"
+              danger
+              onClick={() => setShowDeleteConfirm(true)}
+            />
           </div>
+        </section>
 
-          {/* ═══ VERSIYA ═══ */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, fontSize: 11, color: 'var(--text3)', padding: '4px 0 8px' }}>
-            <BrandLogo size={14} /> · {t('settings.version', { version: APP_VERSION })}
-          </div>
+        {/* ═══ VERSIYA ═══ */}
+        <div className="sp-version">
+          <BrandLogo size={14} /> · {t('settings.version', { version: APP_VERSION })}
         </div>
       </div>
 

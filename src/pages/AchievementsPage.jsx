@@ -5,8 +5,10 @@ import { AppContext, getWeekId } from '../context/AppContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS } from '../data/mockData';
 import { TRACKS, reconcileAchievements, nextMilestones } from '../data/tracks';
+import { reconcileMilestones } from '../data/milestones';
+import MilestoneGrid from '../components/achievements/MilestoneGrid';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Trophy, Target, TrendingUp, AlertCircle, Award, Flame, AlertTriangle, Shield } from 'lucide-react';
+import { Trophy, Target, TrendingUp, AlertCircle, Award, Flame, AlertTriangle, Shield, Flag } from 'lucide-react';
 import RadialChart from '../components/shared/RadialChart';
 import AmiCard from '../components/achievements/AmiCard';
 import TrackCard from '../components/achievements/TrackCard';
@@ -60,6 +62,9 @@ const AchievementsPage = () => {
   const achView = reconcileAchievements(state, state.achievements);
   const ami = achView.achievements.ami;
   const unvonTier = achView.achievements.unvonTier;
+
+  // Shaxsiy marralar (odat qatlami) — AMI'ga kirmaydi, faqat ko'rsatiladi
+  const msView = reconcileMilestones(state, state.milestones);
 
   // Keyingi bosqich nomzodlari (eng yaqini birinchi) + haftalik AMI o'sishi
   const milestones = nextMilestones(state, achView.live);
@@ -244,6 +249,15 @@ const AchievementsPage = () => {
                 );
               })}
             </div>
+
+            {/* Shaxsiy marralar — odat qatlami (AMI'ga ta'sir qilmaydi) */}
+            <div className="section-header" style={{ margin: '22px 0 6px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: '800' }}>
+              <Flag size={18} style={{ color: 'var(--accent)' }} /> {t('milestones.sectionTitle')}
+            </div>
+            <p style={{ fontSize: 11.5, color: 'var(--text3)', margin: '0 0 12px', lineHeight: 1.5 }}>
+              {t('milestones.sectionHint')}
+            </p>
+            <MilestoneGrid live={msView.live} />
           </motion.div>
         )}
 
@@ -465,7 +479,7 @@ const AchievementsPage = () => {
         )}
       </AnimatePresence>
 
-      {showPremiumModal && <PremiumModal onClose={() => setShowPremiumModal(false)} />}
+      {showPremiumModal && <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />}
     </motion.div>
   );
 

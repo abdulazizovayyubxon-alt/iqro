@@ -10,7 +10,7 @@ import {
   setPersistence,
   browserLocalPersistence
 } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, onSnapshot } from 'firebase/firestore';
 import {
   savePendingReferralCode,
   getReferralCodeFromUrl,
@@ -755,6 +755,50 @@ export const AuthProvider = ({ children }) => {
       return updated;
     });
   };
+
+  // ─── Obuna holatini jonli kuzatish ───
+  // To'lov saytda (Click) amalga oshadi va webhook users/{uid} hujjatini
+  // yangilaydi. Ilova ochiq turgan bo'lsa ham premium darhol ochilishi uchun
+  // shu hujjatni tinglaymiz — aks holda foydalanuvchi ilovani butunlay yopib
+  // qayta ochishi kerak bo'lardi. Boshlang'ich yuklash onAuthStateChanged'da.
+  useEffect(() => {
+    const uid = user?.uid;
+    if (!uid) return undefined;
+
+    const unsub = onSnapshot(
+      doc(db, 'users', uid),
+      (snap) => {
+        if (!snap.exists()) return;
+        const data = snap.data();
+
+        // premiumExpire — muddatning yagona manbasi. Sana o'tgan bo'lsa obuna
+        // tugagan; Firestore yozuvini onAuthStateChanged keyingi kirishda tuzatadi.
+        let rawPremium = data.isPremium || false;
+        if (rawPremium && data.premiumExpire && new Date(data.premiumExpire) < new Date()) {
+          rawPremium = false;
+        }
+
+        const trialInfo = computeTrialStatus({ ...data, isPremium: rawPremium });
+        const isPremiumNow = rawPremium || trialInfo.status === 'trial' || trialInfo.status === 'urgency';
+
+        updateUserData({
+          isPremium: isPremiumNow,
+          isTruePremium: rawPremium,
+          premiumExpire: data.premiumExpire || null,
+          role: data.role || 'user',
+          avatarId: data.avatarId ?? null,
+          trialStatus: trialInfo.status,
+          trialDaysLeft: trialInfo.daysLeft,
+          urgencyMs: trialInfo.urgencyMs,
+          hasReferralDiscount: trialInfo.hasReferralDiscount || false,
+          discountPercent: trialInfo.discountPercent || 0,
+        });
+      },
+      (err) => console.warn('Obuna kuzatuvchisi xatosi:', err.message)
+    );
+
+    return () => unsub();
+  }, [user?.uid]);
 
   return (
     <AuthContext.Provider value={{

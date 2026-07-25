@@ -19,11 +19,12 @@ import {
   CheckCircle, Trash2, AlertTriangle,
   ChevronDown, ChevronUp, Search, Plus, Edit3, FileText, Zap,
   Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, UploadCloud,
-  Download, Crown, Database, RefreshCw, Inbox
+  Download, Crown, Database, RefreshCw, Inbox, School
 } from 'lucide-react';
 
 import './AdminPage.css';
 import PromoTab from '../components/admin/PromoTab';
+import SchoolsTab from '../components/admin/SchoolsTab';
 import { TOPICS } from '../data/mockData';
 import { normalizeText, trigrams, jaccard } from '../utils/textSimilarity';
 
@@ -1038,12 +1039,17 @@ try {
         <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'promos' ? 'active' : ''}`} onClick={() => setTab('promos')}>
           <Zap size={15} /> Promo
         </motion.button>
+        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'schools' ? 'active' : ''}`} onClick={() => setTab('schools')}>
+          <School size={15} /> Maktablar
+        </motion.button>
         <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'errors' ? 'active' : ''}`} onClick={() => setTab('errors')}>
           <AlertTriangle size={15} /> Xatolar
         </motion.button>
       </div>
 
       {tab === 'promos' && <PromoTab />}
+
+      {tab === 'schools' && <SchoolsTab />}
 
       {tab === 'errors' && (
         <div>

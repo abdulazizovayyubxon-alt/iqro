@@ -1,10 +1,12 @@
 import React, { createContext, useState, useEffect, useContext, useRef } from 'react';
 import localforage from 'localforage';
-import { MAX_MISTAKES_SAVED } from '../config';
+import { MAX_MISTAKES_SAVED, EXAM_GOAL_SCORE, BATCH_SIZE } from '../config';
+import { computeDiagnostics } from '../engine/DiagnosticsEngine';
 import { db } from '../firebase';
 import { AuthContext } from './AuthContext';
 import { ToastContext } from './ToastContext';
 import { reconcileAchievements, EXAM_MIN_QUESTIONS } from '../data/tracks';
+import { reconcileMilestones, MILESTONE_UNITS } from '../data/milestones';
 import i18n from '../i18n';
 import {
   doc,
@@ -126,6 +128,12 @@ const buildDefaultState = () => {
     lastGoalDate: null,
     streakFreezes: STREAK_FREEZE_START,
     streakFrozenDate: null,
+    goalDaysTotal: 0,      // kunlik maqsad bajarilgan KUNLAR soni (zanjir uzilsa ham saqlanadi)
+    correctRun: 0,         // hozirgi uzluksiz to'g'ri javoblar zanjiri
+    maxCorrectRun: 0,      // eng uzun zanjir (shaxsiy rekord)
+    milestones: {},        // shaxsiy marralar: { [id]: { level, earnedAt } } — milestones.js
+    readiness: {},         // fan bo'yicha tayyorlik: { [cat]: { score, confidence, answered, updatedAt } }
+    lastActiveAt: null,    // oxirgi natija topshirilgan vaqt (maktab hisoboti uchun)
     spacedCards: [],
     customMnemonics: {},
     repetitionLimit: 0,
@@ -180,7 +188,7 @@ const mergeCloudAndLocal = (cloud, local) => {
 
   const merged = { ...cloud };
 
-  ['totalScore', 'totalAnswered', 'totalCorrect', 'maxStreak', 'studyMinutes', 'dailyStreak', 'nightQuestions', 'earlyQuestions', 'perfectExamsCount', 'examStreak90']
+  ['totalScore', 'totalAnswered', 'totalCorrect', 'maxStreak', 'studyMinutes', 'dailyStreak', 'nightQuestions', 'earlyQuestions', 'perfectExamsCount', 'examStreak90', 'goalDaysTotal', 'maxCorrectRun']
     .forEach(k => { merged[k] = Math.max(cloud[k] || 0, local[k] || 0); });
 
   Object.keys(local).forEach(k => {
@@ -253,6 +261,36 @@ const mergeCloudAndLocal = (cloud, local) => {
     tracks: mergedTracks
   };
 
+  // Tayyorlik: har fan uchun YANGIROQ yozuv g'olib (o'rtacha olish ma'nosiz —
+  // bu vaqt kesimidagi baho, hisoblagich emas)
+  const cR = cloud.readiness || {};
+  const lR = local.readiness || {};
+  merged.readiness = { ...cR };
+  Object.entries(lR).forEach(([k, v]) => {
+    const c = cR[k];
+    if (!c || (v?.updatedAt || '') > (c.updatedAt || '')) merged.readiness[k] = v;
+  });
+  merged.lastActiveAt = (local.lastActiveAt || '') > (cloud.lastActiveAt || '')
+    ? local.lastActiveAt : cloud.lastActiveAt;
+
+  // Shaxsiy marralar: daraja monoton (max), earnedAt eng birinchi sana
+  const cMs = cloud.milestones || {};
+  const lMs = local.milestones || {};
+  const msIds = new Set([...Object.keys(cMs), ...Object.keys(lMs)]);
+  const mergedMilestones = {};
+  msIds.forEach(id => {
+    const c = cMs[id] || {};
+    const l = lMs[id] || {};
+    const earnedAt = {};
+    new Set([...Object.keys(c.earnedAt || {}), ...Object.keys(l.earnedAt || {})]).forEach(lv => {
+      const cv = (c.earnedAt || {})[lv];
+      const lvv = (l.earnedAt || {})[lv];
+      earnedAt[lv] = cv && lvv ? Math.min(cv, lvv) : (cv || lvv);
+    });
+    mergedMilestones[id] = { level: Math.max(c.level || 0, l.level || 0), earnedAt };
+  });
+  merged.milestones = mergedMilestones;
+
   // Haftalik AMI boshlang'ich nuqtasi: yangiroq hafta g'olib; bir xil hafta —
   // kichik startAmi olinadi (ikki qurilmadagi o'sish to'liq ko'rinishi uchun).
   const cW = cloud.amiWeekly, lW = local.amiWeekly;
@@ -271,7 +309,8 @@ const mergeCloudAndLocal = (cloud, local) => {
 // ilgari qozonilgan yutuqlar uchun bildirishnoma yog'ilib ketmasligi kerak.
 const withAchievements = (stateObj) => {
   const { achievements } = reconcileAchievements(stateObj, stateObj.achievements);
-  return { ...stateObj, achievements };
+  const { milestones } = reconcileMilestones(stateObj, stateObj.milestones);
+  return { ...stateObj, achievements, milestones };
 };
 
 // Firestore `undefined` qiymatni qabul qilmaydi — agar saqlanadigan obyektda
@@ -467,6 +506,7 @@ export const AppProvider = ({ children }) => {
     let earnedOut = 0; // UI ga qaytariladi ("+N ball" ko'rsatish uchun)
     let gainedOut = []; // shu sessiyada YANGI olingan track darajalari (kichik — faqat Bell)
     let gainedUnvonOut = null; // shu sessiyada unvon oshgan bo'lsa (katta — toast + Bell)
+    let gainedMilestonesOut = []; // shu sessiyada olingan shaxsiy marralar (Bell)
     let amiDeltaOut = 0; // shu sessiyada AMI necha ballga o'zgargani (natija ekrani uchun)
     setState(prev => {
       const cat = prev.activeCategory;
@@ -502,6 +542,29 @@ export const AppProvider = ({ children }) => {
       // Streak
       const newStreak = results.wrongCount > 0 ? 0 : catStats.streak + results.correctCount;
       const newMaxStreak = Math.max(catStats.maxStreak, newStreak);
+
+      // Ketma-ket to'g'ri javoblar zanjiri («zanjir» marrasi) — sessiyalar
+      // orasida uziladi emas: oldingi zanjir sessiya boshidagi zanjirga ulanadi.
+      const prevRun = prev.correctRun || 0;
+      const leadingRun = results.leadingRun ?? 0;
+      const trailingRun = results.trailingRun ?? 0;
+      const sessionAnswered = results.totalAnswered || 0;
+      const allCorrect = sessionAnswered > 0 && results.wrongCount === 0;
+      // Bitta ham javob berilmagan sessiya (masalan imtihon taymeri bo'sh ekranda
+      // tugadi) zanjirni UZMAYDI — aks holda ilovani ochib qo'yishning o'zi
+      // shaxsiy rekordni nolga tushirardi.
+      const correctRun = sessionAnswered === 0
+        ? prevRun
+        : (allCorrect ? prevRun + sessionAnswered : trailingRun);
+      const maxCorrectRun = Math.max(
+        prev.maxCorrectRun || 0,
+        prevRun + leadingRun,              // oldingi zanjirning davomi
+        results.maxRunInSession || 0,      // sessiya ichidagi eng uzun zanjir
+        correctRun
+      );
+
+      // Kunlik maqsad bajarilgan KUNLAR soni — zanjir uzilsa ham saqlanadi
+      const goalDaysTotal = (prev.goalDaysTotal || 0) + (dg.completed && !wasCompletedToday ? 1 : 0);
 
       // Vaqt statistikasi (Time Analytics)
       const sessionTime = results.sessionTime || 0;
@@ -559,6 +622,9 @@ export const AppProvider = ({ children }) => {
         lastGoalDate,
         streakFreezes,
         streakFrozenDate,
+        goalDaysTotal,
+        correctRun,
+        maxCorrectRun,
         spacedCards: results.updatedSpacedCards || prev.spacedCards,
         timeStats: {
           totalTime: currentTimeStats.totalTime + sessionTime,
@@ -586,6 +652,30 @@ export const AppProvider = ({ children }) => {
       gainedUnvonOut = gainedUnvon;
       amiDeltaOut = achievements.ami - prevAmi;
 
+      // Shaxsiy marralar — AMI'ga ta'sir qilmaydi (milestones.js izohiga qarang)
+      const ms = reconcileMilestones(newState, prev.milestones);
+      newState.milestones = ms.milestones;
+      gainedMilestonesOut = ms.gained;
+
+      // Tayyorlik darajasi — bulutga saqlanadi (maktab hisoboti shu maydonni o'qiydi).
+      // ATAYIN topicTotals BERILMAYDI: og'irliklar lokal savol keshiga bog'liq
+      // bo'lsa, bir xil natijali ikki o'qituvchi turli ball olishi mumkin edi.
+      // Ulashiladigan raqam har doim teng og'irlik bilan hisoblanadi.
+      const shared = computeDiagnostics(newState, {
+        goalScore: EXAM_GOAL_SCORE,
+        examQuestions: BATCH_SIZE,
+      });
+      newState.readiness = {
+        ...(prev.readiness || {}),
+        [cat]: {
+          score: shared.readiness,
+          confidence: Math.round(shared.confidence * 100),
+          answered: shared.answered,
+          updatedAt: new Date().toISOString(),
+        },
+      };
+      newState.lastActiveAt = new Date().toISOString();
+
       // Haftalik AMI o'sishi: hafta almashganda commit-dan OLDINGI AMI
       // boshlang'ich nuqta qilib yoziladi.
       newState.amiWeekly = prev.amiWeekly?.weekId === weekId
@@ -600,9 +690,9 @@ export const AppProvider = ({ children }) => {
     // Yon ta'sir (Firestore yozuvi) setState updater'idan TASHQARIDA bajariladi —
     // React 18 StrictMode updater'ni ikki marta chaqirganda dublikat write bo'lmaydi.
     // Natija debounce kutmasdan darhol saqlanadi (test yakunida yo'qolmasligi uchun).
-    if (!snapshot) return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut };
+    if (!snapshot) return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut, gainedMilestones: gainedMilestonesOut };
     const currentUser = userRef.current;
-    if (!currentUser) return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut };
+    if (!currentUser) return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut, gainedMilestones: gainedMilestonesOut };
     const statRef = doc(db, 'userStats', currentUser.uid);
     setDoc(statRef, prepareStatsForSave(snapshot, currentUser), { merge: true }).catch(err => {
       console.error('Natijalarni saqlashda xatolik:', err);
@@ -629,6 +719,25 @@ export const AppProvider = ({ children }) => {
         }).catch(err => console.warn('Yutuq bildirishnomasi yozilmadi:', err?.code || err));
       });
     }
+    // Shaxsiy marralar — faqat Bell (toast YO'Q). Marralar odat qatlami bo'lgani
+    // uchun tez-tez qo'lga kiritiladi; toast bo'lsa ekran bildirishnomaga to'lardi.
+    if (gainedMilestonesOut.length > 0) {
+      gainedMilestonesOut.forEach(g => {
+        addDoc(collection(db, 'users', currentUser.uid, 'notifications'), {
+          type: 'milestone',
+          milestoneId: g.milestoneId,
+          level: g.level,
+          title: i18n.t('milestones.notifTitle'),
+          message: i18n.t('milestones.notifBody', {
+            name: i18n.t(`milestones.${g.milestoneId}.name`),
+            target: g.target,
+            unit: i18n.t(`milestones.unit.${MILESTONE_UNITS[g.milestoneId] || 'q'}`)
+          }),
+          date: new Date().toISOString(),
+          read: false
+        }).catch(err => console.warn('Marra bildirishnomasi yozilmadi:', err?.code || err));
+      });
+    }
     if (gainedUnvonOut) {
       const unvonLabel = i18n.t(`tracks.tier${gainedUnvonOut.tier}`);
       showToast(i18n.t('tracks.unvonToast', { unvon: unvonLabel }), 'success');
@@ -641,7 +750,7 @@ export const AppProvider = ({ children }) => {
         read: false
       }).catch(err => console.warn('Unvon bildirishnomasi yozilmadi:', err?.code || err));
     }
-    return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut };
+    return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut, gainedMilestones: gainedMilestonesOut };
   };
 
   // Shaxsiy mnemonika saqlash

@@ -17,7 +17,9 @@ import {
   Users,
   AlertCircle,
   Download,
-  Settings
+  Settings,
+  Activity,
+  School
 } from 'lucide-react';
 
 import { PWAContext } from '../context/PWAContext';
@@ -133,6 +135,22 @@ const Sidebar = () => {
           >
             <span className="nav-icon"><Medal size={20} /></span>
             <span className="nav-label">{t('sidebar.achievements')}</span>
+          </div>
+
+          <div
+            className={`nav-item ${isActive('/analysis') ? 'active' : ''}`}
+            onClick={() => navigate('/analysis')}
+          >
+            <span className="nav-icon"><Activity size={20} /></span>
+            <span className="nav-label">{t('sidebar.analysis')}</span>
+          </div>
+
+          <div
+            className={`nav-item ${isActive('/school') ? 'active' : ''}`}
+            onClick={() => navigate('/school')}
+          >
+            <span className="nav-icon"><School size={20} /></span>
+            <span className="nav-label">{t('sidebar.school')}</span>
           </div>
 
           <div

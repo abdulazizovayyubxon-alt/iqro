@@ -31,6 +31,8 @@ const ExamPage = React.lazy(() => import('./pages/ExamPage'));
 const SmartReviewPage = React.lazy(() => import('./pages/SmartReviewPage'));
 const LeaderboardPage = React.lazy(() => import('./pages/LeaderboardPage'));
 const AchievementsPage = React.lazy(() => import('./pages/AchievementsPage'));
+const AnalysisPage = React.lazy(() => import('./pages/AnalysisPage'));
+const SchoolPage = React.lazy(() => import('./pages/SchoolPage'));
 const AdminPage = React.lazy(() => import('./pages/AdminPage'));
 const MigrationPage = React.lazy(() => import('./pages/MigrationPage'));
 const ReferralPage = React.lazy(() => import('./pages/ReferralPage'));
@@ -168,6 +170,7 @@ function App() {
     '/': 'Test', '/dashboard': 'Dashboard',
     '/test': 'Test', '/exam': 'Imtihon', '/review': 'Takrorlash',
     '/leaderboard': 'Reyting', '/achievements': 'Yutuqlar',
+    '/analysis': 'Tahlil', '/school': 'Maktab',
     '/admin': 'Admin', '/migration': 'Migratsiya',
     '/settings': 'Sozlamalar', '/premium': 'Pro', '/about': 'Biz haqimizda'
   };
@@ -382,6 +385,8 @@ function App() {
                   <Route path="/review" element={<SmartReviewPage />} />
                   <Route path="/leaderboard" element={<LeaderboardPage />} />
                   <Route path="/achievements" element={<AchievementsPage />} />
+                  <Route path="/analysis" element={<AnalysisPage />} />
+                  <Route path="/school" element={<SchoolPage />} />
                   <Route path="/admin" element={<AdminPage />} />
                   <Route path="/migration" element={<MigrationPage />} />
                   <Route path="/referral" element={<ReferralPage />} />

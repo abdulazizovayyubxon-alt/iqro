@@ -7,11 +7,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Crown, Check, Shield } from 'lucide-react';
+import { ArrowLeft, Crown, Check, Shield, Building2 } from 'lucide-react';
 import PremiumModal from '../components/PremiumModal';
 import RoiBlock from '../components/RoiBlock';
 import { useAuth } from '../context/AuthContext';
-import { DEFAULT_YEARLY_PRICE } from '../config';
+import { DEFAULT_YEARLY_PRICE, isPlayBuild } from '../config';
 
 // Ikonkalar kodda qoladi; matnlar i18n massivlaridan indeks bo'yicha olinadi
 const FEATURE_ICONS = ['📚', '🎯', '🧠', '📊', '🏆', '⚡'];
@@ -24,6 +24,8 @@ export default function PremiumPage() {
   const [showModal, setShowModal] = useState(false);
   const [openFaqIdx, setOpenFaqIdx] = useState(null);
   const isPremium = user?.isTruePremium || false;
+  // Play build'da narx va to'lov matnlari ko'rsatilmaydi — PremiumModal.jsx izohiga qarang
+  const isAndroidApp = isPlayBuild();
 
   const features = t('premiumPage.features', { returnObjects: true });
   const trustBadges = t('premiumPage.trustBadges', { returnObjects: true });
@@ -69,10 +71,12 @@ export default function PremiumPage() {
           </div>
         </div>
 
-        {/* Narx eslatmasi */}
-        <div style={{ textAlign: 'center', fontSize: 13, color: 'var(--text3)', margin: '4px 0 16px' }}>
-          {t('premiumPage.priceNote')}
-        </div>
+        {/* Narx eslatmasi — Play build'da ko'rsatilmaydi */}
+        {!isAndroidApp && (
+          <div style={{ textAlign: 'center', fontSize: 13, color: 'var(--text3)', margin: '4px 0 16px' }}>
+            {t('premiumPage.priceNote')}
+          </div>
+        )}
 
         {/* CTA */}
         {isPremium ? (
@@ -81,13 +85,15 @@ export default function PremiumPage() {
           </div>
         ) : (
           <motion.button whileTap={{ scale: 0.98 }} onClick={() => setShowModal(true)} style={s.cta}>
-            <Crown size={18} /> {t('premiumPage.ctaChoose')}
+            <Crown size={18} /> {isAndroidApp ? t('premiumPage.ctaLocked') : t('premiumPage.ctaChoose')}
           </motion.button>
         )}
 
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'var(--text3)', fontSize: 12, marginTop: 14, fontWeight: 600 }}>
-          <Shield size={14} color="var(--green)" /> {t('premiumPage.securePay')}
-        </div>
+        {!isAndroidApp && (
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'var(--text3)', fontSize: 12, marginTop: 14, fontWeight: 600 }}>
+            <Shield size={14} color="var(--green)" /> {t('premiumPage.securePay')}
+          </div>
+        )}
 
         {/* ═══ ISHONCH NISHONLARI ═══ */}
         <div style={{ ...s.card, marginTop: 24 }}>
@@ -102,6 +108,37 @@ export default function PremiumPage() {
             ))}
           </div>
         </div>
+
+        {/* ═══ MAKTAB UCHUN (B2B) ═══ */}
+        {/* Play build'da sotuv yuzasi ko'rsatilmaydi — PremiumModal.jsx izohiga qarang */}
+        {!isAndroidApp && (
+          <div style={s.card}>
+            <div style={s.cardLabel}>{t('premiumPage.b2bLabel')}</div>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+              <div style={{ ...s.featIcon, background: 'var(--blue-bg)' }}>
+                <Building2 size={15} color="var(--accent)" />
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', marginBottom: 4 }}>
+                  {t('premiumPage.b2bTitle')}
+                </div>
+                <p style={{ fontSize: 12.5, color: 'var(--text3)', lineHeight: 1.6, margin: '0 0 12px' }}>
+                  {t('premiumPage.b2bDesc')}
+                </p>
+                <button
+                  onClick={() => navigate('/school')}
+                  style={{
+                    padding: '9px 14px', borderRadius: 11, border: '1px solid var(--accent)',
+                    background: 'transparent', color: 'var(--accent)', fontWeight: 700,
+                    fontSize: 13, cursor: 'pointer', fontFamily: 'inherit',
+                  }}
+                >
+                  {t('premiumPage.b2bCta')}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* ═══ FAQ ═══ */}
         <div style={s.card}>

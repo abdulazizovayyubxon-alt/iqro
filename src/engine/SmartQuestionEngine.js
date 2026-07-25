@@ -320,6 +320,12 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
   let newCorrectCount = 0;
   let dueReviewCorrectCount = 0;
   let wrongCount = 0;
+  // Ketma-ket to'g'ri javoblar zanjiri («zanjir» marrasi uchun).
+  // leadingRun — sessiya boshidagi zanjir (oldingi sessiya zanjiriga ulanadi),
+  // trailingRun — oxiridagi zanjir (keyingi sessiyaga uzatiladi).
+  let run = 0;
+  let maxRunInSession = 0;
+  let leadingRun = null;
   const newMistakes = [];
   const updatedCards = new Map(spacedCards.map(c => [c.qHash, { ...c }]));
   const sessionNow = Date.now();
@@ -345,6 +351,8 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
 
     if (wasCorrect) {
       correctCount++;
+      run++;
+      if (run > maxRunInSession) maxRunInSession = run;
 
       // Spaced Repetition: to'g'ri javob → level ko'tariladi
       if (updatedCards.has(qHash)) {
@@ -378,6 +386,8 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
       }
     } else {
       wrongCount++;
+      if (leadingRun === null) leadingRun = run;
+      run = 0;
 
       // Xato ma'lumotlarini yig'ish — mavzu har savolning O'Z topicId'sidan olinadi,
       // aks holda aralash testda (topicId=-1) hamma xato "Aralash" bo'lib qolardi
@@ -413,6 +423,9 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
     }
   }
 
+  // Hech xato bo'lmasa — butun sessiya bitta uzluksiz zanjir
+  if (leadingRun === null) leadingRun = run;
+
   return {
     correctCount,
     wrongCount,
@@ -422,6 +435,9 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
     accuracy: questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0,
     newMistakes,
     topicDeltas,
+    maxRunInSession,
+    leadingRun,
+    trailingRun: run,
     updatedSpacedCards: Array.from(updatedCards.values()).slice(-200) // Maks 200 ta
   };
 };

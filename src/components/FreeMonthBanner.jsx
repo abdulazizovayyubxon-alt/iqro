@@ -16,12 +16,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, X, Zap } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
+import { isPlayBuild } from '../config';
 
 export default function FreeMonthBanner({ onPayClick }) {
   const { t } = useTranslation();
   const { user } = useAuth();
   const { daysLeft: trialDaysLeft, isTrialExpired } = useTrialExpiry();
   const [dismissed, setDismissed] = useState(false);
+  // Play build'da to'lovga chorlovchi matn ishlatilmaydi — PremiumModal.jsx izohiga qarang
+  const isAndroidApp = isPlayBuild();
 
   if (dismissed || user?.isPremium) return null;
 
@@ -56,12 +59,12 @@ export default function FreeMonthBanner({ onPayClick }) {
         <div style={{ flex: 1, fontSize: 13, color: 'var(--text)', fontWeight: 500 }}>
           {isExpired ? (
             <strong style={{ color }}>
-              {t('banner.expired')}
+              {isAndroidApp ? t('banner.expiredPlay') : t('banner.expired')}
             </strong>
           ) : (
             <>
               {t('banner.daysP1')}{' '}
-              <strong style={{ color }}>{t('banner.days', { count: daysLeft })}</strong> {t('banner.daysP2')}
+              <strong style={{ color }}>{t('banner.days', { count: daysLeft })}</strong> {isAndroidApp ? t('banner.daysP2Play') : t('banner.daysP2')}
             </>
           )}
         </div>
@@ -76,7 +79,7 @@ export default function FreeMonthBanner({ onPayClick }) {
             display: 'flex', alignItems: 'center', gap: 4
           }}
         >
-          <Zap size={12} /> {t('banner.pay')}
+          <Zap size={12} /> {isAndroidApp ? t('banner.payPlay') : t('banner.pay')}
         </motion.button>
         <button onClick={() => setDismissed(true)} aria-label={t('common.close')} style={{
           background: 'none', border: 'none', cursor: 'pointer',

@@ -78,7 +78,7 @@ service cloud.firestore {
                     && (request.resource.data.isPremium == false || !('isPremium' in request.resource.data));
       allow update: if isAdmin() || (
         isOwner(userId)
-        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'isPremium', 'premiumPlan', 'premiumExpire', 'freeExpire', 'referralBonus', 'promoDiscount', 'promoRedeemed']))
+        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'isPremium', 'premiumPlan', 'premiumExpire', 'freeExpire', 'referralBonus', 'promoDiscount', 'promoRedeemed', 'schoolId', 'schoolName', 'premiumMethod', 'premiumSince']))
       );
       allow delete: if isAdmin();
     }
@@ -117,6 +117,42 @@ service cloud.firestore {
     // ── promoCodes: faqat admin boshqaradi; redemption FAQAT server (Admin SDK) orqali ──
     match /promoCodes/{code} {
       allow read, write: if isAdmin();
+    }
+
+    // ── schools: B2B maktab paketlari ──
+    // joinCode MAXFIY bo'lishi kerak — aks holda istalgan foydalanuvchi
+    // istalgan maktabga qo'shilib, korporativ obunani o'zlashtirib olardi.
+    // Shu sababli o'qish faqat: platforma admini, maktab admini yoki a'zo.
+    // YOZUV faqat platforma adminida; qo'shilish esa api/school.js (Admin SDK).
+    match /schools/{schoolId} {
+      allow read: if isAdmin()
+        || (isLoggedIn() && request.auth.uid in resource.data.adminUids)
+        || (isLoggedIn() && exists(/databases/$(database)/documents/schools/$(schoolId)/members/$(request.auth.uid)));
+      allow write: if isAdmin();
+    }
+
+    // ── schools/{id}/members: a'zolar ro'yxati ──
+    // O'zini va maktab admini butun ro'yxatni o'qiy oladi. Yozuv — faqat server.
+    match /schools/{schoolId}/members/{memberId} {
+      allow read: if isAdmin()
+        || isOwner(memberId)
+        || (isLoggedIn() && request.auth.uid in get(/databases/$(database)/documents/schools/$(schoolId)).data.adminUids);
+      allow write: if isAdmin();
+    }
+
+    // ── schoolRequests: maktab uchun korporativ paket so'rovi ──
+    // Foydalanuvchi o'z so'rovini yuboradi/o'qiydi; boshqarish faqat adminda.
+    match /schoolRequests/{docId} {
+      allow create: if isLoggedIn()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.status == 'new'
+        && request.resource.data.schoolName is string
+        && request.resource.data.schoolName.size() > 0
+        && request.resource.data.schoolName.size() <= 120
+        && request.resource.data.phone is string
+        && request.resource.data.phone.size() <= 20;
+      allow read: if isAdmin() || (isLoggedIn() && resource.data.uid == request.auth.uid);
+      allow update, delete: if isAdmin();
     }
 
     // ── deletionRequests: hisobni o'chirish arizasi (/delete-account) — sahifa ochiq,

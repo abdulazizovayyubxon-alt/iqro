@@ -1,194 +1,264 @@
 /* ═══════════════════════════════════════════
-   ProfilePage — Premium Design Styles
+   Sozlamalar sahifasi + profil modallari
+   Brend qoidasi: faqat azure, gradientsiz, tinch va jiddiy.
    ═══════════════════════════════════════════ */
 
-.pp { max-width: 600px; margin: 0 auto; padding: 0 0 100px; }
-
-/* Avatar rasm yuklash spinneri */
-
-
-.pp-menu-item {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 14px 18px;
-  background: transparent;
-  border: none;
-  gap: 14px;
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text);
-  cursor: pointer;
-  text-align: left;
-  outline: none;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+/* Sahifa konteyneri — gorizontal chekkalar ilovaning qolgan
+   sahifalari bilan bir xil (.dashboard-page: 16px) */
+.pp {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
   box-sizing: border-box;
 }
 
-.pp-menu-item:hover {
-  background: var(--bg3);
+/* ── Sahifa sarlavhasi ── */
+.sp-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
 }
 
-.pp-menu-item:active {
-  background: var(--bg3);
-  transform: scale(0.995);
+.sp-head-text { min-width: 0; }
+
+.sp-title {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+  color: var(--text);
 }
 
-.pp-menu-icon {
-  width: 40px; height: 40px; border-radius: 12px;
+.sp-subtitle {
+  margin: 2px 0 0;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pp-back-btn {
+  width: 42px; height: 42px; border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  color: var(--text2);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
 }
+.pp-back-btn:hover { background: var(--bg3); color: var(--accent); }
+.pp-back-btn:active { background: var(--bg3); }
 
-.pp-menu-item:hover .pp-menu-icon {
-  transform: scale(1.08);
-}
+/* ── Bo'limlar ── */
+.sp-sections { display: flex; flex-direction: column; }
+.sp-section + .sp-section { margin-top: 22px; }
 
-.pp-menu-label {
-  flex: 1;
-  text-align: left;
-  font-size: 14.5px;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.2;
-}
-
-.pp-menu-sublabel {
+.pp-section-label {
+  margin: 0 0 8px 4px;
   font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
   color: var(--text3);
-  font-weight: 500;
-  margin-top: 2px;
 }
 
-.pp-menu-arrow {
-  color: var(--text3);
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.pp-menu-item:hover .pp-menu-arrow {
-  transform: translateX(4px);
-  color: var(--accent);
-}
-
-.pp-menu-item.danger {
-  border-color: rgba(239, 68, 68, 0.2);
-}
-
-.pp-menu-item.danger .pp-menu-label {
-  color: var(--red);
-}
-
-.pp-menu-item.danger:hover {
-  background: var(--red-bg);
-}
-
-.pp-menu-item.danger:hover .pp-menu-arrow {
-  color: var(--red);
-}
-
-/* ── Wisdom uslubi: guruhlangan ro'yxat (iOS inset grouped) ── */
+/* ── Guruh (iOS inset-grouped ro'yxat) ── */
 .pp-group {
   background: var(--bg2);
   border: 1px solid var(--border);
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.015);
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 1px 2px rgba(16, 32, 48, 0.03);
 }
+.pp-group > * + * { border-top: 1px solid var(--border); }
 
-.pp-group .pp-menu-item {
-  border: none;
-  border-radius: 0;
+/* ── Qator ── */
+.pp-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 56px;
+  padding: 12px 16px;
+  box-sizing: border-box;
   background: transparent;
+  border: none;
+  font-family: inherit;
+  text-align: left;
+  color: var(--text);
+  transition: background 0.18s ease;
 }
 
-.pp-group .pp-menu-item + .pp-menu-item {
-  border-top: 1px solid var(--border);
+button.pp-menu-item { cursor: pointer; }
+button.pp-menu-item:hover { background: var(--bg3); }
+button.pp-menu-item:active { background: var(--bg3); }
+button.pp-menu-item:disabled { opacity: 0.55; cursor: default; }
+button.pp-menu-item:disabled:hover { background: transparent; }
+
+/* Tanlov qatori: yorliq tepada, segment ostida to'liq kenglikda.
+   Ilgari yonma-yon edi — 360px ekranda segment kartadan chiqib ketardi. */
+.sp-row--choice {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  padding: 14px 16px;
+}
+.sp-row-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
 }
 
-.pp-group .pp-menu-item:hover {
-  background: var(--bg3);
+/* ── Ikonka ── */
+.pp-menu-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  background: var(--blue-bg);
+  color: var(--accent);
+}
+.pp-menu-icon.is-amber { background: var(--amber-bg); color: var(--amber); }
+.pp-menu-icon.is-green { background: var(--green-bg); color: var(--green); }
+.pp-menu-icon.is-red   { background: var(--red-bg);   color: var(--red); }
+.pp-menu-icon.is-muted { background: var(--surface2); color: var(--text2); }
+
+/* ── Qator matni ── */
+.pp-menu-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.pp-group .pp-menu-item.danger:hover {
-  background: var(--red-bg);
+.pp-menu-label {
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
 }
+.pp-menu-label.is-red { color: var(--red); }
 
-/* ── Segmented Control ── */
+.pp-menu-sublabel {
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text3);
+}
+.pp-menu-sublabel.is-green { color: var(--green); font-weight: 700; }
+
+.pp-menu-arrow {
+  flex-shrink: 0;
+  color: var(--text3);
+  transition: color 0.18s ease;
+}
+button.pp-menu-item:hover .pp-menu-arrow { color: var(--accent); }
+button.pp-menu-item.danger:hover { background: var(--red-bg); }
+button.pp-menu-item.danger:hover .pp-menu-arrow { color: var(--red); }
+
+/* ── Segment boshqaruvi (teng kenglikdagi tugmalar) ── */
 .pp-segment-container {
   display: flex;
-  gap: 3px;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 12px;
   background: var(--surface2);
-  padding: 3px;
-  border-radius: 10px;
-  flex-shrink: 0;
   border: 1px solid var(--border);
 }
 
 .pp-segment-btn {
-  padding: 6px 12px;
-  border-radius: 8px;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 8px 6px;
   border: none;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 700;
+  border-radius: 9px;
   background: transparent;
   color: var(--text3);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  outline: none;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
 }
-
 .pp-segment-btn.active {
   background: var(--bg2);
   color: var(--accent);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(16, 32, 48, 0.10);
 }
+.pp-segment-btn:hover:not(.active) { color: var(--text2); }
 
-.pp-segment-btn:hover:not(.active) {
-  color: var(--text2);
+/* ── Yoqish/o'chirish tugmachasi ── */
+.sp-switch {
+  position: relative;
+  width: 46px; height: 28px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 1px solid var(--border2);
+  border-radius: 99px;
+  background: var(--surface2);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
+.sp-switch::after {
+  content: '';
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--bg2);
+  box-shadow: 0 1px 3px rgba(16, 32, 48, 0.22);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sp-switch.on { background: var(--cta); border-color: var(--cta); }
+.sp-switch.on::after { transform: translateX(18px); background: #fff; }
 
-/* ── Help & Support Card ── */
-.pp-support-card {
+/* ── Holat yorlig'i (push) ── */
+.sp-pill {
+  flex-shrink: 0;
+  padding: 5px 10px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
   background: var(--blue-bg);
-  border-radius: 16px;
-  padding: 16px;
+  color: var(--accent2);
+}
+.sp-pill.is-on { background: var(--green-bg); color: var(--green); }
+.sp-pill.is-off { background: var(--surface2); color: var(--text3); }
+
+/* ── Yordam kartasi ── */
+.pp-support-card {
   display: flex;
   align-items: center;
   gap: 14px;
-  border: 1px solid rgba(14, 151, 224, 0.2);
-  margin-top: 8px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.pp-support-card:hover {
-  border-color: rgba(14, 151, 224, 0.4);
+  padding: 16px;
+  margin-bottom: 22px;
+  border-radius: 16px;
+  background: var(--blue-bg);
+  border: 1px solid var(--border);
 }
 
 .pp-support-icon {
-  width: 44px;
-  height: 44px;
+  width: 42px; height: 42px;
+  flex-shrink: 0;
   border-radius: 12px;
   background: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: #fff;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex; align-items: center; justify-content: center;
 }
 
-.pp-support-card:hover .pp-support-icon {
-  transform: rotate(8deg) scale(1.05);
-}
-
-.pp-support-body {
-  flex: 1;
-}
+.pp-support-body { flex: 1; min-width: 0; }
 
 .pp-support-title {
   font-size: 14px;
@@ -197,88 +267,42 @@
 }
 
 .pp-support-text {
-  font-size: 12px;
-  color: var(--text2);
   margin-top: 2px;
+  font-size: 12px;
   line-height: 1.4;
+  color: var(--text2);
 }
 
 .pp-support-btn {
-  padding: 8px 16px;
-  background: var(--cta);
-  color: #fff;
+  flex-shrink: 0;
+  padding: 9px 16px;
   border: none;
   border-radius: 10px;
+  background: var(--cta);
+  color: #fff;
+  font-family: inherit;
   font-size: 13px;
   font-weight: 700;
-  cursor: pointer;
-  font-family: inherit;
-  transition: all 0.2s ease;
   white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+.pp-support-btn:hover { background: var(--accent3); }
+
+@media (max-width: 420px) {
+  .pp-support-card { flex-wrap: wrap; }
+  .pp-support-btn { width: 100%; }
 }
 
-.pp-support-btn:hover {
-  background: var(--accent2);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(14, 151, 224, 0.2);
-}
-
-.pp-support-btn:active {
-  transform: translateY(0);
-}
-
-@media (max-width: 480px) {
-  .pp-support-card {
-    flex-direction: column;
-    align-items: stretch;
-    text-align: center;
-    gap: 12px;
-    padding: 14px;
-  }
-  .pp-support-icon {
-    margin: 0 auto;
-  }
-  .pp-support-btn {
-    width: 100%;
-  }
-}
-
-/* ── Sozlamalar: bo'limlar oralig'i (gap + label/group marginlari qo'shilib ketmasin) ── */
-.sp-sections {
+/* ── Versiya ── */
+.sp-version {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 8px;
-}
-.sp-sections .pp-group { margin-bottom: 0; }
-.sp-sections .pp-section-label { margin: 14px 6px 8px; }
-
-.pp-section-label {
-  font-size: 11.5px;
-  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 26px 0 4px;
+  font-size: 11px;
   color: var(--text3);
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  margin: 22px 6px 8px;
-}
-
-.pp-back-btn {
-  width: 44px; height: 44px; border-radius: 12px;
-  border: 1px solid var(--border);
-  background: var(--bg2); cursor: pointer; display: flex;
-  align-items: center; justify-content: center; color: var(--text2);
-  flex-shrink: 0;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.pp-back-btn:hover {
-  background: var(--bg3);
-  color: var(--accent);
-  transform: translateX(-2px);
-}
-
-.pp-back-btn:active {
-  transform: scale(0.95);
 }
 
 /* ── Edit Modal ── */
@@ -339,16 +363,3 @@
   background: var(--cta); /* a11y: oq matn bilan har temada ≥4.5:1 */
   color: #fff; border-color: transparent !important;
 }
-
-/* ── Free Trial Banner ── */
-
-
-/* ── Urgency Countdown Banner (72h) ── */
-
-
-/* ── Expired Banner ── */
-
-
-/* ── Referral Slots Gamification ── */
-
-

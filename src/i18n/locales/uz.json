@@ -38,7 +38,7 @@
     "helpTitle": "Yordam kerakmi?",
     "helpText": "Jamoamiz har qanday savolingizga javob beradi",
     "helpCta": "Yozish",
-    "version": "versiya",
+    "version": "Zehin · versiya {{version}}",
     "sections": {
       "appearance": "Ko'rinish",
       "account": "Hisob",
@@ -79,7 +79,6 @@
     "aboutHint": "Loyiha, qo'llab-quvvatlash va bog'lanish",
     "deleteAccount": "Hisobni o'chirish",
     "logout": "Chiqish",
-    "version": "Zehin · versiya {{version}}",
     "toasts": {
       "pushAlreadyEnabled": "Push bildirishnomalar allaqachon yoqilgan",
       "pushBlocked": "Bildirishnomalar brauzerda bloklangan. Brauzer sozlamalaridan ruxsat bering.",
@@ -738,11 +737,10 @@
     "promoSub": "Kodni kiriting va darhol faollashtiring",
     "promoPlaceholder": "PROMO-KOD",
     "apply": "Qo'llash",
-    "googlePlayTitle": "Google Play orqali xarid qilish",
-    "googlePlayDesc": "Siz tanlagan {{plan}} ta'rifi to'g'ridan-to'g'ri Google Play orqali xarid qilinadi. To'lov mutlaqo xavfsiz.",
+    "lockedTitle": "Bu bo'lim Zehin Pro obunasida ochiladi",
+    "lockedDesc": "Obuna hisobingizga ulangach, shu yerda avtomatik ochiladi. Promokodingiz bo'lsa, uni quyida kiritishingiz mumkin.",
     "choosePayMethod": "To'lov usulini tanlang",
     "whatIncluded": "Nimalar kiradi",
-    "payGooglePlay": "Google Play bilan to'lash — {{price}}",
     "continueBtn": "Davom etish",
     "toPay": "To'lov uchun",
     "payNow": "To'lash",
@@ -753,10 +751,13 @@
   },
   "banner": {
     "expired": "7 kunlik sinov muddatingiz tugadi. Davom etish uchun to'lang.",
+    "expiredPlay": "7 kunlik sinov muddatingiz tugadi. Davom etish uchun Zehin Pro obunasi kerak.",
     "daysP1": "Bepul sinov muddatingizga",
     "days": "{{count}} kun",
     "daysP2": "qoldi. To'lovni unutmang!",
-    "pay": "To'lash"
+    "daysP2Play": "qoldi.",
+    "pay": "To'lash",
+    "payPlay": "Batafsil"
   },
   "roi": {
     "labelOliy": "Oliy toifa",
@@ -1108,7 +1109,9 @@
     "admin": "Admin Panel",
     "chooseSubject": "Fanni tanlang",
     "currentSubject": "Hozirgi fan:",
-    "about": "Dastur haqida"
+    "about": "Dastur haqida",
+    "analysis": "Tahlil",
+    "school": "Maktab"
   },
   "notifications": {
     "title": "Bildirishnomalar",
@@ -1156,6 +1159,7 @@
     "priceNote": "Oyiga 30 000 so'mdan boshlab · yillik rejada eng tejamkor",
     "ctaActive": "Pro faol — rahmat!",
     "ctaChoose": "Pro tarifini tanlash",
+    "ctaLocked": "Obuna va promokod",
     "securePay": "Xavfsiz to'lov · sinov davrida karta so'ralmaydi",
     "trustLabel": "🛡️ Xavfsizlik va Kafolat",
     "trustBadges": [
@@ -1190,7 +1194,11 @@
         "q": "Savollar bazasi qanchalik tez-tez yangilanadi?",
         "a": "Savollarimiz professional ekspertlar tomonidan har hafta yangilanib, eng so'nggi milliy sertifikatlash va malaka oshirish standartlariga moslashtiriladi."
       }
-    ]
+    ],
+    "b2bLabel": "MAKTAB UCHUN",
+    "b2bTitle": "Jamoaviy obuna",
+    "b2bDesc": "Maktab yoki tuman ta'lim bo'limi uchun: bitta shartnoma, barcha o'qituvchilarga Pro kirish va ma'muriyat uchun tayyorgarlik hisoboti.",
+    "b2bCta": "Batafsil"
   },
   "shareCard": {
     "subtitle": "Kasbiy sertifikatlash tayyorgarligi",
@@ -1364,5 +1372,150 @@
     "connect": "Ulanish",
     "shareApp": "Ilovani ulashish",
     "contact": "Biz bilan bog'lanish"
+  },
+  "analysis": {
+    "title": "Smart tahlil",
+    "subtitle": "Natijalaringiz asosida: qayerda turibsiz va aynan nima ustida ishlash kerak",
+    "readinessTitle": "Tayyorlik darajasi",
+    "predicted": "{{total}} savollik testda taxminan {{correct}} ta to'g'ri javob",
+    "goalMark": "Maqsad {{score}}%",
+    "band": {
+      "low": "Boshlang'ich",
+      "mid": "O'rta",
+      "good": "Yaxshi",
+      "high": "Yuqori"
+    },
+    "gapToGoal": "Maqsadgacha {{count}} ball qoldi ({{goal}}%)",
+    "goalReached": "Maqsad bajarildi — {{goal}}% dan yuqorisiz",
+    "lowConfidence": "Baho hozircha taxminiy (ishonch {{pct}}%). Ko'proq savol yeching — raqam aniqlashadi.",
+    "noData": "Hali natija yo'q. Birinchi testni yeching — tayyorlik darajasi shundan keyin hisoblanadi.",
+    "biggestLoss": "Eng katta yo'qotish",
+    "lossHint": "{{total}} savollik testda shu bo'limdan yo'qotilishi kutilayotgan savollar soni",
+    "notStarted": "Boshlanmagan",
+    "openFull": "Batafsil tahlil",
+    "tabDiagnosis": "Tahlil",
+    "tabPlan": "Reja",
+    "coverageLabel": "Qamrov",
+    "masteredLabel": "O'zlashtirilgan",
+    "confidenceLabel": "Ishonch",
+    "byTopicTitle": "Bo'limlar bo'yicha",
+    "qShort": "savol",
+    "status": {
+      "untouched": "Boshlanmagan",
+      "thin": "Ma'lumot kam",
+      "weak": "Zaif",
+      "medium": "O'rtacha",
+      "strong": "Kuchli",
+      "mastered": "O'zlashtirilgan"
+    },
+    "methodNote": "Tayyorlik darajasi har bo'lim natijangizdan hisoblanadi. Kam savol ishlangan bo'lim sizning o'rtacha darajangizga yaqinlashtiriladi — shuning uchun 3 ta savoldagi 100% butun bo'limni «o'zlashtirilgan» qilib ko'rsatmaydi.",
+    "planIntro": "Reja natijalaringizdan avtomatik quriladi va har testdan keyin yangilanadi. Qadamlar foyda bo'yicha tartiblangan."
+  },
+  "trajectory": {
+    "retentionTitle": "Takror navbatini yopish",
+    "retentionDesc": "{{count}} ta kartochkaning takrorlash vaqti keldi. Bilim eng avval shu yerda «oqib ketadi».",
+    "retentionCta": "Takrorlash",
+    "practiceTitle": "{{topic}}",
+    "practiceDesc": "Hozirgi aniqlik {{acc}}%. {{batch}} ta savol yeching — maqsad {{target}}%.",
+    "practiceCta": "{{count}} ta savol",
+    "coverageTitle": "{{topic}} — boshlash",
+    "coverageDesc": "Bu bo'lim bo'yicha ma'lumot yetarli emas ({{answered}}/{{target}}). Baho aniq bo'lishi uchun yopilishi kerak.",
+    "coverageCta": "Boshlash",
+    "mistakesTitle": "Xatolar daftari",
+    "mistakesDesc": "{{count}} ta xato to'plangan. Ularni ko'rib chiqish eng tez natija beradi.",
+    "mistakesCta": "Ko'rib chiqish",
+    "examTitle": "Nazorat imtihoni",
+    "examDesc": "Tayyorligingiz maqsaddan yuqori. Uni imtihon sharoitida tasdiqlang.",
+    "examCta": "Imtihon",
+    "gain": "+{{count}} ball",
+    "emptyTitle": "Reja bo'sh",
+    "emptyDesc": "Hozircha aniq tavsiya yo'q — bir necha test yeching, reja o'zi shakllanadi.",
+    "focus": "Nimaga e'tibor bering"
+  },
+  "milestones": {
+    "sectionTitle": "Shaxsiy marralar",
+    "sectionHint": "Marralar odatni o'lchaydi — uzluksizlik, hajm, zanjir. Ular Akademik mahorat indeksiga ta'sir qilmaydi.",
+    "progress": "{{value}} / {{next}} {{unit}}",
+    "maxed": "Yakunlandi — {{value}} {{unit}}",
+    "notifTitle": "Yangi marra",
+    "notifBody": "«{{name}}» marrasi: {{target}} {{unit}}.",
+    "unit": {
+      "day": "kun",
+      "q": "savol",
+      "test": "test",
+      "topic": "bo'lim"
+    },
+    "kunlik": {
+      "name": "Kunlik zanjir",
+      "desc": "Uzluksiz kunlar"
+    },
+    "zanjir": {
+      "name": "To'g'ri javoblar zanjiri",
+      "desc": "Ketma-ket to'g'ri javoblar"
+    },
+    "hajm": {
+      "name": "Mashq hajmi",
+      "desc": "Jami yechilgan savollar"
+    },
+    "kunlar": {
+      "name": "Bajarilgan kunlar",
+      "desc": "Kunlik maqsad bajarilgan kunlar"
+    },
+    "benuqson": {
+      "name": "Benuqson testlar",
+      "desc": "Xatosiz yakunlangan testlar"
+    },
+    "ozlashtirish": {
+      "name": "O'zlashtirilgan bo'limlar",
+      "desc": "90%+ aniqlik bilan"
+    }
+  },
+  "school": {
+    "title": "Maktab",
+    "subtitle": "Maktab jamoasi uchun paket va ma'muriyat hisoboti",
+    "joinTitle": "Maktabga qo'shilish",
+    "joinDesc": "Ma'muriyatdan olgan kodni kiriting. Maktab obunasi faol bo'lsa, Pro kirish avtomatik ochiladi.",
+    "codeLabel": "Qo'shilish kodi",
+    "consent": "Umumiy tayyorlik ko'rsatkichlarim maktab ma'muriyatiga ko'rinishiga roziman. Xatolarim, savollarim va javoblarim hech kimga ko'rsatilmaydi.",
+    "joinBtn": "Qo'shilish",
+    "joined": "«{{school}}» maktabiga qo'shildingiz",
+    "joinedWithPremium": "«{{school}}» maktabiga qo'shildingiz — Pro kirish ochildi",
+    "memberTitle": "Maktab a'zosi",
+    "memberDesc": "Siz maktab paketiga biriktirilgansiz. Jamlangan ko'rsatkichlarni maktab ma'muriyati ko'radi.",
+    "noRegion": "Hudud ko'rsatilmagan",
+    "seatsUsed": "{{used}}/{{seats}} o'rin",
+    "subscriptionUntil": "Obuna {{date}} gacha",
+    "stTeachers": "O'qituvchi",
+    "stActive": "7 kunda faol",
+    "stReadiness": "O'rtacha tayyorlik",
+    "stSupport": "Yordam kerak",
+    "privacyNote": "Siz faqat jamlangan ko'rsatkichlarni ko'rasiz: tayyorlik, aniqlik, faollik. O'qituvchining xatolari, savollari va javoblari ko'rsatilmaydi. Rozilik bermagan o'qituvchi raqamlarsiz ko'rinadi.",
+    "membersTitle": "O'qituvchilar",
+    "membersEmpty": "Hali hech kim qo'shilmagan — kodni jamoaga tarqating",
+    "memberMeta": "{{answered}} savol · aniqlik {{acc}} · zanjir {{streak}} kun",
+    "hiddenRow": "Hisobot yopiq (rozilik berilmagan)",
+    "readinessShort": "tayyorlik",
+    "unnamed": "Ism ko'rsatilmagan",
+    "supportHint": "{{count}} o'qituvchiga qo'shimcha yordam kerak: ular hali boshlamagan yoki tayyorligi 50% dan past.",
+    "adminHint": "Ro'yxat tayyorligi past o'qituvchidan boshlanadi — yordamni shu tartibda rejalashtirish samaraliroq.",
+    "b2bTitle": "Maktab uchun paket",
+    "b2bDesc": "Jamoaviy obuna: bitta shartnoma, bitta to'lov, barcha o'qituvchilarga Pro kirish.",
+    "b2bPoint1": "Har o'qituvchiga alohida to'lov shart emas — bitta kod bilan qo'shiladi",
+    "b2bPoint2": "Ma'muriyat uchun tayyorgarlik hisoboti (jamlangan ko'rsatkichlar)",
+    "b2bPoint3": "Shartnoma, hisob-faktura va yopilish hujjatlari bilan rasmiylashtiriladi",
+    "reqOpen": "So'rov qoldirish",
+    "reqTelegram": "Telegram orqali bog'lanish",
+    "reqSchool": "Maktab nomi",
+    "reqSchoolPh": "masalan: 24-umumta'lim maktabi",
+    "reqRegion": "Hudud",
+    "reqRegionPh": "Viloyat, tuman",
+    "reqPhone": "Telefon",
+    "reqTeachers": "O'qituvchilar soni",
+    "reqNote": "Izoh",
+    "reqNotePh": "ixtiyoriy",
+    "reqSubmit": "Yuborish",
+    "reqRequired": "Maktab nomi va telefon raqamini kiriting",
+    "reqSent": "So'rov yuborildi — tez orada bog'lanamiz",
+    "reqSentBox": "So'rovingiz qabul qilindi. Operator siz bilan bog'lanadi."
   }
 }
