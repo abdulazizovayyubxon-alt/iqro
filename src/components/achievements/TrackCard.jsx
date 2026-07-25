@@ -21,7 +21,7 @@ const TrackCard = ({ track, tier, progress, earnedAt }) => {
   const earnedTs = started ? earnedAt?.[tier] : null;
   const isNew = earnedTs && Date.now() - earnedTs < NEW_BADGE_MS;
   const earnedDate = earnedTs
-    ? new Date(earnedTs).toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : 'uz-UZ', { day: 'numeric', month: 'short', year: 'numeric' })
+    ? new Date(earnedTs).toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : i18n.language === 'en' ? 'en-US' : 'uz-UZ', { day: 'numeric', month: 'short', year: 'numeric' })
     : null;
 
   return (

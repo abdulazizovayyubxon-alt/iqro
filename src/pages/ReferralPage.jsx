@@ -19,7 +19,7 @@ import {
   REFERRAL_DISCOUNT,
 } from '../services/referral';
 
-const fmtSum = (n) => n.toLocaleString(i18n.language === 'ru' ? 'ru-RU' : 'uz-UZ') + ' ' + i18n.t('referral.currency');
+const fmtSum = (n) => n.toLocaleString(i18n.language === 'ru' ? 'ru-RU' : i18n.language === 'en' ? 'en-US' : 'uz-UZ') + ' ' + i18n.t('referral.currency');
 
 export default function ReferralPage() {
   const { t } = useTranslation();
@@ -320,7 +320,7 @@ export default function ReferralPage() {
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r.referredName || t('referral.unknownName')}</div>
                       <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 2, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '2px 8px' }}>
-                        <span>{new Date(r.createdAt).toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : 'uz-UZ', { day: 'numeric', month: 'short' })}</span>
+                        <span>{new Date(r.createdAt).toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : i18n.language === 'en' ? 'en-US' : 'uz-UZ', { day: 'numeric', month: 'short' })}</span>
                         {(() => {
                           if (r.freeExpire) {
                             return (

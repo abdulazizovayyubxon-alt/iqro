@@ -464,7 +464,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
                   <span className="pp-menu-sublabel" style={user.isTruePremium ? { color: 'var(--green)', fontWeight: 700 } : undefined}>
                     {user.isTruePremium
                       ? (user.premiumExpire
-                          ? t('settings.premiumActiveUntil', { date: new Date(user.premiumExpire).toLocaleDateString((i18n.resolvedLanguage || i18n.language) === 'ru' ? 'ru-RU' : 'uz-UZ') })
+                          ? t('settings.premiumActiveUntil', { date: new Date(user.premiumExpire).toLocaleDateString((i18n.resolvedLanguage || i18n.language) === 'ru' ? 'ru-RU' : (i18n.resolvedLanguage || i18n.language) === 'en' ? 'en-US' : 'uz-UZ') })
                           : t('settings.premiumUnlimited'))
                       : t('settings.premiumHint')}
                   </span>

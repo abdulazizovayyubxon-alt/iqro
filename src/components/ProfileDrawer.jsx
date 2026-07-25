@@ -208,7 +208,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
   const subDesc = isTruePremium
     ? (premiumExpireDate
         ? t('profile.premiumExpires', {
-            date: premiumExpireDate.toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : 'uz-UZ', { day: 'numeric', month: 'long', year: 'numeric' }),
+            date: premiumExpireDate.toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : i18n.language === 'en' ? 'en-US' : 'uz-UZ', { day: 'numeric', month: 'long', year: 'numeric' }),
             days: premiumDaysLeft,
           })
         : t('profile.premiumLifetime', 'Muddatsiz'))
