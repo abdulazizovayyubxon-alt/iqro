@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect, useContext, useRef, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
@@ -6,6 +6,10 @@ import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
+import { useTheory } from '../hooks/useTheory';
+import { matchKeyPoint } from '../data/theory';
+import TheorySheet from '../components/theory/TheorySheet';
+import TheoryModal from '../components/theory/TheoryModal';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RefreshCw, ArrowLeft, X } from 'lucide-react';
@@ -66,6 +70,11 @@ const TestPage = () => {
   const mode = state.testMode || 'exam';
   const setMode = (m) => updateState({ testMode: m });
   const topicId = state.topicId ?? -1;
+  // Aralash mashq uchun bo'limlar to'plami (Tahlil sahifasidagi «mixed» qadam).
+  // Bo'sh/yaroqsiz bo'lsa null — oddiy test mantiqi o'zgarmaydi.
+  const topicSubset = Array.isArray(state.topicSubset) && state.topicSubset.length > 0
+    ? state.topicSubset
+    : null;
   const goBack = () => {
     localforage.removeItem('test_session').catch(() => {});
     navigate('/test');
@@ -165,6 +174,7 @@ const TestPage = () => {
 
   // Mini-darslik va ko'rilgan mavzular xotirasi
   const [showTheory, setShowTheory] = useState(false);
+  const [showTheoryModal, setShowTheoryModal] = useState(false);
   const [seenTheoryTopics, setSeenTheoryTopics] = useState({});
 
   // Flashcard state
@@ -201,7 +211,9 @@ const TestPage = () => {
 
   useEffect(() => {
     generateFullPool();
-  }, [topicId, mode, state.activeCategory, diffFilter]);
+    // topicSubset o'zgarsa ham qayta yig'iladi: aralash mashqda topicId
+    // o'zgarmaydi (-1), demak usiz eski to'plam qolib ketardi
+  }, [topicId, mode, state.activeCategory, diffFilter, topicSubset?.join(',')]);
 
   useEffect(() => {
     if (isResumingRef.current) {
@@ -246,7 +258,10 @@ const TestPage = () => {
       sessionCheckedRef.current = true;
       try {
         const s = await localforage.getItem('test_session');
-        const valid = s && s.activeCategory === state.activeCategory && s.mode === mode && s.topicId === topicId && (!s.uid || s.uid === user?.uid) && Array.isArray(s.questions) && s.questions.length > 0;
+        // topicSubset ham kalitning bir qismi: aralash mashqda topicId ikkala
+        // holatda ham -1 bo'ladi, shuning uchun usiz eski sessiya tiklanardi
+        const sameSubset = (s?.topicSubset || []).join(',') === (topicSubset || []).join(',');
+        const valid = s && s.activeCategory === state.activeCategory && s.mode === mode && s.topicId === topicId && sameSubset && (!s.uid || s.uid === user?.uid) && Array.isArray(s.questions) && s.questions.length > 0;
         if (valid && currentReq === generateReqRef.current) {
           isResumingRef.current = true;
           setFullPool(s.fullPool || []);
@@ -451,6 +466,12 @@ const TestPage = () => {
           rawList = rawList.filter(q => q.category === state.activeCategory);
         }
 
+        // Aralash mashq (reja «mixed» qadami): faqat tanlangan bir necha
+        // bo'lim savollari qoladi — bloklab emas, aralashtirib mashq qilish uchun
+        if (topicSubset && topicSubset.length > 0) {
+          rawList = rawList.filter(q => topicSubset.includes(q.topicId));
+        }
+
         // BAZADAGI XATOLIKLARNI OLDINI OLISH: Faqat joriy fan mavzularini qoldiramiz
         const validTopicIds = TOPICS.filter(t => 
           Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory
@@ -584,6 +605,7 @@ const TestPage = () => {
       activeCategory: state.activeCategory,
       mode,
       topicId,
+      topicSubset,
       questions,
       fullPool,
       answers,
@@ -593,7 +615,7 @@ const TestPage = () => {
       questionTimes: questionTimesRef.current,
       savedAt: Date.now()
     }).catch(e => console.error("Save test session error:", e));
-  }, [questions, answers, currentQ, selectedBatch, comboCount, showResults, mode, topicId, state.activeCategory, user?.uid, fullPool]);
+  }, [questions, answers, currentQ, selectedBatch, comboCount, showResults, mode, topicId, topicSubset, state.activeCategory, user?.uid, fullPool]);
 
   useEffect(() => {
     setSelectedBatch(0);
@@ -643,7 +665,7 @@ const TestPage = () => {
     localforage.removeItem('test_session').catch(() => {});
     setShowResults(true);
     // 🧠 SMART ENGINE: Natijalarni tahlil qilish va bir marta saqlash
-    const results = summarizeTestResults(questions, answers, state.spacedCards || [], topicId);
+    const results = summarizeTestResults(questions, answers, state.spacedCards || [], topicId, questionTimesRef.current);
     
     // Add total session time and topicId to results
     const totalSessionTime = Object.values(questionTimesRef.current).reduce((a, b) => a + b, 0);
@@ -678,6 +700,20 @@ const TestPage = () => {
 
   const correctCount = Object.keys(answers).filter(k => answers[k] === questions[parseInt(k)]?.correct).length;
 
+  // ── Nazariya: joriy savolning O'Z mavzusi bo'yicha (aralash testda ham) ──
+  const currentTopicId = questions[currentQ]?.topicId ?? topicId;
+  const { theory: currentTheory } = useTheory(currentTopicId);
+
+  // Xato javobdan keyin aynan kerakli nazariy band topiladi. Savol matniga
+  // TO'G'RI javob ham qo'shiladi — u ko'pincha bandning kalit so'zini beradi.
+  const theoryMatch = useMemo(() => {
+    const q = questions[currentQ];
+    const picked = answers[currentQ];
+    if (!q || picked === undefined || picked === q.correct) return null;
+    if (!currentTheory || currentTheory.keyPoints.length === 0) return null;
+    return matchKeyPoint(`${q.q || ''} ${q.opts?.[q.correct] || ''}`, currentTheory);
+  }, [questions, currentQ, answers, currentTheory]);
+
   if (isGenerating) {
     return (
       <div className="test-skeleton-container">
@@ -701,19 +737,22 @@ const TestPage = () => {
   }
 
   if (showTheory) {
+    // Test oldidan konspekt. Ilgari bu bitta abzats edi; endi strukturaviy
+    // material bo'lsa to'liq ko'rsatiladi, bo'lmasa o'sha matn `summary`
+    // sifatida chiqadi — ya'ni hech bir mavzu bo'sh qolmaydi.
     return (
-      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="theory-container">
-        <div className="theory-card">
-          <div className="theory-icon">📚</div>
-          <h2 className="theory-title">{t('test.theoryTitle')}</h2>
-          <p className="theory-subtitle">
-            {t('test.theorySubtitle')}
-          </p>
-          <div className="theory-content">
-            {topicObj?.theoryHint}
-          </div>
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        style={{ padding: '20px 16px 32px' }}
+      >
+        <TheorySheet
+          theory={currentTheory}
+          topicName={topicObj?.name || topicName}
+          embedded
+        />
+        <div style={{ maxWidth: 700, margin: '22px auto 0' }}>
           <motion.button
-            whileHover={{ scale: 1.01, y: -1 }}
             whileTap={{ scale: 0.98 }}
             className="theory-btn"
             onClick={() => setShowTheory(false)}
@@ -980,6 +1019,8 @@ const TestPage = () => {
                 saveCustomMnemonic={saveCustomMnemonic}
                 setShowObjectionModal={setShowObjectionModal}
                 onPremiumClick={() => setShowPremiumModal(true)}
+                theoryMatch={theoryMatch}
+                onOpenTheory={() => setShowTheoryModal(true)}
               />
               <div className="q-nav" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px' }}>
                 <button disabled={currentQ === 0} className="btn btn-outline" onClick={() => { accumulateTime(); setCurrentQ(prev => prev - 1); }}>{t('common.back')}</button>
@@ -1037,6 +1078,15 @@ const TestPage = () => {
       <PremiumModal
         isOpen={showPremiumModal}
         onClose={() => setShowPremiumModal(false)}
+      />
+
+      {/* Konspekt — xato javobdan keyin aynan mos band ajratilgan holda */}
+      <TheoryModal
+        open={showTheoryModal}
+        onClose={() => setShowTheoryModal(false)}
+        topicId={currentTopicId}
+        topicName={TOPICS.find(x => x.id === currentTopicId)?.name || topicName}
+        highlight={theoryMatch?.index ?? null}
       />
 
       {/* Test o'rtasida blok almashtirish tasdig'i (window.confirm o'rniga) */}

@@ -612,7 +612,7 @@ const ExamPage = () => {
     setWeakTopicsSorted(weakTopics);
 
     // 🧠 SMART ENGINE
-    const results = summarizeTestResults(questions, answers, state.spacedCards || [], -1);
+    const results = summarizeTestResults(questions, answers, state.spacedCards || [], -1, questionTimesRef.current);
     results.topicId = -1;
     // Sessiya vaqti — savollarga sarflangan haqiqiy vaqt yig'indisi.
     // Wall-clock (Date.now - startTime) resume'dan keyin noto'g'ri bo'lardi

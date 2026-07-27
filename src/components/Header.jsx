@@ -7,8 +7,10 @@ import { Moon, Sun, BookOpen, Calendar } from 'lucide-react';
 import GiftBox from './shared/GiftBox';
 import ProfileDrawer from './ProfileDrawer';
 import { db } from '../firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { EXAM_DATE } from '../config';
+import { doc, getDoc } from 'firebase/firestore';
+import { EXAM_DATE_KEY } from '../utils/examDate';
+import { useExamCountdown } from '../hooks/useExamDaysLeft';
+import ExamDateModal from './ExamDateModal';
 import { resolveAvatar } from '../data/avatars';
 import { getReferralStats } from '../services/referral';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -24,7 +26,7 @@ const Header = ({ theme, toggleTheme }) => {
   const { toast, showToast } = useContext(ToastContext);
   const { user } = useAuth();
 
-  const [daysLeft, setDaysLeft] = useState(0);
+  const exam = useExamCountdown();
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showProfileDrawer, setShowProfileDrawer] = useState(false);
   const [, setIsOnline] = useState(navigator.onLine);
@@ -90,57 +92,25 @@ const Header = ({ theme, toggleTheme }) => {
     };
   }, []);
 
-  // --- Yangi: Imtihon sanasi modal holatlari ---
+  // --- Imtihon sanasi modali (umumiy komponent: Dashboard ham shuni ochadi) ---
   const [showExamModal, setShowExamModal] = useState(false);
-  const [tempDays, setTempDays] = useState('');
-  const [tempDate, setTempDate] = useState('');
 
-  const calcDays = () => {
-    const customSaved = localStorage.getItem('CUSTOM_EXAM_DATE');
-    let target = null;
-    if (customSaved) {
-      target = new Date(customSaved);
-      if (isNaN(target.getTime())) target = null;
-    }
-    if (!target) target = EXAM_DATE;
-
-    if (!target) {
-      setDaysLeft(0);
-      return;
-    }
-
-    const diff = target - new Date();
-    if (isNaN(diff) || diff <= 0) {
-      setDaysLeft(0);
-    } else {
-      setDaysLeft(Math.floor(diff / 86400000));
-    }
-  };
-
+  // Shaxsiy sanani Firestore'dan localStorage'ga sinxronlash (qurilmalar arasi).
+  // Sanoqning o'zi useExamCountdown ichida hisoblanadi.
   useEffect(() => {
-    // Firestore dan imtihon sanasini yuklash (qurilmalar arasi sinxron)
-    const loadExamDate = async () => {
-      if (!user) return;
-      try {
-        const snap = await getDoc(doc(db, 'users', user.uid));
-        if (snap.exists() && snap.data().examDate) {
-          const firestoreDate = snap.data().examDate;
-          // Firestore dagi sana localStorage ga kesh qilamiz
-          localStorage.setItem('iqro_exam_date', firestoreDate);
-          localStorage.setItem('CUSTOM_EXAM_DATE', new Date(firestoreDate).toISOString());
-        }
-      } catch (e) {
-        console.warn('Exam date yuklashda xato:', e);
-      }
-      calcDays();
-    };
-    loadExamDate();
-    window.addEventListener('storage', calcDays);
-    const interval = setInterval(calcDays, 60000);
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener('storage', calcDays);
-    };
+    if (!user) return;
+    let cancelled = false;
+    getDoc(doc(db, 'users', user.uid))
+      .then(snap => {
+        if (cancelled || !snap.exists() || !snap.data().examDate) return;
+        const firestoreDate = snap.data().examDate;
+        localStorage.setItem('iqro_exam_date', firestoreDate);
+        localStorage.setItem(EXAM_DATE_KEY, new Date(firestoreDate).toISOString());
+        exam.refresh();
+      })
+      .catch(e => console.warn('Exam date yuklashda xato:', e));
+    return () => { cancelled = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const menuRef = useRef(null);
@@ -192,21 +162,30 @@ const Header = ({ theme, toggleTheme }) => {
         </div>
 
         <div className="header-stats">
-          {/* Kun Countdown */}
-          <motion.div
-            className="header-exam-countdown hide-mobile"
-            onClick={() => {
-              setTempDays(daysLeft);
-              setShowExamModal(true);
-            }} 
-            whileHover={{ y: -1 }}
-            whileTap={{ scale: 0.96 }}
-            title={t('header.examDateChange')}
-            style={{ minHeight: '48px', display: 'flex', alignItems: 'center', gap: '6px', boxSizing: 'border-box' }}
-          >
-            <span className="header-exam-countdown-text">{t('header.daysLeft', { count: daysLeft })}</span>
-            <Calendar size={13} style={{ color: 'var(--blue)', opacity: 0.8 }} />
-          </motion.div>
+          {/* Kun Countdown — sana ishonchli bo'lgandagina raqam ko'rsatiladi.
+              Sana yo'q bo'lsa «0 kun» emas, uni belgilash taklifi chiqadi. */}
+          {exam.enabled && (
+            <motion.div
+              className="header-exam-countdown hide-mobile"
+              onClick={() => setShowExamModal(true)}
+              whileHover={{ y: -1 }}
+              whileTap={{ scale: 0.96 }}
+              title={t('header.examDateChange')}
+              style={{ minHeight: '48px', display: 'flex', alignItems: 'center', gap: '6px', boxSizing: 'border-box' }}
+            >
+              <span
+                className="header-exam-countdown-text"
+                style={exam.tone === 'soon' ? { color: 'var(--amber)' } : undefined}
+              >
+                {!exam.hasDate
+                  ? t('exam.setDateShort')
+                  : exam.isToday
+                    ? t('exam.today')
+                    : t('header.daysLeft', { count: exam.daysLeft })}
+              </span>
+              <Calendar size={13} style={{ color: 'var(--blue)', opacity: 0.8 }} />
+            </motion.div>
+          )}
 
           {/* Tema almashtirish: Kunduzgi → Sepia (o'qish) → Tungi */}
           <motion.button
@@ -243,90 +222,16 @@ const Header = ({ theme, toggleTheme }) => {
         </div>
       </div>
 
-      {/* Imtihon sanasini sozlash modali */}
-      {showExamModal && (
-        <div className="modal-overlay" onClick={() => setShowExamModal(false)}>
-          <div className="modal-content glass-panel" onClick={e => e.stopPropagation()} style={{ maxWidth: '400px' }}>
-            <div className="modal-title">
-              <Calendar size={22} style={{ color: 'var(--blue)' }} /> {t('header.examModal.title')}
-            </div>
-            <div className="modal-text">
-              {t('header.examModal.text')}
-            </div>
-            
-            <div className="flex-col-gap-16" style={{ marginBottom: '24px' }}>
-              <div>
-                <label className="input-label-sm">{t('header.examModal.daysLabel')}</label>
-                <input
-                  type="number"
-                  className="modal-input"
-                  value={tempDays}
-                  onChange={(e) => setTempDays(e.target.value)}
-                  placeholder={t('header.examModal.daysPlaceholder')}
-                  min="1"
-                  max="1000"
-                />
-              </div>
-              
-              <div className="text-center-or">{t('header.examModal.or')}</div>
-
-              <div>
-                <label className="input-label-sm">{t('header.examModal.dateLabel')}</label>
-                <input 
-                  type="date" 
-                  className="modal-input" 
-                  value={tempDate} 
-                  onChange={(e) => {
-                    setTempDate(e.target.value);
-                    if (e.target.value) {
-                      const diff = new Date(e.target.value) - new Date();
-                      setTempDays(Math.max(0, Math.floor(diff / 86400000)));
-                    }
-                  }}
-                />
-              </div>
-            </div>
-
-            <div className="modal-actions" style={{ display: 'flex', gap: '12px' }}>
-              <button className="btn btn-outline" style={{ flex: 1 }} onClick={() => setShowExamModal(false)}>
-                {t('common.cancel')}
-              </button>
-              <button 
-                className="btn btn-primary" 
-                style={{ flex: 1 }} 
-                onClick={async () => {
-                  let target = null;
-                  if (tempDate) {
-                    target = new Date(tempDate);
-                  } else if (tempDays !== '') {
-                    target = new Date(Date.now() + parseInt(tempDays) * 86400000);
-                  }
-                  if (target) {
-                    // localStorage ga kesh sifatida saqlaymiz
-                    localStorage.setItem('CUSTOM_EXAM_DATE', target.toISOString());
-                    // yyyy-mm-dd formatda ham saqlaymiz (ProfilePage uchun)
-                    const dateStr = target.toISOString().split('T')[0];
-                    localStorage.setItem('iqro_exam_date', dateStr);
-                    // ═══ FIRESTORE GA SAQLAYMIZ (qurilmalar arasi sinxron) ═══
-                    if (user) {
-                      try {
-                        await setDoc(doc(db, 'users', user.uid), { examDate: dateStr }, { merge: true });
-                      } catch (e) {
-                        console.warn('Exam date Firestore saqlash xatosi:', e);
-                      }
-                    }
-                    calcDays();
-                    showToast(t('header.examModal.saved'), 'success');
-                  }
-                  setShowExamModal(false);
-                }}
-              >
-                {t('common.save')}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Imtihon sanasini sozlash modali — umumiy komponent */}
+      <ExamDateModal
+        open={showExamModal}
+        initialDays={exam.hasDate ? exam.daysLeft : ''}
+        onClose={() => setShowExamModal(false)}
+        onSaved={() => {
+          exam.refresh();
+          showToast(t('header.examModal.saved'), 'success');
+        }}
+      />
 
       {/* Toast xabar tizimi */}
       <AnimatePresence>

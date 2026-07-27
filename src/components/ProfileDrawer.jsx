@@ -351,20 +351,19 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
                       <ChevronRight size={16} strokeWidth={2.6} />
                     </div>
                   </div>
-                  {/* Dekorativ toj — Click'dagi 3D grafika o'rnida, azure gradient */}
+                  {/* Dekorativ olmos — toj o'rnida: qirrali (brilliant) kesim, har
+                      yoq alohida azure tonda. Toj bolalarcha ko'rinardi; olmos
+                      «qimmatbaho» ma'nosini beradi va Click/bank uslubiga mos. */}
                   <svg width={84} height={84} viewBox="0 0 64 64" fill="none" aria-hidden="true"
-                    style={{ position: 'absolute', right: -6, bottom: -10, transform: 'rotate(-10deg)', filter: 'drop-shadow(0 12px 20px rgba(14,151,224,0.28))' }}>
-                    <defs>
-                      <linearGradient id="tpCrownGrad" x1="0" y1="0" x2="0.35" y2="1">
-                        <stop offset="0" stopColor="#5FBBEE" />
-                        <stop offset="1" stopColor="#0E97E0" />
-                      </linearGradient>
-                    </defs>
-                    <path d="M10 22 L21 31 L32 15 L43 31 L54 22 L50.5 44 L13.5 44 Z" fill="url(#tpCrownGrad)" strokeLinejoin="round" />
-                    <circle cx="10" cy="18.5" r="3.4" fill="url(#tpCrownGrad)" />
-                    <circle cx="32" cy="11.5" r="3.6" fill="url(#tpCrownGrad)" />
-                    <circle cx="54" cy="18.5" r="3.4" fill="url(#tpCrownGrad)" />
-                    <rect x="13" y="48" width="38" height="6" rx="3" fill="url(#tpCrownGrad)" />
+                    style={{ position: 'absolute', right: 8, bottom: 6, filter: 'drop-shadow(0 10px 18px rgba(11,90,140,0.22))' }}>
+                    {/* yuqori qism (toj yoqlari) */}
+                    <path d="M17.6 7.2 H29.6 L22.4 21.6 H8 Z" fill="#8FD6F8" />
+                    <path d="M29.6 7.2 H34.4 L41.6 21.6 H22.4 Z" fill="#C7EBFD" />
+                    <path d="M34.4 7.2 H46.4 L56 21.6 H41.6 Z" fill="#5BBCEF" />
+                    {/* pastki qism (pavilion) */}
+                    <path d="M8 21.6 H22.4 L32 52.8 Z" fill="#2A9CDC" />
+                    <path d="M22.4 21.6 H41.6 L32 52.8 Z" fill="#67C2F1" />
+                    <path d="M41.6 21.6 H56 L32 52.8 Z" fill="#0B6FA9" />
                   </svg>
                 </button>
               </div>

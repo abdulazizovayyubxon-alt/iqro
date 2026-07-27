@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Activity, ChevronRight, Info } from 'lucide-react';
+import { Activity, ChevronRight, Info, CalendarDays } from 'lucide-react';
+import TrendLine from './TrendLine';
 
 // Tayyorlik darajasi rangi — sokin palitra (azure → amber → red), gradientsiz
 export const bandColor = (band) => ({
@@ -17,10 +18,14 @@ export const bandColor = (band) => ({
  * props:
  *   diag     — computeDiagnostics(...) natijasi
  *   compact  — Dashboard varianti (kamroq tafsilot + CTA)
+ *   pace     — buildPace(...) natijasi; berilsa «N kun · kuniga ~M savol»
+ *              qatori chiqadi. Sanoq raqamning YONIDA turishi muhim: yolg'iz
+ *              muddat tashvish beradi, tayyorlik bilan birga esa rejaga aylanadi.
+ *   trend    — readinessTrend(...) natijasi; 2 haftadan kam ma'lumotda chizilmaydi
  *   onOpen   — CTA bosilganda (compact rejimda)
  *   onTopic  — yo'qotish chipiga bosilganda (topicId)
  */
-const ReadinessCard = ({ diag, compact = false, onOpen, onTopic }) => {
+const ReadinessCard = ({ diag, compact = false, pace = null, trend = null, onOpen, onTopic }) => {
   const { t } = useTranslation();
   if (!diag) return null;
 
@@ -50,6 +55,12 @@ const ReadinessCard = ({ diag, compact = false, onOpen, onTopic }) => {
             {diag.hasData ? diag.readiness : '—'}
           </span>
           {diag.hasData && <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text3)' }}>%</span>}
+          {/* Xatolik chegarasi — raqam qanchalik «qattiq» ekanini ko'rsatadi */}
+          {diag.hasData && diag.margin != null && (
+            <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--text3)', marginLeft: 2 }}>
+              ±{diag.margin}
+            </span>
+          )}
         </div>
         {diag.hasData && (
           <div style={{ fontSize: 12, color: 'var(--text2)', lineHeight: 1.45, flex: 1, minWidth: 160 }}>
@@ -90,6 +101,91 @@ const ReadinessCard = ({ diag, compact = false, onOpen, onTopic }) => {
         </div>
       </div>
 
+      {/* Haqiqiy bilim — taxmin ulushi ajratilgan raqam. Yuqoridagi katta
+          raqam KUTILAYOTGAN BALL (imtihonda taxmin ham ball keltiradi),
+          bu esa aslida nima bilinishini ko'rsatadi. Ikkalasi birga turishi
+          shart, aks holda pastroq raqam «orqaga ketdim» deb tushuniladi. */}
+      {diag.hasData && diag.knowledge != null && (
+        <div style={{
+          display: 'flex', alignItems: 'baseline', gap: 6,
+          marginTop: 10, fontSize: 12, color: 'var(--text2)',
+        }}>
+          <span style={{ fontWeight: 600 }}>{t('analysis.knowledgeLabel')}</span>
+          <span style={{ fontWeight: 800, color: 'var(--text)' }}>{diag.knowledge}%</span>
+          {!compact && (
+            <span style={{ fontSize: 10.5, color: 'var(--text3)' }}>
+              {t('analysis.knowledgeHint')}
+            </span>
+          )}
+        </div>
+      )}
+
+      {/* Muddat va sur'at — tayyorlik raqami bilan bitta qatorda.
+          buildPace sana yoki natija bo'lmaganda null beradi, ya'ni bu yerda
+          hech qachon o'ylab topilgan raqam chiqmaydi. */}
+      {pace?.hasDeadline && (
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
+          marginTop: 12, paddingTop: 10, borderTop: '1px solid var(--border)',
+        }}>
+          <CalendarDays size={14} style={{ color: 'var(--text3)', flexShrink: 0 }} />
+          <span style={{
+            fontSize: 12.5, fontWeight: 800,
+            color: pace.daysLeft <= 7 ? 'var(--amber)' : 'var(--text)',
+          }}>
+            {t('pace.daysLeft', { count: pace.daysLeft })}
+          </span>
+          {pace.perDay && (
+            <span style={{
+              padding: '3px 9px', borderRadius: 9, background: 'var(--blue-bg)',
+              color: 'var(--accent2)', fontSize: 11, fontWeight: 800,
+            }}>
+              {t('pace.perDay', { count: pace.perDay })}
+            </span>
+          )}
+          {pace.perDay && (
+            <span style={{
+              fontSize: 11, fontWeight: 700,
+              color: pace.todayDone ? 'var(--green)' : 'var(--text3)',
+            }}>
+              {pace.todayDone
+                ? t('pace.todayDone')
+                : t('pace.today', { done: pace.todayAnswered, target: pace.perDay })}
+            </span>
+          )}
+        </div>
+      )}
+
+      {/* Tendensiya — haftalik o'sish (2 haftadan kam ma'lumotda chiqmaydi) */}
+      {diag.hasData && trend?.delta !== null && trend?.delta !== undefined && (
+        <div style={{ marginTop: 10 }}>
+          <TrendLine trend={trend} />
+        </div>
+      )}
+
+      {/* Baho ishonchini pasaytiruvchi holatlar — sabab bilan aytiladi,
+          shunda «nega ±13?» degan savol javobsiz qolmaydi */}
+      {diag.hasData && !compact && (diag.staleCount > 0 || diag.rushedCount > 0) && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 10 }}>
+          {diag.staleCount > 0 && (
+            <span style={{
+              padding: '3px 9px', borderRadius: 9, background: 'var(--amber-bg)',
+              color: 'var(--amber)', fontSize: 10.5, fontWeight: 700,
+            }}>
+              {t('analysis.staleChip', { count: diag.staleCount })}
+            </span>
+          )}
+          {diag.rushedCount > 0 && (
+            <span style={{
+              padding: '3px 9px', borderRadius: 9, background: 'var(--bg3)',
+              color: 'var(--text3)', fontSize: 10.5, fontWeight: 700,
+            }}>
+              {t('analysis.rushedChip', { count: diag.rushedCount })}
+            </span>
+          )}
+        </div>
+      )}
+
       {/* Maqsadgacha qolgan farq */}
       {diag.hasData && !diag.meetsGoal && (
         <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 10, fontWeight: 600 }}>
@@ -112,7 +208,7 @@ const ReadinessCard = ({ diag, compact = false, onOpen, onTopic }) => {
           <Info size={13} style={{ color: 'var(--text3)', flexShrink: 0, marginTop: 1 }} />
           <span>
             {diag.hasData
-              ? t('analysis.lowConfidence', { pct: Math.round(diag.confidence * 100) })
+              ? t('analysis.lowConfidence', { margin: diag.margin })
               : t('analysis.noData')}
           </span>
         </div>

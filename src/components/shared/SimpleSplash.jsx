@@ -3,7 +3,7 @@
  *
  * Foydalanuvchi sahifani yangilaganda (F5/pull-to-refresh) video splash
  * o'rniga shu qisqa va yengil splash ko'rsatiladi:
- *   - To'q navy fon (#0A2440) — video splash bilan bir xil
+ *   - To'q navy fon (#0A2440) — video splash bilan bir xil (status-bar ham)
  *   - Zehin logotipi markazda
  *   - Yumshoq fade-in → qisqa pauza → fade-out (jami ~1 soniya)
  *
@@ -11,6 +11,7 @@
  */
 import React, { useState, useEffect, useRef } from 'react';
 import BrandLogo from './BrandLogo';
+import { enterSplash, exitSplash } from '../../utils/statusBar';
 
 const DISPLAY_MS = 600;  // Logo ko'rsatish vaqti
 const FADE_MS = 400;     // Fade-out davomiyligi
@@ -19,6 +20,12 @@ export default function SimpleSplash({ onComplete }) {
   const [fading, setFading] = useState(false);
   const [visible, setVisible] = useState(true);
   const done = useRef(false);
+
+  // Status-bar splash foniga (navy) — komponent yopilganda tema rangi qaytadi
+  useEffect(() => {
+    enterSplash();
+    return () => exitSplash();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {

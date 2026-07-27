@@ -14,8 +14,10 @@ import { TOPICS, SUBJECTS } from '../data/mockData';
 import { reconcileAchievements, nextMilestones } from '../data/tracks';
 import NextMilestoneLine from '../components/achievements/NextMilestoneLine';
 import ReadinessCard from '../components/diagnostics/ReadinessCard';
-import { computeDiagnostics } from '../engine/DiagnosticsEngine';
+import ExamDateModal from '../components/ExamDateModal';
+import { computeDiagnostics, buildPace } from '../engine/DiagnosticsEngine';
 import { useTopicTotals } from '../hooks/useTopicTotals';
+import { useExamCountdown } from '../hooks/useExamDaysLeft';
 import {
   Play, Brain, GraduationCap,
   ChevronRight, Clock, Target,
@@ -25,7 +27,7 @@ import {
 import SubjectTopicChips, { BlockRow } from '../components/SubjectTopicChips';
 import { motion } from 'framer-motion';
 import localforage from 'localforage';
-import { EXAM_DATE, EXAM_GOAL_SCORE, EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY, isPlayBuild } from '../config';
+import { EXAM_GOAL_SCORE, EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY, isPlayBuild } from '../config';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 
@@ -54,8 +56,13 @@ const Dashboard = () => {
   const questionsLeft = Math.max(0, 50 - (state.dailyGoal?.answered || 0));
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [showClearConfirm, setShowClearConfirm] = useState(false); // e'tirozlarni tozalash tasdig'i
-  const [daysLeft, setDaysLeft] = useState('');
-  const [showExamBanner, setShowExamBanner] = useState(true);
+  const exam = useExamCountdown();
+  const [showExamModal, setShowExamModal] = useState(false);
+  // Sanoq banneri «abadiy yopish» emas, 7 kunga uxlatiladi — muddat yaqinlashsa
+  // yana ko'rinadi. Oxirgi 14 kunda umuman yopilmaydi (ENG kerakli payt).
+  const [examSnoozedUntil, setExamSnoozedUntil] = useState(
+    () => Number(localStorage.getItem('iqro_exam_banner_snooze') || 0)
+  );
   const [showReferralBanner, setShowReferralBanner] = useState(true);
   const [questionMeta, setQuestionMeta] = useState(null);
   const [priceFrom, setPriceFrom] = useState(DEFAULT_PRICE_FROM);
@@ -116,34 +123,15 @@ const Dashboard = () => {
   }, [user?.uid]);
 
   useEffect(() => {
-    setShowExamBanner(localStorage.getItem('iqro_dismissed_exam_banner') !== '1');
     setShowReferralBanner(localStorage.getItem('iqro_dismissed_ref_banner') !== '1');
   }, []);
 
-  useEffect(() => {
-    const calc = () => {
-      const customSaved = localStorage.getItem('CUSTOM_EXAM_DATE');
-      let target = null;
-      if (customSaved) {
-        target = new Date(customSaved);
-        if (isNaN(target.getTime())) target = null;
-      }
-      if (!target) target = EXAM_DATE;
-
-      if (!target) { setDaysLeft(t('dashboard.examNoDate')); return; }
-
-      const diff = target - new Date();
-      if (isNaN(diff) || diff <= 0) setDaysLeft(t('dashboard.examToday'));
-      else setDaysLeft(t('dashboard.examCountdown', { days: Math.floor(diff / 86400000), hours: Math.floor((diff % 86400000) / 3600000) }));
-    };
-    calc();
-    window.addEventListener('storage', calc);
-    const int = setInterval(calc, 60000);
-    return () => {
-      clearInterval(int);
-      window.removeEventListener('storage', calc);
-    };
-  }, [t]);
+  // Kunlik sur'at — «N kun · kuniga ~M savol». buildPace sana yo'q bo'lsa yoki
+  // natija bo'lmasa ataylab null qaytaradi (taxminiy raqam yolg'on bo'lardi).
+  const pace = useMemo(
+    () => buildPace(diag, state, { daysLeft: exam.daysLeft }),
+    [diag, state, exam.daysLeft]
+  );
 
   // ═══ REFERRAL WELCOME TOAST ═══
   useEffect(() => {
@@ -288,31 +276,100 @@ const Dashboard = () => {
         </motion.button>
       )}
 
-      {/* ── IMTIHON BANNER ── */}
-      {showExamBanner && EXAM_DATE && cat !== 'art' && (
-        <div className="dashboard-exam-banner">
-          <button
-            aria-label={t('dashboard.bannerClose')}
-            style={{ position: 'absolute', top: 4, right: 4, background: 'transparent', border: 'none', width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', cursor: 'pointer', borderRadius: '50%' }}
-            onClick={(e) => { e.stopPropagation(); setShowExamBanner(false); localStorage.setItem('iqro_dismissed_exam_banner', '1'); }}
-          >
-            <X size={18} />
-          </button>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{ background: 'rgba(255,255,255,0.2)', borderRadius: 10, padding: '8px 10px' }}>
-              <Clock size={20} color="#fff" />
+      {/* ── IMTIHON SANOQI ──
+          Ilgari bu banner faqat config'dagi qattiq sanaga bog'liq edi va o'sha
+          sana o'tib ketgach hech kimga ko'rinmay qolgan. Endi sana ishonchli
+          bo'lgandagina raqam chiqadi; sana yo'q bo'lsa uni belgilash taklif
+          qilinadi. Yopish — abadiy emas, 7 kunga. */}
+      {(() => {
+        if (!exam.enabled) return null;
+        // Umumiy (rasmiy) sana tasviriy san'at o'qituvchisiga to'g'ri kelmaydi —
+        // shaxsiy sana kiritilgan bo'lsa esa har fanda ko'rsatiladi.
+        if (exam.hasDate && !exam.isPersonal && cat === 'art') return null;
+
+        const canDismiss = !exam.hasDate || exam.daysLeft > 14;
+        if (canDismiss && Date.now() < examSnoozedUntil) return null;
+
+        const snooze = (e) => {
+          e.stopPropagation();
+          const until = Date.now() + 7 * 86400000;
+          localStorage.setItem('iqro_exam_banner_snooze', String(until));
+          setExamSnoozedUntil(until);
+        };
+
+        // ── Sana yo'q: sokin taklif (raqam o'ylab topilmaydi) ──
+        if (!exam.hasDate) {
+          return (
+            <div className="glass-panel" style={{ position: 'relative', padding: '14px 16px', marginBottom: 16 }}>
+              <button
+                aria-label={t('dashboard.bannerClose')}
+                style={{ position: 'absolute', top: 2, right: 2, background: 'transparent', border: 'none', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text3)', cursor: 'pointer', borderRadius: '50%' }}
+                onClick={snooze}
+              >
+                <X size={16} />
+              </button>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 11, paddingRight: 34 }}>
+                <div style={{ flexShrink: 0, width: 38, height: 38, borderRadius: 11, background: 'var(--blue-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Clock size={19} style={{ color: 'var(--accent)' }} />
+                </div>
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--text)' }}>{t('exam.setDateTitle')}</div>
+                  <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2, lineHeight: 1.45 }}>{t('exam.setDateDesc')}</div>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowExamModal(true)}
+                style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                  width: '100%', marginTop: 12, padding: '10px 12px', borderRadius: 12,
+                  border: '1px solid var(--border)', background: 'var(--bg2)',
+                  color: 'var(--accent)', fontWeight: 700, fontSize: 13,
+                  cursor: 'pointer', fontFamily: 'inherit',
+                }}
+              >
+                {t('exam.setDateCta')} <ChevronRight size={15} />
+              </button>
             </div>
-            <div>
-              <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>{EXAM_LABEL}</div>
-              <div style={{ fontSize: 18, fontWeight: 800, color: '#fff' }}>{daysLeft}</div>
+          );
+        }
+
+        // ── Sana bor: sanoq ──
+        const soon = exam.tone !== 'calm';
+        return (
+          <div className="dashboard-exam-banner" style={{ cursor: 'pointer' }} onClick={() => setShowExamModal(true)}>
+            {canDismiss && (
+              <button
+                aria-label={t('dashboard.bannerClose')}
+                style={{ position: 'absolute', top: 4, right: 4, background: 'transparent', border: 'none', width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', cursor: 'pointer', borderRadius: '50%' }}
+                onClick={snooze}
+              >
+                <X size={18} />
+              </button>
+            )}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <div style={{ background: 'rgba(255,255,255,0.2)', borderRadius: 10, padding: '8px 10px' }}>
+                <Clock size={20} color="#fff" />
+              </div>
+              <div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>
+                  {exam.isPersonal ? t('exam.yourDate') : (exam.label || EXAM_LABEL)}
+                </div>
+                <div style={{ fontSize: 18, fontWeight: 800, color: '#fff' }}>
+                  {exam.isToday ? t('exam.today') : t('exam.daysLeft', { count: exam.daysLeft })}
+                </div>
+              </div>
+            </div>
+            <div className="dashboard-exam-goal">
+              <Target size={14} />
+              <span>
+                {soon && pace?.perDay
+                  ? t('pace.perDay', { count: pace.perDay })
+                  : t('dashboard.goal', { score: EXAM_GOAL_SCORE })}
+              </span>
             </div>
           </div>
-          <div className="dashboard-exam-goal">
-            <Target size={14} />
-            <span>{t('dashboard.goal', { score: EXAM_GOAL_SCORE })}</span>
-          </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* ── REFERRAL BANNER (Do'stlarni Taklif Qilish) ── */}
       {showReferralBanner && (
@@ -412,6 +469,7 @@ const Dashboard = () => {
         <ReadinessCard
           diag={diag}
           compact
+          pace={pace}
           onOpen={() => navigate('/analysis')}
           onTopic={(topicId) => handleNav(topicId, 'exam')}
         />
@@ -501,6 +559,16 @@ const Dashboard = () => {
           ))}
         </div>
       )}
+
+      <ExamDateModal
+        open={showExamModal}
+        initialDays={exam.hasDate ? exam.daysLeft : ''}
+        onClose={() => setShowExamModal(false)}
+        onSaved={() => {
+          exam.refresh();
+          showToast(t('header.examModal.saved'), 'success');
+        }}
+      />
 
       <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
 

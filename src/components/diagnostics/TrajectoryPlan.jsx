@@ -1,10 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Brain, Target, LayoutGrid, AlertCircle, GraduationCap, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Brain, Target, LayoutGrid, AlertCircle, GraduationCap, CheckCircle2, ChevronRight, Clock, Shuffle, History } from 'lucide-react';
 
 const STEP_META = {
   retention: { icon: Brain, color: 'var(--green)', bg: 'var(--green-bg)' },
   practice: { icon: Target, color: 'var(--accent)', bg: 'var(--blue-bg)' },
+  mixed: { icon: Shuffle, color: 'var(--accent)', bg: 'var(--blue-bg)' },
+  refresh: { icon: History, color: 'var(--amber)', bg: 'var(--amber-bg)' },
   coverage: { icon: LayoutGrid, color: 'var(--accent2)', bg: 'var(--blue-bg)' },
   mistakes: { icon: AlertCircle, color: 'var(--red)', bg: 'var(--red-bg)' },
   exam: { icon: GraduationCap, color: 'var(--amber)', bg: 'var(--amber-bg)' },
@@ -27,6 +29,21 @@ const stepText = (step, t) => {
           batch: step.batch,
           target: step.targetAcc,
         }),
+        cta: t('trajectory.practiceCta', { count: step.batch }),
+      };
+    case 'mixed':
+      return {
+        title: t('trajectory.mixedTitle'),
+        desc: t('trajectory.mixedDesc', {
+          topics: (step.topicNames || []).join(', '),
+          batch: step.batch,
+        }),
+        cta: t('trajectory.practiceCta', { count: step.batch }),
+      };
+    case 'refresh':
+      return {
+        title: t('trajectory.refreshTitle', { topic: step.topicName }),
+        desc: t('trajectory.refreshDesc', { days: step.days, batch: step.batch }),
         cta: t('trajectory.practiceCta', { count: step.batch }),
       };
     case 'coverage':
@@ -131,6 +148,16 @@ const TrajectoryPlan = ({ steps = [], onStep }) => {
                     color: 'var(--accent2)', fontSize: 10.5, fontWeight: 800,
                   }}>
                     {t('trajectory.gain', { count: step.gain })}
+                  </span>
+                )}
+                {/* Vaqt bahosi — foydalanuvchining o'z o'rtacha tezligidan */}
+                {step.minutes > 0 && !step.done && (
+                  <span style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 3,
+                    fontSize: 10.5, fontWeight: 700, color: 'var(--text3)',
+                  }}>
+                    <Clock size={11} />
+                    {t('pace.minutes', { count: step.minutes })}
                   </span>
                 )}
               </div>

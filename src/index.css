@@ -952,19 +952,9 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 .test-skeleton-box { background: var(--bg2); padding: 24px 20px; border-radius: 20px; border: 1px solid var(--border); }
 .test-skeleton-line { background: var(--bg3); border-radius: 6px; animation: pulse 1.5s infinite ease-in-out; }
 
-.theory-container { padding: 20px; display: flex; align-items: center; justify-content: center; min-height: 80vh; }
-.theory-card {
-  background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border);
-  border-radius: 24px; padding: 32px 24px; text-align: center; max-width: 520px; width: 100%;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-}
-.theory-icon { font-size: 52px; margin-bottom: 16px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08)); }
-.theory-title { margin-bottom: 8px; color: var(--text); font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
-.theory-subtitle { color: var(--text3); font-size: 14px; margin-bottom: 20px; font-weight: 500; }
-.theory-content {
-  font-size: 15px; line-height: 1.7; color: var(--text2); margin-bottom: 28px; text-align: left;
-  background: var(--bg3); padding: 16px 20px; border-radius: 16px; border-left: 4px solid var(--accent);
-}
+/* Test oldidagi konspekt endi TheorySheet komponenti bilan chiziladi
+   (kartochka/ikonka/sarlavha sinflari o'sha bilan birga olib tashlandi) —
+   bu yerda faqat davom etish tugmasi qoldi. */
 .theory-btn {
   width: 100%; padding: 16px; background: var(--cta);
   color: #fff; border: none; border-radius: 16px; font-size: 16px; font-weight: 700; cursor: pointer;

@@ -49,6 +49,11 @@ export const POINTS_NEW_CORRECT = 2;
 export const POINTS_DUE_REVIEW = 1;
 export const DAILY_GOAL_BONUS = 5;
 
+// ── Tarix (tendensiya va faollik kalendari) ──────────────────────────────
+// Ikkalasi ham qat'iy cheklangan: bulutdagi hujjat cheksiz o'smasligi kerak.
+export const READINESS_HISTORY_WEEKS = 12;  // ~3 oylik tendensiya — sparkline uchun yetarli
+export const ACTIVE_DAYS_KEPT = 21;         // 3 hafta — haftalik panjara + zaxira
+
 // Ikki toDateString() qiymati orasidagi to'liq kun farqi
 const dayDiff = (fromStr, toStr) => {
   const a = new Date(fromStr); const b = new Date(toStr);
@@ -113,6 +118,7 @@ const buildDefaultState = () => {
     studyMinutes: 0,
     activeCategory: 'chqbt',
     topicId: -1,      // Tanlangan mavzu ID (-1 = barchasi)
+    topicSubset: null, // Aralash mashq uchun bo'limlar to'plami (reja «mixed» qadami)
     testMode: 'exam',  // Test rejimi: 'exam' | 'flashcard' | 'mistakes'
     stats: {
       chqbt: buildDefaultCatStats(),
@@ -132,7 +138,9 @@ const buildDefaultState = () => {
     correctRun: 0,         // hozirgi uzluksiz to'g'ri javoblar zanjiri
     maxCorrectRun: 0,      // eng uzun zanjir (shaxsiy rekord)
     milestones: {},        // shaxsiy marralar: { [id]: { level, earnedAt } } — milestones.js
-    readiness: {},         // fan bo'yicha tayyorlik: { [cat]: { score, confidence, answered, updatedAt } }
+    readiness: {},         // fan bo'yicha tayyorlik: { [cat]: { score, knowledge, margin, confidence, answered, updatedAt } }
+    readinessHistory: {},  // tendensiya: { [cat]: [{ w: weekId, s: score, k: knowledge }] } — oxirgi 12 hafta
+    activeDays: [],        // faollik kalendari: [{ d: toDateString, a: javoblar, g: maqsad bajarilgani }] — oxirgi 21 kun
     lastActiveAt: null,    // oxirgi natija topshirilgan vaqt (maktab hisoboti uchun)
     spacedCards: [],
     customMnemonics: {},
@@ -227,7 +235,12 @@ const mergeCloudAndLocal = (cloud, local) => {
     const l = (local.topicStats || {})[t] || { answered: 0, correct: 0 };
     merged.topicStats[t] = {
       answered: Math.max(c.answered || 0, l.answered || 0),
-      correct: Math.max(c.correct || 0, l.correct || 0)
+      correct: Math.max(c.correct || 0, l.correct || 0),
+      // Vaqt/yangilik maydonlari ham monoton max() bilan — hisoblagichlar
+      // bilan bir xil qoida, qurilma almashganda hech narsa yo'qolmaydi
+      timeSum: Math.max(c.timeSum || 0, l.timeSum || 0),
+      fast: Math.max(c.fast || 0, l.fast || 0),
+      lastAt: Math.max(c.lastAt || 0, l.lastAt || 0)
     };
   });
 
@@ -235,6 +248,38 @@ const mergeCloudAndLocal = (cloud, local) => {
     totalTime: Math.max(cloud.timeStats?.totalTime || 0, local.timeStats?.totalTime || 0),
     totalQuestions: Math.max(cloud.timeStats?.totalQuestions || 0, local.timeStats?.totalQuestions || 0)
   };
+
+  // Tendensiya — hafta bo'yicha union. Ikkala nusxada ham bir hafta bo'lsa
+  // ko'proq javobli (ya'ni kechroq yozilgan) nuqta ustun: hafta ichida raqam
+  // faqat o'sadi yoki aniqlashadi, orqaga qaytmaydi.
+  const histCats = new Set([
+    ...Object.keys(cloud.readinessHistory || {}),
+    ...Object.keys(local.readinessHistory || {}),
+  ]);
+  merged.readinessHistory = {};
+  histCats.forEach(cat => {
+    const byWeek = new Map();
+    [...((cloud.readinessHistory || {})[cat] || []), ...((local.readinessHistory || {})[cat] || [])]
+      .forEach(p => {
+        if (!p?.w) return;
+        const cur = byWeek.get(p.w);
+        if (!cur || (p.s || 0) >= (cur.s || 0)) byWeek.set(p.w, p);
+      });
+    const list = [...byWeek.values()].sort((a, b) => (a.w < b.w ? -1 : a.w > b.w ? 1 : 0));
+    while (list.length > READINESS_HISTORY_WEEKS) list.shift();
+    merged.readinessHistory[cat] = list;
+  });
+
+  // Faollik kalendari — kun bo'yicha union, ko'proq javobli yozuv ustun
+  const byDay = new Map();
+  [...(cloud.activeDays || []), ...(local.activeDays || [])].forEach(x => {
+    if (!x?.d) return;
+    const cur = byDay.get(x.d);
+    if (!cur || (x.a || 0) >= (cur.a || 0)) byDay.set(x.d, x);
+  });
+  const mergedDays = [...byDay.values()].sort((a, b) => new Date(a.d) - new Date(b.d));
+  while (mergedDays.length > ACTIVE_DAYS_KEPT) mergedDays.shift();
+  merged.activeDays = mergedDays;
 
   // Yutuqlar: daraja monoton (max), earnedAt esa eng birinchi sana saqlanadi
   const cTracks = cloud.achievements?.tracks || {};
@@ -515,11 +560,19 @@ export const AppProvider = ({ children }) => {
       // Topic stats yangilash — har mavzu o'z ulushi bo'yicha (aralash test/imtihonda
       // ham har bo'lim alohida hisoblanadi, summarizeTestResults'dagi topicDeltas orqali)
       const newTopicStats = { ...prev.topicStats };
+      const commitNow = Date.now();
       for (const [tid, delta] of Object.entries(results.topicDeltas || {})) {
         const ts = newTopicStats[tid] || { answered: 0, correct: 0 };
         newTopicStats[tid] = {
           answered: ts.answered + delta.answered,
-          correct: ts.correct + delta.correct
+          correct: ts.correct + delta.correct,
+          // Vaqt signali — DiagnosticsEngine shoshilinch javoblar ulushidan
+          // bahoning ishonch oralig'ini kengaytiradi
+          timeSum: (ts.timeSum || 0) + (delta.timeSum || 0),
+          fast: (ts.fast || 0) + (delta.fast || 0),
+          // Oxirgi mashq vaqti — dalilning «yangiligi» (freshness) uchun.
+          // 0 = noma'lum (eski ma'lumot): bunday bo'lim jazolanmaydi.
+          lastAt: commitNow
         };
       }
 
@@ -669,11 +722,36 @@ export const AppProvider = ({ children }) => {
         ...(prev.readiness || {}),
         [cat]: {
           score: shared.readiness,
+          // Taxmin ulushi ajratilgan bilim va bahoning xatolik chegarasi —
+          // maktab hisobotida «77% lekin ±17» ni ajrata olish uchun
+          knowledge: shared.knowledge,
+          margin: shared.margin,
           confidence: Math.round(shared.confidence * 100),
           answered: shared.answered,
           updatedAt: new Date().toISOString(),
         },
       };
+
+      // Tendensiya — HAFTASIGA bitta nuqta (oxirgi qiymat haftani ifodalaydi).
+      // Har testdan keyin nuqta qo'shilsa, ro'yxat tez to'lib ketardi va
+      // grafik «kun ichidagi shovqin»ni ko'rsatardi, o'sishni emas.
+      const catHistory = [...((prev.readinessHistory || {})[cat] || [])];
+      const lastPoint = catHistory[catHistory.length - 1];
+      const point = { w: weekId, s: shared.readiness, k: shared.knowledge };
+      if (lastPoint?.w === weekId) catHistory[catHistory.length - 1] = point;
+      else catHistory.push(point);
+      while (catHistory.length > READINESS_HISTORY_WEEKS) catHistory.shift();
+      newState.readinessHistory = { ...(prev.readinessHistory || {}), [cat]: catHistory };
+
+      // Faollik kalendari — haftalik panjara uchun (kun, javoblar soni, maqsad)
+      const days = [...(prev.activeDays || [])];
+      const todayIdx = days.findIndex(x => x.d === today);
+      const todayEntry = { d: today, a: dg.answered, g: !!dg.completed };
+      if (todayIdx >= 0) days[todayIdx] = todayEntry;
+      else days.push(todayEntry);
+      while (days.length > ACTIVE_DAYS_KEPT) days.shift();
+      newState.activeDays = days;
+
       newState.lastActiveAt = new Date().toISOString();
 
       // Haftalik AMI o'sishi: hafta almashganda commit-dan OLDINGI AMI

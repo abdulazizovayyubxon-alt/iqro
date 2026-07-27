@@ -310,7 +310,20 @@ export const smartSort = (allQuestions, options = {}) => {
  * @param {number} topicId   - Mavzu ID
  * @returns {object} Jamlanma
  */
-export const summarizeTestResults = (questions, answers, spacedCards = [], topicId = -1) => {
+/**
+ * Shundan tez berilgan javob «shoshilinch» hisoblanadi. 4 variantli savolni
+ * o'qib, o'ylab, tanlash uchun bu juda kam vaqt — bunday javoblar ko'p bo'lsa
+ * baho ishonchsizlashadi (DiagnosticsEngine buni oraliqni kengaytirishda
+ * ishlatadi). Javobni «xato» deb belgilamaydi: tanish savolga tez javob
+ * berish ham mumkin, shuning uchun bu faqat ISHONCH signali.
+ */
+export const FAST_ANSWER_SEC = 4;
+
+/**
+ * @param {object} questionTimes  { [savol indeksi]: soniya } — TestPage/ExamPage
+ *   allaqachon yig'adi (questionTimesRef), ilgari faqat jami vaqt ishlatilardi.
+ */
+export const summarizeTestResults = (questions, answers, spacedCards = [], topicId = -1, questionTimes = {}) => {
   const spacedMap = new Map();
   for (const card of spacedCards) {
     spacedMap.set(card.qHash, card);
@@ -343,9 +356,14 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
 
     const qTopicId = q.topicId ?? topicId;
     if (qTopicId !== undefined && qTopicId !== null && qTopicId >= 0) {
-      const td = topicDeltas[qTopicId] || { answered: 0, correct: 0 };
+      const td = topicDeltas[qTopicId] || { answered: 0, correct: 0, timeSum: 0, fast: 0 };
       td.answered += 1;
       if (wasCorrect) td.correct += 1;
+      const secs = questionTimes[i] || 0;
+      if (secs > 0) {
+        td.timeSum += secs;
+        if (secs < FAST_ANSWER_SEC) td.fast += 1;
+      }
       topicDeltas[qTopicId] = td;
     }
 

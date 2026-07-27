@@ -7,12 +7,15 @@
  *
  * Xususiyatlar:
  * - Video telefon ekraniga to'liq mos (object-fit: cover)
+ * - Status-bar ham splash foniga bo'yaladi (enterSplash) — ilova ekranga
+ *   uzluksiz, chetdan-chetga ochilgandek ko'rinishi uchun
  * - Video tugaganda fade-out animatsiya bilan yo'qoladi
  * - Vibratsiya: localStorage('iqro-vibration') yoqilgan bo'lsa, bir marta 200ms
  * - Foydalanuvchi bosib o'tkazishi (skip) mumkin
  * - sessionStorage orqali sessiyada faqat bir marta
  */
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { enterSplash, exitSplash } from '../../utils/statusBar';
 
 const SPLASH_VIDEO_URL = '/videos/zehin-splash.mp4';
 export const SPLASH_SESSION_KEY = 'zehin-splash-shown';
@@ -75,6 +78,14 @@ export default function SplashVideo({ onComplete }) {
     }
     handleSkip(); // ikkinchi bosish — skip
   }, [triggerVibration, handleSkip]);
+
+  // Status-bar splash foniga (navy) — komponent yopilganda tema rangi qaytadi.
+  // Ataylab fade tugagach: fade paytida rangni almashtirsak, hali navy turgan
+  // ekran ustida och tasma "sakrab" chiqadi.
+  useEffect(() => {
+    enterSplash();
+    return () => exitSplash();
+  }, []);
 
   // Video yuklanmasa — 8 soniyadan keyin avtomatik skip
   useEffect(() => {

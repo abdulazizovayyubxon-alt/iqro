@@ -11,7 +11,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Brain, KeyRound, Crown, FileText, Bell, Languages, MessageCircle, Info, Trash2, Smartphone, Activity, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Brain, KeyRound, Crown, FileText, Bell, Languages, MessageCircle, Info, Trash2, Smartphone, Activity, AlertCircle, CalendarDays } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
@@ -22,6 +22,7 @@ import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
 import { deleteUser, updateProfile } from 'firebase/auth';
 import { APP_VERSION, SUPPORT_URL } from '../config';
 import { enablePush, pushPermission } from '../services/push';
+import { isCountdownEnabled, COUNTDOWN_KEY, COUNTDOWN_EVENT } from '../utils/examDate';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
 import EditProfileModal from '../components/profile/EditProfileModal';
 import PasswordModal from '../components/profile/PasswordModal';
@@ -168,6 +169,18 @@ export default function SettingsPage({ theme, toggleTheme }) {
     localStorage.setItem('iqro-font-scale', String(v));
     // root font-size ni o'zgartirish — barcha rem elementlari avtomatik moslashadi
     document.documentElement.style.fontSize = `${16 * v}px`;
+  };
+
+  // Imtihonga sanoq — doim ko'rinib turgan muddat hammaga ham foydali emas,
+  // shuning uchun o'chirib qo'yish mumkin (Dashboard banneri va header chipi).
+  const [countdownOn, setCountdownOn] = useState(() => isCountdownEnabled());
+  const toggleCountdown = () => {
+    const next = !countdownOn;
+    setCountdownOn(next);
+    localStorage.setItem(COUNTDOWN_KEY, next ? 'on' : 'off');
+    // Ayni tabda `storage` hodisasi otilmaydi — sanoqni o'zimiz xabardor qilamiz
+    window.dispatchEvent(new Event(COUNTDOWN_EVENT));
+    showToast(next ? t('settings.vibrationOn') : t('settings.vibrationOff'), 'success');
   };
 
   // Vibratsiya sozlamasi — splash animatsiyada telefon vibratsiyasi
@@ -371,6 +384,14 @@ export default function SettingsPage({ theme, toggleTheme }) {
               value={fontScale}
               onSelect={applyFontScale}
               options={FONT_SCALES.map(f => ({ id: f.value, label: f.label }))}
+            />
+
+            <SwitchRow
+              icon={<CalendarDays size={20} />}
+              label={t('settings.examCountdown')}
+              sublabel={t('settings.examCountdownHint')}
+              checked={countdownOn}
+              onToggle={toggleCountdown}
             />
 
             <SwitchRow

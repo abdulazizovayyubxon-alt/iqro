@@ -5,14 +5,31 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { AppContext } from '../context/AppContext';
 import { useTopicTotals } from '../hooks/useTopicTotals';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
-import { computeDiagnostics, buildTrajectory } from '../engine/DiagnosticsEngine';
+import { useExamDaysLeft } from '../hooks/useExamDaysLeft';
+import { useDailyPlan } from '../hooks/useDailyPlan';
+import { computeDiagnostics, buildTrajectory, buildPace, readinessTrend } from '../engine/DiagnosticsEngine';
 import ReadinessCard from '../components/diagnostics/ReadinessCard';
 import TrajectoryPlan from '../components/diagnostics/TrajectoryPlan';
+import PlanHeader from '../components/diagnostics/PlanHeader';
 import PremiumModal from '../components/PremiumModal';
 import SubjectTopicChips from '../components/SubjectTopicChips';
 import { SUBJECTS, TOPICS } from '../data/mockData';
 import { EXAM_GOAL_SCORE, BATCH_SIZE } from '../config';
-import { ClipboardList } from 'lucide-react';
+import { ClipboardList, BookOpen } from 'lucide-react';
+import TheoryModal from '../components/theory/TheoryModal';
+
+// Kunlik vaqt byudjeti — qurilmaga xos tanlov (bulutga chiqarilmaydi)
+const BUDGET_KEY = 'zehin_plan_budget_v1';
+const readBudget = () => {
+  try {
+    const raw = localStorage.getItem(BUDGET_KEY);
+    if (raw === null || raw === 'null') return null;
+    const n = parseInt(raw, 10);
+    return Number.isFinite(n) ? n : null;
+  } catch {
+    return null;
+  }
+};
 
 // Bo'lim holati ranglari — sokin palitra
 const STATUS_COLOR = {
@@ -30,12 +47,15 @@ const AnalysisPage = () => {
   const { state, updateState } = useContext(AppContext);
   const [tab, setTab] = useState('diagnosis'); // diagnosis | plan
   const [showPremiumModal, setShowPremiumModal] = useState(false);
+  const [budget, setBudget] = useState(readBudget);
+  const [theoryTopic, setTheoryTopic] = useState(null); // { id, name } | null
 
   const { isTrialExpired } = useTrialExpiry();
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
 
   const cat = state.activeCategory;
   const topicTotals = useTopicTotals(cat);
+  const daysLeft = useExamDaysLeft();
 
   const diag = useMemo(
     () => computeDiagnostics(state, {
@@ -46,17 +66,49 @@ const AnalysisPage = () => {
     [state, topicTotals]
   );
 
-  const steps = useMemo(() => buildTrajectory(diag, state), [diag, state]);
+  const steps = useMemo(
+    () => buildTrajectory(diag, state, { maxMinutes: budget }),
+    [diag, state, budget]
+  );
 
+  // Kunlik sur'at — imtihon sanasidan; sana yo'q bo'lsa taklif ko'rsatiladi
+  const pace = useMemo(() => buildPace(diag, state, { daysLeft }), [diag, state, daysLeft]);
+
+  // Reja kun davomida muhrlanadi — ro'yxat test ishlagandan keyin sakramaydi
+  const plan = useDailyPlan(steps, cat, budget);
+
+  // Haftalik tendensiya — shu fan bo'yicha
+  const trend = useMemo(
+    () => readinessTrend((state.readinessHistory || {})[cat] || []),
+    [state.readinessHistory, cat]
+  );
+
+  const handleBudget = (minutes) => {
+    setBudget(minutes);
+    try { localStorage.setItem(BUDGET_KEY, minutes === null ? 'null' : String(minutes)); } catch { /* muhim emas */ }
+  };
+
+  // topicSubset HAR SAFAR aniq beriladi (aralash qadamdan tashqari null) —
+  // aks holda oldingi aralash mashqning filtri keyingi testda ham qolib ketardi
   const goPractice = (topicId) => {
     if (isFreeLimitReached) { setShowPremiumModal(true); return; }
-    updateState({ topicId: topicId ?? -1, testMode: 'exam' });
+    updateState({ topicId: topicId ?? -1, testMode: 'exam', topicSubset: null });
+    navigate('/test');
+  };
+
+  const goMixed = (topicIds) => {
+    if (isFreeLimitReached) { setShowPremiumModal(true); return; }
+    updateState({ topicId: -1, testMode: 'exam', topicSubset: topicIds });
     navigate('/test');
   };
 
   const handleStep = (step) => {
     if (isFreeLimitReached && step.route !== '/errors') { setShowPremiumModal(true); return; }
-    if (step.type === 'practice' || step.type === 'coverage') {
+    if (step.type === 'mixed') {
+      goMixed(step.topicIds);
+      return;
+    }
+    if (step.type === 'practice' || step.type === 'coverage' || step.type === 'refresh') {
       goPractice(step.topicId);
       return;
     }
@@ -124,14 +176,16 @@ const AnalysisPage = () => {
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.18 }}
           >
-            <ReadinessCard diag={diag} onTopic={goPractice} />
+            <ReadinessCard diag={diag} trend={trend} onTopic={goPractice} />
 
             {/* Qamrov / o'zlashtirish xulosasi */}
             <div style={{ display: 'flex', gap: 10, marginTop: 14 }}>
               {[
                 { val: `${diag.coverage.practiced}/${diag.coverage.total}`, label: t('analysis.coverageLabel') },
                 { val: diag.mastered, label: t('analysis.masteredLabel') },
-                { val: `${Math.round(diag.confidence * 100)}%`, label: t('analysis.confidenceLabel') },
+                // Ishonch foizi o'rniga xatolik chegarasi — foydalanuvchi uchun
+                // «±6» «ishonch 58%» dan ancha tushunarli va bir xil ma'noni beradi
+                { val: `±${diag.margin}`, label: t('analysis.marginLabel') },
               ].map((b, i) => (
                 <div key={i} className="glass-panel" style={{ flex: 1, padding: '12px 8px', textAlign: 'center' }}>
                   <div style={{ fontSize: 17, fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{b.val}</div>
@@ -151,14 +205,22 @@ const AnalysisPage = () => {
 
             <div className="glass-panel" style={{ padding: '6px 0', overflow: 'hidden' }}>
               {rows.map((tp, i) => (
-                <button
+                // Qator ikki amalga bo'linadi: matn qismi mashqqa olib boradi,
+                // o'ngdagi belgi konspektni ochadi. Tugma ichiga tugma
+                // joylab bo'lmagani uchun tashqi o'ram — oddiy div.
+                <div
                   key={tp.id}
-                  onClick={() => goPractice(tp.id)}
                   style={{
-                    display: 'flex', alignItems: 'center', gap: 10, width: '100%',
-                    padding: '11px 14px', background: 'transparent', border: 'none',
+                    display: 'flex', alignItems: 'stretch',
                     // oxirgi qatorda chegara yo'q — panel ichida osilib qolmasin
                     borderBottom: i === rows.length - 1 ? 'none' : '1px solid var(--border)',
+                  }}
+                >
+                <button
+                  onClick={() => goPractice(tp.id)}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: 10, flex: 1, minWidth: 0,
+                    padding: '11px 4px 11px 14px', background: 'transparent', border: 'none',
                     cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit',
                   }}
                 >
@@ -191,6 +253,19 @@ const AnalysisPage = () => {
                     </div>
                   </div>
                 </button>
+                <button
+                  onClick={() => setTheoryTopic({ id: tp.id, name: tp.name })}
+                  aria-label={t('theory.open')}
+                  title={t('theory.open')}
+                  style={{
+                    flexShrink: 0, padding: '0 14px 0 8px', background: 'transparent',
+                    border: 'none', color: 'var(--text3)', cursor: 'pointer',
+                    display: 'flex', alignItems: 'center',
+                  }}
+                >
+                  <BookOpen size={15} />
+                </button>
+                </div>
               ))}
             </div>
 
@@ -208,18 +283,35 @@ const AnalysisPage = () => {
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.18 }}
           >
+            <PlanHeader
+              pace={pace}
+              budget={budget}
+              onBudget={handleBudget}
+              doneCount={plan.doneCount}
+              total={plan.total}
+              totalMinutes={plan.totalMinutes}
+              activeDays={state.activeDays || []}
+              streak={state.dailyStreak || 0}
+            />
             <div style={{
               padding: '12px 14px', marginBottom: 14, borderRadius: 12,
               background: 'var(--blue-bg)', fontSize: 12, color: 'var(--text2)', lineHeight: 1.55,
             }}>
               {t('analysis.planIntro')}
             </div>
-            <TrajectoryPlan steps={steps} onStep={handleStep} />
+            <TrajectoryPlan steps={plan.steps} onStep={handleStep} />
           </motion.div>
         )}
       </AnimatePresence>
 
       <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
+
+      <TheoryModal
+        open={!!theoryTopic}
+        onClose={() => setTheoryTopic(null)}
+        topicId={theoryTopic?.id}
+        topicName={theoryTopic?.name}
+      />
     </motion.div>
   );
 };

@@ -71,3 +71,6 @@ src/data/.fix-progress-*.json
 fan 2/
 
 .vercel
+
+# Nazariya konspekt qoralamalari (generatsiya + LLM javobi) — manba emas
+pipeline/inbox/theory/

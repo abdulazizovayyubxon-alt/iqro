@@ -5,7 +5,12 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="192x192" href="/pwa-192x192.png" />
     <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-    <meta name="theme-color" content="#F4F3EF" />
+    <!-- BOSHLANG'ICH qiymat — splash foni (navy), tema rangi EMAS: birinchi
+         bo'yoqda doim navy splash chiqadi, status-bar ham unga qo'shilib ketsin
+         (aks holda tepada och tasma qolib, ilova ekranga to'liq ochilmagandek
+         ko'rinadi). Splash yopilganda src/utils/statusBar.js tema rangini
+         qaytaradi. Manifest theme_color ham shu sababdan navy (vite.config.js). -->
+    <meta name="theme-color" content="#0A2440" />
 
     <!-- Shrift o'lchami (S/M/L/XL) React yuklanishidan OLDIN qo'llanadi — aks holda
          matn avval M (16px) holda chizilib, keyin tanlangan o'lchamga "sakrardi"
@@ -51,6 +56,14 @@
          easeOutBack, 0–350ms → yozuv harflari pastdan 12px, ketma-ket
          (stagger 40ms), easeOutCubic, 250–600ms → tagline fade, linear,
          600–900ms. Fon — to'q navy #0A2440 (§5), gradient YO'Q (§12). */
+      /* Splash turgan paytda hujjat foni ham navy — status-bar/overscroll
+         sohalari uchun. iOS standalone'da status-bar meta'ni emas, aynan
+         sahifa fonini oladi. Klassni src/utils/statusBar.js qo'yadi/oladi;
+         qoida shu yerda, chunki index.css birinchi bo'yoqdan keyin ulanadi. */
+      html.splash-active,
+      html.splash-active body {
+        background: #0A2440;
+      }
       .zh-splash {
         position: fixed;
         inset: 0;
@@ -152,11 +165,10 @@
           var t = localStorage.getItem('iqro-theme') || localStorage.getItem('chqbt-theme');
           if (t === 'dark') document.body.classList.add('dark-theme');
           else if (t === 'sepia') document.body.classList.add('sepia-theme');
-          // Status-bar / brauzer chrome rangi ham temaning fon rangiga mos bo'lsin
-          // (index.css --bg qiymatlari). Runtime almashinuv App.jsx applyTheme'da.
-          var bg = t === 'dark' ? '#070B16' : t === 'sepia' ? '#F5EEDD' : '#F4F3EF';
-          var m = document.querySelector('meta[name="theme-color"]');
-          if (m) m.setAttribute('content', bg);
+          // Status-bar rangi bu yerda tema foniga QAYTARILMAYDI: hozir ekranda
+          // navy splash turibdi, meta ham navy (yuqorida). Splash yopilganda
+          // src/utils/statusBar.js exitSplash() tema rangini tiklaydi.
+          document.documentElement.classList.add('splash-active');
         } catch (e) { /* localStorage bloklangan bo'lishi mumkin */ }
       })();
     </script>

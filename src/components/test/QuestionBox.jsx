@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, Crown } from 'lucide-react';
+import { MessageCircle, Crown, BookOpen } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import SafeHtml from '../shared/SafeHtml';
 import QuestionMedia from '../QuestionMedia';
@@ -28,7 +28,10 @@ const QuestionBox = ({
   setActiveReviewTab,
   saveCustomMnemonic,
   setShowObjectionModal,
-  onPremiumClick
+  onPremiumClick,
+  // Xato javob uchun topilgan nazariy band (null = mos band yo'q)
+  theoryMatch = null,
+  onOpenTheory = null
 }) => {
   const { user } = useAuth();
   const { t } = useTranslation();
@@ -204,6 +207,25 @@ const QuestionBox = ({
                     <div style={{ color: 'var(--text2)', fontSize: '14px', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
                       {questions[currentQ].explanation}
                     </div>
+
+                    {/* Nazariyaga o'tish — faqat MOS band topilganda. Mos band
+                        bo'lmasa tugma umuman chiqmaydi: noto'g'ri joyga olib
+                        borgan «o'qing» tugmasi foydadan ko'ra ziyon qiladi. */}
+                    {onOpenTheory && theoryMatch && (
+                      <button
+                        onClick={onOpenTheory}
+                        style={{
+                          display: 'inline-flex', alignItems: 'center', gap: 6,
+                          marginTop: 12, padding: '8px 13px', borderRadius: 11,
+                          border: '1px solid var(--border)', background: 'var(--bg2)',
+                          color: 'var(--accent)', fontSize: 12.5, fontWeight: 700,
+                          cursor: 'pointer', fontFamily: 'inherit',
+                        }}
+                      >
+                        <BookOpen size={14} />
+                        {t('theory.readThis')}
+                      </button>
+                    )}
 
                     {questions[currentQ].source && (
                       <div className="q-source">{t('test.source', { source: questions[currentQ].source })}</div>

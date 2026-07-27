@@ -128,7 +128,12 @@ export default defineConfig({
         description: "O'qituvchilar uchun kasbiy sertifikatlash va malaka attestatsiyasiga tayyorgarlik platformasi",
         lang: 'uz',
         dir: 'ltr',
-        theme_color: '#F4F3EF',
+        // theme_color faqat ILOVA ISHGA TUSHGAN LAHZADA ishlatiladi (OS splash
+        // ustidagi status-bar va "recents" kartasi) — sahifa yuklangach
+        // meta[name=theme-color] boshqaradi (src/utils/statusBar.js). O'sha
+        // lahzada ekranda navy splash turadi, shuning uchun bu ham navy:
+        // och rang status-bar'da yopishmagan tasma bo'lib ko'rinardi.
+        theme_color: '#0A2440',
         // OS splash foni ilova ichidagi navy splash bilan uzluksiz ulanishi
         // uchun brend-kitobdagi "To'q navy" (splash va ikonka foni) ishlatiladi.
         background_color: '#0A2440',

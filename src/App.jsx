@@ -10,6 +10,7 @@ import ScrollDebugOverlay from './components/shared/ScrollDebugOverlay';
 import { trackPageView, startPageTimer } from './services/analytics';
 import { setUser, clearUser } from './services/sentry';
 import { enablePush, listenForegroundPush } from './services/push';
+import { applyThemeColor, enterSplash, exitSplash, SPLASH_BG } from './utils/statusBar';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from './firebase';
 
@@ -218,16 +219,14 @@ function App() {
 
   // Tema: light → sepia (o'qish) → dark aylanasi
   const THEMES = ['light', 'sepia', 'dark'];
-  // Status-bar / brauzer chrome rangi — index.css --bg qiymatlari bilan bir xil
-  // (boot varianti index.html inline skriptida takrorlangan).
-  const THEME_COLORS = { light: '#F4F3EF', sepia: '#F5EEDD', dark: '#070B16' };
 
   const applyTheme = (t) => {
     document.body.classList.remove('dark-theme', 'sepia-theme');
     if (t === 'dark') document.body.classList.add('dark-theme');
     else if (t === 'sepia') document.body.classList.add('sepia-theme');
-    const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', THEME_COLORS[t] || THEME_COLORS.light);
+    // Status-bar rangi — utils/statusBar.js (splash turgan bo'lsa u navy'ni
+    // ushlab turadi va tema rangini splash yopilgach qo'llaydi)
+    applyThemeColor(t);
   };
 
   useEffect(() => {
@@ -238,6 +237,10 @@ function App() {
     // (flash'ni oldini olish uchun) — bu yerda takror qo'llash SHART EMAS.
     // Runtime almashinuvi: tema toggleTheme'da, o'lcham SettingsPage'da.
     setTheme(validTheme);
+    // Status-bar rangi ISTISNO: boot'da u splash foniga (navy) qo'yilgan, shu
+    // sabab tema rangi shu yerda ro'yxatdan o'tkaziladi — u splash yopilgach
+    // avtomatik qo'llanadi.
+    applyThemeColor(validTheme);
   }, []);
 
   const toggleTheme = (target) => {
@@ -249,21 +252,33 @@ function App() {
     applyTheme(newTheme);
   };
 
+  // Firebase sekin javob bersa bu navy ekran SimpleSplash yopilgandan keyin
+  // ham turadi — status-bar shu vaqtda ham navy bo'lib qolsin (aks holda
+  // tepada bir lahzaga och tasma chiqadi).
+  const bootSplashVisible = loading || !onboardingChecked;
+  useEffect(() => {
+    if (!bootSplashVisible) return;
+    enterSplash();
+    return () => exitSplash();
+  }, [bootSplashVisible]);
+
   // Firebase yuklanmoqda — index.html splash'ining aynan davomi (brend-kitob:
   // to'q navy fon, oq doira belgi, oq lockup; pastda §7 dagi halqa-indikator)
-  if (loading || !onboardingChecked) {
+  if (bootSplashVisible) {
     return (
       <div style={{
-        height: '100vh',
+        // fixed+inset — 100vh mobil brauzerlarda viewport'dan baland chiqib,
+        // splash pastdan qirqilishiga sabab bo'lardi
+        position: 'fixed',
+        inset: 0,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        background: '#0A2440',
+        background: SPLASH_BG,
         color: '#ffffff',
         fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
         userSelect: 'none',
-        position: 'relative',
         overflow: 'hidden',
       }}>
         <div style={{
