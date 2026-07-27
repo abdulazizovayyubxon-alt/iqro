@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
+import { useAuth } from '../context/AuthContext';
 import { useAdmin } from '../hooks/useAdmin';
 import { SUBJECTS } from '../data/mockData';
 import GiftBox from './shared/GiftBox';
@@ -31,6 +32,7 @@ const Sidebar = () => {
   const { state, updateState } = useContext(AppContext);
   const { isInstallable, installApp } = useContext(PWAContext);
   const { isAdmin } = useAdmin();
+  const { user } = useAuth();
   const [showMobSubjects, setShowMobSubjects] = useState(false);
 
   // Joriy sahifani aniqlash — uniformly location.pathname orqali
@@ -145,13 +147,16 @@ const Sidebar = () => {
             <span className="nav-label">{t('sidebar.analysis')}</span>
           </div>
 
-          <div
-            className={`nav-item ${isActive('/school') ? 'active' : ''}`}
-            onClick={() => navigate('/school')}
-          >
-            <span className="nav-icon"><School size={20} /></span>
-            <span className="nav-label">{t('sidebar.school')}</span>
-          </div>
+          {/* Maktab — faqat admin yoki maktabga a'zo bo'lganlarga */}
+          {(isAdmin || user?.schoolId) && (
+            <div
+              className={`nav-item ${isActive('/school') ? 'active' : ''}`}
+              onClick={() => navigate('/school')}
+            >
+              <span className="nav-icon"><School size={20} /></span>
+              <span className="nav-label">{t('sidebar.school')}</span>
+            </div>
+          )}
 
           <div
             className={`nav-item ${isActive('/referral') ? 'active' : ''}`}

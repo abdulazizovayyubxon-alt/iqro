@@ -279,6 +279,10 @@ export const AuthProvider = ({ children }) => {
       let avatarId = null;
       let premiumExpire = null; // ISO sana yoki null (muddatsiz)
       let shortId = null;
+      // Maktab a'zoligi — menyuda "Maktab" bo'limini ko'rsatish sharti
+      let schoolId = null;
+      // O'qituvchilik fani (profildan) — fan tanlagichda "Sizning faningiz" uchun
+      let subject = null;
 
       try {
         let trialInfo = { status: 'expired', daysLeft: 0, urgencyMs: 0 };
@@ -293,6 +297,8 @@ export const AuthProvider = ({ children }) => {
               avatarId = data.avatarId || null;
               premiumExpire = data.premiumExpire || null;
               shortId = data.shortId || null;
+              schoolId = data.schoolId || null;
+              subject = data.subject || null;
 
               // ═══ Premium muddati tekshiruvi ═══
               // premiumExpire (sana) — obuna tugash vaqtining yagona manbasi.
@@ -363,6 +369,8 @@ export const AuthProvider = ({ children }) => {
             photoURL: firebaseUser.photoURL,
             avatarId,
             shortId,
+            schoolId,
+            subject,
             isPremium,
             isTruePremium,
             premiumExpire,
@@ -383,6 +391,8 @@ export const AuthProvider = ({ children }) => {
             photoURL: firebaseUser.photoURL,
             avatarId,
             shortId,
+            schoolId,
+            subject,
             isPremium,
             isTruePremium,
             premiumExpire,
@@ -742,6 +752,8 @@ export const AuthProvider = ({ children }) => {
         photoURL: updated.photoURL,
         avatarId: updated.avatarId,
         shortId: updated.shortId,
+        schoolId: updated.schoolId ?? null,
+        subject: updated.subject ?? null,
         isPremium: updated.isPremium,
         isTruePremium: updated.isTruePremium,
         premiumExpire: updated.premiumExpire ?? null,
@@ -787,6 +799,8 @@ export const AuthProvider = ({ children }) => {
           premiumExpire: data.premiumExpire || null,
           role: data.role || 'user',
           avatarId: data.avatarId ?? null,
+          schoolId: data.schoolId || null,
+          subject: data.subject || null,
           trialStatus: trialInfo.status,
           trialDaysLeft: trialInfo.daysLeft,
           urgencyMs: trialInfo.urgencyMs,

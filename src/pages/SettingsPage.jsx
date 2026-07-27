@@ -11,7 +11,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Brain, KeyRound, Crown, FileText, Bell, Languages, MessageCircle, Info, Trash2, Smartphone } from 'lucide-react';
+import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Brain, KeyRound, Crown, FileText, Bell, Languages, MessageCircle, Info, Trash2, Smartphone, Activity, AlertCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
@@ -417,6 +417,22 @@ export default function SettingsPage({ theme, toggleTheme }) {
         <section className="sp-section">
           <div className="pp-section-label">{t('settings.sections.learning')}</div>
           <div className="pp-group">
+            {/* Tahlil va Xatolar daftari — profil menyusidan shu yerga ko'chirildi */}
+            <ActionRow
+              icon={<Activity size={20} />}
+              label={t('settings.analysis')}
+              sublabel={t('settings.analysisHint')}
+              onClick={() => navigate('/analysis')}
+            />
+
+            <ActionRow
+              icon={<AlertCircle size={20} />}
+              tone="red"
+              label={t('settings.errors')}
+              sublabel={t('settings.errorsHint')}
+              onClick={() => navigate('/errors')}
+            />
+
             <ActionRow
               icon={<Brain size={20} />}
               label={t('settings.smartReview')}

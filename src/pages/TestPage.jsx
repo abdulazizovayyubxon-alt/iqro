@@ -50,7 +50,7 @@ function cleanForDedup(text) {
   return clean.trim();
 }
 
-import SubjectTopicChips, { Chip } from '../components/SubjectTopicChips';
+import SubjectTopicChips, { BlockRow } from '../components/SubjectTopicChips';
 import QuestionBox from '../components/test/QuestionBox';
 import FlashcardView from '../components/test/FlashcardView';
 import TestResults from '../components/test/TestResults';
@@ -768,22 +768,19 @@ const TestPage = () => {
               TOPICS={TOPICS}
               setTopicId={setTopicId}
               guardChange={guardActive}
-              extraChip={hasBlocks ? (
-                <Chip
-                  label={t('test.blockChip', { n: selectedBatch + 1, total: totalBatches })}
-                  onClick={openBlockPicker}
+              // Blok endi yuqorida uchinchi chip emas — savollar oralig'i yozuvining
+              // o'zi bosiladigan qatorga aylandi (bloklar bo'lmasa oddiy matn qoladi)
+              belowRow={fullPool.length > 0 && mode !== 'mistakes' ? (
+                <BlockRow
+                  label={hasBlocks ? t('selector.blockOf', { n: selectedBatch + 1, total: totalBatches }) : null}
+                  hint={hasBlocks
+                    ? `${t('test.questionRange', { start: rangeStart, end: rangeEnd })} · ${t('test.totalAvailable', { count: fullPool.length })}`
+                    : t('test.totalAvailable', { count: fullPool.length })}
+                  onClick={hasBlocks ? openBlockPicker : undefined}
                   ariaLabel={t('test.selectBlock')}
-                  noShrink
                 />
               ) : null}
             />
-            {fullPool.length > 0 && mode !== 'mistakes' && (
-              <div style={{ fontSize: 12.5, color: 'var(--text3)', marginTop: 10, paddingLeft: 2 }}>
-                {hasBlocks
-                  ? `${t('test.questionRange', { start: rangeStart, end: rangeEnd })} · ${t('test.totalAvailable', { count: fullPool.length })}`
-                  : t('test.totalAvailable', { count: fullPool.length })}
-              </div>
-            )}
           </div>
         );
       })()}

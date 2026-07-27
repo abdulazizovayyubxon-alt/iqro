@@ -784,12 +784,69 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 .dashboard-page { padding: 20px 16px 32px; max-width: 720px; margin: 0 auto; }
 
 
-/* Fan/Mavzu/Blok chiplari qatori — bitta qatorda, kerak bo'lsa gorizontal scroll (scrollbar yashirin) */
-.chips-row {
-  display: flex; align-items: center; gap: 6px; flex-wrap: nowrap; min-width: 0;
-  overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch;
+/* ── FAN / BO'LIM TANLAGICH PANELI ────────────────────────────────
+   Ilgari ikkita bir xil kulrang "chip" edi — qaysi biri fan, qaysi biri
+   bo'lim ekani bilinmasdi va uchinchi (blok) chip tor ekranda kesilib
+   qolardi. Endi bitta to'liq kenglikdagi panel: har bo'lakning ustida
+   yorliq (FAN / BO'LIM) turadi, gorizontal scroll umuman yo'q. */
+.sel-bar {
+  display: flex; align-items: stretch; min-width: 0;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden; box-shadow: 0 2px 10px rgba(15, 27, 45, 0.05);
 }
-.chips-row::-webkit-scrollbar { display: none; }
+.sel-seg {
+  /* flex-basis: auto — joy mazmunga qarab bo'linadi: nomi uzunroq bo'lak
+     kengroq bo'ladi va ikkalasi mutanosib qisqaradi (biri ham yo'qolmaydi) */
+  flex: 1 1 auto; min-width: 0; display: flex; align-items: center; gap: 9px;
+  padding: 9px 12px; background: none; border: none; cursor: pointer;
+  font-family: inherit; text-align: left; min-height: 52px;
+  transition: background 0.16s;
+}
+.sel-seg + .sel-seg { border-left: 1px solid var(--border); }
+/* Har bo'lakning o'z eng kichik kengligi bor — aks holda uzun nomli bo'lak
+   qo'shnisini butunlay siqib qo'yadi (fan nomi ko'rinmay qolardi). */
+.sel-seg:first-child { min-width: 145px; } /* ikonka + fan nomi sig'adigan eng kichik kenglik */
+.sel-seg:last-child { min-width: 110px; }
+.sel-seg:active { background: var(--surface2); }
+.sel-seg-icon {
+  flex-shrink: 0; width: 32px; height: 32px; border-radius: 9px;
+  background: var(--blue-bg); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+}
+.sel-seg-body { min-width: 0; flex: 1; }
+.sel-seg-cap {
+  display: block; font-size: 9.5px; font-weight: 800; line-height: 1;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3);
+}
+.sel-seg-val {
+  display: block; font-size: 14px; font-weight: 800; color: var(--text);
+  margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.sel-seg-val small { font-weight: 600; font-size: 11.5px; color: var(--text3); }
+.sel-caret { flex-shrink: 0; color: var(--text3); }
+
+/* Tor telefonda (≤380px) fan ikonkasi 41px joy egallaydi — o'sha joyni nomlarga
+   beramiz, aks holda uzun bo'lim nomi yonida fan nomi ko'rinmay qoladi. */
+@media (max-width: 380px) {
+  .sel-seg-icon { display: none; }
+  .sel-seg:first-child { min-width: 104px; } /* ikonkasiz — 41px kam joy yetadi */
+}
+
+/* Blok qatori — panel ostida, "1–50-savollar · jami 200 ta" yozuvining o'zi bosiladi */
+.sel-subrow {
+  width: 100%; margin-top: 8px; display: flex; align-items: center; gap: 7px;
+  padding: 9px 12px; min-height: 40px; background: none;
+  border: 1px dashed var(--border2); border-radius: 11px;
+  font-family: inherit; font-size: 12.5px; color: var(--text2);
+  text-align: left; cursor: pointer;
+}
+.sel-subrow:active { background: var(--surface2); }
+.sel-subrow-strong { font-weight: 800; color: var(--accent); flex-shrink: 0; }
+.sel-subrow-hint { color: var(--text3); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sel-subrow .sel-caret { margin-left: auto; }
+
+/* Bosiladigan bo'lmaganda (blok bitta) — xuddi shu qator, faqat oddiy matn */
+.sel-subrow.is-static { border-style: solid; border-color: transparent; padding-left: 2px; cursor: default; }
 
 
 .dashboard-exam-banner {

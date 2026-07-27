@@ -1,50 +1,48 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useMemo } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import SmartBottomSheet from './test/SmartBottomSheet';
 import ConfirmDialog from './shared/ConfirmDialog';
 import { useModalBackButton } from './profile/useModalBackButton';
 
-// Chip uslubi — yengil, ikonkasiz (Telegram-uslub): faqat matn + kichik ▾.
-// Katta rangli ikonka doirasi olib tashlandi, shunda 3-4 chip bitta qatorga sig'adi.
-const chipStyle = {
-  display: 'inline-flex', alignItems: 'center', gap: 4, minWidth: 0,
-  background: 'var(--surface)', border: '1px solid var(--border)',
-  borderRadius: 99, padding: '8px 12px', cursor: 'pointer',
-  fontFamily: 'inherit', boxShadow: '0 2px 8px rgba(15,27,45,0.05)', maxWidth: '100%',
-};
-const chipLabel = {
-  fontSize: 14, fontWeight: 700, color: 'var(--text)',
-  whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
-};
-
 /**
- * Chip — yengil pill tugma (matn + ▾).
- * Fan/Mavzu/Blok chiplari shu komponentdan tashkil topadi → bir xil ko'rinish.
+ * BlockRow — panel ostidagi bosiladigan qator (blok tanlash).
+ * Ilgari blok yuqorida uchinchi "chip" edi va 360px ekranda kesilib qolardi;
+ * pastda esa "1–50-savollar · jami 200 ta" degan alohida yozuv turardi.
+ * Endi ikkovi bitta qatorga birlashdi — yozuvning o'zi bosiladi.
+ * onClick berilmasa — oddiy (bosilmaydigan) axborot qatori.
  */
-export const Chip = ({ label, onClick, ariaLabel, labelMaxWidth, noShrink = false }) => (
-  <motion.button
-    whileTap={{ scale: 0.97 }}
-    onClick={onClick}
-    aria-label={ariaLabel}
-    style={{ ...chipStyle, flexShrink: noShrink ? 0 : 1 }}
-  >
-    <span style={{ ...chipLabel, ...(labelMaxWidth ? { maxWidth: labelMaxWidth } : {}) }}>{label}</span>
-    <ChevronDown size={15} strokeWidth={2.4} style={{ flexShrink: 0, color: 'var(--text3)' }} />
-  </motion.button>
-);
+export const BlockRow = ({ label, hint, onClick, ariaLabel }) => {
+  const clickable = typeof onClick === 'function';
+  return (
+    <button
+      type="button"
+      className={`sel-subrow${clickable ? '' : ' is-static'}`}
+      onClick={clickable ? onClick : undefined}
+      aria-label={ariaLabel}
+      disabled={!clickable}
+    >
+      {label && <span className="sel-subrow-strong">{label}</span>}
+      {label && hint && <span style={{ color: 'var(--text3)', flexShrink: 0 }}>·</span>}
+      {hint && <span className="sel-subrow-hint">{hint}</span>}
+      {clickable && <ChevronDown size={15} strokeWidth={2.4} className="sel-caret" />}
+    </button>
+  );
+};
 
 /**
- * SubjectTopicChips — Fan + Mavzu chiplari (yagona, qayta ishlatiluvchi).
- * Dashboard ham, TestPage ham shu komponentni ishlatadi — shunda ikkalasi
+ * SubjectTopicChips — Fan + Bo'lim tanlagich paneli (yagona, qayta ishlatiluvchi).
+ * Dashboard, TestPage va AnalysisPage shu komponentni ishlatadi — shunda uchalasi
  * bir xil ko'rinadi va aynan bir state (activeCategory / topicId) bilan sinxron qoladi.
+ *
+ * Ikkala bo'lak ham BITTA oynani ochadi, faqat boshlang'ich tab'i farq qiladi:
+ * fan tanlagandan keyin oyna yopilmaydi, o'zi "Bo'lim" tab'iga o'tadi.
  *
  * Props:
  *   state, updateState, SUBJECTS, TOPICS — AppContext'dan
- *   setTopicId   — mavzu tanlanganda chaqiriladi (default: state.topicId yangilash)
- *   guardChange  — true bo'lsa, chip bosilganda ogohlantirib so'raydi (test o'rtasida)
- *   extraChip    — qatorga qo'shiladigan qo'shimcha chip (masalan: blok chipi)
+ *   setTopicId   — bo'lim tanlanganda chaqiriladi (default: state.topicId yangilash)
+ *   guardChange  — true bo'lsa, panel bosilganda ogohlantirib so'raydi (test o'rtasida)
+ *   belowRow     — panel ostiga qo'shiladigan qator (masalan: <BlockRow/>)
  */
 const SubjectTopicChips = ({
   state,
@@ -53,94 +51,106 @@ const SubjectTopicChips = ({
   TOPICS,
   setTopicId,
   guardChange = false,
-  extraChip = null,
+  belowRow = null,
 }) => {
   const { t } = useTranslation();
-  const [showSubjectPicker, setShowSubjectPicker] = useState(false);
-  const [showTopicPicker, setShowTopicPicker] = useState(false);
-  // Test o'rtasida chip bosilganda tasdiq: kutayotgan ochish funksiyasi saqlanadi
-  const [pendingOpen, setPendingOpen] = useState(null);
-
-  // Android/iOS "orqaga" tugmasi ochiq tanlagich/tasdiqni yopadi (sahifadan chiqarmaydi)
-  useModalBackButton(showSubjectPicker || showTopicPicker || !!pendingOpen, () => {
-    setShowSubjectPicker(false);
-    setShowTopicPicker(false);
-    setPendingOpen(null);
-  });
+  const [sheetTab, setSheetTab] = useState(null); // null = yopiq, 'subject' | 'topic'
+  // Test o'rtasida panel bosilganda tasdiq: kutayotgan tab saqlanadi
+  const [pendingTab, setPendingTab] = useState(null);
 
   const cat = state.activeCategory;
   const activeSubject = SUBJECTS.find(s => s.id === cat);
+  const SubjectIcon = activeSubject?.icon;
   const activeTopicId = state.topicId ?? -1;
   const activeTopic = TOPICS.find(tp => tp.id === activeTopicId);
-  const topicChipLabel = (activeTopicId !== -1 && activeTopic) ? activeTopic.name : t('common.allTopics');
 
-  // Test o'rtasida (javob belgilangan) chip bosilsa — ilova modali orqali tasdiq
-  const openGuarded = (open) => () => {
-    if (guardChange) { setPendingOpen(() => open); return; }
-    open(true);
+  // Joriy fandagi bo'limlar soni — "Barchasi · 8 ta" yozuvi uchun
+  const topicCount = useMemo(
+    () => TOPICS.filter(tp => Array.isArray(tp.category) ? tp.category.includes(cat) : tp.category === cat).length,
+    [TOPICS, cat]
+  );
+
+  // Android/iOS "orqaga": bo'lim tab'ida bo'lsak fan tab'iga qaytamiz, aks holda yopamiz
+  useModalBackButton(!!sheetTab || !!pendingTab, () => {
+    if (pendingTab) { setPendingTab(null); return; }
+    setSheetTab(null);
+  });
+
+  // Test o'rtasida (javob belgilangan) panel bosilsa — ilova modali orqali tasdiq
+  const openGuarded = (tab) => () => {
+    if (guardChange) { setPendingTab(tab); return; }
+    setSheetTab(tab);
   };
 
   const applyTopicId = setTopicId || ((id) => updateState({ topicId: id }));
 
   return (
     <>
-      <div className="chips-row">
-        {/* Fan chip */}
-        <Chip
-          label={activeSubject ? activeSubject.name : 'CHQBT'}
-          onClick={openGuarded(setShowSubjectPicker)}
-          ariaLabel={t('smartSheet.title')}
-          noShrink
-        />
+      <div className="sel-bar">
+        {/* FAN bo'lagi */}
+        <button
+          type="button"
+          className="sel-seg"
+          onClick={openGuarded('subject')}
+          aria-label={t('selector.subjectAria')}
+        >
+          {SubjectIcon && (
+            <span className="sel-seg-icon"><SubjectIcon size={18} strokeWidth={2} /></span>
+          )}
+          <span className="sel-seg-body">
+            <span className="sel-seg-cap">{t('selector.subject')}</span>
+            <span className="sel-seg-val">{activeSubject ? activeSubject.name : 'CHQBT'}</span>
+          </span>
+          <ChevronDown size={15} strokeWidth={2.4} className="sel-caret" />
+        </button>
 
-        {/* Mavzu chip — juda uzun nom 180px da kesiladi (qator buzilmasin) */}
-        <Chip
-          label={topicChipLabel}
-          onClick={openGuarded(setShowTopicPicker)}
-          ariaLabel={t('smartSheet.topicTitle')}
-          labelMaxWidth={180}
-        />
-
-        {/* Qo'shimcha chip (masalan blok) — TestPage'dan beriladi */}
-        {extraChip}
+        {/* BO'LIM bo'lagi */}
+        <button
+          type="button"
+          className="sel-seg"
+          onClick={openGuarded('topic')}
+          aria-label={t('selector.sectionAria')}
+        >
+          <span className="sel-seg-body">
+            {/* Bo'limlar soni ataylab YORLIQ qatorida (9.5px) — qiymat qatorida
+                bo'lsa tor ekranda "Barchasi" nomini siqib qo'yardi */}
+            <span className="sel-seg-cap">
+              {t('selector.section')}
+              {topicCount > 0 && <> · {t('selector.sectionCount', { count: topicCount })}</>}
+            </span>
+            <span className="sel-seg-val">
+              {(activeTopicId !== -1 && activeTopic) ? activeTopic.name : t('selector.allSections')}
+            </span>
+          </span>
+          <ChevronDown size={15} strokeWidth={2.4} className="sel-caret" />
+        </button>
       </div>
 
-      {/* Fan tanlash (fan chip orqali) — faqat fanlar */}
+      {belowRow}
+
+      {/* Yagona tanlash oynasi — ikki bosqichli (Fan → Bo'lim) */}
       <SmartBottomSheet
-        showSelectorDrawer={showSubjectPicker}
-        setShowSelectorDrawer={setShowSubjectPicker}
+        open={!!sheetTab}
+        initialTab={sheetTab || 'subject'}
+        onClose={() => setSheetTab(null)}
         state={state}
         updateState={updateState}
         topicId={activeTopicId}
         setTopicId={applyTopicId}
         SUBJECTS={SUBJECTS}
         TOPICS={TOPICS}
-        subjectsOnly
       />
 
-      {/* Mavzu tanlash (mavzu chip orqali) — faqat mavzular */}
-      <SmartBottomSheet
-        showSelectorDrawer={showTopicPicker}
-        setShowSelectorDrawer={setShowTopicPicker}
-        state={state}
-        updateState={updateState}
-        topicId={activeTopicId}
-        setTopicId={applyTopicId}
-        SUBJECTS={SUBJECTS}
-        TOPICS={TOPICS}
-        topicsOnly
-      />
-
-      {/* Test o'rtasida fan/mavzu almashtirish tasdig'i */}
+      {/* Test o'rtasida fan/bo'lim almashtirish tasdig'i */}
       <ConfirmDialog
-        open={!!pendingOpen}
+        open={!!pendingTab}
         title={t('test.changeWarn')}
         onConfirm={() => {
-          const open = pendingOpen;
-          setPendingOpen(null);
-          if (open) open(true);
+          const tab = pendingTab;
+          setPendingTab(null);
+          if (tab) setSheetTab(tab);
         }}
-        onCancel={() => setPendingOpen(null)}
+        onCancel={() => setPendingTab(null)}
       />
     </>
   );

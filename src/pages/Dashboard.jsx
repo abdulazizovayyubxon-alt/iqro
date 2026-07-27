@@ -22,7 +22,7 @@ import {
   CheckCircle2, Trash2,
   MessageCircle, X, Zap, History
 } from 'lucide-react';
-import SubjectTopicChips, { Chip } from '../components/SubjectTopicChips';
+import SubjectTopicChips, { BlockRow } from '../components/SubjectTopicChips';
 import { motion } from 'framer-motion';
 import localforage from 'localforage';
 import { EXAM_DATE, EXAM_GOAL_SCORE, EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY, isPlayBuild } from '../config';
@@ -231,24 +231,26 @@ const Dashboard = () => {
           updateState={updateState}
           SUBJECTS={SUBJECTS}
           TOPICS={TOPICS}
-          extraChip={(() => {
+          belowRow={(() => {
             // Bloklar soni faqat test sahifasida aniq bo'ladi; Dashboard'da
-            // questionMeta'dagi fan savol sonidan taxminlaymiz. Faqat 1 tadan
-            // ko'p blok bo'lganda ko'rsatamiz. Bosilganda testga o'tib, blok
-            // tanlagichni ochadi (test 1-blokdan boshlanadi → "1-blok").
+            // questionMeta'dagi fan savol sonidan taxminlaymiz. Bosilganda testga
+            // o'tib, blok tanlagichni ochadi (test 1-blokdan boshlanadi → "1-blok").
             const metaCount = questionMeta?.[cat]?.count;
-            const blockCount = metaCount ? Math.ceil(metaCount / BATCH_SIZE) : null;
-            if (blockCount !== null && blockCount <= 1) return null;
+            if (!metaCount) return null;
+            const blockCount = Math.ceil(metaCount / BATCH_SIZE);
+            const hint = t('test.totalAvailable', { count: metaCount });
+            // Bitta blok bo'lsa — bosilmaydigan axborot qatori
+            if (blockCount <= 1) return <BlockRow hint={hint} />;
             return (
-              <Chip
-                label={t('test.blockChip', { n: 1 })}
+              <BlockRow
+                label={t('selector.blockOf', { n: 1, total: blockCount })}
+                hint={hint}
                 ariaLabel={t('test.selectBlock')}
                 onClick={() => {
                   if (isFreeLimitReached) { setShowPremiumModal(true); return; }
                   updateState({ testMode: 'exam' });
                   navigate('/test', { state: { openBlocks: true } });
                 }}
-                noShrink
               />
             );
           })()}

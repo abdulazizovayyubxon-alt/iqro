@@ -19,18 +19,21 @@ import { useAdmin } from '../hooks/useAdmin';
 import BrandLogo from './shared/BrandLogo';
 
 import {
-  Award, AlertCircle, Settings, Info, Users, Shield, Crown, ChevronRight,
-  Pencil, Camera, Share2, Send, Activity, School
+  Award, Settings, Users, Shield, Crown, ChevronRight,
+  Pencil, Camera, Share2, Send, School
 } from 'lucide-react';
 
 // ── Sokin/jiddiy uslub — kir kulrang (--bg3) o'rniga chegarali --surface ──
-const actionBtn = { flexShrink: 0, width: 40, height: 40, borderRadius: 12, background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--text2)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0 };
-const menuBtn = { width: '100%', display: 'flex', alignItems: 'center', gap: 13, padding: '9px 10px', background: 'none', border: 'none', borderRadius: 12, cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left' };
-const iconCircle = { flexShrink: 0, width: 38, height: 38, borderRadius: '50%', background: 'var(--blue-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center' };
+// Balandliklar ataylab ixcham: panel oddiy foydalanuvchida skrollsiz sig'ishi kerak.
+const actionBtn = { flexShrink: 0, width: 38, height: 38, borderRadius: 12, background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--text2)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0 };
+const menuBtn = { width: '100%', display: 'flex', alignItems: 'center', gap: 12, padding: '7px 10px', background: 'none', border: 'none', borderRadius: 12, cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left', minHeight: 48 };
+const iconCircle = { flexShrink: 0, width: 34, height: 34, borderRadius: '50%', background: 'var(--blue-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center' };
 const menuLabel = { flex: 1, fontSize: 15, fontWeight: 600, color: 'var(--text)' };
-const cardBtn = { width: '100%', display: 'flex', alignItems: 'center', gap: 14, padding: '12px 14px', background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 14, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 2px 8px rgba(15,27,45,0.04)' };
-const iconCircleSolid = { flexShrink: 0, width: 44, height: 44, borderRadius: '50%', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center' };
-const urgBlk = { flex: '1 1 0', minWidth: 0, textAlign: 'center', background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 8, padding: '5px 2px', fontSize: 16, fontWeight: 800, color: 'var(--text)', display: 'flex', flexDirection: 'column', lineHeight: 1.1 };
+// Ulashish/Aloqa — 2 ustunli ixcham kartalar (ilgari to'liq kenglikdagi 2 qator edi)
+const miniCard = { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7, padding: '11px 8px', background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 14, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 2px 8px rgba(15,27,45,0.04)' };
+const iconCircleSolid = { flexShrink: 0, width: 36, height: 36, borderRadius: '50%', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center' };
+const miniLabel = { fontSize: 12.5, fontWeight: 700, color: 'var(--text)', textAlign: 'center', lineHeight: 1.25 };
+const urgBlk = { flex: '1 1 0', minWidth: 0, textAlign: 'center', background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 8, padding: '4px 2px', fontSize: 15, fontWeight: 800, color: 'var(--text)', display: 'flex', flexDirection: 'column', lineHeight: 1.1 };
 const urgSmall = { fontSize: 8.5, fontWeight: 600, color: 'var(--text3)', marginTop: 2 };
 
 // Telefonni o'qishli ko'rsatish (login email = <raqam>@iqro.uz bo'lishi mumkin)
@@ -45,6 +48,11 @@ const formatPhone = (raw) => {
  * ProfileDrawer — chapdan chiqadigan YAGONA profil paneli (Click uslubi: sokin, toza).
  * Statistika /achievements (Yutuqlar)ga ko'chirildi — bu yerda faqat "Darajangiz" kartasi.
  * Chiqish Sozlamalar ichida (tasodifan chiqib ketmaslik uchun).
+ *
+ * MAQSAD: panel oddiy foydalanuvchida SKROLLSIZ sig'ishi kerak. Shu sababli menyu
+ * qisqa (Yutuqlar / Taklif / Sozlamalar), qolgan bo'limlar o'z kontekstiga
+ * ko'chirilgan: Tahlil va Xatolar daftari → Sozlamalar > O'rganish,
+ * Dastur haqida → Sozlamalar > Ma'lumot, Tahlil kirish nuqtasi → Dashboard.
  */
 const ProfileDrawer = ({ open, onClose, theme, user }) => {
   const navigate = useNavigate();
@@ -61,6 +69,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
   const [profileSubject, setProfileSubject] = useState('');
   const [profileToifa, setProfileToifa] = useState('');
   const [avatarId, setAvatarId] = useState(user?.avatarId || null);
+  const [schoolId, setSchoolId] = useState(user?.schoolId || null);
   const [editForm, setEditForm] = useState({ firstName: '', lastName: '', age: '', gender: '', birthDate: '', subject: '', teacherCategory: '' });
   const [urgencyLeft, setUrgencyLeft] = useState(user?.urgencyMs || 0);
 
@@ -80,6 +89,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
       const dn = d.displayName || user.displayName || '';
       if (d.displayName) setProfileName(d.displayName);
       setAvatarId(d.avatarId || null);
+      setSchoolId(d.schoolId || null);
       setProfileSubject(d.subject || '');
       setProfileToifa(d.teacherCategory || '');
       setEditForm({
@@ -184,15 +194,15 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
 
   const contactSupport = () => { window.open(SUPPORT_URL, '_blank', 'noopener,noreferrer'); };
 
+  // Menyu ataylab qisqa — panel skrollsiz sig'ishi uchun.
+  // Tahlil va Xatolar daftari → Sozlamalar > O'rganish; Dastur haqida → Sozlamalar > Ma'lumot.
+  // Maktab faqat admin yoki maktabga a'zo bo'lganlarga ko'rinadi.
   const menuItems = [
     { icon: Award, label: t('sidebar.achievements', 'Yutuqlarim'), path: '/achievements' },
-    { icon: Activity, label: t('sidebar.analysis', 'Tahlil'), path: '/analysis' },
-    { icon: School, label: t('sidebar.school', 'Maktab'), path: '/school' },
     { icon: Users, label: t('sidebar.invite', "Do'stni taklif qilish"), path: '/referral' },
-    { icon: AlertCircle, label: t('sidebar.errors', 'Xatolar daftari'), path: '/errors' },
     { icon: Settings, label: t('sidebar.settings', 'Sozlamalar'), path: '/settings' },
-    { icon: Info, label: t('sidebar.about', 'Dastur haqida'), path: '/about' },
   ];
+  if (isAdmin || schoolId) menuItems.push({ icon: School, label: t('sidebar.school', 'Maktab'), path: '/school' });
   if (isAdmin) menuItems.push({ icon: Shield, label: t('sidebar.admin', 'Admin'), path: '/admin' });
 
   // Obuna banner mazmuni (holatga qarab)
@@ -240,22 +250,22 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
                 overflowY: 'auto',
               }}
             >
-              {/* ── Shaxsiy sarlavha ── */}
-              <div style={{ padding: '22px 18px 10px' }}>
+              {/* ── Shaxsiy sarlavha (zich: 5 qator o'rniga 3) ── */}
+              <div style={{ padding: '18px 18px 6px' }}>
                 {/* 1-qator: Avatar chapda, Tahrirlash va Bildirishnoma o'ngda */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
                   {/* Avatar — bosilganda tanlagich ochiladi */}
                   <button
                     onClick={() => setShowAvatarPicker(true)}
                     title={t('profile.avatarPick', 'Avatar tanlash')}
-                    style={{ position: 'relative', flexShrink: 0, width: 58, height: 58, borderRadius: '50%', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                    style={{ position: 'relative', flexShrink: 0, width: 54, height: 54, borderRadius: '50%', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
                   >
-                    <span style={{ display: 'flex', width: 58, height: 58, borderRadius: '50%', overflow: 'hidden', background: 'var(--accent)', color: '#fff', alignItems: 'center', justifyContent: 'center', fontSize: 21, fontWeight: 800, boxShadow: '0 4px 12px rgba(0,0,0,0.10)' }}>
+                    <span style={{ display: 'flex', width: 54, height: 54, borderRadius: '50%', overflow: 'hidden', background: 'var(--accent)', color: '#fff', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 800, boxShadow: '0 4px 12px rgba(0,0,0,0.10)' }}>
                       {avatarSrc
                         ? <img src={avatarSrc} alt={displayName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         : <span>{initials}</span>}
                     </span>
-                    <span style={{ position: 'absolute', bottom: -2, right: -2, width: 21, height: 21, borderRadius: '50%', background: 'var(--accent)', border: '2px solid var(--bg2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ position: 'absolute', bottom: -2, right: -2, width: 20, height: 20, borderRadius: '50%', background: 'var(--accent)', border: '2px solid var(--bg2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <Camera size={11} color="#fff" />
                     </span>
                   </button>
@@ -269,29 +279,40 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
                   </div>
                 </div>
 
-                {/* 2-qator: Ism-familiya, telefon va status */}
+                {/* 2-qator: Ism · 3-qator: telefon + ID · 4-qator: status + fan/toifa */}
                 <div style={{ minWidth: 0 }}>
                   <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--text)', lineHeight: 1.25, overflowWrap: 'break-word' }}>{displayName}</div>
-                  {phoneDisplay && <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text2)', marginTop: 3 }}>{phoneDisplay}</div>}
-                  {user.shortId && <div style={{ fontSize: 11.5, fontWeight: 700, color: 'var(--text3)', marginTop: 3, letterSpacing: 0.3 }}>ID: {user.shortId}</div>}
-                  <div style={{ fontSize: 12, fontWeight: 600, color: isTruePremium ? 'var(--accent)' : 'var(--text3)', marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
-                    {isTruePremium && <Crown size={12} />}
-                    {isTruePremium ? t('profile.premiumActive', 'Obuna faol') : t('header.freeAccount', 'Oddiy hisob')}
+
+                  {(phoneDisplay || user.shortId) && (
+                    <div style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--text2)', marginTop: 3, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+                      {phoneDisplay && <span>{phoneDisplay}</span>}
+                      {phoneDisplay && user.shortId && <span style={{ color: 'var(--text3)' }}>·</span>}
+                      {user.shortId && <span style={{ fontSize: 11.5, fontWeight: 700, color: 'var(--text3)', letterSpacing: 0.3 }}>ID: {user.shortId}</span>}
+                    </div>
+                  )}
+
+                  <div style={{ marginTop: 5, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', fontSize: 12, fontWeight: 600 }}>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color: isTruePremium ? 'var(--accent)' : 'var(--text3)' }}>
+                      {isTruePremium && <Crown size={12} />}
+                      {isTruePremium ? t('profile.premiumActive', 'Obuna faol') : t('header.freeAccount', 'Oddiy hisob')}
+                    </span>
+                    {subjectLine && (
+                      <>
+                        <span style={{ color: 'var(--text3)' }}>·</span>
+                        <span style={{ fontWeight: 500, color: 'var(--text3)' }}>{subjectLine}</span>
+                      </>
+                    )}
                   </div>
                 </div>
-
-                {subjectLine && (
-                  <div style={{ fontSize: 12.5, fontWeight: 500, color: 'var(--text3)', marginTop: 12, paddingLeft: 2 }}>{subjectLine}</div>
-                )}
               </div>
 
               {/* ── Menyu (doira ikonkalar) ── */}
-              <div style={{ padding: '14px 14px 0' }}>
+              <div style={{ padding: '10px 14px 0' }}>
                 {menuItems.map((item) => {
                   const Icon = item.icon;
                   return (
                     <button key={item.path} onClick={() => go(item.path)} style={menuBtn}>
-                      <span style={iconCircle}><Icon size={19} color="var(--accent)" strokeWidth={2} /></span>
+                      <span style={iconCircle}><Icon size={18} color="var(--accent)" strokeWidth={2} /></span>
                       <span style={menuLabel}>{item.label}</span>
                       <ChevronRight size={17} style={{ color: 'var(--text3)', flexShrink: 0 }} />
                     </button>
@@ -299,12 +320,12 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
                 })}
               </div>
 
-              {/* ── Obuna banneri (Click uslubi: yirik karta, azure gradient, katta toj) ── */}
-              <div style={{ padding: '16px 16px 4px' }}>
+              {/* ── Obuna banneri (Click uslubi: azure gradient, dekorativ toj — ixcham) ── */}
+              <div style={{ padding: '12px 16px 4px' }}>
                 <button
                   onClick={() => setShowPremium(true)}
                   style={{
-                    width: '100%', textAlign: 'left', borderRadius: 22, padding: '22px 20px 20px',
+                    width: '100%', textAlign: 'left', borderRadius: 18, padding: '16px 18px 15px',
                     border: '1px solid var(--border)',
                     background: 'linear-gradient(135deg, var(--surface) 0%, var(--blue-bg) 72%, rgba(14,151,224,0.18) 100%)',
                     cursor: 'pointer', fontFamily: 'inherit', position: 'relative', overflow: 'hidden',
@@ -312,27 +333,27 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
                   }}
                 >
                   <div style={{ position: 'relative', zIndex: 1 }}>
-                    <div style={{ paddingRight: 88 }}>
-                      <div style={{ fontSize: 21, fontWeight: 800, color: 'var(--text)', letterSpacing: -0.2, lineHeight: 1.2 }}>{subTitle}</div>
+                    <div style={{ paddingRight: 64 }}>
+                      <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--text)', letterSpacing: -0.2, lineHeight: 1.2 }}>{subTitle}</div>
                       {(trialStatus === 'urgency' && urgencyLeft > 0 && !isTruePremium) ? (
-                        <div style={{ display: 'flex', gap: 6, marginTop: 12 }}>
+                        <div style={{ display: 'flex', gap: 6, marginTop: 9 }}>
                           <span style={urgBlk}>{urg.d}<small style={urgSmall}>{t('profile.urgDay', 'kun')}</small></span>
                           <span style={urgBlk}>{urg.h}<small style={urgSmall}>{t('profile.urgHour', 'soat')}</small></span>
                           <span style={urgBlk}>{urg.m}<small style={urgSmall}>{t('profile.urgMin', 'daq')}</small></span>
                           <span style={urgBlk}>{urg.s}<small style={urgSmall}>{t('profile.urgSec', 'son')}</small></span>
                         </div>
                       ) : (
-                        <div style={{ fontSize: 14, fontWeight: 500, color: 'var(--text2)', marginTop: 8, lineHeight: 1.5 }}>{subDesc}</div>
+                        <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--text2)', marginTop: 6, lineHeight: 1.45 }}>{subDesc}</div>
                       )}
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginTop: 20, color: 'var(--accent)', fontWeight: 800, fontSize: 15 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginTop: 13, color: 'var(--accent)', fontWeight: 800, fontSize: 14 }}>
                       {isTruePremium ? t('profile.premiumManage', 'Obunani boshqarish') : t('drawer.connect', 'Ulanish')}
-                      <ChevronRight size={17} strokeWidth={2.6} />
+                      <ChevronRight size={16} strokeWidth={2.6} />
                     </div>
                   </div>
-                  {/* Katta dekorativ toj — Click'dagi 3D grafika o'rnida, azure gradient */}
-                  <svg width={112} height={112} viewBox="0 0 64 64" fill="none" aria-hidden="true"
-                    style={{ position: 'absolute', right: -8, bottom: -14, transform: 'rotate(-10deg)', filter: 'drop-shadow(0 12px 20px rgba(14,151,224,0.28))' }}>
+                  {/* Dekorativ toj — Click'dagi 3D grafika o'rnida, azure gradient */}
+                  <svg width={84} height={84} viewBox="0 0 64 64" fill="none" aria-hidden="true"
+                    style={{ position: 'absolute', right: -6, bottom: -10, transform: 'rotate(-10deg)', filter: 'drop-shadow(0 12px 20px rgba(14,151,224,0.28))' }}>
                     <defs>
                       <linearGradient id="tpCrownGrad" x1="0" y1="0" x2="0.35" y2="1">
                         <stop offset="0" stopColor="#5FBBEE" />
@@ -350,15 +371,15 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
 
               <div style={{ flex: 1, minHeight: 12 }} />
 
-              {/* ── Ilovani ulashish + Biz bilan bog'lanish (Click uslubi) ── */}
-              <div style={{ padding: '8px 16px 10px', display: 'flex', flexDirection: 'column', gap: 10 }}>
-                <button onClick={shareApp} style={cardBtn}>
-                  <span style={iconCircleSolid}><Share2 size={20} color="#fff" /></span>
-                  <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t('drawer.shareApp', 'Ilovani ulashish')}</span>
+              {/* ── Ilovani ulashish + Biz bilan bog'lanish (2 ustunli ixcham kartalar) ── */}
+              <div style={{ padding: '8px 16px 6px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+                <button onClick={shareApp} style={miniCard}>
+                  <span style={iconCircleSolid}><Share2 size={18} color="#fff" /></span>
+                  <span style={miniLabel}>{t('drawer.shareApp', 'Ilovani ulashish')}</span>
                 </button>
-                <button onClick={contactSupport} style={cardBtn}>
-                  <span style={iconCircleSolid}><Send size={19} color="#fff" /></span>
-                  <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t('drawer.contact', "Biz bilan bog'lanish")}</span>
+                <button onClick={contactSupport} style={miniCard}>
+                  <span style={iconCircleSolid}><Send size={17} color="#fff" /></span>
+                  <span style={miniLabel}>{t('drawer.contact', "Biz bilan bog'lanish")}</span>
                 </button>
               </div>
 
@@ -368,7 +389,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '8px',
-                padding: '12px 0 20px',
+                padding: '10px 0 calc(12px + env(safe-area-inset-bottom))',
                 userSelect: 'none',
                 flexShrink: 0
               }}>
