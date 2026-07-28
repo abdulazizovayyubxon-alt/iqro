@@ -17,7 +17,7 @@ export default function AvatarPickerModal({ current, onSelect, onClose, displayN
   return (
     <ModalShell onClose={onClose} maxWidth={460} style={{ maxHeight: '88vh', overflowY: 'auto' }}>
       <div className="pp-modal-title">{t('modals.avatarTitle')}</div>
-      <p style={{ fontSize: 13, color: '#64748B', margin: '0 0 16px', lineHeight: 1.5 }}>
+      <p style={{ fontSize: 'var(--fs-md)', color: '#64748B', margin: '0 0 16px', lineHeight: 1.5 }}>
         {t('modals.avatarDesc')}
       </p>
 
@@ -33,7 +33,7 @@ export default function AvatarPickerModal({ current, onSelect, onClose, displayN
             width: '100%', aspectRatio: '1', borderRadius: '50%',
             background: 'linear-gradient(135deg, #94A3B8, #64748B)', color: '#fff',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 22, fontWeight: 800,
+            fontSize: 'var(--fs-4xl)', fontWeight: 800,
           }}>
             {initials}
           </div>

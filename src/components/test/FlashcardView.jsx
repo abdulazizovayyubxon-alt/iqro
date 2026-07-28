@@ -18,8 +18,8 @@ const FlashcardView = ({
   return (
     <div className="flash-mode-container">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-        <div style={{ fontSize: '13px', color: 'var(--text3)' }}>{currentQ + 1} / {questions.length}</div>
-        <div style={{ display: 'flex', gap: '12px', fontSize: '13px' }}>
+        <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)' }}>{currentQ + 1} / {questions.length}</div>
+        <div style={{ display: 'flex', gap: '12px', fontSize: 'var(--fs-md)' }}>
           <span style={{ color: 'var(--green)' }}>✓ {Object.values(fcKnown).filter(Boolean).length} {t('flashcard.know')}</span>
           <span style={{ color: 'var(--red)' }}>✗ {Object.values(fcKnown).filter(v => v === false).length} {t('flashcard.dontKnow')}</span>
         </div>
@@ -33,15 +33,15 @@ const FlashcardView = ({
             <button className="objection-btn" onClick={(e) => { e.stopPropagation(); setShowObjectionModal(true); }}>
               <MessageCircle size={14} /> {t('flashcard.objection')}
             </button>
-            <div style={{ fontSize: '12px', color: 'var(--text3)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '1px' }}>{t('flashcard.frontHint')}</div>
+            <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '1px' }}>{t('flashcard.frontHint')}</div>
             <QuestionMedia question={questions[currentQ]} />
             <div className="flashcard-front-text">{questions[currentQ].q}</div>
           </div>
           <div className="flashcard-face flashcard-back">
             <div className="flashcard-back-text">
-              <div style={{ fontSize: '12px', color: 'var(--text3)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>{t('flashcard.correctAnswer')}</div>
-              <div style={{ fontSize: '20px', fontWeight: '700', color: 'var(--green)', marginBottom: '12px' }}>{questions[currentQ].opts[questions[currentQ].correct]?.replace(/^[A-D]\)\s*/, '')}</div>
-              {questions[currentQ].explanation && <div style={{ color: 'var(--text2)', fontSize: '13px', lineHeight: '1.5' }}>{questions[currentQ].explanation}</div>}
+              <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>{t('flashcard.correctAnswer')}</div>
+              <div style={{ fontSize: 'var(--fs-3xl)', fontWeight: '700', color: 'var(--green)', marginBottom: '12px' }}>{questions[currentQ].opts[questions[currentQ].correct]?.replace(/^[A-D]\)\s*/, '')}</div>
+              {questions[currentQ].explanation && <div style={{ color: 'var(--text2)', fontSize: 'var(--fs-explain)', lineHeight: 'var(--lh-relaxed)' }}>{questions[currentQ].explanation}</div>}
             </div>
           </div>
         </motion.div>

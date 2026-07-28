@@ -52,7 +52,7 @@ const ObjectionModal = ({ isOpen, onClose, questionText, onSubmit }) => {
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <div className="modal-title">{t('objection.title')}</div>
-        <div className="modal-text" style={{ fontSize: 13, lineHeight: 1.5 }}>
+        <div className="modal-text" style={{ fontSize: 'var(--fs-md)', lineHeight: 1.5 }}>
           <strong>{t('objection.questionLabel')}</strong> {questionText}
         </div>
         <textarea

@@ -28,13 +28,13 @@ import {
 const actionBtn = { flexShrink: 0, width: 38, height: 38, borderRadius: 12, background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--text2)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0 };
 const menuBtn = { width: '100%', display: 'flex', alignItems: 'center', gap: 12, padding: '7px 10px', background: 'none', border: 'none', borderRadius: 12, cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left', minHeight: 48 };
 const iconCircle = { flexShrink: 0, width: 34, height: 34, borderRadius: '50%', background: 'var(--blue-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center' };
-const menuLabel = { flex: 1, fontSize: 15, fontWeight: 600, color: 'var(--text)' };
+const menuLabel = { flex: 1, fontSize: 'var(--fs-lg)', fontWeight: 600, color: 'var(--text)' };
 // Ulashish/Aloqa — 2 ustunli ixcham kartalar (ilgari to'liq kenglikdagi 2 qator edi)
 const miniCard = { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7, padding: '11px 8px', background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 14, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 2px 8px rgba(15,27,45,0.04)' };
 const iconCircleSolid = { flexShrink: 0, width: 36, height: 36, borderRadius: '50%', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center' };
-const miniLabel = { fontSize: 12.5, fontWeight: 700, color: 'var(--text)', textAlign: 'center', lineHeight: 1.25 };
-const urgBlk = { flex: '1 1 0', minWidth: 0, textAlign: 'center', background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 8, padding: '4px 2px', fontSize: 15, fontWeight: 800, color: 'var(--text)', display: 'flex', flexDirection: 'column', lineHeight: 1.1 };
-const urgSmall = { fontSize: 8.5, fontWeight: 600, color: 'var(--text3)', marginTop: 2 };
+const miniLabel = { fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--text)', textAlign: 'center', lineHeight: 1.25 };
+const urgBlk = { flex: '1 1 0', minWidth: 0, textAlign: 'center', background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 8, padding: '4px 2px', fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)', display: 'flex', flexDirection: 'column', lineHeight: 1.1 };
+const urgSmall = { fontSize: 'var(--fs-3xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 2 };
 
 // Telefonni o'qishli ko'rsatish (login email = <raqam>@iqro.uz bo'lishi mumkin)
 const formatPhone = (raw) => {
@@ -260,7 +260,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
                     title={t('profile.avatarPick', 'Avatar tanlash')}
                     style={{ position: 'relative', flexShrink: 0, width: 54, height: 54, borderRadius: '50%', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
                   >
-                    <span style={{ display: 'flex', width: 54, height: 54, borderRadius: '50%', overflow: 'hidden', background: 'var(--accent)', color: '#fff', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 800, boxShadow: '0 4px 12px rgba(0,0,0,0.10)' }}>
+                    <span style={{ display: 'flex', width: 54, height: 54, borderRadius: '50%', overflow: 'hidden', background: 'var(--accent)', color: '#fff', alignItems: 'center', justifyContent: 'center', fontSize: 'var(--fs-3xl)', fontWeight: 800, boxShadow: '0 4px 12px rgba(0,0,0,0.10)' }}>
                       {avatarSrc
                         ? <img src={avatarSrc} alt={displayName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         : <span>{initials}</span>}
@@ -281,17 +281,17 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
 
                 {/* 2-qator: Ism · 3-qator: telefon + ID · 4-qator: status + fan/toifa */}
                 <div style={{ minWidth: 0 }}>
-                  <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--text)', lineHeight: 1.25, overflowWrap: 'break-word' }}>{displayName}</div>
+                  <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: 'var(--text)', lineHeight: 1.25, overflowWrap: 'break-word' }}>{displayName}</div>
 
                   {(phoneDisplay || user.shortId) && (
-                    <div style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--text2)', marginTop: 3, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+                    <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 600, color: 'var(--text2)', marginTop: 3, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
                       {phoneDisplay && <span>{phoneDisplay}</span>}
                       {phoneDisplay && user.shortId && <span style={{ color: 'var(--text3)' }}>·</span>}
-                      {user.shortId && <span style={{ fontSize: 11.5, fontWeight: 700, color: 'var(--text3)', letterSpacing: 0.3 }}>ID: {user.shortId}</span>}
+                      {user.shortId && <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--text3)', letterSpacing: 0.3 }}>ID: {user.shortId}</span>}
                     </div>
                   )}
 
-                  <div style={{ marginTop: 5, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', fontSize: 12, fontWeight: 600 }}>
+                  <div style={{ marginTop: 5, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', fontSize: 'var(--fs-sm)', fontWeight: 600 }}>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color: isTruePremium ? 'var(--accent)' : 'var(--text3)' }}>
                       {isTruePremium && <Crown size={12} />}
                       {isTruePremium ? t('profile.premiumActive', 'Obuna faol') : t('header.freeAccount', 'Oddiy hisob')}
@@ -334,7 +334,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
                 >
                   <div style={{ position: 'relative', zIndex: 1 }}>
                     <div style={{ paddingRight: 64 }}>
-                      <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--text)', letterSpacing: -0.2, lineHeight: 1.2 }}>{subTitle}</div>
+                      <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: 'var(--text)', letterSpacing: -0.2, lineHeight: 1.2 }}>{subTitle}</div>
                       {(trialStatus === 'urgency' && urgencyLeft > 0 && !isTruePremium) ? (
                         <div style={{ display: 'flex', gap: 6, marginTop: 9 }}>
                           <span style={urgBlk}>{urg.d}<small style={urgSmall}>{t('profile.urgDay', 'kun')}</small></span>
@@ -343,10 +343,10 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
                           <span style={urgBlk}>{urg.s}<small style={urgSmall}>{t('profile.urgSec', 'son')}</small></span>
                         </div>
                       ) : (
-                        <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--text2)', marginTop: 6, lineHeight: 1.45 }}>{subDesc}</div>
+                        <div style={{ fontSize: 'var(--fs-md)', fontWeight: 500, color: 'var(--text2)', marginTop: 6, lineHeight: 1.45 }}>{subDesc}</div>
                       )}
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginTop: 13, color: 'var(--accent)', fontWeight: 800, fontSize: 14 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginTop: 13, color: 'var(--accent)', fontWeight: 800, fontSize: 'var(--fs-base)' }}>
                       {isTruePremium ? t('profile.premiumManage', 'Obunani boshqarish') : t('drawer.connect', 'Ulanish')}
                       <ChevronRight size={16} strokeWidth={2.6} />
                     </div>
@@ -396,7 +396,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
                 {/* v2.0 */}
                 <span style={{
                   fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                  fontSize: '11.5px',
+                  fontSize: 'var(--fs-xs)',
                   fontWeight: 500,
                   color: theme === 'dark' ? '#5A606A' : '#94A3B8',
                 }}>

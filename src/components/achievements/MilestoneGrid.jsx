@@ -53,12 +53,12 @@ const MilestoneGrid = ({ live = {} }) => {
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{
-                  fontSize: 13, fontWeight: 700, color: 'var(--text)',
+                  fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text)',
                   overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
                 }}>
                   {t(`milestones.${m.id}.name`)}
                 </div>
-                <div style={{ fontSize: 10.5, color: 'var(--text3)', marginTop: 1 }}>
+                <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', marginTop: 1 }}>
                   {t(`milestones.${m.id}.desc`)}
                 </div>
               </div>
@@ -73,7 +73,7 @@ const MilestoneGrid = ({ live = {} }) => {
                   background: lv.maxed ? 'var(--green)' : 'var(--accent)', transition: 'width 0.5s ease',
                 }} />
               </div>
-              <div style={{ fontSize: 10.5, fontWeight: 600, color: 'var(--text3)', marginTop: 5 }}>
+              <div style={{ fontSize: 'var(--fs-2xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 5 }}>
                 {lv.maxed
                   ? t('milestones.maxed', { value: lv.value, unit })
                   : t('milestones.progress', { value: lv.value, next: lv.next, unit })}

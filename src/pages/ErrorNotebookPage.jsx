@@ -72,8 +72,8 @@ const ErrorNotebookPage = () => {
           <ArrowLeft size={18} color="var(--text2)" />
         </button>
         <div style={{ minWidth: 0, flex: 1 }}>
-          <h1 style={{ fontSize: 20, fontWeight: 900, color: 'var(--text)', margin: '0 0 2px' }}>{t('errorNotebook.title')}</h1>
-          <div style={{ fontSize: 11, color: 'var(--text3)' }}>{t('errorNotebook.subtitle', { subject: currentSubjectName })}</div>
+          <h1 style={{ fontSize: 'var(--fs-3xl)', fontWeight: 900, color: 'var(--text)', margin: '0 0 2px' }}>{t('errorNotebook.title')}</h1>
+          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>{t('errorNotebook.subtitle', { subject: currentSubjectName })}</div>
         </div>
       </div>
 
@@ -85,9 +85,9 @@ const ErrorNotebookPage = () => {
             <div style={{ position: 'absolute', width: '120px', height: '120px', background: 'radial-gradient(circle, rgba(239, 68, 68, 0.08) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', pointerEvents: 'none' }} />
             
             <div style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ fontSize: 12, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4, fontWeight: 700 }}>{t('errorNotebook.totalErrors')}</div>
-              <div style={{ fontSize: 44, fontWeight: 900, color: 'var(--red)', lineHeight: 1, marginBottom: 8 }}>{mistakes.length}</div>
-              <p style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.5, marginBottom: 20 }}>
+              <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4, fontWeight: 700 }}>{t('errorNotebook.totalErrors')}</div>
+              <div style={{ fontSize: 'var(--fs-11xl)', fontWeight: 900, color: 'var(--red)', lineHeight: 1, marginBottom: 8 }}>{mistakes.length}</div>
+              <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', lineHeight: 1.5, marginBottom: 20 }}>
                 {t('errorNotebook.improveText')}
               </p>
               
@@ -96,7 +96,7 @@ const ErrorNotebookPage = () => {
                   whileHover={{ scale: 1.01, y: -1 }} 
                   whileTap={{ scale: 0.98 }} 
                   onClick={handlePractice} 
-                  style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 24px', background: 'linear-gradient(135deg, #EF4444 0%, #F59E0B 100%)', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(239, 68, 68, 0.2)' }}
+                  style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 24px', background: 'linear-gradient(135deg, #EF4444 0%, #F59E0B 100%)', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 'var(--fs-base)', cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(239, 68, 68, 0.2)' }}
                 >
                   <Play size={16} fill="white" /> {t('errorNotebook.practice')}
                 </motion.button>
@@ -106,7 +106,7 @@ const ErrorNotebookPage = () => {
                   whileTap={{ scale: 0.98 }} 
                   onClick={handleClearAll} 
                   className="btn btn-outline"
-                  style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '12px 18px', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 14, color: 'var(--text2)', background: 'var(--bg2)' }}
+                  style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '12px 18px', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 'var(--fs-base)', color: 'var(--text2)', background: 'var(--bg2)' }}
                 >
                   <Trash size={15} /> {t('dashboard.clear')}
                 </motion.button>
@@ -135,7 +135,7 @@ const ErrorNotebookPage = () => {
                 background: 'var(--bg2)',
                 color: 'var(--text)',
                 fontFamily: 'inherit',
-                fontSize: 14,
+                fontSize: 'var(--fs-input)',
                 outline: 'none',
                 boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.02)'
               }}
@@ -154,7 +154,7 @@ const ErrorNotebookPage = () => {
                   borderColor: selectedTopic === 'all' ? '#EF4444' : 'var(--border)',
                   background: selectedTopic === 'all' ? '#EF4444' : 'var(--bg2)',
                   color: selectedTopic === 'all' ? '#fff' : 'var(--text2)',
-                  fontSize: 12,
+                  fontSize: 'var(--fs-sm)',
                   fontWeight: 700,
                   cursor: 'pointer',
                   fontFamily: 'inherit',
@@ -177,7 +177,7 @@ const ErrorNotebookPage = () => {
                       borderColor: isSelected ? '#EF4444' : 'var(--border)',
                       background: isSelected ? '#EF4444' : 'var(--bg2)',
                       color: isSelected ? '#fff' : 'var(--text2)',
-                      fontSize: 12,
+                      fontSize: 'var(--fs-sm)',
                       fontWeight: 700,
                       cursor: 'pointer',
                       fontFamily: 'inherit',
@@ -217,7 +217,7 @@ const ErrorNotebookPage = () => {
                   onClick={() => setExpandedQuestion(isExpanded ? null : idx)}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, marginBottom: 8 }}>
-                    <span style={{ fontSize: 10, fontWeight: 700, background: 'var(--red-bg)', color: 'var(--red)', padding: '2px 8px', borderRadius: 6, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                    <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, background: 'var(--red-bg)', color: 'var(--red)', padding: '2px 8px', borderRadius: 6, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                       {m.topic}
                     </span>
                     <button 
@@ -241,12 +241,12 @@ const ErrorNotebookPage = () => {
                     </button>
                   </div>
 
-                  <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)', lineHeight: 1.5, marginBottom: 8 }}>
+                  <div style={{ fontSize: 'var(--fs-option)', fontWeight: 'var(--fw-medium)', color: 'var(--text)', lineHeight: 'var(--lh-snug)', marginBottom: 8 }}>
                     {m.question}
                   </div>
 
                   {/* Expander indicator */}
-                  <div style={{ fontSize: 11, color: 'var(--text3)', display: 'flex', alignItems: 'center', gap: 4, fontWeight: 500 }}>
+                  <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', display: 'flex', alignItems: 'center', gap: 4, fontWeight: 500 }}>
                     <HelpCircle size={12} /> {isExpanded ? t('errorNotebook.hideOptions') : t('errorNotebook.showOptions')}
                   </div>
 
@@ -271,7 +271,7 @@ const ErrorNotebookPage = () => {
                                   style={{
                                     padding: '8px 12px',
                                     borderRadius: 8,
-                                    fontSize: 13,
+                                    fontSize: 'var(--fs-md)',
                                     fontWeight: 500,
                                     background: isCorrect ? 'rgba(16, 185, 129, 0.08)' : 'var(--bg3)',
                                     border: isCorrect ? '1.5px solid var(--green)' : '1px solid var(--border)',
@@ -292,7 +292,7 @@ const ErrorNotebookPage = () => {
                         )}
                         <div style={{ display: 'flex', gap: 6, alignItems: 'center', padding: '10px 12px', borderRadius: 10, background: 'rgba(16, 185, 129, 0.08)', border: '1px solid rgba(16, 185, 129, 0.15)' }}>
                           <CheckCircle2 size={15} color="var(--green)" />
-                          <div style={{ fontSize: 12, color: 'var(--text2)', fontWeight: 500 }}>
+                          <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text2)', fontWeight: 500 }}>
                             <strong>{t('test.correctAnswer')}</strong> {m.correct.replace(/^[A-D]\)\s*/, '')}
                           </div>
                         </div>
@@ -318,13 +318,13 @@ const ErrorNotebookPage = () => {
                 marginTop: 20
               }}
             >
-              <div className="float-animation" style={{ fontSize: 52, marginBottom: 14 }}>
+              <div className="float-animation" style={{ fontSize: 'var(--fs-hero-sm)', marginBottom: 14 }}>
                 {mistakes.length === 0 ? '🏆' : '🔍'}
               </div>
-              <h3 style={{ fontSize: 18, fontWeight: 800, color: 'var(--text)', marginBottom: 8 }}>
+              <h3 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: 'var(--text)', marginBottom: 8 }}>
                 {mistakes.length === 0 ? t('errorNotebook.emptyTitle') : t('errorNotebook.noResults')}
               </h3>
-              <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24, maxWidth: 320, margin: '0 auto 24px' }}>
+              <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24, maxWidth: 320, margin: '0 auto 24px' }}>
                 {mistakes.length === 0
                   ? t('errorNotebook.emptyText')
                   : t('errorNotebook.noResultsText')}
@@ -341,7 +341,7 @@ const ErrorNotebookPage = () => {
                     border: 'none',
                     borderRadius: 14,
                     fontWeight: 700,
-                    fontSize: 14,
+                    fontSize: 'var(--fs-base)',
                     cursor: 'pointer',
                     fontFamily: 'inherit',
                     boxShadow: '0 4px 15px rgba(41, 182, 246, 0.2)',

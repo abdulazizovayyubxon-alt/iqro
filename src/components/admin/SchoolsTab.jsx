@@ -29,12 +29,12 @@ const genJoinCode = () => {
 };
 
 const inputStyle = {
-  width: '100%', padding: '10px 12px', borderRadius: 10, fontSize: 14,
+  width: '100%', padding: '10px 12px', borderRadius: 10, fontSize: 'var(--fs-base)',
   border: '1.5px solid var(--border)', background: 'var(--bg2)',
   color: 'var(--text)', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box',
 };
 const labelStyle = {
-  fontSize: 11, fontWeight: 700, color: 'var(--text3)',
+  fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--text3)',
   marginBottom: 5, display: 'block', textTransform: 'uppercase',
 };
 
@@ -229,7 +229,7 @@ export default function SchoolsTab() {
     <div>
       {/* ═══ YARATISH ═══ */}
       <div className="glass-panel" style={{ padding: 20, marginBottom: 20 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 800, fontSize: 15, color: 'var(--text)', marginBottom: 16 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 800, fontSize: 'var(--fs-lg)', color: 'var(--text)', marginBottom: 16 }}>
           <School size={18} style={{ color: 'var(--accent)' }} /> Yangi maktab (B2B paket)
         </div>
 
@@ -285,7 +285,7 @@ export default function SchoolsTab() {
           </div>
         </div>
 
-        <div style={{ fontSize: 11, color: 'var(--text3)', marginBottom: 12, lineHeight: 1.55 }}>
+        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginBottom: 12, lineHeight: 1.55 }}>
           Kodni maktabga bering — har o'qituvchi «Maktab» bo'limida o'zi kiritadi va obuna muddati
           avtomatik beriladi. Muddat keyinroq uzaytirilsa, mavjud a'zolarga «Pro tarqatish» tugmasi orqali qo'llanadi.
         </div>
@@ -298,10 +298,10 @@ export default function SchoolsTab() {
       {/* ═══ SO'ROVLAR (B2B murojaatlar) ═══ */}
       {requests.length > 0 && (
         <div className="glass-panel" style={{ padding: 18, marginBottom: 20 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 800, fontSize: 14, color: 'var(--text)', marginBottom: 12 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 800, fontSize: 'var(--fs-base)', color: 'var(--text)', marginBottom: 12 }}>
             <Inbox size={17} style={{ color: 'var(--amber)' }} /> Maktab so'rovlari
             {newRequests > 0 && (
-              <span style={{ background: 'var(--red)', color: '#fff', borderRadius: 10, padding: '1px 8px', fontSize: 11, fontWeight: 800 }}>
+              <span style={{ background: 'var(--red)', color: '#fff', borderRadius: 10, padding: '1px 8px', fontSize: 'var(--fs-xs)', fontWeight: 800 }}>
                 {newRequests}
               </span>
             )}
@@ -312,10 +312,10 @@ export default function SchoolsTab() {
                 padding: '10px 12px', borderRadius: 10, background: 'var(--bg2)',
                 border: '1px solid var(--border)', opacity: r.status === 'new' ? 1 : 0.6,
               }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)' }}>
+                <div style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text)' }}>
                   {r.schoolName} {r.region ? `· ${r.region}` : ''}
                 </div>
-                <div style={{ fontSize: 11.5, color: 'var(--text3)', marginTop: 3 }}>
+                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: 3 }}>
                   {r.contactName || '—'} · {r.phone} · {r.teachers || '?'} o'qituvchi
                   {r.note ? ` · ${r.note}` : ''}
                 </div>
@@ -330,7 +330,7 @@ export default function SchoolsTab() {
                       Yopish
                     </button>
                   )}
-                  <span style={{ fontSize: 10.5, color: 'var(--text3)', alignSelf: 'center', marginLeft: 4 }}>
+                  <span style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', alignSelf: 'center', marginLeft: 4 }}>
                     {r.status}
                   </span>
                 </div>
@@ -358,12 +358,12 @@ export default function SchoolsTab() {
               <div key={s.id} className="glass-panel" style={{ padding: '14px 16px', opacity: s.active === false ? 0.55 : 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
                   <div style={{ flex: 1, minWidth: 180 }}>
-                    <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--text)' }}>
+                    <div style={{ fontWeight: 800, fontSize: 'var(--fs-lg)', color: 'var(--text)' }}>
                       {s.name}
-                      {expired && <span style={{ marginLeft: 8, fontSize: 10, color: 'var(--red)', fontWeight: 700 }}>MUDDATI TUGAGAN</span>}
-                      {full && <span style={{ marginLeft: 8, fontSize: 10, color: 'var(--amber)', fontWeight: 700 }}>O'RINLAR TO'LGAN</span>}
+                      {expired && <span style={{ marginLeft: 8, fontSize: 'var(--fs-2xs)', color: 'var(--red)', fontWeight: 700 }}>MUDDATI TUGAGAN</span>}
+                      {full && <span style={{ marginLeft: 8, fontSize: 'var(--fs-2xs)', color: 'var(--amber)', fontWeight: 700 }}>O'RINLAR TO'LGAN</span>}
                     </div>
-                    <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2 }}>
+                    <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: 2 }}>
                       {[s.region, s.district].filter(Boolean).join(', ') || '—'}
                       {until && ` · ${until.toLocaleDateString('uz-UZ')} gacha`}
                       {(s.adminUids?.length || 0) > 0 && ` · ${s.adminUids.length} admin`}
@@ -377,13 +377,13 @@ export default function SchoolsTab() {
                       display: 'flex', alignItems: 'center', gap: 6, padding: '6px 10px',
                       borderRadius: 9, border: '1px solid var(--border)', background: 'var(--bg2)',
                       color: 'var(--text)', fontFamily: 'monospace', fontWeight: 700,
-                      fontSize: 13, letterSpacing: 1, cursor: 'pointer',
+                      fontSize: 'var(--fs-md)', letterSpacing: 1, cursor: 'pointer',
                     }}
                   >
                     {s.joinCode} <Copy size={13} style={{ color: 'var(--text3)' }} />
                   </button>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700, color: full ? 'var(--amber)' : 'var(--text2)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-md)', fontWeight: 700, color: full ? 'var(--amber)' : 'var(--text2)' }}>
                     <Users size={14} /> {s.memberCount || 0}/{s.seats || '∞'}
                   </div>
                 </div>

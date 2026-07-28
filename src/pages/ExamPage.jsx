@@ -687,7 +687,7 @@ const ExamPage = () => {
       display: 'inline-flex', alignItems: 'center', gap: 6,
       padding: '6px 12px', borderRadius: 8,
       background: 'var(--bg3)', border: '1px solid var(--border)',
-      fontSize: '0.8125rem', fontWeight: 600, color: 'var(--text2)'
+      fontSize: 'var(--fs-body-sm)', fontWeight: 600, color: 'var(--text2)'
     };
     const chipIconStyle = { color: 'var(--text3)', flexShrink: 0 };
 
@@ -701,7 +701,7 @@ const ExamPage = () => {
           }}>
             <GraduationCap size={28} style={{ color: 'var(--blue)' }} />
           </div>
-          <h1 style={{ fontSize: '1.375rem', fontWeight: 800, color: 'var(--text)', marginBottom: 14, letterSpacing: '-0.5px' }}>{t('exam.simulatorTitle')}</h1>
+          <h1 style={{ fontSize: 'var(--fs-h1)', fontWeight: 800, color: 'var(--text)', marginBottom: 14, letterSpacing: '-0.5px' }}>{t('exam.simulatorTitle')}</h1>
 
           {/* Uzun matn o'rniga — bir qarashda o'qiladigan chiplar */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 22 }}>
@@ -720,8 +720,8 @@ const ExamPage = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
                 <History size={20} style={{ color: 'var(--amber)', flexShrink: 0 }} />
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: '0.9375rem', fontWeight: 700, color: 'var(--text)' }}>{t('exam.resumeTitle')}</div>
-                  <div style={{ fontSize: '0.8125rem', color: 'var(--text2)', marginTop: 2 }}>
+                  <div style={{ fontSize: 'var(--fs-h4)', fontWeight: 700, color: 'var(--text)' }}>{t('exam.resumeTitle')}</div>
+                  <div style={{ fontSize: 'var(--fs-body-sm)', color: 'var(--text2)', marginTop: 2 }}>
                     {t('exam.resumeInfo', {
                       answered: Object.keys(savedSession.answers || {}).length,
                       total: savedSession.questions.length,
@@ -732,7 +732,7 @@ const ExamPage = () => {
               </div>
               <button
                 onClick={resumeExam}
-                style={{ width: '100%', padding: '12px', background: 'var(--text)', color: 'var(--bg)', border: 'none', borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}
+                style={{ width: '100%', padding: '12px', background: 'var(--text)', color: 'var(--bg)', border: 'none', borderRadius: 10, fontSize: 'var(--fs-lg)', fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}
               >
                 {t('exam.resume')}
               </button>
@@ -767,8 +767,8 @@ const ExamPage = () => {
                     <m.Icon size={20} style={{ color: active ? '#fff' : 'var(--text3)' }} />
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: '0.96875rem', fontWeight: 700, color: 'var(--text)', marginBottom: 3 }}>{m.title}</div>
-                    <div style={{ fontSize: '0.8125rem', color: 'var(--text3)', lineHeight: 1.4 }}>{m.desc}</div>
+                    <div style={{ fontSize: 'var(--fs-h4)', fontWeight: 700, color: 'var(--text)', marginBottom: 3 }}>{m.title}</div>
+                    <div style={{ fontSize: 'var(--fs-body-sm)', color: 'var(--text3)', lineHeight: 1.4 }}>{m.desc}</div>
                   </div>
                   {/* Tanlov belgisi — radio o'rniga aniq ko'rinadigan doira */}
                   <div style={{
@@ -794,7 +794,7 @@ const ExamPage = () => {
               setExamStarted(true);
               AnalyticsEvents.examStart();
             }}
-            style={{ width: '100%', padding: '15px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 16, fontSize: 16, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
+            style={{ width: '100%', padding: '15px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 16, fontSize: 'var(--fs-xl)', fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
           >
             {savedSession ? t('exam.startNew') : t('exam.start')}
           </motion.button>
@@ -858,10 +858,10 @@ const ExamPage = () => {
         {/* Natija kartasi */}
         <div className="glass-panel exam-result-card">
           <div style={{ textAlign: 'center', marginBottom: 24 }}>
-            <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 4 }}>
+            <div style={{ fontSize: 'var(--fs-4xl)', fontWeight: 800, marginBottom: 4 }}>
               {pct >= 70 ? t('exam.resultExcellent') : pct >= 50 ? t('exam.resultGood') : t('exam.resultKeep')}
             </div>
-            <div style={{ fontSize: 13, color: 'var(--text3)' }}>{t('exam.finished')}</div>
+            <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)' }}>{t('exam.finished')}</div>
           </div>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 32, justifyContent: 'center', alignItems: 'center', marginBottom: 32 }}>
@@ -883,23 +883,23 @@ const ExamPage = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
                 <div style={{ textAlign: 'center', minWidth: 60 }}>
-                  <div style={{ fontSize: 26, fontWeight: 900, color: 'var(--green)' }}>{correctCount}</div>
-                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>{t('exam.statCorrect')}</div>
+                  <div style={{ fontSize: 'var(--fs-6xl)', fontWeight: 900, color: 'var(--green)' }}>{correctCount}</div>
+                  <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', fontWeight: 700 }}>{t('exam.statCorrect')}</div>
                 </div>
                 <div style={{ textAlign: 'center', minWidth: 60 }}>
-                  <div style={{ fontSize: 26, fontWeight: 900, color: 'var(--red)' }}>{wrongCount}</div>
-                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>{t('exam.statWrong')}</div>
+                  <div style={{ fontSize: 'var(--fs-6xl)', fontWeight: 900, color: 'var(--red)' }}>{wrongCount}</div>
+                  <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', fontWeight: 700 }}>{t('exam.statWrong')}</div>
                 </div>
                 <div style={{ textAlign: 'center', minWidth: 70 }}>
-                  <div style={{ fontSize: 26, fontWeight: 900, color: 'var(--text)' }}>{questions.length - answeredCount}</div>
-                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>{t('exam.statSkipped')}</div>
+                  <div style={{ fontSize: 'var(--fs-6xl)', fontWeight: 900, color: 'var(--text)' }}>{questions.length - answeredCount}</div>
+                  <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', fontWeight: 700 }}>{t('exam.statSkipped')}</div>
                 </div>
                 <div style={{ textAlign: 'center', minWidth: 80 }}>
-                  <div style={{ fontSize: 26, fontWeight: 900, color: 'var(--accent2)' }}>+{examEarnedPoints}</div>
-                  <div style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700 }}>{t('exam.statRating')}</div>
+                  <div style={{ fontSize: 'var(--fs-6xl)', fontWeight: 900, color: 'var(--accent2)' }}>+{examEarnedPoints}</div>
+                  <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', fontWeight: 700 }}>{t('exam.statRating')}</div>
                 </div>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 13, color: 'var(--text2)' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 'var(--fs-md)', color: 'var(--text2)' }}>
                 <div>{t('exam.date')} <strong>{new Date(startTimeMs).toLocaleDateString()}</strong></div>
                 <div>{t('exam.started')} <strong>{new Date(startTimeMs).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</strong></div>
                 <div>{t('exam.ended')} <strong>{endTime?.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</strong></div>
@@ -917,7 +917,7 @@ const ExamPage = () => {
               {examGained.map(g => (
                 <div
                   key={`${g.trackId}_${g.tier}`}
-                  style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 700, color: 'var(--accent2)' }}
+                  style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--accent2)' }}
                 >
                   <BadgeCheck size={15} style={{ flexShrink: 0 }} />
                   {t('results.gainedTier', { track: t(`tracks.${g.trackId}.name`), tier: t(`tracks.tier${g.tier}`) })}
@@ -940,23 +940,23 @@ const ExamPage = () => {
             }}>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 12 }}>
                 <Clock size={16} style={{ color: 'var(--blue)' }} />
-                <strong style={{ fontSize: 14, color: 'var(--text)', fontWeight: 800 }}>{t('exam.pacingTitle')}</strong>
+                <strong style={{ fontSize: 'var(--fs-base)', color: 'var(--text)', fontWeight: 800 }}>{t('exam.pacingTitle')}</strong>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', gap: 12 }}>
                 <div style={{ background: 'var(--bg3)', padding: 10, borderRadius: 8, textAlign: 'center', border: '1px solid var(--border)' }}>
-                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600, marginBottom: 2 }}>{t('exam.easyY1')}</div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t('exam.seconds', { n: pacing.avgY1 })}</div>
+                  <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', fontWeight: 600, marginBottom: 2 }}>{t('exam.easyY1')}</div>
+                  <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 700, color: 'var(--text)' }}>{t('exam.seconds', { n: pacing.avgY1 })}</div>
                 </div>
                 <div style={{ background: 'var(--bg3)', padding: 10, borderRadius: 8, textAlign: 'center', border: '1px solid var(--border)' }}>
-                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600, marginBottom: 2 }}>{t('exam.midY2')}</div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t('exam.seconds', { n: pacing.avgY2 })}</div>
+                  <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', fontWeight: 600, marginBottom: 2 }}>{t('exam.midY2')}</div>
+                  <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 700, color: 'var(--text)' }}>{t('exam.seconds', { n: pacing.avgY2 })}</div>
                 </div>
                 <div style={{ background: 'var(--bg3)', padding: 10, borderRadius: 8, textAlign: 'center', border: '1px solid var(--border)' }}>
-                  <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600, marginBottom: 2 }}>{t('exam.hardY3')}</div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t('exam.seconds', { n: pacing.avgY3 })}</div>
+                  <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', fontWeight: 600, marginBottom: 2 }}>{t('exam.hardY3')}</div>
+                  <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 700, color: 'var(--text)' }}>{t('exam.seconds', { n: pacing.avgY3 })}</div>
                 </div>
               </div>
-              <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 10, lineHeight: 1.4 }}>
+              <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: 10, lineHeight: 1.4 }}>
                 {pacing.avgY3 > 60
                   ? t('exam.pacingSlow')
                   : t('exam.pacingGood')}
@@ -976,10 +976,10 @@ const ExamPage = () => {
               textAlign: 'left'
             }}>
               <div style={{ display: 'flex', gap: 10, alignItems: 'center', marginBottom: 8 }}>
-                <span style={{ fontSize: 18 }}>💡</span>
-                <strong style={{ fontSize: 14, color: 'var(--text)', fontWeight: 800 }}>{t('exam.adviceTitle')}</strong>
+                <span style={{ fontSize: 'var(--fs-2xl)' }}>💡</span>
+                <strong style={{ fontSize: 'var(--fs-base)', color: 'var(--text)', fontWeight: 800 }}>{t('exam.adviceTitle')}</strong>
               </div>
-              <p style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.5, margin: '0 0 12px 0' }}>
+              <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', lineHeight: 1.5, margin: '0 0 12px 0' }}>
                 {t('exam.adviceP1')} <strong>{weakTopicsSorted[0].name}</strong> {t('exam.adviceP2', { correct: weakTopicsSorted[0].correct, total: weakTopicsSorted[0].total })}
               </p>
               <button 
@@ -988,7 +988,7 @@ const ExamPage = () => {
                   updateState({ topicId: weakTopicsSorted[0].topicId });
                   navigate('/test');
                 }}
-                style={{ padding: '8px 16px', borderRadius: 10, fontSize: 13, fontWeight: 700 }}
+                style={{ padding: '8px 16px', borderRadius: 10, fontSize: 'var(--fs-md)', fontWeight: 700 }}
               >
                 {t('exam.practiceTopic')}
               </button>
@@ -996,7 +996,7 @@ const ExamPage = () => {
           )}
 
           {/* Izoh */}
-          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 28, fontSize: 13 }}>
+          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 28, fontSize: 'var(--fs-md)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <div style={{ width: 24, height: 24, borderRadius: 6, background: 'var(--green-bg)', border: '2px solid var(--green)' }} />
               <span>{t('exam.legendCorrect')}</span>
@@ -1014,7 +1014,7 @@ const ExamPage = () => {
           {/* Mavzular bo'yicha grid */}
           {topicGroups.map((group, gi) => (
             <div key={gi} style={{ marginBottom: 20 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text2)', marginBottom: 10 }}>
+              <div style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text2)', marginBottom: 10 }}>
                 {group.icon} {group.name}
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -1035,7 +1035,7 @@ const ExamPage = () => {
                         width: 40, height: 40, borderRadius: 10, border: isWrong ? '2px dashed var(--red)' : isCorrect ? '2px solid var(--green)' : '1.5px solid var(--border2)',
                         background: isCorrect ? 'var(--green-bg)' : isWrong ? 'var(--red-bg)' : 'var(--bg3)',
                         color: isCorrect ? 'var(--green)' : isWrong ? 'var(--red)' : 'var(--text3)',
-                        fontWeight: 700, fontSize: 14, cursor: 'pointer'
+                        fontWeight: 700, fontSize: 'var(--fs-base)', cursor: 'pointer'
                       }}
                     >
                       {qi + 1}
@@ -1086,7 +1086,7 @@ const ExamPage = () => {
     <div className="exam-layout">
       {/* TOP BAR */}
       <div className="exam-topbar glass-panel">
-        <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--text)' }}>
+        <div style={{ fontWeight: 700, fontSize: 'var(--fs-lg)', color: 'var(--text)' }}>
           {t('exam.simHeader', { subject: SUBJECTS.find(s => s.id === cat)?.name || "CHQBT" })}
         </div>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
@@ -1132,13 +1132,13 @@ const ExamPage = () => {
               transition={{ duration: 0.15 }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-                <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                <div style={{ fontSize: 'var(--fs-md)', fontWeight: 600, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                   {t('test.questionNum', { current: currentQ + 1, total: questions.length })}
                 </div>
                 <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                   <button
                     className="objection-btn"
-                    style={{ position: 'static', display: 'flex', alignItems: 'center', gap: 6, padding: '6px 12px', borderRadius: 8, fontSize: 13, fontWeight: 600, border: '1px solid var(--border)' }}
+                    style={{ position: 'static', display: 'flex', alignItems: 'center', gap: 6, padding: '6px 12px', borderRadius: 8, fontSize: 'var(--fs-md)', fontWeight: 600, border: '1px solid var(--border)' }}
                     onClick={() => setShowObjectionModal(true)}
                   >
                     <AlertCircle size={13} /> {t('test.objection')}
@@ -1150,7 +1150,7 @@ const ExamPage = () => {
                       background: flagged[currentQ] ? 'var(--amber-bg)' : 'transparent',
                       border: flagged[currentQ] ? '1px solid var(--amber)' : '1px solid var(--border)',
                       color: flagged[currentQ] ? 'var(--amber)' : 'var(--text3)',
-                      padding: '6px 12px', borderRadius: 8, fontSize: 13, fontWeight: 600, cursor: 'pointer'
+                      padding: '6px 12px', borderRadius: 8, fontSize: 'var(--fs-md)', fontWeight: 600, cursor: 'pointer'
                     }}
                   >
                     <Flag size={13} fill={flagged[currentQ] ? 'var(--amber)' : 'none'} />
@@ -1163,9 +1163,9 @@ const ExamPage = () => {
               <QuestionMedia question={q} />
               {/* Savol matni */}
               {q.isHtml ? (
-                <SafeHtml html={q.q} style={{ fontSize: '1rem', fontWeight: 500, lineHeight: 1.6, marginBottom: 24, color: 'var(--text)' }} />
+                <SafeHtml html={q.q} style={{ fontSize: 'var(--fs-question)', fontWeight: 'var(--fw-regular)', lineHeight: 'var(--lh-snug)', marginBottom: 24, color: 'var(--text)' }} />
               ) : (
-                <div style={{ fontSize: '1.125rem', fontWeight: 600, lineHeight: 1.5, marginBottom: 24, color: 'var(--text)', whiteSpace: 'pre-line' }}>
+                <div style={{ fontSize: 'var(--fs-question)', fontWeight: 'var(--fw-medium)', lineHeight: 'var(--lh-snug)', marginBottom: 24, color: 'var(--text)', whiteSpace: 'pre-line' }}>
                   {q.q}
                 </div>
               )}
@@ -1211,7 +1211,8 @@ const ExamPage = () => {
                         background: optBg,
                         cursor: reviewMode ? 'default' : 'pointer',
                         transition: 'all 0.15s', fontFamily: 'inherit',
-                        fontSize: '0.9375rem', fontWeight: 500, color: 'var(--text)',
+                        fontSize: 'var(--fs-option)', fontWeight: 'var(--fw-regular)', color: 'var(--text)',
+                        lineHeight: 'var(--lh-snug)',
                       }}
                     >
                       <div style={{
@@ -1219,7 +1220,7 @@ const ExamPage = () => {
                         background: indicatorBg,
                         color: indicatorColor,
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontWeight: 700, fontSize: 14
+                        fontWeight: 700, fontSize: 'var(--fs-base)'
                       }}>
                         {['A', 'B', 'C', 'D'][i]}
                       </div>
@@ -1239,10 +1240,10 @@ const ExamPage = () => {
                   textAlign: 'left'
                 }}>
                   <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 10 }}>
-                    <span style={{ fontSize: 18 }}>📖</span>
-                    <strong style={{ fontSize: 14, color: 'var(--text)', fontWeight: 800 }}>{t('exam.explanation')}</strong>
+                    <span style={{ fontSize: 'var(--fs-2xl)' }}>📖</span>
+                    <strong style={{ fontSize: 'var(--fs-base)', color: 'var(--text)', fontWeight: 800 }}>{t('exam.explanation')}</strong>
                   </div>
-                  <div style={{ fontSize: 14, color: 'var(--text2)', lineHeight: 1.6 }}>
+                  <div style={{ fontSize: 'var(--fs-base)', color: 'var(--text2)', lineHeight: 1.6 }}>
                     {q.explanation ? (
                       q.explanation.startsWith('<') ? (
                         <SafeHtml html={q.explanation} />
@@ -1285,16 +1286,16 @@ const ExamPage = () => {
         <div className="exam-navigator glass-panel">
           <div style={{ marginBottom: 16 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                 {t('exam.questions')}
               </div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--blue)' }}>
+              <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--blue)' }}>
                 {answeredCount} / {questions.length}
               </div>
             </div>
 
             {/* Rang izohlari */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, fontSize: 11, color: 'var(--text2)', marginBottom: 16 }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, fontSize: 'var(--fs-xs)', color: 'var(--text2)', marginBottom: 16 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <div style={{ width: 12, height: 12, borderRadius: 4, background: 'var(--blue)' }} />
                 <span>{t('exam.legendAnswered')}</span>
@@ -1346,7 +1347,7 @@ const ExamPage = () => {
                       border: btnBorder,
                       background: btnBg,
                       color: btnColor,
-                      fontWeight: 700, fontSize: 10, cursor: 'pointer',
+                      fontWeight: 700, fontSize: 'var(--fs-2xs)', cursor: 'pointer',
                       transition: 'all 0.15s', padding: 0,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       position: 'relative'
@@ -1396,9 +1397,9 @@ const ExamPage = () => {
       {showConfirmModal && (
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: 24, maxWidth: 320, width: '90%', borderRadius: 20, textAlign: 'center' }}>
-            <div style={{ fontSize: 40, marginBottom: 12 }}>🚩</div>
-            <h3 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>{t('exam.confirmTitle')}</h3>
-            <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>{t('exam.confirmText')}</p>
+            <div style={{ fontSize: 'var(--fs-10xl)', marginBottom: 12 }}>🚩</div>
+            <h3 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>{t('exam.confirmTitle')}</h3>
+            <p style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 24 }}>{t('exam.confirmText')}</p>
             <div style={{ display: 'flex', gap: 12 }}>
               <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setShowConfirmModal(false)}>{t('exam.no')}</button>
               <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { setShowConfirmModal(false); handleFinish(true); }}>{t('exam.yesFinish')}</button>

@@ -13,15 +13,17 @@
     <meta name="theme-color" content="#0A2440" />
 
     <!-- Shrift o'lchami (S/M/L/XL) React yuklanishidan OLDIN qo'llanadi — aks holda
-         matn avval M (16px) holda chizilib, keyin tanlangan o'lchamga "sakrardi"
-         (flash). Bu YAGONA boshlang'ich manba; runtime o'zgarishini SettingsPage
-         boshqaradi. rem'dagi matnlar shu root o'lchamiga nisbatan masshtablanadi. -->
+         matn avval M holda chizilib, keyin tanlangan o'lchamga "sakrardi" (flash).
+         Bu YAGONA boshlang'ich manba; runtime o'zgarishini SettingsPage boshqaradi.
+         Faqat --fs-scale beriladi: ildizdagi font-size: calc(clamp(...) * var(--fs-scale))
+         (src/index.css) uni o'zi hisoblaydi. To'g'ridan-to'g'ri style.fontSize berilsa,
+         inline uslub calc()ni bosib ketib, ekranga moslashuvchi clamp() o'chib qolardi. -->
     <script>
       (function () {
         try {
           var s = parseFloat(localStorage.getItem('iqro-font-scale'));
           if (s && s >= 0.8 && s <= 1.5) {
-            document.documentElement.style.fontSize = (16 * s) + 'px';
+            document.documentElement.style.setProperty('--fs-scale', String(s));
           }
         } catch (e) { /* localStorage bloklangan bo'lishi mumkin */ }
       })();

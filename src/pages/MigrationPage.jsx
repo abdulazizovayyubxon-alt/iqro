@@ -7,7 +7,7 @@ const MigrationPage = () => {
       <div className="glass-panel" style={{ padding: '40px', textAlign: 'center', maxWidth: '400px' }}>
         <CheckCircle size={48} style={{ color: 'var(--green)', marginBottom: '16px' }} />
         <h2 style={{ marginBottom: '8px' }}>Migratsiya yakunlangan</h2>
-        <p style={{ color: 'var(--text2)', fontSize: '14px' }}>
+        <p style={{ color: 'var(--text2)', fontSize: 'var(--fs-base)' }}>
           Barcha savollar Firestore'ga muvaffaqiyatli ko'chirilgan.
           Statik fayllar loyihadan olib tashlangan.
         </p>

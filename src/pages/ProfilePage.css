@@ -24,7 +24,7 @@
 
 .sp-title {
   margin: 0;
-  font-size: 21px;
+  font-size: var(--fs-3xl);
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.2px;
@@ -33,7 +33,7 @@
 
 .sp-subtitle {
   margin: 2px 0 0;
-  font-size: 12.5px;
+  font-size: var(--fs-sm);
   font-weight: 500;
   color: var(--text3);
   white-space: nowrap;
@@ -60,7 +60,7 @@
 
 .pp-section-label {
   margin: 0 0 8px 4px;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.9px;
@@ -140,7 +140,7 @@ button.pp-menu-item:disabled:hover { background: transparent; }
 }
 
 .pp-menu-label {
-  font-size: 14.5px;
+  font-size: var(--fs-base);
   font-weight: 600;
   line-height: 1.3;
   color: var(--text);
@@ -148,7 +148,7 @@ button.pp-menu-item:disabled:hover { background: transparent; }
 .pp-menu-label.is-red { color: var(--red); }
 
 .pp-menu-sublabel {
-  font-size: 11.5px;
+  font-size: var(--fs-xs);
   font-weight: 500;
   line-height: 1.35;
   color: var(--text3);
@@ -183,7 +183,7 @@ button.pp-menu-item.danger:hover .pp-menu-arrow { color: var(--red); }
   background: transparent;
   color: var(--text3);
   font-family: inherit;
-  font-size: 12.5px;
+  font-size: var(--fs-sm);
   font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
@@ -228,7 +228,7 @@ button.pp-menu-item.danger:hover .pp-menu-arrow { color: var(--red); }
   flex-shrink: 0;
   padding: 5px 10px;
   border-radius: 99px;
-  font-size: 12px;
+  font-size: var(--fs-sm);
   font-weight: 700;
   white-space: nowrap;
   background: var(--blue-bg);
@@ -261,14 +261,14 @@ button.pp-menu-item.danger:hover .pp-menu-arrow { color: var(--red); }
 .pp-support-body { flex: 1; min-width: 0; }
 
 .pp-support-title {
-  font-size: 14px;
+  font-size: var(--fs-base);
   font-weight: 800;
   color: var(--accent2);
 }
 
 .pp-support-text {
   margin-top: 2px;
-  font-size: 12px;
+  font-size: var(--fs-sm);
   line-height: 1.4;
   color: var(--text2);
 }
@@ -281,7 +281,7 @@ button.pp-menu-item.danger:hover .pp-menu-arrow { color: var(--red); }
   background: var(--cta);
   color: #fff;
   font-family: inherit;
-  font-size: 13px;
+  font-size: var(--fs-md);
   font-weight: 700;
   white-space: nowrap;
   cursor: pointer;
@@ -301,7 +301,7 @@ button.pp-menu-item.danger:hover .pp-menu-arrow { color: var(--red); }
   justify-content: center;
   gap: 6px;
   padding: 26px 0 4px;
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--text3);
 }
 
@@ -326,12 +326,12 @@ button.pp-menu-item.danger:hover .pp-menu-arrow { color: var(--red); }
   to { opacity: 1; transform: scale(1); }
 }
 .pp-modal-title {
-  font-size: 20px; font-weight: 800; color: var(--text);
+  font-size: var(--fs-3xl); font-weight: 800; color: var(--text);
   margin-bottom: 20px;
 }
 .pp-field { margin-bottom: 14px; }
 .pp-field label {
-  display: block; font-size: 12.5px; font-weight: 700;
+  display: block; font-size: var(--fs-sm); font-weight: 700;
   color: var(--text2); margin-bottom: 7px;
   text-transform: uppercase; letter-spacing: 0.5px;
 }
@@ -339,7 +339,7 @@ button.pp-menu-item.danger:hover .pp-menu-arrow { color: var(--red); }
   width: 100%; padding: 14px; border-radius: 12px;
   border: 1.5px solid var(--border);
   background: var(--surface2); color: var(--text);
-  font-family: inherit; font-size: 15.5px; font-weight: 600;
+  font-family: inherit; font-size: var(--fs-lg); font-weight: 600;
   outline: none; transition: border-color 0.2s, background 0.2s;
 }
 .pp-field input::placeholder { color: var(--text3); font-weight: 500; }
@@ -351,7 +351,7 @@ button.pp-menu-item.danger:hover .pp-menu-arrow { color: var(--red); }
 }
 .pp-modal-actions button {
   flex: 1; padding: 13px; border-radius: 12px;
-  font-weight: 700; font-size: 15px;
+  font-weight: 700; font-size: var(--fs-lg);
   cursor: pointer; font-family: inherit;
   border: 1.5px solid var(--border);
   transition: all 0.2s;

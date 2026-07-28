@@ -31,7 +31,7 @@ const RadialChart = ({ pct, size = 120, stroke = 10, color = 'var(--green)', lab
           {pct}%
         </text>
       </svg>
-      {label && <div style={{ fontSize: '12px', color: 'var(--text3)', fontWeight: '600', textAlign: 'center' }}>{label}</div>}
+      {label && <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', fontWeight: '600', textAlign: 'center' }}>{label}</div>}
     </div>
   );
 };

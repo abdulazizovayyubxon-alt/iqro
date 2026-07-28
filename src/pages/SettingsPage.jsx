@@ -157,9 +157,12 @@ export default function SettingsPage({ theme, toggleTheme }) {
     else showToast(t('settings.toasts.pushError'), 'error');
   };
 
-  // Shrift o'lchami — root font-size (html.fontSize) orqali boshqariladi.
-  // 16px standart baza. S=0.9, M=1, L=1.1, XL=1.25 koeffitsiyentlarga ko'paytiradi.
-  // rem da yozilgan matnlar (savol, variant, flashcard) shu baZA ga nisbatan o'zgaradi.
+  // Shrift o'lchami — tipografiya tizimining --fs-scale ko'paytuvchisi (src/index.css).
+  // S=0.9, M=1, L=1.1, XL=1.25. Ildizdagi `font-size: calc(clamp(...) * var(--fs-scale))`
+  // shu qiymatga ko'payadi, tokenlar esa rem'da — shuning uchun BITTA o'zgaruvchi
+  // butun ilovadagi matnni (savol, variant, menyu, izoh, tugma) birdek o'zgartiradi.
+  // DIQQAT: bevosita html.style.fontSize BERILMAYDI — inline uslub calc()ni bosib
+  // ketadi va ekranga moslashuvchi clamp() o'chib qoladi.
   const [fontScale, setFontScale] = useState(() => {
     const saved = parseFloat(localStorage.getItem('iqro-font-scale'));
     return saved && saved >= 0.8 && saved <= 1.5 ? saved : 1;
@@ -167,8 +170,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
   const applyFontScale = (v) => {
     setFontScale(v);
     localStorage.setItem('iqro-font-scale', String(v));
-    // root font-size ni o'zgartirish — barcha rem elementlari avtomatik moslashadi
-    document.documentElement.style.fontSize = `${16 * v}px`;
+    document.documentElement.style.setProperty('--fs-scale', String(v));
   };
 
   // Imtihonga sanoq — doim ko'rinib turgan muddat hammaga ham foydali emas,

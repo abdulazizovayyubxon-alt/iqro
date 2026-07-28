@@ -228,12 +228,12 @@ export default function LoginPage() {
                         transition={{ duration: 0.3 }}
                         style={{ display: 'flex', alignItems: 'center', gap: 16 }}
                       >
-                        <div style={{ fontSize: 48, filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.1))' }}>
+                        <div style={{ fontSize: 'var(--fs-12xl)', filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.1))' }}>
                           {FEATURES[featureIdx].icon}
                         </div>
                         <div>
-                          <h1 style={{ ...s.title, marginBottom: 6, fontSize: 24, lineHeight: 1.1 }}>{FEATURES[featureIdx].title}</h1>
-                          <p style={{ ...s.subtitle, marginBottom: 0, fontSize: 13, lineHeight: 1.4 }}>{FEATURES[featureIdx].desc}</p>
+                          <h1 style={{ ...s.title, marginBottom: 6, fontSize: 'var(--fs-5xl)', lineHeight: 1.1 }}>{FEATURES[featureIdx].title}</h1>
+                          <p style={{ ...s.subtitle, marginBottom: 0, fontSize: 'var(--fs-md)', lineHeight: 1.4 }}>{FEATURES[featureIdx].desc}</p>
                         </div>
                       </motion.div>
                     </AnimatePresence>
@@ -387,12 +387,12 @@ export default function LoginPage() {
 
           {/* Trust Badges & Policies */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', marginTop: '24px' }}>
-            <div style={{ fontSize: '11px', color: 'var(--text3)', textAlign: 'center', maxWidth: 280, lineHeight: 1.5 }}>
+            <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', textAlign: 'center', maxWidth: 280, lineHeight: 1.5 }}>
               {t('login.policyP1')} <a href="/privacy" style={{color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600}}>{t('login.privacyLink')}</a> {t('login.policyMid')} <a href="/terms" style={{color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600}}>{t('login.termsLink')}</a>{t('login.policyP2')}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', opacity: 0.6 }}>
               <ShieldCheck size={16} color="var(--text)" />
-              <span style={{ fontSize: '12px', color: 'var(--text)', fontWeight: 500 }}>{t('login.dataSecure')}</span>
+              <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text)', fontWeight: 500 }}>{t('login.dataSecure')}</span>
             </div>
           </div>
         </div>
@@ -440,18 +440,18 @@ const getStyles = (isMobile) => ({
     transition: 'background 0.2s',
   },
   content: { flex: 1, padding: isMobile ? '16px 20px 8px' : '28px 24px 16px', overflowY: 'auto' },
-  title: { fontSize: 32, fontWeight: 800, lineHeight: 1.2, marginBottom: 8, color: 'var(--text)' },
-  subtitle: { fontSize: 15, color: 'var(--text3)', lineHeight: 1.6, marginBottom: isMobile ? 16 : 28 },
+  title: { fontSize: 'var(--fs-8xl)', fontWeight: 800, lineHeight: 1.2, marginBottom: 8, color: 'var(--text)' },
+  subtitle: { fontSize: 'var(--fs-lg)', color: 'var(--text3)', lineHeight: 1.6, marginBottom: isMobile ? 16 : 28 },
   phoneWrap: { marginBottom: 8 },
   phoneInput: {
-    width: '100%', fontSize: 32, fontWeight: 800,
+    width: '100%', fontSize: 'var(--fs-8xl)', fontWeight: 800,
     color: 'var(--text)', border: 'none', outline: 'none',
     background: 'transparent', fontFamily: 'inherit',
     caretColor: PRIMARY, letterSpacing: 1,
     paddingBottom: 8, borderBottom: `2.5px solid ${PRIMARY}`,
   },
   input: {
-    width: '100%', padding: '16px 18px', fontSize: 15,
+    width: '100%', padding: '16px 18px', fontSize: 'var(--fs-lg)',
     border: '1.5px solid var(--border)', borderRadius: 16,
     background: 'var(--bg3)', color: 'var(--text)', fontFamily: 'inherit',
     outline: 'none', marginBottom: 12, transition: 'all 0.25s ease',
@@ -465,12 +465,12 @@ const getStyles = (isMobile) => ({
   },
   forgotBtn: {
     background: 'none', border: 'none', color: 'var(--accent2)',
-    fontSize: 14, fontWeight: 600, cursor: 'pointer',
+    fontSize: 'var(--fs-base)', fontWeight: 600, cursor: 'pointer',
     fontFamily: 'inherit', marginTop: '6px', padding: '12px 0px',
     textDecoration: 'underline', textUnderlineOffset: 3,
     display: 'inline-block', minHeight: '44px',
   },
-  errorText: { marginTop: 10, fontSize: 13, color: 'var(--red)', fontWeight: 500 },
+  errorText: { marginTop: 10, fontSize: 'var(--fs-md)', color: 'var(--red)', fontWeight: 500 },
   footer: { 
     padding: isMobile 
       ? '12px 20px calc(12px + env(safe-area-inset-bottom))' 
@@ -482,17 +482,17 @@ const getStyles = (isMobile) => ({
     width: '100%', padding: '16px', borderRadius: 16,
     /* a11y: accent (~3.2:1) o'rniga --cta — oq matn bilan har temada ≥4.5:1 */
     background: 'var(--cta)', color: '#fff', border: 'none',
-    fontWeight: 700, fontSize: 16, cursor: 'pointer',
+    fontWeight: 700, fontSize: 'var(--fs-xl)', cursor: 'pointer',
     fontFamily: 'inherit', transition: 'all 0.2s', marginBottom: isMobile ? 8 : 12,
     boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)',
   },
   orRow: { display: 'flex', alignItems: 'center', gap: 12, marginBottom: isMobile ? 8 : 12 },
   orLine: { flex: 1, height: 1, background: 'var(--border)' },
-  orText: { fontSize: 13, color: 'var(--text3)', fontWeight: 500 },
+  orText: { fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: 500 },
   outlineBtn: {
     width: '100%', padding: '16px', borderRadius: 16,
     border: '1.5px solid var(--border)', background: 'var(--bg2)',
-    color: 'var(--text)', fontWeight: 600, fontSize: 15,
+    color: 'var(--text)', fontWeight: 600, fontSize: 'var(--fs-lg)',
     cursor: 'pointer', fontFamily: 'inherit',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
     marginBottom: isMobile ? 0 : 10, transition: 'all 0.2s',
@@ -502,23 +502,23 @@ const getStyles = (isMobile) => ({
   telegramBtn: {
     width: '100%', padding: '15px', borderRadius: 16,
     border: '1.5px solid var(--accent)', background: 'var(--blue-bg)',
-    color: 'var(--accent2)', fontWeight: 700, fontSize: 15,
+    color: 'var(--accent2)', fontWeight: 700, fontSize: 'var(--fs-lg)',
     cursor: 'pointer', fontFamily: 'inherit',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
     transition: 'all 0.2s',
   },
   // ── AUTH step styles ──
   fieldLabel: {
-    fontSize: '13px', fontWeight: 600, color: 'var(--text2)',
+    fontSize: 'var(--fs-md)', fontWeight: 600, color: 'var(--text2)',
     marginBottom: '6px', display: 'block',
   },
   switchRow: {
     display: 'flex', alignItems: 'center', justifyContent: 'center',
-    gap: 6, marginTop: 18, fontSize: 14, flexWrap: 'wrap',
+    gap: 6, marginTop: 18, fontSize: 'var(--fs-base)', flexWrap: 'wrap',
   },
   switchLink: {
     background: 'none', border: 'none', color: 'var(--accent2)',
-    fontSize: 14, fontWeight: 700, cursor: 'pointer',
+    fontSize: 'var(--fs-base)', fontWeight: 700, cursor: 'pointer',
     fontFamily: 'inherit', padding: '4px 2px',
     textDecoration: 'underline', textUnderlineOffset: 3,
   },

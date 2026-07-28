@@ -21,7 +21,7 @@ const Section = ({ icon: Icon, title, color, children }) => (
   <div style={{ marginTop: 18 }}>
     <div style={{
       display: 'flex', alignItems: 'center', gap: 7, marginBottom: 9,
-      fontSize: 11, fontWeight: 800, letterSpacing: 0.4,
+      fontSize: 'var(--fs-xs)', fontWeight: 800, letterSpacing: 0.4,
       textTransform: 'uppercase', color: 'var(--text3)',
     }}>
       <Icon size={13} style={{ color }} />
@@ -33,7 +33,7 @@ const Section = ({ icon: Icon, title, color, children }) => (
 
 const Bullet = ({ children, tone = 'var(--text2)' }) => (
   <li style={{
-    fontSize: 12.5, lineHeight: 1.6, color: tone,
+    fontSize: 'var(--fs-explain)', lineHeight: 'var(--lh-relaxed)', color: tone,
     marginBottom: 7, paddingLeft: 2,
   }}>
     {children}
@@ -63,10 +63,10 @@ const TheorySheet = ({ theory, topicName, highlight = null, onClose, embedded = 
       }}>
         <BookOpen size={19} style={{ color: 'var(--accent)', flexShrink: 0, marginTop: 2 }} />
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--text)', lineHeight: 1.3 }}>
+          <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: 'var(--text)', lineHeight: 1.3 }}>
             {topicName}
           </div>
-          <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 2 }}>
+          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: 2 }}>
             {t('theory.subtitle')}
           </div>
         </div>
@@ -90,7 +90,7 @@ const TheorySheet = ({ theory, topicName, highlight = null, onClose, embedded = 
       {summary && (
         <div style={{
           marginTop: 12, padding: '12px 14px', borderRadius: 12,
-          background: 'var(--bg3)', fontSize: 13, lineHeight: 1.65, color: 'var(--text2)',
+          background: 'var(--bg3)', fontSize: 'var(--fs-explain)', lineHeight: 'var(--lh-relaxed)', color: 'var(--text2)',
         }}>
           {summary}
         </div>
@@ -118,17 +118,17 @@ const TheorySheet = ({ theory, topicName, highlight = null, onClose, embedded = 
                       flexShrink: 0, width: 20, height: 20, borderRadius: 6,
                       background: on ? 'var(--accent)' : 'var(--bg3)',
                       color: on ? '#fff' : 'var(--text3)',
-                      fontSize: 10.5, fontWeight: 800,
+                      fontSize: 'var(--fs-2xs)', fontWeight: 800,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
                       {i + 1}
                     </span>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)', lineHeight: 1.4 }}>
+                      <div style={{ fontSize: 'var(--fs-option)', fontWeight: 'var(--fw-semibold)', color: 'var(--text)', lineHeight: 'var(--lh-snug)' }}>
                         {p.t}
                       </div>
                       {p.d && (
-                        <div style={{ fontSize: 12.5, color: 'var(--text2)', lineHeight: 1.6, marginTop: 4 }}>
+                        <div style={{ fontSize: 'var(--fs-explain)', color: 'var(--text2)', lineHeight: 'var(--lh-relaxed)', marginTop: 4 }}>
                           {p.d}
                         </div>
                       )}
@@ -173,7 +173,7 @@ const TheorySheet = ({ theory, topicName, highlight = null, onClose, embedded = 
         <div style={{
           display: 'flex', alignItems: 'center', gap: 7, flexWrap: 'wrap',
           marginTop: 18, paddingTop: 12, borderTop: '1px solid var(--border)',
-          fontSize: 10.5, color: 'var(--text3)', lineHeight: 1.5,
+          fontSize: 'var(--fs-2xs)', color: 'var(--text3)', lineHeight: 1.5,
         }}>
           <FileText size={12} style={{ flexShrink: 0 }} />
           {source && <span>{t('theory.source', { source })}</span>}
@@ -184,7 +184,7 @@ const TheorySheet = ({ theory, topicName, highlight = null, onClose, embedded = 
       {/* Material hali strukturaga o'tkazilmagan mavzu — halol ogohlantirish */}
       {legacy && !embedded && (
         <div style={{
-          marginTop: 16, fontSize: 11, color: 'var(--text3)', lineHeight: 1.55,
+          marginTop: 16, fontSize: 'var(--fs-xs)', color: 'var(--text3)', lineHeight: 1.55,
         }}>
           {t('theory.legacyNote')}
         </div>

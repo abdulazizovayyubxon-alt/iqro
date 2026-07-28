@@ -250,7 +250,7 @@ const Header = ({ theme, toggleTheme }) => {
               transform: 'translateX(-50%)',
               padding: isMobile ? '12px 18px' : '12px 24px',
               borderRadius: isMobile ? '16px' : '99px',
-              fontSize: '14px',
+              fontSize: 'var(--fs-base)',
               fontWeight: 700,
               zIndex: 10000,
               boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
@@ -268,7 +268,7 @@ const Header = ({ theme, toggleTheme }) => {
               maxWidth: 'calc(100vw - 32px)',
             }}
           >
-            <span style={{ fontSize: '16px', fontWeight: 800, flexShrink: 0 }}>
+            <span style={{ fontSize: 'var(--fs-xl)', fontWeight: 800, flexShrink: 0 }}>
               {toast.type === 'success' && '✓'}
               {toast.type === 'error' && '✗'}
               {toast.type === 'info' && 'ℹ'}

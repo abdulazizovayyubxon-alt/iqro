@@ -37,7 +37,7 @@ const PlanHeader = ({
       <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexWrap: 'wrap' }}>
         <CalendarDays size={15} style={{ color: 'var(--accent)', flexShrink: 0 }} />
         <span style={{
-          fontSize: 13, fontWeight: 800,
+          fontSize: 'var(--fs-md)', fontWeight: 800,
           color: pace.isExamToday ? 'var(--amber)' : 'var(--text)',
         }}>
           {pace.isExamToday
@@ -49,7 +49,7 @@ const PlanHeader = ({
         {pace.hasDeadline && pace.perDay && (
           <span style={{
             padding: '3px 9px', borderRadius: 9, background: 'var(--blue-bg)',
-            color: 'var(--accent2)', fontSize: 11, fontWeight: 800,
+            color: 'var(--accent2)', fontSize: 'var(--fs-xs)', fontWeight: 800,
           }}>
             {t('pace.perDay', { count: pace.perDay })}
             {pace.perDayMinutes ? ` · ${t('pace.minutes', { count: pace.perDayMinutes })}` : ''}
@@ -61,29 +61,29 @@ const PlanHeader = ({
       {!pace.hasDeadline && !pace.isExamToday && (
         <div style={{
           display: 'flex', gap: 7, alignItems: 'flex-start', marginTop: 8,
-          fontSize: 11.5, color: 'var(--text3)', lineHeight: 1.5,
+          fontSize: 'var(--fs-xs)', color: 'var(--text3)', lineHeight: 1.5,
         }}>
           <Info size={13} style={{ flexShrink: 0, marginTop: 1 }} />
           <span>{t('pace.noDateHint')}</span>
         </div>
       )}
       {pace.isExamToday && (
-        <div style={{ fontSize: 11.5, color: 'var(--text2)', marginTop: 8, lineHeight: 1.5 }}>
+        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text2)', marginTop: 8, lineHeight: 1.5 }}>
           {t('pace.examTodayHint')}
         </div>
       )}
       {pace.needsData && (
-        <div style={{ fontSize: 11.5, color: 'var(--text3)', marginTop: 8, lineHeight: 1.5 }}>
+        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: 8, lineHeight: 1.5 }}>
           {t('pace.needsData')}
         </div>
       )}
       {!pace.needsData && pace.questionsToGoal === 0 && (
-        <div style={{ fontSize: 11.5, color: 'var(--green)', fontWeight: 700, marginTop: 8 }}>
+        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--green)', fontWeight: 700, marginTop: 8 }}>
           {t('pace.goalReached')}
         </div>
       )}
       {!pace.needsData && pace.questionsToGoal === null && (
-        <div style={{ fontSize: 11.5, color: 'var(--text3)', marginTop: 8, lineHeight: 1.5 }}>
+        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: 8, lineHeight: 1.5 }}>
           {t('pace.unreachable')}
         </div>
       )}
@@ -93,7 +93,7 @@ const PlanHeader = ({
         <div style={{ marginTop: 10 }}>
           <div style={{
             display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
-            fontSize: 11, fontWeight: 700, color: 'var(--text3)', marginBottom: 5,
+            fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--text3)', marginBottom: 5,
           }}>
             <span>{t('pace.today', { done: pace.todayAnswered, target: pace.perDay })}</span>
             {pace.todayDone && (
@@ -121,7 +121,7 @@ const PlanHeader = ({
       <div style={{ marginTop: 14 }}>
         <div style={{
           display: 'flex', alignItems: 'center', gap: 6,
-          fontSize: 10.5, fontWeight: 700, color: 'var(--text3)',
+          fontSize: 'var(--fs-2xs)', fontWeight: 700, color: 'var(--text3)',
           textTransform: 'uppercase', letterSpacing: 0.3, marginBottom: 7,
         }}>
           <Timer size={12} />
@@ -139,7 +139,7 @@ const PlanHeader = ({
                   border: `1.5px solid ${active ? 'var(--accent)' : 'var(--border)'}`,
                   background: active ? 'var(--blue-bg)' : 'var(--bg2)',
                   color: active ? 'var(--accent)' : 'var(--text3)',
-                  fontSize: 11.5, fontWeight: 800, cursor: 'pointer', fontFamily: 'inherit',
+                  fontSize: 'var(--fs-xs)', fontWeight: 800, cursor: 'pointer', fontFamily: 'inherit',
                   transition: 'all 0.15s',
                 }}
               >
@@ -155,7 +155,7 @@ const PlanHeader = ({
         <div style={{
           display: 'flex', alignItems: 'center', gap: 7, marginTop: 12,
           paddingTop: 11, borderTop: '1px solid var(--border)',
-          fontSize: 11.5, fontWeight: 700,
+          fontSize: 'var(--fs-xs)', fontWeight: 700,
           color: allDone ? 'var(--green)' : 'var(--text2)',
         }}>
           {allDone && <CheckCircle2 size={14} style={{ flexShrink: 0 }} />}

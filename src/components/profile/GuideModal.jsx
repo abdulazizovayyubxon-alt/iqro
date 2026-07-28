@@ -39,7 +39,7 @@ export default function GuideModal({ onClose, showToast }) {
             showToast(t('modals.guideAdminToast'), 'success');
           }}
         >
-          <span style={{ fontSize: 24 }}>📖</span> {t('modals.guideTitle')}
+          <span style={{ fontSize: 'var(--fs-5xl)' }}>📖</span> {t('modals.guideTitle')}
         </div>
 
         <div className="pp-policy-scroll" style={{ maxHeight: '400px', overflowY: 'auto', paddingRight: '8px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -47,13 +47,13 @@ export default function GuideModal({ onClose, showToast }) {
             <div key={i} style={{ background: 'var(--bg3)', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border)' }}>
               <button
                 onClick={() => setActivePanel(p => p === i ? null : i)}
-                style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', background: 'transparent', border: 'none', color: 'var(--text)', fontWeight: 700, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left' }}
+                style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', background: 'transparent', border: 'none', color: 'var(--text)', fontWeight: 700, fontSize: 'var(--fs-base)', cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left' }}
               >
                 {panel.title}
                 <ChevronRight size={16} style={{ transform: activePanel === i ? 'rotate(90deg)' : 'rotate(0deg)', transition: '0.2s', flexShrink: 0 }} />
               </button>
               {activePanel === i && (
-                <div style={{ padding: '10px 16px 16px', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>
+                <div style={{ padding: '10px 16px 16px', fontSize: 'var(--fs-md)', color: 'var(--text2)', lineHeight: 1.6 }}>
                   {panelBodies[i]}
                 </div>
               )}

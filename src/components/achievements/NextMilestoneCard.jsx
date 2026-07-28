@@ -34,17 +34,17 @@ const NextMilestoneCard = ({ milestone, second, onStart }) => {
           {Icon && <Icon size={19} />}
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 10, letterSpacing: '0.8px', textTransform: 'uppercase', fontWeight: 700, color: 'var(--accent2)', marginBottom: 2 }}>
+          <div style={{ fontSize: 'var(--fs-2xs)', letterSpacing: '0.8px', textTransform: 'uppercase', fontWeight: 700, color: 'var(--accent2)', marginBottom: 2 }}>
             {t('tracks.nextUp')}
           </div>
-          <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.2px' }}>{title}</div>
+          <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.2px' }}>{title}</div>
         </div>
         <button
           onClick={() => onStart?.(milestone)}
           style={{
             flexShrink: 0, display: 'flex', alignItems: 'center', gap: 5,
             background: 'var(--cta)', color: '#fff', border: 'none',
-            borderRadius: 10, padding: '8px 13px', fontSize: 12, fontWeight: 700,
+            borderRadius: 10, padding: '8px 13px', fontSize: 'var(--fs-sm)', fontWeight: 700,
             cursor: 'pointer', fontFamily: 'inherit'
           }}
         >
@@ -53,7 +53,7 @@ const NextMilestoneCard = ({ milestone, second, onStart }) => {
       </div>
 
       {milestone.hint && (
-        <div style={{ fontSize: 12, color: 'var(--text2)', lineHeight: 1.45, margin: '10px 0 8px', fontWeight: 500 }}>
+        <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text2)', lineHeight: 1.45, margin: '10px 0 8px', fontWeight: 500 }}>
           {t(milestone.hint.key, milestone.hint.params)}
         </div>
       )}
@@ -62,11 +62,11 @@ const NextMilestoneCard = ({ milestone, second, onStart }) => {
         <div style={{ flex: 1, height: 4, borderRadius: 2, background: 'var(--bg3)', overflow: 'hidden' }}>
           <div style={{ width: `${pct}%`, height: '100%', borderRadius: 2, background: 'var(--accent)', transition: 'width 0.5s ease' }} />
         </div>
-        <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--accent2)', flexShrink: 0 }}>{pct}%</span>
+        <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--accent2)', flexShrink: 0 }}>{pct}%</span>
       </div>
 
       {second && (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, fontSize: 11, color: 'var(--text3)', fontWeight: 500 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, fontSize: 'var(--fs-xs)', color: 'var(--text3)', fontWeight: 500 }}>
           <span
             style={{
               width: 5, height: 5, transform: 'rotate(45deg)', flexShrink: 0,

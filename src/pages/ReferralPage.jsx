@@ -166,16 +166,16 @@ export default function ReferralPage() {
       initial={{ opacity: 0 }} animate={{ opacity: 1 }}
       style={{ maxWidth: 600, margin: '0 auto', padding: '20px 16px 100px' }}
     >
-      <h1 style={{ fontSize: 24, fontWeight: 900, color: 'var(--text)', margin: '0 0 6px', lineHeight: 1.2 }}>
+      <h1 style={{ fontSize: 'var(--fs-5xl)', fontWeight: 900, color: 'var(--text)', margin: '0 0 6px', lineHeight: 1.2 }}>
         {t('referral.headlineTitle')}
       </h1>
-      <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 22, lineHeight: 1.5 }}>
+      <p style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 22, lineHeight: 1.5 }}>
         {t('referral.headlineSub', { percent: REFERRAL_DISCOUNT })}
       </p>
 
       {loading ? (
         <div style={{ textAlign: 'center', padding: 60, color: 'var(--text3)' }}>
-          <div style={{ fontSize: 36, marginBottom: 12 }}>⏳</div>
+          <div style={{ fontSize: 'var(--fs-9xl)', marginBottom: 12 }}>⏳</div>
           <div>{t('common.loading')}</div>
         </div>
       ) : (
@@ -187,13 +187,13 @@ export default function ReferralPage() {
             <div style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent2))', padding: '20px 18px', color: '#fff' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
                 <div style={{ minWidth: 0 }}>
-                  <div style={{ fontSize: 12.5, fontWeight: 700, color: 'rgba(255,255,255,0.85)', letterSpacing: 0.3 }}>{t('referral.collectedBonus')}</div>
-                  <div style={{ fontSize: 34, fontWeight: 900, margin: '2px 0', lineHeight: 1.05 }}>{fmtSum(stats?.totalBonus || 0)}</div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.78)' }}>
+                  <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'rgba(255,255,255,0.85)', letterSpacing: 0.3 }}>{t('referral.collectedBonus')}</div>
+                  <div style={{ fontSize: 'var(--fs-9xl)', fontWeight: 900, margin: '2px 0', lineHeight: 1.05 }}>{fmtSum(stats?.totalBonus || 0)}</div>
+                  <div style={{ fontSize: 'var(--fs-sm)', color: 'rgba(255,255,255,0.78)' }}>
                     {t('referral.perPaidFriend', { amount: fmtSum(REFERRAL_BONUS) })}
                   </div>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.2)', padding: '7px 13px', borderRadius: 20, fontWeight: 800, fontSize: 14, flexShrink: 0, whiteSpace: 'nowrap' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.2)', padding: '7px 13px', borderRadius: 20, fontWeight: 800, fontSize: 'var(--fs-base)', flexShrink: 0, whiteSpace: 'nowrap' }}>
                   <Users size={15} strokeWidth={2.5} /> {stats?.paid || 0}/{dynamicMax}
                 </div>
               </div>
@@ -207,7 +207,7 @@ export default function ReferralPage() {
                   style={{ position: 'absolute', top: 0, left: 0, bottom: 0, background: '#fff', borderRadius: 6 }}
                 />
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 7, fontSize: 11, color: 'rgba(255,255,255,0.8)', fontWeight: 600 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 7, fontSize: 'var(--fs-xs)', color: 'rgba(255,255,255,0.8)', fontWeight: 600 }}>
                 {stats?.paid < dynamicMax ? (
                   <span style={{ color: '#FCD34D' }}>
                     Yana {fmtSum(REFERRAL_BONUS * (dynamicMax - (stats?.paid || 0)))} yig'sangiz Premium sizniki!
@@ -241,9 +241,9 @@ export default function ReferralPage() {
                         transition={isPaid ? { repeat: Infinity, duration: 2, ease: 'easeInOut' } : {}}
                         style={{ marginBottom: 5, display: 'flex', justifyContent: 'center', alignItems: 'center', height: 28, opacity: isPending ? 0.9 : 1 }}
                       >
-                        {isPending ? <span style={{ fontSize: 22 }}>⏳</span> : <GiftBox size={27} />}
+                        {isPending ? <span style={{ fontSize: 'var(--fs-4xl)' }}>⏳</span> : <GiftBox size={27} />}
                       </motion.div>
-                      <div style={{ fontSize: 9.5, fontWeight: 800, color: isPaid ? 'var(--green)' : isPending ? 'var(--amber)' : 'var(--text3)', whiteSpace: 'nowrap' }}>
+                      <div style={{ fontSize: 'var(--fs-3xs)', fontWeight: 800, color: isPaid ? 'var(--green)' : isPending ? 'var(--amber)' : 'var(--text3)', whiteSpace: 'nowrap' }}>
                         {isPaid ? t('referral.rewardGot') : isPending ? t('referral.rewardWaiting') : '+15k'}
                       </div>
                     </motion.div>
@@ -251,7 +251,7 @@ export default function ReferralPage() {
                 })}
               </div>
               {!stats?.canInviteMore && (
-                <div style={{ marginTop: 12, background: 'var(--green-bg)', border: '1px solid var(--green)', borderRadius: 10, padding: '10px 14px', fontSize: 13, color: 'var(--green)', display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{ marginTop: 12, background: 'var(--green-bg)', border: '1px solid var(--green)', borderRadius: 10, padding: '10px 14px', fontSize: 'var(--fs-md)', color: 'var(--green)', display: 'flex', alignItems: 'center', gap: 8 }}>
                   {t('referral.maxReached', { count: MAX_REFERRALS })}
                 </div>
               )}
@@ -262,7 +262,7 @@ export default function ReferralPage() {
           <div style={s.card}>
             <div style={s.label}>{t('referral.yourLink')}</div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'var(--bg3)', border: '1.5px solid var(--border)', borderRadius: 14, padding: '10px 14px', marginBottom: 12 }}>
-              <span style={{ fontSize: 12, color: 'var(--text2)', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text2)', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 {refLink}
               </span>
               <motion.button whileTap={{ scale: 0.95 }} style={s.copyBtn} onClick={() => copyToClipboard(refLink, 'link')}>
@@ -298,10 +298,10 @@ export default function ReferralPage() {
               ].map((st, i) => (
                 <React.Fragment key={i}>
                   <div style={{ flex: 1, textAlign: 'center' }}>
-                    <div style={{ fontSize: 22, marginBottom: 5 }}>{st.icon}</div>
-                    <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text2)', lineHeight: 1.3 }}>{st.t}</div>
+                    <div style={{ fontSize: 'var(--fs-4xl)', marginBottom: 5 }}>{st.icon}</div>
+                    <div style={{ fontSize: 'var(--fs-xs)', fontWeight: 600, color: 'var(--text2)', lineHeight: 1.3 }}>{st.t}</div>
                   </div>
-                  {i < 2 && <div style={{ color: 'var(--text3)', fontSize: 16, alignSelf: 'center', padding: '0 2px' }}>→</div>}
+                  {i < 2 && <div style={{ color: 'var(--text3)', fontSize: 'var(--fs-xl)', alignSelf: 'center', padding: '0 2px' }}>→</div>}
                 </React.Fragment>
               ))}
             </div>
@@ -314,12 +314,12 @@ export default function ReferralPage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {stats.referrals.map((r) => (
                   <div key={r.id} style={{ display: 'flex', alignItems: 'center', gap: 11, padding: '8px 12px', background: 'var(--bg3)', borderRadius: 12, border: '1px solid var(--border)' }}>
-                    <div style={{ width: 34, height: 34, borderRadius: '50%', flexShrink: 0, background: r.status === 'paid' ? 'var(--green-bg)' : 'var(--amber-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 15, fontWeight: 800, color: r.status === 'paid' ? 'var(--green)' : 'var(--amber)' }}>
+                    <div style={{ width: 34, height: 34, borderRadius: '50%', flexShrink: 0, background: r.status === 'paid' ? 'var(--green-bg)' : 'var(--amber-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'var(--fs-lg)', fontWeight: 800, color: r.status === 'paid' ? 'var(--green)' : 'var(--amber)' }}>
                       {r.referredName?.[0]?.toUpperCase() || '?'}
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r.referredName || t('referral.unknownName')}</div>
-                      <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 2, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '2px 8px' }}>
+                      <div style={{ fontSize: 'var(--fs-base)', fontWeight: 700, color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r.referredName || t('referral.unknownName')}</div>
+                      <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: 2, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '2px 8px' }}>
                         <span>{new Date(r.createdAt).toLocaleDateString(i18n.language === 'ru' ? 'ru-RU' : i18n.language === 'en' ? 'en-US' : 'uz-UZ', { day: 'numeric', month: 'short' })}</span>
                         {(() => {
                           if (r.freeExpire) {
@@ -352,10 +352,10 @@ export default function ReferralPage() {
                       </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 3, flexShrink: 0 }}>
-                      <span style={{ fontSize: 11, fontWeight: 700, padding: '2px 10px', borderRadius: 20, background: r.status === 'paid' ? 'var(--green-bg)' : 'var(--amber-bg)', color: r.status === 'paid' ? 'var(--green)' : 'var(--amber)' }}>
+                      <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, padding: '2px 10px', borderRadius: 20, background: r.status === 'paid' ? 'var(--green-bg)' : 'var(--amber-bg)', color: r.status === 'paid' ? 'var(--green)' : 'var(--amber)' }}>
                         {r.status === 'paid' ? t('referral.statusPaid') : t('referral.statusPending')}
                       </span>
-                      {r.status === 'paid' && <span style={{ fontSize: 11, color: 'var(--green)', fontWeight: 700 }}>+{fmtSum(REFERRAL_BONUS)}</span>}
+                      {r.status === 'paid' && <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--green)', fontWeight: 700 }}>+{fmtSum(REFERRAL_BONUS)}</span>}
                     </div>
                   </div>
                 ))}
@@ -367,9 +367,9 @@ export default function ReferralPage() {
           <div style={s.card}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
               <Ticket size={18} color="var(--accent)" />
-              <div style={{ fontSize: 15, fontWeight: 800, color: 'var(--text)' }}>{t('referral.promoTitle')}</div>
+              <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)' }}>{t('referral.promoTitle')}</div>
             </div>
-            <div style={{ fontSize: 12.5, color: 'var(--text3)', marginBottom: 14, lineHeight: 1.45 }}>
+            <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginBottom: 14, lineHeight: 1.45 }}>
               {t('referral.promoSubtitle')}
             </div>
 
@@ -381,7 +381,7 @@ export default function ReferralPage() {
                 placeholder={t('referral.promoPlaceholder')}
                 maxLength={32}
                 style={{
-                  flex: 1, padding: '12px 14px', borderRadius: 12, fontSize: 14,
+                  flex: 1, padding: '12px 14px', borderRadius: 12, fontSize: 'var(--fs-input)',
                   border: '1.5px solid var(--border)', background: 'var(--bg3)',
                   color: 'var(--text)', fontFamily: 'inherit', fontWeight: 700,
                   letterSpacing: 1, outline: 'none', textTransform: 'uppercase',
@@ -394,7 +394,7 @@ export default function ReferralPage() {
                 onClick={handleRedeemPromo}
                 disabled={promoLoading || !promoCode.trim()}
                 style={{
-                  ...s.primaryBtn, padding: '12px 18px', fontSize: 14, flexShrink: 0,
+                  ...s.primaryBtn, padding: '12px 18px', fontSize: 'var(--fs-base)', flexShrink: 0,
                   opacity: promoLoading || !promoCode.trim() ? 0.55 : 1,
                   cursor: promoLoading ? 'wait' : (!promoCode.trim() ? 'not-allowed' : 'pointer'),
                 }}
@@ -410,7 +410,7 @@ export default function ReferralPage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                   style={{
-                    marginTop: 12, fontSize: 13, fontWeight: 700, lineHeight: 1.4,
+                    marginTop: 12, fontSize: 'var(--fs-md)', fontWeight: 700, lineHeight: 1.4,
                     display: 'flex', alignItems: 'flex-start', gap: 6,
                     padding: '10px 12px', borderRadius: 12,
                     background: promoMsg.type === 'ok' ? 'var(--green-bg)' : 'rgba(239, 68, 68, 0.1)',
@@ -432,8 +432,8 @@ export default function ReferralPage() {
 
 const s = {
   card: { background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 18, padding: '18px 16px' },
-  label: { fontSize: 12, fontWeight: 700, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: 0.8, marginBottom: 14 },
-  copyBtn: { display: 'flex', alignItems: 'center', gap: 6, padding: '7px 12px', borderRadius: 10, border: '1.5px solid var(--border)', background: 'var(--bg3)', fontSize: 12, fontWeight: 600, color: 'var(--text2)', cursor: 'pointer', fontFamily: 'inherit', flexShrink: 0, whiteSpace: 'nowrap' },
-  primaryBtn: { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px 20px', borderRadius: 14, background: 'var(--accent)', color: '#fff', border: 'none', fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit' },
-  outlineBtn: { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '13px 16px', borderRadius: 14, background: 'var(--bg2)', border: '1.5px solid var(--border)', fontWeight: 600, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', color: 'var(--text2)' },
+  label: { fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: 0.8, marginBottom: 14 },
+  copyBtn: { display: 'flex', alignItems: 'center', gap: 6, padding: '7px 12px', borderRadius: 10, border: '1.5px solid var(--border)', background: 'var(--bg3)', fontSize: 'var(--fs-sm)', fontWeight: 600, color: 'var(--text2)', cursor: 'pointer', fontFamily: 'inherit', flexShrink: 0, whiteSpace: 'nowrap' },
+  primaryBtn: { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px 20px', borderRadius: 14, background: 'var(--accent)', color: '#fff', border: 'none', fontWeight: 700, fontSize: 'var(--fs-lg)', cursor: 'pointer', fontFamily: 'inherit' },
+  outlineBtn: { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '13px 16px', borderRadius: 14, background: 'var(--bg2)', border: '1.5px solid var(--border)', fontWeight: 600, fontSize: 'var(--fs-base)', cursor: 'pointer', fontFamily: 'inherit', color: 'var(--text2)' },
 };

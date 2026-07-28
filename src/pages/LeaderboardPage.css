@@ -8,8 +8,8 @@
   display: flex; align-items: baseline; flex-wrap: wrap;
   gap: 4px 8px; margin-bottom: 20px;
 }
-.lb-title { font-size: 20px; font-weight: 900; color: var(--text); margin: 0; }
-.lb-subtitle { font-size: 13px; color: var(--text3); margin: 0; }
+.lb-title { font-size: var(--fs-3xl); font-weight: 900; color: var(--text); margin: 0; }
+.lb-subtitle { font-size: var(--fs-md); color: var(--text3); margin: 0; }
 
 /* ── Board type tabs ── */
 .lb-tabs {
@@ -20,7 +20,7 @@
 .lb-tab {
   flex: 1; padding: 10px 8px; border-radius: 10px; border: none;
   background: transparent; color: var(--text2);
-  font-family: inherit; font-size: 13px; font-weight: 700;
+  font-family: inherit; font-size: var(--fs-md); font-weight: 700;
   cursor: pointer; transition: all 0.2s;
 }
 .lb-tab.active { background: var(--cta); color: #fff; }
@@ -33,11 +33,11 @@
 .lb-podium-item { display: flex; flex-direction: column; align-items: center; }
 .lb-podium-item.first { margin-top: -20px; }
 .lb-podium-name {
-  font-size: 11px; font-weight: 700; color: var(--text2); margin-top: 6px;
+  font-size: var(--fs-xs); font-weight: 700; color: var(--text2); margin-top: 6px;
   max-width: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
-.lb-podium-item.first .lb-podium-name { font-size: 12px; max-width: 90px; }
-.lb-podium-score { font-size: 11px; font-weight: 800; color: var(--text3); margin-top: 2px; }
+.lb-podium-item.first .lb-podium-name { font-size: var(--fs-sm); max-width: 90px; }
+.lb-podium-score { font-size: var(--fs-xs); font-weight: 800; color: var(--text3); margin-top: 2px; }
 .lb-crown { color: var(--amber); margin-bottom: 4px; filter: drop-shadow(0 2px 4px rgba(245,158,11,0.3)); }
 .lb-podium-block {
   width: 72px; border-radius: 10px 10px 0 0; margin-top: 6px;
@@ -46,17 +46,17 @@
 }
 /* Medal ranglari — tekis (gradientsiz), temadan mustaqil "material" ranglar */
 .lb-podium-block.gold {
-  height: 80px; font-size: 20px;
+  height: 80px; font-size: var(--fs-3xl);
   background: #F59E0B;
   border: 1px solid rgba(255,255,255,0.4); box-shadow: 0 8px 20px rgba(245,158,11,0.25);
 }
 .lb-podium-block.silver {
-  height: 60px; font-size: 16px;
+  height: 60px; font-size: var(--fs-xl);
   background: #9CA3AF;
   border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 4px 15px rgba(156,163,175,0.2);
 }
 .lb-podium-block.bronze {
-  height: 44px; font-size: 16px;
+  height: 44px; font-size: var(--fs-xl);
   background: #B45309;
   border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 4px 12px rgba(180,83,9,0.2);
 }
@@ -83,7 +83,7 @@
 /* ── List ── */
 .lb-list-wrap { display: flex; flex-direction: column; gap: 0; }
 .lb-list { display: flex; flex-direction: column; gap: 8px; }
-.lb-empty { text-align: center; padding: 40px; color: var(--text3); font-size: 15px; }
+.lb-empty { text-align: center; padding: 40px; color: var(--text3); font-size: var(--fs-lg); }
 
 /* ── Row ── */
 .lb-row {
@@ -102,30 +102,30 @@
   background: var(--accent); border-radius: 2px 0 0 2px;
 }
 .lb-rank { width: 24px; display: flex; justify-content: center; flex-shrink: 0; }
-.lb-rank-num { font-size: 15px; font-weight: 800; color: var(--text3); min-width: 20px; text-align: center; }
+.lb-rank-num { font-size: var(--fs-lg); font-weight: 800; color: var(--text3); min-width: 20px; text-align: center; }
 .lb-info { flex: 1; min-width: 0; }
 .lb-name-row { display: flex; align-items: center; gap: 8px; }
 .lb-name {
-  font-size: 14px; font-weight: 700; color: var(--text);
+  font-size: var(--fs-base); font-weight: 700; color: var(--text);
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .lb-badge {
-  font-size: 10px; color: #fff; padding: 1px 7px; border-radius: 8px;
+  font-size: var(--fs-2xs); color: #fff; padding: 1px 7px; border-radius: 8px;
   font-weight: 700; flex-shrink: 0;
 }
 .lb-badge.me { background: var(--cta); }
 .lb-badge.pin { background: var(--amber); color: #422006; }
 .lb-delta {
-  font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 6px;
+  font-size: var(--fs-2xs); font-weight: 800; padding: 1px 6px; border-radius: 6px;
   display: inline-flex; align-items: center; gap: 2px; flex-shrink: 0;
 }
 .lb-delta.up { background: rgba(16,185,129,0.15); color: var(--green); }
 .lb-delta.down { background: rgba(239,68,68,0.15); color: var(--red); }
-.lb-meta { font-size: 11px; color: var(--text3); margin-top: 2px; display: flex; gap: 10px; }
+.lb-meta { font-size: var(--fs-xs); color: var(--text3); margin-top: 2px; display: flex; gap: 10px; }
 .lb-score-wrap { text-align: right; flex-shrink: 0; }
-.lb-score { font-size: 18px; font-weight: 900; color: var(--text); }
+.lb-score { font-size: var(--fs-2xl); font-weight: 900; color: var(--text); }
 .lb-score.me { color: var(--accent2); }
-.lb-score-lbl { font-size: 10px; color: var(--text3); font-weight: 600; }
+.lb-score-lbl { font-size: var(--fs-2xs); color: var(--text3); font-weight: 600; }
 .lb-del-btn {
   background: var(--red-bg); color: var(--red); border: none;
   border-radius: 50%; padding: 8px; cursor: pointer; margin-left: 10px;
@@ -141,7 +141,7 @@
   z-index: 100;
 }
 .lb-pinned-divider { display: flex; justify-content: center; margin-bottom: 8px; }
-.lb-pinned-dots { font-size: 14px; color: var(--border2); letter-spacing: 4px; }
+.lb-pinned-dots { font-size: var(--fs-base); color: var(--border2); letter-spacing: 4px; }
 
 /* ── Delete confirm modal (admin) ── */
 .lb-modal-overlay {
@@ -150,9 +150,9 @@
   z-index: 9999; display: flex; align-items: center; justify-content: center;
 }
 .lb-confirm { padding: 24px; max-width: 320px; width: 90%; border-radius: 20px; text-align: center; }
-.lb-confirm-emoji { font-size: 40px; margin-bottom: 12px; }
-.lb-confirm-title { font-size: 18px; font-weight: 800; margin-bottom: 8px; color: var(--text); }
-.lb-confirm-text { font-size: 14px; color: var(--text3); margin-bottom: 24px; }
+.lb-confirm-emoji { font-size: var(--fs-10xl); margin-bottom: 12px; }
+.lb-confirm-title { font-size: var(--fs-2xl); font-weight: 800; margin-bottom: 8px; color: var(--text); }
+.lb-confirm-text { font-size: var(--fs-base); color: var(--text3); margin-bottom: 24px; }
 .lb-confirm-actions { display: flex; gap: 12px; }
 .lb-confirm-actions .btn { flex: 1; padding: 12px; }
 .lb-confirm-del { background: var(--red); color: #fff; border: none; border-radius: 12px; font-weight: 700; }

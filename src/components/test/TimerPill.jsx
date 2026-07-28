@@ -81,7 +81,7 @@ const TimerPill = ({ timerMode, duration, onExpire, onToggle }) => {
       title={t('test.timerToggleTitle')}
     >
       <Clock size={14} />
-      <span style={{ fontWeight: 700, fontSize: '12px' }}>
+      <span style={{ fontWeight: 700, fontSize: 'var(--fs-sm)' }}>
         {timerMode === 'countdown' && t('test.timerCountdown', { sec: display })}
         {timerMode === 'stopwatch' && t('test.timerStopwatch', { sec: display })}
         {timerMode === 'off' && t('test.timerOff')}

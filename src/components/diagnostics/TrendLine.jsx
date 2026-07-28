@@ -47,12 +47,12 @@ const TrendLine = ({ trend, width = 68, height = 22 }) => {
       </svg>
       <span style={{
         display: 'inline-flex', alignItems: 'center', gap: 3,
-        fontSize: 11, fontWeight: 700, color,
+        fontSize: 'var(--fs-xs)', fontWeight: 700, color,
       }}>
         <Icon size={12} />
         {delta > 0 ? '+' : ''}{delta}
       </span>
-      <span style={{ fontSize: 10.5, color: 'var(--text3)' }}>
+      <span style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)' }}>
         {t('analysis.trendWeeks', { count: weeks })}
       </span>
     </div>

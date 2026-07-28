@@ -48,13 +48,13 @@ export default function PasswordModal({ changePassword, showToast, onClose }) {
       <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
         <KeyRound size={22} style={{ color: 'var(--accent)' }} /> {t('modals.passTitle')}
       </div>
-      <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 20 }}>
+      <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', lineHeight: 1.6, marginBottom: 20 }}>
         {t('modals.passDesc')}
       </p>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
         <div>
-          <label style={{ fontSize: 12, fontWeight: 700, color: 'var(--text3)', marginBottom: 6, display: 'block' }}>
+          <label style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--text3)', marginBottom: 6, display: 'block' }}>
             {t('modals.passNewLabel')}
           </label>
           <div style={{ position: 'relative' }}>
@@ -64,7 +64,7 @@ export default function PasswordModal({ changePassword, showToast, onClose }) {
               onChange={e => { setPassError(''); setNewPassword(e.target.value); }}
               placeholder={t('modals.passNewPh')}
               style={{
-                width: '100%', padding: '13px 48px 13px 16px', fontSize: 15, borderRadius: 12,
+                width: '100%', padding: '13px 48px 13px 16px', fontSize: 'var(--fs-input)', borderRadius: 12,
                 border: '1.5px solid var(--border)', background: 'var(--bg3)',
                 color: 'var(--text)', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box',
               }}
@@ -80,7 +80,7 @@ export default function PasswordModal({ changePassword, showToast, onClose }) {
         </div>
 
         <div>
-          <label style={{ fontSize: 12, fontWeight: 700, color: 'var(--text3)', marginBottom: 6, display: 'block' }}>
+          <label style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--text3)', marginBottom: 6, display: 'block' }}>
             {t('modals.passRepeatLabel')}
           </label>
           <input
@@ -90,7 +90,7 @@ export default function PasswordModal({ changePassword, showToast, onClose }) {
             placeholder={t('modals.passRepeatPh')}
             onKeyDown={e => e.key === 'Enter' && handleChangePassword()}
             style={{
-              width: '100%', padding: '13px 16px', fontSize: 15, borderRadius: 12,
+              width: '100%', padding: '13px 16px', fontSize: 'var(--fs-input)', borderRadius: 12,
               border: '1.5px solid var(--border)', background: 'var(--bg3)',
               color: 'var(--text)', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box',
             }}
@@ -98,7 +98,7 @@ export default function PasswordModal({ changePassword, showToast, onClose }) {
         </div>
 
         {passError && (
-          <p style={{ fontSize: 13, color: 'var(--red)', fontWeight: 500, margin: 0 }}>{passError}</p>
+          <p style={{ fontSize: 'var(--fs-md)', color: 'var(--red)', fontWeight: 500, margin: 0 }}>{passError}</p>
         )}
       </div>
 
@@ -109,7 +109,7 @@ export default function PasswordModal({ changePassword, showToast, onClose }) {
           disabled={changingPass}
           style={{
             padding: '12px 20px', borderRadius: 12, background: 'var(--accent)', color: '#fff',
-            border: 'none', fontWeight: 700, fontSize: 14, cursor: changingPass ? 'not-allowed' : 'pointer',
+            border: 'none', fontWeight: 700, fontSize: 'var(--fs-base)', cursor: changingPass ? 'not-allowed' : 'pointer',
             fontFamily: 'inherit', opacity: changingPass ? 0.7 : 1, minWidth: 140,
           }}
         >

@@ -21,16 +21,115 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Root font-size — shrift kattalashtirish tizimi (SettingsPage orqali boshqariladi).
-   Standart: 16px. Foydalanuvchi S/M/L/XL tanlaganda JS ushbu qiymatni o'zgartiradi:
-   document.documentElement.style.fontSize = '16px' | '17.6px' | '19.2px' | '20px'
-   O'qish matnlarida rem ishlatiladi — ular shu root size ga nisbatan o'zgaradi.
-   UI elementlari (BottomNav, Header, tugmalar) px da — dizayn buzilmaydi. */
+/* ═══════════════════════════════════════════════════════════════════════════
+   TIPOGRAFIYA TIZIMI — YAGONA MARKAZIY MANBA
+   ───────────────────────────────────────────────────────────────────────────
+   Uch qatlamli arxitektura. Komponentlarda QATTIQ px YOZILMAYDI:
+
+   1-qatlam  ILDIZ (html font-size) — bitta clamp() butun tizimni moslashtiradi.
+             Ekran kengaygan sari baza 16px → 17.5px gacha SILLIQ o'sadi
+             (sakrash yo'q, media query kerak emas). Foydalanuvchi tanlagan
+             S/M/L/XL koeffitsiyenti --fs-scale shu yerda ko'paytiriladi —
+             shuning uchun A+/A- rem'da yozilgan BARCHA matnga birdek ta'sir qiladi.
+
+   2-qatlam  PRIMITIVLAR (--fs-3xs … --fs-hero-xl) — rem'dagi pog'onali shkala.
+             Faqat "o'lcham" ma'nosini bildiradi, qayerda ishlatilishini emas.
+
+   3-qatlam  SEMANTIK TOKENLAR (--fs-h1, --fs-body, --fs-question …) —
+             komponentlar FAQAT shularni ishlatadi. Shkalani o'zgartirish kerak
+             bo'lsa, bitta joyda — shu blokda — o'zgartiriladi.
+
+   Qo'shimcha: --lh-* (satr oralig'i), --fw-* (vazn), --ls-* (harflar oralig'i).
+   Harflar oralig'i em'da — shrift kattalashganda mutanosib qoladi (px'da qolsa
+   XL rejimda sarlavhalar siqilib ketardi).
+   ═══════════════════════════════════════════════════════════════════════════ */
 html {
-  font-size: 16px;
+  /* 360px ekranda 16px → 1280px+ da 17.5px. Pastki chegara 16px:
+     hech bir ekranda bugungidan kichik bo'lmaydi. --fs-scale: 0.9 / 1 / 1.1 / 1.25 */
+  font-size: calc(clamp(1rem, 0.963rem + 0.163vw, 1.09375rem) * var(--fs-scale, 1));
+  /* iOS gorizontal burilishda matnni o'zicha kattalashtirmasin — shkalamiz buziladi */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 :root {
+  /* ── Foydalanuvchi shkalasi (SettingsPage → A+/A-) ─────────────────────── */
+  --fs-scale: 1;
+
+  /* ── 2-QATLAM: primitiv shkala (izohdagi px — baza 16px holati) ────────── */
+  --fs-3xs: 0.5625rem;   /*  9px */
+  --fs-2xs: 0.625rem;    /* 10px */
+  --fs-xs: 0.6875rem;    /* 11px */
+  --fs-sm: 0.75rem;      /* 12px */
+  --fs-md: 0.8125rem;    /* 13px */
+  --fs-base: 0.875rem;   /* 14px */
+  --fs-lg: 0.9375rem;    /* 15px */
+  --fs-xl: 1rem;         /* 16px */
+  --fs-2xl: 1.125rem;    /* 18px */
+  --fs-3xl: 1.25rem;     /* 20px */
+  --fs-4xl: 1.375rem;    /* 22px */
+  --fs-5xl: 1.5rem;      /* 24px */
+  --fs-6xl: 1.625rem;    /* 26px */
+  --fs-7xl: 1.75rem;     /* 28px */
+  --fs-8xl: 2rem;        /* 32px */
+  --fs-9xl: 2.25rem;     /* 36px */
+  --fs-10xl: 2.5rem;     /* 40px */
+  --fs-11xl: 2.75rem;    /* 44px */
+  --fs-12xl: 3rem;       /* 48px */
+  /* Dekorativ — emoji, natija raqamlari, bo'sh holat ikonkalari */
+  --fs-hero-sm: 3.25rem; /* 52px */
+  --fs-hero: 3.75rem;    /* 60px */
+  --fs-hero-lg: 4rem;    /* 64px */
+  --fs-hero-xl: 5rem;    /* 80px */
+
+  /* ── 3-QATLAM: semantik tokenlar — komponentlar SHULARNI ishlatadi ─────── */
+  /* Sarlavhalar */
+  --fs-display: var(--fs-9xl);  /* 36 — natija/statistika katta raqamlari */
+  --fs-h1: var(--fs-4xl);       /* 22 — sahifa sarlavhasi */
+  --fs-h2: var(--fs-3xl);       /* 20 — bo'lim sarlavhasi */
+  --fs-h3: var(--fs-2xl);       /* 18 — karta sarlavhasi */
+  --fs-h4: var(--fs-lg);        /* 15 — kichik blok sarlavhasi */
+  /* Asosiy matn */
+  --fs-body-lg: var(--fs-xl);   /* 16 — yetakchi paragraf */
+  --fs-body: var(--fs-base);    /* 14 — standart matn */
+  --fs-body-sm: var(--fs-md);   /* 13 — ikkilamchi matn */
+  /* Izoh va yorliqlar */
+  --fs-caption: var(--fs-sm);   /* 12 — izoh, sana, meta */
+  --fs-micro: var(--fs-xs);     /* 11 — rozetka, chip */
+  --fs-nano: var(--fs-2xs);     /* 10 — faqat juda mayda yorliq (a11y chegarasi) */
+  /* Boshqaruv elementlari */
+  --fs-btn: var(--fs-lg);       /* 15 — asosiy tugma */
+  --fs-btn-sm: var(--fs-md);    /* 13 — kichik tugma */
+  /* 16px — QASDDAN px: iOS Safari fokusda 16px'dan kichik input bo'lsa sahifani
+     majburan zumlaydi va layout siljiydi. Bu brauzer cheklovi, dizayn tanlovi emas,
+     shuning uchun pastki chegara shkaladan QAT'IY NAZAR 16px bo'lib qoladi. */
+  --fs-input: max(16px, var(--fs-lg));
+
+  /* ── O'QISH YUZALARI — test, takror, kartochka, konspekt ───────────────── */
+  /* Bu yerda matn UI emas, KONTENT: shkalada bir pog'ona yuqori turadi. */
+  --fs-question: var(--fs-3xl); /* 20 — savol matni */
+  --fs-option: var(--fs-xl);    /* 16 — javob varianti */
+  --fs-explain: var(--fs-lg);   /* 15 — izoh/tahlil matni */
+
+  /* ── Satr oralig'i ─────────────────────────────────────────────────────── */
+  --lh-tight: 1.2;    /* katta sarlavhalar */
+  --lh-snug: 1.35;    /* kichik sarlavhalar, tugmalar */
+  --lh-normal: 1.5;   /* standart UI matni */
+  --lh-relaxed: 1.65; /* uzun o'qish matni — izoh, konspekt */
+
+  /* ── Vaznlar (Plus Jakarta Sans variable: 200–800) ─────────────────────── */
+  --fw-regular: 500;
+  --fw-medium: 600;
+  --fw-semibold: 700;
+  --fw-bold: 800;
+  --fw-black: 900;
+
+  /* ── Harflar oralig'i — em'da, shrift bilan birga masshtablanadi ───────── */
+  --ls-tighter: -0.03em; /* display raqamlar */
+  --ls-tight: -0.02em;   /* sarlavhalar */
+  --ls-normal: 0;
+  --ls-wide: 0.04em;     /* UPPERCASE mayda yorliqlar */
+
 
   /* Iliq "qog'oz" kunduzgi palitra — sof oq ko'zni charchatadi */
   --bg-gradient: linear-gradient(180deg, #E7F0F7 0%, #F4F3EF 420px, #F4F3EF 100%);
@@ -154,6 +253,13 @@ body {
   color: var(--text);
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
+  /* Tizim standarti: qolgan hamma narsa shundan meros oladi */
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  font-weight: var(--fw-regular);
+  /* Shrift kattalashganda uzun so'z (termin, URL, formula) qutidan CHIQIB
+     KETMASIN — oxirgi chora sifatida so'z ichidan ko'chiriladi */
+  overflow-wrap: break-word;
   min-height: 100vh;
   overflow-x: hidden;
   /* Mobil "native app" hissi: tasodifiy matn belgilash va tap-flash yo'q */
@@ -186,6 +292,49 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   touch-action: manipulation;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   TIPOGRAFIYA UTILITALARI — JSX'da inline fontSize o'rniga className ishlating.
+   Har biri o'lcham + satr oralig'i + vaznni birga beradi, shuning uchun
+   "14px lekin line-height unutilgan" holati qaytalanmaydi.
+   Misol:  <h2 className="t-h2">…</h2>   <p className="t-body">…</p>
+   ═══════════════════════════════════════════════════════════════════════════ */
+.t-display { font-size: var(--fs-display); line-height: var(--lh-tight); font-weight: var(--fw-black); letter-spacing: var(--ls-tighter); }
+.t-h1 { font-size: var(--fs-h1); line-height: var(--lh-tight); font-weight: var(--fw-black); letter-spacing: var(--ls-tight); }
+.t-h2 { font-size: var(--fs-h2); line-height: var(--lh-snug); font-weight: var(--fw-semibold); letter-spacing: var(--ls-tight); }
+.t-h3 { font-size: var(--fs-h3); line-height: var(--lh-snug); font-weight: var(--fw-bold); }
+.t-h4 { font-size: var(--fs-h4); line-height: var(--lh-snug); font-weight: var(--fw-bold); }
+.t-body-lg { font-size: var(--fs-body-lg); line-height: var(--lh-normal); }
+.t-body { font-size: var(--fs-body); line-height: var(--lh-normal); }
+.t-body-sm { font-size: var(--fs-body-sm); line-height: var(--lh-normal); }
+.t-caption { font-size: var(--fs-caption); line-height: var(--lh-snug); color: var(--text3); }
+.t-micro { font-size: var(--fs-micro); line-height: var(--lh-snug); font-weight: var(--fw-medium); color: var(--text3); }
+/* UPPERCASE mayda yorliq — harflar oralig'isiz o'qilmaydi */
+.t-label { font-size: var(--fs-micro); line-height: var(--lh-snug); font-weight: var(--fw-bold); text-transform: uppercase; letter-spacing: var(--ls-wide); color: var(--text3); }
+/* Uzun o'qish matni — konspekt, izoh, tahlil */
+.t-read { font-size: var(--fs-explain); line-height: var(--lh-relaxed); color: var(--text2); }
+
+/* ── Overflow himoyasi ────────────────────────────────────────────────────
+   Flex/grid bolasi standart bo'yicha `min-width: auto` — matn uzun bo'lsa
+   quti QISQARMAY, konteynerdan tashqariga chiqadi. XL shrift rejimida bu
+   eng ko'p uchraydigan buzilish, shuning uchun global ravishda yechamiz. */
+.card > *, .glass-panel > *, .pp-menu-row > *, .stat-box > * { min-width: 0; }
+
+/* Sarlavha va tugma matni bir qatorda siqilganda "..." bilan kesilsin */
+.text-truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Forma elementlari shriftni MEROS OLMAYDI — brauzer o'zining 13px'ini qo'yadi.
+   Bir joyda majburlaymiz, aks holda inputlar shkaladan tushib qoladi. */
+input, textarea, select {
+  font-family: inherit;
+  font-size: var(--fs-input);
+  line-height: var(--lh-normal);
+}
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: var(--lh-snug);
+}
+
 /* SCROLLBAR */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -197,12 +346,13 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 .btn { 
   padding: 10px 20px; 
   border-radius: 10px; 
-  font-size: 15px; 
-  font-family: inherit; 
-  cursor: pointer; 
-  transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1); 
-  border: 1px solid; 
-  font-weight: 600; 
+  font-size: var(--fs-btn);
+  line-height: var(--lh-snug);
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  border: 1px solid;
+  font-weight: var(--fw-medium);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -214,14 +364,15 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 .btn-primary:hover { background: var(--accent3); border-color: var(--accent3); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); }
 .btn-outline { background: var(--bg2); border-color: var(--border); color: var(--text); box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
 .btn-outline:hover { background: var(--surface2); }
-.btn-sm { padding: 6px 14px; font-size: 13px; border-radius: 8px; }
+.btn-sm { padding: 6px 14px; font-size: var(--fs-btn-sm); border-radius: 8px; }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
 
-.section-header { 
-  font-size: 20px; 
-  font-weight: 700;
-  color: var(--text); 
-  letter-spacing: -0.5px;
+.section-header {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-snug);
+  font-weight: var(--fw-semibold);
+  color: var(--text);
+  letter-spacing: var(--ls-tight);
 }
 
 .hide-mobile { display: block; }
@@ -296,7 +447,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   background: var(--accent); /* gradientsiz */
   color: #fff;
   font-weight: 800;
-  font-size: 16px;
+  font-size: var(--fs-xl);
   overflow: hidden;
   border: 2px solid var(--bg2); /* dark temada oq halqa o'rniga fonga mos */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
@@ -308,15 +459,15 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   position: absolute; top: -4px; right: -4px;
   min-width: 19px; height: 19px; padding: 0 5px;
   border-radius: 99px; background: var(--red);
-  color: #fff; font-size: 11px; font-weight: 800;
+  color: #fff; font-size: var(--fs-xs); font-weight: 800;
   display: flex; align-items: center; justify-content: center;
   border: 2px solid var(--bg); box-sizing: border-box;
   box-shadow: 0 1px 4px rgba(239, 68, 68, 0.4);
 }
 .header-greeting-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.2; }
-.header-greet-hi { font-size: 12px; color: var(--text3); font-weight: 500; white-space: nowrap; }
+.header-greet-hi { font-size: var(--fs-sm); color: var(--text3); font-weight: 500; white-space: nowrap; }
 .header-greet-name {
-  font-size: 16px;
+  font-size: var(--fs-xl);
   font-weight: 800;
   color: var(--text);
   white-space: nowrap;
@@ -332,9 +483,9 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 @media (max-width: 768px) {
   .header { padding: 0 12px; }
   .header-stats { gap: 6px; }
-  .header-avatar { width: 38px; height: 38px; font-size: 14px; }
-  .header-greet-hi { font-size: 11px; }
-  .header-greet-name { font-size: 14px; max-width: 96px; }
+  .header-avatar { width: 38px; height: 38px; font-size: var(--fs-base); }
+  .header-greet-hi { font-size: var(--fs-xs); }
+  .header-greet-name { font-size: var(--fs-base); max-width: 96px; }
   
 }
 
@@ -342,8 +493,8 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 /* SIDEBAR */
 .sidebar { width: 260px; background: var(--bg2); border-right: 0.5px solid var(--border); overflow-y: auto; flex-shrink: 0; }
 .sidebar-section { padding: 20px 0 10px; border-bottom: 0.5px solid var(--border); }
-.sidebar-title { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; padding: 0 20px 8px; }
-.nav-item { display: flex; align-items: center; gap: 12px; padding: 10px 20px; margin: 4px 12px; border-radius: 10px; cursor: pointer; transition: background 0.2s; color: var(--text2); font-size: 15px; font-weight: 500; }
+.sidebar-title { font-size: var(--fs-xs); font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; padding: 0 20px 8px; }
+.nav-item { display: flex; align-items: center; gap: 12px; padding: 10px 20px; margin: 4px 12px; border-radius: 10px; cursor: pointer; transition: background 0.2s; color: var(--text2); font-size: var(--fs-h4); font-weight: var(--fw-regular); }
 .nav-item:hover { background: var(--surface2); color: var(--text); }
 .nav-item.active { background: var(--blue-bg); color: var(--accent); font-weight: 600; }
 .nav-icon { display: flex; align-items: center; justify-content: center; }
@@ -356,14 +507,14 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 
 /* STATS GRID */
 .stat-box { padding: 24px; display: flex; flex-direction: column; justify-content: center; background: var(--bg2); border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.03); border: 0.5px solid var(--border); }
-.stat-box-val { font-size: 36px; font-weight: 800; color: var(--text); line-height: 1; letter-spacing: -1px; }
-.stat-box-lbl { font-size: 12px; color: var(--text3); font-weight: 600; margin-top: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-box-val { font-size: var(--fs-9xl); font-weight: 800; color: var(--text); line-height: 1; letter-spacing: -1px; }
+.stat-box-lbl { font-size: var(--fs-sm); color: var(--text3); font-weight: 600; margin-top: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
 
 /* TEST PAGE */
 
 .exam-mode-container { max-width: 800px; margin: 0 auto; }
-.q-num { font-size: 13px; font-weight: 600; color: var(--text3); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-.q-text { font-size: 1.25rem; font-weight: 600; line-height: 1.45; margin-bottom: 28px; color: var(--text); letter-spacing: -0.3px; }
+.q-num { font-size: var(--fs-md); font-weight: 600; color: var(--text3); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+.q-text { font-size: var(--fs-question); font-weight: var(--fw-medium); line-height: var(--lh-snug); margin-bottom: 28px; color: var(--text); letter-spacing: var(--ls-tight); }
 .options { display: flex; flex-direction: column; gap: 12px; }
 .option { display: flex; align-items: center; gap: 16px; padding: 16px; border-radius: 14px; border: 1.5px solid var(--border); background: var(--bg2); transition: all 0.2s; }
 .option.hoverable:hover { border-color: var(--accent); background: var(--blue-bg); cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
@@ -371,10 +522,10 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 .option.correct { border-color: var(--green); background: var(--green-bg); }
 .option.wrong { border-color: var(--red); background: var(--red-bg); opacity: 0.9; }
 .option.disabled { opacity: 0.6; cursor: not-allowed; }
-.opt-letter { width: 32px; height: 32px; border-radius: 8px; background: var(--bg3); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; flex-shrink: 0; color: var(--text2); }
+.opt-letter { width: 32px; height: 32px; border-radius: 8px; background: var(--bg3); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: var(--fs-lg); flex-shrink: 0; color: var(--text2); }
 .option.correct .opt-letter { background: var(--green); color: white; }
 .option.wrong .opt-letter { background: var(--red); color: white; }
-.opt-text { font-size: 1rem; line-height: 1.4; font-weight: 500; color: var(--text2); }
+.opt-text { font-size: var(--fs-option); line-height: var(--lh-snug); font-weight: var(--fw-regular); color: var(--text2); }
 .option.correct .opt-text, .option.wrong .opt-text { color: var(--text); }
 
 
@@ -383,7 +534,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   margin-top: 12px;
   padding-top: 10px;
   border-top: 1px dashed var(--border2);
-  font-size: 12px;
+  font-size: var(--fs-sm);
   font-weight: 600;
   color: var(--text3);
   display: flex;
@@ -434,8 +585,8 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   background: var(--bg2);
   border: 0.5px solid var(--border);
 }
-.flashcard-front-text { font-size: 1.375rem; font-weight: 600; line-height: 1.4; color: var(--text); letter-spacing: -0.3px; }
-.flashcard-back-text { font-size: 1.125rem; font-weight: 500; color: var(--text2); line-height: 1.5; }
+.flashcard-front-text { font-size: var(--fs-4xl); font-weight: var(--fw-medium); line-height: var(--lh-snug); color: var(--text); letter-spacing: var(--ls-tight); }
+.flashcard-back-text { font-size: var(--fs-2xl); font-weight: var(--fw-regular); color: var(--text2); line-height: var(--lh-normal); }
 
 /* SCHEDULE & STATS */
 
@@ -513,14 +664,14 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 }
 .user-dropdown-header-title {
   font-weight: 700;
-  font-size: 16px;
+  font-size: var(--fs-xl);
   color: var(--text);
 }
 .notif-clear-all-btn {
   background: var(--blue-bg);
   border: none;
   color: var(--accent2);
-  font-size: 12px;
+  font-size: var(--fs-sm);
   padding: 6px 11px;
   border-radius: 9px;
   font-weight: 700;
@@ -540,7 +691,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   gap: 10px;
   text-align: center;
   color: var(--text3);
-  font-size: 13px;
+  font-size: var(--fs-md);
 }
 .notif-item {
   padding: 14px 16px;
@@ -575,7 +726,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   margin-bottom: 4px;
 }
 .notif-title {
-  font-size: 14px;
+  font-size: var(--fs-base);
   color: var(--text);
   line-height: 1.3;
   display: -webkit-box;
@@ -593,14 +744,14 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   flex-shrink: 0;
 }
 .notif-msg {
-  font-size: 12px;
+  font-size: var(--fs-sm);
   line-height: 1.4;
   margin-bottom: 6px;
 }
 .notif-msg.read { color: var(--text3); }
 .notif-msg.unread { color: var(--text2); }
 .notif-date {
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   color: var(--text3);
   font-weight: 500;
 }
@@ -615,7 +766,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   background: none;
   border: none;
   color: var(--red);
-  font-size: 14px;
+  font-size: var(--fs-base);
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -632,7 +783,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 .toast-capsule {
   padding: 12px 24px;
   border-radius: 99px;
-  font-size: 14px;
+  font-size: var(--fs-base);
   font-weight: 700;
   z-index: 10000;
   box-shadow: 0 8px 32px rgba(0,0,0,0.12);
@@ -658,7 +809,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   border: 1px solid rgba(14, 151, 224, 0.2);
   padding: 5px 12px;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: var(--fs-sm);
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -680,7 +831,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
     top: 8px;
     right: 8px;
     padding: 3px 8px;
-    font-size: 10px;
+    font-size: var(--fs-2xs);
   }
 }
 
@@ -712,8 +863,8 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   to { opacity: 1; transform: scale(1); }
 }
 
-.modal-title { font-size: 20px; font-weight: 700; margin-bottom: 16px; color: var(--text); display: flex; align-items: center; gap: 8px; }
-.modal-text { font-size: 14px; color: var(--text2); margin-bottom: 20px; }
+.modal-title { font-size: var(--fs-h2); font-weight: 700; margin-bottom: 16px; color: var(--text); display: flex; align-items: center; gap: 8px; }
+.modal-text { font-size: var(--fs-body); color: var(--text2); margin-bottom: 20px; }
 .modal-input { width: 100%; padding: 12px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--bg3); color: var(--text); font-family: inherit; resize: none; }
 .modal-actions { display: flex; gap: 12px; justify-content: flex-end; }
 
@@ -729,7 +880,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   cursor: pointer;
 }
 .header-exam-countdown-text {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   font-weight: 800;
   color: var(--text);
 }
@@ -740,7 +891,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   right: -4px;
   background: var(--red);
   color: white;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   font-weight: 800;
   padding: 1px 5px;
   border-radius: 99px;
@@ -754,15 +905,15 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   background: var(--bg2); /* har uch temada ishlaydi (avval qattiq oq edi) */
   border: 1px solid rgba(245, 158, 11, 0.3);
 }
-.ambassador-emoji { font-size: 60px; margin-bottom: 10px; }
-.ambassador-title { font-size: 24px; font-weight: 900; color: var(--text); margin-bottom: 12px; }
-.ambassador-text { font-size: 15px; color: var(--text2); line-height: 1.5; margin-bottom: 20px; }
+.ambassador-emoji { font-size: var(--fs-hero); margin-bottom: 10px; }
+.ambassador-title { font-size: var(--fs-5xl); font-weight: 900; color: var(--text); margin-bottom: 12px; }
+.ambassador-text { font-size: var(--fs-lg); color: var(--text2); line-height: 1.5; margin-bottom: 20px; }
 .ambassador-highlight {
   background: var(--amber-bg);
   color: var(--amber);
   padding: 12px;
   border-radius: 12px;
-  font-size: 13px;
+  font-size: var(--fs-md);
   font-weight: 600;
   margin-bottom: 24px;
 }
@@ -770,13 +921,13 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   width: 100%;
   background: linear-gradient(135deg, #F59E0B, #FBBF24);
   color: #fff;
-  font-size: 16px;
+  font-size: var(--fs-xl);
 }
 
 .flex-col-gap-16 { display: flex; flex-direction: column; gap: 16px; }
 
-.input-label-sm { font-size: 13px; font-weight: 600; color: var(--text2); margin-bottom: 6px; display: block; }
-.text-center-or { text-align: center; color: var(--text3); font-size: 13px; font-weight: 600; }
+.input-label-sm { font-size: var(--fs-body-sm); font-weight: 600; color: var(--text2); margin-bottom: 6px; display: block; }
+.text-center-or { text-align: center; color: var(--text3); font-size: var(--fs-md); font-weight: 600; }
 
 /* ========================================================
    DASHBOARD COMPONENTS
@@ -815,14 +966,14 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 }
 .sel-seg-body { min-width: 0; flex: 1; }
 .sel-seg-cap {
-  display: block; font-size: 9.5px; font-weight: 800; line-height: 1;
+  display: block; font-size: var(--fs-3xs); font-weight: 800; line-height: 1;
   letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3);
 }
 .sel-seg-val {
-  display: block; font-size: 14px; font-weight: 800; color: var(--text);
+  display: block; font-size: var(--fs-base); font-weight: 800; color: var(--text);
   margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.sel-seg-val small { font-weight: 600; font-size: 11.5px; color: var(--text3); }
+.sel-seg-val small { font-weight: 600; font-size: var(--fs-xs); color: var(--text3); }
 .sel-caret { flex-shrink: 0; color: var(--text3); }
 
 /* Tor telefonda (≤380px) fan ikonkasi 41px joy egallaydi — o'sha joyni nomlarga
@@ -837,7 +988,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   width: 100%; margin-top: 8px; display: flex; align-items: center; gap: 7px;
   padding: 9px 12px; min-height: 40px; background: none;
   border: 1px dashed var(--border2); border-radius: 11px;
-  font-family: inherit; font-size: 12.5px; color: var(--text2);
+  font-family: inherit; font-size: var(--fs-sm); color: var(--text2);
   text-align: left; cursor: pointer;
 }
 .sel-subrow:active { background: var(--surface2); }
@@ -855,7 +1006,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 }
 .dashboard-exam-goal {
   display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.15);
-  border-radius: 10px; padding: 6px 12px; font-size: 13px; font-weight: 600; color: #fff;
+  border-radius: 10px; padding: 6px 12px; font-size: var(--fs-md); font-weight: 600; color: #fff;
 }
 
 .dashboard-resume-banner {
@@ -867,7 +1018,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   box-shadow: 0 2px 10px rgba(0,0,0,0.03);
 }
 .dashboard-resume-btn {
-  background: var(--cta); color: #fff; font-weight: 700; font-size: 13px;
+  background: var(--cta); color: #fff; font-weight: 700; font-size: var(--fs-md);
   padding: 9px 16px; border-radius: 10px; flex-shrink: 0;
 }
 
@@ -879,7 +1030,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   box-shadow: 0 6px 20px rgba(14, 151, 224, 0.28);
 }
 .dashboard-trial-btn {
-  background: #fff; color: var(--accent2); font-weight: 800; font-size: 13px;
+  background: #fff; color: var(--accent2); font-weight: 800; font-size: var(--fs-md);
   padding: 9px 16px; border-radius: 10px; flex-shrink: 0;
 }
 
@@ -890,12 +1041,12 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   box-shadow: 0 4px 15px rgba(245, 158, 11, 0.08);
 }
 .dashboard-referral-btn {
-  background: var(--text); color: var(--bg); font-weight: 700; font-size: 13px;
+  background: var(--text); color: var(--bg); font-weight: 700; font-size: var(--fs-md);
   padding: 8px 14px; border-radius: 10px; flex-shrink: 0;
 }
 
 .dashboard-section-label {
-  font-size: 13px; font-weight: 700; color: var(--text3);
+  font-size: var(--fs-md); font-weight: 700; color: var(--text3);
   text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; margin-top: 4px;
 }
 
@@ -910,7 +1061,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 }
 .dashboard-action-badge {
   position: absolute; top: -6px; right: -6px; background: var(--red); color: #fff;
-  font-size: 10px; font-weight: 800; border-radius: 6px; padding: 1px 4px; min-width: 14px; text-align: center;
+  font-size: var(--fs-2xs); font-weight: 800; border-radius: 6px; padding: 1px 4px; min-width: 14px; text-align: center;
 }
 
 .dashboard-topics-grid {
@@ -933,7 +1084,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 .dashboard-admin-clear {
   display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px;
   border: 1px solid var(--border); background: var(--bg2); color: #EF4444;
-  font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit;
+  font-size: var(--fs-sm); font-weight: 600; cursor: pointer; font-family: inherit;
 }
 .dashboard-obj-card {
   background: var(--bg2); border-radius: 12px; padding: 12px 14px;
@@ -941,7 +1092,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 }
 .dashboard-obj-btn {
   display: flex; align-items: center; gap: 4px; padding: 5px 10px; border-radius: 8px;
-  font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit;
+  font-size: var(--fs-sm); font-weight: 600; cursor: pointer; font-family: inherit;
 }
 
 /* ========================================================
@@ -957,17 +1108,17 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
    bu yerda faqat davom etish tugmasi qoldi. */
 .theory-btn {
   width: 100%; padding: 16px; background: var(--cta);
-  color: #fff; border: none; border-radius: 16px; font-size: 16px; font-weight: 700; cursor: pointer;
+  color: #fff; border: none; border-radius: 16px; font-size: var(--fs-xl); font-weight: 700; cursor: pointer;
   font-family: inherit; box-shadow: 0 4px 15px rgba(14, 151, 224, 0.2);
 }
 
 .limit-container { display: flex; justify-content: center; align-items: center; min-height: 80vh; padding: 20px; }
 .limit-card { max-width: 400px; width: 100%; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 24px; padding: 40px 28px; text-align: center; }
-.limit-icon { font-size: 52px; margin-bottom: 16px; }
-.limit-title { font-size: 22px; font-weight: 900; margin-bottom: 8px; color: var(--text); }
-.limit-text { font-size: 14px; color: var(--text3); line-height: 1.6; margin-bottom: 28px; }
-.limit-btn-primary { width: 100%; padding: 15px; background: var(--cta); color: #fff; border: none; border-radius: 14px; font-weight: 700; font-size: 16px; cursor: pointer; font-family: inherit; margin-bottom: 12px; }
-.limit-btn-secondary { width: 100%; padding: 13px; background: var(--bg2); color: var(--text2); border: 1.5px solid var(--border); border-radius: 14px; font-weight: 600; font-size: 15px; cursor: pointer; font-family: inherit; }
+.limit-icon { font-size: var(--fs-hero-sm); margin-bottom: 16px; }
+.limit-title { font-size: var(--fs-h1); font-weight: 900; margin-bottom: 8px; color: var(--text); }
+.limit-text { font-size: var(--fs-body); color: var(--text3); line-height: 1.6; margin-bottom: 28px; }
+.limit-btn-primary { width: 100%; padding: 15px; background: var(--cta); color: #fff; border: none; border-radius: 14px; font-weight: 700; font-size: var(--fs-xl); cursor: pointer; font-family: inherit; margin-bottom: 12px; }
+.limit-btn-secondary { width: 100%; padding: 13px; background: var(--bg2); color: var(--text2); border: 1.5px solid var(--border); border-radius: 14px; font-weight: 600; font-size: var(--fs-lg); cursor: pointer; font-family: inherit; }
 
 .empty-state-card {
   padding: 48px 32px; text-align: center; max-width: 500px; margin: 40px auto;
@@ -980,11 +1131,11 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
 .empty-state-glow.success { background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%); }
 .empty-state-glow.info { background: radial-gradient(circle, rgba(14, 151, 224, 0.15) 0%, transparent 70%); }
 .empty-state-content { position: relative; z-index: 1; }
-.empty-state-icon { font-size: 56px; margin-bottom: 20px; display: inline-block; }
+.empty-state-icon { font-size: var(--fs-hero); margin-bottom: 20px; display: inline-block; }
 .empty-state-icon.success { filter: drop-shadow(0 10px 15px rgba(16, 185, 129, 0.2)); }
 .empty-state-icon.info { filter: drop-shadow(0 10px 15px rgba(14, 151, 224, 0.2)); }
-.empty-state-title { font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 10px; }
-.empty-state-text { color: var(--text3); font-size: 14px; line-height: 1.6; margin-bottom: 28px; max-width: 340px; margin: 0 auto 28px; }
+.empty-state-title { font-size: var(--fs-h2); font-weight: 800; color: var(--text); margin-bottom: 10px; }
+.empty-state-text { color: var(--text3); font-size: var(--fs-body); line-height: 1.6; margin-bottom: 28px; max-width: 340px; margin: 0 auto 28px; }
 
 /* ========================================================
    MOBILE RESPONSIVE UI (iOS Bottom Tab Bar style)
@@ -1002,19 +1153,22 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   .page { padding: 16px 12px; }
   
   .stat-box { padding: 14px; }
-  .stat-box-val { font-size: 24px; }
-  .stat-box-lbl { font-size: 10px; }
+  .stat-box-val { font-size: var(--fs-5xl); }
+  .stat-box-lbl { font-size: var(--fs-2xs); }
   
   
   
   .flashcard-wrap { height: 280px; }
   .flashcard-face { padding: 24px 16px; border-radius: 16px; }
-  .flashcard-front-text { font-size: 0.9375rem; }
-  .flashcard-back-text { font-size: 0.875rem; }
+  /* Kartochka ham o'qish yuzasi: mobilda 15px/14px ga tushirilmaydi.
+     .flashcard-face'da overflow-y: auto bor — uzun savol kesilmaydi. */
+  .flashcard-front-text { font-size: var(--fs-question); }
+  .flashcard-back-text { font-size: var(--fs-option); }
 
   
-  /* Section header adjustments */
-  .section-header { font-size: 17px; margin-bottom: 12px; }
+  /* Mobilda bo'lim sarlavhasi bir pog'ona pastga tushadi (h2 → h3) —
+     bu ATAYLAB tanlangan ierarxiya, "px'ni kichraytirish" emas. */
+  .section-header { font-size: var(--fs-h3); margin-bottom: 12px; }
   
   /* Button text hiding on small buttons if needed */
   .btn-sm svg { width: 14px; height: 14px; }
@@ -1036,7 +1190,7 @@ input, textarea, [contenteditable="true"], .q-text, .q-source {
   border: 1px solid var(--border);
   border-radius: 10px;
   color: var(--text2);
-  font-size: 14px;
+  font-size: var(--fs-base);
   font-weight: 700;
   cursor: pointer;
   -webkit-user-select: none;
@@ -1120,7 +1274,7 @@ body.exam-fullscreen .exam-layout { height: 100vh; }
   background: var(--green-bg);
   border: 1px solid rgba(16,185,129,0.2);
   color: var(--green);
-  font-size: 14px;
+  font-size: var(--fs-base);
   font-weight: 600;
   transition: all 0.3s;
 }
@@ -1239,16 +1393,15 @@ body.exam-fullscreen .exam-layout { height: 100vh; }
 @media (max-width: 768px) {
   .page { padding: 14px 10px; }
   .q-num {
-    font-size: 11px;
+    font-size: var(--fs-xs);
     margin-bottom: 6px;
     font-weight: 700;
   }
+  /* DIQQAT: bu yerda font-size QAYTA BELGILANMAYDI. Ekranga moslashuvni
+     ildizdagi clamp() bajaradi; mobilda alohida kichraytirish avval savol
+     matnini 20px→17px, variantni 16px→14.5px ga tushirib yuborardi. */
   .q-text {
-    font-size: 1.0625rem;
-    line-height: 1.45;
     margin-bottom: 20px;
-    font-weight: 700;
-    color: var(--text);
   }
   .options { 
     gap: 10px; 
@@ -1266,13 +1419,12 @@ body.exam-fullscreen .exam-layout { height: 100vh; }
   .opt-letter { 
     width: 28px; 
     height: 28px; 
-    font-size: 13px; 
+    font-size: var(--fs-md); 
     border-radius: 8px;
     font-weight: 800;
   }
   .opt-text {
-    font-size: 0.90625rem;
-    font-weight: 600;
+    font-weight: var(--fw-medium);
   }
   
   .mnemonic-box {
@@ -1289,7 +1441,7 @@ body.exam-fullscreen .exam-layout { height: 100vh; }
   .q-nav .btn {
     flex: 1;
     padding: 14px 20px;
-    font-size: 15px;
+    font-size: var(--fs-lg);
     border-radius: 14px;
     font-weight: 700;
   }
@@ -1512,7 +1664,7 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   color: rgba(255, 255, 255, 0.85);
-  font-size: 13px;
+  font-size: var(--fs-md);
   font-weight: 600;
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   cursor: pointer;

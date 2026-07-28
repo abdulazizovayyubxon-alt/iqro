@@ -262,8 +262,8 @@ const Dashboard = () => {
               <History size={20} style={{ color: 'var(--accent)' }} />
             </div>
             <div style={{ textAlign: 'left', minWidth: 0 }}>
-              <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--text)' }}>{t('exam.resumeTitle')}</div>
-              <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: 'var(--text)' }}>{t('exam.resumeTitle')}</div>
+              <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 {t('exam.resumeInfo', {
                   answered: Object.keys(resumeSession.answers || {}).length,
                   total: resumeSession.questions.length,
@@ -313,8 +313,8 @@ const Dashboard = () => {
                   <Clock size={19} style={{ color: 'var(--accent)' }} />
                 </div>
                 <div style={{ minWidth: 0 }}>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--text)' }}>{t('exam.setDateTitle')}</div>
-                  <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2, lineHeight: 1.45 }}>{t('exam.setDateDesc')}</div>
+                  <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: 'var(--text)' }}>{t('exam.setDateTitle')}</div>
+                  <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: 2, lineHeight: 1.45 }}>{t('exam.setDateDesc')}</div>
                 </div>
               </div>
               <button
@@ -323,7 +323,7 @@ const Dashboard = () => {
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
                   width: '100%', marginTop: 12, padding: '10px 12px', borderRadius: 12,
                   border: '1px solid var(--border)', background: 'var(--bg2)',
-                  color: 'var(--accent)', fontWeight: 700, fontSize: 13,
+                  color: 'var(--accent)', fontWeight: 700, fontSize: 'var(--fs-md)',
                   cursor: 'pointer', fontFamily: 'inherit',
                 }}
               >
@@ -351,10 +351,10 @@ const Dashboard = () => {
                 <Clock size={20} color="#fff" />
               </div>
               <div>
-                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>
+                <div style={{ fontSize: 'var(--fs-md)', color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>
                   {exam.isPersonal ? t('exam.yourDate') : (exam.label || EXAM_LABEL)}
                 </div>
-                <div style={{ fontSize: 18, fontWeight: 800, color: '#fff' }}>
+                <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: '#fff' }}>
                   {exam.isToday ? t('exam.today') : t('exam.daysLeft', { count: exam.daysLeft })}
                 </div>
               </div>
@@ -390,10 +390,10 @@ const Dashboard = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <GiftBox size={30} style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))', flexShrink: 0 }} />
           <div style={{ textAlign: 'left' }}>
-            <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--text)' }}>
+            <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: 'var(--text)' }}>
               {t('dashboard.referralTitle')}
             </div>
-            <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 2, fontWeight: 500 }}>
+            <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text2)', marginTop: 2, fontWeight: 500 }}>
               {t('dashboard.referralSubtitle')}
             </div>
           </div>
@@ -416,10 +416,10 @@ const Dashboard = () => {
               <Zap size={20} color="#fff" />
             </div>
             <div style={{ textAlign: 'left' }}>
-              <div style={{ fontSize: 14, fontWeight: 800, color: '#fff' }}>
+              <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: '#fff' }}>
                 {isTrialExpired ? t('dashboard.trialFreeLeft', { count: questionsLeft }) : (trialDaysLeft !== null ? t('dashboard.trialDaysLeft', { days: trialDaysLeft }) : t('dashboard.trialNoData'))}
               </div>
-              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', marginTop: 2 }}>
+              <div style={{ fontSize: 'var(--fs-sm)', color: 'rgba(255,255,255,0.85)', marginTop: 2 }}>
                 {/* Play build'da narx ko'rsatilmaydi — PremiumModal.jsx izohiga qarang */}
                 {t('dashboard.trialUnlimited')}{priceFrom && !isPlayBuild() ? ` · ${t('dashboard.trialPriceFrom', { amount: new Intl.NumberFormat('fr-FR').format(priceFrom) })}` : ''}
               </div>
@@ -455,8 +455,8 @@ const Dashboard = () => {
                 )}
               </div>
               <div style={{ textAlign: 'left', flex: 1 }}>
-                <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{action.label}</div>
-                <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2 }}>{action.desc}</div>
+                <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 700, color: 'var(--text)' }}>{action.label}</div>
+                <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: 2 }}>{action.desc}</div>
               </div>
               <ChevronRight size={18} style={{ color: 'var(--text3)', flexShrink: 0 }} />
             </motion.button>
@@ -513,15 +513,15 @@ const Dashboard = () => {
                 <div style={{
                   position: 'absolute', inset: 0,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: hasStats ? 13 : 18, fontWeight: 800, color,
+                  fontSize: hasStats ? 'var(--fs-md)' : 'var(--fs-2xl)', fontWeight: 800, color,
                 }}>
                   {hasStats ? `${pct}%` : topic.icon}
                 </div>
               </div>
-              <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text)', textAlign: 'center', lineHeight: 1.3 }}>
+              <div style={{ fontSize: 'var(--fs-xs)', fontWeight: 600, color: 'var(--text)', textAlign: 'center', lineHeight: 1.3 }}>
                 {topic.name}
               </div>
-              <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 3 }}>
+              <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', marginTop: 3 }}>
                 {hasStats ? t('dashboard.topicQuestions', { count: ts.answered }) : t('dashboard.topicNotStarted')}
               </div>
             </motion.button>
@@ -543,8 +543,8 @@ const Dashboard = () => {
           </div>
           {[...objections].reverse().slice(0, 5).map((obj, i) => (
             <div key={obj.fbId || i} className="dashboard-obj-card">
-              <div style={{ fontSize: 12, color: 'var(--text3)', marginBottom: 4 }}>{obj.topic} · {obj.date}</div>
-              <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 6 }}>{obj.question}</div>
+              <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginBottom: 4 }}>{obj.topic} · {obj.date}</div>
+              <div style={{ fontSize: 'var(--fs-md)', fontWeight: 600, color: 'var(--text)', marginBottom: 6 }}>{obj.question}</div>
               <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
                 {!obj.solved && (
                   <button className="dashboard-obj-btn" style={{ border: '1px solid rgba(16,185,129,0.2)', background: 'var(--green-bg)', color: 'var(--green)' }} onClick={() => solveObjection(obj.fbId)}>

@@ -53,7 +53,7 @@ const QuestionBox = ({
                 background: questions[currentQ].difficulty >= 3 ? 'var(--red)' : questions[currentQ].difficulty >= 1 ? 'var(--amber)' : 'var(--green)',
               }} title={questions[currentQ].difficulty >= 3 ? t('test.difficultyHard') : questions[currentQ].difficulty >= 1 ? t('test.difficultyMedium') : t('test.difficultyEasy')} />
             )}
-            {topicId >= 0 && <div style={{ fontSize: '11px', color: 'var(--blue)', fontWeight: '600', background: 'var(--blue-bg)', padding: '2px 8px', borderRadius: '6px' }}>{topicName}</div>}
+            {topicId >= 0 && <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--blue)', fontWeight: '600', background: 'var(--blue-bg)', padding: '2px 8px', borderRadius: '6px' }}>{topicName}</div>}
           </div>
           <button className="objection-btn" style={{ position: 'relative', top: 'auto', right: 'auto', margin: 0 }} onClick={() => setShowObjectionModal(true)}><MessageCircle size={14} /> {t('test.objection')}</button>
         </div>
@@ -65,7 +65,7 @@ const QuestionBox = ({
 
         {/* ── Motivatsiya matni ── */}
         {motivationText && (
-          <motion.div initial={{ opacity: 0, scale: 0.8, y: -10 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0 }} style={{ textAlign: 'center', fontWeight: '800', fontSize: comboCount >= 10 ? '20px' : comboCount >= 5 ? '18px' : '16px', color: comboCount >= 5 ? 'var(--amber)' : 'var(--green)', padding: '4px 0', marginBottom: '4px' }}>{motivationText}</motion.div>
+          <motion.div initial={{ opacity: 0, scale: 0.8, y: -10 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0 }} style={{ textAlign: 'center', fontWeight: '800', fontSize: comboCount >= 10 ? 'var(--fs-3xl)' : comboCount >= 5 ? 'var(--fs-2xl)' : 'var(--fs-xl)', color: comboCount >= 5 ? 'var(--amber)' : 'var(--green)', padding: '4px 0', marginBottom: '4px' }}>{motivationText}</motion.div>
         )}
 
         {/* ── Taymer / Sekundomer (wall-clock, TimerPill) ── */}
@@ -84,7 +84,7 @@ const QuestionBox = ({
             }}
           />
         )}
-        {answers[currentQ] === -1 && <div style={{ color: 'var(--red)', fontSize: '13px', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '12px' }}>{t('test.timeUp')}</div>}
+        {answers[currentQ] === -1 && <div style={{ color: 'var(--red)', fontSize: 'var(--fs-md)', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '12px' }}>{t('test.timeUp')}</div>}
 
         {/* ── Aqlli Badglar (Takrorlash & Zaif Nuqta) ── */}
         {(() => {
@@ -95,12 +95,12 @@ const QuestionBox = ({
           return (
             <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
               {isSpaced && (
-                <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--accent2)', background: 'var(--blue-bg)', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid var(--accent)' }}>
+                <span style={{ fontSize: 'var(--fs-xs)', fontWeight: '800', color: 'var(--accent2)', background: 'var(--blue-bg)', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid var(--accent)' }}>
                   {t('test.badgeReview')}
                 </span>
               )}
               {isWeak && (
-                <span style={{ fontSize: '11px', fontWeight: '800', color: 'var(--text2)', background: 'var(--amber-bg)', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid var(--amber)' }}>
+                <span style={{ fontSize: 'var(--fs-xs)', fontWeight: '800', color: 'var(--text2)', background: 'var(--amber-bg)', padding: '4px 10px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px', border: '1px solid var(--amber)' }}>
                   {t('test.badgeWeak')}
                 </span>
               )}
@@ -153,13 +153,13 @@ const QuestionBox = ({
             <div style={{ display: 'flex', borderBottom: '1px solid var(--border)', background: 'var(--bg3)' }}>
               <button
                 onClick={() => setActiveReviewTab('analysis')}
-                style={{ flex: 1, padding: '12px', border: 'none', background: activeReviewTab === 'analysis' ? 'var(--bg2)' : 'transparent', color: activeReviewTab === 'analysis' ? 'var(--text)' : 'var(--text3)', fontSize: '13px', fontWeight: '700', cursor: 'pointer', fontFamily: 'inherit', borderBottom: activeReviewTab === 'analysis' ? '2.5px solid var(--accent)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', transition: 'all 0.2s' }}
+                style={{ flex: 1, padding: '12px', border: 'none', background: activeReviewTab === 'analysis' ? 'var(--bg2)' : 'transparent', color: activeReviewTab === 'analysis' ? 'var(--text)' : 'var(--text3)', fontSize: 'var(--fs-md)', fontWeight: '700', cursor: 'pointer', fontFamily: 'inherit', borderBottom: activeReviewTab === 'analysis' ? '2.5px solid var(--accent)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', transition: 'all 0.2s' }}
               >
                 <span>{t('test.tabAnalysis')}</span>
               </button>
               <button
                 onClick={() => setActiveReviewTab('notes')}
-                style={{ flex: 1, padding: '12px', border: 'none', background: activeReviewTab === 'notes' ? 'var(--bg2)' : 'transparent', color: activeReviewTab === 'notes' ? 'var(--text)' : 'var(--text3)', fontSize: '13px', fontWeight: '700', cursor: 'pointer', fontFamily: 'inherit', borderBottom: activeReviewTab === 'notes' ? '2.5px solid var(--accent)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', position: 'relative', transition: 'all 0.2s' }}
+                style={{ flex: 1, padding: '12px', border: 'none', background: activeReviewTab === 'notes' ? 'var(--bg2)' : 'transparent', color: activeReviewTab === 'notes' ? 'var(--text)' : 'var(--text3)', fontSize: 'var(--fs-md)', fontWeight: '700', cursor: 'pointer', fontFamily: 'inherit', borderBottom: activeReviewTab === 'notes' ? '2.5px solid var(--accent)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', position: 'relative', transition: 'all 0.2s' }}
               >
                 <span>{t('test.tabNotes')}</span>
                 {(() => {
@@ -187,12 +187,12 @@ const QuestionBox = ({
               }}>
                 {activeReviewTab === 'analysis' && (
                   <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '800', fontSize: '14px', color: answers[currentQ] === questions[currentQ].correct ? 'var(--green)' : 'var(--red)', marginBottom: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '800', fontSize: 'var(--fs-base)', color: answers[currentQ] === questions[currentQ].correct ? 'var(--green)' : 'var(--red)', marginBottom: '12px' }}>
                       <span>{answers[currentQ] === questions[currentQ].correct ? t('test.correct') : t('test.wrong')}</span>
                     </div>
 
                     {answers[currentQ] !== questions[currentQ].correct && answers[currentQ] >= 0 && (
-                      <div style={{ marginBottom: '12px', padding: '10px 12px', background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.1)', borderRadius: '12px', fontSize: '13px', lineHeight: '1.5' }}>
+                      <div style={{ marginBottom: '12px', padding: '10px 12px', background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.1)', borderRadius: '12px', fontSize: 'var(--fs-md)', lineHeight: '1.5' }}>
                         <div style={{ marginBottom: '4px' }}>
                           <span style={{ color: 'var(--text3)' }}>{t('test.youChose')}</span>{' '}
                           <span style={{ color: 'var(--red)', fontWeight: '600' }}>{questions[currentQ].opts[answers[currentQ]]?.replace(/^[A-D]\)\s*/, '')}</span>
@@ -204,7 +204,7 @@ const QuestionBox = ({
                       </div>
                     )}
 
-                    <div style={{ color: 'var(--text2)', fontSize: '14px', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
+                    <div style={{ color: 'var(--text2)', fontSize: 'var(--fs-explain)', lineHeight: 'var(--lh-relaxed)', whiteSpace: 'pre-line' }}>
                       {questions[currentQ].explanation}
                     </div>
 
@@ -218,7 +218,7 @@ const QuestionBox = ({
                           display: 'inline-flex', alignItems: 'center', gap: 6,
                           marginTop: 12, padding: '8px 13px', borderRadius: 11,
                           border: '1px solid var(--border)', background: 'var(--bg2)',
-                          color: 'var(--accent)', fontSize: 12.5, fontWeight: 700,
+                          color: 'var(--accent)', fontSize: 'var(--fs-sm)', fontWeight: 700,
                           cursor: 'pointer', fontFamily: 'inherit',
                         }}
                       >
@@ -237,8 +237,8 @@ const QuestionBox = ({
                   <div>
                     {isUsefulMnemonic(questions[currentQ].mnemonic) && (
                       <div style={{ background: 'rgba(245, 158, 11, 0.04)', border: '1px dashed var(--amber)', borderRadius: '12px', padding: '12px', display: 'flex', gap: '10px', marginBottom: '14px', textAlign: 'left' }}>
-                        <div style={{ fontSize: '18px' }}>💡</div>
-                        <div style={{ fontSize: '13px', color: 'var(--text2)', lineHeight: '1.5' }}>
+                        <div style={{ fontSize: 'var(--fs-2xl)' }}>💡</div>
+                        <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', lineHeight: '1.5' }}>
                           <strong>{t('test.recommendedMnemonic')}</strong><br />
                           {questions[currentQ].mnemonic}
                         </div>
@@ -249,19 +249,19 @@ const QuestionBox = ({
                       const qHash = (questions[currentQ]?.q || '').substring(0, 100);
                       return (
                         <div style={{ textAlign: 'left' }}>
-                          <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: 'var(--text3)', marginBottom: '6px' }}>
+                          <label style={{ display: 'block', fontSize: 'var(--fs-sm)', fontWeight: '700', color: 'var(--text3)', marginBottom: '6px' }}>
                             {t('test.personalNote')}
                           </label>
                           <textarea
                             placeholder={t('test.personalNotePlaceholder')}
                             value={state.customMnemonics?.[qHash] || ''}
                             onChange={(e) => saveCustomMnemonic(qHash, e.target.value)}
-                            style={{ width: '100%', minHeight: '80px', background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '12px', padding: '10px 12px', color: 'var(--text)', fontSize: '13px', fontFamily: 'inherit', resize: 'vertical', outline: 'none', transition: 'border-color 0.2s', lineHeight: '1.5' }}
+                            style={{ width: '100%', minHeight: '80px', background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '12px', padding: '10px 12px', color: 'var(--text)', fontSize: 'var(--fs-input)', fontFamily: 'inherit', resize: 'vertical', outline: 'none', transition: 'border-color 0.2s', lineHeight: '1.5' }}
                             onFocus={(e) => e.target.style.borderColor = 'var(--accent)'}
                             onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
                           />
                           <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
-                            <span style={{ fontSize: '11px', color: 'var(--text3)' }}>
+                            <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>
                               {(state.customMnemonics?.[qHash] || '').trim() ? t('test.noteSaved') : t('test.noteHint')}
                             </span>
                           </div>
@@ -310,10 +310,10 @@ const QuestionBox = ({
                     }}>
                       <Crown size={22} color="#fff" />
                     </div>
-                    <h4 style={{ margin: '0 0 6px 0', fontSize: '15px', fontWeight: 800, color: 'var(--text)' }}>
+                    <h4 style={{ margin: '0 0 6px 0', fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)' }}>
                       {t('test.paywallTitle')}
                     </h4>
-                    <p style={{ margin: '0 0 16px 0', fontSize: '12px', color: 'var(--text3)', lineHeight: '1.5' }}>
+                    <p style={{ margin: '0 0 16px 0', fontSize: 'var(--fs-sm)', color: 'var(--text3)', lineHeight: '1.5' }}>
                       {t('test.paywallText')}
                     </p>
                     <button
@@ -324,7 +324,7 @@ const QuestionBox = ({
                         border: 'none',
                         padding: '10px 20px',
                         borderRadius: '12px',
-                        fontSize: '13px',
+                        fontSize: 'var(--fs-md)',
                         fontWeight: 700,
                         cursor: 'pointer',
                         display: 'flex',

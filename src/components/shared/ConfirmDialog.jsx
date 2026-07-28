@@ -32,8 +32,8 @@ export default function ConfirmDialog({
         style={{ padding: 24, maxWidth: 340, width: '90%', borderRadius: 20, textAlign: 'center', background: 'var(--bg2)' }}
         onClick={(e) => e.stopPropagation()}
       >
-        <h3 style={{ fontSize: 17, fontWeight: 800, marginBottom: text ? 8 : 20, color: 'var(--text)', lineHeight: 1.4 }}>{title}</h3>
-        {text && <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 20, lineHeight: 1.5 }}>{text}</p>}
+        <h3 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: text ? 8 : 20, color: 'var(--text)', lineHeight: 1.4 }}>{title}</h3>
+        {text && <p style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 20, lineHeight: 1.5 }}>{text}</p>}
         <div style={{ display: 'flex', gap: 10 }}>
           <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={onCancel}>
             {cancelLabel || t('common.cancel')}

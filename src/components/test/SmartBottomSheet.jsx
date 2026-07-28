@@ -120,7 +120,7 @@ const SmartBottomSheet = ({
           <span style={{
             position: 'absolute', top: 9, right: 9, display: 'inline-flex', alignItems: 'center', gap: 3,
             background: isActive ? 'var(--accent)' : 'var(--amber)', color: '#fff',
-            fontSize: 9.5, fontWeight: 800, padding: '2px 7px', borderRadius: 99,
+            fontSize: 'var(--fs-3xs)', fontWeight: 800, padding: '2px 7px', borderRadius: 99,
           }}>
             {isActive ? <><Check size={9} strokeWidth={3.4} />{t('smartSheet.activeShort')}</> : <Star size={9} strokeWidth={3} fill="#fff" />}
           </span>
@@ -133,7 +133,7 @@ const SmartBottomSheet = ({
         }}>
           <Icon size={19} strokeWidth={2} />
         </span>
-        <span style={{ fontSize: 13.5, fontWeight: 800, color: 'var(--text)', lineHeight: 1.2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%' }}>
+        <span style={{ fontSize: 'var(--fs-md)', fontWeight: 800, color: 'var(--text)', lineHeight: 1.2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%' }}>
           {subj.name}
         </span>
         {pct !== null ? (
@@ -141,10 +141,10 @@ const SmartBottomSheet = ({
             <span style={{ flex: 1, height: 4, borderRadius: 99, background: 'var(--bg3)', overflow: 'hidden' }}>
               <span style={{ display: 'block', height: '100%', width: `${pct}%`, borderRadius: 99, background: pctColor(pct) }} />
             </span>
-            <span style={{ fontSize: 11, fontWeight: 800, color: pctColor(pct) }}>{pct}%</span>
+            <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 800, color: pctColor(pct) }}>{pct}%</span>
           </span>
         ) : (
-          <span style={{ fontSize: 11, fontWeight: 600, color: 'var(--text3)', marginTop: 7 }}>{t('smartSheet.notStarted')}</span>
+          <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 7 }}>{t('smartSheet.notStarted')}</span>
         )}
       </button>
     );
@@ -167,13 +167,13 @@ const SmartBottomSheet = ({
       >
         <span style={{
           flexShrink: 0, width: 32, height: 32, borderRadius: 9,
-          display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 15,
+          display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'var(--fs-lg)',
           background: selected ? 'var(--accent)' : 'var(--surface2)',
           color: selected ? '#fff' : 'var(--text3)',
         }}>{icon}</span>
 
         <span style={{ flex: 1, minWidth: 0 }}>
-          <span style={{ display: 'block', fontSize: 13.5, fontWeight: 700, color: selected ? 'var(--accent2)' : 'var(--text)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          <span style={{ display: 'block', fontSize: 'var(--fs-md)', fontWeight: 700, color: selected ? 'var(--accent2)' : 'var(--text)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
             {name}
           </span>
           {pct !== null && (
@@ -183,7 +183,7 @@ const SmartBottomSheet = ({
           )}
         </span>
 
-        <span style={{ flexShrink: 0, fontSize: 11.5, fontWeight: 800, color: pctColor(pct), minWidth: 30, textAlign: 'right' }}>
+        <span style={{ flexShrink: 0, fontSize: 'var(--fs-xs)', fontWeight: 800, color: pctColor(pct), minWidth: 30, textAlign: 'right' }}>
           {pct !== null ? `${pct}%` : '—'}
         </span>
         {selected && <Check size={16} color="var(--accent)" style={{ flexShrink: 0 }} />}
@@ -191,7 +191,7 @@ const SmartBottomSheet = ({
     );
   };
 
-  const groupHeaderStyle = { fontSize: 11, fontWeight: 800, color: 'var(--text3)', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.08em' };
+  const groupHeaderStyle = { fontSize: 'var(--fs-xs)', fontWeight: 800, color: 'var(--text3)', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.08em' };
 
   const tabBtn = (id, step, label) => (
     <button
@@ -200,14 +200,14 @@ const SmartBottomSheet = ({
       style={{
         flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
         padding: '10px 4px 11px', background: 'none', border: 'none', cursor: 'pointer',
-        fontFamily: 'inherit', fontSize: 13.5, fontWeight: 800,
+        fontFamily: 'inherit', fontSize: 'var(--fs-md)', fontWeight: 800,
         color: tab === id ? 'var(--accent)' : 'var(--text3)',
         borderBottom: `2.5px solid ${tab === id ? 'var(--accent)' : 'transparent'}`,
         marginBottom: -1,
       }}
     >
       <span style={{
-        display: 'inline-flex', width: 18, height: 18, borderRadius: '50%', fontSize: 10.5,
+        display: 'inline-flex', width: 18, height: 18, borderRadius: '50%', fontSize: 'var(--fs-2xs)',
         alignItems: 'center', justifyContent: 'center', fontWeight: 800,
         background: tab === id ? 'var(--accent)' : 'var(--bg3)',
         color: tab === id ? '#fff' : 'var(--text3)',
@@ -246,10 +246,10 @@ const SmartBottomSheet = ({
             {/* Sarlavha + yopish */}
             <div style={{ padding: '18px 20px 0', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
               <div style={{ minWidth: 0 }}>
-                <h3 style={{ fontSize: 20, fontWeight: 800, color: 'var(--text)', margin: 0, letterSpacing: '-0.01em' }}>
+                <h3 style={{ fontSize: 'var(--fs-3xl)', fontWeight: 800, color: 'var(--text)', margin: 0, letterSpacing: '-0.01em' }}>
                   {t('smartSheet.sheetTitle')}
                 </h3>
-                <div style={{ fontSize: 12.5, color: 'var(--text3)', marginTop: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {activeSubject ? activeSubject.name : t('smartSheet.subtitle')}
                 </div>
               </div>
@@ -278,7 +278,7 @@ const SmartBottomSheet = ({
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder={tab === 'subject' ? t('smartSheet.searchPlaceholder') : t('smartSheet.searchTopicPlaceholder')}
                   aria-label={tab === 'subject' ? t('smartSheet.searchPlaceholder') : t('smartSheet.searchTopicPlaceholder')}
-                  style={{ flex: 1, minWidth: 0, border: 'none', outline: 'none', background: 'transparent', fontSize: 14, fontFamily: 'inherit', color: 'var(--text)' }}
+                  style={{ flex: 1, minWidth: 0, border: 'none', outline: 'none', background: 'transparent', fontSize: 'var(--fs-input)', fontFamily: 'inherit', color: 'var(--text)' }}
                 />
                 {query && (
                   <button onClick={() => setQuery('')} aria-label={t('common.close')} style={{ flexShrink: 0, background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: 'var(--text3)', display: 'flex' }}>
@@ -318,7 +318,7 @@ const SmartBottomSheet = ({
                   )}
 
                   {noSubjectResults && (
-                    <div style={{ textAlign: 'center', padding: '24px 0', color: 'var(--text3)', fontSize: 14, fontWeight: 600 }}>
+                    <div style={{ textAlign: 'center', padding: '24px 0', color: 'var(--text3)', fontSize: 'var(--fs-base)', fontWeight: 600 }}>
                       {t('smartSheet.noResults')}
                     </div>
                   )}
@@ -333,7 +333,7 @@ const SmartBottomSheet = ({
                     id: top.id, name: top.name, icon: top.icon, selected: topicId === top.id,
                   }))}
                   {q && visibleTopics.length === 0 && (
-                    <div style={{ textAlign: 'center', padding: '24px 0', color: 'var(--text3)', fontSize: 14, fontWeight: 600 }}>
+                    <div style={{ textAlign: 'center', padding: '24px 0', color: 'var(--text3)', fontSize: 'var(--fs-base)', fontWeight: 600 }}>
                       {t('smartSheet.noResults')}
                     </div>
                   )}

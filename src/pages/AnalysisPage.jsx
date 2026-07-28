@@ -127,10 +127,10 @@ const AnalysisPage = () => {
       animate={{ opacity: 1 }}
       style={{ maxWidth: 700, margin: '0 auto', padding: '20px 16px 32px' }}
     >
-      <h1 style={{ fontSize: 26, fontWeight: 900, color: 'var(--text)', margin: '0 0 4px' }}>
+      <h1 style={{ fontSize: 'var(--fs-6xl)', fontWeight: 900, color: 'var(--text)', margin: '0 0 4px' }}>
         {t('analysis.title')}
       </h1>
-      <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 16 }}>
+      <p style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 16 }}>
         {t('analysis.subtitle')}
       </p>
 
@@ -157,7 +157,7 @@ const AnalysisPage = () => {
               flex: 1, padding: '10px 6px', borderRadius: 10, border: 'none',
               background: tab === x.id ? 'var(--bg2)' : 'transparent',
               color: tab === x.id ? 'var(--text)' : 'var(--text3)',
-              fontWeight: 700, fontSize: 13, cursor: 'pointer', fontFamily: 'inherit',
+              fontWeight: 700, fontSize: 'var(--fs-md)', cursor: 'pointer', fontFamily: 'inherit',
               boxShadow: tab === x.id ? '0 1px 4px rgba(0,0,0,0.06)' : 'none',
               transition: 'all 0.15s',
             }}
@@ -188,8 +188,8 @@ const AnalysisPage = () => {
                 { val: `±${diag.margin}`, label: t('analysis.marginLabel') },
               ].map((b, i) => (
                 <div key={i} className="glass-panel" style={{ flex: 1, padding: '12px 8px', textAlign: 'center' }}>
-                  <div style={{ fontSize: 17, fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{b.val}</div>
-                  <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--text3)', marginTop: 5 }}>{b.label}</div>
+                  <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{b.val}</div>
+                  <div style={{ fontSize: 'var(--fs-2xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 5 }}>{b.label}</div>
                 </div>
               ))}
             </div>
@@ -197,7 +197,7 @@ const AnalysisPage = () => {
             {/* Bo'limlar bo'yicha batafsil jadval */}
             <div style={{
               display: 'flex', alignItems: 'center', gap: 8, margin: '22px 0 12px',
-              fontSize: 15, fontWeight: 800, color: 'var(--text)',
+              fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)',
             }}>
               <ClipboardList size={17} style={{ color: 'var(--accent)' }} />
               {t('analysis.byTopicTitle')}
@@ -224,10 +224,10 @@ const AnalysisPage = () => {
                     cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit',
                   }}
                 >
-                  <span style={{ fontSize: 15, flexShrink: 0, width: 20 }}>{tp.icon}</span>
+                  <span style={{ fontSize: 'var(--fs-lg)', flexShrink: 0, width: 20 }}>{tp.icon}</span>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{
-                      fontSize: 12.5, fontWeight: 600, color: 'var(--text)',
+                      fontSize: 'var(--fs-sm)', fontWeight: 600, color: 'var(--text)',
                       overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
                     }}>
                       {tp.name}
@@ -239,16 +239,16 @@ const AnalysisPage = () => {
                           background: STATUS_COLOR[tp.status],
                         }} />
                       </div>
-                      <span style={{ fontSize: 10, color: 'var(--text3)', flexShrink: 0, minWidth: 44, textAlign: 'right' }}>
+                      <span style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', flexShrink: 0, minWidth: 44, textAlign: 'right' }}>
                         {tp.answered > 0 ? `${tp.answered} ${t('analysis.qShort')}` : t('analysis.notStarted')}
                       </span>
                     </div>
                   </div>
                   <div style={{ textAlign: 'right', flexShrink: 0, minWidth: 58 }}>
-                    <div style={{ fontSize: 13, fontWeight: 800, color: STATUS_COLOR[tp.status] }}>
+                    <div style={{ fontSize: 'var(--fs-md)', fontWeight: 800, color: STATUS_COLOR[tp.status] }}>
                       {tp.acc !== null ? `${tp.acc}%` : '—'}
                     </div>
-                    <div style={{ fontSize: 9.5, fontWeight: 600, color: 'var(--text3)', marginTop: 2 }}>
+                    <div style={{ fontSize: 'var(--fs-3xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 2 }}>
                       {t(`analysis.status.${tp.status}`)}
                     </div>
                   </div>
@@ -269,7 +269,7 @@ const AnalysisPage = () => {
               ))}
             </div>
 
-            <p style={{ fontSize: 11, color: 'var(--text3)', lineHeight: 1.55, marginTop: 12 }}>
+            <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', lineHeight: 1.55, marginTop: 12 }}>
               {t('analysis.methodNote')}
             </p>
           </motion.div>
@@ -295,7 +295,7 @@ const AnalysisPage = () => {
             />
             <div style={{
               padding: '12px 14px', marginBottom: 14, borderRadius: 12,
-              background: 'var(--blue-bg)', fontSize: 12, color: 'var(--text2)', lineHeight: 1.55,
+              background: 'var(--blue-bg)', fontSize: 'var(--fs-sm)', color: 'var(--text2)', lineHeight: 1.55,
             }}>
               {t('analysis.planIntro')}
             </div>

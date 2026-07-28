@@ -237,7 +237,7 @@ const LeaderboardPage = () => {
           {isAdmin && farmFlags(entry, t).length > 0 && (
             <span
               title={t('leaderboard.suspiciousTitle', { flags: farmFlags(entry, t).join(', ') })}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 2, fontSize: 10, fontWeight: 800, color: 'var(--red)', background: 'var(--red-bg)', borderRadius: 6, padding: '1px 6px' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 2, fontSize: 'var(--fs-2xs)', fontWeight: 800, color: 'var(--red)', background: 'var(--red-bg)', borderRadius: 6, padding: '1px 6px' }}
             >
               <AlertTriangle size={11} /> {t('leaderboard.suspicious')}
             </span>
@@ -300,10 +300,10 @@ const LeaderboardPage = () => {
         return (
           <div className="glass-panel" style={{ padding: '14px 16px', borderRadius: 16, marginBottom: 14 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <span style={{ fontSize: 28, lineHeight: 1 }}>{lg.icon}</span>
+              <span style={{ fontSize: 'var(--fs-7xl)', lineHeight: 1 }}>{lg.icon}</span>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontWeight: 800, fontSize: 15, color: lg.color }}>{t('leaderboard.leagueSuffix', { name: lg.name })}</div>
-                <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2 }}>
+                <div style={{ fontWeight: 800, fontSize: 'var(--fs-lg)', color: lg.color }}>{t('leaderboard.leagueSuffix', { name: lg.name })}</div>
+                <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: 2 }}>
                   {nxt ? t('leaderboard.toNextLeague', { name: nxt.name, points: (nxt.min - myScore).toLocaleString() }) : t('leaderboard.topLeague')}
                 </div>
               </div>

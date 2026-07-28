@@ -209,7 +209,7 @@ export default function ResultShareCard({ open, onClose, score, total, title, mo
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-              <span style={{ fontSize: 15, fontWeight: 800, color: 'var(--text)' }}>{t('shareCard.header')}</span>
+              <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)' }}>{t('shareCard.header')}</span>
               <button
                 onClick={onClose}
                 aria-label={t('common.close')}
@@ -227,21 +227,21 @@ export default function ResultShareCard({ open, onClose, score, total, title, mo
             <div style={{ display: 'flex', gap: 8, marginTop: 14 }}>
               <button
                 onClick={handleShareImage}
-                style={{ flex: 2, padding: '13px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 14, fontFamily: 'inherit', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7 }}
+                style={{ flex: 2, padding: '13px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 'var(--fs-base)', fontFamily: 'inherit', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7 }}
               >
                 <Share2 size={16} /> {t('shareCard.share')}
               </button>
               <button
                 onClick={handleDownload}
                 aria-label="Rasmni yuklab olish"
-                style={{ flex: 1, padding: '13px', background: 'var(--bg3)', color: 'var(--text)', border: '1px solid var(--border)', borderRadius: 14, fontWeight: 700, fontSize: 14, fontFamily: 'inherit', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
+                style={{ flex: 1, padding: '13px', background: 'var(--bg3)', color: 'var(--text)', border: '1px solid var(--border)', borderRadius: 14, fontWeight: 700, fontSize: 'var(--fs-base)', fontFamily: 'inherit', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
               >
                 <Download size={16} />
               </button>
               <button
                 onClick={handleTelegram}
                 aria-label="Telegram orqali ulashish"
-                style={{ flex: 1, padding: '13px', background: 'var(--bg3)', color: 'var(--accent2)', border: '1px solid var(--border)', borderRadius: 14, fontWeight: 700, fontSize: 14, fontFamily: 'inherit', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
+                style={{ flex: 1, padding: '13px', background: 'var(--bg3)', color: 'var(--accent2)', border: '1px solid var(--border)', borderRadius: 14, fontWeight: 700, fontSize: 'var(--fs-base)', fontFamily: 'inherit', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
               >
                 <Send size={16} />
               </button>

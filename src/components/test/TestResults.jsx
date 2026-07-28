@@ -33,16 +33,16 @@ const TestResults = ({
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 14 }}>
         <FileText size={14} style={{ color: 'var(--text3)' }} />
-        <span style={{ fontSize: 11, letterSpacing: '0.6px', color: 'var(--text3)', textTransform: 'uppercase', fontWeight: 700 }}>{t('results.reportEyebrow')}</span>
+        <span style={{ fontSize: 'var(--fs-xs)', letterSpacing: '0.6px', color: 'var(--text3)', textTransform: 'uppercase', fontWeight: 700 }}>{t('results.reportEyebrow')}</span>
       </div>
 
-      <div style={{ fontSize: 17, fontWeight: 800, color: 'var(--text)', marginBottom: 4 }}>{t('results.reportTitle')}</div>
-      <div style={{ fontSize: 13, color: 'var(--text3)', marginBottom: 22, lineHeight: 1.5 }}>{t('results.summary', { total: questionsLength, correct: correctCount })}</div>
+      <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: 'var(--text)', marginBottom: 4 }}>{t('results.reportTitle')}</div>
+      <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', marginBottom: 22, lineHeight: 1.5 }}>{t('results.summary', { total: questionsLength, correct: correctCount })}</div>
 
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 10 }}>
-        <span style={{ fontSize: 42, fontWeight: 800, color: 'var(--text)', letterSpacing: '-1px' }}>{correctCount}</span>
-        <span style={{ fontSize: 16, color: 'var(--text3)' }}>/ {questionsLength}</span>
-        <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--text2)', marginLeft: 'auto' }}>{pct}%</span>
+        <span style={{ fontSize: 'var(--fs-10xl)', fontWeight: 800, color: 'var(--text)', letterSpacing: '-1px' }}>{correctCount}</span>
+        <span style={{ fontSize: 'var(--fs-xl)', color: 'var(--text3)' }}>/ {questionsLength}</span>
+        <span style={{ fontSize: 'var(--fs-base)', fontWeight: 700, color: 'var(--text2)', marginLeft: 'auto' }}>{pct}%</span>
       </div>
 
       <div style={{ height: 3, background: 'var(--bg3)', borderRadius: 2, overflow: 'hidden', marginBottom: 20 }}>
@@ -58,7 +58,7 @@ const TestResults = ({
               style={{
                 display: 'flex', alignItems: 'center', gap: 8, padding: '10px 12px',
                 borderRadius: 12, background: 'var(--blue-bg)', color: 'var(--accent2)',
-                fontSize: 12, fontWeight: 700
+                fontSize: 'var(--fs-sm)', fontWeight: 700
               }}
             >
               <BadgeCheck size={15} style={{ flexShrink: 0 }} />
@@ -70,8 +70,8 @@ const TestResults = ({
 
       {(amiDelta ?? 0) > 0 && (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--glass-border)', paddingTop: 14, marginBottom: 14 }}>
-          <span style={{ fontSize: 12, color: 'var(--text3)' }}>{t('tracks.amiLabel')}</span>
-          <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text2)', background: 'var(--bg3)', padding: '4px 12px', borderRadius: 8, border: '1px solid var(--glass-border)' }}>
+          <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)' }}>{t('tracks.amiLabel')}</span>
+          <span style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text2)', background: 'var(--bg3)', padding: '4px 12px', borderRadius: 8, border: '1px solid var(--glass-border)' }}>
             {t('results.amiAdded', { delta: amiDelta })}
           </span>
         </div>
@@ -88,7 +88,7 @@ const TestResults = ({
         <motion.button
           whileHover={{ scale: 1.01, y: -1 }}
           whileTap={{ scale: 0.98 }}
-          style={{ padding: '14px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
+          style={{ padding: '14px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 'var(--fs-lg)', cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
           onClick={onNextBatch || generateQuestions}
         >
           {onNextBatch ? (
@@ -101,7 +101,7 @@ const TestResults = ({
         {state.mistakes?.length > 0 && (
           <button
             onClick={() => setMode('mistakes')}
-            style={{ background: 'none', border: 'none', color: 'var(--text3)', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '10px', fontFamily: 'inherit' }}
+            style={{ background: 'none', border: 'none', color: 'var(--text3)', fontSize: 'var(--fs-md)', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '10px', fontFamily: 'inherit' }}
           >
             <Target size={14} /> {t('results.workOnMistakes')}
           </button>
@@ -109,7 +109,7 @@ const TestResults = ({
 
         <button
           onClick={() => setShowShareCard(true)}
-          style={{ background: 'none', border: 'none', color: 'var(--text3)', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '10px', fontFamily: 'inherit' }}
+          style={{ background: 'none', border: 'none', color: 'var(--text3)', fontSize: 'var(--fs-md)', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '10px', fontFamily: 'inherit' }}
         >
           <Share2 size={14} /> {t('results.shareResult')}
         </button>

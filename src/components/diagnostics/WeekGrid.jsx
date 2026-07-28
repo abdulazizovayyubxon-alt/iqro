@@ -46,7 +46,7 @@ const WeekGrid = ({ days = [], streak = 0 }) => {
         marginBottom: 7,
       }}>
         <span style={{
-          fontSize: 10.5, fontWeight: 700, color: 'var(--text3)',
+          fontSize: 'var(--fs-2xs)', fontWeight: 700, color: 'var(--text3)',
           textTransform: 'uppercase', letterSpacing: 0.3,
         }}>
           {t('pace.weekTitle')}
@@ -54,7 +54,7 @@ const WeekGrid = ({ days = [], streak = 0 }) => {
         {streak > 0 && (
           <span style={{
             display: 'inline-flex', alignItems: 'center', gap: 3,
-            fontSize: 11, fontWeight: 800, color: 'var(--amber)',
+            fontSize: 'var(--fs-xs)', fontWeight: 800, color: 'var(--amber)',
           }}>
             <Flame size={12} />
             {t('pace.streak', { count: streak })}
@@ -79,7 +79,7 @@ const WeekGrid = ({ days = [], streak = 0 }) => {
                 background: bg, color: fg,
                 border: c.isToday ? '1.5px solid var(--accent2)' : '1.5px solid transparent',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: 10.5, fontWeight: 800, textTransform: 'uppercase',
+                fontSize: 'var(--fs-2xs)', fontWeight: 800, textTransform: 'uppercase',
               }}
             >
               {c.label}

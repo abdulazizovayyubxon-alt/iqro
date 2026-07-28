@@ -34,11 +34,11 @@ const NextMilestoneLine = ({ milestone, onClick }) => {
         {Icon && <Icon size={15} />}
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text)', marginBottom: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+        <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--text)', marginBottom: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
           {t('tracks.nextUp')}: «{t(`tracks.${milestone.trackId}.name`)}» — {t(`tracks.tier${milestone.nextTier}`)}
         </div>
         {milestone.hint && (
-          <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 500, marginBottom: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', fontWeight: 500, marginBottom: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {t(milestone.hint.key, milestone.hint.params)}
           </div>
         )}
@@ -46,7 +46,7 @@ const NextMilestoneLine = ({ milestone, onClick }) => {
           <div style={{ flex: 1, height: 3, borderRadius: 1.5, background: 'var(--bg3)', overflow: 'hidden' }}>
             <div style={{ width: `${pct}%`, height: '100%', borderRadius: 1.5, background: 'var(--accent)', transition: 'width 0.5s ease' }} />
           </div>
-          <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--accent2)', flexShrink: 0 }}>{pct}%</span>
+          <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, color: 'var(--accent2)', flexShrink: 0 }}>{pct}%</span>
         </div>
       </div>
       {onClick && <ChevronRight size={16} style={{ color: 'var(--text3)', flexShrink: 0 }} />}

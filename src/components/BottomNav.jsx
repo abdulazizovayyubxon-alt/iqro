@@ -69,7 +69,7 @@ export default function BottomNav() {
               )}
             </div>
             <span style={{
-              fontSize: 11, fontWeight: isActive ? 800 : 600,
+              fontSize: 'var(--fs-xs)', fontWeight: isActive ? 800 : 600,
               color: isActive ? 'var(--accent)' : 'var(--text2)',
               marginTop: 4, transition: 'color 0.2s',
             }}>
@@ -111,7 +111,7 @@ const styles = {
   badge: {
     position: 'absolute', top: -6, right: -8,
     background: 'var(--red)', color: '#fff',
-    fontSize: 10, fontWeight: 800,
+    fontSize: 'var(--fs-2xs)', fontWeight: 800,
     borderRadius: 6, padding: '1px 4px',
     minWidth: 14, textAlign: 'center',
     zIndex: 2,

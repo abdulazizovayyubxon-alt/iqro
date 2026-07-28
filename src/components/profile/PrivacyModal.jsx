@@ -16,7 +16,7 @@ export default function PrivacyModal({ onClose }) {
       <div style={{
         maxHeight: '320px',
         overflowY: 'auto',
-        fontSize: '13px',
+        fontSize: 'var(--fs-md)',
         lineHeight: '1.6',
         color: 'var(--text2)',
         margin: '16px 0',
@@ -63,7 +63,7 @@ export default function PrivacyModal({ onClose }) {
           color: '#fff',
           border: 'none',
           fontWeight: 700,
-          fontSize: 14,
+          fontSize: 'var(--fs-base)',
           cursor: 'pointer',
           fontFamily: 'inherit',
           transition: 'opacity 0.2s'

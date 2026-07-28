@@ -52,20 +52,20 @@ const TrackCard = ({ track, tier, progress, earnedAt }) => {
         >
           <Icon size={17} />
         </div>
-        <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)', flex: 1, letterSpacing: '-0.2px' }}>
+        <div style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text)', flex: 1, letterSpacing: '-0.2px' }}>
           {t(`tracks.${track.id}.name`)}
         </div>
         <TierMarks tier={tier} />
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, minHeight: 18 }}>
-        <span style={{ fontSize: 12, fontWeight: 700, color: started ? 'var(--accent2)' : 'var(--text3)' }}>
+        <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: started ? 'var(--accent2)' : 'var(--text3)' }}>
           {started ? t(`tracks.tier${tier}`) : t('tracks.tierNone')}
         </span>
         {isNew && (
           <span
             style={{
-              fontSize: 9, fontWeight: 700, color: 'var(--accent2)',
+              fontSize: 'var(--fs-3xs)', fontWeight: 700, color: 'var(--accent2)',
               border: '1px solid rgba(14,151,224,0.35)', borderRadius: 8,
               padding: '1px 6px', letterSpacing: '0.3px'
             }}
@@ -74,7 +74,7 @@ const TrackCard = ({ track, tier, progress, earnedAt }) => {
           </span>
         )}
         {earnedDate && (
-          <span style={{ fontSize: 10, fontWeight: 500, color: 'var(--text3)', marginLeft: 'auto' }}>
+          <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 500, color: 'var(--text3)', marginLeft: 'auto' }}>
             {earnedDate}
           </span>
         )}
@@ -92,7 +92,7 @@ const TrackCard = ({ track, tier, progress, earnedAt }) => {
         />
       </div>
 
-      <div style={{ fontSize: 11, color: 'var(--text3)', lineHeight: 1.4, fontWeight: 500 }}>
+      <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', lineHeight: 1.4, fontWeight: 500 }}>
         {done ? t('tracks.maxReached') : t(`tracks.${track.id}.hint${tier + 1}`)}
       </div>
     </div>

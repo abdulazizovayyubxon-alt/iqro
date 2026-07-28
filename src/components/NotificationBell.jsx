@@ -113,7 +113,7 @@ const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', 
                 <div className="user-dropdown-divider" style={{ margin: 0 }} />
                 <button
                   className="user-dropdown-item"
-                  style={{ justifyContent: 'center', width: '100%', padding: '12px', color: 'var(--red)', fontSize: '13px' }}
+                  style={{ justifyContent: 'center', width: '100%', padding: '12px', color: 'var(--red)', fontSize: 'var(--fs-md)' }}
                   onClick={handleClearAll}
                 >
                   <Trash2 size={16} style={{ marginRight: '8px' }} /> {t('notifications.clearAll')}

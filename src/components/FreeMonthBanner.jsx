@@ -56,7 +56,7 @@ export default function FreeMonthBanner({ onPayClick }) {
         }}
       >
         <Clock size={16} style={{ color, flexShrink: 0 }} />
-        <div style={{ flex: 1, fontSize: 13, color: 'var(--text)', fontWeight: 500 }}>
+        <div style={{ flex: 1, fontSize: 'var(--fs-md)', color: 'var(--text)', fontWeight: 500 }}>
           {isExpired ? (
             <strong style={{ color }}>
               {isAndroidApp ? t('banner.expiredPlay') : t('banner.expired')}
@@ -74,7 +74,7 @@ export default function FreeMonthBanner({ onPayClick }) {
           onClick={onPayClick}
           style={{
             background: color, color: '#fff', border: 'none',
-            borderRadius: 10, padding: '6px 14px', fontSize: 12,
+            borderRadius: 10, padding: '6px 14px', fontSize: 'var(--fs-sm)',
             fontWeight: 800, cursor: 'pointer', flexShrink: 0,
             display: 'flex', alignItems: 'center', gap: 4
           }}

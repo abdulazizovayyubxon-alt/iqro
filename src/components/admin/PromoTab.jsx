@@ -139,18 +139,18 @@ export default function PromoTab() {
   };
 
   const inputStyle = {
-    width: '100%', padding: '10px 12px', borderRadius: 10, fontSize: 14,
+    width: '100%', padding: '10px 12px', borderRadius: 10, fontSize: 'var(--fs-base)',
     border: '1.5px solid var(--border)', background: 'var(--bg2)',
     color: 'var(--text)', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box',
   };
-  const labelStyle = { fontSize: 11, fontWeight: 700, color: 'var(--text3)', marginBottom: 5, display: 'block', textTransform: 'uppercase' };
+  const labelStyle = { fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--text3)', marginBottom: 5, display: 'block', textTransform: 'uppercase' };
 
   return (
     <div>
       {/* ═══ YARATISH FORMASI ═══ */}
       <div className="glass-panel" style={{ padding: 20, marginBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 800, fontSize: 15, color: 'var(--text)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 800, fontSize: 'var(--fs-lg)', color: 'var(--text)' }}>
             <Ticket size={18} style={{ color: 'var(--accent)' }} /> Yangi promo-kod
           </div>
           <button
@@ -236,7 +236,7 @@ export default function PromoTab() {
           </div>
         </div>
 
-        <div style={{ fontSize: 11, color: 'var(--text3)', marginBottom: 12 }}>
+        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginBottom: 12 }}>
           {TYPE_LABELS[form.type].desc}
           {form.type === 'team' && " — sotuv Telegram orqali kelishilgach, kodni maktabga bering; har o'qituvchi Pro oynasida o'zi kiritadi."}
         </div>
@@ -251,7 +251,7 @@ export default function PromoTab() {
         <div style={{ textAlign: 'center', padding: 40, color: 'var(--text3)' }}>Yuklanmoqda...</div>
       ) : promos.length === 0 ? (
         <div className="glass-panel" style={{ padding: 40, textAlign: 'center', color: 'var(--text3)' }}>
-          <div style={{ fontSize: 36, marginBottom: 10 }}>🎟️</div>
+          <div style={{ fontSize: 'var(--fs-9xl)', marginBottom: 10 }}>🎟️</div>
           Hozircha promo-kodlar yo'q
         </div>
       ) : (
@@ -262,20 +262,20 @@ export default function PromoTab() {
             const isFull = (p.usedCount || 0) >= (p.maxUses || 1);
             return (
               <div key={p.id} className="glass-panel" style={{ padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap', opacity: p.active && !isExpired ? 1 : 0.55 }}>
-                <div style={{ fontSize: 20 }}>{t.icon}</div>
+                <div style={{ fontSize: 'var(--fs-3xl)' }}>{t.icon}</div>
                 <div style={{ flex: 1, minWidth: 160 }}>
-                  <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--text)', letterSpacing: 1, fontFamily: 'monospace' }}>
+                  <div style={{ fontWeight: 800, fontSize: 'var(--fs-lg)', color: 'var(--text)', letterSpacing: 1, fontFamily: 'monospace' }}>
                     {p.id}
-                    {isExpired && <span style={{ marginLeft: 8, fontSize: 10, color: 'var(--red)', fontWeight: 700 }}>MUDDATI TUGAGAN</span>}
-                    {isFull && <span style={{ marginLeft: 8, fontSize: 10, color: 'var(--amber)', fontWeight: 700 }}>LIMIT TUGAGAN</span>}
+                    {isExpired && <span style={{ marginLeft: 8, fontSize: 'var(--fs-2xs)', color: 'var(--red)', fontWeight: 700 }}>MUDDATI TUGAGAN</span>}
+                    {isFull && <span style={{ marginLeft: 8, fontSize: 'var(--fs-2xs)', color: 'var(--amber)', fontWeight: 700 }}>LIMIT TUGAGAN</span>}
                   </div>
-                  <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2 }}>
+                  <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: 2 }}>
                     {p.type === 'percent' ? `-${p.value}% chegirma` : `+${p.value} kun premium`}
                     {p.campaign && ` · ${p.campaign}`}
                     {p.expiresAt && ` · ${new Date(p.expiresAt).toLocaleDateString('uz-UZ')} gacha`}
                   </div>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700, color: isFull ? 'var(--amber)' : 'var(--text2)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-md)', fontWeight: 700, color: isFull ? 'var(--amber)' : 'var(--text2)' }}>
                   <Users size={14} /> {p.usedCount || 0}/{p.maxUses}
                 </div>
                 <button

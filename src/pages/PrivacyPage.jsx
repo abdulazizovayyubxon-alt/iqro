@@ -96,7 +96,7 @@ const s = {
     cursor: 'pointer', padding: 4, display: 'flex', alignItems: 'center'
   },
   title: {
-    fontSize: 18, fontWeight: 700, margin: 0, textAlign: 'center'
+    fontSize: 'var(--fs-2xl)', fontWeight: 700, margin: 0, textAlign: 'center'
   },
   content: {
     padding: '24px 20px',
@@ -108,15 +108,15 @@ const s = {
     padding: 20, background: 'var(--bg2)', borderRadius: '50%', width: 88, height: 88, margin: '0 auto 24px'
   },
   updated: {
-    fontSize: 13, color: 'var(--text3)', textAlign: 'center', marginBottom: 8
+    fontSize: 'var(--fs-md)', color: 'var(--text3)', textAlign: 'center', marginBottom: 8
   },
   heading: {
-    fontSize: 18, fontWeight: 700, marginTop: 24, marginBottom: 12, color: 'var(--text)'
+    fontSize: 'var(--fs-2xl)', fontWeight: 700, marginTop: 24, marginBottom: 12, color: 'var(--text)'
   },
   text: {
-    fontSize: 15, color: 'var(--text2)', marginBottom: 16
+    fontSize: 'var(--fs-lg)', color: 'var(--text2)', marginBottom: 16
   },
   list: {
-    fontSize: 15, color: 'var(--text2)', paddingLeft: 20, marginBottom: 16
+    fontSize: 'var(--fs-lg)', color: 'var(--text2)', paddingLeft: 20, marginBottom: 16
   }
 };

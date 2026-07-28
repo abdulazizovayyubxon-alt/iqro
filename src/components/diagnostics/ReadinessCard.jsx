@@ -41,7 +41,7 @@ const ReadinessCard = ({ diag, compact = false, pace = null, trend = null, onOpe
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
         <Activity size={16} style={{ color: 'var(--accent)', flexShrink: 0 }} />
         <span style={{
-          fontSize: 12, fontWeight: 800, letterSpacing: 0.4,
+          fontSize: 'var(--fs-sm)', fontWeight: 800, letterSpacing: 0.4,
           textTransform: 'uppercase', color: 'var(--text3)',
         }}>
           {t('analysis.readinessTitle')}
@@ -51,19 +51,19 @@ const ReadinessCard = ({ diag, compact = false, pace = null, trend = null, onOpe
       {/* Katta raqam + kutilayotgan natija */}
       <div style={{ display: 'flex', alignItems: 'flex-end', gap: 12, flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 3 }}>
-          <span style={{ fontSize: 38, fontWeight: 900, color, lineHeight: 1, letterSpacing: '-1.5px' }}>
+          <span style={{ fontSize: 'var(--fs-10xl)', fontWeight: 900, color, lineHeight: 1, letterSpacing: '-1.5px' }}>
             {diag.hasData ? diag.readiness : '—'}
           </span>
-          {diag.hasData && <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text3)' }}>%</span>}
+          {diag.hasData && <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 700, color: 'var(--text3)' }}>%</span>}
           {/* Xatolik chegarasi — raqam qanchalik «qattiq» ekanini ko'rsatadi */}
           {diag.hasData && diag.margin != null && (
-            <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--text3)', marginLeft: 2 }}>
+            <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--text3)', marginLeft: 2 }}>
               ±{diag.margin}
             </span>
           )}
         </div>
         {diag.hasData && (
-          <div style={{ fontSize: 12, color: 'var(--text2)', lineHeight: 1.45, flex: 1, minWidth: 160 }}>
+          <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text2)', lineHeight: 1.45, flex: 1, minWidth: 160 }}>
             {t('analysis.predicted', {
               total: diag.predicted.total,
               correct: diag.predicted.correct,
@@ -94,7 +94,7 @@ const ReadinessCard = ({ diag, compact = false, pace = null, trend = null, onOpe
         </div>
         <div style={{
           display: 'flex', justifyContent: 'space-between',
-          fontSize: 10, fontWeight: 600, color: 'var(--text3)', marginTop: 6,
+          fontSize: 'var(--fs-2xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 6,
         }}>
           <span>{t(`analysis.band.${diag.band}`)}</span>
           <span>{t('analysis.goalMark', { score: diag.goalScore })}</span>
@@ -108,12 +108,12 @@ const ReadinessCard = ({ diag, compact = false, pace = null, trend = null, onOpe
       {diag.hasData && diag.knowledge != null && (
         <div style={{
           display: 'flex', alignItems: 'baseline', gap: 6,
-          marginTop: 10, fontSize: 12, color: 'var(--text2)',
+          marginTop: 10, fontSize: 'var(--fs-sm)', color: 'var(--text2)',
         }}>
           <span style={{ fontWeight: 600 }}>{t('analysis.knowledgeLabel')}</span>
           <span style={{ fontWeight: 800, color: 'var(--text)' }}>{diag.knowledge}%</span>
           {!compact && (
-            <span style={{ fontSize: 10.5, color: 'var(--text3)' }}>
+            <span style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)' }}>
               {t('analysis.knowledgeHint')}
             </span>
           )}
@@ -130,7 +130,7 @@ const ReadinessCard = ({ diag, compact = false, pace = null, trend = null, onOpe
         }}>
           <CalendarDays size={14} style={{ color: 'var(--text3)', flexShrink: 0 }} />
           <span style={{
-            fontSize: 12.5, fontWeight: 800,
+            fontSize: 'var(--fs-sm)', fontWeight: 800,
             color: pace.daysLeft <= 7 ? 'var(--amber)' : 'var(--text)',
           }}>
             {t('pace.daysLeft', { count: pace.daysLeft })}
@@ -138,14 +138,14 @@ const ReadinessCard = ({ diag, compact = false, pace = null, trend = null, onOpe
           {pace.perDay && (
             <span style={{
               padding: '3px 9px', borderRadius: 9, background: 'var(--blue-bg)',
-              color: 'var(--accent2)', fontSize: 11, fontWeight: 800,
+              color: 'var(--accent2)', fontSize: 'var(--fs-xs)', fontWeight: 800,
             }}>
               {t('pace.perDay', { count: pace.perDay })}
             </span>
           )}
           {pace.perDay && (
             <span style={{
-              fontSize: 11, fontWeight: 700,
+              fontSize: 'var(--fs-xs)', fontWeight: 700,
               color: pace.todayDone ? 'var(--green)' : 'var(--text3)',
             }}>
               {pace.todayDone
@@ -170,7 +170,7 @@ const ReadinessCard = ({ diag, compact = false, pace = null, trend = null, onOpe
           {diag.staleCount > 0 && (
             <span style={{
               padding: '3px 9px', borderRadius: 9, background: 'var(--amber-bg)',
-              color: 'var(--amber)', fontSize: 10.5, fontWeight: 700,
+              color: 'var(--amber)', fontSize: 'var(--fs-2xs)', fontWeight: 700,
             }}>
               {t('analysis.staleChip', { count: diag.staleCount })}
             </span>
@@ -178,7 +178,7 @@ const ReadinessCard = ({ diag, compact = false, pace = null, trend = null, onOpe
           {diag.rushedCount > 0 && (
             <span style={{
               padding: '3px 9px', borderRadius: 9, background: 'var(--bg3)',
-              color: 'var(--text3)', fontSize: 10.5, fontWeight: 700,
+              color: 'var(--text3)', fontSize: 'var(--fs-2xs)', fontWeight: 700,
             }}>
               {t('analysis.rushedChip', { count: diag.rushedCount })}
             </span>
@@ -188,12 +188,12 @@ const ReadinessCard = ({ diag, compact = false, pace = null, trend = null, onOpe
 
       {/* Maqsadgacha qolgan farq */}
       {diag.hasData && !diag.meetsGoal && (
-        <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 10, fontWeight: 600 }}>
+        <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text2)', marginTop: 10, fontWeight: 600 }}>
           {t('analysis.gapToGoal', { count: diag.gapToGoal, goal: diag.goalScore })}
         </div>
       )}
       {diag.hasData && diag.meetsGoal && (
-        <div style={{ fontSize: 12, color: 'var(--green)', marginTop: 10, fontWeight: 700 }}>
+        <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--green)', marginTop: 10, fontWeight: 700 }}>
           {t('analysis.goalReached', { goal: diag.goalScore })}
         </div>
       )}
@@ -203,7 +203,7 @@ const ReadinessCard = ({ diag, compact = false, pace = null, trend = null, onOpe
         <div style={{
           display: 'flex', gap: 8, alignItems: 'flex-start',
           marginTop: 10, padding: '8px 10px', borderRadius: 10,
-          background: 'var(--bg3)', fontSize: 11, color: 'var(--text2)', lineHeight: 1.45,
+          background: 'var(--bg3)', fontSize: 'var(--fs-xs)', color: 'var(--text2)', lineHeight: 1.45,
         }}>
           <Info size={13} style={{ color: 'var(--text3)', flexShrink: 0, marginTop: 1 }} />
           <span>
@@ -217,7 +217,7 @@ const ReadinessCard = ({ diag, compact = false, pace = null, trend = null, onOpe
       {/* Eng katta yo'qotish manbalari */}
       {topLosses.length > 0 && (
         <div style={{ marginTop: 14 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text3)', marginBottom: 8 }}>
+          <div style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--text3)', marginBottom: 8 }}>
             {t('analysis.biggestLoss')}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -233,23 +233,23 @@ const ReadinessCard = ({ diag, compact = false, pace = null, trend = null, onOpe
                   fontFamily: 'inherit', width: '100%',
                 }}
               >
-                <span style={{ fontSize: 15, flexShrink: 0 }}>{tp.icon}</span>
+                <span style={{ fontSize: 'var(--fs-lg)', flexShrink: 0 }}>{tp.icon}</span>
                 <span style={{
-                  flex: 1, minWidth: 0, fontSize: 12.5, fontWeight: 600, color: 'var(--text)',
+                  flex: 1, minWidth: 0, fontSize: 'var(--fs-sm)', fontWeight: 600, color: 'var(--text)',
                   overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
                 }}>
                   {tp.name}
                 </span>
-                <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text3)', flexShrink: 0 }}>
+                <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--text3)', flexShrink: 0 }}>
                   {tp.acc !== null ? `${tp.acc}%` : t('analysis.notStarted')}
                 </span>
-                <span style={{ fontSize: 11, fontWeight: 800, color: 'var(--red)', flexShrink: 0 }}>
+                <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 800, color: 'var(--red)', flexShrink: 0 }}>
                   −{tp.expectedLoss.toFixed(1)}
                 </span>
               </button>
             ))}
           </div>
-          <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 6 }}>
+          <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', marginTop: 6 }}>
             {t('analysis.lossHint', { total: diag.predicted.total })}
           </div>
         </div>
@@ -263,7 +263,7 @@ const ReadinessCard = ({ diag, compact = false, pace = null, trend = null, onOpe
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
             width: '100%', marginTop: 14, padding: '10px 12px', borderRadius: 12,
             border: '1px solid var(--border)', background: 'var(--bg2)',
-            color: 'var(--accent)', fontWeight: 700, fontSize: 13,
+            color: 'var(--accent)', fontWeight: 700, fontSize: 'var(--fs-md)',
             cursor: 'pointer', fontFamily: 'inherit',
           }}
         >

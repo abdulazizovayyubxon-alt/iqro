@@ -13,20 +13,20 @@ import {
 } from 'lucide-react';
 
 const inputStyle = {
-  width: '100%', padding: '11px 13px', borderRadius: 11, fontSize: 14,
+  width: '100%', padding: '11px 13px', borderRadius: 11, fontSize: 'var(--fs-base)',
   border: '1.5px solid var(--border)', background: 'var(--bg2)',
   color: 'var(--text)', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box',
 };
 const labelStyle = {
-  fontSize: 11, fontWeight: 700, color: 'var(--text3)',
+  fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--text3)',
   marginBottom: 5, display: 'block', textTransform: 'uppercase', letterSpacing: 0.3,
 };
 
 // ── Jamlanma katakchasi ────────────────────────────────────────────────────
 const StatBox = ({ value, label, color = 'var(--text)' }) => (
   <div className="glass-panel" style={{ flex: '1 1 92px', minWidth: 92, padding: '13px 8px', textAlign: 'center' }}>
-    <div style={{ fontSize: 19, fontWeight: 900, color, lineHeight: 1 }}>{value ?? '—'}</div>
-    <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--text3)', marginTop: 5 }}>{label}</div>
+    <div style={{ fontSize: 'var(--fs-3xl)', fontWeight: 900, color, lineHeight: 1 }}>{value ?? '—'}</div>
+    <div style={{ fontSize: 'var(--fs-2xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 5 }}>{label}</div>
   </div>
 );
 
@@ -143,10 +143,10 @@ const SchoolPage = () => {
       animate={{ opacity: 1 }}
       style={{ maxWidth: 760, margin: '0 auto', padding: '20px 16px 32px' }}
     >
-      <h1 style={{ fontSize: 26, fontWeight: 900, color: 'var(--text)', margin: '0 0 4px' }}>
+      <h1 style={{ fontSize: 'var(--fs-6xl)', fontWeight: 900, color: 'var(--text)', margin: '0 0 4px' }}>
         {t('school.title')}
       </h1>
-      <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 20 }}>
+      <p style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 20 }}>
         {t('school.subtitle')}
       </p>
 
@@ -159,8 +159,8 @@ const SchoolPage = () => {
                 <School size={20} style={{ color: 'var(--accent)' }} />
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: 16, fontWeight: 800, color: 'var(--text)' }}>{report.school.name}</div>
-                <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2 }}>
+                <div style={{ fontSize: 'var(--fs-xl)', fontWeight: 800, color: 'var(--text)' }}>{report.school.name}</div>
+                <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: 2 }}>
                   {[report.school.region, report.school.district].filter(Boolean).join(', ') || t('school.noRegion')}
                   {' · '}
                   {t('school.seatsUsed', { used: report.school.memberCount, seats: report.school.seats || '∞' })}
@@ -172,7 +172,7 @@ const SchoolPage = () => {
                 marginTop: 12, padding: '8px 11px', borderRadius: 10,
                 background: new Date(report.school.subscriptionUntil) > new Date() ? 'var(--green-bg)' : 'var(--red-bg)',
                 color: new Date(report.school.subscriptionUntil) > new Date() ? 'var(--green)' : 'var(--red)',
-                fontSize: 12, fontWeight: 700,
+                fontSize: 'var(--fs-sm)', fontWeight: 700,
               }}>
                 {t('school.subscriptionUntil', {
                   date: new Date(report.school.subscriptionUntil).toLocaleDateString('uz-UZ'),
@@ -197,19 +197,19 @@ const SchoolPage = () => {
           <div style={{
             display: 'flex', gap: 9, alignItems: 'flex-start', padding: '11px 13px',
             borderRadius: 12, background: 'var(--bg3)', marginBottom: 18,
-            fontSize: 11.5, color: 'var(--text2)', lineHeight: 1.55,
+            fontSize: 'var(--fs-xs)', color: 'var(--text2)', lineHeight: 1.55,
           }}>
             <ShieldCheck size={15} style={{ color: 'var(--accent)', flexShrink: 0, marginTop: 1 }} />
             <span>{t('school.privacyNote')}</span>
           </div>
 
           {/* O'qituvchilar ro'yxati — tayyorligi past birinchi */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 11, fontSize: 15, fontWeight: 800, color: 'var(--text)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 11, fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)' }}>
             <Users size={17} style={{ color: 'var(--accent)' }} /> {t('school.membersTitle')}
           </div>
 
           {report.members.length === 0 ? (
-            <div className="glass-panel" style={{ padding: 30, textAlign: 'center', color: 'var(--text3)', fontSize: 13 }}>
+            <div className="glass-panel" style={{ padding: 30, textAlign: 'center', color: 'var(--text3)', fontSize: 'var(--fs-md)' }}>
               {t('school.membersEmpty')}
             </div>
           ) : (
@@ -225,18 +225,18 @@ const SchoolPage = () => {
                   <div style={{
                     width: 30, height: 30, borderRadius: '50%', flexShrink: 0,
                     background: 'var(--bg3)', display: 'flex', alignItems: 'center',
-                    justifyContent: 'center', fontSize: 12, fontWeight: 800, color: 'var(--text2)',
+                    justifyContent: 'center', fontSize: 'var(--fs-sm)', fontWeight: 800, color: 'var(--text2)',
                   }}>
                     {(m.displayName || '?').charAt(0).toUpperCase()}
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{
-                      fontSize: 13, fontWeight: 600, color: 'var(--text)',
+                      fontSize: 'var(--fs-md)', fontWeight: 600, color: 'var(--text)',
                       overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
                     }}>
                       {m.displayName || t('school.unnamed')}
                     </div>
-                    <div style={{ fontSize: 10.5, color: 'var(--text3)', marginTop: 2 }}>
+                    <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', marginTop: 2 }}>
                       {m.hidden
                         ? t('school.hiddenRow')
                         : t('school.memberMeta', {
@@ -250,10 +250,10 @@ const SchoolPage = () => {
                     <EyeOff size={15} style={{ color: 'var(--text3)', flexShrink: 0 }} />
                   ) : (
                     <div style={{ textAlign: 'right', flexShrink: 0, minWidth: 52 }}>
-                      <div style={{ fontSize: 14, fontWeight: 800, color: readinessColor(m.readiness) }}>
+                      <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: readinessColor(m.readiness) }}>
                         {m.readiness != null ? `${m.readiness}%` : '—'}
                       </div>
-                      <div style={{ fontSize: 9, color: 'var(--text3)', fontWeight: 600 }}>
+                      <div style={{ fontSize: 'var(--fs-3xs)', color: 'var(--text3)', fontWeight: 600 }}>
                         {t('school.readinessShort')}
                       </div>
                     </div>
@@ -267,7 +267,7 @@ const SchoolPage = () => {
             <div style={{
               display: 'flex', gap: 9, alignItems: 'flex-start', marginTop: 14,
               padding: '12px 14px', borderRadius: 12,
-              background: 'var(--amber-bg)', fontSize: 12, color: 'var(--text2)', lineHeight: 1.55,
+              background: 'var(--amber-bg)', fontSize: 'var(--fs-sm)', color: 'var(--text2)', lineHeight: 1.55,
             }}>
               <AlertTriangle size={15} style={{ color: 'var(--amber)', flexShrink: 0, marginTop: 1 }} />
               <span>{t('school.supportHint', { count: report.summary.needsSupport })}</span>
@@ -284,10 +284,10 @@ const SchoolPage = () => {
               <CheckCircle2 size={20} style={{ color: 'var(--green)' }} />
             </div>
             <div>
-              <div style={{ fontSize: 15, fontWeight: 800, color: 'var(--text)' }}>
+              <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)' }}>
                 {schoolName || t('school.memberTitle')}
               </div>
-              <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 2 }}>
+              <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: 2 }}>
                 {t('school.memberDesc')}
               </div>
             </div>
@@ -298,10 +298,10 @@ const SchoolPage = () => {
       {/* ══════════ QO'SHILISH (a'zo bo'lmaganlar) ══════════ */}
       {!schoolId && (
         <div className="glass-panel" style={{ padding: '18px 20px', marginBottom: 18 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, fontSize: 15, fontWeight: 800, color: 'var(--text)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)' }}>
             <LogIn size={17} style={{ color: 'var(--accent)' }} /> {t('school.joinTitle')}
           </div>
-          <p style={{ fontSize: 12.5, color: 'var(--text3)', margin: '0 0 14px', lineHeight: 1.55 }}>
+          <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', margin: '0 0 14px', lineHeight: 1.55 }}>
             {t('school.joinDesc')}
           </p>
 
@@ -316,7 +316,7 @@ const SchoolPage = () => {
 
           <label style={{
             display: 'flex', gap: 9, alignItems: 'flex-start', marginTop: 13,
-            fontSize: 12, color: 'var(--text2)', lineHeight: 1.5, cursor: 'pointer',
+            fontSize: 'var(--fs-sm)', color: 'var(--text2)', lineHeight: 1.5, cursor: 'pointer',
           }}>
             <input
               type="checkbox"
@@ -341,16 +341,16 @@ const SchoolPage = () => {
       {/* ══════════ B2B — MAKTAB UCHUN PAKET ══════════ */}
       {!report?.ok && (
         <div className="glass-panel" style={{ padding: '18px 20px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, fontSize: 15, fontWeight: 800, color: 'var(--text)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)' }}>
             <Building2 size={17} style={{ color: 'var(--accent)' }} /> {t('school.b2bTitle')}
           </div>
-          <p style={{ fontSize: 12.5, color: 'var(--text3)', margin: '0 0 14px', lineHeight: 1.6 }}>
+          <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', margin: '0 0 14px', lineHeight: 1.6 }}>
             {t('school.b2bDesc')}
           </p>
 
           <ul style={{ margin: '0 0 16px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
             {['b2bPoint1', 'b2bPoint2', 'b2bPoint3'].map(k => (
-              <li key={k} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', fontSize: 12.5, color: 'var(--text2)', lineHeight: 1.5 }}>
+              <li key={k} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', fontSize: 'var(--fs-sm)', color: 'var(--text2)', lineHeight: 1.5 }}>
                 <CheckCircle2 size={14} style={{ color: 'var(--green)', flexShrink: 0, marginTop: 2 }} />
                 {t(`school.${k}`)}
               </li>
@@ -360,7 +360,7 @@ const SchoolPage = () => {
           {requestSent ? (
             <div style={{
               padding: '12px 14px', borderRadius: 11, background: 'var(--green-bg)',
-              color: 'var(--green)', fontSize: 12.5, fontWeight: 700,
+              color: 'var(--green)', fontSize: 'var(--fs-sm)', fontWeight: 700,
             }}>
               {t('school.reqSentBox')}
             </div>
@@ -424,7 +424,7 @@ const SchoolPage = () => {
         <div style={{
           display: 'flex', gap: 9, alignItems: 'flex-start', marginTop: 18,
           padding: '12px 14px', borderRadius: 12, background: 'var(--blue-bg)',
-          fontSize: 12, color: 'var(--text2)', lineHeight: 1.55,
+          fontSize: 'var(--fs-sm)', color: 'var(--text2)', lineHeight: 1.55,
         }}>
           <TrendingUp size={15} style={{ color: 'var(--accent)', flexShrink: 0, marginTop: 1 }} />
           <span>{t('school.adminHint')}</span>

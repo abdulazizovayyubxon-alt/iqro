@@ -218,8 +218,8 @@ const PremiumModal = ({ isOpen, onClose }) => {
           <BadgePercent size={20} color="#0284C7" />
         </span>
         <div>
-          <div style={{ fontSize: 14, fontWeight: 800, color: '#0f172a' }}>{t('premium.promoTitle')}</div>
-          <div style={{ fontSize: 11, color: '#64748B' }}>{t('premium.promoSub')}</div>
+          <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: '#0f172a' }}>{t('premium.promoTitle')}</div>
+          <div style={{ fontSize: 'var(--fs-xs)', color: '#64748B' }}>{t('premium.promoSub')}</div>
         </div>
       </div>
       <div style={{ display: 'flex', gap: 8 }}>
@@ -230,7 +230,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
           placeholder={t('premium.promoPlaceholder')}
           maxLength={32}
           style={{
-            flex: 1, padding: '11px 14px', borderRadius: 12, fontSize: 14,
+            flex: 1, padding: '11px 14px', borderRadius: 12, fontSize: 'var(--fs-input)',
             border: '1.5px solid rgba(0,0,0,0.1)', background: '#f8fafc',
             color: '#0f172a', fontFamily: 'inherit', fontWeight: 700,
             letterSpacing: 1, outline: 'none', textTransform: 'uppercase',
@@ -243,7 +243,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
           style={{
             padding: '11px 18px', borderRadius: 12, border: 'none',
             background: '#0284C7', color: '#fff',
-            fontSize: 13, fontWeight: 800, fontFamily: 'inherit',
+            fontSize: 'var(--fs-md)', fontWeight: 800, fontFamily: 'inherit',
             cursor: promoLoading ? 'wait' : 'pointer',
             opacity: promoLoading || !promoCode.trim() ? 0.6 : 1, flexShrink: 0,
           }}
@@ -253,7 +253,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
       </div>
       {promoMsg && (
         <div style={{
-          marginTop: 8, fontSize: 12, fontWeight: 600,
+          marginTop: 8, fontSize: 'var(--fs-sm)', fontWeight: 600,
           color: promoMsg.type === 'ok' ? '#10B981' : '#EF4444',
         }}>
           {promoMsg.text}
@@ -269,14 +269,14 @@ const PremiumModal = ({ isOpen, onClose }) => {
       borderRadius: 12, padding: '10px 14px', marginBottom: 14,
       display: 'flex', alignItems: 'center', gap: 10,
     }}>
-      <span style={{ fontSize: 18, flexShrink: 0, lineHeight: 1 }}>🎁</span>
+      <span style={{ fontSize: 'var(--fs-2xl)', flexShrink: 0, lineHeight: 1 }}>🎁</span>
       <div style={{ flex: 1 }}>
-        <div style={{ fontSize: 12, fontWeight: 700, color: '#10B981' }}>
+        <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: '#10B981' }}>
           {hasReferralDiscount && t('premium.discountLine', { label: discountSource === 'promo' ? t('premium.discountPromo') : t('premium.discountReferral'), percent: discountPercent })}
           {hasReferralDiscount && referralBonus > 0 && ' | '}
           {referralBonus > 0 && t('premium.friendBonus', { amount: fmt(referralBonus) })}
         </div>
-        <div style={{ fontSize: 11, color: '#475569' }}>
+        <div style={{ fontSize: 'var(--fs-xs)', color: '#475569' }}>
           {t('premium.total')} <s style={{ opacity: 0.5 }}>{fmt(selectedPlan?.price)}</s> → <strong style={{ color: '#10B981' }}>{fmt(finalPrice)}</strong>
         </div>
       </div>
@@ -289,7 +289,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
       background: '#f8fafc', border: '1px solid #e2e8f0',
       borderRadius: 14, padding: '14px', marginBottom: 18,
     }}>
-      <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--text3)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
+      <div style={{ fontSize: 'var(--fs-xs)', fontWeight: 800, color: 'var(--text3)', marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>
         {t('premium.whatIncluded')}
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
@@ -298,7 +298,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
             <span style={{ width: 18, height: 18, borderRadius: '50%', background: 'rgba(14,151,224,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <Check size={11} color="#0284C7" strokeWidth={3} />
             </span>
-            <span style={{ fontSize: 11.5, color: '#334155', lineHeight: 1.3, fontWeight: 600 }}>{t(key)}</span>
+            <span style={{ fontSize: 'var(--fs-xs)', color: '#334155', lineHeight: 1.3, fontWeight: 600 }}>{t(key)}</span>
           </div>
         ))}
       </div>
@@ -343,7 +343,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
             {step !== 'plans' && (
               <button
                 onClick={() => setStep('plans')}
-                style={{ background: 'rgba(0,0,0,0.05)', border: 'none', borderRadius: 8, padding: '0 16px', minHeight: 48, cursor: 'pointer', color: '#64748B', fontSize: 13, fontWeight: 600, display: 'flex', alignItems: 'center' }}
+                style={{ background: 'rgba(0,0,0,0.05)', border: 'none', borderRadius: 8, padding: '0 16px', minHeight: 48, cursor: 'pointer', color: '#64748B', fontSize: 'var(--fs-md)', fontWeight: 600, display: 'flex', alignItems: 'center' }}
               >
                 ← {t('common.back')}
               </button>
@@ -373,10 +373,10 @@ const PremiumModal = ({ isOpen, onClose }) => {
                 </span>
                 {/* Karta doim och fonda — rang qattiq beriladi (tungi temada oq bo'lib ketmasin) */}
                 <h2 style={{ margin: '0 0 8px' }}><BrandLogo size={26} style={{ color: '#12305A' }} /></h2>
-                <p style={{ fontSize: 14, fontWeight: 800, color: '#0f172a', margin: '0 0 6px', lineHeight: 1.35 }}>
+                <p style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: '#0f172a', margin: '0 0 6px', lineHeight: 1.35 }}>
                   {t('premium.lockedTitle')}
                 </p>
-                <p style={{ fontSize: 12.5, color: '#64748B', margin: 0, lineHeight: 1.5 }}>
+                <p style={{ fontSize: 'var(--fs-sm)', color: '#64748B', margin: 0, lineHeight: 1.5 }}>
                   {t('premium.lockedDesc')}
                 </p>
               </div>
@@ -390,7 +390,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                 style={{
                   width: '100%', padding: '16px', borderRadius: 16,
                   background: 'rgba(0,0,0,0.05)', color: '#334155',
-                  fontWeight: 800, fontSize: 15, border: 'none',
+                  fontWeight: 800, fontSize: 'var(--fs-lg)', border: 'none',
                   cursor: 'pointer', fontFamily: 'inherit',
                 }}
               >
@@ -409,13 +409,13 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   <motion.div
                     animate={{ rotate: [0, -10, 10, -10, 0] }}
                     transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                    style={{ fontSize: 48, marginBottom: 8 }}
+                    style={{ fontSize: 'var(--fs-12xl)', marginBottom: 8 }}
                   >
                     👑
                   </motion.div>
                   {/* Karta doim och fonda — rang qattiq beriladi (tungi temada oq bo'lib ketmasin) */}
                   <h2 style={{ margin: '0 0 4px' }}><BrandLogo size={26} style={{ color: '#12305A' }} /></h2>
-                  <p style={{ fontSize: 13, color: '#64748B', margin: 0 }}>{t('premium.subtitle')}</p>
+                  <p style={{ fontSize: 'var(--fs-md)', color: '#64748B', margin: 0 }}>{t('premium.subtitle')}</p>
                 </div>
 
                 {/* Toifa ROI — obuna o'zini qachon oqlaydi */}
@@ -446,7 +446,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                           <div style={{
                             position: 'absolute', top: 0, right: 14,
                             background: isPopular ? '#0284C7' : '#059669',
-                            color: '#fff', fontSize: 9, fontWeight: 900,
+                            color: '#fff', fontSize: 'var(--fs-3xs)', fontWeight: 900,
                             padding: '3px 10px', borderRadius: '0 0 8px 8px', letterSpacing: 0.8,
                           }}>
                             {badgeMap[plan.badge] || plan.badge}
@@ -455,19 +455,19 @@ const PremiumModal = ({ isOpen, onClose }) => {
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                           <div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                              <span style={{ fontSize: 15, fontWeight: 800, color: '#0f172a' }}>{planLabel(plan)}</span>
+                              <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: '#0f172a' }}>{planLabel(plan)}</span>
                               {plan.savings && (
-                                <span style={{ fontSize: 10, fontWeight: 700, background: 'rgba(16,185,129,0.15)', color: '#10B981', padding: '2px 6px', borderRadius: 5 }}>
+                                <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, background: 'rgba(16,185,129,0.15)', color: '#10B981', padding: '2px 6px', borderRadius: 5 }}>
                                   -{plan.savings}
                                 </span>
                               )}
                             </div>
-                            <div style={{ fontSize: 11, color: '#64748B', marginTop: 2, fontWeight: 500 }}>
+                            <div style={{ fontSize: 'var(--fs-xs)', color: '#64748B', marginTop: 2, fontWeight: 500 }}>
                               {plan.perDay ? t('premium.perDay', { amount: plan.perDay.toLocaleString() }) : t('premium.months', { count: plan.durationMonths })}
                             </div>
                           </div>
                           <div style={{ textAlign: 'right' }}>
-                            <div style={{ fontSize: 18, fontWeight: 900, color: plan.color || '#0f172a' }}>
+                            <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: plan.color || '#0f172a' }}>
                               {fmt(plan.price)}
                             </div>
                           </div>
@@ -489,7 +489,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   style={{
                     width: '100%', padding: '16px', borderRadius: 16,
                     background: '#0284C7',
-                    color: '#fff', fontWeight: 800, fontSize: 16,
+                    color: '#fff', fontWeight: 800, fontSize: 'var(--fs-xl)',
                     border: 'none', cursor: 'pointer',
                     fontFamily: 'inherit',
                     boxShadow: '0 4px 20px rgba(14,151,224,0.35)',
@@ -500,7 +500,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   {t('premium.continueBtn')}
                 </motion.button>
 
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'var(--text3)', fontSize: 11, fontWeight: 600 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'var(--text3)', fontSize: 'var(--fs-xs)', fontWeight: 600 }}>
                   <Shield size={14} color="#10B981" />
                   {t('premium.securePay')}
                 </div>
@@ -511,8 +511,8 @@ const PremiumModal = ({ isOpen, onClose }) => {
             {step === 'method' && (
               <motion.div key="method" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                 <div style={{ textAlign: 'center', marginBottom: 18 }}>
-                  <h2 style={{ fontSize: 19, fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>{t('premium.choosePayMethod', 'To\'lov turini tanlang')}</h2>
-                  <p style={{ fontSize: 12, color: '#64748B', margin: 0 }}>Zehin — {planLabel(selectedPlan)}</p>
+                  <h2 style={{ fontSize: 'var(--fs-3xl)', fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>{t('premium.choosePayMethod', 'To\'lov turini tanlang')}</h2>
+                  <p style={{ fontSize: 'var(--fs-sm)', color: '#64748B', margin: 0 }}>Zehin — {planLabel(selectedPlan)}</p>
                 </div>
 
                 {/* Promokod — ko'zga tashlanadigan joyda */}
@@ -535,11 +535,11 @@ const PremiumModal = ({ isOpen, onClose }) => {
                     }}
                   >
                     <span style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(0,162,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <span style={{ fontSize: 15, fontWeight: 900, color: '#00a2ff', letterSpacing: 0.5 }}>C</span>
+                      <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 900, color: '#00a2ff', letterSpacing: 0.5 }}>C</span>
                     </span>
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 14, fontWeight: 800, color: '#0f172a' }}>{t('premium.payClickTitle', 'Click (Uzcard / Humo)')}</div>
-                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>{t('premium.payClickSub', 'Bank kartasi yoki Click ilovasi orqali to\'lov')}</div>
+                      <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: '#0f172a' }}>{t('premium.payClickTitle', 'Click (Uzcard / Humo)')}</div>
+                      <div style={{ fontSize: 'var(--fs-xs)', color: '#64748B', marginTop: 2 }}>{t('premium.payClickSub', 'Bank kartasi yoki Click ilovasi orqali to\'lov')}</div>
                     </div>
                     <div style={{
                       width: 20, height: 20, borderRadius: '50%',
@@ -564,8 +564,8 @@ const PremiumModal = ({ isOpen, onClose }) => {
                       <Send size={18} color="#229ED9" />
                     </span>
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 14, fontWeight: 800, color: '#0f172a' }}>{t('premium.payTelegramTitle', 'Telegram Administrator')}</div>
-                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>{t('premium.payTelegramSub', 'Operator yordamida kartadan kartaga o\'tkazish')}</div>
+                      <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: '#0f172a' }}>{t('premium.payTelegramTitle', 'Telegram Administrator')}</div>
+                      <div style={{ fontSize: 'var(--fs-xs)', color: '#64748B', marginTop: 2 }}>{t('premium.payTelegramSub', 'Operator yordamida kartadan kartaga o\'tkazish')}</div>
                     </div>
                     <div style={{
                       width: 20, height: 20, borderRadius: '50%',
@@ -577,10 +577,10 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
                 {/* Jami summa */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '0 2px 12px' }}>
-                  <span style={{ fontSize: 15, fontWeight: 800, color: '#0f172a' }}>{t('premium.toPay')}</span>
+                  <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: '#0f172a' }}>{t('premium.toPay')}</span>
                   <span>
-                    {hasBonus && <s style={{ color: '#94a3b8', fontWeight: 600, fontSize: 13, marginRight: 8 }}>{fmt(selectedPlan?.price)}</s>}
-                    <strong style={{ fontSize: 18, fontWeight: 900, color: '#0284C7' }}>{fmt(finalPrice)}</strong>
+                    {hasBonus && <s style={{ color: '#94a3b8', fontWeight: 600, fontSize: 'var(--fs-md)', marginRight: 8 }}>{fmt(selectedPlan?.price)}</s>}
+                    <strong style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: '#0284C7' }}>{fmt(finalPrice)}</strong>
                   </span>
                 </div>
 
@@ -591,7 +591,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   style={{
                     width: '100%', padding: '16px', borderRadius: 16,
                     background: payMethod === 'telegram' ? '#229ED9' : '#0284C7',
-                    color: '#fff', fontWeight: 800, fontSize: 16,
+                    color: '#fff', fontWeight: 800, fontSize: 'var(--fs-xl)',
                     border: 'none', cursor: 'pointer', fontFamily: 'inherit',
                     boxShadow: payMethod === 'telegram' ? '0 4px 20px rgba(34,158,217,0.35)' : '0 4px 20px rgba(14,151,224,0.35)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
@@ -601,11 +601,11 @@ const PremiumModal = ({ isOpen, onClose }) => {
                   <Send size={18} /> {payMethod === 'telegram' ? t('premium.contactOperator', 'Operator bilan bog\'lanish') : t('premium.payNow', 'To\'lash')}
                 </motion.button>
 
-                <div style={{ fontSize: '10px', color: 'var(--text3)', textAlign: 'center', marginTop: 4, marginBottom: 12, lineHeight: 1.4 }}>
+                <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', textAlign: 'center', marginTop: 4, marginBottom: 12, lineHeight: 1.4 }}>
                   {t('premium.termsAccept1')}<a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent2)', textDecoration: 'none', fontWeight: 600 }}>{t('premium.termsLinkText')}</a>{t('premium.termsAccept2')}
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'var(--text3)', fontSize: 11, fontWeight: 600 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'var(--text3)', fontSize: 'var(--fs-xs)', fontWeight: 600 }}>
                   <Shield size={14} color="#10B981" />
                   {t('premium.paymentProtected')}
                 </div>

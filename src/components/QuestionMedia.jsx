@@ -439,7 +439,7 @@ export default function QuestionMedia({ question, style }) {
         background: 'var(--glass-bg)',
         border: '1px dashed var(--glass-border)',
         color: 'var(--text2)',
-        fontSize: '13px',
+        fontSize: 'var(--fs-md)',
       }}>
         🖼️ Rasm yuklanmadi
       </div>

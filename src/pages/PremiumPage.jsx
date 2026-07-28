@@ -47,7 +47,7 @@ export default function PremiumPage() {
           <motion.div
             animate={{ rotate: [0, -8, 8, -8, 0] }}
             transition={{ duration: 2.4, repeat: Infinity, repeatDelay: 3 }}
-            style={{ fontSize: 60, marginBottom: 8 }}
+            style={{ fontSize: 'var(--fs-hero)', marginBottom: 8 }}
           >👑</motion.div>
           <h2 style={s.heroTitle}>{t('premiumPage.heroTitle')}</h2>
           <p style={s.heroSub}>{t('premiumPage.heroSub')}</p>
@@ -63,7 +63,7 @@ export default function PremiumPage() {
             {features.map((text, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                 <div style={s.featIcon}><Check size={15} color="var(--green)" /></div>
-                <span style={{ fontSize: 14, color: 'var(--text2)', fontWeight: 500 }}>
+                <span style={{ fontSize: 'var(--fs-base)', color: 'var(--text2)', fontWeight: 500 }}>
                   <span style={{ marginRight: 6 }}>{FEATURE_ICONS[i]}</span>{text}
                 </span>
               </div>
@@ -73,7 +73,7 @@ export default function PremiumPage() {
 
         {/* Narx eslatmasi — Play build'da ko'rsatilmaydi */}
         {!isAndroidApp && (
-          <div style={{ textAlign: 'center', fontSize: 13, color: 'var(--text3)', margin: '4px 0 16px' }}>
+          <div style={{ textAlign: 'center', fontSize: 'var(--fs-md)', color: 'var(--text3)', margin: '4px 0 16px' }}>
             {t('premiumPage.priceNote')}
           </div>
         )}
@@ -90,7 +90,7 @@ export default function PremiumPage() {
         )}
 
         {!isAndroidApp && (
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'var(--text3)', fontSize: 12, marginTop: 14, fontWeight: 600 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'var(--text3)', fontSize: 'var(--fs-sm)', marginTop: 14, fontWeight: 600 }}>
             <Shield size={14} color="var(--green)" /> {t('premiumPage.securePay')}
           </div>
         )}
@@ -101,9 +101,9 @@ export default function PremiumPage() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, textAlign: 'center' }}>
             {trustBadges.map((b, i) => (
               <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, background: 'var(--bg3)', padding: '12px 6px', borderRadius: 12, border: '1px solid var(--border)' }}>
-                <span style={{ fontSize: 20 }}>{TRUST_ICONS[i]}</span>
-                <span style={{ fontSize: 11, fontWeight: 800, color: 'var(--text)' }}>{b.title}</span>
-                <span style={{ fontSize: 9, color: 'var(--text3)' }}>{b.sub}</span>
+                <span style={{ fontSize: 'var(--fs-3xl)' }}>{TRUST_ICONS[i]}</span>
+                <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 800, color: 'var(--text)' }}>{b.title}</span>
+                <span style={{ fontSize: 'var(--fs-3xs)', color: 'var(--text3)' }}>{b.sub}</span>
               </div>
             ))}
           </div>
@@ -119,10 +119,10 @@ export default function PremiumPage() {
                 <Building2 size={15} color="var(--accent)" />
               </div>
               <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', marginBottom: 4 }}>
+                <div style={{ fontSize: 'var(--fs-base)', fontWeight: 700, color: 'var(--text)', marginBottom: 4 }}>
                   {t('premiumPage.b2bTitle')}
                 </div>
-                <p style={{ fontSize: 12.5, color: 'var(--text3)', lineHeight: 1.6, margin: '0 0 12px' }}>
+                <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', lineHeight: 1.6, margin: '0 0 12px' }}>
                   {t('premiumPage.b2bDesc')}
                 </p>
                 <button
@@ -130,7 +130,7 @@ export default function PremiumPage() {
                   style={{
                     padding: '9px 14px', borderRadius: 11, border: '1px solid var(--accent)',
                     background: 'transparent', color: 'var(--accent)', fontWeight: 700,
-                    fontSize: 13, cursor: 'pointer', fontFamily: 'inherit',
+                    fontSize: 'var(--fs-md)', cursor: 'pointer', fontFamily: 'inherit',
                   }}
                 >
                   {t('premiumPage.b2bCta')}
@@ -153,12 +153,12 @@ export default function PremiumPage() {
                     style={{
                       width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                       padding: '12px 14px', background: 'transparent', border: 'none', cursor: 'pointer',
-                      textAlign: 'left', fontFamily: 'inherit', fontSize: 13, fontWeight: 700,
+                      textAlign: 'left', fontFamily: 'inherit', fontSize: 'var(--fs-md)', fontWeight: 700,
                       color: isOpen ? 'var(--accent2)' : 'var(--text)', minHeight: 48,
                     }}
                   >
                     <span>{faq.q}</span>
-                    <span style={{ fontSize: 14, transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s', color: 'var(--text3)' }}>▾</span>
+                    <span style={{ fontSize: 'var(--fs-base)', transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s', color: 'var(--text3)' }}>▾</span>
                   </button>
                   <AnimatePresence initial={false}>
                     {isOpen && (
@@ -169,7 +169,7 @@ export default function PremiumPage() {
                         transition={{ duration: 0.2 }}
                         style={{ overflow: 'hidden' }}
                       >
-                        <div style={{ padding: '0 14px 12px 14px', fontSize: 12, color: 'var(--text3)', lineHeight: 1.6 }}>
+                        <div style={{ padding: '0 14px 12px 14px', fontSize: 'var(--fs-sm)', color: 'var(--text3)', lineHeight: 1.6 }}>
                           {faq.a}
                         </div>
                       </motion.div>
@@ -195,19 +195,19 @@ const s = {
     position: 'sticky', top: 0, zIndex: 10,
   },
   backBtn: { background: 'none', border: 'none', color: 'var(--text)', cursor: 'pointer', minWidth: 48, minHeight: 48, justifyContent: 'center', display: 'flex', alignItems: 'center', margin: '-12px 0' },
-  title: { fontSize: 18, fontWeight: 700, margin: 0 },
+  title: { fontSize: 'var(--fs-2xl)', fontWeight: 700, margin: 0 },
   content: { padding: '24px 20px', maxWidth: 600, margin: '0 auto' },
-  heroTitle: { fontSize: 22, fontWeight: 800, margin: '0 0 8px', color: 'var(--text)' },
-  heroSub: { fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, margin: 0 },
+  heroTitle: { fontSize: 'var(--fs-4xl)', fontWeight: 800, margin: '0 0 8px', color: 'var(--text)' },
+  heroSub: { fontSize: 'var(--fs-base)', color: 'var(--text3)', lineHeight: 1.6, margin: 0 },
   card: { background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 18, padding: '18px 16px', marginBottom: 16 },
-  cardLabel: { fontSize: 12, fontWeight: 700, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: 0.8, marginBottom: 14 },
+  cardLabel: { fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: 0.8, marginBottom: 14 },
   featIcon: {
     width: 28, height: 28, borderRadius: 8, flexShrink: 0, background: 'var(--green-bg)',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
   },
   cta: {
     width: '100%', padding: '16px', borderRadius: 16, border: 'none', cursor: 'pointer',
-    fontFamily: 'inherit', fontWeight: 800, fontSize: 16, color: '#fff',
+    fontFamily: 'inherit', fontWeight: 800, fontSize: 'var(--fs-xl)', color: '#fff',
     background: 'var(--grad-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
     boxShadow: '0 6px 20px rgba(41,182,246,0.28)',
   },

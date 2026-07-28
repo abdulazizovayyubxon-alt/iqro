@@ -46,23 +46,23 @@ const AmiCard = ({ ami = 0, unvonTier = 1, axes = [], weeklyDelta = 0 }) => {
       }}
     >
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 4 }}>
-        <span style={{ fontSize: 34, fontWeight: 900, color: 'var(--text)', lineHeight: 1, letterSpacing: '-1px' }}>
+        <span style={{ fontSize: 'var(--fs-9xl)', fontWeight: 900, color: 'var(--text)', lineHeight: 1, letterSpacing: '-1px' }}>
           {ami}
         </span>
-        <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text3)' }}>/100</span>
+        <span style={{ fontSize: 'var(--fs-base)', fontWeight: 600, color: 'var(--text3)' }}>/100</span>
         {weeklyDelta > 0 && (
           <span
             style={{
               marginLeft: 8, padding: '2px 8px', borderRadius: 12,
               background: 'var(--blue-bg)', color: 'var(--accent2)',
-              fontSize: 11, fontWeight: 700
+              fontSize: 'var(--fs-xs)', fontWeight: 700
             }}
           >
             {t('tracks.amiWeekly', { count: weeklyDelta })}
           </span>
         )}
       </div>
-      <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--text2)', margin: '6px 0 2px' }}>
+      <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 600, color: 'var(--text2)', margin: '6px 0 2px' }}>
         {t('tracks.amiLabel')}
       </div>
       <div
@@ -75,7 +75,7 @@ const AmiCard = ({ ami = 0, unvonTier = 1, axes = [], weeklyDelta = 0 }) => {
           borderRadius: 20,
           background: 'var(--blue-bg)',
           color: 'var(--accent2)',
-          fontSize: 13,
+          fontSize: 'var(--fs-md)',
           fontWeight: 700
         }}
       >
@@ -87,7 +87,7 @@ const AmiCard = ({ ami = 0, unvonTier = 1, axes = [], weeklyDelta = 0 }) => {
         <div style={{ height: 3, borderRadius: 1.5, background: 'var(--bg3)', overflow: 'hidden' }}>
           <div style={{ width: `${unvonPct}%`, height: '100%', borderRadius: 1.5, background: 'var(--accent)', transition: 'width 0.5s ease' }} />
         </div>
-        <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--text3)', marginTop: 4 }}>
+        <div style={{ fontSize: 'var(--fs-2xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 4 }}>
           {nextThreshold
             ? t('tracks.unvonProgress', { unvon: t(`tracks.tier${unvonTier + 1}`), count: Math.max(1, nextThreshold - ami) })
             : t('tracks.unvonMax')}
@@ -103,7 +103,7 @@ const AmiCard = ({ ami = 0, unvonTier = 1, axes = [], weeklyDelta = 0 }) => {
           gap: 16,
           flexWrap: 'wrap',
           padding: '8px 0 6px',
-          fontSize: 11,
+          fontSize: 'var(--fs-xs)',
           fontWeight: 600,
           color: 'var(--text3)'
         }}

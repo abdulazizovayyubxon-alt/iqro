@@ -85,10 +85,10 @@ const TrajectoryPlan = ({ steps = [], onStep }) => {
     return (
       <div className="glass-panel" style={{ padding: 28, textAlign: 'center' }}>
         <CheckCircle2 size={30} style={{ color: 'var(--green)', marginBottom: 10 }} />
-        <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)' }}>
+        <div style={{ fontSize: 'var(--fs-base)', fontWeight: 700, color: 'var(--text)' }}>
           {t('trajectory.emptyTitle')}
         </div>
-        <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 6, lineHeight: 1.5 }}>
+        <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: 6, lineHeight: 1.5 }}>
           {t('trajectory.emptyDesc')}
         </div>
       </div>
@@ -124,7 +124,7 @@ const TrajectoryPlan = ({ steps = [], onStep }) => {
                   ? <CheckCircle2 size={17} style={{ color: 'var(--green)' }} />
                   : <Icon size={17} style={{ color: meta.color }} />}
               </div>
-              <span style={{ fontSize: 10, fontWeight: 800, color: 'var(--text3)' }}>{i + 1}</span>
+              <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 800, color: 'var(--text3)' }}>{i + 1}</span>
             </div>
 
             {/* Matn */}
@@ -139,13 +139,13 @@ const TrajectoryPlan = ({ steps = [], onStep }) => {
                     {step.topicIcon}
                   </span>
                 )}
-                <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)' }}>
+                <span style={{ fontSize: 'var(--fs-base)', fontWeight: 700, color: 'var(--text)' }}>
                   {txt.title}
                 </span>
                 {step.gain > 0.2 && !step.done && (
                   <span style={{
                     padding: '2px 8px', borderRadius: 10, background: 'var(--blue-bg)',
-                    color: 'var(--accent2)', fontSize: 10.5, fontWeight: 800,
+                    color: 'var(--accent2)', fontSize: 'var(--fs-2xs)', fontWeight: 800,
                   }}>
                     {t('trajectory.gain', { count: step.gain })}
                   </span>
@@ -154,14 +154,14 @@ const TrajectoryPlan = ({ steps = [], onStep }) => {
                 {step.minutes > 0 && !step.done && (
                   <span style={{
                     display: 'inline-flex', alignItems: 'center', gap: 3,
-                    fontSize: 10.5, fontWeight: 700, color: 'var(--text3)',
+                    fontSize: 'var(--fs-2xs)', fontWeight: 700, color: 'var(--text3)',
                   }}>
                     <Clock size={11} />
                     {t('pace.minutes', { count: step.minutes })}
                   </span>
                 )}
               </div>
-              <div style={{ fontSize: 12, color: 'var(--text3)', lineHeight: 1.5 }}>
+              <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', lineHeight: 1.5 }}>
                 {txt.desc}
               </div>
 
@@ -170,14 +170,14 @@ const TrajectoryPlan = ({ steps = [], onStep }) => {
               {step.theoryHint && (
                 <details style={{ marginTop: 8 }}>
                   <summary style={{
-                    cursor: 'pointer', fontSize: 11.5, fontWeight: 700,
+                    cursor: 'pointer', fontSize: 'var(--fs-xs)', fontWeight: 700,
                     color: 'var(--accent)', listStyle: 'none',
                   }}>
                     {t('trajectory.focus')}
                   </summary>
                   <div style={{
                     marginTop: 6, padding: '9px 11px', borderRadius: 10,
-                    background: 'var(--bg3)', fontSize: 11.5,
+                    background: 'var(--bg3)', fontSize: 'var(--fs-xs)',
                     color: 'var(--text2)', lineHeight: 1.6,
                   }}>
                     {step.theoryHint}
@@ -192,7 +192,7 @@ const TrajectoryPlan = ({ steps = [], onStep }) => {
                     display: 'inline-flex', alignItems: 'center', gap: 4,
                     marginTop: 10, padding: '7px 12px', borderRadius: 10,
                     border: 'none', background: meta.color, color: '#fff',
-                    fontSize: 12, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit',
+                    fontSize: 'var(--fs-sm)', fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit',
                   }}
                 >
                   {txt.cta} <ChevronRight size={13} />

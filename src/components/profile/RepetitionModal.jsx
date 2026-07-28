@@ -11,7 +11,7 @@ export default function RepetitionModal({ value, onChange, onClose }) {
       <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
         <Brain size={22} style={{ color: 'var(--accent)' }} /> {t('modals.repTitle')}
       </div>
-      <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 20 }}>
+      <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', lineHeight: 1.6, marginBottom: 20 }}>
         {t('modals.repDesc')}
       </p>
 
@@ -33,7 +33,7 @@ export default function RepetitionModal({ value, onChange, onClose }) {
                 border: isSelected ? '2px solid var(--blue)' : '1px solid var(--border)',
                 background: isSelected ? 'var(--blue-bg)' : 'var(--bg2)',
                 color: isSelected ? 'var(--blue)' : 'var(--text)',
-                fontSize: '11px', fontWeight: isSelected ? '800' : '500',
+                fontSize: 'var(--fs-xs)', fontWeight: isSelected ? '800' : '500',
                 cursor: 'pointer', transition: 'all 0.2s', whiteSpace: 'pre-line',
                 textAlign: 'center', display: 'flex', alignItems: 'center',
                 justifyContent: 'center', lineHeight: '1.2', minHeight: '48px',
@@ -45,7 +45,7 @@ export default function RepetitionModal({ value, onChange, onClose }) {
           );
         })}
       </div>
-      <small style={{ display: 'block', marginTop: '10px', color: 'var(--text3)', fontSize: '11px', lineHeight: '1.4' }}>
+      <small style={{ display: 'block', marginTop: '10px', color: 'var(--text3)', fontSize: 'var(--fs-xs)', lineHeight: '1.4' }}>
         {t('modals.repRecommend')}
       </small>
 

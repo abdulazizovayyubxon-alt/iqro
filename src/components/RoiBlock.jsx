@@ -50,14 +50,14 @@ export default function RoiBlock({ price, targetToifa = '1-toifa', variant = 'li
         <TrendingUp size={17} color={c.icon} />
       </span>
       <div style={{ flex: 1, minWidth: 130 }}>
-        <div style={{ fontSize: 15.5, fontWeight: 900, color: c.num, letterSpacing: -0.2, whiteSpace: 'nowrap' }}>
+        <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 900, color: c.num, letterSpacing: -0.2, whiteSpace: 'nowrap' }}>
           {t('roi.gainValue', { amount: fmtSum(monthlyGain) })}
         </div>
-        <div style={{ fontSize: 10.5, color: c.cap, fontWeight: 600, marginTop: 1 }}>
+        <div style={{ fontSize: 'var(--fs-2xs)', color: c.cap, fontWeight: 600, marginTop: 1 }}>
           {t('roi.gainCaption', { label })}
         </div>
       </div>
-      <div style={{ background: c.chipBg, color: c.chip, fontSize: 11, fontWeight: 800, padding: '6px 10px', borderRadius: 9, whiteSpace: 'nowrap' }}>
+      <div style={{ background: c.chipBg, color: c.chip, fontSize: 'var(--fs-xs)', fontWeight: 800, padding: '6px 10px', borderRadius: 9, whiteSpace: 'nowrap' }}>
         {t('roi.payback', { days: paybackDays })}
       </div>
     </div>

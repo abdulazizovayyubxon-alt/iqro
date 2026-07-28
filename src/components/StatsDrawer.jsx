@@ -9,7 +9,7 @@ import { useModalBackButton } from './profile/useModalBackButton';
 
 // ── Sokin/jiddiy uslub — ProfileDrawer bilan bir xil tokenlar ──
 const card = { background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 16, boxShadow: '0 2px 8px rgba(15,27,45,0.04)' };
-const sectionHeader = { display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, fontWeight: 800, letterSpacing: 0.4, textTransform: 'uppercase', color: 'var(--text3)', margin: '0 0 12px' };
+const sectionHeader = { display: 'flex', alignItems: 'center', gap: 8, fontSize: 'var(--fs-md)', fontWeight: 800, letterSpacing: 0.4, textTransform: 'uppercase', color: 'var(--text3)', margin: '0 0 12px' };
 const statRow = { display: 'flex', justifyContent: 'space-between', alignItems: 'center' };
 
 /**
@@ -58,7 +58,7 @@ const StatsDrawer = ({ open, onClose, topicTotals = {} }) => {
           >
             {/* Sarlavha */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 18px 10px', position: 'sticky', top: 0, background: 'var(--bg2)', zIndex: 1 }}>
-              <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--text)' }}>{t('achievements.statsDrawerTitle')}</div>
+              <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: 'var(--text)' }}>{t('achievements.statsDrawerTitle')}</div>
               <button
                 onClick={onClose}
                 aria-label={t('common.close', 'Yopish')}
@@ -76,20 +76,20 @@ const StatsDrawer = ({ open, onClose, topicTotals = {} }) => {
                   <RadialChart pct={acc} size={120} stroke={11} color={acc >= 70 ? 'var(--green)' : acc >= 50 ? 'var(--amber)' : 'var(--red)'} label={t('achievements.accuracy')} />
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 14, flex: 1, minWidth: 150 }}>
                     <div style={statRow}>
-                      <span style={{ fontSize: 14, color: 'var(--text2)', fontWeight: 500 }}>{t('achievements.correctLabel')}</span>
-                      <span style={{ fontSize: 19, fontWeight: 800, color: 'var(--green)' }}>{correct}</span>
+                      <span style={{ fontSize: 'var(--fs-base)', color: 'var(--text2)', fontWeight: 500 }}>{t('achievements.correctLabel')}</span>
+                      <span style={{ fontSize: 'var(--fs-3xl)', fontWeight: 800, color: 'var(--green)' }}>{correct}</span>
                     </div>
                     <div style={statRow}>
-                      <span style={{ fontSize: 14, color: 'var(--text2)', fontWeight: 500 }}>{t('achievements.wrongLabel')}</span>
-                      <span style={{ fontSize: 19, fontWeight: 800, color: 'var(--red)' }}>{wrong}</span>
+                      <span style={{ fontSize: 'var(--fs-base)', color: 'var(--text2)', fontWeight: 500 }}>{t('achievements.wrongLabel')}</span>
+                      <span style={{ fontSize: 'var(--fs-3xl)', fontWeight: 800, color: 'var(--red)' }}>{wrong}</span>
                     </div>
                     <div style={statRow}>
-                      <span style={{ fontSize: 14, color: 'var(--text2)', fontWeight: 500 }}>{t('achievements.totalLabel')}</span>
-                      <span style={{ fontSize: 19, fontWeight: 800, color: 'var(--text)' }}>{total}</span>
+                      <span style={{ fontSize: 'var(--fs-base)', color: 'var(--text2)', fontWeight: 500 }}>{t('achievements.totalLabel')}</span>
+                      <span style={{ fontSize: 'var(--fs-3xl)', fontWeight: 800, color: 'var(--text)' }}>{total}</span>
                     </div>
                     <div style={statRow}>
-                      <span style={{ fontSize: 14, color: 'var(--text2)', fontWeight: 500 }}>{t('achievements.maxStreak')}</span>
-                      <span style={{ fontSize: 19, fontWeight: 800, color: 'var(--amber)' }}>{catStats.maxStreak}</span>
+                      <span style={{ fontSize: 'var(--fs-base)', color: 'var(--text2)', fontWeight: 500 }}>{t('achievements.maxStreak')}</span>
+                      <span style={{ fontSize: 'var(--fs-3xl)', fontWeight: 800, color: 'var(--amber)' }}>{catStats.maxStreak}</span>
                     </div>
                   </div>
                 </div>
@@ -116,7 +116,7 @@ const StatsDrawer = ({ open, onClose, topicTotals = {} }) => {
                         transition={{ delay: idx * 0.04 }}
                         className="stats-topic-row"
                       >
-                        <div style={{ minWidth: 110, maxWidth: 170, fontSize: 14, fontWeight: 500, color: 'var(--text)', display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
+                        <div style={{ minWidth: 110, maxWidth: 170, fontSize: 'var(--fs-base)', fontWeight: 500, color: 'var(--text)', display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
                           {tp.icon} {tp.name}
                         </div>
                         <div style={{ flex: 1 }}>
@@ -129,7 +129,7 @@ const StatsDrawer = ({ open, onClose, topicTotals = {} }) => {
                                 style={{ height: '100%', borderRadius: 4, background: barColor }}
                               />
                             </div>
-                            <div style={{ fontSize: 13, fontWeight: 700, minWidth: 40, textAlign: 'right', color: barColor }}>
+                            <div style={{ fontSize: 'var(--fs-md)', fontWeight: 700, minWidth: 40, textAlign: 'right', color: barColor }}>
                               {pct > 0 ? `${pct}%` : '—'}
                             </div>
                           </div>
@@ -137,7 +137,7 @@ const StatsDrawer = ({ open, onClose, topicTotals = {} }) => {
                             <div style={{ flex: 1, height: 4, background: 'var(--bg3)', borderRadius: 2, overflow: 'hidden' }}>
                               <div style={{ width: `${coveragePct}%`, height: '100%', borderRadius: 2, background: 'var(--blue)', opacity: 0.5 }} />
                             </div>
-                            <div style={{ fontSize: 11, color: 'var(--text3)', minWidth: 60, textAlign: 'right' }}>
+                            <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', minWidth: 60, textAlign: 'right' }}>
                               {answered}/{topicTotal}
                             </div>
                           </div>
@@ -152,14 +152,14 @@ const StatsDrawer = ({ open, onClose, topicTotals = {} }) => {
               <div>
                 <div style={sectionHeader}><AlertCircle size={16} style={{ color: 'var(--red)' }} /> {t('achievements.recentMistakes')}</div>
                 {catStats.mistakes.length === 0 ? (
-                  <div style={{ ...card, padding: '16px', color: 'var(--text3)', fontSize: 13 }}>{t('achievements.noMistakes')}</div>
+                  <div style={{ ...card, padding: '16px', color: 'var(--text3)', fontSize: 'var(--fs-md)' }}>{t('achievements.noMistakes')}</div>
                 ) : (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                     {[...catStats.mistakes].reverse().slice(0, 5).map((m, i) => (
                       <div key={i} style={{ ...card, borderLeft: '3px solid var(--red)', borderRadius: 12, padding: '12px 14px' }}>
-                        <div style={{ fontSize: 12, color: 'var(--red)', fontFamily: "'IBM Plex Mono', monospace", marginBottom: 4 }}>{m.topic}</div>
-                        <div style={{ fontSize: 13, color: 'var(--text)', lineHeight: 1.5 }}>{m.question}</div>
-                        <div style={{ fontSize: 12, color: 'var(--green)', marginTop: 6 }}>{t('achievements.mistakeCorrect', { correct: m.correct })}</div>
+                        <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--red)', fontFamily: "'IBM Plex Mono', monospace", marginBottom: 4 }}>{m.topic}</div>
+                        <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text)', lineHeight: 1.5 }}>{m.question}</div>
+                        <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--green)', marginTop: 6 }}>{t('achievements.mistakeCorrect', { correct: m.correct })}</div>
                       </div>
                     ))}
                   </div>

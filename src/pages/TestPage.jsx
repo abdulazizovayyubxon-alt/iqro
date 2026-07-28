@@ -846,8 +846,8 @@ const TestPage = () => {
             >
               <div style={{ padding: '20px 20px 14px', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', borderBottom: '1px solid var(--border)' }}>
                 <div style={{ minWidth: 0 }}>
-                  <h3 style={{ fontSize: 22, fontWeight: 800, color: 'var(--text)', margin: 0, letterSpacing: '-0.01em' }}>{t('test.selectBlock')}</h3>
-                  <div style={{ fontSize: 13, color: 'var(--text3)', marginTop: 2 }}>{t('test.totalAvailable', { count: fullPool.length })}</div>
+                  <h3 style={{ fontSize: 'var(--fs-4xl)', fontWeight: 800, color: 'var(--text)', margin: 0, letterSpacing: '-0.01em' }}>{t('test.selectBlock')}</h3>
+                  <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', marginTop: 2 }}>{t('test.totalAvailable', { count: fullPool.length })}</div>
                 </div>
                 <button onClick={() => setShowBlockPicker(false)} aria-label={t('common.close')} style={{ flexShrink: 0, background: 'var(--bg3)', border: 'none', width: 44, height: 44, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text2)', cursor: 'pointer' }}>
                   <X size={18} />
@@ -871,8 +871,8 @@ const TestPage = () => {
                           color: isSel ? '#fff' : 'var(--text)', cursor: 'pointer', transition: 'all 0.15s'
                         }}
                       >
-                        <span style={{ fontSize: 13, fontWeight: 800 }}>{t('test.block', { n: i + 1 })}</span>
-                        <span style={{ fontSize: 10, fontWeight: 600, opacity: 0.75 }}>{start}–{end}</span>
+                        <span style={{ fontSize: 'var(--fs-md)', fontWeight: 800 }}>{t('test.block', { n: i + 1 })}</span>
+                        <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 600, opacity: 0.75 }}>{start}–{end}</span>
                       </button>
                     );
                   })}
@@ -907,7 +907,7 @@ const TestPage = () => {
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center' }}>
                   {reqAlreadySent ? (
-                    <div style={{ width: '220px', padding: '12px', borderRadius: '14px', background: 'var(--green-bg)', color: 'var(--green)', fontWeight: 700, fontSize: '13px', textAlign: 'center', border: '1px solid rgba(16,185,129,0.25)' }}>
+                    <div style={{ width: '220px', padding: '12px', borderRadius: '14px', background: 'var(--green-bg)', color: 'var(--green)', fontWeight: 700, fontSize: 'var(--fs-md)', textAlign: 'center', border: '1px solid rgba(16,185,129,0.25)' }}>
                       {t('test.requestSent')}
                     </div>
                   ) : (
@@ -971,7 +971,7 @@ const TestPage = () => {
                     }}>
                       <RefreshCw size={16} />
                     </div>
-                    <div style={{ fontSize: '12px', lineHeight: '1.4', color: 'var(--text2)' }}>
+                    <div style={{ fontSize: 'var(--fs-sm)', lineHeight: '1.4', color: 'var(--text2)' }}>
                       <strong style={{ color: 'var(--text)' }}>{t('test.repetitionActive')}</strong> {t('test.repetitionText', { pct: state.repetitionLimit ?? 0 })}
                     </div>
                   </div>
@@ -1111,9 +1111,9 @@ const TestPage = () => {
       {showExitConfirm && (
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: 24, maxWidth: 320, width: '90%', borderRadius: 20, textAlign: 'center', background: 'var(--bg2)' }}>
-            <div style={{ fontSize: 40, marginBottom: 12 }}>⚠️</div>
-            <h3 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>{t('test.exitTitle')}</h3>
-            <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24 }}>{t('test.exitText')}</p>
+            <div style={{ fontSize: 'var(--fs-10xl)', marginBottom: 12 }}>⚠️</div>
+            <h3 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>{t('test.exitTitle')}</h3>
+            <p style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 24 }}>{t('test.exitText')}</p>
             <div style={{ display: 'flex', gap: 12 }}>
               <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setShowExitConfirm(false)}>{t('test.continueBtn')}</button>
               <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { setShowExitConfirm(false); localforage.removeItem('test_session').catch(() => {}); navigate('/test'); }}>{t('test.exit')}</button>

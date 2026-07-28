@@ -97,8 +97,8 @@ const AchievementsPage = () => {
       style={{ maxWidth: 700, margin: '0 auto', padding: '20px 16px 32px' }}
     >
       {/* Header */}
-      <h1 style={{ fontSize: 26, fontWeight: 900, color: 'var(--text)', margin: '0 0 4px' }}>{t('achievements.title')}</h1>
-      <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 20 }}>{t('achievements.subtitle')}</p>
+      <h1 style={{ fontSize: 'var(--fs-6xl)', fontWeight: 900, color: 'var(--text)', margin: '0 0 4px' }}>{t('achievements.title')}</h1>
+      <p style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 20 }}>{t('achievements.subtitle')}</p>
 
       {/* Akademik mahorat indeksi + radar */}
       <AmiCard ami={ami} unvonTier={unvonTier} axes={radarAxes} weeklyDelta={weeklyDelta} />
@@ -111,18 +111,18 @@ const AchievementsPage = () => {
         boxShadow: '0 4px 24px rgba(0,0,0,0.01)',
       }}>
         <div style={{ flex: 1, textAlign: 'center' }}>
-          <div style={{ fontSize: 18, fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{globalAnswered}</div>
-          <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--text3)', marginTop: 4 }}>{t('achievements.questions')}</div>
+          <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{globalAnswered}</div>
+          <div style={{ fontSize: 'var(--fs-2xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 4 }}>{t('achievements.questions')}</div>
         </div>
         <div style={{ width: 1, background: 'var(--border)' }} />
         <div style={{ flex: 1, textAlign: 'center' }}>
-          <div style={{ fontSize: 18, fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{globalAcc}%</div>
-          <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--text3)', marginTop: 4 }}>{t('achievements.accuracy')}</div>
+          <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>{globalAcc}%</div>
+          <div style={{ fontSize: 'var(--fs-2xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 4 }}>{t('achievements.accuracy')}</div>
         </div>
         <div style={{ width: 1, background: 'var(--border)' }} />
         <div style={{ flex: 1, textAlign: 'center', cursor: 'pointer' }} onClick={() => navigate('/leaderboard')}>
-          <div style={{ fontSize: 18, fontWeight: 900, color: 'var(--accent2)', lineHeight: 1 }}>{state.totalScore || 0}</div>
-          <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--text3)', marginTop: 4 }}>{t('achievements.points')}</div>
+          <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: 'var(--accent2)', lineHeight: 1 }}>{state.totalScore || 0}</div>
+          <div style={{ fontSize: 'var(--fs-2xs)', fontWeight: 600, color: 'var(--text3)', marginTop: 4 }}>{t('achievements.points')}</div>
         </div>
       </div>
 
@@ -138,7 +138,7 @@ const AchievementsPage = () => {
               flex: 1, padding: '10px 6px', borderRadius: 10, border: 'none',
               background: activeTab === tab.id ? 'var(--bg2)' : 'transparent',
               color: activeTab === tab.id ? 'var(--text)' : 'var(--text3)',
-              fontWeight: 700, fontSize: 13, cursor: 'pointer', fontFamily: 'inherit',
+              fontWeight: 700, fontSize: 'var(--fs-md)', cursor: 'pointer', fontFamily: 'inherit',
               boxShadow: activeTab === tab.id ? '0 1px 4px rgba(0,0,0,0.06)' : 'none',
               transition: 'all 0.15s',
             }}
@@ -184,10 +184,10 @@ const AchievementsPage = () => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                       {dg.completed ? <Award size={22} color="var(--green)" /> : <Target size={22} color="var(--accent)" />}
                       <div>
-                        <div style={{ fontWeight: 800, fontSize: 14, color: 'var(--text)', letterSpacing: '-0.3px' }}>
+                        <div style={{ fontWeight: 800, fontSize: 'var(--fs-base)', color: 'var(--text)', letterSpacing: '-0.3px' }}>
                           {dg.completed ? t('achievements.goalDoneTitle') : t('achievements.goalTitle')}
                         </div>
-                        <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 500 }}>
+                        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', fontWeight: 500 }}>
                           {t('achievements.goalProgress', { answered: dg.answered, target: dg.target })}
                         </div>
                       </div>
@@ -198,7 +198,7 @@ const AchievementsPage = () => {
                           display: 'flex', alignItems: 'center', gap: 5,
                           background: 'var(--amber-bg)',
                           color: 'var(--amber)', padding: '4px 10px', borderRadius: 20,
-                          fontWeight: 800, fontSize: 11,
+                          fontWeight: 800, fontSize: 'var(--fs-xs)',
                         }}>
                           <Flame size={12} /> {t('achievements.goalStreak', { count: ds })}
                         </div>
@@ -208,7 +208,7 @@ const AchievementsPage = () => {
                           display: 'flex', alignItems: 'center', gap: 5,
                           background: 'var(--blue-bg)', color: 'var(--accent2)',
                           padding: '4px 10px', borderRadius: 20,
-                          fontWeight: 700, fontSize: 11,
+                          fontWeight: 700, fontSize: 'var(--fs-xs)',
                         }}>
                           <Shield size={12} /> {t('achievements.freezeCount', { count: state.streakFreezes })}
                         </div>
@@ -223,7 +223,7 @@ const AchievementsPage = () => {
                     }} />
                   </div>
                   {state.streakFrozenDate === today && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: 'var(--accent2)', fontWeight: 600, marginTop: 8 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 'var(--fs-xs)', color: 'var(--accent2)', fontWeight: 600, marginTop: 8 }}>
                       <Shield size={12} /> {t('achievements.freezeUsed')}
                     </div>
                   )}
@@ -232,7 +232,7 @@ const AchievementsPage = () => {
             })()}
 
             {/* Yo'nalishlar bo'yicha akademik darajalar */}
-            <div className="section-header" style={{ marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: '800' }}>
+            <div className="section-header" style={{ marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: 'var(--fs-lg)', fontWeight: '800' }}>
               <Trophy size={18} style={{ color: 'var(--accent2)' }} /> {t('tracks.sectionTitle')}
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 10 }}>
@@ -251,10 +251,10 @@ const AchievementsPage = () => {
             </div>
 
             {/* Shaxsiy marralar — odat qatlami (AMI'ga ta'sir qilmaydi) */}
-            <div className="section-header" style={{ margin: '22px 0 6px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: '800' }}>
+            <div className="section-header" style={{ margin: '22px 0 6px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: 'var(--fs-lg)', fontWeight: '800' }}>
               <Flag size={18} style={{ color: 'var(--accent)' }} /> {t('milestones.sectionTitle')}
             </div>
-            <p style={{ fontSize: 11.5, color: 'var(--text3)', margin: '0 0 12px', lineHeight: 1.5 }}>
+            <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', margin: '0 0 12px', lineHeight: 1.5 }}>
               {t('milestones.sectionHint')}
             </p>
             <MilestoneGrid live={msView.live} />
@@ -271,27 +271,27 @@ const AchievementsPage = () => {
           >
             {/* Radial charts */}
             <div className="glass-panel" style={{ padding: '24px', marginBottom: '20px' }}>
-              <div style={{ fontWeight: '700', fontSize: '15px', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div style={{ fontWeight: '700', fontSize: 'var(--fs-lg)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <TrendingUp size={18} style={{ color: 'var(--blue)' }} /> {t('achievements.overallMetrics')}
               </div>
               <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'space-around', alignItems: 'center' }}>
                 <RadialChart pct={acc} size={120} stroke={10} color={acc >= 70 ? 'var(--green)' : acc >= 50 ? 'var(--amber)' : 'var(--red)'} label={t('achievements.accuracy')} />
                 <div style={{ display: 'flex', flexName: 'stats-list', flexDirection: 'column', gap: '12px', flex: 1, minWidth: '150px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '13px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.correctLabel')}</span>
-                    <span style={{ fontSize: '18px', fontWeight: '800', color: 'var(--green)' }}>{correct}</span>
+                    <span style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.correctLabel')}</span>
+                    <span style={{ fontSize: 'var(--fs-2xl)', fontWeight: '800', color: 'var(--green)' }}>{correct}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '13px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.wrongLabel')}</span>
-                    <span style={{ fontSize: '18px', fontWeight: '800', color: 'var(--red)' }}>{wrong}</span>
+                    <span style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.wrongLabel')}</span>
+                    <span style={{ fontSize: 'var(--fs-2xl)', fontWeight: '800', color: 'var(--red)' }}>{wrong}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '13px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.totalLabel')}</span>
-                    <span style={{ fontSize: '18px', fontWeight: '800', color: 'var(--text)' }}>{total}</span>
+                    <span style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.totalLabel')}</span>
+                    <span style={{ fontSize: 'var(--fs-2xl)', fontWeight: '800', color: 'var(--text)' }}>{total}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '13px', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.maxStreak')}</span>
-                    <span style={{ fontSize: '18px', fontWeight: '800', color: 'var(--amber)' }}>{catStats.maxStreak}</span>
+                    <span style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', fontWeight: '500' }}>{t('achievements.maxStreak')}</span>
+                    <span style={{ fontSize: 'var(--fs-2xl)', fontWeight: '800', color: 'var(--amber)' }}>{catStats.maxStreak}</span>
                   </div>
                 </div>
               </div>
@@ -304,18 +304,18 @@ const AchievementsPage = () => {
                   <TrendingUp size={18} color="var(--blue)" />
                 </div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>
+                  <div style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>
                     {acc >= 70 ? t('achievements.weekExcellent') : acc >= 50 ? t('achievements.weekGood') : t('achievements.weekKeep')}
                     {t('achievements.weekAccuracy', { acc })}
                   </div>
-                  <div style={{ fontSize: 11, color: 'var(--text3)' }}>
+                  <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>
                     {t('achievements.weekSummary', { answered: catStats.totalAnswered, correct: catStats.totalCorrect })}
                     {catStats.maxStreak > 3 && t('achievements.weekStreak', { count: catStats.maxStreak })}
                   </div>
                 </div>
-                {acc >= 70 && <div style={{ fontSize: 24 }}>🎯</div>}
-                {acc >= 50 && acc < 70 && <div style={{ fontSize: 24 }}>📈</div>}
-                {acc < 50 && <div style={{ fontSize: 24 }}>💪</div>}
+                {acc >= 70 && <div style={{ fontSize: 'var(--fs-5xl)' }}>🎯</div>}
+                {acc >= 50 && acc < 70 && <div style={{ fontSize: 'var(--fs-5xl)' }}>📈</div>}
+                {acc < 50 && <div style={{ fontSize: 'var(--fs-5xl)' }}>💪</div>}
               </div>
             )}
 
@@ -341,9 +341,9 @@ const AchievementsPage = () => {
 
               return (
                 <div style={{ marginBottom: 16 }}>
-                  <div className="section-header" style={{ color: 'var(--red)', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: '800', marginBottom: 10 }}><AlertTriangle size={18} /> {t('achievements.weakTitle')}</div>
+                  <div className="section-header" style={{ color: 'var(--red)', display: 'flex', alignItems: 'center', gap: '8px', fontSize: 'var(--fs-lg)', fontWeight: '800', marginBottom: 10 }}><AlertTriangle size={18} /> {t('achievements.weakTitle')}</div>
                   <div className="glass-panel" style={{ padding: '16px', border: '1px solid rgba(239,68,68,0.1)', background: 'rgba(239,68,68,0.01)' }}>
-                    <div style={{ fontSize: 11, color: 'var(--text3)', marginBottom: 12 }}>
+                    <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginBottom: 12 }}>
                       {t('achievements.weakHint')}
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -361,12 +361,12 @@ const AchievementsPage = () => {
                           <div style={{
                             width: 32, height: 32, borderRadius: 8, flexShrink: 0,
                             background: tp.acc < 40 ? 'var(--red-bg)' : tp.acc < 70 ? 'var(--amber-bg)' : 'var(--green-bg)',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16
+                            display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'var(--fs-xl)'
                           }}>
                             {tp.icon}
                           </div>
                           <div style={{ flex: 1, minWidth: 0 }}>
-                            <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 3, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            <div style={{ fontSize: 'var(--fs-md)', fontWeight: 600, color: 'var(--text)', marginBottom: 3, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                               {tp.name}
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -377,21 +377,21 @@ const AchievementsPage = () => {
                                   transition: 'width 0.5s ease'
                                 }} />
                               </div>
-                              <span style={{ fontSize: 11, fontWeight: 700, color: tp.acc < 40 ? 'var(--red)' : tp.acc < 70 ? 'var(--amber)' : 'var(--green)', flexShrink: 0 }}>
+                              <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: tp.acc < 40 ? 'var(--red)' : tp.acc < 70 ? 'var(--amber)' : 'var(--green)', flexShrink: 0 }}>
                                 {tp.acc}%
                               </span>
                             </div>
                           </div>
                           <div style={{ textAlign: 'right', flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2, paddingLeft: 6 }}>
-                            <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--red)' }}>{tp.wrong}</div>
-                            <div style={{ fontSize: 9, color: 'var(--text3)', fontWeight: 600 }}>{t('achievements.weakError')}</div>
+                            <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: 'var(--red)' }}>{tp.wrong}</div>
+                            <div style={{ fontSize: 'var(--fs-3xs)', color: 'var(--text3)', fontWeight: 600 }}>{t('achievements.weakError')}</div>
                           </div>
                           <button
                             className="btn btn-sm"
                             onClick={(e) => { e.stopPropagation(); handleNavigation(tp.id, 'exam'); }}
                             style={{
                               background: 'var(--red)', color: 'white', border: 'none',
-                              fontSize: 10, padding: '5px 8px', borderRadius: 8, flexShrink: 0,
+                              fontSize: 'var(--fs-2xs)', padding: '5px 8px', borderRadius: 8, flexShrink: 0,
                               fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit'
                             }}
                           >
@@ -406,7 +406,7 @@ const AchievementsPage = () => {
             })()}
 
             {/* Bo'limlar bo'yicha grafik */}
-            <div className="section-header" style={{ marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: '800' }}>
+            <div className="section-header" style={{ marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: 'var(--fs-lg)', fontWeight: '800' }}>
               <Target size={18} style={{ color: 'var(--blue)' }} /> {t('achievements.byTopic')}
             </div>
             <div className="glass-panel" style={{ padding: '18px', marginBottom: '20px' }}>
@@ -427,7 +427,7 @@ const AchievementsPage = () => {
                     transition={{ delay: idx * 0.04 }}
                     className="stats-topic-row"
                   >
-                    <div style={{ minWidth: '110px', maxWidth: '170px', fontSize: '13px', fontWeight: '500', color: 'var(--text)', display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
+                    <div style={{ minWidth: '110px', maxWidth: '170px', fontSize: 'var(--fs-md)', fontWeight: '500', color: 'var(--text)', display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
                       {t.icon} {t.name}
                     </div>
                     <div style={{ flex: 1 }}>
@@ -440,7 +440,7 @@ const AchievementsPage = () => {
                             style={{ height: '100%', borderRadius: '3px', background: barColor }}
                           />
                         </div>
-                        <div style={{ fontSize: '12px', fontWeight: '700', minWidth: '35px', textAlign: 'right', color: barColor }}>
+                        <div style={{ fontSize: 'var(--fs-sm)', fontWeight: '700', minWidth: '35px', textAlign: 'right', color: barColor }}>
                           {pct > 0 ? `${pct}%` : '—'}
                         </div>
                       </div>
@@ -448,7 +448,7 @@ const AchievementsPage = () => {
                         <div style={{ flex: 1, height: '3px', background: 'var(--bg3)', borderRadius: '1.5px', overflow: 'hidden' }}>
                           <div style={{ width: `${coveragePct}%`, height: '100%', borderRadius: '1.5px', background: 'var(--blue)', opacity: 0.5 }} />
                         </div>
-                        <div style={{ fontSize: '10px', color: 'var(--text3)', minWidth: '50px', textAlign: 'right' }}>
+                        <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', minWidth: '50px', textAlign: 'right' }}>
                           {answered}/{topicTotal}
                         </div>
                       </div>
@@ -459,18 +459,18 @@ const AchievementsPage = () => {
             </div>
 
             {/* Oxirgi Xatolar */}
-            <div className="section-header" style={{ marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: '800' }}>
+            <div className="section-header" style={{ marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: 'var(--fs-lg)', fontWeight: '800' }}>
               <AlertCircle size={18} style={{ color: 'var(--red)' }} /> {t('achievements.recentMistakes')}
             </div>
             <div style={{ marginBottom: '20px' }}>
               {catStats.mistakes.length === 0 ? (
-                <div style={{ color: 'var(--text3)', fontSize: '13px', padding: '12px 0' }}>{t('achievements.noMistakes')}</div>
+                <div style={{ color: 'var(--text3)', fontSize: 'var(--fs-md)', padding: '12px 0' }}>{t('achievements.noMistakes')}</div>
               ) : (
                 [...catStats.mistakes].reverse().slice(0, 5).map((m, i) => (
                   <div key={i} className="glass-panel" style={{ borderLeft: '3px solid var(--red)', padding: '10px 14px', marginBottom: '6px' }}>
-                    <div style={{ fontSize: '11px', color: 'var(--red)', fontFamily: "'IBM Plex Mono', monospace", marginBottom: '3px' }}>{m.topic}</div>
-                    <div style={{ fontSize: '13px', color: 'var(--text)', lineHeight: '1.4' }}>{m.question}</div>
-                    <div style={{ fontSize: '11px', color: 'var(--green)', marginTop: '5px' }}>{t('achievements.mistakeCorrect', { correct: m.correct })}</div>
+                    <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--red)', fontFamily: "'IBM Plex Mono', monospace", marginBottom: '3px' }}>{m.topic}</div>
+                    <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text)', lineHeight: '1.4' }}>{m.question}</div>
+                    <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--green)', marginTop: '5px' }}>{t('achievements.mistakeCorrect', { correct: m.correct })}</div>
                   </div>
                 ))
               )}

@@ -78,10 +78,10 @@ function renderListItem(item, selected, onSelect, ss) {
         {item.badge}
       </div>
       <div style={ss.listItemText}>
-        <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--text)' }}>{item.title}</span>
-        <span style={{ fontSize: 13, color: 'var(--text3)', marginTop: 2 }}>{item.desc}</span>
+        <span style={{ fontSize: 'var(--fs-xl)', fontWeight: 700, color: 'var(--text)' }}>{item.title}</span>
+        <span style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', marginTop: 2 }}>{item.desc}</span>
         {item.meta && (
-          <span style={{ fontSize: 11, color: 'var(--green)', fontWeight: 700, marginTop: 3 }}>{item.meta}</span>
+          <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--green)', fontWeight: 700, marginTop: 3 }}>{item.meta}</span>
         )}
       </div>
       {isActive && <CheckCircle size={20} style={{ color: PRIMARY, flexShrink: 0 }} />}
@@ -153,14 +153,14 @@ function LoadingStep({ isMobile }) {
       {/* Animated icon */}
       <div style={ss.loaderCircle}>
         <div style={ss.loaderInner}>
-          <span style={{ fontSize: 28 }}>✦</span>
+          <span style={{ fontSize: 'var(--fs-7xl)' }}>✦</span>
         </div>
       </div>
 
-      <h2 style={{ fontSize: 22, fontWeight: 800, color: 'var(--text)', margin: '24px 0 8px' }}>
+      <h2 style={{ fontSize: 'var(--fs-4xl)', fontWeight: 800, color: 'var(--text)', margin: '24px 0 8px' }}>
         {t('onboarding.loadingTitle')}
       </h2>
-      <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 28 }}>
+      <p style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 28 }}>
         {t('onboarding.loadingSubtitle')}
       </p>
 
@@ -171,7 +171,7 @@ function LoadingStep({ isMobile }) {
           style={{ height: '100%', background: PRIMARY, borderRadius: 4 }}
         />
       </div>
-      <p style={{ fontSize: 12, color: 'var(--text3)', textAlign: 'right', marginBottom: 24 }}>{progress}%</p>
+      <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', textAlign: 'right', marginBottom: 24 }}>{progress}%</p>
 
       {/* Checklist */}
       <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -184,7 +184,7 @@ function LoadingStep({ isMobile }) {
             ) : (
               <div style={{ width: 20, height: 20, borderRadius: '50%', border: '2px solid var(--border)', flexShrink: 0 }} />
             )}
-            <span style={{ fontSize: 14, color: i <= stepIdx ? PRIMARY : 'var(--text3)', fontWeight: i === stepIdx ? 600 : 400 }}>
+            <span style={{ fontSize: 'var(--fs-base)', color: i <= stepIdx ? PRIMARY : 'var(--text3)', fontWeight: i === stepIdx ? 600 : 400 }}>
               {text}
             </span>
           </div>
@@ -202,9 +202,9 @@ function WelcomeStep({ goal, time, isMobile }) {
 
   return (
     <div style={{ textAlign: 'center', padding: '10px 0 20px' }}>
-      <div style={{ fontSize: 64, marginBottom: 16 }}>🎉</div>
-      <h1 style={{ ...ss.title, textAlign: 'center', fontSize: 32, fontWeight: 900, marginBottom: 6 }}>{t('onboarding.doneTitle')}</h1>
-      <p style={{ ...ss.subtitle, textAlign: 'center', fontSize: 15, color: 'var(--text3)', marginBottom: 24 }}>{t('onboarding.doneSubtitle')}</p>
+      <div style={{ fontSize: 'var(--fs-hero-lg)', marginBottom: 16 }}>🎉</div>
+      <h1 style={{ ...ss.title, textAlign: 'center', fontSize: 'var(--fs-8xl)', fontWeight: 900, marginBottom: 6 }}>{t('onboarding.doneTitle')}</h1>
+      <p style={{ ...ss.subtitle, textAlign: 'center', fontSize: 'var(--fs-lg)', color: 'var(--text3)', marginBottom: 24 }}>{t('onboarding.doneSubtitle')}</p>
 
       <div style={{
         background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
@@ -221,13 +221,13 @@ function WelcomeStep({ goal, time, isMobile }) {
               width: 38, height: 38, borderRadius: 12,
               background: 'var(--blue-bg)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: 18, color: 'var(--accent)'
+              fontSize: 'var(--fs-2xl)', color: 'var(--accent)'
             }}>
               {goalObj.badge}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>{t('onboarding.yourCategory')}</span>
-              <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t(`onboarding.goals.${goalObj.id}.title`)}</span>
+              <span style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>{t('onboarding.yourCategory')}</span>
+              <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 700, color: 'var(--text)' }}>{t(`onboarding.goals.${goalObj.id}.title`)}</span>
             </div>
           </div>
         )}
@@ -237,13 +237,13 @@ function WelcomeStep({ goal, time, isMobile }) {
               width: 38, height: 38, borderRadius: 12,
               background: 'rgba(16, 185, 129, 0.12)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: 18, color: '#10B981'
+              fontSize: 'var(--fs-2xl)', color: '#10B981'
             }}>
               ⏱
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>{t('onboarding.dailyPlan')}</span>
-              <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t(`onboarding.times.${timeObj.id}.title`)}</span>
+              <span style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>{t('onboarding.dailyPlan')}</span>
+              <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 700, color: 'var(--text)' }}>{t(`onboarding.times.${timeObj.id}.title`)}</span>
             </div>
           </div>
         )}
@@ -252,13 +252,13 @@ function WelcomeStep({ goal, time, isMobile }) {
             width: 38, height: 38, borderRadius: 12,
             background: 'rgba(245, 158, 11, 0.12)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 18, color: '#F59E0B'
+            fontSize: 'var(--fs-2xl)', color: '#F59E0B'
           }}>
             ⭐
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: 10, color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>{t('onboarding.trialPeriod')}</span>
-            <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>{t('onboarding.trialValue')}</span>
+            <span style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>{t('onboarding.trialPeriod')}</span>
+            <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 700, color: 'var(--text)' }}>{t('onboarding.trialValue')}</span>
           </div>
         </div>
       </div>
@@ -268,7 +268,7 @@ function WelcomeStep({ goal, time, isMobile }) {
         border: '1px solid rgba(14, 151, 224, 0.15)',
         borderRadius: 14,
         padding: '14px 18px',
-        fontSize: 13,
+        fontSize: 'var(--fs-md)',
         color: 'var(--text2)',
         marginBottom: 24,
         display: 'flex',
@@ -277,7 +277,7 @@ function WelcomeStep({ goal, time, isMobile }) {
         gap: 8,
         lineHeight: 1.4
       }}>
-        <span style={{ fontSize: 16 }}>🎯</span>
+        <span style={{ fontSize: 'var(--fs-xl)' }}>🎯</span>
         <span style={{ textAlign: 'left' }}>{t('onboarding.motivation')}</span>
       </div>
     </div>
@@ -485,22 +485,22 @@ const getStyles = (isMobile) => ({
     borderRadius: 8,
   },
   content: { flex: 1, padding: '24px 20px 16px', overflowY: 'auto' },
-  title: { fontSize: 26, fontWeight: 800, lineHeight: 1.25, marginBottom: 8, color: 'var(--text)' },
-  subtitle: { fontSize: 14, color: 'var(--text3)', marginBottom: 20, lineHeight: 1.5 },
+  title: { fontSize: 'var(--fs-6xl)', fontWeight: 800, lineHeight: 1.25, marginBottom: 8, color: 'var(--text)' },
+  subtitle: { fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 20, lineHeight: 1.5 },
   list: { display: 'flex', flexDirection: 'column', gap: 10, marginTop: 8 },
-  groupHeader: { fontSize: 11, fontWeight: 800, letterSpacing: 0.6, color: 'var(--text3)', textTransform: 'uppercase', margin: '14px 2px 2px' },
+  groupHeader: { fontSize: 'var(--fs-xs)', fontWeight: 800, letterSpacing: 0.6, color: 'var(--text3)', textTransform: 'uppercase', margin: '14px 2px 2px' },
   searchWrap: { position: 'relative', marginTop: 4, marginBottom: 4 },
   searchIcon: {
     position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)',
     color: 'var(--text3)', pointerEvents: 'none',
   },
   searchInput: {
-    width: '100%', padding: '13px 16px 13px 42px', fontSize: 15,
+    width: '100%', padding: '13px 16px 13px 42px', fontSize: 'var(--fs-lg)',
     border: '1.5px solid var(--border)', borderRadius: 14,
     background: 'var(--bg3)', color: 'var(--text)', fontFamily: 'inherit',
     outline: 'none', boxSizing: 'border-box',
   },
-  searchEmpty: { textAlign: 'center', color: 'var(--text3)', fontSize: 14, padding: '24px 0' },
+  searchEmpty: { textAlign: 'center', color: 'var(--text3)', fontSize: 'var(--fs-base)', padding: '24px 0' },
   listItem: {
     display: 'flex', alignItems: 'center', gap: 14,
     padding: '16px 18px', borderRadius: 18,
@@ -511,7 +511,7 @@ const getStyles = (isMobile) => ({
   badge: {
     width: 40, height: 40, borderRadius: 12, flexShrink: 0,
     display: 'flex', alignItems: 'center', justifyContent: 'center',
-    fontSize: 14, fontWeight: 800, transition: 'all 0.18s',
+    fontSize: 'var(--fs-base)', fontWeight: 800, transition: 'all 0.18s',
   },
   listItemText: { flex: 1, display: 'flex', flexDirection: 'column' },
   footer: {
@@ -521,7 +521,7 @@ const getStyles = (isMobile) => ({
   primaryBtn: {
     width: '100%', padding: '16px', borderRadius: 16,
     background: 'var(--grad-primary)', color: '#fff',
-    border: 'none', fontWeight: 700, fontSize: 16,
+    border: 'none', fontWeight: 700, fontSize: 'var(--fs-xl)',
     cursor: 'pointer', fontFamily: 'inherit', transition: 'all 0.2s',
     boxShadow: '0 8px 20px rgba(14, 151, 224, 0.28)',
   },

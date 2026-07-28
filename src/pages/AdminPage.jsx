@@ -968,8 +968,8 @@ try {
     return (
       <div className="page" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh', gap: '16px' }}>
         <AlertTriangle size={48} style={{ color: 'var(--red)' }} />
-        <div style={{ fontSize: '24px', fontWeight: '800', color: 'var(--text)' }}>Ruxsat yo'q</div>
-        <div style={{ color: 'var(--text3)', fontSize: '15px', textAlign: 'center' }}>
+        <div style={{ fontSize: 'var(--fs-5xl)', fontWeight: '800', color: 'var(--text)' }}>Ruxsat yo'q</div>
+        <div style={{ color: 'var(--text3)', fontSize: 'var(--fs-lg)', textAlign: 'center' }}>
           Bu sahifa faqat adminlar uchun. <br/>
           Sizning hozirgi emailingiz: <b>{user?.email}</b> <br/>
           Roli: <b>{user?.role || 'user'}</b>
@@ -989,8 +989,8 @@ try {
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <div className="admin-badge"><Shield size={14} /> ADMIN</div>
           <div>
-            <div style={{ fontSize: '22px', fontWeight: '900', letterSpacing: '-0.5px', color: 'var(--text)' }}>Boshqaruv Paneli</div>
-            <div style={{ fontSize: '12px', color: 'var(--text3)', marginTop: '2px' }}>{user?.email}</div>
+            <div style={{ fontSize: 'var(--fs-4xl)', fontWeight: '900', letterSpacing: '-0.5px', color: 'var(--text)' }}>Boshqaruv Paneli</div>
+            <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: '2px' }}>{user?.email}</div>
           </div>
         </div>
         <div className="admin-quick-stats">
@@ -1054,7 +1054,7 @@ try {
       {tab === 'errors' && (
         <div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
-            <div style={{ fontSize: 13, color: 'var(--text3)' }}>
+            <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)' }}>
               Client xatolari — oxirgi {errorLogs.length} ta (eng yangi tepada)
             </div>
             <button className="btn btn-outline" onClick={loadErrorLogs} disabled={errorsLoading}>
@@ -1065,14 +1065,14 @@ try {
             <div style={{ textAlign: 'center', padding: '40px 20px', color: 'var(--text3)' }}>
               <CheckCircle size={40} style={{ color: 'var(--green)', marginBottom: 10 }} />
               <div style={{ fontWeight: 700 }}>Xatolar yo'q</div>
-              <div style={{ fontSize: 13 }}>Production'da qayd etilgan client xatosi topilmadi.</div>
+              <div style={{ fontSize: 'var(--fs-md)' }}>Production'da qayd etilgan client xatosi topilmadi.</div>
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {errorLogs.map(log => (
                 <div key={log.id} style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 12, padding: '12px 14px' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10 }}>
-                    <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', wordBreak: 'break-word', flex: 1 }}>
+                    <div style={{ fontSize: 'var(--fs-base)', fontWeight: 700, color: 'var(--text)', wordBreak: 'break-word', flex: 1 }}>
                       {log.message}
                     </div>
                     <button onClick={() => deleteErrorLog(log.id)} title="O'chirish" style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)', flexShrink: 0 }}>
@@ -1080,9 +1080,9 @@ try {
                     </button>
                   </div>
                   {log.stack && (
-                    <pre style={{ margin: '8px 0 0', fontSize: 11, color: 'var(--text3)', whiteSpace: 'pre-wrap', wordBreak: 'break-word', maxHeight: 120, overflow: 'auto' }}>{log.stack}</pre>
+                    <pre style={{ margin: '8px 0 0', fontSize: 'var(--fs-xs)', color: 'var(--text3)', whiteSpace: 'pre-wrap', wordBreak: 'break-word', maxHeight: 120, overflow: 'auto' }}>{log.stack}</pre>
                   )}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 8, fontSize: 11, color: 'var(--text3)' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 8, fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>
                     {log.url && <span>🔗 {log.url.replace(/^https?:\/\//, '')}</span>}
                     {log.uid && <span>👤 {log.uid.slice(0, 8)}</span>}
                     {log.createdAt && <span>🕒 {new Date(log.createdAt).toLocaleString()}</span>}
@@ -1123,7 +1123,7 @@ try {
             <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text3)' }}>Yuklanmoqda...</div>
           ) : filtered.length === 0 ? (
             <div className="glass-panel" style={{ padding: '60px', textAlign: 'center' }}>
-              <div style={{ fontSize: '40px', marginBottom: '12px' }}>🎉</div>
+              <div style={{ fontSize: 'var(--fs-10xl)', marginBottom: '12px' }}>🎉</div>
               <div style={{ color: 'var(--text2)', fontWeight: '600' }}>Hamma e'tirozlar hal qilindi!</div>
             </div>
           ) : (
@@ -1144,21 +1144,21 @@ try {
                       onClick={() => setExpandedId(expandedId === obj.fbId ? null : obj.fbId)}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flex: 1 }}>
-                        <span className={`status-badge-neon ${obj.solved ? 'paid' : 'pending'}`} style={{ fontSize: '10px', padding: '2px 8px', borderRadius: '6px' }}>
+                        <span className={`status-badge-neon ${obj.solved ? 'paid' : 'pending'}`} style={{ fontSize: 'var(--fs-2xs)', padding: '2px 8px', borderRadius: '6px' }}>
                           {obj.solved ? '✅ HAL QILINDI' : '⏳ YANGI'}
                         </span>
                         {(objectionCounts[objKey(obj)] || 0) >= 2 && (
-                          <span style={{ fontSize: '10px', fontWeight: 800, background: 'var(--red-bg)', color: 'var(--red)', padding: '2px 8px', borderRadius: '6px', border: '1px solid rgba(239,68,68,0.3)' }}>
+                          <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 800, background: 'var(--red-bg)', color: 'var(--red)', padding: '2px 8px', borderRadius: '6px', border: '1px solid rgba(239,68,68,0.3)' }}>
                             ⚠ {objectionCounts[objKey(obj)]} ta shikoyat
                           </span>
                         )}
-                        <span style={{ fontSize: '12px', color: 'var(--blue)', fontWeight: '600' }}>{obj.category === 'art' ? '🎨' : '🎖️'} {obj.topic}</span>
-                        <span style={{ fontSize: '11px', color: 'var(--text3)' }}>{obj.date}</span>
-                        {obj.userEmail && <span style={{ fontSize: '11px', color: 'var(--text3)' }}>📧 {obj.userEmail}</span>}
+                        <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--blue)', fontWeight: '600' }}>{obj.category === 'art' ? '🎨' : '🎖️'} {obj.topic}</span>
+                        <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>{obj.date}</span>
+                        {obj.userEmail && <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>📧 {obj.userEmail}</span>}
                       </div>
                       {expandedId === obj.fbId ? <ChevronUp size={16} style={{ color: 'var(--text3)', flexShrink: 0 }} /> : <ChevronDown size={16} style={{ color: 'var(--text3)', flexShrink: 0 }} />}
                     </div>
-                    <div style={{ marginTop: '10px', fontSize: '14px', color: 'var(--text)', fontWeight: '500', lineHeight: '1.4' }}>
+                    <div style={{ marginTop: '10px', fontSize: 'var(--fs-base)', color: 'var(--text)', fontWeight: '500', lineHeight: '1.4' }}>
                       📝 {obj.question?.slice(0, 120)}{obj.question?.length > 120 ? '...' : ''}
                     </div>
                     <AnimatePresence>
@@ -1170,15 +1170,15 @@ try {
                           style={{ overflow: 'hidden' }}
                         >
                           <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                            <div style={{ background: 'var(--bg3)', padding: '12px', borderRadius: '10px', fontSize: '14px', color: 'var(--text)', lineHeight: '1.5' }}>
+                            <div style={{ background: 'var(--bg3)', padding: '12px', borderRadius: '10px', fontSize: 'var(--fs-base)', color: 'var(--text)', lineHeight: '1.5' }}>
                               <strong>Savol:</strong> {obj.question}
                             </div>
                             {obj.correct && (
-                              <div style={{ background: 'var(--green-bg)', padding: '10px 12px', borderRadius: '10px', fontSize: '13px', color: 'var(--green)', fontWeight: '600', border: '1px solid rgba(16,185,129,0.2)' }}>
+                              <div style={{ background: 'var(--green-bg)', padding: '10px 12px', borderRadius: '10px', fontSize: 'var(--fs-md)', color: 'var(--green)', fontWeight: '600', border: '1px solid rgba(16,185,129,0.2)' }}>
                                 ✅ To'g'ri javob: {obj.correct.replace(/^[A-D]\)\s*/, '')}
                               </div>
                             )}
-                            <div style={{ background: 'var(--amber-bg)', padding: '12px', borderRadius: '10px', fontSize: '13px', color: 'var(--text2)', border: '1px solid rgba(245,158,11,0.2)' }}>
+                            <div style={{ background: 'var(--amber-bg)', padding: '12px', borderRadius: '10px', fontSize: 'var(--fs-md)', color: 'var(--text2)', border: '1px solid rgba(245,158,11,0.2)' }}>
                               <strong>E'tiroz:</strong> {obj.note}
                             </div>
                             <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
@@ -1222,9 +1222,9 @@ try {
 
           {questionRequests.length === 0 ? (
             <div className="glass-panel" style={{ padding: '60px', textAlign: 'center' }}>
-              <div style={{ fontSize: '40px', marginBottom: '12px' }}>📥</div>
+              <div style={{ fontSize: 'var(--fs-10xl)', marginBottom: '12px' }}>📥</div>
               <div style={{ color: 'var(--text2)', fontWeight: '600' }}>Hali savol so'rovlari yo'q</div>
-              <div style={{ color: 'var(--text3)', fontSize: '13px', marginTop: '6px' }}>Foydalanuvchilar savol yetishmagan bo'limlardan so'rov yuborganda shu yerda paydo bo'ladi.</div>
+              <div style={{ color: 'var(--text3)', fontSize: 'var(--fs-md)', marginTop: '6px' }}>Foydalanuvchilar savol yetishmagan bo'limlardan so'rov yuborganda shu yerda paydo bo'ladi.</div>
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -1240,20 +1240,20 @@ try {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, flexWrap: 'wrap' }}>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 6 }}>
-                        <span style={{ fontSize: 11, fontWeight: 800, background: 'var(--blue-bg)', color: 'var(--blue)', padding: '3px 10px', borderRadius: 8 }}>
+                        <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 800, background: 'var(--blue-bg)', color: 'var(--blue)', padding: '3px 10px', borderRadius: 8 }}>
                           🔥 {group.count} ta so'rov
                         </span>
                         {group.pending === 0 ? (
-                          <span className="status-badge-neon paid" style={{ fontSize: 10, padding: '2px 8px', borderRadius: 6 }}>✅ BAJARILDI</span>
+                          <span className="status-badge-neon paid" style={{ fontSize: 'var(--fs-2xs)', padding: '2px 8px', borderRadius: 6 }}>✅ BAJARILDI</span>
                         ) : (
-                          <span className="status-badge-neon pending" style={{ fontSize: 10, padding: '2px 8px', borderRadius: 6 }}>⏳ {group.pending} KUTMOQDA</span>
+                          <span className="status-badge-neon pending" style={{ fontSize: 'var(--fs-2xs)', padding: '2px 8px', borderRadius: 6 }}>⏳ {group.pending} KUTMOQDA</span>
                         )}
-                        <span style={{ fontSize: 12, color: 'var(--text3)' }}>{group.categoryName}</span>
+                        <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)' }}>{group.categoryName}</span>
                       </div>
-                      <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>
-                        {group.topicName} <span style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 500 }}>#{group.topicId}</span>
+                      <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 700, color: 'var(--text)' }}>
+                        {group.topicName} <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', fontWeight: 500 }}>#{group.topicId}</span>
                       </div>
-                      <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 6 }}>
+                      <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: 6 }}>
                         So'raganlar: {group.items.slice(0, 5).map(i => i.userName || i.userEmail || 'Anonim').join(', ')}{group.items.length > 5 ? ` +${group.items.length - 5}` : ''}
                       </div>
                     </div>
@@ -1395,16 +1395,16 @@ try {
             />
             {isUploadingJSON ? (
               <div>
-                <div style={{ fontSize: '32px', marginBottom: '8px', display: 'inline-block' }} className="spin-icon">⏳</div>
-                <div style={{ fontSize: '14px', fontWeight: '700', color: 'var(--text)' }}>Savollar yuklanmoqda, iltimos kuting...</div>
+                <div style={{ fontSize: 'var(--fs-8xl)', marginBottom: '8px', display: 'inline-block' }} className="spin-icon">⏳</div>
+                <div style={{ fontSize: 'var(--fs-base)', fontWeight: '700', color: 'var(--text)' }}>Savollar yuklanmoqda, iltimos kuting...</div>
               </div>
             ) : (
               <div>
-                <div style={{ fontSize: '32px', marginBottom: '8px' }}>📁</div>
-                <div style={{ fontSize: '14px', fontWeight: '700', color: 'var(--text)', marginBottom: '4px' }}>
+                <div style={{ fontSize: 'var(--fs-8xl)', marginBottom: '8px' }}>📁</div>
+                <div style={{ fontSize: 'var(--fs-base)', fontWeight: '700', color: 'var(--text)', marginBottom: '4px' }}>
                   {isDraggingFile ? 'Faylni shu yerga tashlang' : 'JSON faylni sudrab tashlang yoki bosing'}
                 </div>
-                <div style={{ fontSize: '11px', color: 'var(--text3)' }}>
+                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>
                   Diapazon bo'yicha topicId va category avtomatik bog'lanadi (Ommaviy yuklash)
                 </div>
               </div>
@@ -1425,12 +1425,12 @@ try {
               </div>
             ))}
             {filteredQuestions.length === 0 && (
-              <div style={{ textAlign: 'center', padding: '40px', color: 'var(--text3)', fontSize: '14px' }}>
+              <div style={{ textAlign: 'center', padding: '40px', color: 'var(--text3)', fontSize: 'var(--fs-base)' }}>
                 Savol topilmadi 🔍
               </div>
             )}
             {filteredQuestions.length > 50 && (
-              <div style={{ textAlign: 'center', padding: 16, color: 'var(--text3)', fontSize: 13 }}>
+              <div style={{ textAlign: 'center', padding: 16, color: 'var(--text3)', fontSize: 'var(--fs-md)' }}>
                 ... va yana {filteredQuestions.length - 50} ta savol
               </div>
             )}
@@ -1447,7 +1447,7 @@ try {
                 <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text3)' }} />
                 <input
                   className="admin-search"
-                  style={{ padding: '8px 8px 8px 32px', fontSize: '13px', borderRadius: '10px' }}
+                  style={{ padding: '8px 8px 8px 32px', fontSize: 'var(--fs-input)', borderRadius: '10px' }}
                   placeholder="Ism, ID, telefon yoki email..."
                   value={userSearch}
                   onChange={e => setUserSearch(e.target.value)}
@@ -1475,9 +1475,9 @@ try {
                     <div className="admin-user-details">
                       <div className="admin-user-name-line">
                         <span className="admin-user-name-sm">{u.displayName || '—'}</span>
-                        {u.shortId && <span style={{ fontSize: 10.5, fontWeight: 700, color: 'var(--text3)', border: '1px solid var(--border)', borderRadius: 6, padding: '1px 5px' }}>{u.shortId}</span>}
-                        {u.isPremium && <span style={{ fontSize: 11 }} title="Pro">⭐</span>}
-                        {u.role === 'admin' && <span style={{ fontSize: 11 }} title="Admin">🛡️</span>}
+                        {u.shortId && <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, color: 'var(--text3)', border: '1px solid var(--border)', borderRadius: 6, padding: '1px 5px' }}>{u.shortId}</span>}
+                        {u.isPremium && <span style={{ fontSize: 'var(--fs-xs)' }} title="Pro">⭐</span>}
+                        {u.role === 'admin' && <span style={{ fontSize: 'var(--fs-xs)' }} title="Admin">🛡️</span>}
                       </div>
                       <div className="admin-user-subtext">{u.email || u.phoneNumber || 'Identifikator yo\'q'}</div>
                     </div>
@@ -1563,7 +1563,7 @@ try {
           </div>
 
           <div className="glass-panel" style={{ padding: '24px' }}>
-            <div style={{ fontWeight: '700', fontSize: '16px', marginBottom: '20px', color: 'var(--text)' }}>Mavzu bo'yicha e'tirozlar</div>
+            <div style={{ fontWeight: '700', fontSize: 'var(--fs-xl)', marginBottom: '20px', color: 'var(--text)' }}>Mavzu bo'yicha e'tirozlar</div>
             {Object.entries(
               objections.reduce((acc, o) => {
                 const key = o.topic || 'Boshqa';
@@ -1574,11 +1574,11 @@ try {
               const pct = Math.round((count / objections.length) * 100);
               return (
                 <div key={topic} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-                  <div style={{ minWidth: '100px', fontSize: '13px', color: 'var(--text2)', fontWeight: '500', flex: '0 0 auto' }}>{topic}</div>
+                  <div style={{ minWidth: '100px', fontSize: 'var(--fs-md)', color: 'var(--text2)', fontWeight: '500', flex: '0 0 auto' }}>{topic}</div>
                   <div style={{ flex: 1, height: '8px', background: 'var(--bg3)', borderRadius: '4px', overflow: 'hidden' }}>
                     <div style={{ width: `${pct}%`, height: '100%', background: 'var(--blue)', borderRadius: '4px', transition: 'width 0.6s ease' }} />
                   </div>
-                  <div style={{ minWidth: '50px', textAlign: 'right', fontSize: '13px', fontWeight: '700', color: 'var(--text2)' }}>{count} ta</div>
+                  <div style={{ minWidth: '50px', textAlign: 'right', fontSize: 'var(--fs-md)', fontWeight: '700', color: 'var(--text2)' }}>{count} ta</div>
                 </div>
               );
             })}
@@ -1617,12 +1617,12 @@ try {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           {/* Yangi bildirishnoma yuborish formasi */}
           <div className="glass-panel" style={{ padding: '24px' }}>
-            <div style={{ fontSize: '18px', fontWeight: '700', color: 'var(--text)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: '700', color: 'var(--text)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Send size={20} style={{ color: 'var(--blue)' }} /> Yangi Bildirishnoma Yuborish
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', gridColumn: 'span 2' }}>
-                <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Sarlavha</label>
+                <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Sarlavha</label>
                 <input 
                   className="modal-input" 
                   placeholder="Masalan: 🎉 Yangi imtihon bo'limi qo'shildi!" 
@@ -1632,7 +1632,7 @@ try {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', gridColumn: 'span 2' }}>
-                <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Xabar matni</label>
+                <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Xabar matni</label>
                 <textarea 
                   className="modal-input" 
                   style={{ minHeight: '80px' }}
@@ -1643,7 +1643,7 @@ try {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Xabar turi</label>
+                <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Xabar turi</label>
                 <select 
                   className="modal-input" 
                   value={newNotif.type} 
@@ -1656,7 +1656,7 @@ try {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Qabul qiluvchilar</label>
+                <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Qabul qiluvchilar</label>
                 <select 
                   className="modal-input" 
                   value={newNotif.targetUser} 
@@ -1683,12 +1683,12 @@ try {
 
           {/* Yuborilgan bildirishnomalar ro'yxati */}
           <div className="glass-panel" style={{ padding: '24px' }}>
-            <div style={{ fontSize: '18px', fontWeight: '700', color: 'var(--text)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div style={{ fontSize: 'var(--fs-2xl)', fontWeight: '700', color: 'var(--text)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Bell size={20} style={{ color: 'var(--amber)' }} /> Yuborilgan Bildirishnomalar Tarixi
             </div>
             
             {adminNotifs.length === 0 ? (
-              <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text3)', fontSize: '14px' }}>
+              <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text3)', fontSize: 'var(--fs-base)' }}>
                 Hali hech qanday bildirishnoma yuborilmagan.
               </div>
             ) : (
@@ -1705,9 +1705,9 @@ try {
                         {n.type === 'success' ? <CheckCircle2 size={20} /> : n.type === 'warning' ? <AlertCircle size={20} /> : <Info size={20} />}
                       </div>
                       <div style={{ minWidth: 0 }}>
-                        <div style={{ fontWeight: '700', fontSize: '15px', color: 'var(--text)', marginBottom: '4px' }}>{n.title}</div>
-                        <div style={{ fontSize: '13px', color: 'var(--text2)', marginBottom: '6px' }}>{n.message}</div>
-                        <div style={{ display: 'flex', gap: '12px', fontSize: '11px', color: 'var(--text3)', fontWeight: '500' }}>
+                        <div style={{ fontWeight: '700', fontSize: 'var(--fs-lg)', color: 'var(--text)', marginBottom: '4px' }}>{n.title}</div>
+                        <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', marginBottom: '6px' }}>{n.message}</div>
+                        <div style={{ display: 'flex', gap: '12px', fontSize: 'var(--fs-xs)', color: 'var(--text3)', fontWeight: '500' }}>
                           <span>📅 {new Date(n.date).toLocaleString()}</span>
                           <span>🎯 {n.targetUser === 'all' ? 'Barcha foydalanuvchilar' : `👤 Foydalanuvchi: ${n.targetUser}`}</span>
                         </div>
@@ -1744,9 +1744,9 @@ try {
               { label: "Jami bonus", value: referralSummary.totalBonus.toLocaleString() + " so'm", icon: '💰', color: 'var(--accent2)' },
             ].map((card, i) => (
               <div key={i} className="admin-stat-card">
-                <div style={{ fontSize: 22, marginBottom: 4 }}>{card.icon}</div>
-                <div style={{ fontSize: 20, fontWeight: 900, color: card.color }}>{card.value}</div>
-                <div style={{ fontSize: 10, color: 'var(--text3)', marginTop: 2 }}>{card.label}</div>
+                <div style={{ fontSize: 'var(--fs-4xl)', marginBottom: 4 }}>{card.icon}</div>
+                <div style={{ fontSize: 'var(--fs-3xl)', fontWeight: 900, color: card.color }}>{card.value}</div>
+                <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', marginTop: 2 }}>{card.label}</div>
               </div>
             ))}
           </div>
@@ -1754,7 +1754,7 @@ try {
           {/* Referrallar jadvali */}
           <div className="glass-panel" style={{ padding: '20px', overflow: 'hidden' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, marginBottom: '16px', flexWrap: 'wrap' }}>
-              <div style={{ fontSize: '16px', fontWeight: '700', color: 'var(--text)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div style={{ fontSize: 'var(--fs-xl)', fontWeight: '700', color: 'var(--text)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Users size={18} style={{ color: 'var(--blue)' }} /> Barcha referrallar ro'yxati
               </div>
               <button className="btn btn-sm btn-outline" onClick={exportReferrals} disabled={!allReferrals.length} title="CSV faylga eksport">
@@ -1766,16 +1766,16 @@ try {
               <div style={{ textAlign: 'center', padding: 40, color: 'var(--text3)' }}>⏳ Yuklanmoqda...</div>
             ) : allReferrals.length === 0 ? (
               <div style={{ textAlign: 'center', padding: 40, color: 'var(--text3)' }}>
-                <div style={{ fontSize: 32, marginBottom: 8 }}>🔗</div>
+                <div style={{ fontSize: 'var(--fs-8xl)', marginBottom: 8 }}>🔗</div>
                 <div>Hali hech kim referral orqali kelmagan</div>
               </div>
             ) : (
               <div style={{ overflowX: 'auto' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'var(--fs-md)' }}>
                   <thead style={{ background: 'var(--bg3)' }}>
                     <tr>
                       {["Taklif qiluvchi", "Taklif qilingan", "Sana", "Status", "Bonus", "Bepul tugash", "Amal"].map(h => (
-                        <th key={h} style={{ padding: '10px 12px', textAlign: 'left', fontSize: '11px', color: 'var(--text3)', fontWeight: 700 }}>{h}</th>
+                        <th key={h} style={{ padding: '10px 12px', textAlign: 'left', fontSize: 'var(--fs-xs)', color: 'var(--text3)', fontWeight: 700 }}>{h}</th>
                       ))}
                     </tr>
                   </thead>
@@ -1786,13 +1786,13 @@ try {
                         <tr key={r.id} style={{ borderTop: '0.5px solid var(--border)' }}>
                           <td style={{ padding: '10px 12px', color: 'var(--text)' }}>
                             <div style={{ fontWeight: 600 }}>{r.referrerName || '—'}</div>
-                            <div style={{ fontSize: 10, color: 'var(--text3)' }}>{r.referrerId?.slice(0, 8)}...</div>
+                            <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)' }}>{r.referrerId?.slice(0, 8)}...</div>
                           </td>
                           <td style={{ padding: '10px 12px', color: 'var(--text)' }}>
                             <div style={{ fontWeight: 600 }}>{r.referredName || '—'}</div>
-                            <div style={{ fontSize: 10, color: 'var(--text3)' }}>{r.referredId?.slice(0, 8)}...</div>
+                            <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)' }}>{r.referredId?.slice(0, 8)}...</div>
                           </td>
-                          <td style={{ padding: '10px 12px', color: 'var(--text3)', fontSize: 12 }}>
+                          <td style={{ padding: '10px 12px', color: 'var(--text3)', fontSize: 'var(--fs-sm)' }}>
                             {r.createdAt ? new Date(r.createdAt).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'short', year: '2-digit' }) : '—'}
                           </td>
                           <td style={{ padding: '10px 12px' }}>
@@ -1804,10 +1804,10 @@ try {
                               <span className="status-badge-neon pending">⏳ Kutilmoqda</span>
                             )}
                           </td>
-                          <td style={{ padding: '10px 12px', color: r.bonusPaid ? 'var(--green)' : 'var(--text3)', fontWeight: r.bonusPaid ? 700 : 400, fontSize: 13 }}>
+                          <td style={{ padding: '10px 12px', color: r.bonusPaid ? 'var(--green)' : 'var(--text3)', fontWeight: r.bonusPaid ? 700 : 400, fontSize: 'var(--fs-md)' }}>
                             {r.bonusPaid ? `+${(r.bonusAmount || 15000).toLocaleString()} so'm` : '—'}
                           </td>
-                          <td style={{ padding: '10px 12px', fontSize: 12 }}>
+                          <td style={{ padding: '10px 12px', fontSize: 'var(--fs-sm)' }}>
                             {(() => {
                               if (r.freeExpire) {
                                 return (
@@ -1844,7 +1844,7 @@ try {
                             {r.status !== 'paid' && (
                               <button
                                 className="btn btn-sm"
-                                style={{ background: 'var(--green)', color: '#fff', border: 'none', fontSize: 11, padding: '4px 10px', marginRight: 6 }}
+                                style={{ background: 'var(--green)', color: '#fff', border: 'none', fontSize: 'var(--fs-xs)', padding: '4px 10px', marginRight: 6 }}
                                 onClick={() => handleMarkReferralPaid(r.id, r.referrerId)}
                               >
                                 ✓ To'ladi
@@ -1853,7 +1853,7 @@ try {
                             {r.freeExpire && (
                               <button
                                 className="btn btn-sm"
-                                style={{ background: 'var(--red)', color: '#fff', border: 'none', fontSize: 11, padding: '4px 10px' }}
+                                style={{ background: 'var(--red)', color: '#fff', border: 'none', fontSize: 'var(--fs-xs)', padding: '4px 10px' }}
                                 onClick={() => handleCancelReferralPremium(r.referredId, r.id)}
                                 title="Bepul premiumni bekor qilish"
                               >
@@ -1898,7 +1898,7 @@ try {
               <div className="modal-title" style={{ flexShrink: 0 }}>{editingQ ? 'Savolni tahrirlash' : 'Yangi savol qo\'shish'}</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '20px 0', overflowY: 'auto', flex: 1 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Savol matni</label>
+                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Savol matni</label>
                   <textarea
                     className="modal-input"
                     style={{ minHeight: '80px' }}
@@ -1907,7 +1907,7 @@ try {
                   />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Rasm qo'shish (ixtiyoriy)</label>
+                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Rasm qo'shish (ixtiyoriy)</label>
                   {newQ.image && (
                     <div style={{ position: 'relative', width: '150px', marginBottom: '8px' }}>
                       <img src={newQ.image} alt="Uploaded" style={{ width: '100%', borderRadius: '8px', border: '1px solid var(--border)' }} />
@@ -1925,12 +1925,12 @@ try {
                     accept="image/*"
                     onChange={handleImageUpload}
                     disabled={isUploadingImage}
-                    style={{ fontSize: '13px', color: 'var(--text3)' }}
+                    style={{ fontSize: 'var(--fs-input)', color: 'var(--text3)' }}
                   />
-                  {isUploadingImage && <div style={{ fontSize: '12px', color: 'var(--blue)' }}>Yuklanmoqda...</div>}
+                  {isUploadingImage && <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--blue)' }}>Yuklanmoqda...</div>}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Mavzu (topicId)</label>
+                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Mavzu (topicId)</label>
                   <select
                     className="modal-input"
                     value={newQ.topicId}
@@ -1943,15 +1943,15 @@ try {
                       </option>
                     ))}
                   </select>
-                  <div style={{ fontSize: '11px', color: 'var(--text3)', marginTop: '-4px' }}>
+                  <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: '-4px' }}>
                     ⚡ Category avtomatik ravishda mavzuga mos ravishda belgilanadi.
                   </div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Javob variantlari</label>
+                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Javob variantlari</label>
                   {newQ.opts.map((opt, i) => (
                     <div key={i} style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                      <span style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text3)' }}>{String.fromCharCode(65 + i)})</span>
+                      <span style={{ fontSize: 'var(--fs-sm)', fontWeight: '700', color: 'var(--text3)' }}>{String.fromCharCode(65 + i)})</span>
                       <input
                         className="modal-input"
                         value={opt}
@@ -1965,7 +1965,7 @@ try {
                   ))}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>To'g'ri javob indeksi (0-3)</label>
+                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>To'g'ri javob indeksi (0-3)</label>
                   <input
                     type="number"
                     className="modal-input"
@@ -1975,7 +1975,7 @@ try {
                   />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Tushuntirish (Explanation)</label>
+                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Tushuntirish (Explanation)</label>
                   <textarea
                     className="modal-input"
                     value={newQ.explanation}
@@ -1983,7 +1983,7 @@ try {
                   />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Eslab qolish usuli (Mnemonic)</label>
+                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Eslab qolish usuli (Mnemonic)</label>
                   <input
                     className="modal-input"
                     value={newQ.mnemonic}
@@ -2015,19 +2015,19 @@ try {
               <div className="modal-title">{editingTariff ? 'Tarifni tahrirlash' : 'Yangi tarif'}</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '20px 0' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>ID (masalan: 6months)</label>
+                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>ID (masalan: 6months)</label>
                   <input className="modal-input" value={newTariff.id} onChange={e => setNewTariff({...newTariff, id: e.target.value})} disabled={!!editingTariff} />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Nomi</label>
+                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Nomi</label>
                   <input className="modal-input" value={newTariff.name} onChange={e => setNewTariff({...newTariff, name: e.target.value})} />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Narxi (so'm)</label>
+                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Narxi (so'm)</label>
                   <input type="number" className="modal-input" value={newTariff.price} onChange={e => setNewTariff({...newTariff, price: parseInt(e.target.value)})} />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: '13px', color: 'var(--text3)', fontWeight: '600' }}>Muddati (oy, cheksiz uchun 999)</label>
+                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Muddati (oy, cheksiz uchun 999)</label>
                   <input type="number" className="modal-input" value={newTariff.durationMonths} onChange={e => setNewTariff({...newTariff, durationMonths: parseInt(e.target.value)})} />
                 </div>
               </div>
@@ -2045,10 +2045,10 @@ try {
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
           <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: 20, maxWidth: 720, width: '100%', maxHeight: '85vh', borderRadius: 20, display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
-              <h3 style={{ fontSize: 18, fontWeight: 800, color: 'var(--text)', margin: 0 }}>🔍 Topilgan dublikatlar</h3>
-              <span style={{ fontSize: 12, color: 'var(--text3)' }}>Qamrov: <strong>{dupPreview.scope}</strong></span>
+              <h3 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: 'var(--text)', margin: 0 }}>🔍 Topilgan dublikatlar</h3>
+              <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)' }}>Qamrov: <strong>{dupPreview.scope}</strong></span>
             </div>
-            <p style={{ fontSize: 13, color: 'var(--text3)', marginBottom: 12 }}>
+            <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', marginBottom: 12 }}>
               <strong style={{ color: 'var(--red)' }}>{dupPreview.totalRemove} ta</strong> savol o'chiriladi · {dupPreview.groups.length} guruh ·
               har guruhda eng to'liq (izohli) variant <strong style={{ color: 'var(--green)' }}>saqlanadi</strong>.
             </p>
@@ -2056,13 +2056,13 @@ try {
               {dupPreview.groups.map((g, gi) => (
                 <div key={gi} style={{ border: '1px solid var(--glass-border)', borderRadius: 12, padding: 10, background: 'var(--glass-bg)' }}>
                   <div style={{ display: 'flex', gap: 6, alignItems: 'flex-start', marginBottom: 6 }}>
-                    <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--green)', background: 'var(--green-bg, rgba(34,197,94,0.12))', borderRadius: 6, padding: '2px 6px', whiteSpace: 'nowrap' }}>🟢 Saqlanadi</span>
-                    <span style={{ fontSize: 13, color: 'var(--text)', fontWeight: 600 }}>{g.keep.q}</span>
+                    <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--green)', background: 'var(--green-bg, rgba(34,197,94,0.12))', borderRadius: 6, padding: '2px 6px', whiteSpace: 'nowrap' }}>🟢 Saqlanadi</span>
+                    <span style={{ fontSize: 'var(--fs-md)', color: 'var(--text)', fontWeight: 600 }}>{g.keep.q}</span>
                   </div>
                   {g.removed.map((r, ri) => (
                     <div key={ri} style={{ display: 'flex', gap: 6, alignItems: 'flex-start', marginTop: 4, paddingLeft: 8 }}>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--red)', background: 'var(--red-bg, rgba(239,68,68,0.12))', borderRadius: 6, padding: '2px 6px', whiteSpace: 'nowrap' }}>🔴 {r.sim}%</span>
-                      <span style={{ fontSize: 12, color: 'var(--text3)' }}>{r.q} <em style={{ opacity: 0.6 }}>(#{r.topicId})</em></span>
+                      <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--red)', background: 'var(--red-bg, rgba(239,68,68,0.12))', borderRadius: 6, padding: '2px 6px', whiteSpace: 'nowrap' }}>🔴 {r.sim}%</span>
+                      <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)' }}>{r.q} <em style={{ opacity: 0.6 }}>(#{r.topicId})</em></span>
                     </div>
                   ))}
                 </div>
@@ -2081,9 +2081,9 @@ try {
       {confirmDialog.isOpen && (
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: 24, maxWidth: 320, width: '90%', borderRadius: 20, textAlign: 'center' }}>
-            <div style={{ fontSize: 40, marginBottom: 12 }}>⚠️</div>
-            <h3 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Tasdiqlang</h3>
-            <p style={{ fontSize: 14, color: 'var(--text3)', marginBottom: 24, whiteSpace: 'pre-wrap' }}>{confirmDialog.text}</p>
+            <div style={{ fontSize: 'var(--fs-10xl)', marginBottom: 12 }}>⚠️</div>
+            <h3 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Tasdiqlang</h3>
+            <p style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 24, whiteSpace: 'pre-wrap' }}>{confirmDialog.text}</p>
             <div style={{ display: 'flex', gap: 12 }}>
               <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setConfirmDialog({ isOpen: false, text: '', onConfirm: null })}>Bekor qilish</button>
               <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { confirmDialog.onConfirm(); setConfirmDialog({ isOpen: false, text: '', onConfirm: null }); }}>Tasdiqlash</button>

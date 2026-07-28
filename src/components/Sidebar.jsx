@@ -106,7 +106,7 @@ const Sidebar = () => {
             {(() => {
               const now = Date.now();
               const due = (state.spacedCards || []).filter(c => c.nextReview <= now).length;
-              return due > 0 ? <span style={{ background: 'var(--red)', color: 'white', borderRadius: 10, padding: '1px 7px', fontSize: 11, fontWeight: 700, marginLeft: 'auto' }}>{due}</span> : null;
+              return due > 0 ? <span style={{ background: 'var(--red)', color: 'white', borderRadius: 10, padding: '1px 7px', fontSize: 'var(--fs-xs)', fontWeight: 700, marginLeft: 'auto' }}>{due}</span> : null;
             })()}
           </div>
 
@@ -119,7 +119,7 @@ const Sidebar = () => {
             {(() => {
               const cat = state.activeCategory;
               const mistakesCount = (state.stats?.[cat]?.mistakes || []).length;
-              return mistakesCount > 0 ? <span style={{ background: 'var(--red)', color: 'white', borderRadius: 10, padding: '1px 7px', fontSize: 11, fontWeight: 700, marginLeft: 'auto' }}>{mistakesCount}</span> : null;
+              return mistakesCount > 0 ? <span style={{ background: 'var(--red)', color: 'white', borderRadius: 10, padding: '1px 7px', fontSize: 'var(--fs-xs)', fontWeight: 700, marginLeft: 'auto' }}>{mistakesCount}</span> : null;
             })()}
           </div>
 

@@ -96,15 +96,15 @@ const SmartReviewPage = () => {
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', padding: '20px' }}>
         <div style={{ maxWidth: 400, width: '100%', background: 'var(--bg2)', border: '1.5px solid var(--border)', borderRadius: 24, padding: '40px 28px', textAlign: 'center' }}>
-          <div style={{ fontSize: 52, marginBottom: 16 }}>🔒</div>
-          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 8, color: 'var(--text)' }}>{t('test.limitTitle')}</div>
-          <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.6, marginBottom: 28 }}>
+          <div style={{ fontSize: 'var(--fs-hero-sm)', marginBottom: 16 }}>🔒</div>
+          <div style={{ fontSize: 'var(--fs-4xl)', fontWeight: 900, marginBottom: 8, color: 'var(--text)' }}>{t('test.limitTitle')}</div>
+          <div style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', lineHeight: 1.6, marginBottom: 28 }}>
             {t('test.limitText')}
           </div>
-          <button style={{ width: '100%', padding: '15px', background: '#0E97E0', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 16, cursor: 'pointer', fontFamily: 'inherit', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
+          <button style={{ width: '100%', padding: '15px', background: '#0E97E0', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 'var(--fs-xl)', cursor: 'pointer', fontFamily: 'inherit', marginBottom: 12 }} onClick={() => setShowPremiumModal(true)}>
             {t('test.limitActivate')}
           </button>
-          <button style={{ width: '100%', padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit' }} onClick={() => navigate('/')}>{t('test.backHomeArrow')}</button>
+          <button style={{ width: '100%', padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 'var(--fs-lg)', cursor: 'pointer', fontFamily: 'inherit' }} onClick={() => navigate('/')}>{t('test.backHomeArrow')}</button>
         </div>
         <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
       </motion.div>
@@ -248,8 +248,8 @@ const SmartReviewPage = () => {
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: 700, margin: '0 auto', padding: '12px 16px 80px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
           <div>
-            <h1 style={{ fontSize: 22, fontWeight: 900, color: 'var(--text)', margin: '0 0 2px' }}>{t('review.flashcard')}</h1>
-            <div style={{ fontSize: 12, color: 'var(--text3)' }}>{subjName}</div>
+            <h1 style={{ fontSize: 'var(--fs-4xl)', fontWeight: 900, color: 'var(--text)', margin: '0 0 2px' }}>{t('review.flashcard')}</h1>
+            <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)' }}>{subjName}</div>
           </div>
           <button onClick={() => setSubjectFlashActive(false)} style={{ width: 38, height: 38, borderRadius: 12, border: '1.5px solid var(--border)', background: 'var(--bg2)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
             <ArrowLeft size={18} color="var(--text2)" />
@@ -257,14 +257,14 @@ const SmartReviewPage = () => {
         </div>
         {subjectFlashLoading ? (
           <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--text3)' }}>
-            <div style={{ fontSize: 40, marginBottom: 12 }}>⏳</div>
+            <div style={{ fontSize: 'var(--fs-10xl)', marginBottom: 12 }}>⏳</div>
             <div style={{ fontWeight: 600 }}>{t('review.loadingQuestions')}</div>
           </div>
         ) : subjectQuestions.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--text3)' }}>
-            <div style={{ fontSize: 40, marginBottom: 12 }}>📭</div>
+            <div style={{ fontSize: 'var(--fs-10xl)', marginBottom: 12 }}>📭</div>
             <div style={{ fontWeight: 700, color: 'var(--text)', marginBottom: 6 }}>{t('review.noQuestionsForSubject')}</div>
-            <div style={{ fontSize: 13 }}>{t('review.noQuestionsHint')}</div>
+            <div style={{ fontSize: 'var(--fs-md)' }}>{t('review.noQuestionsHint')}</div>
           </div>
         ) : (
           <FlashcardView
@@ -342,14 +342,14 @@ const SmartReviewPage = () => {
           <div style={{ width: 76, height: 76, borderRadius: 22, margin: '0 auto 18px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #0E97E0, #0B79B8)', boxShadow: '0 10px 24px rgba(14, 151, 224, 0.32)' }}>
             <Brain size={36} color="#fff" />
           </div>
-          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8, color: 'var(--text)', letterSpacing: '-0.5px' }}>{t('review.noReviewTitle')}</div>
+          <div style={{ fontSize: 'var(--fs-4xl)', fontWeight: 800, marginBottom: 8, color: 'var(--text)', letterSpacing: '-0.5px' }}>{t('review.noReviewTitle')}</div>
           {totalSpaced > 0 ? (
-            <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.7, marginBottom: 28, fontWeight: 500 }}>
+            <div style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', lineHeight: 1.7, marginBottom: 28, fontWeight: 500 }}>
               {t('review.trackingCount', { count: totalSpaced })}<br />
               {t('review.nextReview', { wait: waitMinutes < 60 ? t('review.waitMinutes', { n: waitMinutes }) : waitMinutes < 1440 ? t('review.waitHours', { n: Math.round(waitMinutes / 60) }) : t('review.waitDays', { n: Math.round(waitMinutes / 1440) }) })}
             </div>
           ) : (
-            <div style={{ fontSize: 14, color: 'var(--text3)', lineHeight: 1.7, marginBottom: 28, fontWeight: 500 }}>
+            <div style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', lineHeight: 1.7, marginBottom: 28, fontWeight: 500 }}>
               {t('review.emptyHint1')}<br />
               {t('review.emptyHint2')}
             </div>
@@ -365,15 +365,15 @@ const SmartReviewPage = () => {
               border: '1.5px solid var(--border)',
               textAlign: 'left'
             }}>
-              <div style={{ fontSize: 13, fontWeight: 800, color: 'var(--text)', marginBottom: 2 }}>{t('review.forecastTitle')}</div>
-              <div style={{ fontSize: 11, color: 'var(--text3)', marginBottom: 16 }}>{t('review.forecastSubtitle')}</div>
+              <div style={{ fontSize: 'var(--fs-md)', fontWeight: 800, color: 'var(--text)', marginBottom: 2 }}>{t('review.forecastTitle')}</div>
+              <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginBottom: 16 }}>{t('review.forecastSubtitle')}</div>
               
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 8, alignItems: 'end', minHeight: 80, paddingBottom: 6 }}>
                 {forecast.map((day, i) => {
                   const pct = (day.count / maxCount) * 100;
                   return (
                     <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: day.count > 0 ? '#0E97E0' : 'var(--text3)' }}>
+                      <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: day.count > 0 ? '#0E97E0' : 'var(--text3)' }}>
                         {day.count}
                       </span>
                       {/* Vertical progress bar */}
@@ -398,7 +398,7 @@ const SmartReviewPage = () => {
                           }}
                         />
                       </div>
-                      <span style={{ fontSize: 9, fontWeight: 600, color: 'var(--text3)', textAlign: 'center', whiteSpace: 'nowrap' }}>
+                      <span style={{ fontSize: 'var(--fs-3xs)', fontWeight: 600, color: 'var(--text3)', textAlign: 'center', whiteSpace: 'nowrap' }}>
                         {day.label}
                       </span>
                     </div>
@@ -408,7 +408,7 @@ const SmartReviewPage = () => {
             </div>
           )}
 
-          <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}>
+          <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 'var(--fs-lg)', cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}>
             <Play size={16} fill="currentColor" /> {t('review.doTest')}
           </motion.button>
         </div>
@@ -438,8 +438,8 @@ const SmartReviewPage = () => {
             <Zap size={22} color="#fff" />
           </div>
           <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
-            <div style={{ fontSize: 15, fontWeight: 800, color: 'var(--text)', marginBottom: 3 }}>{t('review.subjectFlashTitle')}</div>
-            <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 500, lineHeight: 1.4 }}>{t('review.subjectFlashDesc')}</div>
+            <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)', marginBottom: 3 }}>{t('review.subjectFlashTitle')}</div>
+            <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', fontWeight: 500, lineHeight: 1.4 }}>{t('review.subjectFlashDesc')}</div>
           </div>
           <ChevronRight size={20} color="var(--accent)" style={{ position: 'relative', zIndex: 1, flexShrink: 0 }} />
         </motion.button>
@@ -454,22 +454,22 @@ const SmartReviewPage = () => {
     return (
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ maxWidth: 560, margin: '0 auto', padding: '20px 16px' }}>
         <div style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', border: '1px solid var(--glass-border)', borderRadius: 24, padding: '40px 28px', textAlign: 'center', marginTop: 40, boxShadow: '0 20px 40px rgba(0,0,0,0.06)' }}>
-          <div style={{ fontSize: 52, marginBottom: 12, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.08))' }}>{pct >= 70 ? '🎉' : '💪'}</div>
-          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 20, color: 'var(--text)', letterSpacing: '-0.5px' }}>{t('review.sessionDone')}</div>
+          <div style={{ fontSize: 'var(--fs-hero-sm)', marginBottom: 12, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.08))' }}>{pct >= 70 ? '🎉' : '💪'}</div>
+          <div style={{ fontSize: 'var(--fs-4xl)', fontWeight: 800, marginBottom: 20, color: 'var(--text)', letterSpacing: '-0.5px' }}>{t('review.sessionDone')}</div>
           <div style={{ display: 'flex', gap: 24, justifyContent: 'center', marginBottom: 20 }}>
             <div style={{ textAlign: 'center', background: 'rgba(22, 163, 74, 0.08)', border: '1px solid rgba(22, 163, 74, 0.15)', borderRadius: 16, padding: '16px 24px' }}>
-              <div style={{ fontSize: 32, fontWeight: 900, color: '#16A34A' }}>{sessionStats.correct}</div>
-              <div style={{ fontSize: 11, color: '#16A34A', fontWeight: 700, marginTop: 4 }}>{t('exam.statCorrect')}</div>
+              <div style={{ fontSize: 'var(--fs-8xl)', fontWeight: 900, color: '#16A34A' }}>{sessionStats.correct}</div>
+              <div style={{ fontSize: 'var(--fs-xs)', color: '#16A34A', fontWeight: 700, marginTop: 4 }}>{t('exam.statCorrect')}</div>
             </div>
             <div style={{ textAlign: 'center', background: 'rgba(220, 38, 38, 0.08)', border: '1px solid rgba(220, 38, 38, 0.15)', borderRadius: 16, padding: '16px 24px' }}>
-              <div style={{ fontSize: 32, fontWeight: 900, color: '#DC2626' }}>{sessionStats.wrong}</div>
-              <div style={{ fontSize: 11, color: '#DC2626', fontWeight: 700, marginTop: 4 }}>{t('exam.statWrong')}</div>
+              <div style={{ fontSize: 'var(--fs-8xl)', fontWeight: 900, color: '#DC2626' }}>{sessionStats.wrong}</div>
+              <div style={{ fontSize: 'var(--fs-xs)', color: '#DC2626', fontWeight: 700, marginTop: 4 }}>{t('exam.statWrong')}</div>
             </div>
           </div>
-          <div style={{ fontSize: 13, color: 'var(--text3)', marginBottom: 24, lineHeight: 1.7, fontWeight: 500 }}>
+          <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', marginBottom: 24, lineHeight: 1.7, fontWeight: 500 }}>
             {t('review.doneHint')}
           </div>
-          <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}>
+          <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} onClick={goBack} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 28px', background: 'var(--grad-primary)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 'var(--fs-lg)', cursor: 'pointer', fontFamily: 'inherit', margin: '0 auto', boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}>
             <Play size={16} fill="currentColor" /> {t('review.doTest')}
           </motion.button>
         </div>
@@ -488,8 +488,8 @@ const SmartReviewPage = () => {
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
         <div>
-          <h1 style={{ fontSize: 22, fontWeight: 900, color: 'var(--text)', margin: '0 0 2px' }}>{t('review.title')}</h1>
-          <div style={{ fontSize: 12, color: 'var(--text3)' }}>{t('review.cardCount', { current: currentIdx + 1, total: cards.length })}</div>
+          <h1 style={{ fontSize: 'var(--fs-4xl)', fontWeight: 900, color: 'var(--text)', margin: '0 0 2px' }}>{t('review.title')}</h1>
+          <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)' }}>{t('review.cardCount', { current: currentIdx + 1, total: cards.length })}</div>
         </div>
         <button onClick={goBack} style={{ width: 38, height: 38, borderRadius: 12, border: '1.5px solid var(--border)', background: 'var(--bg2)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
           <ArrowLeft size={18} color="var(--text2)" />
@@ -501,7 +501,7 @@ const SmartReviewPage = () => {
         <div style={{ display: 'flex', background: 'var(--bg3)', borderRadius: 12, padding: 3, gap: 2 }}>
           {[['mcq', t('review.modeTest')], ['flashcard', t('review.modeFlashcard')]].map(([m, label]) => (
             <button key={m} onClick={() => { setStudyMode(m); setFcFlipped(false); setAnswered(null); }}
-              style={{ padding: '7px 14px', borderRadius: 9, border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 12, fontWeight: 700,
+              style={{ padding: '7px 14px', borderRadius: 9, border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'var(--fs-sm)', fontWeight: 700,
                 background: studyMode === m ? 'var(--bg)' : 'transparent',
                 color: studyMode === m ? 'var(--text)' : 'var(--text3)',
                 boxShadow: studyMode === m ? '0 1px 4px rgba(0,0,0,0.08)' : 'none' }}>
@@ -510,7 +510,7 @@ const SmartReviewPage = () => {
           ))}
         </div>
         <button onClick={startSubjectFlashcards}
-          style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 12px', borderRadius: 12, border: '1.5px solid var(--border)', background: 'var(--bg2)', color: 'var(--text2)', cursor: 'pointer', fontFamily: 'inherit', fontSize: 12, fontWeight: 700 }}>
+          style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 12px', borderRadius: 12, border: '1.5px solid var(--border)', background: 'var(--bg2)', color: 'var(--text2)', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'var(--fs-sm)', fontWeight: 700 }}>
           <Zap size={14} color="var(--accent)" /> {t('review.subjectQuestionsBtn')}
         </button>
       </div>
@@ -540,14 +540,14 @@ const SmartReviewPage = () => {
 
             {/* Header: Daraja + Stats + Objection */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, flexWrap: 'wrap', gap: 10 }}>
-              <span style={{ fontSize: 11, fontWeight: 700, padding: '4px 10px', borderRadius: 8, background: 'var(--blue-bg)', color: 'var(--blue)' }}>
+              <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, padding: '4px 10px', borderRadius: 8, background: 'var(--blue-bg)', color: 'var(--blue)' }}>
                 <Clock size={11} style={{ verticalAlign: -1, marginRight: 3 }} />
                 {levelNames[card.level || 0]}
               </span>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <span style={{ fontSize: 12, fontWeight: 700, color: '#16A34A' }}>✅ {sessionStats.correct}</span>
-                <span style={{ fontSize: 12, fontWeight: 700, color: '#DC2626' }}>❌ {sessionStats.wrong}</span>
-                <button onClick={() => setShowObjectionModal(true)} style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '5px 10px', borderRadius: 8, border: '1px solid var(--border)', background: 'var(--bg3)', fontSize: 11, fontWeight: 600, color: 'var(--text3)', cursor: 'pointer', fontFamily: 'inherit' }}>
+                <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: '#16A34A' }}>✅ {sessionStats.correct}</span>
+                <span style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: '#DC2626' }}>❌ {sessionStats.wrong}</span>
+                <button onClick={() => setShowObjectionModal(true)} style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '5px 10px', borderRadius: 8, border: '1px solid var(--border)', background: 'var(--bg3)', fontSize: 'var(--fs-xs)', fontWeight: 600, color: 'var(--text3)', cursor: 'pointer', fontFamily: 'inherit' }}>
                   <MessageCircle size={13} /> {t('test.objection')}
                 </button>
               </div>
@@ -555,9 +555,9 @@ const SmartReviewPage = () => {
 
             <QuestionMedia question={card} />
             {card.isHtml ? (
-              <SafeHtml html={card.q} style={{ fontSize: 17, fontWeight: 700, lineHeight: 1.6, marginBottom: 20, color: 'var(--text)' }} />
+              <SafeHtml html={card.q} style={{ fontSize: 'var(--fs-question)', fontWeight: 'var(--fw-medium)', lineHeight: 'var(--lh-snug)', marginBottom: 20, color: 'var(--text)' }} />
             ) : (
-              <div style={{ fontSize: 17, fontWeight: 700, lineHeight: 1.6, marginBottom: 20, color: 'var(--text)', whiteSpace: 'pre-line' }}>{card.q}</div>
+              <div style={{ fontSize: 'var(--fs-question)', fontWeight: 'var(--fw-medium)', lineHeight: 'var(--lh-snug)', marginBottom: 20, color: 'var(--text)', whiteSpace: 'pre-line' }}>{card.q}</div>
             )}
 
             {/* Variantlar */}
@@ -578,9 +578,9 @@ const SmartReviewPage = () => {
                     whileHover={answered === null ? { y: -1, scale: 1.005 } : {}}
                     whileTap={answered === null ? { scale: 0.99 } : {}}
                     onClick={() => handleAnswer(i)}
-                    style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px', borderRadius: 16, textAlign: 'left', border, background: bg, cursor: answered !== null ? 'default' : 'pointer', fontFamily: 'inherit', fontSize: 14, fontWeight: 500, color, transition: 'background 0.2s, border-color 0.2s' }}
+                    style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px', borderRadius: 16, textAlign: 'left', border, background: bg, cursor: answered !== null ? 'default' : 'pointer', fontFamily: 'inherit', fontSize: 'var(--fs-option)', lineHeight: 'var(--lh-snug)', fontWeight: 'var(--fw-regular)', color, transition: 'background 0.2s, border-color 0.2s' }}
                   >
-                    <div style={{ width: 30, height: 30, borderRadius: 8, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 13, background: answered !== null && i === card.correct ? '#16A34A' : answered === i && i !== card.correct ? '#DC2626' : 'var(--bg3)', color: answered !== null && (i === card.correct || i === answered) ? '#fff' : 'var(--text3)' }}>
+                    <div style={{ width: 30, height: 30, borderRadius: 8, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 'var(--fs-md)', background: answered !== null && i === card.correct ? '#16A34A' : answered === i && i !== card.correct ? '#DC2626' : 'var(--bg3)', color: answered !== null && (i === card.correct || i === answered) ? '#fff' : 'var(--text3)' }}>
                       {answered !== null && i === card.correct ? <CheckCircle size={15} /> : answered === i && i !== card.correct ? <XCircle size={15} /> : ['A','B','C','D'][i]}
                     </div>
                     {opt.replace(/^[A-D]\)\s*/, '')}
@@ -592,7 +592,7 @@ const SmartReviewPage = () => {
             {/* Tushuntirish */}
             {answered !== null && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} style={{ marginTop: 16 }}>
-                <div style={{ padding: '14px 16px', borderRadius: 12, fontSize: 14, lineHeight: 1.6, background: isCorrect ? 'rgba(22, 163, 74, 0.12)' : 'rgba(220, 38, 38, 0.12)', border: `1px solid ${isCorrect ? 'rgba(22, 163, 74, 0.25)' : 'rgba(220, 38, 38, 0.25)'}`, color: 'var(--text2)', marginBottom: 14 }}>
+                <div style={{ padding: '14px 16px', borderRadius: 12, fontSize: 'var(--fs-explain)', lineHeight: 'var(--lh-relaxed)', background: isCorrect ? 'rgba(22, 163, 74, 0.12)' : 'rgba(220, 38, 38, 0.12)', border: `1px solid ${isCorrect ? 'rgba(22, 163, 74, 0.25)' : 'rgba(220, 38, 38, 0.25)'}`, color: 'var(--text2)', marginBottom: 14 }}>
                   <strong style={{ color: isCorrect ? '#22c55e' : '#ef4444' }}>{isCorrect ? t('review.correctMark') : t('review.wrongMark')}</strong>{' '}{card.explanation || ''}
                 </div>
 
@@ -602,8 +602,8 @@ const SmartReviewPage = () => {
                     <div style={{ marginBottom: 16 }}>
                       {state.customMnemonics?.[qHash] && (
                         <div style={{ borderColor: 'var(--amber)', background: 'rgba(245, 158, 11, 0.05)', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 10, padding: 12, borderRadius: 12, border: '1px solid var(--border)' }}>
-                          <div style={{ fontSize: 18 }}>🧠</div>
-                          <div style={{ fontSize: 13, color: 'var(--text2)' }}><strong>{t('review.yourNote')}</strong><br />{state.customMnemonics[qHash]}</div>
+                          <div style={{ fontSize: 'var(--fs-2xl)' }}>🧠</div>
+                          <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)' }}><strong>{t('review.yourNote')}</strong><br />{state.customMnemonics[qHash]}</div>
                         </div>
                       )}
                       <div className="custom-mnemonic-box" style={{
@@ -614,7 +614,7 @@ const SmartReviewPage = () => {
                         textAlign: 'left',
                         transition: 'all 0.3s ease'
                       }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', fontSize: '13px', fontWeight: '700', color: 'var(--text2)' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', fontSize: 'var(--fs-md)', fontWeight: '700', color: 'var(--text2)' }}>
                           <span>{t('review.personalMnemonic')}</span>
                         </div>
                         <textarea
@@ -629,7 +629,7 @@ const SmartReviewPage = () => {
                             borderRadius: '10px',
                             padding: '8px 12px',
                             color: 'var(--text)',
-                            fontSize: '13px',
+                            fontSize: 'var(--fs-input)',
                             fontFamily: 'inherit',
                             resize: 'vertical',
                             outline: 'none',
@@ -639,7 +639,7 @@ const SmartReviewPage = () => {
                           onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
                         />
                         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
-                          <span style={{ fontSize: '11px', color: 'var(--text3)' }}>
+                          <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>
                             {(state.customMnemonics?.[qHash] || '').trim() ? t('test.noteSaved') : t('review.noteHint')}
                           </span>
                         </div>
@@ -648,7 +648,7 @@ const SmartReviewPage = () => {
                   );
                 })()}
 
-                <button ref={nextButtonRef} onClick={nextCard} style={{ width: '100%', padding: '14px', background: '#0E97E0', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 15, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                <button ref={nextButtonRef} onClick={nextCard} style={{ width: '100%', padding: '14px', background: '#0E97E0', color: '#fff', border: 'none', borderRadius: 14, fontWeight: 700, fontSize: 'var(--fs-lg)', cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
                   {currentIdx + 1 >= cards.length ? t('review.finish') : t('review.nextCard')} <ChevronRight size={18} />
                 </button>
               </motion.div>
