@@ -18,6 +18,7 @@ import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { useNotifications } from '../hooks/useNotifications';
+import BrandLogo from './shared/BrandLogo';
 
 const Header = ({ theme, toggleTheme }) => {
   const isMobile = useIsMobile();
@@ -142,22 +143,39 @@ const Header = ({ theme, toggleTheme }) => {
   return (
     <>
       <div className="header">
-        <div className="header-greeting" onClick={() => setShowProfileDrawer(true)} title={t('header.profile')}>
-          <div className="header-avatar-wrap">
-            <div className="header-avatar">
-              {resolveAvatar(user)
-                ? <img src={resolveAvatar(user)} alt={displayName} />
-                : <span>{getInitials(displayName)}</span>}
+        <div className="header-left">
+          {/* Brend lockup'i — bosilganda bosh sahifaga. FAQAT desktopda:
+              mobil headerda joy tor va u yerda brend splash/drawer orqali
+              allaqachon ko'rinadi. */}
+          {!isMobile && (
+            <button
+              type="button"
+              className="header-logo"
+              onClick={() => navigate('/dashboard')}
+              title={t('nav.home')}
+              aria-label={t('nav.home')}
+            >
+              <BrandLogo size={22} />
+            </button>
+          )}
+
+          <div className="header-greeting" onClick={() => setShowProfileDrawer(true)} title={t('header.profile')}>
+            <div className="header-avatar-wrap">
+              <div className="header-avatar">
+                {resolveAvatar(user)
+                  ? <img src={resolveAvatar(user)} alt={displayName} />
+                  : <span>{getInitials(displayName)}</span>}
+              </div>
+              {unreadCount > 0 && (
+                <span className="header-avatar-badge" title={t('header.newNotifications', { count: unreadCount })}>
+                  {unreadCount > 9 ? '9+' : unreadCount}
+                </span>
+              )}
             </div>
-            {unreadCount > 0 && (
-              <span className="header-avatar-badge" title={t('header.newNotifications', { count: unreadCount })}>
-                {unreadCount > 9 ? '9+' : unreadCount}
-              </span>
-            )}
-          </div>
-          <div className="header-greeting-text">
-            <span className="header-greet-hi">{t(greetKey)}</span>
-            <span className="header-greet-name">{firstName}</span>
+            <div className="header-greeting-text">
+              <span className="header-greet-hi">{t(greetKey)}</span>
+              <span className="header-greet-name">{firstName}</span>
+            </div>
           </div>
         </div>
 

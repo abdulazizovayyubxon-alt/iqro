@@ -427,6 +427,15 @@ button {
 }
 .header-stats { display: flex; gap: 10px; align-items: center; }
 
+/* Header chap tomoni: brend belgisi + salomlashish bitta guruh bo'lib turadi
+   (header'ning space-between'i faqat shu guruh bilan o'ng blokni ajratsin) */
+.header-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.header-logo {
+  display: flex; align-items: center; flex-shrink: 0;
+  background: none; border: none; padding: 0;
+  cursor: pointer; color: inherit;
+}
+
 /* ===== Header salomlashish (Wisdom uslubi: avatar + ism) ===== */
 .header-greeting {
   display: flex;
@@ -483,6 +492,7 @@ button {
 @media (max-width: 768px) {
   .header { padding: 0 12px; }
   .header-stats { gap: 6px; }
+  .header-left { gap: 8px; }
   .header-avatar { width: 38px; height: 38px; font-size: var(--fs-base); }
   .header-greet-hi { font-size: var(--fs-xs); }
   .header-greet-name { font-size: var(--fs-base); max-width: 96px; }
@@ -1531,7 +1541,10 @@ body.exam-fullscreen .exam-layout { height: 100vh; }
   .skeleton-cards { grid-template-columns: 1fr; }
 }
 
-/* ========== BOTTOM NAV (Yangi mobil navigatsiya) ========== */
+/* ========== BOTTOM NAV (mobil navigatsiya, brend varianti 1a) ==========
+   Panel foni, o'yiq va Imtihon FAB'i BottomNav.jsx ichida SVG bilan
+   chiziladi. Bu yerda faqat ko'rsatish/yashirish qoladi — fon yoki
+   chegara qo'shilsa, o'yiq (kesik) ustiga tekis tasma tushib qolardi. */
 
 /* Desktop: sidebar ko'rinadi, BottomNav yashirilgan */
 .bottom-nav {
@@ -1544,14 +1557,15 @@ body.exam-fullscreen .exam-layout { height: 100vh; }
     display: none !important;
   }
 
-  /* Yangi BottomNav mobilda ko'rinadi */
+  /* Yangi BottomNav mobilda ko'rinadi (bolalari absolute — block yetarli) */
   .bottom-nav {
-    display: grid !important;
+    display: block !important;
   }
 
-  /* Main content pastki paddingni faqat mobilda qo'shamiz */
+  /* Main content pastki paddingi: panel 82px + FAB'ning tepaga chiqqan qismi
+     uchun biroz zaxira; safe-area alohida qo'shiladi */
   .main-content {
-    padding-bottom: calc(72px + env(safe-area-inset-bottom)) !important;
+    padding-bottom: calc(94px + env(safe-area-inset-bottom)) !important;
   }
 }
 
