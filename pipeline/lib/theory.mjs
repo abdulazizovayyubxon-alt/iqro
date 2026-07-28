@@ -52,22 +52,22 @@ export function readTopics() {
 }
 
 // ── Savollar (Firestore zaxiralaridan) ────────────────────────────────────
-// src/data/firestore_backup_<fan>_<sana>.json — har fanning eng YANGI
-// zaxirasi olinadi (bir fanda bir nechta nusxa bo'lishi mumkin).
+// src/data/firestore_backup_<fan>_<sana>.json
+//
+// ⚠️ BARCHA fayl o'qiladi, savol darajasida `__docId` bo'yicha birlashtiriladi
+// (kechroq fayl oldingisini almashtiradi). Ilgari «har fandan faqat eng
+// yangi fayl» olinardi va bu JIDDIY XATO edi: bir fanning ikki zaxirasi
+// bir-birini ALMASHTIRMASLIGI, TO'LDIRISHI mumkin. Aynan shu sababli ingliz
+// tilining 129-134 bo'limlaridagi 2094 savol ko'rinmay qolgan va «savol yo'q»
+// degan noto'g'ri xulosa chiqqan edi.
 export function loadQuestionsByTopic() {
   const files = fs.readdirSync(DATA_DIR)
     .filter(f => f.startsWith('firestore_backup_') && f.endsWith('.json'))
     .sort();                       // sana nomda — alifbo tartibi = vaqt tartibi
 
-  const byTopic = new Map();
-  const seenSubject = new Map();   // fan → ishlatilgan fayl (eng yangisi)
+  const byKey = new Map();         // __docId (yoki matn) → savol
 
   for (const f of files) {
-    const subject = f.replace(/^firestore_backup_/, '').replace(/_\d{4}-.*$/, '');
-    seenSubject.set(subject, f);   // keyingi (yangiroq) fayl oldingisini almashtiradi
-  }
-
-  for (const f of seenSubject.values()) {
     let rows;
     try {
       rows = JSON.parse(fs.readFileSync(path.join(DATA_DIR, f), 'utf8'));
@@ -77,9 +77,17 @@ export function loadQuestionsByTopic() {
     if (!Array.isArray(rows)) continue;
     for (const r of rows) {
       if (typeof r?.topicId !== 'number') continue;
-      if (!byTopic.has(r.topicId)) byTopic.set(r.topicId, []);
-      byTopic.get(r.topicId).push(r);
+      // `id` maydoni yo'q, Firestore hujjat kaliti `__docId` da. U ham
+      // bo'lmasa matnning o'zi kalit bo'ladi (takrorni oldini olish uchun).
+      const key = r.__docId || `${r.topicId}::${(r.q || r.question || '').slice(0, 120)}`;
+      byKey.set(key, r);           // kechroq fayl = tuzatilgan nusxa
     }
+  }
+
+  const byTopic = new Map();
+  for (const r of byKey.values()) {
+    if (!byTopic.has(r.topicId)) byTopic.set(r.topicId, []);
+    byTopic.get(r.topicId).push(r);
   }
   return byTopic;
 }

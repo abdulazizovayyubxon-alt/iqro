@@ -1,109 +1,416 @@
 {
-  "135": {
-    "summary": "Ingliz tili o'qituvchisining kasb standarti o'quv jarayonini rejalashtirish, aniq maqsadlar belgilash, pedagogik metodlar va baholash vositalarini qo'llash talablarini o'z ichiga oladi.",
+  "129": {
+    "summary": "The topic covers reading scientific-popular texts to identify main ideas, facts, and context clues. It emphasizes distinguishing between explicit and implicit information and understanding the author's position.",
     "keyPoints": [
       {
-        "t": "Rejalashtirish asosiy vazifasi",
-        "d": "O'quvchilar ehtiyojlarini tahlil qilish, ularning o'zlashtirish ko'rsatkichlarini aniqlash va aniq, erishiladigan natijalarni belgilashni o'z ichiga oladi."
+        "t": "Calculating Energy Output",
+        "d": "Calculate total production and divide by demand. If the result exceeds 100%, select the closest option below 100% as the answer."
       },
       {
-        "t": "Maqsadlar o'lchanadigan bo'lishi",
-        "d": "Dars maqsadlarini aniq va o'lchanadigan qilib belgilash o'quv jarayonini rejalashtirish bosqichining asosiy vazifasi hisoblanadi."
+        "t": "Finding Specific Data",
+        "d": "Locate explicit numbers and dates in the text. The recycling rate of 30% specifically refers to the year 2020."
       },
       {
-        "t": "Induksiya usuli xususiyati",
-        "d": "O'qituvchi konkret misollarni ko'rsatadi, o'quvchi esa ko'rsatilgan misollar asosida umumiy qoidani mustaqil ravishda chiqaradi."
+        "t": "Determining Primary Causes",
+        "d": "Identify the main factor cited for a change. The 2018 emissions standards were the primary cause of the decline mentioned."
       },
       {
-        "t": "Deduksiya usuli xususiyati",
-        "d": "Umumiy qonuniyatdan boshlab, maxsus misollarga o'tish va qonuniyatni amaliy misollarga tatbiq qilish jarayonidir."
+        "t": "Sequencing Scientific Events",
+        "d": "Match events to their correct years. CRISPR was 2019, the black-hole image was 2017, and gravitational waves were 2015."
       },
       {
-        "t": "Standartning asosiy qismi",
-        "d": "Teng sharoit yaratish, har bir o'quvchini hurmat qilish va xavfsiz muhitni ta'minlash standartning asosiy tarkibiy qismini tashkil etadi."
+        "t": "Analyzing Study Validity",
+        "d": "Evaluate claims based on study design. A controlled study implies random assignment, and validity requires peer review or sampling info."
       },
       {
-        "t": "Baholash vositalari",
-        "d": "Rubrika ishlarni tizimli baholash, test standart natija olish, portfel esa individual o'zlashtirishni ko'rsatish uchun ishlatiladi."
+        "t": "Comparing Percentages",
+        "d": "Compare statistics accurately. Note that 18% is higher than 12% when comparing two different studies."
       },
       {
-        "t": "O'lchanadiganlik mezoni",
-        "d": "Maqsadda aniq raqam (masalan, 80%) keltirilishi, uning o'lchanadigan mezonlarga mos kelishini bildiradi."
+        "t": "Understanding Irrigation Benefits",
+        "d": "Identify advantages of technologies. Drip irrigation delivers water to roots and reduces water use by 30%."
       }
     ],
     "mustKnow": [
-      "O'quv jarayonini rejalashtirish: O'quvchilarning ehtiyojlarini tahlil qilish, ularning o'zlashtirish ko'rsatkichlarini aniqlash va aniq, erishiladigan natijalarni belgilash.",
-      "Induksiya: O'qituvchi bir necha konkret misollarni ko'rsatib, ularning umumiy qonuniyatini talabalarga kashf ettiruvchi metod.",
-      "Deduksiya: Umumiy qonunni misollarga tatbiq qilish yo'li bilan, umumiy qonuniyatdan maxsus misollarga o'tuvchi metod.",
-      "O'lchanadigan maqsad: Maqsadda aniq raqamli ko'rsatkich (masalan, 80%) keltirilgan bo'lsa, u o'lchanadigan mezonga mos hisoblanadi.",
-      "Rubrika: Ishlarni tizimli baholash uchun mo'ljallangan vosita.",
-      "Test: Standart natijani olish uchun ishlatiladigan vosita.",
-      "Portfel: O'quvchining individual o'zlashtirishini ko'rsatish uchun xizmat qiluvchi vosita."
+      "Recycling rate in 2020 was 30%",
+      "CRISPR was reported in 2019",
+      "Black-hole image appeared in 2017",
+      "Gravitational waves were first detected in 2015",
+      "The specific date mentioned is March 12th, 2023",
+      "Drip irrigation reduces water use by 30%",
+      "The statistic for flexibility and diverse resources is 68%",
+      "72% support the idea, but only 45% expect implementation within five years"
     ],
     "mistakes": [
-      "Xato: Teng sharoit yaratish va o'quvchini hurmat qilishni faqat rejalashtirish bosqichi deb hisoblash. To'g'ri: Bu standartning asosiy tarkibiy qismi bo'lib, rejalashtirish yoki baholashdan mustaqil tushuniladi.",
-      "Xato: Maqsadni faqat o'quvchilar qiziqishlariga asoslanib belgilash. To'g'ri: Maqsadlar baholash natijalariga asoslanib, aniq va o'lchamli qilib belgilanishi kerak.",
-      "Xato: Umumiy qoidani misollar orqali chiqarishni deduksiya deb atash. To'g'ri: Umumiy qoidani chiqarish induksiya, umumiy qoidani misollarga tatbiq qilish deduksiya hisoblanadi."
+      "Mistake: Selecting an answer over 100% when calculation yields 111%. Correction: Choose the closest option below 100%, such as 75%.",
+      "Mistake: Assuming a 90% figure is reliable just because it is high. Correction: Without sampling or peer review details, the figure is uncertain.",
+      "Mistake: Confusing word recall with visual memory in studies. Correction: The specific study task mentioned was word recall, not visual memory."
     ],
     "mnemonics": [
-      "Rejalashtirish algoritmi: Ehtiyoj -> Tahlil -> Aniq maqsad.",
-      "Induksiya (I - Individualdan Umumiyga), Deduksiya (D - Down - Umumiydan Pastga).",
-      "Baholash uchligi: Rubrika (Tizim), Test (Standart), Portfel (Individual)."
+      "CBG 9-7-5: CRISPR (2019), Black-hole (2017), Gravitational (2015).",
+      "72 Want, 45 Wait: 72% support the idea, but only 45% expect it soon."
+    ],
+    "source": "Approved test explanations",
+    "updatedAt": "2026-07-28"
+  },
+  "130": {
+    "summary": "This topic covers understanding narrative texts, focusing on main ideas, specific details like figures, and event sequences. It emphasizes identifying participants and interpreting vocabulary from context.",
+    "keyPoints": [
+      {
+        "t": "Identifying specific figures",
+        "d": "Highlighting specific figures like a 30% reduction and the implementation timeline captures key targets, whereas ignoring details loses essential information."
+      },
+      {
+        "t": "Analyzing character actions",
+        "d": "Readers must verify if characters return home or seek new locations, such as Lila going to a park after the library was locked, rather than assuming immediate returns."
+      },
+      {
+        "t": "Understanding central themes",
+        "d": "The central theme involves unexpected exploration and hidden art, like Maya discovering murals in an empty village, avoiding assumptions about festivals or damage not mentioned."
+      },
+      {
+        "t": "Interpreting emotional context",
+        "d": "Passages may show adaptability, like children turning debris into toys, or mixed emotions like fear coexisting with bravery, requiring careful reading of descriptions."
+      },
+      {
+        "t": "Sequencing events correctly",
+        "d": "Chronological ordering is crucial, such as noting a train at 6 am precedes a museum opening at 9 am, or mapping specific actions like lifting a box to moving an object."
+      },
+      {
+        "t": "Calculating time accurately",
+        "d": "Time calculations require attention to delays; for example, a trip from 9:05 to 10:30 is 1 hour 25 minutes, but the correct travel time might be 1 hour 20 minutes depending on how the delay is factored."
+      }
+    ],
+    "mustKnow": [
+      "Specific figures like 30% reduction are key targets in narrative texts.",
+      "A travel time calculation from 9:05 a.m. to 10:30 a.m. results in 1 hour 20 minutes if the departure time already includes the delay.",
+      "A train leaving at 9:15 a.m. and an arrival at 9:20 a.m. means the passenger missed it by five minutes.",
+      "Lila seeks a park location after the library is locked and does not return home immediately.",
+      "Maya discovers murals in an empty village caused by a storm.",
+      "The guide warned about rain and stopped to assist those who slipped.",
+      "Securing windows prevents damage and turning on a beacon alerts rescue parties."
+    ],
+    "mistakes": [
+      "Assuming skimming is sufficient for details vs Skimming misses essential details like specific figures or timelines; careful reading is required.",
+      "Misinterpreting emotional reactions vs A mother smiling indicates she is not disappointed, and children using debris shows adaptability, not ignoring damage.",
+      "Incorrect time calculation logic vs When calculating duration, ensure delays are subtracted correctly from the total elapsed time to find the actual travel time."
+    ],
+    "mnemonics": [
+      "S-K-I-M to avoid errors: Specifics, Key figures, Immediate actions, Main themes.",
+      "T-I-M-E for sequence: Timeline check, Identify order, Match actions, Exact calculation."
+    ],
+    "source": "Not specified in the provided comments",
+    "updatedAt": "2026-07-28"
+  },
+  "131": {
+    "summary": "This topic covers text coherence, focusing on identifying logical links like cause-effect and contrast, restoring sentence order, and using cohesive devices to ensure semantic unity.",
+    "keyPoints": [
+      {
+        "t": "Logical Connectors and Contrast",
+        "d": "Use 'Nevertheless' to signal contrast, such as deciding to repeat an experiment despite failure, while 'Consequently' indicates a cause-effect relationship."
+      },
+      {
+        "t": "Cause and Effect Relationships",
+        "d": "Connectors like 'Consequently,' 'therefore,' and 'as a result' express results, such as dry soil causing plants to wilt or unexpected results leading to repeated experiments."
+      },
+      {
+        "t": "Pronoun Reference and Cohesion",
+        "d": "Cohesive devices include pronouns like 'This' referring to a rise in temperature or 'She' referring to Maria, establishing lexical and grammatical links."
+      },
+      {
+        "t": "Sentence Order and Flow",
+        "d": "Logical progression in research follows steps like literature review, data analysis, presenting results, and summarizing; irrelevant sentences break this flow."
+      },
+      {
+        "t": "Addition and Sequence",
+        "d": "'Moreover' adds information, such as linking early completion to a reward, while 'Consequently' introduces a logical result or positive outcome."
+      },
+      {
+        "t": "Topic Sentences",
+        "d": "A topic sentence must introduce the main idea, such as stating the causal link between sufficient sleep and improved memory to set the paragraph's focus."
+      },
+      {
+        "t": "Cohesive Device Functions",
+        "d": "Cohesive devices include lexical and grammatical elements that aid logical flow, though they are not restricted to paragraph openings and do not inherently cause redundancy."
+      }
+    ],
+    "mustKnow": [
+      "'Consequently' is appropriate for linking hard study to feeling confident as a result connector.",
+      "'Nevertheless' is used to contrast expectation with outcome, such as confidence leading to a high score.",
+      "'Therefore' is the correct connective when unexpected results cause a researcher to repeat an experiment.",
+      "'As a result' is required to describe a cause like dry soil leading to an effect like wilting plants.",
+      "The logical progression of research starts with literature review, followed by data analysis, presenting results, and finally summarizing.",
+      "'Bright red' is identified as a new lexical item rather than a repetition of a cohesive device.",
+      "A sentence about cafeteria renovation breaks the flow of a paragraph about wing opening, visitors, and ticket sales."
+    ],
+    "mistakes": [
+      "Using 'Consequently' for contrast; correct usage is 'Nevertheless' to signal contrast despite failure.",
+      "Using 'However' for cause-effect; correct usage is 'Therefore' or 'Consequently' to express that one event caused another.",
+      "Using 'Moreover' for results; correct usage is 'Consequently' to introduce a logical result or positive outcome.",
+      "Assuming chronological order; correct approach is ensuring sentences share a uniform topic, as irrelevant sentences break flow."
+    ],
+    "mnemonics": [
+      "'Consequently' causes effects, 'Nevertheless' notes negatives/contrast, 'Moreover' makes more additions.",
+      "Review, Analyze, Present, Summarize—keep the research process in this order to maintain logical flow.",
+      "Pronouns point back; 'This' links to the temperature rise, 'She' links to Maria."
+    ],
+    "source": "Approved test explanations",
+    "updatedAt": "2026-07-28"
+  },
+  "132": {
+    "summary": "This topic covers identifying grammatical structures, selecting context-appropriate units, correcting errors, and transforming sentences. Focus is placed on relative clauses, article usage, and passive voice transformations.",
+    "keyPoints": [
+      {
+        "t": "Non-defining relative clauses",
+        "d": "Clauses set off by commas add extra information and are non-essential, unlike defining clauses which provide essential information without commas."
+      },
+      {
+        "t": "Defining clause prepositions",
+        "d": "In defining clauses, the preposition can appear at the end of the clause without changing the meaning, which is a common pattern."
+      },
+      {
+        "t": "Informal preposition placement",
+        "d": "In informal English, the preposition can be placed at the end of the clause, such as in the phrase 'that I was looking for'."
+      },
+      {
+        "t": "Usage of article 'a'",
+        "d": "The article 'a' is used before singular countable nouns beginning with a consonant sound and denotes any one object, not a specific one."
+      },
+      {
+        "t": "Passive voice transformation",
+        "d": "When transforming to passive, the object becomes the subject, the verb changes to a passive form, and the original subject follows 'by' while keeping adverbials in place."
+      },
+      {
+        "t": "Article agreement with 'such'",
+        "d": "After 'such', the article must agree with the noun's initial sound, requiring 'a' for consonant sounds like 'talented' and 'an' for vowel sounds."
+      },
+      {
+        "t": "First mention of nouns",
+        "d": "The indefinite article 'a' is required before a singular, countable noun mentioned for the first time, including professions."
+      }
+    ],
+    "mustKnow": [
+      "Non-defining relative clauses are separated by commas and add extra information, whereas defining clauses are essential and not separated by commas.",
+      "The term 'Restrictive' is another term for defining clauses.",
+      "The indefinite article 'a' cannot precede plural nouns.",
+      "In passive voice transformations, the adverbial 'tomorrow' must remain in its original position.",
+      "First mention of a profession or singular countable noun requires the indefinite article 'a'.",
+      "'A' is used before singular countable nouns starting with a consonant sound, while 'an' is used for vowel sounds."
+    ],
+    "mistakes": [
+      "Using 'a' before a vowel sound word like 'apple' is incorrect; it requires 'an'.",
+      "Using 'the' with a job title for the first mention is incorrect; it requires 'a'.",
+      "Placing a preposition before 'which' in informal contexts is less natural compared to ending the clause with the preposition."
+    ],
+    "mnemonics": [
+      "Commas mean extra info (Non-defining); No commas mean needed info (Defining).",
+      "'A' for consonants, 'An' for vowels; 'Such' follows the same sound rule."
+    ],
+    "source": "English Grammar Rules",
+    "updatedAt": "2026-07-28"
+  },
+  "133": {
+    "summary": "The material covers English vocabulary selection, distinguishing between similar verbs like say and tell, identifying correct collocations, and choosing appropriate synonyms based on context.",
+    "keyPoints": [
+      {
+        "t": "Say vs Tell distinctions",
+        "d": "The verb 'tell' must have a person as its object and cannot appear without naming a listener, whereas 'say' can appear without an indirect object and can stand alone."
+      },
+      {
+        "t": "Standard collocations",
+        "d": "Phrases like 'make a decision,' 'give an opportunity,' and 'heavy rain' are standard idiomatic expressions, while 'take the weather' is not idiomatic."
+      },
+      {
+        "t": "Verb-noun pairs with habit",
+        "d": "The verb 'break' typically pairs with 'habit' to mean stopping doing it, while 'form' is used for creating a habit; 'strengthen' and 'ignore' do not conventionally pair."
+      },
+      {
+        "t": "Synonyms for brightness",
+        "d": "'Dazzling' implies a blinding brightness stronger than 'bright,' while 'shimmering' refers to a soft glittering effect, and 'luminous' or 'radiant' indicate clear brightness."
+      },
+      {
+        "t": "Contextual emotional words",
+        "d": "'Despair' is the correct term for a negative reaction to unexpected news, distinguishing it from 'euphoria' (happiness), 'indifference' (lack of feeling), or 'curiosity' (interest)."
+      },
+      {
+        "t": "Gerund for ongoing action",
+        "d": "The gerund 'finishing' correctly conveys an ongoing activity, unlike the infinitive 'to finish' or the past participle 'finished' which imply completion or different senses."
+      }
+    ],
+    "mustKnow": [
+      "The verb 'tell' must have a person as its object and cannot appear without naming a listener.",
+      "The verb 'say' can be used without an indirect object and can stand alone.",
+      "The phrase 'take a cup of tea' is the standard lexical pattern taught at this level.",
+      "The verb 'break' is the typical collocation with 'habit' meaning to stop doing it.",
+      "'Dazzling' denotes a blinding brightness stronger than 'bright', while 'shimmering' means soft glittering.",
+      "In the provided context, 'strong coffee' is considered not idiomatic, whereas 'strong tea' is the typical collocation."
+    ],
+    "mistakes": [
+      "Mistake: Using 'tell' without an object. Correction: 'Tell' requires a recipient (e.g., tell someone).",
+      "Mistake: Using 'take the weather'. Correction: This phrase is not idiomatic.",
+      "Mistake: Using 'strong coffee' as a standard collocation. Correction: The notes indicate 'strong tea' is the typical collocation in this context."
+    ],
+    "mnemonics": [
+      "Remember 'Tell' needs a 'Target' (person), while 'Say' just states something.",
+      "Use 'Break a habit' to visualize stopping the cycle of a habit."
+    ],
+    "source": "Not specified in provided notes",
+    "updatedAt": "2026-07-28"
+  },
+  "134": {
+    "summary": "This topic covers pragmatics, focusing on selecting appropriate speech samples, understanding intended meanings (literal, ironic), and evaluating social-communicative appropriateness. It emphasizes identifying speech acts, maxims, and politeness strategies in various contexts.",
+    "keyPoints": [
+      {
+        "t": "Speech Acts and Illocutionary Force",
+        "d": "Illocutionary force refers to the intended function of an utterance, such as a request, command, or promise, aimed at influencing behavior. It differs from the broader concept of a speech act, the locutionary meaning (literal content), and the perlocutionary effect (impact on the listener)."
+      },
+      {
+        "t": "Politeness Strategies in Speech",
+        "d": "Positive politeness involves using tentative formulations to seek solidarity and soften criticism, unlike negative politeness which emphasizes the listener's freedom. A direct command is 'bald on record,' while an indirect hint is 'off record.'"
+      },
+      {
+        "t": "Direct and Indirect Speech Acts",
+        "d": "Indirect speech acts rely on a mismatch between literal form and intended meaning, requiring context and listener inference for interpretation. Although phrased as a question about ability, 'Can you pass the salt?' functions as a polite request."
+      },
+      {
+        "t": "Conversational Maxims Violations",
+        "d": "The Maxim of Relation is violated when an utterance is irrelevant to the current topic. The Maxim of Quantity is violated when information is vague, whereas a precise directive satisfies Relation but makes Quantity precise."
+      },
+      {
+        "t": "Social-Communicative Appropriateness",
+        "d": "In classroom settings, acknowledging a student's contribution while encouraging new information preserves face and discourse flow. Similarly, an apology followed by an offer to help repairs a face threat by acknowledging the accident and showing concern."
+      },
+      {
+        "t": "Identifying Utterance Intentions",
+        "d": "Statements like 'You ate a lot' can convey neutral observation, surprise, or mild admiration rather than criticism. Requests ask for future action and are softened by modals like 'could,' distinguishing them from direct commands or offers."
+      }
+    ],
+    "mustKnow": [
+      "Illocutionary force is the intended function of an utterance, such as a request, command, or promise, aimed at influencing behavior.",
+      "Positive politeness uses a tentative formulation that seeks solidarity to soften criticism.",
+      "Indirect speech acts rely on a mismatch between literal form and intended meaning, context for interpretation, and listener inference.",
+      "A request asks the listener to perform an action in the future, often softened by modals like 'could'.",
+      "The Maxim of Relation is violated when an utterance is irrelevant to the current topic.",
+      "The Maxim of Quantity is violated when an utterance is vague about the amount of information.",
+      "Locutionary meaning refers to the literal content of an utterance.",
+      "Perlocutionary effect concerns the effect of an utterance on the listener."
+    ],
+    "mistakes": [
+      "Confusing a polite request phrased as a question with a genuine inquiry about ability; it is actually a directive to perform an action.",
+      "Assuming a neutral observation like 'You ate a lot' implies criticism or a health judgment; it may simply express surprise or admiration.",
+      "Identifying a tentative formulation seeking solidarity as a direct command; it is actually an example of positive politeness.",
+      "Treating an irrelevant utterance as a violation of Quantity; it is actually a violation of the Relation maxim."
+    ],
+    "mnemonics": [
+      "I.L.P.: I for Illocutionary (Intended force), L for Locutionary (Literal meaning), P for Perlocutionary (effect on People/listener).",
+      "P.O.N.: Politeness strategies: P for Positive (solidarity), O for Off record (indirect hint), N for Negative (freedom).",
+      "Maxims: R for Relation (Relevance - irrelevant is bad), Q for Quantity (amount - vague is bad)."
+    ],
+    "source": "Not specified in the provided explanations",
+    "updatedAt": "2026-07-28"
+  },
+  "135": {
+    "summary": "Ingliz tili o'qituvchisining kasb standarti bo'yicha o'quv jarayonini rejalashtirish, maqsadlarni belgilash, o'quvchilarga nisbatan munosabat va baholash vositalariga oid talablar.",
+    "keyPoints": [
+      {
+        "t": "Rejalashtirish asosiy vazifalari",
+        "d": "O'quv jarayonini rejalashtirish o'quvchilarning ehtiyojlarini, o'zlashtirish ko'rsatkichlarini tahlil qilish hamda aniq va erishiladigan natijalarni belgilashni o'z ichiga oladi."
+      },
+      {
+        "t": "Dars maqsadlarini belgilash",
+        "d": "Dars maqsadlarini aniq va o'lchanadigan qilib belgilash o'quv jarayonini rejalashtirish bosqichining asosiy vazifasi hisoblanadi."
+      },
+      {
+        "t": "Induksiya va deduksiya usullari",
+        "d": "Induksiya usulida o'qituvchi konkret misollarni ko'rsatadi, o'quvchi umumiy qoidani chiqaradi. Deduksiya esa umumiy qonuniyatdan maxsus misollarga o'tadi."
+      },
+      {
+        "t": "Mezonlarga asoslangan maqsadlar",
+        "d": "Maqsadlarni baholash natijalariga asoslanib aniq va o'lchamli belgilash kasb standart talablariga mos keladi."
+      },
+      {
+        "t": "Hurmat va teng sharoit",
+        "d": "Teng sharoit yaratish, har bir o'quvchini hurmat qilish va xavfsiz muhitni ta'minlash standartning asosiy tarkibiy qismini tashkil etadi."
+      },
+      {
+        "t": "Baholash vositalari turlari",
+        "d": "Rubrika ishlarni tizimli baholash, test standart natija olish, portfel esa individual o'zlashtirishni ko'rsatish uchun ishlatiladi."
+      }
+    ],
+    "mustKnow": [
+      "O'quv jarayonini rejalashtirish vazifasi o'quvchilarning ehtiyojlarini tahlil qilish va aniq, erishiladigan natijalarni belgilashdan iborat.",
+      "Induktiv metodda o'qituvchi bir necha konkret misollarni ko'rsatib, ularning umumiy qonuniyatini talabalarga kashf ettiradi.",
+      "Deduksiya usuli umumiy qonunni misollarga tatbiq qilishni o'z ichiga oladi.",
+      "Maqsadda aniq raqam (masalan, 80%) keltirilishi uni o'lchanadigan mezonga mos keladi.",
+      "Bilim darajasini aniqlash va dars maqsadlarini belgilash rejalashtirish bosqichiga kiradi.",
+      "Rubrika ishlarni tizimli baholash vositasi hisoblanadi."
+    ],
+    "mistakes": [
+      "Dars maqsadlarini qiziqishlarga asoslanib belgilash (Xato). To'g'ri shakli: Maqsadlar baholash natijalariga asoslanib aniq va o'lchamli belgilanishi kerak.",
+      "Teng sharoit yaratishni rejalashtirish vazifasi deb hisoblash (Xato). To'g'ri shakli: Bu standartning asosiy tarkibiy qismi bo'lib, rejalashtirish bosqichiga kirmaydi.",
+      "Umumiy maqsadlarni o'lchanadigan mezon sifatida qabul qilish (Xato). To'g'ri shakli: O'lchanadigan mezon uchun maqsadda aniq raqamli ko'rsatkich bo'lishi shart."
+    ],
+    "mnemonics": [
+      "RTP: Rubrika (Tizimli), Test (Standart), Portfel (Individual) baholash vositalarini eslash uchun.",
+      "80% qoidasi: Maqsad o'lchanadigan bo'lishi uchun unda aniq raqam bo'lishi kerakligini eslang.",
+      "Induksiya - Individualdan umumiyga; Deduksiya - Definitsiyadan misolga."
     ],
     "source": "Kasb standarti talablari",
     "updatedAt": "2026-07-28"
   },
   "136": {
-    "summary": "Pedagogik mahorat va ELT bo'yicha test elementlari, baholash turlari (formativ, summativ, diagnostik), o'qitish usullari (induksiya, deduksiya) hamda sinf boshqaruvi va motivatsiyaga oid asosiy tushunchalar.",
+    "summary": "Pedagogik mahorat va ELT imtihonida baholash turlari (formativ, summativ, diagnostik), o'qitish metodikasi (induksiya, deduksiya, differensial ta'lim) hamda test elementlarining tuzilishi va ularni qo'llash asosiy e'tiborga olinadi.",
     "keyPoints": [
       {
         "t": "Test elementlari turlari",
-        "d": "To'g'ri/noto'g'ri bandlar va bir nechta javob variantlari testning standart elementlari hisoblanadi. Bo'sh joyga to'ldirish va rasmli diagramma maxsus formatlarga tegishli."
+        "d": "To'g'ri/nota'g'ri bandlar va bir nechta javob variantlari standart test elementlari hisoblanadi. Bo'sh joyga to'ldirish va rasmli diagramma maxsus formatga tegishli."
       },
       {
         "t": "Formativ baholash",
-        "d": "Formativ baholash dars davomida o'tkazilib, o'quvchilarga darhol qayta aloqa beradi va tuzatish taklif qiladi. U odatda ball qo'yishni o'z ichiga olmaydi."
+        "d": "Dars davomida o'quvchilarga qayta aloqa berish va tuzatish taklif qilishni o'z ichiga oladi. Ball berilmaydi, joriy o'zlashtirishga qaratilgan."
       },
       {
         "t": "Summativ va diagnostik",
-        "d": "Summativ baholash ta'lim jarayonining yakuniy natijasini beradi. Diagnostik baholash esa o'quvchilarning boshlang'ich bilim darajasini aniqlash uchun qo'llaniladi."
+        "d": "Summativ baholash yakuniy natijani beradi. Diagnostik baholash boshlang'ich bilim darajasini aniqlash uchun qo'llaniladi."
       },
       {
         "t": "Induksiya va deduksiya",
-        "d": "Induksiya misollar orqali umumiy qoida yoki qonunni chiqarishdir. Deduksiya esa oldindan berilgan umumiy qoidani misollar orqali tasdiqlash yoki formulani qo'llashdir."
+        "d": "Induksiya misollardan umumiy qoidani chiqarishni o'z ichiga oladi. Deduksiya esa berilgan umumiy qoidani misollar orqali tasdiqlash yoki formulani qo'llashdir."
       },
       {
         "t": "Differensial ta'lim",
-        "d": "Differensial ta'lim o'quvchilarning individual ehtiyojlariga mos turli topshiriqlar va usullarni qo'llashni bildiradi. Frontal metod hamma uchun bir xil bo'ladi."
+        "d": "O'quvchilarning individual ehtiyojlariga mos ravishda turli topshiriqlar va usullarni qo'llashni bildiradi. Frontal metoddan farqli o'laroq moslashuvni ta'minlaydi."
       },
       {
         "t": "Motivatsiya omillari",
-        "d": "Shaxsiy qiziqishlarga asoslangan topshiriqlar va guruh raqobati uchun mukofotlar motivatsiyani oshiradi. Faqat nazorat savollari motivatsiyani kamaytirishi mumkin."
+        "d": "Shaxsiy qiziqishlarga asoslangan topshiriqlar va guruh raqobati uchun mukofotlar motivatsiyani oshiradi. Standart testlar motivatsiyani kamaytirishi mumkin."
       },
       {
         "t": "Hikoya metodi",
-        "d": "Hikoya metodining asosiy xususiyati qiziqarli voqeani aytib, o'quvchilarning diqqatini jalb qilishdir. Bu demonstratsiyadan farq qiladi."
+        "d": "Qiziqarli voqeani aytib, o'quvchilarning diqqatini jalb qilish usulidir. Demonstratsiya amaliy ko'rsatish, analogiya solishtirishdir."
       }
     ],
     "mustKnow": [
       "Formativ baholash dars jarayonida o'quvchilarning joriy o'zlashtirishini kuzatib, darhol qayta aloqa beradi; ball qo'yish odatiy emas.",
-      "Summativ baholash yakuniy natijani o'lchaydi, diagnostik baholash boshlang'ich darajani aniqlaydi, standart test ballga asoslanadi.",
-      "Induksiya o'quvchilarni aniq misollar orqali umumiy qoidani chiqarishga undaydi, deduksiya esa umumiy qoidani misollar orqali tasdiqlashdir.",
-      "Objektivlik prinsipi natija har bir o'qituvchi uchun bir xil bo'lishini bildiradi, yagona standart esa barcha o'qituvchilar bir xil me'yorlarga asoslanishini anglatadi.",
-      "Standartlashtirilgan test maxsus formatga ega bo'lib, ballarga asoslanadi.",
-      "Testlar, ayniqsa gap tuzilishi bo'yicha savollar, o'quvchi bilimini aniq va standartlashtirilgan tarzda tekshirishga imkon beradi."
+      "Summativ baholash yakuniy natijani o'lchaydi, standartlashtirilgan test ballga asoslanadi.",
+      "Diagnostik baholash boshlang'ich bilim darajasini aniqlash uchun o'tkaziladi.",
+      "Objektivlik natijaning har bir o'qituvchi uchun bir xil bo'lishini bildiradi.",
+      "Yagona standart barcha o'qituvchilar bir xil me'yorlarga asoslanishini anglatadi.",
+      "Sharhlash imkoniyati talabaning shaxsiy yondashuvini hisobga oladi.",
+      "Induksiya misollar yoki xususiyatlardan umumiy qonun yoki xulosa chiqarishni o'z ichiga oladi.",
+      "Deduksiya oldindan berilgan umumiy qoidani misollar orqali tasdiqlash yoki formulani amalda qo'llashdir."
     ],
     "mistakes": [
-      "Xato: Formativ baholash yakuniy ball berish uchun ishlatiladi. To'g'ri: Formativ baholash dars davomida qayta aloqa berish uchun xizmat qiladi, ball qo'yish odatiy emas.",
-      "Xato: Deduksiya misollardan umumiy qoidani chiqarishdir. To'g'ri: Deduksiya umumiy qoidani misollar orqali tasdiqlashdir, misollardan qoida chiqarish induksiyadir.",
-      "Xato: Frontal metod o'quvchilarning individual ehtiyojlarini inobatga oladi. To'g'ri: Frontal metod hamma uchun bir xil bo'ladi, individual ehtiyojlar differensial ta'limda qo'llaniladi."
+      "Formativ baholashga ball qo'yiladi. — To'g'ri: Formativ baholashda ball qo'yilmaydi, faqat qayta aloqa va tuzatish taklif qilinadi.",
+      "Frontal metod individual ehtiyojlar uchun moslashadi. — To'g'ri: Frontal metod hamma uchun bir xil, individual ehtiyojlar uchun differensial ta'lim qo'llaniladi.",
+      "Standart test motivatsiyani oshiradi. — To'g'ri: Standart test motivatsiyani kamaytirishi mumkin, motivatsiyani shaxsiy qiziqishlar va mukofotlar oshiradi."
     ],
     "mnemonics": [
-      "Formativ - Feedback (F-F), Summativ - Score (S-S). Formativda fikr-mulohaza, summativda ball muhim.",
-      "Induksiya = Ichki (misoldan tashqariga qoidaga). Deduksiya = Davomiy (qoidadan amalga).",
-      "Diagnostik = Dastlabki (bilim darajasini boshida aniqlash)."
+      "Induksiya: 'I' harfi Individualdan Umumiyga (misoldan qoidaga) o'tishni anglatadi.",
+      "Formativ: 'F' harfi Feedback (qayta aloqa) va d jarayonida (dars davomida) ekanini eslatadi.",
+      "Summativ: 'S' harfi Summa (yakuniy ball) bilan tugashini bildiradi."
     ],
-    "source": "Tasdiqlangan imtihon izohlari asosida",
+    "source": "Imtihon dasturi bo'yicha tasdiqlangan izohlar",
     "updatedAt": "2026-07-28"
   }
 }

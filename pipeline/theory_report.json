@@ -840,42 +840,60 @@
     "facts": 7
   },
   "129": {
-    "status": "skipped",
-    "reason": "izoh 0",
-    "name": "Reading: ilmiy-ommabop matn"
+    "status": "ok",
+    "name": "Reading: ilmiy-ommabop matn",
+    "category": "ingliz",
+    "warns": [],
+    "points": 7,
+    "facts": 8
   },
   "130": {
-    "status": "skipped",
-    "reason": "izoh 0",
-    "name": "Reading: voqeaband matn"
+    "status": "ok",
+    "name": "Reading: voqeaband matn",
+    "category": "ingliz",
+    "warns": [],
+    "points": 6,
+    "facts": 7
   },
   "131": {
-    "status": "skipped",
-    "reason": "izoh 0",
-    "name": "Reading: matn yaxlitligi"
+    "status": "ok",
+    "name": "Reading: matn yaxlitligi",
+    "category": "ingliz",
+    "warns": [],
+    "points": 7,
+    "facts": 7
   },
   "132": {
-    "status": "skipped",
-    "reason": "izoh 0",
-    "name": "Grammatika"
+    "status": "ok",
+    "name": "Grammatika",
+    "category": "ingliz",
+    "warns": [],
+    "points": 7,
+    "facts": 6
   },
   "133": {
-    "status": "skipped",
-    "reason": "izoh 0",
-    "name": "Leksika (Vocabulary)"
+    "status": "ok",
+    "name": "Leksika (Vocabulary)",
+    "category": "ingliz",
+    "warns": [],
+    "points": 6,
+    "facts": 6
   },
   "134": {
-    "status": "skipped",
-    "reason": "izoh 0",
-    "name": "Pragmatika"
+    "status": "ok",
+    "name": "Pragmatika",
+    "category": "ingliz",
+    "warns": [],
+    "points": 6,
+    "facts": 8
   },
   "135": {
     "status": "ok",
     "name": "Kasb standarti",
     "category": "ingliz",
     "warns": [],
-    "points": 7,
-    "facts": 7
+    "points": 6,
+    "facts": 6
   },
   "136": {
     "status": "ok",
@@ -883,6 +901,6 @@
     "category": "ingliz",
     "warns": [],
     "points": 7,
-    "facts": 6
+    "facts": 8
   }
 }
