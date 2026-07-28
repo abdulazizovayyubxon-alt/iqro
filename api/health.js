@@ -84,9 +84,15 @@ export default async function handler(req, res) {
     if (snap.exists) {
       checks.firestore = 'up';
       const data = snap.data() || {};
-      questionsVersion = data.version ?? data.v ?? null;
-      // Savollar to'plami e'lon qilinganmi (URL'larning O'ZI qaytarilmaydi)
-      checks.questionBundles = Object.keys(data.urls || {}).length;
+      questionsVersion = data.dbVersion ?? null;   // admin-publish.js:76 shu nomda yozadi
+      // Savollar qayerdan kelayotgani. `urls` ATAYLAB bo'sh qoldirilgan
+      // (scripts/bump-questions-version.mjs:15) — ochiq Storage URL'i pullik
+      // bazani login'siz yuklab olishga imkon berardi. Bo'sh bo'lsa ilova
+      // TestPage.jsx:428 dagi Firestore fallback'iga tushadi.
+      // 0 = kutilgan holat, nosozlik EMAS.
+      checks.questionSource = Object.keys(data.urls || {}).length > 0
+        ? 'storage-bundle'
+        : 'firestore-fallback';
     } else {
       // Baza javob berdi, lekin sozlama hujjati yo'q — ilova savol yuklay olmaydi
       checks.firestore = 'up';
