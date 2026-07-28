@@ -74,7 +74,7 @@ const SmartBottomSheet = ({
 
   const q = query.trim().toLowerCase();
   const matchSubject = (s) => !q || s.name.toLowerCase().includes(q) || (s.desc && s.desc.toLowerCase().includes(q));
-  const matchTopic = (tp) => !q || tp.name.toLowerCase().includes(q);
+  const matchTopic = (tp) => !q || tp.name.toLowerCase().includes(q) || (tp.subtitle && tp.subtitle.toLowerCase().includes(q));
 
   // Profildagi o'qituvchilik fani — birinchi guruhda ★ bilan chiqadi
   const profileSubjectId = user?.subject || null;
@@ -151,14 +151,14 @@ const SmartBottomSheet = ({
   };
 
   // ── Bo'lim qatori
-  const renderTopicRow = ({ id, name, icon, selected }) => {
+  const renderTopicRow = ({ id, name, subtitle, icon, selected }) => {
     const pct = id === -1 ? masteryBySubject[state.activeCategory] : topicMastery(id);
     return (
       <button
         key={id}
         onClick={() => chooseTopic(id)}
         style={{
-          display: 'flex', alignItems: 'center', gap: 11, padding: '10px 13px', minHeight: 52,
+          display: 'flex', alignItems: 'center', gap: 11, padding: '10px 13px', minHeight: 56,
           borderRadius: 13,
           border: selected ? '1.5px solid var(--accent)' : '1px solid var(--border)',
           background: selected ? 'var(--blue-bg)' : 'var(--bg2)',
@@ -166,7 +166,7 @@ const SmartBottomSheet = ({
         }}
       >
         <span style={{
-          flexShrink: 0, width: 32, height: 32, borderRadius: 9,
+          flexShrink: 0, width: 34, height: 34, borderRadius: 9,
           display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'var(--fs-lg)',
           background: selected ? 'var(--accent)' : 'var(--surface2)',
           color: selected ? '#fff' : 'var(--text3)',
@@ -176,6 +176,11 @@ const SmartBottomSheet = ({
           <span style={{ display: 'block', fontSize: 'var(--fs-md)', fontWeight: 700, color: selected ? 'var(--accent2)' : 'var(--text)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
             {name}
           </span>
+          {subtitle && (
+            <span style={{ display: 'block', fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              {subtitle}
+            </span>
+          )}
           {pct !== null && (
             <span style={{ display: 'block', height: 4, borderRadius: 99, background: 'var(--bg3)', overflow: 'hidden', marginTop: 6 }}>
               <span style={{ display: 'block', height: '100%', width: `${pct}%`, borderRadius: 99, background: pctColor(pct) }} />
@@ -330,7 +335,7 @@ const SmartBottomSheet = ({
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   {!q && renderTopicRow({ id: -1, name: t('selector.allSections'), icon: '📚', selected: topicId === -1 })}
                   {visibleTopics.map(top => renderTopicRow({
-                    id: top.id, name: top.name, icon: top.icon, selected: topicId === top.id,
+                    id: top.id, name: top.name, subtitle: top.subtitle, icon: top.icon, selected: topicId === top.id,
                   }))}
                   {q && visibleTopics.length === 0 && (
                     <div style={{ textAlign: 'center', padding: '24px 0', color: 'var(--text3)', fontSize: 'var(--fs-base)', fontWeight: 600 }}>
