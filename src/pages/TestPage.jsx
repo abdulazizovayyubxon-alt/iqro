@@ -8,8 +8,9 @@ import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { useTheory } from '../hooks/useTheory';
 import { matchKeyPoint } from '../data/theory';
-import TheorySheet from '../components/theory/TheorySheet';
+import TheoryPreCard from '../components/theory/TheoryPreCard';
 import TheoryModal from '../components/theory/TheoryModal';
+import { isTheorySeen, markTheorySeen } from '../services/theorySeen';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RefreshCw, ArrowLeft, X } from 'lucide-react';
@@ -172,10 +173,12 @@ const TestPage = () => {
   const [motivationText, setMotivationText] = useState('');
   const motivationTimerRef = useRef(null);
 
-  // Mini-darslik va ko'rilgan mavzular xotirasi
-  const [showTheory, setShowTheory] = useState(false);
+  // Konspekt. `theoryCardOpen` — 1-savol ustidagi ixcham kartochka holati;
+  // «o'qilgan» belgisi endi komponent ichida emas, localStorage'da yashaydi
+  // (`services/theorySeen`), shuning uchun sahifadan chiqib qaytilsa ham qoladi.
   const [showTheoryModal, setShowTheoryModal] = useState(false);
-  const [seenTheoryTopics, setSeenTheoryTopics] = useState({});
+  const [theoryCardOpen, setTheoryCardOpen] = useState(false);
+  const theoryMarkedRef = useRef(false);
 
   // Flashcard state
   const [fcFlipped, setFcFlipped] = useState(false);
@@ -649,16 +652,6 @@ const TestPage = () => {
     }
   };
 
-  useEffect(() => {
-    if (topicObj?.theoryHint && questions.length > 0) {
-      // Faqat shu mavzuga birinchi marta kirganda ko'rsatiladi (blok o'zgarganda emas)
-      if (!seenTheoryTopics[topicId]) {
-        setShowTheory(true);
-        setSeenTheoryTopics(prev => ({ ...prev, [topicId]: true }));
-      }
-    }
-  }, [topicId, mode, questions.length]);
-
   const handleShowResults = () => {
     if (committedRef.current) return; // ikki marta bosish / sekin tarmoq himoyasi
     committedRef.current = true;
@@ -702,7 +695,38 @@ const TestPage = () => {
 
   // ── Nazariya: joriy savolning O'Z mavzusi bo'yicha (aralash testda ham) ──
   const currentTopicId = questions[currentQ]?.topicId ?? topicId;
-  const { theory: currentTheory } = useTheory(currentTopicId);
+  const { theory: currentTheory, loading: theoryLoading } = useTheory(currentTopicId);
+
+  // Konspekt kartochkasi imtihon rejimida chiqmaydi (u imtihon simulyatsiyasi)
+  // va aralash mashqda ham (topicId -1 — u yerda bitta mavzu yo'q).
+  const theoryCardEligible = mode !== 'exam' && topicId >= 0 && questions.length > 0;
+
+  // Mavzuga BIRINCHI kirishda kartochka ochiq, keyingi kirishlarda yig'ilgan.
+  // `theoryLoading` kutiladi: zaxira matnda `updatedAt` bo'lmagani uchun
+  // kutmasak kartochka bir lahza ochilib, keyin yopilib ko'z oldida sakrardi.
+  useEffect(() => {
+    if (!theoryCardEligible || theoryLoading || !currentTheory) {
+      setTheoryCardOpen(false);
+      return;
+    }
+    setTheoryCardOpen(!isTheorySeen(user?.uid, topicId, currentTheory.updatedAt));
+  }, [topicId, theoryCardEligible, theoryLoading, currentTheory?.updatedAt, user?.uid]);
+
+  // Mavzu almashsa «belgilandi» qulfi ochiladi
+  useEffect(() => { theoryMarkedRef.current = false; }, [topicId]);
+
+  // «O'qildi» — kartochka qo'lda yopilganda yoki birinchi javob berilganda.
+  // Ochilishning o'ziga qarab belgilamaymiz: tasodifan kirib darrov chiqqan
+  // odam konspektni umuman ko'rmay qolardi.
+  const markTheoryRead = () => {
+    if (theoryMarkedRef.current || !theoryCardEligible || theoryLoading || !currentTheory) return;
+    theoryMarkedRef.current = true;
+    markTheorySeen(user?.uid, topicId, currentTheory.updatedAt);
+  };
+
+  useEffect(() => {
+    if (Object.keys(answers).length > 0) markTheoryRead();
+  }, [answers, theoryCardEligible, theoryLoading]);
 
   // Xato javobdan keyin aynan kerakli nazariy band topiladi. Savol matniga
   // TO'G'RI javob ham qo'shiladi — u ko'pincha bandning kalit so'zini beradi.
@@ -733,34 +757,6 @@ const TestPage = () => {
           ))}
         </div>
       </div>
-    );
-  }
-
-  if (showTheory) {
-    // Test oldidan konspekt. Ilgari bu bitta abzats edi; endi strukturaviy
-    // material bo'lsa to'liq ko'rsatiladi, bo'lmasa o'sha matn `summary`
-    // sifatida chiqadi — ya'ni hech bir mavzu bo'sh qolmaydi.
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        style={{ padding: '20px 16px 32px' }}
-      >
-        <TheorySheet
-          theory={currentTheory}
-          topicName={topicObj?.name || topicName}
-          embedded
-        />
-        <div style={{ maxWidth: 700, margin: '22px auto 0' }}>
-          <motion.button
-            whileTap={{ scale: 0.98 }}
-            className="theory-btn"
-            onClick={() => setShowTheory(false)}
-          >
-            {t('test.theoryBtn')}
-          </motion.button>
-        </div>
-      </motion.div>
     );
   }
 
@@ -997,7 +993,21 @@ const TestPage = () => {
                   </button>
                 </motion.div>
               )}
-              <QuestionBox 
+              {/* Konspekt — to'siq emas, savol ustidagi ixcham qator.
+                  Yig'ilgan holatda ham turadi: test davomida konspektga
+                  yagona doimiy kirish nuqtasi shu. */}
+              {theoryCardEligible && !theoryLoading && (
+                <TheoryPreCard
+                  theory={currentTheory}
+                  open={theoryCardOpen}
+                  onToggle={() => {
+                    if (theoryCardOpen) markTheoryRead();
+                    setTheoryCardOpen(v => !v);
+                  }}
+                  onOpenFull={() => { markTheoryRead(); setShowTheoryModal(true); }}
+                />
+              )}
+              <QuestionBox
                 questions={questions}
                 currentQ={currentQ}
                 answers={answers}

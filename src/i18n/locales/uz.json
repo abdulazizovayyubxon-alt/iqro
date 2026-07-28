@@ -262,9 +262,6 @@
     "toastRequestOk": "✅ So'rovingiz qabul qilindi! Savollar qo'shilganda bildirishnoma olasiz.",
     "toastRequestDup": "Siz bu mavzu uchun allaqachon so'rov yuborgansiz",
     "toastRequestErr": "Xatolik yuz berdi, qayta urinib ko'ring",
-    "theoryTitle": "Qisqacha Eslatma",
-    "theorySubtitle": "Testni boshlashdan oldin quyidagi ma'lumotlarni yodga oling:",
-    "theoryBtn": "O'qib chiqdim — Testni boshlash",
     "limitTitle": "Kunlik Bepul Limit Tugadi",
     "limitText": "Siz bugungi 50 ta bepul savol limitiga yetdingiz! Barcha savollar va mavzularga cheksiz kirish uchun Pro rejimni faollashtiring.",
     "limitActivate": "⭐ Pro Rejimni Faollashtirish",
@@ -1481,7 +1478,11 @@
     "updated": "yangilangan {{date}}",
     "legacyNote": "Bu mavzu bo'yicha to'liq konspekt hali tayyorlanmoqda — hozircha qisqacha ko'rsatilgan.",
     "readThis": "Shu qismni o'qing",
-    "open": "Konspektni ochish"
+    "open": "Konspektni ochish",
+    "compactTitle": "Qisqacha eslatma",
+    "compactMeta": "{{n}} ta asosiy fakt · ~{{min}} daq",
+    "compactMetaShort": "~{{min}} daqiqalik o'qish",
+    "openFull": "To'liq konspekt"
   },
   "pace": {
     "daysLeft": "Imtihongacha {{count}} kun",

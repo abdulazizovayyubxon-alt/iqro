@@ -1103,14 +1103,9 @@ button {
 .test-skeleton-box { background: var(--bg2); padding: 24px 20px; border-radius: 20px; border: 1px solid var(--border); }
 .test-skeleton-line { background: var(--bg3); border-radius: 6px; animation: pulse 1.5s infinite ease-in-out; }
 
-/* Test oldidagi konspekt endi TheorySheet komponenti bilan chiziladi
-   (kartochka/ikonka/sarlavha sinflari o'sha bilan birga olib tashlandi) —
-   bu yerda faqat davom etish tugmasi qoldi. */
-.theory-btn {
-  width: 100%; padding: 16px; background: var(--cta);
-  color: #fff; border: none; border-radius: 16px; font-size: var(--fs-xl); font-weight: 700; cursor: pointer;
-  font-family: inherit; box-shadow: 0 4px 15px rgba(14, 151, 224, 0.2);
-}
+/* Test oldidagi konspekt endi to'liq sahifa emas — savol ustidagi yig'iluvchi
+   TheoryPreCard kartochkasi. «Davom etish» tugmasi kerak bo'lmay qoldi,
+   `.theory-btn` shu bilan birga olib tashlandi. */
 
 .limit-container { display: flex; justify-content: center; align-items: center; min-height: 80vh; padding: 20px; }
 .limit-card { max-width: 400px; width: 100%; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 24px; padding: 40px 28px; text-align: center; }

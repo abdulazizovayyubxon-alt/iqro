@@ -262,9 +262,6 @@
     "toastRequestOk": "✅ Your request has been received! You will be notified when questions are added.",
     "toastRequestDup": "You have already submitted a request for this topic",
     "toastRequestErr": "An error occurred, please try again",
-    "theoryTitle": "Quick Summary Note",
-    "theorySubtitle": "Start Testdan oldin quyidagi ma'lumotlarni yodga oling:",
-    "theoryBtn": "O'qib chiqdim — Start Test",
     "limitTitle": "Daily Free Limit Reached",
     "limitText": "You reached today's limit of 50 free questions! Activate Pro mode for unlimited access to all questions and topics.",
     "limitActivate": "⭐ Pro Rejimni Activelashtirish",
@@ -1753,7 +1750,11 @@
     "updated": "updated {{date}}",
     "legacyNote": "A full summary for this topic is still being prepared — a short description is shown for now.",
     "readThis": "Read this point",
-    "open": "Open the summary"
+    "open": "Open the summary",
+    "compactTitle": "Quick recap",
+    "compactMeta": "{{n}} key facts · ~{{min}} min",
+    "compactMetaShort": "~{{min}} min read",
+    "openFull": "Full summary"
   },
   "pace": {
     "daysLeft": "{{count}} days until the exam",
