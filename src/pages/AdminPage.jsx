@@ -80,6 +80,7 @@ const AdminPage = () => {
   const [questionRequests, setQuestionRequests] = useState([]); // "Ko'proq savol kerak" so'rovlari
   const [users, setUsers] = useState([]);
   const [questions, setQuestions] = useState([]);
+  const [questionsLoading, setQuestionsLoading] = useState(false);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [userSearch, setUserSearch] = useState('');
@@ -160,10 +161,22 @@ const AdminPage = () => {
     }
     setIsSendingNotif(true);
     try {
-      await addDoc(collection(db, 'notifications'), {
-        ...newNotif,
-        date: new Date().toISOString()
-      });
+      // MARSHRUTLASH: umumiy e'lon → ochiq `notifications`; bitta kishiga xabar →
+      // `users/{uid}/notifications` subkolleksiyasi.
+      // Sabab payment-webhook.js:110 dagi bilan bir xil: yuqori darajadagi
+      // kolleksiya tizimga kirgan HAR QANDAY foydalanuvchiga o'qish uchun ochiq
+      // (firestore.rules:101) → bir kishiga atalgan xabarni hamma ko'rardi.
+      // Qo'shimcha foyda: ochiq kolleksiya kichik qoladi (faqat umumiy e'lonlar),
+      // shuning uchun uni har bir client arzon o'qiydi.
+      const notifPayload = { ...newNotif, date: new Date().toISOString() };
+      if (newNotif.targetUser && newNotif.targetUser !== 'all') {
+        await addDoc(
+          collection(db, 'users', newNotif.targetUser, 'notifications'),
+          { ...notifPayload, read: false }
+        );
+      } else {
+        await addDoc(collection(db, 'notifications'), notifPayload);
+      }
       // FCM push (best-effort) — VAPID kalit + foydalanuvchi tokenlari sozlangan bo'lsa
       // ilova yopiq bo'lsa ham yetib boradi. Sozlanmagan bo'lsa jimgina o'tkazib yuboriladi.
       try {
@@ -250,20 +263,23 @@ try {
 
       // Batch push to Firestore in chunks of 400
       const qRef = collection(db, 'questions');
+      const added = [];
       for (let i = 0; i < toAdd.length; i += 400) {
         const batch = writeBatch(db);
         const chunk = toAdd.slice(i, i + 400);
         chunk.forEach(q => {
           const newDoc = doc(qRef);
           batch.set(newDoc, q);
+          added.push({ id: newDoc.id, ...q });
         });
         await batch.commit();
       }
 
       showToast(`Muvaffaqiyatli! ${toAdd.length} ta yangi savol yuklandi. 🎉`, 'success');
-      
-      const updatedSnap = await getDocs(collection(db, 'questions'));
-      setQuestions(updatedSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+
+      // Ilgari bu yerda BUTUN kolleksiya qayta o'qilardi (~47 000 o'qish).
+      // Nima qo'shganimizni allaqachon bilamiz — lokal ro'yxatga qo'shamiz.
+      setQuestions(prev => [...prev, ...added]);
 
     } catch (e) {
       console.error("JSON upload error:", e);
@@ -354,15 +370,26 @@ try {
     loadUsers();
   }, [tab, isAdmin]);
 
-  useEffect(() => {
-    if (!isAdmin || tab !== 'questions') return;
-    const loadQuestions = async () => {
-      if (questions.length > 0) return; // Keshdan o'qish (qayta yuklamaslik uchun)
+  // ── Savollar bazasini yuklash — ATAYLAB, QO'LDA ──────────────────────────
+  // ⚠️ `questions` kolleksiyasida ~47 000 hujjat bor. Bitta to'liq yuklash =
+  // 47 000 Firestore o'qish, ya'ni Spark bepul rejasining KUNLIK kvotasining
+  // (50 000) deyarli hammasi. Ilgari bu tab ochilishi bilan avtomatik ishga
+  // tushardi — bitta tasodifiy bosish kvotani tugatib, ilovani o'sha kun
+  // davomida HAMMA foydalanuvchi uchun buzardi (statistika, reyting,
+  // bildirishnomalar `permission-denied` bergan bo'lardi).
+  // Endi faqat admin ataylab tugmani bosganda yuklanadi.
+  const loadAllQuestions = async () => {
+    if (questions.length > 0 || questionsLoading) return;
+    setQuestionsLoading(true);
+    try {
       const snap = await getDocs(collection(db, 'questions'));
       setQuestions(snap.docs.map(d => ({ id: d.id, ...d.data() })));
-    };
-    loadQuestions();
-  }, [tab, isAdmin]);
+    } catch (e) {
+      showToast('Savollarni yuklashda xatolik: ' + e.message, 'error');
+    } finally {
+      setQuestionsLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (!isAdmin || tab !== 'tariffs') return;
@@ -491,14 +518,19 @@ try {
           );
           await batch.commit();
         }
-        // 2) Har bir foydalanuvchiga bildirishnoma (mavjud notifications tizimi orqali)
-        await Promise.all(pendingItems.map(it => addDoc(collection(db, 'notifications'), {
-          title: '✅ Yangi savollar qo\'shildi!',
-          message: `Siz so'ragan "${group.topicName}" mavzusiga yangi savollar qo'shildi. Hoziroq sinab ko'ring!`,
-          type: 'success',
-          targetUser: it.uid,
-          date: new Date().toISOString(),
-        })));
+        // 2) Har bir foydalanuvchiga SHAXSIY subkolleksiyaga bildirishnoma.
+        // Ilgari ochiq `notifications` kolleksiyasiga yozilardi — bu ikki muammo
+        // tug'dirardi: (a) maxfiylik, xabar hammaga o'qish uchun ochiq edi;
+        // (b) yuk, bir marta 50 ta so'rovni bajarsak ochiq kolleksiyaga 50 ta
+        // hujjat tushib, uni HAR BIR foydalanuvchi ilova ochganda o'qirdi.
+        await Promise.all(pendingItems.map(it => addDoc(
+          collection(db, 'users', it.uid, 'notifications'), {
+            title: '✅ Yangi savollar qo\'shildi!',
+            message: `Siz so'ragan "${group.topicName}" mavzusiga yangi savollar qo'shildi. Hoziroq sinab ko'ring!`,
+            type: 'success',
+            read: false,
+            date: new Date().toISOString(),
+          })));
         showToast(`✅ Bajarildi! ${pendingItems.length} ta foydalanuvchiga bildirishnoma yuborildi`, 'success');
       } catch (e) {
         showToast('Xatolik: ' + e.message, 'error');
@@ -675,18 +707,23 @@ try {
         correct: correctVal,
         category: getCategoryFromTopicId(newQ.topicId)
       };
-      if (editingQ) {
-        await updateDoc(doc(db, 'questions', editingQ.id), questionToSave);
+      // Ilgari saqlashdan keyin BUTUN kolleksiya qayta o'qilardi (~47 000 o'qish)
+      // — bitta savol uchun. Endi lokal ro'yxatni to'g'ridan-to'g'ri yangilaymiz.
+      const wasEditing = editingQ;
+      if (wasEditing) {
+        await updateDoc(doc(db, 'questions', wasEditing.id), questionToSave);
+        setQuestions(prev => prev.map(q =>
+          q.id === wasEditing.id ? { ...q, ...questionToSave } : q
+        ));
         showToast("✅ Savol yangilandi!", 'success');
       } else {
-        await addDoc(collection(db, 'questions'), questionToSave);
+        const newRef = await addDoc(collection(db, 'questions'), questionToSave);
+        setQuestions(prev => [...prev, { id: newRef.id, ...questionToSave }]);
         showToast("✅ Yangi savol qo'shildi!", 'success');
       }
       setIsAdding(false);
       setEditingQ(null);
       setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' });
-      const snap = await getDocs(collection(db, 'questions'));
-      setQuestions(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     } catch (e) {
       showToast("Xatolik yuz berdi", 'error');
     }
@@ -778,8 +815,10 @@ try {
         await batch.commit();
       }
       showToast(`Muvaffaqiyatli! ${removeIds.length} ta dublikat o'chirildi. 🎉`, 'success');
-      const snap = await getDocs(collection(db, 'questions'));
-      setQuestions(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+      // Ilgari butun kolleksiya qayta o'qilardi (~47 000 o'qish).
+      // O'chirilgan ID'lar bizda bor — lokal ro'yxatdan olib tashlaymiz.
+      const removedSet = new Set(removeIds);
+      setQuestions(prev => prev.filter(q => !removedSet.has(q.id)));
       setDupPreview(null);
     } catch (e) {
       showToast("O'chirishda xatolik: " + e.message, 'error');
@@ -794,9 +833,13 @@ try {
     showToast("Ma'lumotlar yig'ilmoqda, kuting...", 'info');
 
     try {
-      // 1. Hamma savollarni olish
-      const snap = await getDocs(collection(db, 'questions'));
-      const allQuestions = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      // 1. Hamma savollarni olish — ro'yxat allaqachon yuklangan bo'lsa,
+      //    qayta o'qimaymiz (~47 000 o'qish tejaladi).
+      let allQuestions = questions;
+      if (allQuestions.length === 0) {
+        const snap = await getDocs(collection(db, 'questions'));
+        allQuestions = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      }
 
       // 2. Kategoriya bo'yicha guruhlash
       const bundles = {};
@@ -1277,8 +1320,35 @@ try {
 
       {tab === 'questions' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div className="admin-section-title"><FileText size={18} style={{ color: 'var(--blue)' }} /> Savollar Bazasi ({questions.length})</div>
-          
+          <div className="admin-section-title"><FileText size={18} style={{ color: 'var(--blue)' }} /> Savollar Bazasi ({questions.length ? questions.length : (overview?.questions ?? '—')})</div>
+
+          {/* Savollar yuklanmagan — ataylab tasdiqlash kerak (kvota himoyasi) */}
+          {questions.length === 0 && (
+            <div className="admin-info-box">
+              <div className="admin-info-title">
+                <AlertCircle size={15} style={{ verticalAlign: '-2px', marginRight: 6 }} />
+                Savollar bazasi yuklanmagan
+              </div>
+              <div className="admin-info-text">
+                Bazada <strong>{overview?.questions ?? '~47 000'}</strong> ta savol bor. To'liq yuklash
+                shuncha Firestore <strong>o'qishini</strong> sarflaydi — bu bepul rejaning kunlik
+                kvotasidan (50 000) deyarli hammasi. Kvota tugasa ilova o'sha kun davomida
+                <strong> barcha foydalanuvchilar uchun</strong> ishlamay qoladi.<br />
+                Tahrirlash, dublikat tozalash, zaxira va Publish uchun yuklash shart —
+                shunchaki ko'rish uchun kerak bo'lsa, yuklamang.
+              </div>
+              <motion.button
+                whileTap={{ scale: 0.98 }}
+                className="btn btn-outline"
+                style={{ marginTop: 10 }}
+                onClick={loadAllQuestions}
+                disabled={questionsLoading}
+              >
+                <Database size={14} /> {questionsLoading ? 'Yuklanmoqda...' : 'Tushundim — baribir yuklash'}
+              </motion.button>
+            </div>
+          )}
+
           <div className="admin-action-bar">
             <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-primary" style={{ background: 'var(--green)', borderColor: 'var(--green)' }} onClick={handlePublishBundles} disabled={isSyncing}>
               <UploadCloud size={14} /> {isSyncing ? 'Yuklanmoqda...' : '🚀 Dasturni Yangilash (Publish)'}

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Crown, Medal, Trash2, AlertTriangle } from 'lucide-react';
 import {
-  collection, query, orderBy, limit, onSnapshot,
+  collection, query, orderBy, limit, getDocs,
   doc, getDoc, where, getCountFromServer, deleteDoc
 } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -28,6 +28,40 @@ const farmFlags = (e, t) => {
   return flags;
 };
 
+// ── O'QISH BYUDJETI: reyting keshi ─────────────────────────────────────────
+// Ilgari bu sahifa `onSnapshot` (JONLI tinglovchi) ishlatardi. Top-50 dagi
+// istalgan kishining bali o'zgarganda hujjatlar qayta o'qilardi — ya'ni
+// foydalanuvchilar ko'paygan sari xarajat kvadratik o'sardi (400 kishi test
+// yechayotganda top-50 doim o'zgaradi). Reytingda 50 o'qish — butun ilovadagi
+// eng qimmat amal, qolgan hamma narsa birgalikda ~8 ta.
+//
+// Endi: bir martalik `getDocs` + 5 daqiqalik kesh. Reyting jonli bo'lishi
+// shart emas. Foydalanuvchi sahifani qayta yuklasa (yoki pull-to-refresh
+// qilsa) kesh chetlab o'tiladi — "yangilanmayapti" hissi qolmaydi.
+const LB_CACHE_TTL = 5 * 60 * 1000;
+
+/** Sahifa qayta yuklanganmi (F5 / pull-to-refresh)? Unda kesh chetlab o'tiladi. */
+const isReload = () => {
+  try {
+    return performance.getEntriesByType('navigation')[0]?.type === 'reload';
+  } catch { return false; }
+};
+
+const readLbCache = (key) => {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    const cached = JSON.parse(raw);
+    if (!cached?.rows || Date.now() - cached.ts > LB_CACHE_TTL) return null;
+    return cached.rows;
+  } catch { return null; }
+};
+
+const writeLbCache = (key, rows) => {
+  try { localStorage.setItem(key, JSON.stringify({ ts: Date.now(), rows })); }
+  catch { /* kvota to'lgan — kesh ixtiyoriy, jim o'tkazamiz */ }
+};
+
 const LeaderboardPage = () => {
   const { t } = useTranslation();
   const { user } = useContext(AuthContext);
@@ -44,81 +78,65 @@ const LeaderboardPage = () => {
 
   useEffect(() => {
     if (!user) return;
+    let cancelled = false;
     setLoading(true);
 
-    let q;
     const weekId = getWeekId();
     const monthId = getMonthId();
+    // Uch xil taxta bitta maydon nomiga keltiriladi — quyida mantiq bir marta yoziladi
+    const scoreField =
+      boardType === 'weekly' ? `weekly_${weekId}`
+        : boardType === 'monthly' ? `monthly_${monthId}`
+          : 'totalScore';
+    const cacheKey = `zehin_lb_${scoreField}`;
 
-    if (boardType === 'weekly') {
-      q = query(collection(db, 'userStats'), orderBy(`weekly_${weekId}`, 'desc'), limit(50));
-    } else if (boardType === 'monthly') {
-      q = query(collection(db, 'userStats'), orderBy(`monthly_${monthId}`, 'desc'), limit(50));
-    } else {
-      q = query(collection(db, 'userStats'), orderBy('totalScore', 'desc'), limit(50));
-    }
+    const toRow = (docSnap) => {
+      const d = docSnap.data();
+      return {
+        id: docSnap.id,
+        name: d.displayName || d.userName || d.name || `#${docSnap.id.slice(0, 6)}`,
+        score: d[scoreField] || 0,
+        totalScore: d.totalScore || 0,
+        correct: d.totalCorrect || 0,
+        streak: d.dailyStreak || 0,
+        answered: d.totalAnswered || 0,
+        photoURL: d.photoURL || null,
+        avatarId: d.avatarId || null
+      };
+    };
 
-    const unsubscribe = onSnapshot(q, async (snapshot) => {
+    const load = async () => {
       try {
-        let results = [];
-        snapshot.forEach(docSnap => {
-          const d = docSnap.data();
+        // ── 1) Top-50: keshdan (0 o'qish) yoki bazadan (50 o'qish) ──
+        let results = isReload() ? null : readLbCache(cacheKey);
+        if (!results) {
+          const snap = await getDocs(
+            query(collection(db, 'userStats'), orderBy(scoreField, 'desc'), limit(50))
+          );
+          if (cancelled) return;
+          results = snap.docs.map(toRow);
+          writeLbCache(cacheKey, results);   // rank/isMe qo'shilishidan OLDIN — ular shaxsiy
+        }
 
-          let score = 0;
-          if (boardType === 'weekly') {
-            score = d[`weekly_${weekId}`] || 0;
-          } else if (boardType === 'monthly') {
-            score = d[`monthly_${monthId}`] || 0;
-          } else {
-            score = d.totalScore || 0;
-          }
-
-          results.push({
-            id: docSnap.id,
-            name: d.displayName || d.userName || d.name || `#${docSnap.id.slice(0, 6)}`,
-            score: score,
-            totalScore: d.totalScore || 0,
-            correct: d.totalCorrect || 0,
-            streak: d.dailyStreak || 0,
-            answered: d.totalAnswered || 0,
-            photoURL: d.photoURL || null,
-            avatarId: d.avatarId || null
-          });
-        });
-
-        // "Siz" top-50 da bormi?
+        // ── 2) "Siz" qatori ──
         const meIdx = results.findIndex(r => r.id === user.uid);
         if (meIdx !== -1) {
           results[meIdx].rank = meIdx + 1;
           results[meIdx].isMe = true;
           setMyEntry(null);
         } else {
-          // Top-50 tashqarida — alohida qatorga solish
+          // Top-50 tashqarisida — o'z o'rnini HAR SAFAR yangi o'qiymiz (2 o'qish).
+          // Foydalanuvchi avvalo o'z o'rnini ko'rgani keladi, u eskirmasligi kerak.
           try {
             const myDoc = await getDoc(doc(db, 'userStats', user.uid));
+            if (cancelled) return;
             if (myDoc.exists()) {
               const md = myDoc.data();
-
-              let myScore = 0;
-              let rankAbove = 0;
-
-              if (boardType === 'weekly') {
-                myScore = md[`weekly_${weekId}`] || 0;
-                const rankQ = query(collection(db, 'userStats'), where(`weekly_${weekId}`, '>', myScore));
-                const cnt = await getCountFromServer(rankQ);
-                rankAbove = cnt.data().count;
-              } else if (boardType === 'monthly') {
-                myScore = md[`monthly_${monthId}`] || 0;
-                const rankQ = query(collection(db, 'userStats'), where(`monthly_${monthId}`, '>', myScore));
-                const cnt = await getCountFromServer(rankQ);
-                rankAbove = cnt.data().count;
-              } else {
-                myScore = md.totalScore || 0;
-                const rankQ = query(collection(db, 'userStats'), where('totalScore', '>', myScore));
-                const cnt = await getCountFromServer(rankQ);
-                rankAbove = cnt.data().count;
-              }
-
+              const myScore = md[scoreField] || 0;
+              const cnt = await getCountFromServer(
+                query(collection(db, 'userStats'), where(scoreField, '>', myScore))
+              );
+              if (cancelled) return;
               setMyEntry({
                 id: user.uid,
                 name: user.displayName || user.email?.split('@')[0] || t('leaderboard.you'),
@@ -129,7 +147,7 @@ const LeaderboardPage = () => {
                 answered: md.totalAnswered || 0,
                 photoURL: user.photoURL || null,
                 avatarId: user.avatarId || null,
-                rank: rankAbove + 1,
+                rank: cnt.data().count + 1,
                 isMe: true
               });
             } else {
@@ -139,19 +157,20 @@ const LeaderboardPage = () => {
         }
 
         results.forEach((r, i) => { if (!r.rank) r.rank = i + 1; });
-        setLeaders(results);
+        if (!cancelled) setLeaders(results);
       } catch (err) {
-        console.error('Leaderboard processing error:', err);
+        console.error('Leaderboard load error:', err);
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
-    }, (error) => {
-      console.error('Leaderboard snapshot error:', error);
-      setLoading(false);
-    });
+    };
 
-    return () => unsubscribe();
-  }, [user, boardType]);
+    load();
+    return () => { cancelled = true; };
+    // Bog'liqlik `user` EMAS, `user?.uid` — AuthContext token yangilanganda bir xil
+    // foydalanuvchi uchun yangi obyekt qaytaradi (AppContext.jsx:484 dagi bilan bir xil sabab).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.uid, boardType]);
 
   // Session rank tracking for safe shifts
   useEffect(() => {
@@ -181,6 +200,19 @@ const LeaderboardPage = () => {
   const executeDelete = async () => {
     try {
       await deleteDoc(doc(db, 'userStats', deleteConfirm.id));
+      // Ilgari `onSnapshot` o'chirilgan qatorni o'zi olib tashlardi. Endi ro'yxat
+      // keshlangani uchun uni QO'LDA yangilaymiz: barcha taxtalar keshini
+      // bekor qilamiz va ekrandagi qatorni darhol olib tashlaymiz (qayta
+      // o'qishsiz — 0 ta qo'shimcha o'qish).
+      try {
+        Object.keys(localStorage)
+          .filter(k => k.startsWith('zehin_lb_'))
+          .forEach(k => localStorage.removeItem(k));
+      } catch { /* kesh ixtiyoriy */ }
+      setLeaders(prev => prev
+        .filter(r => r.id !== deleteConfirm.id)
+        .map((r, i) => ({ ...r, rank: i + 1 }))
+      );
       showToast(t('leaderboard.toastDeleted'), 'success');
     } catch (e) {
       showToast(t('exam.toastError'), 'error');

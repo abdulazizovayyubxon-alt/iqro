@@ -1,10 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { collection, onSnapshot, query, orderBy, limit } from 'firebase/firestore';
 
 const STORAGE_KEY = 'IQRO_NOTIFICATIONS';
 const DELETED_KEY = 'IQRO_NOTIFICATIONS_DELETED';
+
+// O'QISH BYUDJETI: har ikkala kolleksiya ham cheksiz o'sadi (admin e'lonlari
+// yillar davomida, shaxsiy subkolleksiyaga esa cron-daily har kuni yozadi).
+// Limitsiz onSnapshot = har foydalanuvchi ilovani ochganda BUTUN kolleksiyani
+// o'qiydi → 1000 foydalanuvchi × N hujjat. Bell'da 30 tadan ortig'i baribir
+// ko'rinmaydi, shuning uchun eng yangi 30 ta bilan cheklaymiz.
+// Barcha yozuvchilar `date` ni ISO satr sifatida qo'yadi (AdminPage,
+// AppContext, api/cron-daily, api/payment-webhook) — orderBy hujjat yo'qotmaydi.
+const NOTIF_LIMIT = 30;
 
 const DEFAULT_NOTIFS = () => ([
   { id: '1', title: '🎉 Zehin platformasiga xush kelibsiz!', message: "CHQBT va San'at bo'limlarida bilimingizni oshiring. Barcha testlar tayyor!", date: new Date().toISOString(), read: false, type: 'success' },
@@ -68,7 +77,12 @@ export function useNotifications() {
     };
 
     // 1) Global e'lonlar (admin yozadi)
-    const unsubGlobal = onSnapshot(collection(db, 'notifications'), (notifSnap) => {
+    const qGlobal = query(
+      collection(db, 'notifications'),
+      orderBy('date', 'desc'),
+      limit(NOTIF_LIMIT)
+    );
+    const unsubGlobal = onSnapshot(qGlobal, (notifSnap) => {
       try {
         const firestoreNotifs = notifSnap.docs.map(d => ({ id: d.id, ...d.data() }));
         absorb(firestoreNotifs.filter(n =>
@@ -86,7 +100,12 @@ export function useNotifications() {
     });
 
     // 2) Shaxsiy bildirishnomalar (yutuqlar) — users/{uid}/notifications
-    const unsubPersonal = onSnapshot(collection(db, 'users', user.uid, 'notifications'), (snap) => {
+    const qPersonal = query(
+      collection(db, 'users', user.uid, 'notifications'),
+      orderBy('date', 'desc'),
+      limit(NOTIF_LIMIT)
+    );
+    const unsubPersonal = onSnapshot(qPersonal, (snap) => {
       try {
         absorb(snap.docs.map(d => ({ id: d.id, ...d.data() })));
       } catch (e) {
@@ -98,7 +117,13 @@ export function useNotifications() {
     });
 
     return () => { unsubGlobal(); unsubPersonal(); };
-  }, [user]);
+    // Bog'liqlik `user` EMAS, `user?.uid` — AuthContext token yangilanishida yoki
+    // tab fokusida bir xil foydalanuvchi uchun YANGI obyekt qaytaradi
+    // (setUser(enhancedUser)). `user` ga bog'lansak, har safar ikkala tinglovchi
+    // uzilib qayta ulanardi → kolleksiyalar boshidan qayta o'qilardi (bekorga
+    // o'qish). AppContext.jsx:484 da ham xuddi shu sabab bilan `user?.uid`.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.uid]);
 
   const markAllRead = () => {
     setNotifications(prev => {
