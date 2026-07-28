@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useContext, useRef } from 'react';
+import React, { createContext, useState, useEffect, useContext, useRef, useCallback } from 'react';
 import localforage from 'localforage';
 import { MAX_MISTAKES_SAVED, EXAM_GOAL_SCORE, BATCH_SIZE } from '../config';
 import { computeDiagnostics, avgSecondsPerQuestion } from '../engine/DiagnosticsEngine';
@@ -859,6 +859,76 @@ export const AppProvider = ({ children }) => {
   };
 
   // ─── Statistikani reset qilish ───
+  /**
+   * completeDailyPlan — bugungi o'quv rejasi to'liq bajarilganini qayd etadi.
+   *
+   * MUAMMO: kunlik maqsad faqat SAVOL SONI bilan yopilardi (`answered >= target`),
+   * savollar esa faqat TestPage/ExamPage'dan keladi. Rejadagi «takror navbatini
+   * yopish» (/review) va «xatolar ustida ishlash» (/errors) qadamlari esa
+   * `batchCommitResults` ni umuman chaqirmaydi. Ya'ni foydalanuvchi rejani
+   * to'liq bajarsa ham zanjiri uzilishi mumkin edi — reja bo'yicha ishlagani
+   * uchun JAZOLANARDI.
+   *
+   * AMI uchun alohida kod kerak emas: `barqarorlik` treki `dailyStreak` dan
+   * hisoblanadi (data/tracks.js), demak zanjir o'sishi AMI'ni o'zi ko'taradi.
+   *
+   * Idempotent: kuniga faqat bir marta ta'sir qiladi (React StrictMode
+   * updater'ni ikki marta chaqirsa ham xavfsiz).
+   */
+  // useCallback SHART: useDailyPlan buni effect dep-massivida ishlatadi,
+  // har renderda yangi funksiya bo'lsa effect keraksiz qayta ishga tushardi.
+  const completeDailyPlan = useCallback(() => {
+    let snapshot = null;
+    setState(prev => {
+      const today = new Date().toDateString();
+      // Bugun allaqachon yopilgan — hech narsa o'zgarmaydi
+      if (prev.dailyGoal?.date === today && prev.dailyGoal?.completed) return prev;
+
+      const dg = prev.dailyGoal?.date === today
+        ? { ...prev.dailyGoal, completed: true }
+        : {
+            date: today,
+            answered: 0,
+            target: questionsForMinutes(readContract().dailyMinutes, avgSecondsPerQuestion(prev)),
+            completed: true,
+          };
+
+      const streak = advanceDailyStreak(prev, today, true);
+
+      const days = [...(prev.activeDays || [])];
+      const idx = days.findIndex(x => x.d === today);
+      const entry = { d: today, a: dg.answered, g: true };
+      if (idx >= 0) days[idx] = entry; else days.push(entry);
+      while (days.length > ACTIVE_DAYS_KEPT) days.shift();
+
+      const next = {
+        ...prev,
+        dailyGoal: dg,
+        dailyStreak: streak.dailyStreak,
+        lastGoalDate: streak.lastGoalDate,
+        streakFreezes: streak.streakFreezes,
+        streakFrozenDate: streak.streakFrozenDate,
+        goalDaysTotal: (prev.goalDaysTotal || 0) + 1,
+        activeDays: days,
+        lastActiveAt: new Date().toISOString(),
+      };
+
+      // Zanjir o'sgani `barqarorlik` bosqichini oshirgan bo'lishi mumkin
+      const { achievements } = reconcileAchievements(next, prev.achievements);
+      next.achievements = achievements;
+
+      snapshot = next;
+      return next;
+    });
+
+    // Firestore yozuvi updater'dan TASHQARIDA — StrictMode dublikat yozmasin
+    const currentUser = userRef.current;
+    if (snapshot && currentUser) {
+      setDoc(doc(db, 'userStats', currentUser.uid), prepareStatsForSave(snapshot, currentUser), { merge: true })
+        .catch(err => console.error('Reja holatini saqlashda xatolik:', err));
+    }
+  }, []);
+
   const resetStats = async () => {
     // resetAt — boshqa qurilmadagi eski lokal zaxira resetni "bekor qilmasligi" uchun guard
     const fresh = { ...buildDefaultState(), resetAt: Date.now() };
@@ -912,6 +982,7 @@ export const AppProvider = ({ children }) => {
       state,
       updateState,
       batchCommitResults,
+      completeDailyPlan,
       resetStats,
       deleteMistake,
       clearMistakes,

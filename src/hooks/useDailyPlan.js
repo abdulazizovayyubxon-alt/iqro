@@ -1,5 +1,6 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useContext, useRef } from 'react';
 import { TOPICS } from '../data/mockData';
+import { AppContext } from '../context/AppContext';
 
 /**
  * useDailyPlan — kunlik rejani «muhrlaydi».
@@ -96,7 +97,30 @@ export const useDailyPlan = (steps, category, budget = null) => {
   const doneCount = planSteps.filter(s => s.done).length;
   const totalMinutes = planSteps.reduce((sum, s) => sum + (s.done ? 0 : (s.minutes || 0)), 0);
 
-  return { steps: planSteps, doneCount, total: planSteps.length, totalMinutes, reset };
+  // ── Reja to'liq bajarilgan bo'lsa — kunlik maqsadni yopamiz ──
+  // Rejadagi har qadam savol keltirmaydi: «takror navbatini yopish» (/review)
+  // va «xatolar ustida ishlash» (/errors) `batchCommitResults` ni umuman
+  // chaqirmaydi. Shu sababli rejani to'liq bajargan odam savol normasiga
+  // yetmay zanjirini yo'qotishi mumkin edi — reja bo'yicha ishlagani uchun
+  // jazolanardi.
+  //
+  // Aniqlash aynan SHU YERDA turibdi, chunki muhrlangan reja va uning
+  // bajarilganligi shu ilmoqda hisoblanadi — Tahlil sahifasi ham, test
+  // natijasi ekrani ham (useNextPlanStep) shuni ishlatadi, ya'ni qaysi
+  // ekranda tugatilganidan qat'i nazar hisobga olinadi.
+  const { completeDailyPlan } = useContext(AppContext);
+  const total = planSteps.length;
+  const planDone = total > 0 && doneCount >= total;
+  // Bir mount ichida takror chaqirmaslik uchun (AppContext o'zi ham kuniga
+  // bir marta ta'sir qilishini kafolatlaydi — bu shunchaki ortiqcha ishni kesadi)
+  const creditedFor = useRef(null);
+  useEffect(() => {
+    if (!planDone || creditedFor.current === stamp) return;
+    creditedFor.current = stamp;
+    completeDailyPlan?.();
+  }, [planDone, stamp, completeDailyPlan]);
+
+  return { steps: planSteps, doneCount, total, totalMinutes, reset };
 };
 
 export default useDailyPlan;
