@@ -1,41 +1,38 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import ModalShell from './ModalShell';
+import DateInput from '../shared/DateInput';
 import { SUBJECTS } from '../../data/mockData';
+import { ageFromBirthDate } from '../../utils/age';
+import { targetScoreFor, targetQuestions } from '../../services/studyContract';
+import { BATCH_SIZE } from '../../config';
 
-/** O'qituvchi malaka toifalari (attestatsiya) — value bilan tarjima kaliti */
+/**
+ * O'qituvchi malaka toifalari (attestatsiya) — value bilan tarjima kaliti.
+ * Onboardingdagi maqsad tanlovi shu lug'atga o'giriladi (ONBOARDING_TOIFA),
+ * shuning uchun ro'yxat `sertifikat` variantini ham o'z ichiga oladi.
+ * Har bir toifa maqsad foizini belgilaydi — services/studyContract.js.
+ */
 export const TOIFALAR = [
   { value: 'mutaxassis', label: 'Mutaxassis' },
   { value: 'ikkinchi', label: 'Ikkinchi toifa' },
   { value: 'birinchi', label: 'Birinchi toifa' },
   { value: 'oliy', label: 'Oliy toifa' },
+  { value: 'sertifikat', label: 'Kasbiy sertifikat' },
 ];
 
 const NOW_YEAR = new Date().getFullYear();
 // Tug'ilgan yil: ~16–90 yosh oralig'i
-const BIRTH_YEARS = Array.from({ length: 75 }, (_, i) => NOW_YEAR - 16 - i);
-const DAYS = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0'));
+const MIN_BIRTH_YEAR = NOW_YEAR - 90;
+const MAX_BIRTH_YEAR = NOW_YEAR - 16;
 
-/** Profilni tahrirlash — ism, familiya, yosh, jins, sana, fan, toifa */
+/** Profilni tahrirlash — ism, familiya, jins, tug'ilgan sana, fan, toifa */
 export default function EditProfileModal({ form, setForm, saving, onSave, onClose }) {
   const { t } = useTranslation();
-  const UZ_MONTHS = t('modals.months', { returnObjects: true });
   const upd = (k) => (e) => setForm(p => ({ ...p, [k]: e.target.value }));
 
-  // Tug'ilgan sana "YYYY-MM-DD" ni 3 dropdown'ga ajratamiz — native date input
-  // brauzer lokalida "дд.мм.гггг" (ruscha) ko'rsatardi; bu lokaldan mustaqil.
-  const [by = '', bm = '', bd = ''] = (form.birthDate || '').split('-');
-  const setBirthPart = (idx) => (e) => {
-    const parts = (form.birthDate || '').split('-');
-    while (parts.length < 3) parts.push('');
-    parts[idx] = e.target.value;
-    // Hamma qism tanlanmaguncha to'liq bo'lmagan sanani saqlamaymiz
-    const next = parts.every(Boolean) ? parts.join('-') : '';
-    setForm(p => ({ ...p, _birthParts: parts, birthDate: next }));
-  };
-  // Qisman tanlovni ko'rsatish uchun (saqlanmagan, faqat UI)
-  const parts = form._birthParts || [by, bm, bd];
-  const [py = '', pm = '', pd = ''] = parts;
+  // Yosh alohida so'ralmaydi — tug'ilgan sanadan hisoblanadi (utils/age.js)
+  const age = ageFromBirthDate(form.birthDate);
 
   return (
     <ModalShell onClose={onClose} maxWidth={440} style={{ maxHeight: '88vh', overflowY: 'auto' }}>
@@ -52,37 +49,30 @@ export default function EditProfileModal({ form, setForm, saving, onSave, onClos
         </div>
       </div>
 
-      <div style={{ display: 'flex', gap: 10 }}>
-        <div className="pp-field" style={{ flex: 1 }}>
-          <label>{t('modals.age')}</label>
-          <input type="number" min="0" max="120" value={form.age} onChange={upd('age')} placeholder={t('modals.age')} />
-        </div>
-        <div className="pp-field" style={{ flex: 1 }}>
-          <label>{t('modals.gender')}</label>
-          <select value={form.gender} onChange={upd('gender')}>
-            <option value="">{t('modals.choose')}</option>
-            <option value="male">{t('modals.male')}</option>
-            <option value="female">{t('modals.female')}</option>
-          </select>
-        </div>
+      <div className="pp-field">
+        <label>{t('modals.gender')}</label>
+        <select value={form.gender} onChange={upd('gender')}>
+          <option value="">{t('modals.choose')}</option>
+          <option value="male">{t('modals.male')}</option>
+          <option value="female">{t('modals.female')}</option>
+        </select>
       </div>
 
       <div className="pp-field">
-        <label>{t('modals.birthDate')}</label>
-        <div style={{ display: 'flex', gap: 8 }}>
-          <select style={{ flex: 1 }} value={pd} onChange={setBirthPart(2)}>
-            <option value="">{t('modals.day')}</option>
-            {DAYS.map(d => <option key={d} value={d}>{Number(d)}</option>)}
-          </select>
-          <select style={{ flex: 1.4 }} value={pm} onChange={setBirthPart(1)}>
-            <option value="">{t('modals.month')}</option>
-            {UZ_MONTHS.map((m, i) => <option key={m} value={String(i + 1).padStart(2, '0')}>{m}</option>)}
-          </select>
-          <select style={{ flex: 1.2 }} value={py} onChange={setBirthPart(0)}>
-            <option value="">{t('modals.year')}</option>
-            {BIRTH_YEARS.map(y => <option key={y} value={y}>{y}</option>)}
-          </select>
-        </div>
+        <label>
+          {t('modals.birthDate')}
+          {age !== null && (
+            <span style={{ float: 'right', textTransform: 'none', letterSpacing: 0, color: 'var(--text3)', fontWeight: 600 }}>
+              {t('modals.ageComputed', { count: age })}
+            </span>
+          )}
+        </label>
+        <DateInput
+          value={form.birthDate}
+          minYear={MIN_BIRTH_YEAR}
+          maxYear={MAX_BIRTH_YEAR}
+          onChange={(iso) => setForm(p => ({ ...p, birthDate: iso }))}
+        />
       </div>
 
       <div className="pp-field">
@@ -99,6 +89,16 @@ export default function EditProfileModal({ form, setForm, saving, onSave, onClos
           <option value="">{t('modals.choose')}</option>
           {TOIFALAR.map(toi => <option key={toi.value} value={toi.value}>{t(`modals.toifa.${toi.value}`)}</option>)}
         </select>
+        {/* Toifa maqsad foizini belgilaydi — «nega maqsad 70?» degan savol
+            tug'ilmasligi uchun bog'liqlik shu yerda ochiq aytiladi */}
+        {form.teacherCategory && (
+          <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: 7, lineHeight: 1.45 }}>
+            {t('onboarding.goalTarget', {
+              count: targetQuestions(targetScoreFor(form.teacherCategory)),
+              total: BATCH_SIZE,
+            })}
+          </div>
+        )}
       </div>
 
       <div className="pp-modal-actions" style={{ marginTop: '20px' }}>

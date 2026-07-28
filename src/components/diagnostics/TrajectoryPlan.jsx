@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { stepText } from '../../engine/stepText';
 import { Brain, Target, LayoutGrid, AlertCircle, GraduationCap, CheckCircle2, ChevronRight, Clock, Shuffle, History } from 'lucide-react';
 
 const STEP_META = {
@@ -10,63 +11,6 @@ const STEP_META = {
   coverage: { icon: LayoutGrid, color: 'var(--accent2)', bg: 'var(--blue-bg)' },
   mistakes: { icon: AlertCircle, color: 'var(--red)', bg: 'var(--red-bg)' },
   exam: { icon: GraduationCap, color: 'var(--amber)', bg: 'var(--amber-bg)' },
-};
-
-// Qadam matnlari — i18n kaliti + parametrlar (turga qarab)
-const stepText = (step, t) => {
-  switch (step.type) {
-    case 'retention':
-      return {
-        title: t('trajectory.retentionTitle'),
-        desc: t('trajectory.retentionDesc', { count: step.count }),
-        cta: t('trajectory.retentionCta'),
-      };
-    case 'practice':
-      return {
-        title: t('trajectory.practiceTitle', { topic: step.topicName }),
-        desc: t('trajectory.practiceDesc', {
-          acc: step.acc ?? 0,
-          batch: step.batch,
-          target: step.targetAcc,
-        }),
-        cta: t('trajectory.practiceCta', { count: step.batch }),
-      };
-    case 'mixed':
-      return {
-        title: t('trajectory.mixedTitle'),
-        desc: t('trajectory.mixedDesc', {
-          topics: (step.topicNames || []).join(', '),
-          batch: step.batch,
-        }),
-        cta: t('trajectory.practiceCta', { count: step.batch }),
-      };
-    case 'refresh':
-      return {
-        title: t('trajectory.refreshTitle', { topic: step.topicName }),
-        desc: t('trajectory.refreshDesc', { days: step.days, batch: step.batch }),
-        cta: t('trajectory.practiceCta', { count: step.batch }),
-      };
-    case 'coverage':
-      return {
-        title: t('trajectory.coverageTitle', { topic: step.topicName }),
-        desc: t('trajectory.coverageDesc', { answered: step.answered, target: step.targetN }),
-        cta: t('trajectory.coverageCta'),
-      };
-    case 'mistakes':
-      return {
-        title: t('trajectory.mistakesTitle'),
-        desc: t('trajectory.mistakesDesc', { count: step.count }),
-        cta: t('trajectory.mistakesCta'),
-      };
-    case 'exam':
-      return {
-        title: t('trajectory.examTitle'),
-        desc: t('trajectory.examDesc'),
-        cta: t('trajectory.examCta'),
-      };
-    default:
-      return { title: '', desc: '', cta: '' };
-  }
 };
 
 /**

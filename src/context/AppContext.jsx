@@ -1,7 +1,8 @@
 import React, { createContext, useState, useEffect, useContext, useRef } from 'react';
 import localforage from 'localforage';
 import { MAX_MISTAKES_SAVED, EXAM_GOAL_SCORE, BATCH_SIZE } from '../config';
-import { computeDiagnostics } from '../engine/DiagnosticsEngine';
+import { computeDiagnostics, avgSecondsPerQuestion } from '../engine/DiagnosticsEngine';
+import { readContract, questionsForMinutes } from '../services/studyContract';
 import { db } from '../firebase';
 import { AuthContext } from './AuthContext';
 import { ToastContext } from './ToastContext';
@@ -584,9 +585,18 @@ export const AppProvider = ({ children }) => {
       const today = new Date().toDateString();
       // Bonus uchun: maqsad bugun ALLAQACHON bajarilgan bo'lsa, qayta bonus berilmaydi
       const wasCompletedToday = prev.dailyGoal?.date === today && !!prev.dailyGoal?.completed;
+      // Kunlik norma o'quv shartnomasidan: onboardingda «kuniga 30 daqiqa»
+      // degan odamning normasi 20 ta savol emas. Norma kuniga BIR MARTA
+      // belgilanadi — byudjet kun o'rtasida o'zgarsa, bugungi maqsad (va u
+      // bilan zanjir) qayta hisoblanib ketmaydi.
       const dg = prev.dailyGoal?.date === today
         ? { ...prev.dailyGoal, answered: (prev.dailyGoal.answered || 0) + results.totalAnswered }
-        : { date: today, answered: results.totalAnswered, target: prev.dailyGoal?.target || 20, completed: false };
+        : {
+            date: today,
+            answered: results.totalAnswered,
+            target: questionsForMinutes(readContract().dailyMinutes, avgSecondsPerQuestion(prev)),
+            completed: false,
+          };
       if (!dg.completed && dg.answered >= dg.target) dg.completed = true;
 
       // Kunlik streak
@@ -717,6 +727,9 @@ export const AppProvider = ({ children }) => {
       // spetsifikatsiyasi bor fanda RASMIY taqsimot (examBlueprint), aks holda
       // teng og'irlik. Blueprint statik bo'lgani uchun bu qoidani buzmaydi —
       // aksincha, UI'dagi raqam bilan bulutdagisi endi bir xil chiqadi.
+      // goalScore ATAYIN shaxsiy maqsad EMAS, umumiy standart: pastda faqat
+      // maqsaddan mustaqil maydonlar (score/knowledge/margin/confidence)
+      // saqlanadi, maktab hisoboti esa taqqoslanadigan bo'lib qolishi kerak.
       const shared = computeDiagnostics(newState, {
         goalScore: EXAM_GOAL_SCORE,
         examQuestions: BATCH_SIZE,

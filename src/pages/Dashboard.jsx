@@ -27,7 +27,9 @@ import {
 import SubjectTopicChips, { BlockRow } from '../components/SubjectTopicChips';
 import { motion } from 'framer-motion';
 import localforage from 'localforage';
-import { EXAM_GOAL_SCORE, EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY, isPlayBuild } from '../config';
+import { EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY, isPlayBuild } from '../config';
+import { useStudyContract } from '../hooks/useStudyContract';
+import { targetQuestions } from '../services/studyContract';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 
@@ -71,13 +73,15 @@ const Dashboard = () => {
   // Tayyorlik darajasi — sof diagnostika (DiagnosticsEngine); bazadagi savol
   // soni og'irlik uchun ishlatiladi, kesh bo'lmasa bo'limlar teng hisoblanadi.
   const topicTotals = useTopicTotals(state.activeCategory);
+  // Maqsad endi hammaga bir xil emas — o'quv shartnomasidan (toifa bo'yicha)
+  const { targetScore } = useStudyContract();
   const diag = useMemo(
     () => computeDiagnostics(state, {
       topicTotals,
-      goalScore: EXAM_GOAL_SCORE,
+      goalScore: targetScore,
       examQuestions: BATCH_SIZE,
     }),
-    [state, topicTotals]
+    [state, topicTotals, targetScore]
   );
 
   // Keyingi bosqich — yutuqlar bo'limiga sokin kirish nuqtasi (sof hisob)
@@ -364,7 +368,7 @@ const Dashboard = () => {
               <span>
                 {soon && pace?.perDay
                   ? t('pace.perDay', { count: pace.perDay })
-                  : t('dashboard.goal', { score: EXAM_GOAL_SCORE })}
+                  : t('dashboard.goal', { count: targetQuestions(targetScore), total: BATCH_SIZE })}
               </span>
             </div>
           </div>

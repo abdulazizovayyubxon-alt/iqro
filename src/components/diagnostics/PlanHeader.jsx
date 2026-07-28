@@ -2,8 +2,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { CalendarDays, Timer, CheckCircle2, Info } from 'lucide-react';
 import WeekGrid from './WeekGrid';
+import { DAILY_MINUTE_OPTIONS } from '../../services/studyContract';
 
-const BUDGETS = [10, 20, 40, null]; // null = cheklovsiz
+// Onboardingdagi variantlar bilan bir xil bo'lishi shart — aks holda o'sha
+// yerda tanlangan qiymat bu yerda yonmay qoladi. null = cheklovsiz.
+const BUDGETS = [...DAILY_MINUTE_OPTIONS, null];
 
 /**
  * PlanHeader — kunlik reja sarlavhasi: sur'at + vaqt byudjeti + bugungi holat.

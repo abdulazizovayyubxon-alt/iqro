@@ -158,7 +158,7 @@
     "referralWelcome": "🎉 Congratulations! You received a 50% discount through your referral!",
     "approvedQuestions": "{{count}} verified questions",
     "updatedOn": "updated {{date}}",
-    "goal": "Goal: {{score}} pts",
+    "goal": "Goal: {{count}}/{{total}} questions",
     "bannerClose": "Close banner",
     "trialFreeLeft": "{{count}} free questions remaining today",
     "trialDaysLeft": "Free trial: {{days}} days left",
@@ -314,7 +314,8 @@
     "retry": "Try Again",
     "workOnMistakes": "Work on Mistakes",
     "toHome": "Back to Home",
-    "shareResult": "Share Result"
+    "shareResult": "Share Result",
+    "planNext": "Today's plan · {{done}}/{{total}}"
   },
   "selector": {
     "subject": "Subject",
@@ -1221,33 +1222,20 @@
     "slide3Desc": "Download tests and practice anytime, even without an internet connection",
     "next": "Next",
     "skip": "Skip",
-    "start": "Get Started"
+    "start": "Get Started",
+    "goalTarget": "Goal: {{count}} out of {{total}} questions"
   },
   "modals": {
     "toifa": {
       "mutaxassis": "Specialist",
       "ikkinchi": "Second Category",
       "birinchi": "First Category",
-      "oliy": "Higher Category"
+      "oliy": "Higher Category",
+      "sertifikat": "Professional certificate"
     },
-    "months": [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ],
     "editTitle": "✏️ Edit Profile",
     "firstName": "First Name",
     "lastName": "Last Name",
-    "age": "Age",
     "choose": "Select",
     "gender": "Gender",
     "male": "Male",
@@ -1350,7 +1338,8 @@
     "ok": "OK",
     "errorTitle": "Error",
     "successTitle": "Success",
-    "warningTitle": "Warning"
+    "warningTitle": "Warning",
+    "ageComputed": "{{count}} years old"
   },
   "sidebar": {
     "subjects": "Subjects",
@@ -1375,7 +1364,8 @@
     "tests": "Subject Tests",
     "mistakes": "Mistake Notebook",
     "profile": "My Profile",
-    "help": "Help & Support"
+    "help": "Help & Support",
+    "plan": "Today's plan"
   },
   "notifications": {
     "title": "Notifications",

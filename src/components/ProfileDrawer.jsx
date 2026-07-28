@@ -10,6 +10,8 @@ import { updateProfile } from 'firebase/auth';
 import { resolveAvatar, avatarUrl } from '../data/avatars';
 import { SUBJECTS } from '../data/mockData';
 import { APP_URL, SUPPORT_URL, APP_VERSION } from '../config';
+import { ageFromBirthDate } from '../utils/age';
+import { writeContract, hydrateContract } from '../services/studyContract';
 import NotificationBell from './NotificationBell';
 import PremiumModal from './PremiumModal';
 import EditProfileModal from './profile/EditProfileModal';
@@ -20,7 +22,7 @@ import BrandLogo from './shared/BrandLogo';
 
 import {
   Award, Settings, Users, Shield, Crown, ChevronRight,
-  Pencil, Camera, Share2, Send, School
+  Pencil, Camera, Share2, Send, School, BarChart3, ListChecks
 } from 'lucide-react';
 
 // ── Sokin/jiddiy uslub — kir kulrang (--bg3) o'rniga chegarali --surface ──
@@ -70,7 +72,8 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
   const [profileToifa, setProfileToifa] = useState('');
   const [avatarId, setAvatarId] = useState(user?.avatarId || null);
   const [schoolId, setSchoolId] = useState(user?.schoolId || null);
-  const [editForm, setEditForm] = useState({ firstName: '', lastName: '', age: '', gender: '', birthDate: '', subject: '', teacherCategory: '' });
+  // `age` forma maydoni EMAS — tug'ilgan sanadan hisoblanadi (utils/age.js)
+  const [editForm, setEditForm] = useState({ firstName: '', lastName: '', gender: '', birthDate: '', subject: '', teacherCategory: '' });
   const [urgencyLeft, setUrgencyLeft] = useState(user?.urgencyMs || 0);
 
   // Drawerning o'zi uchun orqaga qaytish tugmasini boshqarish
@@ -95,13 +98,15 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
       setEditForm({
         firstName: d.firstName ?? (dn.split(' ')[0] || ''),
         lastName: d.lastName ?? (dn.split(' ').slice(1).join(' ') || ''),
-        age: d.age || '', gender: d.gender || '', birthDate: d.birthDate || '',
+        gender: d.gender || '', birthDate: d.birthDate || '',
         subject: d.subject || '', teacherCategory: d.teacherCategory || '',
       });
       if (d.examDate) {
         localStorage.setItem('iqro_exam_date', d.examDate);
         localStorage.setItem('CUSTOM_EXAM_DATE', new Date(d.examDate).toISOString());
       }
+      // Boshqa qurilmada tanlangan toifa/byudjet shu qurilmaga ham yetib borsin
+      hydrateContract(d);
     }).catch(e => console.error('Profile load error:', e));
   }, [user]);
 
@@ -162,7 +167,10 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
       await setDoc(doc(db, 'users', user.uid), {
         displayName: dn,
         firstName: editForm.firstName || '', lastName: editForm.lastName || '',
-        age: editForm.age || '', gender: editForm.gender || '', birthDate: editForm.birthDate || '',
+        // Yosh alohida so'ralmaydi — sanadan hosila (eski hujjatlarda qolib
+        // ketmasligi uchun sana bo'lmasa maydon tozalanadi)
+        age: ageFromBirthDate(editForm.birthDate) ?? '',
+        gender: editForm.gender || '', birthDate: editForm.birthDate || '',
         subject: editForm.subject || '', teacherCategory: editForm.teacherCategory || '',
       }, { merge: true });
       if (dn && auth.currentUser) {
@@ -171,6 +179,9 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
       if (dn) { setProfileName(dn); updateUserData({ displayName: dn }); }
       setProfileSubject(editForm.subject || '');
       setProfileToifa(editForm.teacherCategory || '');
+      // Toifa = maqsad foizining manbasi. Profil orqali o'zgartirilsa, Dashboard
+      // va Tahlildagi maqsad ham darhol shunga moslashadi.
+      writeContract({ toifa: editForm.teacherCategory || null }, user.uid);
       showToast(t('profile.profileSaved'), 'success');
       setShowEdit(false);
     } catch (e) {
@@ -194,10 +205,12 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
 
   const contactSupport = () => { window.open(SUPPORT_URL, '_blank', 'noopener,noreferrer'); };
 
-  // Menyu ataylab qisqa — panel skrollsiz sig'ishi uchun.
-  // Tahlil va Xatolar daftari → Sozlamalar > O'rganish; Dastur haqida → Sozlamalar > Ma'lumot.
-  // Maktab faqat admin yoki maktabga a'zo bo'lganlarga ko'rinadi.
+  // Menyu tartibi «o'quv yo'li» bo'yicha: avval bugun nima qilish kerak (Reja),
+  // keyin qayerda turibman (Tahlil), keyin nimaga erishdim (Yutuqlar).
+  // Dastur haqida → Sozlamalar > Ma'lumot. Maktab faqat admin/a'zolarga.
   const menuItems = [
+    { icon: ListChecks, label: t('sidebar.plan', 'Bugungi reja'), path: '/analysis?tab=plan' },
+    { icon: BarChart3, label: t('sidebar.analysis', 'Tahlil'), path: '/analysis' },
     { icon: Award, label: t('sidebar.achievements', 'Yutuqlarim'), path: '/achievements' },
     { icon: Users, label: t('sidebar.invite', "Do'stni taklif qilish"), path: '/referral' },
     { icon: Settings, label: t('sidebar.settings', 'Sozlamalar'), path: '/settings' },

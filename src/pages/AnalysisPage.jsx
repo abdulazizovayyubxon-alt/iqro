@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AppContext } from '../context/AppContext';
@@ -14,22 +14,15 @@ import PlanHeader from '../components/diagnostics/PlanHeader';
 import PremiumModal from '../components/PremiumModal';
 import SubjectTopicChips from '../components/SubjectTopicChips';
 import { SUBJECTS, TOPICS } from '../data/mockData';
-import { EXAM_GOAL_SCORE, BATCH_SIZE } from '../config';
+import { BATCH_SIZE } from '../config';
+import { useStudyContract } from '../hooks/useStudyContract';
+import { runStep } from '../hooks/useNextPlanStep';
 import { ClipboardList, BookOpen } from 'lucide-react';
 import TheoryModal from '../components/theory/TheoryModal';
 
-// Kunlik vaqt byudjeti — qurilmaga xos tanlov (bulutga chiqarilmaydi)
-const BUDGET_KEY = 'zehin_plan_budget_v1';
-const readBudget = () => {
-  try {
-    const raw = localStorage.getItem(BUDGET_KEY);
-    if (raw === null || raw === 'null') return null;
-    const n = parseInt(raw, 10);
-    return Number.isFinite(n) ? n : null;
-  } catch {
-    return null;
-  }
-};
+// Kunlik vaqt byudjeti endi o'quv shartnomasida (services/studyContract.js).
+// Ilgari u shu sahifaga xos localStorage kaliti edi va onboardingda berilgan
+// «kuniga qancha vaqt» javobi bilan hech qanday aloqasi yo'q edi.
 
 // Bo'lim holati ranglari — sokin palitra
 const STATUS_COLOR = {
@@ -45,10 +38,16 @@ const AnalysisPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { state, updateState } = useContext(AppContext);
-  const [tab, setTab] = useState('diagnosis'); // diagnosis | plan
+  // `?tab=plan` — drawerdagi «Bugungi reja» to'g'ridan-to'g'ri reja tabini ochadi
+  const [searchParams, setSearchParams] = useSearchParams();
+  const tab = searchParams.get('tab') === 'plan' ? 'plan' : 'diagnosis';
+  const setTab = (next) => setSearchParams(next === 'plan' ? { tab: 'plan' } : {}, { replace: true });
   const [showPremiumModal, setShowPremiumModal] = useState(false);
-  const [budget, setBudget] = useState(readBudget);
   const [theoryTopic, setTheoryTopic] = useState(null); // { id, name } | null
+
+  // Maqsad ham, kunlik byudjet ham onboardingdagi javoblardan keladi
+  const { targetScore, dailyMinutes, update: updateContract } = useStudyContract();
+  const budget = dailyMinutes;
 
   const { isTrialExpired } = useTrialExpiry();
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
@@ -60,10 +59,10 @@ const AnalysisPage = () => {
   const diag = useMemo(
     () => computeDiagnostics(state, {
       topicTotals,
-      goalScore: EXAM_GOAL_SCORE,
+      goalScore: targetScore,
       examQuestions: BATCH_SIZE,
     }),
-    [state, topicTotals]
+    [state, topicTotals, targetScore]
   );
 
   const steps = useMemo(
@@ -83,36 +82,24 @@ const AnalysisPage = () => {
     [state.readinessHistory, cat]
   );
 
-  const handleBudget = (minutes) => {
-    setBudget(minutes);
-    try { localStorage.setItem(BUDGET_KEY, minutes === null ? 'null' : String(minutes)); } catch { /* muhim emas */ }
-  };
+  // Byudjet o'zgarishi shartnomaga yoziladi — Firestore'ga ham ketadi va
+  // boshqa qurilmada ham o'sha reja ko'rinadi
+  const handleBudget = (minutes) => updateContract({ dailyMinutes: minutes });
 
-  // topicSubset HAR SAFAR aniq beriladi (aralash qadamdan tashqari null) —
-  // aks holda oldingi aralash mashqning filtri keyingi testda ham qolib ketardi
+  // Bo'lim jadvalidan/ReadinessCard'dan to'g'ridan-to'g'ri mashqqa o'tish.
+  // topicSubset ATAYIN null: oldingi aralash mashqning filtri qolib ketmasin.
   const goPractice = (topicId) => {
     if (isFreeLimitReached) { setShowPremiumModal(true); return; }
     updateState({ topicId: topicId ?? -1, testMode: 'exam', topicSubset: null });
     navigate('/test');
   };
 
-  const goMixed = (topicIds) => {
-    if (isFreeLimitReached) { setShowPremiumModal(true); return; }
-    updateState({ topicId: -1, testMode: 'exam', topicSubset: topicIds });
-    navigate('/test');
-  };
-
+  // Qadamni ishga tushirish mantig'i umumiy (hooks/useNextPlanStep.js) —
+  // test natijasi ekranidagi «keyingi qadam» ham shu funksiyani chaqiradi.
+  // Bepul limit tekshiruvi sahifaga xos, shuning uchun shu yerda qoladi.
   const handleStep = (step) => {
     if (isFreeLimitReached && step.route !== '/errors') { setShowPremiumModal(true); return; }
-    if (step.type === 'mixed') {
-      goMixed(step.topicIds);
-      return;
-    }
-    if (step.type === 'practice' || step.type === 'coverage' || step.type === 'refresh') {
-      goPractice(step.topicId);
-      return;
-    }
-    navigate(step.route);
+    runStep(step, { updateState, navigate });
   };
 
   // Batafsil jadval — yo'qotish bo'yicha tartiblangan

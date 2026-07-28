@@ -79,18 +79,67 @@ const TEXT = {
     title: (d) => `Imtihongacha ${d} kun`,
     fresh: (n, m) => `Bugungi reja: ${n} savol, taxminan ${m} daqiqa.`,
     partial: (done, n) => `Bugun ${done} ta savol ishlandi. Rejani yakunlash uchun yana ${n} ta qoldi.`,
+    step: (s, m) => `Bugungi qadam: ${s}. Taxminan ${m} daqiqa.`,
   },
   ru: {
     title: (d) => `До экзамена ${d} дн.`,
     fresh: (n, m) => `План на сегодня: ${n} вопросов, примерно ${m} минут.`,
     partial: (done, n) => `Сегодня решено ${done} вопросов. До завершения плана осталось ${n}.`,
+    step: (s, m) => `Шаг на сегодня: ${s}. Примерно ${m} минут.`,
   },
   en: {
     title: (d) => `${d} days until the exam`,
     fresh: (n, m) => `Today's plan: ${n} questions, about ${m} minutes.`,
     partial: (done, n) => `${done} questions done today. ${n} left to finish the plan.`,
+    step: (s, m) => `Today's step: ${s}. About ${m} minutes.`,
   },
 };
+
+/**
+ * Reja qadamining nomi — mijozdagi engine/stepText.js bilan bir xil ma'noda.
+ * Mijoz TAYYOR MATN emas, qadam TURINI yozadi (userStats.todayPlan), shuning
+ * uchun xabar foydalanuvchining push tilida chiqadi.
+ */
+const STEP_NAME = {
+  uz: {
+    retention: (p) => `takrorlash (${p.count} ta kartochka)`,
+    practice: (p) => `${p.topic} bo'yicha mashq`,
+    mixed: () => 'aralash mashq',
+    refresh: (p) => `${p.topic} ni yangilash`,
+    coverage: (p) => `${p.topic} bo'yicha qamrovni kengaytirish`,
+    mistakes: (p) => `xatolar ustida ishlash (${p.count} ta)`,
+    exam: () => 'sinov imtihoni',
+  },
+  ru: {
+    retention: (p) => `повторение (${p.count} карточек)`,
+    practice: (p) => `практика по теме «${p.topic}»`,
+    mixed: () => 'смешанная практика',
+    refresh: (p) => `освежить тему «${p.topic}»`,
+    coverage: (p) => `расширить охват темы «${p.topic}»`,
+    mistakes: (p) => `работа над ошибками (${p.count})`,
+    exam: () => 'пробный экзамен',
+  },
+  en: {
+    retention: (p) => `review (${p.count} cards)`,
+    practice: (p) => `practice on ${p.topic}`,
+    mixed: () => 'mixed practice',
+    refresh: (p) => `refresh ${p.topic}`,
+    coverage: (p) => `widen coverage of ${p.topic}`,
+    mistakes: (p) => `work on mistakes (${p.count})`,
+    exam: () => 'mock exam',
+  },
+};
+
+/** `userStats.todayPlan` bugungimi va nomlanadigan qadam bormi (test uchun eksport) */
+export function planStepName(todayPlan, today, lang) {
+  if (!todayPlan || todayPlan.date !== today) return null;
+  const table = STEP_NAME[lang] || STEP_NAME.uz;
+  const fn = table[todayPlan.type];
+  if (!fn) return null;
+  // Mavzuga bog'liq qadamlarda nom bo'lmasa umumiy matnga qaytamiz
+  if (['practice', 'refresh', 'coverage'].includes(todayPlan.type) && !todayPlan.topic) return null;
+  return fn({ topic: todayPlan.topic, count: todayPlan.count ?? 0 });
+}
 
 export default async function handler(req, res) {
   const secret = req.headers['authorization']?.replace('Bearer ', '') || req.query?.secret;
@@ -160,11 +209,20 @@ export default async function handler(req, res) {
         const answered = isToday ? (dg.answered || 0) : 0;
         if (isToday && (dg.completed || answered >= target)) { out.skipped.goalDone++; continue; }
 
-        const t = TEXT[u.pushLang] || TEXT.uz;
+        const lang = TEXT[u.pushLang] ? u.pushLang : 'uz';
+        const t = TEXT[lang];
         const remaining = Math.max(1, target - answered);
-        const body = answered > 0
-          ? t.partial(answered, remaining)
-          : t.fresh(target, Math.max(1, Math.round((target * SECONDS_PER_Q) / 60)));
+
+        // Reja qadami ma'lum bo'lsa — aynan uni aytamiz («Bugungi qadam:
+        // Taktik tayyorgarlik bo'yicha mashq»). Foydalanuvchi hali Reja
+        // sahifasini ochmagan bo'lsa `todayPlan` bo'lmaydi — o'shanda avvalgi
+        // umumiy matn ishlaydi, ya'ni eslatma hech qachon yo'qolmaydi.
+        const stepName = planStepName(stats.todayPlan, today, lang);
+        const body = stepName
+          ? t.step(stepName, Math.max(1, stats.todayPlan.minutes || Math.round((remaining * SECONDS_PER_Q) / 60)))
+          : answered > 0
+            ? t.partial(answered, remaining)
+            : t.fresh(target, Math.max(1, Math.round((target * SECONDS_PER_Q) / 60)));
 
         out.eligible++;
         queue.push({ uid: userDoc.id, tokens, title: t.title(daysLeft), body });
@@ -189,7 +247,9 @@ export default async function handler(req, res) {
           const resp = await messaging.sendEachForMulticast({
             tokens: item.tokens.slice(i, i + FCM_BATCH),
             notification: { title: item.title, body: item.body },
-            webpush: { fcmOptions: { link: '/analysis' } },
+            // To'g'ridan-to'g'ri reja tabiga — xabar qaysi qadamni aytgan
+            // bo'lsa, foydalanuvchi o'sha ro'yxatni ochadi
+            webpush: { fcmOptions: { link: '/analysis?tab=plan' } },
           });
           ok += resp.successCount;
         }

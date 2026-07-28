@@ -12,6 +12,10 @@ import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import { useIsMobile } from '../hooks/useIsMobile';
 import BrandLogo from '../components/shared/BrandLogo';
+import {
+  writeContract, ONBOARDING_TOIFA, targetScoreFor, targetQuestions, DAILY_MINUTE_OPTIONS,
+} from '../services/studyContract';
+import { BATCH_SIZE } from '../config';
 
 // Tema-xavfsiz: tun/sepia da --accent avtomatik o'zgaradi (qattiq-kodlangan ko'k emas)
 const PRIMARY = 'var(--accent)';
@@ -46,12 +50,8 @@ const SUBJECTS = [
   { id: 'multi', badge: '✦' },
 ];
 
-const TIMES = [
-  { id: '10', badge: '10' },
-  { id: '20', badge: '20' },
-  { id: '30', badge: '30' },
-  { id: '60', badge: '60' },
-];
+// Reja sahifasidagi byudjet tugmalari bilan bir manbadan (studyContract.js)
+const TIMES = DAILY_MINUTE_OPTIONS.map(m => ({ id: String(m), badge: String(m) }));
 
 // ── Qadam komponentlari ──
 function renderListItem(item, selected, onSelect, ss) {
@@ -228,6 +228,15 @@ function WelcomeStep({ goal, time, isMobile }) {
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <span style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 }}>{t('onboarding.yourCategory')}</span>
               <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 700, color: 'var(--text)' }}>{t(`onboarding.goals.${goalObj.id}.title`)}</span>
+              {/* Tanlangan toifa maqsad foizini belgilaydi — foydalanuvchi buni
+                  shu yerdayoq ko'radi, keyin Dashboardda «nega 70?» degan
+                  savol tug'ilmaydi */}
+              <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--accent)', fontWeight: 700, marginTop: 3 }}>
+                {t('onboarding.goalTarget', {
+                  count: targetQuestions(targetScoreFor(ONBOARDING_TOIFA[goalObj.id])),
+                  total: BATCH_SIZE,
+                })}
+              </span>
             </div>
           </div>
         )}
@@ -330,13 +339,24 @@ export default function OnboardingPage({ onComplete }) {
   const handleFinish = async (finalTimeVal) => {
     setSaving(true);
     setStep(3);
+    const minutes = (typeof finalTimeVal === 'string' ? finalTimeVal : time);
+    const toifa = ONBOARDING_TOIFA[goal] || null;
+
+    // MUHIM: javoblar o'quv shartnomasiga yoziladi. Ilgari ular faqat
+    // `onboardingGoal`/`onboardingDailyMinutes` bo'lib qolardi va hech kim
+    // o'qimasdi — foydalanuvchi Reja sahifasida shu savollarga qayta javob
+    // berishga majbur edi. Endi maqsad foizi ham, kunlik byudjet ham shu
+    // yerdan boshlanadi.
+    writeContract({ toifa, dailyMinutes: minutes }, user?.uid);
+
     try {
       if (user?.uid) {
         await updateDoc(doc(db, 'users', user.uid), {
           onboardingDone: true,
-          onboardingGoal: goal,
           onboardingSubject: subject,
-          onboardingDailyMinutes: (typeof finalTimeVal === 'string' ? finalTimeVal : time),
+          // Profil bilan BIR XIL maydon — ikkita alohida «toifa» lug'ati yo'q
+          teacherCategory: toifa || '',
+          subject: subject || '',
         });
       }
     } catch (e) { console.error(e); }

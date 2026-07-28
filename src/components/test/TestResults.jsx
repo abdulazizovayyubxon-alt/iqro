@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { RefreshCw, Target, Share2, ArrowRight, FileText, BadgeCheck } from 'lucide-react';
+import { RefreshCw, Target, Share2, ArrowRight, FileText, BadgeCheck, ListChecks, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import ResultShareCard from '../shared/ResultShareCard';
 import { reconcileAchievements, nextMilestones } from '../../data/tracks';
 import NextMilestoneLine from '../achievements/NextMilestoneLine';
+import { useNextPlanStep } from '../../hooks/useNextPlanStep';
+import { stepText } from '../../engine/stepText';
 
 const TestResults = ({
   correctCount,
@@ -22,6 +24,10 @@ const TestResults = ({
   const { t } = useTranslation();
   const [showShareCard, setShowShareCard] = useState(false);
   const pct = Math.round((correctCount / questionsLength) * 100);
+
+  const {
+    step: nextStep, doneCount: planDone, total: planTotal, startStep,
+  } = useNextPlanStep();
 
   // Keyingi bosqich — commit'dan keyingi yangilangan holatdan sof hisob
   const achView = reconcileAchievements(state, state.achievements);
@@ -82,6 +88,38 @@ const TestResults = ({
         <div style={{ borderTop: '1px solid var(--glass-border)', paddingTop: 14, marginBottom: 22, textAlign: 'left' }}>
           <NextMilestoneLine milestone={milestone} />
         </div>
+      )}
+
+      {/* ── Rejadagi keyingi qadam ──
+          Test tugagach foydalanuvchi rejadan uzilib qolmasligi kerak: bu blok
+          Tahlil > Reja ro'yxatining eng tepasidagi AYNAN o'sha qadamni
+          ko'rsatadi (useNextPlanStep + engine/stepText — yagona manba). */}
+      {nextStep && (
+        <button
+          onClick={() => startStep(nextStep)}
+          style={{
+            width: '100%', textAlign: 'left', display: 'flex', alignItems: 'center', gap: 11,
+            borderTop: '1px solid var(--glass-border)', paddingTop: 14, marginBottom: 18,
+            background: 'none', border: 'none', borderTopStyle: 'solid', cursor: 'pointer',
+            fontFamily: 'inherit', padding: '14px 0 0',
+          }}
+        >
+          <span style={{
+            flexShrink: 0, width: 34, height: 34, borderRadius: 10, background: 'var(--blue-bg)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <ListChecks size={17} style={{ color: 'var(--accent)' }} />
+          </span>
+          <span style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column' }}>
+            <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, letterSpacing: 0.4, textTransform: 'uppercase', color: 'var(--text3)' }}>
+              {t('results.planNext', { done: planDone, total: planTotal })}
+            </span>
+            <span style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text)', marginTop: 2, lineHeight: 1.35 }}>
+              {stepText(nextStep, t).title}
+            </span>
+          </span>
+          <ChevronRight size={17} style={{ color: 'var(--text3)', flexShrink: 0 }} />
+        </button>
       )}
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 6, maxWidth: 320, margin: '0 auto' }}>

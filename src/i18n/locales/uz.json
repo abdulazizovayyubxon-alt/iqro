@@ -158,7 +158,7 @@
     "referralWelcome": "🎉 Tabriklaymiz! Do'stingiz orqali 50% chegirmaga ega bo'ldingiz!",
     "approvedQuestions": "{{count}} ta tasdiqlangan savol",
     "updatedOn": "yangilangan {{date}}",
-    "goal": "Maqsad: {{score}} ball",
+    "goal": "Maqsad: {{count}}/{{total}} savol",
     "bannerClose": "Bannerni yopish",
     "trialFreeLeft": "Bugun yana {{count}} ta bepul savol qoldi",
     "trialDaysLeft": "Bepul sinov: {{days}} kun qoldi",
@@ -296,7 +296,8 @@
     "retry": "Yana ishlash",
     "workOnMistakes": "Xatolar ustida ishlash",
     "toHome": "Bosh sahifaga",
-    "shareResult": "Natijani ulashing"
+    "shareResult": "Natijani ulashing",
+    "planNext": "Bugungi reja · {{done}}/{{total}}"
   },
   "selector": {
     "subject": "Fan",
@@ -996,33 +997,20 @@
     "trialPeriod": "Sinov muddati",
     "trialValue": "7 kunlik bepul sinov",
     "motivation": "Har kuni ozgina mashq — eng yaxshi natijaga olib boradi. Keling, boshlaymiz!",
-    "startBtn": "Platformani boshlash 🚀"
+    "startBtn": "Platformani boshlash 🚀",
+    "goalTarget": "Maqsad: {{total}} savoldan {{count}} tasi"
   },
   "modals": {
     "toifa": {
       "mutaxassis": "Mutaxassis",
       "ikkinchi": "Ikkinchi toifa",
       "birinchi": "Birinchi toifa",
-      "oliy": "Oliy toifa"
+      "oliy": "Oliy toifa",
+      "sertifikat": "Kasbiy sertifikat"
     },
-    "months": [
-      "Yanvar",
-      "Fevral",
-      "Mart",
-      "Aprel",
-      "May",
-      "Iyun",
-      "Iyul",
-      "Avgust",
-      "Sentabr",
-      "Oktabr",
-      "Noyabr",
-      "Dekabr"
-    ],
     "editTitle": "✏️ Profilni tahrirlash",
     "firstName": "Ism",
     "lastName": "Familiya",
-    "age": "Yosh",
     "choose": "Tanlang",
     "gender": "Jins",
     "male": "Erkak",
@@ -1118,7 +1106,8 @@
     "privacyP5Body": "Hisobni istalgan vaqtda Sozlamalar → «Hisobni o'chirish» orqali butunlay o'chirishingiz mumkin — zaxira nusxalar ham 30 kun ichida yo'q qilinadi. Savollar uchun rasmiy aloqa kanali: Telegram — https://t.me/zehinuz?direct.",
     "privacyFullLink": "To'liq matnni o'qish →",
     "understood": "Tushunarli 🤝",
-    "close": "Yopish"
+    "close": "Yopish",
+    "ageComputed": "{{count}} yosh"
   },
   "sidebar": {
     "subjects": "Fanlar",
@@ -1138,7 +1127,8 @@
     "currentSubject": "Hozirgi fan:",
     "about": "Dastur haqida",
     "analysis": "Tahlil",
-    "school": "Maktab"
+    "school": "Maktab",
+    "plan": "Bugungi reja"
   },
   "notifications": {
     "title": "Bildirishnomalar",

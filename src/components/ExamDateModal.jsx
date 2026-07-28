@@ -6,6 +6,9 @@ import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import { EXAM_DATE_KEY } from '../utils/examDate';
 import { useModalBackButton } from './profile/useModalBackButton';
+import DateInput from './shared/DateInput';
+
+const THIS_YEAR = new Date().getFullYear();
 
 /**
  * ExamDateModal — foydalanuvchining shaxsiy imtihon sanasini belgilash.
@@ -34,7 +37,9 @@ const ExamDateModal = ({ open, initialDays = '', onClose, onSaved }) => {
   const handleSave = async () => {
     let target = null;
     if (date) {
-      target = new Date(date);
+      // MAHALLIY yarim tun: `new Date('2026-09-10')` UTC deb o'qiladi va
+      // Toshkent (+5) da sana bir kunga siljib ketardi
+      target = new Date(`${date}T00:00:00`);
     } else if (days !== '') {
       const n = parseInt(days, 10);
       if (!isNaN(n) && n >= 0) target = new Date(Date.now() + n * 86400000);
@@ -44,8 +49,10 @@ const ExamDateModal = ({ open, initialDays = '', onClose, onSaved }) => {
     setSaving(true);
     try {
       localStorage.setItem(EXAM_DATE_KEY, target.toISOString());
-      // yyyy-mm-dd — profil formasi shu ko'rinishni o'qiydi
-      const dateStr = target.toISOString().split('T')[0];
+      // yyyy-mm-dd — profil formasi shu ko'rinishni o'qiydi.
+      // toISOString() ISHLATILMAYDI: u UTC beradi, tunda (Toshkent 00:00–05:00)
+      // sana bir kun oldingisiga siljib ketardi.
+      const dateStr = `${target.getFullYear()}-${String(target.getMonth() + 1).padStart(2, '0')}-${String(target.getDate()).padStart(2, '0')}`;
       localStorage.setItem('iqro_exam_date', dateStr);
       // Qurilmalar orasida sinxron bo'lishi uchun Firestore'ga ham
       if (user) {
@@ -88,14 +95,15 @@ const ExamDateModal = ({ open, initialDays = '', onClose, onSaved }) => {
 
           <div>
             <label className="input-label-sm">{t('header.examModal.dateLabel')}</label>
-            <input
-              type="date"
-              className="modal-input"
+            <DateInput
+              inputClassName="modal-input"
               value={date}
-              onChange={(e) => {
-                setDate(e.target.value);
-                if (e.target.value) {
-                  const diff = new Date(e.target.value) - new Date();
+              minYear={THIS_YEAR}
+              maxYear={THIS_YEAR + 5}
+              onChange={(iso) => {
+                setDate(iso);
+                if (iso) {
+                  const diff = new Date(`${iso}T00:00:00`) - new Date();
                   setDays(String(Math.max(0, Math.floor(diff / 86400000))));
                 }
               }}
