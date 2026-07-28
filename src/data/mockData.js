@@ -3,7 +3,7 @@ import {
   Medal, ClipboardList, Target, Map, Shield, HeartPulse, GraduationCap, Palette, PaintBucket, LandPlot, Image as ImageIcon, Ruler, Settings, Home, BookOpen, Activity, Baby, Laptop, Smile, PenTool, Award,
   Compass, Scroll, Hourglass, Globe, Heart, Swords, Trophy, Flame, Calculator, Sun, Cpu, Code, FileText, Binary, Monitor, Wifi, MessageSquare, Scale, Users,
   Microscope, Brain, Mountain, Leaf, Dna, Ear,
-  FlaskConical, Atom, Beaker, TestTube2, TestTubes, Languages, Type, SpellCheck, Speech, BookText, Puzzle, Feather, Combine
+  FlaskConical, Atom, Beaker, TestTube2, TestTubes, Languages, Type, SpellCheck, MessagesSquare, BookA, BookText, Puzzle, Feather, Combine
 } from 'lucide-react';
 
 // ══════════════════════════════════════════════════════════════
@@ -314,7 +314,7 @@ const inglizTopics = [
     theoryHint: "📌 Grammatik strukturaning nomi va qo'llanilishini aniqlash; kontekstga mos grammatik birlik tanlash, grammatik xatoni topish va tushuntirish, gaplarni grammatik transformatsiya qilish." },
   { id: 133, name: "Leksika (Vocabulary)", subtitle: "Contextual vocabulary, collocations & word formation", icon: React.createElement(SpellCheck, { size: 20 }), day: 3, category: 'ingliz',
     theoryHint: "📌 Kontekstga mos leksik birlik va sinonim tanlash; so'z yasalishi, ma'nosi yaqin so'zlarni (say/tell/speak/talk) farqlash, leksik xato va kollokatsiya nomuvofiqligini aniqlash." },
-  { id: 134, name: "Pragmatika", subtitle: "Pragmatic competence, communicative intention & register", icon: React.createElement(Speech, { size: 20 }), day: 3, category: 'ingliz',
+  { id: 134, name: "Pragmatika", subtitle: "Pragmatic competence, communicative intention & register", icon: React.createElement(MessagesSquare, { size: 20 }), day: 3, category: 'ingliz',
     theoryHint: "📌 Vaziyatga mos nutq namunasini tanlash; ko'zda tutilgan ma'noni (literal, ironic, exaggerated) anglash, ijtimoiy-kommunikativ moslikni baholash, muloqot strategiyasi va niyatni aniqlash." },
   { id: 135, name: "Kasb standarti", subtitle: "EFL Teacher Professional Standards", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'ingliz',
     theoryHint: "📌 Ingliz tili o'qituvchisining kasb standarti talablari, o'quv jarayonini rejalashtirish, ta'lim samaradorligi va baholash mezonlari." },
@@ -340,7 +340,7 @@ export const SUBJECTS = [
   { id: 'mtt_psixolog', name: "MTT Psixologi", icon: Brain, group: 'mtt', desc: "Yosh psixologiyasi, oila, inklyuziv ta'lim va metodika" },
   { id: 'kimyo', name: "Kimyo", icon: FlaskConical, group: 'school', desc: "Umumiy, anorganik, organik kimyo va metodika" },
   { id: 'rus_tili', name: "Rus tili", icon: Languages, group: 'school', desc: "RKI: matn tahlili, grammatika, leksika va metodika" },
-  { id: 'ingliz', name: "Ingliz tili", icon: Speech, group: 'school', desc: "Reading, grammar, vocabulary, pragmatics va ELT metodika" }
+  { id: 'ingliz', name: "Ingliz tili", icon: BookA, group: 'school', desc: "Reading, grammar, vocabulary, pragmatics va ELT metodika" }
 ];
 
 export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics, ...kimyoTopics, ...rusTiliTopics, ...inglizTopics];

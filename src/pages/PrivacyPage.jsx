@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Shield } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
+import LegalLanguageNote from '../components/shared/LegalLanguageNote';
 
 export default function PrivacyPage() {
   const navigate = useNavigate();
@@ -31,6 +32,8 @@ export default function PrivacyPage() {
           <Shield size={48} color="#0E97E0" />
         </div>
         <p style={s.updated}>{t('privacyPage.updated')}</p>
+
+        <LegalLanguageNote />
 
         <h2 style={s.heading}>{t('privacyPage.h1')}</h2>
         <p style={s.text}>{t('privacyPage.p1')}</p>

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, FileText } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import LegalLanguageNote from '../components/shared/LegalLanguageNote';
 
 export default function TermsPage() {
   const navigate = useNavigate();
@@ -31,6 +32,8 @@ export default function TermsPage() {
           <FileText size={48} color="#0E97E0" />
         </div>
         <p style={s.updated}>{t('termsPage.updated')}</p>
+
+        <LegalLanguageNote />
 
         <h2 style={s.heading}>{t('termsPage.h1')}</h2>
         <p style={s.text}>{t('termsPage.p1')}</p>
