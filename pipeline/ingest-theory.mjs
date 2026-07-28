@@ -2,7 +2,7 @@
  * ingest-theory.mjs — LLM qaytargan konspektlarni tekshirib qabul qiladi.
  *
  * O'qiydi:  pipeline/inbox/theory/topic-<id>.json
- * Yozadi:   src/data/theoryContent.json  (mavjud mavzular ustiga qo'shiladi)
+ * Yozadi:   src/data/theory/<fan>.json  (mavzu faniga qarab, ustiga qo'shiladi)
  *
  * Ishlatish:
  *   node pipeline/ingest-theory.mjs            # tekshiruv + hisobot (yozmaydi)

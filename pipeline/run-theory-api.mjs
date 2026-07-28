@@ -3,7 +3,7 @@
  *
  * make-theory-prompts + web LLM + ingest-theory zanjirining bir skriptdagi
  * ko'rinishi: prompt lokalda quriladi, API javob beradi, tekshiruvdan o'tsa
- * darhol src/data/theoryContent.json ga yoziladi (uzilsa ham yo'qolmaydi).
+ * darhol src/data/theory/<fan>.json ga yoziladi (uzilsa ham yo'qolmaydi).
  *
  * .env:
  *   PIPELINE_API_BASE   https://api.cerebras.ai/v1
