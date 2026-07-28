@@ -1,0 +1,413 @@
+{
+  "39": {
+    "summary": "Mavzu axborot birligi va hisoblash jarayonlariga bag'ishlangan. Imtihonda ikkilik sanoq tizimidagi o'lchov birliklari, ma'lumot uzatish tezligini hisoblash va fayl hajmini aniqlashga oid masalalar beriladi.",
+    "keyPoints": [
+      {
+        "t": "Ikkilik sanoq tizimi koeffitsiyenti",
+        "d": "Kompyuterda ikkilik sanoq tizimi qo'llanilgani sababli, kattalashish koeffitsiyenti 1024 ga teng. 1 KB = 1024 B, 1 GB = 1024 MB."
+      },
+      {
+        "t": "Tezlik birligi va bod",
+        "d": "1 bod 1 bit/sekundga teng. Eng kichik tezlik birligi bod (bit/sekund) hisoblanadi, kilobit emas."
+      },
+      {
+        "t": "Fayl hajmini hisoblash",
+        "d": "Piksellar soni va chuqurlik orqali fayl hajmi topiladi. Masalan, 800x600 piksel va 3 bayt chuqurlikda hajm 1,440,000 bayt yoki 1406,25 KB (1024 ga bo'lish orqali) teng."
+      },
+      {
+        "t": "Kartaga saqlash hisobi",
+        "d": "2 GB (2048 MB) ma'lumotni 512 MB li kartalarga saqlashda, har bir kartadan 10% ajratilganda, foydalanish mumkin bo'lgan joy 460,8 MB bo'ladi. Bunda 5 ta kartaga ehtiyoj tug'iladi."
+      },
+      {
+        "t": "Vaqt va tezlik formulasi",
+        "d": "Ma'lumot hajmini bitlarga, vaqtni sekundga o'tkazib bo'lish orqali tezlik topiladi. 256 MB faylni 4 minutda uzatish tezligi taxminan 8 945 349,3 bit/sekundni tashkil etadi."
+      },
+      {
+        "t": "Tarixiy ma'lumot",
+        "d": "V.Q. Qobulovning 1970-yillardagi faoliyati informatika fanining kirib kelishiga bog'liq."
+      },
+      {
+        "t": "Birliklar tartibi",
+        "d": "Darslikdagi sxemaga ko'ra, eng kichik birlik bit, undan keyin bayt, keyin esa 1024 ko'paytuvchi bilan kilobayt, megabayt va gigabayt keladi."
+      }
+    ],
+    "mustKnow": [
+      "1 GB = 1024 MB",
+      "1 bod = 1 bit/sekund",
+      "1 megabit = 1024 kilobit",
+      "1 bayt = 8 bit",
+      "40 MB faylni 10 Mbps tezlikda yuklash vaqti 32 sekund",
+      "4 Mbps tezlikda 2 minut davomida 60 MB ma'lumot uzatiladi",
+      "256 MB faylni 2 Mbps tezlikda yuklash vaqti 1024 sekund"
+    ],
+    "mistakes": [
+      "Kilobayt va megabayt orasidagi ko'paytuvchini 1000 deb hisoblash. To'g'ri: 1024",
+      "1 bodni bayt/sekund deb tushunish. To'g'ri: 1 bod = 1 bit/sekund",
+      "Fayl hajmini kilobaytga o'tkazishda 1024 o'rniga 1000 ga bo'lish. To'g'ri: 1024 ga bo'lish kerak"
+    ],
+    "mnemonics": [
+      "Bit kichik, Bayt katta (8 bit 1 bayt). Keyin 1024 qadam: KB, MB, GB",
+      "Tezlikni hisoblashda: Hajmni bitga, vaqtni sekundga, keyin bo'lish",
+      "Karta joyi hisobida: Hammasini joylasa olmaydi, yuqoriga butun songa yaxlitla"
+    ],
+    "source": "Darslik va V.Q. Qobulov asarlari",
+    "updatedAt": "2026-07-28"
+  },
+  "40": {
+    "summary": "Mazkur konspekt ofis dasturlari va ma'lumotlar bazasi bilan ishlashga bag'ishlangan. Imtihonda MS Office tarixi, Excel formulalari va Access fayl formatlariga e'tibor beriladi.",
+    "keyPoints": [
+      {
+        "t": "Excel foiz hisobi",
+        "d": "B2 katakchasidagi qiymatning 5 foizini hisoblash uchun 100000 * (5/100) formulasi qo'llaniladi, natija 5000 so'mni tashkil qiladi."
+      },
+      {
+        "t": "Office paket tarixi",
+        "d": "1992-yilda yaratilgan Microsoft Office paketiga dastlab faqat 4 ta ilova: Word, Excel, PowerPoint va Mail kiritilgan edi."
+      },
+      {
+        "t": "O'rtacha arifmetik",
+        "d": "Avg funksiyasi berilgan sonlar yig'indisining ular soniga bo'linmasidan hosil bo'ladi, masalan, (5000+12000+8000+15000) / 4 = 10000."
+      },
+      {
+        "t": "Access fayl formatlari",
+        "d": "MS Access 2007 versiyasidan boshlab ma'lumotlar bazalari .accdb formatida saqlanadi, .mdb esa eski versiyalar formati hisoblanadi."
+      },
+      {
+        "t": "Mantiqiy funksiyalar",
+        "d": "Shartlarning bir vaqtda bajarilishi ('VA') uchun AND funksiyasi ishlatiladi, OR funksiyasi bitta shart bajarilsa ham ishlaydi."
+      }
+    ],
+    "mustKnow": [
+      "Microsoft Office paketi 1992-yilda yaratilgan.",
+      "1992-yildagi paket tarkibiga Word, Excel, PowerPoint va Mail dasturlari kirgan.",
+      "MS Access 2007 versiyasidan boshlab ma'lumotlar bazalari .accdb formatida saqlanadi.",
+      "Avg funksiyasi o'rtacha arifmetikni, Sum yig'indini, Max esa eng katta sonni hisoblaydi.",
+      "Excel shartlari uchun AND funksiyasi qo'llaniladi, ampersand (&) operatori emas."
+    ],
+    "mistakes": [
+      "Xato: 1992-yilgi paket tarkibiga Access kirgan deb hisoblash. To'g'ri: Dastlab faqat Word, Excel, PowerPoint va Mail kiritilgan.",
+      "Xato: Mantiqiy bog'lash uchun & belgisini ishlatish. To'g'ri: Shartlar uchun AND funksiyasidan foydalanish kerak.",
+      "Xato: Access 2007+ uchun .mdb formatini ko'rsatish. To'g'ri: Yangi versiyalar .accdb formatidan foydalanadi."
+    ],
+    "mnemonics": [
+      "1992-yil: WEMP (Word, Excel, PowerPoint, Mail) — dastlabki to'rtta dastur.",
+      "Access 2007: ACCDB — Access Current DataBase, yangi davr formati."
+    ],
+    "source": "Darslik va manba ma'lumotlari",
+    "updatedAt": "2026-07-28"
+  },
+  "41": {
+    "summary": "Mantiqiy amallar va pozitsiyali sanoq sistemalaridagi arifmetik hisoblashlarga oid masalalar. Ikkilik, sakkizlik, o'nlik va o'n oltilik sistemalar o'rtasida o'tkazish va amallar bajarish qoidalari.",
+    "keyPoints": [
+      {
+        "t": "Bayt va bit o'rtasidagi bog'lanish",
+        "d": "1 bayt 8 bitga teng. 48 000 bitni bo'lish orqali 6 000 bayt hosil qilinadi. 1 kilobayt 1024 baytni tashkil etadi."
+      },
+      {
+        "t": "O'nlik sanoq sistemasidagi o'rinlar",
+        "d": "Sonning qiymati uning turgan o'rniga (razryadiga) bog'liq. Masalan, 3507 sonida 5 raqami yuzliklar o'rnida turib, 500 qiymatini ifodalaydi."
+      },
+      {
+        "t": "Ikkilik sistemaga o'tkazish usuli",
+        "d": "Sonni 2 ga bo'lish orqali qoldiqlarni pastdan yuqoriga yozish amalga oshiriladi. 13 soni uchun qoldiqlar 1, 0, 1, 1 bo'lib, 1101 ko'rinishida yoziladi."
+      },
+      {
+        "t": "Ikkilik sistemada qo'shish amali",
+        "d": "1+1=10 (0 yoz, 1 o'tkaz) qoidasi asosida bajariladi. 1101 va 0101 ni qo'shganda natija 10010 bo'ladi, bu o'nlikda 18 ga teng."
+      },
+      {
+        "t": "Ikkilik sistemada ayirish amali",
+        "d": "Kichik sondan katta raqam ayirilganda qo'shni xonadan qarz olinadi. 1000 dan 101 ni ayirganda natija 11 ga teng, bu o'nlikda 3 ni bildiradi."
+      },
+      {
+        "t": "Ikkilik sistemada ko'paytirish",
+        "d": "Ko'paytiruvchilarni qisman ko'paytirib, natijalarni surib qo'shish orqali amalga oshiriladi. 101 va 11 ko'paytmasi 1111 ga teng, bu o'nlikda 15 ni tasdiqlaydi."
+      },
+      {
+        "t": "Mantiqiy amallarning tartibi",
+        "d": "Avval qavs ichidagi amallar, keyin inversiya (!) bajariladi. Murakkab ifodalarda avval qism (!A va BvC) hisoblanadi, so'ngra ular o'zaro bog'lanadi."
+      }
+    ],
+    "mustKnow": [
+      "1 bayt 8 bitga teng.",
+      "1 kilobayt 1024 baytni tashkil etadi.",
+      "4-bit bilan ifodalash mumkin bo'lgan maksimal son 15 ga teng.",
+      "4-bit bilan jami 16 ta xil qiymat (0 dan 15 gacha) ifodalanishi mumkin.",
+      "2548 sonida yuzliklar xonasidagi raqam qiymati 500 ga teng.",
+      "1101 ikkilik sonining o'n oltilikdagi qiymati D6 ga teng.",
+      "Ikkilikda qo'shishda 1+1=10 (0 yoz, 1 o'tkaz)."
+    ],
+    "mistakes": [
+      "Bitni bo'lmagan holda javob berish: 48 000 bitni 48 kB deb hisoblash xato, chunki 1 bayt 8 bitga teng.",
+      "Xato ko'paytirish: 384 kB deb hisoblash, ya'ni 48 000 ni 8 ga ko'paytirib qo'yish noto'g'ri.",
+      "O'rin qiymatini noto'g'ri aniqlash: 2548 sonidagi 5 raqami uchun 50 yoki 5 deb javob berish xato, to'g'risi 500."
+    ],
+    "mnemonics": [
+      "Ikkilik qo'shish: 'Bir va bir — nolga, bir yuqoriga'.",
+      "O'rinlar qiymati: 'O'ngdan chapga — birlik, o'nlik, yuzlik, minglik'.",
+      "Mantiqiy ustunlik: 'Avval qavs, keyin NOT, keyin qolganlari'."
+    ],
+    "source": "Tasdiqlangan test izohlari",
+    "updatedAt": "2026-07-28"
+  },
+  "42": {
+    "summary": "Mavzu algoritm turlari, blok-sxema belgilari va Scratch muhitini o'z ichiga oladi. Imtihonda blok-sxema shakllari va algoritm xossalari kabi nazariy bilimlar so'raladi.",
+    "keyPoints": [
+      {
+        "t": "Blok-sxema asosiy shakllari",
+        "d": "Oval boshlash va tugashni, parallelogram kiritish va chiqarishni, romb shartni, to'rtburchak esa hisoblash amallarini ifodalaydi."
+      },
+      {
+        "t": "Scratch koordinata tizimi",
+        "d": "X o'qi chapdan o'ngga, Y o'qi pastdan yuqoriga qarab o'sadi. O'qlar markazda (0,0) nuqtada kesishadi."
+      },
+      {
+        "t": "Algoritmning diskretligi",
+        "d": "Bu xossa algoritmni tashkil etuvchi qadamlarning ketma-ket bajarilishini va har bir qadamning aniq chegaralanganini bildiradi."
+      },
+      {
+        "t": "Algoritmning boshqa xossalari",
+        "d": "Massoviylik ko'plab ma'lumotlar uchun qo'llanilishini, aniqlik shubhasiz bajarilishni, natijadorlik esa ma'lum natijaga erishishini anglatadi."
+      },
+      {
+        "t": "Matematik usulni tanlash",
+        "d": "Masalaga mos matematik qonun yoki formulani tanlash jarayoni matematik usulni tanlash bosqichiga tegishli hisoblanadi."
+      },
+      {
+        "t": "Shartli o'tish belgisi",
+        "d": "Blok-sxema standartlariga ko'ra, shartli o'tish (shart) uchun romb shakli ishlatiladi."
+      }
+    ],
+    "mustKnow": [
+      "Oval shakli blok-sxemada boshlash va tugashni bildiradi.",
+      "Parallelogram shakli ma'lumotlarni kiritish va chiqarish uchun xizmat qiladi.",
+      "Romb shakli shartni (shartli o'tish) ifodalaydi.",
+      "To'rtburchak shakli hisoblash amallari yoki jarayonni bildiradi.",
+      "Scratchda X o'qi chapdan o'ngga (manfiydan musbatga) o'sadi.",
+      "Scratchda Y o'qi pastdan yuqoriga (manfiydan musbatga) o'sadi.",
+      "Diskretlik qadamlarning ketma-ket bajarilishi va chegaralanganligini anglatadi.",
+      "Matematik usulni tanlash masalaga mos formulani tanlash jarayonidir."
+    ],
+    "mistakes": [
+      "Xato: Uchburchak shartni bildiradi. To'g'ri: Standart blok-sxemada shart uchun romb shakli ishlatiladi.",
+      "Xato: To'rtburchak shart uchun ishlatiladi. To'g'ri: To'rtburchak hisoblash (jarayon) uchun, shart uchun romb ishlatiladi.",
+      "Xato: Y o'qi yuqoridan pastga o'sadi. To'g'ri: Y o'qi pastdan yuqoriga (manfiydan musbatga) qarab o'sadi."
+    ],
+    "mnemonics": [
+      "OPRT: OVal (boshlash), Parallelogram (kiritish), Romb (shart), To'rtburchak (hisoblash).",
+      "XY eslash: X - xuddi yozuvdek chapdan o'ngga; Y - daraxtdek pastdan yuqoriga o'sadi."
+    ],
+    "source": "Standart blok-sxema belgilari",
+    "updatedAt": "2026-07-28"
+  },
+  "43": {
+    "summary": "Python va JavaScript tillarida o'zgaruvchilar, shart operatorlari, sikllar, funksiyalar va massivlar bilan ishlash, kod tahlili va natijasini aniqlash bo'yicha asosiy bilimlar.",
+    "keyPoints": [
+      {
+        "t": "Python input funksiyasi",
+        "d": "input() funksiyasi ma'lumotni har doim satr (str) ko'rinishida qabul qiladi. Arifmetik amallar bajarish uchun uni int() funksiyasi orqali songa aylantirish shart."
+      },
+      {
+        "t": "Ma'lumotlar turlari",
+        "d": "O'zgaruvchi qiymati o'nli kasr ko'rinishda bo'lsa (masalan, 4500.50), uning turi avtomatik ravishda float (haqiqiy son) bo'ladi."
+      },
+      {
+        "t": "JS massiv metodlari",
+        "d": "JavaScriptda push() metodi massiv oxiriga element qo'shadi va yangi uzunlikni qaytaradi. pop() oxirgi elementni o'chiradi, add() metodi standart emas."
+      },
+      {
+        "t": "Sikllar va shartlar",
+        "d": "Python siklida % operatori yordamida faqat juft sonlar (masalan, 2 va 4) tanlab olinadi va ularning yig'indisi (6) hisoblanadi."
+      },
+      {
+        "t": "Funksiyalar argumentlari",
+        "d": "Funksiyaga argument berilmasa, u standart qiymatni (masalan, 10) oladi. Agar ikkala parametr berilsa, standart qiymat e'tiborga olinmaydi."
+      },
+      {
+        "t": "Daraja hisoblash",
+        "d": "Python ** operatori sonni darajaga ko'tarishni bildiradi. hisobla(3) chaqiruvida x=3, y=2 (standart) bo'lib, natija 9 ga teng."
+      }
+    ],
+    "mustKnow": [
+      "input() funksiyasi ma'lumotni faqat satr (str) turida qabul qiladi.",
+      "Satrlarni int() funksiyasi orqali butun songa aylantirish kerak.",
+      "push() metodi massivning oxiriga element qo'shadi.",
+      "pop() metodi massivning oxirgi elementini o'chiradi.",
+      "O'nli kasrli sonlar turi float deb belgilanadi.",
+      "x ** y ifodasi x sonining y darajasini hisoblaydi.",
+      "shift() metodi massivning boshidan element o'chiradi."
+    ],
+    "mistakes": [
+      "input() orqali kiritilgan sonlarni darhol qo'shish xato, chunki ular satr sifatida qo'shiladi ('1020'). To'g'ri usul: avval int() funksiyasi bilan aylantirish.",
+      "Massivga element qo'shish uchun add() metodidan foydalanish xato. To'g'ri usul: push() metodidan foydalanish."
+    ],
+    "mnemonics": [
+      "Input -> In (matn kiritadi) -> Int (songa o'tkazadi).",
+      "Push (itarmoq - oxiriga qo'shadi), Pop (pop - oxiridan olib tashlaydi).",
+      "Float (suzmoq) - kasr nuqta suzib yuradi."
+    ],
+    "source": "Test izohlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "44": {
+    "summary": "Mavzu grafik fayllarning o'lchamlari, hajmini hisoblash va HTML/CSS asosiy teglarini o'z ichiga oladi. Imtihonda piksel hisobi, rasm kiritish va blok modeli bo'yicha vazifalar beriladi.",
+    "keyPoints": [
+      {
+        "t": "Rasm o'lchami va maydoni",
+        "d": "Rasmni 50 foizga qisqartirish o'lchamni yarmiga kamaytiradi (masalan, 1200 dan 600 ga). Maydon kenglik va balandlik ko'paytmasiga teng bo'lib, o'lcham yarmiga tushganda maydon 4 baravar kamayadi."
+      },
+      {
+        "t": "Rasm hajmini hisoblash",
+        "d": "Piksellar sonini (eni * bo'yi) chuqurlik (bayt) bilan ko'paytirib, 1024 ga bo'lish orqali kilobaytlarda hajm topiladi. Masalan, 500x500 o'lchamli 3 baytli rasm 732,4 KB joy egallaydi."
+      },
+      {
+        "t": "Piksellar soni va bit chuqurligi",
+        "d": "1920x1080 o'lchamli 24 bitli (3 byte) rasm hajmi 6,220,800 baytni tashkil qiladi, bu esa taxminan 5.93 MB ga teng."
+      },
+      {
+        "t": "Rasmning fizik o'lchami",
+        "d": "Rasm enini topish uchun piksel sonini bitta piksel o'lchamiga ko'paytirish kerak. Masalan, 1000 piksel * 0,2 mm = 200 mm."
+      },
+      {
+        "t": "HTML rasm kiritish",
+        "d": "Rasm joylashtirish uchun <img> tegi ishlatiladi. Fayl manzili src, kenglik va balandlik esa width va height atributlari bilan belgilanadi."
+      },
+      {
+        "t": "CSS Box model",
+        "d": "Standart modelda width faqat kontent (content) ga tegishli. Umumiy en = content + padding (ikkala tomon) + border (ikkala tomon)."
+      },
+      {
+        "t": "Foizli o'lcham",
+        "d": "Agar rasm kengligi konteyner kengligining 50%iga teng bo'lsa va konteyner 400px bo'lsa, rasm kengligi 200 px bo'ladi."
+      }
+    ],
+    "mustKnow": [
+      "Rasm maydoni kenglik va balandlik ko'paytmasiga teng ($1000 \\times 1000 = 1\\,000\\,000$).",
+      "O'lcham 50% ga qisqarilsa, maydon 4 baravar kamayadi.",
+      "500x500 o'lchamdagi 3 baytli rasm hajmi 732,4 KB ga teng.",
+      "1920x1080 o'lchamdagi 24 bitli rasm hajmi taxminan 5.93 MB (6 MB).",
+      "640x480 o'lchamli 16 bitli rasm hajmi 600 KB ga teng.",
+      "Rasm kiritish uchun <img> tegi, manba uchun src atributi ishlatiladi.",
+      "CSSda umumiy en = content + padding (ikkala tomon) + border (ikkala tomon).",
+      "<image>, <pic> teglari va w, size atributlari HTMLda standart emas."
+    ],
+    "mistakes": [
+      "Rasmni 50% qisqartirish maydonni ham 50% kamaytiradi deb hisoblash. To'g'ri: O'lcham yarmiga tushganda, maydon 4 baravar kamayadi.",
+      "Rasm kiritish uchun <image> tegidan foydalanish. To'g'ri: Standart teg <img> bo'lib, u yopilmaydi.",
+      "CSSda width qiymati blokning umumiy enini bildiradi deb o'ylash. To'g'ri: width faqat content qismini bildiradi, padding va border qo'shiladi."
+    ],
+    "mnemonics": [
+      "Rasm hajmi: 'Piksel sonini ko'paytir, baytga aylantir, 1024 ga bo'l'.",
+      "Box model: 'Kenglik (width) — bu faqat ichki mahsulot, qadoq (padding) va ramka (border) alohida'."
+    ],
+    "source": "Test izohlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "45": {
+    "summary": "Mavzu kompyuter tarmoqlari tarixi, URL tuzilishi, ma'lumot hajmini hisoblash va xavfsizlikni o'z ichiga oladi. Imtihonda ma'lumot o'tish tezligi va vaqtini hisoblashda 1 bayt = 8 bit qoidasiga amal qilish, shuningdek Internet tarixi va viruslarning ishlash mantiqini bilish talab etiladi.",
+    "keyPoints": [
+      {
+        "t": "Ma'lumot hajmi hisobi",
+        "d": "Hajmni topish uchun belgilar sonini bitta belgi hajmiga ko'paytiramiz. 1 kilobayt 1024 baytga teng. Masalan, 4096 baytni 1024 ga bo'lganda 4 KB hosil bo'ladi."
+      },
+      {
+        "t": "Tarmoq tarixi va ARPANET",
+        "d": "Zamonaviy Internetning ildizlari 1969-yilda AQSh Mudofaa vazirligi tomonidan yaratilgan ARPANET tarmog'iga borib taqaladi. Bu birinchi paketli kompyuter tarmog'i bo'lib, bugungi Internetning asosini tashkil etadi."
+      },
+      {
+        "t": "Tezlik va vaqt hisobi",
+        "d": "Ma'lumot o'tish vaqtini topish uchun avval hajmni (MB) bitga aylantirish kerak (8 ga ko'paytirish). Masalan, 200 MB * 8 = 1600 Mbit. Vaqt = Hajm / Tezlik (1600 / 50 = 32 sekund)."
+      },
+      {
+        "t": "URL manzil tuzilishi",
+        "d": "URL manzili protokol ('https'), domen nomi ('www.matbuot.uz') va resurs yo'li ('/news/2023') kabi qismlardan tashkil topadi. 'https' protokolni bildiradi."
+      },
+      {
+        "t": "Internetga ulanish tartibi",
+        "d": "Standart foydalanuvchi ketma-ketligi: avval texnik vositalar (kompyuter, modem) yoqiladi, so'ng Internetga ulaniladi, keyin dastur (brauzer) ochiladi va so'rov kiritiladi."
+      },
+      {
+        "t": "Viruslarning kelib chiqishi",
+        "d": "Fred Cohen o'zini ko'chirib, tizimga zarar yetkazuvchi dastur yaratdi va bu kompyuter virusi tushunchasining boshlanishiga sabab bo'ldi."
+      },
+      {
+        "t": "Virusning ishlash mantiqi",
+        "d": "Virus avval noqonuniy nusxa olish jarayonini amalga oshiradi, shunda dastur ishga tushadi. Keyin u tez qayta tiklanadi va takomillashadi, so'ngra muhim ma'lumotlarni o'chiradi."
+      }
+    ],
+    "mustKnow": [
+      "1 kilobayt = 1024 bayt.",
+      "1 bayt = 8 bit.",
+      "ARPANET tarmog'i 1969-yilda yaratilgan.",
+      "Tezlik = Ma'lumot hajmi / Vaqt formulasi qo'llaniladi.",
+      "URL manzilida 'https' protokolni, domen nomi saytni, '/news/2023' resurs yo'lini bildiradi.",
+      "Fred Cohen kompyuter virusi tushunchasining asoschisi hisoblanadi."
+    ],
+    "mistakes": [
+      "Xato: 1 MB = 1000 KB deb hisoblash. To'g'ri: 1 KB = 1024 bayt.",
+      "Xato: Baytni bitga aylantirmasdan tezlikni hisoblash. To'g'ri: Baytni bitga aylantirish uchun 8 ga ko'paytirish kerak.",
+      "Xato: Brauzerni ochib, keyin Internetga ulanish. To'g'ri: Avval Internetga ulanish, keyin brauzerni ochish kerak."
+    ],
+    "mnemonics": [
+      "Bayt va bit munosabati: 'Bitta Baytga Sakkizta Bit sig'adi' (1 Byte = 8 bit).",
+      "Ulanish tartibi: 'Yoqish -> Ulanish -> Dastur -> Qidiruv' (YUDQ).",
+      "Virus ishlashi: 'Nusxa -> Ishga tush -> Tiklan -> O'chir' (NIOT)."
+    ],
+    "source": "Tasdiqlangan test izohlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "46": {
+    "summary": "Pedagogik mahorat, informatika o'qitish metodikasi va dars rejalashtirishga oid asosiy tamoyillar. O'qituvchining kasbiy ehtiyojlari, bilimlar tizimi va o'quvchilarni baholash mezonlari hamda tenglik tamoyili ko'zda tutiladi.",
+    "keyPoints": [
+      {
+        "t": "O'qituvchining asosiy bilimlari",
+        "d": "O'qituvchining asosiy zarur bilimlari uning o'z fanini qanday o'qitishi, qaysi usullardan foydalanishi va standartlarni bilishi bilan belgilanadi."
+      },
+      {
+        "t": "O'quv vositalari tizimi",
+        "d": "Darslik asosiy o'quv vositasi bo'lib, fan bo'yicha bilimlarni tizimli yetkazib beradi. Metodik qo'llanma o'qituvchi uchun, elektron resurslar qo'shimcha manbadir."
+      },
+      {
+        "t": "Induksiya usuli",
+        "d": "Yakka misollardan umumiy qoida yoki qonuniyatga chiqarishga asoslangan usul bo'lib, o'quvchilar aniq misollardan umumiy qoidaga o'tadi."
+      },
+      {
+        "t": "Deduksiya usuli",
+        "d": "Umumiy qoida (qonun) avval berilib, keyin shu qoida yordamida konkret misollar tahlil qilinadigan usuldir."
+      },
+      {
+        "t": "Analogiya metodi",
+        "d": "O'xshashlik qonuniyatiga asoslangan bo'lib, noma'lum tushunchani ma'lum va tushunarli obyekt bilan solishtirish orqali tushuntirishdir."
+      },
+      {
+        "t": "Tenglik va adolat",
+        "d": "Barcha o'quvchilarga teng sharoit yaratish va ularni o'quv mezonlariga ko'ra guruhlarga bo'lish, qonuniy yoki ijtimoiy belgilarga qarab emas."
+      },
+      {
+        "t": "Rivojlanishni rag'batlantirish",
+        "d": "O'quvchilarning ijodiy qobiliyatlarini va mustaqil fikrlashlarini qo'llab-quvvatlash, ularning o'ziga ishonchini oshiradi."
+      }
+    ],
+    "mustKnow": [
+      "Analogiya — o'xshashlik qonuniyatiga asoslangan bo'lib, o'quvchilarga noma'lum hodisa yoki tushunchani ma'lum, tushunarli hodisa yoki tushuncha bilan solishtirib tushuntirish usulidir.",
+      "Induksiya — yakka obyektlar va hodisalarni o'rganish asosida umumiy qoida va qonuniyatlarni chiqarish (yakka umumiyga) usulidir.",
+      "Deduksiya — umumiy qoidadan boshlab, aniq misolga o'tish yoki umumiy qoidadan aniq xulosaga o'tish usulidir.",
+      "Sintez — qismlarni butunga birlashtirish jarayoni.",
+      "Modellashtirish — model yaratish jarayoni.",
+      "Abstraktlashtirish — muhim xususiyatlarni ajratib olish jarayoni.",
+      "Kasbiy ehtiyoj — o'z faoliyat sharoitlarini va bilim darajasini tahlil qilib, yangilash zarurligini anglashdir."
+    ],
+    "mistakes": [
+      "Xato: O'quvchilarni ayblash yoki o'zini to'liq deb hisoblash rivojlanishga yordam beradi. To'g'ri: O'quvchilarni ayblash yoki o'zini to'liq deb hisoblash rivojlanishga to'sqinlik qiladi.",
+      "Xato: Dasturlash tarixi yoki texnik ta'mirlash bevosita tarbiyaviy faoliyatning nazariy asosini tashkil etadi. To'g'ri: Tarbiyaviy faoliyatning asosi pedagogik nazariya, ta'lim qonuniyatlari va tamoyillarini bilishdan iborat.",
+      "Xato: Boshqa fanlar, xo'jalik yoki texnik ta'mirlash o'qituvchining bevosita pedagogik mahorati doirasiga kiradi. To'g'ri: Pedagogik mahorat fanni o'qitish metodikasi va standartlarni bilishdan iborat."
+    ],
+    "mnemonics": [
+      "Mantiqiy usullar: Induksiya — yakka umumiyga (pastdan yuqoriga), Deduksiya — umumiy yakka (yuqoridan pastga).",
+      "O'quv manbalari: Darslik — asosiy, Metodik qo'llanma — o'qituvchiga, Elektron resurslar — qo'shimcha.",
+      "Analogiya misoli: IP-manzil va pochta manzili o'rtasidagi o'xshashlik."
+    ],
+    "source": "Tasdiqlangan test izohlari",
+    "updatedAt": "2026-07-28"
+  }
+}

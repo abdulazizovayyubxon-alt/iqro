@@ -11,7 +11,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Brain, KeyRound, Crown, FileText, Bell, Languages, MessageCircle, Info, Trash2, Smartphone, Activity, AlertCircle, CalendarDays } from 'lucide-react';
+import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Brain, KeyRound, Crown, FileText, Bell, Languages, MessageCircle, Info, Trash2, Smartphone, Activity, AlertCircle, CalendarDays, CalendarClock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
@@ -155,6 +155,32 @@ export default function SettingsPage({ theme, toggleTheme }) {
     else if (res.reason === 'denied') showToast(t('settings.toasts.pushDenied'), 'error');
     else if (res.reason === 'unsupported') showToast(t('settings.toasts.pushUnsupported'), 'error');
     else showToast(t('settings.toasts.pushError'), 'error');
+  };
+
+  // Kunlik reja eslatmasi — server (api/cron-reminder.js) kechqurun bitta push
+  // yuboradi. Push ruxsatisiz ma'nosi yo'q, shuning uchun qator faqat ruxsat
+  // berilganda ko'rinadi. Holat Firestore'da (`users/{uid}.dailyReminder`),
+  // localStorage'da EMAS: qarorni serverning o'zi o'qishi kerak.
+  const [dailyReminder, setDailyReminder] = useState(true);
+  useEffect(() => {
+    if (!user?.uid || pushStatus !== 'granted') return;
+    let alive = true;
+    getDoc(doc(db, 'users', user.uid))
+      .then(snap => { if (alive && snap.exists()) setDailyReminder(snap.data().dailyReminder !== false); })
+      .catch(() => { /* o'qilmasa yoqilgan deb qoladi — cron ham shunday o'qiydi */ });
+    return () => { alive = false; };
+  }, [user?.uid, pushStatus]);
+
+  const toggleDailyReminder = async () => {
+    const next = !dailyReminder;
+    setDailyReminder(next);
+    try {
+      await setDoc(doc(db, 'users', user.uid), { dailyReminder: next }, { merge: true });
+      showToast(next ? t('settings.toasts.reminderOn') : t('settings.toasts.reminderOff'), 'success');
+    } catch {
+      setDailyReminder(!next);   // yozilmadi — tugmani orqaga qaytaramiz
+      showToast(t('settings.toasts.pushError'), 'error');
+    }
   };
 
   // Shrift o'lchami — tipografiya tizimining --fs-scale ko'paytuvchisi (src/index.css).
@@ -477,6 +503,16 @@ export default function SettingsPage({ theme, toggleTheme }) {
                 </span>
               }
             />
+
+            {pushStatus === 'granted' && (
+              <SwitchRow
+                icon={<CalendarClock size={20} />}
+                label={t('settings.dailyReminder')}
+                sublabel={t('settings.dailyReminderHint')}
+                checked={dailyReminder}
+                onToggle={toggleDailyReminder}
+              />
+            )}
 
             <ActionRow
               icon={<Download size={20} />}

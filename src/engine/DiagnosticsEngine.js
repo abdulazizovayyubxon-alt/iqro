@@ -12,6 +12,7 @@
  *   baho haqiqiy aniqlikka yaqinlashadi.
  */
 import { TOPICS } from '../data/mockData';
+import { EXAM_BLUEPRINT, hasBlueprint } from '../data/examBlueprint';
 import {
   MASTERY_MIN_ANSWERED,
   MASTERY_MIN_ACC,
@@ -163,9 +164,18 @@ export function computeDiagnostics(state, opts = {}) {
     ? (catCorrect + PRIOR_MIN_SAMPLE * NEUTRAL_PRIOR) / (catAnswered + PRIOR_MIN_SAMPLE)
     : NEUTRAL_PRIOR;
 
-  // Og'irlik: bazada savoli ko'p bo'lim imtihonda ham ko'proq uchraydi.
-  // Kesh bo'lmasa — barcha bo'limlar teng.
-  const rawWeights = catTopics.map(t => Math.max(1, topicTotals[t.id] || 0));
+  // Og'irlik — uch darajali zaxira zanjiri:
+  //   1) RASMIY spetsifikatsiya (examBlueprint) — imtihonda shu bo'limdan
+  //      nechta savol tushishi. Eng to'g'ri manba va qurilmaga bog'liq emas.
+  //   2) Bazadagi savollar soni — spetsifikatsiya yo'q fanda taxmin.
+  //   3) Kesh ham bo'lmasa — barcha bo'limlar teng.
+  // ⚠️ 1 va 2 ARALASHTIRILMAYDI: rasmiy raqam 2–18, bazadagi son minglab.
+  // Shu sababli blueprint fanning HAMMA bo'limini qoplagandagina ishlatiladi.
+  const catTopicIds = catTopics.map(t => t.id);
+  const useBlueprint = hasBlueprint(catTopicIds);
+  const rawWeights = useBlueprint
+    ? catTopics.map(t => EXAM_BLUEPRINT[t.id])
+    : catTopics.map(t => Math.max(1, topicTotals[t.id] || 0));
   const weightSum = rawWeights.reduce((a, b) => a + b, 0) || 1;
 
   let practiced = 0;

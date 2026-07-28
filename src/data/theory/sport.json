@@ -1,0 +1,418 @@
+{
+  "23": {
+    "summary": "Mavzu sport fiziologiyasi va sog'lom turmush tarziga bag'ishlangan bo'lib, imtihonda 2015-yilgi qonun, jismoniy yuklamalar ta'siri va yoshga oid standartlar o'rganiladi.",
+    "keyPoints": [
+      {
+        "t": "Qonunning qabul qilinishi",
+        "d": "O'zbekiston Respublikasi Oliy Majlisi tomonidan 2015-yil 4-sentabrda yangi tahrirdagi «Jismoniy tarbiya va sport to'g'risida» qonun qabul qilindi."
+      },
+      {
+        "t": "Qonunning huquqiy ahamiyati",
+        "d": "Ushbu qonun yurtimizda jismoniy tarbiya, sog'lomlashtirish va sport ishini yuksaltirishning huquqiy kafolatini yuzaga keltirgan keng qamrovli hujjatdir."
+      },
+      {
+        "t": "Yurak faoliyati",
+        "d": "Jismoniy yuklama ostida yurak tezroq uradi, bu sport fiziologiyasining asosiy qonuniyatlaridan biri hisoblanadi."
+      },
+      {
+        "t": "Nafas olish va gaz almashinuvi",
+        "d": "Yuklama davomida nafas olish chuqurlashadi va gaz almashinuvi yaxshilanadi, bu organizmning moslashuvini ko'rsatadi."
+      },
+      {
+        "t": "Mushaklar o'zgarishi",
+        "d": "Mushaklar jismoniy mashqlar ta'sirida kuchayadi va rivojlanadi, bu fiziologik o'zgarishlar qatoriga kiradi."
+      },
+      {
+        "t": "O'g'il bolalar uchun standart",
+        "d": "13—14 yoshli o'g'il bolalar uchun to'rning yuqori chetining balandligi 2 m 20 sm ni tashkil etadi."
+      },
+      {
+        "t": "Qizlar uchun standart",
+        "d": "13—14 yoshli qizlar uchun to'rning yuqori chetining balandligi 2 m 10 sm belgilangan."
+      }
+    ],
+    "mustKnow": [
+      "O'zbekiston Respublikasi Oliy Majlisi «Jismoniy tarbiya va sport to'g'risida» qonunni 2015-yil 4-sentabrda qabul qildi.",
+      "13—14 yoshli o'g'il bolalar uchun to'r balandligi 2 m 20 sm.",
+      "13—14 yoshli qizlar uchun to'r balandligi 2 m 10 sm.",
+      "Jismoniy yuklama ostida yurak tezroq uradi.",
+      "Jismoniy yuklama ostida nafas olish chuqurlashadi va gaz almashinuvi yaxshilanadi.",
+      "Jismoniy yuklama ostida mushaklar kuchayadi va rivojlanadi."
+    ],
+    "mistakes": [
+      "Xato: 13—14 yoshli o'g'il bolalar uchun to'r balandligini 2 m 10 sm deb belgilash. To'g'ri javob: 2 m 20 sm.",
+      "Xato: 13—14 yoshli qizlar uchun to'r balandligini 2 m 20 sm deb tanlash. To'g'ri javob: 2 m 10 sm."
+    ],
+    "mnemonics": [
+      "O'g'il bola baland (220), qizcha past (210) — yoshga ko'ra balandlikni eslash.",
+      "Yurak — tez, Nafas — chuqur, Mushak — kuch — yuklama ta'sirini eslash uchun uchlik."
+    ],
+    "source": "O'zbekiston Respublikasi Oliy Majlisining 2015-yil 4-sentabrdagi «Jismoniy tarbiya va sport to'g'risida» qonuni",
+    "updatedAt": "2026-07-28"
+  },
+  "24": {
+    "summary": "Gimnastika qoidalari, turlari, mashqlar texnikasi va sug'urtalash (spotting) usullari bo'yicha bilimlarni o'z ichiga oladi. Imtihonda mushak tizimini mustahkamlash, xavfsizlik qoidalari va metodik yondashuvlarga e'tibor beriladi.",
+    "keyPoints": [
+      {
+        "t": "Gimnastikaning ta'rifi va ahamiyati",
+        "d": "Gimnastika mushak tizimi va suyak-bo'g'im apparatini mustahkamlaydi, qad-qomatga ko'rk va harakatlarga nafislik bag'ishlaydi. Bu sport turi jismoniy sifatlarni kompleks rivojlantirishga xizmat qiladi."
+      },
+      {
+        "t": "Gimnastika va akrobatika elementlari",
+        "d": "Mushak tizimini mustahkamlash uchun gimnastika (egiluvchanlik, qayishqoqlik) va akrobatika (umbaloq oshish, 'ko'prik' hosil qilish) elementlari dasturga kiritiladi. Akrobatika faqat sakrashdan iborat emas."
+      },
+      {
+        "t": "Gimnastika turlarining farqi",
+        "d": "Badiiy gimnastika musiqaga mos raqs va plastik elementlardan iborat bo'lib, asboblarsiz bajarilmaydi. Sport gimnastikasi kuch va tezlikka, akrobatika esa murakkab sakrashlar va muvozanatga yo'naltirilgan."
+      },
+      {
+        "t": "Sug'urta (spotting) tushunchasi",
+        "d": "Sug'urta — bu murabbiyning o'quvchiga tana vaznini qisman qabul qilib olish orqali yordam berish usuli. Maqsad noto'g'ri bajarilish oqibatida yiqilish va shikastlanishning oldini olishdan iborat."
+      },
+      {
+        "t": "Sug'urtalash qoidalari",
+        "d": "Sug'urta barcha yoshdagi o'quvchilarga, ayniqsa boshlang'ich bosqichda zarur. O'qituvchi sakrash joyiga ro'para, tizzalarini bukib, o'quvchi ag'darilganda uni ushlab olishga tayyor holatda turishi shart."
+      },
+      {
+        "t": "Mashg'ulot metodikasi",
+        "d": "Mashg'ulot boshlang'ichida mushaklarni isitish uchun statik emas, balki dinamik (harakatli) mashqlar samaralidir. Statik cho'zish asosiy qismda yoki yakuniy qismda qo'llaniladi."
+      },
+      {
+        "t": "Jismoniy sifatlar rivoji",
+        "d": "Gimnastika bilan shug'ullanish tezlik, kuch, chidamlilik va egiluvchanlik sifatlarini egallashga yordam beradi. Bu sifatlar tayanch-harakat apparatining mustahkamligiga bevosita bog'liq."
+      }
+    ],
+    "mustKnow": [
+      "Sug'urta (spotting) — murabbiyning o'quvchiga tana vaznini qisman qabul qilib olish orqali yordam berish usuli bo'lib, yiqilish va shikastlanishning oldini olish maqsadida qo'llaniladi.",
+      "Akrobatika gimnastikasi mushak tizimi va suyak-bo'g'im apparatini mustahkamlash uchun umbaloq oshish va 'ko'prik' hosil qilish kabi mashqlarni o'z ichiga oladi.",
+      "Badiiy gimnastika musiqaga moslashtirilgan raqs va plastik elementlardan iborat bo'lib, lenta, to'p, uzunchoq, halqa kabi o'yin asboblari bilan bajariladi.",
+      "Sug'urtalash qoidasiga ko'ra, o'qituvchi sakrash joyiga ro'para, tizzalarini bukib, o'quvchi ag'darilganda yoki noto'g'ri tushganda uni ushlab olishga tayyor holatda turishi shart.",
+      "Mashg'ulot boshlang'ichida mushaklarni isitish uchun statik (uzoq ushlab turish) emas, balki dinamik (harakatli) mashqlar samaralidir.",
+      "Gimnastika mushak va suyaklarni mustahkamlash orqali tayanch-harakat apparatiga xizmat qiladi, harakatlarning nafisligi esa qad-qomatga go'zallik bag'ishlaydi."
+    ],
+    "mistakes": [
+      "Xato: Gimnastika faqat qo'l mushaklarini mustahkamlaydi. To'g'ri: Gimnastika barcha mushaklar guruhini qamrab oladi.",
+      "Xato: Akrobatika faqat sakrashlardan iborat. To'g'ri: Akrobatika umbaloq oshish va 'ko'prik' hosil qilish kabi mashqlarni ham o'z ichiga oladi.",
+      "Xato: Mashg'ulot boshlang'ichida statik (uzoq ushlab turish) mashqlar samaralidir. To'g'ri: Boshlang'ichda dinamik (harakatli) mashqlar samarali, statik cho'zish asosiy qismda qo'llaniladi.",
+      "Xato: Sug'urta faqat bolalarga yoki ma'lum yoshga qo'llaniladi. To'g'ri: Sug'urta barcha yoshdagi o'quvchilarga nisbatan qo'llaniladi."
+    ],
+    "mnemonics": [
+      "Badiiy gimnastika asboblari: 'Lenta, To'p, Uzunchoq, Halqa' — 'LUTUH' so'zini eslab qoling.",
+      "Sug'urtalash qoidasi: 'Ro'para, tizza bukilib tayyor tur' — xavfsizlik uchun o'qituvchi sakrash joyiga yuzi bilan turishi kerak.",
+      "Gimnastikaning ta'siri: 'Tayyang, Gozal, Sifat' — Tayanch-harakat apparati, Go'zallik (qad-qomat), Jismoniy sifatlar."
+    ],
+    "source": "O'quv dasturi va gimnastika bo'yicha metodik qo'llanma",
+    "updatedAt": "2026-07-28"
+  },
+  "25": {
+    "summary": "Harakatli o'yinlar turlari, ularning metodikasi va bolalarning jismoniy sifatlarini rivojlantirishdagi o'rni. Imtihonda o'yinlarni tashkil etish qoidalari, sport va elementar o'yinlar farqi hamda xavfsizlik talablari urg'u beriladi.",
+    "keyPoints": [
+      {
+        "t": "To'plar xususiyatlari",
+        "d": "Futbol to'pi standart o'lchami 68-70 sm bo'lib, o'tlilik maydoniga mos keladi. Voleybol to'pi teri yoki sintetik, basketbol to'pi rezina/teri va ma'lum vaznga ega, tennistopi esa juda kichikdir."
+      },
+      {
+        "t": "Voleybol hisobi",
+        "d": "Standart qoidalarga ko'ra, birinchi to'rtta set 25 ochkogacha, 5-set (tay-breyk) esa 15 ochkogacha o'tkaziladi. G'alaba qozonish uchun kamida 2 ochko farq bo'lishi shart."
+      },
+      {
+        "t": "Pedagogik ta'sir",
+        "d": "Zaif o'quvchini almashtirib dam berish va taktik joylashuv xatosini tuzatish o'yin jarayonini tartibli o'tkazishga yordam beradi. Shoshilinch o'yinchi qo'shish va jarima balli tartibsizlik yoki jazovchi choradir."
+      },
+      {
+        "t": "Tanaffusdagi o'yinlar",
+        "d": "Katta tanaffusda maktab hovlisida jamoa bo'lib o'yinlar tashkil etiladi, bu o'quvchilarning dam olishi va tiklanishiga xizmat qiladi. Ob-havo yomon bo'lganda ochiq havoda o'yin xavfli bo'lishi mumkin."
+      },
+      {
+        "t": "Tashkil etish qoidalari",
+        "d": "O'yinni tashkil etishda o'quvchilar yoshi va tayyorgarlik darajasi muhim omildir. O'qituvchi qoidalarni ravon tushuntirishi, savollarga javob berishi va xavfsizlik hamda tibbiy yordam to'plamasiga e'tibor berishi kerak."
+      },
+      {
+        "t": "O'yin turlari",
+        "d": "Futbol, basketbol va voleybol sport o'yinlari hisoblanadi. Elementar o'yinlar oddiy qoidalarga ega bo'lib, boshlang'ich tayyorgarlik uchun xizmat qiladi, masalan, 'Ovchi va quyon' sport turi emas."
+      },
+      {
+        "t": "Yangi o'yinni o'rgatish",
+        "d": "Avval bolalarning qiziqishini uyg'otish va ularni ruhiy tayyorlash kerak. O'yin mazmunini qisqa, qiziqarli hikoya yoki afsona ko'rinishida berish samaralidir, qoidalarni faqat yozib o'qish samarasiz."
+      },
+      {
+        "t": "Himoya taktikasi",
+        "d": "Raqib tez hujum qilganda va kuchli bo'lganda, zona himoyasi samaraliroq bo'ladi, chunki bu orqada bo'shliqlar qoldirmaydi. Shaxsiy himoya tezkor o'yinchilarga qarshi zaifroq bo'lishi mumkin."
+      }
+    ],
+    "mustKnow": [
+      "Futbol to'pi standart o'lchami 68-70 sm.",
+      "Voleybol o'yinida birinchi to'rtta set 25 ochkogacha, 5-set (tay-breyk) 15 ochkogacha o'tkaziladi.",
+      "O'yin vaqti 8:00—12:30 bo'lgan maktab davomida, jumladan katta tanaffusda jamoa o'yinlari tashkil etiladi.",
+      "Voleybolda to'pga to'rt marta tegilsa, raqib jamoa ochko oladi.",
+      "To'p tarmaga tegib o'tsa, o'yin davom etadi va raqib ochko olmaydi.",
+      "'Ovchi va quyon' elementar o'yin bo'lib, sport turi emas.",
+      "Shikastlanish holatida o'yinni to'xtatib, tibbiy yordam chaqirish va boshqa o'quvchilarni tinchlantirish kerak."
+    ],
+    "mistakes": [
+      "Xato: O'yinda shoshilinch o'yinchi qo'shish. To'g'ri: Bu tartibsizlik keltirib chiqaradi, o'yinni to'xtatmasdan almashtirish yoki tuzatish kerak.",
+      "Xato: Yaralangan bolani (masalan, suyak sinishi) ko'tarib yurish. To'g'ri: Buni qilmaslik kerak, o'yinni to'xtatib, tibbiy yordam chaqirish lozim.",
+      "Xato: Ob-havo yomon bo'lganda ochiq havoda o'yin o'tkazish. To'g'ri: Bu xavfli hisoblanadi, o'yinni yopiq joyga ko'chirish yoki bekor qilish kerak.",
+      "Xato: Qoidalarni darhol yozib o'qish yoki o'yinni boshlash. To'g'ri: Avval qiziqish uyg'otuvchi hikoya yoki afsona bilan bolalarni ruhiy tayyorlash kerak."
+    ],
+    "mnemonics": [
+      "Voleyball ochkolari: 'To'rtinchi set — yigirma besh, tay-breyk — o'n besh'.",
+      "Xavfsizlik qoidalari: 'Shikast — to'xtat, chaqir, tinlantir' (O'yinni to'xtat, tibbiy yordam chaqir, bolalarni tinlantir).",
+      "O'yin turlari: 'Sport — katta, elementar — boshlang'ich' (Futbol/basketbol sport, 'Ovchi va quyon' elementar)."
+    ],
+    "source": "Darslik manbasi",
+    "updatedAt": "2026-07-28"
+  },
+  "26": {
+    "summary": "Yengil atletika va suzish turlari, musobaqa qoidalari, mashqlar texnikasi va o'rgatish metodikasi. Darslikdagi ta'riflar, sportchilar yutuqlari va start holatiga oid standartlar asosida tuzilgan.",
+    "keyPoints": [
+      {
+        "t": "Yengil atletika turlari",
+        "d": "Darslikda past start, masofaga yugurish, marraga yetib kelish, balandlikka va uzunlikka sakrash, tennis to'p uloqtirish hamda estafeta yugurish yengil atletika turlari sifatida keltirilgan. Basketbol esa alohida 'sport o'yinlari' bo'limiga kiradi."
+      },
+      {
+        "t": "Sportchilar yutuqlari",
+        "d": "Svetlana Radzivil balandlikka sakrash bo'yicha xalqaro toifadagi sport ustasi va 2015-yil Xitoyda o'tkazilgan Osiyo o'yinlari g'olibi. Anvar Ko'chmurodov 100 m yugurish bo'yicha xalqaro musobaqalar ishtirokchisi sifatida tilga olingan."
+      },
+      {
+        "t": "Uloqtirish mexanizmi",
+        "d": "Fizika qonunlariga ko'ra, avval kuch to'planadi, so'ng harakat (uloqtirish) amalga oshiriladi va so'ngra inersiya yoki muvozanatni saqlash uchun oyoq oldinga qo'yiladi. 'Uloqtirgach' bog'lovchisi harakat bosqichining oyoq qo'yilishidan oldin ekanini tasdiqlaydi."
+      },
+      {
+        "t": "Start oldidagi holat",
+        "d": "Start oldidagi dastlabki holatda tizzalar teng qo'yilib, ular orasidagi masofa 10—15 sm ga teng bo'lishi shart. Berilgan boshqa masofalar standartga mos kelmaydi."
+      },
+      {
+        "t": "Suzish startlari",
+        "d": "Chalqancha suzishdan boshqa barcha startlar (krol, brass, batterflyay) standart tartibda tumbochkadan bajariladi. Chalqancha suzish starti suvdan boshlanadi."
+      },
+      {
+        "t": "To'g'ri uloqtirish usuli",
+        "d": "To'pni oyoq va gavda kuchini bir yerga to'plab uloqtirib, oyoqni oldinga qo'yish hamda bir-bir qadam bosib (halqadan halqaga) uloqtirish to'g'ri texnikadir. Faqat qo'l yoki barmoq bilan uloqtirish darslikga zid."
+      }
+    ],
+    "mustKnow": [
+      "Start oldidagi dastlabki holatda tizzalar orasidagi masofa 10—15 sm ga teng bo'lishi kerak.",
+      "Svetlana Radzivil 2015-yil Xitoyda o'tkazilgan Osiyo o'yinlari g'olibi.",
+      "Chalqancha suzishdan tashqari barcha suzish turlari starti tumbochkadan amalga oshiriladi.",
+      "Basketbol yengil atletika turi emas, balki sport o'yinlari tarkibiga kiradi.",
+      "Uloqtirish bosqichlari: kuch to'planishi, harakat (uloqtirish), oyoqni oldinga qo'yish."
+    ],
+    "mistakes": [
+      "Basketbolni yengil atletika turi deb hisoblash — xato. To'g'risi: u sport o'yinlari bo'limiga kiradi.",
+      "Barcha suzish turlari uchun tumbochkadan start qilish — xato. To'g'risi: chalqancha suzish suvdan boshlanadi.",
+      "Uloqtirishda faqat qo'l kuchini ishlatish — xato. To'g'risi: gavda va oyoq kuchidan foydalaniladi."
+    ],
+    "mnemonics": [
+      "Start masofasi: 'O'n besh' (15) — tizzalar yaqin turishi kerak.",
+      "Suzish starti: 'Chalqancha — suvda, qolgani — tumbochkada'.",
+      "Uloqtirish tartibi: 'Kuch -> Harakat -> Oyoq'."
+    ],
+    "source": "Darslik va fizika qonunlari",
+    "updatedAt": "2026-07-28"
+  },
+  "27": {
+    "summary": "Mavzu Kurash va Taktika bo'yicha Turon sport yakkakurashi nizomini o'z ichiga oladi. Imtihonda 1991-yilda Bahodir Saidov tomonidan ishlab chiqilgan qoidalarning tarixiy asoslari va maqomi ko'zda tutiladi.",
+    "keyPoints": [
+      {
+        "t": "Qoidalarning yaratilishi",
+        "d": "Turon sport yakkakurashi qoidalari 1991-yilda Toshkentda tarixiy manbalarga asoslanib ishlab chiqilgan."
+      },
+      {
+        "t": "Mualliflik",
+        "d": "Nizomga ko'ra, qoidalarni ishlab chiqaruvchi Bahodir Saidov hisoblanadi."
+      },
+      {
+        "t": "Sport turi maqomi",
+        "d": "Turon sharqona kurashlar tizimidagi mustaqil sport turi sifatida belgilangan."
+      },
+      {
+        "t": "Yaratilish manbai",
+        "d": "Qoidalar tarixiy manbalarga tayangan holda yaratilgan, ba'zi manbalar yo'qolganligi qayd etilgan."
+      },
+      {
+        "t": "Boshqa kurash turlari",
+        "d": "Klassik, erkin, sambo va dzyudo rivojlanayotgan xalqaro turlar qatoriga kiritilgan."
+      }
+    ],
+    "mustKnow": [
+      "Turon sport yakkakurashi qoidalari ishlab chiqilgan sana: 1991-yil.",
+      "Qoidalarni ishlab chiqgan shaxs: Bahodir Saidov.",
+      "Qoidalarni ishlab chiqilgan joyi: Toshkent.",
+      "Turon sport yakkakurashi maqomi: Sharqona kurashlar tizimidagi mustaqil sport turi.",
+      "Qoidalarni yaratish asosi: Tarixiy manbalar."
+    ],
+    "mistakes": [
+      "Xato: Qoidalar 1990-yilda ishlab chiqilgan. To'g'ri: 1991-yilda ishlab chiqilgan.",
+      "Xato: Muallif Bahodir Saidov emas. To'g'ri: Muallif Bahodir Saidov."
+    ],
+    "mnemonics": [
+      "BTS-91: Bahodir, Toshkent, Saidov - 1991.",
+      "Tarixiy Mustaqillik: Tarixiy manbalar asosida Mustaqil sport turi."
+    ],
+    "source": "Turon sport yakkakurashi nizomi",
+    "updatedAt": "2026-07-28"
+  },
+  "28": {
+    "summary": "Mavzu futbol va voleybol o'yinlarining rasmiy qoidalari, maydon o'lchamlari, to'r balandligi, hisoblash tizimi va o'yinchilarning ruxsat etilgan harakatlarini qamrab oladi. Imtihonda standart ko'rsatkichlar, ochkolar soni va texnik xatolarni aniqlash bo'yicha bilimlar tekshiriladi.",
+    "keyPoints": [
+      {
+        "t": "Voleybol jamoasi tarkibi",
+        "d": "Xalqaro voleybol qoidalariga ko'ra, maydonda har bir jamoadan 6 kishi o'ynaydi. Bu son o'yin dinamikasi va maydon o'lchami uchun mo'ljallangan standart hisoblanadi."
+      },
+      {
+        "t": "Maydon o'lchamlari va shakli",
+        "d": "Rasmiy voleybol maydoni to'g'ri to'rtburchak shaklida bo'lib, uzunligi 18 metr, kengligi 9 metrni tashkil etadi. Markaziy chiziq maydonni ikki teng qismga bo'ladi."
+      },
+      {
+        "t": "To'r balandligi standartlari",
+        "d": "Xalqaro standartlarga ko'ra, erkaklar uchun to'r balandligi 2,43 metr, ayollar uchun esa 2,24 metrni tashkil qiladi. Bu qiymatlar o'yinchilarning jismoniy imkoniyatlariga moslashtirilgan."
+      },
+      {
+        "t": "G'alaba va ochkolar tizimi",
+        "d": "O'yinning dastlabki to'rt setida g'alaba qozonish uchun kamida 25 ochko to'plash va raqibdan 2 ochko ko'p bo'lish shart. Beshinchi setda esa 15 ochkogacha o'ynaladi."
+      },
+      {
+        "t": "Futbol o'yinini boshlash",
+        "d": "Futbol qoidalariga ko'ra, to'pni dastlab o'yinga kiritish paytida, ikkala jamoa o'yinchilari o'z yarim maydonlarida joylashgan bo'lishi shart. Faqat shu holatda o'yin qonuniy ravishda boshlanadi."
+      },
+      {
+        "t": "Maydon yonidan o'yinga kiritish",
+        "d": "Maydon yonidan to'pni o'yinga kiritish uchun o'yinchi qadam oldinga chiqib, to'pni qo'li bilan tashlaydi yoki tepadi. Bu berilgan matn qoidasiga asoslangan usul."
+      },
+      {
+        "t": "Voleybol texnik xatolari",
+        "d": "To'pni ushlab, qo'lda ushlab turib yoki oldinga siljitib uzatish (lift) aniq xatodir. Xizmat vaqtida sakrashda yoki sur'at olishda end chizig'ini bosib chiqish ham xato hisoblanadi."
+      }
+    ],
+    "mustKnow": [
+      "Voleybol maydoni uzunligi 18 metr, kengligi 9 metr",
+      "Erkaklar uchun to'r balandligi 2.43 metr",
+      "Ayollar uchun to'r balandligi 2.24 metr",
+      "Voleybol maydonida har bir jamoadan 6 kishi o'ynaydi",
+      "Voleybolning 1-4 seti 25 ochkogacha o'ynaladi",
+      "Voleybolning 5-seti (tay-breyn) 15 ochkogacha o'ynaladi",
+      "Futbol o'yinini boshlashda o'yinchilar o'z yarim maydonlarida bo'lishi shart"
+    ],
+    "mistakes": [
+      "Birinchi uzatishda ikki qo'li bilan bir vaqtda pastdan tegizishni xato deb hisoblash — To'g'ri: Bu qoidaga zid emas, balki to'g'ri texnikadir",
+      "Xizmat vaqtida end chizig'ini bosib chiqish — To'g'ri: Bu qoidalarga zid bo'lgan aniq xatodir",
+      "To'pni ushlab, qo'lda ushlab turib uzatish (lift) — To'g'ri: Bu aniq xatodir"
+    ],
+    "mnemonics": [
+      "18 uzun, 9 keng, o'rtada to'r baland",
+      "Erkak 2.43, ayol 2.24, balandlikni aralashtirma",
+      "To'rt set yigirma besh, beshinchi set o'n besh"
+    ],
+    "source": "Xalqaro voleybol qoidalari va futbol o'yin qoidalari",
+    "updatedAt": "2026-07-28"
+  },
+  "29": {
+    "summary": "Mavzu yugurish masofalari tasnifi, start turlari, sport zali gigiyenasi va shaxmat qoidalari bo'yicha bilimlarni o'z ichiga oladi. Imtihonda masofalarga mos startni tanlash, ob-havo sharoitlari va shaxmatdagi mat-pat farqlari so'raladi.",
+    "keyPoints": [
+      {
+        "t": "Masofalarning tasnifi",
+        "d": "Qisqa masofalar 60-400 m, o'rta masofalar 500-2000 m, uzoq masofalar 3-8 km ni o'z ichiga oladi. Marafon masofasi 42 km 195 m ga teng."
+      },
+      {
+        "t": "Start turlari qo'llanilishi",
+        "d": "Qisqa masofalarga (masalan, 100 m) past start qo'llaniladi. O'rta va uzoq masofalarga (masalan, 1500 m, 3000 m) yuqori start qo'llaniladi."
+      },
+      {
+        "t": "Sport zali mikroiqlimi",
+        "d": "Zalda maqbul harorat 18-20°C, namlik 30-60% bo'lishi shart. Ventilyatsiya ishlamasa karbonat angidrid ortib, bosh og'rig'i keltirib chiqaradi."
+      },
+      {
+        "t": "Gigiyena va xavfsizlik",
+        "d": "Zalni muntazam ho'l tozalash o'tkazish, chang va mikroblarning oldini olish zarur. Qishki faslda derazalarni ochiq tutish o'quvchilarni shamollatishiga olib keladi."
+      },
+      {
+        "t": "Yugurish yo'lagi standarti",
+        "d": "Xalqaro standartga ko'ra, yopiq oval yugurish yo'lagining bir aylanmasi 400 metrga teng. 100 va 500 metr to'liq aylanma uzunlik sifatida qabul qilinmaydi."
+      },
+      {
+        "t": "Shaxmat: Mat va Pat",
+        "d": "Mat — shohga zarba berilib, uni qochirib yoki qoplab bo'lmaydigan holat. Pat — shohga zarba berilmagan, ammo o'yinchi qonuniy yurish qila olmaydigan vaziyat."
+      }
+    ],
+    "mustKnow": [
+      "Qisqa (sprinterlik) masofalar: 60, 100, 200, 400 metr.",
+      "O'rta (stayyerlik) masofalar: 500 metrdan 2000 metrgacha.",
+      "Uzoq masofalar: 3 km dan 8 km gacha.",
+      "Marafon masofasi: 42 km 195 m.",
+      "Yopiq oval yo'lagining standart uzunligi: 400 metr.",
+      "Sport zalidagi maqbul harorat: 18-20°C.",
+      "Sport zalidagi maqbul namlik: 30-60%.",
+      "Pat ta'rifi: Shohga zarba berilmagan holda, o'yinchi qonuniy yurish qila olmaydigan vaziyat."
+    ],
+    "mistakes": [
+      "1500 metrga yugurishda past start qo'llash (xato). To'g'risi: o'rta masofaga yuqori start qo'llaniladi.",
+      "Pat holatini shohga zarba berilgan deb tushunish (xato). To'g'risi: Patda shohga zarba berilmaydi, faqat yurish yo'q bo'ladi.",
+      "Sport zalida namlikni 30-40% da saqlash (xato). To'g'risi: bu juda quruq hisoblanadi, maqbul namlik 30-60% bo'lishi kerak.",
+      "100 metrni yugurish yo'lagining to'liq aylanmasi deb hisoblash (xato). To'g'risi: standart aylanma 400 metrni tashkil qiladi."
+    ],
+    "mnemonics": [
+      "Masofalar: Qisqa — to'rt yuzgacha (60-400), O'rta — ikki minggacha (500-2000), Uzoq — mingdan yuqori (3-8 km).",
+      "Shaxmat: Matda Shoh o'layapti (zarba bor), Patda Shoh tirik qolib, qamoqda (yurish yo'q).",
+      "Start: Qisqa masofa — pastga o'rnashib (past start), Uzoq masofa — baland turib (yuqori start)."
+    ],
+    "source": "O'quv matni",
+    "updatedAt": "2026-07-28"
+  },
+  "30": {
+    "summary": "Mavzu dars rejalashtirish, xavfsizlik va inklyuziv ta'lim tamoyillarini o'z ichiga oladi. Davlat ta'lim standartlari asosida maqsadlar belgilash, baholash turlari va o'quvchilar xavfsizligiga e'tibor beriladi.",
+    "keyPoints": [
+      {
+        "t": "Rejalashtirishning boshlang'ichi",
+        "d": "Ta'lim jarayonini rejalashtirishning asosiy qadami Davlat ta'lim standartiga asoslanib, dars maqsad va vazifalarini shu standartlardagi talablar bilan muvofiqlashtirishdan iborat."
+      },
+      {
+        "t": "Maktabdan tashqari tadbirlar",
+        "d": "Ekskursiyalar va sayohlarni o'tkazish uchun faqat darsliklar yoki intizom qoidalari yetarli emas, balki maxsus me'yoriy-huquqiy hujjatlar va ko'rsatmalarga amal qilish shart."
+      },
+      {
+        "t": "Xavfsizlik talabi",
+        "d": "Kasbiy standartlarga ko'ra, o'qituvchi birinchi navbatda o'quvchilar xavfsizligini ta'minlashi shart. Nosoz inshoot yoki asbob bilan mashg'ulot o'tkazish man etiladi."
+      },
+      {
+        "t": "Inklyuziv ta'lim yuklamasi",
+        "d": "Sog'lig'i cheklangan o'quvchilar darsda ishtirok etishi kerak, ammo yuklama ularning holatiga mos va shifokor ruxsatnomasiga asosan individual tarzda belgilanadi."
+      },
+      {
+        "t": "Darsning tuzilishi",
+        "d": "Pedagogika qonunlariga ko'ra, dars tashkiliy qism (3) bilan boshlanadi, so'ng yangi mavzu (1) o'rganiladi, keyin ko'nikma mustahkamlanadi (4) va dars tinchlantirish/baholash (2) bilan yakunlanadi."
+      },
+      {
+        "t": "Baholash turlari",
+        "d": "Normativ baholash belgilangan vaqtlarga (masalan, 5.0 — '5', 5.4 — '4') qarab amalga oshiriladi. Progress baholash esa o'quvchining o'tgan natijasi bilan hozirgisini solishtirishdan iborat."
+      },
+      {
+        "t": "Fanlararo integratsiya",
+        "d": "Jismoniy tarbiya darsida fizika tushunchalari va qonuniyatlarini o'rgatish hamda ular o'rtasidagi bog'liqlikni ko'rsatish fanlararo integratsiyaning direkt ko'rinishidir."
+      },
+      {
+        "t": "Maqsad belgilash tartibi",
+        "d": "Avval tashqi talablar (standart), keyin o'quvchilarning hozirgi holati va individual xususiyatlari aniqlanadi. Shundan keyin ularning kesishmasiga asoslanib aniq natijalar belgilanadi."
+      }
+    ],
+    "mustKnow": [
+      "Dars tuzilishi tartibi: tashkiliy qism (3), yangi mavzu (1), ko'nikma mustahkamlash (4), tinchlantirish va baholash (2).",
+      "Normativ baholashda 5.0 dan yaxshi baho '5', 5.4 gacha baho '4' deb belgilanadi.",
+      "O'quv jarayonini rejalashtirish — bu o'qituvchining davlat ta'lim standartlari va dastur talablariga muvofiq reja tuzishi.",
+      "Summativ baholash ma'lum bir bosqich (chorak, yil) yakunida o'tkaziladi.",
+      "Formativ baholash jarayon davomida o'tkaziladi va o'rganishni yo'naltiradi.",
+      "Nosoz inshoot yoki asbobdan foydalanish jarohatlar oqibatida kelib chiqishi mumkin."
+    ],
+    "mistakes": [
+      "Xato: Ekskursiyalar uchun darsliklar va intizom qoidalari yetarli deb hisoblash. To'g'ri: Maxsus me'yoriy-huquqiy hujjatlar va ko'rsatmalarga amal qilish shart.",
+      "Xato: Sog'lig'i cheklangan o'quvchilarga umumiy yuklama berish. To'g'ri: Yuklama shifokor ruxsatnomasiga asosan individual belgilanadi.",
+      "Xato: Darsni yangi mavzudan boshlash. To'g'ri: Dars tashkiliy qism bilan boshlanishi kerak."
+    ],
+    "mnemonics": [
+      "Dars tartibi: 3-1-4-2 (Tashkiliq-Yangi-Mustahkamlash-Tinchlantirish).",
+      "Maqsad belgilash: Tashqi talab -> Diagnostika -> Individual -> Natija."
+    ],
+    "source": "Kasbiy standart va Davlat ta'lim standartlari",
+    "updatedAt": "2026-07-28"
+  }
+}

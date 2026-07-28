@@ -1,8 +1,9 @@
 /**
  * theory.js — nazariy material sxemasi va kirish nuqtasi.
  *
- * Bu fayl KONTENTNI o'z ichiga olmaydi (u `theoryContent.js` da, dinamik
- * yuklanadi) — faqat shakl, zaxira (fallback) va savol↔band moslashtiruvi.
+ * Bu fayl KONTENTNI o'z ichiga olmaydi (u `theory/<fan>.json` fayllarida,
+ * fan bo'yicha dinamik yuklanadi) — faqat shakl, zaxira (fallback) va
+ * savol↔band moslashtiruvi.
  *
  * ZAXIRA QOIDASI: `mockData.js` dagi barcha 128 mavzuda `theoryHint` matni
  * bor. Strukturaviy material yozilmagan mavzu ham ishlashi shart —
@@ -62,21 +63,51 @@ export const normalizeTheory = (raw, fallbackHint = '') => {
   };
 };
 
-// ── Dinamik yuklash ───────────────────────────────────────────────────────
-// Kontent asosiy paketga kirmaydi: u faqat nazariya ochilganda yuklanadi
-// (service worker keshlaydi, keyingi ochishlar oflayn ham ishlaydi).
-let contentPromise = null;
-
-export const loadTheoryContent = () => {
-  if (!contentPromise) {
-    contentPromise = import('./theoryContent')
-      .then(m => m.THEORY || {})
-      .catch(() => ({}));   // kontent yuklanmasa — hint zaxirasi ishlayveradi
-  }
-  return contentPromise;
+// ── Dinamik yuklash (FAN bo'yicha) ────────────────────────────────────────
+// Kontent asosiy paketga kirmaydi va FAN bo'yicha bo'lingan: o'qituvchi
+// faqat o'z fanining konspektini (~25 kB) yuklaydi.
+//
+// ⚠️ Nega aniq ro'yxat, `import(\`./theory/${cat}.json\`)` emas: shablonli
+// dinamik import'da Vite papkadagi HAMMA faylni alohida bo'lak qilib
+// tayyorlaydi va ba'zi konfiguratsiyalarda birlashtirib yuboradi. Aniq
+// ro'yxat har fanni mustaqil bo'lak qilishni KAFOLATLAYDI.
+//
+// Yangi fan qo'shilganda shu ro'yxatga ham qator qo'shiladi; unutilsa
+// mavzu `theoryHint` zaxirasida ishlayveradi (ilova buzilmaydi).
+const LOADERS = {
+  chqbt: () => import('./theory/chqbt.json'),
+  art: () => import('./theory/art.json'),
+  tarix: () => import('./theory/tarix.json'),
+  sport: () => import('./theory/sport.json'),
+  boshlangich: () => import('./theory/boshlangich.json'),
+  info: () => import('./theory/info.json'),
+  mtt: () => import('./theory/mtt.json'),
+  til: () => import('./theory/til.json'),
+  mtt_rahbar: () => import('./theory/mtt_rahbar.json'),
+  biologiya: () => import('./theory/biologiya.json'),
+  geografiya: () => import('./theory/geografiya.json'),
+  mtt_logoped: () => import('./theory/mtt_logoped.json'),
+  mtt_psixolog: () => import('./theory/mtt_psixolog.json'),
+  kimyo: () => import('./theory/kimyo.json'),
+  rus_tili: () => import('./theory/rus_tili.json'),
+  ingliz: () => import('./theory/ingliz.json'),
 };
 
-const hintOf = (topicId) => TOPICS.find(t => t.id === topicId)?.theoryHint || '';
+const cache = new Map();   // category → Promise<{ [topicId]: yozuv }>
+
+/** @param {string} category */
+export const loadTheoryContent = (category) => {
+  if (!cache.has(category)) {
+    const loader = LOADERS[category];
+    cache.set(category, loader
+      ? loader().then(m => m.default || m).catch(() => ({}))
+      : Promise.resolve({}));   // fan ro'yxatda yo'q — hint zaxirasi ishlaydi
+  }
+  return cache.get(category);
+};
+
+const topicOf = (topicId) => TOPICS.find(t => t.id === topicId);
+const hintOf = (topicId) => topicOf(topicId)?.theoryHint || '';
 
 /**
  * Mavzuning nazariy materiali.
@@ -84,7 +115,9 @@ const hintOf = (topicId) => TOPICS.find(t => t.id === topicId)?.theoryHint || ''
  * @returns {Promise<object>} normalizeTheory natijasi (hech qachon null emas)
  */
 export async function getTheory(topicId) {
-  const content = await loadTheoryContent();
+  const topic = topicOf(topicId);
+  const cat = Array.isArray(topic?.category) ? topic.category[0] : topic?.category;
+  const content = cat ? await loadTheoryContent(cat) : {};
   return normalizeTheory(content[topicId], hintOf(topicId));
 }
 

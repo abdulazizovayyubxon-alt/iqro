@@ -713,7 +713,10 @@ export const AppProvider = ({ children }) => {
       // Tayyorlik darajasi — bulutga saqlanadi (maktab hisoboti shu maydonni o'qiydi).
       // ATAYIN topicTotals BERILMAYDI: og'irliklar lokal savol keshiga bog'liq
       // bo'lsa, bir xil natijali ikki o'qituvchi turli ball olishi mumkin edi.
-      // Ulashiladigan raqam har doim teng og'irlik bilan hisoblanadi.
+      // Ulashiladigan raqam qurilmaga bog'liq bo'lmagan og'irlikda hisoblanadi:
+      // spetsifikatsiyasi bor fanda RASMIY taqsimot (examBlueprint), aks holda
+      // teng og'irlik. Blueprint statik bo'lgani uchun bu qoidani buzmaydi —
+      // aksincha, UI'dagi raqam bilan bulutdagisi endi bir xil chiqadi.
       const shared = computeDiagnostics(newState, {
         goalScore: EXAM_GOAL_SCORE,
         examQuestions: BATCH_SIZE,

@@ -1,0 +1,888 @@
+{
+  "15": {
+    "status": "ok",
+    "name": "O'zbekiston tarixi I",
+    "category": "tarix",
+    "warns": [],
+    "points": 7,
+    "facts": 8
+  },
+  "16": {
+    "status": "ok",
+    "name": "O'zbekiston tarixi II",
+    "category": "tarix",
+    "warns": [],
+    "points": 7,
+    "facts": 8
+  },
+  "17": {
+    "status": "ok",
+    "name": "O'zbekiston tarixi III",
+    "category": "tarix",
+    "warns": [],
+    "points": 6,
+    "facts": 8
+  },
+  "18": {
+    "status": "ok",
+    "name": "O'zbekiston tarixi IV",
+    "category": "tarix",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  },
+  "19": {
+    "status": "ok",
+    "name": "Jahon tarixi I",
+    "category": "tarix",
+    "warns": [],
+    "points": 7,
+    "facts": 8
+  },
+  "20": {
+    "status": "ok",
+    "name": "Jahon tarixi II",
+    "category": "tarix",
+    "warns": [],
+    "points": 8,
+    "facts": 8
+  },
+  "21": {
+    "status": "ok",
+    "name": "Jahon tarixi III",
+    "category": "tarix",
+    "warns": [],
+    "points": 7,
+    "facts": 8
+  },
+  "22": {
+    "status": "ok",
+    "name": "Pedagogik mahorat",
+    "category": "tarix",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  },
+  "23": {
+    "status": "ok",
+    "name": "Fiziologiya va Sog'lom hayot",
+    "category": "sport",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  },
+  "24": {
+    "status": "ok",
+    "name": "Gimnastika qoidalari",
+    "category": "sport",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  },
+  "25": {
+    "status": "ok",
+    "name": "Harakatli o'yinlar",
+    "category": "sport",
+    "warns": [],
+    "points": 8,
+    "facts": 7
+  },
+  "26": {
+    "status": "ok",
+    "name": "Yengil atletika va Suzish",
+    "category": "sport",
+    "warns": [],
+    "points": 6,
+    "facts": 5
+  },
+  "27": {
+    "status": "ok",
+    "name": "Kurash va Taktika",
+    "category": "sport",
+    "warns": [],
+    "points": 5,
+    "facts": 5
+  },
+  "28": {
+    "status": "ok",
+    "name": "Futbol va Voleybol",
+    "category": "sport",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "29": {
+    "status": "ok",
+    "name": "Basketbol, Gandbol, Shaxmat",
+    "category": "sport",
+    "warns": [],
+    "points": 6,
+    "facts": 8
+  },
+  "30": {
+    "status": "ok",
+    "name": "Pedagogik mahorat",
+    "category": "sport",
+    "warns": [],
+    "points": 8,
+    "facts": 6
+  },
+  "31": {
+    "status": "ok",
+    "name": "Imlo va Uslubiyat",
+    "category": "boshlangich",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  },
+  "32": {
+    "status": "ok",
+    "name": "Lingvistik tahlil",
+    "category": "boshlangich",
+    "warns": [],
+    "points": 6,
+    "facts": 8
+  },
+  "33": {
+    "status": "ok",
+    "name": "O'qish va Adabiyot",
+    "category": "boshlangich",
+    "warns": [],
+    "points": 6,
+    "facts": 5
+  },
+  "34": {
+    "status": "ok",
+    "name": "Sonlar va Algebra",
+    "category": "boshlangich",
+    "warns": [],
+    "points": 6,
+    "facts": 8
+  },
+  "35": {
+    "status": "ok",
+    "name": "Geometriya va Mantiq",
+    "category": "boshlangich",
+    "warns": [],
+    "points": 7,
+    "facts": 8
+  },
+  "36": {
+    "status": "ok",
+    "name": "Geografiya va Biologiya",
+    "category": "boshlangich",
+    "warns": [],
+    "points": 8,
+    "facts": 8
+  },
+  "37": {
+    "status": "ok",
+    "name": "Fizika, Kimyo va Tarbiya",
+    "category": "boshlangich",
+    "warns": [],
+    "points": 6,
+    "facts": 7
+  },
+  "38": {
+    "status": "ok",
+    "name": "Pedagogik mahorat",
+    "category": "boshlangich",
+    "warns": [],
+    "points": 8,
+    "facts": 5
+  },
+  "39": {
+    "status": "ok",
+    "name": "Raqamli madaniyat",
+    "category": "info",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "40": {
+    "status": "ok",
+    "name": "Ofis dasturlari va VB",
+    "category": "info",
+    "warns": [],
+    "points": 5,
+    "facts": 5
+  },
+  "41": {
+    "status": "ok",
+    "name": "Mantiq va Sanoq tizimi",
+    "category": "info",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "42": {
+    "status": "ok",
+    "name": "Algoritmlash va Scratch",
+    "category": "info",
+    "warns": [],
+    "points": 6,
+    "facts": 8
+  },
+  "43": {
+    "status": "ok",
+    "name": "Python va JS dasturlash",
+    "category": "info",
+    "warns": [],
+    "points": 6,
+    "facts": 7
+  },
+  "44": {
+    "status": "ok",
+    "name": "Grafika va Veb-dizayn",
+    "category": "info",
+    "warns": [],
+    "points": 7,
+    "facts": 8
+  },
+  "45": {
+    "status": "ok",
+    "name": "Tarmoqlar va Xavfsizlik",
+    "category": "info",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  },
+  "46": {
+    "status": "ok",
+    "name": "Pedagogik mahorat",
+    "category": "info",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "47": {
+    "status": "ok",
+    "name": "Pedagogika va Rivojlanish",
+    "category": "mtt",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "48": {
+    "status": "ok",
+    "name": "Tarbiyalash turlari",
+    "category": "mtt",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "49": {
+    "status": "ok",
+    "name": "Nutq va Sensor tarbiya",
+    "category": "mtt",
+    "warns": [],
+    "points": 6,
+    "facts": 5
+  },
+  "50": {
+    "status": "ok",
+    "name": "Matematika va Tasviriy",
+    "category": "mtt",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  },
+  "51": {
+    "status": "ok",
+    "name": "O'yin va Rivojlanish muhiti",
+    "category": "mtt",
+    "warns": [],
+    "points": 7,
+    "facts": 5
+  },
+  "52": {
+    "status": "ok",
+    "name": "Me'yoriy-huquqiy asoslar",
+    "category": "mtt",
+    "warns": [],
+    "points": 8,
+    "facts": 7
+  },
+  "53": {
+    "status": "ok",
+    "name": "Bolalar xaritasi",
+    "category": "mtt",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  },
+  "54": {
+    "status": "ok",
+    "name": "Pedagogik mahorat",
+    "category": "mtt",
+    "warns": [],
+    "points": 8,
+    "facts": 5
+  },
+  "55": {
+    "status": "ok",
+    "name": "Matn tahlili va Savodxonlik",
+    "category": "til",
+    "warns": [],
+    "points": 6,
+    "facts": 5
+  },
+  "56": {
+    "status": "ok",
+    "name": "Imlo va Punktuatsiya",
+    "category": "til",
+    "warns": [],
+    "points": 6,
+    "facts": 7
+  },
+  "57": {
+    "status": "ok",
+    "name": "Uslubiyat va Nutq",
+    "category": "til",
+    "warns": [],
+    "points": 7,
+    "facts": 5
+  },
+  "58": {
+    "status": "ok",
+    "name": "Til nazariyasi",
+    "category": "til",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  },
+  "59": {
+    "status": "ok",
+    "name": "Badiiy matn va Adabiyot",
+    "category": "til",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  },
+  "60": {
+    "status": "ok",
+    "name": "Milliy adabiyot tarixi",
+    "category": "til",
+    "warns": [],
+    "points": 6,
+    "facts": 7
+  },
+  "61": {
+    "status": "ok",
+    "name": "Jahon adabiyoti tarixi",
+    "category": "til",
+    "warns": [],
+    "points": 7,
+    "facts": 5
+  },
+  "62": {
+    "status": "ok",
+    "name": "Pedagogik mahorat",
+    "category": "til",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  },
+  "63": {
+    "status": "ok",
+    "name": "Pedagogika va Rivojlanish",
+    "category": "mtt_rahbar",
+    "warns": [],
+    "points": 6,
+    "facts": 6
+  },
+  "64": {
+    "status": "ok",
+    "name": "Tarbiyaviy yo'nalishlar",
+    "category": "mtt_rahbar",
+    "warns": [],
+    "points": 6,
+    "facts": 5
+  },
+  "65": {
+    "status": "ok",
+    "name": "Metodik rahbarlik",
+    "category": "mtt_rahbar",
+    "warns": [],
+    "points": 6,
+    "facts": 6
+  },
+  "66": {
+    "status": "ok",
+    "name": "Xodimlar boshqaruvi",
+    "category": "mtt_rahbar",
+    "warns": [],
+    "points": 6,
+    "facts": 5
+  },
+  "67": {
+    "status": "ok",
+    "name": "Me'yoriy-huquqiy asoslar",
+    "category": "mtt_rahbar",
+    "warns": [],
+    "points": 5,
+    "facts": 6
+  },
+  "68": {
+    "status": "ok",
+    "name": "Kuzatuv kengashi",
+    "category": "mtt_rahbar",
+    "warns": [],
+    "points": 6,
+    "facts": 5
+  },
+  "69": {
+    "status": "ok",
+    "name": "Hujjatlar va Muhit",
+    "category": "mtt_rahbar",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "70": {
+    "status": "ok",
+    "name": "Pedagogik mahorat",
+    "category": "mtt_rahbar",
+    "warns": [],
+    "points": 8,
+    "facts": 6
+  },
+  "80": {
+    "status": "ok",
+    "name": "Biologiya asoslari va tiriklikning xilma-xilligi",
+    "category": "biologiya",
+    "warns": [],
+    "points": 5,
+    "facts": 5
+  },
+  "81": {
+    "status": "ok",
+    "name": "Hujayra biologiyasi",
+    "category": "biologiya",
+    "warns": [],
+    "points": 5,
+    "facts": 6
+  },
+  "82": {
+    "status": "ok",
+    "name": "Organizmlar biologiyasi",
+    "category": "biologiya",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  },
+  "83": {
+    "status": "ok",
+    "name": "Genetika va evolyutsiya",
+    "category": "biologiya",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "84": {
+    "status": "ok",
+    "name": "Ekosistema va biosfera darajasi",
+    "category": "biologiya",
+    "warns": [],
+    "points": 6,
+    "facts": 5
+  },
+  "85": {
+    "status": "ok",
+    "name": "Kasb standarti",
+    "category": "biologiya",
+    "warns": [],
+    "points": 6,
+    "facts": 7
+  },
+  "86": {
+    "status": "ok",
+    "name": "Pedagogik mahorat",
+    "category": "biologiya",
+    "warns": [],
+    "points": 6,
+    "facts": 5
+  },
+  "87": {
+    "status": "ok",
+    "name": "Geografiyaning boshlang'ich kursi",
+    "category": "geografiya",
+    "warns": [],
+    "points": 7,
+    "facts": 8
+  },
+  "88": {
+    "status": "ok",
+    "name": "Materiklar va okeanlar tabiiy geografiyasi",
+    "category": "geografiya",
+    "warns": [],
+    "points": 6,
+    "facts": 6
+  },
+  "89": {
+    "status": "ok",
+    "name": "O'rta Osiyo va O'zbekiston tabiiy geografiyasi",
+    "category": "geografiya",
+    "warns": [],
+    "points": 6,
+    "facts": 6
+  },
+  "90": {
+    "status": "ok",
+    "name": "O'zbekiston iqtisodiy va ijtimoiy geografiyasi",
+    "category": "geografiya",
+    "warns": [],
+    "points": 5,
+    "facts": 6
+  },
+  "91": {
+    "status": "ok",
+    "name": "Jahon iqtisodiy va ijtimoiy geografiyasi",
+    "category": "geografiya",
+    "warns": [],
+    "points": 6,
+    "facts": 5
+  },
+  "92": {
+    "status": "ok",
+    "name": "Amaliy geografiya",
+    "category": "geografiya",
+    "warns": [],
+    "points": 6,
+    "facts": 6
+  },
+  "93": {
+    "status": "ok",
+    "name": "Geografik masala va topshiriqlar",
+    "category": "geografiya",
+    "warns": [],
+    "points": 7,
+    "facts": 5
+  },
+  "94": {
+    "status": "ok",
+    "name": "Geografik grafik materiallar",
+    "category": "geografiya",
+    "warns": [],
+    "points": 7,
+    "facts": 8
+  },
+  "95": {
+    "status": "ok",
+    "name": "Kasb standarti",
+    "category": "geografiya",
+    "warns": [],
+    "points": 5,
+    "facts": 5
+  },
+  "96": {
+    "status": "ok",
+    "name": "Pedagogik mahorat",
+    "category": "geografiya",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "97": {
+    "status": "ok",
+    "name": "Tovush talaffuzi buzilishlari",
+    "category": "mtt_logoped",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  },
+  "98": {
+    "status": "ok",
+    "name": "Markaziy (neyrogen) nutq buzilishlari",
+    "category": "mtt_logoped",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  },
+  "99": {
+    "status": "ok",
+    "name": "Motor nutq buzilishlari",
+    "category": "mtt_logoped",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "100": {
+    "status": "ok",
+    "name": "Nutqning ritm va ravonligi buzilishlari",
+    "category": "mtt_logoped",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "101": {
+    "status": "ok",
+    "name": "Tovush talaffuzi va ovoz rezonansi buzilishlari",
+    "category": "mtt_logoped",
+    "warns": [],
+    "points": 6,
+    "facts": 6
+  },
+  "102": {
+    "status": "ok",
+    "name": "Nutqning umumiy rivojlanmaganligi",
+    "category": "mtt_logoped",
+    "warns": [],
+    "points": 7,
+    "facts": 5
+  },
+  "103": {
+    "status": "ok",
+    "name": "Yozma nutq buzilishlari",
+    "category": "mtt_logoped",
+    "warns": [],
+    "points": 7,
+    "facts": 5
+  },
+  "104": {
+    "status": "ok",
+    "name": "O'qish va yozish bilan bog'liq buzilishlar",
+    "category": "mtt_logoped",
+    "warns": [],
+    "points": 6,
+    "facts": 6
+  },
+  "105": {
+    "status": "ok",
+    "name": "Kasb standarti",
+    "category": "mtt_logoped",
+    "warns": [],
+    "points": 6,
+    "facts": 5
+  },
+  "106": {
+    "status": "ok",
+    "name": "Pedagogik mahorat",
+    "category": "mtt_logoped",
+    "warns": [],
+    "points": 6,
+    "facts": 7
+  },
+  "107": {
+    "status": "ok",
+    "name": "Psixologiya maqsadi, vazifalari va metodlari",
+    "category": "mtt_psixolog",
+    "warns": [],
+    "points": 8,
+    "facts": 6
+  },
+  "108": {
+    "status": "ok",
+    "name": "Oila psixologiyasi",
+    "category": "mtt_psixolog",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "109": {
+    "status": "ok",
+    "name": "Hayotiy davrlar va rivojlanish bosqichlari",
+    "category": "mtt_psixolog",
+    "warns": [],
+    "points": 6,
+    "facts": 5
+  },
+  "110": {
+    "status": "ok",
+    "name": "Inklyuziv ta'lim",
+    "category": "mtt_psixolog",
+    "warns": [],
+    "points": 8,
+    "facts": 6
+  },
+  "111": {
+    "status": "ok",
+    "name": "Yosh psixologiyasi",
+    "category": "mtt_psixolog",
+    "warns": [],
+    "points": 8,
+    "facts": 7
+  },
+  "112": {
+    "status": "ok",
+    "name": "Kasb standarti",
+    "category": "mtt_psixolog",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  },
+  "113": {
+    "status": "ok",
+    "name": "Pedagogik mahorat",
+    "category": "mtt_psixolog",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "114": {
+    "status": "ok",
+    "name": "Umumiy kimyo",
+    "category": "kimyo",
+    "warns": [],
+    "points": 6,
+    "facts": 7
+  },
+  "115": {
+    "status": "ok",
+    "name": "Anorganik kimyo",
+    "category": "kimyo",
+    "warns": [],
+    "points": 6,
+    "facts": 8
+  },
+  "116": {
+    "status": "ok",
+    "name": "Organik kimyo: uglevodorodlar",
+    "category": "kimyo",
+    "warns": [],
+    "points": 6,
+    "facts": 8
+  },
+  "117": {
+    "status": "ok",
+    "name": "Organik kimyo: kislorodli va azotli birikmalar",
+    "category": "kimyo",
+    "warns": [],
+    "points": 6,
+    "facts": 7
+  },
+  "118": {
+    "status": "ok",
+    "name": "Laboratoriya mashg'ulotlari",
+    "category": "kimyo",
+    "warns": [],
+    "points": 6,
+    "facts": 6
+  },
+  "119": {
+    "status": "ok",
+    "name": "Kasb standarti",
+    "category": "kimyo",
+    "warns": [],
+    "points": 7,
+    "facts": 8
+  },
+  "120": {
+    "status": "ok",
+    "name": "Pedagogik mahorat",
+    "category": "kimyo",
+    "warns": [],
+    "points": 6,
+    "facts": 6
+  },
+  "121": {
+    "status": "ok",
+    "name": "O'qish savodxonligi",
+    "category": "rus_tili",
+    "warns": [],
+    "points": 6,
+    "facts": 6
+  },
+  "122": {
+    "status": "ok",
+    "name": "San'at asarini talqin qilish",
+    "category": "rus_tili",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "123": {
+    "status": "ok",
+    "name": "Leksika, orfoepiya va so'z tarkibi",
+    "category": "rus_tili",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "124": {
+    "status": "ok",
+    "name": "Morfologiya va orfografiya",
+    "category": "rus_tili",
+    "warns": [],
+    "points": 6,
+    "facts": 7
+  },
+  "125": {
+    "status": "ok",
+    "name": "Sintaksis va punktuatsiya",
+    "category": "rus_tili",
+    "warns": [],
+    "points": 8,
+    "facts": 7
+  },
+  "126": {
+    "status": "ok",
+    "name": "Til nazariyasi va lingvistik tahlil",
+    "category": "rus_tili",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "127": {
+    "status": "ok",
+    "name": "Kasb standarti",
+    "category": "rus_tili",
+    "warns": [],
+    "points": 6,
+    "facts": 5
+  },
+  "128": {
+    "status": "ok",
+    "name": "Pedagogik mahorat",
+    "category": "rus_tili",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "129": {
+    "status": "skipped",
+    "reason": "izoh 0",
+    "name": "Reading: ilmiy-ommabop matn"
+  },
+  "130": {
+    "status": "skipped",
+    "reason": "izoh 0",
+    "name": "Reading: voqeaband matn"
+  },
+  "131": {
+    "status": "skipped",
+    "reason": "izoh 0",
+    "name": "Reading: matn yaxlitligi"
+  },
+  "132": {
+    "status": "skipped",
+    "reason": "izoh 0",
+    "name": "Grammatika"
+  },
+  "133": {
+    "status": "skipped",
+    "reason": "izoh 0",
+    "name": "Leksika (Vocabulary)"
+  },
+  "134": {
+    "status": "skipped",
+    "reason": "izoh 0",
+    "name": "Pragmatika"
+  },
+  "135": {
+    "status": "ok",
+    "name": "Kasb standarti",
+    "category": "ingliz",
+    "warns": [],
+    "points": 7,
+    "facts": 7
+  },
+  "136": {
+    "status": "ok",
+    "name": "Pedagogik mahorat va ELT",
+    "category": "ingliz",
+    "warns": [],
+    "points": 7,
+    "facts": 6
+  }
+}

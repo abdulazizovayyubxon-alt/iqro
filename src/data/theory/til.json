@@ -1,0 +1,412 @@
+{
+  "55": {
+    "summary": "Ilmiy-ommabop matnlarni tahlil qilish, fakt va fikrni ajratish, mantiqiy bog'liqlik va xronologiyani aniqlash, shuningdek, badiiy va rasmiy uslublar farqini o'zlashtirishga qaratilgan.",
+    "keyPoints": [
+      {
+        "t": "Fakt va fikrni farqlash",
+        "d": "Voqealar va statistik ma'lumotlar (masalan, 15 yoshli bola bilan uchrashuv, hisob-kitob) fakt hisoblanadi. Muallifning bahosi (shedevr gol) va sabab-oqibat tahlili (omadsizlik tufayli) fikr sanaladi."
+      },
+      {
+        "t": "Matn uslublarini aniqlash",
+        "d": "Obrazlar, tovushlar va badiiy ifodalar badiiy uslubga xosdir. Quruq faktlar, sport jarayoni va qonunchilik haqidagi ma'lumotlar esa ilmiy-ommabop yoki rasmiy uslubga tegishli."
+      },
+      {
+        "t": "Kontekstdagi ma'no",
+        "d": "'Mundial' jahon chempionatini, 'overtime' sportdagi qo'shimcha vaqtni, 'smart-class' ta'lim muassasasini, 'vunderkind' esa erta pishgan iste'dodli bolani anglatadi."
+      },
+      {
+        "t": "Xronologik tartib",
+        "d": "Tarixiy rivojlanish bosqichlari: qo'lyozma kitoblar, matbaa va birinchi nashrlar, mustaqillik davrida qonunchilik bazasi, zamonaviy Ravnaq markazi qurilishi."
+      },
+      {
+        "t": "Mantiqiy bog'liqlik",
+        "d": "Matnni qayta ishlash: avval matn o'qiladi, keyin asosiy g'oya tushuniladi, so'ng tayanch birliklar ajratib olinadi va nihoyat hikoya qilinadi."
+      },
+      {
+        "t": "Jarayon tahlili",
+        "d": "Tabiiy jarayonlarda mantiqiy ketma-ketlik: avval tog' jinslari nuraydi, keyin mayda bo'laklarga parchalanadi, oxirida organik moddalar aralashib tuproqqa aylanadi."
+      }
+    ],
+    "mustKnow": [
+      "'Vunderkind' — yoshi kichik (15 yosh) bo'lishiga qaramay, katta shuhrat qozongan va erta pishgan bola.",
+      "'Overtime' — futbol o'yinida durangdan keyin beriladigan qo'shimcha vaqt.",
+      "'Mundial' — sport saralashiga oid jahon chempionati.",
+      "'Smart-class' — yuqori sifatli ta'lim muassasasi yoki sinfi.",
+      "Matn tahlili tartibi: matn o'qish, asosiy g'oya tushunish, tayanch birliklar ajratish va hikoya qilish."
+    ],
+    "mistakes": [
+      "'Mundial'ni faqat sport bilan emas, boshqa sohalar bilan bog'lash. To'g'risi: 'Mundial' faqat sport (jahon chempionati) borasida ishlatiladi.",
+      "'Overtime'ni faqat ish vaqti deb tushunish. To'g'risi: Kontekstda 'overtime' sport natijasi (durangdan keyingi vaqt) bilan bog'liq.",
+      "Fakt va fikrni aralashtirish. To'g'risi: Voqealar va statistika fakt, muallif bahosi va sabab-oqibat tahlili fikr hisoblanadi."
+    ],
+    "mnemonics": [
+      "Faktni eslash: Voqea va statistika — fakt; Baholash va tahlil — fikr.",
+      "Matn algoritmi: O'qib tushun -> G'oyani top -> Birliklarni ajrat -> So'zlab ber."
+    ],
+    "source": "Malaka toifa imtihoni test izohlari",
+    "updatedAt": "2026-07-28"
+  },
+  "56": {
+    "summary": "Imlo va punktuatsiya qoidalari, jumladan, prefikslardan to'g'ri foydalanish, fonetik o'zgarishlar, tinish belgilari va nutq madaniyatiga oid bilimlarni o'z ichiga oladi. Imtihonda grammatik asos, ma'no munosabatlari va talaffuz xususiyatlariga asoslangan tahlil qilish ko'nikmalari tekshiriladi.",
+    "keyPoints": [
+      {
+        "t": "Prefikslar 'no' va 'be' farqi",
+        "d": "'No' prefiksi asosan 'anti', 'qarshi' ma'nosini bildiradi (masalan, nodemokratik). 'Be' prefiksi esa ma'no yo'qligini ifodalaydi. 'Nohalol' so'zi noto'g'ri, chunki 'halolsizlik' ma'nosida 'behalol' ishlatilishi kerak."
+      },
+      {
+        "t": "Fonetik o'zgarishlar turlari",
+        "d": "Tovushlar tushishi (qo'l -> qo'lyopma) va almashinishi (kitob -> kitobim) so'z yasalishida sodir bo'ladi. Tovush ortishi ham so'z boshi, ham o'rtasida bo'lishi mumkin. Bu o'zgarishlar imloga ta'sir qiladi."
+      },
+      {
+        "t": "Tinish belgilarini qo'yish tartibi",
+        "d": "Belgilarni qo'yishda avval grammatik asos, keyin ma'no munosabatlari, so'ng intonatsiya hisobga olinadi va nihoyat belgilar qo'yiladi. Bu tilshunoslikdagi standart tahlil tartibi hisoblanadi."
+      },
+      {
+        "t": "Tinish belgilarining vazifasi",
+        "d": "Tinish belgilari matn ma'nosini aniqlashtirish va hissiyotlarni ifodalash uchun zarur. Nuqtali vergul vergulga nisbatan uzoqroq to'xtash bildiradi. So'roq belgisi ba'zida undov ma'nosida ishlatilishi mumkin."
+      },
+      {
+        "t": "Qo'shma so'zlar va yozish qoidalari",
+        "d": "'Hamma' so'zi boshqa so'zlar bilan birikib, hammabop, hammaqabul kabi birlashib yoziladi. Oq-qora, sariq-qalam, bo'-yo'q kabi so'zlar ham qoidalarga mos yoziladi."
+      },
+      {
+        "t": "Qo'shimchalar vazifasi",
+        "d": "Qo'shimchalar yangi so'z yasash va grammatik shakl yaratish vazifasini bajaradi. Yasovchi qo'shimchalar so'z ma'nosini o'zgartirishi mumkin, ko'pchilik qo'shimchasi esa asosga bevosita qo'shiladi."
+      }
+    ],
+    "mustKnow": [
+      "Tinish belgilarini qo'yish tartibi: 1) Grammatik asos, 2) Ma'no munosabatlari, 3) Intonatsiya, 4) Belgilar qo'yiladi.",
+      "'No' prefiksi 'anti', 'qarshi' ma'nosida ishlatiladi (masalan, nodemokratik).",
+      "'Be' prefiksi ma'no yo'qligini bildiradi (masalan, behalol).",
+      "'Keltirmoq' so'zi fonetik qonunga ko'ra 'kelmoq' shaklida talaffuz qilinadi ('t' tovushi tushadi).",
+      "Nutq madaniyati — tildan vaziyatga mos foydalanish malakasi.",
+      "Manbada punktuatsiya 10 ta tinish belgisi sifatida keltirilgan.",
+      "Qo'shimchalar yangi so'z yasash va grammatik shakl yaratish vazifasini bajaradi."
+    ],
+    "mistakes": [
+      "'Nohalol' — noto'g'ri; to'g'ri varianti 'behalol'.",
+      "'Hammashta'lim' — noto'g'ri; to'g'ri varianti 'Hamma ta'lim' (yoki ma'nosiga qarab boshqa).",
+      "'Keltirmoq' — yozuvda to'g'ri bo'lsa-da, talaffuzda 'kelmoq' shaklida ishlatiladi."
+    ],
+    "mnemonics": [
+      "Prefiksni tanlash: 'No' — qarshi (nodemokratik), 'Be' — yo'q (behalol).",
+      "Tinish belgisi tartibi: Grammatik -> Ma'no -> Intonatsiya -> Belgi."
+    ],
+    "source": "Standart imlo lug'ati va tilshunoslikdagi standart tahlil tartibi",
+    "updatedAt": "2026-07-28"
+  },
+  "57": {
+    "summary": "Uslubiyat va nutq mavzusida so'z va qo'shimchalar ma'nolari, nutq uslublari hamda adabiyot turlari o'rganiladi. Imtihonda matn hajmi talablari, lirik asar tahlil tartibi va adabiyotning keng-tor ma'nolari kabi bilimlar tekshiriladi.",
+    "keyPoints": [
+      {
+        "t": "Hamza Hakimzoda hayoti",
+        "d": "Hamza Hakimzoda Niyoziy 1889–1929 yillarda yashab ijod qilgan. Bu sanalar XX asr boshlariga to'g'ri keladi."
+      },
+      {
+        "t": "Lirik asar tahlili",
+        "d": "Lirik asarni tahlil qilishda avval uning janri, keyin vazni, so'ng qofiyasi tahlil qilinadi va oxirida mazmuni hamda badiiy vositalari o'rganiladi."
+      },
+      {
+        "t": "Matn hajmi standarti",
+        "d": "Spetsifikatsiyaga ko'ra, ilmiy-ommabop va badiiy matnlar uchun belgilangan standart hajm 350-500 so'zni tashkil etadi."
+      },
+      {
+        "t": "Adabiy janrlar tasnifi",
+        "d": "Lirika inson ichki dunyosi va his-tuyg'ulariga xizmat qiladi, epika voqealarni hikoya qilishga, drama esa sahna harakati va dialog orqali ifodalanadi."
+      },
+      {
+        "t": "Keng ma'noda adabiyot",
+        "d": "Keng ma'noda adabiyot inson tafakkurining mahsuli bo'lgan har qanday yozma asarni, jumladan, ilmiy, siyosiy, memuar va ensiklopedik asarlarni o'z ichiga oladi."
+      },
+      {
+        "t": "Tor ma'noda adabiyot",
+        "d": "Tor ma'noda adabiyot faqat badiiy obrazlar orqali his-tuyg'ular ta'sir etish maqsadida yozilgan asarlarni, masalan, lirik she'rlarni anglatadi."
+      },
+      {
+        "t": "Badiiy adabiyot xususiyati",
+        "d": "Badiiy adabiyot san'atning boshqa turlariga qaraganda serqirra bo'lib, bu uning asosiy ifoda vositasi — so'zga bog'liqdir."
+      }
+    ],
+    "mustKnow": [
+      "Hamza Hakimzoda Niyoziyning tug'ilgan va vafot etgan yillari: 1889–1929.",
+      "Ilmiy-ommabop va badiiy matnlar uchun belgilangan standart hajm: 350-500 so'z.",
+      "Lirik asar tahlilining standart tartibi: janr, vazn, qofiya, mazmun va badiiy vositalar.",
+      "Keng ma'noda adabiyot — inson tafakkurining mahsuli bo'lgan har qanday yozma asar (memuar, tarixiy, ilmiy va boshqalar).",
+      "Tor ma'noda adabiyot — faqat badiiy asarlarni (masalan, lirik she'rlar) anglatadi."
+    ],
+    "mistakes": [
+      "Matn hajmini 280 so'z deb belgilash — to'g'ri talab 350-500 so'zni tashkil etadi.",
+      "'So'kim kelur' iborasini do'st haqida bevosita ma'noda tushuntirish — bu ibora o'lim yoki taqdir haqida majoziy ma'noda ishlatiladi.",
+      "Darslikni tor ma'nodagi badiiy adabiyot deb hisoblash — darslik ilmiy adabiyot bo'lib, keng ma'nodagi tushunchaga kiradi."
+    ],
+    "mnemonics": [
+      "Lirik asar tahlili tartibi: 'JaVQoMa' — **Ja**nr, **V**azn, **Q**ofiya, **Ma**zmun.",
+      "Adabiy turlar: 'Lirik — Ko'ngil, Epik — Voqea, Drama — Sahna'.",
+      "Adabiyot tushunchasi: 'Keng — Barcha yozma, Tor — Faqat badiiy'."
+    ],
+    "source": "Darslik va spetsifikatsiya talablari",
+    "updatedAt": "2026-07-28"
+  },
+  "58": {
+    "summary": "Mavzu til birliklarini fonetik, leksik, morfologik va sintaktik darajalarda chuqur tahlil qilishni o'z ichiga oladi. Imtihonda adabiy me'yor ta'rifi, uning xususiyatlari, fonetika asoslari hamda badiiy va oddiy nutqdagi takrorlar va ma'nodoshlik farqiga urg'u beriladi.",
+    "keyPoints": [
+      {
+        "t": "Adabiy me'yor ta'rifi",
+        "d": "Til qonuniyatlariga uyg'un, jamiyat taraqqiyotining ma'lum davrida barqarorlashgan ijtimoiy-nutqiy amaliyot va an'anaga asoslangan qoidalar."
+      },
+      {
+        "t": "Me'yorning ijtimoiyligi",
+        "d": "Adabiy me'yor shaxsiy xohish-irokka bog'liq emas, balki jamoatchilik tomonidan qabul qilingan qoidadir."
+      },
+      {
+        "t": "Me'yor turlari ro'yxati",
+        "d": "O'zbek adabiy tili uchun manbada 6 ta me'yor keltirilgan, jumladan, 1- leksik (so'z qo'llash) va 3- so'z yasalishi me'yorlari."
+      },
+      {
+        "t": "Fonetika fanining predmeti",
+        "d": "Tovushlarning tarkibi, o'zaro munosabati, urg'u va talaffuz qonuniyatlarini o'rganish fonetika faniga, shu asosda bajariladigan tahlil esa fonetik tahlilga xosdir."
+      },
+      {
+        "t": "Badiiy nutq va takrorlar",
+        "d": "Badiiy nutqda takrorlar (anafora, epifora) maqsadli qo'llanilib, ohangdorlikni ta'minlaydi."
+      },
+      {
+        "t": "Ma'nodoshlik darajalari",
+        "d": "Ma'nodoshlik faqat so'zlar doirasidagina emas, balki morfologik va sintaktik birliklar doirasida ham keng tarqalgan."
+      },
+      {
+        "t": "Me'yor va badiiylik",
+        "d": "Adabiy til me'yorlariga amal qilmaslik nutqning noto'g'ri tuzilishiga olib keladi, ammo badiiy adabiyotda estetik maqsad bilan chekinish mumkin."
+      }
+    ],
+    "mustKnow": [
+      "Adabiy me'yor — til qonuniyatlariga uyg'un, jamiyat taraqqiyotining muayyan davrida barqarorlashgan ijtimoiy-nutqiy amaliyot va an'anaga muvofiq foydalanish qoidalari.",
+      "O'zbek adabiy tili uchun manbada 6 ta me'yor keltirilgan, jumladan, 1- leksik (so'z qo'llash) va 3- so'z yasalishi me'yorlari.",
+      "Grafik belgilash va fonetik o'zgarish qonuniyatlari manbada alohida me'yor sifatida keltirilmagan.",
+      "Tovushlarning tarkibi, o'zaro munosabati, urg'u va talaffuz qonuniyatlarini o'rganish fonetika faniga xosdir.",
+      "Badiiy nutqda takrorlar (anafora, epifora) maqsadli qo'llanilib, ohangdorlikni ta'minlaydi.",
+      "Ma'nodoshlik so'zlar, morfologik va sintaktik birliklar doirasida ham kuzatiladi."
+    ],
+    "mistakes": [
+      "Adabiy me'yor shaxsiy xohish-irokka bog'liq deb hisoblash — noto'g'ri, u jamoatchilik tomonidan qabul qilingan qoidadir.",
+      "Ma'nodoshlik faqat so'zlar doirasida tarqalgan deb o'ylash — noto'g'ri, u morfologik va sintaktik birliklarda ham uchraydi.",
+      "Takrorlar har doim nutqning boyligini pasaytiradi deb umumlashtirish — noto'g'ri, badiiy nutqda ular maqsadli qo'llaniladi."
+    ],
+    "mnemonics": [
+      "Me'yor xususiyati: 'Jamiyat — Qabul, Shaxs — Xohish emas' (Me'yor shaxsiy emas, jamoaviydir).",
+      "Badiiy nutq: 'Takror = Maqsad' (Badiiy nutqda takrorlar kamchilik emas, balki maqsaddir).",
+      "Ma'nodoshlik: 'So'z, Morfema, Sintaksis' (Ma'nodoshlik uch darajada ham bo'ladi)."
+    ],
+    "source": "Malaka imtihoni test izohlari",
+    "updatedAt": "2026-07-28"
+  },
+  "59": {
+    "summary": "Badiiy matn tahlili, muallif uslubi va asar mazmunini aniqlash, shuningdek, qahramonlarning ruhiy holatini, guruh xarakterini va matn turlaridagi farqlarni baholashga oid mavzular.",
+    "keyPoints": [
+      {
+        "t": "Navoiy she'rlarining ustunligi",
+        "d": "Navoiy she'rlari o'zbek tilida yozilib, badiiyligi va mazmundorligi bilan Nizomiy, Sa'diy, Hofiz va Jomiy asarlaridan ustun turadi. Jomiyning fikricha, agar Navoiy forsiy tilida yozganda, ularning asarlari e'tibordan chiqib qolgan bo'lar edi."
+      },
+      {
+        "t": "Guruh qahramonlari xususiyati",
+        "d": "Adabiyotda guruh qahramonlari umumiy g'oya bilan birlashadi, ammo har bir a'zoning o'ziga xos qirrasi bo'lishi shart. Tirik qahramonlarning bir xil bo'lishi san'at qonunlariga zid hisoblanadi."
+      },
+      {
+        "t": "\"Din\" tushunchasining tarixiy mazmuni",
+        "d": "O'tmishda \"din\" so'zi qabilaviy urf-odat, qonun va siyosiy birlashuvni anglatgan. Bu ifoda sodiqlik va o'zaro munosabat sharti bo'lib, oddiy diniy aqidalar ziddiyatini emas."
+      },
+      {
+        "t": "Davlatchilik g'oyasi ifodasi",
+        "d": "\"Qoraxonning diniga kirish\" degani o'z davlatining mustaqilligini tan olish, uning qonun-qoidalariga bo'ysunish ma'nosini anglatadi. Bu oddiy diniy marosim emas, balki tarixiy davlatchilik g'oyasi bilan bog'liqdir."
+      },
+      {
+        "t": "Matn turlarining farqi",
+        "d": "Ma'lumotnoma matni ob'ektiv, obrazsiz va munosabat bildirmaydi. Ijodiy-tavsifiy matn esa muallif munosabatini bildiradi va badiiy vositalarga tayanadi, ilmiy dalillarga emas."
+      },
+      {
+        "t": "Salbiy qahramonlar tavsifi",
+        "d": "Kallar qabilasi vakillari o'z manfaatlarini umumiy vatanparvarlik g'oyasidan ustun qo'yadigan salbiy xarakterga ega. Ularning xarakterida xiyonat kabi salbiy tomonlar ham bor."
+      },
+      {
+        "t": "Mubolaga va qahramon holati",
+        "d": "Matnda qahramon holati mubolagali tasvirlanayotganda, bu uning o'sha paytdagi ruhiy holati va jasoratiga mos keladi. Mubolaga kuchsizlikni ko'rsatmaydi, balki voqeani ta'sirchan yetkazish vositasidir."
+      }
+    ],
+    "mustKnow": [
+      "Alisher Navoiyning she'rlari o'zbek tilida yozilib, badiiyligi va mazmundorligi bilan Nizomiy, Sa'diy, Hofiz va Jomiy asarlaridan ustun turgan.",
+      "Guruh qahramonlari umumiy g'oya bilan birlashadi, ammo har bir a'zoning o'ziga xos qirrasi bo'lishi shart; tirik qahramonlar bir xil bo'la olmaydi.",
+      "\"Qoraxonning diniga kirish\" ifodasi davlat mustaqilligini tan olish va uning qonunlariga bo'ysunish ma'nosini anglatadi.",
+      "Ma'lumotnoma matni ma'lumot beruvchi, ob'ektiv va obrazsiz bo'ladi, unda muallif munosabati bildirilmaydi.",
+      "Ijodiy-tavsifiy matn muallif o'z munosabatini bildiradi va badiiy vositalar qo'llanadi, ilmiy dalillarga emas, badiiy tasvirlarga tayanadi.",
+      "Matn g'oyasini tushunmasdan sarlavha tanlab bo'lmaydi; qahramon holati uning harakati va so'zlarida aks etadi."
+    ],
+    "mistakes": [
+      "Guruh qahramonlari bir xil xarakterga ega bo'lishi mumkin. -> Guruh qahramonlari umumiy g'oya bilan birlashadi, ammo har bir a'zoning o'ziga xos qirrasi bo'lishi shart.",
+      "\"Din\" so'zi faqat diniy aqidalar va marosimlarni anglatadi. -> O'tmishda \"din\" so'zi qabilaviy urf-odat, qonun va siyosiy birlashuvni, sodiqlik shartini anglatgan.",
+      "Ma'lumotnoma matnida muallif o'z munosabatini bildirishi mumkin. -> Ma'lumotnoma matnida munosabat bildirilmaydi, u ob'ektiv va obrazsiz bo'ladi.",
+      "Mubolaga san'atda qahramonning kuchsizligini ko'rsatish uchun ishlatiladi. -> Mubolaga qahramonning ruhiy holati va jasoratiga mos tarzda voqeani ta'sirchan yetkazish vositasidir."
+    ],
+    "mnemonics": [
+      "Navoiy ustunligi: Nizomiy, Sa'diy, Hofiz, Jomiy — Navoiy bularning hammasidan ustun, chunki u o'zbek tilida yozgan.",
+      "Matn turlari: Ma'lumotnoma — fakt va obyektivlik; Ijodiy — obraz va munosabat.",
+      "Qahramon tahlili: Harakat va so'zlar orqali ruhiy holatni top; guruhda umumiy g'oya bor, lekin yuzlar har xil."
+    ],
+    "source": "Darslik va attestatsiya talablari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "60": {
+    "summary": "Mavzu milliy adabiyot tarixining rivojlanish bosqichlari, og'zaki ijod va yozma adabiyot o'zaro bog'liqligi hamda adabiyot turlari va janrlarini o'z ichiga oladi. Imtihonda tarixiy ketma-ketlik va adabiyotning milliy ruhni saqlashdagi o'rni kuzatiladi.",
+    "keyPoints": [
+      {
+        "t": "Adabiyot tarixi bosqichlari",
+        "d": "Adabiyot tarixi Qadimiy turkiy yozma adabiyot (XI asr), O'zbek mumtoz adabiyoti (XV asr), Jadid adabiyoti (XX asr boshlari) va Mustaqillik davri (1991 yildan keyin) tartibida rivojlangan."
+      },
+      {
+        "t": "Og'zaki ijodning ahamiyati",
+        "d": "Og'zaki ijod har qanday yozma adabiyotga tayanch vazifasini bajargan va eng qadimiy shakl hisoblanadi."
+      },
+      {
+        "t": "Milliy adabiyotning vazifasi",
+        "d": "Milliy adabiyot madaniy darajani belgilaydi, milliy ruhni saqlashda tengsiz vosita hisoblanadi, adabiyoti bo'lmagan millat unutilib ketadi."
+      },
+      {
+        "t": "Adabiyot turlari va namunalar",
+        "d": "Lirik asarlar tuyg'ularni (Navoiy she'rlari), epik asarlar voqealarni (O'tgan kunlar, Shum bola), dramatik asarlar esa sahnadagi harakatni (Baysun) ifodalaydi."
+      },
+      {
+        "t": "Og'zaki va yozma farqi",
+        "d": "Og'zaki ijod muallifi noma'lum va og'zaki yaratiladi, yozma adabiyot esa muallifli va yozma shakldadir."
+      },
+      {
+        "t": "Turlar va janrlar nisbati",
+        "d": "Uchta asosiy adabiyot turi (lirik, epik, dramatik) mavjud bo'lib, ular o'z navbatida janrlarga ajraladi."
+      }
+    ],
+    "mustKnow": [
+      "Qadimiy turkiy yozma adabiyoti XI asrdan boshlangan.",
+      "O'zbek mumtoz adabiyoti XV asrdan boshlangan.",
+      "Jadid adabiyoti XX asr boshlarida vujudga kelgan.",
+      "Mustaqillik davri adabiyoti 1991 yildan keyin rivojlangan.",
+      "Nizomiy \"Mahzan ul-asror\" didaktik doston, Firdavsiy \"Shohnoma\" epik doston, Navoiy \"Xamsa\" lirik-epik asarlar majmuasidir.",
+      "Milliy adabiyot bo'limiga og'zaki ijod, she'riyat, nasr va dramaturgiya kiradi.",
+      "Og'zaki ijod og'zaki ravishda yaratiladi va uning muallifini aniqlab bo'lmaydi."
+    ],
+    "mistakes": [
+      "Adabiyot faqat bitta xalq uchun yopiq tizimdir — Adabiyot geografik chegarani bilmasligi sababli, faqat bitta xalq uchun yopiq tizim bo'la olmaydi.",
+      "Og'zaki ijod yozma adabiyotdan keyin paydo bo'lgan — Og'zaki ijod eng qadimiy shakl bo'lib, yozma adabiyotga tayanch vazifasini bajargan.",
+      "Adabiyot turlari maqsadiga qarab bo'linadi — Adabiyot turlari ifoda etadigan mazmuniga qarab bo'linadi."
+    ],
+    "mnemonics": [
+      "Tarixiy davrlar: Qo'ymoq (Qadimiy - O'zbek mumtoz - Jadid - Mustaqillik).",
+      "Adabiyot turlari: Lirik - Lazzat (tuyg'u), Epik - Voqea, Dramatik - Sahnada harakat.",
+      "Milliy adabiyot tarkibi: OSND (Og'zaki, She'riyat, Nasr, Dramaturgiya)."
+    ],
+    "source": "Malaka attestatsiya spetsifikatsiyasi asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "61": {
+    "summary": "Jahon adabiyoti tarixidagi eng mashhur epik, lirik va dramatik asarlar tahlili, adabiyotning milliy ruhni aks ettirishdagi o'rni hamda janrlarning o'ziga xos xususiyatlari bo'yicha tayyorgarlik.",
+    "keyPoints": [
+      {
+        "t": "Adabiyot va milliy ruh",
+        "d": "Adabiyot milliy ruhni aks ettiruvchi asosiy vosita hisoblanadi. Agar bir millatning adabiyoti bo'lmasa, u millat unutilib ketish xavfi ostida qoladi, chunki boshqa vosita unga teng kela olmaydi."
+      },
+      {
+        "t": "Adabiyotning chegarasi",
+        "d": "Adabiyot umuminsoniy his-tuyg'ularni aks ettirgani sababli geografik chegarani bilmaydi. U boshqa xalqlar uchun ham ma'naviy mulkka aylanishi va ularning hayotini tasvirlashi mumkin."
+      },
+      {
+        "t": "Shekspirning 'Hamlet'i",
+        "d": "Shekspirning 'Hamlet' asari feodal tuzum illatlarini fosh qiluvchi fojiaviy asardir. Asarda insonparvarlik g'oyalari ulug'lanadi va qahramonning ichki dunyosi psixologik jihatdan tahlil qilinadi."
+      },
+      {
+        "t": "Abdulla Qodiriy she'riyati",
+        "d": "Abdulla Qodiriy she'riyatida vatanparvarlik va g'urur kabi mavzular sodda, ta'sirchan va ommabop shaklda ifodalangan. Uning she'rlari murakkab shaklda emas, balki ma'rifiy-ijtimoiy yo'nalishda."
+      },
+      {
+        "t": "Adabiyotning tarbiyaviy roli",
+        "d": "Adabiyot inson ma'naviyatini tarbiyalash, urf-odatlarni tasvirlash va millatning madaniy darajasini belgilashda muhim rol o'ynaydi. U faqat zavq uchun emas, balki keng tarbiyaviy funksiyaga ega."
+      },
+      {
+        "t": "Bosqinchilik davrida adabiyot",
+        "d": "Bosqinchilik sharoitida ham adabiyot millatning ma'naviy merosini va o'zligini saqlab qoluvchi asosiy kuch sifatida qaraladi. Tarixiy yozish yoki til o'rganishi bu jihatda adabiyotga teng kelmaydi."
+      },
+      {
+        "t": "Og'zaki ijod va janrlar",
+        "d": "Eng qadimiy shakl sifatida og'zaki ijod ta'kidlangan. Adabiyot faqat yozma nutq bilan cheklanib qolmaydi, balki og'zaki an'analar hamda inson ruhiyatini aks ettiruvchi keng ko'lamli hodisadir."
+      }
+    ],
+    "mustKnow": [
+      "Lirik tur: tuyg'ularni ifodalashga xizmat qiladi (masalan, Navoiy g'azallari).",
+      "Epik tur: voqealarni hikoya qilishga xizmat qiladi (masalan, 'O'tkan kunlar', 'Lison ut-tayr').",
+      "Dramatik tur: obrazlar harakatini sahnada ko'rsatish orqali ifodalaydi (masalan, 'Padarkush').",
+      "Abdulla Qodiriy she'riyati: shakli jihatdan sodda, ommabop va ma'rifiy-ijtimoiy yo'nalishda.",
+      "Adabiyotning o'ziga xosligi: milliy ruhni saqlab qolishda boshqa vosita badiiy adabiyotga teng kela olmaydi."
+    ],
+    "mistakes": [
+      "Xato: 'Hamlet' asari komediya yoki xursandchilik bilan tugaydigan asardir. To'g'ri: 'Hamlet' fojiaviy (tragediya) asar bo'lib, unga komik intrigalar xos emas.",
+      "Xato: Adabiyot faqat o'z hududi yoki millati uchun xizmat qiladi. To'g'ri: Adabiyot geografik chegarani bilmaydi va umuminsoniy his-tuyg'ular sababli boshqa xalqlar uchun ham ma'naviy mulkka aylanadi.",
+      "Xato: 'Shum bola' asari dramatik turdagi asardir. To'g'ri: 'Shum bola' epik (nasriy) asar bo'lib, dramatik turga kirmaydi.",
+      "Xato: Tarixiy yozish yoki iqtisodiy rivojlanish millatning unutilmasligiga kafolat bo'ladi. To'g'ri: Adabiyoti bo'lmagan millat unutilib ketadi, chunki milliy ruhni saqlab qolishda boshqa vosita badiiy adabiyotga teng kela olmaydi."
+    ],
+    "mnemonics": [
+      "Lirik — his (men), Epik — voqea (sodir bo'ldi), Dramatik — harakat (sahna).",
+      "Adabiyot yo'q — millat yo'q."
+    ],
+    "source": "Malaka toifa attestatsiya imtihoni test izohlari",
+    "updatedAt": "2026-07-28"
+  },
+  "62": {
+    "summary": "Pedagogik mahorat, ona tili va adabiyot o'qitish metodikasi hamda umumiy pedagogika asoslari. Imtihonda o'qituvchining kasb standarti, darsni tashkil etish hujjatlari, o'quvchilarga differensial yondashuv va zamonaviy pedagogik texnologiyalarni bilishiga urg'u beriladi.",
+    "keyPoints": [
+      {
+        "t": "Induksiya va deduksiya metodi",
+        "d": "Induksiya yakka ob'ektlarni o'rganib umumiy qoida chiqarishga, deduksiya esa qoidadan misolga o'tishga asoslanadi. O'qituvchi avval misolni ko'rsatib, keyin qoidani chiqarishini so'rashi induksiya metodidir."
+      },
+      {
+        "t": "Differensial yondashuv tamoyili",
+        "d": "Iqtidorli o'quvchilar potensialini rivojlantirish uchun ularga standart topshiriqdan qiyinroq va chuqurroq tahlil talab etuvchi vazifalar beriladi. Tenglashtirish imkoniyatlarni cheklaydi."
+      },
+      {
+        "t": "O'qituvchining zarur bilimlari",
+        "d": "O'z fanini o'qitish metodikasi, samarali usullar va standartlarni bilishi hamda ularni amaliyotda qo'llashi talab etiladi. Psixologiya, texnika yoki moliya bilimlari bevosita o'qitish metodikasi emas."
+      },
+      {
+        "t": "Teskari loyihalash bosqichlari",
+        "d": "Avval natijani (standartlar) belgilash, keyin shu natijani qanday tekshirishni (baholash) aniqlash, so'ng o'quvchining qanday ko'nikmalarga ega bo'lishi kerakligini va oxirida o'zi jarayonni rejalashtirishdan iborat."
+      },
+      {
+        "t": "Faoliyatni tashkil etish hujjatlari",
+        "d": "O'qituvchining faoliyatini tashkil etishidagi asosiy hujjatlar davlat ta'lim standartlari va asosiy umumta'lim dasturidir. Metodik qo'llanma yordamchi vosita hisoblanadi."
+      },
+      {
+        "t": "Integrativ yondashuv usuli",
+        "d": "Tarixiy-biografik kontekst muallif niyatini tushuntiradi, matniy tahlil esa asarning ichki qonuniyatlarini ochadi. Ikkovini birlashtirish adabiyotshunoslikda eng samarali usuldir."
+      },
+      {
+        "t": "Adabiy texnikalar va san'at",
+        "d": "Adabiy texnikalar o'rganiladigan qonuniyatlar bo'lsa, san'at ularni o'ziga xos tarzda qo'llab, yangi estetik hodisa yaratish qobiliyatida namoyon bo'ladi."
+      }
+    ],
+    "mustKnow": [
+      "Induksiya metodi — yakka ob'ektlar va hodisalarni o'rganish natijasida umumiy qoida yoki qonuniyatni chiqarishga asoslanadi.",
+      "Deduksiya metodi — umumiy qoidadan boshlab, aniq misollarga o'tish usuli.",
+      "Teskari loyihalash tartibi: natijani belgilash, baholashni aniqlash, ko'nikmalarni belgilash va jarayonni rejalashtirish.",
+      "O'qituvchining asosiy pedagogik kompetensiyasi — o'z fanining metodikasi, nazariyalari va davlat standartlarini chuqur bilish.",
+      "Integrativ yondashuv — tarixiy-biografik kontekst va matniy tahlilni birlashtirish orqali muallif niyatini va asarning ichki qonuniyatlarini ochish.",
+      "Rejalashtirish standartlar asosida o'tadi va maqsadlar o'lchanadigan bo'lishi kerak."
+    ],
+    "mistakes": [
+      "Xato: Faqat bilimli o'quvchilarni so'rash va oilaviy holat asosida o'tirish. To'g'ri: Har bir fikrni qadrlash va barchaga so'zga chiqish imkoniyatini yaratish.",
+      "Xato: Psixologiya, texnika yoki moliya bilimlarini o'qitish metodikasi deb hisoblash. To'g'ri: O'qituvchining zarur bilimlari faqat o'z fanini o'qitish metodikasi, usullari va standartlaridan iborat.",
+      "Xato: Rejalashtirishda shaxsiy xohishni maqsadga qo'yish. To'g'ri: Rejalashtirish standartlar asosida o'tadi va maqsadlar o'lchanadigan bo'lishi kerak."
+    ],
+    "mnemonics": [
+      "Induksiya: 'Misol — Qoida' (avval misol, keyin qoida).",
+      "Teskari loyihalash: 'Natija — Baholash — Ko'nikma — Reja' (N-B-K-R).",
+      "Asosiy hujjatlar: 'Standart va Dastur' (S-D)."
+    ],
+    "source": "O'qituvchining kasb standarti va Davlat ta'lim standartlari",
+    "updatedAt": "2026-07-28"
+  }
+}

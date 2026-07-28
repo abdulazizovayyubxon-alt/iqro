@@ -78,7 +78,13 @@ export async function enablePush(user) {
     const token = await getToken(messaging, { vapidKey: VAPID_KEY, serviceWorkerRegistration: swReg });
     if (!token) return { ok: false, reason: 'no_token' };
 
-    await updateDoc(doc(db, 'users', user.uid), { fcmTokens: arrayUnion(token) });
+    // `pushLang` — server tomonda eslatma matnini to'g'ri tilda yozish uchun
+    // (api/cron-reminder.js). Boshqa joyda foydalanuvchi tili saqlanmaydi.
+    let pushLang = 'uz';
+    try {
+      pushLang = (localStorage.getItem('i18nextLng') || 'uz').slice(0, 2);
+    } catch { /* private rejim — zaxira 'uz' */ }
+    await updateDoc(doc(db, 'users', user.uid), { fcmTokens: arrayUnion(token), pushLang });
     localStorage.setItem('iqro_push_token', token);
     return { ok: true, token };
   } catch (e) {

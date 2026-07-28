@@ -1,0 +1,393 @@
+{
+  "63": {
+    "summary": "Maktabgacha pedagogika va bolaning yosh/individual rivojlanish bosqichlari, 1-2 yoshdagi buyumlar bilan faoliyat, sensor rivojlanish tartibi va o'yin muhitining shakllanishiga oid asosiy tamoyillar.",
+    "keyPoints": [
+      {
+        "t": "Rivojlanish omillari",
+        "d": "Hayotning dastlabki yillarida rivojlanish irsiy zamin va taqlid qilishga bog'liq. Tarbiyachining yo'l-yo'rikli tadqiqot faoliyati va ko'rsatmalari muhim ahamiyatga ega."
+      },
+      {
+        "t": "1-2 yosh faoliyati",
+        "d": "1-2 yoshda asosiy faoliyat buyumlar bilan bog'liq faoliyat va kattalar bilan tadqiqotdir. Bu faoliyat orqali bilish jarayonlari, maqsadlar va xulq-atvor sabablari rivojlanadi."
+      },
+      {
+        "t": "2.5 yosh o'tishi",
+        "d": "2.5 yoshga kelib buyumlar bilan bog'liq faoliyat yuqori darajaga chiqadi. Bu o'yin va tasviriy faoliyatga o'tish uchun zamin yaratadi."
+      },
+      {
+        "t": "Sensor rivojlanish",
+        "d": "Sensor rivojlanish kattalikni solishtirishdan boshlanib, asosiy ranglar va shakllarni o'zlashtirish, shakl o'zgarishi va oxirida nuanslarni farqlash bilan davom etadi."
+      },
+      {
+        "t": "O'yin vujudga kelishi",
+        "d": "O'yin faoliyati odamlar hayotida ishtirok etish ehtiyoji bilan bu intilishni amalga oshirish imkoniyatlari o'rtasidagi ziddiyatdan vujudga keladi."
+      },
+      {
+        "t": "Nutq va ehtiyoj",
+        "d": "Nutq rivojlanishi muomalada va faoliyatda sodir bo'ladi. Buyumlar bilan faoliyat bola uchun zarur ehtiyojga aylanadi."
+      }
+    ],
+    "mustKnow": [
+      "1-2 yoshda asosiy faoliyat — buyumlar bilan bog'liq faoliyat va kattalar bilan tadqiqot",
+      "2.5 yoshda buyumlar bilan bog'liq faoliyat yuqori darajaga chiqadi",
+      "1,5-2 yoshda bola predmetning rang va shakl kabi xususiyatlarini o'rganishi muhim",
+      "Mustaqil ixtiro 1.5 yoshda xarakterli emas",
+      "O'quv faoliyati maktab yoshidan boshlab yetakchi o'rin tutadi",
+      "Sensor rivojlanish kattalikni solishtirish bilan boshlanadi"
+    ],
+    "mistakes": [
+      "Mustaqil ixtiro 1.5 yoshda xarakterli — noto'g'ri; to'g'risi: mustaqil ixtiro 1.5 yoshda xarakterli emas",
+      "Buyumlar bilan bog'liq faoliyat katta yoshlarga xos — noto'g'ri; to'g'risi: hayotning dastlabki yillarida (0-2 yosh) asosiy hisoblanadi",
+      "Rivojlanish faqat biologik qonuniyatlarga bo'ysunadi — noto'g'ri; to'g'risi: rivojlanish faqat biologik qonuniyatlarga bo'ysunmaydi"
+    ],
+    "mnemonics": [
+      "Sensor rivojlanish tartibi: Kattalik (solishtirish) -> Asosiy ranglar/shakllar -> Shakl o'zgarishi -> Nuanslar",
+      "Faoliyat evolyutsiyasi: 1-2 yosh (buyumlar) -> 2.5 yosh (yuqori daraja) -> O'yin/Tasviriy"
+    ],
+    "source": "Mavzu bo'yicha manbalar",
+    "updatedAt": "2026-07-28"
+  },
+  "64": {
+    "summary": "Tarbiyaviy yo'nalishlar (iqtisodiy, huquqiy, ekologik, estetik) mazmuni va kun tartibi elementlarining mantiqiy ketma-ketligi, shuningdek 5-6 yoshli bolalar uchun fiziologik ehtiyoj — uyqu rejimini o'rganish.",
+    "keyPoints": [
+      {
+        "t": "Iqtisodiy tarbiya vazifalari",
+        "d": "Moddiy boyliklarga ehtiyotkorlik, iste'mol madaniyatini o'rgatish va muassasa jihozlarining iqtisodiy jihatlarini anglashni o'z ichiga oladi."
+      },
+      {
+        "t": "Huquqiy va ekologik tarbiya",
+        "d": "Huquqiy tarbiya qonunlarni o'rgatishga, ekologik tarbiya esa tabiatni muhofaza qilishga vijdonan munosabatni shakllantirishga qaratilgan."
+      },
+      {
+        "t": "Kun tartibi ketma-ketligi",
+        "d": "Bolalar kelgach avval qabul qilish va o'yin, keyin gigiyena, so'ng mashg'ulotlar va nonushta o'tkazilishi maqbul hisoblanadi."
+      },
+      {
+        "t": "Estetik va jismoniy tarbiya",
+        "d": "Estetik tarbiya go'zallikni his etish va didni tarbiyalashga, jismoniy tarbiya esa sog'lom hayot tarziga xizmat qiladi."
+      },
+      {
+        "t": "5-6 yoshlilar uchun uyqu",
+        "d": "Tushlikdan keyin 1,5-2,0 soatlik uyqu nerv sistemasini tiklash va organizm rivojlanishi uchun fiziologik jihatdan zarurdir."
+      },
+      {
+        "t": "Mehnat va siyosiy tarbiya",
+        "d": "Mehnat tarbiyasi mehnat ko'nikmalarini, siyosiy tarbiya esa jamiyat hayotidagi hodisalarga munosabatni shakllantirish bilan bog'liq."
+      }
+    ],
+    "mustKnow": [
+      "5-6 yoshli bolalar uchun tushlikdan keyingi uyqu muddati 1,5-2,0 soatni tashkil etadi.",
+      "Iqtisodiy tarbiya muassasa faoliyatini yo'lga qo'yish, binolar qurish va ularni zamonaviy texnologiyalar bilan jihozlashning iqtisodiy jihatlarini anglashga xizmat qiladi.",
+      "Estetik tarbiya shaxs tomonidan go'zallikni his etishi, unga intilishi va estetik didining tarbiyalashiga qaratilgan jarayondir.",
+      "Ekologik tarbiya atrof-muhitni muhofaza qilish va tabiatga vijdonan munosabatda bo'lishni tarbiyalash mazmunini ifodalaydi.",
+      "Kun tartibida mantiqiy ketma-ketlik: kelish -> gigiyena -> mashg'ulot -> nonushta yoki kelish -> nonushta -> mashg'ulot."
+    ],
+    "mistakes": [
+      "Estetik tarbiya faqat rasm chizish bilan cheklanadi deb hisoblash. To'g'ri shakli: Estetik tarbiya go'zallikni his etish, unga intilish va didni tarbiyalashni o'z ichiga oladi.",
+      "5-6 yoshli bolalar uchun tushlikdan keyingi uyqu muhim emas deb qarash. To'g'ri shakli: Uyqu muddati qisqartirilganda bolalar tez charchaydi va xulqi o'zgaradi, chunki bu nerv sistemasini tiklash uchun zarur."
+    ],
+    "mnemonics": [
+      "Iqtisodiy tarbiya: 'Resurslar va jihozlar' — suv, elektrni tejash va muassasa jihozlarining iqtisodiy jihatlarini anglash.",
+      "Kun tartibi: 'KGMN' — Kelish -> Gigiyena -> Mashg'ulot -> Nonushta (mantiqiy ketma-ketlik)."
+    ],
+    "source": "Manba ma'lumotlari",
+    "updatedAt": "2026-07-28"
+  },
+  "65": {
+    "summary": "MTTda ta'lim-tarbiya jarayonlariga metodik rahbarlik, monitoring va diagnostika tizimlari, shuningdek, pedagoglarning faoliyatini nazorat qilish va baholash usullari ko'rib chiqiladi.",
+    "keyPoints": [
+      {
+        "t": "Muqobil ta'lim shakllari",
+        "d": "Qisqa muddatli guruhlar ota-onalar ehtiyojini qondirishga qaratilgan bo'lib, ular maktabgacha ta'limning moslashuvchan muqobil shakllaridir."
+      },
+      {
+        "t": "Amaliy faoliyat ustunligi",
+        "d": "3-4 yoshli bolalar bilan ishlashda amaliy faoliyat (kuylash, harakat) nazariy tushuntirishdan ustun turadi, chunki ko'p so'z diqqatni yo'qotadi."
+      },
+      {
+        "t": "Monitoring tizimi",
+        "d": "Monitoring pedagogik faoliyat mazmunini uzluksiz kuzatish, tahlil qilish va uning rivojlanish istiqbollarini oldindan aytib beruvchi mexanizmdir."
+      },
+      {
+        "t": "Ochiq mashg'ulot tahlili",
+        "d": "Ochiq mashg'ulotlarni jamoa tarzida ko'rish pedagogni baholash emas, balki uning faoliyatidagi ijobiy va salbiy tomonlarni metodik jihatdan tahlil qilishdir."
+      },
+      {
+        "t": "Maqsadli kirish shakli",
+        "d": "Guruhlarga maqsadli kirish rahbarning hujjatlarni emas, balki pedagogik jarayonni tabiatda to'g'ridan-to'g'ri o'rganish va amaliy vaziyatni baholash shaklidir."
+      },
+      {
+        "t": "Pedagogik diagnostika",
+        "d": "Diagnostika bolaning individual xususiyatlari va rivojlanish istiqbollarini aniqlashga, shuningdek, individual ta'lim jarayonini belgilashga xizmat qiladi."
+      }
+    ],
+    "mustKnow": [
+      "Diagnostika davlat talablariga muvofiq o'quv yilining o'rtasida va oxirida amalga oshiriladi.",
+      "Monitoring tizimi pedagogik faoliyat mazmunini uzluksiz kuzatib borish va rivojlantirishni oldindan bilishni ta'minlovchi pedagogik tizim sifatida ta'riflanadi.",
+      "Diagnostika yunoncha 'bilish, aniqlash' degan ma'noni anglatadi.",
+      "Qiyosiy nazorat pedagoglarning ishini bir-biri bilan solishtirish va bir xil mavzular bo'yicha o'tkazilgan mashg'ulotlar sifatini taqqoslash orqali baholashni nazarda tutadi.",
+      "Kundalik nazorat kundalik ishlarning tartibga solinishiga qaratilgan bo'lib, chuqur tahlilni talab qilmaydi.",
+      "Tematik nazorat ma'lum bir mavzu yoki masala bo'yicha pedagoglarni chuqurroq o'rganishni o'z ichiga oladi."
+    ],
+    "mistakes": [
+      "Xato: Monitoring faqat chorak oxirida amalga oshiriladi. To'g'ri: Monitoring uzluksiz kuzatuv tizimi bo'lib, chorak oxirida bilan cheklanmaydi.",
+      "Xato: Ochiq mashg'ulotlarda pedagogning mehnatini baholash vazifasi turadi. To'g'ri: Ochiq mashg'ulotlarda pedagogning faoliyatidagi ijobiy va salbiy tomonlarni metodik jihatdan tahlil qilish vazifasi turadi.",
+      "Xato: Diagnostika o'quv yilining boshida amalga oshiriladi. To'g'ri: Diagnostika o'quv yilining o'rtasida va oxirida amalga oshiriladi."
+    ],
+    "mnemonics": [
+      "MONITORING: M — Mavjud holatni uzluksiz kuzatish, O — Oldindan prognozlash, N — Natijalarni tahlil qilish.",
+      "DIAGNOSTIKA: D — Davlat talablariga muvofiq (o'rtasi va oxiri), I — Individual xususiyatlarni aniqlash.",
+      "KONTROL TURLARI: K — Kundalik (rejim), T — Tematik (chuqur tahlil), Q — Qiyosiy (solishtirish)."
+    ],
+    "source": "Metodik qo'llanma va tavsiyalar",
+    "updatedAt": "2026-07-28"
+  },
+  "66": {
+    "summary": "Mazkur mavzu pedagog kadrlar malakasini oshirish, kasbiy standartlarni joriy etish, shuningdek turli yoshdagi bolalar guruhlari uchun pedagogik va tibbiy yig'ilishlarni tashkil etish muddatlari va tartibiga bag'ishlangan.",
+    "keyPoints": [
+      {
+        "t": "1-2 yosh guruhlari yig'ilishlari",
+        "d": "1 yoshdan 2 yoshgacha bo'lgan guruhlarda pedagogik va tibbiy-pedagogik yig'ilishlar har oyda o'tkazilishi shart."
+      },
+      {
+        "t": "2-3 yosh guruhlari yig'ilishlari",
+        "d": "2 yoshdan 3 yoshgacha bo'lgan guruhlarda yig'ilishlar bolalar rivojlanishining dinamikasi va o'ziga xos xususiyatlariga ko'ra har chorakda 1 marta tashkil etiladi."
+      },
+      {
+        "t": "Tibbiyot xodimlari ishtiroki",
+        "d": "1-2 yosh guruhlari yig'ilishlarida bolalar rivojlanishining jismoniy-fiziologik va ruhiy jihatlarini muhokama qilish uchun shifokor va katta hamshira ham ishtirok etadi."
+      },
+      {
+        "t": "Innovatsiyalarni joriy etish",
+        "d": "Innovatsiyani joriy etish standart tartibda amalga oshadi: avval axborot tahlil qilinadi, so'ng mos texnologiya tanlanadi, keyin amaliyotga joriy etiladi va nihoyat, natijalar umumlashtiriladi."
+      },
+      {
+        "t": "Xorijiy o'qituvchilar bilan seminarlar",
+        "d": "Xorijiy o'qituvchilar bilan o'tkaziladigan seminarlar qisqa muddatli tarzda tashkil etiladi."
+      },
+      {
+        "t": "Kompetentlikning mazmuni",
+        "d": "Kompetentlik nazariyada emas, balki amaliyotda namoyon bo'ladi. Standartlarni hayotga tatbiq etish va mahoratni oshirish to'g'ri mulohazalardir."
+      }
+    ],
+    "mustKnow": [
+      "1 yoshdan 2 yoshgacha bo'lgan guruhlarda yig'ilishlar muddati: har oyda.",
+      "2 yoshdan 3 yoshgacha bo'lgan guruhlarda yig'ilishlar muddati: har chorakda 1 marta.",
+      "1-2 yosh guruhlari yig'ilishlarida majburiy ishtirokchilar: shifokor va katta hamshira.",
+      "Innovatsiyalarni joriy etish bosqichlari ketma-ketligi: axborot tahlili (2), texnologiya tanlash (4), joriy etish (1), umumlashtirish (3).",
+      "Xorijiy o'qituvchilar bilan seminarlar turi: qisqa muddatli."
+    ],
+    "mistakes": [
+      "Xato: 1-2 yosh guruhlari uchun yig'ilishlarni chorakda bir marta o'tkazish rejasini tuzish. To'g'ri: bu guruh uchun har oyda o'tkazish belgilangan.",
+      "Xato: Kompetentlikni faqat nazariy bilimlar bilan cheklash. To'g'ri: kompetentlik amaliyotda namoyon bo'ladi."
+    ],
+    "mnemonics": [
+      "\"Kichiklar tez-tez, kattalar kamroq\": 1-2 yosh (har oyda), 2-3 yosh (har chorakda).",
+      "\"Tashkil etish tartibi\": Tahlil -> Tanlash -> Tatbiq -> Umumlashtirish."
+    ],
+    "source": "Manba va normalarga ko'ra",
+    "updatedAt": "2026-07-28"
+  },
+  "67": {
+    "summary": "Mavzu maktabgacha ta'lim sohasidagi asosiy me'yoriy-huquqiy hujjatlarning qabul qilinish sanalari va funksiyalarini o'z ichiga oladi. Imtihonda qonunlar, konsepsiya, nizom va 'Ilkqadam' dasturining tarixiy rivojlanish bosqichlari hamda ularning huquqiy ahamiyati kuzatiladi.",
+    "keyPoints": [
+      {
+        "t": "Ta'lim to'g'risida qonun",
+        "d": "1997 yilda qabul qilingan bo'lib, ta'lim tizimidagi umumiy qoidalarni belgilaydi va Kadrlar tayyorlash milliy dasturi bilan bir yilga to'g'ri keladi."
+      },
+      {
+        "t": "Maktabgacha ta'lim konsepsiyasi",
+        "d": "2008 yilda qabul qilingan, 2011 yilda tahrir qilingan. U ta'lim tizimini tubdan o'zgartirishga yo'naltirilgan nazariy asos bo'lib xizmat qiladi."
+      },
+      {
+        "t": "Muassasalar to'g'risida nizom",
+        "d": "2017 yilda qabul qilingan. Bu hujjat muassasaning maqomi, tuzilishi, huquq va majburiyatlari hamda ishlash tartibi kabi tashkiliy-huquqiy masalalarni tartibga soladi."
+      },
+      {
+        "t": "Ilkqadam dasturi va talablar",
+        "d": "2018 yilda qabul qilingan. 'Ilkqadam' o'quv dasturi mazmuniy yondashuvni ifodalaydi, Davlat talablari esa bolalar rivojlanishiga qo'yiladigan talablarni belgilaydi."
+      },
+      {
+        "t": "Hujjatlarning rivojlanish bosqichlari",
+        "d": "Me'yoriy hujjatlar 1997, 2008, 2017 va 2018 yillarda ketma-ket qabul qilingan bo'lib, bu sohadagi huquqiy normalarning rivojlanish bosqichlarini aks ettiradi."
+      }
+    ],
+    "mustKnow": [
+      "\"Ta'lim to'g'risida\"gi Qonun 1997 yilda qabul qilingan.",
+      "\"Maktabgacha ta'lim to'g'risida\"gi Konsepsiya 2008 yilda qabul qilingan va 2011 yilda tahrir qilingan.",
+      "\"Maktabgacha ta'lim muassasalari to'g'risida\"gi Nizom 2017 yilda qabul qilingan.",
+      "\"Ilkqadam\" o'quv dasturi va Davlat talablari 2018 yilda qabul qilingan.",
+      "Kadrlar tayyorlash milliy dasturi 1997 yilga tegishli.",
+      "Nizom muassasa tuzilmasi, huquq va majburiyatlarini belgilaydigan asosiy me'yoriy-huquqiy hujjatdir."
+    ],
+    "mistakes": [
+      "Xato: 'Ilkqadam' dasturi 2017 yilda qabul qilingan. To'g'ri: 'Ilkqadam' dasturi 2018 yilda qabul qilingan.",
+      "Xato: Konsepsiya muassasa ishlash tartibini tartibga soladi. To'g'ri: Konsepsiya nazariy asos bo'lib xizmat qiladi, ishlash tartibini Nizom belgilaydi."
+    ],
+    "mnemonics": [
+      "97-08-17-18: Qonun (97), Konsepsiya (08), Nizom (17), Ilkqadam (18) sanalarini eslash uchun.",
+      "QKNM: Qonun (Qoida), Konsepsiya (Nazariy), Nizom (Nizom/Tartib), Mazmun (Ilkqadam)."
+    ],
+    "source": "\"Ta'lim to'g'risida\"gi Qonun, \"Maktabgacha ta'lim to'g'risida\"gi Konsepsiya, \"Maktabgacha ta'lim muassasalari to'g'risida\"gi Nizom, \"Ilkqadam\" dasturi",
+    "updatedAt": "2026-07-28"
+  },
+  "68": {
+    "summary": "MTTda jamoatchilik boshqaruvi, Kuzatuv kengashi faoliyati va uning vakolatlari, shuningdek ma'muriy xo'jalik ishlarini tashkil etish va maktab bilan hamkorlik qilish mavzusi bo'yicha imtihonga tayyorlov.",
+    "keyPoints": [
+      {
+        "t": "Kengash vakolatlari manbai",
+        "d": "Kuzatuv kengashi va Pedagoglar kengashi a'zolarini saylash tartibi hamda vakolatlari faqat maktabgacha ta'lim muassasasining Ustavida belgilanadi."
+      },
+      {
+        "t": "Ma'muriy xo'jalik faoliyati",
+        "d": "Bolalarni ovqatlantirish, sog'lomlashtirish mezonlarini tashkil etish, xodimlarni joylashtirish va xarajatlarni o'z vaqtida ishlatish ma'muriy xo'jalik faoliyatiga kiradi."
+      },
+      {
+        "t": "Ovqatlanish sifatini nazorat",
+        "d": "Kuzatuv kengashi ota-onalar vakillarini kiritib, ovqatlanish sifatini ochiq-oshkora kuzatishni tashkil etadi, bu esa ishonchni tiklaydi."
+      },
+      {
+        "t": "Maktab bilan bir yillik reja",
+        "d": "Kuzatuv kengashi qo'shni maktab bilan bir yillik reja asosida ish ko'radi, bu reja bolani maktabga tayyorlash va lotin alifbosini o'rganishni o'z ichiga oladi."
+      },
+      {
+        "t": "Vazifalarning taqsimlanishi",
+        "d": "O'quv-metodik boshqaruv Pedagoglar kengashiga, ma'muriy xo'jalik va moliyaviy nazorat esa Kuzatuv kengashiga tegishli."
+      },
+      {
+        "t": "Metodika kabineti vazifasi",
+        "d": "Metodika kabineti 'yasli', aralash guruhlar va bolalar soni kam bo'lgan muassasalar faoliyatini ilmiy-uslubiy jihatdan tashkil etishga javob beradi."
+      }
+    ],
+    "mustKnow": [
+      "MTT ichidagi ovqatlantirish, xodimlarni joylashtirish va sog'lomlashtirish mezonlari tashkilotning Ustavi va ichki nizomlari bilan tartibga solinadi.",
+      "Ma'muriy xo'jalik faoliyatiga bolalarni joylashtirish, xarajatlarni o'z vaqtida ishlatish, ovqatlantirish, sog'lomlashtirish mezonlarini tashkil etish kiradi.",
+      "Kuzatuv kengashi qo'shni maktab bilan bir yillik reja asosida ish ko'radi.",
+      "Bir yillik hamkorlik rejasida bolani maktab ta'limiga tayyorlash va lotin alifbosida o'qish va yozishni o'rganish vazifalari bajariladi.",
+      "Metodika kabineti 'yasli va aralash guruhlarda, shuningdek, bolalar soni kam bo'lgan muassasalar faoliyatini ilmiy-uslubiy jihatdan tashkil etish' masalalariga javob beradi."
+    ],
+    "mistakes": [
+      "Xato: Mehnat va Fuqarolik kodekslari MTTdagi ovqatlantirish va joylashtirish mezonlarini batafsil tartibga soladi. To'g'ri: Bu mezonlar tashkilotning Ustavi va ichki nizomlari bilan tartibga solinadi.",
+      "Xato: Ovqatlantirish va sog'lomlashtirish ixtiyoriy yoki ota-onalar mablag'isiz olib borilishi mumkin. To'g'ri: Bu jarayonlar belgilangan mezonlar asosida standartga muvofiq olib borilishi kerak.",
+      "Xato: Kuzatuv kengashi tuman metodika kabinetining 5 yillik rejasini tasdiqlaydi. To'g'ri: Kengash qo'shni maktab bilan bir yillik hamkorlik rejasini tuzadi.",
+      "Xato: Pedagoglar kengashi ma'muriy xo'jalik faoliyatini boshqaradi. To'g'ri: Pedagoglar kengashi o'quv-metodik ishlar bilan shug'ullanadi."
+    ],
+    "mnemonics": [
+      "Ustav - Asos: Kengashlar uchun asosiy qonun — bu muassasa Ustavi.",
+      "Kuzatuv - Pul-Ovqat: Kuzatuv kengashi pul va ovqatni, Pedagoglar kengashi esa dars va tarbiyani nazorat qiladi."
+    ],
+    "source": "MTT Ustavi va ichki nizomlari",
+    "updatedAt": "2026-07-28"
+  },
+  "69": {
+    "summary": "Mavzu pedagoglarning ish hujjatlarini yuritish, diagnostika o'tkazish va rivojlantiruvchi muhitni oqilona tashkil qilishni o'z ichiga oladi. Imtihonda hujjatlar o'zaro mosligi va muhit talablariga urg'u beriladi.",
+    "keyPoints": [
+      {
+        "t": "Hujjatlar vazifasi",
+        "d": "Guruh davomat daftari kelib-ketishni, ish jurnali bajarilgan ishni, kalendar reja ta'lim mazmunini aks ettiradi."
+      },
+      {
+        "t": "Ish jurnali talabi",
+        "d": "Kalendar rejadagi tadbirlar o'tkazilgach, ularning natijalari ish jurnalida qayd etilishi va tahlil qilinishi shart."
+      },
+      {
+        "t": "Diagnostika maqsadi",
+        "d": "Diagnostika yil o'rtasi va oxirida o'tkazilib, bolaning individual xususiyatlari va istiqbollarini aniqlashga xizmat qiladi."
+      },
+      {
+        "t": "Ichki nazorat",
+        "d": "Asosiy maqsad kamchiliklarni aniqlash va ularni bartaraf etish yo'llarini topish, pedagogik kengashda metodik muhokama qilishdir."
+      },
+      {
+        "t": "Muhit tashkili",
+        "d": "Muhit bolalar uchun qulay, xavfsiz bo'lishi hamda materiallar ortiqcha yoki kam bo'lmasligi kerak."
+      },
+      {
+        "t": "Polifunksionallik",
+        "d": "Material va jihozlar turli vazifalarda ishlatilishi, faqat bitta maqsad uchun xizmat qilmasligi lozim."
+      },
+      {
+        "t": "Reja asosi",
+        "d": "Kalendar reja davlat talablari va dastur asosida tuziladi, ozod tarzda emas."
+      }
+    ],
+    "mustKnow": [
+      "Diagnostika yil o'rtasi va oxirida o'tkaziladi.",
+      "Davomat daftari bolalarning muassasaga kelib-ketishini kundalik hisobga olish uchun mo'ljallangan asosiy hujjatdir.",
+      "Ish jurnali pedagogik faoliyatning kundalik hisobi bo'lib, kalendar rejada belgilangan barcha tadbirlar natijalari qayd etiladi.",
+      "Diagnostikaning asosiy vazifasi bolaning individual xususiyatlari va istiqbollarini aniqlashdan iborat.",
+      "Polifunksionallik deganda material va jihozlarning turli vazifalarda ishlatilishi nazarda tutiladi.",
+      "Hisobotlar pedagogik jarayonning barcha tomonlarini qamrab olishi kerak.",
+      "Oqilona tashkil etish talabi muhitning bolalar uchun qulay va xavfsiz bo'lishini taqozo etadi."
+    ],
+    "mistakes": [
+      "Xato: Kalendar reja o'qituvchining xohishiga ko'ra ozod tarzda tuziladi. To'g'ri: Kalendar reja davlat talablari va dastur asosida tuziladi.",
+      "Xato: Diagnostika faqat bilimni baholash uchun o'tkaziladi. To'g'ri: Diagnostika rivojlanishni qamrab oladi va individual xususiyatlarni aniqlashga xizmat qiladi.",
+      "Xato: Ichki nazorat natijasida birinchi navbatda intizomiy choralar ko'riladi. To'g'ri: Kamchiliklarni bartaraf etish yo'llarini topish va metodik muhokama qilish talab etiladi."
+    ],
+    "mnemonics": [
+      "Hujjatlar: Davomat (kelish-ketish), Kalendar reja (mazmun), Ish jurnali (natija).",
+      "Muhit: Oqilona (qulaylik), Polifunksional (ko'p vazifa), Xavfsizlik."
+    ],
+    "source": "MTT va ta'lim dasturi talablari",
+    "updatedAt": "2026-07-28"
+  },
+  "70": {
+    "summary": "Pedagogik mahorat imtihonida o'qituvchining rejalashtirish, baholash, o'z-o'zini rivojlantirish va bolalar huquqlariga oid bilimlari hamda zamonaviy dars tashkil etish ko'nikmalari tekshiriladi.",
+    "keyPoints": [
+      {
+        "t": "Rejalashtirish va baholash",
+        "d": "Baholash natijalari asosida rejalarni muvozanatlashtirish shart. Nutq kamchiliklari uchun reja tarkibiga tegishli tadbirlar kiritiladi."
+      },
+      {
+        "t": "Bolalar huquqlari",
+        "d": "O'qituvchi uchun 'Bola huquqlari to'g'risidagi xalqaro konvensiya nizomlarini' bilish zarur. Bu hujjatda bola huquqlarining to'liq nizomlari jamlangan."
+      },
+      {
+        "t": "Mantiqiy usullar",
+        "d": "Induksiya — yakka hodisalardan umumiy qoida chiqarish. Deduksiya esa avval qoida, keyin misol keltirishdan iborat."
+      },
+      {
+        "t": "O'z-o'zini rivojlantirish",
+        "d": "Refleksiya qilish hamda kuchli va kuchsiz tomonlarni aniqlash 'Zarur bilimlar' sifatida talab etiladi. Tashqi omillarga bog'liqlik noto'g'ri yondashuv."
+      },
+      {
+        "t": "Dasturni moslashtirish",
+        "d": "Rejalashtirishning asosi — dasturni o'quvchilarning individual ehtiyojlari va qiziqishlariga moslashtirishdan iborat."
+      },
+      {
+        "t": "Metodik bilimlar",
+        "d": "Metodik bilimlar va standartlar ta'lim jarayonini sifatli tashkil etish imkonini beradi, bu esa bilim natijadorligiga ta'sir qiladi."
+      },
+      {
+        "t": "Samarali dars rejas",
+        "d": "Maqsadlar aniq va o'lchamli bo'lishi, shuningdek, zamonaviy texnologiyalar (AKT) integratsiyasi zarur."
+      },
+      {
+        "t": "Xavfsiz muhit",
+        "d": "Mojarolarni qonuniy va odob-axloqqa mos hal qilish, tenglik va xavfsizlikni ta'minlash orqali qo'llab-quvvatlovchi muhit yaratiladi."
+      }
+    ],
+    "mustKnow": [
+      "Induksiya — bu yakka (partikulyar) hodisalarni kuzatish asosida umumiy qoida yoki qonuniyatni chiqarish jarayoni.",
+      "Deduksiya — bu avval qoida aytilib, keyin misollar keltiriladigan jarayon.",
+      "O'qituvchining zarur bilimlari uning o'z fanini o'qitish metodikasi, nazariyalari, samarali usullari va standartlarini o'z ichiga oladi.",
+      "Tushunarlilik tamoyili ma'lumotlarni bolalar yoshi va bilim darajasiga mos tarzda yetkazishni talab qiladi.",
+      "O'quv jarayonini rejalashtirishning asosiy qismi o'quv dasturini o'quvchilarning individual ehtiyojlari va qiziqishlariga moslashtirishdan iborat.",
+      "Bola huquqlari to'g'risidagi xalqaro konvensiya nizomlarini bilish pedagog uchun zarur hisoblanadi."
+    ],
+    "mistakes": [
+      "4-5 yoshli bolalarga murakkab terminlar yetkazish -> Tushunarlilik tamoyiliga rioya qilib, ma'lumotni yoshi va bilim darajasiga mos yetkazish",
+      "Faqat taqdimot va tarqatma materiallardan foydalanish -> O'quvchilarning faol ishtirokini ta'minlaydigan metodlar (muhokama, loyiha, o'yin)ni qo'llash",
+      "Rejalashtirishda faqat dasturga rioya qilish -> Dasturni o'quvchilarning individual ehtiyojlari va qiziqishlariga moslashtirish",
+      "O'z-o'zini rivojlantirishni attestatsiyani kutish deb tushunish -> Refleksiya qilish hamda kuchli va kuchsiz tomonlarni aniqlash"
+    ],
+    "mnemonics": [
+      "Induksiya: Individualdan umumiyga (misollar -> qoida)",
+      "Dars reja elementlari: MAQT (Maqsadlar aniq, AKT integratsiyasi, Qiziqishlar moslash, Tenglik)",
+      "Pedagog bilimlar: MNS (Metodika, Nazariyalar, Standartlar)"
+    ],
+    "source": "Kasb standarti, Bola huquqlari to'g'risidagi xalqaro konvensiya, O'qituvchilik faoliyati spetsifikatsiyasi",
+    "updatedAt": "2026-07-28"
+  }
+}

@@ -1,0 +1,501 @@
+{
+  "87": {
+    "summary": "Mavzu geografik qobiqning tuzilishi, xususiyatlari va Yerning aylanish qonuniyatlarini o'z ichiga oladi. Imtihonda qobiqning bir butunligi, modda-energiya almashinuvi, geografik koordinatalar bo'yicha hisob-kitoblar hamda geografik fanlarning tasnifiga e'tibor beriladi.",
+    "keyPoints": [
+      {
+        "t": "Yerning aylanish tezligi",
+        "d": "Yer o'qi atrofida sutka davomida bir marta aylanadi. Ekvatorda aylanish radiusi eng katta bo'lgani uchun chiziqli tezlik ham eng yuqori (1670 km/soat) bo'ladi, qutblarga yaqinlashgani sari pasayadi."
+      },
+      {
+        "t": "Tezlikning kenglikka bog'liqligi",
+        "d": "Aylanish tezligi kenglik kosinusiga proportsional. Masalan, 60° kenglikda cos 60° = 0.5 bo'lgani uchun tezlik 1670 * 0.5 = 835 km/soatni tashkil etadi."
+      },
+      {
+        "t": "Geografik qobiq tarkibi",
+        "d": "Geografik qobiq atmosfera, litosfera, gidrosfera va tirik organizmlarni o'z ichiga olgan bir butun sistemadir. Uning tarkibiy qismlari o'zaro bog'liq va mustaqil emas."
+      },
+      {
+        "t": "Qobiqning asosiy xususiyatlari",
+        "d": "Geografik qobiq bir butunlik sifatida rivojlanadi, uning tarkibiy qismlari o'rtasida modda va energiya almashinuvi doimo yuz beradi va rivojlanishda ritmiklik kuzatiladi."
+      },
+      {
+        "t": "Geografik fanlarning tasnifi",
+        "d": "Iqtisodiy geografiya ijtimoiy geografik fanlarga kiradi. Landshaftshunoslik, biogeografiya va iqlimologiya tabiat qonuniyatlarini o'rganganligi sababli tabiiy geografik fanlardir."
+      },
+      {
+        "t": "Kenglik bo'yicha masofa",
+        "d": "Har bir geografik kenglik gradusi taxminan 111 km ga teng. Masalan, 55° va 40° kenglik orasidagi masofa 15 gradusga teng bo'lib, bu 1665 km ni tashkil qiladi."
+      },
+      {
+        "t": "Aylanishlar va oqibatlari",
+        "d": "O'qi atrofida aylanish kun-tun o'zgarishini beradi. Quyosh atrofida aylanish yil davomini belgilaydi, fasllar o'zgarishiga esa o'q og'ichligi sabab bo'ladi."
+      }
+    ],
+    "mustKnow": [
+      "Yerning ekvatordagi aylanish tezligi taxminan 1670 km/soat.",
+      "Har bir geografik kenglik gradusi taxminan 111 km ga teng.",
+      "60° kenglikdagi aylanish tezligi 835 km/soat (1670 ning yarmi).",
+      "Geografik qobiq — bu tabiat sferalarining o'zaro bog'langan bir butun sistemasidir.",
+      "Modda va energiya almashinishi geografik qobiq rivojlanishining dvigateli hisoblanadi.",
+      "O'qi atrofida aylanish kun-tun o'zgarishini beradi.",
+      "Fasllar o'zgarishiga asosan Yer o'qining og'ichligi sabab bo'ladi.",
+      "Landshaftshunoslik, biogeografiya va iqlimologiya tabiiy geografik fanlardir."
+    ],
+    "mistakes": [
+      "Xato: Geografik qobiq tarkibiy qismlari bir-biridan mustaqildir. To'g'ri: Tarkibiy qismlar o'zaro bog'liq va mustaqil emas.",
+      "Xato: Iqtisodiy geografiya faqat iqtisodiy qonunlarga tayanadi. To'g'ri: Iqtisodiy geografiya tabiiy sharoitlarni hisobga olishi shart.",
+      "Xato: Geografik qobiqda jarayonlar tasodifiy sodir bo'ladi. To'g'ri: Jarayonlar qonuniyatli asosda sodir bo'ladi.",
+      "Xato: Geografik qobiq faqat tirik organizmlardan iborat. To'g'ri: Qobiq atmosfera, litosfera, gidrosfera va tirik organizmlarni o'z ichiga oladi."
+    ],
+    "mnemonics": [
+      "Tezlik qoidasi: Ekvator — Eng katta (1670), Qutb — Nol. Kenglik oshgani sayin tezlik kamayadi.",
+      "Fanlar guruhi: Iqtisodiy -> Ijtimoiy (Inson). Tabiat -> Tabiiy (Landshaft, Bio, Iqlim).",
+      "Qobiq xususiyatlari: BUTLE (Bir butunlik, Tuzilish, Litmiklik, Energiya almashinuvi)."
+    ],
+    "source": "Tasdiqlangan test izohlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "88": {
+    "summary": "Materiklar va okeanlar tabiiy geografiyasi geografik qobiqning o'zaro bog'liqligi va moddalar aylanishiga, shuningdek, quruqlikning relyef tuzilishiga bag'ishlangan. Imtihonda atmosfera va gidrosfera moddalarining yangilanish tezligi hamda tog'lar va tekisliklarning foizdagi nisbati kabi faktlarga e'tibor beriladi.",
+    "keyPoints": [
+      {
+        "t": "Moddalar aylanishi tezligi",
+        "d": "Atmosferadagi namlik 10 kunda, okean suvi esa 3000 yilda yangilanadi. Bu geografik qobiq qismlarining dinamikasidagi farqni ko'rsatadi."
+      },
+      {
+        "t": "Qobiqlar o'zaro bog'liqligi",
+        "d": "Suv barcha komponentlar bilan bog'liq bo'lib, moddalar almashinuvi qobiq shakllanishida muhim ahamiyatga ega."
+      },
+      {
+        "t": "Quruqlikning relyef tuzilishi",
+        "d": "Tog'lar quruqlikning 40 foizini, tekisliklar esa 60 foizini egallaydi."
+      },
+      {
+        "t": "Tog'larning balandlik tasnifi",
+        "d": "1000-2000 metr o'rtacha tog'lar, 3000 metrdan yuqorisi esa baland tog'lar hisoblanadi."
+      },
+      {
+        "t": "Past joylarning turlari",
+        "d": "Dengiz sathidan past joylar cho'kmalar va botiqlar deb ataladi."
+      },
+      {
+        "t": "Qirlar balandligi",
+        "d": "200-500 metr oraliqdagi hududlar qirlar sanaladi."
+      }
+    ],
+    "mustKnow": [
+      "Atmosferadagi namlikning to'liq yangilanish muddati 10 kunni tashkil etadi.",
+      "Okean suvlarining to'liq yangilanish muddati 3000 yilga teng.",
+      "Tog'lar quruqlikning 40 foizini, tekisliklar 60 foizini egallaydi.",
+      "1000-2000 metr balandlikdagi tog'lar o'rtacha tog'lar deb hisoblanadi.",
+      "3000 metrdan yuqori balandlikdagi tog'lar baland tog'lar deb ataladi.",
+      "200-500 metr balandlikdagi hududlar qirlar hisoblanadi."
+    ],
+    "mistakes": [
+      "Okean suvi atmosfera namligidan tez yangilanadi. To'g'ri: Okean suvi 3000 yilda, atmosfera namligi esa 10 kunda yangilanadi.",
+      "Tog'lar quruqlikning ko'p qismini egallaydi. To'g'ri: Tog'lar quruqlikning 40 foizini, tekisliklar 60 foizini egallaydi.",
+      "2000 metrdan yuqorisi baland tog'lar hisoblanadi. To'g'ri: 3000 metrdan yuqorisi baland tog'lar hisoblanadi."
+    ],
+    "mnemonics": [
+      "A (Atmosfera) - 10 kun, O (Okean) - 3000 yil.",
+      "Qirlar (200-500), O'rtacha (1000-2000), Baland (3000+).",
+      "Tog'lar 40% (To'rt), Tekisliklar 60% (Olti)."
+    ],
+    "source": "Geografik qobiq yaxlitlik qonuniyati va moddalar aylanishi tezligi haqidagi darslik ma'lumotlari",
+    "updatedAt": "2026-07-28"
+  },
+  "89": {
+    "summary": "O'rta Osiyo va O'zbekiston tabiiy geografiyasining geografik o'rni, relyefi, foydali qazilmalari, iqlimi va ichki suvlari xususiyatlariga, shuningdek balandlik mintaqalanishi qonuniyatlariga e'tibor beriladi.",
+    "keyPoints": [
+      {
+        "t": "Balandlik mintaqalanishi qonuni",
+        "d": "Balandlikka ko'tarilgan sari yer yuzasi, iqlim, suv, tuproq va o'simliklar bir-biri bilan bog'liq holda o'zgarib boradi. Harorat tushadi, yog'in miqdori ma'lum balandlikgacha ortadi, tuproq va o'simlik qoplami zonalar bo'yicha almashinadi."
+      },
+      {
+        "t": "Landshaftlarning vertikal almashinuvi",
+        "d": "Pastki qismdan yuqoriga cho'l va yarim cho'l (500-1000m), keng bargli o'rmonlar va butalar (1000-2500m), subalp va alp o'tloqlari (2500-3500m), nival zonalari (3500mdan yuqori) almashinadi."
+      },
+      {
+        "t": "Geologik tuzilish va foydali qazilmalar",
+        "d": "G'arbiy qism (Turon plitasi) qadimgi platforma bo'lib, neft va gaz konlariga boy. Sharqiy qism yosh burmali tog' zonasi bo'lib, magmatik jarayonlar tufayli rangli va qora metall konlariga boy."
+      },
+      {
+        "t": "O'rta Osiyo daryolarining xususiyatlari",
+        "d": "Sirdaryo va Amudaryo asosan tog'lardagi muzlik va qorlardan oziqlanadi. Yozda erigan suvlar tufayli selse suv toshadi, suvlarining bir qismi sug'orishga sarflanib, Orol dengiziga yetib bormaydi."
+      },
+      {
+        "t": "Iqlim shakllanish omillari",
+        "d": "O'rta Osiyo okeanlardan uzoqda joylashgani sababli kontinental iqlim shakllangan. Yozda tropik havo massalari hududga kirib kelib, issiq va quruq ob-havo keltiradi."
+      },
+      {
+        "t": "Tuproq va o'simliklar",
+        "d": "Asosiy tuproq turlari bo'z va qo'ng'ir tuproqlardir. Quruq iqlim o'simliklarning siyraklashishiga olib keladi. Daryolar ichki oqimga ega bo'lib, okeanga quyilmaydi."
+      }
+    ],
+    "mustKnow": [
+      "Har 100 metr balandlikka ko'tarilganda harorat o'rtacha 0,6°C ga pasayadi.",
+      "Cho'l va yarim cho'l zonalari 500-1000 metr balandlik orasida joylashadi.",
+      "Keng bargli o'rmonlar va butalar 1000-2500 metr, subalp va alp o'tloqlari 2500-3500 metr balandlikda uchraydi.",
+      "Nival (muzlik) zonalari 3500 metrdan yuqori balandliklarda shakllanadi.",
+      "O'rta Osiyo g'arbiy qismi neft va gazga, sharqiy qismi rangli va qora metall konlariga boy.",
+      "Hayvonlarning himoya rangi va tungi hayot tarzi tabiiy tanlanish va muhit sharoitlariga moslashish natijasidir."
+    ],
+    "mistakes": [
+      "Balandlikka ko'tarilgan sari atmosfera bosimi ortadi deb hisoblash — to'g'ri emas, bosim pasayadi.",
+      "Quyosh radiatsiyasi balandlikka ko'tarilgan sari kamayadi deyish — xato, toza havoda radiatsiya ortadi.",
+      "O'rta Osiyo daryolari okeana quyiladi deyish — noto'g'ri, ular ichki oqimga ega (Orol dengizi havzasi)."
+    ],
+    "mnemonics": [
+      "Balandlik tartibi: Cho'l (past) -> O'rmon -> O'tloq -> Muzlik (baland).",
+      "G'arb — Neft/Gaz (cho'l), Sharq — Metall (tog')."
+    ],
+    "source": "O'rta Osiyo va O'zbekiston tabiiy geografiyasi bo'yicha attestatsiya imtihoni izohlari",
+    "updatedAt": "2026-07-28"
+  },
+  "90": {
+    "summary": "O'zbekiston iqtisodiyoti tarkibida sanoat va qishloq xo'jaligi ulushlarining 1995-2016 yillar orasidagi o'zgarishlari hamda mashinasozlikning yetakchi tarmoqqa aylanishi ko'rib chiqiladi.",
+    "keyPoints": [
+      {
+        "t": "Sanoat ulushi o'sishi",
+        "d": "1995-yilda sanoat ulushi 17,1 foizni tashkil etgan bo'lsa, 2014-yilga kelib bu ko'rsatkich 26 foizgacha ko'tarildi."
+      },
+      {
+        "t": "Qishloq xo'jaligi pasayishi",
+        "d": "Qishloq xo'jaligi ulushi 1995-yildagi 28,1 foizdan 2014-yilda 17,6 foizgacha pasayib, sanoat salmoqlining oshishini ko'rsatdi."
+      },
+      {
+        "t": "Mashinasozlik yetakchiligi",
+        "d": "2000-yildan boshlab qayta ishlash tarmoqlari tez o'sa boshladi va 2016-yilda mashinasozlik 20 foiz ulush bilan yetakchi o'ringa chiqdi."
+      },
+      {
+        "t": "Tarmoqlar joylashuvi",
+        "d": "Neftni qayta ishlash zavodlari Farg'ona va Oltiariqda joylashgan. Yengil va oziq-ovqat sanoati qishloq xo'jaligi negizida rivojlangan."
+      },
+      {
+        "t": "Hududning tuzilishi",
+        "d": "Mamlakat hududining 21,3 foizi tog'lar va tog' oralig'idagi botiqlardan iborat, qolgan 78,7 foizi tekisliklardir."
+      }
+    ],
+    "mustKnow": [
+      "1995-yilda sanoat ulushi 17,1 foiz, qishloq xo'jaligi ulushi 28,1 foiz bo'lgan.",
+      "2014-yilda sanoat ulushi 26 foizga, qishloq xo'jaligi ulushi 17,6 foizga tushgan.",
+      "2016-yilda mashinasozlik 20 foiz ulush bilan sanoat tarkibida yetakchi o'ringa chiqqan.",
+      "Yengil sanoat ulushi 3 barobar kamaygan.",
+      "Neftni qayta ishlash zavodlari Farg'ona va Oltiariqda joylashgan.",
+      "Mamlakat hududining 21,3 foizi tog'lar va tog' oralig'idagi botiqlardan iborat."
+    ],
+    "mistakes": [
+      "2014-yilda qishloq xo'jaligi ulushi 28,1 foiz bo'lgan deb hisoblash (To'g'risi: 17,6 foiz).",
+      "Mashinasozlik 1995-yilda yetakchi bo'lgan deb hisoblash (To'g'risi: 2016-yilda 20 foiz bilan yetakchi).",
+      "Tog'lar hududning ko'p qismini egallagan deb o'ylash (To'g'risi: 21,3 foiz)."
+    ],
+    "mnemonics": [
+      "1995-17-1 (Sanoat), 2014-26 (Sanoat o'sdi).",
+      "2016-20 (Mashinasozlik yetakchi).",
+      "21-3 (Tog'lar ulushi)."
+    ],
+    "source": "O'zbekiston iqtisodiy va ijtimoiy geografiyasi o'quv materiallari",
+    "updatedAt": "2026-07-28"
+  },
+  "91": {
+    "summary": "Mavzu jahon iqtisodiy geografiyasiga oid bo'lib, imtihonda atrof-muhit ifloslanish manbalari, transportning ulushi va foiz hisoblash masalalariga e'tibor beriladi.",
+    "keyPoints": [
+      {
+        "t": "Umumiy ifloslanish hajmi",
+        "d": "Barcha manbalardan chiqadigan chiqindi miqdori 2000 tonnani tashkil etadi. Bu hisob-kitoblar uchun asosiy son hisoblanadi."
+      },
+      {
+        "t": "Transportning hissasi",
+        "d": "Transport manbai 1300,1 tonna ifloslanish oqibatini beradi. Bu miqdor boshqa manbalarga nisbatan yuqori ko'rsatkichdir."
+      },
+      {
+        "t": "Foizni hisoblash",
+        "d": "Transport ulushini aniqlash uchun 1300,1 ni 2000 ga bo'lish kerak. Natija 0,65005 yoki 65,005 foizni tashkil etadi."
+      },
+      {
+        "t": "Asosiy manba",
+        "d": "Transport ifloslanishning 65 foizdan ortig'ini tashkil qilgani uchun, u asosiy ifloslantiruvchi manba sifatida qaraladi."
+      },
+      {
+        "t": "Qolgan manbalar ulushi",
+        "d": "Umumiy hajmdan transport hissasini (699,9 tonna) ayirganda, qolgan manbalar ulushi transportnikidan ancha past ekanligi ma'lum bo'ladi."
+      },
+      {
+        "t": "Xulosa qoidasi",
+        "d": "Agar bir manba umumiy hajmning yarmidan ko'pini (50% dan ortiq) tashkil etsa, u asosiy manba hisoblanadi."
+      }
+    ],
+    "mustKnow": [
+      "Umumiy ifloslanish miqdori 2000 tonnani tashkil etadi.",
+      "Transport tomonidan chiqarilgan ifloslanish 1300,1 tonnaga teng.",
+      "Transportning umumiy ifloslanishdagi ulushi 65,005 foizni tashkil etadi.",
+      "Transport ifloslanishning asosiy manbai hisoblanadi.",
+      "Qolgan barcha manbalar ulushi 699,9 tonnani tashkil qiladi."
+    ],
+    "mistakes": [
+      "Transport ulushi 50 foizdan deb hisoblash - to'g'ri: 65,005 foiz.",
+      "Boshqa manbalar asosiy ekanligini taxmin qilish - to'g'ri: transport asosiy manba.",
+      "Umumiy hajmni 1300,1 tonna deb belgilash - to'g'ri: umumiy hajm 2000 tonna."
+    ],
+    "mnemonics": [
+      "1300 dan 2000 gacha bo'lgan nisbat 65 foizni anglatadi.",
+      "Transport - bu 65% - eng katta ifloslantiruvchi.",
+      "Yarmini ortig'i (50%+) degan shuni anglatadiki, transport yetakchidir."
+    ],
+    "source": "Tasdiqlangan test izohlari",
+    "updatedAt": "2026-07-28"
+  },
+  "92": {
+    "summary": "Mavzu jamiyat va tabiat o'rtasidagi munosabatlarni, geosiyosiy tuzilmani, migratsiya jarayonlarini hamda global ekologik muammolarning geografik tahlilini o'z ichiga oladi. Imtihonda geosiyosat asoslari, antropogen landshaftlar va tabiiy ofatlarning migratsiyaga ta'siri kabi masalalarga urg'u beriladi.",
+    "keyPoints": [
+      {
+        "t": "Davlat migratsiya siyosati",
+        "d": "Davlatlar manfaatiga ko'ra migratsiya oqimlarini qonunlar orqali tartibga soladi va mehnat migratsiyasi orqali iqtisodiyotga yordam beradi. Majburiy migratsiya holatlarida davlatlar o'zaro hamkorlik qiladi."
+      },
+      {
+        "t": "Geosiyosat obyekti va predmeti",
+        "d": "Geosiyosat obyekti dunyoning geosiyosiy tuzilishi, predmeti esa ijtimoiy-siyosiy jarayonlarning yuzaga kelishi va o'zgarib borishini tahlil qilishdir. Bu tabiiy geografiya yoki harbiy strategiyadan farq qiladi."
+      },
+      {
+        "t": "Geografik baholash va prognoz",
+        "d": "Geografik baholash hududning maqsadlarga mosligini belgilaydi. Geografik prognoz esa kelajakdagi holatni bashorat qiladi. Tabiiy geografik jarayonlar tabiat qonuniyatlarini o'rganadi."
+      },
+      {
+        "t": "Global muammolarning sabablari",
+        "d": "Iqlim o'zgarishi va okean sathining ko'tarilishi asosan inson faoliyatining (antropogen) tabiatga salbiy ta'siri natijasida yuzaga keladi. Tektonika va gravitatsiya bevosita sabab bo'lmaydi."
+      },
+      {
+        "t": "Antropogen landshaftlar",
+        "d": "Antropogen landshaftlar inson faoliyati natijasida vujudga keladi va sun'iy o'zgartiriladi. Ekin maydonlari va shaharlar bunga misoldir. Qirg'oq bo'yi qumliklari esa asosan tabiiy landshaft hisoblanadi."
+      },
+      {
+        "t": "Migratsiya turlari va o'choqlari",
+        "d": "Majburiy migratsiya tabiiy ofatlar va urushlar tufayli sodir bo'ladi. Odamlar ketgan joy emigratsiya, kiruvchi odamlar ko'p bo'lgan joy immigratsiya o'chog'idir. Geosiyosiy vaziyat ham migratsiyaga ta'sir qiladi."
+      }
+    ],
+    "mustKnow": [
+      "\"Geosiyosat\" tushunchasini birinchi marta shvetsiyalik olim Rudolf Chellen kiritgan.",
+      "Ilmiy manbalarda geosiyosat fanining \"otasi\" sifatida nemis olimi Fridrix Ratsel nomi qayd etiladi.",
+      "Majburiy migratsiya tabiiy ofatlar va urushlar tufayli sodir bo'ladi.",
+      "Emigratsiya o'chogi — odamlar ketgan joy.",
+      "Antropogen landshaftlar inson faoliyati natijasida vujudga keladi va tabiiy yo'l bilan emas, balki sun'iy o'zgartiriladi.",
+      "Geografik baholash hududning maqsadlarga mosligini belgilaydi."
+    ],
+    "mistakes": [
+      "Xato: Geosiyosat fanining \"otasi\" deb Rudolf Chellenni ko'rsatish. To'g'ri: Atamani Chellen kiritgan, lekin fan \"otasi\" Fridrix Ratseldir.",
+      "Xato: Iqlim o'zgarishi va okean sathining ko'tarilishini tektonika va gravitatsiya bilan bog'lash. To'g'ri: Bu jarayonlar asosan inson faoliyatining (antropogen) salbiy ta'siri natijasidir.",
+      "Xato: Qirg'oq bo'yi qumliklarini antropogen landshaft deb hisoblash. To'g'ri: Ular asosan tabiiy landshaft, antropogen misollar esa ekin maydonlari va shaharlardir."
+    ],
+    "mnemonics": [
+      "Chellen va Ratsel: **Ch**ellen — **Ch**alg'ish (atama muallifi), **R**atsel — **R**ahbar (fan otasi).",
+      "Migratsiya: **E**migratsiya — **E**tibor ber chiqib ketayotgan (Exit), **I**mmigratsiya — **I**chiga kirayotgan (Input)."
+    ],
+    "source": "Malaka imtihoni test izohlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "93": {
+    "summary": "Geografik masalalarni yechish bo'yicha tayyorlov materiali, masshtab, balandlik, bosim, nishablik va aholi zichligini hisoblash, shuningdek tabiiy ritmlar va ularning davomiyligini o'z ichiga oladi.",
+    "keyPoints": [
+      {
+        "t": "Masshtab va masofa hisobi",
+        "d": "Masshtab 1:50 000 bo'lsa, xaritadagi 1 sm haqiqatda 500 m (0,5 km) ga teng. Masofani topish uchun xaritadagi sm sonini 500 m ga ko'paytirish kerak."
+      },
+      {
+        "t": "Atmosfera bosimi va balandlik",
+        "d": "Balandlikka ko'tarilgan sari atmosfera bosimi kamayadi. Odatda, har 100 metr balandlikda bosim 10-12 mm sim. ust. ga kamayadi."
+      },
+      {
+        "t": "Daryo nishabligini topish",
+        "d": "Daryo nishabligini topish uchun balandliklar farqini uzunlikka bo'lamiz. Bu daryo oqimining har bir kilometriga to'g'ri keladigan o'rtacha pastlanishini ko'rsatadi."
+      },
+      {
+        "t": "Aholi sonining o'zgarishi",
+        "d": "Umumiy o'zgarish (Tug'ilish - O'lim) va (Ko'chib kelish - Ko'chib ketish) yig'indisiga teng. Boshlang'ich aholi soniga bu ko'rsatkich qo'shiladi."
+      },
+      {
+        "t": "Yillik ritm va fasllar",
+        "d": "Yillik ritm fasllar almashinishiga sabab bo'ladi. Bu Yerning Quyosh atrofidagi harakati va o'qining 66,5° og'ishi bilan bog'liq."
+      },
+      {
+        "t": "Quyosh faolligi sikllari",
+        "d": "11 yillik sikl Quyosh faolligi bilan bog'liq. Epidemiyalar, qurg'oqchiliklar va zararkunanda hasharotlar ko'payishi shu siklga taalluqli."
+      },
+      {
+        "t": "Ko'p asrlik ritmlar",
+        "d": "1800-2000 yillik ritm osmon jismlarining bir xatda joylashishi va qalqish kuchlari bilan bog'liq. Materik qiyofasi o'zgarishi ham shu siklga mos keladi."
+      }
+    ],
+    "mustKnow": [
+      "Har 100 metr balandlikda atmosfera bosimi 10-12 mm sim. ust. ga kamayadi.",
+      "Dengiz suvining o'rtacha sho'rlanishi 3,5 foizni tashkil qiladi.",
+      "Yerning o'q og'ishi burchagi 66,5° ga teng.",
+      "Eng qisqa davomiylikdagi ritm yillik, undan keyin 11 yillik, eng uzoqi 1800-2000 yillik sikldir.",
+      "Nishablikni topish formulasi: balandlik farqining uzunlikka nisbati."
+    ],
+    "mistakes": [
+      "Masshtab 1:50 000 ni 50 km deb hisoblash; to'g'ri: 1 sm = 500 m yoki 0,5 km.",
+      "Balandlik oshganda bosim ham oshadi deb o'ylash; to'g'ri: har 100 m da 10-12 mm sim. ust. ga kamayadi.",
+      "Nishablikni uzunlikni balandlikka bo'lish; to'g'ri: balandlik farqini uzunlikka bo'lish kerak."
+    ],
+    "mnemonics": [
+      "Ritmlar tartibi: 1 (Yillik) - 2 (11 yillik) - 3 (1800-2000 yillik). Qisqadan uzunqa.",
+      "Balandlik qoidasi: Yuqoriga 100 m, bosim pastga 10-12 mm.",
+      "Aholi formulasi: Tabiiy o'sish + Migratsiya o'sishi = Umumiy o'sish."
+    ],
+    "source": "Test izohlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "94": {
+    "summary": "Mavzu geografik grafik materiallarni o'qish va tahlil qilishni o'z ichiga oladi. Imtihonda masshtab hisoblash, balandlik bo'yicha harorat o'zgarishini aniqlash hamda jadvallar orqali iqtisodiy va demografik ko'rsatkichlarni baholashga e'tibor beriladi.",
+    "keyPoints": [
+      {
+        "t": "Masshtabni tushunish",
+        "d": "1:1 000 000 sonli masshtab xaritadagi 1 sm haqiqatda 1 000 000 sm (10 km) ga tengligini bildiradi. Buning uchun sm ni metrga (100) va kilometrga (1000) aylantirish kerak."
+      },
+      {
+        "t": "Masofani hisoblash",
+        "d": "1:50 000 masshtabda 1 sm 500 m ga teng. Agar xaritadagi masofa 4 sm bo'lsa, haqiqiy masofa 4 * 500 m = 2000 m yoki 2 km ni tashkil qiladi."
+      },
+      {
+        "t": "Vertikal harorat gradiyenti",
+        "d": "Balandlik har 1000 m oshganda harorat 6°C ga kamayadi. Jadval ma'lumotlariga ko'ra, 1000 m da 6°C kamaygan bo'lsa, har 100 m uchun 0,6°C ga kamayish kuzatiladi."
+      },
+      {
+        "t": "Balandlikdagi harorat",
+        "d": "Dengiz sathida 20°C bo'lsa, 3000 metr balandlikda harorat 18°C (3 marta 6°C) kamayadi. Natijada harorat 20°C - 18°C = +2°C bo'ladi."
+      },
+      {
+        "t": "Urbanizatsiya dinamikasi",
+        "d": "Agar 10 yilda (2010-2020) urbanizatsiya 10% oshgan bo'lsa (40% dan 50% ga), teng o'sish davom etsa, keyingi 10 yilda (2030) yana 10% oshib, 60% bo'ladi."
+      },
+      {
+        "t": "Iqtisodiy tuzilma tahlili",
+        "d": "Qishloq xo'jaligi iqtisodiyotda 55% ulushga ega bo'lsa, mamlakat agrar hisoblanadi. Rivojlangan mamlakatlarda xizmat ko'rsatish sohasi 60-70% ulushga ega bo'ladi."
+      },
+      {
+        "t": "Demografik qariyalash",
+        "d": "Yosh aholi ulushining 40% dan 20% ga kamayishi va keksa aholi ulushining 4% dan 15% ga ortishi jamiyatning qariyash jarayonini ko'rsatadi."
+      }
+    ],
+    "mustKnow": [
+      "1:1 000 000 sonli masshtab 1 sm — 10 km ismli masshtabga teng",
+      "Har 1000 metr balandlikda harorat 6°C ga kamayadi",
+      "Har 100 metr balandlikda harorat 0,6°C ga kamayadi",
+      "1:50 000 masshtabda xaritadagi 1 sm haqiqatda 500 m ga teng",
+      "0-14 yoshdagi bolalar ulushi 40% bo'lsa, yuqori demografik yuklanish deyiladi",
+      "Rivojlangan mamlakatlarda xizmat ko'rsatish sohasi 60-70% ulushga ega",
+      "Tabiiy geografiya geografik qobiq va uning komponentlarini o'rganadi",
+      "Ijtimoiy-iqtisodiy geografiya aholi, ishlab chiqarish va madaniyatni o'rganadi"
+    ],
+    "mistakes": [
+      "Urbanizatsiya zichlikni belgilaydi deb hisoblash — Urbanizatsiya zichlikni to'g'ridan-to'g'ri belgilamaydi",
+      "Ijtimoiy-iqtisodiy geografiya tabiat qonuniyatlarini o'rganadi deb o'ylash — U ijtimoiy jarayonlarni o'rganadi",
+      "Demografik yuklanishni keksalar ko'payishi bilan izohlash — Odatda bolalar ulushi yuqori bo'lganda demografik yuklanish deyiladi"
+    ],
+    "mnemonics": [
+      "Ming ming — o'n kilometr: 1:1 000 000 masshtabni eslash uchun 1 sm = 10 km formulasi",
+      "Yuz metr — olti daraja o'ndan biri: Har 100 m da harorat 0,6°C ga o'zgaradi",
+      "Yarimdan ko'p — agrar: Iqtisodiyotda qishloq xo'jaligi 55% dan ortiq bo'lsa, bu agrar mamlakat"
+    ],
+    "source": "Malaka attestatsiyasi uchun tasdiqlangan izohlar",
+    "updatedAt": "2026-07-28"
+  },
+  "95": {
+    "summary": "Geografiya o'qituvchisining kasb standarti talablari, o'quv jarayonini tashkil etish va baholash mezonlari asosida, maqsadlarning aniq va o'lchanadigan bo'lishiga, shuningdek rejalashtirish va rivojlanish jarayonlariga e'tibor beriladi.",
+    "keyPoints": [
+      {
+        "t": "Maqsad belgilash talablari",
+        "d": "Rejalashtirish jarayonida belgilanadigan natijalar aniq, o'lchanadigan va erishiladigan bo'lishi shart, abstrakt maqsadlar zamonaviy standartga mos kelmaydi."
+      },
+      {
+        "t": "Rejalashtirish asoslari",
+        "d": "O'qituvchi darsni rejalashtirish bosqichida avval o'quvchilarning bilim darajasini, ehtiyoj va ko'rsatkichlarini tahlil qilishi lozim."
+      },
+      {
+        "t": "Baholash va qayta aloqa",
+        "d": "Bu bosqichda o'qituvchi bilim darajasini kuzatib borishi va qiyinchilik bo'lganda boshqa mutaxassislar bilan maslahatlashishi kerak."
+      },
+      {
+        "t": "Darsni tashkil etish",
+        "d": "Dars shakllari va usullari o'quvchilarning yosh xususiyatlari va o'zlashtirish darajasiga mos rejalashtirilishi, individual yondashuv qo'llanilishi shart."
+      },
+      {
+        "t": "Kasbiy o'sish uchun vazifalar",
+        "d": "Kasbiy rivojlanish uchun yangi metodika kurslariga qatnashish va darsdan so'ng o'quvchilarning savollarini tahlil qilish muhim hisoblanadi."
+      }
+    ],
+    "mustKnow": [
+      "Rejalashtirish jarayonida belgilanadigan natijalar aniq, o'lchanadigan va erishiladigan bo'lishi shart.",
+      "O'qituvchi darsni rejalashtirish bosqichida o'quvchilarning bilim darajasini tahlil qilishi lozim.",
+      "Baholash bosqichida o'qituvchi bilim darajasini kuzatib borishi va zarur bo'lganda boshqa mutaxassislar bilan maslahatlashishi kerak.",
+      "Dars shakllari va usullari o'quvchilarning yosh xususiyatlari va o'zlashtirish darajasiga mos rejalashtirilishi kerak.",
+      "Kasbiy rivojlanish uchun yangi metodika kurslariga qatnashish va o'quvchilarning savollarini tahlil qilish muhim hisoblanadi."
+    ],
+    "mistakes": [
+      "Rejalashtirishda o'quvchilarning ehtiyojlarini hisobga olmasdan faqat o'qituvchi markazli maqsad belgilash — Tahlil asosida aniq va o'lchanadigan natijalar belgilash.",
+      "Baholash bosqichida asosan munosabat o'rnatishga undash va xavfsizlik qoidalarini tushuntirish — Bilim darajasini kuzatish va maslahatlashish.",
+      "Darsni faqat tushuntirish usulida o'tish va dastur talablariga e'tibor bermaslik — Yosh xususiyatlariga mos va individual yondashuvni o'z ichiga olgan usullar."
+    ],
+    "mnemonics": [
+      "MAE qoidasi: Maqsadlar — Aniq, O'lchanadigan, Erishiladigan.",
+      "Reja tartibi: Tahlil qil -> Maqsad belgilash -> Natijaga erishish.",
+      "O'zini rivojlantirish: Kurslar + Savollarni tahlil."
+    ],
+    "source": "Kasb standarti",
+    "updatedAt": "2026-07-28"
+  },
+  "96": {
+    "summary": "Pedagogik mahorat mavzusi darsni rejalashtirish, maqsadlar qo'yish, o'qitish usullari va o'quv jarayonini boshqarishni o'z ichiga oladi. Imtihonda dars tuzilishi, o'lchanadigan natijalar va bolalar huquqlari asoslari urg'u beriladi.",
+    "keyPoints": [
+      {
+        "t": "Dars maqsadlarining talablari",
+        "d": "Maqsadlar aniq, o'lchamli va baholashga xos bo'lishi kerak. Subyektiv maqsadlar o'quvchi natijasini o'lchab bo'lmaydi."
+      },
+      {
+        "t": "Rejalashtirish bosqichlari",
+        "d": "Standart tahlilidan boshlanib, o'quvchilar tayyorgarligi aniqlanadi, so'ngra maqsadlar qo'yiladi va vositalar tanlanadi."
+      },
+      {
+        "t": "Zamonaviy dars tuzilishi",
+        "d": "Dars maqsad va motivatsiya bilan boshlanadi, keyin tayyorgarlik tekshiriladi, yangi bilim beriladi va mustahkamlash bilan tugaydi."
+      },
+      {
+        "t": "Induksiya va deduksiya",
+        "d": "Induksiya misollardan umumiy qoidaga, deduksiya esa umumiy qoidadan xususiy holatlarga o'tishni anglatadi."
+      },
+      {
+        "t": "Jarayonni boshqarish",
+        "d": "Baholash orqali muammoni aniqlash va shu asosda keyingi dars rejasini o'zgartirish jarayonidir."
+      },
+      {
+        "t": "Shaxsga yo'naltirilgan yondashuv",
+        "d": "Yuqori qobiliyatli o'quvchilarga standart vazifalar emas, balki chuqur tahlil talab qiladigan murakkab vazifalar berish kerak."
+      },
+      {
+        "t": "Rejalashtirish vazifasi",
+        "d": "O'quvchilar darajasini tahlil qilib, o'lchanadigan natija belgilash o'quv jarayonini rejalashtirish vazifasiga kiradi."
+      }
+    ],
+    "mustKnow": [
+      "Dars maqsadlari 'aniq', 'o'lchamli' va 'baholashga xos' bo'lishi shart.",
+      "Rejalashtirish ketma-ketligi: standart tahlili (4), tayyorgarlik (1), maqsadlar (2), vositalar (3).",
+      "Zamonaviy dars tartibi: maqsad va motivatsiya (3), tayyorgarlik (2), yangi bilim (1), mustahkamlash (4).",
+      "Induksiya — yakka faktlardan umumiy qoidaga chiqarish jarayoni.",
+      "Deduksiya — umumiy qoidadan xususiy holatlarga o'tish jarayoni.",
+      "O'quvchilar darajasini tahlil qilib maqsad belgilash 'O'quv jarayonini rejalashtirish' vazifasidir.",
+      "Bolalar huquqlari va xavfsizlik majburiyatlari 'Bola huquqlari to'g'risidagi qonunchilik asoslari'ga asoslanadi."
+    ],
+    "mistakes": [
+      "Xato: 'Tabiatni yaxshi ko'rish' kabi subyektiv maqsad qo'yish. To'g'ri: '3 ta tabiiy zona nomlab beradi' kabi o'lchanadigan maqsad.",
+      "Xato: O'quvchilar tayyorgarligini diagnostika qilmasdan maqsad qo'yish. To'g'ri: Avval tayyorgarlikni tahlil qilish, keyin maqsad belgilash.",
+      "Xato: Yuqori qobiliyatli o'quvchiga standart vazifalar berish. To'g'ri: Tadqiqot talab qiladigan murakkab vazifalar berish."
+    ],
+    "mnemonics": [
+      "Rejalashtirish: 4-1-2-3 (Standart-Tayyor-Maqsad-Vosita).",
+      "Dors tartibi: 3-2-1-4 (Motivatsiya-Tekshirish-Yangi-Mustahkamlash).",
+      "Induksiya: Misollar -> Qoida; Deduksiya: Qoida -> Misollar."
+    ],
+    "source": "Kasb standartlari va Bola huquqlari to'g'risidagi qonunchilik asoslari",
+    "updatedAt": "2026-07-28"
+  }
+}

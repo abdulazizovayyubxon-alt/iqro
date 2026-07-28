@@ -1,0 +1,357 @@
+{
+  "114": {
+    "summary": "Umumiy kimyo bo'yicha attestatsiya imtihoniga tayyorlov, jumladan, kimyoviy kinetika tenglamalari, eritmalar konsentratsiyasi, elektroliz qonunlari va Mendeleyev davriy qonuni bo'yicha hisoblash masalalari tahlili.",
+    "keyPoints": [
+      {
+        "t": "Arrhenius tenglamasi va kataliz",
+        "d": "Reaksiya tezligi aktivatsiya energiyasiga bog'liq: $k \\propto e^{-E_a/RT}$. Katalizator $E_a$ni 30% kamaytirganda (80 kJ dan 56 kJ ga), tezlik oshishi hisoblanadi."
+      },
+      {
+        "t": "Birlamchi tartibli reaksiya",
+        "d": "Yarim yemirilish vaqti $t_{1/2} = \\ln2/k$ formula orqali topiladi. $k=2.5\\cdot10^{-3}$ s$^{-1}$ bo'lganda, $t_{1/2}$ taxminan 277 soniyani tashkil qiladi."
+      },
+      {
+        "t": "Elektrolitik dissotsiatsiya",
+        "d": "Dissotsiatsiya darajasini foizdan kasrga o'tkazib (0,30% = 0,0030), asl konsentratsiyaga ko'paytirish orqali ion konsentratsiyasi aniqlanadi ($6\\cdot10^{-5}$ mol/L)."
+      },
+      {
+        "t": "Massa ulushi hisobi",
+        "d": "Eritma massasi modda va suv massalari yig'indisiga teng. 250 g modda va 500 g suv uchun massa ulushi $(250/750)\\cdot100$ orqali 33,3% ni tashkil qiladi."
+      },
+      {
+        "t": "Elektroliz va Faradey qonunlari",
+        "d": "Ajralgan modda miqdori oqim va vaqt ko'paytmasiga ($Q=I\\cdot t$) bog'liq. 1 F = 96485 C. Vodorod uchun $n = Q/(2F)$ formulasi qo'llanadi."
+      },
+      {
+        "t": "Konsentratsiyani suyultirish",
+        "d": "Aralashma yangi hajmi ($V_1+V_2$) bo'yicha hisoblanadi. 0,025 L 0,10 M eritma 0,150 L suv bilan aralashtirilganda, yangi konsentratsiya 0,0143 M ga yaqinlashadi."
+      }
+    ],
+    "mustKnow": [
+      "Arrhenius tenglamasi: $k \\propto e^{-E_a/RT}$",
+      "Birlamchi tartibli reaksiya uchun yarim yemirilish vaqti: $t_{1/2} = \\ln2/k$",
+      "D. I. Mendeleyev davriy qonunni 1869-yilda muvaffaqiyatli hal qildi",
+      "Faradey doimiysi: 1 F = 96485 C",
+      "Dissotsiatsiya darajasi: 0,30% = 0,0030",
+      "Elektrolizda modda miqdori: $n = Q/(n \\cdot F)$",
+      "Massa ulushi: 250 g modda va 500 g suv uchun 33,3%"
+    ],
+    "mistakes": [
+      "Yarim yemirilish vaqtini hisoblashda $k$ o'rniga $2k$ ni qo'llash xatosi: $0,693 / (2 \\cdot 2.5 \\cdot 10^{-3})$ hisoblanib, 138 s deb topiladi, aslida $k$ ga bo'lish kerak (277 s).",
+      "Elektroliz hisoblarida elektronlar soni ($n$) yoki $F$ ni noto'g'ri qo'llash (masalan, vodorod uchun $F$ o'rniga $2F$ ni ishlatmaslik).",
+      "Massa ulushida suv massasini (500 g) hisobga olmaslik va faqat modda massasidan foydalanish.",
+      "Dissotsiatsiyani foizdan kasrga o'tkazishda vergulni noto'g'ri joyga siljitish (0,30% = 0,0030)."
+    ],
+    "mnemonics": [
+      "Foizdan kasrga o'tkazish: vergulni ikki chapga siljit (0,30% -> 0,0030).",
+      "Zaryaj topish uchun Amperni sekundga ko'paytir ($Q = I \\cdot t$).",
+      "Yarim vaqt: 0,693 ni tezlik konstantasiga ($k$) bo'ling."
+    ],
+    "source": "Attestatsiya test izohlari va kimyoviy kinetika asoslari",
+    "updatedAt": "2026-07-28"
+  },
+  "115": {
+    "summary": "Anorganik kimyo bo'yicha imtihon oksidlar, asoslar, kislotalar, tuzlar va metallar xossalarini o'z ichiga oladi. E'tibor sonli qiymatlar (erish harorati, zichlik), stexiometrik hisoblar va elementlarning solishtirma xususiyatlariga qaratilgan.",
+    "keyPoints": [
+      {
+        "t": "Temir va kremniy xossalari",
+        "d": "Temirning zichligi 7850 kg/m³, erish harorati 1538°C bo'lib, kremniy (1414°C) dan yuqori."
+      },
+      {
+        "t": "Uglerod va kremniy taqqosi",
+        "d": "Kremniy atom radiusi uglerodnikidan katta. Uglerod metallmas, kremniy esa metallik xususiyatga ega."
+      },
+      {
+        "t": "II-A guruh metallari",
+        "d": "Berylliy 1278°C da eriydi. Kalsiy (839°C), magnezyum (650°C) va stronsiy (777°C) berylliyga nisbatan past haroratda eriydi."
+      },
+      {
+        "t": "Elektroliz hisobi",
+        "d": "5 A tok va 1800 s vaqtda 9000 C zaryaj o'tadi. 2 elektron ishtirokida 0,0466 mol modda ajralib chiqadi."
+      },
+      {
+        "t": "Valentlik va bog'lanish",
+        "d": "Temir, xrom va marganets har doim +2 valentlikda bo'lmaydi (masalan, Cr³⁺, Mn⁴⁺). Metallmaslar asosan kovalent bog'lanish hosil qiladi."
+      },
+      {
+        "t": "Mol massalar",
+        "d": "Na₂SO₃ (126 g/mol), Na₂CO₃ (106 g/mol) va CO₂ (44 g/mol) mol massalari hisob-kitoblarda asosiy qilib olinadi."
+      }
+    ],
+    "mustKnow": [
+      "Temir zichligi 7850 kg/m³",
+      "Temir erish harorati 1538°C",
+      "Kremniy erish harorati 1420°C",
+      "Kremniy zichligi 2329 kg/m³",
+      "Uglerod erish harorati 3550°C",
+      "Berylliy erish harorati 1278°C",
+      "Kalsiy erish harorati 839°C",
+      "Magnezyum erish harorati 650°C"
+    ],
+    "mistakes": [
+      "Temir, xrom va marganets faqat +2 valentlikda bo'ladi deb hisoblash — noto'g'ri, chunki Cr³⁺ va Mn⁴⁺ ham mavjud",
+      "Kremniyning erish harorati temirnikidan yuqori deb hisoblash — noto'g'ri (Si 1414°C, Fe 1538°C)",
+      "Uglerodni metallik xususiyatga ega deb hisoblash — noto'g'ri, u metallmas, kremniy esa metallik"
+    ],
+    "mnemonics": [
+      "0,5 M eritma tayyorlash uchun 1 L suvga 0,5 mol modda kerak",
+      "Temir zich (7850), kremniy unga nisbatan yengil (2329)"
+    ],
+    "source": "Tasdiqlangan test izohlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "116": {
+    "summary": "Organik kimyoning rivojlanish tarixi, uglevodorodlarning tuzilishi, izomeriyasi va olinishiga oid hisoblash masalalari. Imtihonda nazariy asoslar, tarixiy sanalar va moddalar miqdorini hisoblashga e'tibor beriladi.",
+    "keyPoints": [
+      {
+        "t": "Tarixiy sanalar va kashfiyotlar",
+        "d": "Vyoler 1824-yilda oksalat kislotani, Zinin 1842-yilda anilinni, Butlerov 1861-yilda shakarsimon moddani sintez qilgan."
+      },
+      {
+        "t": "Mol massasi va hisoblash",
+        "d": "Etanolning mol massasi 46 g/mol, qandniki 180 g/mol. Etanning mol massasi 30,07 g/mol ekanligini bilish kerak."
+      },
+      {
+        "t": "Alkanlar va sikloalkanlar",
+        "d": "Alkanlar faqat sigma bog'larga ega. Sikloalkanlar ham faqat sigma bog'larga ega, pi bog'lari yo'q."
+      },
+      {
+        "t": "Izomerlik turlari",
+        "d": "C4H8 uchun strukturaviy va geometrik izomerlar mavjud. Geometrik izomerlik alkenlarda bor, sikloalkenlarda yo'q."
+      },
+      {
+        "t": "Dehidratatsiya reaksiyasi",
+        "d": "Etanolni 70% H2SO4 ishtirokida dehidratatsiya qilganda suv ajralib chiqib, etilen (C2H4) hosil bo'ladi."
+      },
+      {
+        "t": "Oksidlanish darajasi",
+        "d": "Alkadiyenlarda valensiya elektronlari teng taqsimlangani uchun standart oksidlanish darajasi 0 ga teng."
+      }
+    ],
+    "mustKnow": [
+      "1824-yilda F. Vyoler o'simlik a'zosida oksalat kislotani sintez qilgan.",
+      "1842-yilda Zinin benzoldan anilinni sintez qilgan.",
+      "1861-yilda Butlerov chumoli aldegididan shakarsimon moddani olishga erishgan.",
+      "Etanolning mol massasi 46 g/mol, qandning 180 g/mol.",
+      "Etanning mol massasi C2H6 = 30,07 g/mol.",
+      "Etanolni 70% H2SO4 katalizatori bilan dehidratatsiya qilishda etilen (C2H4) hosil bo'ladi.",
+      "Alkadiyenlarda uglerod atomining standart oksidlanish darajasi 0 ga teng.",
+      "Propion kislotasi A.V.Kolben va E.Franklendga tegishli."
+    ],
+    "mistakes": [
+      "Xato: 0,92 g etanolni 5,0 g qandga nisbatan hisoblashda 71,9% deb topish. To'g'ri: 0,92 g / 5,0 g ×100 = 18,4% bo'ladi.",
+      "Xato: Geometrik izomerlik sikloalkenlarda ham mavjud deb hisoblash. To'g'ri: Geometrik izomerlik alkenlarda mavjud, sikloalkenlarda yo'q.",
+      "Xato: 2-metil-propan C4H8 formulali deb hisoblash. To'g'ri: 2-metil-propan C5H12 formulaga ega."
+    ],
+    "mnemonics": [
+      "Tarixiy ketma-ketlik: 1824 (Vyoler) -> 1842 (Zinin) -> 1861 (Butlerov).",
+      "Alkanlar bog'lanishi: Alkanlar faqat Sigma (S) bog'langan. S - Sodda.",
+      "C4H8 formulasi: 4 ta uglerod, 8 ta vodorod - siklobutan yoki buten."
+    ],
+    "source": "Tasdiqlangan test izohlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "117": {
+    "summary": "Organik kimyodagi kislorodli va azotli birikmalarning tuzilishi, xossalari va sinteziga oid hisoblash masalalari, shuningdek eritmalarning pH va pKb qiymatlari tahlil qilinadi.",
+    "keyPoints": [
+      {
+        "t": "Eritma massasi va zichligi",
+        "d": "Eritma massasi zichlik va hajm ko'paytmasi orqali hisoblanadi, masalan, 1 L etanol eritmasi massasi 0,789 g/sm³ zichlik asosida 789 g ni tashkil qiladi."
+      },
+      {
+        "t": "Metolning qaynash nuqtasi",
+        "d": "Metolning qaynash nuqtasi 64°C bo'lib, 80°C haroratda u bug'lanadi, ammo standart bosimda to'liq gaz holatiga o'tishi uchun harorat yuqori bo'lishi kerak."
+      },
+      {
+        "t": "Cheklovchi reagent hisobi",
+        "d": "Nitrobenzol olishda brombenzin (15 g) va kislota (20 g) miqdori solishtiriladi, bunda brombenzin cheklovchi reagent bo'lib, 0,095 molga teng ekanligi aniqlanadi."
+      },
+      {
+        "t": "Samaradorlik va mahsulot",
+        "d": "Nazariy hisoblangan mahsulot massasi (11,7 g) reaksiya samaradorligi (78%) ga ko'paytirilib, amaliy hosil bo'lgan modda miqdori (9,1 g) topiladi."
+      },
+      {
+        "t": "Molyar massa va mol",
+        "d": "Moddaning miqdori uning massasi (5,0 g) va molyar massasi (123 g/mol) nisbati orqali aniqlanadi, bu holatda 0,040 mol ga teng."
+      },
+      {
+        "t": "Aminlar va pKb qiymati",
+        "d": "Amin eritmasining asoslilik darajasi titratsiya natijalari asosida hisoblanib, pKb qiymati 7,5 atrofida bo'lishi mumkinligi ko'rsatilgan."
+      }
+    ],
+    "mustKnow": [
+      "Etanolning molyar massasi 46 g/mol ga teng.",
+      "Metolning qaynash nuqtasi 64°C ga teng.",
+      "Ammiakning (NH3) molyar massasi 17 g/mol ga teng.",
+      "Nitrobenzolning molyar massasi 123 g/mol ga teng.",
+      "Brombenzinning molyar massasi 157 g/mol ga teng.",
+      "pKa ≈ 4,8 bo'lgan kislota suvda taxminan 90% ionlashgan holda bo'ladi.",
+      "Etilamin sintezida etilen va ammiak 1:1 nisbatda ishtirok etadi."
+    ],
+    "mistakes": [
+      "Xato: Metol 80°C da suyuq holatda qoladi deb hisoblash. To'g'ri: Metol 64°C da qaynaydi, 80°C da u bug'lanadi.",
+      "Xato: Reaksiyada barcha moddalar teng miqdorda ishtirok etadi deb faraz qilish. To'g'ri: Cheklovchi reagentni aniqlash uchun massalarni molga aylantirib solishtirish kerak.",
+      "Xato: pKa ≈ 4,8 bo'lgan kislota kuchli kislota deb hisoblash. To'g'ri: Bu qiymat o'rtacha kislotalilikni bildiradi, u qisman ionlanadi."
+    ],
+    "mnemonics": [
+      "Etanol 46, Ammiak 17, Nitrobenzol 123 — asosiy molyar massalarni eslash.",
+      "64 daraja — metol bug'lanadi, yuqorida tezroq uchadi.",
+      "pH = pKa + log nisbat — kuchsiz kislota holatini hisoblash formulasi."
+    ],
+    "source": "O'zbekiston Respublikasi Xalq ta'limi vazirligi tomonidan tasdiqlangan attestatsiya testlari izohlari",
+    "updatedAt": "2026-07-28"
+  },
+  "118": {
+    "summary": "Mavzu kimyo laboratoriyasidagi jihozlar, xavfsizlik qoidalari, organik va anorganik birikmalarning sintezi hamda sifat reaksiyalariga bag'ishlangan. Imtihonda tarixiy tajribalar, protsedura tartibi va massa saqlash qonuni kabi nazariy va amaliy jihatlar o'rganiladi.",
+    "keyPoints": [
+      {
+        "t": "Organik sintez tarixi",
+        "d": "1824-yilda Vyoler o'simlik a'zosida CO₂ dan oksalat kislota, 1842-yilda Zinin esa benzoldan anilinni sintez qilgan."
+      },
+      {
+        "t": "Reaksiya belgilari va turlari",
+        "d": "Precipitatsiya qattiq modda hosil bo'lishidir. Katalizator tezlikni oshiradi, mahsulotni o'zgartirmaydi. Rang o'zgarishi yoki gaz ajralishi har doim oksidlanish-qaytarish bo'lmaydi."
+      },
+      {
+        "t": "Laboratoriya xavfsizligi",
+        "d": "Asosiy majburiy himoya vositasi laboratoriya ko'ylagidir. Reaktivlarni ochiq havoda saqlash havoning kirishini oldini oladi."
+      },
+      {
+        "t": "Kristallanish tartibi",
+        "d": "Erigan modda eritmaga qo'shiladi, eritma qizdiriladi, so'ngra sovutilib kristallar hosil qilinadi va oxirida filtrlanib quritiladi."
+      },
+      {
+        "t": "Sifat reaksiyalari",
+        "d": "AgNO₃ reaksiyasi natijasida NaBr dan AgBr, KI dan AgI qattiq moddalari tushadi. Aktiv ko'mir suvdagi moddalarni adsorpsiyalash uchun ishlatiladi."
+      },
+      {
+        "t": "Amaliy ish protokoli",
+        "d": "Reagentlar avval o'lchanadi, idishga solinadi, aralashma isitiladi va natija tahlil qilinadi. Ish tugagach idishlar yuviladi."
+      }
+    ],
+    "mustKnow": [
+      "Vyolerning oksalat kislota sintezi 1824-yilga to'g'ri keladi.",
+      "N.N. Zinin benzoldan anilinni 1842-yilda sintez qilgan.",
+      "Massani saqlash qonuniga ko'ra, 150 g boshlang'ich massadan 120 g qolganda, 30 g gaz chiqarilgan.",
+      "Maktab laboratoriyasidagi asosiy majburiy himoya vositasi laboratoriya ko'ylagidir.",
+      "Kristallanish jarayonining to'g'ri tartibi: moddani qo'shish - qizdirish - sovutish - filtrlash.",
+      "AgNO₃ bilan NaBr va KI reaksiyalaridan mos ravishda AgBr va AgI cho'kmalari hosil bo'ladi."
+    ],
+    "mistakes": [
+      "Rang o'zgarishi har doim oksidlanish-qaytarish reaksiyasidir — Rang o'zgarishi har doim oksidlanish-qaytarish reaksiyasiga bog'liq emas.",
+      "Katalizator reaksiya mahsulotini o'zgartiradi — Katalizator mahsulotni o'zgartirmaydi, faqat reaksiya tezligini oshiradi.",
+      "Gaz hosil bo'lishi faqat oksidlanish yoki qaytarish natijasida sodir bo'ladi — Gaz hosil bo'lishi oksidlanish yoki qaytarish bilan bog'liq bo'lishi shart emas."
+    ],
+    "mnemonics": [
+      "Kristallanish: Qo'sh - Qizdir - Sovut - Filtrlash.",
+      "Laboratoriya tartibi: O'lch - Qo'sh - Isit - Tahlil.",
+      "Sintez sanalari: 24 - Vyoler (oks), 42 - Zinin (anilin)."
+    ],
+    "source": "Tasdiqlangan imtihon izohlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "119": {
+    "summary": "Kimyo o'qituvchisi kasb standarti talablari, o'quv jarayonini rejalashtirish, kimyoviy hisoblashlar, pedagogik usullar va baholash mezonlarini o'z ichiga oladi. Imtihonda samaradorlikni hisoblash, xavfsizlik qoidalari va formativ baholashga oid bilimlar tekshiriladi.",
+    "keyPoints": [
+      {
+        "t": "Samaradorlikni hisoblash",
+        "d": "Chiqarilgan va sarflangan resurslar nisbati orqali aniqlanadi. Masalan, 640/5800 koeffitsiyenti 11,03% ni beradi, ammo testda eng yaqin 10% variantini tanlash kerak."
+      },
+      {
+        "t": "Elektroliz va massa hisobi",
+        "d": "Tok kuchi (0,5 A) va vaqt (1800 s) orqali zaryad (900 C) topiladi. Mis ionlaridan 0,30 g massa ajratib chiqarish uchun ma'lum miqdorda elektron sarflanadi."
+      },
+      {
+        "t": "Eritma konsentratsiyasi",
+        "d": "C1V1 = C2V2 formulasi asosida suyultiriladi. 25 ml 0,10 M eritma 150 ml suvga qo'shilganda, yangi konsentratsiya 0,0143 M ga teng bo'ladi."
+      },
+      {
+        "t": "Massa fraksiyasi",
+        "d": "Modda massasini eritma umumiy massasiga bo'lish orqali hisoblanadi. 5 g modda 250 g suvda eritilsa, massa ulushi 0,020 ga tenglashadi."
+      },
+      {
+        "t": "Xavfsizlik choralari",
+        "d": "Ish joyini tozalash, himoya vositalarini ta'minlash, ventilyatsiyani yoqish va moddalarni yorug'likda saqlash tartibida amalga oshiriladi."
+      },
+      {
+        "t": "Induksiya va deduksiya",
+        "d": "Induksiya konkret tajribalar asosida umumiy qonun chiqarish, deduksiya esa umumiy qoidani misollar bilan tasdiqlashdir."
+      },
+      {
+        "t": "Baholash turlari",
+        "d": "Formativ baholash dars davomida, summativ dars oxirida, diagnostik esa dars boshlanishida o'tkazilib, natijalar keyinchalik ishlatiladi."
+      }
+    ],
+    "mustKnow": [
+      "Samaradorlik formulasi: (chiqarilgan / sarflangan) × 100",
+      "Avogadro qonuni bo'yicha nisbat: V₁/H₁ = V₂/H₂",
+      "Molaritetni saqlash qoidasi: C1V1 = C2V2",
+      "Massa fraksiyasi: massa tarkibiy qism / umumiy massa",
+      "Formativ baholash dars davomida joriy o'zlashtirishni kuzatish uchun qo'llaniladi",
+      "Diagnostik baholash dars boshlanishida o'tkaziladigan nazorat turi hisoblanadi",
+      "Induksiya konkret misollardan umumiy qoidani chiqarish jarayonidir",
+      "Deduksiya umumiy qoidani misollar bilan tasdiqlash jarayonidir"
+    ],
+    "mistakes": [
+      "Induksiya umumiy qonundan boshlanadi deb hisoblash xato, chunki u konkret tajribalardan umumiy qonunga o'tadi",
+      "Massa ulushini hisoblashda faqat erituvchi massasini ishlatish xato, to'g'ri usul modda massasini eritma umumiy massasiga bo'lishdir",
+      "Formativ baholashni faqat yil oxirida o'tkazish xato, u dars jarayonida darhol qayta aloqa berish uchun mo'ljallangan"
+    ],
+    "mnemonics": [
+      "Xavfsizlik tartibi: Tozalash (1) -> Himoya (2) -> Ventilyatsiya (4) -> Saqlash (3)",
+      "Induksiya: Ixtiyoriy (konkret) misoldan Umumiy qoidaga",
+      "Baholash: Boshida Diagnostik, Davomida Formativ, Oxirida Summativ"
+    ],
+    "source": "Kasb standarti va pedagogik talablar",
+    "updatedAt": "2026-07-28"
+  },
+  "120": {
+    "summary": "Pedagogik mahorat mavzusi pedagogika, didaktika, psixologiya asoslari, kimyo o'qitish metodikasi, dars turlari, rejalashtirish, sinfni boshqarish va pedagogik etikani qamrab oladi. Imtihonda individualizatsiya, differensial yondashuv, o'qitish usullari (induksiya, deduksiya, analogiya), laboratoriya xavfsizligi va baholash tizimlaridagi (formativ va summativ) asosiy farqlarga e'tibor beriladi.",
+    "keyPoints": [
+      {
+        "t": "Individualizatsiya va standartlashtirish",
+        "d": "Individualizatsiya har bir o'quvchining qiziqishlari, ehtiyojlari va imkoniyatlariga mos dars mazmuni va usulini tanlashni anglatadi. Standartlashtirish bir xil darsni barcha uchun qo'llashni, autoritar yondashuv qat'iy boshqaruvni, kollektivlashtirish esa umumiy guruhga yo'naltirishni bildiradi."
+      },
+      {
+        "t": "Differensial yondashuv mazmuni",
+        "d": "Differensial yondashuv o'quvchining shaxsiy ehtiyojiga mos ravishda qo'shimcha yordam va material berishni nazarda tutadi. Frontal ta'lim hamma uchun bir xil ma'lumot beradi, bir xil standart va kollektiv baholash individual yondashuvni inkor etadi."
+      },
+      {
+        "t": "O'qitish usullari: analogiya",
+        "d": "Boshqa, yaqinroq jarayonni (masalan, suvning qaynashida bug'ini) misol qilib, yangi qonunni tushuntirish analogiya metodiga asoslanadi. Induksiya umumiy qonun yaratish, deduksiya umumiydan maxsusga o'tish, klassifikatsiya tasniflashga qaratilgan."
+      },
+      {
+        "t": "Eksperimental metod va xavfsizlik",
+        "d": "Laboratoriyaviy tajriba orqali nazariy qonunlarni ko'rsatish eksperimental metodning asosiy belgisidir. Aniq o'lchash va xavfli modda bo'lganda havalandirish laboratoriya xavfsizligining asosiy tamoyillari hisoblanadi, yonayotgan holatda tashish xavfsizlikka ziddir."
+      },
+      {
+        "t": "Formativ va summativ baholash",
+        "d": "Formativ baholash davomida joriy o'zlashtirish kuzatiladi va qaytma aloqa beriladi. Yakuniy ball qo'yish va standart test ishlatish summativ baholashga tegishlidir."
+      },
+      {
+        "t": "Induksiya va deduksiya farqi",
+        "d": "Induksiya maxsus tajribalar asosida umumiy qonuniyatni chiqaradi, masalan, misollar orqali umumiylikni topish. Deduksiya umumiy qoidadan maxsus holatga o'tadi, ya'ni ma'lum qonunni misollarga tatbiq etishni anglatadi."
+      }
+    ],
+    "mustKnow": [
+      "NaCl massasi 5,0 g, molyar massasi 58,44 g·mol⁻¹ bo'lganda miqdori 0,0855 mol, 100 ml eritmadagi suv hajmi 92,1 ml ni tashkil qiladi.",
+      "Individualizatsiya har bir o'quvchining qiziqishlari, ehtiyojlari va imkoniyatlariga mos dars mazmuni va usulini tanlashni anglatadi.",
+      "Differensial yondashuv o'quvchining shaxsiy ehtiyojiga mos ravishda qo'shimcha yordam va material berishni nazarda tutadi.",
+      "Laboratoriya xavfsizligining asosiy tamoyillari aniq o'lchash va xavfli modda bo'lganda havalandirishdan iborat.",
+      "Formativ baholash davomida joriy o'zlashtirish kuzatiladi va qaytma aloqa beriladi.",
+      "Analogiya metodi mavjud kontseptsiya (masalan, oynada suzuvchi sharlar) yordamida yangi kimyoviy tushunchani tushuntirishdir."
+    ],
+    "mistakes": [
+      "Frontal ta'limni individual yondashuv deb hisoblash – xato. To'g'ri: Frontal ta'lim hamma uchun bir xil ma'lumot beradi, differensial yondashuv esa shaxsiy ehtiyojga mos yordamni nazarda tutadi.",
+      "Yakuniy ball qo'yishni formativ baholash turi deb qabul qilish – xato. To'g'ri: Yakuniy ball qo'yish summativ baholashga tegishli, formativ baholash joriy o'zlashtirish va qaytma aloqaga qaratilgan.",
+      "Laboratoriyada yonayotgan moddalarni tashirishni xavfsizlik qoidasi deb bilish – xato. To'g'ri: Xavfli modda bo'lganda havalandirish va aniq o'lchash asosiy tamoyildir."
+    ],
+    "mnemonics": [
+      "Induksiya – 'Indan Umumiyga' (maxsusdan umumiy), Deduksiya – 'Davomiy Umumiydan Xususiyga'.",
+      "Formativ baholash – Feedback (Qaytma aloqa), Summativ baholash – Score (Ball).",
+      "Xavfsizlik kodeksi: 'O'lchash' va 'Havo' (havalandirish)."
+    ],
+    "source": "Tasdiqlangan test izohlari asosida",
+    "updatedAt": "2026-07-28"
+  }
+}

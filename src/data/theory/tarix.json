@@ -1,0 +1,439 @@
+{
+  "15": {
+    "summary": "Mavzu O'zbekiston tarixining qadimgi va ilk o'rta asrlar (IV–XIII asrlar) davrini qamrab oladi. Unda Buyuk ipak yo'li, yirik davlatlar (Somoniylar, Qoraxoniylar), Saljuqiylar bosqini, mo'g'ullar istilosi va mashhur olimlar haqidagi ma'lumotlar o'rin olgan.",
+    "keyPoints": [
+      {
+        "t": "Buyuk ipak yo'li xususiyatlari",
+        "d": "Yo'lning uzunligi 12 ming kmni tashkil etadi. Dastlabki nomi 'Buyuk meridianal yo'l' bo'lib, zamonaviy nomini 1877-yilda F. Rixtgofen bergan."
+      },
+      {
+        "t": "Abu Ali ibn Sino va zamondoshlari",
+        "d": "Ibn Sino (980–1037) 'Tib qonunlari' asari bilan 'Sharq qutbi' deb atalgan. Beruniy astronomiyada, Koshg'ariy tilshunoslikda, al-Buxoriy esa hadis ilmida mashhur."
+      },
+      {
+        "t": "Dandanaken jangi va oqibatlari",
+        "d": "1040-yildagi jangda Saljuqiylar G'aznaviylarni mag'lub etib Xurosonni egalladi. Ularning asosiy kuchi o'g'uz turkmanlaridan iborat bo'lib, Movarounnahrni to'liq bosib ololmadi."
+      },
+      {
+        "t": "Qoraxoniylar davlati va Islom",
+        "d": "Hukmdor Satuq Bug'roxon 960-yilda Islom dinini rasman qabul qildi, bu turkiy xalqlar tarixidagi muhim burilish nuqtasi bo'ldi."
+      },
+      {
+        "t": "Qatvon jangi (1141)",
+        "d": "Movarounnahrda Saljuqiylar va Yelü Dashi boshchiligidagi Qoraxitoylar o'rtasida bo'lib o'tdi. Sulton Sanjar yengildi, hudud Qoraxitoylar tasarrufiga o'tdi."
+      },
+      {
+        "t": "Mo'g'ullar istilosi bosqichlari",
+        "d": "Chingizxon 1219 yil sentabrda O'trarni qamal qildi. 1219 yil qishda Buxoro, 1220 boshida Samarqand, 1221 yilda esa Gurganj zabt etildi."
+      },
+      {
+        "t": "Amir Temurning hokimiyatga kelishi",
+        "d": "Balxda qo'shin boshlig'i bo'lib, husayniylar va mo'g'ul amirlariga qarshi kurashdi. 1370-yil Qurultoyda O'rta Osiyoda hokimiyat tepasiga keldi."
+      }
+    ],
+    "mustKnow": [
+      "Abu Ali ibn Sino (980–1037) 'Tib qonunlari' asari muallifi.",
+      "Dandanaken jangi 1040-yilda Saljuqiylar g'alabasi bilan tugagan.",
+      "Satuq Bug'roxon 960-yilda Islom dinini rasman qabul qildi.",
+      "Qatvon jangi 1141-yilda bo'lib o'tgan, g'olib Qoraxitoylar.",
+      "Chingizxon 1219 yil sentabrda O'trarni qamal qilgan.",
+      "Buyuk ipak yo'lining uzunligi 12 ming km.",
+      "Buyuk ipak yo'lining zamonaviy nomini 1877-yilda F. Rixtgofen bergan.",
+      "Somoniylar davlati 999-yilda tugagan."
+    ],
+    "mistakes": [
+      "Saljuqiylar Movarounnahrni to'liq bosib olgan — Notog'ri, u yerda Qoraxoniylar hukmronlik qilgan.",
+      "Buyuk ipak yo'li nomi qadimdan — Notog'ri, zamonaviy nomini 1877-yilda F. Rixtgofen bergan.",
+      "Chingizxon O'trarni tezda egallagan — Notog'ri, u yerda uzoq vaqt qarshilik ko'rsatgan."
+    ],
+    "mnemonics": [
+      "Sana ketma-ketligi: 960 (Islom), 999 (Somoniylar tugashi), 1040 (Dandanaken), 1141 (Qatvon).",
+      "Istilo yo'li: O'tror (1219 sent) -> Buxoro (1219 qish) -> Samarqand (1220) -> Gurganj (1221).",
+      "Olimlar: Sino (Tib), Beruniy (Fazoviy), Koshg'ariy (Lug'at), Buxoriy (Hadis)."
+    ],
+    "source": "Tasdiqlangan test izohlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "16": {
+    "summary": "Ushbu mavzu XIII asr mo'g'ul istilosi, Jaloliddin Manguberdi qarshiligi, shuningdek, Buyuk Ipak yo'li tarixi va o'rta asr yirik janglari haqidagi tarixiy faktlarni o'z ichiga oladi.",
+    "keyPoints": [
+      {
+        "t": "Mo'g'ul istilosining boshlanishi",
+        "d": "Mo'g'ullar istilosi 1219-yilda O'tror shahrini qamal qilish bilan boshlangan. Keyin ular Amudaryodan o'tib, Buxoro va Samarqand kabi asosiy shaharlarni egallaganlar."
+      },
+      {
+        "t": "Xorazmshoh davlatining qulashi",
+        "d": "Xorazmshoh Muhammad qo'shinlarni birlashtira olmagani sababli orqaga chekinib, Niso yaqinida vafot etgan. Poytaxt Urgench 1221-yilda vayron qilingan."
+      },
+      {
+        "t": "Jaloliddin Manguberdi qarshiligi",
+        "d": "Jaloliddin Manguberdi 1221-yilda Hindistondagi Sind daryosi bo'yida jang qilgan. U daryodan o'tib, qarshilikni davom ettirgan."
+      },
+      {
+        "t": "Buyuk Ipak yo'li nomi tarixi",
+        "d": "\"Buyuk Ipak yo'li\" nomi 1877-yilda nemis geografi F. Rixtgofen tomonidan taklif qilingan. Dastlab bu yo'l miloddan avvalgi II asrda \"Buyuk meridianal yo'l\" deb atalgan."
+      },
+      {
+        "t": "Ipak yo'li xususiyatlari",
+        "d": "Buyuk Ipak yo'li 12 ming km uzunlikka ega bo'lib, savdo va madaniy aloqalar uchun xizmat qilgan. U faqat quruqlik bilan cheklanib qolmay, dengiz yo'llarini ham o'z ichiga olgan."
+      },
+      {
+        "t": "Muhim tarixiy janglar",
+        "d": "Dandanqon (1040) jangida G'aznaviylar mag'lub etilib, Xuroson olingan. Manzikert (1071) jangida saljuqiylar Vizantiyani yengib, Anadoluga kirishgan."
+      },
+      {
+        "t": "Buxoro me'morchiligi yodgorligi",
+        "d": "Buxorodagi Minorai Kalon 1127-yilda Arslonxon tomonidan qurdirilgan. Uning balandligi 80 metr bo'lib, o'rta asrlarda dunyodagi eng baland minoralardan biri bo'lgan."
+      }
+    ],
+    "mustKnow": [
+      "1219-yil — Mo'g'ullarning O'tror shahrini qamal qilishi (istilo boshlanishi).",
+      "1221-yil — Urgench shahrining vayron qilinishi va Jaloliddin Manguberdining Sind daryosidagi jangi.",
+      "1877-yil — \"Buyuk Ipak yo'li\" nomining nemis geografi F. Rixtgofen tomonidan taklif qilinishi.",
+      "\"Buyuk meridianal yo'l\" — Buyuk Ipak yo'lining dastlabki nomi.",
+      "12 ming km — Buyuk Ipak yo'lining uzunligi.",
+      "1127-yil — Minorai Kalonning qurilgan yili.",
+      "80 m — Minorai Kalon minorasining balandligi.",
+      "Niso shahri — Xorazmshoh Muhammad vafot etgan joy."
+    ],
+    "mistakes": [
+      "Xato: \"Buyuk Ipak yo'li\" nomi qadimiy davrlardan ma'lum. To'g'ri: Bu nom 1877-yilda F. Rixtgofen tomonidan taklif qilingan.",
+      "Xato: Ipak yo'li nomini Marko Polo yoki Chjan Syan bergan. To'g'ri: Nomni bergan shaxs F. Rixtgofendir.",
+      "Xato: 1924-yilgi hududiy bo'linish qadimgi davr tarixiga kiradi. To'g'ri: Bu jarayon sovet davri tarixiga oid."
+    ],
+    "mnemonics": [
+      "1877-Rixtgofen: Ipak yo'li nomi va muallifini eslash.",
+      "1219-1221: Mo'g'ul istilosining boshlanishi (O'tror) va tugashi (Urgench).",
+      "80-1127: Minorai Kalonning balandligi (80m) va qurilgan yili (1127)."
+    ],
+    "source": "O'zbekiston tarixi o'quv qo'llanmalari",
+    "updatedAt": "2026-07-28"
+  },
+  "17": {
+    "summary": "Mazkur materialda O'rta Osiyo tarixiga oid Buyuk Ipak yo'lining tarixi, Qoraxoniylar davri va Mo'g'ullar istilosi davridagi voqealar ketma-ketligi kabi tarixiy faktlar bayon etilgan.",
+    "keyPoints": [
+      {
+        "t": "Ipak yo'li nomining tarixi",
+        "d": "Yo'l miloddan avvalgi II asrda shakllanib, dastlab \"Buyuk meridianal yo'l\" deb atalgan. \"Ipak yo'li\" nomini 1877-yilda nemis geografi F. Rixtgofen bergan."
+      },
+      {
+        "t": "Qoraxoniylar va islom",
+        "d": "960-yilda Qoraxoniylar hukmdori Satuq Bug'roxon va amirlari islom dinini rasmiy din sifatida qabul qilgan. Bu voqea davlat tarixida burilish nuqtasi bo'ldi."
+      },
+      {
+        "t": "Yusuf Xos Hojib asari",
+        "d": "Yusuf Xos Hojib \"Qutadg'u bilig\" asarini 1069–1070-yillarda yozib tugatgan va uni Qashqarda Tabg'och Bug'roxonga taqdim etgan."
+      },
+      {
+        "t": "Urush boshlanish sabablari",
+        "d": "1218-yilda O'trorda mo'g'ul savdogarlarining josuslikda ayblanib o'ldirilishi va elchilarga tajovuz ko'rsatilishi Muhammad Xorazmshohning jiddiy siyosiy xatosi edi."
+      },
+      {
+        "t": "Istilo bosqichlari",
+        "d": "1219-yilda Jand va O'tror bosib olindi. 1220-yil boshida Samarqand, mart oyida esa Buxoro ishg'ol qilindi. Buxoro Samarqanddan biroz oldin istilo qilingan."
+      },
+      {
+        "t": "Xorazmshoh mag'lubiyati",
+        "d": "1220-yil bahorida Sirdaryoning Jand shahri yaqinidagi jangda Xorazmshoh Muhammad qo'shinlari mag'lubiyatga uchradi va shahzodalar tarqalib ketdi."
+      }
+    ],
+    "mustKnow": [
+      "1877-yil — nemis geografi F. Rixtgofen tomonidan \"Ipak yo'li\" nomi berilgan yil.",
+      "Miloddan avvalgi II asr — \"Buyuk meridianal yo'l\"ning shakllangan sanasi.",
+      "960-yil — Qoraxoniylar davlatida islom dinining qabul qilingan yili.",
+      "1069–1070-yillar — \"Qutadg'u bilig\" asarining yozib tugatilgan va taqdim etilgan yillari.",
+      "1218-yil — O'trorda mo'g'ul savdogarlarining o'ldirilishi va urush boshlanishiga bahona bo'lgan yil.",
+      "1219-yil — Mo'g'ullar tomonidan O'tror va Jand shaharlarining bosib olinishi.",
+      "1220-yil — Samarqand va Buxoro shaharlarining istilo qilingan yili.",
+      "12 ming km — \"Buyuk meridianal yo'l\"ning rivojlanib yetgan uzunligi."
+    ],
+    "mistakes": [
+      "Xato: Ipak yo'li nomi qadim zamonlarda berilgan. To'g'ri: Nom 1877-yilda F. Rixtgofen tomonidan berilgan.",
+      "Xato: Samarqand Buxorodan oldin istilo qilingan. To'g'ri: Buxoro Samarqanddan biroz oldin istilo qilingan.",
+      "Xato: Mo'g'ullar birinchi bo'lib Buxoroga hujum qildi. To'g'ri: Mo'g'ullar birinchi bo'lib 1219-yilda O'tror va Jandni bosib oldi.",
+      "Xato: Xorazmshoh Muhammad jangda qatnashib poytaxtni himoya qildi. To'g'ri: Xorazmshoh Muhammad poytaxtdan qochib ketdi."
+    ],
+    "mnemonics": [
+      "JOSB: Jand (1219) -> O'tror (1219) -> Samarqand (1220) -> Buxoro (1220).",
+      "2-12-1877: 2 (mil.avv. asr) — 12 (ming km uzunlik) — 1877 (nom berilgan).",
+      "960-1069-1219: Din (960) — Adabiyot (1069) — Urush boshlanishi (1219)."
+    ],
+    "source": "Tasdiqlangan test izohlari",
+    "updatedAt": "2026-07-28"
+  },
+  "18": {
+    "summary": "Mavzu bo'yicha izohlar O'zbekistonning qadimiy va o'rta asr tarixi, jumladan Buyuk Ipak yo'li, Somoniylar va Xorazmshohlar davlati, mo'g'ullar istilosi va Saljuqiylar tarixiga oid faktlarni o'z ichiga oladi.",
+    "keyPoints": [
+      {
+        "t": "Buyuk Ipak yo'li nomlanishi",
+        "d": "Yo'l mil.avv. II asrda vujudga kelib, dastlab \"Buyuk meridianal yo'l\" deb atalgan. \"Ipak yo'li\" degan nom 1877-yilda nemis geografi F. Rixtgofen tomonidan berilgan."
+      },
+      {
+        "t": "Somoniylar davri yodgorliklari",
+        "d": "Ismoil Somoniy maqbarasi IX–X asrlarda pishgan g'ishtdan qurilgan nodir yodgorlikdir. Mag'oki-Attari masjidi ham Somoniylar davrida shakllangan. Qozi Kalon minorasi esa 1197-yilda Arslonxon tomonidan qurilgan."
+      },
+      {
+        "t": "Xorazmshohlar davlati tarixi",
+        "d": "Anushteginiylar X asr o'rtalarida mahalliy hokim, 1077-yilda mustaqillikka erishgan. Muhammad davri (1200-1220) qudrat cho'qqisi bo'lib, 1220-1221 yillarda mo'g'ullar istilosi davlat tugatgan."
+      },
+      {
+        "t": "Mo'g'ullar istilosi bosqichlari",
+        "d": "Istilo 1219-yilda O'tror qurshovi bilan boshlangan. 1220-yilda Buxoro va Samarqand ishg'ol qilingan, 1221-yilda esa Jaloliddin Manguberdi bilan janglar bo'lib o'tgan."
+      },
+      {
+        "t": "Saljuqiylar va yirik janglar",
+        "d": "Saljuqiylar 1040-yildagi Dandanakan jangida G'aznaviylarni mag'lub etib Xurosonni egallagan, lekin Movarounnaharni to'liq bosib ololmagan. Katvon jangida (1141) Qoraxitoylar g'alaba qozongan."
+      },
+      {
+        "t": "O'tror voqeasi va oqibatlari",
+        "d": "1218-yilda O'troda mo'g'ul savdogarlari josuslikda ayblanib o'ldirilgan va elchilar tinchlik taklifi rad etilgan. Bu voqea 1219-yilda Buxoro va Xorazmning bosib olinishiga sabab bo'lgan."
+      },
+      {
+        "t": "G'urganjning vayron bo'lishi",
+        "d": "Xorazm poytaxti G'urganj 1220-yilda mo'g'ullar istilosi davrida qattiq vayron bo'lgan va suv toshqini tufayli xarobaga aylangan."
+      }
+    ],
+    "mustKnow": [
+      "Buyuk Ipak yo'li nomi 1877-yilda nemis geografi F. Rixtgofen tomonidan berilgan",
+      "Qozi Kalon minorasi 1197-yilda Arslonxon tomonidan qurilgan",
+      "Xorazmshohlar davlati 1077-yilda mustaqillikka erishgan",
+      "Mo'g'ullar istilosi 1219-yilda O'tror shahrini qurshov bilan boshlangan",
+      "Dandanakan jangi 1040-yilda Saljuqiylar va G'aznaviylar o'rtasida bo'lib o'tgan",
+      "Talas jangi (751) Sharq va G'arb o'rtasidagi to'siqlarni olib tashlash va qog'oz yasash tarqalishiga sabab bo'lgan"
+    ],
+    "mistakes": [
+      "Xato: \"Ipak yo'li\" qadimdan shu nom bilan yuritilgan. To'g'ri: Dastlab \"Buyuk meridianal yo'l\" deb atalgan, nomi 1877-yilda F. Rixtgofen tomonidan berilgan.",
+      "Xato: Mo'g'ullar istilosi 1220-yilda boshlangan. To'g'ri: Istilo 1219-yilda O'tror qurshovi bilan boshlangan."
+    ],
+    "mnemonics": [
+      "Ipak yo'li tarixi: mil.avv. II (boshlanish) -> 1877 (nom berilgan).",
+      "Xorazmshohlar: 1077 (mustaqillik) -> 1200-1220 (qudrat) -> 1220 (tugash)."
+    ],
+    "source": "Tasdiqlangan test izohlari",
+    "updatedAt": "2026-07-28"
+  },
+  "19": {
+    "summary": "Mavzu qadimgi sivilizatsiyalar va O'rta asrlar (V–XV asrlar) tarixini qamrab oladi. Imtihonda Yevropa va Osiyodagi feodalizm, yirik voqealar va hukmdorlar faoliyati haqidagi ma'lumotlar asosida savollar beriladi.",
+    "keyPoints": [
+      {
+        "t": "Amir Temur va Karl VI davri",
+        "d": "Ikkala hukmdor davrida markazlashuv jarayoni kuzatildi. Fransiyada 1302-yilda General shtatlar kabi organlar paydo bo'ldi, Temur davlatida esa vakillik organlari yo'q edi va hokimiyat amir qo'lda jamlangan edi."
+      },
+      {
+        "t": "Magna Carta ahamiyati",
+        "d": "1215-yildagi 'Buyuk Xartiya' qirol hokimiyatini qonun bilan cheklab, konstitutsiyaviy monarxiya tamoyillariga zamin yaratdi. Bu hujjat qirolni qonun oldida teng deb tan oldi va baronlarning huquqlarini kafolatladi."
+      },
+      {
+        "t": "Yuz yillik urush oqibatlari",
+        "d": "1337–1453-yillardagi urush davomida piyoda askarlar va o'qchilar roli oshdi, otliq zodagonlar ahamiyatini yo'qotdi, bu feodalizm inqiroziga turtki berdi. 1429-yilda Janna d'Ark Orleansni ozod qilib, urush borishini o'zgartirdi."
+      },
+      {
+        "t": "'Qora o'lim' ta'siri",
+        "d": "1347-1351-yillardagi vabo Yevropada aholining ommaviy qirilishiga olib keldi. Mehnat qobiliyatli kishilarning kamayishi dehqonlarning mehnat qiymatini oshirib, ularning feodallar oldidagi o'rnini mustahkamlashiga sabab bo'ldi."
+      },
+      {
+        "t": "Vizantiya imperiyasining tugashi",
+        "d": "1453-yilda Konstantinopolning bosib olinishi bilan Vizantiya imperiyasi tugadi va savdo yo'llari turklar qo'liga o'tdi. Bu voqea harbiy texnikada poroxli qurollar bosqichining boshlanishini ko'rsatdi."
+      },
+      {
+        "t": "Xitoyda sulola o'zgarishi",
+        "d": "Chju Yuanjan 1368-yilda Yuan sulolasini ag'darib, Min sulolasiga asos soldi. U dehqonlar qo'zg'oloni rahbari sifatida hokimiyatni qo'lga kiritdi, Kublayxon esa Yuan sulolasining asoschisi edi."
+      },
+      {
+        "t": "Anqara jangi va oqibatlari",
+        "d": "Anqara jangidagi g'alaba Usmonlilar imperiyasiga zarba berib, ularning Yevropadagi kengayishini to'xtatdi. Temur vafotidan keyin 1453-yilda Konstantinopol olindi, poytaxt Samarqand bo'lib qoldi."
+      }
+    ],
+    "mustKnow": [
+      "1215-yil — Magna Carta (Buyuk Xartiya) imzolangan yil.",
+      "1347-1351-yillar — 'Qora o'lim' (vabo) Yevropada falokat keltirgan davr.",
+      "1358-yil — Fransiyada Jakariya dehqonlar qo'zg'oloni bo'lgan yil.",
+      "1429-yil — Janna d'Ark rahbarligida Orleans shahri inglizlardan ozod qilingan yil.",
+      "1453-yil — Konstantinopolning bosib olinishi va Vizantiya imperiyasining tugashi.",
+      "1337–1453-yillar — Yuz yillik urush davom etgan muddat.",
+      "1368-yil — Xitoyda Min sulolasining tashkil topgan yili.",
+      "800-yil — Karl Buyukning imperator etib tayinlanishi va Franklar davlatining vujudga kelishi."
+    ],
+    "mistakes": [
+      "Temur davlatida vakillik organlari (masalan, General shtatlar) bo'lgan. To'g'ri: Temur davlatida vakillik organlari yo'q edi, hokimiyat amir qo'lda edi.",
+      "Vanda qo'zg'oloni O'rta asrlar yuz yillik urushi davriga tegishli. To'g'ri: Vanda qo'zg'oloni XVI asrga tegishli, Jakariya esa 1358-yilda bo'lgan.",
+      "Konstantinopol qulaganda imperator qochib ketgan. To'g'ri: Imperator shahar qulagunga qadar jang qildi va halok bo'ldi.",
+      "Anqara jangidan keyin poytaxt Anqaraga ko'chirildi. To'g'ri: Poytaxt Samarqand bo'lib qoldi."
+    ],
+    "mnemonics": [
+      "1453-yilni eslash: Bir-to'rt-besh-u'ch (1453) — Vizantiya tugadi, Konstantinopol olindi.",
+      "1215-yilni eslash: Bir-ikki-besh (1215) — Qirol hokimiyati cheklab, Magna Carta imzolandi.",
+      "Xitoy sulolalari: Yuan (Mongol) -> Min (Dehqon Chju Yuanjan). Yuan 'Yomon' bo'lib ketdi, Min 'Yaxshi' keldi."
+    ],
+    "source": "O'zbekiston Respublikasi Xalq ta'limi vazirligi tomonidan tasdiqlangan attestatsiya imtihonlari uchun test izohlari",
+    "updatedAt": "2026-07-28"
+  },
+  "20": {
+    "summary": "Mavzu O'rta asr oxiri va Yangi davr boshidagi tarixiy voqealarga, jumladan, Amir Temur yurishlari, mo'g'ul istilolari, salib yurishlari, Buyuk geografik kashfiyotlar va Yevropa mamlakatlaridagi siyosiy o'zgarishlarga bag'ishlangan. Imtihonda sanalar, shaxslar va voqealar o'rtasidagi o'zaro bog'liqlikni aniq bilish talab etiladi.",
+    "keyPoints": [
+      {
+        "t": "Amir Temur yurishlari",
+        "d": "Amir Temur 1398-yilda Dehlini egalladi va 1402-yil Anqara jangida O'smaliylar sultonini asir oldi. Suriya va Misr butunlay emas, balki vaqtinchalik vassallikka olingan edi."
+      },
+      {
+        "t": "Geografik kashfiyotlar",
+        "d": "Iogann Gutenberg 1440-yillarda kitob bosmasini ixtiro qildi. Martin Beyxaym 1492-yilda birinchi globusni yaratdi, Magellan ekspeditsiyasi (1519-1522) Yerning sharsimon ekanligini isbotladi."
+      },
+      {
+        "t": "Mo'g'ul istilolari",
+        "d": "Mo'g'ullar 1219-1221 yillarda Xorazmshohlar davlatini, 1223-yilda Kalka jangida rus knyazlarini mag'lub etdi. 1241-yilda Legnitsa va Sayo janglari bilan Yevropaga yurish qildi."
+      },
+      {
+        "t": "Kiyevning vayron bo'lishi",
+        "d": "1240-yilda Batu qo'shinlari Kiyevni bosib oldi va vayron qildi, bu rus knyazliklarining siyosiy birligiga barham berdi va Shimoliy-sharqiy Rusning vassalligiga olib keldi."
+      },
+      {
+        "t": "Mo'g'ullarning chekinishi",
+        "d": "1241-yilda Oqtayxon vafot etgach, yangi xonni saylash uchun qurultoy chaqirish zarurati tufayli Batuxon G'arbdan chekinishga majbur bo'ldi."
+      },
+      {
+        "t": "Vizantiya imperiyasi qulashi",
+        "d": "1453-yilda Mehmed II Fotih Konstantinopolni bosib oldi, bu O'rta asrning tugashi va Vizantiyaning yo'qolishi sifatida tarixda muhim ahamiyatga ega."
+      },
+      {
+        "t": "Salib yurishlari oqibatlari",
+        "d": "Salib yurishlari savdo yo'llarining ochilishi va shahar hayotining jonlanishiga olib keldi. Yaqin Sharqdagi nasroniy davlatlar 1291-yilda qulab tushdi."
+      },
+      {
+        "t": "Angliyada absolyutizm",
+        "d": "Feodal urug'larining vayron bo'lishi natijasida 1485-yilda Genrix Tudor hokimiyat tepasiga keldi va mamlakatda absolyutizm shakllana boshladi."
+      }
+    ],
+    "mustKnow": [
+      "Anqara jangi: 1402-yil, Amir Temur O'smaliylar sultonini asir oldi.",
+      "Dehlini egallash: 1398-yil, Amir Temur Hindistonga yurish qildi.",
+      "Kitob bosmasi: 1440-yillarda Iogann Gutenberg tomonidan ixtiro qilingan.",
+      "Birinchi globus: 1492-yilda Martin Beyxaym tomonidan yaratilgan.",
+      "Magellan ekspeditsiyasi: 1519-1522-yillar, Yerning sharsimon ekanligini amaliy isbotladi.",
+      "Kalka jangi: 1223-yil, mo'g'ullar rus knyazlari va qipchoqlarni mag'lub etdi.",
+      "Konstantinopol qulashi: 1453-yil, Mehmed II Fotih tomonidan bosib olindi.",
+      "Genrix Tudor: 1485-yilda hokimiyat tepasiga keldi, absolyutizm shakllana boshladi."
+    ],
+    "mistakes": [
+      "Xato: Suriya va Misr Amir Temur tomonidan butunlay egallab olindi. To'g'ri: Ular faqat vaqtinchalik vassallikka olingan.",
+      "Xato: Salib yurishlari faqat diniy sabablarga ko'ra boshlangan. To'g'ri: Ular iqtisodiy va siyosiy sabablarga ko'ra ham boshlangan.",
+      "Xato: Mo'g'ullar Yevropadan qal'alar mustahkamligi sabab chekindi. To'g'ri: Asosiy sabab Oqtayxon vafoti va qurultoy chaqirish zarurati edi.",
+      "Xato: Mayya imperiyasi XVI asrda ravnaq topgan. To'g'ri: Mayya klassik davrda (I–IX asrlar) ravnaq topgan, XVI asrda tanazzulga uchragan."
+    ],
+    "mnemonics": [
+      "Temur sanalari: 1398 (Dehli) va 1402 (Anqara) — 98-02 o'sish tartibida eslang.",
+      "Mo'g'ul bosqinlari: 21 (Xorazm), 23 (Kalka), 40 (Kiyev), 41 (Yevropa) — juft sonlar ketma-ketligi.",
+      "G'arb kashfiyotlari: 1440 (Bosma), 1492 (Globus), 1519 (Magellan) — asrlar oxiri va boshlanishi."
+    ],
+    "source": "Tasdiqlangan test izohlari",
+    "updatedAt": "2026-07-28"
+  },
+  "21": {
+    "summary": "Mazkur material Oltin O'rda, Yuz yillik urush, Karl Buyuk, Yustinian kodeksi, Saljuqiylar, Hammurabi qonunlari, salib yurishlari, Konstantinopolning qulashi, mo'g'ullar istilosi va Kolumb kabi tarixiy voqealar va shaxslarga bag'ishlangan. Imtihonda sanalar, unvonlar va tarixiy ahamiyatga ega faktlarga e'tibor beriladi.",
+    "keyPoints": [
+      {
+        "t": "Oltin O'rda va rus knyazlari",
+        "d": "Oltin O'rda poytaxti Volga bo'yida Saroy shaharlari bo'lgan. O'zbekxon davri (1313–1341) islomning rasmiy din bo'lishi bilan belgilanadi. Rus knyazlari hokimiyatni qonuniylashtirish uchun xoqonlardan \"yarlik\" olishgan."
+      },
+      {
+        "t": "Yuz yillik urush burilishi",
+        "d": "Orleananing ozod qilinishi (1429) urushning burilish nuqtasi bo'ldi. Bu voqea fransuzlarning vatanparvarlik kayfiyatini oshirdi va Karl VII ning Reims shahrida toj kiyishiga imkon yaratdi."
+      },
+      {
+        "t": "Karl Buyuk va Vizantiya",
+        "d": "Karl Buyuk qonunlarni tartibga soldi, imperator unvonini qabul qildi va hududlarni nazorat qilish uchun graflarni tayinladi. Vizantiya poytaxtini bosib olish unga nasib etmadi, bu 1453-yilda sodir bo'ldi."
+      },
+      {
+        "t": "Qadimgi huquqiy hujjatlar",
+        "d": "Yustinian kodeksi Rim huquqining yodgorligi bo'lib, Yevropa qonunchiligiga ta'sir ko'rsatdi. Hammurabi qonunlari miloddan avvalgi 1792-1750 yillar oralig'ida yozilgan va 1901-yili Susada topilgan."
+      },
+      {
+        "t": "Saljuqiylar davlati",
+        "d": "Alp Arslon Manzikert jangi (1071) bilan mashhur. Nizomulmulk uning vaziri bo'lib, 'Siyosatnoma' yozgan. To'g'ril bek Bag'dodda 'Sulton' unvonini olgan davlat asoschisidir."
+      },
+      {
+        "t": "Mo'g'ullar istilosi bosqichlari",
+        "d": "Istilo 1219-yilda O'tror qal'asiga hujum bilan boshlandi, keyin Buxoro va Samarqand egallab olindi. Shahs o'limi 1220-yil dekabrida bo'lgan, davlat markaziy hokimiyat qulashi bilan tugadi."
+      },
+      {
+        "t": "1492-yil voqealari",
+        "d": "Granada qulashi bilan Kastiliya va Aragon birlashib, Ispaniya davlatiga asos soldi. Shu yili Xristofor Kolumb Hindistonga dengiz yo'lini topishga chiqdi."
+      }
+    ],
+    "mustKnow": [
+      "O'zbekxon davri: 1313–1341 yillar (islom rasmiy din bo'ldi).",
+      "Orleananing ozod qilinishi: 1429 yil.",
+      "Manzikert jangi: 1071 yil.",
+      "Hammurabi qonunlari: miloddan avvalgi 1792-1750 yillar.",
+      "O'tror qal'asiga hujum: 1219 yil (mo'g'ullar istilosining boshlanishi).",
+      "Konstantinopolning qulashi: 1453 yil.",
+      "Granada qulashi: 1492 yil.",
+      "Yuz yillik urush boshlanishi: 1337 yil."
+    ],
+    "mistakes": [
+      "Xato: Vizantiya poytaxti Karl Buyuk tomonidan bosib olingan deb hisoblash. To'g'ri: Bu voqea 1453-yilda sodir bo'lib, Karl Buyuk davriga tegishli emas.",
+      "Xato: Din e'tiqodiga qarshi taqiq O'zbekxondan keyin ham davom etgan deb o'ylash. To'g'ri: Taqiq O'zbekxondan keyin bekor qilingan.",
+      "Xato: Konstantinopol qulagandan so'ng darhol vayron bo'lgan deb hisoblash. To'g'ri: Shahar poytaxt (Istanbul) sifatida rivojlana boshlagan.",
+      "Xato: Salibchilar Qudusni 13-asr boshida egallagan deb hisoblash. To'g'ri: Qudus 1099-yilda egallangan."
+    ],
+    "mnemonics": [
+      "1492 yil: 'Granada quladi, Ispaniya birlashadi, Kolumb suzadi'.",
+      "Tarixiy ketma-ketlik: '1099 Qudus, 1260 Ayn Jolut, 1453 Konstantinopol, 1492 Granada'.",
+      "Mo'g'ullar: '1219 O'tror boshlandi, 1220 Chingiz vafot etdi'."
+    ],
+    "source": "Tasdiqlangan test izohlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "22": {
+    "summary": "Mavzu tarix o'qitish metodikasi, pedagogik-psixologik asoslar va o'qituvchi kasb standartlarini qamrab oladi. Imtihonda xavfsiz muhit yaratish, o'quvchilarning yosh xususiyatlarini hisobga olish va ta'lim texnologiyalarini qo'llashga urg'u beriladi.",
+    "keyPoints": [
+      {
+        "t": "Tarixiy manbalarning turlari",
+        "d": "Muqimiy she'rlari shaxsiy, 1873-yil shartnomasi diplomatik, Afrosiyob rasmlari esa arxeologik manba turlariga misoldir."
+      },
+      {
+        "t": "Bullingga qarshi kurash",
+        "d": "Pedagog bulling yoki kiberbullingni aniqlagan darhol aralashib, jabrlanuvchini himoya qilishi va jamoa bilan tizimli yechim topishi shart."
+      },
+      {
+        "t": "Ota-onalar uchrashuvi tartibi",
+        "d": "Uchrashuv maqsadlar tushuntirilishidan, keyin yutuqlar ko'rsatilishidan, so'ngra savollardan va oxirida hamkorlik rejasidan iborat."
+      },
+      {
+        "t": "Individual yondashuv talabi",
+        "d": "Kasbiy standartga ko'ra, pedagog o'quvchining individual ehtiyojlarini hisobga olib, topshiriqlarni tabaqalashtirishi lozim."
+      },
+      {
+        "t": "Yosh xususiyatlari va moslashish",
+        "d": "10-11 yoshli bolalar o'yindan ta'lim faoliyatiga o'tayotgani uchun ko'rgazmali va o'yinli topshiriqlar orqali yordam berish kerak."
+      },
+      {
+        "t": "Kognitiv rivojlanish bosqichlari",
+        "d": "7-11 yosh konkret operatsiyalar, 11-12 yoshdan keyin esa mavhum fikrlash imkoniyatini beruvchi formal operatsiyalar bosqichidir."
+      },
+      {
+        "t": "Blum taksonomiyasida tahlil",
+        "d": "Beruniy va Ptolemey tizimlarini solishtirish ma'lumotlarni qismlarga ajratish va ichki qonuniyatlarni tushunishni talab qiladi."
+      }
+    ],
+    "mustKnow": [
+      "1873-yil shartnomasi rasmiy diplomatik hujjat manbasidir.",
+      "Formal operatsiyalar bosqichi 11-12 yoshdan boshlanadi.",
+      "Konkret operatsiyalar bosqichi 7 yoshdan 11 yoshgacha davom etadi.",
+      "O'rta sinfga o'tish davri 10-11 yoshni qamrab oladi.",
+      "Ota-onalar uchrashuvi ketma-ketligi: maqsadlar, yutuqlar, savollar, rejalar.",
+      "Afrosiyob devoriy rasmlari tasviriy-moddiy arxeologik manbaga kiradi."
+    ],
+    "mistakes": [
+      "Xato: Ota-onalar bilan uchrashuv ota-onalarning savollarini eshitishdan boshlanadi. To'g'ri: Uchrashuv maqsad va standartlar tushuntirilishidan boshlanadi.",
+      "Xato: Formal operatsiyalar bosqichi 7 yoshdan boshlanadi. To'g'ri: Formal operatsiyalar bosqichi 11-12 yoshdan keyin boshlanadi.",
+      "Xato: Konkret operatsiyalar bosqichida bolalar mavhum g'oyalar ustida fikrlay oladi. To'g'ri: Bu bosqichda bolalar faqat konkret predmetlar ustida mantiqiy fikrlaydi."
+    ],
+    "mnemonics": [
+      "Uchrashuv algoritmi: Maqsad -> Yutuq -> Savol -> Reja (MYuSR).",
+      "Piaget yoshlari: 7-11 Konkret, 11+ Formal."
+    ],
+    "source": "O'qituvchi kasb standarti va umumiy pedagogika",
+    "updatedAt": "2026-07-28"
+  }
+}

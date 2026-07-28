@@ -1,0 +1,423 @@
+{
+  "31": {
+    "summary": "Boshlang'ich sinf ona tili darslaridagi imlo qoidalari, bo'g'inlarga bo'linish, tinish belgilari va gap bo'laklarining vazifalarini o'z ichiga oladi. Imtihonda talaffuzga mos yozish, so'z ma'nosini aniqlash va matnga mos belgilash ko'nikmalari baholanadi.",
+    "keyPoints": [
+      {
+        "t": "Bo'g'inlarga bo'linish qoidalari",
+        "d": "O'zbek tilida 'sh', 'ch', 'ng' harflar birikmalari bitta tovushni ifodalaydi va bo'g'in ko'chirishda ularni bir-biridan ajratib bo'lmaydi. Masalan, 'qoshiq' so'zi 'qo-shiq' qilib bo'linadi."
+      },
+      {
+        "t": "Tutuq belgisi vazifasi",
+        "d": "Tutuq belgisi undosh tovushning oldingi bo'g'in bilan aloqasini mustahkamlashini yoki o'ziga xos talaffuzini ko'rsatadi. Bo'g'inlarga bo'linishda u oldingi qismga qo'shilib qoladi."
+      },
+      {
+        "t": "Tinish belgilari qo'llanishi",
+        "d": "His-hayajon bilan aytilgan gaplar oxiriga undov belgisi (!) qo'yiladi. So'roq belgisi (?) faqat so'raladigan gaplarda, nuqta (.) esa xabar gaplarda ishlatiladi."
+      },
+      {
+        "t": "Gap bo'laklarini aniqlash",
+        "d": "Narsa nomlari (ot) 'nima?' savoliga, harakatni bildirgan so'zlar (fel) 'nim qiladi?' savoliga, belgini bildirgan so'zlar (sifat) esa 'qanday?' savoliga javob beradi."
+      },
+      {
+        "t": "Antonimlar va maqol mazmuni",
+        "d": "'Oson' va 'qiyin' so'zlari qarama-qarshi ma'no bildiradi (antonim). Maqol mazmunini tushunish uchun zid tushunchalarni aniqlash muhim ahamiyatga ega."
+      },
+      {
+        "t": "Uslubiy moslik va so'z tanlov",
+        "d": "Bolalar harakati va kayfiyatiga 'quvonchoq', rasmiy nutqqa esa 'shod-onand' so'zlari mos keladi. Fe'ldan keyin ot kelmaydi, shu sababli 'o'ynash xursandchilik' noto'g'ri."
+      },
+      {
+        "t": "Metaforik ifodalar",
+        "d": "So'zning maqomi ma'nosi ishlatilganda, jonsiz narsalar haqida tirik jonzotlarga xos fe'llar (masalan, soat uchun 'yuradi') ishlatilishi mumkin."
+      }
+    ],
+    "mustKnow": [
+      "'Singil' (si-ngil), 'Qoshiq' (qo-shiq) va 'Ishchan' (ish-chan) so'zlaridagi harflar birikmalari qoidaga muvofiq ajratilmaydi.",
+      "'Chumchuq' so'zida 'ch' birikmasi bor, shuning uchun u 'chu-mchuq' emas, balki 'chum-chuq' yoki 'chum-chu-q' bo'linadi.",
+      "His-hayajon bilan aytilgan gaplar oxiriga undov belgisi (!) qo'yiladi, bu sodir bo'layotgan jarayonga nisbatan muallifning kuchli hayajonini bildiradi.",
+      "Narsa nomlari (ot) 'nima?' savoliga, harakatni bildirgan so'zlar (fel) 'nim qiladi?' savoliga, belgini bildirgan so'zlar (sifat) esa 'qanday?' savoliga javob beradi.",
+      "'Oson' (engil) va 'qiyin' (og'ir) so'zlari qarama-qarshi ma'no bildiradi, ya'ni ular antonimdir.",
+      "Bo'g'in ko'chirishda chiziqcha aynan bo'linish joyiga qo'yiladi va so'zlar faqat bo'g'inlar orasidan bo'linadi."
+    ],
+    "mistakes": [
+      "'Chumchuq' so'zini 'chu-mchuq' deb bo'lish (xato), to'g'ri variant 'chum-chuq' yoki 'chum-chu-q'.",
+      "'Qoshiq' so'zini 'qosh-iq' deb bo'lish (xato), to'g'ri variant 'qo-shiq'.",
+      "'O'ynash xursandchilik' deyish (xato), chunki 'xursandchilik' ot, to'g'ri variant 'o'ynash quvonchoq'.",
+      "'Vatan — aziz diyar' gapiga nuqta qo'yish (xato), to'g'ri variant undov belgisi (!)."
+    ],
+    "mnemonics": [
+      "'Sh, ch, ng' — do'stlar birga, ularni ajratmay; oxiridagi unli ham yakka qolmay.",
+      "Savol — so'roq (?), xabar — nuqta (.), hayajon — undov (!).",
+      "Ot — nima?, Fel — nima qiladi?, Sifat — qanday?."
+    ],
+    "source": "O'zbek tilidagi imlo va uslubiyat qoidalari",
+    "updatedAt": "2026-07-28"
+  },
+  "32": {
+    "summary": "Lingvistik tahlil mavzusida ona tilidan fonetik, leksik, morfemik va morfologik tahlil o'tkazish, shuningdek, bo'g'inlash va satrdan satrga ko'chirish qoidalari o'rgatiladi. Imtihonda bo'g'in hosil bo'lish sharoitlari, so'z yasovchi va bog'lovchi qo'shimchalar farqi hamda so'z tarkibini tahlil qilishga urg'u beriladi.",
+    "keyPoints": [
+      {
+        "t": "Bo'g'in hosil bo'lishi sharti",
+        "d": "Bo'g'in hosil bo'lishi uchun unli tovushning bo'lishi shartdir. Undosh tovushlar mustaqil bo'g'in hosil qila olmaydi, faqat unli bilan birga kelgagina bo'g'in tarkibiga kiradi."
+      },
+      {
+        "t": "Satrdan satrga ko'chirish qoidasi",
+        "d": "So'zlar satrdan satrga faqat bo'g'inlar bo'yicha ko'chiriladi. Masalan, 'Qozon' so'zi ikki bo'g'inli (qo-zon) bo'lib, 'qo' bo'g'ini satr oxirida, 'zon' bo'g'ini keyingi satr boshida yoziladi."
+      },
+      {
+        "t": "Harflar birikmasi tushunchasi",
+        "d": "Darslikdagi 'Lo'ppicha' misolida 7 ta harf bor, shundan 1 tasi harflar birikmasi hisoblanadi. Odatda 'pp' kabi ikki undosh ketma-ket kelganda ular harflar birikmasi sifatida qaraladi."
+      },
+      {
+        "t": "So'z yasovchi qo'shimchalar",
+        "d": "'Bog'bon' so'zi 'bog'' o'zagi va '-bon' qo'shimchasidan tashkil topgan bo'lib, '-bon' yangi kasb-hunar ma'nosini beruvchi yasovchi qo'shimchadir."
+      },
+      {
+        "t": "Bog'lovchi qo'shimchalar",
+        "d": "'Baliqdan', 'bog'da', 'sinfni' so'zlaridagi qo'shimchalar so'zlarni bog'lovchi (kelishik) qo'shimchalari bo'lib, ular yangi so'z yasamaydi, balki grammatik munosabatni ifodalaydi."
+      },
+      {
+        "t": "Murakkab bo'g'inlash holatlari",
+        "d": "'Xalq' so'zida bitta bo'g'in bor. Undoshlar guruhi (lq) bo'g'in oxirida kelganligi uchun ular ajralmaydi, aks holda ikkinchi bo'g'in faqat undoshdan iborat bo'lib qoladi."
+      }
+    ],
+    "mustKnow": [
+      "Bo'g'in hosil bo'lishi uchun unli tovushning bo'lishi shartdir.",
+      "Undosh tovushlar mustaqil bo'g'in hosil qila olmaydi, faqat unli bilan birga kelgagina bo'g'in tarkibiga kiradi.",
+      "'Lo'ppicha' so'zida 7 ta harf bor, shundan 1 tasi harflar birikmasidir.",
+      "'Bog'bon' so'zi 'bog'' o'zagiga '-bon' so'z yasovchi qo'shimchasining qo'shilishidan hosil bo'lgan.",
+      "'Baliqchi' va 'mevali' so'zlaridagi qo'shimchalar yangi so'z yasovchi qo'shimchadir.",
+      "'Baliqdan' so'zidagi '-dan' qo'shimchasi kelishik qo'shimchasi bo'lib, so'z yasovchi emas.",
+      "'Nonning' so'zidagi '-ning' qo'shimchasi so'zlarni o'zaro bog'lovchi qo'shimchadir.",
+      "'Xalq' so'zida bitta bo'g'in bor, undoshlar guruhi bo'g'in oxirida kelganda ajralmaydi."
+    ],
+    "mistakes": [
+      "'Xalq' so'zini 'xa-lq' deb bo'lish (xato), chunki ikkinchi bo'g'in faqat undoshdan iborat bo'ladi; to'g'risi 'xalq' (bitta bo'g'in).",
+      "'Baliqdan' so'zidagi '-dan' qo'shimchasini so'z yasovchi deb hisoblash (xato); bu bog'lovchi (kelishik) qo'shimchasidir.",
+      "'Qozon' so'zini noto'g'ri bo'lish yoki bo'g'inlarga rioya qilmagan holda ko'chirish (xato); to'g'risi 'qo-zon' bo'linishi."
+    ],
+    "mnemonics": [
+      "Bo'g'in yadrosi — unli tovush, undoshlar unlisiz yolg'iz qola olmaydi.",
+      "'-bon' kasbni ('bog'bon'), '-li' esa xususiyatni ('mevali') bildiradi.",
+      "'Xalq' so'zining oxiridagi 'lq' do'st bo'lib, ajralmaydi."
+    ],
+    "source": "Ona tili darsligi va fonetikada qabul qilingan asosiy qoidalar",
+    "updatedAt": "2026-07-28"
+  },
+  "33": {
+    "summary": "O'qish va adabiyot bo'yicha matndan aniq ma'lumotni topish ko'nikmasi. Toshkentdagi Yoshlar ijod saroyiga oid matn asosida voqealar ketma-ketligi va obrazlar tahlili imtihonda asosiy o'rin tutadi.",
+    "keyPoints": [
+      {
+        "t": "Matndan aniq ma'lumot topish",
+        "d": "Savol matnda bevosita keltirilgan sanani (2008-yil) talab qiladi, bu esa matndan aniq ma'lumotni topish ko'nikmasiga to'g'ri keladi."
+      },
+      {
+        "t": "Saroyning qurilgan joyi",
+        "d": "Matnda aniq qayd etilishicha, Toshkentda Yoshlar ijod saroyi bor va u 2008-yili barpo etilgan, bu asosiy fakt hisoblanadi."
+      },
+      {
+        "t": "Ijodiy faoliyat turlari",
+        "d": "Saroyda iste'dodli bolalar rassomlik, hunarmandchilik kabi yo'nalishlarda faoliyat olib boradilar va o'z ijodlari bilan shug'ullanadilar."
+      },
+      {
+        "t": "Voqealar rivojlanishi",
+        "d": "Avval saroy quriladi (2008-yil), keyin iste'dodli bolalar yig'iladi, ular ijod qiladi va oxirida asarlari ko'rsatiladi hamda maslahat olinadi."
+      },
+      {
+        "t": "Xronologik ma'lumotlar",
+        "d": "Matndagi '2008-yil' sanasi binoning qurilgan vaqtini ko'rsatuvchi aniq xronologik ma'lumotdir, qolganlari esa faoliyat turlari va fikrlardir."
+      },
+      {
+        "t": "Matn mazmuniga moslik",
+        "d": "Matnda keltirilgan ma'lumotlar asosida saroy Toshkentda qurilganligi va uning faoliyat yo'nalishlari aniqlanadi, boshqa variantlar noto'g'ri."
+      }
+    ],
+    "mustKnow": [
+      "2008-yil (Toshkentdagi Yoshlar ijod saroyi qurilgan sana)",
+      "Toshkent (Yoshlar ijod saroyi joylashgan shahar)",
+      "Rassomlik va hunarmandchilik (Saroydagi asosiy faoliyat yo'nalishlari)",
+      "Matndan aniq ma'lumotni topish (imtihondagi asosiy talab)",
+      "Yoshlar ijod saroyi (matnda asosiy ob'ekt sifatida qayd etilgan muassasa)"
+    ],
+    "mistakes": [
+      "Matnda bo'lmagan sanalarni ko'rsatish (masalan, 2010-yil) — To'g'risi: Matnda faqat 2008-yil keltirilgan.",
+      "Qo'shimcha fikr yuritib xulosa chiqarish — To'g'risi: Matndagi aniq ma'lumotni topish talab etiladi."
+    ],
+    "mnemonics": [
+      "2008-Toshkent: Saroy qachon va qayerda qurilganini eslash uchun sanani va shaharni bog'lash.",
+      "Rassom-Hunarmand: Saroydagi ikki asosiy faoliyat turi."
+    ],
+    "source": "O'zbekiston Respublikasi Xalq ta'limi vazirligi",
+    "updatedAt": "2026-07-28"
+  },
+  "34": {
+    "summary": "Mavzu natural va butun sonlar ustida amallar, bo'linish alomatlarini hamda matematik ifodalar va tenglamalar tuzishni o'z ichiga oladi. Imtihonda sonlarni taqqoslash, birliklar sistemasida o'tish va matnli masalalarni tahlil qilish ko'zda tutiladi.",
+    "keyPoints": [
+      {
+        "t": "Raqamlarning joylashishi",
+        "d": "Bir necha xonali sonlarda raqamlarning yuzlik, o'nlik, birlik yoki mingliklarda joylashishini to'g'ri aniqlash talab etiladi."
+      },
+      {
+        "t": "Bo'linish alomatlari",
+        "d": "Sonlarning 2, 3, 5, 9 va 10 ga bo'linish alomatlarini bilish va ularni misollar orqali tekshirish."
+      },
+      {
+        "t": "Matematik atamalar",
+        "d": "Bo'luvchi, bo'linuvchi va ko'paytuvchi kabi tushunchalarni amallar asosida to'g'ri aniqlash."
+      },
+      {
+        "t": "Birliklar sistemasida o'tish",
+        "d": "Massa birliklarini grammdan kilogrammga o'tkazishda 1000 ga bo'lish mantig'ini qo'llash."
+      },
+      {
+        "t": "Tenglama va ifodalar",
+        "d": "Matnli masalalar shartiga ko'ra noma'lum miqdorni ifodalovchi tenglamalar tuzish va ularni yechish."
+      },
+      {
+        "t": "Matnli masalalarni yechish",
+        "d": "Qoldiqni topish masalalarida umumiy miqdordan sarflangan yoki ishlatilgan qismlarning yig'indisini ayirish."
+      }
+    ],
+    "mustKnow": [
+      "549 sonida 5 raqami yuzliklarda joylashgan.",
+      "5600 sonida 5 raqami mingliklarda joylashgan.",
+      "1392 soni juft bo'lgani uchun 2 ga bo'linadi.",
+      "1392 soni raqamlari yig'indisi 15 bo'lib, 3 ga bo'linadi.",
+      "1392 soni 9 ga bo'linmaydi, chunki uning raqamlari yig'indisi 9 ga bo'linmaydi.",
+      "564 gramm 0.564 kilogrammga teng.",
+      "5 ga bo'linadigan son har doim ham 10 ga bo'linavermaydi.",
+      "1234 soni raqamlari yig'indisi 10 bo'lib, 3 ga bo'linmaydi."
+    ],
+    "mistakes": [
+      "Xato: 2500 sonidagi 5 raqamini mingliklarda deb hisoblash. To'g'ri: 2500 sonida 5 raqami yuzliklarda joylashgan.",
+      "Xato: $x : 3 = 192$ tenglamada $x$ ni 64 deb topish. To'g'ri: $x$ bu yerda 576 ga teng ($192 \\cdot 3$).",
+      "Xato: $1224 - x : 6$ ifodasida $x$ ni bo'linma deb hisoblash. To'g'ri: Bu yerda $x$ bo'linuvchidir."
+    ],
+    "mnemonics": [
+      "3 ga bo'linishni aniqlash uchun sonning raqamlari yig'indisini hisoblang va 3 ga bo'linishini tekshiring.",
+      "Grammdan kilogrammga o'tishda vergulni chapga uch ta joy siljitish (1000 ga bo'lish) kerak.",
+      "Masalada qoldiqni topish uchun \"Boshlang'ich miqdor - Sarflanganlar = Qoldiq\" formulasidan foydalaning."
+    ],
+    "source": "Imtihon tasdiqlangan izohlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "35": {
+    "summary": "Geometriya va mantiq bo'yicha imtihonda shakllar perimetri, yuzasi, o'lchov birliklarini aylantirish hamda ma'lumotlar tahlili ko'zda tutiladi. Asosiy e'tibor amaliy hisob-kitoblar, jadvallar bilan ishlash va mantiqiy masalalarni to'g'ri yechish algoritmlariga qaratiladi.",
+    "keyPoints": [
+      {
+        "t": "O'lchov birliklarini aylantirish qoidalari",
+        "d": "Katta birlikdan kichik birlikka o'tganda qiymat ko'paytiriladi, kichikdan kattaga o'tganda bo'linadi. Barcha birliklar 10 ga emas, masalan, 1000 ga ko'payishi mumkin."
+      },
+      {
+        "t": "Raqamlar kombinatsiyasi va shartlar",
+        "d": "Eng katta son tuzish uchun raqamlar kamayish tartibida yoziladi. Juftlik sharti bo'lsa, oxirgi raqam juft bo'lishi kerak, qolganlari kamayish tartibida joylashadi."
+      },
+      {
+        "t": "Ma'lumotlar tahlili va grafiklar",
+        "d": "Grafik yoki jadvallarda berilgan ma'lumotlar asosida eng katta qiymat, teng qiymatlar va yig'indilarni hisoblash talab etiladi. Ma'lumotlarni solishtirish masalalari keltiriladi."
+      },
+      {
+        "t": "O'rta arifmetik va statistika",
+        "d": "Bir nechta qiymatlar yig'indisini ularning soniga bo'lish orqali o'rta arifmetik topiladi. Bu ko'rsatkich turli natijalarni solishtirish uchun ishlatiladi."
+      },
+      {
+        "t": "Masala yechish mantiqiy ketma-ketligi",
+        "d": "Avval jami masofa yoki miqdorni aniqlash, keyin ma'lum qismini ayirish yoki qo'shish amallarini bajarish orqali masala yechiladi. Tartibni buzish xatoga olib keladi."
+      },
+      {
+        "t": "Hajm va sig'im o'lchovlari",
+        "d": "1 dm³ hajmga ega bo'lgan suyuqlik 1 litrga teng. Qattiq jismlarning ham hajmi bo'ladi, masalan, 1 sm³. 1 m³ 1000 litrga teng."
+      },
+      {
+        "t": "Vaqt va yosh farqi mantiqi",
+        "d": "Ikki shaxs orasidagi yosh farqi vaqt o'tishi bilan o'zgarmaydi, u doimiy miqdor hisoblanadi. Farqni topish uchun katta yoshni kichigidan ayirish yetarli."
+      }
+    ],
+    "mustKnow": [
+      "1 dm³ suyuqlik hajmi 1 litrga teng",
+      "1 kilometr 1000 metrga teng",
+      "1 kilogramm 1000 grammga teng",
+      "1 soat 60 daqiqa, 1 metr 10 detsimetrga teng",
+      "1 tonna 1000 kilogrammga teng",
+      "1 kub metr 1000 litrga teng",
+      "Qirrasi 1 sm bo'lgan kubning hajmi 1 sm³",
+      "Raqamlar 1, 2, 3, 4 dan tuzilgan eng katta juft son 4312"
+    ],
+    "mistakes": [
+      "1 tonnani 1000 gramm deb hisoblash xato, to'g'risi 1000 kg",
+      "Barcha o'lchov birliklarida 10 ga ko'paytirish yoki bo'lish xato, masalan, 1 kg = 1000 g",
+      "Vaqt o'tishi bilan yosh farqining o'zgarishi xato, farq doimiy",
+      "1 dm³ hajmni 1 litrga teng deb bilmaslik yoki 1 m³ ni noto'g'ri aylantirish"
+    ],
+    "mnemonics": [
+      "Kattadan kichikka ko'paytir (K-K-K), kichikdan kattaga bo'l (K-K-B)",
+      "Juft sonni oxirgi raqamidan aniqlash: 0, 2, 4, 6, 8 bilan tugasa juft",
+      "Hajm va suyuqlik: Kub detsimetrda o'lchansa — litr, kub metrda o'lchasa — ming litr"
+    ],
+    "source": "Tasdiqlangan test izohlari",
+    "updatedAt": "2026-07-28"
+  },
+  "36": {
+    "summary": "Mavzu tabiatdagi moddalar aylanishi, hayvonlarning oziqlanish zanjiridagi o'rniga va vaqt birligini hisoblashga bag'ishlangan. Imtihonda hayvonlarning tuproqqa moddalar qaytarishi, tabiatni tozalashi va soniya/daqiqa/soat o'rtasidagi munosabatlar bilish talab etiladi.",
+    "keyPoints": [
+      {
+        "t": "Hayvonlarning oziqlanish zanjiridagi roli",
+        "d": "Hayvonlar oziqlanish zanjirining asosiy tarkibiy qismi hisoblanadi. Ular o'simliklar bilan oziqlanib, o'zlashtirgan moddalarini tuproqqa qaytaradi."
+      },
+      {
+        "t": "Tabiatni tozalash jarayoni",
+        "d": "Hayvonlar o'simlik va hayvon qoldig'i bilan oziqlanib, Yer yuzini qoldiqlardan tozalaydi. Hasharotlar kamaysa, tabiatni tozalash jarayoni susayadi va qoldiqlar to'planadi."
+      },
+      {
+        "t": "Moddalarning tuproqqa qaytishi",
+        "d": "Hayvonlar o'zlashtirgan moddalarni tuproqqa qaytarib, o'simliklarning o'sishi uchun qulay sharoit yaratadi. Ular yo'q bo'lsa, chirish jarayoni sekinlashadi yoki to'xtaydi."
+      },
+      {
+        "t": "Vaqtni hisoblash (45 daqiqa)",
+        "d": "Bir daqiqa 60 soniyaga teng. Dars davomiyligi 45 daqiqa bo'lgani uchun, 45 ni 60 ga ko'paytirib (45 * 60 = 2700), 2700 soniya ekanini topamiz."
+      },
+      {
+        "t": "Vaqtni hisoblash (1 soat)",
+        "d": "Bir soat 60 daqiqadan, bir daqiqa 60 soniyadan iborat. Shuning uchun 60 * 60 = 3600 soniya bo'ladi. 360 soniya faqat 6 daqiqaga teng."
+      },
+      {
+        "t": "Vaqtni hisoblash (2 soat 15 daqiqa)",
+        "d": "Hisoblash: 2 soat = 120 daqiqa. 120 + 15 = 135 daqiqa. 135 daqiqa * 60 soniya = 8100 soniya."
+      },
+      {
+        "t": "Chirindi bilan oziqlanuvchilar",
+        "d": "Chirindilar bilan oziqlanuvchilar moddalarni tuproqqa qaytarish va o'simliklar o'sishi uchun sharoit yaratish jarayonida muhim rol o'ynaydi."
+      },
+      {
+        "t": "Sun'iy o'g'itlash",
+        "d": "Go'ng va o'g'it solish hayvonlarning tuproqqa modda qaytarishi va o'simliklarga sharoit yaratishi tabiiy jarayonining sun'iy yo'l bilan takrorlanishidir."
+      }
+    ],
+    "mustKnow": [
+      "Bir daqiqa 60 soniyaga teng",
+      "Bir soat 3600 soniyaga teng (60 * 60)",
+      "45 daqiqa 2700 soniyaga teng (45 * 60)",
+      "2 soat 15 daqiqa 8100 soniyaga teng (135 * 60)",
+      "Hayvonlar oziqlanish zanjirining asosiy tarkibiy qismi hisoblanadi",
+      "Hayvonlar o'simlik va hayvon qoldiqlari bilan oziqlanib, moddalarni tuproqqa qaytaradi",
+      "Hayvonlar yo'q bo'lsa, chirish jarayoni sekinlashadi yoki to'xtaydi",
+      "Go'ng va o'g'it solish tabiiy moddalar aylanishining sun'iy ko'rinishidir"
+    ],
+    "mistakes": [
+      "1 soatni 360 soniya deb hisoblash xatosi (to'g'ri: 1 soat 3600 soniya)",
+      "Hayvonlar faqat oziqlanish zanjirida ishtirok etadi, tuproqqa modda qaytarmaydi degan xato fikr",
+      "Hasharotlar kamaysa tabiat tozalanadi degan noto'g'ri taxmin (aslida jarayon susayadi)"
+    ],
+    "mnemonics": [
+      "Soatda olti ming olti yuz (3600), daqiqada oltmish (60)",
+      "Yey, to'la, qaytar — hayvonlarning tabiatdagi uchta vazifasi",
+      "45 daqiqa — 2700, 2 soat 15 — 8100"
+    ],
+    "source": "Matn va izohlar asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "37": {
+    "summary": "Mavzu moddaning uchta agregat holati, fizik xossalari va o'zgarishlarini, shuningdek, oila, mahalla va jamiyatdagi tarbiya tizimini qamrab oladi. Imtihonda modda va jism tushunchalarini farqlash, Nyuton qonunlarini qo'llash va tarbiya muassasalarining vazifalarini bilish talab etiladi.",
+    "keyPoints": [
+      {
+        "t": "Moddaning agregat holatlari",
+        "d": "Moddalar qattiq, suyuq va gaz holatlarida bo'lishi mumkin. Masalan, suv muz (qattiq), suyuq suv va bug' (gaz) holatida uchrashi keltirilgan. Shakar ham ma'lum sharoitda suyuq yoki gaz holatiga o'tishi mumkin."
+      },
+      {
+        "t": "Modda va jism farqi",
+        "d": "Suv, shakar va havo moddalarga misol bo'lsa, tosh va kitob jismlardir. Jismlar moddalardan tashkil topgan bo'lishi mumkin, ammo matnda asosan suyuq va gaz holatdagi moddalar modda sifatida ta'kidlangan."
+      },
+      {
+        "t": "Agregat holatlar xossalari",
+        "d": "Qattiq jismlar shakli va hajmini saqlaydi. Suyuq moddalar idish shaklini oladi, lekin faqat pastki qismini egallaydi. Gaz moddalar esa berilgan idishning butun hajmini to'ldirib oladi va o'zgarmas shaklga ega emas."
+      },
+      {
+        "t": "Nyuton qonunlari va kuch",
+        "d": "Kuch bo'lmasa harakat o'zgarmaydi. Tezlashish, tezlikni kamaytirish (sekinlashtirish) yoki yo'nalishni o'zgartirish ham kuch ta'sirini talab qiladi. Tezlikni o'zgartirish uchun zarur kuch (masalan, ishqalanish) kerak."
+      },
+      {
+        "t": "Tarbiya tizimlari va vazifalari",
+        "d": "Oilada shaxs shakllanadi va birinchi tarbiya oladi. Mahalla hududiy birlik bo'lib, o'zini o'zi boshqarish va mahalliy muammolarni hal qilish bilan shug'ullanadi. Jamiyat davlat va qonunlar bilan tartiblanadigan eng keng tizimdir."
+      },
+      {
+        "t": "Tabiat va uning muhofazasi",
+        "d": "Tabiat oziq-ovqat, kiyim-kechak va sanoat xom ashyosi manbai hisoblanadi. Tabiatni muhofaza qilish dunyo miqyosidagi muammo bo'lib, ko'plab qonunlar qabul qilingan va boyliklarni tejash zarurligi ta'kidlangan."
+      }
+    ],
+    "mustKnow": [
+      "O'quvchining kundalik energiya ehtiyoji 2200 kkalni tashkil etadi.",
+      "Kechki ovqat 1200 kkal bo'lishi ortiqcha vaznga sabab bo'ladi.",
+      "Qattiq jism shakli va hajmi bilan belgilanadi.",
+      "Suyuq moddalar o'z shaklini saqlamaydi, quyilgan idishning shaklini oladi.",
+      "Gaz moddalar idishning butun hajmini to'ldirib oladi.",
+      "Jism og'irligi tarozida o'lchanadi.",
+      "Muz suvning qattiq holati, suyuq holati emas."
+    ],
+    "mistakes": [
+      "Xato: Suyuq moddalar idishning butun hajmini to'ldiradi deb hisoblash. To'g'ri: Suyuq moddalar idish shaklini oladi, lekin uning pastki qismini egallaydi, hajmini to'liq emas.",
+      "Xato: Muz suvning suyuq holati deb hisoblash. To'g'ri: Muz suvning qattiq holatidir.",
+      "Xato: Tezlikni kamaytirish (sekinlashtirish) uchun kuch kerak emas deb o'ylash. To'g'ri: Tezlikni kamaytirish ham ishqalanish yoki tormoz kabi kuch ta'sirini talab qiladi."
+    ],
+    "mnemonics": [
+      "Holatlar eslash: Qattiq — Shakli bor, Suyuq — Oqadi (pastki qism), Gaz — Uchadi (hammasini to'ldiradi).",
+      "Tarbiya tartibi: Oiladan (kichik) -> Mahallaga (o'rta) -> Jamiyat (katta) tizimga o'sib boradi."
+    ],
+    "source": "Darslik va attestatsiya test izohlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "38": {
+    "summary": "Pedagogik mahorat dars rejalashtirish, sinf boshqarish va kasb standartlariga asoslangan bo'lib, o'qituvchining diagnostika, maqsad qo'yish, tenglik tamoyillari va o'z-o'zini rivojlantirish ko'nikmalarini o'z ichiga oladi.",
+    "keyPoints": [
+      {
+        "t": "Darsni rejalashtirish tartibi",
+        "d": "Avval o'quvchilar darajasini diagnostika qilish, keyin maqsad qo'yish, mazmun va uslubni tanlash, nihoyat baholash mezonlarini belgilash lozim. Baholash mezonlari dars boshlanishidan oldin ham ma'lum bo'lishi kerak."
+      },
+      {
+        "t": "O'quv jarayonini moslashtirish",
+        "d": "Baholash natijalari asosida o'qituvchi rejalarni moslashtirishi va muvozanatlashtirishi shart. O'quvchilar mavzuni tushunmagan bo'lsa, yangi mavzuga o'tmasdan, mustahkamlashga vaqt ajratish talab etiladi."
+      },
+      {
+        "t": "Tenglik va adolat tamoyillari",
+        "d": "O'qituvchi tenglik, adolat va hurmat tamoyillariga amal qilishi shart. Guruhlarga teng qabul qilish va teng baholash to'g'ri yondashuv hisoblanadi, faqat yaxshi o'quvchilarni maqtash esa adolatga ziddir."
+      },
+      {
+        "t": "O'qituvchining zarur bilimlari",
+        "d": "O'qituvchining asosiy zarur bilimlari o'qitish metodikasi, pedagogik standartlar va zamonaviy samarali o'qitish usullarini bilishdan iborat bo'lib, bu bevosita uning kasbiy faoliyatini ta'minlaydi."
+      },
+      {
+        "t": "Rejalashtirishning muhim qismlari",
+        "d": "Rejalashtirishda o'quvchilar ehtiyojlarini inobatga olish va zamonaviy axborot texnologiyalarini integratsiyalash muhimdir. Faqat darslikka berklanish yoki yosh xususiyatlariga mos bo'lmagan shakllarni rejalashtirish talablarga zid."
+      },
+      {
+        "t": "Aniq va erishiladigan natijalar",
+        "d": "O'quvchilar ehtiyojlari va o'zlashtirish ko'rsatkichlarini tahlil qilib, ularning muammolarini hal qilishga qaratilgan aniq va erishiladigan natijalarni belgilash kerak."
+      },
+      {
+        "t": "Induksiya metodi",
+        "d": "Induksiya — individual, konkret misollardan umumiy qoida yoki xulosa chiqarishdir. Deduksiya umumiy qoidadan boshlanadi, analogiya esa o'xshashlikka asoslangan."
+      },
+      {
+        "t": "Refleksiya va o'zini rivojlantirish",
+        "d": "Refleksiya qilish va o'zining kasbiy kuchli, kuchsiz tomonlarini aniqlash o'z-o'zini rivojlantirish uchun zarur asosiy bilim va ko'nikma hisoblanadi."
+      }
+    ],
+    "mustKnow": [
+      "Standart tartib: Diagnostika -> Maqsad -> Mazmun/Usul -> Baholash.",
+      "Induksiya metodi — bu individual, konkret misollardan umumiy qoida yoki xulosa chiqarishdir.",
+      "O'qituvchining asosiy zarur bilimlari uning o'qitish metodikasini, pedagogik standartlarni va zamonaviy samarali o'qitish usullarini bilishini o'z ichiga oladi.",
+      "Kasb standartiga ko'ra, o'qituvchi tenglik, adolat va hurmat tamoyillariga amal qilishi shart.",
+      "Baholash mezonlari dars boshlanishidan oldin ham ma'lum bo'lishi kerak (orqa rejalashtirish), lekin mazmundan keyin to'liq shakllanadi."
+    ],
+    "mistakes": [
+      "Xato: Faqat yaxshi o'quvchilarni maqtash. To'g'ri: Barcha o'quvchilarga nisbatan tenglik va adolat tamoyilini qo'llash.",
+      "Xato: O'quvchilar tushunmagan bo'lsa ham yangi mavzuga o'tish. To'g'ri: Baholash natijasiga ko'ra, mustahkamlashga vaqt ajratib, rejalarni moslashtirish.",
+      "Xato: Rejalashtirishda faqat darslikka tayanish. To'g'ri: O'quvchilar ehtiyojlarini inobatga olish va zamonaviy texnologiyalarni integratsiyalash."
+    ],
+    "mnemonics": [
+      "Dars tartibi: Diagnostika -> Maqsad -> Mazmun -> Baholash (D-M-M-B).",
+      "O'qituvchi bilimlari: Metodika, Standartlar, Zamonaviy usullar (MSZ)."
+    ],
+    "source": "Kasb standarti va pedagogik talablar",
+    "updatedAt": "2026-07-28"
+  }
+}

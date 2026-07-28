@@ -1,0 +1,109 @@
+{
+  "135": {
+    "summary": "Ingliz tili o'qituvchisining kasb standarti o'quv jarayonini rejalashtirish, aniq maqsadlar belgilash, pedagogik metodlar va baholash vositalarini qo'llash talablarini o'z ichiga oladi.",
+    "keyPoints": [
+      {
+        "t": "Rejalashtirish asosiy vazifasi",
+        "d": "O'quvchilar ehtiyojlarini tahlil qilish, ularning o'zlashtirish ko'rsatkichlarini aniqlash va aniq, erishiladigan natijalarni belgilashni o'z ichiga oladi."
+      },
+      {
+        "t": "Maqsadlar o'lchanadigan bo'lishi",
+        "d": "Dars maqsadlarini aniq va o'lchanadigan qilib belgilash o'quv jarayonini rejalashtirish bosqichining asosiy vazifasi hisoblanadi."
+      },
+      {
+        "t": "Induksiya usuli xususiyati",
+        "d": "O'qituvchi konkret misollarni ko'rsatadi, o'quvchi esa ko'rsatilgan misollar asosida umumiy qoidani mustaqil ravishda chiqaradi."
+      },
+      {
+        "t": "Deduksiya usuli xususiyati",
+        "d": "Umumiy qonuniyatdan boshlab, maxsus misollarga o'tish va qonuniyatni amaliy misollarga tatbiq qilish jarayonidir."
+      },
+      {
+        "t": "Standartning asosiy qismi",
+        "d": "Teng sharoit yaratish, har bir o'quvchini hurmat qilish va xavfsiz muhitni ta'minlash standartning asosiy tarkibiy qismini tashkil etadi."
+      },
+      {
+        "t": "Baholash vositalari",
+        "d": "Rubrika ishlarni tizimli baholash, test standart natija olish, portfel esa individual o'zlashtirishni ko'rsatish uchun ishlatiladi."
+      },
+      {
+        "t": "O'lchanadiganlik mezoni",
+        "d": "Maqsadda aniq raqam (masalan, 80%) keltirilishi, uning o'lchanadigan mezonlarga mos kelishini bildiradi."
+      }
+    ],
+    "mustKnow": [
+      "O'quv jarayonini rejalashtirish: O'quvchilarning ehtiyojlarini tahlil qilish, ularning o'zlashtirish ko'rsatkichlarini aniqlash va aniq, erishiladigan natijalarni belgilash.",
+      "Induksiya: O'qituvchi bir necha konkret misollarni ko'rsatib, ularning umumiy qonuniyatini talabalarga kashf ettiruvchi metod.",
+      "Deduksiya: Umumiy qonunni misollarga tatbiq qilish yo'li bilan, umumiy qonuniyatdan maxsus misollarga o'tuvchi metod.",
+      "O'lchanadigan maqsad: Maqsadda aniq raqamli ko'rsatkich (masalan, 80%) keltirilgan bo'lsa, u o'lchanadigan mezonga mos hisoblanadi.",
+      "Rubrika: Ishlarni tizimli baholash uchun mo'ljallangan vosita.",
+      "Test: Standart natijani olish uchun ishlatiladigan vosita.",
+      "Portfel: O'quvchining individual o'zlashtirishini ko'rsatish uchun xizmat qiluvchi vosita."
+    ],
+    "mistakes": [
+      "Xato: Teng sharoit yaratish va o'quvchini hurmat qilishni faqat rejalashtirish bosqichi deb hisoblash. To'g'ri: Bu standartning asosiy tarkibiy qismi bo'lib, rejalashtirish yoki baholashdan mustaqil tushuniladi.",
+      "Xato: Maqsadni faqat o'quvchilar qiziqishlariga asoslanib belgilash. To'g'ri: Maqsadlar baholash natijalariga asoslanib, aniq va o'lchamli qilib belgilanishi kerak.",
+      "Xato: Umumiy qoidani misollar orqali chiqarishni deduksiya deb atash. To'g'ri: Umumiy qoidani chiqarish induksiya, umumiy qoidani misollarga tatbiq qilish deduksiya hisoblanadi."
+    ],
+    "mnemonics": [
+      "Rejalashtirish algoritmi: Ehtiyoj -> Tahlil -> Aniq maqsad.",
+      "Induksiya (I - Individualdan Umumiyga), Deduksiya (D - Down - Umumiydan Pastga).",
+      "Baholash uchligi: Rubrika (Tizim), Test (Standart), Portfel (Individual)."
+    ],
+    "source": "Kasb standarti talablari",
+    "updatedAt": "2026-07-28"
+  },
+  "136": {
+    "summary": "Pedagogik mahorat va ELT bo'yicha test elementlari, baholash turlari (formativ, summativ, diagnostik), o'qitish usullari (induksiya, deduksiya) hamda sinf boshqaruvi va motivatsiyaga oid asosiy tushunchalar.",
+    "keyPoints": [
+      {
+        "t": "Test elementlari turlari",
+        "d": "To'g'ri/noto'g'ri bandlar va bir nechta javob variantlari testning standart elementlari hisoblanadi. Bo'sh joyga to'ldirish va rasmli diagramma maxsus formatlarga tegishli."
+      },
+      {
+        "t": "Formativ baholash",
+        "d": "Formativ baholash dars davomida o'tkazilib, o'quvchilarga darhol qayta aloqa beradi va tuzatish taklif qiladi. U odatda ball qo'yishni o'z ichiga olmaydi."
+      },
+      {
+        "t": "Summativ va diagnostik",
+        "d": "Summativ baholash ta'lim jarayonining yakuniy natijasini beradi. Diagnostik baholash esa o'quvchilarning boshlang'ich bilim darajasini aniqlash uchun qo'llaniladi."
+      },
+      {
+        "t": "Induksiya va deduksiya",
+        "d": "Induksiya misollar orqali umumiy qoida yoki qonunni chiqarishdir. Deduksiya esa oldindan berilgan umumiy qoidani misollar orqali tasdiqlash yoki formulani qo'llashdir."
+      },
+      {
+        "t": "Differensial ta'lim",
+        "d": "Differensial ta'lim o'quvchilarning individual ehtiyojlariga mos turli topshiriqlar va usullarni qo'llashni bildiradi. Frontal metod hamma uchun bir xil bo'ladi."
+      },
+      {
+        "t": "Motivatsiya omillari",
+        "d": "Shaxsiy qiziqishlarga asoslangan topshiriqlar va guruh raqobati uchun mukofotlar motivatsiyani oshiradi. Faqat nazorat savollari motivatsiyani kamaytirishi mumkin."
+      },
+      {
+        "t": "Hikoya metodi",
+        "d": "Hikoya metodining asosiy xususiyati qiziqarli voqeani aytib, o'quvchilarning diqqatini jalb qilishdir. Bu demonstratsiyadan farq qiladi."
+      }
+    ],
+    "mustKnow": [
+      "Formativ baholash dars jarayonida o'quvchilarning joriy o'zlashtirishini kuzatib, darhol qayta aloqa beradi; ball qo'yish odatiy emas.",
+      "Summativ baholash yakuniy natijani o'lchaydi, diagnostik baholash boshlang'ich darajani aniqlaydi, standart test ballga asoslanadi.",
+      "Induksiya o'quvchilarni aniq misollar orqali umumiy qoidani chiqarishga undaydi, deduksiya esa umumiy qoidani misollar orqali tasdiqlashdir.",
+      "Objektivlik prinsipi natija har bir o'qituvchi uchun bir xil bo'lishini bildiradi, yagona standart esa barcha o'qituvchilar bir xil me'yorlarga asoslanishini anglatadi.",
+      "Standartlashtirilgan test maxsus formatga ega bo'lib, ballarga asoslanadi.",
+      "Testlar, ayniqsa gap tuzilishi bo'yicha savollar, o'quvchi bilimini aniq va standartlashtirilgan tarzda tekshirishga imkon beradi."
+    ],
+    "mistakes": [
+      "Xato: Formativ baholash yakuniy ball berish uchun ishlatiladi. To'g'ri: Formativ baholash dars davomida qayta aloqa berish uchun xizmat qiladi, ball qo'yish odatiy emas.",
+      "Xato: Deduksiya misollardan umumiy qoidani chiqarishdir. To'g'ri: Deduksiya umumiy qoidani misollar orqali tasdiqlashdir, misollardan qoida chiqarish induksiyadir.",
+      "Xato: Frontal metod o'quvchilarning individual ehtiyojlarini inobatga oladi. To'g'ri: Frontal metod hamma uchun bir xil bo'ladi, individual ehtiyojlar differensial ta'limda qo'llaniladi."
+    ],
+    "mnemonics": [
+      "Formativ - Feedback (F-F), Summativ - Score (S-S). Formativda fikr-mulohaza, summativda ball muhim.",
+      "Induksiya = Ichki (misoldan tashqariga qoidaga). Deduksiya = Davomiy (qoidadan amalga).",
+      "Diagnostik = Dastlabki (bilim darajasini boshida aniqlash)."
+    ],
+    "source": "Tasdiqlangan imtihon izohlari asosida",
+    "updatedAt": "2026-07-28"
+  }
+}

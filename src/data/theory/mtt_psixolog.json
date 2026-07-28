@@ -1,0 +1,382 @@
+{
+  "107": {
+    "summary": "Yosh psixologiyasining predmeti, maqsadi, vazifalari va psixik rivojlanish qonuniyatlari bo'yicha konspekt. Imtihonda rivojlanish mexanizmlari, ta'sir etuvchi omillar va tadqiqot metodlariga e'tibor beriladi.",
+    "keyPoints": [
+      {
+        "t": "Fan predmeti",
+        "d": "Yosh psixologiyasining fanning predmeti inson psixikasining ontogenez davomida rivojlanish qonuniyatlaridir. Bu ijtimoiy-iqtisodiy munosabatlar yoki biologiya fani emas."
+      },
+      {
+        "t": "Asosiy maqsad",
+        "d": "Fan maqsadi inson psixikasining ontogenez davomida rivojlanish qonuniyatlarini, yosh davrlariga xos xususiyatlarni va o'zgarishlarini o'rganishdan iborat."
+      },
+      {
+        "t": "Asosiy vazifalar",
+        "d": "Asosiy vazifa — rivojlanish qonuniyatlarini, unga ta'sir etuvchi ichki va tashqi omillarni tahlil qilish hamda rivojlanishni harakatga keltiruvchi mexanizmlarni anglash."
+      },
+      {
+        "t": "Miqdor-sifat qonuniyati",
+        "d": "Mayda miqdoriy o'zgarishlar ma'lum bir bosqichda sifatni o'zgartirib, yangi rivojlanish darajasiga o'tishiga olib keladi (masalan, mashq qilish orqali mahorat shakllanishi)."
+      },
+      {
+        "t": "Ta'sir etuvchi omillar",
+        "d": "Biologik omillar shart (materiya), ijtimoiy omillar esa rivojlanishni harakatga keltiruvchi kuch (sabab) hisoblanadi. Rivojlanish muhit ta'sirida bo'ladi."
+      },
+      {
+        "t": "Ta'lim va rivojlanish",
+        "d": "Ta'lim kuchli omil bo'lsa-da, rivojlanishning ichki qonuniyatlariga (yosh xususiyatlari, pishib yetish darajasi) zid bo'lmasligi kerak."
+      },
+      {
+        "t": "Notekislik qonuniyati",
+        "d": "Turli psixik funksiyalar (nutq, his-tuyg'ular, iroda) bir vaqtning o'zida bir xil darajada rivojlanmaydi; ba'zilari oldinda, boshqalari orqada qolishi mumkin."
+      },
+      {
+        "t": "Tadqiqot metodlari",
+        "d": "Kuzatuv tabiiy sharoitda o'tkaziladi, suhbat subyektiv ta'sirga bog'liq, eksperiment maxsus shartlarni talab qiladi, statistika esa ko'plik holatlarni o'rganadi."
+      }
+    ],
+    "mustKnow": [
+      "Yosh psixologiyasining fanning predmeti inson psixikasining ontogenez davomida rivojlanish qonuniyatlaridir.",
+      "Yosh psixologiyasining asosiy maqsadi inson psixikasining ontogenez davomida rivojlanish qonuniyatlarini, yosh davrlariga xos xususiyatlarni va o'zgarishlarini o'rganishdan iborat.",
+      "Psixik rivojlanish dialektik qonuniyatiga ko'ra, mayda miqdoriy o'zgarishlar ma'lum bir bosqichda sifatni o'zgartirib, yangi rivojlanish darajasiga o'tishiga olib keladi.",
+      "Rivojlanish qonuniyatlariga ko'ra, biologik omillar shart (materiya), ijtimoiy omillar esa rivojlanishni harakatga keltiruvchi kuch (sabab) hisoblanadi.",
+      "Rivojlanishning notekisligi qonuniyatiga ko'ra, turli psixik funksiyalar bir vaqtning o'zida bir xil darajada rivojlanmaydi.",
+      "Maktabgacha yoshda, ayniqsa 5-6 yoshda, o'yin faoliyatining asosiy xususiyati ro'l va qoidalarga bo'ysunish bo'ladi."
+    ],
+    "mistakes": [
+      "Fan predmeti ijtimoiy-iqtisodiy munosabatlar deb hisoblash — Xato. To'g'risi: Inson psixikasining ontogenez davomida rivojlanish qonuniyatlari.",
+      "Maqsad patologik holatlarni tashxislash deb hisoblash — Xato. To'g'risi: Rivojlanish qonuniyatlarini va yosh xususiyatlarini o'rganish.",
+      "Biologik omillarni rivojlanishni harakatga keltiruvchi kuch deb hisoblash — Xato. To'g'risi: Biologik omillar shart, ijtimoiy omillar kuch (sabab)."
+    ],
+    "mnemonics": [
+      "Miqdor-Sifat: Ko'p mashq qilish (miqdor) -> ravon o'qish mahorati (sifat).",
+      "Bio-Shart, Ijtimoiy-Kuch: Biologiya asos bo'lsa, ijtimoiylik uni rivojlantiruvchi sababdir."
+    ],
+    "source": "Yosh psixologiyasi fanining umumiy qonuniyatlari",
+    "updatedAt": "2026-07-28"
+  },
+  "108": {
+    "summary": "Oila psixologiyasi oilaviy munosabatlar ta'sirida shaxsning rivojlanish qonuniyatlarini, konsultatsiya bosqichlarini va oila turlarini o'rganadi. Imtihonda biologik va iqtisodiy jihatlar emas, balki psixologik munosabatlar va ularning dinamikasi urg'u beriladi.",
+    "keyPoints": [
+      {
+        "t": "Oila psixologiyasi predmeti",
+        "d": "Fan oila muhitida va oilaviy munosabatlar ta'sirida shaxsning rivojlanish qonuniyatlarini o'rganadi. Biologik, ijtimoiy-iqtisodiy va huquqiy jihatlar boshqa fanlar (biologiya, iqtisodiyot, huquqshunoslik) predmetidir."
+      },
+      {
+        "t": "Konsultatsiya bosqichlari",
+        "d": "Jarayon mijoza bilan aloqa o'rnatishdan, muammoni bilish va diagnostika qilishdan, keyin aralashuv va yechim topishdan iborat. Yakuniy bosqich natijalarni tahlil qilishdir. Boshqa tartib standartlarga zid."
+      },
+      {
+        "t": "Miqdorning sifatga aylanishi",
+        "d": "Kichik ziddiyatlarning to'lanib keskinlashishi natijasida oilaviy munosabatlar butunlay o'zgarishi dialektik qonundir. Bu jarayonda ichki omillar, ya'ni o'zaro munosabatlar asosiy rol o'ynaydi."
+      },
+      {
+        "t": "Oilaviy munosabat turlari",
+        "d": "Patriarxal oilada ota boshliq, so'zi qonun; matrilineal oilada asosiy rol onaga tegishli. Egalitar oilada esa er-xotin huquqlari teng bo'ladi va qarorlar birgalikda qabul qilinadi."
+      },
+      {
+        "t": "Oila psixologiyasi uslublari",
+        "d": "Genealogik uslub tarix va irsiyatni, kuzatuv xulq-atvorni to'g'ridan-to'g'ri, suhbat muloqot orqali, testlar esa standart vazifalar yordamida ma'lumot beradi. Har bir uslubning o'ziga xos vazifasi bor."
+      },
+      {
+        "t": "Ajralishning bolaga ta'siri",
+        "d": "Ajralish bolada o'zini aybdor his qilish, o'zini past baholash, o'qishdagi pasayish va tajovuzkorlik kabi salbiy his-tuyg'ularni keltirib chiqarishi mumkin. Ijtimoiy faollikning ortishi ijobiy moslashuv belgisidir."
+      },
+      {
+        "t": "Tizimli oilaviy terapiya",
+        "d": "Bu yondashuv oilani bir butun tizim sifatida qaraydi, unda har bir a'zoning xulq-atvori boshqalariga ta'sir ko'rsatadi. Individual terapiyadan farqli o'laroq, u oila ichidagi dinamikaga ixtisoslashadi."
+      }
+    ],
+    "mustKnow": [
+      "Konsultatsiya jarayonining 4 bosqichi: 1) aloqa o'rnatish, 2) diagnostika, 3) aralashuv, 4) natijalarni tahlil qilish.",
+      "Patriarxal oilada ota oila boshlig'i hisoblanadi, uning so'zi qonun bo'ladi va bolalar ustidan nazorat unga tegishli.",
+      "Egalitar oila — er-xotin huquqlari teng bo'lgan oila turi.",
+      "Genealogik uslub — oila tarixi va irsiyatni o'rganishga qaratilgan uslub.",
+      "Kuzatuv usuli — xulq-atvorni bevosita ko'rish va tabiiy sharoitda tahlil qilish.",
+      "Tizimli oilaviy terapiya — oilani bir butun tizim sifatida qaraydigan va a'zolar o'zaro ta'sirini o'rganadigan yondashuv.",
+      "Ajralish oqibatlari — bolada o'zini aybdor his qilish, o'zini past baholash, o'qishdagi pasayish va tajovuzkor xulq-atvor."
+    ],
+    "mistakes": [
+      "Xato: Oila psixologiyasi iqtisodiy va biologik asoslarni ham o'rganadi. To'g'ri: Iqtisodiy asoslar iqtisodiyot, biologik omillar esa biologiya fanlari doirasidadir.",
+      "Xato: Konsultatsiya darhol aralashuv bosqichidan boshlanishi kerak. To'g'ri: Jarayon avval aloqa o'rnatish va diagnostikadan boshlanadi, keyin aralashuv keladi.",
+      "Xato: Tizimli terapiya individual terapiya bilan bir xil, faqat bitta shaxsga qaratilgan. To'g'ri: Tizimli terapiya oilani butun tizim sifatida qaraydi, individual terapiya esa faqat bir shaxsga qaratilgan."
+    ],
+    "mnemonics": [
+      "Konsultatsiya bosqichlari: 'ADAN' — Aloqa, Diagnostika, Aralashuv, Natijalar.",
+      "Oila turlari: 'PEM' — Patriarxal, Egalitar, Matrilineal.",
+      "Usullar: 'GOST' — Genealogik, Observation (kuzatuv), Suhbat, Testlar."
+    ],
+    "source": "Professional standartlar",
+    "updatedAt": "2026-07-28"
+  },
+  "109": {
+    "summary": "Inson hayotining yosh davrlari, har bir bosqichdagi psixik rivojlanish qonuniyatlari va yetakchi faoliyat turlari. Imtihonda inqiroz davrlari, Piaje nazariyasi va miqdor-sifat o'tish qonuniyatiga urg'u beriladi.",
+    "keyPoints": [
+      {
+        "t": "3 yosh inqirozi xususiyatlari",
+        "d": "Bola o'zini mustaqil shaxs sifatida anglay boshlaydi, 'Men' tushunchasi shakllanadi va o'z xohish-istaklarini himoya qilishga intiladi."
+      },
+      {
+        "t": "7 yosh inqirozi va o'zgarishlar",
+        "d": "Bola o'yin faoliyatidan o'qish faoliyatiga o'tadi, psixikada qarama-qarshiliklar paydo bo'ladi va 'kattalashib qolish' hissi shakllanadi."
+      },
+      {
+        "t": "Operatsiyagacha tafakkur davri",
+        "d": "Piaje nazariyasiga ko'ra, 2-7 yoshdagi davr bo'lib, bolalar ob'ektlarning tashqi ko'rinishiga ishonib, mantiqiy saqlanish qonunlarini tushunmaydilar."
+      },
+      {
+        "t": "Saqlanish qonuniyati va egotsentrizm",
+        "d": "Bola suv miqdorini idish shakliga qarab noto'g'ri baholaydi, chunki u ob'ektlarning shakli o'zgarganda miqdorining saqlanib qolishini tushunmaydi."
+      },
+      {
+        "t": "Miqdor-sifat o'tish qonuni",
+        "d": "Oddiy harakatlarning takrorlanishi o'yin mazmunining o'zgarishi va yangi psixik sifatlarning shakllanishiga olib keladi, bu dialektik qonunning ko'rinishidir."
+      },
+      {
+        "t": "13 yosh inqirozi xarakteri",
+        "d": "O'smirlik davridagi inqiroz o'z mustaqilligini e'lon qilish va balog'atga yetish bilan xarakterlanadi."
+      }
+    ],
+    "mustKnow": [
+      "3 yosh inqirozi: Bola o'zini mustaqil shaxs sifatida anglay boshlashi, 'Men' tushunchasining shakllanishi va o'z xohish-istaklarini himoya qilishga intilishi.",
+      "Operatsiyagacha tafakkur: Piaje nazariyasiga ko'ra 2 yoshdan 7 yoshgacha bo'lgan davr bo'lib, ob'ektlarning tashqi ko'rinishiga ishonish va mantiqiy saqlanish qonunlarini tushunmaslik.",
+      "7 yosh inqirozi: Bola o'yin faoliyatidan o'qish faoliyatiga o'tishi, psixikada qarama-qarshiliklar paydo bo'lishi va 'kattalashib qolish' hissining shakllanishi.",
+      "Saqlanish qonuniyati: 2-7 yoshdagi bola ob'ektlarning shakli o'zgarganda miqdorining saqlanib qolishini tushunmaydi (masalan, suv miqdorini idish shakliga qarab baholash).",
+      "Miqdor-sifat o'tishi: Oddiy harakatlarning takrorlanishi (miqdor) o'yin mazmunining o'zgarishi va yangi psixik sifatlarning (syujetli o'yin) shakllanishiga olib keladi."
+    ],
+    "mistakes": [
+      "Xato: 3 yosh inqirozining asosiy sababi biologik pish yetishdir. To'g'ri: Asosiy sabab rivojlanish qonuniyatidir, biologik pish yetish shunchaki shart.",
+      "Xato: 2-7 yoshdagi bola suv miqdorining saqlanib qolishini tushunadi. To'g'ri: Bu davr bolasi idish shakliga qarab miqdorni noto'g'ri baholaydi, chunki u egotsentrizm va saqlanish qonunini tushunmaydi.",
+      "Xato: 7 yosh inqirozi faqat yangi muhitga moslashish muammosi. To'g'ri: Bu o'yin faoliyatidan o'qish faoliyatiga o'tish va ijtimoiy vaziyatning tubdan o'zgarishi bilan bog'liq."
+    ],
+    "mnemonics": [
+      "3 yosh — Men, 7 yosh — O'qish, 13 yosh — Mustaqillik.",
+      "Piaje 2-7: shakl ko'rinishiga ishonch, miqdor saqlanishi yo'q."
+    ],
+    "source": "Psixik rivojlanish dialektik qonuniyatlari va J. Piaje nazariyasi",
+    "updatedAt": "2026-07-28"
+  },
+  "110": {
+    "summary": "Inklyuziv ta'lim tamoyillari, alohida ehtiyojli bolalar bilan ishlash usullari va korreksion-rivojlantiruvchi mashg'ulotlarga oid huquqiy asoslar hamda pedagogik yondashuvlar.",
+    "keyPoints": [
+      {
+        "t": "Individual farqlar qonuniyati",
+        "d": "O'quvchilar yoshi bir xil bo'lsa-da, ularning individual psixologik xususiyatlari va idrok darajasi har xil bo'ladi, bu tabiiy hodisadir."
+      },
+      {
+        "t": "Jarayonning murakkabligi",
+        "d": "Inklyuziv jarayon o'quvchilarning zehni darajasi va individual xususiyatlarining turlichaligi sababli murakkablashadi."
+      },
+      {
+        "t": "Huquqiy asoslar",
+        "d": "Har bir bolaning teng ta'lim olish huquqi ta'minlanadi va diskriminatsiya taqiqlanadi, majburiy ta'lim konstitutsiyaviy huquqdir."
+      },
+      {
+        "t": "Tashkil etish omillari",
+        "d": "Bola nuqsonining turi, darajasi va sinfdagi bolalar soni asosiy hisoblanadi, tashqi ko'rinish yoki standart darslik emas."
+      },
+      {
+        "t": "Ta'lim maqsadi",
+        "d": "Nogiron bolalarning tengdoshlari bilan o'qish huquqini ta'minlash va ularning tengdoshlarida mehribonlikni shakllantirish."
+      },
+      {
+        "t": "Autistik spektr bolalar",
+        "d": "Ularning muammolarini tushunish va pedagogik takliflar berish mutaxassisning asosiy vazifasi, qattiq standartlar yordam bermaydi."
+      },
+      {
+        "t": "Ijtimoiy ta'siri",
+        "d": "Sog'lom bolalar nogironlarga nisbatan mehribon va g'amxo'r bo'lishadi, yordam berish tabiiy holga aylanadi."
+      },
+      {
+        "t": "Hamkorlik zarurligi",
+        "d": "Muvaffaqiyat uchun ota-onalar, pedagoglar va mutaxassislar o'rtasida hamkorlik bo'lishi shart, faqat pedagogik ish yetarli emas."
+      }
+    ],
+    "mustKnow": [
+      "Majburiy ta'lim olish — konstitutsiyaviy huquqdir.",
+      "Inklyuziv ta'limni tashkil etish asosiy omillari: bola nuqsonining turi, darajasi va sinfdagi bolalar soni.",
+      "Inklyuziv ta'lim maqsadi — nogiron bolalarning tengdoshlari bilan yonma-yon o'qish huquqini ta'minlash.",
+      "O'quvchilar yoshi bir xil bo'lsa-da, ularning individual psixologik xususiyatlari va idrok darajasi har xil bo'ladi.",
+      "Inklyuziv ta'lim muvaffaqiyati uchun ota-onalar, pedagoglar va mutaxassislar hamkorligi zarurdir.",
+      "Inklyuziv muhit sog'lom bolalarda mehribonlik, e'tiborlik va g'amxo'rlik qiluvchi fazilatlarni shakllantiradi."
+    ],
+    "mistakes": [
+      "Xato: Inklyuziv jarayonning murakkabligi metodika muammosidir. To'g'ri: Bu individual farqlar qonuniyatidir.",
+      "Xato: Tashkil etishda o'qituvchi tashqi ko'rinishi majburiy omildir. To'g'ri: Bola nuqsonining turi, darajasi va sinf soni asosiy omillardir.",
+      "Xato: Yosh bir xil bo'lgani uchun bolalar bir-biriga o'xshashdir. To'g'ri: Yosh bir xil bo'lsa ham, ularning xususiyatlari farq qiladi.",
+      "Xato: Faqat pedagogik ishlar inklyuziv ta'lim uchun yetarli. To'g'ri: Ota-onalar, pedagoglar va mutaxassislar hamkorligi talab etiladi."
+    ],
+    "mnemonics": [
+      "\"NDS\" — Nuqson turi, Darajasi, Sinf soni (tashkil etish omillari).",
+      "\"OPM\" — Ota-onalar, Pedagoglar, Mutaxassislar (zarur hamkorlik).",
+      "\"T-M-M\" — Teng huquq, Mehribonlik, Moslashish (inklyuziv ta'lim natijalari)."
+    ],
+    "source": "Konstitutsiyaviy huquq va attestatsiya manbalari",
+    "updatedAt": "2026-07-28"
+  },
+  "111": {
+    "summary": "Konspekt maktabgacha yoshdagi bolalar psixikasi, yetakchi faoliyatlar, nutq va xotira rivojlanishi, shuningdek, yosh inqirozlari va shaxs shakllanishiga oid asosiy tamoyillarni o'z ichiga oladi.",
+    "keyPoints": [
+      {
+        "t": "Nutq rivojlanish dialektikasi",
+        "d": "So'z zaxirasining ko'payishi grammatik tuzilishning murakkablashishiga olib keladi. 3 yosh uchun grammatik soddalik normal holat hisoblanadi."
+      },
+      {
+        "t": "Maktabgacha yosh xususiyatlari",
+        "d": "Bu davrda obrazli tafakkur ustunlik qiladi, nutq grammatik jihatdan shakllanadi. 'Men' deb bilish 3 yoshdan keyin shakllanadi."
+      },
+      {
+        "t": "Yetakchi faoliyatlar almashinuvi",
+        "d": "Rivojlanish qonuniyatiga ko'ra, predmet-manipulyativ faoliyat o'yin bilan, o'yin o'quv faoliyati bilan, o'quv esa shaxsiy-intim munosabatlar bilan almashinadi."
+      },
+      {
+        "t": "Kichik maktab yoshi (7-11 yosh)",
+        "d": "Bu davrning yetakchi faoliyati o'quv faoliyatidir. O'qituvchining so'zi qonun hisoblanib, uning obro'si ota-onalarnikidan yuqori bo'lishi mumkin."
+      },
+      {
+        "t": "3 yosh inqirozi belgilari",
+        "d": "Bolada 'Men o'zim' tushunchasi paydo bo'ladi, mustaqillikka intilish, negativizm va qaysarlik kuzatiladi. Inqiroz qisqa davom etadi."
+      },
+      {
+        "t": "5 yoshli bola psixikasi",
+        "d": "Bola egotsentrik bo'lib, boshqa nuqtai nazarni tushunmashi qiyin. Irodasi to'liq shakllanmaganligi sababli qoidalarni inobatga olmaydi."
+      },
+      {
+        "t": "Maktabga moslashish davri",
+        "d": "Maktabga borishning dastlabki 1-2 oyida stress va 'deadaptatsiya' kuzatiladi. Bu odatda o'tkinchi holat bo'lib, patologik deb baholash shoshilmasligi kerak."
+      },
+      {
+        "t": "Xotira rivojlanish bosqichlari",
+        "d": "Maktabgacha yoshda ixtiyoriy bo'lmagan xotira yetakchi hisoblanadi. Mazmunli xotira mexanik xotiradan ustun turadi."
+      }
+    ],
+    "mustKnow": [
+      "Kichik maktab yoshi (7-11 yosh) uchun yetakchi faoliyat o'quv faoliyatidir.",
+      "O'z-o'ziga gapirish hodisasi 3-4 yoshlarda o'yin faoliyati rivojlanishi bilan bog'liq paydo bo'ladi.",
+      "Bola maxsus maqsad bilan eslashga (ixtiyoriy xotira) faqat 6-7 yoshlarda o'rganadi.",
+      "Maktabga borishning dastlabki 1-2 oyida bola kuchli stressga uchraydi va 'deadaptatsiya' alomatlarini ko'rsatadi.",
+      "Ilk o'spirinlik davri (14-15 yosh) kasb tanlash muammosi bilan bog'liq bo'lib, subyektiv baholash xususiyatiga ega.",
+      "3 yosh inqirozida 'Men o'zim' degen so'zlar paydo bo'ladi va mustaqillikka intilish shakllanadi.",
+      "5 yoshli bola egotsentriklik tufayli o'z nuqtai nazaridan boshqa nuqtai nazarni tushunishda qiyinchilik tug'diradi."
+    ],
+    "mistakes": [
+      "Xato: 3 yosh inqirozi 3 yosh davom etadi. To'g'ri: Inqiroz qisqa vaqt ichida o'tadi.",
+      "Xato: 3 yoshli bola ijtimoiy munosabatlardan voz kechadi. To'g'ri: Ijtimoiy munosabatlarning shakli o'zgaradi, bola ulardan voz kechmaydi.",
+      "Xato: Maktabgacha yoshda ixtiyoriy xotira yetakchi hisoblanadi. To'g'ri: Maktabgacha yoshda ixtiyoriy bo'lmagan xotira yetakchi hisoblanadi."
+    ],
+    "mnemonics": [
+      "Yetakchi faoliyatlar: Chaqaloq (Predmet) -> Maktabgacha (O'yin) -> Maktab (O'quv) -> O'smir (Kasb).",
+      "3 yosh inqirozi: Men, Mustaqillik, Negativizm (3M).",
+      "Xotira: Kichik (O'zi-o'zi) -> Katta (Ma'nosini tushunib) -> Maktabgacha oxiri (Maqsadli)."
+    ],
+    "source": "Vygotskiy va Leontev nazariyasi",
+    "updatedAt": "2026-07-28"
+  },
+  "112": {
+    "summary": "Psixolog mutaxassisining kasb standarti talablari, faoliyatni tashkil etish, rejalashtirish va baholash mezonlari hamda hamkorlik yo'nalishlari.",
+    "keyPoints": [
+      {
+        "t": "Rejalashtirish bosqichining mazmuni",
+        "d": "Rejalashtirish bosqichida o'quvchilarning bilim darajasi, ehtiyoj va ko'rsatkichlari tahlil qilinadi hamda shunga mos aniq natija belgilanadi."
+      },
+      {
+        "t": "Baholash va qayta aloqa vazifalari",
+        "d": "Bu bosqichda o'qituvchi bilim darajasini kuzatib borishi va qiyinchilik bo'lganda boshqa mutaxassislar bilan maslahatlashishi lozim."
+      },
+      {
+        "t": "Natijalarga qo'yiladigan talablar",
+        "d": "Rejalashtirish jarayonida belgilanadigan natijalar aniq, o'lchanadigan va o'quvchilar imkoniyatiga mos (erishiladigan) bo'lishi shart."
+      },
+      {
+        "t": "O'quv dasturini moslashtirish",
+        "d": "O'qituvchi o'quvchilarning ehtiyojlari va qiziqishlarini inobatga olgan holda o'quv dasturini moslashtirishi, bu rejalashtirish vazifasining muhim qismidir."
+      },
+      {
+        "t": "Rejalashtirish mantiqiy tartibi",
+        "d": "Rejalashtirish davlat talablaridan (Standartlar) boshlanadi, keyin o'quvchilar xususiyatlari hisobga olinadi, maqsadlar belgilanadi va vositalar tanlanadi."
+      },
+      {
+        "t": "Baholash asosida rejalashtirish",
+        "d": "Standart talabiga ko'ra, o'qituvchi baholash natijalari asosida o'quv rejasini moslashtirishi (masalan, amaliy ko'nikmalarga e'tibor qaratishi) shart."
+      },
+      {
+        "t": "Hamkorlik yo'nalishi",
+        "d": "Kasb standartidagi 'Hamkorlik' yo'nalishi ota-onalar bilan ishlashni va muloqotni tartibga solishni o'z ichiga oladi."
+      }
+    ],
+    "mustKnow": [
+      "Rejalashtirish bosqichida o'quvchilarning bilim darajasini tahlil qilish va aniq natija belgilash talab etiladi.",
+      "Baholash bosqichida qiyinchilik bo'lganda boshqa mutaxassislar bilan maslahatlashish shart.",
+      "Natijalar aniq, o'lchanadigan va erishiladigan bo'lishi kerak; abstrakt maqsadlar zamonaviy standartga mos kelmaydi.",
+      "Rejalashtirish tartibi: Standartlar -> O'quvchilar xususiyatlari -> Maqsadlar -> Vositalar.",
+      "O'quv dasturini o'quvchilarning ehtiyojlari va qiziqishlariga moslashtirish rejalashtirish vazifasidir.",
+      "'3 ta usulni nomlash' kabi ifodalar maqsadni o'lchanadigan qiladi, 'tushunchaga ega bo'lish' esa o'lchanishi qiyin hisoblanadi."
+    ],
+    "mistakes": [
+      "Baholash bosqichida munosabat o'rnatishga undash va xavfsizlik qoidalarini tushuntirish vazifa sifatida ko'riladi. To'g'ri: Bu harakatlar tarbiya va muhit vazifalariga kiradi.",
+      "Rejalashtirishda o'quvchilarni hisobga olmaslik. To'g'ri: O'quvchilarning ehtiyojlari va xususiyatlarini inobatga olish zamonaviy kasb standartiga muvofiq talabdir.",
+      "Maqsad sifatida 'tushunchaga ega bo'lish' kabi abstrakt ifodalarni belgilash. To'g'ri: Maqsadlar aniq, o'lchanadigan va erishiladigan bo'lishi kerak."
+    ],
+    "mnemonics": [
+      "Rejalashtirish ketma-ketligi: 'Standart -> Talaba -> Maqsad -> Vosita'.",
+      "Natija uch talab: 'Aniq, O'lchanadigan, Erishiladigan'.",
+      "Baholashda ikki qadam: 'Kuzatish va Maslahat'."
+    ],
+    "source": "Kasb standarti talablari",
+    "updatedAt": "2026-07-28"
+  },
+  "113": {
+    "summary": "Pedagogik mahorat mavzusi didaktika metodlari, tafakkur turlari, mashg'ulot rejalashtirish bosqichlari va pedagogik kompetensiyalarni o'z ichiga oladi. Imtihonda induksiya va deduksiya farqi, rejalashtirish algoritmi va yoshga mos o'qitish usullari bilimga ega ekanligi tekshiriladi.",
+    "keyPoints": [
+      {
+        "t": "Induksiya va deduksiya metodi",
+        "d": "Induksiya bir qator alohida misollardan umumiy qoida yoki qonunni chiqarishdir. Deduksiya esa aksincha, umumiy qoidadan boshlab, uni maxsus vaziyatlarga tatbiq etish jarayonidir."
+      },
+      {
+        "t": "Tafakkur turlari va xususiyatlari",
+        "d": "Abstrakt tafakkur bevosita idroksiz, qonuniyatlar asosida fikrlashdir. Aniq-vaziyatli tafakkur amaliyotga bog'liq, obrazli tafakkur esa tasvirlarga yo'naltirilgan bo'ladi."
+      },
+      {
+        "t": "Mashg'ulotni tahlil qilish mezonlari",
+        "d": "Maqsadga muvofiqlik standart bilan solishtiriladi. Mazmon chuqurligi nazariya va amaliyotni qamrab oladi, metodik ta'minot uslublarning mosligini, natijaviylik esa o'quvchilar yutuqlarini o'lchashni anglatadi."
+      },
+      {
+        "t": "Rejalashtirish tartibi",
+        "d": "Rejalashtirish davlat ta'lim standarti va dasturni o'rganishdan boshlanadi. Keyin maqsad va vazifalar belgilanadi, uslublar tanlanadi va natijalarni baholash uslubi aniqlanadi."
+      },
+      {
+        "t": "Kompetensiyalar turlari",
+        "d": "Akademik kompetensiya bilim olishga, kommunikativ muloqotga, kasbiy kompetensiya esa kasb mahoratini amaliyotda qo'llashga yo'naltirilgan."
+      },
+      {
+        "t": "Yosh xususiyatlarini hisobga olish",
+        "d": "O'smirlar (16-17 yosh) uchun muammoli vaziyatlar va mustaqil muhokama samarali hisoblanadi. Faqat ma'ruza yoki juda soddalashtirilgan o'yinlar bu yoshdagilar uchun samarasiz."
+      },
+      {
+        "t": "Individual yondashuv ahamiyati",
+        "d": "Har bir o'quvchining jinsi, yoshi va qobiliyatini hisobga olgan holda yondashuv muvaffaqiyatga olib keladi. Standarttalash individual rivojlanishga zid bo'lishi mumkin."
+      }
+    ],
+    "mustKnow": [
+      "Induksiya metodi yakuniy umumiy qoida yoki qonunni chiqarish uchun bir qator alohida, aniq misollardan foydalanishdir.",
+      "Deduksiya metodi umumiy qoida yoki qonundan boshlab, uni maxsus, aniq vaziyatlarga va misollarga tatbiq etish jarayonidir.",
+      "Abstrakt tafakkur narsa va hodisalarni bevosita idrok qilmasdan, ularning xususiyatlari, munosabatlari va qonuniyatlari asosida fikrlash qobiliyatidir.",
+      "Davlat ta'lim standartlari va asosiy umumta'lim dasturi ta'lim natijalarini, vazifalari va muddatlarini belgilovchi asosiy hujjat hisoblanadi.",
+      "O'smirlar (16-17 yosh) uchun muammoli vaziyatlar va mustaqil muhokama ularning faollik va mustaqillik ehtiyojiga mos keladi.",
+      "Rejalashtirish standart va dasturni o'rganishdan boshlanadi, keyin maqsad belgilanadi, uslublar tanlanadi va baholash aniqlanadi.",
+      "Kommunikativ kompetensiya muloqotga, akademik kompetensiya o'qish va bilim olishga, kasbiy kompetensiya amaliyotga yo'naltirilgan."
+    ],
+    "mistakes": [
+      "Induksiya umumiy qoidadan boshlanadi degan xato. To'g'ri: Induksiya yakka misollardan umumiy qoidaga o'tadi, umumiy qoidadan boshlanishi deduksiya hisoblanadi.",
+      "Aniq-vaziyatli tafakkur ongsiz hodisalarini tahlil qilish uchun ishlatiladi degan xato. To'g'ri: Aniq-vaziyatli tafakkur amaliyotga bog'liq, ongsiz hodisalar uchun abstrakt tafakkur talab etiladi.",
+      "16-17 yoshli o'smirlar uchun faqat ma'ruza usuli samarali degan xato. To'g'ri: O'smirlar uchun faqat ma'ruza samarali bo'lmaydi, ular uchun muammoli vaziyatlar va mustaqil muhokama zarur."
+    ],
+    "mnemonics": [
+      "Induksiya — 'I'ndividual (yakka)dan Umumiyga; Deduksiya — 'D'astlab Umumiydan.",
+      "Rejalashtirish tartibi: Standart -> Maqsad -> Usul -> Baholash (SMUB).",
+      "Kompetensiyalar: A-Akademik (o'qish), B-Bog'lanish (muloqot), C-Casbiy (amaliyot)."
+    ],
+    "source": "Davlat ta'lim standartlari va asosiy umumta'lim dasturi",
+    "updatedAt": "2026-07-28"
+  }
+}

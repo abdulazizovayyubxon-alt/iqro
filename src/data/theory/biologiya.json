@@ -1,0 +1,341 @@
+{
+  "80": {
+    "summary": "Biologiya asoslari, tiriklik darajalari, organizmlar o'rtasidagi munosabatlar va bionika kabi fanlararo bog'liqliklarni tushunishga oid test izohlari.",
+    "keyPoints": [
+      {
+        "t": "O'zaro munosabat turlari",
+        "d": "Simbiozda organizmlar bir-biriga yordam beradi. Tugunak bakteriyalar azotni o'zlashtiradi, o'simlik esa ularga uyro'q va uglerod beradi. Parazitizm zarar, neutralizm ta'sirsizlik, amensalizm bir tomonlama zarar demakdir."
+      },
+      {
+        "t": "Tiriklik darajalari",
+        "d": "Modda almashinuvi molekula darajasida boshlanadi. Hujayra tuzilish va funksional birlikdir. Irsiy axborot berilishi molekuladan boshlanib, hujayrada davom etadi."
+      },
+      {
+        "t": "Bionika va uning vazifasi",
+        "d": "Bionika organizmlarning tuzilishi va hayot faoliyatiga asoslanib texnik sistemalar yaratishni o'rganadi. Baliq tana shakli va delfin terisiga o'xshash kema qobig'i bionika misolidir."
+      },
+      {
+        "t": "Biologiya fanlari tizimi",
+        "d": "Biokimyo kimyoviy jarayonlarni, biofizika fizik jarayonlarni, biogeografiya esa tarqalish qonuniyatlarini o'rganadi."
+      },
+      {
+        "t": "Organizmlarning qobiq tuzilishi",
+        "d": "Bog'imoyoqlilar (artropodlar) tashqi tayanch sifatida xitin moddasiga ega. O'simliklar asosan sellyulozadan, zamburug'lar esa xitindan farqli moddalardan tashkil topgan qobiqqa ega."
+      }
+    ],
+    "mustKnow": [
+      "Simbioz — bu turli turlardagi organizmlarning bir-biriga yordam berib, hamkorlikda yashashi.",
+      "Parazitizm — bu bir turga zarar, ikkinchisiga foyda keltiruvchi o'zaro munosabat.",
+      "Amensalizm — bu bir turga zarar, ikkinchisiga ta'sir ko'rsatmaydigan o'zaro munosabat.",
+      "Bionika — organizmlar hayot faoliyatining o'ziga xos jihatlari va tuzilishini asos qilib, texnik sistemalar yaratishni o'rganadi.",
+      "Modda va energiya almashinuvi quyosh nuri energiyasining organik moddalarda kimyoviy energiyaga aylanishi bilan molekula darajasida boshlanadi."
+    ],
+    "mistakes": [
+      "Xato: Modda almashinuvi faqat molekula darajasida sodir bo'ladi. To'g'ri: Modda almashinuvi molekula darajasida boshlanadi, lekin hujayra darajasida ham davom etadi.",
+      "Xato: Zamburug'lar qobig'i xitindan tashkil topgan. To'g'ri: Matnda faqat bog'imoyoqlar uchun xitin aytilgan, zamburug'lar uchun boshqa moddalar aytilgan.",
+      "Xato: Irsiy axborot faqat hujayra darajasida beriladi. To'g'ri: Irsiy axborot berilishi molekula darajasida boshlanadi."
+    ],
+    "mnemonics": [
+      "Bionika — Biologiya + Texnika degan formulani eslab qoling.",
+      "O'zaro munosabatlar: S (Simbioz) — Sog'lom hamkorlik, P (Parazitizm) — Poraxo'rlik."
+    ],
+    "source": "Test izohlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "81": {
+    "summary": "Hujayra biologiyasi bo'yicha moddalar almashinuvi va energiya aylanishi hisob-kitoblari. Imtihonda ATF sintezi uchun sarflanadigan energiya miqdori, aerob nafas olish samaradorligi va oziq moddalar energiyasini hisoblashga oid masalalar keng qamrovda o'rganiladi.",
+    "keyPoints": [
+      {
+        "t": "ATF sintezi uchun energiya",
+        "d": "Bitta ATF molekulasi yoki 1 mol ATF hosil bo'lishi uchun 40 kJ energiya sarflanadi. Bu qiymat barcha hisob-kitoblar asosidir."
+      },
+      {
+        "t": "Aerob bosqich samarasi",
+        "d": "Kislorodli bosqichda 36 ta ATF molekulasi hosil bo'ladi. Bu jarayonda 36 ta 40 kJ ko'paytmasi orqali 1440 kJ energiya to'planadi."
+      },
+      {
+        "t": "Oziq moddalar energiyasi",
+        "d": "Yog'lar uchun 1 grammiga 39 kJ, uglevodlar uchun esa 1 grammiga 17 kJ energiya koeffitsienti qo'llaniladi."
+      },
+      {
+        "t": "Plastik almashinuv xususiyati",
+        "d": "Plastik almashinuv (assimilyatsiya) yangi moddalarning sintezi bo'lib, barcha biosintez reaksiyalari energiyani iste'mol qiladi."
+      },
+      {
+        "t": "Energiya balansi hisobi",
+        "d": "Jami energiyadan biosintez jarayonlariga sarflangan qismini ayirib tashlash orqali, qolgan energiya miqdorini hisoblash mumkin."
+      }
+    ],
+    "mustKnow": [
+      "1 ta ATF molekulasi sintezi uchun 40 kJ energiya sarflanadi",
+      "Aerob bosqichda 36 ta ATF molekulasi hosil bo'ladi",
+      "Yog'lar energiyasi hisoblash uchun 39 kJ koeffitsienti ishlatiladi",
+      "Uglevodlar energiyasi hisoblash uchun 17 kJ koeffitsienti ishlatiladi",
+      "Plastik almashinuv energiyani iste'mol qiladi (assimilyatsiya)",
+      "38 ta ATF hosil bo'lishi uchun 1520 kJ energiya sarflanadi"
+    ],
+    "mistakes": [
+      "Xato: 1 ta ATF uchun 580 yoki 2870 kJ energiya deb hisoblash. To'g'ri: Har doim 40 kJ ko'paytmasi qo'llaniladi.",
+      "Xato: Plastik almashinuv energiya ajratib chiqaradi deb hisoblash. To'g'ri: Plastik almashinuv (biosintez) energiyani sarflaydi.",
+      "Xato: Yog' va uglevod energiyasida bir xil koeffitsient ishlatish. To'g'ri: Yog' uchun 39, uglevod uchun 17 koeffitsientlari ishlatiladi."
+    ],
+    "mnemonics": [
+      "ATF narxi 40: Har qanday ATF miqdorini kJ ga aylantirish uchun ATF sonini 40 ga ko'paytiring.",
+      "Yog' 39, Uglevod 17: Yog'lar ko'proq energiya beradi (39), uglevodlar kamroq (17).",
+      "Plastik quradi, katabol yemadi: Plastik almashinuv qurish uchun energiya oladi (iste'mol qiladi)."
+    ],
+    "source": "Biologiya darsliklari va attestatsiya manbalaridagi tenglamalar asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "82": {
+    "summary": "Organizmlarning hayot faoliyati jarayonlaridagi energiya taqsimoti, suyak tarkibi va moddalar o'tishi qonuniyatlarini hisoblash va tushunish imtihonda asosiy e'tiborga olinadi.",
+    "keyPoints": [
+      {
+        "t": "Suyak massasi tarkibi",
+        "d": "Suyak massasining asosiy qismini noorganik moddalar tashkil etadi, qattiqlik kalsiy tuzlari bilan, elastiklik esa ossein oqsili bilan ta'minlanadi."
+      },
+      {
+        "t": "Energiya balansi (2880 kJ)",
+        "d": "2880 kJ jami energiyadan 1152 kJ (40%) ATF sinteziga, 1728 kJ (60%) esa issiqlik shaklida sarflanadi."
+      },
+      {
+        "t": "Energiya balansi (2870 kJ)",
+        "d": "2870 kJ energiyadan 40% sintezga sarflanadi, qolgan 1722 kJ qismi esa issiqlik shaklida tarqaladi."
+      },
+      {
+        "t": "Diffuziya qonuniyati",
+        "d": "Moddalar, jumladan gazlar, doimo yuqori konsentratsiyadan past konsentratsiyasi tomonga, masalan, qondan to'qimaga o'tadi."
+      },
+      {
+        "t": "Suyak tarkibi foizlari",
+        "d": "Suyakning quruq massasida 60-70% noorganik moddalar va 30-40% organik moddalar bo'ladi."
+      },
+      {
+        "t": "Glyukoza oksidlanishi (2 mol)",
+        "d": "2 mol glyukoza oksidlanganda 12 mol kislorod sarflanadi va 5760 kJ energiya ajralib chiqadi."
+      },
+      {
+        "t": "Glyukoza oksidlanishi mahsulotlari",
+        "d": "1 mol glyukoza oksidlanishi natijasida 6 mol suv (108 gramm) hosil bo'ladi, jarayon sitoplazma va mitoxondriyada kechadi."
+      }
+    ],
+    "mustKnow": [
+      "1 mol glyukoza to'liq oksidlanganda 2880 kJ energiya ajraladi.",
+      "1 mol glyukoza oksidlanishida 6 mol O2 sarflanadi, 6 mol CO2 va 6 mol H2O hosil bo'ladi.",
+      "Suyak tarkibida qattiqlikni kalsiy tuzlari, elastiklikni esa organik oqsillar (ossein) ta'minlaydi.",
+      "Arterial qonda kislorod miqdori 19,8% ni tashkil qiladi.",
+      "Suyak tarkibida noorganik moddalar 60-70%, organik moddalar 30-40% ni tashkil qiladi.",
+      "1 mol glyukoza oksidlanishida 108 gramm (6 mol) suv hosil bo'ladi."
+    ],
+    "mistakes": [
+      "Xato: 1 mol glyukoza oksidlanishida 54 gramm suv hosil bo'ladi. To'g'ri: 108 gramm (6 mol) suv hosil bo'ladi.",
+      "Xato: Moddalar past konsentratsiyadan yuqori konsentratsiyaga o'tadi. To'g'ri: Moddalar yuqori konsentratsiyadan past konsentratsiyasi tomonga o'tadi.",
+      "Xato: Suyak elastikligini kalsiy tuzlari ta'minlaydi. To'g'ri: Suyak elastikligini organik oqsillar (ossein) ta'minlaydi."
+    ],
+    "mnemonics": [
+      "1 mol glyukoza = 6 ta 6 (6 mol O2, 6 mol CO2, 6 mol H2O).",
+      "40% ish, 60% issiq — energiya taqsimotini shu formula orqali yodda saqlang.",
+      "Kalsiy - Qattiq, Ossein - Egiluvchan degan qoidani eslab qoling."
+    ],
+    "source": "Tasdiqlangan test izohlari",
+    "updatedAt": "2026-07-28"
+  },
+  "83": {
+    "summary": "Genetika va evolyutsiya mavzusida irsiyat qonunlari, genetik masalalar yechish, krossingover hisob-kitoblari va fenotip nisbatlari asosiy e'tiborga olinadi.",
+    "keyPoints": [
+      {
+        "t": "Analitik chatishtirish nisbati",
+        "d": "Geterozigota va retsessiv homozigota o'simliklar chatishtirilganda 1:1 genotip va fenotip nisbati kuzatiladi, masalan, 1200 tadan 600 tasi Aa, qolgani aa bo'ladi."
+      },
+      {
+        "t": "Genlar orasidagi masofa",
+        "d": "Genlar orasidagi masofa rekombinatsiya foiziga teng bo'ladi; 1000 tadan 150 tasi rekombinant bo'lsa, masofa 15 morrganidni tashkil qiladi."
+      },
+      {
+        "t": "Krossingover chastotasi",
+        "d": "Krossingover chastotasi rekombinantlar sonining umumiy avlod soniga nisbati ko'paytirilgan 100% ga teng bo'lib, masalan, (100/1000)*100% = 10% ni beradi."
+      },
+      {
+        "t": "Mustaqil taqsimlanish sharti",
+        "d": "Agar rekombinatsiya 50% bo'lsa, bu mustaqil taqsimlanishni ko'rsatadi; genlar bir xromosomada bo'lsa ham masofa uzoq bo'lsa, 50% rekombinatsiya kuzatiladi."
+      },
+      {
+        "t": "Monogibrid chatishtirish natijasi",
+        "d": "Aa x Aa chatishtirishida fenotip bo'yicha 3:1, genotip bo'yicha 1:2:1 nisbat kuzatiladi, 1600 ta urug'dan 1200 tasi dominant, 400 tasi retsessiv bo'ladi."
+      },
+      {
+        "t": "Digidrid chatishtirish nisbati",
+        "d": "AaBb x AaBb chatishtirishida fenotip bo'yicha 9:3:3:1 nisbat kuzatiladi, jami 16 qism bo'lib, masalan 1600 ta o'simlikda 100 tasi ikkala retsessiv belgiga ega bo'ladi."
+      },
+      {
+        "t": "Dominant epistaz belgisi",
+        "d": "Dominant epistazda 13:3 nisbat kuzatiladi, bu yerda 13 qism epistatik genning dominant alleli mavjud bo'lgan barcha genotiplarni o'z ichiga oladi."
+      }
+    ],
+    "mustKnow": [
+      "Analitik chatishtirish (Aa x aa) 1:1 genotip va fenotip nisbatini beradi.",
+      "1% rekombinatsiya 1 morrganidga teng.",
+      "Rekombinatsiya 50% bo'lsa, bu mustaqil taqsimlanishni (Mendel qonuni) ko'rsatadi.",
+      "Mendelning 3-qonuniga ko'ra, dihibrid organizmda 4 xil turdagi gameta (AB, Ab, aB, ab) teng ehtimollik (har biri 25%) bilan hosil bo'ladi.",
+      "Dominant epistazda 13:3 nisbat kuzatiladi.",
+      "Monogibrid chatishtirishda (Aa x Aa) fenotip bo'yicha nisbat 3:1, genotip bo'yicha 1:2:1 bo'ladi.",
+      "Digidrid chatishtirishda fenotip bo'yicha 9:3:3:1 nisbat kuzatiladi."
+    ],
+    "mistakes": [
+      "Xato: Rekombinatsiya 50% bo'lganda genlar har doim turli xromosomalarda joylashgan deb hisoblash. To'g'ri: Genlar bir xromosomada bo'lsa-da, orasidagi masofa juda uzoq bo'lsa, 50% rekombinatsiya kuzatilishi mumkin.",
+      "Xato: Digidrid chatishtirishda (AaBb x AaBb) jami qism sonini 4 deb hisoblash. To'g'ri: Fenotip bo'yicha 9:3:3:1 nisbatda jami qism soni 16 ga teng (9+3+3+1).",
+      "Xato: Krossingover chastotasini umumiy sonning rekombinantlar soniga bo'lish orqali topish. To'g'ri: Krossingover chastotasi rekombinantlar sonining umumiy avlod soniga nisbati ko'paytirilgan 100% ga teng."
+    ],
+    "mnemonics": [
+      "Digidrid formula: 9:3:3:1 — 9 ikkala dominant, 3 va 3 bitta dominant, 1 ikkala retsessiv.",
+      "Analitik 1:1: Aa bilan aa chatishtirsang, natija teng bo'ladi — yarmi sariq, yarmi yashil.",
+      "Morganid qoidasi: Foiz nechi bo'lsa, masofa shuncha morrganid — 15% = 15 morrganid."
+    ],
+    "source": "Mendel qonunlari va genetik hisoblash qoidalari",
+    "updatedAt": "2026-07-28"
+  },
+  "84": {
+    "summary": "Mavzu ekosistema va biosfera darajasidagi energiya aylanishi, oziq zanjirlari va populyatsiya dinamikasini qamrab oladi. Imtihonda asosan energiya o'tish qonuni va ekologiya fanining tarixi bo'yicha bilimlar tekshiriladi.",
+    "keyPoints": [
+      {
+        "t": "Energiyaning harakat yo'nalishi",
+        "d": "Energiya moddalardan farqli o'laroq aylanmaydi, u produtsentdan konsumentlarga bir yo'nalishda harakatlanadi va har o'tishda issiqliq energiyasi sifatida tarqaladi."
+      },
+      {
+        "t": "O'n foizlik qonun",
+        "d": "Ekologik piramida qonuniga ko'ra, energiya har bir oziqlanish bosqichidan keyingisiga o'tganda uning atigi 10% i saqlanib qoladi."
+      },
+      {
+        "t": "Populyatsiya hisobi",
+        "d": "Populyatsiya sonini hisoblashda boshlang'ich sondan o'lim va ko'chib ketishni ayirib, ko'chib kelishni qo'shish orqali aniqlanadi."
+      },
+      {
+        "t": "Ekologiya fanining ta'rifi",
+        "d": "Ekologiya organizmlarning o'zaro va atrof-muhit bilan munosabatlarini o'rganuvchi fan sifatida ta'riflanadi."
+      },
+      {
+        "t": "Zamonaviy ekologiya doirasi",
+        "d": "Zamonaviy ekologiyaning vakolat doirasiga faqat biologiya emas, balki sanoat, iqtisodiyot va siyosat kabi sohalar ham kiradi."
+      },
+      {
+        "t": "Atamaning etimologiyasi",
+        "d": "\"Ekologiya\" atamasi yunoncha \"uy\" degan ma'noni anglatuvchi \"oikos\" va \"fan\" degan ma'noni anglatuvchi \"logos\" so'zlaridan tarkib topgan."
+      }
+    ],
+    "mustKnow": [
+      "\"Ekologiya\" atamasini 1866-yilda nemis olimi Ernest Gekkel kiritgan.",
+      "\"Ekologiya\" so'zi yunoncha \"oikos\" (uy) va \"logos\" (fan) so'zlaridan olingan.",
+      "Ekologik piramida qonuniga ko'ra, energiya har bir bosqichdan keyingisiga o'tganda uning 10% i qoladi.",
+      "Energiya moddalardan farqli o'laroq aylanmaydi, u bir yo'nalishda harakatlanadi.",
+      "Boshlang'ich soni 2000, o'limi 700 va ko'chib kelishi 150 bo'lgan populyatsiya soni 1450 taga teng."
+    ],
+    "mistakes": [
+      "Energiya moddalar kabi tabiatda doimiy aylanib turadi — Energiya moddalardan farqli o'laroq aylanmaydi, u bir yo'nalishda harakatlanadi.",
+      "Ekologiya fanining vazifasi tirik organizmlarning tuzilishini o'rganish — Tirik organizmlarning tuzilishini o'rganish morfologiyaga oid, ekologiya esa muhit bilan munosabatlarni o'rganadi.",
+      "Energiya oziqlanish zanjirining har bir bosqichida to'liq saqlanib qoladi — Energiyaning ko'p qismi issiqlik sifatida tarqalib ketadi, faqat 10% keyingi bosqichga o'tadi."
+    ],
+    "mnemonics": [
+      "1866 — Gekkel ekologiyani yaratdi.",
+      "Oikos (uy) + Logos (fan) = Uydagi fan (muhitni o'rganish).",
+      "10% qoidasi: 100 000 -> 10 000 -> 1 000 -> 100 -> 10 (har qadamda nol qo'shilib, oxirgi raqam tushadi)."
+    ],
+    "source": "Tasdiqlangan test izohlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "85": {
+    "summary": "Biologiya o'qituvchisi kasb standarti talablari, o'quv jarayonini tashkil etish va baholash mezonlari. Imtihonda rejalashtirish bosqichidagi aniq, o'lchanadigan natijalarni belgilash va samaradorlik hisobiga oid vazifalar keng qamrovda so'raladi.",
+    "keyPoints": [
+      {
+        "t": "Rejalashtirish bosqichi talablari",
+        "d": "O'qituvchi darsni rejalashtirishda avval o'quvchilarning bilim darajasi va ehtiyojlarini tahlil qilishi, shunga mos aniq va o'lchanadigan natijalarni belgilashi lozim. Bu kasb standartidagi asosiy vazifalardan biridir."
+      },
+      {
+        "t": "Aniq va o'lchanadigan natijalar",
+        "d": "Maqsadlar foizda (masalan, 90%) yoki aniq shartlar ('so'z boshida') orqali ifodalansa, ular o'lchanadigan va aniq hisoblanadi. Bu standartdagi natijalarning o'lchanadiganligi talabiga javob beradi."
+      },
+      {
+        "t": "Baholash va qayta aloqa",
+        "d": "Bu bosqichda o'qituvchi bilim darajasini kuzatib borishi va qiyinchilik bo'lganda boshqa mutaxassislar bilan maslahatlashishi shart. Munosabat o'rnatish va xavfsizlik qoidalari boshqa vazifalarga kiradi."
+      },
+      {
+        "t": "Samaradorlik hisobi",
+        "d": "Samaradorlik (chiqarilgan / sarflangan) × 100 formulasi bilan hisoblanadi. Masalan, 640/5800 × 100 natijasi 11,03% bo'lib, berilgan variantlar ichida eng yaqini 10% ni tashkil qiladi."
+      },
+      {
+        "t": "Eritma suyultirish formulasi",
+        "d": "Molyar konsentratsiyani hisoblashda C1V1 = C2V2 formulasi qo'llaniladi. Jami hajmni hisobga olish zarur, masalan, 25 mL eritma 150 mL suvga qo'shilganda, jami hajm 175 mL bo'ladi."
+      },
+      {
+        "t": "Elektroliz va massa hisobi",
+        "d": "Q = I·t formulasi va Faraday doimiysi (96485) orqali hisoblanadi. 0,5 A tok 1800 sekund davomida 0,30 g ga yaqin mis massasini ajratib chiqaradi, bu 0,32 g variantiga yaqin."
+      }
+    ],
+    "mustKnow": [
+      "Samaradorlik formulasi: (chiqarilgan / sarflangan) × 100",
+      "Molyar konsentratsiyani saqlash formulasi: C1V1 = C2V2",
+      "Faraday doimiysi (F): 96485 C/mol",
+      "Mis (Cu) ning molar massasi: 63,5 g/mol",
+      "Quyilgan zaryad formulasi: Q = I·t",
+      "25 mL 0,10 M eritma 150 mL suvga qo'shilganda yangi konsentratsiya: 0,0143 M",
+      "0,5 A tok 1800 sekund (30 minut) davomida o'tganda hosil bo'lgan mis massasi: 0,30 g"
+    ],
+    "mistakes": [
+      "Rejalashtirishni tahlilsiz qilish: Xato — faqat dars o'tishni rejalashtirish; To'g'ri — o'quvchilar ehtiyojlarini tahlil qilish asosida aniq maqsadlar belgilash.",
+      "Hajmni noto'g'ri hisoblash: Xato — suyultirilganda faqat qo'shilgan suv hajmini (150 mL) olash; To'g'ri — dastlabki va qo'shilgan suv hajmlari yig'indisini (175 mL) olish.",
+      "Vazifalarni aralashtirish: Xato — baholash bosqichida xavfsizlik qoidalarini tushuntirish; To'g'ri — bu tarbiyaviy vazifa, baholash esa bilim darajasini kuzatishdan iborat."
+    ],
+    "mnemonics": [
+      "Reja = Tahlil + Maqsad. Rejalashtirish bosqichi shu ikki elementdan iborat ekanini eslash uchun.",
+      "C1V1 = C2V2. Eritma suyultirilganda modda miqdori o'zgarmasligini eslash uchun."
+    ],
+    "source": "Biologiya o'qituvchisi kasb standarti",
+    "updatedAt": "2026-07-28"
+  },
+  "86": {
+    "summary": "Pedagogik mahorat darsni rejalashtirish, mantiqiy fikrlash va o'quvchilarga individual yondashuvni o'z ichiga oladi. Imtihonda kasb standarti talablari asosida darsni tashkil etish ko'nikmalari tekshiriladi.",
+    "keyPoints": [
+      {
+        "t": "Mantiqiy fikrlash usullari",
+        "d": "Induksiya yakka ob'ektlardan umumiy qoidaga, deduksiya esa umumiy qoidadan xususiy holatlarga o'tishni bildiradi. Analogiya o'xshashlik, tahlil esa bo'laklarga ajratishdir."
+      },
+      {
+        "t": "Darsni rejalashtirish talablari",
+        "d": "Kasb standartiga ko'ra, o'qituvchi ehtiyojlarni tahlil qilib, natijalarni aniq va o'lchanadigan qilib belgilashi lozim. 'Tushunadi' degan noaniq maqsadlar qo'yilmasligi kerak."
+      },
+      {
+        "t": "Dasturni moslashtirish",
+        "d": "O'qituvchi o'quvchilarning ehtiyojlari, qiziqishlari va tayyorgarlik darajasini hisobga olgan holda dastur va yondashuvni o'zgartirishi shart."
+      },
+      {
+        "t": "Rejalarni tuzatish",
+        "d": "Baholash natijalari asosida o'qituvchi o'z rejasini moslashtirishi kerak. Kamchiliklarni bartaraf etish uchun vizual moddellarni ko'paytirish yoki qo'shimcha mashg'ulotlar o'tkazish to'g'ri yondashuvdir."
+      },
+      {
+        "t": "Xavfsizlik qoidalari",
+        "d": "Laboratoriyada xavfsizlik qoidalarini tushuntirish va ularga rioya qilishni ta'minlash o'quvchilarga xavfsizlikni o'rgatish vazifasiga to'g'ri keladi."
+      },
+      {
+        "t": "Tarbiya yo'nalishlari",
+        "d": "Iqtisodiy tarbiya tejamkorlikni, estetik go'zallikni, jismoniy sog'lom turmushni, huquqiy esa qonunlarga rioya qilishni shakllantiradi."
+      }
+    ],
+    "mustKnow": [
+      "Induksiya — bu yakka ob'ektlar yoki hodisalarni kuzatish asosida umumiy qoida yoki qonuniyatni chiqarishdir.",
+      "Deduksiya — bu fikrlashning mantiqiy usuli bo'lib, unda umumiy qoida yoki qonundan boshlab, xususiy holatlarga o'tiladi.",
+      "Iqtisodiy tarbiya mazmuniga tejamkorlik, mablag' va vaqtdan oqilona foydalanish ko'nikmalarini shakllantirish kiradi.",
+      "Kasb standartiga ko'ra, o'qituvchi baholash natijalari asosida o'z rejasini moslashtirishi shart.",
+      "Dars maqsadlarini belgilashda 'tushunadi' kabi noaniq ifodalar o'rniga aniq amallar ko'rsatilishi lozim."
+    ],
+    "mistakes": [
+      "O'quvchilarning kamchiligini e'tiborsiz qoldirish yoki o'tkazib yuborish. To'g'ri: Vizual modellarni ko'paytirish va qo'shimcha amaliy mashg'ulotlar o'tkazish.",
+      "Dars maqsadini noaniq ifodalash ('tushunadi'). To'g'ri: Natijalarni aniq va o'lchanadigan qilib belgilash (masalan, tenglamani yozish).",
+      "Standart rejalashtirish doimiy o'zgarishlarni o'z ichiga oladi deb hisoblash. To'g'ri: O'qituvchi talablar asosida dasturni o'zi moslashtiradi."
+    ],
+    "mnemonics": [
+      "Induksiya — Individualdan Umumiyga; Deduksiya — Umumiydan Detailga (maxsusga).",
+      "Iqtisodiy tarbiya — Ish va Tejamkorlik."
+    ],
+    "source": "Kasb standarti",
+    "updatedAt": "2026-07-28"
+  }
+}

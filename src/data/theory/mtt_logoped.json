@@ -1,0 +1,516 @@
+{
+  "97": {
+    "summary": "Mazkur mavzu bo'g'izdagi teshikni davolash maqsadida rezina trubka qo'llash muddati va tibbiy maqsadlarini o'z ichiga oladi. Imtihonda 3-5 oylik muddat va retsidivga qarshi kurashishga oid bilishlar talab etiladi.",
+    "keyPoints": [
+      {
+        "t": "Taqish muddati",
+        "d": "Rezina trubka uzoq muddat, ya'ni 3-5 oy davomida taqib yuriladi."
+      },
+      {
+        "t": "Retsidivga qarshi kurash",
+        "d": "Trubka taqishning asosiy vazifasi kasallikning qaytalanishiga qarshi kurashishdan iborat."
+      },
+      {
+        "t": "Teshikni davolash",
+        "d": "Bo'g'izdagi teshikni to'liq davolash va bitishini ta'minlash uchun trubka qo'llaniladi."
+      },
+      {
+        "t": "Nafas olish usuli",
+        "d": "Trubka taqilgan davrda nafas olish faqat trubka orqali amalga oshiradi."
+      },
+      {
+        "t": "Ovoz holati",
+        "d": "Bu davrda ovoz bo'lmaydi (afoniya) yoki nutq monoton yoki shivirlash shaklida bo'ladi."
+      },
+      {
+        "t": "Organlarni himoya",
+        "d": "Trubka orqali nafas olish va ovozning yo'qolishi a'zolarni asraydigan vaqtinchalik holatdir."
+      },
+      {
+        "t": "Muddat ahamiyati",
+        "d": "Qisqa muddatli (bir necha kun) taqish maqsadga erishish uchun yetarli emas."
+      }
+    ],
+    "mustKnow": [
+      "Rezina trubka taqish muddati 3-5 oyni tashkil etadi.",
+      "Trubka taqishning asosiy maqsadi kasallikning qaytalanishiga (retsidiv) qarshi kurashishdir.",
+      "Trubka bo'g'izdagi teshikni davolash maqsadida taqiladi.",
+      "Trubka taqilganda nafas olish trubka orqali amalga oshadi.",
+      "Trubka taqilganda ovoz bo'lmaydi (afoniya) yoki nutq monoton bo'ladi.",
+      "Nafas olishni oshirish yoki spaznni oldini olish birinchi darajali maqsad emas."
+    ],
+    "mistakes": [
+      "Xato: Trubka bir necha kun taqiladi. To'g'ri: Trubka 3-5 oy taqiladi.",
+      "Xato: Asosiy maqsad nafas olishni oshirish. To'g'ri: Asosiy maqsad retsidivga qarshi kurashish va teshikni davolash."
+    ],
+    "mnemonics": [
+      "3-5 oy — teshik bitishi va kasallik qaytamasligi uchun.",
+      "Trubka — nafas yo'li, ovoz — yo'q (afoniya)."
+    ],
+    "source": "Manba ma'lumotlari asosida",
+    "updatedAt": "2026-07-28"
+  },
+  "98": {
+    "summary": "Markaziy asab tizimi shikastlanishi bilan bog'liq nutq buzilishlarini tuzatish bo'yicha 1940-1950-yillardagi ilmiy ishlar, metodikalar va mualliflarning hissasi ko'rib chiqiladi.",
+    "keyPoints": [
+      {
+        "t": "E.S. Beynning 1948-yilgi ishi",
+        "d": "E.S. Beyn 1948-yilda kattalardagi sensor afaziya uchun akustik-gnostik funksiyani tiklash metodikasini ishlab chiqqan."
+      },
+      {
+        "t": "Akustik-gnostik funksiya tiklash",
+        "d": "Beyn metodikasi o'xshash tovushlarni idrok etishni yaxshilash orqali farqlash qobiliyatini tiklashga qaratilgan."
+      },
+      {
+        "t": "O.P. Kaufman tavsiyalari",
+        "d": "O.P. Kaufman 1947-yilda motor afaziyada artikulyar faoliyatni tashkil etishni dastlabki o'ringa qo'yishni tavsiya etgan."
+      },
+      {
+        "t": "Ichki nutqning yo'qolishi",
+        "d": "Kaufman 1947-yilda motor afaziya bilan kasallangan insonlar ichki nutqining yo'qolish holatini tahlil etgan."
+      },
+      {
+        "t": "Reabilitatsion ta'lim masalalari",
+        "d": "V.M. Kogan va R.G. Ananev 1946-1947-yillarda reabilitatsion ta'lim masalalari bilan shug'ullangan."
+      },
+      {
+        "t": "Neyropsixologiya asoschisi",
+        "d": "A.R. Luriya neyropsixologiya asoschisi sifatida e'tirof etiladi."
+      },
+      {
+        "t": "O'qish va yozishni tiklash",
+        "d": "E.S. Beyn tomonidan o'qish va yozishni tiklash metodlari 1959 va keyingi yillarda ishlab chiqilgan."
+      }
+    ],
+    "mustKnow": [
+      "E.S. Beyn 1948-yilda kattalardagi sensor afaziya uchun akustik-gnostik funksiyani tiklash metodikasini ishlab chiqqan.",
+      "O.P. Kaufman 1947-yilda motor afaziya bilan kasallangan insonlar ichki nutqining yo'qolish holatini tahlil etgan.",
+      "V.M. Kogan va R.G. Ananev 1946-1947-yillarda reabilitatsion ta'lim masalalari bilan shug'ullangan.",
+      "E.S. Beyn metodikasi o'xshash tovushlarni idrok etishni yaxshilash orqali farqlash qobiliyatini tiklashga asoslangan.",
+      "O.P. Kaufman motor afaziyada artikulyar faoliyatni tashkil etishni dastlabki o'ringa qo'yishni tavsiya etgan.",
+      "A.R. Luriya neyropsixologiya asoschisi hisoblanadi."
+    ],
+    "mistakes": [
+      "E.S. Beyn akustik-gnostik funksiyani tiklash metodikasini 1947-yilda ishlab chiqqan — Notog'ri, to'g'ri sanasi: 1948-yil.",
+      "O.P. Kaufman sensor afaziya bilan shug'ullangan — Notog'ri, u motor afaziya va ichki nutq bilan shug'ullangan.",
+      "Kogan va Ananev aniq metodikani ishlab chiqqan — Notog'ri, ular reabilitatsiya masalalari va umumiy tamoyillarga e'tibor berishgan."
+    ],
+    "mnemonics": [
+      "\"Beyn-48\": E.S. Beyn (B) -> 1948 -> Sensor afaziya (S) -> Tovushlarni farqlash.",
+      "\"Kaufman-47\": O.P. Kaufman -> 1947 -> Motor afaziya -> Artikulyasiya (A).",
+      "\"T-Y-O\": Tahlil (1947) -> Yo'qolgan nutq (1947) -> O'qish (1959)."
+    ],
+    "source": "Imtihon tayyorlov materiallari",
+    "updatedAt": "2026-07-28"
+  },
+  "99": {
+    "summary": "Motor nutq buzilishlari, xususan, dizartriyaning etiologiyasi, klinik shakllari, tuzatish bo'yicha asosiy tamoyillar hamda ota-onalarning jarayondagi ishtiroki haqida ma'lumotlar.",
+    "keyPoints": [
+      {
+        "t": "Dizartriyaning ta'rifi",
+        "d": "Bu markaziy nerv sistemasining organik shikastlanishi oqibatida kelib chiqadigan nutq motorikasining yetishmovchiligi va nutq ifodali tomonlarining buzilishidir."
+      },
+      {
+        "t": "Nafas olishni o'rgatish",
+        "d": "Asosiy maqsad to'g'ri, diyafragmal (qorin) nafasni o'rgatish va nafas olish, ovoz chiqarish hamda nutq ritmi o'rtasidagi muvofiqlashtirishni ta'minlashdir."
+      },
+      {
+        "t": "Dislaliya bilan farqi",
+        "d": "Dislaliya faqat funksional talaffuz buzilishi bo'lib, nutq apparati anatomik jihatdan to'liq bo'lishiga qaramay, organik shikastlanish kuzatilmaydi."
+      },
+      {
+        "t": "Spastik dizartriya",
+        "d": "Piramidal tizimning shikastlanishi oqibatida mushak tonusi oshadi (gipertoniya), bu esa harakatlarning sekinlashishi va cheklanishiga olib keladi."
+      },
+      {
+        "t": "Ota-onalarning roli",
+        "d": "Ota-onalarning ishtiroki ularga nutq nuqsonlarini bartaraf etish qonun-qoidalari va usullarini bilish imkonini beradi hamda uy sharoitida samarali yordam berishiga xizmat qiladi."
+      },
+      {
+        "t": "Psevdobulbar sindrom",
+        "d": "Mushaklarning parezi sababli so'lak oqishi va og'iz bo'shlig'ining tug'ma reflekslari oshib ketishi kuzatiladi, intellekt ko'pincha normal bo'ladi."
+      },
+      {
+        "t": "Dizartriyaning shakllari",
+        "d": "Bulbar (atrofiya), serebellar (muvozanat buzilishi), ekstrapiramidal (giperkinezlar) va kortikal (selektiv artikulyatsiya) shakllari mavjud."
+      }
+    ],
+    "mustKnow": [
+      "Dizartriya — markaziy nerv sistemasining organik shikastlanishi oqibatida kelib chiqadigan nutq motorikasining yetishmovchiligi (parez) va nutq ifodali tomonlarining buzilishidir.",
+      "Dizartriyada asosiy maqsad — to'g'ri, diyafragmal (qorin) nafasni o'rgatish va nafas olish, ovoz chiqarish hamda nutq ritmi o'rtasidagi muvofiqlashtirishni ta'minlashdir.",
+      "Dislaliya — nutq apparati anatomik jihatdan to'liq bo'lishiga qaramay, faqat funksional talaffuz buzilishi bo'lib, organik shikastlanish kuzatilmaydi.",
+      "Spastik dizartriyada piramidal tizimning shikastlanishi oqibatida mushak tonusi oshadi (gipertoniya), bu esa harakatlarning sekinlashishi va cheklanishiga olib keladi.",
+      "Bulbar dizartriyada periferik falaj belgilari (atrofiya va reflekslar yo'qolishi) kuzatiladi.",
+      "Psevdobulbar dizartriyada markaziy falaj belgilari (spastiklik va patologiyali reflekslar) mavjud bo'lib, kasallik markaziy kelib chiqishga ega.",
+      "Ekstrapiramidal shaklida giperkinezlar va tonus beqarorligi xarakterlidir."
+    ],
+    "mistakes": [
+      "Xato: Dizartriya faqat periferik kelib chiqishga ega. To'g'ri: Dizartriya har doim markaziy asab tizimining organik shikastlanishi bilan birga keladi.",
+      "Xato: Dizartriyada intellekt jiddiy kamayadi. To'g'ri: Dizartriyada intellekt ko'pincha saqlanadi (normal bo'ladi).",
+      "Xato: Nafas mashqlari faqat mashg'ulot boshida o'tkaziladi. To'g'ri: Nafas olish mashqlari butun mashg'ulot davomida, har xil bosqichlarda element sifatida kiritilishi mumkin.",
+      "Xato: Ko'krak qafasi orqali yuza nafas olish to'g'ri hisoblanadi. To'g'ri: Ko'krak qafasi orqali yuza nafas olish noto'g'ri hisoblanadi, diyafragmal nafas o'rgatiladi."
+    ],
+    "mnemonics": [
+      "CNS + Organik shikastlanish = Dizartriya.",
+      "Qorin (Diyafragmal) — To'g'ri; Ko'krak — Noto'g'ri.",
+      "Bulbar — Falaj; Serebellar — Muvozanat; Ekstrapiramidal — Giperkinez."
+    ],
+    "source": "Logopediya nazariyasi va amaliyoti",
+    "updatedAt": "2026-07-28"
+  },
+  "100": {
+    "summary": "Nutqning ritm va ravonligi buzilishlari, xususan, duduqlanishning qaytalanish sabablari, profilaktikasi va korreksiyasi ko'rib chiqiladi. Imtihonda asab tizimiga ta'sir etuvchi ijtimoiy, maishiy va tartibli omillar, shuningdek kasallik zaminini bartaraf etishga e'tibor beriladi.",
+    "keyPoints": [
+      {
+        "t": "Oilarning ahamiyati",
+        "d": "Oila 'birlamchi va kuchli asos', his-hayajonli bog'lanish esa 'jiddiy ruhiy omil' sifatida ta'riflanadi."
+      },
+      {
+        "t": "Vazifalarning mazmuni",
+        "d": "Vazifalar 'pedagogik va ruhiy ta'sir etish majmuyi' orqali amalga oshiriladi, ular faqat pedagogik ta'sir bilan cheklanmaydi."
+      },
+      {
+        "t": "Qaytalanish sabablari",
+        "d": "Yomon ijtimoiy-maishiy sharoitlar, qo'pol muomala, ruhiy zo'riqish va asabiylashish kasallikning qaytalanishiga olib keladi."
+      },
+      {
+        "t": "Kun tartibining o'rni",
+        "d": "Faoliyat, uxlash, ovqatlanish va dam olish tartiblarining buzilishi asab tizimini zaiflashtirib, qaytalanishni keltirib chiqaradi."
+      },
+      {
+        "t": "Asab tizimining yuklanishi",
+        "d": "O'qish va qo'shimcha mashg'ulotlar tufayli asab sistemasini haddan ortiq charchatib qo'yish nutq nuqsonining qaytalanishiga sabab bo'ladi."
+      },
+      {
+        "t": "Kasallik zamin (omili)",
+        "d": "Asabiylashish, his-hayajonlarni bostirish va sekin o'tib ketadigan surunkali kasalliklar kasallik paydo bo'lgan zaminini tashkil qiladi."
+      },
+      {
+        "t": "Atrof muhit ta'siri",
+        "d": "Duduqlanishi yo'qolgan bolaga atrofdagilarning befarq murosahatda bo'lishi ham qaytalanish sabablaridan biri hisoblanadi."
+      }
+    ],
+    "mustKnow": [
+      "Oila 'birlamchi va kuchli asos' sifatida ta'riflanadi",
+      "His-hayajonli bog'lanish 'jiddiy ruhiy omil' hisoblanadi",
+      "Vazifalar 'pedagogik va ruhiy ta'sir etish majmuyi' bilan amalga oshiriladi",
+      "Duduqlanish qaytalanishining asosiy sababi: faoliyat, uxlash, ovqatlanish, dam olish tartiblarining buzilishi",
+      "Asab tizimini haddan ortiq charchatib qo'yish: o'qish, qo'shimcha mashg'ulot va ish bilan bog'liq yuklanish",
+      "Kasallik zamini: asabiylashish, his-hayajonlarni bostirish, sekin o'tib ketadigan surunkali kasalliklar",
+      "Qaytalanish sababi: yomon ijtimoiy-maishiy shart-sharoitlar (qo'pol muomala bilan)"
+    ],
+    "mistakes": [
+      "Vazifalar faqat pedagogik ta'sir bilan amalga oshiradi — xato. To'g'risi: vazifalar pedagogik va ruhiy ta'sir etish majmuyi bilan amalga oshiradi",
+      "Zamin faqat jismoniy omillardan iborat — xato. To'g'risi: zamin asabiylashish, his-hayajonlarni bostirish va surunkali kasalliklarni o'z ichiga oladi",
+      "Muvaffaqiyatlarni mustahkamlamaslik ijtimoiy sharoitlar tarkibiga kiradi — xato. To'g'risi: ijtimoiy-maishiy sharoitlar qo'pol muomala va ruhiy zo'riqishni o'z ichiga oladi"
+    ],
+    "mnemonics": [
+      "K.U.N. — Kun tartibi buzilishi, Uyqu yetishmasligi, Nerviy tizim charchoqi (qaytalanish sabablari)",
+      "Z.A.M.I.N. — Zamonaviy sharoitlar, Asabiylashish, Muomala (qo'pol), Ichki kasalliklar (surunkali), Nutq zaminini bartaraf etish",
+      "O.I.L.A. — Oila (birlamchi asos), Ijtimoiy sharoitlar, Logoped ta'siri, Asab tizimi"
+    ],
+    "source": "Tasdiqlangan test izohlari",
+    "updatedAt": "2026-07-28"
+  },
+  "101": {
+    "summary": "Mavzu tovush talaffuzi va ovoz rezonansi buzilishlariga, xususan, rinolaliya va rinofoniyaning anatomik-fiziologik sabablari, diagnostika usullari va logopedik korreksiya bosqichlariga bag'ishlangan.",
+    "keyPoints": [
+      {
+        "t": "Logopedik korreksiya bosqichlari",
+        "d": "Tayyorlov bosqichi (massaj), apparatni tayyorlash (nafas va gimnastika), tovushlarni chiqarish (avval unli, keyin undosh) va nutqda mustahkamlashdan iborat."
+      },
+      {
+        "t": "Rinofoniya va rinolaliya farqi",
+        "d": "Anatomik nuqsonlar bo'lmaganda rinofoniya, tanglay yoriqligi bo'lganda rinolaliya tashxisi qo'yiladi. O'zbekistonda terminologiya shunday belgilangan."
+      },
+      {
+        "t": "Ochiq rinolaliya mexanizmi",
+        "d": "Yumshoq tanglay funksiyasi buzilib, og'iz va burun bo'shliqlari ajralmaydi. Natijada portlovchi tovushlar uchun zarur havo bosimi hosil bo'lmaydi."
+      },
+      {
+        "t": "Gutsman diagnostika usuli",
+        "d": "Ochiq rinolaliyani aniqlashning eng oddiy funksional usuli. Burun yo'li ochiq va yopiq holatda unli tovushlar talaffuz qilinadi va jarangdorlik o'zgarishi tekshiriladi."
+      },
+      {
+        "t": "Tovush buzilishlarining xarakteri",
+        "d": "Barcha nutq tovushlari buziladi, portlovchilar noaniq, shovqinlilarga esa xirillagan tovush qo'shiladi. Nutq bir ohangli va noaniq bo'ladi."
+      },
+      {
+        "t": "Terminologik xususiyatlar",
+        "d": "O'zbekistonda tanglay yoriqligi rinolaliya, chet elda esa palatolaliya deb ataladi. 'Dimog' bilan gapirish' atamasi eskirgan hisoblanadi."
+      }
+    ],
+    "mustKnow": [
+      "Ochiq rinolaliyani aniqlashning eng oddiy funksional usuli Gutsman usuli hisoblanadi.",
+      "Rinofoniya — qo'pol artikulatsion buzilishlar (yumshoq tanglay yoriqlari va boshqa anatomik nuqsonlar) bo'lmagan hollarda kuzatiladigan noto'g'ri talaffuz va burun ohangi.",
+      "Logopedik ta'sir tanglay mushak tonusini oshirish (massaj) bilan boshlanadi, keyin nafas olish va gimnastika, so'ngra tovushlarni chiqarish va nutqda mustahkamlash davom etadi.",
+      "Ochiq rinolaliyada yumshoq tanglay funksiyasi buzilgani uchun og'iz bo'shlig'i burun bo'shlig'idan ajralib qolmaydi va havo bosimi hosil bo'lmaydi.",
+      "Portlovchi tovushlar talaffuz etilishi uchun og'iz bo'shlig'ida havo bosimi to'lanishi va to'siqdan keyin kuchli chiqishi zarur.",
+      "Rinolaliya sistemali nuqson bo'lib, u faqat ayrim tovushlarga emas, balki barcha nutq tovushlariga ta'sir qiladi."
+    ],
+    "mistakes": [
+      "Palatolaliya atamasini O'zbekistondagi anatomik nuqsonlari bo'lmagan holatlar uchun ishlatish (to'g'risi: rinofoniya).",
+      "Rinolaliyani faqat ayrim tovushlarning izolyatsiyalangan buzilishi deb hisoblash (to'g'risi: barcha nutq tovushlariga ta'sir etuvchi sistemali nuqson).",
+      "'Dimog' bilan gapirish' atamasini hozirgi kunda foydalanish (to'g'risi: bu atama eskirgan)."
+    ],
+    "mnemonics": [
+      "Gutsman: 'A va I' — burunni ushlab, 'A' va 'I'ni ayt, o'zgarmasa — ochiq rinolaliya.",
+      "Korreksiya tartibi: Massaj -> Nafas -> Tovush -> Nutq (MNNT).",
+      "Rinolaliya belgisi: Barcha tovushlar + Burun ohangi + Bosim yo'q."
+    ],
+    "source": "O'zbekiston logopediyasi bo'yicha o'quv-metodik manbalar",
+    "updatedAt": "2026-07-28"
+  },
+  "102": {
+    "summary": "Nutqning umumiy rivojlanmaganligini tuzatishda tibbiy-psixologik-pedagogik komplekslik, rivojlanish qonuniyatlari va ontogenetik tamoyillar o'rganiladi.",
+    "keyPoints": [
+      {
+        "t": "Komplekslik tamoyili",
+        "d": "Nutq buzilishlarini tuzatish kompleksi tibbiy, psixologik va pedagogik xususiyatga ega bo'lishi kerak."
+      },
+      {
+        "t": "Rivojlanish tamoyili",
+        "d": "Anomal bolalar rivojlanishining umumiy va o'ziga xos qonuniyatlarini, yaqin rivojlanish doirasidagi vazifalarni hisobga oladi."
+      },
+      {
+        "t": "Ontogenetik tamoyil",
+        "d": "Ontogezisdagi faoliyat turlarini hisobga olishni anglatadi."
+      },
+      {
+        "t": "Faoliyat tamoyili",
+        "d": "Logopedik ish bolaning yetakchi faoliyatlarini (predmet-amaliy, o'yin, tashkiliy) hisobga olgan holda amalga oshiriladi."
+      },
+      {
+        "t": "3 yoshli bolalar",
+        "d": "Ular uchun yetakchi faoliyat o'yin hisoblanadi, shuning uchun tuzatish ishini o'yinda tashkil etish zarur."
+      },
+      {
+        "t": "4 yoshli bolalar",
+        "d": "Ular uchun ham yetakchi faoliyat o'yin hisoblanadi va logoped shu tamoyilga amal qiladi."
+      },
+      {
+        "t": "Yaqin rivojlanish doirasi",
+        "d": "Pedagogik vazifalar belgilashda bolaning yaqin rivojlanish doirasi hisobga olinishi shart."
+      }
+    ],
+    "mustKnow": [
+      "Tuzatish kompleksi tibbiy-psixologik-pedagogik xususiyatga ega bo'lishi kerak.",
+      "Rivojlanish tamoyili anomaliya bo'lgan bolalar rivojlanishining umumiy va o'ziga xos qonuniyatlarini hisobga oladi.",
+      "Ontogenetik tamoyil ontogezisdagi faoliyat turlarini hisobga olishni anglatadi.",
+      "3 va 4 yoshli bolalar uchun yetakchi faoliyat o'yin hisoblanadi.",
+      "Faoliyat tamoyili bolaning yetakchi faoliyatlarini (predmet-amaliy, o'yin, tashkiliy) hisobga oladi."
+    ],
+    "mistakes": [
+      "Faqat tibbiy davolashni qo'llash — Tibbiy-psixologik-pedagogik kompleks yondashuv.",
+      "Faqat nutqga qaratilgan mashg'ulotlar — Bolaning faoliyati va umumiy rivojlanishini hisobga olish.",
+      "Faqat o'ziga xos tomonlarga qarash — Umumiy va o'ziga xos qonuniyatlarni hisobga olish.",
+      "Logopedik ishni izolyatsiyada olib borish — Ota-onalar bilan hamkorlikda tashkil etish."
+    ],
+    "mnemonics": [
+      "KRO: Komplekslik, Rivojlanish, Ontogenez.",
+      "O'yin: 3-4 yoshdagi bolalar uchun yetakchi faoliyat."
+    ],
+    "source": "Logopedik tuzatish tamoyillari",
+    "updatedAt": "2026-07-28"
+  },
+  "103": {
+    "summary": "Yozma nutq buzilishlari, xususan, disgrafiyaning (akustik, optik, agrammatik) turlari, ularning belgilari, tuzatish metodikasi hamda yoshga mos o'quv usullari ko'rib chiqiladi.",
+    "keyPoints": [
+      {
+        "t": "Disgrafiyaning ta'rifi",
+        "d": "Bu yozma nutqning qisman buzilishi bo'lib, u eshitish yoki intellekt nuqsonlari tufayli emas, balki yozuvni shakllantirish mexanizmlarining yetarli darajada rivojlanmasligi sababli yuzaga keladi."
+      },
+      {
+        "t": "Disgrafiyaning asosiy turlari",
+        "d": "Logopediyada akustik, optik, agrammatik va artikulyator-akustik turlari standart hisoblanadi. 'Dinamiko-afektiv disgrafiya' atamasi esa standart tasnifda uchramaydi."
+      },
+      {
+        "t": "Akustik disgrafiya belgilari",
+        "d": "Fonematik eshitish va tovushlarni differensiya qilish yetishmovchiligi tufayli yuzaga keladi. Og'zaki nutqda tovushlar to'g'ri talaffuz qilinsa ham, yozuvda ular almashtiriladi."
+      },
+      {
+        "t": "Optik va agrammatik turlar",
+        "d": "Optik disgrafiya vizual obrazlar bilan bog'liq bo'lib, o'xshash harflarni almashtirishiga olib keladi. Agrammatik disgrafiya grammatik qoidalarga rioya qilmaslik va gap tuzilishidagi xatolar bilan belgilanadi."
+      },
+      {
+        "t": "Xatolarning sistematik xarakteri",
+        "d": "Disgrafiyaga xos asosiy belgi — xatolarning tasodifiy emas, balki qoida asosida takrorlanadigan (sistematik) va barqaror bo'lishidir. Bola qoidani bilib, qayta-qayta xato qiladi."
+      },
+      {
+        "t": "Yoshga mos metodika",
+        "d": "Mashg'ulot mazmuni bolaning asosiy faoliyati bilan bog'liq bo'lishi kerak. 5 yosh uchun qattiq o'quv (o'qish) emas, balki o'yin shakli mos keladi."
+      },
+      {
+        "t": "Psixologik yondashuv",
+        "d": "Muvofiqlashtirilgan yondashuv bola psixologiyasini hisobga oladi. Qattiq tanqid o'rniga, xatolarni bola o'zi topishi yoki yo'naltirilgan savollar orqali tuzatish tavsiya etiladi."
+      }
+    ],
+    "mustKnow": [
+      "Disgrafiya — bu yozma nutqning qisman buzilishi bo'lib, u bog'lanmagan nuqsonlar (eshitish, intellekt) tufayli emas, balki yozuvni shakllantirish uchun zarur bo'lgan psixofiziologik va psixolingvistik mexanizmlarning yetarli darajada rivojlanmasligi sababli yuzaga keladi.",
+      "Akustik disgrafiya fonematik idrokning yetishmovchiligi, ya'ni tovushlarni eshituvda farqlash qobiliyatining buzilishi natijasida yuzaga keladi.",
+      "Disgrafiyaga xos asosiy belgi — xatolarning tasodifiy emas, balki sistematik (qoida asosida takrorlanadigan) va barqaror bo'lishidir.",
+      "Logopediyada asosiy tasnifga akustik, optik, agrammatik va artikulyator-akustik turlari kiradi.",
+      "Agrammatik disgrafiya gapning grammatik tuzilishi, so'z o'zgarishi va bog'lanish qonuniyatlarini tushunish va yozib olishdagi qiyinchiliklar bilan ifodalanadi."
+    ],
+    "mistakes": [
+      "Xato: 5 yoshli bolalar bilan ishlashda qattiq o'quv (o'qish) shaklidan foydalanish. To'g'ri: 5 yosh uchun qattiq o'quv emas, balki o'yin shakli mos keladi.",
+      "Xato: 'Dinamiko-afektiv disgrafiya' atamasini disgrafiyaning asosiy turlariga kiritish. To'g'ri: Standart logopedik tasnifda bu atama uchramaydi.",
+      "Xato: Bola qilgan xatolarni qattiq tanqid qilish. To'g'ri: Qattiq tanqid o'rniga, xatolarni bola o'zi topishi yoki yo'naltirilgan savollar bilan tuzatish kerak.",
+      "Xato: Undoshlarni tushirib yuborishni fonematik eshitish buzilishi deb hisoblash. To'g'ri: Undoshlarni tushirib yuborish tovushlarni ketma-ket tahlil qilish mahorati yetarli shakllanmaganligini ko'rsatadi."
+    ],
+    "mnemonics": [
+      "Disgrafiya turlari: Akustik (eshitish), Optik (ko'rish), Agrammatik (grammatika), Artikulyator (talaffuz).",
+      "Xato turlari: Sistematik (disgrafiya), Tasodifiy (e'tiborsizlik).",
+      "Yoshga mos shakl: 5 yosh — O'yin, Maktab yoshi — O'quv."
+    ],
+    "source": "Logopediya bo'yicha standart tasnif va darslik talablari",
+    "updatedAt": "2026-07-28"
+  },
+  "104": {
+    "summary": "O'qish va yozish buzilishlarini tuzatishda komplekslik, rivojlanish va ontogenetik tamoyillarning ahamiyati hamda tuzatish ishlarining tibbiy-psixologik-pedagogik xususiyati ko'zda tutiladi.",
+    "keyPoints": [
+      {
+        "t": "Komplekslik tamoyili",
+        "d": "Tuzatish ishlari tibbiy, psixologik va pedagogik xususiyatga ega bo'lishi, shuningdek, nutq holati va sensomotor rivojlanishni tahlil qilishni talab etadi."
+      },
+      {
+        "t": "Rivojlanish tamoyili",
+        "d": "Vazifalarni bolaning yaqin rivojlanish doirasida belgilash va ularni bosqichma-bosqich ajratishni ko'zda tutadi."
+      },
+      {
+        "t": "Ontogenetik tamoyil",
+        "d": "Bola rivojlanishidagi qonuniyatlarni hisobga oladi, yetakchi faoliyat turlarini (o'yin, amaliy) inobatga olgan holda vazifalarni belgilaydi."
+      },
+      {
+        "t": "Faoliyat tamoyili",
+        "d": "Bolaning o'yin va predmetli-amaliy faoliyatini hisobga oladi, kattalar mehnati emas. 7-8 yoshli bolalar uchun o'yin muhim hisoblanadi."
+      },
+      {
+        "t": "Tuzatish samaradorligi",
+        "d": "Tuzatish ishlari natijasida o'qish sur'ati ikki barobardan ko'proqqa, tushunish darajasi sezilarli oshadi."
+      },
+      {
+        "t": "Umumiy qonuniyatlar",
+        "d": "Anomal bolalar rivojlanishining umumiy qonuniyatlarini hisobga olish va ikkilamchi kamchiliklarning oldini olish shart."
+      }
+    ],
+    "mustKnow": [
+      "Komplekslik tamoyili tuzatish ishlarini tibbiy, psixologik va pedagogik xususiyatga ega bo'lishini nazarda tutadi.",
+      "Rivojlanish tamoyili vazifalarni bolaning yaqin rivojlanish doirasida belgilashni nazarda tutadi.",
+      "Ontogenetik tamoyil bola ontogenezidagi faoliyat turlarini (o'yin, predmetli-amaliy) hisobga olishni anglatadi.",
+      "Boshlang'ich o'qish ko'rsatkichlari 25 so'z va 30% tushunish darajasini tashkil qiladi.",
+      "Yakuniy o'qish ko'rsatkichlari 45 so'z va 80% tushunish darajasini tashkil qiladi.",
+      "7-8 yoshli bolalar uchun o'yin hali muhim yetakchi faoliyat bo'lib, uni mashg'ulotlarda qo'llash samara beradi."
+    ],
+    "mistakes": [
+      "Faqat pedagogik vazifalarni bajarish kifoya — Noto'g'ri. To'g'risi: Tuzatish tibbiy, psixologik va pedagogik vazifalarni o'z ichiga olishi kerak.",
+      "Faqat logoped ishlashi kerak — Noto'g'ri. To'g'risi: Tuzatish ishlari kompleks bo'lib, boshqa mutaxassislar hamkorligida olib boriladi.",
+      "Vazifalar bolaning imkoniyatlaridan yuqori bo'lishi kerak — Noto'g'ri. To'g'risi: Vazifalar bolaning yaqin rivojlanish doirasida belgilanishi kerak."
+    ],
+    "mnemonics": [
+      "TPP — Tibbiy, Psixologik, Pedagogik (Komplekslik tamoyili).",
+      "OYIN — Ontogenetik tamoyil asosida 7-8 yoshlarda o'yin yetakchi faoliyat hisoblanadi.",
+      "YRD — Yaqin Rivojlanish Doirasi (Rivojlanish tamoyili)."
+    ],
+    "source": "Tasdiqlangan test izohlari",
+    "updatedAt": "2026-07-28"
+  },
+  "105": {
+    "summary": "Logoped mutaxassisining kasb standarti talablari, faoliyatni tashkil etish va baholash mezonlari ko'rib chiqiladi. Imtihonda aniq va o'lchanadigan natijalarga asoslangan rejalashtirish, ZIT integratsiyasi hamda individual yondashuvga urg'u beriladi.",
+    "keyPoints": [
+      {
+        "t": "Maqsad belgilash talablari",
+        "d": "Kasb standartiga ko'ra, maqsadlar aniq, o'lchanadigan va erishiladigan bo'lishi shart. Masalan, foizdagi ifoda (90%) yoki aniq shart ('so'z boshida') kabi ko'rsatkichlar natijaning o'lchanadiganligini tasdiqlaydi."
+      },
+      {
+        "t": "Rejalashtirish bosqichlari",
+        "d": "Rejalashtirish davlat standartlariga, individual ehtiyojlarga va fanlararo integratsiyaga asoslanadi. Avval umumiy reja tuziladi, ma'lumotlar tahlil qilinadi, maqsadlar belgilanadi va oxirgina usullar tanlanadi."
+      },
+      {
+        "t": "Dars tashkil etish",
+        "d": "Dars shakllari va usullari o'quvchilarning yosh xususiyatlari va o'zlashtirish darajasiga mos rejalashtirilishi kerak. Faqat tushuntirishga yoki passiv ma'ruzaga tayanish noto'g'ri yondashuv hisoblanadi."
+      },
+      {
+        "t": "ZIT integratsiyasi",
+        "d": "Kompyuter dasturlari, interaktiv doska va vizual vositalarni o'quv jarayoniga kiritish zamonaviy axborot texnologiyalarini integratsiyalashning bevosita namunasidir."
+      },
+      {
+        "t": "Hamkorlik va maslahat",
+        "d": "Murakkab vaziyatlarda psixolog va defektolog kabi hamkasblar bilan maslahatlashish va hamkorlik qilish zarur. Yolg'iz yechishga harakat qilish samarali bo'lmaydi."
+      },
+      {
+        "t": "O'z-o'zini rivojlantirish",
+        "d": "Standartda o'z-o'zini rivojlantirish uchun refleksiya (o'z-o'zini tahlil qilish) va o'z kuchli-kuchsiz tomonlarini bilish zarurligi ko'rsatilgan."
+      }
+    ],
+    "mustKnow": [
+      "Natijalar o'lchanadigan, aniq va erishiladigan bo'lishi shart.",
+      "O'z-o'zini rivojlantirish uchun refleksiya va o'z kuchli-kuchsiz tomonlarini bilish zarur.",
+      "Rejalashtirish davlat standartlariga, individual ehtiyojlarga va fanlararo integratsiyaga asoslanadi.",
+      "Maqsadsiz usul tanlab bo'lmaydi, avval maqsadlar aniq belgilanadi.",
+      "Kompyuter dasturi va vizual vositalarni kiritish ZIT integratsiyasi hisoblanadi."
+    ],
+    "mistakes": [
+      "'To'g'ri talaffuz qiladi' degan shartsiz maqsad qo'yish -> 'Mustaqil ravishda, gapda' kabi shart-sharoit va mezonlarni belgilash.",
+      "Barcha o'quvchilarga bir xil vazifa berish -> O'quvchilarning yosh xususiyatlari va o'zlashtirish darajasiga mos individual yondashuv.",
+      "Murakkab vaziyatlarni yolg'iz hal qilish -> Psixolog va defektologlar bilan maslahatlashish va hamkorlik qilish."
+    ],
+    "mnemonics": [
+      "AOM — Maqsadlar: Aniq, O'lchanadigan va Mezonli bo'lishi kerak.",
+      "ZIT — Zamonaviy axborot texnologiyalarini darsga integratsiyalash (kompyuter, interaktiv doska).",
+      "REJA — Rejalashtirish: Ehtiyojlar tahlili, Jarayon (usullar), Axborot texnologiyalari."
+    ],
+    "source": "Kasb standarti talablari",
+    "updatedAt": "2026-07-28"
+  },
+  "106": {
+    "summary": "Mavzu pedagogik mashg'ulotlarni tuzilishi, rejalashtirish asoslari, pedagogik takt va yosh psixologiyasini qamrab oladi. Imtihonda ta'lim standartlariga rioya qilish, individual yondashuv va didaktik usullarni bilish talab etiladi.",
+    "keyPoints": [
+      {
+        "t": "Mashg'ulot strukturaviy ketma-ketligi",
+        "d": "Har qanday pedagogik mashg'ulot motivatsiya (tashkiliy qism)dan boshlanadi, so'ngra asosiy maqsadga erishiladi, yakuniy qismda natija baholanadi va tahlil qilinadi."
+      },
+      {
+        "t": "Rejalashtirishning huquqiy asoslari",
+        "d": "Pedagogik faoliyatni rejalashtirish davlat ta'lim standartlari va asosiy umumta'lim dasturiga asoslanadi, shaxsiy qo'llanmalar emas."
+      },
+      {
+        "t": "Pedagogik takt va unga moslashish",
+        "d": "Pedagogik takt muloqotdagi noziklik va vaziyatga moslashishni anglatadi. Majburlash o'rnini o'yin usuli egallashi buning namunasidir."
+      },
+      {
+        "t": "Individual yondashuv zarurligi",
+        "d": "O'quvchining kuchli tomonlari va maxsus ehtiyojlarini hisobga olgan holda vazifalar va vaqtni moslashtirish individual yondashuvdir."
+      },
+      {
+        "t": "Induksiya va deduksiya usullari",
+        "d": "Induksiya misollardan umumiy qoidaga o'tish, deduksiya esa umumiy qoidadan maxsus holatlarga o'tish jarayonidir."
+      },
+      {
+        "t": "Yosh xususiyatlarini hisobga olish",
+        "d": "4 yoshda o'yin, 6-7 yoshda o'quv faoliyati yetakchi bo'ladi. Rejalashtirish bolalarning psixologik xususiyatlariga mos kelishi shart."
+      }
+    ],
+    "mustKnow": [
+      "3 yoshda 'Men o'zi' shiori va mustaqillik kuzatiladi.",
+      "7 yoshda o'zini boshqarish va yangi ijtimoiy rol paydo bo'ladi.",
+      "O'smirlik davrida his-tuyg'ular beqarorligi va o'ziga bo'lgan ishonchsizlik xarakterli.",
+      "4 yoshli bolalar uchun yetakchi faoliyat o'yin hisoblanadi.",
+      "6-7 yoshlilar uchun o'quv faoliyati shakllana boshlaydi.",
+      "Pedagogik takt — o'qituvchining o'quvchi bilan muloqotda noziklik, muloyimlik va vaziyatga qarab moslasha bilish qobiliyatidir.",
+      "Induksiya usuli — ayrim misollar va hodisalardan umumiy qoida yoki qonuniyatni chiqarish jarayonidir."
+    ],
+    "mistakes": [
+      "Rejalashtirish shaxsiy qo'llanmalarga asoslanadi — Notog'ri. To'g'risi: Rejalashtirish davlat ta'lim standartlari va asosiy umumta'lim dasturiga asoslanadi.",
+      "Umumiy standartlar individual xususiyatlarni inobatga oladi — Notog'ri. To'g'risi: Umumiy standartlar individual xususiyatlarni inobatga olmaydi.",
+      "Deduksiya — misollardan umumiy qoida chiqarish — Notog'ri. To'g'risi: Deduksiya umumiy qoidadan maxsus holatlarga o'tishdir."
+    ],
+    "mnemonics": [
+      "MAYT: Mashg'ulot tuzilishi — Motivatsiya, Asosiy qism, Yakuniy, Tahlil.",
+      "3-4-7: 3 yoshda mustaqillik, 4 yoshda o'yin, 7 yoshda o'qish va ijtimoiy rol.",
+      "In-Ded: Induksiya (Misol -> Qoida), Deduksiya (Qoida -> Misol)."
+    ],
+    "source": "\"Ta'lim to'g'risida\"gi Qonun, Davlat ta'lim standartlari",
+    "updatedAt": "2026-07-28"
+  }
+}
