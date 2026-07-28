@@ -7,6 +7,7 @@ import { Shield, BookOpen, Clock, Palette } from 'lucide-react';
 import BrandLogo, { ZehinMark } from './components/shared/BrandLogo';
 import PullToRefresh, { RefreshRing } from './components/shared/PullToRefresh';
 import ScrollDebugOverlay from './components/shared/ScrollDebugOverlay';
+import PerfOverlay from './components/shared/PerfOverlay';
 import { trackPageView, startPageTimer } from './services/analytics';
 import { setUser, clearUser } from './services/sentry';
 import { enablePush, listenForegroundPush } from './services/push';
@@ -44,6 +45,41 @@ const PrivacyPage = React.lazy(() => import('./pages/PrivacyPage'));
 const TermsPage = React.lazy(() => import('./pages/TermsPage'));
 const DeleteAccountPage = React.lazy(() => import('./pages/DeleteAccountPage'));
 const AboutPage = React.lazy(() => import('./pages/AboutPage'));
+
+// ── Chunk'larni oldindan isitish ────────────────────────────────
+// MUAMMO: route sahifalarida `exit` animatsiyasi YO'Q, shuning uchun eski
+// ekran darhol yo'qoladi. Agar yangi sahifaning chunk'i hali yuklanmagan
+// bo'lsa, o'rtada `PageSkeleton` chaqnab o'tadi — ekranlar «bir-biriga
+// qoldiq qoldirgandek» ko'rinishi aynan shundan.
+//
+// Yechim: eng ko'p ishlatiladigan sahifalarni bo'sh vaqtda fonda yuklab
+// qo'yamiz. Shunda navigatsiya paytida Suspense umuman qo'zg'almaydi.
+// Tartib — foydalanish chastotasi bo'yicha; kamdan-kam ochiladiganlar
+// (Admin, Migration, Maktab) ATAYIN ro'yxatda yo'q, ular og'ir va kerak
+// bo'lganda yuklangani ma'qul.
+const warmChunks = () => {
+  const queue = [
+    () => import('./pages/Dashboard'),
+    () => import('./pages/TestPage'),
+    () => import('./pages/ExamPage'),
+    () => import('./pages/SmartReviewPage'),
+    () => import('./pages/AnalysisPage'),
+    () => import('./pages/AchievementsPage'),
+    () => import('./pages/LeaderboardPage'),
+    () => import('./pages/SettingsPage'),
+    () => import('./pages/ErrorNotebookPage'),
+  ];
+  // Ketma-ket: bir vaqtda 9 ta so'rov tarmoqni bo'g'ib, birinchi ekranning
+  // o'zini sekinlashtirardi. Har biri oldingisi tugagach, bo'sh kadrda.
+  const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 300));
+  let i = 0;
+  const next = () => {
+    if (i >= queue.length) return;
+    queue[i++]().catch(() => { /* tarmoq yo'q — kerak bo'lganda qayta urinadi */ })
+      .then(() => idle(next));
+  };
+  idle(next);
+};
 
 // ── Skeleton Loader — sahifa yuklanayotganda chiroyli ko'rinish ──
 const PageSkeleton = () => {
@@ -201,6 +237,14 @@ function App() {
   useEffect(() => {
     if (user) setUser(user);
     else clearUser();
+  }, [user]);
+
+  // Sahifa chunk'larini fonda isitish — navigatsiyada PageSkeleton
+  // chaqnamasligi uchun. Faqat tizimga kirgach: login ekranida bu chunk'lar
+  // kerak emas va birinchi ekranning tarmog'ini band qilardi.
+  useEffect(() => {
+    if (!user) return;
+    warmChunks();
   }, [user]);
 
   // ── FCM Push notification avto-sinxronizatsiya ──
@@ -386,6 +430,8 @@ function App() {
       <PullToRefresh disabled={ptrOff} />
       {/* VAQTINCHALIK: #sdebug bilan ochilganda scroll diagnostikasi */}
       {window.location.hash.includes('sdebug') && <ScrollDebugOverlay />}
+      {/* #perf — haqiqiy telefonda silliqlikni o'lchash (FPS/jank/long task) */}
+      {window.location.hash.includes('perf') && <PerfOverlay />}
       <div className="layout-body">
         <Sidebar />
         <main className="main-content">

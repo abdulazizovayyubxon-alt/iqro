@@ -1054,6 +1054,8 @@ button {
 .dashboard-action-card {
   display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: 18px;
   cursor: pointer; font-family: inherit; text-align: left;
+  /* E'tibor halqasi (Dashboard.jsx) shu kartaga nisbatan joylashadi */
+  position: relative;
 }
 .dashboard-action-icon {
   width: 44px; height: 44px; border-radius: 12px;

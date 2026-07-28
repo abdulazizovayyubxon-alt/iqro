@@ -114,7 +114,11 @@ export default function SplashVideo({ onComplete }) {
         autoPlay
         muted
         playsInline
-        preload="auto"
+        // `preload="auto"` 2.1 MB ni butunlay bufferlashga urinardi va bu
+        // ilova yuklanishi bilan BIR VAQTDA sodir bo'lardi (App splash bilan
+        // parallel mount bo'ladi). Sekin tarmoqda video ham duduqlanardi,
+        // ilova ham. `metadata` — brauzer o'yinga yetarlicha qismini oladi.
+        preload="metadata"
         onEnded={handleEnded}
         onError={handleSkip}
       />

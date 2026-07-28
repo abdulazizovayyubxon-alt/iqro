@@ -450,8 +450,25 @@ const Dashboard = () => {
                 boxShadow: action.id === 'test' ? '0 0 0 2px var(--blue)' : '0 2px 8px rgba(0,0,0,0.01)'
               }}
               onClick={action.onClick}
-              animate={action.id === 'test' ? { boxShadow: ['0 0 0 2px rgba(14,151,224,0.3)', '0 0 0 6px rgba(14,151,224,0)'], transition: { repeat: Infinity, duration: 1.5 } } : {}}
             >
+              {/* Asosiy harakatga e'tibor tortadigan halqa.
+                  Ilgari bu `boxShadow` ni CHEKSIZ animatsiya qilardi: box-shadow
+                  kompozitsiya qilinmaydi, ya'ni Dashboard ochiq turganda har
+                  kadrda kartani QAYTA BO'YASHGA majbur qilardi. Endi alohida
+                  qatlam faqat transform/opacity bilan harakatlanadi — bu ikkalasi
+                  GPU'da bajariladi va asosiy oqimni band qilmaydi. */}
+              {action.id === 'test' && (
+                <motion.span
+                  aria-hidden
+                  initial={{ opacity: 0.35, scale: 1 }}
+                  animate={{ opacity: 0, scale: 1.035 }}
+                  transition={{ repeat: Infinity, duration: 1.5, ease: 'easeOut' }}
+                  style={{
+                    position: 'absolute', inset: 0, borderRadius: 'inherit',
+                    border: '2px solid var(--blue)', pointerEvents: 'none',
+                  }}
+                />
+              )}
               <div className="dashboard-action-icon" style={{ background: action.color }}>
                 <Icon size={20} color="#fff" />
                 {action.badge && (
