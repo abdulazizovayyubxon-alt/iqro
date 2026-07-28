@@ -517,6 +517,7 @@
   "achievements": {
     "title": "Yutuqlar",
     "subtitle": "Akademik o'sish ko'rsatkichlari",
+    "statsDrawerTitle": "Batafsil statistika",
     "toifaSpecialist": "Mutaxassis",
     "toifaHigh": "Oliy Toifa",
     "toifa1": "1-Toifa",
@@ -768,10 +769,13 @@
     "lockedTitle": "Bu bo'lim Zehin Pro obunasida ochiladi",
     "lockedDesc": "Obuna hisobingizga ulangach, shu yerda avtomatik ochiladi. Promokodingiz bo'lsa, uni quyida kiritishingiz mumkin.",
     "choosePayMethod": "To'lov usulini tanlang",
+    "payTelegramTitle": "Telegram administrator",
+    "payTelegramSub": "Operator yordamida kartadan kartaga o'tkazish",
     "whatIncluded": "Nimalar kiradi",
     "continueBtn": "Davom etish",
     "toPay": "To'lov uchun",
     "payNow": "To'lash",
+    "contactOperator": "Operator bilan bog'lanish",
     "paymentProtected": "To'lov ma'lumotlaringiz himoyalangan",
     "termsAccept1": "To'lovni amalga oshirish orqali siz ",
     "termsLinkText": "Foydalanish shartlari va Ommaviy oferta",
@@ -862,7 +866,8 @@
     "policyMid": "va",
     "termsLink": "Foydalanish Shartlari",
     "policyP2": "ga rozi bo'lasiz.",
-    "dataSecure": "Ma'lumotlaringiz xavfsiz himoyalangan"
+    "dataSecure": "Ma'lumotlaringiz xavfsiz himoyalangan",
+    "forgotPasswordHint": "Parolni tiklash uchun administrator bilan bog'laning."
   },
   "onboarding": {
     "goalTitle": "Maqsadingiz nima?",
@@ -1058,14 +1063,6 @@
     "guideP4b": "tizimi ishlaydi. Siz do'stingizga maxsus havolangizni yuborasiz. U shu orqali ro'yxatdan o'tsa 50% chegirmaga ega bo'ladi. U to'lov qilgach,",
     "guideP4bold2": "Siz ham o'z navbatdagi to'lovingiz uchun juda katta chegirma yutib olasiz!",
     "guideUnderstood": "Tushunarli 🤝",
-    "tgEnabledToast": "Eslatmalar yoqildi! 🔔",
-    "tgDisabledToast": "Eslatmalar o'chirildi! 🔕",
-    "tgSyncError": "Firebase sinxronizatsiyada xatolik",
-    "tgTitle": "Telegram Sozlamalari",
-    "tgDaily": "⏰ Kundalik eslatmalar",
-    "tgHintP1": "Har kuni test ishlash eslatmalarini Telegram bot orqali oling. Buning uchun",
-    "tgHintP2": "botiga",
-    "tgHintP3": "kodini yuboring.",
     "repTitle": "Aqlli takrorlash chastotasi",
     "repDesc": "Xato qilingan savollar keyingi testlarda qanchalik tez-tez qaytishini tanlang.",
     "repOff": "O'chiq\n(0%)",
@@ -1279,6 +1276,9 @@
     "successTitle": "So'rovingiz qabul qilindi",
     "successText": "Hisobingizni o'chirish bo'yicha so'rov muvaffaqiyatli yuborildi. Shaxsingizni tasdiqlash uchun adminlarimiz 24-48 soat ichida Siz bilan bog'lanishadi yoki so'rovingiz avtomatik bajariladi.",
     "homeBtn": "Bosh sahifaga qaytish"
+  },
+  "legal": {
+    "langNote": "Ushbu hujjatning asl nusxasi o'zbek tilida tuzilgan. Rus va ingliz tillaridagi matnlar ma'lumot uchun tarjima bo'lib, nomuvofiqlik yuzaga kelganda o'zbekcha matn ustun hisoblanadi."
   },
   "privacyPage": {
     "title": "Maxfiylik siyosati va shaxsiy ma'lumotlarni qayta ishlash kelishuvi",
