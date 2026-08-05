@@ -7,8 +7,10 @@
  * Bu SW workbox (PWA) SW'idan ALOHIDA — o'z scope'ida ishlaydi, to'qnashmaydi.
  */
 /* global importScripts, firebase, clients */
-importScripts('https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js');
-importScripts('https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js');
+/* CDN versiyasi package.json'dagi `firebase` bilan MOS bo'lishi kerak — aks holda
+ * SW va ilova turli protokol versiyalarida token muzokara qilishi mumkin. */
+importScripts('https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/12.17.1/firebase-messaging-compat.js');
 
 const params = new URL(self.location).searchParams;
 const config = {

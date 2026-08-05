@@ -41,6 +41,17 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'prompt',
+      // ── injectRegister: null ──
+      // Plagin avtomatik yaratadigan /registerSW.js `.catch()` siz edi:
+      //   navigator.serviceWorker.register('/sw.js', { scope: '/' })
+      // Private/inkognito rejim va ichki brauzerlarda (Telegram/Instagram
+      // webview, Safari private) ro'yxatga olish taqiqlangan → Promise reject
+      // bo'lardi → ushlovchisi yo'qligi sababli `unhandledrejection` yonardi
+      // va admin "Xatolar" bo'limini "Rejected" shovqini bilan to'ldirardi.
+      // Endi ro'yxatga olishni O'ZIMIZ qilamiz (src/services/registerSW.js),
+      // u yerda xato jimgina yutiladi — SW yo'q bo'lsa offline kesh ishlamaydi,
+      // ilova esa baribir normal ishlaydi.
+      injectRegister: null,
       includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
 
       // ── Workbox: Offline caching strategiyalari ──

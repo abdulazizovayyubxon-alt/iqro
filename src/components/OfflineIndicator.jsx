@@ -177,6 +177,9 @@ export default function OfflineIndicator() {
           }
         });
       });
+    }).catch(() => {
+      /* SW ro'yxatdan o'tmagan (private rejim / ichki brauzer) — yangilanish
+         so'rovi ko'rsatilmaydi, qolgan indikator ishlayveradi */
     });
 
     // SW almashinuvidan keyin sahifani yangilash

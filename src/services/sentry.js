@@ -12,7 +12,20 @@ const SENTRY_DSN = import.meta.env.VITE_SENTRY_DSN;
 const LOG_ENDPOINT = '/api/log-error';
 
 let Sentry = null;
-let currentUid = null;
+
+// ── uid'ni DARHOL tiklash ──
+// setUser() ni App.jsx faqat Firebase auth hal bo'lgach chaqiradi
+// (onAuthStateChanged — asinxron). Sahifa ochilishidayoq sodir bo'lgan xatolar
+// esa undan OLDIN yuz beradi va `uid: null` bilan yozilardi — ya'ni admin
+// panelida kim duch kelgani ko'rinmasdi. AuthContext'ning localStorage keshini
+// sinxron o'qib, qaytgan foydalanuvchi uchun uid'ni boshidanoq bilamiz.
+let currentUid = (() => {
+  try {
+    return JSON.parse(localStorage.getItem('iqro_cached_user') || 'null')?.uid || null;
+  } catch {
+    return null; // kesh buzuq yoki localStorage bloklangan — uid'siz davom etamiz
+  }
+})();
 
 // ── Toshqin himoyasi: bir xil xatoni takror yubormaymiz + sessiya bo'yicha cap ──
 const _seen = new Set();
@@ -58,17 +71,31 @@ function logToServer(message, stack, severity = 'error', context = null) {
   }
 }
 
+// ── Firestore ichki assertion xatosi → keshni tozalab, bir marta reload ──
+// Modul dinamik yuklanadi: dastlabki bundle'ga og'irlik qo'shmaydi.
+function maybeRecoverFirestore(message) {
+  import('./firestoreRecovery')
+    .then(({ isFirestoreAssertion, recoverFirestore }) => {
+      if (isFirestoreAssertion(message)) recoverFirestore();
+    })
+    .catch(() => { /* Tiklanish moduli yuklanmadi — ilova o'z holicha davom etadi */ });
+}
+
 // ── Ishga tushirish (main.jsx chaqiradi) ──
 export function initSentry() {
   // 1. Global crash'larni Firestore'ga log qilish — Sentry'dan MUSTAQIL
   if (typeof window !== 'undefined') {
     window.addEventListener('error', (e) => {
       if (!e.error) return; // resurs yuklanish xatolari (img/script 404) — e'tiborsiz
-      logToServer(e.message || 'window.onerror', e.error.stack, 'error');
+      const msg = e.message || 'window.onerror';
+      logToServer(msg, e.error.stack, 'error');
+      maybeRecoverFirestore(msg);
     });
     window.addEventListener('unhandledrejection', (e) => {
       const r = e.reason;
-      logToServer(r?.message || String(r) || 'unhandledrejection', r?.stack, 'error');
+      const msg = r?.message || String(r) || 'unhandledrejection';
+      logToServer(msg, r?.stack, 'error');
+      maybeRecoverFirestore(msg);
     });
   }
 

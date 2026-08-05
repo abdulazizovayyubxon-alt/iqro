@@ -15,9 +15,11 @@ import './index.css'
 // ── Monitoring va Analytics ──
 import { initAnalytics } from './services/analytics'
 import { initSentry } from './services/sentry'
+import { registerServiceWorker } from './services/registerSW'
 
-initSentry()    // Xatolarni kuzatish (async, lazy)
-initAnalytics() // Google Analytics
+initSentry()           // Xatolarni kuzatish (async, lazy)
+initAnalytics()        // Google Analytics
+registerServiceWorker() // PWA offline kesh — rad etilsa jimgina o'tadi
 
 // Ilova qobig'i (SPA) har doim tepadan ochiladi: reload'dan keyin brauzer
 // eski scroll o'rnini tiklamasin (aks holda dashboard o'rtasidan ochilib,

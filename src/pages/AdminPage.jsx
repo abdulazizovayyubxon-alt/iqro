@@ -6,7 +6,7 @@ import { useAdmin } from '../hooks/useAdmin';
 import { db, auth } from '../firebase';
 import {
   collection, query, orderBy, onSnapshot, where, getCountFromServer,
-  updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch, increment, setDoc, limit
+  updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch, increment, setDoc, limit, documentId
 } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL, uploadString } from 'firebase/storage';
 
@@ -31,6 +31,40 @@ import { normalizeText, trigrams, jaccard } from '../utils/textSimilarity';
 // Yaqin-dublikat chegarasi (0..1). Yuqori = faqat juda o'xshashlar (matching/sequence soxta-ijobiyni kamaytiradi).
 const DUP_SIM_THRESHOLD = 0.87;
 
+// User-Agent satridan qisqa o'qiladigan nom chiqaradi ("Samsung Internet 30 · Android").
+// Xatolarni tahlil qilishda eng kerakli ma'lumot — bu brauzer/OS: xatolarning
+// ko'pchiligi aynan bitta muhitga bog'liq bo'lib chiqadi.
+const prettyUA = (ua) => {
+  if (!ua) return null;
+  const ver = (re) => { const m = ua.match(re); return m ? m[1].split('.')[0] : ''; };
+  let browser = 'Noma\'lum brauzer';
+  if (/SamsungBrowser/.test(ua))            browser = `Samsung Internet ${ver(/SamsungBrowser\/([\d.]+)/)}`;
+  else if (/Edg\//.test(ua))                browser = `Edge ${ver(/Edg\/([\d.]+)/)}`;
+  else if (/OPR\/|Opera/.test(ua))          browser = `Opera ${ver(/OPR\/([\d.]+)/)}`;
+  else if (/Firefox\//.test(ua))            browser = `Firefox ${ver(/Firefox\/([\d.]+)/)}`;
+  else if (/Chrome\//.test(ua))             browser = `Chrome ${ver(/Chrome\/([\d.]+)/)}`;
+  else if (/Version\/.*Safari/.test(ua))    browser = `Safari ${ver(/Version\/([\d.]+)/)}`;
+
+  let os = '';
+  if (/iPhone|iPad/.test(ua))      os = `iOS ${(ua.match(/OS (\d+)[_\d]*/) || [])[1] || ''}`.trim();
+  else if (/Android/.test(ua))     os = 'Android';
+  else if (/Windows/.test(ua))     os = 'Windows';
+  else if (/Mac OS X/.test(ua))    os = 'macOS';
+  return os ? `${browser.trim()} · ${os}` : browser.trim();
+};
+
+// Xato kartasida uid o'rniga o'qiladigan identifikator chiqaramiz.
+// Login modeli telefon+parol (email — soxta `<telefon>@iqro.uz`), shuning uchun
+// telefon eng foydali belgi; soxta email'dan telefon qismini ajratib olamiz.
+const userLabel = (u) => {
+  if (!u) return null;
+  const phone = u.phoneNumber || u.phone
+    || (typeof u.email === 'string' && u.email.endsWith('@iqro.uz') ? u.email.split('@')[0] : '');
+  const email = typeof u.email === 'string' && !u.email.endsWith('@iqro.uz') ? u.email : '';
+  const parts = [u.displayName, phone || email].filter(Boolean);
+  return parts.length ? parts.join(' · ') : null;
+};
+
 const getCategoryFromTopicId = (topicId) => {
   const idNum = parseInt(topicId);
   const topicObj = TOPICS.find(t => t.id === idNum);
@@ -48,10 +82,29 @@ const AdminPage = () => {
   // ── Kuzatuv: client xatolari (errorLogs) ──
   const [errorLogs, setErrorLogs] = useState([]);
   const [errorsLoading, setErrorsLoading] = useState(false);
+  const [errorsShowResolved, setErrorsShowResolved] = useState(false); // hal qilinganlarni ko'rsatish
+  const [errorUsers, setErrorUsers] = useState({}); // uid -> users/{uid} hujjati
   const loadErrorLogs = () => {
     setErrorsLoading(true);
     getDocs(query(collection(db, 'errorLogs'), orderBy('ts', 'desc'), limit(100)))
-      .then(snap => setErrorLogs(snap.docs.map(d => ({ id: d.id, ...d.data() }))))
+      .then(async snap => {
+        const logs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        setErrorLogs(logs);
+
+        // uid'larni ismga aylantirish uchun users hujjatlarini olamiz.
+        // FAQAT noyob uid'lar va 30 talik bo'laklarda (`in` filtri chegarasi) —
+        // 100 ta log bo'lsa ham bu ko'pi bilan bir nechta so'rov, o'qish kvotasi
+        // behuda sarflanmaydi.
+        const uids = [...new Set(logs.map(l => l.uid).filter(Boolean))];
+        if (!uids.length) { setErrorUsers({}); return; }
+        const map = {};
+        for (let i = 0; i < uids.length; i += 30) {
+          const chunk = uids.slice(i, i + 30);
+          const us = await getDocs(query(collection(db, 'users'), where(documentId(), 'in', chunk)));
+          us.docs.forEach(d => { map[d.id] = d.data(); });
+        }
+        setErrorUsers(map);
+      })
       .catch(e => console.error('errorLogs load:', e))
       .finally(() => setErrorsLoading(false));
   };
@@ -63,10 +116,25 @@ const AdminPage = () => {
       showToast("O'chirishda xato", 'error');
     }
   };
+  // `resolved` maydoni /api/log-error tomonidan false bilan yoziladi — shu
+  // yergacha hech qayerda ishlatilmasdi. Endi "hal qilindi" belgisi bilan
+  // bog'landi: bir marta ko'rib chiqilgan xato ro'yxatdan yashiriladi,
+  // lekin o'chirilmaydi (takrorlanishini kuzatish uchun kerak).
+  const toggleErrorResolved = async (id, next) => {
+    try {
+      await updateDoc(doc(db, 'errorLogs', id), { resolved: next });
+      setErrorLogs(prev => prev.map(e => (e.id === id ? { ...e, resolved: next } : e)));
+    } catch (e) {
+      showToast('Belgilashda xato', 'error');
+    }
+  };
   useEffect(() => {
     if (!isAdmin || tab !== 'errors') return;
     loadErrorLogs();
   }, [tab, isAdmin]);
+
+  const visibleErrorLogs = errorsShowResolved ? errorLogs : errorLogs.filter(e => !e.resolved);
+  const unresolvedErrorCount = errorLogs.filter(e => !e.resolved).length;
 
   // ── Platforma umumiy statistikasi (arzon count so'rovlari) ──
   const [overview, setOverview] = useState(null); // { users, premium, questions, referrals }
@@ -1098,40 +1166,91 @@ try {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
             <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)' }}>
-              Client xatolari — oxirgi {errorLogs.length} ta (eng yangi tepada)
+              Client xatolari — {unresolvedErrorCount} ta hal qilinmagan / {errorLogs.length} ta jami (eng yangi tepada)
             </div>
-            <button className="btn btn-outline" onClick={loadErrorLogs} disabled={errorsLoading}>
-              <RefreshCw size={14} /> {errorsLoading ? 'Yuklanmoqda...' : 'Yangilash'}
-            </button>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <button
+                className={`btn btn-sm ${errorsShowResolved ? 'btn-primary' : 'btn-outline'}`}
+                onClick={() => setErrorsShowResolved(v => !v)}
+              >
+                {errorsShowResolved ? '✅ Hal qilinganlar ko\'rinmoqda' : 'Hal qilinganlarni ko\'rsatish'}
+              </button>
+              <button className="btn btn-outline" onClick={loadErrorLogs} disabled={errorsLoading}>
+                <RefreshCw size={14} /> {errorsLoading ? 'Yuklanmoqda...' : 'Yangilash'}
+              </button>
+            </div>
           </div>
-          {errorLogs.length === 0 ? (
+          {visibleErrorLogs.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '40px 20px', color: 'var(--text3)' }}>
               <CheckCircle size={40} style={{ color: 'var(--green)', marginBottom: 10 }} />
               <div style={{ fontWeight: 700 }}>Xatolar yo'q</div>
-              <div style={{ fontSize: 'var(--fs-md)' }}>Production'da qayd etilgan client xatosi topilmadi.</div>
+              <div style={{ fontSize: 'var(--fs-md)' }}>
+                {errorLogs.length > 0
+                  ? "Barcha xatolar hal qilindi deb belgilangan."
+                  : "Production'da qayd etilgan client xatosi topilmadi."}
+              </div>
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {errorLogs.map(log => (
-                <div key={log.id} style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 12, padding: '12px 14px' }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10 }}>
-                    <div style={{ fontSize: 'var(--fs-base)', fontWeight: 700, color: 'var(--text)', wordBreak: 'break-word', flex: 1 }}>
-                      {log.message}
+              {visibleErrorLogs.map(log => {
+                const sev = log.severity || 'error';
+                const sevColor = sev === 'info' ? 'var(--blue)' : sev === 'warning' ? 'var(--amber)' : 'var(--red)';
+                const ua = prettyUA(log.userAgent);
+                // uid bo'lsa — ism/telefon; users'da topilmasa (akkaunt o'chirilgan)
+                // uid'ning boshi ko'rsatiladi. uid umuman yo'q = kirmagan mehmon.
+                const who = log.uid
+                  ? (userLabel(errorUsers[log.uid]) || `${log.uid.slice(0, 8)}… (topilmadi)`)
+                  : 'Kirmagan mehmon';
+                return (
+                  <div key={log.id} style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 12, padding: '12px 14px', opacity: log.resolved ? 0.6 : 1 }}>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10 }}>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 4 }}>
+                          <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: sevColor, border: `1px solid ${sevColor}`, borderRadius: 6, padding: '1px 6px' }}>
+                            {sev}
+                          </span>
+                          {log.resolved && (
+                            <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 800, color: 'var(--green)', border: '1px solid var(--green)', borderRadius: 6, padding: '1px 6px' }}>
+                              ✅ HAL QILINDI
+                            </span>
+                          )}
+                        </div>
+                        <div style={{ fontSize: 'var(--fs-base)', fontWeight: 700, color: 'var(--text)', wordBreak: 'break-word' }}>
+                          {log.message}
+                        </div>
+                      </div>
+                      <div style={{ display: 'flex', gap: 4, flexShrink: 0 }}>
+                        <button
+                          onClick={() => toggleErrorResolved(log.id, !log.resolved)}
+                          title={log.resolved ? "Hal qilinmagan deb belgilash" : "Hal qilindi deb belgilash"}
+                          style={{ background: 'none', border: 'none', cursor: 'pointer', color: log.resolved ? 'var(--green)' : 'var(--text3)' }}
+                        >
+                          <CheckCircle size={15} />
+                        </button>
+                        <button onClick={() => deleteErrorLog(log.id)} title="O'chirish" style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)' }}>
+                          <Trash2 size={15} />
+                        </button>
+                      </div>
                     </div>
-                    <button onClick={() => deleteErrorLog(log.id)} title="O'chirish" style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)', flexShrink: 0 }}>
-                      <Trash2 size={15} />
-                    </button>
+                    {log.stack && (
+                      <pre style={{ margin: '8px 0 0', fontSize: 'var(--fs-xs)', color: 'var(--text3)', whiteSpace: 'pre-wrap', wordBreak: 'break-word', maxHeight: 120, overflow: 'auto' }}>{log.stack}</pre>
+                    )}
+                    {log.context && (
+                      <pre style={{ margin: '8px 0 0', fontSize: 'var(--fs-xs)', color: 'var(--text2)', background: 'var(--bg3)', borderRadius: 8, padding: '6px 8px', whiteSpace: 'pre-wrap', wordBreak: 'break-word', maxHeight: 100, overflow: 'auto' }}>
+                        {JSON.stringify(log.context, null, 2)}
+                      </pre>
+                    )}
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 8, fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>
+                      {log.url && <span>🔗 {log.url.replace(/^https?:\/\//, '')}</span>}
+                      {ua && <span title={log.userAgent}>🌐 {ua}</span>}
+                      <span title={log.uid || 'uid yozilmagan'} style={{ color: log.uid ? 'var(--text2)' : 'var(--text3)' }}>
+                        👤 {who}
+                      </span>
+                      {log.createdAt && <span>🕒 {new Date(log.createdAt).toLocaleString()}</span>}
+                    </div>
                   </div>
-                  {log.stack && (
-                    <pre style={{ margin: '8px 0 0', fontSize: 'var(--fs-xs)', color: 'var(--text3)', whiteSpace: 'pre-wrap', wordBreak: 'break-word', maxHeight: 120, overflow: 'auto' }}>{log.stack}</pre>
-                  )}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 8, fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>
-                    {log.url && <span>🔗 {log.url.replace(/^https?:\/\//, '')}</span>}
-                    {log.uid && <span>👤 {log.uid.slice(0, 8)}</span>}
-                    {log.createdAt && <span>🕒 {new Date(log.createdAt).toLocaleString()}</span>}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
