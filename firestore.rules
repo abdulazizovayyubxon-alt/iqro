@@ -19,15 +19,69 @@ service cloud.firestore {
       return request.auth != null;
     }
 
-    // ── userStats: faqat o'z ma'lumotlari yoziladi, reyting uchun hamma o'qiydi, admin o'chira oladi ──
-    match /userStats/{userId} {
-      allow read: if isLoggedIn();
-      allow write: if isOwner(userId) || isAdmin();
+    // ── Pullik kontentga kirish huquqi ────────────────────────────────────
+    // AUDIT 2026-08-05, 2-BAND: avval `questions` ni ISTALGAN kirgan hisob
+    // to'liq o'qiy olardi — ya'ni api/get-questions.js dagi premium tekshiruvi
+    // bezak edi va ~47k savollik pullik baza bepul hisob uchun ochiq turardi.
+    //
+    // `createdAt` timestamp bo'lmasa ATAYLAB ruxsat beriladi (fail-open):
+    // eski hisoblarda bu maydon satr ko'rinishida bo'lishi mumkin, ularni
+    // qulflab qo'ymaymiz. Bu XAVFSIZ, chunki `createdAt` endi himoyalangan
+    // maydonlar ro'yxatida — mijoz uni o'zgartira olmaydi.
+    function hasContentAccess() {
+      let u = get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+      return u.isPremium == true
+        || !('createdAt' in u)
+        || !(u.createdAt is timestamp)
+        || request.time < u.createdAt + duration.value(7, 'd');
     }
 
-    // ── questions: hamma o'qiy oladi, faqat admin yoza oladi (topicId↔category oralig'i bilan) ──
-    match /questions/{docId} {
+    // ── userStats: o'z ma'lumotlari yoziladi, reyting uchun hamma o'qiydi ──
+    //
+    // AUDIT 2026-08-05, 11-BAND: avval maydon tekshiruvi umuman yo'q edi —
+    // `setDoc(doc(db,'userStats',uid), { totalScore: 999999 })` bir so'rovda
+    // reyting 1-o'rnini berardi (LeaderboardPage orderBy(scoreField)).
+    //
+    // Tekshiruv DELTA bo'yicha, absolyut qiymat bo'yicha EMAS. Nega shunday:
+    // absolyut invariant (masalan `totalScore <= totalAnswered*2 + N`) mavjud
+    // ma'lumotga bog'liq bo'lardi — legacy hisoblash tufayli bitta foydalanuvchi
+    // hujjati unga mos kelmasa, o'sha odamning BARCHA keyingi yozuvlari
+    // (hatto `todayPlan` kabi begona maydonlar ham) jimgina rad etilardi.
+    // Delta tekshiruvi tarixdan mustaqil.
+    //
+    // Ball manbasi (AppContext.jsx:668): yangi savol 2, vaqti kelgan takror 1,
+    // kunlik maqsad bonusi 5/kun. Demak ball o'sishi javob o'sishining
+    // ikki barobaridan oshmaydi; 5000 zaxira bonuslar va faqat-takror
+    // sessiyalari uchun (SmartReviewPage ham totalAnswered'ni oshiradi).
+    //
+    // Kamayish ERKIN: bu statistikani ataylab tiklash yo'li
+    // (AppContext.jsx:963 `merge:false`), aldov esa DOIM oshirishga urinadi.
+    //
+    // ⚠️ Bu YUMSHATISH, to'liq yechim EMAS: ko'p yozuv bilan bosqichma-bosqich
+    // ko'tarish hamon mumkin (bir yozuvda maksimal +5000). To'liq butunlik
+    // uchun test natijasini SERVER qabul qilishi kerak — keyingi bosqich.
+    function statsDeltaOk() {
+      let d = request.resource.data;
+      let prevScore = resource == null ? 0 : resource.data.get('totalScore', 0);
+      let prevAns   = resource == null ? 0 : resource.data.get('totalAnswered', 0);
+      let newScore  = d.get('totalScore', 0);
+      let newAns    = d.get('totalAnswered', 0);
+
+      return newScore is number && newAns is number
+        && newScore >= 0 && newAns >= 0
+        && newAns <= 5000000
+        && (newScore - prevScore) <= (newAns - prevAns) * 2 + 5000;
+    }
+
+    match /userStats/{userId} {
       allow read: if isLoggedIn();
+      allow create, update: if isAdmin() || (isOwner(userId) && statsDeltaOk());
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+
+    // ── questions: pullik kontent — faqat premium/trial o'qiydi ──
+    match /questions/{docId} {
+      allow read: if isLoggedIn() && hasContentAccess();
       allow create, update: if isAdmin() && (
         (request.resource.data.topicId >= 0 && request.resource.data.topicId <= 6 && request.resource.data.category == 'chqbt') ||
         (request.resource.data.topicId >= 7 && request.resource.data.topicId <= 14 && request.resource.data.category == 'art') ||
@@ -71,23 +125,78 @@ service cloud.firestore {
     }
 
     // ── users: foydalanuvchi profili (faqat o'zini o'qiydi yoki admin) ──
+    //
+    // HIMOYALANGAN MAYDONLAR — mijoz ularga HECH QACHON yozmaydi.
+    // Faqat Admin SDK (api/*) yoki platforma admini o'zgartiradi.
+    //
+    // ⚠️ AUDIT 2026-08-05, 1-BAND — nima uchun ro'yxat kengaytirildi:
+    //   `referralDiscount` ro'yxatda YO'Q edi, api/payment-webhook.js esa
+    //   kutilgan to'lov summasini AYNAN shu maydondan hisoblardi. Foydalanuvchi
+    //   konsolda `referralDiscount: 99` yozib narxning 1%ini to'lab to'liq
+    //   premium olishi mumkin edi. Shu bilan birga:
+    //     · referralCount  → 0 ga qaytarib MAX_REFERRALS chegarasini chetlab o'tish
+    //     · referredBy     → o'ziga-o'ziga taklif yozib bonus farming
+    //     · referralCode   → boshqa odamning kodini o'zlashtirib olish
+    //     · premiumTransId → idempotentlik qulfini buzish
+    //   Bu maydonlarni yozish api/find-referral.js ga (Admin SDK) ko'chirildi.
+    function protectedUserFields() {
+      return [
+        // ── obuna va to'lov ──
+        'role', 'isPremium', 'premiumPlan', 'premiumExpire', 'freeExpire',
+        'premiumMethod', 'premiumSince', 'premiumTransId', 'promoUsedOnPayment',
+        // ── trial hisobining ASOSI ──
+        // `createdAt` trial muddatini belgilaydi (AuthContext computeTrial):
+        // uni "bugun"ga o'zgartirib sinov muddatini cheksiz tiklash mumkin edi.
+        // `freeMonthExpire` esa to'g'ridan-to'g'ri 'premium' holatini beradi.
+        'createdAt', 'freeMonthExpire', 'reminderSent',
+        // ── chegirma va bonus (to'lov summasiga TA'SIR QILADI) ──
+        'referralDiscount', 'referralBonus', 'referralCount', 'referredBy',
+        'referralCode', 'discountExpired', 'discountExpiredAt',
+        'promoDiscount', 'promoRedeemed',
+        // ── B2B maktab a'zoligi ──
+        'schoolId', 'schoolName', 'schoolJoinedAt'
+      ];
+    }
+
     match /users/{userId} {
       allow read: if isOwner(userId) || isAdmin();
       allow create: if isOwner(userId)
                     && request.resource.data.role == 'user'
-                    && (request.resource.data.isPremium == false || !('isPremium' in request.resource.data));
+                    && (request.resource.data.isPremium == false || !('isPremium' in request.resource.data))
+                    // Ro'yxatdan o'tishda chegirma/bonus maydonlari bilan
+                    // "tug'ilish" ham mumkin emas (create update'ni chetlab o'tardi)
+                    && !request.resource.data.keys().hasAny([
+                         'referralDiscount', 'referralBonus', 'referralCount',
+                         'referredBy', 'premiumTransId', 'promoDiscount'
+                       ]);
       allow update: if isAdmin() || (
         isOwner(userId)
-        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'isPremium', 'premiumPlan', 'premiumExpire', 'freeExpire', 'referralBonus', 'promoDiscount', 'promoRedeemed', 'schoolId', 'schoolName', 'premiumMethod', 'premiumSince']))
+        && !request.resource.data.diff(resource.data).affectedKeys()
+              .hasAny(protectedUserFields())
       );
       allow delete: if isAdmin();
     }
 
     // ── referrals: taklif qilinganlar va bonuslar ──
+    //
+    // ⚠️ AUDIT 2026-08-05, 1-BAND: avval `allow create: if isLoggedIn()` edi —
+    // maydon tekshiruvi YO'Q. Ya'ni istalgan foydalanuvchi ixtiyoriy
+    // `referrerId`/`referredId`/`bonusPaid` bilan hujjat yasab, to'lovdan keyin
+    // o'ziga-o'ziga 15 000 so'mlik bonus yozdirishi mumkin edi.
+    // ENDI: yozuv FAQAT api/find-referral.js (Admin SDK) orqali — u rules'ni
+    // chetlab o'tadi, demak mijoz uchun create butunlay yopiladi.
     match /referrals/{docId} {
-      allow create: if isLoggedIn();
+      allow create: if false;
       allow read: if isLoggedIn() && (resource.data.referrerId == request.auth.uid || resource.data.referredId == request.auth.uid || isAdmin());
       allow update, delete: if isAdmin();
+    }
+
+    // ── payments: to'lov audit jurnali (api/payment-webhook.js yozadi) ──
+    // MOLIYAVIY iz — mijoz na o'qiydi, na yozadi. Faqat admin ko'radi
+    // ("to'ladim, premium yo'q" murojaatlarini tekshirish uchun).
+    match /payments/{transId} {
+      allow read: if isAdmin();
+      allow write: if false;
     }
 
     // ── settings: tariflar va sozlamalar (hamma o'qiydi, admin yoza oladi) ──
@@ -108,15 +217,28 @@ service cloud.firestore {
       allow read, write: if isOwner(userId) || isAdmin();
     }
 
-    // ── leaderboard: hamma o'qiy oladi, faqat o'zi/admin yoza oladi ──
+    // ── leaderboard: LEGACY — reyting `userStats` dan o'qiladi (LeaderboardPage.jsx:114).
+    // Bu kolleksiyaga mijoz kodida bironta yozuv yo'q, shuning uchun yozuv
+    // yopildi: tekshirilmagan `allow write: if isOwner()` ochiq turishining
+    // ma'nosi yo'q edi.
     match /leaderboard/{userId} {
       allow read: if isLoggedIn();
-      allow write: if isOwner(userId) || isAdmin();
+      allow write: if isAdmin();
     }
 
     // ── promoCodes: faqat admin boshqaradi; redemption FAQAT server (Admin SDK) orqali ──
     match /promoCodes/{code} {
       allow read, write: if isAdmin();
+    }
+
+    // ── promoCodes/{code}/redemptions/{uid}: kim ishlatgani ──
+    // AUDIT 2026-08-05, 15-BAND: avval `usedBy` MASSIVIGA arrayUnion qilinardi.
+    // Ommaviy kampaniya kodida (maxUses ko'p) massiv 1MB hujjat chegarasiga
+    // urilib, kod QAYTARILMAS holda ishdan chiqardi. Endi har foydalanuvchi
+    // alohida hujjat. Yozuv faqat server (api/redeem-promo.js).
+    match /promoCodes/{code}/redemptions/{uid} {
+      allow read: if isAdmin() || isOwner(uid);
+      allow write: if false;
     }
 
     // ── schools: B2B maktab paketlari ──
@@ -155,19 +277,17 @@ service cloud.firestore {
       allow update, delete: if isAdmin();
     }
 
-    // ── deletionRequests: hisobni o'chirish arizasi (/delete-account) — sahifa ochiq,
-    // shuning uchun create autentifikatsiyasiz ham ruxsat etiladi, lekin maydonlar qat'iy
-    // tekshiriladi va o'qish/boshqarish faqat adminda ──
+    // ── deletionRequests: hisobni o'chirish arizasi (/delete-account) ──
+    //
+    // AUDIT 2026-08-05, 7-BAND: avval create AUTENTIFIKATSIYASIZ ruxsat etilardi
+    // (sahifa ochiq — Google Play talabi). Maydonlar qat'iy tekshirilgan bo'lsa
+    // ham, CHEGARA yo'q edi: istalgan odam cheksiz hujjat yaratib Firestore
+    // kvotasini tugatishi va admin panelini spam bilan to'ldirishi mumkin edi.
+    //
+    // ENDI: yozuv api/notify-admin.js?action=delete-request orqali (Admin SDK,
+    // IP bo'yicha rate-limit). Sahifa avvalgidek autentifikatsiyasiz ishlaydi.
     match /deletionRequests/{docId} {
-      allow create: if request.resource.data.keys().hasOnly(['name', 'phone', 'reason', 'status', 'createdAt'])
-        && request.resource.data.status == 'pending'
-        && request.resource.data.name is string
-        && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 100
-        && request.resource.data.phone is string
-        && request.resource.data.phone.size() == 12
-        && request.resource.data.reason is string
-        && request.resource.data.reason.size() <= 1000
-        && request.resource.data.createdAt is string;
+      allow create: if false;
       allow read, update, delete: if isAdmin();
     }
 
