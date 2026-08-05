@@ -8,7 +8,7 @@ import {
   collection, query, orderBy, onSnapshot, where, getCountFromServer,
   updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch, increment, setDoc, limit, documentId
 } from 'firebase/firestore';
-import { getStorage, ref, uploadBytes, getDownloadURL, uploadString } from 'firebase/storage';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 // storage faqat shu sahifada kerak (lazy route) — default app'dan olamiz.
 // Bu firebase.js'dan eager eksport qilinmaydi → dastlabki yuklanish yengilroq.
@@ -895,61 +895,52 @@ try {
     }
   };
 
+  // ── Savol keshini bekor qilish (foydalanuvchilarga yangilanishni yetkazish) ──
+  //
+  // ⚠️ AUDIT 2026-08-05, 2-BAND — TUZATILDI.
+  // AVVAL bu funksiya barcha savollarni yig'ib Storage'ga `bundles/<fan>.json`
+  // qilib yuklardi, `getDownloadURL()` bilan havola olardi va uni
+  // `settings/version.urls` ga yozardi. Uch jihatdan xavfli edi:
+  //
+  //   1. getDownloadURL() `?token=...` havolasi qaytaradi — u Storage
+  //      xavfsizlik QOIDALARINI BUTUNLAY CHETLAB O'TADI va autentifikatsiyasiz,
+  //      muddatsiz ishlaydi.
+  //   2. `settings` hujjatini HAR BIR kirgan foydalanuvchi o'qiy oladi
+  //      (firestore.rules: `allow read: if isLoggedIn()`), ya'ni o'sha havola
+  //      bepul hisob uchun ham ko'rinardi → ~47k savollik pullik baza oqib
+  //      ketardi.
+  //   3. Bir tugma bosish bilan butun `questions` kolleksiyasi mijoz brauzeriga
+  //      yuklanardi (~47 000 o'qish).
+  //
+  // Endi bu tugma FAQAT `dbVersion` ni oshiradi — ilovaga aynan shu kerak:
+  // TestPage/ExamPage localforage keshini `dbVersion` o'zgargani bo'yicha
+  // bekor qiladi va savollarni /api/get-questions orqali (premium tekshiruvi
+  // bilan) qaytadan oladi. Storage'ga hech narsa yozilmaydi.
+  //
+  // Bir xil mantiq CLI'da: scripts/bump-questions-version.mjs
   const handlePublishBundles = async () => {
-    confirmAction("Barcha savollarni yig'ib Firebase Storage'ga yuklashni (Publish) tasdiqlaysizmi? Bu foydalanuvchilar ilovasida versiyani yangilaydi.", async () => {
-    setIsSyncing(true);
-    showToast("Ma'lumotlar yig'ilmoqda, kuting...", 'info');
+    confirmAction(
+      "Foydalanuvchilarga savol yangilanishini yetkazasizmi? Ularning ilovasidagi kesh bekor qilinadi va savollar qayta yuklanadi.",
+      async () => {
+        setIsSyncing(true);
+        try {
+          const newVersion = Date.now();
+          await setDoc(doc(db, 'settings', 'version'), {
+            dbVersion: newVersion,
+            // `urls` ATAYLAB bo'shatiladi: eski publish qoldirgan ochiq
+            // havolalar hamon o'sha hujjatda turishi mumkin.
+            urls: {},
+            updatedAt: new Date().toISOString(),
+          }, { merge: true });
 
-    try {
-      // 1. Hamma savollarni olish — ro'yxat allaqachon yuklangan bo'lsa,
-      //    qayta o'qimaymiz (~47 000 o'qish tejaladi).
-      let allQuestions = questions;
-      if (allQuestions.length === 0) {
-        const snap = await getDocs(collection(db, 'questions'));
-        allQuestions = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          showToast('✅ Yangilanish yuborildi — foydalanuvchilar yangi savollarni oladi', 'success');
+        } catch (e) {
+          console.error('Versiya yangilash xatosi:', e);
+          showToast('Xatolik: ' + e.message, 'error');
+        }
+        setIsSyncing(false);
       }
-
-      // 2. Kategoriya bo'yicha guruhlash
-      const bundles = {};
-      allQuestions.forEach(q => {
-        let cat = q.category || 'other';
-        if (Array.isArray(cat)) cat = cat[0]; // If category is an array, take the first one
-        if (!bundles[cat]) bundles[cat] = [];
-        bundles[cat].push(q);
-      });
-
-      // 3. Storage'ga yuklash
-      const storageUrls = {};
-      const catKeys = Object.keys(bundles);
-      for (let i = 0; i < catKeys.length; i++) {
-        const cat = catKeys[i];
-        showToast(`'${cat}' fani yuklanmoqda... (${i + 1}/${catKeys.length})`, 'info');
-        const jsonStr = JSON.stringify(bundles[cat]);
-        const bundleRef = ref(storage, `bundles/${cat}.json`);
-        await uploadString(bundleRef, jsonStr, 'raw', { contentType: 'application/json' });
-        const url = await getDownloadURL(bundleRef);
-        storageUrls[cat] = url;
-      }
-
-      // 4. settings/version ni yangilash
-      showToast(`Sozlamalar yangilanmoqda...`, 'info');
-      const versionDocRef = doc(db, 'settings', 'version');
-      const newVersion = Date.now();
-      
-      await setDoc(versionDocRef, {
-        dbVersion: newVersion,
-        urls: storageUrls,
-        updatedAt: new Date().toISOString()
-      }, { merge: true });
-
-      showToast("✅ Barcha savollar muvaffaqiyatli Storage'ga yuklandi!", 'success');
-
-    } catch (e) {
-      console.error("Publish xatosi:", e);
-      showToast("Yuklashda xatolik: " + e.message, 'error');
-    }
-    setIsSyncing(false);
-    });
+    );
   };
 
   const handleDeleteQuestion = (id) => {
@@ -1470,7 +1461,7 @@ try {
 
           <div className="admin-action-bar">
             <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-primary" style={{ background: 'var(--green)', borderColor: 'var(--green)' }} onClick={handlePublishBundles} disabled={isSyncing}>
-              <UploadCloud size={14} /> {isSyncing ? 'Yuklanmoqda...' : '🚀 Dasturni Yangilash (Publish)'}
+              <UploadCloud size={14} /> {isSyncing ? 'Yuborilmoqda...' : '🚀 Yangilanishni yuborish'}
             </motion.button>
 
             <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={analyzeDuplicates} disabled={dupAnalyzing}>

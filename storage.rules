@@ -14,6 +14,38 @@ service firebase.storage {
         && request.resource.contentType.matches('image/.*');
     }
 
+    // Savol rasmlari (AdminPage → handleImageUpload).
+    //
+    // ⚠️ DIQQAT (audit 2026-08-05): bu yo'l avval `allow write: if false`
+    // ostida qolib ketgan edi — ya'ni admin panelidagi "rasm yuklash" tugmasi
+    // HECH QACHON ishlamagan (permission-denied). Hozirgi savol rasmlari
+    // repoda statik fayl sifatida turadi (public/art_img/...), shuning uchun
+    // bu bug sezilmagan.
+    //
+    // O'qish OCHIQ: rasm havolasi savol matnida bo'ladi va u pullik kontent
+    // emas (rasmning o'zi savolni oshkor qilmaydi). Yozuv esa faqat
+    // ro'yxatdagi platforma adminlarida — Storage qoidalari Firestore'ni
+    // o'qiy olmaydi, shuning uchun rol emailga qarab tekshiriladi.
+    match /questions/{fileName} {
+      allow read: if true;
+      allow write: if request.auth != null
+        && request.auth.token.email in [
+             'abdulazizovayyubxon@gmail.com',
+             '998999154686@iqro.uz'
+           ]
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+
+    // Savol bundle'lari — ATAYLAB TAQIQLANGAN (audit 2026-08-05, 2-band).
+    // Bundle'ni Storage'ga yuklash pullik bazani oshkor qilardi:
+    // getDownloadURL() qaytaradigan `?token=` havolasi bu qoidalarni
+    // butunlay chetlab o'tadi va autentifikatsiyasiz, muddatsiz ishlaydi.
+    // Savollar FAQAT /api/get-questions orqali beriladi.
+    match /bundles/{fileName} {
+      allow read, write: if false;
+    }
+
     // Boshqa barcha yo'llar: standart ravishda taqiqlangan
     match /{allPaths=**} {
       allow read, write: if false;
