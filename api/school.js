@@ -24,6 +24,7 @@
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
+import { rateLimit, clientIp } from './_shared.js';
 
 // Platforma administratorlari — src/config.js dagi ADMIN_EMAILS bilan bir xil.
 // config.js import.meta.env ishlatgani uchun Node funksiyasiga import qilinmaydi.
@@ -55,7 +56,11 @@ const isPlatformAdmin = async (db, decoded) => {
 // ── action: join ───────────────────────────────────────────────────────────
 async function handleJoin(db, uid, body) {
   const code = (body?.code || '').toString().trim().toUpperCase();
-  if (!/^[A-Z0-9_-]{4,32}$/.test(code)) return { ok: false, error: 'invalid_code_format' };
+  // AUDIT 2026-08-05, 10-BAND: avval minimal uzunlik 4 edi — 36^4 ≈ 1.7M variant,
+  // rate-limit esa yo'q. Ya'ni joinCode'ni brute-force qilib korporativ Pro
+  // obunani o'zlashtirib olish real edi. Endi minimal 8 belgi (36^8 ≈ 2.8·10^12)
+  // + urinishlar soni cheklangan (handler ichida).
+  if (!/^[A-Z0-9_-]{8,32}$/.test(code)) return { ok: false, error: 'invalid_code_format' };
   const shareStats = body?.shareStats !== false; // default: rozilik berilgan
 
   const query = db.collection('schools').where('joinCode', '==', code).limit(1);
@@ -305,6 +310,14 @@ export default async function handler(req, res) {
     const decoded = await getAuth().verifyIdToken(authHeader.split('Bearer ')[1]);
     const uid = decoded.uid;
     const action = (req.body?.action || '').toString();
+
+    // `join` — kod taxmin qilinadigan yagona amal, shuning uchun alohida
+    // qattiq chegara: foydalanuvchi ham, IP ham soatiga 10 urinish.
+    if (action === 'join') {
+      const tooMany = rateLimit(`join:uid:${uid}`, 10, 3600_000).limited
+        || rateLimit(`join:ip:${clientIp(req)}`, 20, 3600_000).limited;
+      if (tooMany) return res.status(429).json({ ok: false, error: 'too_many_requests' });
+    }
 
     let result;
     if (action === 'join') result = await handleJoin(db, uid, req.body);

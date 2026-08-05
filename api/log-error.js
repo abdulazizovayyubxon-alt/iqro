@@ -17,7 +17,9 @@
  */
 
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
+import { getAuth } from 'firebase-admin/auth';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
+import { rateLimit, clientIp, clip, clampObject } from './_shared.js';
 
 function getDb() {
   if (getApps().length === 0) {
@@ -33,47 +35,60 @@ function getDb() {
   return getFirestore();
 }
 
-// ── IP bo'yicha rate limiting ──
-const rateLimitMap = new Map();
-const RL_LIMIT = 30;              // daqiqasiga maksimal 30 (buzilgan client burst yuborishi mumkin)
-const RL_WINDOW_MS = 60 * 1000;
-function isRateLimited(ip) {
-  const now = Date.now();
-  if (rateLimitMap.size > 5000) {
-    for (const [k, v] of rateLimitMap.entries()) {
-      if (v.filter(t => now - t < RL_WINDOW_MS).length === 0) rateLimitMap.delete(k);
-    }
-  }
-  const times = (rateLimitMap.get(ip) || []).filter(t => now - t < RL_WINDOW_MS);
-  times.push(now);
-  rateLimitMap.set(ip, times);
-  return times.length > RL_LIMIT;
-}
-
-const clip = (v, n) => (v == null ? null : String(v).slice(0, n));
-
 export default async function handler(req, res) {
-  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') return res.status(405).json({ ok: false, error: 'method_not_allowed' });
 
-  const ip = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'anonymous';
-  if (isRateLimited(ip)) return res.status(429).json({ ok: false, error: 'too_many_requests' });
+  // ── AUDIT 2026-08-05, 6-BAND ──
+  // Avval: auth YO'Q, `context` cheklanmagan obyekt (Vercel body chegarasigacha
+  // ~4.5MB), `uid` esa MIJOZDAN olinardi. Ya'ni istalgan odam Firestore yozuv
+  // kvotasini (loyihaning asosiy xavfi) arzon narxda tugatishi va jurnalni
+  // boshqa foydalanuvchi nomiga yozishi mumkin edi.
+  //
+  // ENDI:
+  //  · `uid` FAQAT tekshirilgan tokendan olinadi (mijoz aytganidan emas)
+  //  · `context` hajmi qisiladi (clampObject)
+  //  · ishonchli IP ajratish + ikki darajali chegara
+  //
+  // NEGA token MAJBURIY EMAS: kuzatuvning eng qimmatli qismi — tizimga
+  // kirishdan OLDIN (splash/login ekranida) yuz bergan crash'lar. Token o'sha
+  // paytda hali yo'q. Bundan tashqari sentry.js `navigator.sendBeacon`
+  // ishlatadi — u sarlavha yubora OLMAYDI, shuning uchun token BODY'da keladi.
+  // Tokensiz so'rov qabul qilinadi, lekin chegarasi ancha qattiq.
+  const ip = clientIp(req);
 
   try {
-    const { message, stack, url, userAgent, uid, severity, context } = req.body || {};
+    const db = getDb();
+
+    const { message, stack, url, userAgent, severity, context, idToken } = req.body || {};
     if (!message || typeof message !== 'string') {
       return res.status(400).json({ ok: false, error: 'message_required' });
     }
 
-    const db = getDb();
+    // Token bo'lsa tekshiramiz; bo'lmasa anonim log (uid: null)
+    let uid = null;
+    if (typeof idToken === 'string' && idToken.length > 20) {
+      try {
+        uid = (await getAuth().verifyIdToken(idToken)).uid;
+      } catch {
+        uid = null; // yaroqsiz token — anonim sifatida davom etadi
+      }
+    }
+
+    // Anonim yo'nak SEZILARLI qattiqroq: kvota hujumining asosiy vektori shu.
+    const limited = uid
+      ? rateLimit(`log:uid:${uid}`, 20).limited
+      : rateLimit(`log:anon:${ip}`, 5).limited;
+    if (limited) return res.status(429).json({ ok: false, error: 'too_many_requests' });
+
     await db.collection('errorLogs').add({
       message: clip(message, 1000),
       stack: clip(stack, 4000),
       url: clip(url, 500),
       userAgent: clip(userAgent, 500),
-      uid: clip(uid, 128),
+      uid,                                  // TOKENDAN — mijoz yuborgani emas
       severity: ['error', 'warning', 'info'].includes(severity) ? severity : 'error',
-      context: context && typeof context === 'object' ? context : null,
+      context: clampObject(context, 2000),  // hajmi cheklangan
       resolved: false,
       createdAt: new Date().toISOString(),
       ts: FieldValue.serverTimestamp(),

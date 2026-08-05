@@ -2,6 +2,7 @@ import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { getAuth } from 'firebase-admin/auth';
 import { getMessaging } from 'firebase-admin/messaging';
+import { rateLimit, clientIp, extractBearer, clip } from './_shared.js';
 
 function ensureAdminApp() {
   if (getApps().length === 0) {
@@ -82,77 +83,130 @@ async function handlePush(req, res) {
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}`;
 
-// ── IP bo'yicha rate limiting (spam himoyasi) ──
-// Bu yo'nak (register/oddiy eslatma) auth'siz — har kim admin Telegramiga xabar
-// yubora olardi. Rate-limit toshqinni to'xtatadi.
-const rateLimitMap = new Map();
-const RL_LIMIT = 10;              // daqiqasiga maksimal 10 so'rov
-const RL_WINDOW_MS = 60 * 1000;
-function isRateLimited(ip) {
-  const now = Date.now();
-  if (rateLimitMap.size > 5000) {
-    for (const [k, v] of rateLimitMap.entries()) {
-      if (v.filter(t => now - t < RL_WINDOW_MS).length === 0) rateLimitMap.delete(k);
-    }
+// Telegram `parse_mode: HTML` — foydalanuvchi matni EKRANLANMASA, xabarga
+// havola/qalin matn kiritib adminni chalg'itish (fishing) mumkin edi.
+const escapeHtml = (s) => String(s ?? '')
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;');
+
+async function sendToAdmin(db, text) {
+  if (!TELEGRAM_BOT_TOKEN) {
+    console.warn('TELEGRAM_BOT_TOKEN sozlanmagan — xabar yuborilmadi');
+    return false;
   }
-  const times = (rateLimitMap.get(ip) || []).filter(t => now - t < RL_WINDOW_MS);
-  times.push(now);
-  rateLimitMap.set(ip, times);
-  return times.length > RL_LIMIT;
+  const adminSnap = await db.collection('settings').doc('admin').get();
+  const adminChatId = adminSnap.exists ? adminSnap.data().telegramChatId : null;
+  if (!adminChatId) return false;
+
+  await fetch(`${TELEGRAM_API_URL}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: adminChatId, text, parse_mode: 'HTML' }),
+  });
+  return true;
+}
+
+// ── action: register ───────────────────────────────────────────────────────
+// AUDIT 2026-08-05, 20-BAND: avval bu yo'nak AUTH'SIZ edi va `message`
+// matnini MIJOZ yuborardi — ya'ni istalgan odam admin Telegramiga ixtiyoriy
+// matn (havola, soxta ogohlantirish) jo'natishi mumkin edi.
+// ENDI: ID token majburiy va xabar matni SERVERDA Firestore ma'lumotidan
+// yig'iladi — mijozdan keladigan matn umuman ishlatilmaydi.
+async function handleRegister(db, req, res) {
+  const idToken = extractBearer(req);
+  if (!idToken) return res.status(401).json({ success: false, error: 'unauthorized' });
+
+  let decoded;
+  try {
+    decoded = await getAuth().verifyIdToken(idToken);
+  } catch {
+    return res.status(401).json({ success: false, error: 'invalid_token' });
+  }
+
+  const snap = await db.collection('users').doc(decoded.uid).get();
+  const u = snap.exists ? snap.data() : {};
+
+  const text = '👤 <b>Yangi foydalanuvchi!</b>\n\n'
+    + `Ism: ${escapeHtml(u.displayName || '—')}\n`
+    + `Telefon: ${escapeHtml(u.phone || '—')}\n`
+    + `ID: ${escapeHtml(u.shortId || decoded.uid)}`;
+
+  await sendToAdmin(db, text);
+  return res.status(200).json({ success: true });
+}
+
+// ── action: delete-request ─────────────────────────────────────────────────
+// Hisobni o'chirish arizasi (/delete-account sahifasi Google Play talabi
+// bo'yicha ochiq — auth talab qilinmaydi).
+// AUDIT 7-BAND: avval mijoz to'g'ridan-to'g'ri `deletionRequests`ga yozardi va
+// Firestore qoidasi ham auth talab qilmasdi → cheksiz anonim hujjat. Endi
+// yozuv shu yerda, IP bo'yicha qattiq chegara bilan.
+async function handleDeleteRequest(db, req, res) {
+  if (rateLimit(`del:${clientIp(req)}`, 3, 10 * 60 * 1000).limited) {
+    return res.status(429).json({ ok: false, error: 'too_many_requests' });
+  }
+
+  const name = clip(req.body?.name, 100)?.trim() || '';
+  const phoneRaw = clip(req.body?.phone, 20) || '';
+  const phone = phoneRaw.replace(/\D/g, '');
+  const reason = clip(req.body?.reason, 1000)?.trim() || '';
+
+  if (!name) return res.status(400).json({ ok: false, error: 'name_required' });
+  if (!phone.startsWith('998') || phone.length !== 12) {
+    return res.status(400).json({ ok: false, error: 'invalid_phone' });
+  }
+
+  const nowIso = new Date().toISOString();
+  await db.collection('deletionRequests').add({
+    name, phone, reason,
+    status: 'pending',
+    createdAt: nowIso,
+  });
+
+  await sendToAdmin(db,
+    '🗑 <b>Hisobni o\'chirish arizasi</b>\n\n'
+    + `Ism: ${escapeHtml(name)}\n`
+    + `Telefon: ${escapeHtml(phone)}\n`
+    + `Sabab: ${escapeHtml(reason || '—')}`
+  ).catch((e) => console.warn('Telegram xabari yuborilmadi:', e?.message));
+
+  return res.status(200).json({ ok: true });
 }
 
 export default async function handler(req, res) {
+  if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') {
-    return res.status(405).send('Method Not Allowed');
+    return res.status(405).json({ success: false, error: 'method_not_allowed' });
   }
 
-  // FCM push (admin-only) — alohida tarmoq
-  if (req.body && req.body.action === 'push') {
-    try {
-      return await handlePush(req, res);
-    } catch (error) {
-      console.error('Push error:', error);
-      return res.status(500).json({ success: false, error: error.message });
-    }
-  }
-
-  // Rate limit — auth'siz yo'nak uchun
-  const ip = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'anonymous';
-  if (isRateLimited(ip)) {
-    return res.status(429).json({ success: false, error: 'too_many_requests' });
-  }
+  // `action` ni query'dan ham, body'dan ham qabul qilamiz
+  const action = (req.query?.action || req.body?.action || req.body?.type || '').toString();
 
   try {
-    const { message, type } = req.body;
-    if (!message) return res.status(400).send('No message provided');
-
     const db = getDb();
-    const adminSnap = await db.collection('settings').doc('admin').get();
-    
-    if (!adminSnap.exists || !adminSnap.data().telegramChatId) {
-      return res.status(200).send('Admin not configured');
-    }
-    
-    const adminChatId = adminSnap.data().telegramChatId;
 
-    let prefix = '🔔 <b>Eslatma</b>\n\n';
-    if (type === 'register') prefix = '👤 <b>Yangi Foydalanuvchi!</b>\n\n';
-    if (type === 'payment') prefix = '💳 <b>To\'lov Harakati!</b>\n\n';
+    // FCM push — admin-only (o'zining auth tekshiruvi bor)
+    if (action === 'push') return await handlePush(req, res);
 
-    await fetch(`${TELEGRAM_API_URL}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: adminChatId,
-        text: prefix + message,
-        parse_mode: 'HTML'
-      })
-    });
+    if (action === 'delete-request') return await handleDeleteRequest(db, req, res);
 
-    res.status(200).json({ success: true });
+    if (action === 'register') return await handleRegister(db, req, res);
+
+    // ── Qolgan hamma narsa: FAQAT ADMIN ──
+    // Avval bu yerda ixtiyoriy `message` auth'siz qabul qilinardi.
+    const admin = await verifyAdmin(req, db).catch(() => null);
+    if (!admin) return res.status(403).json({ success: false, error: 'forbidden' });
+
+    const message = clip(req.body?.message, 2000);
+    if (!message) return res.status(400).json({ success: false, error: 'message_required' });
+
+    await sendToAdmin(db, '🔔 <b>Eslatma</b>\n\n' + escapeHtml(message));
+    return res.status(200).json({ success: true });
   } catch (error) {
-    console.error("Notify error:", error);
-    res.status(500).json({ success: false, error: error.message });
+    console.error('Notify error:', error);
+    // Ichki xato matni mijozga chiqarilmaydi
+    return res.status(500).json({ success: false, error: 'server_error' });
   }
 }
 

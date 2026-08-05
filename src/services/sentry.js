@@ -19,13 +19,15 @@ let Sentry = null;
 // esa undan OLDIN yuz beradi va `uid: null` bilan yozilardi — ya'ni admin
 // panelida kim duch kelgani ko'rinmasdi. AuthContext'ning localStorage keshini
 // sinxron o'qib, qaytgan foydalanuvchi uchun uid'ni boshidanoq bilamiz.
-let currentUid = (() => {
-  try {
-    return JSON.parse(localStorage.getItem('iqro_cached_user') || 'null')?.uid || null;
-  } catch {
-    return null; // kesh buzuq yoki localStorage bloklangan — uid'siz davom etamiz
-  }
-})();
+// ── ID token keshi ──
+// Server `uid`ni MIJOZ aytganiga ishonmaydi — u tekshirilgan tokendan olinadi
+// (audit 2026-08-05, 6-band). Token BODY'da yuboriladi, sarlavhada emas:
+// `navigator.sendBeacon` sarlavha qo'shishga imkon bermaydi, lekin sahifa
+// yopilganda ham xabarni yetkazadi — kuzatuv uchun bu muhimroq.
+//
+// Token SINXRON kerak (crash paytida await qilib bo'lmaydi), shuning uchun
+// setUser() chaqirilganda oldindan olib qo'yiladi. Bo'lmasa log anonim ketadi.
+let currentToken = null;
 
 // ── Toshqin himoyasi: bir xil xatoni takror yubormaymiz + sessiya bo'yicha cap ──
 const _seen = new Set();
@@ -51,7 +53,9 @@ function logToServer(message, stack, severity = 'error', context = null) {
       stack: stack ? String(stack).slice(0, 4000) : null,
       url: typeof location !== 'undefined' ? location.href : null,
       userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : null,
-      uid: currentUid,
+      // `uid` YUBORILMAYDI — server uni tokendan o'zi ajratadi. Token bo'lmasa
+      // log anonim yoziladi (login'gacha bo'lgan crash'lar shunday keladi).
+      idToken: currentToken,
       severity,
       context,
     });
@@ -128,11 +132,19 @@ export function captureError(error, context = {}) {
 }
 
 export function setUser(user) {
-  currentUid = user?.uid || null;
   if (Sentry && user) Sentry.setUser({ id: user.uid });
+
+  // Tokenni oldindan olib qo'yamiz — crash paytida await qilish imkoni yo'q.
+  // Xatolik yutiladi: kuzatuv HECH QACHON ilovani buzmasligi kerak.
+  const fbUser = user?._firebaseUser;
+  if (fbUser?.getIdToken) {
+    fbUser.getIdToken().then((t) => { currentToken = t; }).catch(() => { currentToken = null; });
+  } else {
+    currentToken = null;
+  }
 }
 
 export function clearUser() {
-  currentUid = null;
+  currentToken = null;
   if (Sentry) Sentry.setUser(null);
 }

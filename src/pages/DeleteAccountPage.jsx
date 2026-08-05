@@ -3,8 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Trash2, Send, CheckCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { db } from '../firebase';
-import { collection, addDoc } from 'firebase/firestore';
 
 export default function DeleteAccountPage() {
   const navigate = useNavigate();
@@ -45,13 +43,30 @@ export default function DeleteAccountPage() {
 
     setLoading(true);
     try {
-      await addDoc(collection(db, 'deletionRequests'), {
-        name: name.trim(),
-        phone: cleanPhone,
-        reason: reason.trim(),
-        status: 'pending',
-        createdAt: new Date().toISOString(),
+      // Ariza SERVER orqali yoziladi (api/notify-admin.js?action=delete-request).
+      // Avval mijoz to'g'ridan-to'g'ri Firestore'ga yozardi va bu yo'l
+      // autentifikatsiyasiz ochiq edi — cheksiz anonim hujjat yaratib kvotani
+      // tugatish mumkin edi (audit 2026-08-05, 7-band). Sahifa foydalanuvchi
+      // uchun avvalgidek ochiq qoladi, chegara serverda.
+      const res = await fetch('/api/notify-admin?action=delete-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name.trim(),
+          phone: cleanPhone,
+          reason: reason.trim(),
+        }),
       });
+
+      if (res.status === 429) {
+        setError(t('deleteAccount.errTooMany', "Juda ko'p urinish. Iltimos, birozdan so'ng qayta yuboring."));
+        return;
+      }
+      if (!res.ok) throw new Error(`http_${res.status}`);
+
+      const data = await res.json().catch(() => ({}));
+      if (data.ok === false) throw new Error(data.error || 'server_error');
+
       setSubmitted(true);
     } catch (err) {
       console.error("Account deletion request error:", err);
