@@ -21,6 +21,13 @@ node_modules/
 .env
 
 # Vercel Hobby limit (12 Serverless functions) uchun foydalanilmaydigan yoki birlashtirilgan API-lar
+#
+# DIQQAT: api/_shared.js bu ro'yxatga QO'SHILMAYDI — u endpointlar tomonidan
+# import qilinadi. `_` bilan boshlangani uchun Vercel uni funksiya deb hisoblamaydi
+# (12 ta chegaraga kirmaydi), lekin fayl deploy'da BO'LISHI SHART.
 api/set-webhook.js
 api/send-otp.js
 api/verify-otp.js
+
+# Unit testlar — production bundle'iga kerak emas
+src/__tests__/
