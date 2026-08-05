@@ -257,7 +257,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
               initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }}
               transition={{ type: 'spring', damping: 28, stiffness: 300 }}
               style={{
-                position: 'fixed', top: 0, left: 0, bottom: 0, width: 'min(86vw, 350px)',
+                position: 'fixed', top: 0, left: 0, bottom: 0, width: 'var(--drawer-w)',
                 background: 'var(--bg2)', zIndex: 1101, display: 'flex', flexDirection: 'column',
                 boxShadow: '0 0 60px rgba(0,0,0,0.30)', borderRadius: '0 24px 24px 0',
                 overflowY: 'auto',

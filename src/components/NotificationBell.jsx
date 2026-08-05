@@ -6,7 +6,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Bell, CheckCircle2, AlertCircle, Info, Trash2, Award, BadgeCheck, Flag } from 'lucide-react';
+import { Bell, CheckCircle2, CheckCheck, AlertCircle, Info, Trash2, Award, BadgeCheck, Flag } from 'lucide-react';
 import { useNotifications } from '../hooks/useNotifications';
 import { useModalBackButton } from './profile/useModalBackButton';
 
@@ -65,8 +65,13 @@ const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', 
             <div className="user-dropdown-header">
               <div className="user-dropdown-header-title">{t('notifications.title')}</div>
               {unreadCount > 0 && (
-                <button className="notif-clear-all-btn" onClick={handleMarkAll}>
-                  {t('notifications.markAllRead')}
+                <button
+                  className="notif-clear-all-btn"
+                  onClick={handleMarkAll}
+                  title={t('notifications.markAllRead')}
+                  aria-label={t('notifications.markAllRead')}
+                >
+                  <CheckCheck size={17} />
                 </button>
               )}
             </div>

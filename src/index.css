@@ -161,6 +161,12 @@ html {
   --glass-bg: rgba(253, 252, 249, 0.85);
   --glass-border: rgba(86, 110, 130, 0.16);
 
+  /* ── Layout ─────────────────────────────────────────────────────────────
+     Profil drawer'ining kengligi. ProfileDrawer.jsx va drawer ICHIDA ochiladigan
+     qatlamlar (bildirishnoma paneli) ikkalasi ham SHU tokendan o'lchov oladi:
+     drawer'da overflow-y:auto bor → overflow-x ham auto bo'lib qoladi, ya'ni
+     undan kengroq bola iOS Safari'da qirqiladi. */
+  --drawer-w: min(86vw, 350px);
 }
 
 body.dark-theme {
@@ -648,12 +654,15 @@ button {
   overflow-y: auto;
 }
 @media (max-width: 600px) {
+  /* DIQQAT: panel profil drawer'i ICHIDA ochiladi. Kenglikni ekrandan
+     (right: 12px) olish mumkin emas — drawer atigi var(--drawer-w) kenglikda va
+     gorizontal qirqadi, natijada iOS Safari'da panelning o'ng qismi kesilardi. */
   .notif-dropdown {
     position: fixed;
     top: 60px;
     left: 12px;
-    right: 12px;
-    width: auto;
+    right: auto;
+    width: calc(var(--drawer-w) - 24px);
     max-height: calc(100vh - 80px);
     max-height: calc(100dvh - 80px);
   }
@@ -677,16 +686,22 @@ button {
   font-size: var(--fs-xl);
   color: var(--text);
 }
+/* «Barchasini o'qildi qilish» — faqat ikonka. Matnli variant panelga sig'masdi
+   (ru "Отметить все прочитанными" ~190px), A+ shkalasida esa yanada o'sardi.
+   To'liq matn title/aria-label'da qoladi. */
 .notif-clear-all-btn {
   background: var(--blue-bg);
   border: none;
   color: var(--accent2);
-  font-size: var(--fs-sm);
-  padding: 6px 11px;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   border-radius: 9px;
-  font-weight: 700;
   cursor: pointer;
-  white-space: nowrap;
   transition: all 0.15s;
 }
 .notif-clear-all-btn:hover {
