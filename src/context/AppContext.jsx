@@ -415,6 +415,10 @@ export const AppProvider = ({ children }) => {
   const [state, setState] = useState(buildDefaultState);
   const [cloudSynced, setCloudSynced] = useState(false);
   const prevUserRef = useRef(null);
+  // Foydalanuvchi shu sessiyada fanni O'ZI tanlagan bo'lsa — shu yerda turadi.
+  // Sekin yuklangan statistika (loadUserStats) bu tanlovni bosib ketmasligi kerak:
+  // onboardingda fan tanlash bulutdan javob kelishidan oldin bo'lishi mumkin.
+  const chosenCategoryRef = useRef(null);
   // Har doim joriy user qiymatini saqlaymiz (stale closure muammosini hal qilish uchun)
   const userRef = useRef(user);
   useEffect(() => { userRef.current = user; }, [user]);
@@ -429,12 +433,27 @@ export const AppProvider = ({ children }) => {
       // Foydalanuvchi o'zgardi — darhol default state ga o'tkazish
       setState(buildDefaultState());
       setCloudSynced(false);
+      chosenCategoryRef.current = null;
       prevUserRef.current = newUid;
     }
 
     if (!user) {
       return;
     }
+
+    // Faol fan qaysi manbadan olinadi (ustuvorlik bo'yicha):
+    //   1) shu sessiyada foydalanuvchi o'zi tanlagan fan — hech qachon bosilmaydi
+    //      (onboardingda fan tanlash shu yuklashdan oldin bo'lishi mumkin);
+    //   2) statistikada saqlangan fan (oldingi tanlov);
+    //   3) profildagi o'qituvchilik fani — onboarding uni users/{uid}.subject ga
+    //      yozadi, ya'ni debounce tugashidan oldin ilova yopilsa ham tanlov
+    //      yo'qolmaydi (aks holda ilova default 'chqbt' bilan ochilardi).
+    // Foydalanuvchi keyin fanni almashtirsa, (2) ishlaydi va tanlovi qayta yozilmaydi.
+    const profileSubject = user.subject && user.subject !== 'multi' ? user.subject : null;
+    const seedCategory = (loaded, savedCategory) => {
+      const cat = chosenCategoryRef.current || savedCategory || profileSubject;
+      return cat ? { ...loaded, activeCategory: cat } : loaded;
+    };
 
     // Foydalanuvchi statistikasini Firestore'dan yuklash
     const loadUserStats = async () => {
@@ -447,30 +466,30 @@ export const AppProvider = ({ children }) => {
           // Bulut + lokal zaxira: hisoblagichlar max() bo'yicha birlashtiriladi,
           // shunda bulutga yetib bormagan oxirgi sessiya natijalari yo'qolmaydi
           const data = mergeCloudAndLocal(snap.data(), backup);
-          setState(() => withAchievements({
+          setState(() => withAchievements(seedCategory({
             ...buildDefaultState(),
             ...data,
             stats: data.stats || { chqbt: buildDefaultCatStats(), art: buildDefaultCatStats() },
             topicStats: data.topicStats || {},
             customMnemonics: data.customMnemonics || {},
             timeStats: data.timeStats || { totalTime: 0, totalQuestions: 0 }
-          }));
+          }, data.activeCategory)));
         } else if (backup) {
           // Bulutda hujjat yo'q, lekin shu UID ning lokal zaxirasi bor — undan tiklash
           const { savedAt, ...localState } = backup;
-          setState(withAchievements({ ...buildDefaultState(), ...localState }));
+          setState(withAchievements(seedCategory({ ...buildDefaultState(), ...localState }, localState.activeCategory)));
         } else {
           // Yangi foydalanuvchi — toza holat bilan boshlash
-          setState(buildDefaultState());
+          setState(seedCategory(buildDefaultState(), null));
         }
       } catch (err) {
         console.error('Foydalanuvchi statistikasini yuklashda xatolik:', err);
         // Oflayn/xatolikda default o'rniga lokal zaxiradan tiklash
         if (backup) {
           const { savedAt, ...localState } = backup;
-          setState(withAchievements({ ...buildDefaultState(), ...localState }));
+          setState(withAchievements(seedCategory({ ...buildDefaultState(), ...localState }, localState.activeCategory)));
         } else {
-          setState(buildDefaultState());
+          setState(seedCategory(buildDefaultState(), null));
         }
       }
       setCloudSynced(true);
@@ -529,20 +548,25 @@ export const AppProvider = ({ children }) => {
     return () => document.removeEventListener('visibilitychange', onVisibilityChange);
   }, []);
 
-  const updateState = (updates) => setState(prev => {
-    // Fan almashtirilganda tanlangan mavzuni tiklaymiz — eski fanning mavzu IDsi
-    // yangi fanda mavjud bo'lmaydi va savollar bo'sh "Mavzu tayyorlanmoqda"
-    // holatiga tushib qolardi. Agar chaqiruvchi topicId ni o'zi bersa (masalan
-    // SmartBottomSheet), uni buzmaymiz.
-    if (
-      updates.activeCategory &&
-      updates.activeCategory !== prev.activeCategory &&
-      updates.topicId === undefined
-    ) {
-      return { ...prev, ...updates, topicId: -1 };
-    }
-    return { ...prev, ...updates };
-  });
+  const updateState = (updates) => {
+    // Fan tanlovi ref'da ham belgilanadi — keyinroq kelgan bulut javobi uni
+    // bosib ketmasligi uchun (loadUserStats → seedCategory).
+    if (updates.activeCategory) chosenCategoryRef.current = updates.activeCategory;
+    return setState(prev => {
+      // Fan almashtirilganda tanlangan mavzuni tiklaymiz — eski fanning mavzu IDsi
+      // yangi fanda mavjud bo'lmaydi va savollar bo'sh "Mavzu tayyorlanmoqda"
+      // holatiga tushib qolardi. Agar chaqiruvchi topicId ni o'zi bersa (masalan
+      // SmartBottomSheet), uni buzmaymiz.
+      if (
+        updates.activeCategory &&
+        updates.activeCategory !== prev.activeCategory &&
+        updates.topicId === undefined
+      ) {
+        return { ...prev, ...updates, topicId: -1 };
+      }
+      return { ...prev, ...updates };
+    });
+  };
 
   // ─── batchCommitResults: Test yakunida natijalarni BIR MARTA saqlash ───
   // TestPage test tugaganda har savol uchun alohida emas, shu funksiyani bir marta

@@ -294,7 +294,7 @@ function WelcomeStep({ goal, time, isMobile }) {
 }
 
 // ── Asosiy komponent ──
-export default function OnboardingPage({ onComplete }) {
+export default function OnboardingPage({ onComplete, onSubjectChosen }) {
   const { t } = useTranslation();
   const { user } = useAuth();
   const isMobile = useIsMobile();
@@ -306,6 +306,13 @@ export default function OnboardingPage({ onComplete }) {
   const [subject, setSubject] = useState(null);
   const [time, setTime]     = useState(null);
   const [, setSaving] = useState(false);
+
+  // Tanlangan fan DARHOL ilova holatiga qo'llanadi (oxirgi tugmani kutmasdan).
+  // Foydalanuvchi orqaga qaytib boshqa fan tanlasa — yangisi qo'llanadi.
+  useEffect(() => {
+    if (subject) onSubjectChosen?.(subject);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [subject]);
 
   // Fan bo'yicha savol soni (ishonch badge) — admin-publish yozadi
   const [questionMeta, setQuestionMeta] = useState(null);

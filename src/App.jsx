@@ -189,18 +189,28 @@ function App() {
   const [needsOnboarding, setNeedsOnboarding] = useState(false);
   const [onboardingChecked, setOnboardingChecked] = useState(false);
 
-  // Yangi foydalanuvchimi tekshirish
+  // Yangi foydalanuvchimi tekshirish.
+  //
+  // DEP MASSIVI FAQAT `user?.uid` — BUTUN `user` obyektiga BOG'LANMAYDI.
+  // AuthContext users/{uid} hujjatini onSnapshot bilan tinglaydi va har
+  // yangilanishda YANGI `user` obyekti yasaydi. Onboarding oxirgi qadamda
+  // aynan shu hujjatga `onboardingDone: true` yozadi — natijada bu tekshiruv
+  // qayta ishga tushib, foydalanuvchi "Boshlash" tugmasiga yetib bormasdan
+  // OnboardingPage ekrandan olib tashlanardi. Ya'ni onComplete umuman
+  // chaqirilmasdi va tanlangan fan qo'llanmay, ilova default 'chqbt' bilan
+  // ochilardi.
   useEffect(() => {
-    if (!user) { setOnboardingChecked(true); setNeedsOnboarding(false); return; }
-    const CACHE_KEY = `iqro_onboarding_${user.uid}`;
+    if (!user?.uid) { setOnboardingChecked(true); setNeedsOnboarding(false); return; }
+    const uid = user.uid;
+    const CACHE_KEY = `iqro_onboarding_${uid}`;
     if (localStorage.getItem(CACHE_KEY)) { setNeedsOnboarding(false); setOnboardingChecked(true); return; }
-    getDoc(doc(db, 'users', user.uid)).then(snap => {
+    getDoc(doc(db, 'users', uid)).then(snap => {
       const done = snap.exists() && snap.data().onboardingDone === true;
       if (done) localStorage.setItem(CACHE_KEY, '1');
       setNeedsOnboarding(!done);
       setOnboardingChecked(true);
     }).catch(() => { setNeedsOnboarding(false); setOnboardingChecked(true); });
-  }, [user]);
+  }, [user?.uid]);
 
   // ── Sahifa kuzatuvi (Analytics) ──
   const PAGE_NAMES = {
@@ -402,20 +412,31 @@ function App() {
 
   // Yangi foydalanuvchi — Onboarding
   if (needsOnboarding) {
-    return <OnboardingPage onComplete={(subject) => {
-      localStorage.setItem(`iqro_onboarding_${user.uid}`, '1');
-      if (subject && subject !== 'multi') {
-        appContext.updateState({ activeCategory: subject });
-      }
-      setNeedsOnboarding(false);
-      // 'multi' ("Bir nechta fan") haqiqiy kategoriya emas — TOPICS/savollar yo'q,
-      // shuning uchun uni o'rnatmaymiz (default fan saqlanadi), aks holda barcha
-      // sahifa bo'm-bo'sh "Mavzu tayyorlanmoqda" holatiga tushib qolardi.
-      // "Boshlash" bosilgach foydalanuvchini TO'G'RIDAN-TO'G'RI testga olib o'tamiz —
-      // onboarding qizg'inligi profil formasida so'nmasligi uchun. Jins kabi ixtiyoriy
-      // ma'lumotlar keyin Profilda to'ldiriladi (testga/avatarga ta'sir qilmaydi).
-      navigate('/test');
-    }} />;
+    return <OnboardingPage
+      // Fan TANLANGAN ZAHOTI qo'llanadi — "Boshlash" tugmasini kutmaydi.
+      // Shunda foydalanuvchi oxirgi ekranni ko'rmasdan ilovani yopsa ham
+      // (yoki oqim boshqa sababdan uzilsa ham) tanlangan fan aynan o'zi
+      // bo'lib qoladi va fan tanlash oynasida "Faol" bo'lib turadi.
+      onSubjectChosen={(subject) => {
+        if (subject && subject !== 'multi') {
+          appContext.updateState({ activeCategory: subject, topicId: -1 });
+        }
+      }}
+      onComplete={(subject) => {
+        localStorage.setItem(`iqro_onboarding_${user.uid}`, '1');
+        if (subject && subject !== 'multi') {
+          appContext.updateState({ activeCategory: subject });
+        }
+        setNeedsOnboarding(false);
+        // 'multi' ("Bir nechta fan") haqiqiy kategoriya emas — TOPICS/savollar yo'q,
+        // shuning uchun uni o'rnatmaymiz (default fan saqlanadi), aks holda barcha
+        // sahifa bo'm-bo'sh "Mavzu tayyorlanmoqda" holatiga tushib qolardi.
+        // "Boshlash" bosilgach foydalanuvchini TO'G'RIDAN-TO'G'RI testga olib o'tamiz —
+        // onboarding qizg'inligi profil formasida so'nmasligi uchun. Jins kabi ixtiyoriy
+        // ma'lumotlar keyin Profilda to'ldiriladi (testga/avatarga ta'sir qilmaydi).
+        navigate('/test');
+      }}
+    />;
   }
 
   // Asosiy ilova
