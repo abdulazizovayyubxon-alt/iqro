@@ -9,7 +9,7 @@ import PullToRefresh, { RefreshRing } from './components/shared/PullToRefresh';
 import ScrollDebugOverlay from './components/shared/ScrollDebugOverlay';
 import PerfOverlay from './components/shared/PerfOverlay';
 import { trackPageView, startPageTimer } from './services/analytics';
-import { setUser, clearUser } from './services/sentry';
+import { setUser, clearUser, captureError } from './services/sentry';
 import { enablePush, listenForegroundPush } from './services/push';
 import { applyThemeColor, enterSplash, exitSplash, SPLASH_BG } from './utils/statusBar';
 import { doc, getDoc } from 'firebase/firestore';
@@ -150,6 +150,14 @@ const PageSkeleton = () => {
   );
 };
 
+// ── ErrorBoundary ────────────────────────────────────────────────────────
+// AUDIT 2026-08-05, 22-BAND: avval `hasError` HECH QACHON tozalanmasdi va
+// boundary `location`ga bog'lanmagan edi. Natijada bitta sahifadagi xatodan
+// keyin BUTUN navigatsiya o'lik qolardi: foydalanuvchi boshqa bo'limga o'tsa
+// ham xato ekrani turaverardi, yagona chiqish yo'li — sahifani yangilash.
+//
+// Endi `resetKey` (route yo'li) o'zgarganda holat tozalanadi: xato bergan
+// sahifadan chiqish navigatsiya bilan ham ishlaydi.
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -160,19 +168,31 @@ class ErrorBoundary extends React.Component {
   }
   componentDidCatch(error, errorInfo) {
     console.error('ErrorBoundary caught an error', error, errorInfo);
+    // Xatoni kuzatuvga ham yuboramiz — admin panelida ko'rinadi
+    captureError(error, { componentStack: errorInfo?.componentStack?.slice(0, 1000) });
+  }
+  componentDidUpdate(prevProps) {
+    if (this.state.hasError && prevProps.resetKey !== this.props.resetKey) {
+      this.setState({ hasError: false, error: null });
+    }
   }
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)', padding: '20px', textAlign: 'center', color: 'var(--text)' }}>
+        <div style={{ minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)', padding: '20px', textAlign: 'center', color: 'var(--text)' }}>
           <div style={{ fontSize: 80, marginBottom: 16 }}>🌿</div>
           <h1 style={{ fontSize: 24, fontWeight: 800, marginBottom: 8 }}>Kechirasiz, kichik nosozlik yuz berdi</h1>
           <p style={{ fontSize: 14, color: 'var(--text3)', maxWidth: 400, marginBottom: 24, lineHeight: 1.5 }}>
-            Xavotir olmang, ma'lumotlaringiz xavfsiz. Tizimda kutilmagan xatolik chiqdi. Ilovani qayta yuklasangiz, hammasi joyiga tushadi.
+            Xavotir olmang, ma'lumotlaringiz xavfsiz. Boshqa bo'limga o'tsangiz ham davom etishingiz mumkin.
           </p>
-          <button onClick={() => window.location.reload()} style={{ padding: '14px 28px', background: 'var(--accent)', color: '#fff', border: 'none', borderRadius: 12, fontWeight: 700, fontSize: 15, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8 }}>
-            Ilovani yangilash
-          </button>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
+            <button onClick={() => this.setState({ hasError: false, error: null })} style={{ padding: '14px 28px', background: 'var(--accent)', color: '#fff', border: 'none', borderRadius: 12, fontWeight: 700, fontSize: 15, cursor: 'pointer' }}>
+              Qayta urinish
+            </button>
+            <button onClick={() => window.location.reload()} style={{ padding: '14px 28px', background: 'transparent', color: 'var(--text)', border: '1px solid var(--border)', borderRadius: 12, fontWeight: 700, fontSize: 15, cursor: 'pointer' }}>
+              Ilovani yangilash
+            </button>
+          </div>
         </div>
       );
     }
@@ -445,6 +465,10 @@ function App() {
   const ptrOff = ['/test', '/exam', '/review', '/admin', '/migration']
     .some((p) => location.pathname.startsWith(p));
   return (
+    // TASHQI boundary — Header/Sidebar/BottomNav ("chrome") uchun. Avval ular
+    // boundary'dan TASHQARIDA edi: shu komponentlardan birida xato bo'lsa
+    // foydalanuvchi OQ EKRAN ko'rardi, hech qanday tushuntirishsiz (22-band).
+    <ErrorBoundary resetKey={location.pathname}>
     <div className="layout-container">
       <Header theme={theme} toggleTheme={toggleTheme} />
       <OfflineIndicator />
@@ -456,7 +480,8 @@ function App() {
       <div className="layout-body">
         <Sidebar />
         <main className="main-content">
-          <ErrorBoundary>
+          {/* resetKey — route o'zgarganda xato holati tozalanadi (22-band) */}
+          <ErrorBoundary resetKey={location.pathname}>
             <Suspense fallback={<PageSkeleton />}>
               <AnimatePresence mode="wait">
                 <Routes location={location} key={location.pathname}>
@@ -485,6 +510,7 @@ function App() {
       </div>
       <BottomNav />
     </div>
+    </ErrorBoundary>
   );
 }
 

@@ -10,8 +10,23 @@
  * ╚══════════════════════════════════════════════════════════════╝
  */
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { createPortal } from 'react-dom';
+import DOMPurify from 'dompurify';
+
+// ── SVG tozalash (XSS himoyasi) ───────────────────────────────────────────
+// AUDIT 2026-08-05, 21-BAND: `svg` maydoni `dangerouslySetInnerHTML`ga
+// TOZALANMAGAN holda berilardi — SafeHtml.jsx dagi DOMPurify himoyasi bu yo'lni
+// qamramaydi. Firestore'ga yozuv faqat adminda (rules ✅), lekin savol kontenti
+// import quvurlari va LLM generatsiyasi orqali keladi (upload_*.js, pipeline/),
+// ya'ni manba to'liq ishonchli emas. Bitta zararli SVG barcha foydalanuvchida
+// saqlangan XSS berardi.
+const sanitizeSvg = (raw) => DOMPurify.sanitize(String(raw || ''), {
+  USE_PROFILES: { svg: true, svgFilters: true },
+  // <foreignObject> ichida HTML/skript ishga tushishi mumkin — kerak emas
+  FORBID_TAGS: ['script', 'foreignObject', 'iframe', 'a', 'use'],
+  FORBID_ATTR: ['onload', 'onerror', 'onclick', 'onmouseover', 'href', 'xlink:href'],
+});
 
 // ── OLDINDAN TAYYOR DIAGRAMMALAR ──────────────────────────────────────────────
 // "diagram" maydoniga shu kalitlardan birini yozing — SVG avtomatik chiziladi
@@ -340,6 +355,14 @@ export default function QuestionMedia({ question, style }) {
   const [imgError, setImgError] = useState(false);
   const [zoomed, setZoomed] = useState(false);
 
+  // SVG tozalash har renderda takrorlanmasin (DOMPurify sezilarli ish bajaradi,
+  // savol matni scroll paytida qayta render bo'ladi).
+  // DIQQAT: hooklar erta `return`dan OLDIN — shartli chaqiruv bo'lmasligi kerak.
+  const cleanSvg = useMemo(
+    () => (question?.svg ? sanitizeSvg(question.svg) : ''),
+    [question?.svg]
+  );
+
   if (!question) return null;
 
   const { image, svg, diagram, imageCols } = question;
@@ -362,12 +385,12 @@ export default function QuestionMedia({ question, style }) {
     );
   }
 
-  // 3. Inline SVG
+  // 3. Inline SVG — DOMPurify orqali tozalanadi (21-band)
   if (svg) {
     return (
       <div
         style={containerStyle}
-        dangerouslySetInnerHTML={{ __html: svg }}
+        dangerouslySetInnerHTML={{ __html: cleanSvg }}
       />
     );
   }
