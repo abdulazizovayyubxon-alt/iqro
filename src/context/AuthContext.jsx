@@ -21,6 +21,7 @@ import {
 } from '../services/referral';
 import { AnalyticsEvents } from '../services/analytics';
 import { getNextShortId } from '../utils/shortId';
+import { validatePassword, calculatePasswordStrength } from '../utils/passwordPolicy';
 
 // Synchronously capture and save the referral code on script load
 try {
@@ -110,99 +111,26 @@ const phoneToEmail = (phone) => {
 // Parol validatsiyasi — entropiya asosida
 // ────────────────────────────────────────────────────────
 
-// Taqiqlangan oddiy parollar ro'yxati (blacklist)
-const BLACKLISTED_PASSWORDS = [
-  'parol123', 'password', 'admin', 'teacher', 'student',
-  'qwerty', 'abc123', '123456', '12345678', 'iloveyou',
-  'password1', 'letmein', 'welcome', 'monkey', 'dragon',
-  '111111', '000000', 'football', 'master', 'login',
-  'iqro123', 'iqro2024', 'iqro2025', 'iqro2026', 'test123',
-  'parol', 'maxfiy', 'salom123', 'uzbek123'
-];
-
-// Ketma-ket belgilarni aniqlash (12345, abcde, qwerty)
-const SEQUENTIAL_PATTERNS = [
-  '0123456789', '9876543210',
-  'abcdefghijklmnopqrstuvwxyz', 'zyxwvutsrqponmlkjihgfedcba',
-  'qwertyuiop', 'asdfghjkl', 'zxcvbnm',
-  'poiuytrewq', 'lkjhgfdsa', 'mnbvcxz'
-];
-
-const hasSequentialChars = (password, minLen = 4) => {
-  const lower = password.toLowerCase();
-  for (const seq of SEQUENTIAL_PATTERNS) {
-    for (let i = 0; i <= seq.length - minLen; i++) {
-      if (lower.includes(seq.substring(i, i + minLen))) return true;
-    }
-  }
-  return false;
-};
-
-// Takrorlanuvchi belgilarni aniqlash (aaaa, 1111)
-const hasRepeatedChars = (password, minRepeat = 4) => {
-  for (let i = 0; i <= password.length - minRepeat; i++) {
-    const char = password[i];
-    let count = 1;
-    for (let j = i + 1; j < password.length && password[j] === char; j++) {
-      count++;
-    }
-    if (count >= minRepeat) return true;
-  }
-  return false;
-};
-
-// Parol kuchi ballini hisoblash — haqiqiy tekshiruvlar asosida
-const calculatePasswordStrength = (password, _username = '') => {
-  if (!password) return { score: 0, level: 'none', label: '', checks: {} };
-
-  const checks = {
-    length: password.length >= 6,
-    longer: password.length >= 8,
-    letter: /[a-zA-Z]/.test(password),
-    digit: /\d/.test(password),
-  };
-
-  let score = 0;
-  if (checks.length) score += 35;
-  if (checks.longer) score += 20;
-  if (checks.letter) score += 20;
-  if (checks.digit) score += 25;
-
-  // Zaif/oson topiladigan parollar ballini pasaytiramiz
-  const lower = password.toLowerCase();
-  const isBlacklisted = BLACKLISTED_PASSWORDS.includes(lower);
-  if (isBlacklisted || hasSequentialChars(password) || hasRepeatedChars(password)) {
-    score = Math.min(score, 25);
-  }
-
-  let level = 'weak';
-  let label = 'Zaif parol';
-  if (score >= 80) { level = 'strong'; label = 'Kuchli parol'; }
-  else if (score >= 50) { level = 'medium'; label = "O'rtacha parol"; }
-  else if (password.length < 6) { label = 'Kamida 6 belgi'; }
-
-  return { score: Math.min(100, score), level, label, checks };
-};
-
-// Ro'yxatdan o'tishda parolni tekshirish — oson topiladigan parollarni rad etadi
-const validatePassword = (password) => {
-  if (!password) return "Parolni kiritish shart.";
-  if (password.length < 6) return "Parol kamida 6 ta belgidan iborat bo'lishi kerak.";
-  if (BLACKLISTED_PASSWORDS.includes(password.toLowerCase())) {
-    return "Bu parol juda oddiy va xavfsiz emas. Boshqa parol tanlang.";
-  }
-  if (hasRepeatedChars(password)) {
-    return "Parolda bir xil belgilar ketma-ket takrorlanmasin (masalan: 1111).";
-  }
-  if (hasSequentialChars(password)) {
-    return "Parol oddiy ketma-ketlikdan iborat bo'lmasin (masalan: 12345, qwerty).";
-  }
-  return null;
-};
+// Parol siyosati src/utils/passwordPolicy.js ga AJRATILDI — bu fayl
+// `../firebase`ni import qilgani uchun sof mantiqni unit test bilan qoplash
+// imkonsiz edi (audit 2026-08-05, 23-band). Mantiq o'zgarmadi, faqat ko'chdi.
 
 // ────────────────────────────────────────────────────────
-// Brute-force himoyasi — Rate Limiting
-// 5 marta noto'g'ri urinishdan so'ng 15 daqiqaga bloklash
+// Brute-force himoyasi — MIJOZ TOMONIDAGI to'sib turish
+//
+// ⚠️ AUDIT 2026-08-05, 12-BAND — bu himoyaning HAQIQIY kuchi:
+// Hisoblagich localStorage'da turadi, ya'ni uni tozalash, incognito oynasi yoki
+// to'g'ridan-to'g'ri Firebase Auth REST API bilan CHETLAB O'TISH mumkin.
+// Bu — foydalanuvchini tasodifiy takror urinishdan qaytaruvchi UX to'sig'i,
+// xavfsizlik chegarasi EMAS.
+//
+// HAQIQIY himoya — Firebase Auth'ning o'z tomonidagi cheklovi
+// (`auth/too-many-requests`, IP va hisob bo'yicha). Shu sababli xabar matni ham
+// halol: "akkaunt bloklandi" deb aytmaymiz (aytilsa, bu yolg'on bo'lardi va
+// foydalanuvchini ham chalg'itardi).
+//
+// Server tomonida qattiq chegara kerak bo'lsa: Firebase App Check + Identity
+// Platform'ning parol siyosati/bloklash funksiyalarini yoqish kerak.
 // ────────────────────────────────────────────────────────
 const LOGIN_ATTEMPTS_KEY = 'iqro_login_attempts';
 const MAX_ATTEMPTS = 5;
@@ -238,7 +166,9 @@ const checkLockout = () => {
     const minutes = Math.ceil(remainingMs / 60000);
     return {
       locked: true,
-      message: `Xavfsizlik sababli akkaunt ${minutes} daqiqaga bloklangan. Iltimos, biroz kuting.`,
+      // "Akkaunt bloklangan" DEB AYTILMAYDI — hisob aslida bloklanmagan
+      // (yuqoridagi izoh, 12-band). Foydalanuvchini chalg'itmaydigan matn.
+      message: `Ketma-ket noto'g'ri urinishlar. ${minutes} daqiqadan so'ng qayta urinib ko'ring yoki parolni tiklang.`,
       remainingMs
     };
   }
@@ -327,11 +257,15 @@ export const AuthProvider = ({ children }) => {
                 isPremium = true;
               }
 
-              // Muddat to'liq tugagach referral chegirmasini Firestore'da ham bekor
-              // qilamiz (avval useTrialExpiry hooki qilardi — endi yagona joyda).
+              // Muddat tugagach referral chegirmasi bekor qilinadi — LEKIN buni
+              // mijoz YOZMAYDI. `referralDiscount` to'lov summasini belgilaydi,
+              // shuning uchun u firestore.rules'da mijoz uchun bloklangan
+              // (audit 2026-08-05, 1-band). Server tomonida api/cron-daily.js:186
+              // har kuni muddati o'tgan chegirmalarni tozalaydi.
+              // Bu yerda faqat MAHALLIY ko'rinishni to'g'rilaymiz.
               if (trialInfo.status === 'expired' && data.referralDiscount > 0) {
-                updateDoc(userRef, { referralDiscount: 0, discountExpired: true })
-                  .catch(e => console.warn('Discount expire update xatosi:', e));
+                trialInfo.hasReferralDiscount = false;
+                trialInfo.discountPercent = 0;
               }
             } else {
               shortId = await getNextShortId(db).catch(e => { console.warn('ShortId generatsiya xatosi:', e); return null; });
@@ -573,15 +507,20 @@ export const AuthProvider = ({ children }) => {
           localStorage.setItem('iqro_referral_welcome', 'true');
         }
 
-        // Adminga bildirishnoma yuborish
-        fetch('/api/notify-admin', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            type: 'register',
-            message: `Yangi foydalanuvchi ro'yxatdan o'tdi!\nIsm: ${name}\nTelefon: ${cleanPhone}\nID: ${userCred.user.uid}`
-          })
-        }).catch(e => console.warn('Admin notify xatosi:', e));
+        // Adminga bildirishnoma. Xabar MATNI serverda Firestore ma'lumotidan
+        // yig'iladi — mijoz matn yubormaydi (audit 2026-08-05, 20-band: avval bu
+        // endpoint auth'siz edi va istalgan odam adminga ixtiyoriy matn
+        // jo'natishi mumkin edi).
+        userCred.user.getIdToken()
+          .then(token => fetch('/api/notify-admin?action=register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({}),
+          }))
+          .catch(e => console.warn('Admin notify xatosi:', e));
 
         setUser({
           uid: userCred.user.uid,
@@ -641,7 +580,7 @@ export const AuthProvider = ({ children }) => {
           if (remaining > 0) {
             setAuthError(`Telefon raqam yoki parol noto'g'ri kiritildi. Yana ${remaining} ta urinish qoldi.`);
           } else {
-            setAuthError(`Xavfsizlik sababli akkaunt 15 daqiqaga bloklandi. Iltimos, biroz kuting.`);
+            setAuthError(`Ketma-ket noto'g'ri urinishlar. 15 daqiqadan so'ng qayta urinib ko'ring yoki parolni tiklang.`);
           }
           return { success: false, wrongPassword: true };
         } else {

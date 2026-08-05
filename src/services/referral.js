@@ -35,11 +35,10 @@
  */
 
 import {
-  doc, getDoc, setDoc, updateDoc,
-  collection, query, where, getDocs,
-  addDoc
+  doc, getDoc,
+  collection, query, where, getDocs
 } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db, auth } from '../firebase';
 
 // ── Konstantalar (50/50 MODEL + FREE TRIAL) ──
 export const MAX_REFERRALS       = 5;           // A maksimal 5 kishi taklif qilishi mumkin
@@ -64,29 +63,51 @@ export function generateReferralCode(displayName = '') {
   return prefix + suffix;
 }
 
+// ── Serverga autentifikatsiyalangan so'rov (ID token bilan) ──
+// Barcha referral yozuvlari SERVERDA bajariladi — sabab: `referralDiscount`
+// mijozdan yozilsa, uni 99 ga qo'yib to'lov summasini chetlab o'tish mumkin edi
+// (audit 2026-08-05, 1-band). Endi bu maydonlar firestore.rules'da bloklangan.
+async function callReferralApi(action, payload = {}) {
+  const current = auth.currentUser;
+  if (!current) return { ok: false, error: 'not_signed_in' };
+  try {
+    const token = await current.getIdToken();
+    const res = await fetch('/api/find-referral', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ action, ...payload }),
+    });
+    if (!res.ok) return { ok: false, error: `http_${res.status}` };
+    // Dev muhitida /api/* serverless funksiyalari ishlamaydi va HTML qaytaradi
+    const ct = res.headers.get('content-type') || '';
+    if (!ct.includes('application/json')) return { ok: false, error: 'api_unavailable' };
+    return await res.json();
+  } catch (err) {
+    console.error(`Referral API (${action}) xatosi:`, err);
+    return { ok: false, error: 'network' };
+  }
+}
+
 // ── Foydalanuvchi referral kodini olish/yaratish ──
+// Kod SERVERDA yasaladi va yoziladi: avval mijoz o'zi yasab `referralCode`
+// maydoniga yozardi — ya'ni boshqa odamning kodini o'ziga yozib, uning
+// taklif oqimini o'zlashtirib olish mumkin edi.
 export async function getUserReferralCode(uid, displayName) {
-  const userRef = doc(db, 'users', uid);
-  const snap = await getDoc(userRef);
+  // Avval mahalliy o'qish — kod allaqachon bo'lsa serverga chiqmaymiz
+  try {
+    const snap = await getDoc(doc(db, 'users', uid));
+    if (snap.exists() && snap.data().referralCode) return snap.data().referralCode;
+  } catch { /* o'qib bo'lmadi — server javob beradi */ }
 
-  if (snap.exists() && snap.data().referralCode) {
-    return snap.data().referralCode;
-  }
+  const res = await callReferralApi('my-code');
+  if (res.ok && res.code) return res.code;
 
-  // Yangi kod yaratamiz — uniqligini tekshiramiz
-  let code = generateReferralCode(displayName);
-  let attempts = 0;
-  while (attempts < 5) {
-    const existing = await findUserByReferralCode(code);
-    if (!existing) break; // unikal
-    code = generateReferralCode(displayName);
-    attempts++;
-  }
-
-  await updateDoc(userRef, { referralCode: code }).catch(async () => {
-    await setDoc(userRef, { referralCode: code }, { merge: true });
-  });
-  return code;
+  // Server yetib bo'lmasa (dev muhiti / oflayn) — ko'rsatish uchun vaqtinchalik
+  // kod. Firestore'ga YOZILMAYDI, faqat UI bo'sh qolmasligi uchun.
+  return generateReferralCode(displayName);
 }
 
 import { APP_URL } from '../config';
@@ -119,85 +140,34 @@ export function clearPendingReferralCode() {
   localStorage.removeItem(REF_KEY);
 }
 
-// ── Kod orqali foydalanuvchini topish (XAVFSIZ API ORQALI) ──
-export async function findUserByReferralCode(code) {
-  if (!code) return null;
-  try {
-    const res = await fetch('/api/find-referral', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ code: code.toUpperCase() })
-    });
-    if (!res.ok) return null;
-    const data = await res.json();
-    return data.user || null;
-  } catch (err) {
-    console.error('findUserByReferralCode API xatosi:', err);
-    return null;
-  }
-}
-
 // ── Yangi foydalanuvchi ro'yxatdan o'tganda referral ulash ──
-// AuthContext orqali ro'yxatdan o'tgandan SO'NG chaqiriladi
-export async function applyReferralAfterRegister(newUserId, newUserName) {
+// AuthContext orqali ro'yxatdan o'tgandan SO'NG chaqiriladi.
+//
+// BUTUN MANTIQ SERVERDA (api/find-referral.js → action:'link'):
+// taklif qiluvchini topish, o'z-o'ziga taklifni to'sish, hisob yoshini va
+// oldingi to'lovni tekshirish, taklif chegarasini hisoblash va ikkala
+// yozuvni bitta TRANSACTION'da bajarish. Mijozda qolgani — kodni yuborish.
+// Parametrlar (_newUserId, _newUserName) endi ISHLATILMAYDI: server uid'ni
+// tokendan, ismni Firestore hujjatidan o'zi oladi. Chaqiruv joylari (AuthContext)
+// o'zgarmasligi uchun imzo saqlanadi.
+export async function applyReferralAfterRegister(_newUserId, _newUserName) {
   const code = getPendingReferralCode();
   if (!code) return false;
-  
-  // Dastlabki qadamda kodni o'chirib tashlaymiz (race condition oldini olish uchun)
+
+  // Kodni darhol o'chiramiz (qayta urinish tsiklini oldini olish uchun)
   clearPendingReferralCode();
 
-  try {
-    const referrer = await findUserByReferralCode(code);
-    if (!referrer || referrer.uid === newUserId) {
-      return false;
-    }
+  const res = await callReferralApi('link', { code: code.toUpperCase() });
 
-    // Referrer ning joriy taklif qilganlar sonini tekshiramiz
-    const q = query(collection(db, 'referrals'), where('referrerId', '==', referrer.uid));
-    const snap = await getDocs(q);
-    const currentTotalInvites = snap.size;
-    
-    const paidInvites = snap.docs.filter(d => d.data().status === 'paid').length;
-    const dynamicMax = paidInvites >= 5 ? 7 : 5;
-
-    // ═══ LIMIT TEKSHIRUVI ═══
-    if (currentTotalInvites >= dynamicMax) {
-      console.log('Referrer taklif limitiga yetdi — yangi referral qabul qilinmaydi');
-      return false; // Limitga yetgan
-    }
-
-    // ═══ 50/50 MODEL — Faqat chegirma belgilanadi ═══
-    // B (yangi foydalanuvchi) ga 50% chegirma beramiz, bepul premium YO'Q
-    const newUserRef = doc(db, 'users', newUserId);
-    await setDoc(newUserRef, {
-      referredBy: referrer.uid,
-      referralDiscount: REFERRAL_DISCOUNT, // Keyingi to'lovda 50% chegirma
-      isPremium: false, // Bepul oylik bekor qilingan
-    }, { merge: true });
-
-    // A (taklif qiluvchi) ga ham hozircha bonus berilmaydi. 
-    // Bonus qachonki B to'lov qilsa, webhook orqali beriladi.
-
-    // Referrals kolleksiyasiga yozamiz
-    await addDoc(collection(db, 'referrals'), {
-      referrerId: referrer.uid,
-      referredId: newUserId,
-      referredName: newUserName,
-      referrerName: referrer.displayName || '',
-      status: 'pending',  // B to'lov qilgunicha kutish holatida
-      bonusPaid: false,
-      bonusAmount: 0,
-      discountPercent: REFERRAL_DISCOUNT,
-      createdAt: new Date().toISOString(),
-      paidAt: null,
-    });
-
-    console.log(`✅ Referral muvaffaqiyatli ulandi: referrer=${referrer.uid}, referred=${newUserId}, discount=${REFERRAL_DISCOUNT}%`);
+  if (res.ok) {
+    console.log(`✅ Referral ulandi: referrer=${res.referrerName}, chegirma=${res.discount}%`);
     return true;
-  } catch (err) {
-    console.error('❌ Referral ulashda xato yuz berdi:', err);
-    return false;
   }
+
+  // Biznes-xatolar kutilgan holat — foydalanuvchiga xato ko'rsatilmaydi,
+  // ro'yxatdan o'tish jarayoni to'xtamaydi.
+  console.log('Referral ulanmadi:', res.error);
+  return false;
 }
 
 // ── A ning referral statistikasini olish ──
