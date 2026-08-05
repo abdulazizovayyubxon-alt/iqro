@@ -63,9 +63,18 @@ export default async function handler(req, res) {
 
     const promoRef = db.collection('promoCodes').doc(rawCode);
     const userRef = db.collection('users').doc(uid);
+    // ── AUDIT 2026-08-05, 15-BAND ──
+    // Avval kim ishlatgani `usedBy` MASSIVIGA arrayUnion bilan qo'shilardi.
+    // Ommaviy kampaniya kodida (maxUses katta) massiv Firestore'ning 1MB hujjat
+    // chegarasiga urilib, kod QAYTARILMAS holda ishdan chiqardi (~25-30k uid).
+    // Endi har foydalanuvchi alohida hujjat: hajm cheklovi yo'q, tekshiruv esa
+    // massiv bo'ylab qidirish emas, bitta hujjat o'qishga aylandi (tezroq ham).
+    const redemptionRef = promoRef.collection('redemptions').doc(uid);
 
     const result = await db.runTransaction(async (tx) => {
-      const [promoSnap, userSnap] = await Promise.all([tx.get(promoRef), tx.get(userRef)]);
+      const [promoSnap, userSnap, redemptionSnap] = await Promise.all([
+        tx.get(promoRef), tx.get(userRef), tx.get(redemptionRef),
+      ]);
 
       if (!promoSnap.exists) return { ok: false, error: 'not_found' };
       const promo = promoSnap.data();
@@ -73,6 +82,9 @@ export default async function handler(req, res) {
       if (promo.active === false) return { ok: false, error: 'inactive' };
       if (promo.expiresAt && new Date(promo.expiresAt) < new Date()) return { ok: false, error: 'expired' };
       if ((promo.usedCount || 0) >= (promo.maxUses || 1)) return { ok: false, error: 'limit_reached' };
+      // Yangi subkolleksiya VA eski `usedBy` massivi — ikkalasi ham tekshiriladi
+      // (migratsiyagacha yozilgan kodlar ishlashda davom etsin).
+      if (redemptionSnap.exists) return { ok: false, error: 'already_used' };
       if ((promo.usedBy || []).includes(uid)) return { ok: false, error: 'already_used' };
 
       const userData = userSnap.exists ? userSnap.data() : {};
@@ -109,8 +121,15 @@ export default async function handler(req, res) {
 
       tx.update(promoRef, {
         usedCount: FieldValue.increment(1),
-        usedBy: FieldValue.arrayUnion(uid),
         lastUsedAt: new Date().toISOString(),
+      });
+
+      // Kim ishlatgani — alohida hujjat (massiv o'rniga, 15-band)
+      tx.set(redemptionRef, {
+        uid,
+        type,
+        value,
+        redeemedAt: new Date().toISOString(),
       });
 
       return { ok: true, type, value, campaign: promo.campaign || null };
