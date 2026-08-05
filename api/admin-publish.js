@@ -1,6 +1,7 @@
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { getStorage } from 'firebase-admin/storage';
+import { verifySecret, extractBearer } from './_shared.js';
 
 function getDbAndStorage() {
   if (getApps().length === 0) {
@@ -20,12 +21,19 @@ function getDbAndStorage() {
 }
 
 export default async function handler(req, res) {
-  const { secret } = req.query;
-  // Maxfiy kalit FAQAT env'dan olinadi — kodga qattiq yozilmaydi.
-  // PUBLISH_SECRET Vercel env'da sozlanmagan bo'lsa, endpoint umuman ishlamaydi (deny-by-default).
-  const expectedSecret = process.env.PUBLISH_SECRET;
-  if (!expectedSecret || secret !== expectedSecret) {
-    return res.status(403).json({ error: 'Unauthorized: Invalid secret' });
+  // POST majburiy: avval GET ham ishlardi, ya'ni og'ir (butun `questions`
+  // kolleksiyasini o'qiydigan) amal oddiy havola bilan ishga tushardi.
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  // Maxfiy kalit FAQAT env'dan olinadi va FAQAT header/body orqali qabul
+  // qilinadi. Avval `?secret=` query parametrida edi — u Vercel kirish
+  // jurnaliga, brauzer tarixiga va Referer sarlavhasiga tushardi.
+  // verifySecret() deny-by-default + doimiy vaqtli taqqoslash.
+  const provided = extractBearer(req) || req.body?.secret || null;
+  if (!verifySecret(provided, process.env.PUBLISH_SECRET)) {
+    return res.status(403).json({ error: 'Unauthorized' });
   }
 
   try {
@@ -52,29 +60,34 @@ export default async function handler(req, res) {
     for (const cat of categories) {
       const jsonStr = JSON.stringify(bundles[cat]);
       const file = bucket.file(`bundles/${cat}.json`);
-      
+
       await file.save(jsonStr, {
         contentType: 'application/json',
-        metadata: {
-          cacheControl: 'public, max-age=3600',
-        }
+        // `private` — bu pullik kontent, umumiy CDN/proksi keshlamasligi kerak
+        metadata: { cacheControl: 'private, max-age=0, no-store' },
       });
-      
-      try {
-        await file.makePublic();
-      } catch (e) {
-        console.warn(`Could not make public ${cat}:`, e.message);
-      }
-      
-      // Use Firebase Storage standard public URL format or GCS public URL format
-      const url = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/bundles%2F${cat}.json?alt=media`;
-      storageUrls[cat] = url;
+
+      // ⚠️ AUDIT 2026-08-05, 2-BAND — `makePublic()` OLIB TASHLANDI.
+      // U bundle'ni butun internetga ochardi, URL manzili esa to'liq taxmin
+      // qilinadi (`bundles/<fan>.json`) — ya'ni ~47k savollik PULLIK baza
+      // login'siz yuklab olinardi. `settings/version.urls` ham endi
+      // TO'LDIRILMAYDI: mijoz savollarni faqat /api/get-questions orqali
+      // (premium/trial tekshiruvi bilan) yoki Firestore'dan (rules bilan
+      // gated) oladi.
+      //
+      // Kelajakda to'g'ridan-to'g'ri yuklash kerak bo'lsa — file.getSignedUrl()
+      // bilan muddatli havola yasang, makePublic() BILAN EMAS.
+      storageUrls[cat] = null;
     }
-    
-    // Update version doc
+
+    // Update version doc.
+    // `urls` ATAYLAB bo'sh: scripts/bump-questions-version.mjs bilan bir xil
+    // qaror (o'sha faylning izohiga qarang). Mavjud eski qiymatlarni ham
+    // tozalaymiz — aks holda avvalgi publish qoldirgan ochiq URL'lar
+    // ishlashda davom etardi.
     await db.collection('settings').doc('version').set({
       dbVersion: dbVersion,
-      urls: storageUrls,
+      urls: {},
       updatedAt: new Date().toISOString()
     }, { merge: true });
 
@@ -92,9 +105,13 @@ export default async function handler(req, res) {
     res.status(200).json({
       success: true,
       dbVersion,
-      urls: storageUrls
+      categories: categories.length,
+      // `urls` qaytarilmaydi — ochiq havola endi yasalmaydi (2-band)
     });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    // Ichki xato matni mijozga CHIQARILMAYDI (avval error.message qaytarilardi:
+    // u Firestore/Storage ichki tuzilishi haqida ma'lumot oshkor qilardi).
+    console.error('admin-publish error:', error);
+    res.status(500).json({ error: 'server_error' });
   }
 }

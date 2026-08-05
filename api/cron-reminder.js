@@ -30,6 +30,7 @@
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { getMessaging } from 'firebase-admin/messaging';
+import { verifySecret, extractSecret } from './_shared.js';
 
 const TASHKENT_OFFSET_MS = 5 * 60 * 60 * 1000;  // UTC+5, yozgi vaqt yo'q
 const INACTIVE_DAYS = 30;                        // shundan uzoq jim turgan hisob
@@ -142,8 +143,10 @@ export function planStepName(todayPlan, today, lang) {
 }
 
 export default async function handler(req, res) {
-  const secret = req.headers['authorization']?.replace('Bearer ', '') || req.query?.secret;
-  if (secret !== process.env.CRON_SECRET) {
+  // DENY BY DEFAULT — CRON_SECRET sozlanmagan bo'lsa endpoint YOPIQ.
+  // (Avvalgi `secret !== process.env.CRON_SECRET` naqshi env bo'sh bo'lganda
+  // `undefined !== undefined` → false → hamma uchun ochiq qolardi.)
+  if (!verifySecret(extractSecret(req), process.env.CRON_SECRET)) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 

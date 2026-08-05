@@ -22,6 +22,7 @@
 
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
+import { verifySecret, extractSecret } from './_shared.js';
 
 const FREE_TRIAL_DAYS = 7;
 const URGENCY_DAYS = 3;
@@ -46,11 +47,12 @@ function getDb() {
 }
 
 export default async function handler(req, res) {
-  // Xavfsizlik tekshiruvi
-  const secret = req.headers['authorization']?.replace('Bearer ', '')
-    || req.query?.secret;
-
-  if (secret !== process.env.CRON_SECRET) {
+  // ── Xavfsizlik tekshiruvi — DENY BY DEFAULT ──
+  // AVVAL: `secret !== process.env.CRON_SECRET`. CRON_SECRET sozlanmagan bo'lsa
+  // ikkala tomon ham `undefined` bo'lib, shart FALSE qaytardi va endpoint BUTUNLAY
+  // OCHIQ qolardi — u esa hamma foydalanuvchining isPremium holatini o'zgartiradi.
+  // verifySecret() env bo'sh bo'lsa hech qachon ruxsat bermaydi + doimiy vaqtda taqqoslaydi.
+  if (!verifySecret(extractSecret(req), process.env.CRON_SECRET)) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
