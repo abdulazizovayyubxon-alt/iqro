@@ -207,9 +207,15 @@ const SmartReviewPage = () => {
       let raw = await localforage.getItem(`bundle_v2_${state.activeCategory}`);
       if (!raw || raw.length === 0) {
         const token = await auth.currentUser?.getIdToken();
-        const res = await fetch(`/api/get-questions?category=${state.activeCategory}`, {
+        const res = await fetch(`/api/get-questions?category=${encodeURIComponent(state.activeCategory)}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
+        // 403 = obuna/sinov tugagan. Jim bo'sh ro'yxat o'rniga sababni aytamiz.
+        if (res.status === 403) {
+          showToast(t('test.toastPremiumRequired'), 'error');
+          setSubjectFlashActive(false);
+          return;
+        }
         if (res.ok) raw = await res.json();
       }
       raw = Array.isArray(raw) ? raw : [];

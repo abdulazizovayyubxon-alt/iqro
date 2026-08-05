@@ -331,7 +331,6 @@ const TestPage = () => {
       } else {
         // 1. Firebase'dan faqat 1 dona qog'ozni o'qiymiz (Versiyani bilish uchun - sessiya davomida 1 marta)
         let remoteVersion = 0;
-        let storageUrls = {};
 
         if (!versionCacheRef.current) {
           try {
@@ -350,7 +349,8 @@ const TestPage = () => {
 
         const vData = versionCacheRef.current;
         remoteVersion = vData.dbVersion || 0;
-        storageUrls = vData.urls || {};
+        // `vData.urls` ATAYLAB ishlatilmaydi — ochiq Storage havolalari orqali
+        // yuklash yo'li olib tashlangan (audit 2026-08-05, 2-band).
 
         // v2: old Storage-bundle caches are invalidated; fresh Firestore data will be used
         const cacheKey = `bundle_v2_${state.activeCategory}`;
@@ -377,32 +377,28 @@ const TestPage = () => {
             throw new Error('Foydalanuvchi tizimga kirmagan');
           }
           const token = await currentUser.getIdToken();
-          try {
-            const directUrl = storageUrls[state.activeCategory];
-            if (directUrl) {
-              console.log(`Direct storage dan yuklanmoqda: ${state.activeCategory} -> ${directUrl}`);
-              const directRes = await fetch(directUrl);
-              if (directRes.ok) {
-                rawList = await directRes.json();
-                console.log(`✅ Direct storage dan ${rawList.length} ta savol yuklandi`);
-              } else {
-                console.warn(`Direct storage xatosi: ${directRes.status}`);
-              }
-            }
-          } catch (directErr) {
-            console.error("Direct storage yuklashda xatolik:", directErr);
-          }
 
-          // Agar direct yuklanmasa, API orqali sinab ko'ramiz
-          if (!rawList || rawList.length === 0) {
+          // ⚠️ AUDIT 2026-08-05, 2-BAND — "direct storage" yo'li OLIB TASHLANDI.
+          // Avval bu yerda `fetch(storageUrls[fan])` chaqirilardi va u
+          // Authorization sarlavhasi BILAN EMAS edi: ya'ni pullik savol bazasiga
+          // birinchi va asosiy yo'l umuman avtorizatsiyasiz ishlardi. URL esa
+          // ochiq (makePublic) va to'liq taxmin qilinadigan edi.
+          // Endi yagona tarmoq yo'li — /api/get-questions (premium/trial
+          // tekshiruvi bilan), zaxira esa Firestore (rules bilan gated).
+          // Obuna talab qilinishi ANIQLANGAN bo'lsa, Firestore zaxirasini ham
+          // sinamaymiz (u ham rules bilan yopilgan — foydasiz so'rov bo'lardi).
+          let paywalled = false;
+
+          {
             try {
-              const res = await fetch(`/api/get-questions?category=${state.activeCategory}`, {
+              const res = await fetch(`/api/get-questions?category=${encodeURIComponent(state.activeCategory)}`, {
                 headers: {
                   Authorization: `Bearer ${token}`
                 }
               });
               if (!res.ok) {
                 if (res.status === 403) {
+                  paywalled = true;
                   showToast(t('test.toastPremiumRequired'), 'error');
                   setShowPremiumModal(true);
                 }
@@ -428,7 +424,7 @@ const TestPage = () => {
           }
 
           // 🔄 FALLBACK: Agar bundle yuklanmasa, topicId bo'yicha parallel Firestore query
-          if (!rawList || rawList.length === 0) {
+          if ((!rawList || rawList.length === 0) && !paywalled) {
             console.warn("Bundle yuklanmadi — Firestore dan topicId bo'yicha o'qilmoqda...");
             try {
               const qRef = collection(db, 'questions');
@@ -454,7 +450,16 @@ const TestPage = () => {
                 await localforage.setItem(versionKey, remoteVersion);
               }
             } catch (fsErr) {
-              console.error("Firestore fallback xatosi:", fsErr);
+              // `permission-denied` = obuna/sinov muddati tugagan (firestore.rules
+              // → hasContentAccess). Bu NOSOZLIK EMAS, kutilgan paywall holati:
+              // foydalanuvchiga bo'sh ekran emas, obuna oynasi ko'rsatiladi.
+              if (fsErr?.code === 'permission-denied') {
+                paywalled = true;
+                showToast(t('test.toastPremiumRequired'), 'error');
+                setShowPremiumModal(true);
+              } else {
+                console.error("Firestore fallback xatosi:", fsErr);
+              }
               rawList = [];
             }
           }

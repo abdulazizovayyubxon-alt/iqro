@@ -2,6 +2,11 @@ import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
 
+// Bepul sinov muddati — src/config.js dagi FREE_TRIAL_DAYS bilan bir xil
+// bo'lishi SHART (config.js import.meta.env ishlatgani uchun bu yerga
+// import qilinmaydi).
+const TRIAL_DAYS = 7;
+
 let dbInstance = null;
 
 function getDb() {
@@ -26,13 +31,20 @@ export default async function handler(req, res) {
     return res.status(405).send('Method Not Allowed');
   }
   
-  const { category } = req.query;
+  // `category` — Firestore'dagi obyektga kalit sifatida ishlatiladi, shuning
+  // uchun formatni qat'iy cheklaymiz. Aks holda `?category=__proto__` kabi
+  // qiymat Object.prototype'ni qaytarib fetch()ni yiqitardi (500 shovqini).
+  const category = String(req.query?.category || '');
+  if (!/^[a-z0-9_]{2,32}$/.test(category)) {
+    return res.status(400).json({ error: 'Bad Request: invalid category' });
+  }
+
   const authHeader = req.headers.authorization;
-  
+
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return res.status(401).json({ error: 'Unauthorized: Missing or invalid token' });
   }
-  
+
   const idToken = authHeader.split('Bearer ')[1];
   
   try {
@@ -47,19 +59,23 @@ export default async function handler(req, res) {
     }
     
     const isPremium = userData.isPremium === true;
-    
-    // Calculate trial expiration (7 days)
+
+    // ── Trial hisobi (7 kun) ──
+    // AUDIT 2026-08-05, 14-BAND: avval `createdAt` yo'q bo'lsa `isTrial = true`
+    // berilardi ("baribir autentifikatsiyadan o'tdi" mulohazasi bilan). Natijada
+    // hujjati yaratilmagan yoki `createdAt`i yo'qolgan hisob CHEKSIZ trial olardi
+    // — ya'ni pullik kontentga muddatsiz kirish. Endi noaniq holat = RUXSAT YO'Q.
     let isTrial = false;
     if (userData.createdAt) {
-      const createdDate = userData.createdAt.toDate ? userData.createdAt.toDate() : new Date(userData.createdAt);
-      const diffDays = (Date.now() - createdDate.getTime()) / (1000 * 60 * 60 * 24);
-      isTrial = diffDays <= 7;
-    } else {
-      // If no creation date or missing user doc, we can assume trial is valid from today 
-      // OR we can just grant them trial. Let's just grant them trial since they just authenticated.
-      isTrial = true;
+      const createdDate = userData.createdAt.toDate
+        ? userData.createdAt.toDate()
+        : new Date(userData.createdAt);
+      if (!Number.isNaN(createdDate.getTime())) {
+        const diffDays = (Date.now() - createdDate.getTime()) / (1000 * 60 * 60 * 24);
+        isTrial = diffDays <= TRIAL_DAYS;
+      }
     }
-    
+
     if (!isPremium && !isTrial) {
       return res.status(403).json({ error: 'Forbidden: Premium required or Trial expired' });
     }
@@ -84,9 +100,14 @@ export default async function handler(req, res) {
     }
     
     const data = await response.json();
-    
-    // Return the actual JSON payload with Edge CDN caching
-    res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400');
+
+    // ── Kesh: `private`, umumiy CDN'ga TUSHMAYDI ──
+    // AUDIT 2026-08-05, 14-BAND: avval `public, s-maxage=86400` edi. Bu
+    // avtorizatsiyaga bog'liq (premium/trial tekshiruvidan o'tgan) javob uchun
+    // xato signal: umumiy proksi yoki CDN uni keshlab, tekshiruvdan o'tmagan
+    // so'rovga ham berishi mumkin. Mijoz o'zi localforage'da keshlaydi, shuning
+    // uchun CDN keshining foydasi ham yo'q.
+    res.setHeader('Cache-Control', 'private, no-store');
     res.status(200).json(data);
     
   } catch (error) {

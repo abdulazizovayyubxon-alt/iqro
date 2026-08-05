@@ -316,34 +316,48 @@ const ExamPage = () => {
         const versionSnap = await getDoc(versionDocRef);
         
         let remoteVersion = 0;
-        let storageUrls = {};
         if (versionSnap.exists()) {
-          const vData = versionSnap.data();
-          remoteVersion = vData.dbVersion || 0;
-          storageUrls = vData.urls || {};
+          remoteVersion = versionSnap.data().dbVersion || 0;
         }
 
         // v2: old Storage-bundle caches are invalidated; fresh Firestore data will be used
         const cacheKey = `bundle_v2_${cat}`;
         const versionKey = `version_v2_${cat}`;
-        
+
         const localCategoryVersion = await localforage.getItem(versionKey);
         let allQ = await localforage.getItem(cacheKey);
+        let paywalled = false;
 
         if (!allQ || localCategoryVersion !== remoteVersion) {
-          const downloadUrl = storageUrls[cat];
-          if (downloadUrl) {
-            try {
-              const res = await fetch(downloadUrl);
-              allQ = await res.json();
-              await localforage.setItem(cacheKey, allQ);
-              await localforage.setItem(versionKey, remoteVersion);
-            } catch (err) {
-              console.error("Bundle yuklashda xatolik:", err);
-              allQ = [];
+          // ⚠️ AUDIT 2026-08-05, 2-BAND — `settings/version.urls` dan
+          // auth'SIZ `fetch(downloadUrl)` yo'li OLIB TASHLANDI: u pullik savol
+          // bazasini avtorizatsiyasiz beradigan asosiy yo'l edi. Endi TestPage
+          // bilan bir xil zanjir: /api/get-questions (premium tekshiruvi) →
+          // Firestore zaxirasi (rules bilan gated).
+          try {
+            const token = await auth.currentUser?.getIdToken();
+            if (!token) throw new Error('no_token');
+
+            const res = await fetch(`/api/get-questions?category=${encodeURIComponent(cat)}`, {
+              headers: { Authorization: `Bearer ${token}` },
+            });
+            if (!res.ok) {
+              if (res.status === 403) paywalled = true;
+              throw new Error(`api_${res.status}`);
             }
-          } else {
-            // Fallback to getDocs
+            // Dev muhitida /api/* ishlamaydi va HTML qaytaradi — Firestore zaxirasi bor
+            const ct = res.headers.get('content-type') || '';
+            if (!ct.includes('application/json')) throw new Error('api_not_json');
+
+            allQ = await res.json();
+            await localforage.setItem(cacheKey, allQ);
+            await localforage.setItem(versionKey, remoteVersion);
+          } catch (apiErr) {
+            console.warn('API bundle mavjud emas:', apiErr.message);
+            allQ = [];
+          }
+
+          if ((!allQ || allQ.length === 0) && !paywalled) {
             try {
               const { query, where, getDocs, collection } = await import('firebase/firestore');
               const qRef = collection(db, 'questions');
@@ -353,11 +367,24 @@ const ExamPage = () => {
               await localforage.setItem(cacheKey, allQ);
               await localforage.setItem(versionKey, remoteVersion);
             } catch (fallbackErr) {
-              console.error("Fallback yuklashda xatolik:", fallbackErr);
+              if (fallbackErr?.code === 'permission-denied') paywalled = true;
+              else console.error('Fallback yuklashda xatolik:', fallbackErr);
               allQ = [];
             }
           }
         }
+
+        // Obuna muddati tugagan — jim `goBack()` o'rniga sababni ko'rsatamiz.
+        // Avval foydalanuvchi imtihonga bosib, hech qanday tushuntirishsiz
+        // orqaga qaytarilardi.
+        if (paywalled) {
+          setLoading(false);
+          showToast(t('test.toastPremiumRequired'), 'error');
+          setShowPremiumModal(true);
+          return;
+        }
+
+        allQ = allQ || [];
 
         allQ = allQ.filter(q => q.category === cat);
         allQ = processQuestionsOnTheFly(allQ);
