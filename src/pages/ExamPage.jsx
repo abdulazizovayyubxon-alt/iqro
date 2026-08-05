@@ -25,6 +25,7 @@ import { summarizeTestResults } from '../engine/SmartQuestionEngine';
 import { AnalyticsEvents } from '../services/analytics';
 import localforage from 'localforage';
 import { EXAM_SESSION_KEY } from '../config';
+import { PED_BLOCK_TOTAL, isPedBlockTopic } from '../data/examBlueprint';
 import { useExitGuard } from '../hooks/useExitGuard';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
 
@@ -49,14 +50,19 @@ function cleanForDedup(text) {
 }
 
 const EXAM_TOTAL = 50;
+/** Mutaxassislik bloki — imtihonning 1–35-savollari. */
+const CORE_BLOCK_TOTAL = EXAM_TOTAL - PED_BLOCK_TOTAL;
 
+// INVARIANT: har fanda mutaxassislik bo'limlari yig'indisi 35, oxirgi blok
+// (kasb standarti + pedagogik mahorat) esa 15 bo'lishi shart — rasmiy
+// spetsifikatsiya shunday (`data/examBlueprint.js`).
 const SUBJECT_BLUEPRINTS = {
   chqbt: { 0: 8, 1: 8, 2: 7, 3: 4, 4: 4, 5: 4, 6: 15 },
   art: { 7: 10, 8: 3, 9: 4, 10: 3, 11: 7, 12: 4, 13: 4, 14: 15 },
   tarix: { 15: 5, 16: 4, 17: 3, 18: 6, 19: 5, 20: 7, 21: 5, 22: 15 },
-  sport: { 23: 2, 24: 3, 25: 5, 26: 6, 27: 1, 28: 2, 29: 26, 30: 5 },
+  sport: { 23: 2, 24: 6, 25: 3, 26: 5, 27: 2, 28: 5, 29: 12, 30: 15 },
   boshlangich: { 31: 4, 32: 3, 33: 9, 34: 5, 35: 4, 36: 5, 37: 5, 38: 15 },
-  info: { 39: 3, 40: 7, 41: 5, 42: 3, 43: 3, 44: 5, 45: 4, 46: 20 },
+  info: { 39: 3, 40: 7, 41: 4, 42: 4, 43: 8, 44: 5, 45: 4, 46: 15 },
   mtt: { 47: 5, 48: 5, 49: 5, 50: 5, 51: 5, 52: 5, 53: 5, 54: 15 },
   til: { 55: 5, 56: 8, 57: 7, 58: 5, 59: 8, 60: 2, 61: 0, 62: 15 },
   mtt_rahbar: { 63: 5, 64: 5, 65: 5, 66: 5, 67: 5, 68: 5, 69: 5, 70: 15 },
@@ -473,30 +479,47 @@ const ExamPage = () => {
             }
           });
         } else {
-          // Fallback
-          const pedTopic = filteredTopics.find(t => t.name === "Pedagogik mahorat");
-          const pedTopicId = pedTopic ? pedTopic.id : (cat === 'art' ? 14 : 6);
-          const pedAll = allQ.filter(q => q.topicId === pedTopicId);
-          const otherAll = allQ.filter(q => q.topicId !== pedTopicId);
-          const pedCount = Math.min(pedAll.length, 10);
-          const pedSelected = shuffleArray(pedAll).slice(0, pedCount);
-          const otherCount = EXAM_TOTAL - pedSelected.length;
-          const otherSelected = shuffleArray(otherAll).slice(0, otherCount);
-          finalQuestions = [...pedSelected, ...otherSelected];
+          // Fallback — fan uchun blueprint yo'q: bloklarni bo'lim id'si bo'yicha ajratamiz
+          const pedAll = allQ.filter(q => isPedBlockTopic(q.topicId));
+          const otherAll = allQ.filter(q => !isPedBlockTopic(q.topicId));
+          finalQuestions = [
+            ...shuffleArray(otherAll).slice(0, CORE_BLOCK_TOTAL),
+            ...shuffleArray(pedAll).slice(0, PED_BLOCK_TOTAL)
+          ];
         }
 
-        // ── BACKFILL: blueprint ba'zi mavzulardan mavjuddan ko'proq savol so'rasa,
-        // jami EXAM_TOTAL (50) ga yetmay qolardi (masalan, 37 ta). Bazada savol yetarli
-        // bo'lsa, qolgan (ishlatilmagan) savollardan to'ldiramiz — imtihon har doim to'liq.
-        if (finalQuestions.length < EXAM_TOTAL) {
-          const usedKeys = new Set(finalQuestions.map(q => q.id || q.q));
-          const remaining = shuffleArray(allQ.filter(q => !usedKeys.has(q.id || q.q)));
-          finalQuestions = finalQuestions.concat(
-            remaining.slice(0, EXAM_TOTAL - finalQuestions.length)
-          );
+        // ── BLOK TARTIBI + BACKFILL ────────────────────────────────────────
+        // Rasmiy imtihonda avval 35 ta mutaxassislik savoli, so'ng 15 ta kasb
+        // standarti + pedagogik mahorat savoli keladi. Shuning uchun savollar
+        // BLOK ICHIDA aralashtiriladi, bloklar joyi esa hech qachon almashmaydi.
+        //
+        // Backfill ham blokka bog'liq: ilgari yetishmagan o'rinlar bazadagi
+        // istalgan savol bilan to'ldirilardi va pedagogik blok 15 tadan chiqib
+        // ketishi mumkin edi.
+        const usedKeys = new Set(finalQuestions.map(q => q.id || q.q));
+        const spare = shuffleArray(allQ.filter(q => !usedKeys.has(q.id || q.q)));
+        const sparePed = spare.filter(q => isPedBlockTopic(q.topicId));
+        const spareCore = spare.filter(q => !isPedBlockTopic(q.topicId));
+
+        let pedQs = shuffleArray(finalQuestions.filter(q => isPedBlockTopic(q.topicId)));
+        let coreQs = shuffleArray(finalQuestions.filter(q => !isPedBlockTopic(q.topicId)));
+
+        if (pedQs.length > PED_BLOCK_TOTAL) {
+          pedQs = pedQs.slice(0, PED_BLOCK_TOTAL);
+        } else if (pedQs.length < PED_BLOCK_TOTAL) {
+          pedQs = pedQs.concat(sparePed.slice(0, PED_BLOCK_TOTAL - pedQs.length));
         }
 
-        const final = shuffleArray(finalQuestions);
+        // Odatda 35; pedagogik blokda savol yetmasa, qolgan o'rinlar
+        // mutaxassislikka o'tadi — imtihon baribir 50 ta bo'lib qoladi
+        const coreTarget = EXAM_TOTAL - pedQs.length;
+        if (coreQs.length > coreTarget) {
+          coreQs = coreQs.slice(0, coreTarget);
+        } else if (coreQs.length < coreTarget) {
+          coreQs = coreQs.concat(spareCore.slice(0, coreTarget - coreQs.length));
+        }
+
+        const final = [...coreQs, ...pedQs];
         setQuestions(final);
 
         // Guruhlarni qayta hisoblash
@@ -664,6 +687,22 @@ const ExamPage = () => {
     setShowObjectionModal(false);
     showToast(t('exam.toastObjectionSent'), 'success');
   };
+
+  // Navigator bo'limlari: 1–35 mutaxassislik, oxirgi 15 — kasb standarti va
+  // pedagogik mahorat. Indekslar savol massividan skanerlab olinadi (tartibga
+  // ishonmaymiz), shuning uchun eski, aralash tartibli resume-sessiyalar ham
+  // to'g'ri guruhlanadi.
+  const navSections = useMemo(() => {
+    const core = [];
+    const ped = [];
+    questions.forEach((q, i) => {
+      (isPedBlockTopic(q.topicId) ? ped : core).push(i);
+    });
+    const sections = [];
+    if (core.length > 0) sections.push({ key: 'core', label: t('exam.sectionCore'), indices: core });
+    if (ped.length > 0) sections.push({ key: 'ped', label: t('exam.sectionPed'), indices: ped });
+    return sections;
+  }, [questions, t]);
 
   const answeredCount = Object.keys(answers).length;
   const correctCount = finished ? questions.filter((q, i) => answers[i] === q.correct).length : 0;
@@ -1314,61 +1353,71 @@ const ExamPage = () => {
               </div>
             </div>
 
-            <div className="exam-q-grid">
-              {questions.map((_, i) => {
-                const isCurrent = i === currentQ;
-                const isAns = answers[i] !== undefined;
-                const isFlagged = flagged[i];
+            {navSections.map((section) => (
+              <div key={section.key} className="exam-q-section">
+                <div className="exam-q-section-title">
+                  <span>{section.label}</span>
+                  <span className="exam-q-section-range">
+                    {section.indices[0] + 1}–{section.indices[section.indices.length - 1] + 1}
+                  </span>
+                </div>
+                <div className="exam-q-grid">
+                  {section.indices.map((i) => {
+                    const isCurrent = i === currentQ;
+                    const isAns = answers[i] !== undefined;
+                    const isFlagged = flagged[i];
 
-                let btnBg = 'var(--bg3)';
-                let btnColor = 'var(--text)';
-                let btnBorder = isCurrent ? '2px solid var(--text)' : '1px solid var(--border)';
+                    let btnBg = 'var(--bg3)';
+                    let btnColor = 'var(--text)';
+                    let btnBorder = isCurrent ? '2px solid var(--text)' : '1px solid var(--border)';
 
-                if (isAns) {
-                  btnBg = 'var(--blue)';
-                  btnColor = 'white';
-                  btnBorder = isCurrent ? '2px solid var(--text)' : 'none';
-                }
-                if (isFlagged) {
-                  btnBg = 'var(--amber)';
-                  btnColor = 'white';
-                  btnBorder = isCurrent ? '2px solid var(--text)' : 'none';
-                }
-                if (isCurrent && !isAns && !isFlagged) {
-                  btnBg = 'var(--bg2)';
-                }
+                    if (isAns) {
+                      btnBg = 'var(--blue)';
+                      btnColor = 'white';
+                      btnBorder = isCurrent ? '2px solid var(--text)' : 'none';
+                    }
+                    if (isFlagged) {
+                      btnBg = 'var(--amber)';
+                      btnColor = 'white';
+                      btnBorder = isCurrent ? '2px solid var(--text)' : 'none';
+                    }
+                    if (isCurrent && !isAns && !isFlagged) {
+                      btnBg = 'var(--bg2)';
+                    }
 
-                return (
-                  <button
-                    key={i}
-                    onClick={() => handleQuestionSwitch(i)}
-                    style={{
-                      width: '100%', aspectRatio: '1', borderRadius: 4,
-                      border: btnBorder,
-                      background: btnBg,
-                      color: btnColor,
-                      fontWeight: 700, fontSize: 'var(--fs-2xs)', cursor: 'pointer',
-                      transition: 'all 0.15s', padding: 0,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      position: 'relative'
-                    }}
-                  >
-                    {i + 1}
-                    {isFlagged && (
-                      <span style={{
-                        position: 'absolute',
-                        top: 2,
-                        right: 2,
-                        width: 4,
-                        height: 4,
-                        borderRadius: '50%',
-                        background: 'white'
-                      }} />
-                    )}
-                  </button>
-                );
-              })}
-            </div>
+                    return (
+                      <button
+                        key={i}
+                        onClick={() => handleQuestionSwitch(i)}
+                        style={{
+                          width: '100%', aspectRatio: '1', borderRadius: 4,
+                          border: btnBorder,
+                          background: btnBg,
+                          color: btnColor,
+                          fontWeight: 700, fontSize: 'var(--fs-2xs)', cursor: 'pointer',
+                          transition: 'all 0.15s', padding: 0,
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          position: 'relative'
+                        }}
+                      >
+                        {i + 1}
+                        {isFlagged && (
+                          <span style={{
+                            position: 'absolute',
+                            top: 2,
+                            right: 2,
+                            width: 4,
+                            height: 4,
+                            borderRadius: '50%',
+                            background: 'white'
+                          }} />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
 
           {reviewMode ? (

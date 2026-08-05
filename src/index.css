@@ -1345,6 +1345,32 @@ body.exam-fullscreen .exam-layout { height: 100vh; }
   gap: 8px;
 }
 
+/* Navigator bo'limlari: mutaxassislik (1–35) va kasb standarti + ped. mahorat (36–50) */
+.exam-q-section + .exam-q-section {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.exam-q-section-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--text2);
+  line-height: var(--lh-snug);
+}
+
+.exam-q-section-range {
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--text3);
+  font-variant-numeric: tabular-nums;
+}
+
 .exam-result-card {
   max-width: 700px;
   margin: 0 auto;

@@ -196,6 +196,41 @@ export const EXAM_BLUEPRINT = {
 };
 
 /**
+ * Rasmiy imtihonning OXIRGI BLOKI — kasb standarti (5) + pedagogik mahorat (10).
+ *
+ * Spetsifikatsiyada bu 15 savol har doim 36–50-o'rinlarda keladi, ya'ni avval
+ * 35 ta mutaxassislik savoli, keyin shu blok. Ba'zi fanlarda ikkala qism
+ * `mockData.js` da bitta bo'lim (masalan, «Pedagogik mahorat» — 15 savol),
+ * ba'zilarida alohida ikki bo'lim («Kasb standarti» 5 + «Pedagogik mahorat» 10).
+ *
+ * Bo'lim NOMIGA emas, ID'ga tayanamiz: nom tarjima qilinishi yoki
+ * o'zgartirilishi mumkin, id esa savol bazasiga bog'langan.
+ */
+export const PED_BLOCK_TOTAL = 15;
+
+export const PED_BLOCK_TOPIC_IDS = new Set([
+  6,          // CHQBT
+  14,         // Tasviriy san'at
+  22,         // Tarix
+  30,         // Jismoniy tarbiya
+  38,         // Boshlang'ich ta'lim
+  46,         // Informatika va AT
+  54,         // MTT tarbiyachi
+  62,         // Ona tili va adabiyot
+  70,         // MTT rahbar
+  85, 86,     // Biologiya
+  95, 96,     // Geografiya
+  105, 106,   // MTT logoped
+  112, 113,   // MTT psixolog
+  119, 120,   // Kimyo
+  127, 128,   // Rus tili
+  135, 136    // Ingliz tili
+]);
+
+/** Bo'lim imtihonning oxirgi 15 talik blokiga kiradimi? */
+export const isPedBlockTopic = (topicId) => PED_BLOCK_TOPIC_IDS.has(topicId);
+
+/**
  * Fanning BARCHA bo'limlari uchun rasmiy raqam bormi?
  *
  * Aralashtirib bo'lmaydi: rasmiy raqamlar 2–18 oralig'ida, bazadagi savol
