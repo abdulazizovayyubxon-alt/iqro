@@ -185,24 +185,79 @@ async function handleDeleteRequest(db, req, res) {
 // Bu ish faqat Admin SDK bilan bajariladi — shuning uchun mijozda emas, shu yerda.
 // Vercel Hobby 12 funksiya chegarasi sababli YANGI endpoint emas, mavjud
 // `notify-admin.js` ga `action` qo'shildi (naqsh: `delete-request`).
+// 400 talik partiyalarda o'chirish (Firestore batch chegarasi 500)
+async function deleteAll(db, docs) {
+  for (let i = 0; i < docs.length; i += 400) {
+    const batch = db.batch();
+    docs.slice(i, i + 400).forEach((d) => batch.delete(d.ref));
+    await batch.commit();
+  }
+  return docs.length;
+}
+
 async function purgeUser(db, uid) {
-  const deleted = { docs: 0, subdocs: 0, authAccount: false };
+  const deleted = { docs: 0, subdocs: 0, objections: 0, requests: 0, referrals: 0, authAccount: false };
   const errors = [];
 
   // 1) Shaxsiy subkolleksiya (bildirishnomalar) — hujjat o'chirilsa ham qolib ketardi
   try {
     const notifs = await db.collection('users').doc(uid).collection('notifications').get();
-    for (let i = 0; i < notifs.docs.length; i += 400) {
-      const batch = db.batch();
-      notifs.docs.slice(i, i + 400).forEach((d) => batch.delete(d.ref));
-      await batch.commit();
-    }
-    deleted.subdocs = notifs.size;
+    deleted.subdocs = await deleteAll(db, notifs.docs);
   } catch (e) {
     errors.push(`notifications: ${e.message}`);
   }
 
-  // 2) Asosiy hujjatlar
+  // ⚠️ ADMIN AUDIT 2026-08-06, A-10 BAND — quyidagi uch qadam YANGI.
+  // Avval faqat `users` + `userStats` + bildirishnomalar o'chirilardi.
+  // Boshqa kolleksiyalardagi yozuvlar YETIM qolardi:
+  //   · `referrals` — Referral jadvalida "—" ismli qatorlar; bundan yomoni,
+  //     `handleMarkReferralPaid` tranzaksiyasi mavjud bo'lmagan
+  //     `users/{referrerId}` ni yangilamoqchi bo'lib NOT_FOUND bilan yiqilardi;
+  //   · `objections` va `questionRequests` — `handleFulfillRequest` o'chirilgan
+  //     uid ga bildirishnoma yozmoqchi bo'lardi.
+
+  // 2) E'tirozlar — butunlay o'chiriladi (shaxsiy ma'lumot, qiymati yo'q)
+  try {
+    const objs = await db.collection('objections').where('uid', '==', uid).get();
+    deleted.objections = await deleteAll(db, objs.docs);
+  } catch (e) {
+    errors.push(`objections: ${e.message}`);
+  }
+
+  // 3) Savol so'rovlari — butunlay o'chiriladi
+  try {
+    const reqs = await db.collection('questionRequests').where('uid', '==', uid).get();
+    deleted.requests = await deleteAll(db, reqs.docs);
+  } catch (e) {
+    errors.push(`questionRequests: ${e.message}`);
+  }
+
+  // 4) Referrallar — O'CHIRILMAYDI, ANONIMLASHTIRILADI.
+  // Bu MOLIYAVIY iz: bonus to'langanmi, kim kimni taklif qilgan — bu ma'lumot
+  // hisob-kitob uchun kerak va uni yo'q qilish qayta tiklab bo'lmaydigan
+  // xatolikka olib keladi. Shaxsni aniqlovchi ism olib tashlanadi, uid esa
+  // "o'chirilgan" deb belgilanadi.
+  try {
+    const asReferrer = await db.collection('referrals').where('referrerId', '==', uid).get();
+    const asReferred = await db.collection('referrals').where('referredId', '==', uid).get();
+    const all = [...asReferrer.docs, ...asReferred.docs];
+    for (let i = 0; i < all.length; i += 400) {
+      const batch = db.batch();
+      all.slice(i, i + 400).forEach((d) => {
+        const data = d.data();
+        const patch = { anonymizedAt: new Date().toISOString() };
+        if (data.referrerId === uid) { patch.referrerName = "(o'chirilgan hisob)"; patch.referrerDeleted = true; }
+        if (data.referredId === uid) { patch.referredName = "(o'chirilgan hisob)"; patch.referredDeleted = true; }
+        batch.update(d.ref, patch);
+      });
+      await batch.commit();
+    }
+    deleted.referrals = all.length;
+  } catch (e) {
+    errors.push(`referrals: ${e.message}`);
+  }
+
+  // 5) Asosiy hujjatlar
   for (const path of [['users', uid], ['userStats', uid]]) {
     try {
       await db.collection(path[0]).doc(path[1]).delete();
@@ -212,7 +267,7 @@ async function purgeUser(db, uid) {
     }
   }
 
-  // 3) Firebase Auth hisobi — ASOSIY nuqta. Foydalanuvchi endi kira olmaydi.
+  // 6) Firebase Auth hisobi — ASOSIY nuqta. Foydalanuvchi endi kira olmaydi.
   try {
     await getAuth().deleteUser(uid);
     deleted.authAccount = true;
