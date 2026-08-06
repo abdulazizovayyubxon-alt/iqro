@@ -96,17 +96,14 @@ export default defineConfig({
               networkTimeoutSeconds: 10
             }
           },
-          {
-            // Firebase Firestore — Stale While Revalidate
-            // Avval keshdan ko'rsatadi, keyin yangilaydi
-            urlPattern: /^https:\/\/firestore\.googleapis\.com\/.*/i,
-            handler: 'StaleWhileRevalidate',
-            options: {
-              cacheName: 'firestore-cache',
-              expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 }, // 1 kun
-              cacheableResponse: { statuses: [0, 200] }
-            }
-          },
+          // ⚠️ AUDIT 2026-08-06, T-20 BAND — bu yerda Firestore uchun
+          // `StaleWhileRevalidate` qoidasi turardi. U AMALDA HECH QACHON
+          // ISHLAMAGAN: Firestore Web SDK ma'lumotni WebChannel/gRPC-Web orqali
+          // POST so'rovlari bilan oladi, Workbox marshrutlari esa sukut bo'yicha
+          // faqat GET so'rovlarini ushlaydi. Qoida adashtiruvchi edi — go'yo
+          // oflayn kesh shu yerdan kelayotgandek. Aslida Firestore o'zining
+          // persistent kesh qatlamiga ega (firebase.js) va oflayn o'qish
+          // aynan o'sha orqali ishlaydi.
           {
             // Rasmlar (savollar uchun) — Cache First
             urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/i,

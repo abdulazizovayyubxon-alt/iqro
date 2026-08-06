@@ -161,7 +161,19 @@ export default function OfflineIndicator() {
   useEffect(() => {
     if (!('serviceWorker' in navigator)) return;
 
+    let updateTimer = null;
+
     navigator.serviceWorker.ready.then((registration) => {
+      // ⚠️ AUDIT 2026-08-06, T-11 BAND — avval FAQAT `updatefound` tinglanardi.
+      // Agar yangi SW OLDINGI sessiyada o'rnatilib `waiting` holatida qolgan
+      // bo'lsa (foydalanuvchi bannerni bosmasdan ilovani yopgan), yangi
+      // yuklanishda `updatefound` UMUMAN otilmaydi va banner boshqa
+      // ko'rsatilmasdi. Shu sababli tayyor turgan yangilanishni ham tekshiramiz.
+      if (registration.waiting && navigator.serviceWorker.controller) {
+        setSwWorker(registration.waiting);
+        setShowUpdate(true);
+      }
+
       registration.addEventListener('updatefound', () => {
         const newWorker = registration.installing;
         if (!newWorker) return;
@@ -177,6 +189,13 @@ export default function OfflineIndicator() {
           }
         });
       });
+
+      // Uzoq ochiq turgan PWA/TWA yangi deployni o'zi sezmaydi: brauzer sw.js ni
+      // asosan navigatsiyada tekshiradi, standalone ilovada esa navigatsiya
+      // bo'lmaydi. Soatiga bir marta o'zimiz so'raymiz (T-11).
+      updateTimer = setInterval(() => {
+        registration.update().catch(() => { /* tarmoq yo'q — keyingi urinishda */ });
+      }, 60 * 60 * 1000);
     }).catch(() => {
       /* SW ro'yxatdan o'tmagan (private rejim / ichki brauzer) — yangilanish
          so'rovi ko'rsatilmaydi, qolgan indikator ishlayveradi */
@@ -184,12 +203,20 @@ export default function OfflineIndicator() {
 
     // SW almashinuvidan keyin sahifani yangilash
     let refreshing = false;
-    navigator.serviceWorker.addEventListener('controllerchange', () => {
+    const onControllerChange = () => {
       if (!refreshing) {
         refreshing = true;
         window.location.reload();
       }
-    });
+    };
+    navigator.serviceWorker.addEventListener('controllerchange', onControllerChange);
+
+    // Tozalash — StrictMode effektni ikki marta ishga tushirganda ikkita
+    // `controllerchange` tinglovchisi va ikkita interval qolib ketardi (T-11).
+    return () => {
+      if (updateTimer) clearInterval(updateTimer);
+      navigator.serviceWorker.removeEventListener('controllerchange', onControllerChange);
+    };
   }, []);
 
   // ── Yangilash tugmasi ────────────────────────────────────────
