@@ -423,28 +423,26 @@ const TestPage = () => {
             await localforage.setItem(versionKey, remoteVersion);
           }
 
-          // 🔄 FALLBACK: Agar bundle yuklanmasa, topicId bo'yicha parallel Firestore query
+          // 🔄 FALLBACK: Agar bundle yuklanmasa — Firestore'dan fan bo'yicha o'qiymiz.
+          //
+          // ⚠️ AUDIT 2026-08-06, T-4 BAND: avval bu yerda HAR `topicId` uchun
+          // ALOHIDA query bajarilardi (fanga qarab 7–10 ta). Qaytadigan hujjatlar
+          // soni bir xil, LEKIN har query alohida so'rov — ya'ni firestore.rules
+          // `hasContentAccess()` ichidagi `get(users/{uid})` ham har safar qayta
+          // bajarilib, har sovuq yuklashda 7–10 ta ORTIQCHA o'qish sarflanardi.
+          // ExamPage.jsx allaqachon bitta `category` query ishlatadi.
+          //
+          // Natija to'plami AYNAN BIR XIL: pastda baribir
+          // `q.category === activeCategory` va `validTopicIds.includes(q.topicId)`
+          // filtrlari qo'llanadi, ya'ni ikkala yo'l ham (topicId ∈ fan) ∧ (category = fan)
+          // kesishmasini beradi. Faqat so'rovlar soni kamayadi.
           if ((!rawList || rawList.length === 0) && !paywalled) {
-            console.warn("Bundle yuklanmadi — Firestore dan topicId bo'yicha o'qilmoqda...");
+            console.warn("Bundle yuklanmadi — Firestore dan fan bo'yicha o'qilmoqda...");
             try {
               const qRef = collection(db, 'questions');
-              // Joriy kategoriya uchun mavzu IDlarini olamiz
-              const categoryTopicIds = TOPICS.filter(t =>
-                Array.isArray(t.category)
-                  ? t.category.includes(state.activeCategory)
-                  : t.category === state.activeCategory
-              ).map(t => t.id);
-
-              // Har bir topicId uchun alohida query — parallel bajariladi (tezroq)
-              const snapshots = await Promise.all(
-                categoryTopicIds.map(tid =>
-                  getDocs(query(qRef, where('topicId', '==', tid)))
-                )
-              );
-              rawList = snapshots.flatMap(snap =>
-                snap.docs.map(d => ({ id: d.id, ...d.data() }))
-              );
-              console.log(`✅ Firestore dan ${rawList.length} ta savol yuklandi (${categoryTopicIds.length} mavzu)`);
+              const snap = await getDocs(query(qRef, where('category', '==', state.activeCategory)));
+              rawList = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+              console.log(`✅ Firestore dan ${rawList.length} ta savol yuklandi (1 ta so'rov)`);
               if (rawList.length > 0) {
                 await localforage.setItem(cacheKey, rawList);
                 await localforage.setItem(versionKey, remoteVersion);
@@ -674,26 +672,16 @@ const TestPage = () => {
     setAmiDelta(commitResult?.amiDelta || 0);
     setGainedTiers(commitResult?.gained || []);
 
-    // Send result to Telegram
+    // ⚠️ AUDIT 2026-08-06, T-14 BAND — bu yerda `fetch('/api/send-result', ...)`
+    // turardi, LEKIN `api/send-result.js` fayli mavjud emas (api/ da aynan 12 ta
+    // funksiya bor va u ular orasida yo'q). `fetch` 404 da reject QILMAYDI va javob
+    // o'qilmasdi, shuning uchun xato hech qayerda ko'rinmasdi: «natijani Telegramga
+    // yuborish» hech qachon ishlamagan, har test yakunida esa bekorga so'rov ketardi.
+    // O'lik chaqiruv olib tashlandi. Funksiya kerak bo'lsa — Vercel Hobby 12 funksiya
+    // chegarasi sababli YANGI endpoint emas, `notify-admin.js` ga `action=result`
+    // qo'shilishi kerak (naqsh: `action=delete-request`).
     const correctCount = Object.keys(answers).filter(k => answers[k] === questions[parseInt(k)]?.correct).length;
-    const wrongCount = Object.keys(answers).length - correctCount;
     AnalyticsEvents.testComplete(topicName, correctCount, questions.length);
-    // Telegramga natija — ID token bilan (server uid'ni TOKEN'dan oladi, tanaga ishonmaydi)
-    auth.currentUser?.getIdToken().then(token => {
-      if (!token) return;
-      fetch('/api/send-result', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({
-          correct: correctCount,
-          wrong: wrongCount,
-          total: questions.length,
-          time: Math.round(totalSessionTime / 60) + ' daqiqa',
-          mode: mode === 'exam' ? 'Imtihon rejim' : 'O\'rganish rejim',
-          title: topicName
-        })
-      }).catch(e => console.error(e));
-    }).catch(() => {});
   };
 
   const correctCount = Object.keys(answers).filter(k => answers[k] === questions[parseInt(k)]?.correct).length;
