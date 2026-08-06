@@ -90,7 +90,7 @@ const Dashboard = () => {
     return nextMilestones(state, live)[0] || null;
   }, [state]);
 
-  // Fan bo'yicha savol soni (ishonch badge) — admin-publish yozadi
+  // Fan bo'yicha savol soni (ishonch badge) — AdminPage «Yangilanishni yuborish» yozadi
   useEffect(() => {
     getDoc(doc(db, 'settings', 'questionMeta'))
       .then(snap => { if (snap.exists()) setQuestionMeta(snap.data()); })

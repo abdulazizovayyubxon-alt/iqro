@@ -314,7 +314,7 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subject]);
 
-  // Fan bo'yicha savol soni (ishonch badge) — admin-publish yozadi
+  // Fan bo'yicha savol soni (ishonch badge) — AdminPage «Yangilanishni yuborish» yozadi
   const [questionMeta, setQuestionMeta] = useState(null);
   useEffect(() => {
     getDoc(doc(db, 'settings', 'questionMeta'))

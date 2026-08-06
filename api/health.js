@@ -84,7 +84,7 @@ export default async function handler(req, res) {
     if (snap.exists) {
       checks.firestore = 'up';
       const data = snap.data() || {};
-      questionsVersion = data.dbVersion ?? null;   // admin-publish.js:76 shu nomda yozadi
+      questionsVersion = data.dbVersion ?? null;   // AdminPage «Yangilanishni yuborish» va scripts/bump-questions-version.mjs shu nomda yozadi
       // Savollar qayerdan kelayotgani. `urls` ATAYLAB bo'sh qoldirilgan
       // (scripts/bump-questions-version.mjs:15) — ochiq Storage URL'i pullik
       // bazani login'siz yuklab olishga imkon berardi. Bo'sh bo'lsa ilova
