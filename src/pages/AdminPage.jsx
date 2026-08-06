@@ -1279,7 +1279,7 @@ try {
 
   const exportUsers = () => {
     exportCSV('foydalanuvchilar',
-      ['ID', 'Ism', 'Email', 'Telefon', 'Fan', 'Toifa', 'Pro', 'Rol', "Ro'yxatdan o'tgan"],
+      ['ID', 'Ism', 'Email', 'Telefon', 'Fan', 'Toifa', 'Pro', 'Rol', "Ro'yxatdan o'tgan", 'Oxirgi faollik'],
       filteredUsers.map(u => [
         u.shortId || '',
         u.displayName || '',
@@ -1291,6 +1291,7 @@ try {
         u.role || 'user',
         u.createdAt?.toDate ? u.createdAt.toDate().toLocaleDateString('uz-UZ')
           : (u.createdAt ? new Date(u.createdAt.seconds ? u.createdAt.seconds * 1000 : u.createdAt).toLocaleDateString('uz-UZ') : ''),
+        u.lastActiveAt ? new Date(u.lastActiveAt).toLocaleString('uz-UZ') : '',
       ])
     );
   };
@@ -2708,6 +2709,24 @@ try {
                         {subjectName(u.subject)
                           ? <> · {subjectName(u.subject)}</>
                           : <span style={{ color: 'var(--text3)', opacity: 0.7 }}> · fan yo'q</span>}
+                        {u.lastActiveAt && (
+                          <span style={{ color: 'var(--text3)' }}>
+                            {' · 🕒 '}
+                            {(() => {
+                              const d = new Date(u.lastActiveAt);
+                              const now = new Date();
+                              const diffMs = now - d;
+                              const diffMin = Math.floor(diffMs / 60000);
+                              const diffH = Math.floor(diffMs / 3600000);
+                              const diffD = Math.floor(diffMs / 86400000);
+                              if (diffMin < 1) return 'hozir';
+                              if (diffMin < 60) return `${diffMin} daqiqa oldin`;
+                              if (diffH < 24) return `${diffH} soat oldin`;
+                              if (diffD < 7) return `${diffD} kun oldin`;
+                              return d.toLocaleDateString('uz-UZ');
+                            })()}
+                          </span>
+                        )}
                       </div>
                     </div>
                   </button>
@@ -3546,6 +3565,9 @@ try {
                     ['Takliflar soni', userCard.referralCount ?? 0],
                     ['Referral bonusi', (userCard.referralBonus ?? 0).toLocaleString() + " so'm"],
                     ['Chegirma', userCard.referralDiscount ? `${userCard.referralDiscount}%` : '—'],
+                    ['Oxirgi faollik', userCard.lastActiveAt
+                      ? new Date(userCard.lastActiveAt).toLocaleString('uz-UZ')
+                      : '—'],
                     ['Maktab', userCard.schoolName || '—'],
                     ['Oxirgi tranzaksiya', userCard.premiumTransId || '—'],
                   ].map(([k, v]) => (
