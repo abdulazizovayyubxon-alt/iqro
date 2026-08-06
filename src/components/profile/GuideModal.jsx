@@ -9,19 +9,18 @@ export default function GuideModal({ onClose, showToast }) {
   const { t } = useTranslation();
   const [activePanel, setActivePanel] = useState(null);
 
-  const GUIDE_PANELS = [
-    { title: t('modals.guideP1Title') },
-    { title: t('modals.guideP2Title') },
-    { title: t('modals.guideP3Title') },
-    { title: t('modals.guideP4Title') },
-  ];
-
-  const panelBodies = [
-    t('modals.guideP1Body'),
-    (<>{t('modals.guideP2a')} <strong>{t('modals.guideP2bold')}</strong> {t('modals.guideP2b')}</>),
-    (<>{t('modals.guideP3a')} <strong>{t('modals.guideP3bold')}</strong> {t('modals.guideP3b')}</>),
-    (<>{t('modals.guideP4a')} <strong>{t('modals.guideP4bold1')}</strong> {t('modals.guideP4b')} <strong>{t('modals.guideP4bold2')}</strong></>),
-  ];
+  // Qo'llanma 4 ta paneldan 10 taga kengaytirildi: ilgari boshlash, imtihon
+  // rejimi, kunlik reja, tayyorlik ko'rsatkichi, xatolar daftari, ball hisobi
+  // va oflayn ishlash umuman tushuntirilmasdi.
+  //
+  // Har panel endi ODDIY `Title` + `Body` juftligi. Avval matn `...a`/`...bold`/
+  // `...b` bo'laklariga bo'lingan edi — uni tarjima qilish ham, o'zgartirish ham
+  // og'ir edi va uch tilda bo'laklar sonini teng ushlab turish kerak bo'lardi.
+  const PANEL_COUNT = 10;
+  const panels = Array.from({ length: PANEL_COUNT }, (_, i) => ({
+    title: t(`modals.guideP${i + 1}Title`),
+    body: t(`modals.guideP${i + 1}Body`),
+  }));
 
   return (
     <div className="pp-modal-overlay" onClick={onClose}>
@@ -42,8 +41,8 @@ export default function GuideModal({ onClose, showToast }) {
           <span style={{ fontSize: 'var(--fs-5xl)' }}>📖</span> {t('modals.guideTitle')}
         </div>
 
-        <div className="pp-policy-scroll" style={{ maxHeight: '400px', overflowY: 'auto', paddingRight: '8px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          {GUIDE_PANELS.map((panel, i) => (
+        <div className="pp-policy-scroll" style={{ maxHeight: '60vh', overflowY: 'auto', paddingRight: '8px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          {panels.map((panel, i) => (
             <div key={i} style={{ background: 'var(--bg3)', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border)' }}>
               <button
                 onClick={() => setActivePanel(p => p === i ? null : i)}
@@ -53,8 +52,8 @@ export default function GuideModal({ onClose, showToast }) {
                 <ChevronRight size={16} style={{ transform: activePanel === i ? 'rotate(90deg)' : 'rotate(0deg)', transition: '0.2s', flexShrink: 0 }} />
               </button>
               {activePanel === i && (
-                <div style={{ padding: '10px 16px 16px', fontSize: 'var(--fs-md)', color: 'var(--text2)', lineHeight: 1.6 }}>
-                  {panelBodies[i]}
+                <div style={{ padding: '10px 16px 16px', fontSize: 'var(--fs-md)', color: 'var(--text2)', lineHeight: 1.65 }}>
+                  {panel.body}
                 </div>
               )}
             </div>

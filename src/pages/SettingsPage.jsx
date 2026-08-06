@@ -18,8 +18,8 @@ import { AppContext } from '../context/AppContext';
 import { ToastContext } from '../context/ToastContext';
 import { PWAContext } from '../context/PWAContext';
 import { db, auth } from '../firebase';
-import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
-import { deleteUser, updateProfile } from 'firebase/auth';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { updateProfile, reauthenticateWithCredential, EmailAuthProvider } from 'firebase/auth';
 import { APP_VERSION, SUPPORT_URL } from '../config';
 import { enablePush, pushPermission } from '../services/push';
 import { isCountdownEnabled, COUNTDOWN_KEY, COUNTDOWN_EVENT } from '../utils/examDate';
@@ -286,24 +286,71 @@ export default function SettingsPage({ theme, toggleTheme }) {
     try { await logout(); navigate('/'); } catch { showToast(t('settings.toasts.logoutError'), 'error'); }
   };
 
-  const handleDeleteAccount = async () => {
-    if (deleting) return;
+  /**
+   * Hisobni o'chirish — modal 3 bosqichdan o'tkazgach chaqiriladi.
+   *
+   * Oqim:
+   *   1. Parol bilan QAYTA autentifikatsiya — shaxsni tasdiqlaydi va Firebase
+   *      tokenidagi `auth_time` ni yangilaydi (server shuni tekshiradi).
+   *   2. Tozalash SERVERDA (`/api/notify-admin?action=delete-me`): u yerda
+   *      Auth hisobi, `users/{uid}`, `userStats/{uid}` va bildirishnomalar
+   *      subkolleksiyasi birga o'chiriladi. Mijozdagi eski `deleteUser()`
+   *      subkolleksiyani qoldirib ketardi.
+   *   3. Lokal sessiya va keshni tozalash.
+   *
+   * @returns {{error?: string}} modal xatoni ko'rsatishi uchun
+   */
+  const handleDeleteAccount = async (password) => {
+    if (deleting) return { error: 'busy' };
     setDeleting(true);
     try {
-      const uid = user.uid;
-      await deleteDoc(doc(db, 'userStats', uid)).catch(e => console.log(e));
-      await deleteDoc(doc(db, 'users', uid)).catch(e => console.log(e));
-      await deleteUser(auth.currentUser);
+      const current = auth.currentUser;
+      if (!current) return { error: 'not_signed_in' };
+
+      // ── 1. Qayta autentifikatsiya ──
+      try {
+        const credential = EmailAuthProvider.credential(current.email, password);
+        await reauthenticateWithCredential(current, credential);
+      } catch (e) {
+        if (
+          e.code === 'auth/wrong-password' ||
+          e.code === 'auth/invalid-credential' ||
+          e.code === 'auth/invalid-login-credentials'
+        ) {
+          return { error: 'wrong_password' };
+        }
+        if (e.code === 'auth/too-many-requests') {
+          showToast(t('settings.toasts.deleteAccountTooMany'), 'error');
+          return { error: 'too_many' };
+        }
+        throw e;
+      }
+
+      // ── 2. Serverda to'liq tozalash ──
+      const idToken = await current.getIdToken(true); // yangi auth_time bilan
+      const res = await fetch('/api/notify-admin?action=delete-me', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${idToken}` },
+        body: JSON.stringify({}),
+      });
+      const ct = res.headers.get('content-type') || '';
+      if (!ct.includes('application/json')) {
+        // Lokal `vite dev`da serverless funksiyalar yo'q — bu kutilgan holat
+        throw new Error('api_unavailable');
+      }
+      const data = await res.json();
+      if (!res.ok || !data.ok) throw new Error(data.error || `http_${res.status}`);
+
+      // ── 3. Lokal izlarni tozalash ──
+      localStorage.removeItem(`iqro_state_${user.uid}`);
+      await logout().catch(() => {});
       showToast(t('settings.toasts.deleteAccountSuccess'), 'success');
       navigate('/');
+      return {};
     } catch (e) {
-      console.error(e);
-      if (e.code === 'auth/requires-recent-login') {
-        showToast(t('settings.toasts.deleteAccountRequiresRecentLogin'), 'error');
-        setShowDeleteConfirm(false);
-      } else {
-        showToast(t('settings.toasts.deleteAccountError'), 'error');
-      }
+      console.error('Hisobni o\'chirish xatosi:', e);
+      showToast(t('settings.toasts.deleteAccountError'), 'error');
+      return { error: 'failed' };
     } finally {
       setDeleting(false);
     }
@@ -632,8 +679,16 @@ export default function SettingsPage({ theme, toggleTheme }) {
       {showDeleteConfirm && (
         <ConfirmDeleteModal
           deleting={deleting}
+          isPremium={user?.isTruePremium}
+          premiumExpire={user?.premiumExpire}
           onConfirm={handleDeleteAccount}
-          onClose={() => setShowDeleteConfirm(false)}
+          // Modal xavfsizroq muqobil taklif qiladi: shunchaki chiqish yoki
+          // yordamga murojaat. Ikkalasi ham o'chirishdan qaytaradi.
+          onClose={(intent) => {
+            setShowDeleteConfirm(false);
+            if (intent === 'logout') setShowLogoutConfirm(true);
+            else if (intent === 'support') window.open(SUPPORT_URL, '_blank', 'noopener,noreferrer');
+          }}
         />
       )}
     </motion.div>
