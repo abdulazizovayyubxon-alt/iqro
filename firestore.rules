@@ -309,6 +309,25 @@ service cloud.firestore {
       allow create: if false;
     }
 
+    // ── adminActions: admin harakatlari jurnali (kim · qachon · nima qildi) ──
+    //
+    // ⚠️ ADMIN AUDIT 2026-08-06, B-5 BAND: panelda qaytarilmas amallar bor
+    // (hisobni Auth bilan o'chirish, minglab savolni o'chirish, admin huquqi
+    // berish), ular hech qayerda qayd etilmasdi. Adminlar soni birdan ortiq.
+    //
+    // Tahrirlash va o'chirish BUTUNLAY yopiq: jurnalni keyin o'zgartirib
+    // bo'lmasa, u haqiqiy audit izi bo'la oladi. Faqat qo'shish mumkin.
+    //
+    // `actorUid` tokendagi uid bilan mos bo'lishi SHART — aks holda bir admin
+    // boshqasining nomidan yozuv qoldirib, izni chalkashtirishi mumkin edi.
+    //
+    // ⚠️ EMULYATORDA SINALMAGAN (bu mashinada Java yo'q).
+    match /adminActions/{docId} {
+      allow read: if isAdmin();
+      allow create: if isAdmin() && request.resource.data.actorUid == request.auth.uid;
+      allow update, delete: if false;
+    }
+
     // ── Qolgan hamma narsa bloklangan ──
     match /{document=**} {
       allow read, write: if false;
