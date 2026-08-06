@@ -38,7 +38,7 @@
     "helpTitle": "Yordam kerakmi?",
     "helpText": "Jamoamiz har qanday savolingizga javob beradi",
     "helpCta": "Yozish",
-    "version": "Zehin · versiya {{version}}",
+    "version": "versiya {{version}}",
     "sections": {
       "appearance": "Ko'rinish",
       "account": "Hisob",

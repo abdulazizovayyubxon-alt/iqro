@@ -171,7 +171,7 @@ Input hech qachon 16px dan pastga tushmaydi — iOS Safari aks holda fokusda sah
 | `index.html` splash `<style>` | React'gacha chiziladi, CSS o'zgaruvchilarisiz ishlashi kerak |
 | SVG `fontSize="9"` atributlari (`QuestionMedia`, `RadarChart`) | `viewBox` koordinata tizimi — `rem` sxemani buzadi |
 | `ctx.font = '900 68px …'` (`ResultShareCard`, `BrandLogo`) | Canvas rasm hamma uchun bir xil piksel bo'lishi kerak |
-| `BrandLogo` `fontSize: fs` | Wordmark `size` prop'idan hisoblanadi |
+| `BrandLogo` `fontSize: fs` | Wordmark `size` prop'idan hisoblanadi. `size` RAQAM bo'lsa — qat'iy px (splash, header, modal: brend elementi shkaladan qat'iy nazar bir xil turadi). Matn oqimida turgan lockup shkalaga ergashishi uchun CSS uzunligi beriladi: `size="var(--fs-4xl)"` (Sozlamalar → versiya qatori) |
 | `--fs-input` ichidagi `16px` | iOS brauzer cheklovi, dizayn tanlovi emas |
 
 ---

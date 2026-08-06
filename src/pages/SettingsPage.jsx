@@ -639,7 +639,8 @@ export default function SettingsPage({ theme, toggleTheme }) {
 
         {/* ═══ VERSIYA ═══ */}
         <div className="sp-version">
-          <BrandLogo size={14} /> · {t('settings.version', { version: APP_VERSION })}
+          {/* Token o'lchami — yonidagi versiya matni bilan birga A+/A- ga ergashadi */}
+          <BrandLogo size="var(--fs-4xl)" /> · {t('settings.version', { version: APP_VERSION })}
         </div>
       </div>
 

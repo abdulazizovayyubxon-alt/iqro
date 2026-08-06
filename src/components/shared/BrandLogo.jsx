@@ -50,7 +50,12 @@ export function ZehinMark({ size = 24, variant = 'light', className = '', style 
  * BrandLogo — "Zehin" lockup'i: Plus Jakarta Sans ExtraBold wordmark,
  * "i" nuqtasi belgi bilan almashtirilgan (dotsiz "ı" + belgi-nuqta).
  *
- * @param {number} size     Lockup balandligi (px). Default: 32
+ * @param {number|string} size  Lockup balandligi. RAQAM — qat'iy px (splash,
+ *                          header, modal sarlavhasi: brend elementi shkaladan
+ *                          qat'iy nazar bir xil ko'rinishi kerak). SATR — istalgan
+ *                          CSS uzunligi, jumladan tipografiya tokeni
+ *                          (`size="var(--fs-4xl)"`): shunda logotip A+/A- bilan
+ *                          birga yonidagi matnga hamohang kattalashadi. Default: 32
  * @param {string} variant  'auto' (temaga moslashadi: och fonda navy, tungi
  *                          rejimda oq) yoki 'azure' (azure fonda: oq matn,
  *                          buklama navy solid). Ranglar index.css'dagi
@@ -62,10 +67,13 @@ export function ZehinMark({ size = 24, variant = 'light', className = '', style 
 export default function BrandLogo({ size = 32, variant = 'auto', withMark = true, style = {}, className = '', as: Tag = 'span' }) {
   // Nuqta (belgi) harf tepasidan chiqib turadi — shu overhang bilan birga umumiy
   // balandlik ≈ size bo'lishi uchun font biroz kichikroq olinadi.
-  const fs = Math.round(size * 0.82);
+  // Raqamda arifmetika, CSS uzunligida esa calc() — ikkala holatda nisbat bir xil.
+  const isPx = typeof size === 'number';
+  const ratio = (k) => (isPx ? Math.round(size * k) : `calc(${size} * ${k})`);
+  const fs = ratio(0.82);
   const azure = variant === 'azure';
   const foldColor = azure ? '#0A2440' : '#05A3FA';
-  const markSize = Math.round(size * 0.8);
+  const markSize = ratio(0.8);
 
   return (
     <Tag
@@ -74,7 +82,9 @@ export default function BrandLogo({ size = 32, variant = 'auto', withMark = true
       style={{
         display: 'inline-flex',
         alignItems: 'center',
-        gap: withMark ? Math.max(4, Math.round(size * 0.22)) : 0,
+        gap: withMark
+          ? (isPx ? Math.max(4, Math.round(size * 0.22)) : `max(4px, calc(${size} * 0.22))`)
+          : 0,
         height: size,
         fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
         fontWeight: 800,
@@ -86,14 +96,15 @@ export default function BrandLogo({ size = 32, variant = 'auto', withMark = true
         ...style,
       }}
     >
+      {/* O'lcham CSS orqali beriladi: calc() SVG atributi sifatida ishlamaydi */}
       {withMark && (
         <svg
           viewBox="0 0 48 48"
-          width={markSize}
-          height={markSize}
+          width={isPx ? markSize : undefined}
+          height={isPx ? markSize : undefined}
           fill="none"
           aria-hidden="true"
-          style={{ display: 'block', flexShrink: 0 }}
+          style={{ display: 'block', flexShrink: 0, width: markSize, height: markSize }}
         >
           {/* Yakka belgi: doira matn rangida (currentColor) — temaga o'zi moslashadi */}
           <circle cx="24" cy="24" r="21" fill="currentColor" />

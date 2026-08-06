@@ -299,9 +299,9 @@ button.pp-menu-item.danger:hover .pp-menu-arrow { color: var(--red); }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
   padding: 26px 0 4px;
-  font-size: var(--fs-xs);
+  font-size: var(--fs-sm);
   color: var(--text3);
 }
 

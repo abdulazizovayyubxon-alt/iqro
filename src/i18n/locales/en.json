@@ -38,7 +38,7 @@
     "helpTitle": "Need help?",
     "helpText": "Our team will answer any of your questions",
     "helpCta": "Contact Us",
-    "version": "Zehin · version {{version}}",
+    "version": "version {{version}}",
     "sections": {
       "appearance": "Appearance",
       "account": "Account",
