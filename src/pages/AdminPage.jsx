@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
@@ -20,7 +20,7 @@ import {
   CheckCircle, Trash2, AlertTriangle,
   ChevronDown, ChevronUp, Search, Plus, Edit3, FileText, Zap,
   Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, UploadCloud,
-  Download, Crown, Database, RefreshCw, Inbox, School
+  Download, Crown, Database, RefreshCw, Inbox, School, CreditCard, Ticket, X
 } from 'lucide-react';
 
 import './AdminPage.css';
@@ -28,6 +28,16 @@ import PromoTab from '../components/admin/PromoTab';
 import SchoolsTab from '../components/admin/SchoolsTab';
 import { TOPICS } from '../data/mockData';
 import { normalizeText, trigrams, jaccard } from '../utils/textSimilarity';
+import { logAdminAction, ADMIN_ACTION_LABELS } from '../services/adminLog';
+import { useModalA11y } from '../hooks/useModalA11y';
+import ConfirmDialog from '../components/shared/ConfirmDialog';
+
+// Ro'yxatlar uchun yagona chegara. `users`/`referrals` ilgari CHEGARASIZ
+// o'qilardi (A-15): panelga bir kirish = kolleksiyadagi hujjat soni qadar
+// o'qish. Spark kunlik limiti 50 000 — 5 000 foydalanuvchida bu bir seansda
+// kvotaning 10% i. Aniq odamni topish uchun sahifalash emas, SERVER tomonda
+// qidiruv ishlatiladi (`searchUsersOnServer`).
+const LIST_PAGE_SIZE = 200;
 
 // Yaqin-dublikat chegarasi (0..1). Yuqori = faqat juda o'xshashlar (matching/sequence soxta-ijobiyni kamaytiradi).
 const DUP_SIM_THRESHOLD = 0.87;
@@ -70,6 +80,23 @@ const userLabel = (u) => {
   return parts.length ? parts.join(' · ') : null;
 };
 
+// ⚠️ ADMIN AUDIT 2026-08-06, A-14 BAND — tahrirlash formasi ilgari `{...q}`
+// bilan to'ldirilardi. Firestore hujjatlari `{ id: d.id, ...d.data() }`
+// ko'rinishida yuklanadi, ya'ni `id` ham formaga tushardi va saqlashda
+// `updateDoc(..., { id: '<docId>' })` sifatida HUJJAT ICHIGA qaytib yozilardi.
+// Zarar cheklangan (rules faqat topicId/category ni tekshiradi), lekin har
+// tahrirlangan savol ortiqcha maydon olardi va bu zaxira JSON hamda import
+// formatiga oqib o'tardi. Endi faqat tahrirlanadigan maydonlar ko'chiriladi.
+const toEditableQuestion = (q) => ({
+  q: q.q || '',
+  opts: Array.isArray(q.opts) && q.opts.length ? [...q.opts] : ['', '', '', ''],
+  correct: Number.isInteger(q.correct) ? q.correct : 0,
+  topicId: q.topicId ?? 0,
+  explanation: q.explanation || '',
+  mnemonic: q.mnemonic || '',
+  image: q.image || '',
+});
+
 const getCategoryFromTopicId = (topicId) => {
   const idNum = parseInt(topicId);
   const topicObj = TOPICS.find(t => t.id === idNum);
@@ -89,8 +116,10 @@ const AdminPage = () => {
   const [errorsLoading, setErrorsLoading] = useState(false);
   const [errorsShowResolved, setErrorsShowResolved] = useState(false); // hal qilinganlarni ko'rsatish
   const [errorUsers, setErrorUsers] = useState({}); // uid -> users/{uid} hujjati
+  const [errorsError, setErrorsError] = useState(null);
   const loadErrorLogs = () => {
     setErrorsLoading(true);
+    setErrorsError(null);
     getDocs(query(collection(db, 'errorLogs'), orderBy('ts', 'desc'), limit(100)))
       .then(async snap => {
         const logs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
@@ -110,7 +139,12 @@ const AdminPage = () => {
         }
         setErrorUsers(map);
       })
-      .catch(e => console.error('errorLogs load:', e))
+      .catch(e => {
+        // Ilgari xato faqat `console.error` ga tushardi — admin bo'sh ro'yxatni
+        // ko'rib "xato yo'q" deb o'ylardi (A-3/D-5).
+        console.error('errorLogs load:', e);
+        setErrorsError(e?.message || 'Yuklashda xatolik');
+      })
       .finally(() => setErrorsLoading(false));
   };
   const deleteErrorLog = async (id) => {
@@ -133,17 +167,127 @@ const AdminPage = () => {
       showToast('Belgilashda xato', 'error');
     }
   };
+  // A-16: ilgari kesh guard'i yo'q edi — tablar orasida har almashishda 100 ta
+  // log + uid'lar bo'yicha `in` so'rovlari qayta o'qilardi. Yangilash tugmasi
+  // allaqachon bor, demak avtomatik qayta o'qishning ma'nosi yo'q.
   useEffect(() => {
-    if (!isAdmin || tab !== 'errors') return;
+    if (!isAdmin || tab !== 'journal') return;
+    if (errorLogs.length > 0 || errorsError) return;
     loadErrorLogs();
   }, [tab, isAdmin]);
 
   const visibleErrorLogs = errorsShowResolved ? errorLogs : errorLogs.filter(e => !e.resolved);
   const unresolvedErrorCount = errorLogs.filter(e => !e.resolved).length;
 
+  // ── Admin harakatlari jurnali (B-5) ──
+  // «Jurnal» tabi ichida ikkinchi ko'rinish: client xatolari va admin amallari
+  // bir xil turdagi ma'lumot (kuzatuv), shuning uchun 12-tab ochilmadi —
+  // telefonda tab qatori allaqachon siqiq.
+  const [journalView, setJournalView] = useState('errors'); // errors | actions
+  const [adminActions, setAdminActions] = useState([]);
+  const [actionsLoading, setActionsLoading] = useState(false);
+  const [actionsError, setActionsError] = useState(null);
+  const loadAdminActions = () => {
+    setActionsLoading(true);
+    setActionsError(null);
+    getDocs(query(collection(db, 'adminActions'), orderBy('createdAt', 'desc'), limit(100)))
+      .then(snap => setAdminActions(snap.docs.map(d => ({ id: d.id, ...d.data() }))))
+      .catch(e => {
+        console.error('adminActions load:', e);
+        // Eng ehtimoliy sabab — firestore.rules hali deploy qilinmagan
+        setActionsError(e?.code === 'permission-denied'
+          ? "Ruxsat yo'q — `firebase deploy --only firestore:rules` bajarilganmi?"
+          : (e?.message || 'Yuklashda xatolik'));
+      })
+      .finally(() => setActionsLoading(false));
+  };
+  useEffect(() => {
+    if (!isAdmin || tab !== 'journal' || journalView !== 'actions') return;
+    if (adminActions.length > 0 || actionsError) return;
+    loadAdminActions();
+  }, [tab, journalView, isAdmin]);
+
+  // ── Tab qatorini faol tabga surish (D-6) ──
+  // 12 ta tab telefonga sig'maydi; chetdagi tab tanlanganda u ko'rinmay
+  // qolardi. `inline: 'nearest'` — kerak bo'lsagina suradi.
+  const activeTabRef = useRef(null);
+  useEffect(() => {
+    activeTabRef.current?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }, [tab]);
+
+  // ── To'lovlar (B-1) ──
+  // ⚠️ ADMIN AUDIT 2026-08-06, B-1 BAND: `firestore.rules:197` da
+  // `payments` admin uchun ochiq va izohida "faqat admin ko'radi
+  // ('to'ladim, premium yo'q' murojaatlarini tekshirish uchun)" deb yozilgan.
+  // Bunday UI umuman YO'Q edi — admin bu ma'lumotni faqat Firebase konsolidan
+  // ko'ra olardi. `AMOUNT_MISMATCH` bilan rad etilgan to'lovlar ham ko'rinmasdi.
+  const [payments, setPayments] = useState([]);
+  const [paymentsLoading, setPaymentsLoading] = useState(false);
+  const [paymentsError, setPaymentsError] = useState(null);
+  const loadPayments = ({ force = false } = {}) => {
+    if (!force && payments.length > 0) return;
+    setPaymentsLoading(true);
+    setPaymentsError(null);
+    getDocs(query(collection(db, 'payments'), orderBy('createdAt', 'desc'), limit(LIST_PAGE_SIZE)))
+      .then(snap => setPayments(snap.docs.map(d => ({ id: d.id, ...d.data() }))))
+      .catch(e => {
+        console.error('payments load:', e);
+        setPaymentsError(e?.message || 'Yuklashda xatolik');
+      })
+      .finally(() => setPaymentsLoading(false));
+  };
+  useEffect(() => {
+    if (!isAdmin || tab !== 'payments') return;
+    loadPayments();
+  }, [tab, isAdmin]);
+
+  // ── Hisobni o'chirish arizalari (B-2) ──
+  // ⚠️ `firestore.rules:289` admin uchun ochiq, `api/notify-admin.js:161`
+  // yozadi, lekin UI YO'Q edi. Yagona xabar kanali — Telegram, u esa
+  // `TELEGRAM_BOT_TOKEN` sozlanmagan bo'lsa jimgina `false` qaytaradi
+  // (notify-admin.js:94) → ariza BUTUNLAY yo'qolardi. Google Play bo'yicha
+  // bu arizalarga javob berish majburiyati bor.
+  const [deletionRequests, setDeletionRequests] = useState([]);
+  const [delReqLoading, setDelReqLoading] = useState(false);
+  const [delReqError, setDelReqError] = useState(null);
+  const loadDeletionRequests = ({ force = false } = {}) => {
+    if (!force && deletionRequests.length > 0) return;
+    setDelReqLoading(true);
+    setDelReqError(null);
+    getDocs(query(collection(db, 'deletionRequests'), orderBy('createdAt', 'desc'), limit(50)))
+      .then(snap => setDeletionRequests(snap.docs.map(d => ({ id: d.id, ...d.data() }))))
+      .catch(e => {
+        console.error('deletionRequests load:', e);
+        setDelReqError(e?.message || 'Yuklashda xatolik');
+      })
+      .finally(() => setDelReqLoading(false));
+  };
+  useEffect(() => {
+    if (!isAdmin || tab !== 'users') return;
+    loadDeletionRequests();
+  }, [tab, isAdmin]);
+  const newDeletionRequests = deletionRequests.filter(r => r.status === 'pending').length;
+
+  const setDeletionRequestStatus = async (id, status) => {
+    try {
+      await updateDoc(doc(db, 'deletionRequests', id), { status, handledAt: new Date().toISOString() });
+      setDeletionRequests(prev => prev.map(r => (r.id === id ? { ...r, status } : r)));
+      showToast(status === 'done' ? "Bajarildi deb belgilandi" : 'Holat yangilandi', 'success');
+    } catch (e) {
+      showToast('Xatolik: ' + e.message, 'error');
+    }
+  };
+
+  // ── Foydalanuvchi kartochkasi (B-3) ──
+  // Qatorda faqat ism/email va 3 ta tugma bor edi: obuna qachon tugashi,
+  // qanday olingani, ro'yxatdan o'tgan sanasi HECH QAYERDA ko'rinmasdi.
+  // Ma'lumot allaqachon yuklangan — qo'shimcha o'qish kerak emas (0 kvota).
+  const [userCard, setUserCard] = useState(null);
+
   // ── Platforma umumiy statistikasi (arzon count so'rovlari) ──
-  const [overview, setOverview] = useState(null); // { users, premium, questions, referrals }
+  const [overview, setOverview] = useState(null); // { users, premium, questions, referrals, unsolvedObjections }
   const [overviewLoading, setOverviewLoading] = useState(false);
+  const [overviewError, setOverviewError] = useState(null);
 
   // ── Referral statistika state ──
   const [allReferrals, setAllReferrals] = useState([]);
@@ -158,9 +302,20 @@ const AdminPage = () => {
   // ham 0 uzunlik beradi, JSON import esa dublikat tekshiruvi uchun aynan shu
   // farqni bilishi kerak (T-3).
   const [questionsLoaded, setQuestionsLoaded] = useState(false);
+  // ⚠️ ADMIN AUDIT 2026-08-06, B-6 BAND — savol tahriri va «Yangilanishni
+  // yuborish» hech qanday tarzda bog'lanmagan edi. Admin savolni tuzatib
+  // publish qilishni unutsa, foydalanuvchilar ESKI keshdagi savolni ko'raveradi
+  // (loyihaning ma'lum keshi tuzog'i: scripts/bump-questions-version.mjs).
+  // Endi har yozuvdan keyin Savollar tabida ogohlantirish tasmasi chiqadi.
+  const [pendingPublish, setPendingPublish] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [objectionsError, setObjectionsError] = useState(null);
   const [search, setSearch] = useState('');
   const [userSearch, setUserSearch] = useState('');
+  const [usersLoading, setUsersLoading] = useState(false);
+  const [usersError, setUsersError] = useState(null);
+  const [userSearchServer, setUserSearchServer] = useState(false); // server qidiruvi natijasimi
+  const [referralError, setReferralError] = useState(null);
   const [filterSolved, setFilterSolved] = useState('all'); // all | unsolved | solved
   const [expandedId, setExpandedId] = useState(null);
   const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, text: "", onConfirm: null });
@@ -208,21 +363,29 @@ const AdminPage = () => {
   // ── Umumiy statistika (count aggregation — barcha hujjatlarni o'qimaydi, arzon) ──
   const loadOverview = async () => {
     setOverviewLoading(true);
+    setOverviewError(null);
     try {
-      const [u, p, q, r] = await Promise.all([
+      // A-17: `unsolvedObjections` qo'shildi. Ilgari sarlavhadagi va tab
+      // badge'idagi raqam FAQAT yuklangan 200 ta e'tirozdan hisoblanardi
+      // (limit(200)) — go'yo jami son bo'lib ko'rinardi. Aggregatsiya
+      // so'rovi 1000 hujjatga 1 o'qish, ya'ni deyarli bepul.
+      const [u, p, q, r, o] = await Promise.all([
         getCountFromServer(collection(db, 'users')),
         getCountFromServer(query(collection(db, 'users'), where('isPremium', '==', true))),
         getCountFromServer(collection(db, 'questions')),
         getCountFromServer(collection(db, 'referrals')),
+        getCountFromServer(query(collection(db, 'objections'), where('solved', '==', false))),
       ]);
       setOverview({
         users: u.data().count,
         premium: p.data().count,
         questions: q.data().count,
         referrals: r.data().count,
+        unsolvedObjections: o.data().count,
       });
     } catch (e) {
       console.error('Overview load error:', e);
+      setOverviewError(e?.message || 'Yuklashda xatolik');
     } finally {
       setOverviewLoading(false);
     }
@@ -270,6 +433,7 @@ const AdminPage = () => {
       } catch (pushErr) {
         console.warn('Push yuborishda xato (zararsiz):', pushErr);
       }
+      logAdminAction('notification.send', newNotif.targetUser, { sarlavha: newNotif.title.slice(0, 80), tur: newNotif.type });
       showToast("✅ Bildirishnoma muvaffaqiyatli yuborildi!", 'success');
       setNewNotif({ title: '', message: '', type: 'info', targetUser: 'all' });
     } catch (e) {
@@ -403,6 +567,11 @@ try {
         commitError = commitErr;
       }
 
+      if (added.length > 0) {
+        logAdminAction('question.import', null, { qoshildi: added.length, otkazildi: list.length - added.length });
+        setPendingPublish(true); // B-6
+      }
+
       if (commitError) {
         // Qisman import: shu paytgacha commit qilingan partiyalar bazada QOLADI.
         showToast(`Yuklash to'xtadi: ${added.length} ta yozildi, ${toAdd.length - added.length} ta yozilmadi. Sabab: ${commitError.message}`, 'error');
@@ -476,6 +645,15 @@ try {
         fbId: d.id,
         date: d.data().timestamp?.toDate()?.toLocaleString() || d.data().date
       })));
+      setObjectionsError(null);
+      setLoading(false);
+    }, (err) => {
+      // ⚠️ ADMIN AUDIT 2026-08-06, A-3 BAND — bu callback YO'Q edi. `loading`
+      // bu tabning yagona darvozasi, u faqat muvaffaqiyat yo'lida false
+      // bo'lardi. Rules rad etsa yoki indeks yetishmasa, admin CHEKSIZ
+      // "Yuklanmoqda..." ko'rardi — na toast, na sabab.
+      console.error('objections fetch error:', err);
+      setObjectionsError(err?.message || 'Yuklashda xatolik');
       setLoading(false);
     });
     return () => unsub();
@@ -497,13 +675,86 @@ try {
     return () => unsub();
   }, [isAdmin]);
 
-  useEffect(() => {
-    if (!isAdmin || tab !== 'users') return;
-    const loadUsers = async () => {
-      if (users.length > 0) return; // Keshdan o'qish (qayta yuklamaslik uchun)
-      const snap = await getDocs(collection(db, 'users'));
+  // ⚠️ ADMIN AUDIT 2026-08-06 — A-3, A-4, A-15 BANDLARI birga tuzatildi.
+  //
+  // AVVAL uchta muammo bor edi:
+  //  (a) `try/catch` YO'Q — xato bo'lsa ushlanmagan promise rejection, `users`
+  //      bo'sh qolardi va tab MANGU "👥 Yuklanmoqda..." ko'rsatardi (A-3);
+  //  (b) BUTUN `users` kolleksiyasi chegarasiz o'qilardi — panelga bir kirish
+  //      = kolleksiyadagi hujjat soni qadar Firestore o'qishi (A-15);
+  //  (c) yuklash FAQAT `tab === 'users'` da ishga tushardi, "Xabarlar"
+  //      tabidagi qabul qiluvchi ro'yxati esa AYNI shu massivdan quriladi —
+  //      ya'ni bitta kishiga xabar yuborish amalda ishlamasdi (A-4).
+  //
+  // ⚠️ `orderBy('createdAt')` — `createdAt` maydoni YO'Q hisoblar bu ro'yxatga
+  // TUSHMAYDI (Firestore maydonsiz hujjatni tartiblashdan chiqaradi). Bunday
+  // eski hisoblar bor (AuthContext.jsx:64 shu holatni ochiq ishlaydi), shuning
+  // uchun ular SERVER QIDIRUVI orqali topiladi va UI'da bu ochiq yozilgan.
+  const loadUsers = async ({ force = false } = {}) => {
+    if (!force && users.length > 0) return;
+    setUsersLoading(true);
+    setUsersError(null);
+    try {
+      const snap = await getDocs(query(
+        collection(db, 'users'),
+        orderBy('createdAt', 'desc'),
+        limit(LIST_PAGE_SIZE),
+      ));
       setUsers(snap.docs.map(d => ({ id: d.id, ...d.data() })));
-    };
+      setUserSearchServer(false);
+    } catch (e) {
+      console.error('users load error:', e);
+      setUsersError(e?.message || 'Yuklashda xatolik');
+    } finally {
+      setUsersLoading(false);
+    }
+  };
+
+  // ── Server tomonda aniq qidiruv (B-7) ──
+  // Mijozdagi `filter()` faqat YUKLANGAN 200 ta ichida ishlaydi. Aniq odamni
+  // topish uchun aynan mos keladigan maydon bo'yicha so'rov yuboramiz:
+  // har bir so'rov 0–5 o'qish, ya'ni butun kolleksiyani o'qishdan ~1000× arzon.
+  const searchUsersOnServer = async () => {
+    const term = userSearch.trim();
+    if (!term) { loadUsers({ force: true }); return; }
+    setUsersLoading(true);
+    setUsersError(null);
+    try {
+      const digits = term.replace(/\D/g, '');
+      const queries = [
+        // shortId formati: harf(lar) + 4 raqam (utils/shortId.js) — doim katta harf
+        query(collection(db, 'users'), where('shortId', '==', term.toUpperCase()), limit(5)),
+        query(collection(db, 'users'), where('email', '==', term.toLowerCase()), limit(5)),
+      ];
+      // Telefon 998XXXXXXXXX ko'rinishida saqlanadi (AuthContext cleanPhone)
+      if (digits.length >= 9) {
+        queries.push(query(collection(db, 'users'), where('phone', '==', digits), limit(5)));
+        // Soxta email — telefon+@iqro.uz (login modeli)
+        queries.push(query(collection(db, 'users'), where('email', '==', `${digits}@iqro.uz`), limit(5)));
+      }
+      // Bitta so'rov indeks yetishmasligi sababli yiqilsa, qolganlari ishlashda davom etsin
+      const snaps = await Promise.all(queries.map(q => getDocs(q).catch(() => null)));
+      const found = new Map();
+      snaps.forEach(s => s?.docs.forEach(d => found.set(d.id, { id: d.id, ...d.data() })));
+      if (found.size === 0) {
+        showToast('Server qidiruvida ham topilmadi — ID, telefon yoki email TO\'LIQ yozilsin', 'info');
+        return;
+      }
+      setUsers(Array.from(found.values()));
+      setUserSearchServer(true);
+      showToast(`${found.size} ta natija topildi`, 'success');
+    } catch (e) {
+      console.error('user search error:', e);
+      setUsersError(e?.message || 'Qidiruvda xatolik');
+    } finally {
+      setUsersLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!isAdmin) return;
+    // "Xabarlar" tabi ham shu ro'yxatga tayanadi (A-4)
+    if (tab !== 'users' && tab !== 'notifications') return;
     loadUsers();
   }, [tab, isAdmin]);
 
@@ -541,30 +792,52 @@ try {
     return () => unsub();
   }, [tab, isAdmin]);
 
+  // ── Referral jamlanmasi — YAGONA formula ──
+  // ⚠️ ADMIN AUDIT 2026-08-06, A-9 BAND: ilgari jamlanma IKKI xil hisoblanardi.
+  // Boshlang'ich yuklashda `pending = status === 'pending'`, har amaldan keyin
+  // esa `pending = total - paid`. Jadval `status === 'active'` holatini ham
+  // chizadi — demak 'active' yozuvlari bo'lsa, boshida ular hech qayerda
+  // sanalmasdi (total ≠ paid + pending), bitta tugma bosilgach esa BIRDAN
+  // `pending` ga qo'shilib, raqam sakrardi.
+  // `totalBonus` ham endi haqiqiy `bonusAmount` dan yig'iladi — qattiq
+  // kodlangan 15000 dan emas (summa o'zgarsa jimgina noto'g'ri bo'lardi).
+  const summarizeReferrals = (refs) => {
+    const paid = refs.filter(r => r.status === 'paid').length;
+    return {
+      total: refs.length,
+      paid,
+      pending: refs.filter(r => r.status !== 'paid').length,
+      totalBonus: refs.reduce((sum, r) => sum + (r.bonusPaid ? (r.bonusAmount || 15000) : 0), 0),
+    };
+  };
+
   // ── Referral tab ma'lumotlarini yuklash ──
+  // A-15: chegarasiz o'qish → `limit(LIST_PAGE_SIZE)`.
+  // `createdAt` har referral hujjatida bor (api/find-referral.js:181), shuning
+  // uchun `orderBy` hech kimni ro'yxatdan tushirib qoldirmaydi.
+  const loadReferrals = async ({ force = false } = {}) => {
+    if (!force && allReferrals.length > 0) return;
+    setReferralLoading(true);
+    setReferralError(null);
+    try {
+      const snap = await getDocs(query(
+        collection(db, 'referrals'),
+        orderBy('createdAt', 'desc'),
+        limit(LIST_PAGE_SIZE),
+      ));
+      const refs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      setAllReferrals(refs);
+      setReferralSummary(summarizeReferrals(refs));
+    } catch (e) {
+      console.error("Referrals load error:", e);
+      setReferralError(e?.message || 'Yuklashda xatolik');
+      showToast("Referral ma'lumotlarini yuklashda xatolik: " + e.message, 'error');
+    }
+    setReferralLoading(false);
+  };
+
   useEffect(() => {
     if (!isAdmin || tab !== 'referrals') return;
-    const loadReferrals = async () => {
-      if (allReferrals.length > 0) return; // Keshdan o'qish
-      setReferralLoading(true);
-      try {
-        const snap = await getDocs(collection(db, 'referrals'));
-        const refs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        setAllReferrals(refs);
-        const paid = refs.filter(r => r.status === 'paid').length;
-        const pending = refs.filter(r => r.status === 'pending').length;
-        setReferralSummary({
-          total: refs.length,
-          paid,
-          pending,
-          totalBonus: paid * 15000,
-        });
-      } catch (e) {
-        console.error("Referrals load error:", e);
-        showToast("Referral ma'lumotlarini yuklashda xatolik: " + e.message, 'error');
-      }
-      setReferralLoading(false);
-    };
     loadReferrals();
   }, [tab, isAdmin]);
 
@@ -573,13 +846,7 @@ try {
   const applyReferralPatch = (refId, patch) => {
     const next = allReferrals.map(r => (r.id === refId ? { ...r, ...patch } : r));
     setAllReferrals(next);
-    const paid = next.filter(r => r.status === 'paid').length;
-    setReferralSummary({
-      total: next.length,
-      paid,
-      pending: next.length - paid,
-      totalBonus: paid * 15000,
-    });
+    setReferralSummary(summarizeReferrals(next));
   };
 
   // ═══ Admin: Referral statusini "to'ladi" ga o'zgartirish ═══
@@ -611,6 +878,7 @@ try {
           });
         }
       });
+      logAdminAction('referral.mark_paid', refId, { referrerId: referrerId || null, bonus: 15000 });
       showToast("✅ Referral to'langan deb belgilandi va bonus berildi!", 'success');
       // Ro'yxatni LOKAL yangilash — ilgari bu yerda butun `referrals` kolleksiyasi
       // qayta o'qilardi (T-8). Nima o'zgarganini bilamiz, qayta o'qish shart emas.
@@ -633,16 +901,40 @@ try {
   const handleCancelReferralPremium = async (referredId, referralDocId) => {
     confirmAction("Bu foydalanuvchining bepul premium statusini bekor qilishni tasdiqlaysizmi?", async () => {
     try {
-      await updateDoc(doc(db, 'referrals', referralDocId), {
-        freeExpire: null
+      // ⚠️ ADMIN AUDIT 2026-08-06, A-2 BAND — avval `isPremium: false` SHARTSIZ
+      // yozilardi. Referral orqali kelgan odam keyinchalik HAQIQIY to'lov qilgan
+      // bo'lsa (premiumPlan: 'paid'), uning referral yozuvida `freeExpire` hamon
+      // turardi va bu tugma ko'rinardi. Bir bosish — pul to'lagan mijoz Pro'ni
+      // yo'qotardi (AuthContext.jsx:42 `isPremium && premiumPlan === 'paid'`
+      // sharti buziladi), `premiumExpire` esa kelajakda turgani uchun
+      // cron-daily ham uni tiklamasdi.
+      // Endi obuna turi tranzaksiya ichida o'qiladi va to'langan obunaga TEGILMAYDI.
+      const keptPaid = await runTransaction(db, async (tx) => {
+        const refDoc = doc(db, 'referrals', referralDocId);
+        const userDoc = referredId ? doc(db, 'users', referredId) : null;
+        // Firestore tranzaksiyasida barcha o'qishlar yozuvlardan OLDIN bo'lishi shart
+        const uSnap = userDoc ? await tx.get(userDoc) : null;
+        const uData = uSnap?.exists() ? uSnap.data() : null;
+        const isPaid = uData?.premiumPlan === 'paid';
+
+        tx.update(refDoc, { freeExpire: null });
+        if (userDoc && uData) {
+          tx.update(userDoc, isPaid
+            // To'lagan mijoz: faqat referral bepul muddatini olib tashlaymiz
+            ? { freeMonthExpire: null }
+            // Bepul premium: to'liq bekor qilish. `premiumExpire`/`premiumPlan`
+            // ham tozalanadi — togglePremium'dagi bekor qilish yo'li bilan bir xil.
+            : { isPremium: false, freeMonthExpire: null, premiumExpire: null, premiumPlan: 'expired' });
+        }
+        return isPaid;
       });
-      if (referredId) {
-        await updateDoc(doc(db, 'users', referredId), {
-          isPremium: false,
-          freeMonthExpire: null
-        });
-      }
-      showToast("✅ Bepul premium status bekor qilindi!", 'success');
+      showToast(
+        keptPaid
+          ? "Bepul muddat bekor qilindi. Foydalanuvchi TO'LOV qilgani uchun Pro statusi saqlandi."
+          : "✅ Bepul premium status bekor qilindi!",
+        keptPaid ? 'info' : 'success'
+      );
+      logAdminAction('referral.cancel_free', referralDocId, { referredId: referredId || null, toloviBor: keptPaid });
       // Lokal yangilash — butun kolleksiyani qayta o'qimaymiz (T-8)
       applyReferralPatch(referralDocId, { freeExpire: null });
     } catch (e) {
@@ -715,36 +1007,76 @@ try {
     });
   };
 
-  const togglePremium = async (userId, currentStatus) => {
+  // ⚠️ ADMIN AUDIT 2026-08-06, A-5 va B-4 BANDLARI.
+  //
+  // AVVAL: `window.prompt("Necha kunga Pro berilsin?\n(bo'sh qoldiring — muddatsiz)")`.
+  // Uch muammo:
+  //  1. Bo'sh qoldirish `premiumExpire: null` yozardi. AuthContext.jsx:51 buni
+  //     MANGU premium deb biladi va `api/cron-daily.js` ham bunday hisoblarga
+  //     tegmaydi — ya'ni obuna hech qachon tugamasdi. Bu «premiumExpire —
+  //     muddatning yagona manbasi» qoidasiga zid. Muddatsiz variant OLIB
+  //     TASHLANDI (mavjud null-muddatli hisoblarga BU O'ZGARISH TEGMAYDI —
+  //     ular alohida migratsiya qarori).
+  //  2. `window.prompt` dizayn tizimidan tashqarida va TWA/PWA muhitida
+  //     bloklanishi mumkin — bunda amal jimgina bajarilmasdi.
+  //  3. Kun soni so'ralardi, aniq sana emas — «31-dekabrgacha bering»
+  //     so'rovi qo'lda hisoblashni talab qilardi.
+  const [premiumModal, setPremiumModal] = useState(null); // { userId, name, currentExpire, plan }
+  const [premiumUntil, setPremiumUntil] = useState('');
+  const [premiumSaving, setPremiumSaving] = useState(false);
+
+  // Sana kiritish maydoni uchun `YYYY-MM-DD`
+  const isoDay = (d) => d.toISOString().slice(0, 10);
+  const dayFromNow = (days) => { const d = new Date(); d.setDate(d.getDate() + days); return isoDay(d); };
+
+  const togglePremium = (userId, currentStatus) => {
+    const u = users.find(x => x.id === userId);
+    const label = u?.displayName || u?.shortId || u?.email || userId;
+
+    // ── Bekor qilish ──
+    if (currentStatus) {
+      const paidWarning = u?.premiumPlan === 'paid'
+        ? "\n\n⚠️ DIQQAT: bu foydalanuvchi Pro ni TO'LOV orqali olgan. Bekor qilsangiz to'langan obuna yo'qoladi."
+        : '';
+      confirmAction(`"${label}" foydalanuvchidan Pro statusini olib tashlaysizmi?${paidWarning}`, async () => {
+        try {
+          await updateDoc(doc(db, 'users', userId), {
+            isPremium: false,
+            premiumExpire: null,
+            premiumPlan: 'expired',
+          });
+          setUsers(prev => prev.map(x => x.id === userId
+            ? { ...x, isPremium: false, premiumExpire: null, premiumPlan: 'expired' } : x));
+          logAdminAction('premium.revoke', userId, { oldingiReja: u?.premiumPlan || null });
+          showToast("Pro bekor qilindi", 'info');
+        } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+      });
+      return;
+    }
+
+    // ── Berish: aniq sana bilan ──
+    setPremiumUntil(dayFromNow(30));
+    setPremiumModal({ userId, name: label, currentExpire: u?.premiumExpire || null, plan: u?.premiumPlan || null });
+  };
+
+  const grantPremium = async () => {
+    if (!premiumModal) return;
+    const { userId } = premiumModal;
+
+    if (!premiumUntil) { showToast('Tugash sanasini tanlang', 'error'); return; }
+    // Kun oxirigacha amal qilsin — admin "31-dekabrgacha" deganda o'sha kun
+    // ham kirishi kutiladi.
+    const expire = new Date(`${premiumUntil}T23:59:59`);
+    if (Number.isNaN(expire.getTime())) { showToast("Sana noto'g'ri", 'error'); return; }
+    if (expire <= new Date()) { showToast("Sana kelajakda bo'lishi kerak", 'error'); return; }
+    // 5 yildan uzoq muddat — deyarli har doim xato terish (masalan 2226).
+    // Cheksiz obunani "juda uzoq sana" orqali qaytarib kiritmaslik uchun ham.
+    const maxDate = new Date(); maxDate.setFullYear(maxDate.getFullYear() + 5);
+    if (expire > maxDate) { showToast('Muddat 5 yildan oshmasin — sanani tekshiring', 'error'); return; }
+
+    setPremiumSaving(true);
     try {
-      // ── Bekor qilish: Pro ni olib tashlash ──
-      if (currentStatus) {
-        await updateDoc(doc(db, 'users', userId), {
-          isPremium: false,
-          premiumExpire: null,
-          premiumPlan: 'expired',
-        });
-        setUsers(prev => prev.map(u => u.id === userId ? { ...u, isPremium: false, premiumExpire: null } : u));
-        showToast("Pro bekor qilindi", 'info');
-        return;
-      }
-
-      // ── Berish: necha kunga? (bo'sh qoldirilsa — muddatsiz) ──
-      const input = window.prompt("Necha kunga Pro berilsin?\n(bo'sh qoldiring — muddatsiz)", "30");
-      if (input === null) return; // admin bekor qildi
-      let premiumExpire = null;
-      let days = null;
-      if (input.trim() !== '') {
-        days = parseInt(input, 10);
-        if (!Number.isFinite(days) || days <= 0) {
-          showToast("Kun soni noto'g'ri", 'error');
-          return;
-        }
-        const d = new Date();
-        d.setDate(d.getDate() + days);
-        premiumExpire = d.toISOString();
-      }
-
+      const premiumExpire = expire.toISOString();
       // premiumPlan: 'admin' — 'paid' EMAS. Shu bois muddat o'tganda AuthContext
       // avtomatik tugatadi (to'lov/promo obunalariga tegmaydi).
       await updateDoc(doc(db, 'users', userId), {
@@ -754,18 +1086,43 @@ try {
         premiumSince: new Date().toISOString(),
         premiumMethod: 'admin',
       });
-      setUsers(prev => prev.map(u => u.id === userId ? { ...u, isPremium: true, premiumExpire } : u));
-      showToast(premiumExpire ? `Pro berildi — ${days} kun ✅` : "Pro berildi — muddatsiz ✅", 'success');
-    } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+      setUsers(prev => prev.map(u => u.id === userId
+        ? { ...u, isPremium: true, premiumExpire, premiumPlan: 'admin' } : u));
+      logAdminAction('premium.grant', userId, { gacha: premiumUntil });
+      showToast(`Pro berildi — ${new Date(premiumExpire).toLocaleDateString('uz-UZ')} gacha ✅`, 'success');
+      setPremiumModal(null);
+    } catch (e) {
+      showToast("Xatolik yuz berdi", 'error');
+    } finally {
+      setPremiumSaving(false);
+    }
   };
 
-  const toggleAdmin = async (userId, currentRole) => {
-    try {
-      const newRole = currentRole === 'admin' ? 'user' : 'admin';
-      await updateDoc(doc(db, 'users', userId), { role: newRole });
-      setUsers(prev => prev.map(u => u.id === userId ? { ...u, role: newRole } : u));
-      showToast(`Rol o'zgartirildi: ${newRole}`, 'success');
-    } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+  // ⚠️ ADMIN AUDIT 2026-08-06, A-13 BAND — avval bu amal TASDIQSIZ edi: bitta
+  // bosish to'liq admin huquqini berardi (savol o'chirish, hisob yo'q qilish,
+  // Pro tarqatish). Panelda 10 ta `confirmAction` bor edi, eng kuchli amal esa
+  // ularning orasida emas edi. Tugma foydalanuvchi qatorida ⭐ yonida, 32×32 px —
+  // telefonda noto'g'ri bosish real xavf.
+  // Qo'shimcha: admin o'zidan huquqni olib, paneldan chiqib ketishi mumkin edi.
+  const toggleAdmin = (userId, currentRole) => {
+    if (userId === user?.uid) {
+      showToast("O'z rolingizni bu yerdan o'zgartira olmaysiz", 'error');
+      return;
+    }
+    const newRole = currentRole === 'admin' ? 'user' : 'admin';
+    confirmAction(
+      newRole === 'admin'
+        ? "Bu foydalanuvchiga TO'LIQ ADMIN huquqini berasizmi?\n\nU savollarni o'chira oladi, foydalanuvchi hisoblarini butunlay yo'q qila oladi va Pro tarqata oladi."
+        : "Bu foydalanuvchidan admin huquqini olib tashlaysizmi?",
+      async () => {
+        try {
+          await updateDoc(doc(db, 'users', userId), { role: newRole });
+          setUsers(prev => prev.map(u => u.id === userId ? { ...u, role: newRole } : u));
+          logAdminAction(newRole === 'admin' ? 'role.grant_admin' : 'role.revoke_admin', userId);
+          showToast(`Rol o'zgartirildi: ${newRole}`, 'success');
+        } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+      }
+    );
   };
 
   // ⚠️ AUDIT 2026-08-06, T-12 BAND — avval bu yerda faqat ikkita hujjat
@@ -796,7 +1153,8 @@ try {
       }
 
       setUsers(prev => prev.filter(u => u.id !== userId));
-      showToast("🗑️ Hisob, profil va barcha natijalar butunlay o'chirildi!", 'success');
+      logAdminAction('user.delete', userId, { email: userEmail || null, tozalandi: data.deleted || null });
+      showToast("🗑️ Hisob, profil va barcha bog'liq yozuvlar butunlay o'chirildi!", 'success');
     } catch (e) {
       console.error("Foydalanuvchini o'chirishda xatolik:", e);
       showToast("Xatolik yuz berdi: " + e.message, 'error');
@@ -901,12 +1259,15 @@ try {
         setQuestions(prev => prev.map(q =>
           q.id === wasEditing.id ? { ...q, ...questionToSave } : q
         ));
+        logAdminAction('question.update', wasEditing.id, { topicId: questionToSave.topicId });
         showToast("✅ Savol yangilandi!", 'success');
       } else {
         const newRef = await addDoc(collection(db, 'questions'), questionToSave);
         setQuestions(prev => [...prev, { id: newRef.id, ...questionToSave }]);
+        logAdminAction('question.create', newRef.id, { topicId: questionToSave.topicId });
         showToast("✅ Yangi savol qo'shildi!", 'success');
       }
+      setPendingPublish(true); // B-6: publish eslatmasi
       setIsAdding(false);
       setEditingQ(null);
       setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' });
@@ -924,6 +1285,17 @@ try {
     // Endi katta hajmda avval fan filtri talab qilinadi: fan bo'yicha ~3 000
     // savol — xavfsiz va tahlil sifatiga ta'sir qilmaydi (dublikatlar deyarli
     // doim bitta fan ichida bo'ladi).
+    // ⚠️ ADMIN AUDIT 2026-08-06, A-7 BAND — bu guard YO'Q edi. Baza yuklanmagan
+    // bo'lsa `questions` bo'sh → poolSize 0 → hech qanday klaster topilmaydi →
+    // yashil "Takroriy savollar topilmadi!" toasti chiqardi. Admin bazada
+    // dublikat yo'q degan XATO xulosaga kelardi.
+    // JSON import (`processJsonQuestions`) va zaxira (`exportQuestionsJSON`)
+    // da bu tekshiruv allaqachon bor edi — faqat shu yo'l unutilgan.
+    if (!questionsLoaded) {
+      showToast("Avval «Savollarni yuklash» tugmasini bosing — busiz dublikat tahlili bo'sh natija beradi", 'error');
+      return;
+    }
+
     const scopeCheck = questionCategoryFilter !== 'all' ? questionCategoryFilter : 'all';
     const poolSize = scopeCheck === 'all'
       ? questions.length
@@ -1019,6 +1391,8 @@ try {
         removeIds.slice(i, i + 400).forEach(id => batch.delete(doc(db, 'questions', id)));
         await batch.commit();
       }
+      logAdminAction('question.dedupe', dupPreview.scope, { ochirildi: removeIds.length, guruh: dupPreview.groups.length });
+      setPendingPublish(true); // B-6
       showToast(`Muvaffaqiyatli! ${removeIds.length} ta dublikat o'chirildi. 🎉`, 'success');
       // Ilgari butun kolleksiya qayta o'qilardi (~47 000 o'qish).
       // O'chirilgan ID'lar bizda bor — lokal ro'yxatdan olib tashlaymiz.
@@ -1062,15 +1436,54 @@ try {
         setIsSyncing(true);
         try {
           const newVersion = Date.now();
+          const nowIso = new Date().toISOString();
+
+          // ⚠️ ADMIN AUDIT 2026-08-06, A-1 BAND — `settings/questionMeta` ni
+          // butun repoda YAGONA yozuvchi `api/admin-publish.js:103` edi, uni
+          // esa HECH KIM chaqirmasdi (grep bilan tasdiqlangan). Natijada
+          // Dashboard.jsx:95 va OnboardingPage.jsx:320 dagi fan kartochkalari
+          // "ishonch badge" i — fan bo'yicha savol soni — o'sha endpoint
+          // oxirgi marta qo'lda ishga tushirilgan kunda MUZLAB qolgan edi.
+          //
+          // Endi son shu yerda hisoblanadi. Narxi: fan boshiga 1 ta
+          // aggregatsiya so'rovi = 16 ta fan uchun ≈ 16 O'QISH.
+          // `loadAllQuestions()` (~47 000 o'qish) SHART EMAS.
+          const categories = [...new Set(
+            TOPICS.map(t => (Array.isArray(t.category) ? t.category[0] : t.category)).filter(Boolean)
+          )];
+          const counted = await Promise.all(categories.map(cat =>
+            getCountFromServer(query(collection(db, 'questions'), where('category', '==', cat)))
+              .then(s => [cat, s.data().count])
+              // Bitta fan yiqilsa qolganlari yozilaversin — badge'ning bir
+              // qismi yangilanmagani butunlay yangilanmaganidan yaxshiroq
+              .catch(() => null)
+          ));
+          const questionMeta = {};
+          counted.filter(Boolean).forEach(([cat, count]) => {
+            questionMeta[cat] = { count, updatedAt: nowIso };
+          });
+
           await setDoc(doc(db, 'settings', 'version'), {
             dbVersion: newVersion,
             // `urls` ATAYLAB bo'shatiladi: eski publish qoldirgan ochiq
             // havolalar hamon o'sha hujjatda turishi mumkin.
             urls: {},
-            updatedAt: new Date().toISOString(),
+            updatedAt: nowIso,
           }, { merge: true });
 
-          showToast('✅ Yangilanish yuborildi — foydalanuvchilar yangi savollarni oladi', 'success');
+          if (Object.keys(questionMeta).length > 0) {
+            await setDoc(doc(db, 'settings', 'questionMeta'), questionMeta, { merge: true });
+          }
+
+          setPendingPublish(false);
+          logAdminAction('question.publish', null, {
+            version: newVersion,
+            fanlar: Object.keys(questionMeta).length,
+          });
+          showToast(
+            `✅ Yangilanish yuborildi — ${Object.keys(questionMeta).length} ta fan bo'yicha savol soni ham yangilandi`,
+            'success'
+          );
         } catch (e) {
           console.error('Versiya yangilash xatosi:', e);
           showToast('Xatolik: ' + e.message, 'error');
@@ -1084,6 +1497,8 @@ try {
     confirmAction("Savolni o'chirishni tasdiqlaysizmi?", async () => {
 try {
       await deleteDoc(doc(db, 'questions', id));
+      logAdminAction('question.delete', id);
+      setPendingPublish(true); // B-6
       showToast("🗑️ Savol o'chirildi", 'info');
       setQuestions(prev => prev.filter(q => q.id !== id));
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
@@ -1091,19 +1506,39 @@ try {
   };
 
   const handleSaveTariff = async () => {
+    // ⚠️ ADMIN AUDIT 2026-08-06, A-6 BAND — `durationMonths` VALIDATSIYASIZ edi.
+    // Maydon tozalansa `parseInt('')` = NaN, saqlash tugmasi esa faqat
+    // id/name/price ni tekshirardi. Firestore NaN ni qabul qiladi (yaroqli
+    // double), keyin api/payment-webhook.js:273 da:
+    //     if (durationMonths && durationMonths !== 999)   → NaN truthy, kiradi
+    //     d.setMonth(d.getMonth() + NaN)                  → Invalid Date
+    //     d.toISOString()                                 → RangeError
+    // Bu `runTransaction` ichida — ya'ni MIJOZ PUL TO'LAYDI, Pro OLMAYDI.
+    const price = Number(newTariff.price);
+    const months = Number(newTariff.durationMonths);
+    if (!Number.isFinite(price) || price <= 0) {
+      showToast("Narx noto'g'ri — musbat son kiriting", 'error');
+      return;
+    }
+    if (!Number.isInteger(months) || months < 1) {
+      showToast("Muddat noto'g'ri — butun son (oy) kiriting, cheksiz uchun 999", 'error');
+      return;
+    }
+    const normalized = { ...newTariff, price, durationMonths: months };
     try {
       let updatedTariffs = [...tariffs];
       if (editingTariff) {
-        updatedTariffs = updatedTariffs.map(t => t.id === newTariff.id ? newTariff : t);
+        updatedTariffs = updatedTariffs.map(t => t.id === normalized.id ? normalized : t);
       } else {
-        if (updatedTariffs.some(t => t.id === newTariff.id)) {
+        if (updatedTariffs.some(t => t.id === normalized.id)) {
           showToast("Bunday ID dagi tarif mavjud", 'error');
           return;
         }
-        updatedTariffs.push(newTariff);
+        updatedTariffs.push(normalized);
       }
       // settings/premium hujjatini saqlash yoki yangilash (yo'q bo'lsa yaratiladi)
       await setDoc(doc(db, 'settings', 'premium'), { plans: updatedTariffs }, { merge: true });
+      logAdminAction('tariff.save', normalized.id, { price, months });
       showToast("✅ Tarif saqlandi!", 'success');
       setIsAddingTariff(false);
       setEditingTariff(null);
@@ -1114,7 +1549,12 @@ try {
     confirmAction("Tarifni o'chirishni tasdiqlaysizmi?", async () => {
 try {
       const updatedTariffs = tariffs.filter(t => t.id !== tariffId);
-      await updateDoc(doc(db, 'settings', 'premium'), { plans: updatedTariffs });
+      // ⚠️ A-12: ilgari `updateDoc` edi — u mavjud bo'lmagan hujjatda
+      // `not-found` beradi. `settings/premium` yo'q bo'lgan holat kodda ochiq
+      // ishlanadi (default `lifetime` tarifi ko'rsatiladi), ya'ni admin aynan
+      // o'sha ko'rsatilgan tarifni o'chirmoqchi bo'lsa sababsiz xato olardi.
+      await setDoc(doc(db, 'settings', 'premium'), { plans: updatedTariffs }, { merge: true });
+      logAdminAction('tariff.delete', tariffId);
       showToast("🗑️ Tarif o'chirildi", 'info');
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
     });
@@ -1203,6 +1643,36 @@ try {
     });
   const pendingReqGroups = requestGroups.filter(g => g.pending > 0).length;
 
+  // ── Modal a11y (D-3) ──
+  // ⚠️ ADMIN AUDIT 2026-08-06: panelda 5 ta modal bor, hech birida
+  // `role="dialog"`, `aria-modal`, Escape yoki fokus tutqichi YO'Q edi.
+  // `useModalA11y` AYNAN shu muammo uchun yaratilgan (T-10) va 11 ta modalga
+  // ulangan — admin paneli o'sha ro'yxatga kirmagan edi.
+  const qModalRef = useModalA11y(isAdding, () => { setIsAdding(false); setEditingQ(null); });
+  const tariffModalRef = useModalA11y(isAddingTariff, () => setIsAddingTariff(false));
+  const dupModalRef = useModalA11y(!!dupPreview, () => { if (!dupDeleting) setDupPreview(null); });
+  const premiumModalRef = useModalA11y(!!premiumModal, () => { if (!premiumSaving) setPremiumModal(null); });
+  const userCardRef = useModalA11y(!!userCard, () => setUserCard(null));
+
+  // ── Tab ta'rifi bitta joyda ──
+  // Ilgari 11 ta tab tugmasi qo'lda takrorlangan edi (har biri ~4 qator bir xil
+  // JSX). Ro'yxatga aylantirish tab qo'shishni bir qatorlik ishga aylantiradi
+  // va `role="tab"`/`aria-selected` ni HAMMASIGA bir xil beradi (D-4).
+  const TABS = [
+    { key: 'objections', label: "E'tirozlar", Icon: MessageCircle, badge: overview?.unsolvedObjections ?? unsolvedCount },
+    { key: 'requests', label: "So'rovlar", Icon: Inbox, badge: pendingReqGroups },
+    { key: 'questions', label: 'Savollar', Icon: FileText, badge: pendingPublish ? 1 : 0 },
+    { key: 'users', label: 'Foydalanuvchilar', Icon: Users, badge: newDeletionRequests },
+    { key: 'payments', label: "To'lovlar", Icon: CreditCard, badge: 0 },
+    { key: 'stats', label: 'Statistika', Icon: BarChart3, badge: 0 },
+    { key: 'tariffs', label: 'Tariflar', Icon: Zap, badge: 0 },
+    { key: 'notifications', label: 'Xabarlar', Icon: Bell, badge: 0 },
+    { key: 'referrals', label: 'Referral', Icon: Users, badge: 0 },
+    { key: 'promos', label: 'Promo', Icon: Ticket, badge: 0 },
+    { key: 'schools', label: 'Maktablar', Icon: School, badge: 0 },
+    { key: 'journal', label: 'Jurnal', Icon: AlertTriangle, badge: unresolvedErrorCount },
+  ];
+
   if (!isAdmin) {
     return (
       <div className="page" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh', gap: '16px' }}>
@@ -1225,16 +1695,20 @@ try {
       </button>
 
       <div className="admin-header">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div className="admin-row">
           <div className="admin-badge"><Shield size={14} /> ADMIN</div>
           <div>
-            <div style={{ fontSize: 'var(--fs-4xl)', fontWeight: '900', letterSpacing: '-0.5px', color: 'var(--text)' }}>Boshqaruv Paneli</div>
-            <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: '2px' }}>{user?.email}</div>
+            <h1 className="admin-title">Boshqaruv Paneli</h1>
+            <div className="admin-subtitle">{user?.email}</div>
           </div>
         </div>
         <div className="admin-quick-stats">
           <div className="admin-quick-stat">
-            <div className="admin-quick-stat-val" style={{ color: 'var(--amber)' }}>{unsolvedCount}</div>
+            {/* A-17: `unsolvedCount` faqat yuklangan 200 ta e'tirozdan hisoblanadi.
+                Aggregatsiya soni bo'lsa — HAQIQIY jami ko'rsatiladi. */}
+            <div className="admin-quick-stat-val" style={{ color: 'var(--amber)' }}>
+              {overview?.unsolvedObjections ?? unsolvedCount}
+            </div>
             <div className="admin-quick-stat-lbl">Kutmoqda</div>
           </div>
           <div className="admin-quick-stat">
@@ -1248,114 +1722,170 @@ try {
         </div>
       </div>
 
-      <div className="admin-tabs">
-        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'objections' ? 'active' : ''}`} onClick={() => setTab('objections')}>
-          <MessageCircle size={15} /> E'tirozlar
-          {unsolvedCount > 0 && <span className="admin-tab-badge">{unsolvedCount}</span>}
-        </motion.button>
-        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'requests' ? 'active' : ''}`} onClick={() => setTab('requests')}>
-          <Inbox size={15} /> So'rovlar
-          {pendingReqGroups > 0 && <span className="admin-tab-badge">{pendingReqGroups}</span>}
-        </motion.button>
-        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'questions' ? 'active' : ''}`} onClick={() => setTab('questions')}>
-          <FileText size={15} /> Savollar
-        </motion.button>
-        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'users' ? 'active' : ''}`} onClick={() => setTab('users')}>
-          <Users size={15} /> Foydalanuvchilar
-        </motion.button>
-        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'stats' ? 'active' : ''}`} onClick={() => setTab('stats')}>
-          <BarChart3 size={15} /> Statistika
-        </motion.button>
-        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'tariffs' ? 'active' : ''}`} onClick={() => setTab('tariffs')}>
-          <Zap size={15} /> Tariflar
-        </motion.button>
-        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'notifications' ? 'active' : ''}`} onClick={() => setTab('notifications')}>
-          <Bell size={15} /> Xabarlar
-        </motion.button>
-        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'referrals' ? 'active' : ''}`} onClick={() => setTab('referrals')}>
-          <Users size={15} /> Referral
-        </motion.button>
-        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'promos' ? 'active' : ''}`} onClick={() => setTab('promos')}>
-          <Zap size={15} /> Promo
-        </motion.button>
-        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'schools' ? 'active' : ''}`} onClick={() => setTab('schools')}>
-          <School size={15} /> Maktablar
-        </motion.button>
-        <motion.button whileTap={{ scale: 0.95 }} className={`admin-tab ${tab === 'errors' ? 'active' : ''}`} onClick={() => setTab('errors')}>
-          <AlertTriangle size={15} /> Xatolar
-        </motion.button>
+      {/* D-6: tab qatori — faol tab tanlanganda ko'rinishga olib kelinadi,
+          o'ng chetda esa yana tab borligini bildiruvchi mask (CSS). */}
+      <div className="admin-tabs-wrap">
+        <div className="admin-tabs" role="tablist" aria-label="Admin bo'limlari">
+          {TABS.map(({ key, label, Icon, badge }) => (
+            <motion.button
+              key={key}
+              whileTap={{ scale: 0.95 }}
+              role="tab"
+              aria-selected={tab === key}
+              className={`admin-tab ${tab === key ? 'active' : ''}`}
+              ref={tab === key ? activeTabRef : null}
+              onClick={() => setTab(key)}
+            >
+              <Icon size={15} /> {label}
+              {badge > 0 && <span className="admin-tab-badge">{badge}</span>}
+            </motion.button>
+          ))}
+        </div>
       </div>
 
       {tab === 'promos' && <PromoTab />}
 
       {tab === 'schools' && <SchoolsTab />}
 
-      {tab === 'errors' && (
+      {tab === 'journal' && (
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
-            <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)' }}>
-              Client xatolari — {unresolvedErrorCount} ta hal qilinmagan / {errorLogs.length} ta jami (eng yangi tepada)
-            </div>
-            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-              <button
-                className={`btn btn-sm ${errorsShowResolved ? 'btn-primary' : 'btn-outline'}`}
-                onClick={() => setErrorsShowResolved(v => !v)}
-              >
-                {errorsShowResolved ? '✅ Hal qilinganlar ko\'rinmoqda' : 'Hal qilinganlarni ko\'rsatish'}
+          {/* Ikkita ko'rinish bitta tabda: client xatolari va admin amallari
+              bir xil turdagi ma'lumot (kuzatuv). Alohida 13-tab telefondagi
+              tab qatorini yanada siqib qo'yardi. */}
+          <div className="admin-row-between" style={{ marginBottom: 14 }}>
+            <div className="admin-segment" role="tablist" aria-label="Jurnal ko'rinishi">
+              <button role="tab" aria-selected={journalView === 'errors'}
+                className={journalView === 'errors' ? 'active' : ''}
+                onClick={() => setJournalView('errors')}>
+                Client xatolari{unresolvedErrorCount > 0 ? ` (${unresolvedErrorCount})` : ''}
               </button>
-              <button className="btn btn-outline" onClick={loadErrorLogs} disabled={errorsLoading}>
-                <RefreshCw size={14} /> {errorsLoading ? 'Yuklanmoqda...' : 'Yangilash'}
+              <button role="tab" aria-selected={journalView === 'actions'}
+                className={journalView === 'actions' ? 'active' : ''}
+                onClick={() => setJournalView('actions')}>
+                Admin amallari
+              </button>
+            </div>
+            <div className="admin-row--tight">
+              {journalView === 'errors' && (
+                <button
+                  className={`btn btn-sm ${errorsShowResolved ? 'btn-primary' : 'btn-outline'}`}
+                  onClick={() => setErrorsShowResolved(v => !v)}
+                >
+                  {errorsShowResolved ? '✅ Hal qilinganlar ko\'rinmoqda' : 'Hal qilinganlarni ko\'rsatish'}
+                </button>
+              )}
+              <button
+                className="btn btn-sm btn-outline"
+                onClick={() => (journalView === 'errors' ? loadErrorLogs() : loadAdminActions())}
+                disabled={journalView === 'errors' ? errorsLoading : actionsLoading}
+              >
+                <RefreshCw size={14} className={(journalView === 'errors' ? errorsLoading : actionsLoading) ? 'spin' : ''} /> Yangilash
               </button>
             </div>
           </div>
-          {visibleErrorLogs.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '40px 20px', color: 'var(--text3)' }}>
+
+          {/* ── Admin amallari (B-5) ── */}
+          {journalView === 'actions' && (
+            actionsLoading ? (
+              <div className="admin-state-block">Yuklanmoqda...</div>
+            ) : actionsError ? (
+              <div className="admin-info-box admin-info-box--error">
+                <div className="admin-info-title"><AlertCircle size={15} /> Jurnalni o'qib bo'lmadi</div>
+                <div className="admin-info-text">{actionsError}</div>
+              </div>
+            ) : adminActions.length === 0 ? (
+              <div className="admin-state-block">
+                <div className="admin-empty-icon">🗒️</div>
+                <div className="admin-empty-text">Hali qayd etilgan amal yo'q</div>
+                <div className="admin-info-text" style={{ marginTop: 6 }}>
+                  Jurnal shu tuzatishdan keyingi amallarni yozadi — undan oldingilari qayd etilmagan.
+                </div>
+              </div>
+            ) : (
+              <div className="admin-stack">
+                {adminActions.map(a => (
+                  <div key={a.id} className="admin-card">
+                    <div className="admin-row-between">
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ fontWeight: 700, color: 'var(--text)' }}>
+                          {ADMIN_ACTION_LABELS[a.type] || a.type}
+                        </div>
+                        <div className="admin-meta-line" style={{ marginTop: 4 }}>
+                          <span>👤 {a.actorEmail || a.actorUid}</span>
+                          {a.target && <span>🎯 {a.target}</span>}
+                          <span>🕒 {new Date(a.createdAt).toLocaleString()}</span>
+                        </div>
+                      </div>
+                      {a.meta && (
+                        <span className="admin-chip admin-chip--muted">
+                          {Object.entries(a.meta).map(([k, v]) => `${k}: ${v}`).join(' · ')}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )
+          )}
+
+          {/* ── Client xatolari ── */}
+          {journalView === 'errors' && (errorsLoading && errorLogs.length === 0 ? (
+            <div className="admin-state-block">Yuklanmoqda...</div>
+          ) : errorsError ? (
+            <div className="admin-info-box admin-info-box--error">
+              <div className="admin-info-title"><AlertCircle size={15} /> Xatolarni o'qib bo'lmadi</div>
+              <div className="admin-info-text">{errorsError}</div>
+            </div>
+          ) : visibleErrorLogs.length === 0 ? (
+            <div className="admin-state-block">
               <CheckCircle size={40} style={{ color: 'var(--green)', marginBottom: 10 }} />
               <div style={{ fontWeight: 700 }}>Xatolar yo'q</div>
-              <div style={{ fontSize: 'var(--fs-md)' }}>
+              <div className="admin-info-text">
                 {errorLogs.length > 0
                   ? "Barcha xatolar hal qilindi deb belgilangan."
                   : "Production'da qayd etilgan client xatosi topilmadi."}
               </div>
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <div className="admin-stack">
               {visibleErrorLogs.map(log => {
                 const sev = log.severity || 'error';
-                const sevColor = sev === 'info' ? 'var(--blue)' : sev === 'warning' ? 'var(--amber)' : 'var(--red)';
                 const ua = prettyUA(log.userAgent);
                 // uid bo'lsa — ism/telefon; users'da topilmasa (akkaunt o'chirilgan)
                 // uid'ning boshi ko'rsatiladi. uid umuman yo'q = kirmagan mehmon.
                 const who = log.uid
                   ? (userLabel(errorUsers[log.uid]) || `${log.uid.slice(0, 8)}… (topilmadi)`)
                   : 'Kirmagan mehmon';
+                const sevClass = sev === 'info' ? 'admin-chip--blue' : sev === 'warning' ? 'admin-chip--amber' : 'admin-chip--red';
                 return (
-                  <div key={log.id} style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 12, padding: '12px 14px', opacity: log.resolved ? 0.6 : 1 }}>
+                  <div key={log.id} className={`admin-card ${log.resolved ? 'admin-card--dim' : ''}`}>
                     <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10 }}>
                       <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 4 }}>
-                          <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: sevColor, border: `1px solid ${sevColor}`, borderRadius: 6, padding: '1px 6px' }}>
-                            {sev}
-                          </span>
+                        <div className="admin-row" style={{ marginBottom: 4 }}>
+                          <span className={`admin-chip ${sevClass}`}>{sev}</span>
                           {log.resolved && (
-                            <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 800, color: 'var(--green)', border: '1px solid var(--green)', borderRadius: 6, padding: '1px 6px' }}>
-                              ✅ HAL QILINDI
-                            </span>
+                            <span className="admin-chip admin-chip--green">✅ HAL QILINDI</span>
                           )}
                         </div>
                         <div style={{ fontSize: 'var(--fs-base)', fontWeight: 700, color: 'var(--text)', wordBreak: 'break-word' }}>
                           {log.message}
                         </div>
                       </div>
-                      <div style={{ display: 'flex', gap: 4, flexShrink: 0 }}>
+                      <div className="admin-row--tight">
                         <button
+                          className={`admin-icon-btn ${log.resolved ? 'is-on' : ''}`}
                           onClick={() => toggleErrorResolved(log.id, !log.resolved)}
+                          aria-label={log.resolved ? "Hal qilinmagan deb belgilash" : "Hal qilindi deb belgilash"}
                           title={log.resolved ? "Hal qilinmagan deb belgilash" : "Hal qilindi deb belgilash"}
-                          style={{ background: 'none', border: 'none', cursor: 'pointer', color: log.resolved ? 'var(--green)' : 'var(--text3)' }}
                         >
                           <CheckCircle size={15} />
                         </button>
-                        <button onClick={() => deleteErrorLog(log.id)} title="O'chirish" style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)' }}>
+                        <button
+                          className="admin-icon-btn"
+                          onClick={() => deleteErrorLog(log.id)}
+                          aria-label="Xato yozuvini o'chirish"
+                          title="O'chirish"
+                        >
                           <Trash2 size={15} />
                         </button>
                       </div>
@@ -1368,7 +1898,7 @@ try {
                         {JSON.stringify(log.context, null, 2)}
                       </pre>
                     )}
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 8, fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>
+                    <div className="admin-meta-line" style={{ marginTop: 8 }}>
                       {log.url && <span>🔗 {log.url.replace(/^https?:\/\//, '')}</span>}
                       {ua && <span title={log.userAgent}>🌐 {ua}</span>}
                       <span title={log.uid || 'uid yozilmagan'} style={{ color: log.uid ? 'var(--text2)' : 'var(--text3)' }}>
@@ -1380,6 +1910,99 @@ try {
                 );
               })}
             </div>
+          ))}
+        </div>
+      )}
+
+      {/* ════════════════════════════════════════════
+          TO'LOVLAR (B-1) — «to'ladim, Pro yo'q» murojaatlarini tekshirish
+          ════════════════════════════════════════════ */}
+      {tab === 'payments' && (
+        <div className="admin-stack">
+          <div className="admin-row-between">
+            <div className="admin-section-title admin-section-title--flush">
+              <CreditCard size={18} style={{ color: 'var(--blue)' }} /> To'lovlar ({payments.length})
+            </div>
+            <button className="btn btn-sm btn-outline" onClick={() => loadPayments({ force: true })} disabled={paymentsLoading}>
+              <RefreshCw size={14} className={paymentsLoading ? 'spin' : ''} /> Yangilash
+            </button>
+          </div>
+
+          <div className="admin-info-box">
+            <div className="admin-info-text">
+              Har muvaffaqiyatli to'lov <code>api/payment-webhook.js</code> tomonidan yoziladi.
+              «To'ladim, lekin Pro kelmadi» murojaatida shu yerdan <strong>tranzaksiya ID</strong> yoki
+              foydalanuvchi UID bo'yicha izlang: <strong>Kutilgan</strong> va <strong>To'langan</strong>
+              summalar farq qilsa, to'lov <code>AMOUNT_MISMATCH</code> bilan rad etilgan bo'ladi.
+              Eng yangi {LIST_PAGE_SIZE} tasi ko'rsatiladi.
+            </div>
+          </div>
+
+          {paymentsLoading && payments.length === 0 ? (
+            <div className="admin-state-block">Yuklanmoqda...</div>
+          ) : paymentsError ? (
+            <div className="admin-info-box admin-info-box--error">
+              <div className="admin-info-title"><AlertCircle size={15} /> To'lovlarni o'qib bo'lmadi</div>
+              <div className="admin-info-text">{paymentsError}</div>
+            </div>
+          ) : payments.length === 0 ? (
+            <div className="admin-state-block">
+              <div className="admin-empty-icon">💳</div>
+              <div className="admin-empty-text">Hali to'lov yozuvi yo'q</div>
+            </div>
+          ) : (
+            <div className="glass-panel" style={{ padding: 20 }}>
+              <div className="admin-table-wrap">
+                <table className="admin-table">
+                  <thead>
+                    <tr>
+                      {['Sana', 'Foydalanuvchi', 'Tarif', 'Kutilgan', "To'langan", 'Muddat', 'Holat'].map(h => (
+                        <th key={h}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {payments.map(p => {
+                      const mismatch = Number.isFinite(p.paidAmount)
+                        && Number.isFinite(p.expectedAmount)
+                        && p.paidAmount !== p.expectedAmount;
+                      const fmt = (n) => (Number.isFinite(n) ? new Intl.NumberFormat('uz-UZ').format(n) : '—');
+                      return (
+                        <tr key={p.id}>
+                          <td>
+                            <div>{p.createdAt ? new Date(p.createdAt).toLocaleDateString('uz-UZ') : '—'}</div>
+                            <div className="admin-td-sub">{p.provider || '—'}</div>
+                          </td>
+                          <td>
+                            <div className="admin-td-sub">{p.uid || '—'}</div>
+                            <div className="admin-td-sub">tx: {p.transId || p.id}</div>
+                          </td>
+                          <td>{p.planId || '—'}</td>
+                          <td>{fmt(p.expectedAmount)}</td>
+                          <td style={{ color: mismatch ? 'var(--red)' : 'var(--text)', fontWeight: mismatch ? 700 : 400 }}>
+                            {fmt(p.paidAmount)}
+                          </td>
+                          <td className="admin-td-sub">
+                            {p.premiumExpire
+                              ? new Date(p.premiumExpire).toLocaleDateString('uz-UZ')
+                              : (p.durationMonths === 999 ? 'Cheksiz' : '—')}
+                          </td>
+                          <td>
+                            {mismatch ? (
+                              <span className="admin-chip admin-chip--red">SUMMA MOS EMAS</span>
+                            ) : p.status === 'success' ? (
+                              <span className="status-badge-neon paid">✅ {p.status}</span>
+                            ) : (
+                              <span className="status-badge-neon pending">{p.status || '—'}</span>
+                            )}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           )}
         </div>
       )}
@@ -1388,7 +2011,7 @@ try {
         <div>
           <div className="admin-filter-bar">
             <div className="admin-search-wrap">
-              <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text3)' }} />
+              <Search size={16} className="admin-search-icon" />
               <input
                 className="admin-search"
                 placeholder="Savol yoki mavzu bo'yicha qidirish..."
@@ -1396,7 +2019,7 @@ try {
                 onChange={e => setSearch(e.target.value)}
               />
             </div>
-            <div style={{ display: 'flex', gap: '8px' }}>
+            <div className="admin-row--tight">
               {['all', 'unsolved', 'solved'].map(f => (
                 <button
                   key={f}
@@ -1409,15 +2032,24 @@ try {
             </div>
           </div>
 
-          {loading ? (
-            <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text3)' }}>Yuklanmoqda...</div>
+          {/* A-3: xato holati — ilgari `loading` mangu true bo'lib qolardi */}
+          {objectionsError ? (
+            <div className="admin-info-box admin-info-box--error">
+              <div className="admin-info-title"><AlertCircle size={15} /> E'tirozlarni o'qib bo'lmadi</div>
+              <div className="admin-info-text">
+                {objectionsError}<br />
+                Sahifani yangilab ko'ring. Xato takrorlansa — Firestore qoidalari yoki indeks muammosi.
+              </div>
+            </div>
+          ) : loading ? (
+            <div className="admin-state-block">Yuklanmoqda...</div>
           ) : filtered.length === 0 ? (
             <div className="glass-panel" style={{ padding: '60px', textAlign: 'center' }}>
               <div style={{ fontSize: 'var(--fs-10xl)', marginBottom: '12px' }}>🎉</div>
               <div style={{ color: 'var(--text2)', fontWeight: '600' }}>Hamma e'tirozlar hal qilindi!</div>
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div className="admin-stack">
               <AnimatePresence>
                 {filteredSorted.map((obj) => (
                   <motion.div
@@ -1426,8 +2058,7 @@ try {
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
-                    className="admin-objection-card glass-panel"
-                    style={{ border: obj.solved ? '1px solid rgba(16,185,129,0.3)' : '1px solid rgba(245,158,11,0.3)', opacity: obj.solved ? 0.75 : 1 }}
+                    className={`admin-objection-card glass-panel ${obj.solved ? 'is-solved' : 'is-open'}`}
                   >
                     <div
                       style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
@@ -1438,7 +2069,7 @@ try {
                           {obj.solved ? '✅ HAL QILINDI' : '⏳ YANGI'}
                         </span>
                         {(objectionCounts[objKey(obj)] || 0) >= 2 && (
-                          <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 800, background: 'var(--red-bg)', color: 'var(--red)', padding: '2px 8px', borderRadius: '6px', border: '1px solid rgba(239,68,68,0.3)' }}>
+                          <span className="admin-chip admin-chip--red">
                             ⚠ {objectionCounts[objKey(obj)]} ta shikoyat
                           </span>
                         )}
@@ -1482,12 +2113,11 @@ try {
                                 </button>
                               )}
                               <button
-                                className="btn btn-sm btn-outline"
-                                style={{ color: 'var(--red)', borderColor: 'var(--red)' }}
+                                className="btn btn-sm btn-outline admin-btn-danger"
                                 onClick={() => handleDeleteObjection(obj.fbId)}
                               >
                                 <Trash2 size={14} /> O'chirish
-                                </button>
+                              </button>
                             </div>
                           </div>
                         </motion.div>
@@ -1502,7 +2132,7 @@ try {
       )}
 
       {tab === 'requests' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div className="admin-stack-l">
           <div className="admin-section-title"><Inbox size={18} style={{ color: 'var(--blue)' }} /> Savol so'rovlari ({questionRequests.length})</div>
           <div className="admin-info-box">
             <div className="admin-info-text">
@@ -1517,7 +2147,7 @@ try {
               <div style={{ color: 'var(--text3)', fontSize: 'var(--fs-md)', marginTop: '6px' }}>Foydalanuvchilar savol yetishmagan bo'limlardan so'rov yuborganda shu yerda paydo bo'ladi.</div>
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div className="admin-stack">
               {requestGroups.map(group => (
                 <motion.div
                   key={group.key}
@@ -1553,7 +2183,7 @@ try {
                           <CheckCircle size={14} /> Savol qo'shildi
                         </button>
                       )}
-                      <button className="btn btn-sm btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={() => handleDeleteRequestGroup(group)} title="So'rovlarni o'chirish">
+                      <button className="btn btn-sm btn-outline admin-btn-danger" onClick={() => handleDeleteRequestGroup(group)} title="So'rovlarni o'chirish">
                         <Trash2 size={14} />
                       </button>
                     </div>
@@ -1566,7 +2196,7 @@ try {
       )}
 
       {tab === 'questions' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div className="admin-stack-l">
           <div className="admin-section-title"><FileText size={18} style={{ color: 'var(--blue)' }} /> Savollar Bazasi ({questions.length ? questions.length : (overview?.questions ?? '—')})</div>
 
           {/* Savollar yuklanmagan — ataylab tasdiqlash kerak (kvota himoyasi) */}
@@ -1596,12 +2226,30 @@ try {
             </div>
           )}
 
+          {/* B-6: savol tahriri va publish o'rtasidagi bog'lanish.
+              Bu tasmasiz admin savolni tuzatib publish qilishni unutsa,
+              foydalanuvchilar eski keshdagi savolni ko'raverardi. */}
+          {pendingPublish && (
+            <div className="admin-info-box admin-info-box--warn">
+              <div style={{ flex: 1, minWidth: 200 }}>
+                <div className="admin-info-title"><AlertTriangle size={15} /> Yuborilmagan o'zgarishlar bor</div>
+                <div className="admin-info-text">
+                  Savollar o'zgardi, lekin foydalanuvchilarning ilovasidagi kesh hali eski.
+                  «Yangilanishni yuborish» tugmasini bosmaguningizcha ular <strong>eski savollarni</strong> ko'radi.
+                </div>
+              </div>
+              <button className="btn btn-primary" onClick={handlePublishBundles} disabled={isSyncing}>
+                <UploadCloud size={14} /> {isSyncing ? 'Yuborilmoqda...' : 'Hoziroq yuborish'}
+              </button>
+            </div>
+          )}
+
           <div className="admin-action-bar">
-            <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-primary" style={{ background: 'var(--green)', borderColor: 'var(--green)' }} onClick={handlePublishBundles} disabled={isSyncing}>
+            <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-primary admin-btn-ok" onClick={handlePublishBundles} disabled={isSyncing}>
               <UploadCloud size={14} /> {isSyncing ? 'Yuborilmoqda...' : '🚀 Yangilanishni yuborish'}
             </motion.button>
 
-            <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={analyzeDuplicates} disabled={dupAnalyzing}>
+            <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline admin-btn-danger" onClick={analyzeDuplicates} disabled={dupAnalyzing}>
               <Trash2 size={14} /> {dupAnalyzing ? 'Tahlil...' : 'Dublikatlar'}
             </motion.button>
             <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline" onClick={exportQuestionsJSON} disabled={!questions.length} title="Barcha savollarni JSON faylga zaxiralash">
@@ -1615,7 +2263,7 @@ try {
           {/* Glassmorphic Filter and Search Bar */}
           <div className="admin-glass-filter-bar">
             <div className="admin-search-wrap">
-              <Search size={16} className="admin-search-icon" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text3)' }} />
+              <Search size={16} className="admin-search-icon" />
               <input
                 className="admin-search"
                 placeholder="Savol matni bo'yicha qidirish..."
@@ -1689,18 +2337,7 @@ try {
             onDragOver={(e) => { e.preventDefault(); setIsDraggingFile(true); }}
             onDragLeave={() => setIsDraggingFile(false)}
             onDrop={handleFileDrop}
-            style={{
-              border: `2.5px dashed ${isDraggingFile ? 'var(--blue)' : 'var(--glass-border)'}`,
-              borderRadius: '20px',
-              padding: '32px 24px',
-              textAlign: 'center',
-              background: isDraggingFile ? 'var(--blue-bg)' : 'var(--glass-bg)',
-              backdropFilter: 'blur(10px)',
-              transition: 'all 0.25s ease',
-              cursor: 'pointer',
-              position: 'relative',
-              boxShadow: isDraggingFile ? '0 8px 30px rgba(14, 151, 224, 0.15)' : 'none',
-            }}
+            className={`admin-dropzone ${isDraggingFile ? 'is-dragging' : ''}`}
             onClick={() => document.getElementById('json-file-input').click()}
           >
             <input
@@ -1712,31 +2349,34 @@ try {
             />
             {isUploadingJSON ? (
               <div>
-                <div style={{ fontSize: 'var(--fs-8xl)', marginBottom: '8px', display: 'inline-block' }} className="spin-icon">⏳</div>
-                <div style={{ fontSize: 'var(--fs-base)', fontWeight: '700', color: 'var(--text)' }}>Savollar yuklanmoqda, iltimos kuting...</div>
+                {/* C-4: `spin-icon` klassi CSS'da HECH QAYERDA ta'riflanmagan edi —
+                    "yuklanmoqda" ko'rsatkichi qimirlamasdi. `.spin` esa mavjud
+                    (src/index.css:1618). */}
+                <div className="admin-dropzone-icon spin" style={{ display: 'inline-block' }}>⏳</div>
+                <div className="admin-dropzone-title">Savollar yuklanmoqda, iltimos kuting...</div>
               </div>
             ) : (
               <div>
-                <div style={{ fontSize: 'var(--fs-8xl)', marginBottom: '8px' }}>📁</div>
-                <div style={{ fontSize: 'var(--fs-base)', fontWeight: '700', color: 'var(--text)', marginBottom: '4px' }}>
+                <div className="admin-dropzone-icon">📁</div>
+                <div className="admin-dropzone-title">
                   {isDraggingFile ? 'Faylni shu yerga tashlang' : 'JSON faylni sudrab tashlang yoki bosing'}
                 </div>
-                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>
+                <div className="admin-dropzone-hint">
                   Diapazon bo'yicha topicId va category avtomatik bog'lanadi (Ommaviy yuklash)
                 </div>
               </div>
             )}
           </motion.div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <div className="admin-stack-s">
             {filteredQuestions.slice(0, 50).map((q) => (
               <div key={q.id} className="admin-q-card">
                 <div className="admin-q-text">{q.q}</div>
                 <div className="admin-q-footer">
                   <span className="admin-q-topic">#{q.topicId} · {q.category || 'chqbt'}</span>
                   <div className="admin-q-actions">
-                    <button className="btn btn-sm btn-outline" onClick={() => { setEditingQ(q); setNewQ({...q}); setIsAdding(true); }}><Edit3 size={14} /></button>
-                    <button className="btn btn-sm btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={() => handleDeleteQuestion(q.id)}><Trash2 size={14} /></button>
+                    <button className="btn btn-sm btn-outline" aria-label="Savolni tahrirlash" title="Tahrirlash" onClick={() => { setEditingQ(q); setNewQ(toEditableQuestion(q)); setIsAdding(true); }}><Edit3 size={14} /></button>
+                    <button className="btn btn-sm btn-outline admin-btn-danger" aria-label="Savolni o'chirish" title="O'chirish" onClick={() => handleDeleteQuestion(q.id)}><Trash2 size={14} /></button>
                   </div>
                 </div>
               </div>
@@ -1757,87 +2397,196 @@ try {
 
       {tab === 'users' && (
         <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14, flexWrap: 'wrap', gap: 10 }}>
-            <div className="admin-section-title" style={{ marginBottom: 0 }}><Users size={18} style={{ color: 'var(--blue)' }} /> Foydalanuvchilar ({filteredUsers.length}/{users.length})</div>
-            <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+          {/* ── Hisobni o'chirish arizalari (B-2) ── */}
+          {(deletionRequests.length > 0 || delReqError) && (
+            <div className="glass-panel" style={{ padding: 16, marginBottom: 16 }}>
+              <div className="admin-row-between" style={{ marginBottom: 10 }}>
+                <div className="admin-row" style={{ fontWeight: 800, color: 'var(--text)' }}>
+                  <Trash2 size={16} style={{ color: 'var(--amber)' }} /> Hisobni o'chirish arizalari
+                  {newDeletionRequests > 0 && <span className="admin-tab-badge">{newDeletionRequests}</span>}
+                </div>
+                <button className="btn btn-sm btn-outline" onClick={() => loadDeletionRequests({ force: true })} disabled={delReqLoading}>
+                  <RefreshCw size={13} className={delReqLoading ? 'spin' : ''} /> Yangilash
+                </button>
+              </div>
+              {delReqError ? (
+                <div className="admin-info-text" style={{ color: 'var(--red)' }}>{delReqError}</div>
+              ) : (
+                <div className="admin-stack-s">
+                  {deletionRequests.map(r => (
+                    <div key={r.id} className={`admin-card ${r.status !== 'pending' ? 'admin-card--dim' : ''}`}>
+                      <div className="admin-row-between">
+                        <div style={{ minWidth: 0 }}>
+                          <div style={{ fontWeight: 700, color: 'var(--text)' }}>{r.name || '—'}</div>
+                          <div className="admin-meta-line" style={{ marginTop: 3 }}>
+                            <span>📞 {r.phone || '—'}</span>
+                            {r.createdAt && <span>🕒 {new Date(r.createdAt).toLocaleString()}</span>}
+                            <span className={`admin-chip ${r.status === 'pending' ? 'admin-chip--amber' : 'admin-chip--green'}`}>
+                              {r.status || 'pending'}
+                            </span>
+                          </div>
+                          {r.reason && <div className="admin-info-text" style={{ marginTop: 6 }}>{r.reason}</div>}
+                        </div>
+                        {r.status === 'pending' && (
+                          <button className="btn btn-sm btn-outline" onClick={() => setDeletionRequestStatus(r.id, 'done')}>
+                            <CheckCircle size={13} /> Bajarildi
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          <div className="admin-row-between" style={{ marginBottom: 14 }}>
+            <div className="admin-section-title admin-section-title--flush">
+              <Users size={18} style={{ color: 'var(--blue)' }} /> Foydalanuvchilar ({filteredUsers.length}/{users.length})
+            </div>
+            <div className="admin-row">
               <div className="admin-search-wrap" style={{ maxWidth: 260, width: '100%' }}>
-                <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text3)' }} />
+                <Search size={16} className="admin-search-icon" />
                 <input
                   className="admin-search"
-                  style={{ padding: '8px 8px 8px 32px', fontSize: 'var(--fs-input)', borderRadius: '10px' }}
                   placeholder="Ism, ID, telefon yoki email..."
                   value={userSearch}
                   onChange={e => setUserSearch(e.target.value)}
+                  onKeyDown={e => { if (e.key === 'Enter') searchUsersOnServer(); }}
                 />
               </div>
+              {/* B-7: mijozdagi filtr faqat yuklangan {LIST_PAGE_SIZE} ta ichida
+                  ishlaydi — aniq odamni topish uchun server so'rovi kerak */}
+              <button className="btn btn-sm btn-outline" onClick={searchUsersOnServer} disabled={usersLoading} title="Butun bazadan aniq qidirish">
+                <Search size={14} /> Bazadan qidirish
+              </button>
+              <button className="btn btn-sm btn-outline" onClick={() => { setUserSearch(''); loadUsers({ force: true }); }} disabled={usersLoading} title="Ro'yxatni yangilash">
+                <RefreshCw size={14} className={usersLoading ? 'spin' : ''} />
+              </button>
               <button className="btn btn-sm btn-outline" onClick={exportUsers} disabled={!filteredUsers.length} title="CSV faylga eksport">
                 <Download size={14} /> CSV
               </button>
             </div>
           </div>
-          {users.length === 0 ? (
+
+          {/* A-15: ro'yxat chegaralangani ochiq aytiladi */}
+          {!usersError && users.length > 0 && (
+            <div className="admin-stats-indicator">
+              <span>
+                {userSearchServer
+                  ? <>🔎 <strong>Server qidiruvi</strong> natijasi</>
+                  : <>Eng yangi <strong>{users.length}</strong> ta ko'rsatilmoqda{overview?.users ? <> · bazada <strong>{overview.users}</strong> ta</> : null}</>}
+              </span>
+              <span style={{ color: 'var(--text3)' }}>
+                Ro'yxatda yo'q odamni «Bazadan qidirish» bilan toping
+              </span>
+            </div>
+          )}
+
+          {usersError ? (
+            <div className="admin-info-box admin-info-box--error">
+              <div className="admin-info-title"><AlertCircle size={15} /> Foydalanuvchilarni o'qib bo'lmadi</div>
+              <div className="admin-info-text">{usersError}</div>
+              <button className="btn btn-outline" style={{ marginTop: 10 }} onClick={() => loadUsers({ force: true })}>
+                <RefreshCw size={14} /> Qayta urinish
+              </button>
+            </div>
+          ) : usersLoading && users.length === 0 ? (
             <div className="admin-empty"><div className="admin-empty-icon">👥</div><div className="admin-empty-text">Yuklanmoqda...</div></div>
+          ) : users.length === 0 ? (
+            <div className="admin-state-block">
+              <div className="admin-empty-icon">👥</div>
+              <div className="admin-empty-text">Foydalanuvchi topilmadi</div>
+            </div>
           ) : filteredUsers.length === 0 ? (
             <div className="glass-panel" style={{ padding: '40px', textAlign: 'center', color: 'var(--text3)' }}>
-              Foydalanuvchi topilmadi 🔍
+              Yuklangan ro'yxatda topilmadi 🔍<br />
+              <button className="btn btn-sm btn-outline" style={{ marginTop: 12 }} onClick={searchUsersOnServer}>
+                <Search size={14} /> Butun bazadan qidirish
+              </button>
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {filteredUsers.map((u) => (
+            <div className="admin-stack-s">
+              {filteredUsers.map((u) => {
+                // B-3: obuna holati qatorning O'ZIDA ko'rinadi. Ilgari faqat
+                // ⭐ bor edi — muddati o'tgan hisob ham "Pro" bo'lib turardi.
+                const exp = u.premiumExpire ? new Date(u.premiumExpire) : null;
+                const expired = exp && exp < new Date();
+                return (
                 <div key={u.id} className="admin-user-row">
-                  <div className="admin-user-left">
+                  <button
+                    className="admin-user-left"
+                    onClick={() => setUserCard(u)}
+                    aria-label={`${u.displayName || u.id} kartochkasini ochish`}
+                  >
                     <div className="admin-user-avatar-sm">
                       {(u.displayName || u.email || u.phoneNumber || '?')[0].toUpperCase()}
                     </div>
                     <div className="admin-user-details">
                       <div className="admin-user-name-line">
                         <span className="admin-user-name-sm">{u.displayName || '—'}</span>
-                        {u.shortId && <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, color: 'var(--text3)', border: '1px solid var(--border)', borderRadius: 6, padding: '1px 5px' }}>{u.shortId}</span>}
-                        {u.isPremium && <span style={{ fontSize: 'var(--fs-xs)' }} title="Pro">⭐</span>}
-                        {u.role === 'admin' && <span style={{ fontSize: 'var(--fs-xs)' }} title="Admin">🛡️</span>}
+                        {u.shortId && <span className="admin-chip admin-chip--muted">{u.shortId}</span>}
+                        {u.isPremium && (
+                          <span className={`admin-chip ${expired ? 'admin-chip--red' : 'admin-chip--amber'}`}>
+                            {expired ? 'PRO — MUDDATI TUGAGAN' : exp ? `PRO · ${exp.toLocaleDateString('uz-UZ')}` : 'PRO · MUDDATSIZ'}
+                          </span>
+                        )}
+                        {u.role === 'admin' && <span className="admin-chip admin-chip--blue">ADMIN</span>}
                       </div>
                       <div className="admin-user-subtext">{u.email || u.phoneNumber || 'Identifikator yo\'q'}</div>
                     </div>
-                  </div>
+                  </button>
                   <div className="admin-user-actions-sm">
-                    <button 
-                      onClick={() => togglePremium(u.id, u.isPremium)} 
+                    <button
+                      onClick={() => togglePremium(u.id, u.isPremium)}
                       className={`action-btn-sm ${u.isPremium ? 'premium-active' : ''}`}
-                      title={u.isPremium ? "Pro statusini bekor qilish" : "Pro statusini yoqish"}
+                      aria-label={u.isPremium ? "Pro statusini bekor qilish" : "Pro statusini berish"}
+                      title={u.isPremium ? "Pro statusini bekor qilish" : "Pro statusini berish"}
                     >
-                      ⭐
+                      <Crown size={13} />
                     </button>
-                    <button 
-                      onClick={() => toggleAdmin(u.id, u.role)} 
+                    <button
+                      onClick={() => toggleAdmin(u.id, u.role)}
                       className={`action-btn-sm ${u.role === 'admin' ? 'admin-active' : ''}`}
+                      aria-label={u.role === 'admin' ? "Admin huquqini olish" : "Admin huquqini berish"}
                       title={u.role === 'admin' ? "Admin huquqini olish" : "Admin huquqini berish"}
                     >
-                      🛡️
+                      <Shield size={13} />
                     </button>
-                    <button 
-                      className="action-btn-sm delete-btn" 
+                    <button
+                      className="action-btn-sm delete-btn"
                       onClick={() => handleDeleteUser(u.id, u.email || u.phoneNumber)}
+                      aria-label="Foydalanuvchini butunlay o'chirish"
                       title="O'chirish"
                     >
                       <Trash2 size={13} />
                     </button>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
       )}
 
       {tab === 'stats' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div className="admin-stack-l">
           {/* ── Platforma umumiy ko'rsatkichlari ── */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
-            <div className="admin-section-title" style={{ marginBottom: 0 }}><BarChart3 size={18} style={{ color: 'var(--blue)' }} /> Platforma ko'rsatkichlari</div>
+            <div className="admin-section-title admin-section-title--flush"><BarChart3 size={18} style={{ color: 'var(--blue)' }} /> Platforma ko'rsatkichlari</div>
             <button className="btn btn-sm btn-outline" onClick={loadOverview} disabled={overviewLoading}>
               <RefreshCw size={14} className={overviewLoading ? 'spin' : ''} /> {overviewLoading ? 'Yangilanmoqda...' : 'Yangilash'}
             </button>
           </div>
+          {/* D-5: statistika tabida xato holati umuman yo'q edi — barcha
+              raqamlar jimgina «—» bo'lib qolardi */}
+          {overviewError && (
+            <div className="admin-info-box admin-info-box--error">
+              <div className="admin-info-title"><AlertCircle size={15} /> Ko'rsatkichlarni o'qib bo'lmadi</div>
+              <div className="admin-info-text">{overviewError}</div>
+            </div>
+          )}
           <div className="admin-stats-grid">
             <div className="stat-box glass-panel">
               <div className="stat-box-val" style={{ color: 'var(--blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}><Users size={18} /> {overview?.users ?? '—'}</div>
@@ -1904,7 +2653,7 @@ try {
       )}
 
       {tab === 'tariffs' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div className="admin-stack-l">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
             <div className="admin-section-title"><Zap size={18} style={{ color: 'var(--amber)' }} /> Pro Tariflar</div>
             <button className="btn btn-primary" onClick={() => { setIsAddingTariff(true); setEditingTariff(null); setNewTariff({ id: '', name: '', price: 0, durationMonths: 1 }); }}>
@@ -1912,7 +2661,7 @@ try {
             </button>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <div className="admin-stack">
             {tariffs.map((t) => (
               <div key={t.id} className="admin-tariff-card">
                 <div className="admin-tariff-info">
@@ -1922,7 +2671,7 @@ try {
                 <div className="admin-tariff-price">{new Intl.NumberFormat('uz-UZ').format(t.price)}</div>
                 <div style={{ display: 'flex', gap: 6 }}>
                   <button className="btn btn-sm btn-outline" onClick={() => { setEditingTariff(t); setNewTariff({...t}); setIsAddingTariff(true); }}><Edit3 size={14} /></button>
-                  <button className="btn btn-sm btn-outline" style={{ color: 'var(--red)', borderColor: 'var(--red)' }} onClick={() => handleDeleteTariff(t.id)}><Trash2 size={14} /></button>
+                  <button className="btn btn-sm btn-outline admin-btn-danger" onClick={() => handleDeleteTariff(t.id)}><Trash2 size={14} /></button>
                 </div>
               </div>
             ))}
@@ -1939,7 +2688,7 @@ try {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', gridColumn: 'span 2' }}>
-                <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Sarlavha</label>
+                <label className="admin-label">Sarlavha</label>
                 <input 
                   className="modal-input" 
                   placeholder="Masalan: 🎉 Yangi imtihon bo'limi qo'shildi!" 
@@ -1949,7 +2698,7 @@ try {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', gridColumn: 'span 2' }}>
-                <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Xabar matni</label>
+                <label className="admin-label">Xabar matni</label>
                 <textarea 
                   className="modal-input" 
                   style={{ minHeight: '80px' }}
@@ -1959,8 +2708,8 @@ try {
                 />
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Xabar turi</label>
+              <div className="admin-form-row">
+                <label className="admin-label">Xabar turi</label>
                 <select 
                   className="modal-input" 
                   value={newNotif.type} 
@@ -1972,8 +2721,8 @@ try {
                 </select>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Qabul qiluvchilar</label>
+              <div className="admin-form-row">
+                <label className="admin-label">Qabul qiluvchilar</label>
                 <select 
                   className="modal-input" 
                   value={newNotif.targetUser} 
@@ -2009,7 +2758,7 @@ try {
                 Hali hech qanday bildirishnoma yuborilmagan.
               </div>
             ) : (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div className="admin-stack">
                 {adminNotifs.map(n => (
                   <div key={n.id} style={{ padding: '16px', borderRadius: '16px', background: 'var(--bg3)', border: '1px solid var(--border)', display: 'flex', gap: '16px', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', gap: '16px', alignItems: 'center', minWidth: 0 }}>
@@ -2050,7 +2799,7 @@ try {
           REFERRALLAR BO'LIMI — Admin Panel
           ════════════════════════════════════════════ */}
       {tab === 'referrals' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div className="admin-stack-l">
 
           {/* Umumiy statistika kartalari */}
           <div className="admin-ref-grid">
@@ -2074,45 +2823,58 @@ try {
               <div style={{ fontSize: 'var(--fs-xl)', fontWeight: '700', color: 'var(--text)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Users size={18} style={{ color: 'var(--blue)' }} /> Barcha referrallar ro'yxati
               </div>
-              <button className="btn btn-sm btn-outline" onClick={exportReferrals} disabled={!allReferrals.length} title="CSV faylga eksport">
-                <Download size={14} /> CSV
-              </button>
+              <div className="admin-row--tight">
+                <button className="btn btn-sm btn-outline" onClick={() => loadReferrals({ force: true })} disabled={referralLoading} title="Ro'yxatni yangilash">
+                  <RefreshCw size={14} className={referralLoading ? 'spin' : ''} />
+                </button>
+                <button className="btn btn-sm btn-outline" onClick={exportReferrals} disabled={!allReferrals.length} title="CSV faylga eksport">
+                  <Download size={14} /> CSV
+                </button>
+              </div>
             </div>
 
-            {referralLoading ? (
-              <div style={{ textAlign: 'center', padding: 40, color: 'var(--text3)' }}>⏳ Yuklanmoqda...</div>
+            {referralError ? (
+              <div className="admin-info-box admin-info-box--error">
+                <div className="admin-info-title"><AlertCircle size={15} /> Referrallarni o'qib bo'lmadi</div>
+                <div className="admin-info-text">{referralError}</div>
+              </div>
+            ) : referralLoading ? (
+              <div className="admin-state-block">⏳ Yuklanmoqda...</div>
             ) : allReferrals.length === 0 ? (
               <div style={{ textAlign: 'center', padding: 40, color: 'var(--text3)' }}>
                 <div style={{ fontSize: 'var(--fs-8xl)', marginBottom: 8 }}>🔗</div>
                 <div>Hali hech kim referral orqali kelmagan</div>
               </div>
             ) : (
-              <div style={{ overflowX: 'auto' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'var(--fs-md)' }}>
-                  <thead style={{ background: 'var(--bg3)' }}>
+              <div className="admin-table-wrap">
+                <table className="admin-table">
+                  <thead>
                     <tr>
                       {["Taklif qiluvchi", "Taklif qilingan", "Sana", "Status", "Bonus", "Bepul tugash", "Amal"].map(h => (
-                        <th key={h} style={{ padding: '10px 12px', textAlign: 'left', fontSize: 'var(--fs-xs)', color: 'var(--text3)', fontWeight: 700 }}>{h}</th>
+                        <th key={h}>{h}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
-                    {allReferrals
+                    {/* A-8: ilgari bu yerda `allReferrals.sort(...)` edi — `sort`
+                        JOYIDA ishlaydi, ya'ni React state massivi render paytida
+                        mutatsiya qilinardi. Nusxa olamiz. */}
+                    {[...allReferrals]
                       .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
                       .map((r) => (
-                        <tr key={r.id} style={{ borderTop: '0.5px solid var(--border)' }}>
-                          <td style={{ padding: '10px 12px', color: 'var(--text)' }}>
+                        <tr key={r.id}>
+                          <td>
                             <div style={{ fontWeight: 600 }}>{r.referrerName || '—'}</div>
-                            <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)' }}>{r.referrerId?.slice(0, 8)}...</div>
+                            <div className="admin-td-sub">{r.referrerId?.slice(0, 8)}...</div>
                           </td>
-                          <td style={{ padding: '10px 12px', color: 'var(--text)' }}>
+                          <td>
                             <div style={{ fontWeight: 600 }}>{r.referredName || '—'}</div>
-                            <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)' }}>{r.referredId?.slice(0, 8)}...</div>
+                            <div className="admin-td-sub">{r.referredId?.slice(0, 8)}...</div>
                           </td>
-                          <td style={{ padding: '10px 12px', color: 'var(--text3)', fontSize: 'var(--fs-sm)' }}>
+                          <td className="admin-td-sub">
                             {r.createdAt ? new Date(r.createdAt).toLocaleDateString('uz-UZ', { day: 'numeric', month: 'short', year: '2-digit' }) : '—'}
                           </td>
-                          <td style={{ padding: '10px 12px' }}>
+                          <td>
                             {r.status === 'paid' ? (
                               <span className="status-badge-neon paid">✅ To'ladi</span>
                             ) : r.status === 'active' ? (
@@ -2121,10 +2883,10 @@ try {
                               <span className="status-badge-neon pending">⏳ Kutilmoqda</span>
                             )}
                           </td>
-                          <td style={{ padding: '10px 12px', color: r.bonusPaid ? 'var(--green)' : 'var(--text3)', fontWeight: r.bonusPaid ? 700 : 400, fontSize: 'var(--fs-md)' }}>
+                          <td style={{ color: r.bonusPaid ? 'var(--green)' : 'var(--text3)', fontWeight: r.bonusPaid ? 700 : 400 }}>
                             {r.bonusPaid ? `+${(r.bonusAmount || 15000).toLocaleString()} so'm` : '—'}
                           </td>
-                          <td style={{ padding: '10px 12px', fontSize: 'var(--fs-sm)' }}>
+                          <td>
                             {(() => {
                               if (r.freeExpire) {
                                 return (
@@ -2157,26 +2919,26 @@ try {
                               return <span style={{ color: 'var(--text3)' }}>—</span>;
                             })()}
                           </td>
-                          <td style={{ padding: '10px 12px' }}>
-                            {r.status !== 'paid' && (
-                              <button
-                                className="btn btn-sm"
-                                style={{ background: 'var(--green)', color: '#fff', border: 'none', fontSize: 'var(--fs-xs)', padding: '4px 10px', marginRight: 6 }}
-                                onClick={() => handleMarkReferralPaid(r.id, r.referrerId)}
-                              >
-                                ✓ To'ladi
-                              </button>
-                            )}
-                            {r.freeExpire && (
-                              <button
-                                className="btn btn-sm"
-                                style={{ background: 'var(--red)', color: '#fff', border: 'none', fontSize: 'var(--fs-xs)', padding: '4px 10px' }}
-                                onClick={() => handleCancelReferralPremium(r.referredId, r.id)}
-                                title="Bepul premiumni bekor qilish"
-                              >
-                                ✕ Pro bekor qilish
-                              </button>
-                            )}
+                          <td>
+                            <div className="admin-row--tight">
+                              {r.status !== 'paid' && (
+                                <button
+                                  className="btn btn-sm admin-btn-ok"
+                                  onClick={() => handleMarkReferralPaid(r.id, r.referrerId)}
+                                >
+                                  ✓ To'ladi
+                                </button>
+                              )}
+                              {r.freeExpire && (
+                                <button
+                                  className="btn btn-sm btn-outline admin-btn-danger"
+                                  onClick={() => handleCancelReferralPremium(r.referredId, r.id)}
+                                  title="Bepul premiumni bekor qilish (to'lagan mijozga tegmaydi)"
+                                >
+                                  ✕ Bepul Pro
+                                </button>
+                              )}
+                            </div>
                           </td>
                         </tr>
                       ))}
@@ -2208,14 +2970,19 @@ try {
             style={{ zIndex: 1000 }}
           >
             <motion.div
+              ref={qModalRef}
+              role="dialog"
+              aria-modal="true"
+              aria-label={editingQ ? 'Savolni tahrirlash' : "Yangi savol qo'shish"}
+              tabIndex={-1}
               initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
               className="modal-content"
               style={{ maxWidth: '600px', width: '90%', maxHeight: '90vh', display: 'flex', flexDirection: 'column', padding: '24px' }}
             >
               <div className="modal-title" style={{ flexShrink: 0 }}>{editingQ ? 'Savolni tahrirlash' : 'Yangi savol qo\'shish'}</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '20px 0', overflowY: 'auto', flex: 1 }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Savol matni</label>
+                <div className="admin-form-row">
+                  <label className="admin-label">Savol matni</label>
                   <textarea
                     className="modal-input"
                     style={{ minHeight: '80px' }}
@@ -2223,8 +2990,8 @@ try {
                     onChange={e => setNewQ({...newQ, q: e.target.value})}
                   />
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Rasm qo'shish (ixtiyoriy)</label>
+                <div className="admin-form-row">
+                  <label className="admin-label">Rasm qo'shish (ixtiyoriy)</label>
                   {newQ.image && (
                     <div style={{ position: 'relative', width: '150px', marginBottom: '8px' }}>
                       <img src={newQ.image} alt="Uploaded" style={{ width: '100%', borderRadius: '8px', border: '1px solid var(--border)' }} />
@@ -2246,8 +3013,8 @@ try {
                   />
                   {isUploadingImage && <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--blue)' }}>Yuklanmoqda...</div>}
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Mavzu (topicId)</label>
+                <div className="admin-form-row">
+                  <label className="admin-label">Mavzu (topicId)</label>
                   <select
                     className="modal-input"
                     value={newQ.topicId}
@@ -2264,8 +3031,8 @@ try {
                     ⚡ Category avtomatik ravishda mavzuga mos ravishda belgilanadi.
                   </div>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Javob variantlari</label>
+                <div className="admin-stack">
+                  <label className="admin-label">Javob variantlari</label>
                   {newQ.opts.map((opt, i) => (
                     <div key={i} style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                       <span style={{ fontSize: 'var(--fs-sm)', fontWeight: '700', color: 'var(--text3)' }}>{String.fromCharCode(65 + i)})</span>
@@ -2281,8 +3048,8 @@ try {
                     </div>
                   ))}
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>To'g'ri javob indeksi (0-3)</label>
+                <div className="admin-form-row">
+                  <label className="admin-label">To'g'ri javob indeksi (0-3)</label>
                   <input
                     type="number"
                     className="modal-input"
@@ -2291,16 +3058,16 @@ try {
                     min="0" max="3"
                   />
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Tushuntirish (Explanation)</label>
+                <div className="admin-form-row">
+                  <label className="admin-label">Tushuntirish (Explanation)</label>
                   <textarea
                     className="modal-input"
                     value={newQ.explanation}
                     onChange={e => setNewQ({...newQ, explanation: e.target.value})}
                   />
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Eslab qolish usuli (Mnemonic)</label>
+                <div className="admin-form-row">
+                  <label className="admin-label">Eslab qolish usuli (Mnemonic)</label>
                   <input
                     className="modal-input"
                     value={newQ.mnemonic}
@@ -2325,26 +3092,31 @@ try {
             style={{ zIndex: 1000 }}
           >
             <motion.div
+              ref={tariffModalRef}
+              role="dialog"
+              aria-modal="true"
+              aria-label={editingTariff ? 'Tarifni tahrirlash' : 'Yangi tarif'}
+              tabIndex={-1}
               initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
               className="modal-content"
               style={{ maxWidth: '400px', width: '90%', padding: '24px' }}
             >
               <div className="modal-title">{editingTariff ? 'Tarifni tahrirlash' : 'Yangi tarif'}</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '20px 0' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>ID (masalan: 6months)</label>
+                <div className="admin-form-row">
+                  <label className="admin-label">ID (masalan: 6months)</label>
                   <input className="modal-input" value={newTariff.id} onChange={e => setNewTariff({...newTariff, id: e.target.value})} disabled={!!editingTariff} />
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Nomi</label>
+                <div className="admin-form-row">
+                  <label className="admin-label">Nomi</label>
                   <input className="modal-input" value={newTariff.name} onChange={e => setNewTariff({...newTariff, name: e.target.value})} />
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Narxi (so'm)</label>
+                <div className="admin-form-row">
+                  <label className="admin-label">Narxi (so'm)</label>
                   <input type="number" className="modal-input" value={newTariff.price} onChange={e => setNewTariff({...newTariff, price: parseInt(e.target.value)})} />
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', fontWeight: '600' }}>Muddati (oy, cheksiz uchun 999)</label>
+                <div className="admin-form-row">
+                  <label className="admin-label">Muddati (oy, cheksiz uchun 999)</label>
                   <input type="number" className="modal-input" value={newTariff.durationMonths} onChange={e => setNewTariff({...newTariff, durationMonths: parseInt(e.target.value)})} />
                 </div>
               </div>
@@ -2359,9 +3131,17 @@ try {
 
       {/* Dublikat PREVIEW modali — o'chirishdan oldin ko'rsatadi */}
       {dupPreview && (
-        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
-          <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: 20, maxWidth: 720, width: '100%', maxHeight: '85vh', borderRadius: 20, display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
+        <div className="admin-modal-overlay">
+          <motion.div
+            ref={dupModalRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Topilgan dublikatlar"
+            tabIndex={-1}
+            initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+            className="admin-modal-panel admin-modal-panel--lg"
+          >
+            <div className="admin-row-between" style={{ marginBottom: 4 }}>
               <h3 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: 'var(--text)', margin: 0 }}>🔍 Topilgan dublikatlar</h3>
               <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)' }}>Qamrov: <strong>{dupPreview.scope}</strong></span>
             </div>
@@ -2371,23 +3151,23 @@ try {
             </p>
             <div style={{ overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column', gap: 10, paddingRight: 4 }}>
               {dupPreview.groups.map((g, gi) => (
-                <div key={gi} style={{ border: '1px solid var(--glass-border)', borderRadius: 12, padding: 10, background: 'var(--glass-bg)' }}>
+                <div key={gi} className="admin-card">
                   <div style={{ display: 'flex', gap: 6, alignItems: 'flex-start', marginBottom: 6 }}>
-                    <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--green)', background: 'var(--green-bg, rgba(34,197,94,0.12))', borderRadius: 6, padding: '2px 6px', whiteSpace: 'nowrap' }}>🟢 Saqlanadi</span>
+                    <span className="admin-chip admin-chip--green">🟢 Saqlanadi</span>
                     <span style={{ fontSize: 'var(--fs-md)', color: 'var(--text)', fontWeight: 600 }}>{g.keep.q}</span>
                   </div>
                   {g.removed.map((r, ri) => (
                     <div key={ri} style={{ display: 'flex', gap: 6, alignItems: 'flex-start', marginTop: 4, paddingLeft: 8 }}>
-                      <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--red)', background: 'var(--red-bg, rgba(239,68,68,0.12))', borderRadius: 6, padding: '2px 6px', whiteSpace: 'nowrap' }}>🔴 {r.sim}%</span>
+                      <span className="admin-chip admin-chip--red">🔴 {r.sim}%</span>
                       <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)' }}>{r.q} <em style={{ opacity: 0.6 }}>(#{r.topicId})</em></span>
                     </div>
                   ))}
                 </div>
               ))}
             </div>
-            <div style={{ display: 'flex', gap: 12, marginTop: 16 }}>
-              <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} disabled={dupDeleting} onClick={() => setDupPreview(null)}>Bekor qilish</button>
-              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} disabled={dupDeleting} onClick={executeDuplicateDeletion}>
+            <div className="admin-modal-actions">
+              <button className="btn btn-outline" disabled={dupDeleting} onClick={() => setDupPreview(null)}>Bekor qilish</button>
+              <button className="btn admin-btn-danger" style={{ background: 'var(--red)', color: '#fff', border: 'none', fontWeight: 700 }} disabled={dupDeleting} onClick={executeDuplicateDeletion}>
                 {dupDeleting ? 'O\'chirilmoqda...' : `Hammasini o'chirish (${dupPreview.totalRemove})`}
               </button>
             </div>
@@ -2395,19 +3175,158 @@ try {
         </div>
       )}
 
-      {confirmDialog.isOpen && (
-        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: 24, maxWidth: 320, width: '90%', borderRadius: 20, textAlign: 'center' }}>
-            <div style={{ fontSize: 'var(--fs-10xl)', marginBottom: 12 }}>⚠️</div>
-            <h3 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 8, color: 'var(--text)' }}>Tasdiqlang</h3>
-            <p style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 24, whiteSpace: 'pre-wrap' }}>{confirmDialog.text}</p>
-            <div style={{ display: 'flex', gap: 12 }}>
-              <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setConfirmDialog({ isOpen: false, text: '', onConfirm: null })}>Bekor qilish</button>
-              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { confirmDialog.onConfirm(); setConfirmDialog({ isOpen: false, text: '', onConfirm: null }); }}>Tasdiqlash</button>
+      {/* ── Pro berish modali (A-5 / B-4) — `window.prompt` o'rniga ── */}
+      {premiumModal && (
+        <div className="admin-modal-overlay">
+          <motion.div
+            ref={premiumModalRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Pro statusini berish"
+            tabIndex={-1}
+            initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+            className="admin-modal-panel admin-modal-panel--md"
+          >
+            <h3 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: 'var(--text)', margin: 0 }}>
+              <Crown size={18} style={{ color: 'var(--amber)', verticalAlign: '-3px', marginRight: 6 }} />
+              Pro berish
+            </h3>
+            <p className="admin-info-text" style={{ marginTop: 4, marginBottom: 16 }}>
+              <strong style={{ color: 'var(--text)' }}>{premiumModal.name}</strong>
+              {premiumModal.currentExpire && (
+                <> · joriy muddat: {new Date(premiumModal.currentExpire).toLocaleDateString('uz-UZ')}</>
+              )}
+            </p>
+
+            <div className="admin-form-row">
+              <label className="admin-label" htmlFor="premium-until">Qaysi sanagacha</label>
+              <input
+                id="premium-until"
+                type="date"
+                className="admin-input"
+                value={premiumUntil}
+                min={isoDay(new Date())}
+                onChange={e => setPremiumUntil(e.target.value)}
+              />
+            </div>
+
+            <div className="admin-row" style={{ marginTop: 10 }}>
+              {[[30, '30 kun'], [90, '3 oy'], [180, '6 oy'], [365, '1 yil']].map(([d, label]) => (
+                <button key={d} type="button" className="btn btn-sm btn-outline" onClick={() => setPremiumUntil(dayFromNow(d))}>
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            <div className="admin-info-box" style={{ marginTop: 14 }}>
+              <div className="admin-info-text">
+                Obuna <strong>{premiumUntil ? new Date(`${premiumUntil}T23:59:59`).toLocaleDateString('uz-UZ') : '—'}</strong> kuni
+                oxirida tugaydi. Reja <code>admin</code> deb belgilanadi — ya'ni muddat o'tganda
+                avtomatik tugaydi va to'lov/promo obunalariga tegmaydi.
+                <br />
+                <strong>Muddatsiz Pro yo'li ataylab olib tashlangan:</strong> <code>premiumExpire</code> —
+                obuna muddatining yagona manbasi.
+              </div>
+            </div>
+
+            <div className="admin-modal-actions">
+              <button className="btn btn-outline" onClick={() => setPremiumModal(null)} disabled={premiumSaving}>Bekor qilish</button>
+              <button className="btn btn-primary" onClick={grantPremium} disabled={premiumSaving || !premiumUntil}>
+                {premiumSaving ? 'Saqlanmoqda...' : 'Pro berish'}
+              </button>
             </div>
           </motion.div>
         </div>
       )}
+
+      {/* ── Foydalanuvchi kartochkasi (B-3) ── */}
+      {userCard && (
+        <div className="admin-modal-overlay" onClick={() => setUserCard(null)}>
+          <motion.div
+            ref={userCardRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Foydalanuvchi kartochkasi"
+            tabIndex={-1}
+            initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+            className="admin-modal-panel admin-modal-panel--md"
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="admin-row-between">
+              <div className="admin-row">
+                <div className="admin-user-avatar-sm">
+                  {(userCard.displayName || userCard.email || '?')[0].toUpperCase()}
+                </div>
+                <div>
+                  <div style={{ fontWeight: 800, color: 'var(--text)' }}>{userCard.displayName || '—'}</div>
+                  <div className="admin-user-subtext">{userCard.email || userCard.phone || userCard.phoneNumber || '—'}</div>
+                </div>
+              </div>
+              <button className="admin-icon-btn" onClick={() => setUserCard(null)} aria-label="Yopish"><X size={18} /></button>
+            </div>
+
+            <div style={{ overflowY: 'auto', marginTop: 16 }}>
+              <table className="admin-table">
+                <tbody>
+                  {[
+                    ['Qisqa ID', userCard.shortId || '—'],
+                    ['UID', userCard.id],
+                    ['Telefon', userCard.phone || userCard.phoneNumber || '—'],
+                    ['Rol', userCard.role || 'user'],
+                    ['Pro', userCard.isPremium ? 'Ha' : "Yo'q"],
+                    ['Obuna turi', userCard.premiumPlan || '—'],
+                    ['Obuna usuli', userCard.premiumMethod || '—'],
+                    ['Pro boshlangan', userCard.premiumSince ? new Date(userCard.premiumSince).toLocaleString('uz-UZ') : '—'],
+                    ['Pro tugaydi', userCard.premiumExpire
+                      ? new Date(userCard.premiumExpire).toLocaleString('uz-UZ')
+                      : (userCard.isPremium ? '⚠️ MUDDATSIZ' : '—')],
+                    ["Ro'yxatdan o'tgan", userCard.createdAt?.toDate
+                      ? userCard.createdAt.toDate().toLocaleString('uz-UZ')
+                      : (userCard.createdAt ? new Date(userCard.createdAt.seconds ? userCard.createdAt.seconds * 1000 : userCard.createdAt).toLocaleString('uz-UZ') : '—')],
+                    ['Takliflar soni', userCard.referralCount ?? 0],
+                    ['Referral bonusi', (userCard.referralBonus ?? 0).toLocaleString() + " so'm"],
+                    ['Chegirma', userCard.referralDiscount ? `${userCard.referralDiscount}%` : '—'],
+                    ['Maktab', userCard.schoolName || '—'],
+                    ['Oxirgi tranzaksiya', userCard.premiumTransId || '—'],
+                  ].map(([k, v]) => (
+                    <tr key={k}>
+                      <th style={{ width: '45%' }}>{k}</th>
+                      <td style={{ wordBreak: 'break-all' }}>{String(v)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="admin-modal-actions">
+              <button className="btn btn-outline" onClick={() => { setUserCard(null); setTab('payments'); }}>
+                <CreditCard size={14} /> To'lovlar
+              </button>
+              <button className="btn btn-primary" onClick={() => { const u = userCard; setUserCard(null); togglePremium(u.id, u.isPremium); }}>
+                <Crown size={14} /> {userCard.isPremium ? 'Pro bekor qilish' : 'Pro berish'}
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      {/* D-3: panel o'zining tasdiq oynasini saqlab turardi. `ConfirmDialog`
+          umumiy komponenti allaqachon mavjud va `useModalA11y` bilan
+          jihozlangan (Escape, fokus tutqichi, `role="dialog"`). */}
+      <ConfirmDialog
+        open={confirmDialog.isOpen}
+        title="Tasdiqlang"
+        text={confirmDialog.text}
+        confirmLabel="Tasdiqlash"
+        cancelLabel="Bekor qilish"
+        danger
+        onConfirm={() => {
+          const fn = confirmDialog.onConfirm;
+          setConfirmDialog({ isOpen: false, text: '', onConfirm: null });
+          fn?.();
+        }}
+        onCancel={() => setConfirmDialog({ isOpen: false, text: '', onConfirm: null })}
+      />
     </motion.div>
   );
 };

@@ -1,5 +1,13 @@
 /* ═══════════════════════════════════════════
    AdminPage — Mobile-First Responsive Design
+
+   ⚠️ ESLATMA: bu fayl lazy yuklanadi va sahifadan chiqilgach ham DOM'da
+   qoladi. Shu sababli global klasslarni (.modal-overlay, .btn, ...) bu yerda
+   QAYTA BELGILAMANG — aks holda admin sahifasiga bir kirish butun ilova
+   ko'rinishini o'zgartirib yuboradi. Faqat .admin-* prefiksli klasslar.
+
+   ⚠️ TIPOGRAFIYA.md:155 — media query ichida `font-size` QAYTA BELGILANMAYDI.
+   Ekranga moslashuvni ildizdagi clamp() bajaradi.
    ═══════════════════════════════════════════ */
 
 .admin-page { max-width: 900px; margin: 0 auto; padding: 20px 16px 100px; }
@@ -16,6 +24,14 @@
   padding: 4px 12px; border-radius: 8px;
   letter-spacing: 1px;
 }
+.admin-title {
+  font-size: var(--fs-4xl); font-weight: 900;
+  letter-spacing: -0.5px; color: var(--text);
+  margin: 0; line-height: 1.15;
+}
+.admin-subtitle {
+  font-size: var(--fs-sm); color: var(--text3); margin-top: 2px;
+}
 .admin-quick-stats {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
 }
@@ -25,7 +41,7 @@
   border: 1.5px solid var(--border);
 }
 .admin-quick-stat-val {
-  font-size: var(--fs-4xl); font-weight: 800; line-height: 1;
+  font-size: var(--fs-3xl); font-weight: 800; line-height: 1;
 }
 .admin-quick-stat-lbl {
   font-size: var(--fs-2xs); font-weight: 700; color: var(--text3);
@@ -33,14 +49,23 @@
 }
 
 /* ── Tabs ── */
+/* D-6: 12 ta tab telefonga sig'maydi. Scrollbar yashirilgani uchun yana
+   tab borligini bildiradigan hech narsa yo'q edi. O'ng chetdagi mask —
+   RANG emas, shaffoflik gradiyenti (rang gradiyenti taqiqi buzilmaydi). */
+.admin-tabs-wrap { position: relative; margin-bottom: 20px; }
 .admin-tabs {
   display: flex; gap: 4px;
   overflow-x: auto; scrollbar-width: none;
-  padding: 4px; margin-bottom: 20px;
+  padding: 4px;
   background: var(--bg3); border-radius: 14px;
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent 100%);
+  mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent 100%);
 }
 .admin-tabs::-webkit-scrollbar { display: none; }
+/* Oxirgi tabgacha scroll qilingach mask keraksiz — lekin JS'siz aniqlab
+   bo'lmaydi, shuning uchun doim qoldiriladi (yumshoq, chalg'itmaydi). */
 
 .admin-tab {
   display: flex; align-items: center; gap: 6px;
@@ -49,12 +74,13 @@
   color: var(--text3); font-weight: 600;
   font-size: var(--fs-md); cursor: pointer;
   white-space: nowrap; font-family: inherit;
-  transition: all 0.2s; flex-shrink: 0;
+  transition: color 0.2s, background 0.2s; flex-shrink: 0;
 }
 .admin-tab:hover { color: var(--text); }
+.admin-tab:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
 .admin-tab.active {
   background: var(--bg2); color: var(--text);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 .admin-tab-badge {
   background: var(--red); color: #fff;
@@ -71,53 +97,28 @@
 .admin-search-wrap {
   position: relative; flex: 1;
 }
+.admin-search-icon {
+  position: absolute; left: 12px; top: 50%;
+  transform: translateY(-50%); color: var(--text3);
+  pointer-events: none;
+}
 .admin-search {
   width: 100%; padding: 12px 12px 12px 38px;
   border-radius: 12px; border: 1.5px solid var(--border);
   background: var(--bg2); color: var(--text);
-  font-family: inherit; font-size: var(--fs-base);
+  font-family: inherit; font-size: var(--fs-input);
   outline: none; transition: border-color 0.2s;
 }
 .admin-search:focus { border-color: var(--blue); }
-
 
 /* ── Objection Card ── */
 .admin-objection-card {
   padding: 14px 16px; border-radius: 16px;
   background: var(--bg2);
 }
-
-
-/* ── User Card (mobile) ── */
-
-
-.admin-user-avatar {
-  width: 40px; height: 40px; border-radius: 12px;
-  background: var(--accent);
-  display: flex; align-items: center; justify-content: center;
-  color: #fff; font-weight: 800; font-size: var(--fs-xl);
-  flex-shrink: 0;
-}
-
-.admin-user-name {
-  font-size: var(--fs-lg); font-weight: 700; color: var(--text);
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-
-
-.admin-user-actions {
-  display: flex; gap: 6px; flex-wrap: wrap;
-}
-.admin-user-actions button {
-  flex: 1; min-width: 0; padding: 8px 10px;
-  border-radius: 10px; font-size: var(--fs-sm); font-weight: 600;
-  cursor: pointer; font-family: inherit;
-  border: 1.5px solid var(--border);
-  background: var(--bg3); color: var(--text2);
-  transition: all 0.2s; white-space: nowrap;
-}
-.admin-user-actions button:hover { background: var(--surface2); }
-
+/* D-2: chegara ranglari inline `rgba(...)` edi — token bo'yicha */
+.admin-objection-card.is-solved { border: 1px solid var(--green); opacity: 0.75; }
+.admin-objection-card.is-open   { border: 1px solid var(--amber); }
 
 /* ── Question Card (mobile) ── */
 .admin-q-card {
@@ -159,9 +160,6 @@
   margin-bottom: 16px;
 }
 
-/* ── Referral card (mobile) ── */
-
-
 /* ── Tariff Card (mobile) ── */
 .admin-tariff-card {
   padding: 16px; border-radius: 16px;
@@ -181,18 +179,13 @@
   white-space: nowrap;
 }
 
-/* ── Notification Card ── */
-
-
-/* ── Notification Form ── */
-
-
 /* ── Section Title ── */
 .admin-section-title {
   font-size: var(--fs-2xl); font-weight: 800; color: var(--text);
   display: flex; align-items: center; gap: 8px;
   margin-bottom: 14px;
 }
+.admin-section-title--flush { margin-bottom: 0; }
 
 /* ── Action Bar ── */
 .admin-action-bar {
@@ -207,22 +200,40 @@
 .admin-info-box {
   padding: 14px 16px; border-radius: 14px;
   background: var(--blue-bg);
-  border: 1px solid rgba(14, 151, 224, 0.2);
+  border: 1px solid var(--blue);
 }
 .admin-info-title {
   font-size: var(--fs-md); font-weight: 700; color: var(--blue);
   margin-bottom: 6px;
+  display: flex; align-items: center; gap: 6px;
 }
 .admin-info-text {
   font-size: var(--fs-sm); color: var(--text3); line-height: 1.7;
 }
+/* B-6: publish eslatmasi — ogohlantirish ohangida */
+.admin-info-box--warn {
+  background: var(--amber-bg);
+  border-color: var(--amber);
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.admin-info-box--warn .admin-info-title { color: var(--amber); }
+.admin-info-box--error {
+  background: var(--red-bg);
+  border-color: var(--red);
+}
+.admin-info-box--error .admin-info-title { color: var(--red); }
 
-/* ── Empty State ── */
+/* ── Empty / Loading / Error State ── */
 .admin-empty {
   text-align: center; padding: 50px 20px; color: var(--text3);
 }
 .admin-empty-icon { font-size: var(--fs-10xl); margin-bottom: 10px; }
 .admin-empty-text { font-size: var(--fs-base); font-weight: 600; }
+/* D-5: bo'sh/yuklanish/xato holatlari uchun yagona kichik blok */
+.admin-state-block {
+  text-align: center; padding: 40px 20px;
+  color: var(--text3); font-size: var(--fs-base);
+}
 
 /* ── Back button (mobile) ── */
 .admin-back-btn {
@@ -231,31 +242,147 @@
   background: var(--bg3); border: 1.5px solid var(--border);
   color: var(--text2); font-weight: 600; font-size: var(--fs-md);
   cursor: pointer; font-family: inherit;
-  margin-bottom: 16px; transition: all 0.2s;
+  margin-bottom: 16px; transition: background 0.2s;
 }
 .admin-back-btn:hover { background: var(--surface2); }
 
-/* ═══ MOBILE RESPONSIVE ═══ */
-@media (max-width: 768px) {
-  .admin-page { padding: 12px 12px 100px; }
+/* ═══════════════════════════════════════════
+   D-9 — takroriy inline naqshlar uchun umumiy klasslar.
+   Bu 11 ta klass AdminPage.jsx dagi inline uslublarning ~60-70% ini yopadi.
+   ═══════════════════════════════════════════ */
 
-  .admin-quick-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .admin-quick-stat { padding: 10px 6px; }
-  .admin-quick-stat-val { font-size: var(--fs-2xl); }
+/* 1. Vertikal ustun */
+.admin-stack   { display: flex; flex-direction: column; gap: 12px; }
+.admin-stack-s { display: flex; flex-direction: column; gap: 8px; }
+.admin-stack-l { display: flex; flex-direction: column; gap: 20px; }
 
-  .admin-tab { padding: 8px 12px; font-size: var(--fs-sm); }
-
-  
-  .admin-ref-grid { grid-template-columns: repeat(2, 1fr); }
-  .admin-stats-grid { grid-template-columns: repeat(2, 1fr); }
-
-  .admin-action-bar { flex-direction: column; }
-  .admin-action-bar button { min-width: 0; }
-
-  /* Admin jadvallarini mobil uchun scrollable qilish */
-  .admin-page .glass-panel { overflow-x: auto; }
-  .admin-page table { min-width: 600px; }
+/* 2. Forma qatori (label + maydon) */
+.admin-form-row { display: flex; flex-direction: column; gap: 8px; }
+.admin-form-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px; margin-bottom: 12px;
 }
+
+/* 3. Yorliq */
+.admin-label {
+  font-size: var(--fs-md); color: var(--text3); font-weight: 600;
+}
+.admin-label--caps {
+  font-size: var(--fs-xs); font-weight: 700; color: var(--text3);
+  margin-bottom: 5px; display: block; text-transform: uppercase;
+}
+/* PromoTab/SchoolsTab dagi nusxalangan `inputStyle` obyekti o'rniga */
+.admin-input {
+  width: 100%; padding: 10px 12px; border-radius: 10px;
+  font-size: var(--fs-input);
+  border: 1.5px solid var(--border); background: var(--bg2);
+  color: var(--text); font-family: inherit; outline: none;
+  box-sizing: border-box; transition: border-color 0.2s;
+}
+.admin-input:focus { border-color: var(--blue); }
+.admin-input--code {
+  text-transform: uppercase; font-weight: 700;
+  letter-spacing: 1px; font-family: monospace;
+}
+
+/* 4. Ikki chetga yoyilgan qator */
+.admin-row-between {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; flex-wrap: wrap;
+}
+.admin-row {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.admin-row--tight { display: flex; gap: 6px; flex-shrink: 0; }
+
+/* 5. Rozetka / chip */
+.admin-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: var(--fs-2xs); font-weight: 800;
+  padding: 2px 8px; border-radius: 6px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+.admin-chip--red   { color: var(--red);   background: var(--red-bg); }
+.admin-chip--green { color: var(--green); background: var(--green-bg); }
+.admin-chip--amber { color: var(--amber); background: var(--amber-bg); }
+.admin-chip--blue  { color: var(--blue);  background: var(--blue-bg); }
+.admin-chip--muted { color: var(--text3); background: var(--bg3); }
+
+/* 6. Xavfli tugma (o'chirish/bekor qilish) */
+.admin-btn-danger { color: var(--red); border-color: var(--red); }
+.admin-btn-ok {
+  background: var(--green); color: #fff; border: none;
+}
+
+/* 7. Meta satri (sana, brauzer, ID) */
+.admin-meta-line {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  font-size: var(--fs-xs); color: var(--text3);
+}
+
+/* 8. Umumiy karta */
+.admin-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 12px; padding: 12px 14px;
+}
+.admin-card--dim { opacity: 0.6; }
+
+/* 9. (yuqorida .admin-state-block) */
+
+/* 10. Panelning O'Z modallari */
+.admin-modal-overlay {
+  position: fixed; inset: 0;
+  background: var(--scrim, rgba(0, 0, 0, 0.6));
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+}
+.admin-modal-panel {
+  border-radius: 20px; padding: 24px;
+  max-height: 85vh; width: 100%;
+  display: flex; flex-direction: column;
+  background: var(--bg2);
+}
+.admin-modal-panel--sm { max-width: 340px; text-align: center; }
+.admin-modal-panel--md { max-width: 480px; }
+.admin-modal-panel--lg { max-width: 720px; }
+.admin-modal-actions { display: flex; gap: 12px; margin-top: 16px; }
+.admin-modal-actions .btn { flex: 1; padding: 12px; }
+
+/* 11. Jadval */
+.admin-table-wrap { overflow-x: auto; }
+.admin-table {
+  width: 100%; border-collapse: collapse; font-size: var(--fs-md);
+}
+.admin-table thead { background: var(--bg3); }
+.admin-table th {
+  padding: 10px 12px; text-align: left;
+  font-size: var(--fs-xs); color: var(--text3); font-weight: 700;
+  white-space: nowrap;
+}
+.admin-table td {
+  padding: 10px 12px; color: var(--text);
+  border-top: 0.5px solid var(--border);
+  vertical-align: top;
+}
+.admin-table .admin-td-sub {
+  font-size: var(--fs-2xs); color: var(--text3);
+}
+
+/* Segment boshqaruvi (Jurnal tabi: xatolar / admin amallari) */
+.admin-segment {
+  display: inline-flex; gap: 4px; padding: 3px;
+  background: var(--bg3); border-radius: 10px;
+}
+.admin-segment button {
+  padding: 6px 12px; border-radius: 8px; border: none;
+  background: transparent; color: var(--text3);
+  font-family: inherit; font-size: var(--fs-sm); font-weight: 700;
+  cursor: pointer; white-space: nowrap;
+}
+.admin-segment button.active { background: var(--bg2); color: var(--text); }
 
 /* Compact User Row Design */
 .admin-user-row {
@@ -275,7 +402,14 @@
   gap: 10px;
   min-width: 0;
   flex: 1;
+  cursor: pointer;
+  text-align: left;
+  background: none;
+  border: none;
+  font-family: inherit;
+  padding: 0;
 }
+.admin-user-left:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 8px; }
 
 .admin-user-avatar-sm {
   width: 32px;
@@ -302,6 +436,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  flex-wrap: wrap;
 }
 
 .admin-user-name-sm {
@@ -338,26 +473,26 @@
   background: var(--bg3);
   color: var(--text3);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
   font-size: var(--fs-sm);
-  outline: none;
 }
 
 .action-btn-sm:hover {
   background: var(--surface2);
   color: var(--text);
 }
+.action-btn-sm:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 
 .action-btn-sm.premium-active {
   background: var(--amber-bg);
   color: var(--amber);
-  border-color: rgba(245,158,11,0.3);
+  border-color: var(--amber);
 }
 
 .action-btn-sm.admin-active {
   background: var(--blue-bg);
   color: var(--blue);
-  border-color: rgba(14, 151, 224, 0.3);
+  border-color: var(--blue);
 }
 
 .action-btn-sm.delete-btn {
@@ -366,20 +501,28 @@
 
 .action-btn-sm.delete-btn:hover {
   background: var(--red-bg);
-  border-color: rgba(239,68,68,0.3);
+  border-color: var(--red);
 }
 
-/* Glassmorphic filter bar */
+/* Ikonka tugmasi (xatolar ro'yxati) — fonsiz */
+.admin-icon-btn {
+  background: none; border: none; cursor: pointer;
+  color: var(--text3); padding: 4px; border-radius: 6px;
+  display: inline-flex; align-items: center;
+}
+.admin-icon-btn:hover { color: var(--text); background: var(--bg3); }
+.admin-icon-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
+.admin-icon-btn.is-on { color: var(--green); }
+
+/* Filter bar */
 .admin-glass-filter-bar {
   display: flex;
   flex-direction: column;
   gap: 12px;
   padding: 16px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(10px);
+  background: var(--bg2);
   border: 1px solid var(--border);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
   margin-bottom: 8px;
 }
 
@@ -413,18 +556,19 @@
   font-size: var(--fs-md);
   outline: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s;
 }
 
 .admin-select:focus {
   border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(14, 151, 224, 0.15);
 }
 
 .admin-stats-indicator {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
   padding: 10px 14px;
   background: var(--bg3);
   border-radius: 12px;
@@ -438,6 +582,28 @@
   color: var(--blue);
 }
 
+/* JSON drop zonasi — ilgari to'liq inline edi */
+.admin-dropzone {
+  border: 2.5px dashed var(--border);
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  background: var(--bg2);
+  transition: border-color 0.25s ease, background 0.25s ease;
+  cursor: pointer;
+  position: relative;
+}
+.admin-dropzone.is-dragging {
+  border-color: var(--blue);
+  background: var(--blue-bg);
+}
+.admin-dropzone-icon { font-size: var(--fs-8xl); margin-bottom: 8px; }
+.admin-dropzone-title {
+  font-size: var(--fs-base); font-weight: 700; color: var(--text);
+  margin-bottom: 4px;
+}
+.admin-dropzone-hint { font-size: var(--fs-xs); color: var(--text3); }
+
 /* Holat badge'lari — sokin, token-asosli (glow'siz) */
 .status-badge-neon {
   font-size: var(--fs-xs);
@@ -449,44 +615,75 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  white-space: nowrap;
 }
 
 .status-badge-neon.paid {
   background: var(--green-bg);
   color: var(--green);
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  border: 1px solid var(--green);
 }
 
 .status-badge-neon.pending {
   background: var(--amber-bg);
   color: var(--amber);
-  border: 1px solid rgba(245, 158, 11, 0.25);
+  border: 1px solid var(--amber);
 }
 
 .status-badge-neon.active {
   background: var(--blue-bg);
   color: var(--accent2);
-  border: 1px solid rgba(14, 151, 224, 0.25);
+  border: 1px solid var(--accent2);
 }
 
-/* Premium Card Hover Effects */
-.admin-q-card, .admin-user-row, .admin-objection-card, .admin-tariff-card {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+/* Karta hover effektlari */
+.admin-q-card, .admin-user-row, .admin-objection-card, .admin-tariff-card, .admin-card {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.admin-q-card:hover, .admin-user-row:hover, .admin-objection-card:hover, .admin-tariff-card:hover {
+.admin-q-card:hover, .admin-user-row:hover, .admin-objection-card:hover,
+.admin-tariff-card:hover, .admin-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  border-color: rgba(14, 151, 224, 0.3) !important;
+  border-color: var(--blue);
 }
 
-/* ESLATMA: bu fayl lazy yuklanadi va sahifadan chiqilgach ham DOM'da qoladi.
-   Shu sababli global klasslarni (.modal-overlay, .btn, ...) bu yerda QAYTA
-   BELGILAMANG — aks holda admin sahifasiga bir kirish butun ilova ko'rinishini
-   o'zgartirib yuboradi. Faqat .admin-* prefiksli klasslar ishlatilsin. */
-
-@media (max-width: 768px) {
-  .admin-filter-selects {
-    grid-template-columns: 1fr;
+@media (prefers-reduced-motion: reduce) {
+  .admin-q-card, .admin-user-row, .admin-objection-card,
+  .admin-tariff-card, .admin-card, .admin-tabs {
+    transition: none;
+    scroll-behavior: auto;
   }
+  .admin-q-card:hover, .admin-user-row:hover, .admin-objection-card:hover,
+  .admin-tariff-card:hover, .admin-card:hover { transform: none; }
+}
+
+/* ═══ MOBILE RESPONSIVE ═══ */
+/* ⚠️ `font-size` bu blokda YO'Q — TIPOGRAFIYA.md:155. Ilgari
+   `.admin-quick-stat-val` va `.admin-tab` shu yerda qayta belgilanardi va
+   foydalanuvchining shrift o'lchami sozlamasi (--fs-scale) bilan to'qnashardi. */
+@media (max-width: 768px) {
+  .admin-page { padding: 12px 12px 100px; }
+
+  .admin-quick-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .admin-quick-stat { padding: 10px 6px; }
+
+  .admin-tab { padding: 8px 12px; }
+
+  .admin-ref-grid { grid-template-columns: repeat(2, 1fr); }
+  .admin-stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .admin-action-bar { flex-direction: column; }
+  .admin-action-bar button { min-width: 0; }
+
+  .admin-filter-selects { grid-template-columns: 1fr; }
+
+  /* D-7: ilgari `.admin-page .glass-panel { overflow-x: auto }` edi — bu
+     panelning BARCHA 9 ta glass-panel'iga (xabar formasi, statistika
+     kartalari, bo'sh holat bloklari, modallar) tegib, ularni telefonda
+     gorizontal scroll'ga majburlardi. Endi faqat jadval o'ramiga. */
+  .admin-table-wrap { -webkit-overflow-scrolling: touch; }
+  .admin-table { min-width: 600px; }
 }
