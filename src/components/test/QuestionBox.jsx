@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import SafeHtml from '../shared/SafeHtml';
 import QuestionMedia from '../QuestionMedia';
 import TimerPill from './TimerPill';
+import { questionKey } from '../../engine/SmartQuestionEngine';
 import { useAuth } from '../../context/AuthContext';
 
 const QuestionBox = ({
@@ -88,9 +89,11 @@ const QuestionBox = ({
 
         {/* ── Aqlli Badglar (Takrorlash & Zaif Nuqta) ── */}
         {(() => {
-          const qHash = (questions[currentQ]?.q || '').substring(0, 100);
-          const isSpaced = (state.spacedCards || []).some(card => card.qHash === qHash);
-          const isWeak = (state.stats?.[state.activeCategory]?.mistakes || []).some(m => (m.question || '').substring(0, 100) === qHash);
+          // T-7: identifikator to'liq matn xeshi. Kartaning kaliti ham matndan
+          // qayta hisoblanadi — eski yozuvlar bilan ham to'g'ri ishlaydi.
+          const qKey = questionKey(questions[currentQ]);
+          const isSpaced = (state.spacedCards || []).some(card => (card.q ? questionKey(card) : card.qHash) === qKey);
+          const isWeak = (state.stats?.[state.activeCategory]?.mistakes || []).some(m => questionKey({ q: m.question }) === qKey);
           if (!isSpaced && !isWeak) return null;
           return (
             <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>

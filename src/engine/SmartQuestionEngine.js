@@ -28,6 +28,49 @@
 
 import { TOPICS } from '../data/mockData';
 
+// ── Savol identifikatori ──────────────────────────────────────────────────
+//
+// ⚠️ AUDIT 2026-08-06, T-7 BAND — ilgari identifikator savol matnining
+// BIRINCHI 100 BELGISI edi. Haqiqiy bazada o'lchandi: 44 944 savoldan 891 tasi
+// (1.98%, 374 guruh) boshqa savol bilan bir xil 100 belgilik boshlanishga ega.
+// Ya'ni A savoliga javob berish B savolini "takrorlandi" deb belgilardi:
+// takrorlash jadvali buzilardi, "vaqti kelgan takror" balli noto'g'ri berilardi.
+// Eng ko'p zarar `til` fanida (159 savol).
+//
+// Endi kalit — butun matnning xeshi. MIGRATSIYA KERAK EMAS: kartochka savol
+// matnini (`card.q`) o'zida saqlaydi, shuning uchun mavjud kartalarning kaliti
+// yuklashda qaytadan hisoblanadi. Xatolar ham to'liq matn saqlaydi.
+//
+// cyrb53 — qisqa, tez va yaxshi taqsimlangan 53-bitli xesh (kriptografik emas,
+// bu yerda kerak ham emas: bizga faqat to'qnashuvsiz identifikator kerak).
+const cyrb53 = (str) => {
+  let h1 = 0xdeadbeef;
+  let h2 = 0x41c6ce57;
+  for (let i = 0; i < str.length; i++) {
+    const ch = str.charCodeAt(i);
+    h1 = Math.imul(h1 ^ ch, 2654435761);
+    h2 = Math.imul(h2 ^ ch, 1597334677);
+  }
+  h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+  h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+  return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36);
+};
+
+/**
+ * Savol yoki takrorlash kartochkasining barqaror identifikatori.
+ * Kirish sifatida ikkalasi ham bo'ladi — ikkalasida ham matn `.q` maydonida.
+ */
+export const questionKey = (item) => 'h' + cyrb53((item?.q || '').trim());
+
+/**
+ * Eski (100 belgilik) identifikator — faqat `customMnemonics` uchun qoldi.
+ * Sabab: mnemonika kalitida SAQLANGANI o'sha 100 belgi, to'liq matn esa yo'q,
+ * ya'ni uni yangi kalitga o'tkazib bo'lmaydi (foydalanuvchi yozgan izohlar
+ * yo'qolardi). Mnemonikadagi to'qnashuvning oqibati yengil — o'xshash savolda
+ * o'sha izoh ko'rinadi, xolos.
+ */
+export const legacyQHash = (item) => (item?.q || '').substring(0, 100);
+
 // ─── EBBINGHAUS CONSTANTS ───
 // Base interval (daqiqada) - 10 daqiqa
 const BASE_INTERVAL_MIN = 10;
@@ -179,23 +222,32 @@ export const smartSort = (allQuestions, options = {}) => {
   // 1. Zaif mavzularni aniqlash
   const weakness = analyzeWeakTopics(topicStats, activeCategory);
 
-  // 2. Spaced Repetition kartochkalarini tezkor lug'atga aylantirish
+  // 2. Spaced Repetition kartochkalarini tezkor lug'atga aylantirish.
+  // Kalit kartaning SAQLANGAN `qHash`idan emas, matnidan qayta hisoblanadi —
+  // shu tufayli eski (100 belgilik) kalitli kartalar ham migratsiyasiz topiladi (T-7).
   const spacedMap = new Map();
   for (const card of spacedCards) {
-    spacedMap.set(card.qHash, card);
+    spacedMap.set(card.q ? questionKey(card) : card.qHash, card);
   }
 
-  // 3. Xatolar to'plamini tezkor lug'atga aylantirish
+  // 3. Xatolar to'plamini tezkor lug'atga aylantirish.
+  // Xatolar to'liq savol matnini saqlaydi (`m.question`), shuning uchun bu yerda
+  // kalit to'g'ridan-to'g'ri yangi shaklda hisoblanadi — migratsiya kerak emas.
   const mistakeSet = new Set(
-    mistakes.map(m => (m.question || '').substring(0, 100))
+    mistakes.map(m => questionKey({ q: m.question }))
   );
 
   const now = Date.now();
 
   // 4. Har bir savolga "priority" ball hisoblash
+  //
+  // ⚠️ AUDIT 2026-08-06, T-18 BAND — ilgari bu yerda har savol `{...q}` bilan
+  // TO'LIQ klonlanardi (fan bo'yicha ~2 900 obyekt), qHash esa ikki marta
+  // hisoblanardi. Endi faqat yengil o'ram (`{q, priority, card}`) yasaladi —
+  // savol obyekti nusxalanmaydi.
   const scoredQuestions = allQuestions.map(q => {
     let priority = 1.0;
-    const qHash = (q.q || '').substring(0, 100);
+    const qHash = questionKey(q);
 
     // A. Zaif mavzu bo'yicha og'irlik (1.0 - 5.0x)
     const qTopicId = q.topicId ?? topicId;
@@ -227,28 +279,33 @@ export const smartSort = (allQuestions, options = {}) => {
     // D. Tasodifiy o'zgaruvchanlik (10%) — monotonlikni oldini olish
     priority *= (0.9 + Math.random() * 0.2);
 
-    return { ...q, _priority: priority, _spacedCard: spacedCard };
+    // Takrorlash savolimi — qHash shu yerda allaqachon hisoblangan, pastda
+    // qayta hisoblamaymiz (ilgari har savol uchun ikkinchi marta kesilardi).
+    const isRepetition = spacedMap.has(qHash) || mistakeSet.has(qHash);
+    return { q, priority, card: spacedCard, isRepetition };
   });
 
   // 5. Savollarni Repetition (takrorlash kerak bo'lgan) va Fresh (yangi) guruhlariga ajratamiz
   const repetitionPool = [];
   const freshPool = [];
 
-  for (const q of scoredQuestions) {
-    const qHash = (q.q || '').substring(0, 100);
-    // Agar spaced-repetition ro'yxatida bo'lsa yoki xatolar ro'yxatida bo'lsa, u takrorlash savolidir
-    const isRepetition = spacedMap.has(qHash) || mistakeSet.has(qHash);
-    
-    if (isRepetition) {
-      repetitionPool.push(q);
+  for (const item of scoredQuestions) {
+    if (item.isRepetition) {
+      repetitionPool.push(item);
     } else {
-      freshPool.push(q);
+      freshPool.push(item);
     }
   }
 
   // Har bir guruhni o'z ustivorligi bo'yicha kamayish tartibida saralaymiz
-  repetitionPool.sort((a, b) => b._priority - a._priority);
-  freshPool.sort((a, b) => b._priority - a._priority);
+  repetitionPool.sort((a, b) => b.priority - a.priority);
+  freshPool.sort((a, b) => b.priority - a.priority);
+
+  // Ko'rsatkichlar — `shift()` o'rniga. `shift()` massiv boshidan o'chirgani
+  // uchun O(n), butun tanlov esa O(n²) bo'lib chiqardi (~2 900 savolda
+  // millionlab element ko'chirish, test boshlanishida asosiy oqimda). T-18.
+  let repIdx = 0;
+  let freshIdx = 0;
 
   // 6. Savollarni blokkalar (har biri 50 tadan) bo'yicha taqsimlaymiz
   const finalBatch = [];
@@ -269,19 +326,19 @@ export const smartSort = (allQuestions, options = {}) => {
     let repCount = 0;
 
     // A. Avval ruxsat etilgan limitgacha takrorlash savollarini qo'shamiz
-    while (repCount < blockMaxRep && repetitionPool.length > 0 && blockQuestions.length < blockNeeded) {
-      blockQuestions.push(repetitionPool.shift());
+    while (repCount < blockMaxRep && repIdx < repetitionPool.length && blockQuestions.length < blockNeeded) {
+      blockQuestions.push(repetitionPool[repIdx++]);
       repCount++;
     }
 
     // B. Qolgan joylarni yangi/fresh savollar bilan to'ldiramiz (bu me'yoridan ko'p takrorlanishni oldini oladi)
-    while (freshPool.length > 0 && blockQuestions.length < blockNeeded) {
-      blockQuestions.push(freshPool.shift());
+    while (freshIdx < freshPool.length && blockQuestions.length < blockNeeded) {
+      blockQuestions.push(freshPool[freshIdx++]);
     }
 
     // C. Agar yangi savollar tugab qolsa, qolgan joylarni baribir takrorlash savollari bilan to'ldiramiz
-    while (repetitionPool.length > 0 && blockQuestions.length < blockNeeded) {
-      blockQuestions.push(repetitionPool.shift());
+    while (repIdx < repetitionPool.length && blockQuestions.length < blockNeeded) {
+      blockQuestions.push(repetitionPool[repIdx++]);
     }
 
     // Blok ichidagi savollarni aralashtiramiz (foydalanuvchi takrorlashlar joylashuvini sezmasligi uchun)
@@ -293,11 +350,13 @@ export const smartSort = (allQuestions, options = {}) => {
     finalBatch.push(...blockQuestions);
   }
 
-  // Debug maydonlarini tozalash va toza savollarni qaytarish
-  return finalBatch.map(({ _priority, _spacedCard, ...q }) => ({
-    ...q,
-    difficulty: _spacedCard?.difficulty ?? q.difficulty
-  }));
+  // O'ramdan savolni chiqaramiz. Nusxa FAQAT kerak bo'lganda yasaladi —
+  // takrorlash kartasi qiyinlikni ustidan yozadigan holatda (T-18). Qolgan
+  // savollar (ko'pchilik) o'z havolasi bilan qaytadi, ortiqcha allokatsiya yo'q.
+  return finalBatch.map(({ q, card }) => {
+    const diff = card?.difficulty;
+    return diff === undefined || diff === q.difficulty ? q : { ...q, difficulty: diff };
+  });
 };
 
 /**
@@ -320,13 +379,22 @@ export const smartSort = (allQuestions, options = {}) => {
 export const FAST_ANSWER_SEC = 4;
 
 /**
+ * Saqlanadigan takrorlash kartalarining maksimal soni.
+ * `userStats` hujjati cheksiz o'smasligi uchun chegara (o'lchov: 200 karta ≈ 210 KB,
+ * chunki karta savolning to'liq nusxasini saqlaydi — audit 2026-08-06, T-6).
+ * AppContext.mergeCloudAndLocal ham AYNAN shu chegarani qo'llaydi.
+ */
+export const MAX_SPACED_CARDS = 200;
+
+/**
  * @param {object} questionTimes  { [savol indeksi]: soniya } — TestPage/ExamPage
  *   allaqachon yig'adi (questionTimesRef), ilgari faqat jami vaqt ishlatilardi.
  */
 export const summarizeTestResults = (questions, answers, spacedCards = [], topicId = -1, questionTimes = {}) => {
+  // Kalit matndan qayta hisoblanadi — eski kartalar ham topiladi (T-7)
   const spacedMap = new Map();
   for (const card of spacedCards) {
-    spacedMap.set(card.qHash, card);
+    spacedMap.set(card.q ? questionKey(card) : card.qHash, card);
   }
 
   let correctCount = 0;
@@ -340,7 +408,11 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
   let maxRunInSession = 0;
   let leadingRun = null;
   const newMistakes = [];
-  const updatedCards = new Map(spacedCards.map(c => [c.qHash, { ...c }]));
+  // Yangilanadigan kartalar ham YANGI kalit bilan indekslanadi. Eski kalitli
+  // kartaning `qHash`i pastda ustiga yozilib, jimgina migratsiya bo'ladi (T-7).
+  const updatedCards = new Map(
+    spacedCards.map(c => [c.q ? questionKey(c) : c.qHash, { ...c, qHash: c.q ? questionKey(c) : c.qHash }])
+  );
   const sessionNow = Date.now();
   // Har savolning O'Z mavzusi bo'yicha hisob — aralash test/imtihonda (topicId=-1)
   // ham har bo'lim o'z ulushini oladi (Dashboard "Bo'limlar xaritasi" shu yerdan o'qiydi)
@@ -351,7 +423,7 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
     const selected = answers[i];
     if (selected === undefined) continue;
 
-    const qHash = (q.q || '').substring(0, 100);
+    const qHash = questionKey(q);
     const wasCorrect = selected === q.correct;
 
     const qTopicId = q.topicId ?? topicId;
@@ -456,6 +528,11 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
     maxRunInSession,
     leadingRun,
     trailingRun: run,
-    updatedSpacedCards: Array.from(updatedCards.values()).slice(-200) // Maks 200 ta
+    // Eng YANGI KO'RILGAN kartalar saqlanadi. Ilgari oddiy `.slice(-200)` edi —
+    // u Map'ning kiritilish tartibiga tayanardi, ya'ni bugun takrorlangan, lekin
+    // ancha oldin qo'shilgan karta ro'yxatdan tushib ketishi mumkin edi (T-6).
+    updatedSpacedCards: Array.from(updatedCards.values())
+      .sort((a, b) => (a.lastReview || 0) - (b.lastReview || 0))
+      .slice(-MAX_SPACED_CARDS)
   };
 };
