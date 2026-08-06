@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect, useContext, useRef, useCallb
 import localforage from 'localforage';
 import { MAX_MISTAKES_SAVED, EXAM_GOAL_SCORE, BATCH_SIZE } from '../config';
 import { computeDiagnostics, avgSecondsPerQuestion } from '../engine/DiagnosticsEngine';
+import { MAX_SPACED_CARDS, questionKey } from '../engine/SmartQuestionEngine';
 import { readContract, questionsForMinutes } from '../services/studyContract';
 import { db } from '../firebase';
 import { AuthContext } from './AuthContext';
@@ -250,6 +251,36 @@ const mergeCloudAndLocal = (cloud, local) => {
     totalQuestions: Math.max(cloud.timeStats?.totalQuestions || 0, local.timeStats?.totalQuestions || 0)
   };
 
+  // ⚠️ AUDIT 2026-08-06, T-15 BAND — `spacedCards` va `customMnemonics`
+  // BIRLASHTIRILMASDI: `merged = {...cloud}` tufayli bulut nusxasi g'olib edi.
+  // Natijada hisoblagichlar max() bilan saqlanib qolgan holda, oflayn sessiyada
+  // olingan takrorlash (SRS) progressi jimgina yo'qolardi — nomuvofiq xatti-harakat.
+  //
+  // Kartalar qHash bo'yicha union qilinadi, ziddiyatda OXIRGI KO'RILGANI g'olib
+  // (`lastReview` kattaroq) — bu SRS uchun to'g'ri semantika. Ro'yxat eng yangi
+  // ko'rilgan MAX_SPACED_CARDS ta karta bilan cheklanadi (SmartQuestionEngine
+  // bilan bir xil chegara); ilgari kesish kiritilish tartibida bo'lib, bugun
+  // takrorlangan eski karta tushib qolishi mumkin edi.
+  // Kalit matndan qayta hisoblanadi (T-7): bulutdagi karta eski 100-belgilik
+  // kalitda, lokali esa yangi xeshda bo'lsa ham, ular BITTA karta deb tanilishi
+  // va ikkiga bo'linib ketmasligi kerak.
+  const cardByHash = new Map();
+  for (const c of [...(cloud.spacedCards || []), ...(local.spacedCards || [])]) {
+    const key = c?.q ? questionKey(c) : c?.qHash;
+    if (!key) continue;
+    const prev = cardByHash.get(key);
+    if (!prev || (c.lastReview || 0) >= (prev.lastReview || 0)) cardByHash.set(key, c);
+  }
+  merged.spacedCards = [...cardByHash.values()]
+    .sort((a, b) => (a.lastReview || 0) - (b.lastReview || 0))
+    .slice(-MAX_SPACED_CARDS);
+
+  // Mnemonika — matn, vaqt belgisi yo'q. Shuning uchun ziddiyatda BULUT g'olib
+  // (umumiy manba), lokalda bor-u bulutda yo'q kalitlar esa saqlanadi. Bu yo'l
+  // hech qachon ma'lumot YO'QOTMAYDI: hozirgi holatda lokal kalit butunlay
+  // tashlab yuborilardi.
+  merged.customMnemonics = { ...(local.customMnemonics || {}), ...(cloud.customMnemonics || {}) };
+
   // Tendensiya — hafta bo'yicha union. Ikkala nusxada ham bir hafta bo'lsa
   // ko'proq javobli (ya'ni kechroq yozilgan) nuqta ustun: hafta ichida raqam
   // faqat o'sadi yoki aniqlashadi, orqaga qaytmaydi.
@@ -422,6 +453,10 @@ export const AppProvider = ({ children }) => {
   // Har doim joriy user qiymatini saqlaymiz (stale closure muammosini hal qilish uchun)
   const userRef = useRef(user);
   useEffect(() => { userRef.current = user; }, [user]);
+  // Oxirgi commit qilingan holat — `batchCommitResults` uni SINXRON o'qiydi (T-22).
+  // Render paytida yozish — standart "latest ref" naqshi.
+  const stateRef = useRef(state);
+  stateRef.current = state;
 
   // ─── 1. Foydalanuvchi kirishi/chiqishida statistikani yuklash ───
   useEffect(() => {
@@ -455,18 +490,37 @@ export const AppProvider = ({ children }) => {
       return cat ? { ...loaded, activeCategory: cat } : loaded;
     };
 
+    // ⚠️ AUDIT 2026-08-06, T-2 BAND — hisob almashish poygasi.
+    // Quyidagi yuklash ASYNC, effekt esa `user?.uid` o'zgarganda qayta ishga
+    // tushadi. Avval bekor qilish mexanizmi YO'Q edi: A chiqib B kirsa va A ning
+    // `getDoc` javobi hali yo'lda bo'lsa, u kech kelib A ning ma'lumotini
+    // state'ga yozardi. 2-effekt esa uni `userStats/B` ga va
+    // `localStorage.iqro_state_B` ga saqlardi — B ning statistikasi A niki bilan
+    // almashardi. mergeCloudAndLocal monoton max() qilgani uchun buni orqaga
+    // qaytarib bo'lmasdi. Sekin tarmoqda yoki umumiy qurilmada real holat.
+    //
+    // `cancelled` — effekt cleanup'ida yoqiladi, ya'ni uid o'zgargan zahoti
+    // eski so'rovning HAMMA yon ta'siri to'siladi.
+    let cancelled = false;
+    const uid = user.uid;
+
     // Foydalanuvchi statistikasini Firestore'dan yuklash
     const loadUserStats = async () => {
       // Lokal zaxira UID bilan izolyatsiyalangan — faqat SHU foydalanuvchiniki bo'lishi mumkin
-      const backup = await loadLocalBackup(user.uid);
+      const backup = await loadLocalBackup(uid);
+      if (cancelled) return;
+      // Har `setState` shu guard orqali o'tadi — kech kelgan javob hech qachon
+      // boshqa foydalanuvchining holatini bosmaydi.
+      const applyState = (next) => { if (!cancelled) setState(next); };
       try {
-        const statRef = doc(db, 'userStats', user.uid);
+        const statRef = doc(db, 'userStats', uid);
         const snap = await getDoc(statRef);
+        if (cancelled) return;
         if (snap.exists()) {
           // Bulut + lokal zaxira: hisoblagichlar max() bo'yicha birlashtiriladi,
           // shunda bulutga yetib bormagan oxirgi sessiya natijalari yo'qolmaydi
           const data = mergeCloudAndLocal(snap.data(), backup);
-          setState(() => withAchievements(seedCategory({
+          applyState(() => withAchievements(seedCategory({
             ...buildDefaultState(),
             ...data,
             stats: data.stats || { chqbt: buildDefaultCatStats(), art: buildDefaultCatStats() },
@@ -477,25 +531,29 @@ export const AppProvider = ({ children }) => {
         } else if (backup) {
           // Bulutda hujjat yo'q, lekin shu UID ning lokal zaxirasi bor — undan tiklash
           const { savedAt, ...localState } = backup;
-          setState(withAchievements(seedCategory({ ...buildDefaultState(), ...localState }, localState.activeCategory)));
+          applyState(withAchievements(seedCategory({ ...buildDefaultState(), ...localState }, localState.activeCategory)));
         } else {
           // Yangi foydalanuvchi — toza holat bilan boshlash
-          setState(seedCategory(buildDefaultState(), null));
+          applyState(seedCategory(buildDefaultState(), null));
         }
       } catch (err) {
+        if (cancelled) return;
         console.error('Foydalanuvchi statistikasini yuklashda xatolik:', err);
         // Oflayn/xatolikda default o'rniga lokal zaxiradan tiklash
         if (backup) {
           const { savedAt, ...localState } = backup;
-          setState(withAchievements(seedCategory({ ...buildDefaultState(), ...localState }, localState.activeCategory)));
+          applyState(withAchievements(seedCategory({ ...buildDefaultState(), ...localState }, localState.activeCategory)));
         } else {
-          setState(seedCategory(buildDefaultState(), null));
+          applyState(seedCategory(buildDefaultState(), null));
         }
       }
-      setCloudSynced(true);
+      // cloudSynced 2-effektning saqlash ruxsatini ochadi — bekor qilingan
+      // yuklashda uni YOQMAYMIZ, aks holda eski holat bulutga yozilardi.
+      if (!cancelled) setCloudSynced(true);
     };
 
     loadUserStats();
+    return () => { cancelled = true; };
     // Faqat UID o'zgarganda (kirish/chiqish) qayta yuklaymiz — onAuthStateChanged
     // token yangilanishi yoki tab fokusi tufayli bir xil user uchun YANGI obyekt
     // qaytarishi mumkin. Butun `user` obyektiga bog'lansak, bu har safar
@@ -507,6 +565,7 @@ export const AppProvider = ({ children }) => {
   // Har o'zgarishda emas, 3 soniya kutib, oxirgi holatni bir marta yozadi.
   // Bu test paytida ~50 ta write o'rniga 2-3 ta write qiladi.
   const saveTimerRef = useRef(null);
+  const localTimerRef = useRef(null);
   const flushSaveRef = useRef(null);
 
   useEffect(() => {
@@ -516,39 +575,61 @@ export const AppProvider = ({ children }) => {
     // XAVFSIZLIK: kalit nomi user UID bilan izolyatsiya qilingan
     // savedAt — resetAt guard uchun (mergeCloudAndLocal)
     const userKey = getUserStateKey(user.uid);
-    const serialized = JSON.stringify({ ...state, savedAt: Date.now() });
-    try { localStorage.setItem(userKey, serialized); } catch (e) { console.warn('LocalStorage save error:', e); }
-    localforage.setItem(userKey, serialized).catch(() => {});
 
-    const writeNow = () => {
+    // ⚠️ AUDIT 2026-08-06, T-6 BAND — bu yozuv ilgari HAR state o'zgarishida
+    // SINXRON bajarilardi. `state` esa o'lchov bo'yicha ~250 KB (spacedCards
+    // savolning to'liq nusxasini saqlaydi), ya'ni `JSON.stringify` asosiy oqimni
+    // har safar bloklardi. SmartReviewPage har javobda `updateState` chaqiradi —
+    // demak takror sessiyasida bu har javobda takrorlanardi (jank manbai).
+    // Endi lokal nusxa ham debounce bilan yoziladi; ilova fonga o'tganda esa
+    // pastdagi `flushAll` uni darhol yozib qo'yadi, ya'ni himoya darajasi tushmaydi.
+    const writeLocalNow = () => {
+      localTimerRef.current = null;
+      const serialized = JSON.stringify({ ...state, savedAt: Date.now() });
+      try { localStorage.setItem(userKey, serialized); } catch (e) { console.warn('LocalStorage save error:', e); }
+      localforage.setItem(userKey, serialized).catch(() => {});
+    };
+
+    const writeCloudNow = () => {
       saveTimerRef.current = null;
       const statRef = doc(db, 'userStats', user.uid);
       setDoc(statRef, prepareStatsForSave(state, user), { merge: true }).catch(console.error);
     };
-    flushSaveRef.current = writeNow;
+
+    // Ikkala kutilayotgan yozuvni ham darhol bajaradi (visibilitychange uchun)
+    flushSaveRef.current = () => {
+      if (localTimerRef.current) { clearTimeout(localTimerRef.current); writeLocalNow(); }
+      if (saveTimerRef.current) { clearTimeout(saveTimerRef.current); writeCloudNow(); }
+    };
+
+    // Lokal zaxira — qisqa debounce (qulash/yopilishdan himoya tez bo'lishi kerak)
+    clearTimeout(localTimerRef.current);
+    localTimerRef.current = setTimeout(writeLocalNow, 600);
 
     // Firestore ga debounced yozish — 3 soniya kutib
     clearTimeout(saveTimerRef.current);
-    saveTimerRef.current = setTimeout(writeNow, 3000);
+    saveTimerRef.current = setTimeout(writeCloudNow, 3000);
 
-    return () => clearTimeout(saveTimerRef.current);
+    return () => {
+      clearTimeout(localTimerRef.current);
+      clearTimeout(saveTimerRef.current);
+    };
   }, [state, user, cloudSynced]);
 
   // ─── 2b. Ilova yashirilganda kutilayotgan yozuvni DARHOL bajarish ───
-  // Mobil PWA foydalanuvchilari ilovani 3 soniyalik debounce tugashidan
-  // oldin yopadi — oxirgi natijalar yo'qolmasligi uchun flush qilamiz.
+  // Mobil PWA foydalanuvchilari ilovani debounce tugashidan oldin yopadi —
+  // oxirgi natijalar yo'qolmasligi uchun IKKALA yozuvni ham flush qilamiz.
   useEffect(() => {
     const onVisibilityChange = () => {
-      if (document.visibilityState === 'hidden' && saveTimerRef.current) {
-        clearTimeout(saveTimerRef.current);
-        flushSaveRef.current?.();
-      }
+      if (document.visibilityState === 'hidden') flushSaveRef.current?.();
     };
     document.addEventListener('visibilitychange', onVisibilityChange);
     return () => document.removeEventListener('visibilitychange', onVisibilityChange);
   }, []);
 
-  const updateState = (updates) => {
+  // useCallback — T-17: funksiya identifikatori barqaror bo'lmasa, pastdagi
+  // `useMemo` har renderda baribir yangi qiymat yasardi.
+  const updateState = useCallback((updates) => {
     // Fan tanlovi ref'da ham belgilanadi — keyinroq kelgan bulut javobi uni
     // bosib ketmasligi uchun (loadUserStats → seedCategory).
     if (updates.activeCategory) chosenCategoryRef.current = updates.activeCategory;
@@ -566,19 +647,29 @@ export const AppProvider = ({ children }) => {
       }
       return { ...prev, ...updates };
     });
-  };
+  }, []);
 
   // ─── batchCommitResults: Test yakunida natijalarni BIR MARTA saqlash ───
   // TestPage test tugaganda har savol uchun alohida emas, shu funksiyani bir marta
   // chaqiradi. Bu Firestore write'larni drastik kamaytiradi (50 write → 1 write).
-  const batchCommitResults = (results) => {
+  const batchCommitResults = useCallback((results) => {
     let snapshot = null;
     let earnedOut = 0; // UI ga qaytariladi ("+N ball" ko'rsatish uchun)
     let gainedOut = []; // shu sessiyada YANGI olingan track darajalari (kichik — faqat Bell)
     let gainedUnvonOut = null; // shu sessiyada unvon oshgan bo'lsa (katta — toast + Bell)
     let gainedMilestonesOut = []; // shu sessiyada olingan shaxsiy marralar (Bell)
     let amiDeltaOut = 0; // shu sessiyada AMI necha ballga o'zgargani (natija ekrani uchun)
-    setState(prev => {
+
+    // ⚠️ AUDIT 2026-08-06, T-22 BAND — bu hisob ilgari `setState(prev => ...)`
+    // UPDATER'i ichida bajarilardi, natija esa (`snapshot`, `earnedOut`, yutuqlar)
+    // updater'dan KEYIN o'qilardi. Bu React'ning KAFOLATLANMAGAN "eager state"
+    // optimizatsiyasiga tayanardi: AppProvider fiber'ida kutilayotgan yangilanish
+    // bo'lsa, React updater'ni sinxron chaqirmaydi va o'zgaruvchilar `null`/0
+    // bo'lib qolardi → foydalanuvchiga "+0 ball", yutuq bildirishnomalari
+    // yozilmasdi, darhol saqlash bajarilmasdi.
+    // Endi hisob SOF funksiya sifatida oxirgi holat ustida bir marta bajariladi
+    // va `setState` ga tayyor QIYMAT beriladi — xatti-harakat deterministik.
+    const computeNext = (prev) => {
       const cat = prev.activeCategory;
       const catStats = prev.stats[cat] || buildDefaultCatStats();
 
@@ -800,10 +891,12 @@ export const AppProvider = ({ children }) => {
         ? prev.amiWeekly
         : { weekId, startAmi: prevAmi };
 
-      snapshot = newState; // updater toza — faqat hisoblaydi va natijani capture qiladi
+      snapshot = newState; // sof hisob — faqat hisoblaydi va natijani capture qiladi
       earnedOut = earnedPoints;
       return newState;
-    });
+    };
+
+    setState(computeNext(stateRef.current));
 
     // Yon ta'sir (Firestore yozuvi) setState updater'idan TASHQARIDA bajariladi —
     // React 18 StrictMode updater'ni ikki marta chaqirganda dublikat write bo'lmaydi.
@@ -869,10 +962,10 @@ export const AppProvider = ({ children }) => {
       }).catch(err => console.warn('Unvon bildirishnomasi yozilmadi:', err?.code || err));
     }
     return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut, gainedMilestones: gainedMilestonesOut };
-  };
+  }, [showToast]);
 
   // Shaxsiy mnemonika saqlash
-  const saveCustomMnemonic = (qHash, text) => {
+  const saveCustomMnemonic = useCallback((qHash, text) => {
     setState(prev => ({
       ...prev,
       customMnemonics: {
@@ -880,7 +973,7 @@ export const AppProvider = ({ children }) => {
         [qHash]: text
       }
     }));
-  };
+  }, []);
 
   // ─── Statistikani reset qilish ───
   /**
@@ -953,7 +1046,7 @@ export const AppProvider = ({ children }) => {
     }
   }, []);
 
-  const resetStats = async () => {
+  const resetStats = useCallback(async () => {
     // resetAt — boshqa qurilmadagi eski lokal zaxira resetni "bekor qilmasligi" uchun guard
     const fresh = { ...buildDefaultState(), resetAt: Date.now() };
     setState(fresh);
@@ -963,10 +1056,10 @@ export const AppProvider = ({ children }) => {
       await setDoc(doc(db, 'userStats', user.uid), fresh, { merge: false });
     }
     showToast("Statistika tozalandi", 'info');
-  };
+  }, [user, showToast]);
 
   // ─── Xatolarni o'chirish va tozalash ───
-  const deleteMistake = (questionText) => {
+  const deleteMistake = useCallback((questionText) => {
     setState(prev => {
       const cat = prev.activeCategory;
       const catStats = prev.stats[cat] || buildDefaultCatStats();
@@ -982,9 +1075,9 @@ export const AppProvider = ({ children }) => {
         }
       };
     });
-  };
+  }, []);
 
-  const clearMistakes = () => {
+  const clearMistakes = useCallback(() => {
     setState(prev => {
       const cat = prev.activeCategory;
       const catStats = prev.stats[cat] || buildDefaultCatStats();
@@ -999,20 +1092,32 @@ export const AppProvider = ({ children }) => {
         }
       };
     });
-  };
+  }, []);
+
+  // ⚠️ AUDIT 2026-08-06, T-17 BAND — context qiymati har renderda YANGI obyekt
+  // sifatida yasalardi. `useMemo` bilan u endi faqat haqiqiy bog'liqlik
+  // o'zgarganda yangilanadi (masalan AuthContext'dan `user` obyekti yangilanib,
+  // lekin statistika o'zgarmagan holatda ortiqcha qayta render bo'lmaydi).
+  //
+  // DIQQAT — bu TO'LIQ yechim emas: `state` o'zgarganda qiymat baribir
+  // yangilanadi va React barcha iste'molchilarni qayta render qiladi, hatto
+  // ular faqat funksiyalardan foydalansa ham. To'liq yechim — context'ni ikkiga
+  // bo'lish (holat / amallar), lekin u barcha iste'molchilarga tegadi va
+  // alohida ish sifatida rejalashtirilishi kerak.
+  const contextValue = React.useMemo(() => ({
+    state,
+    updateState,
+    batchCommitResults,
+    completeDailyPlan,
+    resetStats,
+    deleteMistake,
+    clearMistakes,
+    saveCustomMnemonic,
+    cloudSynced
+  }), [state, updateState, batchCommitResults, completeDailyPlan, resetStats, deleteMistake, clearMistakes, saveCustomMnemonic, cloudSynced]);
 
   return (
-    <AppContext.Provider value={{
-      state,
-      updateState,
-      batchCommitResults,
-      completeDailyPlan,
-      resetStats,
-      deleteMistake,
-      clearMistakes,
-      saveCustomMnemonic,
-      cloudSynced
-    }}>
+    <AppContext.Provider value={contextValue}>
       {children}
     </AppContext.Provider>
   );
