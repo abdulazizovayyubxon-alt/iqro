@@ -7,7 +7,8 @@
  *  Har kuni 1 marta ishga tushadi (Vercel Cron yoki tashqi trigger):
  *
  *  1. Premium muddat tekshiruvi:
- *     - premiumExpire o'tgan va premiumPlan !== 'paid' → isPremium = false
+ *     - premiumExpire o'tgan → isPremium = false (to'lov/promo/admin — bir xil)
+ *     - premiumExpire = null (muddatsiz "Cheksiz Pro") → tegilmaydi
  *
  *  2. Eslatma yuborish:
  *     - Bepul oy (referral) tugashiga 3 kun qolganlar → notification
@@ -68,33 +69,71 @@ export default async function handler(req, res) {
   try {
 
     // ═══ 1. PREMIUM MUDDATI TEKSHIRUVI ═══
-    // premiumExpire o'tgan va premiumPlan !== 'paid' bo'lganlarni topamiz
+    //
+    // ⚠️ AUDIT 2026-08-06, T-1 BAND — bu yerda `premiumPlan === 'paid'` bo'lgan
+    // obunalar ATAYLAB o'tkazib yuborilardi ("to'langan premium — tegmaymiz").
+    // Natijada to'langan obuna SERVERDA hech qachon tugamasdi, mijoz esa uni
+    // o'zi tugata olmasdi: AuthContext.jsx:241 `{isPremium:false}` yozishga
+    // urinadi, lekin `isPremium`/`premiumPlan` firestore.rules'dagi
+    // protectedUserFields() ro'yxatida (audit 2026-08-05, 1-band) → yozuv rad
+    // etiladi va `.catch(console.warn)` bilan jimgina yutiladi.
+    //
+    // Oqibati: `users/{uid}.isPremium` abadiy `true` qolardi →
+    // firestore.rules `hasContentAccess()` va api/get-questions.js ikkalasi ham
+    // ruxsat berardi → bir oy to'lagan odam ~45k savollik bazani MANGU olardi.
+    //
+    // Endi muddat manbai bitta: `premiumExpire`. To'lov, promo va admin — uchalasi
+    // ham bir xil qoidaga bo'ysunadi (AuthContext.jsx:235 dagi izoh shuni aytadi).
+    // MUDDATSIZ obuna (`durationMonths: 999` → `premiumExpire: null`) quyidagi
+    // `if (data.premiumExpire)` guard'i tufayli TEGILMAYDI — mavjud "Cheksiz Pro"
+    // egalari buzilmaydi.
     const premiumUsers = await db.collection('users')
       .where('isPremium', '==', true)
       .get();
 
+    // Yozuvlar PARTIYALAB bajariladi: istisno olib tashlangach birinchi ishga
+    // tushishda ancha yig'ilib qolgan muddati o'tgan obunalar bir vaqtda
+    // tuzatiladi — ketma-ket `await` bo'lsa Vercel funksiyasi timeout'ga tushardi.
+    //
+    // commit XATOSI butun cron'ni to'xtatmaydi: u ushlanadi va `results.errors`ga
+    // yoziladi, keyingi partiya davom etadi. Aks holda bitta o'chirilgan hujjat
+    // 2- va 3-bosqichni (eslatmalar, chegirma tozalash) ham yiqitardi.
+    // Hisoblagich FAQAT muvaffaqiyatli commit'dan keyin oshadi.
+    let batch = db.batch();
+    let pendingIds = [];
+    const flush = async () => {
+      if (pendingIds.length === 0) return;
+      const count = pendingIds.length;
+      const firstId = pendingIds[0];
+      try {
+        await batch.commit();
+        results.premiumExpired += count;
+      } catch (e) {
+        results.errors.push(`Expire partiyasi (${count} ta, ${firstId}...): ${e.message}`);
+      }
+      batch = db.batch();
+      pendingIds = [];
+    };
+
     for (const userDoc of premiumUsers.docs) {
       const data = userDoc.data();
 
-      // To'langan premium — tegmaymiz
-      if (data.premiumPlan === 'paid') continue;
+      // premiumExpire bormi va o'tganmi? (null = muddatsiz → tegilmaydi)
+      if (!data.premiumExpire) continue;
 
-      // premiumExpire bormi va o'tganmi?
-      if (data.premiumExpire) {
-        const expDate = new Date(data.premiumExpire);
-        if (expDate < now) {
-          try {
-            await userDoc.ref.update({
-              isPremium: false,
-              premiumPlan: 'expired',
-            });
-            results.premiumExpired++;
-          } catch (e) {
-            results.errors.push(`Expire ${userDoc.id}: ${e.message}`);
-          }
-        }
-      }
+      const expDate = new Date(data.premiumExpire);
+      // Buzilgan sana satri → Invalid Date → taqqoslash false → o'tkazib yuboriladi.
+      // Noaniq holatda obunani O'CHIRMAYMIZ (to'lagan odamni jazolamaslik).
+      if (!(expDate < now)) continue;
+
+      batch.update(userDoc.ref, {
+        isPremium: false,
+        premiumPlan: 'expired',
+      });
+      pendingIds.push(userDoc.id);
+      if (pendingIds.length >= 400) await flush();
     }
+    await flush();
 
     // ═══ 2. ESLATMA YUBORISH ═══
     // Masshtab: barcha foydalanuvchini bir vaqtda xotiraga YUKLAMAYMIZ — 500 tadan
