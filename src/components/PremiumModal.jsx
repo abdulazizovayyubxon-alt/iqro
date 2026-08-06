@@ -23,6 +23,7 @@ import { redeemPromo, PROMO_ERRORS } from '../services/promo';
 import { generateClickUrl } from '../services/payment';
 import { AnalyticsEvents } from '../services/analytics';
 import { isPlayBuild } from '../config';
+import { useModalA11y } from '../hooks/useModalA11y';
 import RoiBlock from './RoiBlock';
 import BrandLogo from './shared/BrandLogo';
 
@@ -92,6 +93,8 @@ const PremiumModal = ({ isOpen, onClose }) => {
   // ishlab modalni o'z-o'zidan yopib qo'ymasligi uchun.
   const onCloseRef = useRef(onClose);
   useEffect(() => { onCloseRef.current = onClose; }, [onClose]);
+  // Escape, fokus tutqichi, fokusni qaytarish (T-10)
+  const dialogRef = useModalA11y(isOpen, onClose);
 
   useEffect(() => {
     if (!isOpen || !user) return;
@@ -320,6 +323,11 @@ const PremiumModal = ({ isOpen, onClose }) => {
       }}
     >
       <motion.div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={t('premium.title', 'Pro obuna')}
+        tabIndex={-1}
         initial={isMobile ? { y: '100%', opacity: 0 } : { scale: 0.92, opacity: 0 }}
         animate={isMobile ? { y: 0, opacity: 1 } : { scale: 1, opacity: 1 }}
         exit={isMobile ? { y: '100%', opacity: 0 } : { scale: 0.92, opacity: 0 }}

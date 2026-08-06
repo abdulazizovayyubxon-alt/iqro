@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useModalA11y } from '../../hooks/useModalA11y';
 
 /**
  * ObjectionModal — Savolga e'tiroz bildirish modali
@@ -14,6 +15,7 @@ import { useTranslation } from 'react-i18next';
 const ObjectionModal = ({ isOpen, onClose, questionText, onSubmit }) => {
   const { t } = useTranslation();
   const [text, setText] = useState('');
+  const dialogRef = useModalA11y(isOpen, onClose); // T-10
 
   React.useEffect(() => {
     if (!isOpen) return;
@@ -50,7 +52,16 @@ const ObjectionModal = ({ isOpen, onClose, questionText, onSubmit }) => {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={e => e.stopPropagation()}>
+      {/* T-10: Escape, fokus tutqichi va screen reader e'loni */}
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={t('objection.title')}
+        tabIndex={-1}
+        className="modal-content"
+        onClick={e => e.stopPropagation()}
+      >
         <div className="modal-title">{t('objection.title')}</div>
         <div className="modal-text" style={{ fontSize: 'var(--fs-md)', lineHeight: 1.5 }}>
           <strong>{t('objection.questionLabel')}</strong> {questionText}

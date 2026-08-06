@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { useModalA11y } from '../../hooks/useModalA11y';
 
 /**
  * ConfirmDialog — window.confirm o'rnini bosuvchi yagona tasdiq oynasi.
@@ -19,6 +20,9 @@ export default function ConfirmDialog({
   onCancel,
 }) {
   const { t } = useTranslation();
+  // Escape bilan yopish + fokus tutqichi + fokusni qaytarish (T-10).
+  // Escape "bekor qilish" bilan bir xil — bu tasdiq oynasi uchun xavfsiz standart.
+  const dialogRef = useModalA11y(open, onCancel);
   if (!open) return null;
   return (
     <div
@@ -26,6 +30,11 @@ export default function ConfirmDialog({
       onClick={onCancel}
     >
       <motion.div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={title || t('common.yes')}
+        tabIndex={-1}
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         className="glass-panel"

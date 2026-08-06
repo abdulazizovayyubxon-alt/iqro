@@ -6,6 +6,7 @@ import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import { EXAM_DATE_KEY } from '../utils/examDate';
 import { useModalBackButton } from './profile/useModalBackButton';
+import { useModalA11y } from '../hooks/useModalA11y';
 import DateInput from './shared/DateInput';
 
 const THIS_YEAR = new Date().getFullYear();
@@ -31,6 +32,7 @@ const ExamDateModal = ({ open, initialDays = '', onClose, onSaved }) => {
   const [saving, setSaving] = useState(false);
 
   useModalBackButton(open, onClose);
+  const dialogRef = useModalA11y(open, onClose); // T-10
 
   if (!open) return null;
 
@@ -71,7 +73,17 @@ const ExamDateModal = ({ open, initialDays = '', onClose, onSaved }) => {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content glass-panel" onClick={e => e.stopPropagation()} style={{ maxWidth: '400px' }}>
+      {/* T-10: Escape, fokus tutqichi va screen reader e'loni */}
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={t('header.examModal.title')}
+        tabIndex={-1}
+        className="modal-content glass-panel"
+        onClick={e => e.stopPropagation()}
+        style={{ maxWidth: '400px' }}
+      >
         <div className="modal-title">
           <Calendar size={22} style={{ color: 'var(--blue)' }} /> {t('header.examModal.title')}
         </div>
