@@ -25,7 +25,7 @@ import { summarizeTestResults } from '../engine/SmartQuestionEngine';
 import { AnalyticsEvents } from '../services/analytics';
 import localforage from 'localforage';
 import { EXAM_SESSION_KEY } from '../config';
-import { PED_BLOCK_TOTAL, isPedBlockTopic } from '../data/examBlueprint';
+import { PED_BLOCK_TOTAL, isPedBlockTopic, EXAM_BLUEPRINT, hasBlueprint } from '../data/examBlueprint';
 import { useExitGuard } from '../hooks/useExitGuard';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
 
@@ -56,24 +56,27 @@ const CORE_BLOCK_TOTAL = EXAM_TOTAL - PED_BLOCK_TOTAL;
 // INVARIANT: har fanda mutaxassislik bo'limlari yig'indisi 35, oxirgi blok
 // (kasb standarti + pedagogik mahorat) esa 15 bo'lishi shart — rasmiy
 // spetsifikatsiya shunday (`data/examBlueprint.js`).
-const SUBJECT_BLUEPRINTS = {
-  chqbt: { 0: 8, 1: 8, 2: 7, 3: 4, 4: 4, 5: 4, 6: 15 },
-  art: { 7: 10, 8: 3, 9: 4, 10: 3, 11: 7, 12: 4, 13: 4, 14: 15 },
-  tarix: { 15: 5, 16: 4, 17: 3, 18: 6, 19: 5, 20: 7, 21: 5, 22: 15 },
-  sport: { 23: 2, 24: 6, 25: 3, 26: 5, 27: 2, 28: 5, 29: 12, 30: 15 },
-  boshlangich: { 31: 4, 32: 3, 33: 9, 34: 5, 35: 4, 36: 5, 37: 5, 38: 15 },
-  info: { 39: 3, 40: 7, 41: 4, 42: 4, 43: 8, 44: 5, 45: 4, 46: 15 },
-  mtt: { 47: 5, 48: 5, 49: 5, 50: 5, 51: 5, 52: 5, 53: 5, 54: 15 },
-  til: { 55: 5, 56: 8, 57: 7, 58: 5, 59: 8, 60: 2, 61: 0, 62: 15 },
-  mtt_rahbar: { 63: 5, 64: 5, 65: 5, 66: 5, 67: 5, 68: 5, 69: 5, 70: 15 },
-  biologiya: { 80: 5, 81: 7, 82: 10, 83: 8, 84: 5, 85: 5, 86: 10 },
-  geografiya: { 87: 5, 88: 6, 89: 5, 90: 5, 91: 6, 92: 2, 93: 3, 94: 3, 95: 5, 96: 10 },
-  mtt_logoped: { 97: 5, 98: 3, 99: 5, 100: 5, 101: 5, 102: 4, 103: 4, 104: 4, 105: 5, 106: 10 },
-  mtt_psixolog: { 107: 3, 108: 5, 109: 5, 110: 4, 111: 18, 112: 5, 113: 10 },
-  kimyo: { 114: 13, 115: 7, 116: 5, 117: 7, 118: 3, 119: 5, 120: 10 },
-  rus_tili: { 121: 6, 122: 1, 123: 5, 124: 9, 125: 9, 126: 5, 127: 5, 128: 10 },
-  ingliz: { 129: 6, 130: 5, 131: 4, 132: 7, 133: 7, 134: 6, 135: 5, 136: 10 }
-};
+//
+// ⚠️ AUDIT 2026-08-06, T-5 BAND — bu yerda IKKINCHI, mustaqil
+// `SUBJECT_BLUEPRINTS` jadvali turardi. U `data/examBlueprint.js` dagi
+// `EXAM_BLUEPRINT` bilan 5 ta fanda (tarix, mtt, mtt_rahbar, til, kimyo)
+// bir-biriga MOS KELMASDI: ikkalasining yig'indisi 35+15 bo'lsa ham, bo'limlar
+// ichidagi taqsimot boshqacha edi. Natijada DiagnosticsEngine bo'limni bir
+// og'irlik bilan baholab, imtihon simulyatori boshqa son savol berardi.
+//
+// Eng og'iri — `til` fanining 61-bo'limi: bu jadval unga 0 savol berardi
+// (`countNeeded === 0 → return`), EXAM_BLUEPRINT esa 4 (tayyorlikning 8%i).
+// Bazada o'sha bo'limda 279 ta savol bor, ya'ni bu ataylab emas, xato edi:
+// foydalanuvchi hech qachon yopa olmaydigan teshik.
+//
+// Endi manba BITTA — `EXAM_BLUEPRINT` (u rasmiy spetsifikatsiya PDF'lariga
+// havola qiladi va savol oraliqlarini hujjatlashtiradi). `hasBlueprint()` ham
+// DiagnosticsEngine bilan ayni bitta funksiya, ya'ni «bu fanda rasmiy raqam
+// bormi?» degan savolga ikkala joy bir xil javob beradi.
+const blueprintForTopics = (topicIds) =>
+  hasBlueprint(topicIds)
+    ? Object.fromEntries(topicIds.map(id => [id, EXAM_BLUEPRINT[id]]))
+    : null;
 
 const getExamDuration = (category) => {
   switch (category) {
@@ -216,7 +219,13 @@ const ExamPage = () => {
     if (examStarted || sessionCheckedRef.current) return;
     sessionCheckedRef.current = true;
     localforage.getItem(EXAM_SESSION_KEY).then(s => {
-      const valid = s && s.cat === cat && (!s.uid || s.uid === user?.uid)
+      // ⚠️ AUDIT 2026-08-06, T-21 BAND — avval shart `(!s.uid || s.uid === user?.uid)`
+      // edi: `uid` YO'Q sessiya (masalan, `user` bir lahza null bo'lganda saqlangani)
+      // ISTALGAN hisob tomonidan tiklanardi. Umumiy qurilmada bir o'qituvchi
+      // boshqasining tugallanmagan imtihonini — javoblari bilan — ochib olardi.
+      // Endi egalik QAT'IY: uid bo'lmasa yoki mos kelmasa, sessiya tiklanmaydi.
+      // Kamchiligi (juda kam holatda bitta sessiya yo'qolishi) maxfiylikdan arzon.
+      const valid = s && s.cat === cat && !!s.uid && !!user?.uid && s.uid === user.uid
         && Array.isArray(s.questions) && s.questions.length > 0 && s.timeLeft > 0;
       if (valid) {
         setQuestions(s.questions);
@@ -431,7 +440,8 @@ const ExamPage = () => {
         });
 
         // 🎯 RASMIY SPETSIFIKATSIYA BO'YICHA SAVOLLARNI PROPORSIYALASH VA QIYNILIK BALANSI (30-56-14)
-        const blueprint = SUBJECT_BLUEPRINTS[cat];
+        // Og'irliklar `data/examBlueprint.js` dan — DiagnosticsEngine bilan AYNI manba (T-5)
+        const blueprint = blueprintForTopics(validTopicIds);
         let finalQuestions = [];
 
         if (blueprint) {
