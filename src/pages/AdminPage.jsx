@@ -6,7 +6,8 @@ import { useAdmin } from '../hooks/useAdmin';
 import { db, auth } from '../firebase';
 import {
   collection, query, orderBy, onSnapshot, where, getCountFromServer,
-  updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch, increment, setDoc, limit, documentId
+  updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch, increment, setDoc, limit, documentId,
+  runTransaction
 } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
@@ -30,6 +31,10 @@ import { normalizeText, trigrams, jaccard } from '../utils/textSimilarity';
 
 // Yaqin-dublikat chegarasi (0..1). Yuqori = faqat juda o'xshashlar (matching/sequence soxta-ijobiyni kamaytiradi).
 const DUP_SIM_THRESHOLD = 0.87;
+
+// Bir marta tahlil qilinadigan maksimal savol soni (T-19). Bundan katta hajmda
+// trigram indeksi xotirani portlatadi — admin avval fan filtrini tanlashi kerak.
+const DUP_MAX_POOL = 8000;
 
 // User-Agent satridan qisqa o'qiladigan nom chiqaradi ("Samsung Internet 30 · Android").
 // Xatolarni tahlil qilishda eng kerakli ma'lumot — bu brauzer/OS: xatolarning
@@ -149,6 +154,10 @@ const AdminPage = () => {
   const [users, setUsers] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [questionsLoading, setQuestionsLoading] = useState(false);
+  // Baza haqiqatan yuklanganmi. `questions.length > 0` YETARLI EMAS: bo'sh baza
+  // ham 0 uzunlik beradi, JSON import esa dublikat tekshiruvi uchun aynan shu
+  // farqni bilishi kerak (T-3).
+  const [questionsLoaded, setQuestionsLoaded] = useState(false);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [userSearch, setUserSearch] = useState('');
@@ -187,7 +196,9 @@ const AdminPage = () => {
 
   useEffect(() => {
     if (!isAdmin) return;
-    const qNotifs = query(collection(db, 'notifications'), orderBy('date', 'desc'));
+    // limit(100) — T-8: ilgari chegara yo'q edi, ya'ni kolleksiya o'sgani sari
+    // admin sahifasi ochilishi bilan BUTUN tarix real-time yuklanardi.
+    const qNotifs = query(collection(db, 'notifications'), orderBy('date', 'desc'), limit(100));
     const unsub = onSnapshot(qNotifs, (snap) => {
       setAdminNotifs(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     }, (err) => console.error("Notifs fetch error:", err));
@@ -279,6 +290,16 @@ try {
 
 
   const processJsonQuestions = async (jsonString) => {
+    // ⚠️ AUDIT 2026-08-06, T-3 BAND — dublikat filtri (pastdagi `existingSet`)
+    // `questions` state'iga tayanadi, u esa kvota tejash uchun FAQAT qo'lda
+    // yuklanadi (loadAllQuestions izohiga qarang). Baza yuklanmagan bo'lsa
+    // `existingSet` BO'SH bo'lib qolardi va JSON'dagi har bir savol "yangi" deb
+    // qo'shilardi — 45k lik bazaga minglab dublikat, keyin `bump-questions-version`
+    // bilan hamma foydalanuvchiga tarqalardi. Import shu sababli bazasiz ishlamaydi.
+    if (!questionsLoaded) {
+      showToast("Avval «Savollarni yuklash» tugmasini bosing — busiz dublikat tekshiruvi ishlamaydi", 'error');
+      return;
+    }
     setIsUploadingJSON(true);
     showToast("JSON fayl tahlil qilinmoqda...", 'info');
     try {
@@ -296,54 +317,98 @@ try {
       // Use already-loaded questions state — avoids re-fetching 6000+ docs
       const existingSet = new Set(questions.map(q => normalize(q.q)));
 
+      // ⚠️ AUDIT 2026-08-06, T-16 BAND — validatsiya kuchaytirildi.
+      // AVVAL: `parseInt(q.topicId) || 0` — noma'lum yoki buzilgan `topicId`
+      // JIMGINA 0 ga (chqbt 1-bo'limi) tushardi va savol butunlay BOSHQA fanga
+      // yozilardi. `correct` esa variantlar chegarasidan chiqsa ham qabul
+      // qilinardi — natijada to'g'ri javobi YO'Q savol foydalanuvchiga borardi.
+      // Endi noaniq yozuv rad etiladi va sababi bo'yicha sanaladi.
+      const knownTopicIds = new Set(TOPICS.map(t => t.id));
       const toAdd = [];
+      const skipped = { format: 0, topic: 0, correct: 0, duplicate: 0 };
+
       list.forEach(q => {
-        if (!q.q || !Array.isArray(q.opts) || q.correct === undefined) {
-          console.warn("Noto'g'ri formatdagi savol chetlab o'tildi:", q);
+        if (!q.q || !Array.isArray(q.opts) || q.opts.length < 2 || q.correct === undefined) {
+          skipped.format++;
+          return;
+        }
+
+        const resolvedTopicId = Number.parseInt(q.topicId, 10);
+        if (!Number.isInteger(resolvedTopicId) || !knownTopicIds.has(resolvedTopicId)) {
+          skipped.topic++;
+          return;
+        }
+
+        const correctIdx = Number.parseInt(q.correct, 10);
+        if (!Number.isInteger(correctIdx) || correctIdx < 0 || correctIdx >= q.opts.length) {
+          skipped.correct++;
           return;
         }
 
         const normQText = normalize(q.q);
-        if (!existingSet.has(normQText)) {
-          const resolvedTopicId = parseInt(q.topicId) || 0;
-          toAdd.push({
-            q: q.q,
-            opts: q.opts,
-            correct: parseInt(q.correct) || 0,
-            topicId: resolvedTopicId,
-            category: getCategoryFromTopicId(resolvedTopicId),
-            explanation: q.explanation || `✓ To'g'ri javob: ${String.fromCharCode(65 + (parseInt(q.correct) || 0))}`,
-            mnemonic: q.mnemonic || '',
-            image: q.image || '',
-            createdAt: new Date().toISOString()
-          });
-          existingSet.add(normQText);
+        if (existingSet.has(normQText)) {
+          skipped.duplicate++;
+          return;
         }
+
+        toAdd.push({
+          q: q.q,
+          opts: q.opts,
+          correct: correctIdx,
+          topicId: resolvedTopicId,
+          category: getCategoryFromTopicId(resolvedTopicId),
+          explanation: q.explanation || `✓ To'g'ri javob: ${String.fromCharCode(65 + correctIdx)}`,
+          mnemonic: q.mnemonic || '',
+          image: q.image || '',
+          createdAt: new Date().toISOString()
+        });
+        existingSet.add(normQText);
       });
 
+      const skipSummary = [
+        skipped.duplicate ? `${skipped.duplicate} ta takror` : null,
+        skipped.format ? `${skipped.format} ta format xatosi` : null,
+        skipped.topic ? `${skipped.topic} ta noma'lum bo'lim` : null,
+        skipped.correct ? `${skipped.correct} ta noto'g'ri javob indeksi` : null,
+      ].filter(Boolean).join(', ');
+
       if (toAdd.length === 0) {
-        showToast("Barcha savollar allaqachon bazada mavjud!", 'success');
+        showToast(skipSummary ? `Yangi savol yo'q (${skipSummary})` : "Barcha savollar allaqachon bazada mavjud!", 'success');
         setIsUploadingJSON(false);
         return;
       }
 
-      showToast(`${toAdd.length} ta yangi savol topildi. Yuklanmoqda...`, 'info');
+      showToast(`${toAdd.length} ta yangi savol topildi${skipSummary ? ` (o'tkazildi: ${skipSummary})` : ''}. Yuklanmoqda...`, 'info');
 
       // Batch push to Firestore in chunks of 400
       const qRef = collection(db, 'questions');
       const added = [];
-      for (let i = 0; i < toAdd.length; i += 400) {
-        const batch = writeBatch(db);
-        const chunk = toAdd.slice(i, i + 400);
-        chunk.forEach(q => {
-          const newDoc = doc(qRef);
-          batch.set(newDoc, q);
-          added.push({ id: newDoc.id, ...q });
-        });
-        await batch.commit();
+      let commitError = null;
+      try {
+        for (let i = 0; i < toAdd.length; i += 400) {
+          const batch = writeBatch(db);
+          const chunk = toAdd.slice(i, i + 400);
+          const chunkDocs = [];
+          chunk.forEach(q => {
+            const newDoc = doc(qRef);
+            batch.set(newDoc, q);
+            chunkDocs.push({ id: newDoc.id, ...q });
+          });
+          await batch.commit();
+          // Lokal ro'yxatga FAQAT commit muvaffaqiyatli bo'lgach qo'shamiz —
+          // aks holda yozilmagan savollar ekranda "bor" bo'lib ko'rinardi (T-16).
+          added.push(...chunkDocs);
+        }
+      } catch (commitErr) {
+        commitError = commitErr;
       }
 
-      showToast(`Muvaffaqiyatli! ${toAdd.length} ta yangi savol yuklandi. 🎉`, 'success');
+      if (commitError) {
+        // Qisman import: shu paytgacha commit qilingan partiyalar bazada QOLADI.
+        showToast(`Yuklash to'xtadi: ${added.length} ta yozildi, ${toAdd.length - added.length} ta yozilmadi. Sabab: ${commitError.message}`, 'error');
+      } else {
+        showToast(`Muvaffaqiyatli! ${added.length} ta yangi savol yuklandi. 🎉`, 'success');
+      }
 
       // Ilgari bu yerda BUTUN kolleksiya qayta o'qilardi (~47 000 o'qish).
       // Nima qo'shganimizni allaqachon bilamiz — lokal ro'yxatga qo'shamiz.
@@ -402,7 +467,9 @@ try {
 
   useEffect(() => {
     if (!isAdmin) return;
-    const q = query(collection(db, 'objections'), orderBy('timestamp', 'desc'));
+    // limit(200) — T-8. Eng yangi 200 ta e'tiroz ko'rsatiladi; chegarasiz
+    // real-time listener kolleksiya o'sishi bilan o'qish kvotasini yeb qo'yardi.
+    const q = query(collection(db, 'objections'), orderBy('timestamp', 'desc'), limit(200));
     const unsub = onSnapshot(q, (snap) => {
       setObjections(snap.docs.map(d => ({
         ...d.data(),
@@ -417,7 +484,9 @@ try {
   // ── "Ko'proq savol kerak" so'rovlari (tirik halqa) — real-time ──
   useEffect(() => {
     if (!isAdmin) return;
-    const qReq = query(collection(db, 'questionRequests'), orderBy('timestamp', 'desc'));
+    // limit(200) — T-8. DIQQAT: "bajarildi" deb belgilash faqat YUKLANGAN
+    // so'rovlarga ta'sir qiladi; 200 tadan oshsa qolganlari keyingi ochilishda ko'rinadi.
+    const qReq = query(collection(db, 'questionRequests'), orderBy('timestamp', 'desc'), limit(200));
     const unsub = onSnapshot(qReq, (snap) => {
       setQuestionRequests(snap.docs.map(d => ({
         ...d.data(),
@@ -447,11 +516,12 @@ try {
   // bildirishnomalar `permission-denied` bergan bo'lardi).
   // Endi faqat admin ataylab tugmani bosganda yuklanadi.
   const loadAllQuestions = async () => {
-    if (questions.length > 0 || questionsLoading) return;
+    if (questionsLoaded || questionsLoading) return;
     setQuestionsLoading(true);
     try {
       const snap = await getDocs(collection(db, 'questions'));
       setQuestions(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+      setQuestionsLoaded(true);
     } catch (e) {
       showToast('Savollarni yuklashda xatolik: ' + e.message, 'error');
     } finally {
@@ -498,32 +568,63 @@ try {
     loadReferrals();
   }, [tab, isAdmin]);
 
+  // Bitta referral yozuvini LOKAL yangilaydi va jamlanmani qayta hisoblaydi.
+  // Admin amalidan keyin butun kolleksiyani qayta o'qish shart emas (T-8).
+  const applyReferralPatch = (refId, patch) => {
+    const next = allReferrals.map(r => (r.id === refId ? { ...r, ...patch } : r));
+    setAllReferrals(next);
+    const paid = next.filter(r => r.status === 'paid').length;
+    setReferralSummary({
+      total: next.length,
+      paid,
+      pending: next.length - paid,
+      totalBonus: paid * 15000,
+    });
+  };
+
   // ═══ Admin: Referral statusini "to'ladi" ga o'zgartirish ═══
   const handleMarkReferralPaid = async (refId, referrerId) => {
     confirmAction("Bu referralni 'To'ladi' deb belgilashni tasdiqlaysizmi?", async () => {
     try {
-      await updateDoc(doc(db, 'referrals', refId), {
-        status: 'paid',
-        bonusPaid: true,
-        bonusAmount: 15000,
-        paidAt: new Date().toISOString(),
-      });
-      // Referrer ga bonus qo'shish
-      if (referrerId) {
-        await updateDoc(doc(db, 'users', referrerId), {
-          referralBonus: increment(15000),
+      // ⚠️ AUDIT 2026-08-06, T-9 BAND — avval `bonusPaid` OLDINDAN tekshirilmasdi:
+      // ikki marta bosilsa (yoki allaqachon to'langan referralda) `increment(15000)`
+      // qayta bajarilib, referrer ikki barobar bonus olardi. payment-webhook.js ham
+      // bonus beradi — ya'ni qo'sh hisoblash ehtimoli bor edi.
+      // Endi tekshiruv va ikkala yozuv BITTA tranzaksiyada (redeem-promo.js naqshi).
+      await runTransaction(db, async (tx) => {
+        const refDoc = doc(db, 'referrals', refId);
+        const snap = await tx.get(refDoc);
+        if (!snap.exists()) throw new Error('NOT_FOUND');
+        if (snap.data().bonusPaid === true) throw new Error('ALREADY_PAID');
+
+        tx.update(refDoc, {
+          status: 'paid',
+          bonusPaid: true,
+          bonusAmount: 15000,
+          paidAt: new Date().toISOString(),
         });
-      }
+        // Referrer ga bonus qo'shish — shu tranzaksiya ichida, ya'ni referral
+        // hujjati yangilanmasa bonus ham berilmaydi (va aksincha).
+        if (referrerId) {
+          tx.update(doc(db, 'users', referrerId), {
+            referralBonus: increment(15000),
+          });
+        }
+      });
       showToast("✅ Referral to'langan deb belgilandi va bonus berildi!", 'success');
-      // Ro'yxatni yangilash
-      const snap = await getDocs(collection(db, 'referrals'));
-      const refs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      setAllReferrals(refs);
-      const paid = refs.filter(r => r.status === 'paid').length;
-      const pending = refs.filter(r => r.status !== 'paid').length;
-      setReferralSummary({ total: refs.length, paid, pending, totalBonus: paid * 15000 });
+      // Ro'yxatni LOKAL yangilash — ilgari bu yerda butun `referrals` kolleksiyasi
+      // qayta o'qilardi (T-8). Nima o'zgarganini bilamiz, qayta o'qish shart emas.
+      applyReferralPatch(refId, {
+        status: 'paid', bonusPaid: true, bonusAmount: 15000, paidAt: new Date().toISOString(),
+      });
     } catch (e) {
-      showToast("Xatolik: " + e.message, 'error');
+      if (e.message === 'ALREADY_PAID') {
+        showToast('Bu referral bo\'yicha bonus allaqachon berilgan', 'info');
+      } else if (e.message === 'NOT_FOUND') {
+        showToast('Referral topilmadi (o\'chirilgan bo\'lishi mumkin)', 'error');
+      } else {
+        showToast("Xatolik: " + e.message, 'error');
+      }
     }
     });
   };
@@ -542,13 +643,8 @@ try {
         });
       }
       showToast("✅ Bepul premium status bekor qilindi!", 'success');
-      // Ro'yxatni yangilash
-      const snap = await getDocs(collection(db, 'referrals'));
-      const refs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      setAllReferrals(refs);
-      const paid = refs.filter(r => r.status === 'paid').length;
-      const pending = refs.filter(r => r.status !== 'paid').length;
-      setReferralSummary({ total: refs.length, paid, pending, totalBonus: paid * 15000 });
+      // Lokal yangilash — butun kolleksiyani qayta o'qimaymiz (T-8)
+      applyReferralPatch(referralDocId, { freeExpire: null });
     } catch (e) {
       showToast("Xatolik: " + e.message, 'error');
     }
@@ -672,13 +768,35 @@ try {
     } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
   };
 
+  // ⚠️ AUDIT 2026-08-06, T-12 BAND — avval bu yerda faqat ikkita hujjat
+  // o'chirilardi (`users/{uid}`, `userStats/{uid}`). Firebase AUTH hisobi
+  // qolardi: foydalanuvchi kirishda davom etardi, lekin profil hujjati
+  // yo'qligidan hamma joyda paywall ko'rardi — zombi hisob. Bildirishnoma
+  // subkolleksiyasi ham qolib ketardi. Auth hisobini faqat Admin SDK o'chira
+  // oladi, shuning uchun amal serverga ko'chirildi.
   const handleDeleteUser = async (userId, userEmail) => {
-    confirmAction(`DIQQAT!!! Siz foydalanuvchini (${userEmail || userId}) tizimdan butunlay o'chirmoqchisiz.\n\nUshbu amal foydalanuvchining hisobini va reytingdagi (Leaderboard) barcha natijalarini batamom supurib tashlaydi!\n\nTasdiqlaysizmi?`, async () => {
+    confirmAction(`DIQQAT!!! Siz foydalanuvchini (${userEmail || userId}) tizimdan butunlay o'chirmoqchisiz.\n\nUshbu amal foydalanuvchining KIRISH HISOBINI, profilini, bildirishnomalarini va reytingdagi barcha natijalarini batamom supurib tashlaydi!\n\nTasdiqlaysizmi?`, async () => {
     try {
-      await deleteDoc(doc(db, 'users', userId));
-      await deleteDoc(doc(db, 'userStats', userId));
+      const idToken = await auth.currentUser?.getIdToken();
+      if (!idToken) throw new Error('Sessiya topilmadi — qaytadan kiring');
+
+      const res = await fetch('/api/notify-admin?action=delete-user', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${idToken}` },
+        body: JSON.stringify({ uid: userId }),
+      });
+      // Dev muhitida /api/* serverless funksiyalari ishlamaydi va HTML qaytaradi
+      const ct = res.headers.get('content-type') || '';
+      if (!ct.includes('application/json')) {
+        throw new Error("API javob bermadi (lokal dev muhitida bu kutilgan holat)");
+      }
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || (data.errors || []).join('; ') || `HTTP ${res.status}`);
+      }
+
       setUsers(prev => prev.filter(u => u.id !== userId));
-      showToast("🗑️ Foydalanuvchi va uning reyting natijalari batamom o'chirildi!", 'success');
+      showToast("🗑️ Hisob, profil va barcha natijalar butunlay o'chirildi!", 'success');
     } catch (e) {
       console.error("Foydalanuvchini o'chirishda xatolik:", e);
       showToast("Xatolik yuz berdi: " + e.message, 'error');
@@ -799,6 +917,25 @@ try {
 
   // Dublikatlarni tahlil qiladi (aniq + yaqin-takror), O'CHIRMAYDI — preview ochadi.
   const analyzeDuplicates = () => {
+    // ⚠️ AUDIT 2026-08-06, T-19 BAND — tahlil har savol uchun trigram `Set`
+    // quradi. 45 000 savolda bu o'n millionlab satr obyekti, ya'ni yuzlab MB
+    // xotira va asosiy oqimda uzoq qotish (`setTimeout` yordam bermaydi —
+    // hisob baribir bitta blokda ketadi). Brauzer tabi qulashi mumkin edi.
+    // Endi katta hajmda avval fan filtri talab qilinadi: fan bo'yicha ~3 000
+    // savol — xavfsiz va tahlil sifatiga ta'sir qilmaydi (dublikatlar deyarli
+    // doim bitta fan ichida bo'ladi).
+    const scopeCheck = questionCategoryFilter !== 'all' ? questionCategoryFilter : 'all';
+    const poolSize = scopeCheck === 'all'
+      ? questions.length
+      : questions.filter(q => q.category === scopeCheck).length;
+    if (poolSize > DUP_MAX_POOL) {
+      showToast(
+        `Juda katta hajm (${poolSize} ta savol). Avval yuqoridagi fan filtrini tanlang — aks holda brauzer qotib qoladi.`,
+        'error'
+      );
+      return;
+    }
+
     setDupAnalyzing(true);
     // og'ir hisob UI ni bloklamasligi uchun keyingi tick'da
     setTimeout(() => {

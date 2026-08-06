@@ -174,6 +174,103 @@ async function handleDeleteRequest(db, req, res) {
   return res.status(200).json({ ok: true });
 }
 
+// ── action: delete-user ────────────────────────────────────────────────────
+// ⚠️ AUDIT 2026-08-06, T-12 BAND — admin paneli hisobni "o'chirganda" faqat
+// `users/{uid}` va `userStats/{uid}` hujjatlarini o'chirardi. Firebase AUTH
+// hisobi qolardi — foydalanuvchi kirishda davom etardi, lekin profil hujjati
+// yo'qligi sababli `hasContentAccess()` xatoga uchrab, hamma joyda paywall
+// ko'rinardi (zombi hisob). Subkolleksiya va bog'liq yozuvlar ham qolardi.
+// Google Play "Data deletion" talabi hisobning O'ZINI o'chirishni ko'zda tutadi.
+//
+// Bu ish faqat Admin SDK bilan bajariladi — shuning uchun mijozda emas, shu yerda.
+// Vercel Hobby 12 funksiya chegarasi sababli YANGI endpoint emas, mavjud
+// `notify-admin.js` ga `action` qo'shildi (naqsh: `delete-request`).
+async function purgeUser(db, uid) {
+  const deleted = { docs: 0, subdocs: 0, authAccount: false };
+  const errors = [];
+
+  // 1) Shaxsiy subkolleksiya (bildirishnomalar) — hujjat o'chirilsa ham qolib ketardi
+  try {
+    const notifs = await db.collection('users').doc(uid).collection('notifications').get();
+    for (let i = 0; i < notifs.docs.length; i += 400) {
+      const batch = db.batch();
+      notifs.docs.slice(i, i + 400).forEach((d) => batch.delete(d.ref));
+      await batch.commit();
+    }
+    deleted.subdocs = notifs.size;
+  } catch (e) {
+    errors.push(`notifications: ${e.message}`);
+  }
+
+  // 2) Asosiy hujjatlar
+  for (const path of [['users', uid], ['userStats', uid]]) {
+    try {
+      await db.collection(path[0]).doc(path[1]).delete();
+      deleted.docs++;
+    } catch (e) {
+      errors.push(`${path[0]}: ${e.message}`);
+    }
+  }
+
+  // 3) Firebase Auth hisobi — ASOSIY nuqta. Foydalanuvchi endi kira olmaydi.
+  try {
+    await getAuth().deleteUser(uid);
+    deleted.authAccount = true;
+  } catch (e) {
+    // `user-not-found` = hisob allaqachon yo'q, bu xato emas
+    if (e?.code === 'auth/user-not-found') deleted.authAccount = true;
+    else errors.push(`auth: ${e.message}`);
+  }
+
+  return { deleted, errors };
+}
+
+async function handleDeleteUser(db, req, res) {
+  const admin = await verifyAdmin(req, db).catch(() => null);
+  if (!admin) return res.status(403).json({ ok: false, error: 'forbidden' });
+
+  const uid = clip(req.body?.uid, 128)?.trim();
+  if (!uid) return res.status(400).json({ ok: false, error: 'uid_required' });
+  // Admin o'zini o'chirib, platformani boshqaruvsiz qoldirmasin
+  if (uid === admin.uid) return res.status(400).json({ ok: false, error: 'cannot_delete_self' });
+
+  const { deleted, errors } = await purgeUser(db, uid);
+  return res.status(200).json({ ok: errors.length === 0, deleted, errors });
+}
+
+// ── action: delete-me ──────────────────────────────────────────────────────
+// Foydalanuvchi O'Z hisobini o'chiradi (Sozlamalar → Hisobni o'chirish).
+// Mijoz tomonidagi `deleteUser()` faqat Auth yozuvini o'chirardi va
+// `users/{uid}/notifications` subkolleksiyasi qolib ketardi. Bu yerda tozalash
+// admin yo'li bilan AYNI (purgeUser), ya'ni ikkala yo'l ham bir xil natija beradi.
+//
+// XAVFSIZLIK: uid FAQAT tekshirilgan ID token'dan olinadi — tanadagi qiymatga
+// ishonilmaydi, ya'ni bu endpoint bilan BOSHQA odamning hisobini o'chirib bo'lmaydi.
+// Parolni qayta kiritish (reauthentication) mijoz tomonida talab qilinadi;
+// bu yerda token yangiligini ham tekshiramiz (auth_time).
+async function handleDeleteMe(db, req, res) {
+  const idToken = extractBearer(req);
+  if (!idToken) return res.status(401).json({ ok: false, error: 'unauthorized' });
+
+  let decoded;
+  try {
+    decoded = await getAuth().verifyIdToken(idToken);
+  } catch {
+    return res.status(401).json({ ok: false, error: 'invalid_token' });
+  }
+
+  // Token 10 daqiqadan eski autentifikatsiyaga tayanmasin: hisobni o'chirish
+  // qaytarilmas amal, shuning uchun foydalanuvchi HOZIRGINA parolini
+  // tasdiqlagan bo'lishi kerak (mijoz reauthenticate qiladi va tokenni yangilaydi).
+  const authAgeSec = Math.floor(Date.now() / 1000) - (decoded.auth_time || 0);
+  if (authAgeSec > 600) {
+    return res.status(401).json({ ok: false, error: 'requires_recent_login' });
+  }
+
+  const { deleted, errors } = await purgeUser(db, decoded.uid);
+  return res.status(200).json({ ok: errors.length === 0, deleted, errors });
+}
+
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') {
@@ -190,6 +287,10 @@ export default async function handler(req, res) {
     if (action === 'push') return await handlePush(req, res);
 
     if (action === 'delete-request') return await handleDeleteRequest(db, req, res);
+
+    if (action === 'delete-user') return await handleDeleteUser(db, req, res);
+
+    if (action === 'delete-me') return await handleDeleteMe(db, req, res);
 
     if (action === 'register') return await handleRegister(db, req, res);
 
