@@ -20,7 +20,7 @@ import {
   REFERRAL_DISCOUNT,
 } from '../services/referral';
 import { AnalyticsEvents } from '../services/analytics';
-import { getNextShortId } from '../utils/shortId';
+import { ensureShortId } from '../utils/shortId';
 import { validatePassword, calculatePasswordStrength } from '../utils/passwordPolicy';
 
 // Synchronously capture and save the referral code on script load
@@ -268,10 +268,8 @@ export const AuthProvider = ({ children }) => {
                 trialInfo.discountPercent = 0;
               }
             } else {
-              shortId = await getNextShortId(db).catch(e => { console.warn('ShortId generatsiya xatosi:', e); return null; });
               await setDoc(userRef, {
                 uid: firebaseUser.uid,
-                shortId,
                 email: firebaseUser.email,
                 displayName: firebaseUser.displayName || firebaseUser.email?.split('@')[0],
                 photoURL: firebaseUser.photoURL || null,
@@ -291,6 +289,18 @@ export const AuthProvider = ({ children }) => {
               // Yangi foydalanuvchi — trial boshlandi
               trialInfo = { status: 'trial', daysLeft: FREE_TRIAL_DAYS, urgencyMs: 0 };
               isPremium = true;
+            }
+
+            // ── Qisqa ID (A0001…) — berishning YAGONA nuqtasi ──
+            // Yangi hisob uchun ham, ID'siz qolgan eski hisob uchun ham shu
+            // yerda to'ldiriladi. Hujjat allaqachon yaratilgan (yuqoridagi
+            // setDoc await qilingan), shuning uchun bu faqat `shortId`
+            // maydonini yangilaydi — protectedUserFields() ga tegmaydi.
+            // Xato bo'lsa hujjatga HECH NARSA yozilmaydi (`null` ham) —
+            // keyingi kirishda qayta urinib ko'riladi.
+            if (!shortId) {
+              shortId = await ensureShortId(db, firebaseUser.uid)
+                .catch(e => { console.warn('ShortId berishda xato:', e); return null; });
             }
           } catch (firestoreErr) {
             console.warn('Firestore profil yuklashda xato:', firestoreErr.message);
@@ -488,10 +498,8 @@ export const AuthProvider = ({ children }) => {
         const userCred = await createUserWithEmailAndPassword(auth, internalEmail, password);
         await updateProfile(userCred.user, { displayName: name });
 
-        const shortId = await getNextShortId(db).catch(e => { console.warn('ShortId generatsiya xatosi:', e); return null; });
         await setDoc(doc(db, 'users', userCred.user.uid), {
           uid: userCred.user.uid,
-          shortId,
           email: internalEmail,
           phone: cleanPhone,
           displayName: name,
@@ -501,6 +509,15 @@ export const AuthProvider = ({ children }) => {
           isPremium: false,
           createdAt: new Date(),
         }, { merge: true });
+
+        // Qisqa ID — hujjat yaratilgandan KEYIN. ensureShortId ichida uid
+        // bo'yicha dedupe bor, shuning uchun shu payt parallel ishlayotgan
+        // onAuthStateChanged tinglovchisi bilan hisoblagichga raqobat
+        // qilmaymiz: ikkalasi bitta va o'sha generatsiyani kutadi.
+        // Adminga bildirishnomadan oldin turadi — api/notify-admin.js xabarda
+        // shu ID'ni ko'rsatadi.
+        const shortId = await ensureShortId(db, userCred.user.uid)
+          .catch(e => { console.warn('ShortId berishda xato:', e); return null; });
 
         const referralApplied = await applyReferralAfterRegister(userCred.user.uid, name);
         if (referralApplied) {

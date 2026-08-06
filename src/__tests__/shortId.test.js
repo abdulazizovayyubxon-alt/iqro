@@ -1,10 +1,20 @@
 /**
  * formatShortId — qisqa foydalanuvchi ID formati.
  * Audit 19-band: 26 harf tugagach format buzilardi.
+ *
+ * ensureShortId — 2026-08-06 tekshiruvi: 22 hisobdan 20 tasi ID'siz qolgan edi.
  */
 
-import { describe, it, expect } from 'vitest';
-import { formatShortId } from '../utils/shortId.js';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+
+vi.mock('firebase/firestore', () => ({
+  doc: (_db, ...path) => ({ path: path.join('/') }),
+  getDoc: (...a) => globalThis.__getDoc(...a),
+  setDoc: (...a) => globalThis.__setDoc(...a),
+  runTransaction: (...a) => globalThis.__runTransaction(...a),
+}));
+
+const { formatShortId, getNextShortId, ensureShortId } = await import('../utils/shortId.js');
 
 describe('formatShortId — normal oraliq', () => {
   it('birinchi foydalanuvchi A0001', () => {
@@ -70,5 +80,97 @@ describe('formatShortId — invariantlar', () => {
     const ids = new Set();
     for (let seq = 259970; seq <= 259990; seq++) ids.add(formatShortId(seq));
     expect(ids.size).toBe(21);
+  });
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+// 2026-08-06 TEKSHIRUVI — nega 22 hisobdan 20 tasi ID'siz qolgan edi
+//
+// Sabab zanjiri:
+//   1) ID bir ro'yxatdan o'tishda IKKI joyda parallel generatsiya qilinardi;
+//   2) firestore.rules `userSeq == oldingi + 1` ni talab qilgani uchun mag'lub
+//      tranzaksiya ABORTED emas, PERMISSION_DENIED olardi — SDK uni retry
+//      QILMAYDI;
+//   3) `catch → null` xatoni yutib, o'sha `null` hujjatga yozilardi.
+// ══════════════════════════════════════════════════════════════════════════
+
+const denied = () => Object.assign(new Error('permission denied'), { code: 'permission-denied' });
+
+describe('getNextShortId — raqobatda qayta urinish', () => {
+  beforeEach(() => {
+    globalThis.__getDoc = vi.fn();
+    globalThis.__setDoc = vi.fn(async () => {});
+    globalThis.__runTransaction = vi.fn();
+  });
+
+  it('PERMISSION_DENIED dan keyin qayta urinib ID qaytaradi', async () => {
+    let calls = 0;
+    globalThis.__runTransaction = vi.fn(async () => {
+      calls++;
+      if (calls < 3) throw denied();
+      return 7;
+    });
+
+    await expect(getNextShortId({})).resolves.toBe('A0007');
+    expect(calls).toBe(3);
+  });
+
+  it('urinishlar tugagach xato QAYTARADI (jimgina null emas)', async () => {
+    globalThis.__runTransaction = vi.fn(async () => { throw denied(); });
+    await expect(getNextShortId({})).rejects.toThrow(/permission denied/);
+  });
+});
+
+describe('ensureShortId — ID berishning yagona nuqtasi', () => {
+  beforeEach(() => {
+    globalThis.__getDoc = vi.fn(async () => ({ exists: () => true, data: () => ({}) }));
+    globalThis.__setDoc = vi.fn(async () => {});
+    globalThis.__runTransaction = vi.fn(async () => 5);
+  });
+
+  it('mavjud ID ni QAYTA YOZMAYDI', async () => {
+    globalThis.__getDoc = vi.fn(async () => ({ exists: () => true, data: () => ({ shortId: 'A0009' }) }));
+
+    await expect(ensureShortId({}, 'uid-mavjud')).resolves.toBe('A0009');
+    expect(globalThis.__setDoc).not.toHaveBeenCalled();
+    expect(globalThis.__runTransaction).not.toHaveBeenCalled();
+  });
+
+  it('yetishmaganda generatsiya qilib FAQAT shortId maydonini yozadi', async () => {
+    await expect(ensureShortId({}, 'uid-yangi')).resolves.toBe('A0005');
+
+    expect(globalThis.__setDoc).toHaveBeenCalledTimes(1);
+    const [, payload, opts] = globalThis.__setDoc.mock.calls[0];
+    // role/isPremium/createdAt firestore.rules protectedUserFields() da —
+    // ular bilan birga yuborilgan yangilanish rad etilardi.
+    expect(Object.keys(payload)).toEqual(['shortId']);
+    expect(opts).toEqual({ merge: true });
+  });
+
+  it('generatsiya muvaffaqiyatsiz bo\'lsa hujjatga HECH NARSA yozmaydi', async () => {
+    globalThis.__runTransaction = vi.fn(async () => { throw denied(); });
+
+    await expect(ensureShortId({}, 'uid-xato')).rejects.toThrow();
+    // Asosiy regressiya: avval shu yerda `shortId: null` yozilardi.
+    expect(globalThis.__setDoc).not.toHaveBeenCalled();
+  });
+
+  it('bir uid uchun parallel chaqiruvlar BITTA generatsiyani baham ko\'radi', async () => {
+    // Aynan shu poyga hisoblagichni yeb, foydalanuvchini ID'siz qoldirardi.
+    const [a, b, c] = await Promise.all([
+      ensureShortId({}, 'uid-poyga'),
+      ensureShortId({}, 'uid-poyga'),
+      ensureShortId({}, 'uid-poyga'),
+    ]);
+
+    expect([a, b, c]).toEqual(['A0005', 'A0005', 'A0005']);
+    expect(globalThis.__runTransaction).toHaveBeenCalledTimes(1);
+    expect(globalThis.__setDoc).toHaveBeenCalledTimes(1);
+  });
+
+  it('tugagach keyingi chaqiruv yangi generatsiya qila oladi', async () => {
+    await ensureShortId({}, 'uid-1');
+    await ensureShortId({}, 'uid-2');
+    expect(globalThis.__runTransaction).toHaveBeenCalledTimes(2);
   });
 });
