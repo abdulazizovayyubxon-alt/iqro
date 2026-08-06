@@ -6,7 +6,7 @@ import { useAdmin } from '../hooks/useAdmin';
 import { db, auth } from '../firebase';
 import {
   collection, query, orderBy, onSnapshot, where, getCountFromServer,
-  updateDoc, deleteDoc, doc, getDocs, addDoc, writeBatch, increment, setDoc, limit, documentId,
+  updateDoc, deleteDoc, doc, getDoc, getDocs, addDoc, writeBatch, increment, setDoc, limit, documentId,
   runTransaction
 } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
@@ -26,7 +26,7 @@ import {
 import './AdminPage.css';
 import PromoTab from '../components/admin/PromoTab';
 import SchoolsTab from '../components/admin/SchoolsTab';
-import { TOPICS } from '../data/mockData';
+import { TOPICS, SUBJECTS } from '../data/mockData';
 import { normalizeText, trigrams, jaccard } from '../utils/textSimilarity';
 import { logAdminAction, ADMIN_ACTION_LABELS } from '../services/adminLog';
 import { useModalA11y } from '../hooks/useModalA11y';
@@ -101,6 +101,24 @@ const getCategoryFromTopicId = (topicId) => {
   const idNum = parseInt(topicId);
   const topicObj = TOPICS.find(t => t.id === idNum);
   return topicObj ? topicObj.category : 'chqbt';
+};
+
+// `users/{uid}.subject` DOIM fan `id` sini saqlaydi (nomini emas) — yozuvchi
+// ikkita joy bor va ikkalasi ham `SUBJECTS[].id` beradi:
+// OnboardingPage.jsx:366 va EditProfileModal.jsx:82. Shu sabab aggregatsiya
+// so'rovlarini to'g'ridan-to'g'ri `id` bo'yicha yuritsa bo'ladi.
+const SUBJECT_NAMES = Object.fromEntries(SUBJECTS.map(s => [s.id, s.name]));
+const subjectName = (id) => (id ? (SUBJECT_NAMES[id] || id) : null);
+
+// EditProfileModal.jsx:16 dagi TOIFALAR bilan bir xil lug'at. ATAYLAB nusxa:
+// o'sha fayldan import qilish butun profil modalini (DateInput, i18n va h.k.)
+// admin bandliga tortib kelardi — bu yerda kerak bo'lgani atigi 5 ta yorliq.
+const TOIFA_NAMES = {
+  mutaxassis: 'Mutaxassis',
+  ikkinchi: 'Ikkinchi toifa',
+  birinchi: 'Birinchi toifa',
+  oliy: 'Oliy toifa',
+  sertifikat: 'Kasbiy sertifikat',
 };
 
 const AdminPage = () => {
@@ -289,6 +307,13 @@ const AdminPage = () => {
   const [overviewLoading, setOverviewLoading] = useState(false);
   const [overviewError, setOverviewError] = useState(null);
 
+  // ── Fan kesimi: qaysi fan o'qituvchilari nechta ──
+  // { rows: [{ id, name, total, premium, questions }], unknown, totalUsers, totalQuestions }
+  const [subjectStats, setSubjectStats] = useState(null);
+  const [subjectStatsLoading, setSubjectStatsLoading] = useState(false);
+  const [subjectStatsError, setSubjectStatsError] = useState(null);
+  const [subjectFilter, setSubjectFilter] = useState('all'); // all | <fan id> | none
+
   // ── Referral statistika state ──
   const [allReferrals, setAllReferrals] = useState([]);
   const [referralLoading, setReferralLoading] = useState(false);
@@ -395,6 +420,78 @@ const AdminPage = () => {
     if (!isAdmin) return;
     loadOverview();
   }, [isAdmin]);
+
+  // ── Fan bo'yicha o'qituvchilar kesimi ────────────────────────────────────
+  // Platformaning HAR BIR foydalanuvchisi — o'qituvchi, va uning fani
+  // `users/{uid}.subject` da turadi. Bu kesimsiz "keyingi savol/konspektni
+  // qaysi fanga yozaman?" degan savol ko'r-ko'rona hal qilinardi.
+  //
+  // NARXI: 16 fan × 2 so'rov (jami + Pro) + 1 umumiy son = 33 aggregatsiya
+  // so'rovi. `getCountFromServer` har 1000 mos hujjatga 1 o'qish sarflaydi,
+  // ya'ni amalda ~33 O'QISH — hujjatlarning o'zi yuklanmaydi.
+  // Shu sabab bu ATAYLAB dangasa: faqat "Statistika" tabi birinchi marta
+  // ochilganda ishga tushadi (loadOverview kabi har kirishda emas).
+  //
+  // INDEKS: ikkala filtr ham TENGLIK (`==`) — Firestore bunday so'rovni bir
+  // maydonli indekslarni zigzag birlashtirib bajaradi, KOMPOZIT INDEKS SHART
+  // EMAS. Baribir har bir so'rov alohida `catch` bilan o'ralgan: bittasi
+  // yiqilsa qolgan 15 fan ko'rinaversin.
+  const loadSubjectStats = async () => {
+    setSubjectStatsLoading(true);
+    setSubjectStatsError(null);
+    try {
+      const usersCol = collection(db, 'users');
+      const [counted, totalSnap, metaSnap] = await Promise.all([
+        Promise.all(SUBJECTS.map(async (s) => {
+          const [tot, pro] = await Promise.all([
+            getCountFromServer(query(usersCol, where('subject', '==', s.id)))
+              .then(r => r.data().count).catch(() => null),
+            getCountFromServer(query(usersCol, where('subject', '==', s.id), where('isPremium', '==', true)))
+              .then(r => r.data().count).catch(() => null),
+          ]);
+          return { id: s.id, name: s.name, total: tot, premium: pro };
+        })),
+        getCountFromServer(usersCol).then(r => r.data().count).catch(() => null),
+        // Fan bo'yicha savol soni — `handlePublishBundles` yozadi (A-1 bandi).
+        // Bu yerda faqat O'QILADI: 1 ta hujjat = 1 o'qish.
+        getDoc(doc(db, 'settings', 'questionMeta')).then(s => (s.exists() ? s.data() : {})).catch(() => ({})),
+      ]);
+
+      const rows = counted.map(r => ({
+        ...r,
+        total: r.total ?? 0,
+        premium: r.premium ?? 0,
+        failed: r.total === null,
+        questions: metaSnap?.[r.id]?.count ?? null,
+      }));
+      const sumSubjects = rows.reduce((a, r) => a + r.total, 0);
+
+      setSubjectStats({
+        rows,
+        // ⚠️ Ayirma bilan hisoblanadi, `where('subject','==','')` bilan EMAS.
+        // Sabab: onboardingni tashlab ketgan hisoblarda maydon bo'sh satr
+        // ('') YOKI umuman yo'q bo'lishi mumkin, Firestore esa maydoni yo'q
+        // hujjatni tenglik filtriga QO'SHMAYDI — bunday odamlar jimgina
+        // yo'qolardi va ustunlar yig'indisi jamiga teng kelmasdi.
+        unknown: totalSnap === null ? null : Math.max(0, totalSnap - sumSubjects),
+        totalUsers: totalSnap,
+        totalQuestions: rows.reduce((a, r) => a + (r.questions || 0), 0),
+        updatedAt: new Date(),
+      });
+    } catch (e) {
+      console.error('Fan statistikasi xatosi:', e);
+      setSubjectStatsError(e?.message || 'Yuklashda xatolik');
+    } finally {
+      setSubjectStatsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!isAdmin || tab !== 'stats') return;
+    if (subjectStats || subjectStatsLoading) return;
+    loadSubjectStats();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tab, isAdmin]);
 
   const handleSendNotification = async () => {
     if (!newNotif.title || !newNotif.message) {
@@ -1182,12 +1279,14 @@ try {
 
   const exportUsers = () => {
     exportCSV('foydalanuvchilar',
-      ['ID', 'Ism', 'Email', 'Telefon', 'Pro', 'Rol', "Ro'yxatdan o'tgan"],
+      ['ID', 'Ism', 'Email', 'Telefon', 'Fan', 'Toifa', 'Pro', 'Rol', "Ro'yxatdan o'tgan"],
       filteredUsers.map(u => [
         u.shortId || '',
         u.displayName || '',
         u.email || '',
         u.phone || u.phoneNumber || '',
+        subjectName(u.subject) || '',
+        TOIFA_NAMES[u.teacherCategory] || u.teacherCategory || '',
         u.isPremium ? 'Ha' : "Yo'q",
         u.role || 'user',
         u.createdAt?.toDate ? u.createdAt.toDate().toLocaleDateString('uz-UZ')
@@ -1584,6 +1683,15 @@ try {
   });
 
   const filteredUsers = users.filter(u => {
+    // Fan filtri ATAYLAB mijoz tomonda: `where('subject','==',x)` ni
+    // `orderBy('createdAt')` bilan birga ishlatish KOMPOZIT INDEKS talab
+    // qiladi (tenglik + boshqa maydon bo'yicha tartiblash), u esa loyihada
+    // e'lon qilinmagan. Aniq raqamlar baribir "Statistika" tabida —
+    // bu filtr yuklangan ro'yxatni ko'zdan kechirish uchun.
+    if (subjectFilter !== 'all') {
+      const has = !!u.subject;
+      if (subjectFilter === 'none' ? has : u.subject !== subjectFilter) return false;
+    }
     if (!userSearch) return true;
     const term = userSearch.toLowerCase();
     const nameMatch = u.displayName?.toLowerCase().includes(term);
@@ -1592,6 +1700,40 @@ try {
     const shortIdMatch = u.shortId?.toLowerCase().includes(term);
     return nameMatch || emailMatch || phoneMatch || shortIdMatch;
   });
+
+  // ── Fan kesimini ko'rsatishga tayyorlash ──
+  // Saralash: eng ko'p o'qituvchili fan tepada — panel ochilganda birinchi
+  // ko'zga tushadigan qator eng muhimi bo'lsin.
+  //
+  // «Savol yetishmaydi» belgisi ATAYLAB NISBIY: mutlaq son ("3000 dan kam")
+  // aldaydi, chunki fanlar hajmi tabiiy ravishda har xil. Bu yerda fanning
+  // FOYDALANUVCHI ulushi uning SAVOL ulushi bilan solishtiriladi — ya'ni
+  // "talab bor, kontent yo'q" holati. 5% chegara kichik fanlarda shovqin
+  // chiqmasligi uchun.
+  //
+  // Koeffitsiyent 0.5 — belgi FAQAT ulush ikki barobar past bo'lganda yonadi.
+  // 0.6 da sinab ko'rildi: 4.9 savol/kishi bo'lgan fan ham belgilanib qoldi,
+  // ya'ni ogohlantirish o'z ma'nosini yo'qotardi.
+  const subjectRows = (() => {
+    if (!subjectStats?.rows) return [];
+    const assigned = subjectStats.rows.reduce((a, r) => a + r.total, 0);
+    const totalQ = subjectStats.totalQuestions || 0;
+    const maxTotal = Math.max(1, ...subjectStats.rows.map(r => r.total));
+    return subjectStats.rows
+      .map(r => {
+        const userShare = assigned > 0 ? r.total / assigned : 0;
+        const qShare = totalQ > 0 && r.questions != null ? r.questions / totalQ : null;
+        return {
+          ...r,
+          barPct: Math.round((r.total / maxTotal) * 100),
+          sharePct: Math.round(userShare * 100),
+          proPct: r.total > 0 ? Math.round((r.premium / r.total) * 100) : null,
+          perUser: r.total > 0 && r.questions != null ? r.questions / r.total : null,
+          needsContent: qShare !== null && userShare >= 0.05 && qShare < userShare * 0.5,
+        };
+      })
+      .sort((a, b) => b.total - a.total);
+  })();
 
   const filteredQuestions = questions.filter(q => {
     const qText = q.q || '';
@@ -2455,6 +2597,18 @@ try {
                   onKeyDown={e => { if (e.key === 'Enter') searchUsersOnServer(); }}
                 />
               </div>
+              <select
+                className="admin-select"
+                style={{ maxWidth: 190 }}
+                value={subjectFilter}
+                onChange={e => setSubjectFilter(e.target.value)}
+                aria-label="Fan bo'yicha filtr"
+                title="Yuklangan ro'yxatni fan bo'yicha filtrlash"
+              >
+                <option value="all">Barcha fanlar</option>
+                {SUBJECTS.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+                <option value="none">Fan belgilanmagan</option>
+              </select>
               {/* B-7: mijozdagi filtr faqat yuklangan {LIST_PAGE_SIZE} ta ichida
                   ishlaydi — aniq odamni topish uchun server so'rovi kerak */}
               <button className="btn btn-sm btn-outline" onClick={searchUsersOnServer} disabled={usersLoading} title="Butun bazadan aniq qidirish">
@@ -2478,7 +2632,12 @@ try {
                   : <>Eng yangi <strong>{users.length}</strong> ta ko'rsatilmoqda{overview?.users ? <> · bazada <strong>{overview.users}</strong> ta</> : null}</>}
               </span>
               <span style={{ color: 'var(--text3)' }}>
-                Ro'yxatda yo'q odamni «Bazadan qidirish» bilan toping
+                {subjectFilter !== 'all'
+                  // Bu son BUTUN bazaning emas, faqat yuklangan ro'yxatning
+                  // kesimi — aks holda admin uni fan bo'yicha jami deb o'qishi
+                  // mumkin. Haqiqiy jami "Statistika" tabida.
+                  ? <>Fan filtri faqat shu ro'yxat ichida — bazadagi jami son «Statistika» tabida</>
+                  : <>Ro'yxatda yo'q odamni «Bazadan qidirish» bilan toping</>}
               </span>
             </div>
           )}
@@ -2501,9 +2660,17 @@ try {
           ) : filteredUsers.length === 0 ? (
             <div className="glass-panel" style={{ padding: '40px', textAlign: 'center', color: 'var(--text3)' }}>
               Yuklangan ro'yxatda topilmadi 🔍<br />
-              <button className="btn btn-sm btn-outline" style={{ marginTop: 12 }} onClick={searchUsersOnServer}>
-                <Search size={14} /> Butun bazadan qidirish
-              </button>
+              {/* Fan filtri yoqiqda "Butun bazadan qidirish" chalg'itadi —
+                  u qidiruv MATNI bo'yicha ishlaydi, fan bo'yicha emas. */}
+              {subjectFilter !== 'all' ? (
+                <button className="btn btn-sm btn-outline" style={{ marginTop: 12 }} onClick={() => setSubjectFilter('all')}>
+                  <X size={14} /> Fan filtrini tozalash
+                </button>
+              ) : (
+                <button className="btn btn-sm btn-outline" style={{ marginTop: 12 }} onClick={searchUsersOnServer}>
+                  <Search size={14} /> Butun bazadan qidirish
+                </button>
+              )}
             </div>
           ) : (
             <div className="admin-stack-s">
@@ -2533,7 +2700,15 @@ try {
                         )}
                         {u.role === 'admin' && <span className="admin-chip admin-chip--blue">ADMIN</span>}
                       </div>
-                      <div className="admin-user-subtext">{u.email || u.phoneNumber || 'Identifikator yo\'q'}</div>
+                      <div className="admin-user-subtext">
+                        {u.email || u.phoneNumber || 'Identifikator yo\'q'}
+                        {/* Fan — platformadagi har bir foydalanuvchi o'qituvchi,
+                            shuning uchun bu ism/telefondan keyingi eng foydali
+                            belgi. Bo'sh bo'lsa = onboarding tugallanmagan. */}
+                        {subjectName(u.subject)
+                          ? <> · {subjectName(u.subject)}</>
+                          : <span style={{ color: 'var(--text3)', opacity: 0.7 }}> · fan yo'q</span>}
+                      </div>
                     </div>
                   </button>
                   <div className="admin-user-actions-sm">
@@ -2605,6 +2780,86 @@ try {
               <div className="stat-box-lbl">Referrallar</div>
             </div>
           </div>
+
+          {/* ── Fan bo'yicha o'qituvchilar ── */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap', marginTop: 8 }}>
+            <div className="admin-section-title admin-section-title--flush">
+              <Users size={18} style={{ color: 'var(--blue)' }} /> Fan bo'yicha o'qituvchilar
+            </div>
+            <button className="btn btn-sm btn-outline" onClick={loadSubjectStats} disabled={subjectStatsLoading}>
+              <RefreshCw size={14} className={subjectStatsLoading ? 'spin' : ''} /> {subjectStatsLoading ? 'Sanalmoqda...' : 'Yangilash'}
+            </button>
+          </div>
+
+          {subjectStatsError ? (
+            <div className="admin-info-box admin-info-box--error">
+              <div className="admin-info-title"><AlertCircle size={15} /> Fan kesimini o'qib bo'lmadi</div>
+              <div className="admin-info-text">{subjectStatsError}</div>
+              <button className="btn btn-outline" style={{ marginTop: 10 }} onClick={loadSubjectStats}>
+                <RefreshCw size={14} /> Qayta urinish
+              </button>
+            </div>
+          ) : subjectStatsLoading && !subjectStats ? (
+            <div className="admin-empty"><div className="admin-empty-icon">📊</div><div className="admin-empty-text">Fanlar sanalmoqda...</div></div>
+          ) : subjectStats ? (
+            <div className="glass-panel" style={{ padding: 20 }}>
+              <div className="admin-subject-list">
+                {subjectRows.map(r => (
+                  <div key={r.id} className="admin-subject-row">
+                    <div className="admin-subject-head">
+                      <span className="admin-subject-name">{r.name}</span>
+                      <span className="admin-subject-count">
+                        {r.failed ? '—' : <>{r.total.toLocaleString()} ta</>}
+                        {!r.failed && r.sharePct > 0 && <span className="admin-subject-share"> · {r.sharePct}%</span>}
+                      </span>
+                    </div>
+                    <div className="admin-subject-bar">
+                      <div className="admin-subject-bar-fill" style={{ width: `${r.barPct}%` }} />
+                    </div>
+                    <div className="admin-subject-meta">
+                      <span>Pro: <strong>{r.premium.toLocaleString()}</strong>{r.proPct !== null && ` (${r.proPct}%)`}</span>
+                      <span>Savol: <strong>{r.questions != null ? r.questions.toLocaleString() : '—'}</strong></span>
+                      {r.perUser !== null && <span>{r.perUser.toFixed(1)} savol/kishi</span>}
+                      {r.needsContent && (
+                        <span className="admin-chip admin-chip--amber">⚠️ Savol yetishmaydi</span>
+                      )}
+                      {r.failed && <span className="admin-chip admin-chip--red">so'rov yiqildi</span>}
+                    </div>
+                  </div>
+                ))}
+
+                {/* Onboardingni tugatmaganlar. Nolga teng bo'lsa ko'rsatilmaydi. */}
+                {subjectStats.unknown > 0 && (
+                  <div className="admin-subject-row admin-subject-row--muted">
+                    <div className="admin-subject-head">
+                      <span className="admin-subject-name">Fan belgilanmagan</span>
+                      <span className="admin-subject-count">{subjectStats.unknown.toLocaleString()} ta</span>
+                    </div>
+                    <div className="admin-subject-meta">
+                      <span>Onboardingni tugatmagan yoki profilda fan tanlamagan hisoblar</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="admin-subject-note">
+                {/* Ikkala ogohlantirish ham raqamlarni noto'g'ri o'qishdan saqlaydi. */}
+                <div>
+                  «Savol» ustuni <strong>«Yangilanishni yuborish»</strong> tugmasi oxirgi bosilgandagi holat —
+                  savol qo'shgandan keyin uni bosmasangiz, bu yerdagi son ham, foydalanuvchidagi badge ham eskiradi.
+                </div>
+                <div style={{ marginTop: 6 }}>
+                  «Pro» — <code>isPremium</code> bayrog'i bo'yicha, ya'ni <strong>muddati tugaganlar ham</strong> shu songa kiradi.
+                </div>
+                {subjectStats.totalUsers != null && (
+                  <div style={{ marginTop: 6 }}>
+                    Jami <strong>{subjectStats.totalUsers.toLocaleString()}</strong> foydalanuvchi ·
+                    oxirgi sanoq {subjectStats.updatedAt.toLocaleTimeString('uz-UZ')}
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : null}
 
           <div className="admin-section-title" style={{ marginTop: 8 }}><MessageCircle size={18} style={{ color: 'var(--amber)' }} /> E'tirozlar statistikasi</div>
           <div className="admin-stats-grid">
@@ -3272,6 +3527,11 @@ try {
                     ['Qisqa ID', userCard.shortId || '—'],
                     ['UID', userCard.id],
                     ['Telefon', userCard.phone || userCard.phoneNumber || '—'],
+                    // Fan/toifa — kartochkada eng kerakli profil maydonlari:
+                    // fan qaysi savol bazasini ishlatishini, toifa esa maqsad
+                    // foizini belgilaydi (studyContract).
+                    ['Fan', subjectName(userCard.subject) || '—'],
+                    ['Toifa', TOIFA_NAMES[userCard.teacherCategory] || userCard.teacherCategory || '—'],
                     ['Rol', userCard.role || 'user'],
                     ['Pro', userCard.isPremium ? 'Ha' : "Yo'q"],
                     ['Obuna turi', userCard.premiumPlan || '—'],
