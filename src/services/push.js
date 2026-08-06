@@ -14,6 +14,7 @@ import { getMessaging, getToken, onMessage, isSupported } from 'firebase/messagi
 import { getApp } from 'firebase/app';
 import { doc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { db, firebaseConfig } from '../firebase';
+import { isPlayBuild } from '../config';
 
 const VAPID_KEY = import.meta.env.VITE_FIREBASE_VAPID_KEY;
 const SW_SCOPE = '/firebase-cloud-messaging-push-scope';
@@ -84,7 +85,19 @@ export async function enablePush(user) {
     try {
       pushLang = (localStorage.getItem('i18nextLng') || 'uz').slice(0, 2);
     } catch { /* private rejim — zaxira 'uz' */ }
-    await updateDoc(doc(db, 'users', user.uid), { fcmTokens: arrayUnion(token), pushLang });
+
+    // `pushIsPlay` — token Play ilovasidan ro'yxatdan o'tganmi.
+    // Server (api/cron-daily.js) obuna xabarlarida Telegram manzilini
+    // KO'RSATISHNI shu bayroqqa qarab hal qiladi: Play build'ga tashqi to'lov
+    // kanalini yuborish anti-steering qoidasini buzadi, brauzer/sayt
+    // foydalanuvchisiga esa Google'ning aloqasi yo'q.
+    //
+    // FAQAT `true` yoziladi, hech qachon `false` ga qaytarilmaydi: TWA va
+    // Chrome bitta origin'ni bo'lishadi va ko'pincha AYNI tokenni oladi —
+    // shubha bo'lsa cheklovli tomonni tanlaymiz.
+    const patch = { fcmTokens: arrayUnion(token), pushLang };
+    if (isPlayBuild()) patch.pushIsPlay = true;
+    await updateDoc(doc(db, 'users', user.uid), patch);
     localStorage.setItem('iqro_push_token', token);
     return { ok: true, token };
   } catch (e) {

@@ -38,6 +38,19 @@ export default defineConfig([
     },
   },
 
+  // ── Testlar: vitest NODE'da ishlaydi ──
+  // `src/` ostida turgani uchun yuqoridagi brauzer bloki ularni ham qamrab
+  // oladi, lekin testlar `process.env` bilan ishlaydi (masalan SMS qatlamining
+  // deny-by-default xatti-harakatini tekshirish). Shuning uchun bu yerda
+  // node globallari QO'SHILADI — brauzernikilari ham saqlanadi, chunki
+  // jsdom muhitidagi testlar `window`ga murojaat qilishi mumkin.
+  {
+    files: ['src/**/*.test.{js,jsx}', 'src/__tests__/**/*.{js,jsx}'],
+    languageOptions: {
+      globals: { ...globals.browser, ...globals.node },
+    },
+  },
+
   // ── Node (ESM): serverless API, ildizdagi *.js/*.mjs skriptlar, config fayllar ──
   {
     files: ['api/**/*.js', '*.{js,mjs}'],

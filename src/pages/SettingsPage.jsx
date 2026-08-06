@@ -162,14 +162,27 @@ export default function SettingsPage({ theme, toggleTheme }) {
   // berilganda ko'rinadi. Holat Firestore'da (`users/{uid}.dailyReminder`),
   // localStorage'da EMAS: qarorni serverning o'zi o'qishi kerak.
   const [dailyReminder, setDailyReminder] = useState(true);
+  // Obuna xabarnomalari — api/cron-daily.js yuboradi (xush kelibsiz, sinov
+  // muddati, obuna tugashi). Bitta tugma IKKALA kanalni ham boshqaradi (push
+  // va zaxira SMS): foydalanuvchi "bu xabarlarni istamayman" deydi, "SMS emas,
+  // push bo'lsin" demaydi. Shu sabab qator har doim ko'rinadi va bu effekt
+  // `pushStatus` ga bog'lanmagan — SMS uchun brauzer ruxsati kerak emas.
+  const [billingNotify, setBillingNotify] = useState(true);
   useEffect(() => {
-    if (!user?.uid || pushStatus !== 'granted') return;
+    if (!user?.uid) return;
     let alive = true;
     getDoc(doc(db, 'users', user.uid))
-      .then(snap => { if (alive && snap.exists()) setDailyReminder(snap.data().dailyReminder !== false); })
+      .then(snap => {
+        if (!alive || !snap.exists()) return;
+        const d = snap.data();
+        setDailyReminder(d.dailyReminder !== false);
+        // Server `billingNotifyOptOut === true` ni tekshiradi — ya'ni maydon
+        // yo'q bo'lsa YOQILGAN. Bu yerdagi teskari o'qish ham shu qoidada.
+        setBillingNotify(d.billingNotifyOptOut !== true);
+      })
       .catch(() => { /* o'qilmasa yoqilgan deb qoladi — cron ham shunday o'qiydi */ });
     return () => { alive = false; };
-  }, [user?.uid, pushStatus]);
+  }, [user?.uid]);
 
   const toggleDailyReminder = async () => {
     const next = !dailyReminder;
@@ -179,6 +192,20 @@ export default function SettingsPage({ theme, toggleTheme }) {
       showToast(next ? t('settings.toasts.reminderOn') : t('settings.toasts.reminderOff'), 'success');
     } catch {
       setDailyReminder(!next);   // yozilmadi — tugmani orqaga qaytaramiz
+      showToast(t('settings.toasts.pushError'), 'error');
+    }
+  };
+
+  const toggleBillingNotify = async () => {
+    const next = !billingNotify;
+    setBillingNotify(next);
+    try {
+      // Maydon nomi ATAYLAB inkor (`...OptOut`): yozuv yo'qligi "rozi" degani,
+      // ya'ni eski hisoblar migratsiyasiz ishlaydi.
+      await setDoc(doc(db, 'users', user.uid), { billingNotifyOptOut: !next }, { merge: true });
+      showToast(next ? t('settings.toasts.billingNotifyOn') : t('settings.toasts.billingNotifyOff'), 'success');
+    } catch {
+      setBillingNotify(!next);
       showToast(t('settings.toasts.pushError'), 'error');
     }
   };
@@ -560,6 +587,14 @@ export default function SettingsPage({ theme, toggleTheme }) {
                 onToggle={toggleDailyReminder}
               />
             )}
+
+            <SwitchRow
+              icon={<Crown size={20} />}
+              label={t('settings.billingNotify')}
+              sublabel={t('settings.billingNotifyHint')}
+              checked={billingNotify}
+              onToggle={toggleBillingNotify}
+            />
 
             <ActionRow
               icon={<Download size={20} />}
