@@ -20,6 +20,7 @@ import { syncSchoolPremium, SCHOOL_ERRORS } from '../../services/school';
 import {
   School, Plus, Trash2, Users, RefreshCw, Copy, Inbox, UserPlus, Zap,
 } from 'lucide-react';
+import ConfirmDialog from '../shared/ConfirmDialog';
 
 const genJoinCode = () => {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -28,15 +29,9 @@ const genJoinCode = () => {
   return `MAKTAB-${s}`;
 };
 
-const inputStyle = {
-  width: '100%', padding: '10px 12px', borderRadius: 10, fontSize: 'var(--fs-base)',
-  border: '1.5px solid var(--border)', background: 'var(--bg2)',
-  color: 'var(--text)', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box',
-};
-const labelStyle = {
-  fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--text3)',
-  marginBottom: 5, display: 'block', textTransform: 'uppercase',
-};
+// D-9: `inputStyle`/`labelStyle` obyektlari PromoTab bilan AYNAN bir xil
+// nusxalangan edi. Endi ikkalasi ham AdminPage.css dagi `.admin-input` va
+// `.admin-label--caps` klasslaridan foydalanadi.
 
 // Bir yildan keyingi sana — default obuna muddati
 const defaultUntil = () => {
@@ -54,6 +49,8 @@ export default function SchoolsTab() {
   const [loading, setLoading] = useState(true);
   const [creating, setCreating] = useState(false);
   const [busyId, setBusyId] = useState(null);
+  const [confirmDelete, setConfirmDelete] = useState(null);
+  const [adminForm, setAdminForm] = useState(null); // { school, email }
 
   const [form, setForm] = useState({
     name: '', region: '', district: '',
@@ -155,17 +152,20 @@ export default function SchoolsTab() {
     } catch { showToast('Xatolik', 'error'); }
   };
 
-  const handleDelete = async (s) => {
-    // A'zolari bor maktabni o'chirish MUMKIN EMAS: Firestore subkolleksiyani
-    // kaskad o'chirmaydi va o'qituvchilarning users/{uid}.schoolId maydoni
-    // mavjud bo'lmagan maktabga ishora qilib qolardi (panel «topilmadi» beradi).
-    // To'g'ri yo'l — «O'chiq» holatiga o'tkazish: yangi qo'shilish to'xtaydi,
-    // mavjud a'zolar va ularning Pro muddati saqlanadi.
+  // A'zolari bor maktabni o'chirish MUMKIN EMAS: Firestore subkolleksiyani
+  // kaskad o'chirmaydi va o'qituvchilarning users/{uid}.schoolId maydoni
+  // mavjud bo'lmagan maktabga ishora qilib qolardi (panel «topilmadi» beradi).
+  // To'g'ri yo'l — «O'chiq» holatiga o'tkazish: yangi qo'shilish to'xtaydi,
+  // mavjud a'zolar va ularning Pro muddati saqlanadi.
+  const requestDelete = (s) => {
     if ((s.memberCount || 0) > 0) {
       showToast(`"${s.name}" da ${s.memberCount} a'zo bor — o'chirish o'rniga «O'chiq» qiling`, 'error');
       return;
     }
-    if (!window.confirm(`"${s.name}" maktabini o'chirasizmi? (a'zolar yo'q)`)) return;
+    setConfirmDelete(s);
+  };
+
+  const handleDelete = async (s) => {
     try {
       await deleteDoc(doc(db, 'schools', s.id));
       setSchools(prev => prev.filter(x => x.id !== s.id));
@@ -193,8 +193,10 @@ export default function SchoolsTab() {
     } catch { showToast('Xatolik', 'error'); }
   };
 
-  const addAdmin = async (s) => {
-    const email = window.prompt(`"${s.name}" uchun maktab admini emaili:`);
+  // D-8: `window.prompt` o'rniga panel ichidagi kichik forma. Native dialog
+  // dizayn tizimidan tashqarida va TWA/PWA muhitida bloklanishi mumkin —
+  // bunda tugma jimgina ishlamasdi.
+  const addAdmin = async (s, email) => {
     if (!email) return;
     try {
       const uid = await findUidByEmail(email);
@@ -204,6 +206,7 @@ export default function SchoolsTab() {
       await setDoc(doc(db, 'users', uid), { schoolId: s.id, schoolName: s.name }, { merge: true });
       setSchools(prev => prev.map(x => x.id === s.id ? { ...x, adminUids: next } : x));
       showToast('Maktab admini biriktirildi', 'success');
+      setAdminForm(null);
     } catch (e) {
       console.error(e);
       showToast('Xatolik', 'error');
@@ -235,38 +238,38 @@ export default function SchoolsTab() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: 12, marginBottom: 12 }}>
           <div>
-            <label style={labelStyle}>Maktab nomi</label>
-            <input style={inputStyle} value={form.name}
+            <label className="admin-label--caps">Maktab nomi</label>
+            <input className="admin-input" value={form.name}
               onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
               placeholder="masalan: 24-umumta'lim maktabi" maxLength={120} />
           </div>
           <div>
-            <label style={labelStyle}>Viloyat</label>
-            <input style={inputStyle} value={form.region}
+            <label className="admin-label--caps">Viloyat</label>
+            <input className="admin-input" value={form.region}
               onChange={e => setForm(f => ({ ...f, region: e.target.value }))}
               placeholder="Toshkent viloyati" maxLength={80} />
           </div>
           <div>
-            <label style={labelStyle}>Tuman</label>
-            <input style={inputStyle} value={form.district}
+            <label className="admin-label--caps">Tuman</label>
+            <input className="admin-input" value={form.district}
               onChange={e => setForm(f => ({ ...f, district: e.target.value }))}
               placeholder="Chirchiq" maxLength={80} />
           </div>
           <div>
-            <label style={labelStyle}>O'rinlar soni</label>
-            <input style={inputStyle} type="number" min="1" max="2000" value={form.seats}
+            <label className="admin-label--caps">O'rinlar soni</label>
+            <input className="admin-input" type="number" min="1" max="2000" value={form.seats}
               onChange={e => setForm(f => ({ ...f, seats: e.target.value }))} />
           </div>
           <div>
-            <label style={labelStyle}>Obuna muddati</label>
-            <input style={inputStyle} type="date" value={form.until}
+            <label className="admin-label--caps">Obuna muddati</label>
+            <input className="admin-input" type="date" value={form.until}
               onChange={e => setForm(f => ({ ...f, until: e.target.value }))} />
           </div>
           <div>
-            <label style={labelStyle}>Qo'shilish kodi</label>
+            <label className="admin-label--caps">Qo'shilish kodi</label>
             <div style={{ display: 'flex', gap: 6 }}>
               <input
-                style={{ ...inputStyle, textTransform: 'uppercase', fontWeight: 700, letterSpacing: 1, fontFamily: 'monospace' }}
+                className="admin-input admin-input--code"
                 value={form.joinCode}
                 onChange={e => setForm(f => ({ ...f, joinCode: e.target.value.toUpperCase() }))}
                 maxLength={32}
@@ -278,8 +281,8 @@ export default function SchoolsTab() {
             </div>
           </div>
           <div>
-            <label style={labelStyle}>Maktab admini (email, ixtiyoriy)</label>
-            <input style={inputStyle} value={form.adminEmail}
+            <label className="admin-label--caps">Maktab admini (email, ixtiyoriy)</label>
+            <input className="admin-input" value={form.adminEmail}
               onChange={e => setForm(f => ({ ...f, adminEmail: e.target.value }))}
               placeholder="direktor@example.com" maxLength={120} />
           </div>
@@ -395,21 +398,57 @@ export default function SchoolsTab() {
                   <button className="btn btn-sm btn-outline" onClick={() => handleSync(s)} disabled={busyId === s.id}>
                     <Zap size={13} /> {busyId === s.id ? '...' : 'Pro tarqatish'}
                   </button>
-                  <button className="btn btn-sm btn-outline" onClick={() => addAdmin(s)}>
+                  <button className="btn btn-sm btn-outline" onClick={() => setAdminForm({ school: s, email: '' })}>
                     <UserPlus size={13} /> Admin
                   </button>
                   <button className={`btn btn-sm ${s.active !== false ? 'btn-primary' : 'btn-outline'}`} onClick={() => toggleActive(s)}>
                     {s.active !== false ? 'Faol' : "O'chiq"}
                   </button>
-                  <button className="btn btn-sm btn-outline" style={{ color: 'var(--red)' }} onClick={() => handleDelete(s)}>
+                  <button
+                    className="btn btn-sm btn-outline admin-btn-danger"
+                    onClick={() => requestDelete(s)}
+                    aria-label={`${s.name} maktabini o'chirish`}
+                    title={(s.memberCount || 0) > 0 ? "A'zolari bor — «O'chiq» qiling" : "O'chirish"}
+                  >
                     <Trash2 size={13} />
                   </button>
                 </div>
+
+                {/* D-8: `window.prompt` o'rniga joyidagi forma */}
+                {adminForm?.school?.id === s.id && (
+                  <div className="admin-row" style={{ marginTop: 10 }}>
+                    <input
+                      className="admin-input"
+                      style={{ maxWidth: 280 }}
+                      autoFocus
+                      type="email"
+                      placeholder="direktor@example.com"
+                      value={adminForm.email}
+                      onChange={e => setAdminForm(f => ({ ...f, email: e.target.value }))}
+                      onKeyDown={e => { if (e.key === 'Enter') addAdmin(s, adminForm.email); }}
+                    />
+                    <button className="btn btn-sm btn-primary" onClick={() => addAdmin(s, adminForm.email)} disabled={!adminForm.email.trim()}>
+                      Biriktirish
+                    </button>
+                    <button className="btn btn-sm btn-outline" onClick={() => setAdminForm(null)}>Bekor</button>
+                  </div>
+                )}
               </div>
             );
           })}
         </div>
       )}
+
+      <ConfirmDialog
+        open={!!confirmDelete}
+        title={`"${confirmDelete?.name}" maktabini o'chirasizmi?`}
+        text="A'zolari yo'q, shuning uchun o'chirish xavfsiz."
+        confirmLabel="O'chirish"
+        cancelLabel="Bekor qilish"
+        danger
+        onConfirm={() => { const s = confirmDelete; setConfirmDelete(null); handleDelete(s); }}
+        onCancel={() => setConfirmDelete(null)}
+      />
     </div>
   );
 }

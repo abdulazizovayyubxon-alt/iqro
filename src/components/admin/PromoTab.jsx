@@ -10,6 +10,7 @@ import { db } from '../../firebase';
 import { ToastContext } from '../../context/ToastContext';
 import { useAuth } from '../../context/AuthContext';
 import { Ticket, Plus, Trash2, Users, RefreshCw } from 'lucide-react';
+import ConfirmDialog from '../shared/ConfirmDialog';
 
 const TYPE_LABELS = {
   percent: { label: 'Chegirma (%)', icon: '🏷️', desc: "Keyingi to'lovdan foiz chegirma" },
@@ -101,7 +102,12 @@ export default function PromoTab() {
         value,
         maxUses,
         usedCount: 0,
-        usedBy: [],
+        // ⚠️ C-5: `usedBy: []` OLIB TASHLANDI. AUDIT 2026-08-05, 15-band bu
+        // modelni subkolleksiyaga (`promoCodes/{code}/redemptions/{uid}`)
+        // ko'chirgan edi — massiv ommaviy kampaniyada 1 MB hujjat chegarasiga
+        // urilib, kodni qaytarilmas holda ishdan chiqarardi. api/redeem-promo.js
+        // eski massivni HAMON o'qiydi (legacy kodlar uchun), lekin unga
+        // YOZMAYDI — ya'ni yangi kodlarda bu maydon abadiy bo'sh qolardi.
         expiresAt: form.expiresAt ? new Date(form.expiresAt + 'T23:59:59').toISOString() : null,
         campaign: form.campaign.trim() || null,
         active: true,
@@ -127,8 +133,31 @@ export default function PromoTab() {
     }
   };
 
+  // ⚠️ ADMIN AUDIT 2026-08-06, A-11 BAND — ishlatilgan kodni o'chirish
+  // TAQIQLANDI. Sabab: Firestore subkolleksiyani kaskad o'chirmaydi va
+  // `promoCodes/{code}/redemptions/*` mijozdan YOZILMAYDI ham
+  // (firestore.rules:241 `allow write: if false` — redemption faqat
+  // api/redeem-promo.js orqali). Ya'ni kod o'chirilsa, redemption hujjatlari
+  // BAZADA QOLARDI. Aynan o'sha nom bilan yangi kod yaratilsa,
+  // redeem-promo.js:72 o'sha eski yozuvlarni topib, o'sha odamlarga
+  // `already_used` berardi — sababi hech qayerda ko'rinmasdi.
+  //
+  // Yechim SchoolsTab.jsx:158 dagi bilan bir xil: ishlatilgan bo'lsa
+  // o'chirish o'rniga «O'chiq» qilinadi. Kampaniya statistikasi ham saqlanadi.
+  const [confirmDelete, setConfirmDelete] = useState(null);
+
+  const requestDelete = (promo) => {
+    if ((promo.usedCount || 0) > 0) {
+      showToast(
+        `"${promo.id}" ${promo.usedCount} marta ishlatilgan — o'chirish o'rniga «O'chiq» qiling`,
+        'error'
+      );
+      return;
+    }
+    setConfirmDelete(promo);
+  };
+
   const handleDelete = async (promo) => {
-    if (!window.confirm(`"${promo.id}" kodini o'chirasizmi? (${promo.usedCount || 0} marta ishlatilgan)`)) return;
     try {
       await deleteDoc(doc(db, 'promoCodes', promo.id));
       setPromos(prev => prev.filter(p => p.id !== promo.id));
@@ -137,13 +166,6 @@ export default function PromoTab() {
       showToast('Xatolik', 'error');
     }
   };
-
-  const inputStyle = {
-    width: '100%', padding: '10px 12px', borderRadius: 10, fontSize: 'var(--fs-base)',
-    border: '1.5px solid var(--border)', background: 'var(--bg2)',
-    color: 'var(--text)', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box',
-  };
-  const labelStyle = { fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--text3)', marginBottom: 5, display: 'block', textTransform: 'uppercase' };
 
   return (
     <div>
@@ -164,10 +186,10 @@ export default function PromoTab() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: 12, marginBottom: 12 }}>
           <div>
-            <label style={labelStyle}>Kod</label>
+            <label className="admin-label--caps">Kod</label>
             <div style={{ display: 'flex', gap: 6 }}>
               <input
-                style={{ ...inputStyle, textTransform: 'uppercase', fontWeight: 700, letterSpacing: 1 }}
+                className="admin-input admin-input--code"
                 value={form.code}
                 onChange={e => setForm(f => ({ ...f, code: e.target.value.toUpperCase() }))}
                 placeholder="IQRO-XXXXX"
@@ -184,9 +206,9 @@ export default function PromoTab() {
             </div>
           </div>
           <div>
-            <label style={labelStyle}>Turi</label>
+            <label className="admin-label--caps">Turi</label>
             <select
-              style={inputStyle}
+              className="admin-input"
               value={form.type}
               onChange={e => setForm(f => ({ ...f, type: e.target.value, value: e.target.value === 'percent' ? 20 : e.target.value === 'team' ? 365 : 30 }))}
             >
@@ -196,9 +218,9 @@ export default function PromoTab() {
             </select>
           </div>
           <div>
-            <label style={labelStyle}>{form.type === 'percent' ? 'Chegirma (%)' : 'Kunlar soni'}</label>
+            <label className="admin-label--caps">{form.type === 'percent' ? 'Chegirma (%)' : 'Kunlar soni'}</label>
             <input
-              style={inputStyle}
+              className="admin-input"
               type="number"
               min="1"
               max={form.type === 'percent' ? 100 : 3660}
@@ -207,9 +229,9 @@ export default function PromoTab() {
             />
           </div>
           <div>
-            <label style={labelStyle}>Limit (necha kishi)</label>
+            <label className="admin-label--caps">Limit (necha kishi)</label>
             <input
-              style={inputStyle}
+              className="admin-input"
               type="number"
               min="1"
               value={form.maxUses}
@@ -217,18 +239,18 @@ export default function PromoTab() {
             />
           </div>
           <div>
-            <label style={labelStyle}>Muddati (ixtiyoriy)</label>
+            <label className="admin-label--caps">Muddati (ixtiyoriy)</label>
             <input
-              style={inputStyle}
+              className="admin-input"
               type="date"
               value={form.expiresAt}
               onChange={e => setForm(f => ({ ...f, expiresAt: e.target.value }))}
             />
           </div>
           <div>
-            <label style={labelStyle}>Kampaniya (ixtiyoriy)</label>
+            <label className="admin-label--caps">Kampaniya (ixtiyoriy)</label>
             <input
-              style={inputStyle}
+              className="admin-input"
               value={form.campaign}
               onChange={e => setForm(f => ({ ...f, campaign: e.target.value }))}
               placeholder="masalan: maktab-25, sentyabr"
@@ -285,9 +307,12 @@ export default function PromoTab() {
                   {p.active ? 'Faol' : "O'chiq"}
                 </button>
                 <button
-                  className="btn btn-sm btn-outline"
-                  style={{ color: 'var(--red)' }}
-                  onClick={() => handleDelete(p)}
+                  className="btn btn-sm btn-outline admin-btn-danger"
+                  onClick={() => requestDelete(p)}
+                  aria-label={`${p.id} kodini o'chirish`}
+                  title={(p.usedCount || 0) > 0
+                    ? "Ishlatilgan kodni o'chirib bo'lmaydi — «O'chiq» qiling"
+                    : "O'chirish"}
                 >
                   <Trash2 size={14} />
                 </button>
@@ -296,6 +321,19 @@ export default function PromoTab() {
           })}
         </div>
       )}
+
+      {/* D-8: `window.confirm` o'rniga dizayn tizimidagi tasdiq oynasi
+          (Escape + fokus tutqichi bilan) */}
+      <ConfirmDialog
+        open={!!confirmDelete}
+        title={`"${confirmDelete?.id}" kodini o'chirasizmi?`}
+        text="Bu kod hali hech kim tomonidan ishlatilmagan, shuning uchun o'chirish xavfsiz."
+        confirmLabel="O'chirish"
+        cancelLabel="Bekor qilish"
+        danger
+        onConfirm={() => { const p = confirmDelete; setConfirmDelete(null); handleDelete(p); }}
+        onCancel={() => setConfirmDelete(null)}
+      />
     </div>
   );
 }
