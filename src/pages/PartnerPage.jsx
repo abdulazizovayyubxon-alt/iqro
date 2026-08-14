@@ -30,6 +30,7 @@ export default function PartnerPage() {
   const [copiedLink, setCopiedLink] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [adminLookupCode, setAdminLookupCode] = useState('');
+  const [availablePromos, setAvailablePromos] = useState([]);
   const [subjectFilter, setSubjectFilter] = useState('chqbt'); // default 'chqbt' ustoz fani bo'yicha
   const [visibleCount, setVisibleCount] = useState(25);
 
@@ -42,8 +43,15 @@ export default function PartnerPage() {
       const codeToFetch = customCode || adminLookupCode || partnerCode;
       const res = await fetchPartnerStats(codeToFetch);
 
+      if (res.allPartnerPromos) {
+        setAvailablePromos(res.allPartnerPromos);
+      }
+
       if (res.ok) {
         setData(res);
+        if (res.promo?.code && !adminLookupCode) {
+          setAdminLookupCode(res.promo.code);
+        }
       } else {
         const msg = PARTNER_ERRORS[res.error] || "Statistikani yuklashda xatolik yuz berdi";
         setErrorMsg(msg);
@@ -131,7 +139,7 @@ export default function PartnerPage() {
               <Sparkles size={14} /> HAMKOR BOSHQARUV PORTALI
             </div>
             <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 900, color: 'var(--text)', margin: '0 0 6px 0', display: 'flex', alignItems: 'center', gap: 10 }}>
-              {data?.promo?.partnerName || 'Hamkor Ustoz Kabineti'}
+              {data?.promo?.partnerName || (isAdmin ? 'Hamkorlar boshqaruvi' : 'Hamkor Ustoz Kabineti')}
             </h1>
             <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', margin: 0 }}>
               {data?.promo?.campaign || 'Attestatsiyaga tayyorgarlik guruhi faollik va natijalar monitoringi'}
@@ -140,7 +148,7 @@ export default function PartnerPage() {
 
           <button
             className="btn btn-sm btn-outline"
-            onClick={() => loadStats()}
+            onClick={() => loadStats(adminLookupCode)}
             disabled={loading}
             style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
           >
@@ -149,19 +157,36 @@ export default function PartnerPage() {
           </button>
         </div>
 
-        {/* Super Admin qidiruv paneli (faqat bosh admin uchun) */}
+        {/* Super Admin qidiruv va tanlov paneli */}
         {isAdmin && (
           <div style={{ marginTop: 4, padding: '12px 14px', background: 'var(--bg2)', borderRadius: 14, border: '1px dashed var(--border)' }}>
             <div style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--accent)', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
-              <ShieldAlert size={14} /> Super Admin: Hamkor kodini tekshirish
+              <ShieldAlert size={14} /> Super Admin: Hamkor kodini tanlash yoki kiritish
             </div>
-            <div style={{ display: 'flex', gap: 8 }}>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
+              {availablePromos.length > 0 && (
+                <select
+                  className="admin-input"
+                  style={{ maxWidth: 260, fontSize: 'var(--fs-xs)', fontWeight: 700 }}
+                  value={data?.promo?.code || adminLookupCode}
+                  onChange={(e) => {
+                    setAdminLookupCode(e.target.value);
+                    loadStats(e.target.value);
+                  }}
+                >
+                  {availablePromos.map(p => (
+                    <option key={p.code} value={p.code}>
+                      {p.code} {p.partnerName ? `(${p.partnerName})` : ''}
+                    </option>
+                  ))}
+                </select>
+              )}
               <input
                 className="admin-input admin-input--code"
                 placeholder="Masalan: MIRONSHOH"
                 value={adminLookupCode}
                 onChange={e => setAdminLookupCode(e.target.value.toUpperCase())}
-                style={{ maxWidth: 220, textTransform: 'uppercase' }}
+                style={{ maxWidth: 180, textTransform: 'uppercase' }}
               />
               <button
                 className="btn btn-sm btn-primary"
@@ -175,7 +200,7 @@ export default function PartnerPage() {
         )}
       </motion.div>
 
-      {/* ── Yuklanish yoki Xatolik holati ── */}
+      {/* ── Yuklanish holati ── */}
       {loading && !data && (
         <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--text3)' }}>
           <RefreshCw size={32} className="spin" style={{ margin: '0 auto 16px', color: 'var(--accent)' }} />
@@ -183,12 +208,15 @@ export default function PartnerPage() {
         </div>
       )}
 
+      {/* ── Xatolik yoki promokod topilmagan holati ── */}
       {errorMsg && !data && (
-        <div className="glass-panel" style={{ padding: '30px 20px', textAlign: 'center', borderRadius: 20, color: 'var(--text2)' }}>
-          <div style={{ fontSize: 42, marginBottom: 12 }}>🔍</div>
-          <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--red)', marginBottom: 8 }}>{errorMsg}</div>
+        <div className="glass-panel" style={{ padding: '30px 20px', textAlign: 'center', borderRadius: 20, color: 'var(--text2)', marginBottom: 20 }}>
+          <div style={{ fontSize: 42, marginBottom: 12 }}>🤝</div>
+          <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)', marginBottom: 8 }}>{errorMsg}</div>
           <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', maxWidth: 450, margin: '0 auto 16px' }}>
-            Sizga biriktirilgan promokod mavjudligini yoki admin tomonidan huquq berilganini tasdiqlang.
+            {isAdmin
+              ? "Yuqoridagi maydonga mavjud hamkor promokodini kiriting yoki Admin paneldan yangi promokod yarating."
+              : "Sizga biriktirilgan promokod mavjudligini yoki admin tomonidan huquq berilganini tasdiqlang."}
           </p>
           <button className="btn btn-sm btn-outline" onClick={() => loadStats()}>Qayta urinish</button>
         </div>

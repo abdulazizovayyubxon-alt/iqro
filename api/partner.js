@@ -77,6 +77,17 @@ export default async function handler(req, res) {
       const userData = userSnap.exists ? userSnap.data() : {};
       const isAdminUser = await isPlatformAdmin(db, decoded);
 
+      let allPartnerPromos = [];
+      if (isAdminUser) {
+        const allPromosSnap = await db.collection('promoCodes').get();
+        allPartnerPromos = allPromosSnap.docs.map(d => ({
+          code: d.id,
+          partnerName: d.data().partnerName || null,
+          campaign: d.data().campaign || null,
+          active: d.data().active !== false,
+        }));
+      }
+
       // Agar kod berilmagan bo'lsa, foydalanuvchining o'z partnerCode'ini qidiramiz
       if (!requestedCode) {
         if (userData.partnerCode) {
@@ -90,7 +101,24 @@ export default async function handler(req, res) {
         }
       }
 
+      // Admin uchun agar hali ham kod topilmasa, mavjud promokodlardan birinchisini tanlaymiz
+      if (!requestedCode && isAdminUser && allPartnerPromos.length > 0) {
+        // Avvalo MIRONSHOH yoki partnerName bor promokodni qidiramiz
+        const partnerSpecific = allPartnerPromos.find(p => p.partnerName || p.code === 'MIRONSHOH');
+        requestedCode = partnerSpecific ? partnerSpecific.code : allPartnerPromos[0].code;
+      }
+
       if (!requestedCode) {
+        if (isAdminUser) {
+          return res.status(200).json({
+            ok: true,
+            isAdmin: true,
+            allPartnerPromos: [],
+            promo: null,
+            summary: { totalMembers: 0, active7d: 0, totalAnswered: 0, avgAccuracy: null, avgReadiness: null },
+            members: [],
+          });
+        }
         return res.status(400).json({ ok: false, error: 'no_partner_code_found' });
       }
 
@@ -98,7 +126,12 @@ export default async function handler(req, res) {
       const promoSnap = await promoRef.get();
 
       if (!promoSnap.exists) {
-        return res.status(404).json({ ok: false, error: 'promo_not_found' });
+        return res.status(404).json({
+          ok: false,
+          error: 'promo_not_found',
+          requestedCode,
+          allPartnerPromos,
+        });
       }
 
       const promo = promoSnap.data();
@@ -121,6 +154,7 @@ export default async function handler(req, res) {
       if (redemptions.length === 0) {
         return res.status(200).json({
           ok: true,
+          allPartnerPromos,
           promo: {
             code: promo.code || requestedCode,
             campaign: promo.campaign || 'Hamkorlik dasturi',
@@ -138,6 +172,8 @@ export default async function handler(req, res) {
             totalAnswered: 0,
             avgAccuracy: null,
             avgReadiness: null,
+            chqbtTotalAnswered: 0,
+            chqbtAvgAccuracy: null,
           },
           members: [],
         });
@@ -231,6 +267,7 @@ export default async function handler(req, res) {
 
       return res.status(200).json({
         ok: true,
+        allPartnerPromos,
         promo: {
           code: promo.code || requestedCode,
           campaign: promo.campaign || 'Hamkorlik dasturi',

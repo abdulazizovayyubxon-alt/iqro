@@ -213,6 +213,8 @@ export const AuthProvider = ({ children }) => {
       let schoolId = null;
       // O'qituvchilik fani (profildan) — fan tanlagichda "Sizning faningiz" uchun
       let subject = null;
+      // Hamkorlik promokodi (partnerCode) — hamkor ustoz portali uchun
+      let partnerCode = null;
 
       try {
         let trialInfo = { status: 'expired', daysLeft: 0, urgencyMs: 0 };
@@ -229,6 +231,7 @@ export const AuthProvider = ({ children }) => {
               shortId = data.shortId || null;
               schoolId = data.schoolId || null;
               subject = data.subject || null;
+              partnerCode = data.partnerCode || null;
 
               // ═══ Premium muddati tekshiruvi ═══
               // premiumExpire (sana) — obuna tugash vaqtining yagona manbasi.
@@ -318,6 +321,7 @@ export const AuthProvider = ({ children }) => {
             isTruePremium,
             premiumExpire,
             role,
+            partnerCode,
             trialStatus: trialInfo.status,
             trialDaysLeft: trialInfo.daysLeft,
             urgencyMs: trialInfo.urgencyMs,
@@ -336,6 +340,7 @@ export const AuthProvider = ({ children }) => {
             shortId,
             schoolId,
             subject,
+            partnerCode,
             isPremium,
             isTruePremium,
             premiumExpire,
@@ -708,6 +713,7 @@ export const AuthProvider = ({ children }) => {
         shortId: updated.shortId,
         schoolId: updated.schoolId ?? null,
         subject: updated.subject ?? null,
+        partnerCode: updated.partnerCode ?? null,
         isPremium: updated.isPremium,
         isTruePremium: updated.isTruePremium,
         premiumExpire: updated.premiumExpire ?? null,
@@ -755,6 +761,7 @@ export const AuthProvider = ({ children }) => {
           avatarId: data.avatarId ?? null,
           schoolId: data.schoolId || null,
           subject: data.subject || null,
+          partnerCode: data.partnerCode || null,
           trialStatus: trialInfo.status,
           trialDaysLeft: trialInfo.daysLeft,
           urgencyMs: trialInfo.urgencyMs,
