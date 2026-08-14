@@ -85,14 +85,16 @@ export default async function handler(req, res) {
       checks.firestore = 'up';
       const data = snap.data() || {};
       questionsVersion = data.dbVersion ?? null;   // AdminPage «Yangilanishni yuborish» va scripts/bump-questions-version.mjs shu nomda yozadi
-      // Savollar qayerdan kelayotgani. `urls` ATAYLAB bo'sh qoldirilgan
-      // (scripts/bump-questions-version.mjs:15) — ochiq Storage URL'i pullik
-      // bazani login'siz yuklab olishga imkon berardi. Bo'sh bo'lsa ilova
-      // TestPage.jsx:428 dagi Firestore fallback'iga tushadi.
-      // 0 = kutilgan holat, nosozlik EMAS.
-      checks.questionSource = Object.keys(data.urls || {}).length > 0
-        ? 'storage-bundle'
-        : 'firestore-fallback';
+      // ── Savollar qayerdan kelmoqda? Bu — narx ko'rsatkichi ──
+      //   `storage-bundle`      → foydalanuvchi boshiga 2 ta Firestore o'qishi
+      //   `firestore-fallback`  → fan boshiga ~2 900 o'qish (kunlik kvota
+      //                           50 000 ⇒ ~17 ta yuklash) — KVOTA XAVFI.
+      // Paketni AdminPage → Savollar → «Paketlarni qayta qurish» yasaydi.
+      // Eski `urls` maydoni ataylab tekshirilmaydi: u ochiq havolalarni
+      // saqlagan va o'sha teshik sababli butunlay ishlatilmaydi.
+      const bundleCount = Object.keys(data.bundles || {}).length;
+      checks.questionSource = bundleCount > 0 ? 'storage-bundle' : 'firestore-fallback';
+      checks.questionBundles = bundleCount;
     } else {
       // Baza javob berdi, lekin sozlama hujjati yo'q — ilova savol yuklay olmaydi
       checks.firestore = 'up';

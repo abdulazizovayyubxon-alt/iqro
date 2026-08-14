@@ -16,13 +16,46 @@ chunki yechimlari butunlay boshqacha:
 |---|---|---|
 | Frontend | Vite SPA → Vercel CDN | Muammo yo'q — statik fayl |
 | `/api/*` | Vercel serverless (12 funksiya) | Muammo yo'q — har so'rovga alohida nusxa |
-| Savollar (~47k) | Storage JSON + CDN kesh + localforage | Muammo yo'q — Firestore'ga **0** o'qish |
+| Savollar (~47k) | Maxfiy Storage paketi → `/api/get-questions` → localforage | Foydalanuvchi boshiga **2** o'qish (⚠️ 3-bo'limga qarang) |
 | Auth | Firebase Auth | Muammo yo'q |
 | Ma'lumotlar | **Firestore** | ⚠️ **Yagona haqiqiy xavf** |
 
 Bitta serverli ilova RAM/CPU tugab qotib qoladi. Sizda unday qatlam yo'q.
 Sizning xavfingiz — **Firestore kvotasi tugashi** (ilova `permission-denied`
 bera boshlaydi) va **hisob** (Blaze'da pul).
+
+---
+
+## 0.2. ⚠️ Savol yuklash yo'li — platformaning eng qimmat nuqtasi
+
+**2026-08-05 → 2026-08-14 oralig'ida kvota shu sabab tugagan.** Tarixni
+bilmasdan bu kodga tegmang:
+
+1. Boshida savollar Storage'da **ochiq** (`makePublic` / `getDownloadURL`)
+   turardi, havola esa `settings/version.urls` da. Bu hujjatni har bir kirgan
+   foydalanuvchi o'qiy olardi ⇒ pullik baza login'siz yuklab olinardi.
+2. 2026-08-05 auditida teshik yopildi: `urls` **bo'shatildi**. Lekin uni
+   qayta to'ldiradigan yo'l qolmadi ⇒ `/api/get-questions` HAR DOIM 404
+   qaytardi ⇒ ilova zaxira yo'lga tushdi:
+   `getDocs(where('category','==',fan))` = **fan boshiga ~2 900 o'qish**,
+   har sovuq yuklashda. Kunlik 50 000 kvota ≈ **17 ta yuklash**.
+3. 2026-08-14: paket yo'li **maxfiy** holda tiklandi.
+   - Fayl Storage'da yopiq turadi (`storage.rules`: `allow read: if false`).
+   - `settings/version.bundles.<fan>.path` da URL emas, **ichki yo'l**.
+   - Faylni faqat `api/get-questions.js` Admin SDK bilan o'qiydi (u qoidalardan
+     mustaqil) va tekshiruvdan o'tgan mijozga uzatadi.
+   - `getDownloadURL()` HECH QAYERDA chaqirilmaydi — 1-banddagi teshik aynan shu.
+
+**Natija:** foydalanuvchi boshiga ~2 900 o'qish → **2 o'qish**.
+
+| Holat | Qayerdan bilinadi |
+|---|---|
+| Paket faol | `/api/health` → `questionSource: "storage-bundle"` |
+| Paket yo'q (qimmat) | `/api/health` → `questionSource: "firestore-fallback"` + admin panelda qizil quti |
+
+**Savolni tahrirlagandan keyin:** Admin panel → Savollar → «Bazani yuklash» →
+«Paketlarni qayta qurish». Faqat `dbVersion` ni oshirish YETARLI EMAS —
+foydalanuvchi paketni qayta yuklaydi, lekin paket ichida eski matn qoladi.
 
 ---
 

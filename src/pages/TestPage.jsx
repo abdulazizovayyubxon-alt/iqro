@@ -455,6 +455,14 @@ const TestPage = () => {
                 paywalled = true;
                 showToast(t('test.toastPremiumRequired'), 'error');
                 setShowPremiumModal(true);
+              } else if (fsErr?.code === 'resource-exhausted') {
+                // Firestore kunlik o'qish kvotasi tugagan. Ilgari bu holat
+                // jimgina `rawList = []` bo'lib qolardi — foydalanuvchi
+                // sababsiz BO'SH ekran ko'rib, ilovani buzuq deb o'ylardi.
+                // Sabab foydalanuvchida emas, shuning uchun matn ham
+                // "xato" emas, "vaqtinchalik cheklov" deb yoziladi.
+                console.error('Firestore kvotasi tugagan:', fsErr);
+                showToast(t('test.toastServerBusy'), 'error');
               } else {
                 console.error("Firestore fallback xatosi:", fsErr);
               }

@@ -260,6 +260,7 @@
     "motivFallback": "To'g'ri!",
     "toastPremiumRequired": "Pro yoki sinov muddati talab qilinadi",
     "toastLoadError": "Savollarni yuklashda xatolik yuz berdi",
+    "toastServerBusy": "Serverda vaqtinchalik cheklov. Iltimos, birozdan keyin qayta urinib ko'ring — ma'lumotlaringiz saqlanib qoladi.",
     "toastObjectionThanks": "E'tiroz qabul qilindi. Rahmat!",
     "toastFlashcardDone": "Flashcard yakunlandi! {{known}}/{{total}} ta bilasiz 🎉",
     "toastLoginToRequest": "So'rov yuborish uchun tizimga kiring",

@@ -12,11 +12,15 @@
 //
 //   ⇒ Savol matnini o'zgartirgan HAR SAFAR shuni ishga tushiring.
 //
-// NEGA `urls` BO'SH:
-//   settings/version.urls to'ldirilsa, ilova savollarni Storage'dagi ochiq
-//   (makePublic) bundle'dan oladi — URL manzili to'liq taxmin qilinadi, ya'ni
-//   pullik baza login'siz yuklab olinadi. Bo'sh qoldirilsa, ilova Firestore'dan
-//   o'qiydi (qoida: questions read if isLoggedIn()). Ataylab shunday.
+// NEGA `urls` BO'SH VA `bundles` BOSHQA MAYDON:
+//   Eski `urls` maydoni Storage'ning OCHIQ havolalarini saqlagan (makePublic /
+//   getDownloadURL `?token=`) — u qoidalarni chetlab o'tardi va pullik bazani
+//   login'siz berardi. Shuning uchun u abadiy bo'sh qoladi.
+//   Hozirgi yo'l: `bundles.<fan>.path` — Storage'ning ICHKI yo'li. Faylni faqat
+//   `api/get-questions.js` Admin SDK bilan o'qiydi, mijoz unga tegmaydi.
+//   Paketni Admin panel → Savollar → «Paketlarni qayta qurish» yasaydi.
+//   Paket bo'lmasa ilova Firestore'dan o'qiydi — ISHLAYDI, lekin fan boshiga
+//   ~2 900 o'qish (kunlik bepul kvota 50 000).
 //
 // FOYDALANISH:
 //   node scripts/bump-questions-version.mjs --dry-run   # ko'rsatadi, yozmaydi
@@ -59,22 +63,40 @@ if (!prev) {
 const next = Date.now();
 const payload = {
   dbVersion: next,
+  // Eski OCHIQ havolalar maydoni — doim bo'sh turishi shart (yuqoridagi izoh).
   urls: {},
   updatedAt: new Date().toISOString(),
-  note: "urls ataylab bo'sh — savollar Firestore'dan o'qiladi, ochiq Storage bundle'dan emas",
+  note: "urls ataylab bo'sh — savollar maxfiy Storage paketidan (settings/version.bundles) yoki Firestore'dan o'qiladi",
 };
+
+const bundleCount = Object.keys(prev?.bundles || {}).length;
 
 console.log('\n── Yangi holat ──');
 console.log('  dbVersion:', next, `(${new Date(next).toISOString()})`);
+console.log('  bundles  :', bundleCount, 'ta (tegilmaydi)');
+
+// ⚠️ ENG MUHIM OGOHLANTIRISH (2026-08-14):
+// Paket qurilgan bo'lsa, ilova savollarni AYNAN paketdan oladi. Firestore'dagi
+// savolni tahrirlab faqat versiyani oshirish yetarli EMAS — foydalanuvchi
+// paketni qaytadan yuklab oladi, lekin paket ichida ESKI savol turadi.
+if (bundleCount > 0) {
+  console.log('\n⚠️  DIQQAT: savol paketi faol (' + bundleCount + ' fan).');
+  console.log('   Versiyani oshirish keshi bekor qiladi, LEKIN paket ichidagi matn');
+  console.log('   o\'zgarmaydi. Savol tahrirlangan bo\'lsa, tuzatish foydalanuvchiga');
+  console.log('   YETIB BORMAYDI. Avval: Admin panel → Savollar → «Bazani yuklash» →');
+  console.log('   «Paketlarni qayta qurish» (u versiyani ham o\'zi oshiradi).');
+}
 
 if (DRY) {
   console.log('\n[dry-run] Yozilmadi.');
   process.exit(0);
 }
 
-// urls mavjud bo'lsa ham bo'shatamiz — shuning uchun merge ishlatilmaydi
-await setDoc(ref, payload);
+// ⚠️ `merge: true` SHART. Ilgari bu yerda merge YO'Q edi — ya'ni skript
+// `bundles` maydonini butunlay O'CHIRIB yuborardi va ilova qimmat Firestore
+// zaxirasiga qaytardi (fan boshiga ~2 900 o'qish, kunlik kvota 50 000).
+await setDoc(ref, payload, { merge: true });
 console.log('\n✅ settings/version yangilandi.');
 console.log('   Barcha qurilmalarda savol keshi bekor bo\'ldi — keyingi kirishda');
-console.log('   Firestore\'dan yangi (tuzatilgan) savollar yuklanadi.');
+console.log('   savollar qaytadan yuklanadi.');
 process.exit(0);

@@ -260,6 +260,7 @@
     "motivFallback": "Верно!",
     "toastPremiumRequired": "Требуется Pro или пробный период",
     "toastLoadError": "Произошла ошибка при загрузке вопросов",
+    "toastServerBusy": "Временное ограничение на сервере. Попробуйте через несколько минут — ваши данные сохранены.",
     "toastObjectionThanks": "Возражение принято. Спасибо!",
     "toastFlashcardDone": "Карточки завершены! Вы знаете {{known}}/{{total}} 🎉",
     "toastLoginToRequest": "Войдите, чтобы отправить запрос",

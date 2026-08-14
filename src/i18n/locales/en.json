@@ -260,6 +260,7 @@
     "motivFallback": "Correct!",
     "toastPremiumRequired": "Pro subscription or trial period required",
     "toastLoadError": "Error loading questions",
+    "toastServerBusy": "Temporary server limit reached. Please try again in a few minutes — your data is safe.",
     "toastObjectionThanks": "Objection received. Thank you!",
     "toastFlashcardDone": "Flashcard session complete! You know {{known}}/{{total}} 🎉",
     "toastLoginToRequest": "Please log in to submit a request",

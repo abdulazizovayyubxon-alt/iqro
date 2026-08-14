@@ -37,13 +37,32 @@ service firebase.storage {
         && request.resource.contentType.matches('image/.*');
     }
 
-    // Savol bundle'lari — ATAYLAB TAQIQLANGAN (audit 2026-08-05, 2-band).
-    // Bundle'ni Storage'ga yuklash pullik bazani oshkor qilardi:
-    // getDownloadURL() qaytaradigan `?token=` havolasi bu qoidalarni
-    // butunlay chetlab o'tadi va autentifikatsiyasiz, muddatsiz ishlaydi.
-    // Savollar FAQAT /api/get-questions orqali beriladi.
+    // ── Savol paketlari ──────────────────────────────────────────────────
+    //
+    // O'QISH — HAR DOIM TAQIQ. Bu qoidaning o'zagi: mijoz bu faylga HECH
+    // QACHON to'g'ridan-to'g'ri tegmaydi. Savollar FAQAT /api/get-questions
+    // orqali beriladi, u esa Admin SDK bilan o'qiydi (Admin SDK Storage
+    // qoidalaridan mustaqil).
+    //
+    // ⚠️ `getDownloadURL()` NI HECH QAYERDA CHAQIRMANG. U `?token=` havolasi
+    // yaratadi va o'sha havola shu qoidani butunlay chetlab o'tadi — aynan
+    // shu 2026-08-05 auditidagi teshik edi (pullik baza login'siz oqib
+    // ketardi). AdminPage paketni `uploadBytes` bilan yuklaydi va faqat
+    // ICHKI YO'LNI (`bundles/<fan>.json`) Firestore'ga yozadi.
+    //
+    // YOZISH — faqat platforma adminlari. Storage qoidalari Firestore'ni
+    // o'qiy olmaydi, shuning uchun rol emailga qarab tekshiriladi (yuqoridagi
+    // `questions/` bilan bir xil naqsh). 25 MB — eng katta fan (~3 700 savol,
+    // ~2.6 MB) uchun keng zaxira, lekin cheksiz emas.
     match /bundles/{fileName} {
-      allow read, write: if false;
+      allow read: if false;
+      allow write: if request.auth != null
+        && request.auth.token.email in [
+             'abdulazizovayyubxon@gmail.com',
+             '998999154686@iqro.uz'
+           ]
+        && request.resource.size < 25 * 1024 * 1024
+        && fileName.matches('[a-z0-9_]+\\.json');
     }
 
     // Boshqa barcha yo'llar: standart ravishda taqiqlangan

@@ -20,7 +20,8 @@ import {
   CheckCircle, Trash2, AlertTriangle,
   ChevronDown, ChevronUp, Search, Plus, Edit3, FileText, Zap,
   Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, UploadCloud,
-  Download, Crown, Database, RefreshCw, Inbox, School, CreditCard, Ticket, X
+  Download, Crown, Database, RefreshCw, Inbox, School, CreditCard, Ticket, X,
+  Activity
 } from 'lucide-react';
 
 import './AdminPage.css';
@@ -304,6 +305,9 @@ const AdminPage = () => {
 
   // ── Platforma umumiy statistikasi (arzon count so'rovlari) ──
   const [overview, setOverview] = useState(null); // { users, premium, questions, referrals, unsolvedObjections }
+  // Savol paketi holati (`settings/version.bundles`) — "savol yuklash arzonmi
+  // yoki qimmatmi?" degan savolning yagona ko'rsatkichi.
+  const [bundleInfo, setBundleInfo] = useState(null); // null | { fanlar, savollar, updatedAt }
   const [overviewLoading, setOverviewLoading] = useState(false);
   const [overviewError, setOverviewError] = useState(null);
 
@@ -313,6 +317,12 @@ const AdminPage = () => {
   const [subjectStatsLoading, setSubjectStatsLoading] = useState(false);
   const [subjectStatsError, setSubjectStatsError] = useState(null);
   const [subjectFilter, setSubjectFilter] = useState('all'); // all | <fan id> | none
+
+  // ── Kunlik faollik tarixi (`metrics/{YYYY-MM-DD}`) ──
+  // 14 ta hujjat = 14 o'qish, faqat "Statistika" tabi ochilganda.
+  const [metrics, setMetrics] = useState([]);
+  const [metricsLoading, setMetricsLoading] = useState(false);
+  const [metricsError, setMetricsError] = useState(null);
 
   // ── Referral statistika state ──
   const [allReferrals, setAllReferrals] = useState([]);
@@ -361,6 +371,9 @@ const AdminPage = () => {
   const [newQ, setNewQ] = useState({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' });
   const [isUploadingImage, setIsUploadingImage] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
+  // Paket qurishda "3/16" ko'rinishidagi jarayon — 40 MB yuklanayotganda
+  // tugma jim tursa admin sahifani yopib yuborardi.
+  const [syncProgress, setSyncProgress] = useState(null); // null | { done, total }
   const [isDraggingFile, setIsDraggingFile] = useState(false);
   const [isUploadingJSON, setIsUploadingJSON] = useState(false);
 
@@ -394,12 +407,16 @@ const AdminPage = () => {
       // badge'idagi raqam FAQAT yuklangan 200 ta e'tirozdan hisoblanardi
       // (limit(200)) — go'yo jami son bo'lib ko'rinardi. Aggregatsiya
       // so'rovi 1000 hujjatga 1 o'qish, ya'ni deyarli bepul.
-      const [u, p, q, r, o] = await Promise.all([
+      const [u, p, q, r, o, v] = await Promise.all([
         getCountFromServer(collection(db, 'users')),
         getCountFromServer(query(collection(db, 'users'), where('isPremium', '==', true))),
         getCountFromServer(collection(db, 'questions')),
         getCountFromServer(collection(db, 'referrals')),
         getCountFromServer(query(collection(db, 'objections'), where('solved', '==', false))),
+        // 1 ta hujjat o'qish — lekin platformaning eng qimmat sozlamasi shu:
+        // paket qurilmagan bo'lsa har foydalanuvchi fan boshiga ~2 900 o'qish
+        // sarflaydi (qarang: handleRebuildBundles).
+        getDoc(doc(db, 'settings', 'version')).catch(() => null),
       ]);
       setOverview({
         users: u.data().count,
@@ -408,9 +425,20 @@ const AdminPage = () => {
         referrals: r.data().count,
         unsolvedObjections: o.data().count,
       });
+      const vData = v?.exists?.() ? v.data() : null;
+      const b = vData?.bundles || {};
+      setBundleInfo({
+        fanlar: Object.keys(b).length,
+        savollar: Object.values(b).reduce((a, x) => a + (x?.count || 0), 0),
+        updatedAt: Object.values(b)[0]?.updatedAt || vData?.updatedAt || null,
+      });
     } catch (e) {
       console.error('Overview load error:', e);
-      setOverviewError(e?.message || 'Yuklashda xatolik');
+      const isQuota = e?.code === 'resource-exhausted' || (e?.message && e.message.includes('RESOURCE_EXHAUSTED'));
+      const msg = isQuota
+        ? "⚠️ Firebase kunlik o'qish limiti (50,000 o'qish/kun) tugadi. Soat 05:00 da (UTC 00:00) limit yangilanadi yoki Firebase Console'da Blaze (pay-as-you-go) tarifiga o'tish lozim."
+        : (e?.message || 'Yuklashda xatolik');
+      setOverviewError(msg);
     } finally {
       setOverviewLoading(false);
     }
@@ -480,7 +508,11 @@ const AdminPage = () => {
       });
     } catch (e) {
       console.error('Fan statistikasi xatosi:', e);
-      setSubjectStatsError(e?.message || 'Yuklashda xatolik');
+      const isQuota = e?.code === 'resource-exhausted' || (e?.message && e.message.includes('RESOURCE_EXHAUSTED'));
+      const msg = isQuota
+        ? "⚠️ Firebase kunlik o'qish limiti (50,000 o'qish/kun) tugadi. Soat 05:00 da (UTC 00:00) limit yangilanadi yoki Blaze tarifiga o'tish lozim."
+        : (e?.message || 'Yuklashda xatolik');
+      setSubjectStatsError(msg);
     } finally {
       setSubjectStatsLoading(false);
     }
@@ -490,6 +522,35 @@ const AdminPage = () => {
     if (!isAdmin || tab !== 'stats') return;
     if (subjectStats || subjectStatsLoading) return;
     loadSubjectStats();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tab, isAdmin]);
+
+  // ── Kunlik faollik tarixi ────────────────────────────────────────────────
+  // Hujjat ID'si — `YYYY-MM-DD`, ya'ni `documentId()` bo'yicha tartiblash
+  // AYNAN sana bo'yicha tartiblashdir: alohida `date` maydoni va indeks
+  // kerak emas. So'nggi 14 kun = 14 o'qish.
+  const loadMetrics = async ({ force = false } = {}) => {
+    if (!force && (metrics.length > 0 || metricsLoading)) return;
+    setMetricsLoading(true);
+    setMetricsError(null);
+    try {
+      const snap = await getDocs(query(
+        collection(db, 'metrics'),
+        orderBy(documentId(), 'desc'),
+        limit(14),
+      ));
+      setMetrics(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+    } catch (e) {
+      console.error('metrics load error:', e);
+      setMetricsError(e?.message || 'Yuklashda xatolik');
+    } finally {
+      setMetricsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!isAdmin || tab !== 'stats') return;
+    loadMetrics();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tab, isAdmin]);
 
@@ -1593,6 +1654,117 @@ try {
     );
   };
 
+  // ── Savol paketlarini qayta qurish (Storage) ────────────────────────────
+  //
+  // NEGA KERAK — bu platformaning eng qimmat nuqtasi edi:
+  // `settings/version.bundles` bo'sh bo'lsa `api/get-questions` 404 beradi va
+  // ilova TestPage/ExamPage dagi zaxira yo'lga tushadi — ya'ni HAR sovuq
+  // yuklashda `getDocs(where('category','==',fan))` = fan boshiga ~2 900
+  // FIRESTORE O'QISHI. Spark kunlik limiti (50 000) shunday ~17 ta yuklashga
+  // yetadi, keyin ilova HAMMA uchun ishlamay qoladi.
+  //
+  // Paket qurilgach o'sha yo'l 2 ta o'qishga tushadi (users/{uid} +
+  // settings/version) — savollarning o'zi Storage'dan keladi.
+  //
+  // XAVFSIZLIK: fayl MAXFIY yuklanadi va `getDownloadURL()` CHAQIRILMAYDI —
+  // aynan o'sha `?token=` havolasi 2026-08-05 auditidagi teshik edi. Firestore'ga
+  // faqat ICHKI YO'L (`bundles/<fan>.json`) yoziladi; uni o'qish Admin SDK
+  // bilan faqat serverdan mumkin (storage.rules: `allow read: if false`).
+  //
+  // NARXI: bu tugma QO'SHIMCHA o'qish sarflamaydi — allaqachon yuklangan
+  // ro'yxatdan quriladi. Shuning uchun avval «Bazani yuklash» kerak (u ataylab
+  // qo'lda: ~45 000 o'qish). Ya'ni kuniga bir marta baza yuklab, paketni
+  // qayta qurish — butun oy davomidagi eng qimmat amal.
+  const handleRebuildBundles = async () => {
+    if (!questionsLoaded || questions.length === 0) {
+      showToast('Avval «Bazani yuklash» tugmasini bosing — paket shu ro\'yxatdan quriladi', 'error');
+      return;
+    }
+    confirmAction(
+      `Savol paketlari qayta quriladi va Storage'ga yuklanadi (${questions.length.toLocaleString('uz-UZ')} ta savol). ` +
+      "Bu bir necha daqiqa olishi mumkin — sahifani yopmang. Yakunida foydalanuvchilar keshi ham yangilanadi.",
+      async () => {
+        setIsSyncing(true);
+        try {
+          // Fan bo'yicha guruhlash. `category` yo'q savol paketga tushmaydi —
+          // u baribir hech qaysi fanda ko'rinmasdi (TestPage filtrlaydi).
+          const groups = new Map();
+          for (const q of questions) {
+            if (!q.category || typeof q.category !== 'string') continue;
+            if (!groups.has(q.category)) groups.set(q.category, []);
+            groups.get(q.category).push(q);
+          }
+          if (groups.size === 0) throw new Error('Fanga tegishli savol topilmadi');
+
+          const nowIso = new Date().toISOString();
+          const bundles = {};
+          const questionMeta = {};
+          const failed = [];
+
+          // Ketma-ket yuklaymiz: 16 ta faylni bir vaqtda yuborish mobil
+          // internetda ulanishni bo'g'adi va xatoni qaysi fan bergani
+          // ko'rinmay qoladi.
+          let done = 0;
+          for (const [cat, list] of groups) {
+            try {
+              const blob = new Blob([JSON.stringify(list)], { type: 'application/json' });
+              const path = `bundles/${cat}.json`;
+              await uploadBytes(ref(storage, path), blob, {
+                contentType: 'application/json',
+                // Kesh yo'q: paket ustidan qayta yozilganda eski nusxa
+                // qaytib qolmasin (serverdan o'qiydi, lekin GCS keshi bor).
+                cacheControl: 'no-store',
+              });
+              bundles[cat] = { path, count: list.length, updatedAt: nowIso };
+              questionMeta[cat] = { count: list.length, updatedAt: nowIso };
+            } catch (e) {
+              console.error(`Paket yuklash xatosi (${cat}):`, e);
+              failed.push(cat);
+            }
+            done++;
+            setSyncProgress({ done, total: groups.size });
+          }
+
+          if (Object.keys(bundles).length === 0) {
+            throw new Error('Birorta paket yuklanmadi — Storage qoidalari deploy qilinganmi?');
+          }
+
+          // ⚠️ `merge: true` — QISMAN muvaffaqiyat holatida eski fanlarning
+          // yo'li o'chib ketmasligi uchun. Bitta fan yiqilsa, qolgan 15 tasi
+          // yangi paketdan ishlaydi, yiqilgani esa Firestore zaxirasidan.
+          await setDoc(doc(db, 'settings', 'version'), {
+            dbVersion: Date.now(),
+            bundles,
+            // Eski OCHIQ havolalar maydoni — doim bo'sh turishi shart.
+            urls: {},
+            updatedAt: nowIso,
+          }, { merge: true });
+
+          await setDoc(doc(db, 'settings', 'questionMeta'), questionMeta, { merge: true });
+
+          setPendingPublish(false);
+          logAdminAction('question.publish', null, {
+            mode: 'bundles',
+            fanlar: Object.keys(bundles).length,
+            savollar: questions.length,
+            ...(failed.length ? { xato: failed.join(',') } : {}),
+          });
+          showToast(
+            failed.length
+              ? `⚠️ ${Object.keys(bundles).length} ta fan yuklandi, ${failed.length} tasida xato: ${failed.join(', ')}`
+              : `✅ ${Object.keys(bundles).length} ta fan paketi yuklandi — savol yuklash endi ~1000 barobar arzon`,
+            failed.length ? 'error' : 'success'
+          );
+        } catch (e) {
+          console.error('Paketlarni qurish xatosi:', e);
+          showToast('Xatolik: ' + e.message, 'error');
+        }
+        setSyncProgress(null);
+        setIsSyncing(false);
+      }
+    );
+  };
+
   const handleDeleteQuestion = (id) => {
     confirmAction("Savolni o'chirishni tasdiqlaysizmi?", async () => {
 try {
@@ -2387,9 +2559,59 @@ try {
             </div>
           )}
 
+          {/* ── Savol paketi holati ──────────────────────────────────────
+              Bu quti platformaning eng qimmat sozlamasini ko'rsatadi. Paket
+              yo'q bo'lsa har foydalanuvchi test ochganda fan boshiga ~2 900
+              Firestore o'qishi ketadi (kunlik bepul kvota = 50 000, ya'ni
+              ~17 ta yuklash). Paket bor bo'lsa — 2 ta o'qish. */}
+          {bundleInfo && (
+            <div className={`admin-info-box ${bundleInfo.fanlar === 0 ? 'admin-info-box--error' : ''}`}>
+              <div style={{ flex: 1, minWidth: 220 }}>
+                <div className="admin-info-title">
+                  {bundleInfo.fanlar === 0
+                    ? <><AlertTriangle size={15} /> Savol paketi qurilmagan — kvota tez tugaydi</>
+                    : <><CheckCircle2 size={15} /> Savol paketi faol — {bundleInfo.fanlar} ta fan</>}
+                </div>
+                <div className="admin-info-text">
+                  {bundleInfo.fanlar === 0 ? (
+                    <>
+                      Foydalanuvchi testni birinchi marta ochganda savollar Firestore'dan
+                      hujjatma-hujjat o'qiladi: <strong>fan boshiga ~2 900 o'qish</strong>.
+                      Bepul rejaning kunlik kvotasi (50 000) shunday <strong>~17 ta yuklashga</strong> yetadi.
+                      Paket qurilsa bu <strong>2 ta o'qishga</strong> tushadi.<br />
+                      Tartib: «Bazani yuklash» → «Paketlarni qayta qurish».
+                    </>
+                  ) : (
+                    <>
+                      {bundleInfo.savollar.toLocaleString('uz-UZ')} ta savol paketda.
+                      {bundleInfo.updatedAt && <> Oxirgi qurilgan: <strong>{new Date(bundleInfo.updatedAt).toLocaleString('uz-UZ')}</strong>.</>}
+                      {' '}Savollarni tahrirlagandan keyin paketni <strong>qayta quring</strong> —
+                      aks holda foydalanuvchilar eski savollarni ko'radi.
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className="admin-action-bar">
             <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-primary admin-btn-ok" onClick={handlePublishBundles} disabled={isSyncing}>
               <UploadCloud size={14} /> {isSyncing ? 'Yuborilmoqda...' : '🚀 Yangilanishni yuborish'}
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }}
+              className="btn btn-outline"
+              onClick={handleRebuildBundles}
+              disabled={isSyncing || !questionsLoaded}
+              title={questionsLoaded
+                ? "Savollarni Storage paketiga yig'adi — foydalanuvchi yuklashi ~1000 barobar arzonlashadi"
+                : 'Avval «Bazani yuklash» kerak'}
+            >
+              <Database size={14} />
+              {syncProgress
+                ? `Yuklanmoqda ${syncProgress.done}/${syncProgress.total}...`
+                : 'Paketlarni qayta qurish'}
             </motion.button>
 
             <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline admin-btn-danger" onClick={analyzeDuplicates} disabled={dupAnalyzing}>
@@ -2799,6 +3021,113 @@ try {
               <div className="stat-box-lbl">Referrallar</div>
             </div>
           </div>
+
+          {/* ── Kunlik faollik (metrics kolleksiyasi) ──────────────────────
+              Manba: api/cron-daily.js har kuni 11:00 (Toshkent) da bir hujjat
+              yozadi. Shu paytgacha "kecha nechta odam kirdi?" degan savolga
+              javob beradigan joy umuman yo'q edi. */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap', marginTop: 8 }}>
+            <div className="admin-section-title admin-section-title--flush">
+              <Activity size={18} style={{ color: 'var(--blue)' }} /> Kunlik faollik
+            </div>
+            <button className="btn btn-sm btn-outline" onClick={() => loadMetrics({ force: true })} disabled={metricsLoading}>
+              <RefreshCw size={14} className={metricsLoading ? 'spin' : ''} /> {metricsLoading ? 'Yuklanmoqda...' : 'Yangilash'}
+            </button>
+          </div>
+
+          {metricsError ? (
+            <div className="admin-info-box admin-info-box--error">
+              <div className="admin-info-title"><AlertCircle size={15} /> Faollik tarixini o'qib bo'lmadi</div>
+              <div className="admin-info-text">{metricsError}</div>
+            </div>
+          ) : metricsLoading && metrics.length === 0 ? (
+            <div className="admin-empty"><div className="admin-empty-icon">📈</div><div className="admin-empty-text">Yuklanmoqda...</div></div>
+          ) : metrics.length === 0 ? (
+            <div className="admin-info-box">
+              <div className="admin-info-title"><Info size={15} /> Hali ma'lumot yig'ilmagan</div>
+              <div className="admin-info-text">
+                Birinchi yozuv ertaga soat 11:00 da (kunlik cron) paydo bo'ladi.
+                Har kun bitta qator qo'shiladi: jami, Pro, kunlik va haftalik faol foydalanuvchilar.
+              </div>
+            </div>
+          ) : (
+            <>
+              {/* ── Konversiya voronkasi (eng so'nggi kun) ──────────────────
+                  Auditda aniqlangan bo'shliq: panel faqat "jami" va "Pro"
+                  raqamlarini ko'rsatardi, ya'ni "qayerda odam yo'qolyapti?"
+                  degan savolga javob yo'q edi. Voronka aynan shuni ko'rsatadi:
+                  ro'yxatdan o'tdi → testni boshladi → to'ladi. */}
+              {(() => {
+                const m = metrics[0];
+                if (!m || !m.total) return null;
+                const pct = (n) => (n == null ? '—' : `${Math.round((n / m.total) * 100)}%`);
+                const steps = [
+                  { label: "Ro'yxatdan o'tgan", val: m.total, hint: 'jami hisoblar' },
+                  { label: 'Testni boshlagan', val: m.activated, hint: 'kamida bir marta javob bergan' },
+                  { label: 'Haftalik faol', val: m.wau, hint: "so'nggi 7 kunda yechgan" },
+                  { label: "Pul to'lagan", val: m.paidActive, hint: 'promo/admin Pro hisobga olinmagan' },
+                ];
+                return (
+                  <div className="glass-panel" style={{ padding: 20 }}>
+                    <div className="admin-info-text" style={{ marginBottom: 12 }}>
+                      <strong>{m.id}</strong> holatiga ko'ra voronka:
+                    </div>
+                    <div className="admin-stats-grid">
+                      {steps.map(s => (
+                        <div key={s.label} className="stat-box">
+                          <div className="stat-box-val" style={{ color: 'var(--blue)' }}>
+                            {s.val ?? '—'}
+                            <span style={{ fontSize: '0.6em', color: 'var(--text3)', marginLeft: 6 }}>{pct(s.val)}</span>
+                          </div>
+                          <div className="stat-box-lbl">{s.label}</div>
+                          <div className="stat-box-lbl" style={{ color: 'var(--text3)', fontSize: '0.85em' }}>{s.hint}</div>
+                        </div>
+                      ))}
+                    </div>
+                    {m.paymentsTotal != null && (
+                      <div className="admin-info-text" style={{ marginTop: 12 }}>
+                        Jami to'lovlar: <strong>{m.paymentsTotal}</strong>
+                        {m.paymentsToday ? <> · so'nggi 24 soatda <strong>{m.paymentsToday}</strong></> : null}
+                      </div>
+                    )}
+                  </div>
+                );
+              })()}
+
+              <div className="glass-panel" style={{ padding: 20 }}>
+                <div className="admin-table-wrap">
+                  <table className="admin-table">
+                    <thead>
+                      <tr>
+                        {['Sana', 'Jami', 'Pro', "To'lagan", 'Kunlik faol', 'Haftalik faol', 'Yangi'].map(h => (
+                          <th key={h}>{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {metrics.map(m => (
+                        <tr key={m.id}>
+                          <td>{m.id}</td>
+                          <td>{m.total ?? '—'}</td>
+                          <td>{m.premium ?? '—'}</td>
+                          <td>{m.paidActive ?? '—'}</td>
+                          <td><strong>{m.dau ?? '—'}</strong></td>
+                          <td>{m.wau ?? '—'}</td>
+                          <td>{m.newToday ? `+${m.newToday}` : '—'}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="admin-info-text" style={{ marginTop: 10 }}>
+                  «Kunlik faol» — oxirgi 24 soatda test yechgan odamlar soni
+                  (<code>userStats.lastActiveAt</code>). Ro'yxatdan o'tib hech narsa qilmagan
+                  hisoblar bu ustunga tushmaydi. «To'lagan» — <code>premiumPlan == 'paid'</code>,
+                  ya'ni promo yoki admin qo'lda bergan Pro bu ustunga kirmaydi.
+                </div>
+              </div>
+            </>
+          )}
 
           {/* ── Fan bo'yicha o'qituvchilar ── */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap', marginTop: 8 }}>

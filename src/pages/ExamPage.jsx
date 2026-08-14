@@ -377,7 +377,13 @@ const ExamPage = () => {
               await localforage.setItem(versionKey, remoteVersion);
             } catch (fallbackErr) {
               if (fallbackErr?.code === 'permission-denied') paywalled = true;
-              else console.error('Fallback yuklashda xatolik:', fallbackErr);
+              else if (fallbackErr?.code === 'resource-exhausted') {
+                // Kunlik Firestore kvotasi tugagan — sabab foydalanuvchida
+                // emas. Jim bo'sh ekran o'rniga aniq sabab ko'rsatiladi
+                // (TestPage.jsx dagi bilan bir xil matn).
+                console.error('Firestore kvotasi tugagan:', fallbackErr);
+                showToast(t('test.toastServerBusy'), 'error');
+              } else console.error('Fallback yuklashda xatolik:', fallbackErr);
               allQ = [];
             }
           }

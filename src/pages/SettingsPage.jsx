@@ -390,28 +390,51 @@ export default function SettingsPage({ theme, toggleTheme }) {
       const cat = state.activeCategory || 'chqbt';
       const versionSnap = await getDoc(doc(db, 'settings', 'version'));
 
-      let remoteVersion = 0;
-      let storageUrls = {};
-      if (versionSnap.exists()) {
-        const vData = versionSnap.data();
-        remoteVersion = vData.dbVersion || 0;
-        storageUrls = vData.urls || {};
+      // Versiya kesh kalitiga yoziladi: keyin TestPage bu qiymatni o'zinikiga
+      // solishtirib, paket eskirganini biladi.
+      const remoteVersion = versionSnap.exists() ? (versionSnap.data().dbVersion || 0) : 0;
+
+      // ⚠️ Bu tugma UZOQ VAQT O'LIK BO'LGAN: `settings/version.urls` 2026-08-05
+      // xavfsizlik tuzatishida bo'shatilgan va qayta to'lmagan, ya'ni bu yerda
+      // `downloadUrl` DOIM undefined bo'lib, har bosishda "tayyor emas" xatosi
+      // chiqardi. Endi savollar TestPage/ExamPage bilan BIR XIL yo'ldan —
+      // `/api/get-questions` orqali (premium tekshiruvi + maxfiy Storage
+      // paketi) olinadi. Kesh kalitlari ham o'sha (`bundle_v2_*`), shuning
+      // uchun yuklab olingandan keyin test oflayn ochiladi.
+      const token = await auth.currentUser?.getIdToken();
+      if (!token) {
+        showToast(t('settings.toasts.offlineError'), 'error');
+        return;
       }
 
-      // v2: old Storage-bundle caches are invalidated; consistent with TestPage/ExamPage
-      const downloadUrl = storageUrls[cat];
-      if (downloadUrl) {
-        const res = await fetch(downloadUrl);
-        const rawList = await res.json();
+      const res = await fetch(`/api/get-questions?category=${encodeURIComponent(cat)}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
-        const localforage = (await import('localforage')).default;
-        await localforage.setItem(`bundle_v2_${cat}`, rawList);
-        await localforage.setItem(`version_v2_${cat}`, remoteVersion);
-
-        showToast(t('settings.toasts.offlineSuccess', { count: rawList.length }), 'success');
-      } else {
+      if (res.status === 403) {
+        // Obuna/sinov tugagan — "xato" emas, kutilgan holat
+        showToast(t('test.toastPremiumRequired'), 'error');
+        return;
+      }
+      if (!res.ok) {
+        // 404 = admin hali paketni qurmagan. ATAYLAB Firestore zaxirasiga
+        // tushmaymiz: u fan boshiga ~2 900 o'qish sarflaydi va kunlik kvotani
+        // yeb qo'yadi — oflayn qulaylik uchun bunday narx o'rinli emas.
         showToast(t('settings.toasts.offlineNotReady'), 'error');
+        return;
       }
+
+      const rawList = await res.json();
+      if (!Array.isArray(rawList) || rawList.length === 0) {
+        showToast(t('settings.toasts.offlineNotReady'), 'error');
+        return;
+      }
+
+      const localforage = (await import('localforage')).default;
+      await localforage.setItem(`bundle_v2_${cat}`, rawList);
+      await localforage.setItem(`version_v2_${cat}`, remoteVersion);
+
+      showToast(t('settings.toasts.offlineSuccess', { count: rawList.length }), 'success');
     } catch (e) {
       console.error(e);
       showToast(t('settings.toasts.offlineError'), 'error');

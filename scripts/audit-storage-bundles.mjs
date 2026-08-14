@@ -15,6 +15,18 @@
 //
 //   Bu skript o'sha qoldiqni topadi va zararsizlantiradi.
 //
+// ⚠️ 2026-08-14 DAN BERI VAZIFASI O'ZGARDI:
+//   Endi `bundles/` da fayl BO'LISHI KERAK — savollar aynan o'sha paketdan
+//   beriladi (api/get-questions.js Admin SDK bilan o'qiydi). Ular MAXFIY
+//   bo'lishi shart: `🟢 yopiq` va token'siz. Ya'ni bu skript "fayl bormi?"
+//   emas, "fayl OCHIQ EMASMI?" degan savolga javob beradi.
+//
+//   ✅ `--revoke` — xavfsiz va foydali: ochiq ACL/token olib tashlanadi,
+//      fayl joyida qoladi, ilova ishlashda davom etadi.
+//   ⛔ `--delete` — ENDI ZARARLI: paketni o'chirsangiz ilova qimmat Firestore
+//      zaxirasiga qaytadi (fan boshiga ~2 900 o'qish). Faqat ataylab, va
+//      keyin Admin panel → Savollar → «Paketlarni qayta qurish» bilan tiklang.
+//
 // FOYDALANISH:
 //   node scripts/audit-storage-bundles.mjs            # faqat KO'RSATADI
 //   node scripts/audit-storage-bundles.mjs --revoke   # ochiq ruxsatni bekor qiladi
