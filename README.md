@@ -1,6 +1,6 @@
 # Zehin — Malaka toifa testlari (attestatsiya platformasi)
 
-Zehin — o'qituvchilar va ta'lim xodimlarini malaka toifa (attestatsiya) imtihonlariga tayyorlaydigan zamonaviy web-platforma (13+ fan, 40 000+ savol).
+Zehin — o'qituvchilar va ta'lim xodimlarini malaka toifa (attestatsiya) imtihonlariga tayyorlaydigan zamonaviy web-platforma (17+ fan, 50 000+ toifa savollari).
 
 ## 🚀 Imkoniyatlar
 - **Ikki xil yo'nalish:** CHQBT va Tasviriy san'at yo'nalishlari o'rtasida oson almashish.

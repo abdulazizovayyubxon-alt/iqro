@@ -48,7 +48,7 @@
 ## Qisqa tavsif (≤80 belgi)
 - UZ: `O'qituvchilarni attestatsiyaga tayyorlaydi` *(brend brifi, 2026-07-18)*
 - RU: `Готовит учителей к аттестации`
-- Muqobil (savol soni bilan): `O'qituvchilar attestatsiyasiga tayyorgarlik: 40 000+ savol, imtihon rejimi`
+- Muqobil (savol soni bilan): `O'qituvchilar attestatsiyasiga tayyorgarlik: 50 000+ savol, imtihon rejimi`
 
 ## To'liq tavsif (UZ)
 
@@ -56,7 +56,7 @@
 Zehin — o'qituvchilar va ta'lim xodimlari uchun malaka toifa (attestatsiya)
 imtihonlariga zamonaviy tayyorgarlik platformasi.
 
-📚 40 000+ savol, 13+ fan bo'yicha
+📚 50 000+ toifa test savollari, 17+ fan bo'yicha
 Har bir fan mavzularga bo'lingan — kerakli bo'limdan mashq qiling.
 
 ✍️ Imtihon rejimi
@@ -86,7 +86,7 @@ Premium obuna barcha savollar va imkoniyatlarni ochadi.
 Zehin — современная платформа подготовки к квалификационной (аттестационной)
 категории для учителей и работников образования.
 
-📚 40 000+ вопросов по 13+ предметам
+📚 50 000+ вопросов по 17+ предметам
 Каждый предмет разбит по темам — тренируйтесь в нужном разделе.
 
 ✍️ Режим экзамена
