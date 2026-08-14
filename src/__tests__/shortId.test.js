@@ -7,14 +7,8 @@
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-vi.mock('firebase/firestore', () => ({
-  doc: (_db, ...path) => ({ path: path.join('/') }),
-  getDoc: (...a) => globalThis.__getDoc(...a),
-  setDoc: (...a) => globalThis.__setDoc(...a),
-  runTransaction: (...a) => globalThis.__runTransaction(...a),
-}));
-
-const { formatShortId, getNextShortId, ensureShortId } = await import('../utils/shortId.js');
+const { formatShortId, ensureShortId } = await import('../utils/shortId.js');
+const { ensureShortIdAdmin } = await import('../../api/_shared.js');
 
 describe('formatShortId — normal oraliq', () => {
   it('birinchi foydalanuvchi A0001', () => {
@@ -84,93 +78,145 @@ describe('formatShortId — invariantlar', () => {
 });
 
 // ══════════════════════════════════════════════════════════════════════════
-// 2026-08-06 TEKSHIRUVI — nega 22 hisobdan 20 tasi ID'siz qolgan edi
+// 2026-08-14 TEKSHIRUVI — nega 99 hisobdan 17 tasi ID'siz qolgan edi
 //
 // Sabab zanjiri:
-//   1) ID bir ro'yxatdan o'tishda IKKI joyda parallel generatsiya qilinardi;
+//   1) ID ni MIJOZ generatsiya qilardi — `meta/counters` bitta umumiy hujjat;
 //   2) firestore.rules `userSeq == oldingi + 1` ni talab qilgani uchun mag'lub
 //      tranzaksiya ABORTED emas, PERMISSION_DENIED olardi — SDK uni retry
 //      QILMAYDI;
-//   3) `catch → null` xatoni yutib, o'sha `null` hujjatga yozilardi.
+//   3) `catch → null` xatoni yutardi va ID faqat foydalanuvchi QAYTGANDA
+//      to'ldirilardi. Qaytmaganlar ID'siz qolaverardi.
+//
+// Yechim: raqamni faqat server beradi (Admin SDK, qoidalardan ozod, raqobatda
+// o'zi qayta urinadi), foydalanuvchi hujjati va hisoblagich BIR tranzaksiyada.
+// Quyidagi testlar aynan shu invariantlarni qo'riqlaydi.
 // ══════════════════════════════════════════════════════════════════════════
 
-const denied = () => Object.assign(new Error('permission denied'), { code: 'permission-denied' });
+// Admin SDK tranzaksiyasining eng kichik soxta modeli.
+function fakeDb(docs) {
+  const store = new Map(Object.entries(docs));
+  const writes = [];
+  const refFor = (path) => ({
+    path,
+    get _data() { return store.get(path); },
+  });
+  const db = {
+    writes,
+    collection: (c) => ({ doc: (d) => refFor(`${c}/${d}`) }),
+    runTransaction: async (fn) => fn({
+      getAll: async (...refs) => refs.map((r) => ({
+        exists: store.has(r.path),
+        data: () => store.get(r.path),
+      })),
+      set: (ref, payload, opts) => {
+        writes.push({ path: ref.path, payload, opts });
+        store.set(ref.path, { ...(store.get(ref.path) || {}), ...payload });
+      },
+    }),
+  };
+  return db;
+}
 
-describe('getNextShortId — raqobatda qayta urinish', () => {
-  beforeEach(() => {
-    globalThis.__getDoc = vi.fn();
-    globalThis.__setDoc = vi.fn(async () => {});
-    globalThis.__runTransaction = vi.fn();
+describe('ensureShortIdAdmin — ID berishning yagona nuqtasi (server)', () => {
+  it('birinchi foydalanuvchiga A0001 beradi va hisoblagichni yaratadi', async () => {
+    const db = fakeDb({ 'users/u1': { displayName: 'Test' } });
+
+    await expect(ensureShortIdAdmin(db, 'u1')).resolves.toBe('A0001');
+    expect(db.writes).toEqual([
+      { path: 'meta/counters', payload: { userSeq: 1 }, opts: { merge: true } },
+      { path: 'users/u1', payload: { shortId: 'A0001' }, opts: { merge: true } },
+    ]);
   });
 
-  it('PERMISSION_DENIED dan keyin qayta urinib ID qaytaradi', async () => {
-    let calls = 0;
-    globalThis.__runTransaction = vi.fn(async () => {
-      calls++;
-      if (calls < 3) throw denied();
-      return 7;
-    });
-
-    await expect(getNextShortId({})).resolves.toBe('A0007');
-    expect(calls).toBe(3);
+  it('hisoblagichni +1 oshiradi', async () => {
+    const db = fakeDb({ 'users/u1': {}, 'meta/counters': { userSeq: 82 } });
+    await expect(ensureShortIdAdmin(db, 'u1')).resolves.toBe('A0083');
   });
 
-  it('urinishlar tugagach xato QAYTARADI (jimgina null emas)', async () => {
-    globalThis.__runTransaction = vi.fn(async () => { throw denied(); });
-    await expect(getNextShortId({})).rejects.toThrow(/permission denied/);
+  it('MAVJUD ID ni qayta yozmaydi va hisoblagichga tegmaydi', async () => {
+    // Foydalanuvchi ID sini allaqachon ko'rgan bo'lishi mumkin — u o'zgarmaydi.
+    const db = fakeDb({ 'users/u1': { shortId: 'A0009' }, 'meta/counters': { userSeq: 82 } });
+
+    await expect(ensureShortIdAdmin(db, 'u1')).resolves.toBe('A0009');
+    expect(db.writes).toEqual([]);
+  });
+
+  it('hujjati yo\'q foydalanuvchida raqam SARFLAMAYDI', async () => {
+    // Aks holda har bir yo'q hisob hisoblagichda "teshik" qoldirardi.
+    const db = fakeDb({ 'meta/counters': { userSeq: 82 } });
+
+    await expect(ensureShortIdAdmin(db, 'yoq')).resolves.toBe(null);
+    expect(db.writes).toEqual([]);
+  });
+
+  it('hisoblagich va foydalanuvchi BIR tranzaksiyada yoziladi', async () => {
+    // Ilgari ular alohida edi: raqam olinib, hujjat yozuvi yiqilsa raqam
+    // yo'qolardi (ketma-ketlikda teshik).
+    const db = fakeDb({ 'users/u1': {}, 'meta/counters': { userSeq: 5 } });
+    await ensureShortIdAdmin(db, 'u1');
+
+    expect(db.writes.map((w) => w.path)).toEqual(['meta/counters', 'users/u1']);
+  });
+
+  it('faqat `shortId` maydoniga tegadi (protectedUserFields buzilmaydi)', async () => {
+    const db = fakeDb({ 'users/u1': { role: 'user', isPremium: false } });
+    await ensureShortIdAdmin(db, 'u1');
+
+    const userWrite = db.writes.find((w) => w.path === 'users/u1');
+    expect(Object.keys(userWrite.payload)).toEqual(['shortId']);
+    expect(userWrite.opts).toEqual({ merge: true });
+  });
+
+  it('uid bo\'lmasa hech narsa qilmaydi', async () => {
+    const db = fakeDb({});
+    await expect(ensureShortIdAdmin(db, '')).resolves.toBe(null);
+    expect(db.writes).toEqual([]);
   });
 });
 
-describe('ensureShortId — ID berishning yagona nuqtasi', () => {
+describe('ensureShortId (mijoz) — serverdan so\'raydi, hisoblagichga TEGMAYDI', () => {
+  const user = (uid = 'u1') => ({ uid, getIdToken: async () => 'token-123' });
+
   beforeEach(() => {
-    globalThis.__getDoc = vi.fn(async () => ({ exists: () => true, data: () => ({}) }));
-    globalThis.__setDoc = vi.fn(async () => {});
-    globalThis.__runTransaction = vi.fn(async () => 5);
+    globalThis.fetch = vi.fn(async () => ({
+      ok: true,
+      json: async () => ({ success: true, shortId: 'A0005' }),
+    }));
   });
 
-  it('mavjud ID ni QAYTA YOZMAYDI', async () => {
-    globalThis.__getDoc = vi.fn(async () => ({ exists: () => true, data: () => ({ shortId: 'A0009' }) }));
+  it('ID ni serverdan oladi va tokenni yuboradi', async () => {
+    await expect(ensureShortId(user())).resolves.toBe('A0005');
 
-    await expect(ensureShortId({}, 'uid-mavjud')).resolves.toBe('A0009');
-    expect(globalThis.__setDoc).not.toHaveBeenCalled();
-    expect(globalThis.__runTransaction).not.toHaveBeenCalled();
+    expect(globalThis.fetch).toHaveBeenCalledTimes(1);
+    const [url, opts] = globalThis.fetch.mock.calls[0];
+    expect(url).toContain('action=ensure-id');
+    expect(opts.headers.Authorization).toBe('Bearer token-123');
   });
 
-  it('yetishmaganda generatsiya qilib FAQAT shortId maydonini yozadi', async () => {
-    await expect(ensureShortId({}, 'uid-yangi')).resolves.toBe('A0005');
-
-    expect(globalThis.__setDoc).toHaveBeenCalledTimes(1);
-    const [, payload, opts] = globalThis.__setDoc.mock.calls[0];
-    // role/isPremium/createdAt firestore.rules protectedUserFields() da —
-    // ular bilan birga yuborilgan yangilanish rad etilardi.
-    expect(Object.keys(payload)).toEqual(['shortId']);
-    expect(opts).toEqual({ merge: true });
-  });
-
-  it('generatsiya muvaffaqiyatsiz bo\'lsa hujjatga HECH NARSA yozmaydi', async () => {
-    globalThis.__runTransaction = vi.fn(async () => { throw denied(); });
-
-    await expect(ensureShortId({}, 'uid-xato')).rejects.toThrow();
-    // Asosiy regressiya: avval shu yerda `shortId: null` yozilardi.
-    expect(globalThis.__setDoc).not.toHaveBeenCalled();
-  });
-
-  it('bir uid uchun parallel chaqiruvlar BITTA generatsiyani baham ko\'radi', async () => {
-    // Aynan shu poyga hisoblagichni yeb, foydalanuvchini ID'siz qoldirardi.
-    const [a, b, c] = await Promise.all([
-      ensureShortId({}, 'uid-poyga'),
-      ensureShortId({}, 'uid-poyga'),
-      ensureShortId({}, 'uid-poyga'),
-    ]);
+  it('bir uid uchun parallel chaqiruvlar BITTA so\'rovni baham ko\'radi', async () => {
+    const u = user('poyga');
+    const [a, b, c] = await Promise.all([ensureShortId(u), ensureShortId(u), ensureShortId(u)]);
 
     expect([a, b, c]).toEqual(['A0005', 'A0005', 'A0005']);
-    expect(globalThis.__runTransaction).toHaveBeenCalledTimes(1);
-    expect(globalThis.__setDoc).toHaveBeenCalledTimes(1);
+    expect(globalThis.fetch).toHaveBeenCalledTimes(1);
   });
 
-  it('tugagach keyingi chaqiruv yangi generatsiya qila oladi', async () => {
-    await ensureShortId({}, 'uid-1');
-    await ensureShortId({}, 'uid-2');
-    expect(globalThis.__runTransaction).toHaveBeenCalledTimes(2);
+  it('server xato bersa TASHLAYDI (jimgina null qaytarmaydi)', async () => {
+    // Chaqiruvchi `catch` bilan yozuvni o'tkazib yuboradi; ID'siz qolgani
+    // esa kechasi cron-daily tomonidan to'ldiriladi.
+    globalThis.fetch = vi.fn(async () => ({ ok: false, status: 500 }));
+    await expect(ensureShortId(user('xato'))).rejects.toThrow(/500/);
+  });
+
+  it('foydalanuvchi yo\'q bo\'lsa so\'rov ham yubormaydi', async () => {
+    await expect(ensureShortId(null)).resolves.toBe(null);
+    expect(globalThis.fetch).not.toHaveBeenCalled();
+  });
+
+  it('tugagach keyingi chaqiruv qayta so\'ray oladi', async () => {
+    await ensureShortId(user('a'));
+    await ensureShortId(user('b'));
+    expect(globalThis.fetch).toHaveBeenCalledTimes(2);
   });
 });

@@ -104,7 +104,9 @@ service cloud.firestore {
         // ── YANGI fanlar (fan 2 — 2-to'plam), topicId 114-136 ──
         (request.resource.data.topicId >= 114 && request.resource.data.topicId <= 120 && request.resource.data.category == 'kimyo') ||
         (request.resource.data.topicId >= 121 && request.resource.data.topicId <= 128 && request.resource.data.category == 'rus_tili') ||
-        (request.resource.data.topicId >= 129 && request.resource.data.topicId <= 136 && request.resource.data.category == 'ingliz')
+        (request.resource.data.topicId >= 129 && request.resource.data.topicId <= 136 && request.resource.data.category == 'ingliz') ||
+        // ── MTT jismoniy tarbiya yo'riqchisi (fan 3), topicId 137-145 ──
+        (request.resource.data.topicId >= 137 && request.resource.data.topicId <= 145 && request.resource.data.category == 'mtt_jismoniy')
       );
       allow delete: if isAdmin();
     }
@@ -291,14 +293,20 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
-    // ── meta/counters: ro'yxatdan o'tishda qisqa foydalanuvchi ID (shortId) generatsiya qilish uchun
-    // ketma-ket hisoblagich. Faqat +1 oshirishga ruxsat — boshqa manipulyatsiya bloklangan ──
+    // ── meta/counters: qisqa foydalanuvchi ID (shortId) uchun ketma-ket hisoblagich ──
+    //
+    // ⚠️ 2026-08-14 TEKSHIRUVI — nima uchun mijoz uchun BUTUNLAY yopildi:
+    // Avval `allow update: if isLoggedIn() && userSeq == oldingi + 1` edi, ya'ni
+    // ID ni har bir MIJOZ o'zi generatsiya qilardi. Bu bitta umumiy hujjat —
+    // "issiq nuqta". Ikki kishi bir vaqtda ursa, mag'lubi ABORTED emas
+    // PERMISSION_DENIED olardi, Firestore SDK esa bunday xatoni qayta urinmaydi.
+    // Natija: 99 hisobdan 17 tasi ID'siz qolgan edi.
+    //
+    // ENDI ID ni FAQAT server beradi — api/_shared.js `ensureShortIdAdmin`.
+    // Admin SDK qoidalarni chetlab o'tadi, shuning uchun bu blok uni to'smaydi;
+    // admin uchun ochiq qoldirilgani esa scripts/backfill-short-ids.mjs uchun.
     match /meta/counters {
-      allow read: if isLoggedIn();
-      allow create: if isLoggedIn() && request.resource.data.keys().hasOnly(['userSeq']) && request.resource.data.userSeq == 1;
-      allow update: if isLoggedIn()
-        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['userSeq'])
-        && request.resource.data.userSeq == resource.data.userSeq + 1;
+      allow read, write: if isAdmin();
     }
 
     // ── errorLogs: kuzatuv (observability) — faqat admin o'qiydi/boshqaradi.

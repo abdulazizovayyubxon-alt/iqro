@@ -2,7 +2,7 @@ import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { getAuth } from 'firebase-admin/auth';
 import { getMessaging } from 'firebase-admin/messaging';
-import { rateLimit, clientIp, extractBearer, clip } from './_shared.js';
+import { rateLimit, clientIp, extractBearer, clip, ensureShortIdAdmin } from './_shared.js';
 
 function ensureAdminApp() {
   if (getApps().length === 0) {
@@ -124,16 +124,51 @@ async function handleRegister(db, req, res) {
     return res.status(401).json({ success: false, error: 'invalid_token' });
   }
 
+  // Qisqa ID SHU YERDA beriladi — ID berishning birlamchi nuqtasi.
+  // Mijoz `meta/counters` ga umuman tegmaydi (sababi _shared.js izohida).
+  // Xato bo'lsa ro'yxatdan o'tish BUZILMAYDI: ID'siz qolgan hisobni
+  // cron-daily kechasi to'ldiradi.
+  const shortId = await ensureShortIdAdmin(db, decoded.uid)
+    .catch((e) => { console.warn('shortId berilmadi:', e?.message); return null; });
+
   const snap = await db.collection('users').doc(decoded.uid).get();
   const u = snap.exists ? snap.data() : {};
 
   const text = '👤 <b>Yangi foydalanuvchi!</b>\n\n'
     + `Ism: ${escapeHtml(u.displayName || '—')}\n`
     + `Telefon: ${escapeHtml(u.phone || '—')}\n`
-    + `ID: ${escapeHtml(u.shortId || decoded.uid)}`;
+    + `ID: ${escapeHtml(shortId || u.shortId || decoded.uid)}`;
 
-  await sendToAdmin(db, text);
-  return res.status(200).json({ success: true });
+  // Telegram yiqilsa ham mijozga ID qaytadi — xabar ikkinchi darajali.
+  await sendToAdmin(db, text).catch((e) => console.warn('Telegram xabari yuborilmadi:', e?.message));
+  return res.status(200).json({ success: true, shortId });
+}
+
+// ── action: ensure-id ──────────────────────────────────────────────────────
+// Foydalanuvchi O'Z qisqa ID sini so'raydi. Ro'yxatdan o'tish paytida ID
+// berilmay qolgan (endpoint yiqilgan, tarmoq uzilgan) hisoblar uchun —
+// ilova ochilganda bir marta chaqiriladi. Idempotent: ID bor bo'lsa
+// hech narsa yozilmaydi.
+//
+// uid FAQAT tekshirilgan tokendan olinadi — boshqa odamga ID berib bo'lmaydi.
+async function handleEnsureId(db, req, res) {
+  const idToken = extractBearer(req);
+  if (!idToken) return res.status(401).json({ success: false, error: 'unauthorized' });
+
+  let decoded;
+  try {
+    decoded = await getAuth().verifyIdToken(idToken);
+  } catch {
+    return res.status(401).json({ success: false, error: 'invalid_token' });
+  }
+
+  // Hisoblagich umumiy resurs — bitta hisob uni cheksiz aylantirmasin.
+  if (rateLimit(`sid:${decoded.uid}`, 5, 60 * 1000).limited) {
+    return res.status(429).json({ success: false, error: 'too_many_requests' });
+  }
+
+  const shortId = await ensureShortIdAdmin(db, decoded.uid);
+  return res.status(200).json({ success: true, shortId });
 }
 
 // ── action: delete-request ─────────────────────────────────────────────────
@@ -348,6 +383,8 @@ export default async function handler(req, res) {
     if (action === 'delete-me') return await handleDeleteMe(db, req, res);
 
     if (action === 'register') return await handleRegister(db, req, res);
+
+    if (action === 'ensure-id') return await handleEnsureId(db, req, res);
 
     // ── Qolgan hamma narsa: FAQAT ADMIN ──
     // Avval bu yerda ixtiyoriy `message` auth'siz qabul qilinardi.

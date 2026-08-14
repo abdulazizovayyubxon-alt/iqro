@@ -122,6 +122,68 @@ export function extractBearer(req) {
   return auth.startsWith('Bearer ') ? auth.slice(7) : null;
 }
 
+// ── Qisqa foydalanuvchi ID (A0001…) ─────────────────────────────────────
+//
+// ⚠️ 2026-08-14 TEKSHIRUVI — nima uchun ID berish SERVERGA ko'chirildi:
+// 99 hisobdan 17 tasida ID yo'q edi, hammasi 6–8 avgustda ro'yxatdan
+// o'tganlar. Sabab zanjiri:
+//   1) ID mijoz tomonda `meta/counters` hujjatiga tranzaksiya bilan
+//      yozilardi — bu BITTA umumiy hujjat, ya'ni "issiq nuqta";
+//   2) firestore.rules yangi qiymat eskisidan AYNAN +1 bo'lishini talab
+//      qiladi. Raqobatda mag'lub tranzaksiya ABORTED emas,
+//      PERMISSION_DENIED oladi — Firestore SDK bunday xatoni O'ZI qayta
+//      urinmaydi (faqat ABORTED ni);
+//   3) mijozdagi `catch → null` xatoni yutardi, foydalanuvchi ID'siz
+//      qolardi va faqat KEYINGI kirishda yana urinib ko'rilardi. Kim
+//      qaytmasa — ID'siz qolaverardi.
+//
+// Admin SDK qoidalarni chetlab o'tadi va raqobatda tranzaksiyani O'ZI
+// qayta urinib bajaradi, shuning uchun bu yerda 2-band umuman yuzaga
+// kelmaydi. Foydalanuvchi hujjati va hisoblagich BIR tranzaksiyada
+// yangilanadi — ya'ni raqam olinib, yozuv yiqilishi (raqam yo'qolishi)
+// ham mumkin emas.
+const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const PER_LETTER = 9999;
+
+export function formatShortId(seq) {
+  const idx = Math.floor((seq - 1) / PER_LETTER);
+  const num = String(((seq - 1) % PER_LETTER) + 1).padStart(4, '0');
+  if (idx < LETTERS.length) return `${LETTERS[idx]}${num}`;
+  // 26 harf tugadi → ikki harfli prefiks (AA, AB, ... ZZ)
+  const over = idx - LETTERS.length;
+  return `${LETTERS[Math.floor(over / LETTERS.length) % LETTERS.length]}${LETTERS[over % LETTERS.length]}${num}`;
+}
+
+/**
+ * Foydalanuvchiga qisqa ID beradi. IDEMPOTENT: ID allaqachon bo'lsa
+ * hech narsa yozmaydi va mavjudini qaytaradi (ko'rilgan ID hech qachon
+ * o'zgarmaydi). Foydalanuvchi hujjati yo'q bo'lsa `null`.
+ *
+ * @param {FirebaseFirestore.Firestore} db  Admin SDK Firestore
+ * @param {string} uid
+ * @returns {Promise<string|null>}
+ */
+export async function ensureShortIdAdmin(db, uid) {
+  if (!uid) return null;
+  const userRef = db.collection('users').doc(uid);
+  const counterRef = db.collection('meta').doc('counters');
+
+  return db.runTransaction(async (tx) => {
+    // Admin SDK tranzaksiyasida BARCHA o'qishlar yozuvdan oldin bo'lishi shart.
+    const [uSnap, cSnap] = await tx.getAll(userRef, counterRef);
+    if (!uSnap.exists) return null;
+
+    const existing = uSnap.data().shortId;
+    if (typeof existing === 'string' && existing) return existing;
+
+    const next = (cSnap.exists ? (cSnap.data().userSeq || 0) : 0) + 1;
+    const shortId = formatShortId(next);
+    tx.set(counterRef, { userSeq: next }, { merge: true });
+    tx.set(userRef, { shortId }, { merge: true });
+    return shortId;
+  });
+}
+
 // ── Kiritilgan matnni cheklash ──────────────────────────────────────────
 export const clip = (v, n) => (v == null ? null : String(v).slice(0, n));
 

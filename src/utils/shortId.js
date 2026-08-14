@@ -1,11 +1,12 @@
-import { doc, getDoc, setDoc, runTransaction } from 'firebase/firestore';
-
 // Formatlash: 1-harif + 4 xonali raqam (masalan A0001, A9999, B0001...)
 //
 // AUDIT 2026-08-05, 19-BAND: `String.fromCharCode(65 + letterIndex)` 26 ta
 // harfdan keyin (26 × 9999 = 259 974 foydalanuvchi) alifbodan chiqib `[`, `\`,
 // `]` kabi belgilar berardi. Endi chegaradan oshganda ikki harfli prefiksga
 // o'tadi (AA0001, AB0001, ...) — format buzilmaydi.
+//
+// ⚠️ Bu funksiya endi FAQAT ko'rsatish/skriptlar uchun (scripts/backfill-short-ids.mjs).
+// Haqiqiy raqam berish serverda — api/_shared.js `ensureShortIdAdmin`.
 const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const PER_LETTER = 9999;
 
@@ -24,76 +25,44 @@ export const formatShortId = (seq) => {
   return `${first}${second}${num}`;
 };
 
-// Ro'yxatdan o'tishda har bir foydalanuvchiga unikal, ketma-ket qisqa ID beriladi.
-// meta/counters hujjatidagi userSeq maydoni transaction orqali oshiriladi (poyga holatidan himoya).
-//
-// ⚠️ NEGA QO'LDA QAYTA URINISH KERAK (2026-08-06 tekshiruvi):
-// firestore.rules:301 `userSeq == resource.data.userSeq + 1` ni talab qiladi.
-// Ikki tranzaksiya bir vaqtda `userSeq=5` ni o'qisa, birinchisi 6 yozadi;
-// ikkinchisi ham 6 yozmoqchi bo'lganda qoida `6 == 6+1` ni tekshirib FALSE
-// beradi. Ya'ni server ABORTED emas, PERMISSION_DENIED qaytaradi — Firestore
-// SDK esa faqat ABORTED ni avtomatik retry qiladi. Natijada raqobat
-// tranzaksiyasi jimgina o'lardi va foydalanuvchi ID'siz qolardi.
-const MAX_ATTEMPTS = 6;
-
-export async function getNextShortId(db) {
-  const counterRef = doc(db, 'meta', 'counters');
-
-  let lastErr;
-  for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
-    try {
-      const seq = await runTransaction(db, async (tx) => {
-        const snap = await tx.get(counterRef);
-        const next = (snap.exists() ? (snap.data().userSeq || 0) : 0) + 1;
-        tx.set(counterRef, { userSeq: next }, { merge: true });
-        return next;
-      });
-      return formatShortId(seq);
-    } catch (e) {
-      lastErr = e;
-      // Raqobat (permission-denied/aborted/unavailable) — qayta o'qib urinamiz.
-      // Boshqa xatolar (masalan tarmoq yo'q) ham shu yerga tushadi; qisqa
-      // kutishdan keyingi urinish ularga ham zarar qilmaydi.
-      await new Promise(r => setTimeout(r, 60 * (attempt + 1) + Math.random() * 80));
-    }
-  }
-  throw lastErr;
-}
-
 // ─────────────────────────────────────────────────────────────────────────
-// ensureShortId — ID berishning YAGONA nuqtasi.
+// ensureShortId — ID ni SERVERDAN so'raydi.
 //
-// ⚠️ 2026-08-06: avval ID ikki joyda alohida generatsiya qilinardi
-// (AuthContext ro'yxatdan o'tish tarmog'i + onAuthStateChanged tinglovchisi).
-// Ular bir vaqtda ishga tushib bitta hisoblagichga urilardi, mag'lub tomon
-// `catch → null` bilan yutilar va o'sha `null` foydalanuvchi hujjatiga
-// YOZILARDI — yaxshi qiymat ustidan bosib. 22 hisobdan 20 tasi shu sababli
-// ID'siz qolgan edi.
+// ⚠️ 2026-08-14 TEKSHIRUVI — nima uchun mijoz endi hisoblagichga tegmaydi:
+// 99 hisobdan 17 tasi ID'siz edi (hammasi 6–8 avgust). Mijoz `meta/counters`
+// hujjatiga o'zi tranzaksiya yozardi, firestore.rules esa yangi qiymat
+// eskisidan AYNAN +1 bo'lishini talab qiladi. Ikki kishi bir vaqtda ursa,
+// mag'lubi ABORTED emas PERMISSION_DENIED oladi — Firestore SDK bunday
+// xatoni qayta urinmaydi. Qo'lda 6 marta qayta urinish ham yetmasdi, chunki
+// ID'siz qolganlar har ilova ochilishida o'sha bitta hujjatga qayta urinib,
+// uni doimiy "issiq nuqta"ga aylantirgan edi.
 //
-// Endi:
-//  • bitta sahifada bir uid uchun bir vaqtda faqat bitta generatsiya ketadi
-//    (inFlight xaritasi) — o'z-o'ziga raqobat butunlay yo'q;
-//  • mavjud ID qayta yozilmaydi;
-//  • generatsiya muvaffaqiyatsiz bo'lsa hujjatga HECH NARSA yozilmaydi
-//    (`null` yozish taqiqlanadi) — keyingi kirishda yana urinib ko'riladi;
-//  • yozuv faqat `shortId` maydoniga tegadi. Bu muhim: `role`/`isPremium`/
-//    `createdAt` firestore.rules protectedUserFields() ro'yxatida, ular bilan
-//    birga yuborilgan yangilanish rad etilardi.
+// Endi raqamni Admin SDK beradi (qoidalardan ozod, raqobatda o'zi qayta
+// urinadi), foydalanuvchi hujjati va hisoblagich esa BIR tranzaksiyada
+// yangilanadi. Mijozning vazifasi — bir marta so'rash.
+//
+// Kafolat zanjiri: ro'yxatdan o'tish → shu chaqiruv → api?action=register
+// (server yana bir bor tekshiradi) → cron-daily kechasi qolganini to'ldiradi.
 const inFlight = new Map();
 
-export function ensureShortId(db, uid) {
+export function ensureShortId(firebaseUser) {
+  const uid = firebaseUser?.uid;
   if (!uid) return Promise.resolve(null);
   if (inFlight.has(uid)) return inFlight.get(uid);
 
   const task = (async () => {
-    const userRef = doc(db, 'users', uid);
-    const snap = await getDoc(userRef);
-    const existing = snap.exists() ? snap.data().shortId : null;
-    if (typeof existing === 'string' && existing) return existing;
-
-    const shortId = await getNextShortId(db);
-    await setDoc(userRef, { shortId }, { merge: true });
-    return shortId;
+    const token = await firebaseUser.getIdToken();
+    const res = await fetch('/api/notify-admin?action=ensure-id', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({}),
+    });
+    if (!res.ok) throw new Error(`ensure-id: HTTP ${res.status}`);
+    const data = await res.json();
+    return typeof data?.shortId === 'string' && data.shortId ? data.shortId : null;
   })().finally(() => inFlight.delete(uid));
 
   inFlight.set(uid, task);

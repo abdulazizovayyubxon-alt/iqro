@@ -44,7 +44,7 @@
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { getMessaging } from 'firebase-admin/messaging';
-import { verifySecret, extractSecret } from './_shared.js';
+import { verifySecret, extractSecret, ensureShortIdAdmin } from './_shared.js';
 import { TEXT as SMS_TEXT, normalizePhone, sendQueue, activeProvider, segments, isSmsEnabled } from './_sms.js';
 
 const FREE_TRIAL_DAYS = 7;
@@ -157,6 +157,7 @@ export default async function handler(req, res) {
     premiumExpired: 0,
     remindersSent: 0,
     discountsCleared: 0,
+    shortIdsAssigned: 0,
     notify: {
       queued: { welcome: 0, trialEnd: 0, expired: 0 },
       // Kanal bo'yicha taqsimot — push bepul, sms pullik
@@ -330,6 +331,23 @@ export default async function handler(req, res) {
       for (const userDoc of usersBatch.docs) {
         const data = userDoc.data();
         const userId = userDoc.id;
+
+        // ── 0. Qisqa ID xavfsizlik to'ri ──
+        // ID birlamchi ravishda ro'yxatdan o'tishda beriladi
+        // (api/notify-admin.js?action=register). Agar o'sha lahzada tarmoq
+        // uzilgan yoki endpoint yiqilgan bo'lsa, hisob ID'siz qolardi va
+        // ilgari buni FAQAT foydalanuvchining qaytishi tuzatardi — qaytmagan
+        // 17 kishi ID'siz qolgani shundan (2026-08-14 tekshiruvi).
+        // Endi kechasi shu yerda to'ldiriladi. Hujjatlar baribir o'qilyapti,
+        // ya'ni qo'shimcha o'qish YO'Q; yozuv esa faqat ID yo'qlarda.
+        if (!data.shortId) {
+          try {
+            if (!dryRun) await ensureShortIdAdmin(db, userId);
+            results.shortIdsAssigned++;
+          } catch (e) {
+            results.errors.push(`shortId ${userId}: ${e.message}`);
+          }
+        }
 
         // Ro'yxatdan o'tgandan beri o'tgan kunlar — quyidagi uchta blok ham
         // shundan foydalanadi, shuning uchun bir marta hisoblanadi.

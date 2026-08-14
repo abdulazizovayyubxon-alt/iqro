@@ -291,15 +291,14 @@ export const AuthProvider = ({ children }) => {
               isPremium = true;
             }
 
-            // ── Qisqa ID (A0001…) — berishning YAGONA nuqtasi ──
-            // Yangi hisob uchun ham, ID'siz qolgan eski hisob uchun ham shu
-            // yerda to'ldiriladi. Hujjat allaqachon yaratilgan (yuqoridagi
-            // setDoc await qilingan), shuning uchun bu faqat `shortId`
-            // maydonini yangilaydi — protectedUserFields() ga tegmaydi.
-            // Xato bo'lsa hujjatga HECH NARSA yozilmaydi (`null` ham) —
-            // keyingi kirishda qayta urinib ko'riladi.
+            // ── Qisqa ID (A0001…) ──
+            // ID SERVERDA beriladi (api/_shared.js ensureShortIdAdmin) — mijoz
+            // `meta/counters` ga tegmaydi, sababi src/utils/shortId.js izohida.
+            // Bu chaqiruv faqat ID'siz qolgan hisoblar uchun; idempotent.
+            // Yiqilsa hujjatga hech narsa yozilmaydi va kechasi cron-daily
+            // to'ldiradi — foydalanuvchi ID'siz qolib ketmaydi.
             if (!shortId) {
-              shortId = await ensureShortId(db, firebaseUser.uid)
+              shortId = await ensureShortId(firebaseUser)
                 .catch(e => { console.warn('ShortId berishda xato:', e); return null; });
             }
           } catch (firestoreErr) {
@@ -510,13 +509,12 @@ export const AuthProvider = ({ children }) => {
           createdAt: new Date(),
         }, { merge: true });
 
-        // Qisqa ID — hujjat yaratilgandan KEYIN. ensureShortId ichida uid
-        // bo'yicha dedupe bor, shuning uchun shu payt parallel ishlayotgan
-        // onAuthStateChanged tinglovchisi bilan hisoblagichga raqobat
-        // qilmaymiz: ikkalasi bitta va o'sha generatsiyani kutadi.
-        // Adminga bildirishnomadan oldin turadi — api/notify-admin.js xabarda
-        // shu ID'ni ko'rsatadi.
-        const shortId = await ensureShortId(db, userCred.user.uid)
+        // Qisqa ID — hujjat yaratilgandan KEYIN (server hujjatni o'qiydi).
+        // ensureShortId ichida uid bo'yicha dedupe bor, shuning uchun shu payt
+        // parallel ishlayotgan onAuthStateChanged tinglovchisi bilan ikki marta
+        // so'ralmaydi. Adminga bildirishnomadan oldin turadi — api/notify-admin.js
+        // xabarda shu ID'ni ko'rsatadi.
+        const shortId = await ensureShortId(userCred.user)
           .catch(e => { console.warn('ShortId berishda xato:', e); return null; });
 
         const referralApplied = await applyReferralAfterRegister(userCred.user.uid, name);
