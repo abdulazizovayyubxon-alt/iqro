@@ -111,6 +111,28 @@ const QuestionBox = ({
           );
         })()}
 
+        {/* ── Mualliflik / Manba Badgisi ── */}
+        {(questions[currentQ].author || questions[currentQ].source) && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
+            <span
+              style={{
+                fontSize: 'var(--fs-2xs)',
+                fontWeight: 800,
+                color: 'var(--accent)',
+                background: 'var(--blue-bg)',
+                padding: '3px 9px',
+                borderRadius: 7,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 5,
+                border: '1px solid rgba(14,151,224,0.25)',
+              }}
+            >
+              ✍️ {questions[currentQ].author ? `Muallif: ${questions[currentQ].author}` : `Manba: ${questions[currentQ].source}`}
+            </span>
+          </div>
+        )}
+
         <QuestionMedia question={questions[currentQ]} />
         {questions[currentQ].isHtml ? <SafeHtml html={questions[currentQ].q} className="q-text" /> : <div className="q-text" style={{ whiteSpace: 'pre-line' }}>{questions[currentQ].q}</div>}
         <div className="options">

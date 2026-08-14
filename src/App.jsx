@@ -45,6 +45,7 @@ const PrivacyPage = React.lazy(() => import('./pages/PrivacyPage'));
 const TermsPage = React.lazy(() => import('./pages/TermsPage'));
 const DeleteAccountPage = React.lazy(() => import('./pages/DeleteAccountPage'));
 const AboutPage = React.lazy(() => import('./pages/AboutPage'));
+const PartnerPage = React.lazy(() => import('./pages/PartnerPage'));
 
 // ── Chunk'larni oldindan isitish ────────────────────────────────
 // MUAMMO: route sahifalarida `exit` animatsiyasi YO'Q, shuning uchun eski
@@ -495,6 +496,7 @@ function App() {
                   <Route path="/analysis" element={<AnalysisPage />} />
                   <Route path="/school" element={<SchoolPage />} />
                   <Route path="/admin" element={<AdminPage />} />
+                  <Route path="/partner" element={<PartnerPage />} />
                   <Route path="/migration" element={<MigrationPage />} />
                   <Route path="/referral" element={<ReferralPage />} />
                   <Route path="/premium" element={<PremiumPage />} />

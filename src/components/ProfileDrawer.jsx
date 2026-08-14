@@ -22,7 +22,8 @@ import BrandLogo from './shared/BrandLogo';
 
 import {
   Award, Settings, Users, Shield, Crown, ChevronRight,
-  Pencil, Camera, Share2, Send, School, BarChart3, ListChecks
+  Pencil, Camera, Share2, Send, School, BarChart3, ListChecks,
+  Sparkles
 } from 'lucide-react';
 
 // ── Sokin/jiddiy uslub — kir kulrang (--bg3) o'rniga chegarali --surface ──
@@ -216,6 +217,9 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
     { icon: Settings, label: t('sidebar.settings', 'Sozlamalar'), path: '/settings' },
   ];
   if (isAdmin || schoolId) menuItems.push({ icon: School, label: t('sidebar.school', 'Maktab'), path: '/school' });
+  if (isAdmin || user?.partnerCode || user?.role === 'partner' || user?.role === 'mentor') {
+    menuItems.push({ icon: Sparkles, label: t('sidebar.partner', 'Hamkor paneli'), path: '/partner' });
+  }
   if (isAdmin) menuItems.push({ icon: Shield, label: t('sidebar.admin', 'Admin'), path: '/admin' });
 
   // Obuna banner mazmuni (holatga qarab)

@@ -40,6 +40,8 @@ export default function PromoTab() {
     maxUses: 50,
     expiresAt: '',
     campaign: '',
+    partnerName: '',
+    partnerUid: '',
   });
 
   const loadPromos = async () => {
@@ -66,6 +68,18 @@ export default function PromoTab() {
       maxUses: 30,
       campaign: f.campaign || 'maktab-',
       code: f.code || genCode('MAKTAB'),
+    }));
+  };
+
+  const applyPartnerPreset = () => {
+    setForm(f => ({
+      ...f,
+      code: 'MIRONSHOH',
+      type: 'days',
+      value: 90,
+      maxUses: 1000,
+      partnerName: 'Mironshoh ustoz',
+      campaign: 'CHQBT @attestatsiya92',
     }));
   };
 
@@ -110,12 +124,14 @@ export default function PromoTab() {
         // YOZMAYDI — ya'ni yangi kodlarda bu maydon abadiy bo'sh qolardi.
         expiresAt: form.expiresAt ? new Date(form.expiresAt + 'T23:59:59').toISOString() : null,
         campaign: form.campaign.trim() || null,
+        partnerName: form.partnerName.trim() || null,
+        partnerUid: form.partnerUid.trim() || null,
         active: true,
         createdAt: new Date().toISOString(),
         createdBy: user?.uid || null,
       });
       showToast(`Promo-kod yaratildi: ${code} ✅`, 'success');
-      setForm({ code: '', type: 'percent', value: 20, maxUses: 50, expiresAt: '', campaign: '' });
+      setForm({ code: '', type: 'percent', value: 20, maxUses: 50, expiresAt: '', campaign: '', partnerName: '', partnerUid: '' });
       loadPromos();
     } catch (e) {
       console.error(e);
@@ -171,17 +187,26 @@ export default function PromoTab() {
     <div>
       {/* ═══ YARATISH FORMASI ═══ */}
       <div className="glass-panel" style={{ padding: 20, marginBottom: 20 }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, flexWrap: 'wrap', gap: 8 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 800, fontSize: 'var(--fs-lg)', color: 'var(--text)' }}>
             <Ticket size={18} style={{ color: 'var(--accent)' }} /> Yangi promo-kod
           </div>
-          <button
-            className="btn btn-sm btn-outline"
-            onClick={applyTeamPreset}
-            title="Maktab paketi: 365 kun, 30 o'rin"
-          >
-            🏫 Maktab paketi shabloni
-          </button>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <button
+              className="btn btn-sm btn-outline"
+              onClick={applyPartnerPreset}
+              title="Hamkor ustoz paketi: 90 kun, 1000 o'rin"
+            >
+              🤝 Hamkor ustoz shabloni
+            </button>
+            <button
+              className="btn btn-sm btn-outline"
+              onClick={applyTeamPreset}
+              title="Maktab paketi: 365 kun, 30 o'rin"
+            >
+              🏫 Maktab paketi shabloni
+            </button>
+          </div>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: 12, marginBottom: 12 }}>
@@ -256,6 +281,15 @@ export default function PromoTab() {
               placeholder="masalan: maktab-25, sentyabr"
             />
           </div>
+          <div>
+            <label className="admin-label--caps">Hamkor ustoz ismi</label>
+            <input
+              className="admin-input"
+              value={form.partnerName}
+              onChange={e => setForm(f => ({ ...f, partnerName: e.target.value }))}
+              placeholder="masalan: Mironshoh ustoz"
+            />
+          </div>
         </div>
 
         <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginBottom: 12 }}>
@@ -288,6 +322,7 @@ export default function PromoTab() {
                 <div style={{ flex: 1, minWidth: 160 }}>
                   <div style={{ fontWeight: 800, fontSize: 'var(--fs-lg)', color: 'var(--text)', letterSpacing: 1, fontFamily: 'monospace' }}>
                     {p.id}
+                    {p.partnerName && <span style={{ marginLeft: 8, fontSize: 'var(--fs-2xs)', color: 'var(--accent)', background: 'var(--blue-bg)', padding: '2px 6px', borderRadius: 4, fontWeight: 700 }}>🤝 {p.partnerName}</span>}
                     {isExpired && <span style={{ marginLeft: 8, fontSize: 'var(--fs-2xs)', color: 'var(--red)', fontWeight: 700 }}>MUDDATI TUGAGAN</span>}
                     {isFull && <span style={{ marginLeft: 8, fontSize: 'var(--fs-2xs)', color: 'var(--amber)', fontWeight: 700 }}>LIMIT TUGAGAN</span>}
                   </div>

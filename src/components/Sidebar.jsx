@@ -20,7 +20,8 @@ import {
   Download,
   Settings,
   Activity,
-  School
+  School,
+  Sparkles
 } from 'lucide-react';
 
 import { PWAContext } from '../context/PWAContext';
@@ -187,6 +188,17 @@ const Sidebar = () => {
             >
               <span className="nav-icon" style={{ color: 'var(--green)' }}><Download size={20} /></span>
               <span className="nav-label" style={{ color: 'var(--green)', fontWeight: 800 }}>{t('sidebar.install')}</span>
+            </div>
+          )}
+
+          {/* Hamkor paneli — admin yoki hamkor ustozlar uchun */}
+          {(isAdmin || user?.partnerCode || user?.role === 'partner' || user?.role === 'mentor') && (
+            <div
+              className={`nav-item ${isActive('/partner') ? 'active' : ''}`}
+              onClick={() => navigate('/partner')}
+            >
+              <span className="nav-icon" style={{ color: 'var(--accent)' }}><Sparkles size={20} /></span>
+              <span className="nav-label">{t('sidebar.partner', 'Hamkor paneli')}</span>
             </div>
           )}
 

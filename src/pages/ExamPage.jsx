@@ -1241,6 +1241,28 @@ const ExamPage = () => {
                 </div>
               </div>
 
+              {/* Mualliflik / Manba nishoni */}
+              {(q.author || q.source) && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>
+                  <span
+                    style={{
+                      fontSize: 'var(--fs-2xs)',
+                      fontWeight: 800,
+                      color: 'var(--accent)',
+                      background: 'var(--blue-bg)',
+                      padding: '3px 9px',
+                      borderRadius: 7,
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 5,
+                      border: '1px solid rgba(14,151,224,0.25)',
+                    }}
+                  >
+                    ✍️ {q.author ? `Muallif: ${q.author}` : `Manba: ${q.source}`}
+                  </span>
+                </div>
+              )}
+
               {/* Savol rasmi yoki sxemasi */}
               <QuestionMedia question={q} />
               {/* Savol matni */}

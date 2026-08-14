@@ -1283,6 +1283,27 @@ try {
     );
   };
 
+  const handleSetPartnerCode = async (userId, currentPartnerCode) => {
+    const code = window.prompt("Foydalanuvchiga biriktiriladigan Hamkor promokodini kiriting (masalan: MIRONSHOH). O'chirish uchun bo'sh qoldiring:", currentPartnerCode || '');
+    if (code === null) return;
+    const cleanCode = code.trim().toUpperCase();
+    try {
+      await updateDoc(doc(db, 'users', userId), {
+        partnerCode: cleanCode || null,
+        role: cleanCode ? 'partner' : (userCard?.role === 'partner' ? 'user' : userCard?.role || 'user'),
+      });
+      setUsers(prev => prev.map(u => u.id === userId ? { ...u, partnerCode: cleanCode || null, role: cleanCode ? 'partner' : (u.role === 'partner' ? 'user' : u.role) } : u));
+      if (userCard && userCard.id === userId) {
+        setUserCard(prev => ({ ...prev, partnerCode: cleanCode || null, role: cleanCode ? 'partner' : (prev.role === 'partner' ? 'user' : prev.role) }));
+      }
+      logAdminAction('partner.assign_code', userId, { partnerCode: cleanCode || null });
+      showToast(cleanCode ? `Hamkor kodi biriktirildi: ${cleanCode}` : "Hamkor kodi olib tashlandi", 'success');
+    } catch (e) {
+      console.error(e);
+      showToast("Hamkor kodini saqlashda xatolik", 'error');
+    }
+  };
+
   // ⚠️ AUDIT 2026-08-06, T-12 BAND — avval bu yerda faqat ikkita hujjat
   // o'chirilardi (`users/{uid}`, `userStats/{uid}`). Firebase AUTH hisobi
   // qolardi: foydalanuvchi kirishda davom etardi, lekin profil hujjati
@@ -3899,6 +3920,7 @@ try {
                       ? new Date(userCard.lastActiveAt).toLocaleString('uz-UZ')
                       : '—'],
                     ['Maktab', userCard.schoolName || '—'],
+                    ['Hamkor kodi', userCard.partnerCode || '—'],
                     ['Oxirgi tranzaksiya', userCard.premiumTransId || '—'],
                   ].map(([k, v]) => (
                     <tr key={k}>
@@ -3910,7 +3932,10 @@ try {
               </table>
             </div>
 
-            <div className="admin-modal-actions">
+            <div className="admin-modal-actions" style={{ flexWrap: 'wrap', gap: 8 }}>
+              <button className="btn btn-outline" onClick={() => handleSetPartnerCode(userCard.id, userCard.partnerCode)}>
+                <Sparkles size={14} /> {userCard.partnerCode ? `Hamkor: ${userCard.partnerCode}` : "Hamkor kodi berish"}
+              </button>
               <button className="btn btn-outline" onClick={() => { setUserCard(null); setTab('payments'); }}>
                 <CreditCard size={14} /> To'lovlar
               </button>

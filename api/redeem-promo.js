@@ -127,6 +127,7 @@ export default async function handler(req, res) {
       // Kim ishlatgani — alohida hujjat (massiv o'rniga, 15-band)
       tx.set(redemptionRef, {
         uid,
+        displayName: userData.displayName || null,
         type,
         value,
         redeemedAt: new Date().toISOString(),
