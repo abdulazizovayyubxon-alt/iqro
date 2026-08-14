@@ -2,6 +2,9 @@
  * PremiumModal.jsx — obuna oynasi
  *
  * Web: tariflar → to'lov usuli (Click / Telegram operator) + promokod.
+ * ⚠️ 2026-08-14: config.CLICK_ENABLED = false — Click varianti foydalanuvchidan
+ * yashirilgan, 2-qadamda faqat Telegram operatori (Zehin direkt) qoladi.
+ * Bayroq true bo'lsa tanlov avtomatik qaytadi.
  * Play build (isPlayBuild): sotuv UI'si YO'Q — narx, tarif, to'lov tugmasi va
  * tashqi havola ko'rsatilmaydi. Google Play Payments siyosati ta'lim obunasini
  * ilova ichida faqat Play Billing orqali sotishga ruxsat beradi, O'zbekiston
@@ -14,7 +17,7 @@ import { useTranslation } from 'react-i18next';
 import i18n from '../i18n';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Lock, X, Shield, Send, BadgePercent, Check
+  Lock, X, Shield, Send, BadgePercent, Check, Copy
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
@@ -22,7 +25,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { redeemPromo, PROMO_ERRORS } from '../services/promo';
 import { generateClickUrl } from '../services/payment';
 import { AnalyticsEvents } from '../services/analytics';
-import { isPlayBuild } from '../config';
+import { isPlayBuild, CLICK_ENABLED, PAYMENT_TG_URL } from '../config';
 import { useModalA11y } from '../hooks/useModalA11y';
 import RoiBlock from './RoiBlock';
 import BrandLogo from './shared/BrandLogo';
@@ -76,7 +79,9 @@ const PremiumModal = ({ isOpen, onClose }) => {
   const badgeMap = { 'ENG OMMABOP': t('premium.badgePopular'), 'TEJAMKOR': t('premium.badgeSaver') };
   const planLabel = (p) => p ? (planNameMap[p.id] || p.name) : '';
   const [step, setStep] = useState('plans'); // 'plans' | 'method'
-  const [payMethod, setPayMethod] = useState('click'); // 'click' | 'telegram'
+  // Click yashirilgan bo'lsa — yagona usul Telegram operatori
+  const [payMethod, setPayMethod] = useState(CLICK_ENABLED ? 'click' : 'telegram'); // 'click' | 'telegram'
+  const [orderCopied, setOrderCopied] = useState(false);
   const [plans, setPlans] = useState(DEFAULT_PLANS);
   // Default — yillik plan (eng arzon kunlik narx, ROI eng kuchli)
   const [selectedPlan, setSelectedPlan] = useState(DEFAULT_PLANS[2]);
@@ -99,6 +104,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (!isOpen || !user) return;
     setStep('plans');
+    setOrderCopied(false);
 
     const fetchData = async () => {
       try {
@@ -183,30 +189,49 @@ const PremiumModal = ({ isOpen, onClose }) => {
   // 1-qadam CTA: to'lov usuliga o'tish (faqat web — Play build'da bu tugma yo'q)
   const handleContinue = () => {
     if (!user || !selectedPlan) return;
+    setOrderCopied(false);
     setStep('method');
   };
 
-  // 2-qadam CTA: Click yoki Telegram operator to'lovi
+  // Operatorga yuboriladigan buyurtma matni — administrator qaysi foydalanuvchiga
+  // qaysi tarifni yoqishini AYNAN shu ma'lumotdan biladi (ID siz tasdiqlab bo'lmaydi).
+  const orderText = selectedPlan
+    ? `Zehin Pro\n${t('premium.tgOrderPlan')}: ${planLabel(selectedPlan)}\n${t('premium.toPay')}: ${fmt(finalPrice)}\nID: ${user?.uid || ''}`
+    : '';
+
+  const copyOrder = () => {
+    // Nusxalash muvaffaqiyatsiz bo'lsa ham muammo yo'q — matn ekranda ko'rinib turibdi
+    try {
+      navigator.clipboard?.writeText(orderText).then(() => setOrderCopied(true)).catch(() => {});
+    } catch (_) { /* bufer bloklangan */ }
+  };
+
+  // Telegram operatori (Zehin direkt) — kartadan kartaga to'lov shu yerda rasmiylashadi.
+  // Kanalning "direkt" chatida ?text= oldindan to'ldirilmaydi, shuning uchun buyurtma
+  // ma'lumotini buferga ko'chiramiz. window.open sinxron chaqiriladi — aks holda
+  // brauzer uni foydalanuvchi harakatidan uzilgan deb bloklaydi.
+  const openTelegramOperator = () => {
+    AnalyticsEvents.premiumClick('telegram');
+    copyOrder();
+    window.open(PAYMENT_TG_URL, '_blank', 'noopener,noreferrer');
+  };
+
+  // 2-qadam CTA: Click (agar yoqilgan bo'lsa) yoki Telegram operator to'lovi
   const handlePay = () => {
     if (!user || !selectedPlan) return;
-    
-    if (payMethod === 'telegram') {
-      AnalyticsEvents.premiumClick('telegram');
-      const text = encodeURIComponent(`Salom! Men Zehin Pro (${planLabel(selectedPlan)}) obunasini rasmiylashtirmoqchiman.\nFoydalanuvchi ID: ${user.uid}\nSumma: ${fmt(finalPrice)}`);
-      window.open(`https://t.me/zehinuz?text=${text}`, '_blank');
-      return;
+
+    if (CLICK_ENABLED && payMethod === 'click') {
+      const amount = Math.round(finalPrice);
+      const clickUrl = generateClickUrl(user.uid, user.phoneNumber || user.phone || '', amount, selectedPlan.id);
+      if (clickUrl) {
+        AnalyticsEvents.premiumClick('click');
+        window.open(clickUrl, '_blank');
+        return;
+      }
+      // Click sozlanmagan — operatorga tushamiz
     }
 
-    const amount = Math.round(finalPrice);
-    AnalyticsEvents.premiumClick('click');
-    const clickUrl = generateClickUrl(user.uid, user.phoneNumber || user.phone || '', amount, selectedPlan.id);
-    if (clickUrl) {
-      window.open(clickUrl, '_blank');
-    } else {
-      // Click bo'lmasa Telegram operatorga yo'naltirish
-      const text = encodeURIComponent(`Salom! Men Zehin Pro (${planLabel(selectedPlan)}) obunasini Click/Karta orqali rasmiylashtirmoqchiman.\nFoydalanuvchi ID: ${user.uid}`);
-      window.open(`https://t.me/zehinuz?text=${text}`, '_blank');
-    }
+    openTelegramOperator();
   };
 
   // Promokod kartasi — method qadamida (webda) va plans qadamida (Android'da,
@@ -519,7 +544,9 @@ const PremiumModal = ({ isOpen, onClose }) => {
             {step === 'method' && (
               <motion.div key="method" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                 <div style={{ textAlign: 'center', marginBottom: 18 }}>
-                  <h2 style={{ fontSize: 'var(--fs-3xl)', fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>{t('premium.choosePayMethod', 'To\'lov turini tanlang')}</h2>
+                  <h2 style={{ fontSize: 'var(--fs-3xl)', fontWeight: 900, color: '#0f172a', margin: '0 0 4px' }}>
+                    {CLICK_ENABLED ? t('premium.choosePayMethod') : t('premium.payTgTitle')}
+                  </h2>
                   <p style={{ fontSize: 'var(--fs-sm)', color: '#64748B', margin: 0 }}>Zehin — {planLabel(selectedPlan)}</p>
                 </div>
 
@@ -528,60 +555,126 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
                 {bonusBanner}
 
-                {/* To'lov usullari: Click & Telegram Operator */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 16 }}>
-                  {/* Click option */}
-                  <div 
-                    onClick={() => setPayMethod('click')}
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: 12,
-                      padding: '14px 16px', borderRadius: 14,
-                      cursor: 'pointer',
-                      border: payMethod === 'click' ? '2px solid #00a2ff' : '1.5px solid rgba(0,0,0,0.08)',
-                      background: payMethod === 'click' ? 'rgba(0,162,255,0.06)' : '#ffffff',
-                      transition: 'all 0.2s',
-                    }}
-                  >
-                    <span style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(0,162,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 900, color: '#00a2ff', letterSpacing: 0.5 }}>C</span>
-                    </span>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: '#0f172a' }}>{t('premium.payClickTitle', 'Click (Uzcard / Humo)')}</div>
-                      <div style={{ fontSize: 'var(--fs-xs)', color: '#64748B', marginTop: 2 }}>{t('premium.payClickSub', 'Bank kartasi yoki Click ilovasi orqali to\'lov')}</div>
+                {/* To'lov usullari.
+                    CLICK_ENABLED = false — foydalanuvchiga tanlov ko'rsatilmaydi,
+                    yagona yo'l Telegram operatori (Zehin direkt) sifatida tushuntiriladi. */}
+                {CLICK_ENABLED ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 16 }}>
+                    {/* Click option */}
+                    <div
+                      onClick={() => setPayMethod('click')}
+                      style={{
+                        display: 'flex', alignItems: 'center', gap: 12,
+                        padding: '14px 16px', borderRadius: 14,
+                        cursor: 'pointer',
+                        border: payMethod === 'click' ? '2px solid #00a2ff' : '1.5px solid rgba(0,0,0,0.08)',
+                        background: payMethod === 'click' ? 'rgba(0,162,255,0.06)' : '#ffffff',
+                        transition: 'all 0.2s',
+                      }}
+                    >
+                      <span style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(0,162,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <span style={{ fontSize: 'var(--fs-lg)', fontWeight: 900, color: '#00a2ff', letterSpacing: 0.5 }}>C</span>
+                      </span>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: '#0f172a' }}>{t('premium.payClickTitle')}</div>
+                        <div style={{ fontSize: 'var(--fs-xs)', color: '#64748B', marginTop: 2 }}>{t('premium.payClickSub')}</div>
+                      </div>
+                      <div style={{
+                        width: 20, height: 20, borderRadius: '50%',
+                        border: payMethod === 'click' ? '6px solid #00a2ff' : '2px solid #cbd5e1',
+                        flexShrink: 0
+                      }} />
                     </div>
-                    <div style={{
-                      width: 20, height: 20, borderRadius: '50%',
-                      border: payMethod === 'click' ? '6px solid #00a2ff' : '2px solid #cbd5e1',
-                      flexShrink: 0
-                    }} />
-                  </div>
 
-                  {/* Telegram Operator option */}
-                  <div 
-                    onClick={() => setPayMethod('telegram')}
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: 12,
-                      padding: '14px 16px', borderRadius: 14,
-                      cursor: 'pointer',
-                      border: payMethod === 'telegram' ? '2px solid #229ED9' : '1.5px solid rgba(0,0,0,0.08)',
-                      background: payMethod === 'telegram' ? 'rgba(34,158,217,0.06)' : '#ffffff',
-                      transition: 'all 0.2s',
-                    }}
-                  >
-                    <span style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(34,158,217,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <Send size={18} color="#229ED9" />
-                    </span>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: '#0f172a' }}>{t('premium.payTelegramTitle', 'Telegram Administrator')}</div>
-                      <div style={{ fontSize: 'var(--fs-xs)', color: '#64748B', marginTop: 2 }}>{t('premium.payTelegramSub', 'Operator yordamida kartadan kartaga o\'tkazish')}</div>
+                    {/* Telegram Operator option */}
+                    <div
+                      onClick={() => setPayMethod('telegram')}
+                      style={{
+                        display: 'flex', alignItems: 'center', gap: 12,
+                        padding: '14px 16px', borderRadius: 14,
+                        cursor: 'pointer',
+                        border: payMethod === 'telegram' ? '2px solid #229ED9' : '1.5px solid rgba(0,0,0,0.08)',
+                        background: payMethod === 'telegram' ? 'rgba(34,158,217,0.06)' : '#ffffff',
+                        transition: 'all 0.2s',
+                      }}
+                    >
+                      <span style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(34,158,217,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <Send size={18} color="#229ED9" />
+                      </span>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: '#0f172a' }}>{t('premium.payTelegramTitle')}</div>
+                        <div style={{ fontSize: 'var(--fs-xs)', color: '#64748B', marginTop: 2 }}>{t('premium.payTelegramSub')}</div>
+                      </div>
+                      <div style={{
+                        width: 20, height: 20, borderRadius: '50%',
+                        border: payMethod === 'telegram' ? '6px solid #229ED9' : '2px solid #cbd5e1',
+                        flexShrink: 0
+                      }} />
                     </div>
-                    <div style={{
-                      width: 20, height: 20, borderRadius: '50%',
-                      border: payMethod === 'telegram' ? '6px solid #229ED9' : '2px solid #cbd5e1',
-                      flexShrink: 0
-                    }} />
                   </div>
-                </div>
+                ) : (
+                  <>
+                    {/* Yagona usul — operator orqali kartadan kartaga */}
+                    <div style={{
+                      border: '1.5px solid rgba(34,158,217,0.35)', background: 'rgba(34,158,217,0.06)',
+                      borderRadius: 14, padding: '14px 16px', marginBottom: 12,
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+                        <span style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(34,158,217,0.14)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                          <Send size={18} color="#229ED9" />
+                        </span>
+                        <div style={{ flex: 1 }}>
+                          <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: '#0f172a' }}>{t('premium.payTelegramTitle')}</div>
+                          <div style={{ fontSize: 'var(--fs-xs)', color: '#64748B', marginTop: 2 }}>{t('premium.payTelegramSub')}</div>
+                        </div>
+                      </div>
+                      <ol style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                        {['tgStep1', 'tgStep2', 'tgStep3'].map((key, i) => (
+                          <li key={key} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                            <span style={{
+                              width: 20, height: 20, borderRadius: '50%', background: '#229ED9', color: '#fff',
+                              fontSize: 'var(--fs-3xs)', fontWeight: 900, flexShrink: 0, marginTop: 1,
+                              display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            }}>{i + 1}</span>
+                            <span style={{ fontSize: 'var(--fs-sm)', color: '#334155', lineHeight: 1.45, fontWeight: 600 }}>
+                              {t(`premium.${key}`)}
+                            </span>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+
+                    {/* Buyurtma ma'lumotlari — operatorga aynan shu yuboriladi */}
+                    <div style={{
+                      background: '#f8fafc', border: '1px solid #e2e8f0',
+                      borderRadius: 14, padding: '12px 14px', marginBottom: 14,
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginBottom: 8 }}>
+                        <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 800, color: '#64748B', textTransform: 'uppercase', letterSpacing: 0.8 }}>
+                          {t('premium.tgOrder')}
+                        </span>
+                        <button
+                          onClick={copyOrder}
+                          style={{
+                            display: 'flex', alignItems: 'center', gap: 5,
+                            padding: '6px 10px', borderRadius: 9, border: '1px solid #cbd5e1',
+                            background: '#ffffff', color: orderCopied ? '#10B981' : '#334155',
+                            fontSize: 'var(--fs-2xs)', fontWeight: 800, fontFamily: 'inherit', cursor: 'pointer',
+                          }}
+                        >
+                          {orderCopied ? <Check size={12} strokeWidth={3} /> : <Copy size={12} />}
+                          {orderCopied ? t('premium.tgCopied') : t('premium.tgCopy')}
+                        </button>
+                      </div>
+                      <div style={{
+                        fontSize: 'var(--fs-xs)', color: '#334155', fontWeight: 600,
+                        lineHeight: 1.55, whiteSpace: 'pre-wrap', wordBreak: 'break-word',
+                      }}>
+                        {orderText}
+                      </div>
+                    </div>
+                  </>
+                )}
 
                 {/* Jami summa */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '0 2px 12px' }}>
@@ -606,7 +699,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
                     marginBottom: 12,
                   }}
                 >
-                  <Send size={18} /> {payMethod === 'telegram' ? t('premium.contactOperator', 'Operator bilan bog\'lanish') : t('premium.payNow', 'To\'lash')}
+                  <Send size={18} /> {payMethod === 'telegram' ? t('premium.contactOperator') : t('premium.payNow')}
                 </motion.button>
 
                 <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', textAlign: 'center', marginTop: 4, marginBottom: 12, lineHeight: 1.4 }}>
@@ -615,7 +708,7 @@ const PremiumModal = ({ isOpen, onClose }) => {
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'var(--text3)', fontSize: 'var(--fs-xs)', fontWeight: 600 }}>
                   <Shield size={14} color="#10B981" />
-                  {t('premium.paymentProtected')}
+                  {CLICK_ENABLED ? t('premium.paymentProtected') : t('premium.tgSafety')}
                 </div>
               </motion.div>
             )}

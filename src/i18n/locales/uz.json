@@ -783,6 +783,14 @@
     "toPay": "To'lov uchun",
     "payNow": "To'lash",
     "contactOperator": "Operator bilan bog'lanish",
+    "tgStep1": "«Operator bilan bog'lanish» tugmasi Telegramdagi Zehin direkt chatini ochadi",
+    "tgStep2": "Buyurtma ma'lumotini yuborasiz — administrator karta raqamini beradi",
+    "tgStep3": "Karta orqali to'laysiz; administrator tasdiqlagach Pro faollashadi",
+    "tgOrder": "Buyurtma ma'lumotlari",
+    "tgOrderPlan": "Tarif",
+    "tgCopy": "Nusxa olish",
+    "tgCopied": "Nusxalandi",
+    "tgSafety": "Karta ma'lumotlaringiz ilovada saqlanmaydi",
     "paymentProtected": "To'lov ma'lumotlaringiz himoyalangan",
     "termsAccept1": "To'lovni amalga oshirish orqali siz ",
     "termsLinkText": "Foydalanish shartlari va Ommaviy oferta",
@@ -1213,8 +1221,8 @@
     "trustLabel": "🛡️ Xavfsizlik va Kafolat",
     "trustBadges": [
       {
-        "title": "Click",
-        "sub": "Xavfsiz to'lov"
+        "title": "Karta orqali",
+        "sub": "Rasmiy operator"
       },
       {
         "title": "Tezkor Faol",
@@ -1233,11 +1241,11 @@
       },
       {
         "q": "To'lovlar qanday amalga oshiriladi va xavfsizmi?",
-        "a": "To'lovlar xavfsiz Click yoki Telegram bot orqali to'g'ridan-to'g'ri o'tkaziladi. Tranzaksiyalar shifrlangan kanallar orqali amalga oshiriladi."
+        "a": "To'lov Telegramdagi rasmiy Zehin direkt kanali orqali, administrator nazoratida kartadan kartaga amalga oshiriladi. Karta ma'lumotlaringiz ilovada saqlanmaydi."
       },
       {
         "q": "Pro faollashishi uchun qancha vaqt ketadi?",
-        "a": "Click orqali to'lovlar avtomatik tarzda 5 soniyada faollashadi. Telegram bot orqali chek yuborilganda esa admin tomonidan 5-10 daqiqada tasdiqlanadi."
+        "a": "Administrator to'lovni tasdiqlagach, Pro odatda 5-10 daqiqa ichida faollashadi. Ilovani yangilasangiz, bo'limlar darhol ochiladi."
       },
       {
         "q": "Savollar bazasi qanchalik tez-tez yangilanadi?",

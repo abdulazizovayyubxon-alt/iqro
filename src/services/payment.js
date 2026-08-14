@@ -1,5 +1,10 @@
 /**
- * Click to'lov integratsiyasi (tez kunda ishga tushadi)
+ * Click to'lov integratsiyasi
+ *
+ * ⚠️ 2026-08-14: Click foydalanuvchidan VAQTINCHA YASHIRILGAN —
+ * config.js dagi CLICK_ENABLED bayrog'iga qarang. Bu modul o'chirilmadi:
+ * webhook va checkout mantiqi tirik qoladi, bayroq true bo'lishi bilan
+ * hech narsa qo'shmasdan ishlaydi.
  *
  * ARXITEKTURA:
  * 1. Frontend → Click checkout URL ochadi (userId bilan)
@@ -9,6 +14,7 @@
  *
  * MUHIM: merchant_id va secret_key faqat .env da bo'lishi kerak!
  */
+import { CLICK_ENABLED } from '../config';
 
 // ── Narxlar ──
 export const PREMIUM_PRICE = 30000; // 30,000 so'm
@@ -16,6 +22,10 @@ export const PREMIUM_LABEL = "Zehin — Barcha bo'limlar";
 
 // ── Click checkout URL generatori ──
 export const generateClickUrl = (userId, userPhone, planPrice = PREMIUM_PRICE, planId = 'lifetime') => {
+  // Bayroq o'chiq bo'lsa — hech qanday chaqiruvchi Click'ni ocholmaydi
+  // (UI gate'idan tashqari ikkinchi himoya qatlami).
+  if (!CLICK_ENABLED) return null;
+
   const merchantId = import.meta.env.VITE_CLICK_MERCHANT_ID;
   const serviceId = import.meta.env.VITE_CLICK_SERVICE_ID;
 

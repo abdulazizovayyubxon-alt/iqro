@@ -783,6 +783,14 @@
     "toPay": "Total to Pay",
     "payNow": "Pay Now",
     "contactOperator": "Contact the operator",
+    "tgStep1": "The \"Contact the operator\" button opens the Zehin direct chat in Telegram",
+    "tgStep2": "Send the order details — the administrator replies with the card number",
+    "tgStep3": "Pay by card; Pro is activated once the administrator confirms it",
+    "tgOrder": "Order details",
+    "tgOrderPlan": "Plan",
+    "tgCopy": "Copy",
+    "tgCopied": "Copied",
+    "tgSafety": "Your card details are never stored in the app",
     "paymentProtected": "Your payment details are encrypted and secure",
     "termsAccept1": "By making a payment, you agree to our ",
     "termsLinkText": "Terms of Service and Public Offer",
@@ -1213,8 +1221,8 @@
     "trustLabel": "🛡️ Security and Guarantee",
     "trustBadges": [
       {
-        "title": "Click",
-        "sub": "Secure payment"
+        "title": "Card payment",
+        "sub": "Official operator"
       },
       {
         "title": "Instant activation",
@@ -1233,11 +1241,11 @@
       },
       {
         "q": "How are payments made, and are they secure?",
-        "a": "Payments are transferred directly through the secure Click system or the Telegram bot. Transactions are carried out over encrypted channels."
+        "a": "Payment goes through the official Zehin direct channel on Telegram: a card-to-card transfer handled by an administrator. Your card details are never stored in the app."
       },
       {
         "q": "How long does it take for Pro to activate?",
-        "a": "Payments via Click activate automatically within 5 seconds. When a receipt is sent through the Telegram bot, an administrator confirms it within 5–10 minutes."
+        "a": "Once the administrator confirms your payment, Pro usually activates within 5–10 minutes. Refresh the app and the sections open right away."
       },
       {
         "q": "How often is the question base updated?",

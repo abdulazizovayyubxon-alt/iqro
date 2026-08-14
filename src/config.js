@@ -10,15 +10,29 @@ export const APP_SUBTITLE = 'Attestatsiya platformasi';
 export const EXAM_LABEL = EXAM_DATE ? '13 May — Malaka toifa imtihoni' : 'Zehin — attestatsiya platformasi';
 export const EXAM_GOAL_SCORE = 70;
 export const APP_URL = 'https://zehin-t41p.vercel.app'; // Haqiqiy domen (Vercel loyiha nomi: zehin, alias suffiksi -t41p saqlangan)
-// Shaxsiy murojaat (kanal DM) — FAQAT texnik yordam va huquqiy murojaatlar.
-// ⚠️ AUDIT 2026-08-06, T-13 BAND: izohda ilgari "to'lov operatori" deb yozilgan
-// edi. Bu noto'g'ri va xavfli signal: agar shu kanal orqali obuna sotilsa,
-// Play build'da (isPlayBuild) havola YASHIRILISHI shart bo'lardi — aks holda
-// Google Play'ning tashqi to'lovga yo'naltirish taqiqi buziladi.
-// Egasi tasdiqladi: kanal orqali TO'LOV QABUL QILINMAYDI, shuning uchun havola
-// Play build'da ham ochiq qolishi mumkin. Bu holat o'zgarsa — gate qo'shing.
+// Shaxsiy murojaat (kanal "direkt" chati) — texnik yordam va huquqiy murojaatlar.
+// ⚠️ 2026-08-14: bu kanal endi TO'LOV OPERATORI hamdir (pastdagi PAYMENT_TG_URL
+// ga qarang). AUDIT 2026-08-06, T-13 bandidagi "kanal orqali to'lov qabul
+// qilinmaydi" sharti BEKOR BO'LDI. Play build'da to'lov yuzasi baribir
+// ko'rsatilmaydi (PremiumModal isPlayBuild gate'i), lekin yordam havolasi
+// ochiq — ya'ni Play ilovasidan ham shu chatga o'tish mumkin. Google Play
+// anti-steering nuqtai nazaridan bu chegaraviy holat: agar Play siyosati
+// qattiqlashsa, SUPPORT_URL'ni ham isPlayBuild bilan gate qilish kerak.
 export const SUPPORT_URL = 'https://t.me/zehinuz?direct';
 export const CHANNEL_URL = 'https://t.me/zehinuz'; // Rasmiy Telegram kanal — yangiliklar/obuna (murojaat uchun emas)
+
+// ─── To'lov usullari ko'rinishi ───
+// Click integratsiyasi kod-tayyor va server tomoni (api/payment-webhook.js) tirik,
+// lekin 2026-08-14 dan foydalanuvchidan VAQTINCHA YASHIRILGAN (egasi qarori).
+// Yagona to'lov yo'li — Telegram operatori: foydalanuvchi Zehin "direkt" chatiga
+// o'tadi, administrator kartadan kartaga to'lovni qabul qiladi va Pro'ni yoqadi.
+// QAYTA YOQISH: shu bayroqni true qiling — Click varianti PremiumModal'da
+// avtomatik qaytadi, boshqa hech narsa o'zgartirilmaydi.
+export const CLICK_ENABLED = false;
+
+// To'lov operatori bilan aloqa. Ayni paytda yordam kanali bilan bir xil, lekin
+// alohida konstanta — kelajakda alohida to'lov akkaunti ochilsa shu yer o'zgaradi.
+export const PAYMENT_TG_URL = SUPPORT_URL;
 
 export const BATCH_SIZE = 50; // Har bir blokdagi savollar soni
 export const MAX_MISTAKES_SAVED = 50; // Maksimal saqlanadigan xatolar soni
