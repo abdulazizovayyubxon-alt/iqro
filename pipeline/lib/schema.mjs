@@ -3,7 +3,7 @@
 // Shuning uchun ikkalasini ham qabul qilamiz, lekin MOHIYAT bir xil tekshiriladi.
 
 import { hasCyrillic, cyrillicChars } from "./normalize.mjs";
-import { cueLeakReasons, comboReasons } from "./quality.mjs";
+import { cueLeakReasons, comboReasons, matchingReasons, sequenceReasons } from "./quality.mjs";
 
 const DIFFICULTIES = new Set(["Y1", "Y2", "Y3"]);
 const QTYPES = new Set(["single", "matching", "sequence", "combo"]);
@@ -90,6 +90,10 @@ export function validateQuestion(raw, { allowCyrillic = false } = {}) {
 
   // Kombinatsiya (combo) tuzilmasi: o'zakdagi mulohazalar bilan variantlar mos kelsin
   errors.push(...comboReasons(q));
+
+  // Moslashtirish/ketma-ketlik tuzilmasi: o'zakda ro'yxat bo'lsin va izoh javobga zid bo'lmasin
+  errors.push(...matchingReasons(q));
+  errors.push(...sequenceReasons(q));
 
   return errors;
 }

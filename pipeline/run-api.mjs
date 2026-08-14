@@ -262,7 +262,12 @@ while (already + accepted.length < target) {
     process.stdout.write(`[aylanish ${pass} · ${i + 1}/${chunks.length}] ${c.block} "${c.title.slice(0, 32)}" ... `);
     try {
       const useAnchors = (c.block === "pedagogika" || c.block === "kasb") && pedAnchors.length ? pedAnchors : anchors;
-      const specChunk = c.block === "mutaxassislik" ? c.text.trim() + bookGrounding(c.title + " " + c.text) : c.text.trim();
+      // sub.contextNote — fanning KONTEKST eslatmasi (mas: MTT = 2–7 yosh, "tarbiyachi/yo'riqchi",
+      // "mashg'ulot", maktab emas). chunkSpec spec faylining BIRINCHI markergacha bo'lgan sarlavha
+      // qismini tashlab yuboradi, shuning uchun konteksni fayl boshiga yozish YETARLI EMAS —
+      // har bo'lakka qayta qo'shiladi (aks holda model maktab darsi qolipiga tushib ketadi).
+      const ctx = sub.contextNote ? `\n\n⚠️ FAN KONTEKSTI (har savolda amal qil):\n${sub.contextNote}` : "";
+      const specChunk = (c.block === "mutaxassislik" ? c.text.trim() + bookGrounding(c.title + " " + c.text) : c.text.trim()) + ctx;
       let prompt = buildGenPrompt({ subjectName: sub.name, subjectSlug: slug, topicTitle: c.title, specChunk, anchors: useAnchors, existingTitles: sampleTitles(), count: per, block: c.block, pedStyle });
       if (specialOnly) prompt += `\n\n⚠️ MAXSUS REJIM: bu so'rovda FAQAT "matching" va "sequence" formatdagi savollar yoz — "single" YOZMA!
 Taxminan yarmi matching, yarmi sequence. FAQAT manba matnida ANIQ ro'yxat/juftlik/tartib bo'lsa tuz — to'qima.
@@ -281,6 +286,10 @@ Agar bu bo'lakda mos ro'yxat/tartib bo'lmasa, KAM savol qaytar (bo'sh massiv ham
         if (!specialOnly && isSpecial(qt) && nSpecial >= SPECIAL_CAP) { specialSkip++; continue; } // format balansi (single+combo ustun)
         if (findDuplicate(index, q0)) { dup++; continue; }
         const q = shuffleOptions(q0);
+        // Manba bo'lakni QAYD ETAMIZ: to'g'ri bo'lim (topicId) shundan aniqlanadi. Model qaytargan
+        // "topic" maydoni erkin matn (ba'zan "Mutaxassislik fani" deb keladi) — unga tayanib bo'lmaydi.
+        q._chunk = c.title;
+        q._block = c.block;
         accepted.push(q); addToIndex(index, q); ok++;
         if (isSpecial(qt)) nSpecial++;
         titles.push(q.question);

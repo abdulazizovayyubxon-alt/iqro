@@ -19,7 +19,8 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 
 const ALL = ['chqbt', 'art', 'tarix', 'sport', 'boshlangich', 'info', 'mtt', 'mtt_rahbar',
-             'til', 'biologiya', 'geografiya', 'mtt_logoped', 'mtt_psixolog', 'kimyo', 'rus_tili', 'ingliz'];
+             'til', 'biologiya', 'geografiya', 'mtt_logoped', 'mtt_psixolog', 'kimyo', 'rus_tili', 'ingliz',
+             'mtt_jismoniy'];
 
 const argv = process.argv.slice(2);
 const fans = argv.includes('--all') ? ALL : argv.filter((a) => !a.startsWith('--'));

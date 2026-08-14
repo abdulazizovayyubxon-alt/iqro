@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 
 // MTT (maktabgacha) yo'nalishlari — qolganlari "Maktab fanlari" guruhiga kiradi
-const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog'];
+const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy'];
 
 const inCategory = (topic, cat) =>
   Array.isArray(topic.category) ? topic.category.includes(cat) : topic.category === cat;

@@ -21,7 +21,7 @@ import { BATCH_SIZE } from '../config';
 const PRIMARY = 'var(--accent)';
 
 // MTT (maktabgacha) yo'nalishlari
-const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog'];
+const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy'];
 
 const GOALS = [
   { id: 'second_category', badge: '🥈' },
@@ -47,6 +47,7 @@ const SUBJECTS = [
   { id: 'kimyo', badge: 'Ki' },
   { id: 'rus_tili', badge: 'Ru' },
   { id: 'ingliz', badge: 'En' },
+  { id: 'mtt_jismoniy', badge: 'Jt' },
   { id: 'multi', badge: '✦' },
 ];
 

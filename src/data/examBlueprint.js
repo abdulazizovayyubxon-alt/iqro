@@ -193,6 +193,17 @@ export const EXAM_BLUEPRINT = {
   134: 6,  // Pragmatika
   135: 5,  // Kasb standarti                (36–40)
   136: 10, // Pedagogik mahorat va ELT      (41–50)
+
+  // ── MTT jismoniy tarbiya (137–145) · «МТТ Жисмония тарбия йўриқчиси.pdf» ──
+  137: 3,  // Valeologiya (sog'lom turmush tarzi asoslari) (1–3)
+  138: 5,  // Gimnastika turlari va qoidalari              (4–8)
+  139: 5,  // Harakatli o'yinlar                           (9–13)
+  140: 5,  // Yengil atletika turlari va qoidalari         (14–18)
+  141: 3,  // Suzish turlari va qoidalari                  (19–21)
+  142: 10, // Sport o'yinlari turlari va qoidalari         (22–31)
+  143: 4,  // Sport inshootlari                            (32–35)
+  144: 5,  // Kasb standarti                               (36–40)
+  145: 10, // Pedagogik mahorat                            (41–50)
 };
 
 /**
@@ -224,7 +235,8 @@ export const PED_BLOCK_TOPIC_IDS = new Set([
   112, 113,   // MTT psixolog
   119, 120,   // Kimyo
   127, 128,   // Rus tili
-  135, 136    // Ingliz tili
+  135, 136,   // Ingliz tili
+  144, 145    // MTT jismoniy tarbiya
 ]);
 
 /** Bo'lim imtihonning oxirgi 15 talik blokiga kiradimi? */

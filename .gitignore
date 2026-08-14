@@ -79,3 +79,8 @@ pipeline/inbox/theory/
 pipeline/_theory_gen.log
 
 .env*
+
+# MTT jismoniy tarbiya: audit hisobotlari va yurish loglari (lokal, katta)
+pipeline/verify_report_mttjt_*.json
+pipeline/_audit_mttjt_*.log
+pipeline/_mttjt_*.log

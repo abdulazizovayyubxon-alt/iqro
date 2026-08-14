@@ -134,6 +134,19 @@ export const SUBJECTS = {
     spec: "fan/spes/_txt/mtt_logoped_spec_clean.txt",   // TOZA mutaxassislik (1.1-1.8, ped/kasb dumi+adabiyot kesilgan). Ped+kasb=o'rta ta'lim SHARED_PED dan (logoped maktabda ishlaydi)
     book: "scratch/mtt_logoped_book.txt",   // Ayupova Logopediya (lotin, o'zak) + Filicheva Osnovy — mutaxassislik fakt grounding. Arxipova/Volkova/ndpi=skan yoki rus-kirill (tashlangan)
   },
+  mtt_jismoniy: {
+    name: "MTT jismoniy tarbiya yo'riqchisi", category: "mtt_jismoniy", isNew: true,
+    corpus: [],
+    namuna: ["fan/mtt_jismoniy_savollar.json"],   // rasmiy demotest namunasi (47 savol, 2026-08-14 da ekran suratlaridan ko'chirildi)
+    contextNote:
+      "• Talabgor — MAKTABGACHA TA'LIM TASHKILOTI (MTT, bog'cha) jismoniy tarbiya YO'RIQCHISI. Bu MAKTAB o'qituvchisi EMAS.\n" +
+      "• Bolalar yoshi 2–7 yosh (kichik, o'rta, katta va maktabga tayyorlov guruhlari). 8 yosh va undan katta bola, sinf, o'quvchi, dars — BU FANDA YO'Q.\n" +
+      "• Atamalar: \"yo'riqchi\"/\"tarbiyachi\"/\"pedagog\" (o'qituvchi emas), \"bola\"/\"bolalar\" (o'quvchi emas), \"mashg'ulot\" (dars emas), \"guruh\" (sinf emas), \"MTT\"/\"bog'cha\" (maktab emas).\n" +
+      "• Nazariy bilim (gimnastika, yengil atletika, suzish, sport o'yinlari, sport inshootlari qoidalari) so'ralganda ham vaziyat MTT sharoitida bo'lsin: yosh xususiyati, yuklama dozasi, xavfsizlik, o'yin orqali o'rgatish.\n" +
+      "• Me'yoriy asos: \"Ilk qadam\" davlat o'quv dasturi va MTT davlat standarti (VM 802-son qarori).",
+    spec: "scratch/mtt_jismoniy_spec_clean.txt",  // TOZA mutaxassislik (1.1-7.4, 35 bo'lak = imtihondagi 35 savolga proporsional). Ped+kasb = --blocks bilan SHARED_PED dan
+    book: "scratch/mtt_jismoniy_book.txt",        // jismoniy tarbiya 2-8 sinf darsliklari + MTT DTS (VM 802) + qonun + Ilk qadam + Qodirova/Sodiqova maktabgacha pedagogikaning jismoniy tarbiya boblari
+  },
   mtt_psixolog: {
     name: "MTT psixolog", category: "mtt_psixolog", isNew: true,
     corpus: [],

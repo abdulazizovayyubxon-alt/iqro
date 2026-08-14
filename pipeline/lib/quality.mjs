@@ -109,3 +109,90 @@ export function comboReasons(q) {
 
   return reasons;
 }
+
+// ── matching / sequence tuzilma tekshiruvi (2026-08-14 da qo'shildi) ─────────────────────
+//
+// NEGA: mtt_jismoniy pilot yurishida model "matching" savollarni O'ZAKDA o'ng ustunni (A./B./C.
+// ta'riflarni) UMUMAN yozmasdan chiqardi — variantlar "1-B, 2-A, 3-C" edi, lekin B/A/C nima
+// ekani savolda yo'q. Bunday savolga javob berib bo'lmaydi. combo uchun bunday qo'riqlagich
+// (comboReasons) bor edi, matching/sequence uchun yo'q edi — shu bo'shliq to'ldirildi.
+//
+// Ikkinchi nuqson: izoh o'zining moslik/tartibini aytadi-yu, u BELGILANGAN javobga zid bo'ladi
+// (pilotda: izoh "to'g'ri juftlik 1-A, 2-B, 3-C" deydi, answer esa "1-A, 2-C, 3-B" variantini
+// ko'rsatadi). Izohdagi moslik/tartib javob varianti bilan solishtiriladi — zid bo'lsa rad etiladi.
+const MAP_PAIR = /(\d)\s*[-–—:]\s*([A-Z])\b/g;
+const listedNums = (stem) => new Set((stem.match(/(?:^|[\s\n(])(\d)\s*[).]/g) || []).map((s) => s.replace(/\D/g, "")));
+const listedLetters = (stem) => new Set((stem.match(/(?:^|[\s\n(])([A-Z])\s*[).]/g) || []).map((s) => s.trim()[0]));
+
+export function matchingReasons(q) {
+  const reasons = [];
+  if ((q.qtype || "single") !== "matching") return reasons;
+  const opts = q.options || {};
+  if (!LETTERS.every((x) => opts[x] != null)) return reasons;
+  const stem = String(q.question || "");
+
+  const nums = listedNums(stem);
+  const lets = listedLetters(stem);
+  if (nums.size < 2) reasons.push(`matching: savol o'zagida raqamli ro'yxat yo'q (kamida 2 ta "1) ..." kerak)`);
+  if (lets.size < 2) reasons.push(`matching: savol o'zagida harfli ro'yxat yo'q (kamida 2 ta "A. ..." kerak) — javob berib bo'lmaydi`);
+  if (reasons.length) return reasons;
+
+  const parsed = [];
+  for (const L of LETTERS) {
+    const v = String(opts[L]).trim();
+    const pairs = [...v.matchAll(MAP_PAIR)];
+    if (pairs.length < 2) { reasons.push(`matching: variant ${L} ("${v.slice(0, 24)}") moslik ro'yxati emas (mas: "1-B, 2-A")`); continue; }
+    for (const [, n, c] of pairs) {
+      if (!nums.has(n)) reasons.push(`matching: variant ${L} da "${n}" raqami o'zakda e'lon qilinmagan`);
+      if (!lets.has(c)) reasons.push(`matching: variant ${L} da "${c}" harfi o'zakda e'lon qilinmagan`);
+    }
+    parsed.push(pairs.map(([, n, c]) => `${n}${c}`).sort().join(","));
+  }
+  if (reasons.length) return reasons;
+  if (new Set(parsed).size < parsed.length) reasons.push("matching: ikki variant bir xil moslikni beradi");
+
+  // Izoh o'z moslikini aytsa — belgilangan javob bilan mos kelsin
+  const exPairs = [...String(q.explanation || "").matchAll(MAP_PAIR)];
+  if (exPairs.length >= nums.size) {
+    const exSet = exPairs.slice(0, nums.size).map(([, n, c]) => `${n}${c}`).sort().join(",");
+    const ansSet = parsed[LETTERS.indexOf(q.answer)];
+    if (ansSet && exSet !== ansSet) {
+      reasons.push(`matching: izohdagi moslik (${exSet}) belgilangan javob (${ansSet}) bilan zid`);
+    }
+  }
+  return reasons;
+}
+
+export function sequenceReasons(q) {
+  const reasons = [];
+  if ((q.qtype || "single") !== "sequence") return reasons;
+  const opts = q.options || {};
+  if (!LETTERS.every((x) => opts[x] != null)) return reasons;
+  const stem = String(q.question || "");
+
+  const nums = listedNums(stem);
+  if (nums.size < 3) { reasons.push(`sequence: savol o'zagida kamida 3 ta raqamli qadam kerak (hozir ${nums.size})`); return reasons; }
+
+  const orders = [];
+  for (const L of LETTERS) {
+    const v = String(opts[L]).trim();
+    const toks = (v.match(/\d/g) || []);
+    if (toks.length !== nums.size) { reasons.push(`sequence: variant ${L} ("${v.slice(0, 24)}") o'zakdagi ${nums.size} ta qadamning tartibi emas`); continue; }
+    if (new Set(toks).size !== toks.length) reasons.push(`sequence: variant ${L} da takroriy raqam bor`);
+    for (const t of toks) if (!nums.has(t)) reasons.push(`sequence: variant ${L} da "${t}" raqami o'zakda yo'q`);
+    orders.push(toks.join(""));
+  }
+  if (reasons.length) return reasons;
+  if (new Set(orders).size < orders.length) reasons.push("sequence: ikki variant bir xil tartibni beradi");
+
+  // Izoh o'z tartibini aytsa — belgilangan javob bilan mos kelsin
+  const exNums = (String(q.explanation || "").match(/\d\s*(?:[,→\-–—]\s*\d\s*){2,}/) || [])[0];
+  if (exNums) {
+    const exOrder = (exNums.match(/\d/g) || []).join("");
+    const ansOrder = orders[LETTERS.indexOf(q.answer)];
+    if (ansOrder && exOrder.length === ansOrder.length && exOrder !== ansOrder) {
+      reasons.push(`sequence: izohdagi tartib (${exOrder}) belgilangan javob (${ansOrder}) bilan zid`);
+    }
+  }
+  return reasons;
+}

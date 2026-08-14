@@ -3,7 +3,8 @@ import {
   Medal, ClipboardList, Target, Map, Shield, HeartPulse, GraduationCap, Palette, PaintBucket, LandPlot, Image as ImageIcon, Ruler, Settings, Home, BookOpen, Activity, Baby, Laptop, Smile, PenTool, Award,
   Compass, Scroll, Hourglass, Globe, Heart, Swords, Trophy, Flame, Calculator, Sun, Cpu, Code, FileText, Binary, Monitor, Wifi, MessageSquare, Scale, Users,
   Microscope, Brain, Mountain, Leaf, Dna, Ear,
-  FlaskConical, Atom, Beaker, TestTube2, TestTubes, Languages, Type, SpellCheck, MessagesSquare, BookA, BookText, Puzzle, Feather, Combine
+  FlaskConical, Atom, Beaker, TestTube2, TestTubes, Languages, Type, SpellCheck, MessagesSquare, BookA, BookText, Puzzle, Feather, Combine,
+  Waves, Dumbbell
 } from 'lucide-react';
 
 // ══════════════════════════════════════════════════════════════
@@ -322,6 +323,29 @@ const inglizTopics = [
     theoryHint: "📌 Pedagogika asoslari va ingliz tili o'qitish metodikasi hamda yondashuvlar (Structural, TBLT, PPP, Lexical, Communicative, CLIL, Grammar-Translation); dars rejalashtirish va sinfni boshqarish." }
 ];
 
+// ── MTT jismoniy tarbiya yo'riqchisi (test spetsifikatsiyasi 2026: 50 savol, 90 daqiqa) ──
+// Mutaxassislik 35 ta (7 mazmun sohasi) + kasb standarti 5 ta + pedagogik mahorat 10 ta.
+const mttJismoniyTopics = [
+  { id: 137, name: "Valeologiya va sog'lom turmush tarzi", subtitle: "Sog'lom odatlar, yuklama dozasi va xavfsizlik", icon: React.createElement(HeartPulse, { size: 20 }), day: 1, category: 'mtt_jismoniy',
+    theoryHint: "📌 Sog'lom turmush tarzi asoslari va uni MTT kun tartibiga integratsiya qilish; 2–7 yoshli bola organizmining xususiyatlari, jismoniy sifatlar, yuklamani dozalash, chiniqtirish, mashg'ulot xavfsizligi va birinchi yordam." },
+  { id: 138, name: "Gimnastika turlari va qoidalari", subtitle: "Saf mashqlari, maxsus qadamlar, akrobatika va snaryadlar", icon: React.createElement(Activity, { size: 20 }), day: 1, category: 'mtt_jismoniy',
+    theoryHint: "📌 Gimnastikaning asosiy turlari va farqlari; saf hamda umumrivojlantiruvchi mashqlar, maxsus qadamlar, akrobatika elementlari, snaryadlarda mashq, sug'urta qoidalari va mashqni o'rgatish metodikasi." },
+  { id: 139, name: "Harakatli o'yinlar", subtitle: "Tasnifi, yosh guruhlariga moslash va milliy o'yinlar", icon: React.createElement(Smile, { size: 20 }), day: 2, category: 'mtt_jismoniy',
+    theoryHint: "📌 Harakatli o'yinlar tasnifi va vazifalari; o'yinni yosh guruhiga (kichik, o'rta, katta, maktabga tayyorlov) moslashtirish, o'tkazish metodikasi, milliy o'yinlar hamda ular orqali jismoniy sifatlarni rivojlantirish." },
+  { id: 140, name: "Yengil atletika turlari va qoidalari", subtitle: "Yurish, yugurish, sakrash va uloqtirish texnikasi", icon: React.createElement(Flame, { size: 20 }), day: 2, category: 'mtt_jismoniy',
+    theoryHint: "📌 Yengil atletika turlari; yurish va yugurish (sprint bosqichlari, o'rta va uzoq masofa), sakrash hamda uloqtirish texnikasi, tipik xatolarni tahlil qilish va musobaqa qoidalarini qo'llash." },
+  { id: 141, name: "Suzish turlari va qoidalari", subtitle: "Krol, brass, batterflyay va suvda xavfsizlik", icon: React.createElement(Waves, { size: 20 }), day: 3, category: 'mtt_jismoniy',
+    theoryHint: "📌 Suzish usullari (krol, chalqancha krol, brass, batterflyay) va qoidalari; harakat texnikasi fazalari, maktabgacha yoshda suvga o'rgatish bosqichlari, suvda xavfsizlik va cho'kishda birinchi yordam." },
+  { id: 142, name: "Sport o'yinlari turlari va qoidalari", subtitle: "Futbol, voleybol, basketbol, gandbol, shaxmat", icon: React.createElement(Trophy, { size: 20 }), day: 3, category: 'mtt_jismoniy',
+    theoryHint: "📌 Sport o'yinlari (futbol, voleybol, basketbol, gandbol, shaxmat-shashka) maydoni, qoidalari, texnika va taktika elementlari; hakamlik hamda ularning elementlarini maktabgacha yoshda o'rgatish." },
+  { id: 143, name: "Sport inshootlari", subtitle: "Turlari, o'lchamlari, jihozlash va xavfsizlik", icon: React.createElement(LandPlot, { size: 20 }), day: 4, category: 'mtt_jismoniy',
+    theoryHint: "📌 Sport inshootlari tasnifi va toifalari, maydon, zal hamda havza o'lchamlari; jihozlash, foydalanish qoidalari, texnika xavfsizligi va mavjud sharoitni tahlil qilib samaradorlikni baholash." },
+  { id: 144, name: "Kasb standarti", subtitle: "MTT pedagogi kasbiy standarti va mehnat vazifalari", icon: React.createElement(Scale, { size: 20 }), day: 4, category: 'mtt_jismoniy',
+    theoryHint: "📌 MTT pedagogining kasbiy standarti: umumiy qoidalar, bilim-ko'nikma-malaka talablari, mehnat vazifalari, baholanadigan ko'rsatkichlar hamda faoliyat natijalarini tahlil qilish." },
+  { id: 145, name: "Pedagogik mahorat", subtitle: "Pedagogika, «Ilk qadam» dasturi va metodik savodxonlik", icon: React.createElement(GraduationCap, { size: 20 }), day: 4, category: 'mtt_jismoniy',
+    theoryHint: "📌 Pedagogik-psixologik kompetensiyalar, «Ilk qadam» dasturi va bolalar rivojlanishini qo'llab-quvvatlash, pedagogik jarayonni loyihalash hamda innovatsion ta'lim texnologiyalari." }
+];
+
 // group: 'school' (umumiy o'rta ta'lim, 9 fan) | 'mtt' (maktabgacha ta'lim, 4 fan)
 // Fan tanlash UI shu guruhlar bo'yicha ajratiladi (README Variant B).
 export const SUBJECTS = [
@@ -340,10 +364,11 @@ export const SUBJECTS = [
   { id: 'mtt_psixolog', name: "MTT Psixologi", icon: Brain, group: 'mtt', desc: "Yosh psixologiyasi, oila, inklyuziv ta'lim va metodika" },
   { id: 'kimyo', name: "Kimyo", icon: FlaskConical, group: 'school', desc: "Umumiy, anorganik, organik kimyo va metodika" },
   { id: 'rus_tili', name: "Rus tili", icon: Languages, group: 'school', desc: "RKI: matn tahlili, grammatika, leksika va metodika" },
-  { id: 'ingliz', name: "Ingliz tili", icon: BookA, group: 'school', desc: "Reading, grammar, vocabulary, pragmatics va ELT metodika" }
+  { id: 'ingliz', name: "Ingliz tili", icon: BookA, group: 'school', desc: "Reading, grammar, vocabulary, pragmatics va ELT metodika" },
+  { id: 'mtt_jismoniy', name: "MTT Jismoniy Tarbiya", icon: Dumbbell, group: 'mtt', desc: "Gimnastika, harakatli o'yinlar, sport turlari va MTT metodikasi" }
 ];
 
-export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics, ...kimyoTopics, ...rusTiliTopics, ...inglizTopics];
+export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics, ...kimyoTopics, ...rusTiliTopics, ...inglizTopics, ...mttJismoniyTopics];
 
 export const SCHEDULE = [
   { day: 1, date: "2 May", topic: "Harbiy xizmat asoslari", tests: 8, goal: "Konstitutsiya, Mudofaa doktrinasi", topicId: 0 },

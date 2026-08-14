@@ -2664,6 +2664,7 @@ try {
                   <option value="kimyo">🧪 Kimyo</option>
                   <option value="rus_tili">📕 Rus tili</option>
                   <option value="ingliz">📗 Ingliz tili</option>
+                  <option value="mtt_jismoniy">🤸 MTT Jismoniy tarbiya</option>
                 </select>
               </div>
               <div className="admin-select-wrapper">

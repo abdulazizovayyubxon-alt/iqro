@@ -37,6 +37,7 @@ const SUBJECTS = [
   { slug: 'kimyo',    file: 'fan/kimyo/_app.json',    min: 114, max: 120 },
   { slug: 'rus_tili', file: 'fan/rus_tili/_app.json', min: 121, max: 128 },
   { slug: 'ingliz',   file: 'fan/ingliz/_app.json',   min: 129, max: 136 },
+  { slug: 'mtt_jismoniy', file: 'fan/mtt_jismoniy/_app.json', min: 137, max: 145 },
 ].filter((s) => !only || s.slug === only);
 
 if (!SUBJECTS.length) { console.error(`❌ Noma'lum fan: ${only}`); process.exit(1); }
