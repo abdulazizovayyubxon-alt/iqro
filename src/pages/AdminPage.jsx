@@ -7,7 +7,7 @@ import { db, auth } from '../firebase';
 import {
   collection, query, orderBy, onSnapshot, where, getCountFromServer,
   updateDoc, deleteDoc, doc, getDoc, getDocs, addDoc, writeBatch, increment, setDoc, limit, documentId,
-  runTransaction
+  runTransaction, startAfter
 } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
@@ -29,7 +29,9 @@ import PromoTab from '../components/admin/PromoTab';
 import SchoolsTab from '../components/admin/SchoolsTab';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { normalizeText, trigrams, jaccard } from '../utils/textSimilarity';
-import { logAdminAction, ADMIN_ACTION_LABELS } from '../services/adminLog';
+import {
+  logAdminAction, describeAdminAction, formatActionMeta, ADMIN_ACTION_GROUPS,
+} from '../services/adminLog';
 import { useModalA11y } from '../hooks/useModalA11y';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
 
@@ -166,13 +168,22 @@ const AdminPage = () => {
       })
       .finally(() => setErrorsLoading(false));
   };
-  const deleteErrorLog = async (id) => {
-    try {
-      await deleteDoc(doc(db, 'errorLogs', id));
-      setErrorLogs(prev => prev.filter(e => e.id !== id));
-    } catch (e) {
-      showToast("O'chirishda xato", 'error');
-    }
+  // ⚠️ JURNAL AUDITI 2026-08-15: bu tugma yagona QAYTARILMAS amal edi, lekin
+  // (a) tasdiq so'ramasdi — telefonda ✅ va 🗑 yonma-yon, xato bosish oson;
+  // (b) hech qayerda qayd etilmasdi — ya'ni kuzatuv yozuvini bir bosishda
+  // izsiz yo'q qilish mumkin edi. Jurnalning o'zini tozalash ham jurnalga
+  // tushishi kerak, aks holda audit izi ishonchsiz.
+  const deleteErrorLog = (id) => {
+    const target = errorLogs.find(e => e.id === id);
+    confirmAction("Bu xato yozuvini butunlay o'chirasizmi? (Odatda «hal qilindi» belgilash yetarli)", async () => {
+      try {
+        await deleteDoc(doc(db, 'errorLogs', id));
+        setErrorLogs(prev => prev.filter(e => e.id !== id));
+        logAdminAction('log.delete', id, { xabar: (target?.message || '').slice(0, 80) });
+      } catch (e) {
+        showToast("O'chirishda xato", 'error');
+      }
+    });
   };
   // `resolved` maydoni /api/log-error tomonidan false bilan yoziladi — shu
   // yergacha hech qayerda ishlatilmasdi. Endi "hal qilindi" belgisi bilan
@@ -291,6 +302,9 @@ const AdminPage = () => {
     try {
       await updateDoc(doc(db, 'deletionRequests', id), { status, handledAt: new Date().toISOString() });
       setDeletionRequests(prev => prev.map(r => (r.id === id ? { ...r, status } : r)));
+      // Hisobni o'chirish — huquqiy ahamiyatga ega so'rov: "bajarildi" deb kim
+      // va qachon belgilagani keyinchalik isbot bo'ladi.
+      logAdminAction('deletion_request.status', id, { holat: status });
       showToast(status === 'done' ? "Bajarildi deb belgilandi" : 'Holat yangilandi', 'success');
     } catch (e) {
       showToast('Xatolik: ' + e.message, 'error');
@@ -1262,46 +1276,76 @@ try {
   // ularning orasida emas edi. Tugma foydalanuvchi qatorida ⭐ yonida, 32×32 px —
   // telefonda noto'g'ri bosish real xavf.
   // Qo'shimcha: admin o'zidan huquqni olib, paneldan chiqib ketishi mumkin edi.
-  const toggleAdmin = (userId, currentRole) => {
-    if (userId === user?.uid) {
+  const handleManageRole = (u) => {
+    if (u.id === user?.uid) {
       showToast("O'z rolingizni bu yerdan o'zgartira olmaysiz", 'error');
       return;
     }
-    const newRole = currentRole === 'admin' ? 'user' : 'admin';
-    confirmAction(
-      newRole === 'admin'
-        ? "Bu foydalanuvchiga TO'LIQ ADMIN huquqini berasizmi?\n\nU savollarni o'chira oladi, foydalanuvchi hisoblarini butunlay yo'q qila oladi va Pro tarqata oladi."
-        : "Bu foydalanuvchidan admin huquqini olib tashlaysizmi?",
-      async () => {
-        try {
-          await updateDoc(doc(db, 'users', userId), { role: newRole });
-          setUsers(prev => prev.map(u => u.id === userId ? { ...u, role: newRole } : u));
-          logAdminAction(newRole === 'admin' ? 'role.grant_admin' : 'role.revoke_admin', userId);
-          showToast(`Rol o'zgartirildi: ${newRole}`, 'success');
-        } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
-      }
+    const currentInfo = u.role === 'admin' 
+      ? "To'liq Admin" 
+      : (u.role === 'partner' ? `Hamkor ustoz (${u.partnerCode || 'kodsiz'})` : "Oddiy foydalanuvchi");
+
+    const choice = window.prompt(
+      `Foydalanuvchi: ${u.displayName || u.email || u.shortId || 'Ustoz'}\nJoriy holat: ${currentInfo}\n\nYangi rolni tanlang (raqamini kiriting):\n1 — 👤 Oddiy foydalanuvchi\n2 — 🤝 Hamkor Admin / Ustoz (faqat o'z guruhi statistikasi)\n3 — 🛡️ To'liq Admin (Boshqaruv, savol va to'lovlar)\n\nBekor qilish uchun 'Cancel' bosing:`,
+      u.role === 'admin' ? '3' : (u.role === 'partner' ? '2' : '1')
     );
+
+    if (choice === null) return;
+    const cleanChoice = choice.trim();
+
+    if (cleanChoice === '1') {
+      confirmAction(`Ushbu foydalanuvchini ODDIY FOYDALANUVCHI ga aylantirmoqchimisiz?`, async () => {
+        try {
+          await updateDoc(doc(db, 'users', u.id), { role: 'user', partnerCode: null });
+          setUsers(prev => prev.map(item => item.id === u.id ? { ...item, role: 'user', partnerCode: null } : item));
+          if (userCard?.id === u.id) setUserCard(prev => ({ ...prev, role: 'user', partnerCode: null }));
+          logAdminAction('role.set_user', u.id);
+          showToast("Rol o'zgartirildi: Oddiy foydalanuvchi", 'success');
+        } catch { showToast("Xatolik yuz berdi", 'error'); }
+      });
+    } else if (cleanChoice === '2') {
+      const pCode = window.prompt(
+        "Hamkor ustoz promokodini kiriting (masalan: MIRONSHOH):",
+        u.partnerCode || 'MIRONSHOH'
+      );
+      if (pCode === null) return;
+      const cleanPCode = pCode.trim().toUpperCase();
+      if (!cleanPCode) {
+        showToast("Promokod bo'sh bo'lishi mumkin emas", 'error');
+        return;
+      }
+      confirmAction(`Foydalanuvchiga HAMKOR ADMIN huquqi va '${cleanPCode}' promokodi biriktirilsinmi?\n\nU faqat /partner sahifasidan o'z a'zolari statistikasini ko'radi.`, async () => {
+        try {
+          await updateDoc(doc(db, 'users', u.id), { role: 'partner', partnerCode: cleanPCode });
+          setUsers(prev => prev.map(item => item.id === u.id ? { ...item, role: 'partner', partnerCode: cleanPCode } : item));
+          if (userCard?.id === u.id) setUserCard(prev => ({ ...prev, role: 'partner', partnerCode: cleanPCode }));
+          logAdminAction('role.set_partner', u.id, { partnerCode: cleanPCode });
+          showToast(`Hamkor biriktirildi: ${cleanPCode}`, 'success');
+        } catch { showToast("Xatolik yuz berdi", 'error'); }
+      });
+    } else if (cleanChoice === '3') {
+      confirmAction(`DIQQAT: Foydalanuvchiga TO'LIQ ADMIN huquqini berasizmi?\n\nU savollarni tahrirlash, o'chirish, foydalanuvchilarni o'chirish va barcha boshqaruv funksiyalariga ega bo'ladi.`, async () => {
+        try {
+          await updateDoc(doc(db, 'users', u.id), { role: 'admin' });
+          setUsers(prev => prev.map(item => item.id === u.id ? { ...item, role: 'admin' } : item));
+          if (userCard?.id === u.id) setUserCard(prev => ({ ...prev, role: 'admin' }));
+          logAdminAction('role.grant_admin', u.id);
+          showToast("To'liq admin huquqi berildi", 'success');
+        } catch { showToast("Xatolik yuz berdi", 'error'); }
+      });
+    } else {
+      showToast("Noto'g'ri tanlov kiritildi (1, 2 yoki 3 kiriting)", 'error');
+    }
+  };
+
+  const toggleAdmin = (userId, currentRole) => {
+    const u = users.find(x => x.id === userId) || { id: userId, role: currentRole };
+    handleManageRole(u);
   };
 
   const handleSetPartnerCode = async (userId, currentPartnerCode) => {
-    const code = window.prompt("Foydalanuvchiga biriktiriladigan Hamkor promokodini kiriting (masalan: MIRONSHOH). O'chirish uchun bo'sh qoldiring:", currentPartnerCode || '');
-    if (code === null) return;
-    const cleanCode = code.trim().toUpperCase();
-    try {
-      await updateDoc(doc(db, 'users', userId), {
-        partnerCode: cleanCode || null,
-        role: cleanCode ? 'partner' : (userCard?.role === 'partner' ? 'user' : userCard?.role || 'user'),
-      });
-      setUsers(prev => prev.map(u => u.id === userId ? { ...u, partnerCode: cleanCode || null, role: cleanCode ? 'partner' : (u.role === 'partner' ? 'user' : u.role) } : u));
-      if (userCard && userCard.id === userId) {
-        setUserCard(prev => ({ ...prev, partnerCode: cleanCode || null, role: cleanCode ? 'partner' : (prev.role === 'partner' ? 'user' : prev.role) }));
-      }
-      logAdminAction('partner.assign_code', userId, { partnerCode: cleanCode || null });
-      showToast(cleanCode ? `Hamkor kodi biriktirildi: ${cleanCode}` : "Hamkor kodi olib tashlandi", 'success');
-    } catch (e) {
-      console.error(e);
-      showToast("Hamkor kodini saqlashda xatolik", 'error');
-    }
+    const u = users.find(x => x.id === userId) || { id: userId, role: 'partner', partnerCode: currentPartnerCode };
+    handleManageRole(u);
   };
 
   // ⚠️ AUDIT 2026-08-06, T-12 BAND — avval bu yerda faqat ikkita hujjat
@@ -2144,7 +2188,7 @@ try {
                     <div className="admin-row-between">
                       <div style={{ minWidth: 0 }}>
                         <div style={{ fontWeight: 700, color: 'var(--text)' }}>
-                          {ADMIN_ACTION_LABELS[a.type] || a.type}
+                          {describeAdminAction(a.type).label || a.type}
                         </div>
                         <div className="admin-meta-line" style={{ marginTop: 4 }}>
                           <span>👤 {a.actorEmail || a.actorUid}</span>
@@ -2944,6 +2988,11 @@ try {
                           </span>
                         )}
                         {u.role === 'admin' && <span className="admin-chip admin-chip--blue">ADMIN</span>}
+                        {u.role === 'partner' && (
+                          <span className="admin-chip" style={{ background: 'rgba(16,185,129,0.15)', color: 'var(--green)', border: '1px solid rgba(16,185,129,0.3)', fontWeight: 800 }}>
+                            🤝 HAMKOR {u.partnerCode ? `(${u.partnerCode})` : ''}
+                          </span>
+                        )}
                       </div>
                       <div className="admin-user-subtext">
                         {u.email || u.phoneNumber || 'Identifikator yo\'q'}
@@ -2984,10 +3033,11 @@ try {
                       <Crown size={13} />
                     </button>
                     <button
-                      onClick={() => toggleAdmin(u.id, u.role)}
-                      className={`action-btn-sm ${u.role === 'admin' ? 'admin-active' : ''}`}
-                      aria-label={u.role === 'admin' ? "Admin huquqini olish" : "Admin huquqini berish"}
-                      title={u.role === 'admin' ? "Admin huquqini olish" : "Admin huquqini berish"}
+                      onClick={() => handleManageRole(u)}
+                      className={`action-btn-sm ${u.role === 'admin' ? 'admin-active' : (u.role === 'partner' ? 'partner-active' : '')}`}
+                      style={u.role === 'partner' ? { color: 'var(--green)', borderColor: 'var(--green)' } : {}}
+                      aria-label="Rolni boshqarish"
+                      title={`Rolni boshqarish (Admin / Hamkor / User) — Joriy: ${u.role || 'user'}`}
                     >
                       <Shield size={13} />
                     </button>
