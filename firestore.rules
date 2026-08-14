@@ -328,6 +328,21 @@ service cloud.firestore {
       allow update, delete: if false;
     }
 
+    // ── metrics: kunlik o'sish ko'rsatkichlari (api/cron-daily.js yozadi) ──
+    //
+    // Bir kun = bir hujjat (`metrics/2026-08-14`): jami/premium foydalanuvchi,
+    // DAU, WAU, yangi ro'yxatdan o'tganlar. Ilgari bu raqamlar cron javobida
+    // qaytib, hech qayerda SAQLANMASDAN yo'qolardi — shuning uchun panelda
+    // o'sish grafigi qurib bo'lmasdi (2026-08-14 auditi).
+    //
+    // YOZUV MIJOZ UCHUN BUTUNLAY YOPIQ: cron Admin SDK bilan ishlaydi va
+    // qoidalardan mustaqil. Ochiq qoldirilsa, istalgan foydalanuvchi soxta
+    // "o'sish" yozib, biznes qarorlarini chalg'itishi mumkin edi.
+    match /metrics/{dayId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
     // ── Qolgan hamma narsa bloklangan ──
     match /{document=**} {
       allow read, write: if false;

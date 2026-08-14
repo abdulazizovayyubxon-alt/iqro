@@ -77,3 +77,5 @@ pipeline/inbox/theory/
 
 # nazariya generatsiyasi jurnali (har yurishda qayta yoziladi)
 pipeline/_theory_gen.log
+
+.env*

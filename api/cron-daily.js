@@ -503,6 +503,75 @@ export default async function handler(req, res) {
       }
     }
 
+    // ═══ 5. KUNLIK METRIKA (o'sish tarixi) ═══
+    //
+    // NEGA: shu paytgacha platformada "kecha nechta odam kirdi?" degan savolga
+    // javob beradigan JOY YO'Q edi. Cron har kuni hamma narsani hisoblardi,
+    // lekin natijani faqat HTTP javobida qaytarib yuborardi — u esa hech
+    // qayerda saqlanmasdi. Admin paneli faqat "hozirgi jami"ni ko'rsatadi,
+    // ya'ni o'sish ham, pasayish ham ko'rinmasdi.
+    //
+    // NARXI: 10 ta agregatsiya so'rovi = ~10 O'QISH/kun. Hujjatlarning o'zi
+    // yuklanmaydi. Bir yillik tarix ham 365 ta kichik hujjat — bepul rejaning
+    // 1 GiB xotirasida sezilmaydi.
+    //
+    // MANBA: faollik `userStats.lastActiveAt` da (mijoz test yakunlaganda
+    // yozadi). `users.lastActiveAt` ham bor, lekin u kuniga bir marta
+    // yangilanadi va faqat admin ro'yxati uchun — o'lchov uchun asosiy manba
+    // shu yerdagisi.
+    try {
+      const dayKey = new Date(now.getTime() + 5 * 3600000).toISOString().slice(0, 10); // Toshkent kuni
+      const since = (d) => new Date(now.getTime() - d * 86400000).toISOString();
+      const users = db.collection('users');
+      const stats = db.collection('userStats');
+
+      const num = (p) => p.then(s => s.data().count).catch(() => null);
+      const [
+        total, premium, dau, wau, newToday, newWeek,
+        activated, paidActive, paymentsTotal, paymentsToday,
+      ] = await Promise.all([
+        num(users.count().get()),
+        num(users.where('isPremium', '==', true).count().get()),
+        num(stats.where('lastActiveAt', '>=', since(1)).count().get()),
+        num(stats.where('lastActiveAt', '>=', since(7)).count().get()),
+        num(users.where('createdAt', '>=', new Date(now.getTime() - 86400000)).count().get()),
+        num(users.where('createdAt', '>=', new Date(now.getTime() - 7 * 86400000)).count().get()),
+        // ── Voronka ──
+        // `activated` — kamida bir marta test yechganlar. `userStats/{uid}`
+        // hujjati AYNAN shunda yaratiladi (AppContext birinchi saqlashda),
+        // ya'ni bu "ro'yxatdan o'tib, lekin hech narsa qilmagan" hisoblarni
+        // ajratadigan eng arzon ko'rsatkich: 1 ta so'rov.
+        num(stats.count().get()),
+        // Haqiqiy PUL to'lagan obunalar (promo/admin bergan Pro emas).
+        num(users.where('premiumPlan', '==', 'paid').count().get()),
+        num(db.collection('payments').count().get()),
+        // payments.createdAt — ISO satr (api/payment-webhook.js:308)
+        num(db.collection('payments').where('createdAt', '>=', since(1)).count().get()),
+      ]);
+
+      results.metrics = {
+        date: dayKey,
+        total, premium, dau, wau, newToday, newWeek,
+        activated, paidActive, paymentsTotal, paymentsToday,
+      };
+
+      if (!dryRun) {
+        // `merge: true` — bir kunda ikki marta ishga tushsa (qayta urinish)
+        // hujjat qayta yozilmasin, to'ldirilsin.
+        await db.collection('metrics').doc(dayKey).set({
+          ...results.metrics,
+          premiumExpired: results.premiumExpired,
+          notifyPush: results.notify.pushSent,
+          notifySms: results.notify.smsSent,
+          updatedAt: now.toISOString(),
+        }, { merge: true });
+      }
+    } catch (e) {
+      // Metrika — ikkinchi darajali. Yiqilsa cron'ning asosiy ishi (obuna
+      // muddati, eslatmalar) allaqachon bajarilgan bo'ladi.
+      results.errors.push(`Metrika: ${e.message}`);
+    }
+
   } catch (err) {
     console.error('Cron job error:', err);
     results.errors.push(`Global: ${err.message}`);

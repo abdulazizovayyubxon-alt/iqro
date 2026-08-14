@@ -3,6 +3,10 @@
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/((?!assets|images|sw|workbox|manifest|registerSW|api).*)", "destination": "/index.html" }
   ],
+  "functions": {
+    "api/cron-daily.js": { "maxDuration": 60 },
+    "api/cron-reminder.js": { "maxDuration": 60 }
+  },
   "crons": [
     {
       "path": "/api/cron-daily",

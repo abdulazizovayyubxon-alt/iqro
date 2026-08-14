@@ -14,6 +14,7 @@ import {
   doc,
   setDoc,
   getDoc,
+  updateDoc,
   deleteField,
   collection,
   addDoc
@@ -412,6 +413,39 @@ const stripUndefined = (value) => {
 // Firestore'ga yozishdan oldin tayyorlash: leaderboard maydonlari,
 // vaqtinchalik kalitlar va eski davr (weekly_/monthly_) kalitlarini tozalash.
 // Eski kalitlar deleteField() bilan hujjatdan ham o'chiriladi — aks holda doc cheksiz o'sadi.
+// ── Foydalanuvchi faolligini `users/{uid}` ga belgilash ─────────────────────
+//
+// NEGA ALOHIDA YOZUV: `lastActiveAt` state ichida ham bor, lekin u
+// `userStats/{uid}` ga tushadi. Admin paneli esa foydalanuvchilar ro'yxatini
+// `users` kolleksiyasidan oladi — ya'ni "oxirgi faollik" ustuni HECH QACHON
+// to'lmasdi (2026-08-14 auditi). Ikkalasini bitta kolleksiyaga yig'ish
+// mumkin emas: `userStats` reyting uchun hammaga ochiq, `users` esa faqat
+// egasi va adminga ko'rinadi (maxfiylik chegarasi).
+//
+// NARXI: KUNIGA BIR YOZUV. `writeCloudNow` har 3 soniyada chaqirilishi mumkin,
+// shuning uchun kun bo'yicha localStorage qulfi qo'yiladi — aks holda faol
+// foydalanuvchi bir seansda o'nlab ortiqcha yozuv qilardi (bepul rejada
+// kunlik yozuv limiti 20 000).
+const ACTIVITY_PING_KEY = (uid) => `zehin_active_ping_${uid}`;
+
+const touchUserActivity = (uid) => {
+  if (!uid) return;
+  const today = new Date().toISOString().slice(0, 10);
+  try {
+    if (localStorage.getItem(ACTIVITY_PING_KEY(uid)) === today) return;
+    localStorage.setItem(ACTIVITY_PING_KEY(uid), today);
+  } catch {
+    // localStorage yopiq (private rejim) — qulfsiz davom etamiz, yozuv
+    // baribir seansiga bir necha marta bo'ladi, kvota uchun xavfli emas.
+  }
+  // `updateDoc` ATAYLAB: hujjat yo'q bo'lsa `setDoc(merge)` uni YARATISHGA
+  // urinardi va firestore.rules dagi `create` shartiga (role == 'user')
+  // tushib rad etilardi. Xato jimgina yutiladi — bu ikkinchi darajali metrika,
+  // uning sababli test yakuni saqlanmay qolmasligi kerak.
+  updateDoc(doc(db, 'users', uid), { lastActiveAt: new Date().toISOString() })
+    .catch(() => {});
+};
+
 const prepareStatsForSave = (stateObj, currentUser) => {
   const statsToSave = { ...stateObj };
   const currentName = currentUser.displayName || stateObj.displayName || currentUser.email?.split('@')[0] || '';
@@ -594,6 +628,7 @@ export const AppProvider = ({ children }) => {
       saveTimerRef.current = null;
       const statRef = doc(db, 'userStats', user.uid);
       setDoc(statRef, prepareStatsForSave(state, user), { merge: true }).catch(console.error);
+      touchUserActivity(user.uid);
     };
 
     // Ikkala kutilayotgan yozuvni ham darhol bajaradi (visibilitychange uchun)
