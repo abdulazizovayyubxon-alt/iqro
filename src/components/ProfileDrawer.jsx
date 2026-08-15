@@ -9,8 +9,8 @@ import { db, auth } from '../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { updateProfile } from 'firebase/auth';
 import { resolveAvatar, avatarUrl } from '../data/avatars';
-import { SUBJECTS } from '../data/mockData';
-import { APP_URL, SUPPORT_URL, APP_VERSION } from '../config';
+import { SUBJECTS, SUBJECT_COUNT } from '../data/mockData';
+import { APP_URL, SUPPORT_URL, APP_VERSION, APP_NAME, QUESTION_COUNT_TEXT, FREE_TRIAL_DAYS } from '../config';
 import { ageFromBirthDate } from '../utils/age';
 import { writeContract, hydrateContract } from '../services/studyContract';
 import NotificationBell from './NotificationBell';
@@ -202,12 +202,26 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
     }
   };
 
+  // Ulashish matni ilovaning HOZIRGI holatidan yig'iladi: fanlar soni
+  // SUBJECTS ro'yxatidan, savol soni va sinov muddati config'dan. Ilgari bu
+  // yerda faqat bir qatorlik umumiy ta'rif turardi — havolani olgan odam
+  // ilovada nima borligini bilmasdi, raqamlar esa boshqa joylarda qo'lda
+  // yozilgani uchun eskirib qolgandi.
+  const shareText = t('drawer.shareText', {
+    subjects: SUBJECT_COUNT,
+    questions: QUESTION_COUNT_TEXT,
+    days: FREE_TRIAL_DAYS,
+  });
+
   const shareApp = async () => {
     try {
       if (navigator.share) {
-        await navigator.share({ title: 'Zehin', text: t('drawer.shareText', 'Zehin — kasbiy attestatsiyaga tayyorgarlik platformasi'), url: APP_URL });
+        await navigator.share({ title: APP_NAME, text: shareText, url: APP_URL });
       } else if (navigator.clipboard) {
-        await navigator.clipboard.writeText(APP_URL);
+        // Web Share yo'q (desktop brauzerlar) — havolaning O'ZI emas, matn
+        // bilan birga nusxalanadi, aks holda ulashilgan xabar quruq URL
+        // bo'lib qolardi.
+        await navigator.clipboard.writeText(`${shareText}\n${APP_URL}`);
         showToast(t('common.copied', 'Havola nusxalandi'), 'success');
       }
     } catch (e) { /* foydalanuvchi bekor qildi */ }

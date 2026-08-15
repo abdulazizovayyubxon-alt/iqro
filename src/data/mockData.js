@@ -368,6 +368,12 @@ export const SUBJECTS = [
   { id: 'mtt_jismoniy', name: "MTT Jismoniy Tarbiya", icon: Dumbbell, group: 'mtt', desc: "Gimnastika, harakatli o'yinlar, sport turlari va MTT metodikasi" }
 ];
 
+// Foydalanuvchiga aytiladigan «necha fan bor» raqami. Ulashish matni,
+// do'stni taklif qilish xabari va qo'llanma shu yerdan oladi — ro'yxatga fan
+// qo'shilishi bilan matnlar o'zi to'g'rilanadi (ilgari ular qo'lda yozilgani
+// uchun qo'llanmada 17 fan davrida ham «16 ta fan» deb turardi).
+export const SUBJECT_COUNT = SUBJECTS.length;
+
 export const TOPICS = [...chqbtTopics, ...artTopics, ...tarixTopics, ...sportTopics, ...boshlangichTopics, ...infoTopics, ...mttTopics, ...mttRahbarTopics, ...tilTopics, ...biologiyaTopics, ...geografiyaTopics, ...mttLogopedTopics, ...mttPsixologTopics, ...kimyoTopics, ...rusTiliTopics, ...inglizTopics, ...mttJismoniyTopics];
 
 export const SCHEDULE = [

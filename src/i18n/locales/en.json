@@ -470,8 +470,7 @@
     "points": "POINTS",
     "empty": "Leaderboard is currently empty",
     "deleteTitle": "Confirm Deletion",
-    "deleteText": "Are you sure you want to remove the leaderboard result for \"{{name}}\"?",
-    "amiShort": "AMI {{count}}"
+    "deleteText": "Are you sure you want to remove the leaderboard result for \"{{name}}\"?"
   },
   "profile": {
     "avatarUpdated": "Avatar updated ✅",
@@ -728,7 +727,7 @@
     "shareDefaultName": "Your Friend",
     "shareMsg1": "📚 Hello!\n\nI am preparing for qualification exams on Zehin — it is really effective. I invite you to study together 🙌\n\nWhat is inside:\n✅ Real DTM standard practice tests\n✅ Smart spaced repetition for mistakes\n✅ Works offline without internet\n\nBest part — use my link to get {{percent}}% DISCOUNT for BOTH of us 🎁\n\nLet's prepare together 👇\n{{link}}",
     "shareMsg2": "🎯 Preparing for qualification exams?\n\n{{firstName}} invites you to study together on Zehin!\n\nRegister here: {{link}}\n\nStart today — exam is coming soon!",
-    "shareMsg3": "🏆 {{firstName}} sends you a {{percent}}% discount gift!\n\nZehin — Qualification Exam Preparation Platform.\n\nWhy Zehin?\n• 50,000+ question bank across 17 subjects\n• Real exam simulator\n• Smart mistake analysis system\n• Teachers rating leaderboard\n\nExam is approaching — start preparing today.\n\n🔗 {{link}}",
+    "shareMsg3": "🏆 {{firstName}} sends you a {{percent}}% discount gift!\n\nZehin — Qualification Exam Preparation Platform.\n\nWhy Zehin?\n• {{questions}}+ question bank across {{subjects}} subjects\n• Real exam simulator\n• Smart mistake analysis system\n• Teachers rating leaderboard\n\nExam is approaching — start preparing today.\n\n🔗 {{link}}",
     "shareMsg4": "👋 Hello!\n\nI am gifting you a {{percent}}% DISCOUNT on Zehin 🎁.\n\nZehin is the leading platform for teacher qualification exam preparation.\nFeatures mistake review, progress analytics, and full offline mode!\n\nRegister via link to claim your discount:\n{{link}}\n\n⏳ Limited time offer — don't miss out!",
     "shareMsgTelegram": "📚 {{firstName}} is sharing a {{percent}}% DISCOUNT on Zehin with you!\n\nRegister now — BOTH of you get {{percent}}% off!\n\n✅ Register here: {{link}}"
   },
@@ -1096,7 +1095,7 @@
     "guideTitle": "User Guide",
     "guideAdminToast": "Admin: Ambassador test sent. Refresh page!",
     "guideP1Title": "🎯 What is Zehin and who is it for?",
-    "guideP1Body": "Zehin is a preparation platform for the teacher attestation (qualification category) exam in Uzbekistan. The database holds more than 44,000 questions across 16 subjects. Questions are grouped by the sections of the official subject specification, so you practise against the real exam structure.",
+    "guideP1Body": "Zehin is a preparation platform for the teacher attestation (qualification category) exam in Uzbekistan. The database holds more than {{questions}} questions across {{subjects}} subjects. Questions are grouped by the sections of the official subject specification, so you practise against the real exam structure.",
     "guideP2Title": "🚀 How do I get started?",
     "guideP3Title": "📝 How do Practice and Exam modes differ?",
     "guideP4Title": "📅 How do the daily plan and streak work?",
@@ -1461,7 +1460,7 @@
     "p9": "Disputes between parties shall first be resolved through good-faith negotiation via https://t.me/zehinuz?direct. If unresolved, disputes will be submitted to jurisdiction under Uzbek law. Continued use of the Platform after updates constitutes agreement to updated terms."
   },
   "drawer": {
-    "shareText": "Zehin — qualification exam preparation platform",
+    "shareText": "Zehin — a preparation platform for teachers' qualification (attestation) exams.\n\n📚 {{questions}}+ test questions across {{subjects}} subjects\n⏱ Real exam mode (timed)\n🧠 Mistake analysis and smart repetition\n📶 Works offline too\n\n🎁 First {{days}} days free:",
     "subTitle": "Zehin Subscription",
     "connect": "Connect",
     "shareApp": "Share App",

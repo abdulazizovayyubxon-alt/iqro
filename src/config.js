@@ -10,6 +10,28 @@ export const APP_SUBTITLE = 'Attestatsiya platformasi';
 export const EXAM_LABEL = EXAM_DATE ? '13 May — Malaka toifa imtihoni' : 'Zehin — attestatsiya platformasi';
 export const EXAM_GOAL_SCORE = 70;
 export const APP_URL = 'https://zehin-t41p.vercel.app'; // Haqiqiy domen (Vercel loyiha nomi: zehin, alias suffiksi -t41p saqlangan)
+
+// ─── Platforma ko'rsatkichlari — ulashish matnlari uchun YAGONA MANBA ───
+// Bu raqamlar foydalanuvchiga beriladigan VA'DA: «Ilovani ulashish» matnida,
+// do'stni taklif qilish xabarlarida va qo'llanmada bir xil bo'lishi shart.
+// Ilgari ular har joyda alohida yozilgan edi va eskirgandi: qo'llanma hali
+// ham «16 ta fan, 44 000 savol» derdi (2026-08-14 da 17-fan — MTT jismoniy
+// tarbiya — qo'shilgan, baza ~50 000 ga chiqqan), ulashish matni esa umuman
+// raqam bermasdi. Endi manba shu yer.
+// Fanlar soni bu yerda EMAS: u mockData.js dagi `SUBJECT_COUNT` (SUBJECTS
+// ro'yxatining uzunligi) — ya'ni fan qo'shilishi bilan o'zi to'g'rilanadi.
+// Savollar soni esa Firestore'da, build paytida hisoblab bo'lmaydi — shuning
+// uchun qo'lda turadi.
+// ⚠️ Baza kengayganda IKKI joy yangilanadi:
+//    1) quyidagi QUESTION_COUNT,
+//    2) index.html dagi description + og:/twitter: teglari (havola
+//       Telegram/WhatsApp'ga tashlanganda ko'rinadigan kartochka).
+export const QUESTION_COUNT = 50000; // pastga yaxlitlangan (matnlarda «50 000+» deb beriladi)
+// Guruhlash QO'LDA: `toLocaleString('uz-UZ')` brauzerga qarab «50,000» ham
+// qaytaradi (Chrome'da shunday) — o'zbekcha matnda vergul noto'g'ri o'qiladi
+// va index.html dagi «50 000» bilan ziddiyat chiqadi. Bo'sh joy hamma joyda
+// bir xil.
+export const QUESTION_COUNT_TEXT = String(QUESTION_COUNT).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 // Shaxsiy murojaat (kanal "direkt" chati) — texnik yordam va huquqiy murojaatlar.
 // ⚠️ 2026-08-14: bu kanal endi TO'LOV OPERATORI hamdir (pastdagi PAYMENT_TG_URL
 // ga qarang). AUDIT 2026-08-06, T-13 bandidagi "kanal orqali to'lov qabul

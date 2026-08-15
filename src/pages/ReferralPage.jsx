@@ -18,6 +18,8 @@ import {
   REFERRAL_BONUS,
   REFERRAL_DISCOUNT,
 } from '../services/referral';
+import { SUBJECT_COUNT } from '../data/mockData';
+import { QUESTION_COUNT_TEXT } from '../config';
 
 const fmtSum = (n) => n.toLocaleString(i18n.language === 'ru' ? 'ru-RU' : i18n.language === 'en' ? 'en-US' : 'uz-UZ') + ' ' + i18n.t('referral.currency');
 
@@ -114,10 +116,15 @@ export default function ReferralPage() {
       return t('referral.shareMsgTelegram', { firstName, percent: REFERRAL_DISCOUNT, link: refLink });
     }
 
+    // Baza hajmi matnga qo'lda yozilmaydi — «Ilovani ulashish» va qo'llanma
+    // bilan bir manbadan (SUBJECTS ro'yxati + config) olinadi.
     const messages = [
       t('referral.shareMsg1', { percent: REFERRAL_DISCOUNT, link: refLink }),
       t('referral.shareMsg2', { firstName, link: refLink }),
-      t('referral.shareMsg3', { firstName, percent: REFERRAL_DISCOUNT, link: refLink }),
+      t('referral.shareMsg3', {
+        firstName, percent: REFERRAL_DISCOUNT, link: refLink,
+        subjects: SUBJECT_COUNT, questions: QUESTION_COUNT_TEXT,
+      }),
       t('referral.shareMsg4', { percent: REFERRAL_DISCOUNT, link: refLink }),
     ];
 

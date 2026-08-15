@@ -470,8 +470,7 @@
     "points": "BALL",
     "empty": "Hozircha reyting bo'sh",
     "deleteTitle": "O'chirishni tasdiqlang",
-    "deleteText": "\"{{name}}\" ning reyting natijasini rostdan ham o'chirasizmi?",
-    "amiShort": "AMI {{count}}"
+    "deleteText": "\"{{name}}\" ning reyting natijasini rostdan ham o'chirasizmi?"
   },
   "profile": {
     "avatarUpdated": "Avatar yangilandi ✅",
@@ -728,7 +727,7 @@
     "shareDefaultName": "Do'stingiz",
     "shareMsg1": "📚 Assalomu alaykum!\n\nMen attestatsiyaga Zehin platformasida tayyorlanyapman — rostdan ham foydali chiqdi. Sizni ham birga o'qishga chaqirmoqchiman 🙌\n\nBu yerda nima bor:\n✅ Haqiqiy imtihon sharoitida testlar\n✅ Xatolaringizni \"aqlli takrorlash\" bilan tuzatadi\n✅ Internetsiz (oflayn) ham ishlaydi\n\nEng yaxshisi — havolam orqali kirsangiz, {{percent}}% chegirma SIZGA HAM, MENGA HAM tegadi 🎁\n\nYuring, birga tayyorlanamiz 👇\n{{link}}",
     "shareMsg2": "🎯 Attestatsiyaga tayyorlanayapsizmi?\n\n{{firstName}} siz bilan Zehin da birga o'qishni taklif qilmoqda!\n\nRo'yxatdan o'tish: {{link}}\n\nBugundan boshlang — imtihon yaqinlashmoqda!",
-    "shareMsg3": "🏆 {{firstName}} sizga {{percent}}% chegirma sovg'a qilmoqda!\n\nZehin — attestatsiyaga tayyorlovchi platforma.\n\nNima uchun Zehin?\n• 17 ta fan bo'yicha 50 000+ toifa test savollari bazasi\n• Haqiqiy imtihon sharoitida mashq\n• Xatolarni tahlil qilish tizimi\n• O'qituvchilar reytingi\n\nAttestatsiya yaqinlashmoqda — tayyorgarlikni bugundan boshlang.\n\n🔗 {{link}}",
+    "shareMsg3": "🏆 {{firstName}} sizga {{percent}}% chegirma sovg'a qilmoqda!\n\nZehin — attestatsiyaga tayyorlovchi platforma.\n\nNima uchun Zehin?\n• {{subjects}} ta fan bo'yicha {{questions}}+ toifa test savollari bazasi\n• Haqiqiy imtihon sharoitida mashq\n• Xatolarni tahlil qilish tizimi\n• O'qituvchilar reytingi\n\nAttestatsiya yaqinlashmoqda — tayyorgarlikni bugundan boshlang.\n\n🔗 {{link}}",
     "shareMsg4": "👋 Salom!\n\nMen senga Zehin platformasida {{percent}}% CHEGIRMA sovg'a qilyapman 🎁.\n\nZehin — DTM standartlaridagi testlar orqali attestatsiyaga tayyorgarlik ko'rish platformasi.\nEng zo'r tarafi — bu yerda xatolarni tahlil qilish va internetsiz ishlash (oflayn) funksiyasi ham bor!\n\nHoziroq havola orqali o'tib, chegirma bilan ro'yxatdan o't:\n{{link}}\n\n⏳ Taklif muddatli — o'tkazib yuborma!",
     "shareMsgTelegram": "📚 {{firstName}} sizga Zehin da {{percent}}% CHEGIRMA ulashmoqda!\n\nRo'yxatdan o'ting — IKKALANGIZ {{percent}}% chegirma olasiz!\n\n✅ Ro'yxatdan o'tish: {{link}}"
   },
@@ -1096,7 +1095,7 @@
     "guideTitle": "Foydalanish qo'llanmasi",
     "guideAdminToast": "Admin: Ambassador test yuborildi. Sahifani yangilang!",
     "guideP1Title": "🎯 Zehin nima va kimga mo'ljallangan?",
-    "guideP1Body": "Zehin — O'zbekiston o'qituvchilari uchun attestatsiya (malaka toifa) imtihoniga tayyorgarlik platformasi. Bazada 16 ta fan bo'yicha 44 000 dan ortiq savol bor. Savollar rasmiy fan spetsifikatsiyasidagi bo'limlarga ajratilgan, ya'ni siz haqiqiy imtihon tuzilishi bo'yicha ishlaysiz.",
+    "guideP1Body": "Zehin — O'zbekiston o'qituvchilari uchun attestatsiya (malaka toifa) imtihoniga tayyorgarlik platformasi. Bazada {{subjects}} ta fan bo'yicha {{questions}} dan ortiq savol bor. Savollar rasmiy fan spetsifikatsiyasidagi bo'limlarga ajratilgan, ya'ni siz haqiqiy imtihon tuzilishi bo'yicha ishlaysiz.",
     "guideP2Title": "🚀 Qanday boshlash kerak?",
     "guideP3Title": "📝 Mashq va Imtihon rejimi nimasi bilan farq qiladi?",
     "guideP4Title": "📅 Kunlik reja va zanjir qanday ishlaydi?",
@@ -1461,7 +1460,7 @@
     "p9": "Tomonlar o'rtasida yuzaga kelgan kelishmovchiliklar avvalo muzokara yo'li bilan (https://t.me/zehinuz?direct orqali yozma murojaat asosida) hal qilinadi; kelishuvga erishilmagan taqdirda nizo O'zbekiston Respublikasi qonunchiligida belgilangan sud tartibida ko'rib chiqiladi. Ushbu oferta e'lon qilingan paytdan kuchga kiradi va muddatsiz amal qiladi. Ma'muriyat shartlarga o'zgartirish kiritish huquqiga ega; yangi tahrir e'lon qilingach Platformadan foydalanishni davom ettirish unga rozilik hisoblanadi. Ofertaning ayrim qoidasi haqiqiy emas deb topilsa, qolgan qoidalari o'z kuchini saqlab qoladi."
   },
   "drawer": {
-    "shareText": "Zehin — kasbiy attestatsiyaga tayyorgarlik platformasi",
+    "shareText": "Zehin — o'qituvchilar va ta'lim xodimlari uchun malaka toifa (attestatsiya) imtihoniga tayyorgarlik platformasi.\n\n📚 {{subjects}} ta fan bo'yicha {{questions}}+ test savoli\n⏱ Haqiqiy imtihon rejimi (vaqt bilan)\n🧠 Xatolar tahlili va aqlli takrorlash\n📶 Internetsiz (oflayn) ham ishlaydi\n\n🎁 Birinchi {{days}} kun bepul:",
     "subTitle": "Zehin Obunasi",
     "connect": "Ulanish",
     "shareApp": "Ilovani ulashish",

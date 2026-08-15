@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
+import { SUBJECT_COUNT } from '../../data/mockData';
+import { QUESTION_COUNT_TEXT } from '../../config';
 import '../../pages/ProfilePage.css';
 
 /** Foydalanish qo'llanmasi (yig'iladigan panellar) */
@@ -16,10 +18,14 @@ export default function GuideModal({ onClose, showToast }) {
   // Har panel endi ODDIY `Title` + `Body` juftligi. Avval matn `...a`/`...bold`/
   // `...b` bo'laklariga bo'lingan edi — uni tarjima qilish ham, o'zgartirish ham
   // og'ir edi va uch tilda bo'laklar sonini teng ushlab turish kerak bo'lardi.
+  // Baza hajmi matnga QO'LDA yozilmaydi — fan soni SUBJECTS ro'yxatidan,
+  // savol soni config'dan keladi (ulashish matni ham shu manbadan oladi).
+  // Ilgari qo'llanmada «16 ta fan, 44 000 savol» deb qotib turardi va baza
+  // kengaygach ilova o'zi haqida eskirgan ma'lumot berardi.
   const PANEL_COUNT = 10;
   const panels = Array.from({ length: PANEL_COUNT }, (_, i) => ({
     title: t(`modals.guideP${i + 1}Title`),
-    body: t(`modals.guideP${i + 1}Body`),
+    body: t(`modals.guideP${i + 1}Body`, { subjects: SUBJECT_COUNT, questions: QUESTION_COUNT_TEXT }),
   }));
 
   return (

@@ -38,14 +38,29 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <title>Zehin — Malaka toifa testlari</title>
-    <meta name="description" content="O'qituvchilar va ta'lim xodimlarini malaka toifa (attestatsiya) imtihonlariga tayyorlaydigan platforma: 17+ fan, 50 000+ savol, imtihon rejimi, xatolar tahlili." />
-    <!-- og:image mutlaq URL talab qiladi — domen ko'chsa (Vercel) shu yerni yangilang -->
+    <!-- ⚠️ ULASHILGAN HAVOLA KARTOCHKASI shu teglardan yig'iladi (Telegram,
+         WhatsApp, X). Ilova ICHIDAGI matnlar raqamlarni yagona manbadan
+         oladi — fan soni src/data/mockData.js (SUBJECT_COUNT), savol soni
+         src/config.js (QUESTION_COUNT). Bu yer HTML bo'lgani uchun ular bilan
+         QO'LDA moslanadi: baza kengaysa ikkalasini birga yangilang.
+         «17+ fan» edi — ro'yxatda aynan 17 fan bor, ortiqcha «+» va'da emas.
+         og:url/og:image mutlaq URL talab qiladi — domen ko'chsa shu yerni ham. -->
+    <meta name="description" content="O'qituvchilar va ta'lim xodimlarini malaka toifa (attestatsiya) imtihoniga tayyorlaydigan platforma: 17 ta fan bo'yicha 50 000+ savol, haqiqiy imtihon rejimi, xatolar tahlili, oflayn ishlash." />
+    <link rel="canonical" href="https://zehin-t41p.vercel.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Zehin" />
+    <meta property="og:locale" content="uz_UZ" />
+    <meta property="og:url" content="https://zehin-t41p.vercel.app/" />
     <meta property="og:title" content="Zehin — Malaka toifa testlari" />
-    <meta property="og:description" content="O'qituvchilarni attestatsiyaga tayyorlaydi: 17+ fan bo'yicha 50 000+ toifa testlari, haqiqiy imtihon rejimi, chuqur tahlil." />
+    <meta property="og:description" content="17 ta fan bo'yicha 50 000+ toifa test savoli, haqiqiy imtihon rejimi, xatolar tahlili va oflayn ishlash. Birinchi 7 kun bepul." />
     <meta property="og:image" content="https://zehin-t41p.vercel.app/pwa-512x512.png" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="Zehin — attestatsiya platformasi" />
+    <!-- Rasm kvadrat (512×512) — «summary_large_image» uni kesib ko'rsatardi -->
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Zehin — Malaka toifa testlari" />
-    <meta name="twitter:description" content="O'qituvchilarni attestatsiyaga tayyorlaydi: 17+ fan bo'yicha 50 000+ toifa testlari, haqiqiy imtihon rejimi, chuqur tahlil." />
+    <meta name="twitter:description" content="17 ta fan bo'yicha 50 000+ toifa test savoli, haqiqiy imtihon rejimi, xatolar tahlili va oflayn ishlash. Birinchi 7 kun bepul." />
     <meta name="twitter:image" content="https://zehin-t41p.vercel.app/pwa-512x512.png" />
 
     <!-- Shrift lokal (public/fonts): splash birinchi bo'yoqdan PJS bilan chiqishi
