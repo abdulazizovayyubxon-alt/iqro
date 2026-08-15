@@ -732,6 +732,20 @@
     "shareMsg4": "👋 Salom!\n\nMen senga Zehin platformasida {{percent}}% CHEGIRMA sovg'a qilyapman 🎁.\n\nZehin — DTM standartlaridagi testlar orqali attestatsiyaga tayyorgarlik ko'rish platformasi.\nEng zo'r tarafi — bu yerda xatolarni tahlil qilish va internetsiz ishlash (oflayn) funksiyasi ham bor!\n\nHoziroq havola orqali o'tib, chegirma bilan ro'yxatdan o't:\n{{link}}\n\n⏳ Taklif muddatli — o'tkazib yuborma!",
     "shareMsgTelegram": "📚 {{firstName}} sizga Zehin da {{percent}}% CHEGIRMA ulashmoqda!\n\nRo'yxatdan o'ting — IKKALANGIZ {{percent}}% chegirma olasiz!\n\n✅ Ro'yxatdan o'tish: {{link}}"
   },
+  "partnerJoin": {
+    "title": "{{name}} guruhiga qo'shilasizmi?",
+    "titleNoName": "Hamkor ustoz guruhiga qo'shilasizmi?",
+    "viaLink": "Havola orqali keldingiz · kod: {{code}}",
+    "youGet": "Siz olasiz",
+    "rewardDays": "{{count}} kun bepul foydalanish",
+    "rewardPercent": "Keyingi to'lovga {{value}}% chegirma",
+    "teacherSees": "Ustoz ko'radi",
+    "sharedData": "ismingiz, ID'ingiz va test natijalaringiz",
+    "join": "Qo'shilaman",
+    "later": "Hozir emas",
+    "joined": "Guruhga qo'shildingiz!",
+    "joinFailed": "Qo'shilib bo'lmadi — birozdan keyin urinib ko'ring"
+  },
   "errorNotebook": {
     "subjectFallback": "Fan",
     "toastRemoved": "Xato savol ro'yxatdan olib tashlandi!",

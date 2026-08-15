@@ -732,6 +732,20 @@
     "shareMsg4": "👋 Hello!\n\nI am gifting you a {{percent}}% DISCOUNT on Zehin 🎁.\n\nZehin is the leading platform for teacher qualification exam preparation.\nFeatures mistake review, progress analytics, and full offline mode!\n\nRegister via link to claim your discount:\n{{link}}\n\n⏳ Limited time offer — don't miss out!",
     "shareMsgTelegram": "📚 {{firstName}} is sharing a {{percent}}% DISCOUNT on Zehin with you!\n\nRegister now — BOTH of you get {{percent}}% off!\n\n✅ Register here: {{link}}"
   },
+  "partnerJoin": {
+    "title": "Join {{name}}'s group?",
+    "titleNoName": "Join the partner mentor's group?",
+    "viaLink": "You arrived via a link · code: {{code}}",
+    "youGet": "You get",
+    "rewardDays": "{{count}} days of free access",
+    "rewardPercent": "{{value}}% off your next payment",
+    "teacherSees": "The mentor sees",
+    "sharedData": "your name, ID and test results",
+    "join": "Join",
+    "later": "Not now",
+    "joined": "You joined the group!",
+    "joinFailed": "Could not join — please try again later"
+  },
   "errorNotebook": {
     "subjectFallback": "Subject",
     "toastRemoved": "Mistake question removed from list!",

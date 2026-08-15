@@ -19,6 +19,7 @@ import {
   URGENCY_DAYS,
   REFERRAL_DISCOUNT,
 } from '../services/referral';
+import { getPromoCodeFromUrl, savePendingPromoCode } from '../services/promo';
 import { AnalyticsEvents } from '../services/analytics';
 import { ensureShortId } from '../utils/shortId';
 import { validatePassword, calculatePasswordStrength } from '../utils/passwordPolicy';
@@ -34,6 +35,23 @@ try {
   }
 } catch (e) {
   console.warn("Failed to capture referral code synchronously:", e);
+}
+
+// Hamkor havolasi (`?promo=KOD`) — kod shu yerda ilib olinadi, chunki
+// foydalanuvchi ro'yxatdan o'tguncha URL yo'qoladi (login → onboarding →
+// `/test`). Ilgari havola hech qayerda o'qilmagani uchun hamkor guruhiga
+// faqat kodni QO'LDA yozganlar tushardi.
+// Kod bu yerda QO'LLANMAYDI — sababi services/promo.js izohida.
+try {
+  const initialPromo = getPromoCodeFromUrl();
+  if (initialPromo) {
+    savePendingPromoCode(initialPromo);
+    const url = new URL(window.location.href);
+    url.searchParams.delete('promo');
+    window.history.replaceState({}, '', url.toString());
+  }
+} catch (e) {
+  console.warn("Failed to capture promo code synchronously:", e);
 }
 
 // ── Trial status hisoblash funksiyasi ──

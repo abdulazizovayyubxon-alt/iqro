@@ -9,6 +9,7 @@ import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { useAdmin } from '../hooks/useAdmin';
 import GiftBox from '../components/shared/GiftBox';
 import PremiumModal from '../components/PremiumModal';
+import PartnerJoinCard from '../components/PartnerJoinCard';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { reconcileAchievements, nextMilestones } from '../data/tracks';
@@ -220,6 +221,13 @@ const Dashboard = () => {
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="dashboard-page">
+
+      {/* ── HAMKOR GURUHIGA QO'SHILISH TAKLIFI ──
+          Faqat `?promo=KOD` havolasi bilan kelganlarga, bir marta ko'rinadi.
+          Eng tepada: onboarding tugagach ko'rinadigan birinchi narsa shu
+          bo'lishi kerak — pastroqda bo'lsa, kartaga qadar aylantirmagan odam
+          guruhga hech qachon qo'shilmasdi. */}
+      <PartnerJoinCard />
 
       {/* ── FAN + MAVZU + BLOK CHIPLARI (test sahifasi bilan bir xil) ── */}
       <div style={{ marginBottom: 16 }}>

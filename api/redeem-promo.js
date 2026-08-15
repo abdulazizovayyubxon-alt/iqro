@@ -5,6 +5,10 @@
  * ════════════════════════════════════════════════════════════
  *
  *  POST { code } + Authorization: Bearer <Firebase ID token>
+ *  POST { action: 'info', code } → kodni FAOLLASHTIRMASDAN tanishtirish
+ *       ma'lumoti (hamkor havolasidagi tasdiq kartasi uchun). Alohida
+ *       endpoint ochilmadi: Vercel Hobby rejasida `api/` aynan 12 funksiya
+ *       chegarasida turibdi (`_` bilan boshlanuvchilar sanalmaydi).
  *
  *  promoCodes/{CODE} hujjati (doc ID = katta harfli kod):
  *    { code, type: 'percent'|'days'|'team', value, maxUses,
@@ -70,6 +74,38 @@ export default async function handler(req, res) {
     // Endi har foydalanuvchi alohida hujjat: hajm cheklovi yo'q, tekshiruv esa
     // massiv bo'ylab qidirish emas, bitta hujjat o'qishga aylandi (tezroq ham).
     const redemptionRef = promoRef.collection('redemptions').doc(uid);
+
+    // ── action:'info' — faqat O'QISH, hech narsa yozilmaydi ──
+    // Hamkor havolasi (`?promo=KOD`) bilan kelgan foydalanuvchiga «falon
+    // ustoz guruhiga qo'shilasizmi?» kartasini ko'rsatish uchun ustoz ismi
+    // kerak. `promoCodes` esa firestore.rules'da faqat adminga o'qish uchun
+    // ochiq, shuning uchun ism SHU YERDAN beriladi.
+    // Faqat xavfsiz maydonlar qaytadi: `maxUses`, `usedBy`, `createdBy` kabi
+    // ichki ma'lumot mijozga chiqmaydi.
+    if (req.body?.action === 'info') {
+      const [promoSnap, redemptionSnap] = await Promise.all([
+        promoRef.get(),
+        redemptionRef.get(),
+      ]);
+      if (!promoSnap.exists) return res.status(200).json({ ok: false, error: 'not_found' });
+
+      const p = promoSnap.data();
+      const expired = !!(p.expiresAt && new Date(p.expiresAt) < new Date());
+      const limitReached = (p.usedCount || 0) >= (p.maxUses || 1);
+
+      return res.status(200).json({
+        ok: true,
+        code: rawCode,
+        partnerName: p.partnerName || null,
+        campaign: p.campaign || null,
+        type: p.type || null,
+        value: Number(p.value) || 0,
+        // Kod allaqachon ishlatilgan bo'lsa karta ko'rsatilmaydi — aks holda
+        // «Qo'shilaman» bosilib, `already_used` xatosiga urilardi.
+        alreadyUsed: redemptionSnap.exists || (p.usedBy || []).includes(uid),
+        usable: p.active !== false && !expired && !limitReached,
+      });
+    }
 
     const result = await db.runTransaction(async (tx) => {
       const [promoSnap, userSnap, redemptionSnap] = await Promise.all([

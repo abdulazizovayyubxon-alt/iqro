@@ -5,6 +5,7 @@ import { useAdmin } from '../hooks/useAdmin';
 import { ToastContext } from '../context/ToastContext';
 import { fetchPartnerStats, PARTNER_ERRORS } from '../services/partner';
 import { SUBJECTS } from '../data/mockData';
+import { APP_URL } from '../config';
 import {
   Users, TrendingUp, Share2, Copy, Check, Search, Zap, RefreshCw,
   Ticket, ArrowUpRight, Sparkles, UserCheck, Activity, ShieldAlert, BookOpen
@@ -117,9 +118,25 @@ export default function PartnerPage() {
     }
   };
 
+  // ── Taklif havolasi ──
+  // ⚠️ Ilgari havola `/referral?promo=KOD` edi va u HECH NARSA qilmasdi:
+  // `?promo=` ni butun ilovada hech kim o'qimasdi, `/referral` esa tizimga
+  // kirmaganlar uchun yopiq (login sahifasiga tushardi) — ya'ni havola bilan
+  // kelgan odam guruhga qo'shilmasdan qolaverardi va hamkor panelida faqat
+  // kodni QO'LDA yozganlar ko'rinardi.
+  // Endi `/?promo=KOD`: kod AuthContext'da yuklanish paytida ilib olinadi,
+  // ro'yxatdan o'tgach PartnerJoinCard bir bosishlik tasdiq so'raydi.
+  // Lokal muhitda origin `localhost` bo'ladi — nusxalangan havola boshqa
+  // qurilmada ochilmaydi, shuning uchun referral.js kabi APP_URL ga tushamiz.
+  const buildPartnerLink = (code) => {
+    let base = window.location.origin;
+    if (base.includes('localhost') || base.includes('127.0.0.1')) base = APP_URL;
+    return `${base}/?promo=${encodeURIComponent(code)}`;
+  };
+
   const handleCopyShareLink = async (code) => {
     if (!code) return;
-    const shareUrl = `${window.location.origin}/referral?promo=${encodeURIComponent(code)}`;
+    const shareUrl = buildPartnerLink(code);
     try {
       await navigator.clipboard.writeText(shareUrl);
       setCopiedLink(true);
@@ -132,8 +149,10 @@ export default function PartnerPage() {
 
   const handleTelegramShare = (code, campaignName) => {
     if (!code) return;
-    const shareUrl = `${window.location.origin}/referral?promo=${encodeURIComponent(code)}`;
-    const text = `Assalomu alaykum, ustozlar! 🎓\n\n${campaignName || 'Attestatsiya'} bo'yicha maxsus testlar platformasidan foydalanish uchun bizning maxsus promokodimiz: 👉 **${code}**\n\nPlatformaga kirib ushbu kodni kiriting va imkoniyatlardan bepul foydalaning!`;
+    const shareUrl = buildPartnerLink(code);
+    // Matn ham yangilandi: asosiy yo'l endi HAVOLA (kod avtomatik taklif
+    // qilinadi), kod esa zaxira — uni qo'lda kiritish ham ishlaydi.
+    const text = `Assalomu alaykum, ustozlar! 🎓\n\n${campaignName || 'Attestatsiya'} bo'yicha maxsus testlar platformasiga quyidagi havola orqali qo'shiling — ro'yxatdan o'tganingizdan so'ng guruhga qo'shilish taklifi o'zi chiqadi.\n\nHavola ochilmasa, platformaga kirib promokodni qo'lda kiriting: 👉 ${code}`;
     const tgUrl = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(text)}`;
     window.open(tgUrl, '_blank', 'noopener,noreferrer');
   };
