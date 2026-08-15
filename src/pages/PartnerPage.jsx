@@ -8,8 +8,11 @@ import { SUBJECTS } from '../data/mockData';
 import { APP_URL } from '../config';
 import {
   Users, TrendingUp, Share2, Copy, Check, Search, Zap, RefreshCw,
-  Ticket, ArrowUpRight, Sparkles, UserCheck, Activity, ShieldAlert, BookOpen
+  Ticket, ArrowUpRight, Sparkles, UserCheck, Activity, ShieldAlert, BookOpen,
+  HelpCircle, ChevronDown, Link2, AlertCircle
 } from 'lucide-react';
+
+const GUIDE_KEY = 'zehin_partner_guide';
 
 const readinessColor = (v) =>
   v == null ? 'var(--text3)' : v >= 70 ? 'var(--green)' : v >= 50 ? 'var(--amber)' : 'var(--red)';
@@ -31,6 +34,19 @@ export default function PartnerPage() {
   const [adminLookupCode, setAdminLookupCode] = useState('');
   const [availablePromos, setAvailablePromos] = useState([]);
   const [visibleCount, setVisibleCount] = useState(25);
+  // Qo'llanma birinchi kirishda OCHIQ turadi — hamkor ustoz havola qanday
+  // ishlashini bilmasa, guruhini noto'g'ri yo'naltiradi. Yopgandan keyin
+  // tanlov eslab qolinadi.
+  const [guideOpen, setGuideOpen] = useState(() => {
+    try { return localStorage.getItem(GUIDE_KEY) !== 'closed'; } catch { return true; }
+  });
+
+  const toggleGuide = () => {
+    setGuideOpen(prev => {
+      try { localStorage.setItem(GUIDE_KEY, prev ? 'closed' : 'open'); } catch { /* private rejim */ }
+      return !prev;
+    });
+  };
 
   // ⚠️ HAMKOR AUDITI 2026-08-15: ilgari bu yerda `user?.uid` zaxira kod
   // sifatida yuborilardi. Server kelgan qatorni promokod deb qabul qiladi
@@ -496,6 +512,94 @@ export default function PartnerPage() {
               </button>
             </div>
           </motion.div>
+          )}
+
+          {/* ── 2b. QO'LLANMA: havola va promokod qanday ishlaydi ──
+              Hamkor ustoz uchun yozilgan, dasturchi uchun emas. Sabab: guruhga
+              qo'shilish oqimi ikki bosqichli (havola → tasdiq) va buni bilmagan
+              ustoz «havolani bosdim, nega ro'yxatda yo'qman?» deb qoladi. */}
+          {data.promo && (
+          <div className="glass-panel" style={{ borderRadius: 16, marginBottom: 24, border: '1.5px solid var(--border)', overflow: 'hidden' }}>
+            <button
+              onClick={toggleGuide}
+              style={{
+                width: '100%', display: 'flex', alignItems: 'center', gap: 10,
+                padding: '14px 18px', background: 'transparent', border: 'none',
+                cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left',
+              }}
+            >
+              <HelpCircle size={18} style={{ color: 'var(--accent)', flexShrink: 0 }} />
+              <span style={{ flex: 1, fontSize: 'var(--fs-base)', fontWeight: 800, color: 'var(--text)' }}>
+                Havola va promokod qanday ishlaydi?
+              </span>
+              <ChevronDown
+                size={18}
+                style={{
+                  color: 'var(--text3)', flexShrink: 0,
+                  transform: guideOpen ? 'rotate(180deg)' : 'none',
+                  transition: 'transform 0.2s',
+                }}
+              />
+            </button>
+
+            {guideOpen && (
+              <div style={{ padding: '0 18px 18px', fontSize: 'var(--fs-sm)', color: 'var(--text2)', lineHeight: 1.6 }}>
+
+                {/* 1-yo'l: havola */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                  <Link2 size={15} style={{ color: 'var(--accent)' }} />
+                  <span style={{ fontWeight: 800, color: 'var(--text)' }}>1-yo'l — havola (tavsiya etiladi)</span>
+                </div>
+                <ol style={{ margin: '0 0 18px', paddingLeft: 22 }}>
+                  <li>Yuqoridagi <b>«Havola nusxalash»</b> tugmasini bosing (yoki <b>«Telegramga ulashish»</b>).</li>
+                  <li>Havolani guruhingizga tashlang.</li>
+                  <li>Ustoz havolani bosadi va ro'yxatdan o'tadi.</li>
+                  <li>
+                    Ro'yxatdan o'tgach, uning bosh sahifasida <b>«{data.promo.partnerName || 'Hamkor ustoz'} guruhiga
+                    qo'shilasizmi?»</b> degan taklif chiqadi.
+                  </li>
+                  <li>U <b>«Qo'shilaman»</b> ni bosgach, quyidagi ro'yxatda paydo bo'ladi.</li>
+                </ol>
+
+                {/* 2-yo'l: kod */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                  <Ticket size={15} style={{ color: 'var(--accent)' }} />
+                  <span style={{ fontWeight: 800, color: 'var(--text)' }}>2-yo'l — promokod (zaxira)</span>
+                </div>
+                <p style={{ margin: '0 0 18px' }}>
+                  Kodni og'zaki yoki qog'ozda bergan bo'lsangiz, ustoz ilovada:
+                  <b> Menyu → «Do'stni taklif qilish»</b> → sahifaning pastidagi
+                  <b> «Promo-kodingiz bormi?»</b> maydoniga <b>{data.promo.code}</b> kodini kiritadi.
+                </p>
+
+                {/* Muhim eslatmalar */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                  <AlertCircle size={15} style={{ color: 'var(--amber)' }} />
+                  <span style={{ fontWeight: 800, color: 'var(--text)' }}>Bilib qo'ying</span>
+                </div>
+                <ul style={{ margin: 0, paddingLeft: 22 }}>
+                  <li>
+                    <b>Havolani bosishning o'zi yetarli emas</b> — ustoz taklifni tasdiqlashi shart. Tasdiqlashdan
+                    oldin unga natijalari sizga ko'rinishi haqida ochiq aytiladi.
+                  </li>
+                  <li>Ro'yxatda faqat <b>tasdiqlaganlar</b> ko'rinadi. Havolani bosib, tasdiqlamaganlar ko'rinmaydi.</li>
+                  <li>
+                    Har bir ustoz kodni <b>faqat bir marta</b> ishlata oladi va buni qaytarib bo'lmaydi — shuning uchun
+                    havolani faqat o'z guruhingizga tarqating.
+                  </li>
+                  <li>
+                    Ustozlar nima olishadi:{' '}
+                    <b>
+                      {data.promo.type === 'percent'
+                        ? `keyingi to'lovga ${data.promo.value}% chegirma`
+                        : `${data.promo.value} kun bepul foydalanish`}
+                    </b>.
+                  </li>
+                  <li>Yangi qo'shilgan ustoz darhol ko'rinmasa — yuqoridagi <b>«Yangilash»</b> tugmasini bosing.</li>
+                </ul>
+              </div>
+            )}
+          </div>
           )}
 
           {/* ── 3. Guruh Ustozlari Ro'yxati / Monitoring ── */}
