@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { MILESTONES } from '../../data/milestones';
+import { MILESTONES, nearestMilestone } from '../../data/milestones';
 
 /**
  * LevelPips — marra bosqichlari (nuqta qatori). TierMarks bilan bir oilada:
@@ -30,9 +30,21 @@ const LevelPips = ({ level, total }) => (
 const MilestoneGrid = ({ live = {} }) => {
   const { t } = useTranslation();
 
+  // Tartib: eng yaqin marra BIRINCHI, keyin qolgan tugallanmaganlar
+  // yaqinligi bo'yicha, yakunlanganlar esa oxirida. Ilgari ro'yxat qat'iy
+  // tartibda chizilardi — qaysi marra bugun yopilishi mumkinligi ko'rinmasdi
+  // (`nearestMilestone` yozilgan-u, hech qayerda ishlatilmasdi).
+  const nearest = nearestMilestone(live);
+  const ordered = [...MILESTONES].sort((a, b) => {
+    const la = live[a.id] || { progress: 0, maxed: false };
+    const lb = live[b.id] || { progress: 0, maxed: false };
+    if (la.maxed !== lb.maxed) return la.maxed ? 1 : -1;
+    return (lb.progress || 0) - (la.progress || 0);
+  });
+
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))', gap: 10 }}>
-      {MILESTONES.map(m => {
+      {ordered.map(m => {
         const lv = live[m.id] || { level: 0, value: 0, next: m.levels[0], progress: 0, maxed: false, total: m.levels.length };
         const Icon = m.icon;
         const unit = t(`milestones.unit.${m.unit}`);
@@ -41,8 +53,16 @@ const MilestoneGrid = ({ live = {} }) => {
           <div
             key={m.id}
             className="glass-panel"
-            style={{ padding: '13px 14px', display: 'flex', flexDirection: 'column', gap: 8 }}
+            style={{
+              padding: '13px 14px', display: 'flex', flexDirection: 'column', gap: 8,
+              border: nearest?.id === m.id ? '1px solid rgba(14,151,224,0.28)' : undefined,
+            }}
           >
+            {nearest?.id === m.id && (
+              <div style={{ fontSize: 'var(--fs-3xs)', fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', color: 'var(--accent2)' }}>
+                {t('milestones.nearest')}
+              </div>
+            )}
             <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
               <div style={{
                 width: 30, height: 30, borderRadius: 9, flexShrink: 0,

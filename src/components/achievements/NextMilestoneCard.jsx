@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight } from 'lucide-react';
+import { ACTION_CTA_KEY } from '../../data/tracks';
 
 /**
  * NextMilestoneCard — «Keyingi bosqich» kartasi: eng yaqin daraja, aniq
@@ -17,6 +18,8 @@ const NextMilestoneCard = ({ milestone, second, onStart }) => {
   const Icon = milestone.icon;
   const pct = Math.round(milestone.progress * 100);
   const title = `«${t(`tracks.${milestone.trackId}.name`)}» — ${t(`tracks.tier${milestone.nextTier}`)}`;
+  // Tugma matni harakat turiga qarab: «Mashq», «Imtihon», «Xatolar»
+  const ctaKey = ACTION_CTA_KEY[milestone.action?.type] || 'tracks.startCta';
 
   return (
     <div
@@ -48,7 +51,7 @@ const NextMilestoneCard = ({ milestone, second, onStart }) => {
             cursor: 'pointer', fontFamily: 'inherit'
           }}
         >
-          {t('tracks.startCta')} <ArrowRight size={13} />
+          {t(ctaKey)} <ArrowRight size={13} />
         </button>
       </div>
 

@@ -13,14 +13,23 @@ import RadialChart from '../components/shared/RadialChart';
 import AmiCard from '../components/achievements/AmiCard';
 import TrackCard from '../components/achievements/TrackCard';
 import NextMilestoneCard from '../components/achievements/NextMilestoneCard';
+import StreakRiskCard from '../components/achievements/StreakRiskCard';
+import PassportShareCard from '../components/achievements/PassportShareCard';
 import PremiumModal from '../components/PremiumModal';
+import { useMilestoneAction } from '../hooks/useMilestoneAction';
+import { streakRisk } from '../utils/streakRisk';
+import { useAuth } from '../context/AuthContext';
+import { ToastContext } from '../context/ToastContext';
 
 const AchievementsPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { state, updateState } = useContext(AppContext);
+  const { user } = useAuth();
+  const { showToast } = useContext(ToastContext);
   const [activeTab, setActiveTab] = useState('achievements');
   const [showPremiumModal, setShowPremiumModal] = useState(false);
+  const [showPassport, setShowPassport] = useState(false);
   const [topicTotals, setTopicTotals] = useState({});
   const { isTrialExpired } = useTrialExpiry();
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
@@ -33,6 +42,16 @@ const AchievementsPage = () => {
     updateState({ topicId, testMode: mode });
     navigate('/test');
   };
+
+  // Keyingi bosqich CTA'si — yo'nalishga MOS harakat (mashq / imtihon / xatolar).
+  // Bepul limit tugagan bo'lsa harakat ochilmaydi, premium oynasi chiqadi.
+  const startMilestone = useMilestoneAction(() => {
+    if (isFreeLimitReached) { setShowPremiumModal(true); return true; }
+    return false;
+  });
+
+  // Zanjir bugun uzilish arafasidami? (sof hisob — faqat state'dan)
+  const risk = streakRisk(state);
 
   const cat = state.activeCategory;
   const catStats = state.stats[cat] || { totalAnswered: 0, totalCorrect: 0, streak: 0, maxStreak: 0, mistakes: [] };
@@ -101,7 +120,13 @@ const AchievementsPage = () => {
       <p style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 20 }}>{t('achievements.subtitle')}</p>
 
       {/* Akademik mahorat indeksi + radar */}
-      <AmiCard ami={ami} unvonTier={unvonTier} axes={radarAxes} weeklyDelta={weeklyDelta} />
+      <AmiCard
+        ami={ami}
+        unvonTier={unvonTier}
+        axes={radarAxes}
+        weeklyDelta={weeklyDelta}
+        onShare={() => setShowPassport(true)}
+      />
 
       {/* Global stats summary */}
       <div style={{
@@ -158,11 +183,14 @@ const AchievementsPage = () => {
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.2 }}
           >
-            {/* Keyingi bosqich — eng yaqin daraja + aniq shart + CTA */}
+            {/* Zanjir xavfi — yo'qotish arafasida turgan yagona narsa, eng tepada */}
+            <StreakRiskCard risk={risk} onStart={() => handleNavigation(-1, 'exam')} />
+
+            {/* Keyingi bosqich — eng yaqin daraja + aniq shart + mos CTA */}
             <NextMilestoneCard
               milestone={milestones[0]}
               second={milestones[1]}
-              onStart={(m) => handleNavigation(m.topicId ?? -1, 'exam')}
+              onStart={startMilestone}
             />
 
             {/* Daily Goal inside Achievements Tab */}
@@ -478,6 +506,20 @@ const AchievementsPage = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <PassportShareCard
+        open={showPassport}
+        onClose={() => setShowPassport(false)}
+        ami={ami}
+        unvon={t(`tracks.tier${unvonTier}`)}
+        tracks={TRACKS.map(tr => ({
+          name: t(`tracks.${tr.id}.name`),
+          tier: achView.live[tr.id]?.tier || 0,
+        }))}
+        streak={state.dailyStreak || 0}
+        userName={user?.displayName || ''}
+        showToast={showToast}
+      />
 
       {showPremiumModal && <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />}
     </motion.div>

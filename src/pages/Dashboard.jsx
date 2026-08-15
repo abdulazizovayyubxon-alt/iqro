@@ -13,6 +13,8 @@ import ConfirmDialog from '../components/shared/ConfirmDialog';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { reconcileAchievements, nextMilestones } from '../data/tracks';
 import NextMilestoneLine from '../components/achievements/NextMilestoneLine';
+import StreakRiskCard from '../components/achievements/StreakRiskCard';
+import { streakRisk } from '../utils/streakRisk';
 import ReadinessCard from '../components/diagnostics/ReadinessCard';
 import ExamDateModal from '../components/ExamDateModal';
 import { computeDiagnostics, buildPace } from '../engine/DiagnosticsEngine';
@@ -89,6 +91,9 @@ const Dashboard = () => {
     const { live } = reconcileAchievements(state, state.achievements);
     return nextMilestones(state, live)[0] || null;
   }, [state]);
+
+  // Zanjir bugun uzilish arafasidami — yo'qotish ogohlantirishi (sof hisob)
+  const risk = useMemo(() => streakRisk(state), [state]);
 
   // Fan bo'yicha savol soni (ishonch badge) — AdminPage «Yangilanishni yuborish» yozadi
   useEffect(() => {
@@ -495,6 +500,13 @@ const Dashboard = () => {
           onTopic={(topicId) => handleNav(topicId, 'exam')}
         />
       </div>
+
+      {/* ── ZANJIR XAVFI — bugun bajarilmasa yo'qoladi ── */}
+      {risk && (
+        <div style={{ marginTop: 14 }}>
+          <StreakRiskCard risk={risk} onStart={() => handleNav(-1, 'exam')} compact />
+        </div>
+      )}
 
       {/* ── KEYINGI BOSQICH — yutuqlar bo'limiga kirish nuqtasi ── */}
       {nextMs && (

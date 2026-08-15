@@ -39,6 +39,25 @@ const FCM_BATCH = 500;                           // sendEachForMulticast chegara
 const DEFAULT_TARGET = 20;                       // dailyGoal.target zaxirasi
 const SECONDS_PER_Q = 45;                        // DiagnosticsEngine bilan bir xil
 
+// ── Yutuq lahzalari ──────────────────────────────────────────────────────
+// Kunlik eslatma allaqachon kuniga BITTA xabar yuboradi va reja bajarilgan
+// kuni umuman jim turadi. Shu bitta xabarning MATNI endi holatga qarab
+// tanlanadi: yo'qotish arafasidagi zanjir eng kuchli sabab, undan keyin
+// bosag'aga yaqin unvon, oxirida — odatdagi reja qadami.
+//
+// ⚠️ YANGI ENDPOINT QO'SHILMADI: api/ da aynan 12 ta funksiya bor va bu
+// Vercel Hobby rejasining chegarasi. Shu sababli mantiq mavjud cron ichida.
+const RISK_MIN_STREAK = 2;      // src/utils/streakRisk.js bilan bir xil ostona
+const UNVON_NEAR_POINTS = 3;    // unvon bosag'asiga shuncha ball qolganda eslatiladi
+const UNVON_THRESHOLDS = [33, 67]; // src/data/tracks.js UNVON_AMI_THRESHOLDS bilan bir xil
+
+/** Unvon nomlari — i18n `tracks.tier*` bilan bir xil (server mijoz lug'atini o'qiy olmaydi) */
+const UNVON_NAME = {
+  uz: ['Izlanuvchi', 'Mutaxassis', 'Ekspert'],
+  ru: ['Исследователь', 'Специалист', 'Эксперт'],
+  en: ['Researcher', 'Specialist', 'Expert'],
+};
+
 let dbInstance = null;
 
 function getDb() {
@@ -81,18 +100,30 @@ const TEXT = {
     fresh: (n, m) => `Bugungi reja: ${n} savol, taxminan ${m} daqiqa.`,
     partial: (done, n) => `Bugun ${done} ta savol ishlandi. Rejani yakunlash uchun yana ${n} ta qoldi.`,
     step: (s, m) => `Bugungi qadam: ${s}. Taxminan ${m} daqiqa.`,
+    riskTitle: (n) => `${n} kunlik zanjir xavf ostida`,
+    riskBody: (n) => `Bugun yana ${n} ta savol yechilsa, zanjir saqlanadi.`,
+    unvonTitle: (name) => `«${name}» unvoniga yaqinsiz`,
+    unvonBody: (ami, n) => `Akademik mahorat indeksi: ${ami}/100. Unvon uchun ${n} ball qoldi.`,
   },
   ru: {
     title: (d) => `До экзамена ${d} дн.`,
     fresh: (n, m) => `План на сегодня: ${n} вопросов, примерно ${m} минут.`,
     partial: (done, n) => `Сегодня решено ${done} вопросов. До завершения плана осталось ${n}.`,
     step: (s, m) => `Шаг на сегодня: ${s}. Примерно ${m} минут.`,
+    riskTitle: (n) => `Серия из ${n} дней под угрозой`,
+    riskBody: (n) => `Решите сегодня ещё ${n} вопросов — серия сохранится.`,
+    unvonTitle: (name) => `Вы близко к званию «${name}»`,
+    unvonBody: (ami, n) => `Индекс академического мастерства: ${ami}/100. До звания ${n} балла.`,
   },
   en: {
     title: (d) => `${d} days until the exam`,
     fresh: (n, m) => `Today's plan: ${n} questions, about ${m} minutes.`,
     partial: (done, n) => `${done} questions done today. ${n} left to finish the plan.`,
     step: (s, m) => `Today's step: ${s}. About ${m} minutes.`,
+    riskTitle: (n) => `Your ${n}-day streak is at risk`,
+    riskBody: (n) => `${n} more questions today keeps the streak.`,
+    unvonTitle: (name) => `You are close to «${name}»`,
+    unvonBody: (ami, n) => `Academic Mastery Index: ${ami}/100. ${n} points to the title.`,
   },
 };
 
@@ -160,6 +191,8 @@ export default async function handler(req, res) {
     eligible: 0,
     sent: 0,
     skipped: { noToken: 0, optedOut: 0, noExam: 0, examPassed: 0, inactive: 0, goalDone: 0, alreadySent: 0 },
+    // Xabar qaysi sabab bilan ketgani — matn o'zgarishining ta'sirini o'lchash uchun
+    reason: { streak: 0, unvon: 0, plan: 0 },
     errors: [],
   };
 
@@ -183,10 +216,12 @@ export default async function handler(req, res) {
         if (u.dailyReminder === false) { out.skipped.optedOut++; continue; }
         if (u.lastDailyPush === today) { out.skipped.alreadySent++; continue; }
 
+        // Imtihon sanasi REJA eslatmasi uchun shart (matn sanoqqa asoslanadi),
+        // lekin zanjir/unvon xabarlari uchun emas — ular sanadan mustaqil.
+        // Shu sababli tekshiruv endi darhol `continue` qilmaydi, quyida
+        // holat aniqlanganidan keyin hal qilinadi.
         const daysLeft = daysUntil(u.examDate);
-        if (daysLeft === null) { out.skipped.noExam++; continue; }
-        // Imtihon bugun yoki o'tgan — eslatma o'rinsiz
-        if (daysLeft <= 0) { out.skipped.examPassed++; continue; }
+        const examOk = daysLeft !== null && daysLeft > 0;
 
         // Statistika: faollik va bugungi maqsad
         let stats = null;
@@ -216,19 +251,60 @@ export default async function handler(req, res) {
         const t = TEXT[lang];
         const remaining = Math.max(1, target - answered);
 
+        // ── Xabar sababini tanlash (kuchli → kuchsiz) ──
+        //
+        // 1) Zanjir xavfi: oxirgi maqsad KECHA bajarilgan va bugun hali emas.
+        //    Aynan «kecha» sharti muhim — 3 kun oldin to'xtagan odamda zanjir
+        //    allaqachon uzilgan, unga «xavf ostida» deyish yolg'on bo'lardi.
+        const streak = stats.dailyStreak || 0;
+        const yesterday = tashkentDay(Date.now() - 86400000);
+        const lastGoalDay = stats.lastGoalDate ? tashkentDay(Date.parse(stats.lastGoalDate)) : null;
+        const atRisk = streak >= RISK_MIN_STREAK && lastGoalDay === yesterday;
+
+        // 2) Unvon bosag'asi: AMI keyingi unvonga bir necha ball qolganda.
+        //    `achievements` userStats hujjatida saqlanadi (AppContext yozadi).
+        const ami = stats.achievements?.ami || 0;
+        const unvonTier = stats.achievements?.unvonTier || 1;
+        const nextThreshold = unvonTier <= 2 ? UNVON_THRESHOLDS[unvonTier - 1] : null;
+        const unvonNear = nextThreshold !== null
+          && ami < nextThreshold
+          && ami >= nextThreshold - UNVON_NEAR_POINTS;
+
         // Reja qadami ma'lum bo'lsa — aynan uni aytamiz («Bugungi qadam:
         // Taktik tayyorgarlik bo'yicha mashq»). Foydalanuvchi hali Reja
         // sahifasini ochmagan bo'lsa `todayPlan` bo'lmaydi — o'shanda avvalgi
         // umumiy matn ishlaydi, ya'ni eslatma hech qachon yo'qolmaydi.
-        const stepName = planStepName(stats.todayPlan, today, lang);
-        const body = stepName
-          ? t.step(stepName, Math.max(1, stats.todayPlan.minutes || Math.round((remaining * SECONDS_PER_Q) / 60)))
-          : answered > 0
-            ? t.partial(answered, remaining)
-            : t.fresh(target, Math.max(1, Math.round((target * SECONDS_PER_Q) / 60)));
+        let title, body, link;
+        if (atRisk) {
+          title = t.riskTitle(streak);
+          body = t.riskBody(remaining);
+          link = '/test';
+          out.reason.streak++;
+        } else if (unvonNear) {
+          const name = (UNVON_NAME[lang] || UNVON_NAME.uz)[unvonTier]; // keyingi unvon nomi
+          title = t.unvonTitle(name);
+          body = t.unvonBody(ami, nextThreshold - ami);
+          link = '/achievements';
+          out.reason.unvon++;
+        } else if (examOk) {
+          const stepName = planStepName(stats.todayPlan, today, lang);
+          title = t.title(daysLeft);
+          body = stepName
+            ? t.step(stepName, Math.max(1, stats.todayPlan.minutes || Math.round((remaining * SECONDS_PER_Q) / 60)))
+            : answered > 0
+              ? t.partial(answered, remaining)
+              : t.fresh(target, Math.max(1, Math.round((target * SECONDS_PER_Q) / 60)));
+          link = '/analysis?tab=plan';
+          out.reason.plan++;
+        } else {
+          // Aytadigan gap yo'q: yutuq lahzasi ham yo'q, imtihon sanasi ham ishlamaydi
+          if (daysLeft !== null && daysLeft <= 0) out.skipped.examPassed++;
+          else out.skipped.noExam++;
+          continue;
+        }
 
         out.eligible++;
-        queue.push({ uid: userDoc.id, tokens, title: t.title(daysLeft), body });
+        queue.push({ uid: userDoc.id, tokens, title, body, link });
       }
 
       lastDoc = page.docs[page.docs.length - 1];
@@ -250,9 +326,9 @@ export default async function handler(req, res) {
           const resp = await messaging.sendEachForMulticast({
             tokens: item.tokens.slice(i, i + FCM_BATCH),
             notification: { title: item.title, body: item.body },
-            // To'g'ridan-to'g'ri reja tabiga — xabar qaysi qadamni aytgan
-            // bo'lsa, foydalanuvchi o'sha ro'yxatni ochadi
-            webpush: { fcmOptions: { link: '/analysis?tab=plan' } },
+            // Havola xabar SABABIGA mos: zanjir → mashq, unvon → yutuqlar,
+            // reja → reja ro'yxati. Xabar nimani aytgan bo'lsa, o'sha ekran ochiladi.
+            webpush: { fcmOptions: { link: item.link || '/analysis?tab=plan' } },
           });
           ok += resp.successCount;
         }

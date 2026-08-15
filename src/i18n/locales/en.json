@@ -302,7 +302,9 @@
     "workOnMistakes": "Work on Mistakes",
     "toHome": "Back to Home",
     "shareResult": "Share Result",
-    "planNext": "Today's plan · {{done}}/{{total}}"
+    "planNext": "Today's plan · {{done}}/{{total}}",
+    "rewardPoints": "Level reward: +{{points}} points",
+    "rewardBoth": "Level reward: +{{points}} points and {{count}} freeze"
   },
   "selector": {
     "subject": "Subject",
@@ -474,7 +476,8 @@
     "points": "POINTS",
     "empty": "Leaderboard is currently empty",
     "deleteTitle": "Confirm Deletion",
-    "deleteText": "Are you sure you want to remove the leaderboard result for \"{{name}}\"?"
+    "deleteText": "Are you sure you want to remove the leaderboard result for \"{{name}}\"?",
+    "amiShort": "AMI {{count}}"
   },
   "profile": {
     "avatarUpdated": "Avatar updated ✅",
@@ -594,7 +597,11 @@
     "mistakeCorrect": "✓ Correct: {{correct}}",
     "downloadPng": "📥 Download (PNG)",
     "shareTelegram": "✈️ Share on Telegram",
-    "shareModalHint": "You can download your Passport image and share it with friends in Telegram groups!"
+    "shareModalHint": "You can download your Passport image and share it with friends in Telegram groups!",
+    "riskTitle": "Your {{count}}-day streak is at risk",
+    "riskBody": "{{count}} more questions today keeps the streak. {{hours}}h left in the day.",
+    "riskFreezeBody": "{{count}} more questions today — a freeze will save the streak.",
+    "riskCta": "Continue"
   },
   "tracks": {
     "sectionTitle": "Track Levels",
@@ -661,7 +668,20 @@
       "remainQ": "{{count}} more questions — maintaining speed and accuracy",
       "remainSpeed": "Reduce average speed below {{max}} seconds (currently {{now}}s)",
       "remainAcc": "Increase overall accuracy to {{need}}% (currently {{now}}%)"
-    }
+    },
+    "ctaTest": "Practice",
+    "ctaExam": "Exam",
+    "ctaMistakes": "Mistakes",
+    "ctaReview": "Review",
+    "shareCta": "Share",
+    "amiHowCta": "How is the index calculated?",
+    "amiHowHint": "Each track contributes its own share to the index. A level in a heavier track raises it faster.",
+    "amiWeight": "{{count}} pts",
+    "passportHeader": "Academic passport",
+    "passportSubtitle": "Academic passport",
+    "passportStreak": "{{count}} days in a row",
+    "passportShareTitle": "Zehin — academic passport",
+    "passportShareText": "My Academic Mastery Index: {{ami}}/100 — «{{unvon}}»."
   },
   "referral": {
     "currency": "UZS",
@@ -1588,7 +1608,8 @@
     "ozlashtirish": {
       "name": "Mastered sections",
       "desc": "With 90%+ accuracy"
-    }
+    },
+    "nearest": "Closest"
   },
   "school": {
     "title": "School",

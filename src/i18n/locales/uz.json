@@ -302,7 +302,9 @@
     "workOnMistakes": "Xatolar ustida ishlash",
     "toHome": "Bosh sahifaga",
     "shareResult": "Natijani ulashing",
-    "planNext": "Bugungi reja · {{done}}/{{total}}"
+    "planNext": "Bugungi reja · {{done}}/{{total}}",
+    "rewardPoints": "Daraja mukofoti: +{{points}} ball",
+    "rewardBoth": "Daraja mukofoti: +{{points}} ball va {{count}} ta muzlatish zaxirasi"
   },
   "selector": {
     "subject": "Fan",
@@ -474,7 +476,8 @@
     "points": "BALL",
     "empty": "Hozircha reyting bo'sh",
     "deleteTitle": "O'chirishni tasdiqlang",
-    "deleteText": "\"{{name}}\" ning reyting natijasini rostdan ham o'chirasizmi?"
+    "deleteText": "\"{{name}}\" ning reyting natijasini rostdan ham o'chirasizmi?",
+    "amiShort": "AMI {{count}}"
   },
   "profile": {
     "avatarUpdated": "Avatar yangilandi ✅",
@@ -594,7 +597,11 @@
     "mistakeCorrect": "✓ To'g'ri: {{correct}}",
     "downloadPng": "📥 Yuklab Olish (PNG)",
     "shareTelegram": "✈️ Telegramda Ulashish",
-    "shareModalHint": "Pasport rasmini yuklab olib, Telegram guruhlarida do'stlaringizga yuborishingiz mumkin!"
+    "shareModalHint": "Pasport rasmini yuklab olib, Telegram guruhlarida do'stlaringizga yuborishingiz mumkin!",
+    "riskTitle": "{{count}} kunlik zanjir xavf ostida",
+    "riskBody": "Bugun yana {{count}} ta savol — zanjir saqlanadi. Kun tugashiga {{hours}} soat.",
+    "riskFreezeBody": "Bugun yana {{count}} ta savol — zanjir zaxira muzlatish hisobiga saqlanadi.",
+    "riskCta": "Davom etish"
   },
   "tracks": {
     "sectionTitle": "Yo'nalishlar bo'yicha darajalar",
@@ -661,7 +668,20 @@
       "remainQ": "Yana {{count}} ta savol — tezlik va aniqlikni saqlagan holda",
       "remainSpeed": "O'rtacha vaqtni {{max}} soniyadan pastga tushiring (hozir {{now}} s)",
       "remainAcc": "Umumiy aniqlikni {{need}}% ga yetkazing (hozir {{now}}%)"
-    }
+    },
+    "ctaTest": "Mashq",
+    "ctaExam": "Imtihon",
+    "ctaMistakes": "Xatolar",
+    "ctaReview": "Takror",
+    "shareCta": "Ulashish",
+    "amiHowCta": "AMI qanday hisoblanadi?",
+    "amiHowHint": "Har bir yo'nalish indeksga o'z ulushi bilan kiradi. Ulushi katta yo'nalishdagi daraja indeksni tezroq oshiradi.",
+    "amiWeight": "{{count}} ball",
+    "passportHeader": "Akademik pasport",
+    "passportSubtitle": "Akademik pasport",
+    "passportStreak": "Uzluksiz {{count}} kun",
+    "passportShareTitle": "Zehin — akademik pasport",
+    "passportShareText": "Akademik mahorat indeksim: {{ami}}/100 — «{{unvon}}»."
   },
   "referral": {
     "currency": "so'm",
@@ -1588,7 +1608,8 @@
     "ozlashtirish": {
       "name": "O'zlashtirilgan bo'limlar",
       "desc": "90%+ aniqlik bilan"
-    }
+    },
+    "nearest": "Eng yaqin"
   },
   "school": {
     "title": "Maktab",

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { ToastContext } from '../context/ToastContext';
+import { AppContext } from '../context/AppContext';
 import { db, auth } from '../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { updateProfile } from 'firebase/auth';
@@ -63,6 +64,9 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
   const { t, i18n } = useTranslation();
   const { updateUserData } = useAuth();
   const { showToast } = useContext(ToastContext);
+  // `|| {}` — AppContext'ning default qiymati yo'q (createContext()); drawer
+  // provider tashqarisida chizilsa destrukturizatsiya xato bermasligi kerak.
+  const { state: appState } = useContext(AppContext) || {};
   const { isAdmin } = useAdmin();
   const { isPartner } = usePartner();
 
@@ -126,6 +130,9 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
 
   // ── Hisoblangan qiymatlar ──
   const displayName = profileName || user.displayName || user.email?.split('@')[0] || t('common.userFallback');
+  // Akademik pasport — AppContext'dagi saqlangan qiymat (qayta hisoblamaymiz)
+  const ami = appState?.achievements?.ami || 0;
+  const unvonTier = appState?.achievements?.unvonTier || 1;
   const initials = (displayName || '?').split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
   const avatarSrc = avatarUrl(avatarId) || resolveAvatar(user) || null;
   const isTruePremium = user.isTruePremium || false;
@@ -324,6 +331,16 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
                       </>
                     )}
                   </div>
+
+                  {/* Akademik unvon — pasportning ko'rinadigan yuzi.
+                      Ilgari u faqat Yutuqlar sahifasi ichida yashardi. */}
+                  {ami > 0 && (
+                    <div style={{ marginTop: 5, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', fontSize: 'var(--fs-sm)', fontWeight: 700 }}>
+                      <span style={{ color: 'var(--accent2)' }}>{t(`tracks.tier${unvonTier}`)}</span>
+                      <span style={{ color: 'var(--text3)' }}>·</span>
+                      <span style={{ fontWeight: 600, color: 'var(--text3)' }}>{t('tracks.amiLabel')} {ami}/100</span>
+                    </div>
+                  )}
                 </div>
               </div>
 

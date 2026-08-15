@@ -121,6 +121,7 @@ const TestPage = () => {
   const [showResults, setShowResults] = useState(false);
   const [amiDelta, setAmiDelta] = useState(0); // shu sessiyada AMI necha ballga o'zgargani
   const [gainedTiers, setGainedTiers] = useState([]); // shu sessiyada olingan track darajalari (muhr-qator)
+  const [reward, setReward] = useState({ points: 0, freezes: 0 }); // daraja uchun berilgan ball/zaxira
   const [selectedBatch, setSelectedBatch] = useState(0);
   const [showBlockPicker, setShowBlockPicker] = useState(false); // Blok tanlash oynasi (blok chipi orqali)
   const [showBlockConfirm, setShowBlockConfirm] = useState(false); // Test o'rtasida blok almashtirish tasdig'i
@@ -679,6 +680,7 @@ const TestPage = () => {
     const commitResult = batchCommitResults(results);
     setAmiDelta(commitResult?.amiDelta || 0);
     setGainedTiers(commitResult?.gained || []);
+    setReward({ points: commitResult?.rewardPoints || 0, freezes: commitResult?.rewardFreezes || 0 });
 
     // ⚠️ AUDIT 2026-08-06, T-14 BAND — bu yerda `fetch('/api/send-result', ...)`
     // turardi, LEKIN `api/send-result.js` fayli mavjud emas (api/ da aynan 12 ta
@@ -1056,6 +1058,7 @@ const TestPage = () => {
               correctCount={correctCount}
               amiDelta={amiDelta}
               gained={gainedTiers}
+              reward={reward}
               questionsLength={questions.length}
               topicName={topicName}
               state={state}

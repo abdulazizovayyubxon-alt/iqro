@@ -52,6 +52,18 @@ export const POINTS_NEW_CORRECT = 2;
 export const POINTS_DUE_REVIEW = 1;
 export const DAILY_GOAL_BONUS = 5;
 
+// ── Yutuq mukofoti (oqibat) ──────────────────────────────────────────────
+// Ilgari daraja olinishi HECH NARSA bermasdi: na ball, na zaxira, na kirish —
+// faqat bildirishnoma. Ya'ni "harakat → yutuq → foyda" zanjiri yarmida uzilardi.
+// Endi har bir yangi yo'nalish darajasi ball VA bitta muzlatish zaxirasi beradi
+// (zaxira ataylab: u aynan zanjirni saqlashga ketadi, ya'ni mukofot keyingi
+// harakatga qaytadi). Pasport unvoni kamdan-kam oshadi — u kattaroq ball oladi.
+//
+// Ball miqdori firestore.rules dagi delta chegarasiga (javob o'sishi × 2 + 5000)
+// bemalol sig'adi: bir sessiyada eng ko'pi 6×25 + 100 = 250.
+export const TIER_REWARD_POINTS = 25;
+export const UNVON_REWARD_POINTS = 100;
+
 // ── Tarix (tendensiya va faollik kalendari) ──────────────────────────────
 // Ikkalasi ham qat'iy cheklangan: bulutdagi hujjat cheksiz o'smasligi kerak.
 export const READINESS_HISTORY_WEEKS = 12;  // ~3 oylik tendensiya — sparkline uchun yetarli
@@ -694,6 +706,8 @@ export const AppProvider = ({ children }) => {
     let gainedUnvonOut = null; // shu sessiyada unvon oshgan bo'lsa (katta — toast + Bell)
     let gainedMilestonesOut = []; // shu sessiyada olingan shaxsiy marralar (Bell)
     let amiDeltaOut = 0; // shu sessiyada AMI necha ballga o'zgargani (natija ekrani uchun)
+    let rewardPointsOut = 0;   // yutuq uchun berilgan qo'shimcha ball (natija ekrani)
+    let rewardFreezesOut = 0;  // yutuq uchun berilgan muzlatish zaxirasi (natija ekrani)
 
     // ⚠️ AUDIT 2026-08-06, T-22 BAND — bu hisob ilgari `setState(prev => ...)`
     // UPDATER'i ichida bajarilardi, natija esa (`snapshot`, `earnedOut`, yutuqlar)
@@ -865,6 +879,25 @@ export const AppProvider = ({ children }) => {
       gainedUnvonOut = gainedUnvon;
       amiDeltaOut = achievements.ami - prevAmi;
 
+      // ── Yutuq mukofoti ────────────────────────────────────────────────
+      // Daraja MONOTON bo'lgani uchun (reconcileAchievements pastga tushirmaydi)
+      // `gained` bir darajani faqat BIR MARTA qaytaradi — mukofot ham bir marta
+      // beriladi, qayta hisoblash yoki qurilma almashtirish uni takrorlamaydi.
+      // Muzlatish zaxirasi cap bilan: mukofot zaxirani cheksiz to'plash yo'liga
+      // aylanmasligi kerak.
+      if (gained.length > 0 || gainedUnvon) {
+        rewardPointsOut = gained.length * TIER_REWARD_POINTS + (gainedUnvon ? UNVON_REWARD_POINTS : 0);
+        newState.totalScore += rewardPointsOut;
+        newState[`weekly_${weekId}`] += rewardPointsOut;
+        newState[`monthly_${monthId}`] += rewardPointsOut;
+
+        if (gained.length > 0) {
+          const before = newState.streakFreezes || 0;
+          newState.streakFreezes = Math.min(STREAK_FREEZE_MAX, before + gained.length);
+          rewardFreezesOut = newState.streakFreezes - before;  // cap tufayli 0 bo'lishi mumkin
+        }
+      }
+
       // Shaxsiy marralar — AMI'ga ta'sir qilmaydi (milestones.js izohiga qarang)
       const ms = reconcileMilestones(newState, prev.milestones);
       newState.milestones = ms.milestones;
@@ -927,7 +960,7 @@ export const AppProvider = ({ children }) => {
         : { weekId, startAmi: prevAmi };
 
       snapshot = newState; // sof hisob — faqat hisoblaydi va natijani capture qiladi
-      earnedOut = earnedPoints;
+      earnedOut = earnedPoints + rewardPointsOut; // "+N ball" yutuq mukofotini ham o'z ichiga oladi
       return newState;
     };
 
@@ -936,9 +969,9 @@ export const AppProvider = ({ children }) => {
     // Yon ta'sir (Firestore yozuvi) setState updater'idan TASHQARIDA bajariladi —
     // React 18 StrictMode updater'ni ikki marta chaqirganda dublikat write bo'lmaydi.
     // Natija debounce kutmasdan darhol saqlanadi (test yakunida yo'qolmasligi uchun).
-    if (!snapshot) return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut, gainedMilestones: gainedMilestonesOut };
+    if (!snapshot) return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut, gainedMilestones: gainedMilestonesOut, rewardPoints: rewardPointsOut, rewardFreezes: rewardFreezesOut };
     const currentUser = userRef.current;
-    if (!currentUser) return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut, gainedMilestones: gainedMilestonesOut };
+    if (!currentUser) return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut, gainedMilestones: gainedMilestonesOut, rewardPoints: rewardPointsOut, rewardFreezes: rewardFreezesOut };
     const statRef = doc(db, 'userStats', currentUser.uid);
     setDoc(statRef, prepareStatsForSave(snapshot, currentUser), { merge: true }).catch(err => {
       console.error('Natijalarni saqlashda xatolik:', err);
@@ -996,7 +1029,7 @@ export const AppProvider = ({ children }) => {
         read: false
       }).catch(err => console.warn('Unvon bildirishnomasi yozilmadi:', err?.code || err));
     }
-    return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut, gainedMilestones: gainedMilestonesOut };
+    return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut, gainedMilestones: gainedMilestonesOut, rewardPoints: rewardPointsOut, rewardFreezes: rewardFreezesOut };
   }, [showToast]);
 
   // Shaxsiy mnemonika saqlash

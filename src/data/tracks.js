@@ -166,10 +166,28 @@ export const TRACKS = [
 // Har bir tier<3 yo'nalish uchun keyingi daraja, jonli progress va aniq
 // «qolgan shart» matni (i18n key + params). topicId bo'lsa — CTA o'sha
 // bo'lim bilan mashqqa olib boradi. Sof funksiyalar: faqat state'dan o'qiydi.
+//
+// `action` — CTA AYNAN NIMA OCHISHI. Ilgari har bir bosqich uchun bitta
+// umumiy harakat (tasodifiy imtihon) ochilardi: «sinov» yo'nalishi imtihon
+// zanjirini talab qilsa ham oddiy mashq boshlanardi, aniqlik yetishmasa ham
+// yangi savollar berilardi. Endi to'siq nimada bo'lsa, harakat o'shanga
+// mos keladi:
+//   test     — mashq (ixtiyoriy topicId bilan): hajm yetishmaganda
+//   exam     — to'liq sinov imtihoni: «sinov» zanjiri va tezlik uchun
+//   mistakes — xatolar ustida ishlash: to'siq ANIQLIK bo'lganda
+// Marshrutni sahifa emas, `useMilestoneAction` hooki hal qiladi.
 
 const topicsOfActiveCat = (state) => TOPICS.filter(t =>
   Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory
 );
+
+/** Harakat turi → CTA tugmasining matn kaliti (useMilestoneAction bilan juft) */
+export const ACTION_CTA_KEY = {
+  test: 'tracks.ctaTest',
+  exam: 'tracks.ctaExam',
+  mistakes: 'tracks.ctaMistakes',
+  review: 'tracks.ctaReview',
+};
 
 const NEXT_HINTS = {
   aniqlik(state, tier) {
@@ -181,8 +199,11 @@ const NEXT_HINTS = {
       const p = Math.min(n / target.n, acc / target.acc);
       if (p > best.p) best = { n, acc, p };
     });
-    if (best.n < target.n) return { key: 'aniqlik.remainQ', params: { count: target.n - best.n, acc: target.acc } };
-    return { key: 'aniqlik.remainAcc', params: { need: target.acc, now: Math.round(best.acc) } };
+    // Hajm yetishmasa — mashq; aniqlik yetishmasa — xatolar ustida ish
+    if (best.n < target.n) {
+      return { key: 'aniqlik.remainQ', params: { count: target.n - best.n, acc: target.acc }, action: { type: 'test' } };
+    }
+    return { key: 'aniqlik.remainAcc', params: { need: target.acc, now: Math.round(best.acc) }, action: { type: 'mistakes' } };
   },
   chuqurlik(state, tier) {
     const need = CHUQURLIK_TIERS[tier];
@@ -201,12 +222,22 @@ const NEXT_HINTS = {
       })
       .filter(c => c.score >= 0 && c.n > 0)
       .sort((a, b) => b.score - a.score)[0];
-    return { key: 'chuqurlik.remain', params: { count: Math.max(1, need - mastered) }, topicId: candidate?.id || null };
+    return {
+      key: 'chuqurlik.remain',
+      params: { count: Math.max(1, need - mastered) },
+      topicId: candidate?.id || null,
+      action: { type: 'test', topicId: candidate?.id ?? null }
+    };
   },
   sinov(state, tier) {
     const need = SINOV_TIERS[tier];
     const have = state.examStreak90 || 0;
-    return { key: 'sinov.remain', params: { count: Math.max(1, need - have), have: Math.min(have, need), need } };
+    // Bu yo'nalish AYNAN imtihon zanjirini o'lchaydi — CTA sinov imtihonini ochadi
+    return {
+      key: 'sinov.remain',
+      params: { count: Math.max(1, need - have), have: Math.min(have, need), need },
+      action: { type: 'exam' }
+    };
   },
   qamrov(state, tier) {
     const cats = topicsOfActiveCat(state);
@@ -217,12 +248,22 @@ const NEXT_HINTS = {
     const candidate = [...cats]
       .filter(t => (state.topicStats?.[t.id]?.answered || 0) < COVERAGE_MIN_ANSWERED)
       .sort((a, b) => (state.topicStats?.[b.id]?.answered || 0) - (state.topicStats?.[a.id]?.answered || 0))[0];
-    return { key: 'qamrov.remain', params: { count: needCount }, topicId: candidate?.id || null };
+    return {
+      key: 'qamrov.remain',
+      params: { count: needCount },
+      topicId: candidate?.id || null,
+      action: { type: 'test', topicId: candidate?.id ?? null }
+    };
   },
   barqarorlik(state, tier) {
     const need = BARQARORLIK_TIERS[tier];
     const have = state.dailyStreak || 0;
-    return { key: 'barqarorlik.remain', params: { count: Math.max(1, need - have), have: Math.min(have, need), need } };
+    // Zanjir kunlik maqsad bilan uzaytiriladi — CTA bugungi mashqni ochadi
+    return {
+      key: 'barqarorlik.remain',
+      params: { count: Math.max(1, need - have), have: Math.min(have, need), need },
+      action: { type: 'test' }
+    };
   },
   samaradorlik(state, tier) {
     const need = SAMARADORLIK_TIERS[tier];
@@ -232,9 +273,14 @@ const NEXT_HINTS = {
     const answered = Object.values(state.stats || {}).reduce((s, c) => s + (c?.totalAnswered || 0), 0);
     const correct = Object.values(state.stats || {}).reduce((s, c) => s + (c?.totalCorrect || 0), 0);
     const acc = answered > 0 ? (correct / answered) * 100 : 0;
-    if (avg >= SPEED_MAX_AVG) return { key: 'samaradorlik.remainSpeed', params: { max: SPEED_MAX_AVG, now: Math.round(avg) } };
-    if (answered > 0 && acc < SPEED_MIN_ACC) return { key: 'samaradorlik.remainAcc', params: { need: SPEED_MIN_ACC, now: Math.round(acc) } };
-    return { key: 'samaradorlik.remainQ', params: { count: Math.max(1, need - tq) } };
+    // Tezlik to'sig'i — taymerli imtihon; aniqlik to'sig'i — xatolar; qolgani — mashq
+    if (avg >= SPEED_MAX_AVG) {
+      return { key: 'samaradorlik.remainSpeed', params: { max: SPEED_MAX_AVG, now: Math.round(avg) }, action: { type: 'exam' } };
+    }
+    if (answered > 0 && acc < SPEED_MIN_ACC) {
+      return { key: 'samaradorlik.remainAcc', params: { need: SPEED_MIN_ACC, now: Math.round(acc) }, action: { type: 'mistakes' } };
+    }
+    return { key: 'samaradorlik.remainQ', params: { count: Math.max(1, need - tq) }, action: { type: 'test' } };
   }
 };
 
@@ -253,7 +299,9 @@ export function nextMilestones(state, live) {
       nextTier: lv.tier + 1,
       progress: Math.max(0, Math.min(1, lv.progress || 0)),
       hint: hint ? { key: `tracks.${hint.key}`, params: hint.params } : null,
-      topicId: hint?.topicId || null
+      topicId: hint?.topicId || null,
+      // Metrika buzilgan (hint yo'q) holatda ham CTA ishlashi kerak — zaxira: mashq
+      action: hint?.action || { type: 'test', topicId: hint?.topicId ?? null }
     });
   }
   return out.sort((a, b) => (b.progress - a.progress) || (TRACK_WEIGHTS[b.trackId] - TRACK_WEIGHTS[a.trackId]));

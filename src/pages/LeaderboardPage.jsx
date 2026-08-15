@@ -101,7 +101,13 @@ const LeaderboardPage = () => {
         streak: d.dailyStreak || 0,
         answered: d.totalAnswered || 0,
         photoURL: d.photoURL || null,
-        avatarId: d.avatarId || null
+        avatarId: d.avatarId || null,
+        // Akademik pasport — reyting ballidan MUSTAQIL ko'rsatkich.
+        // Ball hajmni mukofotlaydi, AMI/unvon esa sifatni; ikkalasi bir qatorda
+        // turgani uchun "ko'p yechish" yagona maqsad bo'lib qolmaydi.
+        // (userStats hujjatida `achievements` allaqachon sinxronlanadi.)
+        ami: d.achievements?.ami || 0,
+        unvonTier: d.achievements?.unvonTier || 0
       };
     };
 
@@ -147,6 +153,8 @@ const LeaderboardPage = () => {
                 answered: md.totalAnswered || 0,
                 photoURL: user.photoURL || null,
                 avatarId: user.avatarId || null,
+                ami: md.achievements?.ami || 0,
+                unvonTier: md.achievements?.unvonTier || 0,
                 rank: cnt.data().count + 1,
                 isMe: true
               });
@@ -279,6 +287,12 @@ const LeaderboardPage = () => {
           <span title={t('leaderboard.leagueTitle', { name: getLeague(entry.totalScore).name })}>{getLeague(entry.totalScore).icon}</span>
           <span>{t('test.questionsCount', { count: entry.answered })}</span>
           {entry.streak > 0 && <span>{t('leaderboard.streakDays', { count: entry.streak })}</span>}
+          {/* Unvon faqat 2-darajadan boshlab: «Izlanuvchi» hammada bor va u
+              qatorni ma'nosiz to'ldirardi. AMI esa har doim ma'lumot beradi. */}
+          {entry.unvonTier >= 2 && (
+            <span className="lb-unvon" title={t('tracks.amiLabel')}>{t(`tracks.tier${entry.unvonTier}`)}</span>
+          )}
+          {entry.ami > 0 && <span title={t('tracks.amiLabel')}>{t('leaderboard.amiShort', { count: entry.ami })}</span>}
         </div>
       </div>
       <div className="lb-score-wrap">

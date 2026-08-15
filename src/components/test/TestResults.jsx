@@ -6,12 +6,14 @@ import ResultShareCard from '../shared/ResultShareCard';
 import { reconcileAchievements, nextMilestones } from '../../data/tracks';
 import NextMilestoneLine from '../achievements/NextMilestoneLine';
 import { useNextPlanStep } from '../../hooks/useNextPlanStep';
+import { useMilestoneAction } from '../../hooks/useMilestoneAction';
 import { stepText } from '../../engine/stepText';
 
 const TestResults = ({
   correctCount,
   amiDelta,
   gained = [],
+  reward = { points: 0, freezes: 0 },
   questionsLength,
   topicName,
   state,
@@ -32,6 +34,8 @@ const TestResults = ({
   // Keyingi bosqich — commit'dan keyingi yangilangan holatdan sof hisob
   const achView = reconcileAchievements(state, state.achievements);
   const milestone = nextMilestones(state, achView.live)[0] || null;
+  // Qator endi BOSILADI va yo'nalishga mos harakatni ochadi (mashq/imtihon/xatolar)
+  const startMilestone = useMilestoneAction();
 
   return (
     <div style={{ background: 'var(--surface)', border: '1px solid var(--glass-border)', borderRadius: 24, padding: '28px 24px 24px', boxShadow: '0 20px 40px rgba(0,0,0,0.06)', position: 'relative', overflow: 'hidden' }}>
@@ -71,6 +75,15 @@ const TestResults = ({
               {t('results.gainedTier', { track: t(`tracks.${g.trackId}.name`), tier: t(`tracks.tier${g.tier}`) })}
             </div>
           ))}
+
+          {/* Daraja uchun berilgan mukofot — yutuq endi aniq foyda keltiradi */}
+          {(reward.points > 0 || reward.freezes > 0) && (
+            <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', fontWeight: 600, paddingLeft: 2 }}>
+              {reward.freezes > 0
+                ? t('results.rewardBoth', { points: reward.points, count: reward.freezes })
+                : t('results.rewardPoints', { points: reward.points })}
+            </div>
+          )}
         </div>
       )}
 
@@ -86,7 +99,7 @@ const TestResults = ({
       {/* Keyingi bosqich — davom etish uchun aniq sabab */}
       {milestone && (
         <div style={{ borderTop: '1px solid var(--glass-border)', paddingTop: 14, marginBottom: 22, textAlign: 'left' }}>
-          <NextMilestoneLine milestone={milestone} />
+          <NextMilestoneLine milestone={milestone} onClick={() => startMilestone(milestone)} />
         </div>
       )}
 

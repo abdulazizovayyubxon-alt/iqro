@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, Share2, GraduationCap, FileText, BookOpen, ClipboardList, Crosshair, History, Check, BadgeCheck } from 'lucide-react';
 import { reconcileAchievements, nextMilestones } from '../data/tracks';
 import NextMilestoneLine from '../components/achievements/NextMilestoneLine';
+import { useMilestoneAction } from '../hooks/useMilestoneAction';
 import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
 import ObjectionModal from '../components/shared/ObjectionModal';
@@ -132,6 +133,7 @@ const ExamPage = () => {
   const [endTime, setEndTime] = useState(null);
   const [examEarnedPoints, setExamEarnedPoints] = useState(0); // haqiqiy yig'ilgan reyting balli
   const [examGained, setExamGained] = useState([]); // shu imtihonda olingan track darajalari (muhr-qator)
+  const [examReward, setExamReward] = useState({ points: 0, freezes: 0 }); // daraja uchun ball/zaxira
 
   // Natija ekrani uchun keyingi bosqich — sof hisob; memo, chunki taymer
   // har soniya re-render qiladi (context state o'zgarmaguncha qayta hisoblanmaydi)
@@ -139,6 +141,8 @@ const ExamPage = () => {
     const { live } = reconcileAchievements(state, state.achievements);
     return nextMilestones(state, live)[0] || null;
   }, [state]);
+  // «Keyingi bosqich» qatori bosilganda yo'nalishga mos harakat ochiladi
+  const startMilestone = useMilestoneAction();
   const [savedSession, setSavedSession] = useState(null); // tugallanmagan imtihon (resume)
   const [showObjectionModal, setShowObjectionModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -687,6 +691,7 @@ const ExamPage = () => {
     const commitResult = batchCommitResults(results);
     setExamEarnedPoints(commitResult?.earnedPoints || 0);
     setExamGained(commitResult?.gained || []);
+    setExamReward({ points: commitResult?.rewardPoints || 0, freezes: commitResult?.rewardFreezes || 0 });
 
     const correct = results.correctCount;
     const pct = results.accuracy;
@@ -1005,7 +1010,14 @@ const ExamPage = () => {
                   {t('results.gainedTier', { track: t(`tracks.${g.trackId}.name`), tier: t(`tracks.tier${g.tier}`) })}
                 </div>
               ))}
-              {nextMs && <NextMilestoneLine milestone={nextMs} />}
+              {(examReward.points > 0 || examReward.freezes > 0) && (
+                <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', fontWeight: 600 }}>
+                  {examReward.freezes > 0
+                    ? t('results.rewardBoth', { points: examReward.points, count: examReward.freezes })
+                    : t('results.rewardPoints', { points: examReward.points })}
+                </div>
+              )}
+              {nextMs && <NextMilestoneLine milestone={nextMs} onClick={() => startMilestone(nextMs)} />}
             </div>
           )}
 

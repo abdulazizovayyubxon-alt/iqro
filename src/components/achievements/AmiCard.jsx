@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Share2, HelpCircle } from 'lucide-react';
 import RadarChart from './RadarChart';
-import { UNVON_AMI_THRESHOLDS } from '../../data/tracks';
+import { UNVON_AMI_THRESHOLDS, TRACK_WEIGHTS, TRACKS } from '../../data/tracks';
 
 // Legend uchun kichik romb
 const Diamond = ({ filled }) => (
@@ -25,9 +26,14 @@ const Diamond = ({ filled }) => (
  *   unvonTier: 1|2|3 — pasport darajasidagi yagona unvon (tracks.unvonTierFromAmi)
  *   axes: [{ label, value 0..1 }] — RadarChart uchun
  *   weeklyDelta: shu haftada AMI necha ballga o'sgani (0 bo'lsa ko'rsatilmaydi)
+ *   onShare: berilsa — pasportni ulashish tugmasi chiqadi
  */
-const AmiCard = ({ ami = 0, unvonTier = 1, axes = [], weeklyDelta = 0 }) => {
+const AmiCard = ({ ami = 0, unvonTier = 1, axes = [], weeklyDelta = 0, onShare }) => {
   const { t } = useTranslation();
+  // «AMI qanday hisoblanadi» — yopiq holatda bitta qator, ochilganda og'irliklar.
+  // NEGA: 0-100 raqami tushuntirilmasa, unga qarab HARAKAT qilib bo'lmaydi —
+  // foydalanuvchi qaysi yo'nalish ko'proq ball berishini bilishi kerak.
+  const [showHow, setShowHow] = useState(false);
 
   // Keyingi unvon bosag'asi (tier1→33, tier2→67); tier3 — eng yuqori unvon
   const nextThreshold = unvonTier < 3 ? UNVON_AMI_THRESHOLDS[unvonTier - 1] : null;
@@ -119,6 +125,58 @@ const AmiCard = ({ ami = 0, unvonTier = 1, axes = [], weeklyDelta = 0 }) => {
           </span>
         ))}
       </div>
+
+      {/* Sokin amallar qatori: ulashish + AMI izohi */}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: 18, padding: '2px 0 10px' }}>
+        {onShare && (
+          <button
+            onClick={onShare}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+              background: 'none', border: 'none', padding: '4px 2px', cursor: 'pointer',
+              color: 'var(--accent2)', fontWeight: 700, fontSize: 'var(--fs-xs)', fontFamily: 'inherit',
+            }}
+          >
+            <Share2 size={13} /> {t('tracks.shareCta')}
+          </button>
+        )}
+        <button
+          onClick={() => setShowHow(v => !v)}
+          aria-expanded={showHow}
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            background: 'none', border: 'none', padding: '4px 2px', cursor: 'pointer',
+            color: 'var(--text3)', fontWeight: 600, fontSize: 'var(--fs-xs)', fontFamily: 'inherit',
+          }}
+        >
+          <HelpCircle size={13} /> {t('tracks.amiHowCta')}
+        </button>
+      </div>
+
+      {showHow && (
+        <div style={{ textAlign: 'left', padding: '0 4px 12px' }}>
+          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', lineHeight: 1.5, marginBottom: 8 }}>
+            {t('tracks.amiHowHint')}
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+            {[...TRACKS]
+              .sort((a, b) => TRACK_WEIGHTS[b.id] - TRACK_WEIGHTS[a.id])
+              .map(tr => (
+                <div key={tr.id} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text2)', fontWeight: 600, minWidth: 96 }}>
+                    {t(`tracks.${tr.id}.name`)}
+                  </span>
+                  <span style={{ flex: 1, height: 3, borderRadius: 1.5, background: 'var(--bg3)', overflow: 'hidden' }}>
+                    <span style={{ display: 'block', width: `${(TRACK_WEIGHTS[tr.id] / 25) * 100}%`, height: '100%', background: 'var(--accent)', opacity: 0.55 }} />
+                  </span>
+                  <span style={{ fontSize: 'var(--fs-2xs)', fontWeight: 700, color: 'var(--text3)', minWidth: 34, textAlign: 'right' }}>
+                    {t('tracks.amiWeight', { count: TRACK_WEIGHTS[tr.id] })}
+                  </span>
+                </div>
+              ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
