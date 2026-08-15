@@ -5,11 +5,13 @@ import { useAdmin } from '../hooks/useAdmin';
 import { ToastContext } from '../context/ToastContext';
 import { fetchPartnerStats, PARTNER_ERRORS } from '../services/partner';
 import { SUBJECTS } from '../data/mockData';
+import { avatarUrl } from '../data/avatars';
+import { getLeague } from '../utils/league';
 import { APP_URL } from '../config';
 import {
   Users, TrendingUp, Share2, Copy, Check, Search, Zap, RefreshCw,
   Ticket, ArrowUpRight, Sparkles, UserCheck, Activity, ShieldAlert, BookOpen,
-  HelpCircle, ChevronDown, Link2, AlertCircle
+  HelpCircle, ChevronDown, Link2, AlertCircle, Trophy, Crown, Medal
 } from 'lucide-react';
 
 const GUIDE_KEY = 'zehin_partner_guide';
@@ -19,6 +21,36 @@ const readinessColor = (v) =>
 
 const readinessBg = (v) =>
   v == null ? 'var(--bg3)' : v >= 70 ? 'var(--green-bg)' : v >= 50 ? 'var(--amber-bg)' : 'rgba(239,68,68,0.1)';
+
+// Reytingdagi sovrindorlar rangi — umumiy reyting sahifasidagi bilan bir xil,
+// ustoz ikki ekranda bir xil "til" ko'radi.
+const RANK_COLORS = { 1: '#F59E0B', 2: '#9CA3AF', 3: '#B45309' };
+
+/** A'zo avatari: tanlangan tayyor avatar > yuklangan rasm > ism harfi. */
+const MemberAvatar = ({ member, size = 32, ringColor = null }) => {
+  const src = avatarUrl(member.avatarId) || member.photoURL || null;
+  return (
+    <div
+      style={{
+        width: size, height: size, borderRadius: '50%', flexShrink: 0,
+        background: 'var(--accent)', color: '#fff', overflow: 'hidden',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        fontWeight: 800, fontSize: 'var(--fs-xs)',
+        boxShadow: ringColor ? `0 0 0 2px var(--bg2), 0 0 0 3.5px ${ringColor}` : 'none',
+      }}
+    >
+      {src
+        ? <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        : (member.displayName ? member.displayName.charAt(0).toUpperCase() : 'U')}
+    </div>
+  );
+};
+
+const RankCell = ({ rank }) => {
+  if (rank === 1) return <Crown size={18} style={{ color: RANK_COLORS[1] }} />;
+  if (rank <= 3) return <Medal size={18} style={{ color: RANK_COLORS[rank] }} />;
+  return <span style={{ fontWeight: 800, color: 'var(--text3)' }}>{rank}</span>;
+};
 
 export default function PartnerPage() {
   const { user } = useAuth();
@@ -34,6 +66,7 @@ export default function PartnerPage() {
   const [adminLookupCode, setAdminLookupCode] = useState('');
   const [availablePromos, setAvailablePromos] = useState([]);
   const [visibleCount, setVisibleCount] = useState(25);
+  const [ratingCount, setRatingCount] = useState(10);
   // Qo'llanma birinchi kirishda OCHIQ turadi — hamkor ustoz havola qanday
   // ishlashini bilmasa, guruhini noto'g'ri yo'naltiradi. Yopgandan keyin
   // tanlov eslab qolinadi.
@@ -99,6 +132,7 @@ export default function PartnerPage() {
         // boshlansin, aks holda boshqa hamkorga o'tganda ro'yxat allaqachon
         // ochilgan holatda ko'rinardi.
         setVisibleCount(25);
+        setRatingCount(10);
         if (res.promo?.code && !adminLookupRef.current) {
           setAdminLookupCode(res.promo.code);
         }
@@ -183,6 +217,22 @@ export default function PartnerPage() {
       (m.shortId && m.shortId.toLowerCase().includes(q))
     );
   }, [data?.members, searchQuery]);
+
+  // ── Guruh reytingi ──
+  // Server a'zolarni OXIRGI FAOLLIK bo'yicha tartiblab yuboradi (monitoring
+  // uchun to'g'ri). Reyting esa umumiy BALL bo'yicha — platformadagi asosiy
+  // reyting bilan bir xil o'lchov. Teng ball bo'lsa ko'proq savol yechgan
+  // yuqorida turadi, aks holda tartib har yuklashda o'zgarib ko'rinardi.
+  const rankedMembers = useMemo(() => {
+    if (!data?.members?.length) return [];
+    return [...data.members]
+      .sort((a, b) =>
+        (b.totalScore || 0) - (a.totalScore || 0) ||
+        (b.answered || 0) - (a.answered || 0) ||
+        (a.displayName || '').localeCompare(b.displayName || '')
+      )
+      .map((m, i) => ({ ...m, rank: i + 1 }));
+  }, [data?.members]);
 
   // ── Hamkorga biriktirilgan fan ──
   // Ilgari bu yerda «CHQBT / Barcha fanlar» tugmachalari turardi va CHQBT
@@ -602,7 +652,106 @@ export default function PartnerPage() {
           </div>
           )}
 
-          {/* ── 3. Guruh Ustozlari Ro'yxati / Monitoring ── */}
+          {/* ── 3. Guruh reytingi ──
+              Monitoring jadvali "kim orqada qolyapti" degan savolga javob
+              beradi; reyting esa guruh ichida musobaqa hissini beradi va
+              ustozga «yetakchilar kim» ni bir qarashda ko'rsatadi. Ball
+              platformadagi umumiy reyting bilan AYNI — a'zo ikki joyda
+              turli raqam ko'rmaydi. */}
+          {rankedMembers.length > 0 && (
+            <div className="glass-panel" style={{ padding: '20px', borderRadius: 20, border: '1.5px solid var(--border)', marginBottom: 24 }}>
+              <div style={{ marginBottom: 16 }}>
+                <h3 style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)', margin: '0 0 4px 0', display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <Trophy size={18} style={{ color: 'var(--amber)' }} />
+                  Guruh reytingi ({rankedMembers.length})
+                </h3>
+                <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', margin: 0 }}>
+                  Promokod orqali qo'shilgan ustozlar umumiy ball bo'yicha
+                </p>
+              </div>
+
+              <div style={{ overflowX: 'auto' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: 'var(--fs-sm)' }}>
+                  <thead>
+                    <tr style={{ borderBottom: '1.5px solid var(--border)', color: 'var(--text3)', fontSize: 'var(--fs-xs)', textTransform: 'uppercase' }}>
+                      <th style={{ padding: '10px 8px', width: 46, textAlign: 'center' }}>O'rin</th>
+                      <th style={{ padding: '10px 8px' }}>Ustoz</th>
+                      <th style={{ padding: '10px 8px', textAlign: 'center' }}>Yechilgan</th>
+                      <th style={{ padding: '10px 8px', textAlign: 'center' }}>Aniqlik</th>
+                      <th style={{ padding: '10px 8px', textAlign: 'right' }}>Ball</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rankedMembers.slice(0, ratingCount).map(m => {
+                      const league = getLeague(m.totalScore);
+                      const ring = RANK_COLORS[m.rank] || null;
+                      return (
+                        <tr
+                          key={m.uid}
+                          style={{
+                            borderBottom: '1px solid var(--border)',
+                            background: m.rank <= 3 ? 'var(--bg2)' : 'transparent',
+                          }}
+                        >
+                          <td style={{ padding: '12px 8px', textAlign: 'center' }}>
+                            <RankCell rank={m.rank} />
+                          </td>
+
+                          <td style={{ padding: '12px 8px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                              <MemberAvatar member={m} size={34} ringColor={ring} />
+                              <div style={{ minWidth: 0 }}>
+                                <div style={{ fontWeight: 700, color: 'var(--text)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                                  <span>{m.displayName || 'Ustoz'}</span>
+                                  <span title={`${league.name} ligasi`}>{league.icon}</span>
+                                </div>
+                                <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                                  {m.shortId && <span>ID: {m.shortId}</span>}
+                                  {m.dailyStreak > 0 && (
+                                    <>
+                                      {m.shortId && <span>•</span>}
+                                      <span>🔥 {m.dailyStreak} kun</span>
+                                    </>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+
+                          <td style={{ padding: '12px 8px', textAlign: 'center', fontWeight: 700, color: 'var(--text2)' }}>
+                            {m.answered > 0 ? m.answered.toLocaleString('uz-UZ') : <span style={{ color: 'var(--text3)' }}>0</span>}
+                          </td>
+
+                          <td style={{ padding: '12px 8px', textAlign: 'center', fontWeight: 800, color: readinessColor(m.accuracy) }}>
+                            {m.accuracy != null ? `${m.accuracy}%` : '—'}
+                          </td>
+
+                          <td style={{ padding: '12px 8px', textAlign: 'right' }}>
+                            <span style={{ fontSize: 'var(--fs-base)', fontWeight: 900, color: m.rank <= 3 ? RANK_COLORS[m.rank] : 'var(--text)' }}>
+                              {(m.totalScore || 0).toLocaleString('uz-UZ')}
+                            </span>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+
+              {rankedMembers.length > ratingCount && (
+                <div style={{ textAlign: 'center', marginTop: 16 }}>
+                  <button
+                    className="btn btn-sm btn-outline"
+                    onClick={() => setRatingCount(c => c + 25)}
+                  >
+                    Yana 25 ta ko'rsatish ({rankedMembers.length - ratingCount} ta qoldi)
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* ── 4. Guruh Ustozlari Ro'yxati / Monitoring ── */}
           <div className="glass-panel" style={{ padding: '20px', borderRadius: 20, border: '1.5px solid var(--border)' }}>
             
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginBottom: 16 }}>
@@ -692,23 +841,7 @@ export default function PartnerPage() {
                             {/* Ustoz ma'lumotlari */}
                             <td style={{ padding: '12px 8px' }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                                <div
-                                  style={{
-                                    width: 32,
-                                    height: 32,
-                                    borderRadius: '50%',
-                                    background: 'var(--accent)',
-                                    color: '#fff',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    fontWeight: 800,
-                                    fontSize: 'var(--fs-xs)',
-                                    flexShrink: 0,
-                                  }}
-                                >
-                                  {m.displayName ? m.displayName.charAt(0).toUpperCase() : 'U'}
-                                </div>
+                                <MemberAvatar member={m} size={32} />
                                 <div>
                                   <div style={{ fontWeight: 700, color: 'var(--text)' }}>
                                     {m.displayName || 'Ustoz'}

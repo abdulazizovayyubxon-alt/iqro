@@ -268,7 +268,15 @@ export default async function handler(req, res) {
           displayName: u.displayName || r.displayName || 'Ustoz',
           shortId: u.shortId || null,
           photoURL: u.photoURL || null,
+          // Tanlangan tayyor avatar — `photoURL` dan ustun (avatars.js dagi
+          // `resolveAvatar` tartibi bilan bir xil). Hujjat baribir o'qilyapti,
+          // qo'shimcha o'qish yo'q.
+          avatarId: u.avatarId || null,
           redeemedAt: r.redeemedAt || null,
+          // Umumiy reyting bali — guruh ichki reytingi shu maydon bo'yicha
+          // tartiblanadi, ya'ni ustoz ko'rgan o'rin platformadagi umumiy
+          // reyting bilan BIR XIL o'lchovda bo'ladi.
+          totalScore: s.totalScore || 0,
           answered,
           accuracy: answered > 0 ? Math.round((correct / answered) * 100) : null,
           subjectAnswered: subjAns,
