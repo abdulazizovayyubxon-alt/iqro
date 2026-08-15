@@ -543,6 +543,17 @@
    qoladi. Amallar menyuda MATN bilan yoziladi. */
 .admin-menu-wrap { position: relative; }
 
+/* ⚠️ STACKING CONTEXT TUZOG'I — menyu ochiq qator tepaga ko'tariladi.
+   Pastdagi `.admin-user-row:hover { transform: translateY(-2px) }` qatorni
+   STACKING CONTEXT ga aylantiradi. Shunda `.admin-menu` ning `z-index: 40`
+   qiymati SHU QATOR ichida qamaladi va qo'shni qatorlar bilan raqobatlasha
+   olmaydi — qator o'zi esa `z-index: auto` (0) darajasida qoladi. Natijada
+   sichqoncha ⋮ ustida turganda (tugmani bosgandan keyingi ODATIY holat)
+   keyingi qatorlarning ⋮ tugmalari ochilgan menyu USTIDA chizilardi.
+   Yechim: menyu ochilgan qatorga aniq `z-index` berish. Faqat `z-index: 40`
+   ni oshirish YORDAM BERMAYDI — muammo menyuda emas, qatorda. */
+.admin-user-row--menu-open { position: relative; z-index: 50; }
+
 .action-btn-sm.menu-open {
   background: var(--surface2);
   color: var(--text);

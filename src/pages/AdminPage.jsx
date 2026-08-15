@@ -3134,8 +3134,15 @@ try {
                 // ⭐ bor edi — muddati o'tgan hisob ham "Pro" bo'lib turardi.
                 const exp = u.premiumExpire ? new Date(u.premiumExpire) : null;
                 const expired = exp && exp < new Date();
+                // ⋮ menyusi ochiq qator SIBLING qatorlardan tepaga ko'tariladi.
+                // Sababi `.admin-user-row:hover` dagi `transform` — u qatorni
+                // STACKING CONTEXT ga aylantiradi va menyuning `z-index: 40`
+                // qiymati o'sha qator ICHIDA qamalib qoladi. Natijada sichqoncha
+                // ⋮ ustida turganda (bosgandan keyingi odatiy holat) pastdagi
+                // qatorlarning ⋮ tugmalari ochilgan menyu USTIDA chizilardi.
+                const menuOpen = userMenu?.id === u.id;
                 return (
-                <div key={u.id} className="admin-user-row">
+                <div key={u.id} className={`admin-user-row${menuOpen ? ' admin-user-row--menu-open' : ''}`}>
                   <button
                     className="admin-user-left"
                     onClick={() => setUserCard(u)}
@@ -3192,16 +3199,16 @@ try {
                   <div className="admin-user-actions-sm admin-menu-wrap">
                     <button
                       onClick={e => toggleUserMenu(u.id, e.currentTarget)}
-                      className={`action-btn-sm${userMenu?.id === u.id ? ' menu-open' : ''}`}
+                      className={`action-btn-sm${menuOpen ? ' menu-open' : ''}`}
                       aria-haspopup="menu"
-                      aria-expanded={userMenu?.id === u.id}
+                      aria-expanded={menuOpen}
                       aria-label={`${u.displayName || u.id} — amallar menyusi`}
                       title="Amallar"
                     >
                       <MoreVertical size={16} />
                     </button>
 
-                    {userMenu?.id === u.id && (
+                    {menuOpen && (
                       <div className={`admin-menu${userMenu.up ? ' admin-menu--up' : ''}`} role="menu">
                         <button
                           role="menuitem"
