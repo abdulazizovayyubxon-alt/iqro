@@ -21,7 +21,7 @@ import {
   ChevronDown, ChevronUp, Search, Plus, Edit3, FileText, Zap,
   Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, UploadCloud,
   Download, Crown, Database, RefreshCw, Inbox, School, CreditCard, Ticket, X,
-  Activity
+  Activity, Sparkles
 } from 'lucide-react';
 
 import './AdminPage.css';
@@ -41,6 +41,11 @@ import ConfirmDialog from '../components/shared/ConfirmDialog';
 // kvotaning 10% i. Aniq odamni topish uchun sahifalash emas, SERVER tomonda
 // qidiruv ishlatiladi (`searchUsersOnServer`).
 const LIST_PAGE_SIZE = 200;
+
+// Jurnal bir bosqichda shuncha yozuv o'qiydi. Kichik saqlanadi: jurnalga kirish
+// odatiy hol bo'lishi kerak, lekin har kirish 200 ta o'qish bo'lsa, kuzatuvning
+// o'zi kvota muammosiga aylanadi. Davomi «Ko'proq» tugmasi bilan keladi.
+const JOURNAL_PAGE_SIZE = 60;
 
 // Yaqin-dublikat chegarasi (0..1). Yuqori = faqat juda o'xshashlar (matching/sequence soxta-ijobiyni kamaytiradi).
 const DUP_SIM_THRESHOLD = 0.87;
@@ -217,11 +222,25 @@ const AdminPage = () => {
   const [adminActions, setAdminActions] = useState([]);
   const [actionsLoading, setActionsLoading] = useState(false);
   const [actionsError, setActionsError] = useState(null);
+  const [actionsCursor, setActionsCursor] = useState(null);   // oxirgi hujjat (startAfter uchun)
+  const [actionsDone, setActionsDone] = useState(false);      // oxiriga yetdikmi
+  const [actionsMoreLoading, setActionsMoreLoading] = useState(false);
+  const [actionFilter, setActionFilter] = useState('all');    // all | danger | guruh kaliti
+  const [actionSearch, setActionSearch] = useState('');
   const loadAdminActions = () => {
     setActionsLoading(true);
     setActionsError(null);
-    getDocs(query(collection(db, 'adminActions'), orderBy('createdAt', 'desc'), limit(100)))
-      .then(snap => setAdminActions(snap.docs.map(d => ({ id: d.id, ...d.data() }))))
+    // ⚠️ JURNAL AUDITI 2026-08-15 — tartiblash HAMON `createdAt` (mijoz vaqti).
+    // `ts` (serverTimestamp) yangi qo'shildi, lekin unga o'tib bo'lmaydi:
+    // Firestore `orderBy` maydoni YO'Q hujjatlarni natijadan butunlay tashlab
+    // yuboradi — eski yozuvlar jurnaldan g'oyib bo'lardi. `ts` faqat mijoz
+    // soati bilan nomuvofiqlikni fosh qilish uchun ishlatiladi (pastda ⚠️).
+    getDocs(query(collection(db, 'adminActions'), orderBy('createdAt', 'desc'), limit(JOURNAL_PAGE_SIZE)))
+      .then(snap => {
+        setAdminActions(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+        setActionsCursor(snap.docs[snap.docs.length - 1] || null);
+        setActionsDone(snap.docs.length < JOURNAL_PAGE_SIZE);
+      })
       .catch(e => {
         console.error('adminActions load:', e);
         // Eng ehtimoliy sabab — firestore.rules hali deploy qilinmagan
@@ -231,11 +250,44 @@ const AdminPage = () => {
       })
       .finally(() => setActionsLoading(false));
   };
+  // Sahifalash: ilgari jurnal eng yangi 100 tada TUGARDI va bundan oldingiga
+  // yo'l yo'q edi — "o'tgan oyda kim o'chirgan?" degan savolga javob berib
+  // bo'lmasdi, ya'ni audit izi amalda 100 ta amaldan iborat edi.
+  const loadMoreAdminActions = () => {
+    if (!actionsCursor || actionsMoreLoading) return;
+    setActionsMoreLoading(true);
+    getDocs(query(
+      collection(db, 'adminActions'), orderBy('createdAt', 'desc'),
+      startAfter(actionsCursor), limit(JOURNAL_PAGE_SIZE),
+    ))
+      .then(snap => {
+        setAdminActions(prev => [...prev, ...snap.docs.map(d => ({ id: d.id, ...d.data() }))]);
+        setActionsCursor(snap.docs[snap.docs.length - 1] || null);
+        setActionsDone(snap.docs.length < JOURNAL_PAGE_SIZE);
+      })
+      .catch(e => showToast(e?.message || 'Yuklashda xatolik', 'error'))
+      .finally(() => setActionsMoreLoading(false));
+  };
   useEffect(() => {
     if (!isAdmin || tab !== 'journal' || journalView !== 'actions') return;
     if (adminActions.length > 0 || actionsError) return;
     loadAdminActions();
   }, [tab, journalView, isAdmin]);
+
+  // ── Jurnal filtri ──
+  // 30 dan ortiq amal turi bor: filtrsiz ro'yxat "kim savolni o'chirdi?"
+  // savoliga javob bermaydi — ko'z bilan qidirish kerak bo'ladi. Filtr
+  // YUKLANGAN yozuvlar ustida ishlaydi (server tomonda `where` + `orderBy`
+  // kompozit indeks talab qiladi, u esa har filtr uchun alohida indeks).
+  const filteredActions = adminActions.filter(a => {
+    const info = describeAdminAction(a.type);
+    if (actionFilter === 'danger' && !info.danger) return false;
+    if (actionFilter !== 'all' && actionFilter !== 'danger' && info.group !== actionFilter) return false;
+    if (!actionSearch.trim()) return true;
+    const needle = actionSearch.trim().toLowerCase();
+    return [info.label, a.type, a.actorEmail, a.target, formatActionMeta(a.meta)]
+      .filter(Boolean).join(' ').toLowerCase().includes(needle);
+  });
 
   // ── Tab qatorini faol tabga surish (D-6) ──
   // 12 ta tab telefonga sig'maydi; chetdagi tab tanlanganda u ko'rinmay
@@ -1276,76 +1328,70 @@ try {
   // ularning orasida emas edi. Tugma foydalanuvchi qatorida ⭐ yonida, 32×32 px —
   // telefonda noto'g'ri bosish real xavf.
   // Qo'shimcha: admin o'zidan huquqni olib, paneldan chiqib ketishi mumkin edi.
+  // ⚠️ HAMKOR AUDITI 2026-08-15: rol tanlash `window.prompt` da edi ("1, 2 yoki
+  // 3 kiriting"). Ikki muammo:
+  //  1. `window.prompt` TWA/PWA (Play ilovasi) muhitida BLOKLANADI — tugma
+  //     jimgina ishlamasdi. Aynan shu sabab D-8 bandida boshqa prompt'lar
+  //     panel ichidagi formalarga ko'chirilgan edi.
+  //  2. Raqam kiritish — xato bosish oson: "3" to'liq admin huquqi demak.
+  // Endi panel ichidagi modal: variantlar ko'rinib turadi, hamkor kodi shu
+  // yerda kiritiladi, xavfli variant esa alohida tasdiq oynasidan o'tadi.
+  const [roleModal, setRoleModal] = useState(null); // { id, name, role, partnerCode }
+  const [rolePartnerCode, setRolePartnerCode] = useState('');
+
   const handleManageRole = (u) => {
     if (u.id === user?.uid) {
       showToast("O'z rolingizni bu yerdan o'zgartira olmaysiz", 'error');
       return;
     }
-    const currentInfo = u.role === 'admin' 
-      ? "To'liq Admin" 
-      : (u.role === 'partner' ? `Hamkor ustoz (${u.partnerCode || 'kodsiz'})` : "Oddiy foydalanuvchi");
-
-    const choice = window.prompt(
-      `Foydalanuvchi: ${u.displayName || u.email || u.shortId || 'Ustoz'}\nJoriy holat: ${currentInfo}\n\nYangi rolni tanlang (raqamini kiriting):\n1 — 👤 Oddiy foydalanuvchi\n2 — 🤝 Hamkor Admin / Ustoz (faqat o'z guruhi statistikasi)\n3 — 🛡️ To'liq Admin (Boshqaruv, savol va to'lovlar)\n\nBekor qilish uchun 'Cancel' bosing:`,
-      u.role === 'admin' ? '3' : (u.role === 'partner' ? '2' : '1')
-    );
-
-    if (choice === null) return;
-    const cleanChoice = choice.trim();
-
-    if (cleanChoice === '1') {
-      confirmAction(`Ushbu foydalanuvchini ODDIY FOYDALANUVCHI ga aylantirmoqchimisiz?`, async () => {
-        try {
-          await updateDoc(doc(db, 'users', u.id), { role: 'user', partnerCode: null });
-          setUsers(prev => prev.map(item => item.id === u.id ? { ...item, role: 'user', partnerCode: null } : item));
-          if (userCard?.id === u.id) setUserCard(prev => ({ ...prev, role: 'user', partnerCode: null }));
-          logAdminAction('role.set_user', u.id);
-          showToast("Rol o'zgartirildi: Oddiy foydalanuvchi", 'success');
-        } catch { showToast("Xatolik yuz berdi", 'error'); }
-      });
-    } else if (cleanChoice === '2') {
-      const pCode = window.prompt(
-        "Hamkor ustoz promokodini kiriting (masalan: MIRONSHOH):",
-        u.partnerCode || 'MIRONSHOH'
-      );
-      if (pCode === null) return;
-      const cleanPCode = pCode.trim().toUpperCase();
-      if (!cleanPCode) {
-        showToast("Promokod bo'sh bo'lishi mumkin emas", 'error');
-        return;
-      }
-      confirmAction(`Foydalanuvchiga HAMKOR ADMIN huquqi va '${cleanPCode}' promokodi biriktirilsinmi?\n\nU faqat /partner sahifasidan o'z a'zolari statistikasini ko'radi.`, async () => {
-        try {
-          await updateDoc(doc(db, 'users', u.id), { role: 'partner', partnerCode: cleanPCode });
-          setUsers(prev => prev.map(item => item.id === u.id ? { ...item, role: 'partner', partnerCode: cleanPCode } : item));
-          if (userCard?.id === u.id) setUserCard(prev => ({ ...prev, role: 'partner', partnerCode: cleanPCode }));
-          logAdminAction('role.set_partner', u.id, { partnerCode: cleanPCode });
-          showToast(`Hamkor biriktirildi: ${cleanPCode}`, 'success');
-        } catch { showToast("Xatolik yuz berdi", 'error'); }
-      });
-    } else if (cleanChoice === '3') {
-      confirmAction(`DIQQAT: Foydalanuvchiga TO'LIQ ADMIN huquqini berasizmi?\n\nU savollarni tahrirlash, o'chirish, foydalanuvchilarni o'chirish va barcha boshqaruv funksiyalariga ega bo'ladi.`, async () => {
-        try {
-          await updateDoc(doc(db, 'users', u.id), { role: 'admin' });
-          setUsers(prev => prev.map(item => item.id === u.id ? { ...item, role: 'admin' } : item));
-          if (userCard?.id === u.id) setUserCard(prev => ({ ...prev, role: 'admin' }));
-          logAdminAction('role.grant_admin', u.id);
-          showToast("To'liq admin huquqi berildi", 'success');
-        } catch { showToast("Xatolik yuz berdi", 'error'); }
-      });
-    } else {
-      showToast("Noto'g'ri tanlov kiritildi (1, 2 yoki 3 kiriting)", 'error');
-    }
+    // Foydalanuvchi kartochkasi ochiq bo'lsa yopamiz: ikkita modal bir vaqtda
+    // ochilsa, `useModalA11y` ning ikki fokus tutqichi bir-biriga xalaqit
+    // beradi (Escape ikkalasini yopadi, fokus sakraydi).
+    setUserCard(null);
+    setRolePartnerCode(u.partnerCode || '');
+    setRoleModal({
+      id: u.id,
+      name: u.displayName || u.email || u.shortId || 'Ustoz',
+      role: u.role || 'user',
+      partnerCode: u.partnerCode || null,
+    });
   };
 
-  const toggleAdmin = (userId, currentRole) => {
-    const u = users.find(x => x.id === userId) || { id: userId, role: currentRole };
-    handleManageRole(u);
+  // Rolni yozish — uchala variant uchun bitta yo'l (yozuv + ro'yxat + jurnal).
+  const applyRole = (target, nextRole, partnerCode = null) => {
+    const patch = nextRole === 'partner'
+      ? { role: 'partner', partnerCode }
+      : { role: nextRole, partnerCode: null };
+    setRoleModal(null);
+    const label = nextRole === 'admin' ? "To'liq admin"
+      : nextRole === 'partner' ? `Hamkor ustoz (${partnerCode})`
+      : 'Oddiy foydalanuvchi';
+    const question = nextRole === 'admin'
+      ? "DIQQAT: Foydalanuvchiga TO'LIQ ADMIN huquqini berasizmi?\n\nU savollarni tahrirlash va o'chirish, foydalanuvchi hisoblarini yo'q qilish va Pro tarqatish imkoniyatiga ega bo'ladi."
+      : nextRole === 'partner'
+        ? `Foydalanuvchiga HAMKOR USTOZ huquqi va '${partnerCode}' promokodi biriktirilsinmi?\n\nU faqat /partner sahifasidan o'z guruhi statistikasini ko'radi.`
+        : 'Ushbu foydalanuvchini ODDIY FOYDALANUVCHI ga aylantirasizmi?';
+    confirmAction(question, async () => {
+      try {
+        await updateDoc(doc(db, 'users', target.id), patch);
+        setUsers(prev => prev.map(item => (item.id === target.id ? { ...item, ...patch } : item)));
+        if (userCard?.id === target.id) setUserCard(prev => ({ ...prev, ...patch }));
+        logAdminAction(
+          nextRole === 'admin' ? 'role.grant_admin'
+            : nextRole === 'partner' ? 'role.set_partner' : 'role.set_user',
+          target.id,
+          nextRole === 'partner' ? { partnerCode } : undefined,
+        );
+        showToast(`Rol o'zgartirildi: ${label}`, 'success');
+      } catch { showToast('Xatolik yuz berdi', 'error'); }
+    });
   };
 
-  const handleSetPartnerCode = async (userId, currentPartnerCode) => {
-    const u = users.find(x => x.id === userId) || { id: userId, role: 'partner', partnerCode: currentPartnerCode };
-    handleManageRole(u);
+  const handleSetPartnerCode = (userId, currentPartnerCode) => {
+    const u = users.find(x => x.id === userId)
+      || userCard
+      || { id: userId, role: 'partner', partnerCode: currentPartnerCode };
+    handleManageRole({ ...u, id: userId, partnerCode: currentPartnerCode ?? u.partnerCode });
   };
 
   // ⚠️ AUDIT 2026-08-06, T-12 BAND — avval bu yerda faqat ikkita hujjat
@@ -2033,6 +2079,7 @@ try {
   const dupModalRef = useModalA11y(!!dupPreview, () => { if (!dupDeleting) setDupPreview(null); });
   const premiumModalRef = useModalA11y(!!premiumModal, () => { if (!premiumSaving) setPremiumModal(null); });
   const userCardRef = useModalA11y(!!userCard, () => setUserCard(null));
+  const roleModalRef = useModalA11y(!!roleModal, () => setRoleModal(null));
 
   // ── Tab ta'rifi bitta joyda ──
   // Ilgari 11 ta tab tugmasi qo'lda takrorlangan edi (har biri ~4 qator bir xil
@@ -2142,7 +2189,7 @@ try {
               <button role="tab" aria-selected={journalView === 'actions'}
                 className={journalView === 'actions' ? 'active' : ''}
                 onClick={() => setJournalView('actions')}>
-                Admin amallari
+                Admin amallari{adminActions.length > 0 ? ` (${adminActions.length})` : ''}
               </button>
             </div>
             <div className="admin-row--tight">
@@ -2182,29 +2229,110 @@ try {
                 </div>
               </div>
             ) : (
-              <div className="admin-stack">
-                {adminActions.map(a => (
-                  <div key={a.id} className="admin-card">
-                    <div className="admin-row-between">
-                      <div style={{ minWidth: 0 }}>
-                        <div style={{ fontWeight: 700, color: 'var(--text)' }}>
-                          {describeAdminAction(a.type).label || a.type}
-                        </div>
-                        <div className="admin-meta-line" style={{ marginTop: 4 }}>
-                          <span>👤 {a.actorEmail || a.actorUid}</span>
-                          {a.target && <span>🎯 {a.target}</span>}
-                          <span>🕒 {new Date(a.createdAt).toLocaleString()}</span>
-                        </div>
-                      </div>
-                      {a.meta && (
-                        <span className="admin-chip admin-chip--muted">
-                          {Object.entries(a.meta).map(([k, v]) => `${k}: ${v}`).join(' · ')}
-                        </span>
-                      )}
+              <>
+                {/* Jurnalning chegarasi ochiq aytiladi: adminlar bu ro'yxatga
+                    "hamma o'zgarish shu yerda" deb ishonmasligi kerak. */}
+                <div className="admin-info-box" style={{ marginBottom: 12 }}>
+                  <div className="admin-info-text">
+                    Jurnal <strong>panel orqali</strong> qilingan amallarni yozadi va
+                    keyin <strong>o'zgartirib/o'chirib bo'lmaydi</strong> (firestore.rules).
+                    Firebase konsoli yoki server skriptidan qilingan o'zgarish bu yerga tushmaydi.
+                  </div>
+                </div>
+
+                {/* Filtr: "kim savolni o'chirdi?" degan savolga tez javob berish
+                    uchun. `Xavflilar` — qaytarilmas amallar (o'chirish, huquq). */}
+                <div className="admin-row" style={{ flexWrap: 'wrap', gap: 6, marginBottom: 10 }}>
+                  {[['all', 'Hammasi'], ['danger', '⚠️ Xavflilar'],
+                    ...Object.entries(ADMIN_ACTION_GROUPS)].map(([key, label]) => (
+                    <button
+                      key={key}
+                      className={`admin-chip ${actionFilter === key ? 'admin-chip--blue' : 'admin-chip--muted'}`}
+                      style={{ cursor: 'pointer', border: 'none' }}
+                      onClick={() => setActionFilter(key)}
+                      aria-pressed={actionFilter === key}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+                <div className="admin-search-wrap" style={{ marginBottom: 12 }}>
+                  <Search size={16} className="admin-search-icon" />
+                  <input
+                    className="admin-search"
+                    value={actionSearch}
+                    onChange={e => setActionSearch(e.target.value)}
+                    placeholder="Admin emaili, hujjat ID yoki izoh bo'yicha qidirish..."
+                    aria-label="Jurnalda qidirish"
+                  />
+                </div>
+
+                {filteredActions.length === 0 ? (
+                  <div className="admin-state-block">
+                    <div className="admin-empty-text">Bu filtrga mos yozuv yo'q</div>
+                    <div className="admin-info-text" style={{ marginTop: 6 }}>
+                      Filtr faqat yuklangan {adminActions.length} ta yozuv ustida ishlaydi —
+                      eskiroq amal uchun avval «Ko'proq yuklash».
                     </div>
                   </div>
-                ))}
-              </div>
+                ) : (
+                  <div className="admin-stack">
+                    {filteredActions.map(a => {
+                      const info = describeAdminAction(a.type);
+                      // Server vaqti bilan mijoz vaqti orasidagi katta farq —
+                      // yo admin kompyuterining soati noto'g'ri, yo yozuv
+                      // qo'lda soxtalashtirilgan. Ikkalasi ham jurnal
+                      // ishonchliligiga tegadi, shuning uchun ko'rsatiladi.
+                      const serverMs = a.ts?.toDate ? a.ts.toDate().getTime() : null;
+                      const skewMin = serverMs
+                        ? Math.abs(serverMs - new Date(a.createdAt).getTime()) / 60000 : 0;
+                      const metaLine = formatActionMeta(a.meta);
+                      return (
+                        <div key={a.id} className="admin-card">
+                          <div className="admin-row-between">
+                            <div style={{ minWidth: 0 }}>
+                              <div className="admin-row" style={{ gap: 6, flexWrap: 'wrap' }}>
+                                <span style={{ fontWeight: 700, color: info.danger ? 'var(--red)' : 'var(--text)' }}>
+                                  {info.danger && '⚠️ '}{info.label}
+                                </span>
+                                <span className="admin-chip admin-chip--muted">
+                                  {ADMIN_ACTION_GROUPS[info.group] || info.group}
+                                </span>
+                              </div>
+                              <div className="admin-meta-line" style={{ marginTop: 4 }}>
+                                <span>👤 {a.actorEmail || a.actorUid}</span>
+                                {a.target && <span>🎯 {a.target}</span>}
+                                <span title={serverMs ? `Server: ${new Date(serverMs).toLocaleString()}` : 'Server vaqti yozilmagan (eski yozuv)'}>
+                                  🕒 {new Date(a.createdAt).toLocaleString()}
+                                </span>
+                                {skewMin > 5 && (
+                                  <span style={{ color: 'var(--amber)' }}>
+                                    ⚠️ soat farqi ~{Math.round(skewMin)} daq.
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                            {metaLine && (
+                              <span className="admin-chip admin-chip--muted">{metaLine}</span>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {!actionsDone && (
+                  <button
+                    className="btn btn-outline"
+                    style={{ width: '100%', marginTop: 12 }}
+                    onClick={loadMoreAdminActions}
+                    disabled={actionsMoreLoading}
+                  >
+                    {actionsMoreLoading ? 'Yuklanmoqda…' : `Ko'proq yuklash (+${JOURNAL_PAGE_SIZE})`}
+                  </button>
+                )}
+              </>
             )
           )}
 
@@ -3851,6 +3979,82 @@ try {
       )}
 
       {/* ── Pro berish modali (A-5 / B-4) — `window.prompt` o'rniga ── */}
+      {/* ── Rolni boshqarish (window.prompt o'rniga) ── */}
+      {roleModal && (
+        <div className="admin-modal-overlay">
+          <motion.div
+            ref={roleModalRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Foydalanuvchi rolini boshqarish"
+            tabIndex={-1}
+            initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+            className="admin-modal-panel admin-modal-panel--md"
+          >
+            <h3 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: 'var(--text)', margin: 0 }}>
+              <Shield size={18} style={{ color: 'var(--blue)', verticalAlign: '-3px', marginRight: 6 }} />
+              Rolni boshqarish
+            </h3>
+            <p className="admin-info-text" style={{ marginTop: 4, marginBottom: 16 }}>
+              <strong style={{ color: 'var(--text)' }}>{roleModal.name}</strong> · joriy holat:{' '}
+              {roleModal.role === 'admin' ? "To'liq admin"
+                : roleModal.role === 'partner' ? `Hamkor ustoz (${roleModal.partnerCode || 'kodsiz'})`
+                : 'Oddiy foydalanuvchi'}
+            </p>
+
+            <div className="admin-stack">
+              <button
+                className="btn btn-outline"
+                style={{ justifyContent: 'flex-start' }}
+                onClick={() => applyRole(roleModal, 'user')}
+                disabled={roleModal.role === 'user' && !roleModal.partnerCode}
+              >
+                👤 Oddiy foydalanuvchi
+              </button>
+
+              <div className="admin-info-box">
+                <div className="admin-info-title">🤝 Hamkor ustoz</div>
+                <div className="admin-info-text" style={{ marginBottom: 8 }}>
+                  Faqat <code>/partner</code> sahifasini ochadi: o'z promokodi bilan
+                  kirgan ustozlar ro'yxati va biriktirilgan fan bo'yicha natijalar.
+                  Fan promokodning o'zida («Promo» bo'limi) belgilanadi.
+                </div>
+                <div className="admin-row--tight">
+                  <input
+                    className="admin-input admin-input--code"
+                    value={rolePartnerCode}
+                    onChange={e => setRolePartnerCode(e.target.value.toUpperCase())}
+                    placeholder="MIRONSHOH"
+                    aria-label="Hamkor promokodi"
+                    style={{ textTransform: 'uppercase' }}
+                  />
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => applyRole(roleModal, 'partner', rolePartnerCode.trim().toUpperCase())}
+                    disabled={!rolePartnerCode.trim()}
+                  >
+                    Biriktirish
+                  </button>
+                </div>
+              </div>
+
+              <button
+                className="btn btn-outline"
+                style={{ justifyContent: 'flex-start', color: 'var(--red)', borderColor: 'var(--red)' }}
+                onClick={() => applyRole(roleModal, 'admin')}
+                disabled={roleModal.role === 'admin'}
+              >
+                🛡️ To'liq admin — boshqaruv, savollar va to'lovlar
+              </button>
+            </div>
+
+            <div className="admin-modal-actions">
+              <button className="btn btn-outline" onClick={() => setRoleModal(null)}>Yopish</button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
       {premiumModal && (
         <div className="admin-modal-overlay">
           <motion.div

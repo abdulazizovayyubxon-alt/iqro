@@ -17,9 +17,13 @@ export const PARTNER_ERRORS = {
 /**
  * Hamkor statistikasi va a'zolari hisobotini serverdan yuklash
  * @param {string} [partnerCode] - Ixtiyoriy, agar berilmasa foydalanuvchining o'z kodi olinadi
+ * @param {object} [opts]
+ * @param {boolean} [opts.withPromoList] - Admin tanlagichi uchun promokodlar
+ *   ro'yxatini ham qaytarish. Ro'yxat `promoCodes` kolleksiyasini butunlay
+ *   o'qiydi, shuning uchun u har so'rovda emas, BIR MARTA so'raladi.
  * @returns {Promise<{ok: boolean, promo?: object, summary?: object, members?: Array, error?: string}>}
  */
-export async function fetchPartnerStats(partnerCode = null) {
+export async function fetchPartnerStats(partnerCode = null, opts = {}) {
   const user = auth.currentUser;
   if (!user) return { ok: false, error: 'unauthorized' };
 
@@ -34,6 +38,7 @@ export async function fetchPartnerStats(partnerCode = null) {
       body: JSON.stringify({
         action: 'stats',
         partnerCode: partnerCode ? partnerCode.trim().toUpperCase() : undefined,
+        withPromoList: opts.withPromoList === true,
       }),
     });
 

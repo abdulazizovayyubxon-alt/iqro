@@ -21,6 +21,10 @@ import {
   School, Plus, Trash2, Users, RefreshCw, Copy, Inbox, UserPlus, Zap,
 } from 'lucide-react';
 import ConfirmDialog from '../shared/ConfirmDialog';
+// ⚠️ JURNAL AUDITI 2026-08-15: B2B maktab = shartnoma va pul. Obunani bir
+// yilga uzaytirish, maktabga admin biriktirish yoki maktabni o'chirish
+// «Admin amallari» jurnalida ko'rinmasdi — bu bo'lim alohida faylda edi.
+import { logAdminAction } from '../../services/adminLog';
 
 const genJoinCode = () => {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -135,6 +139,9 @@ export default function SchoolsTab() {
         await setDoc(doc(db, 'users', adminUids[0]), { schoolId: ref.id, schoolName: name }, { merge: true });
       }
 
+      logAdminAction('school.create', ref.id, {
+        nomi: name.slice(0, 60), orinlar: seats, muddat: payload.subscriptionUntil,
+      });
       showToast(`Maktab yaratildi: ${name} ✅`, 'success');
       setForm({ name: '', region: '', district: '', seats: 30, until: defaultUntil(), joinCode: genJoinCode(), adminEmail: '' });
       load();
@@ -149,6 +156,7 @@ export default function SchoolsTab() {
     try {
       await updateDoc(doc(db, 'schools', s.id), { active: !s.active });
       setSchools(prev => prev.map(x => x.id === s.id ? { ...x, active: !s.active } : x));
+      logAdminAction('school.toggle', s.id, { nomi: (s.name || '').slice(0, 60), holat: !s.active ? 'faol' : "o'chiq" });
     } catch { showToast('Xatolik', 'error'); }
   };
 
@@ -169,6 +177,7 @@ export default function SchoolsTab() {
     try {
       await deleteDoc(doc(db, 'schools', s.id));
       setSchools(prev => prev.filter(x => x.id !== s.id));
+      logAdminAction('school.delete', s.id, { nomi: (s.name || '').slice(0, 60) });
       showToast("O'chirildi", 'info');
     } catch { showToast('Xatolik', 'error'); }
   };
@@ -179,6 +188,10 @@ export default function SchoolsTab() {
     const res = await syncSchoolPremium(s.id);
     setBusyId(null);
     if (!res.ok) { showToast(SCHOOL_ERRORS[res.error] || 'Xatolik', 'error'); return; }
+    // Bir bosishda o'nlab hisobga Pro beriladi — jurnalda albatta ko'rinsin.
+    logAdminAction('school.sync_premium', s.id, {
+      nomi: (s.name || '').slice(0, 60), berildi: res.granted, otkazildi: res.skipped,
+    });
     showToast(`Pro berildi: ${res.granted} ta · o'zgarmadi: ${res.skipped} ta`, 'success');
   };
 
@@ -189,6 +202,9 @@ export default function SchoolsTab() {
     try {
       await updateDoc(doc(db, 'schools', s.id), { subscriptionUntil: base.toISOString() });
       setSchools(prev => prev.map(x => x.id === s.id ? { ...x, subscriptionUntil: base.toISOString() } : x));
+      logAdminAction('school.extend', s.id, {
+        nomi: (s.name || '').slice(0, 60), yangiMuddat: base.toISOString().slice(0, 10),
+      });
       showToast("Obuna 1 yilga uzaytirildi — endi «Pro tarqatish» tugmasini bosing", 'success');
     } catch { showToast('Xatolik', 'error'); }
   };
@@ -205,6 +221,9 @@ export default function SchoolsTab() {
       await updateDoc(doc(db, 'schools', s.id), { adminUids: next });
       await setDoc(doc(db, 'users', uid), { schoolId: s.id, schoolName: s.name }, { merge: true });
       setSchools(prev => prev.map(x => x.id === s.id ? { ...x, adminUids: next } : x));
+      // Maktab admini o'z maktabi a'zolarining natijalarini ko'radi — bu
+      // huquq berish, ya'ni izsiz qolmasligi kerak.
+      logAdminAction('school.add_admin', s.id, { nomi: (s.name || '').slice(0, 60), uid });
       showToast('Maktab admini biriktirildi', 'success');
       setAdminForm(null);
     } catch (e) {
@@ -223,6 +242,7 @@ export default function SchoolsTab() {
     try {
       await updateDoc(doc(db, 'schoolRequests', r.id), { status });
       setRequests(prev => prev.map(x => x.id === r.id ? { ...x, status } : x));
+      logAdminAction('school_request.status', r.id, { holat: status });
     } catch { showToast('Xatolik', 'error'); }
   };
 

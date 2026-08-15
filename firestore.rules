@@ -156,7 +156,14 @@ service cloud.firestore {
         'referralCode', 'discountExpired', 'discountExpiredAt',
         'promoDiscount', 'promoRedeemed',
         // ── B2B maktab a'zoligi ──
-        'schoolId', 'schoolName', 'schoolJoinedAt'
+        'schoolId', 'schoolName', 'schoolJoinedAt',
+        // ── Hamkor ustoz portali ──
+        // ⚠️ HAMKOR AUDITI 2026-08-15: `partnerCode` himoyalanmagan edi.
+        // api/partner.js unga qarab hisobotga ruxsat berardi, ya'ni istalgan
+        // foydalanuvchi o'z hujjatiga ommaviy tarqatilgan promokodni yozib,
+        // o'sha guruh ustozlarining ism/ID/natijalarini ko'ra olardi.
+        // Kod tomonda ham tuzatildi (rol tekshiruvi), bu — ikkinchi qatlam.
+        'partnerCode'
       ];
     }
 

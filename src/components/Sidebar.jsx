@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
 import { useAdmin } from '../hooks/useAdmin';
+import { usePartner } from '../hooks/usePartner';
 import { SUBJECTS } from '../data/mockData';
 import GiftBox from './shared/GiftBox';
 import {
@@ -33,6 +34,7 @@ const Sidebar = () => {
   const { state, updateState } = useContext(AppContext);
   const { isInstallable, installApp } = useContext(PWAContext);
   const { isAdmin } = useAdmin();
+  const { isPartner } = usePartner();
   const { user } = useAuth();
   const [showMobSubjects, setShowMobSubjects] = useState(false);
 
@@ -191,8 +193,9 @@ const Sidebar = () => {
             </div>
           )}
 
-          {/* Hamkor paneli — admin yoki hamkor ustozlar uchun */}
-          {(isAdmin || user?.partnerCode || user?.role === 'partner' || user?.role === 'mentor') && (
+          {/* Hamkor paneli — admin yoki hamkor ustozlar uchun.
+              Shart `usePartner` da, server tekshiruvi bilan bir xil. */}
+          {isPartner && (
             <div
               className={`nav-item ${isActive('/partner') ? 'active' : ''}`}
               onClick={() => navigate('/partner')}

@@ -77,9 +77,15 @@ export default async function handler(req, res) {
       const userData = userSnap.exists ? userSnap.data() : {};
       const isAdminUser = await isPlatformAdmin(db, decoded);
 
+      // ⚠️ HAMKOR AUDITI 2026-08-15 — ro'yxat HAR so'rovda o'qilardi.
+      // `promoCodes` ni to'liq o'qish admin tanlagichi uchun kerak, lekin u
+      // faqat sahifa birinchi ochilganda kerak. Admin ro'yxatdan kod tanlab
+      // ko'rgan har safar butun kolleksiya qayta o'qilardi (Spark kvotasi —
+      // loyihaning asosiy xavfi). Endi mijoz uni ataylab so'raydi.
       let allPartnerPromos = [];
-      if (isAdminUser) {
-        const allPromosSnap = await db.collection('promoCodes').get();
+      const wantsPromoList = req.body?.withPromoList === true || !requestedCode;
+      if (isAdminUser && wantsPromoList) {
+        const allPromosSnap = await db.collection('promoCodes').limit(200).get();
         allPartnerPromos = allPromosSnap.docs.map(d => ({
           code: d.id,
           partnerName: d.data().partnerName || null,
@@ -136,25 +142,64 @@ export default async function handler(req, res) {
 
       const promo = promoSnap.data();
 
-      // Huquq tekshiruvi: faqat platforma admini YOKI ushbu kodning hamkori
+      // ⚠️ HAMKOR AUDITI 2026-08-15 — HUQUQ OSHIRISH TESHIGI YOPILDI.
+      //
+      // Avval `userData.partnerCode === requestedCode` YOLG'IZ O'ZI yetarli edi.
+      // Lekin `firestore.rules` dagi `protectedUserFields()` ro'yxatida
+      // `partnerCode` YO'Q — ya'ni istalgan foydalanuvchi o'z hujjatiga
+      // `partnerCode: 'MIRONSHOH'` yozib qo'yishi mumkin edi (rules ruxsat
+      // beradi), keyin esa shu kod bo'yicha BUTUN GURUH ro'yxatini ochardi:
+      // ism, qisqa ID, o'zlashtirish foizi, tayyorlik bali, oxirgi faollik.
+      // Promokod esa ataylab ommaviy tarqatiladi (Telegramga ulashish tugmasi),
+      // demak hujum uchun "sir" ham kerak emas edi.
+      //
+      // `role` rules bilan HIMOYALANGAN (faqat admin o'zgartira oladi), shuning
+      // uchun kod mosligi endi ROL bilan birga tekshiriladi. `promo.createdBy`
+      // sharti olib tashlandi: u kodni yaratgan ADMIN uid'i — admin baribir
+      // `isAdminUser` orqali o'tadi, lekin huquqi olingan sobiq admin bu shart
+      // tufayli o'zi yaratgan kodlarga kirishda davom etardi.
       const isAssignedPartner =
         promo.partnerUid === uid ||
-        promo.createdBy === uid ||
         (decoded.email && promo.partnerEmail === decoded.email) ||
-        userData.partnerCode === requestedCode;
+        (userData.role === 'partner' && userData.partnerCode === requestedCode);
 
       if (!isAdminUser && !isAssignedPartner) {
         return res.status(403).json({ ok: false, error: 'forbidden' });
       }
 
-      // Redemptions subkolleksiyasini o'qish
-      const redemptionsSnap = await promoRef.collection('redemptions').get();
+      // ── Hamkorga biriktirilgan FAN ──────────────────────────────────────
+      // Ilgari hisobotning fan kesimi kodda `chqbt` deb QOTIB YOZILGAN edi.
+      // Platformada 17 fan bor: boshqa fan hamkori o'z guruhi ishlagan bo'lsa
+      // ham «CHQBT» ustunida nol ko'rardi. Endi fan hamkorga biriktiriladi.
+      //
+      // Tartib: kodning o'z fani (admin PromoTab'da belgilaydi) → kod egasining
+      // profilidagi fan → so'ragan hamkorning o'z fani. Hech biri bo'lmasa fan
+      // kesimi umuman ko'rsatilmaydi (jami raqamlar qoladi) — noto'g'ri fanni
+      // taxmin qilib ko'rsatishdan ko'ra, ko'rsatmaslik to'g'riroq.
+      let subjectId = promo.subject || null;
+      if (!subjectId && promo.partnerUid) {
+        const ownerSnap = await db.collection('users').doc(promo.partnerUid).get();
+        if (ownerSnap.exists) subjectId = ownerSnap.data().subject || null;
+      }
+      if (!subjectId && isAssignedPartner) subjectId = userData.subject || null;
+
+      // Redemptions subkolleksiyasini o'qish.
+      // Chegara: bitta hisobot = 1 (promo) + N (redemption) + 2N (users/userStats)
+      // o'qish. Chegarasiz kodda (ommaviy kampaniya `maxUses` katta bo'lishi
+      // mumkin) bitta sahifa ochish minglab o'qishga aylanib, kunlik Firestore
+      // kvotasini bitta so'rovda tugatishi mumkin edi.
+      const MAX_MEMBERS = 500;
+      const redemptionsSnap = await promoRef.collection('redemptions').limit(MAX_MEMBERS).get();
       const redemptions = redemptionsSnap.docs.map(d => ({ uid: d.id, ...d.data() }));
+      // Chegaraga urilgan bo'lsak, buni JIMGINA qilmaymiz: aks holda hisobot
+      // «guruhda 500 kishi» deb ko'rsatib, ustoz uni to'liq deb o'qirdi.
+      const truncated = redemptionsSnap.size >= MAX_MEMBERS;
 
       if (redemptions.length === 0) {
         return res.status(200).json({
           ok: true,
           allPartnerPromos,
+          subject: subjectId,
           promo: {
             code: promo.code || requestedCode,
             campaign: promo.campaign || 'Hamkorlik dasturi',
@@ -172,8 +217,8 @@ export default async function handler(req, res) {
             totalAnswered: 0,
             avgAccuracy: null,
             avgReadiness: null,
-            chqbtTotalAnswered: 0,
-            chqbtAvgAccuracy: null,
+            subjectTotalAnswered: 0,
+            subjectAvgAccuracy: null,
           },
           members: [],
         });
@@ -206,11 +251,11 @@ export default async function handler(req, res) {
         const answered = Object.values(cats).reduce((sum, c) => sum + (c?.totalAnswered || 0), 0);
         const correct = Object.values(cats).reduce((sum, c) => sum + (c?.totalCorrect || 0), 0);
 
-        // CHQBT fani bo'yicha ko'rsatkichlar
-        const chqbtCat = cats.chqbt || {};
-        const chqbtAns = chqbtCat.totalAnswered || 0;
-        const chqbtCor = chqbtCat.totalCorrect || 0;
-        const chqbtAcc = chqbtAns > 0 ? Math.round((chqbtCor / chqbtAns) * 100) : null;
+        // Biriktirilgan fan kesimi (fan belgilanmagan bo'lsa — null)
+        const subjCat = subjectId ? (cats[subjectId] || {}) : null;
+        const subjAns = subjCat ? (subjCat.totalAnswered || 0) : null;
+        const subjCor = subjCat ? (subjCat.totalCorrect || 0) : 0;
+        const subjAcc = subjAns > 0 ? Math.round((subjCor / subjAns) * 100) : null;
 
         const readinessMap = s.readiness || {};
         const latestReadiness = Object.entries(readinessMap)
@@ -226,8 +271,8 @@ export default async function handler(req, res) {
           redeemedAt: r.redeemedAt || null,
           answered,
           accuracy: answered > 0 ? Math.round((correct / answered) * 100) : null,
-          chqbtAnswered: chqbtAns,
-          chqbtAccuracy: chqbtAcc,
+          subjectAnswered: subjAns,
+          subjectAccuracy: subjAcc,
           readiness: latestReadiness?.[1]?.score ?? null,
           readinessSubject: latestReadiness?.[0] ?? null,
           dailyStreak: s.dailyStreak || 0,
@@ -238,7 +283,7 @@ export default async function handler(req, res) {
       // Jamlanma ko'rsatkichlar
       const withReadiness = members.filter(m => typeof m.readiness === 'number');
       const withAccuracy = members.filter(m => typeof m.accuracy === 'number');
-      const withChqbtAcc = members.filter(m => typeof m.chqbtAccuracy === 'number');
+      const withSubjectAcc = members.filter(m => typeof m.subjectAccuracy === 'number');
 
       const now = Date.now();
       const active7dCount = members.filter(m => {
@@ -256,9 +301,11 @@ export default async function handler(req, res) {
         avgReadiness: withReadiness.length
           ? Math.round(withReadiness.reduce((sum, m) => sum + m.readiness, 0) / withReadiness.length)
           : null,
-        chqbtTotalAnswered: members.reduce((sum, m) => sum + (m.chqbtAnswered || 0), 0),
-        chqbtAvgAccuracy: withChqbtAcc.length
-          ? Math.round(withChqbtAcc.reduce((sum, m) => sum + m.chqbtAccuracy, 0) / withChqbtAcc.length)
+        subjectTotalAnswered: subjectId
+          ? members.reduce((sum, m) => sum + (m.subjectAnswered || 0), 0)
+          : null,
+        subjectAvgAccuracy: withSubjectAcc.length
+          ? Math.round(withSubjectAcc.reduce((sum, m) => sum + m.subjectAccuracy, 0) / withSubjectAcc.length)
           : null,
       };
 
@@ -268,6 +315,9 @@ export default async function handler(req, res) {
       return res.status(200).json({
         ok: true,
         allPartnerPromos,
+        truncated,
+        maxMembers: MAX_MEMBERS,
+        subject: subjectId,
         promo: {
           code: promo.code || requestedCode,
           campaign: promo.campaign || 'Hamkorlik dasturi',

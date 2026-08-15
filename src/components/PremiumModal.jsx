@@ -250,6 +250,11 @@ const PremiumModal = ({ isOpen, onClose }) => {
           <div style={{ fontSize: 'var(--fs-xs)', color: '#64748B' }}>{t('premium.promoSub')}</div>
         </div>
       </div>
+      {/* Guruh/hamkor kodi natijalarni guruh ustoziga ochadi — kod kiritishdan
+          OLDIN aytiladi (ReferralPage'dagi bilan bir xil matn). */}
+      <div style={{ fontSize: 'var(--fs-2xs)', color: '#64748B', marginBottom: 10, lineHeight: 1.45 }}>
+        {t('referral.promoPrivacy')}
+      </div>
       <div style={{ display: 'flex', gap: 8 }}>
         <input
           value={promoCode}

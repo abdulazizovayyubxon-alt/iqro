@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useContext, useCallback, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useContext, useCallback, useMemo, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { useAdmin } from '../hooks/useAdmin';
 import { ToastContext } from '../context/ToastContext';
 import { fetchPartnerStats, PARTNER_ERRORS } from '../services/partner';
+import { SUBJECTS } from '../data/mockData';
 import {
-  Users, TrendingUp, CheckCircle2, Share2, Copy, Check,
-  Search, Award, Zap, Calendar, Flame, RefreshCw,
-  Ticket, ArrowUpRight, Sparkles, UserCheck, Activity, ShieldAlert
+  Users, TrendingUp, Share2, Copy, Check, Search, Zap, RefreshCw,
+  Ticket, ArrowUpRight, Sparkles, UserCheck, Activity, ShieldAlert, BookOpen
 } from 'lucide-react';
 
 const readinessColor = (v) =>
@@ -18,7 +17,6 @@ const readinessBg = (v) =>
   v == null ? 'var(--bg3)' : v >= 70 ? 'var(--green-bg)' : v >= 50 ? 'var(--amber-bg)' : 'rgba(239,68,68,0.1)';
 
 export default function PartnerPage() {
-  const { t } = useTranslation();
   const { user } = useAuth();
   const { isAdmin } = useAdmin();
   const { showToast } = useContext(ToastContext);
@@ -31,44 +29,81 @@ export default function PartnerPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [adminLookupCode, setAdminLookupCode] = useState('');
   const [availablePromos, setAvailablePromos] = useState([]);
-  const [subjectFilter, setSubjectFilter] = useState('chqbt'); // default 'chqbt' ustoz fani bo'yicha
   const [visibleCount, setVisibleCount] = useState(25);
 
-  const partnerCode = user?.partnerCode || (user?.role === 'partner' ? user?.uid : null);
+  // ⚠️ HAMKOR AUDITI 2026-08-15: ilgari bu yerda `user?.uid` zaxira kod
+  // sifatida yuborilardi. Server kelgan qatorni promokod deb qabul qiladi
+  // (`toUpperCase()` + hujjat ID), ya'ni uid hech qachon topilmay
+  // «promokod topilmadi» chiqardi VA serverning o'z qidiruvini
+  // (`promoCodes.where('partnerUid','==',uid)`) bloklab qo'yardi — u faqat
+  // kod BO'SH bo'lganda ishlaydi. Endi kodsiz hamkor serverga topib beriladi.
+  const partnerCode = user?.partnerCode || null;
+
+  // `adminLookupCode` ni loadStats ichida REF orqali o'qiymiz. Sabab: u
+  // useCallback bog'liqligida bo'lsa, muvaffaqiyatli yuklashdan keyingi
+  // `setAdminLookupCode(...)` loadStats identifikatorini yangilab, uni
+  // kuzatayotgan useEffect'ni QAYTA ishga tushirardi — ya'ni sahifa har
+  // ochilganda statistika IKKI MARTA to'liq yuklanardi (promokod + barcha
+  // redemption + a'zo boshiga 2 ta hujjat). Kvota bo'yicha bu eng qimmat
+  // so'rovimiz edi.
+  const adminLookupRef = useRef('');
+  useEffect(() => { adminLookupRef.current = adminLookupCode; }, [adminLookupCode]);
+
+  // ⚠️ `showToast` ToastContext'da memoizatsiya QILINMAGAN (har renderда yangi
+  // funksiya). U loadStats bog'liqligida turgani uchun HALQA hosil bo'lardi:
+  // yuklash xato → toast ko'rsatiladi → context qayta render → yangi showToast
+  // → yangi loadStats → useEffect qayta ishga tushadi → yana yuklash → yana
+  // xato… Ya'ni bitta xato /api/partner ga to'xtovsiz so'rov yog'dirardi
+  // (rate-limit 30/daq ga urilib, xato matni ham o'zgarardi). Ref orqali
+  // o'qiymiz — funksiya doim eng yangisi, lekin bog'liqlik o'zgarmaydi.
+  const showToastRef = useRef(showToast);
+  useEffect(() => { showToastRef.current = showToast; });
+  // Promokodlar ro'yxati (admin tanlagichi) faqat BIR MARTA so'raladi.
+  const promoListRequestedRef = useRef(false);
 
   const loadStats = useCallback(async (customCode = null) => {
     setLoading(true);
     setErrorMsg(null);
     try {
-      const codeToFetch = customCode || adminLookupCode || partnerCode;
-      const res = await fetchPartnerStats(codeToFetch);
+      const codeToFetch = customCode || adminLookupRef.current || partnerCode;
+      const withPromoList = isAdmin && !promoListRequestedRef.current;
+      if (withPromoList) promoListRequestedRef.current = true;
+      const res = await fetchPartnerStats(codeToFetch, { withPromoList });
 
-      if (res.allPartnerPromos) {
+      // `?.length` SHART: server ro'yxatni so'ralmaganda bo'sh massiv ham
+      // qaytarishi mumkin — u holda mavjud tanlagichni tozalab yubormaymiz.
+      if (res.allPartnerPromos?.length) {
         setAvailablePromos(res.allPartnerPromos);
       }
 
       if (res.ok) {
         setData(res);
-        if (res.promo?.code && !adminLookupCode) {
+        // Yangi kod/yangi ro'yxat — «Yana 25 ta» hisoblagichi ham qaytadan
+        // boshlansin, aks holda boshqa hamkorga o'tganda ro'yxat allaqachon
+        // ochilgan holatda ko'rinardi.
+        setVisibleCount(25);
+        if (res.promo?.code && !adminLookupRef.current) {
           setAdminLookupCode(res.promo.code);
         }
       } else {
         const msg = PARTNER_ERRORS[res.error] || "Statistikani yuklashda xatolik yuz berdi";
         setErrorMsg(msg);
-        showToast(msg, 'error');
+        showToastRef.current?.(msg, 'error');
       }
     } catch (e) {
       console.error(e);
       setErrorMsg("Internet aloqasini tekshiring");
     }
     setLoading(false);
-  }, [adminLookupCode, partnerCode, showToast]);
+  }, [partnerCode, isAdmin]);
 
   useEffect(() => {
-    if (user) {
+    if (user?.uid) {
       loadStats();
     }
-  }, [user, loadStats]);
+    // `user` obyekti AuthContext'da har yangilanishda qayta yaratiladi —
+    // to'liq obyektga bog'lansak, statistika keraksiz qayta yuklanardi.
+  }, [user?.uid, loadStats]);
 
   const handleCopyCode = async (code) => {
     if (!code) return;
@@ -114,6 +149,16 @@ export default function PartnerPage() {
     );
   }, [data?.members, searchQuery]);
 
+  // ── Hamkorga biriktirilgan fan ──
+  // Ilgari bu yerda «CHQBT / Barcha fanlar» tugmachalari turardi va CHQBT
+  // kodda qotib yozilgan edi. Endi fanni SERVER aytadi (kodga yoki hamkor
+  // profiliga biriktirilgan), tanlagich esa umuman kerak emas: hamkor o'z
+  // guruhini o'z fani bo'yicha ko'radi. Fan biriktirilmagan bo'lsa — jami
+  // ko'rsatkichlar ko'rsatiladi, "barchasi" degan nom ishlatilmaydi.
+  const subjectMeta = data?.subject ? SUBJECTS.find(s => s.id === data.subject) : null;
+  const subjectLabel = subjectMeta?.name || null;
+  const hasSubject = !!data?.subject;
+
   return (
     <div style={{ maxWidth: 980, margin: '0 auto', padding: '16px 14px 100px' }}>
       
@@ -144,6 +189,13 @@ export default function PartnerPage() {
             <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', margin: 0 }}>
               {data?.promo?.campaign || 'Attestatsiyaga tayyorgarlik guruhi faollik va natijalar monitoringi'}
             </p>
+            {/* Biriktirilgan fan — hisobotdagi barcha fan ko'rsatkichlari
+                aynan shu fanga tegishli, shuning uchun u yuqorida turadi. */}
+            {subjectLabel && (
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 8, background: 'var(--green-bg)', color: 'var(--green)', padding: '3px 10px', borderRadius: 20, fontSize: 'var(--fs-xs)', fontWeight: 800 }}>
+                <BookOpen size={13} /> {subjectLabel}
+              </div>
+            )}
           </div>
 
           <button
@@ -222,32 +274,18 @@ export default function PartnerPage() {
         </div>
       )}
 
+      {/* Yangilash muvaffaqiyatsiz bo'lsa, ekranda ESKI ma'lumot qoladi.
+          Ilgari bu haqda faqat bir lahzalik toast aytardi — ustoz eskirgan
+          raqamlarni joriy deb o'qishi mumkin edi. */}
+      {errorMsg && data && (
+        <div className="glass-panel" style={{ padding: '10px 14px', borderRadius: 12, marginBottom: 14, border: '1.5px solid var(--amber)', color: 'var(--text2)', fontSize: 'var(--fs-xs)' }}>
+          ⚠️ {errorMsg} — quyidagi ma'lumot oxirgi muvaffaqiyatli yuklashdan.
+        </div>
+      )}
+
       {/* ── Asosiy ma'lumotlar bloki ── */}
       {data && (
         <>
-          {/* ── Fan tanlash (Filter) ── */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10, marginBottom: 16 }}>
-            <div style={{ fontSize: 'var(--fs-xs)', fontWeight: 800, color: 'var(--text3)', textTransform: 'uppercase' }}>
-              Statistika ko'rinishi:
-            </div>
-            <div style={{ display: 'inline-flex', background: 'var(--bg2)', padding: 4, borderRadius: 12, border: '1.5px solid var(--border)', gap: 4 }}>
-              <button
-                className={`btn btn-sm ${subjectFilter === 'chqbt' ? 'btn-primary' : 'btn-outline'}`}
-                style={{ border: 'none', borderRadius: 8, padding: '5px 12px', fontSize: 'var(--fs-xs)', fontWeight: 700 }}
-                onClick={() => setSubjectFilter('chqbt')}
-              >
-                🎖️ CHQBT fani
-              </button>
-              <button
-                className={`btn btn-sm ${subjectFilter === 'all' ? 'btn-primary' : 'btn-outline'}`}
-                style={{ border: 'none', borderRadius: 8, padding: '5px 12px', fontSize: 'var(--fs-xs)', fontWeight: 700 }}
-                onClick={() => setSubjectFilter('all')}
-              >
-                🌐 Barcha fanlar
-              </button>
-            </div>
-          </div>
-
           {/* ── 1. Metrika kartalari (Summary Cards) ── */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12, marginBottom: 20 }}>
             
@@ -309,19 +347,20 @@ export default function PartnerPage() {
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
                 <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--text3)', textTransform: 'uppercase' }}>
-                  {subjectFilter === 'chqbt' ? 'CHQBT savollari' : 'Jami savollar'}
+                  {hasSubject ? `${subjectLabel} savollari` : 'Jami savollar'}
                 </span>
                 <div style={{ width: 34, height: 34, borderRadius: 10, background: 'rgba(245,158,11,0.1)', color: 'var(--amber)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Zap size={18} />
                 </div>
               </div>
               <div style={{ fontSize: 'var(--fs-3xl)', fontWeight: 900, color: 'var(--text)', lineHeight: 1 }}>
-                {subjectFilter === 'chqbt'
-                  ? (data.summary?.chqbtTotalAnswered ? data.summary.chqbtTotalAnswered.toLocaleString('uz-UZ') : 0)
-                  : (data.summary?.totalAnswered ? data.summary.totalAnswered.toLocaleString('uz-UZ') : 0)}
+                {(() => {
+                  const n = hasSubject ? data.summary?.subjectTotalAnswered : data.summary?.totalAnswered;
+                  return n ? n.toLocaleString('uz-UZ') : 0;
+                })()}
               </div>
               <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', marginTop: 6 }}>
-                {subjectFilter === 'chqbt' ? 'CHQBT bo\'yicha yechilgan' : 'Guruh jami javoblari'}
+                {hasSubject ? `${subjectLabel} bo'yicha yechilgan` : 'Guruh jami javoblari'}
               </div>
             </motion.div>
 
@@ -334,12 +373,12 @@ export default function PartnerPage() {
               style={{ padding: '18px 16px', borderRadius: 16, border: '1.5px solid var(--border)' }}
             >
               {(() => {
-                const acc = subjectFilter === 'chqbt' ? data.summary?.chqbtAvgAccuracy : data.summary?.avgAccuracy;
+                const acc = hasSubject ? data.summary?.subjectAvgAccuracy : data.summary?.avgAccuracy;
                 return (
                   <>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
                       <span style={{ fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--text3)', textTransform: 'uppercase' }}>
-                        {subjectFilter === 'chqbt' ? 'CHQBT aniqligi' : 'Jami aniqlik'}
+                        {hasSubject ? `${subjectLabel} aniqligi` : 'Jami aniqlik'}
                       </span>
                       <div style={{ width: 34, height: 34, borderRadius: 10, background: readinessBg(acc), color: readinessColor(acc), display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <TrendingUp size={18} />
@@ -349,7 +388,7 @@ export default function PartnerPage() {
                       {acc != null ? `${acc}%` : '—'}
                     </div>
                     <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', marginTop: 6 }}>
-                      {subjectFilter === 'chqbt' ? 'CHQBT o\'zlashtirish foizi' : 'Guruh umumiy o\'zlashtirishi'}
+                      {hasSubject ? `${subjectLabel} o'zlashtirish foizi` : 'Guruh umumiy o\'zlashtirishi'}
                     </div>
                   </>
                 );
@@ -358,7 +397,12 @@ export default function PartnerPage() {
 
           </div>
 
-          {/* ── 2. Promokod va Ulashish bloki ── */}
+          {/* ── 2. Promokod va Ulashish bloki ──
+              `data.promo` NULL bo'lishi mumkin: hali bironta promokod
+              yaratilmagan platformada admin uchun server `ok: true, promo: null`
+              qaytaradi. Ilgari blok baribir chizilardi va «Telegramga ulashish»
+              tugmasi `data.promo.code` da qulardi (TypeError → oq ekran). */}
+          {data.promo && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -433,6 +477,7 @@ export default function PartnerPage() {
               </button>
             </div>
           </motion.div>
+          )}
 
           {/* ── 3. Guruh Ustozlari Ro'yxati / Monitoring ── */}
           <div className="glass-panel" style={{ padding: '20px', borderRadius: 20, border: '1.5px solid var(--border)' }}>
@@ -446,6 +491,15 @@ export default function PartnerPage() {
                 <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', margin: 0 }}>
                   A'zolarning test topshirish jarayoni va natijalari
                 </p>
+                {/* Server bir hisobotda ko'pi bilan `maxMembers` a'zoni o'qiydi
+                    (Firestore kvotasi). Chegaraga urilgan bo'lsak — aytamiz. */}
+                {data.truncated && (
+                  <p style={{ fontSize: 'var(--fs-xs)', color: 'var(--amber)', margin: '4px 0 0', fontWeight: 700 }}>
+                    ⚠️ Faqat birinchi {data.maxMembers} a'zo ko'rsatilmoqda
+                    {data.promo?.usedCount ? ` (kod jami ${data.promo.usedCount} marta ishlatilgan)` : ''} —
+                    quyidagi jamlanma shu qismga tegishli.
+                  </p>
+                )}
               </div>
 
               {/* Qidiruv inputi */}
@@ -455,7 +509,7 @@ export default function PartnerPage() {
                   type="text"
                   placeholder="Ism yoki ID bo'yicha qidirish..."
                   value={searchQuery}
-                  onChange={e => setSearchQuery(e.target.value)}
+                  onChange={e => { setSearchQuery(e.target.value); setVisibleCount(25); }}
                   style={{
                     width: '100%',
                     padding: '8px 12px 8px 30px',
@@ -489,10 +543,10 @@ export default function PartnerPage() {
                       <tr style={{ borderBottom: '1.5px solid var(--border)', color: 'var(--text3)', fontSize: 'var(--fs-xs)', textTransform: 'uppercase' }}>
                         <th style={{ padding: '10px 8px' }}>Ustoz</th>
                         <th style={{ padding: '10px 8px', textAlign: 'center' }}>
-                          {subjectFilter === 'chqbt' ? 'CHQBT savol' : 'Yechilgan'}
+                          {hasSubject ? `${subjectLabel} savol` : 'Yechilgan'}
                         </th>
                         <th style={{ padding: '10px 8px', textAlign: 'center' }}>
-                          {subjectFilter === 'chqbt' ? 'CHQBT aniqlik' : 'Aniqlik'}
+                          {hasSubject ? `${subjectLabel} aniqlik` : 'Aniqlik'}
                         </th>
                         <th style={{ padding: '10px 8px', textAlign: 'center' }}>Tayyorlik</th>
                         <th style={{ padding: '10px 8px', textAlign: 'right' }}>Oxirgi faollik</th>
@@ -501,8 +555,8 @@ export default function PartnerPage() {
                     <tbody>
                       {filteredMembers.slice(0, visibleCount).map((m, idx) => {
                         const joinDate = m.redeemedAt ? new Date(m.redeemedAt).toLocaleDateString('uz-UZ') : '—';
-                        const answeredCount = subjectFilter === 'chqbt' ? m.chqbtAnswered : m.answered;
-                        const accuracyVal = subjectFilter === 'chqbt' ? m.chqbtAccuracy : m.accuracy;
+                        const answeredCount = hasSubject ? m.subjectAnswered : m.answered;
+                        const accuracyVal = hasSubject ? m.subjectAccuracy : m.accuracy;
 
                         return (
                           <tr

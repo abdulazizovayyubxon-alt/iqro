@@ -369,8 +369,14 @@ export default function ReferralPage() {
               <Ticket size={18} color="var(--accent)" />
               <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 800, color: 'var(--text)' }}>{t('referral.promoTitle')}</div>
             </div>
-            <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginBottom: 14, lineHeight: 1.45 }}>
+            <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginBottom: 8, lineHeight: 1.45 }}>
               {t('referral.promoSubtitle')}
+            </div>
+            {/* Hamkor/guruh kodi bilan kirgan ustoz o'z natijalari guruh
+                ustoziga ko'rinishini BILISHI kerak — «Hamkor paneli» aynan shu
+                ma'lumotni ko'rsatadi (ism, ID, o'zlashtirish, faollik). */}
+            <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginBottom: 14, lineHeight: 1.45, opacity: 0.9 }}>
+              {t('referral.promoPrivacy')}
             </div>
 
             <div style={{ display: 'flex', gap: 8 }}>

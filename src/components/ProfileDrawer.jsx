@@ -18,6 +18,7 @@ import EditProfileModal from './profile/EditProfileModal';
 import AvatarPickerModal from './profile/AvatarPickerModal';
 import { useModalBackButton } from './profile/useModalBackButton';
 import { useAdmin } from '../hooks/useAdmin';
+import { usePartner } from '../hooks/usePartner';
 import BrandLogo from './shared/BrandLogo';
 
 import {
@@ -63,6 +64,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
   const { updateUserData } = useAuth();
   const { showToast } = useContext(ToastContext);
   const { isAdmin } = useAdmin();
+  const { isPartner } = usePartner();
 
   const [showPremium, setShowPremium] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
@@ -217,7 +219,9 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
     { icon: Settings, label: t('sidebar.settings', 'Sozlamalar'), path: '/settings' },
   ];
   if (isAdmin || schoolId) menuItems.push({ icon: School, label: t('sidebar.school', 'Maktab'), path: '/school' });
-  if (isAdmin || user?.partnerCode || user?.role === 'partner' || user?.role === 'mentor') {
+  // Shart `usePartner` da — server tekshiruvi bilan bir xil bo'lishi kerak,
+  // aks holda menyu ochiladi-yu, sahifa «huquqingiz yo'q» beradi.
+  if (isPartner) {
     menuItems.push({ icon: Sparkles, label: t('sidebar.partner', 'Hamkor paneli'), path: '/partner' });
   }
   if (isAdmin) menuItems.push({ icon: Shield, label: t('sidebar.admin', 'Admin'), path: '/admin' });

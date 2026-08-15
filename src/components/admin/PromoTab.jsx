@@ -10,7 +10,13 @@ import { db } from '../../firebase';
 import { ToastContext } from '../../context/ToastContext';
 import { useAuth } from '../../context/AuthContext';
 import { Ticket, Plus, Trash2, Users, RefreshCw } from 'lucide-react';
+import { SUBJECTS } from '../../data/mockData';
 import ConfirmDialog from '../shared/ConfirmDialog';
+// ⚠️ JURNAL AUDITI 2026-08-15: promo-kod = pul. Kod yaratish, o'chirish va
+// yoqib-o'chirish AdminPage'dan tashqarida bo'lgani uchun «Admin amallari»
+// jurnaliga umuman tushmasdi — «bu chegirmani kim ochgan?» degan savolga
+// javob yo'q edi.
+import { logAdminAction } from '../../services/adminLog';
 
 const TYPE_LABELS = {
   percent: { label: 'Chegirma (%)', icon: '🏷️', desc: "Keyingi to'lovdan foiz chegirma" },
@@ -42,6 +48,10 @@ export default function PromoTab() {
     campaign: '',
     partnerName: '',
     partnerUid: '',
+    // Hamkor ustozning fani. Hamkor portalidagi («Hamkor paneli») fan kesimi
+    // AYNAN shu maydonga tayanadi — ilgari u kodda `chqbt` deb qotib yozilgan
+    // edi va boshqa fan hamkori o'z guruhi bo'yicha nol ko'rardi.
+    subject: '',
   });
 
   const loadPromos = async () => {
@@ -80,6 +90,7 @@ export default function PromoTab() {
       maxUses: 1000,
       partnerName: 'Mironshoh ustoz',
       campaign: 'CHQBT @attestatsiya92',
+      subject: 'chqbt',
     }));
   };
 
@@ -126,12 +137,14 @@ export default function PromoTab() {
         campaign: form.campaign.trim() || null,
         partnerName: form.partnerName.trim() || null,
         partnerUid: form.partnerUid.trim() || null,
+        subject: form.subject || null,
         active: true,
         createdAt: new Date().toISOString(),
         createdBy: user?.uid || null,
       });
+      logAdminAction('promo.create', code, { tur: form.type, qiymat: value, limit: maxUses, fan: form.subject || null });
       showToast(`Promo-kod yaratildi: ${code} ✅`, 'success');
-      setForm({ code: '', type: 'percent', value: 20, maxUses: 50, expiresAt: '', campaign: '', partnerName: '', partnerUid: '' });
+      setForm({ code: '', type: 'percent', value: 20, maxUses: 50, expiresAt: '', campaign: '', partnerName: '', partnerUid: '', subject: '' });
       loadPromos();
     } catch (e) {
       console.error(e);
@@ -144,7 +157,23 @@ export default function PromoTab() {
     try {
       await updateDoc(doc(db, 'promoCodes', promo.id), { active: !promo.active });
       setPromos(prev => prev.map(p => p.id === promo.id ? { ...p, active: !promo.active } : p));
+      logAdminAction('promo.toggle', promo.id, { holat: !promo.active ? 'faol' : "o'chiq" });
     } catch (e) {
+      showToast('Xatolik', 'error');
+    }
+  };
+
+  // Mavjud kodga fan biriktirish. Yaratish formasi yangi kodlar uchun, lekin
+  // ishlab turgan kodlar (masalan MIRONSHOH) `subject` maydonisiz yaratilgan —
+  // usiz hamkor panelida fan kesimi ko'rinmaydi. Kodni qayta yaratish esa
+  // redemption tarixini buzadi (A-11 bandi), shuning uchun shu yerda o'zgaradi.
+  const setPromoSubject = async (promo, subject) => {
+    try {
+      await updateDoc(doc(db, 'promoCodes', promo.id), { subject: subject || null });
+      setPromos(prev => prev.map(p => p.id === promo.id ? { ...p, subject: subject || null } : p));
+      logAdminAction('promo.set_subject', promo.id, { fan: subject || null });
+      showToast(subject ? 'Fan biriktirildi' : 'Fan olib tashlandi', 'success');
+    } catch {
       showToast('Xatolik', 'error');
     }
   };
@@ -177,6 +206,7 @@ export default function PromoTab() {
     try {
       await deleteDoc(doc(db, 'promoCodes', promo.id));
       setPromos(prev => prev.filter(p => p.id !== promo.id));
+      logAdminAction('promo.delete', promo.id, { tur: promo.type, qiymat: promo.value });
       showToast("O'chirildi", 'info');
     } catch (e) {
       showToast('Xatolik', 'error');
@@ -290,6 +320,25 @@ export default function PromoTab() {
               placeholder="masalan: Mironshoh ustoz"
             />
           </div>
+          <div>
+            <label className="admin-label--caps">Hamkor fani</label>
+            <select
+              className="admin-input"
+              value={form.subject}
+              onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
+            >
+              <option value="">— Fan biriktirilmagan —</option>
+              {SUBJECTS.map(s => (
+                <option key={s.id} value={s.id}>{s.name}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginBottom: 12 }}>
+          «Hamkor fani» — hamkor ustoz o'z panelida qaysi fan kesimida hisobot
+          ko'rishini belgilaydi. Bo'sh qoldirilsa, hamkor profilidagi fan
+          ishlatiladi; u ham bo'lmasa, jami ko'rsatkichlar ko'rsatiladi.
         </div>
 
         <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginBottom: 12 }}>
@@ -330,6 +379,20 @@ export default function PromoTab() {
                     {p.type === 'percent' ? `-${p.value}% chegirma` : `+${p.value} kun premium`}
                     {p.campaign && ` · ${p.campaign}`}
                     {p.expiresAt && ` · ${new Date(p.expiresAt).toLocaleDateString('uz-UZ')} gacha`}
+                  </div>
+                  {/* Hamkor paneli hisobotining fan kesimi shu maydonga tayanadi */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 6 }}>
+                    <span style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', fontWeight: 700 }}>📘 Hamkor fani:</span>
+                    <select
+                      className="admin-input"
+                      style={{ maxWidth: 200, fontSize: 'var(--fs-2xs)', padding: '4px 8px' }}
+                      value={p.subject || ''}
+                      onChange={e => setPromoSubject(p, e.target.value)}
+                      aria-label={`${p.id} kodiga fan biriktirish`}
+                    >
+                      <option value="">— biriktirilmagan —</option>
+                      {SUBJECTS.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+                    </select>
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 'var(--fs-md)', fontWeight: 700, color: isFull ? 'var(--amber)' : 'var(--text2)' }}>

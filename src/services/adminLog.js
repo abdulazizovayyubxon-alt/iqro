@@ -74,6 +74,7 @@ export const ADMIN_ACTIONS = {
   'promo.create': { label: 'Promo-kod yaratildi', group: 'billing' },
   'promo.toggle': { label: 'Promo-kod yoqildi/o’chirildi', group: 'billing' },
   'promo.delete': { label: "Promo-kod o'chirildi", group: 'billing', danger: true },
+  'promo.set_subject': { label: 'Promo-kodga fan biriktirildi', group: 'billing' },
   'referral.mark_paid': { label: "Referral to'landi deb belgilandi", group: 'billing' },
   'referral.cancel_free': { label: 'Referral bepul Pro bekor qilindi', group: 'billing' },
   'school.create': { label: 'Maktab yaratildi', group: 'billing' },
