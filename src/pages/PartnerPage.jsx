@@ -657,7 +657,12 @@ export default function PartnerPage() {
               beradi; reyting esa guruh ichida musobaqa hissini beradi va
               ustozga «yetakchilar kim» ni bir qarashda ko'rsatadi. Ball
               platformadagi umumiy reyting bilan AYNI — a'zo ikki joyda
-              turli raqam ko'rmaydi. */}
+              turli raqam ko'rmaydi.
+              ⚠️ USTUNLAR BO'LINISHI: reytingda faqat musobaqa o'lchovlari —
+              o'rin, yechilgan savol, ball. «Aniqlik» ataylab YO'Q: u quyidagi
+              monitoring jadvalida bor edi va ikki jadvalda bir xil raqam
+              takrorlanib, ustoz qaysi biriga qarashni bilmasdi. Sifat
+              ko'rsatkichlari (aniqlik, tayyorlik) — faqat monitoringda. */}
           {rankedMembers.length > 0 && (
             <div className="glass-panel" style={{ padding: '20px', borderRadius: 20, border: '1.5px solid var(--border)', marginBottom: 24 }}>
               <div style={{ marginBottom: 16 }}>
@@ -677,7 +682,6 @@ export default function PartnerPage() {
                       <th style={{ padding: '10px 8px', width: 46, textAlign: 'center' }}>O'rin</th>
                       <th style={{ padding: '10px 8px' }}>Ustoz</th>
                       <th style={{ padding: '10px 8px', textAlign: 'center' }}>Yechilgan</th>
-                      <th style={{ padding: '10px 8px', textAlign: 'center' }}>Aniqlik</th>
                       <th style={{ padding: '10px 8px', textAlign: 'right' }}>Ball</th>
                     </tr>
                   </thead>
@@ -720,10 +724,6 @@ export default function PartnerPage() {
 
                           <td style={{ padding: '12px 8px', textAlign: 'center', fontWeight: 700, color: 'var(--text2)' }}>
                             {m.answered > 0 ? m.answered.toLocaleString('uz-UZ') : <span style={{ color: 'var(--text3)' }}>0</span>}
-                          </td>
-
-                          <td style={{ padding: '12px 8px', textAlign: 'center', fontWeight: 800, color: readinessColor(m.accuracy) }}>
-                            {m.accuracy != null ? `${m.accuracy}%` : '—'}
                           </td>
 
                           <td style={{ padding: '12px 8px', textAlign: 'right' }}>
