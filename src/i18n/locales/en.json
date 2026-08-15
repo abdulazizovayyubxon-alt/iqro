@@ -1214,6 +1214,38 @@
     "update": "Update",
     "offlineMode": "No internet — offline mode"
   },
+  "interrupts": {
+    "later": "Later",
+    "sub": {
+      "titleSoon": "Your subscription is ending",
+      "bodySoon": "You have {{days}} day(s) left. Renew to keep every question and all analytics open without a break.",
+      "titleEnded": "Activate your subscription",
+      "bodyEnded": "Your trial has ended — you can now do 50 questions a day. The full question base and analytics open with a subscription.",
+      "cta": "Open subscription"
+    },
+    "update": {
+      "title": "A new version is ready",
+      "body": "The updated version of the app has been downloaded. Updating takes a few seconds — your results and settings are kept.",
+      "cta": "Update now",
+      "busy": "Updating…"
+    },
+    "streak": {
+      "title": "Your {{days}}-day streak is at risk",
+      "body": "{{left}} question(s) left to hit today's goal. Do them now and the streak stays alive.",
+      "cta": "Continue"
+    },
+    "push": {
+      "title": "Should we remind you?",
+      "body": "We'll send one short reminder at your study time, so your streak never breaks just because you forgot. You can turn it off any time in Settings.",
+      "cta": "Turn on reminders",
+      "busy": "Turning on…"
+    },
+    "install": {
+      "title": "Install the app on your phone",
+      "body": "Opens from your home screen in one tap, runs faster, and lets you revise even without internet.",
+      "cta": "Install"
+    }
+  },
   "objection": {
     "title": "Question Feedback & Objections",
     "questionLabel": "Question:",

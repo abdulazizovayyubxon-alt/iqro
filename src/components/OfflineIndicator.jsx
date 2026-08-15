@@ -3,34 +3,19 @@
  * ║     OfflineIndicator.jsx — Zehin Platformasi            ║
  * ╠══════════════════════════════════════════════════════════════╣
  * ║  Internet ulanishi holatini kuzatadi va foydalanuvchiga      ║
- * ║  qulay xabarlar ko'rsatadi. PWA ServiceWorker bilan          ║
- * ║  to'liq integratsiya qilingan.                               ║
+ * ║  qulay xabar ko'rsatadi.                                     ║
  * ╚══════════════════════════════════════════════════════════════╝
+ *
+ * Ilgari bu komponent ServiceWorker yangilanishini ham boshqarardi. Yangilanish
+ * endi InterruptHost navbatidan chiqadi (oyna + jim tabletka) — shu sababli bu
+ * yerda faqat o'z vazifasi qoldi.
  */
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { WifiOff, RefreshCw } from 'lucide-react';
+import { WifiOff } from 'lucide-react';
 
 // ── USLUBLAR ──────────────────────────────────────────────────────────────────
-
-const baseCard = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  gap: '10px',
-  padding: '10px 20px',
-  borderRadius: '99px',
-  fontSize: 'var(--fs-md)',
-  fontWeight: 600,
-  backdropFilter: 'blur(20px)',
-  WebkitBackdropFilter: 'blur(20px)',
-  boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-  animation: 'oi_slideIn 0.35s cubic-bezier(0.34,1.56,0.64,1)',
-  pointerEvents: 'auto',
-  maxWidth: '90vw',
-  textAlign: 'center',
-};
 
 const STYLES = {
   wrapper: {
@@ -48,58 +33,24 @@ const STYLES = {
   },
 
   offline: {
-    ...baseCard,
-    background: 'rgba(239, 68, 68, 0.95)',
-    color: '#fff',
-    border: '1px solid rgba(255,255,255,0.2)',
-  },
-
-  online: {
-    ...baseCard,
-    background: 'rgba(16, 185, 129, 0.95)',
-    color: '#fff',
-    border: '1px solid rgba(255,255,255,0.2)',
-  },
-
-  update: {
-    ...baseCard,
-    background: 'rgba(14, 151, 224, 0.97)',
-    color: '#fff',
-    border: '1px solid rgba(255,255,255,0.25)',
-    padding: '12px 24px',
-    flexWrap: 'nowrap',
-    gap: '12px',
-  },
-
-  updateBtn: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '4px',
-    padding: '6px 14px',
-    borderRadius: '99px',
-    background: '#fff',
-    color: '#0B79B8',
-    border: 'none',
-    fontSize: 'var(--fs-sm)',
-    fontWeight: 800,
-    cursor: 'pointer',
-    flexShrink: 0,
-    transition: 'all 0.2s',
-  },
-
-  dismissBtn: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: 'transparent',
-    border: 'none',
-    color: 'rgba(255,255,255,0.75)',
-    cursor: 'pointer',
-    padding: '4px',
-    borderRadius: '50%',
-    flexShrink: 0,
-    transition: 'all 0.15s',
+    gap: '10px',
+    padding: '10px 20px',
+    borderRadius: '99px',
+    fontSize: 'var(--fs-md)',
+    fontWeight: 600,
+    backdropFilter: 'blur(20px)',
+    WebkitBackdropFilter: 'blur(20px)',
+    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+    animation: 'oi_slideIn 0.35s cubic-bezier(0.34,1.56,0.64,1)',
     pointerEvents: 'auto',
+    maxWidth: '90vw',
+    textAlign: 'center',
+    background: 'rgba(239, 68, 68, 0.95)',
+    color: '#fff',
+    border: '1px solid rgba(255,255,255,0.2)',
   },
 
   dot: {
@@ -120,10 +71,6 @@ const CSS = `
   from { opacity: 0; transform: translateY(-40px) scale(0.95); }
   to   { opacity: 1; transform: translateY(0)    scale(1);    }
 }
-@keyframes oi_slideOut {
-  from { opacity: 1; transform: translateY(0)    scale(1);    }
-  to   { opacity: 0; transform: translateY(-40px) scale(0.95); }
-}
 @keyframes oi_pulse {
   0%, 100% { transform: scale(1); opacity: 1; }
   50%       { transform: scale(1.3); opacity: 0.5; }
@@ -134,144 +81,33 @@ const CSS = `
 
 export default function OfflineIndicator() {
   const { t } = useTranslation();
-  const [isOnline,      setIsOnline     ] = useState(navigator.onLine);
-  const [swWorker,      setSwWorker     ] = useState(null);
-  const [showUpdate,    setShowUpdate   ] = useState(false);
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
 
-  // ── Internet holati ──────────────────────────────────────────
   useEffect(() => {
-    const handleOnline = () => {
-      setIsOnline(true);
-    };
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
 
-    const handleOffline = () => {
-      setIsOnline(false);
-    };
-
-    window.addEventListener('online',  handleOnline);
+    window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
 
     return () => {
-      window.removeEventListener('online',  handleOnline);
+      window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
     };
   }, []);
 
-  // ── ServiceWorker yangilanishi ───────────────────────────────
-  useEffect(() => {
-    if (!('serviceWorker' in navigator)) return;
-
-    let updateTimer = null;
-
-    navigator.serviceWorker.ready.then((registration) => {
-      // ⚠️ AUDIT 2026-08-06, T-11 BAND — avval FAQAT `updatefound` tinglanardi.
-      // Agar yangi SW OLDINGI sessiyada o'rnatilib `waiting` holatida qolgan
-      // bo'lsa (foydalanuvchi bannerni bosmasdan ilovani yopgan), yangi
-      // yuklanishda `updatefound` UMUMAN otilmaydi va banner boshqa
-      // ko'rsatilmasdi. Shu sababli tayyor turgan yangilanishni ham tekshiramiz.
-      if (registration.waiting && navigator.serviceWorker.controller) {
-        setSwWorker(registration.waiting);
-        setShowUpdate(true);
-      }
-
-      registration.addEventListener('updatefound', () => {
-        const newWorker = registration.installing;
-        if (!newWorker) return;
-
-        newWorker.addEventListener('statechange', () => {
-          // Yangi SW o'rnatildi + eski SW mavjud = yangilanish bor
-          if (
-            newWorker.state === 'installed' &&
-            navigator.serviceWorker.controller
-          ) {
-            setSwWorker(newWorker);
-            setShowUpdate(true);
-          }
-        });
-      });
-
-      // Uzoq ochiq turgan PWA/TWA yangi deployni o'zi sezmaydi: brauzer sw.js ni
-      // asosan navigatsiyada tekshiradi, standalone ilovada esa navigatsiya
-      // bo'lmaydi. Soatiga bir marta o'zimiz so'raymiz (T-11).
-      updateTimer = setInterval(() => {
-        registration.update().catch(() => { /* tarmoq yo'q — keyingi urinishda */ });
-      }, 60 * 60 * 1000);
-    }).catch(() => {
-      /* SW ro'yxatdan o'tmagan (private rejim / ichki brauzer) — yangilanish
-         so'rovi ko'rsatilmaydi, qolgan indikator ishlayveradi */
-    });
-
-    // SW almashinuvidan keyin sahifani yangilash
-    let refreshing = false;
-    const onControllerChange = () => {
-      if (!refreshing) {
-        refreshing = true;
-        window.location.reload();
-      }
-    };
-    navigator.serviceWorker.addEventListener('controllerchange', onControllerChange);
-
-    // Tozalash — StrictMode effektni ikki marta ishga tushirganda ikkita
-    // `controllerchange` tinglovchisi va ikkita interval qolib ketardi (T-11).
-    return () => {
-      if (updateTimer) clearInterval(updateTimer);
-      navigator.serviceWorker.removeEventListener('controllerchange', onControllerChange);
-    };
-  }, []);
-
-  // ── Yangilash tugmasi ────────────────────────────────────────
-  const handleUpdate = useCallback(() => {
-    if (swWorker) {
-      swWorker.postMessage({ type: 'SKIP_WAITING' });
-    } else {
-      window.location.reload();
-    }
-    setShowUpdate(false);
-  }, [swWorker]);
-
-  // Hech narsa ko'rsatilmasa — render qilmaymiz
-  if (!showUpdate && isOnline) return null;
+  if (isOnline) return null;
 
   return (
     <>
       <style>{CSS}</style>
 
       <div style={STYLES.wrapper}>
-
-        {/* ── Yangi versiya banneri ── */}
-        {showUpdate && (
-          <div style={STYLES.update}>
-            <span style={{ flex: 1, lineHeight: 1.5 }}>
-              {t('offline.updateReady')}
-            </span>
-
-            {/* Yangilash tugmasi */}
-            <button
-              style={STYLES.updateBtn}
-              onClick={handleUpdate}
-              onMouseOver={e => {
-                e.currentTarget.style.transform = 'scale(1.04)';
-                e.currentTarget.style.opacity   = '0.92';
-              }}
-              onMouseOut={e => {
-                e.currentTarget.style.transform = 'scale(1)';
-                e.currentTarget.style.opacity   = '1';
-              }}
-            >
-              <RefreshCw size={12} />
-              {t('offline.update')}
-            </button>
-          </div>
-        )}
-
-        {/* ── Offline banneri (faqatgina offline bo'lsa ko'rsatamiz) ── */}
-        {!isOnline && (
-          <div style={STYLES.offline}>
-            <WifiOff size={15} />
-            <span>{t('offline.offlineMode')}</span>
-            <div style={STYLES.dot} />
-          </div>
-        )}
+        <div style={STYLES.offline}>
+          <WifiOff size={15} />
+          <span>{t('offline.offlineMode')}</span>
+          <div style={STYLES.dot} />
+        </div>
       </div>
     </>
   );

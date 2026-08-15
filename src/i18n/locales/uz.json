@@ -1214,6 +1214,38 @@
     "update": "Yangilash",
     "offlineMode": "Internet yo'q — offline rejim"
   },
+  "interrupts": {
+    "later": "Keyinroq",
+    "sub": {
+      "titleSoon": "Obunangiz tugayapti",
+      "bodySoon": "Obunangizga {{days}} kun qoldi. Uzaytirsangiz barcha savollar va tahlillar uzluksiz ochiq qoladi.",
+      "titleEnded": "Obunani rasmiylashtiring",
+      "bodyEnded": "Sinov muddati tugadi — hozir kuniga 50 ta savol ishlay olasiz. To'liq baza va tahlillar obuna bilan ochiladi.",
+      "cta": "Obunani ochish"
+    },
+    "update": {
+      "title": "Yangi versiya tayyor",
+      "body": "Ilovaning yangilangan versiyasi yuklab olindi. Yangilash bir necha soniya oladi — natijalaringiz va sozlamalaringiz saqlanib qoladi.",
+      "cta": "Hozir yangilash",
+      "busy": "Yangilanmoqda…"
+    },
+    "streak": {
+      "title": "{{days}} kunlik zanjiringiz xavf ostida",
+      "body": "Bugungi maqsadni bajarishga {{left}} ta savol qoldi. Hozir ishlab qo'ysangiz zanjir uzilmaydi.",
+      "cta": "Davom etish"
+    },
+    "push": {
+      "title": "Eslatib turaylikmi?",
+      "body": "Kunlik mashg'ulot vaqtida bitta qisqa eslatma yuboramiz — zanjiringiz shunchaki unutish tufayli uzilmaydi. Xohlagan payt Sozlamalardan o'chirasiz.",
+      "cta": "Eslatmalarni yoqish",
+      "busy": "Yoqilmoqda…"
+    },
+    "install": {
+      "title": "Ilovani telefoningizga o'rnating",
+      "body": "Bosh ekrandan bir bosishda ochiladi, tezroq ishlaydi va internetsiz ham takrorlash imkonini beradi.",
+      "cta": "O'rnatish"
+    }
+  },
   "objection": {
     "title": "⚠️ E'tiroz bildirish",
     "questionLabel": "Savol:",

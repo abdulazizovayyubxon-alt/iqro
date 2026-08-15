@@ -20,6 +20,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import LoginPage from './pages/LoginPage';
 import OfflineIndicator from './components/OfflineIndicator';
+import InterruptHost from './components/interrupts/InterruptHost';
 import OnboardingPage from './pages/OnboardingPage';
 import BottomNav from './components/BottomNav';
 
@@ -473,6 +474,8 @@ function App() {
     <div className="layout-container">
       <Header theme={theme} toggleTheme={toggleTheme} />
       <OfflineIndicator />
+      {/* Tizim boshlaydigan oynalar navbati — bir ochilishda faqat bittasi */}
+      <InterruptHost />
       <PullToRefresh disabled={ptrOff} />
       {/* VAQTINCHALIK: #sdebug bilan ochilganda scroll diagnostikasi */}
       {window.location.hash.includes('sdebug') && <ScrollDebugOverlay />}
