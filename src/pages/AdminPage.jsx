@@ -21,7 +21,7 @@ import {
   ChevronDown, ChevronUp, Search, Plus, Edit3, FileText, Zap,
   Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, UploadCloud,
   Download, Crown, Database, RefreshCw, Inbox, School, CreditCard, Ticket, X,
-  Activity, Sparkles
+  Activity, Sparkles, MoreVertical
 } from 'lucide-react';
 
 import './AdminPage.css';
@@ -368,6 +368,44 @@ const AdminPage = () => {
   // qanday olingani, ro'yxatdan o'tgan sanasi HECH QAYERDA ko'rinmasdi.
   // Ma'lumot allaqachon yuklangan — qo'shimcha o'qish kerak emas (0 kvota).
   const [userCard, setUserCard] = useState(null);
+
+  // ── Qator amallari menyusi (⋮) ──
+  // Ilgari har qatorda 3 ta ikonka-tugma turardi (Pro / Rol / O'chirish) —
+  // ular ~110px joy egallab, ism, PRO muddati, fan va oxirgi faollik
+  // matnlarini siqib qo'yardi (telefonda ism «...» bilan kesilardi). Endi
+  // bitta ⋮ tugmasi (32px) va amallar menyu ichida — matnli, ya'ni
+  // «bu ikonka nima qilardi?» degan savol ham qolmaydi.
+  // Holat: { id, up } — `up` menyu tepaga ochilishini bildiradi (qator ekran
+  // pastida bo'lsa; aks holda menyu ekrandan chiqib ketardi).
+  const [userMenu, setUserMenu] = useState(null);
+  const closeUserMenu = () => setUserMenu(null);
+  const toggleUserMenu = (id, btn) => {
+    setUserMenu(prev => {
+      if (prev?.id === id) return null;
+      const r = btn.getBoundingClientRect();
+      return { id, up: r.bottom + 200 > window.innerHeight };
+    });
+  };
+  // Amal bajarilishi bilan menyu yopiladi — aks holda tasdiq oynasi
+  // ustida osilib qolardi.
+  const runUserAction = (fn) => { closeUserMenu(); fn(); };
+
+  // Tashqariga bosish / Escape — menyuni yopadi.
+  // ⚠️ Bu yerda `position: fixed` ko'rinmas qatlam ISHLATILMAYDI: qator
+  // hover'da `transform: translateY(-2px)` oladi (AdminPage.css), transform
+  // esa `fixed` uchun containing block yaratadi — qatlam butun ekranni emas,
+  // qatorning o'zini qoplab qolardi va menyu yopilmasdi.
+  useEffect(() => {
+    if (!userMenu) return;
+    const onDown = (e) => { if (!e.target.closest?.('.admin-menu-wrap')) closeUserMenu(); };
+    const onKey = (e) => { if (e.key === 'Escape') closeUserMenu(); };
+    document.addEventListener('pointerdown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('pointerdown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [userMenu]);
 
   // ── Platforma umumiy statistikasi (arzon count so'rovlari) ──
   const [overview, setOverview] = useState(null); // { users, premium, questions, referrals, unsolvedObjections }
@@ -3151,32 +3189,53 @@ try {
                       </div>
                     </div>
                   </button>
-                  <div className="admin-user-actions-sm">
+                  <div className="admin-user-actions-sm admin-menu-wrap">
                     <button
-                      onClick={() => togglePremium(u.id, u.isPremium)}
-                      className={`action-btn-sm ${u.isPremium ? 'premium-active' : ''}`}
-                      aria-label={u.isPremium ? "Pro statusini bekor qilish" : "Pro statusini berish"}
-                      title={u.isPremium ? "Pro statusini bekor qilish" : "Pro statusini berish"}
+                      onClick={e => toggleUserMenu(u.id, e.currentTarget)}
+                      className={`action-btn-sm${userMenu?.id === u.id ? ' menu-open' : ''}`}
+                      aria-haspopup="menu"
+                      aria-expanded={userMenu?.id === u.id}
+                      aria-label={`${u.displayName || u.id} — amallar menyusi`}
+                      title="Amallar"
                     >
-                      <Crown size={13} />
+                      <MoreVertical size={16} />
                     </button>
-                    <button
-                      onClick={() => handleManageRole(u)}
-                      className={`action-btn-sm ${u.role === 'admin' ? 'admin-active' : (u.role === 'partner' ? 'partner-active' : '')}`}
-                      style={u.role === 'partner' ? { color: 'var(--green)', borderColor: 'var(--green)' } : {}}
-                      aria-label="Rolni boshqarish"
-                      title={`Rolni boshqarish (Admin / Hamkor / User) — Joriy: ${u.role || 'user'}`}
-                    >
-                      <Shield size={13} />
-                    </button>
-                    <button
-                      className="action-btn-sm delete-btn"
-                      onClick={() => handleDeleteUser(u.id, u.email || u.phoneNumber)}
-                      aria-label="Foydalanuvchini butunlay o'chirish"
-                      title="O'chirish"
-                    >
-                      <Trash2 size={13} />
-                    </button>
+
+                    {userMenu?.id === u.id && (
+                      <div className={`admin-menu${userMenu.up ? ' admin-menu--up' : ''}`} role="menu">
+                        <button
+                          role="menuitem"
+                          className="admin-menu-item"
+                          onClick={() => runUserAction(() => togglePremium(u.id, u.isPremium))}
+                        >
+                          <Crown size={15} style={{ color: 'var(--amber)', flexShrink: 0 }} />
+                          {u.isPremium ? 'Pro statusini bekor qilish' : 'Pro statusini berish'}
+                        </button>
+
+                        <button
+                          role="menuitem"
+                          className="admin-menu-item"
+                          onClick={() => runUserAction(() => handleManageRole(u))}
+                        >
+                          <Shield size={15} style={{ color: u.role === 'admin' ? 'var(--blue)' : u.role === 'partner' ? 'var(--green)' : 'var(--text3)', flexShrink: 0 }} />
+                          <span>
+                            Rolni boshqarish
+                            <span className="admin-menu-hint">Joriy: {u.role === 'admin' ? 'Admin' : u.role === 'partner' ? 'Hamkor' : 'Foydalanuvchi'}</span>
+                          </span>
+                        </button>
+
+                        <div className="admin-menu-sep" />
+
+                        <button
+                          role="menuitem"
+                          className="admin-menu-item admin-menu-item--danger"
+                          onClick={() => runUserAction(() => handleDeleteUser(u.id, u.email || u.phoneNumber))}
+                        >
+                          <Trash2 size={15} style={{ flexShrink: 0 }} />
+                          Foydalanuvchini o'chirish
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
                 );

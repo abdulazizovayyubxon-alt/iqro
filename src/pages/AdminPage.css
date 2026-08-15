@@ -532,25 +532,79 @@
 }
 .action-btn-sm:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 
-.action-btn-sm.premium-active {
-  background: var(--amber-bg);
-  color: var(--amber);
-  border-color: var(--amber);
+/* `.premium-active` / `.admin-active` / `.delete-btn` qoidalari olib
+   tashlandi: ular qatordagi 3 ta ikonka-tugmaga tegishli edi, endi o'sha
+   amallar ⋮ menyusi ichida. Holat qatorda chiplar bilan ko'rinadi
+   (PRO · sana, ADMIN, 🤝 HAMKOR). */
+
+/* ── Qator amallari menyusi (⋮) ──────────────────────────────────────────
+   Ilgari qator o'ngida 3 ta ikonka-tugma turardi (~110px). Endi bitta ⋮
+   (32px) — qolgan joy ism, PRO muddati, fan va oxirgi faollik matnlariga
+   qoladi. Amallar menyuda MATN bilan yoziladi. */
+.admin-menu-wrap { position: relative; }
+
+.action-btn-sm.menu-open {
+  background: var(--surface2);
+  color: var(--text);
+  border-color: var(--text3);
 }
 
-.action-btn-sm.admin-active {
-  background: var(--blue-bg);
-  color: var(--blue);
-  border-color: var(--blue);
+.admin-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 40;
+  min-width: 224px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
-.action-btn-sm.delete-btn {
-  color: var(--red);
+/* Ekran pastidagi qatorlar uchun — menyu tepaga ochiladi */
+.admin-menu--up { top: auto; bottom: calc(100% + 6px); }
+
+.admin-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 9px 10px;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s;
 }
 
-.action-btn-sm.delete-btn:hover {
-  background: var(--red-bg);
-  border-color: var(--red);
+.admin-menu-item:hover { background: var(--bg3); }
+.admin-menu-item:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+
+.admin-menu-item--danger { color: var(--red); }
+.admin-menu-item--danger:hover { background: var(--red-bg); }
+
+/* Joriy rol kabi izoh — amal nomidan keyin ikkinchi qatorda */
+.admin-menu-hint {
+  display: block;
+  margin-top: 1px;
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  color: var(--text3);
+}
+
+.admin-menu-sep {
+  height: 1px;
+  margin: 4px 2px;
+  background: var(--border);
 }
 
 /* Ikonka tugmasi (xatolar ro'yxati) — fonsiz */
