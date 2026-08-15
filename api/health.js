@@ -87,14 +87,20 @@ export default async function handler(req, res) {
       questionsVersion = data.dbVersion ?? null;   // AdminPage «Yangilanishni yuborish» va scripts/bump-questions-version.mjs shu nomda yozadi
       // ── Savollar qayerdan kelmoqda? Bu — narx ko'rsatkichi ──
       //   `storage-bundle`      → foydalanuvchi boshiga 2 ta Firestore o'qishi
+      //   `firestore-bundle`    → fan boshiga ~4 o'qish (questionBundles bo'laklari)
       //   `firestore-fallback`  → fan boshiga ~2 900 o'qish (kunlik kvota
       //                           50 000 ⇒ ~17 ta yuklash) — KVOTA XAVFI.
-      // Paketni AdminPage → Savollar → «Paketlarni qayta qurish» yasaydi.
+      // Storage paketini AdminPage → Savollar → «Paketlarni qayta qurish»
+      // yasaydi; Storage yoqilmagan bo'lsa — `node scripts/build-fs-bundle.mjs <fan>`.
       // Eski `urls` maydoni ataylab tekshirilmaydi: u ochiq havolalarni
       // saqlagan va o'sha teshik sababli butunlay ishlatilmaydi.
       const bundleCount = Object.keys(data.bundles || {}).length;
-      checks.questionSource = bundleCount > 0 ? 'storage-bundle' : 'firestore-fallback';
+      const fsBundleCount = Object.keys(data.fsBundles || {}).length;
+      checks.questionSource = bundleCount > 0
+        ? 'storage-bundle'
+        : (fsBundleCount > 0 ? 'firestore-bundle' : 'firestore-fallback');
       checks.questionBundles = bundleCount;
+      checks.firestoreBundles = fsBundleCount;
     } else {
       // Baza javob berdi, lekin sozlama hujjati yo'q — ilova savol yuklay olmaydi
       checks.firestore = 'up';

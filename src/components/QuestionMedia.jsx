@@ -416,6 +416,13 @@ export default function QuestionMedia({ question, style }) {
             alt="Savol rasmi"
             onClick={() => setZoomed(true)}
             onError={() => setImgError(true)}
+            // `lazy` — ekranga chiqmagan rasmlar yuklanmasin. Test rejimida
+            // savol baribir ko'rinishda bo'ladi (darhol yuklanadi), lekin
+            // Xatolar daftari / Takrorlash ro'yxatlarida bir ekranda o'nlab
+            // savol bo'lishi mumkin — o'sha yerda butun trafikni tejaydi.
+            // `async` dekodlash — katta rasm asosiy oqimni bloklamasin (jank).
+            loading="lazy"
+            decoding="async"
             style={{
               maxWidth: '100%',
               width: 'auto',

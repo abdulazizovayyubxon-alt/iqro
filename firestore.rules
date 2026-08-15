@@ -111,6 +111,25 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
+    // ── questionBundles: savol paketining bo'laklari (tezlik uchun) ──────────
+    //
+    // NEGA BOR: Storage loyihada yoqilmagan, shuning uchun savol paketi
+    // `questionBundles/{fan}__{n}` hujjatlarida JSON satr sifatida saqlanadi.
+    // Busiz ilova `getDocs(where('category','==',fan))` ga tushib, HAR sovuq
+    // yuklashda fan boshiga ~2 900 o'qish sarflaydi (kunlik kvota 50 000).
+    //
+    // O'QISH BUTUNLAY YOPIQ: bu — pullik kontentning to'liq nusxasi, bitta
+    // hujjatda. Ochiq bo'lsa, `questions` kolleksiyasidagi `hasContentAccess()`
+    // tekshiruvi ma'nosiz bo'lardi — istalgan kirgan hisob butun bazani
+    // 4 ta arzon o'qish bilan yuklab olardi.
+    // Yagona o'quvchi — api/get-questions.js (Admin SDK qoidalarni chetlab
+    // o'tadi), u premium/trial tekshiruvidan keyin uzatadi.
+    // Yozuv — scripts/build-fs-bundle.mjs (admin hisobi bilan).
+    match /questionBundles/{docId} {
+      allow read: if false;
+      allow write: if isAdmin();
+    }
+
     // ── objections: foydalanuvchi faqat O'Z e'tirozini o'qiydi (maxfiylik); admin hammasini boshqaradi ──
     match /objections/{docId} {
       allow read: if isAdmin() || (isLoggedIn() && resource.data.uid == request.auth.uid);

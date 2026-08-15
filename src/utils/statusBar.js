@@ -10,11 +10,10 @@
  * YECHIM: splash ko'rinib turgan paytda status-bar ham navy bo'ladi, splash
  * yopilganda tema rangiga qaytadi.
  *
- * NEGA SANOQCHI: splash'lar bir-birining ustiga tushadi — SimpleSplash ~1s
- * dan keyin yopiladi, lekin Firebase sekin bo'lsa App'ning navy "yuklanmoqda"
- * ekrani hali turgan bo'ladi. Oddiy true/false bilan status-bar o'rtada bir
- * lahzaga och rangga sakrardi; sanoqchi bilan rang faqat OXIRGI splash
- * yopilganda qaytadi.
+ * NEGA SANOQCHI: splash'lar bir-birining ustiga tushadi — SplashVideo tugaydi,
+ * lekin Firebase sekin bo'lsa App'ning navy "yuklanmoqda" ekrani hali turgan
+ * bo'ladi. Oddiy true/false bilan status-bar o'rtada bir lahzaga och rangga
+ * sakrardi; sanoqchi bilan rang faqat OXIRGI splash yopilganda qaytadi.
  *
  * iOS standalone'da status-bar sohasi sahifa FON rangini oladi (meta emas) —
  * shuning uchun splash paytida <html> ga `splash-active` klassi ham qo'yiladi.
@@ -22,7 +21,7 @@
  * bo'yoqdan ishlashi uchun — index.css keyinroq yuklanadi).
  */
 
-/** Splash foni — brend-kitob §5 "To'q navy". index.html va SimpleSplash bilan bir xil. */
+/** Splash foni — brend-kitob §5 "To'q navy". index.html splash'i bilan bir xil. */
 export const SPLASH_BG = '#0A2440';
 
 /** Tema fonlari — index.css dagi --bg qiymatlari bilan bir xil bo'lishi SHART. */

@@ -2,8 +2,9 @@
  * SplashVideo.jsx — Zehin logo VIDEO animatsiyasi (splash ekran)
  *
  * Faqat ilova BIRINCHI ochilganda (yangi sessiya) ko'rsatiladi.
- * Refresh (F5/pull-to-refresh) da ko'rsatilMAYDI — buning o'rniga
- * SimpleSplash (oddiy statik splash) ishlaydi.
+ * Refresh (F5/pull-to-refresh) da splash UMUMAN ko'rsatilmaydi — index.html
+ * ichidagi navy `.zh-splash` va App.jsx dagi boot ekrani buni allaqachon
+ * qoplaydi (2026-08-15 tezlik o'lchovi, main.jsx dagi izohga qarang).
  *
  * Xususiyatlar:
  * - Video telefon ekraniga to'liq mos (object-fit: cover)
@@ -70,13 +71,16 @@ export default function SplashVideo({ onComplete }) {
     }, 300);
   }, [onComplete]);
 
-  // Ekranga birinchi bosish — vibratsiya; ikkinchi bosish — skip
+  // Ekranga bosish — vibratsiya + DARHOL skip.
+  //
+  // Avval birinchi bosish faqat vibratsiya berardi va skip QILMASDI (skip
+  // ikkinchi bosishda edi). Amalda foydalanuvchi ekranga bosib, hech narsa
+  // bo'lmagach 5.7 soniyalik videoni oxirigacha kutib o'tirardi — "O'tkazish"
+  // tugmasini har kim ham payqamaydi. Endi bitta bosish yetarli; vibratsiya
+  // brend belgisi sifatida o'sha bosishda baribir ishlaydi.
   const handleOverlayTap = useCallback(() => {
-    if (!vibrated.current) {
-      triggerVibration();
-      return; // birinchi bosish faqat vibratsiya, skip qilmaydi
-    }
-    handleSkip(); // ikkinchi bosish — skip
+    triggerVibration();
+    handleSkip();
   }, [triggerVibration, handleSkip]);
 
   // Status-bar splash foniga (navy) — komponent yopilganda tema rangi qaytadi.

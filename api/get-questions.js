@@ -72,7 +72,16 @@ function boot() {
     // Bucket nomi ATAYLAB aniq beriladi: app boshqa joyda (getApps() bo'sh
     // emas) `storageBucket`siz ishga tushirilgan bo'lsa, parametrsiz
     // `bucket()` "Bucket name not specified" bilan yiqilardi.
-    bucketRef = getStorage().bucket(bucketName(serviceAccount));
+    //
+    // try/catch: loyihada Firebase Storage YOQILMAGAN bo'lishi mumkin (aynan
+    // shu sabab Firestore paket yo'li qo'shilgan). U holda bucket havolasi
+    // yasalmaydi va endpoint 2-yo'l bilan ishlayveradi — 500 bermaydi.
+    try {
+      bucketRef = getStorage().bucket(bucketName(serviceAccount));
+    } catch (e) {
+      console.warn('Storage mavjud emas — faqat Firestore paketi ishlatiladi:', e?.message);
+      bucketRef = null;
+    }
   }
   return dbInstance;
 }
@@ -133,23 +142,7 @@ export default async function handler(req, res) {
     if (!versionSnap.exists) {
       return res.status(404).json({ error: 'Not Found: Version settings missing' });
     }
-
-    // ⚠️ ESKI `urls` MAYDONI ATAYLAB O'QILMAYDI. U ochiq havolalarni saqlagan
-    // va o'sha teshik sababli bo'shatilgan; qayta o'qilsa, bucket'da qolib
-    // ketgan eski token'li havola yana ishga tushib ketishi mumkin edi.
-    const bundles = versionSnap.data().bundles || {};
-    const entry = bundles[category];
-    const path = typeof entry === 'string' ? entry : entry?.path;
-
-    if (!path || typeof path !== 'string' || !path.startsWith('bundles/')) {
-      // Bu NOSOZLIK EMAS: admin hali paketni qurmagan bo'lishi mumkin.
-      // Mijoz Firestore zaxirasiga tushadi (qimmat, lekin ishlaydi).
-      return res.status(404).json({ error: 'Not Found: bundle_not_published' });
-    }
-
-    // Admin SDK Storage qoidalarini CHETLAB O'TADI — fayl `allow read: if false`
-    // ostida tursa ham o'qiladi. Aynan shu sabab havola mijozga kerak emas.
-    const [buf] = await bucketRef.file(path).download();
+    const versionData = versionSnap.data() || {};
 
     // ── Kesh: `private`, umumiy CDN'ga TUSHMAYDI ──
     // AUDIT 2026-08-05, 14-BAND: avval `public, s-maxage=86400` edi. Bu
@@ -157,11 +150,74 @@ export default async function handler(req, res) {
     // xato signal: umumiy proksi yoki CDN uni keshlab, tekshiruvdan o'tmagan
     // so'rovga ham berishi mumkin. Mijoz o'zi localforage'da keshlaydi, shuning
     // uchun CDN keshining foydasi ham yo'q.
-    res.setHeader('Cache-Control', 'private, no-store');
-    res.setHeader('Content-Type', 'application/json; charset=utf-8');
-    // Xom bayt sifatida uzatiladi: JSON.parse + qayta serializatsiya 2.5 MB
-    // uchun ortiqcha CPU va xotira (funksiya limiti) sarflardi.
-    return res.status(200).send(buf);
+    const sendBundle = (body, source) => {
+      res.setHeader('Cache-Control', 'private, no-store');
+      res.setHeader('Content-Type', 'application/json; charset=utf-8');
+      res.setHeader('X-Bundle-Source', source);   // diagnostika (/api/health bilan bir tilda)
+      return res.status(200).send(body);
+    };
+
+    // ══ 1-YO'L: Storage paketi ═══════════════════════════════════════════
+    // ⚠️ ESKI `urls` MAYDONI ATAYLAB O'QILMAYDI. U ochiq havolalarni saqlagan
+    // va o'sha teshik sababli bo'shatilgan; qayta o'qilsa, bucket'da qolib
+    // ketgan eski token'li havola yana ishga tushib ketishi mumkin edi.
+    const bundles = versionData.bundles || {};
+    const entry = bundles[category];
+    const path = typeof entry === 'string' ? entry : entry?.path;
+
+    if (path && typeof path === 'string' && path.startsWith('bundles/') && bucketRef) {
+      try {
+        // Admin SDK Storage qoidalarini CHETLAB O'TADI — fayl `allow read: if false`
+        // ostida tursa ham o'qiladi. Aynan shu sabab havola mijozga kerak emas.
+        const [buf] = await bucketRef.file(path).download();
+        // Xom bayt sifatida uzatiladi: JSON.parse + qayta serializatsiya 2.5 MB
+        // uchun ortiqcha CPU va xotira (funksiya limiti) sarflardi.
+        return sendBundle(buf, 'storage');
+      } catch (storageErr) {
+        // Storage yoqilmagan / fayl yo'q — 2-yo'lga o'tamiz, 500 bermaymiz.
+        console.warn(`storage bundle o'qilmadi (${category}):`, storageErr?.message);
+      }
+    }
+
+    // ══ 2-YO'L: Firestore paketi (Storage yoqilmagan loyihalar uchun) ════
+    // `questionBundles/{fan}__{n}` — savollar massivining bo'laklari, JSON satr
+    // sifatida. Mijoz bu kolleksiyani UMUMAN o'qiy olmaydi (rules: read false).
+    // Narxi: fan boshiga ~4 o'qish (Firestore zaxirasidagi ~2 900 o'rniga).
+    // Yasash: `node scripts/build-fs-bundle.mjs <fan>`
+    const fsMeta = (versionData.fsBundles || {})[category];
+    const chunkCount = Number(fsMeta?.chunks || 0);
+
+    if (chunkCount > 0 && chunkCount <= 64) {
+      // Aniq hujjat havolalari bo'yicha `getAll` — `where`+`orderBy` so'rovi
+      // kompozit indeks talab qilardi va narxi bir xil bo'lardi.
+      const refs = Array.from({ length: chunkCount }, (_, i) =>
+        db.collection('questionBundles').doc(`${category}__${i}`)
+      );
+      const snaps = await db.getAll(...refs);
+
+      // Bo'laklar tashqi qavslarini olib tashlab ULANADI — JSON.parse qilinmaydi
+      // (2.5 MB ni parse + qayta serializatsiya funksiya CPU/xotirasini yeydi).
+      const parts = [];
+      let broken = false;
+      for (const snap of snaps) {
+        if (!snap.exists) { broken = true; break; }
+        const raw = String(snap.data()?.data || '').trim();
+        if (raw.length < 2 || raw[0] !== '[' || raw[raw.length - 1] !== ']') { broken = true; break; }
+        const inner = raw.slice(1, -1);
+        if (inner) parts.push(inner);
+      }
+
+      if (!broken) {
+        return sendBundle(`[${parts.join(',')}]`, 'firestore-bundle');
+      }
+      // Bo'lak yo'qolgan yoki buzilgan — paketni qayta qurish kerak.
+      // Mijozni zaxira yo'lga tushiramiz (qimmat, lekin ishlaydi).
+      console.error(`fs bundle buzuq (${category}) — qayta qurish kerak: build-fs-bundle.mjs`);
+    }
+
+    // Bu NOSOZLIK EMAS: admin hali paketni qurmagan bo'lishi mumkin.
+    // Mijoz Firestore zaxirasiga tushadi (qimmat, lekin ishlaydi).
+    return res.status(404).json({ error: 'Not Found: bundle_not_published' });
 
   } catch (error) {
     console.error('get-questions error:', error);

@@ -84,3 +84,6 @@ pipeline/_theory_gen.log
 pipeline/verify_report_mttjt_*.json
 pipeline/_audit_mttjt_*.log
 pipeline/_mttjt_*.log
+
+# Rasm optimizatsiyasidan oldingi asl nusxalar (scripts/optimize-images.mjs)
+image-backup/

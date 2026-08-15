@@ -8,7 +8,6 @@ import { AppProvider } from './context/AppContext'
 import { PWAProvider } from './context/PWAContext'
 import App from './App.jsx'
 import SplashVideo, { SPLASH_SESSION_KEY } from './components/shared/SplashVideo.jsx'
-import SimpleSplash from './components/shared/SimpleSplash.jsx'
 import './i18n'
 import './index.css'
 
@@ -32,25 +31,31 @@ if ('scrollRestoration' in window.history) {
 // AppRoot - eng yuqori darajadagi render
 // Splash rejimi:
 //   - Ilova BIRINCHI ochilganda (sessionStorage bo'sh) → VIDEO splash
-//   - Sahifa YANGILANGANDA (sessionStorage mavjud)     → ODDIY splash (faqat logo)
+//   - Sahifa YANGILANGANDA (sessionStorage mavjud)     → splash YO'Q
+//
+// ── NEGA YANGILASHDA SPLASH YO'Q (tezlik o'lchovi, 2026-08-15) ──────────────
+// Avval bu yerda SimpleSplash turardi: 600ms ko'rsatish + 400ms fade = HAR
+// yangilashda 1 soniya. Bu SOF KECHIKISH edi — ilova orqada allaqachon tayyor
+// bo'lardi, splash uni ataylab to'sib turardi.
+//
+// Ustiga-ustak u navy logo ekranining UCHINCHI nusxasi edi: index.html ичida
+// `.zh-splash` (React mount bo'lgunicha) va App.jsx dagi `bootSplashVisible`
+// ekrani (auth hal bo'lgunicha) allaqachon AYNAN shu navy fon + belgini
+// ko'rsatadi. Ya'ni olib tashlash ko'rinishni o'zgartirmaydi — faqat
+// 1 soniyani qaytaradi.
 const AppRoot = () => {
   const isFirstOpen = !sessionStorage.getItem(SPLASH_SESSION_KEY);
-  // 'video' | 'simple' | 'done'
-  const [splashMode, setSplashMode] = React.useState(isFirstOpen ? 'video' : 'simple');
+  // 'video' | 'done'
+  const [splashMode, setSplashMode] = React.useState(isFirstOpen ? 'video' : 'done');
 
   const handleVideoComplete = React.useCallback(() => {
     // sessionStorage video ichida o'zi setItem qiladi
     setSplashMode('done');
   }, []);
 
-  const handleSimpleComplete = React.useCallback(() => {
-    setSplashMode('done');
-  }, []);
-
   return (
     <>
       {splashMode === 'video' && <SplashVideo onComplete={handleVideoComplete} />}
-      {splashMode === 'simple' && <SimpleSplash onComplete={handleSimpleComplete} />}
       <App />
     </>
   );
