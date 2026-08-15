@@ -73,9 +73,6 @@
     "pushHint": "Yangi savol va eslatmalar uchun yoqing",
     "pushEnabled": "✓ Yoqilgan",
     "pushEnable": "Yoqish",
-    "offline": "Oflayn ishlash (Kafolat)",
-    "offlineLoading": "Yuklanmoqda...",
-    "offlineHint": "Internetsiz ishlash uchun savollarni yuklash",
     "installPWA": "Ilovani o'rnatish (PWA)",
     "guide": "Foydalanish qo'llanmasi",
     "premium": "Pro obuna",
@@ -104,9 +101,6 @@
       "logoutError": "Chiqishda xatolik",
       "deleteAccountSuccess": "Hisobingiz muvaffaqiyatli o'chirildi.",
       "deleteAccountError": "Xatolik yuz berdi. Adminga murojaat qiling.",
-      "offlineSuccess": "Tayyor! {{count}} ta savol oflayn rejim uchun keshlandi ✅",
-      "offlineNotReady": "Hozircha serverda offline ma'lumotlar tayyor emas.",
-      "offlineError": "Offline yuklashda xatolik yuz berdi",
       "saved": "Saqlandi ✅",
       "deleteAccountTooMany": "Juda ko'p urinish. Biroz kutib qayta urining."
     }

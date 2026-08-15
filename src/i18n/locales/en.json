@@ -73,9 +73,6 @@
     "pushHint": "Enable for new questions and reminders",
     "pushEnabled": "✓ Enabled",
     "pushEnable": "Enable",
-    "offline": "Offline Mode (Guaranteed)",
-    "offlineLoading": "Loading...",
-    "offlineHint": "Download questions to practice without internet",
     "installPWA": "Install App (PWA)",
     "guide": "User Guide",
     "premium": "Pro Subscription",
@@ -104,9 +101,6 @@
       "logoutError": "Logout error",
       "deleteAccountSuccess": "Your account has been deleted successfully.",
       "deleteAccountError": "An error occurred. Please contact support.",
-      "offlineSuccess": "Ready! {{count}} questions cached for offline practice ✅",
-      "offlineNotReady": "Offline data is not ready on the server yet.",
-      "offlineError": "Error downloading offline data",
       "saved": "Saved ✅",
       "deleteAccountTooMany": "Too many attempts. Please wait a moment and try again."
     }
