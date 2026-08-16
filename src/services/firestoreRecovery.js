@@ -6,18 +6,29 @@
  *   Firebase JS SDK'ning uzoq yillik ichki nosozligi. Ko'pincha Android
  *   brauzerlarida (Samsung Internet, Chrome) sodir bo'ladi: OS ilova fonga
  *   o'tganda IndexedDB ulanishini yopib qo'yadi yoki tab "egaligi" (ownership)
- *   yo'qoladi → persistentLocalCache ichki holati buziladi.
+ *   yo'qoladi → SDK ichki holati buziladi.
  *
  * OQIBATI:
  *   SDK butunlay ishlamay qoladi — keyingi HAR QANDAY o'qish/yozish xato beradi.
  *   Foydalanuvchi buni "imtihon natijam saqlanmadi" deb ko'radi.
  *
+ * ⚠️ 2026-08-16 — BU MODUL ENDI ZAXIRA, BIRINCHI HIMOYA EMAS:
+ *   Xatoning ILDIZI (firebase.js dagi `persistentLocalCache`) olib tashlandi —
+ *   kesh endi xotirada, IndexedDB qatlami umuman yo'q. Ya'ni kutilayotgani:
+ *   bu modul deyarli hech qachon ishga tushmaydi. Ataylab QOLDIRILDI, chunki
+ *   assertion xatosi SDK'ning boshqa joyidan ham chiqishi mumkin va o'shanda
+ *   ilovaning o'lik holatda qolgani reload'dan ko'ra yomonroq.
+ *   Agar jurnalda bu xato QAYTA paydo bo'lsa — sabab boshqa, izlash shu yerdan
+ *   emas, `errorLogs` dagi stack'dan boshlanadi.
+ *
  * YECHIM:
- *   Buzilgan IndexedDB keshini tozalab, sahifani bir marta qayta yuklaymiz.
+ *   Buzilgan keshni tozalab, sahifani bir marta qayta yuklaymiz.
  *   Bu XAVFSIZ, chunki:
  *     • imtihon sessiyasi localforage'da (ALOHIDA IndexedDB bazasi) saqlanadi —
  *       clearIndexedDbPersistence unga TEGMAYDI, resume oynasi ishlaydi;
  *     • savollar bundle'i ham localforage'da — qayta yuklanmaydi.
+ *   `clearIndexedDbPersistence` xotira keshida ma'nosiz — u xato tashlaydi va
+ *   quyidagi `catch` uni yutadi. Reload esa baribir bajariladi, kerakli qism shu.
  *
  * HALQA HIMOYASI:
  *   sessionStorage bayrog'i — bir sessiyada FAQAT BIR MARTA reload qilinadi.

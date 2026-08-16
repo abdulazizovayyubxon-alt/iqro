@@ -15,10 +15,16 @@ import './index.css'
 import { initAnalytics } from './services/analytics'
 import { initSentry } from './services/sentry'
 import { registerServiceWorker } from './services/registerSW'
+import { dropLegacyFirestoreCache } from './services/dropLegacyFirestoreCache'
 
 initSentry()           // Xatolarni kuzatish (async, lazy)
 initAnalytics()        // Google Analytics
 registerServiceWorker() // PWA offline kesh — rad etilsa jimgina o'tadi
+
+// Eski Firestore IndexedDB keshini bo'shatish — bir marta, ishga tushishdan
+// KEYIN. `setTimeout` ataylab: bu tozalash, foydalanuvchi kutadigan ish emas,
+// shuning uchun birinchi render bilan resurs talashmasin.
+setTimeout(dropLegacyFirestoreCache, 3000)
 
 // Ilova qobig'i (SPA) har doim tepadan ochiladi: reload'dan keyin brauzer
 // eski scroll o'rnini tiklamasin (aks holda dashboard o'rtasidan ochilib,

@@ -34,13 +34,31 @@ const _seen = new Set();
 let _sentCount = 0;
 const MAX_PER_SESSION = 20;
 
-// Shovqin — foydasiz/kutilgan xatolar (log qilinmaydi)
-const IGNORE = ['ResizeObserver loop', 'Loading chunk', 'Network Error', 'Failed to fetch'];
+// Shovqin — foydasiz/kutilgan xatolar (log qilinmaydi).
+//
+// ⚠️ 2026-08-16, JURNAL TAHLILI: ro'yxat kengaytirildi. Jurnal faqat HARAKAT
+// TALAB QILADIGAN narsani ko'rsatishi kerak — kutilgan hodisalar oqimi orasida
+// haqiqiy xato ko'zdan qochadi (51 yozuvning 12 tasi aynan shu ikki turdan edi).
+const IGNORE = [
+  'ResizeObserver loop', 'Loading chunk', 'Network Error', 'Failed to fetch',
+  // Firebase Auth IndexedDB'ga sahifa yopilayotganda/fonga o'tayotganda murojaat
+  // qiladi. Bu NORMAL hayot sikli — odam ilovani yopgan, tuzatadigan narsa yo'q.
+  'Database is closing/hidden',
+];
+
+// Aniq TENGLIK bo'yicha e'tiborsizlar. `includes` bilan qidirsa juda keng
+// tutardi: masalan 'Rejected' qismi "Promise Rejected" yoki "PERMISSION_DENIED …
+// Rejected" kabi HAQIQIY xatolarni ham yutib yuborardi.
+//   · 'Rejected' — `registerSW.js` service worker'ni ro'yxatdan o'tkaza olmadi
+//     (private rejim yoki brauzer sozlamasi). PWA keshi ishlamaydi, ilovaning
+//     o'zi to'liq ishlaydi — main.jsx buni allaqachon jimgina o'tkazib yuboradi.
+const IGNORE_EXACT = ['Rejected'];
 
 function logToServer(message, stack, severity = 'error', context = null) {
   if (!import.meta.env.PROD) return;                 // /api serverless faqat productionда bor
   const msg = String(message || 'unknown');
   if (IGNORE.some(p => msg.includes(p))) return;
+  if (IGNORE_EXACT.includes(msg.trim())) return;
   if (_sentCount >= MAX_PER_SESSION) return;
   const sig = msg.slice(0, 200);
   if (_seen.has(sig)) return;                         // dedupe (sessiya ichida)
