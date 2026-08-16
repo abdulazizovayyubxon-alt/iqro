@@ -79,6 +79,10 @@
 }
 .pp-group > * + * { border-top: 1px solid var(--border); }
 
+/* Bir bo'limdagi ikkinchi guruh: qo'shni qatordan ataylab ajratilgan
+   (masalan "Chiqish" ostidagi "Hisobni o'chirish") — bexosdan bosilmasin. */
+.sp-group--detached { margin-top: 12px; }
+
 /* ── Qator ── */
 .pp-menu-item {
   display: flex;

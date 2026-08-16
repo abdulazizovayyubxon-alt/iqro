@@ -84,6 +84,7 @@
     "about": "Biz haqimizda va Aloqa",
     "aboutHint": "Loyiha, qo'llab-quvvatlash va bog'lanish",
     "deleteAccount": "Hisobni o'chirish",
+    "deleteAccountHint": "Qaytarib bo'lmaydi — barcha ma'lumotlar o'chadi",
     "logout": "Chiqish",
     "toasts": {
       "pushAlreadyEnabled": "Push bildirishnomalar allaqachon yoqilgan",

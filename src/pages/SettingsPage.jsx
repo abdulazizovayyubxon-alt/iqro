@@ -613,11 +613,20 @@ export default function SettingsPage({ theme, toggleTheme }) {
               label={t('settings.logout')}
               onClick={() => setShowLogoutConfirm(true)}
             />
+          </div>
+          {/* O'chirish "Chiqish"ga yopishib turmaydi: alohida guruh + tirqish,
+             ranglari xira. Ilgari qizil ikonka va qizil yozuv edi — ko'zni
+             tortardi va yonidagi "Chiqish"ni bosmoqchi bo'lgan barmoq unga
+             tushib ketardi. Qatorning o'zi joyida qoladi: Play qoidasi bo'yicha
+             o'chirish yo'li sozlamalardan oson topilishi shart. Xavf haqidagi
+             ogohlantirish endi tagidagi izohda, tasdiq oynasi esa avvalgidek
+             parol so'raydi. */}
+          <div className="pp-group sp-group--detached">
             <ActionRow
               icon={<Trash2 size={20} />}
-              tone="red"
+              tone="muted"
               label={t('settings.deleteAccount')}
-              labelTone="red"
+              sublabel={t('settings.deleteAccountHint')}
               danger
               onClick={() => setShowDeleteConfirm(true)}
             />

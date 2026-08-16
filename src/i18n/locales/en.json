@@ -84,6 +84,7 @@
     "about": "About Us & Contact",
     "aboutHint": "Project, support, and contact",
     "deleteAccount": "Delete Account",
+    "deleteAccountHint": "Cannot be undone — all your data is erased",
     "logout": "Log Out",
     "toasts": {
       "pushAlreadyEnabled": "Push notifications are already enabled",

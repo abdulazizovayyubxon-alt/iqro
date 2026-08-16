@@ -84,6 +84,7 @@
     "about": "О нас и контакты",
     "aboutHint": "Проект, поддержка и связь",
     "deleteAccount": "Удалить аккаунт",
+    "deleteAccountHint": "Отменить нельзя — все данные будут удалены",
     "logout": "Выйти",
     "toasts": {
       "pushAlreadyEnabled": "Push-уведомления уже включены",
