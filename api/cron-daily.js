@@ -44,7 +44,7 @@
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { getMessaging } from 'firebase-admin/messaging';
-import { verifySecret, extractSecret, ensureShortIdAdmin } from './_shared.js';
+import { verifySecret, extractSecret, ensureShortIdAdmin, getWeekId, getMonthId } from './_shared.js';
 import { TEXT as SMS_TEXT, normalizePhone, sendQueue, activeProvider, segments, isSmsEnabled } from './_sms.js';
 
 const FREE_TRIAL_DAYS = 7;
@@ -588,6 +588,71 @@ export default async function handler(req, res) {
       // Metrika — ikkinchi darajali. Yiqilsa cron'ning asosiy ishi (obuna
       // muddati, eslatmalar) allaqachon bajarilgan bo'ladi.
       results.errors.push(`Metrika: ${e.message}`);
+    }
+
+    // ═══ 6. REYTING SNAPSHOT'I (o'qish byudjeti) ═══
+    //
+    // NEGA: `LeaderboardPage` har foydalanuvchi uchun `orderBy+limit(50)`
+    // bajaradi — ya'ni sahifani ochgan HAR KIM 50 ta o'qish sarflaydi. Bu
+    // butun ilovadagi eng qimmat amal (qolgan hammasi birgalikda ~8 ta).
+    //   400 foydalanuvchi  →   20 000 o'qish/kun
+    //  50 000 foydalanuvchi → 2 500 000 o'qish/kun  (~$1.50/kun, eng katta modda)
+    //
+    // Bu yerda ro'yxat BIR MARTA hisoblanadi va bitta hujjatga yoziladi.
+    // Mijoz uni 1 O'QISHDA oladi — 50× arzon.
+    //
+    // ⚠️ MIJOZ BUNI FAQAT «YANGI» BO'LSA ISHLATADI (`LeaderboardPage`
+    // → `SNAPSHOT_MAX_AGE`). Sabab: cron hozir kuniga BIR MARTA ishlaydi,
+    // ya'ni snapshot kun davomida eskiradi va reyting qotib qolgandek
+    // ko'rinardi. Shuning uchun eskirgan snapshot E'TIBORSIZ qoldiriladi va
+    // mijoz avvalgidek jonli so'rov qiladi — bugungi xatti-harakat
+    // O'ZGARMAYDI. Cron chastotasi oshirilganda (Vercel Pro, masalan
+    // `*/15 * * * *`) tejash O'Z-O'ZIDAN yoqiladi, kodga tegmasdan.
+    //
+    // Narxi: 3 taxta × 50 hujjat = 150 o'qish/kun. Mijoz tomonda tejaladigan
+    // raqam bilan solishtirganda hech narsa.
+    try {
+      const weekId = getWeekId(now);
+      const monthId = getMonthId(now);
+      const boards = { all: 'totalScore', weekly: `weekly_${weekId}`, monthly: `monthly_${monthId}` };
+      const snapshot = { updatedAt: now.toISOString(), weekId, monthId, boards: {} };
+
+      for (const [name, field] of Object.entries(boards)) {
+        const snap = await db.collection('userStats')
+          .orderBy(field, 'desc')
+          .limit(50)
+          .get();
+        // Mijozdagi `toRow` bilan AYNI maydonlar — u yerda format o'zgarsa
+        // bu yer ham yangilanishi kerak (ikkalasi bitta ekranga chiqadi).
+        snapshot.boards[name] = snap.docs.map(d => {
+          const v = d.data();
+          return {
+            id: d.id,
+            name: v.displayName || v.userName || v.name || `#${d.id.slice(0, 6)}`,
+            score: v[field] || 0,
+            totalScore: v.totalScore || 0,
+            correct: v.totalCorrect || 0,
+            streak: v.dailyStreak || 0,
+            answered: v.totalAnswered || 0,
+            photoURL: v.photoURL || null,
+            avatarId: v.avatarId || null,
+            unvonTier: v.achievements?.unvonTier || 0,
+          };
+        });
+      }
+
+      if (!dryRun) {
+        await db.collection('settings').doc('leaderboard').set(snapshot);
+      }
+      results.leaderboard = {
+        all: snapshot.boards.all.length,
+        weekly: snapshot.boards.weekly.length,
+        monthly: snapshot.boards.monthly.length,
+      };
+    } catch (e) {
+      // Reyting — ikkinchi darajali. Yiqilsa mijoz jonli so'rovga tushadi
+      // (bugungi xatti-harakat), ya'ni foydalanuvchi hech narsa sezmaydi.
+      results.errors.push(`Reyting snapshot: ${e.message}`);
     }
 
   } catch (err) {

@@ -35,7 +35,7 @@ import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
 import { getStorage } from 'firebase-admin/storage';
-import { parseServiceAccount, extractBearer } from './_shared.js';
+import { parseServiceAccount, extractBearer, rateLimit, clientIp } from './_shared.js';
 
 // Bepul sinov muddati — src/config.js dagi FREE_TRIAL_DAYS bilan bir xil
 // bo'lishi SHART (config.js import.meta.env ishlatgani uchun bu yerga
@@ -108,6 +108,30 @@ export default async function handler(req, res) {
     const db = boot();
     const decodedToken = await getAuth().verifyIdToken(idToken);
     const uid = decodedToken.uid;
+
+    // ── Rate limit ────────────────────────────────────────────────────────
+    // AUDIT 2026-08-17, X-6 BAND: bu — butun tizimdagi ENG QIMMAT operatsiya
+    // (2.5 MB Storage yuklab olish + funksiya xotirasi + chiquvchi trafik),
+    // va u yagona himoyasiz endpoint edi. `rateLimit` loyihada allaqachon bor
+    // va 6 ta arzonroq endpointda ishlatilgan — bu yerda yo'q edi.
+    //
+    // Limitlar nega shunday: halol foydalanuvchi paketni fan boshiga BIR
+    // MARTA oladi (keyin localforage'dan, `dbVersion` o'zgarmaguncha). 16 ta
+    // fan bor, ya'ni eng faol holatda ham soatiga 16 tadan oshmaydi.
+    // Soatiga 20 dan ortiq so'rov = kesh ishlamayapti yoki bazani so'rib
+    // olayotgan skript. IP limiti kengroq — bitta maktab/NAT ortida
+    // o'nlab halol foydalanuvchi bo'lishi mumkin.
+    //
+    // Tekshiruv token TASDIQLANGANDAN KEYIN turadi: kalit sifatida `uid`
+    // kerak, va tasdiqlanmagan so'rov baribir 401 bilan qaytadi.
+    if (rateLimit(`qb:uid:${uid}`, 20, 3600_000).limited) {
+      res.setHeader('Retry-After', '3600');
+      return res.status(429).json({ error: 'Too Many Requests' });
+    }
+    if (rateLimit(`qb:ip:${clientIp(req)}`, 60, 3600_000).limited) {
+      res.setHeader('Retry-After', '3600');
+      return res.status(429).json({ error: 'Too Many Requests' });
+    }
 
     let userData = {};
     const userSnap = await db.collection('users').doc(uid).get();

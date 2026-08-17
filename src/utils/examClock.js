@@ -35,13 +35,48 @@ export function deadlineFromSession(s, now = Date.now()) {
 }
 
 /**
- * Saqlangan sessiyada hali vaqt qolganmi (tiklashga arziydimi).
- * Vaqti tugagan sessiya tiklanmasligi kerak: aks holda foydalanuvchi ochilgan
- * zahoti avto-yakunlanadigan imtihonga tushib qolardi.
+ * Saqlangan sessiyada hali vaqt qolganmi — ya'ni uni DAVOM ETTIRISH mumkinmi.
  */
 export function sessionHasTime(s, now = Date.now()) {
   const d = deadlineFromSession(s, now);
   return !!d && d - now > 0;
+}
+
+/** Muddati o'tgan sessiya bu muddatdan eski bo'lsa — tiklanmaydi. */
+export const STALE_SESSION_MS = 7 * 24 * 60 * 60 * 1000;
+
+/**
+ * Muddati o'tgan sessiyani YAKUNLASH kerakmi?
+ *
+ * ⚠️ AUDIT 2026-08-17, X-4 BAND — nega bu funksiya bor:
+ *   Avval `sessionHasTime(s)` false bo'lsa sessiya JIMGINA tashlab
+ *   yuborilardi — `else` shoxi umuman yo'q edi. Real ssenariy: odam 50
+ *   savolli imtihonda 45 tasiga javob berdi, 4 daqiqa qoldi, telefon
+ *   quvvati tugadi. 10 daqiqadan keyin quvvatlab ochadi — deadline o'tib
+ *   ketgan, sessiya yaroqsiz deb topiladi va 45 ta javob IZSIZ yo'qoladi.
+ *   Ekranda «Imtihonni boshlash» turadi, hech qanday tushuntirishsiz.
+ *
+ *   To'g'ri xatti-harakat: vaqti tugagan imtihon O'CHIRILMAYDI, YAKUNLANADI.
+ *   Haqiqiy imtihonda ham vaqt tugasa varaq yig'ib olinadi, yirtilmaydi.
+ *
+ * Ikkita chegara qo'yiladi:
+ *   · javob YO'Q bo'lsa — saqlaydigan narsa ham yo'q, jim o'chiriladi
+ *     (aks holda foydalanuvchi sababsiz 0 ballik natija ekranini ko'rardi);
+ *   · juda eski sessiya (> 7 kun) yakunlanmaydi — bir oy oldin tashlab
+ *     ketilgan imtihonning to'satdan natijaga aylanishi foydalanuvchi uchun
+ *     tushunarsiz bo'lardi. 7 kun «telefon o'chdi, zaryadlagich ertasiga
+ *     topildi» holatini bemalol qoplaydi.
+ *
+ * @param {object|null} s   Saqlangan sessiya
+ * @param {number} [now]    Hozirgi vaqt (testda in'ektsiya qilinadi)
+ */
+export function shouldFinalizeExpired(s, now = Date.now()) {
+  if (!s || sessionHasTime(s, now)) return false;
+  const answered = Object.keys(s.answers || {}).length;
+  if (answered === 0) return false;
+  const stamp = Number.isFinite(s.savedAt) ? s.savedAt : deadlineFromSession(s, now);
+  if (!Number.isFinite(stamp)) return false;
+  return now - stamp <= STALE_SESSION_MS;
 }
 
 /**

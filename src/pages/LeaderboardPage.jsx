@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Crown, Medal, Trash2, AlertTriangle } from 'lucide-react';
 import {
   collection, query, orderBy, limit, getDocs,
-  doc, where, getCountFromServer, deleteDoc, documentId
+  doc, getDoc, where, getCountFromServer, deleteDoc, documentId
 } from 'firebase/firestore';
 import { db } from '../firebase';
 import { avatarUrl } from '../data/avatars';
@@ -39,6 +39,23 @@ const farmFlags = (e, t) => {
 // shart emas. Foydalanuvchi sahifani qayta yuklasa (yoki pull-to-refresh
 // qilsa) kesh chetlab o'tiladi — "yangilanmayapti" hissi qolmaydi.
 const LB_CACHE_TTL = 5 * 60 * 1000;
+
+// ── Server snapshot'i (o'qish byudjeti, 2-bosqich) ─────────────────────────
+// `api/cron-daily.js` reytingni oldindan hisoblab `settings/leaderboard` ga
+// yozadi. Undan o'qish — 1 O'QISH, jonli so'rov esa 50 ta.
+//   400 foydalanuvchi:     20 000 → ~400 o'qish/kun
+//  50 000 foydalanuvchi: 2 500 000 →  50 000 o'qish/kun
+//
+// ⚠️ SNAPSHOT FAQAT «YANGI» BO'LSA ISHLATILADI. Cron hozir kuniga BIR MARTA
+// ishlaydi (`vercel.json`: `0 6 * * *`), ya'ni snapshot kun davomida eskiradi.
+// Eskirganini ko'rsatsak reyting qotib qolgandek bo'lardi — foydalanuvchi
+// ball yig'adi, taxta esa qimirlamaydi. Shuning uchun eskirgan snapshot
+// E'TIBORSIZ qoldiriladi va avvalgi jonli so'rov ishlaydi.
+//
+// Ya'ni BUGUN xatti-harakat o'zgarmaydi. Cron chastotasi oshirilganda
+// (masalan Vercel Pro'da `*/15 * * * *`) tejash O'Z-O'ZIDAN yoqiladi —
+// bu faylga qayta tegish shart emas.
+const SNAPSHOT_MAX_AGE = 30 * 60 * 1000;
 
 /** Sahifa qayta yuklanganmi (F5 / pull-to-refresh)? Unda kesh chetlab o'tiladi. */
 const isReload = () => {
@@ -117,8 +134,32 @@ const LeaderboardPage = () => {
 
     const load = async () => {
       try {
-        // ── 1) Top-50: keshdan (0 o'qish) yoki bazadan (50 o'qish) ──
+        // ── 1) Top-50: keshdan (0) → server snapshot'idan (1) → bazadan (50) ──
         let results = isReload() ? null : readLbCache(cacheKey);
+
+        if (!results) {
+          // Server snapshot'i — yangi bo'lsa 50 ta o'qishni 1 taga almashtiradi.
+          try {
+            const snapDoc = await getDoc(doc(db, 'settings', 'leaderboard'));
+            if (cancelled) return;
+            const data = snapDoc.exists() ? snapDoc.data() : null;
+            const age = data?.updatedAt ? Date.now() - new Date(data.updatedAt).getTime() : Infinity;
+            const rows = data?.boards?.[boardType];
+            // Hafta/oy taxtasi uchun snapshot AYNAN shu davrniki bo'lishi shart:
+            // o'tgan haftaning ro'yxatini «joriy hafta» deb ko'rsatish — yolg'on.
+            const periodOk =
+              boardType === 'all' ? true
+                : boardType === 'weekly' ? data?.weekId === weekId
+                  : data?.monthId === monthId;
+            if (Array.isArray(rows) && age <= SNAPSHOT_MAX_AGE && periodOk) {
+              results = rows;
+              writeLbCache(cacheKey, results);
+            }
+          } catch {
+            // Snapshot ixtiyoriy — yiqilsa jonli so'rovga tushamiz.
+          }
+        }
+
         if (!results) {
           const snap = await getDocs(
             query(collection(db, 'userStats'), orderBy(scoreField, 'desc'), limit(50))

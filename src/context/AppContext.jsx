@@ -4,6 +4,7 @@ import { MAX_MISTAKES_SAVED, EXAM_GOAL_SCORE, BATCH_SIZE } from '../config';
 import { computeDiagnostics, avgSecondsPerQuestion } from '../engine/DiagnosticsEngine';
 import { MAX_SPACED_CARDS, questionKey } from '../engine/SmartQuestionEngine';
 import { readContract, questionsForMinutes } from '../services/studyContract';
+import { mergePartnerSets } from '../utils/mergeRules';
 import { db } from '../firebase';
 import { AuthContext } from './AuthContext';
 import { ToastContext } from './ToastContext';
@@ -205,6 +206,22 @@ const loadLocalBackup = async (uid) => {
 // Bulut va lokal zaxirani birlashtirish — qurilma almashganda "last-write-wins"
 // hisoblagichlarni o'chirib yubormasligi uchun monoton qiymatlar bo'yicha max() olinadi.
 // resetAt guard: ataylab reset qilingan statistikani eski lokal nusxa "tiriltirmasligi" kerak.
+//
+// ═══════════════════════════════════════════════════════════════════════════
+//  ⚠️ QOIDA — YANGI STATE MAYDONI QO'SHSANGIZ, SHU YERGA HAM QOIDA YOZING.
+//
+//  Funksiya `merged = { ...cloud }` bilan boshlanadi. Ya'ni bu yerda ATAYLAB
+//  ishlov berilmagan HAR QANDAY maydon uchun bulut nusxasi so'zsiz g'olib
+//  bo'ladi — oflayn qilingan ish jimgina yo'qoladi. Bu xato allaqachon
+//  IKKI MARTA sodir bo'lgan: T-15 (`spacedCards`) va X-2 (`partnerSets`).
+//
+//  Qoidani tanlash:
+//    · hisoblagich (faqat o'sadi) ......... Math.max()
+//    · to'plam/ro'yxat .................... union + ziddiyat qoidasi
+//    · hodisa yozuvi (o'zgarmas) .......... union + eng ERTA vaqt g'olib
+//    · vaqt kesimidagi baho ............... yangiroq `updatedAt` g'olib
+//  Nozik qoidalar `utils/mergeRules.js` da, testi bilan.
+// ═══════════════════════════════════════════════════════════════════════════
 const mergeCloudAndLocal = (cloud, local) => {
   if (!local) return cloud;
   if (cloud.resetAt && (local.savedAt || 0) < cloud.resetAt) return cloud;
@@ -263,6 +280,25 @@ const mergeCloudAndLocal = (cloud, local) => {
     totalTime: Math.max(cloud.timeStats?.totalTime || 0, local.timeStats?.totalTime || 0),
     totalQuestions: Math.max(cloud.timeStats?.totalQuestions || 0, local.timeStats?.totalQuestions || 0)
   };
+
+  // ⚠️ AUDIT 2026-08-17, X-2 BAND — `partnerSets` BIRLASHTIRILMASDI.
+  // `merged = {...cloud}` tufayli bulut nusxasi butunlay g'olib edi, ya'ni
+  // haftalik diagnostika natijasi FAQAT lokal zaxirada qolgan bo'lsa
+  // jimgina yo'qolardi. Real ssenariy:
+  //   o'qituvchi maktabda, internet zaif → to'plamni yechadi (42/50) →
+  //   natija localStorage'ga tushadi, bulutga YETMAYDI → ilovani yopadi →
+  //   ertasiga ochadi → bulutdagi bo'sh `partnerSets` g'olib bo'ladi.
+  // Oqibati IKKI KARRA: ustoz hisobotida bu odam "yechmagan" bo'lib
+  // ko'rinadi VA keyingi hafta ochilmay qoladi — bu yozuv qulfni ochadigan
+  // kalit ham (ExamPage.jsx: «Shu yozuv AYNI PAYTDA keyingi haftani
+  // ochadigan kalit ham»).
+  //
+  // Bu T-15 (`spacedCards`) bilan AYNI SINFDAGI xato: `partnerSets` keyinroq
+  // qo'shilgani uchun merge qoidasi yozilmay qolgan.
+  //
+  // Qoida `utils/mergeRules.js` da — sof funksiya, testi bilan.
+  const mergedSets = mergePartnerSets(cloud.partnerSets, local.partnerSets);
+  if (mergedSets) merged.partnerSets = mergedSets;
 
   // ⚠️ AUDIT 2026-08-06, T-15 BAND — `spacedCards` va `customMnemonics`
   // BIRLASHTIRILMASDI: `merged = {...cloud}` tufayli bulut nusxasi g'olib edi.
@@ -613,6 +649,9 @@ export const AppProvider = ({ children }) => {
   const saveTimerRef = useRef(null);
   const localTimerRef = useRef(null);
   const flushSaveRef = useRef(null);
+  // X-1: bulutga yozuv tasdiqlanmagan bo'lsa `true` turadi
+  const pendingCloudRef = useRef(false);
+  const retryCloudRef = useRef(null);
 
   useEffect(() => {
     if (!user || !cloudSynced) return;
@@ -636,12 +675,36 @@ export const AppProvider = ({ children }) => {
       localforage.setItem(userKey, serialized).catch(() => {});
     };
 
+    // ⚠️ AUDIT 2026-08-17, X-1 BAND — bu yozuv `.catch(console.error)` bilan
+    // tugardi: muvaffaqiyat TEKSHIRILMASDI va qayta urinish YO'Q edi.
+    // Firestore keshi ataylab XOTIRADA (`firebase.js` — IndexedDB nosozliklari
+    // sababli), demak SDK ning kutilayotgan yozuvlar navbati ham xotirada:
+    // ilova yopilsa u yo'qoladi. Ya'ni «oflayn yozuv keyin o'zi ketadi» degan
+    // kafolat YO'Q.
+    //
+    // Ikki qatlamli himoya qo'yildi:
+    //   1) `pendingCloudRef` — yozuv tasdiqlanmaguncha yoqilgan turadi va
+    //      pastdagi effekt tarmoq qaytganda / ilova ko'rinadigan bo'lganda
+    //      qayta uradi. `merge: true` bilan takroriy yozuv idempotent.
+    //   2) Ilova baribir yopilib ketsa — lokal zaxira va `mergeCloudAndLocal`
+    //      keyingi kirishda tiklaydi (shu sababli merge qoidalari MUHIM).
     const writeCloudNow = () => {
       saveTimerRef.current = null;
       const statRef = doc(db, 'userStats', user.uid);
-      setDoc(statRef, prepareStatsForSave(state, user), { merge: true }).catch(console.error);
+      const uidAtWrite = user.uid;
+      pendingCloudRef.current = true;
+      setDoc(statRef, prepareStatsForSave(state, user), { merge: true })
+        .then(() => {
+          // Hisob almashgan bo'lsa bu javob eskirgan — bayroqqa tegmaymiz.
+          if (userRef.current?.uid === uidAtWrite) pendingCloudRef.current = false;
+        })
+        .catch(err => {
+          // Bayroq YOQILGAN qoladi → qayta urinish effekti ko'taradi.
+          console.error('userStats yozilmadi (qayta uriniladi):', err);
+        });
       touchUserActivity(user.uid);
     };
+    retryCloudRef.current = writeCloudNow;
 
     // Ikkala kutilayotgan yozuvni ham darhol bajaradi (visibilitychange uchun)
     flushSaveRef.current = () => {
@@ -663,15 +726,51 @@ export const AppProvider = ({ children }) => {
     };
   }, [state, user, cloudSynced]);
 
-  // ─── 2b. Ilova yashirilganda kutilayotgan yozuvni DARHOL bajarish ───
+  // ─── 2b. Ilova yopilayotganda kutilayotgan yozuvni DARHOL bajarish ───
   // Mobil PWA foydalanuvchilari ilovani debounce tugashidan oldin yopadi —
   // oxirgi natijalar yo'qolmasligi uchun IKKALA yozuvni ham flush qilamiz.
+  //
+  // ⚠️ AUDIT 2026-08-17, X-1 BAND — `pagehide` QO'SHILDI. `visibilitychange`
+  // ko'p holatni qoplaydi, lekin iOS Safari/PWA da ilova bfcache'ga tushganda
+  // yoki tizim uni o'ldirganda u ISHONCHLI EMAS — `pagehide` esa shu yo'lda
+  // ham yonadi. Ikkalasi birga: `flushSaveRef` idempotent (kutilayotgan
+  // taymer bo'lmasa hech nima qilmaydi), shuning uchun ikki marta yonishi zararsiz.
   useEffect(() => {
+    const flush = () => flushSaveRef.current?.();
     const onVisibilityChange = () => {
-      if (document.visibilityState === 'hidden') flushSaveRef.current?.();
+      if (document.visibilityState === 'hidden') flush();
     };
     document.addEventListener('visibilitychange', onVisibilityChange);
-    return () => document.removeEventListener('visibilitychange', onVisibilityChange);
+    window.addEventListener('pagehide', flush);
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      window.removeEventListener('pagehide', flush);
+    };
+  }, []);
+
+  // ─── 2c. Tasdiqlanmagan bulut yozuvini QAYTA URINISH (X-1) ───
+  // Avval yozuv bir marta yuborilib, natijasi umuman tekshirilmasdi. Endi
+  // tasdiqlanmagan yozuv uchta signalda qayta uriniladi: tarmoq qaytganda,
+  // ilova ko'rinadigan bo'lganda va davriy (backoff'siz — yozuv idempotent
+  // va daqiqada bir marta, ya'ni arzon).
+  useEffect(() => {
+    const retry = () => {
+      if (!pendingCloudRef.current) return;
+      // `navigator.onLine === false` — ishonchli "yo'q" signali. `true` esa
+      // kafolat emas (Wi-Fi bor, internet yo'q), shuning uchun unga tayanmaymiz:
+      // urinib ko'ramiz, muvaffaqiyatsiz bo'lsa bayroq yoqilgan qoladi.
+      if (typeof navigator !== 'undefined' && navigator.onLine === false) return;
+      retryCloudRef.current?.();
+    };
+    const onVisible = () => { if (document.visibilityState === 'visible') retry(); };
+    window.addEventListener('online', retry);
+    document.addEventListener('visibilitychange', onVisible);
+    const iv = setInterval(retry, 60_000);
+    return () => {
+      window.removeEventListener('online', retry);
+      document.removeEventListener('visibilitychange', onVisible);
+      clearInterval(iv);
+    };
   }, []);
 
   // useCallback — T-17: funksiya identifikatori barqaror bo'lmasa, pastdagi

@@ -507,6 +507,10 @@ const TestPage = () => {
           // Obuna talab qilinishi ANIQLANGAN bo'lsa, Firestore zaxirasini ham
           // sinamaymiz (u ham rules bilan yopilgan — foydasiz so'rov bo'lardi).
           let paywalled = false;
+          // AUDIT 2026-08-17, X-6 BAND: server 429 qaytarsa Firestore zaxirasiga
+          // TUSHMASLIK kerak. Zaxira fan boshiga ~2 900 o'qish — ya'ni limitni
+          // chetlab o'tib, aynan himoya qilinayotgan resursni yeb qo'yardi.
+          let throttled = false;
 
           {
             try {
@@ -520,6 +524,11 @@ const TestPage = () => {
                   paywalled = true;
                   showToast(t('test.toastPremiumRequired'), 'error');
                   setShowPremiumModal(true);
+                }
+                if (res.status === 429) {
+                  // Vaqtinchalik holat, obuna muammosi emas.
+                  throttled = true;
+                  showToast(t('test.toastServerBusy'), 'error');
                 }
                 throw new Error('Server error: ' + res.status);
               }
@@ -555,7 +564,7 @@ const TestPage = () => {
           // `q.category === activeCategory` va `validTopicIds.includes(q.topicId)`
           // filtrlari qo'llanadi, ya'ni ikkala yo'l ham (topicId ∈ fan) ∧ (category = fan)
           // kesishmasini beradi. Faqat so'rovlar soni kamayadi.
-          if ((!rawList || rawList.length === 0) && !paywalled) {
+          if ((!rawList || rawList.length === 0) && !paywalled && !throttled) {
             console.warn("Bundle yuklanmadi — Firestore dan fan bo'yicha o'qilmoqda...");
             try {
               const qRef = collection(db, 'questions');

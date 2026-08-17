@@ -59,8 +59,31 @@ export const PAYMENT_TG_URL = SUPPORT_URL;
 export const BATCH_SIZE = 50; // Har bir blokdagi savollar soni
 export const MAX_MISTAKES_SAVED = 50; // Maksimal saqlanadigan xatolar soni
 
-// Tugallanmagan imtihon sessiyasi localforage kaliti — ExamPage yozadi/tiklaydi,
-// Dashboard "Davom etish" kartasi shu kalitni o'qiydi (magic-string ikkilanmasin)
+// ── Tugallanmagan imtihon sessiyasi (localforage) ──────────────────────────
+//
+// ⚠️ AUDIT 2026-08-17, X-7 BAND — yozuv IKKIGA AJRATILDI.
+//   Avval hammasi bitta `exam_session_v1` kalitida edi va u HAR javobda
+//   qayta yozilardi — savollar massivi bilan birga. 50 savollik imtihonda
+//   ≈ 60 yozuv × ~80 KB ≈ 5 MB keraksiz IndexedDB trafigi.
+//   Bu AYNAN o'sha IndexedDB qatlami: `firebase.js` izohiga ko'ra 47 ta xato
+//   jurnalining sababi bo'lgan va `persistentLocalCache` dan voz kechishga
+//   majbur qilgan qatlam. Uni imtihon davomida bosim ostida ushlab turish —
+//   tuzatilgan nosozlikni qaytarish xavfi.
+//
+//   Yechim TestPage.jsx dagi bilan bir xil (u 2026-08-17 da shunday tuzatilgan):
+//     · hovuz  — og'ir, BIR MARTA yoziladi;
+//     · progress — yengil (~3 KB), har javobda.
+//   `poolStamp` ikkalasini bog'laydi: hovuz almashib progress eski qolsa,
+//   javoblar boshqa savollarga yopishib qolmasligi uchun.
+//
+//   Kalitlar `uid` bo'yicha ajratilgan — umumiy qurilmada (maktab kompyuteri)
+//   sessiyalar aralashmasligi uchun (T-21/X-10 bilan bir xil mulohaza).
+export const examPoolKey = (uid) => `exam_pool_${uid}`;
+export const examSessionKey = (uid) => `exam_session_${uid}`;
+
+// Eski YAGONA kalit. Faqat ikki narsa uchun kerak:
+//   1) migratsiya — yangilanish paytida yarim qolgan imtihon yo'qolmasligi;
+//   2) tozalash — ichida savollar massivi qolib ketgan bo'lishi mumkin.
 export const EXAM_SESSION_KEY = 'exam_session_v1';
 
 

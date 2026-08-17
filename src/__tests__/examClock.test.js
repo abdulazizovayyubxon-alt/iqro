@@ -5,6 +5,8 @@ import {
   sessionSecondsLeft,
   secondsUntil,
   formatExamTime,
+  shouldFinalizeExpired,
+  STALE_SESSION_MS,
 } from '../utils/examClock';
 
 // Barcha testlar `now` ni ATAYLAB in'ektsiya qiladi: vaqtga bog'liq test
@@ -135,5 +137,74 @@ describe('formatExamTime', () => {
     expect(formatExamTime(null)).toBe('00:00');
     expect(formatExamTime(undefined)).toBe('00:00');
     expect(formatExamTime(NaN)).toBe('00:00');
+  });
+});
+
+// ════════════════════════════════════════════════════════════════════════════
+//  X-4 BANDI — muddati o'tgan sessiya YO'QOTILMAYDI, yakunlanadi.
+//
+//  Bu testlar aniq bir foydalanuvchi zararini qo'riqlaydi: 45 ta javob berilgan
+//  imtihon telefon quvvati tugagani sababli izsiz yo'qolardi.
+// ════════════════════════════════════════════════════════════════════════════
+
+describe('shouldFinalizeExpired', () => {
+  const bilanJavob = (n) => Object.fromEntries(
+    Array.from({ length: n }, (_, i) => [i, 1])
+  );
+
+  it('vaqti QOLGAN sessiya yakunlanmaydi — u davom ettiriladi', () => {
+    const s = { deadlineMs: NOW + 60_000, answers: bilanJavob(10), savedAt: NOW - 1000 };
+    expect(shouldFinalizeExpired(s, NOW)).toBe(false);
+  });
+
+  it('muddati o\'tgan va javoblari bor — YAKUNLANADI (asosiy holat)', () => {
+    // Telefon quvvati tugadi, 10 daqiqadan keyin ochildi.
+    const s = {
+      deadlineMs: NOW - 10 * 60_000,
+      answers: bilanJavob(45),
+      savedAt: NOW - 11 * 60_000,
+    };
+    expect(shouldFinalizeExpired(s, NOW)).toBe(true);
+  });
+
+  it('javob YO\'Q bo\'lsa yakunlanmaydi — saqlaydigan narsa yo\'q', () => {
+    // Aks holda foydalanuvchi sababsiz 0 ballik natija ekranini ko'rardi.
+    const s = { deadlineMs: NOW - 60_000, answers: {}, savedAt: NOW - 120_000 };
+    expect(shouldFinalizeExpired(s, NOW)).toBe(false);
+  });
+
+  it('7 kundan eski sessiya yakunlanmaydi', () => {
+    const s = {
+      deadlineMs: NOW - 8 * 86_400_000,
+      answers: bilanJavob(45),
+      savedAt: NOW - 8 * 86_400_000,
+    };
+    expect(shouldFinalizeExpired(s, NOW)).toBe(false);
+  });
+
+  it('roppa-rosa 7 kunlik chegara — HALI yakunlanadi (inklyuziv)', () => {
+    const s = {
+      deadlineMs: NOW - STALE_SESSION_MS,
+      answers: bilanJavob(3),
+      savedAt: NOW - STALE_SESSION_MS,
+    };
+    expect(shouldFinalizeExpired(s, NOW)).toBe(true);
+  });
+
+  it('`savedAt` yo\'q eski yozuvda deadline zaxira sifatida ishlatiladi', () => {
+    const s = { deadlineMs: NOW - 60_000, answers: bilanJavob(5) };
+    expect(shouldFinalizeExpired(s, NOW)).toBe(true);
+  });
+
+  it('sessiya yo\'q / vaqt maydoni yo\'q — yakunlanmaydi', () => {
+    expect(shouldFinalizeExpired(null, NOW)).toBe(false);
+    expect(shouldFinalizeExpired({ answers: bilanJavob(5) }, NOW)).toBe(false);
+  });
+
+  it('eski `timeLeft` formatidagi tugagan sessiya ham yakunlanadi', () => {
+    // Migratsiya: `timeLeft: 0` → deadline yo'q, lekin javoblar bor.
+    // `deadlineFromSession` 0 uchun null qaytaradi, demak `savedAt` hal qiladi.
+    const s = { timeLeft: 0, answers: bilanJavob(20), savedAt: NOW - 60_000 };
+    expect(shouldFinalizeExpired(s, NOW)).toBe(true);
   });
 });

@@ -30,7 +30,8 @@ import {
 import SubjectTopicChips, { BlockRow } from '../components/SubjectTopicChips';
 import { motion } from 'framer-motion';
 import localforage from 'localforage';
-import { EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY, isPlayBuild } from '../config';
+import { EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY, examSessionKey, isPlayBuild } from '../config';
+import { sessionHasTime, sessionSecondsLeft, formatExamTime } from '../utils/examClock';
 import { useStudyContract } from '../hooks/useStudyContract';
 import { targetQuestions } from '../services/studyContract';
 import { db } from '../firebase';
@@ -41,12 +42,10 @@ import { doc, getDoc } from 'firebase/firestore';
 const DEFAULT_PRICE_FROM = Math.round(240000 / (12 * 30));
 const perDayOf = (p) => (p?.price > 0 && p?.durationMonths > 0)
   ? Math.round(p.price / (p.durationMonths * 30)) : null;
-// MM:SS yoki HH:MM:SS — ExamPage formatTime bilan bir xil ko'rinish
-const fmtClock = (secs) => {
-  const h = Math.floor(secs / 3600), m = Math.floor((secs % 3600) / 60), s = secs % 60;
-  const pad = (n) => String(n).padStart(2, '0');
-  return h > 0 ? `${pad(h)}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
-};
+// MM:SS yoki HH:MM:SS — nusxa emas, ExamPage bilan AYNI funksiya.
+// (Avval bu yerda o'z nusxasi turardi; ikkita nusxa ikki xil formatga
+// ajrab ketishi mumkin va X-9 aynan shunday ajralishdan kelib chiqqan.)
+const fmtClock = formatExamTime;
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -118,17 +117,38 @@ const Dashboard = () => {
   }, []);
 
   // Tugallanmagan imtihon (ExamPage localforage'ga yozadi) — "Davom etish" kartasi.
-  // Faqat shu foydalanuvchiniki, savollari bor va vaqti tugamagan sessiya ko'rsatiladi.
+  //
+  // ⚠️ AUDIT 2026-08-17, X-9 BAND — bu shart `s.timeLeft > 0` edi, ya'ni ESKI
+  // formatga bog'lanib qolgan. ExamPage 2026-08-17 dan beri qoldiq soniyani
+  // emas, `deadlineMs` (mutlaq nuqta) saqlaydi — `s.timeLeft` endi `undefined`,
+  // `undefined > 0` esa `false`. Natijada bu banner HECH QACHON ko'rinmay
+  // qolgan va tugallanmagan imtihonga qaytishning asosiy yo'li o'lgan
+  // (`fmtClock(undefined)` ham NaN chiqarardi).
+  // Endi vaqt mantiqi YAGONA manbadan — `utils/examClock.js` dan olinadi,
+  // ya'ni format yana o'zgarsa bu joy o'z-o'zidan to'g'ri qoladi.
+  //
+  // ⚠️ AUDIT 2026-08-17, X-10 BAND — egalik sharti `(!s.uid || s.uid === user?.uid)`
+  // edi: `uid` YO'Q sessiya ISTALGAN hisobga ko'rsatilardi (javoblar soni bilan).
+  // Bu AYNAN T-21 bandi — ExamPage va TestPage da yopilgan, bu yerda qolgan
+  // uchinchi takrori. Endi egalik QAT'IY.
   useEffect(() => {
     let cancelled = false;
-    localforage.getItem(EXAM_SESSION_KEY)
-      .then(s => {
-        if (cancelled) return;
-        const valid = s && Array.isArray(s.questions) && s.questions.length > 0
-          && s.timeLeft > 0 && (!s.uid || s.uid === user?.uid);
-        setResumeSession(valid ? s : null);
-      })
-      .catch(() => {});
+    const uid = user?.uid;
+    if (!uid) { setResumeSession(null); return; }
+
+    (async () => {
+      // X-7: progress yozuvida savollar massivi YO'Q, faqat `total`.
+      // Eski yagona kalit — migratsiya uchun zaxira (ExamPage ochilganda
+      // ko'chiriladi; Dashboard undan oldin ochilishi mumkin).
+      const fresh = await localforage.getItem(examSessionKey(uid));
+      const s = fresh || await localforage.getItem(EXAM_SESSION_KEY);
+      if (cancelled) return;
+      const total = s?.total ?? (Array.isArray(s?.questions) ? s.questions.length : 0);
+      const valid = s && total > 0
+        && !!s.uid && s.uid === uid
+        && sessionHasTime(s);
+      setResumeSession(valid ? { ...s, total } : null);
+    })().catch(() => {});
     return () => { cancelled = true; };
   }, [user?.uid]);
 
@@ -283,8 +303,10 @@ const Dashboard = () => {
               <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', marginTop: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 {t('exam.resumeInfo', {
                   answered: Object.keys(resumeSession.answers || {}).length,
-                  total: resumeSession.questions.length,
-                  time: fmtClock(resumeSession.timeLeft)
+                  total: resumeSession.total,
+                  // Qoldiq vaqt deadline'dan HOZIR hisoblanadi: banner ekranda
+                  // turgan vaqt ham imtihon vaqtidan ketadi (X-9).
+                  time: fmtClock(sessionSecondsLeft(resumeSession))
                 })}
               </div>
             </div>

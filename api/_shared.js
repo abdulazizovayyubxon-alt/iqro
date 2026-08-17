@@ -184,6 +184,41 @@ export async function ensureShortIdAdmin(db, uid) {
   });
 }
 
+// ── Hafta / oy identifikatorlari ────────────────────────────────────────
+//
+// ⚠️ BU FUNKSIYALAR `src/context/AppContext.jsx` DAGILAR BILAN AYNI SATRNI
+// QAYTARISHI SHART. Ular `userStats` hujjatidagi MAYDON NOMI bo'ladi
+// (`weekly_2026_W33`, `monthly_2026_M08`). Bir belgi farq qilsa server
+// boshqa maydonni o'qiydi/yozadi va reyting jimgina bo'sh chiqadi.
+//
+// NEGA TOSHKENT VAQTI: mijozdagi nusxalar brauzerning MAHALLIY vaqtidan
+// foydalanadi (foydalanuvchilar O'zbekistonda, UTC+5), server esa UTC'da
+// ishlaydi. Siljitmasak, oyning 1-sanasida 00:00–05:00 (Toshkent) oralig'ida
+// server hali oldingi oyda bo'lardi va boshqa maydonga yozardi.
+// (`cron-daily.js` dagi `dayKey` ham aynan shu sabab +5 soat siljitiladi.)
+const TASHKENT_OFFSET_MS = 5 * 3600_000;
+const toTashkent = (date) => new Date(date.getTime() + TASHKENT_OFFSET_MS);
+
+/** ISO-8601 hafta raqami — `YYYY_Www` */
+export function getWeekId(date = new Date()) {
+  const tk = toTashkent(date);
+  // Mijozdagi nusxa mahalliy kalendar sanasini olib, uni UTC deb qaraydi.
+  // Bu yerda ham xuddi shunday: siljitilgan sananing UTC qismlari = Toshkent
+  // mahalliy sanasi.
+  const d = new Date(Date.UTC(tk.getUTCFullYear(), tk.getUTCMonth(), tk.getUTCDate()));
+  const dayNum = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+  return `${d.getUTCFullYear()}_W${String(weekNo).padStart(2, '0')}`;
+}
+
+/** Oy identifikatori — `YYYY_MM` */
+export function getMonthId(date = new Date()) {
+  const tk = toTashkent(date);
+  return `${tk.getUTCFullYear()}_M${String(tk.getUTCMonth() + 1).padStart(2, '0')}`;
+}
+
 // ── Kiritilgan matnni cheklash ──────────────────────────────────────────
 export const clip = (v, n) => (v == null ? null : String(v).slice(0, n));
 

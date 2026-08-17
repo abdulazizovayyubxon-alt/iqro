@@ -402,7 +402,8 @@
     "confirmTitle": "Finish the exam",
     "confirmText": "Are you sure you want to finish the exam? All marked answers will be saved.",
     "no": "No",
-    "yesFinish": "Yes, finish"
+    "yesFinish": "Yes, finish",
+    "toastAutoFinished": "Exam finished automatically — time ran out"
   },
   "review": {
     "toastLoadError": "Failed to load questions",

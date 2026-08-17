@@ -402,7 +402,8 @@
     "confirmTitle": "Imtihonni yakunlash",
     "confirmText": "Rostdan ham imtihonni yakunlamoqchimisiz? Barcha belgilangan javoblar saqlanadi.",
     "no": "Yo'q",
-    "yesFinish": "Ha, yakunlash"
+    "yesFinish": "Ha, yakunlash",
+    "toastAutoFinished": "Vaqt tugagani uchun imtihon avtomatik yakunlandi"
   },
   "review": {
     "toastLoadError": "Savollarni yuklashda xatolik",

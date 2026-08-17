@@ -9,7 +9,7 @@ import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { useAdmin } from '../hooks/useAdmin';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, Share2, GraduationCap, FileText, BookOpen, ClipboardList, Crosshair, History, Check, BadgeCheck, CalendarDays, Lock } from 'lucide-react';
+import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, Share2, GraduationCap, FileText, BookOpen, ClipboardList, Crosshair, Check, BadgeCheck, CalendarDays, Lock } from 'lucide-react';
 import { reconcileAchievements, nextMilestones } from '../data/tracks';
 import NextMilestoneLine from '../components/achievements/NextMilestoneLine';
 import { useMilestoneAction } from '../hooks/useMilestoneAction';
@@ -23,14 +23,14 @@ import SafeHtml from '../components/shared/SafeHtml';
 import QuestionMedia from '../components/QuestionMedia';
 import ExamTimer from '../components/test/ExamTimer';
 import {
-  deadlineFromSession, sessionHasTime, sessionSecondsLeft, formatExamTime,
+  deadlineFromSession, sessionHasTime, shouldFinalizeExpired,
 } from '../utils/examClock';
 import { db, auth } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { summarizeTestResults } from '../engine/SmartQuestionEngine';
 import { AnalyticsEvents } from '../services/analytics';
 import localforage from 'localforage';
-import { EXAM_SESSION_KEY } from '../config';
+import { EXAM_SESSION_KEY, examPoolKey, examSessionKey } from '../config';
 import { PED_BLOCK_TOTAL, isPedBlockTopic, EXAM_BLUEPRINT, hasBlueprint } from '../data/examBlueprint';
 import { useExitGuard } from '../hooks/useExitGuard';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
@@ -157,7 +157,6 @@ const ExamPage = () => {
   }, [state]);
   // «Keyingi bosqich» qatori bosilganda yo'nalishga mos harakat ochiladi
   const startMilestone = useMilestoneAction();
-  const [savedSession, setSavedSession] = useState(null); // tugallanmagan imtihon (resume)
   const [showObjectionModal, setShowObjectionModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [reviewMode, setReviewMode] = useState(false);
@@ -240,26 +239,56 @@ const ExamPage = () => {
   const committedRef = useRef(false);   // natija ikki marta yozilishidan himoya
   const resumingRef = useRef(false);    // resume'da savollar qayta yuklanmasligi uchun
   const sessionCheckedRef = useRef(false);
+  // Muddati o'tgan sessiya tiklandi — holat commit bo'lishi bilan yakunlanadi (X-4)
+  const finalizeOnRestoreRef = useRef(false);
 
-  // ── Sessiyani saqlash (resume) ──────────────────────────────────────────
-  // Faol imtihon holatini localforage'ga yozadi. Har javob/savol almashishida,
-  // ilova yashirilganda va har 30 soniyada yangilanadi.
+  // ── Sessiyani saqlash — IKKI KALITLI sxema (X-7) ────────────────────────
+  //
+  // Nega ajratilgan: to'liq izoh `config.js` da (`examPoolKey`). Qisqasi —
+  // savollar massivi har javobda qayta yozilardi (~5 MB/imtihon), va bu
+  // aynan `firebase.js` da hujjatlashtirilgan IndexedDB nosozliklarini
+  // keltirib chiqargan qatlamga bosim edi.
+  //
+  // ── Hovuz: BIR MARTA, savollar tayyor bo'lganda ──
+  // `poolStamp` — hovuzning kimligi. Progress yozuvi shu shtampni eslab
+  // qoladi; hovuz almashsa (yangi imtihon, boshqa hafta) shtamp o'zgaradi va
+  // eski progress yaroqsiz bo'ladi — javoblar boshqa savollarga yopishmaydi.
+  const poolStampRef = useRef(null);
+  useEffect(() => {
+    const uid = user?.uid;
+    if (!uid || questions.length === 0 || finished) return;
+    // Resume'da hovuz allaqachon diskda — qayta yozmaymiz.
+    if (poolStampRef.current) return;
+    const stamp = `${cat}:${examType}:${selectedSetId || '-'}:${Date.now()}`;
+    poolStampRef.current = stamp;
+    localforage.setItem(examPoolKey(uid), {
+      stamp,
+      // topicIcon/icon — React elementlari, IndexedDB ularni qabul qilmaydi
+      // (DataCloneError, butun yozuv rad etiladi). Saqlashdan oldin olib
+      // tashlaymiz, resume'da TOPICS'dan qayta biriktiriladi.
+      questions: questions.map(({ topicIcon, ...q }) => q),
+      topicGroups: topicGroups.map(({ icon, ...g }) => g),
+    }).catch(err => console.error('Imtihon hovuzini saqlashda xato:', err));
+  }, [user?.uid, questions, topicGroups, cat, examType, selectedSetId, finished]);
+
+  // ── Progress: har javobda, ~3 KB ──
   const persistRef = useRef(null);
   persistRef.current = () => {
-    if (!examStarted || finished || reviewMode || loading || questions.length === 0) return;
-    localforage.setItem(EXAM_SESSION_KEY, {
-      uid: user?.uid || null,
+    const uid = user?.uid;
+    if (!uid || !examStarted || finished || reviewMode || loading) return;
+    if (questions.length === 0 || !poolStampRef.current) return;
+    localforage.setItem(examSessionKey(uid), {
+      uid,
       cat,
       examType,
       // Haftalik rejimda to'plam ID'si ham saqlanadi: usiz yarim qolgan
       // imtihon davom ettirilib yakunlanganda natija HECH QAYERGA yozilmasdi
       // va keyingi hafta ochilmay qolardi.
       selectedSetId,
-      // topicIcon/icon — React elementlari, IndexedDB ularni qabul qilmaydi
-      // (DataCloneError, butun yozuv rad etiladi). Saqlashdan oldin olib
-      // tashlaymiz, resume'da TOPICS'dan qayta biriktiriladi.
-      questions: questions.map(({ topicIcon, ...q }) => q),
-      topicGroups: topicGroups.map(({ icon, ...g }) => g),
+      poolStamp: poolStampRef.current,
+      // Savollar soni — Dashboard "Davom etish" kartasi uchun. Massivning
+      // o'zi bu yerda YO'Q (yuqoridagi izoh), lekin kartaga faqat son kerak.
+      total: questions.length,
       answers,
       flagged,
       currentQ,
@@ -289,71 +318,137 @@ const ExamPage = () => {
   // Kirish oynasida vaqtinchalik saqlangan sessiyani avtomatik tiklash (Resume)
   useEffect(() => {
     if (examStarted || sessionCheckedRef.current) return;
+    const uid = user?.uid;
+    if (!uid) return;   // hisob hali yuklanmagan — keyingi renderda qayta uriniladi
     sessionCheckedRef.current = true;
-    localforage.getItem(EXAM_SESSION_KEY).then(s => {
+
+    (async () => {
+      // ── Progress + hovuz ──
+      // Progress yozuvida savollar YO'Q (X-7), ular hovuzdan olinadi.
+      let s = await localforage.getItem(examSessionKey(uid));
+      let pool = s ? await localforage.getItem(examPoolKey(uid)) : null;
+
+      // ── Migratsiya: eski YAGONA kalit ──
+      // Yangilanish aynan imtihon o'rtasida yetib kelsa, eski formatdagi
+      // yozuv yo'qolmasligi kerak — ichida savollar ham bor.
+      if (!s) {
+        const legacy = await localforage.getItem(EXAM_SESSION_KEY);
+        if (legacy && Array.isArray(legacy.questions) && legacy.questions.length > 0
+            && legacy.uid && legacy.uid === uid) {
+          const stamp = `legacy:${legacy.savedAt || 0}`;
+          s = { ...legacy, total: legacy.questions.length, poolStamp: stamp };
+          pool = { stamp, questions: legacy.questions, topicGroups: legacy.topicGroups || [] };
+          // Yangi kalitlarga KO'CHIRAMIZ, aks holda keyingi javobdan so'ng
+          // progress yangi kalitga yozilib, hovuz esa hech qayerda bo'lmasdi
+          // va imtihon keyingi ochilishda yo'qolardi.
+          await Promise.all([
+            localforage.setItem(examPoolKey(uid), pool),
+            localforage.setItem(examSessionKey(uid), s),
+          ]).catch(() => {});
+          localforage.removeItem(EXAM_SESSION_KEY).catch(() => {});
+        }
+      }
+
       // ⚠️ AUDIT 2026-08-06, T-21 BAND — avval shart `(!s.uid || s.uid === user?.uid)`
       // edi: `uid` YO'Q sessiya (masalan, `user` bir lahza null bo'lganda saqlangani)
       // ISTALGAN hisob tomonidan tiklanardi. Umumiy qurilmada bir o'qituvchi
       // boshqasining tugallanmagan imtihonini — javoblari bilan — ochib olardi.
       // Endi egalik QAT'IY: uid bo'lmasa yoki mos kelmasa, sessiya tiklanmaydi.
-      // Kamchiligi (juda kam holatda bitta sessiya yo'qolishi) maxfiylikdan arzon.
-      const valid = s && s.cat === cat && !!s.uid && !!user?.uid && s.uid === user.uid
-        && Array.isArray(s.questions) && s.questions.length > 0 && sessionHasTime(s);
-      if (valid) {
-        setQuestions(s.questions);
-        setTopicGroups(s.topicGroups || []);
-        setAnswers(s.answers || {});
-        setFlagged(s.flagged || {});
-        setCurrentQ(s.currentQ || 0);
-        setDeadlineMs(deadlineFromSession(s));
-        setExamType(s.examType || 'standard');
-        setSelectedSetId(s.selectedSetId || null);
-        setStartTimeMs(s.startTimeMs || Date.now());
-        questionTimesRef.current = s.questionTimes || {};
-        questionStartTimeRef.current = Date.now();
-        committedRef.current = false;
-        resumingRef.current = true;
-        setExamStarted(true);
+      // Egalik va yaxlitlik — VAQTDAN MUSTAQIL tekshiriladi.
+      const owned = s && s.cat === cat && !!s.uid && s.uid === uid
+        && pool && Array.isArray(pool.questions) && pool.questions.length > 0
+        // Shtamp mos kelmasa progress boshqa hovuzniki — javoblar begona
+        // savollarga yopishib qolmasligi uchun tiklamaymiz.
+        && pool.stamp === s.poolStamp;
+      if (!owned) return;
+
+      // ⚠️ AUDIT 2026-08-17, X-4 BAND — avval shart oxirida `sessionHasTime(s)`
+      // turardi va `else` shoxi YO'Q edi: muddati o'tgan sessiya jimgina
+      // tashlanardi, ya'ni 45 ta javob izsiz yo'qolardi (to'liq izoh:
+      // `utils/examClock.js` → `shouldFinalizeExpired`).
+      // Endi uch yo'l bor: davom ettirish → yakunlash → o'chirish.
+      const expired = !sessionHasTime(s);
+      if (expired && !shouldFinalizeExpired(s)) {
+        // Javobsiz yoki juda eski — saqlaydigan narsa yo'q, tozalaymiz.
+        clearSavedSession();
+        return;
       }
-    }).catch(e => console.error("Error restoring exam session:", e));
+
+      // Saqlashda olib tashlangan ikonkalarni TOPICS'dan qayta biriktiramiz
+      // (React elementlari IndexedDB'ga sig'maydi — yuqoridagi `persist` izohi).
+      // ⚠️ Bu avval FAQAT o'lik `resumeExam()` da bor edi: avto-tiklash yo'lida
+      // yo'qligi sababli sessiya tiklanganda bo'lim sarlavhalari ikonkasiz
+      // qolardi (`group.icon` — pastdagi render).
+      const catTopics = TOPICS.filter(tp =>
+        Array.isArray(tp.category) ? tp.category.includes(s.cat) : tp.category === s.cat
+      );
+      setQuestions(pool.questions.map(q => {
+        const topic = catTopics.find(tp => tp.id === q.topicId);
+        return { ...q, topicIcon: topic ? topic.icon : null };
+      }));
+      setTopicGroups((pool.topicGroups || []).map(g => {
+        const topic = catTopics.find(tp => tp.name === g.name);
+        return { ...g, icon: topic ? topic.icon : null };
+      }));
+      setAnswers(s.answers || {});
+      setFlagged(s.flagged || {});
+      setCurrentQ(s.currentQ || 0);
+      setDeadlineMs(deadlineFromSession(s));
+      setExamType(s.examType || 'standard');
+      setSelectedSetId(s.selectedSetId || null);
+      setStartTimeMs(s.startTimeMs || Date.now());
+      questionTimesRef.current = s.questionTimes || {};
+      questionStartTimeRef.current = Date.now();
+      committedRef.current = false;
+      resumingRef.current = true;
+      // Hovuz allaqachon diskda — yuqoridagi effekt uni qayta yozmasligi uchun.
+      poolStampRef.current = s.poolStamp;
+      // Yakunlash SHU YERDA chaqirilmaydi: `handleFinish` render paytidagi
+      // `questions`/`answers` ustida ishlaydi, ular esa hali commit bo'lmagan.
+      // Bayroq qo'yamiz, pastdagi effekt tiklanish TUGAGACH ishga tushiradi.
+      finalizeOnRestoreRef.current = expired;
+      setExamStarted(true);
+    })().catch(e => console.error("Error restoring exam session:", e));
   }, [cat, user?.uid, examStarted]);
 
+  // ── Muddati o'tgan sessiyani avto-yakunlash (X-4) ──
+  // Tiklangan holat commit bo'lgandan KEYIN ishlaydi, shuning uchun
+  // `handleFinish` to'g'ri javoblar ustida hisoblaydi.
+  //
+  // Eslatma: `ExamTimer` ham o'tib ketgan deadline'ni ko'rib `onExpire`
+  // chaqiradi — ya'ni ikkita yo'l bor. Bu ATAYLAB: `committedRef` ikki marta
+  // yozishdan himoya qiladi, va data-butunligi UI komponentining
+  // render bo'lishiga bog'lanib qolmaydi.
+  useEffect(() => {
+    if (!finalizeOnRestoreRef.current) return;
+    if (!examStarted || finished || questions.length === 0) return;
+    finalizeOnRestoreRef.current = false;
+    showToast(t('exam.toastAutoFinished'), 'info');
+    handleFinishRef.current?.(true);
+  }, [examStarted, finished, questions.length, showToast, t]);
+
+  // Imtihon yakunlandi / tashlandi — ikkala kalit ham tozalanadi.
+  // Hovuz ham o'chiriladi: aks holda ~80 KB yozuv hech kimga kerak bo'lmagan
+  // holda IndexedDB'da yotib qolardi (TestPage.jsx dagi bilan bir xil qoida).
   const clearSavedSession = () => {
+    const uid = user?.uid;
+    poolStampRef.current = null;
+    if (uid) {
+      localforage.removeItem(examSessionKey(uid)).catch(() => {});
+      localforage.removeItem(examPoolKey(uid)).catch(() => {});
+    }
     localforage.removeItem(EXAM_SESSION_KEY).catch(() => {});
-    setSavedSession(null);
   };
 
-  // Saqlangan sessiyadan davom ettirish — savollar qayta yuklanmaydi,
-  // javoblar, bayroqlar, joriy savol va qolgan vaqt aynan tiklanadi
-  const resumeExam = () => {
-    const s = savedSession;
-    if (!s) return;
-    // Saqlashda olib tashlangan ikonkalarni TOPICS'dan qayta biriktiramiz
-    const catTopics = TOPICS.filter(t =>
-      Array.isArray(t.category) ? t.category.includes(s.cat) : t.category === s.cat
-    );
-    setQuestions(s.questions.map(q => {
-      const topic = catTopics.find(t => t.id === q.topicId);
-      return { ...q, topicIcon: topic ? topic.icon : null };
-    }));
-    setTopicGroups((s.topicGroups || []).map(g => {
-      const topic = catTopics.find(t => t.name === g.name);
-      return { ...g, icon: topic ? topic.icon : null };
-    }));
-    setAnswers(s.answers || {});
-    setFlagged(s.flagged || {});
-    setCurrentQ(s.currentQ || 0);
-    setDeadlineMs(deadlineFromSession(s));
-    setExamType(s.examType || 'standard');
-    setSelectedSetId(s.selectedSetId || null);
-    setStartTimeMs(s.startTimeMs || Date.now());
-    questionTimesRef.current = s.questionTimes || {};
-    questionStartTimeRef.current = Date.now();
-    committedRef.current = false;
-    resumingRef.current = true;
-    setSavedSession(null);
-    setExamStarted(true);
-  };
+  // ⚠️ AUDIT 2026-08-17, X-4 BAND — bu yerda `resumeExam()` va u bilan
+  // bog'liq «Davom ettirish» kartochkasi turardi. Ikkalasi ham O'LIK KOD edi:
+  // `setSavedSession` faqat `null` bilan chaqirilardi, ya'ni `savedSession`
+  // hech qachon to'lmasdi va kartochka hech qachon ko'rinmasdi. Uning
+  // vazifasini yuqoridagi avtomatik tiklash effekti bajaradi (kartochkasiz,
+  // bir bosishsiz — foydalanuvchi to'g'ridan-to'g'ri imtihoniga qaytadi).
+  //
+  // Faqat bitta foydali qism bor edi — ikonkalarni TOPICS'dan qayta
+  // biriktirish — u avto-tiklash yo'liga ko'chirildi.
 
   const accumulateTime = () => {
     if (questionStartTimeRef.current) {
@@ -459,6 +554,10 @@ const ExamPage = () => {
         const localCategoryVersion = await localforage.getItem(versionKey);
         let allQ = await localforage.getItem(cacheKey);
         let paywalled = false;
+        // AUDIT 2026-08-17, X-6 BAND: server 429 qaytarsa Firestore zaxirasiga
+        // TUSHMASLIK kerak. Zaxira fan boshiga ~2 900 o'qish — ya'ni limitni
+        // chetlab o'tib, aynan himoya qilinayotgan resursni yeb qo'yardi.
+        let throttled = false;
 
         if (!allQ || localCategoryVersion !== remoteVersion) {
           // ⚠️ AUDIT 2026-08-05, 2-BAND — `settings/version.urls` dan
@@ -475,6 +574,7 @@ const ExamPage = () => {
             });
             if (!res.ok) {
               if (res.status === 403) paywalled = true;
+              if (res.status === 429) throttled = true;
               throw new Error(`api_${res.status}`);
             }
             // Dev muhitida /api/* ishlamaydi va HTML qaytaradi — Firestore zaxirasi bor
@@ -489,7 +589,7 @@ const ExamPage = () => {
             allQ = [];
           }
 
-          if ((!allQ || allQ.length === 0) && !paywalled) {
+          if ((!allQ || allQ.length === 0) && !paywalled && !throttled) {
             try {
               const { query, where, getDocs, collection } = await import('firebase/firestore');
               const qRef = collection(db, 'questions');
@@ -519,6 +619,14 @@ const ExamPage = () => {
           setLoading(false);
           showToast(t('test.toastPremiumRequired'), 'error');
           setShowPremiumModal(true);
+          return;
+        }
+
+        // Limit — vaqtinchalik holat, obuna muammosi emas. «Server band»
+        // matni shu holat uchun to'g'ri: foydalanuvchi keyinroq urinishi kerak.
+        if (throttled) {
+          setLoading(false);
+          showToast(t('test.toastServerBusy'), 'error');
           return;
         }
 
@@ -758,8 +866,6 @@ const ExamPage = () => {
     setExamStarted(false);
   };
 
-  const formatTime = formatExamTime;
-
   const handleSelect = (optIdx) => {
     if (finished) return;
     setAnswers(prev => ({ ...prev, [currentQ]: optIdx }));
@@ -867,22 +973,17 @@ const ExamPage = () => {
       confetti({ particleCount: 150, spread: 80, origin: { y: 0.5 } });
     }
 
-    // Telegramga natija — ID token bilan (server uid'ni TOKEN'dan oladi, tanaga ishonmaydi)
-    auth.currentUser?.getIdToken().then(token => {
-      if (!token) return;
-      fetch('/api/send-result', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({
-          correct,
-          wrong: questions.length - correct,
-          total: questions.length,
-          time: formatTime(Object.values(times).reduce((a, b) => a + b, 0)),
-          mode: examType === 'weak' ? 'Zaif mavzular imtihoni' : 'Standart Attestatsiya Imtihoni',
-          title: 'Barcha bo\'limlar'
-        })
-      }).catch(e => console.error(e));
-    }).catch(() => {});
+    // ⚠️ AUDIT 2026-08-17, X-8 BAND — bu yerda `fetch('/api/send-result', ...)`
+    // turardi, LEKIN `api/send-result.js` fayli mavjud emas. Bu AYNAN o'sha
+    // T-14 bandi bo'lib, TestPage.jsx da 2026-08-06 da olib tashlangan —
+    // ExamPage'ga qo'llanmay qolgan.
+    // `fetch` 404 da reject QILMAYDI va javob o'qilmasdi, shuning uchun xato
+    // hech qayerda ko'rinmasdi: «natijani Telegramga yuborish» hech qachon
+    // ishlamagan, har imtihon yakunida esa bekorga so'rov ketardi — aynan eng
+    // yomon lahzada (natija ekrani ochilayotganda, imtihon kuni hamma birdan).
+    // Funksiya kerak bo'lsa — Vercel funksiya chegarasi sababli YANGI endpoint
+    // emas, `notify-admin.js` ga `action=result` qo'shilishi kerak
+    // (naqsh: `action=delete-request`).
   };
   // Har renderda eng so'nggi handleFinish'ni ref'ga yozamiz — taymer avto-yakuni
   // (yuqoridagi interval) doim joriy `answers`/`questions` bilan ishlashi uchun.
@@ -974,38 +1075,6 @@ const ExamPage = () => {
             <span style={chipStyle}><Clock size={14} style={chipIconStyle} /> {t('exam.chipMinutes', { n: durationMin })}</span>
             {subjName && <span style={chipStyle}><BookOpen size={14} style={chipIconStyle} /> {subjName}</span>}
           </div>
-
-          {/* Tugallanmagan imtihon — davom ettirish taklifi */}
-          {savedSession && (
-            <div style={{
-              padding: '14px 16px', borderRadius: 14, marginBottom: 16, textAlign: 'left',
-              background: 'var(--bg2)', border: '1px solid var(--border)',
-              borderLeft: '3px solid var(--amber)'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                <History size={20} style={{ color: 'var(--amber)', flexShrink: 0 }} />
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: 'var(--fs-h4)', fontWeight: 700, color: 'var(--text)' }}>{t('exam.resumeTitle')}</div>
-                  <div style={{ fontSize: 'var(--fs-body-sm)', color: 'var(--text2)', marginTop: 2 }}>
-                    {t('exam.resumeInfo', {
-                      answered: Object.keys(savedSession.answers || {}).length,
-                      total: savedSession.questions.length,
-                      // Qoldiq vaqt deadline'dan HOZIR hisoblanadi: kartochka
-                      // ochilib turgan vaqt ham imtihon vaqtidan ketadi, ya'ni
-                      // ko'rsatilgan son haqiqatga mos bo'lishi kerak.
-                      time: formatTime(sessionSecondsLeft(savedSession))
-                    })}
-                  </div>
-                </div>
-              </div>
-              <button
-                onClick={resumeExam}
-                style={{ width: '100%', padding: '12px', background: 'var(--text)', color: 'var(--bg)', border: 'none', borderRadius: 10, fontSize: 'var(--fs-lg)', fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}
-              >
-                {t('exam.resume')}
-              </button>
-            </div>
-          )}
 
           {/* Rejim tanlash */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 20, textAlign: 'left' }}>
@@ -1121,7 +1190,7 @@ const ExamPage = () => {
             }}
             style={{ width: '100%', padding: '15px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 16, fontSize: 'var(--fs-xl)', fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
           >
-            {savedSession ? t('exam.startNew') : t('exam.start')}
+            {t('exam.start')}
           </motion.button>
         </div>
       </motion.div>
