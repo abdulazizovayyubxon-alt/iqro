@@ -240,6 +240,37 @@ rejasi to'liq ishlaydi.
    47 000 = butun kvota. Foydalanuvchi ko'payganda skriptlarni kechqurun
    ishlating yoki fanlarni kunlarga bo'ling.
 
+### 2.2.2. 🔴 HODISA — 2026-08-17: bashorat amalga oshdi
+
+Yuqoridagi ogohlantirish **nazariy emas ekan**. 2026-08-17, 21:17 UTC da
+`/api/health` shuni qaytardi:
+
+```json
+{ "ok": false, "firestore": "down", "firestoreError": "quota_exceeded",
+  "firestoreMs": 10526 }        // HTTP 503
+```
+
+Kunlik 50 000 o'qish kvotasi tugagan: reyting, statistika, bildirishnomalar
+HAMMA foydalanuvchi uchun UTC yarim tunigacha ishlamadi; keshi sovuq
+foydalanuvchilar savollarni ham yuklay olmadi (`settings/version` o'qilmaydi).
+
+**Sababi — ro'yxatdagi 2-band, aniqrog'i uning kuzatilmagan varianti.** Repo
+ildizida `find_exact_question.js` degan bir martalik skript yotgan edi:
+
+```js
+const snap = await getDocs(collection(db, 'questions'));   // 47 038 o'qish
+```
+
+Filtrsiz. Bitta ishga tushirish = kunlik kvotaning **94%**.
+
+**Tuzatildi:** skript zararsizlantirildi, o'rniga
+[scripts/find-question.mjs](scripts/find-question.mjs) — u lokal eksportdan
+qidiradi (0 o'qish), Firestore rejimi esa `--category` va `--yes` talab qiladi.
+
+**Sabot:** ogohlantirish hujjatda bor edi, lekin **kodda yo'q edi**. Hujjat
+o'qilmaydi, guard esa ishlaydi. Bundan keyin to'liq kolleksiyani o'qiydigan
+har qanday yangi skript shu naqshni takrorlasin — majburiy filtr + aniq tasdiq.
+
 ### 2.3. Qaror: avval O'LCHASH (2026-07-28 da tanlangan yo'l)
 
 Firebase Console → **Firestore Database** → **Usage** tabi → **Reads** grafigi.

@@ -7,6 +7,67 @@
 
 ---
 
+## 🔴 0.0. PRODUCTION HOLATI — 2026-08-17, 21:17 UTC
+
+Deploy tekshiruvi paytida `/api/health` **jonli nosozlikni** ko'rsatdi. Bu quyidagi
+auditning bashorati emas — **hozir sodir bo'layotgan hodisa**:
+
+```json
+{ "ok": false, "firestore": "down", "firestoreError": "quota_exceeded",
+  "firestoreMs": 10526, "questionsVersion": null, "region": "iad1",
+  "commit": "9a38c27" }          // HTTP 503
+```
+
+**Ma'nosi:** Firestore kunlik 50 000 o'qish kvotasi **tugagan**. Hozir har bir
+foydalanuvchi uchun reyting, statistika, bildirishnomalar ishlamaydi; keshi sovuq
+foydalanuvchi savollarni ham yuklay olmaydi (`settings/version` o'qilmaydi).
+Kvota **UTC yarim tunida** tiklanadi — ya'ni ~2 soat 40 daqiqadan keyin
+(Toshkent vaqti bilan ~05:00).
+
+**Bu deploy sababli emas.** Kod o'zgarishlari o'qishni kamaytiradi, ko'paytirmaydi.
+
+**Eng ehtimolli sabab — `find_exact_question.js`** (repo ildizida, kuzatilmagan fayl):
+
+```js
+const snap = await getDocs(collection(db, 'questions'));   // 47 038 o'qish
+```
+
+Bitta ishga tushirish = kunlik kvotaning **94%**. Bu aynan
+[YUK_VA_BARQARORLIK.md](YUK_VA_BARQARORLIK.md) 2.3-bo'limida ogohlantirilgan naqsh:
+kvotani ilova emas, **ishlab chiqish vositalari** yeydi.
+
+**Nima qilindi:**
+
+1. ✅ **Bomba zararsizlantirildi.** `find_exact_question.js` endi ishlamaydi — u
+   o'rniga [scripts/find-question.mjs](scripts/find-question.mjs) qo'yildi.
+   Yangi vosita **cheksiz kolleksiya o'qishini umuman qila olmaydi**:
+   - standart rejim — lokal eksport fayllaridan qidiradi, **0 ta o'qish**;
+   - `--firestore` — `--category=<fan>` MAJBURIY (~2 900 o'qish, 47 038 emas)
+     va ustiga `--yes` tasdig'i talab qilinadi.
+
+   Sinovda o'sha savolning o'zi lokal fayldan 0 o'qish bilan topildi.
+
+2. ✅ **Region `fra1` ga o'tkazildi** — pastdagi ikkinchi topilma.
+
+3. ⏳ **Blaze rejasi — SIZNING QARORINGIZ.** Buni men qila olmayman (to'lov
+   amali). 1 000 foydalanuvchi ≈ $1–2/oy; hozirgi hajmda deyarli bepul.
+   O'tgandan darhol keyin: Google Cloud Console → Billing → Budgets & alerts
+   → oylik $20, ogohlantirish 50/90/100%.
+
+   ⚠️ Muhim: Blaze bepul kvotani **bekor qilmaydi** — u saqlanadi, siz faqat
+   ortiqchasi uchun to'laysiz. Lekin u **avtomatik to'xtatmaydi ham**, shuning
+   uchun budjet ogohlantirishi shart.
+
+**Ikkinchi topilma — region (tuzatildi).** Health `"region": "iad1"` qaytardi
+(Vashington), [YUK_VA_BARQARORLIK.md](YUK_VA_BARQARORLIK.md) da esa `fra1` deb
+yozilgan — hujjat haqiqatdan ajralib ketgan ekan. Toshkentdan Vashingtongacha
+RTT ~200–250 ms, Frankfurtgacha ~90–130 ms. `vercel.json` ga
+`"regions": ["fra1"]` qo'shildi — bir qatorlik o'zgarish, serverless javob
+vaqtini ~2 barobar yaxshilaydi va [4.9-bo'limdagi](#49-100ms-haqida-halol-gap)
+hisobni haqiqatga yaqinlashtiradi.
+
+---
+
 ## 0. Qisqacha xulosa
 
 Platforma **kutilganidan ancha yaxshi holatda**. Offline saqlash, deadline asosidagi
