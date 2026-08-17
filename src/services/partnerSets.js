@@ -27,7 +27,7 @@
  * diagnostika baho emas, o'lchov; past natija olgan ustoz ham keyingisiga
  * o'tadi (aks holda eng ko'p yordam kerak bo'lgan odam to'silib qolardi).
  */
-import { collection, query, where, orderBy, getDocs, doc, getDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 
 export const PARTNER_SET_ERRORS = {
@@ -105,15 +105,24 @@ export function qulfHolatini(sets, natijalar = {}) {
 export async function fetchPartnerSets(partnerCode, category) {
   if (!partnerCode) return { ok: false, error: 'no_code' };
   try {
+    // ⚠️ FAQAT BITTA tenglik sharti bilan so'raymiz va qolganini MIJOZDA
+    // filtrlaymiz. Sabab: `partnerCode` + `category` + `active` + `orderBy`
+    // birgalikda Firestore'dan KOMPOZIT INDEKS talab qiladi. Indekssiz so'rov
+    // `failed-precondition` bilan yiqiladi — ya'ni haftalik bo'lim hech kimda
+    // ochilmasdi va buni sezish qiyin bo'lardi (xato jimgina yutilardi).
+    // Bir hamkorda ko'pi bilan bir necha o'nlab to'plam bo'ladi, shuning uchun
+    // mijozda saralash arzon; indeks qo'shib, uni deploy qilib yurishdan ko'ra
+    // ishonchliroq.
     const q = query(
       collection(db, 'partnerSets'),
       where('partnerCode', '==', partnerCode.toUpperCase()),
-      where('category', '==', category),
-      where('active', '==', true),
-      orderBy('order', 'asc'),
     );
     const snap = await getDocs(q);
-    return { ok: true, sets: snap.docs.map((d) => ({ id: d.id, ...d.data() })) };
+    const sets = snap.docs
+      .map((d) => ({ id: d.id, ...d.data() }))
+      .filter((s) => s.category === category && s.active !== false)
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+    return { ok: true, sets };
   } catch (err) {
     console.error('fetchPartnerSets:', err);
     return { ok: false, error: err?.code === 'permission-denied' ? 'permission' : 'network' };
