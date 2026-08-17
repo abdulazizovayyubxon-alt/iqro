@@ -269,6 +269,44 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    // ── partnerSets: hamkor ustozning YOPIQ haftalik to'plamlari ──
+    //
+    // YOPIQLIK shu yerda hal bo'ladi, mijozda emas: o'qish huquqi shu
+    // promokodni TASDIQLAGAN guruh a'zolariga bog'langan. Guruhdan
+    // tashqaridagi foydalanuvchi so'rov yuborsa — Firestore rad etadi,
+    // savollar uning qurilmasiga umuman yetib bormaydi.
+    //
+    // TUZILISH — ataylab ikki qavat:
+    //   partnerSets/{setId}                  → faqat METAMA'LUMOT (nom, tartib)
+    //   partnerSets/{setId}/content/questions → savollar massivi
+    // Sabab: haftalar RO'YXATI ochilganda barcha savollar ham yuklanib
+    // ketmasin. Ro'yxat = bir necha yengil hujjat, hafta ochilganda esa
+    // qo'shimcha 1 ta o'qish. Savollarni subkolleksiyada har biri alohida
+    // hujjat qilib saqlamaymiz — u holda 30 savol = 30 o'qish bo'lardi.
+    //
+    // `hasContentAccess()` ATAYIN qo'yilmadi: ustoz kodni tasdiqlagan
+    // zahoti haftalik to'plamni ko'ra olishi kerak — obuna holati bu yerda
+    // to'siq bo'lmasin.
+    function isGroupMember(code) {
+      return isLoggedIn() &&
+        exists(/databases/$(database)/documents/promoCodes/$(code)/redemptions/$(request.auth.uid));
+    }
+
+    match /partnerSets/{setId} {
+      allow read: if isAdmin() || isGroupMember(resource.data.partnerCode);
+      // Yozuv faqat admin: savol mazmuni va `correct` maydoni hamkor
+      // ustozning o'ziga ham ochilmaydi (u faqat natijalarni ko'radi).
+      allow write: if isAdmin();
+
+      // `partnerCode` bu yerda ham TAKRORLANADI — aks holda qoida ota
+      // hujjatni `get()` bilan o'qishga majbur bo'lardi, ya'ni har savol
+      // to'plamini ochishda qo'shimcha hujjat o'qishi sarflanardi.
+      match /content/{docId} {
+        allow read: if isAdmin() || isGroupMember(resource.data.partnerCode);
+        allow write: if isAdmin();
+      }
+    }
+
     // ── schools: B2B maktab paketlari ──
     // joinCode MAXFIY bo'lishi kerak — aks holda istalgan foydalanuvchi
     // istalgan maktabga qo'shilib, korporativ obunani o'zlashtirib olardi.

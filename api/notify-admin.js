@@ -1,3 +1,4 @@
+import { randomInt } from 'node:crypto';
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { getAuth } from 'firebase-admin/auth';
@@ -328,6 +329,84 @@ async function handleDeleteUser(db, req, res) {
   return res.status(200).json({ ok: errors.length === 0, deleted, errors });
 }
 
+// ── action: reset-password ─────────────────────────────────────────────────
+// Admin parolini unutgan foydalanuvchiga VAQTINCHALIK parol beradi.
+//
+// NIMA UCHUN UMUMAN SHU YO'L KERAK:
+// Login modeli telefon + parol, Firebase Auth emaili esa SOXTA
+// (`998XXXXXXXXX@iqro.uz` — AuthContext.jsx `phoneToEmail`). Bunday pochta
+// qutisi mavjud emas, shuning uchun Firebase'ning standart tiklash yo'li —
+// `sendPasswordResetEmail` — PRINSIPIAL ravishda ishlamaydi: xat hech qayerga
+// yetib bormaydi. Firebase konsolida parolni qo'lda o'rnatib ham bo'lmaydi
+// (u yerdagi "Reset password" ham o'sha yetib bormaydigan xatni yuboradi).
+// Yagona texnik yo'l — Admin SDK `updateUser()`, u esa faqat serverda ishlaydi.
+//
+// Vercel Hobby 12 funksiya chegarasi sababli YANGI endpoint emas, mavjud
+// `notify-admin.js` ga `action` qo'shildi (naqsh: `delete-user`).
+//
+// Yangi parol FAQAT javobda qaytadi va Telegram'ga YUBORILMAYDI: `sendToAdmin`
+// jonli parolni chat tarixida abadiy qoldirardi. Admin uni panelda ko'radi,
+// foydalanuvchiga aytadi, foydalanuvchi esa kirgach Profil → Parolni
+// o'zgartirish'dan o'zinikini qo'yadi (PasswordModal eski parolni so'ramaydi).
+//
+// Alifboda chalkashadigan belgilar YO'Q (0/O, 1/l/I): parol telefonda og'zaki
+// aytilishi mumkin va "nol"mi yoki "O"mi degan savol tug'ilmasligi kerak.
+const TEMP_PW_ALPHABET = 'abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+
+function generateTempPassword(len = 10) {
+  // `randomInt` — kriptografik va SILJISHSIZ (`Math.random() * n` emas).
+  let out = '';
+  for (let i = 0; i < len; i++) out += TEMP_PW_ALPHABET[randomInt(TEMP_PW_ALPHABET.length)];
+  return out;
+}
+
+async function handleResetPassword(db, req, res) {
+  const admin = await verifyAdmin(req, db).catch(() => null);
+  if (!admin) return res.status(403).json({ ok: false, error: 'forbidden' });
+
+  // Admin tokeni o'g'irlansa, u bilan hisoblarni ketma-ket qulflab chiqib
+  // bo'lmasin. Qo'lda ishlaydigan oqim uchun soatiga 10 ta yetarlidan ortiq.
+  if (rateLimit(`pwr:${admin.uid}`, 10, 60 * 60 * 1000).limited) {
+    return res.status(429).json({ ok: false, error: 'too_many_requests' });
+  }
+
+  const uid = clip(req.body?.uid, 128)?.trim();
+  if (!uid) return res.status(400).json({ ok: false, error: 'uid_required' });
+
+  let target;
+  try {
+    target = await getAuth().getUser(uid);
+  } catch (e) {
+    if (e?.code === 'auth/user-not-found') {
+      return res.status(404).json({ ok: false, error: 'user_not_found' });
+    }
+    throw e;
+  }
+
+  // BOSHQA ADMINNING paroli tiklanmaydi. Aks holda panelga qo'shilgan har
+  // qanday admin egasining hisobini butunlay o'z qo'liga olib, uni tashqarida
+  // qoldira olardi — va rolni qaytarib olish bilan buni ORQAGA QAYTARIB
+  // bo'lmasdi, chunki hisob endi uniki. O'z parolini tiklashning ma'nosi yo'q
+  // (buning uchun tizimga kirgan bo'lish kerak), shuning uchun istisno ham yo'q.
+  const targetDoc = await db.collection('users').doc(uid).get();
+  const targetIsAdmin = ADMIN_EMAILS.includes(target.email)
+    || (targetDoc.exists && targetDoc.data().role === 'admin');
+  if (targetIsAdmin) return res.status(400).json({ ok: false, error: 'cannot_reset_admin' });
+
+  const password = generateTempPassword();
+  await getAuth().updateUser(uid, { password });
+
+  // Parol tiklash — XAVFSIZLIK hodisasi, shuning uchun eski seanslar uziladi:
+  // telefoni o'g'irlangan holatda hisob o'g'rining qurilmasida ochiq qolib
+  // ketmasligi kerak. Foydalanuvchining o'zi yangi parol bilan qaytadan
+  // kiradi. Firebase mijozi buni darhol sezmaydi — keyingi token yangilashda,
+  // ya'ni ~1 soat ichida chiqarib yuboradi.
+  await getAuth().revokeRefreshTokens(uid)
+    .catch((e) => console.warn('revokeRefreshTokens:', e.message));
+
+  return res.status(200).json({ ok: true, password });
+}
+
 // ── action: delete-me ──────────────────────────────────────────────────────
 // Foydalanuvchi O'Z hisobini o'chiradi (Sozlamalar → Hisobni o'chirish).
 // Mijoz tomonidagi `deleteUser()` faqat Auth yozuvini o'chirardi va
@@ -379,6 +458,8 @@ export default async function handler(req, res) {
     if (action === 'delete-request') return await handleDeleteRequest(db, req, res);
 
     if (action === 'delete-user') return await handleDeleteUser(db, req, res);
+
+    if (action === 'reset-password') return await handleResetPassword(db, req, res);
 
     if (action === 'delete-me') return await handleDeleteMe(db, req, res);
 

@@ -233,6 +233,10 @@ export const AuthProvider = ({ children }) => {
       let subject = null;
       // Hamkorlik promokodi (partnerCode) — hamkor ustoz portali uchun
       let partnerCode = null;
+      // Foydalanuvchi QO'SHILGAN guruh kodi — `partnerCode` dan farqli: u
+      // kodning EGASI (ustoz) uchun, bu esa kodni ISHLATGAN a'zo uchun.
+      // Haftalik diagnostika to'plamlari shu kod bo'yicha topiladi.
+      let groupCode = null;
 
       try {
         let trialInfo = { status: 'expired', daysLeft: 0, urgencyMs: 0 };
@@ -250,6 +254,11 @@ export const AuthProvider = ({ children }) => {
               schoolId = data.schoolId || null;
               subject = data.subject || null;
               partnerCode = data.partnerCode || null;
+              // `promoRedeemed` — days/team turidagi kod ishlatilganda yoziladi
+              // (api/redeem-promo.js). Hamkor kodlari shu turda bo'ladi.
+              // `promoDiscount` — percent kod uchun; to'lovdan keyin webhook uni
+              // tozalaydi, shuning uchun u faqat zaxira manba.
+              groupCode = data.promoRedeemed?.code || data.promoDiscount?.code || null;
 
               // ═══ Premium muddati tekshiruvi ═══
               // premiumExpire (sana) — obuna tugash vaqtining yagona manbasi.
@@ -340,6 +349,7 @@ export const AuthProvider = ({ children }) => {
             premiumExpire,
             role,
             partnerCode,
+            groupCode,
             trialStatus: trialInfo.status,
             trialDaysLeft: trialInfo.daysLeft,
             urgencyMs: trialInfo.urgencyMs,
@@ -359,6 +369,7 @@ export const AuthProvider = ({ children }) => {
             schoolId,
             subject,
             partnerCode,
+            groupCode,
             isPremium,
             isTruePremium,
             premiumExpire,
@@ -732,6 +743,7 @@ export const AuthProvider = ({ children }) => {
         schoolId: updated.schoolId ?? null,
         subject: updated.subject ?? null,
         partnerCode: updated.partnerCode ?? null,
+        groupCode: updated.groupCode ?? null,
         isPremium: updated.isPremium,
         isTruePremium: updated.isTruePremium,
         premiumExpire: updated.premiumExpire ?? null,
@@ -780,6 +792,9 @@ export const AuthProvider = ({ children }) => {
           schoolId: data.schoolId || null,
           subject: data.subject || null,
           partnerCode: data.partnerCode || null,
+          // Guruhga endigina qo'shilgan bo'lsa, haftalik diagnostika bo'limi
+          // sahifani yangilamasdan darhol paydo bo'lishi uchun shu yerda ham.
+          groupCode: data.promoRedeemed?.code || data.promoDiscount?.code || null,
           trialStatus: trialInfo.status,
           trialDaysLeft: trialInfo.daysLeft,
           urgencyMs: trialInfo.urgencyMs,

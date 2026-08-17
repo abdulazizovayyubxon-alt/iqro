@@ -3,6 +3,10 @@
    ═══════════════════════════════════════════ */
 
 .lb-page { max-width: 600px; margin: 0 auto; padding: 20px 16px 120px; }
+/* «Siz» qatori pinlanganda u `position: fixed` — oqimdan chiqadi. Qo'shimcha
+   zaxira bo'lmasa ro'yxatning 50-qatori shu karta ostida qolib ketadi.
+   Faqat pin bor holatda qo'shiladi, aks holda bo'sh scroll paydo bo'lardi. */
+.lb-page.has-pinned { padding-bottom: 150px; }
 
 .lb-header {
   display: flex; align-items: baseline; flex-wrap: wrap;
@@ -103,6 +107,7 @@
 }
 .lb-rank { width: 24px; display: flex; justify-content: center; flex-shrink: 0; }
 .lb-rank-num { font-size: var(--fs-lg); font-weight: 800; color: var(--text3); min-width: 20px; text-align: center; }
+.lb-rank-num.muted { color: var(--border2); font-weight: 700; }
 .lb-info { flex: 1; min-width: 0; }
 .lb-name-row { display: flex; align-items: center; gap: 8px; }
 .lb-name {
@@ -124,6 +129,8 @@
 .lb-meta { font-size: var(--fs-xs); color: var(--text3); margin-top: 2px; display: flex; gap: 10px; flex-wrap: wrap; }
 /* Akademik unvon — ball emas, SIFAT ko'rsatkichi; shuning uchun azure chip */
 .lb-unvon { color: var(--accent2); font-weight: 700; }
+/* Hali reytingda yo'q — o'rin raqami o'rniga chaqiruv */
+.lb-cta { color: var(--accent2); font-weight: 700; }
 .lb-score-wrap { text-align: right; flex-shrink: 0; }
 .lb-score { font-size: var(--fs-2xl); font-weight: 900; color: var(--text); }
 .lb-score.me { color: var(--accent2); }
@@ -134,11 +141,16 @@
   display: flex; align-items: center; justify-content: center;
 }
 
-/* ── Pinned "Siz" footer ── */
+/* ── Pinned "Siz" footer ──
+   Pastki zaxira BottomNav geometriyasidan kelib chiqadi: panel 82px, undan
+   tashqari «Imtihon» FAB 28px tepaga chiqib turadi (BottomNav.jsx BAR_H/top:-28)
+   → band zona 110px. Panel z-index'i 1000, bu blok 100 — ya'ni yetarli joy
+   qoldirilmasa FAB qatorning ustiga CHIZILADI (ball va «N savol» yopilardi).
+   110 + 8px nafas = 118px. */
 .lb-pinned-wrap {
   position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
   width: 100%; max-width: 600px;
-  padding: 0 16px calc(80px + env(safe-area-inset-bottom)) 16px;
+  padding: 0 16px calc(118px + env(safe-area-inset-bottom)) 16px;
   background: linear-gradient(transparent, var(--bg) 30%);
   z-index: 100;
 }

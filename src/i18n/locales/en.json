@@ -344,6 +344,10 @@
     "standardDesc": "Real qualification exam format — mixed questions from all sections",
     "weakTitle": "Focus on weak topics",
     "weakDesc": "More questions will be drawn from topics where you made the most errors",
+    "weeklyTitle": "Weekly diagnostic",
+    "weeklyDesc": "A set prepared by your mentor",
+    "weeklyDone": "Completed: {{correct}}/{{total}}",
+    "weeklyPickFirst": "First choose which week to take",
     "chipQuestions": "{{n}} questions",
     "chipMinutes": "{{n}} min",
     "resumeTitle": "You have an unfinished exam",
@@ -469,6 +473,7 @@
     "suspicious": "suspicious",
     "streakDays": "🔥 {{count}} days",
     "points": "POINTS",
+    "unranked": "Take your first test to join the leaderboard",
     "empty": "Leaderboard is currently empty",
     "deleteTitle": "Confirm Deletion",
     "deleteText": "Are you sure you want to remove the leaderboard result for \"{{name}}\"?"
@@ -911,7 +916,7 @@
     "termsLink": "Terms of Service",
     "policyP2": ".",
     "dataSecure": "Your data is safely protected",
-    "forgotPasswordHint": "To reset your password, contact the administrator."
+    "forgotPasswordHint": "Telegram is open — send your phone number to @zehinuz. The administrator will issue a temporary password, which you can then change in Profile."
   },
   "onboarding": {
     "goalTitle": "What is your goal?",

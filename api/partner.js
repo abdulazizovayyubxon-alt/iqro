@@ -285,6 +285,15 @@ export default async function handler(req, res) {
           readinessSubject: latestReadiness?.[0] ?? null,
           dailyStreak: s.dailyStreak || 0,
           lastActiveAt: lastActive,
+          // Haftalik diagnostika natijalari — { [setId]: { correct, answered } }.
+          // Faqat kerakli maydonlar olinadi: `doneAt` hisobotda ko'rsatilmaydi
+          // va uni yuborish bekorga trafik.
+          weekly: Object.fromEntries(
+            Object.entries(s.partnerSets || {}).map(([setId, v]) => [
+              setId,
+              { correct: v?.correct ?? 0, answered: v?.answered ?? 0 },
+            ]),
+          ),
         };
       });
 
@@ -320,6 +329,26 @@ export default async function handler(req, res) {
       // Tartiblash: oxirgi faol bo'lganlar yuqorida
       members.sort((a, b) => (b.lastActiveAt || '').localeCompare(a.lastActiveAt || ''));
 
+      // ── Haftalik diagnostika to'plamlari (ustunlar sarlavhasi uchun) ──
+      // Hisobotda «1-hafta», «2-hafta» ustunlari shu ro'yxatdan chiziladi.
+      // A'zolar ro'yxatidan ALOHIDA o'qiladi, chunki hali hech kim ishlamagan
+      // hafta ham ustun sifatida ko'rinishi kerak (aks holda ustoz to'plam
+      // joylanganini panelda umuman ko'rmasdi).
+      let weeklySets = [];
+      try {
+        const setsSnap = await db.collection('partnerSets')
+          .where('partnerCode', '==', requestedCode)
+          .get();
+        weeklySets = setsSnap.docs
+          .map(d => ({ id: d.id, title: d.data().title || d.id, order: d.data().order || 0, active: d.data().active !== false }))
+          .filter(s => s.active)
+          .sort((a, b) => a.order - b.order);
+      } catch (e) {
+        // To'plamlar o'qilmasa hisobot baribir ko'rsatiladi — haftalar ustuni
+        // shunchaki bo'lmaydi.
+        console.warn('partnerSets o\'qilmadi:', e?.message);
+      }
+
       return res.status(200).json({
         ok: true,
         allPartnerPromos,
@@ -338,6 +367,7 @@ export default async function handler(req, res) {
           active: promo.active !== false,
         },
         summary,
+        weeklySets,
         members,
       });
     }

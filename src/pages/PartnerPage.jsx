@@ -821,6 +821,14 @@ export default function PartnerPage() {
                           {hasSubject ? `${subjectLabel} aniqlik` : 'Aniqlik'}
                         </th>
                         <th style={{ padding: '10px 8px', textAlign: 'center' }}>Tayyorlik</th>
+                        {/* Haftalik diagnostika ustunlari — to'plam joylangan
+                            bo'lsa paydo bo'ladi. Hali hech kim ishlamagan
+                            hafta ham ustun sifatida turadi. */}
+                        {(data.weeklySets || []).map(w => (
+                          <th key={w.id} style={{ padding: '10px 8px', textAlign: 'center', whiteSpace: 'nowrap' }}>
+                            {w.order}-hafta
+                          </th>
+                        ))}
                         <th style={{ padding: '10px 8px', textAlign: 'right' }}>Oxirgi faollik</th>
                       </tr>
                     </thead>
@@ -892,6 +900,31 @@ export default function PartnerPage() {
                                 <span style={{ color: 'var(--text3)', fontSize: 'var(--fs-xs)' }}>Boshlanmagan</span>
                               )}
                             </td>
+
+                            {/* Haftalik diagnostika natijalari */}
+                            {(data.weeklySets || []).map(w => {
+                              const r = m.weekly?.[w.id];
+                              if (!r) {
+                                // Ishlamagan — bo'sh emas, ATAYIN chiziqcha:
+                                // «ishlamagan» va «ma'lumot yo'q» farqlanishi kerak.
+                                return (
+                                  <td key={w.id} style={{ padding: '12px 8px', textAlign: 'center', color: 'var(--text3)', fontSize: 'var(--fs-xs)' }}>
+                                    —
+                                  </td>
+                                );
+                              }
+                              const foiz = r.answered > 0 ? Math.round((r.correct / r.answered) * 100) : null;
+                              return (
+                                <td key={w.id} style={{ padding: '12px 8px', textAlign: 'center' }}>
+                                  <div style={{ fontWeight: 800, color: readinessColor(foiz), fontSize: 'var(--fs-sm)' }}>
+                                    {r.correct}/{r.answered}
+                                  </div>
+                                  {foiz != null && (
+                                    <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)' }}>{foiz}%</div>
+                                  )}
+                                </td>
+                              );
+                            })}
 
                             {/* Oxirgi faollik */}
                             <td style={{ padding: '12px 8px', textAlign: 'right', fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>

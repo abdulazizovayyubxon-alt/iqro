@@ -8,7 +8,7 @@ import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, Share2, GraduationCap, FileText, BookOpen, ClipboardList, Crosshair, History, Check, BadgeCheck } from 'lucide-react';
+import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, Share2, GraduationCap, FileText, BookOpen, ClipboardList, Crosshair, History, Check, BadgeCheck, CalendarDays, Lock } from 'lucide-react';
 import { reconcileAchievements, nextMilestones } from '../data/tracks';
 import NextMilestoneLine from '../components/achievements/NextMilestoneLine';
 import { useMilestoneAction } from '../hooks/useMilestoneAction';
@@ -29,6 +29,7 @@ import { EXAM_SESSION_KEY } from '../config';
 import { PED_BLOCK_TOTAL, isPedBlockTopic, EXAM_BLUEPRINT, hasBlueprint } from '../data/examBlueprint';
 import { useExitGuard } from '../hooks/useExitGuard';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
+import { fetchPartnerSets, fetchSetQuestions, qulfHolatini, PARTNER_SET_ERRORS } from '../services/partnerSets';
 
 // Savol matnidan kirish/kontekst qismini olib tashlaydi (dublikat aniqlash uchun)
 function cleanForDedup(text) {
@@ -153,6 +154,46 @@ const ExamPage = () => {
   const [examType, setExamType] = useState('standard');
   const [loading, setLoading] = useState(false);
 
+  // ── Haftalik diagnostika (hamkor ustozning yopiq to'plamlari) ──
+  // Ro'yxat faqat guruh a'zosiga yuklanadi; qulf holati `qulfHolatini` da
+  // hisoblanadi (ketma-ketlik + ochilish sanasi).
+  const [weeklySets, setWeeklySets] = useState([]);
+  const [selectedSetId, setSelectedSetId] = useState(null);
+  const groupCode = user?.groupCode || null;
+
+  useEffect(() => {
+    if (!groupCode || examStarted) return;
+    let cancelled = false;
+    (async () => {
+      const res = await fetchPartnerSets(groupCode, cat);
+      if (cancelled) return;
+      // Xato bo'lsa JIM o'tamiz: haftalik to'plam qo'shimcha imkoniyat, uning
+      // yuklanmagani imtihon sahifasini ishdan chiqarmasligi kerak.
+      setWeeklySets(res.ok ? res.sets : []);
+    })();
+    return () => { cancelled = true; };
+  }, [groupCode, cat, examStarted]);
+
+  // Qulf holati har renderda emas, ro'yxat yoki natijalar o'zgarganda hisoblanadi
+  // `|| {}` memo ICHIDA: tashqarida bo'lsa har renderda yangi obyekt yasalib,
+  // memo hech qachon keshdan foydalanmasdi.
+  const weeklyList = useMemo(
+    () => qulfHolatini(weeklySets, state.partnerSets || {}),
+    [weeklySets, state.partnerSets],
+  );
+
+  // Tanlangan hafta — ochiq bo'lganlaridan birinchisi (foydalanuvchi o'zgartira oladi)
+  const selectedSet = weeklyList.find(s => s.id === selectedSetId) || null;
+
+  const handleWeeklyPick = (s) => {
+    if (s.locked) {
+      // Aynan siz so'ragan pastdan chiqadigan bildirishnoma
+      showToast(s.lockMessage, 'error');
+      return;
+    }
+    setSelectedSetId(s.id);
+  };
+
   // Orqa tugma himoyasi: imtihon davomida orqa bosilsa to'satdan chiqib
   // ketmasdan mavjud "Imtihonni yakunlash" tasdig'i ochiladi
   useExitGuard(examStarted && !finished && !loading && questions.length > 0, () => setShowConfirmModal(true));
@@ -194,6 +235,10 @@ const ExamPage = () => {
       uid: user?.uid || null,
       cat,
       examType,
+      // Haftalik rejimda to'plam ID'si ham saqlanadi: usiz yarim qolgan
+      // imtihon davom ettirilib yakunlanganda natija HECH QAYERGA yozilmasdi
+      // va keyingi hafta ochilmay qolardi.
+      selectedSetId,
       // topicIcon/icon — React elementlari, IndexedDB ularni qabul qilmaydi
       // (DataCloneError, butun yozuv rad etiladi). Saqlashdan oldin olib
       // tashlaymiz, resume'da TOPICS'dan qayta biriktiriladi.
@@ -239,6 +284,7 @@ const ExamPage = () => {
         setCurrentQ(s.currentQ || 0);
         setTimeLeft(s.timeLeft);
         setExamType(s.examType || 'standard');
+        setSelectedSetId(s.selectedSetId || null);
         setStartTimeMs(s.startTimeMs || Date.now());
         questionTimesRef.current = s.questionTimes || {};
         questionStartTimeRef.current = Date.now();
@@ -276,6 +322,7 @@ const ExamPage = () => {
     setCurrentQ(s.currentQ || 0);
     setTimeLeft(s.timeLeft);
     setExamType(s.examType || 'standard');
+    setSelectedSetId(s.selectedSetId || null);
     setStartTimeMs(s.startTimeMs || Date.now());
     questionTimesRef.current = s.questionTimes || {};
     questionStartTimeRef.current = Date.now();
@@ -320,6 +367,44 @@ const ExamPage = () => {
     committedRef.current = false;
     questionTimesRef.current = {};
     questionStartTimeRef.current = Date.now();
+
+    // ── Haftalik diagnostika: savollar TAYYOR to'plamdan olinadi ──
+    // Bu yerda blueprint (30-56-14 proporsiya), qiyinlik balansi va
+    // aralashtirish QO'LLANMAYDI: ustoz to'plamni o'zi tuzgan, tartibi ham
+    // uniki. Bizning ishimiz — uni o'zgartirmasdan ko'rsatish.
+    const loadWeeklyQuestions = async () => {
+      setLoading(true);
+      const res = await fetchSetQuestions(selectedSetId);
+      if (!res.ok) {
+        showToast(PARTNER_SET_ERRORS[res.error] || t('exam.toastError'), 'error');
+        setLoading(false);
+        setExamStarted(false);
+        return;
+      }
+      const list = res.questions.map((q, i) => ({
+        ...q,
+        difficulty: q.difficulty || 'Y2',
+        topicName: selectedSet?.title || 'Haftalik diagnostika',
+        topicIcon: null,
+        // `topicId` ATAYIN -1: bu savollar hech qaysi mavzuga tegishli emas,
+        // shuning uchun mavzu bo'yicha o'zlashtirish foizini buzmasligi kerak.
+        topicId: -1,
+        _weeklyIndex: i,
+      }));
+      setQuestions(list);
+      setTopicGroups([{ name: selectedSet?.title || 'Haftalik diagnostika', icon: null, indices: list.map((_, i) => i) }]);
+      // Vaqt savol soniga MUTANOSIB: standart imtihon 50 savolga mo'ljallangan,
+      // 35 savollik to'plamga o'sha vaqtni bersak diagnostika ma'nosini yo'qotadi.
+      const perQuestion = getExamDuration(cat) / EXAM_TOTAL;
+      setTimeLeft(Math.round(perQuestion * list.length));
+      setLoading(false);
+    };
+
+    if (examType === 'weekly') {
+      if (!selectedSetId) { setExamStarted(false); return; }
+      loadWeeklyQuestions();
+      return;
+    }
 
     const loadExamQuestions = async () => {
       setLoading(true);
@@ -587,7 +672,10 @@ const ExamPage = () => {
     };
 
     loadExamQuestions();
-  }, [cat, examStarted, examType]);
+    // `selectedSetId` — haftalik rejimda qaysi to'plam yuklanishini belgilaydi.
+    // Bog'liqlikka qo'shilmasa, hafta almashtirilib qayta boshlanganda eski
+    // to'plam savollari qolib ketardi.
+  }, [cat, examStarted, examType, selectedSetId]);
 
   // Taymer — FAQAT faol imtihon paytida ishlaydi.
   // Avval kirish oynasida, yuklanishda va natijadan "ko'rib chiqish"ga
@@ -696,6 +784,26 @@ const ExamPage = () => {
     const correct = results.correctCount;
     const pct = results.accuracy;
     AnalyticsEvents.examComplete(correct, questions.length);
+
+    // ── Haftalik diagnostika natijasi ──
+    // BIRINCHI urinish yoziladi va keyin O'ZGARMAYDI: ustoz hisobotda guruhning
+    // haqiqiy boshlang'ich darajasini ko'rishi kerak. Qayta ishlash mumkin
+    // (mashq sifatida), lekin raqam qayta yozilsa diagnostika ma'nosini
+    // yo'qotardi — hamma «to'g'irlab» 100% qilib qo'yardi.
+    // Shu yozuv AYNI PAYTDA keyingi haftani ochadigan kalit ham (`qulfHolatini`).
+    if (examType === 'weekly' && selectedSetId && !state.partnerSets?.[selectedSetId]) {
+      updateState({
+        partnerSets: {
+          ...(state.partnerSets || {}),
+          [selectedSetId]: {
+            correct,
+            answered: questions.length,
+            doneAt: new Date().toISOString(),
+          },
+        },
+      });
+    }
+
     if (pct >= 60 && !prefersReducedMotion()) {
       confetti({ particleCount: 150, spread: 80, origin: { y: 0.5 } });
     }
@@ -769,6 +877,16 @@ const ExamPage = () => {
       { id: 'standard', Icon: ClipboardList, title: t('exam.standardTitle'), desc: t('exam.standardDesc') },
       { id: 'weak', Icon: Crosshair, title: t('exam.weakTitle'), desc: t('exam.weakDesc') }
     ];
+    // Uchinchi karta FAQAT guruh a'zosiga va faqat to'plam mavjud bo'lsa
+    // ko'rinadi — qolganlar bugungidek ikkita kartani ko'radi.
+    if (weeklyList.length > 0) {
+      modeCards.push({
+        id: 'weekly',
+        Icon: CalendarDays,
+        title: t('exam.weeklyTitle'),
+        desc: t('exam.weeklyDesc'),
+      });
+    }
 
     const chipStyle = {
       display: 'inline-flex', alignItems: 'center', gap: 6,
@@ -831,8 +949,8 @@ const ExamPage = () => {
             {modeCards.map(m => {
               const active = examType === m.id;
               return (
+                <React.Fragment key={m.id}>
                 <div
-                  key={m.id}
                   onClick={() => setExamType(m.id)}
                   style={{
                     display: 'flex', alignItems: 'center', gap: 12,
@@ -868,6 +986,50 @@ const ExamPage = () => {
                     {active && <Check size={13} strokeWidth={3.5} style={{ color: '#fff' }} />}
                   </div>
                 </div>
+
+                {/* ── Haftalar ro'yxati — faqat shu karta tanlanganda ──
+                    Qulflangan hafta ro'yxatdan YO'QOLMAYDI: ustoz «2-hafta
+                    qani?» degan savolga tushmasligi uchun u ko'rinib turadi,
+                    bosilganda esa sababi aytiladi. */}
+                {m.id === 'weekly' && active && (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8, padding: '4px 0 6px 8px' }}>
+                    {weeklyList.map(s => {
+                      const picked = selectedSetId === s.id;
+                      return (
+                        <div
+                          key={s.id}
+                          onClick={() => handleWeeklyPick(s)}
+                          style={{
+                            display: 'flex', alignItems: 'center', gap: 10,
+                            padding: '11px 13px', borderRadius: 12,
+                            border: picked ? '1.5px solid var(--blue)' : '1.5px solid var(--border)',
+                            background: s.locked ? 'var(--bg3)' : picked ? 'var(--blue-bg)' : 'var(--bg2)',
+                            cursor: 'pointer',
+                            opacity: s.locked ? 0.7 : 1,
+                          }}
+                        >
+                          {s.locked
+                            ? <Lock size={15} style={{ color: 'var(--text3)', flexShrink: 0 }} />
+                            : <CalendarDays size={15} style={{ color: picked ? 'var(--blue)' : 'var(--text3)', flexShrink: 0 }} />}
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <div style={{ fontSize: 'var(--fs-body)', fontWeight: 700, color: 'var(--text)' }}>
+                              {s.title}
+                            </div>
+                            {(s.locked || s.result) && (
+                              <div style={{ fontSize: 'var(--fs-body-sm)', color: 'var(--text3)', marginTop: 2 }}>
+                                {s.locked
+                                  ? s.lockMessage
+                                  : t('exam.weeklyDone', { correct: s.result.correct, total: s.result.answered })}
+                              </div>
+                            )}
+                          </div>
+                          {picked && !s.locked && <Check size={15} strokeWidth={3} style={{ color: 'var(--blue)', flexShrink: 0 }} />}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+                </React.Fragment>
               );
             })}
           </div>
@@ -876,6 +1038,12 @@ const ExamPage = () => {
             whileHover={{ scale: 1.01, y: -1 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => {
+              // Haftalik rejimda hafta tanlanmagan bo'lsa — imtihon boshlanmaydi.
+              // Aks holda savolsiz bo'sh ekran ochilib qolardi.
+              if (examType === 'weekly' && !selectedSet) {
+                showToast(t('exam.weeklyPickFirst'), 'error');
+                return;
+              }
               // Yangi imtihon boshlansa, eski tugallanmagan sessiya bekor qilinadi
               clearSavedSession();
               setExamStarted(true);

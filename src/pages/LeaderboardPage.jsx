@@ -4,14 +4,14 @@ import { motion } from 'framer-motion';
 import { Crown, Medal, Trash2, AlertTriangle } from 'lucide-react';
 import {
   collection, query, orderBy, limit, getDocs,
-  doc, getDoc, where, getCountFromServer, deleteDoc
+  doc, where, getCountFromServer, deleteDoc, documentId
 } from 'firebase/firestore';
 import { db } from '../firebase';
 import { avatarUrl } from '../data/avatars';
 import { AuthContext } from '../context/AuthContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAdmin } from '../hooks/useAdmin';
-import { getWeekId, getMonthId } from '../context/AppContext';
+import { AppContext, getWeekId, getMonthId } from '../context/AppContext';
 import { getLeague, nextLeague, leagueProgress } from '../utils/league';
 import './LeaderboardPage.css';
 
@@ -65,6 +65,7 @@ const writeLbCache = (key, rows) => {
 const LeaderboardPage = () => {
   const { t } = useTranslation();
   const { user } = useContext(AuthContext);
+  const { state, cloudSynced } = useContext(AppContext);
   const { showToast } = useContext(ToastContext);
   const { isAdmin } = useAdmin();
   const [leaders, setLeaders] = useState([]);
@@ -78,6 +79,11 @@ const LeaderboardPage = () => {
 
   useEffect(() => {
     if (!user) return;
+    // `cloudSynced` — AppContext bulutdagi statistikani lokal zaxira bilan
+    // birlashtirib bo'lgani belgisi. Undan OLDIN `state` hali defaultda (0 ball)
+    // turadi; shu payt yuklasak, ballari bor foydalanuvchiga bir lahza
+    // «hali reytingda emassiz» chiqib ketardi.
+    if (!cloudSynced) return;
     let cancelled = false;
     setLoading(true);
 
@@ -129,36 +135,70 @@ const LeaderboardPage = () => {
           results[meIdx].isMe = true;
           setMyEntry(null);
         } else {
-          // Top-50 tashqarisida — o'z o'rnini HAR SAFAR yangi o'qiymiz (2 o'qish).
-          // Foydalanuvchi avvalo o'z o'rnini ko'rgani keladi, u eskirmasligi kerak.
-          try {
-            const myDoc = await getDoc(doc(db, 'userStats', user.uid));
-            if (cancelled) return;
-            if (myDoc.exists()) {
-              const md = myDoc.data();
-              const myScore = md[scoreField] || 0;
-              const cnt = await getCountFromServer(
-                query(collection(db, 'userStats'), where(scoreField, '>', myScore))
-              );
+          // Top-50 tashqarisida. O'z statistikam AppContext'da ALLAQACHON bor —
+          // ilgari shu yerda qo'shimcha `getDoc(userStats/uid)` qilinardi, u
+          // olib tashlandi (−1 o'qish). Bo'shagan joyga tenglikni yechadigan
+          // ikkinchi sanoq qo'yildi (+1) — umumiy sarf o'zgarmadi.
+          const myScore = state[scoreField] || 0;
+          const base = {
+            id: user.uid,
+            name: user.displayName || user.email?.split('@')[0] || t('leaderboard.you'),
+            score: myScore,
+            totalScore: state.totalScore || 0,
+            correct: state.totalCorrect || 0,
+            streak: state.dailyStreak || 0,
+            answered: state.totalAnswered || 0,
+            photoURL: user.photoURL || null,
+            avatarId: user.avatarId || null,
+            unvonTier: state.achievements?.unvonTier || 0,
+            isMe: true
+          };
+
+          // Hali ball yig'magan foydalanuvchiga raqam ko'rsatish — yolg'on:
+          // 0 ballilar bir-biridan farq qilmaydi, ular necha kishi bo'lsa ham
+          // BIR XIL o'rinni ko'rardi (skrinshotdagi «51»). Raqam o'rniga
+          // chaqiruv chiqadi. Yon foyda: bu yo'lda birorta o'qish yo'q (−2).
+          if (myScore <= 0) {
+            setMyEntry({ ...base, rank: null, unranked: true });
+          } else {
+            try {
+              // O'rin = mendan yuqoridagilar soni + 1. «Yuqorida» ikki toifa:
+              //   a) bali KATTA bo'lganlar;
+              //   b) bali TENG, lekin Firestore tartibida oldinda turganlar.
+              // (b) hisobga olinmasa teng ballilar bir xil raqam olardi. Firestore
+              // `orderBy(score,'desc')` ga yashirin `__name__ desc` tartibini
+              // qo'shadi va yuqoridagi ro'yxat 1-50 ni AYNAN shu tartibda
+              // chizadi — demak tenglikni ham shu mezonda yechsak, ikkala
+              // kod yo'li bir xil raqam beradi (ilgari ular zid edi).
+              // Kompozit indeks KERAK EMAS: (maydon, __name__) — Firestore
+              // har bir maydon uchun o'zi yasaydigan indeks.
+              // `allSettled` — ataylab: ikkinchi sanoq (tenglik) qulasa ham
+              // birinchisi bergan o'rinni ko'rsatamiz. U holda xatti-harakat
+              // eski holatga tushadi (teng ballilar bir xil raqam oladi) —
+              // bu o'rinni butunlay yashirgandan afzal.
+              const [above, tiedAbove] = await Promise.allSettled([
+                getCountFromServer(query(
+                  collection(db, 'userStats'),
+                  where(scoreField, '>', myScore)
+                )),
+                getCountFromServer(query(
+                  collection(db, 'userStats'),
+                  where(scoreField, '==', myScore),
+                  where(documentId(), '>', user.uid)
+                ))
+              ]);
               if (cancelled) return;
-              setMyEntry({
-                id: user.uid,
-                name: user.displayName || user.email?.split('@')[0] || t('leaderboard.you'),
-                score: myScore,
-                totalScore: md.totalScore || 0,
-                correct: md.totalCorrect || 0,
-                streak: md.dailyStreak || 0,
-                answered: md.totalAnswered || 0,
-                photoURL: user.photoURL || null,
-                avatarId: user.avatarId || null,
-                unvonTier: md.achievements?.unvonTier || 0,
-                rank: cnt.data().count + 1,
-                isMe: true
-              });
-            } else {
-              setMyEntry(null);
+              if (above.status === 'fulfilled') {
+                const tie = tiedAbove.status === 'fulfilled' ? tiedAbove.value.data().count : 0;
+                setMyEntry({ ...base, rank: above.value.data().count + tie + 1 });
+              } else {
+                // Ikkalasi ham bajarilmadi (oflayn) — raqamsiz beramiz.
+                setMyEntry({ ...base, rank: null });
+              }
+            } catch {
+              if (!cancelled) setMyEntry({ ...base, rank: null });
             }
-          } catch { /* reyting o'qishda xato — e'tiborsiz */ }
+          }
         }
 
         results.forEach((r, i) => { if (!r.rank) r.rank = i + 1; });
@@ -174,8 +214,11 @@ const LeaderboardPage = () => {
     return () => { cancelled = true; };
     // Bog'liqlik `user` EMAS, `user?.uid` — AuthContext token yangilanganda bir xil
     // foydalanuvchi uchun yangi obyekt qaytaradi (AppContext.jsx:484 dagi bilan bir xil sabab).
+    // `state` ataylab bog'liqlikda EMAS: u har javobda o'zgaradi, unga bog'lansak
+    // reyting test yechilayotganda qayta-qayta yuklanardi. Bu yerda kerak bo'lgani —
+    // sahifa ochilgan paytdagi suratigina.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user?.uid, boardType]);
+  }, [user?.uid, boardType, cloudSynced]);
 
   // Session rank tracking for safe shifts
   useEffect(() => {
@@ -245,6 +288,8 @@ const LeaderboardPage = () => {
   };
 
   const RankIcon = ({ rank }) => {
+    // Ball yig'ilmagan yoki sanoq bajarilmagan holat — raqam o'rniga chiziqcha
+    if (!rank) return <span className="lb-rank-num muted">—</span>;
     if (rank === 1) return <Crown size={20} style={{ color: '#F59E0B' }} />;
     if (rank === 2) return <Medal size={20} style={{ color: '#9CA3AF' }} />;
     if (rank === 3) return <Medal size={20} style={{ color: '#B45309' }} />;
@@ -281,8 +326,11 @@ const LeaderboardPage = () => {
           )}
         </div>
         <div className="lb-meta">
+          {/* Hali ball yo'q — «0 savol» ni takrorlagandan ko'ra, nima qilish
+              kerakligini aytamiz. Reytingga kirish yo'li shu qatorda turadi. */}
+          {entry.unranked && <span className="lb-cta">{t('leaderboard.unranked')}</span>}
           <span title={t('leaderboard.leagueTitle', { name: getLeague(entry.totalScore).name })}>{getLeague(entry.totalScore).icon}</span>
-          <span>{t('test.questionsCount', { count: entry.answered })}</span>
+          {!entry.unranked && <span>{t('test.questionsCount', { count: entry.answered })}</span>}
           {entry.streak > 0 && <span>{t('leaderboard.streakDays', { count: entry.streak })}</span>}
           {/* Unvon faqat 2-darajadan boshlab: «Izlanuvchi» hammada bor va u
               qatorni ma'nosiz to'ldirardi. */}
@@ -309,7 +357,7 @@ const LeaderboardPage = () => {
   );
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="lb-page">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`lb-page${myEntry ? ' has-pinned' : ''}`}>
       <div className="lb-header">
         <h1 className="lb-title">{t('leaderboard.title')}</h1>
         <p className="lb-subtitle">{t('leaderboard.subtitle')}</p>

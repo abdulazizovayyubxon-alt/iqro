@@ -6,6 +6,7 @@ import { ArrowLeft, Eye, EyeOff, ShieldCheck } from 'lucide-react';
 
 import { useIsMobile } from '../hooks/useIsMobile';
 import BrandLogo from '../components/shared/BrandLogo';
+import { SUPPORT_URL } from '../config';
 
 const STEPS = {
   PHONE: 'phone',
@@ -163,14 +164,33 @@ export default function LoginPage() {
 
   const handleBack = () => {
     setAuthError('');
+    setForgotHint('');
     if (step === STEPS.AUTH) {
       setStep(STEPS.PHONE);
       setAuthMode('login');
     }
   };
 
+  // ── Parolni unutdim → @zehinuz direkt chati ──
+  // Foydalanuvchi parolini O'ZI tiklay olmaydi: Firebase Auth emaili soxta
+  // (`<telefon>@iqro.uz` — AuthContext.jsx `phoneToEmail`), demak tiklash xati
+  // boradigan pochta qutisi yo'q. Yagona yo'l — admin vaqtinchalik parol beradi
+  // (admin paneli → foydalanuvchi ⋮ → «Parolni tiklash»). Shuning uchun tugma
+  // odamni to'g'ridan-to'g'ri o'sha chatga olib boradi.
+  //
+  // Tugma emas, HAQIQIY `<a href>`: Play ilovasi (TWA) ichida `window.open`
+  // ba'zan jimgina bloklanadi, havola esa tizim orqali Telegram ilovasini
+  // ochadi.
+  //
+  // Chat matnini OLDINDAN to'ldirib bo'lmaydi — `t.me` da DM uchun bunday
+  // parametr yo'q (`?text=` faqat `t.me/share/url` bilan ishlaydi va u chat
+  // TANLAGICHINI ochadi, bizning chatimizni emas). Shuning uchun nima yozish
+  // kerakligi ekranda qoladi: odam Telegramdan qaytganda ko'rsatma joyida turadi.
+  const [forgotHint, setForgotHint] = useState('');
+
   const handleForgotPassword = () => {
-    setAuthError(t('login.forgotPasswordHint') || 'Parolni tiklash uchun administrator bilan bog\'laning.');
+    setAuthError('');
+    setForgotHint(t('login.forgotPasswordHint'));
   };
 
   const progressMap = {
@@ -280,7 +300,7 @@ export default function LoginPage() {
                       type={showPass ? 'text' : 'password'}
                       placeholder={t('login.passwordPlaceholder')}
                       value={password}
-                      onChange={e => { setAuthError(''); setPassword(e.target.value); }}
+                      onChange={e => { setAuthError(''); setForgotHint(''); setPassword(e.target.value); }}
                       autoFocus
                       onKeyDown={e => e.key === 'Enter' && handleContinue()}
                     />
@@ -288,9 +308,24 @@ export default function LoginPage() {
                       {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
                     </button>
                   </div>
-                  <button style={s.forgotBtn} onClick={handleForgotPassword}>
+                  <a
+                    href={SUPPORT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={s.forgotBtn}
+                    onClick={handleForgotPassword}
+                  >
                     {t('login.forgot')}
-                  </button>
+                  </a>
+
+                  {forgotHint && (
+                    <motion.p
+                      initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}
+                      style={s.forgotHint}
+                    >
+                      {forgotHint}
+                    </motion.p>
+                  )}
 
                   {/* Yangi foydalanuvchi uchun havola */}
                   <div style={s.switchRow}>
@@ -469,6 +504,12 @@ const getStyles = (isMobile) => ({
     fontFamily: 'inherit', marginTop: '6px', padding: '12px 0px',
     textDecoration: 'underline', textUnderlineOffset: 3,
     display: 'inline-block', minHeight: '44px',
+  },
+  // Ko'rsatma — XATO EMAS, shuning uchun qizil `errorText` ishlatilmaydi:
+  // yordam so'ragan odamga qizil matn "nimadir buzildi" deb ko'rinadi.
+  forgotHint: {
+    marginTop: 2, marginBottom: 0, fontSize: 'var(--fs-md)',
+    color: 'var(--text3)', lineHeight: 1.5, fontWeight: 500,
   },
   errorText: { marginTop: 10, fontSize: 'var(--fs-md)', color: 'var(--red)', fontWeight: 500 },
   footer: { 

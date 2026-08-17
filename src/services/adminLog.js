@@ -63,6 +63,10 @@ export const ADMIN_ACTIONS = {
   'role.set_user': { label: 'Oddiy foydalanuvchiga aylantirildi', group: 'access', danger: true },
   'role.set_partner': { label: 'Hamkor ustoz qilindi', group: 'access' },
   'user.delete': { label: "Foydalanuvchi o'chirildi", group: 'access', danger: true },
+  // `danger` — parol tiklash hisobga KIRISH huquqini boshqa odam qo'liga
+  // beradi va eski seanslarni uzadi. Jurnalda ajralib turishi shart: "hisobim
+  // o'g'irlandi" degan shikoyatda birinchi qaraladigan yozuv aynan shu.
+  'user.reset_password': { label: 'Vaqtinchalik parol berildi', group: 'access', danger: true },
   'premium.grant': { label: 'Pro berildi', group: 'access' },
   'premium.revoke': { label: 'Pro bekor qilindi', group: 'access' },
   'partner.assign_code': { label: 'Hamkor kodi biriktirildi', group: 'access' },

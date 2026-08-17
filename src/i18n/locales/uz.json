@@ -344,6 +344,10 @@
     "standardDesc": "Haqiqiy attestatsiya formati — barcha bo'limlardan aralash savollar",
     "weakTitle": "Zaif mavzularga urg'u",
     "weakDesc": "Siz ko'p xato qilgan mavzulardan ko'proq savol tushadi",
+    "weeklyTitle": "Haftalik diagnostika",
+    "weeklyDesc": "Ustozingiz tayyorlagan haftalik to'plam",
+    "weeklyDone": "Ishlangan: {{correct}}/{{total}}",
+    "weeklyPickFirst": "Avval qaysi haftani ishlashni tanlang",
     "chipQuestions": "{{n}} ta savol",
     "chipMinutes": "{{n}} daqiqa",
     "resumeTitle": "Tugallanmagan imtihon bor",
@@ -469,6 +473,7 @@
     "suspicious": "shubhali",
     "streakDays": "🔥 {{count}} kun",
     "points": "BALL",
+    "unranked": "Birinchi testni yeching — reytingga qo'shilasiz",
     "empty": "Hozircha reyting bo'sh",
     "deleteTitle": "O'chirishni tasdiqlang",
     "deleteText": "\"{{name}}\" ning reyting natijasini rostdan ham o'chirasizmi?"
@@ -911,7 +916,7 @@
     "termsLink": "Foydalanish Shartlari",
     "policyP2": "ga rozi bo'lasiz.",
     "dataSecure": "Ma'lumotlaringiz xavfsiz himoyalangan",
-    "forgotPasswordHint": "Parolni tiklash uchun administrator bilan bog'laning."
+    "forgotPasswordHint": "Telegram ochildi — @zehinuz ga telefon raqamingizni yozing. Administrator vaqtinchalik parol beradi, keyin uni Profil bo'limidan o'zgartirasiz."
   },
   "onboarding": {
     "goalTitle": "Maqsadingiz nima?",
