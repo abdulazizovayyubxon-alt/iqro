@@ -97,6 +97,14 @@ function daysUntil(examDateValue) {
 const TEXT = {
   uz: {
     title: (d) => `Imtihongacha ${d} kun`,
+    // ── Sanoqsiz variant ────────────────────────────────────────────────────
+    // Imtihon sanasi yo'q foydalanuvchi uchun. Kunlik reja matni sanaga
+    // UMUMAN bog'liq emas (u savol soni va daqiqadan iborat), shuning uchun
+    // sarlavhaning sanoqsiz varianti yetarli.
+    // `planFresh` alohida: `fresh` matni «Bugungi reja...» deb boshlanadi va
+    // sarlavha bilan takrorlanib qolardi.
+    planTitle: () => 'Bugungi reja tayyor',
+    planFresh: (n, m) => `${n} savol, taxminan ${m} daqiqa.`,
     fresh: (n, m) => `Bugungi reja: ${n} savol, taxminan ${m} daqiqa.`,
     partial: (done, n) => `Bugun ${done} ta savol ishlandi. Rejani yakunlash uchun yana ${n} ta qoldi.`,
     step: (s, m) => `Bugungi qadam: ${s}. Taxminan ${m} daqiqa.`,
@@ -107,6 +115,8 @@ const TEXT = {
   },
   ru: {
     title: (d) => `До экзамена ${d} дн.`,
+    planTitle: () => 'План на сегодня готов',
+    planFresh: (n, m) => `${n} вопросов, примерно ${m} минут.`,
     fresh: (n, m) => `План на сегодня: ${n} вопросов, примерно ${m} минут.`,
     partial: (done, n) => `Сегодня решено ${done} вопросов. До завершения плана осталось ${n}.`,
     step: (s, m) => `Шаг на сегодня: ${s}. Примерно ${m} минут.`,
@@ -117,6 +127,8 @@ const TEXT = {
   },
   en: {
     title: (d) => `${d} days until the exam`,
+    planTitle: () => 'Today’s plan is ready',
+    planFresh: (n, m) => `${n} questions, about ${m} minutes.`,
     fresh: (n, m) => `Today's plan: ${n} questions, about ${m} minutes.`,
     partial: (done, n) => `${done} questions done today. ${n} left to finish the plan.`,
     step: (s, m) => `Today's step: ${s}. About ${m} minutes.`,
@@ -190,14 +202,36 @@ export default async function handler(req, res) {
     scanned: 0,
     eligible: 0,
     sent: 0,
-    skipped: { noToken: 0, optedOut: 0, noExam: 0, examPassed: 0, inactive: 0, goalDone: 0, alreadySent: 0 },
+    skipped: { noToken: 0, optedOut: 0, inactive: 0, goalDone: 0, alreadySent: 0 },
     // Xabar qaysi sabab bilan ketgani — matn o'zgarishining ta'sirini o'lchash uchun
     reason: { streak: 0, unvon: 0, plan: 0 },
+    // Sana holati. Ilgari bular `skipped.noExam` / `skipped.examPassed` edi —
+    // ya'ni xabar UMUMAN yuborilmasdi. Endi xabar ketadi, faqat sanoqsiz
+    // sarlavha bilan; shuning uchun bu «o'tkazib yuborildi» emas, KUZATUV
+    // hisoblagichi: sanasiz auditoriya ulushi qanchaligini ko'rsatadi.
+    undated: { missing: 0, passed: 0, global: 0 },
     errors: [],
   };
 
   // { token → {title, body} } — bitta foydalanuvchida bir nechta qurilma bo'lishi mumkin
   const queue = [];
+
+  // ── Umumiy imtihon sanasi (zaxira manba) ──────────────────────────────────
+  // Mijoz tomoni sanani UCH manbadan oladi (src/utils/examDate.js): shaxsiy →
+  // umumiy (`settings/exam`) → konfiguratsiya. Server esa faqat BIRINCHISINI
+  // o'qirdi. `users/{uid}.examDate` ixtiyoriy modaldan yoziladi
+  // (ExamDateModal.jsx) — ya'ni admin umumiy sanani belgilagan bo'lsa ham,
+  // uni ochmagan foydalanuvchining eslatmasi sanoqsiz qolardi.
+  //
+  // O'qish byudjeti: cron ishga tushganda BIR marta, ya'ni +1 hujjat/kun.
+  let globalExamDate = null;
+  try {
+    const examSnap = await db.collection('settings').doc('exam').get();
+    if (examSnap.exists) globalExamDate = examSnap.data()?.date || null;
+  } catch (e) {
+    // Zaxira o'qilmasa ham eslatma ishlaydi — shaxsiy sana yoki sanoqsiz matn
+    out.errors.push(`settings/exam: ${e.message}`);
+  }
 
   try {
     let lastDoc = null;
@@ -220,7 +254,9 @@ export default async function handler(req, res) {
         // lekin zanjir/unvon xabarlari uchun emas — ular sanadan mustaqil.
         // Shu sababli tekshiruv endi darhol `continue` qilmaydi, quyida
         // holat aniqlanganidan keyin hal qilinadi.
-        const daysLeft = daysUntil(u.examDate);
+        // Shaxsiy sana ustun; bo'lmasa admin belgilagan umumiy sana ishlaydi.
+        const usedGlobalExam = !u.examDate && !!globalExamDate;
+        const daysLeft = daysUntil(u.examDate || globalExamDate);
         const examOk = daysLeft !== null && daysLeft > 0;
 
         // Statistika: faollik va bugungi maqsad
@@ -296,11 +332,33 @@ export default async function handler(req, res) {
               : t.fresh(target, Math.max(1, Math.round((target * SECONDS_PER_Q) / 60)));
           link = '/analysis?tab=plan';
           out.reason.plan++;
+          if (usedGlobalExam) out.undated.global++;
         } else {
-          // Aytadigan gap yo'q: yutuq lahzasi ham yo'q, imtihon sanasi ham ishlamaydi
-          if (daysLeft !== null && daysLeft <= 0) out.skipped.examPassed++;
-          else out.skipped.noExam++;
-          continue;
+          // ── Zaxira tarmoq: imtihon sanasi yo'q (yoki o'tgan) ──────────────
+          //
+          // Ilgari bu yerda `continue` turardi va foydalanuvchi HECH QANDAY
+          // xabar olmasdi. Shu tarmoqqa kimlar tushadi:
+          //   · zanjiri hali qurilmagan (streak < RISK_MIN_STREAK) — YANGI odam;
+          //   · zanjiri bir kundan ko'proq oldin uzilgan — QAYTMAYOTGAN odam;
+          //   · unvon bosag'asida emas — ya'ni ko'pchilik.
+          // Ya'ni aynan ketish arafasidagi segment jim qolardi, holbuki
+          // kunlik reja matni imtihon sanasiga bog'liq emas — u savol soni
+          // va daqiqadan iborat. Sanoq esa faqat sarlavhada edi.
+          //
+          // Barcha himoya shartlari o'z kuchida qoladi: kuniga bitta xabar,
+          // faqat push'ga o'zi ruxsat berganlar, 30 kun ichida faol bo'lganlar
+          // va bugungi maqsadni hali yopmaganlar.
+          const stepName = planStepName(stats.todayPlan, today, lang);
+          title = t.planTitle();
+          body = stepName
+            ? t.step(stepName, Math.max(1, stats.todayPlan.minutes || Math.round((remaining * SECONDS_PER_Q) / 60)))
+            : answered > 0
+              ? t.partial(answered, remaining)
+              : t.planFresh(target, Math.max(1, Math.round((target * SECONDS_PER_Q) / 60)));
+          link = '/analysis?tab=plan';
+          out.reason.plan++;
+          if (daysLeft !== null && daysLeft <= 0) out.undated.passed++;
+          else out.undated.missing++;
         }
 
         out.eligible++;
