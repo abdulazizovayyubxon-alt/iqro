@@ -21,6 +21,10 @@ import { processQuestionsOnTheFly } from '../utils/questionFixer';
 import PremiumModal from '../components/PremiumModal';
 import SafeHtml from '../components/shared/SafeHtml';
 import QuestionMedia from '../components/QuestionMedia';
+import ExamTimer from '../components/test/ExamTimer';
+import {
+  deadlineFromSession, sessionHasTime, sessionSecondsLeft, formatExamTime,
+} from '../utils/examClock';
 import { db, auth } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { summarizeTestResults } from '../engine/SmartQuestionEngine';
@@ -130,7 +134,14 @@ const ExamPage = () => {
   const [pacing, setPacing] = useState(null);
   const [weakTopicsSorted, setWeakTopicsSorted] = useState([]);
   const [currentQ, setCurrentQ] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(() => getExamDuration(cat));
+  // ⚠️ AUDIT 2026-08-17 — vaqt endi DEADLINE (epoch ms) bilan boshqariladi.
+  // Avval har soniya kamayadigan `timeLeft` state'i turardi; u mobil fonda
+  // muzlab qolar (aldash vektori + noto'g'ri simulyatsiya) va har soniyada
+  // BUTUN sahifani qayta render qilardi. Sabab va yechim to'liq izohi:
+  // `components/test/ExamTimer.jsx` fayl sarlavhasida.
+  //
+  // `null` = taymer to'xtagan (kirish oynasi, natija, ko'rib chiqish).
+  const [deadlineMs, setDeadlineMs] = useState(null);
   const [finished, setFinished] = useState(false);
   const [startTimeMs, setStartTimeMs] = useState(Date.now());
   const [endTime, setEndTime] = useState(null);
@@ -215,20 +226,20 @@ const ExamPage = () => {
     return () => document.body.classList.remove('exam-fullscreen');
   }, [examStarted, finished]);
 
-  const timerRef = useRef(null);
-  // Taymer intervali IMTIHON BOSHIDA yaratiladi va `answers` uning dependency'si emas.
-  // Agar interval to'g'ridan handleFinish'ni chaqirsa, u eski (bo'sh answers'li) closure'ni
-  // ushlab qolib, vaqt tugaganda natijani 0 ball hisoblardi. Ref har renderda yangilanadi —
-  // shuning uchun avto-yakun HAR DOIM eng so'nggi javoblar bilan hisoblanadi.
+  // Vaqt tugaganda avto-yakun eski (bo'sh answers'li) closure'ni ushlab qolmasligi
+  // uchun ref orqali chaqiriladi. Ref har renderda yangilanadi — shuning uchun
+  // avto-yakun HAR DOIM eng so'nggi javoblar bilan hisoblanadi.
   const handleFinishRef = useRef(null);
 
   const questionStartTimeRef = useRef(Date.now());
   const questionTimesRef = useRef({});
+  // Shu imtihon uchun rejalashtirilgan davomiylik (soniya). Standart rejimda
+  // fanga qarab, haftalik rejimda savol soniga mutanosib. Deadline shu qiymatdan
+  // savollar TAYYOR bo'lgan lahzada hisoblanadi.
+  const plannedDurationRef = useRef(getExamDuration(cat));
   const committedRef = useRef(false);   // natija ikki marta yozilishidan himoya
   const resumingRef = useRef(false);    // resume'da savollar qayta yuklanmasligi uchun
   const sessionCheckedRef = useRef(false);
-  const timeLeftRef = useRef(timeLeft); // sessiya saqlashda oxirgi qiymatni olish uchun
-  useEffect(() => { timeLeftRef.current = timeLeft; }, [timeLeft]);
 
   // ── Sessiyani saqlash (resume) ──────────────────────────────────────────
   // Faol imtihon holatini localforage'ga yozadi. Har javob/savol almashishida,
@@ -252,7 +263,14 @@ const ExamPage = () => {
       answers,
       flagged,
       currentQ,
-      timeLeft: timeLeftRef.current,
+      // ⚠️ `timeLeft` (qoldiq soniya) O'RNIGA `deadlineMs` saqlanadi.
+      // Avvalgi sxemada qoldiq soniya yozilardi va u faqat javob bosilganda
+      // yoki har 30 soniyada yangilanardi — ya'ni ilova yopilib qayta
+      // ochilganda oxirgi yozuvdan keyin o'tgan BUTUN vaqt foydalanuvchiga
+      // qaytarilardi (har uzilishda 30 soniyagacha sovg'a). Deadline esa
+      // mutlaq nuqta: uzilish qancha davom etsa, o'shancha vaqt haqiqatan
+      // yo'qoladi — xuddi haqiqiy imtihonda bo'lgani kabi.
+      deadlineMs,
       questionTimes: questionTimesRef.current,
       startTimeMs,
       savedAt: Date.now()
@@ -280,14 +298,14 @@ const ExamPage = () => {
       // Endi egalik QAT'IY: uid bo'lmasa yoki mos kelmasa, sessiya tiklanmaydi.
       // Kamchiligi (juda kam holatda bitta sessiya yo'qolishi) maxfiylikdan arzon.
       const valid = s && s.cat === cat && !!s.uid && !!user?.uid && s.uid === user.uid
-        && Array.isArray(s.questions) && s.questions.length > 0 && s.timeLeft > 0;
+        && Array.isArray(s.questions) && s.questions.length > 0 && sessionHasTime(s);
       if (valid) {
         setQuestions(s.questions);
         setTopicGroups(s.topicGroups || []);
         setAnswers(s.answers || {});
         setFlagged(s.flagged || {});
         setCurrentQ(s.currentQ || 0);
-        setTimeLeft(s.timeLeft);
+        setDeadlineMs(deadlineFromSession(s));
         setExamType(s.examType || 'standard');
         setSelectedSetId(s.selectedSetId || null);
         setStartTimeMs(s.startTimeMs || Date.now());
@@ -325,7 +343,7 @@ const ExamPage = () => {
     setAnswers(s.answers || {});
     setFlagged(s.flagged || {});
     setCurrentQ(s.currentQ || 0);
-    setTimeLeft(s.timeLeft);
+    setDeadlineMs(deadlineFromSession(s));
     setExamType(s.examType || 'standard');
     setSelectedSetId(s.selectedSetId || null);
     setStartTimeMs(s.startTimeMs || Date.now());
@@ -360,7 +378,16 @@ const ExamPage = () => {
       return;
     }
 
-    setTimeLeft(getExamDuration(cat));
+    // Deadline SHU YERDA o'rnatilMAYDI — savollar hali yuklanmoqda. U pastdagi
+    // alohida effektda, savollar TAYYOR bo'lgach qo'yiladi. Aks holda sekin
+    // tarmoqda yuklashga ketgan 5–10 soniya imtihon vaqtidan yeyilardi
+    // (eski sxemada taymer `loading` bayrog'i bilan to'xtatilardi, deadline
+    // modelida esa "to'xtatish" tushunchasi yo'q — boshlanish nuqtasi aniq
+    // bo'lishi shart).
+    setDeadlineMs(null);
+    // Standart/zaif rejim uchun davomiylik — fanga qarab. Haftalik rejim uni
+    // savol soniga mutanosib ravishda qayta yozadi (`loadWeeklyQuestions`).
+    plannedDurationRef.current = getExamDuration(cat);
     setFinished(false);
     setReviewMode(false);
     setAnswers({});
@@ -400,8 +427,10 @@ const ExamPage = () => {
       setTopicGroups([{ name: selectedSet?.title || 'Haftalik diagnostika', icon: null, indices: list.map((_, i) => i) }]);
       // Vaqt savol soniga MUTANOSIB: standart imtihon 50 savolga mo'ljallangan,
       // 35 savollik to'plamga o'sha vaqtni bersak diagnostika ma'nosini yo'qotadi.
+      // Deadline pastdagi effektda qo'yiladi (savollar tayyor bo'lgach), shuning
+      // uchun bu yerda faqat KERAKLI DAVOMIYLIK yozib qo'yiladi.
       const perQuestion = getExamDuration(cat) / EXAM_TOTAL;
-      setTimeLeft(Math.round(perQuestion * list.length));
+      plannedDurationRef.current = Math.round(perQuestion * list.length);
       setLoading(false);
     };
 
@@ -682,32 +711,54 @@ const ExamPage = () => {
     // to'plam savollari qolib ketardi.
   }, [cat, examStarted, examType, selectedSetId]);
 
-  // Taymer — FAQAT faol imtihon paytida ishlaydi.
-  // Avval kirish oynasida, yuklanishda va natijadan "ko'rib chiqish"ga
-  // o'tilganda ham hisoblab turardi (review'da vaqt tugasa imtihon ikkinchi
-  // marta yakunlanib, ball ikki marta yozilardi).
+  // ── Deadline'ni o'rnatish — imtihon HAQIQATAN boshlangan lahzada ──
+  // Shart eski taymer effektidagi bilan bir xil (kirish oynasi, yuklanish,
+  // natija va "ko'rib chiqish" da vaqt ketmaydi), lekin bu yerda faqat
+  // BOSHLANISH NUQTASI qo'yiladi. Har soniyalik sanash `ExamTimer` ichida —
+  // shu sababli bu sahifa endi soniyada bir marta qayta render bo'lmaydi.
+  //
+  // `deadlineMs` allaqachon bor bo'lsa (resume yoki qayta render) — tegilmaydi,
+  // aks holda har kichik o'zgarishda vaqt boshidan tiklanib ketardi.
   useEffect(() => {
     if (!examStarted || finished || reviewMode || loading || questions.length === 0) return;
-    timerRef.current = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev <= 1) {
-          clearInterval(timerRef.current);
-          handleFinishRef.current?.(true);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-    return () => clearInterval(timerRef.current);
-  }, [examStarted, finished, reviewMode, loading, questions.length]);
+    if (deadlineMs) return;
+    setDeadlineMs(Date.now() + plannedDurationRef.current * 1000);
+  }, [examStarted, finished, reviewMode, loading, questions.length, deadlineMs]);
 
-  const formatTime = (secs) => {
-    const h = Math.floor(secs / 3600);
-    const m = Math.floor((secs % 3600) / 60);
-    const s = secs % 60;
-    if (h > 0) return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-    return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  // Vaqt tugadi (ExamTimer wall-clock bo'yicha aniqlaydi) → avto-yakun.
+  // `handleFinishRef` ishlatiladi: eng so'nggi javoblar bilan hisoblanishi uchun.
+  const handleTimeExpired = () => { handleFinishRef.current?.(true); };
+
+  // ── "Qayta urinish" — SPA ichida, sahifani qayta yuklamasdan ──
+  // ⚠️ AUDIT 2026-08-17: avval `navigate(0)` edi, ya'ni to'liq
+  // `location.reload()`. Ilova boshidan boot bo'lardi: splash, Firebase auth,
+  // `getDoc(users/{uid})`, chunk'lar, statistika — sekin tarmoqda 3–6 soniya va
+  // ortiqcha Firestore o'qishlari. SPA'da bunga ehtiyoj yo'q: holatni o'zimiz
+  // tozalaymiz va kirish oynasiga qaytamiz.
+  const restartExam = () => {
+    clearSavedSession();
+    committedRef.current = false;
+    resumingRef.current = false;
+    sessionCheckedRef.current = true;   // saqlangan sessiya qayta tiklanmasin
+    setDeadlineMs(null);
+    setFinished(false);
+    setReviewMode(false);
+    setAnswers({});
+    setFlagged({});
+    setCurrentQ(0);
+    setPacing(null);
+    setWeakTopicsSorted([]);
+    setEndTime(null);
+    setExamEarnedPoints(0);
+    setExamGained([]);
+    setExamReward({ points: 0, freezes: 0 });
+    questionTimesRef.current = {};
+    questionStartTimeRef.current = Date.now();
+    // Kirish oynasiga qaytadi; "Boshlash" savollarni qayta yuklaydi.
+    setExamStarted(false);
   };
+
+  const formatTime = formatExamTime;
 
   const handleSelect = (optIdx) => {
     if (finished) return;
@@ -726,7 +777,10 @@ const ExamPage = () => {
     committedRef.current = true;
 
     accumulateTime();
-    clearInterval(timerRef.current);
+    // Taymerni to'xtatamiz: `null` deadline = ExamTimer sanashni to'xtatadi va
+    // "ko'rib chiqish" rejimida vaqt ketmaydi (avval review'da vaqt tugab,
+    // imtihon ikkinchi marta yakunlanib, ball ikki marta yozilardi).
+    setDeadlineMs(null);
     clearSavedSession(); // imtihon yakunlandi — resume sessiyasi endi kerak emas
     setFinished(true);
     setEndTime(new Date());
@@ -869,8 +923,9 @@ const ExamPage = () => {
   const correctCount = finished ? questions.filter((q, i) => answers[i] === q.correct).length : 0;
   const wrongCount = finished ? questions.filter((q, i) => answers[i] !== undefined && answers[i] !== q.correct).length : 0;
   const pct = questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0;
-  const isUrgent = timeLeft <= 300; // 5 daqiqa
-  const isWarning = timeLeft <= 600; // 10 daqiqa
+  // `isUrgent`/`isWarning` endi bu yerda hisoblanmaydi — ular soniyaga bog'liq
+  // bo'lgani uchun butun sahifani har soniya qayta render qilardi. Rang holati
+  // `ExamTimer` ichida, o'z state'i bilan.
 
   if (!examStarted) {
     const durationMin = Math.round(getExamDuration(cat) / 60);
@@ -935,7 +990,10 @@ const ExamPage = () => {
                     {t('exam.resumeInfo', {
                       answered: Object.keys(savedSession.answers || {}).length,
                       total: savedSession.questions.length,
-                      time: formatTime(savedSession.timeLeft)
+                      // Qoldiq vaqt deadline'dan HOZIR hisoblanadi: kartochka
+                      // ochilib turgan vaqt ham imtihon vaqtidan ketadi, ya'ni
+                      // ko'rsatilgan son haqiqatga mos bo'lishi kerak.
+                      time: formatTime(sessionSecondsLeft(savedSession))
                     })}
                   </div>
                 </div>
@@ -1329,7 +1387,7 @@ const ExamPage = () => {
           </button>
 
           <div style={{ display: 'flex', gap: 12, marginTop: 12 }}>
-            <button className="btn btn-primary" style={{ flex: 1 }} onClick={() => navigate(0)}>
+            <button className="btn btn-primary" style={{ flex: 1 }} onClick={restartExam}>
               {t('exam.retry')}
             </button>
             <button className="btn btn-outline" style={{ flex: 1 }} onClick={() => navigate('/test')}>
@@ -1377,10 +1435,7 @@ const ExamPage = () => {
             </button>
           ) : (
             <>
-              <div className={`exam-timer ${isUrgent ? 'timer-danger' : isWarning ? 'timer-warning' : ''}`}>
-                <Clock size={16} />
-                <span>{t('exam.timeLeft')} <strong>{formatTime(timeLeft)}</strong></span>
-              </div>
+              <ExamTimer deadlineMs={deadlineMs} onExpire={handleTimeExpired} />
               <button
                 className="btn btn-sm"
                 style={{ background: 'var(--red)', color: 'white', border: 'none' }}
@@ -1699,6 +1754,39 @@ const ExamPage = () => {
           )}
         </div>
       </div>
+
+      {/* ── Mobil pastki panel (bosh barmoq zonasi) ──
+          Faqat ≤900px da ko'rinadi (CSS `.exam-mobile-bar`), shuning uchun
+          JS breakpoint'i takrorlanmaydi — ikkisi bir-biridan ayrilib
+          ketmasligi uchun yagona manba CSS'da qoldi.
+          Ko'rib chiqish rejimida ko'rsatilmaydi: u yerda navigatsiya
+          natijalar ekrani orqali boradi. */}
+      {!reviewMode && (
+        <div className="exam-mobile-bar">
+          <button
+            className="emb-side"
+            onClick={() => handleQuestionSwitch(currentQ - 1)}
+            disabled={currentQ === 0}
+            aria-label={t('common.back')}
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            className="emb-counter"
+            onClick={() => document.querySelector('.exam-navigator')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+            aria-label={t('exam.questions')}
+          >
+            {currentQ + 1} / {questions.length} · {answeredCount} ✓
+          </button>
+          <button
+            className="emb-next"
+            onClick={() => handleQuestionSwitch(currentQ + 1)}
+            disabled={currentQ === questions.length - 1}
+          >
+            {t('test.next')} <ChevronRight size={18} />
+          </button>
+        </div>
+      )}
 
       {showConfirmModal && (
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

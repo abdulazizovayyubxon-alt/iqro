@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, CheckCircle, Search } from 'lucide-react';
-import { doc, updateDoc, getDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import { useIsMobile } from '../hooks/useIsMobile';
@@ -22,6 +22,46 @@ const PRIMARY = 'var(--accent)';
 
 // MTT (maktabgacha) yo'nalishlari
 const MTT_IDS = ['mtt', 'mtt_rahbar', 'mtt_logoped', 'mtt_psixolog', 'mtt_jismoniy'];
+
+// ── Bajarilmagan onboarding yozuvi navbati ──────────────────────────────────
+// Tarmoq uzilganda yozuv shu yerda saqlanadi va keyingi ishga tushishda yoki
+// tarmoq qaytganda qayta yuboriladi. `localStorage` ATAYLAB: navbat kichik
+// (bitta obyekt) va `localforage` ning async ochilishini kutish kerak emas —
+// yozuv aynan ilova yopilayotgan lahzada ham kirib qolishi mumkin.
+const PENDING_KEY = (uid) => `zehin_pending_onboarding_${uid}`;
+
+// «Reja tuzilmoqda» ekranining davomiyligi. Progress bar ham, checklist ham
+// SHU qiymatdan hisoblanadi — aks holda bar ekrandan oldin to'lib qotib turardi.
+// Tanlovdan keyingi kechikish 350ms edi; 180ms da animatsiya baribir ko'rinadi,
+// lekin uch qadamda ~0.5 soniya tejaladi.
+const LOADING_MS = 1500;
+const SELECT_DELAY_MS = 180;
+
+function queuePendingOnboarding(uid, payload) {
+  try {
+    localStorage.setItem(PENDING_KEY(uid), JSON.stringify(payload));
+  } catch { /* private rejim — navbat ishlamaydi, yozuv keyingi urinishda ketadi */ }
+}
+
+/**
+ * Navbatdagi onboarding yozuvini yuborishga urinadi.
+ * Muvaffaqiyatli bo'lsa navbat tozalanadi. Xato bo'lsa navbatda qoladi.
+ * Eksport qilingan: `App.jsx` ilova ishga tushganda ham chaqirishi mumkin.
+ */
+export async function flushPendingOnboarding(uid) {
+  if (!uid) return false;
+  let raw = null;
+  try { raw = localStorage.getItem(PENDING_KEY(uid)); } catch { return false; }
+  if (!raw) return false;
+  try {
+    const payload = JSON.parse(raw);
+    await setDoc(doc(db, 'users', uid), payload, { merge: true });
+    localStorage.removeItem(PENDING_KEY(uid));
+    return true;
+  } catch {
+    return false; // navbatda qoladi
+  }
+}
 
 const GOALS = [
   { id: 'second_category', badge: '🥈' },
@@ -143,9 +183,20 @@ function LoadingStep({ isMobile }) {
   const [progress, setProgress] = React.useState(0);
   const ss = getStyles(isMobile);
 
+  // ⚠️ AUDIT 2026-08-17 — bar tezligi ekran davomiyligiga MOSLANGAN.
+  // Avval `40ms × 25 = 1000ms` da 100% ga yetardi, ekran esa 1500ms turardi:
+  // bar to'lib yarim soniya qotib turardi va foydalanuvchi ilovani buzuq deb
+  // o'ylardi. Endi ikkalasi ham `LOADING_MS` dan hisoblanadi — yagona manba.
   React.useEffect(() => {
-    const prog = setInterval(() => setProgress(p => Math.min(p + 4, 100)), 40);
-    const step = setInterval(() => setStepIdx(i => Math.min(i + 1, LOADING_STEPS.length - 1)), 450);
+    const TICKS = 50;
+    const prog = setInterval(
+      () => setProgress(p => Math.min(p + 100 / TICKS, 100)),
+      LOADING_MS / TICKS,
+    );
+    const step = setInterval(
+      () => setStepIdx(i => Math.min(i + 1, LOADING_STEPS.length - 1)),
+      LOADING_MS / Math.max(1, LOADING_STEPS.length),
+    );
     return () => { clearInterval(prog); clearInterval(step); };
   }, [LOADING_STEPS.length]);
 
@@ -307,6 +358,19 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
   const [subject, setSubject] = useState(null);
   const [time, setTime]     = useState(null);
   const [, setSaving] = useState(false);
+  // Bulutga yozuv bajarilmadimi (tarmoq yo'q) — oxirgi ekranda jim qator
+  // ko'rsatiladi. Yolg'on "hammasi tayyor" ko'rsatmaslik uchun.
+  const [syncPending, setSyncPending] = useState(false);
+
+  // Tarmoq qaytganda navbatdagi yozuvni yuborishga urinamiz
+  useEffect(() => {
+    if (!syncPending || !user?.uid) return;
+    const retry = () => {
+      flushPendingOnboarding(user.uid).then(ok => { if (ok) setSyncPending(false); });
+    };
+    window.addEventListener('online', retry);
+    return () => window.removeEventListener('online', retry);
+  }, [syncPending, user?.uid]);
 
   // Tanlangan fan DARHOL ilova holatiga qo'llanadi (oxirgi tugmani kutmasdan).
   // Foydalanuvchi orqaga qaytib boshqa fan tanlasa — yangisi qo'llanadi.
@@ -357,18 +421,35 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
     // yerdan boshlanadi.
     writeContract({ toifa, dailyMinutes: minutes }, user?.uid);
 
-    try {
-      if (user?.uid) {
-        await updateDoc(doc(db, 'users', user.uid), {
-          onboardingDone: true,
-          onboardingSubject: subject,
-          // Profil bilan BIR XIL maydon — ikkita alohida «toifa» lug'ati yo'q
-          teacherCategory: toifa || '',
-          subject: subject || '',
-        });
+    // ⚠️ AUDIT 2026-08-17 — bu yozuv avval "yoq va unut" edi: `updateDoc`
+    // xatosi faqat `console.error` ga tushardi. Ro'yxatdan o'tish paytida
+    // tarmoq uzilsa (mobil internetda odatiy holat) `onboardingDone` bulutga
+    // tushmasdi. Joriy qurilmada muammo ko'rinmaydi — `App.jsx` localStorage'ga
+    // bayroq qo'yadi — lekin ilova qayta o'rnatilganda yoki IKKINCHI qurilmada
+    // onboarding boshidan qaytar va tanlangan fan/toifa yo'qolardi.
+    // Foydalanuvchi buni "ilova meni eslamaydi" deb ko'radi.
+    //
+    // Endi: (a) `setDoc(merge)` — hujjat yo'q bo'lsa `updateDoc` REJECT
+    // qilardi; (b) muvaffaqiyatsiz yozuv navbatga tushadi va keyingi imkoniyatda
+    // qayta urinadi (`services/studyContract` dagi naqsh emas, alohida yengil
+    // navbat — pastdagi `flushPendingOnboarding`).
+    if (user?.uid) {
+      const payload = {
+        onboardingDone: true,
+        onboardingSubject: subject,
+        // Profil bilan BIR XIL maydon — ikkita alohida «toifa» lug'ati yo'q
+        teacherCategory: toifa || '',
+        subject: subject || '',
+      };
+      try {
+        await setDoc(doc(db, 'users', user.uid), payload, { merge: true });
+      } catch (e) {
+        console.error('Onboarding yozuvi bajarilmadi, navbatga qo\'yildi:', e);
+        setSyncPending(true);
+        queuePendingOnboarding(user.uid, payload);
       }
-    } catch (e) { console.error(e); }
-    setTimeout(() => { setStep(4); setSaving(false); }, 1500);
+    }
+    setTimeout(() => { setStep(4); setSaving(false); }, LOADING_MS);
   };
 
   const handleSelect = (val) => {
@@ -379,7 +460,7 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
       } else {
         goNext();
       }
-    }, 350);
+    }, SELECT_DELAY_MS);
   };
 
   const stepData = [
@@ -453,7 +534,22 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
                 />
               )}
               {step === 3 && <LoadingStep isMobile={isMobile} />}
-              {step === 4 && <WelcomeStep goal={goal} time={time} onDone={() => onComplete(subject)} isMobile={isMobile} />}
+              {step === 4 && (
+                <>
+                  <WelcomeStep goal={goal} time={time} onDone={() => onComplete(subject)} isMobile={isMobile} />
+                  {/* Yozuv bulutga tushmagan bo'lsa halol aytamiz — lekin oqimni
+                      to'xtatmaymiz: sozlamalar lokal saqlangan va tarmoq
+                      qaytganda o'zi sinxronlanadi. */}
+                  {syncPending && (
+                    <p style={{
+                      fontSize: 'var(--fs-sm)', color: 'var(--text3)',
+                      textAlign: 'center', margin: '0 0 16px', lineHeight: 1.45,
+                    }}>
+                      {t('onboarding.syncPending', "Sozlamalar shu qurilmada saqlandi va internet qaytganda avtomatik sinxronlanadi.")}
+                    </p>
+                  )}
+                </>
+              )}
             </motion.div>
           </AnimatePresence>
         </div>

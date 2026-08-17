@@ -10,8 +10,20 @@
  *   VITE_FIREBASE_VAPID_KEY=...
  * Kalit bo'lmasa — push jimgina o'chiq qoladi (xatosiz).
  */
-import { getMessaging, getToken, onMessage, isSupported } from 'firebase/messaging';
-import { getApp } from 'firebase/app';
+// ⚠️ `firebase/messaging` ATAYLAB statik import QILINMAYDI (AUDIT 2026-08-17).
+//
+// Avval u shu yerda statik `import` bilan kelardi. Natijada bu modulni
+// import qilgan HAR QANDAY fayl butun messaging SDK'sini o'zi bilan tortardi —
+// jumladan `App.jsx` va `InterruptHost.jsx` (ikkalasi ham eager). Shu sababli
+// `fb-messaging` chunk'i `index.html` ga `modulepreload` bo'lib yozilib,
+// 36 KB birinchi ekrandan OLDIN yuklanardi. Push ruxsati bermagan
+// foydalanuvchiga (ko'pchilikka) u hech qachon kerak emas, va bu
+// `vite.config.js` dagi o'z niyatiga qarshi edi.
+//
+// Endi SDK faqat HAQIQATAN kerak bo'lganda (`getMessagingInstance` birinchi
+// chaqirilganda) yuklanadi. `pushSupported()` va `pushPermission()` esa SDK'siz
+// ishlaydi — ular faqat `Notification` va `navigator` ni o'qiydi, shuning uchun
+// InterruptHost'ning "ruxsat holatini tekshirish" yo'li bepul qoldi.
 import { doc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { db, firebaseConfig } from '../firebase';
 import { isPlayBuild } from '../config';
@@ -20,11 +32,20 @@ const VAPID_KEY = import.meta.env.VITE_FIREBASE_VAPID_KEY;
 const SW_SCOPE = '/firebase-cloud-messaging-push-scope';
 
 let messagingInstance = null;
+// SDK modulining o'zi ham keshlanadi (ikki marta yuklanmasin)
+let sdkPromise = null;
+
+function loadMessagingSdk() {
+  if (!sdkPromise) sdkPromise = import('firebase/messaging');
+  return sdkPromise;
+}
 
 async function getMessagingInstance() {
   if (messagingInstance) return messagingInstance;
   try {
+    const { getMessaging, isSupported } = await loadMessagingSdk();
     if (!(await isSupported())) return null;
+    const { getApp } = await import('firebase/app');
     messagingInstance = getMessaging(getApp());
     return messagingInstance;
   } catch {
@@ -76,6 +97,7 @@ export async function enablePush(user) {
     if (!messaging) return { ok: false, reason: 'unsupported' };
 
     const swReg = await registerSW();
+    const { getToken } = await loadMessagingSdk();
     const token = await getToken(messaging, { vapidKey: VAPID_KEY, serviceWorkerRegistration: swReg });
     if (!token) return { ok: false, reason: 'no_token' };
 
@@ -110,5 +132,6 @@ export async function enablePush(user) {
 export async function listenForegroundPush(onPush) {
   const messaging = await getMessagingInstance();
   if (!messaging) return () => {};
+  const { onMessage } = await loadMessagingSdk();
   return onMessage(messaging, (payload) => { try { onPush?.(payload); } catch { /* ignore */ } });
 }

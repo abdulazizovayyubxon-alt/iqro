@@ -532,7 +532,17 @@ button {
 .q-num { font-size: var(--fs-md); font-weight: 600; color: var(--text3); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
 .q-text { font-size: var(--fs-question); font-weight: var(--fw-medium); line-height: var(--lh-snug); margin-bottom: 28px; color: var(--text); letter-spacing: var(--ls-tight); }
 .options { display: flex; flex-direction: column; gap: 12px; }
-.option { display: flex; align-items: center; gap: 16px; padding: 16px; border-radius: 14px; border: 1.5px solid var(--border); background: var(--bg2); transition: all 0.2s; }
+/* `.option` endi `<button>` (a11y — AUDIT 2026-08-17). Brauzerning tugma uchun
+   sukut uslublari (markazga tekislash, o'z shrifti, o'z rangi) matnni buzmasligi
+   uchun ular aniq bekor qilinadi. `min-height: 48px` — teginish zonasi qisqa
+   bir so'zli variantda ham qulflanadi (avval faqat padding hisobiga chiqardi). */
+.option {
+  display: flex; align-items: center; gap: 16px; padding: 16px;
+  border-radius: 14px; border: 1.5px solid var(--border);
+  background: var(--bg2); transition: all 0.2s;
+  width: 100%; min-height: 48px; box-sizing: border-box;
+  text-align: left; font-family: inherit; color: inherit;
+}
 .option.hoverable:hover { border-color: var(--accent); background: var(--blue-bg); cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
 .option.hoverable:active { box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
 .option.correct { border-color: var(--green); background: var(--green-bg); }
@@ -1272,6 +1282,27 @@ body.exam-fullscreen .header,
 body.flashcard-fullscreen .header { display: none; }
 body.exam-fullscreen .exam-layout { height: 100vh; }
 
+/* ⚠️ AUDIT 2026-08-17 — pastki navigatsiya IMTIHON DAVOMIDA yashiriladi.
+   Avval `exam-fullscreen` faqat `.header` ni olib tashlardi, `.bottom-nav` esa
+   joyida turardi: 4 ta tab + markazda "Imtihon" FAB aynan bosh barmoq zonasida.
+   90 daqiqalik imtihonda bitta tasodifiy teginish `navigate()` ni chaqirib
+   foydalanuvchini imtihondan olib chiqib ketardi. `useExitGuard` bu yerda
+   yordam bermaydi — u faqat `popstate` (brauzer "orqaga") ni ushlaydi, `push`
+   navigatsiyasini emas. Sessiya localforage'da tirik qolsa ham, foydalanuvchi
+   ko'rgan narsa: "imtihonim yo'qoldi".
+   O'rniga imtihonning O'Z pastki paneli chiqadi (`.exam-mobile-bar`). */
+body.exam-fullscreen .bottom-nav { display: none !important; }
+body.exam-fullscreen .main-content { padding-bottom: 0 !important; }
+
+/* Taymer HAR DOIM ko'rinadi: mobilda uzun savolni o'qish uchun pastga
+   skroll qilinganda topbar ekrandan chiqib ketardi va qolgan vaqt
+   ko'rinmasdi. */
+.exam-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
 /* Test sahifasidagi fan/mavzu tanlagich — bosiladigan (dropdown) ekanini bildiradi */
 
 
@@ -1433,6 +1464,68 @@ body.exam-fullscreen .exam-layout { height: 100vh; }
   }
   .exam-result-card {
     padding: 20px 16px;
+  }
+
+  /* Imtihonning O'Z pastki paneli (bosh barmoq zonasi) — 1.1-band.
+     Avval "Orqaga/Keyingi" savol tanasining OXIRIDA turardi (izohdan keyin),
+     "Yakunlash" esa yana pastda navigator ichida. Rasmli yoki uzun savolda
+     bitta savoldan ikkinchisiga o'tish uchun ikki marta skroll kerak edi —
+     50 savolda bu interfeysning o'zi charchatadigan darajaga chiqardi. */
+  .exam-navigator { margin-bottom: 96px; }
+}
+
+/* Imtihon paneli: desktopda umuman yo'q (o'ng navigator bor), mobilda esa
+   FAQAT faol imtihon davomida. `body.exam-fullscreen` ni ExamPage aynan
+   `examStarted && !finished` bo'lganda qo'yadi — ya'ni shart CSS'da ham,
+   JSX'da ham bir xil ma'noni bildiradi. */
+.exam-mobile-bar { display: none; }
+
+@media (max-width: 900px) {
+  body.exam-fullscreen .exam-mobile-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+  }
+  .exam-mobile-bar button {
+    min-height: 48px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    color: var(--text);
+    font-family: inherit;
+    font-size: var(--fs-btn);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .exam-mobile-bar button:disabled { opacity: 0.4; cursor: default; }
+  /* Yon tugmalar kvadrat, o'rtadagi hisoblagich cho'ziladi */
+  .exam-mobile-bar .emb-side { flex: 0 0 56px; }
+  .exam-mobile-bar .emb-counter {
+    flex: 1;
+    font-variant-numeric: tabular-nums;
+    background: transparent;
+    border-color: transparent;
+    color: var(--text2);
+  }
+  .exam-mobile-bar .emb-next {
+    flex: 0 0 auto;
+    padding: 0 18px;
+    background: var(--cta);
+    border-color: var(--cta);
+    color: #fff;
   }
 }
 

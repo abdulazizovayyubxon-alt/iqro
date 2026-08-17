@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, Crown, BookOpen } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -7,6 +7,72 @@ import QuestionMedia from '../QuestionMedia';
 import TimerPill from './TimerPill';
 import { questionKey } from '../../engine/SmartQuestionEngine';
 import { useAuth } from '../../context/AuthContext';
+
+/**
+ * PersonalNote — savol ostidagi shaxsiy izoh maydoni.
+ *
+ * ⚠️ AUDIT 2026-08-17 — nega alohida komponent:
+ *   Avval `textarea` to'g'ridan-to'g'ri global holatga yozardi:
+ *       onChange={(e) => saveCustomMnemonic(qHash, e.target.value)}
+ *   `saveCustomMnemonic` esa `AppContext` state'ini o'zgartiradi va context
+ *   qiymati `state` ga bog'liq — ya'ni HAR BOSILGAN HARFDA butun ilova daraxti
+ *   (Header, BottomNav, Sidebar, TestPage, QuestionBox...) qayta render
+ *   bo'lardi. Uzun izoh yozganda klaviatura kechikar, harflar tushib qolardi.
+ *   Ustiga-ustak bulutga yozish debounce'i (3 s) har harfda qayta siljib,
+ *   yozuv oxirigacha kechikardi.
+ *
+ *   Endi matn MAHALLIY state'da yashaydi, global holatga esa fokus ketganda
+ *   (`onBlur`) yoki 800 ms tinchlikdan keyin bir marta yoziladi.
+ */
+function PersonalNote({ qHash, saved, onSave }) {
+  const { t } = useTranslation();
+  const stored = saved?.[qHash] || '';
+  const [draft, setDraft] = useState(stored);
+  const timerRef = useRef(null);
+
+  // Savol almashganda qoralamani yangi savolning saqlangan izohiga tiklaymiz.
+  // `qHash` — yagona bog'liqlik: `stored` ni ham qo'shsak, global yozuv
+  // qaytib kelganda maydon kursor bilan birga qayta o'rnatilardi.
+  useEffect(() => {
+    setDraft(saved?.[qHash] || '');
+    return () => clearTimeout(timerRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [qHash]);
+
+  const commit = (value) => {
+    clearTimeout(timerRef.current);
+    if (value !== (saved?.[qHash] || '')) onSave(qHash, value);
+  };
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setDraft(value);
+    clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => commit(value), 800);
+  };
+
+  return (
+    <div style={{ textAlign: 'left' }}>
+      <label htmlFor={`note-${qHash.length}`} style={{ display: 'block', fontSize: 'var(--fs-sm)', fontWeight: '700', color: 'var(--text3)', marginBottom: '6px' }}>
+        {t('test.personalNote')}
+      </label>
+      <textarea
+        id={`note-${qHash.length}`}
+        placeholder={t('test.personalNotePlaceholder')}
+        value={draft}
+        onChange={handleChange}
+        style={{ width: '100%', minHeight: '80px', background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '12px', padding: '10px 12px', color: 'var(--text)', fontSize: 'var(--fs-input)', fontFamily: 'inherit', resize: 'vertical', outline: 'none', transition: 'border-color 0.2s', lineHeight: '1.5', boxSizing: 'border-box' }}
+        onFocus={(e) => { e.target.style.borderColor = 'var(--accent)'; }}
+        onBlur={(e) => { e.target.style.borderColor = 'var(--border)'; commit(draft); }}
+      />
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
+        <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>
+          {draft.trim() ? t('test.noteSaved') : t('test.noteHint')}
+        </span>
+      </div>
+    </div>
+  );
+}
 
 const QuestionBox = ({
   questions,
@@ -135,7 +201,18 @@ const QuestionBox = ({
 
         <QuestionMedia question={questions[currentQ]} />
         {questions[currentQ].isHtml ? <SafeHtml html={questions[currentQ].q} className="q-text" /> : <div className="q-text" style={{ whiteSpace: 'pre-line' }}>{questions[currentQ].q}</div>}
-        <div className="options">
+        {/* ⚠️ AUDIT 2026-08-17 — variantlar `<div onClick>` edi.
+            Oqibati: klaviatura bilan javob berish mumkin emas (Tab/Enter
+            ishlamaydi), skrinriderda bosiladigan element deb o'qilmaydi va
+            tanlangan variant yordamchi texnologiyaga bildirilmaydi. Google Play
+            Pre-launch report'ning "Accessibility" bo'limi ham shu ni belgilaydi.
+            `ExamPage` da bu allaqachon to'g'ri (`<button>`), bu fayl qolib ketgan.
+            Endi radio-guruh semantikasi: vizual ko'rinish O'ZGARMAYDI. */}
+        <div
+          className="options"
+          role="radiogroup"
+          aria-label={t('test.questionNum', { current: currentQ + 1, total: questions.length })}
+        >
           {questions[currentQ].opts.map((opt, i) => {
             const answered = answers[currentQ] !== undefined;
             const correctIdx = questions[currentQ].correct;
@@ -147,15 +224,23 @@ const QuestionBox = ({
               else bg = 'disabled';
             }
             return (
-              <div
+              <button
                 key={i}
+                type="button"
+                role="radio"
+                aria-checked={isSelected}
+                // `disabled` ATAYLAB ishlatilmaydi: javob berilgandan keyin ham
+                // foydalanuvchi variantlar ustida klaviatura bilan yurib, to'g'ri
+                // javobni o'qiy olishi kerak. Bosish esa `handleSelect` ichida
+                // baribir e'tiborsiz qoladi (javob qulflangan).
+                aria-disabled={answered}
                 className={`option ${bg} ${!answered ? 'hoverable' : ''}`}
                 onClick={() => handleSelect(currentQ, i)}
                 style={{ cursor: answered ? 'default' : 'pointer' }}
               >
-                <div className="opt-letter">{['A', 'B', 'C', 'D'][i]}</div>
-                <div className="opt-text">{opt.replace(/^[A-D]\)\s*/, '')}</div>
-              </div>
+                <span className="opt-letter" aria-hidden="true">{['A', 'B', 'C', 'D'][i]}</span>
+                <span className="opt-text">{opt.replace(/^[A-D]\)\s*/, '')}</span>
+              </button>
             );
           })}
         </div>
@@ -270,29 +355,11 @@ const QuestionBox = ({
                       </div>
                     )}
 
-                    {(() => {
-                      const qHash = (questions[currentQ]?.q || '').substring(0, 100);
-                      return (
-                        <div style={{ textAlign: 'left' }}>
-                          <label style={{ display: 'block', fontSize: 'var(--fs-sm)', fontWeight: '700', color: 'var(--text3)', marginBottom: '6px' }}>
-                            {t('test.personalNote')}
-                          </label>
-                          <textarea
-                            placeholder={t('test.personalNotePlaceholder')}
-                            value={state.customMnemonics?.[qHash] || ''}
-                            onChange={(e) => saveCustomMnemonic(qHash, e.target.value)}
-                            style={{ width: '100%', minHeight: '80px', background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '12px', padding: '10px 12px', color: 'var(--text)', fontSize: 'var(--fs-input)', fontFamily: 'inherit', resize: 'vertical', outline: 'none', transition: 'border-color 0.2s', lineHeight: '1.5' }}
-                            onFocus={(e) => e.target.style.borderColor = 'var(--accent)'}
-                            onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
-                          />
-                          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
-                            <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>
-                              {(state.customMnemonics?.[qHash] || '').trim() ? t('test.noteSaved') : t('test.noteHint')}
-                            </span>
-                          </div>
-                        </div>
-                      );
-                    })()}
+                    <PersonalNote
+                      qHash={(questions[currentQ]?.q || '').substring(0, 100)}
+                      saved={state.customMnemonics}
+                      onSave={saveCustomMnemonic}
+                    />
                   </div>
                 )}
               </div>

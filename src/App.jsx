@@ -10,6 +10,8 @@ import ScrollDebugOverlay from './components/shared/ScrollDebugOverlay';
 import PerfOverlay from './components/shared/PerfOverlay';
 import { trackPageView, startPageTimer } from './services/analytics';
 import { setUser, clearUser, captureError } from './services/sentry';
+// `services/push` ning O'ZI yengil — `firebase/messaging` SDK'si u yerda
+// dinamik yuklanadi (AUDIT 2026-08-17, `services/push.js` sarlavhasiga qarang).
 import { enablePush, listenForegroundPush } from './services/push';
 import { applyThemeColor, enterSplash, exitSplash, SPLASH_BG } from './utils/statusBar';
 import { doc, getDoc } from 'firebase/firestore';
@@ -21,7 +23,7 @@ import Sidebar from './components/Sidebar';
 import LoginPage from './pages/LoginPage';
 import OfflineIndicator from './components/OfflineIndicator';
 import InterruptHost from './components/interrupts/InterruptHost';
-import OnboardingPage from './pages/OnboardingPage';
+import OnboardingPage, { flushPendingOnboarding } from './pages/OnboardingPage';
 import BottomNav from './components/BottomNav';
 
 // ══════════════════════════════════════════════════════════════
@@ -271,6 +273,14 @@ function App() {
     else clearUser();
   }, [user]);
 
+  // Onboarding yozuvi tarmoq yo'qligi sababli navbatda qolgan bo'lsa —
+  // ilova har ishga tushganda qayta yuborishga urinamiz (AUDIT 2026-08-17).
+  // Navbat bo'sh bo'lsa hech qanday so'rov ketmaydi.
+  useEffect(() => {
+    if (!user?.uid) return;
+    flushPendingOnboarding(user.uid).catch(() => {});
+  }, [user?.uid]);
+
   // Sahifa chunk'larini fonda isitish — navigatsiyada PageSkeleton
   // chaqnamasligi uchun. Faqat tizimga kirgach: login ekranida bu chunk'lar
   // kerak emas va birinchi ekranning tarmog'ini band qilardi.
@@ -280,16 +290,35 @@ function App() {
   }, [user]);
 
   // ── FCM Push notification avto-sinxronizatsiya ──
+  // ⚠️ Ruxsat tekshiruvi BUTUN effektni qamrab oladi (AUDIT 2026-08-17).
+  // Avval `listenForegroundPush` ruxsatdan QAT'I NAZAR chaqirilardi va u
+  // `getMessagingInstance()` orqali messaging SDK'sini yuklardi — ya'ni push
+  // yoqmagan foydalanuvchi ham har kirishda o'sha kodni yuklab olardi, hech
+  // qanday xabar kelmasligiga qaramay. Ruxsat 'granted' bo'lmasa foreground
+  // tinglovchisi ma'nosiz: xabar kelmaydi.
   useEffect(() => {
     if (!user) return;
-    if (typeof window !== 'undefined' && 'Notification' in window && Notification.permission === 'granted') {
-      enablePush(user).catch(() => {});
-    }
-    const unsubPromise = listenForegroundPush((payload) => {
+    if (typeof window === 'undefined' || !('Notification' in window)) return;
+    if (Notification.permission !== 'granted') return;
+
+    let cancelled = false;
+    let unsub = null;
+
+    enablePush(user).catch(() => {});
+    listenForegroundPush((payload) => {
       console.log('FCM Foreground Message:', payload);
-    });
+    })
+      .then((fn) => {
+        // Effekt allaqachon tozalangan bo'lsa tinglovchini darhol bekor qilamiz
+        if (typeof fn !== 'function') return;
+        if (cancelled) fn();
+        else unsub = fn;
+      })
+      .catch(() => { /* push mavjud emas — ilova baribir ishlaydi */ });
+
     return () => {
-      unsubPromise.then(unsub => { if (typeof unsub === 'function') unsub(); }).catch(() => {});
+      cancelled = true;
+      if (typeof unsub === 'function') unsub();
     };
   }, [user]);
 

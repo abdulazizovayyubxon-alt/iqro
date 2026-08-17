@@ -62,6 +62,43 @@ import TestResults from '../components/test/TestResults';
 import { useExitGuard } from '../hooks/useExitGuard';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
 
+// ════════════════════════════════════════════════════════════════════════════
+//  SESSIYA SAQLASH — ikki kalitli sxema
+// ════════════════════════════════════════════════════════════════════════════
+//
+// ⚠️ AUDIT 2026-08-17 — bu yerda ikkita alohida nuqson bor edi:
+//
+// 1-BAND (MAXFIYLIK). Kalit YAGONA global `test_session` edi va tiklash sharti
+//    `(!s.uid || s.uid === user?.uid)` — ya'ni `uid` YO'Q sessiya (masalan
+//    token yangilanayotganda, `user` bir lahza null bo'lganda saqlangani)
+//    ISTALGAN hisob tomonidan ochilardi. Umumiy qurilmada (maktab kompyuteri,
+//    oiladagi bitta telefon) bir o'qituvchi boshqasining tugallanmagan testini
+//    — javoblari bilan — ko'rardi. Bu AYNAN o'sha xato `ExamPage.jsx` da T-21
+//    bandi sifatida yopilgan, bu faylga esa qo'llanmagan.
+//    Endi: kalit uid bo'yicha ajratilgan VA tekshiruv qat'iy (uid bo'lmasa
+//    yoki mos kelmasa — tiklanmaydi).
+//
+// 2-BAND (UNUMDORLIK). Yozuvga `fullPool` — FANNING BARCHA savollari — kirardi
+//    va yozuv HAR javob/o'tishda, debounce'siz bajarilardi. O'lchov: CHQBT =
+//    2 596 savol ≈ 2.45 MB; 50 savolli blokda ~100 yozuv ≈ 240 MB IndexedDB
+//    trafigi, har teginishda o'rta Android'da ~40–60 ms asosiy oqim bloklanishi.
+//    Bu ustiga-ustak `firebase.js` da `persistentLocalCache`dan voz kechishga
+//    sabab bo'lgan AYNI IndexedDB qatlamini bosim ostida ushlab turardi.
+//
+//    Yechim — og'ir va yengil ma'lumotni AJRATISH:
+//      · `test_pool_${uid}`    — hovuz, BIR MARTA (hovuz yasalganda) yoziladi;
+//      · `test_session_${uid}` — javoblar/joriy savol, har o'zgarishda, lekin
+//                                debounce bilan va ~2–5 KB hajmda.
+//    `questions` ham saqlanmaydi: u `pool.slice(batch*BATCH_SIZE, ...)` dan
+//    aynan qayta hosil bo'ladi (pastdagi blok effekti bilan bir xil formula).
+//    `stamp` ikki yozuvni bog'laydi — hovuz almashib, sessiya eski qolsa
+//    javoblar boshqa savollarga yopishib qolmasligi uchun.
+const sessionKeyFor = (uid) => `test_session_${uid}`;
+const poolKeyFor = (uid) => `test_pool_${uid}`;
+// Eski yagona kalit — faqat tozalash uchun (ichida 2.4 MB qolib ketgan bo'lishi
+// mumkin, hech qachon o'qilmaydi).
+const LEGACY_SESSION_KEY = 'test_session';
+
 const TestPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -77,7 +114,7 @@ const TestPage = () => {
     ? state.topicSubset
     : null;
   const goBack = () => {
-    localforage.removeItem('test_session').catch(() => {});
+    clearSavedSession();
     navigate('/test');
   };
   const { addObjection } = useContext(ObjectionContext);
@@ -148,6 +185,59 @@ const TestPage = () => {
   const committedRef = useRef(false);
   const sessionCheckedRef = useRef(false);
   const isResumingRef = useRef(false);
+  // Hovuz «shtampi» — sessiya yozuvi qaysi hovuzga tegishli ekanini bildiradi.
+  // Hovuz qayta yasalsa shtamp o'zgaradi va eski sessiya yaroqsiz bo'ladi.
+  const poolStampRef = useRef(null);
+  // Debounce taymeri (sessiya yozuvi uchun)
+  const saveTimerRef = useRef(null);
+
+  // ── Faqat progress yozuvini o'chirish, hovuz qoladi ──
+  // Natija ekranida ishlatiladi: keyingi blokka o'tish uchun hovuz kerak,
+  // lekin tugagan blokning javoblari tiklanmasligi kerak.
+  const clearSessionProgress = () => {
+    clearTimeout(saveTimerRef.current);
+    const uid = user?.uid;
+    if (uid) localforage.removeItem(sessionKeyFor(uid)).catch(() => {});
+  };
+
+  // ── Sessiyani to'liq o'chirish (ikkala kalit ham) ──
+  // Testdan chiqishda: hovuzni ham qoldirmaymiz, aks holda 2.4 MB gacha yozuv
+  // hech kimga kerak bo'lmagan holda IndexedDB'da yotib qolardi.
+  const clearSavedSession = () => {
+    clearSessionProgress();
+    const uid = user?.uid;
+    if (uid) localforage.removeItem(poolKeyFor(uid)).catch(() => {});
+  };
+
+  // ── Sessiyani DARHOL yozish (debounce'ni kutmasdan) ──
+  // Ref orqali chaqiriladi: `visibilitychange` tinglovchisi bir marta
+  // o'rnatiladi, lekin har doim eng so'nggi holatni yozishi kerak.
+  const persistRef = useRef(null);
+  persistRef.current = () => {
+    const uid = user?.uid;
+    if (!uid || questions.length === 0 || showResults || !poolStampRef.current) return;
+    // FAQAT yengil ma'lumot: hovuz va savollar bu yerda YO'Q (yuqoridagi izoh).
+    localforage.setItem(sessionKeyFor(uid), {
+      uid,
+      activeCategory: state.activeCategory,
+      mode,
+      topicId,
+      topicSubset,
+      poolStamp: poolStampRef.current,
+      selectedBatch,
+      currentQ,
+      answers,
+      comboCount,
+      questionTimes: questionTimesRef.current,
+      savedAt: Date.now(),
+    }).catch(e => console.error('Save test session error:', e));
+  };
+
+  // Eski global `test_session` yozuvini bir marta tozalaymiz — ichida 2.4 MB
+  // qolib ketgan bo'lishi mumkin va u boshqa hech qachon o'qilmaydi.
+  useEffect(() => {
+    localforage.removeItem(LEGACY_SESSION_KEY).catch(() => {});
+  }, []);
 
   // Vaqt tugaganda (countdown) — javobni -1 ("vaqt tugadi") deb belgilaymiz.
   // TimerPill onExpire orqali chaqiradi.
@@ -260,23 +350,51 @@ const TestPage = () => {
     // session check on initial mount
     if (!sessionCheckedRef.current) {
       sessionCheckedRef.current = true;
+      const uid = user?.uid;
       try {
-        const s = await localforage.getItem('test_session');
+        // Tizimga kirmagan holatda tiklash UMUMAN qilinmaydi: egasi aniq
+        // bo'lmagan sessiya begona qurilmada ochilmasligi kerak.
+        const s = uid ? await localforage.getItem(sessionKeyFor(uid)) : null;
         // topicSubset ham kalitning bir qismi: aralash mashqda topicId ikkala
         // holatda ham -1 bo'ladi, shuning uchun usiz eski sessiya tiklanardi
         const sameSubset = (s?.topicSubset || []).join(',') === (topicSubset || []).join(',');
-        const valid = s && s.activeCategory === state.activeCategory && s.mode === mode && s.topicId === topicId && sameSubset && (!s.uid || s.uid === user?.uid) && Array.isArray(s.questions) && s.questions.length > 0;
-        if (valid && currentReq === generateReqRef.current) {
-          isResumingRef.current = true;
-          setFullPool(s.fullPool || []);
-          setSelectedBatch(s.selectedBatch || 0);
-          setQuestions(s.questions || []);
-          setCurrentQ(s.currentQ || 0);
-          setAnswers(s.answers || {});
-          setComboCount(s.comboCount || 0);
-          questionTimesRef.current = s.questionTimes || {};
-          setIsGenerating(false);
-          return;
+        // ⚠️ Egalik QAT'IY (AUDIT 2026-08-17, 1-band): uid bo'lmasa yoki mos
+        // kelmasa — tiklanmaydi. Kamchiligi (juda kam holatda bitta sessiya
+        // yo'qolishi) maxfiylikdan arzon — ExamPage'dagi T-21 bilan bir xil qaror.
+        const sessionOk = s && !!s.uid && s.uid === uid
+          && s.activeCategory === state.activeCategory && s.mode === mode
+          && s.topicId === topicId && sameSubset && !!s.poolStamp;
+
+        if (sessionOk) {
+          // Hovuz alohida yozuvda — shtamp mos kelishi shart, aks holda
+          // javoblar boshqa savollarga yopishib qolardi.
+          const p = await localforage.getItem(poolKeyFor(uid));
+          const pool = Array.isArray(p?.pool) ? p.pool : null;
+          const poolOk = pool && pool.length > 0 && p.stamp === s.poolStamp;
+
+          if (poolOk && currentReq === generateReqRef.current) {
+            const batch = s.selectedBatch || 0;
+            const start = batch * BATCH_SIZE;
+            // `questions` saqlanmaydi — hovuzdan aynan shu formula bilan
+            // qayta hosil qilinadi (blok effekti ham shuni ishlatadi).
+            const restored = pool.slice(start, start + BATCH_SIZE);
+            if (restored.length > 0) {
+              isResumingRef.current = true;
+              poolStampRef.current = s.poolStamp;
+              setFullPool(pool);
+              setSelectedBatch(batch);
+              setQuestions(restored);
+              setCurrentQ(Math.min(s.currentQ || 0, restored.length - 1));
+              setAnswers(s.answers || {});
+              setComboCount(s.comboCount || 0);
+              questionTimesRef.current = s.questionTimes || {};
+              setIsGenerating(false);
+              return;
+            }
+          }
+          // Hovuz yo'qolgan/yaroqsiz — eski sessiyani tozalaymiz va pastda
+          // hovuz normal yo'l bilan qaytadan yasaladi.
+          localforage.removeItem(sessionKeyFor(uid)).catch(() => {});
         }
       } catch (err) {
         console.error("Load test session error:", err);
@@ -528,6 +646,28 @@ const TestPage = () => {
 
       if (currentReq === generateReqRef.current) {
         setFullPool(finalPool);
+
+        // ── Hovuzni BIR MARTA yozamiz ──
+        // Bu yerdagi yozuv og'ir (CHQBT'da ~2.4 MB), lekin u seans boshida
+        // BITTA marta bo'ladi — javob bosilganda emas. Shtamp sessiya yozuvini
+        // shu hovuzga bog'laydi.
+        const uid = user?.uid;
+        if (uid && finalPool.length > 0) {
+          const stamp = `${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+          poolStampRef.current = stamp;
+          localforage.setItem(poolKeyFor(uid), {
+            uid,
+            stamp,
+            activeCategory: state.activeCategory,
+            mode,
+            topicId,
+            topicSubset,
+            pool: finalPool,
+          }).catch(e => console.error('Save test pool error:', e));
+        } else {
+          poolStampRef.current = null;
+        }
+
         // Analitika: yangi test sessiyasi boshlandi (bo'lim navigatsiyasida emas — bu effekt
         // faqat fan/mavzu/rejim o'zgarganda ishlaydi)
         if (finalPool.length > 0) {
@@ -612,25 +752,31 @@ const TestPage = () => {
     }
   };
 
-  // Sessiyani localforage'da avtomatik saqlash
+  // ── Sessiyani avtomatik saqlash (debounce 400 ms) ──
+  // Avval bu effekt har javob/o'tishda DARHOL ishga tushar va yozuvga butun
+  // `fullPool` kirardi. Endi yozuv yengil (~2–5 KB) va 400 ms ichida ketma-ket
+  // kelgan o'zgarishlar bitta yozuvga yig'iladi: tez javob berayotgan
+  // foydanaluvchi asosiy oqimni bloklamaydi.
   useEffect(() => {
     if (questions.length === 0 || showResults) return;
-    localforage.setItem('test_session', {
-      uid: user?.uid || null,
-      activeCategory: state.activeCategory,
-      mode,
-      topicId,
-      topicSubset,
-      questions,
-      fullPool,
-      answers,
-      currentQ,
-      selectedBatch,
-      comboCount,
-      questionTimes: questionTimesRef.current,
-      savedAt: Date.now()
-    }).catch(e => console.error("Save test session error:", e));
-  }, [questions, answers, currentQ, selectedBatch, comboCount, showResults, mode, topicId, topicSubset, state.activeCategory, user?.uid, fullPool]);
+    clearTimeout(saveTimerRef.current);
+    saveTimerRef.current = setTimeout(() => persistRef.current?.(), 400);
+    return () => clearTimeout(saveTimerRef.current);
+  }, [answers, currentQ, selectedBatch, comboCount, questions.length, showResults]);
+
+  // Ilova fonga tushganda / yopilganda — debounce'ni KUTMASDAN yozamiz.
+  // Mobil PWA foydalanuvchisi ilovani 400 ms ichida yopishi mumkin.
+  useEffect(() => {
+    const onHide = () => { if (document.visibilityState === 'hidden') persistRef.current?.(); };
+    const onPageHide = () => persistRef.current?.();
+    document.addEventListener('visibilitychange', onHide);
+    // `pagehide` — iOS Safari'da `visibilitychange` har doim ishonchli emas
+    window.addEventListener('pagehide', onPageHide);
+    return () => {
+      document.removeEventListener('visibilitychange', onHide);
+      window.removeEventListener('pagehide', onPageHide);
+    };
+  }, []);
 
   useEffect(() => {
     setSelectedBatch(0);
@@ -667,7 +813,8 @@ const TestPage = () => {
   const handleShowResults = () => {
     if (committedRef.current) return; // ikki marta bosish / sekin tarmoq himoyasi
     committedRef.current = true;
-    localforage.removeItem('test_session').catch(() => {});
+    // Hovuz saqlanadi: natija ekranidan «keyingi blok»ga o'tish mumkin.
+    clearSessionProgress();
     setShowResults(true);
     // 🧠 SMART ENGINE: Natijalarni tahlil qilish va bir marta saqlash
     const results = summarizeTestResults(questions, answers, state.spacedCards || [], topicId, questionTimesRef.current);
@@ -1130,7 +1277,7 @@ const TestPage = () => {
             <p style={{ fontSize: 'var(--fs-base)', color: 'var(--text3)', marginBottom: 24 }}>{t('test.exitText')}</p>
             <div style={{ display: 'flex', gap: 12 }}>
               <button className="btn btn-outline" style={{ flex: 1, padding: '12px' }} onClick={() => setShowExitConfirm(false)}>{t('test.continueBtn')}</button>
-              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { setShowExitConfirm(false); localforage.removeItem('test_session').catch(() => {}); navigate('/test'); }}>{t('test.exit')}</button>
+              <button className="btn" style={{ flex: 1, padding: '12px', background: 'var(--red)', color: 'white', border: 'none', borderRadius: 12, fontWeight: 700 }} onClick={() => { setShowExitConfirm(false); clearSavedSession(); navigate('/test'); }}>{t('test.exit')}</button>
             </div>
           </motion.div>
         </div>
