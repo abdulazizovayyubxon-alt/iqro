@@ -83,6 +83,37 @@ describe('qulfHolatini — ikkala shart ham buzilganda', () => {
   });
 });
 
+describe('bir nechta hamkor bir ro\'yxatda (admin ko\'rinishi)', () => {
+  // Admin barcha hamkorlarning to'plamini bitta ro'yxatda ko'radi. Ketma-ketlik
+  // HAR HAMKOR ICHIDA hisoblanishi kerak — aks holda A hamkorning 1-haftasi
+  // B hamkorning 1-haftasini qulflab qo'yardi.
+  const aralash = [
+    { id: 'a1', title: 'A 1-hafta', order: 1, opensAt: null, partnerCode: 'AAA' },
+    { id: 'a2', title: 'A 2-hafta', order: 2, opensAt: null, partnerCode: 'AAA' },
+    { id: 'b1', title: 'B 1-hafta', order: 1, opensAt: null, partnerCode: 'BBB' },
+    { id: 'b2', title: 'B 2-hafta', order: 2, opensAt: null, partnerCode: 'BBB' },
+  ];
+
+  it('har hamkorning birinchi haftasi ochiq', () => {
+    const r = qulfHolatini(aralash, {});
+    expect(r.find(x => x.id === 'a1').locked).toBe(false);
+    expect(r.find(x => x.id === 'b1').locked).toBe(false);
+  });
+
+  it('boshqa hamkorning haftasi qulfga sabab bo\'lmaydi', () => {
+    const r = qulfHolatini(aralash, {});
+    // b1 ochiq bo'lsa ham, a2 faqat a1 ga bog'liq
+    expect(r.find(x => x.id === 'a2').lockMessage).toContain('A 1-hafta');
+    expect(r.find(x => x.id === 'b2').lockMessage).toContain('B 1-hafta');
+  });
+
+  it('bir hamkorda ishlash boshqasini ochib yubormaydi', () => {
+    const r = qulfHolatini(aralash, { a1: { correct: 10, answered: 35 } });
+    expect(r.find(x => x.id === 'a2').locked).toBe(false);
+    expect(r.find(x => x.id === 'b2').locked).toBe(true);
+  });
+});
+
 describe('sanaMatni', () => {
   it('23-avgust 2026 — yakshanba', () => {
     expect(sanaMatni('2026-08-23')).toBe('23-avgust, yakshanba');

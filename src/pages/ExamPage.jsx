@@ -6,6 +6,7 @@ import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
+import { useAdmin } from '../hooks/useAdmin';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, ChevronLeft, ChevronRight, Flag, AlertCircle, Share2, GraduationCap, FileText, BookOpen, ClipboardList, Crosshair, History, Check, BadgeCheck, CalendarDays, Lock } from 'lucide-react';
@@ -110,6 +111,7 @@ const ExamPage = () => {
   const { t } = useTranslation();
   const goBack = () => navigate('/test');
   const { user } = useAuth();
+  const { isAdmin } = useAdmin();
   const { state, batchCommitResults, updateState } = useContext(AppContext);
   const { addObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
@@ -159,20 +161,23 @@ const ExamPage = () => {
   // hisoblanadi (ketma-ketlik + ochilish sanasi).
   const [weeklySets, setWeeklySets] = useState([]);
   const [selectedSetId, setSelectedSetId] = useState(null);
-  const groupCode = user?.groupCode || null;
+  // Hamkor ustozning O'ZI odatda o'z kodini ham ishlatgan bo'ladi (shunda
+  // `groupCode` to'ladi). Bo'lmasa ham `partnerCode` bilan urinib ko'ramiz —
+  // ustoz guruhiga bergan to'plamni ko'ra olishi tabiiy.
+  const groupCode = user?.groupCode || user?.partnerCode || null;
 
   useEffect(() => {
-    if (!groupCode || examStarted) return;
+    if ((!groupCode && !isAdmin) || examStarted) return;
     let cancelled = false;
     (async () => {
-      const res = await fetchPartnerSets(groupCode, cat);
+      const res = await fetchPartnerSets(groupCode, cat, { isAdmin });
       if (cancelled) return;
       // Xato bo'lsa JIM o'tamiz: haftalik to'plam qo'shimcha imkoniyat, uning
       // yuklanmagani imtihon sahifasini ishdan chiqarmasligi kerak.
       setWeeklySets(res.ok ? res.sets : []);
     })();
     return () => { cancelled = true; };
-  }, [groupCode, cat, examStarted]);
+  }, [groupCode, cat, examStarted, isAdmin]);
 
   // Qulf holati har renderda emas, ro'yxat yoki natijalar o'zgarganda hisoblanadi
   // `|| {}` memo ICHIDA: tashqarida bo'lsa har renderda yangi obyekt yasalib,
@@ -1014,6 +1019,13 @@ const ExamPage = () => {
                           <div style={{ flex: 1, minWidth: 0 }}>
                             <div style={{ fontSize: 'var(--fs-body)', fontWeight: 700, color: 'var(--text)' }}>
                               {s.title}
+                              {/* Admin barcha hamkorlarning to'plamini ko'radi —
+                                  qaysi biri kimniki ekani ko'rinib tursin */}
+                              {isAdmin && s.partnerCode && (
+                                <span style={{ marginLeft: 6, fontSize: 'var(--fs-body-sm)', fontWeight: 600, color: 'var(--text3)' }}>
+                                  · {s.partnerCode}
+                                </span>
+                              )}
                             </div>
                             {(s.locked || s.result) && (
                               <div style={{ fontSize: 'var(--fs-body-sm)', color: 'var(--text3)', marginTop: 2 }}>

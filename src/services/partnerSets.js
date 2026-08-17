@@ -68,9 +68,21 @@ function sanaKeldimi(iso) {
  * @returns {Array} har biriga { locked, lockReason, lockMessage, result } qo'shilgan
  */
 export function qulfHolatini(sets, natijalar = {}) {
-  return sets.map((s, i) => {
+  // Ketma-ketlik HAR HAMKOR ICHIDA hisoblanadi. Oddiy a'zoda bitta hamkor
+  // bo'ladi va farqi yo'q, lekin admin barcha hamkorlarning to'plamini bir
+  // ro'yxatda ko'radi — guruhlamasak, A hamkorning 1-haftasi B hamkorning
+  // 1-haftasini qulflab qo'yardi.
+  const oldingisi = new Map(); // setId → shu hamkordagi oldingi to'plam
+  const oxirgi = new Map();    // partnerCode → oxirgi ko'rilgan to'plam
+  for (const s of sets) {
+    const kod = s.partnerCode || '_';
+    oldingisi.set(s.id, oxirgi.get(kod) || null);
+    oxirgi.set(kod, s);
+  }
+
+  return sets.map((s) => {
     const result = natijalar[s.id] || null;
-    const oldingi = i > 0 ? sets[i - 1] : null;
+    const oldingi = oldingisi.get(s.id);
     const oldingiIshlangan = !oldingi || !!natijalar[oldingi.id];
 
     // TARTIB birinchi tekshiriladi — sana ham kelmagan bo'lsa, foydalanuvchiga
@@ -101,8 +113,28 @@ export function qulfHolatini(sets, natijalar = {}) {
  * Foydalanuvchining guruhiga tegishli to'plamlar ro'yxati (savollarsiz).
  * @param {string} partnerCode
  * @param {string} category — fan (masalan 'chqbt')
+ * @param {object} [opts]
+ * @param {boolean} [opts.isAdmin] — admin BARCHA hamkorlarning to'plamini
+ *   ko'radi (qoidalar unga o'qishga ruxsat beradi). Busiz admin o'zi guruhga
+ *   qo'shilmagani uchun hech narsa ko'rmaydi va funksiyani tekshira olmaydi.
  */
-export async function fetchPartnerSets(partnerCode, category) {
+export async function fetchPartnerSets(partnerCode, category, opts = {}) {
+  if (opts.isAdmin) {
+    try {
+      const snap = await getDocs(collection(db, 'partnerSets'));
+      const sets = snap.docs
+        .map((d) => ({ id: d.id, ...d.data() }))
+        .filter((s) => s.category === category && s.active !== false)
+        // Hamkor bo'yicha guruhlab, ichida tartib bo'yicha
+        .sort((a, b) => (a.partnerCode || '').localeCompare(b.partnerCode || '')
+          || (a.order || 0) - (b.order || 0));
+      return { ok: true, sets };
+    } catch (err) {
+      console.error('fetchPartnerSets (admin):', err);
+      return { ok: false, error: err?.code === 'permission-denied' ? 'permission' : 'network' };
+    }
+  }
+
   if (!partnerCode) return { ok: false, error: 'no_code' };
   try {
     // ⚠️ FAQAT BITTA tenglik sharti bilan so'raymiz va qolganini MIJOZDA
