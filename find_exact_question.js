@@ -10,7 +10,8 @@
  *
  * 2026-08-17 kuni production aynan shu sababdan `quota_exceeded` holatiga
  * tushdi: `/api/health` → 503, va reyting, statistika, bildirishnomalar
- * HAMMA foydalanuvchi uchun UTC yarim tunigacha ishlamadi. Keshi sovuq
+ * HAMMA foydalanuvchi uchun ~9 soat ishlamadi (Firebase kvotasi Pacific
+ * yarim tunida tiklanadi = Toshkent 12:00, UTC yarim tunida EMAS). Keshi sovuq
  * foydalanuvchilar savollarni ham yuklay olmadi.
  *
  * O'RNIGA — xavfsiz vosita:

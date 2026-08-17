@@ -196,9 +196,22 @@ qilingan). Yagona tor joy — **o'qish**.
 
 **Limit tugaganda:** ilova qulamaydi, lekin Firestore HAMMAGA
 `permission-denied` qaytaradi — reyting, statistika, bildirishnomalar
-ishlamaydi. UTC yarim tunigacha. Ya'ni 400-chi foydalanuvchidan keyin
-kirganlar uchun ilova buzilgan ko'rinadi. **Spark'da 1000 foydalanuvchi
-mumkin emas** — bu kod muammosi emas, reja muammosi.
+ishlamaydi. Ya'ni 400-chi foydalanuvchidan keyin kirganlar uchun ilova
+buzilgan ko'rinadi. **Spark'da 1000 foydalanuvchi mumkin emas** — bu kod
+muammosi emas, reja muammosi.
+
+⚠️ **Kvota QACHON tiklanadi — bu yerda avval xato yozilgan edi.**
+Bu hujjatda «UTC yarim tunigacha» deb turardi. Firebase hujjati esa aniq
+aytadi: *«Quotas are applied daily and reset around midnight Pacific time»* —
+ya'ni **Tinch okeani vaqti** bo'yicha, UTC emas.
+
+| | Yozgi vaqt (PDT, UTC−7) | Qishki vaqt (PST, UTC−8) |
+|---|---|---|
+| Tiklanish, UTC | 07:00 | 08:00 |
+| **Tiklanish, Toshkent** | **12:00** | **13:00** |
+
+Farq **7–8 soat**. «Ertalab 5 da o'zi tuzaladi» deb kutgan odam tushgacha
+nosozlikda qoladi. Kvota tugagan kuni buni bilish muhim.
 
 ### 2.2. Blaze ≠ "pul to'lashni boshlash"
 
@@ -251,7 +264,8 @@ Yuqoridagi ogohlantirish **nazariy emas ekan**. 2026-08-17, 21:17 UTC da
 ```
 
 Kunlik 50 000 o'qish kvotasi tugagan: reyting, statistika, bildirishnomalar
-HAMMA foydalanuvchi uchun UTC yarim tunigacha ishlamadi; keshi sovuq
+HAMMA foydalanuvchi uchun tiklanish vaqtigacha ishlamadi (Pacific yarim
+tuni = Toshkent 12:00); keshi sovuq
 foydalanuvchilar savollarni ham yuklay olmadi (`settings/version` o'qilmaydi).
 
 **Sababi — ro'yxatdagi 2-band, aniqrog'i uning kuzatilmagan varianti.** Repo

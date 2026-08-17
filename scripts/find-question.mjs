@@ -9,7 +9,8 @@
  *   47 000 Firestore o'qish = Spark bepul rejasining kunlik kvotasining
  *   (50 000) 94%. 2026-08-17 kuni production shu sababdan `quota_exceeded`
  *   holatiga tushdi: reyting, statistika va bildirishnomalar HAMMA
- *   foydalanuvchi uchun UTC yarim tunigacha ishlamadi.
+ *   foydalanuvchi uchun ~9 soat ishlamadi (kvota Pacific yarim tunida
+ *   tiklanadi = Toshkent 12:00).
  *
  *   Bu — YUK_VA_BARQARORLIK.md 2.3-bo'limida ogohlantirilgan naqsh:
  *   kvotani ilova emas, ishlab chiqish vositalari yeydi.

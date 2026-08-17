@@ -21,8 +21,15 @@ auditning bashorati emas — **hozir sodir bo'layotgan hodisa**:
 **Ma'nosi:** Firestore kunlik 50 000 o'qish kvotasi **tugagan**. Hozir har bir
 foydalanuvchi uchun reyting, statistika, bildirishnomalar ishlamaydi; keshi sovuq
 foydalanuvchi savollarni ham yuklay olmaydi (`settings/version` o'qilmaydi).
-Kvota **UTC yarim tunida** tiklanadi — ya'ni ~2 soat 40 daqiqadan keyin
-(Toshkent vaqti bilan ~05:00).
+**Kvota qachon tiklanadi — ehtiyot bo'ling, bu joyda ko'p adashiladi.**
+Firebase hujjati: *"Quotas are applied daily and reset around midnight Pacific
+time."* Ya'ni **UTC emas, Tinch okeani vaqti** bo'yicha yarim tunda.
+Avgustda Pacific = UTC−7, demak tiklanish **07:00 UTC** = **Toshkent vaqti
+bilan 12:00**. Hodisa boshlangan 02:35 (Toshkent) dan sanaganda ~9.5 soat.
+
+⚠️ [YUK_VA_BARQARORLIK.md](YUK_VA_BARQARORLIK.md) da bu «UTC yarim tuni» deb
+yozilgan edi — **noto'g'ri**, tuzatildi. Farq 7 soat: kim «ertalab 5 da o'zi
+tuzaladi» deb kutsa, tushgacha nosozlikda qoladi.
 
 **Bu deploy sababli emas.** Kod o'zgarishlari o'qishni kamaytiradi, ko'paytirmaydi.
 
