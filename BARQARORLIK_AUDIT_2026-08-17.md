@@ -33,7 +33,31 @@ tuzaladi» deb kutsa, tushgacha nosozlikda qoladi.
 
 **Bu deploy sababli emas.** Kod o'zgarishlari o'qishni kamaytiradi, ko'paytirmaydi.
 
-**Eng ehtimolli sabab — `find_exact_question.js`** (repo ildizida, kuzatilmagan fayl):
+**O'LCHANDI (Firestore → Usage, 24 soat):** taxmin tasdiqlandi.
+
+| Ko'rsatkich | Qiymat |
+|---|---|
+| Reads, jami | **60 000** (kvota 50 000) |
+| Reads, cho'qqi soat ≈22:00 | **~50 000** — qolgan 23 soat tekis |
+| Reads, cho'qqisiz | ~10 000/kun = kvotaning **20%** i |
+| Writes / Deletes | 677 / 1 |
+| Active connections | **8** peak |
+| Rules: allows / denies | 11 000 / 86 |
+
+**Hal qiluvchi dalil — reads (60K) va rules evaluations (11K) ajralib ketgan.**
+Firestore `list` amalida qoidalarni SO'ROV boshiga bir marta baholaydi,
+o'qishni esa HAR HUJJAT uchun sanaydi. 47 038 hujjatlik bitta so'rov =
+1 rules eval + 47 038 read. Haqiqiy foydalanuvchi trafigida bu ikki raqam
+yonma-yon o'sardi. Ustiga — cho'qqi paytida atigi **8 ta ulanish** bor edi:
+8 kishi bir soatda 50 000 hujjat o'qiy olmaydi.
+
+⚠️ **Muhim xulosa: platforma Spark'dan oshib ketmagan.** Cho'qqisiz sarf
+~10 000/kun — kvotaning 20% i, va bu
+[YUK_VA_BARQARORLIK.md](YUK_VA_BARQARORLIK.md) dagi ~11 200 baholovini
+o'lchov bilan tasdiqlaydi. Nosozlik o'sishdan emas, bitta himoyasiz
+vositadan kelib chiqqan. Blaze sig'im uchun emas, **himoya uchun** kerak.
+
+**Manba — `find_exact_question.js`** (repo ildizida, kuzatilmagan fayl):
 
 ```js
 const snap = await getDocs(collection(db, 'questions'));   // 47 038 o'qish

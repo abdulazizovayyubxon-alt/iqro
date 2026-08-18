@@ -268,7 +268,44 @@ HAMMA foydalanuvchi uchun tiklanish vaqtigacha ishlamadi (Pacific yarim
 tuni = Toshkent 12:00); keshi sovuq
 foydalanuvchilar savollarni ham yuklay olmadi (`settings/version` o'qilmaydi).
 
-**Sababi — ro'yxatdagi 2-band, aniqrog'i uning kuzatilmagan varianti.** Repo
+#### O'lchangan raqamlar (Firestore → Usage, oxirgi 24 soat)
+
+Bu taxmin emas — konsoldan olingan:
+
+| Ko'rsatkich | Qiymat | Nimani aytadi |
+|---|---|---|
+| **Reads, jami** | **60 000** | Kvota 50 000 — oshib ketgan |
+| **Reads, cho'qqi soat** | **~50 000** (≈22:00) | Bitta soatda. Qolgan 23 soat tekis |
+| Reads, cho'qqisiz | **~10 000/kun** | ⚠️ Asosiy sarf kvotaning atigi 20% i |
+| Writes | 677 | Yozuv muammo emas (1-bo'limdagi xulosa tasdiqlandi) |
+| Deletes | 1 | — |
+| Active connections | **8** peak | Bir vaqtda ~8 kishi |
+| Snapshot listeners | 33 peak | — |
+| Rules: allows / denies / errors | 11 000 / 86 / 10 | Pastdagi izohga qarang |
+
+**Eng aniq dalil — reads va rules o'rtasidagi nomutanosiblik.** O'qish 60 000,
+qoidalar baholanishi esa atigi 11 000. Firestore `list` amalida qoidalarni
+SO'ROV boshiga bir marta baholaydi, o'qishni esa HAR HUJJAT uchun sanaydi.
+Ya'ni 47 038 hujjatlik bitta so'rov = 1 ta rules evaluation + 47 038 read.
+Agar bu haqiqiy foydalanuvchi trafigi bo'lganda, ikkala raqam yonma-yon
+o'sardi. Ular ajralib ketgan — demak bitta katta filtrsiz so'rov.
+
+**Ikkinchi dalil:** cho'qqi paytida bir vaqtda atigi 8 ta ulanish bor edi.
+8 kishi bir soatda 50 000 hujjat o'qiy olmaydi.
+
+#### Muhim xulosa: platforma Spark'dan OSHIB KETMAGAN
+
+Cho'qqisiz kunlik sarf **~10 000 o'qish** — kvotaning atigi 20% i. Ya'ni
+2.2.1-bo'limdagi model (400 foydalanuvchi uchun ~11 200 baholangan edi)
+o'lchov bilan **tasdiqlandi**.
+
+Bu nosozlik o'sishdan emas, **bitta himoyasiz vositadan** kelib chiqqan.
+Blaze rejasi sig'im uchun kerak emas — u «bitta xato skript butun kunni
+yiqitadi» holatini yo'q qilish uchun kerak.
+
+#### Sababi
+
+**Ro'yxatdagi 2-band, aniqrog'i uning kuzatilmagan varianti.** Repo
 ildizida `find_exact_question.js` degan bir martalik skript yotgan edi:
 
 ```js
