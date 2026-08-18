@@ -138,6 +138,37 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
+    // ── answerEvents: savol statistikasi uchun xom javob jurnali ──
+    //
+    // ADMIN UX AUDIT 2026-08-18, A-1. Mijoz test yakunida BITTA hujjat yozadi,
+    // api/cron-daily.js uni `questionStats` ga agregatlab O'CHIRADI.
+    //
+    // O'QISH BERILMAGAN: jurnalda boshqa foydalanuvchining javoblari bo'lishi
+    // mumkin emas, lekin baribir kerak emas — mijoz o'z yozganini qayta
+    // o'qimaydi. Cron esa Admin SDK bilan ishlaydi va qoidalarni chetlab o'tadi.
+    //
+    // `log` HAJMI CHEKLANGAN: aks holda bitta foydalanuvchi ulkan massiv yozib
+    // agregatsiyani ham, kvotani ham buzishi mumkin edi. 200 — eng uzun
+    // imtihondan (50 savol) ancha katta zaxira.
+    match /answerEvents/{docId} {
+      allow create: if isLoggedIn()
+                    && request.resource.data.uid == request.auth.uid
+                    && request.resource.data.log is list
+                    && request.resource.data.log.size() > 0
+                    && request.resource.data.log.size() <= 200;
+      allow read, update: if false;
+      allow delete: if isAdmin();
+    }
+
+    // ── questionStats: savol bo'yicha agregat (ko'rsatilgan/xato/variant tanlovi) ──
+    //
+    // FAQAT cron yozadi (Admin SDK). Mijoz yoza olsa, "shubhali savollar"
+    // ro'yxatini istagancha buzish mumkin bo'lardi.
+    match /questionStats/{questionId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
     // ── questionRequests: "Ko'proq savol kerak" so'rovi — foydalanuvchi o'z so'rovini yuboradi/o'qiydi, admin boshqaradi ──
     match /questionRequests/{docId} {
       allow read: if isAdmin() || (isLoggedIn() && resource.data.uid == request.auth.uid);

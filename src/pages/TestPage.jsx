@@ -569,7 +569,12 @@ const TestPage = () => {
             try {
               const qRef = collection(db, 'questions');
               const snap = await getDocs(query(qRef, where('category', '==', state.activeCategory)));
-              rawList = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+              // Muomaladan olingan savol ko'rsatilmaydi (admin «Tuzatish»
+              // oynasidagi «Muomaladan olish»). Mijoz tomonda filtrlanadi:
+              // Firestore'da `!=` so'rovi maydoni YO'Q hujjatlarni ham
+              // tashlab ketardi — ya'ni deyarli butun bazani.
+              rawList = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+                .filter(q => q.status !== 'retired');
               console.log(`✅ Firestore dan ${rawList.length} ta savol yuklandi (1 ta so'rov)`);
               if (rawList.length > 0) {
                 await localforage.setItem(cacheKey, rawList);
@@ -743,9 +748,9 @@ const TestPage = () => {
     }, 400);
   };
 
-  const handleObjection = (text) => {
+  const handleObjection = (text, reason) => {
     const qObj = questions[currentQ];
-    addObjection(topicId, state.activeCategory, qObj, text);
+    addObjection(topicId, state.activeCategory, qObj, text, reason);
     setShowObjectionModal(false);
     showToast(t('test.toastObjectionThanks'), 'success');
   };

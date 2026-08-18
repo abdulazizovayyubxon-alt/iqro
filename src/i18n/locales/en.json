@@ -1258,7 +1258,16 @@
     "questionLabel": "Question:",
     "placeholder": "Describe the issue with this question...",
     "cancel": "Cancel",
-    "submit": "Submit"
+    "submit": "Submit",
+    "reasonLabel": "Problem type:",
+    "reasons": {
+      "wrong_answer": "Wrong answer",
+      "typo": "Typo",
+      "ambiguous": "Ambiguous question",
+      "outdated": "Outdated info",
+      "image": "Image not visible",
+      "other": "Other"
+    }
   },
   "flashcard": {
     "know": "Know",

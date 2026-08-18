@@ -1258,7 +1258,16 @@
     "questionLabel": "Savol:",
     "placeholder": "Muammo yoki xatolikni tushuntiring...",
     "cancel": "Bekor",
-    "submit": "Yuborish"
+    "submit": "Yuborish",
+    "reasonLabel": "Muammo turi:",
+    "reasons": {
+      "wrong_answer": "Javob noto'g'ri",
+      "typo": "Imlo xatosi",
+      "ambiguous": "Ikki xil tushuniladi",
+      "outdated": "Eskirgan ma'lumot",
+      "image": "Rasm ko'rinmayapti",
+      "other": "Boshqa"
+    }
   },
   "flashcard": {
     "know": "bilaman",

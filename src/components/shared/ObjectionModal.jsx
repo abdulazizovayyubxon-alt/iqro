@@ -12,9 +12,17 @@ import { useModalA11y } from '../../hooks/useModalA11y';
  *  - questionText: string
  *  - onSubmit: (text: string) => void
  */
+// ADMIN UX AUDIT 2026-08-18, M-3 — TRIAJ.
+// Ilgari e'tirozda faqat erkin matn bo'lardi, ya'ni admin 200 ta shikoyatni
+// o'qib chiqmaguncha ularning qaysi biri "javob noto'g'ri" (shoshilinch),
+// qaysi biri "imlo xatosi" (kutsa bo'ladi) ekanini bilmasdi. Bitta bosish
+// bilan tanlanadigan tur admin panelida filtr va ustuvorlik beradi.
+const REASONS = ['wrong_answer', 'typo', 'ambiguous', 'outdated', 'image', 'other'];
+
 const ObjectionModal = ({ isOpen, onClose, questionText, onSubmit }) => {
   const { t } = useTranslation();
   const [text, setText] = useState('');
+  const [reason, setReason] = useState('other');
   const dialogRef = useModalA11y(isOpen, onClose); // T-10
 
   React.useEffect(() => {
@@ -45,8 +53,9 @@ const ObjectionModal = ({ isOpen, onClose, questionText, onSubmit }) => {
 
   const handleSubmit = () => {
     if (text.trim()) {
-      onSubmit(text);
+      onSubmit(text, reason);
       setText('');
+      setReason('other');
     }
   };
 
@@ -65,6 +74,21 @@ const ObjectionModal = ({ isOpen, onClose, questionText, onSubmit }) => {
         <div className="modal-title">{t('objection.title')}</div>
         <div className="modal-text" style={{ fontSize: 'var(--fs-md)', lineHeight: 1.5 }}>
           <strong>{t('objection.questionLabel')}</strong> {questionText}
+        </div>
+        {/* M-3: tur tanlagich. Default `other` — majburiy emas, ya'ni
+            e'tiroz yuborish yo'liga qo'shimcha to'siq qo'yilmaydi. */}
+        <div className="objection-reasons" role="group" aria-label={t('objection.reasonLabel')}>
+          {REASONS.map(r => (
+            <button
+              key={r}
+              type="button"
+              className={'objection-reason' + (reason === r ? ' is-active' : '')}
+              aria-pressed={reason === r}
+              onClick={() => setReason(r)}
+            >
+              {t('objection.reasons.' + r)}
+            </button>
+          ))}
         </div>
         <textarea
           className="modal-input"

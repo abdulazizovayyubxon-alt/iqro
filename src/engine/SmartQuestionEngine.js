@@ -408,6 +408,23 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
   let maxRunInSession = 0;
   let leadingRun = null;
   const newMistakes = [];
+  // ⚠️ ADMIN UX AUDIT 2026-08-18, A-1 BAND — savol darajasidagi javob jurnali.
+  //
+  // Shu paytgacha platformada "qaysi savolda ko'p xato qilinyapti?" degan
+  // savolga javob beradigan MA'LUMOT YO'Q edi: `wrongCount` seans tugashi
+  // bilan yo'qolardi, `mistakes` esa foydalanuvchiga xos, chegaralangan va
+  // matn bo'yicha kalitlangan. Ya'ni noto'g'ri tuzilgan savolni faqat kimdir
+  // shikoyat qilsagina topish mumkin edi.
+  //
+  // Bu jurnal savol bo'yicha AGREGATLANADI (api/cron-daily.js), shundan keyin
+  // xom yozuv o'chiriladi — shaxsiy ma'lumot saqlanmaydi. Faqat: savol necha
+  // marta ko'rsatilgani, nechtasi xato bo'lgani va QAYSI VARIANT tanlangani.
+  // Aynan oxirgisi eng qimmatli signal: agar 68% B ni tanlasa, "to'g'ri"
+  // javob esa C bo'lsa — kalit ehtimol noto'g'ri.
+  //
+  // `id` faqat paketdan kelgan savolda bo'ladi (AdminPage.jsx:1930).
+  // Id siz savol jurnalga tushmaydi — uni agregatlab bo'lmaydi.
+  const answerLog = [];
   // Yangilanadigan kartalar ham YANGI kalit bilan indekslanadi. Eski kalitli
   // kartaning `qHash`i pastda ustiga yozilib, jimgina migratsiya bo'ladi (T-7).
   const updatedCards = new Map(
@@ -426,12 +443,26 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
     const qHash = questionKey(q);
     const wasCorrect = selected === q.correct;
 
+    // `secs` ilgari faqat topicDeltas bloki ichida e'lon qilinardi; endi
+    // answerLog ham undan foydalanadi, shuning uchun yuqoriga ko'chirildi.
+    const secs = questionTimes[i] || 0;
+
+    // A-1: savol bo'yicha agregatsiya uchun xom yozuv.
+    if (q.id) {
+      answerLog.push({
+        qid: q.id,
+        ok: wasCorrect,
+        pick: selected,
+        // 10 daqiqadan uzun javob = tab fonda qolgan, o'rtachani buzmasin
+        ms: Math.min(secs * 1000, 600000),
+      });
+    }
+
     const qTopicId = q.topicId ?? topicId;
     if (qTopicId !== undefined && qTopicId !== null && qTopicId >= 0) {
       const td = topicDeltas[qTopicId] || { answered: 0, correct: 0, timeSum: 0, fast: 0 };
       td.answered += 1;
       if (wasCorrect) td.correct += 1;
-      const secs = questionTimes[i] || 0;
       if (secs > 0) {
         td.timeSum += secs;
         if (secs < FAST_ANSWER_SEC) td.fast += 1;
@@ -524,6 +555,7 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
     totalAnswered: correctCount + wrongCount,
     accuracy: questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0,
     newMistakes,
+    answerLog,
     topicDeltas,
     maxRunInSession,
     leadingRun,

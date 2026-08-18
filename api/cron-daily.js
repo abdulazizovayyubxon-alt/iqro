@@ -42,7 +42,7 @@
  */
 
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
+import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 import { getMessaging } from 'firebase-admin/messaging';
 import { verifySecret, extractSecret, ensureShortIdAdmin, getWeekId, getMonthId } from './_shared.js';
 import { TEXT as SMS_TEXT, normalizePhone, sendQueue, activeProvider, segments, isSmsEnabled } from './_sms.js';
@@ -567,10 +567,48 @@ export default async function handler(req, res) {
         num(db.collection('payments').where('createdAt', '>=', since(1)).count().get()),
       ]);
 
+      // ── TUSHUM, SO'MDA (ADMIN UX AUDIT 2026-08-18, A-2) ──────────────
+      //
+      // Yuqoridagi ikki ko'rsatkich `.count()` — ya'ni TRANZAKSIYALAR SONI.
+      // Panelda "bugun necha so'm tushdi?" degan savolga javob beradigan
+      // birorta raqam YO'Q edi: 12 ta to'lov 12 x 29 000 ham, 12 x 199 000
+      // ham bo'lishi mumkin — farqi ko'rinmasdi.
+      //
+      // Summani agregatsiya so'rovi bilan olib bo'lmaydi (Firestore `sum()`
+      // faqat ba'zi muhitlarda), shuning uchun 30 kunlik muvaffaqiyatli
+      // to'lovlar O'QILADI va yig'iladi. Narxi = shu davrdagi to'lovlar soni,
+      // ya'ni o'nlab o'qish — kunlik kvota oldida sezilmaydi.
+      //
+      // Bugungi summa SHU TO'PLAMDAN hisoblanadi — qo'shimcha so'rov yo'q.
+      let paymentsSumToday = null;
+      let paymentsSum30d = null;
+      try {
+        const since30 = since(30);
+        const since1 = since(1);
+        const paidSnap = await db.collection('payments')
+          .where('createdAt', '>=', since30)
+          .get();
+        let s30 = 0, s1 = 0;
+        paidSnap.forEach(d => {
+          const p = d.data();
+          if (p.status !== 'success') return;
+          const amt = Number(p.paidAmount);
+          if (!Number.isFinite(amt) || amt <= 0) return;
+          s30 += amt;
+          if (p.createdAt >= since1) s1 += amt;
+        });
+        paymentsSum30d = s30;
+        paymentsSumToday = s1;
+      } catch (e) {
+        // Indeks yo'q bo'lsa ham qolgan metrika yozilaveradi.
+        results.errors.push(`Tushum yig'indisi: ${e.message}`);
+      }
+
       results.metrics = {
         date: dayKey,
         total, premium, dau, wau, newToday, newWeek,
         activated, paidActive, paymentsTotal, paymentsToday,
+        paymentsSumToday, paymentsSum30d,
       };
 
       if (!dryRun) {
@@ -588,6 +626,92 @@ export default async function handler(req, res) {
       // Metrika — ikkinchi darajali. Yiqilsa cron'ning asosiy ishi (obuna
       // muddati, eslatmalar) allaqachon bajarilgan bo'ladi.
       results.errors.push(`Metrika: ${e.message}`);
+    }
+
+    // ═══ 5b. SAVOL STATISTIKASI (ADMIN UX AUDIT 2026-08-18, A-1) ═══
+    //
+    // NEGA: shu paytgacha "qaysi savolda ko'p xato qilinyapti?" degan savolga
+    // javob beradigan ma'lumot YO'Q edi. Buzuq savol faqat kimdir shikoyat
+    // qilsagina topilardi — ya'ni moderatsiya sof reaktiv edi.
+    //
+    // MANBA: `answerEvents` — mijoz test yakunida yozadigan bitta hujjat
+    // (src/context/AppContext.jsx). Bu yerda ular savol bo'yicha yig'iladi va
+    // XOM YOZUV O'CHIRILADI: kolleksiya doim kichik qoladi, shaxsiy ma'lumot
+    // to'planib qolmaydi.
+    //
+    // O'QISHSIZ YANGILASH: mavjud `questionStats` hujjatlari O'QILMAYDI —
+    // `FieldValue.increment()` ishlatiladi. Ya'ni narx = faqat yozuv.
+    // Xotirada avval yig'iladi, shuning uchun bitta savol bir necha testda
+    // uchrasa ham unga BITTA yozuv ketadi.
+    //
+    // CHEGARA: bir yugurishda ko'pi bilan EVENT_LIMIT hujjat. Qolgani keyingi
+    // kuni ishlanadi — yozuv kvotasi (bepul: 20 000/kun) portlab ketmasin.
+    try {
+      const EVENT_LIMIT = 800;
+      const evSnap = await db.collection('answerEvents').limit(EVENT_LIMIT).get();
+
+      if (!evSnap.empty) {
+        // qid -> { shown, correct, wrong, msSum, msCount, picks: {idx: n} }
+        const agg = new Map();
+        for (const d of evSnap.docs) {
+          const log = d.data().log;
+          if (!Array.isArray(log)) continue;
+          for (const e of log) {
+            const qid = e && e.qid;
+            if (typeof qid !== 'string' || !qid) continue;
+            let a = agg.get(qid);
+            if (!a) { a = { shown: 0, correct: 0, wrong: 0, msSum: 0, msCount: 0, picks: {} }; agg.set(qid, a); }
+            a.shown++;
+            if (e.ok) a.correct++; else a.wrong++;
+            const ms = Number(e.ms);
+            if (Number.isFinite(ms) && ms > 0) { a.msSum += ms; a.msCount++; }
+            const pick = Number(e.pick);
+            if (Number.isInteger(pick) && pick >= 0 && pick < 10) {
+              a.picks[pick] = (a.picks[pick] || 0) + 1;
+            }
+          }
+        }
+
+        if (!dryRun && agg.size > 0) {
+          // Firestore batch chegarasi 500 amal.
+          const entries = [...agg.entries()];
+          for (let i = 0; i < entries.length; i += 400) {
+            const batch = db.batch();
+            for (const [qid, a] of entries.slice(i, i + 400)) {
+              const upd = {
+                shown: FieldValue.increment(a.shown),
+                correct: FieldValue.increment(a.correct),
+                wrong: FieldValue.increment(a.wrong),
+                msSum: FieldValue.increment(a.msSum),
+                msCount: FieldValue.increment(a.msCount),
+                lastComputedAt: now.toISOString(),
+              };
+              // Nuqtali yo'l — massiv emas, map: `increment` massiv elementiga
+              // ishlamaydi, map kalitiga esa ishlaydi.
+              for (const [idx, n] of Object.entries(a.picks)) {
+                upd[`picks.${idx}`] = FieldValue.increment(n);
+              }
+              batch.set(db.collection('questionStats').doc(qid), upd, { merge: true });
+            }
+            await batch.commit();
+          }
+
+          // Xom yozuvlarni o'chirish — faqat AGREGATLANGANLARINI.
+          for (let i = 0; i < evSnap.docs.length; i += 400) {
+            const batch = db.batch();
+            evSnap.docs.slice(i, i + 400).forEach(d => batch.delete(d.ref));
+            await batch.commit();
+          }
+        }
+
+        results.questionStats = {
+          events: evSnap.size,
+          questions: agg.size,
+          truncated: evSnap.size === EVENT_LIMIT,
+        };
+      }
+    } catch (e) {
+      results.errors.push(`Savol statistikasi: ${e.message}`);
     }
 
     // ═══ 6. REYTING SNAPSHOT'I (o'qish byudjeti) ═══

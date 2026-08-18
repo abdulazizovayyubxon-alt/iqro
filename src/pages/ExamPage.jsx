@@ -595,7 +595,10 @@ const ExamPage = () => {
               const qRef = collection(db, 'questions');
               const qQuery = query(qRef, where('category', '==', cat));
               const snap = await getDocs(qQuery);
-              allQ = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+              // Muomaladan olingan savol imtihonga ham tushmaydi
+              // (TestPage.jsx dagi bilan bir xil sabab).
+              allQ = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+                .filter(q => q.status !== 'retired');
               await localforage.setItem(cacheKey, allQ);
               await localforage.setItem(versionKey, remoteVersion);
             } catch (fallbackErr) {
@@ -997,9 +1000,9 @@ const ExamPage = () => {
   // imtihoni emas, balki tayyorgarlik platformasi bo'lgani uchun bu cheklov
   // foydadan ko'ra ko'proq zarar keltirardi (Play Market past sharhlar manbai).
 
-  const handleObjectionSubmit = (text) => {
+  const handleObjectionSubmit = (text, reason) => {
     const q = questions[currentQ];
-    addObjection(q.topicId, cat, q, text);
+    addObjection(q.topicId, cat, q, text, reason);
     setShowObjectionModal(false);
     showToast(t('exam.toastObjectionSent'), 'success');
   };

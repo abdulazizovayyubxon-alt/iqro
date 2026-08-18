@@ -89,7 +89,7 @@ export const ObjectionProvider = ({ children }) => {
     return () => unsubscribe();
   }, [user, showToast]);
 
-  const addObjection = async (topicId, category, questionObj, note) => {
+  const addObjection = async (topicId, category, questionObj, note, reason = 'other') => {
     if (!user) return;
 
     const topic = TOPICS.find(t => t.id === topicId);
@@ -101,10 +101,33 @@ export const ObjectionProvider = ({ children }) => {
       topic: topic ? topic.name : "Aralash",
       topicId,
       category: category,
+      // ⚠️ ADMIN UX AUDIT 2026-08-18 — ILDIZ SABAB (M-1, M-2, M-4, A-1, K-3).
+      //
+      // Ilgari shu yerda savolning identifikatori TASHLAB YUBORILARDI:
+      // e'tirozda faqat MATN qolardi. Oqibati zanjir bo'lib tarqalardi —
+      // admin e'tirozdan savolga o'ta olmasdi (buning uchun butun bazani,
+      // ~47 000 o'qishni yuklash kerak edi), bitta savol haqidagi takroriy
+      // shikoyatlar birlashmasdi, savol darajasidagi xato statistikasini
+      // esa umuman qurib bo'lmasdi.
+      //
+      // Zanjirning qolgan bo'g'ini ALLAQACHON butun edi: savollar
+      // { id: d.id, ...d.data() } bo'lib yuklanadi (AdminPage.jsx:1037),
+      // paketga JSON.stringify bilan identifikatori bilan birga tushadi
+      // (AdminPage.jsx:1930) va shu funksiyaga to'liq obyekt bo'lib keladi.
+      // Ya'ni kerak bo'lgani — uni tashlamaslik.
+      //
+      // null qiymati — takror navbati kartasi kabi identifikatorsiz manbadan
+      // kelgan holat. Admin panel bunday e'tirozni eski, matn bo'yicha
+      // usulda ishlaydi (AdminPage: resolveObjectionQuestion).
+      questionId: questionObj?.id ?? null,
       question: questionObj.q || questionObj,
       options: questionObj.opts || [],
       correct: questionObj.opts ? questionObj.opts[questionObj.correct] : null,
       note,
+      // Triaj (M-3): admin shikoyat turini filtrlay olsin. Eski yozuvlarda
+      // bu maydon yo'q — admin panel ularni 'other' deb ko'rsatadi.
+      reason,
+      status: 'new',
       date: new Date().toLocaleString(),
       solved: false,
       timestamp: new Date()

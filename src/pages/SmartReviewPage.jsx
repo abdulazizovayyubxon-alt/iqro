@@ -164,9 +164,9 @@ const SmartReviewPage = () => {
     setAnswered(null);
   };
 
-  const handleObjection = (text) => {
+  const handleObjection = (text, reason) => {
     const card = cards[currentIdx];
-    addObjection(card.topicId, state.activeCategory, card, text);
+    addObjection(card.topicId, state.activeCategory, card, text, reason);
     setShowObjectionModal(false);
     showToast(t('exam.toastObjectionSent'), 'success');
   };
@@ -288,9 +288,9 @@ const SmartReviewPage = () => {
           isOpen={showObjectionModal}
           onClose={() => setShowObjectionModal(false)}
           questionText={subjectQuestions[sfIdx]?.q}
-          onSubmit={(text) => {
+          onSubmit={(text, reason) => {
             const q = subjectQuestions[sfIdx];
-            if (q) addObjection(q.topicId, state.activeCategory, q, text);
+            if (q) addObjection(q.topicId, state.activeCategory, q, text, reason);
             setShowObjectionModal(false);
             showToast(t('exam.toastObjectionSent'), 'success');
           }}

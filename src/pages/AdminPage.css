@@ -802,3 +802,285 @@
   .admin-table-wrap { -webkit-overflow-scrolling: touch; }
   .admin-table { min-width: 600px; }
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   «Savolni tuzatish» oynasi — ADMIN UX AUDIT 2026-08-18 (M-1, M-2)
+   Komponent: src/components/admin/FixQuestionModal.jsx
+
+   Tuzilish: sarlavha (qotgan) → skroll qismi → amallar (qotgan).
+   Shu tarzda uzun savolda ham to'rtta amal DOIM ko'rinib turadi —
+   admin oynani skroll qilib qidirmaydi.
+   ══════════════════════════════════════════════════════════════════ */
+.admin-fix-modal {
+  max-width: 820px;
+  width: 94%;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+}
+
+.admin-fix-scroll {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 0;
+}
+
+/* ── Shikoyat: oynadagi eng tepa element ── */
+.admin-fix-complaint {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: var(--fs-base);
+  color: var(--text);
+  line-height: 1.5;
+}
+.admin-fix-complaint-h {
+  font-size: var(--fs-2xs);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+  margin-bottom: 6px;
+}
+.admin-fix-meta {
+  margin-top: 8px;
+  font-size: var(--fs-xs);
+  color: var(--text3);
+}
+
+/* ── Statistika lentasi ── */
+.admin-fix-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  padding: 10px 13px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: var(--fs-sm);
+  color: var(--text2);
+  font-variant-numeric: tabular-nums;
+}
+.admin-fix-stats .is-bad { color: var(--red); font-weight: 700; }
+
+/* ── Yonma-yon solishtirish ── */
+.admin-fix-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.admin-fix-pane {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  background: var(--bg3);
+  min-width: 0;
+}
+/* Tahrirlanadigan tomon ajralib tursin — admin qayerga yozayotganini
+   bir qarashda bilsin. */
+.admin-fix-pane--live {
+  background: var(--blue-bg);
+  border-color: var(--blue);
+}
+.admin-fix-pane-h {
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 9px;
+}
+.admin-fix-q {
+  font-size: var(--fs-base);
+  color: var(--text);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  word-break: break-word;
+}
+.admin-fix-opt {
+  font-size: var(--fs-md);
+  color: var(--text2);
+  padding: 6px 9px;
+  border-radius: 7px;
+  margin-bottom: 4px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  word-break: break-word;
+}
+.admin-fix-opt.is-key {
+  border-color: var(--green);
+  color: var(--green);
+  font-weight: 600;
+}
+
+/* ── Tahrir qatori: harf tugmasi = to'g'ri javob tanlagichi ── */
+.admin-fix-opt-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.admin-fix-opt-row .modal-input { flex: 1; min-width: 0; }
+
+.admin-fix-key {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  color: var(--text3);
+  font-weight: 800;
+  font-size: var(--fs-md);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.admin-fix-key:hover { border-color: var(--green); color: var(--green); }
+.admin-fix-key.is-key {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+/* ── Amallar ── */
+.admin-fix-actions {
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.admin-fix-actions .btn { flex: 1 1 auto; min-width: 140px; }
+
+@media (max-width: 700px) {
+  .admin-fix-split { grid-template-columns: 1fr; }
+  .admin-fix-modal { padding: 16px; max-height: 96vh; }
+  .admin-fix-actions .btn { min-width: 0; flex-basis: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-fix-key { transition: none; }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   «Shubhali savollar» — ADMIN UX AUDIT 2026-08-18 (A-1)
+
+   E'tirozlar tabining tepasida, YOPIQ holatda turadi: ochilishi
+   kvota sarflaydi, shuning uchun bu ataylab qilinadigan amal.
+   ══════════════════════════════════════════════════════════════════ */
+.admin-susp {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg2);
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+.admin-susp-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 13px 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  text-align: left;
+}
+.admin-susp-head:hover { background: var(--bg3); }
+
+.admin-susp-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+.admin-susp-body {
+  padding: 0 15px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+/* Qator: savol | ko'rsatilgan | xato% | tugma */
+.admin-susp-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.admin-susp-row:last-child { border-bottom: none; }
+
+.admin-susp-q {
+  font-size: var(--fs-base);
+  color: var(--text);
+  line-height: 1.45;
+  min-width: 0;
+  word-break: break-word;
+}
+
+/* Diagnoz — taxmin emas, javob taqsimotidan chiqarilgan xulosa.
+   Rang og'irlikni kodlaydi: qizil = kalit noto'g'ri bo'lishi mumkin. */
+.admin-susp-diag {
+  font-size: var(--fs-xs);
+  margin-top: 4px;
+  color: var(--text3);
+}
+.admin-susp-diag.is-key { color: var(--red); font-weight: 600; }
+.admin-susp-diag.is-ambiguous { color: var(--amber); font-weight: 600; }
+.admin-susp-diag.is-dead { color: var(--amber); }
+
+.admin-susp-n {
+  font-size: var(--fs-md);
+  color: var(--text3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.admin-susp-n.is-bad { color: var(--red); font-weight: 700; }
+
+@media (max-width: 640px) {
+  .admin-susp-row {
+    grid-template-columns: 1fr auto;
+    row-gap: 6px;
+  }
+  .admin-susp-q { grid-column: 1 / -1; }
+  .admin-susp-row .btn { grid-column: 2; }
+}
+
+/* Jonli ko'rsatkich (A-3) — nuqta pulsi «bu raqam yangilanib turadi» deydi.
+   Qolgan barcha raqamlar kunlik cron'dan keladi va kun davomida qotib turadi,
+   shuning uchun farqni ko'rsatish MUHIM: admin qaysi raqamga ishonishini
+   bilishi kerak. */
+.admin-live::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  margin-right: 8px;
+  vertical-align: middle;
+  animation: adminLivePulse 2.4s ease-in-out infinite;
+}
+
+@keyframes adminLivePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-live::before { animation: none; }
+}

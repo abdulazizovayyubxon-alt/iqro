@@ -28,8 +28,18 @@ import './AdminPage.css';
 import PromoTab from '../components/admin/PromoTab';
 import SchoolsTab from '../components/admin/SchoolsTab';
 import PartnerSetsTab from '../components/admin/PartnerSetsTab';
+import FixQuestionModal, { REASON_LABELS } from '../components/admin/FixQuestionModal';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { normalizeText, trigrams, jaccard } from '../utils/textSimilarity';
+// A-1: shubhali savol diagnozi. AdminPage test qilib bo'lmaydigan hajmda,
+// shuning uchun mantiq alohida, testlanadigan modulda turadi.
+import {
+  diagnoseQuestion, SUSP_MIN_SHOWN, SUSP_MIN_WRONG_RATE, SUSP_SCAN_LIMIT, SUSP_TOP,
+} from '../utils/questionDiagnosis';
+// K-3: dublikatni 47 000 o'qishsiz topish uchun.
+import { qHashOf, normalizeQuestion } from '../utils/qHash';
+// K-5: yuklashdan oldin siqish — 4 MB lik skrinshot butun bazaga tarqalmasin.
+import { compressImage } from '../utils/compressImage';
 import {
   logAdminAction, describeAdminAction, formatActionMeta, ADMIN_ACTION_GROUPS,
 } from '../services/adminLog';
@@ -450,6 +460,19 @@ const AdminPage = () => {
   const [pendingPublish, setPendingPublish] = useState(false);
   const [loading, setLoading] = useState(true);
   const [objectionsError, setObjectionsError] = useState(null);
+  // ADMIN UX AUDIT 2026-08-18, M-2: «Tuzatish» oynasi ochilgan e'tiroz.
+  const [fixTarget, setFixTarget] = useState(null);
+  // A-1: shubhali savollar ro'yxati (ataylab yuklanadi — kvota).
+  const [suspicious, setSuspicious] = useState([]);
+  const [suspLoading, setSuspLoading] = useState(false);
+  const [suspError, setSuspError] = useState(null);
+  const [suspLoaded, setSuspLoaded] = useState(false);
+  const [suspOpen, setSuspOpen] = useState(false);
+  // K-3: bir martalik `qHash` to'ldirish holati.
+  const [qhashBusy, setQhashBusy] = useState(false);
+  const [qhashProgress, setQhashProgress] = useState(null);
+  // A-3: «hozir faol» — 15 daqiqalik oyna (pastdagi effekt izohiga qarang).
+  const [liveActive, setLiveActive] = useState(null);
   const [search, setSearch] = useState('');
   const [userSearch, setUserSearch] = useState('');
   const [usersLoading, setUsersLoading] = useState(false);
@@ -717,16 +740,20 @@ try {
 
 
   const processJsonQuestions = async (jsonString) => {
-    // ⚠️ AUDIT 2026-08-06, T-3 BAND — dublikat filtri (pastdagi `existingSet`)
-    // `questions` state'iga tayanadi, u esa kvota tejash uchun FAQAT qo'lda
-    // yuklanadi (loadAllQuestions izohiga qarang). Baza yuklanmagan bo'lsa
-    // `existingSet` BO'SH bo'lib qolardi va JSON'dagi har bir savol "yangi" deb
-    // qo'shilardi — 45k lik bazaga minglab dublikat, keyin `bump-questions-version`
-    // bilan hamma foydalanuvchiga tarqalardi. Import shu sababli bazasiz ishlamaydi.
-    if (!questionsLoaded) {
-      showToast("Avval «Savollarni yuklash» tugmasini bosing — busiz dublikat tekshiruvi ishlamaydi", 'error');
-      return;
-    }
+    // ⚠️ ADMIN UX AUDIT 2026-08-18, K-3 BAND — import endi BAZASIZ ishlaydi.
+    //
+    // AVVAL (2026-08-06, T-3): dublikat filtri `questions` state'iga tayanardi,
+    // ya'ni import butun bazani yuklashni TALAB QILARDI — panelning o'z
+    // ogohlantirishiga ko'ra ~47 000 o'qish, bepul kunlik kvota esa 50 000.
+    // Amalda 20 ta savol qo'shish ilovani o'sha kuni HAMMA uchun o'chirib
+    // qo'yishi mumkin edi.
+    //
+    // ENDI: har savolning `qHash` i hisoblanadi va serverdan 30 talab
+    // so'raladi (`where('qHash','in',[...])`). 200 savollik import ~ 7 so'rov.
+    //
+    // ⚠️ Bu faqat `qHash` YOZILGAN savollarni topadi. Eski yozuvlarda u yo'q,
+    // shuning uchun «Savollar» tabida bir martalik «qHash to'ldirish» amali
+    // bor. To'ldirilmaguncha xotiradagi eski tekshiruv zaxira bo'lib qoladi.
     setIsUploadingJSON(true);
     showToast("JSON fayl tahlil qilinmoqda...", 'info');
     try {
@@ -739,9 +766,13 @@ try {
         return;
       }
 
-      const normalize = (text) => text ? text.toLowerCase().replace(/[‘’`ʼ]/g, "’").replace(/\s+/g, " ").trim() : "";
+      // Ta'rif BITTA joyda — src/utils/qHash.js. Eski lokal nusxada oddiy
+      // apostrof (U+0027) hisobga olinmasdi, ya'ni «bo'lim» va «bo‘lim» turli
+      // savol sanalardi va dublikat jimgina o'tib ketardi.
+      const normalize = normalizeQuestion;
 
-      // Use already-loaded questions state — avoids re-fetching 6000+ docs
+      // Xotiradagi to'plam — ZAXIRA. Baza yuklangan bo'lsa ishlaydi; yuklanmagan
+      // bo'lsa bo'sh qoladi va asosiy tekshiruv `qHash` orqali SERVERDA bajariladi.
       const existingSet = new Set(questions.map(q => normalize(q.q)));
 
       // ⚠️ AUDIT 2026-08-06, T-16 BAND — validatsiya kuchaytirildi.
@@ -787,10 +818,46 @@ try {
           explanation: q.explanation || `✓ To'g'ri javob: ${String.fromCharCode(65 + correctIdx)}`,
           mnemonic: q.mnemonic || '',
           image: q.image || '',
+          // K-3: keyingi importlar shu maydon orqali dublikatni SERVERDAN
+          // topadi — butun bazani yuklash kerak bo'lmaydi.
+          qHash: qHashOf(q.q),
           createdAt: new Date().toISOString()
         });
         existingSet.add(normQText);
       });
+
+      // ── K-3: SERVERDAN dublikat tekshiruvi ────────────────────────────
+      // `in` operatori bir so'rovda 30 ta qiymatni oladi. 200 savollik
+      // import = 7 so'rov. Bu — butun bazani yuklashning (47 000 o'qish)
+      // o'rnini bosadi.
+      //
+      // Xato bo'lsa (indeks yo'q, tarmoq uzildi) import TO'XTATILADI: jimgina
+      // davom etsa dublikat yozilib ketardi, uni keyin qo'lda tozalash kerak
+      // bo'lardi.
+      if (toAdd.length > 0) {
+        const hashes = [...new Set(toAdd.map(q => q.qHash).filter(Boolean))];
+        const found = new Set();
+        try {
+          for (let i = 0; i < hashes.length; i += 30) {
+            const snap = await getDocs(query(
+              collection(db, 'questions'),
+              where('qHash', 'in', hashes.slice(i, i + 30)),
+            ));
+            snap.forEach(d => found.add(d.data().qHash));
+          }
+        } catch (dupErr) {
+          showToast('Dublikat tekshiruvi bajarilmadi: ' + dupErr.message, 'error');
+          setIsUploadingJSON(false);
+          return;
+        }
+        if (found.size > 0) {
+          const before = toAdd.length;
+          for (let i = toAdd.length - 1; i >= 0; i--) {
+            if (found.has(toAdd[i].qHash)) toAdd.splice(i, 1);
+          }
+          skipped.duplicate += before - toAdd.length;
+        }
+      }
 
       const skipSummary = [
         skipped.duplicate ? `${skipped.duplicate} ta takror` : null,
@@ -881,20 +948,54 @@ try {
   const [editingTariff, setEditingTariff] = useState(null);
   const [newTariff, setNewTariff] = useState({ id: '', name: '', price: 0, durationMonths: 1 });
 
-  const handleImageUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+  // ── Rasm yuklash (ADMIN UX AUDIT 2026-08-18, K-5) ───────────────────
+  //
+  // Uch o'zgarish:
+  //  1. CLIPBOARD'DAN QO'YISH — metodist PDF'dan skrinshot oladi va
+  //     to'g'ridan-to'g'ri Ctrl+V qiladi. Ilgari har rasmda uch ortiqcha
+  //     qadam bor edi: skrinshot → faylga saqlash → «tanlash» oynasi.
+  //  2. SIQISH — 4 MB lik kamera rasmi o'zgarishsiz ketardi va uni HAR BIR
+  //     foydalanuvchi mobil internetda yuklab olardi.
+  //  3. `setNewQ(prev => …)` — ilgari `{...newQ}` yopilmasi ishlatilardi.
+  //     Yuklash davomida admin matnni tahrirlasa, o'sha tahrir YO'QOLARDI
+  //     (eskirgan nusxa ustiga yozilardi).
+  const uploadQuestionImage = async (rawFile) => {
+    if (!rawFile) return;
+    if (!rawFile.type?.startsWith('image/')) {
+      showToast('Faqat rasm fayllari qabul qilinadi', 'error');
+      return;
+    }
     setIsUploadingImage(true);
     try {
-      const storageRef = ref(storage, `questions/${Date.now()}_${file.name}`);
+      const file = await compressImage(rawFile);
+      const ext = file.type === 'image/webp' ? 'webp' : (rawFile.name?.split('.').pop() || 'img');
+      const storageRef = ref(storage, `questions/${Date.now()}.${ext}`);
       await uploadBytes(storageRef, file);
       const url = await getDownloadURL(storageRef);
-      setNewQ({ ...newQ, image: url });
-      showToast("Rasm yuklandi!", 'success');
+      setNewQ(prev => ({ ...prev, image: url }));
+      const saved = rawFile.size - file.size;
+      showToast(
+        saved > 50000
+          ? `Rasm yuklandi (${Math.round(saved / 1024)} KB tejaldi)`
+          : 'Rasm yuklandi!',
+        'success',
+      );
     } catch (err) {
-      showToast("Rasm yuklashda xatolik: " + err.message, 'error');
+      showToast('Rasm yuklashda xatolik: ' + err.message, 'error');
     }
     setIsUploadingImage(false);
+  };
+
+  const handleImageUpload = (e) => uploadQuestionImage(e.target.files[0]);
+
+  // Savol matni maydoniga qo'yilgan rasm — matn qo'yish buzilmaydi:
+  // faqat clipboard'da RASM bo'lsagina aralashamiz.
+  const handleImagePaste = (e) => {
+    const item = [...(e.clipboardData?.items || [])]
+      .find(i => i.type?.startsWith('image/'));
+    if (!item) return;
+    e.preventDefault();
+    uploadQuestionImage(item.getAsFile());
   };
 
   useEffect(() => {
@@ -1029,6 +1130,173 @@ try {
   // davomida HAMMA foydalanuvchi uchun buzardi (statistika, reyting,
   // bildirishnomalar `permission-denied` bergan bo'lardi).
   // Endi faqat admin ataylab tugmani bosganda yuklanadi.
+  // ── «Shubhali savollar» (ADMIN UX AUDIT 2026-08-18, A-1) ────────────
+  //
+  // NEGA: shu paytgacha buzuq savolni faqat KIMDIR SHIKOYAT QILSA topish
+  // mumkin edi — ya'ni moderatsiya sof reaktiv edi. Ko'pchilik foydalanuvchi
+  // esa shikoyat qilmaydi: xato javobni ko'radi, yelka qisadi va ketadi.
+  //
+  // Bu ro'yxat `questionStats` (cron yig'adi) asosida buzuq savollarni
+  // SHIKOYAT KUTMASDAN topadi va har biriga o'sha «Tuzatish» oynasini beradi.
+  //
+  // NARXI: ~300 ta o'qish, faqat admin ATAYLAB bosganda. `orderBy` va `where`
+  // BITTA maydonda (`shown`) — composite indeks kerak emas.
+  // ── Bir martalik `qHash` to'ldirish (ADMIN UX AUDIT 2026-08-18, K-3) ──
+  //
+  // Eski savollarda `qHash` yo'q, ya'ni import ularni dublikat sifatida
+  // TOPA OLMAYDI. Bu amal bazani bir marta ko'rib chiqib maydonni to'ldiradi.
+  //
+  // NARXI: bazani yuklash (~47 000 o'qish) + yozuv. ATAYLAB bir marta
+  // bajariladi — shundan keyin har import 7 ta so'rov bilan kifoyalanadi.
+  // Shu sababli bu yerda baza yuklangan bo'lishi SHART: qayta yuklamaymiz.
+  const backfillQHash = async () => {
+    if (!questionsLoaded) {
+      showToast('Avval «Bazani yuklash» tugmasini bosing', 'error');
+      return;
+    }
+    const missing = questions.filter(q => !q.qHash && q.q);
+    if (missing.length === 0) {
+      showToast('Hamma savolda qHash bor — to’ldirish kerak emas', 'success');
+      return;
+    }
+    confirmAction(
+      `${missing.length.toLocaleString('uz-UZ')} ta savolga dublikat kaliti yoziladi. ` +
+      'Shundan keyin ommaviy import butun bazani yuklamasdan ishlaydi. Davom etamizmi?',
+      async () => {
+        setQhashBusy(true);
+        setQhashProgress({ done: 0, total: missing.length });
+        try {
+          for (let i = 0; i < missing.length; i += 400) {
+            const chunk = missing.slice(i, i + 400);
+            const batch = writeBatch(db);
+            chunk.forEach(q => batch.update(doc(db, 'questions', q.id), { qHash: qHashOf(q.q) }));
+            await batch.commit();
+            setQhashProgress({ done: Math.min(i + 400, missing.length), total: missing.length });
+          }
+          // Lokal ro'yxatni ham moslaymiz — qayta yuklash shart bo'lmasin.
+          setQuestions(prev => prev.map(q => (q.qHash || !q.q ? q : { ...q, qHash: qHashOf(q.q) })));
+          await setDoc(doc(db, 'settings', 'qhash'), {
+            backfilledAt: new Date().toISOString(),
+            count: missing.length,
+          }, { merge: true });
+          logAdminAction('question.qhashBackfill', null, { count: missing.length });
+          showToast(`✅ ${missing.length} ta savolga kalit yozildi`, 'success');
+        } catch (e) {
+          showToast('Xatolik: ' + e.message, 'error');
+        } finally {
+          setQhashBusy(false);
+          setQhashProgress(null);
+        }
+      }
+    );
+  };
+
+  const loadSuspicious = async () => {
+    if (suspLoading) return;
+    setSuspLoading(true);
+    setSuspError(null);
+    try {
+      const snap = await getDocs(query(
+        collection(db, 'questionStats'),
+        where('shown', '>=', SUSP_MIN_SHOWN),
+        orderBy('shown', 'desc'),
+        limit(SUSP_SCAN_LIMIT),
+      ));
+
+      const rows = [];
+      snap.forEach(d => {
+        const s = d.data();
+        const shown = s.shown || 0;
+        if (shown < SUSP_MIN_SHOWN) return;
+        const wrongRate = (s.wrong || 0) / shown;
+        if (wrongRate < SUSP_MIN_WRONG_RATE) return;
+        rows.push({
+          id: d.id,
+          shown,
+          wrong: s.wrong || 0,
+          wrongRate,
+          picks: s.picks || {},
+          avgMs: s.msCount ? Math.round(s.msSum / s.msCount) : null,
+          // Zarar o'lchovi: 90% xato x 40 ko'rsatish < 70% xato x 900 ko'rsatish.
+          score: shown * wrongRate,
+        });
+      });
+      rows.sort((a, b) => b.score - a.score);
+      const top = rows.slice(0, SUSP_TOP);
+
+      // Savol matnini olish — `documentId() in` 30 talik bo'laklarda.
+      // 20 ta savol = 1 ta so'rov.
+      const byId = new Map();
+      for (let i = 0; i < top.length; i += 30) {
+        const ids = top.slice(i, i + 30).map(r => r.id);
+        if (ids.length === 0) break;
+        const qs = await getDocs(query(
+          collection(db, 'questions'),
+          where(documentId(), 'in', ids),
+        ));
+        qs.forEach(d => byId.set(d.id, { id: d.id, ...d.data() }));
+      }
+
+      setSuspicious(top.map(r => {
+        const q = byId.get(r.id) || null;
+        return { ...r, question: q, diagnosis: diagnoseQuestion(r, q) };
+      }));
+      setSuspLoaded(true);
+    } catch (e) {
+      // Indeks yo'q bo'lsa Firestore aniq havola beradi — xabarni yashirmaymiz.
+      setSuspError(e.message);
+    } finally {
+      setSuspLoading(false);
+    }
+  };
+
+  // ── «So'nggi 15 daqiqada faol» (ADMIN UX AUDIT 2026-08-18, A-3) ──────
+  //
+  // MUAMMO: panel «real vaqt» ko'rsatkichi deb kunlik cron yozgan raqamni
+  // ko'rsatardi. U Toshkent vaqti bilan 11:00 da hisoblanib, keyingi kunga
+  // qadar O'ZGARMASDI — ya'ni «hozir nechta odam test yechyapti?» degan
+  // savolga javob yo'q edi.
+  //
+  // NEGA AYNAN 15 DAQIQA: Firestore'da haqiqiy «online» holati yo'q — u
+  // Realtime Database presence talab qiladi (alohida mahsulot, ulanish
+  // hisoblagichi bilan). Bor bo'lgan eng yaqin va ROST signal —
+  // `userStats.lastActiveAt` (mijoz test yakunlaganda yozadi).
+  //
+  // Shuning uchun yorliq ATAYLAB «hozir onlayn» EMAS, «so'nggi 15 daqiqada
+  // faol» deb yozilgan: panel o'zini haqiqatdan aniqroq ko'rsatmasligi kerak.
+  //
+  // NARXI: 1 ta agregatsiya so'rovi (hujjatlar yuklanmaydi) har 60 soniyada,
+  // FAQAT statistika tabi ochiq VA sahifa ko'rinib turganda. Tab fonda
+  // qolsa so'rov to'xtaydi — ochiq unutilgan panel kvota yemasin.
+  useEffect(() => {
+    if (!isAdmin || tab !== 'stats') return undefined;
+
+    let cancelled = false;
+    const read = async () => {
+      if (document.visibilityState !== 'visible') return;
+      try {
+        const since = new Date(Date.now() - 15 * 60 * 1000).toISOString();
+        const snap = await getCountFromServer(query(
+          collection(db, 'userStats'),
+          where('lastActiveAt', '>=', since),
+        ));
+        if (!cancelled) setLiveActive(snap.data().count);
+      } catch {
+        // Indeks yoki kvota — jimgina '—' bo'lib qoladi, panel yiqilmaydi.
+        if (!cancelled) setLiveActive(null);
+      }
+    };
+
+    read();
+    const id = setInterval(read, 60000);
+    document.addEventListener('visibilitychange', read);
+    return () => {
+      cancelled = true;
+      clearInterval(id);
+      document.removeEventListener('visibilitychange', read);
+    };
+  }, [isAdmin, tab]);
+
   const loadAllQuestions = async () => {
     if (questionsLoaded || questionsLoading) return;
     setQuestionsLoading(true);
@@ -1630,7 +1898,10 @@ try {
       const questionToSave = {
         ...newQ,
         correct: correctVal,
-        category: getCategoryFromTopicId(newQ.topicId)
+        category: getCategoryFromTopicId(newQ.topicId),
+        // K-3: dublikat kaliti. Matn tahrirlansa QAYTA hisoblanadi —
+        // aks holda eski hash qolib, keyingi import dublikatni topmasdi.
+        qHash: qHashOf(newQ.q),
       };
       // Ilgari saqlashdan keyin BUTUN kolleksiya qayta o'qilardi (~47 000 o'qish)
       // — bitta savol uchun. Endi lokal ro'yxatni to'g'ridan-to'g'ri yangilaymiz.
@@ -1909,10 +2180,20 @@ try {
           // Fan bo'yicha guruhlash. `category` yo'q savol paketga tushmaydi —
           // u baribir hech qaysi fanda ko'rinmasdi (TestPage filtrlaydi).
           const groups = new Map();
+          // ADMIN UX AUDIT 2026-08-18: «Muomaladan olish» (FixQuestionModal)
+          // savolga `status: 'retired'` qo'yadi. Agar paket uni baribir olsa,
+          // tugma SOXTA bo'lardi — aynan M-1 da tanqid qilingan naqsh.
+          // Savol bazadan o'chmaydi (tarix va tiklash uchun), lekin
+          // foydalanuvchiga bormaydi.
+          let retiredSkipped = 0;
           for (const q of questions) {
             if (!q.category || typeof q.category !== 'string') continue;
+            if (q.status === 'retired') { retiredSkipped++; continue; }
             if (!groups.has(q.category)) groups.set(q.category, []);
             groups.get(q.category).push(q);
+          }
+          if (retiredSkipped > 0) {
+            console.info(`Paketga kirmadi (muomaladan olingan): ${retiredSkipped} ta`);
           }
           if (groups.size === 0) throw new Error('Fanga tegishli savol topilmadi');
 
@@ -2630,6 +2911,92 @@ try {
 
       {tab === 'objections' && (
         <div>
+          {/* ── SHUBHALI SAVOLLAR (ADMIN UX AUDIT 2026-08-18, A-1) ──────
+              E'tirozlar — bu odamlar SHIKOYAT QILGAN savollar. Ko'pchilik
+              esa shikoyat qilmaydi. Bu blok statistikadan buzuq savolni
+              shikoyat kutmasdan topadi: moderatsiya reaktivdan proaktivga
+              o'tadi. Yopiq turadi — ochilganda kvota sarflanadi. */}
+          <div className="admin-susp">
+            <button
+              className="admin-susp-head"
+              onClick={() => { setSuspOpen(o => !o); if (!suspLoaded && !suspLoading) loadSuspicious(); }}
+              aria-expanded={suspOpen}
+            >
+              <span className="admin-susp-title">
+                <Activity size={16} style={{ color: 'var(--amber)' }} /> Shubhali savollar
+                {suspLoaded && suspicious.length > 0 && (
+                  <span className="admin-chip admin-chip--red">{suspicious.length}</span>
+                )}
+              </span>
+              {suspOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </button>
+
+            {suspOpen && (
+              <div className="admin-susp-body">
+                <div className="admin-info-text">
+                  Xato foizi <strong>{Math.round(SUSP_MIN_WRONG_RATE * 100)}%</strong> dan yuqori va
+                  kamida <strong>{SUSP_MIN_SHOWN}</strong> marta ko'rsatilgan savollar.
+                  Ro'yxat <em>ko'rsatilgan x xato foizi</em> bo'yicha saralanadi — ya'ni
+                  tepada eng ko'p zarar yetkazayotgani turadi.
+                  {' '}Yuqori foiz o'z-o'zidan nuqson emas: savol qiyin ham bo'lishi mumkin.
+                  Aynan shuning uchun har qatorga javob taqsimotidan diagnoz qo'yiladi.
+                </div>
+
+                {suspLoading && <div className="admin-state-block">Statistika o'qilmoqda...</div>}
+
+                {suspError && (
+                  <div className="admin-info-box admin-info-box--error">
+                    <div className="admin-info-title"><AlertCircle size={15} /> O'qib bo'lmadi</div>
+                    <div className="admin-info-text">{suspError}</div>
+                  </div>
+                )}
+
+                {suspLoaded && !suspLoading && suspicious.length === 0 && !suspError && (
+                  <div className="admin-info-box">
+                    <div className="admin-info-title"><CheckCircle2 size={15} /> Shubhali savol topilmadi</div>
+                    <div className="admin-info-text">
+                      Statistika hali yig'ilmagan bo'lishi ham mumkin: birinchi ma'lumot
+                      foydalanuvchilar test yechgandan va kunlik cron ishlagandan keyin paydo bo'ladi.
+                    </div>
+                  </div>
+                )}
+
+                {suspicious.map(s => (
+                  <div key={s.id} className="admin-susp-row">
+                    <div className="admin-susp-q">
+                      {s.question
+                        ? s.question.q
+                        : <span style={{ color: 'var(--text3)' }}>[savol o'chirilgan — {s.id}]</span>}
+                      {s.diagnosis && (
+                        <div className={'admin-susp-diag is-' + s.diagnosis.kind}>{s.diagnosis.text}</div>
+                      )}
+                    </div>
+                    <div className="admin-susp-n">{s.shown.toLocaleString('uz-UZ')}</div>
+                    <div className="admin-susp-n is-bad">{Math.round(s.wrongRate * 100)}%</div>
+                    <button
+                      className="btn btn-sm btn-primary"
+                      disabled={!s.question}
+                      onClick={() => setFixTarget({
+                        // Sun'iy e'tiroz: haqiqiy shikoyat yo'q, lekin oyna
+                        // aynan shu shaklni kutadi. `fbId` yo'q — modal buni
+                        // hisobga oladi (closeAllObjections).
+                        questionId: s.id,
+                        question: s.question?.q || '',
+                        options: s.question?.opts || [],
+                        correct: s.question?.opts?.[s.question?.correct] || null,
+                        note: s.diagnosis?.text || 'Statistika bo’yicha shubhali',
+                        date: '—',
+                        reason: s.diagnosis?.kind === 'key' ? 'wrong_answer' : 'other',
+                      })}
+                    >
+                      <Edit3 size={14} /> Tuzatish
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
           <div className="admin-filter-bar">
             <div className="admin-search-wrap">
               <Search size={16} className="admin-search-icon" />
@@ -2694,6 +3061,13 @@ try {
                             ⚠ {objectionCounts[objKey(obj)]} ta shikoyat
                           </span>
                         )}
+                        {/* M-3: shikoyat turi. Eski yozuvlarda maydon yo'q —
+                            chip ko'rsatilmaydi (soxta 'Boshqa' emas). */}
+                        {obj.reason && obj.reason !== 'other' && (
+                          <span className="admin-chip">
+                            {REASON_LABELS[obj.reason] || obj.reason}
+                          </span>
+                        )}
                         <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--blue)', fontWeight: '600' }}>{obj.category === 'art' ? '🎨' : '🎖️'} {obj.topic}</span>
                         <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>{obj.date}</span>
                         {obj.userEmail && <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)' }}>📧 {obj.userEmail}</span>}
@@ -2723,14 +3097,32 @@ try {
                             <div style={{ background: 'var(--amber-bg)', padding: '12px', borderRadius: '10px', fontSize: 'var(--fs-md)', color: 'var(--text2)', border: '1px solid rgba(245,158,11,0.2)' }}>
                               <strong>E'tiroz:</strong> {obj.note}
                             </div>
-                            <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+                            <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
+                              {/* ── M-1/M-2: ASOSIY amal endi «Tuzatish» ──
+                                  Ilgari bu yerdagi yagona amal «Hal qilindi deb
+                                  belgilash» edi — u FAQAT e'tirozga bayroq
+                                  qo'yardi, savolga tegmasdi. Ya'ni panel
+                                  tozalanardi, buzuq savol esa qolaverardi.
+                                  «Tuzatish» savolni 1 o'qishda ochadi va
+                                  chindan tahrirlashga imkon beradi. */}
                               {!obj.solved && (
                                 <button
-                                  className="btn btn-sm"
-                                  style={{ background: 'var(--green)', color: 'white', border: 'none' }}
-                                  onClick={() => handleSolve(obj.fbId)}
+                                  className="btn btn-sm btn-primary"
+                                  onClick={() => setFixTarget(obj)}
+                                  title={obj.questionId
+                                    ? "Savolni ochib tuzatish (1 o'qish)"
+                                    : "Eski e'tiroz — savol identifikatori yo'q"}
                                 >
-                                  <CheckCircle size={14} /> Hal qilindi deb belgilash
+                                  <Edit3 size={14} /> Tuzatish
+                                </button>
+                              )}
+                              {!obj.solved && (
+                                <button
+                                  className="btn btn-sm btn-outline"
+                                  onClick={() => handleSolve(obj.fbId)}
+                                  title="Savolga tegmasdan, faqat e'tirozni yopish"
+                                >
+                                  <CheckCircle size={14} /> Faqat yopish
                                 </button>
                               )}
                               <button
@@ -2920,6 +3312,23 @@ try {
                 : 'Paketlarni qayta qurish'}
             </motion.button>
 
+            {/* K-3: bir martalik amal — shundan keyin import butun bazani
+                yuklamaydi (47 000 o'qish o'rniga ~7 so'rov). */}
+            <motion.button
+              whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }}
+              className="btn btn-outline"
+              onClick={backfillQHash}
+              disabled={qhashBusy || !questionsLoaded}
+              title={questionsLoaded
+                ? "Import dublikatni serverdan topishi uchun kalit yozadi (bir marta)"
+                : 'Avval «Bazani yuklash» kerak'}
+            >
+              <KeyRound size={14} />
+              {qhashProgress
+                ? `Kalit yozilmoqda ${qhashProgress.done}/${qhashProgress.total}...`
+                : 'Dublikat kalitini to’ldirish'}
+            </motion.button>
+
             <motion.button whileHover={{ scale: 1.01, y: -1 }} whileTap={{ scale: 0.98 }} className="btn btn-outline admin-btn-danger" onClick={analyzeDuplicates} disabled={dupAnalyzing}>
               <Trash2 size={14} /> {dupAnalyzing ? 'Tahlil...' : 'Dublikatlar'}
             </motion.button>
@@ -3034,7 +3443,8 @@ try {
                   {isDraggingFile ? 'Faylni shu yerga tashlang' : 'JSON faylni sudrab tashlang yoki bosing'}
                 </div>
                 <div className="admin-dropzone-hint">
-                  Diapazon bo'yicha topicId va category avtomatik bog'lanadi (Ommaviy yuklash)
+                  topicId va category avtomatik bog'lanadi. Dublikat serverdan
+                  tekshiriladi — bazani oldindan yuklash SHART EMAS.
                 </div>
               </div>
             )}
@@ -3357,6 +3767,13 @@ try {
             </div>
           )}
           <div className="admin-stats-grid">
+            {/* A-3: yagona JONLI ko'rsatkich — qolganlari kunlik cron'dan */}
+            <div className="stat-box glass-panel">
+              <div className="stat-box-val admin-live" style={{ color: 'var(--green)' }}>
+                {liveActive ?? '—'}
+              </div>
+              <div className="stat-box-lbl">So'nggi 15 daqiqada faol</div>
+            </div>
             <div className="stat-box glass-panel">
               <div className="stat-box-val" style={{ color: 'var(--blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}><Users size={18} /> {overview?.users ?? '—'}</div>
               <div className="stat-box-lbl">Foydalanuvchilar</div>
@@ -3437,10 +3854,44 @@ try {
                         </div>
                       ))}
                     </div>
+                    {/* ── TUSHUM, SO'MDA (ADMIN UX AUDIT 2026-08-18, A-2) ──
+                        Ilgari bu yerda faqat TRANZAKSIYALAR SONI ko'rsatilardi
+                        (`.count()`), ya'ni 12 ta to'lov 12 x 29 000 ham,
+                        12 x 199 000 ham bo'lishi mumkin edi — panel farqni
+                        ko'rsatmasdi. Endi cron summani ham yozadi. */}
+                    {(m.paymentsSumToday != null || m.paymentsSum30d != null) && (
+                      <div className="admin-stats-grid" style={{ marginTop: 14 }}>
+                        <div className="stat-box">
+                          <div className="stat-box-val" style={{ color: 'var(--green)' }}>
+                            {(m.paymentsSumToday ?? 0).toLocaleString('uz-UZ')}
+                          </div>
+                          <div className="stat-box-lbl">Bugungi tushum, so'm</div>
+                        </div>
+                        <div className="stat-box">
+                          <div className="stat-box-val" style={{ color: 'var(--green)' }}>
+                            {(m.paymentsSum30d ?? 0).toLocaleString('uz-UZ')}
+                          </div>
+                          <div className="stat-box-lbl">30 kunlik tushum, so'm</div>
+                        </div>
+                        <div className="stat-box">
+                          <div className="stat-box-val">
+                            {m.paymentsSum30d && m.paidActive
+                              ? Math.round(m.paymentsSum30d / m.paidActive).toLocaleString('uz-UZ')
+                              : '—'}
+                          </div>
+                          <div className="stat-box-lbl">O'rtacha chek, so'm</div>
+                        </div>
+                      </div>
+                    )}
                     {m.paymentsTotal != null && (
                       <div className="admin-info-text" style={{ marginTop: 12 }}>
-                        Jami to'lovlar: <strong>{m.paymentsTotal}</strong>
+                        Jami to'lovlar (soni): <strong>{m.paymentsTotal}</strong>
                         {m.paymentsToday ? <> · so'nggi 24 soatda <strong>{m.paymentsToday}</strong></> : null}
+                        {m.paymentsSum30d == null && (
+                          <><br /><span style={{ color: 'var(--text3)' }}>
+                            So'mdagi tushum ertangi cron'dan keyin paydo bo'ladi.
+                          </span></>
+                        )}
                       </div>
                     )}
                   </div>
@@ -3944,10 +4395,12 @@ try {
                     style={{ minHeight: '80px' }}
                     value={newQ.q}
                     onChange={e => setNewQ({...newQ, q: e.target.value})}
+                    onPaste={handleImagePaste}
+                    placeholder="Savol matni. Rasmni to'g'ridan-to'g'ri shu yerga qo'ysangiz (Ctrl+V) — avtomatik yuklanadi."
                   />
                 </div>
                 <div className="admin-form-row">
-                  <label className="admin-label">Rasm qo'shish (ixtiyoriy)</label>
+                  <label className="admin-label">Rasm qo'shish (ixtiyoriy) — yoki savol maydoniga Ctrl+V</label>
                   {newQ.image && (
                     <div style={{ position: 'relative', width: '150px', marginBottom: '8px' }}>
                       <img src={newQ.image} alt="Uploaded" style={{ width: '100%', borderRadius: '8px', border: '1px solid var(--border)' }} />
@@ -4435,6 +4888,31 @@ try {
         }}
         onCancel={() => setConfirmDialog({ isOpen: false, text: '', onConfirm: null })}
       />
+
+      {/* ── M-1/M-2: e'tirozni bir oynada tuzatish ────────────────────
+          Savol `questionId` bo'yicha 1 O'QISHDA ochiladi. Saqlangach shu
+          savolga tegishli BARCHA e'tiroz yopiladi va lokal ro'yxat darhol
+          yangilanadi — panel qayta yuklanmaydi (kvota tejaladi). */}
+      <AnimatePresence>
+        {fixTarget && (
+          <FixQuestionModal
+            objection={fixTarget}
+            adminEmail={user?.email}
+            showToast={showToast}
+            onClose={() => setFixTarget(null)}
+            onResolved={({ action, questionId, patch }) => {
+              // E'tirozlar ro'yxati onSnapshot bilan o'zi yangilanadi;
+              // savollar ro'yxati esa lokal — qo'lda moslaymiz.
+              if (patch && questionId) {
+                setQuestions(prev => prev.map(q =>
+                  q.id === questionId ? { ...q, ...patch } : q));
+              }
+              if (action === 'fixed' || action === 'retired') setPendingPublish(true);
+              setFixTarget(null);
+            }}
+          />
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

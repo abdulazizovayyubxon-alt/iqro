@@ -1101,6 +1101,31 @@ export const AppProvider = ({ children }) => {
       showToast('Natijalar vaqtincha saqlanmadi. Internet aloqasini tekshiring.', 'error');
     });
 
+    // ── Savol statistikasi uchun xom yozuv (ADMIN UX AUDIT 2026-08-18, A-1) ──
+    //
+    // NEGA ALOHIDA HUJJAT: buni `userStats` ichiga qo'shsa hujjat cheksiz
+    // o'sardi (1 MB chegarasi) va har saqlashda butun jurnal qayta yozilardi.
+    // Alohida hujjat — sessiyaga BITTA yozuv; cron uni agregatlab o'chiradi,
+    // ya'ni kolleksiya doim kichik qoladi.
+    //
+    // NARXI: kuniga 200 ta test = 200 ta yozuv (bepul kunlik chegara 20 000).
+    // Javoblar soniga bog'liq EMAS — 50 savollik imtihon ham 1 ta yozuv.
+    //
+    // Xato asosiy oqimni to'xtatmaydi: statistika yo'qolsa foydalanuvchi
+    // buni sezmaydi, natijasi esa yuqorida allaqachon saqlangan.
+    const answerLog = results.answerLog;
+    if (Array.isArray(answerLog) && answerLog.length > 0) {
+      addDoc(collection(db, 'answerEvents'), {
+        uid: currentUser.uid,
+        category: snapshot.activeCategory || null,
+        log: answerLog,
+        createdAt: new Date().toISOString(),
+      }).catch(err => {
+        // Jimgina — bu telemetriya, foydalanuvchi ishiga aloqasi yo'q.
+        console.warn('answerEvents yozilmadi (statistika):', err?.message || err);
+      });
+    }
+
     // Ikki darajali sokin bildirishnoma (achievements-tracks-v2 dizayni):
     // KICHIK (bitta yo'nalish tier'i oshdi) — faqat Bell'ga, toast YO'Q (chalg'itmaslik uchun).
     // KATTA (pasport unvoni o'zgardi) — toast + Bell, akademik/passiv ohangda.
