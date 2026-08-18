@@ -1,0 +1,145 @@
+# ════════════════════════════════════════════════════════════════════════════
+#  Salomatlik monitoringi — /api/health ni kuzatadi, nosozlikda issue ochadi
+#
+#  ⚠️ NEGA BU FAYL BOR (2026-08-17 hodisasi):
+#    Firestore kunlik kvotasi tugadi va ilova HAMMA foydalanuvchi uchun
+#    soatlab ishlamadi. `/api/health` o'sha paytda AYNAN shu holatni aniqlab,
+#    HTTP 503 va `"firestoreError": "quota_exceeded"` qaytarib turgan edi —
+#    ya'ni detektor ISHLAYOTGAN edi. Muammo shundaki, uni HECH KIM
+#    TINGLAMAYOTGAN edi. Nosozlik tasodifan, bir necha soatdan keyin aniqlandi.
+#
+#    YUK_VA_BARQARORLIK.md 3-bo'limida «UptimeRobot qo'ying» deb yozilgan edi.
+#    Hujjatda bor, tizimda yo'q — o'sha hodisaning asosiy sababi ham aynan shu
+#    naqsh edi (ogohlantirish hujjatda, guard kodda yo'q). Shuning uchun endi
+#    bu tavsiya emas, ISHLAYDIGAN mexanizm.
+#
+#  NARXI: repo ochiq → GitHub Actions bepul va cheksiz. Har tekshiruv
+#  Firestore'da 1 ta o'qish (`settings/version`), ya'ni kuniga ~288 o'qish =
+#  50 000 kunlik kvotaning 0.6% i.
+#
+#  ⚠️ CHEKLOVLAR:
+#    · GitHub jadvalli workflow'ni repo 60 kun harakatsiz turganda O'CHIRADI;
+#    · jadval aniq emas — yuk ostida 5-15 daqiqa kechikishi mumkin.
+#    Shuning uchun bu YAGONA monitoring bo'lmasligi kerak: bepul
+#    UptimeRobot/Better Stack monitorini ham qo'shish tavsiya etiladi.
+# ════════════════════════════════════════════════════════════════════════════
+
+name: Salomatlik monitoringi
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'   # GitHub uchun eng qisqa oraliq
+  workflow_dispatch:        # qo'lda sinash uchun
+
+permissions:
+  issues: write
+
+concurrency:
+  group: health-monitor
+  cancel-in-progress: false
+
+env:
+  # Domen o'zgarsa: Settings → Secrets and variables → Actions → Variables
+  # → `HEALTH_URL`. O'zgaruvchi bo'lmasa quyidagi default ishlatiladi.
+  HEALTH_URL: ${{ vars.HEALTH_URL || 'https://zehin-t41p.vercel.app/api/health' }}
+  ISSUE_LABEL: health-alert
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tekshirish (bir marta qayta urinish bilan)
+        id: probe
+        run: |
+          set -uo pipefail
+
+          probe() {
+            curl -s -o /tmp/body.json -w '%{http_code}' --max-time 25 "$HEALTH_URL" || echo 000
+          }
+
+          code=$(probe)
+          # Bitta chalkash javobga (sovuq start, tarmoq uzilishi) signal
+          # bermaymiz — 20 soniyadan keyin qayta so'raymiz. Nosozlik haqiqiy
+          # bo'lsa ikkinchi urinish ham yiqiladi.
+          if [ "$code" != "200" ]; then
+            echo "1-urinish: HTTP $code — 20s kutib qayta uriniladi"
+            sleep 20
+            code=$(probe)
+          fi
+
+          body=$(head -c 2000 /tmp/body.json 2>/dev/null)
+          [ -z "$body" ] && body='(javob bosh)'
+
+          {
+            echo "code=$code"
+            echo 'body<<JSONEOF'
+            echo "$body"
+            echo 'JSONEOF'
+          } >> "$GITHUB_OUTPUT"
+
+          if [ "$code" = "200" ]; then
+            echo "healthy=true" >> "$GITHUB_OUTPUT"
+            echo "OK: HTTP 200"
+          else
+            echo "healthy=false" >> "$GITHUB_OUTPUT"
+            echo "NOSOZLIK: HTTP $code"
+            echo "$body"
+          fi
+
+      - name: Nosozlikda issue ochish
+        if: steps.probe.outputs.healthy == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CODE: ${{ steps.probe.outputs.code }}
+          BODY: ${{ steps.probe.outputs.body }}
+        run: |
+          set -euo pipefail
+
+          # Ochiq issue bo'lsa yangisini yaratmaymiz — har 5 daqiqada issue
+          # ochilsa pochta to'lib ketardi va signal shovqinga aylanardi.
+          existing=$(gh issue list --label "$ISSUE_LABEL" --state open \
+                       --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            echo "Ochiq issue bor: #$existing — yangisi yaratilmaydi"
+            exit 0
+          fi
+
+          gh label create "$ISSUE_LABEL" --color B60205 \
+            --description "Avtomatik salomatlik monitoringi" 2>/dev/null || true
+
+          # Markdown `printf` bilan quriladi: heredoc YAML blok skalyari
+          # ichida chegara buzadi (mazmun 0-ustunga tushib qoladi).
+          {
+            printf '`/api/health` nosozlik qaytardi.\n\n'
+            printf '| | |\n|---|---|\n'
+            printf '| HTTP | `%s` |\n' "$CODE"
+            printf '| Vaqt (UTC) | %s |\n' "$(date -u '+%Y-%m-%d %H:%M')"
+            printf '| Manzil | %s |\n\n' "$HEALTH_URL"
+            printf '**Javob:**\n\n```json\n%s\n```\n\n' "$BODY"
+            cat .github/health-alert-help.md
+          } > /tmp/issue.md
+
+          gh issue create \
+            --label "$ISSUE_LABEL" \
+            --title "Ilova javob bermayapti (HTTP $CODE)" \
+            --body-file /tmp/issue.md
+
+      - name: Tiklanganda issue'ni yopish
+        if: steps.probe.outputs.healthy == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BODY: ${{ steps.probe.outputs.body }}
+        run: |
+          set -euo pipefail
+          for n in $(gh issue list --label "$ISSUE_LABEL" --state open \
+                       --json number --jq '.[].number'); do
+            {
+              printf 'Tiklandi — %s UTC\n\n' "$(date -u '+%Y-%m-%d %H:%M')"
+              printf '```json\n%s\n```\n' "$BODY"
+            } > /tmp/recovered.md
+            gh issue comment "$n" --body-file /tmp/recovered.md
+            gh issue close "$n"
+            echo "Issue #$n yopildi"
+          done
