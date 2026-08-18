@@ -15,11 +15,24 @@ const DELETED_KEY = 'IQRO_NOTIFICATIONS_DELETED';
 // AppContext, api/cron-daily, api/payment-webhook) — orderBy hujjat yo'qotmaydi.
 const NOTIF_LIMIT = 30;
 
-const DEFAULT_NOTIFS = () => ([
-  { id: '1', title: '🎉 Zehin platformasiga xush kelibsiz!', message: "CHQBT va San'at bo'limlarida bilimingizni oshiring. Barcha testlar tayyor!", date: new Date().toISOString(), read: false, type: 'success' },
-  { id: '2', title: '🔥 Kunlik maqsadni unutmang', message: 'Har kuni kamida 20 ta savol yechib, olovli streak zanjirini davom ettiring!', date: new Date(Date.now() - 3600000).toISOString(), read: false, type: 'info' },
-  { id: '3', title: '💡 Takrorlash tavsiya etiladi', message: "Takrorlash bo'limida siz xato qilgan savollar kutmoqda. Bilimingizni mustahkamlang!", date: new Date(Date.now() - 86400000).toISOString(), read: true, type: 'warning' }
-]);
+// ⚠️ STANDART BILDIRISHNOMALAR OLIB TASHLANDI.
+//
+// Bu yerda uchta soxta xabar turardi («Xush kelibsiz», «Kunlik maqsadni
+// unutmang», «Takrorlash tavsiya etiladi») va ular HAR yangi o'rnatishda
+// o'qilmagan holatda paydo bo'lardi. Sanalari ham qalbaki edi: `new Date()`
+// va `Date.now() - 3600000` — ya'ni xabar «bir soat oldin kelgan» ko'rinardi,
+// aslida esa hozir yaratilgan edi.
+//
+// NEGA ZARAR: qo'ng'iroq birinchi ochilishdanoq «3» ni ko'rsatardi, ichida
+// esa hech qanday yangilik yo'q edi. Bu foydalanuvchini qo'ng'iroqni
+// E'TIBORSIZ QOLDIRISHGA o'rgatadi. Keyinchalik haqiqiy signal — yutuq,
+// unvon, zanjir xavfi, obuna tugashi — o'sha o'rgangan e'tiborsizlikka
+// uriladi va kanal qiymatini yo'qotadi.
+//
+// Endi qo'ng'iroq faqat HAQIQIY voqea bo'lganda yonadi: global e'lonlar
+// (admin yozadi) va shaxsiy bildirishnomalar (yutuq/marra/unvon/obuna).
+// Bo'sh ro'yxat — to'g'ri holat, xato emas.
+const DEFAULT_NOTIFS = () => [];
 
 // O'chirilgan bildirishnoma ID'lari — Firestore ularni qayta tiklamasligi va
 // standart bildirishnomalar qayta paydo bo'lmasligi uchun saqlanadi.
