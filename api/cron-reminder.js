@@ -39,6 +39,22 @@ const FCM_BATCH = 500;                           // sendEachForMulticast chegara
 const DEFAULT_TARGET = 20;                       // dailyGoal.target zaxirasi
 const SECONDS_PER_Q = 45;                        // DiagnosticsEngine bilan bir xil
 
+// ── Chastota tormozi ─────────────────────────────────────────────────────
+// Eslatma allaqachon kuniga BITTA, lekin javob bermayotgan odamga uni HAR
+// KUNI yuborish — kanalni o'ldirishning eng tez yo'li: odam avval
+// e'tiborsiz qoladi, keyin push'ni butunlay o'chiradi. Bu qaytarib
+// bo'lmaydigan yo'qotish: brauzer ruxsati 'denied' bo'lib qoladi va uni
+// qayta so'rash IMKONSIZ.
+//
+// «Ochildimi» o'lchanmaydi — ochilishni kuzatish uchun service worker
+// tomonida qo'shimcha yozuv kerak bo'lardi. Undan KUCHLIROQ ko'rsatkich
+// allaqachon bor: odam xabardan keyin ilovaga QAYTDIMI. Buni
+// userStats.lastActiveAt biladi, ya'ni mijoz tomonida hech narsa
+// o'zgartirilmaydi va qo'shimcha o'qish ham talab qilinmaydi (stats
+// hujjati baribir yuklanadi).
+const PUSH_MISS_LIMIT = 3;        // ketma-ket shuncha javobsiz xabardan keyin
+const THROTTLED_DAYS = [1, 4];    // haftada 2 marta: dushanba va payshanba
+
 // ── Yutuq lahzalari ──────────────────────────────────────────────────────
 // Kunlik eslatma allaqachon kuniga BITTA xabar yuboradi va reja bajarilgan
 // kuni umuman jim turadi. Shu bitta xabarning MATNI endi holatga qarab
@@ -202,7 +218,7 @@ export default async function handler(req, res) {
     scanned: 0,
     eligible: 0,
     sent: 0,
-    skipped: { noToken: 0, optedOut: 0, inactive: 0, goalDone: 0, alreadySent: 0 },
+    skipped: { noToken: 0, optedOut: 0, inactive: 0, goalDone: 0, alreadySent: 0, throttled: 0 },
     // Xabar qaysi sabab bilan ketgani — matn o'zgarishining ta'sirini o'lchash uchun
     reason: { streak: 0, unvon: 0, plan: 0 },
     // Sana holati. Ilgari bular `skipped.noExam` / `skipped.examPassed` edi —
@@ -283,6 +299,27 @@ export default async function handler(req, res) {
         const answered = isToday ? (dg.answered || 0) : 0;
         if (isToday && (dg.completed || answered >= target)) { out.skipped.goalDone++; continue; }
 
+        // ── Chastota tormozi ────────────────────────────────────────────
+        // Oldingi xabardan keyin odam ilovaga QAYTDIMI? lastDailyPushAt
+        // yuborish paytida yoziladi, lastActiveAt esa natija topshirilganda.
+        //
+        // Taqqoslash VAQT bo'yicha, kun bo'yicha EMAS: xabar 19:00 da ketadi,
+        // odam esa o'sha kuni ertalab kirgan bo'lishi mumkin — kun bo'yicha
+        // solishtirsak bu «xabarga javob berdi» bo'lib hisoblanardi va tormoz
+        // hech qachon ishlamasdi.
+        //
+        // lastDailyPushAt yo'q (eski hisob yoki hali xabar olmagan) — hisob
+        // yuritilmaydi: javob berish-bermaganini bilishning imkoni yo'q.
+        let missStreak = u.pushMissStreak || 0;
+        if (u.lastDailyPushAt) {
+          const cameBack = !!stats.lastActiveAt && stats.lastActiveAt > u.lastDailyPushAt;
+          missStreak = cameBack ? 0 : missStreak + 1;
+        }
+        if (missStreak >= PUSH_MISS_LIMIT) {
+          const dow = new Date(Date.now() + TASHKENT_OFFSET_MS).getUTCDay(); // 0 = yakshanba
+          if (!THROTTLED_DAYS.includes(dow)) { out.skipped.throttled++; continue; }
+        }
+
         const lang = TEXT[u.pushLang] ? u.pushLang : 'uz';
         const t = TEXT[lang];
         const remaining = Math.max(1, target - answered);
@@ -362,7 +399,7 @@ export default async function handler(req, res) {
         }
 
         out.eligible++;
-        queue.push({ uid: userDoc.id, tokens, title, body, link });
+        queue.push({ uid: userDoc.id, tokens, title, body, link, missStreak });
       }
 
       lastDoc = page.docs[page.docs.length - 1];
@@ -392,8 +429,14 @@ export default async function handler(req, res) {
         }
         if (ok > 0) {
           out.sent++;
-          // Kunlik qulf — qayta ishga tushirilsa ham ikkinchi marta yubormaydi
-          await db.collection('users').doc(item.uid).update({ lastDailyPush: today });
+          // Kunlik qulf — qayta ishga tushirilsa ham ikkinchi marta yubormaydi.
+          // lastDailyPushAt va pushMissStreak SHU YERDA yoziladi — qo'shimcha
+          // yozuv EMAS, mavjud update ichida, ya'ni kvotaga ta'siri nol.
+          await db.collection('users').doc(item.uid).update({
+            lastDailyPush: today,
+            lastDailyPushAt: new Date().toISOString(),
+            pushMissStreak: item.missStreak ?? 0,
+          });
         }
       } catch (e) {
         out.errors.push(`push ${item.uid}: ${e.message}`);
