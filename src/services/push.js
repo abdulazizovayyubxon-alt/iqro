@@ -27,6 +27,9 @@
 import { doc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { db, firebaseConfig } from '../firebase';
 import { isPlayBuild } from '../config';
+// `analytics.js` bog'liqliksiz va yengil — yuqoridagi messaging SDK izohida
+// tasvirlangan «eager chunk» muammosini keltirib chiqarmaydi.
+import { AnalyticsEvents } from './analytics';
 
 const VAPID_KEY = import.meta.env.VITE_FIREBASE_VAPID_KEY;
 const SW_SCOPE = '/firebase-cloud-messaging-push-scope';
@@ -91,6 +94,9 @@ export async function enablePush(user) {
   }
   try {
     const perm = await Notification.requestPermission();
+    // Ruxsat natijasi o'lchanadi: push kanalining HAJMI retention rejasining
+    // asosiy cheklovi, uni bilmasdan eslatma tizimini baholab bo'lmaydi.
+    AnalyticsEvents.pushOptIn(perm);
     if (perm !== 'granted') return { ok: false, reason: 'denied' };
 
     const messaging = await getMessagingInstance();

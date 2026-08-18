@@ -521,7 +521,7 @@ const AchievementsPage = () => {
         showToast={showToast}
       />
 
-      {showPremiumModal && <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />}
+      {showPremiumModal && <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} source="achievements" />}
     </motion.div>
   );
 

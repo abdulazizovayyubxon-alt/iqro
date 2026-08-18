@@ -13,6 +13,7 @@ import { ToastContext } from '../context/ToastContext';
 import { useAdmin } from '../hooks/useAdmin';
 import { AppContext, getWeekId, getMonthId } from '../context/AppContext';
 import { getLeague, nextLeague, leagueProgress } from '../utils/league';
+import { AnalyticsEvents } from '../services/analytics';
 import './LeaderboardPage.css';
 
 // Anti-farm — skoring o'zgartirilmaydi; faqat admin uchun shubhali hisoblarni belgilash.
@@ -93,6 +94,14 @@ const LeaderboardPage = () => {
   // New states for safe/local improvements
   const [boardType, setBoardType] = useState('all'); // 'all' | 'weekly' | 'monthly'
   const [sessionRankChange, setSessionRankChange] = useState(0);
+
+  // Reyting ko'rildi. ALOHIDA effekt — quyidagi yuklash effekti `cloudSynced`
+  // ni kutadi, qiziqish esa sahifa ochilgan zahoti qayd etilishi kerak.
+  // Kesim (`scope`) muhim: haftalik taxta global taxtadan boshqacha xulqni
+  // ko'rsatadi va viloyat kesimi joriy etilganda taqqoslash bazasi kerak.
+  useEffect(() => {
+    AnalyticsEvents.leaderboardView(boardType);
+  }, [boardType]);
 
   useEffect(() => {
     if (!user) return;

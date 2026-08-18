@@ -182,7 +182,7 @@ export default function PremiumPage() {
         </div>
       </motion.div>
 
-      {showModal && <PremiumModal isOpen={showModal} onClose={() => setShowModal(false)} />}
+      {showModal && <PremiumModal isOpen={showModal} onClose={() => setShowModal(false)} source="landing" />}
     </div>
   );
 }

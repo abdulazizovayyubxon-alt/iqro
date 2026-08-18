@@ -934,7 +934,7 @@ const TestPage = () => {
           </button>
           <button className="limit-btn-secondary" onClick={goBack}>{t('test.backHomeArrow')}</button>
         </div>
-        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
+        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} source="test-limit" />
       </motion.div>
     );
   }
@@ -1248,6 +1248,7 @@ const TestPage = () => {
       <PremiumModal
         isOpen={showPremiumModal}
         onClose={() => setShowPremiumModal(false)}
+        source="test-inline"
       />
 
       {/* Konspekt — xato javobdan keyin aynan mos band ajratilgan holda */}

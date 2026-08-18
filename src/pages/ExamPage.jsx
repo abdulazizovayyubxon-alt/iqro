@@ -1212,7 +1212,7 @@ const ExamPage = () => {
           </button>
           <button className="limit-btn-secondary" onClick={() => navigate('/')}>{t('test.backHomeArrow')}</button>
         </div>
-        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
+        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} source="exam-limit" />
       </motion.div>
     );
   }

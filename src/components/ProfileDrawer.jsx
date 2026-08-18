@@ -461,7 +461,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
       </AnimatePresence>
 
       {/* Modallar — drawer ustida (z-index 9999) ochiladi */}
-      {showPremium && <PremiumModal isOpen={showPremium} onClose={() => setShowPremium(false)} />}
+      {showPremium && <PremiumModal isOpen={showPremium} onClose={() => setShowPremium(false)} source="profile" />}
       {showEdit && (
         <EditProfileModal
           form={editForm}

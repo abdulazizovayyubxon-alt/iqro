@@ -291,7 +291,7 @@ const AnalysisPage = () => {
         )}
       </AnimatePresence>
 
-      <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
+      <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} source="analysis" />
 
       <TheoryModal
         open={!!theoryTopic}

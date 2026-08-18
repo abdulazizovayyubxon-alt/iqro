@@ -633,7 +633,7 @@ const Dashboard = () => {
         }}
       />
 
-      <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
+      <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} source="dashboard" />
 
       {/* E'tirozlarni tozalash tasdig'i (window.confirm o'rniga) */}
       <ConfirmDialog

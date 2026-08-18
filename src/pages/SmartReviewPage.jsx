@@ -106,7 +106,7 @@ const SmartReviewPage = () => {
           </button>
           <button style={{ width: '100%', padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 14, fontWeight: 600, fontSize: 'var(--fs-lg)', cursor: 'pointer', fontFamily: 'inherit' }} onClick={() => navigate('/')}>{t('test.backHomeArrow')}</button>
         </div>
-        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} />
+        <PremiumModal isOpen={showPremiumModal} onClose={() => setShowPremiumModal(false)} source="review-limit" />
       </motion.div>
     );
   }

@@ -72,7 +72,14 @@ const FEATURES = [
   'premium.feat6',
 ];
 
-const PremiumModal = ({ isOpen, onClose }) => {
+/**
+ * @param {string} source  Oyna QAYSI lahzadan ochilgani ('dashboard', 'limit',
+ *   'results', 'exam', 'review', 'analysis', 'achievements', 'profile', 'landing').
+ *   Konversiya tahlilining asosiy o'lchovi: limit devori va natijalar ekrani
+ *   butunlay boshqacha niyat darajasiga ega, ularni bir raqamga qo'shib
+ *   bo'lmaydi. Berilmasa 'unknown' — bu ulanmagan chaqiruv borligini bildiradi.
+ */
+const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
   const { t } = useTranslation();
   const { user, updateUserData } = useAuth();
   const planNameMap = { monthly: t('premium.planMonthly'), quarterly: t('premium.planQuarterly'), yearly: t('premium.planYearly') };
@@ -100,6 +107,12 @@ const PremiumModal = ({ isOpen, onClose }) => {
   useEffect(() => { onCloseRef.current = onClose; }, [onClose]);
   // Escape, fokus tutqichi, fokusni qaytarish (T-10)
   const dialogRef = useModalA11y(isOpen, onClose);
+
+  // Paywall ko'rinishi. ALOHIDA effekt — quyidagi ma'lumot yuklash effekti
+  // `!user` da erta qaytadi, hodisa esa hisobdan qat'i nazar yozilishi kerak.
+  useEffect(() => {
+    if (isOpen) AnalyticsEvents.paywallView(source);
+  }, [isOpen, source]);
 
   useEffect(() => {
     if (!isOpen || !user) return;

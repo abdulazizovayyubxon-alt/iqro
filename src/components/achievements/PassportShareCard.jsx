@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Download, Share2, Send } from 'lucide-react';
 import { APP_URL } from '../../config';
+import { AnalyticsEvents } from '../../services/analytics';
 import { drawZehinLockup } from '../shared/BrandLogo';
 
 const roundRect = (ctx, x, y, w, h, r) => {
@@ -165,6 +166,7 @@ export default function PassportShareCard({
       if (!blob) return;
       const file = new File([blob], 'zehin-pasport.png', { type: 'image/png' });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        AnalyticsEvents.shareClick('passport', 'native');
         await navigator.share({
           files: [file],
           title: t('tracks.passportShareTitle'),
@@ -180,6 +182,7 @@ export default function PassportShareCard({
 
   const handleDownload = () => {
     if (!canvasRef.current) return;
+    AnalyticsEvents.shareClick('passport', 'download');
     const link = document.createElement('a');
     link.download = 'zehin-pasport.png';
     link.href = canvasRef.current.toDataURL('image/png');
@@ -188,6 +191,7 @@ export default function PassportShareCard({
   };
 
   const handleTelegram = () => {
+    AnalyticsEvents.shareClick('passport', 'telegram');
     const text = t('tracks.passportShareText', { ami, unvon });
     window.open(`https://t.me/share/url?url=${encodeURIComponent(APP_URL)}&text=${encodeURIComponent(text)}`, '_blank');
   };

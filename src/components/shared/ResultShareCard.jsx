@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Download, Share2, Send } from 'lucide-react';
 import { APP_URL } from '../../config';
+import { AnalyticsEvents } from '../../services/analytics';
 import { drawZehinLockup } from './BrandLogo';
 
 const roundRect = (ctx, x, y, w, h, r) => {
@@ -153,6 +154,7 @@ export default function ResultShareCard({ open, onClose, score, total, title, mo
       if (!blob) return;
       const file = new File([blob], 'zehin-natija.png', { type: 'image/png' });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        AnalyticsEvents.shareClick('result', 'native');
         await navigator.share({
           files: [file],
           title: t('shareCard.shareTitle'),
@@ -168,6 +170,7 @@ export default function ResultShareCard({ open, onClose, score, total, title, mo
 
   const handleDownload = () => {
     if (!canvasRef.current) return;
+    AnalyticsEvents.shareClick('result', 'download');
     const link = document.createElement('a');
     link.download = 'zehin-natija.png';
     link.href = canvasRef.current.toDataURL('image/png');
@@ -176,6 +179,7 @@ export default function ResultShareCard({ open, onClose, score, total, title, mo
   };
 
   const handleTelegram = () => {
+    AnalyticsEvents.shareClick('result', 'telegram');
     const text = t('shareCard.telegramText', {
       emoji: tone.emoji,
       mode: modeLabel.toLowerCase(),

@@ -10,6 +10,7 @@ import { AuthContext } from './AuthContext';
 import { ToastContext } from './ToastContext';
 import { reconcileAchievements, EXAM_MIN_QUESTIONS } from '../data/tracks';
 import { reconcileMilestones, MILESTONE_UNITS } from '../data/milestones';
+import { AnalyticsEvents } from '../services/analytics';
 import i18n from '../i18n';
 import {
   doc,
@@ -807,6 +808,10 @@ export const AppProvider = ({ children }) => {
     let amiDeltaOut = 0; // shu sessiyada AMI necha ballga o'zgargani (natija ekrani uchun)
     let rewardPointsOut = 0;   // yutuq uchun berilgan qo'shimcha ball (natija ekrani)
     let rewardFreezesOut = 0;  // yutuq uchun berilgan muzlatish zaxirasi (natija ekrani)
+    // Telemetriya (retention) — hodisalar updater TASHQARISIDA yuboriladi
+    let goalJustDoneOut = false; // kunlik maqsad AYNAN shu sessiyada yopildi
+    let streakBrokenOut = 0;     // zanjir 1 ga qaytdi — yo'qotilgan uzunlik
+    let freezeUsedOut = false;   // muzlatish zaxirasi aynan bugun sarflandi
 
     // ⚠️ AUDIT 2026-08-06, T-22 BAND — bu hisob ilgari `setState(prev => ...)`
     // UPDATER'i ichida bajarilardi, natija esa (`snapshot`, `earnedOut`, yutuqlar)
@@ -864,6 +869,15 @@ export const AppProvider = ({ children }) => {
 
       // Kunlik streak
       const { dailyStreak, lastGoalDate, streakFreezes, streakFrozenDate } = advanceDailyStreak(prev, today, dg.completed);
+
+      // Telemetriya uchun capture — `gainedOut` bilan bir xil naqsh: shu yerda
+      // faqat QIYMAT olinadi, hodisaning o'zi updater tashqarisida yuboriladi
+      // (StrictMode updater'ni ikki marta chaqiradi — hodisa takrorlanmasin).
+      goalJustDoneOut = dg.completed && !wasCompletedToday;
+      streakBrokenOut = goalJustDoneOut && dailyStreak === 1 && (prev.dailyStreak || 0) > 1
+        ? prev.dailyStreak
+        : 0;
+      freezeUsedOut = streakFrozenDate === today && prev.streakFrozenDate !== today;
 
       // Streak
       const newStreak = results.wrongCount > 0 ? 0 : catStats.streak + results.correctCount;
@@ -1065,6 +1079,16 @@ export const AppProvider = ({ children }) => {
 
     setState(computeNext(stateRef.current));
 
+    // ── Retention telemetriyasi ───────────────────────────────────────────
+    // Firestore yozuvidan OLDIN va `currentUser` tekshiruvidan oldin turadi:
+    // hodisalar hisobga bog'liq emas va mehmon sessiyasi ham o'lchanishi kerak.
+    if (snapshot && goalJustDoneOut) {
+      AnalyticsEvents.goalCompleted(snapshot.dailyGoal?.target || 0, snapshot.dailyStreak || 0);
+      AnalyticsEvents.streakDay(snapshot.dailyStreak || 0);
+      if (streakBrokenOut > 0) AnalyticsEvents.streakBroken(streakBrokenOut);
+      if (freezeUsedOut) AnalyticsEvents.freezeUsed(snapshot.streakFreezes || 0);
+    }
+
     // Yon ta'sir (Firestore yozuvi) setState updater'idan TASHQARIDA bajariladi —
     // React 18 StrictMode updater'ni ikki marta chaqirganda dublikat write bo'lmaydi.
     // Natija debounce kutmasdan darhol saqlanadi (test yakunida yo'qolmasligi uchun).
@@ -1163,6 +1187,9 @@ export const AppProvider = ({ children }) => {
   // har renderda yangi funksiya bo'lsa effect keraksiz qayta ishga tushardi.
   const completeDailyPlan = useCallback(() => {
     let snapshot = null;
+    // Telemetriya — batchCommitResults bilan bir xil naqsh
+    let streakBroken = 0;
+    let freezeUsed = false;
     setState(prev => {
       const today = new Date().toDateString();
       // Bugun allaqachon yopilgan — hech narsa o'zgarmaydi
@@ -1178,6 +1205,9 @@ export const AppProvider = ({ children }) => {
           };
 
       const streak = advanceDailyStreak(prev, today, true);
+
+      streakBroken = streak.dailyStreak === 1 && (prev.dailyStreak || 0) > 1 ? prev.dailyStreak : 0;
+      freezeUsed = streak.streakFrozenDate === today && prev.streakFrozenDate !== today;
 
       const days = [...(prev.activeDays || [])];
       const idx = days.findIndex(x => x.d === today);
@@ -1205,7 +1235,15 @@ export const AppProvider = ({ children }) => {
       return next;
     });
 
-    // Firestore yozuvi updater'dan TASHQARIDA — StrictMode dublikat yozmasin
+    // Yon ta'sirlar updater'dan TASHQARIDA — StrictMode dublikat yozmasin.
+    // `snapshot` null bo'lsa maqsad bugun allaqachon yopilgan edi (erta return).
+    if (snapshot) {
+      AnalyticsEvents.goalCompleted(snapshot.dailyGoal?.target || 0, snapshot.dailyStreak || 0);
+      AnalyticsEvents.streakDay(snapshot.dailyStreak || 0);
+      if (streakBroken > 0) AnalyticsEvents.streakBroken(streakBroken);
+      if (freezeUsed) AnalyticsEvents.freezeUsed(snapshot.streakFreezes || 0);
+    }
+
     const currentUser = userRef.current;
     if (snapshot && currentUser) {
       setDoc(doc(db, 'userStats', currentUser.uid), prepareStatsForSave(snapshot, currentUser), { merge: true })
