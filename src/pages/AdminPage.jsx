@@ -343,6 +343,9 @@ const AdminPage = () => {
   const [deletionRequests, setDeletionRequests] = useState([]);
   const [delReqLoading, setDelReqLoading] = useState(false);
   const [delReqError, setDelReqError] = useState(null);
+  // Bajarilgan arizalar standart holatda YASHIRIN (2026-08-19) — pastdagi
+  // `visibleDeletionRequests` ga qarang.
+  const [delReqShowDone, setDelReqShowDone] = useState(false);
   const loadDeletionRequests = ({ force = false } = {}) => {
     if (!force && deletionRequests.length > 0) return;
     setDelReqLoading(true);
@@ -360,11 +363,33 @@ const AdminPage = () => {
     loadDeletionRequests();
   }, [tab, isAdmin]);
   const newDeletionRequests = deletionRequests.filter(r => r.status === 'pending').length;
+  const doneDeletionRequests = deletionRequests.length - newDeletionRequests;
+  // Ekranda faqat javob KUTAYOTGANLAR. Bajarilganlar ro'yxatdan chiqadi, lekin
+  // hujjat o'chirilmaydi — 'Arxiv' tugmasi ularni qaytarib ko'rsatadi.
+  const visibleDeletionRequests = delReqShowDone
+    ? deletionRequests
+    : deletionRequests.filter(r => r.status === 'pending');
+
+  // ⚠️ 2026-08-19 — "Bajarildi" tugmasi arizaning HOLATINI o'zgartiradi,
+  // hisobni o'chirmaydi (haqiqiy o'chirish — pastdagi ro'yxatda ⋮ → o'chirish,
+  // `api/notify-admin?action=delete-user`). Ilgari admin telefonni QO'LDA
+  // ko'chirib, qidiruv maydoniga qo'yib, "Bazadan qidirish"ni bosardi — uch
+  // qadam, va raqamni adashtirsa BOSHQA odam o'chib ketishi mumkin edi.
+  // Endi ariza telefonini to'g'ridan-to'g'ri server qidiruviga uzatamiz.
+  const findUserFromRequest = (phone) => {
+    const digits = String(phone || '').replace(/\D/g, '');
+    if (digits.length < 9) { showToast("Arizada telefon raqami yo'q", 'error'); return; }
+    setUserSearch(digits);
+    searchUsersOnServer(digits);
+  };
 
   const setDeletionRequestStatus = async (id, status) => {
     try {
-      await updateDoc(doc(db, 'deletionRequests', id), { status, handledAt: new Date().toISOString() });
-      setDeletionRequests(prev => prev.map(r => (r.id === id ? { ...r, status } : r)));
+      const handledAt = new Date().toISOString();
+      await updateDoc(doc(db, 'deletionRequests', id), { status, handledAt });
+      // `handledAt` lokal holatga ham yoziladi — arxivda 'qachon bajarilgani'
+      // sahifani yangilamasdan ko'rinsin.
+      setDeletionRequests(prev => prev.map(r => (r.id === id ? { ...r, status, handledAt } : r)));
       // Hisobni o'chirish — huquqiy ahamiyatga ega so'rov: "bajarildi" deb kim
       // va qachon belgilagani keyinchalik isbot bo'ladi.
       logAdminAction('deletion_request.status', id, { holat: status });
@@ -1078,8 +1103,11 @@ try {
   // Mijozdagi `filter()` faqat YUKLANGAN 200 ta ichida ishlaydi. Aniq odamni
   // topish uchun aynan mos keladigan maydon bo'yicha so'rov yuboramiz:
   // har bir so'rov 0–5 o'qish, ya'ni butun kolleksiyani o'qishdan ~1000× arzon.
-  const searchUsersOnServer = async () => {
-    const term = userSearch.trim();
+  // `termArg` — arizadan kelgan telefon kabi TAYYOR so'z. Berilmasa maydondagi
+  // matn ishlatiladi. `onClick={searchUsersOnServer}` hodisa obyektini uzatadi,
+  // shuning uchun tur tekshiruvi shart — aks holda [object Object] qidirilardi.
+  const searchUsersOnServer = async (termArg) => {
+    const term = (typeof termArg === 'string' ? termArg : userSearch).trim();
     if (!term) { loadUsers({ force: true }); return; }
     setUsersLoading(true);
     setUsersError(null);
@@ -3480,6 +3508,14 @@ try {
       {tab === 'users' && (
         <div>
           {/* ── Hisobni o'chirish arizalari (B-2) ── */}
+          {/* ⚠️ 2026-08-19: "Bajarildi" bosilgach ariza ro'yxatdan KETMASDI.
+              Bajarilganlar to'planib, "Foydalanuvchilar" tabining butun birinchi
+              ekranini egallardi — admin har safar ularni aylantirib o'tishga
+              majbur bo'lardi, YANGI ariza esa ular orasida ko'zga tashlanmasdi.
+              Endi standart holatda faqat KUTAYOTGAN arizalar ko'rinadi.
+              Bajarilganlar O'CHIRILMAYDI — Google Play talabi bo'yicha ular
+              "arizaga javob berilgani"ning isboti, shuning uchun "Arxiv"
+              tugmasi ostida turadi (naqsh: Jurnaldagi `errorsShowResolved`). */}
           {(deletionRequests.length > 0 || delReqError) && (
             <div className="glass-panel" style={{ padding: 16, marginBottom: 16 }}>
               <div className="admin-row-between" style={{ marginBottom: 10 }}>
@@ -3487,15 +3523,32 @@ try {
                   <Trash2 size={16} style={{ color: 'var(--amber)' }} /> Hisobni o'chirish arizalari
                   {newDeletionRequests > 0 && <span className="admin-tab-badge">{newDeletionRequests}</span>}
                 </div>
-                <button className="btn btn-sm btn-outline" onClick={() => loadDeletionRequests({ force: true })} disabled={delReqLoading}>
-                  <RefreshCw size={13} className={delReqLoading ? 'spin' : ''} /> Yangilash
-                </button>
+                <div className="admin-row--tight">
+                  {doneDeletionRequests > 0 && (
+                    <button
+                      className={`btn btn-sm ${delReqShowDone ? 'btn-primary' : 'btn-outline'}`}
+                      onClick={() => setDelReqShowDone(v => !v)}
+                      title="Bajarilgan arizalar o'chirilmaydi — javob berilganining isboti sifatida saqlanadi"
+                    >
+                      {delReqShowDone ? 'Arxivni yashirish' : `Arxiv (${doneDeletionRequests})`}
+                    </button>
+                  )}
+                  <button className="btn btn-sm btn-outline" onClick={() => loadDeletionRequests({ force: true })} disabled={delReqLoading}>
+                    <RefreshCw size={13} className={delReqLoading ? 'spin' : ''} /> Yangilash
+                  </button>
+                </div>
               </div>
               {delReqError ? (
                 <div className="admin-info-text" style={{ color: 'var(--red)' }}>{delReqError}</div>
+              ) : visibleDeletionRequests.length === 0 ? (
+                // Yig'ilgan holat — bitta satr. Kartochka butunlay yo'qolmaydi,
+                // aks holda "Arxiv" tugmasiga yo'l ham qolmasdi.
+                <div className="admin-info-text">
+                  ✅ Javob kutayotgan ariza yo'q{doneDeletionRequests > 0 ? ` — ${doneDeletionRequests} tasi bajarilgan (Arxiv)` : ''}
+                </div>
               ) : (
                 <div className="admin-stack-s">
-                  {deletionRequests.map(r => (
+                  {visibleDeletionRequests.map(r => (
                     <div key={r.id} className={`admin-card ${r.status !== 'pending' ? 'admin-card--dim' : ''}`}>
                       <div className="admin-row-between">
                         <div style={{ minWidth: 0 }}>
@@ -3506,13 +3559,31 @@ try {
                             <span className={`admin-chip ${r.status === 'pending' ? 'admin-chip--amber' : 'admin-chip--green'}`}>
                               {r.status || 'pending'}
                             </span>
+                            {/* Server takroriy murojaatni shu arizaga qo'shadi
+                                (api/notify-admin.js) — nechta ekani ko'rinsin */}
+                            {r.repeatCount > 0 && (
+                              <span className="admin-chip admin-chip--blue">🔁 {r.repeatCount + 1} marta yozgan</span>
+                            )}
+                            {/* Arxivda "qachon bajarilgani" ko'rinsin — aynan shu
+                                sana huquqiy jihatdan isbot bo'ladi */}
+                            {r.status !== 'pending' && r.handledAt && (
+                              <span>✅ {new Date(r.handledAt).toLocaleString()}</span>
+                            )}
                           </div>
-                          {r.reason && <div className="admin-info-text" style={{ marginTop: 6 }}>{r.reason}</div>}
+                          {/* `pre-line`: server takroriy murojaatlarni bitta
+                              matnga qatorma-qator qo'shadi — aks holda hammasi
+                              bitta uzun satrga yopishib qolardi */}
+                          {r.reason && <div className="admin-info-text" style={{ marginTop: 6, whiteSpace: 'pre-line' }}>{r.reason}</div>}
                         </div>
                         {r.status === 'pending' && (
-                          <button className="btn btn-sm btn-outline" onClick={() => setDeletionRequestStatus(r.id, 'done')}>
-                            <CheckCircle size={13} /> Bajarildi
-                          </button>
+                          <div className="admin-row--tight">
+                            <button className="btn btn-sm btn-outline" onClick={() => findUserFromRequest(r.phone)} title="Shu telefon bo'yicha hisobni pastdagi ro'yxatda topish">
+                              <Search size={13} /> Hisobni topish
+                            </button>
+                            <button className="btn btn-sm btn-outline" onClick={() => setDeletionRequestStatus(r.id, 'done')}>
+                              <CheckCircle size={13} /> Bajarildi
+                            </button>
+                          </div>
                         )}
                       </div>
                     </div>

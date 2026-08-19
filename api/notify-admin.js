@@ -193,7 +193,50 @@ async function handleDeleteRequest(db, req, res) {
     return res.status(400).json({ ok: false, error: 'invalid_phone' });
   }
 
+  // ⚠️ 2026-08-19 — TAKRORIY ARIZA. IP bo'yicha chegara (yuqorida) bitta
+  // odamning bir necha kun davomida qayta-qayta yozishiga to'sqinlik qilmaydi:
+  // amalda bitta telefondan 4 ta ariza tushib, admin panelini to'ldirgan edi.
+  // Endi shu telefonda javob KUTAYOTGAN ariza bo'lsa, yangi hujjat OCHILMAYDI —
+  // matn mavjud arizaga qo'shiladi. Shunda admin bitta kartochkada odamning
+  // hamma xabarini ko'radi va bitta "Bajarildi" bilan yopadi.
+  //
+  // So'rov FAQAT `phone` bo'yicha (bitta tenglik) — `status` bilan birga
+  // qo'shilsa Firestore kompozit indeks talab qilardi, u esa deploy'da
+  // unutilsa so'rov yiqilib, ariza BUTUNLAY yo'qolardi. Status JS'da
+  // filtrlanadi: bitta odamda ariza kam, o'qish arzon.
+  const existing = await db.collection('deletionRequests')
+    .where('phone', '==', phone).limit(20).get()
+    .catch((e) => { console.warn('takroriy tekshiruvi:', e?.message); return null; });
+  const open = existing?.docs?.find((d) => (d.data().status || 'pending') === 'pending');
+
   const nowIso = new Date().toISOString();
+
+  if (open) {
+    const prev = open.data();
+    const joined = [prev.reason, reason && `— ${nowIso.slice(0, 16).replace('T', ' ')}: ${reason}`]
+      .filter(Boolean).join('\n');
+    // Matn cheksiz o'smasin. Kesish BOSHIDAN — eng YANGI xabar muhimroq
+    // (`clip` bu yerda yaramaydi: u boshini saqlab, oxirini tashlab yuboradi).
+    const merged = joined.length > 4000 ? '…' + joined.slice(-4000) : joined;
+    await open.ref.update({
+      name: name || prev.name,
+      reason: merged,
+      repeatCount: (prev.repeatCount || 0) + 1,
+      lastMessageAt: nowIso,
+    });
+
+    // Adminga baribir xabar boradi — odam yangi narsa yozgan bo'lishi mumkin —
+    // lekin "takroriy" deb belgilanadi, ya'ni yangi ish emasligi darrov ko'rinadi.
+    await sendToAdmin(db,
+      '🔁 <b>Takroriy murojaat</b> (mavjud arizaga qo\'shildi)\n\n'
+      + `Ism: ${escapeHtml(name)}\n`
+      + `Telefon: ${escapeHtml(phone)}\n`
+      + `Xabar: ${escapeHtml(reason || '—')}`
+    ).catch((e) => console.warn('Telegram xabari yuborilmadi:', e?.message));
+
+    return res.status(200).json({ ok: true, merged: true });
+  }
+
   await db.collection('deletionRequests').add({
     name, phone, reason,
     status: 'pending',

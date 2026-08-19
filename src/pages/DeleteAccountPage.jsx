@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, Trash2, Send, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Trash2, Send, CheckCircle, AlertTriangle, LifeBuoy } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { SUPPORT_URL } from '../config';
 
 export default function DeleteAccountPage() {
   const navigate = useNavigate();
@@ -10,6 +11,16 @@ export default function DeleteAccountPage() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [reason, setReason] = useState('');
+  // ⚠️ 2026-08-19 — NIMA UCHUN TASDIQ KATAGI BOR.
+  // Bu sahifa Google Play talabi bo'yicha autentifikatsiyasiz ochiq, ya'ni
+  // tizimga KIRA OLMAYOTGAN odam uchun u ilovada topiladigan yagona forma.
+  // Amalda tushgan arizalarning ko'pi "parolim ishlamayapti",
+  // "kirolmayapman" degan YORDAM so'rovlari edi — bu odamlar hisobini
+  // o'chirishni umuman xohlamagan. Agar admin bunday arizani so'zma-so'z
+  // bajarsa, kirmoqchi bo'lgan odamning hisobi o'chib ketardi.
+  // Shuning uchun: tepada yordam yo'li ko'rsatiladi, pastda esa ataylab
+  // belgilanadigan tasdiq turadi.
+  const [confirmed, setConfirmed] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -38,6 +49,11 @@ export default function DeleteAccountPage() {
 
     if (!name.trim()) {
       setError(t('deleteAccount.errName'));
+      return;
+    }
+
+    if (!confirmed) {
+      setError(t('deleteAccount.errConfirm'));
       return;
     }
 
@@ -103,6 +119,24 @@ export default function DeleteAccountPage() {
                 <h2 style={s.subtitle}>{t('deleteAccount.subtitle')}</h2>
                 <p style={s.description}>{t('deleteAccount.description')}</p>
 
+                {/* Forma TO'LDIRILISHIDAN oldin turadi — xato yo'lga kirgan odam
+                    shu yerdan qaytadi. Havola — rasmiy yordam kanali (config.js). */}
+                <div style={s.warnBox}>
+                  <div style={s.warnHead}>
+                    <AlertTriangle size={18} color="#F59E0B" style={{ flexShrink: 0 }} />
+                    <span style={s.warnTitle}>{t('deleteAccount.warnTitle')}</span>
+                  </div>
+                  <p style={s.warnText}>{t('deleteAccount.warnText')}</p>
+                  <button
+                    type="button"
+                    style={s.helpBtn}
+                    onClick={() => window.open(SUPPORT_URL, '_blank', 'noopener,noreferrer')}
+                  >
+                    <LifeBuoy size={16} style={{ marginRight: 8 }} />
+                    {t('deleteAccount.helpBtn')}
+                  </button>
+                </div>
+
                 {error && <div style={s.errorBox}>{error}</div>}
 
                 <form onSubmit={handleSubmit} style={s.form}>
@@ -140,10 +174,20 @@ export default function DeleteAccountPage() {
                     />
                   </div>
 
+                  <label style={s.confirmRow}>
+                    <input
+                      type="checkbox"
+                      checked={confirmed}
+                      onChange={(e) => setConfirmed(e.target.checked)}
+                      style={s.checkbox}
+                    />
+                    <span style={s.confirmText}>{t('deleteAccount.confirmLabel')}</span>
+                  </label>
+
                   <button
                     type="submit"
-                    disabled={loading}
-                    style={loading ? { ...s.submitBtn, ...s.btnDisabled } : s.submitBtn}
+                    disabled={loading || !confirmed}
+                    style={loading || !confirmed ? { ...s.submitBtn, ...s.btnDisabled } : s.submitBtn}
                   >
                     {loading ? (
                       t('deleteAccount.submitting')
@@ -331,6 +375,65 @@ const s = {
   btnDisabled: {
     opacity: 0.6,
     cursor: 'not-allowed',
+  },
+  warnBox: {
+    background: 'rgba(245, 158, 11, 0.10)',
+    border: '1px solid rgba(245, 158, 11, 0.35)',
+    borderRadius: '12px',
+    padding: '14px 16px',
+    marginBottom: 20,
+  },
+  warnHead: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 8,
+  },
+  warnTitle: {
+    fontSize: 'var(--fs-base)',
+    fontWeight: 700,
+    color: 'var(--text)',
+  },
+  warnText: {
+    fontSize: 'var(--fs-md)',
+    lineHeight: 1.55,
+    color: 'var(--text2)',
+    margin: '0 0 12px',
+  },
+  helpBtn: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    background: '#0E97E0',
+    border: 'none',
+    color: '#fff',
+    padding: '12px',
+    borderRadius: '10px',
+    fontSize: 'var(--fs-base)',
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+  },
+  confirmRow: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    gap: 10,
+    cursor: 'pointer',
+    marginTop: 4,
+  },
+  checkbox: {
+    width: 20,
+    height: 20,
+    flexShrink: 0,
+    marginTop: 1,
+    accentColor: '#F44336',
+    cursor: 'pointer',
+  },
+  confirmText: {
+    fontSize: 'var(--fs-md)',
+    lineHeight: 1.5,
+    color: 'var(--text2)',
   },
   errorBox: {
     background: 'rgba(244, 67, 54, 0.1)',
