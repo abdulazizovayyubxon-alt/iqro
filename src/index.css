@@ -1493,6 +1493,15 @@ body.exam-fullscreen .main-content { padding-bottom: 0 !important; }
 .exam-mobile-bar { display: none; }
 
 @media (max-width: 900px) {
+  /* Savol tanasi ichidagi «Orqaga/Keyingi» qatori mobilda YASHIRILADI —
+     ayni vazifani pastdagi qotirilgan panel bajaradi. Ikkalasi birga
+     turganda bir ekranda ikkita bir xil «Keyingi» ko'rinadi va qaysi biri
+     asosiysi noaniq bo'lib qoladi. Shart pastki panelnikiga AYNAN teskari
+     (`exam-fullscreen` + ≤900px) — ya'ni ular hech qachon birga ham,
+     birdaniga yo'q ham bo'lmaydi. Desktopda qator o'z joyida qoladi:
+     u yerda pastki panel umuman chizilmaydi. */
+  body.exam-fullscreen .exam-inline-nav { display: none; }
+
   body.exam-fullscreen .exam-mobile-bar {
     position: fixed;
     left: 0;

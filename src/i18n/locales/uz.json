@@ -411,7 +411,6 @@
     "yesFinish": "Ha, yakunlash",
     "toastAutoFinished": "Vaqt tugagani uchun imtihon avtomatik yakunlandi",
     "rulePace": "Har savolga o'rtacha {{min}} daq {{sec}} son vaqt to'g'ri keladi",
-    "rulePass": "O'tish bo'sag'asi — {{n}}%",
     "ruleNoMinus": "Xato javob uchun ball AYIRILMAYDI — ishonchingiz komil bo'lmasa ham belgilang",
     "ruleSkipped": "Tashlab ketilgan savol xato kabi hisoblanadi",
     "ruleAutoFinish": "Vaqt tugaganda imtihon avtomatik yakunlanadi",

@@ -32,7 +32,7 @@ import { examAtMs } from '../utils/examDate';
 import { useStudyContract } from '../hooks/useStudyContract';
 import { AnalyticsEvents } from '../services/analytics';
 import localforage from 'localforage';
-import { EXAM_SESSION_KEY, examPoolKey, examSessionKey, EXAM_GOAL_SCORE } from '../config';
+import { EXAM_SESSION_KEY, examPoolKey, examSessionKey } from '../config';
 import { PED_BLOCK_TOTAL, isPedBlockTopic, EXAM_BLUEPRINT, hasBlueprint } from '../data/examBlueprint';
 import { useExitGuard } from '../hooks/useExitGuard';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
@@ -1157,7 +1157,6 @@ const ExamPage = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {[
                 t('exam.rulePace', { min: perQMin, sec: perQSec }),
-                t('exam.rulePass', { n: EXAM_GOAL_SCORE }),
                 t('exam.ruleNoMinus'),
                 t('exam.ruleSkipped'),
                 t('exam.ruleAutoFinish'),
@@ -1870,7 +1869,11 @@ const ExamPage = () => {
 
               {/* Navigatsiya.
                   Xatolar oqimida (`reviewQueue`) tugmalar butun imtihon bo'ylab
-                  emas, FAQAT xatolar bo'ylab yuradi — T-14. */}
+                  emas, FAQAT xatolar bo'ylab yuradi — T-14.
+                  Oddiy oqimdagi qator (`exam-inline-nav`) mobilda CSS orqali
+                  yashiriladi: u yerda ayni vazifani pastdagi qotirilgan panel
+                  bajaradi, ikkalasi birga esa bitta ekranda ikkita «Keyingi»
+                  bo'lib chiqadi. Desktopda qator o'z joyida qoladi. */}
               {queuePos >= 0 ? (
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, marginTop: 24 }}>
                   <button
@@ -1900,7 +1903,7 @@ const ExamPage = () => {
                   )}
                 </div>
               ) : (
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 24 }}>
+                <div className="exam-inline-nav" style={{ display: 'flex', justifyContent: 'space-between', marginTop: 24 }}>
                   <button
                     className="btn btn-outline"
                     disabled={currentQ === 0}

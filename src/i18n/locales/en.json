@@ -411,7 +411,6 @@
     "yesFinish": "Yes, finish",
     "toastAutoFinished": "Exam finished automatically — time ran out",
     "rulePace": "About {{min}} min {{sec}} sec per question on average",
-    "rulePass": "Passing threshold — {{n}}%",
     "ruleNoMinus": "No points are deducted for a wrong answer — mark one even if unsure",
     "ruleSkipped": "A skipped question counts the same as a wrong one",
     "ruleAutoFinish": "The exam submits automatically when time runs out",
