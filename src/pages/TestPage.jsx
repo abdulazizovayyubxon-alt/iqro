@@ -13,7 +13,7 @@ import TheoryModal from '../components/theory/TheoryModal';
 import { isTheorySeen, markTheorySeen } from '../services/theorySeen';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
-import { RefreshCw, ArrowLeft, X, Flag } from 'lucide-react';
+import { RefreshCw, ArrowLeft, X } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
 import ObjectionModal from '../components/shared/ObjectionModal';
@@ -169,8 +169,10 @@ const TestPage = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState({});
-  // Shubhali savollarni belgilash va savollar panjarasi (T-11)
-  const [flagged, setFlagged] = useState({});
+  // Savollar panjarasi (T-11). Bayroq («keyin qaytaman») mashq rejimida
+  // YO'Q: bu yerda javob darhol tekshiriladi, ya'ni «shubhali» holat
+  // savolning o'zida ✓/✕ bo'lib ko'rinadi — bayroq ikkinchi, ortiqcha
+  // belgi bo'lardi. U faqat imtihonda ma'noli (ExamPage).
   const [navOpen, setNavOpen] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [showResults, setShowResults] = useState(false);
@@ -260,7 +262,6 @@ const TestPage = () => {
       selectedBatch,
       currentQ,
       answers,
-      flagged,
       comboCount,
       questionTimes: questionTimesRef.current,
       savedAt: Date.now(),
@@ -359,7 +360,6 @@ const TestPage = () => {
       setCurrentQ(0);
       setFcFlipped(false);
       setAnswers({});
-      setFlagged({});
       setNavOpen(false);
       questionTimesRef.current = {};
       committedRef.current = false; // yangi bo'lim → natijani qayta saqlashga ruxsat
@@ -427,7 +427,6 @@ const TestPage = () => {
               setQuestions(restored);
               setCurrentQ(Math.min(s.currentQ || 0, restored.length - 1));
               setAnswers(s.answers || {});
-              setFlagged(s.flagged || {});
               setComboCount(s.comboCount || 0);
               questionTimesRef.current = s.questionTimes || {};
               setIsGenerating(false);
@@ -445,7 +444,6 @@ const TestPage = () => {
 
     setShowResults(false);
     setAnswers({});
-    setFlagged({});
     setNavOpen(false);
     questionTimesRef.current = {};
     setCurrentQ(0);
@@ -862,7 +860,7 @@ const TestPage = () => {
     clearTimeout(saveTimerRef.current);
     saveTimerRef.current = setTimeout(() => persistRef.current?.(), 400);
     return () => clearTimeout(saveTimerRef.current);
-  }, [answers, flagged, currentQ, selectedBatch, comboCount, questions.length, showResults]);
+  }, [answers, currentQ, selectedBatch, comboCount, questions.length, showResults]);
 
   // Ilova fonga tushganda / yopilganda — debounce'ni KUTMASDAN yozamiz.
   // Mobil PWA foydalanuvchisi ilovani 400 ms ichida yopishi mumkin.
@@ -1287,34 +1285,10 @@ const TestPage = () => {
                 theoryMatch={theoryMatch}
                 onOpenTheory={() => setShowTheoryModal(true)}
               />
-              {/* ── Belgilash (T-11) ──
-                  «Keyin qaytaman» — imtihon topshirishning asosiy ko'nikmasi.
-                  Ilgari mashq rejimida uni umuman mashq qilib bo'lmasdi. */}
-              {mode !== 'flashcard' && questions.length > 1 && (
-                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 10 }}>
-                  <button
-                    onClick={() => setFlagged(prev => ({ ...prev, [currentQ]: !prev[currentQ] }))}
-                    aria-pressed={!!flagged[currentQ]}
-                    style={{
-                      display: 'inline-flex', alignItems: 'center', gap: 6,
-                      padding: '7px 12px', borderRadius: 10, cursor: 'pointer',
-                      fontFamily: 'inherit', fontSize: 'var(--fs-sm)', fontWeight: 700,
-                      background: flagged[currentQ] ? 'var(--amber-bg)' : 'transparent',
-                      border: `1px solid ${flagged[currentQ] ? 'var(--amber)' : 'var(--border)'}`,
-                      color: flagged[currentQ] ? 'var(--amber)' : 'var(--text3)',
-                    }}
-                  >
-                    <Flag size={13} fill={flagged[currentQ] ? 'var(--amber)' : 'none'} />
-                    {flagged[currentQ] ? t('exam.flagged') : t('exam.flag')}
-                  </button>
-                </div>
-              )}
-
               {mode !== 'flashcard' && (
                 <QuestionNavigator
                   questions={questions}
                   answers={answers}
-                  flagged={flagged}
                   currentQ={currentQ}
                   open={navOpen}
                   onToggle={() => setNavOpen(v => !v)}

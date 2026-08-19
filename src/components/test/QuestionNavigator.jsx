@@ -1,22 +1,24 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { LayoutGrid, ChevronUp, Flag } from 'lucide-react';
+import { LayoutGrid, ChevronUp } from 'lucide-react';
 import { TIMED_OUT } from '../../engine/SmartQuestionEngine';
 
 /**
- * QuestionNavigator — mashq rejimidagi savollar panjarasi va bayroqlar.
+ * QuestionNavigator — mashq rejimidagi savollar panjarasi.
  *
  * ⚠️ AUDIT 2026-08-19, T-11 BAND — NAVIGATSIYA ASSIMETRIYASI.
  *
- *   `ExamPage` da to'liq navigator bor edi: 50 katakli grid, `flagged` holati,
- *   izoh (legend), «Belgilash» tugmasi. `TestPage` da esa — `grep flag` bo'yicha
- *   NOL natija. Yagona navigatsiya `[Orqaga] [Keyingi]` edi.
+ *   `ExamPage` da to'liq navigator bor edi: 50 katakli grid va izoh (legend).
+ *   `TestPage` da esa yagona navigatsiya `[Orqaga] [Keyingi]` edi.
  *
  *   Foydalanuvchi vaqtining ~90%i aynan TestPage'da o'tadi. Ya'ni 50 savollik
- *   blokda 37-savolga qaytish uchun 13 marta «Orqaga» bosish kerak edi, va
- *   shubhali savolni belgilab qo'yib bo'lmasdi — «keyin qaytaman» strategiyasi
- *   (imtihon topshirishning asosiy ko'nikmasi) umuman mashq qilinmasdi.
+ *   blokda 37-savolga qaytish uchun 13 marta «Orqaga» bosish kerak edi.
+ *
+ *   BAYROQ («belgilash») bu yerda YO'Q — u faqat imtihonda ma'noli. Mashqda
+ *   javob darhol tekshiriladi, ya'ni katak allaqachon ✓/✕/⏱ ni ko'rsatib
+ *   turibdi; bayroq esa shu ustiga ikkinchi, hech narsa qo'shmaydigan belgi
+ *   bo'lardi.
  *
  * NEGA ALOHIDA KOMPONENT VA NEGA EXAMPAGE'NIKI QAYTA ISHLATILMADI:
  *   ExamPage navigatori imtihon maketiga bog'langan (`.exam-q-section`,
@@ -32,7 +34,6 @@ import { TIMED_OUT } from '../../engine/SmartQuestionEngine';
 const QuestionNavigator = ({
   questions = [],
   answers = {},
-  flagged = {},
   currentQ = 0,
   open = false,
   onToggle,
@@ -43,7 +44,6 @@ const QuestionNavigator = ({
   if (total <= 1) return null;
 
   const answeredCount = Object.keys(answers).length;
-  const flaggedCount = Object.values(flagged).filter(Boolean).length;
 
   const stateOf = (i) => {
     const a = answers[i];
@@ -77,11 +77,6 @@ const QuestionNavigator = ({
         <span style={{ flex: 1, minWidth: 0, textAlign: 'left', fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text2)' }}>
           {t('test.navAnswered', { answered: answeredCount, total })}
         </span>
-        {flaggedCount > 0 && (
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--amber)' }}>
-            <Flag size={12} fill="var(--amber)" /> {flaggedCount}
-          </span>
-        )}
       </button>
 
       <AnimatePresence initial={false}>
@@ -106,14 +101,12 @@ const QuestionNavigator = ({
                 {questions.map((_, i) => {
                   const s = CELL[stateOf(i)];
                   const isCurrent = i === currentQ;
-                  const isFlagged = !!flagged[i];
                   return (
                     <button
                       key={i}
                       onClick={() => onJump?.(i)}
                       aria-current={isCurrent ? 'true' : undefined}
                       style={{
-                        position: 'relative',
                         aspectRatio: '1',
                         borderRadius: 9,
                         border: isCurrent ? '2px solid var(--text)' : `1.5px solid ${s.border}`,
@@ -131,13 +124,6 @@ const QuestionNavigator = ({
                     >
                       <span>{i + 1}</span>
                       {s.mark && <span style={{ fontSize: '0.65em', marginTop: 1 }}>{s.mark}</span>}
-                      {isFlagged && (
-                        <span style={{
-                          position: 'absolute', top: 2, right: 2,
-                          width: 6, height: 6, borderRadius: '50%',
-                          background: 'var(--amber)',
-                        }} />
-                      )}
                     </button>
                   );
                 })}
@@ -158,10 +144,6 @@ const QuestionNavigator = ({
                     {label}
                   </span>
                 ))}
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
-                  <Flag size={11} fill="var(--amber)" style={{ color: 'var(--amber)' }} />
-                  {t('exam.legendFlagged')}
-                </span>
               </div>
             </div>
           </motion.div>

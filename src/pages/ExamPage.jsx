@@ -484,6 +484,24 @@ const ExamPage = () => {
     setCurrentQ(nextIdx);
   };
 
+  // Yangi savolga o'tilganda ko'rinish savol BOSHIGA qaytadi — TestPage'dagi
+  // bilan bir xil xatti-harakat. Avval skroll joyida qolardi: uzun savolning
+  // oxirida «Keyingi» bosilgach, keyingi savolning MATNI ekrandan yuqorida
+  // qolib, foydalanuvchi to'g'ridan-to'g'ri variantlarga tushib qolardi va
+  // har safar qo'lda tepaga surishi kerak edi.
+  //
+  // Skroll idishi ekran eniga qarab boshqacha (CSS bilan mos): ≤768px da
+  // `.exam-content` yoki sahifaning o'zi, kengroq ekranda esa
+  // `.exam-question-area`. Shuning uchun uchalasi ham nolga qaytariladi —
+  // JS'da breakpoint'ni takrorlash CSS bilan ikkinchi haqiqat manbaini
+  // yaratardi (bir joyi o'zgarsa, ikkinchisi jim qolib ketardi).
+  useEffect(() => {
+    if (!examStarted || finished) return;
+    document.querySelector('.exam-question-area')?.scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelector('.exam-content')?.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentQ, examStarted, finished]);
+
   // Savollarni yuklash (Firestore dan)
   useEffect(() => {
     if (!examStarted) return;
