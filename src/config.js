@@ -9,6 +9,30 @@ export const APP_VERSION = '2.0'; // Ilova versiyasi (Sozlamalar pastida ko'rsat
 export const APP_SUBTITLE = 'Attestatsiya platformasi';
 export const EXAM_LABEL = EXAM_DATE ? '13 May — Malaka toifa imtihoni' : 'Zehin — attestatsiya platformasi';
 export const EXAM_GOAL_SCORE = 70;
+
+// ─── Imtihon davomiyligi — FANGA QARAB, yagona manba ───
+// Rasmiy attestatsiya me'yorida savol soni hamma fanda 50 ta, vaqt esa emas:
+// hajmi kattaroq fanlarga ko'proq beriladi.
+//
+// ⚠️ Bu jadval ilgari IKKI joyda, ikki xil nusxada turardi: ExamPage'dagisi
+// to'liq (120 daq — boshlangich/info/biologiya/kimyo, 105 daq — til/rus_tili/
+// ingliz), Dashboard'dagisi esa eskirgan (120 daq ro'yxatida faqat boshlangich
+// va info, 105 daq da faqat til). Oqibati foydalanuvchiga KO'RINARDI: kimyo
+// o'qituvchisi bosh sahifada «50 savol · 90 daqiqa» deb o'qib, imtihonga
+// kirgach 120 daqiqa olardi. Endi manba bitta — nusxa ko'chirmang, shu
+// funksiyani chaqiring.
+const EXAM_DURATION_MIN = {
+  boshlangich: 120, info: 120, biologiya: 120, kimyo: 120,
+  til: 105, rus_tili: 105, ingliz: 105,
+};
+/** Fan uchun imtihon davomiyligi — daqiqada. Ro'yxatda yo'q fan → 90. */
+export const examDurationMin = (category) => EXAM_DURATION_MIN[category] ?? 90;
+/** Xuddi shu, lekin soniyada — taymer va deadline hisobi uchun. */
+export const examDurationSec = (category) => examDurationMin(category) * 60;
+
+/** Imtihondagi savollar soni — hamma fanda bir xil. */
+export const EXAM_TOTAL = 50;
+
 export const APP_URL = 'https://zehin-t41p.vercel.app'; // Haqiqiy domen (Vercel loyiha nomi: zehin, alias suffiksi -t41p saqlangan)
 
 // ─── Platforma ko'rsatkichlari — ulashish matnlari uchun YAGONA MANBA ───

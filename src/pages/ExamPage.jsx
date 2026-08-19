@@ -22,6 +22,7 @@ import PremiumModal from '../components/PremiumModal';
 import SafeHtml from '../components/shared/SafeHtml';
 import QuestionMedia from '../components/QuestionMedia';
 import ExamTimer from '../components/test/ExamTimer';
+import ExamRulesModal from '../components/test/ExamRulesModal';
 import {
   deadlineFromSession, sessionHasTime, shouldFinalizeExpired,
 } from '../utils/examClock';
@@ -32,7 +33,7 @@ import { examAtMs } from '../utils/examDate';
 import { useStudyContract } from '../hooks/useStudyContract';
 import { AnalyticsEvents } from '../services/analytics';
 import localforage from 'localforage';
-import { EXAM_SESSION_KEY, examPoolKey, examSessionKey } from '../config';
+import { EXAM_SESSION_KEY, examPoolKey, examSessionKey, examDurationSec, EXAM_TOTAL } from '../config';
 import { PED_BLOCK_TOTAL, isPedBlockTopic, EXAM_BLUEPRINT, hasBlueprint } from '../data/examBlueprint';
 import { useExitGuard } from '../hooks/useExitGuard';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
@@ -58,7 +59,6 @@ function cleanForDedup(text) {
   return clean.trim();
 }
 
-const EXAM_TOTAL = 50;
 /** Mutaxassislik bloki — imtihonning 1–35-savollari. */
 const CORE_BLOCK_TOTAL = EXAM_TOTAL - PED_BLOCK_TOTAL;
 
@@ -87,21 +87,8 @@ const blueprintForTopics = (topicIds) =>
     ? Object.fromEntries(topicIds.map(id => [id, EXAM_BLUEPRINT[id]]))
     : null;
 
-const getExamDuration = (category) => {
-  switch (category) {
-    case 'boshlangich':
-    case 'info':
-    case 'biologiya':
-    case 'kimyo':
-      return 120 * 60;
-    case 'til':
-    case 'rus_tili':
-    case 'ingliz':
-      return 105 * 60;
-    default:
-      return 90 * 60;
-  }
-};
+// Vaqt jadvali config.js da (yagona manba) — bu yerda faqat qisqa nom.
+const getExamDuration = examDurationSec;
 
 function shuffleArray(arr) {
   const a = [...arr];
@@ -166,6 +153,7 @@ const ExamPage = () => {
   const startMilestone = useMilestoneAction();
   const [showObjectionModal, setShowObjectionModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showRulesModal, setShowRulesModal] = useState(false);
   const [reviewMode, setReviewMode] = useState(false);
   // ⚠️ AUDIT 2026-08-19, T-14 BAND — «XATOLARIM» OQIMI.
   //
@@ -1152,42 +1140,27 @@ const ExamPage = () => {
           </div>
 
           {/* ── IMTIHON SHARTNOMASI (T-9) ──────────────────────────────────
-              ⚠️ AUDIT 2026-08-19 — bu ekran «afisha» edi: uchta chip va
-              «Boshlash» tugmasi. Foydalanuvchi o'tish bo'sag'asini, ball
-              hisoblash qoidasini, vaqt tugaganda nima bo'lishini va savolga
-              qaytish mumkinligini BILMASDAN imtihonga kirardi.
-
-              Oqibati: birinchi imtihonda kognitiv yuk savolga emas,
-              interfeysni ochishga sarflanardi. Pedagog «ulguramanmi?» degan
-              hisobni qila olmasdi — 90 daq / 50 savol = 1 daq 48 son degan
-              raqam hech qayerda ko'rsatilmasdi. Bu — testdan oldingi eng
-              katta stress manbai.
-
-              Ustiga-ustak `exam.simulatorDesc` matni uz/ru/en uchtala
-              tarjimada YOZILGAN, lekin hech qayerda render qilinmasdi. */}
-          <div style={{
-            background: 'var(--bg2)', border: '1px solid var(--border)',
-            borderRadius: 14, padding: '14px 16px', marginBottom: 18, textAlign: 'left',
-          }}>
-            <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', lineHeight: 1.5, marginBottom: 12 }}>
-              {t('exam.simulatorDesc')}
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {[
-                t('exam.rulePace', { min: perQMin, sec: perQSec }),
-                t('exam.ruleNoMinus'),
-                t('exam.ruleSkipped'),
-                t('exam.ruleAutoFinish'),
-                t('exam.ruleNavigate'),
-                t('exam.ruleResume'),
-              ].map((line, i) => (
-                <div key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
-                  <Check size={14} strokeWidth={3} style={{ color: 'var(--accent)', flexShrink: 0, marginTop: 3 }} />
-                  <span style={{ fontSize: 'var(--fs-body-sm)', color: 'var(--text2)', lineHeight: 1.45 }}>{line}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+              Qoidalar, ball hisobi va taktika ENDI shu tugma ortida
+              (`ExamRulesModal`). Ilgari ular shu yerda ochiq turardi va
+              ~350px joy egallardi: rejim kartalari va «Boshlash» tugmasi
+              telefon ekranidan pastga tushib ketardi, ya'ni foydalanuvchi
+              ASOSIY harakatni ko'rish uchun skroll qilishi kerak edi.
+              Ma'lumot yo'qolgani yo'q — u birinchi imtihonda kerak, har
+              safar emas. Naqsh mashq rejimidan tanish: «o'qing» tugmasi →
+              pastdan ko'tariladigan varaq. */}
+          <button
+            onClick={() => setShowRulesModal(true)}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 7,
+              margin: '0 auto 18px', padding: '9px 14px', borderRadius: 11,
+              border: '1px solid var(--border)', background: 'var(--bg2)',
+              color: 'var(--accent)', fontSize: 'var(--fs-sm)', fontWeight: 700,
+              cursor: 'pointer', fontFamily: 'inherit',
+            }}
+          >
+            <BookOpen size={14} />
+            {t('exam.rulesButton')}
+          </button>
 
           {/* Rejim tanlash */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 20, textAlign: 'left' }}>
@@ -1306,6 +1279,15 @@ const ExamPage = () => {
             {t('exam.start')}
           </motion.button>
         </div>
+
+        <ExamRulesModal
+          open={showRulesModal}
+          onClose={() => setShowRulesModal(false)}
+          subjectName={subjName}
+          durationMin={durationMin}
+          perQMin={perQMin}
+          perQSec={perQSec}
+        />
       </motion.div>
     );
   }

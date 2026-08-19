@@ -31,7 +31,7 @@ import {
 import SubjectTopicChips, { BlockRow } from '../components/SubjectTopicChips';
 import { motion } from 'framer-motion';
 import localforage from 'localforage';
-import { EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY, examSessionKey, isPlayBuild } from '../config';
+import { EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY, examSessionKey, isPlayBuild, examDurationMin, EXAM_TOTAL } from '../config';
 import { sessionHasTime, sessionSecondsLeft, formatExamTime } from '../utils/examClock';
 import { useStudyContract } from '../hooks/useStudyContract';
 import { targetQuestions } from '../services/studyContract';
@@ -199,18 +199,6 @@ const Dashboard = () => {
 
   const dueCards = dueCardCount(state.spacedCards);
 
-  const getExamDurationMinutes = (category) => {
-    switch (category) {
-      case 'boshlangich':
-      case 'info':
-        return 120;
-      case 'til':
-        return 105;
-      default:
-        return 90;
-    }
-  };
-
   const quickActions = [
     {
       id: 'test', icon: Play, label: t('dashboard.actionTest'),
@@ -219,7 +207,7 @@ const Dashboard = () => {
       onClick: () => handleNav(activeTopicId, 'exam'),
     },
     {
-      id: 'exam', icon: GraduationCap, label: t('dashboard.actionExam'), desc: t('dashboard.actionExamDesc', { count: 50, min: getExamDurationMinutes(cat) }),
+      id: 'exam', icon: GraduationCap, label: t('dashboard.actionExam'), desc: t('dashboard.actionExamDesc', { count: EXAM_TOTAL, min: examDurationMin(cat) }),
       color: 'var(--accent3)', bg: 'var(--blue-bg)',
       onClick: () => { if (isFreeLimitReached) { setShowPremiumModal(true); return; } navigate('/exam'); },
     },
