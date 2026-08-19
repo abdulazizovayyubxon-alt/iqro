@@ -10,6 +10,58 @@ import { Bell, CheckCircle2, CheckCheck, AlertCircle, Info, Trash2, Award, Badge
 import { useNotifications } from '../hooks/useNotifications';
 import { useModalBackButton } from './profile/useModalBackButton';
 
+// Matn ichidagi havolalar (https://, http://, t.me/...) va @username larni bosiladigan havolaga aylantirish
+const renderFormattedMessage = (text) => {
+  if (!text || typeof text !== 'string') return text;
+
+  const tokenRegex = /(https?:\/\/[^\s]+|t\.me\/[^\s]+|@[a-zA-Z0-9_]{4,})/g;
+  const parts = text.split(tokenRegex);
+
+  return parts.map((part, index) => {
+    if (!part) return null;
+
+    if (/^https?:\/\//i.test(part) || /^t\.me\//i.test(part) || /^@[a-zA-Z0-9_]{4,}/.test(part)) {
+      let cleanPart = part;
+      let trailingPunct = '';
+      const punctMatch = part.match(/([.,!?:;)]+)$/);
+      if (punctMatch) {
+        trailingPunct = punctMatch[1];
+        cleanPart = part.slice(0, -trailingPunct.length);
+      }
+
+      let href = cleanPart;
+      if (/^t\.me\//i.test(cleanPart)) {
+        href = `https://${cleanPart}`;
+      } else if (/^@/.test(cleanPart)) {
+        href = `https://t.me/${cleanPart.slice(1)}`;
+      }
+
+      return (
+        <React.Fragment key={index}>
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              color: 'var(--blue, #2563eb)',
+              textDecoration: 'underline',
+              fontWeight: '600',
+              wordBreak: 'break-word',
+              cursor: 'pointer',
+            }}
+          >
+            {cleanPart}
+          </a>
+          {trailingPunct}
+        </React.Fragment>
+      );
+    }
+
+    return part;
+  });
+};
+
 const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', buttonStyle = {}, dropdownStyle = {} }) => {
   const { t } = useTranslation();
   const { notifications, unreadCount, markAllRead, markOneRead, clearAll } = useNotifications();
@@ -102,7 +154,7 @@ const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', 
                         {!n.read && <div className="notif-dot" />}
                       </div>
                       <div className={`notif-msg ${n.read ? 'read' : 'unread'}`}>
-                        {n.message}
+                        {renderFormattedMessage(n.message)}
                       </div>
                       <div className="notif-date">
                         {new Date(n.date).toLocaleDateString()} • {new Date(n.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
