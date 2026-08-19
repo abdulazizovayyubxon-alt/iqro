@@ -404,6 +404,20 @@ service cloud.firestore {
       allow read, write: if isAdmin();
     }
 
+    // ── meta/cronHealth: kunlik cron'ning oxirgi yurish izi ──
+    //
+    // 2026-08-19: cron BIRON MARTA ishlamagani o'n kundan keyin, ID'siz
+    // qolgan hisoblar orqali aniqlandi — panelda buni ko'rsatadigan belgi
+    // yo'q edi. Endi cron har yurishda shu hujjatga iz qoldiradi va admin
+    // "Statistika" tabida holatni ko'radi (api/_shared.js `cronHeartbeat`).
+    //
+    // Yozuv FAQAT Admin SDK orqali (u qoidalarni chetlab o'tadi): iz
+    // ishonchli bo'lishi uchun uni mijoz — hatto admin ham — yoza olmaydi.
+    match /meta/cronHealth {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
     // ── errorLogs: kuzatuv (observability) — faqat admin o'qiydi/boshqaradi.
     // Client TO'G'RIDAN yozmaydi — yozuv faqat /api/log-error (Admin SDK) orqali,
     // u rules'ni chetlab o'tadi. Shu sababli client uchun write bloklangan. ──

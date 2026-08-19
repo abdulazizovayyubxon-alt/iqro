@@ -142,8 +142,12 @@ export default function SettingsPage({ theme, toggleTheme }) {
   const [pushBusy, setPushBusy] = useState(false);
 
   const handleEnablePush = async () => {
-    if (pushStatus === 'granted') { showToast(t('settings.toasts.pushAlreadyEnabled'), 'info'); return; }
     if (pushStatus === 'denied') { showToast(t('settings.toasts.pushBlocked'), 'error'); return; }
+    // ⚠️ 2026-08-19: ilgari `granted` holatida shu yerdan DARHOL qaytilardi
+    // ("allaqachon yoqilgan"). Lekin ruxsat berilgani token OLINGANINI
+    // bildirmaydi — `getToken` yiqilsa hisobda token bo'lmasdi va bu yagona
+    // qo'lda qayta urinish yo'li yopiq edi. enablePush idempotent
+    // (arrayUnion), shuning uchun uni har holda chaqiraveramiz.
     setPushBusy(true);
     const res = await enablePush(user);
     setPushBusy(false);
@@ -152,7 +156,9 @@ export default function SettingsPage({ theme, toggleTheme }) {
     else if (res.reason === 'no_vapid') showToast(t('settings.toasts.pushNoVapid'), 'info');
     else if (res.reason === 'denied') showToast(t('settings.toasts.pushDenied'), 'error');
     else if (res.reason === 'unsupported') showToast(t('settings.toasts.pushUnsupported'), 'error');
-    else showToast(t('settings.toasts.pushError'), 'error');
+    // Xatoning ANIQ kodi matnga qo'shiladi: nosozlikni foydalanuvchidan
+    // so'rab-surishtirmasdan, ekrandagi yozuvdan aniqlash uchun.
+    else showToast(t('settings.toasts.pushError') + (res.detail ? ` (${res.detail})` : ''), 'error');
   };
 
   // Kunlik reja eslatmasi — server (api/cron-reminder.js) kechqurun bitta push

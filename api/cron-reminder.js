@@ -30,7 +30,7 @@
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { getMessaging } from 'firebase-admin/messaging';
-import { verifySecret, extractSecret } from './_shared.js';
+import { verifySecret, extractSecret, cronHeartbeat } from './_shared.js';
 
 const TASHKENT_OFFSET_MS = 5 * 60 * 60 * 1000;  // UTC+5, yozgi vaqt yo'q
 const INACTIVE_DAYS = 30;                        // shundan uzoq jim turgan hisob
@@ -231,6 +231,11 @@ export default async function handler(req, res) {
 
   // { token → {title, body} } — bitta foydalanuvchida bir nechta qurilma bo'lishi mumkin
   const queue = [];
+
+  // Yurish izi — `meta/cronHealth.reminder`. Sabab `cron-daily` dagi bilan
+  // bir xil: jimgina ishlamay turgan cron'ni panel ko'rsatishi kerak.
+  const startedMs = Date.now();
+  if (!dryRun) await cronHeartbeat(db, 'reminder', { startedAt: new Date(startedMs).toISOString() });
 
   // ── Umumiy imtihon sanasi (zaxira manba) ──────────────────────────────────
   // Mijoz tomoni sanani UCH manbadan oladi (src/utils/examDate.js): shaxsiy →
@@ -448,5 +453,16 @@ export default async function handler(req, res) {
   }
 
   console.log('cron-reminder:', JSON.stringify(out));
+
+  if (!dryRun) {
+    await cronHeartbeat(db, 'reminder', {
+      finishedAt: new Date().toISOString(),
+      durationMs: Date.now() - startedMs,
+      ok: out.errors.length === 0,
+      errors: out.errors.length,
+      sent: out.sent,
+    });
+  }
+
   return res.status(200).json({ ok: true, day: today, ...out });
 }

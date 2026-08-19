@@ -184,6 +184,37 @@ export async function ensureShortIdAdmin(db, uid) {
   });
 }
 
+// ── Cron yurishining izi (`meta/cronHealth`) ────────────────────────────
+//
+// ⚠️ 2026-08-19 TEKSHIRUVI — NEGA BU KERAK BO'LDI:
+// 11 ta hisob ID'siz qolgani aniqlandi. ID berishning ZAXIRA yo'li
+// (`cron-daily` kechasi to'ldiradi) qog'ozda bor edi, amalda esa cron
+// BIRON MARTA ishlamagan: `metrics/*` hujjatlari umuman yo'q,
+// `settings/leaderboard` yo'q, 357 hisobning HECH BIRIDA `notifyWelcomeSent`
+// bayrog'i yo'q, muddati o'tgan Pro esa hamon `isPremium: true`.
+// Sabab — endpoint `verifySecret` bilan deny-by-default himoyalangan, ya'ni
+// Vercel `CRON_SECRET` env'i bo'lmasa har chaqiruv 401 bilan qaytadi.
+//
+// Eng yomoni: BUNI KO'RSATADIGAN JOY YO'Q edi. Panel "hali ma'lumot
+// yig'ilmagan, ertaga paydo bo'ladi" deb turardi — ya'ni o'n kunlik
+// nosozlik odatiy kutishga o'xshab ko'rinardi.
+//
+// Endi har yurish IZ qoldiradi: boshida `startedAt`, oxirida `finishedAt`.
+// Uch holat farqlanadi va uchalasi ham panelda ko'rinadi:
+//   · hujjat YO'Q            → cron umuman chaqirilmayapti (401 / sozlanmagan)
+//   · startedAt eski         → jadval ishlamayapti
+//   · finishedAt < startedAt → chaqirildi, lekin yarim yo'lda uzildi (60s)
+//
+// Narxi: kuniga 2 ta yozuv. Yozuv XATOSI cron'ni to'xtatmaydi — kuzatuv
+// asosiy ishdan muhimroq bo'lib qolmasligi kerak.
+export async function cronHeartbeat(db, job, patch) {
+  try {
+    await db.collection('meta').doc('cronHealth').set({ [job]: patch }, { merge: true });
+  } catch (e) {
+    console.warn(`cronHeartbeat(${job}):`, e?.message);
+  }
+}
+
 // ── Hafta / oy identifikatorlari ────────────────────────────────────────
 //
 // ⚠️ BU FUNKSIYALAR `src/context/AppContext.jsx` DAGILAR BILAN AYNI SATRNI

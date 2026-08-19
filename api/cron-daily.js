@@ -44,7 +44,7 @@
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 import { getMessaging } from 'firebase-admin/messaging';
-import { verifySecret, extractSecret, ensureShortIdAdmin, getWeekId, getMonthId } from './_shared.js';
+import { verifySecret, extractSecret, ensureShortIdAdmin, getWeekId, getMonthId, cronHeartbeat } from './_shared.js';
 import { TEXT as SMS_TEXT, normalizePhone, sendQueue, activeProvider, segments, isSmsEnabled } from './_sms.js';
 
 const FREE_TRIAL_DAYS = 7;
@@ -158,6 +158,9 @@ export default async function handler(req, res) {
     remindersSent: 0,
     discountsCleared: 0,
     shortIdsAssigned: 0,
+    // Push kanalining kesimi — `granted`/`denied`/`default` mijoz yozadigan
+    // `users/{uid}.pushPerm` dan, `tokens` esa haqiqatan token bor hisoblardan.
+    push: { granted: 0, denied: 0, default: 0, unknown: 0, tokens: 0, errored: 0 },
     notify: {
       queued: { welcome: 0, trialEnd: 0, expired: 0 },
       // Kanal bo'yicha taqsimot — push bepul, sms pullik
@@ -182,6 +185,12 @@ export default async function handler(req, res) {
   // xush kelibsiz oynasida tugaydi — o'shanda ikkala shart ham bajarilib,
   // ikkita xabar ketardi.
   const queuedUids = new Set();
+
+  // Yurish BOSHLANGANI izi — asosiy ishdan OLDIN yoziladi. Cron yarim yo'lda
+  // uzilsa (60s limiti) hujjatda `startedAt` bor, `finishedAt` esa eski
+  // bo'lib qoladi: panel aynan shundan "uzilib qolgan" holatni taniydi.
+  // Quruq rejim hech narsa yozmaydi — uning shartnomasi "faqat O'QIYDI".
+  if (!dryRun) await cronHeartbeat(db, 'daily', { startedAt: now.toISOString() });
 
   /**
    * Navbatga qo'shish — kanal tanlash va barcha umumiy tekshiruvlar shu yerda.
@@ -348,6 +357,19 @@ export default async function handler(req, res) {
             results.errors.push(`shortId ${userId}: ${e.message}`);
           }
         }
+
+        // ── 0b. Push kanalining HOLATI (2026-08-19) ──
+        // NEGA: 357 hisobning hech birida `fcmTokens` yo'q edi va sababni
+        // aytadigan raqam yo'q edi. Mijoz endi ruxsat holatini hujjatga
+        // yozadi (src/services/push.js `recordPushState`), bu yerda esa u
+        // sanaladi — hujjatlar baribir o'qilyapti, ya'ni QO'SHIMCHA O'QISH
+        // YO'Q. Panelda ko'rinadi: "so'ralmagan" ko'p bo'lsa oyna chiqmayapti,
+        // "bloklangan" ko'p bo'lsa ruxsat berilmayapti (TWA sozlamasi).
+        const perm = data.pushPerm || 'unknown';
+        if (results.push[perm] != null) results.push[perm]++;
+        else results.push.unknown++;
+        if (Array.isArray(data.fcmTokens) && data.fcmTokens.length) results.push.tokens++;
+        if (data.pushLastError) results.push.errored++;
 
         // Ro'yxatdan o'tgandan beri o'tgan kunlar — quyidagi uchta blok ham
         // shundan foydalanadi, shuning uchun bir marta hisoblanadi.
@@ -609,6 +631,13 @@ export default async function handler(req, res) {
         total, premium, dau, wau, newToday, newWeek,
         activated, paidActive, paymentsTotal, paymentsToday,
         paymentsSumToday, paymentsSum30d,
+        // Push kanali — yuqoridagi foydalanuvchi siklida sanalgan
+        // (qo'shimcha so'rov yo'q).
+        pushTokens: results.push.tokens,
+        pushGranted: results.push.granted,
+        pushDenied: results.push.denied,
+        pushUnasked: results.push.default,
+        pushUnknown: results.push.unknown,
       };
 
       if (!dryRun) {
@@ -785,6 +814,21 @@ export default async function handler(req, res) {
   }
 
   console.log('Cron daily results:', JSON.stringify(results));
+
+  // Yurish TUGAGANI izi. `errors` — SONI, matni emas: hujjatni admin o'qiydi
+  // va xato matnlarida uid/telefon uchrashi mumkin (batafsili Vercel logida).
+  if (!dryRun) {
+    await cronHeartbeat(db, 'daily', {
+      finishedAt: new Date().toISOString(),
+      durationMs: Date.now() - now.getTime(),
+      ok: results.errors.length === 0,
+      errors: results.errors.length,
+      shortIdsAssigned: results.shortIdsAssigned,
+      premiumExpired: results.premiumExpired,
+      notifySent: results.notify.pushSent + results.notify.smsSent,
+    });
+  }
+
   return res.status(200).json({
     ok: true,
     dryRun,

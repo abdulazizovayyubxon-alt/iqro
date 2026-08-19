@@ -82,14 +82,61 @@ async function registerSW() {
   return navigator.serviceWorker.register(`/firebase-messaging-sw.js?${qs.toString()}`, { scope: SW_SCOPE });
 }
 
+// ── Nega token yo'q? — holatni QAYD ETISH ────────────────────────────────
+//
+// ⚠️ 2026-08-19 TEKSHIRUVI: 357 hisobning HECH BIRIDA `fcmTokens` yo'q edi.
+// Server tomoni sog'lom ekani tekshirildi (FCM registratsiya API loyiha
+// kaliti + shu VAPID bilan token beradi), ya'ni uzilish mijozda. Lekin
+// QAYERDA ekanini aytadigan hech narsa yo'q edi: `enablePush` xatoni
+// `console.error` ga yozib, chaqiruvchiga esa umumiy 'error' qaytarardi;
+// InterruptHost natijani UMUMAN o'qimasdi. Ya'ni butun kanal jimgina
+// o'lik turardi — xuddi cron kabi (api/_shared.js `cronHeartbeat` izohi).
+//
+// Endi holat foydalanuvchi hujjatida turadi. Uch qiymat javobni bir
+// qarashda beradi:
+//   pushPerm='denied'  → ruxsat bloklangan (TWA'da bildirishnoma
+//                        delegatsiyasi yoqilmagan bo'lsa hammada shunday)
+//   pushPerm='default' → ruxsat SO'RALMAGAN — oyna chiqmayapti
+//   pushPerm='granted' + token yo'q → getToken yiqilyapti (`pushLastError`)
+//
+// YOZUV NARXI ~NOL: qiymat o'zgarmasa yozilmaydi (oxirgi yozilgani shu
+// qurilmaning localStorage'ida saqlanadi). Firestore kvotasi bir marta
+// tugab, ilova soatlab ishlamagani uchun (2026-08-17) bu shart muhim.
+const STATE_CACHE_KEY = 'iqro_push_state';
+
+export async function recordPushState(user, patch = {}) {
+  if (!user?.uid) return;
+  const state = {
+    pushPerm: pushPermission(),
+    pushSupport: pushSupported(),
+    pushIsPlayApp: isPlayBuild(),
+    ...patch,
+  };
+  try {
+    // Bir xil holat qayta-qayta yozilmasin — faqat O'ZGARISH yoziladi.
+    const key = `${STATE_CACHE_KEY}:${user.uid}`;
+    if (localStorage.getItem(key) === JSON.stringify(state)) return;
+    await updateDoc(doc(db, 'users', user.uid), { ...state, pushStateAt: new Date().toISOString() });
+    localStorage.setItem(key, JSON.stringify(state));
+  } catch (e) {
+    // Kuzatuv asosiy oqimni to'xtatmaydi.
+    console.warn('recordPushState:', e?.message);
+  }
+}
+
 /**
  * Push'ni yoqish: ruxsat so'raydi, token oladi, Firestore'ga saqlaydi.
- * Natija: { ok, reason? } — reason: 'unsupported'|'no_vapid'|'denied'|'no_token'|'error'
+ * Natija: { ok, reason?, detail? }
+ *   reason: 'unsupported'|'no_vapid'|'denied'|'no_token'|'error'
+ *   detail: xatoning HAQIQIY kodi (masalan 'messaging/token-subscribe-failed').
+ *           Ilgari u faqat konsolda qolardi — ya'ni foydalanuvchida nima
+ *           bo'lganini bilishning imkoni yo'q edi.
  */
 export async function enablePush(user) {
   if (!user) return { ok: false, reason: 'error' };
   if (!VAPID_KEY) return { ok: false, reason: 'no_vapid' };
   if (typeof window === 'undefined' || !('Notification' in window) || !('serviceWorker' in navigator)) {
+    recordPushState(user, { pushLastError: 'unsupported' });
     return { ok: false, reason: 'unsupported' };
   }
   try {
@@ -97,15 +144,24 @@ export async function enablePush(user) {
     // Ruxsat natijasi o'lchanadi: push kanalining HAJMI retention rejasining
     // asosiy cheklovi, uni bilmasdan eslatma tizimini baholab bo'lmaydi.
     AnalyticsEvents.pushOptIn(perm);
-    if (perm !== 'granted') return { ok: false, reason: 'denied' };
+    if (perm !== 'granted') {
+      recordPushState(user, { pushLastError: `perm:${perm}` });
+      return { ok: false, reason: 'denied' };
+    }
 
     const messaging = await getMessagingInstance();
-    if (!messaging) return { ok: false, reason: 'unsupported' };
+    if (!messaging) {
+      recordPushState(user, { pushLastError: 'messaging_unsupported' });
+      return { ok: false, reason: 'unsupported' };
+    }
 
     const swReg = await registerSW();
     const { getToken } = await loadMessagingSdk();
     const token = await getToken(messaging, { vapidKey: VAPID_KEY, serviceWorkerRegistration: swReg });
-    if (!token) return { ok: false, reason: 'no_token' };
+    if (!token) {
+      recordPushState(user, { pushLastError: 'no_token' });
+      return { ok: false, reason: 'no_token' };
+    }
 
     // `pushLang` — server tomonda eslatma matnini to'g'ri tilda yozish uchun
     // (api/cron-reminder.js). Boshqa joyda foydalanuvchi tili saqlanmaydi.
@@ -123,14 +179,26 @@ export async function enablePush(user) {
     // FAQAT `true` yoziladi, hech qachon `false` ga qaytarilmaydi: TWA va
     // Chrome bitta origin'ni bo'lishadi va ko'pincha AYNI tokenni oladi —
     // shubha bo'lsa cheklovli tomonni tanlaymiz.
-    const patch = { fcmTokens: arrayUnion(token), pushLang };
+    // Muvaffaqiyat — oldingi xato izi tozalanadi (aks holda hisobda eski
+    // sabab qolib, kuzatuvni chalg'itardi).
+    const patch = {
+      fcmTokens: arrayUnion(token), pushLang,
+      pushPerm: 'granted', pushLastError: null, pushStateAt: new Date().toISOString(),
+    };
     if (isPlayBuild()) patch.pushIsPlay = true;
     await updateDoc(doc(db, 'users', user.uid), patch);
     localStorage.setItem('iqro_push_token', token);
+    try { localStorage.removeItem(`${STATE_CACHE_KEY}:${user.uid}`); } catch { /* ignore */ }
     return { ok: true, token };
   } catch (e) {
+    // `e.code` — SDK xatosining aniq nomi ('messaging/token-subscribe-failed',
+    // 'messaging/permission-blocked', ...). Chaqiruvchiga ham beriladi:
+    // sozlamalar sahifasi uni ekranda ko'rsatadi, ya'ni foydalanuvchi
+    // aytolmasa ham sabab ma'lum bo'ladi.
     console.error('enablePush error:', e);
-    return { ok: false, reason: 'error' };
+    const detail = String(e?.code || e?.message || 'unknown').slice(0, 120);
+    recordPushState(user, { pushLastError: detail });
+    return { ok: false, reason: 'error', detail };
   }
 }
 

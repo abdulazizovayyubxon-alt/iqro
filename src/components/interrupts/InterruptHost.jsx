@@ -23,6 +23,7 @@ import { Crown, RefreshCw, Flame, Bell, Smartphone } from 'lucide-react';
 
 import ActionSheet from '../shared/ActionSheet';
 import { AppContext } from '../../context/AppContext';
+import { ToastContext } from '../../context/ToastContext';
 import { useAuth } from '../../context/AuthContext';
 import { useAppUpdate } from '../../hooks/useAppUpdate';
 import { isPlayBuild } from '../../config';
@@ -92,6 +93,7 @@ export default function InterruptHost() {
   const location = useLocation();
   const { user } = useAuth();
   const { state } = useContext(AppContext);
+  const { showToast } = useContext(ToastContext);
   const { updateReady, applyUpdate, applying } = useAppUpdate();
 
   const [busy, setBusy] = useState(false);
@@ -202,7 +204,15 @@ export default function InterruptHost() {
         // Brauzer so'rovi AYNAN shu yerda — foydalanuvchi rozi bo'lgandan keyin.
         // Rad etsa ham qayta so'ramaymiz: ruxsat 'denied' bo'lib qoladi va
         // show() sharti o'zi yopiladi.
-        await enablePush(user);
+        //
+        // ⚠️ 2026-08-19: natija ilgari UMUMAN o'qilmasdi — yoqish yiqilsa
+        // oyna shunchaki yopilardi va foydalanuvchi ham, biz ham buni
+        // bilmasdik. Endi kamida xabar chiqadi (sabab `pushLastError`
+        // maydonida ham qoladi, services/push.js).
+        const res = await enablePush(user);
+        if (!res?.ok && res?.reason !== 'denied') {
+          showToast(t('settings.toasts.pushError') + (res?.detail ? ` (${res.detail})` : ''), 'error');
+        }
       },
     },
 
@@ -218,7 +228,7 @@ export default function InterruptHost() {
       run: async () => { await promptInstall(); },
     },
   ], [t, navigate, user, daysToExpiry, subLapsed, subExpiringSoon, updateReady, applyUpdate,
-      state?.dailyStreak, state?.dailyGoal, goalDoneToday, totalAnswered, installable]);
+      state?.dailyStreak, state?.dailyGoal, goalDoneToday, totalAnswered, installable, showToast]);
 
   // ── G'olibni tanlash ───────────────────────────────────────────────────────
 

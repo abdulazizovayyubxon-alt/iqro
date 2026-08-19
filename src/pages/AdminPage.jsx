@@ -463,6 +463,9 @@ const AdminPage = () => {
   const [metrics, setMetrics] = useState([]);
   const [metricsLoading, setMetricsLoading] = useState(false);
   const [metricsError, setMetricsError] = useState(null);
+  // `undefined` — hali o'qilmagan, `null` — hujjat YO'Q (cron hech qachon
+  // ishlamagan). Farq muhim: ikkinchisi nosozlik, birinchisi shunchaki kutish.
+  const [cronHealth, setCronHealth] = useState(undefined);
 
   // ── Referral statistika state ──
   const [allReferrals, setAllReferrals] = useState([]);
@@ -698,6 +701,16 @@ const AdminPage = () => {
       setMetricsError(e?.message || 'Yuklashda xatolik');
     } finally {
       setMetricsLoading(false);
+    }
+
+    // Cron izi — 1 ta o'qish. `metrics` bo'sh bo'lishining IKKI sababi bor
+    // (hali kun tugamagan / cron o'lik) va ularni faqat shu hujjat ajratadi.
+    try {
+      const hs = await getDoc(doc(db, 'meta', 'cronHealth'));
+      setCronHealth(hs.exists() ? hs.data() : null);
+    } catch (e) {
+      console.warn('cronHealth load error:', e);
+      setCronHealth(undefined);
     }
   };
 
@@ -3876,6 +3889,64 @@ try {
             </button>
           </div>
 
+          {/* ── Cron holati (2026-08-19) ────────────────────────────────────
+              NEGA: 11 ta hisob qisqa ID'siz qolgani aniqlanganda ma'lum
+              bo'ldiki, ularni to'ldirishi kerak bo'lgan kunlik cron BIRON
+              MARTA ishlamagan. Panel esa buni "hali ma'lumot yig'ilmagan,
+              ertaga paydo bo'ladi" deb ko'rsatib turardi — ya'ni o'lik
+              tizim odatiy kutishga o'xshardi. Endi holat AYTIB beriladi.
+              Manba: `meta/cronHealth` (api/_shared.js `cronHeartbeat`). */}
+          {(() => {
+            if (cronHealth === undefined) return null;   // o'qilmagan — jim turamiz
+            const d = cronHealth?.daily || null;
+            const started = d?.startedAt ? new Date(d.startedAt) : null;
+            const finished = d?.finishedAt ? new Date(d.finishedAt) : null;
+            const fmt = (x) => (x ? x.toLocaleString('uz-UZ') : '—');
+
+            if (!started) return (
+              <div className="admin-info-box admin-info-box--error">
+                <div className="admin-info-title"><AlertTriangle size={15} /> Kunlik cron ishlamayapti</div>
+                <div className="admin-info-text">
+                  <code>/api/cron-daily</code> hech qachon muvaffaqiyatli chaqirilmagan.
+                  Eng ehtimolli sabab — Vercel loyihasida <code>CRON_SECRET</code> env
+                  o'zgaruvchisi yo'q: usiz Vercel <code>Authorization</code> sarlavhasini
+                  qo'shmaydi va endpoint 401 qaytaradi.
+                  <br />
+                  Oqibati: muddati o'tgan Pro obunalar bekor qilinmaydi, ID'siz qolgan
+                  hisoblarga qisqa ID berilmaydi, kunlik ko'rsatkichlar va reyting
+                  yozilmaydi.
+                </div>
+              </div>
+            );
+
+            if (!finished || finished < started) return (
+              <div className="admin-info-box admin-info-box--warn">
+                <div className="admin-info-title"><AlertTriangle size={15} /> Cron yarim yo'lda uzilgan</div>
+                <div className="admin-info-text">
+                  Oxirgi yurish {fmt(started)} da boshlangan, lekin tugamagan —
+                  ehtimol 60 soniyalik funksiya limitiga urilgan. Ba'zi ishlar
+                  (ID to'ldirish, obuna muddati) bajarilmay qolgan bo'lishi mumkin.
+                </div>
+              </div>
+            );
+
+            const ageH = (Date.now() - started.getTime()) / 3600000;
+            if (ageH > 36) return (
+              <div className="admin-info-box admin-info-box--warn">
+                <div className="admin-info-title"><AlertTriangle size={15} /> Cron {Math.floor(ageH / 24)} kundan beri ishlamadi</div>
+                <div className="admin-info-text">Oxirgi muvaffaqiyatli yurish: {fmt(finished)}.</div>
+              </div>
+            );
+
+            return (
+              <div className="admin-info-text" style={{ color: 'var(--text3)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                <CheckCircle2 size={14} style={{ color: 'var(--green)' }} />
+                Kunlik cron: {fmt(finished)} · {d.errors ? `${d.errors} ta xato` : 'xatosiz'}
+                {d.shortIdsAssigned ? ` · ${d.shortIdsAssigned} ta ID to'ldirildi` : ''}
+              </div>
+            );
+          })()}
+
           {metricsError ? (
             <div className="admin-info-box admin-info-box--error">
               <div className="admin-info-title"><AlertCircle size={15} /> Faollik tarixini o'qib bo'lmadi</div>
@@ -3887,8 +3958,12 @@ try {
             <div className="admin-info-box">
               <div className="admin-info-title"><Info size={15} /> Hali ma'lumot yig'ilmagan</div>
               <div className="admin-info-text">
-                Birinchi yozuv ertaga soat 11:00 da (kunlik cron) paydo bo'ladi.
-                Har kun bitta qator qo'shiladi: jami, Pro, kunlik va haftalik faol foydalanuvchilar.
+                {/* ⚠️ Bu matn AVVAL shartsiz "ertaga paydo bo'ladi" derdi — cron
+                    umuman ishlamayotganda ham. Endi sabab yuqoridagi holat
+                    qutisida turadi, bu yerda faqat kutilayotgan holat. */}
+                Har kun bitta qator qo'shiladi: jami, Pro, kunlik va haftalik faol
+                foydalanuvchilar. Yozuvni kunlik cron (soat 11:00, Toshkent) qo'shadi —
+                uning holati yuqorida ko'rsatilgan.
               </div>
             </div>
           ) : (
@@ -3951,6 +4026,37 @@ try {
                               : '—'}
                           </div>
                           <div className="stat-box-lbl">O'rtacha chek, so'm</div>
+                        </div>
+                      </div>
+                    )}
+                    {/* ── Push kanali (2026-08-19) ────────────────────────
+                        NEGA: 357 hisobning hech birida token yo'q edi va buni
+                        ko'rsatadigan joy yo'q edi — eslatma tizimi jimgina
+                        o'lik turardi. Uch raqam sababni ajratadi:
+                        «so'ralmagan» ko'p → oyna chiqmayapti; «bloklangan»
+                        ko'p → ruxsat berilmayapti (Play ilovasida
+                        bildirishnoma delegatsiyasi yoqilmagan bo'lishi
+                        mumkin); «ruxsat bor, token yo'q» → getToken yiqilyapti
+                        (sabab `users/{uid}.pushLastError` da). */}
+                    {m.pushTokens != null && (
+                      <div className="admin-stats-grid" style={{ marginTop: 14 }}>
+                        <div className="stat-box">
+                          <div className="stat-box-val" style={{ color: m.pushTokens ? 'var(--green)' : 'var(--red)' }}>
+                            {m.pushTokens}
+                          </div>
+                          <div className="stat-box-lbl">Push tokeni bor</div>
+                        </div>
+                        <div className="stat-box">
+                          <div className="stat-box-val" style={{ color: 'var(--amber)' }}>{m.pushDenied ?? 0}</div>
+                          <div className="stat-box-lbl">Ruxsat bloklangan</div>
+                        </div>
+                        <div className="stat-box">
+                          <div className="stat-box-val" style={{ color: 'var(--text3)' }}>{m.pushUnasked ?? 0}</div>
+                          <div className="stat-box-lbl">Hali so'ralmagan</div>
+                        </div>
+                        <div className="stat-box">
+                          <div className="stat-box-val" style={{ color: 'var(--text3)' }}>{m.pushUnknown ?? 0}</div>
+                          <div className="stat-box-lbl">Holati noma'lum</div>
                         </div>
                       </div>
                     )}
@@ -4917,6 +5023,17 @@ try {
                     ['Maktab', userCard.schoolName || '—'],
                     ['Hamkor kodi', userCard.partnerCode || '—'],
                     ['Oxirgi tranzaksiya', userCard.premiumTransId || '—'],
+                    // ── Push tashxisi (2026-08-19) ──
+                    // «Nega bu odamga eslatma bormadi?» degan savolga javob
+                    // shu ikki qatorda: ruxsat holati + oxirgi xato kodi.
+                    ['Push holati', {
+                      granted: '✅ ruxsat berilgan', denied: '⛔ bloklangan',
+                      default: '⏳ so\'ralmagan',
+                    }[userCard.pushPerm] || '— (hali qayd etilmagan)'],
+                    ['Push tokeni', Array.isArray(userCard.fcmTokens) && userCard.fcmTokens.length
+                      ? `${userCard.fcmTokens.length} ta qurilma`
+                      : "Yo'q"],
+                    ['Push xatosi', userCard.pushLastError || '—'],
                   ].map(([k, v]) => (
                     <tr key={k}>
                       <th style={{ width: '45%' }}>{k}</th>

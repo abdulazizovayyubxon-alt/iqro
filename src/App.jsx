@@ -12,7 +12,7 @@ import { trackPageView, startPageTimer } from './services/analytics';
 import { setUser, clearUser, captureError } from './services/sentry';
 // `services/push` ning O'ZI yengil — `firebase/messaging` SDK'si u yerda
 // dinamik yuklanadi (AUDIT 2026-08-17, `services/push.js` sarlavhasiga qarang).
-import { enablePush, listenForegroundPush } from './services/push';
+import { enablePush, listenForegroundPush, recordPushState } from './services/push';
 import { applyThemeColor, enterSplash, exitSplash, SPLASH_BG } from './utils/statusBar';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from './firebase';
@@ -296,6 +296,16 @@ function App() {
   // yoqmagan foydalanuvchi ham har kirishda o'sha kodni yuklab olardi, hech
   // qanday xabar kelmasligiga qaramay. Ruxsat 'granted' bo'lmasa foreground
   // tinglovchisi ma'nosiz: xabar kelmaydi.
+  // ── Push holatini qayd etish (2026-08-19) ──
+  // Ruxsatdan QAT'I NAZAR ishlaydi va aynan shuning uchun bor: 357 hisobda
+  // token yo'qligi aniqlanganda, sabab «ruxsat bloklangan»mi yoki «oyna
+  // umuman chiqmayapti»mi — buni ayta oladigan ma'lumot yo'q edi. Yozuv
+  // faqat holat O'ZGARGANDA bo'ladi (services/push.js izohi).
+  useEffect(() => {
+    if (!user) return;
+    recordPushState(user);
+  }, [user]);
+
   useEffect(() => {
     if (!user) return;
     if (typeof window === 'undefined' || !('Notification' in window)) return;
