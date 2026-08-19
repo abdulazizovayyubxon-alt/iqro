@@ -1873,7 +1873,10 @@ const ExamPage = () => {
                   Oddiy oqimdagi qator (`exam-inline-nav`) mobilda CSS orqali
                   yashiriladi: u yerda ayni vazifani pastdagi qotirilgan panel
                   bajaradi, ikkalasi birga esa bitta ekranda ikkita «Keyingi»
-                  bo'lib chiqadi. Desktopda qator o'z joyida qoladi. */}
+                  bo'lib chiqadi. Desktopda qator o'z joyida qoladi.
+                  ⚠️ Bu qatorga inline `style` (ayniqsa `display`) QO'SHILMASIN —
+                  inline style tanlagichdan ustun turadi va yashirishni bekor
+                  qiladi. Maketi `index.css` dagi `.exam-inline-nav` da. */}
               {queuePos >= 0 ? (
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, marginTop: 24 }}>
                   <button
@@ -1903,7 +1906,7 @@ const ExamPage = () => {
                   )}
                 </div>
               ) : (
-                <div className="exam-inline-nav" style={{ display: 'flex', justifyContent: 'space-between', marginTop: 24 }}>
+                <div className="exam-inline-nav">
                   <button
                     className="btn btn-outline"
                     disabled={currentQ === 0}

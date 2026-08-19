@@ -1492,6 +1492,19 @@ body.exam-fullscreen .main-content { padding-bottom: 0 !important; }
    JSX'da ham bir xil ma'noni bildiradi. */
 .exam-mobile-bar { display: none; }
 
+/* Savol tanasi ichidagi «Orqaga/Keyingi» qatori.
+   ⚠️ Maketi AYNAN shu yerda turishi SHART — JSX'dagi inline style'da emas.
+   Avval qator JSX'da style={{ display: 'flex' }} bilan chizilardi, mobilda
+   yashirish esa quyidagi @media ichidagi qoida orqali qilingandi. Inline
+   style esa har qanday tanlagichdan ustun turadi (stylesheet'da !important
+   bo'lmasa), shuning uchun "yashirish" hech qachon kuchga kirmagan: qator
+   mobilda ham ko'rinaverib, bitta ekranda ikkita «Keyingi» qolgan edi. */
+.exam-inline-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
 @media (max-width: 900px) {
   /* Savol tanasi ichidagi «Orqaga/Keyingi» qatori mobilda YASHIRILADI —
      ayni vazifani pastdagi qotirilgan panel bajaradi. Ikkalasi birga
