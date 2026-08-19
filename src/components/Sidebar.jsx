@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 
 import { PWAContext } from '../context/PWAContext';
+import { dueCardCount } from '../engine/SmartQuestionEngine';
 
 const Sidebar = () => {
   const { t } = useTranslation();
@@ -108,7 +109,7 @@ const Sidebar = () => {
             <span className="nav-label">{t('sidebar.review')}</span>
             {(() => {
               const now = Date.now();
-              const due = (state.spacedCards || []).filter(c => c.nextReview <= now).length;
+              const due = dueCardCount(state.spacedCards, now);
               return due > 0 ? <span style={{ background: 'var(--red)', color: 'white', borderRadius: 10, padding: '1px 7px', fontSize: 'var(--fs-xs)', fontWeight: 700, marginLeft: 'auto' }}>{due}</span> : null;
             })()}
           </div>

@@ -57,10 +57,31 @@ const cyrb53 = (str) => {
 };
 
 /**
+ * Kalit hisoblashdan oldin matnni KANONIK shaklga keltiradi.
+ *
+ * ⚠️ AUDIT 2026-08-19 — bir savol IKKI xil matn shaklida uchraydi:
+ *   · bazadagi xom shakl:   "Konjunktiv II nima? (Savol kodi: #ab12)"
+ *   · ekranga chiqadigan:   "Konjunktiv II nima?"
+ * `TestPage` xatolar mashqida savol matnidan «Savol kodi» qo'shimchasini
+ * OLIB TASHLAYDI (u foydalanuvchiga kerak emas). Normallashtirishsiz bu ikki
+ * shakl TURLI kalit berardi, ya'ni xatolar mashqida to'g'ri javob berilgan
+ * savol o'zining xato yozuvi bilan mos kelmasdi va xato HECH QACHON
+ * yopilmasdi (T-3 hayot sikli jimgina ishlamay qolardi).
+ *
+ * MIGRATSIYA KERAK EMAS va progress yo'qolmaydi: kalit hamma joyda MATNDAN
+ * qayta hisoblanadi (kartada ham, xatoda ham matn saqlanadi), shuning uchun
+ * kalit satrining o'zgarishi hech qanday bog'lanishni uzmaydi.
+ */
+const canonicalText = (text) => (text || '')
+  .replace(/\s*\(\s*savol\s+kodi\s*:\s*#[a-z0-9_-]+\s*\)/gi, '')
+  .replace(/\s+/g, ' ')
+  .trim();
+
+/**
  * Savol yoki takrorlash kartochkasining barqaror identifikatori.
  * Kirish sifatida ikkalasi ham bo'ladi — ikkalasida ham matn `.q` maydonida.
  */
-export const questionKey = (item) => 'h' + cyrb53((item?.q || '').trim());
+export const questionKey = (item) => 'h' + cyrb53(canonicalText(item?.q));
 
 /**
  * Eski (100 belgilik) identifikator — faqat `customMnemonics` uchun qoldi.
@@ -71,42 +92,86 @@ export const questionKey = (item) => 'h' + cyrb53((item?.q || '').trim());
  */
 export const legacyQHash = (item) => (item?.q || '').substring(0, 100);
 
-// ─── EBBINGHAUS CONSTANTS ───
-// Base interval (daqiqada) - 10 daqiqa
-const BASE_INTERVAL_MIN = 10;
-// Multiplikator — har level da interval shu koeffitsientga ko'payadi
-const INTERVAL_MULTIPLIER = 2.5;
-// Maksimal level (7 ta o'tgandan so'ng savol "o'rganilgan" hisoblanadi)
-const MAX_LEVEL = 7;
+// ─── TAKRORLASH ORALIQLARI ───
+//
+// ⚠️ AUDIT 2026-08-19, T-5 BAND — oraliqlar DAQIQADAN KUNGA o'tkazildi.
+//
+//   Avval formula `10 daq × 2.5^level` edi, `MAX_LEVEL = 7` bilan:
+//       10 × 2.5^7 = 6 104 daqiqa ≈ 4.24 KUN
+//   Ya'ni 7 marta ketma-ket to'g'ri javob berilgan, mukammal o'zlashtirilgan
+//   savol ham har 4 kunda qaytib kelardi, boshlang'ich oraliq esa 10 daqiqa —
+//   ko'pincha AYNI SESSIYA ichida takrorlanish (massed practice, spaced emas).
+//
+//   Attestatsiyaga 2–3 oy tayyorlanadigan foydalanuvchida bu navbatni
+//   allaqachon bilinadigan material bilan to'ldirardi va yangi material uchun
+//   joy qolmasdi — SRS tizimini o'ldiruvchi klassik xato.
+//
+//   Endi oraliqlar aniq zinapoyada (SM-2 ning amaliy jadvaliga yaqin).
+//   Formula emas, jadval: har bosqichni alohida sozlash mumkin va
+//   «4 kun» kabi kutilmagan chegara qayta paydo bo'lmaydi.
+const REVIEW_LADDER_MIN = [
+  10,       // 0 — xato: ayni sessiyada qayta ko'rish
+  1440,     // 1 — 1 kun
+  4320,     // 2 — 3 kun
+  10080,    // 3 — 7 kun
+  23040,    // 4 — 16 kun
+  50400,    // 5 — 35 kun
+  108000,   // 6 — 75 kun
+  216000,   // 7 — 150 kun → "o'zlashtirilgan"
+];
+export const MAX_LEVEL = REVIEW_LADDER_MIN.length - 1;
 // Qiyinlik koeffitsienti — qanchalik ko'p xato → interval qanchalik qisqa
 const DIFFICULTY_PENALTY = 0.85; // har bir difficulty level uchun 15% qisqaradi
+// Interval «chayqatish» (±10%). Bunsiz bir kunda o'rganilgan 50 ta karta
+// aynan bir kunda BIRGA qaytadi va «og'ir kunlar» hosil bo'ladi.
+const FUZZ = 0.1;
+
+// Takrorlash imtihondan kamida shuncha oldin tugashi kerak.
+export const EXAM_REVIEW_MARGIN_MS = 3 * 24 * 60 * 60 * 1000; // 3 kun
 
 /**
- * Ebbinghaus formulasi bo'yicha keyingi takrorlash vaqtini hisoblaydi
+ * Takrorlash muddatini imtihon sanasiga siqadi.
  *
- * @param {number} level - Joriy o'rganish darajasi (0-7)
- * @param {number} difficulty - Qiyinlik koeffitsienti (1-5, ko'p xato = yuqori)
- * @returns {number} Keyingi takrorlash vaqti (millisekund)
+ * NEGA: 150 kunlik oraliq imtihonga 20 kun qolganda ma'nosiz — karta
+ * imtihondan KEYIN qaytadi. Siqishdan keyin har bir karta imtihongacha
+ * kamida bir marta qaytadi. Bu attestatsiya platformasi uchun asosiy
+ * farqlovchi xususiyat.
  *
- * Intervallar (difficulty=1 uchun):
- *   Level 0: 10 min
- *   Level 1: 25 min
- *   Level 2: ~1 soat
- *   Level 3: ~2.5 soat
- *   Level 4: ~6.5 soat
- *   Level 5: ~16 soat
- *   Level 6: ~1.7 kun
- *   Level 7: ~4.3 kun
+ * @param {number} nextReviewMs  Hisoblangan muddat (epoch ms)
+ * @param {number|null} examAtMs Imtihon sanasi (epoch ms) yoki null
+ * @param {number} now
  */
-export const calculateNextReview = (level, difficulty = 1) => {
-  const clampedLevel = Math.min(level, MAX_LEVEL);
+export const clampReviewToExam = (nextReviewMs, examAtMs, now = Date.now()) => {
+  if (!examAtMs) return nextReviewMs;
+  const cutoff = examAtMs - EXAM_REVIEW_MARGIN_MS;
+  // Imtihon juda yaqin (yoki o'tgan) — siqishning ma'nosi yo'q, aks holda
+  // hamma karta bir vaqtda «muddati kelgan» bo'lib navbatni bosib ketardi.
+  if (cutoff <= now) return nextReviewMs;
+  return Math.min(nextReviewMs, cutoff);
+};
+
+/**
+ * Keyingi takrorlash oralig'ini hisoblaydi.
+ *
+ * @param {number} level - Joriy o'rganish darajasi (0..MAX_LEVEL)
+ * @param {number} difficulty - Qiyinlik koeffitsienti (1-5, ko'p xato = yuqori)
+ * @param {object} [opts]
+ * @param {boolean} [opts.fuzz=true] - ±10% tasodifiy tarqatish (testda o'chiriladi)
+ * @param {Function} [opts.rand=Math.random]
+ * @returns {number} Oraliq (millisekund)
+ */
+export const calculateNextReview = (level, difficulty = 1, { fuzz = true, rand = Math.random } = {}) => {
+  const clampedLevel = Math.max(0, Math.min(level, MAX_LEVEL));
   const clampedDifficulty = Math.max(1, Math.min(difficulty, 5));
 
-  // Interval (daqiqada): base * (multiplier ^ level) * (penalty ^ (difficulty - 1))
-  const intervalMinutes =
-    BASE_INTERVAL_MIN *
-    Math.pow(INTERVAL_MULTIPLIER, clampedLevel) *
+  let intervalMinutes =
+    REVIEW_LADDER_MIN[clampedLevel] *
     Math.pow(DIFFICULTY_PENALTY, clampedDifficulty - 1);
+
+  // Level 0 (xato) chayqatilmaydi — u ataylab qat'iy «10 daqiqadan keyin».
+  if (fuzz && clampedLevel > 0) {
+    intervalMinutes *= 1 + (rand() * 2 - 1) * FUZZ;
+  }
 
   return Math.round(intervalMinutes * 60 * 1000); // ms ga o'tkazish
 };
@@ -116,11 +181,12 @@ export const calculateNextReview = (level, difficulty = 1) => {
  *
  * @param {object} card - Mavjud kartochka
  * @param {boolean} wasCorrect - Javob to'g'rimi?
+ * @param {object} [opts]
+ * @param {number|null} [opts.examAtMs] - Imtihon sanasi (oraliqni siqish uchun)
+ * @param {number} [opts.now]
  * @returns {object} Yangilangan kartochka
  */
-export const updateSpacedCard = (card, wasCorrect) => {
-  const now = Date.now();
-
+export const updateSpacedCard = (card, wasCorrect, { examAtMs = null, now = Date.now() } = {}) => {
   if (wasCorrect) {
     const newLevel = Math.min((card.level || 0) + 1, MAX_LEVEL);
     const newCorrectStreak = (card.correctStreak || 0) + 1;
@@ -135,7 +201,7 @@ export const updateSpacedCard = (card, wasCorrect) => {
       correctStreak: newCorrectStreak,
       difficulty: newDifficulty,
       lastReview: now,
-      nextReview: now + calculateNextReview(newLevel, newDifficulty),
+      nextReview: clampReviewToExam(now + calculateNextReview(newLevel, newDifficulty), examAtMs, now),
       lastResult: 'correct'
     };
   } else {
@@ -379,18 +445,179 @@ export const smartSort = (allQuestions, options = {}) => {
 export const FAST_ANSWER_SEC = 4;
 
 /**
- * Saqlanadigan takrorlash kartalarining maksimal soni.
- * `userStats` hujjati cheksiz o'smasligi uchun chegara (o'lchov: 200 karta ≈ 210 KB,
- * chunki karta savolning to'liq nusxasini saqlaydi — audit 2026-08-06, T-6).
- * AppContext.mergeCloudAndLocal ham AYNAN shu chegarani qo'llaydi.
+ * «Vaqt tugadi» belgisi (`answers[i] === TIMED_OUT`).
+ *
+ * ⚠️ AUDIT 2026-08-19, T-10 BAND — ilgari bu qiymat oddiy javob sifatida
+ * o'tardi: `-1 !== q.correct` → XATO deb sanalardi. Ya'ni mashq rejimida
+ * sukut bo'yicha yoqilgan 60 soniyalik taymer, foydalanuvchi savolni o'qib
+ * ulgurmasa, uning o'rniga xato «yozib qo'yardi».
+ *
+ * Oqibati faqat bitta savol bilan cheklanmasdi — yolg'on xato butun zanjirni
+ * ifloslantirardi: `newMistakes` → `spacedCards` level 0 → `topicStats.correct`
+ * pasayishi → `DiagnosticsEngine` bo'limni «zaif» deb belgilashi →
+ * `AnalysisPage` foydalanuvchini NOTO'G'RI mavzuga yo'naltirishi.
+ *
+ * Endi vaqt tugashi statistikaga UMUMAN kirmaydi: u javob emas, javob
+ * BERILMAGANLIK. Foydalanuvchi to'g'ri javobni va izohni baribir ko'radi.
  */
-export const MAX_SPACED_CARDS = 200;
+export const TIMED_OUT = -1;
+
+// ════════════════════════════════════════════════════════════════════════════
+//  KARTALAR CHEGARASI — «og'ir» va «yengil» kartalar
+// ════════════════════════════════════════════════════════════════════════════
+//
+// ⚠️ AUDIT 2026-08-19, T-4 BAND — tizimning eng jimgina nosozligi shu yerda edi.
+//
+//   Chegara 200 ta karta edi VA karta HAR javob berilgan savol uchun
+//   yaratilardi — to'g'ri javob ham. Hisob: 50 savollik 4 ta blok = 200 savol,
+//   ya'ni BIR KUNLIK jadal mashq butun takrorlash tarixini o'chirardi.
+//
+//   Undan ham yomoni — kesish `sort(lastReview).slice(-200)` edi: birinchi
+//   bo'lib eng UZOQ intervalli, hali muddati kelmagan YETUK kartalar qurbon
+//   bo'lardi. Ya'ni tizim aynan o'zining eng qimmatli qismini o'chirardi.
+//   Foydalanuvchi buni hech qachon ko'rmasdi: xatolik yo'q, jurnal yo'q.
+//
+//   Chegaraning ASL SABABI — karta savolning TO'LIQ nusxasini saqlashi
+//   (~1 KB). Shuning uchun endi ikki xil karta bor:
+//
+//     · OG'IR karta — ichida savol matni, variantlar, izoh. Faqat XATO
+//       qilingan savol uchun. SmartReviewPage uni to'g'ridan-to'g'ri render
+//       qiladi, shuning uchun tanasi kerak.
+//     · YENGIL karta — faqat `qHash + topicId + SRS metama'lumoti` (~130 bayt).
+//       To'g'ri javob berilgan savol uchun. Uning yagona vazifasi — savolni
+//       muddatidan oldin qayta ko'rsatmaslik (`smartSort` da `priority *= 0.2`).
+//       Render qilinmaydi, demak tanasi kerak emas.
+//
+//   Byudjet: 250 og'ir × ~1 KB + 550 yengil × ~130 bayt ≈ 320 KB.
+//   Firestore hujjat chegarasi 1 MB — xavfsiz zaxira bilan.
+export const MAX_SPACED_CARDS = 800;
+export const MAX_HEAVY_CARDS = 250;
+
+/** Karta render qilinadigan tanaga egami (savol matni bor). */
+export const isHeavyCard = (c) => !!(c && c.q);
+
+/**
+ * Takrorlash navbatiga HAQIQATAN tushadigan, muddati kelgan kartalar soni.
+ *
+ * YAGONA MANBA: BottomNav/Sidebar nishonchasi, Dashboard, DiagnosticsEngine va
+ * SmartReviewPage ayni raqamni ko'rsatishi shart. Ilgari har biri o'zi
+ * `filter(c => c.nextReview <= now)` qilardi — yengil kartalar paydo bo'lgach
+ * bu «12 ta takror» deb turib, ochilganda bo'sh ekran berardi.
+ */
+export const dueCardCount = (spacedCards = [], now = Date.now()) =>
+  spacedCards.filter(c => isHeavyCard(c) && (c.nextReview || 0) <= now).length;
+
+/** Og'ir kartadan tanani olib tashlaydi — SRS jadvali saqlanadi. */
+export const lightenCard = (c) => ({
+  qHash: c.qHash,
+  topicId: c.topicId,
+  level: c.level,
+  correctStreak: c.correctStreak,
+  difficulty: c.difficulty,
+  lastReview: c.lastReview,
+  nextReview: c.nextReview,
+  lastResult: c.lastResult,
+});
+
+/**
+ * Kartalar ro'yxatini chegaraga siqadi.
+ *
+ * Saqlash ustuvorligi (yuqoridan pastga):
+ *   1. PAST level — ya'ni yomon o'zlashtirilgan karta hech qachon o'chmaydi;
+ *   2. MUDDATI YAQIN — tez orada kerak bo'ladigani saqlanadi.
+ * Ya'ni o'chiriladigan birinchi nomzod — eng yaxshi o'zlashtirilgan, muddati
+ * eng uzoq karta. Bu eski xatti-harakatning aynan teskarisi.
+ *
+ * Og'ir kartalar chegarasidan oshgani O'CHIRILMAYDI, YENGILLASHTIRILADI:
+ * takrorlash jadvali saqlanib qoladi, faqat savol tanasi tashlanadi.
+ */
+export const pruneSpacedCards = (cards = [], { limit = MAX_SPACED_CARDS, heavyLimit = MAX_HEAVY_CARDS } = {}) => {
+  const byPriority = [...cards].sort((a, b) => {
+    const la = a.level ?? 0;
+    const lb = b.level ?? 0;
+    if (la !== lb) return la - lb;
+    return (a.nextReview || 0) - (b.nextReview || 0);
+  });
+
+  const kept = byPriority.slice(0, limit);
+
+  let heavySeen = 0;
+  return kept.map(c => {
+    if (!isHeavyCard(c)) return c;
+    heavySeen++;
+    return heavySeen <= heavyLimit ? c : lightenCard(c);
+  });
+};
+
+/**
+ * Bitta sessiyaning BO'LIMLAR KESIMI.
+ *
+ * ⚠️ AUDIT 2026-08-19, T-7 BAND — mashq natijasi ekranida (TestResults.jsx)
+ * mavzular kesimi UMUMAN yo'q edi: 50 ta savoldan keyin foydalanuvchi
+ * «34/50» ni ko'rardi va KEYIN NIMA QILISHNI BILMASDI. Bitta raqam harakatga
+ * aylanmaydi — bu natija ekranining asosiy vazifasi bajarilmagani edi.
+ *
+ * `minForPercent` — kichik namunadan yolg'on xulosa chiqmasligi uchun chegara.
+ * 2 ta savoldan 1 tasi to'g'ri bo'lsa «50%» deb ko'rsatish foydalanuvchini
+ * o'zi umuman bilmaydigan bo'limga yuborishi mumkin.
+ *
+ * @param {Array}  questions
+ * @param {object} answers   { [indeks]: tanlangan variant }
+ * @param {Array}  topics    TOPICS ro'yxati (nom/ikonka uchun)
+ * @returns {Array} Eng zaifdan boshlab tartiblangan kesim
+ */
+export const topicBreakdown = (questions = [], answers = {}, topics = TOPICS, { minForPercent = 5 } = {}) => {
+  const byTopic = new Map();
+
+  questions.forEach((q, i) => {
+    const tid = q?.topicId;
+    if (tid === undefined || tid === null || tid < 0) return;
+    const row = byTopic.get(tid) || { topicId: tid, total: 0, answered: 0, correct: 0 };
+    row.total += 1;
+    const selected = answers[i];
+    // Vaqt tugagan savol javob hisoblanmaydi (T-10) — u foizni buzmasligi kerak.
+    if (selected !== undefined && selected !== TIMED_OUT) {
+      row.answered += 1;
+      if (selected === q.correct) row.correct += 1;
+    }
+    byTopic.set(tid, row);
+  });
+
+  return Array.from(byTopic.values())
+    .map(row => {
+      const topic = topics.find(t => t.id === row.topicId);
+      const enough = row.answered >= minForPercent;
+      return {
+        ...row,
+        name: topic?.name || null,
+        icon: topic?.icon || null,
+        enough,
+        accuracy: row.answered > 0 ? Math.round((row.correct / row.answered) * 100) : null,
+      };
+    })
+    // Zaif bo'lim tepada. Ma'lumoti yetarli bo'lmagan bo'limlar oxirida —
+    // ular harakat uchun asos bo'la olmaydi.
+    .sort((a, b) => {
+      if (a.enough !== b.enough) return a.enough ? -1 : 1;
+      return (a.accuracy ?? 101) - (b.accuracy ?? 101);
+    });
+};
 
 /**
  * @param {object} questionTimes  { [savol indeksi]: soniya } — TestPage/ExamPage
  *   allaqachon yig'adi (questionTimesRef), ilgari faqat jami vaqt ishlatilardi.
+ * @param {object} [options]
+ * @param {number|null} [options.examAtMs] Imtihon sanasi — takrorlash oralig'i
+ *   undan oshib ketmasligi uchun (T-5).
  */
-export const summarizeTestResults = (questions, answers, spacedCards = [], topicId = -1, questionTimes = {}) => {
+export const summarizeTestResults = (
+  questions,
+  answers,
+  spacedCards = [],
+  topicId = -1,
+  questionTimes = {},
+  { examAtMs = null } = {}
+) => {
   // Kalit matndan qayta hisoblanadi — eski kartalar ham topiladi (T-7)
   const spacedMap = new Map();
   for (const card of spacedCards) {
@@ -408,6 +635,13 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
   let maxRunInSession = 0;
   let leadingRun = null;
   const newMistakes = [];
+  // ⚠️ AUDIT 2026-08-19, T-3 BAND — to'g'ri javob berilgan savollarning
+  // kalitlari. Ilgari xatolar ro'yxatidan chiqishning YAGONA yo'li qo'lda
+  // o'chirish edi: o'zlashtirilgan savol abadiy «xato» bo'lib qolardi va
+  // «xatolar ustida ishlash» mini-testining yarmini egallardi.
+  // Endi `AppContext` shu ro'yxat bo'yicha xatoni «yopish» (retire) qaroriga
+  // keladi — mistakeQueue.mergeMistakes ga qarang.
+  const correctedHashes = [];
   // ⚠️ ADMIN UX AUDIT 2026-08-18, A-1 BAND — savol darajasidagi javob jurnali.
   //
   // Shu paytgacha platformada "qaysi savolda ko'p xato qilinyapti?" degan
@@ -438,7 +672,8 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
   for (let i = 0; i < questions.length; i++) {
     const q = questions[i];
     const selected = answers[i];
-    if (selected === undefined) continue;
+    // Javob berilmagan YOKI vaqt tugagan savol hisobga olinmaydi (T-10).
+    if (selected === undefined || selected === TIMED_OUT) continue;
 
     const qHash = questionKey(q);
     const wasCorrect = selected === q.correct;
@@ -474,6 +709,7 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
       correctCount++;
       run++;
       if (run > maxRunInSession) maxRunInSession = run;
+      correctedHashes.push(qHash);
 
       // Spaced Repetition: to'g'ri javob → level ko'tariladi
       if (updatedCards.has(qHash)) {
@@ -484,26 +720,22 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
         if (originalCard && (originalCard.nextReview || 0) <= sessionNow) {
           dueReviewCorrectCount++;
         }
-        updatedCards.set(qHash, updateSpacedCard(updatedCards.get(qHash), true));
+        updatedCards.set(qHash, updateSpacedCard(updatedCards.get(qHash), true, { examAtMs, now: sessionNow }));
       } else {
         newCorrectCount++;
-        // Yangi to'g'ri javob — spacedCards ga qo'shamiz (level 1), 
-        // to'g'ri javob berilgan savollar darhol takrorlanmasligi uchun
-        const newCard = {
-          ...q,
+        // Yangi to'g'ri javob — YENGIL karta (T-4). Savol tanasi saqlanmaydi:
+        // uning yagona vazifasi savolni muddatidan oldin qayta ko'rsatmaslik,
+        // va u hech qachon render qilinmaydi.
+        updatedCards.set(qHash, {
           qHash,
-          q: q.q,
-          opts: q.opts || [],
-          correct: q.correct,
           topicId: q.topicId ?? topicId,
           level: 1,
           correctStreak: 1,
           difficulty: 1,
-          lastReview: Date.now(),
-          nextReview: Date.now() + calculateNextReview(1, 1),
+          lastReview: sessionNow,
+          nextReview: clampReviewToExam(sessionNow + calculateNextReview(1, 1), examAtMs, sessionNow),
           lastResult: 'correct'
-        };
-        updatedCards.set(qHash, newCard);
+        });
       }
     } else {
       wrongCount++;
@@ -511,21 +743,44 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
       run = 0;
 
       // Xato ma'lumotlarini yig'ish — mavzu har savolning O'Z topicId'sidan olinadi,
-      // aks holda aralash testda (topicId=-1) hamma xato "Aralash" bo'lib qolardi
+      // aks holda aralash testda (topicId=-1) hamma xato "Aralash" bo'lib qolardi.
+      //
+      // ⚠️ AUDIT 2026-08-19, T-2 BAND — bu yerda `explanation` SAQLANMAS EDI.
+      //    Oqibati: «xatolar ustida ishlash» rejimida savol qayta qurilganda
+      //    izoh o'rniga «To'g'ri javob: B» degan sun'iy matn qo'yilardi
+      //    (TestPage.jsx). Ya'ni eng qimmatli o'quv lahzasida — odam o'z
+      //    xatosini qayta ishlayotganda — platforma SABABNI tushuntirmasdi.
+      //    Bu regressiya edi: birinchi urinishda izoh KO'RSATILGAN, ikkinchisida
+      //    yo'q. Baza esa 100% izohli (chqbt: 2 596/2 596, mediana 226 belgi).
+      //
+      // `qHash` ham saqlanadi — xatolar navbati (T-3) matn emas, kalit bo'yicha
+      // birlashtiriladi.
       newMistakes.push({
+        qHash,
         topic: TOPICS.find(t => t.id === qTopicId)?.name || 'Aralash',
         topicId: qTopicId,
         question: q.q,
         correct: q.opts[q.correct],
-        opts: q.opts || []
+        opts: q.opts || [],
+        picked: selected,
+        explanation: q.explanation,
+        mnemonic: q.mnemonic,
+        source: q.source,
       });
 
       // Spaced Repetition: noto'g'ri javob
       if (updatedCards.has(qHash)) {
-        updatedCards.set(qHash, updateSpacedCard(updatedCards.get(qHash), false));
+        const prev = updatedCards.get(qHash);
+        // Kartaning tanasi yo'q bo'lsa (avval to'g'ri javob berilgan — yengil
+        // karta) uni OG'IRLASHTIRAMIZ: endi u takrorlash navbatida ko'rsatiladi,
+        // demak SmartReviewPage uchun savol matni kerak bo'ladi.
+        const base = isHeavyCard(prev)
+          ? prev
+          : { ...q, ...prev, qHash, q: q.q, opts: q.opts || [], correct: q.correct, topicId: q.topicId ?? topicId };
+        updatedCards.set(qHash, updateSpacedCard(base, false, { examAtMs, now: sessionNow }));
       } else {
-        // Yangi xato — kartochka yaratish
-        const newCard = {
+        // Yangi xato — OG'IR kartochka (savol tanasi bilan)
+        updatedCards.set(qHash, {
           ...q, // image, isHtml, explanation kabi xususiyatlarni yo'qotmaslik uchun
           qHash,
           q: q.q,
@@ -535,11 +790,10 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
           level: 0,
           correctStreak: 0,
           difficulty: 1,
-          lastReview: Date.now(),
-          nextReview: Date.now() + calculateNextReview(0, 1),
+          lastReview: sessionNow,
+          nextReview: sessionNow + calculateNextReview(0, 1),
           lastResult: 'wrong'
-        };
-        updatedCards.set(qHash, newCard);
+        });
       }
     }
   }
@@ -555,16 +809,15 @@ export const summarizeTestResults = (questions, answers, spacedCards = [], topic
     totalAnswered: correctCount + wrongCount,
     accuracy: questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0,
     newMistakes,
+    correctedHashes,
     answerLog,
     topicDeltas,
     maxRunInSession,
     leadingRun,
     trailingRun: run,
-    // Eng YANGI KO'RILGAN kartalar saqlanadi. Ilgari oddiy `.slice(-200)` edi —
-    // u Map'ning kiritilish tartibiga tayanardi, ya'ni bugun takrorlangan, lekin
-    // ancha oldin qo'shilgan karta ro'yxatdan tushib ketishi mumkin edi (T-6).
-    updatedSpacedCards: Array.from(updatedCards.values())
-      .sort((a, b) => (a.lastReview || 0) - (b.lastReview || 0))
-      .slice(-MAX_SPACED_CARDS)
+    // Kesish ustuvorlik bo'yicha: yomon o'zlashtirilgan va muddati yaqin
+    // kartalar saqlanadi, eng yaxshi o'zlashtirilgani birinchi bo'lib chiqadi
+    // (T-4). Ilgari `.sort(lastReview).slice(-200)` edi — teskarisi.
+    updatedSpacedCards: pruneSpacedCards(Array.from(updatedCards.values()))
   };
 };

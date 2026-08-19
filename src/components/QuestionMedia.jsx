@@ -10,7 +10,7 @@
  * ╚══════════════════════════════════════════════════════════════╝
  */
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import DOMPurify from 'dompurify';
 
@@ -354,6 +354,10 @@ function WideImageGrid({ src, cols = 6, perRow = 3 }) {
 export default function QuestionMedia({ question, style }) {
   const [imgError, setImgError] = useState(false);
   const [zoomed, setZoomed] = useState(false);
+
+  useEffect(() => {
+    setImgError(false);
+  }, [question?.image, question?.svg, question?.diagram]);
 
   // SVG tozalash har renderda takrorlanmasin (DOMPurify sezilarli ish bajaradi,
   // savol matni scroll paytida qayta render bo'ladi).

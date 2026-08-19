@@ -18,6 +18,7 @@ import StreakRiskCard from '../components/achievements/StreakRiskCard';
 import { streakRisk } from '../utils/streakRisk';
 import ReadinessCard from '../components/diagnostics/ReadinessCard';
 import ExamDateModal from '../components/ExamDateModal';
+import { dueCardCount } from '../engine/SmartQuestionEngine';
 import { computeDiagnostics, buildPace } from '../engine/DiagnosticsEngine';
 import { useTopicTotals } from '../hooks/useTopicTotals';
 import { useExamCountdown } from '../hooks/useExamDaysLeft';
@@ -196,7 +197,7 @@ const Dashboard = () => {
   const activeTopic = TOPICS.find(tp => tp.id === activeTopicId);
 
 
-  const dueCards = (state.spacedCards || []).filter(c => c.nextReview <= Date.now()).length;
+  const dueCards = dueCardCount(state.spacedCards);
 
   const getExamDurationMinutes = (category) => {
     switch (category) {

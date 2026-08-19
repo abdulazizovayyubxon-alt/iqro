@@ -57,7 +57,18 @@ export const CLICK_ENABLED = false;
 export const PAYMENT_TG_URL = SUPPORT_URL;
 
 export const BATCH_SIZE = 50; // Har bir blokdagi savollar soni
-export const MAX_MISTAKES_SAVED = 50; // Maksimal saqlanadigan xatolar soni
+
+// Maksimal saqlanadigan xatolar soni.
+//
+// ⚠️ AUDIT 2026-08-19, T-3 BAND — 50 dan 300 ga ko'tarildi.
+//   O'lchov: 60% aniqlik bilan ishlayotgan pedagog har 50 savollik blokda
+//   ~20 ta xato qiladi, ya'ni 50 lik chegara 2.5 ta blokdan keyin to'lardi.
+//   Undan keyin har yangi xato ENG ESKI (va shu sababli eng uzoq vaqt
+//   o'zlashtirilmagan) xatoni jimgina o'chirardi.
+//   Yozuv ~250 bayt → 300 ta ≈ 75 KB, `userStats` uchun xavfsiz.
+//   Chegara oshganda nima o'chishini `engine/mistakeQueue.pruneMistakes`
+//   hal qiladi: eng eskisi emas, allaqachon YOPILGAN va kam xato qilingani.
+export const MAX_MISTAKES_SAVED = 300;
 
 // ── Tugallanmagan imtihon sessiyasi (localforage) ──────────────────────────
 //

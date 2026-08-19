@@ -1238,7 +1238,12 @@ button {
   background: var(--red-bg);
   border-color: rgba(239, 68, 68, 0.3);
   color: var(--red);
-  animation: timerPulse 0.5s ease infinite alternate;
+  /* `infinite` emas (T-13): to'xtovsiz miltillash e'tiborni tortmaydi,
+     faqat bezovtalik qo'shadi. Bir marta ogohlantirib tinchiydi. */
+  animation: timerPulse 0.5s ease 6 alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+  .question-timer.timer-danger { animation: none; }
 }
 @keyframes timerPulse {
   from { opacity: 1; }
@@ -1318,29 +1323,36 @@ body.exam-fullscreen .main-content { padding-bottom: 0 !important; }
   gap: 10px;
 }
 
+/* ⚠️ AUDIT 2026-08-19, T-13 BAND — asosiy fon NEYTRAL.
+   Ilgari u doim yashil edi («hammasi joyida» degan doimiy signal), 10 daqiqada
+   sariqqa, 5 daqiqada qizilga o'tardi — ya'ni rang faqat VAQTNI bildirardi.
+   Endi rang SUR'AT holatini bildiradi va u komponent ichida (matn + belgi
+   rangi) beriladi; pill esa sokin fonda turadi. */
 .exam-timer {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
+  gap: 10px;
+  padding: 7px 14px;
   border-radius: 10px;
-  background: var(--green-bg);
-  border: 1px solid rgba(16,185,129,0.2);
-  color: var(--green);
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text2);
   font-size: var(--fs-base);
   font-weight: 600;
-  transition: all 0.3s;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
 }
-.exam-timer.timer-warning {
-  background: var(--amber-bg);
-  border-color: rgba(245,158,11,0.3);
-  color: var(--amber);
-}
+/* Oxirgi 5 daqiqa — yagona holat qachonki vaqtning o'zi asosiy xabar bo'ladi. */
 .exam-timer.timer-danger {
   background: var(--red-bg);
   border-color: rgba(239,68,68,0.3);
   color: var(--red);
-  animation: timerPulse 0.5s ease infinite alternate;
+  /* Pulsatsiya CHEGARALANGAN: ilgari `infinite` edi va oxirgi 5 daqiqa
+     davomida to'xtovsiz miltillardi — sof bezovtalik generatori. Endi u
+     e'tiborni bir marta tortadi va tinchiydi. */
+  animation: timerPulse 0.5s ease 6 alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+  .exam-timer.timer-danger { animation: none; }
 }
 
 .exam-content {

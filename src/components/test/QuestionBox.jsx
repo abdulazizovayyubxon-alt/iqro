@@ -5,7 +5,8 @@ import { useTranslation } from 'react-i18next';
 import SafeHtml from '../shared/SafeHtml';
 import QuestionMedia from '../QuestionMedia';
 import TimerPill from './TimerPill';
-import { questionKey } from '../../engine/SmartQuestionEngine';
+import { questionKey, TIMED_OUT } from '../../engine/SmartQuestionEngine';
+import { mistakeKey } from '../../engine/mistakeQueue';
 import { useAuth } from '../../context/AuthContext';
 
 /**
@@ -151,7 +152,7 @@ const QuestionBox = ({
             }}
           />
         )}
-        {answers[currentQ] === -1 && <div style={{ color: 'var(--red)', fontSize: 'var(--fs-md)', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '12px' }}>{t('test.timeUp')}</div>}
+        {answers[currentQ] === TIMED_OUT && <div style={{ color: 'var(--amber)', fontSize: 'var(--fs-md)', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '12px' }}>{t('test.timeUp')}</div>}
 
         {/* ── Aqlli Badglar (Takrorlash & Zaif Nuqta) ── */}
         {(() => {
@@ -159,7 +160,10 @@ const QuestionBox = ({
           // qayta hisoblanadi — eski yozuvlar bilan ham to'g'ri ishlaydi.
           const qKey = questionKey(questions[currentQ]);
           const isSpaced = (state.spacedCards || []).some(card => (card.q ? questionKey(card) : card.qHash) === qKey);
-          const isWeak = (state.stats?.[state.activeCategory]?.mistakes || []).some(m => questionKey({ q: m.question }) === qKey);
+          // Yopilgan (retired) xato endi «zaif nuqta» emas — u o'zlashtirilgan
+          // deb hisoblanadi va nazorat savoli sifatida qaytadi (T-3).
+          const isWeak = (state.stats?.[state.activeCategory]?.mistakes || [])
+            .some(m => !m.retiredAt && mistakeKey(m) === qKey);
           if (!isSpaced && !isWeak) return null;
           return (
             <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
@@ -297,8 +301,22 @@ const QuestionBox = ({
               }}>
                 {activeReviewTab === 'analysis' && (
                   <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '800', fontSize: 'var(--fs-base)', color: answers[currentQ] === questions[currentQ].correct ? 'var(--green)' : 'var(--red)', marginBottom: '12px' }}>
-                      <span>{answers[currentQ] === questions[currentQ].correct ? t('test.correct') : t('test.wrong')}</span>
+                    {/* Uch holat: to'g'ri / xato / VAQT TUGADI.
+                        Oxirgisi «xato» EMAS — u statistikaga ham kirmaydi
+                        (audit 2026-08-19, T-10), shuning uchun uni qizil
+                        «Xato» deb ko'rsatish foydalanuvchini chalg'itardi. */}
+                    <div style={{
+                      display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '800',
+                      fontSize: 'var(--fs-base)', marginBottom: '12px',
+                      color: answers[currentQ] === questions[currentQ].correct ? 'var(--green)'
+                        : answers[currentQ] === TIMED_OUT ? 'var(--amber)'
+                        : 'var(--red)',
+                    }}>
+                      <span>
+                        {answers[currentQ] === questions[currentQ].correct ? t('test.correct')
+                          : answers[currentQ] === TIMED_OUT ? t('test.timeUp')
+                          : t('test.wrong')}
+                      </span>
                     </div>
 
                     {answers[currentQ] !== questions[currentQ].correct && answers[currentQ] >= 0 && (

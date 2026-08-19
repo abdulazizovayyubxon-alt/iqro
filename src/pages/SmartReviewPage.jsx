@@ -8,7 +8,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, XCircle, Clock, ChevronRight, ArrowLeft, Zap, MessageCircle, Brain, Play } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
-import { updateSpacedCard } from '../engine/SmartQuestionEngine';
+import { updateSpacedCard, isHeavyCard } from '../engine/SmartQuestionEngine';
+import { examAtMs } from '../utils/examDate';
 import ObjectionModal from '../components/shared/ObjectionModal';
 import SafeHtml from '../components/shared/SafeHtml';
 import QuestionMedia from '../components/QuestionMedia';
@@ -24,7 +25,7 @@ const SmartReviewPage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const goBack = () => navigate('/test');
-  const { state, updateState, cloudSynced, saveCustomMnemonic } = useContext(AppContext);
+  const { state, updateState, cloudSynced, saveCustomMnemonic, recordMistakeOutcome } = useContext(AppContext);
   const { addObjection } = useContext(ObjectionContext);
   const { showToast } = useContext(ToastContext);
   const [cards, setCards] = useState([]);
@@ -73,6 +74,10 @@ const SmartReviewPage = () => {
 
     const dueCards = (state.spacedCards || [])
       .filter(c => validTopicIds.includes(c.topicId)) // FAKAT o'z fanini chiqarish
+      // ⚠️ T-4: «yengil» kartada savol tanasi yo'q (to'g'ri javob berilgan savol —
+      // uning vazifasi faqat muddatidan oldin qayta ko'rsatilmaslik). Uni bu
+      // yerda ko'rsatib bo'lmaydi, shuning uchun navbatga kiritilmaydi.
+      .filter(isHeavyCard)
       .filter(c => c.nextReview <= Date.now())
       .sort((a, b) => a.nextReview - b.nextReview)
       .slice(0, 20); // Bir sessiyada max 20 ta
@@ -118,11 +123,17 @@ const SmartReviewPage = () => {
     const card = cards[currentIdx];
     const isCorrect = optIdx === card.correct;
 
+    // ⚠️ T-3 (to'ldirish): javob xatolar navbatiga ham yoziladi — aks holda
+    // takrorlashni shu sahifada qiladigan foydalanuvchi xatoni HECH QACHON
+    // yopa olmasdi (xato faqat `batchCommitResults`, ya'ni test/imtihon
+    // yakunida yopilardi; bu sahifa esa uni umuman chaqirmaydi).
+    recordMistakeOutcome(card, isCorrect);
+
     // spacedCards ni yangilash
     const updatedCards = [...(state.spacedCards || [])];
     const cardIdx = updatedCards.findIndex(c => c.qHash === card.qHash);
     if (cardIdx >= 0) {
-      updatedCards[cardIdx] = updateSpacedCard(updatedCards[cardIdx], isCorrect);
+      updatedCards[cardIdx] = updateSpacedCard(updatedCards[cardIdx], isCorrect, { examAtMs: examAtMs() });
     }
 
     // Vaqti kelgan takrorga to'g'ri javob — 1 ball (bu navbatda faqat due kartalar bor).
@@ -179,7 +190,7 @@ const SmartReviewPage = () => {
     const updated = [...(state.spacedCards || [])];
     const idx = updated.findIndex(c => c.qHash === card.qHash);
     if (idx >= 0) {
-      updated[idx] = updateSpacedCard(updated[idx], known);
+      updated[idx] = updateSpacedCard(updated[idx], known, { examAtMs: examAtMs() });
       updateState({ spacedCards: updated });
     }
     setFcKnown(prev => ({ ...prev, [currentIdx]: known }));
@@ -305,8 +316,12 @@ const SmartReviewPage = () => {
       Array.isArray(t.category) ? t.category.includes(state.activeCategory) : t.category === state.activeCategory
     ).map(t => t.id);
 
-    const categorySpacedCards = (state.spacedCards || []).filter(c => validTopicIds.includes(c.topicId));
-    
+    // `isHeavyCard` — bashorat NAVBAT bilan bir xil to'plamdan hisoblanishi shart,
+    // aks holda «bugun 12 ta» deb turib, ochilganda bo'sh ekran chiqardi.
+    const categorySpacedCards = (state.spacedCards || [])
+      .filter(c => validTopicIds.includes(c.topicId))
+      .filter(isHeavyCard);
+
     const totalSpaced = categorySpacedCards.length;
     const nextReview = totalSpaced > 0
       ? Math.min(...categorySpacedCards.map(c => c.nextReview))

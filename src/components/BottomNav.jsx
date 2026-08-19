@@ -23,6 +23,7 @@ import {
   Home, PenTool, Brain, Trophy, GraduationCap
 } from 'lucide-react';
 import { prefersReducedMotion } from '../utils/motion';
+import { dueCardCount } from '../engine/SmartQuestionEngine';
 
 // Yon tablar — markaz Imtihon FAB uchun bo'sh qoladi
 const SIDE_TABS = [
@@ -43,7 +44,7 @@ export default function BottomNav() {
   const { t } = useTranslation();
   const { state, updateState } = useContext(AppContext);
 
-  const dueCount = (state.spacedCards || []).filter(c => c.nextReview <= Date.now()).length;
+  const dueCount = dueCardCount(state.spacedCards);
   const activeId = [...SIDE_TABS, EXAM].find(tab => location.pathname === tab.path)?.id || '';
 
   // Faol chiziq sakramasin: harakat kamaytirilgan bo'lsa darhol ko'chadi

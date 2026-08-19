@@ -2,7 +2,9 @@ import React, { createContext, useState, useEffect, useContext, useRef, useCallb
 import localforage from 'localforage';
 import { MAX_MISTAKES_SAVED, EXAM_GOAL_SCORE, BATCH_SIZE } from '../config';
 import { computeDiagnostics, avgSecondsPerQuestion } from '../engine/DiagnosticsEngine';
-import { MAX_SPACED_CARDS, questionKey } from '../engine/SmartQuestionEngine';
+import { questionKey, pruneSpacedCards } from '../engine/SmartQuestionEngine';
+import { mergeMistakes, mistakeKey, pruneMistakes } from '../engine/mistakeQueue';
+import { TOPICS } from '../data/mockData';
 import { readContract, questionsForMinutes } from '../services/studyContract';
 import { mergePartnerSets } from '../utils/mergeRules';
 import { db } from '../firebase';
@@ -243,15 +245,30 @@ const mergeCloudAndLocal = (cloud, local) => {
   catIds.forEach(cat => {
     const c = (cloud.stats || {})[cat] || buildDefaultCatStats();
     const l = (local.stats || {})[cat] || buildDefaultCatStats();
-    // Xatolar savol matni bo'yicha union qilinadi
-    const seen = new Set();
-    const mistakes = [...(c.mistakes || []), ...(l.mistakes || [])].filter(m => {
-      const key = m?.question || '';
-      if (!key || seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    });
-    while (mistakes.length > MAX_MISTAKES_SAVED) mistakes.shift();
+    // Xatolar `qHash` bo'yicha union qilinadi (audit 2026-08-19, T-3).
+    // Ilgari kalit XOM SAVOL MATNI edi: yangi yozuvlar `qHash` bilan keladi,
+    // eskilarida esa faqat matn bor — `mistakeKey` ikkalasini ham bir xil
+    // kalitga keltiradi, shuning uchun migratsiya kerak emas.
+    // Ziddiyatda ko'proq ma'lumotli (izohli, ko'p xatoli) nusxa g'olib.
+    const byKey = new Map();
+    for (const m of [...(c.mistakes || []), ...(l.mistakes || [])]) {
+      const key = mistakeKey(m);
+      if (!key) continue;
+      const prev = byKey.get(key);
+      if (!prev) { byKey.set(key, { ...m, qHash: key }); continue; }
+      byKey.set(key, {
+        ...prev,
+        ...m,
+        qHash: key,
+        // Izoh bir nusxada bo'lsa — u saqlanadi (T-2 dan oldingi yozuvlarda yo'q)
+        explanation: m.explanation || prev.explanation,
+        wrongCount: Math.max(prev.wrongCount || 1, m.wrongCount || 1),
+        lastWrongAt: Math.max(prev.lastWrongAt || 0, m.lastWrongAt || 0) || undefined,
+        // Bir qurilmada yopilib, boshqasida qayta xato bo'lsa — OCHIQ qoladi
+        retiredAt: (prev.retiredAt && m.retiredAt) ? Math.max(prev.retiredAt, m.retiredAt) : undefined,
+      });
+    }
+    const mistakes = pruneMistakes(Array.from(byKey.values()), MAX_MISTAKES_SAVED);
     merged.stats[cat] = {
       ...c,
       totalAnswered: Math.max(c.totalAnswered || 0, l.totalAnswered || 0),
@@ -307,23 +324,28 @@ const mergeCloudAndLocal = (cloud, local) => {
   // olingan takrorlash (SRS) progressi jimgina yo'qolardi — nomuvofiq xatti-harakat.
   //
   // Kartalar qHash bo'yicha union qilinadi, ziddiyatda OXIRGI KO'RILGANI g'olib
-  // (`lastReview` kattaroq) — bu SRS uchun to'g'ri semantika. Ro'yxat eng yangi
-  // ko'rilgan MAX_SPACED_CARDS ta karta bilan cheklanadi (SmartQuestionEngine
-  // bilan bir xil chegara); ilgari kesish kiritilish tartibida bo'lib, bugun
-  // takrorlangan eski karta tushib qolishi mumkin edi.
+  // (`lastReview` kattaroq) — bu SRS uchun to'g'ri semantika.
   // Kalit matndan qayta hisoblanadi (T-7): bulutdagi karta eski 100-belgilik
   // kalitda, lokali esa yangi xeshda bo'lsa ham, ular BITTA karta deb tanilishi
   // va ikkiga bo'linib ketmasligi kerak.
+  //
+  // ⚠️ AUDIT 2026-08-19, T-4 BAND — kesish `sort(lastReview).slice(-200)` edi,
+  // ya'ni birinchi bo'lib eng UZOQ intervalli, YETUK kartalar o'chirilardi.
+  // Endi kesish `pruneSpacedCards` da: yomon o'zlashtirilgan va muddati yaqin
+  // kartalar saqlanadi (SmartQuestionEngine bilan bir xil qoida).
   const cardByHash = new Map();
   for (const c of [...(cloud.spacedCards || []), ...(local.spacedCards || [])]) {
     const key = c?.q ? questionKey(c) : c?.qHash;
     if (!key) continue;
     const prev = cardByHash.get(key);
-    if (!prev || (c.lastReview || 0) >= (prev.lastReview || 0)) cardByHash.set(key, c);
+    if (!prev) { cardByHash.set(key, c); continue; }
+    // Yangirog'i g'olib, LEKIN savol tanasi yo'qolmasin: bir qurilmada karta
+    // yengillashgan bo'lishi mumkin, boshqasida tanasi hali bor.
+    const winner = (c.lastReview || 0) >= (prev.lastReview || 0) ? c : prev;
+    const other = winner === c ? prev : c;
+    cardByHash.set(key, winner.q ? winner : (other.q ? { ...other, ...winner } : winner));
   }
-  merged.spacedCards = [...cardByHash.values()]
-    .sort((a, b) => (a.lastReview || 0) - (b.lastReview || 0))
-    .slice(-MAX_SPACED_CARDS);
+  merged.spacedCards = pruneSpacedCards([...cardByHash.values()]);
 
   // Mnemonika — matn, vaqt belgisi yo'q. Shuning uchun ziddiyatda BULUT g'olib
   // (umumiy manba), lokalda bor-u bulutda yo'q kalitlar esa saqlanadi. Bu yo'l
@@ -845,9 +867,19 @@ export const AppProvider = ({ children }) => {
         };
       }
 
-      // Xatolarni birlashtirish
-      const newMistakes = [...catStats.mistakes, ...results.newMistakes];
-      while (newMistakes.length > MAX_MISTAKES_SAVED) newMistakes.shift();
+      // Xatolarni birlashtirish — `qHash` bo'yicha, hayot sikli bilan.
+      //
+      // ⚠️ AUDIT 2026-08-19, T-3 BAND — ilgari bu shunchaki qo'shish edi:
+      //      [...catStats.mistakes, ...results.newMistakes]  +  shift()
+      //    Dedup yo'q, to'g'ri javob xatoni o'chirmasdi, chegara oshsa esa
+      //    ENG ESKI (demak eng uzoq o'zlashtirilmagan) xato yo'q qilinardi.
+      //    Endi qoida `engine/mistakeQueue.js` da — sof funksiya, testi bilan.
+      const newMistakes = mergeMistakes(
+        catStats.mistakes,
+        results.newMistakes,
+        results.correctedHashes,
+        { limit: MAX_MISTAKES_SAVED }
+      );
 
       // Kunlik maqsad
       const today = new Date().toDateString();
@@ -1289,11 +1321,15 @@ export const AppProvider = ({ children }) => {
   }, [user, showToast]);
 
   // ─── Xatolarni o'chirish va tozalash ───
-  const deleteMistake = useCallback((questionText) => {
+  // Xato yozuvi yoki uning savol matni bilan chaqirish mumkin. Kalit bo'yicha
+  // solishtiriladi — `qHash` li yangi yozuv ham, faqat matnli eskisi ham topiladi.
+  const deleteMistake = useCallback((target) => {
+    const key = typeof target === 'string' ? mistakeKey({ question: target }) : mistakeKey(target);
+    if (!key) return;
     setState(prev => {
       const cat = prev.activeCategory;
       const catStats = prev.stats[cat] || buildDefaultCatStats();
-      const newMistakes = catStats.mistakes.filter(m => m.question !== questionText);
+      const newMistakes = catStats.mistakes.filter(m => mistakeKey(m) !== key);
       return {
         ...prev,
         stats: {
@@ -1324,6 +1360,65 @@ export const AppProvider = ({ children }) => {
     });
   }, []);
 
+  /**
+   * Bitta javobning xatolar navbatiga ta'sirini yozadi.
+   *
+   * ⚠️ AUDIT 2026-08-19, T-3 BAND (to'ldirish) — xatolar hayot sikli faqat
+   * `batchCommitResults` orqali, ya'ni FAQAT test/imtihon yakunida ishlardi.
+   * `SmartReviewPage` (takror navbati) esa javoblarni to'g'ridan-to'g'ri
+   * `updateState({ spacedCards })` bilan yozadi — u yerdan o'tgan javoblar
+   * xatolar navbatiga UMUMAN ta'sir qilmasdi.
+   *
+   * Oqibati: takrorlashni asosan «Takror» sahifasida qiladigan foydalanuvchi
+   * xatoni hech qachon YOPA OLMASDI. U savolni o'nlab marta to'g'ri ishlab
+   * ham, xatolar daftarida u abadiy «ochiq» bo'lib turaverardi — ya'ni T-3
+   * ning butun mazmuni shu foydalanuvchi uchun ishlamasdi.
+   *
+   * `wasCorrect === false` bo'lsa yozuv qayta ochiladi va `wrongCount` oshadi —
+   * takrorda yana adashish xatoning hali yopilmaganini bildiradi.
+   *
+   * DIQQAT: bu funksiya FAQAT haqiqiy javob uchun (variant tanlash).
+   * Flashcard'dagi «Bilaman/Bilmayman» — o'z-o'zini baholash, u ball ham
+   * bermaydi; unga qarab xatoni yopish farmga ochiq bo'lardi.
+   */
+  const recordMistakeOutcome = useCallback((question, wasCorrect) => {
+    const key = question?.qHash || questionKey(question);
+    if (!key) return;
+
+    setState(prev => {
+      const cat = prev.activeCategory;
+      const catStats = prev.stats[cat] || buildDefaultCatStats();
+      const existing = catStats.mistakes || [];
+
+      // To'g'ri javob: faqat MAVJUD xato yozuvi bo'lsa ma'noga ega.
+      // Yangi xato: yozuv yo'q bo'lsa yaratiladi (takrorda birinchi marta adashish).
+      if (wasCorrect && !existing.some(m => mistakeKey(m) === key)) return prev;
+
+      const incoming = wasCorrect ? [] : [{
+        qHash: key,
+        topic: TOPICS.find(tp => tp.id === question.topicId)?.name || 'Aralash',
+        topicId: question.topicId,
+        question: question.q,
+        correct: question.opts?.[question.correct],
+        opts: question.opts || [],
+        explanation: question.explanation,
+        mnemonic: question.mnemonic,
+        source: question.source,
+      }];
+
+      return {
+        ...prev,
+        stats: {
+          ...prev.stats,
+          [cat]: {
+            ...catStats,
+            mistakes: mergeMistakes(existing, incoming, wasCorrect ? [key] : [], { limit: MAX_MISTAKES_SAVED }),
+          },
+        },
+      };
+    });
+  }, []);
+
   // ⚠️ AUDIT 2026-08-06, T-17 BAND — context qiymati har renderda YANGI obyekt
   // sifatida yasalardi. `useMemo` bilan u endi faqat haqiqiy bog'liqlik
   // o'zgarganda yangilanadi (masalan AuthContext'dan `user` obyekti yangilanib,
@@ -1342,9 +1437,10 @@ export const AppProvider = ({ children }) => {
     resetStats,
     deleteMistake,
     clearMistakes,
+    recordMistakeOutcome,
     saveCustomMnemonic,
     cloudSynced
-  }), [state, updateState, batchCommitResults, completeDailyPlan, resetStats, deleteMistake, clearMistakes, saveCustomMnemonic, cloudSynced]);
+  }), [state, updateState, batchCommitResults, completeDailyPlan, resetStats, deleteMistake, clearMistakes, recordMistakeOutcome, saveCustomMnemonic, cloudSynced]);
 
   return (
     <AppContext.Provider value={contextValue}>

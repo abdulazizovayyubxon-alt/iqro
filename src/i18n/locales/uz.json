@@ -284,7 +284,8 @@
     "exitTitle": "Testdan chiqish",
     "exitText": "Testdan chiqmoqchimisiz? Joriy bo'lim javoblari saqlanmaydi.",
     "continueBtn": "Davom etish",
-    "exit": "Chiqish"
+    "exit": "Chiqish",
+    "navAnswered": "{{answered}}/{{total}} javob berildi"
   },
   "results": {
     "reportEyebrow": "Yakuniy hisobot",
@@ -299,7 +300,12 @@
     "shareResult": "Natijani ulashing",
     "planNext": "Bugungi reja · {{done}}/{{total}}",
     "rewardPoints": "Daraja mukofoti: +{{points}} ball",
-    "rewardBoth": "Daraja mukofoti: +{{points}} ball va {{count}} ta muzlatish zaxirasi"
+    "rewardBoth": "Daraja mukofoti: +{{points}} ball va {{count}} ta muzlatish zaxirasi",
+    "breakdownTitle": "Bo'limlar kesimi",
+    "breakdownLead": "Bu blokdan eng ko'p ball «{{topic}}» bo'limida yo'qoldi.",
+    "notEnoughData": "Ma'lumot yetarli emas — bu bo'limdan kam savol tushdi",
+    "practiceThisTopic": "Shu bo'limni mashq qilish",
+    "workOnMistakesCount": "Xatolar ustida ishlash ({{count}} ta)"
   },
   "selector": {
     "subject": "Fan",
@@ -403,7 +409,21 @@
     "confirmText": "Rostdan ham imtihonni yakunlamoqchimisiz? Barcha belgilangan javoblar saqlanadi.",
     "no": "Yo'q",
     "yesFinish": "Ha, yakunlash",
-    "toastAutoFinished": "Vaqt tugagani uchun imtihon avtomatik yakunlandi"
+    "toastAutoFinished": "Vaqt tugagani uchun imtihon avtomatik yakunlandi",
+    "rulePace": "Har savolga o'rtacha {{min}} daq {{sec}} son vaqt to'g'ri keladi",
+    "rulePass": "O'tish bo'sag'asi — {{n}}%",
+    "ruleNoMinus": "Xato javob uchun ball AYIRILMAYDI — ishonchingiz komil bo'lmasa ham belgilang",
+    "ruleSkipped": "Tashlab ketilgan savol xato kabi hisoblanadi",
+    "ruleAutoFinish": "Vaqt tugaganda imtihon avtomatik yakunlanadi",
+    "ruleNavigate": "Istalgan savolga qaytishingiz va shubhalisini bayroq bilan belgilashingiz mumkin",
+    "ruleResume": "Ilovadan chiqib ketsangiz imtihon saqlanadi va o'sha joydan davom etadi",
+    "weakLoss": "Bu bo'limda {{count}} ball yo'qotildi",
+    "weakShowAll": "Yana {{count}} ta bo'limni ko'rsatish",
+    "reviewMissed": "Xatolarimni ko'rib chiqish ({{count}} ta)",
+    "nextMistake": "Keyingi xato",
+    "paceAhead": "{{count}} savol oldindasiz",
+    "paceBehind": "{{count}} savol orqadasiz",
+    "paceOnTrack": "Jadval bo'yicha ketyapsiz"
   },
   "review": {
     "toastLoadError": "Savollarni yuklashda xatolik",
@@ -773,7 +793,18 @@
     "clearConfirmTitle": "Barcha xatolarni o'chirish",
     "clearConfirmText": "Ro'yxatdagi barcha xato savollar o'chiriladi. Bu amalni orqaga qaytarib bo'lmaydi.",
     "clearConfirmBtn": "Ha, tozalash",
-    "toastCleared": "Barcha xatolar tozalandi!"
+    "toastCleared": "Barcha xatolar tozalandi!",
+    "openErrors": "Ochiq xatolar",
+    "closedCount": "{{count}} ta yopilgan",
+    "leechCount": "{{count}} ta tirishqoq",
+    "statusOpen": "Ochiq ({{count}})",
+    "statusLeech": "Tirishqoq ({{count}})",
+    "statusClosed": "Yopilgan ({{count}})",
+    "badgeClosed": "Yopilgan",
+    "badgeLeech": "Tirishqoq",
+    "wrongTimes": "{{count}} marta xato",
+    "leechHint": "Bu savollarda 5 martadan ko'p adashgansiz. Ularni yana ishlash foyda bermaydi — muammo savolda emas, uning ortidagi tushunchada. Avval shu bo'lim nazariyasini qayta o'qing.",
+    "leechReadTheory": "«{{topic}}» nazariyasini o'qish"
   },
   "premium": {
     "subtitle": "Cheksiz imkoniyatlar bilan tayyorlan",

@@ -28,9 +28,11 @@ import {
 import { db, auth } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { summarizeTestResults } from '../engine/SmartQuestionEngine';
+import { examAtMs } from '../utils/examDate';
+import { useStudyContract } from '../hooks/useStudyContract';
 import { AnalyticsEvents } from '../services/analytics';
 import localforage from 'localforage';
-import { EXAM_SESSION_KEY, examPoolKey, examSessionKey } from '../config';
+import { EXAM_SESSION_KEY, examPoolKey, examSessionKey, EXAM_GOAL_SCORE } from '../config';
 import { PED_BLOCK_TOTAL, isPedBlockTopic, EXAM_BLUEPRINT, hasBlueprint } from '../data/examBlueprint';
 import { useExitGuard } from '../hooks/useExitGuard';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
@@ -124,6 +126,9 @@ const ExamPage = () => {
 
   const { isTrialExpired } = useTrialExpiry();
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
+  // «Zaif bo'lim» chegarasi foydalanuvchining O'Z maqsadidan olinadi (T-8):
+  // 90% ni maqsad qilgan odam uchun 82% zaif, 60% ni maqsad qilgani uchun emas.
+  const { targetScore } = useStudyContract();
 
 
 
@@ -133,6 +138,8 @@ const ExamPage = () => {
   const [flagged, setFlagged] = useState({});
   const [pacing, setPacing] = useState(null);
   const [weakTopicsSorted, setWeakTopicsSorted] = useState([]);
+  // Zaif bo'limlar ro'yxati 3 tadan uzun bo'lsa yig'ilgan holda ochiladi (T-8)
+  const [showAllWeak, setShowAllWeak] = useState(false);
   const [currentQ, setCurrentQ] = useState(0);
   // ⚠️ AUDIT 2026-08-17 — vaqt endi DEADLINE (epoch ms) bilan boshqariladi.
   // Avval har soniya kamayadigan `timeLeft` state'i turardi; u mobil fonda
@@ -160,6 +167,19 @@ const ExamPage = () => {
   const [showObjectionModal, setShowObjectionModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [reviewMode, setReviewMode] = useState(false);
+  // ⚠️ AUDIT 2026-08-19, T-14 BAND — «XATOLARIM» OQIMI.
+  //
+  //   Ko'rib chiqish — o'rganishning eng ko'p qiymat beradigan bosqichi — eng
+  //   ko'p ishqalanishga ega bosqich edi: izoh faqat `reviewMode` da, BITTA
+  //   SAVOLGA BITTA EKRAN tarzida ko'rinardi. 17 ta xatoni ko'rish uchun
+  //   katakka bos → o'qi → orqaga → keyingi katakka bos… × 17.
+  //   Amalda ko'pchilik 2–3 ta xatoni ko'rib tashlab ketardi.
+  //
+  //   `reviewQueue` — ko'rib chiqiladigan savollar indekslari. Bo'sh bo'lsa
+  //   ko'rish erkin (eski xatti-harakat, katakka bosib kirilganda). To'lgan
+  //   bo'lsa «Orqaga/Keyingi» AYNAN shu ro'yxat bo'ylab yuradi va yuqorida
+  //   `4/17` hisoblagichi turadi.
+  const [reviewQueue, setReviewQueue] = useState([]);
   const [showShareCard, setShowShareCard] = useState(false);
   
   const [examStarted, setExamStarted] = useState(false);
@@ -484,7 +504,7 @@ const ExamPage = () => {
     // savol soniga mutanosib ravishda qayta yozadi (`loadWeeklyQuestions`).
     plannedDurationRef.current = getExamDuration(cat);
     setFinished(false);
-    setReviewMode(false);
+    setReviewMode(false); setReviewQueue([]);
     setAnswers({});
     setFlagged({});
     setPacing(null);
@@ -853,7 +873,7 @@ const ExamPage = () => {
     sessionCheckedRef.current = true;   // saqlangan sessiya qayta tiklanmasin
     setDeadlineMs(null);
     setFinished(false);
-    setReviewMode(false);
+    setReviewMode(false); setReviewQueue([]);
     setAnswers({});
     setFlagged({});
     setCurrentQ(0);
@@ -914,31 +934,52 @@ const ExamPage = () => {
       totalTime: Object.values(times).reduce((a, b) => a + b, 0)
     });
 
-    // Tavsiyalarni hisoblash
+    // Tavsiyalarni hisoblash.
+    //
+    // ⚠️ AUDIT 2026-08-19, T-8 BAND — bu ro'yxat TO'LIQ hisoblanardi, lekin
+    // ekranga faqat `weakTopicsSorted[0]` chiqardi: qolgan barcha zaif
+    // bo'limlar hisoblanib TASHLAB YUBORILARDI. 50 savollik imtihon — eng boy
+    // diagnostik hodisa, undan chiqadigan xulosa esa bitta bo'limga
+    // qisqartirilardi. Endi ro'yxat butunlay ko'rsatiladi.
     const topicPerformance = topicGroups.map(group => {
       const totalInTopic = group.indices.length;
       const correctInTopic = group.indices.filter(idx => answers[idx] === questions[idx].correct).length;
+      // Imtihonda tashlab ketilgan savol ham yo'qotilgan ball — shuning uchun
+      // maxraj JAMI savollar (mashqdagidan farqli).
       const accuracy = totalInTopic > 0 ? (correctInTopic / totalInTopic) * 100 : 0;
-      
+
       const firstQIndex = group.indices[0];
       const topicId = questions[firstQIndex]?.topicId;
 
       return {
         name: group.name,
         topicId: topicId,
-        accuracy: accuracy,
+        accuracy: Math.round(accuracy),
         total: totalInTopic,
-        correct: correctInTopic
+        correct: correctInTopic,
+        // 3 tadan kam savol tushgan bo'lim bo'yicha xulosa chiqarib bo'lmaydi:
+        // bittasiga adashish 0% yoki 50% ko'rsatib, foydalanuvchini o'zi
+        // biladigan bo'limga qaytarib yuborardi.
+        enough: totalInTopic >= 3,
       };
     });
 
+    // Chegara endi QATTIQ KODLANGAN 80 emas, foydalanuvchining O'Z maqsadi
+    // (o'quv shartnomasidagi `targetScore`).
     const weakTopics = topicPerformance
-      .filter(t => t.accuracy < 80)
-      .sort((a, b) => a.accuracy - b.accuracy);
+      .filter(tp => tp.accuracy < targetScore)
+      .sort((a, b) => {
+        if (a.enough !== b.enough) return a.enough ? -1 : 1;
+        return a.accuracy - b.accuracy;
+      });
     setWeakTopicsSorted(weakTopics);
 
     // 🧠 SMART ENGINE
-    const results = summarizeTestResults(questions, answers, state.spacedCards || [], -1, questionTimesRef.current);
+    // `examAtMs` — takrorlash oralig'ini imtihon sanasiga siqadi (T-5)
+    const results = summarizeTestResults(
+      questions, answers, state.spacedCards || [], -1, questionTimesRef.current,
+      { examAtMs: examAtMs() }
+    );
     results.topicId = -1;
     // Sessiya vaqti — savollarga sarflangan haqiqiy vaqt yig'indisi.
     // Wall-clock (Date.now - startTime) resume'dan keyin noto'g'ri bo'lardi
@@ -1026,6 +1067,14 @@ const ExamPage = () => {
   const answeredCount = Object.keys(answers).length;
   const correctCount = finished ? questions.filter((q, i) => answers[i] === q.correct).length : 0;
   const wrongCount = finished ? questions.filter((q, i) => answers[i] !== undefined && answers[i] !== q.correct).length : 0;
+  // Ko'rib chiqish oqimiga tushadigan savollar: xato VA qoldirilgan.
+  // Imtihonda qoldirilgan savol ham yo'qotilgan ball — uni ko'rmasdan
+  // o'tib ketish tayyorgarlikdagi eng katta bo'shliqni ko'rmaslik demak.
+  const missedIndices = finished
+    ? questions.reduce((acc, q, i) => (answers[i] !== q.correct ? [...acc, i] : acc), [])
+    : [];
+  // Joriy savolning oqimdagi o'rni (-1 = oqim faol emas)
+  const queuePos = reviewMode && reviewQueue.length > 0 ? reviewQueue.indexOf(currentQ) : -1;
   const pct = questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0;
   // `isUrgent`/`isWarning` endi bu yerda hisoblanmaydi — ular soniyaga bog'liq
   // bo'lgani uchun butun sahifani har soniya qayta render qilardi. Rang holati
@@ -1034,6 +1083,11 @@ const ExamPage = () => {
   if (!examStarted) {
     const durationMin = Math.round(getExamDuration(cat) / 60);
     const subjName = SUBJECTS.find(s => s.id === cat)?.name || '';
+    // Savol boshiga vaqt byudjeti — foydalanuvchi «ulguramanmi?» hisobini
+    // O'ZI qilishi shart emas, biz aytamiz (T-9).
+    const perQuestionSec = Math.round(getExamDuration(cat) / EXAM_TOTAL);
+    const perQMin = Math.floor(perQuestionSec / 60);
+    const perQSec = perQuestionSec % 60;
 
     // Rejim kartalari — chiziqli professional ikonkalar (emoji emas):
     // auditoriya attestatsiyaga tayyorlanayotgan pedagoglar, muhit jiddiy bo'lishi kerak
@@ -1073,10 +1127,49 @@ const ExamPage = () => {
           <h1 style={{ fontSize: 'var(--fs-h1)', fontWeight: 800, color: 'var(--text)', marginBottom: 14, letterSpacing: '-0.5px' }}>{t('exam.simulatorTitle')}</h1>
 
           {/* Uzun matn o'rniga — bir qarashda o'qiladigan chiplar */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 22 }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 14 }}>
             <span style={chipStyle}><FileText size={14} style={chipIconStyle} /> {t('exam.chipQuestions', { n: EXAM_TOTAL })}</span>
             <span style={chipStyle}><Clock size={14} style={chipIconStyle} /> {t('exam.chipMinutes', { n: durationMin })}</span>
             {subjName && <span style={chipStyle}><BookOpen size={14} style={chipIconStyle} /> {subjName}</span>}
+          </div>
+
+          {/* ── IMTIHON SHARTNOMASI (T-9) ──────────────────────────────────
+              ⚠️ AUDIT 2026-08-19 — bu ekran «afisha» edi: uchta chip va
+              «Boshlash» tugmasi. Foydalanuvchi o'tish bo'sag'asini, ball
+              hisoblash qoidasini, vaqt tugaganda nima bo'lishini va savolga
+              qaytish mumkinligini BILMASDAN imtihonga kirardi.
+
+              Oqibati: birinchi imtihonda kognitiv yuk savolga emas,
+              interfeysni ochishga sarflanardi. Pedagog «ulguramanmi?» degan
+              hisobni qila olmasdi — 90 daq / 50 savol = 1 daq 48 son degan
+              raqam hech qayerda ko'rsatilmasdi. Bu — testdan oldingi eng
+              katta stress manbai.
+
+              Ustiga-ustak `exam.simulatorDesc` matni uz/ru/en uchtala
+              tarjimada YOZILGAN, lekin hech qayerda render qilinmasdi. */}
+          <div style={{
+            background: 'var(--bg2)', border: '1px solid var(--border)',
+            borderRadius: 14, padding: '14px 16px', marginBottom: 18, textAlign: 'left',
+          }}>
+            <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', lineHeight: 1.5, marginBottom: 12 }}>
+              {t('exam.simulatorDesc')}
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {[
+                t('exam.rulePace', { min: perQMin, sec: perQSec }),
+                t('exam.rulePass', { n: EXAM_GOAL_SCORE }),
+                t('exam.ruleNoMinus'),
+                t('exam.ruleSkipped'),
+                t('exam.ruleAutoFinish'),
+                t('exam.ruleNavigate'),
+                t('exam.ruleResume'),
+              ].map((line, i) => (
+                <div key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+                  <Check size={14} strokeWidth={3} style={{ color: 'var(--accent)', flexShrink: 0, marginTop: 3 }} />
+                  <span style={{ fontSize: 'var(--fs-body-sm)', color: 'var(--text2)', lineHeight: 1.45 }}>{line}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Rejim tanlash */}
@@ -1368,7 +1461,33 @@ const ExamPage = () => {
             </div>
           )}
 
-          {/* 💡 PERSONALIZED ADVICE CARD */}
+          {/* ── XATOLARNI KO'RIB CHIQISH OQIMI (T-14) ──
+              Natija ekranidagi eng muhim harakat: bitta teginish bilan
+              faqat xato/qoldirilgan savollar, izohi ochiq holda, ketma-ket
+              ochiladi. Ilgari buni faqat 17 marta katakka bosib qilish
+              mumkin edi. */}
+          {missedIndices.length > 0 && (
+            <button
+              onClick={() => {
+                setReviewQueue(missedIndices);
+                setReviewMode(true);
+                setFinished(false);
+                setCurrentQ(missedIndices[0]);
+              }}
+              style={{
+                width: '100%', marginTop: 16, padding: '14px',
+                background: 'var(--cta)', color: '#fff', border: 'none',
+                borderRadius: 16, fontWeight: 700, fontSize: 'var(--fs-lg)',
+                cursor: 'pointer', fontFamily: 'inherit',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)',
+              }}
+            >
+              <BookOpen size={17} /> {t('exam.reviewMissed', { count: missedIndices.length })}
+            </button>
+          )}
+
+          {/* 💡 ZAIF BO'LIMLAR — TO'LIQ RO'YXAT (T-8) */}
           {weakTopicsSorted.length > 0 && (
             <div style={{
               background: 'var(--blue-bg)',
@@ -1383,19 +1502,67 @@ const ExamPage = () => {
                 <span style={{ fontSize: 'var(--fs-2xl)' }}>💡</span>
                 <strong style={{ fontSize: 'var(--fs-base)', color: 'var(--text)', fontWeight: 800 }}>{t('exam.adviceTitle')}</strong>
               </div>
-              <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', lineHeight: 1.5, margin: '0 0 12px 0' }}>
+              <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', lineHeight: 1.5, margin: '0 0 14px 0' }}>
                 {t('exam.adviceP1')} <strong>{weakTopicsSorted[0].name}</strong> {t('exam.adviceP2', { correct: weakTopicsSorted[0].correct, total: weakTopicsSorted[0].total })}
               </p>
-              <button 
-                className="btn btn-sm btn-primary"
-                onClick={() => {
-                  updateState({ topicId: weakTopicsSorted[0].topicId });
-                  navigate('/test');
-                }}
-                style={{ padding: '8px 16px', borderRadius: 10, fontSize: 'var(--fs-md)', fontWeight: 700 }}
-              >
-                {t('exam.practiceTopic')}
-              </button>
+
+              {/* Har bo'lim uchun kasr + foiz + yo'qotilgan ball.
+                  «Bu bo'lim sizga N ball turadi» foizdan kuchliroq motivator:
+                  u imtihon natijasi tilida gapiradi. */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 14 }}>
+                {(showAllWeak ? weakTopicsSorted : weakTopicsSorted.slice(0, 3)).map(w => {
+                  const lost = w.total - w.correct;
+                  const color = !w.enough ? 'var(--text3)'
+                    : w.accuracy >= 60 ? 'var(--amber)'
+                    : 'var(--red)';
+                  return (
+                    <div key={w.topicId ?? w.name}>
+                      <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 4 }}>
+                        <span style={{ flex: 1, minWidth: 0, fontSize: 'var(--fs-md)', fontWeight: 600, color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          {w.name}
+                        </span>
+                        <span style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text2)', fontVariantNumeric: 'tabular-nums' }}>
+                          {w.correct}/{w.total}
+                        </span>
+                        <span style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color, minWidth: 40, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
+                          {w.enough ? `${w.accuracy}%` : '—'}
+                        </span>
+                      </div>
+                      <div style={{ height: 4, background: 'var(--bg3)', borderRadius: 2, overflow: 'hidden' }}>
+                        <div style={{ height: '100%', width: `${w.accuracy}%`, background: color, borderRadius: 2 }} />
+                      </div>
+                      <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', marginTop: 4 }}>
+                        {w.enough
+                          ? t('exam.weakLoss', { count: lost })
+                          : t('results.notEnoughData')}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {weakTopicsSorted.length > 3 && !showAllWeak && (
+                <button
+                  onClick={() => setShowAllWeak(true)}
+                  style={{ background: 'none', border: 'none', padding: '0 0 12px', color: 'var(--accent2)', fontSize: 'var(--fs-md)', fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}
+                >
+                  {t('exam.weakShowAll', { count: weakTopicsSorted.length - 3 })}
+                </button>
+              )}
+
+              <div>
+                <button
+                  className="btn btn-sm btn-primary"
+                  onClick={() => {
+                    // `topicSubset: null` — oldingi aralash mashqning filtri qolmasin
+                    updateState({ topicId: weakTopicsSorted[0].topicId, testMode: 'exam', topicSubset: null });
+                    navigate('/test');
+                  }}
+                  style={{ padding: '8px 16px', borderRadius: 10, fontSize: 'var(--fs-md)', fontWeight: 700 }}
+                >
+                  {t('exam.practiceTopic')}
+                </button>
+              </div>
             </div>
           )}
 
@@ -1415,11 +1582,27 @@ const ExamPage = () => {
             </div>
           </div>
 
-          {/* Mavzular bo'yicha grid */}
-          {topicGroups.map((group, gi) => (
+          {/* Mavzular bo'yicha grid.
+              ⚠️ T-8: sarlavhada endi kasr va foiz bor. Ilgari faqat rangli
+              kataklar edi — foydalanuvchi qaysi bo'limda qanchalik oqsaganini
+              bilish uchun KATAKLARNI SANASHI kerak edi. */}
+          {topicGroups.map((group, gi) => {
+            const gCorrect = group.indices.filter(idx => answers[idx] === questions[idx]?.correct).length;
+            const gTotal = group.indices.length;
+            const gPct = gTotal > 0 ? Math.round((gCorrect / gTotal) * 100) : 0;
+            const gColor = gPct >= targetScore ? 'var(--green)' : gPct >= 50 ? 'var(--amber)' : 'var(--red)';
+            return (
             <div key={gi} style={{ marginBottom: 20 }}>
-              <div style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text2)', marginBottom: 10 }}>
-                {group.icon} {group.name}
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 10 }}>
+                <span style={{ flex: 1, minWidth: 0, fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text2)' }}>
+                  {group.icon} {group.name}
+                </span>
+                <span style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text2)', fontVariantNumeric: 'tabular-nums' }}>
+                  {gCorrect}/{gTotal}
+                </span>
+                <span style={{ fontSize: 'var(--fs-md)', fontWeight: 800, color: gColor, minWidth: 40, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
+                  {gPct}%
+                </span>
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {group.indices.map((qi) => {
@@ -1448,7 +1631,8 @@ const ExamPage = () => {
                 })}
               </div>
             </div>
-          ))}
+            );
+          })}
 
           <button
             className="btn btn-primary"
@@ -1500,14 +1684,14 @@ const ExamPage = () => {
               style={{ background: 'var(--blue)', color: 'white', border: 'none', fontWeight: 700 }}
               onClick={() => {
                 setFinished(true);
-                setReviewMode(false);
+                setReviewMode(false); setReviewQueue([]);
               }}
             >
               {t('exam.backToResults')}
             </button>
           ) : (
             <>
-              <ExamTimer deadlineMs={deadlineMs} onExpire={handleTimeExpired} />
+              <ExamTimer deadlineMs={deadlineMs} totalMs={getExamDuration(cat) * 1000} answered={answeredCount} total={questions.length} onExpire={handleTimeExpired} />
               <button
                 className="btn btn-sm"
                 style={{ background: 'var(--red)', color: 'white', border: 'none' }}
@@ -1684,23 +1868,55 @@ const ExamPage = () => {
                 </div>
               )}
 
-              {/* Navigatsiya */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 24 }}>
-                <button
-                  className="btn btn-outline"
-                  disabled={currentQ === 0}
-                  onClick={() => handleQuestionSwitch(currentQ - 1)}
-                >
-                  <ChevronLeft size={18} /> {t('common.back')}
-                </button>
-                <button
-                  className="btn btn-primary"
-                  disabled={currentQ === questions.length - 1}
-                  onClick={() => handleQuestionSwitch(currentQ + 1)}
-                >
-                  {t('test.next')} <ChevronRight size={18} />
-                </button>
-              </div>
+              {/* Navigatsiya.
+                  Xatolar oqimida (`reviewQueue`) tugmalar butun imtihon bo'ylab
+                  emas, FAQAT xatolar bo'ylab yuradi — T-14. */}
+              {queuePos >= 0 ? (
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, marginTop: 24 }}>
+                  <button
+                    className="btn btn-outline"
+                    disabled={queuePos === 0}
+                    onClick={() => handleQuestionSwitch(reviewQueue[queuePos - 1])}
+                  >
+                    <ChevronLeft size={18} /> {t('common.back')}
+                  </button>
+                  <span style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text3)', fontVariantNumeric: 'tabular-nums' }}>
+                    {queuePos + 1} / {reviewQueue.length}
+                  </span>
+                  {queuePos === reviewQueue.length - 1 ? (
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => { setReviewMode(false); setReviewQueue([]); setFinished(true); }}
+                    >
+                      {t('exam.backToResults')}
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => handleQuestionSwitch(reviewQueue[queuePos + 1])}
+                    >
+                      {t('exam.nextMistake')} <ChevronRight size={18} />
+                    </button>
+                  )}
+                </div>
+              ) : (
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 24 }}>
+                  <button
+                    className="btn btn-outline"
+                    disabled={currentQ === 0}
+                    onClick={() => handleQuestionSwitch(currentQ - 1)}
+                  >
+                    <ChevronLeft size={18} /> {t('common.back')}
+                  </button>
+                  <button
+                    className="btn btn-primary"
+                    disabled={currentQ === questions.length - 1}
+                    onClick={() => handleQuestionSwitch(currentQ + 1)}
+                  >
+                    {t('test.next')} <ChevronRight size={18} />
+                  </button>
+                </div>
+              )}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -1810,7 +2026,7 @@ const ExamPage = () => {
               style={{ width: '100%', background: 'var(--blue)', borderColor: 'var(--blue)', fontWeight: 700 }}
               onClick={() => {
                 setFinished(true);
-                setReviewMode(false);
+                setReviewMode(false); setReviewQueue([]);
               }}
             >
               {t('exam.backToResults')}

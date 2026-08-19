@@ -95,6 +95,13 @@ export const readExamSource = () => {
 export const readExamDate = () => readExamSource()?.date || null;
 
 /**
+ * Imtihon sanasi epoch ms da — takrorlash oralig'ini siqish uchun
+ * (`SmartQuestionEngine.clampReviewToExam`, audit 2026-08-19 T-5).
+ * @returns {number|null}
+ */
+export const examAtMs = () => readExamDate()?.getTime() ?? null;
+
+/**
  * Imtihongacha qolgan KALENDAR kunlari.
  * Kalendar kuni ishlatiladi (soatlar emas): kechqurun ham «ertaga» 1 kun
  * bo'lib turadi, xom farq esa 0 ko'rsatib chalg'itardi.

@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { RefreshCw, Target, Share2, ArrowRight, FileText, BadgeCheck, ListChecks, ChevronRight } from 'lucide-react';
+import { topicBreakdown } from '../../engine/SmartQuestionEngine';
+import { activeMistakes } from '../../engine/mistakeQueue';
 import { useTranslation } from 'react-i18next';
 import ResultShareCard from '../shared/ResultShareCard';
 import { reconcileAchievements, nextMilestones } from '../../data/tracks';
@@ -21,11 +23,36 @@ const TestResults = ({
   generateQuestions,
   showToast,
   nextBatchLabel,
-  onNextBatch
+  onNextBatch,
+  // T-7: shu blokning savollari va javoblari — bo'limlar kesimi uchun
+  questions = [],
+  answers = {},
+  onPracticeTopic,
 }) => {
   const { t } = useTranslation();
   const [showShareCard, setShowShareCard] = useState(false);
   const pct = Math.round((correctCount / questionsLength) * 100);
+
+  // ⚠️ AUDIT 2026-08-19, T-1 BAND — bu yerda `state.mistakes?.length > 0` edi.
+  //
+  //   Xatolar esa `state.stats[cat].mistakes` da saqlanadi (AppContext.jsx).
+  //   Yuqori darajadagi `state.mistakes` faqat `buildDefaultState()` da `[]`
+  //   deb yaratilardi va HECH QACHON yozilmasdi — ya'ni shart HAR DOIM `false`,
+  //   «Xatolar ustida ishlash» tugmasi esa HECH QACHON ko'rinmasdi.
+  //
+  //   Oqibati: xatolar ustida ishlashga eng yuqori niyatli kirish nuqtasi —
+  //   test tugagan lahza, natija ko'z oldida turganda — o'lik edi. Butun
+  //   «qayta ishlash silsilasi»ning kirish eshigi yopiq edi.
+  const openMistakes = activeMistakes(state?.stats?.[state?.activeCategory]?.mistakes || []);
+
+  // Bo'limlar kesimi — `topicDeltas` allaqachon hisoblanardi, lekin ekranga
+  // chiqmasdi (T-7). Faqat aralash/ko'p bo'limli blokda ma'noga ega.
+  const breakdown = useMemo(
+    () => (questions.length > 0 ? topicBreakdown(questions, answers) : []),
+    [questions, answers]
+  );
+  const showBreakdown = breakdown.length > 1;
+  const weakest = breakdown.find(r => r.enough && r.accuracy !== null && r.accuracy < 100) || null;
 
   const {
     step: nextStep, doneCount: planDone, total: planTotal, startStep,
@@ -58,6 +85,72 @@ const TestResults = ({
       <div style={{ height: 3, background: 'var(--bg3)', borderRadius: 2, overflow: 'hidden', marginBottom: 20 }}>
         <div style={{ height: '100%', width: `${pct}%`, background: 'var(--accent)', borderRadius: 2, transition: 'width 0.6s cubic-bezier(0.25,1,0.5,1)' }} />
       </div>
+
+      {/* ── BO'LIMLAR KESIMI (T-7) ──
+          Natija ekranining asosiy vazifasi — «34/50» ni harakatga aylantirish.
+          Ranglar YAKKA signal emas: har qatorda kasr ham, foiz ham bor
+          (daltonizm va past kontrastli ekranlar uchun). */}
+      {showBreakdown && (
+        <div style={{ borderTop: '1px solid var(--glass-border)', paddingTop: 16, marginBottom: 20, textAlign: 'left' }}>
+          <div style={{ fontSize: 'var(--fs-2xs)', letterSpacing: '0.6px', color: 'var(--text3)', textTransform: 'uppercase', fontWeight: 700, marginBottom: 4 }}>
+            {t('results.breakdownTitle')}
+          </div>
+          {weakest && (
+            <div style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', lineHeight: 1.5, marginBottom: 12 }}>
+              {t('results.breakdownLead', { topic: weakest.name })}
+            </div>
+          )}
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            {breakdown.map((row, idx) => {
+              const color = !row.enough ? 'var(--text3)'
+                : row.accuracy >= 80 ? 'var(--green)'
+                : row.accuracy >= 60 ? 'var(--amber)'
+                : 'var(--red)';
+              // Harakat tugmasi faqat eng zaif ikkitasida — aks holda 10 ta
+              // bo'limli blokda ekran tugmalar devoriga aylanadi.
+              const actionable = onPracticeTopic && row.enough && idx < 2 && row.accuracy !== null && row.accuracy < 80;
+              return (
+                <div key={row.topicId}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 5 }}>
+                    <span style={{ flex: 1, minWidth: 0, fontSize: 'var(--fs-md)', fontWeight: 600, color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {row.name || t('test.allSections')}
+                    </span>
+                    <span style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: 'var(--text2)', fontVariantNumeric: 'tabular-nums' }}>
+                      {row.correct}/{row.answered}
+                    </span>
+                    <span style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color, minWidth: 40, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
+                      {row.enough ? `${row.accuracy}%` : '—'}
+                    </span>
+                  </div>
+                  <div style={{ height: 4, background: 'var(--bg3)', borderRadius: 2, overflow: 'hidden' }}>
+                    <div style={{ height: '100%', width: `${row.enough ? row.accuracy : 0}%`, background: color, borderRadius: 2, transition: 'width 0.6s ease' }} />
+                  </div>
+                  {!row.enough && (
+                    <div style={{ fontSize: 'var(--fs-2xs)', color: 'var(--text3)', marginTop: 4 }}>
+                      {t('results.notEnoughData')}
+                    </div>
+                  )}
+                  {actionable && (
+                    <button
+                      onClick={() => onPracticeTopic(row.topicId)}
+                      style={{
+                        marginTop: 7, padding: '6px 12px', borderRadius: 9,
+                        border: '1px solid var(--border2)', background: 'var(--bg2)',
+                        color: 'var(--text2)', fontSize: 'var(--fs-sm)', fontWeight: 700,
+                        cursor: 'pointer', fontFamily: 'inherit',
+                        display: 'inline-flex', alignItems: 'center', gap: 5,
+                      }}
+                    >
+                      <Target size={13} /> {t('results.practiceThisTopic')}
+                    </button>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Sessiyada olingan darajalar — sokin muhr-qatorlar */}
       {gained.length > 0 && (
@@ -135,11 +228,28 @@ const TestResults = ({
         </button>
       )}
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 6, maxWidth: 320, margin: '0 auto' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 320, margin: '0 auto' }}>
+        {/* Xatolar ustida ishlash — BIRINCHI DARAJALI harakat va «Keyingi blok»
+            dan YUQORIDA. Yangi materialga o'tishdan oldin xatoni yopish
+            retrieval practice'ning asosiy qoidasi; ilgari bu ikkinchi darajali
+            kulrang havola edi va (T-1 tufayli) umuman ko'rinmasdi. */}
+        {openMistakes.length > 0 && (
+          <motion.button
+            whileHover={{ scale: 1.01, y: -1 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => setMode('mistakes')}
+            style={{ padding: '14px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 'var(--fs-lg)', cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
+          >
+            <Target size={17} /> {t('results.workOnMistakesCount', { count: openMistakes.length })}
+          </motion.button>
+        )}
+
         <motion.button
           whileHover={{ scale: 1.01, y: -1 }}
           whileTap={{ scale: 0.98 }}
-          style={{ padding: '14px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 'var(--fs-lg)', cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
+          style={openMistakes.length > 0
+            ? { padding: '13px', background: 'var(--bg2)', color: 'var(--text2)', border: '1.5px solid var(--border)', borderRadius: 16, fontWeight: 700, fontSize: 'var(--fs-md)', cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }
+            : { padding: '14px', background: 'var(--cta)', color: '#fff', border: 'none', borderRadius: 16, fontWeight: 700, fontSize: 'var(--fs-lg)', cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 4px 15px rgba(14, 151, 224, 0.2)' }}
           onClick={onNextBatch || generateQuestions}
         >
           {onNextBatch ? (
@@ -148,15 +258,6 @@ const TestResults = ({
             <><RefreshCw size={17} /> {t('results.retry')}</>
           )}
         </motion.button>
-
-        {state.mistakes?.length > 0 && (
-          <button
-            onClick={() => setMode('mistakes')}
-            style={{ background: 'none', border: 'none', color: 'var(--text3)', fontSize: 'var(--fs-md)', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '10px', fontFamily: 'inherit' }}
-          >
-            <Target size={14} /> {t('results.workOnMistakes')}
-          </button>
-        )}
 
         <button
           onClick={() => setShowShareCard(true)}

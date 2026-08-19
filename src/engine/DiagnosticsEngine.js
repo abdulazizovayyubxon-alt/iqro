@@ -13,6 +13,7 @@
  */
 import { TOPICS } from '../data/mockData';
 import { EXAM_BLUEPRINT, hasBlueprint } from '../data/examBlueprint';
+import { dueCardCount } from './SmartQuestionEngine';
 import {
   MASTERY_MIN_ANSWERED,
   MASTERY_MIN_ACC,
@@ -267,7 +268,7 @@ export function computeDiagnostics(state, opts = {}) {
     .filter(tp => tp.expectedLoss > 0.15)   // ahamiyatsiz farqlarni ko'rsatmaymiz
     .sort((a, b) => b.expectedLoss - a.expectedLoss);
 
-  const dueCards = (state.spacedCards || []).filter(c => c.nextReview <= Date.now()).length;
+  const dueCards = dueCardCount(state.spacedCards);
 
   return {
     category: cat,

@@ -13,7 +13,7 @@ import TheoryModal from '../components/theory/TheoryModal';
 import { isTheorySeen, markTheorySeen } from '../services/theorySeen';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
-import { RefreshCw, ArrowLeft, X } from 'lucide-react';
+import { RefreshCw, ArrowLeft, X, Flag } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
 import ObjectionModal from '../components/shared/ObjectionModal';
@@ -24,7 +24,9 @@ import FreeMonthBanner from '../components/FreeMonthBanner';
 import { BATCH_SIZE, QUESTION_TIMER_SECONDS } from '../config';
 import { db, auth } from '../firebase';
 import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
-import { smartSort, summarizeTestResults } from '../engine/SmartQuestionEngine';
+import { smartSort, summarizeTestResults, questionKey, TIMED_OUT } from '../engine/SmartQuestionEngine';
+import { buildMistakeDrill, mistakeKey } from '../engine/mistakeQueue';
+import { examAtMs } from '../utils/examDate';
 import { AnalyticsEvents } from '../services/analytics';
 import { submitQuestionRequest, hasRequested } from '../services/questionRequests';
 import localforage from 'localforage';
@@ -57,6 +59,7 @@ function cleanForDedup(text) {
 
 import SubjectTopicChips, { BlockRow } from '../components/SubjectTopicChips';
 import QuestionBox from '../components/test/QuestionBox';
+import QuestionNavigator from '../components/test/QuestionNavigator';
 import FlashcardView from '../components/test/FlashcardView';
 import TestResults from '../components/test/TestResults';
 import { useExitGuard } from '../hooks/useExitGuard';
@@ -98,6 +101,18 @@ const poolKeyFor = (uid) => `test_pool_${uid}`;
 // Eski yagona kalit — faqat tozalash uchun (ichida 2.4 MB qolib ketgan bo'lishi
 // mumkin, hech qachon o'qilmaydi).
 const LEGACY_SESSION_KEY = 'test_session';
+
+// Taymer rejimi foydalanuvchi tanlovi sifatida saqlanadi (T-10).
+const TIMER_MODE_KEY = 'test_timer_mode';
+const TIMER_MODES = ['countdown', 'stopwatch', 'off'];
+const readTimerMode = () => {
+  try {
+    const v = localStorage.getItem(TIMER_MODE_KEY);
+    return TIMER_MODES.includes(v) ? v : 'stopwatch';
+  } catch {
+    return 'stopwatch';
+  }
+};
 
 const TestPage = () => {
   const navigate = useNavigate();
@@ -154,6 +169,9 @@ const TestPage = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState({});
+  // Shubhali savollarni belgilash va savollar panjarasi (T-11)
+  const [flagged, setFlagged] = useState({});
+  const [navOpen, setNavOpen] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [amiDelta, setAmiDelta] = useState(0); // shu sessiyada AMI necha ballga o'zgargani
@@ -165,7 +183,22 @@ const TestPage = () => {
 
   // New States: Difficulty Filter and Timer Mode
   const [diffFilter] = useState('ALL'); // 'ALL', 'Y1', 'Y2', 'Y3'
-  const [timerMode, setTimerMode] = useState('countdown'); // 'countdown', 'stopwatch', 'off'
+  // ⚠️ AUDIT 2026-08-19, T-10 BAND — sukut bo'yicha `countdown` edi.
+  //
+  //   Mashq rejimida har savolga 60 soniya sanalar va vaqt tugaganda javob
+  //   AVTOMATIK «xato» deb yozilardi. Yangi savolni birinchi marta ko'rayotgan
+  //   odam o'ylab ulgurmay xato olardi. Taymerni o'chirish mumkin edi, lekin
+  //   bu haqda yagona ishora `title` atributida edi — MOBILDA KO'RINMAYDI.
+  //
+  //   Endi mashqda sukut bo'yicha SEKUNDOMER: vaqt o'lchanadi, lekin
+  //   jazolamaydi. Imtihon sur'atini mashq qilmoqchi bo'lgan foydalanuvchi
+  //   taymerga ataylab o'tadi va bu tanlov ESLAB QOLINADI (ilgari har
+  //   sahifa ochilganda `countdown`ga qaytardi).
+  const [timerMode, setTimerModeState] = useState(readTimerMode);
+  const setTimerMode = (m) => {
+    setTimerModeState(m);
+    try { localStorage.setItem(TIMER_MODE_KEY, m); } catch { /* xotira bloklangan */ }
+  };
 
   // Testdan chiqish tasdig'i (orqa tugma himoyasi)
   const [showExitConfirm, setShowExitConfirm] = useState(false);
@@ -227,6 +260,7 @@ const TestPage = () => {
       selectedBatch,
       currentQ,
       answers,
+      flagged,
       comboCount,
       questionTimes: questionTimesRef.current,
       savedAt: Date.now(),
@@ -239,10 +273,15 @@ const TestPage = () => {
     localforage.removeItem(LEGACY_SESSION_KEY).catch(() => {});
   }, []);
 
-  // Vaqt tugaganda (countdown) — javobni -1 ("vaqt tugadi") deb belgilaymiz.
+  // Vaqt tugaganda (countdown) — savol «vaqt tugadi» deb belgilanadi.
   // TimerPill onExpire orqali chaqiradi.
+  //
+  // T-10: bu belgi endi XATO EMAS. `summarizeTestResults` uni javob berilmagan
+  // savol kabi o'tkazib yuboradi — statistikaga ham, xatolar ro'yxatiga ham,
+  // takrorlash kartalariga ham tushmaydi. Foydalanuvchi to'g'ri javobni va
+  // izohni baribir ko'radi (QuestionBox `answers[currentQ] >= 0` ni tekshiradi).
   const handleTimeExpire = () => {
-    setAnswers(prev => (prev[currentQ] === undefined ? { ...prev, [currentQ]: -1 } : prev));
+    setAnswers(prev => (prev[currentQ] === undefined ? { ...prev, [currentQ]: TIMED_OUT } : prev));
     questionTimesRef.current[currentQ] = QUESTION_TIMER_SECONDS;
   };
 
@@ -320,6 +359,8 @@ const TestPage = () => {
       setCurrentQ(0);
       setFcFlipped(false);
       setAnswers({});
+      setFlagged({});
+      setNavOpen(false);
       questionTimesRef.current = {};
       committedRef.current = false; // yangi bo'lim → natijani qayta saqlashga ruxsat
       // Natija ekranida bo'lim almashtirilsa yangi bo'lim savollari ko'rinishi kerak
@@ -386,6 +427,7 @@ const TestPage = () => {
               setQuestions(restored);
               setCurrentQ(Math.min(s.currentQ || 0, restored.length - 1));
               setAnswers(s.answers || {});
+              setFlagged(s.flagged || {});
               setComboCount(s.comboCount || 0);
               questionTimesRef.current = s.questionTimes || {};
               setIsGenerating(false);
@@ -403,6 +445,8 @@ const TestPage = () => {
 
     setShowResults(false);
     setAnswers({});
+    setFlagged({});
+    setNavOpen(false);
     questionTimesRef.current = {};
     setCurrentQ(0);
     setFcFlipped(false);
@@ -426,26 +470,68 @@ const TestPage = () => {
         });
 
         if (filteredMistakes.length > 0) {
-          const shuffledMistakes = [...filteredMistakes].sort(() => 0.5 - Math.random());
-          qList = shuffledMistakes.slice(0, 15).map((m) => {
+          // ⚠️ AUDIT 2026-08-19, T-2 BAND — ESKI YOZUVLAR UCHUN IZOHNI TIKLASH.
+          //
+          // 2026-08-19 gacha xato yozuviga `explanation` saqlanmasdi (u
+          // `summarizeTestResults` da tashlab yuborilardi), shuning uchun bu
+          // yerda izoh o'rniga «To'g'ri javob: B» degan sun'iy matn qo'yilardi.
+          // Endi yangi xatolar izoh bilan keladi, LEKIN foydalanuvchining eski
+          // yozuvlarida u yo'q. Ularni keshlangan bazadan qayta topamiz —
+          // migratsiya ham, tarmoq so'rovi ham kerak emas: baza allaqachon
+          // shu qurilmada (`bundle_v2_*`).
+          let bankByKey = null;
+          if (filteredMistakes.some(m => !m.explanation)) {
+            try {
+              const cached = await localforage.getItem(`bundle_v2_${state.activeCategory}`);
+              if (Array.isArray(cached)) {
+                bankByKey = new Map();
+                for (const bq of cached) {
+                  if (bq?.q && bq?.explanation) bankByKey.set(questionKey(bq), bq);
+                }
+              }
+            } catch (e) {
+              console.warn('Izohlarni tiklab bo\'lmadi:', e?.message);
+            }
+          }
+
+          // ⚠️ T-6 BAND — ilgari bu `sort(() => 0.5 - Math.random()).slice(0, 15)`
+          // edi: xolis bo'lmagan aralashtirish VA takrorlash muddati mutlaqo
+          // hisobga olinmasdi. Endi navbat `engine/mistakeQueue` da yig'iladi:
+          // 60% muddati kelgan, 25% ko'p xato qilingan, 15% nazorat savoli.
+          const drill = buildMistakeDrill(filteredMistakes, state.spacedCards || []);
+
+          qList = drill.map((m) => {
             const cleanQ = m.question ? m.question.replace(/\s*\(Savol kodi:\s*#[a-zA-Z0-9_-]+\)/gi, '') : '';
+            const banked = bankByKey?.get(mistakeKey(m));
+            const shared = {
+              q: cleanQ,
+              topicId: m.topicId,
+              // Haqiqiy ilmiy izoh. Sun'iy matn endi faqat OXIRGI chora —
+              // baza ham, yozuv ham izoh bermagan holat uchun.
+              explanation: m.explanation || banked?.explanation || t('test.correctAnswerWas', { answer: m.correct }),
+              mnemonic: m.mnemonic || banked?.mnemonic,
+              source: m.source || banked?.source,
+              image: banked?.image,
+              isHtml: banked?.isHtml,
+            };
             if (m.opts && m.opts.length > 0) {
               return {
-                q: cleanQ,
+                ...shared,
                 opts: m.opts,
                 correct: m.opts.findIndex(o =>
                   o.replace(/^[A-D]\)\s*/, '') === m.correct.replace(/^[A-D]\)\s*/, '')
                 ),
-                explanation: t('test.correctAnswerWas', { answer: m.correct })
               };
             }
             return {
-              q: cleanQ,
+              ...shared,
               opts: [`A) ${m.correct}`, 'B) —', 'C) —', 'D) —'],
               correct: 0,
-              explanation: t('test.correctAnswerWas', { answer: m.correct })
             };
-          });
+          // `correct < 0` — yozuvda to'g'ri javob variantlar orasidan topilmadi
+          // (buzilgan eski yozuv). Bunday savol ko'rsatilsa har qanday javob
+          // «xato» bo'lardi va statistikani buzardi — chiqarib tashlaymiz.
+          }).filter(q => q.correct >= 0);
         }
       } else {
         // 1. Firebase'dan faqat 1 dona qog'ozni o'qiymiz (Versiyani bilish uchun - sessiya davomida 1 marta)
@@ -776,7 +862,7 @@ const TestPage = () => {
     clearTimeout(saveTimerRef.current);
     saveTimerRef.current = setTimeout(() => persistRef.current?.(), 400);
     return () => clearTimeout(saveTimerRef.current);
-  }, [answers, currentQ, selectedBatch, comboCount, questions.length, showResults]);
+  }, [answers, flagged, currentQ, selectedBatch, comboCount, questions.length, showResults]);
 
   // Ilova fonga tushganda / yopilganda — debounce'ni KUTMASDAN yozamiz.
   // Mobil PWA foydalanuvchisi ilovani 400 ms ichida yopishi mumkin.
@@ -831,8 +917,13 @@ const TestPage = () => {
     clearSessionProgress();
     setShowResults(true);
     // 🧠 SMART ENGINE: Natijalarni tahlil qilish va bir marta saqlash
-    const results = summarizeTestResults(questions, answers, state.spacedCards || [], topicId, questionTimesRef.current);
-    
+    // `examAtMs` — takrorlash oralig'i imtihon sanasidan oshib ketmasin (T-5):
+    // 150 kunlik oraliq imtihonga 20 kun qolganda ma'nosiz.
+    const results = summarizeTestResults(
+      questions, answers, state.spacedCards || [], topicId, questionTimesRef.current,
+      { examAtMs: examAtMs() }
+    );
+
     // Add total session time and topicId to results
     const totalSessionTime = Object.values(questionTimesRef.current).reduce((a, b) => a + b, 0);
     results.sessionTime = totalSessionTime;
@@ -1196,6 +1287,41 @@ const TestPage = () => {
                 theoryMatch={theoryMatch}
                 onOpenTheory={() => setShowTheoryModal(true)}
               />
+              {/* ── Belgilash (T-11) ──
+                  «Keyin qaytaman» — imtihon topshirishning asosiy ko'nikmasi.
+                  Ilgari mashq rejimida uni umuman mashq qilib bo'lmasdi. */}
+              {mode !== 'flashcard' && questions.length > 1 && (
+                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 10 }}>
+                  <button
+                    onClick={() => setFlagged(prev => ({ ...prev, [currentQ]: !prev[currentQ] }))}
+                    aria-pressed={!!flagged[currentQ]}
+                    style={{
+                      display: 'inline-flex', alignItems: 'center', gap: 6,
+                      padding: '7px 12px', borderRadius: 10, cursor: 'pointer',
+                      fontFamily: 'inherit', fontSize: 'var(--fs-sm)', fontWeight: 700,
+                      background: flagged[currentQ] ? 'var(--amber-bg)' : 'transparent',
+                      border: `1px solid ${flagged[currentQ] ? 'var(--amber)' : 'var(--border)'}`,
+                      color: flagged[currentQ] ? 'var(--amber)' : 'var(--text3)',
+                    }}
+                  >
+                    <Flag size={13} fill={flagged[currentQ] ? 'var(--amber)' : 'none'} />
+                    {flagged[currentQ] ? t('exam.flagged') : t('exam.flag')}
+                  </button>
+                </div>
+              )}
+
+              {mode !== 'flashcard' && (
+                <QuestionNavigator
+                  questions={questions}
+                  answers={answers}
+                  flagged={flagged}
+                  currentQ={currentQ}
+                  open={navOpen}
+                  onToggle={() => setNavOpen(v => !v)}
+                  onJump={(i) => { accumulateTime(); setCurrentQ(i); }}
+                />
+              )}
+
               <div className="q-nav" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px' }}>
                 <button disabled={currentQ === 0} className="btn btn-outline" onClick={() => { accumulateTime(); setCurrentQ(prev => prev - 1); }}>{t('common.back')}</button>
                 {(Object.keys(answers).length === questions.length || currentQ === questions.length - 1) ? (
@@ -1224,6 +1350,13 @@ const TestPage = () => {
               topicName={topicName}
               state={state}
               setMode={setMode}
+              questions={questions}
+              answers={answers}
+              onPracticeTopic={(tid) => {
+                if (isFreeLimitReached) { setShowPremiumModal(true); return; }
+                // `topicSubset: null` — aralash mashqning eski filtri qolib ketmasin
+                updateState({ topicId: tid, testMode: 'exam', topicSubset: null });
+              }}
               generateQuestions={generateQuestions}
               showToast={showToast}
               nextBatchLabel={(() => {

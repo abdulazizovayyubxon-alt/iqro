@@ -284,7 +284,8 @@
     "exitTitle": "Exit the test",
     "exitText": "Are you sure you want to exit the test? Current section answers will not be saved.",
     "continueBtn": "Continue",
-    "exit": "Log Out"
+    "exit": "Log Out",
+    "navAnswered": "{{answered}}/{{total}} answered"
   },
   "results": {
     "reportEyebrow": "Final Report",
@@ -299,7 +300,12 @@
     "shareResult": "Share Result",
     "planNext": "Today's plan · {{done}}/{{total}}",
     "rewardPoints": "Level reward: +{{points}} points",
-    "rewardBoth": "Level reward: +{{points}} points and {{count}} freeze"
+    "rewardBoth": "Level reward: +{{points}} points and {{count}} freeze",
+    "breakdownTitle": "Breakdown by section",
+    "breakdownLead": "You lost the most points in this block in «{{topic}}».",
+    "notEnoughData": "Not enough data — too few questions from this section",
+    "practiceThisTopic": "Practice this section",
+    "workOnMistakesCount": "Work on mistakes ({{count}})"
   },
   "selector": {
     "subject": "Subject",
@@ -403,7 +409,21 @@
     "confirmText": "Are you sure you want to finish the exam? All marked answers will be saved.",
     "no": "No",
     "yesFinish": "Yes, finish",
-    "toastAutoFinished": "Exam finished automatically — time ran out"
+    "toastAutoFinished": "Exam finished automatically — time ran out",
+    "rulePace": "About {{min}} min {{sec}} sec per question on average",
+    "rulePass": "Passing threshold — {{n}}%",
+    "ruleNoMinus": "No points are deducted for a wrong answer — mark one even if unsure",
+    "ruleSkipped": "A skipped question counts the same as a wrong one",
+    "ruleAutoFinish": "The exam submits automatically when time runs out",
+    "ruleNavigate": "You can return to any question and flag the ones you are unsure about",
+    "ruleResume": "If you leave the app the exam is saved and resumes where you left off",
+    "weakLoss": "{{count}} points lost in this section",
+    "weakShowAll": "Show {{count}} more sections",
+    "reviewMissed": "Review my mistakes ({{count}})",
+    "nextMistake": "Next mistake",
+    "paceAhead": "{{count}} questions ahead",
+    "paceBehind": "{{count}} questions behind",
+    "paceOnTrack": "On schedule"
   },
   "review": {
     "toastLoadError": "Failed to load questions",
@@ -773,7 +793,18 @@
     "clearConfirmTitle": "Clear All Mistakes",
     "clearConfirmText": "All recorded mistakes in this list will be removed. This action cannot be undone.",
     "clearConfirmBtn": "Yes, Clear All",
-    "toastCleared": "All mistakes cleared!"
+    "toastCleared": "All mistakes cleared!",
+    "openErrors": "Open mistakes",
+    "closedCount": "{{count}} closed",
+    "leechCount": "{{count}} stubborn",
+    "statusOpen": "Open ({{count}})",
+    "statusLeech": "Stubborn ({{count}})",
+    "statusClosed": "Closed ({{count}})",
+    "badgeClosed": "Closed",
+    "badgeLeech": "Stubborn",
+    "wrongTimes": "wrong {{count}}x",
+    "leechHint": "You have missed these more than 5 times. Drilling them again will not help — the problem is not the question but the concept behind it. Re-read the section theory first.",
+    "leechReadTheory": "Read «{{topic}}» theory"
   },
   "premium": {
     "subtitle": "Prepare with unlimited features",
