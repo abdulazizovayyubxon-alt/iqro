@@ -7,6 +7,8 @@ import { mergeMistakes, mistakeKey, pruneMistakes } from '../engine/mistakeQueue
 import { TOPICS } from '../data/mockData';
 import { readContract, questionsForMinutes } from '../services/studyContract';
 import { mergePartnerSets } from '../utils/mergeRules';
+// Bulut yozuvining ritmi — sof funksiya va testga olingan (2026-08-20 kvota hodisasi)
+import { nextCloudSaveDelay } from '../utils/saveSchedule';
 import { db } from '../firebase';
 import { AuthContext } from './AuthContext';
 import { ToastContext } from './ToastContext';
@@ -481,6 +483,44 @@ const stripUndefined = (value) => {
   return value;
 };
 
+// ═══ Bulutga saqlash ritmi (2026-08-20 KVOTA HODISASIDAN KEYIN) ═══
+//
+// NIMA BO'LDI: loyihaning Firestore KUNLIK YOZUV KVOTASI (bepul rejada
+// 20 000) har kuni tugab qolayotgan edi. Oqibati bitta amal bilan
+// cheklanmaydi — kvota tugagach BUTUN loyihada yozuv rad etiladi:
+// admin Pro bera olmadi, `metrics` uch kun yozilmadi, `questionStats`
+// bo'sh qoldi, ya'ni cron ham jimgina o'lik turdi.
+//
+// SABABI SHU YERDA EDI: `userStats` bulutga 3 soniyalik debounce bilan
+// yozilardi. Test yechayotgan odam har 10–30 soniyada javob beradi,
+// ya'ni har javobdan keyin 3 soniyalik jimlik yuzaga keladi va HAR
+// JAVOBGA BITTA YOZUV ketadi. ~200 faol foydalanuvchi × 50–100 javob =
+// 10 000–20 000 yozuv/kun, ya'ni kvotaning deyarli hammasi.
+//
+// YECHIM: debounce 3 s → 30 s, ustiga MAKSIMAL KUTISH shifti. Endi
+// uzluksiz yechilayotgan testda bulutga eng ko'pi bilan 3 daqiqada bir
+// marta yoziladi — 20 daqiqalik testda ~50 ta emas, ~7 ta yozuv.
+//
+// ⚠️ NEGA BU MA'LUMOTNI XAVF OSTIGA QO'YMAYDI:
+//   · LOKAL zaxira tegilmagan — u hamon 600 ms debounce bilan
+//     localStorage va localforage ga yoziladi. Haqiqiy "yo'qolishdan
+//     himoya" o'sha, bulut emas.
+//   · Ilova fonga o'tganda/yopilganda `flushSaveRef` kutilayotgan bulut
+//     yozuvini DARHOL bajaradi (visibilitychange + pagehide).
+//   · Tasdiqlanmagan yozuv `pendingCloudRef` bilan qayta uriniladi.
+//   · Ilova to'satdan o'lsa — `mergeCloudAndLocal` keyingi kirishda
+//     lokal nusxadan tiklaydi.
+//
+// ⚠️ QOLGAN CHEKLOV: boshqa QURILMAGA o'tishda bulutdagi nusxa 3
+// daqiqagacha orqada bo'lishi mumkin (avval 3 soniya edi). Amalda
+// ilovadan chiqishda flush ishlaydi, shuning uchun bu deyarli ko'rinmaydi.
+// Bu ATAYLAB qilingan almashuv: kvota tugashi HAMMA uchun ilovani
+// buzadi, 3 daqiqalik kechikish esa faqat qurilma almashtirgan odamga
+// va faqat flush ishlamagan holatda tegadi.
+const CLOUD_DEBOUNCE_MS = 30_000;
+const CLOUD_MAX_WAIT_MS = 180_000;
+const LOCAL_DEBOUNCE_MS = 600;
+
 // Firestore'ga yozishdan oldin tayyorlash: leaderboard maydonlari,
 // vaqtinchalik kalitlar va eski davr (weekly_/monthly_) kalitlarini tozalash.
 // Eski kalitlar deleteField() bilan hujjatdan ham o'chiriladi — aks holda doc cheksiz o'sadi.
@@ -667,14 +707,24 @@ export const AppProvider = ({ children }) => {
   }, [user?.uid]);
 
   // ─── 2. Statistika o'zgarganda Firestore'ga saqlash (DEBOUNCED) ───
-  // Har o'zgarishda emas, 3 soniya kutib, oxirgi holatni bir marta yozadi.
-  // Bu test paytida ~50 ta write o'rniga 2-3 ta write qiladi.
+  // Har o'zgarishda emas: debounce (CLOUD_DEBOUNCE_MS) + maksimal kutish
+  // shifti (CLOUD_MAX_WAIT_MS) bilan oxirgi holat bir marta yoziladi.
+  //
+  // ⚠️ Bu izoh ilgari "3 soniya kutib ... ~50 ta write o'rniga 2-3 ta write"
+  // deb turardi — va u XATO edi. 3 soniyalik debounce bilan har javobdan
+  // keyin jimlik yuzaga keladi, ya'ni amalda HAR JAVOBGA bitta yozuv
+  // ketardi (~50 ta), 2-3 ta emas. Aynan shu 2026-08-20 da kunlik yozuv
+  // kvotasini tugatdi. Sabab va hisob-kitob CLOUD_DEBOUNCE_MS izohida.
   const saveTimerRef = useRef(null);
   const localTimerRef = useRef(null);
   const flushSaveRef = useRef(null);
   // X-1: bulutga yozuv tasdiqlanmagan bo'lsa `true` turadi
   const pendingCloudRef = useRef(false);
   const retryCloudRef = useRef(null);
+  // Bulutga saqlanmagan ENG ESKI o'zgarish vaqti (ms). `CLOUD_MAX_WAIT_MS`
+  // shifti shu qiymatdan hisoblanadi — uzluksiz javob berishda debounce
+  // taymeri cheksiz qayta boshlanib, yozuv umuman bo'lmasligining oldini oladi.
+  const oldestPendingRef = useRef(null);
 
   useEffect(() => {
     if (!user || !cloudSynced) return;
@@ -713,6 +763,8 @@ export const AppProvider = ({ children }) => {
     //      keyingi kirishda tiklaydi (shu sababli merge qoidalari MUHIM).
     const writeCloudNow = () => {
       saveTimerRef.current = null;
+      // Kutish oynasi yopildi — maksimal kutish shifti shu paytdan qayta sanaydi.
+      oldestPendingRef.current = null;
       const statRef = doc(db, 'userStats', user.uid);
       const uidAtWrite = user.uid;
       pendingCloudRef.current = true;
@@ -735,13 +787,32 @@ export const AppProvider = ({ children }) => {
       if (saveTimerRef.current) { clearTimeout(saveTimerRef.current); writeCloudNow(); }
     };
 
-    // Lokal zaxira — qisqa debounce (qulash/yopilishdan himoya tez bo'lishi kerak)
+    // Lokal zaxira — qisqa debounce (qulash/yopilishdan himoya tez bo'lishi kerak).
+    // ⚠️ BU QIYMATGA TEGILMADI: ma'lumot yo'qolishidan himoya aynan shu yerda,
+    // bulutda emas. Kvotani tejash uchun faqat BULUT ritmi sekinlashtirildi.
     clearTimeout(localTimerRef.current);
-    localTimerRef.current = setTimeout(writeLocalNow, 600);
+    localTimerRef.current = setTimeout(writeLocalNow, LOCAL_DEBOUNCE_MS);
 
-    // Firestore ga debounced yozish — 3 soniya kutib
+    // ── Firestore: debounce + maksimal kutish shifti ──
+    //
+    // Sof debounce YETARLI EMAS: test yechayotgan odam uzluksiz javob
+    // berayotganda taymer har safar qayta boshlanadi va yozuv umuman
+    // bo'lmasligi mumkin (yarim soatlik testda bulutda hech narsa yo'q).
+    // Shift esa buni chegaralaydi: birinchi saqlanmagan o'zgarishdan
+    // beri CLOUD_MAX_WAIT_MS o'tgan bo'lsa, jimlik kutilmaydi.
+    const now = Date.now();
+    if (oldestPendingRef.current === null) oldestPendingRef.current = now;
+
+    const delay = nextCloudSaveDelay({
+      oldestPendingAt: oldestPendingRef.current,
+      now,
+      debounceMs: CLOUD_DEBOUNCE_MS,
+      maxWaitMs: CLOUD_MAX_WAIT_MS,
+    });
+
     clearTimeout(saveTimerRef.current);
-    saveTimerRef.current = setTimeout(writeCloudNow, 3000);
+    if (delay === 0) writeCloudNow();
+    else saveTimerRef.current = setTimeout(writeCloudNow, delay);
 
     return () => {
       clearTimeout(localTimerRef.current);

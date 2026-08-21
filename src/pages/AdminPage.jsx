@@ -47,6 +47,9 @@ import { useModalA11y } from '../hooks/useModalA11y';
 // Foydalanuvchi qidiruvi ALOHIDA modulda va testga olingan (utils/userSearch.js):
 // aynan bu mantiq jimgina buzilib, mavjud odamni "bazada yo'q" ko'rsatgan edi.
 import { matchesUserSearch } from '../utils/userSearch';
+// 2026-08-20: «Xatolik yuz berdi» xabari sababni yashirib, adminni bir necha
+// soat noto'g'ri joyda qidirishga majbur qildi (haqiqiy sabab — kvota tugashi).
+import { describeFirebaseError, withWriteTimeout } from '../utils/firebaseError';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
 
 // Ro'yxatlar uchun yagona chegara. `users`/`referrals` ilgari CHEGARASIZ
@@ -1685,7 +1688,10 @@ try {
     try {
       await updateDoc(doc(db, 'objections', fbId), { solved: true, solvedBy: user.email, solvedAt: new Date() });
       showToast("✅ E'tiroz hal qilindi!", 'success');
-    } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+    } catch (e) {
+      console.error('admin amali xatosi:', e?.code, e?.message);
+      showToast(describeFirebaseError(e), 'error');
+    }
   };
 
   const handleDeleteObjection = (fbId) => {
@@ -1693,7 +1699,10 @@ try {
 try {
       await deleteDoc(doc(db, 'objections', fbId));
       showToast("🗑️ O'chirildi", 'info');
-    } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+    } catch (e) {
+      console.error('admin amali xatosi:', e?.code, e?.message);
+      showToast(describeFirebaseError(e), 'error');
+    }
     });
   };
 
@@ -1778,16 +1787,19 @@ try {
         : '';
       confirmAction(`"${label}" foydalanuvchidan Pro statusini olib tashlaysizmi?${paidWarning}`, async () => {
         try {
-          await updateDoc(doc(db, 'users', userId), {
+          await withWriteTimeout(updateDoc(doc(db, 'users', userId), {
             isPremium: false,
             premiumExpire: null,
             premiumPlan: 'expired',
-          });
+          }));
           setUsers(prev => prev.map(x => x.id === userId
             ? { ...x, isPremium: false, premiumExpire: null, premiumPlan: 'expired' } : x));
           logAdminAction('premium.revoke', userId, { oldingiReja: u?.premiumPlan || null });
           showToast("Pro bekor qilindi", 'info');
-        } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+        } catch (e) {
+          console.error('premium.revoke xatosi:', e?.code, e?.message);
+          showToast(describeFirebaseError(e), 'error');
+        }
       });
       return;
     }
@@ -1817,20 +1829,27 @@ try {
       const premiumExpire = expire.toISOString();
       // premiumPlan: 'admin' — 'paid' EMAS. Shu bois muddat o'tganda AuthContext
       // avtomatik tugatadi (to'lov/promo obunalariga tegmaydi).
-      await updateDoc(doc(db, 'users', userId), {
+      await withWriteTimeout(updateDoc(doc(db, 'users', userId), {
         isPremium: true,
         premiumExpire,
         premiumPlan: 'admin',
         premiumSince: new Date().toISOString(),
         premiumMethod: 'admin',
-      });
+      }));
       setUsers(prev => prev.map(u => u.id === userId
         ? { ...u, isPremium: true, premiumExpire, premiumPlan: 'admin' } : u));
       logAdminAction('premium.grant', userId, { gacha: premiumUntil });
       showToast(`Pro berildi — ${new Date(premiumExpire).toLocaleDateString('uz-UZ')} gacha ✅`, 'success');
       setPremiumModal(null);
     } catch (e) {
-      showToast("Xatolik yuz berdi", 'error');
+      // ⚠️ 2026-08-20 HODISASI. Bu yerda ilgari `showToast("Xatolik yuz berdi")`
+      // turardi va u AMALDA HECH QACHON KO'RINMASDI. Sabab: kvota tugaganda
+      // (`resource-exhausted`) Firestore promise'ni rad etmaydi — cheksiz qayta
+      // uradi. Ya'ni `await` tugamaydi, `catch` ishga tushmaydi, `finally` ham
+      // yonmaydi: tugma abadiy «saqlanmoqda» holatida qoladi.
+      // Endi yozuv `withWriteTimeout` bilan chegaralangan va sabab aytiladi.
+      console.error('premium.grant xatosi:', e?.code, e?.message);
+      showToast(describeFirebaseError(e), 'error');
     } finally {
       setPremiumSaving(false);
     }
@@ -1897,7 +1916,10 @@ try {
           nextRole === 'partner' ? { partnerCode } : undefined,
         );
         showToast(`Rol o'zgartirildi: ${label}`, 'success');
-      } catch { showToast('Xatolik yuz berdi', 'error'); }
+      } catch (e) {
+        console.error('admin amali xatosi:', e?.code, e?.message);
+        showToast(describeFirebaseError(e), 'error');
+      }
     });
   };
 
@@ -2131,7 +2153,8 @@ try {
       setEditingQ(null);
       setNewQ({ q: '', opts: ['', '', '', ''], correct: 0, topicId: 0, explanation: '', mnemonic: '', image: '' });
     } catch (e) {
-      showToast("Xatolik yuz berdi", 'error');
+      console.error('admin amali xatosi:', e?.code, e?.message);
+      showToast(describeFirebaseError(e), 'error');
     }
   };
 
@@ -2481,7 +2504,10 @@ try {
       setPendingPublish(true); // B-6
       showToast("🗑️ Savol o'chirildi", 'info');
       setQuestions(prev => prev.filter(q => q.id !== id));
-    } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+    } catch (e) {
+      console.error('admin amali xatosi:', e?.code, e?.message);
+      showToast(describeFirebaseError(e), 'error');
+    }
     });
   };
 
@@ -2522,7 +2548,10 @@ try {
       showToast("✅ Tarif saqlandi!", 'success');
       setIsAddingTariff(false);
       setEditingTariff(null);
-    } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+    } catch (e) {
+      console.error('admin amali xatosi:', e?.code, e?.message);
+      showToast(describeFirebaseError(e), 'error');
+    }
   };
 
   const handleDeleteTariff = (tariffId) => {
@@ -2536,7 +2565,10 @@ try {
       await setDoc(doc(db, 'settings', 'premium'), { plans: updatedTariffs }, { merge: true });
       logAdminAction('tariff.delete', tariffId);
       showToast("🗑️ Tarif o'chirildi", 'info');
-    } catch (e) { showToast("Xatolik yuz berdi", 'error'); }
+    } catch (e) {
+      console.error('admin amali xatosi:', e?.code, e?.message);
+      showToast(describeFirebaseError(e), 'error');
+    }
     });
   };
 
