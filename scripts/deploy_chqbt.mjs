@@ -3,7 +3,10 @@ import path from 'node:path';
 import 'dotenv/config';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import {
+  getFirestore, doc, getDoc, setDoc,
+  collection, query, where, getCountFromServer,
+} from 'firebase/firestore';
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
 
 const MAX_CHUNK_BYTES = 800 * 1024;
@@ -81,6 +84,33 @@ async function main() {
 
   const nowIso = new Date().toISOString();
   const category = 'chqbt';
+
+  // ── XAVFSIZLIK TO'SIG'I: PAKETNI KICHRAYTIRISHGA YO'L QO'YMAYDI ──────────
+  //
+  // 2026-08-21 da shu skript CHQBT paketini 2 636 tadan 399 taga tushirib
+  // yubordi. Sababi: skript paketni `questions` kolleksiyasidan EMAS, shu
+  // lokal fayldan quradi — lokal faylda esa mutlaqo boshqa (kichik) to'plam
+  // bor edi. Foydalanuvchilar yarim kun davomida 2 636 o'rniga 399 ta savol
+  // oldi va buni hech kim sezmadi, chunki skript hech narsa demasdan
+  // "muvaffaqiyatli" tugagandi.
+  //
+  // To'g'ri yo'l — savollarni avval `questions` kolleksiyasiga qo'shish, keyin
+  // `node scripts/build-fs-bundle.mjs chqbt` bilan paketni QAYTA QURISH.
+  // Shu skript esa faqat ataylab, --force bilan ishlatilsin.
+  const liveCount = await getCountFromServer(
+    query(collection(db, 'questions'), where('category', '==', category))
+  ).then(s => s.data().count).catch(() => null);
+
+  if (liveCount !== null && rawQuestions.length < liveCount) {
+    console.error(`\n🛑 TO'XTATILDI — paket kichrayib ketardi.`);
+    console.error(`   questions kolleksiyasida : ${liveCount} ta savol`);
+    console.error(`   bu fayldan yozilardi     : ${rawQuestions.length} ta savol`);
+    console.error(`   → ${liveCount - rawQuestions.length} ta savol foydalanuvchidan yo'qolardi.\n`);
+    console.error(`   Paketni kolleksiyadan qurish uchun:`);
+    console.error(`     node scripts/build-fs-bundle.mjs ${category}\n`);
+    if (!process.argv.includes('--force')) process.exit(1);
+    console.warn('   ⚠️  --force berilgan — davom etilmoqda.\n');
+  }
 
   // 3. Upload Firestore Bundle Chunks (questionBundles/chqbt__n)
   console.log('\n📤 1-QADAM: Firestore Smart Bundle bo\'laklari yozilmoqda...');
