@@ -23,7 +23,8 @@ import PremiumModal from '../components/PremiumModal';
 import FreeMonthBanner from '../components/FreeMonthBanner';
 import { BATCH_SIZE, QUESTION_TIMER_SECONDS } from '../config';
 import { db, auth } from '../firebase';
-import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { getSettings } from '../utils/settingsCache';
 import { smartSort, summarizeTestResults, questionKey, TIMED_OUT } from '../engine/SmartQuestionEngine';
 import { buildMistakeDrill, mistakeKey } from '../engine/mistakeQueue';
 import { examAtMs } from '../utils/examDate';
@@ -153,7 +154,6 @@ const TestPage = () => {
   };
   const { isTrialExpired } = useTrialExpiry();
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
-  const versionCacheRef = useRef(null);
 
 
 
@@ -532,26 +532,19 @@ const TestPage = () => {
           }).filter(q => q.correct >= 0);
         }
       } else {
-        // 1. Firebase'dan faqat 1 dona qog'ozni o'qiymiz (Versiyani bilish uchun - sessiya davomida 1 marta)
-        let remoteVersion = 0;
-
-        if (!versionCacheRef.current) {
-          try {
-            const versionDocRef = doc(db, 'settings', 'version');
-            const versionSnap = await getDoc(versionDocRef);
-            if (versionSnap.exists()) {
-              versionCacheRef.current = versionSnap.data();
-            } else {
-              versionCacheRef.current = { dbVersion: 0, urls: {} };
-            }
-          } catch (e) {
-            console.error("Version xatosi:", e);
-            versionCacheRef.current = { dbVersion: 0, urls: {} };
-          }
-        }
-
-        const vData = versionCacheRef.current;
-        remoteVersion = vData.dbVersion || 0;
+        // 1. Savol bazasi versiyasi — bitta hujjat (settings/version).
+        //
+        // KESH SEANS DOIRASIDA (sessionStorage), TTL YO'Q. Nega aynan shunday:
+        //   · TTL qo'ysak, admin savolni tuzatgandan keyin foydalanuvchi eski
+        //     paket bilan TTL tugaguncha qolardi — savol mazmuni bu yerda
+        //     muhim, shuning uchun ilova har ochilganda yangisi olinadi;
+        //   · lekin BITTA seans ichida TestPage va ExamPage o'rtasida
+        //     qatnaganda takror o'qish bekorga edi (ilgari har mount = 1 o'qish,
+        //     ExamPage'da esa har imtihon boshlanishida).
+        // Kalit ikkala sahifada bir xil, ya'ni kesh ular orasida bo'linadi.
+        const vData = (await getSettings('version', { scope: 'session', ttlMs: null }))
+          || { dbVersion: 0, urls: {} };
+        const remoteVersion = vData.dbVersion || 0;
         // `vData.urls` ATAYLAB ishlatilmaydi — ochiq Storage havolalari orqali
         // yuklash yo'li olib tashlangan (audit 2026-08-05, 2-band).
 

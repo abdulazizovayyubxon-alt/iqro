@@ -100,6 +100,9 @@ bir marta ochganda:
 | Savollar | 0 ✅ | 0 ✅ |
 | Token yangilanishida | **hammasi QAYTA o'qilardi** | qayta o'qilmaydi |
 
+> ⚠️ **Bu jadval 2026-08-14 holati.** Ikkinchi bosqich 2026-08-22 da
+> bajarildi — yangi raqamlar **1.6-bo'limda**.
+
 ### Tuzatilgan uchta nuqta
 
 1. **[useNotifications.js](src/hooks/useNotifications.js)** — ikkala `onSnapshot`
@@ -172,6 +175,102 @@ Admin Questions tabi:
   Oldin:  tasodifiy bosishda 47 038 o'qish
   Keyin:  0 (ataylab tasdiqlanmaguncha)
 ```
+
+---
+
+
+---
+
+## 1.6. Ikkinchi bosqich — 2026-08-22
+
+Birinchi bosqich (yuqorida) eng katta yiqilishlarni to'xtatgan edi. Bu bosqich
+qolgan **takroriy** o'qishlarni oldi: hech biri foydalanuvchi funksiyasi emas,
+hammasi bir xil ma'lumotni qayta-qayta so'rash edi.
+
+### Seansiga o'qish (Dashboard → test → reyting)
+
+| Manba | Oldin | Keyin | Nima qilindi |
+|---|---:|---:|---|
+| `notifications` (global) | ≤30 | **~1** | Cron/admin yozadigan bitta surat hujjati + faqat undan keyingilarini tinglash |
+| `users/{uid}/notifications` | ≤30 | **~1** | Lokal kursor: `where('date','>',kursor)` — subkolleksiya faqat to'ldiriladi |
+| Reyting (sahifa ochilsa) | 52 | **1** | Snapshot oynasi 30 daqiqadan **26 soatga** |
+| `users/{uid}` | 3 | **1** | `AuthContext` jonli nusxani `userDoc` sifatida beradi |
+| `settings/questionMeta` + `premium` | 2 × har mount | **~0** | 6 soatlik localStorage keshi |
+| `settings/version` | har mount | **1/seans** | Seans keshi (TestPage ↔ ExamPage bo'lishadi) |
+| `firestore.rules` ichidagi `get()` | ~4 | **0** | `isAdmin()` `\|\|` zanjirining oxiriga surildi |
+| **JAMI** | **~125** | **~6** | |
+
+Sig'im: **~400 kunlik faol foydalanuvchi → ~5 000+** (Spark, 50 000 o'qish/kun).
+
+### Nima qilindi va nega
+
+**1. Qo'ng'iroq — sarfning ~88% i shu yerda edi.**
+Ikkita `onSnapshot`, har biri `limit(30)`, har ilova ochilishida boshidan.
+Firestore keshi ataylab xotirada, ya'ni har seans to'liq to'lanardi.
+- *Umumiy e'lonlar* hamma uchun bir xil → ular endi bitta hujjatda:
+  `settings/announcements`. Uni **admin panel qo'shimcha o'qishsiz yozadi**
+  (ro'yxat u yerda allaqachon xotirada). Suratdan keyin qo'shilganlar jonli
+  tinglovchi bilan keladi (`where('date','>', updatedAt)`) — «jonli» xususiyat
+  yo'qolmadi.
+- *Shaxsiy bildirishnomalar* faqat qo'shiladi, hech kim eskisini tahrirlamaydi
+  → lokal kursordan keyingilarigina so'raladi.
+- **Chegara (bilib turib qabul qilingan):** eski e'lon tahrirlansa yoki
+  o'chirilsa, o'zgarish qurilmaga admin suratni keyingi marta yangilaganda
+  yetadi. Yangi e'lon esa darhol keladi.
+
+**2. Reyting snapshot'i ishlamayotgan ekan.**
+`SNAPSHOT_MAX_AGE` 30 daqiqa edi, cron esa kuniga bir marta (`0 6 * * *`).
+Ya'ni kunning 23.5 soatida snapshot «eskirgan» deb tashlanardi va har kim
+baribir 50 ta hujjat o'qirdi — **optimizatsiya yozilgan, foydasi yo'q edi.**
+Endi oyna 26 soat. «Reyting qotib qolgandek ko'rinadi» e'tirozi yashirish
+bilan emas, **rostini aytish** bilan yechildi: taxta tepasida «Yangilangan:
+06:00». Top-50 dan tashqaridagining o'z o'rni hamon jonli sanaladi.
+
+> ⚠️ Endi bu blok **kritik**: cron yiqilsa yoki `updatedAt` 26 soatdan eskirsa,
+> har foydalanuvchi yana 50 ta o'qishga tushadi. `meta/cronHealth` ni kuzating.
+
+**3. `firestore.rules` — `isAdmin()` zanjirning boshida turardi.**
+Uning ichidagi `get(users/{uid})` ni Firestore **oddiy hujjat o'qishi** deb
+sanaydi, `||` esa chapdan o'ngga baholanadi. Ya'ni har `userStats` yozuvi
+(test yakuni) va har `users` yangilanishi (kunlik faollik, imtihon sanasi,
+sozlamalar, push holati) shu `get()` ni to'lardi. Endi arzon shart oldinda.
+Mantiq o'zgarmadi (`A || B` ≡ `B || A`). Qoida fayl boshida yozib qo'yilgan.
+
+**4. `users/{uid}` uch marta o'qilardi.**
+`AuthContext` uni `onSnapshot` bilan tinglaydi, lekin Header, ProfileDrawer,
+SettingsPage (ikki joyda), PremiumModal va SchoolPage har biri qaytadan
+`getDoc` qilardi. ProfileDrawer'niki eng yomoni edi: effekt `[user]` ga
+bog'langan, `user` esa hujjat har o'zgarganda yangidan yasaladi → har
+o'zgarish yana bitta o'qish. Endi kontekst xom hujjatni `userDoc` sifatida
+beradi.
+
+**5. `settings/*` har mount'da qayta o'qilardi.**
+`utils/settingsCache.js` — 6 soatlik TTL (`examDate.js` dagi naqsh
+umumlashtirildi). Admin hujjatni yangilaganda kesh bekor qilinadi.
+
+> ⚠️ **`settings/premium` TO'LOV YO'LIDA KESHLANMAYDI.** `PremiumModal` uni
+> ataylab to'g'ridan-to'g'ri o'qiydi: to'lov summasi shu ro'yxatdan yasaladi va
+> `api/payment-webhook.js:218` uni Firestore'dagi narx bilan solishtiradi.
+> Eskirgan narx = `amount_mismatch` = **foydalanuvchi to'lay olmaydi.**
+> Dashboard banneri faqat ko'rsatadi, shuning uchun u keshdan oladi.
+
+**6. `api/cron-reminder.js` — narx faol foydalanuvchiga bog'lanmagan edi.**
+Butun `users` kolleksiyasi o'qilardi, so'ng har token'li foydalanuvchi uchun
+**alohida, ketma-ket** `userStats.get()`. Endi boshlang'ich nuqta —
+`userStats` dagi faol hujjatlar (`lastActiveAt >= 30 kun`), mos profillar esa
+bitta `getAll()` da. Natija aynan bir xil (nofaol hisob ilgari ham chetlab
+o'tilardi), lekin nofaol hisob endi **umuman o'qilmaydi**. Yon foyda:
+yuzlab ketma-ket `get()` yo'qoldi — 60 s chegarasiga eng yaqin joy shu edi.
+
+### Ataylab TEGILMAGAN joylar
+
+| Joy | Nega |
+|---|---|
+| `AuthContext` dagi boshlang'ich `getDoc(users/{uid})` | Kirish yo'li: hujjat yo'q bo'lsa yaratadi va referral qo'llaydi — tinglovchi hali mavjud emas. 1 o'qish uchun bu xavf arzimaydi |
+| `App.jsx` onboarding tekshiruvi | Birinchi muvaffaqiyatdan keyin localStorage'da keshlanadi — amalda 0 o'qish |
+| `api/cron-daily.js` to'liq skani | Foydalanuvchi qarori (2026-08-22): ID to'ldirish va push statistikasi **har kunlik** qolsin |
+| `settings/version` TTL'i | Savol mazmuni muhim: admin savolni tuzatgach foydalanuvchi TTL tugashini kutmasligi kerak. Faqat seans ichidagi takror olib tashlandi |
+| Vercel funksiyalari soni | `api/` da aniq **12** ta route, Hobby chegarasi ham 12. Shuning uchun `/api/leaderboard` qo'shilmadi — reyting cron surati bilan yechildi |
 
 ---
 

@@ -7,8 +7,9 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, CheckCircle, Search } from 'lucide-react';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import { getSettings } from '../utils/settingsCache';
 import { useAuth } from '../context/AuthContext';
 import { useIsMobile } from '../hooks/useIsMobile';
 import BrandLogo from '../components/shared/BrandLogo';
@@ -381,10 +382,14 @@ export default function OnboardingPage({ onComplete, onSubjectChosen }) {
 
   // Fan bo'yicha savol soni (ishonch badge) — AdminPage «Yangilanishni yuborish» yozadi
   const [questionMeta, setQuestionMeta] = useState(null);
+  // Kesh 6 soat (utils/settingsCache) — Dashboard bilan BIR XIL kalitni
+  // ishlatadi, ya'ni onboarding'dan keyin Dashboard uni qayta o'qimaydi.
   useEffect(() => {
-    getDoc(doc(db, 'settings', 'questionMeta'))
-      .then(snap => { if (snap.exists()) setQuestionMeta(snap.data()); })
-      .catch(() => {});
+    let cancelled = false;
+    getSettings('questionMeta').then(data => {
+      if (!cancelled && data) setQuestionMeta(data);
+    });
+    return () => { cancelled = true; };
   }, []);
 
   const goalsItems = GOALS.map(g => ({ ...g, title: t(`onboarding.goals.${g.id}.title`), desc: t(`onboarding.goals.${g.id}.desc`) }));

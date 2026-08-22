@@ -170,3 +170,13 @@
 .lb-confirm-actions { display: flex; gap: 12px; }
 .lb-confirm-actions .btn { flex: 1; padding: 12px; }
 .lb-confirm-del { background: var(--red); color: #fff; border: none; border-radius: 12px; font-weight: 700; }
+
+/* Reyting qachonlik holat ekani — taxta tepasidagi kichik yozuv.
+   Ro'yxat kuniga bir marta oldindan hisoblanadi (o'qish byudjeti), shuning
+   uchun sana YASHIRILMAYDI. Ohang sokin: bu ogohlantirish emas, ma'lumot. */
+.lb-freshness {
+  text-align: center;
+  font-size: var(--fs-xs);
+  color: var(--text3);
+  margin: -4px 0 10px;
+}

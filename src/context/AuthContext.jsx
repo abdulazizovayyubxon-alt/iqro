@@ -209,6 +209,28 @@ export const AuthProvider = ({ children }) => {
     return !localStorage.getItem('iqro_cached_user');
   });
   const [authError, setAuthError] = useState('');
+  // ── users/{uid} hujjatining JONLI nusxasi ────────────────────────────────
+  //
+  // NEGA BOR — O'QISH BYUDJETI. Bu kontekst quyida shu hujjatni `onSnapshot`
+  // bilan tinglaydi, ya'ni uning eng yangi nusxasi ALLAQACHON xotirada turadi.
+  // Shunga qaramay Header (imtihon sanasi), ProfileDrawer, SettingsPage (ikki
+  // joyda), PremiumModal va SchoolPage har biri o'sha hujjatni QAYTADAN
+  // `getDoc` bilan o'qirdi — seansiga bir necha ortiqcha o'qish, ProfileDrawer
+  // holatida esa hujjat har o'zgarganda yana bittadan.
+  //
+  // `user` obyektidan FARQI: `user` — tanlangan maydonlar ro'yxati (premium,
+  // rol, unvon…). Bu yerda esa XOM hujjat: `examDate`, `dailyReminder`,
+  // `firstName`, `teacherCategory`, `referralBonus` kabi maydonlar faqat shu
+  // yerda bor.
+  //
+  // `null` = hali yuklanmagan (yoki tizimga kirilmagan) — «maydon yo'q» EMAS.
+  // Iste'molchilar shuni farqlashi kerak.
+  const [userDoc, setUserDoc] = useState(null);
+  // `userDoc === null` ikki xil holatni bildiradi: «hali yuklanmagan» va
+  // «hujjat yo'q». Ularni farqlash uchun alohida bayroq — boshlang'ich
+  // `onAuthStateChanged` tugagach (muvaffaqiyatli YOKI xato bilan) true
+  // bo'ladi. Busiz iste'molchi oflayn holatda cheksiz «yuklanmoqda» ko'rsatardi.
+  const [userDocLoaded, setUserDocLoaded] = useState(false);
 
 
   useEffect(() => {
@@ -246,6 +268,7 @@ export const AuthProvider = ({ children }) => {
             const userSnap = await getDoc(userRef);
             if (userSnap.exists()) {
               const data = userSnap.data();
+              setUserDoc(data);
               isPremium = data.isPremium || false;
               role = data.role || 'user';
               avatarId = data.avatarId || null;
@@ -385,13 +408,16 @@ export const AuthProvider = ({ children }) => {
         } else {
           localStorage.removeItem('iqro_cached_user');
           setUser(null);
+          setUserDoc(null);
         }
       } catch (err) {
         console.error('onAuthStateChanged umumiy xatosi:', err);
         localStorage.removeItem('iqro_cached_user');
         setUser(null);
+        setUserDoc(null);
       } finally {
         setLoading(false);
+        setUserDocLoaded(true);
       }
     });
     return () => unsubscribe();
@@ -772,6 +798,9 @@ export const AuthProvider = ({ children }) => {
       (snap) => {
         if (!snap.exists()) return;
         const data = snap.data();
+        // Xom hujjatni ham tarqatamiz — iste'molchilar o'z `getDoc` larini
+        // qilmasligi uchun (yuqoridagi `userDoc` izohiga qarang).
+        setUserDoc(data);
 
         // premiumExpire — muddatning yagona manbasi. Sana o'tgan bo'lsa obuna
         // tugagan; Firestore yozuvini onAuthStateChanged keyingi kirishda tuzatadi.
@@ -810,7 +839,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{
-      user, loading, authError, setAuthError,
+      user, userDoc, userDocLoaded, loading, authError, setAuthError,
       signInWithEmail, registerWithEmail,
       signInWithPhone,
       checkUserExists,

@@ -485,6 +485,8 @@
     "nextCard": "Следующий вопрос"
   },
   "leaderboard": {
+    "updatedAt": "Обновлено: {{time}}",
+    "liveNow": "Актуально",
     "flagScore": "аномалия баллов",
     "flagAccuracy": "подозрительная точность",
     "toastDeleted": "Результат удалён",

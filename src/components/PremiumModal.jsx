@@ -81,7 +81,7 @@ const FEATURES = [
  */
 const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
   const { t } = useTranslation();
-  const { user, updateUserData } = useAuth();
+  const { user, userDoc, updateUserData } = useAuth();
   const planNameMap = { monthly: t('premium.planMonthly'), quarterly: t('premium.planQuarterly'), yearly: t('premium.planYearly') };
   const badgeMap = { 'ENG OMMABOP': t('premium.badgePopular'), 'TEJAMKOR': t('premium.badgeSaver') };
   const planLabel = (p) => p ? (planNameMap[p.id] || p.name) : '';
@@ -114,33 +114,45 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
     if (isOpen) AnalyticsEvents.paywallView(source);
   }, [isOpen, source]);
 
+  // ── Tariflar ───────────────────────────────────────────────────────────
+  //
+  // ⚠️ BU YERDA KESH ISHLATILMAYDI — ATAYLAB. To'lov summasi aynan shu
+  // ro'yxatdan yasaladi va `api/payment-webhook.js:218` uni Firestore'dagi
+  // narx bilan solishtiradi: mos kelmasa to'lov `amount_mismatch` bilan rad
+  // etiladi. Ya'ni eskirgan narx = foydalanuvchi to'lay olmaydi. Dashboard
+  // banneri esa faqat KO'RSATADI, shuning uchun u `utils/settingsCache` dan
+  // oladi (izohi o'sha faylda).
+  //
+  // Bog'liqlik faqat `isOpen`. Ilgari `[isOpen, user]` edi va `user` obyekti
+  // users/{uid} har o'zgarganda yangidan yasalardi — modal ochiq turganda
+  // tariflar bekorga qayta o'qilardi, ustiga `setStep('plans')` foydalanuvchini
+  // to'lov qadamidan boshiga qaytarib yuborardi.
   useEffect(() => {
-    if (!isOpen || !user) return;
+    if (!isOpen) return;
     setStep('plans');
     setOrderCopied(false);
 
-    const fetchData = async () => {
-      try {
-        const docSnap = await getDoc(doc(db, 'settings', 'premium'));
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          if (data.plans?.length > 0) {
-            const dbPlans = data.plans;
-            setPlans(dbPlans);
-            // Default — yillik (eng uzun) plan
-            setSelectedPlan(dbPlans.find(p => p.id === 'yearly') || dbPlans[dbPlans.length - 1] || dbPlans[0]);
-          }
-        }
-        const userSnap = await getDoc(doc(db, 'users', user.uid));
-        if (userSnap.exists()) {
-          const d = userSnap.data();
-          setReferralBonus(d.referralBonus || 0);
-          setUserData(d);
-        }
-      } catch (e) { console.error('PremiumModal fetch error:', e); }
-    };
-    fetchData();
-  }, [isOpen, user]);
+    let cancelled = false;
+    getDoc(doc(db, 'settings', 'premium'))
+      .then(docSnap => {
+        if (cancelled || !docSnap.exists()) return;
+        const dbPlans = docSnap.data().plans;
+        if (!Array.isArray(dbPlans) || dbPlans.length === 0) return;
+        setPlans(dbPlans);
+        // Default — yillik (eng uzun) plan
+        setSelectedPlan(dbPlans.find(p => p.id === 'yearly') || dbPlans[dbPlans.length - 1] || dbPlans[0]);
+      })
+      .catch(e => console.error('PremiumModal tariflar xatosi:', e));
+    return () => { cancelled = true; };
+  }, [isOpen]);
+
+  // ── Foydalanuvchi ma'lumoti — AuthContext'dagi jonli nusxadan (0 o'qish) ──
+  // Ilgari bu yerda alohida `getDoc(users/{uid})` bor edi.
+  useEffect(() => {
+    if (!isOpen || !userDoc) return;
+    setReferralBonus(userDoc.referralBonus || 0);
+    setUserData(userDoc);
+  }, [isOpen, userDoc]);
 
   useEffect(() => {
     if (!isOpen) return;

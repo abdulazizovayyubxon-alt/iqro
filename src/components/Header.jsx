@@ -6,8 +6,6 @@ import { useAuth } from '../context/AuthContext';
 import { Moon, Sun, BookOpen, Calendar } from 'lucide-react';
 import GiftBox from './shared/GiftBox';
 import ProfileDrawer from './ProfileDrawer';
-import { db } from '../firebase';
-import { doc, getDoc } from 'firebase/firestore';
 import { EXAM_DATE_KEY } from '../utils/examDate';
 import { useExamCountdown } from '../hooks/useExamDaysLeft';
 import ExamDateModal from './ExamDateModal';
@@ -25,7 +23,7 @@ const Header = ({ theme, toggleTheme }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { toast, showToast } = useContext(ToastContext);
-  const { user } = useAuth();
+  const { user, userDoc } = useAuth();
 
   const exam = useExamCountdown();
   const [showUserMenu, setShowUserMenu] = useState(false);
@@ -96,23 +94,28 @@ const Header = ({ theme, toggleTheme }) => {
   // --- Imtihon sanasi modali (umumiy komponent: Dashboard ham shuni ochadi) ---
   const [showExamModal, setShowExamModal] = useState(false);
 
-  // Shaxsiy sanani Firestore'dan localStorage'ga sinxronlash (qurilmalar arasi).
+  // Shaxsiy sanani localStorage'ga sinxronlash (qurilmalar arasi).
   // Sanoqning o'zi useExamCountdown ichida hisoblanadi.
+  //
+  // ⚠️ O'QISH BYUDJETI: ilgari bu yerda `getDoc(users/{uid})` turardi, holbuki
+  // AuthContext AYNAN o'sha hujjatni `onSnapshot` bilan tinglaydi. Header
+  // deyarli har sahifada bo'ladi va effekt `[user]` ga bog'langan edi — ya'ni
+  // hujjat har o'zgarganda yana bitta o'qish ketardi. Endi 0 o'qish.
   useEffect(() => {
-    if (!user) return;
-    let cancelled = false;
-    getDoc(doc(db, 'users', user.uid))
-      .then(snap => {
-        if (cancelled || !snap.exists() || !snap.data().examDate) return;
-        const firestoreDate = snap.data().examDate;
-        localStorage.setItem('iqro_exam_date', firestoreDate);
-        localStorage.setItem(EXAM_DATE_KEY, new Date(firestoreDate).toISOString());
-        exam.refresh();
-      })
-      .catch(e => console.warn('Exam date yuklashda xato:', e));
-    return () => { cancelled = true; };
+    const firestoreDate = userDoc?.examDate;
+    if (!firestoreDate) return;
+    try {
+      // Buzuq sana (`new Date(...)` → Invalid Date) butun effektni yiqitmasin:
+      // ilgari bu xato `.catch` ichiga tushardi, endi qo'lda ushlanadi.
+      const iso = new Date(firestoreDate).toISOString();
+      localStorage.setItem('iqro_exam_date', firestoreDate);
+      localStorage.setItem(EXAM_DATE_KEY, iso);
+      exam.refresh();
+    } catch (e) {
+      console.warn('Imtihon sanasi yaroqsiz:', firestoreDate, e?.message);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  }, [userDoc?.examDate]);
 
   const menuRef = useRef(null);
 

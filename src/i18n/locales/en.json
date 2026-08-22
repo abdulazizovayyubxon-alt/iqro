@@ -485,6 +485,8 @@
     "nextCard": "Next Question"
   },
   "leaderboard": {
+    "updatedAt": "Updated: {{time}}",
+    "liveNow": "Live",
     "flagScore": "Score anomaly",
     "flagAccuracy": "Suspicious accuracy",
     "toastDeleted": "Result removed",

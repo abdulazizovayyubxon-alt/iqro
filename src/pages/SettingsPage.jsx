@@ -18,7 +18,7 @@ import { AppContext } from '../context/AppContext';
 import { ToastContext } from '../context/ToastContext';
 import { PWAContext } from '../context/PWAContext';
 import { db, auth } from '../firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { updateProfile, reauthenticateWithCredential, EmailAuthProvider } from 'firebase/auth';
 import { APP_VERSION, SUPPORT_URL } from '../config';
 import { enablePush, pushPermission } from '../services/push';
@@ -118,7 +118,7 @@ function SwitchRow({ icon, tone, label, sublabel, checked, onToggle }) {
 
 export default function SettingsPage({ theme, toggleTheme }) {
   const { t, i18n } = useTranslation();
-  const { user, logout, changePassword } = useAuth();
+  const { user, userDoc, logout, changePassword } = useAuth();
   const { state, updateState } = useContext(AppContext);
   const { showToast } = useContext(ToastContext);
   const { isInstallable, installApp } = useContext(PWAContext);
@@ -172,21 +172,16 @@ export default function SettingsPage({ theme, toggleTheme }) {
   // push bo'lsin" demaydi. Shu sabab qator har doim ko'rinadi va bu effekt
   // `pushStatus` ga bog'lanmagan — SMS uchun brauzer ruxsati kerak emas.
   const [billingNotify, setBillingNotify] = useState(true);
+  // AuthContext'dagi jonli users/{uid} nusxasidan — 0 o'qish (ilgari getDoc).
+  // `userDoc === null` = hali yuklanmagan: tugmalar standart (yoqilgan)
+  // holatida qoladi, hujjat kelgach haqiqiy qiymatga o'tadi.
   useEffect(() => {
-    if (!user?.uid) return;
-    let alive = true;
-    getDoc(doc(db, 'users', user.uid))
-      .then(snap => {
-        if (!alive || !snap.exists()) return;
-        const d = snap.data();
-        setDailyReminder(d.dailyReminder !== false);
-        // Server `billingNotifyOptOut === true` ni tekshiradi — ya'ni maydon
-        // yo'q bo'lsa YOQILGAN. Bu yerdagi teskari o'qish ham shu qoidada.
-        setBillingNotify(d.billingNotifyOptOut !== true);
-      })
-      .catch(() => { /* o'qilmasa yoqilgan deb qoladi — cron ham shunday o'qiydi */ });
-    return () => { alive = false; };
-  }, [user?.uid]);
+    if (!userDoc) return;
+    setDailyReminder(userDoc.dailyReminder !== false);
+    // Server `billingNotifyOptOut === true` ni tekshiradi — ya'ni maydon
+    // yo'q bo'lsa YOQILGAN. Bu yerdagi teskari o'qish ham shu qoidada.
+    setBillingNotify(userDoc.billingNotifyOptOut !== true);
+  }, [userDoc]);
 
   const toggleDailyReminder = async () => {
     const next = !dailyReminder;
@@ -266,25 +261,21 @@ export default function SettingsPage({ theme, toggleTheme }) {
     setShowDeleteConfirm(false);
   });
 
-  // Profil ma'lumotlarini yuklash (tahrir formasi uchun)
+  // Profil ma'lumotlari (tahrir formasi uchun) — jonli nusxadan, 0 o'qish.
   useEffect(() => {
-    if (!user) return;
-    getDoc(doc(db, 'users', user.uid)).then(snap => {
-      if (snap.exists()) {
-        const d = snap.data();
-        const dn = d.displayName || user.displayName || '';
-        setEditForm({
-          firstName: d.firstName ?? (dn.split(' ')[0] || ''),
-          lastName: d.lastName ?? (dn.split(' ').slice(1).join(' ') || ''),
-          age: d.age || '',
-          gender: d.gender || '',
-          birthDate: d.birthDate || '',
-          subject: d.subject || '',
-          teacherCategory: d.teacherCategory || '',
-        });
-      }
-    }).catch(e => console.error('Profile load error:', e));
-  }, [user]);
+    if (!user || !userDoc) return;
+    const d = userDoc;
+    const dn = d.displayName || user.displayName || '';
+    setEditForm({
+      firstName: d.firstName ?? (dn.split(' ')[0] || ''),
+      lastName: d.lastName ?? (dn.split(' ').slice(1).join(' ') || ''),
+      age: d.age || '',
+      gender: d.gender || '',
+      birthDate: d.birthDate || '',
+      subject: d.subject || '',
+      teacherCategory: d.teacherCategory || '',
+    });
+  }, [user, userDoc]);
 
   if (!user) return null;
 

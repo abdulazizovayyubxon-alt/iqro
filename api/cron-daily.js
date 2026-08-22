@@ -754,13 +754,18 @@ export default async function handler(req, res) {
     // Bu yerda ro'yxat BIR MARTA hisoblanadi va bitta hujjatga yoziladi.
     // Mijoz uni 1 O'QISHDA oladi — 50× arzon.
     //
-    // ⚠️ MIJOZ BUNI FAQAT «YANGI» BO'LSA ISHLATADI (`LeaderboardPage`
-    // → `SNAPSHOT_MAX_AGE`). Sabab: cron hozir kuniga BIR MARTA ishlaydi,
-    // ya'ni snapshot kun davomida eskiradi va reyting qotib qolgandek
-    // ko'rinardi. Shuning uchun eskirgan snapshot E'TIBORSIZ qoldiriladi va
-    // mijoz avvalgidek jonli so'rov qiladi — bugungi xatti-harakat
-    // O'ZGARMAYDI. Cron chastotasi oshirilganda (Vercel Pro, masalan
-    // `*/15 * * * *`) tejash O'Z-O'ZIDAN yoqiladi, kodga tegmasdan.
+    // ⚠️ 2026-08-22 GACHA BU TEJASH ISHLAMAGAN. Mijozdagi yaroqlilik oynasi
+    // (`LeaderboardPage` → `SNAPSHOT_MAX_AGE`) 30 DAQIQA edi, cron esa kuniga
+    // bir marta ishlaydi — ya'ni surat kunning 23.5 soatida «eskirgan» deb
+    // tashlanardi va har kim baribir 50 ta hujjat o'qirdi.
+    //
+    // ENDI oyna 26 SOAT: surat kun bo'yi ishlatiladi. Eskiligi mijozda
+    // OCHIQ yoziladi («Yangilangan: 06:00»), ya'ni «reyting qotib qolgandek»
+    // muammosi yashirish bilan emas, rostini aytish bilan yechilgan.
+    //
+    // ⚠️ SHUNING UCHUN BU BLOK ENDI KRITIK: u ishlamay qolsa (yoki `updatedAt`
+    // 26 soatdan eskirsa) har foydalanuvchi yana 50 ta o'qishga tushadi.
+    // `meta/cronHealth` ni kuzatib turing.
     //
     // Narxi: 3 taxta × 50 hujjat = 150 o'qish/kun. Mijoz tomonda tejaladigan
     // raqam bilan solishtirganda hech narsa.

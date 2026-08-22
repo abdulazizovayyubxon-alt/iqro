@@ -35,8 +35,7 @@ import { EXAM_LABEL, BATCH_SIZE, EXAM_SESSION_KEY, examSessionKey, isPlayBuild, 
 import { sessionHasTime, sessionSecondsLeft, formatExamTime } from '../utils/examClock';
 import { useStudyContract } from '../hooks/useStudyContract';
 import { targetQuestions } from '../services/studyContract';
-import { db } from '../firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import { getSettings } from '../utils/settingsCache';
 
 // Kunlik narx = to'liq narx / (oy × 30). Firestore settings/premium'dagi tariflardan
 // eng arzon kunlik qiymat olinadi; hujjat bo'lmasa 12-oylik default (240 000/360 ≈ 667).
@@ -96,25 +95,35 @@ const Dashboard = () => {
   // Zanjir bugun uzilish arafasidami — yo'qotish ogohlantirishi (sof hisob)
   const risk = useMemo(() => streakRisk(state), [state]);
 
-  // Fan bo'yicha savol soni (ishonch badge) — AdminPage «Yangilanishni yuborish» yozadi
+  // Fan bo'yicha savol soni (ishonch badge) — AdminPage «Yangilanishni yuborish» yozadi.
+  // Kesh 6 soat (utils/settingsCache): ilgari bu "deps: []" bilan HAR
+  // mount'da qayta o'qirdi, Dashboard esa seansda bir necha marta ochiladi.
   useEffect(() => {
-    getDoc(doc(db, 'settings', 'questionMeta'))
-      .then(snap => { if (snap.exists()) setQuestionMeta(snap.data()); })
-      .catch(() => {});
+    let cancelled = false;
+    getSettings('questionMeta').then(data => {
+      if (!cancelled && data) setQuestionMeta(data);
+    });
+    return () => { cancelled = true; };
   }, []);
 
   // Obuna bannerida ko'rsatiladigan "kuniga … so'm dan" — eng arzon kunlik tarif.
   // Firestore'da hujjat/tariflar bo'lmasa default (DEFAULT_PRICE_FROM) qoladi;
   // PremiumModal ham xuddi shu hujjatni o'qigani uchun banner va modal mos bo'ladi.
+  //
+  // ⚠️ BU YERDA KESH XAVFSIZ, PremiumModal'da EMAS: bu raqam faqat bannerda
+  // KO'RSATILADI. To'lov summasi esa PremiumModal'da yaratiladi va
+  // api/payment-webhook.js uni settings/premium bilan solishtiradi — o'sha
+  // yerda eski narx to'lovni rad ettirardi (settingsCache.js izohiga qarang).
   useEffect(() => {
-    getDoc(doc(db, 'settings', 'premium'))
-      .then(snap => {
-        const plans = snap.exists() ? snap.data().plans : null;
-        if (!Array.isArray(plans) || plans.length === 0) return;
-        const perDays = plans.map(perDayOf).filter(v => v != null);
-        if (perDays.length) setPriceFrom(Math.min(...perDays));
-      })
-      .catch(() => {});
+    let cancelled = false;
+    getSettings('premium').then(data => {
+      if (cancelled) return;
+      const plans = data?.plans;
+      if (!Array.isArray(plans) || plans.length === 0) return;
+      const perDays = plans.map(perDayOf).filter(v => v != null);
+      if (perDays.length) setPriceFrom(Math.min(...perDays));
+    });
+    return () => { cancelled = true; };
   }, []);
 
   // Tugallanmagan imtihon (ExamPage localforage'ga yozadi) — "Davom etish" kartasi.

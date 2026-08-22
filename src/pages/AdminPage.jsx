@@ -4,6 +4,8 @@ import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useAdmin } from '../hooks/useAdmin';
 import { db, auth } from '../firebase';
+import { invalidateSettings } from '../utils/settingsCache';
+import { buildAnnouncementItems, publishAnnouncements } from '../utils/announcements';
 import {
   collection, query, orderBy, onSnapshot, where, getCountFromServer,
   updateDoc, deleteDoc, doc, getDoc, getDocs, addDoc, writeBatch, increment, setDoc, limit, documentId,
@@ -628,6 +630,7 @@ const AdminPage = () => {
   const [newNotif, setNewNotif] = useState({ title: '', message: '', type: 'info', targetUser: 'all' });
   const [isSendingNotif, setIsSendingNotif] = useState(false);
 
+  const [notifsLoaded, setNotifsLoaded] = useState(false);
   useEffect(() => {
     if (!isAdmin) return;
     // limit(100) — T-8: ilgari chegara yo'q edi, ya'ni kolleksiya o'sgani sari
@@ -635,9 +638,39 @@ const AdminPage = () => {
     const qNotifs = query(collection(db, 'notifications'), orderBy('date', 'desc'), limit(100));
     const unsub = onSnapshot(qNotifs, (snap) => {
       setAdminNotifs(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+      setNotifsLoaded(true);
     }, (err) => console.error("Notifs fetch error:", err));
     return () => unsub();
   }, [isAdmin]);
+
+  // ── Umumiy e'lonlar surati (O'QISH BYUDJETI) ────────────────────────────
+  //
+  // Har foydalanuvchi ilovani ochganda `notifications` kolleksiyasidan 30 ta
+  // hujjat o'qirdi. E'lonlar HAMMA uchun bir xil, ya'ni bu 30× ortiqcha ish
+  // edi. Bu yerda ro'yxat BITTA hujjatga (`settings/announcements`) yoziladi
+  // va mijoz uni 1 o'qishda oladi (`hooks/useNotifications.js`).
+  //
+  // QO'SHIMCHA O'QISH YO'Q: manba — yuqoridagi tinglovchi allaqachon
+  // yuklagan `adminNotifs`. Effekt yuborish, o'chirish va sahifa birinchi
+  // ochilishini BIR YO'LDA qamraydi, shuning uchun ishlov beruvchilarga
+  // tegishning hojati yo'q.
+  //
+  // `notifsLoaded` MUHIM: usiz birinchi renderdagi bo'sh massiv suratni
+  // o'chirib yuborardi.
+  const publishedSigRef = useRef(null);
+  useEffect(() => {
+    if (!isAdmin || !notifsLoaded) return;
+    const items = buildAnnouncementItems(adminNotifs);
+    const sig = JSON.stringify(items);
+    if (sig === publishedSigRef.current) return;
+    publishedSigRef.current = sig;
+    publishAnnouncements(items).catch(e => {
+      // Surat yozilmasa ilova buzilmaydi — mijoz eski yo'lga (30 o'qish)
+      // tushadi. Shuning uchun bu jimgina ogohlantirish.
+      console.warn("E'lonlar surati yozilmadi:", e?.code || e?.message || e);
+      publishedSigRef.current = null;   // keyingi o'zgarishda qayta urinsin
+    });
+  }, [isAdmin, notifsLoaded, adminNotifs]);
 
   // ── Umumiy statistika (count aggregation — barcha hujjatlarni o'qimaydi, arzon) ──
   const loadOverview = async () => {
@@ -2356,6 +2389,10 @@ try {
           if (Object.keys(questionMeta).length > 0) {
             await setDoc(doc(db, 'settings', 'questionMeta'), questionMeta, { merge: true });
           }
+          // Mijoz keshini bekor qilamiz (utils/settingsCache) — savol soni
+          // badge'i va versiya hujjati shu qurilmada darhol yangilansin.
+          invalidateSettings('questionMeta');
+          invalidateSettings('version');
 
           setPendingPublish(false);
           logAdminAction('question.publish', null, {
@@ -2544,6 +2581,7 @@ try {
       }
       // settings/premium hujjatini saqlash yoki yangilash (yo'q bo'lsa yaratiladi)
       await setDoc(doc(db, 'settings', 'premium'), { plans: updatedTariffs }, { merge: true });
+      invalidateSettings('premium');
       logAdminAction('tariff.save', normalized.id, { price, months });
       showToast("✅ Tarif saqlandi!", 'success');
       setIsAddingTariff(false);
@@ -2563,6 +2601,7 @@ try {
       // ishlanadi (default `lifetime` tarifi ko'rsatiladi), ya'ni admin aynan
       // o'sha ko'rsatilgan tarifni o'chirmoqchi bo'lsa sababsiz xato olardi.
       await setDoc(doc(db, 'settings', 'premium'), { plans: updatedTariffs }, { merge: true });
+      invalidateSettings('premium');
       logAdminAction('tariff.delete', tariffId);
       showToast("🗑️ Tarif o'chirildi", 'info');
     } catch (e) {

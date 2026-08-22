@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { ToastContext } from '../context/ToastContext';
 import { AppContext } from '../context/AppContext';
 import { db, auth } from '../firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { updateProfile } from 'firebase/auth';
 import { resolveAvatar, avatarUrl } from '../data/avatars';
 import { SUBJECTS, SUBJECT_COUNT } from '../data/mockData';
@@ -62,7 +62,7 @@ const formatPhone = (raw) => {
 const ProfileDrawer = ({ open, onClose, theme, user }) => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
-  const { updateUserData } = useAuth();
+  const { updateUserData, userDoc } = useAuth();
   const { showToast } = useContext(ToastContext);
   // `|| {}` — AppContext'ning default qiymati yo'q (createContext()); drawer
   // provider tashqarisida chizilsa destrukturizatsiya xato bermasligi kerak.
@@ -90,12 +90,17 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
     setShowPremium(false); setShowEdit(false); setShowAvatarPicker(false);
   });
 
-  // Profil ma'lumotlarini Firestore'dan yuklash
+  // Profil ma'lumotlari — AuthContext'dagi JONLI nusxadan (0 o'qish).
+  //
+  // ⚠️ Ilgari bu `getDoc` edi va effekt `[user]` ga bog'langan edi. `user`
+  // obyekti users/{uid} hujjati har o'zgarganda YANGIDAN yasaladi (AuthContext
+  // `updateUserData`), ya'ni drawer mount turganda har o'zgarish qo'shimcha
+  // o'qish keltirardi. Formaning qayta to'ldirilish xulqi o'zgarmadi — u ham
+  // avval har `user` o'zgarishida qayta to'lardi.
   useEffect(() => {
     if (!user) return;
-    getDoc(doc(db, 'users', user.uid)).then(snap => {
-      if (!snap.exists()) return;
-      const d = snap.data();
+    const d = userDoc;
+    if (d) {
       const dn = d.displayName || user.displayName || '';
       if (d.displayName) setProfileName(d.displayName);
       setAvatarId(d.avatarId || null);
@@ -109,13 +114,18 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
         subject: d.subject || '', teacherCategory: d.teacherCategory || '',
       });
       if (d.examDate) {
-        localStorage.setItem('iqro_exam_date', d.examDate);
-        localStorage.setItem('CUSTOM_EXAM_DATE', new Date(d.examDate).toISOString());
+        // Buzuq sana butun effektni yiqitmasin (ilgari .catch ushlab qolardi)
+        try {
+          localStorage.setItem('iqro_exam_date', d.examDate);
+          localStorage.setItem('CUSTOM_EXAM_DATE', new Date(d.examDate).toISOString());
+        } catch (e) {
+          console.warn('Imtihon sanasi yaroqsiz:', d.examDate, e?.message);
+        }
       }
       // Boshqa qurilmada tanlangan toifa/byudjet shu qurilmaga ham yetib borsin
       hydrateContract(d);
-    }).catch(e => console.error('Profile load error:', e));
-  }, [user]);
+    }
+  }, [user, userDoc]);
 
   // Urgency (72h) sanagich
   useEffect(() => {

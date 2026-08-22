@@ -27,7 +27,7 @@ import {
   deadlineFromSession, sessionHasTime, shouldFinalizeExpired,
 } from '../utils/examClock';
 import { db, auth } from '../firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import { getSettings } from '../utils/settingsCache';
 import { summarizeTestResults } from '../engine/SmartQuestionEngine';
 import { examAtMs } from '../utils/examDate';
 import { useStudyContract } from '../hooks/useStudyContract';
@@ -565,13 +565,10 @@ const ExamPage = () => {
       setLoading(true);
       try {
         // 🔥 AQLLI KESHLASH (JSON BUNDLING) 🔥
-        const versionDocRef = doc(db, 'settings', 'version');
-        const versionSnap = await getDoc(versionDocRef);
-        
-        let remoteVersion = 0;
-        if (versionSnap.exists()) {
-          remoteVersion = versionSnap.data().dbVersion || 0;
-        }
+        // Versiya hujjati seans doirasida keshlanadi — TestPage bilan bir xil
+        // kalit, izohi o'sha yerda (src/pages/TestPage.jsx).
+        const vData = await getSettings('version', { scope: 'session', ttlMs: null });
+        const remoteVersion = vData?.dbVersion || 0;
 
         // v2: old Storage-bundle caches are invalidated; fresh Firestore data will be used
         const cacheKey = `bundle_v2_${cat}`;

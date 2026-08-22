@@ -47,16 +47,36 @@ const LB_CACHE_TTL = 5 * 60 * 1000;
 //   400 foydalanuvchi:     20 000 → ~400 o'qish/kun
 //  50 000 foydalanuvchi: 2 500 000 →  50 000 o'qish/kun
 //
-// ⚠️ SNAPSHOT FAQAT «YANGI» BO'LSA ISHLATILADI. Cron hozir kuniga BIR MARTA
-// ishlaydi (`vercel.json`: `0 6 * * *`), ya'ni snapshot kun davomida eskiradi.
-// Eskirganini ko'rsatsak reyting qotib qolgandek bo'lardi — foydalanuvchi
-// ball yig'adi, taxta esa qimirlamaydi. Shuning uchun eskirgan snapshot
-// E'TIBORSIZ qoldiriladi va avvalgi jonli so'rov ishlaydi.
+// ⚠️ 2026-08-22 — BU YERDA OPTIMIZATSIYA O'LIK EDI. Chegara 30 DAQIQA edi,
+// cron esa kuniga BIR MARTA ishlaydi (`vercel.json`: `0 6 * * *`). Ya'ni
+// snapshot kunning 23.5 soatida «eskirgan» deb tashlab yuborilardi va HAR
+// KIM baribir 50 ta hujjatni jonli o'qirdi. Kod yozilgan, foyda esa yo'q edi.
 //
-// Ya'ni BUGUN xatti-harakat o'zgarmaydi. Cron chastotasi oshirilganda
-// (masalan Vercel Pro'da `*/15 * * * *`) tejash O'Z-O'ZIDAN yoqiladi —
-// bu faylga qayta tegish shart emas.
-const SNAPSHOT_MAX_AGE = 30 * 60 * 1000;
+// ENDI 26 SOAT: cron oralig'idan (24 s) kattaroq, ya'ni snapshot kun bo'yi
+// ishlatiladi; ustidagi 2 soat esa cron kechikkan yoki bir marta o'tkazib
+// yuborilgan holat uchun zaxira. Undan ham eski bo'lsa — cron buzilgan
+// demakdir va sahifa avvalgidek jonli so'rovga tushadi (xavfsizlik to'ri).
+//
+// «Reyting qotib qolgandek ko'rinadi» degan e'tiroz YOLG'ON KO'RSATISH bilan
+// emas, ROSTINI AYTISH bilan yechildi: taxta tepasida «Yangilangan: 06:00»
+// yozuvi turadi. Foydalanuvchining O'Z o'rni esa (agar u top-50 dan tashqarida
+// bo'lsa) hamon JONLI hisoblanadi — pastdagi `getCountFromServer` juftligi.
+//
+// Vercel Hobby'da cronni tez-tez ishlatib bo'lmaydi (kuniga 1 marta, 2 ta
+// vazifa) — shuning uchun chastotani oshirish yo'li ataylab tanlanmadi.
+const SNAPSHOT_MAX_AGE = 26 * 60 * 60 * 1000;
+
+/**
+ * Snapshot vaqti — bugungi bo'lsa faqat soat, aks holda sana ham.
+ * Buzuq qiymatda `null` qaytadi va yozuv umuman ko'rsatilmaydi.
+ */
+const formatSnapshotTime = (iso) => {
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return null;
+  const sameDay = d.toDateString() === new Date().toDateString();
+  const time = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  return sameDay ? time : `${d.toLocaleDateString()} ${time}`;
+};
 
 /** Sahifa qayta yuklanganmi (F5 / pull-to-refresh)? Unda kesh chetlab o'tiladi. */
 const isReload = () => {
@@ -65,18 +85,21 @@ const isReload = () => {
   } catch { return false; }
 };
 
+// Kesh `at` ni ham saqlaydi — ro'yxat qachonlik holat ekani. `null` = jonli
+// so'rovdan olingan. Busiz keshdan kelgan ro'yxatda «Yangilangan: …» yozuvi
+// yo'qolib, taxta jonli ko'rinardi.
 const readLbCache = (key) => {
   try {
     const raw = localStorage.getItem(key);
     if (!raw) return null;
     const cached = JSON.parse(raw);
     if (!cached?.rows || Date.now() - cached.ts > LB_CACHE_TTL) return null;
-    return cached.rows;
+    return { rows: cached.rows, at: cached.at || null };
   } catch { return null; }
 };
 
-const writeLbCache = (key, rows) => {
-  try { localStorage.setItem(key, JSON.stringify({ ts: Date.now(), rows })); }
+const writeLbCache = (key, rows, at) => {
+  try { localStorage.setItem(key, JSON.stringify({ ts: Date.now(), rows, at: at || null })); }
   catch { /* kvota to'lgan — kesh ixtiyoriy, jim o'tkazamiz */ }
 };
 
@@ -94,6 +117,9 @@ const LeaderboardPage = () => {
   // New states for safe/local improvements
   const [boardType, setBoardType] = useState('all'); // 'all' | 'weekly' | 'monthly'
   const [sessionRankChange, setSessionRankChange] = useState(0);
+  // Ro'yxat qachonlik holatini ko'rsatadi: snapshot sanasi (ISO) yoki
+  // `null` = jonli so'rovdan olingan, ya'ni hozirgi holat.
+  const [snapshotAt, setSnapshotAt] = useState(null);
 
   // Reyting ko'rildi. ALOHIDA effekt — quyidagi yuklash effekti `cloudSynced`
   // ni kutadi, qiziqish esa sahifa ochilgan zahoti qayd etilishi kerak.
@@ -112,6 +138,7 @@ const LeaderboardPage = () => {
     if (!cloudSynced) return;
     let cancelled = false;
     setLoading(true);
+    setSnapshotAt(null);
 
     const weekId = getWeekId();
     const monthId = getMonthId();
@@ -144,7 +171,9 @@ const LeaderboardPage = () => {
     const load = async () => {
       try {
         // ── 1) Top-50: keshdan (0) → server snapshot'idan (1) → bazadan (50) ──
-        let results = isReload() ? null : readLbCache(cacheKey);
+        const cachedEntry = isReload() ? null : readLbCache(cacheKey);
+        let results = cachedEntry?.rows || null;
+        if (cachedEntry) setSnapshotAt(cachedEntry.at);
 
         if (!results) {
           // Server snapshot'i — yangi bo'lsa 50 ta o'qishni 1 taga almashtiradi.
@@ -162,7 +191,8 @@ const LeaderboardPage = () => {
                   : data?.monthId === monthId;
             if (Array.isArray(rows) && age <= SNAPSHOT_MAX_AGE && periodOk) {
               results = rows;
-              writeLbCache(cacheKey, results);
+              setSnapshotAt(data.updatedAt || null);
+              writeLbCache(cacheKey, results, data.updatedAt || null);
             }
           } catch {
             // Snapshot ixtiyoriy — yiqilsa jonli so'rovga tushamiz.
@@ -175,7 +205,8 @@ const LeaderboardPage = () => {
           );
           if (cancelled) return;
           results = snap.docs.map(toRow);
-          writeLbCache(cacheKey, results);   // rank/isMe qo'shilishidan OLDIN — ular shaxsiy
+          setSnapshotAt(null);               // jonli so'rov = hozirgi holat
+          writeLbCache(cacheKey, results, null);   // rank/isMe qo'shilishidan OLDIN — ular shaxsiy
         }
 
         // ── 2) "Siz" qatori ──
@@ -412,6 +443,18 @@ const LeaderboardPage = () => {
         <h1 className="lb-title">{t('leaderboard.title')}</h1>
         <p className="lb-subtitle">{t('leaderboard.subtitle')}</p>
       </div>
+
+      {/* ── Ro'yxat qachonlik holat ekani ────────────────────────────────
+          Reyting kuniga bir marta (cron 06:00) oldindan hisoblanadi: bu 50 ta
+          o'qishni 1 taga tushiradi. Raqamning eskiligini YASHIRMAYMIZ —
+          foydalanuvchi ball yig'ib taxta qimirlamasa, sababini bilishi kerak.
+          Jonli so'rovdan kelgan bo'lsa (`snapshotAt === null`) hech narsa
+          yozilmaydi: «hozirgi holat» — standart kutilma, izohga muhtoj emas. */}
+      {!loading && snapshotAt && formatSnapshotTime(snapshotAt) && (
+        <div className="lb-freshness">
+          {t('leaderboard.updatedAt', { time: formatSnapshotTime(snapshotAt) })}
+        </div>
+      )}
 
       {/* Board type tabs */}
       <div className="lb-tabs">

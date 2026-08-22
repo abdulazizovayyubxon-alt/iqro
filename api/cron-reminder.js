@@ -215,10 +215,17 @@ export default async function handler(req, res) {
   const inactiveCutoff = new Date(Date.now() - INACTIVE_DAYS * 86400000).toISOString();
 
   const out = {
+    // `scanned` — KO'RIB CHIQILGAN FAOL hisoblar soni (jami ro'yxatdan
+    // o'tganlar EMAS). 2026-08-22 dan beri boshlang'ich nuqta `userStats`
+    // dagi faol hujjatlar, quyidagi izohga qarang.
     scanned: 0,
     eligible: 0,
     sent: 0,
-    skipped: { noToken: 0, optedOut: 0, inactive: 0, goalDone: 0, alreadySent: 0, throttled: 0 },
+    // `inactive` endi doim 0: nofaol hisob so'rovga umuman tushmaydi.
+    // Maydon saqlab qolindi — panel va eski jurnal yozuvlari uni kutadi.
+    // `noUserDoc` — statistikasi bor, lekin profil hujjati yo'q (hisob
+    // o'chirilgan): xabar yuboradigan manzil yo'q.
+    skipped: { noToken: 0, optedOut: 0, inactive: 0, goalDone: 0, alreadySent: 0, throttled: 0, noUserDoc: 0 },
     // Xabar qaysi sabab bilan ketgani — matn o'zgarishining ta'sirini o'lchash uchun
     reason: { streak: 0, unvon: 0, plan: 0 },
     // Sana holati. Ilgari bular `skipped.noExam` / `skipped.examPassed` edi —
@@ -257,13 +264,48 @@ export default async function handler(req, res) {
   try {
     let lastDoc = null;
     while (true) {
-      let q = db.collection('users').orderBy('__name__').limit(USER_PAGE);
+      // ══ O'QISH BYUDJETI (2026-08-22) ══════════════════════════════════
+      //
+      // AVVAL: butun `users` kolleksiyasi sahifalab o'qilardi, so'ng har
+      // token'li foydalanuvchi uchun ALOHIDA `userStats.get()` — ketma-ket,
+      // sikl ichida. Ikkita muammo:
+      //   · NARX ro'yxatdan o'tganlar soniga bog'liq edi, FAOL foydalanuvchiga
+      //     emas: bir yil oldin kirib qaytmagan hisob ham har kecha o'qilardi
+      //     va o'sish bilan bu raqam faqat kattalashardi;
+      //   · TEZLIK: yuzlab ketma-ket `get()` — funksiyaning 60 soniyalik
+      //     chegarasiga yaqinlashadigan yagona joy shu edi.
+      //
+      // ENDI: boshlang'ich nuqta — `userStats` dagi FAOL hujjatlar
+      // (`lastActiveAt >= inactiveCutoff`). Nofaol hisob umuman o'qilmaydi.
+      // Kerakli `users` hujjatlari esa bitta `getAll()` da olinadi.
+      //
+      // NATIJA AYNAN BIR XIL: ilgari ham nofaol foydalanuvchi `skipped.inactive`
+      // ga tushib chetlab o'tilardi — faqat undan OLDIN ikkita hujjat o'qib
+      // bo'lingan bo'lardi.
+      //
+      // INDEKS: `lastActiveAt` — bitta maydon, Firestore uni o'zi yasaydi,
+      // kompozit indeks KERAK EMAS. Qiymat ISO satr (AppContext yozadi),
+      // cutoff ham ISO satr, ya'ni taqqoslash leksikografik va to'g'ri.
+      // (`api/cron-daily.js` dagi DAU/WAU sanoqlari ham shu naqshda.)
+      let q = db.collection('userStats')
+        .where('lastActiveAt', '>=', inactiveCutoff)
+        .orderBy('lastActiveAt')
+        .limit(USER_PAGE);
       if (lastDoc) q = q.startAfter(lastDoc);
       const page = await q.get();
       if (page.empty) break;
 
-      for (const userDoc of page.docs) {
+      const userDocs = await db.getAll(
+        ...page.docs.map(d => db.collection('users').doc(d.id)),
+      );
+      const usersById = new Map(userDocs.map(d => [d.id, d]));
+
+      for (const statDoc of page.docs) {
         out.scanned++;
+        const uid = statDoc.id;
+        const stats = statDoc.data();
+        const userDoc = usersById.get(uid);
+        if (!userDoc || !userDoc.exists) { out.skipped.noUserDoc++; continue; }
         const u = userDoc.data();
 
         const tokens = Array.isArray(u.fcmTokens) ? u.fcmTokens.filter(Boolean) : [];
@@ -280,20 +322,10 @@ export default async function handler(req, res) {
         const daysLeft = daysUntil(u.examDate || globalExamDate);
         const examOk = daysLeft !== null && daysLeft > 0;
 
-        // Statistika: faollik va bugungi maqsad
-        let stats = null;
-        try {
-          const s = await db.collection('userStats').doc(userDoc.id).get();
-          stats = s.exists ? s.data() : null;
-        } catch (e) {
-          out.errors.push(`stats ${userDoc.id}: ${e.message}`);
-          continue;
-        }
-        if (!stats?.lastActiveAt || stats.lastActiveAt < inactiveCutoff) {
-          out.skipped.inactive++;
-          continue;
-        }
-
+        // Statistika (`stats`) yuqorida allaqachon olingan — so'rovning O'ZI
+        // faollik filtri, shuning uchun bu yerda na qo'shimcha o'qish, na
+        // qo'shimcha tekshiruv kerak.
+        //
         // dailyGoal.date `toDateString()` formatida (AppContext), bugungi
         // Toshkent kuni bilan to'g'ridan-to'g'ri solishtirib bo'lmaydi —
         // shuning uchun sanani normallashtiramiz.
@@ -404,7 +436,7 @@ export default async function handler(req, res) {
         }
 
         out.eligible++;
-        queue.push({ uid: userDoc.id, tokens, title, body, link, missStreak });
+        queue.push({ uid, tokens, title, body, link, missStreak });
       }
 
       lastDoc = page.docs[page.docs.length - 1];

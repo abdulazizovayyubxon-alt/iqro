@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { doc, getDoc, addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import { ToastContext } from '../context/ToastContext';
@@ -35,7 +35,7 @@ const readinessColor = (v) =>
 
 const SchoolPage = () => {
   const { t } = useTranslation();
-  const { user } = useAuth();
+  const { user, userDoc, userDocLoaded } = useAuth();
   const { showToast } = useContext(ToastContext);
 
   const [loading, setLoading] = useState(true);
@@ -55,28 +55,38 @@ const SchoolPage = () => {
   const [sending, setSending] = useState(false);
   const [requestSent, setRequestSent] = useState(false);
 
+  // A'zolik users/{uid}.schoolId dan olinadi.
+  //
+  // ⚠️ O'QISH BYUDJETI: ilgari bu yerda getDoc(users/{uid}) bor edi, holbuki
+  // AuthContext o'sha hujjatni onSnapshot bilan tinglayapti — endi 0 o'qish.
+  // YON FOYDA: maktabga qo'shilgandan keyin serverning yozuvi tinglovchi
+  // orqali o'zi yetib keladi.
+  const sid = userDoc?.schoolId || null;
+  const sName = userDoc?.schoolName || null;
+
   const loadMembership = useCallback(async () => {
     if (!user) { setLoading(false); return; }
+    // Boshlang'ich yuklash tugamaguncha userDoc null bo'ladi — o'sha payt
+    // "maktabga qo'shilmagansiz" deb ko'rsatish yolg'on bo'lardi.
+    if (!userDocLoaded) return;
+
+    setSchoolId(sid);
+    setSchoolName(sName);
+    if (!sid) { setReport(null); setLoading(false); return; }
+
     setLoading(true);
     try {
-      const uSnap = await getDoc(doc(db, 'users', user.uid));
-      const sid = uSnap.exists() ? uSnap.data().schoolId || null : null;
-      setSchoolId(sid);
-      setSchoolName(uSnap.exists() ? uSnap.data().schoolName || null : null);
-
-      if (sid) {
-        // Hisobot faqat maktab adminiga beriladi — server o'zi tekshiradi
-        const res = await fetchSchoolStats(sid);
-        if (res.ok) {
-          setReport(res);
-          setSchoolName(res.school?.name || null);
-        }
+      // Hisobot faqat maktab adminiga beriladi — server o'zi tekshiradi
+      const res = await fetchSchoolStats(sid);
+      if (res.ok) {
+        setReport(res);
+        setSchoolName(res.school?.name || null);
       }
     } catch (e) {
       console.error('Maktab ma\'lumotini yuklashda xatolik:', e);
     }
     setLoading(false);
-  }, [user]);
+  }, [user, userDocLoaded, sid, sName]);
 
   useEffect(() => { loadMembership(); }, [loadMembership]);
 

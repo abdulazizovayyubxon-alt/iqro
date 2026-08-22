@@ -3,6 +3,26 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // ── Admin tekshirish funksiyasi ──
+    //
+    // ⚠️ KVOTA QOIDASI — `isAdmin()` ni `||` ZANJIRIDA DOIM OXIRGA QO'YING.
+    //
+    // Ichidagi `get(users/{uid})` — Firestore uni ODDIY HUJJAT O'QISHI deb
+    // hisoblaydi va pulini oladi. Qoidalar `||` ni chapdan o'ngga baholaydi
+    // va birinchi `true` da to'xtaydi. Ya'ni
+    //     allow update: if isAdmin() || isOwner(userId);
+    // yozilsa, HAR BIR oddiy foydalanuvchining har bir yozuvi shu `get()` ni
+    // to'laydi — `userStats` (test yakuni), `users` (lastActiveAt, imtihon
+    // sanasi, sozlamalar, push holati) kabi issiq yo'llarda bu seansiga
+    // bir necha ortiqcha o'qish demakdir.
+    //
+    // To'g'ri tartib — arzon shart oldinda:
+    //     allow update: if isOwner(userId) || isAdmin();
+    // Mantiq AYNAN bir xil (`A || B` ≡ `B || A`), faqat admin bo'lmagan
+    // foydalanuvchi `get()` ni umuman bajarmaydi.
+    //
+    // Chap tomon `resource.data.<maydon>` ga tegsa, yoniga `resource != null`
+    // qo'ying: hujjat yo'q bo'lganda ifoda XATO beradi va butun qoida rad
+    // etiladi. Ilgari buni `isAdmin()` ning oldinda turishi yashirardi.
     function isAdmin() {
       return request.auth != null && (
         request.auth.token.email == 'abdulazizovayyubxon@gmail.com' ||
@@ -75,7 +95,7 @@ service cloud.firestore {
 
     match /userStats/{userId} {
       allow read: if isLoggedIn();
-      allow create, update: if isAdmin() || (isOwner(userId) && statsDeltaOk());
+      allow create, update: if (isOwner(userId) && statsDeltaOk()) || isAdmin();
       allow delete: if isOwner(userId) || isAdmin();
     }
 
@@ -132,9 +152,9 @@ service cloud.firestore {
 
     // ── objections: foydalanuvchi faqat O'Z e'tirozini o'qiydi (maxfiylik); admin hammasini boshqaradi ──
     match /objections/{docId} {
-      allow read: if isAdmin() || (isLoggedIn() && resource.data.uid == request.auth.uid);
+      allow read: if (isLoggedIn() && resource != null && resource.data.uid == request.auth.uid) || isAdmin();
       allow create: if isLoggedIn() && (request.resource.data.uid == request.auth.uid || isAdmin());
-      allow update: if isAdmin() || (isLoggedIn() && resource.data.uid == request.auth.uid);
+      allow update: if (isLoggedIn() && resource != null && resource.data.uid == request.auth.uid) || isAdmin();
       allow delete: if isAdmin();
     }
 
@@ -171,7 +191,7 @@ service cloud.firestore {
 
     // ── questionRequests: "Ko'proq savol kerak" so'rovi — foydalanuvchi o'z so'rovini yuboradi/o'qiydi, admin boshqaradi ──
     match /questionRequests/{docId} {
-      allow read: if isAdmin() || (isLoggedIn() && resource.data.uid == request.auth.uid);
+      allow read: if (isLoggedIn() && resource != null && resource.data.uid == request.auth.uid) || isAdmin();
       allow create: if isLoggedIn() && request.resource.data.uid == request.auth.uid;
       allow update, delete: if isAdmin();
     }
@@ -228,11 +248,11 @@ service cloud.firestore {
                          'referralDiscount', 'referralBonus', 'referralCount',
                          'referredBy', 'premiumTransId', 'promoDiscount'
                        ]);
-      allow update: if isAdmin() || (
+      allow update: if (
         isOwner(userId)
         && !request.resource.data.diff(resource.data).affectedKeys()
               .hasAny(protectedUserFields())
-      );
+      ) || isAdmin();
       allow delete: if isAdmin();
     }
 
@@ -296,7 +316,7 @@ service cloud.firestore {
     // urilib, kod QAYTARILMAS holda ishdan chiqardi. Endi har foydalanuvchi
     // alohida hujjat. Yozuv faqat server (api/redeem-promo.js).
     match /promoCodes/{code}/redemptions/{uid} {
-      allow read: if isAdmin() || isOwner(uid);
+      allow read: if isOwner(uid) || isAdmin();
       allow write: if false;
     }
 
@@ -324,7 +344,7 @@ service cloud.firestore {
     }
 
     match /partnerSets/{setId} {
-      allow read: if isAdmin() || isGroupMember(resource.data.partnerCode);
+      allow read: if (resource != null && isGroupMember(resource.data.partnerCode)) || isAdmin();
       // Yozuv faqat admin: savol mazmuni va `correct` maydoni hamkor
       // ustozning o'ziga ham ochilmaydi (u faqat natijalarni ko'radi).
       allow write: if isAdmin();
@@ -333,7 +353,7 @@ service cloud.firestore {
       // hujjatni `get()` bilan o'qishga majbur bo'lardi, ya'ni har savol
       // to'plamini ochishda qo'shimcha hujjat o'qishi sarflanardi.
       match /content/{docId} {
-        allow read: if isAdmin() || isGroupMember(resource.data.partnerCode);
+        allow read: if (resource != null && isGroupMember(resource.data.partnerCode)) || isAdmin();
         allow write: if isAdmin();
       }
     }
@@ -344,18 +364,18 @@ service cloud.firestore {
     // Shu sababli o'qish faqat: platforma admini, maktab admini yoki a'zo.
     // YOZUV faqat platforma adminida; qo'shilish esa api/school.js (Admin SDK).
     match /schools/{schoolId} {
-      allow read: if isAdmin()
-        || (isLoggedIn() && request.auth.uid in resource.data.adminUids)
-        || (isLoggedIn() && exists(/databases/$(database)/documents/schools/$(schoolId)/members/$(request.auth.uid)));
+      allow read: if (isLoggedIn() && resource != null && request.auth.uid in resource.data.adminUids)
+        || (isLoggedIn() && exists(/databases/$(database)/documents/schools/$(schoolId)/members/$(request.auth.uid)))
+        || isAdmin();
       allow write: if isAdmin();
     }
 
     // ── schools/{id}/members: a'zolar ro'yxati ──
     // O'zini va maktab admini butun ro'yxatni o'qiy oladi. Yozuv — faqat server.
     match /schools/{schoolId}/members/{memberId} {
-      allow read: if isAdmin()
-        || isOwner(memberId)
-        || (isLoggedIn() && request.auth.uid in get(/databases/$(database)/documents/schools/$(schoolId)).data.adminUids);
+      allow read: if isOwner(memberId)
+        || (isLoggedIn() && request.auth.uid in get(/databases/$(database)/documents/schools/$(schoolId)).data.adminUids)
+        || isAdmin();
       allow write: if isAdmin();
     }
 
@@ -370,7 +390,7 @@ service cloud.firestore {
         && request.resource.data.schoolName.size() <= 120
         && request.resource.data.phone is string
         && request.resource.data.phone.size() <= 20;
-      allow read: if isAdmin() || (isLoggedIn() && resource.data.uid == request.auth.uid);
+      allow read: if (isLoggedIn() && resource != null && resource.data.uid == request.auth.uid) || isAdmin();
       allow update, delete: if isAdmin();
     }
 
