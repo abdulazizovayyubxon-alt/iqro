@@ -1,5 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { nextCloudSaveDelay, estimateCloudWrites } from '../utils/saveSchedule';
+import {
+  nextCloudSaveDelay, estimateCloudWrites,
+  shouldRetryCloudWrite, nextRetryDelay, RETRY_BASE_MS, RETRY_MAX_MS,
+} from '../utils/saveSchedule';
 
 // ════════════════════════════════════════════════════════════════════════
 //  2026-08-20 KVOTA HODISASI.
@@ -28,7 +31,7 @@ describe('eski 3 soniyalik debounce — nima uchun kvotani yedi', () => {
     expect(eski).toBeGreaterThanOrEqual(45); // ~50, izohdagi "2-3" emas
   });
 
-  it('yangi ritm o\'sha testni bir necha yozuvga tushiradi', () => {
+  it("yangi ritm o\'sha testni bir necha yozuvga tushiradi", () => {
     const yangi = estimateCloudWrites({
       answerCount: 50, gapMs: 20_000, debounceMs: DEBOUNCE, maxWaitMs: MAX_WAIT,
     });
@@ -46,7 +49,7 @@ describe('eski 3 soniyalik debounce — nima uchun kvotani yedi', () => {
 });
 
 describe('nextCloudSaveDelay — debounce', () => {
-  it('birinchi o\'zgarishga to\'liq debounce beradi', () => {
+  it("birinchi o\'zgarishga to\'liq debounce beradi", () => {
     expect(nextCloudSaveDelay({
       oldestPendingAt: null, now: 1_000, debounceMs: DEBOUNCE, maxWaitMs: MAX_WAIT,
     })).toBe(DEBOUNCE);
@@ -88,7 +91,7 @@ describe('nextCloudSaveDelay — maksimal kutish shifti', () => {
     expect(175_000 + d).toBe(MAX_WAIT);
   });
 
-  it('debounce shiftdan katta bo\'lsa shift ustun turadi', () => {
+  it("debounce shiftdan katta bo\'lsa shift ustun turadi", () => {
     // Noto'g'ri sozlashdan himoya: 60 s debounce, 10 s shift
     expect(nextCloudSaveDelay({
       oldestPendingAt: null, now: 0, debounceMs: 60_000, maxWaitMs: 10_000,
@@ -97,7 +100,7 @@ describe('nextCloudSaveDelay — maksimal kutish shifti', () => {
 });
 
 describe('uzluksiz javob berish — yozuv umuman bo\'lmay qolmasligi', () => {
-  it('debounce oraliqdan katta bo\'lsa ham yozuv baribir ketadi', () => {
+  it("debounce oraliqdan katta bo\'lsa ham yozuv baribir ketadi", () => {
     // Har 5 soniyada javob (juda tez), debounce 30 s — sof debounce bilan
     // taymer HAR SAFAR qayta boshlanardi va yozuv HECH QACHON bo'lmasdi.
     // Shift aynan shu holat uchun bor.
@@ -121,7 +124,7 @@ describe('uzluksiz javob berish — yozuv umuman bo\'lmay qolmasligi', () => {
 });
 
 describe('sekin javob beruvchi — ritm buzilmasin', () => {
-  it('oraliq debounce dan katta bo\'lsa har javobda yoziladi', () => {
+  it("oraliq debounce dan katta bo\'lsa har javobda yoziladi", () => {
     // Har 2 daqiqada bitta javob: 30 s jimlik yuzaga keladi → yozuv.
     // Bu KUTILGAN xatti-harakat — bunday foydalanuvchi kam yozuv qiladi.
     const writes = estimateCloudWrites({
@@ -133,7 +136,7 @@ describe('sekin javob beruvchi — ritm buzilmasin', () => {
 });
 
 describe('kvota hisobi — o\'zgarish yetarlimi', () => {
-  it('200 faol foydalanuvchi kunlik 20 000 yozuv limitiga sig\'adi', () => {
+  it("200 faol foydalanuvchi kunlik 20 000 yozuv limitiga sig\'adi", () => {
     const perSeans = estimateCloudWrites({
       answerCount: 60, gapMs: 20_000, debounceMs: DEBOUNCE, maxWaitMs: MAX_WAIT,
     });
@@ -141,5 +144,104 @@ describe('kvota hisobi — o\'zgarish yetarlimi', () => {
     // Eski ritmda bu 200 × ~60 = 12 000 edi (boshqa yozuvlar ustiga qo'shilib
     // 20 000 limitini teshardi). Yangisida ancha zaxira qoladi.
     expect(kunlik).toBeLessThan(3_000);
+  });
+});
+
+// ═══════════════════════════════════════════════════════════════════════
+//  2026-08-23 KVOTA HALOKATI — qayta urinish halqasi.
+//
+//  Kvota tugaganda Firestore promise'i NA resolve NA reject bo'ladi.
+//  Eski kod `pendingCloudRef` yoqilgan ekan HAR 60 SONIYADA yangi `setDoc`
+//  yuborardi — ya'ni osilgan yozuv qayta urinishlarni TO'XTATMASDI, aksincha
+//  ularni cheksiz qilardi. Pastdagi birinchi test eski xatoning narxini
+//  o'lchaydi, qolganlari yangi darvozani qulflaydi.
+// ═══════════════════════════════════════════════════════════════════════
+
+/**
+ * Osilib qolgan yozuv holatida 4 soat davomida nechta YANGI mutatsiya
+ * navbatga qo'shilishini sanaydi (taymer har 60 soniyada yonadi).
+ */
+const osilganYozuvdaUrinishlar = ({ inFlightDarvozasi }) => {
+  const TIK = 60_000;
+  const DAVR = 4 * 60 * 60_000; // 4 soat — 12:00 dan 16:00 gacha
+  let urinish = 0;
+  let inFlight = false;
+  let nextAttemptAt = 0;
+  for (let now = 0; now <= DAVR; now += TIK) {
+    const ruxsat = inFlightDarvozasi
+      ? shouldRetryCloudWrite({ pending: true, inFlight, online: true, now, nextAttemptAt })
+      // Eski mantiq: faqat `pending` va `online` tekshirilardi.
+      : (true && true);
+    if (!ruxsat) continue;
+    urinish++;
+    // Yozuv yuborildi va OSILIB QOLDI — hech qachon settle bo'lmaydi.
+    inFlight = true;
+  }
+  return urinish;
+};
+
+describe('osilgan bulut yozuvi — qayta urinish halqasi', () => {
+  it("eski mantiq 4 soatda yuzlab mutatsiya navbatga qo'shardi", () => {
+    const eski = osilganYozuvdaUrinishlar({ inFlightDarvozasi: false });
+    // Har daqiqada bitta: 4 soat = 241 ta. Kvota tiklanganda hammasi quyiladi.
+    expect(eski).toBeGreaterThanOrEqual(240);
+  });
+
+  it("yangi darvoza bilan tabda ko'pi bilan BITTA kutayotgan yozuv qoladi", () => {
+    const yangi = osilganYozuvdaUrinishlar({ inFlightDarvozasi: true });
+    expect(yangi).toBe(1);
+  });
+
+  it('kamida 200 barobar kam yozuv — kvota halqasi uziladi', () => {
+    const eski = osilganYozuvdaUrinishlar({ inFlightDarvozasi: false });
+    const yangi = osilganYozuvdaUrinishlar({ inFlightDarvozasi: true });
+    expect(eski / yangi).toBeGreaterThanOrEqual(200);
+  });
+});
+
+describe('shouldRetryCloudWrite — darvoza shartlari', () => {
+  const asos = { pending: true, inFlight: false, online: true, now: 1_000_000, nextAttemptAt: 0 };
+
+  it('tasdiqlangan yozuvda qayta urinmaydi', () => {
+    expect(shouldRetryCloudWrite({ ...asos, pending: false })).toBe(false);
+  });
+
+  it('ochiq yozuv borida yangisini YUBORMAYDI (asosiy tuzatish)', () => {
+    expect(shouldRetryCloudWrite({ ...asos, inFlight: true })).toBe(false);
+  });
+
+  it('oflaynda urinmaydi', () => {
+    expect(shouldRetryCloudWrite({ ...asos, online: false })).toBe(false);
+  });
+
+  it('backoff oynasi ochilmaguncha kutadi', () => {
+    expect(shouldRetryCloudWrite({ ...asos, nextAttemptAt: asos.now + 1 })).toBe(false);
+    expect(shouldRetryCloudWrite({ ...asos, nextAttemptAt: asos.now })).toBe(true);
+  });
+
+  it("hammasi joyida bo'lsa ruxsat beradi", () => {
+    expect(shouldRetryCloudWrite(asos)).toBe(true);
+  });
+});
+
+describe('nextRetryDelay — eksponensial backoff', () => {
+  it('birinchi urinish asosiy kechikishda', () => {
+    expect(nextRetryDelay(1)).toBe(RETRY_BASE_MS);
+  });
+
+  it('har muvaffaqiyatsizlikda ikkilanadi', () => {
+    expect(nextRetryDelay(2)).toBe(RETRY_BASE_MS * 2);
+    expect(nextRetryDelay(3)).toBe(RETRY_BASE_MS * 4);
+    expect(nextRetryDelay(4)).toBe(RETRY_BASE_MS * 8);
+  });
+
+  it("shiftdan oshmaydi — cheksiz o'smaydi", () => {
+    expect(nextRetryDelay(50)).toBe(RETRY_MAX_MS);
+    expect(nextRetryDelay(1000)).toBe(RETRY_MAX_MS);
+  });
+
+  it('uzoq uzilishda soatiga bir necha urinishgacha tushadi', () => {
+    // 15 daqiqalik shift = soatiga 4 ta urinish (eski: 60 ta).
+    expect(60 * 60_000 / nextRetryDelay(99)).toBeLessThanOrEqual(4);
   });
 });

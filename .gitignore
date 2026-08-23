@@ -87,3 +87,6 @@ pipeline/_mttjt_*.log
 
 # Rasm optimizatsiyasidan oldingi asl nusxalar (scripts/optimize-images.mjs)
 image-backup/
+
+# Kvota kuzatuvi namunalari (lokal diagnostika)
+.kvota-namunalar.jsonl

@@ -8,7 +8,8 @@ import { TOPICS } from '../data/mockData';
 import { readContract, questionsForMinutes } from '../services/studyContract';
 import { mergePartnerSets } from '../utils/mergeRules';
 // Bulut yozuvining ritmi — sof funksiya va testga olingan (2026-08-20 kvota hodisasi)
-import { nextCloudSaveDelay } from '../utils/saveSchedule';
+import { nextCloudSaveDelay, shouldRetryCloudWrite, nextRetryDelay } from '../utils/saveSchedule';
+import { withWriteTimeout, TIMEOUT_CODE } from '../utils/firebaseError';
 import { db } from '../firebase';
 import { AuthContext } from './AuthContext';
 import { ToastContext } from './ToastContext';
@@ -520,6 +521,8 @@ const stripUndefined = (value) => {
 const CLOUD_DEBOUNCE_MS = 30_000;
 const CLOUD_MAX_WAIT_MS = 180_000;
 const LOCAL_DEBOUNCE_MS = 600;
+// Yozuv shu vaqtda tugamasa — ogohlantirish loglanadi (yozuv BEKOR QILINMAYDI).
+const CLOUD_WRITE_TIMEOUT_MS = 15_000;
 
 // Firestore'ga yozishdan oldin tayyorlash: leaderboard maydonlari,
 // vaqtinchalik kalitlar va eski davr (weekly_/monthly_) kalitlarini tozalash.
@@ -721,6 +724,19 @@ export const AppProvider = ({ children }) => {
   // X-1: bulutga yozuv tasdiqlanmagan bo'lsa `true` turadi
   const pendingCloudRef = useRef(false);
   const retryCloudRef = useRef(null);
+  // ⚠️ AUDIT 2026-08-23 (KVOTA HALOKATI) — `inFlightRef`: hali settle bo'lmagan
+  // yozuv bormi? `pendingCloudRef` dan FARQI: pending = "tasdiqlanmagan",
+  // inFlight = "hozir yo'lda". Kvota tugaganda promise NA resolve NA reject
+  // bo'ladi — o'shanda inFlight abadiy `true` qoladi va aynan shu qayta
+  // urinishlarni to'xtatib turadi (to'liq izoh `writeCloudNow` ichida).
+  const inFlightRef = useRef(false);
+  // Ketma-ket muvaffaqiyatsizliklar soni va keyingi urinishga ruxsat vaqti (backoff)
+  const retryAttemptRef = useRef(0);
+  const nextAttemptAtRef = useRef(0);
+  // Ochiq yozuv ketayotganda kelgan YANGI o'zgarish bormi? Bo'lsa, o'sha yozuv
+  // muvaffaqiyatli tugasa ham `pendingCloudRef` yoqilgan qoladi — aks holda
+  // oxirgi o'zgarishlar bulutga umuman yetib bormasdi.
+  const dirtyRef = useRef(false);
   // Bulutga saqlanmagan ENG ESKI o'zgarish vaqti (ms). `CLOUD_MAX_WAIT_MS`
   // shifti shu qiymatdan hisoblanadi — uzluksiz javob berishda debounce
   // taymeri cheksiz qayta boshlanib, yozuv umuman bo'lmasligining oldini oladi.
@@ -765,18 +781,62 @@ export const AppProvider = ({ children }) => {
       saveTimerRef.current = null;
       // Kutish oynasi yopildi — maksimal kutish shifti shu paytdan qayta sanaydi.
       oldestPendingRef.current = null;
+
+      // ⚠️ AUDIT 2026-08-23, KVOTA HALOKATI — QUYIDAGI QATOR ENG MUHIMI.
+      //
+      // Kvota tugaganda `setDoc` promise'i NA resolve, NA reject bo'ladi:
+      // SDK mutatsiyani navbatda ushlab, cheksiz backoff bilan qayta uradi.
+      // Ilgari shu holatda `pendingCloudRef` abadiy yoqilgan qolardi va
+      // pastdagi 60 soniyalik qayta urinish taymeri HAR DAQIQADA YANGI
+      // mutatsiya qo'shardi. Bitta tab 4 soatda ~240 ta navbatdagi yozuv
+      // yig'ardi; kvota 12:00 da tiklanganda ularning hammasi birdan
+      // quyilib, 20 000 lik kunlik limitni DARHOL qayta tugatardi — ya'ni
+      // ilova o'zini o'zi bloklab turadigan halqaga tushib qolgandi.
+      //
+      // Yechim: ochiq yozuv borida yangisini UMUMAN yubormaymiz. Shunda
+      // har tabda ko'pi bilan BITTA kutayotgan mutatsiya bo'ladi.
+      if (inFlightRef.current) {
+        // Yangisini yubormaymiz, LEKIN o'zgarish saqlanmagan deb belgilaymiz:
+        // ochiq yozuv tugagach qayta urinish effekti uni ko'taradi.
+        dirtyRef.current = true;
+        return;
+      }
+
       const statRef = doc(db, 'userStats', user.uid);
       const uidAtWrite = user.uid;
+      dirtyRef.current = false; // shu yozuv AYNAN joriy holatni oladi
       pendingCloudRef.current = true;
-      setDoc(statRef, prepareStatsForSave(state, user), { merge: true })
-        .then(() => {
-          // Hisob almashgan bo'lsa bu javob eskirgan — bayroqqa tegmaymiz.
-          if (userRef.current?.uid === uidAtWrite) pendingCloudRef.current = false;
-        })
-        .catch(err => {
-          // Bayroq YOQILGAN qoladi → qayta urinish effekti ko'taradi.
-          console.error('userStats yozilmadi (qayta uriniladi):', err);
-        });
+      inFlightRef.current = true;
+
+      const p = setDoc(statRef, prepareStatsForSave(state, user), { merge: true });
+
+      // `inFlightRef` HAQIQIY settle bo'yicha ochiladi, timeout bo'yicha EMAS.
+      // Timeout Firestore mutatsiyasini BEKOR QILMAYDI — u navbatda turaveradi.
+      // Ya'ni "timeout bo'ldi, yana yuboraman" degani navbatni ikkilantirish.
+      p.then(() => {
+        // Hisob almashgan bo'lsa bu javob eskirgan — bayroqqa tegmaymiz.
+        // Yozuv ketayotganda yangi o'zgarish kelgan bo'lsa bayroq YOQILGAN qoladi.
+        if (userRef.current?.uid === uidAtWrite) pendingCloudRef.current = dirtyRef.current;
+        retryAttemptRef.current = 0;
+        nextAttemptAtRef.current = 0;
+      }).catch(err => {
+        // Bayroq YOQILGAN qoladi → qayta urinish effekti ko'taradi, lekin
+        // endi o'sib boruvchi kechikish bilan (backoff), har daqiqada emas.
+        console.error('userStats yozilmadi (qayta uriniladi):', err?.code || err);
+        retryAttemptRef.current += 1;
+        nextAttemptAtRef.current = Date.now() + nextRetryDelay(retryAttemptRef.current);
+      }).finally(() => {
+        inFlightRef.current = false;
+      });
+
+      // Osilib qolgan yozuvni KO'RINADIGAN qilamiz: 2026-08 halokati aynan
+      // shuning uchun kunlab jim ketdi — hech qayerda xato chiqmasdi.
+      withWriteTimeout(p, CLOUD_WRITE_TIMEOUT_MS).catch(e => {
+        if (e?.code === TIMEOUT_CODE) {
+          console.warn('userStats yozuvi osilib qoldi — ehtimol Firestore kvotasi tugagan.');
+        }
+      });
+
       touchUserActivity(user.uid);
     };
     retryCloudRef.current = writeCloudNow;
@@ -849,11 +909,17 @@ export const AppProvider = ({ children }) => {
   // va daqiqada bir marta, ya'ni arzon).
   useEffect(() => {
     const retry = () => {
-      if (!pendingCloudRef.current) return;
-      // `navigator.onLine === false` — ishonchli "yo'q" signali. `true` esa
-      // kafolat emas (Wi-Fi bor, internet yo'q), shuning uchun unga tayanmaymiz:
-      // urinib ko'ramiz, muvaffaqiyatsiz bo'lsa bayroq yoqilgan qoladi.
-      if (typeof navigator !== 'undefined' && navigator.onLine === false) return;
+      // Qaror sof funksiyada va testga olingan (utils/saveSchedule.js) —
+      // 2026-08-23 halokati aynan shu shartning yetishmasligidan chiqqandi.
+      if (!shouldRetryCloudWrite({
+        pending: pendingCloudRef.current,
+        inFlight: inFlightRef.current,
+        // `navigator.onLine === false` — ishonchli "yo'q" signali. `true` esa
+        // kafolat emas (Wi-Fi bor, internet yo'q), shuning uchun unga tayanmaymiz.
+        online: typeof navigator === 'undefined' ? true : navigator.onLine,
+        now: Date.now(),
+        nextAttemptAt: nextAttemptAtRef.current,
+      })) return;
       retryCloudRef.current?.();
     };
     const onVisible = () => { if (document.visibilityState === 'visible') retry(); };

@@ -83,3 +83,66 @@ export function estimateCloudWrites({ answerCount, gapMs, debounceMs, maxWaitMs 
   }
   return writes;
 }
+
+/**
+ * ═════════════════════════════════════════════════════════════════════════
+ *  2026-08-23 KVOTA HALOKATI — qayta urinish darvozasi
+ *
+ *  AppContext'dagi qayta urinish effekti `pendingCloudRef` yoqilgan bo'lsa
+ *  HAR 60 SONIYADA yangi `setDoc` yuborardi. Kvota tugaganda esa Firestore
+ *  promise'i NA resolve NA reject bo'ladi — ya'ni bayroq hech qachon
+ *  o'chmaydi. Natijada har tab daqiqasiga bitta yangi mutatsiyani navbatga
+ *  qo'shar, 4 soatda ~240 tasi yig'ilar, kvota tiklanishi bilan hammasi
+ *  birdan quyilib limitni qaytadan tugatardi.
+ *
+ *  Qaror shu yerda, sof funksiyada — `nextCloudSaveDelay` bilan bir xil
+ *  sababga ko'ra: ritm qarori testsiz turmasligi kerak.
+ * ═════════════════════════════════════════════════════════════════════════
+ */
+
+/** Birinchi qayta urinishgacha kutish (ms) */
+export const RETRY_BASE_MS = 60_000;
+/** Backoff shifti — bundan uzoq kutilmaydi (ms) */
+export const RETRY_MAX_MS = 15 * 60_000;
+
+/**
+ * Tasdiqlanmagan bulut yozuvini HOZIR qayta yuborish kerakmi?
+ *
+ * @param {object} p
+ * @param {boolean} p.pending        yozuv tasdiqlanmagan (bayroq yoqilgan)
+ * @param {boolean} p.inFlight       hali settle bo'lmagan yozuv YO'LDA
+ * @param {boolean} p.online         navigator.onLine (false — ishonchli "yo'q")
+ * @param {number}  p.now            hozirgi vaqt (ms)
+ * @param {number}  p.nextAttemptAt  backoff bo'yicha ruxsat etilgan eng erta vaqt (ms)
+ * @returns {boolean}
+ */
+export function shouldRetryCloudWrite({ pending, inFlight, online, now, nextAttemptAt }) {
+  // Yozuv tasdiqlangan — qayta urinishga hojat yo'q.
+  if (!pending) return false;
+
+  // ⚠️ ENG MUHIM SHART. Ochiq yozuv borida yangisini yubormaymiz.
+  // Kvota tugaganda promise abadiy osilib qoladi va aynan shu holatda
+  // eski kod har daqiqada navbatga yangi mutatsiya qo'shardi.
+  if (inFlight) return false;
+
+  // `online === false` ishonchli "yo'q"; `true` esa kafolat emas, unga
+  // tayanmaymiz — urinib ko'ramiz, muvaffaqiyatsiz bo'lsa backoff o'sadi.
+  if (online === false) return false;
+
+  // Backoff oynasi hali ochilmagan.
+  if (nextAttemptAt && now < nextAttemptAt) return false;
+
+  return true;
+}
+
+/**
+ * Ketma-ket muvaffaqiyatsizlik soniga qarab keyingi kutishni qaytaradi.
+ * Eksponensial: 1, 2, 4, 8… daqiqa, `RETRY_MAX_MS` da to'xtaydi.
+ *
+ * @param {number} attempt  nechanchi ketma-ket muvaffaqiyatsizlik (1 dan)
+ * @returns {number} ms
+ */
+export function nextRetryDelay(attempt, { baseMs = RETRY_BASE_MS, maxMs = RETRY_MAX_MS } = {}) {
+  if (!attempt || attempt <= 1) return Math.min(baseMs, maxMs);
+  return Math.min(baseMs * 2 ** (attempt - 1), maxMs);
+}
