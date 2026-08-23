@@ -58,7 +58,7 @@ const LB_CACHE_TTL = 5 * 60 * 1000;
 // demakdir va sahifa avvalgidek jonli so'rovga tushadi (xavfsizlik to'ri).
 //
 // «Reyting qotib qolgandek ko'rinadi» degan e'tiroz YOLG'ON KO'RSATISH bilan
-// emas, ROSTINI AYTISH bilan yechildi: taxta tepasida «Yangilangan: 06:00»
+// emas, ROSTINI AYTISH bilan yechildi: taxta tepasida «Yangilangan: 13:00»
 // yozuvi turadi. Foydalanuvchining O'Z o'rni esa (agar u top-50 dan tashqarida
 // bo'lsa) hamon JONLI hisoblanadi — pastdagi `getCountFromServer` juftligi.
 //
