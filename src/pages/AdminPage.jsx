@@ -20,7 +20,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Shield, MessageCircle, Users, BarChart3,
   CheckCircle, Trash2, AlertTriangle,
-  ChevronDown, ChevronUp, Search, Plus, Edit3, FileText, Zap,
+  ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Search, Plus, Edit3, FileText, Zap,
   Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, UploadCloud,
   Download, Crown, Database, RefreshCw, Inbox, School, CreditCard, Ticket, X,
   Activity, Sparkles, MoreVertical, KeyRound, Copy, CalendarDays
@@ -383,13 +383,51 @@ const AdminPage = () => {
       .filter(Boolean).join(' ').toLowerCase().includes(needle);
   });
 
-  // ── Tab qatorini faol tabga surish (D-6) ──
-  // 12 ta tab telefonga sig'maydi; chetdagi tab tanlanganda u ko'rinmay
-  // qolardi. `inline: 'nearest'` — kerak bo'lsagina suradi.
+  // ── Tab qatorini boshqarish va surish (Desktop & Mobile) ──
   const activeTabRef = useRef(null);
+  const tabsContainerRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const updateScrollButtons = useCallback(() => {
+    const el = tabsContainerRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 10);
+  }, []);
+
+  useEffect(() => {
+    const el = tabsContainerRef.current;
+    if (!el) return;
+    updateScrollButtons();
+    el.addEventListener('scroll', updateScrollButtons, { passive: true });
+    window.addEventListener('resize', updateScrollButtons);
+    return () => {
+      el.removeEventListener('scroll', updateScrollButtons);
+      window.removeEventListener('resize', updateScrollButtons);
+    };
+  }, [updateScrollButtons]);
+
   useEffect(() => {
     activeTabRef.current?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-  }, [tab]);
+    updateScrollButtons();
+  }, [tab, updateScrollButtons]);
+
+  const scrollTabs = (direction) => {
+    const el = tabsContainerRef.current;
+    if (!el) return;
+    const scrollAmount = 280;
+    el.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+  };
+
+  const handleTabsWheel = (e) => {
+    const el = tabsContainerRef.current;
+    if (!el) return;
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      el.scrollLeft += e.deltaY;
+      updateScrollButtons();
+    }
+  };
 
   // ── To'lovlar (B-1) ──
   // ⚠️ ADMIN AUDIT 2026-08-06, B-1 BAND: `firestore.rules:197` da
@@ -2822,10 +2860,25 @@ try {
         </div>
       </div>
 
-      {/* D-6: tab qatori — faol tab tanlanganda ko'rinishga olib kelinadi,
-          o'ng chetda esa yana tab borligini bildiruvchi mask (CSS). */}
+      {/* Tab qatori — sichqoncha g'ildiragi va tugmalar bilan gorizontal suriladi */}
       <div className="admin-tabs-wrap">
-        <div className="admin-tabs" role="tablist" aria-label="Admin bo'limlari">
+        {canScrollLeft && (
+          <button 
+            className="admin-tabs-scroll-btn admin-tabs-scroll-btn--left" 
+            onClick={() => scrollTabs('left')} 
+            aria-label="Chapga surish"
+            type="button"
+          >
+            <ChevronLeft size={16} />
+          </button>
+        )}
+        <div 
+          className="admin-tabs" 
+          ref={tabsContainerRef}
+          onWheel={handleTabsWheel}
+          role="tablist" 
+          aria-label="Admin bo'limlari"
+        >
           {TABS.map(({ key, label, Icon, badge }) => (
             <motion.button
               key={key}
@@ -2841,6 +2894,16 @@ try {
             </motion.button>
           ))}
         </div>
+        {canScrollRight && (
+          <button 
+            className="admin-tabs-scroll-btn admin-tabs-scroll-btn--right" 
+            onClick={() => scrollTabs('right')} 
+            aria-label="O'ngga surish"
+            type="button"
+          >
+            <ChevronRight size={16} />
+          </button>
+        )}
       </div>
 
       {tab === 'promos' && <PromoTab />}

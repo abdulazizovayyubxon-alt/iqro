@@ -49,10 +49,12 @@
 }
 
 /* ── Tabs ── */
-/* D-6: 12 ta tab telefonga sig'maydi. Scrollbar yashirilgani uchun yana
-   tab borligini bildiradigan hech narsa yo'q edi. O'ng chetdagi mask —
-   RANG emas, shaffoflik gradiyenti (rang gradiyenti taqiqi buzilmaydi). */
-.admin-tabs-wrap { position: relative; margin-bottom: 20px; }
+.admin-tabs-wrap {
+  position: relative;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
 .admin-tabs {
   display: flex; gap: 4px;
   overflow-x: auto; scrollbar-width: none;
@@ -60,12 +62,43 @@
   background: var(--bg3); border-radius: 14px;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent 100%);
-  mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent 100%);
+  width: 100%;
 }
 .admin-tabs::-webkit-scrollbar { display: none; }
-/* Oxirgi tabgacha scroll qilingach mask keraksiz — lekin JS'siz aniqlab
-   bo'lmaydi, shuning uchun doim qoldiriladi (yumshoq, chalg'itmaydi). */
+
+.admin-tabs-scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.admin-tabs-scroll-btn:hover {
+  background: var(--bg3);
+  border-color: var(--blue);
+  color: var(--blue);
+  transform: translateY(-50%) scale(1.1);
+}
+.admin-tabs-scroll-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+.admin-tabs-scroll-btn--left {
+  left: -12px;
+}
+.admin-tabs-scroll-btn--right {
+  right: -12px;
+}
 
 .admin-tab {
   display: flex; align-items: center; gap: 6px;

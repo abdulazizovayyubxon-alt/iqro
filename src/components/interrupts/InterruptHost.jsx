@@ -19,14 +19,14 @@
 import React, { useState, useEffect, useMemo, useCallback, useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Crown, RefreshCw, Flame, Bell, Smartphone } from 'lucide-react';
+import { Crown, RefreshCw, Flame, Bell, Smartphone, Send } from 'lucide-react';
 
 import ActionSheet from '../shared/ActionSheet';
 import { AppContext } from '../../context/AppContext';
 import { ToastContext } from '../../context/ToastContext';
 import { useAuth } from '../../context/AuthContext';
 import { useAppUpdate } from '../../hooks/useAppUpdate';
-import { isPlayBuild } from '../../config';
+import { isPlayBuild, CHANNEL_URL } from '../../config';
 import { pushPermission, enablePush } from '../../services/push';
 import { canInstall, promptInstall, isStandalone, onInstallAvailability } from '../../services/installPrompt';
 import {
@@ -51,6 +51,13 @@ const PUSH_MAX_ASKS = 3;
 // Ilovani endigina ochgan odamga eslatma taklif qilish ma'nosiz — avval
 // foydani ko'rsin. Eng kamida shuncha savol javoblangan bo'lishi kerak.
 const PUSH_MIN_ANSWERED = 10;
+
+// Telegram kanal taklifi:
+// Kamida 5 ta savol ishlagan bo'lishi kerak.
+// 3 xil matn rotatsiyasi va 7 kun -> 10 kun -> 20 kun oraliqli ko'rsatuv (1 oyda max 3 marta).
+const TG_MIN_ANSWERED = 5;
+const TG_MAX_ASKS = 3;
+const TG_INTERVALS = [7 * DAY, 10 * DAY, 20 * DAY];
 
 // ── Jim tabletka (yangilanish kechiktirilganda tepada qoladi) ─────────────────
 
@@ -187,7 +194,38 @@ export default function InterruptHost() {
       run: () => { navigate('/test'); },
     },
 
-    // 4. Push ruxsati — avval tushuntirish, keyin brauzer so'rovi
+    // 4. Telegram kanal taklifi — 3 xil matn rotatsiyasi va 7d -> 10d -> 20d oraliqli ko'rsatuv
+    {
+      id: 'tg_channel',
+      show: () => totalAnswered >= TG_MIN_ANSWERED
+        && askCount('tg_channel') < TG_MAX_ASKS,
+      snoozeMs: () => {
+        const count = askCount('tg_channel');
+        const idx = Math.max(0, Math.min(count - 1, TG_INTERVALS.length - 1));
+        return TG_INTERVALS[idx] || (20 * DAY);
+      },
+      icon: Send,
+      title: () => {
+        const v = Math.max(0, askCount('tg_channel') - 1) % 3;
+        return t(`interrupts.tg.v${v}.title`);
+      },
+      body: () => {
+        const v = Math.max(0, askCount('tg_channel') - 1) % 3;
+        return t(`interrupts.tg.v${v}.body`);
+      },
+      cta: () => {
+        const v = Math.max(0, askCount('tg_channel') - 1) % 3;
+        return t(`interrupts.tg.v${v}.cta`);
+      },
+      onShow: () => bumpAsk('tg_channel'),
+      run: () => {
+        if (typeof window !== 'undefined') {
+          window.open(CHANNEL_URL, '_blank', 'noopener,noreferrer');
+        }
+      },
+    },
+
+    // 5. Push ruxsati — avval tushuntirish, keyin brauzer so'rovi
     {
       id: 'push',
       show: () => pushPermission() === 'default'
@@ -216,7 +254,7 @@ export default function InterruptHost() {
       },
     },
 
-    // 5. Ilovani o'rnatish taklifi
+    // 6. Ilovani o'rnatish taklifi
     {
       id: 'install',
       show: () => installable && !isStandalone(),

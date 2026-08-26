@@ -1293,6 +1293,23 @@
       "title": "Ilovani telefoningizga o'rnating",
       "body": "Bosh ekrandan bir bosishda ochiladi, tezroq ishlaydi va internetsiz ham takrorlash imkonini beradi.",
       "cta": "O'rnatish"
+    },
+    "tg": {
+      "v0": {
+        "title": "Bepul PRO tarifini yutib oling!",
+        "body": "Rasmiy Telegram kanalimizda muntazam ravishda bepul PRO obunalari va maxsus promokodlar tarqatamiz. Kanalga a'zo bo'ling va yutuqlarda qatnashing!",
+        "cta": "Telegram kanalga o'tish"
+      },
+      "v1": {
+        "title": "Zehin jamoasiga qo'shiling!",
+        "body": "Attestatsiyaga oid eng so'nggi yangiliklar, yangi savollar bazasi va har haftalik bepul PRO yutuqlari rasmiy kanalimizda e'lon qilib boriladi.",
+        "cta": "Kanalga a'zo bo'lish"
+      },
+      "v2": {
+        "title": "Telegram kanalimizga ulaning",
+        "body": "Kanalimiz a'zolari uchun bepul PRO obunalar, metodik qo'llanmalar va maxsus imkoniyatlar doimiy ulashib boriladi.",
+        "cta": "Kanalni ochish"
+      }
     }
   },
   "objection": {

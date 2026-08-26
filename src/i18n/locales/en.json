@@ -1293,6 +1293,23 @@
       "title": "Install the app on your phone",
       "body": "Opens from your home screen in one tap, runs faster, and lets you revise even without internet.",
       "cta": "Install"
+    },
+    "tg": {
+      "v0": {
+        "title": "Win a Free PRO Subscription!",
+        "body": "We regularly giveaway free PRO subscriptions and promo codes in our official Telegram channel. Subscribe and participate!",
+        "cta": "Open Telegram Channel"
+      },
+      "v1": {
+        "title": "Join the Zehin Community!",
+        "body": "Latest attestation news, question updates, and weekly free PRO giveaways are available in our official channel.",
+        "cta": "Join Channel"
+      },
+      "v2": {
+        "title": "Join Our Telegram Channel",
+        "body": "Get free PRO giveaways, study guides, and helpful tips by joining our Telegram channel.",
+        "cta": "Open Channel"
+      }
     }
   },
   "objection": {

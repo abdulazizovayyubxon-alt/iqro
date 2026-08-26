@@ -143,3 +143,18 @@ describe('interrupts — msUntilTomorrow', () => {
     expect(msUntilTomorrow()).toBeGreaterThanOrEqual(HOUR);
   });
 });
+
+describe('interrupts — tg_channel taklifi', () => {
+  it('tg_channel jimlik va so\'rov sanog\'i to\'g\'ri ishlaydi', async () => {
+    const { isSnoozed, snooze, askCount, bumpAsk, DAY } = await load();
+    expect(askCount('tg_channel')).toBe(0);
+    expect(isSnoozed('tg_channel')).toBe(false);
+
+    bumpAsk('tg_channel');
+    expect(askCount('tg_channel')).toBe(1);
+
+    snooze('tg_channel', 7 * DAY);
+    expect(isSnoozed('tg_channel')).toBe(true);
+  });
+});
+
