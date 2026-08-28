@@ -30,4 +30,11 @@ api/send-otp.js
 api/verify-otp.js
 
 # Unit testlar — production bundle'iga kerak emas
+#
+# ⚠️ DIQQAT: `npm run build` ichidagi `verify` qadami shu qatorga BOG'LIQ.
+#   Testlar deploy paketiga tushmagani uchun Vercel'da vitest 0 ta fayl
+#   topadi. Shuning uchun `verify` da `--passWithNoTests` bor: Vercel'da
+#   faqat ESLint qo'riqlaydi (aynan u "X is not defined" sinfini tutadi),
+#   testlar esa lokalda `npm run verify` bilan to'liq yuriydi.
+#   Bu qatorni olib tashlasangiz — testlar deploy'da ham yuradi (2026-08-28).
 src/__tests__/

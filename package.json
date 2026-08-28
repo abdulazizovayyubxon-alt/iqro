@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite --host",
-    "verify": "eslint . && vitest run",
+    "verify": "eslint . && vitest run --passWithNoTests",
     "build": "npm run verify && vite build",
     "build:only": "vite build",
     "lint": "eslint .",
