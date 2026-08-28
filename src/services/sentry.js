@@ -93,12 +93,17 @@ function logToServer(message, stack, severity = 'error', context = null) {
   }
 }
 
-// ── Firestore ichki assertion xatosi → keshni tozalab, bir marta reload ──
+// ── Firestore KESH assertion xatosi → keshni tozalab, bir marta reload ──
 // Modul dinamik yuklanadi: dastlabki bundle'ga og'irlik qo'shmaydi.
+//
+// ⚠️ 2026-08-28: shart `isFirestoreAssertion` dan `isRecoverableAssertion`
+// ga o'zgartirildi. Ma'lumot validatsiyasi assertion'ida (ID 3029) reload
+// hech narsani tuzatmaydi, lekin imtihon yakunlayotgan odamni natija
+// ekranidan uloqtiradi — sababi `firestoreRecovery.js` izohida.
 function maybeRecoverFirestore(message) {
   import('./firestoreRecovery')
-    .then(({ isFirestoreAssertion, recoverFirestore }) => {
-      if (isFirestoreAssertion(message)) recoverFirestore();
+    .then(({ isRecoverableAssertion, recoverFirestore }) => {
+      if (isRecoverableAssertion(message)) recoverFirestore();
     })
     .catch(() => { /* Tiklanish moduli yuklanmadi — ilova o'z holicha davom etadi */ });
 }

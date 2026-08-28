@@ -31,7 +31,7 @@ describe('eski 3 soniyalik debounce — nima uchun kvotani yedi', () => {
     expect(eski).toBeGreaterThanOrEqual(45); // ~50, izohdagi "2-3" emas
   });
 
-  it("yangi ritm o\'sha testni bir necha yozuvga tushiradi", () => {
+  it("yangi ritm o'sha testni bir necha yozuvga tushiradi", () => {
     const yangi = estimateCloudWrites({
       answerCount: 50, gapMs: 20_000, debounceMs: DEBOUNCE, maxWaitMs: MAX_WAIT,
     });
@@ -49,7 +49,7 @@ describe('eski 3 soniyalik debounce — nima uchun kvotani yedi', () => {
 });
 
 describe('nextCloudSaveDelay — debounce', () => {
-  it("birinchi o\'zgarishga to\'liq debounce beradi", () => {
+  it("birinchi o'zgarishga to'liq debounce beradi", () => {
     expect(nextCloudSaveDelay({
       oldestPendingAt: null, now: 1_000, debounceMs: DEBOUNCE, maxWaitMs: MAX_WAIT,
     })).toBe(DEBOUNCE);
@@ -91,7 +91,7 @@ describe('nextCloudSaveDelay — maksimal kutish shifti', () => {
     expect(175_000 + d).toBe(MAX_WAIT);
   });
 
-  it("debounce shiftdan katta bo\'lsa shift ustun turadi", () => {
+  it("debounce shiftdan katta bo'lsa shift ustun turadi", () => {
     // Noto'g'ri sozlashdan himoya: 60 s debounce, 10 s shift
     expect(nextCloudSaveDelay({
       oldestPendingAt: null, now: 0, debounceMs: 60_000, maxWaitMs: 10_000,
@@ -100,7 +100,7 @@ describe('nextCloudSaveDelay — maksimal kutish shifti', () => {
 });
 
 describe('uzluksiz javob berish — yozuv umuman bo\'lmay qolmasligi', () => {
-  it("debounce oraliqdan katta bo\'lsa ham yozuv baribir ketadi", () => {
+  it("debounce oraliqdan katta bo'lsa ham yozuv baribir ketadi", () => {
     // Har 5 soniyada javob (juda tez), debounce 30 s — sof debounce bilan
     // taymer HAR SAFAR qayta boshlanardi va yozuv HECH QACHON bo'lmasdi.
     // Shift aynan shu holat uchun bor.
@@ -124,7 +124,7 @@ describe('uzluksiz javob berish — yozuv umuman bo\'lmay qolmasligi', () => {
 });
 
 describe('sekin javob beruvchi — ritm buzilmasin', () => {
-  it("oraliq debounce dan katta bo\'lsa har javobda yoziladi", () => {
+  it("oraliq debounce dan katta bo'lsa har javobda yoziladi", () => {
     // Har 2 daqiqada bitta javob: 30 s jimlik yuzaga keladi → yozuv.
     // Bu KUTILGAN xatti-harakat — bunday foydalanuvchi kam yozuv qiladi.
     const writes = estimateCloudWrites({
@@ -136,7 +136,7 @@ describe('sekin javob beruvchi — ritm buzilmasin', () => {
 });
 
 describe('kvota hisobi — o\'zgarish yetarlimi', () => {
-  it("200 faol foydalanuvchi kunlik 20 000 yozuv limitiga sig\'adi", () => {
+  it("200 faol foydalanuvchi kunlik 20 000 yozuv limitiga sig'adi", () => {
     const perSeans = estimateCloudWrites({
       answerCount: 60, gapMs: 20_000, debounceMs: DEBOUNCE, maxWaitMs: MAX_WAIT,
     });
@@ -171,7 +171,7 @@ const osilganYozuvdaUrinishlar = ({ inFlightDarvozasi }) => {
     const ruxsat = inFlightDarvozasi
       ? shouldRetryCloudWrite({ pending: true, inFlight, online: true, now, nextAttemptAt })
       // Eski mantiq: faqat `pending` va `online` tekshirilardi.
-      : (true && true);
+      : true;   // ikkala eski shart ham shu sinovda rost
     if (!ruxsat) continue;
     urinish++;
     // Yozuv yuborildi va OSILIB QOLDI — hech qachon settle bo'lmaydi.

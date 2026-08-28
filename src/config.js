@@ -89,10 +89,30 @@ export const BATCH_SIZE = 50; // Har bir blokdagi savollar soni
 //   ~20 ta xato qiladi, ya'ni 50 lik chegara 2.5 ta blokdan keyin to'lardi.
 //   Undan keyin har yangi xato ENG ESKI (va shu sababli eng uzoq vaqt
 //   o'zlashtirilmagan) xatoni jimgina o'chirardi.
-//   Yozuv ~250 bayt → 300 ta ≈ 75 KB, `userStats` uchun xavfsiz.
+//   ⚠️ 2026-08-28 O'LCHANDI: yozuv ~250 bayt EMAS, ~948 bayt (savol matni,
+//   variantlar va izoh bilan birga saqlanadi). Ya'ni 300 ta ≈ 75 KB emas,
+//   ≈ 278 KB. Chegara to'g'ri edi, BAHO esa 3.8 barobar past edi — aynan shu
+//   sababli hujjat shishishi uzoq vaqt sezilmadi.
 //   Chegara oshganda nima o'chishini `engine/mistakeQueue.pruneMistakes`
 //   hal qiladi: eng eskisi emas, allaqachon YOPILGAN va kam xato qilingani.
 export const MAX_MISTAKES_SAVED = 300;
+
+// ── HUJJAT BO'YICHA byudjet ────────────────────────────────────────────
+//
+// ⚠️ JURNAL TAHLILI 2026-08-28 — nega yuqoridagi chegara YETARLI EMAS:
+//   `MAX_MISTAKES_SAVED` FAN BO'YICHA qo'llanadi (`stats[cat].mistakes`),
+//   `userStats` hujjati esa BITTA. Ya'ni ikki fanni o'qiyotgan foydalanuvchi
+//   600 ta xato saqlaydi (~556 KB), uch fanli — 900 ta (~830 KB). Ustiga
+//   `spacedCards` qo'shilsa Firestore ning 1 MiB QAT'IY chegarasidan oshadi
+//   va o'shanda `userStats` BUTUNLAY yozilmaydigan bo'lib qoladi — hozirgi
+//   nosozlikdan ancha yomon holat, chunki undan chiqish yo'li yo'q.
+//
+//   O'lchandi (476 hujjat, 2026-08-28): eng kattasi 606 KB = limitning 59%,
+//   ikkitasi 50% dan oshgan. Ya'ni xavf hali yuz bermagan, LEKIN yo'lda.
+//
+//   400 ta ≈ 379 KB. `spacedCards` (yopiq ro'yxatdan keyin ~283 KB) bilan
+//   birga eng yomon holat ≈ 660 KB — 1 MiB gacha xavfsiz zaxira qoladi.
+export const MAX_MISTAKES_TOTAL = 400;
 
 // ── Tugallanmagan imtihon sessiyasi (localforage) ──────────────────────────
 //

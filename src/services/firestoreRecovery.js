@@ -43,6 +43,34 @@ export function isFirestoreAssertion(message) {
   return ASSERTION_RE.test(String(message || ''));
 }
 
+// ── TIKLAB BO'LMAYDIGAN assertion'lar ────────────────────────────────────
+//
+// ⚠️ JURNAL TAHLILI 2026-08-28 — nega bu ajratish paydo bo'ldi:
+//   Hamma assertion ham keshning buzilishi emas. Firestore YOZILAYOTGAN
+//   MA'LUMOT yaroqsiz bo'lganda ham xuddi shu xabarni beradi:
+//     «... (ID: 3029) CONTEXT: {"type":"symbol"}»
+//   Bu — mijoz kodidagi xato (obyekt ichida symbol/funksiya bor), keshga
+//   aloqasi YO'Q. Bunday holatda reload HECH NARSANI tuzatmaydi: qayta
+//   yuklangan ilova ayni ma'lumotni yana yasaydi va yana yiqiladi.
+//
+//   Narxi esa yuqori edi: 22 kun davomida imtihonni YAKUNLAYOTGAN odam
+//   natija ekranidan uloqtirilardi (164 hodisa, 59 foydalanuvchi). Ya'ni
+//   «tiklanish» xatoni tuzatmasdan, ustiga tajribani ham buzardi.
+//
+//   Belgisi: CONTEXT ichida "type" bo'lishi — bu Firestore ning
+//   valueDescription() funksiyasidan chiqqan degani, ya'ni SDK qiymat
+//   TURINI tavsiflay olmagan. Kesh muammosi hech qachon bunday ko'rinmaydi.
+const isDataAssertion = (m) => m.includes('CONTEXT:') && m.includes('"type"');
+
+/**
+ * Keshni tozalash + reload bu xatoni tuzata OLADIMI?
+ * Ma'lumot validatsiyasi xatosida — YO'Q (yuqoridagi izoh).
+ */
+export function isRecoverableAssertion(message) {
+  const m = String(message || '');
+  return ASSERTION_RE.test(m) && !isDataAssertion(m);
+}
+
 let running = false;
 
 /** Vaqt chegarasi — buzilgan SDK'da promise'lar hech qachon hal bo'lmasligi mumkin */

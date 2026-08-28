@@ -39,7 +39,7 @@
  */
 
 import { questionKey } from './SmartQuestionEngine';
-import { MAX_MISTAKES_SAVED } from '../config';
+import { MAX_MISTAKES_SAVED, MAX_MISTAKES_TOTAL } from '../config';
 
 /** Xato «yopilishi» uchun kerakli ketma-ket to'g'ri javoblar soni. */
 export const RETIRE_STREAK = 2;
@@ -275,4 +275,49 @@ export const buildMistakeDrill = (mistakes = [], spacedCards = [], { size = DRIL
   }
 
   return shuffle(picked, rand);
+};
+
+/**
+ * HUJJAT BO'YICHA xato byudjeti — barcha fanlar bo'ylab jami chegara.
+ *
+ * ⚠️ NEGA `pruneMistakes` YETARLI EMAS: u FAN BO'YICHA ishlaydi, `userStats`
+ *   hujjati esa bitta. Ikki fanli foydalanuvchida 2 × 300 = 600 ta xato
+ *   yig'ilardi va hujjat Firestore ning 1 MiB chegarasiga yaqinlashardi
+ *   (o'lchandi: yozuv ~948 bayt). Chegaraga yetgan hujjat BUTUNLAY
+ *   yozilmaydigan bo'lib qoladi — sababi `config.MAX_MISTAKES_TOTAL` izohida.
+ *
+ * Byudjetdan oshmagan holatda AYNI obyekt qaytariladi (yangi nusxa emas):
+ * ortiqcha render ham, keraksiz bulut yozuvi ham kelib chiqmasligi kerak.
+ *
+ * Ustuvorlik `pruneMistakes` bilan BIR XIL: ochiq xatolar yopilganidan
+ * ustun, ko'p xato qilingani kamidan ustun, yangisi eskisidan ustun.
+ *
+ * @param {object} stats  `state.stats` — { [fan]: { mistakes: [...] } }
+ * @param {number} [total]
+ * @returns {object} yangi (yoki o'zgarmagan) `stats`
+ */
+export const enforceMistakeBudget = (stats, total = MAX_MISTAKES_TOTAL) => {
+  if (!stats || typeof stats !== 'object') return stats;
+  const cats = Object.keys(stats);
+  const all = [];
+  for (const cat of cats) {
+    for (const m of (stats[cat]?.mistakes || [])) all.push({ cat, m });
+  }
+  if (all.length <= total) return stats;
+
+  const rank = (m) => (isRetired(m) ? 2 : isLeech(m) ? 1 : 0);
+  all.sort((a, b) => {
+    const ra = rank(a.m); const rb = rank(b.m);
+    if (ra !== rb) return ra - rb;
+    const wa = a.m.wrongCount || 1; const wb = b.m.wrongCount || 1;
+    if (wa !== wb) return wb - wa;
+    return (b.m.lastWrongAt || 0) - (a.m.lastWrongAt || 0);
+  });
+
+  const kept = new Map(cats.map(c => [c, []]));
+  for (const { cat, m } of all.slice(0, total)) kept.get(cat).push(m);
+
+  const out = { ...stats };
+  for (const cat of cats) out[cat] = { ...stats[cat], mistakes: kept.get(cat) };
+  return out;
 };

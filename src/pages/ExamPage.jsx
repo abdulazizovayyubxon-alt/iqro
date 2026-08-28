@@ -271,10 +271,11 @@ const ExamPage = () => {
     poolStampRef.current = stamp;
     localforage.setItem(examPoolKey(uid), {
       stamp,
-      // topicIcon/icon — React elementlari, IndexedDB ularni qabul qilmaydi
-      // (DataCloneError, butun yozuv rad etiladi). Saqlashdan oldin olib
-      // tashlaymiz, resume'da TOPICS'dan qayta biriktiriladi.
-      questions: questions.map(({ topicIcon, ...q }) => q),
+      // `topicGroups[].icon` — React elementi, IndexedDB uni qabul qilmaydi
+      // (DataCloneError, butun yozuv rad etiladi). SAVOLLARDA esa ikonka
+      // endi YO'Q: u hech qayerda render qilinmasdi, lekin SRS kartasi orqali
+      // `userStats` yozuvini o'ldirardi (SmartQuestionEngine.heavyCardBody izohi).
+      questions,
       topicGroups: topicGroups.map(({ icon, ...g }) => g),
     }).catch(err => console.error('Imtihon hovuzini saqlashda xato:', err));
   }, [user?.uid, questions, topicGroups, cat, examType, selectedSetId, finished]);
@@ -390,10 +391,7 @@ const ExamPage = () => {
       const catTopics = TOPICS.filter(tp =>
         Array.isArray(tp.category) ? tp.category.includes(s.cat) : tp.category === s.cat
       );
-      setQuestions(pool.questions.map(q => {
-        const topic = catTopics.find(tp => tp.id === q.topicId);
-        return { ...q, topicIcon: topic ? topic.icon : null };
-      }));
+      setQuestions(pool.questions);
       setTopicGroups((pool.topicGroups || []).map(g => {
         const topic = catTopics.find(tp => tp.name === g.name);
         return { ...g, icon: topic ? topic.icon : null };
@@ -538,7 +536,6 @@ const ExamPage = () => {
         ...q,
         difficulty: q.difficulty || 'Y2',
         topicName: selectedSet?.title || 'Haftalik diagnostika',
-        topicIcon: null,
         // `topicId` ATAYIN -1: bu savollar hech qaysi mavzuga tegishli emas,
         // shuning uchun mavzu bo'yicha o'zlashtirish foizini buzmasligi kerak.
         topicId: -1,
@@ -697,8 +694,7 @@ const ExamPage = () => {
           return {
             ...q,
             difficulty: diff,
-            topicName: topic ? topic.name : 'Aralash',
-            topicIcon: topic ? topic.icon : null
+            topicName: topic ? topic.name : 'Aralash'
           };
         });
 

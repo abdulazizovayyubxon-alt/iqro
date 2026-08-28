@@ -520,6 +520,45 @@ export const lightenCard = (c) => ({
 });
 
 /**
+ * Og'ir kartaga ko'chiriladigan IXTIYORIY maydonlar — SmartReviewPage va
+ * QuestionMedia haqiqatan render qiladiganlari. Qolgani hujjatda o'lik yuk.
+ */
+const HEAVY_CARD_OPTIONAL = ['explanation', 'isHtml', 'image', 'svg', 'diagram'];
+
+/**
+ * Savoldan og'ir kartaning TANASINI ajratadi (SRS metama'lumotisiz).
+ *
+ * ⚠️ JURNAL TAHLILI 2026-08-28 — NEGA `{ ...q }` EMAS:
+ *   Ilgari bu yerda butun savol obyekti ko'chirilardi. ExamPage esa savolga
+ *   `topicIcon` biriktirardi — u REACT ELEMENTI, ichida `$$typeof: Symbol`.
+ *   Symbol karta orqali `state.spacedCards` ga, undan `userStats` yozuviga
+ *   tushardi va Firestore uni tavsiflay olmay ichki assertion tashlardi:
+ *     «FIRESTORE INTERNAL ASSERTION FAILED (ID: 3029) CONTEXT: {"type":"symbol"}»
+ *   `setDoc` ma'lumotni SINXRON tekshiradi — xato Promise yaratilishidan OLDIN
+ *   otiladi, ya'ni `.catch()` UMUMAN ishlamaydi va yozuv jimgina yo'qoladi.
+ *   22 kunda 164 hodisa, 59 foydalanuvchi; natija ekrani 0 ball ko'rsatardi.
+ *
+ *   YOPIQ RO'YXAT bu sinfdagi xatoni takrorlanmas qiladi: saqlanadigan qatlam
+ *   endi UI ma'lumotini printsipial ravishda ko'tara olmaydi. Ikkinchi qatlam —
+ *   AppContext dagi `sanitizeForFirestore`.
+ */
+export const heavyCardBody = (q, qHash, fallbackTopicId) => {
+  const body = {
+    qHash,
+    topicId: q?.topicId ?? fallbackTopicId,
+    q: q?.q,
+    opts: q?.opts || [],
+    correct: q?.correct,
+  };
+  // Ixtiyoriylar faqat mavjud bo'lsa — bo'sh kalit ham hujjatni shishiradi.
+  for (const k of HEAVY_CARD_OPTIONAL) {
+    const v = q?.[k];
+    if (v !== undefined && v !== null) body[k] = v;
+  }
+  return body;
+};
+
+/**
  * Kartalar ro'yxatini chegaraga siqadi.
  *
  * Saqlash ustuvorligi (yuqoridan pastga):
@@ -776,17 +815,12 @@ export const summarizeTestResults = (
         // demak SmartReviewPage uchun savol matni kerak bo'ladi.
         const base = isHeavyCard(prev)
           ? prev
-          : { ...q, ...prev, qHash, q: q.q, opts: q.opts || [], correct: q.correct, topicId: q.topicId ?? topicId };
+          : { ...prev, ...heavyCardBody(q, qHash, topicId) };
         updatedCards.set(qHash, updateSpacedCard(base, false, { examAtMs, now: sessionNow }));
       } else {
         // Yangi xato — OG'IR kartochka (savol tanasi bilan)
         updatedCards.set(qHash, {
-          ...q, // image, isHtml, explanation kabi xususiyatlarni yo'qotmaslik uchun
-          qHash,
-          q: q.q,
-          opts: q.opts || [],
-          correct: q.correct,
-          topicId: q.topicId ?? topicId,
+          ...heavyCardBody(q, qHash, topicId),
           level: 0,
           correctStreak: 0,
           difficulty: 1,

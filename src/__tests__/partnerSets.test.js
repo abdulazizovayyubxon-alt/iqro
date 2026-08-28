@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { qulfHolatini, sanaMatni } from '../services/partnerSets';
 
 /**
@@ -70,9 +70,20 @@ describe('qulfHolatini — sana', () => {
     expect(r[1].locked).toBe(false);
   });
 
-  it('qulf xabarida sana o\'zbekcha yoziladi', () => {
-    const r = qulfHolatini(sets({ h2: { opensAt: '2026-08-23' } }), ishlangan);
-    expect(r[1].lockMessage).toBe('23-avgust, yakshanba kuni ochiladi');
+  // ⚠️ 2026-08-28: bu test VAQT O'TISHI bilan buzilgan edi. '2026-08-23'
+  //   o'tib ketgach to'plam ochiq bo'lib qoldi va `lockMessage` null qaytardi,
+  //   ya'ni test ILOVADAGI xatoni emas, kalendarni ko'rsatardi. Aniq matn
+  //   tekshiruvi qimmatli (o'zbekcha sana formati shu yerda qo'riqlanadi),
+  //   shuning uchun testni olib tashlamasdan VAQTNI MUZLATAMIZ.
+  it("qulf xabarida sana o'zbekcha yoziladi", () => {
+    vi.useFakeTimers();
+    try {
+      vi.setSystemTime(new Date('2026-08-20T09:00:00.000Z'));
+      const r = qulfHolatini(sets({ h2: { opensAt: '2026-08-23' } }), ishlangan);
+      expect(r[1].lockMessage).toBe('23-avgust, yakshanba kuni ochiladi');
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });
 

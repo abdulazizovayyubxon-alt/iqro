@@ -3,13 +3,14 @@ import localforage from 'localforage';
 import { MAX_MISTAKES_SAVED, EXAM_GOAL_SCORE, BATCH_SIZE } from '../config';
 import { computeDiagnostics, avgSecondsPerQuestion } from '../engine/DiagnosticsEngine';
 import { questionKey, pruneSpacedCards } from '../engine/SmartQuestionEngine';
-import { mergeMistakes, mistakeKey, pruneMistakes } from '../engine/mistakeQueue';
+import { mergeMistakes, mistakeKey, pruneMistakes, enforceMistakeBudget } from '../engine/mistakeQueue';
 import { TOPICS } from '../data/mockData';
 import { readContract, questionsForMinutes } from '../services/studyContract';
 import { mergePartnerSets } from '../utils/mergeRules';
 // Bulut yozuvining ritmi — sof funksiya va testga olingan (2026-08-20 kvota hodisasi)
 import { nextCloudSaveDelay, shouldRetryCloudWrite, nextRetryDelay } from '../utils/saveSchedule';
 import { withWriteTimeout, TIMEOUT_CODE } from '../utils/firebaseError';
+import { sanitizeForFirestore, asPromise } from '../utils/firestoreSafe';
 import { db } from '../firebase';
 import { AuthContext } from './AuthContext';
 import { ToastContext } from './ToastContext';
@@ -281,6 +282,10 @@ const mergeCloudAndLocal = (cloud, local) => {
     };
   });
 
+  // Ikki manba birlashgach jami hajm ikkala nusxadan ham katta bo'lishi
+  // mumkin — byudjet AYNAN shu yerda qo'llanadi (config.MAX_MISTAKES_TOTAL).
+  merged.stats = enforceMistakeBudget(merged.stats);
+
   const topicIds = new Set([...Object.keys(cloud.topicStats || {}), ...Object.keys(local.topicStats || {})]);
   merged.topicStats = {};
   topicIds.forEach(t => {
@@ -465,25 +470,6 @@ const withAchievements = (stateObj) => {
   return { ...stateObj, achievements, milestones };
 };
 
-// Firestore `undefined` qiymatni qabul qilmaydi — agar saqlanadigan obyektda
-// (masalan spacedCards/mistakes ichida correct:undefined) bironta undefined bo'lsa,
-// setDoc BUTUN yozuvni rad etadi va xato jim yutiladi → bulutga ball yozilmaydi,
-// reyting 0 turadi. Shu sababli yozishdan oldin undefined'larni chuqur tozalaymiz.
-// deleteField()/FieldValue kabi maxsus sentinel obyektlarga TEGMAYMIZ
-// (faqat oddiy obyekt/massivga kiramiz — ularning constructor === Object emas).
-const stripUndefined = (value) => {
-  if (Array.isArray(value)) return value.map(stripUndefined);
-  if (value && typeof value === 'object' && value.constructor === Object) {
-    const out = {};
-    for (const [k, v] of Object.entries(value)) {
-      if (v === undefined) continue;
-      out[k] = stripUndefined(v);
-    }
-    return out;
-  }
-  return value;
-};
-
 // ═══ Bulutga saqlash ritmi (2026-08-20 KVOTA HODISASIDAN KEYIN) ═══
 //
 // NIMA BO'LDI: loyihaning Firestore KUNLIK YOZUV KVOTASI (bepul rejada
@@ -584,8 +570,9 @@ const prepareStatsForSave = (stateObj, currentUser) => {
       statsToSave[k] = deleteField();
     }
   });
-  // undefined'larni tozalaymiz (deleteField sentinellariga tegmaydi)
-  return stripUndefined(statsToSave);
+  // Oxirgi to'siq: `undefined`, `symbol`, `function` va React elementlari
+  // tashlanadi (sentinellarga tegilmaydi). Sababi — `utils/firestoreSafe.js`.
+  return sanitizeForFirestore(statsToSave);
 };
 
 export const AppProvider = ({ children }) => {
@@ -808,7 +795,7 @@ export const AppProvider = ({ children }) => {
       pendingCloudRef.current = true;
       inFlightRef.current = true;
 
-      const p = setDoc(statRef, prepareStatsForSave(state, user), { merge: true });
+      const p = asPromise(() => setDoc(statRef, prepareStatsForSave(state, user), { merge: true }));
 
       // `inFlightRef` HAQIQIY settle bo'yicha ochiladi, timeout bo'yicha EMAS.
       // Timeout Firestore mutatsiyasini BEKOR QILMAYDI — u navbatda turaveradi.
@@ -1139,7 +1126,9 @@ export const AppProvider = ({ children }) => {
           totalTime: currentTimeStats.totalTime + sessionTime,
           totalQuestions: currentTimeStats.totalQuestions + sessionQuestions
         },
-        stats: {
+        // Fan bo'yicha chegara (`MAX_MISTAKES_SAVED`) ustiga HUJJAT bo'yicha
+        // byudjet: ko'p fanli foydalanuvchida hujjat 1 MiB dan oshib ketardi.
+        stats: enforceMistakeBudget({
           ...prev.stats,
           [cat]: {
             ...catStats,
@@ -1149,7 +1138,7 @@ export const AppProvider = ({ children }) => {
             maxStreak: newMaxStreak,
             mistakes: newMistakes
           }
-        }
+        })
       };
 
       // Akademik darajalarni qayta baholash — yangi metrikalar asosida (sof hisob).
@@ -1265,7 +1254,7 @@ export const AppProvider = ({ children }) => {
     const currentUser = userRef.current;
     if (!currentUser) return { earnedPoints: earnedOut, amiDelta: amiDeltaOut, gained: gainedOut, gainedUnvon: gainedUnvonOut, gainedMilestones: gainedMilestonesOut, rewardPoints: rewardPointsOut, rewardFreezes: rewardFreezesOut };
     const statRef = doc(db, 'userStats', currentUser.uid);
-    setDoc(statRef, prepareStatsForSave(snapshot, currentUser), { merge: true }).catch(err => {
+    asPromise(() => setDoc(statRef, prepareStatsForSave(snapshot, currentUser), { merge: true })).catch(err => {
       console.error('Natijalarni saqlashda xatolik:', err);
       showToast('Natijalar vaqtincha saqlanmadi. Internet aloqasini tekshiring.', 'error');
     });
@@ -1440,7 +1429,7 @@ export const AppProvider = ({ children }) => {
 
     const currentUser = userRef.current;
     if (snapshot && currentUser) {
-      setDoc(doc(db, 'userStats', currentUser.uid), prepareStatsForSave(snapshot, currentUser), { merge: true })
+      asPromise(() => setDoc(doc(db, 'userStats', currentUser.uid), prepareStatsForSave(snapshot, currentUser), { merge: true }))
         .catch(err => console.error('Reja holatini saqlashda xatolik:', err));
     }
   }, []);
@@ -1452,7 +1441,7 @@ export const AppProvider = ({ children }) => {
     if (user) {
       // User-specific localStorage ni tozalash
       localStorage.removeItem(getUserStateKey(user.uid));
-      await setDoc(doc(db, 'userStats', user.uid), fresh, { merge: false });
+      await asPromise(() => setDoc(doc(db, 'userStats', user.uid), fresh, { merge: false }));
     }
     showToast("Statistika tozalandi", 'info');
   }, [user, showToast]);
@@ -1543,16 +1532,17 @@ export const AppProvider = ({ children }) => {
         source: question.source,
       }];
 
-      return {
-        ...prev,
-        stats: {
-          ...prev.stats,
-          [cat]: {
-            ...catStats,
-            mistakes: mergeMistakes(existing, incoming, wasCorrect ? [key] : [], { limit: MAX_MISTAKES_SAVED }),
-          },
+      // Hujjat bo'yicha byudjet — fan bo'yicha chegara `userStats` ni
+      // 1 MiB dan saqlab qololmaydi (config.MAX_MISTAKES_TOTAL izohi).
+      const nextStats = enforceMistakeBudget({
+        ...prev.stats,
+        [cat]: {
+          ...catStats,
+          mistakes: mergeMistakes(existing, incoming, wasCorrect ? [key] : [], { limit: MAX_MISTAKES_SAVED }),
         },
-      };
+      });
+
+      return { ...prev, stats: nextStats };
     });
   }, []);
 

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef, useCallback } from 'react';
+import React, { useContext, useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContext } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
@@ -23,7 +23,7 @@ import {
   ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Search, Plus, Edit3, FileText, Zap,
   Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, UploadCloud,
   Download, Crown, Database, RefreshCw, Inbox, School, CreditCard, Ticket, X,
-  Activity, Sparkles, MoreVertical, KeyRound, Copy, CalendarDays
+  Activity, Layers, Sparkles, MoreVertical, KeyRound, Copy, CalendarDays
 } from 'lucide-react';
 
 import './AdminPage.css';
@@ -307,6 +307,75 @@ const AdminPage = () => {
 
   const visibleErrorLogs = errorsShowResolved ? errorLogs : errorLogs.filter(e => !e.resolved);
   const unresolvedErrorCount = errorLogs.filter(e => !e.resolved).length;
+
+  // ── Xatolarni GURUHLASH ─────────────────────────────────────────────
+  //
+  // ⚠️ JURNAL TAHLILI 2026-08-28 — nega kerak bo'ldi:
+  //   Jurnalda 198 yozuv bor edi, ularning 164 tasi (83%) BITTA xato.
+  //   Ro'yxat esa tekis, 100 talik: admin ekranni to'ldirgan bir xil
+  //   yozuvlarni ko'rib «ko'p xato bor» deb o'ylardi, qolgan 6 xil xato
+  //   (jumladan ikkita ishlab chiqarish crash’i) esa ko’rinmay ketdi.
+  //   Guruhlangan ko'rinishda «1 ta xato × 164 marta» va «164 ta xato»
+  //   farqi darrov ajraladi — jurnalning butun ma’nosi shunda.
+  //
+  // Imzo: xabar boshidagi `Uncaught` / `...Error:` prefiksi olib tashlanadi —
+  // ayni nosozlik brauzerga qarab uch xil prefiks bilan kelardi va tekis
+  // ro'yxatda uch alohida xato bo'lib ko'rinardi.
+  /** Domensiz yo'l: `https://zehin.uz/exam` -> `/exam` */
+  const shortUrl = (u) => String(u || '').replace(/^https?:\/\/[^/]+/, '');
+
+  const errorSignature = (msg) =>
+    String(msg || '(xabarsiz)').replace(/^(Uncaught +)?(\w*Error: *)?/i, '').slice(0, 140);
+
+  const [errorsGrouped, setErrorsGrouped] = useState(true);
+  const [openErrorGroup, setOpenErrorGroup] = useState(null);
+
+  const errorGroups = useMemo(() => {
+    const map = new Map();
+    for (const log of visibleErrorLogs) {
+      const sig = errorSignature(log.message);
+      if (!map.has(sig)) map.set(sig, { sig, logs: [], uids: new Set(), urls: new Set() });
+      const g = map.get(sig);
+      g.logs.push(log);
+      if (log.uid) g.uids.add(log.uid);
+      if (log.url) g.urls.add(shortUrl(log.url));
+    }
+    // Eng ko’p takrorlangani tepada: jurnal ochilganda birinchi ko’rinadigan
+    // narsa eng qimmat muammo bo’lishi kerak.
+    return [...map.values()].sort((a, b) => b.logs.length - a.logs.length);
+  }, [visibleErrorLogs]);
+
+  // Tekis ko'rinishda ham AYNI shakl ishlatiladi (bitta yozuvli guruh) —
+  // shunda render mantiqi ikkiga bo’linmaydi.
+  const errorItems = useMemo(() => (errorsGrouped
+    ? errorGroups
+    : visibleErrorLogs.map(l => ({
+        sig: l.id,
+        logs: [l],
+        uids: new Set(l.uid ? [l.uid] : []),
+        urls: new Set(l.url ? [shortUrl(l.url)] : []),
+      }))
+  ), [errorsGrouped, errorGroups, visibleErrorLogs]);
+
+  // Butun guruhni bir yozuvda hal qilindi deb belgilash.
+  // `writeBatch` ATAYLAB: 164 ta alohida `updateDoc` kunlik yozuv kvotasining
+  // (bepul rejada 20 000) sezilarli qismini yeb qo’yardi.
+  const resolveErrorGroup = async (group, next) => {
+    const target = group.logs.filter(l => !!l.resolved !== next);
+    if (target.length === 0) return;
+    try {
+      for (let i = 0; i < target.length; i += 400) {
+        const batch = writeBatch(db);
+        target.slice(i, i + 400).forEach(l => batch.update(doc(db, 'errorLogs', l.id), { resolved: next }));
+        await batch.commit();
+      }
+      const ids = new Set(target.map(l => l.id));
+      setErrorLogs(prev => prev.map(e => (ids.has(e.id) ? { ...e, resolved: next } : e)));
+      showToast(`${target.length} ta yozuv belgilandi`, 'success');
+    } catch (e) {
+      showToast('Belgilashda xato', 'error');
+    }
+  };
 
   // ── Admin harakatlari jurnali (B-5) ──
   // «Jurnal» tabi ichida ikkinchi ko'rinish: client xatolari va admin amallari
@@ -3094,7 +3163,28 @@ try {
             </div>
           ) : (
             <div className="admin-stack">
-              {visibleErrorLogs.map(log => {
+              {/* Guruhlash: jurnaldagi 198 yozuvning 164 tasi (83%) BITTA xato edi.
+                  Tekis ro'yxatda ular ekranni to'ldirib, qolgan 6 xil nosozlikni
+                  (ikkitasi ishlab chiqarish crash'i) ko'zdan yashirardi. Guruhlangan
+                  ko'rinish «1 xato x 164 marta» va «164 xato» ni ajratadi. */}
+              <div className="admin-row-between">
+                <div className="admin-info-text">
+                  {errorsGrouped
+                    ? `${errorGroups.length} xil xato · jami ${visibleErrorLogs.length} yozuv`
+                    : `${visibleErrorLogs.length} ta yozuv`}
+                </div>
+                <button className="btn btn-sm btn-outline"
+                  onClick={() => { setErrorsGrouped(v => !v); setOpenErrorGroup(null); }}>
+                  <Layers size={14} /> {errorsGrouped ? "Tekis ro'yxat" : 'Guruhlash'}
+                </button>
+              </div>
+
+              {errorItems.map(group => {
+                const log = group.logs[0];                          // eng yangi yozuv — guruh namunasi
+                const oldest = group.logs[group.logs.length - 1];
+                const n = group.logs.length;
+                const allResolved = group.logs.every(l => l.resolved);
+                const open = openErrorGroup === group.sig;
                 const sev = log.severity || 'error';
                 const ua = prettyUA(log.userAgent);
                 // uid bo'lsa — ism/telefon; users'da topilmasa (akkaunt o'chirilgan)
@@ -3104,12 +3194,16 @@ try {
                   : 'Kirmagan mehmon';
                 const sevClass = sev === 'info' ? 'admin-chip--blue' : sev === 'warning' ? 'admin-chip--amber' : 'admin-chip--red';
                 return (
-                  <div key={log.id} className={`admin-card ${log.resolved ? 'admin-card--dim' : ''}`}>
+                  <div key={group.sig} className={`admin-card ${allResolved ? 'admin-card--dim' : ''}`}>
                     <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10 }}>
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div className="admin-row" style={{ marginBottom: 4 }}>
                           <span className={`admin-chip ${sevClass}`}>{sev}</span>
-                          {log.resolved && (
+                          {n > 1 && <span className="admin-chip admin-chip--amber">{n}× takror</span>}
+                          {n > 1 && group.uids.size > 0 && (
+                            <span className="admin-chip">{group.uids.size} foydalanuvchi</span>
+                          )}
+                          {allResolved && (
                             <span className="admin-chip admin-chip--green">✅ HAL QILINDI</span>
                           )}
                         </div>
@@ -3119,21 +3213,35 @@ try {
                       </div>
                       <div className="admin-row--tight">
                         <button
-                          className={`admin-icon-btn ${log.resolved ? 'is-on' : ''}`}
-                          onClick={() => toggleErrorResolved(log.id, !log.resolved)}
-                          aria-label={log.resolved ? "Hal qilinmagan deb belgilash" : "Hal qilindi deb belgilash"}
-                          title={log.resolved ? "Hal qilinmagan deb belgilash" : "Hal qilindi deb belgilash"}
+                          className={`admin-icon-btn ${allResolved ? 'is-on' : ''}`}
+                          onClick={() => (n > 1 ? resolveErrorGroup(group, !allResolved) : toggleErrorResolved(log.id, !log.resolved))}
+                          aria-label={allResolved ? 'Hal qilinmagan deb belgilash' : 'Hal qilindi deb belgilash'}
+                          title={n > 1 ? `${n} ta yozuvni birdan belgilash` : (allResolved ? 'Hal qilinmagan deb belgilash' : 'Hal qilindi deb belgilash')}
                         >
                           <CheckCircle size={15} />
                         </button>
-                        <button
-                          className="admin-icon-btn"
-                          onClick={() => deleteErrorLog(log.id)}
-                          aria-label="Xato yozuvini o'chirish"
-                          title="O'chirish"
-                        >
-                          <Trash2 size={15} />
-                        </button>
+                        {n === 1 ? (
+                          <button
+                            className="admin-icon-btn"
+                            onClick={() => deleteErrorLog(log.id)}
+                            aria-label="Xato yozuvini o'chirish"
+                            title="O'chirish"
+                          >
+                            <Trash2 size={15} />
+                          </button>
+                        ) : (
+                          // Guruhni BUTUNLAY o'chirish tugmasi ATAYLAB YO'Q: bir bosishda
+                          // 164 ta kuzatuv yozuvini yo'qotish juda oson bo'lardi.
+                          // O'chirish faqat ochilgan ro'yxatda, bittalab.
+                          <button
+                            className="admin-icon-btn"
+                            onClick={() => setOpenErrorGroup(open ? null : group.sig)}
+                            aria-label="Guruhdagi yozuvlarni ochish"
+                            title={open ? 'Yopish' : `${n} ta yozuvni ko'rish`}
+                          >
+                            {open ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                          </button>
+                        )}
                       </div>
                     </div>
                     {log.stack && (
@@ -3145,13 +3253,45 @@ try {
                       </pre>
                     )}
                     <div className="admin-meta-line" style={{ marginTop: 8 }}>
-                      {log.url && <span>🔗 {log.url.replace(/^https?:\/\//, '')}</span>}
+                      {group.urls.size > 0 && <span>🔗 {[...group.urls].slice(0, 3).join(' · ')}</span>}
                       {ua && <span title={log.userAgent}>🌐 {ua}</span>}
-                      <span title={log.uid || 'uid yozilmagan'} style={{ color: log.uid ? 'var(--text2)' : 'var(--text3)' }}>
-                        👤 {who}
-                      </span>
-                      {log.createdAt && <span>🕒 {new Date(log.createdAt).toLocaleString()}</span>}
+                      {n === 1 && (
+                        <span title={log.uid || 'uid yozilmagan'} style={{ color: log.uid ? 'var(--text2)' : 'var(--text3)' }}>
+                          👤 {who}
+                        </span>
+                      )}
+                      {log.createdAt && (
+                        <span>🕒 {n > 1
+                          ? `${new Date(oldest.createdAt).toLocaleDateString()} → ${new Date(log.createdAt).toLocaleString()}`
+                          : new Date(log.createdAt).toLocaleString()}</span>
+                      )}
                     </div>
+                    {open && (
+                      <div style={{ marginTop: 10, borderTop: '1px solid var(--border)', paddingTop: 10, display: 'grid', gap: 6 }}>
+                        {group.logs.map(l => (
+                          <div key={l.id} className="admin-row-between" style={{ gap: 8 }}>
+                            <div className="admin-meta-line" style={{ flex: 1, minWidth: 0 }}>
+                              <span>🕒 {l.createdAt ? new Date(l.createdAt).toLocaleString() : '—'}</span>
+                              <span style={{ color: l.uid ? 'var(--text2)' : 'var(--text3)' }}>
+                                👤 {l.uid ? (userLabel(errorUsers[l.uid]) || `${l.uid.slice(0, 8)}…`) : 'mehmon'}
+                              </span>
+                              {l.resolved && <span className="admin-chip admin-chip--green">hal</span>}
+                            </div>
+                            <div className="admin-row--tight">
+                              <button className={`admin-icon-btn ${l.resolved ? 'is-on' : ''}`}
+                                onClick={() => toggleErrorResolved(l.id, !l.resolved)}
+                                aria-label="Hal qilindi deb belgilash" title="Hal qilindi deb belgilash">
+                                <CheckCircle size={14} />
+                              </button>
+                              <button className="admin-icon-btn" onClick={() => deleteErrorLog(l.id)}
+                                aria-label="Yozuvni o'chirish" title="O'chirish">
+                                <Trash2 size={14} />
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 );
               })}
