@@ -239,6 +239,31 @@
           } catch (e) { /* storage bloklangan — qulfsiz davom etamiz */ }
         }
 
+        // ⚠️ QULFNI OCHISH — busiz ta'mirlash qulfi butun sessiya davomida
+        // yopiq qolardi. Ya'ni bir marta ta'mirlash ishlagandan KEYIN ham,
+        // o'sha tabda ikkinchi marta sekin yuklansa (masalan «Yangilash»
+        // bosilgandan so'ng) qo'riqchi ta'mirlashga urinmay to'g'ridan-to'g'ri
+        // «Ilova ochilmadi» ekranini berardi. Ilova ochilishi bilan qulf ochiladi.
+        var okTimer = setInterval(function () {
+          if (!booted()) return;
+          clearInterval(okTimer);
+          setTried(false);
+        }, 300);
+        setTimeout(function () { clearInterval(okTimer); }, SLOW_MS + 5000);
+
+        // Asosiy paket HALI YUKLANMOQDAMI? Tugallangan (hatto 404 bilan
+        // tugagan) so'rov `performance` resurs jadvaliga tushadi; hali
+        // yo'ldagisi TUSHMAYDI. Shu farq «sekin internet» ni «buzuq paket» dan
+        // ajratadi — pastdagi qo'riqchi uchun hal qiluvchi tekshiruv.
+        function entryStillLoading() {
+          try {
+            var el = document.querySelector('script[type="module"][src]');
+            if (!el || !el.src) return false;
+            if (!window.performance || !performance.getEntriesByName) return false;
+            return performance.getEntriesByName(el.src).length === 0;
+          } catch (e) { return false; }
+        }
+
         // Jurnal: bundle ishga tushmagani uchun sentry.js bu yerga yeta olmaydi
         function report(reason) {
           try {
@@ -326,6 +351,14 @@
           if (booted() || done) return;
           // Fondagi tab throttle qilinadi — bu sekinlik, nosozlik emas
           if (document.hidden) { setTimeout(watchdog, SLOW_MS); return; }
+          // ⚠️ SEKIN INTERNET ≠ BUZUQ PAKET. `navigator.onLine` yomon 2G da ham
+          // `true` qaytaradi, ya'ni oflayn himoyasi bu odamni QOPLAMAYDI. Paket
+          // hamon yo'lda bo'lsa ta'mirlash butun Cache Storage'ni — ilovaning
+          // yagona oflayn nusxasini — o'chirib, ahvolni yomonlashtirardi va
+          // ekranga sababi noto'g'ri («eski versiya qolib ketgan») xabar chiqardi.
+          // Yuklanish tugamaguncha kutamiz: tugagach 404 bo'lsa (a) tinglovchisi,
+          // haqiqatan qotib qolsa shu qo'riqchi keyingi aylanada ushlaydi.
+          if (entryStillLoading()) { setTimeout(watchdog, SLOW_MS); return; }
           repair('vaqt tugadi (' + SLOW_MS + 'ms)');
         }
         setTimeout(watchdog, SLOW_MS);
