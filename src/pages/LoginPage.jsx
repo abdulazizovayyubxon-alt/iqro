@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Eye, EyeOff, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff, ShieldCheck, RefreshCw } from 'lucide-react';
 
 import { useIsMobile } from '../hooks/useIsMobile';
+import { useAppUpdate } from '../hooks/useAppUpdate';
 import BrandLogo from '../components/shared/BrandLogo';
 import { SUPPORT_URL } from '../config';
 
@@ -25,6 +26,22 @@ export default function LoginPage() {
 
   const isMobile = useIsMobile();
   const s = getStyles(isMobile);
+
+  // ── Yangi versiya taklifi ────────────────────────────────────────────────
+  //
+  // ⚠️ 2026-08-29 — NEGA AYNAN SHU YERDA HAM KERAK:
+  // Ilova PWA, `registerType: 'prompt'` va `skipWaiting: false` (vite.config.js).
+  // Ya'ni yangi versiya o'rnatiladi-yu, "waiting" holatida turadi va ESKI
+  // service worker eski `index.html` ni keshdan berishda davom etadi. Yangilash
+  // taklifi esa `InterruptHost` ichida edi, u App.jsx da `if (!user) return
+  // <LoginPage />` dan KEYIN turadi — demak tizimga KIRA OLMAGAN odam uni hech
+  // qachon ko'rmasdi.
+  //
+  // Aynan shu odamlar muhim: kirish ekranida qotib qolgan foydalanuvchi eski
+  // buzuq versiyani ko'rib turaveradi va uni yangilashning yo'li yo'q edi
+  // (ilovani butunlay yopib qayta ochishdan boshqa). Tugma shuning uchun shu
+  // yerda ham bor.
+  const { updateReady, applyUpdate, applying } = useAppUpdate();
 
   const [step, setStep] = useState(STEPS.PHONE);
   const [authMode, setAuthMode] = useState('login'); // 'login' | 'register'
@@ -217,6 +234,15 @@ export default function LoginPage() {
   return (
     <div style={s.pageOuter}>
       <div style={{ ...s.page, zIndex: 1 }}>
+
+        {/* Yangi versiya — butun chiziq bosiladi (telefonda nishonga olish oson) */}
+        {updateReady && (
+          <button type="button" style={s.updateBar} onClick={applyUpdate} disabled={applying}>
+            <RefreshCw size={14} className={applying ? 'spin' : ''} />
+            <span style={s.updateBarText}>{t('offline.updateReady')}</span>
+            <span style={s.updateBarCta}>{t('offline.update')}</span>
+          </button>
+        )}
 
         {/* Progress bar */}
           <div style={s.progressTrack}>
@@ -489,6 +515,21 @@ const getStyles = (isMobile) => ({
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
+  },
+  // Yangilash chizig'i — eng tepada, progress'dan ham yuqorida: bu ilovaning
+  // O'ZI haqidagi xabar, kirish oqimining bir qadami emas.
+  updateBar: {
+    display: 'flex', alignItems: 'center', gap: 10, width: '100%',
+    padding: '10px 16px', border: 'none', borderRadius: 0,
+    background: 'var(--blue-bg)', color: 'var(--accent2)',
+    fontFamily: 'inherit', fontSize: 'var(--fs-md)', fontWeight: 600,
+    cursor: 'pointer', textAlign: 'left', flexShrink: 0,
+    borderBottom: '1px solid var(--border)',
+  },
+  updateBarText: { flex: 1, lineHeight: 1.4 },
+  updateBarCta: {
+    fontWeight: 800, textDecoration: 'underline', textUnderlineOffset: 3,
+    whiteSpace: 'nowrap',
   },
   progressTrack: { height: 4, background: 'var(--border)', flexShrink: 0 },
   progressFill: { height: '100%', background: 'var(--accent)', borderRadius: '0 2px 2px 0' },
