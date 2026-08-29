@@ -199,5 +199,137 @@
       })();
     </script>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- ── BOOT QO'RIQCHISI ──────────────────────────────────────────────────
+         MUAMMO (2026-08-29, jonli): Vercel har deployda oldingi paket
+         fayllarini O'CHIRADI — `/assets/index-BGUklAEX.js` qattiq 404 qaytaradi
+         (tekshirilgan, HTML fallback ham emas). Agar qurilmada ESKI
+         `index.html` qolib ketsa (service worker keshidan yoki HTTP keshdan),
+         u endi mavjud bo'lmagan JS ga murojaat qiladi → modul UMUMAN
+         bajarilmaydi → yuqoridagi `.zh-splash` abadiy ekranda qoladi.
+         Foydalanuvchi uchun bu "ilova qotib qoldi": na xato, na tugma.
+         Jurnalda ham iz yo'q — `services/sentry.js` bundle ICHIDA, u ham
+         ishga tushmaydi.
+
+         YECHIM: React mount bo'lganini `window.__ZEHIN_BOOTED__` bildiradi
+         (main.jsx qo'yadi). Bayroq kelmasa — service worker'ni ro'yxatdan
+         chiqarib, keshlarni tozalab, BIR MARTA qayta yuklaymiz.
+         · "Bir marta" — sessionStorage qulfi bilan. Aks holda haqiqatan
+           buzuq paket cheksiz reload aylanasiga aylanardi.
+         · OFLAYN bo'lsa kesh O'CHIRILMAYDI: bu ilova oflayn ishlatiladi,
+           keshni tozalash yagona nusxani yo'q qilib, ahvolni YOMONLASHTIRARDI.
+         Ikkinchi urinish ham natija bermasa — ekranda haqiqiy xabar va tugma.
+
+         Skript ATAYLAB oddiy ES5 va bundle'dan TASHQARIDA: u aynan bundle
+         yuklanmagan holat uchun bor. -->
+    <script>
+      (function () {
+        var REPAIR_KEY = 'zehin-boot-repair';
+        var SLOW_MS = 20000;  // sekin tarmoq uchun saxiy (paket ~350KB gzip)
+        var FAIL_MS = 2500;   // resurs 404 aniq bo'lsa uzoq kutish shart emas
+        var done = false;
+
+        function booted() { return window.__ZEHIN_BOOTED__ === true; }
+        function tried() {
+          try { return sessionStorage.getItem(REPAIR_KEY) === '1'; } catch (e) { return false; }
+        }
+        function setTried(v) {
+          try {
+            if (v) sessionStorage.setItem(REPAIR_KEY, '1');
+            else sessionStorage.removeItem(REPAIR_KEY);
+          } catch (e) { /* storage bloklangan — qulfsiz davom etamiz */ }
+        }
+
+        // Jurnal: bundle ishga tushmagani uchun sentry.js bu yerga yeta olmaydi
+        function report(reason) {
+          try {
+            if (!navigator.sendBeacon) return;
+            var body = JSON.stringify({
+              message: 'BOOT FAILED: ' + reason,
+              url: location.href,
+              userAgent: navigator.userAgent,
+              severity: 'error',
+              context: { retried: tried(), online: navigator.onLine }
+            });
+            navigator.sendBeacon('/api/log-error', new Blob([body], { type: 'application/json' }));
+          } catch (e) { /* kuzatuv HECH QACHON ilovani buzmasligi kerak */ }
+        }
+
+        function showDeadEnd(offline) {
+          var root = document.getElementById('root');
+          if (!root) return;
+          var text = offline
+            ? 'Internet aloqasi yo\u2019q va ilovaning saqlangan nusxasi ochilmadi. Tarmoqqa ulanib, qayta urinib ko\u2019ring.'
+            : 'Eski versiya qurilmada qolib ketgan va tozalash yordam bermadi. Qayta urinib ko\u2019ring.';
+          root.innerHTML =
+            '<div style="position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;' +
+            'justify-content:center;gap:18px;padding:24px;background:#0A2440;color:#fff;text-align:center;' +
+            'font-family:\'Plus Jakarta Sans\',system-ui,sans-serif">' +
+            '<div style="font-size:17px;font-weight:700">Ilova ochilmadi</div>' +
+            '<div style="font-size:14px;line-height:1.5;color:#9FB6CE;max-width:320px">' + text + '</div>' +
+            '<button id="zh-boot-retry" style="border:none;border-radius:10px;padding:12px 22px;' +
+            'background:#05A3FA;color:#fff;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer">' +
+            'Qayta urinish</button></div>';
+          var btn = document.getElementById('zh-boot-retry');
+          if (btn) btn.onclick = function () { setTried(false); done = false; repair('qayta urinish'); };
+        }
+
+        function reload() {
+          try {
+            var u = new URL(location.href);
+            u.searchParams.set('_fresh', String(Date.now()));
+            location.replace(u.toString());
+          } catch (e) {
+            location.reload();
+          }
+        }
+
+        function repair(reason) {
+          if (done) return;
+          done = true;
+          report(reason);
+
+          // Oflayn: keshda ilovaning YAGONA nusxasi turibdi — unga tegmaymiz
+          if (navigator.onLine === false) { showDeadEnd(true); return; }
+          if (tried()) { showDeadEnd(false); return; }
+          setTried(true);
+
+          var jobs = [];
+          try {
+            if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) {
+              jobs.push(navigator.serviceWorker.getRegistrations().then(function (rs) {
+                return Promise.all(rs.map(function (r) { return r.unregister(); }));
+              }));
+            }
+            if (window.caches && caches.keys) {
+              jobs.push(caches.keys().then(function (ks) {
+                return Promise.all(ks.map(function (k) { return caches.delete(k); }));
+              }));
+            }
+          } catch (e) { /* tozalash imkonsiz — baribir qayta yuklaymiz */ }
+
+          setTimeout(reload, 4000); // tozalash osilib qolsa ham qutulamiz
+          Promise.all(jobs).then(reload, reload);
+        }
+
+        // (a) Paket fayli yuklanmadi (404/tarmoq). Resurs xatolari ko'pikka
+        //     chiqmaydi — faqat capture bosqichida ushlanadi.
+        window.addEventListener('error', function (e) {
+          var t = e && e.target;
+          if (!t || t === window) return;
+          var src = t.src || t.href || '';
+          if (src.indexOf('/assets/') === -1 && src.indexOf('/src/main') === -1) return;
+          setTimeout(function () { if (!booted()) repair('resurs yuklanmadi: ' + src); }, FAIL_MS);
+        }, true);
+
+        // (b) Xatosiz, lekin jimgina qotib qolgan holat
+        function watchdog() {
+          if (booted() || done) return;
+          // Fondagi tab throttle qilinadi — bu sekinlik, nosozlik emas
+          if (document.hidden) { setTimeout(watchdog, SLOW_MS); return; }
+          repair('vaqt tugadi (' + SLOW_MS + 'ms)');
+        }
+        setTimeout(watchdog, SLOW_MS);
+      })();
+    </script>
   </body>
 </html>

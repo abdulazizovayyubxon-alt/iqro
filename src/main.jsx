@@ -84,3 +84,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </React.StrictMode>,
 )
+
+// ── Boot qo'riqchisiga "tirikman" signali ────────────────────────────────────
+// index.html dagi qo'riqchi shu bayroqni kutadi. Kelmasa — u service worker'ni
+// ro'yxatdan chiqarib, keshlarni tozalab, bir marta qayta yuklaydi.
+//
+// NEGA KERAK: Vercel har deployda oldingi paketni o'chiradi. Qurilmada eski
+// `index.html` qolib ketsa, u yo'q JS ga murojaat qiladi va bu MODUL umuman
+// bajarilmaydi — foydalanuvchi navy splash'da abadiy qotib qoladi (2026-08-29).
+// Bayroq shu yerda, render() dan KEYIN: demak paket yuklandi va React ishga
+// tushdi. Qo'riqchining izohi index.html da.
+window.__ZEHIN_BOOTED__ = true

@@ -6,7 +6,7 @@
  * ikkalasi bir manbadan o'qishi uchun hook'ga ajratildi.
  */
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 // `SKIP_WAITING` dan keyin ba'zi ichki brauzer/TWA'larda `controllerchange`
 // otilmaydi — foydalanuvchi tugmani bosadi-yu, hech narsa o'zgarmaydi.
@@ -20,6 +20,30 @@ export function useAppUpdate() {
   const [worker, setWorker] = useState(null);
   const [ready, setReady] = useState(false);
   const [applying, setApplying] = useState(false);
+
+  // ⚠️ 2026-08-29 — IKKI MARTA RELOAD POYGASI TUZATILDI.
+  // Avval zaxira taymer `controllerchange` allaqachon reload qilgan bo'lsa ham
+  // BEKOR QILINMASDI: `refreshing` bayrog'i effekt ichida, taymer esa apply()
+  // ichida yashardi — ular bir-birini ko'rmasdi. Sekin qurilmada birinchi
+  // navigatsiya tugamasidan ikkinchi reload otilardi, aynan yangi SW eski
+  // precache yozuvlarini tozalayotgan lahzada. Shu oynada sahifa ESKI
+  // `index.html` ni olishi mumkin edi — uning JS fayllari esa Vercel'da
+  // allaqachon yo'q (har deploy oldingi paketni o'chiradi, 404). Natija:
+  // navy splash'da abadiy qotib qolish.
+  // Endi bayroq ham, taymer ham ref'da: kim birinchi ulgursa, ikkinchisini
+  // o'chiradi va reload FAQAT bir marta bo'ladi.
+  const reloadingRef = useRef(false);
+  const fallbackRef = useRef(null);
+
+  const reloadOnce = useCallback(() => {
+    if (reloadingRef.current) return;
+    reloadingRef.current = true;
+    if (fallbackRef.current) {
+      clearTimeout(fallbackRef.current);
+      fallbackRef.current = null;
+    }
+    window.location.reload();
+  }, []);
 
   useEffect(() => {
     if (!('serviceWorker' in navigator)) return undefined;
@@ -58,33 +82,31 @@ export function useAppUpdate() {
     });
 
     // SW almashinuvidan keyin sahifani yangilash
-    let refreshing = false;
-    const onControllerChange = () => {
-      if (!refreshing) {
-        refreshing = true;
-        window.location.reload();
-      }
-    };
-    navigator.serviceWorker.addEventListener('controllerchange', onControllerChange);
+    navigator.serviceWorker.addEventListener('controllerchange', reloadOnce);
 
     // Tozalash — StrictMode effektni ikki marta ishga tushirganda ikkita
     // tinglovchi va ikkita interval qolib ketardi (T-11).
     return () => {
       if (timer) clearInterval(timer);
-      navigator.serviceWorker.removeEventListener('controllerchange', onControllerChange);
+      if (fallbackRef.current) {
+        clearTimeout(fallbackRef.current);
+        fallbackRef.current = null;
+      }
+      navigator.serviceWorker.removeEventListener('controllerchange', reloadOnce);
     };
-  }, []);
+  }, [reloadOnce]);
 
   const apply = useCallback(() => {
     setApplying(true);
     if (worker) {
       worker.postMessage({ type: 'SKIP_WAITING' });
-      // Zaxira: `controllerchange` otilmasa ham foydalanuvchi qotib qolmaydi
-      setTimeout(() => window.location.reload(), RELOAD_FALLBACK_MS);
+      // Zaxira: `controllerchange` otilmasa ham foydalanuvchi qotib qolmaydi.
+      // `controllerchange` ulgursa — reloadOnce bu taymerni o'chiradi.
+      fallbackRef.current = setTimeout(reloadOnce, RELOAD_FALLBACK_MS);
     } else {
-      window.location.reload();
+      reloadOnce();
     }
-  }, [worker]);
+  }, [worker, reloadOnce]);
 
   return { updateReady: ready, applyUpdate: apply, applying };
 }

@@ -54,11 +54,33 @@ const IGNORE = [
 //     o'zi to'liq ishlaydi — main.jsx buni allaqachon jimgina o'tkazib yuboradi.
 const IGNORE_EXACT = ['Rejected'];
 
+// ── HECH QACHON YUTILMAYDIGANLAR (IGNORE dan USTUN) ──
+//
+// ⚠️ 2026-08-29: `IGNORE` `includes` bilan qidiradi, shuning uchun
+// 'Failed to fetch' Vite'ning "Failed to fetch dynamically imported module"
+// xabarini ham yutib yuborardi, 'Loading chunk' esa to'g'ridan-to'g'ri
+// ro'yxatda turardi. Ya'ni "PAKET YUKLANMAYAPTI" degan eng muhim signal
+// jurnalga UMUMAN tushmasdi.
+//
+// Bu qimmatga tushdi: o'sha kuni odamlar splash ekranida qotib qolganda
+// `errorLogs` jimjit turdi va sukunat "hammasi joyida" deb o'qildi. Aslida
+// qurilmada eski `index.html` qolib ketgan, u esa Vercel allaqachon
+// o'chirgan JS ga murojaat qilardi (har deploy oldingi paketni o'chiradi).
+const ALWAYS_REPORT = [
+  'dynamically imported module',
+  'Loading chunk',
+  'Importing a module script failed',
+  'Paket fayli yuklanmadi',
+];
+
 function logToServer(message, stack, severity = 'error', context = null) {
   if (!import.meta.env.PROD) return;                 // /api serverless faqat productionда bor
   const msg = String(message || 'unknown');
-  if (IGNORE.some(p => msg.includes(p))) return;
-  if (IGNORE_EXACT.includes(msg.trim())) return;
+  const mustReport = ALWAYS_REPORT.some(p => msg.includes(p));
+  if (!mustReport) {
+    if (IGNORE.some(p => msg.includes(p))) return;
+    if (IGNORE_EXACT.includes(msg.trim())) return;
+  }
   if (_sentCount >= MAX_PER_SESSION) return;
   const sig = msg.slice(0, 200);
   if (_seen.has(sig)) return;                         // dedupe (sessiya ichida)
@@ -112,8 +134,26 @@ function maybeRecoverFirestore(message) {
 export function initSentry() {
   // 1. Global crash'larni Firestore'ga log qilish — Sentry'dan MUSTAQIL
   if (typeof window !== 'undefined') {
+    // ── Paket fayli yuklanmadi (script/link 404) ──
+    // Resurs xatolari DOM'da ko'pikka CHIQMAYDI, shuning uchun pastdagi oddiy
+    // tinglovchi ularni ko'ra olmaydi (u `e.error` talab qiladi, resurs
+    // xatosida esa u yo'q). Faqat capture bosqichi ushlaydi.
+    //
+    // NEGA MUHIM: qurilmada eski `index.html` qolib ketsa, u Vercel
+    // allaqachon o'chirgan chunk'ga murojaat qiladi — sahifa jimgina
+    // ochilmaydi. Dastlabki paket uchun bundan ham ilgari index.html dagi
+    // boot qo'riqchisi ishlaydi (u bundle'dan tashqarida); bu tinglovchi
+    // ishga tushgandan KEYINGI lazy chunk'larni qoplaydi.
     window.addEventListener('error', (e) => {
-      if (!e.error) return; // resurs yuklanish xatolari (img/script 404) — e'tiborsiz
+      const t = e.target;
+      if (!t || t === window || !t.tagName) return;
+      const src = t.src || t.href || '';
+      if (!src.includes('/assets/')) return;
+      logToServer(`Paket fayli yuklanmadi: ${src}`, null, 'error', { tag: t.tagName });
+    }, true);
+
+    window.addEventListener('error', (e) => {
+      if (!e.error) return; // resurs xatolari yuqoridagi capture tinglovchida
       const msg = e.message || 'window.onerror';
       logToServer(msg, e.error.stack, 'error');
       maybeRecoverFirestore(msg);
