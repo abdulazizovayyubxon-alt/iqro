@@ -62,7 +62,7 @@ export const ObjectionProvider = ({ children }) => {
       }));
 
       setObjections(() => {
-        // Yangi hal qilingan e'tirozlarni topish (faqat o'zimiz yuborganlarni tekshiramiz)
+        // Yangi hal qilingan e'tirozlarni tozalash (xabarlar qo'ng'iroqcha bildirishnomasiga yoziladi)
         const key = getSentObjectionKey(user.uid);
         let mySentIds = [];
         try { mySentIds = JSON.parse(localStorage.getItem(key) || '[]'); } catch { /* buzilgan format — e'tiborsiz */ }
@@ -72,8 +72,7 @@ export const ObjectionProvider = ({ children }) => {
         );
 
         if (solvedMine.length > 0) {
-          showToast(`✅ Siz yuborgan ${solvedMine.length} ta xato tuzatildi!`, 'success');
-          // Ko'rsatilgandan keyin olib tashlaymiz
+          // Toast o'rniga bildirishnoma qo'ng'iroqchasi (notifications) orqali ko'rsatiladi
           const solvedIds = new Set(solvedMine.map(o => o.id));
           const newSentIds = mySentIds.filter(id => !solvedIds.has(id));
           setSentObjectionIds(newSentIds);

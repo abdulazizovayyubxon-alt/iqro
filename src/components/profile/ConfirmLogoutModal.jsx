@@ -1,39 +1,45 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import ModalShell from './ModalShell';
+import { LogOut } from 'lucide-react';
+import SettingsSheet from '../shared/SettingsSheet';
 
-/** Chiqishni tasdiqlash — foydalanuvchini qolishga undaydi */
+/**
+ * Chiqishni tasdiqlash — foydalanuvchini qolishga undaydi.
+ *
+ * ⚠️ 2026-08-29: ilgari 44px o'lchamdagi 🧠 emoji bilan ochilardi. Boshqa
+ * birorta oynada emoji yo'q, shuning uchun bu bittasi butunlay boshqa
+ * ilovadan kelgandek ko'rinardi. Endi ikonka plitkasi — ActionSheet bilan
+ * bir xil til.
+ *
+ * Tugmalar tartibi ATAYLAB shunday: "Qolaman" to'ldirilgan (asosiy),
+ * "Chiqish" esa faqat chegarali — bexosdan chiqib ketish qiyinlashadi.
+ */
 export default function ConfirmLogoutModal({ onLogout, onClose }) {
   const { t } = useTranslation();
   return (
-    <ModalShell onClose={onClose} maxWidth={400} style={{ textAlign: 'center', padding: '28px 24px' }}>
-      <div style={{ fontSize: 'var(--fs-11xl)', marginBottom: 12 }}>🧠</div>
-      <div className="pp-modal-title" style={{ marginBottom: 10, fontSize: 'var(--fs-2xl)', fontWeight: 800 }}>{t('modals.logoutTitle')}</div>
-      <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', lineHeight: 1.6, marginBottom: 24 }}>
-        {t('modals.logoutText')}
-      </p>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-        <button
-          onClick={onClose}
-          style={{
-            padding: '13px', borderRadius: 12, background: 'var(--blue)', color: '#fff',
-            border: 'none', fontWeight: 700, fontSize: 'var(--fs-base)', cursor: 'pointer', fontFamily: 'inherit',
-            transition: 'opacity 0.2s'
-          }}
-        >
-          {t('modals.logoutStay')}
-        </button>
-        <button
-          onClick={onLogout}
-          style={{
-            padding: '12px', borderRadius: 12, background: 'transparent', color: 'var(--red)',
-            border: '1.5px solid var(--red)', fontWeight: 600, fontSize: 'var(--fs-md)', cursor: 'pointer', fontFamily: 'inherit',
-            transition: 'all 0.2s'
-          }}
-        >
-          {t('modals.logoutBtn')}
-        </button>
+    <SettingsSheet
+      icon={<LogOut size={20} />}
+      tone="muted"
+      title={t('settings.logout')}
+      onClose={onClose}
+      footer={
+        <>
+          <button type="button" className="ss-btn is-cta" onClick={onClose}>
+            {t('modals.logoutStay')}
+          </button>
+          <button type="button" className="ss-btn is-danger" onClick={onLogout}>
+            {t('modals.logoutBtn')}
+          </button>
+        </>
+      }
+    >
+      <div className="ss-hero">
+        <div className="ss-hero-icon is-muted">
+          <LogOut size={30} />
+        </div>
+        <div className="ss-hero-title">{t('modals.logoutTitle')}</div>
+        <p className="ss-hero-text">{t('modals.logoutText')}</p>
       </div>
-    </ModalShell>
+    </SettingsSheet>
   );
 }

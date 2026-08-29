@@ -104,7 +104,9 @@
       "deleteAccountError": "Xatolik yuz berdi. Adminga murojaat qiling.",
       "saved": "Saqlandi ✅",
       "deleteAccountTooMany": "Juda ko'p urinish. Biroz kutib qayta urining."
-    }
+    },
+    "countdownOn": "Sanoq yoqildi",
+    "countdownOff": "Sanoq o'chirildi"
   },
   "header": {
     "greeting": "Xush kelibsiz",
@@ -919,7 +921,7 @@
     "errPhone": "To'g'ri telefon raqam kiriting",
     "errName": "Ism-familiyangizni to'liq kiriting (kamida 3 belgi)",
     "errPassword": "Parol kamida 6 ta belgidan iborat bo'lishi kerak",
-    "errAlreadyReg": "Bu raqam allaqachon ro'yxatdan o'tgan. Parolingizni kiriting.",
+    "errAlreadyReg": "Bu raqamda hisob allaqachon mavjud. Parolingiz esingizda bo'lsa — kiriting, bo'lmasa quyidagi ko'rsatma bo'yicha tiklang.",
     "errRegisterFail": "Ro'yxatdan o'tishda xatolik.",
     "errEnterPass": "Parolni kiriting",
     "errNotReg": "Bu raqam hali ro'yxatdan o'tmagan. Ism kiritib, yangi hisob yarating.",
@@ -930,7 +932,7 @@
     "tgTimeout": "Vaqt tugadi. Qaytadan urinib ko'ring.",
     "checking": "Tekshirilmoqda...",
     "phoneTitle": "Telefon raqamingiz",
-    "phoneSubtitle": "Kirish yoki yangi hisob yaratish uchun raqamingizni kiriting.",
+    "phoneSubtitle": "Raqamingiz — kirish uchun login. Yangi bo'lsangiz, keyingi qadamda ism va o'zingiz o'ylab topadigan parol bilan hisob yaratasiz.",
     "loginTitle": "Xush kelibsiz!",
     "loginSubtitleSuffix": "— parolingizni kiriting.",
     "passwordPlaceholder": "Parolingiz",
@@ -959,7 +961,10 @@
     "termsLink": "Foydalanish Shartlari",
     "policyP2": "ga rozi bo'lasiz.",
     "dataSecure": "Ma'lumotlaringiz xavfsiz himoyalangan",
-    "forgotPasswordHint": "Telegram ochildi — @zehinuz ga telefon raqamingizni yozing. Administrator vaqtinchalik parol beradi, keyin uni Profil bo'limidan o'zgartirasiz."
+    "passwordRemember": "Parolni o'zingiz o'ylab topasiz — eslab qoling yoki yozib qo'ying. SMS yoki email orqali tiklash yo'q.",
+    "forgotStep1": "Parolni administrator tiklaydi. Telegramda @zehinuz ga shu raqamni yuboring:",
+    "forgotOpenTelegram": "Telegramda yozish",
+    "forgotStep2": "Sizga vaqtinchalik parol beriladi. Kirganingizdan so'ng uni Profil → Parolni o'zgartirish bo'limidan almashtiring."
   },
   "onboarding": {
     "goalTitle": "Maqsadingiz nima?",
@@ -1109,7 +1114,7 @@
       "oliy": "Oliy toifa",
       "sertifikat": "Kasbiy sertifikat"
     },
-    "editTitle": "✏️ Profilni tahrirlash",
+    "editTitle": "Profilni tahrirlash",
     "firstName": "Ism",
     "lastName": "Familiya",
     "choose": "Tanlang",
@@ -1149,12 +1154,12 @@
     "guideP3Title": "📝 Mashq va Imtihon rejimi nimasi bilan farq qiladi?",
     "guideP4Title": "📅 Kunlik reja va zanjir qanday ishlaydi?",
     "guideUnderstood": "Tushunarli 🤝",
-    "repTitle": "Aqlli takrorlash chastotasi",
+    "repTitle": "Aqlli takrorlash",
     "repDesc": "Xato qilingan savollar keyingi testlarda qanchalik tez-tez qaytishini tanlang.",
-    "repOff": "O'chiq\n(0%)",
-    "repLow": "Kam\n(10%)",
-    "repMid": "O'rtacha\n(30%)",
-    "repHigh": "Tez\n(50%)",
+    "repOff": "O'chiq",
+    "repLow": "10%",
+    "repMid": "30%",
+    "repHigh": "50%",
     "repRecommend": "Standart holatda o'chiq — testlar 100% yangi savoldan iborat. Xatolar ustida alohida \"Xatolar daftari\" va \"Takror navbati\" bo'limlarida ishlashingiz mumkin. Tanlov darhol saqlanadi.",
     "logoutTitle": "Rostdan ham chiqmoqchimisiz?",
     "logoutText": "Sertifikat olish sari boshlagan yo'lingizda to'xtab qolmang. Tizimda qolib, bilimingizni oshirishda davom eting!",
@@ -1186,7 +1191,7 @@
     "privacyP4Body": "Ma'lumotlar sotilmaydi va ijaraga berilmaydi. Ular faqat xizmat ko'rsatuvchi texnologik hamkorlarga minimal hajmda uzatiladi: Google Firebase (ma'lumotlar bazasi va autentifikatsiya), Google Analytics (shaxssizlantirilgan statistika) va to'lov tizimlari (to'lov protsessingi). Almashinuv HTTPS orqali shifrlanadi, bazaga kirish xavfsizlik qoidalari bilan cheklanadi.",
     "privacyP5Title": "5. O'chirish huquqi va aloqa",
     "privacyP5Body": "Hisobni istalgan vaqtda Sozlamalar → «Hisobni o'chirish» orqali butunlay o'chirishingiz mumkin — zaxira nusxalar ham 30 kun ichida yo'q qilinadi. Savollar uchun rasmiy aloqa kanali: Telegram — https://t.me/zehinuz?direct.",
-    "privacyFullLink": "To'liq matnni o'qish →",
+    "privacyFullLink": "To'liq matn ↗",
     "understood": "Tushunarli 🤝",
     "close": "Yopish",
     "ageComputed": "{{count}} yosh",
@@ -1228,7 +1233,18 @@
     "deleteConfirmWord": "O'CHIRISH",
     "deleteTypePlaceholder": "Shu yerga yozing",
     "deleteWrongPassword": "Parol noto'g'ri. Qayta urinib ko'ring.",
-    "deleteFailed": "O'chirib bo'lmadi. Internet aloqasini tekshirib, qayta urining."
+    "deleteFailed": "O'chirib bo'lmadi. Internet aloqasini tekshirib, qayta urining.",
+    "sectionPersonal": "Shaxsiy",
+    "sectionProfessional": "Kasbiy",
+    "passHint": "Kamida 6 belgi",
+    "passShow": "Parolni ko'rsatish",
+    "passHide": "Parolni yashirish",
+    "repSub": "Testlarga eski xatolaringizni qo'shib boradi",
+    "repEffectOff": "Takrorlash o'chirilgan — testlar 100% yangi savoldan iborat.",
+    "repEffectOn": "Har {{total}} savoldan {{count}} tasi siz avval xato qilgan savollardan bo'ladi.",
+    "guideSub": "{{count}} ta mavzu",
+    "privacySub": "Ma'lumotlaringiz bilan nima qilamiz",
+    "stepOf": "{{step}}-bosqich · {{total}} tadan"
   },
   "sidebar": {
     "subjects": "Fanlar",

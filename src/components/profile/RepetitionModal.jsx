@@ -1,57 +1,74 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Brain } from 'lucide-react';
-import ModalShell from './ModalShell';
+import SettingsSheet from '../shared/SettingsSheet';
 
-/** Aqlli takrorlash chastotasi (0/10/30/50%) */
+/**
+ * Aqlli takrorlash chastotasi (0/10/30/50%).
+ *
+ * ⚠️ 2026-08-29: ilgari to'rtta kvadrat tugma O'Z uslubida chizilardi va
+ * ro'yxatdagi "Til / Rejim / Shrift" tanlovlariga umuman o'xshamasdi, holbuki
+ * vazifasi bir xil. Endi AYNI `pp-segment-container` ishlatiladi.
+ *
+ * Yana bir o'zgarish: tanlov ostida JONLI izoh. Ilgari "30%" nimani
+ * anglatishini foydalanuvchi o'zi topishi kerak edi; endi raqam savolga
+ * o'giriladi — motorda `blockMaxRep = blockNeeded * (limit / 100)`,
+ * blok esa 50 savol (engine/SmartQuestionEngine.js).
+ */
+
+/** Motordagi BLOCK_SIZE bilan bir xil — izohdagi son shundan hisoblanadi */
+const BLOCK = 50;
+
 export default function RepetitionModal({ value, onChange, onClose }) {
   const { t } = useTranslation();
+
+  const options = [
+    { id: 0, label: t('modals.repOff') },
+    { id: 10, label: t('modals.repLow') },
+    { id: 30, label: t('modals.repMid') },
+    { id: 50, label: t('modals.repHigh') },
+  ];
+
+  const picked = value ?? 0;
+  const perBlock = Math.round(BLOCK * (picked / 100));
+
   return (
-    <ModalShell onClose={onClose} maxWidth={420} style={{ padding: '28px 24px' }}>
-      <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-        <Brain size={22} style={{ color: 'var(--accent)' }} /> {t('modals.repTitle')}
-      </div>
-      <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', lineHeight: 1.6, marginBottom: 20 }}>
-        {t('modals.repDesc')}
-      </p>
+    <SettingsSheet
+      icon={<Brain size={20} />}
+      title={t('modals.repTitle')}
+      sublabel={t('modals.repSub')}
+      onClose={onClose}
+      footer={
+        <button type="button" className="ss-btn is-cta" onClick={onClose}>
+          {t('common.close')}
+        </button>
+      }
+    >
+      <p className="ss-p">{t('modals.repDesc')}</p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
-        {[
-          { label: t('modals.repOff'), value: 0 },
-          { label: t('modals.repLow'), value: 10 },
-          { label: t('modals.repMid'), value: 30 },
-          { label: t('modals.repHigh'), value: 50 }
-        ].map(opt => {
-          const isSelected = value === opt.value;
-          return (
-            <button
-              key={opt.value}
-              type="button"
-              onClick={() => onChange(opt.value)}
-              style={{
-                padding: '8px 4px', borderRadius: '10px',
-                border: isSelected ? '2px solid var(--blue)' : '1px solid var(--border)',
-                background: isSelected ? 'var(--blue-bg)' : 'var(--bg2)',
-                color: isSelected ? 'var(--blue)' : 'var(--text)',
-                fontSize: 'var(--fs-xs)', fontWeight: isSelected ? '800' : '500',
-                cursor: 'pointer', transition: 'all 0.2s', whiteSpace: 'pre-line',
-                textAlign: 'center', display: 'flex', alignItems: 'center',
-                justifyContent: 'center', lineHeight: '1.2', minHeight: '48px',
-                fontFamily: 'inherit',
-              }}
-            >
-              {opt.label}
-            </button>
-          );
-        })}
+      <div className="pp-segment-container" role="group" aria-label={t('modals.repTitle')}>
+        {options.map(opt => (
+          <button
+            key={opt.id}
+            type="button"
+            onClick={() => onChange(opt.id)}
+            aria-pressed={picked === opt.id}
+            className={`pp-segment-btn ${picked === opt.id ? 'active' : ''}`}
+          >
+            {opt.label}
+          </button>
+        ))}
       </div>
-      <small style={{ display: 'block', marginTop: '10px', color: 'var(--text3)', fontSize: 'var(--fs-xs)', lineHeight: '1.4' }}>
-        {t('modals.repRecommend')}
-      </small>
 
-      <button onClick={onClose} style={{ width: '100%', padding: '12px', borderRadius: 12, background: 'var(--blue)', color: '#fff', border: 'none', fontWeight: 700, marginTop: '20px', cursor: 'pointer', fontFamily: 'inherit' }}>
-        {t('modals.close')}
-      </button>
-    </ModalShell>
+      {/* Jonli izoh — tanlov o'zgarishi bilan darhol yangilanadi */}
+      <div className="ss-block">
+        <p className="ss-p">
+          {picked === 0
+            ? t('modals.repEffectOff')
+            : t('modals.repEffectOn', { count: perBlock, total: BLOCK })}
+        </p>
+        <div className="ss-note">{t('modals.repRecommend')}</div>
+      </div>
+    </SettingsSheet>
   );
 }

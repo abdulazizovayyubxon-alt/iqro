@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AlertTriangle, Lock, Trash2, LogOut, LifeBuoy } from 'lucide-react';
-import ModalShell from './ModalShell';
+import SettingsSheet from '../shared/SettingsSheet';
 
 /**
  * Hisobni o'chirishni tasdiqlash — UCH BOSQICHLI oqim.
@@ -18,7 +18,15 @@ import ModalShell from './ModalShell';
  *
  * Google Play talabi buzilmaydi: o'chirish yo'li avvalgi joyida, ochiq va
  * to'siqsiz turibdi — faqat tasodifiy bajarilishdan himoyalangan.
+ *
+ * ⚠️ 2026-08-29: MANTIQQA TEGILMADI — bosqichlar, parol so'rash, tasdiq so'zi
+ * va serverdagi tozalash avvalgidek. Faqat qobiq almashdi: fayl ilgari o'z
+ * tugma uslublarini o'zi yasardi (ikkita lokal uslub obyekti) va 40 ta inline
+ * uslub bor edi. Endi umumiy `ss-*` klasslari, bosqich ko'rsatkichi esa
+ * sarlavha ostida ("1-bosqich · 3 tadan").
  */
+const TOTAL_STEPS = 3;
+
 export default function ConfirmDeleteModal({ deleting, onConfirm, onClose, isPremium, premiumExpire }) {
   const { t } = useTranslation();
   const [step, setStep] = useState(1);
@@ -49,95 +57,107 @@ export default function ConfirmDeleteModal({ deleting, onConfirm, onClose, isPre
     }
   };
 
-  const btnPrimary = {
-    padding: '13px', borderRadius: 12, border: 'none', fontWeight: 700,
-    fontSize: 'var(--fs-base)', cursor: 'pointer', fontFamily: 'inherit', width: '100%',
-  };
-  const btnGhost = {
-    padding: '12px', borderRadius: 12, background: 'transparent', color: 'var(--text)',
-    border: '1.5px solid var(--border)', fontWeight: 600, fontSize: 'var(--fs-md)',
-    cursor: 'pointer', fontFamily: 'inherit', width: '100%',
-  };
+  const stepTitle = step === 1
+    ? t('modals.deleteTitle')
+    : step === 2
+      ? t('modals.deleteStep2Title')
+      : t('modals.deleteStep3Title');
+
+  const stepIcon = step === 2 ? <Lock size={20} /> : step === 3 ? <AlertTriangle size={20} /> : <Trash2 size={20} />;
+
+  const footer = step === 1 ? (
+    <>
+      <button type="button" className="ss-btn is-cta" onClick={() => onClose()}>
+        {t('modals.deleteKeepAccount')}
+      </button>
+      <button type="button" className="ss-btn is-danger" onClick={() => setStep(2)}>
+        <Trash2 size={15} />
+        {t('modals.deleteStep1Continue')}
+      </button>
+    </>
+  ) : step === 2 ? (
+    <>
+      <button type="button" className="ss-btn" onClick={() => setStep(1)}>
+        {t('modals.deleteBack')}
+      </button>
+      <button
+        type="button"
+        className="ss-btn is-danger-solid"
+        disabled={password.length < 6}
+        onClick={() => setStep(3)}
+      >
+        {t('modals.deleteStep2Continue')}
+      </button>
+    </>
+  ) : (
+    <>
+      <button type="button" className="ss-btn" onClick={() => setStep(2)} disabled={deleting}>
+        {t('modals.deleteBack')}
+      </button>
+      <button
+        type="button"
+        className="ss-btn is-danger-solid"
+        disabled={!typedOk || deleting}
+        onClick={handleFinal}
+      >
+        {deleting ? t('modals.deleting') : t('modals.deleteConfirm')}
+      </button>
+    </>
+  );
 
   return (
-    <ModalShell
-      onClose={deleting ? () => {} : onClose}
-      maxWidth={440}
+    <SettingsSheet
+      icon={stepIcon}
+      tone={step === 1 ? 'muted' : 'red'}
+      title={stepTitle}
+      sublabel={t('modals.stepOf', { step, total: TOTAL_STEPS })}
       label={t('modals.deleteTitle')}
-      style={{ padding: '26px 24px' }}
+      // `busy` o'chirish jarayonida yopishni bloklaydi — natijani ko'rmay
+      // qolmasin. Qobiq `onClose` ni argumentsiz chaqiradi, ya'ni `intent`
+      // bo'lmaydi va sahifa shunchaki oynani yopadi.
+      onClose={onClose}
+      busy={deleting}
+      footer={footer}
     >
       {/* Bosqich ko'rsatkichi — foydalanuvchi qayerdaligini bilsin */}
-      <div style={{ display: 'flex', gap: 6, marginBottom: 18 }}>
-        {[1, 2, 3].map(i => (
-          <div key={i} style={{
-            flex: 1, height: 4, borderRadius: 2,
-            background: i <= step ? 'var(--red)' : 'var(--border)',
-            transition: 'background 0.25s',
-          }} />
-        ))}
+      <div className="ss-steps" aria-hidden="true">
+        {[1, 2, 3].map(i => <i key={i} className={i <= step ? 'is-on' : ''} />)}
       </div>
 
       {/* ─── 1-BOSQICH: nima yo'qoladi ─── */}
       {step === 1 && (
         <>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-            <AlertTriangle size={26} style={{ color: 'var(--red)', flexShrink: 0 }} />
-            <div className="pp-modal-title" style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: 'var(--red)', margin: 0 }}>
-              {t('modals.deleteTitle')}
-            </div>
-          </div>
+          <p className="ss-p">{t('modals.deleteIntro')}</p>
 
-          <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', lineHeight: 1.6, marginBottom: 14 }}>
-            {t('modals.deleteIntro')}
-          </p>
-
-          <div style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 12, padding: '14px 16px', marginBottom: 14 }}>
-            <div style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--text)', marginBottom: 8 }}>
-              {t('modals.deleteLossTitle')}
-            </div>
-            <ul style={{ margin: 0, paddingInlineStart: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {losses.map((line, i) => (
-                <li key={i} style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', lineHeight: 1.5 }}>{line}</li>
-              ))}
+          <div className="ss-block">
+            <div className="ss-block-label">{t('modals.deleteLossTitle')}</div>
+            <ul className="ss-ul">
+              {losses.map((line, i) => <li key={i}>{line}</li>)}
             </ul>
           </div>
 
           {/* Faol obuna ogohlantirishi — pul yo'qolishi eng og'ir oqibat */}
           {isPremium && (
-            <div style={{
-              background: 'color-mix(in srgb, var(--red) 10%, transparent)',
-              border: '1px solid var(--red)', borderRadius: 12, padding: '12px 14px', marginBottom: 14,
-            }}>
-              <div style={{ fontSize: 'var(--fs-md)', color: 'var(--red)', fontWeight: 700, lineHeight: 1.5 }}>
-                {premiumExpire
-                  ? t('modals.deletePremiumWarnDate', { date: new Date(premiumExpire).toLocaleDateString('uz-UZ') })
-                  : t('modals.deletePremiumWarn')}
-              </div>
+            <div className="ss-warn">
+              {premiumExpire
+                ? t('modals.deletePremiumWarnDate', { date: new Date(premiumExpire).toLocaleDateString('uz-UZ') })
+                : t('modals.deletePremiumWarn')}
             </div>
           )}
 
-          <p style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)', lineHeight: 1.55, marginBottom: 18 }}>
-            {t('modals.deleteAlternatives')}
-          </p>
+          <p className="ss-p ss-p--spaced">{t('modals.deleteAlternatives')}</p>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <button onClick={() => setStep(2)} style={{ ...btnPrimary, background: 'transparent', color: 'var(--red)', border: '1.5px solid var(--red)' }}>
-              <Trash2 size={15} style={{ verticalAlign: '-2px', marginInlineEnd: 6 }} />
-              {t('modals.deleteStep1Continue')}
+          {/* Xavfsizroq muqobillar — ATAYLAB tanada, pastki tugmalarda emas:
+              pastda faqat ikkita asosiy yo'nalish turishi kerak. */}
+          <div className="ss-alt-row">
+            <button type="button" className="ss-btn ss-btn--sm" onClick={() => onClose('logout')}>
+              <LogOut size={14} />
+              {t('modals.deleteLogoutInstead')}
             </button>
-            <button onClick={onClose} style={{ ...btnPrimary, background: 'var(--cta)', color: '#fff' }}>
-              {t('modals.deleteKeepAccount')}
+            <button type="button" className="ss-btn ss-btn--sm" onClick={() => onClose('support')}>
+              <LifeBuoy size={14} />
+              {t('modals.deleteContactSupport')}
             </button>
-            <div style={{ display: 'flex', gap: 8 }}>
-              <button onClick={() => onClose('logout')} style={{ ...btnGhost, fontSize: 'var(--fs-sm)' }}>
-                <LogOut size={14} style={{ verticalAlign: '-2px', marginInlineEnd: 5 }} />
-                {t('modals.deleteLogoutInstead')}
-              </button>
-              <button onClick={() => onClose('support')} style={{ ...btnGhost, fontSize: 'var(--fs-sm)' }}>
-                <LifeBuoy size={14} style={{ verticalAlign: '-2px', marginInlineEnd: 5 }} />
-                {t('modals.deleteContactSupport')}
-              </button>
-            </div>
           </div>
         </>
       )}
@@ -145,43 +165,20 @@ export default function ConfirmDeleteModal({ deleting, onConfirm, onClose, isPre
       {/* ─── 2-BOSQICH: parolni qayta kiritish ─── */}
       {step === 2 && (
         <>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-            <Lock size={24} style={{ color: 'var(--text2)', flexShrink: 0 }} />
-            <div className="pp-modal-title" style={{ fontSize: 'var(--fs-xl)', fontWeight: 800, margin: 0 }}>
-              {t('modals.deleteStep2Title')}
+          <p className="ss-p">{t('modals.deleteStep2Text')}</p>
+          <div className="ss-block">
+            <div className="pp-field">
+              <label htmlFor="sp-del-pass">{t('modals.deletePasswordPlaceholder')}</label>
+              <input
+                id="sp-del-pass"
+                type="password"
+                autoComplete="current-password"
+                placeholder={t('modals.deletePasswordPlaceholder')}
+                value={password}
+                onChange={(e) => { setPassword(e.target.value); setError(''); }}
+              />
             </div>
-          </div>
-          <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', lineHeight: 1.6, marginBottom: 16 }}>
-            {t('modals.deleteStep2Text')}
-          </p>
-
-          <input
-            type="password"
-            className="modal-input"
-            autoComplete="current-password"
-            placeholder={t('modals.deletePasswordPlaceholder')}
-            value={password}
-            onChange={(e) => { setPassword(e.target.value); setError(''); }}
-            style={{ width: '100%', marginBottom: error ? 8 : 18 }}
-          />
-          {error && (
-            <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--red)', marginBottom: 14 }}>{error}</div>
-          )}
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <button
-              disabled={password.length < 6}
-              onClick={() => setStep(3)}
-              style={{
-                ...btnPrimary,
-                background: password.length < 6 ? 'var(--border)' : 'var(--red)',
-                color: password.length < 6 ? 'var(--text3)' : '#fff',
-                cursor: password.length < 6 ? 'not-allowed' : 'pointer',
-              }}
-            >
-              {t('modals.deleteStep2Continue')}
-            </button>
-            <button onClick={() => setStep(1)} style={btnGhost}>{t('modals.deleteBack')}</button>
+            {error && <div className="ss-note is-error" role="alert">{error}</div>}
           </div>
         </>
       )}
@@ -189,57 +186,26 @@ export default function ConfirmDeleteModal({ deleting, onConfirm, onClose, isPre
       {/* ─── 3-BOSQICH: tasdiq so'zini yozish ─── */}
       {step === 3 && (
         <>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-            <AlertTriangle size={24} style={{ color: 'var(--red)', flexShrink: 0 }} />
-            <div className="pp-modal-title" style={{ fontSize: 'var(--fs-xl)', fontWeight: 800, color: 'var(--red)', margin: 0 }}>
-              {t('modals.deleteStep3Title')}
+          <p className="ss-p">{t('modals.deleteStep3Text')}</p>
+          <div className="ss-block">
+            <div className="ss-word">{CONFIRM_WORD}</div>
+            <div className="pp-field">
+              <input
+                type="text"
+                className="ss-input-center"
+                autoComplete="off"
+                autoCapitalize="characters"
+                spellCheck={false}
+                aria-label={CONFIRM_WORD}
+                placeholder={t('modals.deleteTypePlaceholder')}
+                value={typed}
+                onChange={(e) => { setTyped(e.target.value); setError(''); }}
+              />
             </div>
-          </div>
-          <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text2)', lineHeight: 1.6, marginBottom: 14 }}>
-            {t('modals.deleteStep3Text')}
-          </p>
-
-          <div style={{
-            background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 10,
-            padding: '10px 14px', marginBottom: 10, textAlign: 'center',
-            fontWeight: 800, letterSpacing: '0.08em', color: 'var(--text)', fontSize: 'var(--fs-lg)',
-            userSelect: 'none',
-          }}>
-            {CONFIRM_WORD}
-          </div>
-
-          <input
-            type="text"
-            className="modal-input"
-            autoComplete="off"
-            autoCapitalize="characters"
-            spellCheck={false}
-            placeholder={t('modals.deleteTypePlaceholder')}
-            value={typed}
-            onChange={(e) => { setTyped(e.target.value); setError(''); }}
-            style={{ width: '100%', marginBottom: error ? 8 : 18, textAlign: 'center', letterSpacing: '0.08em', fontWeight: 700 }}
-          />
-          {error && (
-            <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--red)', marginBottom: 14 }}>{error}</div>
-          )}
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <button
-              disabled={!typedOk || deleting}
-              onClick={handleFinal}
-              style={{
-                ...btnPrimary,
-                background: !typedOk || deleting ? 'var(--border)' : 'var(--red)',
-                color: !typedOk || deleting ? 'var(--text3)' : '#fff',
-                cursor: !typedOk || deleting ? 'not-allowed' : 'pointer',
-              }}
-            >
-              {deleting ? t('modals.deleting') : t('modals.deleteConfirm')}
-            </button>
-            <button onClick={() => setStep(2)} disabled={deleting} style={btnGhost}>{t('modals.deleteBack')}</button>
+            {error && <div className="ss-note is-error" role="alert">{error}</div>}
           </div>
         </>
       )}
-    </ModalShell>
+    </SettingsSheet>
   );
 }

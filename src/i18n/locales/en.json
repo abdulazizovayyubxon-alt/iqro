@@ -104,7 +104,9 @@
       "deleteAccountError": "An error occurred. Please contact support.",
       "saved": "Saved ✅",
       "deleteAccountTooMany": "Too many attempts. Please wait a moment and try again."
-    }
+    },
+    "countdownOn": "Countdown on",
+    "countdownOff": "Countdown off"
   },
   "header": {
     "greeting": "Welcome",
@@ -919,7 +921,7 @@
     "errPhone": "Please enter a valid phone number",
     "errName": "Please enter your full name (at least 3 characters)",
     "errPassword": "Password must be at least 6 characters long",
-    "errAlreadyReg": "This phone number is already registered. Please enter password.",
+    "errAlreadyReg": "An account with this number already exists. Enter your password, or recover it with the steps below.",
     "errRegisterFail": "Error during registration.",
     "errEnterPass": "Please enter your password",
     "errNotReg": "This phone number is not registered yet. Enter name to create an account.",
@@ -930,7 +932,7 @@
     "tgTimeout": "Time expired. Please try again.",
     "checking": "Checking...",
     "phoneTitle": "Your Phone Number",
-    "phoneSubtitle": "Enter your phone number to log in or create a new account.",
+    "phoneSubtitle": "Your number is your login. If you are new, the next step creates your account: your name and a password you choose yourself.",
     "loginTitle": "Welcome Back!",
     "loginSubtitleSuffix": "— enter your password.",
     "passwordPlaceholder": "Your password",
@@ -959,7 +961,10 @@
     "termsLink": "Terms of Service",
     "policyP2": ".",
     "dataSecure": "Your data is safely protected",
-    "forgotPasswordHint": "Telegram is open — send your phone number to @zehinuz. The administrator will issue a temporary password, which you can then change in Profile."
+    "passwordRemember": "You choose this password yourself — remember it or write it down. There is no SMS or email recovery.",
+    "forgotStep1": "Only the administrator can reset your password. Send this number to @zehinuz on Telegram:",
+    "forgotOpenTelegram": "Message on Telegram",
+    "forgotStep2": "You will receive a temporary password. After signing in, change it in Profile → Change password."
   },
   "onboarding": {
     "goalTitle": "What is your goal?",
@@ -1109,7 +1114,7 @@
       "oliy": "Higher Category",
       "sertifikat": "Professional certificate"
     },
-    "editTitle": "✏️ Edit Profile",
+    "editTitle": "Edit Profile",
     "firstName": "First Name",
     "lastName": "Last Name",
     "choose": "Select",
@@ -1149,12 +1154,12 @@
     "guideP3Title": "📝 How do Practice and Exam modes differ?",
     "guideP4Title": "📅 How do the daily plan and streak work?",
     "guideUnderstood": "Understood 🤝",
-    "repTitle": "Smart Review Frequency",
+    "repTitle": "Smart Review",
     "repDesc": "Choose how often mistaken questions reappear in future tests.",
-    "repOff": "Off\n(0%)",
-    "repLow": "Low\n(10%)",
-    "repMid": "Medium\n(30%)",
-    "repHigh": "High\n(50%)",
+    "repOff": "Off",
+    "repLow": "10%",
+    "repMid": "30%",
+    "repHigh": "50%",
     "repRecommend": "Disabled by default — tests consist 100% of new questions. Mistakes can be reviewed separately in 'Mistake Notebook' and 'Review Queue'. Settings are saved immediately.",
     "logoutTitle": "Are you sure you want to log out?",
     "logoutText": "Don't stop on your path to qualification! Stay on the platform and keep boosting your knowledge.",
@@ -1186,7 +1191,7 @@
     "privacyP4Body": "Data is never sold or rented. Transferred only to minimal essential tech partners: Google Firebase (database & auth), Google Analytics (anonymous stats), and payment processors. Transmitted via encrypted HTTPS.",
     "privacyP5Title": "5. Right to Erasure & Contact",
     "privacyP5Body": "You can delete your account anytime via Settings -> Delete Account. Backup data is purged within 30 days. Telegram support: https://t.me/zehinuz?direct.",
-    "privacyFullLink": "Read full text →",
+    "privacyFullLink": "Full text ↗",
     "understood": "Understood 🤝",
     "close": "Close",
     "ageComputed": "{{count}} years old",
@@ -1228,7 +1233,18 @@
     "deleteConfirmWord": "DELETE",
     "deleteTypePlaceholder": "Type it here",
     "deleteWrongPassword": "Wrong password. Please try again.",
-    "deleteFailed": "Could not delete. Check your connection and try again."
+    "deleteFailed": "Could not delete. Check your connection and try again.",
+    "sectionPersonal": "Personal",
+    "sectionProfessional": "Professional",
+    "passHint": "At least 6 characters",
+    "passShow": "Show password",
+    "passHide": "Hide password",
+    "repSub": "Mixes your past mistakes into new tests",
+    "repEffectOff": "Review is off — tests consist 100% of new questions.",
+    "repEffectOn": "{{count}} out of every {{total}} questions will come from your past mistakes.",
+    "guideSub": "{{count}} topics",
+    "privacySub": "What we do with your data",
+    "stepOf": "Step {{step}} of {{total}}"
   },
   "sidebar": {
     "subjects": "Subjects",

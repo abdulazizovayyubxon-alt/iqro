@@ -12,6 +12,7 @@ import { resolveAvatar, avatarUrl } from '../data/avatars';
 import { SUBJECTS, SUBJECT_COUNT } from '../data/mockData';
 import { APP_URL, SUPPORT_URL, APP_VERSION, APP_NAME, QUESTION_COUNT_TEXT, FREE_TRIAL_DAYS } from '../config';
 import { ageFromBirthDate } from '../utils/age';
+import { buildUserSearchTokens } from '../utils/userSearch';
 import { writeContract, hydrateContract } from '../services/studyContract';
 import NotificationBell from './NotificationBell';
 import PremiumModal from './PremiumModal';
@@ -192,6 +193,12 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
         age: ageFromBirthDate(editForm.birthDate) ?? '',
         gender: editForm.gender || '', birthDate: editForm.birthDate || '',
         subject: editForm.subject || '', teacherCategory: editForm.teacherCategory || '',
+        // Admin qidiruvi indeksi (utils/userSearch.js). Ism O'ZGARGANDA
+        // yangilanmasa, admin eski familiya bo'yicha topaverardi va yangisi
+        // bo'yicha topa olmasdi — ikkalasi ham noto'g'ri.
+        searchTokens: buildUserSearchTokens({
+          displayName: dn, email: userDoc?.email || user.email, shortId: userDoc?.shortId,
+        }),
       }, { merge: true });
       if (dn && auth.currentUser) {
         try { await updateProfile(auth.currentUser, { displayName: dn }); } catch (e) { console.warn('updateProfile:', e); }

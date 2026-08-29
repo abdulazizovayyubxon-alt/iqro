@@ -48,7 +48,7 @@ import {
 import { useModalA11y } from '../hooks/useModalA11y';
 // Foydalanuvchi qidiruvi ALOHIDA modulda va testga olingan (utils/userSearch.js):
 // aynan bu mantiq jimgina buzilib, mavjud odamni "bazada yo'q" ko'rsatgan edi.
-import { matchesUserSearch } from '../utils/userSearch';
+import { matchesUserSearch, serverSearchKey } from '../utils/userSearch';
 // 2026-08-20: «Xatolik yuz berdi» xabari sababni yashirib, adminni bir necha
 // soat noto'g'ri joyda qidirishga majbur qildi (haqiqiy sabab — kvota tugashi).
 import { describeFirebaseError, withWriteTimeout } from '../utils/firebaseError';
@@ -61,29 +61,51 @@ import ConfirmDialog from '../components/shared/ConfirmDialog';
 // qidiruv ishlatiladi (`searchUsersOnServer`).
 const LIST_PAGE_SIZE = 200;
 
-// ── Foydalanuvchilar ro'yxati uchun ALOHIDA chegara (2026-08-20) ─────────
+// ── Foydalanuvchilar ro'yxati uchun ALOHIDA chegara ──────────────────────
 //
-// MUAMMO: `LIST_PAGE_SIZE = 200` bo'lganda bazadagi ~390 hisobning ~190 tasi
-// ro'yxatga TUSHMASDI. Ism bo'yicha qidiruv esa faqat yuklangan ro'yxat
-// ichida ishlaydi (`filteredUsers`), server qidiruvida ism bo'yicha so'rov
-// esa umuman yo'q edi — natijada admin "Omonov" deb qidirib «mavjud emas»
-// javobini olardi, holbuki bazada uchta Omonov bor edi.
+// TARIX:
+//   2026-08-20: 200 → 500. Sabab — bazadagi ~390 hisobning ~190 tasi
+//   ro'yxatga tushmasdi, qidiruv esa FAQAT yuklangan ro'yxat ichida
+//   ishlardi, ya'ni "topilmadi" javobi yolg'on bo'lishi mumkin edi.
+//   O'sha paytda chegarani ko'tarish yagona tez yechim edi.
 //
-// NEGA 200 → 500, va nega bu KVOTAGA ZARAR QILMAYDI:
-//   · Bepul (Spark) reja kuniga 50 000 o'qish beradi.
-//   · ~390 hisobni to'liq yuklash = ~390 o'qish = kunlik kvotaning 0,8% i
-//     (200 ta yuklash 0,4% edi — farq atigi +192 o'qish).
-//   · Solishtirish uchun: «Savollar bazasi»ni bir bosish 47 000 o'qish.
-//   · Ustiga sessiya keshi qo'shildi (`readUserCache`), ya'ni panelni bir
-//     sessiya ichida qayta-qayta ochish QO'SHIMCHA o'qish qilmaydi.
+//   2026-08-29: 500 → 100. Baza 502 ga yetdi va "chegarani ko'tarish"
+//   strategiyasi tugadi: 3 000 hisobda ro'yxatni to'liq yuklash panelning
+//   HAR ochilishida 3 000 o'qish degani. Qidiruv o'rniga endi server
+//   indeksi javob beradi (`searchTokens` + `array-contains`, utils/
+//   userSearch.js), ya'ni qidiruvning ishonchliligi ARTIQ shu chegaraga
+//   bog'liq emas. Chegara shundan keyin faqat bitta ish qiladi — "oxirgi
+//   ro'yxatdan o'tganlar" ko'rinishini beradi, va 100 ta buning uchun yetadi.
 //
-// ⚠️ Bu chegara ATAYLAB bazadan katta qilib olindi: baza 500 dan oshgan
-// kunda mijozdagi qidiruv yana "yarim ko'r" bo'lib qoladi. O'sha holat
-// UI'da ochiq ogohlantirish bilan ko'rsatiladi (`usersTruncated`) va
-// «Bazadan qidirish» server so'rovi shunda ASOSIY yo'lga aylanadi.
-// Baza ~2 000 dan oshsa, to'g'ri yechim — `users` hujjatlariga qidiruv
-// uchun prefiks-token maydoni qo'shib, `array-contains` bilan izlash.
-const USER_PAGE_SIZE = 500;
+// NARXI (bepul Spark reja — kuniga 50 000 o'qish):
+//   · panelni ochish: 500 o'qish → 100 o'qish (5 barobar arzon);
+//   · qidiruv: ro'yxat hajmidan QAT'I NAZAR eng ko'pi ~30 o'qish;
+//   · sessiya keshi (`readUserCache`) o'z o'rnida qoladi — bir sessiya
+//     ichida qayta ochish umuman o'qimaydi.
+//
+// ⚠️ 100 ni ko'tarishdan OLDIN o'ylang: bu son endi qidiruvga ta'sir
+// qilmaydi, faqat o'qish narxini oshiradi.
+const USER_PAGE_SIZE = 100;
+
+// Bitta server qidiruvi eng ko'pi shuncha hujjat o'qiydi (`array-contains`).
+// Bu SON QIDIRUVNING BUTUN NARXI: baza 500 ta ham, 50 000 ta ham bo'lsa
+// o'zgarmaydi — chunki filtrlash Firestore tomonda kechadi.
+//
+// Nega 30: bitta prefiks («abdulaziz») odatda 1-5 kishini beradi; 30 esa
+// «ali» kabi keng prefiksda ham ma'noli ro'yxat qoldiradi. Kattaroq son
+// foydali natija qo'shmaydi — admin baribir aniqroq yozadi — lekin har
+// qidiruvni qimmatlashtiradi.
+const USER_SEARCH_LIMIT = 30;
+
+// Avtomatik qidiruv kutish vaqti. Admin yozib tugatgunicha so'rov
+// YUBORILMAYDI — aks holda «abdulaziz» so'zi 9 ta so'rov bo'lardi.
+const USER_SEARCH_DEBOUNCE = 700;
+
+// Avtomatik qidiruv shundan qisqa matnda ishlamaydi. 3 harf — «ali», «zuh»
+// kabi ma'noli eng qisqa bo'lak; undan qisqasi bazadan tasodifiy odam
+// keltirardi va kvotani behuda yeyardi. Tugma bilan qo'lda qidirish esa
+// 2 harfdan boshlab ishlaydi (serverSearchKey chegarasi).
+const USER_AUTOSEARCH_MIN = 3;
 
 // Foydalanuvchi ro'yxatining sessiya keshi. `sessionStorage` ATAYLAB
 // (`localStorage` emas): ro'yxatda shaxsiy ma'lumot bor — u diskda uzoq
@@ -700,6 +722,18 @@ const AdminPage = () => {
   // ro'yxatda KO'RINMAYDIGAN odam bormi. Faqat shu holatda mijozdagi qidiruv
   // to'liq emas, va UI shuni ochiq aytishi kerak.
   const [usersTruncated, setUsersTruncated] = useState(false);
+  // Bazadan YUKLANGAN ro'yxatning hajmi — `users.length` dan FARQ QILADI.
+  // Server qidiruvi natijasi ro'yxatga qo'shilib boradi, ya'ni `users.length`
+  // qidiruvlar davomida o'sadi. «Eng yangi N ta ko'rsatilmoqda» satri esa
+  // aynan yuklangan hajmni aytishi kerak, aks holda son sekin-asta
+  // yolg'onga aylanardi.
+  const [usersBaseCount, setUsersBaseCount] = useState(0);
+  // Shu sessiyada bazadan ALLAQACHON so'ralgan matnlar. Avtomatik qidiruv
+  // bir matn uchun bir marta ishlashi kerak: admin harfni o'chirib qayta
+  // yozsa yoki tugmani bossa, aynan o'sha natija uchun ikkinchi marta
+  // o'qish sarflanardi. To'plam `useRef` da — o'zgarishi qayta render
+  // talab qilmaydi, va «Yangilash» bosilganda tozalanadi.
+  const serverSearchedRef = useRef(new Set());
   const [referralError, setReferralError] = useState(null);
   const [filterSolved, setFilterSolved] = useState('all'); // all | unsolved | solved
   const [expandedId, setExpandedId] = useState(null);
@@ -1330,8 +1364,13 @@ try {
     if (!force) {
       const cached = readUserCache();
       if (cached) {
-        setUsers(cached);
-        setUsersTruncated(cached.length >= USER_PAGE_SIZE);
+        // Kesh eski (kattaroq) chegara bilan yozilgan bo'lishi mumkin —
+        // sessiya 10 daqiqa yashaydi, deploy esa undan tez keladi. Kesilmasa
+        // «eng yangi 100 ta» deb turib 500 qator ko'rsatilardi.
+        const list = cached.slice(0, USER_PAGE_SIZE);
+        setUsers(list);
+        setUsersBaseCount(list.length);
+        setUsersTruncated(list.length >= USER_PAGE_SIZE);
         setUserSearchServer(false);
         return; // 0 Firestore o'qishi
       }
@@ -1347,9 +1386,11 @@ try {
       ));
       const list = snap.docs.map(d => ({ id: d.id, ...d.data() }));
       setUsers(list);
-      // Chegaraga TIQILIB qolgan bo'lsa, bazada ko'rinmayotgan odam bor —
-      // bu holat UI'da ochiq ogohlantiriladi, chunki aynan shu holat
-      // "qidirdim, topilmadi" degan yolg'on xulosaga olib keladi.
+      setUsersBaseCount(list.length);
+      // Chegaraga TIQILIB qolgan bo'lsa, bazada ko'rinmayotgan odam bor.
+      // Bu bayroq ikki ishni qiladi: ko'rsatkichda ochiq aytiladi, VA
+      // avtomatik server qidiruviga ruxsat beradi (chegaraga tiqilmagan
+      // ro'yxatda bazaga murojaat qilish ortiqcha o'qish bo'lardi).
       setUsersTruncated(list.length >= USER_PAGE_SIZE);
       setUserSearchServer(false);
       writeUserCache(list);
@@ -1361,80 +1402,87 @@ try {
     }
   };
 
-  // ── Server tomonda qidiruv (B-7) ──
-  // Mijozdagi `filter()` faqat YUKLANGAN ro'yxat ichida ishlaydi. Baza
-  // `USER_PAGE_SIZE` dan oshgan kunda ro'yxatga tushmagan odamni faqat shu
-  // yo'l bilan topish mumkin: har bir so'rov 0–20 o'qish, ya'ni butun
-  // kolleksiyani o'qishdan o'nlab marta arzon.
+  // ── Server tomonda qidiruv ──────────────────────────────────────────────
   //
-  // 2026-08-20 — ISM BO'YICHA SO'ROV QO'SHILDI. Avval bu funksiya faqat
-  // `shortId`, `email` va `phone` ni TENGLIK bo'yicha so'rardi; `displayName`
-  // uchun so'rov UMUMAN YO'Q edi. Natijada admin "Omonov" deb qidirsa
-  // «topilmadi» degan javob olardi — aslida qidirilmagan edi.
+  // Mijozdagi `filter()` faqat YUKLANGAN ro'yxat (100 ta) ichida ishlaydi.
+  // Bazadagi qolgan hamma odam FAQAT shu funksiya orqali topiladi — va
+  // 2026-08-29 dan boshlab bu ASOSIY yo'l, zaxira emas.
   //
-  // ⚠️ Firestore matn ichidan qidirishni (`LIKE '%omon%'`) qo'llab-quvvatlamaydi.
-  // Shu sababli ism uchun PREFIKS so'rovi ishlatiladi: `>= term` va
-  // `<= term + ''` oralig'i, ya'ni «omon» → «Omonov», «Omonova».
-  // Cheklovi ochiq: bu ism/familiyaning BOSHIDAN mos kelishini talab qiladi
-  // va registrga sezgir — shuning uchun bir necha yozuv varianti bilan
-  // parallel so'rov yuboriladi. Ism O'RTASIDAN qidirish (masalan familiya
-  // ikkinchi so'z bo'lsa) faqat yuklangan ro'yxat ichida ishlaydi — hozir
-  // bu yetarli, chunki baza (2026-08-20: 394) chegaradan (500) kichik.
+  // ⚠️ NATIJA RO'YXATNI ALMASHTIRMAYDI, unga QO'SHILADI. Avval
+  // `setUsers(natija)` qilinardi — qidiruvdan keyin ro'yxat yo'qolar, uni
+  // qaytarish esa to'liq qayta yuklashni (yuzlab o'qish) talab qilardi.
+  // Endi topilgan odam ro'yxatga qo'shilib qoladi: o'sha odamni ikkinchi
+  // marta qidirish 0 o'qish, va qidiruvdan chiqish ham bepul.
   //
-  // ⚠️⚠️ QO'L TEGMASIN: pastdagi `'...'` satrlari BO'SH EMAS — ichida
-  // U+F8FF (Unicode private-use) belgisi bor. U muharrirda KO'RINMAYDI,
-  // lekin prefiks oralig'ining yuqori chegarasi aynan shu. Uni tasodifan
-  // o'chirish so'rovni `>= v AND <= v` ga aylantiradi, ya'ni prefiks
-  // qidiruvi jimgina FAQAT ANIQ TENGLIKka tushib qoladi va «omon» hech
-  // qachon «Omonov» ni topmaydi. Bu Firestore'da standart usul.
+  // SO'ROVLAR — IKKI BOSQICH, ataylab:
+  //   1-BOSQICH (doim): `searchTokens` array-contains + `shortId`/`email`
+  //     tengligi + `phone` oralig'i. Asosiysi — token so'rovi: prefikslar
+  //     hujjatning o'zida saqlanadi (utils/userSearch.js), shuning uchun
+  //     baza 500 ta ham, 50 000 ta ham bo'lsa narx bir xil: ≤30 o'qish.
+  //   2-BOSQICH (faqat 1-bosqich BO'SH qaytganda): eski `displayName`
+  //     prefiks so'rovi. `searchTokens` hali yozilmagan hisoblar uchun
+  //     (backfill: `node scripts/backfill-search-tokens.mjs`). Backfill
+  //     to'liq bajarilgach bu bosqich amalda hech qachon ishlamaydi —
+  //     shuning uchun uning narxi odatiy qidiruvga qo'shilmaydi.
+  //
+  // ⚠️ Token so'roviga `orderBy` QO'SHMANG: `array-contains` + `orderBy`
+  // KOMPOZIT indeks talab qiladi, u loyihada e'lon qilinmagan — so'rov
+  // jimgina yiqilar va qidiruv yana "yarim ko'r" bo'lib qolardi.
   //
   // `termArg` — arizadan kelgan telefon kabi TAYYOR so'z. Berilmasa maydondagi
   // matn ishlatiladi. `onClick={searchUsersOnServer}` hodisa obyektini uzatadi,
   // shuning uchun tur tekshiruvi shart — aks holda [object Object] qidirilardi.
-  const searchUsersOnServer = async (termArg) => {
+  // `auto` — avtomatik (debounce) qidiruvmi: bunda «topilmadi» xabari
+  // ko'rsatilmaydi, chunki admin hali yozib tugatmagan bo'lishi mumkin.
+  const searchUsersOnServer = async (termArg, { auto = false } = {}) => {
     const term = (typeof termArg === 'string' ? termArg : userSearch).trim();
     if (!term) { loadUsers({ force: true }); return; }
+
+    // `null` — matn juda qisqa (1 harf / 3 raqam). Bunday so'rov bazadan
+    // tasodifiy 30 kishini keltirardi: foyda yo'q, o'qish sarflangan.
+    const tokenKey = serverSearchKey(term);
+
+    // Bir xil matn ikki marta so'ralmasin: avtomatik qidiruv ishlagandan
+    // keyin admin tugmani ham bossa, ikkinchi so'rov aynan o'sha natijani
+    // qaytarardi — bu sof yo'qotilgan kvota.
+    serverSearchedRef.current.add(term.toLowerCase());
+
     setUsersLoading(true);
     setUsersError(null);
     try {
       const digits = term.replace(/\D/g, '');
-      const queries = [
-        // shortId formati: harf(lar) + 4 raqam (utils/shortId.js) — doim katta harf
-        query(collection(db, 'users'), where('shortId', '==', term.toUpperCase()), limit(5)),
-        query(collection(db, 'users'), where('email', '==', term.toLowerCase()), limit(5)),
-      ];
+      const queries = [];
 
-      // Ism/familiya prefiksi. Bazada ismlar odatda «Omonov Aziz» ko'rinishida
-      // — birinchi harf katta. Admin esa «omonov» deb ham yozadi, shuning
-      // uchun uchta yozuv varianti sinaladi. Takrorlar `Map` da yig'ishtiriladi.
-      const nameVariants = [...new Set([
-        term,
-        term.toLowerCase(),
-        term.charAt(0).toUpperCase() + term.slice(1).toLowerCase(),
-      ])];
-      nameVariants.forEach(v => {
+      if (tokenKey) {
         queries.push(query(
           collection(db, 'users'),
-          where('displayName', '>=', v),
-          where('displayName', '<=', v + ''),
-          limit(20),
+          where('searchTokens', 'array-contains', tokenKey),
+          limit(USER_SEARCH_LIMIT),
         ));
-      });
+      }
+      // shortId formati: harf(lar) + 4 raqam (utils/shortId.js) — doim katta harf
+      queries.push(query(collection(db, 'users'), where('shortId', '==', term.toUpperCase()), limit(5)));
+      queries.push(query(collection(db, 'users'), where('email', '==', term.toLowerCase()), limit(5)));
 
       // Telefon 998XXXXXXXXX ko'rinishida saqlanadi (AuthContext cleanPhone).
       // Admin raqamni 998 bilan ham, 998 siz ham yozadi — ikkisi ham sinaladi.
-      if (digits.length >= 7) {
+      // Chegara 5 raqam: undan qisqasi butun bazaga mos kelardi.
+      if (digits.length >= 5) {
         const phoneVariants = [...new Set([
           digits,
           digits.startsWith('998') ? digits.slice(3) : `998${digits}`,
         ])];
         phoneVariants.forEach(p => {
-          // Prefiks: to'liq bo'lmagan raqam bilan ham topilsin
+          // Prefiks oralig'i: to'liq bo'lmagan raqam bilan ham topilsin.
+          // '\uf8ff' — Unicode private-use belgisi, Firestore'da prefiks
+          // oralig'ining standart yuqori chegarasi. ESCAPE ko'rinishida
+          // yozilgan ATAYLAB: xom belgi muharrirda ko'rinmaydi va tasodifan
+          // o'chirilsa so'rov jimgina ANIQ TENGLIKka tushib qolardi.
           queries.push(query(
             collection(db, 'users'),
             where('phone', '>=', p),
-            where('phone', '<=', p + ''),
-            limit(20),
+            where('phone', '<=', `${p}\uf8ff`),
+            limit(10),
           ));
           // Soxta email — telefon+@iqro.uz (login modeli)
           queries.push(query(collection(db, 'users'), where('email', '==', `${p}@iqro.uz`), limit(5)));
@@ -1442,21 +1490,61 @@ try {
       }
 
       // Bitta so'rov indeks yetishmasligi sababli yiqilsa, qolganlari ishlashda davom etsin
-      const snaps = await Promise.all(queries.map(q => getDocs(q).catch(() => null)));
-      const found = new Map();
-      snaps.forEach(s => s?.docs.forEach(d => found.set(d.id, { id: d.id, ...d.data() })));
-      if (found.size === 0) {
-        // ⚠️ Avvalgi matn ("...ID, telefon yoki email TO'LIQ yozilsin")
-        // ADASHTIRARDI: u adminni ism bo'yicha qidirish umuman mumkin emas
-        // degan xulosaga olib borardi. Endi ism ham qidiriladi, shuning uchun
-        // xabar rost holatni aytadi.
-        showToast(`«${term}» bo'yicha bazada hech kim topilmadi`, 'info');
+      const runAll = async (qs) => {
+        const snaps = await Promise.all(qs.map(q => getDocs(q).catch(() => null)));
+        const acc = new Map();
+        snaps.forEach(s => s?.docs.forEach(d => acc.set(d.id, { id: d.id, ...d.data() })));
+        return acc;
+      };
+
+      let found = await runAll(queries);
+
+      // 2-BOSQICH — faqat hech narsa topilmaganda. Eski (tokensiz) hisoblar
+      // uchun ism prefiksi bo'yicha so'rov. Cheklovi ochiq: ism/familiyaning
+      // BOSHIDAN mos kelishini talab qiladi va registrga sezgir, shuning
+      // uchun uchta yozuv varianti sinaladi.
+      if (found.size === 0 && /[a-z]/i.test(term)) {
+        const nameVariants = [...new Set([
+          term,
+          term.toLowerCase(),
+          term.charAt(0).toUpperCase() + term.slice(1).toLowerCase(),
+        ])];
+        found = await runAll(nameVariants.map(v => query(
+          collection(db, 'users'),
+          where('displayName', '>=', v),
+          where('displayName', '<=', `${v}\uf8ff`),
+          limit(20),
+        )));
+      }
+
+      // Natijani qidiruv matni bo'yicha QAYTA filtrlash. Kerak, chunki
+      // token so'rovi faqat ENG UZUN so'zni izlaydi: «abdulazizova oyxon»
+      // da «oyxon» server tomonda tekshirilmagan bo'ladi. Telefon oralig'i
+      // ham keraksiz qo'shnilarni olib kelishi mumkin.
+      const hits = Array.from(found.values()).filter(u => matchesUserSearch(u, term));
+
+      if (hits.length === 0) {
+        if (!auto) showToast(`«${term}» bo'yicha bazada hech kim topilmadi`, 'info');
         return;
       }
-      setUsers(Array.from(found.values()));
+
+      // Ro'yxatga QO'SHAMIZ. Allaqachon bor hisob ALMASHTIRILMAYDI: undagi
+      // mahalliy o'zgarishlar (premium berildi, tahrirlandi) yo'qolmasin.
+      let added = 0;
+      setUsers(prev => {
+        const byId = new Map(prev.map(u => [u.id, u]));
+        hits.forEach(u => { if (!byId.has(u.id)) { byId.set(u.id, u); added += 1; } });
+        return byId.size === prev.length ? prev : Array.from(byId.values());
+      });
       setUserSearchServer(true);
-      setUsersTruncated(false); // qidiruv natijasi — chegara ogohlantirishi bu yerda o'rinsiz
-      showToast(`${found.size} ta natija topildi`, 'success');
+      if (!auto || added > 0) {
+        showToast(
+          added > 0
+            ? `Bazadan ${added} ta hisob topildi`
+            : `${hits.length} ta natija — hammasi ro'yxatda bor edi`,
+          'success',
+        );
+      }
     } catch (e) {
       console.error('user search error:', e);
       setUsersError(e?.message || 'Qidiruvda xatolik');
@@ -1464,6 +1552,43 @@ try {
       setUsersLoading(false);
     }
   };
+
+  // ── Avtomatik server qidiruvi (2026-08-29) ────────────────────────────
+  //
+  // MUAMMO: bazadan qidirish uchun ALOHIDA tugma bosish kerak edi. Admin
+  // buni bosmasa — ro'yxatda yo'q odamni «bazada mavjud emas» deb o'qirdi.
+  // Ro'yxat 100 taga tushgach bu holat kundalik bo'lib qolardi, shuning
+  // uchun panel endi bazadan O'ZI so'raydi.
+  //
+  // KVOTA QANDAY SAQLANADI — beshta shart, HAMMASI kerak:
+  //   1) matn kamida `USER_AUTOSEARCH_MIN` belgidan iborat;
+  //   2) yozib tugatilgan (`USER_SEARCH_DEBOUNCE` jim turish) — aks holda
+  //      «abdulaziz» so'zi 9 ta alohida so'rov bo'lardi;
+  //   3) YUKLANGAN ro'yxatda hech kim topilmagan — topilgan bo'lsa bazaga
+  //      murojaat qilishning ma'nosi yo'q;
+  //   4) ro'yxat CHALA (`usersTruncated`); to'liq bo'lsa mijozdagi
+  //      "topilmadi" allaqachon YAKUNIY javob;
+  //   5) bu matn shu sessiyada hali so'ralmagan (`serverSearchedRef`).
+  //
+  // Ya'ni odatiy ish jarayonida — ro'yxatdagi odamni qidirish — bitta ham
+  // qo'shimcha o'qish bo'lmaydi. Eng yomon holat: har bir YANGI ism uchun
+  // bir marta ≤30 o'qish.
+  //
+  // ⚠️ Bu yerda `filteredUsers` ATAYLAB ishlatilmadi: unga fan filtri ham
+  // kiradi, ya'ni fan tanlab qo'yilgan bo'lsa har qidiruv bazaga chiqib
+  // ketardi. Bu yerda faqat MATN muhim.
+  useEffect(() => {
+    if (!isAdmin || tab !== 'users' || usersLoading) return undefined;
+    const term = userSearch.trim();
+    if (term.length < USER_AUTOSEARCH_MIN) return undefined;
+    if (!usersTruncated) return undefined;
+    if (serverSearchedRef.current.has(term.toLowerCase())) return undefined;
+    if (users.some(u => matchesUserSearch(u, term))) return undefined;
+
+    const timer = setTimeout(() => searchUsersOnServer(term, { auto: true }), USER_SEARCH_DEBOUNCE);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userSearch, users, usersTruncated, usersLoading, tab, isAdmin]);
 
   useEffect(() => {
     if (!isAdmin) return;
@@ -1826,8 +1951,18 @@ try {
 
   const handleSolve = async (fbId) => {
     try {
+      const obj = objections.find(o => o.fbId === fbId);
       await updateDoc(doc(db, 'objections', fbId), { solved: true, solvedBy: user.email, solvedAt: new Date() });
-      showToast("✅ E'tiroz hal qilindi!", 'success');
+      if (obj?.uid) {
+        await addDoc(collection(db, 'users', obj.uid, 'notifications'), {
+          title: "📝 E'tirozingiz ko'rib chiqildi (ZEHIN)",
+          message: obj.replyText || "Siz yuborgan e'tiroz ekspertlar guruhi tomonidan ko'rib chiqildi va savol to'g'rilandi. Bildirgan faolligingiz uchun minnatdormiz!",
+          type: 'success',
+          read: false,
+          date: new Date().toISOString(),
+        });
+      }
+      showToast("✅ E'tiroz hal qilindi va foydalanuvchiga bildirishnoma yuborildi!", 'success');
     } catch (e) {
       console.error('admin amali xatosi:', e?.code, e?.message);
       showToast(describeFirebaseError(e), 'error');
@@ -4061,19 +4196,13 @@ try {
                   placeholder="Familiya, ism, ID, telefon yoki email..."
                   value={userSearch}
                   onChange={e => setUserSearch(e.target.value)}
-                  // ⚠️ Enter ATAYLAB shartli. Avval u har safar
-                  // `searchUsersOnServer()` ni chaqirardi, u esa `users` ni
-                  // FAQAT prefiks bo'yicha topilganlar bilan ALMASHTIRADI.
-                  // Ya'ni «omon» yozib yuklangan ro'yxatdan 3 ta Omonov
-                  // ko'rinib turgan holda Enter bosilsa, familiyasi ikkinchi
-                  // so'zda turgani ro'yxatdan YO'QOLARDI — qidiruv natijani
-                  // yaxshilash o'rniga kambag'allashtirardi.
-                  // Endi server so'rovi faqat mijozda HECH NARSA topilmaganda
-                  // ishga tushadi — ya'ni haqiqatan kerak bo'lganda.
-                  onKeyDown={e => {
-                    if (e.key !== 'Enter') return;
-                    if (filteredUsers.length === 0) searchUsersOnServer();
-                  }}
+                  // Enter — QO'LDA majburlash. 2026-08-29 dan u shartsiz
+                  // ishlaydi: server natijasi endi ro'yxatni almashtirmay,
+                  // unga QO'SHILADI, ya'ni Enter hech qachon ko'rinib turgan
+                  // odamni yo'qotmaydi (avval aynan shu sabab shartli edi).
+                  // Odatda buning hojati yo'q — avtomatik qidiruv o'zi
+                  // ishlaydi; Enter esa "hoziroq, kutmasdan" degani.
+                  onKeyDown={e => { if (e.key === 'Enter') searchUsersOnServer(); }}
                 />
               </div>
               <select
@@ -4088,18 +4217,20 @@ try {
                 {SUBJECTS.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
                 <option value="none">Fan belgilanmagan</option>
               </select>
-              {/* B-7: mijozdagi filtr faqat yuklangan ro'yxat ichida ishlaydi.
-                  Baza `USER_PAGE_SIZE` dan oshgan kunda bu tugma ASOSIY yo'lga
-                  aylanadi; hozir esa zaxira — shuning uchun matni ham
-                  "aniq qidirish" emas, halolroq. */}
-              <button className="btn btn-sm btn-outline" onClick={searchUsersOnServer} disabled={usersLoading || !userSearch.trim()} title="Ro'yxatda topilmasa — butun bazadan prefiks bo'yicha qidirish">
+              {/* 2026-08-29: bu tugma endi ZAXIRA. Ro'yxatda topilmasa panel
+                  bazadan o'zi so'raydi (yuqoridagi avtomatik qidiruv effekti),
+                  shuning uchun tugma faqat "kutmasdan, hoziroq" va "yana bir
+                  bor urinib ko'r" holatlari uchun qoldi. */}
+              <button className="btn btn-sm btn-outline" onClick={searchUsersOnServer} disabled={usersLoading || !userSearch.trim()} title="Kutmasdan, hoziroq butun bazadan qidirish">
                 <Search size={14} /> Bazadan qidirish
               </button>
               {/* Kesh ATAYLAB tozalanadi: admin «Yangilash» bosganda eng
                   yangi ma'lumotni so'ragan bo'ladi, keshdagi 10 daqiqalik
                   nusxa esa keyingi ochilishda yana o'sha eski holatni
-                  qaytarib qo'yishi mumkin edi. */}
-              <button className="btn btn-sm btn-outline" onClick={() => { setUserSearch(''); clearUserCache(); loadUsers({ force: true }); }} disabled={usersLoading} title="Ro'yxatni bazadan qayta yuklash">
+                  qaytarib qo'yishi mumkin edi. Qidirilgan matnlar to'plami
+                  ham shu yerda tozalanadi — «Yangilash» = "hammasini
+                  boshidan", ya'ni eski qidiruv natijasi ushlab qolmasin. */}
+              <button className="btn btn-sm btn-outline" onClick={() => { setUserSearch(''); serverSearchedRef.current.clear(); clearUserCache(); loadUsers({ force: true }); }} disabled={usersLoading} title="Ro'yxatni bazadan qayta yuklash">
                 <RefreshCw size={14} className={usersLoading ? 'spin' : ''} />
               </button>
               <button className="btn btn-sm btn-outline" onClick={exportUsers} disabled={!filteredUsers.length} title="CSV faylga eksport">
@@ -4118,11 +4249,9 @@ try {
           {!usersError && users.length > 0 && (
             <div className="admin-stats-indicator">
               <span>
-                {userSearchServer
-                  ? <>🔎 <strong>Server qidiruvi</strong> natijasi</>
-                  : usersTruncated
-                    ? <>⚠️ Eng yangi <strong>{users.length}</strong> ta ko'rsatilmoqda{overview?.users ? <> · bazada <strong>{overview.users}</strong> ta</> : null}</>
-                    : <>✅ Bazadagi <strong>barcha {users.length}</strong> ta hisob yuklangan</>}
+                {usersTruncated
+                  ? <>👥 Eng yangi <strong>{usersBaseCount}</strong> ta ko'rsatilmoqda{overview?.users ? <> · bazada <strong>{overview.users}</strong> ta</> : null}{userSearchServer ? <> · 🔎 <strong>+{users.length - usersBaseCount}</strong> ta bazadan topildi</> : null}</>
+                  : <>✅ Bazadagi <strong>barcha {users.length}</strong> ta hisob yuklangan</>}
               </span>
               <span style={{ color: 'var(--text3)' }}>
                 {subjectFilter !== 'all'
@@ -4130,27 +4259,23 @@ try {
                   // kesimi — aks holda admin uni fan bo'yicha jami deb o'qishi
                   // mumkin. Haqiqiy jami "Statistika" tabida.
                   ? <>Fan filtri faqat shu ro'yxat ichida — bazadagi jami son «Statistika» tabida</>
-                  : usersTruncated
-                    ? <>Ro'yxatga sig'magan odamni «Bazadan qidirish» bilan toping</>
-                    : <>Qidiruv shu ro'yxatning hammasini qamraydi — familiya, ism, ID, telefon</>}
+                  // 2026-08-29: ilgari bu yerda "«Bazadan qidirish» bilan
+                  // toping" deb turardi — ya'ni to'g'ri natija adminning
+                  // tugmani bosishini eslab qolishiga bog'liq edi. Endi
+                  // qidiruv o'zi bazaga chiqadi, matn ham shuni aytadi.
+                  : <>Qidiruv BUTUN bazani qamraydi — familiya, ism, ID, telefon, email</>}
               </span>
             </div>
           )}
 
-          {/* Chegaraga tiqilgan holat ALOHIDA, ko'zga tashlanadigan
-              ogohlantirish oladi: bu yagona holat, unda «topilmadi» javobi
-              YOLG'ON bo'lishi mumkin. */}
-          {!usersError && usersTruncated && !userSearchServer && (
-            <div className="admin-info-box">
-              <div className="admin-info-title"><AlertCircle size={15} /> Ro'yxat to'liq emas</div>
-              <div className="admin-info-text">
-                Bazada <strong>{overview?.users ?? 'ko\'proq'}</strong> hisob bor, bu yerga esa eng yangi{' '}
-                <strong>{users.length}</strong> tasi yuklandi. Ya'ni bu ro'yxatdagi qidiruv{' '}
-                <strong>hammasini qamramaydi</strong> — kimni topa olmasangiz, «Bazadan qidirish»
-                tugmasini bosing.
-              </div>
-            </div>
-          )}
+          {/* 2026-08-29: bu yerda «Ro'yxat to'liq emas» ogohlantirish qutisi
+              turardi. U OLIB TASHLANDI, chunki aytayotgan gapi endi YOLG'ON:
+              qutining butun mazmuni "bu ro'yxatdagi qidiruv hammasini
+              qamramaydi" edi, qidiruv esa endi server indeksi orqali butun
+              bazaga chiqadi. Ro'yxatning o'zi chala ekani yuqoridagi bir
+              qatorlik ko'rsatkichda qoladi — ogohlantirishga aylantirishning
+              hojati yo'q, chunki undan kelib chiqadigan xato xulosa
+              («bazada yo'q») endi mumkin emas. */}
 
           {usersError ? (
             <div className="admin-info-box admin-info-box--error">
@@ -4169,17 +4294,29 @@ try {
             </div>
           ) : filteredUsers.length === 0 ? (
             <div className="glass-panel" style={{ padding: '40px', textAlign: 'center', color: 'var(--text3)' }}>
-              {/* Matn ro'yxat holatiga qarab O'ZGARADI. Avval har doim
-                  "Yuklangan ro'yxatda topilmadi" deb turardi — ro'yxat
-                  to'liq bo'lganda bu ortiqcha shubha tug'dirardi, chala
-                  bo'lganda esa admin uni "bazada yo'q" deb o'qib, mavjud
-                  odamni yo'q deb hisoblardi. Ikkisi bir xil gap emas. */}
-              {usersTruncated || userSearchServer ? (
-                <>Yuklangan ro'yxatda topilmadi 🔍<br /></>
-              ) : (
+              {/* Matn qidiruv QAY DARAJADA bajarilganiga qarab o'zgaradi.
+                  Bu farq muhim: «ro'yxatda yo'q» va «bazada yo'q» bir xil
+                  gap emas, va admin ikkinchisini birinchisidan chiqarib
+                  olmasligi kerak. Uch holat bor:
+                    · ro'yxat to'liq → javob yakuniy;
+                    · bu matn bazadan ham so'ralgan → javob yakuniy;
+                    · hali so'ralmagan (yozilyapti / juda qisqa) → javob
+                      HALI TAYYOR EMAS, shuni ochiq aytamiz. */}
+              {!usersTruncated || serverSearchedRef.current.has(userSearch.trim().toLowerCase()) ? (
                 <>
                   Bazada <strong>«{userSearch}»</strong> bo'yicha hech kim yo'q 🔍<br />
-                  <span style={{ fontSize: 13 }}>Barcha {users.length} ta hisob tekshirildi</span><br />
+                  <span style={{ fontSize: 13 }}>
+                    {usersTruncated ? 'Butun baza qidirildi' : `Barcha ${users.length} ta hisob tekshirildi`}
+                  </span><br />
+                </>
+              ) : (
+                <>
+                  Ro'yxatda topilmadi — bazadan qidirilmoqda… 🔍<br />
+                  <span style={{ fontSize: 13 }}>
+                    {userSearch.trim().length < USER_AUTOSEARCH_MIN
+                      ? `Kamida ${USER_AUTOSEARCH_MIN} ta belgi yozing`
+                      : 'Bir soniya kuting yoki Enter bosing'}
+                  </span><br />
                 </>
               )}
               {/* Fan filtri yoqiqda "Butun bazadan qidirish" chalg'itadi —

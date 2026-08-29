@@ -1,5 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { normalizeSearch, userHaystack, matchesUserSearch } from '../utils/userSearch';
+import {
+  normalizeSearch, userHaystack, matchesUserSearch,
+  buildUserSearchTokens, serverSearchKey, SEARCH_TOKEN_MAX, SEARCH_TOKEN_CAP,
+} from '../utils/userSearch';
 
 // ════════════════════════════════════════════════════════════════════════
 //  Admin panelidagi foydalanuvchi qidiruvi.
@@ -140,5 +143,128 @@ describe('chegaraviy holatlar — qidiruv hech qachon yiqilmasin', () => {
     const hay = userHaystack(omonovAziz);
     expect(hay).toContain('998901234567');
     expect(hay).toContain('901234567');
+  });
+});
+
+// ════════════════════════════════════════════════════════════════════════
+//  SERVER INDEKSI — `searchTokens`
+//
+//  KELIB CHIQISHI (2026-08-29): baza 502 hisobga yetdi, admin paneli esa
+//  eng yangi 500 tasini yuklab, qidiruvni SHU ro'yxat ichida qilardi.
+//  Ya'ni qidiruvning ishonchliligi ro'yxat chegarasiga bog'lanib qolgan
+//  edi — 2 000 hisobda «topilmadi» hech narsani anglatmay qo'yardi.
+//  Endi prefikslar hujjatning o'zida saqlanadi va Firestore
+//  `array-contains` bilan izlaydi.
+//
+//  Pastdagi testlar SHARTNOMANI qo'riqlaydi: yozuvchi tomon
+//  (`buildUserSearchTokens`, AuthContext/ProfileDrawer/SettingsPage) va
+//  o'qiydigan tomon (`serverSearchKey`, AdminPage) bir xil kalitni
+//  hisoblashi SHART. Ular ajralib qolsa qidiruv jimgina 0 natija beradi —
+//  xato ham chiqmaydi, faqat "bunday odam yo'q" degan yolg'on javob.
+// ════════════════════════════════════════════════════════════════════════
+
+/** Hujjat shu matn bo'yicha SERVERDA topiladimi — panelning aynan mantig'i. */
+const serverTopadi = (u, term) => {
+  const key = serverSearchKey(term);
+  if (!key) return false;                               // so'rov yuborilmaydi
+  if (!buildUserSearchTokens(u).includes(key)) return false; // array-contains
+  return matchesUserSearch(u, term);                    // natijani qayta filtrlash
+};
+
+describe('buildUserSearchTokens — ism ichidagi HAR BIR so\'z indekslanadi', () => {
+  // Foydalanuvchi xabaridagi aynan holat: ism birinchi, familiya ikkinchi.
+  const oyxon = { displayName: 'Oyxon Abdulazizova', shortId: 'A0002', email: '998901234567@iqro.uz' };
+
+  it('familiya ikkinchi so\'z bo\'lsa ham u bo\'yicha topiladi', () => {
+    // AVVALGI YECHIM SHU YERDA YIQILARDI: `displayName >= 'abdulaziz'`
+    // prefiks so'rovi faqat BIRINCHI so'zga qaraydi, ya'ni bu odam
+    // «abdulaziz» bo'yicha umuman topilmasdi.
+    expect(serverTopadi(oyxon, 'abdulaziz')).toBe(true);
+  });
+
+  it('ism (birinchi so\'z) bo\'yicha ham topiladi', () => {
+    expect(serverTopadi(oyxon, 'oyxon')).toBe(true);
+  });
+
+  it('to\'liq familiya bo\'yicha topiladi', () => {
+    expect(serverTopadi(oyxon, 'Abdulazizova')).toBe(true);
+  });
+
+  it('ikki so\'zli qidiruv — tartibidan qat\'i nazar', () => {
+    expect(serverTopadi(oyxon, 'abdulazizova oyxon')).toBe(true);
+    expect(serverTopadi(oyxon, 'oyxon abdulazizova')).toBe(true);
+  });
+
+  it('registr ahamiyatsiz', () => {
+    expect(serverTopadi(oyxon, 'ABDULAZIZOVA')).toBe(true);
+    expect(serverTopadi(oyxon, 'aBdUlAz')).toBe(true);
+  });
+
+  it('qisqa ID bo\'yicha topiladi — harfli va harfsiz', () => {
+    expect(serverTopadi(oyxon, 'A0002')).toBe(true);
+    expect(serverTopadi(oyxon, '0002')).toBe(true);
+  });
+
+  it('telefon (soxta email ichidan) bo\'yicha topiladi', () => {
+    expect(serverTopadi(oyxon, '998901234567')).toBe(true);
+  });
+
+  it('BOSHQA odam topilmaydi — soxta-ijobiy bo\'lmasin', () => {
+    expect(serverTopadi(oyxon, 'karimov')).toBe(false);
+    // Ikkinchi so'z mos kelmasa — natija filtrlanib tashlanadi
+    expect(serverTopadi(oyxon, 'abdulazizova sardor')).toBe(false);
+  });
+});
+
+describe('buildUserSearchTokens — apostrof va chala hujjatlar', () => {
+  it('apostrofli familiya apostrofsiz ham topiladi (va aksincha)', () => {
+    const u = { displayName: 'Qoʻraev Sardor' };
+    expect(serverTopadi(u, 'qoraev')).toBe(true);
+    expect(serverTopadi(u, "qo'raev")).toBe(true);
+  });
+
+  it('maydonlari yo\'q hujjat xato bermaydi', () => {
+    expect(() => buildUserSearchTokens({})).not.toThrow();
+    expect(buildUserSearchTokens({})).toEqual([]);
+    expect(buildUserSearchTokens(null)).toEqual([]);
+    expect(buildUserSearchTokens(undefined)).toEqual([]);
+  });
+
+  it('tokenlar takrorlanmaydi va chegaradan oshmaydi', () => {
+    const u = { displayName: 'Abdurahmonov Abdurahmon Abdurahmonovich', shortId: 'ZZ9999', email: 'abdurahmonov@gmail.com' };
+    const t = buildUserSearchTokens(u);
+    expect(new Set(t).size).toBe(t.length);
+    expect(t.length).toBeLessThanOrEqual(SEARCH_TOKEN_CAP);
+  });
+});
+
+describe('serverSearchKey — kvota qo\'riqchisi', () => {
+  it('juda qisqa matn uchun so\'rov YUBORILMAYDI', () => {
+    // Bir harfli so'rov bazadan tasodifiy 30 kishini keltirardi: foyda
+    // yo'q, o'qish esa sarflangan. `null` — "so'rov qilma" signali.
+    expect(serverSearchKey('a')).toBeNull();
+    expect(serverSearchKey('')).toBeNull();
+    expect(serverSearchKey('   ')).toBeNull();
+    expect(serverSearchKey(null)).toBeNull();
+  });
+
+  it('qisqa RAQAM ham so\'rov qilmaydi — «998» butun bazaga mos kelardi', () => {
+    expect(serverSearchKey('99')).toBeNull();
+    expect(serverSearchKey('998')).toBeNull();
+    expect(serverSearchKey('9989')).toBe('9989');
+  });
+
+  it('eng UZUN so\'z tanlanadi — u eng kam natija, ya\'ni eng kam o\'qish', () => {
+    expect(serverSearchKey('oyxon abdulazizova')).toBe('abdulazizova');
+    expect(serverSearchKey('abdulazizova oyxon')).toBe('abdulazizova');
+  });
+
+  it('uzun so\'z token uzunligigacha KESILADI', () => {
+    // Bu ikki tomonning shartnomasi: hujjatdagi eng uzun token ham
+    // SEARCH_TOKEN_MAX. Kesilmasa, uzun familiyalar hech qachon
+    // topilmasdi — va buni hech qanday xato ko'rsatmasdi.
+    const key = serverSearchKey('abdurahmonovich');
+    expect(key).toHaveLength(SEARCH_TOKEN_MAX);
+    expect(buildUserSearchTokens({ displayName: 'Abdurahmonovich Aziz' })).toContain(key);
   });
 });

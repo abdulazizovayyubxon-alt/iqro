@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  deleteUser,
   updateProfile,
   updatePassword,
   setPersistence,
@@ -22,6 +23,10 @@ import {
 import { getPromoCodeFromUrl, savePendingPromoCode } from '../services/promo';
 import { AnalyticsEvents } from '../services/analytics';
 import { ensureShortId } from '../utils/shortId';
+// Admin panelidagi qidiruv `users/{uid}.searchTokens` massiviga tayanadi
+// (utils/userSearch.js). U ISM YOZILADIGAN HAR JOYDA yangilanishi shart —
+// aks holda odam ismini o'zgartirgach admin uni topa olmay qoladi.
+import { buildUserSearchTokens } from '../utils/userSearch';
 import { validatePassword, calculatePasswordStrength } from '../utils/passwordPolicy';
 
 // Synchronously capture and save the referral code on script load
@@ -124,6 +129,67 @@ const phoneToEmail = (phone) => {
   const clean = phone.replace(/\D/g, '');
   return `${clean}@iqro.uz`;
 };
+
+// Ichki email'dan telefon raqamni QAYTARIB olish. Auth yozuvi har doim
+// `998XXXXXXXXX@iqro.uz` ko'rinishida, ya'ni hujjatda `phone` yo'qolib qolsa
+// ham uni tiklash mumkin — admin qidiruvi shu maydonga tayanadi.
+const emailToPhone = (email) => {
+  const local = String(email || '').split('@')[0];
+  return /^998\d{9}$/.test(local) ? local : null;
+};
+
+// ────────────────────────────────────────────────────────
+// TARMOQ KUTISH CHEGARASI — `withTimeout`
+//
+// ⚠️ 2026-08-29 TASHXISI — nega bu kerak:
+//   `src/firebase.js` da kesh XOTIRADA (`memoryLocalCache`). Bunday sozlamada
+//   `setDoc`/`getDoc` promise'i FAQAT server tasdig'idan keyin yopiladi. Aloqa
+//   bir soniyaga uzilsa yoki kunlik yozuv kvotasi tugasa, promise **xato ham
+//   bermaydi, tugamaydi ham** — abadiy osilib qoladi.
+//
+//   Oqibati foydalanuvchiga ko'rinardi: ro'yxatdan o'tishda Auth hisobi
+//   ALLAQACHON yaratilgan bo'lardi, tugma esa «Iltimos, kuting...» holatida
+//   qotib qolardi. Odam ilovani yopib qayta urinsa —
+//   `auth/email-already-in-use` → «Bu raqam allaqachon ro'yxatdan o'tgan,
+//   parolingizni kiriting». Ro'yxatdan o'tib ulgurmagan odamdan parol
+//   so'ralardi; 502 hisobning 35 tasi (7%, oxirgi kunlarda 27-40%) aynan shu
+//   yo'l bilan yarim yaratilgan edi.
+//
+//   Shuning uchun auth oqimidagi HAR BIR Firestore chaqiruvi shu qobiq bilan
+//   o'raladi: cheksiz kutish o'rniga aniq xato → tushunarli xabar → qayta urinish.
+// ────────────────────────────────────────────────────────
+// O'QISH uchun chegara. O'qish yiqilsa hech narsa buzilmaydi — standart
+// qiymatlar bilan davom etamiz, shuning uchun qisqaroq.
+const NET_TIMEOUT_MS = 12000;
+
+// RO'YXATDAN O'TISHDAGI YOZUV uchun chegara — ataylab UZUNROQ.
+// Bu yerda chegaraning oshib ketishi hisobni O'CHIRISHGA olib keladi, ya'ni
+// xato "ijobiy" bo'lsa (yozuv aslida serverga yetgan-u, tasdiq kechikkan
+// bo'lsa) odam ro'yxatdan o'tolmay qoladi. Sekin 3G'da ham yetsin deb 20 s.
+const WRITE_TIMEOUT_MS = 20000;
+
+const withTimeout = (promise, ms = NET_TIMEOUT_MS) => {
+  let timer;
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      timer = setTimeout(() => {
+        const err = new Error('network-timeout');
+        err.code = 'app/network-timeout';
+        reject(err);
+      }, ms);
+    }),
+  ]).finally(() => clearTimeout(timer));
+};
+
+// Ro'yxatdan o'tish JARAYONDA ekanini bildiruvchi bayroq.
+//
+// `createUserWithEmailAndPassword` darhol `onAuthStateChanged`ni uyg'otadi va
+// u hujjat yo'qligini ko'rib O'ZI yarim profil yaratardi (telefon, jinsi,
+// tug'ilgan sana YO'Q) — ro'yxat oqimi to'liq hujjatni yozib ulgurmasdan.
+// Bayroq shu poygani to'xtatadi: registratsiya tugaguncha tinglovchi hujjat
+// yaratmaydi.
+let registrationInFlight = false;
 
 // ────────────────────────────────────────────────────────
 // Parol validatsiyasi — entropiya asosida
@@ -262,10 +328,12 @@ export const AuthProvider = ({ children }) => {
 
       try {
         let trialInfo = { status: 'expired', daysLeft: 0, urgencyMs: 0 };
+        // Profil o'qilmay qolgani (tarmoq/kvota) — quyida keshga qaytish sharti
+        let profileLoadFailed = false;
         if (firebaseUser) {
           try {
             const userRef = doc(db, 'users', firebaseUser.uid);
-            const userSnap = await getDoc(userRef);
+            const userSnap = await withTimeout(getDoc(userRef));
             if (userSnap.exists()) {
               const data = userSnap.data();
               setUserDoc(data);
@@ -320,21 +388,39 @@ export const AuthProvider = ({ children }) => {
                 trialInfo.hasReferralDiscount = false;
                 trialInfo.discountPercent = 0;
               }
+            } else if (registrationInFlight) {
+              // Ro'yxatdan o'tish AYNI SHU DAQIQADA to'liq hujjatni yozmoqda —
+              // bu yerda yarim nusxa yaratilsa, u to'liq yozuv bilan poygaga
+              // kirib telefon/jinsi/tug'ilgan sanasiz hujjat qoldirardi.
+              trialInfo = { status: 'trial', daysLeft: FREE_TRIAL_DAYS, urgencyMs: 0 };
+              isPremium = true;
             } else {
+              // ── Zaxira profil ──
+              // Bu yo'lga tushish O'ZI nosozlik belgisi: hisob Auth'da bor,
+              // hujjat esa yo'q (ro'yxat oqimidagi yozuv yiqilgan). Shuning
+              // uchun `phone` EMAILDAN tiklanadi — busiz admin bu odamni
+              // raqami bo'yicha topa olmasdi (35 ta yarim hisob shunday edi).
+              const healedName = firebaseUser.displayName || firebaseUser.email?.split('@')[0];
+              const healedPhone = emailToPhone(firebaseUser.email);
               await setDoc(userRef, {
                 uid: firebaseUser.uid,
                 email: firebaseUser.email,
-                displayName: firebaseUser.displayName || firebaseUser.email?.split('@')[0],
+                displayName: healedName,
+                ...(healedPhone ? { phone: healedPhone } : {}),
                 photoURL: firebaseUser.photoURL || null,
                 role: 'user',
                 isPremium: false,
                 createdAt: new Date(),
+                searchTokens: buildUserSearchTokens({
+                  displayName: healedName,
+                  email: firebaseUser.email,
+                }),
               }, { merge: true }).catch(e => console.warn('Yangi profil yaratishda xato:', e));
 
               const refApplied = await applyReferralAfterRegister(
                 firebaseUser.uid,
-                firebaseUser.displayName || firebaseUser.email?.split('@')[0]
-              );
+                healedName
+              ).catch(e => { console.warn('Referral ulashda xato:', e); return false; });
               if (refApplied) {
                 // Referral orqali kelgan B ga "Tabriklaymiz!" ko'rsatish uchun flag
                 localStorage.setItem('iqro_referral_welcome', 'true');
@@ -356,6 +442,34 @@ export const AuthProvider = ({ children }) => {
             }
           } catch (firestoreErr) {
             console.warn('Firestore profil yuklashda xato:', firestoreErr.message);
+            profileLoadFailed = true;
+            // Tarmoq/kvota yiqilganda odam PREMIUMDAN AYRILMASIN va roli
+            // yo'qolmasin: oxirgi muvaffaqiyatli seansdagi qiymatlarni olamiz.
+            // (Avval bu holatda hammasi standart qiymatga tushib, keshga ham
+            // shu holda yozilardi — ya'ni nosozlik keyingi ochilishlarga ham
+            // ko'chib o'tardi.)
+            try {
+              const cached = JSON.parse(localStorage.getItem('iqro_cached_user') || 'null');
+              if (cached && cached.uid === firebaseUser.uid) {
+                isPremium = cached.isPremium || false;
+                isTruePremium = cached.isTruePremium || false;
+                role = cached.role || 'user';
+                avatarId = cached.avatarId ?? null;
+                shortId = cached.shortId ?? null;
+                schoolId = cached.schoolId ?? null;
+                subject = cached.subject ?? null;
+                partnerCode = cached.partnerCode ?? null;
+                groupCode = cached.groupCode ?? null;
+                premiumExpire = cached.premiumExpire ?? null;
+                trialInfo = {
+                  status: cached.trialStatus || 'expired',
+                  daysLeft: cached.trialDaysLeft || 0,
+                  urgencyMs: cached.urgencyMs || 0,
+                  hasReferralDiscount: cached.hasReferralDiscount || false,
+                  discountPercent: cached.discountPercent || 0,
+                };
+              }
+            } catch (e) { console.warn('Keshdan tiklashda xato:', e); }
           }
 
           const enhancedUser = {
@@ -381,8 +495,10 @@ export const AuthProvider = ({ children }) => {
             _firebaseUser: firebaseUser
           };
 
-          // Cache for instant load next time
-          localStorage.setItem('iqro_cached_user', JSON.stringify({
+          // Cache for instant load next time.
+          // Profil O'QILMAY qolgan bo'lsa keshga TEGMAYMIZ: aks holda
+          // bir martalik tarmoq uzilishi eski to'g'ri nusxani ham buzardi.
+          if (!profileLoadFailed) localStorage.setItem('iqro_cached_user', JSON.stringify({
             uid: firebaseUser.uid,
             email: firebaseUser.email,
             displayName: firebaseUser.displayName,
@@ -554,30 +670,65 @@ export const AuthProvider = ({ children }) => {
       
       // Yangi foydalanuvchi bo'lsa (Ro'yxatdan o'tish)
       if (isRegistering) {
+        // Bayroq shu funksiyadan CHIQISHDA tozalanadi: quyidagi ikki `return`
+        // va pastdagi umumiy `catch` — boshqa yo'l yo'q.
+        registrationInFlight = true;
         const userCred = await createUserWithEmailAndPassword(auth, internalEmail, password);
-        await updateProfile(userCred.user, { displayName: name });
 
-        await setDoc(doc(db, 'users', userCred.user.uid), {
-          uid: userCred.user.uid,
-          email: internalEmail,
-          phone: cleanPhone,
-          displayName: name,
-          gender,
-          birthDate,
-          role: 'user',
-          isPremium: false,
-          createdAt: new Date(),
-        }, { merge: true });
+        // ══════════════════════════════════════════════════════════════════
+        //  PROFIL YOZUVI + ORQAGA QAYTARISH (rollback)
+        //
+        //  ⚠️ Shu qatordan boshlab telefon raqam BAND: Auth yozuvi mavjud.
+        //  Ilgari keyingi `setDoc` yiqilsa (yoki `memoryLocalCache` sababli
+        //  abadiy osilib qolsa) hisob o'sha bandligicha qolardi va foydalanuvchi
+        //  ilovaga KIRA OLMASDAN raqamini kuydirib qo'yardi. Qayta urinsa
+        //  `auth/email-already-in-use` → «Bu raqam allaqachon ro'yxatdan
+        //  o'tgan, parolingizni kiriting» — hech qachon ro'yxatdan o'tmagan
+        //  odamdan parol so'ralardi. Telegram'ga kelayotgan «Parol» xabarlari
+        //  shundan edi (2026-08-29 tashxisi).
+        //
+        //  Endi profil yozilmasa, Auth hisobi SHU YERDA o'chiriladi: raqam
+        //  bo'shaydi va odam oddiygina qaytadan urinadi.
+        // ══════════════════════════════════════════════════════════════════
+        try {
+          await updateProfile(userCred.user, { displayName: name });
 
-        // Qisqa ID — hujjat yaratilgandan KEYIN (server hujjatni o'qiydi).
-        // ensureShortId ichida uid bo'yicha dedupe bor, shuning uchun shu payt
-        // parallel ishlayotgan onAuthStateChanged tinglovchisi bilan ikki marta
-        // so'ralmaydi. Adminga bildirishnomadan oldin turadi — api/notify-admin.js
-        // xabarda shu ID'ni ko'rsatadi.
+          await withTimeout(setDoc(doc(db, 'users', userCred.user.uid), {
+            uid: userCred.user.uid,
+            email: internalEmail,
+            phone: cleanPhone,
+            displayName: name,
+            gender,
+            birthDate,
+            role: 'user',
+            isPremium: false,
+            createdAt: new Date(),
+            // Admin qidiruvi indeksi. QO'SHIMCHA YOZUV EMAS — shu hujjatning
+            // ichida ketadi. `shortId` bu yerda hali yo'q (u pastda beriladi),
+            // lekin ID bo'yicha qidiruv tenglik so'rovi bilan ham ishlaydi.
+            searchTokens: buildUserSearchTokens({ displayName: name, email: internalEmail }),
+          }, { merge: true }), WRITE_TIMEOUT_MS);
+        } catch (writeErr) {
+          console.error('Profil yozilmadi — hisob orqaga qaytarilmoqda:', writeErr);
+          const rolledBack = await deleteUser(userCred.user)
+            .then(() => true)
+            .catch(e => { console.warn("Hisobni o'chirib bo'lmadi:", e); return false; });
+          setAuthError(rolledBack
+            ? "Aloqa uzildi va hisob yaratilmadi. Internetni tekshirib, qaytadan urinib ko'ring."
+            : "Aloqa uzildi. Internetni tekshiring va ilovani qayta oching — hisobingiz yaratilgan bo'lishi mumkin.");
+          registrationInFlight = false;
+          return { success: false, retryable: true, rolledBack };
+        }
+
+        // ── Shu nuqtadan keyingi qadamlar MAJBURIY EMAS ──
+        // Hisob ham, profil ham joyida. Qolgani (qisqa ID, referral, adminga
+        // xabar) yiqilsa ham foydalanuvchi ilovaga kirishi kerak — shuning
+        // uchun har biri alohida `catch` bilan.
         const shortId = await ensureShortId(userCred.user)
           .catch(e => { console.warn('ShortId berishda xato:', e); return null; });
 
-        const referralApplied = await applyReferralAfterRegister(userCred.user.uid, name);
+        const referralApplied = await applyReferralAfterRegister(userCred.user.uid, name)
+          .catch(e => { console.warn('Referral ulashda xato:', e); return false; });
         if (referralApplied) {
           localStorage.setItem('iqro_referral_welcome', 'true');
         }
@@ -610,22 +761,46 @@ export const AuthProvider = ({ children }) => {
           _firebaseUser: userCred.user
         });
         AnalyticsEvents.register('phone');
+        registrationInFlight = false;
         return { success: true };
       }
       
       // Kirish muvaffaqiyatli — brute-force hisoblagichni tozalaymiz
       resetLoginAttempts();
 
-      // Profilni yangilaymiz
+      // Profilni yangilaymiz.
+      //
+      // ⚠️ Bu qadam KIRISHNI TO'XTATMASLIGI kerak: parol allaqachon to'g'ri
+      // tekshirildi, seans ochilgan. Ilgari bu yerdagi `getDoc` oflaynda
+      // abadiy osilib qolardi (memoryLocalCache) va tugma «Iltimos, kuting...»
+      // holatida qotardi — go'yo parol noto'g'riday. Endi chegara bor, xato
+      // bo'lsa ham davom etamiz: to'liq profilni `onAuthStateChanged` keltiradi.
       let isPremium = false;
+      let userSnap = null;
       const userRef = doc(db, 'users', auth.currentUser.uid);
-      const userSnap = await getDoc(userRef);
-      if (userSnap.exists()) isPremium = userSnap.data().isPremium || false;
+      try {
+        userSnap = await withTimeout(getDoc(userRef));
+        if (userSnap.exists()) isPremium = userSnap.data().isPremium || false;
+      } catch (e) {
+        console.warn('Kirishda profil o\'qilmadi:', e.message);
+      }
 
       // Agar ism o'zgargan bo'lsa — yangilaymiz
-      if (auth.currentUser && name && auth.currentUser.displayName !== name) {
+      if (userSnap && auth.currentUser && name && auth.currentUser.displayName !== name) {
         await updateProfile(auth.currentUser, { displayName: name });
-        await setDoc(userRef, { displayName: name }, { merge: true });
+        // ⚠️ `searchTokens` BUTUNLAY qayta quriladi, `arrayUnion` emas: eski
+        // ism prefikslari qolib ketsa, admin allaqachon o'zgartirilgan
+        // familiya bo'yicha odamni topib, uni hozirgi ism deb o'ylardi.
+        // Shuning uchun manba — hujjatdagi HOZIRGI qiymatlar + yangi ism.
+        const prev = userSnap.exists() ? userSnap.data() : {};
+        await setDoc(userRef, {
+          displayName: name,
+          searchTokens: buildUserSearchTokens({
+            displayName: name,
+            email: prev.email || auth.currentUser.email,
+            shortId: prev.shortId,
+          }),
+        }, { merge: true });
       }
 
       const currentFbUser = auth.currentUser;
@@ -641,8 +816,12 @@ export const AuthProvider = ({ children }) => {
       return { success: true };
     } catch (err) {
       console.warn("signInWithPhone xatosi:", err.code, err.message);
+      // Ro'yxat oqimi yarim yo'lda uzilgan bo'lishi mumkin — bayroq
+      // osilib qolmasin, aks holda `onAuthStateChanged` keyingi seansda ham
+      // zaxira profil yaratmay qo'yardi.
+      registrationInFlight = false;
 
-      const isAuthWrong = 
+      const isAuthWrong =
         err.code === 'auth/user-not-found' ||
         err.code === 'auth/invalid-credential' ||
         err.code === 'auth/invalid-login-credentials' ||
@@ -669,14 +848,18 @@ export const AuthProvider = ({ children }) => {
       }
 
       // Tarmoq xatoligi
-      if (err.code === 'auth/network-request-failed') {
-        setAuthError("Internet aloqasi yo'q. Iltimos, tarmoqni tekshiring.");
-        return { success: false };
+      if (err.code === 'auth/network-request-failed' || err.code === 'app/network-timeout') {
+        setAuthError("Internet aloqasi yo'q yoki juda sekin. Tarmoqni tekshirib, qaytadan urinib ko'ring.");
+        return { success: false, retryable: true };
       }
 
-      // Agar email band bo'lsa (Ro'yxatdan o'tayotganda)
+      // Agar email band bo'lsa (Ro'yxatdan o'tayotganda).
+      // Xabar matni ATAYLAB «parolingizni kiriting» DEMAYDI: bu yerga
+      // ro'yxatdan o'tishga URINAYOTGAN odam tushadi, ya'ni u o'zini yangi
+      // deb biladi. Unga buyruq emas, TANLOV beriladi — parolni bilsa kiradi,
+      // bilmasa tiklaydi (LoginPage'da «Parolni unutdingizmi?» ochiladi).
       if (err.code === 'auth/email-already-in-use') {
-        setAuthError("Bu telefon raqam allaqachon ro'yxatdan o'tgan. Iltimos, tizimga kiring.");
+        setAuthError("Bu raqamda hisob allaqachon mavjud.");
         return { success: false, hasCustomPassword: true };
       }
 
@@ -686,11 +869,14 @@ export const AuthProvider = ({ children }) => {
         return { success: false };
       }
 
-      // Boshqa xatoliklar
+      // Boshqa xatoliklar.
+      // Texnik matn (`err.message`) EKRANGA CHIQARILMAYDI: foydalanuvchi uni
+      // baribir tushunmaydi, aksincha "ilova buzildi" degan taassurot beradi.
+      // Tafsilot konsolda va kuzatuv jurnalida qoladi.
       recordFailedAttempt();
       console.error("Kirish xatosi:", err);
-      setAuthError(`Xatolik yuz berdi: ${err.message || err.toString()}`);
-      return { success: false };
+      setAuthError("Kutilmagan xatolik. Qaytadan urinib ko'ring — muammo takrorlansa, @zehinuz ga yozing.");
+      return { success: false, retryable: true };
     }
   };
 

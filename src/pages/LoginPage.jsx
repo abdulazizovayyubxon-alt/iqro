@@ -105,6 +105,7 @@ export default function LoginPage() {
   // Login ↔ Register rejimini almashtirish (AUTH ekranidagi havola)
   const switchAuthMode = (mode) => {
     setAuthError('');
+    setForgotOpen(false);
     setAuthMode(mode);
   };
 
@@ -131,8 +132,16 @@ export default function LoginPage() {
       try {
         const res = await signInWithPhone(name, phone, password, true, '', '');
         if (res && !res.success && res.hasCustomPassword) {
-          // Bu raqam allaqachon ro'yxatdan o'tgan — kirish rejimiga o'tamiz
+          // Bu raqam allaqachon ro'yxatdan o'tgan — kirish rejimiga o'tamiz.
+          //
+          // ⚠️ Bu yerga RO'YXATDAN O'TMOQCHI bo'lgan odam tushadi, ya'ni u
+          // o'zini yangi deb biladi. Unga quruq «parolingizni kiriting» desak,
+          // u nima qilishni bilmay direktga «Parol» deb yozadi — muammoning
+          // o'zi shundan boshlangan. Shuning uchun tiklash yo'li DARHOL,
+          // qo'shimcha bosishsiz ochiladi: parolini bilsa yuqoridan kiritadi,
+          // bilmasa pastdagi ko'rsatma bo'yicha tiklaydi.
           setAuthMode('login');
+          setForgotOpen(true);
           setAuthError(t('login.errAlreadyReg'));
         }
       } catch (e) {
@@ -152,6 +161,7 @@ export default function LoginPage() {
       if (res && !res.success && res.notRegistered) {
         // Bu raqam hali ro'yxatdan o'tmagan — ro'yxat rejimiga o'tamiz
         setAuthMode('register');
+        setForgotOpen(false);
         setAuthError(t('login.errNotReg'));
       }
     } catch (e) {
@@ -164,7 +174,7 @@ export default function LoginPage() {
 
   const handleBack = () => {
     setAuthError('');
-    setForgotHint('');
+    setForgotOpen(false);
     if (step === STEPS.AUTH) {
       setStep(STEPS.PHONE);
       setAuthMode('login');
@@ -175,22 +185,26 @@ export default function LoginPage() {
   // Foydalanuvchi parolini O'ZI tiklay olmaydi: Firebase Auth emaili soxta
   // (`<telefon>@iqro.uz` — AuthContext.jsx `phoneToEmail`), demak tiklash xati
   // boradigan pochta qutisi yo'q. Yagona yo'l — admin vaqtinchalik parol beradi
-  // (admin paneli → foydalanuvchi ⋮ → «Parolni tiklash»). Shuning uchun tugma
-  // odamni to'g'ridan-to'g'ri o'sha chatga olib boradi.
+  // (admin paneli → foydalanuvchi ⋮ → «Parolni tiklash»).
   //
-  // Tugma emas, HAQIQIY `<a href>`: Play ilovasi (TWA) ichida `window.open`
-  // ba'zan jimgina bloklanadi, havola esa tizim orqali Telegram ilovasini
-  // ochadi.
+  // ⚠️ 2026-08-29 — NEGA IKKI QADAM:
+  // Ilgari bu bitta `<a>` edi: bosilishi bilan Telegram OCHILARDI, ko'rsatma
+  // esa ilova ekranida qolib ketardi. Odam Telegramda bo'sh chat oldida turib,
+  // nima yozishni bilmay, tugmada o'qigan yagona so'zni yozardi — «Parol».
+  // Direktga aynan shunday xabarlar oqimi shundan edi.
   //
-  // Chat matnini OLDINDAN to'ldirib bo'lmaydi — `t.me` da DM uchun bunday
-  // parametr yo'q (`?text=` faqat `t.me/share/url` bilan ishlaydi va u chat
-  // TANLAGICHINI ochadi, bizning chatimizni emas). Shuning uchun nima yozish
-  // kerakligi ekranda qoladi: odam Telegramdan qaytganda ko'rsatma joyida turadi.
-  const [forgotHint, setForgotHint] = useState('');
+  // Endi birinchi bosishda EKRANDA ko'rsatma va o'z raqami chiqadi, Telegram
+  // esa ikkinchi, ataylab bosiladigan qadam. Chat matnini oldindan to'ldirib
+  // bo'lmaydi — `t.me` da DM uchun bunday parametr yo'q (`?text=` faqat
+  // `t.me/share/url` bilan ishlaydi va u chat TANLAGICHINI ochadi).
+  //
+  // Telegramga o'tish tugma emas, HAQIQIY `<a href>`: Play ilovasi (TWA)
+  // ichida `window.open` ba'zan jimgina bloklanadi.
+  const [forgotOpen, setForgotOpen] = useState(false);
 
   const handleForgotPassword = () => {
     setAuthError('');
-    setForgotHint(t('login.forgotPasswordHint'));
+    setForgotOpen(true);
   };
 
   const progressMap = {
@@ -224,21 +238,24 @@ export default function LoginPage() {
             <div style={{ width: 36 }} />
           </div>
 
-        {/* Content */}
+        {/* ── Content ──
+            ⚠️ 2026-08-29 — BU YERDA `AnimatePresence mode="wait"` BO'LMASIN.
+            Bosqichlar (PHONE → CHECKING → AUTH) shu qobiq bilan almashardi,
+            `mode="wait"` esa YANGI bolani faqat ESKISINING chiqish animatsiyasi
+            TUGAGACH ulaydi. Animatsiya `requestAnimationFrame`ga tayanadi:
+            brauzer tabi fonga o'tsa yoki telefon sekin bo'lsa, rAF to'xtaydi —
+            chiqish hech qachon tugamaydi va ekran RAQAM bosqichida QOTIB
+            qoladi, pastdagi tugma esa allaqachon «Kirish»/«Hisob yaratish»
+            deb turadi va hech narsa qilmaydi. Sinovda 100% takrorlandi.
+            Endi bosqichlar oddiy shart bilan almashadi — animatsiyasiz, lekin
+            HAR DOIM ishlaydi. */}
         <div style={s.content}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={step}
-              initial={{ opacity: 0, x: 24 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -24 }}
-              transition={{ duration: 0.22 }}
-            >
+          <div>
 
               {/* ── STEP: PHONE ── */}
               {step === STEPS.PHONE && (
                 <>
-                  <div style={{ marginBottom: 32, minHeight: 80, display: 'flex', alignItems: 'center' }}>
+                  <div style={{ marginBottom: 24, minHeight: 80, display: 'flex', alignItems: 'center' }}>
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={featureIdx}
@@ -258,6 +275,11 @@ export default function LoginPage() {
                       </motion.div>
                     </AnimatePresence>
                   </div>
+                  {/* Ko'rsatma — ilgari bu ekranda UMUMAN matn yo'q edi: faqat
+                      aylanuvchi reklama va yalang'och `+998`. Yangi odam nima
+                      bo'layotganini (hisob YARATILISHINI va parolni O'ZI o'ylab
+                      topishini) bilmasdi. */}
+                  <label htmlFor="login-phone-input" style={s.fieldLabel}>{t('login.phoneTitle')}</label>
                   <div style={s.phoneWrap}>
                     <input
                       id="login-phone-input"
@@ -269,6 +291,7 @@ export default function LoginPage() {
                       onKeyDown={e => e.key === 'Enter' && handlePhoneNext()}
                     />
                   </div>
+                  <p style={s.phoneHelp}>{t('login.phoneSubtitle')}</p>
                 </>
               )}
 
@@ -300,7 +323,7 @@ export default function LoginPage() {
                       type={showPass ? 'text' : 'password'}
                       placeholder={t('login.passwordPlaceholder')}
                       value={password}
-                      onChange={e => { setAuthError(''); setForgotHint(''); setPassword(e.target.value); }}
+                      onChange={e => { setAuthError(''); setPassword(e.target.value); }}
                       autoFocus
                       onKeyDown={e => e.key === 'Enter' && handleContinue()}
                     />
@@ -308,23 +331,27 @@ export default function LoginPage() {
                       {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
                     </button>
                   </div>
-                  <a
-                    href={SUPPORT_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={s.forgotBtn}
-                    onClick={handleForgotPassword}
-                  >
-                    {t('login.forgot')}
-                  </a>
 
-                  {forgotHint && (
-                    <motion.p
-                      initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}
-                      style={s.forgotHint}
-                    >
-                      {forgotHint}
-                    </motion.p>
+                  {!forgotOpen ? (
+                    <button type="button" style={s.forgotBtn} onClick={handleForgotPassword}>
+                      {t('login.forgot')}
+                    </button>
+                  ) : (
+                    <div style={s.forgotPanel}>
+                      <p style={s.forgotHint}>{t('login.forgotStep1')}</p>
+                      {/* Raqam KO'RINIB turadi: odam Telegramda aynan shuni
+                          yuborishi kerak, yodlab olishi shart emas. */}
+                      <div style={s.forgotPhone}>{phone}</div>
+                      <a
+                        href={SUPPORT_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={s.telegramBtn}
+                      >
+                        {t('login.forgotOpenTelegram')}
+                      </a>
+                      <p style={s.forgotNote}>{t('login.forgotStep2')}</p>
+                    </div>
                   )}
 
                   {/* Yangi foydalanuvchi uchun havola */}
@@ -373,6 +400,11 @@ export default function LoginPage() {
                           {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
                         </button>
                       </div>
+                      {/* Ogohlantirish, chunki parolni TIKLASH avtomatik emas:
+                          email soxta, SMS yo'q — unutilsa faqat admin qo'lda
+                          beradi. Odam buni parol o'ylab topayotgan PAYTIDA
+                          bilishi kerak, unutgandan keyin emas. */}
+                      <p style={s.passwordNote}>{t('login.passwordRemember')}</p>
                     </div>
                   </div>
 
@@ -388,17 +420,13 @@ export default function LoginPage() {
 
               {/* Error */}
               {authError && (
-                <motion.div
-                  initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}
-                  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}
-                >
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
                   <p style={s.errorText}>
                     {authError}
                   </p>
-                </motion.div>
+                </div>
               )}
-            </motion.div>
-          </AnimatePresence>
+          </div>
         </div>
 
         {/* Footer */}
@@ -508,8 +536,33 @@ const getStyles = (isMobile) => ({
   // Ko'rsatma — XATO EMAS, shuning uchun qizil `errorText` ishlatilmaydi:
   // yordam so'ragan odamga qizil matn "nimadir buzildi" deb ko'rinadi.
   forgotHint: {
-    marginTop: 2, marginBottom: 0, fontSize: 'var(--fs-md)',
-    color: 'var(--text3)', lineHeight: 1.5, fontWeight: 500,
+    marginTop: 0, marginBottom: 10, fontSize: 'var(--fs-md)',
+    color: 'var(--text2)', lineHeight: 1.5, fontWeight: 500,
+  },
+  // Tiklash paneli — Telegramga o'tishdan OLDIN ko'rinadigan qadam.
+  forgotPanel: {
+    marginTop: 10, padding: '14px 16px',
+    background: 'var(--bg3)', border: '1px solid var(--border)',
+    borderRadius: 16,
+  },
+  // Foydalanuvchi Telegramga aynan shu raqamni yuborishi kerak — shuning
+  // uchun u ko'chirib olsa bo'ladigan darajada yirik va ajratilgan.
+  forgotPhone: {
+    fontSize: 'var(--fs-3xl)', fontWeight: 800, color: 'var(--text)',
+    letterSpacing: 0.5, marginBottom: 12, userSelect: 'all',
+  },
+  forgotNote: {
+    marginTop: 10, marginBottom: 0, fontSize: 'var(--fs-sm)',
+    color: 'var(--text3)', lineHeight: 1.5,
+  },
+  // Raqam maydoni ostidagi tushuntirish — yangi odam uchun asosiy ko'rsatma.
+  phoneHelp: {
+    marginTop: 10, marginBottom: 0, fontSize: 'var(--fs-md)',
+    color: 'var(--text3)', lineHeight: 1.5,
+  },
+  passwordNote: {
+    marginTop: 8, marginBottom: 0, fontSize: 'var(--fs-sm)',
+    color: 'var(--text3)', lineHeight: 1.45,
   },
   errorText: { marginTop: 10, fontSize: 'var(--fs-md)', color: 'var(--red)', fontWeight: 500 },
   footer: { 
@@ -539,14 +592,16 @@ const getStyles = (isMobile) => ({
     marginBottom: isMobile ? 0 : 10, transition: 'all 0.2s',
     boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
   },
-  // Telegram — ikkinchi darajali, lekin azure rangi bilan sezilarli
+  // Telegram — ikkinchi darajali, lekin azure rangi bilan sezilarli.
+  // `<a>` sifatida ishlatiladi (TWA'da `window.open` bloklanishi mumkin),
+  // shuning uchun havola tagchizig'i o'chiriladi.
   telegramBtn: {
     width: '100%', padding: '15px', borderRadius: 16,
     border: '1.5px solid var(--accent)', background: 'var(--blue-bg)',
     color: 'var(--accent2)', fontWeight: 700, fontSize: 'var(--fs-lg)',
-    cursor: 'pointer', fontFamily: 'inherit',
+    cursor: 'pointer', fontFamily: 'inherit', textDecoration: 'none',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-    transition: 'all 0.2s',
+    transition: 'all 0.2s', boxSizing: 'border-box',
   },
   // ── AUTH step styles ──
   fieldLabel: {

@@ -10,8 +10,8 @@
  */
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Moon, Sun, BookOpen, Type, Edit3, LogOut, ChevronRight, Shield, Download, Brain, KeyRound, Crown, FileText, Bell, Languages, MessageCircle, Info, Trash2, Smartphone, Activity, AlertCircle, CalendarDays, CalendarClock } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowLeft, Moon, Sun, BookOpen, BookMarked, Type, Edit3, LogOut, ChevronRight, ArrowUpRight, Shield, Download, Brain, KeyRound, Crown, Receipt, FileText, Bell, Languages, MessageCircle, Info, Trash2, Smartphone, Activity, AlertCircle, CalendarDays, CalendarClock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { AppContext } from '../context/AppContext';
@@ -23,6 +23,7 @@ import { updateProfile, reauthenticateWithCredential, EmailAuthProvider } from '
 import { APP_VERSION, SUPPORT_URL } from '../config';
 import { enablePush, pushPermission } from '../services/push';
 import { isCountdownEnabled, COUNTDOWN_KEY, COUNTDOWN_EVENT } from '../utils/examDate';
+import { buildUserSearchTokens } from '../utils/userSearch';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
 import EditProfileModal from '../components/profile/EditProfileModal';
 import PasswordModal from '../components/profile/PasswordModal';
@@ -62,13 +63,22 @@ function RowText({ label, sublabel, labelTone, sublabelTone }) {
   );
 }
 
-/** Bosiladigan qator — o'ngida strelka yoki ixtiyoriy element */
-function ActionRow({ icon, tone, label, sublabel, labelTone, sublabelTone, right, danger, onClick, disabled }) {
+/**
+ * Bosiladigan qator — o'ngida belgi yoki ixtiyoriy element.
+ *
+ * `external` — qator BOSHQA SAHIFAGA olib boradi (sozlamalardan chiqasiz).
+ * Ilgari hamma qatorda bir xil `›` turardi: "Aqlli takrorlash" kichik oyna
+ * ochardi, "Tahlil" esa butun sahifani almashtirardi — natija boshqa bo'lsa
+ * ham belgi bir xil edi, shu sabab biri "chala ochilgandek" tuyulardi.
+ * Endi: `›` = shu yerda oyna ochiladi, `↗` = sahifadan chiqasiz.
+ */
+function ActionRow({ icon, tone, label, sublabel, labelTone, sublabelTone, right, danger, external, onClick, disabled }) {
+  const Arrow = external ? ArrowUpRight : ChevronRight;
   return (
     <button className={`pp-menu-item${danger ? ' danger' : ''}`} onClick={onClick} disabled={disabled}>
       <RowIcon tone={tone}>{icon}</RowIcon>
       <RowText label={label} sublabel={sublabel} labelTone={labelTone} sublabelTone={sublabelTone} />
-      {right ?? <ChevronRight size={18} className="pp-menu-arrow" />}
+      {right ?? <Arrow size={18} className={`pp-menu-arrow${external ? ' is-external' : ''}`} />}
     </button>
   );
 }
@@ -234,7 +244,9 @@ export default function SettingsPage({ theme, toggleTheme }) {
     localStorage.setItem(COUNTDOWN_KEY, next ? 'on' : 'off');
     // Ayni tabda `storage` hodisasi otilmaydi — sanoqni o'zimiz xabardor qilamiz
     window.dispatchEvent(new Event(COUNTDOWN_EVENT));
-    showToast(next ? t('settings.vibrationOn') : t('settings.vibrationOff'), 'success');
+    // 2026-08-29: ilgari bu yerda VIBRATSIYA kalitlari turardi — sanoq
+    // o'chirilganda boshqa sozlamaning matni chiqardi.
+    showToast(next ? t('settings.countdownOn') : t('settings.countdownOff'), 'success');
   };
 
   // Vibratsiya sozlamasi — splash animatsiyada telefon vibratsiyasi
@@ -292,6 +304,12 @@ export default function SettingsPage({ theme, toggleTheme }) {
         birthDate: editForm.birthDate || '',
         subject: editForm.subject || '',
         teacherCategory: editForm.teacherCategory || '',
+        // Admin qidiruvi indeksi (utils/userSearch.js) — ism o'zgargan
+        // joyda U HAM o'zgarishi shart, aks holda admin odamni eski
+        // familiyasi bo'yicha topib, yangisi bo'yicha topa olmaydi.
+        searchTokens: buildUserSearchTokens({
+          displayName, email: userDoc?.email || user.email, shortId: userDoc?.shortId,
+        }),
       }, { merge: true });
       if (displayName && auth.currentUser) {
         try { await updateProfile(auth.currentUser, { displayName }); } catch (e) { console.warn('updateProfile:', e); }
@@ -453,14 +471,8 @@ export default function SettingsPage({ theme, toggleTheme }) {
               checked={countdownOn}
               onToggle={toggleCountdown}
             />
-
-            <SwitchRow
-              icon={<Smartphone size={20} />}
-              label={t('settings.vibration')}
-              sublabel={t('settings.vibrationHint')}
-              checked={vibrationOn}
-              onToggle={toggleVibration}
-            />
+            {/* Vibratsiya "Ilova" bo'limiga ko'chirildi — u ko'rinish emas,
+                qurilma xatti-harakati (2026-08-29). */}
           </div>
         </section>
 
@@ -489,6 +501,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
                     : t('settings.premiumUnlimited'))
                 : t('settings.premiumHint')}
               sublabelTone={user.isTruePremium ? 'green' : undefined}
+              external
               onClick={() => navigate('/premium')}
             />
           </div>
@@ -503,6 +516,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
               icon={<Activity size={20} />}
               label={t('settings.analysis')}
               sublabel={t('settings.analysisHint')}
+              external
               onClick={() => navigate('/analysis')}
             />
 
@@ -511,6 +525,7 @@ export default function SettingsPage({ theme, toggleTheme }) {
               tone="red"
               label={t('settings.errors')}
               sublabel={t('settings.errorsHint')}
+              external
               onClick={() => navigate('/errors')}
             />
 
@@ -520,9 +535,12 @@ export default function SettingsPage({ theme, toggleTheme }) {
               onClick={() => setShowRepetitionModal(true)}
             />
 
+            {/* Ikonka ohangi neytral: sariq rang ATAYLAB faqat Pro obunada
+                qoldirildi. Ilgari sariq qo'ng'iroq, sariq toj va yashil
+                yuklash birga turardi — rang shu qadar ko'p ishlatilganki,
+                endi hech narsani ajratib ko'rsatmasdi (2026-08-29). */}
             <ActionRow
               icon={<Bell size={20} />}
-              tone="amber"
               label={t('settings.push')}
               sublabel={pushStatus === 'granted' ? t('settings.pushOn')
                 : pushStatus === 'denied' ? t('settings.pushBlocked')
@@ -546,8 +564,10 @@ export default function SettingsPage({ theme, toggleTheme }) {
               />
             )}
 
+            {/* Toj ATAYLAB emas: u "Pro obuna" qatorining belgisi. Bitta belgi
+                ikki ma'noda ishlatilmasin — bu qator hisob-kitob xabarlari. */}
             <SwitchRow
-              icon={<Crown size={20} />}
+              icon={<Receipt size={20} />}
               label={t('settings.billingNotify')}
               sublabel={t('settings.billingNotifyHint')}
               checked={billingNotify}
@@ -563,13 +583,23 @@ export default function SettingsPage({ theme, toggleTheme }) {
             {isInstallable && (
               <ActionRow
                 icon={<Download size={20} />}
-                tone="green"
                 label={t('settings.installPWA')}
                 onClick={installApp}
               />
             )}
+            {/* "Ko'rinish" bo'limidan ko'chirildi: vibratsiya ko'rinish emas,
+                qurilma xatti-harakati (2026-08-29). */}
+            <SwitchRow
+              icon={<Smartphone size={20} />}
+              label={t('settings.vibration')}
+              sublabel={t('settings.vibrationHint')}
+              checked={vibrationOn}
+              onToggle={toggleVibration}
+            />
+            {/* BookOpen — sepia mavzu ikonkasi; qo'llanma xatcho'pli kitob
+                oladi, aks holda bitta belgi ikki ma'noda ishlatiladi. */}
             <ActionRow
-              icon={<BookOpen size={20} />}
+              icon={<BookMarked size={20} />}
               label={t('settings.guide')}
               onClick={() => setShowGuideModal(true)}
             />
@@ -588,12 +618,14 @@ export default function SettingsPage({ theme, toggleTheme }) {
             <ActionRow
               icon={<FileText size={20} />}
               label={t('settings.terms')}
+              external
               onClick={() => navigate('/terms')}
             />
             <ActionRow
               icon={<Info size={20} />}
               label={t('settings.about')}
               sublabel={t('settings.aboutHint')}
+              external
               onClick={() => navigate('/about')}
             />
           </div>
@@ -661,11 +693,12 @@ export default function SettingsPage({ theme, toggleTheme }) {
           onClose={() => setShowRepetitionModal(false)}
         />
       )}
-      <AnimatePresence>
-        {showGuideModal && (
-          <GuideModal showToast={showToast} onClose={() => setShowGuideModal(false)} />
-        )}
-      </AnimatePresence>
+      {/* AnimatePresence olib tashlandi: qo'llanma ham endi SettingsSheet
+          ustida quriladi va yopilish animatsiyasini o'zi boshqaradi.
+          Qolgan oltitasi ham shu qatorda — istisno qolmadi. */}
+      {showGuideModal && (
+        <GuideModal showToast={showToast} onClose={() => setShowGuideModal(false)} />
+      )}
       {showPrivacy && <PrivacyModal onClose={() => setShowPrivacy(false)} />}
       {showLogoutConfirm && (
         <ConfirmLogoutModal onLogout={handleLogout} onClose={() => setShowLogoutConfirm(false)} />

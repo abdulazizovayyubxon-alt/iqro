@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { KeyRound, Eye, EyeOff } from 'lucide-react';
-import ModalShell from './ModalShell';
+import SettingsSheet from '../shared/SettingsSheet';
 
-/** Parolni o'zgartirish — barcha forma holati shu komponent ichida */
+/**
+ * Parolni o'zgartirish — barcha forma holati shu komponent ichida.
+ *
+ * ⚠️ 2026-08-29: forma to'liq inline uslubda yozilgan edi, shuning uchun
+ * maydonlar ilovaning boshqa formalaridan farq qilardi (boshqa balandlik,
+ * boshqa fon) va "Saqlash" umumiy tugma klassidan foydalanmasdi. Endi
+ * `pp-field` (profil formasi bilan bir xil) va `ss-btn` ishlatiladi.
+ * Ko'z tugmasi ilgari faqat birinchi maydonda edi — endi ikkalasida ham.
+ */
 export default function PasswordModal({ changePassword, showToast, onClose }) {
   const { t } = useTranslation();
   const [newPassword, setNewPassword] = useState('');
@@ -43,79 +51,82 @@ export default function PasswordModal({ changePassword, showToast, onClose }) {
     }
   };
 
-  return (
-    <ModalShell onClose={onClose} maxWidth={420} style={{ padding: '28px 24px' }}>
-      <div className="pp-modal-title" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-        <KeyRound size={22} style={{ color: 'var(--accent)' }} /> {t('modals.passTitle')}
-      </div>
-      <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text3)', lineHeight: 1.6, marginBottom: 20 }}>
-        {t('modals.passDesc')}
-      </p>
+  // ATAYLAB komponent EMAS, balki JSX qaytaruvchi funksiya: render ichida
+  // e'lon qilingan komponent har renderda YANGI tur bo'lib, React uni
+  // qayta o'rnatadi (fokus sakraydi).
+  const eyeBtn = () => (
+    <button
+      type="button"
+      className="ss-eye"
+      onClick={() => setShowNewPass(p => !p)}
+      aria-label={t(showNewPass ? 'modals.passHide' : 'modals.passShow')}
+    >
+      {showNewPass ? <EyeOff size={18} /> : <Eye size={18} />}
+    </button>
+  );
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <div>
-          <label style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--text3)', marginBottom: 6, display: 'block' }}>
-            {t('modals.passNewLabel')}
-          </label>
-          <div style={{ position: 'relative' }}>
+  return (
+    <SettingsSheet
+      icon={<KeyRound size={20} />}
+      title={t('modals.passTitle')}
+      sublabel={t('modals.passHint')}
+      onClose={onClose}
+      busy={changingPass}
+      footer={
+        <>
+          <button type="button" className="ss-btn" onClick={onClose} disabled={changingPass}>
+            {t('common.cancel')}
+          </button>
+          <button
+            type="button"
+            className="ss-btn is-cta"
+            onClick={handleChangePassword}
+            disabled={changingPass}
+          >
+            {changingPass ? t('modals.passSaving') : t('modals.passSave')}
+          </button>
+        </>
+      }
+    >
+      <p className="ss-p">{t('modals.passDesc')}</p>
+
+      <div className="ss-block">
+        <div className="pp-field">
+          <label htmlFor="sp-pass-new">{t('modals.passNewLabel')}</label>
+          <div className="ss-input-wrap">
             <input
+              id="sp-pass-new"
               type={showNewPass ? 'text' : 'password'}
+              autoComplete="new-password"
               value={newPassword}
               onChange={e => { setPassError(''); setNewPassword(e.target.value); }}
               placeholder={t('modals.passNewPh')}
-              style={{
-                width: '100%', padding: '13px 48px 13px 16px', fontSize: 'var(--fs-input)', borderRadius: 12,
-                border: '1.5px solid var(--border)', background: 'var(--bg3)',
-                color: 'var(--text)', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box',
-              }}
             />
-            <button
-              type="button"
-              onClick={() => setShowNewPass(p => !p)}
-              style={{ position: 'absolute', right: 4, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)', width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            >
-              {showNewPass ? <EyeOff size={18} /> : <Eye size={18} />}
-            </button>
+            {eyeBtn()}
           </div>
         </div>
 
-        <div>
-          <label style={{ fontSize: 'var(--fs-sm)', fontWeight: 700, color: 'var(--text3)', marginBottom: 6, display: 'block' }}>
-            {t('modals.passRepeatLabel')}
-          </label>
-          <input
-            type={showNewPass ? 'text' : 'password'}
-            value={newPassword2}
-            onChange={e => { setPassError(''); setNewPassword2(e.target.value); }}
-            placeholder={t('modals.passRepeatPh')}
-            onKeyDown={e => e.key === 'Enter' && handleChangePassword()}
-            style={{
-              width: '100%', padding: '13px 16px', fontSize: 'var(--fs-input)', borderRadius: 12,
-              border: '1.5px solid var(--border)', background: 'var(--bg3)',
-              color: 'var(--text)', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box',
-            }}
-          />
+        <div className="pp-field">
+          <label htmlFor="sp-pass-repeat">{t('modals.passRepeatLabel')}</label>
+          <div className="ss-input-wrap">
+            <input
+              id="sp-pass-repeat"
+              type={showNewPass ? 'text' : 'password'}
+              autoComplete="new-password"
+              value={newPassword2}
+              onChange={e => { setPassError(''); setNewPassword2(e.target.value); }}
+              placeholder={t('modals.passRepeatPh')}
+              onKeyDown={e => e.key === 'Enter' && handleChangePassword()}
+            />
+            {eyeBtn()}
+          </div>
         </div>
 
+        {/* Xato maydonlar OSTIDA va o'qish dasturiga e'lon qilinadi */}
         {passError && (
-          <p style={{ fontSize: 'var(--fs-md)', color: 'var(--red)', fontWeight: 500, margin: 0 }}>{passError}</p>
+          <div className="ss-note is-error" role="alert">{passError}</div>
         )}
       </div>
-
-      <div className="pp-modal-actions" style={{ marginTop: 20 }}>
-        <button className="pp-btn-cancel" onClick={onClose}>{t('modals.cancel')}</button>
-        <button
-          onClick={handleChangePassword}
-          disabled={changingPass}
-          style={{
-            padding: '12px 20px', borderRadius: 12, background: 'var(--accent)', color: '#fff',
-            border: 'none', fontWeight: 700, fontSize: 'var(--fs-base)', cursor: changingPass ? 'not-allowed' : 'pointer',
-            fontFamily: 'inherit', opacity: changingPass ? 0.7 : 1, minWidth: 140,
-          }}
-        >
-          {changingPass ? t('modals.passSaving') : t('modals.passSave')}
-        </button>
-      </div>
-    </ModalShell>
+    </SettingsSheet>
   );
 }
