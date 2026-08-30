@@ -60,25 +60,13 @@ for (const r of rows) {
 
 const plan = [];
 for (const [key, items] of groups) {
+  // ENG ERTA so'rov qoladi — talab qachon paydo bo'lgani muhim.
   const sorted = [...items].sort((a, b) => msOf(a) - msOf(b));
-  const base = sorted[0];
-  const keepAsIs = items.length === 1 && base.id === key; // allaqachon to'g'ri shaklda
+  const keep = sorted[0];
   plan.push({
     key,
-    keepAsIs,
-    write: {
-      uid: base.uid,
-      userEmail: base.userEmail || '',
-      userName: base.userName || '',
-      category: base.category || '',
-      categoryName: base.categoryName || base.category || '',
-      topicId: base.topicId ?? -1,
-      topicName: base.topicName || 'Aralash',
-      fulfilled: items.some((x) => x.fulfilled === true),
-      date: base.date || '',
-      timestamp: base.timestamp,
-    },
-    deleteIds: items.map((x) => x.id).filter((id) => id !== key),
+    keep,
+    deleteIds: sorted.slice(1).map((x) => x.id),
     dupCount: items.length - 1,
   });
 }
@@ -86,10 +74,9 @@ for (const [key, items] of groups) {
 const dups = plan.reduce((a, p) => a + p.dupCount, 0);
 console.log(`   noyob (uid, fan, mavzu): ${plan.length}`);
 console.log(`   takror yozuv           : ${dups}`);
-console.log(`   allaqachon to'g'ri     : ${plan.filter((p) => p.keepAsIs).length}`);
 console.log("\n   takrori bor guruhlar:");
 plan.filter((p) => p.dupCount > 0).forEach((p) =>
-  console.log(`   ${String(p.dupCount + 1).padStart(2)} yozuv → 1 | ${p.write.category} t${p.write.topicId} ${p.write.topicName}`));
+  console.log(`   ${String(p.dupCount + 1).padStart(2)} yozuv → 1 | ${p.keep.category} t${p.keep.topicId} ${p.keep.topicName}`));
 
 if (!APPLY) {
   console.log(`\n(quruq yurish — hech narsa yozilmadi. Jonli: --apply)`);
@@ -105,22 +92,24 @@ fs.writeFileSync(backup, JSON.stringify(rows.map((r) => ({
 })), null, 1));
 console.log(`\n💾 Zaxira: ${backup}`);
 
-// ── Yozish, keyin o'chirish (tartib muhim: avval yangi, keyin eski) ─────
-const toWrite = plan.filter((p) => !p.keepAsIs);
-for (let i = 0; i < toWrite.length; i += 400) {
-  const batch = writeBatch(db);
-  for (const p of toWrite.slice(i, i + 400)) batch.set(doc(db, 'questionRequests', p.key), p.write);
-  await batch.commit();
-}
-console.log(`✍️  ${toWrite.length} ta hujjat yangi ID bilan yozildi`);
-
+// ── Faqat TAKRORLARNI o'chirish ────────────────────────────────
+// Dastlab bu yerda hujjatlar YANGI (uid__fan__mavzu) ID'ga ko'chirilardi.
+// Firestore rad etdi va bu TO'G'RI: firestore.rules da
+//     allow create: if isLoggedIn() && request.resource.data.uid == request.auth.uid
+// ya'ni hujjatni faqat EGASI yarata oladi — admin boshqa odam nomidan
+// yozolmaydi (va yozolmagani ma'qul: so'rov egasi haqiqiy bo'lishi kerak).
+//
+// Shuning uchun eski yozuvlar joyida qoladi, faqat ORTIQCHA nusxalar
+// o'chiriladi (admin uchun delete ochiq). Kelajakdagi takrorni mijozning
+// o'zi to'xtatadi: src/services/questionRequests.js endi hujjat ID'sini
+// (uid, fan, mavzu) dan yasaydi.
 const toDelete = plan.flatMap((p) => p.deleteIds);
 for (let i = 0; i < toDelete.length; i += 400) {
   const batch = writeBatch(db);
   for (const id of toDelete.slice(i, i + 400)) batch.delete(doc(db, 'questionRequests', id));
   await batch.commit();
 }
-console.log(`🗑️  ${toDelete.length} ta eski hujjat o'chirildi`);
+console.log(`🗑️  ${toDelete.length} ta takror hujjat o'chirildi`);
 
 const after = await getDocs(collection(db, 'questionRequests'));
 console.log(`\n✅ ${rows.length} → ${after.size} ta hujjat`);

@@ -38,7 +38,11 @@ async function main() {
     const dups = [];
     const invalid = [];
     rawQuestions.forEach((q, i) => {
-      const key = normalizeQuestion(q.q);
+      // ⚠️ Oxiridagi «(Nizomiy tahlil #12)» kabi RAQAMLI YORLIQ olib tashlanadi.
+      // Aynan shu yorliq tufayli 2026-08-30 da 179 ta bir xil savol "noyob"
+      // bo'lib ko'ringan: case_top1_001 / _006 / _011 … bitta savolning
+      // #1, #6, #11 raqamli nusxalari edi.
+      const key = normalizeQuestion(String(q.q).replace(/\s*\([^()]*#\s*\d+\s*\)\s*$/, ''));
       if (!key) { invalid.push(`#${i} savol matni bo'sh`); return; }
       if (seen.has(key)) dups.push(`#${i} (${q.id}) ≡ #${seen.get(key)}`);
       else seen.set(key, i);
