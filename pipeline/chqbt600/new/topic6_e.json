@@ -1,0 +1,728 @@
+[
+  {
+    "q": "Yosh o'qituvchi yillik ish rejasini faqat darslik mundarijasidan ko'chirib tuzdi va davlat ta'lim standartiga umuman qaramadi. Metodist bu rejani qabul qilmadi. Rejalashtirishda davlat ta'lim standartining o'rni qanday?",
+    "opts": [
+      "U kutilayotgan ta'lim natijalarini belgilaydi, darslik esa vositalardan biri",
+      "U darslik mazmunini takrorlaydi, shuning uchun darslik bilan cheklanish mumkin",
+      "U faqat nazorat ishlarini tuzishda kerak bo'ladigan hujjat hisoblanadi",
+      "U maktab ma'muriyati uchun mo'ljallangan, o'qituvchiga taalluqli emas"
+    ],
+    "correct": 0,
+    "explanation": "Davlat ta'lim standarti o'quvchi fan bo'yicha nimani bilishi va nima qila olishi kerakligini — ya'ni kutilayotgan natijalarni belgilaydi. Darslik esa shu natijalarga erishishning vositalaridan biri xolos: u to'liq bo'lmasligi yoki boshqacha ketma-ketlikda tuzilgan bo'lishi mumkin, shuning uchun reja standartga tayanadi.",
+    "mnemonic": "Standart — natija; darslik — vosita.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: normativ hujjatlar asosida rejalashtirish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "standartni darslik mazmuniga tenglashtirish",
+      "standart vazifasini faqat nazorat masalasiga qisqartirish",
+      "standartni o'qituvchi faoliyatidan tashqari hujjat deb bilish"
+    ]
+  },
+  {
+    "q": "O'qituvchi dars maqsadini «o'quvchilarga birinchi tibbiy yordam haqida ma'lumot berish» deb yozdi. Metodist maqsad shu ko'rinishda tekshirib bo'lmasligini aytdi. Dars maqsadi qanday shaklda qo'yilishi kerak?",
+    "opts": [
+      "Darslik paragrafining raqami va sahifalar oralig'i bilan",
+      "O'quvchi dars oxirida nimani qila olishi bilan, o'lchanadigan tarzda",
+      "O'qituvchi dars davomida nima qilishi bilan, faoliyat tarzida",
+      "Mavzuning nomi va unga ajratilgan soat hajmi bilan"
+    ],
+    "correct": 1,
+    "explanation": "Maqsad o'qituvchining harakatini emas, o'quvchining erishadigan natijasini ifodalashi kerak: «jgutni to'g'ri qo'ya oladi», «qon ketish turini ajrata oladi» kabi. Faqat shunday qo'yilgan maqsadni dars oxirida tekshirib bo'ladi va unga baholash mezoni bog'lanadi.",
+    "mnemonic": "Maqsad — o'quvchi nima qila oladi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: dars maqsadini qo'yish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "maqsadni o'quv materiali manzili bilan almashtirish",
+      "",
+      "maqsadni o'qituvchi faoliyati tavsifi bilan almashtirish",
+      "maqsadni mavzu nomiga qisqartirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi dars maqsadida o'quvchilar qon ketishini to'xtata olishini belgiladi, ammo nazorat ishida faqat atamalarning ta'rifini so'radi. O'quvchilar baho oldi, biroq amalda jgutni qo'ya olmadi. Bu holatda qanday bog'liqlik buzilgan?",
+    "opts": [
+      "Nazariy va amaliy mashg'ulotlarning jadvaldagi ketma-ketligi",
+      "Uy vazifasi bilan sinfdagi ish hajmi o'rtasidagi nisbat",
+      "Maqsad, o'qitish faoliyati va baholash mezoni o'rtasidagi muvofiqlik",
+      "Dars bosqichlari o'rtasidagi vaqt taqsimoti muvozanati"
+    ],
+    "correct": 2,
+    "explanation": "Maqsad, unga erishish uchun tashkil etiladigan faoliyat va natijani tekshirish usuli bir yo'nalishda bo'lishi kerak. Amaliy ko'nikma maqsad qilib qo'yilgan bo'lsa, uni yozma ta'rif orqali baholab bo'lmaydi: bunday holatda baho o'quvchining haqiqiy tayyorgarligini ko'rsatmaydi va maqsad amalda tekshirilmay qoladi.",
+    "mnemonic": "Nimani maqsad qilding — shuni baholaysan.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: maqsad va baholashning muvofiqligi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "muvofiqlik muammosini jadval masalasiga qisqartirish",
+      "baholash muammosini yuklama hajmi masalasi deb bilish",
+      "",
+      "mazmun muammosini vaqt taqsimoti masalasi deb tushunish"
+    ]
+  },
+  {
+    "q": "Metodbirlashmada o'qituvchi «men o'quvchilarga bilim beraman, ular esa yodlaydi — kompetensiya degani shu» dedi. Rahbar bu tushunchani noto'g'ri deb baholadi. Kompetensiyaviy yondashuv nimani anglatadi?",
+    "opts": [
+      "O'quv materiali hajmini imkon qadar ko'paytirish",
+      "Atamalarni aniq ta'riflash ko'nikmasini mustahkamlash",
+      "Darslik matnini to'liq va xatosiz yodlashga erishish",
+      "Bilimni real vaziyatda qo'llay olish qobiliyatini shakllantirish"
+    ],
+    "correct": 3,
+    "explanation": "Kompetensiya — bilim, ko'nikma va munosabatning birlashmasi bo'lib, u o'quvchining tanish bo'lmagan real vaziyatda to'g'ri harakat qila olishida namoyon bo'ladi. Shuning uchun kompetensiyaviy yondashuvda o'lchov birligi yodlangan matn hajmi emas, vaziyatli topshiriqni hal qila olish darajasidir.",
+    "mnemonic": "Kompetensiya — bilim emas, bilimni ishlata olish.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: kompetensiyaviy yondashuv",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "sifat ko'rsatkichini material hajmi bilan almashtirish",
+      "kompetensiyani atama bilishga qisqartirish",
+      "kompetensiyani yodlash natijasi deb tushunish",
+      ""
+    ]
+  },
+  {
+    "q": "Sinfda bir o'quvchi mavzuni hammadan tez o'zlashtiradi va qolgan vaqtda zerikib, tartibni buzadi. O'qituvchi unga qo'shimcha ravishda xuddi shunday oddiy mashqlardan ko'proq berdi, ammo holat o'zgarmadi. Iqtidorli o'quvchi bilan ishlashda qanday yondashuv to'g'ri?",
+    "opts": [
+      "Topshiriq hajmi emas, murakkablik darajasi oshiriladi",
+      "Topshiriq hajmi oshirilib, murakkablik o'zgarishsiz qoladi",
+      "Unga qo'shimcha topshiriq berilmay, mustaqil dam olishga ruxsat beriladi",
+      "U doimiy ravishda boshqa o'quvchilarga tushuntiruvchi qilib qo'yiladi"
+    ],
+    "correct": 0,
+    "explanation": "Iqtidorli o'quvchi uchun bir xil darajadagi mashqni ko'paytirish rivojlanish bermaydi va zerikishni yanada kuchaytiradi. Unga tahlil, taqqoslash, muammoni hal qilish talab qiladigan murakkabroq topshiriq berilishi kerak. Boshqalarga tushuntirish foydali usul, ammo u doimiy vazifaga aylantirilsa, o'quvchining o'z rivojlanishi to'xtaydi.",
+    "mnemonic": "Iqtidorlisiga ko'p emas — chuqur top berilsin.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: iqtidorli o'quvchilar bilan ishlash",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "rivojlantirishni topshiriq miqdorini oshirish bilan almashtirish",
+      "o'quv vaqtini rivojlanishsiz qoldirish",
+      "o'quvchini doimiy yordamchiga aylantirib, o'sishini to'xtatish"
+    ]
+  },
+  {
+    "q": "Bir necha o'quvchi ketma-ket ikkinchi chorak davomida fanni o'zlashtirmadi. O'qituvchi ularga qo'shimcha baho qo'yish orqali natijani to'g'rilamoqchi bo'ldi. Direktor bu yechimni rad etdi. O'zlashtirmayotgan o'quvchi bilan ishlash qanday boshlanadi?",
+    "opts": [
+      "O'quvchini kuchliroq guruhga ko'chirish bilan",
+      "Bo'shliq qayerda ekanini aniqlab, individual reja tuzish bilan",
+      "Qo'shimcha nazorat ishlari sonini oshirish bilan",
+      "Ota-onaga rasmiy ogohlantirish yuborish bilan"
+    ],
+    "correct": 1,
+    "explanation": "Baho — natijaning ko'rsatkichi, uni o'zgartirish sababni bartaraf etmaydi. Ish avval diagnostikadan boshlanadi: qaysi mavzuda, qaysi bosqichda bo'shliq paydo bo'lganini aniqlash, so'ng shu bo'shliqni yopishga qaratilgan individual reja tuzish kerak. Boshqa choralar shundan keyin qo'shimcha vosita bo'lib xizmat qiladi.",
+    "mnemonic": "Avval bo'shliqni top, keyin to'ldir.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: o'zlashtirmayotgan o'quvchi bilan ishlash",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "muammoni o'quvchini boshqa muhitga ko'chirish bilan hal qilishga urinish",
+      "",
+      "diagnostikasiz nazorat sonini oshirib, bo'shliqni saqlab qolish",
+      "pedagogik ishni ma'muriy chora bilan almashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi butun sinfga bir xil hajmdagi uy vazifasini beradi: kuchli o'quvchilar uni o'n daqiqada bajaradi, o'zlashtirishi past o'quvchilar esa umuman tugata olmaydi va vazifani qilmay keladi. Uy vazifasini tashkil etishda qanday tamoyil qo'llaniladi?",
+    "opts": [
+      "Vazifa hajmi har chorakda bir xil tarzda oshirib boriladi",
+      "Vazifa faqat o'zlashtirishi past o'quvchilarga beriladi",
+      "Majburiy o'zak qism va tanlanadigan qo'shimcha qism ajratiladi",
+      "Barcha o'quvchiga bir xil hajm beriladi, bu adolatni ta'minlaydi"
+    ],
+    "correct": 2,
+    "explanation": "Bir xil vazifa turli tayyorgarlikdagi o'quvchilar uchun turli yuklama beradi: biriga yengil, ikkinchisiga bajarib bo'lmas bo'lib chiqadi. Shuning uchun vazifa hamma bajarishi shart bo'lgan o'zak qism va xohlovchilar uchun murakkabroq qo'shimcha qismga ajratiladi — bu ham asosiy natijani kafolatlaydi, ham rivojlanishga yo'l ochadi.",
+    "mnemonic": "Bir xil vazifa — har xil yuklama.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: uy vazifasini farqlash",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "vazifa hajmini mexanik ravishda oshirib borish",
+      "vazifani bir guruh o'quvchi bilan cheklab qo'yish",
+      "",
+      "shakliy tenglikni haqiqiy adolat deb hisoblash"
+    ]
+  },
+  {
+    "q": "Direktor o'qituvchidan kasbiy rivojlanish rejasini so'radi. O'qituvchi «har yili malaka oshirish kursiga boraman, bu yetarli» deb javob berdi va boshqa hech narsa ko'rsata olmadi. Kasbiy rivojlanish qanday tashkil etiladi?",
+    "opts": [
+      "Belgilangan muddatda kursdan o'tish bilan cheklaniladi",
+      "Yangi darslik chiqqanda unga moslashish bilan chegaralanadi",
+      "Ma'muriyat topshirig'i kelganda bajarish bilan yakunlanadi",
+      "Faoliyat tahlili asosida maqsad qo'yilib, muntazam ish olib boriladi"
+    ],
+    "correct": 3,
+    "explanation": "Kurs — rivojlanishning bir epizodi, tizimning o'zi emas. Kasbiy o'sish o'z darslarini tahlil qilish, o'quvchilar natijasidagi bo'shliqlarni aniqlash, shundan kelib chiqib aniq maqsad qo'yish va uni hamkasblar tajribasi, adabiyot hamda amaliyot orqali muntazam bajarishdan iborat.",
+    "mnemonic": "Rivojlanish — kurs emas, muntazam jarayon.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: kasbiy rivojlanishni rejalashtirish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "muntazam jarayonni bir martalik tadbirga qisqartirish",
+      "rivojlanishni tashqi o'zgarishga moslashish deb bilish",
+      "kasbiy tashabbusni ma'muriy topshiriqqa bog'lab qo'yish",
+      ""
+    ]
+  },
+  {
+    "q": "Yosh o'qituvchi ochiq dars berdi. Muhokamada hamkasblar faqat «dars yaxshi o'tdi, rahmat» deb baho berishdi va aniq tavsiya bo'lmadi. Metodist bunday muhokama foydasiz ekanini aytdi. Ochiq dars tahlili qanday olib borilishi kerak?",
+    "opts": [
+      "Maqsadga erishilgani dalillar bilan baholanib, aniq tavsiya beriladi",
+      "Umumiy ijobiy taassurot bildirilib, tanqiddan saqlaniladi",
+      "O'qituvchining shaxsiy sifatlari bo'yicha xulosa chiqariladi",
+      "Faqat kamchiliklar sanab o'tilib, kuchli tomonlar tilga olinmaydi"
+    ],
+    "correct": 0,
+    "explanation": "Tahlilning vazifasi — o'qituvchining keyingi darsini yaxshilash. Buning uchun avval dars maqsadi aniqlanadi, so'ng unga erishilgani darsda kuzatilgan aniq dalillar bilan asoslanadi va bajarilishi mumkin bo'lgan tavsiya beriladi. Umumiy maqtov ham, faqat kamchilik sanash ham bu vazifani bajarmaydi.",
+    "mnemonic": "Tahlil — dalil va tavsiya, taassurot emas.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: ochiq darsni tahlil qilish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "tahlilni umumiy taassurot bildirish bilan almashtirish",
+      "dars tahlilini shaxsni baholashga aylantirish",
+      "tahlilni bir tomonlama tanqidga aylantirish"
+    ]
+  },
+  {
+    "q": "Maktabga ishga kelgan yosh o'qituvchiga tajribali hamkasb biriktirildi. Mentor unga o'z dars ishlanmalarini berib, «shuni aynan takrorla» dedi va boshqa aralashmadi. Metodist bu yondashuvni to'g'ri emas deb baholadi. Mentorlik qanday tashkil etilishi kerak?",
+    "opts": [
+      "Yosh o'qituvchining darslariga umuman aralashmaslik orqali",
+      "Kuzatish, birgalikda tahlil va mustaqillikni bosqichma-bosqich oshirish orqali",
+      "Tayyor ishlanmalarni berish va ularni o'zgartirmasdan qo'llash orqali",
+      "Faqat hujjatlarni to'g'ri rasmiylashtirishni o'rgatish orqali"
+    ],
+    "correct": 1,
+    "explanation": "Mentorlikning maqsadi — mustaqil ishlay oladigan o'qituvchini shakllantirish. Buning uchun mentor darsni kuzatadi, birgalikda tahlil qiladi, muammoni yechishning bir necha yo'lini muhokama qiladi va yosh mutaxassisga tobora ko'proq mustaqillik beradi. Tayyor ishlanmani ko'chirish esa o'z uslubini shakllantirishga to'sqinlik qiladi.",
+    "mnemonic": "Mentor nusxa emas, mustaqillik beradi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: mentorlik va yosh mutaxassisni qo'llab-quvvatlash",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "qo'llab-quvvatlashdan butunlay voz kechish",
+      "",
+      "kasbiy o'sishni tayyor namunani ko'chirishga qisqartirish",
+      "mentorlikni hujjat yuritishga qisqartirish"
+    ]
+  },
+  {
+    "q": "Bir o'quvchi sinfdoshlarini muntazam masxara qiladi, ularning narsalarini yashiradi va guruhga qo'shmaydi. O'qituvchi «bolalar shunaqa bo'ladi, o'zlari kelishib oladi» deb aralashmadi. Bunday holatda o'qituvchining javobgarligi qanday?",
+    "opts": [
+      "Faqat jabrlangan o'quvchiga chidashni maslahat berishi kifoya",
+      "Masalani chorak yakunidagi ota-onalar yig'ilishiga qoldirishi mumkin",
+      "Darhol aralashib, holatni to'xtatishi va mas'ul xizmatlarni jalb qilishi shart",
+      "Tomonlar o'zaro kelishguncha kuzatib turishi maqsadga muvofiq"
+    ],
+    "correct": 2,
+    "explanation": "Muntazam takrorlanuvchi tazyiq bolalar o'rtasidagi oddiy nizo emas — u kuchlar tengsizligiga asoslangan va o'z-o'zidan to'xtamaydi. O'qituvchi xavfsiz ta'lim muhitini ta'minlash uchun javobgar bo'lgani sababli darhol aralashishi, holatni to'xtatishi hamda maktab psixologi va ma'muriyatni jalb qilishi shart.",
+    "mnemonic": "Tazyiq o'z-o'zidan to'xtamaydi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: xavfsiz ta'lim muhiti va tazyiqqa javob",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "javobgarlikni jabrlangan o'quvchi zimmasiga o'tkazish",
+      "kechiktirib bo'lmaydigan holatni rejali tadbirga qoldirish",
+      "",
+      "tengsiz tazyiqni oddiy nizo deb baholab, aralashmaslik"
+    ]
+  },
+  {
+    "q": "O'qituvchi sinfdagi bir o'quvchining doimiy charchoq va yopiqligini payqadi, ammo «bu mening ishim emas» deb hech kimga aytmadi. Bir necha oydan keyin oiladagi og'ir vaziyat oshkor bo'ldi. Bunday belgilarni sezgan o'qituvchi qanday yo'l tutishi kerak?",
+    "opts": [
+      "Sinf oldida o'quvchidan sababini so'rab, holatni oydinlashtiradi",
+      "Vaziyat o'z-o'zidan tuzalishini kutib, kuzatishda davom etadi",
+      "Boshqa o'quvchilardan uning oilasi haqida ma'lumot to'playdi",
+      "Kuzatuvni qayd etib, maktab psixologi va mas'ul shaxsga xabar beradi"
+    ],
+    "correct": 3,
+    "explanation": "O'qituvchi mutaxassis emas va tashxis qo'ymaydi, ammo u bolani har kuni ko'radigan shaxs sifatida xavf belgilarini birinchi bo'lib sezadi. Uning vazifasi — kuzatganini aniq qayd etish va maktab psixologi hamda mas'ul shaxsga yetkazish. Sinf oldida so'roq qilish yoki boshqa bolalardan ma'lumot yig'ish bolaga qo'shimcha zarar yetkazadi.",
+    "mnemonic": "Sezdingmi — qayd et va mutaxassisga yetkaz.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: o'quvchi farovonligi va mutaxassislar bilan hamkorlik",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "shaxsiy masalani ommaviy muhokamaga chiqarish",
+      "xavf belgilariga javob bermay, vaqt yo'qotish",
+      "maxfiy ma'lumotni norasmiy yo'l bilan to'plash",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi ota-onalar yig'ilishida har bir o'quvchining baholarini ovoz chiqarib o'qidi va zaif o'zlashtirganlarni nomma-nom tanqid qildi. Bir necha ota-ona norozilik bildirdi. Ota-onalar yig'ilishi qanday olib borilishi kerak?",
+    "opts": [
+      "Umumiy masalalar ochiq, shaxsiy natijalar esa alohida muhokama qilinadi",
+      "Barcha natijalar ochiq e'lon qilinadi, bu shaffoflikni ta'minlaydi",
+      "Faqat yuqori natijalar e'lon qilinib, qolganlari tilga olinmaydi",
+      "Natijalar umuman muhokama qilinmay, tashkiliy masalalar ko'riladi"
+    ],
+    "correct": 0,
+    "explanation": "O'quvchining o'zlashtirishi va xulqi haqidagi ma'lumot shaxsiy ma'lumot hisoblanadi va uni begonalar oldida oshkor qilish bolaning ham, oilaning ham huquqini buzadi. Yig'ilishda o'quv jarayoni, umumiy natijalar va tashkiliy masalalar muhokama qilinadi, har bir o'quvchining natijasi esa ota-ona bilan yakkama-yakka suhbatda ko'riladi.",
+    "mnemonic": "Umumiy — yig'ilishda, shaxsiy — yakkama-yakka.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: ota-onalar bilan ishlash va maxfiylik",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "shaxsiy ma'lumotni oshkor qilishni shaffoflik deb asoslash",
+      "tanlab e'lon qilish orqali o'quvchilarni yashirin taqqoslash",
+      "ota-onani natijalar haqida ma'lumotdan butunlay mahrum qilish"
+    ]
+  },
+  {
+    "q": "O'qituvchi o'zi dars beradigan sinf o'quvchisiga pullik qo'shimcha mashg'ulot taklif qildi va darsda unga ko'proq e'tibor bera boshladi. Boshqa ota-onalar norozilik bildirdi. Bunday holat qanday baholanadi?",
+    "opts": [
+      "Ixtiyoriy kelishuv — ota-ona rozi bo'lgani uchun muammo yo'q",
+      "Manfaatlar to'qnashuvi — bunday amaliyotdan tiyilish kerak",
+      "Qo'shimcha xizmat — o'qituvchining shaxsiy huquqi hisoblanadi",
+      "Metodik yordam — u o'quv natijasini oshirishga xizmat qiladi"
+    ],
+    "correct": 1,
+    "explanation": "O'qituvchi o'z o'quvchisiga baho qo'yadi va shu bilan birga undan daromad olsa, uning qarorlari xolisligiga shubha tug'iladi — bu manfaatlar to'qnashuvidir. Ota-onaning roziligi bu holatni bartaraf etmaydi, chunki bog'liqlik munosabatida rozilik erkin hisoblanmaydi.",
+    "mnemonic": "Baho qo'yadigan odam undan daromad olmaydi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: kasbiy etika va manfaatlar to'qnashuvi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "bog'liqlik sharoitidagi rozilikni erkin rozilik deb hisoblash",
+      "",
+      "manfaatlar to'qnashuvini shaxsiy huquq deb asoslash",
+      "xolislik muammosini metodik foyda bilan oqlash"
+    ]
+  },
+  {
+    "q": "O'quvchi nazorat ishi bahosiga rozi emas va uni qayta ko'rib chiqishni so'radi. O'qituvchi «baho qo'yilgan, muhokama tugadi» deb javob berdi. Ma'muriyat bu javobni noto'g'ri deb topdi. O'quvchining baholash natijasiga e'tirozi qanday ko'riladi?",
+    "opts": [
+      "O'quvchiga baholarni oshirish uchun qo'shimcha topshiriq beriladi",
+      "Ish boshqa o'qituvchiga berilib, yangi baho qo'yiladi",
+      "Ish mezonlar bo'yicha qayta ko'rilib, natija asoslab beriladi",
+      "E'tiroz qabul qilinmaydi, chunki baho o'qituvchi vakolatida"
+    ],
+    "correct": 2,
+    "explanation": "Baholash mezonlarga asoslanadi va shuning uchun har doim asoslab berilishi mumkin. E'tiroz kelganda o'qituvchi ishni mezonlar bo'yicha qayta ko'rib chiqadi va har bir band uchun qo'yilgan bahoni tushuntiradi. Bu jarayon ham o'quvchining huquqini himoya qiladi, ham baholashning shaffofligini oshiradi.",
+    "mnemonic": "Baho mezon bilan asoslanadi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: baholashning shaffofligi va e'tirozlar",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "mezon bo'yicha tekshiruvni qo'shimcha ish bilan almashtirish",
+      "asoslash o'rniga javobgarlikni boshqa shaxsga o'tkazish",
+      "",
+      "vakolatga tayanib, asoslash majburiyatidan qochish"
+    ]
+  },
+  {
+    "q": "O'qituvchi o'quvchilar bilan ijtimoiy tarmoqda shaxsiy sahifasi orqali muloqot qiladi, kechqurun ham xabar yozadi va o'quv masalalarini shaxsiy yozishmalarda hal qiladi. Direktor bu amaliyotni cheklashni taklif qildi. O'quvchi bilan onlayn muloqotda qanday chegara saqlanadi?",
+    "opts": [
+      "Muloqot shaxsiy sahifa orqali olib borilsa, yaqinlik mustahkamlanadi",
+      "Muloqot butunlay to'xtatiladi, chunki har qanday aloqa xavfli",
+      "Muloqot faqat kechqurun olib borilsa, o'quv vaqti tejaladi",
+      "Muloqot rasmiy kanal orqali, ochiq va o'quv doirasida olib boriladi"
+    ],
+    "correct": 3,
+    "explanation": "Onlayn muloqot ham kasbiy munosabatning bir qismi bo'lib, unga shaffoflik va chegara talabi tegishli: yozishmalar maktab tanigan rasmiy kanal orqali, mazmuni o'quv masalalari doirasida va zarur bo'lganda tekshirilishi mumkin bo'lgan holatda olib boriladi. Bu ham o'quvchini, ham o'qituvchini himoya qiladi.",
+    "mnemonic": "Onlayn ham — rasmiy kanal, ochiq mazmun.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: raqamli muhitda kasbiy chegaralar",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "kasbiy chegarani yaqinlik hisobiga yo'qotish",
+      "muammoni har qanday aloqani taqiqlash bilan hal qilishga urinish",
+      "chegara masalasini vaqt tanlash masalasiga qisqartirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'quvchi referatni to'liq internetdan ko'chirib topshirdi va manbani ko'rsatmadi. O'qituvchi «asosiysi topshirdi» deb yuqori baho qo'ydi. Metodist bu yondashuv uzoq muddatda zarar keltirishini aytdi. Bunday holatda o'qituvchi nima qilishi kerak?",
+    "opts": [
+      "Manbaga tayanish qoidasini o'rgatib, ishni qayta bajartiradi",
+      "Ishni qabul qilmay, o'quvchiga past baho qo'yadi",
+      "Ishni o'z holicha qabul qiladi, chunki mazmuni to'g'ri",
+      "Ishni ota-onaga yuborib, uydagi nazoratni kuchaytirishni so'raydi"
+    ],
+    "correct": 0,
+    "explanation": "Ko'chirmakashlik — o'quv ko'nikmasining yo'qligi belgisi, shuning uchun unga birinchi navbatda pedagogik javob beriladi: manbadan foydalanish, iqtibos keltirish va o'z fikrini ifodalash qoidasi o'rgatiladi hamda ish qayta bajariladi. Faqat past baho qo'yish ko'nikmani shakllantirmaydi, e'tiborsiz qoldirish esa amaliyotni mustahkamlaydi.",
+    "mnemonic": "Ko'chirmaga jazo emas — ko'nikma kerak.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: akademik halollikni shakllantirish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "pedagogik javobni faqat jazo bilan almashtirish",
+      "muammoni e'tiborsiz qoldirib, amaliyotni mustahkamlash",
+      "javobgarlikni butunlay oilaga o'tkazish"
+    ]
+  },
+  {
+    "q": "O'quvchilar topshiriqni sun'iy intellekt vositasi yordamida bajarib keldi va matnni o'zgartirmasdan topshirdi. O'qituvchi bunday vositalardan foydalanishni butunlay taqiqlamoqchi bo'ldi. Metodist boshqa yechim borligini aytdi. Bunday vositalarga nisbatan qanday yondashuv samarali?",
+    "opts": [
+      "Topshiriqlar butunlay bekor qilinib, faqat og'zaki so'rov qoladi",
+      "Foydalanish qoidasi belgilanib, natijani tekshirish talab qilinadi",
+      "Vositalardan foydalanish butunlay taqiqlanadi va nazorat kuchaytiriladi",
+      "Vositalardan foydalanishga cheklovsiz ruxsat beriladi"
+    ],
+    "correct": 1,
+    "explanation": "To'liq taqiq amalda nazorat qilinmaydi va o'quvchini yashirin foydalanishga o'rgatadi. Samarali yo'l — foydalanishning ochiq qoidasini belgilash: qayerda yordamchi vosita sifatida ishlatish mumkinligi, natijani albatta tekshirish va manbani ko'rsatish talabi. Shunda o'quvchi vositani tanqidiy baholashni o'rganadi.",
+    "mnemonic": "Taqiq emas — qoida va tekshirish.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: raqamli vositalardan foydalanish etikasi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "muammoni o'quv shakllarini qisqartirish bilan hal qilishga urinish",
+      "",
+      "bajarilmaydigan taqiq orqali muammoni yashirinishga surish",
+      "hech qanday qoidasiz erkinlik berib, tekshiruvdan voz kechish"
+    ]
+  },
+  {
+    "q": "O'qituvchi darsda internetdan olingan, manbasi ko'rsatilmagan ma'lumotni o'quvchilarga tayyor haqiqat sifatida taqdim etdi. Keyinchalik bu ma'lumot noto'g'ri ekani ma'lum bo'ldi. Bunday holatning oldini olish uchun nima qilinadi?",
+    "opts": [
+      "Ma'lumot bir necha o'quvchiga ko'rsatilib, ular fikri so'raladi",
+      "Ma'lumot og'zaki beriladi, shunda xato yozma qayd etilmaydi",
+      "Manba ishonchliligi tekshirilib, o'quvchilarga ham shu ko'nikma o'rgatiladi",
+      "Faqat darslikdan foydalanilib, qo'shimcha manbalardan voz kechiladi"
+    ],
+    "correct": 2,
+    "explanation": "O'qituvchi darsga olib kiradigan har bir ma'lumotning ishonchliligi uchun javobgar: manba muallifi, nashr etilgan joyi va boshqa manbalar bilan mosligi tekshirilishi kerak. Bundan tashqari, aynan shu tekshirish jarayonini o'quvchilarga ko'rsatish ularda mediasavodxonlikni shakllantiradi.",
+    "mnemonic": "Manbani tekshir va tekshirishni o'rgat.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: ma'lumot ishonchliligi va mediasavodxonlik",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "ilmiy tekshiruvni o'quvchilar fikriga almashtirish",
+      "xatoni yashirishga qaratilgan shakliy yechim tanlash",
+      "",
+      "muammoni manbalar doirasini toraytirish bilan hal qilishga urinish"
+    ]
+  },
+  {
+    "q": "Chorak yakunida o'qituvchi jurnalga baholarni qo'yib, hujjatlarni topshirdi. Direktor esa undan sinf natijalari bo'yicha tahliliy ma'lumot ham so'radi, o'qituvchi buni ortiqcha ish deb hisobladi. Baholash natijalarini tahlil qilish nima uchun zarur?",
+    "opts": [
+      "Ma'muriyat oldida hisobot berish talabini bajarish uchun",
+      "O'quvchilarni natijalari bo'yicha tartiblab chiqish uchun",
+      "Kelgusi chorakda nazorat ishlari sonini oshirish uchun",
+      "Keyingi rejaga tuzatish kiritish va bo'shliqlarni yopish uchun"
+    ],
+    "correct": 3,
+    "explanation": "Natijalar tahlili — o'qituvchi uchun qaytar aloqa: qaysi mavzu ko'pchilikda o'zlashtirilmagani aniqlansa, bu o'sha mavzuni o'qitish usulini o'zgartirish kerakligini bildiradi. Ya'ni tahlilning asosiy manzili hisobot emas, keyingi chorak rejasidir.",
+    "mnemonic": "Tahlil hisobot uchun emas — reja uchun.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: natijalarni tahlil qilish va rejaga tuzatish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "tahlil maqsadini hisobot talabiga qisqartirish",
+      "tahlilni o'quvchilarni taqqoslash vositasiga aylantirish",
+      "tahlil natijasini nazorat hajmini oshirish bilan bog'lash",
+      ""
+    ]
+  },
+  {
+    "q": "Sinfga eshitish qobiliyati cheklangan o'quvchi keldi. O'qituvchi unga alohida topshiriq berib, sinf ishidan chetda qoldirdi va «shunday qulayroq» dedi. Metodist bu yondashuv inklyuziv ta'lim mohiyatiga zid ekanini aytdi. To'g'ri yondashuv qanday?",
+    "opts": [
+      "Umumiy faoliyatda ishtirok etadi, shart-sharoit unga moslashtiriladi",
+      "Alohida topshiriq bilan mustaqil ishlaydi, sinf ishiga qo'shilmaydi",
+      "Umumiy topshiriq beriladi, hech qanday moslashtirish qilinmaydi",
+      "Faoliyat turi qisqartirilib, faqat kuzatuvchi sifatida qatnashadi"
+    ],
+    "correct": 0,
+    "explanation": "Inklyuziv ta'limning mohiyati — o'quvchini muhitga moslashtirish emas, muhitni o'quvchiga moslashtirish. U sinfning umumiy faoliyatida ishtirok etadi, ammo unga materialni qabul qilish va javob berishning mos usullari yaratiladi. Chetda qoldirish ham, hech qanday moslashtirishsiz umumiy talab qo'yish ham natija bermaydi.",
+    "mnemonic": "Bolani emas — sharoitni moslashtir.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: inklyuziv ta'lim va moslashtirish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "moslashtirishni ajratib qo'yish bilan almashtirish",
+      "moslashtirishdan butunlay voz kechib, teng imkoniyatni buzish",
+      "ishtirokni passiv kuzatuvga qisqartirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi o'quv yili boshida sinfning tayyorgarlik darajasini bilmasdan, to'g'ridan-to'g'ri yangi mavzuga kirishdi. Bir necha darsdan keyin ko'pchilik oldingi sinf materialini bilmasligi ma'lum bo'ldi. Bunday holatning oldini oladigan tadbir qanday ataladi?",
+    "opts": [
+      "Tematik nazorat — bo'lim yakunida bilimni tekshirish",
+      "Kirish diagnostikasi — boshlang'ich bilim darajasini aniqlash",
+      "Yakuniy nazorat — o'quv yili natijalarini qayd etish",
+      "Joriy baholash — har darsdagi ishni kuzatib borish"
+    ],
+    "correct": 1,
+    "explanation": "Kirish diagnostikasi o'quv yili yoki yangi bo'lim boshida o'tkaziladi va o'quvchilarning boshlang'ich darajasini aniqlaydi. Uning natijasiga qarab o'qituvchi rejani moslashtiradi, zarur bo'lsa oldingi materialni takrorlashga vaqt ajratadi. Qolgan nazorat turlari boshqa bosqichlarda boshqa vazifani bajaradi.",
+    "mnemonic": "Yo'lga chiqishdan oldin — qayerda turganini bil.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: kirish diagnostikasi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "boshlang'ich baholashni bo'lim yakunidagi nazorat bilan chalkashtirish",
+      "",
+      "boshlang'ich diagnostikani yakuniy nazorat bilan chalkashtirish",
+      "diagnostikani kundalik kuzatuv bilan almashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi butun chorak davomida bir xil usulda dars o'tdi: mavzuni tushuntirdi, o'quvchilar yozib oldi, uyga vazifa berildi. Natijalar pasayib bordi, o'quvchilar darsga qiziqmay qo'ydi. Bu holatning asosiy sababi nimada?",
+    "opts": [
+      "Nazorat ishlari soni belgilangan me'yordan kam bo'lgan",
+      "Dars davomiyligi mavzu hajmiga nisbatan qisqa bo'lgan",
+      "Faoliyat turlari o'zgarmagani uchun diqqat va qiziqish so'ngan",
+      "Uy vazifasi hajmi yetarli darajada oshirilmagan"
+    ],
+    "correct": 2,
+    "explanation": "O'quvchining diqqati bir xil faoliyat turida tez charchaydi, ayniqsa u passiv bo'lsa. Darsda faoliyat turlarini almashtirish — tushuntirish, muhokama, amaliy ish, o'zaro tekshirish — diqqatni tiklaydi va materialning turli kanallar orqali o'zlashtirilishini ta'minlaydi. Yuklamani oshirish esa bu muammoni hal qilmaydi.",
+    "mnemonic": "Bir xillik — diqqatning dushmani.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: dars faoliyatlarini xilma-xillashtirish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "metodik muammoni nazorat soni bilan bog'lash",
+      "metodik muammoni vaqt yetishmasligi bilan izohlash",
+      "",
+      "qiziqish muammosini yuklama hajmi bilan bog'lash"
+    ]
+  },
+  {
+    "q": "Amaliy mashg'ulotdan oldin o'qituvchi xavfsizlik yo'riqnomasini og'zaki o'tkazdi, ammo hech qanday hujjat yuritmadi. Mashg'ulotda o'quvchi shikastlandi va tekshiruvda yo'riqnoma o'tkazilganini tasdiqlab bo'lmadi. Xavfsizlik yo'riqnomasi qanday rasmiylashtiriladi?",
+    "opts": [
+      "Og'zaki o'tkaziladi, chunki asosiysi mazmunni yetkazish",
+      "Dars ishlanmasida bir qator bilan eslatib o'tiladi",
+      "Sinf rahbari tomonidan chorakda bir marta o'tkaziladi",
+      "Maxsus jurnalda qayd etilib, ishtirokchilar imzosi olinadi"
+    ],
+    "correct": 3,
+    "explanation": "Yo'riqnoma o'tkazilgani maxsus jurnalda qayd etiladi va o'quvchilardan imzo olinadi — bu ham talabning bajarilishini tasdiqlaydi, ham o'quvchilarga mas'uliyatni his qildiradi. Hujjat bo'lmasa, baxtsiz hodisa yuz berganda yo'riqnoma o'tkazilganini isbotlab bo'lmaydi va javobgarlik butunlay o'qituvchi zimmasiga tushadi.",
+    "mnemonic": "Yo'riqnoma imzosiz — o'tkazilmagan hisoblanadi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: xavfsizlik yo'riqnomasini hujjatlashtirish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "hujjatlashtirish talabini og'zaki shakl bilan almashtirish",
+      "alohida qaydni dars ishlanmasidagi eslatma bilan almashtirish",
+      "har mashg'ulot oldidagi talabni davriy tadbirga aylantirish",
+      ""
+    ]
+  },
+  {
+    "q": "Mashg'ulot paytida o'quvchi qo'lini shikastladi. O'qituvchi unga birinchi yordam ko'rsatdi, ammo hodisani hech kimga xabar qilmadi va hech qayerda qayd etmadi, «jiddiy emas» deb hisobladi. Baxtsiz hodisa yuz berganda o'qituvchining harakati qanday bo'lishi kerak?",
+    "opts": [
+      "Yordam ko'rsatiladi, ma'muriyat va ota-ona xabardor qilinib, hodisa qayd etiladi",
+      "Yordam ko'rsatiladi, holat yengil bo'lsa qo'shimcha chora talab etilmaydi",
+      "Yordam ko'rsatiladi va faqat ota-onaga og'zaki aytiladi",
+      "Yordam ko'rsatiladi va masala chorak yakunida hisobotga kiritiladi"
+    ],
+    "correct": 0,
+    "explanation": "Har qanday shikastlanish, yengil ko'ringanda ham, tibbiy xodim tomonidan ko'rikdan o'tkazilishi, ma'muriyat va ota-ona xabardor qilinishi hamda belgilangan tartibda qayd etilishi shart. Yengil deb baholangan jarohat keyin murakkablashishi mumkin, qayd etilmagan hodisa esa o'qituvchini himoyasiz qoldiradi.",
+    "mnemonic": "Har hodisa — yordam, xabar va qayd.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: baxtsiz hodisada harakat tartibi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "hodisaning og'irligini o'zi baholab, tartibni bajarmaslik",
+      "rasmiy xabardor qilishni og'zaki bildirish bilan almashtirish",
+      "shoshilinch bildirishni davriy hisobotga qoldirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi elektron jurnalga baholarni bir necha hafta kechikib, chorak oxirida bir kunda kiritdi. O'quvchilar ham, ota-onalar ham oraliq holatni bilmay qoldi. Jurnalni muntazam yuritishning pedagogik ma'nosi nimada?",
+    "opts": [
+      "O'qituvchining ish hajmi hujjat bilan tasdiqlanadi",
+      "O'quvchi va ota-ona holatni o'z vaqtida bilib, tuzatish imkonini oladi",
+      "Ma'muriyat nazorati uchun rasmiy hujjat shakllantiriladi",
+      "Chorak yakunidagi hisob-kitob ishi yengillashtiriladi"
+    ],
+    "correct": 1,
+    "explanation": "Jurnal — hisobot hujjatidan avval qaytar aloqa vositasi: baho o'z vaqtida qo'yilsa, o'quvchi bo'shliqni chorak tugagunga qadar to'ldirish imkoniga ega bo'ladi. Chorak oxirida bir kunda kiritilgan baholar esa hech narsani o'zgartirishga imkon bermaydi va faqat qayd etish vazifasini bajaradi.",
+    "mnemonic": "O'z vaqtidagi baho — tuzatish imkoni.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: hujjat yuritish va qaytar aloqa",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "jurnalni o'qituvchi faoliyatini tasdiqlash vositasi deb bilish",
+      "",
+      "pedagogik ma'noni ma'muriy nazorat vazifasiga qisqartirish",
+      "jurnal vazifasini texnik qulaylik bilan izohlash"
+    ]
+  },
+  {
+    "q": "Maktabda fan to'garagi ochilmoqda. O'qituvchi unga faqat a'lochi o'quvchilarni tanlab oldi va «qolganlari ulgurmaydi» dedi. Direktor bu tanlovni qayta ko'rib chiqishni so'radi. Sinfdan tashqari ishlarni tashkil etishda qanday tamoyil amal qiladi?",
+    "opts": [
+      "Ishtirok butun sinf uchun majburiy qilib belgilanadi",
+      "Tarkib har chorakda o'zlashtirish natijasiga qarab yangilanadi",
+      "Qiziqish asosida ochiq bo'ladi, daraja ishtirokchiga moslanadi",
+      "Faqat yuqori natijali o'quvchilar tanlab olinadi va qolgani chetda qoladi"
+    ],
+    "correct": 2,
+    "explanation": "Sinfdan tashqari ish o'quvchining qiziqishini rivojlantirish va muvaffaqiyat tajribasini berish uchun mo'ljallangan, shuning uchun unga kirish natijaga qarab cheklanmaydi. Aksincha, darsda o'zini ko'rsata olmagan o'quvchi ko'pincha aynan shu yerda o'z kuchli tomonini topadi; faoliyat darajasi esa har bir ishtirokchiga moslanadi.",
+    "mnemonic": "To'garak — qiziqish uchun, saralash uchun emas.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: sinfdan tashqari ishlarni tashkil etish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "ixtiyoriy faoliyatni majburiy qilib, motivatsiyani yo'qotish",
+      "ishtirokni o'zlashtirish ko'rsatkichiga bog'lab qo'yish",
+      "",
+      "rivojlantiruvchi muhitni saralash vositasiga aylantirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi darsda tushuntirishni tugatgach, «savol bormi?» deb so'radi, sinfdan javob bo'lmagach, yangi mavzuga o'tdi. Nazorat ishida ko'pchilik mavzuni tushunmagani ma'lum bo'ldi. Tushunishni tekshirishning ishonchli usuli qanday?",
+    "opts": [
+      "Sinfga umumiy savol berib, javob berganlarni tinglash",
+      "Kuchli o'quvchidan mavzuni takrorlab berishni so'rash",
+      "Qo'l ko'targanlar sonini sanab, ulush bo'yicha xulosa qilish",
+      "Har bir o'quvchidan qisqa javob talab qiladigan topshiriq berish"
+    ],
+    "correct": 3,
+    "explanation": "«Savol bormi?» degan so'roq faqat o'zining tushunmaganini tan olishga tayyor o'quvchilarni ko'rsatadi, ular esa odatda ozchilikni tashkil qiladi. Ishonchli tekshiruv har bir o'quvchidan javob oladi: qisqa yozma topshiriq, chiqish varaqasi yoki signal kartochkalari orqali butun sinf holati bir vaqtda ko'rinadi.",
+    "mnemonic": "Sukut — tushunish belgisi emas.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: darsda tushunishni tekshirish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "faol o'quvchilar javobini butun sinf holati deb qabul qilish",
+      "eng yuqori natijadan butun sinf holatiga xulosa chiqarish",
+      "tashqi belgini bilim darajasi ko'rsatkichi deb hisoblash",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi bir necha yildan beri bir xil nazorat ishi variantidan foydalanadi va topshiriqlar o'quvchilar orasida oldindan tarqalgan. Natijalar yuqori, ammo haqiqiy bilim darajasini ko'rsatmaydi. Baholash vositasiga qanday talab qo'yiladi?",
+    "opts": [
+      "Ishonchli bo'lishi kerak — natija haqiqiy bilimni aks ettirsin",
+      "Qulay bo'lishi kerak — tekshirish uchun kam vaqt talab qilsin",
+      "Barqaror bo'lishi kerak — yillar davomida o'zgarmasin",
+      "Yengil bo'lishi kerak — ko'pchilik yuqori baho olsin"
+    ],
+    "correct": 0,
+    "explanation": "Baholash vositasining asosiy sifati — u o'lchamoqchi bo'lgan narsani haqiqatan o'lchashi. Oldindan tarqalgan variant o'quvchining bilimini emas, topshiriqni ko'rganini o'lchaydi, shuning uchun yuqori natija ham xato xulosaga olib keladi. Tekshirish qulayligi va natijalar ko'rsatkichi bu talabdan ustun qo'yilmaydi.",
+    "mnemonic": "Baholash o'lchamoqchi bo'lganini o'lchasin.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: baholash vositasining ishonchliligi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "o'lchov ishonchliligini tekshirish qulayligiga almashtirish",
+      "vositaning o'zgarmasligini sifat ko'rsatkichi deb bilish",
+      "yuqori ko'rsatkichni baholash maqsadi deb hisoblash"
+    ]
+  },
+  {
+    "q": "O'qituvchi ikki o'quvchining bir xil xatosiga turlicha munosabat bildirdi: birini sinf oldida tanqid qildi, ikkinchisiga hech narsa demadi. Sinfda norozilik paydo bo'ldi va o'qituvchiga ishonch pasaydi. Bu holat qaysi kasbiy talabning buzilishi hisoblanadi?",
+    "opts": [
+      "Ota-onalar bilan hamkorlik talabining",
+      "Adolatlilik va yagona talab qo'yish talabining",
+      "O'quv rejasini bajarish talabining",
+      "Hujjat yuritish tartibini saqlash talabining"
+    ],
+    "correct": 1,
+    "explanation": "O'quvchilar o'qituvchining adolatliligini juda tez sezadi va bir xil holatga turlicha munosabat ishonchni yo'qotadi hamda o'qituvchining obro'siga putur yetkazadi. Kasbiy etika barcha o'quvchilarga yagona talab qo'yishni va shaxsiy munosabatni baholashga aralashtirmaslikni talab qiladi.",
+    "mnemonic": "Bir xil xatoga — bir xil munosabat.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: adolatlilik va yagona talab",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "sinf ichidagi muammoni tashqi hamkorlik masalasi deb bilish",
+      "",
+      "etik muammoni o'quv reja masalasi deb tushunish",
+      "etik muammoni hujjat yuritish masalasi deb tushunish"
+    ]
+  },
+  {
+    "q": "O'qituvchi bir necha oydan beri charchoq, asabiylik va ishga qiziqishning yo'qolishini sezmoqda, darslarga tayyorgarlik sifati pasaydi. U «bu o'tib ketadi» deb hech qanday chora ko'rmadi. Kasbiy charchash holatida qanday yo'l tutish maqsadga muvofiq?",
+    "opts": [
+      "Holat e'tiborsiz qoldirilib, o'z-o'zidan o'tishi kutiladi",
+      "Faoliyat butunlay to'xtatilib, kasbdan voz kechiladi",
+      "Yuklama taqsimoti qayta ko'rilib, dam olish va yordam manbalari topiladi",
+      "Ish hajmi oshirilib, faoliyat orqali holatdan chiqishga harakat qilinadi"
+    ],
+    "correct": 2,
+    "explanation": "Kasbiy charchash uzoq davom etgan yuqori yuklama va tiklanish imkoniyatining yetishmasligidan kelib chiqadi, shuning uchun u o'z-o'zidan o'tmaydi va yuklamani oshirish bilan yengib bo'lmaydi. Yechim — yuklamani qayta taqsimlash, dam olish rejimini tiklash, hamkasblar va mutaxassis yordamiga murojaat qilish.",
+    "mnemonic": "Charchash yuklama bilan davolanmaydi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: kasbiy charchashning oldini olish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "holatni e'tiborsiz qoldirib, vaziyatni chuqurlashtirish",
+      "oraliq choralarni ko'rmasdan keskin qarorga o'tish",
+      "",
+      "charchash sababini yanada kuchaytiradigan yo'lni tanlash"
+    ]
+  },
+  {
+    "q": "Attestatsiyaga tayyorlanayotgan o'qituvchi papkaga faqat sertifikatlar va tashakkurnomalarni yig'di, o'quvchilar natijasi va dars ishlanmalarini kiritmadi. Komissiya materialni to'liq emas deb topdi. Kasbiy portfolio nimalardan tashkil topadi?",
+    "opts": [
+      "Rasmiy hujjatlar va mukofotlar to'plami bilan cheklanadi",
+      "O'quv yili davomidagi hisobotlar nusxalaridan iborat bo'ladi",
+      "Ma'muriyat tomonidan berilgan tavsifnomalardan tashkil topadi",
+      "Faoliyat namunalari, o'quvchilar natijasi va o'z tahlili bilan birga"
+    ],
+    "correct": 3,
+    "explanation": "Portfolio o'qituvchi nima qilganini emas, uning ishi qanday natija berganini ko'rsatishi kerak: dars ishlanmalari va materiallar, o'quvchilar natijalarining o'zgarishi, o'z faoliyatini tahlil qilish va shundan chiqarilgan xulosalar. Sertifikatlar bu manzarani to'ldiradi, ammo o'zi yetarli dalil bo'lmaydi.",
+    "mnemonic": "Portfolio — natija va tahlil, sertifikat emas.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: kasbiy portfolio",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "portfolioni rasmiy hujjatlar to'plamiga qisqartirish",
+      "kasbiy tahlilni hisobot nusxalari bilan almashtirish",
+      "o'z faoliyati dalilini tashqi baho bilan almashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Metodbirlashmada o'qituvchi «men yigirma yildan beri ishlayman, hamkasblarimning darsiga borishning menga hojati yo'q» dedi. Rahbar bu qarashni cheklovchi deb baholadi. O'zaro dars kuzatishning asosiy foydasi nimada?",
+    "opts": [
+      "Kuzatuvchi ham, dars beruvchi ham yangi yechim va ko'zqarash oladi",
+      "Kuzatuvchi hamkasbining kamchiliklarini qayd etib, ma'muriyatga bildiradi",
+      "Dars beruvchi o'z ishini rasman tasdiqlatib oladi",
+      "Kuzatuv natijasi attestatsiya uchun ball to'plash imkonini beradi"
+    ],
+    "correct": 0,
+    "explanation": "O'zaro kuzatishning qiymati ikki tomonlama: kuzatuvchi boshqa yechimlarni ko'radi va o'z amaliyoti bilan taqqoslaydi, dars beruvchi esa tashqi nigohdan qaytar aloqa oladi. Uni nazorat yoki hisobot vositasiga aylantirish esa ochiqlikni yo'qotadi va o'qituvchilarni namoyish darsi tayyorlashga majbur qiladi.",
+    "mnemonic": "O'zaro kuzatish — nazorat emas, almashuv.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Kasb standarti: hamkasblar bilan tajriba almashish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "tajriba almashuvini nazorat vositasiga aylantirish",
+      "kuzatuv maqsadini rasmiy tasdiqlash deb bilish",
+      "kasbiy foydani ball to'plash manfaatiga qisqartirish"
+    ]
+  }
+]

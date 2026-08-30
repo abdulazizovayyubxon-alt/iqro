@@ -1,0 +1,518 @@
+{
+  "topicId": 6,
+  "bolim": "Pedagogik mahorat va kasb standarti",
+  "kerak": 180,
+  "korilgan": 126,
+  "izoh": "Blueprint: kasb standarti 60 · umumiy pedagogika 84 · CHQBT o'qitish metodikasi 36. Bazadagi 126 nomzod to'g'ri javob mazmuni bo'yicha 86 ta konstruktga klasterlandi: eng katta klasterda 12 ta, ikkinchisida 11 ta bir xil mazmunli savol bor edi. Har konstruktdan 1-3 ta vakil saqlanib, qolgani chiqarildi.",
+  "saqlanadi": [
+    {
+      "id": "3B3xZjwZmH4X8rcL1vPG",
+      "mavzu": "kasb standarti · xavfsiz muhit: himoya vositalarini tekshirish"
+    },
+    {
+      "id": "exKrLYn5tzubnekVWXIL",
+      "mavzu": "kasb standarti · xavfsiz muhit: jihoz va kiyimni tekshirish"
+    },
+    {
+      "id": "iqvkC90aURQOJ4kCIlgz",
+      "mavzu": "kasb standarti · xavfsiz muhit: kamsitmaslik va teng imkoniyat"
+    },
+    {
+      "id": "ibJWxoXrJkS1Ryh6FHi8",
+      "mavzu": "kasb standarti · dasturni moslashtirish: nazariyni amaliy misol orqali"
+    },
+    {
+      "id": "nbJDtVYNkhvUoptk6dBH",
+      "mavzu": "kasb standarti · dasturni moslashtirish: turli tayyorgarlik darajasi"
+    },
+    {
+      "id": "5OFCY0QyYg8c9pebpuAf",
+      "mavzu": "kasb standarti · aniq mezonlar asosida baholash"
+    },
+    {
+      "id": "IjbrRibYXWR1AgVWJVze",
+      "mavzu": "kasb standarti · aniq tavsiya beruvchi qayta aloqa"
+    },
+    {
+      "id": "n8Ssb6zqDcwbc0Lkr9rY",
+      "mavzu": "pedagogika · differensiatsiya va individual yondashuv"
+    },
+    {
+      "id": "hhzBsq3IATnEJki7AcZn",
+      "mavzu": "kasb standarti · o'lchanadigan dars maqsadini belgilash"
+    },
+    {
+      "id": "490mXv3jTsDcXK9V6e0W",
+      "mavzu": "kasb standarti · dars maqsadi, shakli, usuli va vaqti"
+    },
+    {
+      "id": "Ce1aiOed3R54Vf6eX3dx",
+      "mavzu": "kasb standarti · fanlararo integratsiya"
+    },
+    {
+      "id": "ggJQM84oDMosZHJk6Pmp",
+      "mavzu": "kasb standarti · xatodan qo'rqmaydigan muhit"
+    },
+    {
+      "id": "N4PloLMOJWAswp4GX1x7",
+      "mavzu": "kasb standarti · baholash tahlili asosida metodikani moslashtirish"
+    },
+    {
+      "id": "fTeJvfXzLSehjEDSzFgL",
+      "mavzu": "kasb standarti · baholash natijasi asosida rejani qayta ko'rish"
+    },
+    {
+      "id": "MTgV7D8ddRwmO7ctrZGl",
+      "mavzu": "pedagogika · formativ baholash"
+    },
+    {
+      "id": "Nsgl8KqxaH4KqgAiRQCY",
+      "mavzu": "kasb standarti · o'quv jarayonini rejalashtirish"
+    },
+    {
+      "id": "Y1kHtMCMLqgPfN7Aj0s2",
+      "mavzu": "pedagogika · pedagogik takt"
+    },
+    {
+      "id": "dN6cqJxv8FwB45cJW2YG",
+      "mavzu": "kasb standarti · maxsus ta'limiy ehtiyoj"
+    },
+    {
+      "id": "iFB8xdcKgWZkWbZ6g0Mb",
+      "mavzu": "pedagogika · nazariya va amaliyot bog'liqligi tamoyili"
+    },
+    {
+      "id": "oeKQDY5fbMPBjIjNLtqw",
+      "mavzu": "kasb standarti · hamkasblar bilan individual trayektoriya"
+    },
+    {
+      "id": "1nM7Co8pGJpsYKlc2puL",
+      "mavzu": "pedagogika · rag'batlantirish orqali motivatsiya"
+    },
+    {
+      "id": "2QlJYfUQRiBSEPSIShWl",
+      "mavzu": "kasb standarti · o'quvchilarni faol jalb qilish"
+    },
+    {
+      "id": "2fXFyGZbi4qqQzomx51p",
+      "mavzu": "pedagogika · onglilik va faollik tamoyili"
+    },
+    {
+      "id": "2kGFOCpF4ktp51nWqPcE",
+      "mavzu": "pedagogika · etika: huquqiy bilimni tazyiq vositasi qilmaslik"
+    },
+    {
+      "id": "3sJaZikHSjKDYoToiCNG",
+      "mavzu": "pedagogika · o'z vaqtida differensial yordam"
+    },
+    {
+      "id": "5jWMuYBAfyqdfK4rxNZI",
+      "mavzu": "pedagogika · moslashuvchanlik va insonparvarlik",
+      "tuzatish": "o'zakda 'mayib' so'zi"
+    },
+    {
+      "id": "93hZWHVekANWaLsQUwrX",
+      "mavzu": "kasb standarti · mutaxassislar bilan maslahatlashish"
+    },
+    {
+      "id": "97ihbZjHPTPQ8WQOMs6f",
+      "mavzu": "pedagogika · o'quvchi fikrini qadrlash"
+    },
+    {
+      "id": "9litZNn8i8opCGDolbn4",
+      "mavzu": "kasb standarti · AKT vositalarini qo'llash"
+    },
+    {
+      "id": "AHFW9JSxKqBK0sQucnyl",
+      "mavzu": "pedagogika · deduksiya usuli"
+    },
+    {
+      "id": "FAB1KZ3ws828Un7OGinP",
+      "mavzu": "kasb standarti · ota-ona bilan individual suhbat"
+    },
+    {
+      "id": "GOdswJP9Gkm08AFT0ltJ",
+      "mavzu": "pedagogika · tanqidiy fikrlashni rivojlantirish"
+    },
+    {
+      "id": "GkxxZwK89vSXojHasqbN",
+      "mavzu": "kasb standarti · hissiy holatdagi ota-ona bilan muloqot"
+    },
+    {
+      "id": "HabIs1ei93vw8JAcO8bw",
+      "mavzu": "kasb standarti · ota-onani ta'lim qarorlariga jalb qilish"
+    },
+    {
+      "id": "J26kkdy7tAe6v25gqFkn",
+      "mavzu": "pedagogika · formativ va yakuniy baholash farqi"
+    },
+    {
+      "id": "Kdi2tX8Ny15ksumdlo9Q",
+      "mavzu": "pedagogika · muammoli o'qitish metodi",
+      "tuzatish": "o'zakda 'Mang'ala' terish xatosi"
+    },
+    {
+      "id": "OKiYoxji13TOTvl1njc7",
+      "mavzu": "kasb standarti · tenglik, adolat va hurmat"
+    },
+    {
+      "id": "OWQ1FUcE0lSXeIKPi8uz",
+      "mavzu": "kasb standarti · ota-onalar shikoyati bilan ishlash"
+    },
+    {
+      "id": "QAeg5ZvHdaXdU1oqcJSe",
+      "mavzu": "pedagogika · oila bilan muloqotda ehtiyotkorlik"
+    },
+    {
+      "id": "S1QnOSTaL2RDqJCiuPeG",
+      "mavzu": "CHQBT metodikasi · kognitiv faollik va ijodkorlik"
+    },
+    {
+      "id": "SYxJN9TJO0pUkpPEJCq4",
+      "mavzu": "pedagogika · qo'rqitish uslubining oqibati"
+    },
+    {
+      "id": "TB22yw9ps682uzZ4Mx4o",
+      "mavzu": "pedagogika · nizoli vaziyatni hal qilish"
+    },
+    {
+      "id": "Xe0Ezg2TocrbdS40hgxa",
+      "mavzu": "kasb standarti · muntazam kuzatuv va qayta aloqa"
+    },
+    {
+      "id": "Yv7pbbB2oaGuK6Ed1DN0",
+      "mavzu": "CHQBT metodikasi · harakatni o'rgatish ketma-ketligi"
+    },
+    {
+      "id": "cNjWWTDV8cSsAhWTF3U9",
+      "mavzu": "kasb standarti · o'z faoliyatini tahlil qilish"
+    },
+    {
+      "id": "fr3isZOW4XTJ2Yr6b08l",
+      "mavzu": "pedagogika · hamkorlik kommunikativ uslubi"
+    },
+    {
+      "id": "gA5C3p6P0U2gMkrqJps4",
+      "mavzu": "pedagogika · o'quv reja hujjati"
+    },
+    {
+      "id": "gR26F1XMJgR82D78cRzd",
+      "mavzu": "kasb standarti · kasbiy rivojlanish ehtiyojini belgilash"
+    },
+    {
+      "id": "grnTA8jIAfUnfC05Vbk5",
+      "mavzu": "pedagogika · etika: ota-ona xavotirini tushunish"
+    },
+    {
+      "id": "jD8ME3zBtfGMgba9MZW9",
+      "mavzu": "CHQBT metodikasi · erkin vaqtni mazmunli tashkil etish"
+    },
+    {
+      "id": "jDQ95m86OyeaO151n18n",
+      "mavzu": "kasb standarti · ochiq dars va hamkasblar fikri"
+    },
+    {
+      "id": "jZykQWgSy6Ujcb2XHtrP",
+      "mavzu": "pedagogika · manbalarni tahlil qilish ko'nikmasi"
+    },
+    {
+      "id": "kRSlsgCLsU8TqxO1YpAC",
+      "mavzu": "CHQBT metodikasi · dars bosqichlari va vaqt taqsimoti",
+      "tuzatish": "o'zakda 'Zo'rlik mashg'ulotida'"
+    },
+    {
+      "id": "kswvCRDzqXXRCEjZhVOm",
+      "mavzu": "pedagogika · etika: asossiz imtiyoz so'roviga javob"
+    },
+    {
+      "id": "mA1xdnDuZlaqwDLKSYdI",
+      "mavzu": "kasb standarti · baholash ma'lumotini rejalashtirishda ishlatish"
+    },
+    {
+      "id": "mOdDMIqoGZE7l8mIxKb7",
+      "mavzu": "CHQBT metodikasi · sharoit o'zgarganda mashg'ulotni moslashtirish"
+    },
+    {
+      "id": "mPqRmQVVWzVLcVbmbqrm",
+      "mavzu": "kasb standarti · teng imkoniyatlar yaratish"
+    },
+    {
+      "id": "n3VIeoruQFdl86JRf9Jv",
+      "mavzu": "pedagogika · shaxsiy qiziqish orqali motivatsiya"
+    },
+    {
+      "id": "pa2BlM1m3HgyMBvPWGPP",
+      "mavzu": "kasb standarti · o'zaro darsdan tajriba olish"
+    },
+    {
+      "id": "rvMHjevoe9w8JMOUJpcC",
+      "mavzu": "kasb standarti · ota-ona bilan hamkorlik munosabati"
+    },
+    {
+      "id": "t7NaLLj0UxeUCNHQe6In",
+      "mavzu": "pedagogika · loyihaga asoslangan ta'lim"
+    },
+    {
+      "id": "tJOxWcnIk4MPT1gUqjup",
+      "mavzu": "pedagogika · motivatsion vaziyat yaratish"
+    },
+    {
+      "id": "tzyz35Dpt3dsjy4lnaCL",
+      "mavzu": "CHQBT metodikasi · amaliy ahamiyatni ko'rsatish"
+    },
+    {
+      "id": "vVoTfwn3iyRQHkuyxA0b",
+      "mavzu": "pedagogika · metakognitiv strategiya"
+    },
+    {
+      "id": "vWLtn3AsqH8QxaKFdpYT",
+      "mavzu": "pedagogika · madaniyatlararo kompetensiya"
+    },
+    {
+      "id": "vWw1Trgv2q3fyGSksro2",
+      "mavzu": "pedagogika · bilim, ko'nikma va malaka birligi"
+    },
+    {
+      "id": "vfNUChWv3Rzcp6KnizUX",
+      "mavzu": "CHQBT metodikasi · mustaqillik va tashabbuskorlik"
+    },
+    {
+      "id": "vk2Zx61X8zfS8EJVuEHR",
+      "mavzu": "pedagogika · bola huquqlari konventsiyasi"
+    },
+    {
+      "id": "wdh3w5exKn7sdrz0dHXH",
+      "mavzu": "pedagogika · intizom buzilishida individual suhbat"
+    },
+    {
+      "id": "x7WgvPvoCQDiGCjieBoS",
+      "mavzu": "pedagogika · inklyuzivlik tamoyili"
+    },
+    {
+      "id": "xPby2AxccAdIleZqgl2y",
+      "mavzu": "CHQBT metodikasi · mas'uliyatli qaror qabul qilish"
+    },
+    {
+      "id": "z07iBiYLr31KSWkMxiEd",
+      "mavzu": "kasb standarti · hamkasblar bilan muammoni muhokama qilish"
+    }
+  ],
+  "chiqarildi": [
+    {
+      "id": "1w1C3OHaNX1lGxk71tQa",
+      "sabab": "manba tasdiqlamagan metod nomi: «bosh g'oyani ajratish metodi»"
+    },
+    {
+      "id": "4FDbIjdtNAcpd2M4LOkz",
+      "sabab": "takror konstrukt: «Xavfsiz va qo'llab-quvvatlovchi ta'lim muhitini yaratish va » — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "6pvgsqRH9I6FwIjOFo2o",
+      "sabab": "takror konstrukt: «O'quvchilarning ehtiyojlari va qiziqishlaridan kelib chiqib » — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "7kHOWxeKuDCkg6hr3KWh",
+      "sabab": "takror: rag'batlantirish orqali motivatsiya (1nM7Co saqlandi)"
+    },
+    {
+      "id": "8XGq0tGeq4PshxzLanNw",
+      "sabab": "takror konstrukt: «O'quvchilarning ehtiyojlari va qiziqishlaridan kelib chiqib » — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "8pnBCly4VH9s01dnb2S2",
+      "sabab": "takror konstrukt: «O'quvchilarning ehtiyojlari va qiziqishlaridan kelib chiqib » — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "8qhQrre1vS4vMhj4koY6",
+      "sabab": "takror: individual xususiyatlarni hisobga olish (3sJaZi saqlandi) + matn buzuq"
+    },
+    {
+      "id": "9JgWslKW3PNepZW1vB09",
+      "sabab": "takror konstrukt: «O'quvchilarning individual qiziqishlaridan kelib chiqib o'qu» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "CoCgObzVWlTl9MoqnvKm",
+      "sabab": "takror konstrukt: «O'quvchilarning ehtiyojlari va qiziqishlaridan kelib chiqib » — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "Crgg9PCrZefb1kqPYGLX",
+      "sabab": "takror konstrukt: «Xavfsiz rivojlantiruvchi ta'lim muhitini yaratish va ta'minl» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "DmCO2vX9bDlJkhXQdodw",
+      "sabab": "takror konstrukt: «Sog'liqni saqlovchi va qo'llab-quvvatlovchi muhit yaratish» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "FJ13eedqsGtDsBY0OwlB",
+      "sabab": "MOSLASHTIRISH formati — foydalanuvchi qaroriga ko'ra ishlatilmaydi"
+    },
+    {
+      "id": "FSW6Y4D8K9mUQinYrzXz",
+      "sabab": "takror konstrukt: «Xavfsiz rivojlantiruvchi ta'lim muhitini yaratish va ta'minl» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "GEtq9malNFlqk8aTCcq2",
+      "sabab": "takror konstrukt: «Baholash natijalarini tahlil qilish orqali o'qitish metodika» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "IrdCy9TcDNMVwykpG19N",
+      "sabab": "takror: hissiy holatdagi ota-ona bilan muloqot (GkxxZwK saqlandi)"
+    },
+    {
+      "id": "JQjGnV8aH0SnEyI2WunA",
+      "sabab": "o'zak buzuq: «Buraning xavfli ekanini», «Dengiz piyodalari»"
+    },
+    {
+      "id": "JbA8WLmZkdgHCk66dSrD",
+      "sabab": "takror konstrukt: «Bilimni baholash natijalari asosida rejalarni muvozanatlasht» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "L3pBcIXsxrriGjYyOg9i",
+      "sabab": "vaziyat ziddiyatli: shifokor ruxsat bergan, lekin rad etish to'g'ri deb baholangan"
+    },
+    {
+      "id": "LX1hW0X1HRY6bn8sTGys",
+      "sabab": "takror konstrukt: «O'quvchilarning ehtiyojlari va qiziqishlaridan kelib chiqib » — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "LnbCOsPeK3byz628aNGF",
+      "sabab": "javob matni noto'g'ri tuzilgan: «pedagogik xunuklik»"
+    },
+    {
+      "id": "N749eQb3eqe470lPY7oM",
+      "sabab": "takror konstrukt: «O'z faoliyatini fanlararo kompetensiyalarni hisobga olib, in» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "OB79dwcS3sU8XV45zp10",
+      "sabab": "etik jihatdan shubhali: javob o'quvchini aybdor qilib ko'rsatadi"
+    },
+    {
+      "id": "PnruWKLUrj52WvUxKkvz",
+      "sabab": "takror konstrukt: «Xavfsiz rivojlantiruvchi ta'lim muhitini yaratish va ta'minl» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "R1r2XSzYtSojh16kCQOv",
+      "sabab": "o'zak buzuq: «Topchi tayyorgarligi»"
+    },
+    {
+      "id": "RhiuljOvvheEz3SWoKWL",
+      "sabab": "takror konstrukt: «O'zlashtirishni baholash va qayta aloqani taqdim etish» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "Sbx2qi0n6o2cXqrkME8c",
+      "sabab": "savol mavhum tuzilgan, javob deyarli o'zakni takrorlaydi"
+    },
+    {
+      "id": "UPhss0GWNGDJLUGnCSUi",
+      "sabab": "takror konstrukt: «O'quvchilarning ehtiyojlari va qiziqishlaridan kelib chiqib » — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "UaOXWhEoOM0ISQcZlt4n",
+      "sabab": "takror: mutaxassis bilan maslahatlashish (93hZWH saqlandi)"
+    },
+    {
+      "id": "VLzQDyY11YMCeNML3hrW",
+      "sabab": "takror konstrukt: «Xavfsiz va qo'llab-quvvatlovchi ta'lim muhitini yaratish va » — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "WvW6U8eaQT0h63HLcXiH",
+      "sabab": "takror konstrukt: «Differensial yondashuv va individual yordam» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "XPSQmKH466n5yNbIhr0U",
+      "sabab": "takror: pedagogik takt (Y1kHtM saqlandi)"
+    },
+    {
+      "id": "c2vC7XVpeUejedv3s893",
+      "sabab": "takror konstrukt: «Xavfsiz va qo'llab-quvvatlovchi ta'lim muhitini yaratish va » — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "cnThBylIM8WcXdhdLYbq",
+      "sabab": "takror konstrukt: «Xavfsiz rivojlantiruvchi ta'lim muhitini yaratish va ta'minl» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "f51D1BsnEx5eOCwXvNHm",
+      "sabab": "takror konstrukt: «O'quvchilarning ehtiyojlari va o'zlashtirish ko'rsatkichlari» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "fcMeo9ySKxlbaPvCyhZS",
+      "sabab": "takror konstrukt: «Xavfsiz rivojlantiruvchi ta'lim muhitini yaratish va ta'minl» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "iMAZARBmcdFkMJcF04fq",
+      "sabab": "takror konstrukt: «Maqsad, shakl va usullarini aniqlash hamda dars vaqtini oqil» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "imV3pKsHfaUe30orsvgA",
+      "sabab": "takror konstrukt: «Xavfsiz va qo'llab-quvvatlovchi ta'lim muhitini yaratish va » — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "jwlRyaKQ8UEZ3rzMVKex",
+      "sabab": "takror konstrukt: «O'quvchilarning maxsus ta'limiy ehtiyojlari asosida individu» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "kwAjZ3BCyXJc6vOszFPe",
+      "sabab": "takror konstrukt: «Fanlararo kompetensiyalarning korrelyatsiya va integratsiya » — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "pwe8Y9cSFHcLj8cq1aja",
+      "sabab": "MOSLASHTIRISH formati — foydalanuvchi qaroriga ko'ra ishlatilmaydi"
+    },
+    {
+      "id": "q2NyQZcFOdxiyKnoQpYu",
+      "sabab": "takror konstrukt: «Boshqa mutaxassislar bilan hamkorlikda individual ta'lim tra» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "qO1FansEhZ0XJtR9ZbCy",
+      "sabab": "takror: nizoni hal qilish (TB22yw saqlandi)"
+    },
+    {
+      "id": "qVjoTYxL8Tu9K8MdiRnq",
+      "sabab": "javob matni chalkash va haddan tashqari uzun"
+    },
+    {
+      "id": "qWfzRY7aAIRGch8aQQ3s",
+      "sabab": "takror konstrukt: «Pedagogik takt va nazokat» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "qpVm3E53Yq0lAeG5mh49",
+      "sabab": "takror konstrukt: «Differensial yondashuv va individual yordam» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "qqJ8kCTD3Wx3tgoQB4d3",
+      "sabab": "takror konstrukt: «O'zlashtirishni baholash va qayta aloqani taqdim etish» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "r0cwIHZjxGwWfeVytLuV",
+      "sabab": "takror konstrukt: «O'quvchilarning ehtiyojlari va qiziqishlaridan kelib chiqib » — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "tGzdAs08dJYe5K7FiWZc",
+      "sabab": "takror konstrukt: «Nazariya va amaliyot birligi tamoyili» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "vNtU5MiZ20GXeRAWkrzm",
+      "sabab": "takror konstrukt: «O'quvchilarning ehtiyojlari va o'zlashtirish ko'rsatkichlari» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "wHwsMxAiATOaBJiWwzv7",
+      "sabab": "takror konstrukt: «O'quv jarayonini rejalashtirish» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "waisva3w3CsiK2BrPXUB",
+      "sabab": "javob mavhum: «o'z fanini o'qitish metodikasi nazariyalari»"
+    },
+    {
+      "id": "xOW51QtGzQS9SPczK7hX",
+      "sabab": "takror: dars vaqtini rejalashtirish (kRSlsg saqlandi)"
+    },
+    {
+      "id": "xyNlEkq4cxMdBQp4reNI",
+      "sabab": "takror konstrukt: «Formativ (joriy) baholash» — shu mavzuda vakil savol saqlandi"
+    },
+    {
+      "id": "zxQng0AcesCcJH829tfz",
+      "sabab": "takror konstrukt: «O'quvchilarning ehtiyojlari va tayyorgarlik darajasiga qarab» — shu mavzuda vakil savol saqlandi"
+    }
+  ]
+}

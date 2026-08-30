@@ -1,0 +1,410 @@
+{
+  "topicId": 1,
+  "bolim": "Umumharbiy nizomlar",
+  "kerak": 96,
+  "korilgan": 101,
+  "izoh": "Blueprint: Ichki xizmat 24 · Intizom 24 · Garnizon-qorovullik 24 · Saf 24. Bazada saf nizomi bo'yicha 44 ta yaroqli savol bor edi — kvotadan ortiqchasi chiqarildi, o'rniga qolgan uch nizom bo'yicha yangi savol yozildi.",
+  "saqlanadi": [
+    {
+      "id": "4UmFRApfVCaWh4gx65LC",
+      "mavzu": "saf · «Chap-GA!» 90 gradus burilish"
+    },
+    {
+      "id": "4etvnaHTvf6mOnST8U4g",
+      "mavzu": "saf · komanda ovozi safning o'lchamiga mutanosib"
+    },
+    {
+      "id": "76TRavvZUK9yYlYceo4P",
+      "mavzu": "saf · yo'qlamada «Men» javobi"
+    },
+    {
+      "id": "Ajssok17RGNtMI4VGwjW",
+      "mavzu": "saf · «ERKIN!» da joydan ko'chish taqiqi"
+    },
+    {
+      "id": "CNgxXm7fnvNUMmnlJcB0",
+      "mavzu": "saf · boshliqqa 2-3 qadam qolganda to'xtash"
+    },
+    {
+      "id": "CT0NcIBVxu2BmVFoqV73",
+      "mavzu": "saf · intervalni komandir belgilaydi"
+    },
+    {
+      "id": "FWmMERnSsIjvG5S0CnRj",
+      "mavzu": "saf · safdan chiqishdan oldin xabar berish"
+    },
+    {
+      "id": "NJDUc4Mdln5tI9cQULJJ",
+      "mavzu": "saf · boshliq oldida bildiruv matni"
+    },
+    {
+      "id": "Nh58GPufRESWkgfptJiR",
+      "mavzu": "saf · burilish ikki bosqichda"
+    },
+    {
+      "id": "PqfacF99F6VlY6mNRcUH",
+      "mavzu": "saf · bo'shagan o'rinni orqadagi egallaydi"
+    },
+    {
+      "id": "TZbwYMRwaMsbATHpVqxX",
+      "mavzu": "saf · «O'ng yelka — MARSH!» da tirsak va qadam"
+    },
+    {
+      "id": "UKjbqilMRR1xaqWPA6N3",
+      "mavzu": "saf · rota beshta kolonnada saflanmaydi"
+    },
+    {
+      "id": "Uu9BREP9ylUcYk3SM7ty",
+      "mavzu": "saf · bino va parkda oddiy qadam"
+    },
+    {
+      "id": "YVmKeTsTkYsS7bgWvF1o",
+      "mavzu": "saf · sherengalar orasi bir qadam"
+    },
+    {
+      "id": "c2DgMMNtyxwxqPpXCBWK",
+      "mavzu": "saf · «safdan ikki qadam oldinga CHIQING!»"
+    },
+    {
+      "id": "ceDc7KmvLTIHoXe3pA2d",
+      "mavzu": "saf · yurishda ijro komandasi o'ng oyoqda beriladi"
+    },
+    {
+      "id": "gJ9WqqHNHhxpEUE9QHgS",
+      "mavzu": "saf · madhiya chalinganda qo'l holati"
+    },
+    {
+      "id": "hL3Li5kFiW01KLhAQj7M",
+      "mavzu": "saf · boshliq orqa tomondan kelganda"
+    },
+    {
+      "id": "izeWDWVaSV5LomTcE3FO",
+      "mavzu": "saf · ijro komandasi baland, qisqa va aniq"
+    },
+    {
+      "id": "klqhobU8uNtEzu7y4bAK",
+      "mavzu": "saf · 10-15 qadam qolganda «ROSTLAN, O'ng-GA!»"
+    },
+    {
+      "id": "onHqmaAk2pzcJkLIoWhe",
+      "mavzu": "saf · burilishda tayanch nuqtalari"
+    },
+    {
+      "id": "yzdu9Stq2PlzCMGMxxCj",
+      "mavzu": "saf · yozma buyruq safni boshqarishda ishlatilmaydi"
+    },
+    {
+      "id": "80ftzwgtebeDQLL0GIoY",
+      "mavzu": "ichki xizmat · qurolni tarqatish tartibi"
+    },
+    {
+      "id": "9G7Fijxbu6x0HR1VbdqD",
+      "mavzu": "ichki xizmat · davlat, harbiy va xizmat sirlari"
+    },
+    {
+      "id": "HMDKR7w7hqLdGavYetue",
+      "mavzu": "ichki xizmat · buyruqqa «Xo'p bo'ladi» javobi"
+    },
+    {
+      "id": "JwJFDJWnSKCtWzd6amp0",
+      "mavzu": "ichki xizmat · yakkaboshchilik: huquq va javobgarlik"
+    },
+    {
+      "id": "N4WcGXaKznOrSGvb3YWL",
+      "mavzu": "ichki xizmat · harbiy ishni vijdonan o'rganish talabi"
+    },
+    {
+      "id": "DnpduVI8HpyaTNY3ubkE",
+      "mavzu": "ichki xizmat · vazifa bajarilgani haqida bildiruv tartibi"
+    },
+    {
+      "id": "nkJfz6pyTnh8ZoaDufoo",
+      "mavzu": "ichki xizmat · qurolni saqlash va qo'llash huquqi"
+    },
+    {
+      "id": "tBv6OOTd6a7UplHxiuT3",
+      "mavzu": "ichki xizmat · buyruq berish va ijrosini talab qilish",
+      "tuzatish": "o'zakda 'vzod'"
+    },
+    {
+      "id": "yScUodHEbTFZVf73yc2S",
+      "mavzu": "ichki xizmat · dam olish kuni kun tartibi"
+    },
+    {
+      "id": "GlxS0UMhHaNvMJ8TOy5w",
+      "mavzu": "intizom · rag'batlantirish va jazoning umumiy maqsadi",
+      "tuzatish": "o'zakda 'xizbatga'"
+    },
+    {
+      "id": "VQ7yfnfrzblcWbyb4a5V",
+      "mavzu": "intizom · javob berishdan mahrum qilish"
+    },
+    {
+      "id": "eQ2Ob64rZJWgogojLEzG",
+      "mavzu": "intizom · hayfsan — ogohlantirishdan keyingi daraja"
+    },
+    {
+      "id": "hNdrzotZOBCiF7uGLJP0",
+      "mavzu": "intizom · rag'batlantirish mezoni",
+      "tuzatish": "variantda 'Xizmet'"
+    },
+    {
+      "id": "GjWNJJ5iamC4NxhIcCkM",
+      "mavzu": "intizom · jinoiy javobgarlik manbai"
+    },
+    {
+      "id": "cHpcKvlRoqLcA2s95bAP",
+      "mavzu": "qorovullik · soqchi kimlarni postga o'tkazadi"
+    },
+    {
+      "id": "sbfDYD9fzJowlhaPyx0F",
+      "mavzu": "qorovullik · xizmatga yagona rahbarlik"
+    },
+    {
+      "id": "z2Qk7fbmKTO3Qltm8mF6",
+      "mavzu": "qorovullik · qorovul iti xavf belgisi berganda"
+    }
+  ],
+  "chiqarildi": [
+    {
+      "id": "2s3QGQKUoeRArwbfXCym",
+      "sabab": "mulohaza sun'iy: qurol holati xatosining oqibati asossiz tanlangan"
+    },
+    {
+      "id": "419P1MKxg9cSbf1Qfgwn",
+      "sabab": "o'zak juda qisqa va rasmga bog'liq"
+    },
+    {
+      "id": "8B1g7Rdn33pPG9mCaa0x",
+      "sabab": "javob o'zakda: «to'liq aylanish» deyilgan, javob 180 gradus"
+    },
+    {
+      "id": "96Jv0Lo0g847V1AVyuIV",
+      "sabab": "burilish mexanikasi boshqa savollar bilan ziddiyatli"
+    },
+    {
+      "id": "9QNjreQegK4zurlxKbRk",
+      "sabab": "manba tasdiqlamagan: «Hurmat kitobi» PF-23 rag'batlantirish ro'yxatida yo'q"
+    },
+    {
+      "id": "B2Tw7lfI0QpLOgr0OZ38",
+      "sabab": "variantlar mazmunsiz («Shartli ravishda», «Shoshilinchcha») + 'vzod'"
+    },
+    {
+      "id": "CITv9MeSwTnNq0ZgBw8g",
+      "sabab": "javob mazmunsiz: «bir necha marotaba takrorlanadi»"
+    },
+    {
+      "id": "Cf3RNUJScEZXcko2sRZV",
+      "sabab": "takror (HMDK) + matn buzuq: 'rotmiyor', 'Xop'"
+    },
+    {
+      "id": "Dlwq64NnGL4mnRSgoDiU",
+      "sabab": "FAKT SHUBHALI: komanda uch qismdan iborat deyilgan; nizomda ikki qism + 'Kompaniya' tarjima xatosi"
+    },
+    {
+      "id": "LBg7HQHFrjRX611hpuCm",
+      "sabab": "jo'n: ovoz kuchaytirgichning vazifasi"
+    },
+    {
+      "id": "MYZPb3J1Q4gW6Rc0iOY0",
+      "sabab": "matn buzuq: 'Rostom komandiri'"
+    },
+    {
+      "id": "OnQ7mi7IkXdvBT0fF6Sr",
+      "sabab": "komanda shakli manbadan tasdiqlanmadi («Shaxdam — BOS!»)"
+    },
+    {
+      "id": "QOrh9RyU3rKkqq95gjPS",
+      "sabab": "javob mavhum: «harakatni muvofiqlashtirish»"
+    },
+    {
+      "id": "TPp2rA4lKoQZMF9b843j",
+      "sabab": "javob quruq son (7 soat), manbada tasdiqlanmagan"
+    },
+    {
+      "id": "VCDbeYFn2Ip3yGe6ZlUR",
+      "sabab": "manba tasdiqlamagan: «Harbiy Hurmat kitobi» rag'batlantirish turi sifatida"
+    },
+    {
+      "id": "YSipt6kmBw4XS4bTWpn5",
+      "sabab": "soxta fiziologiya: boshni egish → balansning yo'qolishi"
+    },
+    {
+      "id": "aU020oVgvGeku9ontiDG",
+      "sabab": "javob quruq son (110-120 qadam) va boshqa savol bilan ziddiyatli"
+    },
+    {
+      "id": "aZrCZlCfz9wvsHY1vulP",
+      "sabab": "javob mazmunsiz: «safning tartibli joylashuvi»"
+    },
+    {
+      "id": "bEK6Zpn9MhQORZB6ecEY",
+      "sabab": "ta'rif niqobi: interval tushunchasi so'ralmoqda"
+    },
+    {
+      "id": "blaWdbCTR5D4VTcMaCTf",
+      "sabab": "javob variantlari mantiqsiz: «Yurish yoki yonma-yon»"
+    },
+    {
+      "id": "bmUme0Scpu3t2sgUpIS6",
+      "sabab": "javob mavhum, bosqichlar ketma-ketligi asossiz"
+    },
+    {
+      "id": "c9CzVrn8QSJaQF12DZtq",
+      "sabab": "FAKT SHUBHALI: komanda uch qismdan iborat degan da'vo (Dlwq bilan bir xil xato)"
+    },
+    {
+      "id": "cTYsDX0UurgdQBSF1la1",
+      "sabab": "javob mazmunsiz: «bir maromda uyg'un bajariladi»"
+    },
+    {
+      "id": "dVNq9z6xZujYmCyS9bHD",
+      "sabab": "takror: buyruqqa javob berish (HMDK)"
+    },
+    {
+      "id": "eBB8x4aGXnRRmxpphRKK",
+      "sabab": "FAKT SHUBHALI: tekislanishda nigoh boshliqni emas, safdoshni kuzatadi"
+    },
+    {
+      "id": "ffqhk0iwAXNM82a3RTu8",
+      "sabab": "bo'ysunish tartibi manbadan tasdiqlanmadi + 'xizbat'"
+    },
+    {
+      "id": "fty6vz2iA3fFkKxzA8rx",
+      "sabab": "takror va mazmunsiz: qo'l qadam bilan bir maromda"
+    },
+    {
+      "id": "glFGQjnLU4pr1BLHVR3W",
+      "sabab": "takror: burilishning ikkinchi bosqichi + 'Orta oyoq' xatosi"
+    },
+    {
+      "id": "iAPBIE2ZsIg2LPQUjuP9",
+      "sabab": "takror: interval (CT0N)"
+    },
+    {
+      "id": "kHltM94NyrsVZ3WKU4wt",
+      "sabab": "komanda shakli to'liq emas, TZbw bilan takrorlanadi"
+    },
+    {
+      "id": "kQbICOzfWZszHC4zm876",
+      "sabab": "soxta fiziologiya: qo'l harakati → «gavda barqaror emas»"
+    },
+    {
+      "id": "nUQSr1TcRLlbmRhDfKX3",
+      "sabab": "takror: «Xo'p bo'ladi» javobi (uchinchi nusxa)"
+    },
+    {
+      "id": "oCjKoryUwaUEbnA5J1zm",
+      "sabab": "takror: boshqaruv vositasi (xtYm)"
+    },
+    {
+      "id": "phBFTc2VmAET1LCqrjzI",
+      "sabab": "burilish mexanikasi manbadan tasdiqlanmadi"
+    },
+    {
+      "id": "uLOThq5erVPWcmPhif4N",
+      "sabab": "komanda nomi buzuq: «Safga shu qadar!»"
+    },
+    {
+      "id": "wzPELYbiZWmkkVXXOnCs",
+      "sabab": "«Shaxdam» komandasidagi vazn taqsimoti manbadan tasdiqlanmadi"
+    },
+    {
+      "id": "xlemxpdw7V7H18voEn5b",
+      "sabab": "javob o'zakda: buyruqning o'zi «safdan chiqing» deb aytilgan"
+    },
+    {
+      "id": "xvSclF9M6sNpNY9fguLI",
+      "sabab": "safdan chiqish mexanikasi manbadan tasdiqlanmadi"
+    },
+    {
+      "id": "0eo20jDzbjyXZD8bLEFa",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "0rZr6BbcuWLIMtihTQdO",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "8ey2EoIWH1nOyH83IZk3",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "HydpZOJxv7rSmBA5m2yY",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "PbL2D4MpPyZQrbTbVXWS",
+      "sabab": "saf kvotasi (24) to'ldi + karabin eskirgan qurol"
+    },
+    {
+      "id": "PmKRAkz5nHYvCZGcUHVL",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "UHunAuAeFKpjRSd4rfOW",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "WSyFu17QovF8qwf5BBW6",
+      "sabab": "saf kvotasi (24) to'ldi + 'rotmir' xatosi"
+    },
+    {
+      "id": "g03ZQGBfvv0jsQuadUj9",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "gyA3kK80hC30BCF8OfUb",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "lbGpF56BtR61aJ3ga7Ty",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "lx7aSYfqrbb1cC4jtFOO",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "n1ATihvsmNdNNwHFjQCY",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "nodebvqokstrUNhhnUU6",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "u85bko6KcVY83mwh8kYC",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "uY4ySmJew0H6r0xzXp6U",
+      "sabab": "saf kvotasi (24) to'ldi + komanda nomi buzuq"
+    },
+    {
+      "id": "umtHKduftk1hoxO6dv9y",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "vP2dYNqJTYT5VSuK1xy4",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "vc5fWLjoyq0YE5iGl9JV",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "xtYmRtEEpVswK3KdOacc",
+      "sabab": "saf kvotasi (24) to'ldi"
+    },
+    {
+      "id": "Dy8Sop5VcAN0s5wUKjWX",
+      "sabab": "saf kvotasi (24) to'ldi — PF-23 dan yozilgan yangi savol afzal ko'rildi"
+    },
+    {
+      "id": "6PTHhsk7j8i1cNsS3scq",
+      "sabab": "saf kvotasi (24) to'ldi — PF-23 dan yozilgan yangi savol afzal ko'rildi"
+    }
+  ]
+}

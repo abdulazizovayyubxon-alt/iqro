@@ -1,0 +1,662 @@
+[
+  {
+    "q": "Mashg'ulot maydonida askar to'satdan yiqildi: chaqirig'ga javob bermaydi, nafas olmayapti. Sherigi yurak massajini boshladi, ammo ko'krak qafasini zo'rg'a bosib, daqiqada 60 marta bosmoqda. Instruktor bosishning ikkala ko'rsatkichi ham noto'g'ri ekanini aytdi. Kattalarda ko'krak qafasi qanday chuqurlikda va qanday tezlikda bosiladi?",
+    "opts": [
+      "5-6 sm chuqurlikda, daqiqada 60-70 marta",
+      "8-10 sm chuqurlikda, daqiqada 140-150 marta",
+      "5-6 sm chuqurlikda, daqiqada 100-120 marta",
+      "2-3 sm chuqurlikda, daqiqada 100-120 marta"
+    ],
+    "correct": 2,
+    "explanation": "Ko'krak qafasi bosimi yurak bo'shliqlarini haqiqatan siqib, qonni harakatga keltirishi uchun 5-6 santimetr chuqurlikda bo'lishi kerak; sayoz bosish qon aylanishini ta'minlamaydi. Tezlik esa daqiqada 100-120 marta bo'lib, undan sekin bosish miyaga yetadigan qon oqimini uzib qo'yadi.",
+    "mnemonic": "5-6 sm, 100-120 — chuqur va tez.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — yurak-o'pka reanimatsiyasi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "chuqurlik to'g'ri, ammo tezlik qon aylanishini ushlab turolmaydi",
+      "ikkala ko'rsatkichni ham xavfli darajada oshirib yuborish",
+      "",
+      "tezlik to'g'ri, ammo bosish chuqurligi samarasiz darajada sayoz"
+    ]
+  },
+  {
+    "q": "Ikki askar hushsiz jabrlanuvchiga reanimatsiya o'tkazmoqda. Biri uzluksiz ko'krak qafasini bosmoqda, ikkinchisi esa har o'n bosishdan keyin uch marta nafas bermoqda. Ular nisbatni o'zlaricha belgilab olgan. Kattalarda bosish va sun'iy nafas nisbati qanday bo'ladi?",
+    "opts": [
+      "10 marta bosishga 3 marta nafas berish",
+      "15 marta bosishga 5 marta nafas berish",
+      "5 marta bosishga 1 marta nafas berish",
+      "30 marta bosishga 2 marta nafas berish"
+    ],
+    "correct": 3,
+    "explanation": "Kattalarda reanimatsiya sikli 30 marta ko'krak qafasini bosish va 2 marta sun'iy nafas berishdan iborat bo'lib, bu nisbat qon aylanishini uzoq uzilishlarsiz ushlab turadi. Nafas berishga ortiqcha vaqt sarflansa, ko'krak bosimi to'xtab, arterial bosim yana nolga tushadi.",
+    "mnemonic": "Uttiz bos — ikki puf.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — reanimatsiya sikli",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "bosishlar sonini kamaytirib, nafasga ortiqcha vaqt ajratish",
+      "eskirgan nisbatni qo'llash va siklni uzaytirish",
+      "siklni haddan tashqari qisqartirib, bosim to'planishiga yo'l qo'ymaslik",
+      ""
+    ]
+  },
+  {
+    "q": "Portlash to'lqinidan hushidan ketgan askar topildi: u mustaqil nafas olmoqda, tomir urishi aniq sezilmoqda, jarohat ko'rinmaydi. Sherigi uni chalqancha yotqizib, boshiga yostiq qo'ydi va shu holda evakuatsiyani kuta boshladi. Bu holatda jabrlanuvchi qanday yotqizilishi kerak edi?",
+    "opts": [
+      "Yon holatda, boshi biroz orqaga egilgan holda",
+      "Chalqancha, boshi baland yostiqda",
+      "Qorni bilan pastga qaratib, yuzi yostiqqa tegib",
+      "O'tirgan holatda, boshi ko'kragiga egilgan holda"
+    ],
+    "correct": 0,
+    "explanation": "Hushsiz, ammo mustaqil nafas olayotgan jabrlanuvchi uchun asosiy xavf — til ildizining tushishi va qusuq massasining nafas yo'liga o'tishi. Yon holat bu ikkala xavfni ham yo'qotadi: til yo'lni to'smaydi, suyuqlik esa og'izdan tashqariga oqib chiqadi. Chalqancha yotqizish, ayniqsa bosh baland bo'lsa, aksincha xavfni oshiradi.",
+    "mnemonic": "Hushsiz, lekin nafas oladi — yon holat.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — hushsiz holatda nafas yo'lini saqlash",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "til tushishi va aspiratsiya xavfini hisobga olmaslik",
+      "nafas olishni yanada qiyinlashtiradigan holat tanlash",
+      "hushsiz odamda saqlab bo'lmaydigan holatni taklif qilish"
+    ]
+  },
+  {
+    "q": "Bosh sohasiga zarba olgan askarning quloq suporidan tiniq, ozgina qizg'ish suyuqlik oqmoqda. Sanitar qon ketishini to'xtatmoqchi bo'lib, quloqqa paxta tiqin qo'ymoqchi bo'ldi. Feldsher uni keskin to'xtatdi. Bunday holatda nima qilinadi?",
+    "opts": [
+      "Quloqqa sovuq qo'yilib, jabrlanuvchi o'tirgizib qo'yiladi",
+      "Quloq ustiga steril bog'lam qo'yiladi, tiqin qo'yilmaydi",
+      "Quloq zich tiqin bilan berkitiladi, ustiga bog'lam qo'yiladi",
+      "Quloq bo'shlig'i antiseptik eritma bilan yuviladi"
+    ],
+    "correct": 1,
+    "explanation": "Quloq yoki burundan tiniq suyuqlik oqishi kalla suyagi asosi sinishining belgisi bo'lib, bu suyuqlik miya pardalarini yuvib turadigan suyuqlikdir. Tiqin qo'yilsa, uning chiqishi to'siladi va kalla ichidagi bosim ortadi hamda infeksiya ichkariga kiradi. Shuning uchun yuza yengil steril bog'lam bilan yopiladi va oqishga to'sqinlik qilinmaydi.",
+    "mnemonic": "Kalla asosi singanda — oqim to'silmaydi.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — kalla suyagi asosi sinishi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "asosiy xavfni e'tiborsiz qoldirib, ikkilamchi chorani asosiy deb bilish",
+      "",
+      "oqimni to'sib, kalla ichi bosimi va infeksiya xavfini oshirish",
+      "ochiq kalla jarohatida yuvish o'tkazib, infeksiyani ichkariga kiritish"
+    ]
+  },
+  {
+    "q": "Sport mashg'ulotida yiqilgan askar bir necha soniya hushidan ketdi, o'ziga kelgach ko'ngli aynidi, boshi aylandi va yiqilish lahzasini eslay olmadi. Tashqi jarohat va qon ketish yo'q. Sherigi «hammasi joyida» deb uni mashg'ulotga qaytarmoqchi bo'ldi. Bu belgilar nimadan darak beradi va qanday yo'l tutiladi?",
+    "opts": [
+      "Vestibulyar buzilish — issiq choy berib, harakat davom ettiriladi",
+      "Qon bosimi tushishi — jabrlanuvchi tik turgizib, yurgiziladi",
+      "Miya chayqalishi — tinch yotqizib, tibbiy punktga yuboriladi",
+      "Oddiy charchoq — bir oz dam olgach mashg'ulot davom ettiriladi"
+    ],
+    "correct": 2,
+    "explanation": "Qisqa muddatli hushdan ketish, ko'ngil aynishi, bosh aylanishi va hodisa oldidagi lahzalarni eslay olmaslik miya chayqalishining klassik belgilaridir. Tashqi jarohatning yo'qligi xavfni bekor qilmaydi: holat soatlar davomida og'irlashishi mumkin, shuning uchun jabrlanuvchi tinch yotqiziladi va albatta tibbiy ko'rikdan o'tkaziladi.",
+    "mnemonic": "Eslay olmasa — miya chayqalgan.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — bosh miya chayqalishi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "miya jarohatini quloq ichi buzilishi bilan chalkashtirish",
+      "jabrlanuvchini tik holatga keltirib, holatni og'irlashtirish",
+      "",
+      "xotira buzilishi belgisini e'tiborsiz qoldirib, yukni davom ettirish"
+    ]
+  },
+  {
+    "q": "Baland joydan yiqilgan askar oyoqlarini sezmayotganini aytmoqda. Ikki sherigi uni qo'l-oyog'idan ko'tarib, brezent zambilga o'tirgizib olib ketmoqchi bo'lishdi. Feldsher aralashib, tashish usulini o'zgartirdi. Umurtqa jarohatiga shubha bo'lganda jabrlanuvchi qanday tashiladi?",
+    "opts": [
+      "Yumshoq zambilda, yonboshiga yotqizilgan holatda",
+      "O'tirgan holatda, beli bog'lam bilan mahkamlangan holda",
+      "Qorni bilan pastga qaratib, boshi yon tomonga burilgan holda",
+      "Qattiq tekis zaminda, chalqancha va harakatsiz holatda"
+    ],
+    "correct": 3,
+    "explanation": "Umurtqa shikastlanganda eng katta xavf — suyak siniqlari orqa miyani ezib qo'yishi, shuning uchun tananing bukilishiga umuman yo'l qo'yib bo'lmaydi. Jabrlanuvchi qattiq tekis zaminga chalqancha yotqiziladi, boshi va bo'yni qo'shimcha ravishda qimirlamas holga keltiriladi. Yumshoq zambil yoki o'tirgan holat umurtqani bukib, falajlanishni chuqurlashtiradi.",
+    "mnemonic": "Umurtqa — qattiq zamin, hech qanday bukilish yo'q.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — umurtqa jarohati va transportirovka",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "yumshoq zaminda umurtqaning bukilishiga yo'l qo'yish",
+      "eng xavfli holat — vertikal yuklamani tanlash",
+      "bosh va bo'yin holatini o'zgartirib, jarohatni chuqurlashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Avtomobil ag'darilishida jabrlangan askar chanog'i sohasida kuchli og'riq sezmoqda, oyoqlarini qimirlata olmaydi. Qutqaruvchi uni oyoqlarini uzatib, yumshoq to'shakka yotqizdi va tizzalari ostiga hech narsa qo'ymadi. Chanoq suyagi sinishida jabrlanuvchi qanday holatda yotqiziladi?",
+    "opts": [
+      "Qattiq zaminda chalqancha, tizzalari bukilgan holda",
+      "Qattiq zaminda chalqancha, oyoqlari to'liq uzatilgan holda",
+      "Yonboshida yotqizilib, oyoqlari ko'krakka tortilgan holda",
+      "O'tirgan holatda, oyoqlari pastga osiltirilgan holda"
+    ],
+    "correct": 0,
+    "explanation": "Chanoq singanda oyoqlarni to'liq uzatish chanoq halqasiga tortuvchi kuch berib, siniq bo'laklarining siljishini va ichki qon ketishni kuchaytiradi. Shuning uchun jabrlanuvchi qattiq zaminda chalqancha yotqizilib, tizzalari bukiladi va ular ostiga taglik qo'yiladi — bu holat chanoq mushaklarini bo'shashtiradi.",
+    "mnemonic": "Chanoq singanda tizza bukiladi.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — chanoq suyagi sinishi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "qattiq zamin to'g'ri, ammo oyoq holati chanoqni tortadi",
+      "yonbosh holatda chanoq halqasiga bir tomonlama bosim tushadi",
+      "vertikal holat chanoqqa og'irlik berib, qon ketishni kuchaytiradi"
+    ]
+  },
+  {
+    "q": "Ko'krak qafasiga o'q tekkan askarning yarasidan nafas olganda havo shitirlab so'rilmoqda, chekkasida ko'pikli qon bor. Sanitar oddiy doka bog'lam qo'yib, ustidan bint bilan o'radi, ammo askarning ahvoli yomonlashdi. Bunday jarohatda bog'lam qanday bo'lishi kerak edi?",
+    "opts": [
+      "Yaraga tampon tiqilib, ustidan bosuvchi bog'lam qo'yilishi kerak edi",
+      "Havo o'tkazmaydigan germetik bog'lam qo'yilishi kerak edi",
+      "Ko'p qavatli quruq doka bog'lam qo'yilishi kerak edi",
+      "Bog'lamsiz qoldirib, faqat sovuq qo'yilishi kerak edi"
+    ],
+    "correct": 1,
+    "explanation": "Nafas olganda havoning yaradan so'rilishi ochiq pnevmotoraks belgisi bo'lib, plevra bo'shlig'iga kirgan havo o'pkani bosib, uni ishdan chiqaradi. Doka havoni o'tkazadi va jarayonni to'xtatmaydi; shuning uchun yaraga havo o'tkazmaydigan material qo'yilib, germetik yopiladi va shu bilan tashqi havoning kirishi to'xtatiladi.",
+    "mnemonic": "Havo so'rilsa — havoni to'sadigan bog'lam.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — ochiq pnevmotoraks",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "yaraga tampon tiqib, ichki to'qimalarni shikastlash",
+      "",
+      "havo o'tkazadigan material bilan germetiklikni ta'minlab bo'lmaydi",
+      "ochiq nafas yo'lini bog'lamsiz qoldirib, o'pkani bosilishga qo'yish"
+    ]
+  },
+  {
+    "q": "Qorin sohasidan jarohat olgan askarning yarasidan ichak qismi tashqariga chiqib qolgan. U chanqoqligini aytib, suv so'ramoqda. Sherigi ichakni ehtiyotlik bilan ichkariga solmoqchi bo'ldi va suv berdi. Bunday holatda to'g'ri harakat qanday?",
+    "opts": [
+      "Ichak quruq bog'lam bilan qattiq siqib bog'lanadi",
+      "Ichak yuviladi, so'ng jabrlanuvchiga ko'p suyuqlik beriladi",
+      "Ichak solinmaydi, nam steril mato bilan yopiladi, suv berilmaydi",
+      "Ichak ehtiyotlik bilan solinadi, so'ng bog'lam qo'yiladi"
+    ],
+    "correct": 2,
+    "explanation": "Tashqariga chiqqan a'zolarni ichkariga solish qorin bo'shlig'iga infeksiya kiritadi va ichakni shikastlaydi — bu faqat operatsiya sharoitida bajariladi. Ular nam steril mato bilan yopiladi va qurib qolishdan saqlanadi. Suv yoki ovqat berish esa qat'iyan man etiladi, chunki ichak yorilgan bo'lsa suyuqlik qorin bo'shlig'iga o'tadi va operatsiya og'irlashadi.",
+    "mnemonic": "Solma, quritma, suv berma.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — qorin bo'shlig'i jarohati",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "yumshoq a'zolarni siqib, qon aylanishini uzib qo'yish",
+      "ochiq a'zoni yuvish va ichishga ruxsat berish",
+      "",
+      "steril bo'lmagan sharoitda a'zoni ichkariga kiritish"
+    ]
+  },
+  {
+    "q": "Akkumulyator bilan ishlayotgan askarning ko'ziga kislota sachradi. Sherigi uni tibbiy punktga olib borish uchun mashina kutmoqchi bo'ldi va ko'zga tegmaslikni maslahat berdi. Feldsher yetib kelguncha o'n besh daqiqa vaqt bor edi. Kimyoviy modda ko'zga tekkanda birinchi navbatda nima qilinadi?",
+    "opts": [
+      "Ko'z quruq steril bog'lam bilan yopiladi va kutiladi",
+      "Ko'zga neytrallovchi eritma tomiziladi",
+      "Ko'z ishqalanib, modda artib olinadi",
+      "Ko'z darhol oqar suv bilan uzoq vaqt yuviladi"
+    ],
+    "correct": 3,
+    "explanation": "Kimyoviy modda to'qimani har soniyada chuqurroq kuydiradi, shuning uchun vaqt yo'qotmasdan ko'zni oqar suv bilan uzoq — kamida o'n besh daqiqa — yuvish kerak. Neytrallovchi eritma tanlashda xato qilish oson va reaksiya qo'shimcha issiqlik chiqaradi; ishqalash esa moddani to'qimaga surtib yuboradi.",
+    "mnemonic": "Kimyoviy kuyishda birinchi dori — suv.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — ko'zning kimyoviy kuyishi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "moddani to'qimada qoldirib, kuyishning chuqurlashishiga yo'l qo'yish",
+      "neytrallash reaksiyasi bilan qo'shimcha shikast yetkazish",
+      "moddani mexanik ravishda to'qimaga surtib yuborish",
+      ""
+    ]
+  },
+  {
+    "q": "Mashg'ulotdan keyin askarning burnidan qon keta boshladi. Sherigi uni chalqancha yotqizib, boshini orqaga tashladi va qon oqishi to'xtaganday bo'ldi, biroq askar tez orada ko'ngli aynib qusdi. Burun qonaganda to'g'ri yordam qanday ko'rsatiladi?",
+    "opts": [
+      "O'tirgizib, boshi oldinga egiladi va burun qanotlari siqiladi",
+      "Yotqizib, boshi orqaga tashlanadi va burun qanotlari siqiladi",
+      "O'tirgizib, boshi orqaga tashlanadi va burunga issiq qo'yiladi",
+      "Yotqizib, boshi yon tomonga buriladi va burunga issiq qo'yiladi"
+    ],
+    "correct": 0,
+    "explanation": "Boshni orqaga tashlash qonni to'xtatmaydi — u tomoq orqali oshqozonga oqib, ko'ngil aynishi va qusishni keltirib chiqaradi hamda qon ketish hajmini baholashni imkonsiz qiladi. To'g'ri usul: jabrlanuvchi o'tirgiziladi, boshi biroz oldinga egiladi va burun qanotlari barmoq bilan siqiladi, burun ustiga sovuq qo'yiladi.",
+    "mnemonic": "Burun qonasa — bosh oldinga, orqaga emas.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — burun qonashi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "qonni oshqozonga oqizib, qusish va noto'g'ri baholashga olib kelish",
+      "issiq qo'llash qon tomirlarini kengaytirib, oqishni kuchaytiradi",
+      "holat ham, harorat tanlovi ham qon ketishga qarshi ishlamaydi"
+    ]
+  },
+  {
+    "q": "Dala mashg'ulotida askarni ilon chaqdi. Sherigi darhol yarani tishi bilan so'rib, ustidan pichoq bilan kesik qildi va oyoqqa jgut bog'ladi. Feldsher yetib kelgach, uchala harakat ham xato ekanini aytdi. Ilon chaqqanda qanday yo'l tutiladi?",
+    "opts": [
+      "Yara kesib ochiladi va spirt bilan yuviladi",
+      "Oyoq harakatsiz qilinadi, yurak sathidan past tutiladi, ko'p suyuqlik beriladi",
+      "Yara so'rib olinadi, so'ng harakatsiz qilinib suyuqlik beriladi",
+      "Chaqilgan joydan yuqoriroqqa jgut qo'yiladi va oyoq ko'tariladi"
+    ],
+    "correct": 1,
+    "explanation": "So'rish qutqaruvchining og'iz shilliq pardasi orqali zaharlanishiga olib keladi, kesish qon ketish va infeksiya qo'shadi, jgut esa to'qimani zahar bilan birga o'lik holga keltiradi. To'g'ri chora — oyoqni harakatsiz qilish va yurak sathidan pastda ushlash: bu zaharning limfa orqali tarqalishini sekinlashtiradi. Ko'p suyuqlik zaharning konsentratsiyasini pasaytiradi.",
+    "mnemonic": "So'rma, kesma, jgut qo'yma — harakatsizlantir.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — ilon chaqishi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "yarani kengaytirib, qon ketish va infeksiya qo'shish",
+      "",
+      "so'rish orqali qutqaruvchining o'zini zaharlanish xavfiga qo'yish",
+      "jgut bilan to'qima nekrozini keltirib chiqarish va oyoqni ko'tarish"
+    ]
+  },
+  {
+    "q": "Yozgi marshdan keyin askarning tana harorati keskin ko'tarildi, terisi quruq va qizarib ketgan, ter chiqmayapti, ongi chalkash. Sherigi unga isitma tushiruvchi dori berib, adyol yopdi. Instruktor ikkala harakatni ham noto'g'ri deb baholadi. Issiqlik urishida qanday yordam ko'rsatiladi?",
+    "opts": [
+      "Isitma tushiruvchi dori beriladi va harakat davom ettiriladi",
+      "Issiq choy ichiriladi va jismoniy yuklama sekin oshiriladi",
+      "Salqin joyga olinadi, kiyimi bo'shatiladi, tanasi sovutiladi",
+      "Issiq joyda yotqizilib, ustiga adyol yopiladi"
+    ],
+    "correct": 2,
+    "explanation": "Issiqlik urishida harorat infeksiya tufayli emas, balki organizmning issiqlik chiqarish tizimi ishdan chiqqani uchun ko'tariladi — shuning uchun isitma tushiruvchi dori ta'sir qilmaydi va jigarga qo'shimcha yuk beradi. Yagona samarali chora tanani tashqaridan sovutish: salqin joy, kiyimni bo'shatish, nam mato va suyuqlik.",
+    "mnemonic": "Issiqlik urishi — dori emas, sovutish.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — issiqlik va quyosh urishi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "infeksion isitma bilan chalkashtirib, dori bilan davolashga urinish",
+      "issiqlik yuklamasini oshirib, holatni og'irlashtirish",
+      "",
+      "issiqlik yig'ilishini yanada kuchaytiradigan sharoit yaratish"
+    ]
+  },
+  {
+    "q": "Yopiq garajda dvigatel ishlab turgan mashinada uxlab qolgan askar hushsiz holda topildi, lablari va terisi pushti-qizil tusda. Sherigi «bu karbonat angidrid, ya'ni is gazi» deb, uni joyida qoldirib deraza ochdi. Feldsher ikkala fikrni ham tuzatdi. Bunday zaharlanishning omili va birinchi chorasi qanday?",
+    "opts": [
+      "Is gazi — karbonat angidrid; jabrlanuvchi joyida qoldirilib deraza ochiladi",
+      "Is gazi — azot oksidi; jabrlanuvchiga issiq ichimlik beriladi",
+      "Is gazi — metan; jabrlanuvchi yotqizilib, ustiga adyol yopiladi",
+      "Is gazi — uglerod oksidi; jabrlanuvchi darhol toza havoga olib chiqiladi"
+    ],
+    "correct": 3,
+    "explanation": "Is gazi — uglerod oksidi bo'lib, karbonat angidriddan tubdan farq qiladi: u gemoglobinga kislorodga qaraganda ancha kuchli bog'lanib, to'qimalarni kislorodsiz qoldiradi va terini o'ziga xos pushti-qizil tusga kiritadi. Yagona samarali birinchi chora — jabrlanuvchini zaharlangan muhitdan darhol chiqarish; derazani ochish gaz konsentratsiyasini yetarlicha tez tushirmaydi.",
+    "mnemonic": "Is gazi — uglerod OKSIDI, angidrid emas.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — uglerod oksidi bilan zaharlanish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "keng tarqalgan atama xatosi: is gazini karbonat angidrid deb bilish",
+      "zaharlovchi moddani noto'g'ri aniqlash va ta'sirsiz chora tanlash",
+      "yonuvchi gazni zaharli gaz bilan chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Sanoat ob'ektida avariya yuz berdi: bir sexdan xlor, ikkinchisidan ammiak chiqmoqda. Bo'linma komandiri ikkala holatda ham shaxsiy tarkibni yerto'laga tushirishga buyruq berdi. Kimyoviy xavfsizlik bo'yicha mutaxassis buyruqning yarmi halokatli ekanini aytdi. Bu ikki gazdan qutulishda harakat yo'nalishi qanday bo'ladi?",
+    "opts": [
+      "Xlordan balandlikka chiqiladi, ammiakdan pastga tushiladi",
+      "Xlordan pastga tushiladi, ammiakdan balandlikka chiqiladi",
+      "Ikkala gazdan ham pastga, yerto'laga tushiladi",
+      "Ikkala gazdan ham balandlikka, yuqori qavatga chiqiladi"
+    ],
+    "correct": 0,
+    "explanation": "Xlor havodan og'ir bo'lgani uchun pastliklarda, yerto'la va ariqlarda to'planadi, shuning uchun undan qutulish uchun balandlikka chiqiladi. Ammiak esa havodan yengil bo'lib yuqoriga ko'tariladi va pastki qavatlarda uning konsentratsiyasi kamroq bo'ladi. Ikkala holatda ham yerto'laga tushish xlor holatida bevosita o'limga olib keladi.",
+    "mnemonic": "Xlor — og'ir, pastda; ammiak — yengil, tepada.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi va tibbiy yordam — kuchli ta'sir etuvchi zaharli moddalar",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "ikki gazning zichligi o'zaro almashtirilgan",
+      "xlor to'planadigan joyga bevosita tushish",
+      "ammiak to'planadigan sathga ko'tarilish"
+    ]
+  },
+  {
+    "q": "Kazarmada bir askar to'satdan yiqilib, tanasi tortishib qoldi. Sherigi tilini tishlab olmasin deb og'ziga qoshiq tiqmoqchi bo'ldi, ikkinchisi esa uni mahkam ushlab, tortishishni to'xtatmoqchi bo'ldi. Feldsher ikkala harakatni ham taqiqladi. Tutqanoq paytida nima qilinadi?",
+    "opts": [
+      "Tortishish to'xtaguncha kuch bilan bosib turiladi",
+      "Boshi shikastdan himoyalanadi, atrofdagi xavfli narsalar olinadi",
+      "Og'ziga yumshoq narsa tiqiladi va qo'l-oyoq ushlab turiladi",
+      "Jabrlanuvchi tik turgizilib, yuziga suv sepiladi"
+    ],
+    "correct": 1,
+    "explanation": "Og'izga biror narsa tiqish tishlarni sindiradi, jag'ni shikastlaydi va yot jism nafas yo'liga tushish xavfini tug'diradi. Tortishayotgan odamni kuch bilan ushlash esa bo'g'im chiqishi va suyak sinishiga olib keladi. Yagona to'g'ri harakat — boshni shikastdan saqlash, atrofdagi qattiq va o'tkir narsalarni olib qo'yish, tutqanoq tugagach yon holatga yotqizish.",
+    "mnemonic": "Og'izga hech narsa, ushlashga urinma — boshni asra.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — tutqanoq holati",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "kuch ishlatib, sinish va chiqish xavfini tug'dirish",
+      "",
+      "og'iz bo'shlig'ini shikastlash va nafas yo'liga yot jism kiritish",
+      "tutqanoq paytida saqlab bo'lmaydigan holatni talab qilish"
+    ]
+  },
+  {
+    "q": "Qandli diabet bilan kasallangan xizmatchi ovqatni o'tkazib yuborgach terlab ketdi, qo'llari qaltiray boshladi, ongi chalkashdi, ammo u hali hushida va yuta oladi. Sherigi «qon shakari yuqori» deb ko'p suv berdi. Bunday holatda to'g'ri harakat qanday?",
+    "opts": [
+      "Hech narsa berilmaydi, faqat tinch yotqiziladi",
+      "Sho'r ichimlik berilib, jismoniy harakat taklif etiladi",
+      "Shirin ichimlik yoki qand beriladi, so'ng shifokorga yuboriladi",
+      "Ko'p miqdorda oddiy suv berilib, kuzatuv davom ettiriladi"
+    ],
+    "correct": 2,
+    "explanation": "Terlash, qaltirash va ongning tez chalkashishi qon shakarining pasayishiga xos bo'lib, bu holat soatlar emas, daqiqalar ichida rivojlanadi. Hushi joyida va yuta oladigan jabrlanuvchiga darhol shirin ichimlik yoki qand berish holatni tezda yaxshilaydi. Hushsiz odamga esa og'iz orqali hech narsa berilmaydi.",
+    "mnemonic": "Terlab qaltirasa — qand ber; hushsizga — hech narsa.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — qon shakarining pasayishi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "tez rivojlanadigan holatda kutish taktikasini tanlash",
+      "holatni og'irlashtiradigan jismoniy yuklama taklif qilish",
+      "",
+      "belgilarni teskari talqin qilib, kerakli moddani bermaslik"
+    ]
+  },
+  {
+    "q": "Bo'linmada bir necha askarda uzoq davom etgan yo'tal, tunda terlash va vazn yo'qotish kuzatildi. Komandir ularni alohida xonaga joylashtirdi, ammo idish-tovoqni alohida ajratishga asosiy e'tibor qaratdi. Feldsher xavf boshqa yo'l bilan tarqalishini aytdi. Sil kasalligi asosan qanday yo'l bilan yuqadi?",
+    "opts": [
+      "Ovqat va idish-tovoq orqali, oshqozon yo'liga tushib",
+      "Qon quyish va shprits orqali, bevosita qonga tushib",
+      "Hayvon tishlashi va so'lagi orqali teri jarohatiga tushib",
+      "Havo-tomchi yo'li bilan, yo'talganda tarqaydigan zarrachalar orqali"
+    ],
+    "correct": 3,
+    "explanation": "Sil qo'zg'atuvchisi bemor yo'talganda, aksirganda va gapirganda havoga chiqadigan mayda zarrachalar bilan tarqaladi va sog'lom odam nafas olganda o'pkasiga tushadi. Shuning uchun asosiy chora — bemorni ajratish, xonani muntazam shamollatish va niqob taqish; idish-tovoqni ajratish qo'shimcha chora bo'lsa-da, yuqish yo'lini uzmaydi.",
+    "mnemonic": "Sil — havo orqali, ovqat orqali emas.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Yuqumli kasalliklar — sil kasalligining yuqish yo'li",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "havo-tomchi yo'lini oshqozon-ichak yo'li bilan chalkashtirish",
+      "yuqish yo'lini qon orqali yuqadigan infeksiyalar bilan chalkashtirish",
+      "yuqish yo'lini hayvondan yuqadigan infeksiyalar bilan chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Sanitar yarador askarga yordam ko'rsatayotganda qo'lqop yirtilib, uning qoni sanitarning barmog'idagi tirnalgan joyga tegdi. Sanitar «ovqatlanish idishlarini ajratsam kifoya» deb hisobladi. Feldsher xavfning tabiati boshqacha ekanini tushuntirdi. Gepatit B va OIV infeksiyasi asosan qanday yo'l bilan yuqadi?",
+    "opts": [
+      "Qon va boshqa biologik suyuqliklar orqali",
+      "Havo-tomchi yo'li bilan nafas olganda",
+      "Ifloslangan suv va ovqat orqali",
+      "Kasal hayvonning tishlashi orqali"
+    ],
+    "correct": 0,
+    "explanation": "Bu infeksiyalarning asosiy yuqish yo'li — qon va boshqa biologik suyuqliklarning shikastlangan teri yoki shilliq pardaga tushishi, shu jumladan qon quyish va steril bo'lmagan asboblar orqali. Shuning uchun himoya vositasi — qo'lqop va shikastlangan terini yopish; idishlarni ajratish bu holatda hech narsani hal qilmaydi.",
+    "mnemonic": "Qon orqali yuqadi — qo'lqop bilan to'siladi.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Yuqumli kasalliklar — qon orqali yuqadigan infeksiyalar",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "qon orqali yuqishni nafas yo'li bilan chalkashtirish",
+      "qon orqali yuqishni ichak infeksiyasi bilan chalkashtirish",
+      "qon orqali yuqishni hayvondan yuqish bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "Dala lagerida bir necha askarda yuqori harorat, qorin og'rig'i va ich ketishi boshlandi. Tekshiruvda ular quduq suvini qaynatmasdan ichgani ma'lum bo'ldi. Komandir kasallarni ajratdi, ammo suv manbaiga chora ko'rmadi. Ich terlama kabi ichak infeksiyalari qaysi yo'l bilan tarqaladi va asosiy chora nima?",
+    "opts": [
+      "Hasharotlar chaqishi orqali; repellent qo'llaniladi",
+      "Ifloslangan suv va ovqat orqali; suv manbai zararsizlantiriladi",
+      "Havo-tomchi yo'li bilan; kasallar niqob taqadi",
+      "Qon orqali; steril asboblardan foydalaniladi"
+    ],
+    "correct": 1,
+    "explanation": "Ich terlama va shunga o'xshash ichak infeksiyalari qo'zg'atuvchisi bemor ajratmalari bilan tashqi muhitga chiqib, ifloslangan suv va ovqat orqali sog'lom odam ichagiga tushadi. Kasallarni ajratishning o'zi yetarli emas: manba saqlanib qolgani uchun yangi kasallanishlar davom etadi, shuning uchun suvni qaynatish va manbani zararsizlantirish shart.",
+    "mnemonic": "Ichak infeksiyasi — suv orqali; suvni zararsizlantir.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Yuqumli kasalliklar — ichak infeksiyalari va profilaktikasi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "yuqish yo'lini transmissiv infeksiyalar bilan chalkashtirish",
+      "",
+      "ichak infeksiyasini nafas yo'li infeksiyasi bilan chalkashtirish",
+      "yuqish yo'lini qon orqali yuqish deb hisoblash"
+    ]
+  },
+  {
+    "q": "Qism hududiga kirib kelgan darbadar it askarni tishlab qochib ketdi. Sherigi yarani spirt bilan artib, bog'lam qo'ydi va «it ketdi, muammo yo'q» dedi. Feldsher yordamning ham, xulosaning ham noto'g'ri ekanini aytdi. It tishlaganda qanday yo'l tutiladi?",
+    "opts": [
+      "Yara zich tikilib, ustidan antibiotik malham surtiladi",
+      "Yaraga jgut qo'yilib, ustidan sovuq bosim qo'llaniladi",
+      "Yara sovun va suv bilan uzoq yuviladi, so'ng shifokorga boriladi",
+      "Yara spirt bilan artiladi va jabrlanuvchi kuzatuvda qoldiriladi"
+    ],
+    "correct": 2,
+    "explanation": "Quturish virusi hayvon so'lagi bilan yaraga tushadi va kasallik belgilari paydo bo'lgach davolab bo'lmaydi, shuning uchun butun hisob emlashni o'z vaqtida boshlashga bog'liq. Yarani sovun bilan kamida o'n besh daqiqa yuvish virus miqdorini sezilarli kamaytiradi; yarani zich tikish esa virusni to'qima ichida qamab qo'yadi.",
+    "mnemonic": "Tishlagan yara — sovun, suv va darhol shifokor.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Yuqumli kasalliklar — quturishning oldini olish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "yarani zich yopib, virusni to'qimada qamab qo'yish",
+      "qon ketishi bo'lmagan yaraga jgut qo'llash",
+      "",
+      "yuvish bosqichini tashlab, kuzatuv bilan cheklanish"
+    ]
+  },
+  {
+    "q": "Askar boldir suyagini sindirdi. Sanitar shinani faqat siniq joyga qo'yib, ustidan bint bilan mahkam o'radi, biroq tashish paytida og'riq kuchaydi va siniq siljidi. Transport immobilizatsiyasining asosiy qoidasi qanday?",
+    "opts": [
+      "Shina faqat siniq joyni qamrab, qattiq bog'lanishi kerak",
+      "Shina siniqdan yuqoridagi bitta bo'g'imni qamrashi kifoya",
+      "Shina o'rniga yumshoq bog'lam bilan tanaga bog'lash yetarli",
+      "Shina siniqqa qo'shni ikki bo'g'imni ham qamrab olishi kerak"
+    ],
+    "correct": 3,
+    "explanation": "Suyak siniq joyida emas, unga qo'shni bo'g'imlar harakati hisobiga siljiydi, shuning uchun shina siniqning yuqorisidagi va pastidagi bo'g'imlarni birgalikda harakatsiz qilishi shart. Faqat siniq joyni bog'lash suyak uchlarining bir-biriga ishqalanishini to'xtatmaydi va qo'shimcha to'qima shikastiga olib keladi.",
+    "mnemonic": "Bitta siniq — ikkita qo'shni bo'g'im.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — transport immobilizatsiyasi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "bo'g'imlar harakatini hisobga olmay, siljishga yo'l qo'yish",
+      "immobilizatsiyani bir tomonlama qilib, ikkinchi tomonni ochiq qoldirish",
+      "qattiq asos o'rniga harakatni to'xtatmaydigan vosita tanlash",
+      ""
+    ]
+  },
+  {
+    "q": "Askarning son suyagi singan. Sanitar oldingi mashg'ulotda o'rgangan qoidaga amal qilib, shinani tizza va to'piqni qamrab olgan holda qo'ydi, biroq chanoq harakati siniqni siljitib yubordi. Son suyagi sinishida immobilizatsiya qanday hajmda bajariladi?",
+    "opts": [
+      "Chanoq-son, tizza va to'piq bo'g'imlari birgalikda harakatsiz qilinadi",
+      "Tizza va to'piq bo'g'imlari harakatsiz qilinsa kifoya",
+      "Faqat tizza bo'g'imi harakatsiz qilinadi",
+      "Oyoq sog' oyoqqa bog'lansa, qo'shimcha shina talab etilmaydi"
+    ],
+    "correct": 0,
+    "explanation": "Son suyagi tananing eng uzun va kuchli mushaklar bilan o'ralgan suyagi bo'lgani uchun uning siniqlari kuchli tortishuv ta'sirida siljiydi. Shuning uchun bu holatda umumiy qoidadan chetlanib, uchta bo'g'im — chanoq-son, tizza va to'piq birgalikda harakatsiz qilinadi; ikkita bo'g'im bilan cheklanish chanoq harakatini ochiq qoldiradi.",
+    "mnemonic": "Son singanda — uch bo'g'im, ikkita emas.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — son suyagi sinishida immobilizatsiya",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "umumiy qoidani sondagi istisnoga o'ylamay qo'llash",
+      "immobilizatsiya hajmini bitta bo'g'imgacha qisqartirish",
+      "qattiq asossiz usulni yetarli deb hisoblash"
+    ]
+  },
+  {
+    "q": "Yong'indan qutqarilgan ikki askarni ko'rikdan o'tkazayotgan feldsher kuygan yuzani tez baholashi kerak. Birinchisida kuyish bitta kaft yuzasicha, ikkinchisida butun bir qo'l va ko'krak old yuzasi kuygan. Kuyish maydonini dala sharoitida baholashda qanday usullardan foydalaniladi?",
+    "opts": [
+      "Barmoq qoidasi va yarmi qoidasi",
+      "Kaft qoidasi va to'qqizlar qoidasi",
+      "Kaft qoidasi va o'nlar qoidasi",
+      "Barmoq qoidasi va to'qqizlar qoidasi"
+    ],
+    "correct": 1,
+    "explanation": "Kaft qoidasiga ko'ra jabrlanuvchining o'z kafti yuzasi tana yuzasining taxminan bir foiziga teng bo'lib, kichik maydonlarni tez baholashga xizmat qiladi. To'qqizlar qoidasi esa tana qismlarini to'qqiz foizli ulushlarga bo'lib, katta maydonli kuyishlarni hisoblashga imkon beradi. Ikkala usul birgalikda dala sharoitida asbobsiz baho berish imkonini yaratadi.",
+    "mnemonic": "Kichik maydon — kaft; katta maydon — to'qqizlar.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — kuyish maydonini baholash",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "ikkala usul nomini ham noto'g'ri keltirish",
+      "",
+      "to'qqizlar qoidasi nomini noto'g'ri atash",
+      "kaft o'lchovini barmoq o'lchovi bilan almashtirish"
+    ]
+  },
+  {
+    "q": "Portlash joyida askarning yelkasiga metall parcha kirib qolgan, uning uchi tashqarida ko'rinib turibdi va yaradan kuchli qon ketmayapti. Sherigi parchani tortib olib, yarani tozalamoqchi bo'ldi. Sanitar uni to'xtatdi. Yaradagi yot jismga nisbatan qanday qoida amal qiladi?",
+    "opts": [
+      "Yot jism tortib olinib, yaraga bosuvchi bog'lam qo'yiladi",
+      "Yot jism ichkariroq surilib, ustidan bog'lam qo'yiladi",
+      "Yot jism joyida qoldiriladi, atrofi bog'lam bilan mustahkamlanadi",
+      "Yot jism tortib olinadi, yara antiseptik bilan yuviladi"
+    ],
+    "correct": 2,
+    "explanation": "Yaraga kirgan yot jism ko'pincha shikastlangan qon tomirini tiqib turadi va uni tortib olish darhol kuchli qon ketishni boshlab yuboradi hamda to'qimalarni qo'shimcha shikastlaydi. Shuning uchun u joyida qoldiriladi, atrofi valik shaklidagi bog'lam bilan mustahkamlanib, qimirlamas holga keltiriladi va jabrlanuvchi shu holda tibbiy muassasaga yetkaziladi.",
+    "mnemonic": "Yot jismni tortma — mustahkamla.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — yaradagi yot jism",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "yot jismni olib, keyin qon ketishga qarshi kurashishga urinish",
+      "yot jismni siljitib, ichki to'qimalarni qo'shimcha shikastlash",
+      "",
+      "tomir tiqinini yo'qotib, kuchli qon ketishni boshlab yuborish"
+    ]
+  },
+  {
+    "q": "Tibbiy punktda sanitar «yarani spirt bilan artdim, demak aseptika bajarildi» dedi. Feldsher esa asboblarni qaynatib, qo'lqop kiyib ishlagan edi. Ikkalasi ham mikroblarga qarshi kurashdi, ammo turli usulda. Aseptika va antiseptika o'rtasidagi farq nimada?",
+    "opts": [
+      "Aseptika tushgan mikrobni yo'qotadi, antiseptika tushishining oldini oladi",
+      "Aseptika kimyoviy usul, antiseptika esa faqat jarrohlik usuli",
+      "Aseptika faqat operatsiyada, antiseptika esa faqat dala sharoitida qo'llaniladi",
+      "Aseptika mikrob tushishining oldini oladi, antiseptika tushganini yo'qotadi"
+    ],
+    "correct": 3,
+    "explanation": "Aseptika — bu profilaktik yo'nalish: asboblarni sterillash, qo'lqop kiyish, steril bog'lam ishlatish orqali mikroblarning yaraga tushishiga umuman yo'l qo'ymaslik. Antiseptika esa yaraga allaqachon tushgan mikroblarni kimyoviy, mexanik yoki biologik usullar bilan yo'q qilishga qaratilgan. Amaliyotda ikkalasi birga qo'llaniladi.",
+    "mnemonic": "Aseptika — kiritma; antiseptika — yo'qot.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Tibbiy bilim asoslari — aseptika va antiseptika",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "ikki tushunchaning mazmuni o'zaro almashtirilgan",
+      "farqni usul turiga bog'lab, mazmunini yo'qotish",
+      "farqni qo'llash joyiga bog'lab, mohiyatini almashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Sun'iy nafas berayotgan askar jabrlanuvchining ko'krak qafasi ko'tarilmayotganini payqadi, ammo tezroq puflashda davom etdi va havo qorin sohasiga ketdi. Instruktor avval boshqa narsani tekshirish kerakligini aytdi. Ko'krak qafasi ko'tarilmasa, birinchi navbatda nima tekshiriladi?",
+    "opts": [
+      "Nafas yo'lining ochiqligi va boshning holati",
+      "Puflash tezligi va havoning hajmi",
+      "Jabrlanuvchining tomir urishi va qon bosimi",
+      "Ko'krak qafasidagi siniqlar mavjudligi"
+    ],
+    "correct": 0,
+    "explanation": "Havo o'pkaga bormasligining eng ko'p uchraydigan sababi — bosh noto'g'ri holatda bo'lib, til ildizi nafas yo'lini to'sib qo'yishi yoki og'izda yot jism qolishi. Shuning uchun avval bosh orqaga egiladi, pastki jag' ko'tariladi va og'iz bo'shlig'i tekshiriladi. Kuchliroq puflash muammoni hal qilmaydi, aksincha havoni oshqozonga haydab, qusish xavfini tug'diradi.",
+    "mnemonic": "Havo kirmasa — kuch emas, yo'lni tekshir.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — sun'iy nafas berish texnikasi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "sababni kuch yetishmasligida deb bilib, oshqozonga havo haydash",
+      "nafas yo'li muammosini qon aylanishi ko'rsatkichlari bilan chalkashtirish",
+      "kamdan-kam uchraydigan sababni birinchi o'ringa qo'yish"
+    ]
+  },
+  {
+    "q": "Yonayotgan binoda hushsiz jabrlanuvchi topildi, tutun quyuqlashib bormoqda va uni tez chiqarish zarur. Qutqaruvchi uni ko'tarib olish uchun tik turgizmoqchi bo'ldi, biroq bu ko'p vaqt oldi. Bitta qutqaruvchi hushsiz odamni xavfli zonadan qanday chiqarishi maqsadga muvofiq?",
+    "opts": [
+      "Bir joyda qoldirib, yordam kelishini kutish",
+      "Kiyimidan yoki qo'ltig'idan ushlab, yerdan sudrab chiqarish",
+      "Yelkasiga ko'tarib olib, tik holatda olib chiqish",
+      "Oyoqlaridan ushlab, boshini yerga tekkizib tortish"
+    ],
+    "correct": 1,
+    "explanation": "Bitta qutqaruvchi uchun hushsiz odamni ko'tarish ko'p vaqt va kuch talab qiladi, tutunli muhitda esa har soniya hal qiluvchi ahamiyatga ega. Kiyimidan yoki qo'ltig'idan ushlab past sathda sudrash tez bajariladi va tutun asosan yuqorida to'planganini hisobga oladi. Oyoqdan tortish boshni shikastlaydi, kutish esa ikkalasining ham halok bo'lishiga olib keladi.",
+    "mnemonic": "Yolg'iz bo'lsang — ko'tarma, sudra.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Birinchi tibbiy yordam — jabrlanuvchini xavfli zonadan chiqarish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "harakatsizlik natijasida ikkala shaxsni ham xavf ostida qoldirish",
+      "",
+      "yolg'iz qutqaruvchi uchun kuch va vaqt talab qiladigan usul tanlash",
+      "bosh va bo'yinni shikastlaydigan usulni qo'llash"
+    ]
+  },
+  {
+    "q": "Askar qazish ishlari paytida zanglagan mixga qadaldi: yara chuqur, tor va tuproq bilan ifloslangan. Sanitar yarani yuvib, bog'lam qo'ydi va «qon ketishi to'xtadi, ish bitdi» dedi. Feldsher qo'shimcha chora zarurligini aytdi. Bunday yara qanday xavf tug'diradi?",
+    "opts": [
+      "Qon yo'qotish xavfi bor — qo'yilgan bog'lam yetarli",
+      "Allergiya xavfi bor — antigistamin dori beriladi",
+      "Qoqshol xavfi bor — emlash masalasi hal qilinishi kerak",
+      "Alohida xavf yo'q — yara yuvilgach o'z-o'zidan tuzaladi"
+    ],
+    "correct": 2,
+    "explanation": "Chuqur, tor va tuproq bilan ifloslangan yaralar havosiz muhit yaratadi va aynan shunday sharoitda qoqshol qo'zg'atuvchisi ko'payadi. Yarani yuvish va bog'lash bu xavfni bartaraf qilmaydi, shuning uchun jabrlanuvchi tibbiy muassasaga yuborilib, emlash zarurati hal qilinishi shart.",
+    "mnemonic": "Chuqur va ifloslangan yara — qoqshol savoli.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Yuqumli kasalliklar — qoqsholning oldini olish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "xavfni faqat qon yo'qotish bilan cheklash",
+      "infeksion xavfni allergik reaksiya bilan chalkashtirish",
+      "",
+      "chuqur ifloslangan yarani oddiy yara deb baholash"
+    ]
+  },
+  {
+    "q": "Bo'linmada ikki xizmatchi bir vaqtda kasal bo'lib qoldi: birida ish qobiliyatini yo'qotmagan yengil shamollash, ikkinchisida yuqori harorat va kuchli holsizlik bor. Starshina ikkalasini ham «keyin ko'ramiz» deb mashg'ulotga chiqardi. Ichki xizmat nizomiga ko'ra kasal bo'lgan xizmatchiga nisbatan qanday tartib amal qiladi?",
+    "opts": [
+      "Ular mashg'ulotdan keyin o'zlari murojaat qilishi kutiladi",
+      "Ular kazarmada qoldirilib, dori berilishi bilan cheklaniladi",
+      "Ular yotoqxonada ajratilib, ko'rik keyingi kunga qoldiriladi",
+      "Ular belgilangan tartibda tibbiy punktga yuboriladi va ko'rikdan o'tkaziladi"
+    ],
+    "correct": 3,
+    "explanation": "Nizom harbiy xizmatchilar sog'lig'ini saqlashni davlat ahamiyatiga molik vazifa deb belgilaydi va buning vositalaridan biri — muntazam hamda o'z vaqtidagi tibbiy ko'rik. Kasallik belgilari aniqlangan xizmatchi belgilangan tartibda tibbiy punktga yuboriladi; ko'rikni kechiktirish yuqumli kasallik bo'lsa butun bo'linmani xavf ostiga qo'yadi.",
+    "mnemonic": "Kasallik belgisi — kechiktirmay tibbiy punktga.",
+    "topicId": 5,
+    "category": "chqbt",
+    "source_ref": "Ichki xizmat nizomi (PF-23), VII bob — tibbiy ta'minot",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "murojaat tashabbusini kasal xizmatchining o'ziga qoldirish",
+      "tibbiy ko'rikni dori berish bilan almashtirish",
+      "ko'rikni kechiktirib, yuqish xavfini ochiq qoldirish",
+      ""
+    ]
+  }
+]

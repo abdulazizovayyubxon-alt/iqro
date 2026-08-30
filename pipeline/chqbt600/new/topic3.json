@@ -1,0 +1,527 @@
+[
+{
+  "q": "Jang paytida radioaloqa uzildi va bo'linma komandiri ko'rinmay qoldi. Askar egallagan mavqeda yolg'iz qoldi, dushman hujumi hozircha yo'q. U qanday yo'l tutishi kerak?",
+  "opts": [
+    "Egallagan mavqeni tashlab, orqadagi asosiy kuchlarni izlab ketadi",
+    "Aloqa tiklanmaguncha hech qanday harakat qilmay, kuzatuvni ham to'xtatadi",
+    "Egallagan mavqeni saqlab, kuzatuvni davom ettiradi va qo'shni bilan aloqa qidiradi",
+    "O'z tashabbusi bilan oldinga siljib, dushman mavqeini qidirishga o'tadi"
+  ],
+  "correct": 2,
+  "explanation": "Askarning jangdagi asosiy majburiyati — olingan vazifani bajarish va egallagan mavqeni tashlamaslik. Aloqa uzilgani buyruqni bekor qilmaydi: kuzatuv davom etadi va qo'shni bilan bog'lanishga harakat qilinadi. Mavqeni tashlab ketish jangovar tartibda bo'shliq hosil qiladi, o'z tashabbusi bilan oldinga siljish esa umumiy rejani buzadi.",
+  "mnemonic": "Aloqa uzilsa ham — vazifa uzilmaydi.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: askarning jangdagi majburiyatlari",
+  "distractor_error": ["mavqeni tashlash", "kuzatuvni to'xtatish", "", "rejadan tashqari harakat"]
+},
+{
+  "q": "O'quv mashg'ulotida bo'linma komandiri zamonaviy umumqo'shin jangining asosiy belgisini tushuntirmoqda. U tank, artilleriya, piyoda va aviatsiya bir vaqtda, bitta reja bo'yicha harakat qilishini ta'kidlaydi. Bu tavsif qaysi tushunchani ifodalaydi?",
+  "opts": [
+    "Har bir qo'shin turining mustaqil, alohida jang olib borishi",
+    "Barcha qo'shin turlarining birgalikdagi, kelishilgan harakati",
+    "Jangda faqat zirhli texnikaning hal qiluvchi rol o'ynashi",
+    "Piyoda qo'shinlarning boshqa turlardan ustunligi"
+  ],
+  "correct": 1,
+  "explanation": "Zamonaviy umumqo'shin jangining mohiyati — turli qo'shin turlarining bitta reja va yagona boshqaruv ostida birgalikda harakat qilishi; shu hamkorlik natijasida har bir turning kuchli tomoni ishlaydi. Mustaqil, kelishilmagan harakat kuchlarni bo'lib yuboradi; birorta qo'shin turini mutlaq ustun deb hisoblash esa zamonaviy jang tabiatiga zid.",
+  "mnemonic": "Umumqo'shin jang — birga, bitta reja bilan.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 11-sinf: zamonaviy umumqo'shin jangi",
+  "distractor_error": ["hamkorlikni inkor etish", "", "bitta turni mutlaqlashtirish", "bitta turni mutlaqlashtirish"]
+},
+{
+  "q": "Mudofaa mavqeidagi askarning o'q-dorisi tugab bormoqda, dushman hujumi esa davom etmoqda. Yonidagi qo'shnisida zaxira bor, komandirga aloqa ishlayapti. Askar qanday harakat qilishi kerak?",
+  "opts": [
+    "Mavqeni tashlab, o'q-dori olish uchun orqaga qaytadi",
+    "O'q-dori butunlay tugaguncha jim turadi va hech kimga xabar bermaydi",
+    "Qurolini tashlab, faqat pana joyda yashirinib turadi",
+    "Komandirga zaxira holatini xabar qiladi va qo'shnidan o'q-dori oladi"
+  ],
+  "correct": 3,
+  "explanation": "Jangovar vaziyatda o'q-dori sarfi haqidagi ma'lumot komandir uchun boshqaruv ma'lumoti hisoblanadi — u zaxira yetkazish yoki vazifani qayta taqsimlash qaroriga asos bo'ladi. Shuning uchun avval xabar beriladi va qo'shni bilan zaxira almashiladi. Mavqeni tashlab ketish yoki jim turish mudofaada bo'shliq hosil qiladi.",
+  "mnemonic": "Zaxira kamaysa — avval xabar.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 11-sinf: askarning jangdagi harakatlari va boshqaruv",
+  "distractor_error": ["mavqeni tashlash", "boshqaruvni ma'lumotsiz qoldirish", "vazifani tark etish", ""]
+},
+{
+  "q": "Hujum paytida askar yonidagi sherigining yaralanganini ko'rdi. Bo'linma oldida vaqt bo'yicha qat'iy belgilangan chegarani egallash vazifasi turibdi, sanitar instruktor esa orqadan yaqinlashmoqda. Askar qanday yo'l tutadi?",
+  "opts": [
+    "Hujumni to'xtatib, yaradorni orqaga ko'tarib olib chiqadi",
+    "Yaradorga e'tibor bermay, hech kimga xabar bermasdan oldinga siljiydi",
+    "Yaradorni pana joyga suradi, belgi qo'yadi va vazifani bajarishda davom etadi",
+    "Butun bo'linmani to'xtatib, birgalikda yordam ko'rsatishni tashkil qiladi"
+  ],
+  "correct": 2,
+  "explanation": "Jangovar vazifani bajarish davom etadi, lekin yarador ham nazorasiz qolmaydi: uni pana joyga surib, joyi belgilanadi va sanitar instruktor xabardor qilinadi. Butun bo'linmaning to'xtashi hujum sur'atini yo'qotib, yo'qotishlarni ko'paytiradi; yaradorni umuman e'tiborsiz qoldirish esa harbiy birodarlik qoidasini buzadi.",
+  "mnemonic": "Panaga sur, belgi qo'y, vazifani davom ettir.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: askarning jangdagi majburiyatlari va o'zaro yordam",
+  "distractor_error": ["vazifani to'xtatish", "birodarlik qoidasini buzish", "", "butun bo'linmani to'xtatish"]
+},
+{
+  "q": "Tunda pana joyda joylashgan bo'linmada tartib o'rnatilmoqda. Ayrim askarlar chiroq yoqib, ovqatlanishni va baland ovozda suhbatlashishni taklif qilmoqda. Komandir qaysi rejimni belgilaydi?",
+  "opts": [
+    "Ovoz va yorug'lik rejimi joriy qilinadi, navbatchi kuzatuv tashkil etiladi",
+    "Chiroq yoqishga ruxsat beriladi, ovoz esa cheklanmaydi",
+    "Faqat suhbat taqiqlanadi, yorug'likdan erkin foydalaniladi",
+    "Hech qanday cheklov kiritilmaydi, dam olish ustuvor hisoblanadi"
+  ],
+  "correct": 0,
+  "explanation": "Pana joyning butun ma'nosi — dushmanga bilinmaslik. Tunda yorug'lik va ovoz eng uzoqdan sezilib, joylashuvni fosh qiladi, shuning uchun ikkalasi ham cheklanadi va uzluksiz navbatchi kuzatuv tashkil etiladi. Faqat bittasini cheklash yoki umuman cheklamaslik niqoblanishni bekor qiladi.",
+  "mnemonic": "Pana joyda — na ovoz, na yorug'lik.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 11-sinf: bo'linmani pana joyda joylashtirish va niqoblash",
+  "distractor_error": ["", "niqoblanishni buzish", "yarim chora bilan cheklanish", "cheklovni inkor etish"]
+},
+{
+  "q": "Askar komandirdan olgan buyruqni to'liq tushunmadi: oriyentir aniq eshitilmadi. Atrofda shovqin bor, harakat boshlanishiga bir necha daqiqa qoldi. U qanday harakat qilishi kerak?",
+  "opts": [
+    "Taxmin bo'yicha eng ehtimolli oriyentirni tanlab, harakatni boshlaydi",
+    "Qo'shnisi qanday harakat qilsa, shuni takrorlaydi",
+    "Buyruqni takror aytishni so'rab, oriyentirni aniqlab oladi",
+    "Harakatni boshlamay, buyruq qaytarilishini jim kutadi"
+  ],
+  "correct": 2,
+  "explanation": "Noaniq tushunilgan buyruq — jangda eng keng tarqalgan xato manbai. Askar buyruqni takror aytishni so'rashga haqli va shu bilan vazifani aniqlashtiradi. Taxmin qilish yoki qo'shnini ko'chirish xatoni butun bo'linmaga tarqatadi, jim kutish esa harakat vaqtini o'tkazib yuboradi.",
+  "mnemonic": "Tushunmasang — so'ra, taxmin qilma.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 11-sinf: jangovar boshqaruv, buyruqni qabul qilish",
+  "distractor_error": ["taxminga tayanish", "xatoni ko'chirish", "", "vaqtni o'tkazib yuborish"]
+},
+{
+  "q": "Jangovar mashinaning dvigatel bo'limida yong'in boshlandi, ekipaj ichkarida. Mashina harakatda, dushman o'qi ostida emas. Ekipaj komandiri qanday buyruq beradi?",
+  "opts": [
+    "Mashinani to'xtatib, o't o'chirish tizimini ishga tushiradi va ekipajni chiqaradi",
+    "Harakatni davom ettirib, yong'in o'z-o'zidan so'nishini kutadi",
+    "Ekipajni ichkarida qoldirib, lyuklarni zich yopib qo'yadi",
+    "Mashinani tezlatib, shamol oqimi bilan alangani o'chirishga urinadi"
+  ],
+  "correct": 0,
+  "explanation": "Yong'in aniqlangach mashina to'xtatiladi, o't o'chirish tizimi ishga tushiriladi va ekipaj chiqariladi — chunki yonilg'i va o'q-dori zaxirasi bo'lgan mashinada alanga bir necha daqiqada portlashga olib keladi. Harakatni davom ettirish yoki tezlashtirish havo oqimi bilan yonishni kuchaytiradi, lyuklarni yopib ichkarida qolish esa ekipajni tuzoqqa soladi.",
+  "mnemonic": "Yong'in — to'xta, o'chir, chiq.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: jangovar texnikadan foydalanish xavfsizligi",
+  "distractor_error": ["", "yonishni kuchaytirish", "ekipajni tuzoqqa solish", "yonishni kuchaytirish"]
+},
+{
+  "q": "Razvedka guruhi tashlab ketilgan qishloqdan chiqishda 65 daraja azimut bo'yicha yurdi. Vazifa bajarilgach, xuddi shu yo'l bilan qaytish kerak. Guruh komandiri qaytish azimutini qanday hisoblaydi?",
+  "opts": [
+    "65 dan 90 ni ayirib, 335 daraja azimut oladi",
+    "65 ni 2 ga ko'paytirib, 130 daraja azimut oladi",
+    "65 ga 90 ni qo'shib, 155 daraja azimut oladi",
+    "65 ga 180 ni qo'shib, 245 daraja azimut oladi"
+  ],
+  "correct": 3,
+  "explanation": "Teskari azimut to'g'ri azimutdan aynan 180 darajaga farq qiladi: azimut 180 dan kichik bo'lsa 180 qo'shiladi, katta bo'lsa 180 ayiriladi. 65 daraja uchun teskari azimut 65 + 180 = 245 daraja bo'ladi. 90 ni qo'shish yoki ayirish to'g'ri burchakka burilishni beradi, ikkiga ko'paytirishning esa geometrik asosi yo'q.",
+  "mnemonic": "Qaytishda azimutga 180 qo'sh (yoki ayir).",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: harbiy topografiya, azimut va teskari azimut",
+  "distractor_error": ["to'g'ri burchakka burish", "asossiz amal", "to'g'ri burchakka burish", ""]
+},
+{
+  "q": "Patrul guruhi bazadan 300 daraja azimut bo'yicha chiqdi. Tunda ular xuddi shu yo'nalish bo'ylab bazaga qaytishi kerak. Qaytish azimuti nechaga teng bo'ladi?",
+  "opts": [
+    "480 daraja — dastlabki azimutga 180 qo'shiladi",
+    "120 daraja — dastlabki azimutdan 180 ayiriladi",
+    "60 daraja — 360 dan dastlabki azimut ayiriladi",
+    "150 daraja — dastlabki azimut ikkiga bo'linadi"
+  ],
+  "correct": 1,
+  "explanation": "Azimut 0 dan 360 darajagacha o'lchanadi, shuning uchun 180 qo'shilganda 360 dan oshib ketsa, aylananing o'zi bo'yicha hisoblanadi: 300 - 180 = 120 daraja. 480 daraja kabi qiymat azimut sifatida mavjud emas. 360 dan ayirish teskari azimut emas, aylana bo'yicha to'ldiruvchi burchakni beradi, ikkiga bo'lishning esa asosi yo'q.",
+  "mnemonic": "180 dan katta bo'lsa — ayir, kichik bo'lsa — qo'sh.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: azimut bo'yicha harakatlanish",
+  "distractor_error": ["360 dan oshirib yuborish", "", "to'ldiruvchi burchak bilan chalkashtirish", "asossiz amal"]
+},
+{
+  "q": "Guruh kompassiz qoldi, quyoshli kun, xizmatchida mexanik strelkali soat bor. Komandir gorizont tomonlarini aniqlashni buyurdi. Qaysi usul to'g'ri bajariladi?",
+  "opts": [
+    "Soat mili quyoshga qaratiladi; mil bilan 12 orasidagi burchak teng bo'linadi",
+    "Soat 12 raqami quyoshga qaratiladi; soat mili shimol yo'nalishini ko'rsatadi",
+    "Soat gorizontal qo'yiladi; soniya mili janubni ko'rsatadi",
+    "Soat mili soyaga qaratiladi; 6 raqami sharqni ko'rsatadi"
+  ],
+  "correct": 0,
+  "explanation": "Mexanik soat bo'yicha yo'nalish aniqlashda soat gorizontal ushlanib, soat mili quyoshga qaratiladi; mil bilan 12 raqami orasidagi burchakning bissektrisasi janub yo'nalishini beradi, qarama-qarshi tomon esa shimol bo'ladi. Qolgan usullarda soat milining quyoshga qaratilishi shartini buzganligi uchun natija xato chiqadi.",
+  "mnemonic": "Milni quyoshga — burchakni teng bo'l, janub shu yerda.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: gorizont tomonlarini quyosh va soat yordamida aniqlash",
+  "distractor_error": ["", "shartni teskari qo'yish", "asossiz usul", "asossiz usul"]
+},
+{
+  "q": "Tunda ochiq osmon ostida harakatlanayotgan guruh shimol yo'nalishini aniqlashi kerak. Kompas ishlamayapti, oyning yorug'i kam, yulduzlar aniq ko'rinadi. Komandir qaysi usulni tanlaydi?",
+  "opts": [
+    "Eng yorqin yulduzni topib, uni shimol deb qabul qiladi",
+    "Somon yo'lining yo'nalishini shimol-janub o'qi deb oladi",
+    "Katta Ayiq chelagining chetki ikki yulduzi orqali Qutb yulduzini topadi",
+    "Oyning shoxlari qaratilgan tomonni shimol deb belgilaydi"
+  ],
+  "correct": 2,
+  "explanation": "Shimoliy yarim sharda shimol yo'nalishi Qutb yulduzi bilan aniqlanadi; uni topish uchun Katta Ayiq chelagining chetki ikki yulduzi orasidagi masofa taxminan besh marta cho'ziladi. Eng yorqin yulduz Qutb yulduzi emas, Somon yo'li va oyning shoxlari esa yo'nalishning ishonchli ko'rsatkichi bo'la olmaydi.",
+  "mnemonic": "Katta Ayiq chetidan besh marta — Qutb yulduzi.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: kechasi gorizont tomonlarini aniqlash",
+  "distractor_error": ["yorqinlikni mezon qilish", "asossiz mo'ljal", "", "asossiz mo'ljal"]
+},
+{
+  "q": "Guruh o'rmonda daraxt tanasidagi mox, chumoli uyasining joylashuvi va daraxt shoxlarining zichligiga qarab shimolni aniqladi. Ular shu yo'nalish bo'yicha uzoq masofaga yurishni rejalashtirmoqda. Komandir bu rejaga qanday baho beradi?",
+  "opts": [
+    "Mahalliy belgilar eng ishonchli usul — reja to'liq ma'qullanadi",
+    "Mahalliy belgilar faqat taxminiy — ular kompas yoki osmon jismlari bilan tekshiriladi",
+    "Mahalliy belgilar butunlay yaroqsiz — ulardan hech qachon foydalanilmaydi",
+    "Mahalliy belgilar faqat tunda ishlaydi — kunduzi ulardan foydalanilmaydi"
+  ],
+  "correct": 1,
+  "explanation": "Mox, chumoli uyasi va shox zichligi kabi belgilar yorug'lik va namlikka bog'liq bo'lgani uchun relyef, soya va shamol ta'sirida chalg'itishi mumkin — ular faqat taxminiy mo'ljal beradi. Shuning uchun uzoq masofali harakatdan oldin yo'nalish kompas yoki osmon jismlari bilan tekshiriladi. Bu belgilarni butunlay rad etish ham noto'g'ri: ular yordamchi vosita sifatida ishlatiladi.",
+  "mnemonic": "Mahalliy belgi — ishora, dalil emas.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: mahalliy belgilar bo'yicha gorizont tomonlarini aniqlash",
+  "distractor_error": ["taxminiy usulni mutlaqlashtirish", "", "usulni butunlay rad etish", "asossiz cheklov"]
+},
+{
+  "q": "Askar oriyentirgacha bo'lgan masofani qadamlab o'lchadi va 400 juft qadam sanadi. Uning bir juft qadami o'rtacha 1,5 metrga teng. Oriyentirgacha bo'lgan masofa qancha?",
+  "opts": [
+    "400 metr — juft qadam soni bevosita metrga tenglashtiriladi",
+    "800 metr — juft qadam soni ikkiga ko'paytiriladi",
+    "600 metr — juft qadam soni 1,5 metrga ko'paytiriladi",
+    "267 metr — juft qadam soni 1,5 ga bo'linadi"
+  ],
+  "correct": 2,
+  "explanation": "Qadamlab o'lchashda juft qadam soni bir juft qadamning o'rtacha uzunligiga ko'paytiriladi: 400 × 1,5 = 600 metr. Juft qadam sonini to'g'ridan-to'g'ri metr deb olish yoki 1,5 ga bo'lish qadam uzunligining ma'nosini teskari tushunish bo'ladi.",
+  "mnemonic": "Juft qadam × 1,5 = metr.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: masofani qadamlab o'lchash",
+  "distractor_error": ["birlikni chalkashtirish", "koeffitsientni ikki deb olish", "", "amalni teskari bajarish"]
+},
+{
+  "q": "Kechasi azimut bo'yicha yurayotgan guruh keyingi burilish nuqtasigacha 900 metr masofani qadamlab o'lchashi kerak. Bir juft qadam 1,5 metrga teng deb olinadi. Guruh necha juft qadam sanaydi?",
+  "opts": [
+    "450 juft qadam",
+    "600 juft qadam",
+    "900 juft qadam",
+    "1350 juft qadam"
+  ],
+  "correct": 1,
+  "explanation": "Bu yerda amal teskari bajariladi: masofa bir juft qadam uzunligiga bo'linadi, ya'ni 900 : 1,5 = 600 juft qadam. 900 ni to'g'ridan-to'g'ri qadam soni deb olish o'lchov birligini chalkashtirish, 1350 esa bo'lish o'rniga ko'paytirish natijasidir.",
+  "mnemonic": "Metrni 1,5 ga bo'l — juft qadam chiqadi.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: masofani qadamlab o'lchash",
+  "distractor_error": ["ikkiga bo'lish", "", "birlikni chalkashtirish", "bo'lish o'rniga ko'paytirish"]
+},
+{
+  "q": "Kuzatuv punktidagi askar dushman artilleriyasining otishini ko'rdi va chaqnashdan 6 soniya o'tgach zarba tovushini eshitdi. Havoda tovush tezligi taxminan 330 metr/soniya. Otish nuqtasigacha masofa qanchaga yaqin?",
+  "opts": [
+    "Taxminan 660 metr",
+    "Taxminan 1000 metr",
+    "Taxminan 2000 metr",
+    "Taxminan 3300 metr"
+  ],
+  "correct": 2,
+  "explanation": "Yorug'lik deyarli oniy yetib kelgani uchun masofa tovushning kechikishiga qarab hisoblanadi: 330 × 6 = 1980 metr, ya'ni taxminan 2000 metr. 660 metr ikki soniyaga, 3300 metr esa o'n soniyaga mos keladi; 1000 metr esa hech qanday hisobdan kelib chiqmaydi.",
+  "mnemonic": "Har soniya — 330 metr.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: masofani ovoz va yorug'lik farqi bo'yicha aniqlash",
+  "distractor_error": ["ikki soniyaga hisoblash", "asossiz qiymat", "", "o'n soniyaga hisoblash"]
+},
+{
+  "q": "Komandir masshtabi 1:50 000 bo'lgan xaritada ikki oriyentir orasidagi masofani chizg'ich bilan o'lchadi — u 3 santimetrni tashkil etdi. Yerdagi haqiqiy masofa qanchaga teng?",
+  "opts": [
+    "150 metr",
+    "500 metr",
+    "1500 metr",
+    "5000 metr"
+  ],
+  "correct": 2,
+  "explanation": "1:50 000 masshtabda xaritadagi 1 santimetr yerdagi 50 000 santimetrga, ya'ni 500 metrga to'g'ri keladi. Demak 3 santimetr 3 × 500 = 1500 metrni bildiradi. 150 metr masshtabni o'n baravar kichik olish, 5000 metr esa masofani noto'g'ri ko'paytirish natijasidir.",
+  "mnemonic": "1:50 000 — bir santimetr yarim kilometr.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: topografik xarita masshtabi",
+  "distractor_error": ["masshtabni o'n baravar kichraytirish", "bir santimetrni javob deb olish", "", "noto'g'ri ko'paytirish"]
+},
+{
+  "q": "Bo'linmaga ikki xil xarita berildi: biri 1:25 000, ikkinchisi 1:100 000 masshtabda. Vazifa — kichik hududdagi jangovar mavqelarni batafsil belgilash. Komandir qaysi xaritani tanlaydi va nima uchun?",
+  "opts": [
+    "1:100 000 — masshtab soni katta, demak tafsilot ham ko'p",
+    "1:25 000 — masshtab yirikroq, joy tafsilotlari batafsil tushirilgan",
+    "Ikkalasi ham bir xil — masshtab tafsilotga ta'sir qilmaydi",
+    "1:100 000 — u kichik hududlar uchun maxsus mo'ljallangan"
+  ],
+  "correct": 1,
+  "explanation": "Masshtab kasr sifatida qaraladi: maxraj qancha kichik bo'lsa, masshtab shuncha yirik va xarita shuncha batafsil bo'ladi. 1:25 000 xaritada 1 santimetr 250 metrni, 1:100 000 da esa 1 kilometrni bildiradi — birinchisi kichik hududni ancha aniq ko'rsatadi. Maxrajning kattaligini tafsilot ko'pligi deb tushunish tipik xato.",
+  "mnemonic": "Maxraj kichik — xarita yirik va batafsil.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: xarita masshtablari va ularni tanlash",
+  "distractor_error": ["maxrajni teskari talqin qilish", "", "masshtab ta'sirini inkor etish", "maxrajni teskari talqin qilish"]
+},
+{
+  "q": "Xaritani o'rganayotgan komandir bir joyda gorizontallar (balandlik chiziqlari) juda zich, boshqa joyda esa siyrak joylashganini ko'rdi. Texnikani o'tkazish uchun yo'nalish tanlash kerak. U qanday xulosaga keladi?",
+  "opts": [
+    "Chiziqlar zich joy — tik qiyalik, texnika uchun siyrak joy qulayroq",
+    "Chiziqlar zich joy — tekislik, texnika aynan shu yerdan o'tkaziladi",
+    "Chiziqlarning zichligi faqat o'simlik qoplamini bildiradi",
+    "Chiziqlarning zichligi suv manbalarining ko'pligini ko'rsatadi"
+  ],
+  "correct": 0,
+  "explanation": "Gorizontallar bir xil balandlikdagi nuqtalarni tutashtiradi: ular qancha zich joylashgan bo'lsa, balandlik shuncha tez o'zgaradi, ya'ni qiyalik tik bo'ladi. Siyrak joylashgan chiziqlar esa yumshoq qiyalik yoki tekislikni bildiradi va texnika harakati uchun qulayroq. O'simlik va suv manbalari xaritada alohida shartli belgilar bilan ko'rsatiladi.",
+  "mnemonic": "Chiziq zich — qiyalik tik.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: relyefni gorizontallar bilan tasvirlash",
+  "distractor_error": ["", "zichlikni teskari talqin qilish", "belgini o'simlikka bog'lash", "belgini suvga bog'lash"]
+},
+{
+  "q": "Notanish joyda xaritadan foydalanish uchun uni avval to'g'ri joylashtirish kerak. Guruhda kompas bor, atrofda esa xaritada belgilangan to'g'ri yo'l ko'rinib turibdi. Xaritani orientirlashning to'g'ri usuli qaysi?",
+  "opts": [
+    "Xarita shimol ramkasi kompas strelkasi bilan mos kelguncha buriladi",
+    "Xarita harakat yo'nalishi doim yuqoriga qaraydigan qilib buriladi",
+    "Xarita foydalanuvchiga qulay bo'lgan istalgan holatda ushlanadi",
+    "Xarita quyosh tomonga qaratilib, soyaga qarab joylashtiriladi"
+  ],
+  "correct": 0,
+  "explanation": "Xaritani orientirlash — uning shimol yo'nalishini yerdagi haqiqiy shimol bilan moslashtirish; buning uchun kompas strelkasi xaritaning shimol ramkasiga mos qilinadi. Kompas bo'lmasa, xaritadagi va yerdagi chiziqli oriyentir (yo'l, daryo) bo'ylab moslash mumkin. Xaritani qulaylikka qarab yoki quyoshga qarab burish yo'nalishlarni buzadi.",
+  "mnemonic": "Xaritaning shimoli — yerning shimoliga.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: xaritani orientirlash",
+  "distractor_error": ["", "yo'nalishni asos qilish", "qulaylikni mezon qilish", "asossiz usul"]
+},
+{
+  "q": "Komandir bo'linmaga vazifa qo'yish uchun oriyentir tanlamoqda. Uning oldida to'rt obyekt bor: uzoqdan ko'rinadigan suv minorasi, tinmay harakatlanadigan poda, mavsumda quriydigan ko'lmak va bir xil ko'rinishdagi daraxtlar qatori. Qaysi obyekt oriyentir bo'la oladi?",
+  "opts": [
+    "Harakatlanadigan poda — u jonli va ko'zga tashlanadi",
+    "Mavsumda quriydigan ko'lmak — u xaritada belgilangan",
+    "Bir xil daraxtlar qatori — ular uzoqdan yaqqol ko'rinadi",
+    "Uzoqdan ko'rinadigan suv minorasi — u qo'zg'almas va yagona"
+  ],
+  "correct": 3,
+  "explanation": "Oriyentir uchta shartga javob berishi kerak: qo'zg'almas bo'lishi, atrofdagilardan ajralib turishi va uzoqdan ko'rinishi. Suv minorasi shu uchala shartni qanoatlantiradi. Poda joyini o'zgartiradi, ko'lmak mavsumda yo'qoladi, bir xil daraxtlar esa bir-biridan farq qilmagani uchun chalkashlikka olib keladi.",
+  "mnemonic": "Oriyentir — qo'zg'almas, yagona, ko'rinadigan.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: oriyentirlarni tanlash va ko'rsatish",
+  "distractor_error": ["qo'zg'aluvchan obyektni tanlash", "vaqtincha obyektni tanlash", "farqlanmaydigan obyektni tanlash", ""]
+},
+{
+  "q": "Guruh 40 daraja azimut bo'yicha yurayotganda oldida kesib o'tib bo'lmaydigan botqoq paydo bo'ldi. Uni faqat o'ngdan aylanib o'tish mumkin. Azimut bo'yicha yurish aniqligini saqlash uchun komandir qanday yo'l tutadi?",
+  "opts": [
+    "To'siqni aylanib o'tgach dastlabki azimutga qaytadi, masofani hisobga oladi",
+    "Aylanma yo'ldan keyin yangi azimutni ko'z bilan chamalab belgilaydi",
+    "Botqoqni aylanib o'tgach, azimutni 40 dan 90 darajaga o'zgartiradi",
+    "Aylanma yo'lda azimutni umuman hisobga olmay, oriyentirga qarab yuradi"
+  ],
+  "correct": 0,
+  "explanation": "To'siqni aylanib o'tishda yurish sxemasi buzilmasligi kerak: aylanma qismning yo'nalishi va uzunligi hisobga olinadi, so'ng guruh dastlabki azimutga qaytadi — shunda umumiy yo'nalish saqlanadi. Azimutni ko'z bilan chamalash yoki uni asossiz o'zgartirish yurish xatosini to'plab boradi va guruh mo'ljaldan chetga chiqadi.",
+  "mnemonic": "Aylanib o't — lekin azimutga qayt.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: azimut bo'yicha harakatlanish va to'siqlarni aylanib o'tish",
+  "distractor_error": ["", "aniqlikni ko'z chamasiga almashtirish", "azimutni asossiz o'zgartirish", "azimutni tashlab qo'yish"]
+},
+{
+  "q": "Kuzatuvchi dushman kuzatuv minorasini ko'rmoqda. Minoraning balandligi 10 metr ekani ma'lum, binokl setkasi bo'yicha uning burchak o'lchami 5 «ming»ni tashkil etdi. Ming formulasi bo'yicha masofa qanchaga teng?",
+  "opts": [
+    "500 metr",
+    "1000 metr",
+    "2000 metr",
+    "5000 metr"
+  ],
+  "correct": 2,
+  "explanation": "Ming formulasiga ko'ra masofa = (nishon balandligi × 1000) / burchak o'lchami. Bu yerda (10 × 1000) / 5 = 2000 metr. 1000 metr formulada 1000 ga ko'paytirishni tushirib qoldirganda, 500 metr esa amallarni teskari bajarganda chiqadi.",
+  "mnemonic": "Balandlik × 1000, burchakka bo'l.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: burchak o'lchovlari va masofani aniqlash",
+  "distractor_error": ["amallarni teskari bajarish", "ko'paytiruvchini tushirib qoldirish", "", "asossiz qiymat"]
+},
+{
+  "q": "Askar kompas bilan azimut olmoqchi bo'lganda strelka beqaror aylanaverdi. U temir-beton ustun yonida turibdi, yaqinida yuqori kuchlanish liniyasi va jangovar mashina bor. Sabab nimada va u qanday harakat qiladi?",
+  "opts": [
+    "Kompas sozdan chiqqan — uni zaxira asbobga almashtirish kerak",
+    "Havo namligi yuqori — quruq joy topib kutib turish kerak",
+    "Yaqindagi metall va elektr liniyasi ta'sir qilmoqda — chetga chiqish kerak",
+    "Quyosh nuri tushmoqda — kompasni soyaga olib o'tish kerak"
+  ],
+  "correct": 2,
+  "explanation": "Kompas magnit strelkasi metall massalar, jangovar texnika va yuqori kuchlanish liniyasi hosil qilgan magnit maydoniga sezgir — shuning uchun azimut olishdan oldin bunday manbalardan yetarli masofaga chetlashiladi. Namlik va quyosh nuri magnit strelkaga ta'sir qilmaydi, asbobni almashtirish esa sababni bartaraf etmaydi.",
+  "mnemonic": "Kompas metall va simdan uzoqda ishlaydi.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: kompasdan foydalanish qoidalari",
+  "distractor_error": ["sababni asbobga to'nkash", "ta'sir qilmaydigan omilni tanlash", "", "ta'sir qilmaydigan omilni tanlash"]
+},
+{
+  "q": "Guruh notanish joyda o'z turgan nuqtasini xaritada aniqlashi kerak. Atrofda xaritada belgilangan ikkita aniq oriyentir — cho'qqi va ko'prik ko'rinib turibdi. Qaysi usul qo'llanadi?",
+  "opts": [
+    "Xarita orientirlanib, ikkala oriyentirga azimut olinadi va chiziqlar kesishmasi belgilanadi",
+    "Faqat bitta oriyentirga azimut olinib, shu chiziq turgan nuqta deb belgilanadi",
+    "Ikkala oriyentir orasidagi masofa o'lchanib, uning o'rtasi turgan nuqta deb olinadi",
+    "Xarita orientirlanmasdan, oriyentirlar ko'zga qanday ko'rinsa shunday belgilanadi"
+  ],
+  "correct": 0,
+  "explanation": "Turgan nuqtani aniqlashning qayta kesishuv usulida xarita orientirlanadi, keyin ikkita ko'rinib turgan oriyentirga azimut olinib, ularning teskari yo'nalishlari xaritaga chiziladi — chiziqlarning kesishgan joyi turgan nuqtani beradi. Bitta oriyentir faqat chiziq beradi, nuqta bermaydi; oriyentirlar orasidagi o'rta esa kuzatuvchining joyi bilan bog'liq emas.",
+  "mnemonic": "Ikki azimut kesishsa — sen shu yerdasan.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: xaritada turgan nuqtani aniqlash",
+  "distractor_error": ["", "bitta chiziq bilan cheklanish", "asossiz geometrik taxmin", "orientirlashni tashlab qo'yish"]
+},
+{
+  "q": "Tunda azimut bo'yicha yurayotgan guruh oldinda uzoqroqdagi oriyentirni ko'ra olmayapti. Yo'nalishni yo'qotmaslik uchun komandir qanday usuldan foydalanadi?",
+  "opts": [
+    "Kompas bo'yicha azimutni ushlab, yaqin oraliq oriyentirlarni ketma-ket belgilaydi",
+    "Yulduzlar ko'rinmagani uchun harakatni tongga qoldiradi",
+    "Guruhni bir qatorga tizib, eng oldingi askarga erkin yurishni topshiradi",
+    "Faqat yo'l va so'qmoqlar bo'ylab yuradi, azimutga e'tibor bermaydi"
+  ],
+  "correct": 0,
+  "explanation": "Ko'rinish cheklangan sharoitda azimut bo'yicha yurish yaqin oraliq oriyentirlar bo'yicha bo'lib-bo'lib bajariladi: kompas bilan azimut ushlanadi, ko'rinadigan yaqin nuqta belgilanadi, unga yetgach keyingisi tanlanadi. Yo'l bo'ylab yurish yo'nalishni butunlay o'zgartiradi, oldingi askarga erkin yurishni topshirish esa xatoni to'playdi.",
+  "mnemonic": "Ko'rinmasa — qisqa oraliqlar bilan bor.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: cheklangan ko'rinishda azimut bo'yicha harakat",
+  "distractor_error": ["", "vazifani kechiktirish", "nazoratni yo'qotish", "azimutni tashlab qo'yish"]
+},
+{
+  "q": "Marsh yo'nalishini rejalashtirayotgan komandir xaritada ikki variant ko'rdi: birinchisi qisqa, ammo tik qiyalik va botqoq orqali o'tadi; ikkinchisi uzunroq, lekin qattiq grunt bo'ylab. Bo'linma zirhli texnika bilan harakatlanadi. Qaysi variant tanlanadi va nima uchun?",
+  "opts": [
+    "Qisqa variant — masofa qisqaligi har doim vaqtni tejaydi",
+    "Uzun variant — texnikaning o'tuvchanligi yo'l uzunligidan muhimroq",
+    "Qisqa variant — botqoqdan o'tish texnika uchun muammo emas",
+    "Ikkala variant teng — tanlov faqat komandirning xohishiga bog'liq"
+  ],
+  "correct": 1,
+  "explanation": "Marsh yo'nalishi tanlanayotganda hal qiluvchi mezon — texnikaning o'tuvchanligi: botqoq va tik qiyalikda zirhli texnika tiqilib qolishi yoki umuman o'ta olmasligi mumkin, natijada qisqa yo'l ko'proq vaqt oladi. Shuning uchun uzunroq, lekin qattiq gruntli yo'nalish afzal ko'riladi.",
+  "mnemonic": "Qisqa yo'l emas — o'tadigan yo'l.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: marsh yo'nalishini tanlash va joyni baholash",
+  "distractor_error": ["masofani mutlaqlashtirish", "", "to'siqni e'tiborsiz qoldirish", "mezonni inkor etish"]
+},
+{
+  "q": "Bo'linma yon bag'ridagi ikki mavqedan birini tanlashi kerak: birinchisi baland, keng ko'rinish beradi, lekin osmon fonida yaqqol ajralib turadi; ikkinchisi biroz pastroq, ko'rinish sal kamroq, ammo fon bilan qo'shilib ketadi. Komandir qaysi mavqeni tanlaydi?",
+  "opts": [
+    "Baland mavqe — kuzatuv imkoniyati har qanday holatda ustun turadi",
+    "Baland mavqe — osmon fonidagi siluet dushmanni chalg'itadi",
+    "Ikkinchi mavqe — fon bilan qo'shilish niqoblanishni ta'minlaydi",
+    "Ikkalasi ham yaramaydi — tekislikka tushish kerak"
+  ],
+  "correct": 2,
+  "explanation": "Osmon fonida ajralib turgan siluet uzoqdan aniq ko'rinadi va mavqeni fosh qiladi, shuning uchun bir oz kamroq ko'rinish evaziga bo'lsa ham, fon bilan qo'shilib ketadigan joy tanlanadi. Kuzatuv imkoniyati muhim, ammo o'zini ko'rsatib qo'ygan mavqe uzoq yashamaydi; tekislikka tushish esa kuzatuvni butunlay yo'qotadi.",
+  "mnemonic": "Osmon fonida turma — fonga qo'shil.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: mavqeni tanlash va niqoblash",
+  "distractor_error": ["kuzatuvni mutlaqlashtirish", "silueting xavfini inkor etish", "", "ikkala imkoniyatni rad etish"]
+},
+{
+  "q": "Kuzatuv punkti tashkil etayotgan askar to'rt joyni ko'rib chiqdi: yolg'iz daraxt tagi, buta orasidagi tabiiy chuqurlik, tepalik cho'qqisi va ochiq yo'l chetidagi ustun yonida. Qaysi joy kuzatuv punkti uchun eng mos keladi?",
+  "opts": [
+    "Yolg'iz daraxt tagi — u uzoqdan yaxshi mo'ljal bo'ladi",
+    "Tepalik cho'qqisi — u eng keng ko'rinish beradi",
+    "Ochiq yo'l chetidagi ustun yoni — u yerga yetib borish oson",
+    "Buta orasidagi tabiiy chuqurlik — u yashirin va pana beradi"
+  ],
+  "correct": 3,
+  "explanation": "Kuzatuv punkti dushmanga bilinmasligi va kuzatuvchini o'qdan asrashi kerak — buta orasidagi tabiiy chuqurlik ikkala shartni ham bajaradi. Yolg'iz daraxt va yo'l chetidagi ustun dushman uchun ham mo'ljal bo'lgani uchun eng avval o'qqa tutiladigan joylardir; tepalik cho'qqisi esa siluetni ochib qo'yadi.",
+  "mnemonic": "Yolg'iz daraxt — dushmanning ham mo'ljali.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: kuzatuv punktini tanlash va jihozlash",
+  "distractor_error": ["dushman mo'ljalini tanlash", "siluetni ochib qo'yish", "qulaylikni mezon qilish", ""]
+},
+{
+  "q": "Jangovar guruh imkoniyatlarini baholayotgan komandir ro'yxat tuzmoqda: shaxsiy tarkib soni va tayyorgarligi, qurollanish holati, aloqa vositalari. Uning yordamchisi ro'yxatga yana bir muhim omilni qo'shishni taklif qilmoqda. Quyidagilardan qaysi biri haqiqatan ham shu ro'yxatga kiradi?",
+  "opts": [
+    "Qo'shni harbiy qismning shtat tuzilishi",
+    "Mavjud o'q-dori va yonilg'i zaxirasi",
+    "Yaqin aholi punktining tarixiy yodgorliklari",
+    "Shaxsiy tarkibning oilaviy holati"
+  ],
+  "correct": 1,
+  "explanation": "Jangovar imkoniyat — guruhning berilgan vaqt ichida vazifani bajara olish darajasi; unga shaxsiy tarkib, qurollanish, aloqa bilan bir qatorda moddiy zaxira, ayniqsa o'q-dori va yonilg'i bevosita ta'sir qiladi. Qo'shni qismning shtati, mahalliy yodgorliklar va shaxsiy tarkibning oilaviy holati bu ko'rsatkichni belgilamaydi.",
+  "mnemonic": "Zaxira tugasa — imkoniyat ham tugaydi.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 11-sinf: jangovar guruhning jangovar imkoniyatlari",
+  "distractor_error": ["begona birlik ko'rsatkichini olish", "", "aloqasiz omilni olish", "aloqasiz omilni olish"]
+},
+{
+  "q": "Bo'linma oldida keng, sayoz suv to'sig'i turibdi; ko'prik yo'q, aylanib o'tish uzoq vaqt oladi. Bo'linmada suzuvchanlik xususiyatiga ega jangovar mashinalar bor. Komandir qanday qaror qabul qiladi?",
+  "opts": [
+    "Suv to'sig'ini aylanib o'tishni tanlaydi, chunki bu har doim xavfsizroq",
+    "Texnikani qoldirib, faqat piyoda tarkib bilan suvdan o'tadi",
+    "Mashinalarning suzuvchanligini hisobga olib, suv to'sig'ini kesib o'tishga tayyorlanadi",
+    "To'siq oldida to'xtab, muhandislik bo'linmasi ko'prik qurishini kutadi"
+  ],
+  "correct": 2,
+  "explanation": "Jangovar texnikaning taktik-texnik tavsiflarini bilishning amaliy ma'nosi shunda: suzuvchanlik xususiyati suv to'sig'ini ko'prik va aylanma yo'lsiz kesib o'tish imkonini beradi va vaqtni tejaydi. Texnikani qoldirib ketish bo'linmani o't quvvatidan mahrum qiladi, aylanish va ko'prik kutish esa imkoniyat bor ekan, asossiz kechikishdir.",
+  "mnemonic": "Texnikaning tavsifini bil — u yo'l ochadi.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: jangovar texnikaning taktik-texnik tavsiflari",
+  "distractor_error": ["imkoniyatni ishlatmaslik", "o't quvvatini yo'qotish", "", "asossiz kechikish"]
+},
+{
+  "q": "Jangda radiostansiya ishdan chiqdi, qo'shni bo'linma bilan aloqa kerak. Masofa 300 metr, oraliqda dushman kuzatuvi bor. Komandir qaysi aloqa usulini tanlaydi?",
+  "opts": [
+    "Baland ovozda buyruq berib, ovoz orqali aloqa o'rnatadi",
+    "Oldindan kelishilgan signal vositalaridan foydalanadi",
+    "Aloqani butunlay to'xtatib, mustaqil harakat qilishga o'tadi",
+    "Bir necha askarni ochiq maydon orqali xabar bilan yuboradi"
+  ],
+  "correct": 1,
+  "explanation": "Radioaloqa ishlamay qolganda oldindan kelishilgan signal vositalari — signal raketalari, qo'l va bayroqcha ishoralari — asosiy zaxira aloqa turi hisoblanadi. Baland ovoz joylashuvni fosh qiladi, ochiq maydon orqali xabarchi yuborish esa uni dushman o'qi ostiga qo'yadi. Aloqani butunlay uzish boshqaruvni yo'qotadi.",
+  "mnemonic": "Radio o'lsa — signal yashaydi.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 11-sinf: jangovar boshqaruv va aloqa vositalari",
+  "distractor_error": ["joylashuvni fosh qilish", "", "boshqaruvni yo'qotish", "shaxsiy tarkibni xavfga qo'yish"]
+},
+{
+  "q": "Hujum oldidan guruh komandiri shaxsiy tarkibga vazifa qo'ymoqda. U faqat «oldinga siljiymiz» deb aytdi, boshqa hech narsa qo'shmadi. Bu vazifa qo'yishda nima yetishmayapti?",
+  "opts": [
+    "Yetishmayotgan narsa yo'q — jangda qisqalik eng muhim talab",
+    "Harakat tezligi ko'rsatilmagan, qolgan ma'lumot yetarli",
+    "Texnika ro'yxati aytilmagan, boshqa hamma narsa to'liq",
+    "Oriyentirlar, dushman haqidagi ma'lumot va har kimning aniq vazifasi"
+  ],
+  "correct": 3,
+  "explanation": "Vazifa qo'yish tartibi qat'iy: oriyentirlar ko'rsatiladi, dushman haqidagi ma'lumot beriladi, so'ng har bir askarning aniq vazifasi, harakat tartibi va signal belgilanadi. Bularsiz shaxsiy tarkib nimani, qayerda va qanday bajarishni bilmaydi. Qisqalik aniqlikni almashtira olmaydi, texnika ro'yxati esa vazifa qo'yishning asosiy elementi emas.",
+  "mnemonic": "Oriyentir — dushman — vazifa — signal.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 11-sinf: jangovar vazifa qo'yish tartibi",
+  "distractor_error": ["aniqlikni qisqalikka almashtirish", "yetishmovchilikni kichraytirish", "asosiy elementni chalkashtirish", ""]
+},
+{
+  "q": "Desant jangovar mashinadan tushirilmoqda; dushman o't ochmayapti, atrofda pana joylar bor. Bir askar mashinadan tushib, ochiq joyda to'planishni kutmoqchi. Komandir qanday tartibni belgilaydi?",
+  "opts": [
+    "Tushish tugaguncha barcha ochiq joyda saf tortib turadi",
+    "Tushgan askarlar mashina yonida to'planib, buyruq kutadi",
+    "Tushish bilan darhol pana joyni egallab, sektorlarni nazoratga oladi",
+    "Askarlar birma-bir tushib, mashina ortidan yurib boradi"
+  ],
+  "correct": 2,
+  "explanation": "Mashinadan tushish jangovar harakatning eng zaif lahzasi: tushgan tarkib darhol tarqalib, pana joyni egallashi va o'z kuzatuv sektorini nazoratga olishi kerak. Ochiq joyda saf tortish yoki mashina yonida to'planish bir zarba bilan butun guruhni yo'qotish xavfini tug'diradi.",
+  "mnemonic": "Tushding — tarqal va panaga.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: desantning jangovar mashinadan tushishi",
+  "distractor_error": ["ochiq joyda to'planish", "bir joyda to'planish", "", "harakatni sekinlashtirish"]
+},
+{
+  "q": "Bo'linma tanklar bilan birgalikda hujum qilmoqda. Vzvod komandiri piyoda tarkibning tankka nisbatan vazifasini tushuntirmoqda. Piyodaning tank bilan hamkorlikdagi asosiy vazifasi nimadan iborat?",
+  "opts": [
+    "Tank ortida yashirinib, o't ochmasdan harakat qilish",
+    "Tankdan uzoqlashib, mustaqil yo'nalishda harakatlanish",
+    "Tankning oldida yurib, uning o't ochishiga to'sqinlik qilish",
+    "Tankka yaqin dushman granatomyotchilarini aniqlab, yo'q qilish"
+  ],
+  "correct": 3,
+  "explanation": "Tank kuchli zirh va o't quvvatiga ega, ammo yaqin masofada ko'rish maydoni cheklangan — shuning uchun unga eng katta xavfni yaqindan otadigan granatomyotchi soladi. Piyodaning asosiy vazifasi aynan shunday nishonlarni aniqlab, yo'q qilish. Tankdan uzoqlashish hamkorlikni buzadi, uning oldida yurish esa o't ochish sektorini to'sib qo'yadi.",
+  "mnemonic": "Tankni granatomyotchidan piyoda asraydi.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: piyoda va tank bo'linmalarining hamkorligi",
+  "distractor_error": ["passiv harakat", "hamkorlikni buzish", "o't sektorini to'sish", ""]
+},
+{
+  "q": "Bo'linma uzoq muddatli jangovar vazifaga chiqmoqda. Komandir zaxiralarni hisoblayotganda o'q-dori va yonilg'i bilan bir qatorda yana bir zaxira turini hisobga olishi shart. Vazifa davomiyligini belgilashda qaysi zaxira ham hal qiluvchi ahamiyatga ega?",
+  "opts": [
+    "Suv va oziq-ovqat zaxirasi",
+    "Zaxira kiyim-bosh to'plami",
+    "Qo'shimcha xarita va yozuv qurollari",
+    "Ehtiyot qismlar va texnik hujjatlar"
+  ],
+  "correct": 0,
+  "explanation": "Uzoq muddatli vazifada shaxsiy tarkibning jangovar qobiliyati suv va oziq-ovqat bilan bevosita bog'liq: ular tugaganda bo'linma o'q-dorisi bor bo'lsa ham vazifani davom ettira olmaydi. Kiyim-bosh, xarita va ehtiyot qismlar zarur, ammo vazifa davomiyligini belgilovchi asosiy chegara ular emas.",
+  "mnemonic": "Suv tugasa — jang ham tugaydi.",
+  "topicId": 3, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 11-sinf: bo'linmani moddiy ta'minlash va zaxiralar",
+  "distractor_error": ["", "ikkinchi darajali zaxirani tanlash", "ikkinchi darajali zaxirani tanlash", "ikkinchi darajali zaxirani tanlash"]
+}
+]

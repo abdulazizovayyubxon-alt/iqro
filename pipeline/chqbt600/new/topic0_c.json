@@ -1,0 +1,398 @@
+[
+  {
+    "q": "Munozarada bir ishtirokchi «urush boshlangandan keyin hech qanday qoida qolmaydi, hamma narsaga ruxsat» dedi. Boshqasi esa qurolli to'qnashuvlar davrida ham majburiy huquqiy chegaralar borligini aytdi. Xalqaro gumanitar huquqning asosiy maqsadi nimadan iborat?",
+    "opts": [
+      "Harbiy harakatlar muddatini oldindan belgilab qo'yish",
+      "Jangda qatnashmayotganlarni himoya qilish va kurash usullarini cheklash",
+      "Urushni butunlay taqiqlash va davlatlarni qurolsizlantirish",
+      "G'olib tomonning huquqlarini rasman mustahkamlash"
+    ],
+    "correct": 1,
+    "explanation": "Xalqaro gumanitar huquq urushning boshlanishini emas, uning olib borilish tarzini tartibga soladi: u jangda qatnashmayotgan va qatnashishni to'xtatgan shaxslarni himoya qiladi hamda kurash usullari va vositalarini cheklaydi. Ya'ni to'qnashuv sharoitida ham har qanday harakat qonuniy bo'lavermaydi.",
+    "mnemonic": "Urushni taqiqlamaydi — uni chegaralaydi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Xalqaro gumanitar huquq — asosiy maqsad va mazmuni",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "huquqiy tartibga solishni harakatlar muddatini belgilash deb bilish",
+      "",
+      "urush olib borish qoidalarini urushni taqiqlash bilan chalkashtirish",
+      "himoya normalarini g'olib huquqlarini rasmiylashtirish deb tushunish"
+    ]
+  },
+  {
+    "q": "Jang paytida qurolini tashlab, qo'lini ko'targan dushman askari qo'lga olindi. Bir necha xizmatchi «u bizga qarshi otgan edi, shuning uchun javob berishi kerak» deb, unga nisbatan zo'ravonlik qilmoqchi bo'ldi. Komandir buni qat'iyan taqiqladi. Harbiy asirga nisbatan qanday qoida amal qiladi?",
+    "opts": [
+      "Unga munosabat qo'lga olgan bo'linma qaroriga havola etiladi",
+      "U almashinuvga qadar hech qanday himoyaga ega bo'lmaydi",
+      "Unga insoniy munosabatda bo'linadi, jangda qatnashgani uchun jazolanmaydi",
+      "U jangda qatnashgani uchun jinoiy javobgarlikka tortiladi"
+    ],
+    "correct": 2,
+    "explanation": "Qurolini tashlab taslim bo'lgan jangchi harbiy asir maqomini oladi va shu lahzadan boshlab himoya ostiga o'tadi: unga insoniy munosabatda bo'lish shart, uni jangovar harakatlarda qatnashgani uchun jazolab bo'lmaydi. Bu norma qo'lga olgan bo'linmaning xohishiga bog'liq emas va istisnoga yo'l qo'ymaydi.",
+    "mnemonic": "Qurol tashlandi — himoya boshlandi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Xalqaro gumanitar huquq — harbiy asirlar maqomi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "majburiy normani bo'linma ixtiyoriga havola qilish",
+      "asir maqomini almashinuv paytiga bog'lab qo'yish",
+      "",
+      "jangovar harakatda qatnashishni jinoyat deb hisoblash"
+    ]
+  },
+  {
+    "q": "Bo'linma dushman harbiy ombori yaqinidagi turar joy massivini o't ostiga olishni taklif qildi, chunki «u yerdan ham o't ochilayotgan bo'lishi mumkin». Komandir aniq ma'lumot yo'qligini ta'kidlab, boshqa qaror qabul qildi. Xalqaro gumanitar huquqning ajratish tamoyili nimani talab qiladi?",
+    "opts": [
+      "Har qanday shubhali ob'ekt harbiy nishon deb hisoblanishi kerak",
+      "Aholi punktlari umuman harbiy harakatlardan chetda qolishi kerak",
+      "Nishon tanlash faqat harbiy zarurat bilan asoslanishi kifoya",
+      "Harbiy nishonlar bilan fuqarolik ob'ektlari aniq ajratilishi kerak"
+    ],
+    "correct": 3,
+    "explanation": "Ajratish tamoyiliga ko'ra hujum faqat harbiy nishonlarga qaratilishi mumkin, fuqarolik ob'ektlari va tinch aholi esa hujum ob'ekti bo'la olmaydi. Shubha bo'lgan holatda ob'ekt fuqarolik ob'ekti deb hisoblanadi — ya'ni noaniqlik hujum uchun emas, himoya foydasiga talqin qilinadi.",
+    "mnemonic": "Shubha bo'lsa — fuqarolik ob'ekti.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Xalqaro gumanitar huquq — ajratish tamoyili",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "shubhani hujum foydasiga talqin qilib, tamoyilni teskarisiga aylantirish",
+      "tamoyilni haddan tashqari kengaytirib, harbiy nishon tushunchasini yo'qotish",
+      "harbiy zaruratni ajratish tamoyilidan ustun qo'yish",
+      ""
+    ]
+  },
+  {
+    "q": "Jang maydonida oq fonda qizil yarim oy tasviri tushirilgan chodir va shu belgi taqilgan bir necha xodim ko'rindi. Yosh askar bu belgini «shunchaki bo'linma nishoni» deb hisoblab, chodirni nishonga olmoqchi bo'ldi. Bu belgi nimani bildiradi?",
+    "opts": [
+      "Tibbiy xizmat himoya belgisi — unga hujum qilish taqiqlanadi",
+      "Shtab joylashuvi belgisi — u qat'iy qo'riqlanadigan ob'ekt",
+      "Ta'minot bo'linmasi belgisi — u ikkinchi darajali nishon",
+      "Bitaraf davlat belgisi — u faqat kuzatuvchilarga tegishli"
+    ],
+    "correct": 0,
+    "explanation": "Qizil Xoch va Qizil Yarim Oy belgilari tibbiy xizmat xodimlari, transporti va inshootlarini bildiruvchi xalqaro himoya belgisidir: ular hujum ob'ekti bo'la olmaydi. Belgini harbiy maqsadda niqob sifatida ishlatish esa xalqaro gumanitar huquqning og'ir buzilishi hisoblanadi.",
+    "mnemonic": "Qizil yarim oy — otish taqiqlangan belgi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Xalqaro gumanitar huquq — himoya belgilari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "himoya belgisini boshqaruv punkti belgisi bilan chalkashtirish",
+      "himoya belgisini oddiy harbiy nishon deb baholash",
+      "himoya belgisini davlat maqomi belgisi bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "Bir guruh jangchi fuqarolik kiyimini kiyib, taslim bo'layotgandek qo'l ko'tarib yaqinlashdi va qarshi tomon o't ochishni to'xtatgach, to'satdan hujum qildi. Boshqa guruh esa texnikasini butalar bilan niqoblab, soxta mavqe qurdi. Bu ikki harakat huquqiy jihatdan qanday baholanadi?",
+    "opts": [
+      "Ikkalasi ham taqiqlangan xiyonat hisoblanadi",
+      "Birinchisi taqiqlangan xiyonat, ikkinchisi ruxsat etilgan harbiy hiyla",
+      "Birinchisi ruxsat etilgan harbiy hiyla, ikkinchisi taqiqlangan xiyonat",
+      "Ikkalasi ham ruxsat etilgan harbiy hiyla hisoblanadi"
+    ],
+    "correct": 1,
+    "explanation": "Xiyonat — dushmanning himoya normalariga bo'lgan ishonchini suiiste'mol qilib, uni o'ldirish yoki yaralash uchun taslim bo'lish yoxud fuqaro qiyofasiga kirish; bu qat'iyan taqiqlanadi, chunki u himoya belgilarining o'ziga bo'lgan ishonchni yo'q qiladi. Niqoblash va soxta mavqe qurish esa hech kimning himoya maqomini suiiste'mol qilmaydi va ruxsat etilgan harbiy hiyla hisoblanadi.",
+    "mnemonic": "Niqoblash — mumkin; himoya maqomi bilan aldash — mumkin emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Xalqaro gumanitar huquq — xiyonat va harbiy hiyla",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "oddiy niqoblashni ham taqiqlangan usul deb baholash",
+      "",
+      "xiyonat va ruxsat etilgan hiyla o'zaro almashtirilgan",
+      "himoya maqomini suiiste'mol qilishni ruxsat etilgan deb hisoblash"
+    ]
+  },
+  {
+    "q": "Jang tugagach, maydonda ikki tomonning yaradorlari qoldi. Sanitar avval o'z bo'linmasi xizmatchilariga yordam berdi, keyin esa dushman yaradorlarini «bu bizning ishimiz emas» deb qoldirib ketdi. Komandir bu qarorni noto'g'ri deb baholadi. Yaradorlarga nisbatan qanday norma amal qiladi?",
+    "opts": [
+      "Dushman yaradorlariga yordam faqat almashinuv kelishuvidan keyin beriladi",
+      "Yordam ko'rsatish tartibi bo'linma komandirining ixtiyorida qoladi",
+      "Yaradorlar qaysi tomon ekanidan qat'i nazar yig'iladi va yordam ko'rsatiladi",
+      "Yordam avval o'z tarkibiga, dushmanga esa imkon bo'lsa ko'rsatiladi"
+    ],
+    "correct": 2,
+    "explanation": "Yaradorlar va kasallar jangovar harakatlarda qatnashishni to'xtatgan hisoblanadi, shuning uchun ular himoya ostiga o'tadi: ularni yig'ish va tibbiy yordam ko'rsatish majburiyati qaysi tomonga mansubligiga bog'liq emas. Yordam ko'rsatish tartibi faqat tibbiy holatning og'irligiga qarab belgilanadi.",
+    "mnemonic": "Yarador — tomon emas, bemor.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Xalqaro gumanitar huquq — yaradorlar va kasallar himoyasi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "yordam majburiyatini kelishuv shartiga bog'lash",
+      "majburiy normani mansabdor shaxs ixtiyoriga havola qilish",
+      "",
+      "majburiy normani ikkinchi darajali imkoniyatga aylantirish"
+    ]
+  },
+  {
+    "q": "Yangi kelgan askar harbiy unvonlarni sanab, «leytenant ham, mayor ham, general ham bir toifaga kiradi, chunki hammasi ofitser» dedi. Vzvod komandiri ofitserlar tarkibi ham ichki toifalarga bo'linishini aytdi. Ofitserlar tarkibi qanday toifalarga ajratiladi?",
+    "opts": [
+      "Boshlang'ich va yakuniy ofitserlar toifalariga",
+      "Saf va saf tashqarisidagi ofitserlar toifalariga",
+      "Muddatli va shartnoma asosidagi ofitserlar toifalariga",
+      "Kichik, katta va oliy ofitserlar toifalariga"
+    ],
+    "correct": 3,
+    "explanation": "Harbiy unvonlar tarkibi bo'yicha guruhlanadi va ofitserlar uchta toifaga ajratiladi: kichik ofitserlar, katta ofitserlar hamda oliy ofitserlar. Bu bo'linish lavozim doirasini, mas'uliyat darajasini va unvon berish tartibini belgilaydi; xizmat turi bo'yicha bo'linish esa boshqa mezon hisoblanadi.",
+    "mnemonic": "Ofitser — kichik, katta, oliy.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Harbiy xizmat asoslari — harbiy unvonlar tarkibi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "rasmiy toifalarni o'ylab topilgan atamalar bilan almashtirish",
+      "unvon toifasini saf holatiga qarab ajratish",
+      "unvon toifasini xizmat o'tash turiga bog'lash",
+      ""
+    ]
+  },
+  {
+    "q": "Bo'linmada mayor unvonli, ammo quyi lavozimdagi xizmatchi va kapitan unvonli bo'linma komandiri birga ishlamoqda. Mayor «unvonim kattaroq, demak buyruqni men beraman» dedi. Rota komandiri munosabatlar boshqa mezon bilan belgilanishini tushuntirdi. Xizmat bo'yicha buyruq berish huquqi nimaga asoslanadi?",
+    "opts": [
+      "Egallab turgan mansabga — mansabi katta bo'lgan boshliq hisoblanadi",
+      "Faqat harbiy unvonga — unvoni yuqori bo'lgan boshliq hisoblanadi",
+      "Xizmat stajiga — uzoqroq xizmat qilgan boshliq hisoblanadi",
+      "Yoshga — kattaroq yoshdagi xizmatchi boshliq hisoblanadi"
+    ],
+    "correct": 0,
+    "explanation": "Nizom boshliqlarni ikki asosda ajratadi: mansabiga ko'ra va harbiy unvoniga ko'ra. Xizmat masalalari bo'yicha buyruq berish huquqi mansabga bog'langan — bo'linmani boshqaradigan shaxs, unvoni pastroq bo'lsa ham, o'z qo'l ostidagilarga buyruq beradi. Unvon esa asosan safdan tashqaridagi munosabatlarda kattalikni belgilaydi.",
+    "mnemonic": "Buyruqni mansab beradi, unvon emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Harbiy xizmat asoslari — mansab va unvon bo'yicha boshliqlar",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "boshliqlikni faqat unvonga bog'lab, mansab tamoyilini yo'qotish",
+      "xizmat bo'ysunuvini staj bilan almashtirish",
+      "xizmat bo'ysunuvini yosh bilan almashtirish"
+    ]
+  },
+  {
+    "q": "Chaqiruv komissiyasi to'rt fuqaroni ko'rikdan o'tkazdi: biri to'liq sog'lom, ikkinchisi ayrim cheklovlar bilan xizmatga yaroqli, uchinchisi vaqtincha yaroqsiz, to'rtinchisi butunlay yaroqsiz deb topildi. Bir a'zo «yaroqli yoki yaroqsiz — boshqa variant yo'q» dedi. Sog'liq bo'yicha xulosa qanday toifalarga bo'linadi?",
+    "opts": [
+      "Yaroqli, muddati kechiktirilgan va zaxiraga o'tkazilgan",
+      "Yaroqli, cheklovlar bilan yaroqli, vaqtincha yaroqsiz va yaroqsiz",
+      "Faqat yaroqli va yaroqsiz — oraliq toifalar mavjud emas",
+      "Yaroqli, yaroqsiz va qayta ko'rikka yuborilgan"
+    ],
+    "correct": 1,
+    "explanation": "Harbiy-vrachlik ekspertizasi ikkilik xulosa bermaydi: fuqaro to'liq yaroqli, ayrim cheklovlar bilan yaroqli, vaqtincha yaroqsiz yoki yaroqsiz deb topilishi mumkin. Bu bo'linish har bir chaqiriluvchini sog'lig'iga mos xizmat turiga yo'naltirish yoki davolanishga vaqt berish imkonini yaratadi.",
+    "mnemonic": "Sog'liq xulosasi ikkita emas — to'rtta.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Harbiy xizmat asoslari — harbiy-vrachlik ekspertizasi xulosalari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "sog'liq toifasini chaqiruv bo'yicha qaror bilan chalkashtirish",
+      "",
+      "toifalarni ikkilik xulosaga qisqartirish",
+      "sog'liq toifasini tartib-taomil qarori bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "Harbiy qismga yangi kelgan chaqiriluvchi qasamyodni bir necha kun ichida, hech qanday tayyorgarliksiz qabul qilmoqchi bo'ldi va «bu shunchaki matnni o'qish» dedi. Bo'linma komandiri tartib boshqacha ekanini tushuntirdi. Harbiy qasamyod qachon va qanday qabul qilinadi?",
+    "opts": [
+      "Xizmat muddati tugashiga yaqin, yakuniy ko'rikda qabul qilinadi",
+      "Chaqiruv punktida, komissiya qarori bilan birga rasmiylashtiriladi",
+      "Dastlabki tayyorgarlikdan so'ng, tantanali marosimda qabul qilinadi",
+      "Qismga kelgan kunning o'zida, shtabda hujjat bilan rasmiylashtiriladi"
+    ],
+    "correct": 2,
+    "explanation": "Chaqiriluvchi avval dastlabki tayyorgarlikdan o'tadi va o'z burchlari, huquqlari hamda qasamyod mazmunini o'rganadi, shundan keyingina Jangovar bayroq oldida tantanali marosimda qasamyod qabul qiladi. Qasamyoddan oldin xizmatchiga qurol biriktirilmaydi va u jangovar vazifalarga jalb etilmaydi.",
+    "mnemonic": "Avval tayyorgarlik va tushunish — keyin qasamyod.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Harbiy xizmat asoslari — Harbiy qasamyod qabul qilish tartibi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "qasamyod paytini xizmat oxiriga surish",
+      "qasamyodni chaqiruv tartib-taomili bilan chalkashtirish",
+      "",
+      "tantanali marosimni oddiy hujjat rasmiylashtirish bilan almashtirish"
+    ]
+  },
+  {
+    "q": "Harbiy xizmatchi jinoyat sodir etgani haqida ma'lumot keldi. Bo'linma komandiri ishni o'zi ko'rib chiqib, hukm chiqarmoqchi bo'ldi va «bu ichki masala» dedi. Huquqshunos bunday vakolat yo'qligini aytdi. Harbiy xizmatchi sodir etgan jinoyat bo'yicha ish kim tomonidan ko'riladi?",
+    "opts": [
+      "Bo'linma komandiri tomonidan, chunki xizmatchi unga bo'ysunadi",
+      "Qism ofitserlaridan tuzilgan ichki komissiya tomonidan ko'riladi",
+      "Shaxsiy tarkib yig'ilishida ochiq muhokama bilan hal qilinadi",
+      "Sud tomonidan ko'riladi, komandir esa intizomiy chora bilan cheklanadi"
+    ],
+    "correct": 3,
+    "explanation": "Jinoyat uchun javobgarlikni faqat sud belgilaydi va harbiy xizmatchi bu jihatdan boshqa fuqarolar bilan teng himoyaga ega. Komandirning vakolati intizomiy javobgarlik bilan chegaralangan: u intizomiy chora qo'llashi mumkin, ammo jinoyat ishi bo'yicha hukm chiqara olmaydi.",
+    "mnemonic": "Intizomiy jazo — komandirda; hukm — sudda.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Harbiy xizmat asoslari — harbiy xizmatchining huquqiy himoyasi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "sud vakolatini komandir vakolati bilan almashtirish",
+      "sud jarayonini ichki komissiya bilan almashtirish",
+      "huquqiy jarayonni jamoaviy muhokama bilan almashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Aholi punktida garovga olish holati yuz berdi va u terrorchilik harakati deb baholandi. Bir fuqaro «buni armiya hal qilishi kerak, chunki qurol ishlatilgan» dedi. Mutaxassis bunday holatlarda vakolat taqsimoti boshqacha ekanini tushuntirdi. Terrorizmga qarshi kurashda Qurolli Kuchlarning roli qanday?",
+    "opts": [
+      "Ular qonunda belgilangan hollarda, birgalikda jalb etiladi",
+      "Ular har qanday terrorchilik holatida asosiy kuch sifatida ishlatiladi",
+      "Ular bunday holatlarga umuman jalb etilmaydi va chetda qoladi",
+      "Ular faqat tashqi chegaradan tashqarida harakat qila oladi"
+    ],
+    "correct": 0,
+    "explanation": "Terrorizmga qarshi kurash birinchi navbatda huquqni muhofaza qiluvchi va xavfsizlik idoralari zimmasida bo'lib, Qurolli Kuchlar qonunda aniq belgilangan hollarda va belgilangan tartibda ular bilan birgalikda jalb etiladi. Bu vakolat chegarasi harbiy kuchning ichki ishlarda o'zboshimchalik bilan qo'llanishiga yo'l qo'ymaydi.",
+    "mnemonic": "Armiya — qonunda ko'rsatilgan hollarda va birgalikda.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Harbiy xizmat asoslari — Qurolli Kuchlarning vakolat doirasi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "harbiy kuchni ichki xavfsizlikda asosiy vosita deb hisoblash",
+      "qonunda nazarda tutilgan ishtirok imkoniyatini butunlay inkor qilish",
+      "vakolat doirasini faqat hudud belgisiga bog'lash"
+    ]
+  },
+  {
+    "q": "Zaxiraga o'tkazilgan fuqaro yashash joyini o'zgartirdi, ish joyini almashtirdi va oilaviy holatida ham o'zgarish bo'ldi. U «xizmatni tugatganman, hech kimga xabar berishim shart emas» deb hisobladi. Harbiy hisobda turgan fuqaroning majburiyati qanday?",
+    "opts": [
+      "O'zgarishlar faqat safarbarlik e'lon qilinganda ma'lum qilinadi",
+      "Hisob ma'lumotlaridagi o'zgarishlar belgilangan muddatda xabar qilinadi",
+      "O'zgarishlar faqat navbatdagi harbiy yig'in vaqtida ma'lum qilinadi",
+      "O'zgarishlar haqida xabar berish ixtiyoriy hisoblanadi"
+    ],
+    "correct": 1,
+    "explanation": "Harbiy hisob safarbarlik tayyorgarligining asosi bo'lib, u faqat ma'lumotlar dolzarb bo'lgandagina ishlaydi: yashash joyi, ish joyi, oilaviy va sog'liq holatidagi o'zgarishlar belgilangan muddatda harbiy komissariatga xabar qilinishi shart. Ma'lumot eskirsa, zarur paytda fuqaroni topib bo'lmaydi va tizim ishdan chiqadi.",
+    "mnemonic": "Hisob dolzarb bo'lsa — tizim ishlaydi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Harbiy xizmat asoslari — harbiy hisob va uni yuritish",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "xabar berishni favqulodda holatga qoldirish",
+      "",
+      "xabar berish muddatini yig'inga bog'lab, hisobni eskirtirish",
+      "majburiyatni ixtiyoriy harakat deb hisoblash"
+    ]
+  },
+  {
+    "q": "Ikki o'quvchi bahslashmoqda: biri «harbiy xizmatchi maqomi chaqiruv qog'ozi olingan kundan boshlanadi», ikkinchisi «harbiy komissariatga kelgan kundan boshlanadi» deydi. O'qituvchi ikkalasini ham tuzatdi. Harbiy xizmatchi maqomi qachon boshlanadi va tugaydi?",
+    "opts": [
+      "Qasamyoddan boshlanib, harbiy bilet olingan kunda tugaydi",
+      "Komissiya qaroridan boshlanib, safarbarlik tugaguncha davom etadi",
+      "Xizmatga kirishdan boshlanib, zaxiraga o'tkazilish bilan tugaydi",
+      "Chaqiruv qog'ozi olingandan boshlanib, xizmat oxirida tugaydi"
+    ],
+    "correct": 2,
+    "explanation": "Harbiy xizmatchi maqomi fuqaro harbiy xizmatga kirgan paytdan boshlanadi va uni zaxiraga yoki iste'foga o'tkazish bilan tugaydi. Chaqiruv qog'ozini olish yoki komissiyadan o'tish tayyorgarlik bosqichlari hisoblanadi va ular hali bu maqomni bermaydi; qasamyod esa maqomni emas, jangovar vazifaga jalb etish huquqini beradi.",
+    "mnemonic": "Maqom xizmatga kirish bilan boshlanadi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Harbiy xizmat asoslari — harbiy xizmatchi maqomi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "maqom boshlanishini qasamyod paytiga bog'lash",
+      "maqom chegarasini safarbarlik holatiga bog'lash",
+      "",
+      "tayyorgarlik bosqichini maqom boshlanishi deb hisoblash"
+    ]
+  },
+  {
+    "q": "Shartnoma asosida xizmatga o'tmoqchi bo'lgan yigit «shartnoma imzolansa, istagan paytimda uni bekor qilib ketaveraman» deb hisobladi. Kadrlar bo'limi xodimi bu tasavvurni tuzatdi. Shartnoma asosidagi harbiy xizmatning o'ziga xosligi nimada?",
+    "opts": [
+      "Muddat belgilanmaydi, xizmatchi istagan paytda xizmatni to'xtatadi",
+      "Shartnoma faqat maosh miqdorini belgilaydi, qolgani muddatli xizmat kabi",
+      "Shartnoma tuzilgach, xizmatchi harbiy nizomlarga bo'ysunmaydi",
+      "Muddat va shartlar oldindan belgilanadi, bir tomonlama bekor qilib bo'lmaydi"
+    ],
+    "correct": 3,
+    "explanation": "Shartnoma asosidagi xizmatda muddat, lavozim va tomonlarning majburiyatlari oldindan belgilanadi hamda hujjat bilan mustahkamlanadi; uni bir tomonlama, o'z xohishiga ko'ra bekor qilib bo'lmaydi — bekor qilish asoslari qonunda belgilangan. Shartnomaviy xizmatchi ham barcha harbiy nizomlar talablariga to'liq bo'ysunadi.",
+    "mnemonic": "Shartnoma — ikki tomonlama majburiyat.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Harbiy xizmat asoslari — shartnoma asosidagi harbiy xizmat",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "shartnomaviy majburiyatni bir tomonlama huquq deb tushunish",
+      "shartnomani faqat moliyaviy hujjat deb hisoblash",
+      "shartnomaviy xizmatchini nizom talablaridan ozod deb bilish",
+      ""
+    ]
+  },
+  {
+    "q": "Harbiy qismda uy-joy, tibbiy ta'minot va oilaga beriladigan imtiyozlar muhokama qilinmoqda. Bir askar «bular komandirning xohishiga bog'liq, xohlasa beradi, xohlamasa yo'q» dedi. Huquqshunos bu tasavvurni rad etdi. Harbiy xizmatchilarning ijtimoiy kafolatlari qanday belgilanadi?",
+    "opts": [
+      "Qonun bilan belgilanadi va mansabdor shaxs ixtiyoriga bog'liq emas",
+      "Qism komandirining buyrug'i bilan har yili qaytadan belgilanadi",
+      "Bo'linma yig'ilishi qarori bilan taqsimlanadi",
+      "Xizmatchining shaxsiy iltimosnomasi asosida beriladi"
+    ],
+    "correct": 0,
+    "explanation": "Harbiy xizmatchilar davlat himoyasida bo'lib, ularning huquqlari va ijtimoiy kafolatlari qonunchilik bilan kafolatlanadi. Bu kafolatlar mansabdor shaxsning munosabatiga, rag'batlantirish yoki jazo masalasiga bog'lanmaydi — ular xizmat o'tash faktining o'ziga bog'liq holda amal qiladi.",
+    "mnemonic": "Kafolat qonundan keladi, iltifotdan emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Harbiy xizmat asoslari — ijtimoiy kafolatlar",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "qonuniy kafolatni mansabdor shaxs qaroriga bog'lash",
+      "qonuniy kafolatni jamoaviy taqsimot masalasiga aylantirish",
+      "kafolatni shaxsiy murojaat natijasi deb hisoblash"
+    ]
+  },
+  {
+    "q": "Maktabda o'tkazilgan suhbatda o'quvchi «ofitser bo'lish uchun avval muddatli xizmatni o'tash shart, boshqa yo'l yo'q» dedi. O'qituvchi ofitser tayyorlashning boshqa yo'li ham borligini aytdi. Ofitserlar tarkibi qanday tayyorlanadi?",
+    "opts": [
+      "Bo'linma komandirlarining tavsiyanomasi asosida bevosita tayinlash orqali",
+      "Harbiy ta'lim muassasalarida maxsus tayyorgarlik orqali",
+      "Faqat muddatli xizmatni o'tagan xizmatchilardan tanlab olish orqali",
+      "Faqat harbiy yig'inlardan o'tgan zaxiradagilardan tayinlash orqali"
+    ],
+    "correct": 1,
+    "explanation": "Ofitserlar tarkibi asosan harbiy ta'lim muassasalarida — oliy harbiy bilim yurtlari va akademiyalarda maxsus tayyorgarlikdan o'tkazish orqali shakllantiriladi. Muddatli xizmatni o'tash yoki tavsiyanoma olish ofitser unvonini beruvchi mustaqil asos bo'la olmaydi.",
+    "mnemonic": "Ofitser — harbiy ta'lim muassasasidan.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Harbiy xizmat asoslari — ofitserlar tarkibini tayyorlash",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "ta'lim talabini tavsiyanoma bilan almashtirish",
+      "",
+      "maxsus ta'lim talabini xizmat stajiga almashtirish",
+      "ofitser tayyorlashni zaxira tarkibi bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "Dushman hududida harakat qilayotgan bo'linma suv omborini va elektr stansiyasini ishdan chiqarishni taklif qildi, chunki bu «dushmanni tez taslim qiladi». Yuridik maslahatchi bu ob'ektlar alohida maqomga ega ekanini aytdi. Aholi tirikchiligi uchun zarur ob'ektlarga nisbatan qanday qoida amal qiladi?",
+    "opts": [
+      "Ularni yo'q qilish oddiy harbiy nishon kabi baholanaveradi",
+      "Ularni yo'q qilish oldindan ogohlantirilgan holda mumkin",
+      "Ularni yo'q qilish taqiqlanadi, aholi hayoti shularga bog'liq",
+      "Ularni yo'q qilishga harbiy zarurat bo'lganda ruxsat etiladi"
+    ],
+    "correct": 2,
+    "explanation": "Aholi tirikchiligi uchun zarur ob'ektlar — suv ta'minoti inshootlari, oziq-ovqat zaxiralari, ekin maydonlari va shunga o'xshash ob'ektlarni yo'q qilish, olib ketish yoki ishdan chiqarish taqiqlanadi, chunki bu tinch aholini ochlik va suvsizlikka mahkum etadi. Ularni harbiy bosim vositasiga aylantirish gumanitar huquqning buzilishi hisoblanadi.",
+    "mnemonic": "Aholining suvi va nonini nishonga aylantirma.",
+    "topicId": 0,
+    "category": "chqbt",
+    "source_ref": "Xalqaro gumanitar huquq — aholi tirikchiligi ob'ektlari himoyasi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "himoyalangan ob'ektni oddiy harbiy nishon bilan tenglashtirish",
+      "taqiqni ogohlantirish tartibi bilan bekor qilish mumkin deb bilish",
+      "",
+      "maxsus himoyani harbiy zarurat bilan chetlab o'tish mumkin deb bilish"
+    ]
+  }
+]

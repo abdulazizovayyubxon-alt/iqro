@@ -1,0 +1,206 @@
+{
+  "topicId": 3,
+  "bolim": "Taktik tayyorgarlik",
+  "kerak": 48,
+  "korilgan": 48,
+  "saqlanadi": [
+    {
+      "id": "EgFAkNdkjMpPgsZszW99",
+      "mavzu": "pana joyda taqiqlangan xatti-harakat"
+    },
+    {
+      "id": "OEhvIZHm12DUyqt8cAWM",
+      "mavzu": "jangovar guruh imkoniyatiga ta'sir qilmaydigan omil"
+    },
+    {
+      "id": "RZhegZaU00Q5wPn3HaEl",
+      "mavzu": "pana joyda tez yonuvchi moddalar taqiqi"
+    },
+    {
+      "id": "ZVBi5vFHdyBZs73Xh3D1",
+      "mavzu": "BMP-2 asosiy ekipaj tarkibi"
+    },
+    {
+      "id": "at5nP8gYEYCIL1CyxxB8",
+      "mavzu": "joy tanlashda suv manbaiga yaqinlik"
+    },
+    {
+      "id": "dAJEUv5F02DyWdXum187",
+      "mavzu": "pana joy uchun hudud tanlash",
+      "tuzatish": "izoh 'Chunki' bilan boshlanadi"
+    },
+    {
+      "id": "fHl5hF3RV4VhsxRQbAer",
+      "mavzu": "quyoshga nisbatan joylashuv",
+      "tuzatish": "o'zakda 'vzod'"
+    },
+    {
+      "id": "oyUCTTulpHM6hL7qydlR",
+      "mavzu": "ochiq relyef — kuzatuv va o't ochish"
+    },
+    {
+      "id": "wv4Q7N7QtV5Vkt0fmuf6",
+      "mavzu": "individual qurol tanlash",
+      "tuzatish": "izoh 'Chunki' bilan boshlanadi"
+    },
+    {
+      "id": "xHhoRhXX2DECVHy3IZ0n",
+      "mavzu": "askar o'rni — panalash va niqoblash"
+    },
+    {
+      "id": "xpmY1Et4kaNG2Wfby7rV",
+      "mavzu": "pana joyga katta hajmli buyum kiritish taqiqi",
+      "tuzatish": "o'zakda 'ko'rsatingiz'"
+    },
+    {
+      "id": "zgNRYWYXot9F0N1Vss76",
+      "mavzu": "tarqoq joylashuv — tez yig'ilish va manevr"
+    },
+    {
+      "id": "zoyVfgn0pDh78ZxmxO6q",
+      "mavzu": "GPS foydalanuvchi segmenti"
+    }
+  ],
+  "chiqarildi": [
+    {
+      "id": "1kYdCjihRpCpGw4t2Yke",
+      "sabab": "javob mazmunsiz umumiy: 'ichki tartib-qoidalarga rioya qilish'"
+    },
+    {
+      "id": "4ZYzofJw5U48YgIHUtF5",
+      "sabab": "BO'LIM XATO: saf nizomi mashqi (Bajar-IKKI) taktik tayyorgarlik emas"
+    },
+    {
+      "id": "9wZ33coIXgKCj7IYtUZ6",
+      "sabab": "BO'LIM XATO: saf nizomi (Ortga burilish) + mexanikasi shubhali"
+    },
+    {
+      "id": "BAPgg068Lca4FLohxZ75",
+      "sabab": "BO'LIM XATO: saf nizomi, oldingisining takrori"
+    },
+    {
+      "id": "D5tJteZ4bgCLpNsY5Qyn",
+      "sabab": "FAKT XATO: 'PJM — Piyoda Jangovar Mashq komandiri' degan atama mavjud emas"
+    },
+    {
+      "id": "HJDvLXXbAq25WFxiQzFE",
+      "sabab": "BO'LIM XATO: saf komandasi ('Sekin qadam, BOS!')"
+    },
+    {
+      "id": "HmsEKtKmf5W12oFOZBPX",
+      "sabab": "javob quruq son (650-800 dona/daqiqa) + otish tayyorgarligi bo'limiga tegishli"
+    },
+    {
+      "id": "Lxpy0wydlYVqQSdkDaZL",
+      "sabab": "BO'LIM XATO: saf nizomi (oddiy qadam texnikasi)"
+    },
+    {
+      "id": "NDKjP8VcBnXDZpr6eORs",
+      "sabab": "atamalar noaniq ('sardor', 'sipoh'), javob mazmunsiz"
+    },
+    {
+      "id": "NiMdRzoE6AzinOmLBGdH",
+      "sabab": "javob noaniq: 'muhoraba joylashuvi' — manbada tasdiqlanmagan"
+    },
+    {
+      "id": "O2rGk6o6bKijHj7PY97T",
+      "sabab": "bosqichlar bo'linishi manbada tasdiqlanmagan"
+    },
+    {
+      "id": "OG8kwL3219v9y0JoyxBU",
+      "sabab": "BO'LIM XATO: o'rta asr qurollari — tarix mavzusi"
+    },
+    {
+      "id": "OTYxeTVXmw8l3aq4Yp7a",
+      "sabab": "BO'LIM XATO: Amir Temur merosining bo'linishi — sof tarix savoli"
+    },
+    {
+      "id": "RqTxSKPYtdsEpJ4tP7gT",
+      "sabab": "BO'LIM XATO: saf nizomi (burilishda qo'l holati)"
+    },
+    {
+      "id": "SI0YCHqcgbnamlDKBU4K",
+      "sabab": "takror: GPS foydalanuvchi segmenti (zoyV yaxshiroq yozilgan)"
+    },
+    {
+      "id": "VJOLY7TaZONerso49Zth",
+      "sabab": "soxta fiziologiya: burilishda qorin bo'shlig'i holati"
+    },
+    {
+      "id": "YBoHaq8viwF5FL00mLaY",
+      "sabab": "javob quruq son (1500 metr) + otish tayyorgarligi bo'limi"
+    },
+    {
+      "id": "YEOcExN2W8UQbSzGK1Xt",
+      "sabab": "javob quruq son: 24 ta yo'ldosh"
+    },
+    {
+      "id": "a2OZNHvsLU9UNXAw8UGh",
+      "sabab": "takror: suv ta'minoti omili (at5n yaxshiroq yozilgan)"
+    },
+    {
+      "id": "bx4CAPezi2URZXjiUGfN",
+      "sabab": "BO'LIM XATO: saf komandasi ('Qadam – BOS!') + jo'n"
+    },
+    {
+      "id": "c896UibpeXXCsWyPeWbZ",
+      "sabab": "BO'LIM XATO: saf nizomi + javob quruq son (15-20 sm)"
+    },
+    {
+      "id": "cQWGRDjHTEqwMMxsy9Tc",
+      "sabab": "BO'LIM XATO: Panipat jangi — tarix mavzusi"
+    },
+    {
+      "id": "fLZfDtzRSttxXe1vIxCC",
+      "sabab": "BO'LIM XATO: saf nizomi (O'ngga - BUR!)"
+    },
+    {
+      "id": "fceq8IAqySTrhrQLgy7z",
+      "sabab": "javob o'zakda: 'ustuvorlikni mustahkamlash' iborasi savolda aytilgan"
+    },
+    {
+      "id": "hEDYgnZfeNUqVHNb6j20",
+      "sabab": "BO'LIM XATO: tarixiy taktika + matn buzuq ('qo'shnni')"
+    },
+    {
+      "id": "hSo7wLSO4YgypV0qUjWQ",
+      "sabab": "bosqichlar bo'linishi shartli, javob asossiz"
+    },
+    {
+      "id": "kdrhEmQTi9N1RoQa2sF8",
+      "sabab": "manba tasdiqlamagan: guruh komandiri o'rinbosari lavozimi"
+    },
+    {
+      "id": "lhMxCylOWYUZS8LgeF6I",
+      "sabab": "BO'LIM XATO: qurol kalibri — otish tayyorgarligi"
+    },
+    {
+      "id": "nxCyRVNMxN2702Ey5fY3",
+      "sabab": "javob quruq son (1200 metr) + otish tayyorgarligi bo'limi"
+    },
+    {
+      "id": "qiZ4QxH2MontEYsZKt33",
+      "sabab": "BO'LIM XATO: saf komandasi (yugurishga o'tish)"
+    },
+    {
+      "id": "v20AIhr9MdvbH87JCSTr",
+      "sabab": "javob quruq son (1300 metr) + otish tayyorgarligi bo'limi"
+    },
+    {
+      "id": "w26k8en0ksv8fsDEm3Mf",
+      "sabab": "takror: ochiq relyef xususiyati (oyUC bilan bir xil)"
+    },
+    {
+      "id": "wDvLwP1z9E8Cc9oKFd2U",
+      "sabab": "BO'LIM XATO: saf nizomi + javob quruq son (120-130 qadam)"
+    },
+    {
+      "id": "zwjL3tsVpfkCnJJCJwFW",
+      "sabab": "javob deyarli takrorlash: 'qurollanishni baholash' → 'qurol turlari'"
+    },
+    {
+      "id": "ckBJlDKL98v3Ev532a8f",
+      "sabab": "mavhum: 'jangovar imkoniyat' tushunchasi OEhv savolida allaqachon sinaladi"
+    }
+  ]
+}

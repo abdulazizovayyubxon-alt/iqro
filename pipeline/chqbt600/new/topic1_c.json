@@ -1,0 +1,948 @@
+[
+  {
+    "q": "Vzvod komandiri saflanish mashg'ulotida ikki xizmatchi orasidagi masofani o'lchashni topshirdi: birinchi juftlik yonma-yon, ikkinchi juftlik esa biri ikkinchisining ortida turibdi. Yosh serjant ikkala holatga ham bitta atamani qo'lladi va komandir uni to'xtatdi. Saf nizomi bu ikki masofani qanday ajratadi?",
+    "opts": [
+      "Yonma-yon turganlar orasida interval, ortda turganlar orasida distansiya",
+      "Yonma-yon turganlar orasida distansiya, ortda turganlar orasida interval",
+      "Ikkala holatda ham interval, distansiya faqat mashinalar safiga tegishli",
+      "Ikkala holatda ham distansiya, interval faqat kolonna harakatiga tegishli"
+    ],
+    "correct": 0,
+    "explanation": "Nizom bu ikki tushunchani yo'nalish bo'yicha ajratadi: front bo'ylab, ya'ni yonma-yon joylashganlar orasidagi masofa interval deb, saf uzunligi bo'ylab, ya'ni biri ikkinchisining ortida turganlar orasidagi masofa distansiya deb yuritiladi. Ikkalasi ham piyoda va mashinalar safiga birdek tegishli.",
+    "mnemonic": "InterVAL — yonMA-yon; DiSTANsiya — orTDA.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 2-band — asosiy tushunchalar",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "ikki atamaning ta'rifi o'zaro almashtirilgan",
+      "intervalni universal deb hisoblash, distansiyani faqat texnikaga bog'lash",
+      "distansiyani universal deb hisoblash, intervalni faqat kolonnaga bog'lash"
+    ]
+  },
+  {
+    "q": "Rota bir sherengali safda turgan holda «Ort-GA» komandasi bo'yicha burildi. Shundan keyin serjant «endi o'ng qanot chap qanotga aylandi» deb, qanotlar nomini almashtirib chaqira boshladi. Bo'linma komandiri buni xato deb baholadi. Saf nizomi qanot nomini qanday belgilaydi?",
+    "opts": [
+      "Qanot nomi faqat ikki sherengali safda o'zgarmaydi, bir sherengalida almashadi",
+      "Saf burilganda qanotlar nomi o'zgarmay qolaveradi",
+      "Saf burilganda qanotlar nomi ham albatta almashadi",
+      "Qanot nomi harbiy xizmatchilarning yuzlanish tomoniga qarab qayta aniqlanadi"
+    ],
+    "correct": 1,
+    "explanation": "Nizomda qanot safning o'ng yoki chap tomoni sifatida bir marta belgilanadi va saf qaysi tomonga burilishidan qat'i nazar bu nom saqlanib qoladi. Aks holda har burilishda buyruqlar chalkashib, boshqaruv izdan chiqar edi. Xuddi shunday, ikki sherengali saf burilganda sherenga nomi ham o'zgarmaydi.",
+    "mnemonic": "Qanot — safning pasporti: burilsa ham nomi o'zgarmaydi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 2-band — qanot ta'rifi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "qoidani saf turiga bog'liq deb o'ylash",
+      "",
+      "qanotni yo'nalishga bog'lab, uni doimiy belgi emas deb hisoblash",
+      "qanotni frontning hozirgi holatidan kelib chiqib qayta aniqlash"
+    ]
+  },
+  {
+    "q": "Ikki sherengali safda bir nechta to'liq bo'lmagan qator bor: ikkinchi sherengada ularning ortida hech kim turmayapti. Komandir «Ort-GA» komandasini berdi va ana shu xizmatchilar joyida qolib, safda bo'shliq hosil bo'ldi. Saf nizomiga ko'ra ortga burilishda ular qanday harakat qilishi kerak edi?",
+    "opts": [
+      "Yaqin qanot tomonga bir qadam surilishi kerak edi",
+      "Joyida qolib, faqat qo'shnisiga jipsroq turishi kerak edi",
+      "Oldingi sherengaga o'tishi kerak edi",
+      "Ikkinchi sherengaga o'tishi kerak edi"
+    ],
+    "correct": 2,
+    "explanation": "Ikki sherengali saf ortga burilganda old va orqa sherenga o'rin almashadi, shuning uchun to'liq bo'lmagan qatordagi xizmatchi ortida hech kim bo'lmagani sababli yangi holatda eng orqada qolib ketadi. Nizom buni oldini olish uchun uni oldingi sherengaga o'tishga majbur qiladi — shunda saf tekis va bo'shliqsiz qoladi.",
+    "mnemonic": "To'liqsiz qator ortga burilsa — oldinga o'tadi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 2-band — qator va to'liq bo'lmagan qator",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "vertikal muammoni gorizontal surilish bilan hal qilishga urinish",
+      "bo'shliqni interval hisobiga yopib bo'ladi deb o'ylash",
+      "",
+      "burilishdan keyingi sherenga nomlanishini teskari tushunish"
+    ]
+  },
+  {
+    "q": "Ko'rikka tayyorgarlik paytida komandir avval «orasi jips» saflanishni, keyin esa «orasi ochiq» saflanishni buyurdi. Yangi askar ikkala holatda ham qo'shnisi bilan orasini bir xil qoldirdi va rostlash buzildi. Bu ikki holatda front bo'ylab qanday interval saqlanadi?",
+    "opts": [
+      "Jipsda bir qadam, ochiqda tirsaklar orasi bir kaft eni",
+      "Jipsda tirsaklar tegib turadi, ochiqda esa yarim qadam",
+      "Jipsda yarim qadam, ochiqda ikki qadamdan kam bo'lmagan masofa",
+      "Jipsda tirsaklar orasi bir kaft eni, ochiqda bir qadam"
+    ],
+    "correct": 3,
+    "explanation": "Orasi jips safda xizmatchilar tirsaklari orasida bir kaft eniga teng interval qoldirib turadi — bu ko'rik va parad uchun eng zich joylashuv. Orasi ochiq safda esa interval bir qadamga yoki komandir belgilagan masofaga teng bo'ladi; bu variant mashqlar va texnika ko'rigida qulaylik yaratadi.",
+    "mnemonic": "Jips — kaft, ochiq — qadam.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 2-band — orasi jips va orasi ochiq saf",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "ikki holatning o'lchovi almashtirilgan",
+      "jipsni tirsaklar tegishi deb bo'rttirish",
+      "ikkala o'lchovni ham ixtiyoriy ravishda kattalashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Yangi qo'shilgan askar ikki sherengali safda oldinda turgan xizmatchiga juda yaqin turib oldi va harakat boshlanganda uning tovoniga tegib ketdi. Serjant uni to'xtatib, sherengalar orasidagi masofani nizom aniq belgilaganini tushuntirdi. Bu masofa qanday o'lchanadi?",
+    "opts": [
+      "Bir qadam — oldindagining yelkasiga uzatilgan qo'l masofasi",
+      "Yarim qadam — oldindagining beliga uzatilgan qo'l masofasi",
+      "Ikki qadam — oldindagi bilan erkin harakat uchun zarur masofa",
+      "Belgilanmagan — har safar komandirning ko'rsatmasi bilan aniqlanadi"
+    ],
+    "correct": 0,
+    "explanation": "Nizom ikki sherengali safda ikkinchi sherenga uchun bir qadamga teng distansiyani belgilaydi va buni amalda tekshirishning oson usulini beradi: qo'l uzatilib, kafti oldinda turgan xizmatchining yelkasiga qo'yilsa, masofa to'g'ri olingan bo'ladi. Bu askarga o'lchov asbobisiz o'zini rostlash imkonini beradi.",
+    "mnemonic": "Yelkaga qo'l yetsa — distansiya joyida.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 2-band — ikki sherengali saf",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "masofani ikki barobar kichraytirish va o'lchov nuqtasini adashtirish",
+      "masofani sun'iy kattalashtirish",
+      "aniq me'yorni komandir ixtiyoriga havola deb hisoblash"
+    ]
+  },
+  {
+    "q": "Harbiy qismda ertalab yo'qlama va sanoq o'tkazilishi, tushdan keyin esa bo'linmaning tantanali yurishi rejalashtirilgan. Yosh ofitser ikkala tadbir uchun ham bir xil saf turini tanlamoqchi. Saf nizomiga ko'ra bu ikki tadbirga qaysi saf turlari mos keladi?",
+    "opts": [
+      "Ikkala tadbirga ham yonma-yon tizilgan saf, chunki ikkalasi ham tantanali",
+      "Yo'qlama va sanoqqa yonma-yon tizilgan saf, tantanali yurishga yurish safi",
+      "Yo'qlama va sanoqqa yurish safi, tantanali yurishga yonma-yon tizilgan saf",
+      "Ikkala tadbirga ham yurish safi, chunki ikkalasi ham harakat talab qiladi"
+    ],
+    "correct": 1,
+    "explanation": "Yonma-yon tizilgan saf bo'linmalar front bo'ylab bir chiziqqa tizilgan holat bo'lib, nizom uni yo'qlama, sanoq, ko'rik va parad o'tkazish uchun belgilaydi — bunda har bir xizmatchi ko'rinib turadi. Yurish safi esa kolonnaga tizilgan holat bo'lib, marsh, tantanali yurish va saf qo'shig'i bilan o'tish uchun qo'llaniladi.",
+    "mnemonic": "Sanash — yonma-yon; yurish — kolonna.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 2-band — yonma-yon tizilgan saf va yurish safi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "har qanday tadbirni tantanali deb hisoblash",
+      "",
+      "ikki saf turining vazifasi o'zaro almashtirilgan",
+      "har qanday tadbirni harakat deb hisoblash"
+    ]
+  },
+  {
+    "q": "Kolonnada harakatlanayotgan bo'linmada yo'nalishni ushlab borish masalasi ko'tarildi. Bir askar «har kim o'zi mo'ljal olsin» desa, boshqasi «hamma oxirgi askarga qarasin» dedi. Saf nizomi kolonnada mo'ljalni qanday belgilaydi?",
+    "opts": [
+      "Har bir xizmatchi mustaqil mo'ljal oladi",
+      "Mo'ljal har bir kolonnada alohida belgilanadi",
+      "Qolganlar harakatini yetakchiga moslashtiradi",
+      "Qolganlar harakatini oxirida boruvchiga moslashtiradi"
+    ],
+    "correct": 2,
+    "explanation": "Nizomga ko'ra yetakchi — tayinlangan yo'nalishda bosh bo'lib borayotgan xizmatchi yoki bo'linma bo'lib, qolganlar o'z harakatini aynan unga qarab moslashtiradi. Oxirida boruvchi esa kolonnaning oxirgi qismini nazorat qiladi, lekin u mo'ljal manbai emas.",
+    "mnemonic": "Yetakchi — ko'z; oxirgi — quyruq.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 2-band — yetakchi va oxirida boruvchi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "kolonna intizomini yakka mo'ljal bilan almashtirish",
+      "yagona yetakchi tamoyilini bo'lib yuborish",
+      "",
+      "yetakchi va oxirida boruvchining vazifasini almashtirish"
+    ]
+  },
+  {
+    "q": "Yosh serjant bo'linmaga «o'ngga burilinglar» deb bir tekis, past ovozda aytdi va bo'linma bir vaqtda emas, tarqoq burildi. Tajribali komandir muammo komandaning tuzilishida ekanini aytdi. Saf nizomi komandani qanday tuzishni talab qiladi?",
+    "opts": [
+      "Ijro komandasi, keyin tanaffus va tushuntiruvchi dastlabki komanda",
+      "Bir butun komanda, tanaffussiz va bir tekis ovozda",
+      "Dastlabki komanda pastroq, ijro komandasi ham pastroq ovozda",
+      "Dastlabki komanda, keyin tanaffus va baland ijro komandasi"
+    ],
+    "correct": 3,
+    "explanation": "Komanda dastlabki va ijro qismlariga bo'linadi: dastlabki komanda aniq va baland aytilib, safdagilarni nima talab qilinishini anglashga tayyorlaydi, ijro komandasi esa tanaffusdan so'ng baland, qisqa va keskin beriladi. Aynan shu tanaffus va ovoz keskinligi harakatning bir vaqtda bajarilishini ta'minlaydi.",
+    "mnemonic": "Dastlabki — ogohlantiradi, ijro — harakatga soladi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 4-band — komanda tuzilishi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "komandaning ikki qismi tartibi teskari qo'yilgan",
+      "komandani bo'linmas deb hisoblash",
+      "ijro komandasidagi ovoz keskinligi talabini yo'qotish",
+      ""
+    ]
+  },
+  {
+    "q": "Komandir «Vzvod, o'ngga» deb dastlabki komandani berdi, ammo shu payt vaziyat o'zgardi va burilish endi kerak emas edi. U shoshib «yo'q, kerak emas» deb qichqirdi, saf esa chalkashib ketdi. Berilgan komandani bekor qilish uchun nizomda qanday komanda ko'zda tutilgan?",
+    "opts": [
+      "«QOLDIRILSIN» komandasi beriladi",
+      "«TO'XTA» komandasi beriladi",
+      "«ERKIN» komandasi beriladi",
+      "«TO'G'RIGA» komandasi beriladi"
+    ],
+    "correct": 0,
+    "explanation": "Nizom berilgan komandani bekor qilish yoki boshlangan harakatni to'xtatib, avvalgi holatga qaytarish uchun maxsus «QOLDIRILSIN» komandasini belgilaydi. Boshqa komandalar boshqa vazifani bajaradi: to'xtash harakatni tugatadi, erkin holat esa diqqatni bo'shashtiradi, ammo ularning hech biri berilgan komandani bekor qilmaydi.",
+    "mnemonic": "Bekor qilish — bitta so'z: QOLDIRILSIN.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 8-band",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "harakatni to'xtatishni komandani bekor qilish bilan chalkashtirish",
+      "holatni bo'shashtirishni bekor qilish deb tushunish",
+      "yo'nalishni tiklashni komandani bekor qilish deb tushunish"
+    ]
+  },
+  {
+    "q": "Saf tayyorgarligi mashg'ulotida bo'linma qadamlab yurmoqda, ammo bir necha xizmatchi maromdan chiqib, oyoq almashtirmoqda. Instruktor sekundomer bilan bir daqiqadagi qadam sonini o'lchadi va me'yordan chetlanishni aniqladi. Nizomga ko'ra qadamlab yurishda bir daqiqada nechta qadam tashlanadi?",
+    "opts": [
+      "165-180 qadam",
+      "110-120 qadam",
+      "80-90 qadam",
+      "130-140 qadam"
+    ],
+    "correct": 1,
+    "explanation": "Saf nizomi qadamlab yurish maromini bir daqiqada 110-120 qadam qilib belgilaydi; bu tezlik bo'linmaning uzoq masofada ham bir maromda va charchamasdan harakatlanishini ta'minlaydi. Bir daqiqada 165-180 qadam esa allaqachon yugurish harakatining me'yori hisoblanadi.",
+    "mnemonic": "Yurish — 110-120; yugurish — 165-180.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 20-band",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "yurish me'yorini yugurish me'yori bilan almashtirish",
+      "",
+      "me'yorni sezilarli pasaytirish",
+      "me'yorni ozroq oshirib yuborish"
+    ]
+  },
+  {
+    "q": "Ikki bo'linma bir yo'nalishda yurmoqda, biroq oldingisi ortdagisidan asta-sekin uzoqlashib bormoqda, garchi ikkalasi ham bir maromda qadam tashlayotgan bo'lsa-da. Tekshiruvda oldingi bo'linmada qadam uzunligi me'yordan katta ekani aniqlandi. Nizomga ko'ra qadamlab yurishda qadam uzunligi qancha bo'lishi kerak?",
+    "opts": [
+      "85-90 santimetr",
+      "100-110 santimetr",
+      "70-80 santimetr",
+      "50-60 santimetr"
+    ],
+    "correct": 2,
+    "explanation": "Qadamlab yurishda har bir qadam uzunligi 70-80 santimetr qilib belgilangan; qadam maromi bir xil bo'lsa ham, uzunlik farq qilsa bo'linmalar orasidagi masofa muqarrar ravishda o'zgara boshlaydi. 85-90 santimetr esa yugurish harakatiga tegishli o'lchov hisoblanadi.",
+    "mnemonic": "Yurish qadami — 70-80 sm; yugurish qadami — 85-90 sm.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 20-band",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "yurish qadamini yugurish qadami bilan almashtirish",
+      "qadam uzunligini real bo'lmagan darajada oshirish",
+      "",
+      "qadam uzunligini haddan tashqari qisqartirish"
+    ]
+  },
+  {
+    "q": "Bo'linma qadamlab yurishdan yugurishga o'tdi, biroq bir necha askar avvalgi qadam uzunligini saqlab qoldi va kolonna cho'zilib ketdi. Instruktor yugurishda ikkala ko'rsatkich ham o'zgarishini tushuntirdi. Nizomga ko'ra yugurish harakatining maromi va qadam uzunligi qanday?",
+    "opts": [
+      "Daqiqada 165-180 qadam, uzunligi 70-80 santimetr",
+      "Daqiqada 110-120 qadam, uzunligi 85-90 santimetr",
+      "Daqiqada 200-220 qadam, uzunligi 100-110 santimetr",
+      "Daqiqada 165-180 qadam, uzunligi 85-90 santimetr"
+    ],
+    "correct": 3,
+    "explanation": "Yugurish harakatida ikkala ko'rsatkich ham oshadi: marom bir daqiqada 165-180 qadamga, qadam uzunligi esa 85-90 santimetrga yetadi. Faqat biri o'zgarib, ikkinchisi eski holida qolsa, kolonnadagi distansiya buziladi va bo'linma cho'zilib ketadi.",
+    "mnemonic": "Yugurishda ikkalasi ham oshadi: marom ham, qadam ham.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 20-band",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "maromni to'g'ri, qadam uzunligini yurish me'yorida qoldirish",
+      "qadam uzunligini to'g'ri, maromni yurish me'yorida qoldirish",
+      "ikkala ko'rsatkichni ham real bo'lmagan darajada oshirish",
+      ""
+    ]
+  },
+  {
+    "q": "Tantanali yurishga tayyorgarlik ko'rilmoqda. Bir askar oyog'ini deyarli ko'tarmay, sirg'alib yurmoqda, ikkinchisi esa tizzasini belidan yuqori ko'tarib bosmoqda. Instruktor ikkalasini ham tuzatdi. Shaxdam qadam tashlashda oyoq yerdan qancha balandlikka ko'tariladi va qanday bosiladi?",
+    "opts": [
+      "15-20 santimetrga ko'tarilib, butun kafti bilan bosiladi",
+      "15-20 santimetrga ko'tarilib, faqat tovoni bilan bosiladi",
+      "30-40 santimetrga ko'tarilib, butun kafti bilan bosiladi",
+      "5-10 santimetrga ko'tarilib, oyoq uchi bilan bosiladi"
+    ],
+    "correct": 0,
+    "explanation": "Shaxdam qadamda oyoq yerdan 15-20 santimetrga ko'tariladi va yerga butun kafti bilan bosiladi — bu balandlik ham ko'rinishni tantanali qiladi, ham ortiqcha kuch talab qilmaydi. Faqat tovon yoki faqat oyoq uchi bilan bosish qadam maromini buzadi va bo'g'imlarga zarar yetkazadi.",
+    "mnemonic": "15-20 sm — butun kaft.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 21-band",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "balandlik to'g'ri, ammo oyoqni bosish usuli buzilgan",
+      "balandlikni ikki barobar oshirib yuborish",
+      "shaxdam qadamni sirg'aluvchi yurish bilan almashtirish"
+    ]
+  },
+  {
+    "q": "Marsh paytida kolonna oldidagi to'siq tufayli sekinlashishi, keyin esa yo'qotilgan vaqtni qoplashi kerak bo'ldi. Yosh komandir buning uchun har safar bo'linmani to'xtatib, qaytadan yurgizdi. Saf nizomida harakat tezligini to'xtamasdan o'zgartirish uchun qanday komandalar ko'zda tutilgan?",
+    "opts": [
+      "«ERKIN» va «DIQQAT» komandalari orqali maromni o'zgartirish",
+      "«To'liq qadam BOS» va «Qisqa qadam BOS» kabi to'rtta komanda",
+      "«Yugurib qadam» va «Qadamlab BOS» — yurish turini almashtirish",
+      "«TO'XTA», so'ng yangi «Oldinga BOS» komandasi bilan qayta boshlash"
+    ],
+    "correct": 1,
+    "explanation": "Nizom harakatni to'xtatmasdan tezlikni boshqarish uchun to'rtta maxsus komandani belgilaydi: qadamni to'liq yoki qisqa qilish, maromni tez-tez yoki sekin qilish. Bu bo'linmaning uzluksiz harakatlanishini saqlagan holda kolonnadagi distansiyani tiklash imkonini beradi.",
+    "mnemonic": "Tezlikni qadam uzunligi va maromi bilan boshqar, to'xtash bilan emas.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 23-band",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "saf holatiga oid komandalarni harakat tezligiga bog'lash",
+      "",
+      "tezlikni faqat yurish turini almashtirish bilan cheklash",
+      "har qanday o'zgarishni to'xtash orqali bajarishga urinish"
+    ]
+  },
+  {
+    "q": "Ko'rik oldidan komandir yakka turgan askarga «o'ngga ikki qadam BOS» komandasini berdi. Askar chetga surilayotib qo'llarini xuddi oddiy yurishdagidek keskin silkitdi va saf ko'rinishi buzildi. Nizomga ko'ra yon tomonga hamda oldinga-orqaga surilishda qo'l qanday tutiladi?",
+    "opts": [
+      "Faqat chap qo'l harakati bajariladi",
+      "Qo'l harakati yarim amplitudada bajariladi",
+      "Qo'l harakati bajarilmaydi",
+      "Qo'l harakati odatdagidek to'liq bajariladi"
+    ],
+    "correct": 2,
+    "explanation": "Nizom o'ngga, chapga va orqaga surilayotganda qo'l harakati bajarilmasligini aniq belgilaydi — bunday surilish qisqa masofaga mo'ljallangan texnik harakat bo'lib, qo'l silkitish uni tartibsiz ko'rsatadi. Qo'l harakati faqat odatdagi yurish va yugurishda maromni ushlab turish uchun bajariladi.",
+    "mnemonic": "Yonga surilishda qo'l tinch turadi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 24-band",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "qoidani bitta qo'lga cheklab qo'yish",
+      "taqiqni qisman yumshatib talqin qilish",
+      "",
+      "surilishni oddiy yurish deb hisoblash"
+    ]
+  },
+  {
+    "q": "Yurish davomida komandir «Chap-GA» komandasini berdi, biroq ijro komandasini chap oyoq yerga bosilgan payt aytdi. Bo'linma bir vaqtda emas, ikki bosqichda burildi. Nizomga ko'ra yurishda o'ngga yoki chapga burilishda ijro komandasi qachon beriladi?",
+    "opts": [
+      "Burilishga qarama-qarshi oyoq yerga bosilishi bilan bir vaqtda",
+      "Ikkala oyoq yonma-yon taqalgan paytda",
+      "Oyoq havoda turgan paytda, yerga tegishidan oldin",
+      "Burilish tomonidagi oyoq yerga bosilishi bilan bir vaqtda"
+    ],
+    "correct": 3,
+    "explanation": "O'ngga burilishda ijro komandasi o'ng oyoq, chapga burilishda esa chap oyoq yerga bosilishi bilan bir vaqtda beriladi. Shundan keyin qarama-qarshi oyoq bilan yana bir qadam bosilib, uning uchida burilish bajariladi — komanda noto'g'ri paytda berilsa, bu ketma-ketlik buziladi va saf tarqoq buriladi.",
+    "mnemonic": "O'ngga — o'ng oyoqda; chapga — chap oyoqda.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 25-band",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "komanda berish paytini qarama-qarshi oyoqqa bog'lash",
+      "harakatdagi burilishni joyda burilish bilan chalkashtirish",
+      "komandani oyoq havodaligiga bog'lash",
+      ""
+    ]
+  },
+  {
+    "q": "Bo'linma yurish paytida «Ort-GA» komandasi bo'yicha burildi, ammo askarlarning bir qismi o'ng tomonga, bir qismi chap tomonga aylandi va kolonna to'qnashdi. Instruktor burilish tomoni nizomda qat'iy belgilanganini eslatdi. Yurish davomida ortga burilish qaysi tomonga bajariladi?",
+    "opts": [
+      "Chap qo'l tomon keskin buriladi",
+      "O'ng qo'l tomon keskin buriladi",
+      "Har bir xizmatchi o'ziga qulay tomonga buriladi",
+      "Yaqin qanot tomonga qarab buriladi"
+    ],
+    "correct": 0,
+    "explanation": "Nizom yurishda ortga burilishni chap qo'l tomon bajarishni belgilaydi: ijro komandasi o'ng oyoq bosilganda beriladi, chap oyoq bilan yana bir qadam tashlanadi, o'ng oyoq yarim qadam oldinga va biroz chapga qo'yiladi, so'ng ikkala oyoq uchida chapga burilinadi. Yagona tomon belgilanmasa, kolonnadagi xizmatchilar bir-biriga to'qnashadi.",
+    "mnemonic": "Ortga burilish — doim chapga.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 25-band",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "burilish tomonini teskari ko'rsatish",
+      "qat'iy me'yorni shaxsiy qulaylikka bog'lash",
+      "burilish tomonini safdagi joyga bog'lash"
+    ]
+  },
+  {
+    "q": "Instruktor yurayotgan askarga «Oddiy askar Rahimov, TO'XTA» komandasini berdi. Askar ijro komandasini eshitgan zahoti oyog'ini havoda to'xtatib, muvozanatini yo'qotdi. Nizomga ko'ra to'xtash komandasi bo'yicha harakat qanday yakunlanadi?",
+    "opts": [
+      "Yarim qadam orqaga qaytarilib, oyoqlar taqaladi",
+      "Yana bir qadam bosilib, oyoqlar yonma-yon taqaladi",
+      "Harakat darhol to'xtatilib, oyoq havoda ushlab qolinadi",
+      "Yana uch qadam bosilib, keyin oyoqlar taqaladi"
+    ],
+    "correct": 1,
+    "explanation": "Ijro komandasi o'ng yoki chap oyoq yerga bosilishi barobarida beriladi va uning bo'yicha yana bir qadam bosiladi, shundan keyingina oyoqlar yonma-yon taqalib, qad rost tutiladi. Bu qo'shimcha qadam harakat inersiyasini so'ndirib, to'xtashni tekis va bir vaqtda bajarish imkonini beradi.",
+    "mnemonic": "TO'XTA — yana bitta qadam, keyin taqash.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 22-band",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "to'xtashni orqaga harakat bilan chalkashtirish",
+      "",
+      "inersiya qadamini hisobga olmay, darhol to'xtashga urinish",
+      "qo'shimcha qadamlar sonini oshirib yuborish"
+    ]
+  },
+  {
+    "q": "Bo'linma joyda qadam bosib turgan edi, komandir «TO'G'RIGA» komandasini berdi. Askarlar oddiy, sust qadam bilan oldinga yurib ketishdi va boshlanish tarqoq ko'rindi. Nizomga ko'ra bu komandadan keyin harakat qanday boshlanadi?",
+    "opts": [
+      "Barcha qadamlar oddiy qadam bilan bosiladi",
+      "Dastlabki oltita qadam shaxdam bosiladi",
+      "Dastlabki uchta qadam shaxdam bosiladi",
+      "Dastlabki uchta qadam sekin bosiladi"
+    ],
+    "correct": 2,
+    "explanation": "Komanda chap oyoq yerga bosilishi barobarida beriladi, o'ng oyoq bilan joyda yana bir qadam bosilib, harakat chap oyoq bilan to'liq qadam tashlangancha boshlanadi va dastlabki uchta qadam shaxdam bosiladi. Bu boshlanishni bir vaqtda va tartibli qilib ko'rsatadi, keyin bo'linma oddiy qadamga o'tadi.",
+    "mnemonic": "TO'G'RIGA — uch shaxdam qadam bilan boshla.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 21-band",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "shaxdam boshlanish talabini butunlay yo'qotish",
+      "shaxdam qadamlar sonini ikki barobar oshirish",
+      "",
+      "boshlanishdagi shaxdamlik talabini teskarisiga aylantirish"
+    ]
+  },
+  {
+    "q": "Yosh askar ko'chada boshlig'ini uzoqdan ko'rib, o'n qadam narida qo'lini bosh kiyimiga keltirdi va shu holatda uzoq turib qoldi. Boshqa safar esa boshliq yonidan o'tib ketgandan keyin salom berdi. Nizomga ko'ra safdan tashqarida harbiycha salom qanday masofada beriladi?",
+    "opts": [
+      "O'n-o'n ikki qadam qolganda",
+      "Bir qadam qolganda",
+      "Boshliq yonidan o'tib ketgandan keyin",
+      "Uch-to'rt qadam qolganda"
+    ],
+    "correct": 3,
+    "explanation": "Nizom safdan tashqarida joyda turib va yurish davomida harbiycha salomni boshliqqa uch-to'rt qadam qolganda berishni belgilaydi; boshliq yonidan o'tib ketgach, to'g'riga qaralib qo'l tushiriladi. Juda uzoqdan salom berish ham, kechikib berish ham nizom talabining buzilishi hisoblanadi.",
+    "mnemonic": "Salom — uch-to'rt qadam qolganda.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 52-53-bandlar",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "masofani haddan tashqari uzoqlashtirish",
+      "salomni juda kech, yaqin masofada berish",
+      "salomni o'tib ketgandan keyinga qoldirish",
+      ""
+    ]
+  },
+  {
+    "q": "Ikki askar yukni ikki qo'llab ko'tarib borayotganda ro'parasidan boshliq chiqib qoldi. Biri yukni yerga qo'yib qo'l bilan salom berdi, ikkinchisi esa umuman e'tibor bermay o'tib ketdi. Nizomga ko'ra qo'llar band bo'lganda harbiycha salom qanday beriladi?",
+    "opts": [
+      "Bosh boshliq tomon burilib beriladi",
+      "Yuk yerga qo'yilib, qo'l bilan beriladi",
+      "Salom berilmaydi, chunki qo'l band",
+      "Faqat og'zaki murojaat bilan beriladi"
+    ],
+    "correct": 0,
+    "explanation": "Nizom qo'llar band bo'lgan holat uchun alohida tartib belgilaydi: harbiycha salom boshni boshliq tomon burish tarzida beriladi. Bu qoida salom berish majburiyatini saqlagan holda, xizmatchini yukni tashlab qo'yishga ham, salomni butunlay o'tkazib yuborishga ham majbur qilmaydi.",
+    "mnemonic": "Qo'l band bo'lsa — bosh gapiradi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 54-band",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "vazifani to'xtatib, salomni shaklga bo'ysundirish",
+      "qo'l bandligini salom bermaslik uchun asos deb hisoblash",
+      "belgilangan shaklni og'zaki murojaat bilan almashtirish"
+    ]
+  },
+  {
+    "q": "Shoshilayotgan askar oldinda ketayotgan boshlig'iga yetib oldi va uni yugurgancha quvib o'tdi, salomni esa o'tib bo'lgach berdi. Patrul boshlig'i uning ikki xatosini ko'rsatdi. Nizomga ko'ra boshliqni quvib o'tishda salom qachon beriladi va qanday qadam bilan o'tiladi?",
+    "opts": [
+      "Salom berilmaydi, faqat oddiy qadam bilan o'tiladi",
+      "Birinchi qadam barobarida salom beriladi, oddiy qadam bilan o'tiladi",
+      "Ikkinchi qadam barobarida salom beriladi, yugurib o'tiladi",
+      "Quvib o'tib bo'lgach salom beriladi, shaxdam qadam bilan o'tiladi"
+    ],
+    "correct": 1,
+    "explanation": "Nizomga ko'ra boshliqni quvib o'tishda harbiycha salom quvib o'tishning birinchi qadami barobarida beriladi, ikkinchi qadam tashlangach to'g'riga qaralib qo'l tushiriladi. Bunda albatta oddiy qadamga o'tiladi — yugurgancha quvib o'tish nizom talabining buzilishi hisoblanadi.",
+    "mnemonic": "Quvib o'tishda: birinchi qadam — salom, oddiy qadam — hurmat.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 53-band",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "quvib o'tishda salom majburiyatini bekor deb hisoblash",
+      "",
+      "salom paytini kechiktirish va yugurishga ruxsat berish",
+      "salomni o'tib bo'lgandan keyinga qoldirish"
+    ]
+  },
+  {
+    "q": "Askar chaqiriq bo'yicha boshlig'i oldiga ochiq maydonda bordi: oxirigacha oddiy qadam bilan yurdi va boshliqning burniga tegay deb turganda to'xtadi. Boshliq unga yaqinlashish tartibini eslatdi. Nizomga ko'ra safdan tashqarida boshliq oldiga yaqinlashishda qadam qachon o'zgaradi va qayerda to'xtaladi?",
+    "opts": [
+      "Ikki-uch qadam qolganda shaxdam qadamga o'tiladi, bir qadamda to'xtaladi",
+      "O'n qadam qolganda shaxdam qadamga o'tiladi, besh qadamda to'xtaladi",
+      "Besh-olti qadam qolganda shaxdam qadamga o'tiladi, ikki-uch qadamda to'xtaladi",
+      "Besh-olti qadam qolganda to'xtaladi, shaxdam qadam esa talab etilmaydi"
+    ],
+    "correct": 2,
+    "explanation": "Nizom ikki chegarani belgilaydi: boshliqqa besh-olti qadam qolganda shaxdam qadam tashlash boshlanadi, ikki-uch qadam qolganda esa to'xtaladi va oyoqlar taqalishi barobarida o'ng qo'l bosh kiyimga keltirilib, yetib kelgani haqida bildiruv beriladi. Bildiruv tugagach qo'l tushiriladi.",
+    "mnemonic": "Olti qadam — shaxdam; uch qadam — to'xtash.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 63-band",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "ikki masofani o'zaro almashtirish va juda yaqin to'xtash",
+      "ikkala masofani ham sun'iy ravishda uzaytirish",
+      "",
+      "shaxdam qadam bosqichini butunlay tushirib qoldirish"
+    ]
+  },
+  {
+    "q": "Xuddi shu askar ertasi kuni shtab binosi ichida boshlig'i oldiga bordi va koridorda shaxdam qadam tashlab, taqillatib yurdi. Boshliq bino ichidagi tartib boshqacha ekanini aytdi. Nizomga ko'ra binolarda boshliq oldiga yaqinlashishda qanday qadam bilan boriladi?",
+    "opts": [
+      "Shaxdam qadam bilan boriladi",
+      "Yugurib boriladi",
+      "Joyda qadam bosib, so'ng boriladi",
+      "Oddiy qadam bilan boriladi"
+    ],
+    "correct": 3,
+    "explanation": "Binolarda boshliq oldiga yaqinlashayotgan xizmatchi oddiy qadam bosib boradi va ikki-uch qadam qolganda to'xtab, oyoqlarni taqash barobarida o'ng qo'lini bosh kiyimga keltirib bildiruv beradi. Shaxdam qadam ochiq joyda yaqinlashish uchun belgilangan bo'lib, yopiq binoda u ortiqcha shovqin tug'diradi.",
+    "mnemonic": "Ochiq joyda — shaxdam; bino ichida — oddiy qadam.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 63-band",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "ochiq joydagi tartibni bino ichiga ko'chirish",
+      "yaqinlashishni shoshilinch harakat deb tushunish",
+      "bino ichida qo'shimcha saf usulini talab qilish",
+      ""
+    ]
+  },
+  {
+    "q": "Komandir safga qarab «Oddiy askar Tursunov. Safdan ikki qadam oldinga CHIQING» dedi. Askar jim turib, hech narsa demasdan chiqa boshladi va komandir uni to'xtatdi. Nizomga ko'ra bunday komandada xizmatchi qaysi paytda va nima deb javob beradi?",
+    "opts": [
+      "Familiyasini eshitgach «Men», chiqish komandasidan keyin «Xo'p bo'ladi»",
+      "Familiyasini eshitgach «Xo'p bo'ladi», chiqish komandasidan keyin «Men»",
+      "Faqat chiqib bo'lgandan keyin «Xo'p bo'ladi» deb javob beradi",
+      "Javob berilmaydi, harakatning o'zi javob hisoblanadi"
+    ],
+    "correct": 0,
+    "explanation": "Nizomda javob ikki bosqichga bo'lingan: xizmatchi o'z familiyasini eshitgach «Men» deb o'zini bildiradi, safdan chiqish komandasini eshitgach esa «Xo'p bo'ladi» deb tasdiqlaydi. Bu ketma-ketlik komandirga komanda to'g'ri manzilga yetib borgani va qabul qilinganini darhol bildiradi.",
+    "mnemonic": "Avval «Men», keyin «Xo'p bo'ladi».",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 61-band",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "ikki javobning tartibi teskari qo'yilgan",
+      "javobni harakat tugagandan keyinga surish",
+      "og'zaki javob majburiyatini butunlay inkor qilish"
+    ]
+  },
+  {
+    "q": "Ikki sherengali safda ikkinchi sherengada turgan askarga safdan chiqish buyrug'i berildi. U oldindagi xizmatchini turtib o'tmoqchi bo'ldi va saf buzildi. Nizomga ko'ra ikkinchi sherengadan chiqishda xizmatchi va uning oldidagi askar qanday harakat qiladi?",
+    "opts": [
+      "Safning yaqin qanoti tomon yurib, chekka orqali aylanib chiqib ketadi",
+      "Chap qo'lini oldindagining yelkasiga qo'yadi, u esa yon tomonga o'tib yo'l beradi",
+      "O'ng qo'lini oldindagining beliga qo'yadi, u esa orqaga o'tib yo'l beradi",
+      "Ovoz bilan ogohlantiradi, oldindagi esa cho'kkalab turib yo'l bo'shatadi"
+    ],
+    "correct": 1,
+    "explanation": "Ikkinchi sherengadagi xizmatchi chap qo'lini oldida turgan askarning yelkasiga qo'yadi — bu ogohlantiruvchi belgi. Oldingi sherengadagi askar bir qadam oldinga tashlab, o'ng oyog'ini chapiga taqamay o'ng tomon bir qadam o'tadi, chiquvchini oldinga o'tkazib yuboradi va o'z joyini qayta egallaydi.",
+    "mnemonic": "Yelkaga qo'l — «yo'l bering» degani.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 61-band",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "ikki sherengali safdagi tartibni kolonna tartibi bilan chalkashtirish",
+      "",
+      "belgi berish usuli va yo'l berish yo'nalishi buzilgan",
+      "belgilangan saf usulini improvizatsiya bilan almashtirish"
+    ]
+  },
+  {
+    "q": "Boshliq oldida turgan askarga «Oddiy askar Tursunov. Safga TURING» komandasi berildi. Askar sekin, oddiy qadam bilan aylanib yurib, safdagi joyiga qaytdi. Instruktor qaytish tartibi ham nizomda belgilanganini eslatdi. Bu komanda bo'yicha safga qanday qaytiladi?",
+    "opts": [
+      "Aylanma yo'l bilan, saf orti orqali qaytiladi",
+      "Yugurib borib, joyni egallash bilan qaytiladi",
+      "Qisqa yo'l bilan uchta shaxdam qadam tashlab qaytiladi",
+      "Qisqa yo'l bilan uchta oddiy qadam tashlab qaytiladi"
+    ],
+    "correct": 2,
+    "explanation": "Xizmatchi «Men» deb javob bergach, ijro komandasi bo'yicha o'ng qo'lini bosh kiyimga keltirib «Xo'p bo'ladi» deydi, yurish yo'nalishi tomon buriladi va birinchi qadam bilan qo'lini tushiradi. Shundan so'ng qisqa yo'l bilan uchta shaxdam qadam tashlab safdagi joyini egallaydi.",
+    "mnemonic": "Safga qaytish — qisqa yo'l, uch shaxdam qadam.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 62-band",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "qisqa yo'l talabini buzib, aylanma yurishga ruxsat berish",
+      "qaytishni tartibsiz shoshilish bilan almashtirish",
+      "",
+      "shaxdam qadam talabini oddiy qadam bilan almashtirish"
+    ]
+  },
+  {
+    "q": "Boshliq safga qarab faqat «Safga TURING» ijro komandasini berdi, familiya aytilmadi. Safdan chiqqan askar avval boshliq tomon burilib javob berdi, keyin joyiga qaytdi va boshliq buni ortiqcha deb ko'rsatdi. Faqat ijro komandasi berilganda xizmatchi qanday harakat qiladi?",
+    "opts": [
+      "Boshliq tomon burilib «Men» deb, keyin joyiga qaytadi",
+      "Jim turib, hech narsa demasdan joyiga qaytadi",
+      "Avval «Men», keyin «Xo'p bo'ladi» deb, joyiga qaytadi",
+      "Boshliq tomon burilmay «Xo'p bo'ladi» deb, joyiga qaytadi"
+    ],
+    "correct": 3,
+    "explanation": "Familiya aytilgan to'liq komandada xizmatchi avval o'zini bildirishi kerak, chunki komanda aniq shaxsga qaratilgan. Faqat ijro komandasi berilganda esa manzil allaqachon aniq, shuning uchun nizom boshliq tomon burilishni talab qilmaydi: xizmatchi «Xo'p bo'ladi» deb javob beradi va safdagi o'z o'rniga qaytadi.",
+    "mnemonic": "Familiya bo'lsa — burilib «Men»; bo'lmasa — burilmay javob.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Saf nizomi (PF-23), 62-band",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "faqat ijro komandasiga to'liq komanda tartibini qo'llash",
+      "og'zaki javob majburiyatini butunlay tushirib qoldirish",
+      "ikki bosqichli javobni qisqartirilgan komandaga ko'chirish",
+      ""
+    ]
+  },
+  {
+    "q": "Yangi tayinlangan rota komandiri bo'linmasi uchun kun tartibini o'zi tuzib, uni darhol joriy etmoqchi bo'ldi. Shtab boshlig'i uni to'xtatib, bunday hujjatni tasdiqlash vakolati boshqa darajada ekanini aytdi. Ichki xizmat nizomiga ko'ra harbiy qismda sutkalik kun tartibini kim belgilaydi?",
+    "opts": [
+      "Harbiy qism komandiri belgilaydi",
+      "Har bir rota komandiri o'z bo'linmasi uchun belgilaydi",
+      "Polk navbatchisi har kuni yangidan belgilaydi",
+      "Shaxsiy tarkib yig'ilishida ovoz berish bilan belgilanadi"
+    ],
+    "correct": 0,
+    "explanation": "Sutkalik kun tartibi harbiy qism miqyosida yagona bo'lishi kerak, chunki unga oshxona, park, tibbiy punkt va naryad xizmati bog'langan. Shuning uchun nizom uni belgilash vakolatini polk komandiriga beradi; bo'linma komandirlari faqat uning bajarilishini ta'minlaydi.",
+    "mnemonic": "Kun tartibi — qism darajasidagi hujjat.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Ichki xizmat nizomi (PF-23), V bob — kun tartibi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "qism darajasidagi vakolatni bo'linma darajasiga tushirish",
+      "belgilash vakolatini navbatchilik vazifasi bilan chalkashtirish",
+      "yakkaboshchilik tamoyilini jamoaviy qaror bilan almashtirish"
+    ]
+  },
+  {
+    "q": "Qurol saqlash xonasini jihozlashda ta'minot boshlig'i temir eshik va deraza panjaralarini o'rnatdi, ammo signalizatsiyani rota navbatchisi stoliga ulab qo'ydi. Tekshiruvchi buni nizom talabiga zid deb topdi. Ichki xizmat nizomiga ko'ra qurol xonasi signalizatsiyasi qayerga ulanishi kerak?",
+    "opts": [
+      "Faqat kazarma koridoridagi qo'ng'iroqqa ulanadi",
+      "Polk navbatchisi pultiga ulanadi",
+      "Rota navbatchisi stoliga ulanadi",
+      "Rota komandiri xonasiga ulanadi"
+    ],
+    "correct": 1,
+    "explanation": "Nizom qurol saqlash xonasini ovozli va yorug'lik signalizatsiyasi bilan jihozlashni hamda uni aynan polk navbatchisi pultiga ulashni talab qiladi. Sabab oddiy: rota ichidagi shaxs signal manbaining o'zi bilan bir joyda bo'lishi mumkin, polk navbatchisi esa mustaqil, uzluksiz nazorat bo'g'ini hisoblanadi.",
+    "mnemonic": "Signal rotadan tashqariga chiqsin — polk navbatchisiga.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Ichki xizmat nizomi (PF-23), IV bob — qurol xonasi jihozlanishi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "texnik nazoratni oddiy ovozli qurilma bilan almashtirish",
+      "",
+      "nazoratni qo'riqlanayotgan ob'ekt bilan bir joyga to'plash",
+      "signalizatsiyani doimiy bo'lmagan ish o'rniga ulash"
+    ]
+  },
+  {
+    "q": "Mashg'ulotga shoshayotgan vzvod komandiri qurol xonasidan avtomatlarni o'zi olib, askarlarga tarqatdi va hech qanday yozuv qoldirmadi. Kechqurun bitta avtomat yetishmasligi aniqlanganda, uni kim olganini tiklab bo'lmadi. Nizomga ko'ra qurol va o'q-dorilar qanday tartibda tarqatiladi?",
+    "opts": [
+      "Rota navbatchisi ixtiyori bilan, og'zaki hisobot asosida tarqatiladi",
+      "Har bir askar o'ziga biriktirilgan qurolni erkin olib turadi",
+      "Rota komandiri buyrug'i bilan, imzo qo'ydirilgan holda tarqatiladi",
+      "Vzvod komandiri qarori bilan, imzosiz tarqatilishi mumkin"
+    ],
+    "correct": 2,
+    "explanation": "Qurol va o'q-dorilar faqat rota komandiri yoki uning buyrug'i asosida, maxsus vedomost yoxud qurol berish kitobiga imzo qo'ydirilgan holda tarqatiladi. Yozma qayd har bir qurolning ayni paytda kimda ekanini aniq ko'rsatadi va yo'qolish holatida javobgarlikni belgilash imkonini beradi.",
+    "mnemonic": "Qurol imzosiz qo'ldan chiqmaydi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Ichki xizmat nizomi (PF-23), IV bob — qurol tarqatish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "qurol tarqatishni navbatchilik vazifasiga aylantirish",
+      "biriktirilganlikni erkin foydalanish huquqi deb tushunish",
+      "",
+      "vakolat darajasini pasaytirib, yozma qaydni bekor qilish"
+    ]
+  },
+  {
+    "q": "Sutkalik naryadga tayinlangan askar o'zi bilan birga naryadda kimlar borligini bilmasdi va vazifalar taqsimotida chalkashlik yuz berdi. Rota komandiri unga naryad tarkibini tushuntirdi. Ichki xizmat nizomiga ko'ra sutkalik naryad tarkibiga quyidagilardan qaysi biri kirmaydi?",
+    "opts": [
+      "Nazorat-o'tkazish punkti navbatchisi",
+      "Oshxona navbatchisi va ishchilari",
+      "Park navbatchisi va o't o'chirish naryadi",
+      "Qorovul boshlig'ining o'rinbosari"
+    ],
+    "correct": 3,
+    "explanation": "Nizomda sutkalik naryad tarkibi sifatida polk navbatchisi va uning yordamchisi, qorovul, rota navbatchisi va dnevalniylari, nazorat-o'tkazish punkti navbatchisi, oshxona navbatchisi va ishchilari, park navbatchisi, feldsher hamda o't o'chirish naryadi belgilangan. Ro'yxatda qorovul boshlig'ining o'rinbosari degan lavozim yo'q.",
+    "mnemonic": "Naryad ro'yxatini yodla — yo'q lavozimni o'ylab topma.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Ichki xizmat nizomi (PF-23), VI bob — sutkalik naryad tarkibi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "nizomda aniq ko'rsatilgan naryad lavozimini inkor qilish",
+      "oshxona naryadini tarkibdan tashqari deb hisoblash",
+      "park va yong'in naryadini tasodifiy tayinlov deb hisoblash",
+      ""
+    ]
+  },
+  {
+    "q": "Kazarmada namlik oshib, kechalari sovuq bo'lib qoldi va bir necha askar shamollab qoldi. Starshina «bu askarlarning shaxsiy muammosi» deb, choralar ko'rmadi. Ichki xizmat nizomiga ko'ra kazarma binolarida nima ta'minlanishi shart?",
+    "opts": [
+      "Havo harorati, yorug'lik va sanitariya me'yorlari",
+      "Tozalik, harorat esa tashqi sharoitga qarab o'zgaradi",
+      "Yorug'lik, chunki qolgan ko'rsatkichlar mavsumga bog'liq",
+      "Yotoq joylar soni, boshqa sharoitlar esa ixtiyoriy"
+    ],
+    "correct": 0,
+    "explanation": "Nizom kazarma binolari, yotoqxonalar, o'quv xonalari va oshxonani namunali tozalikda saqlashni talab qilibgina qolmay, har bir xonada havo harorati, yorug'lik va sanitariya me'yorlari ta'minlanishini ham belgilaydi. Bu talablar shaxsiy tarkib sog'lig'ini saqlashning bevosita sharti bo'lib, mansabdor shaxs javobgarligiga kiradi.",
+    "mnemonic": "Tozalik yolg'iz emas: harorat va yorug'lik ham me'yor.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Ichki xizmat nizomi (PF-23), IV bob — kazarmalarni saqlash",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "harorat me'yorini tashqi sharoitga bog'lab, javobgarlikdan qochish",
+      "sanitariya me'yorlarini mavsumiy masala deb hisoblash",
+      "turmush sharoitini faqat joy soniga qisqartirish"
+    ]
+  },
+  {
+    "q": "Rota dnevalniysi qurol xonasi yonidagi postni tashlab, koridor oxirida stul qo'yib o'tirdi va u yerdan kuzatdi. Rota navbatchisi buni jiddiy buzilish deb baholadi. Ichki xizmat nizomiga ko'ra dnevalniy postda turishdan tashqari yana qanday majburiyatlarga ega?",
+    "opts": [
+      "Kun tartibini belgilash va uning bajarilishini nazorat qilish",
+      "Begonalarni kiritmaslik, tozalikni saqlash va xavfda signal berish",
+      "Faqat begonalarni kiritmaslik, qolgani navbatchi zimmasida",
+      "Qurollarni tarqatish va ularni ro'yxatga olish"
+    ],
+    "correct": 1,
+    "explanation": "Dnevalniy qurol saqlash xonasi yaqinidagi postda turadi va uning majburiyatlariga xonaga begonalarni kiritmaslik, rotadagi tozalikni saqlash, komandirlar kelganda tegishli komandani berish hamda xavf tug'ilganda signal berish kiradi. Qurol tarqatish va kun tartibini belgilash esa boshqa mansabdor shaxslar vakolatiga tegishli.",
+    "mnemonic": "Dnevalniy: post + tartib + signal.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Ichki xizmat nizomi (PF-23), VI bob — dnevalniy majburiyatlari",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "quyi lavozimga qism darajasidagi vakolatni yuklash",
+      "",
+      "majburiyatlar doirasini sun'iy ravishda toraytirish",
+      "dnevalniyga qurol tarqatish vakolatini berish"
+    ]
+  },
+  {
+    "q": "O't ochish mashg'ulotida instruktor vaqtni tejash uchun xavfsizlik yo'riqnomasini o'tkazmasdan o'q otishni boshlashga ruxsat bermoqchi bo'ldi. Yosh ofitser bunga e'tiroz bildirdi. Ichki xizmat nizomiga ko'ra xavfsizlik qoidalariga rioya qilish qanday hollarda talab etiladi?",
+    "opts": [
+      "O't ochish va portlatish ishlarida, boshqa hollarda emas",
+      "Yosh askarlar ishtirok etgan mashg'ulotlarda, boshqa hollarda emas",
+      "Mashg'ulot, o't ochish, texnika va jangovar vazifalarda",
+      "Jangovar vazifalarni bajarish paytidagina talab etiladi"
+    ],
+    "correct": 2,
+    "explanation": "Nizom xavfsizlik qoidalariga so'zsiz rioya qilishni mashg'ulotlarda, qurollardan o't ochishda, texnikani boshqarishda va jangovar vazifalarni bajarishda birdek talab qiladi — ya'ni bu talab faoliyat turiga ham, xizmatchining tajribasiga ham bog'liq emas. Vaqtni tejash uni chetlab o'tish uchun asos bo'la olmaydi.",
+    "mnemonic": "Xavfsizlik — barcha faoliyat turida, hammaga birdek.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Ichki xizmat nizomi (PF-23), VII bob — xavfsizlik choralari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "talabni faqat o'q-dori bilan bog'liq ishlarga cheklash",
+      "talabni xizmatchining tajribasiga bog'lash",
+      "",
+      "talabni faqat jangovar sharoitga cheklash"
+    ]
+  },
+  {
+    "q": "Bo'linma komandiri o'z askarlarining formasi g'ijim, quroli changli ekaniga e'tibor bermay, «bu starshinaning ishi» dedi. Rota komandiri unga bu majburiyat bevosita o'ziga tegishli ekanini eslatdi. Ichki xizmat nizomiga ko'ra bo'linma (guruh) komandiri nimani qat'iy nazorat qiladi?",
+    "opts": [
+      "Qurol tozaligi, tashqi qiyofa esa starshina zimmasida qoladi",
+      "Mashg'ulot natijalari va baholar, tashqi ko'rinish esa emas",
+      "Kazarmadagi tozalik va yotoq tartibi, qurol holati esa emas",
+      "Tashqi qiyofa, qurol tozaligi va formani to'g'ri kiyish"
+    ],
+    "correct": 3,
+    "explanation": "Nizomga ko'ra bo'linma komandiri shaxsiy tarkibni bevosita o'qitadi hamda ularning tashqi qiyofasi, qurollarining tozaligi va formali kiyim-boshning to'g'ri kiyilishini qat'iy nazorat qiladi. Bu vazifani starshinaga yoki boshqa shaxsga o'tkazib yuborish nizomda ko'zda tutilmagan.",
+    "mnemonic": "Bo'linma komandiri — eng yaqin nazoratchi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Ichki xizmat nizomi (PF-23), III bob — bo'linma komandiri majburiyatlari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "majburiyatning bir qismini boshqa lavozimga o'tkazish",
+      "nazoratni faqat o'quv natijalariga qisqartirish",
+      "nazoratni faqat turar joy tartibiga qisqartirish",
+      ""
+    ]
+  },
+  {
+    "q": "Harbiy qismga kelgan tashqi tashkilot vakili nazorat-o'tkazish punktida hujjatsiz o'tmoqchi bo'ldi va «meni qism komandiri kutayapti» dedi. Navbatchi ikkilanib qoldi. Ichki xizmat nizomiga ko'ra nazorat-o'tkazish punkti navbatchisi qanday maqomga ega?",
+    "opts": [
+      "U sutkalik naryad tarkibiga kiradi va o'tkazish tartibini nazorat qiladi",
+      "U naryadga kirmaydi, faqat qism ma'muriyatining yordamchisi hisoblanadi",
+      "U qorovul tarkibiga kiradi va soqchi huquqlariga ega bo'ladi",
+      "U vaqtincha tayinlanadi va nizomiy majburiyatlarga ega emas"
+    ],
+    "correct": 0,
+    "explanation": "Nizom nazorat-o'tkazish punkti navbatchisini sutkalik naryad tarkibiga kiritadi, ya'ni u belgilangan majburiyatlarga ega mansabdor shaxs bo'lib, qism hududiga kirish va undan chiqish tartibini nazorat qiladi. Og'zaki da'vo yoki tanish-bilishlik uning uchun hujjat o'rnini bosa olmaydi.",
+    "mnemonic": "Nazorat punkti — naryad, og'zaki gap hujjat emas.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Ichki xizmat nizomi (PF-23), VI bob — sutkalik naryad tarkibi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "naryad lavozimini norasmiy yordamchiga aylantirish",
+      "naryad xizmatini qorovullik xizmati bilan chalkashtirish",
+      "naryad lavozimini majburiyatsiz vaqtinchalik topshiriq deb hisoblash"
+    ]
+  },
+  {
+    "q": "Askar o'ziga biriktirilgan avtomatning nomerini va texnik holatini bilmasdi, mashg'ulotda esa uni tozalamagani ma'lum bo'ldi. U «qurol baribir omborda saqlanadi» deb o'zini oqladi. Ichki xizmat nizomiga ko'ra harbiy xizmatchining o'z quroliga nisbatan majburiyati qanday?",
+    "opts": [
+      "Uni bilish faqat kontrakt xizmatchilardan talab qilinadi",
+      "Uni a'lo darajada bilishi, toza va jangga tayyor saqlashi shart",
+      "Uni faqat mashg'ulot kunlari tozalashi kifoya",
+      "Uning saqlanishi uchun faqat ombor mudiri javobgar"
+    ],
+    "correct": 1,
+    "explanation": "Nizom har bir harbiy xizmatchidan o'ziga biriktirilgan qurol-yarog' va harbiy texnikani a'lo darajada bilishni hamda ularni toza va doimo jangga tayyor holda saqlashni talab qiladi. Qurolning omborda saqlanishi bu majburiyatni bekor qilmaydi va uni boshqa shaxs zimmasiga o'tkazmaydi.",
+    "mnemonic": "Qurol biriktirildimi — javobgarlik ham biriktirildi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Ichki xizmat nizomi (PF-23), III bob — harbiy xizmatchi majburiyatlari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "umumiy majburiyatni xizmat turiga bog'lash",
+      "",
+      "doimiy majburiyatni davriy vazifaga aylantirish",
+      "shaxsiy javobgarlikni ombor xodimiga o'tkazish"
+    ]
+  },
+  {
+    "q": "Harbiy qismga kelgan tekshiruvchi mashg'ulot jadvali, intizom holati va moddiy ta'minotdagi kamchiliklar uchun kimdan hisob so'rashni aniqlamoqchi bo'ldi. Bir necha mansabdor shaxs javobgarlikni bir-biriga o'tkazdi. Ichki xizmat nizomi bu masalani qaysi tamoyil asosida hal qiladi?",
+    "opts": [
+      "Ixtisoslashuv — har bir yo'nalish uchun alohida mutaxassis javobgar",
+      "Yuqori bo'g'in javobgarligi — faqat qism komandiri javob beradi",
+      "Yakkaboshchilik — komandir bo'linmasi uchun to'liq javobgar",
+      "Jamoaviylik — javobgarlik shaxsiy tarkib o'rtasida taqsimlanadi"
+    ],
+    "correct": 2,
+    "explanation": "Yakkaboshchilik Qurolli Kuchlar qurilishining asosiy tamoyillaridan biri bo'lib, unga ko'ra komandir o'z bo'linmasining jangovar va saf tayyorgarligi, intizomi, ruhiy-axloqiy holati hamda moddiy-texnik ta'minoti uchun to'liq javobgardir. Shu sababli javobgarlikni boshqalarga taqsimlab yuborish nizomga zid.",
+    "mnemonic": "Bitta bo'linma — bitta javobgar komandir.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Ichki xizmat nizomi (PF-23), II bob — yakkaboshchilik",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "yagona javobgarlikni yo'nalishlar bo'yicha bo'lib yuborish",
+      "javobgarlikni faqat eng yuqori bo'g'inga ko'tarib qo'yish",
+      "",
+      "yakkaboshchilikni jamoaviy javobgarlik bilan almashtirish"
+    ]
+  },
+  {
+    "q": "Harbiy qism hududida qurollangan guruh tomonidan hujum xavfi haqida ma'lumot keldi va bir vaqtning o'zida Jangovar bayroq, o'q-dori ombori hamda nazorat-o'tkazish punkti himoyasini kuchaytirish zarurati tug'ildi. Yosh ofitser bu vazifalarni bir xil xizmat turi deb hisobladi. Qorovullik va sutkalik naryad xizmati bir-biridan nima bilan farq qiladi?",
+    "opts": [
+      "Qorovul ichki tartibni ta'minlaydi, naryad ob'ektlarni qurol bilan qo'riqlaydi",
+      "Ikkalasi ham bir xil, faqat nomlanishi bilan farq qiladi",
+      "Qorovul faqat tinchlik davrida, naryad faqat urush davrida tayinlanadi",
+      "Qorovul ob'ektlarni qurol bilan qo'riqlaydi, naryad ichki tartibni ta'minlaydi"
+    ],
+    "correct": 3,
+    "explanation": "Qorovul jangovar vazifani bajaradi: u belgilangan ob'ektlarni qurol bilan qo'riqlaydi va soqchi maxsus huquqlarga ega bo'ladi. Sutkalik naryad esa qismda ichki tartibni, shaxsiy tarkib va harbiy mulk xavfsizligini ta'minlaydi hamda navbatchilikni olib boradi; qorovul naryad tarkibiga kirsa-da, uning vazifasi alohida.",
+    "mnemonic": "Qorovul — qo'riqlaydi; naryad — tartib saqlaydi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Garnizon va qorovullik nizomi (PF-23); Ichki xizmat nizomi, VI bob",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "ikki xizmat turining vazifasi o'zaro almashtirilgan",
+      "vazifa farqini shakliy nomlanishga qisqartirish",
+      "farqni davr bilan bog'lab, sun'iy chegara o'ylab topish",
+      ""
+    ]
+  },
+  {
+    "q": "Qorovulxonada bir necha soat dam olgan qorovul a'zosi «postda emasman, demak qurolimni qo'yib, tashqariga chiqsam bo'ladi» deb hisobladi. Qorovul boshlig'i uni to'xtatdi. Qorovul tarkibidagi shaxsning qorovulxonadagi maqomi qanday?",
+    "opts": [
+      "U qorovul tarkibida qoladi va qorovul boshlig'i ruxsatisiz chiqa olmaydi",
+      "U postdan tashqarida bo'lgani uchun erkin harakatlanish huquqiga ega",
+      "U dam olish vaqtida rota navbatchisiga bo'ysunadi",
+      "U dam olish vaqtida qurolini omborga topshirishi shart"
+    ],
+    "correct": 0,
+    "explanation": "Qorovul xizmati postda turish bilan cheklanmaydi: qorovul tarkibiga kiritilgan shaxs xizmat tugagunga qadar qorovul boshlig'iga bo'ysunadi va uning ruxsatisiz qorovulxonani tark eta olmaydi. Dam olish vaqti xizmatning bir qismi bo'lib, undan keyin u yana postga chiqadi.",
+    "mnemonic": "Qorovulxonada ham xizmatdasan.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Garnizon va qorovullik nizomi (PF-23) — qorovul tarkibi va tartibi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "postdan tashqarida bo'lishni xizmatdan ozod bo'lish deb tushunish",
+      "qorovuldagi bo'ysunish tartibini rota naryadi bilan chalkashtirish",
+      "qorovul tarkibidagi qurol tartibini noto'g'ri talqin qilish"
+    ]
+  },
+  {
+    "q": "Garnizonda bir necha harbiy qism joylashgan bo'lib, ular o'rtasida harbiy intizomni saqlash, patrul xizmatini tashkil etish va gauptvaxta faoliyatini yuritish masalasi ko'tarildi. Yosh ofitser bu vazifalarni har bir qism o'zi hal qiladi deb o'yladi. Bu vazifalar bevosita qaysi mansabdor shaxs zimmasida?",
+    "opts": [
+      "Garnizondagi eng katta unvonli ofitser zimmasida",
+      "Garnizon harbiy komendanti zimmasida",
+      "Eng katta harbiy qism komandiri zimmasida",
+      "Har bir qismning o'z komandiri zimmasida"
+    ],
+    "correct": 1,
+    "explanation": "Garnizon harbiy komendanti garnizon hududida harbiy intizom va tartibni saqlash, patrul xizmatini tashkil etish hamda gauptvaxta faoliyatini yuritish uchun javobgar mansabdor shaxs hisoblanadi. Bu vazifalar bir necha qismga taalluqli bo'lgani uchun ularni alohida qism komandiriga yuklab bo'lmaydi.",
+    "mnemonic": "Garnizon tartibi — komendant ishi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Garnizon va qorovullik nizomi (PF-23) — harbiy komendant",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "mansab vakolatini shaxsiy unvon bilan almashtirish",
+      "",
+      "garnizon vakolatini qism kattaligiga bog'lash",
+      "garnizon miqyosidagi vazifani qism darajasiga tushirish"
+    ]
+  },
+  {
+    "q": "Yangi qorovul boshlig'i postlarni topshirishda shoshib, faqat qurol va o'q-dorilarni sanab oldi, muhrlar hamda qo'riqlash texnik vositalarining sozligini tekshirmadi. Tunda signalizatsiya ishlamay qolgani ma'lum bo'ldi. Postni qabul qilishda nima albatta tekshiriladi?",
+    "opts": [
+      "Post hujjatlari va qorovul jadvali — texnik holat esa emas",
+      "Post atrofidagi yoritish va yo'lakning tozaligi holati",
+      "Muhrlar butunligi va texnik qo'riqlash vositalarining sozligi",
+      "Qurol va o'q-dorilar soni — qolgani navbatdagi tekshiruvda"
+    ],
+    "correct": 2,
+    "explanation": "Post topshirish va qabul qilishda qo'riqlanayotgan ob'ektning muhrlari butunligi, qulflar va eshiklarning holati hamda texnik qo'riqlash vositalarining sozligi birgalikda tekshiriladi. Faqat qurolni sanab olish bilan cheklanish nosozlikni keyingi smenaga o'tkazib yuboradi va javobgarlik chegarasini yo'qotadi.",
+    "mnemonic": "Post qabul qilinsa — muhr ham, texnika ham tekshiriladi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "source_ref": "Garnizon va qorovullik nizomi (PF-23) — postni qabul qilish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "qabul qilishni faqat hujjat tekshiruviga qisqartirish",
+      "asosiy tekshiruvni tashqi obodonchilik bilan almashtirish",
+      "",
+      "qabul qilishni faqat moddiy hisob-kitobga qisqartirish"
+    ]
+  }
+]

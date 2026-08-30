@@ -1,0 +1,44 @@
+{
+  "_izoh": "4-blok (Fuqaro muhofazasi) — saqlanadigan savollarning tuzatilgan matni.",
+
+  "0VMfhQKiZMH9kGd713YR": {
+    "q": "Mudofaa vazifalari bo'yicha taktik mashg'ulotda bo'linma komandiri shaxsiy tarkibga shoshilinch yashirinish joylarini ko'rsatmoqda. Hududda jangovar mashg'ulot uchun tayyorlangan o't ochish joylari ham, fuqarolarni uzoq vaqt himoya qiluvchi maxsus boshpanalar ham bor. Komandir maxsus jihozsiz, faqat tuproqqa ko'milib himoyalanadigan «oddiy yashirinish joylari»ni belgilashni buyuradi. Tasnifga ko'ra qaysi juftlik talabga javob beradi?",
+    "explanation": "«Oddiy yashirinish joylari» — maxsus jihoz va muhandislik tizimlarisiz, faqat tuproqda qaziladigan inshootlar; ularga ochiq va yopiq xandaqlar kiradi. O't ochish joylari va zenit inshootlari jangovar vazifa uchun quriladi, yerosti o'tkazgichlari kommunikatsiya maqsadida xizmat qiladi, betonli bombapanalar esa maxsus inshootlar guruhiga kiradi."
+  },
+
+  "8TdA7eANiaGNfGdNDMJG": {
+    "explanation": "O'tuvchan radiatsiya yadroviy portlash paytida hosil bo'ladi va qalin to'siqlarni ham teshib o'tadi — shu sababli inshoot ichidagi shaxsiy tarkib ham zarar ko'radi. U gamma-nurlar va neytronlar oqimidan iborat. Alfa va beta zarralar havoda tez to'xtaydi, radioaktiv chang esa alohida shikastlantiruvchi omil bo'lib, hududni ifloslaydi."
+  },
+
+  "J3wZOOEBMrOcMjWpW3oL": {
+    "q": "Kimyoviy razvedka bo'linmasiga zaharli moddalar tarqalgan hududga kirib, namunalar olish va zarar darajasini aniqlash vazifasi berildi. Sharoit kimyoviy suyuqliklar va bug'lar bilan to'g'ridan-to'g'ri aloqada bo'lish xavfini tug'diradi. Bunday vaziyatda qaysi shaxsiy himoya vositasidan foydalanish eng to'g'ri yechim bo'ladi?"
+  },
+
+  "PAZbyxrfqUdLUZqA2UH4": {
+    "explanation": "Daryolarning qirg'oqdan toshib chiqishi, dara va jarliklardan sel oqimlarining tushishi hamda qor ko'chkilari — bularning hammasi ob-havo va suv massalari harakati bilan bog'liq bo'lgani uchun gidrometeorologik xavfli hodisalar guruhiga kiradi. Geologik hodisalar yer qobig'ining harakati bilan (zilzila, yer ko'chkisi), biologik hodisalar esa kasallik tarqalishi bilan bog'liq."
+  },
+
+  "RXAJaHt7fiiJP4dj0bnB": {
+    "opts": [
+      "A) Ko'zlar yumilib, chuqur nafas olinadi",
+      "B) Ko'zlar ochilib, chuqur nafas chiqariladi",
+      "C) Nafas ushlab turilib, ko'zlar yumiladi",
+      "D) Ko'zlar ochilib, tez-tez nafas olinadi"
+    ],
+    "explanation": "Gazniqob kiyilgach, niqob ostida qolgan ifloslangan havoni chiqarib yuborish uchun chuqur nafas chiqariladi. Ko'zlarning ochiq turishi esa oynaning bug'lanishini kamaytiradi va atrofni kuzatish imkonini beradi. Nafasni ushlab turish yoki tez-tez nafas olish niqob ostidagi havoni tozalamaydi va kislorod yetishmovchiligini keltirib chiqaradi."
+  },
+
+  "V8eYUTfLgti0IUGcj4Lt": {
+    "q": "O'quv markazidagi «Fuqaro muhofazasi» mashg'ulotida kursantlar elektr ta'minoti yo'qolgan panoh joyda harakat qilishni o'rganmoqda. Bir necha kursant yoritish uchun omborda saqlanayotgan kerosin lampasini olishni taklif qiladi, biroq o'qituvchi bu harakatni to'xtatadi. Kerosin lampasini yopiq panoh joyda ishlatish taqiqlanishining asosiy sababi nima?",
+    "explanation": "Kerosin lampasi — ochiq olov manbai. Yopiq, havo almashinuvi cheklangan panoh joyda u yong'in xavfini keskin oshiradi va kislorodni yoqib, halokatli oqibatga olib keladi. Yorug'lik demaskirovkasi va yorqinlikning yetarli emasligi ikkinchi darajali masalalar bo'lib, taqiqning asosiy sababi emas."
+  },
+
+  "Xfml36DiUsAzGtVqK3Eb": {
+    "q": "Taktik tayyorgarlik mashg'ulotida vzvod komandiri o'quvchilarning zaharlovchi moddalardan himoya vositalarini kiyish jarayonini nazorat qilmoqda. Bir o'quvchi respiratorni kiyganiga qaramay, uning yuzga zich yopishishi ta'minlanmayapti. Respiratorning havo o'tkazmasligi uchun bosh kiyim qanday holatda bo'lishi shart?",
+    "explanation": "Respirator chekkasi bevosita yuz terisiga tegishi kerak. Bosh kiyim niqob chekkasi bilan yuz orasida bo'shliq hosil qiladi va ifloslangan havo shu bo'shliqdan kirib qoladi, shuning uchun bosh kiyim yechiladi yoki orqaga osiltiriladi. Kozirgichni ko'tarish yoki niqobni bosh kiyim ustidan kiyish zichlikni ta'minlamaydi."
+  },
+
+  "dIebbmdWvKs9iHTjXArA": {
+    "q": "Harbiy tayyorgarlik darsida o'quvchilarga zilzila paytida binoda xavfsiz turish qoidalari o'rgatilmoqda. Instruktor inshootning ayrim qismlari qulashi va tushuvchi qoldiqlar odamlar uchun eng katta xavf tug'dirishini ta'kidlaydi. Ushbu ko'rsatmaga asosan qaysi joylar eng xavfli deb belgilanadi?"
+  }
+}

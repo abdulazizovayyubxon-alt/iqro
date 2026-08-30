@@ -1,0 +1,926 @@
+[
+  {
+    "q": "Darsda o'quvchi shunday fikr bildirdi: «Vatanni himoya qilish — bu istagan odamning shaxsiy tanlovi, xohlasa qiladi, xohlamasa yo'q». O'qituvchi bu fikrni Konstitutsiya asosida to'g'rilashi kerak. Qaysi javob to'g'ri bo'ladi?",
+    "opts": [
+      "Vatan himoyasi — har bir fuqaroning burchi, u shaxsiy xohishga bog'liq emas",
+      "Vatan himoyasi — faqat harbiy kasbni tanlaganlar uchun majburiyat",
+      "Vatan himoyasi — fuqaroning huquqi, undan istalgan vaqtda voz kechish mumkin",
+      "Vatan himoyasi — faqat urush e'lon qilingandan keyin paydo bo'ladigan majburiyat"
+    ],
+    "correct": 0,
+    "explanation": "Konstitutsiyaga ko'ra Vatanni himoya qilish har bir fuqaroning burchi hisoblanadi — burch shaxsiy xohishga bog'liq bo'lmaydi va uni bajarish majburiy. Bu majburiyat harbiy kasb tanlash bilan ham, urush e'lon qilinishi bilan ham bog'liq emas; e'tiqodi tufayli qurol ko'tarolmaydiganlar uchun esa muqobil xizmat yo'li ochiq.",
+    "mnemonic": "Vatan himoyasi — burch, tanlov emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: Vatanni himoya qilish burchi",
+    "distractor_error": [
+      "",
+      "burchni kasb bilan cheklash",
+      "burchni huquq deb bilish",
+      "burchni urush davriga bog'lash"
+    ]
+  },
+  {
+    "q": "Fuqaro harbiy komissariatga kelib, e'tiqodi tufayli qurol ko'tara olmasligini aytdi va shu sababli Vatan oldidagi burchdan butunlay ozod bo'lishini so'radi. Komissariat xodimi qanday tushuntirish beradi?",
+    "opts": [
+      "E'tiqod burchni bekor qiladi — fuqaro hech qanday xizmatdan o'tmaydi",
+      "Burch saqlanadi, ammo u qurol bilan bog'liq bo'lmagan muqobil xizmat orqali bajariladi",
+      "E'tiqod hisobga olinmaydi — fuqaro umumiy tartibda qurolli xizmatga chaqiriladi",
+      "Burch pul to'lash yo'li bilan qoplanadi va xizmatga chaqiruv bekor qilinadi"
+    ],
+    "correct": 1,
+    "explanation": "Qonun e'tiqodi tufayli qurolli xizmatni rad etgan fuqaroga muqobil xizmat yo'lini beradi: konstitutsiyaviy burch saqlanib qoladi, faqat uni bajarish shakli o'zgaradi. Burchdan butunlay ozod qilish yoki uni pul bilan almashtirish qonunda nazarda tutilmagan; e'tiqodni butunlay hisobga olmaslik ham qonunga zid.",
+    "mnemonic": "E'tiqod shaklni o'zgartiradi, burchni emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun: muqobil xizmat",
+    "distractor_error": [
+      "burchni bekor qilish",
+      "",
+      "e'tiqodni inkor etish",
+      "burchni pulga almashtirish"
+    ]
+  },
+  {
+    "q": "Chaqiruvga kelmagan yigit tushuntirish berayotib, chaqiruv qog'ozini olmaganini va qonun talabini bilmaganini aytdi. Harbiy komissariat xodimi qanday huquqiy baho beradi?",
+    "opts": [
+      "Javobgarlik faqat qog'oz shaxsan topshirilgan taqdirdagina yuzaga keladi",
+      "Javobgarlik masalasi fuqaroning yoshiga qarab hal qilinadi",
+      "Qonunni bilmaslik javobgarlikdan ozod qilmaydi, fuqaro javob beradi",
+      "Qonunni bilmaslik javobgarlikni butunlay bekor qiladi"
+    ],
+    "correct": 2,
+    "explanation": "Huquqning umumiy qoidasiga ko'ra qonunni bilmaslik javobgarlikdan ozod qilmaydi — qonunlar rasmiy e'lon qilingandan keyin barcha uchun majburiy bo'ladi. Chaqiruv qog'ozini olish tartibi buzilgan bo'lsa, bu alohida tekshiriladi, lekin bilmaslikning o'zi asos bo'la olmaydi.",
+    "mnemonic": "Bilmadim — javobgarlikdan qutqarmaydi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: qonunlarga rioya qilish burchi",
+    "distractor_error": [
+      "shartni noto'g'ri qo'yish",
+      "yoshni asos qilish",
+      "",
+      "bilmaslikni asos qilish"
+    ]
+  },
+  {
+    "q": "Dars davomida o'quvchilar Konstitutsiyada belgilangan fuqarolik burchlari ro'yxatini tuzmoqda. Ular quyidagilarni yozdi: qonunlarga rioya qilish, soliq to'lash, tabiatni asrash, Vatanni himoya qilish. O'quvchilardan biri ro'yxatga yana bittasini qo'shdi. Qaysi band bu ro'yxatga KIRMAYDI?",
+    "opts": [
+      "Atrof-muhitga yetkazilgan zararni qoplash burchi",
+      "Tarixiy va madaniy merosni asrash burchi",
+      "Boshqa fuqarolarning huquqlarini hurmat qilish burchi",
+      "Har bir fuqaroning harbiy kasbni egallash burchi"
+    ],
+    "correct": 3,
+    "explanation": "Konstitutsiya fuqarolarga qonunlarga rioya qilish, soliq to'lash, tabiat va tarixiy merosni asrash, boshqalarning huquqlarini hurmat qilish hamda Vatanni himoya qilish burchlarini yuklaydi. Harbiy KASBNI egallash esa burch emas — bu erkin tanlanadigan kasbiy yo'l; burch harbiy xizmat majburiyatini bajarishdan iborat.",
+    "mnemonic": "Xizmat — burch, harbiy kasb — tanlov.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: fuqarolarning burchlari",
+    "distractor_error": [
+      "haqiqiy burchni inkor etish",
+      "haqiqiy burchni inkor etish",
+      "haqiqiy burchni inkor etish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi doskaga ikkita ibora yozdi: «ta'lim olish» va «Vatanni himoya qilish». O'quvchilardan ularni huquq va burch ustunlariga to'g'ri joylashtirish so'raldi. Qaysi taqsimot to'g'ri?",
+    "opts": [
+      "Ta'lim olish — huquq, Vatanni himoya qilish — burch",
+      "Ikkalasi ham burch — davlat ikkalasini majburiy qilgan",
+      "Ikkalasi ham huquq — fuqaro ikkalasidan ham voz kechishi mumkin",
+      "Ta'lim olish — burch, Vatanni himoya qilish — huquq"
+    ],
+    "correct": 0,
+    "explanation": "Huquq — fuqaro foydalanishi mumkin bo'lgan, ammo majburlanmaydigan imkoniyat; burch — bajarilishi shart bo'lgan majburiyat. Ta'lim olish fuqaroning huquqi (majburiy umumiy o'rta ta'lim alohida masala), Vatanni himoya qilish esa burchdir. Ikkalasini bir toifaga qo'shish yoki o'rnini almashtirish tipik xato hisoblanadi.",
+    "mnemonic": "Huquqdan foydalanasan, burchni bajarasan.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: huquq va burchlar",
+    "distractor_error": [
+      "",
+      "ikkalasini burch deb bilish",
+      "ikkalasini huquq deb bilish",
+      "o'rnini almashtirish"
+    ]
+  },
+  {
+    "q": "Harbiy xizmatchi ijtimoiy tarmoqda o'z qismidagi qurollanish va jangovar navbatchilik tartibi haqida ma'lumot e'lon qilmoqchi bo'ldi. U buni so'z erkinligi huquqi bilan asoslamoqda. Bu holatga qanday huquqiy baho beriladi?",
+    "opts": [
+      "Ma'lumot faqat qism komandiri ruxsati bilan e'lon qilinadi, boshqa cheklov yo'q",
+      "So'z erkinligi davlat va harbiy sirni oshkor qilishga yo'l bermaydi — e'lon taqiqlanadi",
+      "Ma'lumot faqat chet el fuqarolariga yuborilmasa, e'lon qilinishi mumkin",
+      "So'z erkinligi mutlaq huquq — har qanday ma'lumotni e'lon qilish mumkin"
+    ],
+    "correct": 1,
+    "explanation": "So'z erkinligi Konstitutsiyada kafolatlangan, ammo u mutlaq emas: davlat sirini va harbiy sirni oshkor qilish, boshqalarning huquqlariga tajovuz qilish holatlarida cheklanadi. Qurollanish va jangovar navbatchilik ma'lumotlari aynan shu toifaga kiradi, shuning uchun ularni e'lon qilish komandir ruxsati bilan ham mumkin emas.",
+    "mnemonic": "So'z erkin, sir — yopiq.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: so'z erkinligi va uning chegaralari",
+    "distractor_error": [
+      "cheklovni ruxsatga bog'lash",
+      "",
+      "cheklovni manzilga bog'lash",
+      "huquqni mutlaqlashtirish"
+    ]
+  },
+  {
+    "q": "Muddatli xizmatga chaqirilgan yigit harbiy qismda o'ziga nisbatan sud qarorisiz aybdor sifatida munosabatda bo'lishganidan shikoyat qilmoqda. Bu holatda qaysi konstitutsiyaviy tamoyil buzilgan?",
+    "opts": [
+      "Murojaat qilish huquqi — shikoyat ko'rib chiqilishi shart",
+      "Qonun oldida tenglik — bir xil talab va bir xil javobgarlik",
+      "Aybsizlik prezumpsiyasi — aybdorlikni faqat sud belgilaydi",
+      "Shaxsiy hayot daxlsizligi — shaxsiy ma'lumot himoyalanadi"
+    ],
+    "correct": 2,
+    "explanation": "Aybsizlik prezumpsiyasiga ko'ra hech kim sudning qonuniy kuchga kirgan hukmisiz aybdor deb topilmaydi — bu tamoyil harbiy xizmatchilarga ham to'liq tegishli. Tenglik, shaxsiy hayot daxlsizligi va murojaat huquqi ham konstitutsiyaviy tamoyillar, biroq tasvirlangan holatda buzilgani aynan aybsizlik prezumpsiyasidir.",
+    "mnemonic": "Sud hukmisiz — aybdor emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: aybsizlik prezumpsiyasi",
+    "distractor_error": [
+      "boshqa tamoyilni tanlash",
+      "boshqa tamoyilni tanlash",
+      "",
+      "boshqa tamoyilni tanlash"
+    ]
+  },
+  {
+    "q": "O'quvchi shunday savol berdi: «Harbiy xizmatchi ham fuqaro-ku, unda nega u mitingda qatnasha olmaydi yoki siyosiy partiyaga a'zo bo'la olmaydi?» O'qituvchi qanday tushuntirish beradi?",
+    "opts": [
+      "Cheklov faqat harbiy qism hududida amal qiladi, tashqarida barcha huquq tiklanadi",
+      "Harbiy xizmatchi fuqarolik huquqlaridan butunlay mahrum qilinadi",
+      "Harbiy xizmatchining hech qanday huquqi cheklanmaydi, bu noto'g'ri ma'lumot",
+      "Harbiy xizmatchining huquqlari saqlanadi, ayrimlari xizmat xususiyatiga ko'ra cheklanadi"
+    ],
+    "correct": 3,
+    "explanation": "Harbiy xizmatchi fuqarolik huquqlarini saqlab qoladi, biroq harbiy xizmatning o'ziga xosligi tufayli ayrim huquqlar — siyosiy faoliyat, ish tashlash, erkin harakatlanish kabilar — qonun bilan cheklanadi. Bu cheklovlar huquqlardan mahrum qilish emas va faqat qism hududi bilan chegaralanmaydi: ular xizmat davri davomida amal qiladi.",
+    "mnemonic": "Huquq saqlanadi, ayrimi cheklanadi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "«Harbiy xizmatchilar maqomi to'g'risida»gi qonunchilik: huquq va cheklovlar",
+    "distractor_error": [
+      "cheklovni hududga bog'lash",
+      "huquqni butunlay inkor etish",
+      "cheklovni inkor etish",
+      ""
+    ]
+  },
+  {
+    "q": "Harbiy xizmatchi qism komandirining qarori bilan rozi emas va shikoyat qilmoqchi. U shikoyatni to'g'ridan-to'g'ri gazetaga yozishni rejalashtirmoqda. Qonun talabiga ko'ra to'g'ri yo'l qaysi?",
+    "opts": [
+      "Shikoyat belgilangan tartibda, bevosita boshliq orqali yuqoriga beriladi",
+      "Shikoyat faqat ommaviy axborot vositalari orqali beriladi",
+      "Shikoyat berish harbiy xizmatchiga umuman taqiqlanadi",
+      "Shikoyat safdoshlar yig'ilishida ovozga qo'yilib hal qilinadi"
+    ],
+    "correct": 0,
+    "explanation": "Murojaat qilish huquqi harbiy xizmatchida ham bor, ammo u belgilangan tartibda — bevosita boshliq orqali yuqori instansiyaga — amalga oshiriladi. Bu tartib boshqaruv zanjirini saqlaydi va masalani rasmiy tekshirish imkonini beradi. Shikoyatni taqiqlash huquqqa zid, uni ommaviy axborot vositasiga yoki jamoa ovoziga havola qilish esa belgilangan tartibga mos emas.",
+    "mnemonic": "Shikoyat — zanjir bo'ylab yuqoriga.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi: harbiy xizmatchining murojaat qilish tartibi",
+    "distractor_error": [
+      "",
+      "tartibni buzish",
+      "huquqni inkor etish",
+      "tartibni ovozga almashtirish"
+    ]
+  },
+  {
+    "q": "Talaba oliy o'quv yurtida kunduzgi bo'limda o'qiyotgani sababli chaqiruvni kechiktirishni so'ramoqda. Uning sinfdoshi esa «ta'lim olish huquqi bo'lgani uchun harbiy xizmat umuman shart emas» deb hisoblaydi. Qaysi baho to'g'ri?",
+    "opts": [
+      "Ikkalasi ham nohaq — ta'lim chaqiruvga umuman ta'sir qilmaydi",
+      "Talaba haq — ta'lim kechiktirish asosi, lekin burch saqlanib qoladi",
+      "Sinfdosh haq — ta'lim olish burchdan butunlay ozod qiladi",
+      "Ikkalasi ham haq — ta'lim harbiy xizmat majburiyatini bekor qiladi"
+    ],
+    "correct": 1,
+    "explanation": "Ta'lim olish — chaqiruvni belgilangan muddatga kechiktirish uchun qonuniy asos, ammo u harbiy xizmat burchini bekor qilmaydi: o'qish tugagach fuqaro umumiy tartibda chaqiriladi. Ta'limni burchdan ozod qilish asosi deb bilish ham, uning kechiktirish asosi ekanini inkor etish ham xato.",
+    "mnemonic": "Ta'lim kechiktiradi, ozod qilmaydi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun: chaqiruvni kechiktirish",
+    "distractor_error": [
+      "asosni inkor etish",
+      "",
+      "burchni bekor qilish",
+      "burchni bekor qilish"
+    ]
+  },
+  {
+    "q": "Huquq darsida o'quvchilar bir idoraviy hujjat Konstitutsiya normasiga zid ekanini aniqlashdi. Ular qaysi hujjat ustun kuchga ega ekanini belgilashi kerak. To'g'ri javob qaysi?",
+    "opts": [
+      "Masalani faqat hujjatni chiqargan idoraning o'zi hal qiladi",
+      "Idoraviy hujjat — u aniqroq va yangiroq bo'lgani uchun ustun turadi",
+      "Konstitutsiya oliy yuridik kuchga ega — unga zid norma qo'llanilmaydi",
+      "Ikkala hujjat teng kuchga ega — tanlov amaliyotga bog'liq"
+    ],
+    "correct": 2,
+    "explanation": "Konstitutsiya oliy yuridik kuchga ega va bevosita amal qiladi — unga zid keladigan har qanday qonun yoki idoraviy hujjat normasi qo'llanilmaydi. Hujjatning yangiligi yoki aniqligi bu ustunlikni o'zgartirmaydi; masalani hujjatni chiqargan idoraning o'zi hal qilishi esa nazorat tamoyiliga zid.",
+    "mnemonic": "Konstitutsiyaga zid — kuchga ega emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: oliy yuridik kuch",
+    "distractor_error": [
+      "nazoratni idoraga topshirish",
+      "ierarxiyani teskari qo'yish",
+      "",
+      "ierarxiyani inkor etish"
+    ]
+  },
+  {
+    "q": "Maktabda tantanali marosim boshlanib, Davlat madhiyasi yangradi. Bir necha o'quvchi o'tirgan holda gaplashishda davom etdi. CHQBT o'qituvchisi bu holatga qanday huquqiy va tarbiyaviy baho beradi?",
+    "opts": [
+      "Talab faqat harbiy xizmatchilar va davlat xizmatchilariga nisbatan qo'llanadi",
+      "Bu shaxsiy tanlov — davlat ramzlariga munosabat hech qanday talab bilan bog'liq emas",
+      "Bu faqat odob masalasi — huquqiy jihatdan hech qanday talab yo'q",
+      "Davlat ramzlarini hurmat qilish fuqaroning burchi — talab qonunda belgilangan"
+    ],
+    "correct": 3,
+    "explanation": "Davlat ramzlarini — bayroq, gerb va madhiyani — hurmat qilish Konstitutsiyada belgilangan burch bo'lib, u barcha fuqarolarga taalluqli. Bu faqat odob doirasidagi masala emas va harbiy hamda davlat xizmatchilari bilan cheklanmaydi.",
+    "mnemonic": "Ramzga hurmat — burch, odat emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: davlat ramzlariga hurmat",
+    "distractor_error": [
+      "talabni toifa bilan cheklash",
+      "burchni tanlovga aylantirish",
+      "huquqiy talabni inkor etish",
+      ""
+    ]
+  },
+  {
+    "q": "O'quv poligonida mashg'ulot o'tkazgan bo'linma foydalanilgan qadoq, akkumulyator va yonilg'i qoldiqlarini joyida tashlab ketmoqchi. Bo'linma komandiri qanday qaror qabul qiladi va u qaysi burchga asoslanadi?",
+    "opts": [
+      "Qoldiqlar yig'ib olinadi — bu tabiatni asrash burchidan kelib chiqadi",
+      "Qoldiqlar qoldiriladi — poligon hududi tabiat muhofazasiga kirmaydi",
+      "Qoldiqlar yoqib yuboriladi — bu eng tez va qulay usul hisoblanadi",
+      "Qoldiqlar keyingi mashg'ulotgacha joyida qoldiriladi va keyin yig'iladi"
+    ],
+    "correct": 0,
+    "explanation": "Atrof-muhitga ehtiyotkorona munosabatda bo'lish Konstitutsiyada belgilangan burch bo'lib, u harbiy obyektlar hududida ham amal qiladi: harbiy faoliyat ekologik talablardan ozod qilmaydi. Qoldiqlarni yoqish qo'shimcha ifloslanish beradi, keyinga qoldirish esa zararni kuchaytiradi.",
+    "mnemonic": "Poligon ham tabiat — orqangdan tozala.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: atrof-muhitga ehtiyotkor munosabat burchi",
+    "distractor_error": [
+      "",
+      "burchni hududdan chiqarish",
+      "zararni ko'paytirish",
+      "zararni cho'zish"
+    ]
+  },
+  {
+    "q": "Harbiy xizmatni o'tayotgan yigitning ota-onasi qariyalar va yordamga muhtoj. O'quvchi bundan «demak, unga ota-onaga g'amxo'rlik qilish burchi harbiy xizmat burchidan ustun» degan xulosa chiqardi. Bu xulosaga qanday baho beriladi?",
+    "opts": [
+      "Xulosa to'g'ri — oilaviy burch har doim davlat oldidagi burchni bekor qiladi",
+      "Xulosa noto'g'ri — bu ikki burch alohida bo'lib, biri ikkinchisini bekor qilmaydi",
+      "Xulosa to'g'ri — bunday holatda harbiy xizmat umuman qo'llanilmaydi",
+      "Xulosa noto'g'ri — oilaviy burch umuman huquqiy ahamiyatga ega emas"
+    ],
+    "correct": 1,
+    "explanation": "Ota-onaga g'amxo'rlik ham, Vatanni himoya qilish ham Konstitutsiyada belgilangan alohida burchlar — ular bir-birini bekor qilmaydi. Oilaviy og'ir sharoit qonunda belgilangan tartibda chaqiruvni kechiktirish yoki xizmat shartlarini yengillashtirish asosi bo'lishi mumkin, lekin burchni butunlay yo'qotmaydi. Oilaviy burchni huquqiy ahamiyatsiz deb bilish ham xato.",
+    "mnemonic": "Ikki burch — ikkalasi ham o'z o'rnida.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: fuqarolarning burchlari",
+    "distractor_error": [
+      "burchlarni bir-biriga qarshi qo'yish",
+      "",
+      "burchni bekor qilish",
+      "oilaviy burchni inkor etish"
+    ]
+  },
+  {
+    "q": "Harbiy qismda intizom buzgan xizmatchiga nisbatan bir necha askar «o'zimiz jazolaymiz» deb jismoniy ta'sir ko'rsatishni taklif qilmoqda. Komandir bunga qanday huquqiy asos bilan yo'l qo'ymaydi?",
+    "opts": [
+      "Jismoniy ta'sir faqat og'ir intizomiy nuqson uchun qo'llanadi",
+      "Jismoniy ta'sir jamoa qarori bilan rasmiylashtirilsa, qonuniy hisoblanadi",
+      "Hech kim qiynoqqa yoki qadr-qimmatni kamsituvchi muomalaga duchor etilmaydi",
+      "Jismoniy ta'sir faqat komandirning shaxsan o'zi tomonidan qo'llanishi mumkin"
+    ],
+    "correct": 2,
+    "explanation": "Konstitutsiya hech kimni qiynoqqa, zo'ravonlikka yoki qadr-qimmatni kamsituvchi muomalaga duchor etishni taqiqlaydi — bu taqiq harbiy xizmatda ham istisnosiz amal qiladi. Intizomiy javobgarlik faqat nizomda belgilangan choralar bilan, vakolatli shaxs tomonidan qo'llanadi; jamoa qarori yoki nuqsonning og'irligi zo'ravonlikni qonuniylashtirmaydi.",
+    "mnemonic": "Jazo — nizom bo'yicha, qo'l bilan emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: qiynoqqa solish taqiqi",
+    "distractor_error": [
+      "taqiqqa istisno kiritish",
+      "taqiqqa istisno kiritish",
+      "",
+      "taqiqqa istisno kiritish"
+    ]
+  },
+  {
+    "q": "Chaqiruv punktida turli millat va dinga mansub yigitlar yig'ildi. Ulardan biri o'ziga alohida, yengilroq shartlar berilishini talab qilmoqda. Komissiya raisi qaysi konstitutsiyaviy tamoyilga tayanib javob beradi?",
+    "opts": [
+      "Shartlar faqat fuqaroning yashash joyiga qarab belgilanadi",
+      "Shartlarni har bir chaqiruv komissiyasi mustaqil belgilaydi",
+      "Har bir fuqaroga uning kelib chiqishiga qarab alohida shart belgilanadi",
+      "Fuqarolar qonun oldida teng, millati va diniga qarab imtiyoz berilmaydi"
+    ],
+    "correct": 3,
+    "explanation": "Konstitutsiya barcha fuqarolarning jinsi, irqi, millati, tili, dini va ijtimoiy kelib chiqishidan qat'i nazar qonun oldida tengligini kafolatlaydi — shu sababli chaqiruvda ham shu belgilar bo'yicha imtiyoz yoki cheklov qo'llanmaydi. Imtiyozlar faqat qonunda aniq belgilangan asoslar (sog'liq, oilaviy holat, ta'lim) bo'yicha beriladi.",
+    "mnemonic": "Qonun oldida hamma teng.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: fuqarolarning tengligi",
+    "distractor_error": [
+      "asossiz mezon kiritish",
+      "tartibni mahalliylashtirish",
+      "tenglikni buzish",
+      ""
+    ]
+  },
+  {
+    "q": "Bir guruh shaxs mamlakatda konstitutsiyaviy tuzumni zo'rlik yo'li bilan o'zgartirishga chaqiruvchi materiallarni tarqatmoqda. Ular buni «fikr bildirish erkinligi» deb atamoqda. Bu faoliyatga qanday huquqiy baho beriladi?",
+    "opts": [
+      "Bu konstitutsiyaviy tuzumga tajovuz — qonunda taqiqlangan va javobgarlikka olib keladi",
+      "Bu faoliyat faqat urush davrida taqiqlanadi, tinchlikda cheklanmaydi",
+      "Bu fikr erkinligi doirasidagi harakat — hech qanday javobgarlik yuzaga kelmaydi",
+      "Bu faqat axloqiy masala — huquqiy oqibat keltirib chiqarmaydi"
+    ],
+    "correct": 0,
+    "explanation": "Konstitutsiyaviy tuzumni zo'rlik bilan o'zgartirishga chaqirish fikr erkinligi doirasiga kirmaydi: bu davlat suvereniteti va xavfsizligiga tajovuz sifatida qonunda taqiqlangan va javobgarlikka olib keladi. Taqiq doimiy amal qiladi va urush davri bilan cheklanmaydi.",
+    "mnemonic": "Zo'rlikka chaqiriq — erkinlik emas, jinoyat.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: konstitutsiyaviy tuzumni himoya qilish",
+    "distractor_error": [
+      "",
+      "taqiqni davrga bog'lash",
+      "taqiqni erkinlik deb bilish",
+      "huquqiy oqibatni inkor etish"
+    ]
+  },
+  {
+    "q": "Harbiy qismda xizmatchining shaxsiy jomadonini tekshirish zarurati tug'ildi. Bir askar «hech kim menga tegishli narsani ko'ra olmaydi» deb qarshilik ko'rsatmoqda. Komandir qanday tushuntirish beradi?",
+    "opts": [
+      "Tekshiruv faqat askarning yozma roziligi bilan o'tkaziladi",
+      "Daxlsizlik kafolatlanadi, tekshiruv nizom tartibida o'tkaziladi",
+      "Shaxsiy narsalar hech qanday holatda tekshirilmaydi",
+      "Shaxsiy narsalarni istalgan xizmatchi istalgan vaqtda tekshirishi mumkin"
+    ],
+    "correct": 1,
+    "explanation": "Konstitutsiya shaxsiy daxlsizlikni kafolatlaydi, biroq harbiy xizmat sharoitida qurol, o'q-dori va taqiqlangan buyumlar nazorati uchun tekshiruv nizomda belgilangan tartibda, vakolatli shaxs tomonidan o'tkaziladi. Tekshiruvni butunlay inkor etish ham, uni istalgan xizmatchiga yoki faqat rozilikka bog'lash ham nizom talabiga mos emas.",
+    "mnemonic": "Daxlsizlik bor — lekin tartib ham bor.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Ichki xizmat nizomi: ichki tartib va nazorat",
+    "distractor_error": [
+      "tartibni rozilikka bog'lash",
+      "",
+      "nazoratni butunlay inkor etish",
+      "vakolatni cheklamaslik"
+    ]
+  },
+  {
+    "q": "Harbiy xizmatchi maosh olmoqda va undan soliq ushlanayotganini ko'rib, «harbiy xizmatchi davlatga xizmat qilyapti, demak soliqdan ozod» deb hisobladi. Bu fikrga qanday baho beriladi?",
+    "opts": [
+      "Fikr to'g'ri — soliq faqat tadbirkorlik daromadidan olinadi",
+      "Fikr noto'g'ri, lekin harbiy xizmatchiga soliq umuman qo'llanilmaydi",
+      "Fikr noto'g'ri — qonunda belgilangan soliqlarni to'lash barcha uchun burch",
+      "Fikr to'g'ri — harbiy xizmat soliq to'lash burchini almashtiradi"
+    ],
+    "correct": 2,
+    "explanation": "Konstitutsiyaga ko'ra qonunda belgilangan soliq va yig'imlarni to'lash har bir fuqaroning burchi; harbiy xizmatni o'tash bu burchni almashtirmaydi. Ayrim toifalarga imtiyoz berilishi mumkin, ammo bu qonunda alohida belgilanadi va umumiy qoidani bekor qilmaydi.",
+    "mnemonic": "Xizmat ham, soliq ham — ikkalasi burch.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: soliq to'lash burchi",
+    "distractor_error": [
+      "burch doirasini toraytirish",
+      "qoidani noto'g'ri asoslash",
+      "",
+      "burchni almashtirish"
+    ]
+  },
+  {
+    "q": "O'quvchi «Qurolli Kuchlar mamlakat ichidagi siyosiy nizolarni hal qilishda ham qatnashishi kerak» degan fikrni bildirdi. O'qituvchi qonunchilikka tayanib qanday javob beradi?",
+    "opts": [
+      "Fikr noto'g'ri, chunki QK faqat chegara nazoratini amalga oshiradi",
+      "Fikr to'g'ri — QK har qanday ichki nizoda tomon sifatida qatnashadi",
+      "Fikr to'g'ri — QK siyosiy jarayonlarning bevosita ishtirokchisi hisoblanadi",
+      "Fikr noto'g'ri — QK vazifasi mudofaa, u siyosiy kurash quroli emas"
+    ],
+    "correct": 3,
+    "explanation": "Qurolli Kuchlarning vazifasi — davlat suvereniteti, hududiy yaxlitligi va aholining tinch hayotini himoya qilish; ular siyosiy kurash quroli sifatida ishlatilmaydi va siyosiy jarayonlarda tomon bo'lmaydi. QK vazifalarini faqat chegara nazorati bilan cheklash ham noto'g'ri: ularning vazifalari ancha keng.",
+    "mnemonic": "Armiya — mudofaa uchun, siyosat uchun emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "«Mudofaa to'g'risida»gi Qonun: Qurolli Kuchlarning vazifalari",
+    "distractor_error": [
+      "vazifani nohaq toraytirish",
+      "armiyani siyosatga aralashtirish",
+      "armiyani siyosatga aralashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Chaqiruv komissiyasi yigitni ko'rikdan o'tkazib, sog'lig'i bo'yicha xizmatga yaroqsiz deb topdi. Yigitning otasi «bu qaror faqat komissariat xohishiga bog'liq» deb hisoblamoqda. To'g'ri huquqiy izoh qaysi?",
+    "opts": [
+      "Qaror tibbiy ko'rik natijasi va qonuniy mezonlar asosida chiqariladi",
+      "Qaror faqat yigitning o'z arizasiga asosan qabul qilinadi",
+      "Qaror har bir hududda turlicha mezonlar bo'yicha chiqariladi",
+      "Qaror komissariat xodimining shaxsiy bahosiga asoslanadi"
+    ],
+    "correct": 0,
+    "explanation": "Harbiy xizmatga yaroqlilik masalasi tibbiy ko'rik natijalari va qonun hujjatlarida belgilangan yagona mezonlar asosida hal qilinadi; qaror shaxsiy baho, ariza yoki mahalliy amaliyotga bog'liq bo'lmaydi. Shu sababli mezonlar butun mamlakat bo'ylab bir xil qo'llanadi.",
+    "mnemonic": "Yaroqlilik — mezon bo'yicha, xohish bo'yicha emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun: tibbiy ko'rik",
+    "distractor_error": [
+      "",
+      "qarorni arizaga bog'lash",
+      "mezonni mahalliylashtirish",
+      "qarorni shaxsiy bahoga bog'lash"
+    ]
+  },
+  {
+    "q": "Harbiy xizmatga chaqirilgan fuqaro qasamyod qabul qilishdan oldin qismda qurol bilan jangovar navbatchilikka qo'yildi. Bu holat qonun talabiga mos keladimi?",
+    "opts": [
+      "Ha, qasamyod xizmat oxirida qabul qilinadi",
+      "Yo'q, qasamyod qabul qilingunga qadar bunday vazifa yuklatilmaydi",
+      "Yo'q, chunki qasamyod faqat ofitserlar tomonidan qabul qilinadi",
+      "Ha, qasamyod faqat rasmiy marosim, u vazifaga ta'sir qilmaydi"
+    ],
+    "correct": 1,
+    "explanation": "Harbiy qasamyod — xizmatchining Vatanga sodiqlik haqidagi rasmiy majburiyati; u qabul qilingunga qadar xizmatchiga qurol biriktirilib, jangovar vazifa va navbatchilik yuklatilmaydi. Qasamyod xizmat boshida, belgilangan tayyorgarlikdan so'ng qabul qilinadi va u barcha harbiy xizmatchilarga taalluqli.",
+    "mnemonic": "Qasamyodsiz — qurol ham, navbatchilik ham yo'q.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Ichki xizmat nizomi: Harbiy qasamyod va uni qabul qilish tartibi",
+    "distractor_error": [
+      "muddatni noto'g'ri belgilash",
+      "",
+      "qasamyodni toifa bilan cheklash",
+      "qasamyodni rasmiyatchilik deb bilish"
+    ]
+  },
+  {
+    "q": "Zaxiradagi fuqaro yashash joyini boshqa viloyatga o'zgartirdi va harbiy hisobga bog'liq hech narsa qilmadi, chunki «xizmatni o'tab bo'lganman» deb hisobladi. Qonun talabi qanday?",
+    "opts": [
+      "Faqat yangi ish joyiga xabar berish yetarli hisoblanadi",
+      "Hisobga oid o'zgarish faqat harbiy yig'in oldidan rasmiylashtiriladi",
+      "Fuqaro belgilangan muddatda harbiy hisob bo'yicha ro'yxatdan o'tishi shart",
+      "Hech narsa talab qilinmaydi — xizmatni o'tagan fuqaro hisobdan chiqariladi"
+    ],
+    "correct": 2,
+    "explanation": "Zaxiradagi fuqaro harbiy hisobda turadi va yashash joyini o'zgartirganda belgilangan muddatda yangi joydagi harbiy komissariatda ro'yxatdan o'tishi shart — bu safarbarlik tayyorgarligining asosidir. Xizmatni o'tash hisobdan chiqarish demak emas, ish joyiga xabar berish esa harbiy hisobni almashtirmaydi.",
+    "mnemonic": "Joying o'zgardi — hisobing ham o'zgarsin.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun: harbiy hisob",
+    "distractor_error": [
+      "hisobni ish joyiga almashtirish",
+      "muddatni siljitish",
+      "",
+      "hisobdan chiqarilgan deb bilish"
+    ]
+  },
+  {
+    "q": "O'quvchi Konstitutsiya matnida «hech kim fuqarolikdan yoki fuqarolikni o'zgartirish huquqidan mahrum etilishi mumkin emas» degan qoidani o'qidi va bu qoida harbiy xizmatchilarga tegishlimi, deb so'radi. To'g'ri javob qaysi?",
+    "opts": [
+      "Qoida harbiy xizmatchilarga xizmat davrida umuman qo'llanilmaydi",
+      "Qoida faqat muddatli xizmatchilarga nisbatan amal qiladi",
+      "Qoida faqat zaxiraga o'tgandan keyin kuchga kiradi",
+      "Qoida barcha fuqarolarga, jumladan harbiy xizmatchilarga ham tegishli"
+    ],
+    "correct": 3,
+    "explanation": "Fuqarolikdan mahrum qilish taqiqi umumiy konstitutsiyaviy kafolat bo'lib, u hech qanday toifa uchun to'xtatilmaydi — harbiy xizmat ham bu kafolatni cheklamaydi. Xizmat davrida ayrim huquqlar cheklanishi mumkin, biroq fuqarolik masalasi ular qatoriga kirmaydi.",
+    "mnemonic": "Fuqarolik — xizmat davrida ham daxlsiz.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Konstitutsiyasi: fuqarolik kafolatlari",
+    "distractor_error": [
+      "kafolatni to'xtatish",
+      "kafolatni toifaga bog'lash",
+      "kafolatni vaqtga bog'lash",
+      ""
+    ]
+  },
+  {
+    "q": "Seminarda o'qituvchi Mudofaa doktrinasining mohiyatini tushuntirib, davlatning boshqa mamlakatlarga nisbatan hududiy da'vosi yo'qligini ta'kidladi. O'quvchi «unda armiya nima uchun kerak» deb so'radi. To'g'ri javob qaysi?",
+    "opts": [
+      "Armiya mudofaa xarakteriga ega, u tajovuzni qaytarish uchun saqlanadi",
+      "Armiya asosan xalqaro mashg'ulotlarda qatnashish uchun kerak",
+      "Armiya boshqa davlatlarga bosim o'tkazish vositasi sifatida saqlanadi",
+      "Armiya faqat ichki tartibni saqlash uchun tashkil etilgan"
+    ],
+    "correct": 0,
+    "explanation": "Mudofaa doktrinasi mudofaa xarakteriga ega: davlat boshqa mamlakatlarni dushman deb bilmaydi va hududiy da'vo qilmaydi, Qurolli Kuchlar esa mumkin bo'lgan tajovuzni qaytarish uchun saqlanadi. Armiyani bosim vositasi deb bilish doktrina mohiyatiga zid, ichki tartib va xalqaro mashg'ulotlar esa uning asosiy vazifasi emas.",
+    "mnemonic": "Da'vo yo'q — himoya bor.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Mudofaa doktrinasi: mudofaa xarakteri",
+    "distractor_error": [
+      "",
+      "vazifani ikkinchi darajaliga almashtirish",
+      "armiyani bosim vositasi deb bilish",
+      "vazifani ichki tartibga toraytirish"
+    ]
+  },
+  {
+    "q": "Xalqaro anjumanda O'zbekiston vakiliga qo'shni davlat hududida qo'shma harbiy baza ochish taklif qilindi. Doktrinaga ko'ra vakil qanday javob berishi kerak?",
+    "opts": [
+      "Taklif qabul qilinadi — bu mintaqaviy xavfsizlikni mustahkamlaydi",
+      "Taklif rad etiladi — hududda chet el harbiy bazalari joylashtirilmaydi",
+      "Taklif faqat yozgi mavsum uchun vaqtincha qabul qilinadi",
+      "Taklif qabul qilinadi, agar baza faqat mashg'ulot uchun ishlatilsa"
+    ],
+    "correct": 1,
+    "explanation": "Mudofaa doktrinasiga ko'ra O'zbekiston hududida chet el harbiy bazalari va obyektlari joylashtirilmaydi, davlat harbiy-siyosiy bloklarga qo'shilmaydi. Bu tamoyil vaqtinchalik yoki mashg'ulot maqsadidagi istisnolarni ham nazarda tutmaydi.",
+    "mnemonic": "Chet el bazasi — yo'q, istisnosiz.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "O'zbekiston Respublikasi Mudofaa doktrinasi: chet el harbiy bazalari",
+    "distractor_error": [
+      "tamoyilni buzish",
+      "",
+      "tamoyilga vaqtinchalik istisno",
+      "tamoyilga maqsadli istisno"
+    ]
+  },
+  {
+    "q": "Munozarada bir ishtirokchi «zamonaviy dunyoda xavfsizlikni faqat yadro quroliga ega bo'lish kafolatlaydi» dedi. Doktrinaga tayangan holda qanday javob beriladi?",
+    "opts": [
+      "Fikr doktrinaga mos — yadro quroliga ega bo'lish maqsad qilib qo'yilgan",
+      "Fikr doktrinaga qisman mos — yadro quroli zaxirada saqlanadi",
+      "Fikr doktrinaga zid — davlat yadrosiz hududni qo'llab-quvvatlaydi",
+      "Fikr doktrinaga zid, chunki yadro quroli faqat urush davrida taqiqlanadi"
+    ],
+    "correct": 2,
+    "explanation": "O'zbekiston ommaviy qirg'in qurolini ishlab chiqarish va joylashtirishga yo'l qo'ymaslik tamoyiliga amal qiladi hamda Markaziy Osiyoda yadro quroliga erkin hududni qo'llab-quvvatlaydi. Shu sababli yadro quroliga ega bo'lish maqsad qilib qo'yilmaydi va bu taqiq davrga bog'liq emas.",
+    "mnemonic": "Yadrosiz hudud — doktrinaning tamoyili.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "O'zbekiston Respublikasi Mudofaa doktrinasi: ommaviy qirg'in qurolidan xoli hudud",
+    "distractor_error": [
+      "tamoyilni teskari qo'yish",
+      "tamoyilga yarim istisno",
+      "",
+      "taqiqni davrga bog'lash"
+    ]
+  },
+  {
+    "q": "Chet el vakili O'zbekiston harbiy xizmatchilarini boshqa mamlakat hududidagi mojaroga jalb qilishni so'radi. Doktrina normalariga ko'ra qanday javob beriladi?",
+    "opts": [
+      "So'rov faqat harbiy blok a'zolari uchun qondiriladi",
+      "So'rov qondiriladi, agar mojaro qo'shni davlatda bo'lsa",
+      "So'rov qondiriladi, chunki bu xalqaro hamkorlik shakli hisoblanadi",
+      "So'rov rad etiladi — xizmatchilar chet el mojarolariga jalb qilinmaydi"
+    ],
+    "correct": 3,
+    "explanation": "Doktrinaga ko'ra O'zbekiston harbiy xizmatchilari boshqa davlatlar hududidagi harbiy mojarolarda ishtirok etmaydi; davlat harbiy bloklarga a'zo ham bo'lmaydi. Xalqaro hamkorlik boshqa shakllarda — tayyorgarlik, tajriba almashish, tinchlikparvar tashabbuslar orqali amalga oshiriladi.",
+    "mnemonic": "Chet el mojarosiga askar yuborilmaydi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "O'zbekiston Respublikasi Mudofaa doktrinasi: xizmatchilarni chet elga jalb qilmaslik",
+    "distractor_error": [
+      "tamoyilni blokka bog'lash",
+      "tamoyilga hududiy istisno",
+      "tamoyilni hamkorlik deb atash",
+      ""
+    ]
+  },
+  {
+    "q": "Byudjetni muhokama qilishda bir mutaxassis harbiy xarajatlarni cheksiz oshirishni, boshqasi esa ularni butunlay qisqartirishni taklif qildi. Doktrinaning qaysi tamoyili bu ikki chekka orasidagi to'g'ri yo'nalishni belgilaydi?",
+    "opts": [
+      "Mudofaa yetarliligi — kuchlar tahdidga mos, zarur darajada saqlanadi",
+      "Harbiy ustunlik — kuchlar qo'shnilarnikidan har doim ko'p bo'lishi shart",
+      "Tejamkorlik — mudofaa xarajatlari eng past darajada ushlab turiladi",
+      "Tenglik — xarajatlar barcha davlatlarda bir xil bo'lishi kerak"
+    ],
+    "correct": 0,
+    "explanation": "Doktrinaning mudofaa yetarliligi tamoyiliga ko'ra Qurolli Kuchlarning tarkibi va imkoniyatlari mavjud tahdidlarga mos, mudofaani ta'minlash uchun zarur darajada saqlanadi — na ortiqcha, na kam. Harbiy ustunlikka intilish qurollanish poygasiga olib keladi, xarajatlarni eng past darajaga tushirish esa mudofaa qobiliyatini yo'qotadi.",
+    "mnemonic": "Yetarli — ortiq ham emas, kam ham emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "O'zbekiston Respublikasi Mudofaa doktrinasi: mudofaa yetarliligi tamoyili",
+    "distractor_error": [
+      "",
+      "qurollanish poygasiga o'tish",
+      "mudofaani zaiflashtirish",
+      "asossiz mezon"
+    ]
+  },
+  {
+    "q": "Chegara yaqinida qurolli guruh hududga kirib keldi. Bir tahlilchi «javob qaytarish har qanday holatda ham xalqaro huquqni buzish bo'ladi» deb hisoblamoqda. Doktrina va xalqaro huquqqa ko'ra qanday baho beriladi?",
+    "opts": [
+      "Tahlil noto'g'ri — kuch ishlatish istalgan siyosiy maqsadda mumkin",
+      "Tahlil noto'g'ri — davlat tajovuzni qaytarish uchun kuch ishlatishga haqli",
+      "Tahlil to'g'ri — javob faqat xalqaro tashkilot ruxsati bilan mumkin",
+      "Tahlil to'g'ri — kuch ishlatish har qanday holatda taqiqlangan"
+    ],
+    "correct": 1,
+    "explanation": "Xalqaro huquq davlatning o'zini himoya qilish huquqini tan oladi: tajovuz sodir bo'lganda davlat uni qaytarish uchun kuch ishlatishga haqli. Kuch ishlatishning taqiqi tajovuzkor, ya'ni siyosiy maqsadlarda hujum qilish holatlariga tegishli. Har qanday javobni taqiqlash yoki uni tashkilot ruxsatiga bog'lash himoya huquqini bekor qiladi.",
+    "mnemonic": "Tajovuzga javob — huquq, tajovuzning o'zi — jinoyat.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "O'zbekiston Respublikasi Mudofaa doktrinasi: kuch ishlatish asoslari",
+    "distractor_error": [
+      "tajovuzni oqlash",
+      "",
+      "himoyani ruxsatga bog'lash",
+      "himoya huquqini inkor etish"
+    ]
+  },
+  {
+    "q": "Harbiy qism yaqinidagi aholi punktida odamlar qismda qanday mashg'ulotlar o'tkazilishi va ular xavfsizmi degan savol bilan murojaat qilishdi. Doktrinaning qaysi tamoyili bunday murojaatga javob berishni talab qiladi?",
+    "opts": [
+      "Doimiy shaylik — murojaatlar xizmatga xalaqit bermasligi kerak",
+      "Harbiy sirni saqlash — hech qanday ma'lumot berilmaydi",
+      "Mudofaa sohasidagi oshkoralik — jamoatchilikka tegishli ma'lumot beriladi",
+      "Markazlashgan boshqaruv — javobni faqat vazirlik beradi"
+    ],
+    "correct": 2,
+    "explanation": "Doktrina mudofaa sohasida oshkoralik tamoyilini belgilaydi: davlat harbiy siyosati va faoliyati to'g'risida jamoatchilikni xabardor qilib boradi, albatta davlat va harbiy sir doirasidan chiqmagan holda. Shuning uchun aholining xavfsizlikka oid murojaatlariga javob beriladi, ular butunlay rad etilmaydi.",
+    "mnemonic": "Sir — yopiq, siyosat — oshkor.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Mudofaa doktrinasi: oshkoralik tamoyili",
+    "distractor_error": [
+      "tamoyilni almashtirish",
+      "oshkoralikni butunlay inkor etish",
+      "",
+      "tamoyilni almashtirish"
+    ]
+  },
+  {
+    "q": "Ikki qo'shni davlat o'rtasida suv resurslaridan foydalanish yuzasidan kelishmovchilik chiqdi. Bir ekspert masalani harbiy kuch bilan hal qilishni taklif qilmoqda. Doktrina qanday yo'lni belgilaydi?",
+    "opts": [
+      "Nizolar chegarada qo'shin to'plash orqali hal qilinadi",
+      "Nizolar uchinchi davlat harbiy yordami bilan hal qilinadi",
+      "Nizolar hal qilinmaydi, holat o'zgarishi kutiladi",
+      "Nizolar muzokara va tinch vositalar bilan hal qilinadi"
+    ],
+    "correct": 3,
+    "explanation": "Doktrinaga ko'ra davlatlararo nizolar, jumladan resurslarga oid masalalar muzokaralar va boshqa tinch vositalar orqali hal qilinadi — harbiy kuch bunday masalalarni hal qilish vositasi emas. Chegarada qo'shin to'plash keskinlikni oshiradi, uchinchi davlat harbiy yordamiga murojaat esa bloklarga qo'shilmaslik tamoyiliga zid.",
+    "mnemonic": "Nizo — muzokara stolida.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Mudofaa doktrinasi: nizolarni tinch yo'l bilan hal qilish",
+    "distractor_error": [
+      "kuch namoyishiga o'tish",
+      "tashqi harbiy aralashuv",
+      "harakatsizlik",
+      ""
+    ]
+  },
+  {
+    "q": "Tahlil guruhi zamonaviy tahdidlarni sanab chiqmoqda: terrorchilik, diniy ekstremizm, uyushgan jinoyatchilik, giyohvand moddalar savdosi. Guruh rahbari ro'yxatga yana bitta zamonaviy tahdidni qo'shishni so'radi. Qaysi javob to'g'ri?",
+    "opts": [
+      "Axborot makonidagi tahdidlar va kiberhujumlar",
+      "Harbiy parad va tantanalarning kamayishi",
+      "An'anaviy dala janglarining ko'payishi",
+      "Qurol-yarog' ishlab chiqarishning qisqarishi"
+    ],
+    "correct": 0,
+    "explanation": "Doktrina zamonaviy tahdidlar qatoriga terrorchilik, ekstremizm, uyushgan jinoyatchilik va giyohvand moddalar savdosi bilan bir qatorda axborot makonidagi tahdidlar hamda kiberhujumlarni ham kiritadi — bugungi qarama-qarshilik ko'p hollarda axborot maydonida boshlanadi. Qolgan variantlar tahdid emas, balki mavzuga aloqasiz hodisalardir.",
+    "mnemonic": "Bugungi front — axborot maydonida ham.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Mudofaa doktrinasi: zamonaviy tahdidlar",
+    "distractor_error": [
+      "",
+      "tahdid emas",
+      "tahdid emas",
+      "tahdid emas"
+    ]
+  },
+  {
+    "q": "Zavod rahbari «mudofaa masalasi faqat armiyaning ishi, korxonaning bunga aloqasi yo'q» deb hisoblamoqda. Doktrinaga tayanib qanday tushuntirish beriladi?",
+    "opts": [
+      "Rahbar haq — mudofaa faqat Qurolli Kuchlar zimmasida",
+      "Rahbar nohaq — mudofaa qobiliyati iqtisodiyot va aholining tayyorligiga ham bog'liq",
+      "Rahbar haq — korxonalar faqat urush e'lon qilingandan keyin jalb qilinadi",
+      "Rahbar nohaq, chunki korxonalar Qurolli Kuchlar tarkibiga kiritilgan"
+    ],
+    "correct": 1,
+    "explanation": "Mudofaa qobiliyati faqat armiya bilan belgilanmaydi: unga iqtisodiyotning safarbarlik tayyorgarligi, aholining himoyaga tayyorligi va davlat boshqaruvining barqarorligi ham kiradi. Korxonalar tinchlik davridayoq safarbarlik topshiriqlari doirasida tayyorgarlik ko'radi, biroq ular Qurolli Kuchlar tarkibiga kirmaydi.",
+    "mnemonic": "Mudofaa — armiya + iqtisod + aholi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "O'zbekiston Respublikasi Mudofaa doktrinasi: mudofaa qobiliyatining tarkibiy qismlari",
+    "distractor_error": [
+      "mudofaani armiyaga toraytirish",
+      "",
+      "tayyorgarlikni urush davriga surish",
+      "tuzilmani noto'g'ri ko'rsatish"
+    ]
+  },
+  {
+    "q": "Qism komandiri xizmatchilarga safarbarlik tayyorgarligi nima uchun tinchlik davrida ham olib borilishini tushuntirmoqda. Qaysi izoh doktrina mantiqiga mos keladi?",
+    "opts": [
+      "Safarbarlik tayyorgarligi faqat urush boshlangandan keyin boshlanadi",
+      "Safarbarlik tayyorgarligi — bu faqat hujjatlarni rasmiylashtirish jarayoni",
+      "Tinchlikda tayyorlangan tizim urush boshlanganda tez ishga tushadi",
+      "Safarbarlik tayyorgarligi faqat harbiy qismlarga tegishli masala"
+    ],
+    "correct": 2,
+    "explanation": "Safarbarlik tayyorgarligining butun ma'nosi — tizimni oldindan tayyorlab qo'yish: hisob yuritish, zaxiralarni shakllantirish va vazifalarni oldindan taqsimlash urush boshlanganda vaqt yutish imkonini beradi. Uni urush boshlangandan keyinga qoldirish tayyorgarlikni ma'nosiz qiladi; bu ish faqat harbiy qismlar bilan ham cheklanmaydi.",
+    "mnemonic": "Safarbarlikka tinchlikda tayyorlan.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Mudofaa to'g'risida»gi Qonun: safarbarlik tayyorgarligi",
+    "distractor_error": [
+      "tayyorgarlikni kechiktirish",
+      "mazmunini toraytirish",
+      "",
+      "doirasini toraytirish"
+    ]
+  },
+  {
+    "q": "Xalqaro tinchlikparvar mashqda O'zbekiston harbiy xizmatchilariga boshqa davlat qo'shinlari bilan birgalikda uchinchi mamlakatga qarshi harakat qilish taklif qilindi. Guruh rahbari doktrinaga ko'ra bu taklifni qanday baholaydi?",
+    "opts": [
+      "Taklif qabul qilinadi, agar mashq boshqa qit'ada o'tkazilsa",
+      "Taklif faqat kuzatuvchi maqomida qabul qilinadi va keyin bekor qilinadi",
+      "Taklif qabul qilinadi — bu mashq doirasidagi oddiy hamkorlik",
+      "Taklif doktrinaga zid — davlat uchinchi mamlakatga qarshi harakatda qatnashmaydi"
+    ],
+    "correct": 3,
+    "explanation": "Doktrina davlatning hech bir mamlakatga qarshi qaratilgan harbiy harakatda qatnashmasligini belgilaydi; xalqaro hamkorlik faqat tinchlik, ishonch va tajriba almashishga qaratilgan bo'ladi. Mashq doirasi yoki uning geografiyasi bu tamoyilga istisno bera olmaydi.",
+    "mnemonic": "Hamkorlik bor — uchinchiga qarshi ittifoq yo'q.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "O'zbekiston Respublikasi Mudofaa doktrinasi: xalqaro harbiy hamkorlik chegaralari",
+    "distractor_error": [
+      "geografik istisno",
+      "shartli istisno",
+      "tamoyilni buzish",
+      ""
+    ]
+  },
+  {
+    "q": "O'quvchi Mudofaa doktrinasini «shunchaki tavsiyanoma, majburiy kuchi yo'q hujjat» deb atadi. O'qituvchi qanday aniqlik kiritadi?",
+    "opts": [
+      "Doktrina qonun bilan tasdiqlangan hujjat — uning normalari majburiy",
+      "Doktrinaning majburiyligi har yili qayta ko'rib chiqiladi",
+      "O'quvchi haq — doktrina ilmiy tavsiyalar to'plami hisoblanadi",
+      "O'quvchi haq — doktrina faqat harbiylar uchun ichki qo'llanma"
+    ],
+    "correct": 0,
+    "explanation": "Mudofaa doktrinasi qonun bilan tasdiqlangan rasmiy hujjat bo'lib, mamlakat harbiy siyosatining asosiy yo'nalishlarini belgilaydi va uning normalari davlat organlari uchun majburiydir. Uni tavsiyanoma yoki ichki qo'llanma deb bilish hujjatning huquqiy maqomini pasaytiradi.",
+    "mnemonic": "Doktrina — qonun bilan tasdiqlangan.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Mudofaa doktrinasi: huquqiy maqom",
+    "distractor_error": [
+      "",
+      "majburiylikni shartli qilish",
+      "maqomni pasaytirish",
+      "doirasini toraytirish"
+    ]
+  },
+  {
+    "q": "Dars davomida o'quvchilar «harbiy tajovuz» tushunchasini muhokama qilmoqda. Ular quyidagi holatlarni sanadi: chegarani qurolli kuch bilan buzib kirish, hududni bosib olish, boshqa davlat hududidan hujum uyushtirish. Bu ro'yxatga qaysi holat KIRMAYDI?",
+    "opts": [
+      "Yollanma qurolli guruhlarni hududga yuborish",
+      "Chegara yaqinida qo'shma tinchlikparvar mashq o'tkazish",
+      "Portlarni va aloqa yo'llarini qurolli kuch bilan to'sib qo'yish",
+      "Boshqa davlat hududiga havo hujumini uyushtirish"
+    ],
+    "correct": 1,
+    "explanation": "Tajovuz — bir davlatning boshqa davlat suvereniteti va hududiy yaxlitligiga qarshi qurolli kuch ishlatishi: hududga bostirib kirish, bosib olish, havo hujumi, portlarni to'sib qo'yish, yollanma guruhlarni yuborish shunga kiradi. Ochiq e'lon qilingan qo'shma tinchlikparvar mashq esa qurolli kuch ishlatish emas va tajovuz belgisiga ega emas.",
+    "mnemonic": "Tajovuz — kuch bilan; mashq — kelishuv bilan.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "O'zbekiston Respublikasi Mudofaa doktrinasi: harbiy tajovuz tushunchasi",
+    "distractor_error": [
+      "tajovuz belgisini inkor etish",
+      "",
+      "tajovuz belgisini inkor etish",
+      "tajovuz belgisini inkor etish"
+    ]
+  },
+  {
+    "q": "Komandir shaxsiy tarkibga Qurolli Kuchlarning tinchlik davridagi vazifalarini tushuntirmoqda. U «tinchlikda ham armiyaning aniq vazifasi bor» deb ta'kidladi. Qaysi javob tinchlik davri vazifasini to'g'ri ifodalaydi?",
+    "opts": [
+      "Faqat harbiy paradlarga tayyorgarlik ko'rish",
+      "Boshqa davlat hududida harbiy mavjudlikni ta'minlash",
+      "Jangovar tayyorgarlikni saqlash va hududni nazorat qilish",
+      "Ichki siyosiy jarayonlarni nazorat qilib borish"
+    ],
+    "correct": 2,
+    "explanation": "Tinchlik davrida Qurolli Kuchlar jangovar shaylik va tayyorgarlikni saqlaydi, havo makoni va hududni nazorat qiladi, tahdidlarni oldindan aniqlash uchun kuzatuv olib boradi. Chet elda harbiy mavjudlik va ichki siyosatni nazorat qilish doktrinaga zid, paradlar esa vazifa emas, tantanali marosim.",
+    "mnemonic": "Tinchlikda ham — shaylik va nazorat.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Mudofaa to'g'risida»gi Qonun: Qurolli Kuchlarning tinchlik davridagi vazifalari",
+    "distractor_error": [
+      "marosimni vazifa deb bilish",
+      "doktrinaga zid vazifa",
+      "",
+      "doktrinaga zid vazifa"
+    ]
+  },
+  {
+    "q": "Xalqaro tashkilot vakili O'zbekistonning harbiy siyosati boshqa davlatlar uchun tahdid tug'dirishi mumkinligini aytdi. Doktrinaning qaysi qoidasiga tayanib javob beriladi?",
+    "opts": [
+      "Davlat harbiy siyosati qo'shnilar reaksiyasiga qarab o'zgartiriladi",
+      "Davlat harbiy siyosati faqat ichki hujjat bo'lib, izohlanmaydi",
+      "Davlat harbiy siyosati harbiy blok manfaatlariga bo'ysunadi",
+      "Davlat harbiy siyosati hech bir mamlakatga qarshi qaratilmagan"
+    ],
+    "correct": 3,
+    "explanation": "Doktrinaning asosiy qoidalaridan biri — davlatning harbiy siyosati mudofaa xarakteriga ega bo'lib, hech bir mamlakatga qarshi qaratilmaganligi; davlat hech kimni dushman deb bilmaydi. Siyosatni tashqi reaksiyaga moslash yoki blok manfaatiga bo'ysundirish mustaqil tashqi siyosat tamoyiliga zid.",
+    "mnemonic": "Hech kimga qarshi emas — hammaga ochiq.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Mudofaa doktrinasi: asosiy qoidalar",
+    "distractor_error": [
+      "siyosatni tashqi bosimga bog'lash",
+      "izohlashdan bosh tortish",
+      "mustaqillikni yo'qotish",
+      ""
+    ]
+  },
+  {
+    "q": "Ikki o'quvchi bahslashmoqda: biri «doktrina faqat armiya haqidagi hujjat», ikkinchisi «unda fuqarolarga ham tegishli qoidalar bor» deydi. Kim haq va nima uchun?",
+    "opts": [
+      "Ikkinchisi haq — doktrinada aholini himoyaga tayyorlash masalalari ham bor",
+      "Birinchisi haq — fuqarolarga oid qoidalar boshqa hujjatlarda beriladi",
+      "Birinchisi haq — hujjat faqat harbiy tuzilmalar faoliyatini belgilaydi",
+      "Ikkalasi ham nohaq — doktrina faqat xalqaro munosabatlarga oid"
+    ],
+    "correct": 0,
+    "explanation": "Doktrina harbiy tuzilmalar bilan cheklanmaydi: unda aholini va hududni himoyaga tayyorlash, vatanparvarlik tarbiyasi, iqtisodiyotning safarbarlik tayyorgarligi kabi fuqarolarga bevosita tegishli masalalar ham qamrab olinadi. Shu sababli hujjatni faqat armiya yoki faqat xalqaro munosabatlar doirasiga qamash noto'g'ri.",
+    "mnemonic": "Doktrina — armiya uchun ham, xalq uchun ham.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "O'zbekiston Respublikasi Mudofaa doktrinasi: qamrovi",
+    "distractor_error": [
+      "",
+      "qamrovni toraytirish",
+      "qamrovni toraytirish",
+      "qamrovni noto'g'ri belgilash"
+    ]
+  },
+  {
+    "q": "Harbiy-vatanparvarlik tarbiyasi bo'yicha yig'ilishda bir ishtirokchi «bu ish faqat maktab CHQBT o'qituvchisining zimmasida» dedi. Doktrina va qonunchilikka ko'ra qanday tushuntirish beriladi?",
+    "opts": [
+      "Fikr to'g'ri — mas'uliyat butunlay fan o'qituvchisiga yuklatilgan",
+      "Fikr noto'g'ri — bu vazifa davlat organlari va jamoat tuzilmalari zimmasida ham",
+      "Fikr to'g'ri — boshqa tuzilmalar faqat moliyaviy yordam beradi",
+      "Fikr noto'g'ri — vazifa faqat Mudofaa vazirligiga yuklatilgan"
+    ],
+    "correct": 1,
+    "explanation": "Yoshlarni harbiy-vatanparvarlik ruhida tarbiyalash butun davlat tizimi vazifasi: unda vazirliklar, idoralar, mahalliy hokimiyat organlari, ta'lim muassasalari va jamoat tashkilotlari ishtirok etadi. Mas'uliyatni bitta o'qituvchiga yoki bitta vazirlikka yuklash bu vazifaning miqyosiga mos kelmaydi.",
+    "mnemonic": "Vatanparvarlik tarbiyasi — hammaning ishi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Mudofaa to'g'risida»gi Qonun va Mudofaa doktrinasi: vatanparvarlik tarbiyasi",
+    "distractor_error": [
+      "mas'uliyatni bitta shaxsga yuklash",
+      "",
+      "rolni moliyaga toraytirish",
+      "mas'uliyatni bitta idoraga yuklash"
+    ]
+  }
+]

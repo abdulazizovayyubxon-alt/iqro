@@ -1,0 +1,222 @@
+[
+  {
+    "q": "O'qituvchi avtomatni ajratish usulini o'quvchilarga bir marta, oddiy tezlikda ko'rsatdi va darhol mustaqil bajarishga o'tkazdi. O'quvchilarning ko'pchiligi qadamlarni eslay olmadi. Amaliy usulni namoyish qilish qanday ketma-ketlikda olib boriladi?",
+    "opts": [
+      "Faqat yaxlit ko'rinishda, ammo bir necha marta takrorlab",
+      "Faqat elementlarga bo'lib, yaxlit ko'rsatishga ehtiyoj bo'lmaydi",
+      "Avval yaxlit, so'ng elementlarga bo'lib sekin, oxirida yana yaxlit",
+      "Avval elementlarga bo'lib sekin, so'ng yaxlit, oxirida yana elementlarga bo'lib"
+    ],
+    "correct": 2,
+    "explanation": "Birinchi yaxlit namoyish o'quvchida harakatning umumiy tasvirini hosil qiladi va u nimaga erishishi kerakligini ko'radi. Keyin sekin, elementlarga bo'lib ko'rsatish har bir qadamni tushunish imkonini beradi, yakuniy yaxlit namoyish esa elementlarni yagona ravon harakatga bog'laydi.",
+    "mnemonic": "Yaxlit, bo'lib, yana yaxlit.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "CHQBT o'qitish metodikasi: amaliy usulni namoyish qilish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "harakat qadamlarini tahlil qilish bosqichini tushirib qoldirish",
+      "yaxlit tasavvur hosil qilish bosqichini butunlay inkor qilish",
+      "",
+      "umumiy tasavvur bosqichini oxiriga surib, ketma-ketlikni buzish"
+    ]
+  },
+  {
+    "q": "O'quvchi normativni belgilangan vaqtdan tezroq bajardi, ammo qurolni yig'ishda bitta qismni noto'g'ri o'rnatdi. O'qituvchi unga faqat vaqtga qarab yuqori baho qo'ydi. Normativ bajarilishi qanday mezonlar bo'yicha baholanadi?",
+    "opts": [
+      "Sarflangan vaqt hisobga olinib, xatolar keyin tuzatiladi",
+      "Bajarish to'g'riligi hisobga olinib, vaqt cheklanmaydi",
+      "Urinishlar soni hisobga olinib, natija ikkinchi darajali",
+      "Vaqt va bajarishning to'g'riligi birgalikda hisobga olinadi"
+    ],
+    "correct": 3,
+    "explanation": "Normativ ikki talabni bir vaqtda qo'yadi: harakat belgilangan vaqt ichida va texnik jihatdan to'g'ri bajarilishi kerak. Qurol noto'g'ri yig'ilgan bo'lsa, u ishlamaydi va tezlikning hech qanday qiymati qolmaydi — shuning uchun xato baholashda vaqtdan ustun turadi.",
+    "mnemonic": "Tez bo'lsin, lekin avval to'g'ri bo'lsin.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "CHQBT o'qitish metodikasi: normativlarni baholash",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "texnik xatoni e'tiborsiz qoldirib, faqat tezlikni baholash",
+      "vaqt talabini butunlay olib tashlab, normativ mohiyatini yo'qotish",
+      "natija o'rniga jarayon ko'rsatkichini baholash",
+      ""
+    ]
+  },
+  {
+    "q": "O'quvchilar avtomatni ajratishni bir marta to'g'ri bajardi va o'qituvchi mavzuni o'zlashtirilgan deb hisobladi. Bir oydan keyin ular harakatni eslay olmadi va yana boshidan o'rgatishga to'g'ri keldi. Ko'nikmani malakaga aylantirish uchun nima zarur?",
+    "opts": [
+      "Harakatni vaqt oralig'ida ko'p marta takrorlash va mustahkamlash",
+      "Harakatni bir marta, ammo juda sinchkovlik bilan bajarish",
+      "Harakatni faqat nazariy jihatdan batafsil tahlil qilish",
+      "Harakatni yozma tavsif shaklida yodlab olish"
+    ],
+    "correct": 0,
+    "explanation": "Bir marta to'g'ri bajarish ko'nikmaning boshlanishi, ammo u hali ongli nazoratni talab qiladi va tez unutiladi. Harakat avtomatlashib, malakaga aylanishi uchun u vaqt oralig'ida ko'p marta takrorlanishi kerak; aynan shunda o'quvchi qadamlarni eslamasdan, ravon bajaradi.",
+    "mnemonic": "Bir marta — ko'nikma; ko'p marta — malaka.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "CHQBT o'qitish metodikasi: trenaj va ko'nikmani mustahkamlash",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "sifatni takrorlash o'rniga yagona urinish bilan ta'minlashga urinish",
+      "amaliy ko'nikmani nazariy tahlil bilan almashtirish",
+      "harakat malakasini matn yodlash bilan almashtirish"
+    ]
+  },
+  {
+    "q": "Saf tayyorgarligi mashg'ulotida o'qituvchi burilish usulini bir marta ko'rsatib, darhol butun sinfdan bir vaqtda bajarishni talab qildi. Harakat tarqoq chiqdi va xatolar mustahkamlandi. Saf usulini o'rgatish qanday bosqichlarda olib boriladi?",
+    "opts": [
+      "Yaxlit bajarish, so'ng namoyish va xatolarni muhokama qilish",
+      "Namoyish, sanoq bo'yicha bo'lib bajarish, so'ng yaxlit bajarish",
+      "Namoyish, yaxlit bajarish, so'ng sanoq bo'yicha bo'lib bajarish",
+      "Sanoq bo'yicha bajarish, so'ng namoyish va tushuntirish"
+    ],
+    "correct": 1,
+    "explanation": "Saf usuli avval to'g'ri namuna sifatida ko'rsatiladi, so'ng sanoq bo'yicha qismlarga bo'lib bajariladi — bu har bir bosqichda xatoni ko'rish va darhol tuzatish imkonini beradi. Faqat shundan keyin harakat yaxlit, bir maromda bajariladi. Bosqichlar o'tkazib yuborilsa, xato takrorlanib mustahkamlanadi.",
+    "mnemonic": "Ko'rsat, sanoq bilan bo'l, keyin yaxlit.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "CHQBT o'qitish metodikasi: saf usullarini o'rgatish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "o'rgatishni xatodan boshlab, noto'g'ri iz qoldirish",
+      "",
+      "tahlil bosqichini oxiriga surib, xatoni mustahkamlash",
+      "namuna ko'rsatishni bajarishdan keyinga qoldirish"
+    ]
+  },
+  {
+    "q": "Maktabda o'quv avtomat maketlari, gazniqoblar va tibbiy jihozlar sinf burchagida ochiq turadi, hisobga olinmagan va bir nechtasi yo'qolgan. O'qituvchi «bular o'quv jihozi, jiddiy emas» dedi. O'quv-moddiy bazaga qanday talab qo'yiladi?",
+    "opts": [
+      "Faqat mashg'ulot kunlarida chiqarilib, hisobsiz qaytariladi",
+      "Yiliga bir marta ko'zdan kechirilib, oraliqda tekshirilmaydi",
+      "Hisobga olinadi, qulflanadigan joyda saqlanadi va holati muntazam tekshiriladi",
+      "Ochiq saqlanadi, chunki o'quvchilar unga erkin kirishi kerak"
+    ],
+    "correct": 2,
+    "explanation": "O'quv qurol maketlari, himoya vositalari va tibbiy jihozlar moddiy boylik hisoblanadi va ularsiz amaliy mashg'ulot o'tkazib bo'lmaydi. Shuning uchun ular ro'yxatga olinadi, qulflanadigan joyda saqlanadi va texnik holati muntazam tekshiriladi; nosoz jihoz mashg'ulotda xato ko'nikma shakllantiradi.",
+    "mnemonic": "Hisobga ol, qulfla, tekshir.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "CHQBT o'qitish metodikasi: o'quv-moddiy bazani saqlash",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "hisobga olish talabini butunlay tushirib qoldirish",
+      "muntazam tekshiruvni yillik ko'rikka qisqartirish",
+      "",
+      "nazoratsiz saqlashni ochiqlik bahonasida oqlash"
+    ]
+  },
+  {
+    "q": "Amaliy mashg'ulotda o'qituvchi bitta o'quv qurol bilan navbat tashkil qildi: bir o'quvchi ishlaganda qolgan yigirma to'qqiztasi kutib turdi va tartib buzila boshladi. Cheklangan jihoz sharoitida mashg'ulot qanday tashkil etiladi?",
+    "opts": [
+      "Butun sinf bitta jihoz atrofida navbat kutib turadi",
+      "Mashg'ulot faqat nazariy tushuntirish shaklida o'tkaziladi",
+      "Amaliy qism jihoz yetarli bo'lgunga qadar kechiktiriladi",
+      "O'quv o'rinlari tashkil etilib, guruhlar navbat bilan almashib turadi"
+    ],
+    "correct": 3,
+    "explanation": "Cheklangan jihozda samarali yechim — bir necha o'quv o'rni tashkil etish: bir guruh qurol bilan ishlaydi, ikkinchisi plakat bo'yicha nazariy topshiriq bajaradi, uchinchisi normativ vaqtini hisoblaydi, so'ng guruhlar almashadi. Shunda hech kim bo'sh turmaydi va tartib saqlanadi.",
+    "mnemonic": "Bitta jihoz — bir necha o'quv o'rni.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "CHQBT o'qitish metodikasi: cheklangan jihozda mashg'ulot tashkil etish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "o'quvchilarning ko'p qismini bo'sh qoldirib, tartibni yo'qotish",
+      "amaliy ko'nikmani nazariy tushuntirish bilan almashtirish",
+      "o'quv rejasini noaniq muddatga kechiktirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi mashg'ulotni to'g'ridan-to'g'ri yangi mavzuni tushuntirishdan boshladi: saflanish o'tkazilmadi, o'quvchilar soni va tashqi ko'rinishi tekshirilmadi, mashg'ulot maqsadi e'lon qilinmadi. Mashg'ulotning tashkiliy qismi qanday vazifani bajaradi?",
+    "opts": [
+      "Tarkibni tekshiradi, tartib o'rnatadi va maqsadni e'lon qiladi",
+      "Davomatni qayd etish uchungina xizmat qiladigan qism",
+      "O'tgan mavzuni takrorlash uchungina ajratilgan qism",
+      "Uy vazifasini tekshirishga sarflanadigan qism hisoblanadi"
+    ],
+    "correct": 0,
+    "explanation": "Tashkiliy qism mashg'ulotni jangovar tayyorgarlik mantiqiga o'tkazadi: shaxsiy tarkib saflanadi, soni va tashqi ko'rinishi tekshiriladi, xavfsizlik talablari eslatiladi va o'quvchilar bugun nimaga erishishini biladi. Bu qism o'tkazilmasa, mashg'ulot boshidanoq tartibsiz kechadi.",
+    "mnemonic": "Tekshir, tartibga sol, maqsadni ayt.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "CHQBT o'qitish metodikasi: mashg'ulotning tashkiliy qismi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "tashkiliy qismni bitta qayd etish amaliga qisqartirish",
+      "tashkiliy qismni takrorlash bosqichi bilan chalkashtirish",
+      "tashkiliy qismni uy vazifasini nazorat qilishga qisqartirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi «Yadroviy qurol zarar yetkazuvchi omillari» mavzusini faqat og'zaki tushuntirdi, chunki maktabda hech qanday tabiiy namuna yo'q. O'quvchilar mavzuni tasavvur qila olmadi. Bunday mavzularda qanday vositalardan foydalaniladi?",
+    "opts": [
+      "Mavzu bo'yicha faqat uy vazifasi berilib, darsda o'tilmaydi",
+      "Video, animatsiya va sxemalar orqali jarayon ko'rgazmali qilinadi",
+      "Mavzu qisqartirilib, faqat atamalar ta'rifi bilan cheklaniladi",
+      "Mavzu keyingi sinfga, jihoz paydo bo'lgunga qadar qoldiriladi"
+    ],
+    "correct": 1,
+    "explanation": "Tabiatan ko'rsatib bo'lmaydigan jarayonlar uchun ko'rgazmalilik tamoyili boshqa vositalar bilan ta'minlanadi: video yozuvlar, animatsiya, sxema va vaqt jadvallari jarayonning ketma-ketligini ko'rinadigan qiladi. Bu vositalarsiz mavzu atamalar ro'yxatiga aylanadi va o'quvchida tasavvur hosil bo'lmaydi.",
+    "mnemonic": "Ko'rsatib bo'lmasa — tasvirla.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "CHQBT o'qitish metodikasi: texnik va raqamli vositalardan foydalanish",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "sinf ishini butunlay mustaqil ishga o'tkazish",
+      "",
+      "ko'rgazmalilik muammosini mavzuni qisqartirish bilan hal qilishga urinish",
+      "dastur mavzusini asossiz ravishda kechiktirish"
+    ]
+  },
+  {
+    "q": "Maktabda harbiy-sport o'yini o'tkazilmoqda: o'quvchilar guruhlarga bo'linib, topografiya, tibbiy yordam va saf tayyorgarligi bo'yicha bosqichlardan o'tadi. Bir o'qituvchi buni «darsdan chalg'itish» deb baholadi. Bunday tadbirning o'quv qiymati nimada?",
+    "opts": [
+      "Dars soatlari tejalib, o'quv dasturi tezroq bajariladi",
+      "O'quvchilarning fanga qiziqishi rasmiy ravishda qayd etiladi",
+      "Turli mavzudagi ko'nikmalar birlashtirilib, real vaziyatda qo'llanadi",
+      "O'quvchilarning jismoniy tayyorgarligi o'lchanadi va taqqoslanadi"
+    ],
+    "correct": 2,
+    "explanation": "Bunday o'yinning asosiy qiymati integratsiyada: o'quvchi alohida darslarda o'rgangan topografiya, tibbiy yordam va saf ko'nikmalarini bir vaqt cheklovi va jamoaviy javobgarlik sharoitida birga qo'llaydi. Aynan shu birlashtirish alohida mavzularni yaxlit tayyorgarlikka aylantiradi.",
+    "mnemonic": "O'yin — ko'nikmalarni birlashtirish maydoni.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "CHQBT o'qitish metodikasi: harbiy-vatanparvarlik tadbirlari",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "tarbiyaviy tadbirni o'quv soatini tejash vositasi deb bilish",
+      "o'quv natijasini rasmiy qayd etish bilan almashtirish",
+      "",
+      "tadbir maqsadini jismoniy ko'rsatkich o'lchashga qisqartirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi CHQBT mashg'ulotlarini butun yil davomida faqat sinf xonasida o'tkazdi, maydonga bir marta ham chiqmadi. O'quvchilar nazariy savollarga yaxshi javob berdi, ammo real sharoitda yo'nalishni topa olmadi. Maydon mashg'ulotining o'rni nimada?",
+    "opts": [
+      "O'quvchilarning jismoniy chidamliligi oshiriladi va o'lchanadi",
+      "Sinf xonasidagi mashg'ulotlar takrorlanib mustahkamlanadi",
+      "O'quv yili yakunida tadbir sifatida qiziqish uyg'otiladi",
+      "Ko'nikma real sharoitga o'tkaziladi va tayyorgarlik tekshiriladi"
+    ],
+    "correct": 3,
+    "explanation": "Sinfda o'rganilgan ko'nikma tanish, sokin sharoitda shakllanadi; real maydonda esa relyef, masofa, ob-havo va vaqt bosimi qo'shiladi. Aynan maydon mashg'uloti ko'nikmaning haqiqiy sharoitda ishlashini tekshiradi va nazariy bilim bilan amaliy tayyorgarlik o'rtasidagi tafovutni ko'rsatadi.",
+    "mnemonic": "Sinfda o'rgan, maydonda tekshir.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "CHQBT o'qitish metodikasi: maydon mashg'ulotining vazifasi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "maydon mashg'ulotini jismoniy tayyorgarlik mashg'uloti deb bilish",
+      "yangi sharoitga o'tkazishni oddiy takrorlash deb tushunish",
+      "o'quv vazifasini tadbir shakliga qisqartirish",
+      ""
+    ]
+  }
+]

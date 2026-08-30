@@ -1,0 +1,596 @@
+[
+  {
+    "q": "Yangi o'qituvchi CHQBT fanini «harbiy tarix va nizomlarni yodlash fani» deb tushunmoqda va darslarni faqat ma'ruza tarzida o'tkazmoqda. Metodist bu qarashni to'g'riladi. Fanning asosiy maqsadi nima?",
+    "opts": [
+      "Harbiy kasbga yo'naltirish",
+      "Vatan himoyasiga tayyorlikni shakllantirish",
+      "Harbiy atamalar va sanalarni yodlatish",
+      "Jismoniy chidamlilikni oshirish"
+    ],
+    "correct": 1,
+    "explanation": "CHQBT fani o'quvchida Vatan himoyasiga tayyorlikni — amaliy ko'nikma, huquqiy bilim va vatanparvarlik ruhini birgalikda shakllantiradi. Uni faqat yodlash, faqat jismoniy tayyorgarlik yoki faqat kasbga yo'naltirish sifatida tushunish fan mazmunini toraytiradi.",
+    "mnemonic": "Ko'nikma + bilim + ma'naviyat.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "CHQBT o'qitish metodikasi: fanning maqsadi",
+    "distractor_error": [
+      "maqsadni toraytirish",
+      "",
+      "maqsadni yodlashga toraytirish",
+      "maqsadni toraytirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi «Avtomatning tuzilishi» mavzusiga ajratilgan ikki soatning ikkalasini ham nazariy bayonga sarfladi. O'quvchilar mavzuni aytib bera oladi, ammo qurolni ajrata olmaydi. Metodik xato nimada?",
+    "opts": [
+      "Mavzu yosh xususiyatiga mos kelmagan",
+      "Ko'rgazmali qurol sifatsiz bo'lgan",
+      "Nazariya va amaliyot nisbati buzilgan",
+      "Mavzu uchun ajratilgan soat kam bo'lgan"
+    ],
+    "correct": 2,
+    "explanation": "CHQBT mavzularining aksariyati ko'nikma darajasida o'zlashtirilishi kerak, shuning uchun nazariy bayon amaliy mashq bilan almashinib borishi shart. Faqat bayon qilingan mavzu «aytib berish» darajasida qoladi va jangovar yoki hayotiy vaziyatda ishlamaydi.",
+    "mnemonic": "Aytib berish — ko'nikma emas.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "CHQBT o'qitish metodikasi: nazariya va amaliyot nisbati",
+    "distractor_error": [
+      "sababni yoshga yuklash",
+      "sababni jihozga yuklash",
+      "",
+      "sababni soatga yuklash"
+    ]
+  },
+  {
+    "q": "O'qituvchi amaliy mashg'ulotni boshlashdan oldin xavfsizlik yo'riqnomasini o'tkazdi, biroq imzo varaqasini to'ldirmadi va o'quvchilarning tushunganini tekshirmadi. Metodik jihatdan nima yetishmayapti?",
+    "opts": [
+      "Yo'riqnoma mashg'ulot oxirida o'tkazilishi kerak edi",
+      "Yo'riqnomani faqat direktor o'tkazishi kerak edi",
+      "Yo'riqnoma yozma matn shaklida tarqatilishi kerak edi",
+      "Yo'riqnoma tushunilgani tekshirilib, rasmiy qayd etilishi kerak edi"
+    ],
+    "correct": 3,
+    "explanation": "Xavfsizlik yo'riqnomasi ikki qismdan iborat: mazmunning tushunilganini tekshirish va o'tkazilganini belgilangan tartibda qayd etish. Tekshirilmagan yo'riqnoma amalda ishlamaydi, qayd etilmagani esa hodisa yuz berganda mas'uliyat masalasini hal qilishni imkonsiz qiladi.",
+    "mnemonic": "Yo'riqnoma — tushuntir, tekshir, qayd et.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "CHQBT o'qitish metodikasi: xavfsizlik yo'riqnomasi",
+    "distractor_error": [
+      "tartibni teskari qo'yish",
+      "vakolatni ko'chirish",
+      "shaklga urg'u berish",
+      ""
+    ]
+  },
+  {
+    "q": "Maktabda jangovar qurol yo'q, faqat o'quv maketi va plakatlar bor. O'qituvchi «shart-sharoit yo'q» deb amaliy mashg'ulotni umuman o'tkazmayapti. Metodik jihatdan to'g'ri yechim qanday?",
+    "opts": [
+      "Maket va trenajyorlar asosida ko'nikma shakllantiriladi",
+      "Mashg'ulot faqat harbiy qismda o'tkaziladi",
+      "Mavzu butunlay nazariy tarzda o'tkaziladi",
+      "Mavzu keyingi o'quv yiliga qoldiriladi"
+    ],
+    "correct": 0,
+    "explanation": "O'quv maketi, trenajyor va plakat aynan shu maqsadda — jangovar qurolsiz ko'nikma shakllantirish uchun ishlatiladi; harakat tartibi, ketma-ketlik va normativ ular bilan to'liq mashq qilinadi. Sharoit yo'qligini bahona qilib amaliy qismdan voz kechish fan mazmunini yo'qotadi.",
+    "mnemonic": "Maket bor — mashq bor.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "CHQBT o'qitish metodikasi: o'quv-moddiy baza",
+    "distractor_error": [
+      "",
+      "imkoniyatni toraytirish",
+      "amaliyotdan voz kechish",
+      "vazifani kechiktirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi normativni bajarish mashg'ulotini shunday tashkil qildi: darhol vaqt o'lchab, baho qo'ydi. Ko'p o'quvchi normativni bajara olmadi va qiziqishini yo'qotdi. To'g'ri metodik ketma-ketlik qanday?",
+    "opts": [
+      "Normativni umuman baholamaslik",
+      "Ko'rsatish, bo'lib mashq, sekin bajarish, vaqtga olish",
+      "Darhol baholab, keyin xatolarni tushuntirish",
+      "Faqat kuchli o'quvchilarga normativ berish"
+    ],
+    "correct": 1,
+    "explanation": "Normativ ko'nikmasi bosqichma-bosqich shakllanadi: avval harakat to'liq ko'rsatiladi, keyin qismlarga ajratib mashq qilinadi, sekin sur'atda mustahkamlanadi va faqat shundan keyin vaqtga olinadi. Tayyorgarliksiz vaqtga olish natijani ham, motivatsiyani ham buzadi.",
+    "mnemonic": "Ko'rsat — bo'lib mashq — sekin — vaqtga.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "CHQBT o'qitish metodikasi: normativlarni o'rgatish",
+    "distractor_error": [
+      "baholashni inkor etish",
+      "",
+      "bosqichlarni tashlab yuborish",
+      "doirani toraytirish"
+    ]
+  },
+  {
+    "q": "Amaliy mashg'ulotda 30 o'quvchi va bitta o'quv qurol bor. Navbat kutayotgan o'quvchilar zerikib, tartib buzila boshladi. Metodik jihatdan to'g'ri tashkil etish qanday?",
+    "opts": [
+      "Mashg'ulot faqat kuchli o'quvchilar bilan o'tkaziladi",
+      "Mashg'ulot vaqti ikki baravar uzaytiriladi",
+      "Sinf o'quv joylariga bo'linib, navbat bilan almashadi",
+      "Barcha navbatni jimgina kutib turadi"
+    ],
+    "correct": 2,
+    "explanation": "Cheklangan jihoz sharoitida sinf o'quv joylariga (postlarga) bo'linadi: bir guruh qurol bilan ishlaydi, ikkinchisi nazariy topshiriq bajaradi, uchinchisi plakat yoki maket bilan mashq qiladi va guruhlar navbat bilan almashadi. Shunda bo'sh turgan o'quvchi qolmaydi.",
+    "mnemonic": "O'quv joylari — hech kim bo'sh turmaydi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "CHQBT o'qitish metodikasi: amaliy mashg'ulotni tashkil etish",
+    "distractor_error": [
+      "doirani toraytirish",
+      "vaqtni oshirish",
+      "",
+      "bo'sh vaqtni oqlash"
+    ]
+  },
+  {
+    "q": "O'quvchi avtomatni yig'ishda doimiy bir xil xatoni takrorlamoqda. O'qituvchi har safar «noto'g'ri» deb aytadi, lekin xato saqlanib qolyapti. Metodik jihatdan to'g'ri yo'l qaysi?",
+    "opts": [
+      "Butun harakatni boshidan qayta-qayta bajartirish",
+      "Xatoni e'tiborsiz qoldirib, tezlikka e'tibor berish",
+      "Xatoni takrorlagani uchun bahoni pasaytirish",
+      "Xato bo'lgan qismni ajratib, alohida sekin mashq qildirish"
+    ],
+    "correct": 3,
+    "explanation": "Barqaror xatoni tuzatish uchun butun harakatni takrorlash samarasiz: xato bo'lgan element ajratiladi, sekin sur'atda to'g'ri bajarilishi mashq qilinadi va faqat shundan keyin harakat yaxlit tiklanadi. «Noto'g'ri» degan baho xatoni ko'rsatadi, lekin uni tuzatish yo'lini bermaydi.",
+    "mnemonic": "Xatoli qismni ajrat va sekin mashq qil.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "CHQBT o'qitish metodikasi: xatolarni tuzatish",
+    "distractor_error": [
+      "samarasiz takror",
+      "xatoni mustahkamlash",
+      "bahoni chora deb bilish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi qizlar guruhi bilan mashg'ulot rejalashtirmoqda. U «harbiy mavzu ularga keraksiz» deb dasturni qisqartirmoqchi. Metodik jihatdan to'g'ri yondashuv qanday?",
+    "opts": [
+      "Dastur to'liq beriladi, tibbiy qismga urg'u beriladi",
+      "Dastur o'g'il bolalar bilan bir xil, hech qanday urg'usiz beriladi",
+      "Dastur qisqartiriladi, faqat nazariy qism qoldiriladi",
+      "Mashg'ulot umuman o'tkazilmaydi"
+    ],
+    "correct": 0,
+    "explanation": "Dastur barcha o'quvchilar uchun majburiy: qisqartirish yoki bekor qilish qonuniy asosga ega emas. Ayni paytda metodika mazmuniy urg'uni o'zgartirishga imkon beradi — tibbiy bilim asoslari va fuqaro muhofazasi bo'limlari kengroq amaliy mashq bilan beriladi.",
+    "mnemonic": "Dastur to'liq — urg'u moslashadi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "CHQBT o'qitish metodikasi: guruh xususiyatini hisobga olish",
+    "distractor_error": [
+      "",
+      "moslashuvni inkor etish",
+      "dasturni qisqartirish",
+      "dasturni bekor qilish"
+    ]
+  },
+  {
+    "q": "O'qituvchi mashg'ulotni harbiy qismga ekskursiya shaklida tashkil qilmoqchi. Bunday mashg'ulotning metodik qiymati asosan nimada?",
+    "opts": [
+      "O'qituvchining ish yukini kamaytirishda",
+      "Bilimni real muhitda ko'rish va tasavvur hosil qilishda",
+      "O'quvchilarni darsdan chalg'itib, dam berishda",
+      "Faqat hujjatlarda tadbir sifatida qayd etilishida"
+    ],
+    "correct": 1,
+    "explanation": "Harbiy qismga ekskursiya darslikda o'qilgan tushunchalarni real muhitda ko'rish, xizmat tartibi bilan tanishish va kasbiy tasavvur shakllantirish imkonini beradi. Uning qiymati tadbirni qayd etishda emas, bilimni haqiqiy sharoitga bog'lashda.",
+    "mnemonic": "Ekskursiya — bilimni real muhitga bog'laydi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "CHQBT o'qitish metodikasi: ekskursiya va hamkorlik",
+    "distractor_error": [
+      "maqsadni o'qituvchiga bog'lash",
+      "",
+      "maqsadni chalg'ishga aylantirish",
+      "maqsadni rasmiyatchilikka aylantirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi veteran bilan uchrashuvni tashkil qildi, biroq o'quvchilarni oldindan tayyorlamadi va savol tayyorlatmadi. Uchrashuv jonsiz o'tdi. Metodik xato nimada edi?",
+    "opts": [
+      "Uchrashuvga butun sinf jalb qilingan",
+      "Uchrashuv mavzuga bog'lanmasligi kerak edi",
+      "Tayyorgarlik va savollar oldindan tayyorlanmagan",
+      "Uchrashuv dars vaqtida o'tkazilgan"
+    ],
+    "correct": 2,
+    "explanation": "Tarbiyaviy uchrashuvning samarasi tayyorgarlikka bog'liq: o'quvchilar mavzu bilan oldindan tanishtiriladi, savollar tayyorlanadi va uchrashuvdan keyin muhokama o'tkaziladi. Tayyorgarliksiz uchrashuv passiv tinglashga aylanadi.",
+    "mnemonic": "Tayyorgarliksiz uchrashuv — jonsiz uchrashuv.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "CHQBT o'qitish metodikasi: tarbiyaviy tadbirlar",
+    "distractor_error": [
+      "sababni qamrovga yuklash",
+      "bog'lanishni inkor etish",
+      "",
+      "sababni vaqtga yuklash"
+    ]
+  },
+  {
+    "q": "O'qituvchi CHQBT xonasini jihozlashda faqat plakatlar osdi. Metodist xonaning vazifasini to'liq bajarmasligini aytdi. Xona jihozi qanday tamoyilga asoslanishi kerak?",
+    "opts": [
+      "Xona jihozi har yili to'liq yangilanishi shart",
+      "Xona faqat ko'rgazmali materiallar bilan bezatiladi",
+      "Xona faqat nazariy dars uchun mo'ljallanadi",
+      "Jihoz dastur bo'limlariga mos va mashqqa yaroqli bo'ladi"
+    ],
+    "correct": 3,
+    "explanation": "O'quv xonasi jihozi o'quv dasturi bo'limlariga mos bo'lishi va nafaqat ko'rish, balki amaliy mashq qilish imkonini berishi kerak: maketlar, trenajyorlar, individual himoya vositalari, tibbiy jihozlar. Faqat plakat bilan bezatilgan xona ko'nikma shakllantirmaydi.",
+    "mnemonic": "Xona — mashq joyi, ko'rgazma zali emas.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "CHQBT o'qitish metodikasi: o'quv xonasini jihozlash",
+    "distractor_error": [
+      "talabni o'ylab topish",
+      "vazifani bezakka toraytirish",
+      "vazifani nazariyaga toraytirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi mashg'ulotda o'quvchilarning jismoniy yuklamasini oshirib yubordi, bir necha o'quvchining ahvoli yomonlashdi. Metodik jihatdan yuklama qanday belgilanishi kerak edi?",
+    "opts": [
+      "Yuklama tibbiy guruh va individual holatga qarab belgilanadi",
+      "Yuklama dastur talabidan kelib chiqib, o'zgarmas bo'ladi",
+      "Yuklama o'quvchilarning xohishiga qarab belgilanadi",
+      "Yuklama sinfning eng kuchli o'quvchisiga qarab belgilanadi"
+    ],
+    "correct": 0,
+    "explanation": "Jismoniy yuklama har bir o'quvchining tibbiy guruhi, sog'liq holati va tayyorgarlik darajasiga qarab belgilanadi; tibbiy cheklovi bor o'quvchiga alohida topshiriq beriladi. Eng kuchli o'quvchiga tenglashtirish yoki dastur raqamiga ko'r-ko'rona amal qilish sog'liq uchun xavfli.",
+    "mnemonic": "Yuklama — tibbiy guruhga qarab.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "CHQBT o'qitish metodikasi: jismoniy yuklamani boshqarish",
+    "distractor_error": [
+      "",
+      "yuklamani qat'iylashtirish",
+      "yuklamani xohishga bog'lash",
+      "yuklamani tenglashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi CHQBT bo'yicha baholashni faqat nazariy test asosida o'tkazmoqda. Amaliy ko'nikma baholanmaydi. Bu yondashuvning asosiy kamchiligi nimada?",
+    "opts": [
+      "Test o'quvchilar uchun juda oson bo'ladi",
+      "Baholash fan maqsadining faqat bir qismini o'lchaydi",
+      "Test topshirig'i tayyorlash ko'p vaqt oladi",
+      "Test natijasini jurnalga yozish qiyin bo'ladi"
+    ],
+    "correct": 1,
+    "explanation": "CHQBT natijasi bilim, ko'nikma va amaliy harakatning birligida ifodalanadi; faqat test bilan baholash ko'nikma qismini butunlay tashqarida qoldiradi. Shuning uchun baholash nazariy va amaliy topshiriqlarni birga qamrab olishi kerak.",
+    "mnemonic": "Test — bilimni, mashq — ko'nikmani o'lchaydi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "CHQBT o'qitish metodikasi: baholash tizimi",
+    "distractor_error": [
+      "kamchilikni qiyinlikka bog'lash",
+      "",
+      "kamchilikni texnik masalaga aylantirish",
+      "kamchilikni texnik masalaga aylantirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi «Ballistika» mavzusini o'tayotganda o'quvchilar fizikadan parabola va tortishish kuchini bilishini aniqladi. Metodik jihatdan bu bilimdan qanday foydalanish to'g'ri?",
+    "opts": [
+      "Fizika bilimini eslatmasdan, mavzuni noldan boshlash",
+      "Fizika mavzusini takrorlashga alohida dars ajratish",
+      "Fizikadagi bilimga tayanib, traektoriyani shu asosda tushuntirish",
+      "Fizikaga umuman murojaat qilmaslik, chunki bu boshqa fan"
+    ],
+    "correct": 2,
+    "explanation": "Fanlararo bog'lanish o'quvchining mavjud bilimini tayanch nuqta sifatida ishlatishga imkon beradi: fizikadagi tortishish va traektoriya tushunchalari ballistikani tushuntirishni sezilarli osonlashtiradi. Bilimni e'tiborsiz qoldirish o'rganishni ikki marta takrorlashga majbur qiladi.",
+    "mnemonic": "Bor bilimga tayan — noldan boshlama.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "CHQBT o'qitish metodikasi: fanlararo bog'lanish",
+    "distractor_error": [
+      "bilimni e'tiborsiz qoldirish",
+      "vaqtni ortiqcha sarflash",
+      "",
+      "bog'lanishni inkor etish"
+    ]
+  },
+  {
+    "q": "O'qituvchi «Birinchi tibbiy yordam» mavzusini o'tayotib, o'quvchilarga faqat ta'riflarni yozdirdi. Metodist mavzuning tabiatiga mos usul tanlanmaganini aytdi. Qaysi usul ustuvor bo'lishi kerak?",
+    "opts": [
+      "Ta'riflarni yozdirish va yodlatish",
+      "Video ko'rsatish bilan cheklanish",
+      "Test topshiriqlarini yechish",
+      "Maneken va sherik ustida amaliy mashq qildirish"
+    ],
+    "correct": 3,
+    "explanation": "Birinchi yordam ko'nikma sifatida faqat amaliy mashq orqali o'zlashtiriladi: bog'lam qo'yish, harakatsizlantirish, ko'chirish usullari qo'l bilan bajarilib mustahkamlanadi. Ta'rif va video tayyorgarlik bosqichi bo'lishi mumkin, ammo ular mashqni almashtira olmaydi.",
+    "mnemonic": "Yordam — qo'l bilan o'rganiladi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "CHQBT o'qitish metodikasi: tibbiy tayyorgarlikni o'qitish",
+    "distractor_error": [
+      "ko'nikmani yodlashga almashtirish",
+      "passiv usul bilan cheklanish",
+      "ko'nikmani test bilan almashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi maydon mashg'ulotini rejalashtirmoqda. U marshrut, tibbiy ta'minot va aloqa masalasini oldindan ko'rib chiqmadi. Metodist bunga e'tiroz bildirdi. Nima uchun?",
+    "opts": [
+      "Maydon mashg'uloti oldindan xavfsizlik chorasini talab qiladi",
+      "Maydon mashg'ulotini faqat harbiy qism o'tkazishi mumkin",
+      "Maydon mashg'uloti faqat yozda o'tkaziladi",
+      "Maydon mashg'ulotiga ota-onalar roziligi shart emas"
+    ],
+    "correct": 0,
+    "explanation": "Maktabdan tashqarida o'tkaziladigan maydon mashg'ulotida marshrut, kuzatuv tartibi, tibbiy ta'minot va aloqa vositalari oldindan belgilanadi — bu o'quvchilar xavfsizligining shartidir. Bu masalalar hal qilinmasdan mashg'ulot o'tkazish qat'iyan mumkin emas.",
+    "mnemonic": "Maydonga chiqishdan oldin — marshrut, tibbiyot, aloqa.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "CHQBT o'qitish metodikasi: maydon mashg'ulotini tashkil etish",
+    "distractor_error": [
+      "",
+      "vakolatni ko'chirish",
+      "shartni mavsumga bog'lash",
+      "talabni inkor etish"
+    ]
+  },
+  {
+    "q": "O'qituvchi mashg'ulotda o'quvchilarni guruhlarga bo'lib, har biriga guruh sardorini tayinladi va vazifani sardorlar orqali yetkazdi. Bu usulning metodik afzalligi nimada?",
+    "opts": [
+      "Faqat kuchli o'quvchilarga imkon beradi",
+      "Boshqaruv ko'nikmasini shakllantiradi va tartib beradi",
+      "Baholashni oson va tez qiladi",
+      "O'qituvchining ishini butunlay yengillashtiradi"
+    ],
+    "correct": 1,
+    "explanation": "Guruh sardorlari orqali ishlash o'quvchilarda boshqaruv va mas'uliyat ko'nikmasini shakllantiradi, ayni paytda ko'p sonli guruhda tartibni saqlash va vazifani tez yetkazishni ta'minlaydi. Bu o'qituvchi mas'uliyatini kamaytirmaydi — u jarayonni nazorat qilishda davom etadi.",
+    "mnemonic": "Sardor — boshqaruv maktabi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "CHQBT o'qitish metodikasi: guruh bilan ishlashni tashkil etish",
+    "distractor_error": [
+      "doirani toraytirish",
+      "",
+      "maqsadni baholashga toraytirish",
+      "mas'uliyatni ko'chirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi «Fuqaro muhofazasi» mavzusini o'qitishda faqat harbiy misollardan foydalanmoqda. O'quvchilar mavzuni real hayotga bog'lay olmayapti. Metodik tavsiya qanday bo'ladi?",
+    "opts": [
+      "Mavzu butunlay nazariy tarzda beriladi",
+      "Mavzu keyingi sinfga qoldiriladi",
+      "Zilzila, yong'in kabi kundalik misollar qo'shiladi",
+      "Mavzu faqat harbiy kontekstda beriladi"
+    ],
+    "correct": 2,
+    "explanation": "Fuqaro muhofazasi mavzusining amaliy qiymati aynan tinch davrdagi favqulodda vaziyatlarda namoyon bo'ladi: zilzila, yong'in, kommunal avariya, kimyoviy to'kilish. Kundalik hayotdan olingan misol mavzuni o'quvchi uchun ma'noli qiladi va ko'nikmani real vaziyatga bog'laydi.",
+    "mnemonic": "Harbiy misol + kundalik misol.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "CHQBT o'qitish metodikasi: fuqaro muhofazasi mavzusi",
+    "distractor_error": [
+      "amaliyotdan voz kechish",
+      "vazifani kechiktirish",
+      "",
+      "kontekstni toraytirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi nizom mavzusini o'tayotganda faqat moddalarni o'qib berdi. O'quvchilar zerikdi va mazmunni eslab qolmadi. Nizom mavzusini o'qitishning samarali usuli qaysi?",
+    "opts": [
+      "Nizom matnini konspekt qildirib yozdirish",
+      "Har moddani bir necha marta ovoz chiqarib takrorlatish",
+      "Moddalarni uyga yodlashga berish",
+      "Nizom talabini vaziyat orqali qo'llatish"
+    ],
+    "correct": 3,
+    "explanation": "Nizom talablari amaliy vaziyatga bog'langanda mazmunli bo'ladi: o'quvchiga holat beriladi va u qaysi qoida qanday qo'llanishini o'zi aniqlaydi. Matnni takrorlash yoki yodlash mexanik xotira hosil qiladi, ammo talabni real vaziyatda qo'llash ko'nikmasini bermaydi.",
+    "mnemonic": "Nizom — vaziyat orqali o'rganiladi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "CHQBT o'qitish metodikasi: nizom mavzularini o'qitish",
+    "distractor_error": [
+      "ko'chirishga aylantirish",
+      "mexanik takrorlash",
+      "yodlashga topshirish",
+      ""
+    ]
+  },
+  {
+    "q": "Mashg'ulotda bir o'quvchi qurol bilan xavfsizlik qoidasini buzdi. O'qituvchi mashg'ulotni to'xtatmasdan, unga og'zaki tanbeh berib davom etdi. Metodik va xavfsizlik jihatidan bu qanday baholanadi?",
+    "opts": [
+      "Noto'g'ri: mashg'ulot to'xtatilib, qoida qayta tushuntiriladi",
+      "To'g'ri — og'zaki tanbeh yetarli chora hisoblanadi",
+      "Noto'g'ri — o'quvchi darhol mashg'ulotdan chetlatilishi kerak edi",
+      "To'g'ri — mashg'ulot uzilmasligi muhim"
+    ],
+    "correct": 0,
+    "explanation": "Qurol bilan bog'liq xavfsizlik buzilishi aniqlanganda mashg'ulot to'xtatiladi, qurollar xavfsiz holatga keltiriladi va qoida butun guruhga qayta tushuntiriladi — chunki bitta buzilish boshqalar uchun ham xavf tug'diradi. Mashg'ulotni davom ettirish yoki faqat og'zaki tanbeh berish yetarli emas.",
+    "mnemonic": "Xavfsizlik buzildi — mashg'ulot to'xtaydi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "CHQBT o'qitish metodikasi: mashg'ulotda xavfsizlikni ta'minlash",
+    "distractor_error": [
+      "",
+      "chorani yengillashtirish",
+      "chorani jazoga toraytirish",
+      "xavfni e'tiborsiz qoldirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi «Harbiy topografiya» mavzusi bo'yicha uy vazifasi sifatida faqat ta'riflarni ko'chirishni berdi. Metodist samaraliroq variant taklif qildi. Qaysi vazifa mavzu tabiatiga mos?",
+    "opts": [
+      "Xarita shartli belgilarini rangli chizib chiqish",
+      "Uy atrofidagi marshrutni chizib chiqish",
+      "Ta'riflarni daftarga ko'chirish",
+      "Darslik matnini yod olish"
+    ],
+    "correct": 1,
+    "explanation": "Topografiya ko'nikma fani: uy vazifasi ham amaliy bo'lgani ma'qul. Real muhitda marshrut chizish va oriyentir belgilash o'quvchini xaritani hayot bilan bog'lashga o'rgatadi, ta'rif ko'chirish esa mexanik ish bo'lib qoladi.",
+    "mnemonic": "Uy vazifasi ham amaliy bo'lsin.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "CHQBT o'qitish metodikasi: uy vazifasi",
+    "distractor_error": [
+      "yarim amaliy vazifa",
+      "",
+      "mexanik ish berish",
+      "yodlashga topshirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi harbiy yig'in dasturini tuzayotib, unga faqat saf mashqlarini kiritdi. Metodist dasturning bir tomonlama ekanini aytdi. Yig'in dasturi qanday tuzilishi kerak?",
+    "opts": [
+      "Nazariy mashg'ulotlardan iborat bo'lishi kerak",
+      "Saf tayyorgarligiga qaratilishi kerak",
+      "Dastur bo'limlarini qamrab olishi kerak",
+      "Jismoniy tayyorgarlikdan iborat bo'lishi kerak"
+    ],
+    "correct": 2,
+    "explanation": "Harbiy yig'in o'quv yili davomida olingan bilim va ko'nikmalarni amaliy sharoitda birlashtirish uchun o'tkaziladi, shuning uchun uning dasturi saf, otish, tibbiy, taktik va fuqaro muhofazasi bo'limlarini qamrab olishi kerak. Bir bo'limga qisqartirilgan yig'in o'z vazifasini bajarmaydi.",
+    "mnemonic": "Yig'in — barcha bo'limni birlashtiradi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "CHQBT o'qitish metodikasi: harbiy yig'inni tashkil etish",
+    "distractor_error": [
+      "dasturni toraytirish",
+      "dasturni toraytirish",
+      "",
+      "dasturni toraytirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi mashg'ulotda o'quvchilarga «shu vaziyatda siz nima qilar edingiz?» degan savolni tez-tez beradi va javoblarni muhokama qiladi. CHQBT fani uchun bu usulning asosiy qiymati nimada?",
+    "opts": [
+      "Nazariy materialni qisqartirish imkonini berishida",
+      "Dars vaqtini to'ldirishga yordam berishida",
+      "O'quvchilarni baholashni osonlashtirishida",
+      "Qaror qabul qilish ko'nikmasini shakllantirishida"
+    ],
+    "correct": 3,
+    "explanation": "CHQBT fanining amaliy natijasi — favqulodda yoki jangovar vaziyatda tez va to'g'ri qaror qabul qila olish. Vaziyatli savol va uning muhokamasi aynan shu ko'nikmani mashq qildiradi, chunki o'quvchi bilimini real holatga tatbiq etishga majbur bo'ladi.",
+    "mnemonic": "Vaziyatli savol — qaror mashqi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "CHQBT o'qitish metodikasi: vaziyatli topshiriqlar",
+    "distractor_error": [
+      "maqsadni qisqartirishga bog'lash",
+      "maqsadni vaqtga bog'lash",
+      "maqsadni baholashga bog'lash",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi mashg'ulotda o'tgan mavzular bo'yicha ko'nikmalar susayganini payqadi. U keyingi rejaga takroriy mashqlarni kiritmoqchi. Ko'nikmani saqlash uchun takrorlash qanday tashkil etilishi samarali?",
+    "opts": [
+      "Qisqa, lekin muntazam takroriy mashqlar bilan",
+      "Faqat imtihon oldidan takrorlash",
+      "Takrorlashni butunlay uy vazifasiga qoldirish",
+      "Chorak oxirida bir marta, katta hajmda takrorlash"
+    ],
+    "correct": 0,
+    "explanation": "Ko'nikma vaqt o'tishi bilan susayadi va uni saqlashning eng samarali yo'li — qisqa, ammo muntazam takroriy mashqlar. Chorak yoki imtihon oldidan bir marta o'tkaziladigan katta takrorlash unutilgan ko'nikmani to'liq tiklamaydi.",
+    "mnemonic": "Qisqa va tez-tez — uzun va bir martadan yaxshi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "CHQBT o'qitish metodikasi: ko'nikmani saqlash",
+    "distractor_error": [
+      "",
+      "takrorlashni kechiktirish",
+      "mas'uliyatni ko'chirish",
+      "takrorlashni to'plash"
+    ]
+  },
+  {
+    "q": "O'qituvchi mashg'ulot yakunida faqat «yaxshi ishladingiz» deb dars tugatdi. Metodist yakuniy qism to'liq bajarilmaganini aytdi. Yakuniy qismda yana nima bo'lishi kerak?",
+    "opts": [
+      "Keyingi dars mavzusi e'lon qilinadi",
+      "Maqsad baholanib, xato va keyingi vazifa aytiladi",
+      "Davomat ro'yxat bo'yicha qayta tekshiriladi",
+      "Jihozlar yig'ilib, joyiga qo'yiladi"
+    ],
+    "correct": 1,
+    "explanation": "Mashg'ulotning yakuniy qismida qo'yilgan maqsadga erishilgani baholanadi, tipik xatolar tahlil qilinadi, yutuqlar qayd etiladi va keyingi vazifa belgilanadi. Umumiy maqtov bilan yakunlangan dars o'quvchiga nima o'zlashtirilgani va nima ustida ishlash kerakligini bildirmaydi.",
+    "mnemonic": "Yakun — baho, xato tahlili, keyingi qadam.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "CHQBT o'qitish metodikasi: mashg'ulotning yakuniy qismi",
+    "distractor_error": [
+      "yakunni e'longa toraytirish",
+      "",
+      "yakunni rasmiyatchilikka toraytirish",
+      "yakunni tashkiliy ishga toraytirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi harbiy mavzuni 10-sinf o'quvchilariga xuddi harbiy qismdagi kabi qat'iy buyruq ohangida yetkazmoqda. O'quvchilar qarshilik ko'rsatmoqda. Metodik xato nimada?",
+    "opts": [
+      "Qat'iy talab umuman qo'llanmasligi kerak",
+      "O'quvchilar bilan buyruq shakli ishlatilishi mumkin emas",
+      "Maktab sharoiti va yosh xususiyati hisobga olinmagan",
+      "Mavzu maktabga umuman mos emas"
+    ],
+    "correct": 2,
+    "explanation": "Maktab CHQBT darsi harbiy qism mashg'ulotining nusxasi emas: unda saf tartibi va aniq talab saqlanadi, ammo muloqot pedagogik bo'lib, tushuntirish va motivatsiyaga tayanadi. Buyruq shakli mashq davomida o'rinli, biroq butun darsni shu ohangda olib borish o'smir qarshiligini keltirib chiqaradi.",
+    "mnemonic": "Maktab — qism emas: talab bor, ohang boshqa.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "CHQBT o'qitish metodikasi: maktab sharoitida muloqot",
+    "distractor_error": [
+      "talabni butunlay inkor etish",
+      "shaklni butunlay inkor etish",
+      "",
+      "mavzuni inkor etish"
+    ]
+  },
+  {
+    "q": "O'qituvchi mashg'ulotga tayyorgarlik ko'rayotib, faqat mavzu bo'yicha o'z bilimini takrorladi. U o'quv joyi, jihoz va tarqatma materialni tekshirmadi. Mashg'ulot boshlanganda jihoz yetishmadi. Metodik xato nimada?",
+    "opts": [
+      "O'qituvchi mavzuni chuqurroq o'rganishi kerak edi",
+      "Mashg'ulot boshqa xonada o'tkazilishi kerak edi",
+      "Mashg'ulot vaqti noto'g'ri tanlangan edi",
+      "Tayyorgarlik moddiy ta'minotni ham qamrab oladi"
+    ],
+    "correct": 3,
+    "explanation": "Mashg'ulotga tayyorgarlik ikki qismdan iborat: mazmuniy tayyorgarlik va moddiy ta'minot — o'quv joyi, jihoz, tarqatma material va xavfsizlik vositalarini oldindan tekshirish. Ikkinchi qism bajarilmasa, yaxshi tayyorlangan mazmun ham amalga oshmaydi.",
+    "mnemonic": "Mazmun ham, jihoz ham — ikkalasi tayyor bo'lsin.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "CHQBT o'qitish metodikasi: mashg'ulotga tayyorgarlik",
+    "distractor_error": [
+      "sababni bilimga yuklash",
+      "sababni joyga yuklash",
+      "sababni vaqtga yuklash",
+      ""
+    ]
+  }
+]

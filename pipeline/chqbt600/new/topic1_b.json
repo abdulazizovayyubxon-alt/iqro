@@ -1,0 +1,464 @@
+[
+  {
+    "q": "Bir shahar va unga yaqin qishloqda joylashgan uchta harbiy qism hamda bitta harbiy o'quv muassasasi bor. Yangi kelgan ofitser bu tuzilmaning umumiy nomini so'radi. Nizomga ko'ra to'g'ri javob qaysi?",
+    "opts": [
+      "Bu tuzilmalar birgalikda garnizonni tashkil etadi",
+      "Bu tuzilmalar birgalikda harbiy okrugni tashkil etadi",
+      "Bu tuzilmalar birgalikda qorovul xizmatini tashkil etadi",
+      "Bu tuzilmalar birgalikda jangovar guruhni tashkil etadi"
+    ],
+    "correct": 0,
+    "explanation": "Nizomga ko'ra bitta yoki bir nechta yaqin aholi punktlarida doimiy yoxud vaqtincha joylashgan harbiy qismlar va harbiy o'quv muassasalari garnizonni tashkil etadi. Harbiy okrug, qorovul va jangovar guruh — butunlay boshqa tushunchalar.",
+    "mnemonic": "Yaqin joylashgan qismlar — bitta garnizon.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), I bob: garnizon tushunchasi",
+    "distractor_error": [
+      "",
+      "tushunchani chalkashtirish",
+      "tushunchani chalkashtirish",
+      "tushunchani chalkashtirish"
+    ]
+  },
+  {
+    "q": "Garnizonda joylashgan qismlar o'rtasida hamkorlik va umumiy intizom masalasi ko'tarildi. Kim bu ishga rahbarlik qilishi haqida bahs ketmoqda. Nizomga ko'ra garnizon boshlig'i kim hisoblanadi?",
+    "opts": [
+      "Tuman harbiy komissari lavozimidagi shaxs",
+      "Garnizondagi eng yuqori lavozimdagi qism komandiri",
+      "Garnizonning harbiy avtomobil inspeksiyasi boshlig'i",
+      "Garnizondagi eng yosh qism komandiri"
+    ],
+    "correct": 1,
+    "explanation": "Garnizon boshlig'i — garnizonda joylashgan harbiy qismlarning eng yuqori lavozimdagi komandiri (yoki Mudofaa vaziri buyrug'i bilan tayinlangan shaxs); u garnizondagi intizom, xavfsizlik va qo'shinlar hamkorligiga rahbarlik qiladi. Harbiy komissar va inspeksiya boshlig'i boshqa vazifalarni bajaradi.",
+    "mnemonic": "Garnizon boshlig'i — eng yuqori lavozimli komandir.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), II bob: garnizon mansabdor shaxslari",
+    "distractor_error": [
+      "lavozimni chalkashtirish",
+      "",
+      "lavozimni chalkashtirish",
+      "mezonni teskari qo'yish"
+    ]
+  },
+  {
+    "q": "Garnizonda qorovullarni tayyorlash sifati pasaydi, gauptvaxta faoliyatida esa nuqsonlar aniqlandi. Garnizon boshlig'i bu yo'nalishni nazorat qiluvchi mansabdor shaxsni chaqirdi. U kim?",
+    "opts": [
+      "Garnizondagi eng katta qism komandiri",
+      "Garnizon yong'indan saqlash xizmati boshlig'i",
+      "Garnizon harbiy komendanti",
+      "Garnizon harbiy avtomobil inspeksiyasi boshlig'i"
+    ],
+    "correct": 2,
+    "explanation": "Garnizon harbiy komendanti garnizonda harbiy intizom, patrul xizmati, qorovullarni tayyorlash va tekshirish hamda gauptvaxta faoliyatini nazorat qiladi. Yong'in xizmati boshlig'i yong'in xavfsizligini, avtomobil inspeksiyasi boshlig'i esa harbiy transport harakatini nazorat qiladi.",
+    "mnemonic": "Qorovul, patrul, gauptvaxta — komendant nazorati.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), II bob: harbiy komendant",
+    "distractor_error": [
+      "vazifani chalkashtirish",
+      "vazifani chalkashtirish",
+      "",
+      "vazifani chalkashtirish"
+    ]
+  },
+  {
+    "q": "Garnizon hududida harbiy avtomobillarning texnik holati yomonlashdi va haydovchilar yo'l harakati qoidalarini buzayotgani qayd etildi. Bu yo'nalish qaysi mansabdor shaxs nazoratiga kiradi?",
+    "opts": [
+      "Garnizon harbiy komendanti nazoratiga kiradi",
+      "Garnizon yong'in xizmati boshlig'i nazoratiga kiradi",
+      "Qorovul boshlig'i nazoratiga kiradi",
+      "Harbiy avtomobil inspeksiyasi boshlig'i nazoratida"
+    ],
+    "correct": 3,
+    "explanation": "Garnizon harbiy avtomobil inspeksiyasi boshlig'i harbiy transport vositalarining harakat xavfsizligini, texnik holatini va haydovchilar tomonidan yo'l harakati qoidalariga rioya etilishini nazorat qiladi. Komendant intizom va qorovullik yo'nalishini, yong'in xizmati boshlig'i yong'in xavfsizligini olib boradi.",
+    "mnemonic": "Transport va yo'l — XAI boshlig'ida.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), II bob: XAI boshlig'i",
+    "distractor_error": [
+      "vazifani chalkashtirish",
+      "vazifani chalkashtirish",
+      "vazifani chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Shahar vokzalida bir necha harbiy xizmatchi formani tartibsiz kiygan holda yurgani va harbiycha salomlashish qoidasini buzayotgani aniqlandi. Bunday holatlarni nazorat qilish kimning vazifasiga kiradi?",
+    "opts": [
+      "Garnizon patrullari vazifasiga kiradi",
+      "Qorovul tarqatuvchilari vazifasiga kiradi",
+      "Rota dnevalniysi vazifasiga kiradi",
+      "Yong'in naryadi vazifasiga kiradi"
+    ],
+    "correct": 0,
+    "explanation": "Garnizon patrullari jamoat joylarida, vokzallarda, xiyobonlarda va ko'chalarda harbiy xizmatchilar tomonidan harbiy intizomga, formali kiyim-bosh kiyish qoidalariga va harbiycha salomlashish tartibiga rioya qilinishini nazorat qiladi. Qorovul, dnevalniy va yong'in naryadi boshqa vazifalarni bajaradi.",
+    "mnemonic": "Ko'chadagi intizom — patrul ishi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), III bob: patrul xizmati",
+    "distractor_error": [
+      "",
+      "vazifani chalkashtirish",
+      "vazifani chalkashtirish",
+      "vazifani chalkashtirish"
+    ]
+  },
+  {
+    "q": "Garnizon patruli tashkil etilmoqda. Komendant patrul boshlig'i etib serjantni, patrulchi etib esa uchta oddiy askarni tayinladi. Nizomga ko'ra bu tarkib qanday baholanadi?",
+    "opts": [
+      "Tarkib noto'g'ri — patrulda bitta patrulchi bo'lishi kerak",
+      "Tarkib to'g'ri — patrul boshlig'i va 2-3 patrulchidan iborat bo'ladi",
+      "Tarkib noto'g'ri — patrul faqat ofitserlardan tuziladi",
+      "Tarkib noto'g'ri — patrul boshlig'i faqat ofitser bo'lishi mumkin"
+    ],
+    "correct": 1,
+    "explanation": "Nizomga ko'ra patrul tarkibi patrul boshlig'i (ofitser, praporshchik yoki serjant) va 2-3 nafar patrulchidan (oddiy askar yoki kursant) iborat bo'ladi. Shu sababli serjant boshchiligidagi uch patrulchili tarkib nizom talabiga mos keladi.",
+    "mnemonic": "Boshliq + 2-3 patrulchi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), III bob: patrul tarkibi",
+    "distractor_error": [
+      "tarkibni buzish",
+      "",
+      "shartni asossiz cheklash",
+      "shartni asossiz cheklash"
+    ]
+  },
+  {
+    "q": "Patrul ko'chada intizom buzgan harbiy xizmatchini to'xtatdi. Xizmatchi hujjatlarini ko'rsatishdan bosh tortdi va «patrulning menga aloqasi yo'q» dedi. Patrulning qonuniy huquqi qanday?",
+    "opts": [
+      "Patrul faqat o'z qismidagi xizmatchilarga nisbatan chora ko'radi",
+      "Patrul faqat ogohlantirish berishi mumkin, boshqa huquqi yo'q",
+      "Patrul to'xtatadi, hujjatini tekshiradi va komendaturaga olib keladi",
+      "Patrul faqat qism komandiriga xabar berish bilan cheklanadi"
+    ],
+    "correct": 2,
+    "explanation": "Nizomga ko'ra patrul harbiy intizomni buzgan harbiy xizmatchilarni to'xtatish, ularning hujjatlarini tekshirish va zarur hollarda ularni harbiy komendaturaga olib kelish huquqiga ega. Bu vakolat patrulning o'z qismi bilan cheklanmaydi va faqat ogohlantirish bilan tugamaydi.",
+    "mnemonic": "To'xtatish — tekshirish — komendaturaga.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), III bob: patrulning huquqlari",
+    "distractor_error": [
+      "vakolatni qism bilan cheklash",
+      "vakolatni pasaytirish",
+      "",
+      "vakolatni pasaytirish"
+    ]
+  },
+  {
+    "q": "Yangi askar qorovullik xizmatini «oddiy navbatchilik» deb hisoblab, unga jiddiy qaramadi. Qorovul boshlig'i unga xizmatning huquqiy maqomini tushuntirdi. Nizomga ko'ra qorovul xizmatini o'tash nima hisoblanadi?",
+    "opts": [
+      "Kundalik xo'jalik ishlarining bir turi hisoblanadi",
+      "Jismoniy tayyorgarlik mashg'ulotining davomi hisoblanadi",
+      "Ichki tartibni saqlash bo'yicha yordamchi vazifa hisoblanadi",
+      "Jangovar vazifani bajarish hisoblanadi"
+    ],
+    "correct": 3,
+    "explanation": "Nizomga ko'ra qorovul xizmatini o'tash jangovar vazifani bajarish hisoblanadi va shaxsiy tarkibdan yuksak hushyorlik, jasorat hamda qat'iyatni talab etadi. Shu maqom tufayli qorovul xizmatidagi qoidabuzarliklar alohida jiddiylik bilan baholanadi.",
+    "mnemonic": "Qorovul xizmati — jangovar vazifa.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), V bob: qorovullik xizmatining maqomi",
+    "distractor_error": [
+      "maqomni pasaytirish",
+      "maqomni pasaytirish",
+      "maqomni pasaytirish",
+      ""
+    ]
+  },
+  {
+    "q": "Qorovul tayinlanmoqda va uning tarkibi tuzilmoqda. Bo'linma boshlig'i ro'yxatga qorovul boshlig'i, uning yordamchisi va soqchilarni kiritdi, biroq bitta lavozimni tushirib qoldirdi. Nizomga ko'ra qorovul tarkibida yana kim bo'lishi shart?",
+    "opts": [
+      "Qorovul tarqatuvchisi bo'lishi shart",
+      "Garnizon harbiy komendanti bo'lishi shart",
+      "Rota navbatchisi bo'lishi shart",
+      "Bo'linma tibbiyot xodimi bo'lishi shart"
+    ],
+    "correct": 0,
+    "explanation": "Qorovul tarkibi qorovul boshlig'i, uning yordamchisi, qorovul tarqatuvchilari (razvodyashchiylar), soqchilar, qorovulxona dnevalniysi va transport vositasi haydovchilaridan iborat. Tarqatuvchi soqchilarni postlarga olib borish va almashtirishni tashkil etadi, shuning uchun usiz qorovul tarkibi to'liq bo'lmaydi.",
+    "mnemonic": "Boshliq, yordamchi, tarqatuvchi, soqchi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), V bob: qorovul tarkibi",
+    "distractor_error": [
+      "",
+      "tarkibga begona lavozim kiritish",
+      "tarkibga begona lavozim kiritish",
+      "tarkibga begona lavozim kiritish"
+    ]
+  },
+  {
+    "q": "Tunda postlardan birida nosozlik yuz berdi, soqchi esa hushyorlikni yo'qotdi. Tekshiruvda kim to'liq javobgar ekani aniqlanishi kerak. Nizomga ko'ra qo'riqlanadigan obyektlar daxlsizligi uchun kim javob beradi?",
+    "opts": [
+      "Qorovulxona dnevalniysi",
+      "Qorovul boshlig'i",
+      "Transport vositasi haydovchisi",
+      "Faqat postda turgan soqchining o'zi"
+    ],
+    "correct": 1,
+    "explanation": "Nizomga ko'ra qorovul boshlig'i qo'riqlanadigan obyektlarning daxlsizligi, qorovul shaxsiy tarkibining jangovar shayligi, qurol va o'q-dorilarning to'g'ri qo'llanilishi hamda postlarning vaqtida almashtirilishi uchun to'liq javobgardir. Soqchi o'z posti uchun javob beradi, ammo umumiy javobgarlik qorovul boshlig'ida.",
+    "mnemonic": "Umumiy javobgarlik — qorovul boshlig'ida.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), VI bob: qorovul boshlig'ining majburiyatlari",
+    "distractor_error": [
+      "javobgarlikni chalkashtirish",
+      "",
+      "javobgarlikni chalkashtirish",
+      "javobgarlikni toraytirish"
+    ]
+  },
+  {
+    "q": "Postni almashtirish vaqti keldi. Yangi soqchi postga yolg'iz borib, eski soqchidan qurolni olib qolmoqchi bo'ldi. Qorovul boshlig'i bunga yo'l qo'ymadi. Nizomga ko'ra postni almashtirishni kim boshqaradi?",
+    "opts": [
+      "Garnizon patrul boshlig'i almashtirishni nazorat qiladi",
+      "Soqchilarning o'zlari kelishgan holda almashadi",
+      "Qorovul tarqatuvchisi postga olib boradi va almashtirishni boshqaradi",
+      "Qorovulxona dnevalniysi almashtirishni tashkil qiladi"
+    ],
+    "correct": 2,
+    "explanation": "Qorovul tarqatuvchisi soqchilarni postlarga olib boradi, postni topshirish va qabul qilish jarayonini boshqaradi, yangi soqchiga postning xususiyatlarini eslatadi hamda uning hushyor turishini nazorat qiladi. Soqchilarning o'zaro kelishuvi bilan almashish nizomga zid.",
+    "mnemonic": "Postni tarqatuvchi almashtiradi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), VI bob: qorovul tarqatuvchisi",
+    "distractor_error": [
+      "vazifani chalkashtirish",
+      "tartibni buzish",
+      "",
+      "vazifani chalkashtirish"
+    ]
+  },
+  {
+    "q": "Postda turgan soqchiga qism komandiri yaqinlashib, unga xo'jalik ishi bo'yicha buyruq berdi. Soqchi buyruqni bajarishdan bosh tortdi. Nizomga ko'ra soqchi kimlarga bo'ysunadi?",
+    "opts": [
+      "Garnizon komendanti va patrul boshlig'iga",
+      "Har qanday ofitserga va yuqori unvondagi xizmatchiga",
+      "Faqat qism komandiri va uning o'rinbosarlariga",
+      "Qorovul boshlig'i, yordamchisi va o'z tarqatuvchisiga"
+    ],
+    "correct": 3,
+    "explanation": "Soqchining daxlsizligi, boshqalar qatori, uning faqat qat'iy belgilangan shaxslarga — qorovul boshlig'iga, qorovul boshlig'i yordamchisiga va o'zining qorovul tarqatuvchisiga bo'ysunishida ifodalanadi. Boshqa mansabdor shaxslar, hatto yuqori unvondagilar ham, soqchiga postda buyruq bera olmaydi.",
+    "mnemonic": "Soqchi — faqat uchta shaxsga bo'ysunadi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), VII bob: soqchining daxlsizligi",
+    "distractor_error": [
+      "bo'ysunishni chalkashtirish",
+      "bo'ysunishni kengaytirish",
+      "bo'ysunishni chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Uzoq tunda postda turgan soqchi charchadi va o'tirib olib, telefonini ko'rmoqchi bo'ldi. Sherigi uni ogohlantirdi. Nizomga ko'ra soqchiga nima qat'iyan taqiqlanadi?",
+    "opts": [
+      "Uxlash, o'tirish, chekish, telefon va qurolni qo'ldan chiqarish",
+      "Uxlash taqiqlanadi, qolgan harakatlar ruxsat etiladi",
+      "Qurolni topshirish taqiqlanadi, boshqasi mumkin",
+      "Ovqatlanish va ichish taqiqlanadi, qolgani mumkin"
+    ],
+    "correct": 0,
+    "explanation": "Nizom soqchiga xizmat vaqtida uxlash, o'tirish, suyanchiqqa suyanish, o'qish, chekish, qo'l telefonidan foydalanish, ovqatlanish, ichish hamda qurolni qo'ldan chiqarish yoki biror shaxsga topshirishni qat'iyan man etadi. Taqiqni faqat bitta harakat bilan cheklash nizom talabini kamaytirish bo'ladi.",
+    "mnemonic": "Postda faqat qo'riqlaysan — boshqa hech narsa.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), VII bob: soqchining majburiyatlari",
+    "distractor_error": [
+      "",
+      "taqiqni toraytirish",
+      "taqiqni toraytirish",
+      "taqiqni toraytirish"
+    ]
+  },
+  {
+    "q": "Soqchi o'zini yomon his qilib, postni tashlab qorovulxonaga bordi va u yerda qorovul boshlig'iga ahvolini aytdi. Nizom bu harakatni qanday baholaydi?",
+    "opts": [
+      "Sog'liq sababli postni tashlash ruxsat etiladi",
+      "Postni o'zboshimchalik bilan tashlab ketish harbiy jinoyat hisoblanadi",
+      "Postni tashlash faqat intizomiy jazoga sabab bo'ladi",
+      "Postni tashlash qorovulxona yaqin bo'lsa, qoidabuzarlik emas"
+    ],
+    "correct": 1,
+    "explanation": "Nizomga ko'ra soqchi postni faqat o'zining tarqatuvchisi yoki qorovul boshlig'i kelgandagina topshiradi; postni o'zboshimchalik bilan tashlab ketish esa harbiy jinoyat hisoblanadi. Sog'liq yomonlashganda soqchi belgilangan aloqa vositasi orqali xabar beradi, lekin postni tashlab ketmaydi.",
+    "mnemonic": "Postni faqat almashtirish bilan tashlaysan.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), VII bob: postni topshirish tartibi",
+    "distractor_error": [
+      "taqiqqa istisno kiritish",
+      "",
+      "javobgarlikni yengillashtirish",
+      "taqiqqa istisno kiritish"
+    ]
+  },
+  {
+    "q": "Postga noma'lum shaxs yaqinlashmoqda va soqchining chaqirig'iga javob bermay, harakatini davom ettirmoqda. Soqchi qurolni o'qladi va ogohlantirdi, ammo shaxs to'xtamadi. Nizomga ko'ra keyingi harakat qanday bo'ladi?",
+    "opts": [
+      "Darhol nishonga qarata o'q uzadi",
+      "Postni tashlab, qorovulxonaga yuguradi",
+      "Havoga ogohlantiruvchi o'q uzadi",
+      "Shaxsni ushlash uchun uning oldiga yuguradi"
+    ],
+    "correct": 2,
+    "explanation": "Nizomda qurol qo'llash ketma-ketligi qat'iy belgilangan: avval «To'xta, kim kelayapti?» ogohlantirishi, so'ng qurolni o'qlab «To'xta, otaman!» talabi, keyin havoga ogohlantiruvchi o'q va faqat shundan keyin, qoidabuzar to'xtamasa, nishonga qarata o't ochish. Bosqichlarni tashlab yuborish ham, postni tashlab ketish ham nizomga zid.",
+    "mnemonic": "Chaqir — ogohlantir — havoga — nishonga.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), VIII bob: qurol qo'llash tartibi",
+    "distractor_error": [
+      "bosqichni tashlab yuborish",
+      "postni tashlash",
+      "",
+      "postni tashlash"
+    ]
+  },
+  {
+    "q": "Qo'riqlanayotgan omborga qurolli guruh to'g'ridan-to'g'ri hujum qildi va to'siqni jangovar mashina bilan buzib kirmoqda. Soqchi ogohlantirish bosqichlarini bajarishga ulgurmayapti. Nizomga ko'ra u qanday harakat qiladi?",
+    "opts": [
+      "Avval barcha ogohlantirish bosqichlarini bajaradi",
+      "Postni tashlab, qorovulxonadan kuch kelishini kutadi",
+      "Faqat havoga ogohlantiruvchi o'q uzish bilan cheklanadi",
+      "Ogohlantirishsiz darhol nishonga qarata o't ochadi"
+    ],
+    "correct": 3,
+    "explanation": "Nizomda ogohlantirishsiz o't ochish holatlari alohida belgilangan: soqchiga, qorovulxonaga yoki qo'riqlanayotgan obyektga to'g'ridan-to'g'ri qurolli hujum qilinganda hamda to'siq jangovar texnika bilan buzib kirilganda soqchi hech qanday ogohlantirishsiz darhol nishonga qarata o't ochishga majbur. Bunday vaziyatda bosqichlarni bajarishga urinish vaqtni yo'qotadi.",
+    "mnemonic": "Qurolli hujum — ogohlantirishsiz o't.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), VIII bob: ogohlantirishsiz qurol qo'llash",
+    "distractor_error": [
+      "vaqtni yo'qotish",
+      "postni tashlash",
+      "yetarsiz chora",
+      ""
+    ]
+  },
+  {
+    "q": "Qorong'i tunda postga bir guruh shaxs yaqinlashdi va «Qorovul boshlig'i kelayapti» deb javob berdi. Soqchi ularning hammasini birdaniga yaqinlashtirmoqchi emas. Nizomga ko'ra u qanday harakat qiladi?",
+    "opts": [
+      "Bittasini oldinga chaqiradi, qolganlarni to'xtatib, parol so'raydi",
+      "Parol so'ramasdan, ovozidan tanib guruhni postga kiritadi",
+      "Guruhning hammasini birdan yaqinlashtiradi va parolni so'raydi",
+      "Guruhni umuman yaqinlashtirmay, orqaga qaytishni talab qiladi"
+    ],
+    "correct": 0,
+    "explanation": "Qorong'ida yoki ko'rinish yomon bo'lganda soqchi «To'xta, kim kelayapti?» deb chaqiradi, javob olgach «Qorovul boshlig'i bitta o'zi oldinga, qolganlar joyida to'xtasin!» komandasini beradi va yaqinlashgan shaxsdan parolni so'raydi. Faqat parol to'g'ri aytilgandan keyingina shaxs postga kiritiladi.",
+    "mnemonic": "Bittasi oldinga — parol — keyin kirish.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), VIII bob: qorong'ida harakat tartibi",
+    "distractor_error": [
+      "",
+      "parolni tashlab yuborish",
+      "nazoratni yo'qotish",
+      "haddan tashqari chora"
+    ]
+  },
+  {
+    "q": "Yangi qorovul boshlig'i parolni bir hafta uchun bitta qilib belgilamoqchi va uni qorovulxona devoriga yozib qo'yishni taklif qilmoqda. Yordamchisi bunga qarshi. Nizom talabi qanday?",
+    "opts": [
+      "Parol qorovul boshlig'ining o'zi tomonidan erkin tanlanadi",
+      "Parol har kuni har bir qorovul uchun alohida belgilanadi va maxfiy saqlanadi",
+      "Parol bir hafta uchun bitta belgilanadi va ochiq joyda ko'rsatiladi",
+      "Parol bir oy uchun belgilanadi va faqat og'zaki yetkaziladi"
+    ],
+    "correct": 1,
+    "explanation": "Nizomga ko'ra parollar har kuni har bir qorovul uchun alohida belgilanadi, maxfiy penalda saqlanadi va begona shaxslarga oshkor etilishi qat'iyan taqiqlanadi. Parolni uzoq muddatga belgilash yoki ochiq joyda saqlash uning butun ma'nosini yo'qotadi.",
+    "mnemonic": "Parol — har kuni yangi va maxfiy.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), IX bob: parol tizimi",
+    "distractor_error": [
+      "tartibni erkinlashtirish",
+      "",
+      "maxfiylikni buzish",
+      "muddatni uzaytirish"
+    ]
+  },
+  {
+    "q": "Yangi soqchi postga chiqishdan oldin postning chegaralari, o't ochish sektori va o't o'chirish vositalari haqida ma'lumot olishi kerak. Bu ma'lumotlar qaysi hujjatda belgilangan?",
+    "opts": [
+      "Intizom kitobida belgilangan bo'ladi",
+      "Xizmat kartochkasida belgilangan bo'ladi",
+      "Post tabelida belgilangan bo'ladi",
+      "Qorovul boshlig'ining shaxsiy daftarida"
+    ],
+    "correct": 2,
+    "explanation": "Post tabeli har bir postning joylashuvi, chegaralari, o't otish sektori, aloqa va o't o'chirish vositalarini aniq belgilab beradi — soqchi postga chiqishdan oldin aynan shu hujjat bilan tanishtiriladi. Intizom kitobi va xizmat kartochkasi intizomiy hisobga oid hujjatlardir.",
+    "mnemonic": "Post haqidagi hamma narsa — post tabelida.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), IX bob: post tabeli",
+    "distractor_error": [
+      "hujjatni chalkashtirish",
+      "hujjatni chalkashtirish",
+      "",
+      "hujjatni chalkashtirish"
+    ]
+  },
+  {
+    "q": "Harbiy qismda Jangovar bayroq, o'q-dori ombori va gauptvaxtada saqlanayotgan shaxslar bor. Komandir bularning qo'riqlanishini qanday tashkil etishini belgilamoqda. Nizomga ko'ra bu vazifa qaysi xizmat zimmasiga yuklanadi?",
+    "opts": [
+      "Harbiy avtomobil inspeksiyasi zimmasiga",
+      "Sutkalik naryad tarkibidagi rota navbatchisi zimmasiga",
+      "Garnizon patrul xizmati zimmasiga",
+      "Qorovullik xizmati zimmasiga"
+    ],
+    "correct": 3,
+    "explanation": "Qorovullik xizmati Jangovar bayroqlarni, qurol-yarog', o'q-dorilar va harbiy texnika omborlarini, davlat hamda harbiy ahamiyatga ega muhim obyektlarni, shuningdek gauptvaxtada saqlanayotgan shaxslarni ishonchli qo'riqlash va mudofaa qilish uchun tashkil etiladi. Rota navbatchisi ichki tartibni, patrul esa garnizondagi intizomni ta'minlaydi.",
+    "mnemonic": "Bayroq, ombor, gauptvaxta — qorovullik xizmatida.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), V bob: qorovullik xizmatining maqsadi",
+    "distractor_error": [
+      "vazifani chalkashtirish",
+      "vazifani chalkashtirish",
+      "vazifani chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Garnizonda harbiy parad, faxriy qorovul chiqarish va davlat mukofotlarini tantanali topshirish tadbirlari rejalashtirilmoqda. Tashkilotchi bu tadbirlarni erkin tartibda o'tkazishni taklif qilmoqda. Nizom talabi qanday?",
+    "opts": [
+      "Bunday marosimlar nizomda belgilangan qat'iy tartibda o'tkaziladi",
+      "Marosim tartibi har bir qism komandiri tomonidan erkin belgilanadi",
+      "Marosim tartibi faqat mahalliy an'analarga qarab tuziladi",
+      "Bunday marosimlar nizom bilan tartibga solinmaydi"
+    ],
+    "correct": 0,
+    "explanation": "Nizomga ko'ra garnizonda harbiy paradlar, faxriy qorovullar, davlat mukofotlarini tantanali topshirish, xotira tadbirlari va harbiy sharaf bilan dafn etish marosimlari belgilangan qat'iy tartibda o'tkaziladi. Bu tadbirlar davlat va Qurolli Kuchlar obro'si bilan bog'liq bo'lgani uchun erkin talqinga yo'l qo'yilmaydi.",
+    "mnemonic": "Marosim — nizom tartibida.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Garnizon va qorovullik xizmatlari nizomi (PF-23), IV bob: harbiy marosimlar",
+    "distractor_error": [
+      "",
+      "tartibni erkinlashtirish",
+      "tartibni an'anaga bog'lash",
+      "tartibni inkor etish"
+    ]
+  }
+]

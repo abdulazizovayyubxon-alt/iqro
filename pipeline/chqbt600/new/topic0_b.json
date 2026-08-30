@@ -1,0 +1,860 @@
+[
+  {
+    "q": "O'qituvchi doskaga umumiy harbiy majburiyatning tarkibiy qismlarini yozdi: harbiy hisobga olish, chaqiruvga qadar tayyorgarlik, harbiy xizmatga chaqirish, harbiy xizmatni o'tash, zaxiradagi xizmat. O'quvchi ro'yxatga yana bittasini qo'shdi. Qaysi band bu ro'yxatga KIRMAYDI?",
+    "opts": [
+      "Harbiy yig'inlarda ishtirok etish majburiyati",
+      "Harbiy-vatanparvarlik tarbiyasidan o'tish",
+      "Harbiy kasb bo'yicha oliy ta'lim olish majburiyati",
+      "Safarbarlik e'lon qilinganda xizmatga chaqirish"
+    ],
+    "correct": 2,
+    "explanation": "Umumiy harbiy majburiyat hisobga olish, chaqiruvga qadar tayyorgarlik, chaqiruv, xizmatni o'tash, zaxiradagi xizmat, harbiy yig'inlar va safarbarlik chaqiruvini qamrab oladi. Harbiy kasb bo'yicha oliy ta'lim olish esa majburiyat emas — bu fuqaroning erkin tanlaydigan kasbiy yo'li.",
+    "mnemonic": "Majburiyat — xizmat, ta'lim — tanlov.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun: majburiyat tarkibi",
+    "distractor_error": [
+      "haqiqiy qismni inkor etish",
+      "haqiqiy qismni inkor etish",
+      "",
+      "haqiqiy qismni inkor etish"
+    ]
+  },
+  {
+    "q": "Chaqiruv komissiyasi to'rt fuqaroning arizasini ko'rmoqda: biri kunduzgi ta'limda o'qiydi, ikkinchisi og'ir kasal ota-onasining yagona boquvchisi, uchinchisi vaqtincha sog'lig'i bo'yicha yaroqsiz, to'rtinchisi esa xizmatga borishni xohlamayotganini aytmoqda. Qaysi ariza kechiktirish uchun asos bo'la olmaydi?",
+    "opts": [
+      "Kunduzgi ta'limda o'qiyotgan fuqaroning arizasi",
+      "Yagona boquvchi bo'lgan fuqaroning arizasi",
+      "Vaqtincha yaroqsiz deb topilgan fuqaroning arizasi",
+      "Xizmatga borishni xohlamayotgan fuqaroning arizasi"
+    ],
+    "correct": 3,
+    "explanation": "Chaqiruvni kechiktirish faqat qonunda aniq belgilangan asoslar bo'yicha — ta'lim, oilaviy sharoit, sog'liq holati — beriladi. Shaxsiy xohish yoki xohlamaslik huquqiy asos emas va kechiktirish uchun ko'rib chiqilmaydi.",
+    "mnemonic": "Asos qonunda — xohishda emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun: kechiktirish asoslari",
+    "distractor_error": [
+      "qonuniy asosni rad etish",
+      "qonuniy asosni rad etish",
+      "qonuniy asosni rad etish",
+      ""
+    ]
+  },
+  {
+    "q": "Fuqaro chaqiruv qog'ozini olgach, belgilangan kunda komissariatga bormadi va uzrli sabab ham ko'rsatmadi. Uning do'sti «hech narsa bo'lmaydi, keyingi chaqiruvda borsang bo'ldi» deb maslahat bermoqda. Qonun bo'yicha bu harakat qanday baholanadi?",
+    "opts": [
+      "Uzrsiz kelmaslik huquqbuzarlik hisoblanadi",
+      "Kelmaslik faqat uchinchi marta takrorlanganda hisobga olinadi",
+      "Kelmaslik hech qanday oqibat keltirmaydi, chaqiruv qaytariladi",
+      "Kelmaslik faqat ogohlantirish bilan yakunlanadi"
+    ],
+    "correct": 0,
+    "explanation": "Chaqiruv bo'yicha uzrsiz sababga ko'ra kelmaslik chaqiruvdan bo'yin tovlash hisoblanadi va qonunda belgilangan javobgarlikka olib keladi. Javobgarlik takrorlanish soniga bog'liq emas va faqat ogohlantirish bilan cheklanmaydi; uzrli sabab bo'lsa, u hujjat bilan tasdiqlanishi kerak.",
+    "mnemonic": "Uzrsiz kelmaslik — bo'yin tovlash.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun: chaqiruv tartibi",
+    "distractor_error": [
+      "",
+      "javobgarlikni songa bog'lash",
+      "oqibatni inkor etish",
+      "oqibatni yengillashtirish"
+    ]
+  },
+  {
+    "q": "Talaba muqobil xizmat va muddatli harbiy xizmatni taqqoslab, «ikkalasi bir xil, faqat nomi boshqacha» degan xulosaga keldi. O'qituvchi qaysi farqni ko'rsatib, bu xulosani to'g'rilaydi?",
+    "opts": [
+      "Muqobil xizmat harbiy hisobdan chiqarishni bildiradi",
+      "Muqobil xizmat qurolsiz vazifalarni bajarishni nazarda tutadi",
+      "Muqobil xizmat faqat oliy ma'lumotlilar uchun joriy etilgan",
+      "Muqobil xizmat faqat chet elda o'taladi"
+    ],
+    "correct": 1,
+    "explanation": "Muqobil xizmatning asosiy farqi — u qurol ishlatish bilan bog'liq bo'lmagan vazifalarni bajarishni nazarda tutadi va e'tiqodi tufayli qurolli xizmatni rad etgan fuqarolarga beriladi. U mamlakat ichida o'taladi, harbiy hisobni bekor qilmaydi va ma'lumot darajasiga bog'liq emas.",
+    "mnemonic": "Muqobil — qurolsiz, lekin xizmat.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun: muqobil xizmat",
+    "distractor_error": [
+      "hisob maqomini buzish",
+      "",
+      "shartni asossiz cheklash",
+      "joyni noto'g'ri ko'rsatish"
+    ]
+  },
+  {
+    "q": "Korxona xodimi harbiy yig'inga chaqirildi. Rahbar «yig'inga borsang, ishdan bo'shatiladi va lavozimingga boshqa odam olinadi» dedi. Qonun talabiga ko'ra qanday baho beriladi?",
+    "opts": [
+      "Rahbar nohaq, lekin lavozim faqat rahbar roziligi bilan saqlanadi",
+      "Rahbar haq — yig'in davri mehnat shartnomasini to'xtatadi",
+      "Rahbar nohaq — yig'in davrida ish joyi va lavozimi saqlanadi",
+      "Rahbar haq — xodim yig'indan keyin qaytadan ishga kirishi kerak"
+    ],
+    "correct": 2,
+    "explanation": "Harbiy yig'inga chaqirilgan xodimning ish joyi, lavozimi va qonunda belgilangan kafolatlari saqlanadi — bu ish beruvchining majburiyati bo'lib, uning roziligiga bog'liq emas. Yig'in davri uchun xodimni ishdan bo'shatish qonunga zid.",
+    "mnemonic": "Yig'inga ketding — ishing joyida qoladi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun: harbiy yig'inlar kafolatlari",
+    "distractor_error": [
+      "kafolatni rozilikka bog'lash",
+      "kafolatni inkor etish",
+      "",
+      "kafolatni inkor etish"
+    ]
+  },
+  {
+    "q": "Fuqaro harbiy biletini yo'qotdi va «bu shunchaki qog'oz, kerak bo'lsa yangisini olaman» deb hisoblamoqda. Harbiy komissariat xodimi qanday tushuntirish beradi?",
+    "opts": [
+      "Bilet ahamiyatsiz — u faqat xizmat davrida kerak bo'ladi",
+      "Bilet yo'qolsa, fuqaro qayta xizmatga chaqiriladi",
+      "Bilet faqat harbiy qismda foydalaniladi, tinch hayotda kerak emas",
+      "Bilet harbiy hisob hujjati — yo'qolgani darhol xabar qilinadi va tiklanadi"
+    ],
+    "correct": 3,
+    "explanation": "Harbiy bilet — fuqaroning harbiy hisobga oid asosiy hujjati; u ishga qabul qilish, hujjatlarni rasmiylashtirish va safarbarlik hisobida talab qilinadi. Yo'qolganda belgilangan tartibda darhol xabar berilib, hujjat tiklanadi. Yo'qotish qayta chaqiruv asosi emas, biroq hujjatsizlik javobgarlik keltirib chiqaradi.",
+    "mnemonic": "Harbiy bilet — hisob hujjati, yo'qolsa tiklanadi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun: harbiy hisob hujjatlari",
+    "distractor_error": [
+      "hujjat ahamiyatini pasaytirish",
+      "oqibatni noto'g'ri ko'rsatish",
+      "qo'llanish doirasini toraytirish",
+      ""
+    ]
+  },
+  {
+    "q": "Muddatli xizmatni tugatgan yigit shartnoma asosida xizmatni davom ettirmoqchi. Uning sinfdoshi «shartnoma faqat ofitserlar bilan tuziladi» deb hisoblamoqda. To'g'ri javob qaysi?",
+    "opts": [
+      "Shartnoma qonuniy talablarga javob beradigan fuqarolar bilan tuziladi",
+      "Shartnoma faqat oliy harbiy ta'limni tugatganlar bilan tuziladi",
+      "Shartnoma faqat zaxiradagi ofitserlar bilan tuziladi",
+      "Shartnoma faqat chet el fuqarolari bilan tuzilishi mumkin"
+    ],
+    "correct": 0,
+    "explanation": "Shartnoma (kontrakt) asosidagi harbiy xizmat unvon bilan cheklanmaydi: u yosh, sog'liq, ma'lumot va tayyorgarlik bo'yicha qonunda belgilangan talablarga javob beradigan fuqarolar bilan tuziladi. Uni faqat ofitserlar yoki faqat oliy ma'lumotlilar bilan bog'lash noto'g'ri.",
+    "mnemonic": "Shartnoma — talabga javob berganga.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Fuqarolarning harbiy xizmatni o'tash tartibi to'g'risida»gi hujjatlar: shartnoma asosidagi xizmat",
+    "distractor_error": [
+      "",
+      "shartni asossiz cheklash",
+      "shartni asossiz cheklash",
+      "shartni asossiz cheklash"
+    ]
+  },
+  {
+    "q": "Harbiy xizmatchi navbatdagi unvon berilishini kutmoqda. U «unvon faqat xizmat muddati o'tishi bilan avtomatik beriladi» deb hisoblamoqda. Qaysi izoh to'g'ri?",
+    "opts": [
+      "Unvon faqat komandirning shaxsiy xohishi bilan beriladi",
+      "Unvon lavozim va belgilangan muddat hisobga olinib beriladi",
+      "Unvon faqat jangovar sharoitda berilishi mumkin",
+      "Unvon xizmatchining yozma arizasi asosida beriladi"
+    ],
+    "correct": 1,
+    "explanation": "Navbatdagi harbiy unvon egallab turgan lavozim bo'yicha nazarda tutilgan unvon va belgilangan xizmat muddati hisobga olingan holda, vakolatli shaxs tomonidan beriladi. U muddatning o'tishi bilan o'z-o'zidan berilmaydi, komandirning shaxsiy xohishiga yoki xizmatchining arizasiga ham bog'liq emas.",
+    "mnemonic": "Unvon — lavozim va muddat bo'yicha.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Harbiy xizmatni o'tash tartibi: harbiy unvonlar berish",
+    "distractor_error": [
+      "tartibni shaxsiy xohishga bog'lash",
+      "",
+      "shartni asossiz cheklash",
+      "tartibni arizaga bog'lash"
+    ]
+  },
+  {
+    "q": "Chaqiruv komissiyasi fuqaroni ko'rikdan o'tkazib, vaqtincha xizmatga yaroqsiz deb topdi. Fuqaro bundan «endi meni umuman chaqirishmaydi» degan xulosa chiqardi. Qanday aniqlik kiritiladi?",
+    "opts": [
+      "Xulosa to'g'ri — vaqtincha yaroqsizlik doimiy ozod qilishni bildiradi",
+      "Xulosa to'g'ri — qayta ko'rik faqat fuqaro xohlasa o'tkaziladi",
+      "Xulosa noto'g'ri — belgilangan muddatdan keyin qayta ko'rik o'tkaziladi",
+      "Xulosa noto'g'ri — fuqaro darhol xizmatga chaqiriladi"
+    ],
+    "correct": 2,
+    "explanation": "Vaqtincha yaroqsizlik davolanish yoki sog'liqni tiklash uchun beriladigan muddatni bildiradi: shu muddat o'tgach fuqaro qayta tibbiy ko'rikdan o'tkaziladi va yaroqlilik masalasi qaytadan hal qilinadi. Bu doimiy ozod qilish ham emas, darhol chaqirish ham emas.",
+    "mnemonic": "Vaqtincha — muddatli, doimiy emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun: yaroqlilik toifalari",
+    "distractor_error": [
+      "vaqtinchani doimiy deb bilish",
+      "qayta ko'rikni xohishga bog'lash",
+      "",
+      "muddatni inkor etish"
+    ]
+  },
+  {
+    "q": "Harbiy xizmatchi komandirdan qonunga ochiq zid bo'lgan buyruq oldi. U «buyruq — qonun, so'zsiz bajarish kerak» deb o'ylamoqda. Nizom va qonunchilikka ko'ra to'g'ri yo'l qaysi?",
+    "opts": [
+      "Buyruq har qanday holatda so'zsiz bajariladi, oqibat komandirga yuklanadi",
+      "Buyruq bajarilmaydi va bajarmaslik hech qanday tartibda rasmiylashtirilmaydi",
+      "Buyruq safdoshlar bilan muhokama qilinib, ovoz ko'pchiligi bilan hal qilinadi",
+      "Aniq jinoiy buyruq bajarilmaydi va bu haqda yuqori boshliqqa xabar beriladi"
+    ],
+    "correct": 3,
+    "explanation": "Harbiy xizmat yakkaboshchilikka asoslanadi va buyruq so'zsiz bajariladi, biroq bu qoida aniq jinoiy buyruqqa taalluqli emas: uni bajargan shaxs ham javobgarlikdan ozod bo'lmaydi. Bunday holatda buyruq bajarilmaydi va yuqori boshliq xabardor qilinadi; buyruqni jamoa ovoziga qo'yish esa harbiy boshqaruv tartibiga zid.",
+    "mnemonic": "Buyruq — qonun doirasida.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Ichki xizmat nizomi: yakkaboshchilik va buyruqni bajarish",
+    "distractor_error": [
+      "jinoiy buyruqni oqlash",
+      "tartibni e'tiborsiz qoldirish",
+      "boshqaruvni ovozga almashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Harbiy xizmatchi kechikib qaytgani uchun komandir unga intizomiy jazo berdi. Xizmatchi «bu jinoiy javobgarlik» deb hisoblab, sudga murojaat qilmoqchi. Ikki javobgarlik o'rtasidagi farqni qaysi javob to'g'ri ko'rsatadi?",
+    "opts": [
+      "Intizomiy javobgarlik nizom bo'yicha komandir, jinoiy javobgarlik esa sud tomonidan belgilanadi",
+      "Ikkalasi bir xil — farq faqat jazo miqdorida bo'ladi",
+      "Intizomiy javobgarlik faqat ofitserlarga, jinoiy javobgarlik askarlarga qo'llanadi",
+      "Jinoiy javobgarlik komandir, intizomiy javobgarlik sud tomonidan belgilanadi"
+    ],
+    "correct": 0,
+    "explanation": "Intizomiy javobgarlik harbiy intizom buzilganda nizomda belgilangan choralar doirasida komandir tomonidan qo'llanadi; jinoiy javobgarlik esa jinoyat sodir etilganda faqat sud hukmi bilan belgilanadi. Ikki javobgarlik turi bir xil emas va ular xizmatchining unvoniga qarab bo'linmaydi.",
+    "mnemonic": "Intizom — komandir, jinoyat — sud.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Intizomiy nizom: intizomiy javobgarlik; jinoyat qonunchiligi",
+    "distractor_error": [
+      "",
+      "farqni inkor etish",
+      "toifaga bog'lash",
+      "vakolatni almashtirish"
+    ]
+  },
+  {
+    "q": "Zaxiraga o'tkazilgan fuqaro «endi harbiy majburiyatim tugadi» deb hisoblamoqda. Harbiy komissariat xodimi qaysi izohni beradi?",
+    "opts": [
+      "Zaxiradagi fuqaro faqat o'z xohishi bilan yig'inga boradi",
+      "Zaxirada harbiy hisob va yig'inlarda qatnashish majburiyati saqlanadi",
+      "Zaxiraga o'tish barcha majburiyatlarni butunlay tugatadi",
+      "Zaxiradagi fuqaro faqat urush davrida hisobga olinadi"
+    ],
+    "correct": 1,
+    "explanation": "Zaxiraga o'tkazish faol harbiy xizmatning tugashini bildiradi, ammo harbiy majburiyat davom etadi: fuqaro harbiy hisobda turadi, belgilangan yig'inlarda qatnashadi va safarbarlik e'lon qilinganda chaqiriladi. Bu majburiyat xohishga bog'liq emas va faqat urush davri bilan cheklanmaydi.",
+    "mnemonic": "Zaxira — xizmat tugadi, majburiyat qoldi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun: zaxiradagi xizmat",
+    "distractor_error": [
+      "majburiyatni xohishga bog'lash",
+      "",
+      "majburiyatni tugatish",
+      "majburiyatni davrga bog'lash"
+    ]
+  },
+  {
+    "q": "Mamlakatda safarbarlik e'lon qilindi. To'rt fuqaro o'z holatini muhokama qilmoqda: biri zaxirada, ikkinchisi harbiy hisobdan chiqarilgan, uchinchisi muddatli xizmatda, to'rtinchisi chaqiruv yoshiga yetmagan. Safarbarlik chaqiruvi kimga taalluqli?",
+    "opts": [
+      "Chaqiruv yoshiga yetmagan fuqaroga",
+      "Muddatli xizmatni o'tayotgan xizmatchiga",
+      "Zaxirada, harbiy hisobda turgan fuqaroga",
+      "Harbiy hisobdan chiqarilgan fuqaroga"
+    ],
+    "correct": 2,
+    "explanation": "Safarbarlik chaqiruvi zaxirada turgan, ya'ni harbiy hisobda bo'lgan fuqarolarga taalluqli — aynan shu toifa qo'shimcha kuchlarni shakllantirish uchun chaqiriladi. Hisobdan chiqarilganlar va chaqiruv yoshiga yetmaganlar chaqirilmaydi; muddatli xizmatchi esa allaqachon safda bo'lgani uchun qayta chaqirilmaydi.",
+    "mnemonic": "Safarbarlik — zaxiradagilarni chaqiradi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "«Mudofaa to'g'risida»gi Qonun: safarbarlik",
+    "distractor_error": [
+      "yoshni e'tiborsiz qoldirish",
+      "safdagini qayta chaqirish",
+      "",
+      "hisobdan chiqqanni chaqirish"
+    ]
+  },
+  {
+    "q": "Harbiy xizmatchi ta'til va rag'batlantirish masalasini muhokama qilib, «bular komandirning shaxsiy marhamati, huquq emas» deb hisoblamoqda. To'g'ri izoh qaysi?",
+    "opts": [
+      "Ikkalasi ham xizmatchining so'rovi bo'yicha majburiy beriladi",
+      "Ikkalasi ham faqat shartnoma asosidagi xizmatchilarga taalluqli",
+      "Ta'til ham, rag'batlantirish ham faqat komandir marhamatiga bog'liq",
+      "Ta'til huquq, rag'batlantirish esa xizmat natijasiga ko'ra qo'llaniladigan chora"
+    ],
+    "correct": 3,
+    "explanation": "Ta'til qonun va nizomda belgilangan huquq bo'lib, u belgilangan tartibda beriladi. Rag'batlantirish esa xizmatdagi namunali natijalar uchun qo'llaniladigan chora bo'lib, u komandirning vakolati doirasida, xizmat natijasiga qarab qo'llanadi. Ikkalasini marhamat deb bilish ham, majburiy deb bilish ham noto'g'ri.",
+    "mnemonic": "Ta'til — huquq, rag'bat — natija uchun.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat va Intizomiy nizom: ta'til va rag'batlantirish",
+    "distractor_error": [
+      "chorani majburiy deb bilish",
+      "doirani toraytirish",
+      "huquqni marhamatga aylantirish",
+      ""
+    ]
+  },
+  {
+    "q": "Harbiy qismda xizmatchining moddiy ta'minoti masalasi ko'tarildi. Bir askar «ta'minot hajmi har bir qismda alohida belgilanadi» deb hisoblamoqda. To'g'ri izoh qaysi?",
+    "opts": [
+      "Ta'minot turlari va hajmi qonun hujjatlarida yagona tartibda belgilanadi",
+      "Ta'minot hajmini har bir qism komandiri mustaqil belgilaydi",
+      "Ta'minot faqat shartnoma asosidagi xizmatchilarga beriladi",
+      "Ta'minot hajmi xizmatchining shaxsiy so'roviga qarab o'zgaradi"
+    ],
+    "correct": 0,
+    "explanation": "Harbiy xizmatchilarning oziq-ovqat, kiyim-bosh, pul va tibbiy ta'minoti qonun hujjatlarida yagona tartibda belgilanadi — bu davlat kafolati bo'lib, qism darajasida yoki shaxsiy so'rov bo'yicha o'zgartirilmaydi va xizmat turiga qarab bekor qilinmaydi.",
+    "mnemonic": "Ta'minot — qonun bo'yicha, yagona tartibda.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Harbiy xizmatchilar maqomi to'g'risida»gi qonunchilik: moddiy ta'minot",
+    "distractor_error": [
+      "",
+      "tartibni mahalliylashtirish",
+      "doirani toraytirish",
+      "tartibni so'rovga bog'lash"
+    ]
+  },
+  {
+    "q": "Harbiy komissariatda fuqaro «xizmat joyini o'zim tanlayman, hujjatga shuni yozing» deb turib oldi. Xodim qanday tushuntirish beradi?",
+    "opts": [
+      "Xizmat joyi qura tashlash yo'li bilan aniqlanadi",
+      "Xizmat joyi ehtiyoj va tayyorgarlikka qarab tayinlanadi",
+      "Fuqaro xizmat joyini to'liq mustaqil tanlaydi",
+      "Xizmat joyi faqat yashash manziliga qarab belgilanadi"
+    ],
+    "correct": 1,
+    "explanation": "Harbiy xizmat joyi va harbiy-hisob mutaxassisligi Qurolli Kuchlarning ehtiyoji, fuqaroning sog'liq holati, ma'lumoti va tayyorgarligi hisobga olingan holda tayinlanadi. Bu masala fuqaroning shaxsiy tanlovi, yashash manzili yoki tasodif bilan hal qilinmaydi.",
+    "mnemonic": "Joyni ehtiyoj va tayyorgarlik belgilaydi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Harbiy xizmatni o'tash tartibi: xizmat joyiga tayinlash",
+    "distractor_error": [
+      "tartibni tasodifga bog'lash",
+      "",
+      "tanlovni fuqaroga berish",
+      "mezonni toraytirish"
+    ]
+  },
+  {
+    "q": "Xizmatni o'tayotgan askar og'ir kasallikka chalindi va harbiy-vrachlik komissiyasi uni xizmatga yaroqsiz deb topdi. Uning sherigi «endi u qismda yengilroq lavozimga o'tkaziladi» deb o'ylamoqda. Qonun bo'yicha to'g'ri yechim qaysi?",
+    "opts": [
+      "Askar xizmatni davom ettiradi, muddati esa uzaytiriladi",
+      "Askar shartnoma asosidagi xizmatga o'tkaziladi",
+      "Askar belgilangan tartibda muddatidan oldin xizmatdan bo'shatiladi",
+      "Askar qismda qoldirilib, faqat yengil vazifalar yuklanadi"
+    ],
+    "correct": 2,
+    "explanation": "Harbiy-vrachlik komissiyasi xizmatga yaroqsiz deb topgan xizmatchi belgilangan tartibda muddatidan oldin xizmatdan bo'shatiladi va zaxiraga yoki hisobdan chiqarishga yo'naltiriladi. Uni qismda yengil vazifada qoldirish, muddatini uzaytirish yoki shartnomaga o'tkazish qonunda nazarda tutilmagan.",
+    "mnemonic": "Yaroqsiz deb topildi — bo'shatiladi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Harbiy xizmatni o'tash tartibi: muddatidan oldin bo'shatish asoslari",
+    "distractor_error": [
+      "holatni og'irlashtirish",
+      "maqomni noto'g'ri o'zgartirish",
+      "",
+      "qarorni bajarmaslik"
+    ]
+  },
+  {
+    "q": "O'quvchi «harbiy xizmatga chaqirish to'g'risidagi qarorni harbiy komissar yakka o'zi qabul qiladi» deb hisoblamoqda. To'g'ri izoh qaysi?",
+    "opts": [
+      "Qarorni harbiy komissar shaxsan, yakka tartibda qabul qiladi",
+      "Qarorni qism komandiri chaqiruvdan keyin tasdiqlaydi",
+      "Qarorni mahalliy hokimlik moliyaviy imkoniyatga qarab qabul qiladi",
+      "Qarorni belgilangan tarkibdagi chaqiruv komissiyasi qabul qiladi"
+    ],
+    "correct": 3,
+    "explanation": "Harbiy xizmatga chaqirish, kechiktirish yoki ozod qilish to'g'risidagi qaror belgilangan tarkibdagi chaqiruv komissiyasi tomonidan, tibbiy ko'rik natijalari va hujjatlar asosida qabul qilinadi. Bu masala bir mansabdor shaxsning yakka qaroriga yoki moliyaviy imkoniyatga bog'liq emas.",
+    "mnemonic": "Chaqiruv qarori — komissiya qarori.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun: chaqiruv komissiyasi",
+    "distractor_error": [
+      "vakolatni yakkalashtirish",
+      "vakolatni noto'g'ri berish",
+      "vakolatni noto'g'ri berish",
+      ""
+    ]
+  },
+  {
+    "q": "Dars yakunida ikki o'quvchi bahslashib qoldi. Biri harbiy xizmatni o'tash tartibi faqat muddatli xizmatchilarga tegishli deb hisoblaydi, ikkinchisi esa u barcha xizmat turlarini qamrab oladi deydi. Kim haq va nima uchun?",
+    "opts": [
+      "Ikkinchisi haq — tartib muddatli, shartnoma va zaxira xizmatini qamrab oladi",
+      "Birinchisi haq — hujjat faqat muddatli xizmatga oid",
+      "Birinchisi haq — shartnoma xizmati mehnat qonunchiligi bilan tartibga solinadi",
+      "Ikkalasi ham nohaq — tartib faqat ofitserlarga nisbatan qo'llanadi"
+    ],
+    "correct": 0,
+    "explanation": "Harbiy xizmatni o'tash tartibi to'g'risidagi hujjatlar xizmatning barcha turlarini — muddatli, shartnoma asosidagi va zaxiradagi xizmatni — qamrab oladi hamda chaqirishdan bo'shatishgacha bo'lgan bosqichlarni tartibga soladi. Shartnoma asosidagi harbiy xizmat mehnat qonunchiligi bilan emas, harbiy qonunchilik bilan tartibga solinadi.",
+    "mnemonic": "Tartib — barcha xizmat turlariga.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Fuqarolarning harbiy xizmatni o'tash tartibi to'g'risida»gi hujjatlar: qamrov",
+    "distractor_error": [
+      "",
+      "qamrovni toraytirish",
+      "boshqa qonunchilikka bog'lash",
+      "qamrovni toraytirish"
+    ]
+  },
+  {
+    "q": "Dars davomida o'quvchi «Qurolli Kuchlar boshqa davlatlarni bosib olish uchun tuzilgan» degan fikrni aytdi. O'qituvchi qonunga tayanib, tashkil etilish maqsadini qanday izohlaydi?",
+    "opts": [
+      "QK ichki tartibni saqlash maqsadida tuzilgan tuzilmadir",
+      "QK suverenitet va hududiy yaxlitlikni himoya qilish uchun tuzilgan",
+      "QK boshqa davlatlar ustidan harbiy ustunlik uchun tuzilgan",
+      "QK asosan xalqaro operatsiyalarda qatnashish uchun tuzilgan"
+    ],
+    "correct": 1,
+    "explanation": "Qurolli Kuchlar davlat suvereniteti, hududiy yaxlitligi va aholining tinch hayotini har qanday tajovuzdan himoya qilish maqsadida tashkil etilgan. Bosqinchilik, harbiy ustunlik yoki ichki tartibni saqlash ularning maqsadi emas — oxirgisi boshqa huquqni muhofaza qiluvchi organlar zimmasida.",
+    "mnemonic": "Maqsad — himoya, bosqin emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Mudofaa to'g'risida»gi Qonun: Qurolli Kuchlarning maqsadi",
+    "distractor_error": [
+      "vazifani boshqa organga almashtirish",
+      "",
+      "maqsadni bosqinga bog'lash",
+      "maqsadni ikkinchi darajaliga almashtirish"
+    ]
+  },
+  {
+    "q": "Harbiy tayyorgarlik darsida o'quvchi «Qurolli Kuchlarga bevosita harbiy vazir qo'mondonlik qiladi» dedi. O'qituvchi qanday aniqlik kiritadi?",
+    "opts": [
+      "Qo'mondonlikni Oliy Majlis palatalari amalga oshiradi",
+      "Qo'mondonlikni mudofaa vaziri mustaqil amalga oshiradi",
+      "Oliy Bosh qo'mondon Prezident, vazirlik boshqaruvni yuritadi",
+      "Qo'mondonlikni Bosh shtab boshlig'i amalga oshiradi"
+    ],
+    "correct": 2,
+    "explanation": "Qurolli Kuchlarning Oliy Bosh qo'mondoni — O'zbekiston Respublikasi Prezidenti; mudofaa vazirligi va Bosh shtab esa o'z vakolatlari doirasida boshqaruv va tezkor rahbarlikni amalga oshiradi. Parlament qo'mondonlik qilmaydi — u qonunchilik va nazorat vakolatiga ega.",
+    "mnemonic": "Oliy Bosh qo'mondon — Prezident.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Mudofaa to'g'risida»gi Qonun: Qurolli Kuchlarga rahbarlik",
+    "distractor_error": [
+      "vakolatni almashtirish",
+      "vakolatni mutlaqlashtirish",
+      "",
+      "vakolatni almashtirish"
+    ]
+  },
+  {
+    "q": "Mashg'ulotda o'qituvchi qo'shin turlarining vazifalarini taqqoslamoqda. Havo makonini nazorat qilish, dushmanning havo hujumi vositalarini aniqlash va yo'q qilish vazifasi qaysi tuzilmaga yuklatilgan?",
+    "opts": [
+      "Quruqlikdagi qo'shinlarga yuklatilgan",
+      "Maxsus qo'shinlarga yuklatilgan",
+      "Muhandislik qo'shinlariga yuklatilgan",
+      "Havo hujumidan mudofaa qo'shinlariga"
+    ],
+    "correct": 3,
+    "explanation": "Havo makonini nazorat qilish, havo hujumi vositalarini o'z vaqtida aniqlash va zararsizlantirish — havo hujumidan mudofaa qo'shinlarining asosiy vazifasi. Quruqlikdagi qo'shinlar yer usti janglarini olib boradi, muhandislik va boshqa maxsus qo'shinlar esa jangovar ta'minot vazifalarini bajaradi.",
+    "mnemonic": "Osmonni HHM qo'shinlari qo'riqlaydi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Qurolli Kuchlar tuzilmasi: qo'shin turlari va vazifalari",
+    "distractor_error": [
+      "vazifani boshqa turga berish",
+      "vazifani boshqa turga berish",
+      "vazifani boshqa turga berish",
+      ""
+    ]
+  },
+  {
+    "q": "Bo'linma jangovar vazifani bajarish uchun daryodan o'tish, minalangan hududda yo'l ochish va istehkom qurish ishlarini bajarishi kerak. Bu vazifalar qaysi maxsus qo'shin turiga yuklatiladi?",
+    "opts": [
+      "Muhandislik qo'shinlariga yuklatiladi",
+      "Aloqa qo'shinlariga yuklatiladi",
+      "Razvedka bo'linmalariga yuklatiladi",
+      "Radiatsion himoya qo'shinlariga yuklatiladi"
+    ],
+    "correct": 0,
+    "explanation": "Suv to'siqlaridan o'tish, minalangan hududda yo'l ochish, istehkom va boshpanalar qurish — muhandislik qo'shinlarining vazifalari. Aloqa qo'shinlari boshqaruv aloqasini, razvedka ma'lumot yig'ishni, radiatsion va kimyoviy himoya qo'shinlari esa zararlangan hududdagi himoya va ishlovni ta'minlaydi.",
+    "mnemonic": "Yo'l, ko'prik, istehkom — muhandislar ishi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Qurolli Kuchlar tuzilmasi: maxsus qo'shinlar",
+    "distractor_error": [
+      "",
+      "vazifani boshqa turga berish",
+      "vazifani boshqa turga berish",
+      "vazifani boshqa turga berish"
+    ]
+  },
+  {
+    "q": "O'quvchi Milliy gvardiya va Ichki ishlar vazirligi qo'shinlarini Qurolli Kuchlar tarkibiga kiritdi. O'qituvchi qanday tuzatish kiritadi?",
+    "opts": [
+      "Bu tuzilmalar QK tarkibiga faqat safarbarlik e'lon qilinganda qo'shiladi",
+      "Bu tuzilmalar alohida vazifalarga ega, QK tarkibiy qismi emas",
+      "Tuzatish shart emas — bu tuzilmalar QK tarkibiy qismi hisoblanadi",
+      "Bu tuzilmalar QK tarkibiga faqat urush davrida kiritiladi"
+    ],
+    "correct": 1,
+    "explanation": "Qurolli Kuchlar tarkibiga quruqlikdagi qo'shinlar, harbiy-havo kuchlari, havo hujumidan mudofaa qo'shinlari va maxsus qo'shinlar kiradi. Milliy gvardiya, ichki ishlar organlari qo'shinlari va boshqa harbiylashtirilgan tuzilmalar o'z qonunchiligi asosida, alohida vazifalar bilan faoliyat yuritadi.",
+    "mnemonic": "QK — to'rt tarkib; qolgani alohida tuzilma.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "«Mudofaa to'g'risida»gi Qonun: Qurolli Kuchlar tarkibi",
+    "distractor_error": [
+      "shartli kiritish",
+      "",
+      "tuzilmani noto'g'ri kiritish",
+      "shartli kiritish"
+    ]
+  },
+  {
+    "q": "Qism komandiri bo'linma boshlig'iga vazifa berdi, keyin esa boshqa ofitser shu bo'linmaga to'g'ridan-to'g'ri boshqa buyruq berdi. Bo'linma boshlig'i chalkashib qoldi. Qaysi tamoyil buzilgan?",
+    "opts": [
+      "Doimiy jangovar shaylik tamoyili buzilgan",
+      "Xizmatchilarning tengligi tamoyili buzilgan",
+      "Yakkaboshchilik tamoyili buzilgan",
+      "Harbiy sirni saqlash tamoyili buzilgan"
+    ],
+    "correct": 2,
+    "explanation": "Yakkaboshchilik tamoyiliga ko'ra har bir bo'linma bevosita o'z komandiri orqali boshqariladi va buyruq boshqaruv zanjiri bo'ylab beriladi. Boshqa ofitserning to'g'ridan-to'g'ri buyruq berishi bu zanjirni buzadi va ikki xil vazifa to'qnashuviga olib keladi.",
+    "mnemonic": "Bir bo'linma — bir komandir.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Ichki xizmat nizomi: yakkaboshchilik tamoyili",
+    "distractor_error": [
+      "boshqa tamoyilni tanlash",
+      "boshqa tamoyilni tanlash",
+      "",
+      "boshqa tamoyilni tanlash"
+    ]
+  },
+  {
+    "q": "Yangi kelgan askar «boshliq» va «katta» tushunchalarini chalkashtirmoqda: u unvoni yuqori bo'lgan har bir xizmatchini o'zining bevosita boshlig'i deb hisoblamoqda. To'g'ri izoh qaysi?",
+    "opts": [
+      "Unvoni yuqori bo'lgan har bir xizmatchi bevosita boshliq hisoblanadi",
+      "Boshliq faqat bir xil unvondagi xizmatchilar orasidan tayinlanadi",
+      "Unvon umuman ahamiyatga ega emas, faqat yosh hisobga olinadi",
+      "Boshliq lavozim bo'yicha belgilanadi, unvoni yuqori xizmatchi esa katta hisoblanadi"
+    ],
+    "correct": 3,
+    "explanation": "Nizomga ko'ra boshliq lavozim bo'yicha belgilanadi: u xizmat bo'yicha buyruq berish huquqiga ega. Unvoni yuqori, lekin lavozim bo'yicha bo'ysunish aloqasi bo'lmagan xizmatchi «katta» hisoblanadi va u faqat nizom talablarini bajarishni talab qilishga haqli.",
+    "mnemonic": "Boshliq — lavozim bo'yicha, katta — unvon bo'yicha.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Ichki xizmat nizomi: boshliqlar va kattalar",
+    "distractor_error": [
+      "ikki tushunchani chalkashtirish",
+      "qoidani buzish",
+      "mezonni yo'qotish",
+      ""
+    ]
+  },
+  {
+    "q": "Harbiy qism tantanali marosimga tayyorlanmoqda. Komandir jangovar bayroqning saqlanishi va olib chiqilishiga alohida talab qo'ydi. Jangovar bayroq nimani anglatadi?",
+    "opts": [
+      "U qismning harbiy sha'ni, shijoati va jangovar an'analari ramzi",
+      "U qismning tantanali marosimlarda ishlatiladigan bezagi hisoblanadi",
+      "U qismning ichki tartib hujjatlaridan biri sanaladi",
+      "U qism komandirining shaxsiy mukofoti hisoblanadi"
+    ],
+    "correct": 0,
+    "explanation": "Jangovar bayroq — harbiy qismning sha'ni, shijoati va jangovar an'analarining ramzi; u qismning mavjudligi bilan bog'liq bo'lib, alohida tartibda saqlanadi va qo'riqlanadi. Uni bezak, hujjat yoki shaxsiy mukofot deb bilish ramzning mohiyatini tushunmaslikdir.",
+    "mnemonic": "Bayroq — qismning sha'ni.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi: harbiy qismning jangovar bayrog'i",
+    "distractor_error": [
+      "",
+      "ramzni bezakka tushirish",
+      "ramzni hujjatga tushirish",
+      "ramzni mukofotga tushirish"
+    ]
+  },
+  {
+    "q": "Harbiy intizom haqidagi darsda o'quvchi «intizom — bu jazodan qo'rqish» degan ta'rifni aytdi. O'qituvchi nizomga tayanib qanday ta'rif beradi?",
+    "opts": [
+      "Intizom — komandirning talabchanligi natijasi",
+      "Intizom — qonun va nizom talablariga qat'iy rioya",
+      "Intizom — jazo choralari tizimidan iborat",
+      "Intizom — kundalik tartibga rioya qilish"
+    ],
+    "correct": 1,
+    "explanation": "Harbiy intizom — har bir xizmatchi tomonidan qonunlar, harbiy nizomlar va komandir buyruqlarida belgilangan tartib va qoidalarga aniq hamda qat'iy rioya qilish. Uning asosi ongli munosabat va harbiy burchni anglash bo'lib, u jazodan qo'rqishga yoki bitta shaxsning talabchanligiga bog'lanmaydi.",
+    "mnemonic": "Intizom — ongli rioya, qo'rquv emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Intizomiy nizom: harbiy intizom tushunchasi",
+    "distractor_error": [
+      "ta'rifni shaxsga bog'lash",
+      "",
+      "ta'rifni jazoga tushirish",
+      "ta'rifni toraytirish"
+    ]
+  },
+  {
+    "q": "O'quvchi harbiy xizmatchilar toifalarini sanab, «askar, serjant, ofitser» dedi va ro'yxatni tugatdi. O'qituvchi ro'yxatga yana bir toifani qo'shishni so'radi. Qaysi javob to'g'ri?",
+    "opts": [
+      "Harbiy tibbiyot xodimlari toifasi",
+      "Harbiy o'qituvchilar toifasi",
+      "Praporshchiklar toifasi",
+      "Harbiy komissarlar toifasi"
+    ],
+    "correct": 2,
+    "explanation": "Harbiy xizmatchilar tarkibi askar va serjantlar, praporshchiklar hamda ofitserlar toifalariga bo'linadi. Harbiy komissarlar, tibbiyot xodimlari va o'qituvchilar alohida toifa emas — ular yuqoridagi tarkiblardan birida, egallab turgan lavozimiga ko'ra xizmat qiladi.",
+    "mnemonic": "Askar — serjant — praporshchik — ofitser.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Harbiy xizmatni o'tash tartibi: harbiy xizmatchilar tarkibi",
+    "distractor_error": [
+      "lavozimni toifa deb bilish",
+      "lavozimni toifa deb bilish",
+      "",
+      "lavozimni toifa deb bilish"
+    ]
+  },
+  {
+    "q": "Ikki harbiy xizmatchi bahslashmoqda: biri «harbiy qism» va «bo'linma» bir xil narsa deydi, ikkinchisi ularni farqlaydi. Qaysi izoh to'g'ri?",
+    "opts": [
+      "Ikkalasi bir xil — atamalar bir-birini almashtiradi",
+      "Bo'linma qismdan katta tuzilma hisoblanadi",
+      "Farq faqat xizmatchilar sonida, maqomda emas",
+      "Harbiy qism mustaqil maqomga ega, bo'linma uning tarkibida"
+    ],
+    "correct": 3,
+    "explanation": "Harbiy qism mustaqil maqomga, o'z nomi, jangovar bayrog'i va muhriga ega tuzilma bo'lib, bo'linma (vzvod, rota, batalyon) uning tarkibiga kiradi. Farq faqat sonda emas — u huquqiy maqomda ham namoyon bo'ladi.",
+    "mnemonic": "Qism — mustaqil, bo'linma — uning ichida.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Ichki xizmat nizomi: harbiy qism va bo'linma tushunchalari",
+    "distractor_error": [
+      "farqni inkor etish",
+      "ierarxiyani teskari qo'yish",
+      "farqni songa tushirish",
+      ""
+    ]
+  },
+  {
+    "q": "Harbiy qismga yangi kelgan askar qasamyod matnini o'qib, undagi majburiyatlarni sanab chiqdi: Vatanga sadoqat, Konstitutsiya va qonunlarga rioya, buyruqlarni bajarish, harbiy sirni saqlash. Bu majburiyatlarning umumiy huquqiy ma'nosi nimada?",
+    "opts": [
+      "Ular xizmat davomida bajarilishi shart bo'lgan majburiyat",
+      "Ular faqat ma'naviy va'da, huquqiy oqibat keltirmaydi",
+      "Ular faqat qasamyod qabul qilingan kuni amal qiladi",
+      "Ular faqat jangovar sharoitda kuchga kiradi"
+    ],
+    "correct": 0,
+    "explanation": "Harbiy qasamyod — rasmiy huquqiy hujjat bo'lib, unda qayd etilgan majburiyatlar butun xizmat davomida bajarilishi shart va ularning buzilishi javobgarlikka olib keladi. Qasamyodni ma'naviy va'da yoki bir kunlik marosim deb bilish uning huquqiy mohiyatini pasaytiradi.",
+    "mnemonic": "Qasamyod — bir kunlik marosim emas, doimiy majburiyat.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi: Harbiy qasamyodning huquqiy ahamiyati",
+    "distractor_error": [
+      "",
+      "huquqiy kuchni inkor etish",
+      "amal muddatini toraytirish",
+      "amal doirasini toraytirish"
+    ]
+  },
+  {
+    "q": "Bo'linma komandiri xizmatchilarga harbiy sirni saqlash talabini tushuntirmoqda. Bir askar «men internetda tarqalgan ma'lumotni takrorlasam, bu sir oshkor qilish emas» deb hisoblamoqda. To'g'ri izoh qaysi?",
+    "opts": [
+      "Askar nohaq — har qanday ma'lumotni tarqatish taqiqlanadi",
+      "Askar nohaq — maxfiy ma'lumotni tasdiqlash ham oshkor qilish hisoblanadi",
+      "Askar haq — ochiq manbadagi ma'lumot uchun javobgarlik yo'q",
+      "Askar haq, agar u ma'lumotni o'zgartirmasdan takrorlasa"
+    ],
+    "correct": 1,
+    "explanation": "Maxfiy ma'lumot boshqa manbada tarqalgan bo'lsa ham, uni tasdiqlash, izohlash yoki to'ldirish oshkor qilish hisoblanadi — chunki bunda taxmin aniq ma'lumotga aylanadi. Ayni paytda har qanday ma'lumotni tarqatish emas, balki aynan davlat va harbiy sirga oid ma'lumot taqiqlanadi.",
+    "mnemonic": "Tasdiqlash ham — oshkor qilish.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Ichki xizmat nizomi: davlat va harbiy sirni saqlash",
+    "distractor_error": [
+      "taqiqni haddan tashqari kengaytirish",
+      "",
+      "javobgarlikni inkor etish",
+      "shartli oqlash"
+    ]
+  },
+  {
+    "q": "Harbiy qismda navbatchi askar begona shaxsning hududga kirmoqchi bo'lganini ko'rdi. Begona shaxs «men shu qishloqda yashayman, tanishimni ko'rgani kirmoqchiman» dedi. Navbatchi qanday harakat qiladi?",
+    "opts": [
+      "Shaxsni kiritadi va hududda birga yurib turadi",
+      "Shaxsni kiritmaydi va hech kimga xabar bermaydi",
+      "Shaxsni kiritmaydi va navbatchi ofitserga xabar beradi",
+      "Shaxsni kiritadi, chunki u mahalliy aholi vakili"
+    ],
+    "correct": 2,
+    "explanation": "Harbiy qism hududiga kirish belgilangan tartibda, ruxsatnoma asosida amalga oshiriladi — mahalliy aholi vakili bo'lish yoki hamrohlik qilish bu tartibni almashtirmaydi. Navbatchi shaxsni kiritmaydi va vaziyat haqida navbatchi ofitserga darhol xabar beradi; xabar bermay qo'yish esa navbatchilik majburiyatini buzish hisoblanadi.",
+    "mnemonic": "Ruxsatsiz kirmaydi, xabar beriladi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi: harbiy qism hududiga kirish tartibi",
+    "distractor_error": [
+      "tartibni buzish",
+      "xabar berish majburiyatini bajarmaslik",
+      "",
+      "tartibni buzish"
+    ]
+  },
+  {
+    "q": "O'quvchi «chaqiruvga qadar boshlang'ich tayyorgarlik — bu maktabdagi oddiy fan, harbiy majburiyat bilan bog'liq emas» dedi. Qonunchilikka ko'ra qanday izoh beriladi?",
+    "opts": [
+      "O'quvchi haq — fan harbiy majburiyat bilan bog'liq emas",
+      "O'quvchi haq — fan faqat jismoniy tayyorgarlikni ko'zlaydi",
+      "O'quvchi nohaq — fan harbiy xizmatning bir qismi hisoblanadi",
+      "O'quvchi nohaq — fan umumiy harbiy majburiyatning tarkibiy qismi"
+    ],
+    "correct": 3,
+    "explanation": "Chaqiruvga qadar boshlang'ich tayyorgarlik umumiy harbiy majburiyatning tarkibiy qismi bo'lib, u fuqaroni xizmatga oldindan tayyorlashga qaratilgan. Ayni paytda u harbiy xizmatning o'zi emas: o'quvchi harbiy xizmatchi maqomini olmaydi va fan jismoniy tayyorgarlik bilan cheklanmaydi.",
+    "mnemonic": "CHQBT — majburiyatning qismi, xizmatning emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun: chaqiruvga qadar tayyorgarlik",
+    "distractor_error": [
+      "bog'liqlikni inkor etish",
+      "mazmunni toraytirish",
+      "maqomni oshirib yuborish",
+      ""
+    ]
+  },
+  {
+    "q": "Maktab direktori CHQBT mashg'ulotlari uchun o'quv qurollari va sinf jihozini ta'minlashni «harbiy komissariat ishi» deb hisoblamoqda. Qonunchilikka ko'ra qanday izoh beriladi?",
+    "opts": [
+      "Ta'minot ta'lim muassasasi zimmasida, komissariat ko'mak beradi",
+      "Ta'minot butunlay harbiy komissariat zimmasida",
+      "Ta'minot faqat ota-onalar hisobidan amalga oshiriladi",
+      "Ta'minot faqat Mudofaa vazirligi tomonidan tashkil etiladi"
+    ],
+    "correct": 0,
+    "explanation": "Chaqiruvga qadar tayyorgarlikni tashkil etish va moddiy-texnik bazani ta'minlash ta'lim muassasasi hamda tegishli davlat organlari zimmasida; harbiy komissariatlar esa metodik ko'mak, hisob va mashg'ulotlarni muvofiqlashtirish vazifasini bajaradi. Ta'minotni butunlay komissariatga yoki ota-onalar hisobiga yuklash qonunga mos emas.",
+    "mnemonic": "Baza — maktabda, metodika — komissariatda.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ta'lim muassasalarida chaqiruvga qadar tayyorgarlikni tashkil etish tartibi",
+    "distractor_error": [
+      "",
+      "mas'uliyatni almashtirish",
+      "mas'uliyatni ota-onaga yuklash",
+      "mas'uliyatni almashtirish"
+    ]
+  },
+  {
+    "q": "Harbiy xizmatchi hujjatlarni rasmiylashtirishda o'zi haqida noto'g'ri ma'lumot berdi va buni «kichik xato» deb hisoblamoqda. Bunday harakatning huquqiy oqibati qanday?",
+    "opts": [
+      "Oqibat faqat hujjatni qayta rasmiylashtirishdan iborat",
+      "Yolg'on ma'lumot berish javobgarlikka olib keladi",
+      "Oqibat yo'q — hujjat keyinchalik tuzatiladi",
+      "Oqibat faqat ogohlantirish bilan yakunlanadi"
+    ],
+    "correct": 1,
+    "explanation": "Harbiy hisob va xizmatga oid hujjatlarda bilib turib noto'g'ri ma'lumot berish qonunda belgilangan javobgarlikka olib keladi, chunki bu ma'lumot chaqiruv, tayinlash va safarbarlik hisobiga bevosita ta'sir qiladi. Hujjatni keyin tuzatish yoki qayta rasmiylashtirish javobgarlikni bekor qilmaydi.",
+    "mnemonic": "Yolg'on ma'lumot — kichik xato emas.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonun: hisob va javobgarlik",
+    "distractor_error": [
+      "oqibatni rasmiyatchilikka tushirish",
+      "",
+      "oqibatni inkor etish",
+      "oqibatni yengillashtirish"
+    ]
+  },
+  {
+    "q": "Harbiy qismda o'tkazilgan tekshiruvda bir xizmatchining qurolni belgilangan joyda saqlamagani aniqlandi. U «qurol yo'qolmadi-ku, demak buzilish yo'q» deb hisoblamoqda. To'g'ri izoh qaysi?",
+    "opts": [
+      "Buzilish faqat qurol yo'qolgan taqdirda qayd etiladi",
+      "Buzilish faqat jangovar sharoitda hisobga olinadi",
+      "Saqlash tartibini buzishning o'zi nizom buzilishi hisoblanadi",
+      "Xizmatchi haq — natija bo'lmasa, buzilish ham yo'q"
+    ],
+    "correct": 2,
+    "explanation": "Nizom talablarining buzilishi oqibat kelib chiqishiga bog'liq emas: qurolni belgilangan joyda saqlamaslikning o'zi intizomiy buzilish hisoblanadi, chunki u yo'qolish va baxtsiz hodisa xavfini yaratadi. Buzilishni faqat natija yoki jangovar sharoit bilan bog'lash xavfsizlik tizimini ma'nosiz qiladi.",
+    "mnemonic": "Buzilish — natijadan oldin.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Ichki xizmat nizomi: qurol va o'q-dorini saqlash tartibi",
+    "distractor_error": [
+      "buzilishni natijaga bog'lash",
+      "buzilishni sharoitga bog'lash",
+      "",
+      "buzilishni natijaga bog'lash"
+    ]
+  },
+  {
+    "q": "Harbiy qismda yong'in xavfsizligi yo'riqnomasi bilan tanishtirish o'tkazilmoqda. Bir askar «men fuqarolikda o'qiganman, imzo qo'yaman-u, tanishtirishga hojat yo'q» dedi. To'g'ri izoh qaysi?",
+    "opts": [
+      "Askar haq — oldingi bilim tanishtirishni almashtiradi",
+      "Askar haq, agar u yo'riqnomaga imzo qo'ygan bo'lsa",
+      "Tanishtirish faqat yangi kelganlarga o'tkaziladi",
+      "Tanishtirish belgilangan tartibda, davriy o'tkaziladi"
+    ],
+    "correct": 3,
+    "explanation": "Xavfsizlik yo'riqnomasi bilan tanishtirish aynan shu qism, uning binolari, texnikasi va shart-sharoitlariga oid bo'lgani uchun belgilangan tartibda o'tkaziladi; oldingi umumiy bilim yoki imzoning o'zi uni almashtirmaydi. Tanishtirish faqat yangi kelganlar bilan ham cheklanmaydi — u davriy ravishda takrorlanadi.",
+    "mnemonic": "Imzo emas — tanishtirish muhim.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi: xavfsizlik talablari bilan tanishtirish",
+    "distractor_error": [
+      "tanishtirishni bilimga almashtirish",
+      "tanishtirishni imzoga almashtirish",
+      "doirani toraytirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'quvchi «harbiy xizmatchining huquqlari faqat nizomda yozilgan, qonunda emas» degan fikrni bildirdi. O'qituvchi qanday aniqlik kiritadi?",
+    "opts": [
+      "Huquqlar Konstitutsiya va qonunlar bilan belgilanadi",
+      "Huquqlar faqat harbiy nizomlar bilan belgilanadi",
+      "Huquqlar faqat komandir buyruqlari bilan belgilanadi",
+      "Huquqlar faqat shartnoma matnida belgilanadi"
+    ],
+    "correct": 0,
+    "explanation": "Harbiy xizmatchining huquq va majburiyatlari Konstitutsiya hamda qonunlar bilan belgilanadi; harbiy nizomlar bu normalarni xizmat sharoitiga moslab aniqlashtiradi va ularni bajarish tartibini ko'rsatadi. Buyruq yoki shartnoma qonun bilan belgilangan huquqlarni cheklay olmaydi.",
+    "mnemonic": "Qonun beradi — nizom aniqlashtiradi.",
+    "topicId": 0,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "«Harbiy xizmatchilar maqomi to'g'risida»gi qonunchilik va harbiy nizomlar",
+    "distractor_error": [
+      "",
+      "manbani toraytirish",
+      "manbani buyruqqa tushirish",
+      "manbani shartnomaga tushirish"
+    ]
+  }
+]

@@ -1,0 +1,354 @@
+[
+  {
+    "q": "Radio orqali «Diqqat, hamma!» signali berilgach, aholi punktida ikki xil xabar ketma-ket e'lon qilindi: biri havo hujumi, ikkinchisi radiatsiya xavfi haqida. Bir fuqaro ikkala holatda ham bir xil harakat qilmoqchi bo'ldi. Bu ikki signal bo'yicha harakat nima bilan farq qiladi?",
+    "opts": [
+      "Havo hujumida himoya vositasi kiyiladi, radiatsiya xavfida panaga tushiladi",
+      "Ikkala signalda ham faqat panoh joyga tushish talab etiladi",
+      "Ikkala signalda ham faqat himoya vositasini kiyish talab etiladi",
+      "Havo hujumida panaga tushiladi, radiatsiya xavfida himoya vositasi kiyiladi"
+    ],
+    "correct": 3,
+    "explanation": "«Diqqat, hamma!» signali faqat e'tiborni qaratadi — asosiy ko'rsatma undan keyingi matnda beriladi. Havo hujumi xavfida asosiy chora — zudlik bilan himoya inshootiga tushish, radiatsiya xavfida esa nafas a'zolari va terini himoya qiluvchi vositalarni kiyish, yod preparatini qabul qilish va berkitilgan binoda qolish talab etiladi.",
+    "mnemonic": "Havo hujumi — panaga; radiatsiya — himoya vositasiga.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — ogohlantirish signallari va ular bo'yicha harakat",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "ikki signal bo'yicha harakat o'zaro almashtirilgan",
+      "har xil tahdidga bitta universal chorani qo'llash",
+      "himoya vositasini har qanday tahdidga yetarli deb hisoblash",
+      ""
+    ]
+  },
+  {
+    "q": "Fuqaro muhofazasi darsida o'quvchi «aholini himoya qilish — bu panoh joy qurish demakdir» dedi va boshqa choralarni sanay olmadi. O'qituvchi himoya tizimi kengroq ekanini tushuntirdi. Aholini himoya qilishning asosiy usullari qaysilar?",
+    "opts": [
+      "Himoya inshootlariga joylash va tibbiy yordam ko'rsatishni tashkil etish",
+      "Evakuatsiya va zararlangan hududni zararsizlantirish ishlari",
+      "Ogohlantirish tizimi va qutqaruv ishlarini tashkil etish",
+      "Himoya inshootlariga joylash, evakuatsiya va himoya vositalari bilan ta'minlash"
+    ],
+    "correct": 3,
+    "explanation": "Aholini himoya qilishning uchta asosiy usuli birgalikda qo'llaniladi: himoya inshootlariga joylashtirish, xavfli hududdan evakuatsiya qilish va yakka himoya vositalari bilan ta'minlash. Tibbiy yordam, zararsizlantirish va qutqaruv ishlari muhim, ammo ular oqibatni bartaraf etishga qaratilgan bo'lib, himoyaning o'zi emas.",
+    "mnemonic": "Panoh, evakuatsiya, himoya vositasi — uchtasi birga.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — aholini himoya qilish usullari",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "himoya usullaridan birini oqibatni bartaraf etish chorasi bilan almashtirish",
+      "himoya usullarining bir qismini tushirib, tiklash ishlarini qo'shish",
+      "himoya usullarini boshqaruv tadbirlari bilan almashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Qishloqda panoh joy tanlanmoqda: birinchisi mustahkam beton to'sinli, germetik eshikli va havo tozalash qurilmasiga ega, ikkinchisi shunchaki yerto'la, uchinchisi ariq bo'ylab qazilgan tor chuqurlik. Mas'ul shaxs ularni bir xil deb hisobladi. Bu inshootlar himoya darajasi bo'yicha qanday farqlanadi?",
+    "opts": [
+      "Boshpana eng yuqori himoya beradi, oddiy panoh joy esa faqat qisman himoya qiladi",
+      "Oddiy panoh joy eng yuqori himoya beradi, boshpana esa qisman himoya qiladi",
+      "Uchala inshoot ham bir xil himoya darajasiga ega hisoblanadi",
+      "Himoya darajasi inshoot turiga emas, faqat uning hajmiga bog'liq"
+    ],
+    "correct": 0,
+    "explanation": "Germetik eshikli, havo tozalash qurilmasiga ega mustahkam boshpana barcha zarar yetkazuvchi omillardan, shu jumladan zaharlovchi moddalar va radioaktiv changdan himoya qiladi. Moslashtirilgan yerto'la asosan radiatsiyadan va vayronalardan saqlaydi, oddiy qazilgan chuqurlik esa faqat zarba to'lqini va parchalar ta'sirini kamaytiradi.",
+    "mnemonic": "Germetiklik bor — himoya to'liq; yo'q — qisman.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — himoya inshootlarining turlari",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "inshootlarning himoya darajasi teskari tartibda baholangan",
+      "turli konstruksiyalarni himoya jihatidan tenglashtirish",
+      "himoya darajasini faqat o'lchamga bog'lash"
+    ]
+  },
+  {
+    "q": "Ombordan gazniqob olgan askar uni kiyib ko'rdi: niqob yuzga bo'sh yopishdi, chetlaridan havo o'tdi. U «katta bo'lsa nafas olish yengil» deb shu holda qoldirdi. Instruktor bu himoyani butunlay bekor qilishini aytdi. Gazniqob o'lchami qanday tanlanadi?",
+    "opts": [
+      "Eng katta raqamdagi niqob olinadi, chunki u nafasni yengillashtiradi",
+      "Eng kichik raqamdagi niqob olinadi, chunki u zichroq yopishadi",
+      "O'lcham ahamiyatsiz, chunki tasmalar yordamida sozlab olinadi",
+      "Bosh o'lchovi olinib, unga mos raqamdagi niqob tanlanadi"
+    ],
+    "correct": 3,
+    "explanation": "Gazniqob faqat yuzga zich yopishgandagina himoya beradi: chetidan o'tgan havo filtrni butunlay chetlab o'tadi va zaharlangan havo bevosita nafas yo'liga kiradi. Shuning uchun bosh o'lchovi maxsus tartibda o'lchanadi va shunga mos raqamdagi niqob beriladi; tasmalar bilan sozlash noto'g'ri o'lchamni to'g'rilay olmaydi.",
+    "mnemonic": "Zich yopishmasa — filtr ishlamaydi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — gazniqob o'lchamini tanlash",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "qulaylikni himoya samaradorligidan ustun qo'yish",
+      "zichlikni kichik o'lcham bilan ta'minlashga urinish",
+      "o'lcham talabini sozlash imkoniyati bilan bekor qilish",
+      ""
+    ]
+  },
+  {
+    "q": "Zavodda changli sharoitda ishlagan xodim radioaktiv chang zonasida ham o'sha respiratordan foydalanmoqchi bo'ldi, keyin esa xuddi shu respiratorda zaharlovchi gaz tarqagan hududga kirdi. Mutaxassis ikkinchi qarorni halokatli deb baholadi. Respirator va gazniqobning himoya doirasi qanday farq qiladi?",
+    "opts": [
+      "Respirator changdan, gazniqob esa bug' va gazlardan ham himoya qiladi",
+      "Respirator bug' va gazlardan, gazniqob esa faqat changdan himoya qiladi",
+      "Ikkalasi ham bir xil himoya beradi, faqat konstruksiyasi farq qiladi",
+      "Respirator terini, gazniqob esa nafas a'zolarini himoya qiladi"
+    ],
+    "correct": 0,
+    "explanation": "Respirator aerozol va chang zarrachalarini, shu jumladan radioaktiv changni ushlab qoladi, ammo gaz va bug' holidagi moddalarni o'tkazib yuboradi. Gazniqob esa ko'mir-tutuvchi filtrga ega bo'lib, aerozollar bilan birga bug' va gazlarni ham tutadi hamda ko'z va yuzni qoplaydi.",
+    "mnemonic": "Respirator — chang; gazniqob — chang va gaz.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — nafas a'zolarini himoya vositalari",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "ikki vositaning himoya doirasi o'zaro almashtirilgan",
+      "himoya doirasidagi jiddiy farqni shakliy farqqa qisqartirish",
+      "nafas himoyasi vositasini teri himoyasi vositasi bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "Zaharlangan hududga kiradigan guruh gazniqob taqdi, ammo qo'l va oyoqlari ochiq qoldi va ular teri orqali ta'sir qiluvchi modda zonasidan o'tishi kerak edi. Komandir jihozlanish to'liq emasligini aytdi. Teri-yara qiluvchi moddalar zonasida qanday himoya talab etiladi?",
+    "opts": [
+      "Nafas himoyasi kiyilib, shamol yo'nalishiga qarab yuriladi",
+      "Nafas himoyasi bilan birga teri himoya komplekti kiyiladi",
+      "Nafas himoyasi kiyilib, ochiq teri zararsizlantiruvchi bilan artiladi",
+      "Nafas himoyasi kiyilib, harakat tezligi imkon qadar oshiriladi"
+    ],
+    "correct": 1,
+    "explanation": "Teri orqali ta'sir qiluvchi moddalar tomchi va bug' holida ochiq teriga tushib, gazniqob himoyasini butunlay chetlab o'tadi. Shuning uchun bunday zonada nafas a'zolari himoyasi bilan birga plash, chulki va qo'lqopdan iborat teri himoya komplekti kiyiladi; tezlik yoki shamol yo'nalishi bu himoyaning o'rnini bosa olmaydi.",
+    "mnemonic": "Teri orqali ta'sir bo'lsa — teri ham yopiladi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — teri himoya vositalari",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "himoya yetishmovchiligini meteorologik omilga tayanib qoplash",
+      "",
+      "himoyani modda tegishidan keyingi ishlov bilan almashtirish",
+      "himoya yetishmovchiligini tezlik bilan qoplashga urinish"
+    ]
+  },
+  {
+    "q": "Zararlangan hududdan qaytgan bo'linmada har bir xizmatchining olgan nurlanish miqdorini bilish zarurati tug'ildi. Ta'minot boshlig'i bunga hududdagi nurlanish darajasini o'lchaydigan asbobni ishlatmoqchi bo'ldi. Bu ikki vazifa uchun qanday asboblar mo'ljallangan?",
+    "opts": [
+      "Hudud darajasiga individual dozimetr, shaxsiy hisobga rentgenmetr",
+      "Ikkala vazifaga ham bitta universal asbob ishlatiladi",
+      "Ikkala vazifa ham kimyoviy razvedka asbobi bilan hal qilinadi",
+      "Hudud darajasiga rentgenmetr, shaxsiy hisobga individual dozimetr"
+    ],
+    "correct": 3,
+    "explanation": "Rentgenmetr hududdagi nurlanish quvvatini, ya'ni ma'lum joyda birlik vaqtdagi darajani o'lchaydi va razvedka uchun ishlatiladi. Individual dozimetr esa har bir xizmatchida bo'lib, u to'plagan umumiy nurlanish dozasini qayd etadi — aynan shu ko'rsatkich odamning jangovar qobiliyati va tibbiy holatini baholashga asos bo'ladi.",
+    "mnemonic": "Rentgenmetr — joyni, dozimetr — odamni o'lchaydi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — dozimetrik nazorat asboblari",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "ikki asbobning vazifasi o'zaro almashtirilgan",
+      "turli o'lchov vazifalarini bitta asbobga yuklash",
+      "radiatsion nazoratni kimyoviy razvedka bilan chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Hududda noma'lum hidli bug' tarqalgani aniqlandi va uning turini bilish zarur. Razvedkachi radiatsiya asbobini olib chiqdi, u esa hech qanday ko'rsatkich bermadi va guruh «xavf yo'q» degan xulosaga keldi. Bu xulosa nima uchun xato?",
+    "opts": [
+      "Radiatsiya asbobi kimyoviy moddani umuman aniqlamaydi",
+      "Radiatsiya asbobi kimyoviy moddani sozlangandan keyin aniqlaydi",
+      "Bug' holidagi moddalar hech qanday asbob bilan aniqlanmaydi",
+      "Hid sezilmagani kimyoviy xavf yo'qligini bildiradi"
+    ],
+    "correct": 0,
+    "explanation": "Radiatsiya asboblari ionlashtiruvchi nurlanishga javob beradi va zaharlovchi kimyoviy moddaga umuman ta'sirlanmaydi — uning ko'rsatkich bermasligi kimyoviy xavf yo'qligini isbotlamaydi. Kimyoviy moddaning turi va konsentratsiyasi maxsus indikator naychalari bilan ishlaydigan kimyoviy razvedka asbobi orqali aniqlanadi.",
+    "mnemonic": "Har xavfga o'z asbobi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — kimyoviy razvedka asbobi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "asbobning fizik ish prinsipini e'tiborsiz qoldirish",
+      "kimyoviy razvedka imkoniyatini butunlay inkor qilish",
+      "xavf borligini hid sezishga bog'lab qo'yish"
+    ]
+  },
+  {
+    "q": "Zaharlangan hududdan chiqqan bo'linma yuvinish punktiga yetib borgunga qadar bir necha soat yo'l yurishi kerak. Komandir «punktga yetganda hammasini qilamiz» deb, joyida hech qanday chora ko'rmadi. Bunday holatda qanday ishlov o'tkazilishi kerak edi?",
+    "opts": [
+      "Hech qanday ishlov berilmaydi, punktgacha kutiladi",
+      "Qisman sanitariya ishlovi — ochiq teri va kiyimning zararlangan joylari",
+      "To'liq sanitariya ishlovi — butun tana yuvilib, kiyim almashtiriladi",
+      "Faqat kiyim almashtiriladi, teriga ishlov berilmaydi"
+    ],
+    "correct": 1,
+    "explanation": "Qisman sanitariya ishlovi dala sharoitida, imkon topilishi bilan darhol o'tkaziladi: ochiq teri, ko'z, og'iz va kiyimning zararlangan joylari yakka zararsizlantirish paketi vositalari bilan ishlanadi. To'liq ishlov esa maxsus punktda amalga oshiriladi, ammo unga qadar o'tgan har bir soat modda ta'sirini kuchaytiradi.",
+    "mnemonic": "Punktgacha kutma — avval qisman ishlov.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — qisman va to'liq sanitariya ishlovi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "har qanday chorani kechiktirib, ta'sir vaqtini uzaytirish",
+      "",
+      "dala sharoitida bajarib bo'lmaydigan hajmni talab qilish",
+      "ishlovni faqat kiyim bilan cheklab, teri ta'sirini unutish"
+    ]
+  },
+  {
+    "q": "Aholi punktida o'ta xavfli yuqumli kasallik aniqlangach, mutaxassislar ikki xil rejim taklif qildi: birida hududga kirish va undan chiqish butunlay to'xtatiladi, ikkinchisida esa aholi harakati cheklanib, tibbiy kuzatuv o'rnatiladi. Rahbar ikkalasini bir xil deb hisobladi. Karantin va observatsiya nima bilan farq qiladi?",
+    "opts": [
+      "Karantinda kuzatuv o'rnatiladi, observatsiyada hudud to'liq izolyatsiya qilinadi",
+      "Ikkala rejim ham bir xil, faqat qo'llanish muddati bilan farq qiladi",
+      "Karantin faqat hayvonlarga, observatsiya faqat odamlarga nisbatan qo'llanadi",
+      "Karantinda hudud to'liq izolyatsiya qilinadi, observatsiyada kuzatuv o'rnatiladi"
+    ],
+    "correct": 3,
+    "explanation": "Karantin — eng qat'iy rejim bo'lib, unda o'choq to'liq izolyatsiya qilinadi, hududga kirish va undan chiqish taqiqlanadi hamda qo'riqlash tashkil etiladi. Observatsiya esa yumshoqroq rejim: aholi harakati cheklanadi, tibbiy kuzatuv va profilaktik tadbirlar o'tkaziladi, ammo to'liq izolyatsiya joriy etilmaydi.",
+    "mnemonic": "Karantin — yopiq; observatsiya — kuzatuv ostida.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — karantin va observatsiya rejimlari",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "ikki rejimning mazmuni o'zaro almashtirilgan",
+      "rejimlar orasidagi mohiyat farqini muddatga qisqartirish",
+      "rejimlarni qo'llanish ob'ektiga qarab noto'g'ri ajratish",
+      ""
+    ]
+  },
+  {
+    "q": "Vayron bo'lgan bino oldiga yetib kelgan qutqaruv guruhi darhol vayronalarni ko'chira boshladi, hududda gaz sizishi va osilib qolgan devor borligini tekshirmadi. Ish boshida ikkinchi portlash yuz berdi. Qutqaruv ishlari qanday ketma-ketlikda tashkil etiladi?",
+    "opts": [
+      "Razvedka o'tkaziladi, yo'llar ochiladi, so'ng qutqarish va yordam boshlanadi",
+      "Qutqarish darhol boshlanadi, razvedka esa ish davomida o'tkaziladi",
+      "Yo'llar ochiladi, so'ng razvedka va qutqarish bir vaqtda olib boriladi",
+      "Birinchi yordam ko'rsatiladi, so'ng razvedka va vayronalarni ko'chirish boshlanadi"
+    ],
+    "correct": 0,
+    "explanation": "Qutqaruv ishlari har doim razvedkadan boshlanadi: o'choqdagi vaziyat, ikkilamchi xavf manbalari — gaz sizishi, elektr tarmog'i, o'pirilish ehtimoli aniqlanadi. Shundan keyin texnika va odamlar uchun yo'llar ochiladi va faqat undan so'ng qutqarish hamda yordam ko'rsatishga o'tiladi; tartib buzilsa, qutqaruvchilarning o'zi halok bo'ladi.",
+    "mnemonic": "Avval razvedka, keyin qutqaruv.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — qutqaruv ishlarining tartibi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "razvedka bosqichini o'tkazib, qutqaruvchilarni xavf ostiga qo'yish",
+      "razvedkani kechiktirib, yo'l ochish paytida xavfni aniqlamaslik",
+      "bosqichlar tartibini buzib, yordamni razvedkadan oldinga qo'yish"
+    ]
+  },
+  {
+    "q": "Vayrona ostidan odam ovozi eshitildi. Qutqaruvchi tepadagi katta beton plitani ko'tarish uchun uni yon tomonga ag'darmoqchi bo'ldi, natijada ostidagi bo'shliq o'pirilib tushishi mumkin edi. Tajribali qutqaruvchi boshqa usulni ko'rsatdi. Vayrona ostidagi odamga qanday yetib boriladi?",
+    "opts": [
+      "Texnika bilan bir yo'la ko'chiriladi, chunki vaqt cheklangan",
+      "Vayrona yuqoridan bosqichma-bosqich olinadi, konstruksiya mustahkamlanadi",
+      "Eng katta bo'lak birinchi bo'lib ag'dariladi, qolgani keyin olinadi",
+      "Vayrona chetidan tunnel qazilib, plitalarga tegilmaydi"
+    ],
+    "correct": 1,
+    "explanation": "Vayrona bo'laklari bir-biriga tayanib turadi, shuning uchun katta plitani ag'darish qolgan konstruksiyaning o'pirilishiga va ostidagi odamning halok bo'lishiga olib keladi. To'g'ri usul — vayronani yuqoridan bosqichma-bosqich, ehtiyotkorlik bilan olish va ochilgan bo'shliqni tayanchlar bilan mustahkamlab borish.",
+    "mnemonic": "Yuqoridan asta ol, tayanch qo'y.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — vayronalar ostidan qutqarish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "tezlikni jabrlanuvchi xavfsizligidan ustun qo'yish",
+      "",
+      "konstruksiyaning o'zaro tayanishini hisobga olmaslik",
+      "jabrlanuvchiga yetib borish yo'lini asossiz uzaytirish"
+    ]
+  },
+  {
+    "q": "Server xonasidagi elektr shchitida yong'in chiqdi va tarmoq hali uzilmagan. Navbatchi shlang tortib, olovga suv sepmoqchi bo'ldi. Xavfsizlik muhandisi uni to'xtatdi. Kuchlanish ostidagi elektr uskunasidagi yong'inda qanday o't o'chirish vositasi ishlatiladi?",
+    "opts": [
+      "Faqat qum sepish orqali o't o'chiriladi",
+      "Yong'in o'z-o'zidan so'ngunga qadar kutiladi",
+      "Uglekislotali yoki kukunli o't o'chirgich ishlatiladi",
+      "Suv va ko'pikli o't o'chirgich ishlatiladi"
+    ],
+    "correct": 2,
+    "explanation": "Suv va ko'pik elektr tokini o'tkazadi, shuning uchun kuchlanish ostidagi uskunaga sepilganda o't o'chiruvchining o'zi tok urishidan halok bo'lishi mumkin. Bunday holatda tok o'tkazmaydigan uglekislotali yoki kukunli o't o'chirgich ishlatiladi; imkon bo'lsa, avval tarmoq uziladi.",
+    "mnemonic": "Tok ostida suv yo'q — uglekislota yoki kukun.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — elektr uskunasidagi yong'inni o'chirish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "samarali vositalarni inkor qilib, imkoniyatni tor cheklash",
+      "yong'inga qarshi harakatsizlikni tanlash",
+      "",
+      "tok o'tkazuvchi vositani kuchlanish ostida qo'llash"
+    ]
+  },
+  {
+    "q": "Panoh joyga joylashgan guruhda bir necha soatdan keyin havo og'irlashdi, odamlar bosh og'rig'idan shikoyat qildi. Mas'ul shaxs eshikni ochib shamollatmoqchi bo'ldi, garchi tashqarida zararlangan havo bo'lsa ham. Germetik boshpanada havo qanday ta'minlanadi?",
+    "opts": [
+      "Eshik davriy ochilib, tashqi havo bilan almashtiriladi",
+      "Havo almashtirilmaydi, ichkaridagi zaxira yetarli hisoblanadi",
+      "Havo faqat tabiiy tirqishlar orqali kirib chiqadi",
+      "Filtr-shamollatish qurilmasi orqali tozalangan havo beriladi"
+    ],
+    "correct": 3,
+    "explanation": "Germetik boshpana filtr-shamollatish qurilmasi bilan jihozlanadi: tashqi havo filtrlardan o'tkazilib, radioaktiv chang, zaharlovchi modda va bakterial aerozollardan tozalangan holda ichkariga beriladi. Eshikni ochish germetiklikni buzib, aynan himoya qilinayotgan omilni ichkariga kiritadi.",
+    "mnemonic": "Boshpanada havo eshikdan emas, filtrdan keladi.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — boshpanani havo bilan ta'minlash",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "germetiklikni buzib, zararlangan havoni ichkariga kiritish",
+      "yopiq hajmda havo zaxirasini cheksiz deb hisoblash",
+      "germetik inshootda tabiiy shamollatishga tayanish",
+      ""
+    ]
+  },
+  {
+    "q": "Ta'minot boshlig'i yakka himoya vositalarini bitta qulflangan xonada saqlaydi va kalit faqat o'zida turadi. Signal berilganda shaxsiy tarkibga vositalarni tarqatish uchun o'n besh daqiqadan ortiq vaqt ketdi va bo'linma himoyasiz qoldi. Yakka himoya vositalarini saqlashda qanday talab qo'yiladi?",
+    "opts": [
+      "Signal berilganda tez olinadigan holatda saqlanishi kerak",
+      "Bir joyda, qulf ostida markazlashtirilgan holda saqlanishi kerak",
+      "Faqat mashg'ulot kunlari tarqatib, keyin yig'ib olinishi kerak",
+      "Har bir xizmatchining shaxsiy javonida yopiq holda turishi kerak"
+    ],
+    "correct": 0,
+    "explanation": "Yakka himoya vositasining qiymati uni kiyishga ketadigan vaqt bilan o'lchanadi: signal berilgandan keyin bir necha daqiqa kechikish uni butunlay foydasiz qiladi. Shuning uchun ular shaxsiy tarkib joylashgan joyga yaqin, tez olinadigan tartibda saqlanadi va har bir xizmatchi o'z vositasining o'rnini biladi.",
+    "mnemonic": "Kech olingan himoya — himoya emas.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — yakka himoya vositalarini saqlash",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "saqlash qulayligini tez foydalanish talabidan ustun qo'yish",
+      "himoya vositasini o'quv jihozi deb hisoblash",
+      "vositaga yetib borish vaqtini e'tiborsiz qoldirish"
+    ]
+  },
+  {
+    "q": "Fuqaro muhofazasi mashg'ulotida o'quvchi «bu tizim faqat urush davrida ishlaydi, tinchlik davrida undan foyda yo'q» dedi. O'qituvchi so'nggi yillarda tizim ko'proq boshqa vazifalarni bajarganini aytdi. Fuqaro muhofazasi tizimi tinchlik davrida qanday vazifani bajaradi?",
+    "opts": [
+      "Himoya inshootlarini qurish vazifasi bilan chegaralanadi",
+      "Tabiiy va texnogen favqulodda vaziyatlar oqibatini bartaraf etadi",
+      "Harbiy qismlarni safarbarlikka tayyorlash bilan cheklanadi",
+      "Aholiga harbiy tayyorgarlik berish doirasida qoladi"
+    ],
+    "correct": 1,
+    "explanation": "Fuqaro muhofazasi tizimi urush davri uchun yaratilgan bo'lsa-da, amalda uning kuchlari zilzila, suv toshqini, sel, yong'in va sanoat avariyalari kabi tabiiy hamda texnogen favqulodda vaziyatlarda ishlatiladi: aholini ogohlantirish, evakuatsiya, qutqaruv va tiklash ishlari aynan shu tizim orqali tashkil etiladi.",
+    "mnemonic": "FM tinchlik davrida ham ishlaydi — favqulodda vaziyatlarda.",
+    "topicId": 4,
+    "category": "chqbt",
+    "source_ref": "Fuqaro muhofazasi — tizimning tinchlik davridagi vazifalari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "tizim vazifasini qurilish ishlari bilan cheklash",
+      "",
+      "tizim vazifasini faqat harbiy safarbarlikka qisqartirish",
+      "tizim vazifasini o'quv tadbirlariga qisqartirish"
+    ]
+  }
+]

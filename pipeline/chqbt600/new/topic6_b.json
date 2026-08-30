@@ -1,0 +1,574 @@
+[
+  {
+    "q": "O'qituvchi darsda ilmda tasdiqlanmagan, ommaviy manbadan olingan ma'lumotni fakt sifatida bayon qildi. Metodist bu holatni didaktika tamoyili buzilishi deb baholadi. Qaysi tamoyil nazarda tutilmoqda?",
+    "opts": [
+      "Tizimlilik tamoyili",
+      "Mustahkamlik tamoyili",
+      "Ilmiylik tamoyili",
+      "Ko'rgazmalilik tamoyili"
+    ],
+    "correct": 2,
+    "explanation": "Ilmiylik tamoyili o'quv materialining fan tomonidan tasdiqlangan, ishonchli va zamonaviy bilimlarga asoslanishini talab qiladi. Tekshirilmagan ma'lumot berilsa, o'quvchida noto'g'ri tasavvur shakllanadi va uni keyinchalik tuzatish ancha qiyin bo'ladi.",
+    "mnemonic": "Fanda tasdiqlanmagan — darsda aytilmaydi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Didaktika: ta'lim tamoyillari",
+    "distractor_error": [
+      "tamoyilni chalkashtirish",
+      "tamoyilni chalkashtirish",
+      "",
+      "tamoyilni chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi murakkab tuzilmani faqat og'zaki tasvirlab berdi. Keyingi darsda esa xuddi shu mavzuni model va sxema bilan tushuntirdi — o'zlashtirish sezilarli yaxshilandi. Qaysi tamoyilning ta'siri ko'rindi?",
+    "opts": [
+      "Onglilik tamoyili",
+      "Mustahkamlik tamoyili",
+      "Ilmiylik tamoyili",
+      "Ko'rgazmalilik tamoyili"
+    ],
+    "correct": 3,
+    "explanation": "Ko'rgazmalilik tamoyili idrokning bir necha kanalini — ko'rish, eshitish, amaliy harakatni — birga ishlatishni nazarda tutadi. Model, sxema va namoyish mavhum tavsifni aniq tasavvurga aylantiradi, shu sababli o'zlashtirish yaxshilanadi.",
+    "mnemonic": "Ko'rgan — eshitgandan mustahkam.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Didaktika: ko'rgazmalilik tamoyili",
+    "distractor_error": [
+      "tamoyilni chalkashtirish",
+      "tamoyilni chalkashtirish",
+      "tamoyilni chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi murakkab mavzuni oldingi mavzular bilan bog'lamasdan, to'satdan boshladi. O'quvchilar yangi materialni oldingi bilimga ulay olmadi. Qaysi tamoyil buzilgan?",
+    "opts": [
+      "Tizimlilik va izchillik tamoyili",
+      "Nazariya va amaliyot birligi tamoyili",
+      "Onglilik va faollik tamoyili",
+      "Ilmiylik tamoyili"
+    ],
+    "correct": 0,
+    "explanation": "Tizimlilik va izchillik tamoyili yangi bilimni oldingi bilim ustiga, oddiydan murakkabga qarab qurishni talab qiladi. Bog'lanish uzilganda o'quvchida bilim yaxlit tizimga aylanmaydi va tez unutiladi.",
+    "mnemonic": "Yangi bilim — eskisining ustiga.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Didaktika: tizimlilik va izchillik tamoyili",
+    "distractor_error": [
+      "",
+      "tamoyilni chalkashtirish",
+      "tamoyilni chalkashtirish",
+      "tamoyilni chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'quvchilar yangi mavzuni darsda tushundi, ammo bir hafta o'tgach deyarli hech narsani eslay olmadi. O'qituvchi darsda takrorlash va mustahkamlashga vaqt ajratmagan edi. Qaysi tamoyil e'tibordan chetda qolgan?",
+    "opts": [
+      "Individual yondashuv tamoyili",
+      "Bilimlarning mustahkamligi tamoyili",
+      "Ilmiylik tamoyili",
+      "Ko'rgazmalilik tamoyili"
+    ],
+    "correct": 1,
+    "explanation": "Mustahkamlik tamoyili bilimni takrorlash, mashq va turli vaziyatlarda qo'llash orqali xotirada saqlashni nazarda tutadi. Bir marta tushunish uzoq muddatli o'zlashtirishni kafolatlamaydi — mustahkamlashsiz material tez unutiladi.",
+    "mnemonic": "Tushunish — boshlanishi; takrorlash — mustahkamligi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Didaktika: bilimlarning mustahkamligi tamoyili",
+    "distractor_error": [
+      "tamoyilni chalkashtirish",
+      "",
+      "tamoyilni chalkashtirish",
+      "tamoyilni chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi 5-sinf o'quvchilariga oliy ta'lim darajasidagi atamalar bilan ma'ruza o'qidi. Sinf mavzuni umuman tushunmadi. Qaysi tamoyil buzilgan?",
+    "opts": [
+      "Onglilik va faollik tamoyili buzilgan",
+      "Ilmiylik tamoyili buzilgan",
+      "Yosh va imkoniyatlarga moslik tamoyili buzilgan",
+      "Nazariya va amaliyot birligi tamoyili buzilgan"
+    ],
+    "correct": 2,
+    "explanation": "Ta'lim mazmuni ilmiy bo'lishi bilan bir qatorda o'quvchilarning yoshi va imkoniyatlariga mos bo'lishi kerak. Materialning haddan tashqari murakkabligi ilmiylikni oshirmaydi, aksincha uni butunlay o'zlashtirilmaydigan qiladi.",
+    "mnemonic": "Ilmiy — lekin yoshga mos.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Didaktika: ta'limning yosh xususiyatlariga mosligi",
+    "distractor_error": [
+      "tamoyilni chalkashtirish",
+      "murakkablikni ilmiylik deb bilish",
+      "",
+      "tamoyilni chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi sinfga muammoli savol berdi, o'quvchilar erkin fikr aytdi va barcha g'oyalar dastlab tanqidsiz yozib borildi, tanlash keyinroq amalga oshirildi. Bu usul pedagogikada qanday nom bilan ataladi?",
+    "opts": [
+      "Mustaqil ish metodi",
+      "Ma'ruza metodi",
+      "Namoyish metodi",
+      "Aqliy hujum metodi"
+    ],
+    "correct": 3,
+    "explanation": "Aqliy hujumning asosiy qoidasi — g'oyalar yig'ish bosqichida tanqid qilmaslik: bu ijodiy fikrni erkinlashtiradi va g'oyalar sonini oshiradi. Baholash va tanlash keyingi bosqichda amalga oshiriladi.",
+    "mnemonic": "Avval g'oya yig'iladi, keyin baholanadi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Pedagogik texnologiyalar: aqliy hujum",
+    "distractor_error": [
+      "metodni chalkashtirish",
+      "metodni chalkashtirish",
+      "metodni chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi o'quvchilarga real hayotdan olingan murakkab holatni berdi va uni tahlil qilib, asosli qaror taklif qilishni topshirdi. Bir yechim emas, bir necha maqbul yo'l muhokama qilindi. Bu qaysi metod?",
+    "opts": [
+      "Keys-stadi metodi",
+      "Hikoya qilish metodi",
+      "Mashq metodi",
+      "Frontal so'rov metodi"
+    ],
+    "correct": 0,
+    "explanation": "Keys-stadi real yoki realga yaqin vaziyatni tahlil qilib, uni bir necha nuqtai nazardan baholash va asosli qaror taklif qilishga o'rgatadi; unda ko'pincha yagona to'g'ri javob bo'lmaydi. Hikoya, mashq va frontal so'rov boshqa didaktik vazifalarni bajaradi.",
+    "mnemonic": "Real holat + asosli qaror = keys.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Pedagogik texnologiyalar: keys-stadi",
+    "distractor_error": [
+      "",
+      "metodni chalkashtirish",
+      "metodni chalkashtirish",
+      "metodni chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'quvchilar guruhlarga bo'linib, har biri turli rolni (komandir, sanitar, aloqachi) bajardi va vaziyatni shu rol nuqtai nazaridan hal qildi. Dars oxirida rollar almashtirildi. Bu qaysi ta'lim usuli?",
+    "opts": [
+      "Ma'ruza-suhbat usuli",
+      "Rolli o'yin usuli",
+      "Mustaqil o'qish usuli",
+      "Test-nazorat usuli"
+    ],
+    "correct": 1,
+    "explanation": "Rolli o'yinda o'quvchi muayyan rolni ijro etib, vaziyatni o'sha lavozim nuqtai nazaridan ko'radi; rollarni almashtirish esa masalaga turli tomondan qarashni o'rgatadi. Bu usul ayniqsa qaror qabul qilish va hamkorlik ko'nikmalarini rivojlantiradi.",
+    "mnemonic": "Rolni ijro et — nuqtai nazarni tushun.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Pedagogik texnologiyalar: rolli o'yin",
+    "distractor_error": [
+      "usulni chalkashtirish",
+      "",
+      "usulni chalkashtirish",
+      "usulni chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi savollar zanjiri berib, o'quvchilarni tayyor javobga emas, mustaqil xulosaga olib keldi: har bir javob keyingi savolni tug'dirdi. Bu qaysi metodga misol?",
+    "opts": [
+      "Tushuntirish metodi",
+      "Illyustratsiya metodi",
+      "Evristik suhbat metodi",
+      "Diktant metodi"
+    ],
+    "correct": 2,
+    "explanation": "Evristik suhbatda o'qituvchi tayyor bilim bermaydi, ketma-ket savollar orqali o'quvchini mustaqil kashfiyotga yo'naltiradi. Tushuntirish va illyustratsiya bilimni tayyor holda yetkazadi, shuning uchun ular boshqa didaktik vazifani bajaradi.",
+    "mnemonic": "Savol yetaklaydi — javobni o'quvchi topadi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Ta'lim metodlari: evristik suhbat",
+    "distractor_error": [
+      "metodni chalkashtirish",
+      "metodni chalkashtirish",
+      "",
+      "metodni chalkashtirish"
+    ]
+  },
+  {
+    "q": "Darsning maqsadi — o'quvchilarda avtomatni ajratish va yig'ish ko'nikmasini shakllantirish. O'qituvchi bu maqsadga erishish uchun qaysi metod guruhiga tayanishi kerak?",
+    "opts": [
+      "Ko'rgazmali metodlar guruhiga",
+      "Nazorat metodlari guruhiga",
+      "Og'zaki metodlar guruhiga",
+      "Amaliy metodlar guruhiga"
+    ],
+    "correct": 3,
+    "explanation": "Ko'nikma faqat takroriy amaliy harakat orqali shakllanadi, shuning uchun bunday maqsadda amaliy metodlar — mashq, amaliy ish, trenaj — yetakchi bo'ladi. Og'zaki va ko'rgazmali metodlar tayyorgarlik bosqichida yordamchi rol o'ynaydi.",
+    "mnemonic": "Ko'nikma — mashqdan tug'iladi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ta'lim metodlari tasnifi",
+    "distractor_error": [
+      "metod guruhini chalkashtirish",
+      "metod guruhini chalkashtirish",
+      "metod guruhini chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Yangi mavzu boshlanishidan oldin o'qituvchi qisqa test o'tkazib, o'quvchilarning boshlang'ich bilim darajasini aniqladi. Baho jurnalga qo'yilmadi. Bu qaysi baholash turi?",
+    "opts": [
+      "Diagnostik baholash",
+      "Summativ (yakuniy) baholash",
+      "Formativ (joriy) baholash",
+      "Attestatsion baholash"
+    ],
+    "correct": 0,
+    "explanation": "Diagnostik baholash o'qitish boshlanishidan oldin o'tkaziladi va boshlang'ich darajani aniqlab, rejalashtirishga asos beradi; uning natijasi baho qo'yish uchun emas, dars strategiyasini tanlash uchun ishlatiladi. Formativ baholash jarayon davomida, summativ esa yakunda o'tkaziladi.",
+    "mnemonic": "Oldin — diagnostik, davomida — formativ, oxirida — summativ.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Baholash turlari",
+    "distractor_error": [
+      "",
+      "turini chalkashtirish",
+      "turini chalkashtirish",
+      "turini chalkashtirish"
+    ]
+  },
+  {
+    "q": "Chorak yakunida o'qituvchi katta nazorat ishini o'tkazdi va uning natijasi asosida chorak bahosini qo'ydi. Bu baholash qaysi turga kiradi va uning asosiy vazifasi nima?",
+    "opts": [
+      "O'zaro baholash — o'quvchilar bir-birini baholaydi",
+      "Summativ — o'zlashtirish natijasini yakunda o'lchaydi",
+      "Diagnostik — boshlang'ich darajani aniqlaydi",
+      "Formativ — jarayonni yo'naltiradi"
+    ],
+    "correct": 1,
+    "explanation": "Summativ (yakuniy) baholash ma'lum davr — bo'lim, chorak, yil — yakunida o'zlashtirish darajasini o'lchaydi va rasmiy baho qo'yishga asos bo'ladi. Formativ baholash esa jarayon davomida o'rganishni yo'naltiradi va odatda rasmiy bahoga aylanmaydi.",
+    "mnemonic": "Yakunda o'lchaydi — summativ.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Baholash turlari: summativ baholash",
+    "distractor_error": [
+      "turini chalkashtirish",
+      "",
+      "turini chalkashtirish",
+      "turini chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi o'quvchilarni bir-biri bilan emas, oldindan e'lon qilingan aniq talablar bilan solishtirib baholaydi. Har bir o'quvchi qaysi talabga yetgani va qaysisiga yetmagani aniq ko'rinadi. Bu qanday baholash?",
+    "opts": [
+      "Erkin tartibda baholash",
+      "Reyting asosidagi baholash",
+      "Mezonlar asosida baholash",
+      "O'rtacha ball asosida baholash"
+    ],
+    "correct": 2,
+    "explanation": "Kriterial baholashda o'quvchi boshqa o'quvchilar bilan emas, oldindan e'lon qilingan mezonlar bilan taqqoslanadi — shu sababli natija shaffof bo'ladi va o'quvchi nimani yaxshilash kerakligini aniq biladi. Reyting esa o'quvchilarni bir-biri bilan solishtiradi.",
+    "mnemonic": "Mezon bilan solish — boshqa bola bilan emas.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Baholash: kriterial yondashuv",
+    "distractor_error": [
+      "shaffoflikni yo'qotish",
+      "taqqoslash asosini chalkashtirish",
+      "",
+      "taqqoslash asosini chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchining dars rejasida quyidagi bosqichlar bor: tashkiliy qism, o'tgan mavzuni takrorlash, yangi mavzu bayoni, mustahkamlash, baholash va uyga vazifa. Bu qanday dars turi?",
+    "opts": [
+      "Nazorat darsi",
+      "Takrorlash darsi",
+      "Yangi bilim beruvchi dars",
+      "Aralash dars"
+    ],
+    "correct": 3,
+    "explanation": "Aralash dars bir necha didaktik vazifani — takrorlash, yangi bilim berish, mustahkamlash va baholashni — bitta darsda birlashtiradi va maktab amaliyotida eng ko'p qo'llanadi. Nazorat, takrorlash yoki yangi bilim darsi esa bitta yetakchi vazifaga qaratilgan bo'ladi.",
+    "mnemonic": "Hamma bosqich bor — aralash dars.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Didaktika: dars turlari",
+    "distractor_error": [
+      "turini toraytirish",
+      "turini toraytirish",
+      "turini toraytirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi uyga vazifani qo'ng'iroqdan keyin, shoshib, faqat sahifa raqamini aytib berdi. Ko'p o'quvchi vazifani noto'g'ri tushundi. Uyga vazifa berishning to'g'ri qoidasi qanday?",
+    "opts": [
+      "Vazifa darsda, tushuntirish va namuna bilan beriladi",
+      "Vazifa faqat yozma ravishda doskaga yoziladi",
+      "Vazifa qo'ng'iroqdan keyin aytilishi odatiy hol",
+      "Vazifa hajmi imkon qadar katta bo'lishi kerak"
+    ],
+    "correct": 0,
+    "explanation": "Uyga vazifa darsning tarkibiy qismi bo'lib, unga vaqt ajratiladi: nima qilinishi, qanday bajarilishi tushuntiriladi va zarur bo'lsa namuna ko'rsatiladi. Qo'ng'iroqdan keyin shoshib berilgan vazifa noto'g'ri bajariladi va o'quvchida ishonchsizlik uyg'otadi.",
+    "mnemonic": "Uyga vazifa — darsning qismi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Didaktika: uyga vazifa berish metodikasi",
+    "distractor_error": [
+      "",
+      "shaklga urg'u berish",
+      "nuqsonni odat deb bilish",
+      "hajmni mezon qilish"
+    ]
+  },
+  {
+    "q": "O'quvchilarga «atamani ta'riflang» degan topshiriq berildi. Keyingi darsda esa «shu atamani yangi vaziyatda qo'llang» deb topshirildi. Bloom taksonomiyasi bo'yicha ikkinchi topshiriq qaysi darajaga tegishli?",
+    "opts": [
+      "Bilish darajasiga",
+      "Qo'llash darajasiga",
+      "Eslab qolish darajasiga",
+      "Tushunish darajasiga"
+    ],
+    "correct": 1,
+    "explanation": "Bloom taksonomiyasida ta'rif berish bilish va tushunish darajalariga, o'zlashtirilgan bilimni yangi, notanish vaziyatda ishlatish esa qo'llash darajasiga to'g'ri keladi. Qo'llash darajasidagi topshiriq bilimning haqiqiy o'zlashtirilganini ko'rsatadi.",
+    "mnemonic": "Ta'rif — bilish; yangi vaziyat — qo'llash.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Bloom taksonomiyasi: kognitiv darajalar",
+    "distractor_error": [
+      "darajani pasaytirish",
+      "",
+      "darajani pasaytirish",
+      "darajani pasaytirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi topshiriqni shunday tuzdi: «Ikki xil yechimni taqqoslab, qaysi biri berilgan sharoitda afzalroq ekanini asoslang». Bu topshiriq kognitiv jihatdan qaysi darajani talab qiladi?",
+    "opts": [
+      "Eslab qolish darajasini",
+      "Tushunish darajasini",
+      "Tahlil va baholash darajasini",
+      "Qo'llash darajasini"
+    ],
+    "correct": 2,
+    "explanation": "Ikki yechimni taqqoslash, mezon bo'yicha afzalligini aniqlash va xulosani asoslash tahlil hamda baholash darajasidagi fikrlashni talab qiladi. Eslab qolish va tushunish darajasidagi topshiriqlarda esa faqat ma'lumotni qayta ishlab berish so'raladi.",
+    "mnemonic": "Taqqosla va asosla — yuqori daraja.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Bloom taksonomiyasi: tahlil va baholash",
+    "distractor_error": [
+      "darajani pasaytirish",
+      "darajani pasaytirish",
+      "",
+      "darajani pasaytirish"
+    ]
+  },
+  {
+    "q": "Sinfda o'quvchilar bilim darajasi bo'yicha uch guruhga bo'lindi va har bir guruh o'z darajasiga mos topshiriq oldi; maqsad esa hamma uchun bir xil qoldi. Bu qaysi ta'lim texnologiyasi?",
+    "opts": [
+      "Muammoli ta'lim texnologiyasi",
+      "Masofaviy ta'lim texnologiyasi",
+      "Integral ta'lim texnologiyasi",
+      "Differensial ta'lim texnologiyasi"
+    ],
+    "correct": 3,
+    "explanation": "Differensial ta'limda umumiy maqsad saqlanadi, ammo unga erishish yo'li — topshiriq murakkabligi, yordam hajmi, vaqt — o'quvchi darajasiga moslashtiriladi. Bu bilim tafovutini kamaytiradi va kuchli o'quvchini ham zeriktirmaydi.",
+    "mnemonic": "Maqsad bir — yo'l har xil.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Pedagogik texnologiyalar: differensial ta'lim",
+    "distractor_error": [
+      "texnologiyani chalkashtirish",
+      "texnologiyani chalkashtirish",
+      "texnologiyani chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'quvchilar kichik guruhlarda ishlab, umumiy natija uchun birgalikda javob berdi; har birining hissasi alohida ham hisobga olindi. Bu qaysi ta'lim texnologiyasiga xos?",
+    "opts": [
+      "Hamkorlikda o'rganish texnologiyasiga",
+      "Dasturlashtirilgan ta'lim texnologiyasiga",
+      "An'anaviy ma'ruza texnologiyasiga",
+      "Individual ta'lim texnologiyasiga"
+    ],
+    "correct": 0,
+    "explanation": "Hamkorlikda o'rganishning ikki asosiy sharti bor: guruh umumiy natija uchun javob beradi va shu bilan birga har bir a'zoning shaxsiy hissasi hisobga olinadi. Faqat umumiy baho qo'yilsa, guruhda «bekorchi» paydo bo'ladi va texnologiya ishlamaydi.",
+    "mnemonic": "Umumiy natija + shaxsiy hissa.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Pedagogik texnologiyalar: hamkorlikda o'rganish",
+    "distractor_error": [
+      "",
+      "texnologiyani chalkashtirish",
+      "texnologiyani chalkashtirish",
+      "texnologiyani chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi darsni o'quvchining qiziqishi, tajribasi va o'quv uslubidan kelib chiqib qurdi; o'quvchi maqsad qo'yish va natijani baholashda ham ishtirok etdi. Bu qanday yondashuv?",
+    "opts": [
+      "Nazorat markazli yondashuv",
+      "Shaxsga yo'naltirilgan yondashuv",
+      "O'qituvchi markazli yondashuv",
+      "Dasturga qat'iy amal qiluvchi yondashuv"
+    ],
+    "correct": 1,
+    "explanation": "Shaxsga yo'naltirilgan ta'limda o'quvchi jarayonning obyekti emas, subyekti bo'ladi: uning qiziqishi va tajribasi hisobga olinadi, u maqsad qo'yish va o'z natijasini baholashda ishtirok etadi. O'qituvchi markazli yondashuvda esa barcha qarorlarni o'qituvchi qabul qiladi.",
+    "mnemonic": "O'quvchi — subyekt, obyekt emas.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Pedagogik yondashuvlar: shaxsga yo'naltirilgan ta'lim",
+    "distractor_error": [
+      "yondashuvni chalkashtirish",
+      "",
+      "yondashuvni chalkashtirish",
+      "yondashuvni chalkashtirish"
+    ]
+  },
+  {
+    "q": "Sinfda alohida ehtiyojga ega o'quvchi bor. O'qituvchi uni alohida xonaga o'tkazmasdan, umumiy darsda moslashtirilgan topshiriq va yordam bilan ta'minladi. Bu qaysi tamoyilga misol?",
+    "opts": [
+      "Ixtisoslashtirilgan ta'lim tamoyiliga",
+      "Masofaviy ta'lim tamoyiliga",
+      "Inklyuziv ta'lim tamoyiliga",
+      "Tabaqalashtirilgan tanlov tamoyiliga"
+    ],
+    "correct": 2,
+    "explanation": "Inklyuziv ta'lim alohida ehtiyojga ega o'quvchini umumiy ta'lim jarayonidan ajratmasdan, unga zarur moslashtirish va yordamni shu jarayon ichida berishni nazarda tutadi. Ajratib o'qitish inklyuziv emas, ixtisoslashtirilgan yondashuv hisoblanadi.",
+    "mnemonic": "Ajratmay — moslashtirib o'qit.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Pedagogik yondashuvlar: inklyuziv ta'lim",
+    "distractor_error": [
+      "ajratishni inklyuziya deb bilish",
+      "tamoyilni chalkashtirish",
+      "",
+      "tamoyilni chalkashtirish"
+    ]
+  },
+  {
+    "q": "Bir o'quvchi darsga «baho olish uchun» tayyorlanadi, ikkinchisi esa mavzuning o'zi qiziqarli bo'lgani uchun qo'shimcha adabiyot o'qiydi. Ikkinchi o'quvchining motivatsiyasi qanday ataladi?",
+    "opts": [
+      "Vaziyatli motivatsiya",
+      "Tashqi motivatsiya",
+      "Majburiy motivatsiya",
+      "Ichki motivatsiya"
+    ],
+    "correct": 3,
+    "explanation": "Ichki motivatsiya faoliyatning o'zidan — qiziqish, bilishga intilish, natijadan qoniqishdan kelib chiqadi va u ancha barqaror bo'ladi. Baho, mukofot yoki jazo esa tashqi motivatsiya bo'lib, ular olib qo'yilishi bilan faollik ham to'xtaydi.",
+    "mnemonic": "Qiziqish — ichki, baho — tashqi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Yosh psixologiyasi: motivatsiya turlari",
+    "distractor_error": [
+      "turini chalkashtirish",
+      "turini almashtirish",
+      "turini chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi darsda faqat baho va jazo bilan intizom saqlaydi. Chorak oxirida bahoga bog'liq bo'lmagan har qanday topshiriqni o'quvchilar bajarishdan bosh tortadi. Bu holat nimani ko'rsatadi?",
+    "opts": [
+      "Ichki motivatsiya rivojlanmagan, faqat tashqi motivatsiya ishlagan",
+      "O'quvchilarning qobiliyati past ekanini ko'rsatadi",
+      "Dastur hajmi ortiqcha ekanini ko'rsatadi",
+      "Baholash mezonlari noto'g'ri tuzilganini ko'rsatadi"
+    ],
+    "correct": 0,
+    "explanation": "Faqat baho va jazoga tayangan ta'lim tashqi motivatsiyani mustahkamlaydi: rag'bat yo'qolishi bilan faollik ham to'xtaydi. Ichki motivatsiya esa qiziqish, muvaffaqiyat hissi va mazmunni tushunish orqali shakllanadi va u yo'q bo'lganda tasvirlangan holat yuzaga keladi.",
+    "mnemonic": "Faqat baho — faqat bahogacha.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Yosh psixologiyasi: motivatsiya va uning oqibatlari",
+    "distractor_error": [
+      "",
+      "sababni qobiliyatga yuklash",
+      "sababni dasturga yuklash",
+      "sababni mezonga yuklash"
+    ]
+  },
+  {
+    "q": "O'qituvchi darsda o'quvchilarga «bugun nimani o'rgandingiz, qaysi joyi qiyin bo'ldi, keyingi safar nimani boshqacha qilasiz?» degan savollar berdi. Bu qaysi ko'nikmani rivojlantiradi?",
+    "opts": [
+      "Mexanik yodlash ko'nikmasini",
+      "O'z o'rganishini tahlil qilish ko'nikmasini",
+      "Tez o'qish ko'nikmasini",
+      "Nazoratga tayyorgarlik ko'nikmasini"
+    ],
+    "correct": 1,
+    "explanation": "Bunday savollar refleksiyani — o'quvchining o'z fikrlash va o'rganish jarayonini kuzatib, baholashini rivojlantiradi. Refleksiya ko'nikmasi bo'lgan o'quvchi xatosini o'zi ko'radi va keyingi safar strategiyasini o'zgartira oladi.",
+    "mnemonic": "Nimani o'rgandim? — refleksiya.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Pedagogik mahorat: refleksiya",
+    "distractor_error": [
+      "ko'nikmani chalkashtirish",
+      "",
+      "ko'nikmani chalkashtirish",
+      "ko'nikmani chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi dars boshida mavzuga oid qiziqarli fakt va kutilmagan savol bilan sinfning e'tiborini tortdi. Dars tuzilishida bu bosqich qanday vazifani bajaradi?",
+    "opts": [
+      "Yangi bilimni bayon qilish bosqichi",
+      "Bilimni mustahkamlash bosqichi",
+      "Motivatsiya va maqsad qo'yish bosqichi",
+      "Yakuniy nazorat bosqichi"
+    ],
+    "correct": 2,
+    "explanation": "Darsning boshlanish qismi o'quvchini mavzuga jalb qilish, qiziqish uyg'otish va maqsadni qabul qildirish vazifasini bajaradi. Motivatsiya bosqichi o'tkazib yuborilsa, o'quvchi keyingi bosqichlarda passiv tinglovchiga aylanadi.",
+    "mnemonic": "Dars qiziqishdan boshlanadi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Didaktika: dars bosqichlari",
+    "distractor_error": [
+      "bosqichni chalkashtirish",
+      "bosqichni chalkashtirish",
+      "",
+      "bosqichni chalkashtirish"
+    ]
+  },
+  {
+    "q": "Ikki o'qituvchi bahslashmoqda: biri «ta'lim va tarbiya alohida jarayonlar», ikkinchisi «ular ajralmas» deydi. Pedagogika nazariyasi bu masalada qanday javob beradi?",
+    "opts": [
+      "Ta'lim va tarbiya butunlay mustaqil jarayonlar",
+      "Tarbiya faqat sinf rahbari soatlarida amalga oshadi",
+      "Ta'lim faqat bilim beradi, qadriyatga aloqasi yo'q",
+      "Ta'lim va tarbiya yaxlit jarayonning ikki tomoni"
+    ],
+    "correct": 3,
+    "explanation": "Pedagogikada ta'lim va tarbiya yaxlit pedagogik jarayonning bir-biridan ajralmas ikki tomoni sifatida qaraladi: har bir dars bilim berish bilan bir qatorda munosabat, qadriyat va xulq-atvorni ham shakllantiradi. Shuning uchun tarbiya alohida soatlar bilan cheklanmaydi.",
+    "mnemonic": "Har dars — ham ta'lim, ham tarbiya.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Pedagogika: yaxlit pedagogik jarayon",
+    "distractor_error": [
+      "jarayonlarni ajratish",
+      "tarbiyani soatga toraytirish",
+      "ta'limni toraytirish",
+      ""
+    ]
+  }
+]

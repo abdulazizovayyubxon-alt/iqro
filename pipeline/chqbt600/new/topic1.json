@@ -1,0 +1,794 @@
+[
+  {
+    "q": "Rota komandiri askarga aniq topshiriq berdi. Askar buyruqni eshitib, indamay joyidan qo'zg'aldi va vazifani bajarib qaytdi, ammo komandirga hech narsa demadi. Nizom talabiga ko'ra u nimani noto'g'ri bajardi?",
+    "opts": [
+      "Buyruqqa javob bermadi va ijro haqida axborot bermadi",
+      "Buyruqni tezda emas, sekin bajarishga kirishdi",
+      "Buyruqni yozma tarzda rasmiylashtirmadi",
+      "Buyruqni bajarishdan oldin ruxsat so'ramadi"
+    ],
+    "correct": 0,
+    "explanation": "Buyruqni olgan harbiy xizmatchi «Xo'p bo'ladi» deb javob beradi, buyruqni so'zsiz va belgilangan muddatda bajaradi, so'ng buyruq bergan boshliqqa uning ijrosi haqida darhol axborot beradi. Askar shu ikki elementni — javob va ijro axborotini — tushirib qoldirgan; buyruqni yozma rasmiylashtirish yoki qo'shimcha ruxsat esa talab qilinmaydi.",
+    "mnemonic": "Javob ber — bajar — axborot ber.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi (PF-23), II bob: buyruq berish va uni bajarish tartibi",
+    "distractor_error": [
+      "",
+      "asosiy talabni chalkashtirish",
+      "talabni o'ylab topish",
+      "talabni o'ylab topish"
+    ]
+  },
+  {
+    "q": "Komandir bo'ysunuvchisiga qonunga ochiq zid bo'lgan buyruq berdi va «oqibati uchun men javob beraman» dedi. Xizmatchi ikkilanib qoldi. Nizom bu holatni qanday hal qiladi?",
+    "opts": [
+      "Buyruq bajariladi, keyin esa yuqori boshliqqa shikoyat qilinadi",
+      "Qonunga zid buyruq berish taqiqlanadi, bajaruvchi ham javobgar bo'ladi",
+      "Buyruq bajarilmaydi va bu haqda hech kimga xabar berilmaydi",
+      "Buyruq bajariladi, chunki javobgarlik komandirga o'tgan"
+    ],
+    "correct": 1,
+    "explanation": "Nizomga ko'ra buyruq bergan komandir uning qonuniyligi va oqibatlari uchun javobgar, ammo qonunga zid buyruq berishning o'zi taqiqlanadi va bunday buyruqni bajargan shaxs ham javobgarlikdan ozod bo'lmaydi. Shu sababli komandirning «javobgarlikni o'z zimmamga olaman» degan gapi bajaruvchini himoya qilmaydi.",
+    "mnemonic": "Zid buyruq — ikkalasi ham javobgar.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Ichki xizmat nizomi (PF-23), II bob: buyruqning qonuniyligi",
+    "distractor_error": [
+      "tartibni buzib bajarish",
+      "",
+      "xabar berish majburiyatini tashlash",
+      "javobgarlikni to'liq ko'chirish"
+    ]
+  },
+  {
+    "q": "Ko'chada kichik serjant va leytenant bir-biriga yaqinlashmoqda. Kichik serjant leytenantning salom berishini kutib turdi va o'zi salom bermadi. Nizom talabi qanday?",
+    "opts": [
+      "Ikkalasi ham bir vaqtda salomlashishi shart hisoblanadi",
+      "Salomlashish faqat harbiy qism hududida talab qilinadi",
+      "Unvoni kichik bo'lgan xizmatchi birinchi bo'lib salom beradi",
+      "Salomlashishni yoshi kattaroq bo'lgan xizmatchi boshlaydi"
+    ],
+    "correct": 2,
+    "explanation": "Harbiycha salomlashish o'zaro hurmat ifodasi bo'lib, barcha harbiy xizmatchilar uchrashganda yoki quvib o'tganda bajariladi; bunda kichiklar kattalarga birinchi bo'lib salom beradi. Talab qism hududi bilan cheklanmaydi va yosh bo'yicha emas, unvon va lavozim bo'yicha belgilanadi.",
+    "mnemonic": "Kichik birinchi salom beradi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi (PF-23), II bob: harbiycha salomlashish",
+    "distractor_error": [
+      "tartibni yo'qotish",
+      "talabni hududga bog'lash",
+      "",
+      "mezonni yoshga almashtirish"
+    ]
+  },
+  {
+    "q": "Safdan tashqarida bir askar o'z vzvod komandiriga «sen» deb, familiyasini aytmasdan murojaat qildi. Komandir bu murojaatni to'g'rilashni talab qildi. Nizomga muvofiq to'g'ri shakl qanday?",
+    "opts": [
+      "«Sen» deb, faqat lavozimini aytib murojaat qilinadi",
+      "«Siz» deb, faqat familiyasini aytib murojaat qilinadi",
+      "Murojaat shakli xizmatchilarning shaxsiy kelishuviga bog'liq",
+      "«Siz» deb, harbiy unvonini aytib murojaat qilinadi"
+    ],
+    "correct": 3,
+    "explanation": "Nizomga ko'ra harbiy xizmatchilar safdan tashqarida bir-birlariga «siz»lab, harbiy unvonini aytib murojaat qiladilar — masalan, «O'rtoq leytenant». Murojaat shakli shaxsiy kelishuvga bog'liq emas va faqat familiya yoki lavozim bilan cheklanmaydi.",
+    "mnemonic": "«Siz» va unvon — murojaatning shakli.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi (PF-23), II bob: murojaat qoidalari",
+    "distractor_error": [
+      "norasmiy murojaat",
+      "unvonni tushirib qoldirish",
+      "tartibni kelishuvga bog'lash",
+      ""
+    ]
+  },
+  {
+    "q": "Tekshiruv paytida qurol saqlash xonasining kaliti rota navbatchisining cho'ntagida, muhrsiz holda ekani aniqlandi. Xona eshigi yog'och, deraza panjarasiz. Tekshiruvchi qanday nuqsonlarni qayd etadi?",
+    "opts": [
+      "Kalit muhrlangan penalda saqlanmagan, eshik va deraza talabga javob bermaydi",
+      "Kalitning saqlanish tartibi buzilgan, qolgan talablar bajarilgan",
+      "Deraza panjarasi yetishmaydi, kalit tartibi esa to'g'ri",
+      "Hech qanday nuqson yo'q — kalit navbatchida bo'lishi yetarli"
+    ],
+    "correct": 0,
+    "explanation": "Nizom qurol saqlash xonasiga uchta talab qo'yadi: doimiy qulflangan temir eshik, mustahkam temir panjarali derazalar va polk navbatchisi pultiga ulangan signalizatsiya; xona kaliti esa muhrlangan penalda rota navbatchisida saqlanadi. Tasvirlangan holatda bu talablarning bir nechtasi bir vaqtda buzilgan.",
+    "mnemonic": "Temir eshik, panjara, signal, muhrlangan penal.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Ichki xizmat nizomi (PF-23), IV bob: qurol saqlash xonasining jihozlanishi",
+    "distractor_error": [
+      "",
+      "nuqsonni to'liq ko'rmaslik",
+      "nuqsonni to'liq ko'rmaslik",
+      "talabni butunlay inkor etish"
+    ]
+  },
+  {
+    "q": "Rota navbatchisi rotadagi tartibni buzgan xizmatchini ko'rdi, ammo kimga xabar berishni bilmay qoldi. Nizomga ko'ra u bevosita kimlarga bo'ysunadi?",
+    "opts": [
+      "O'zining vzvod komandiriga bo'ysunadi",
+      "Polk navbatchisiga va rota komandiriga bo'ysunadi",
+      "Qorovul boshlig'iga va uning yordamchisiga bo'ysunadi",
+      "Garnizon komendantiga bo'ysunadi"
+    ],
+    "correct": 1,
+    "explanation": "Rota navbatchisi rotadagi ichki tartib, qurol-aslahalar xonasining daxlsizligi va kun tartibiga rioya etilishi uchun javobgar bo'lib, u to'g'ridan-to'g'ri polk navbatchisiga hamda rota komandiriga bo'ysunadi. Garnizon komendanti va qorovul boshlig'i boshqa xizmat tarmog'iga tegishli.",
+    "mnemonic": "Rota navbatchisi — polk navbatchisi va rota komandiriga.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi (PF-23), VI bob: rota navbatchisining majburiyatlari",
+    "distractor_error": [
+      "bo'ysunish doirasini toraytirish",
+      "",
+      "boshqa xizmat tarmog'iga bog'lash",
+      "boshqa xizmat tarmog'iga bog'lash"
+    ]
+  },
+  {
+    "q": "Rota dnevalniysi postda turganda rotaga rota komandiri kirib keldi. Dnevalniy indamay o'z joyida qolib, hech qanday harakat qilmadi. Nizom talabiga ko'ra u nimani bajarishi kerak edi?",
+    "opts": [
+      "Komandirdan hujjatlarini ko'rsatishni so'rashi kerak edi",
+      "Postni tashlab, komandir bilan birga yurishi kerak edi",
+      "«Diqqat!» komandasini berib, komandirni kutib olishi kerak edi",
+      "Rotadagi barcha xizmatchilarni safga tizishi kerak edi"
+    ],
+    "correct": 2,
+    "explanation": "Rota dnevalniysi qurol saqlash xonasi yaqinidagi postda turadi va uning majburiyatlaridan biri — komandirlar kelganda «Diqqat!» komandasini berish. U postni tashlab ketmaydi, safga tizish uning vazifasi emas, hujjat tekshirish esa boshqa xizmat turlarining vakolatiga kiradi.",
+    "mnemonic": "Komandir kirdi — «Diqqat!»",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi (PF-23), VI bob: rota dnevalniysining majburiyatlari",
+    "distractor_error": [
+      "vakolatdan chiqish",
+      "postni tashlash",
+      "",
+      "vazifani chalkashtirish"
+    ]
+  },
+  {
+    "q": "Yangi kelgan askar sutkalik naryadga tayinlandi va uning vazifasi nimadan iboratligini so'radi. Nizomga ko'ra sutkalik naryadning asosiy maqsadi nima?",
+    "opts": [
+      "Jangovar mashg'ulotlar rejasini tuzish va nazorat qilish",
+      "Harbiy qismning moddiy-texnik ta'minotini rejalashtirish",
+      "Shaxsiy tarkibning jismoniy tayyorgarligini oshirish",
+      "Harbiy qismdagi ichki tartibni va mol-mulk xavfsizligini ta'minlash"
+    ],
+    "correct": 3,
+    "explanation": "Sutkalik naryad harbiy qismda ichki tartibni, shaxsiy tarkib, qurol-yarog' va harbiy mulkning xavfsizligini ta'minlash, bo'linmalardagi ishlarning bajarilishini nazorat qilish va navbatchilikni olib borish uchun tayinlanadi. Mashg'ulot rejasi, ta'minot va jismoniy tayyorgarlik boshqa mansabdor shaxslarning vazifasi.",
+    "mnemonic": "Naryad — tartib va xavfsizlik uchun.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi (PF-23), VI bob: sutkalik naryad",
+    "distractor_error": [
+      "vazifani chalkashtirish",
+      "vazifani chalkashtirish",
+      "vazifani chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Kechqurun rota navbatchisi shaxsiy tarkibni ro'yxat bo'yicha tekshirdi va qahramonlar nomini yodga oldi. Yangi askar bu tadbirning nomini so'radi. Kun tartibining qaysi elementi bajarilmoqda?",
+    "opts": [
+      "Kechki yo'qlama o'tkazilmoqda",
+      "Ertalabki ko'rik o'tkazilmoqda",
+      "Kechki sayr uyushtirilmoqda",
+      "Ertalabki xabardorlik berilmoqda"
+    ],
+    "correct": 0,
+    "explanation": "Kechki yo'qlama vaqtida rota navbatchisi yoki komandir shaxsiy tarkibni to'liq ro'yxat bo'yicha tekshiradi, qahramonlar va faxriy askarlar nomi yodga olinadi. Ertalabki ko'rik tashqi ko'rinishni, xabardorlik esa axborot berishni ko'zda tutadi; kechki sayr alohida tadbir hisoblanadi.",
+    "mnemonic": "Ro'yxat va qahramonlar nomi — kechki yo'qlama.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi (PF-23), V bob: kun tartibi",
+    "distractor_error": [
+      "",
+      "tadbirni chalkashtirish",
+      "tadbirni chalkashtirish",
+      "tadbirni chalkashtirish"
+    ]
+  },
+  {
+    "q": "Muddatli xizmatchi shanba kuni shaharga chiqishga ruxsat so'radi. U o'quv va intizom ko'rsatkichlari bo'yicha yaxshi natijaga ega. Nizomga ko'ra bu masala qanday hal qilinadi?",
+    "opts": [
+      "Ruxsat rota navbatchisi tomonidan og'zaki beriladi",
+      "Javob dam olish kunlarida, komandir ruxsatnomasi bilan beriladi",
+      "Muddatli xizmatchiga qismdan javob berish umuman nazarda tutilmagan",
+      "Xizmatchi istalgan kuni, ruxsatnomasiz chiqishi mumkin"
+    ],
+    "correct": 1,
+    "explanation": "Muddatli harbiy xizmatchilarga haftaning dam olish va bayram kunlarida, o'quv va intizom ko'rsatkichlariga qarab, harbiy qism komandiri ruxsatnomasi bilan javob beriladi. Ruxsatnomasiz chiqish yoki og'zaki ruxsat bilan cheklanish tartibga zid; javob berishning butunlay yo'qligi ham noto'g'ri.",
+    "mnemonic": "Dam olish kuni + ruxsatnoma.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi (PF-23), V bob: harbiy qismdan javob berish",
+    "distractor_error": [
+      "vakolatni pasaytirish",
+      "",
+      "huquqni inkor etish",
+      "tartibni butunlay buzish"
+    ]
+  },
+  {
+    "q": "Tekshiruvda rota komandiri o'z tarkibidagi bir necha askarning ismini va oilaviy ahvolini bilmasligi ma'lum bo'ldi. U «mening vazifam faqat mashg'ulot o'tkazish» dedi. Nizom talabi qanday?",
+    "opts": [
+      "Komandir faqat serjantlar tarkibini bilishi talab qilinadi",
+      "Bu ma'lumotlarni faqat kadrlar bo'limi yuritadi",
+      "Rota komandiri shaxsiy tarkibning har bir a'zosini yaxshi bilishi shart",
+      "Shaxsiy tarkibni faqat bo'linma komandirlari bilishi yetarli"
+    ],
+    "correct": 2,
+    "explanation": "Nizomga ko'ra rota komandiri rota shaxsiy tarkibining har bir a'zosini — ismi-sharifi, xarakteri, oilaviy ahvoli va mutaxassisligini — yaxshi bilishi shart. Bu talab tarbiyaviy ish va vazifalarni to'g'ri taqsimlash uchun zarur bo'lib, uni quyi bo'g'inga yoki kadrlar bo'limiga yuklab bo'lmaydi.",
+    "mnemonic": "Rota komandiri har bir askarni biladi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi (PF-23), III bob: rota komandirining majburiyatlari",
+    "distractor_error": [
+      "talabni toraytirish",
+      "mas'uliyatni boshqa bo'limga surish",
+      "",
+      "mas'uliyatni quyiga surish"
+    ]
+  },
+  {
+    "q": "Vzvod komandiri mashg'ulotga kechikib keldi va kiyimi tartibsiz edi, biroq bo'ysunuvchilardan qat'iy tartib talab qildi. Askarlar bunga norozilik bildirdi. Nizomning qaysi talabi buzilgan?",
+    "opts": [
+      "Vzvod komandiri mashg'ulot rejasini oldindan tuzishi shart",
+      "Vzvod komandiri shaxsiy tarkibni ro'yxatga olishi shart",
+      "Vzvod komandiri qurol-aslahalar sozligi uchun javobgar",
+      "Vzvod komandiri bo'ysunuvchilariga shaxsiy namuna bo'lishi shart"
+    ],
+    "correct": 3,
+    "explanation": "Nizom vzvod komandiriga shaxsiy tarkibni o'qitish va tarbiyalash bilan bir qatorda bo'ysunuvchilariga shaxsiy namuna bo'lish talabini qo'yadi — talabchanlik o'z xatti-harakati bilan tasdiqlanmasa, u kuchini yo'qotadi. Qurol sozligi, reja va ro'yxat ham uning vazifasi, ammo tasvirlangan holatda aynan shaxsiy namuna talabi buzilgan.",
+    "mnemonic": "Talab qilasanmi — avval o'zing namuna bo'l.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Ichki xizmat nizomi (PF-23), III bob: vzvod komandirining majburiyatlari",
+    "distractor_error": [
+      "boshqa majburiyatni tanlash",
+      "boshqa majburiyatni tanlash",
+      "boshqa majburiyatni tanlash",
+      ""
+    ]
+  },
+  {
+    "q": "Mashg'ulotdan keyin askar avtomatini tozalamasdan piramidaga qo'ydi va «ertaga tozalayman» dedi. Sherigi uni nizom talabini eslatib to'xtatdi. Askarning qaysi majburiyati buzilmoqda?",
+    "opts": [
+      "Qurolni toza va jangga tayyor saqlash majburiyati",
+      "Harbiy sirni saqlash majburiyati",
+      "Kun tartibiga rioya qilish majburiyati",
+      "Xavfsizlik talablariga rioya qilish majburiyati"
+    ],
+    "correct": 0,
+    "explanation": "Nizomga ko'ra harbiy xizmatchi o'ziga biriktirilgan qurol-yarog' va texnikani a'lo darajada bilishi hamda ularni toza va doimo jangga tayyor holda saqlashi shart. Bu talab keyinga qoldirilmaydi, chunki qurolning shayligi jangovar shaylikning bevosita qismidir.",
+    "mnemonic": "Qurol — doimo toza va jangga tayyor.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi (PF-23), III bob: harbiy xizmatchining majburiyatlari",
+    "distractor_error": [
+      "",
+      "boshqa majburiyatni tanlash",
+      "boshqa majburiyatni tanlash",
+      "boshqa majburiyatni tanlash"
+    ]
+  },
+  {
+    "q": "Bo'linma davlat chegarasini qo'riqlash va havo hujumidan mudofaa vazifasini bajarishga shay holatda turibdi. Yangi askar bu holatning nizomdagi nomini so'radi. To'g'ri javob qaysi?",
+    "opts": [
+      "Qorovullik xizmati",
+      "Jangovar navbatchilik",
+      "Sutkalik naryad xizmati",
+      "Garnizon patrul xizmati"
+    ],
+    "correct": 1,
+    "explanation": "Jangovar navbatchilik — jangovar topshiriqni bajarishga shaylik holati bo'lib, u davlat sarhadlarini qo'riqlash, havo hujumidan mudofaa va strategik obyektlar xavfsizligini ta'minlaydi. Sutkalik naryad ichki tartibga, qorovullik xizmati obyektlarni qo'riqlashga, patrul esa garnizondagi intizomga qaratilgan.",
+    "mnemonic": "Chegara va osmon shayligi — jangovar navbatchilik.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Ichki xizmat nizomi (PF-23), VII bob: jangovar navbatchilik",
+    "distractor_error": [
+      "xizmat turini chalkashtirish",
+      "",
+      "xizmat turini chalkashtirish",
+      "xizmat turini chalkashtirish"
+    ]
+  },
+  {
+    "q": "Bir ofitser askarga xizmatga aloqasi bo'lmagan, nizomda nazarda tutilmagan shaxsiy topshiriq berdi. Askar buni bajarishga majburmi degan savol tug'ildi. Nizom bu masalani qanday hal qiladi?",
+    "opts": [
+      "Topshiriqni bajarish askarning shaxsiy xohishiga bog'liq",
+      "Har qanday topshiriq, mazmunidan qat'i nazar, bajarilishi shart",
+      "Hech kim nizomda nazarda tutilmagan majburiyatni yuklashga haqli emas",
+      "Topshiriq faqat yozma berilgan taqdirda bajarilishi shart"
+    ],
+    "correct": 2,
+    "explanation": "Nizom harbiy xizmatchining huquqiy muhofazasini kafolatlaydi: hech kim unga qonunda va nizomlarda nazarda tutilmagan majburiyatlarni yuklashga haqli emas. Shu sababli xizmatga aloqasi bo'lmagan shaxsiy topshiriq qonuniy buyruq hisoblanmaydi — masala yozma shakl yoki shaxsiy xohish bilan hal qilinmaydi.",
+    "mnemonic": "Nizomda yo'q — majburiyat ham yo'q.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Ichki xizmat nizomi (PF-23), I bob: harbiy xizmatchining huquqiy muhofazasi",
+    "distractor_error": [
+      "masalani xohishga bog'lash",
+      "himoyani inkor etish",
+      "",
+      "masalani shaklga bog'lash"
+    ]
+  },
+  {
+    "q": "Yosh ofitser harbiy intizomni «komandirdan qo'rqish» deb ta'rifladi. Bo'linma boshlig'i uni nizom ta'rifi bilan to'g'riladi. Intizom nizomiga ko'ra harbiy intizom nima?",
+    "opts": [
+      "Mashg'ulotlarda tartibni saqlash usuli",
+      "Kun tartibiga aniq rioya qilish tartibi",
+      "Komandir buyruqlarini bajarish tartibi",
+      "Qonun, qasamyod, nizom va buyruqqa rioya"
+    ],
+    "correct": 3,
+    "explanation": "Intizom nizomiga ko'ra harbiy intizom — barcha harbiy xizmatchilar tomonidan qonunlar, Harbiy qasamyod, umumharbiy nizomlar bilan o'rnatilgan tartib-qoidalarga va komandirlarning buyruqlariga qat'iy hamda so'zsiz rioya etilishidir. Ta'rifni faqat buyruqqa, kun tartibiga yoki mashg'ulotga toraytirish uning mazmunini kamaytiradi.",
+    "mnemonic": "Qonun + qasamyod + nizom + buyruq.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Intizom nizomi (PF-23), I bob: harbiy intizom tushunchasi",
+    "distractor_error": [
+      "ta'rifni toraytirish",
+      "ta'rifni toraytirish",
+      "ta'rifni toraytirish",
+      ""
+    ]
+  },
+  {
+    "q": "Komandir bo'ysunuvchilariga nisbatan juda talabchan, ammo ularni doimo kamsitib gapiradi va shaxsiy ehtiyojlariga befarq. Intizom nizomi asosida uning uslubiga qanday baho beriladi?",
+    "opts": [
+      "Uslub nizomga zid — talabchanlik hurmat bilan uyg'unlashishi shart",
+      "Uslub to'g'ri, chunki intizomiy natija talabchanlikka bog'liq",
+      "Uslub nizomga zid, chunki komandir umuman talabchan bo'lmasligi kerak",
+      "Uslub to'g'ri — intizom faqat qat'iy talabchanlik bilan mustahkamlanadi"
+    ],
+    "correct": 0,
+    "explanation": "Nizomga ko'ra harbiy intizom, boshqalar qatori, komandirlarning yuksak talabchanligini bo'ysunuvchilarning shaxsiy qadr-qimmatini hurmat qilish va ularga g'amxo'rlik bilan uyg'unlashtirishga asoslanadi. Ya'ni talabchanlik kerak, lekin kamsitish bilan emas; talabchanlikdan butunlay voz kechish ham nizomga zid.",
+    "mnemonic": "Talabchanlik + hurmat + g'amxo'rlik.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Intizom nizomi (PF-23), I bob: harbiy intizom nimalarga asoslanadi",
+    "distractor_error": [
+      "",
+      "hurmat shartini tashlash",
+      "talabchanlikni inkor etish",
+      "hurmat shartini tashlash"
+    ]
+  },
+  {
+    "q": "Askar bitta qoidabuzarlik sodir etdi. Komandir unga ham hayfsan e'lon qildi, ham navbatdan tashqari naryadga tayinladi. Xizmatchi bu qarorga norozilik bildirmoqda. Nizom talabi qanday?",
+    "opts": [
+      "Ikkita jazo faqat takroriy qoidabuzarlikda qo'llaniladi",
+      "Bitta qoidabuzarlik uchun faqat bitta intizomiy jazo qo'llaniladi",
+      "Bir qoidabuzarlik uchun ikkita jazo qo'llash komandir huquqi",
+      "Jazolar soni qoidabuzarlikning og'irligiga qarab belgilanadi"
+    ],
+    "correct": 1,
+    "explanation": "Nizomning asosiy qoidalaridan biri — bitta huquqbuzarlik uchun faqat bitta intizomiy jazo qo'llanadi. Qoidabuzarlikning og'irligi jazoning turini belgilaydi, ammo ularning sonini ko'paytirish uchun asos bo'la olmaydi.",
+    "mnemonic": "Bir qoidabuzarlik — bir jazo.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Intizom nizomi (PF-23), V bob: jazo qo'llash qoidalari",
+    "distractor_error": [
+      "qoidaga istisno kiritish",
+      "",
+      "qoidani buzish",
+      "sonni og'irlikka bog'lash"
+    ]
+  },
+  {
+    "q": "Qoidabuzarlik aniqlangandan keyin komandir jazo masalasini bir oyga qoldirdi, keyin esa jazo qo'lladi. Xizmatchi tartib buzilganini aytmoqda. Nizomga ko'ra jazo qanday muddatda qo'llanadi?",
+    "opts": [
+      "Qoidabuzarlik sodir etilgan kuning o'zida qo'llanishi shart",
+      "Bir oy ichida qo'llanishi yetarli hisoblanadi",
+      "Aniqlangan kundan boshlab 10 sutkadan kechiktirmasdan qo'llanadi",
+      "Muddat belgilanmagan, komandir istalgan vaqtda qo'llaydi"
+    ],
+    "correct": 2,
+    "explanation": "Intizomiy jazo qoidabuzarlik aniqlangan kundan boshlab 10 sutkadan kechiktirmasdan, xizmat tekshiruvi o'tkazilgan taqdirda esa tekshiruv tugagan kundan boshlab qo'llanadi. Muddatning cheklanishi jazoning tarbiyaviy ta'sirini saqlash uchun zarur; muddatsiz yoki bir oylik kechikish nizomga zid.",
+    "mnemonic": "Aniqlandi — 10 sutka ichida jazo.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Intizom nizomi (PF-23), V bob: jazoni qo'llash muddati",
+    "distractor_error": [
+      "muddatni qisqartirish",
+      "muddatni uzaytirish",
+      "",
+      "muddatni inkor etish"
+    ]
+  },
+  {
+    "q": "Komandir qoidabuzardan hech qanday tushuntirish olmasdan, darhol qattiq hayfsan e'lon qildi. Xizmatchi o'z holatini tushuntirmoqchi edi. Nizom talabiga ko'ra qanday tartib buzilgan?",
+    "opts": [
+      "Jazo faqat guruh yig'ilishida muhokama qilinishi kerak edi",
+      "Jazo faqat yuqori komandir roziligi bilan qo'llanishi kerak edi",
+      "Jazo qo'llashdan oldin xizmatchiga ta'til berilishi kerak edi",
+      "Jazo qo'llashdan oldin qoidabuzardan yozma tushuntirish xati olinishi kerak edi"
+    ],
+    "correct": 3,
+    "explanation": "Nizomga ko'ra intizomiy jazo qo'llashdan oldin qoidabuzardan yozma tushuntirish xati olinadi — bu holatni to'liq aniqlash va adolatli qaror chiqarish uchun majburiy bosqich. Jamoa muhokamasi yoki yuqori komandir roziligi bunday hollarda talab qilinmaydi.",
+    "mnemonic": "Avval tushuntirish xati — keyin jazo.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Intizom nizomi (PF-23), V bob: jazo qo'llash tartibi",
+    "distractor_error": [
+      "tartibni o'ylab topish",
+      "tartibni o'ylab topish",
+      "tartibni o'ylab topish",
+      ""
+    ]
+  },
+  {
+    "q": "Ikki xizmatchi bir xil qoidabuzarlikni sodir etdi, biroq ulardan biri buni mast holatda qildi. Komandir jazo choralarini belgilamoqda. Nizom bu farqni qanday hisobga oladi?",
+    "opts": [
+      "Mast holat og'irlashtiruvchi holat, eng qat'iy chora qo'llanadi",
+      "Mast holatda sodir etilgan qoidabuzarlik uchun jazo kechiktiriladi",
+      "Mast holat javobgarlikni yengillashtiruvchi holat hisoblanadi",
+      "Mast holat jazo masalasiga umuman ta'sir qilmaydi"
+    ],
+    "correct": 0,
+    "explanation": "Nizomga ko'ra mast holatda sodir etilgan nojo'ya xatti-harakatlar og'irlashtiruvchi holat hisoblanadi va bunday hollarda eng qat'iy jazo choralari qo'llaniladi. Uni yengillashtiruvchi holat deb bilish yoki e'tiborsiz qoldirish nizom talabiga zid.",
+    "mnemonic": "Mast holat — jazoni og'irlashtiradi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Intizom nizomi (PF-23), V bob: og'irlashtiruvchi holat",
+    "distractor_error": [
+      "",
+      "jazoni kechiktirish",
+      "holatni teskari baholash",
+      "holatni e'tiborsiz qoldirish"
+    ]
+  },
+  {
+    "q": "Askar ilgari intizomiy jazo olgan, biroq keyin namunali xizmat ko'rsatdi. Komandir uni rag'batlantirmoqchi, lekin qaysi chora eng mos kelishini o'ylamoqda. Nizomdagi qaysi chora aynan shu holatga mo'ljallangan?",
+    "opts": [
+      "Egallab turgan lavozimidan ozod etish",
+      "Ilgari berilgan intizomiy jazoni olib tashlash",
+      "Xizmat vazifasiga nomuvofiqligi haqida ogohlantirish",
+      "Navbatdagi harbiy unvondan mahrum qilish"
+    ],
+    "correct": 1,
+    "explanation": "Ilgari berilgan intizomiy jazoni olib tashlash — nizomda nazarda tutilgan rag'batlantirish choralaridan biri bo'lib, u aynan jazo olgan, keyin esa xizmatda namuna ko'rsatgan xizmatchiga qo'llanadi. Qolgan variantlar rag'batlantirish emas, intizomiy jazo turlaridir.",
+    "mnemonic": "Tuzalding — jazo olib tashlanadi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Intizom nizomi (PF-23), II bob: rag'batlantirish turlari",
+    "distractor_error": [
+      "jazoni rag'batlantirish deb bilish",
+      "",
+      "jazoni rag'batlantirish deb bilish",
+      "jazoni rag'batlantirish deb bilish"
+    ]
+  },
+  {
+    "q": "Harbiy qism komandiri jangovar tayyorgarlikda alohida natija ko'rsatgan askarni butun qism oldida ulug'lamoqchi. U nizomdagi eng tantanali rag'batlantirish shaklini qidirmoqda. Qaysi chora bunga mos keladi?",
+    "opts": [
+      "Vataniga minnatdorchilik xati yuborish",
+      "Navbatdan tashqari javob berish bilan taqdirlash",
+      "Jangovar bayroq oldida rasmga tushirish",
+      "Tashakkur e'lon qilish bilan taqdirlash"
+    ],
+    "correct": 2,
+    "explanation": "Nizomda nazarda tutilgan rag'batlantirish choralari orasida harbiy qismning ochilgan Jangovar bayrog'i oldida shaxsiy fotosurat bilan taqdirlash eng tantanali shakl hisoblanadi, chunki Jangovar bayroq qismning sha'ni ramzi. Tashakkur, javob berish va minnatdorchilik xati ham rag'batlantirish, ammo tantanali darajasi past.",
+    "mnemonic": "Bayroq oldida surat — eng yuksak rag'bat.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Intizom nizomi (PF-23), II bob: rag'batlantirish turlari",
+    "distractor_error": [
+      "darajani past baholash",
+      "darajani past baholash",
+      "",
+      "darajani past baholash"
+    ]
+  },
+  {
+    "q": "Muddatli xizmatchini rag'batlantirish uchun qisqa muddatli ta'til berish masalasi ko'rilmoqda. Komandir ta'til muddatini belgilashi kerak. Nizomga ko'ra bu ta'til qanday muddatga beriladi?",
+    "opts": [
+      "30 sutkagacha bo'lgan muddatga",
+      "20 sutkagacha bo'lgan muddatga",
+      "15 sutkagacha bo'lgan muddatga",
+      "10 sutkagacha bo'lgan muddatga"
+    ],
+    "correct": 3,
+    "explanation": "Nizomga ko'ra muddatli xizmatchilarga rag'batlantirish tariqasida 10 sutkagacha bo'lgan muddatga qisqa muddatli ta'til beriladi. Bu chora harbiy qism komandiri vakolatiga kiradi va undan uzoq muddat rag'batlantirish ta'tili sifatida nazarda tutilmagan.",
+    "mnemonic": "Rag'bat ta'tili — 10 sutkagacha.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Intizom nizomi (PF-23), II bob: qisqa muddatli rag'batlantirish ta'tili",
+    "distractor_error": [
+      "muddatni oshirish",
+      "muddatni oshirish",
+      "muddatni oshirish",
+      ""
+    ]
+  },
+  {
+    "q": "Bo'linma (guruh) komandiri o'z askarini Jangovar bayroq oldida rasmga tushirish bilan taqdirlamoqchi bo'ldi. Rota komandiri bunga yo'l qo'ymadi. Nizomga ko'ra bo'linma komandirining rag'batlantirish vakolati qanday?",
+    "opts": [
+      "O'zi bergan jazoni olib tashlash va tashakkur e'lon qilish huquqi",
+      "U rag'batlantirish choralarini umuman qo'llay olmaydi",
+      "U barcha rag'batlantirish choralarini qo'llash huquqiga ega",
+      "U faqat qisqa muddatli ta'til berish huquqiga ega"
+    ],
+    "correct": 0,
+    "explanation": "Nizomda rag'batlantirish vakolatlari lavozim bo'yicha aniq taqsimlangan: bo'linma (guruh) komandiri ilgari o'zi bergan intizomiy jazoni olib tashlash va tashakkur e'lon qilish huquqiga ega. Jangovar bayroq oldida rasmga tushirish, ta'til berish kabi choralar polk (harbiy qism) komandiri vakolatiga kiradi.",
+    "mnemonic": "Har vakolat — o'z pog'onasida.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Intizom nizomi (PF-23), III bob: komandirlarning rag'batlantirish vakolatlari",
+    "distractor_error": [
+      "",
+      "vakolatni butunlay inkor etish",
+      "vakolatni oshirib yuborish",
+      "vakolatni chalkashtirish"
+    ]
+  },
+  {
+    "q": "Rota komandiri namunali xizmat ko'rsatgan askarga navbatdan tashqari javob berishni (uvolneniye) rag'batlantirish sifatida qo'llamoqchi. Yordamchisi bu vakolat rota komandiriga tegishli emasligini aytmoqda. Kim haq?",
+    "opts": [
+      "Yordamchi haq — bu chora rag'batlantirish turi hisoblanmaydi",
+      "Rota komandiri haq — navbatdan tashqari javob berish uning vakolatida",
+      "Yordamchi haq — bu vakolat faqat batalon komandiriga tegishli",
+      "Yordamchi haq — bu vakolat faqat mudofaa vaziriga tegishli"
+    ],
+    "correct": 1,
+    "explanation": "Nizomga ko'ra rota komandiri ilgari berilgan jazoni olib tashlash, tashakkur e'lon qilish va navbatdan tashqari garnizondan javob berish huquqiga ega. Bu chora rag'batlantirish turlari ro'yxatiga kiradi va uni qo'llash uchun yuqori pog'onaga murojaat talab qilinmaydi.",
+    "mnemonic": "Rota komandiri — navbatdan tashqari javob bera oladi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Intizom nizomi (PF-23), III bob: rota komandirining vakolatlari",
+    "distractor_error": [
+      "chorani inkor etish",
+      "",
+      "vakolatni yuqoriga surish",
+      "vakolatni yuqoriga surish"
+    ]
+  },
+  {
+    "q": "Og'ir intizomiy qoidabuzarlik sodir etgan askarga nisbatan intizomiy qamoq (gauptvaxta) qo'llash masalasi ko'rilmoqda. Komandir muddatni belgilashi kerak. Nizomga ko'ra eng ko'p muddat qancha?",
+    "opts": [
+      "20 sutkagacha",
+      "30 sutkagacha",
+      "10 sutkagacha",
+      "15 sutkagacha"
+    ],
+    "correct": 2,
+    "explanation": "Nizomda oddiy askarlar va serjantlarga qo'llaniladigan intizomiy jazolar orasida intizomiy qamoq (gauptvaxta) 10 sutkagacha bo'lgan muddatga belgilangan. Undan uzoq muddat intizomiy jazo doirasidan chiqadi va boshqa huquqiy tartibda hal qilinadi.",
+    "mnemonic": "Gauptvaxta — 10 sutkagacha.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Intizom nizomi (PF-23), IV bob: intizomiy jazo turlari",
+    "distractor_error": [
+      "muddatni oshirish",
+      "muddatni oshirish",
+      "",
+      "muddatni oshirish"
+    ]
+  },
+  {
+    "q": "Ofitser intizomiy qoidabuzarlik sodir etdi. Bo'linma boshlig'i unga nisbatan navbatdan tashqari xizmat naryadiga tayinlash jazosini qo'llamoqchi. Nizom bu qarorni qanday baholaydi?",
+    "opts": [
+      "Qaror noto'g'ri — ofitserlarga umuman intizomiy jazo qo'llanmaydi",
+      "Qaror to'g'ri — bu jazo barcha toifadagi xizmatchilarga qo'llanadi",
+      "Qaror to'g'ri, agar ofitser rozilik bildirsa",
+      "Qaror noto'g'ri — bu jazo askar va serjantlarga mo'ljallangan"
+    ],
+    "correct": 3,
+    "explanation": "Nizomda intizomiy jazolar toifalar bo'yicha alohida belgilangan: navbatdan tashqari xizmat naryadiga tayinlash va intizomiy qamoq — oddiy askar va serjantlarga mo'ljallangan choralar. Ofitserlarga tanbeh, hayfsan, lavozimdan ozod etish kabi choralar qo'llanadi; ularga jazo umuman qo'llanmaydi degan fikr ham noto'g'ri.",
+    "mnemonic": "Jazo turi — toifaga qarab.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Intizom nizomi (PF-23), IV bob: toifalar bo'yicha jazo turlari",
+    "distractor_error": [
+      "javobgarlikni inkor etish",
+      "toifa farqini inkor etish",
+      "masalani rozilikka bog'lash",
+      ""
+    ]
+  },
+  {
+    "q": "Qorovul xizmatini o'tayotgan soqchi komandirining qarori bilan rozi emas va shu yerning o'zida shikoyat bildirmoqchi bo'ldi. Qorovul boshlig'i bunga yo'l qo'ymadi. Nizom talabi qanday?",
+    "opts": [
+      "Safda va qorovul xizmatida shikoyat berish taqiqlanadi",
+      "Shikoyat safda va qorovul xizmatida ham berilishi mumkin",
+      "Shikoyat berish harbiy xizmatchiga umuman taqiqlanadi",
+      "Shikoyat faqat yozma shaklda, istalgan vaqtda beriladi"
+    ],
+    "correct": 0,
+    "explanation": "Nizomga ko'ra harbiy xizmatchi shikoyat qilish huquqiga ega, biroq safda turgan vaqtda yoki naryad hamda qorovul xizmatini o'tayotgan paytda shikoyat berish taqiqlanadi — favqulodda holatlar bundan mustasno. Bu cheklov jangovar vazifaning uzilmasligi uchun kiritilgan va shikoyat huquqini bekor qilmaydi.",
+    "mnemonic": "Postda shikoyat yo'q — xizmatdan keyin.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Intizom nizomi (PF-23), VI bob: murojaat va shikoyatlar",
+    "distractor_error": [
+      "",
+      "cheklovni inkor etish",
+      "huquqni butunlay inkor etish",
+      "cheklovni shaklga bog'lash"
+    ]
+  },
+  {
+    "q": "Askar komandirning noqonuniy xatti-harakati ustidan yuqori boshliqqa shikoyat qildi. Shundan keyin bo'linmada unga nisbatan tazyiq boshlandi va qo'shimcha naryadlar berildi. Bunday harakatga nizom qanday baho beradi?",
+    "opts": [
+      "Bu komandirning tarbiyaviy chorasi hisoblanadi",
+      "Bu qat'iyan man etiladi va jinoiy javobgarlikka sabab bo'ladi",
+      "Bu faqat intizomiy tartibda ko'rib chiqiladi",
+      "Bu shikoyat asossiz bo'lsa, qonuniy hisoblanadi"
+    ],
+    "correct": 1,
+    "explanation": "Nizom shikoyat berganligi uchun harbiy xizmatchiga nisbatan har qanday tazyiq o'tkazish, uni kamsitish yoki intizomiy javobgarlikka tortishni qat'iyan man etadi va bunday harakat qonun bilan jinoiy javobgarlikka sabab bo'ladi. Shikoyatning asosli yoki asossizligi bu taqiqni o'zgartirmaydi.",
+    "mnemonic": "Shikoyat uchun tazyiq — jinoyat.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Intizom nizomi (PF-23), VI bob: shikoyat berganlik uchun tazyiq taqiqi",
+    "distractor_error": [
+      "tazyiqni oqlash",
+      "",
+      "javobgarlikni yengillashtirish",
+      "taqiqqa shart qo'yish"
+    ]
+  },
+  {
+    "q": "Harbiy xizmatchi qism komandiriga yozma ariza topshirdi. Ikki oy o'tsa ham javob bo'lmadi. U nizomdagi muddatga tayanib murojaat qilmoqchi. Nizomga ko'ra murojaat qanday muddatda ko'riladi?",
+    "opts": [
+      "Uch oy, murakkab masalalarda esa olti oy muddatda",
+      "Ikki oy, qo'shimcha o'rganish talab etilganda uch oy muddatda",
+      "15 kun, qo'shimcha o'rganish talab etilganda bir oy muddatda",
+      "Muddat belgilanmagan — imkoniyatga qarab ko'rib chiqiladi"
+    ],
+    "correct": 2,
+    "explanation": "Nizomga ko'ra barcha murojaat va arizalar 15 kunlik, qo'shimcha o'rganish talab etilganda esa bir oylik muddatda ko'rib chiqilib, murojaat etuvchiga yozma javob beriladi. Ikki oylik javobsizlik bu talabning buzilishini bildiradi.",
+    "mnemonic": "15 kun, kerak bo'lsa — bir oy.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Intizom nizomi (PF-23), VI bob: murojaatlarni ko'rib chiqish muddati",
+    "distractor_error": [
+      "muddatni uzaytirish",
+      "muddatni uzaytirish",
+      "",
+      "muddatni inkor etish"
+    ]
+  },
+  {
+    "q": "Askarga tashakkur e'lon qilindi, biroq ikki hafta o'tgach uning xizmat kartochkasida bu haqda yozuv yo'q edi. Tekshiruvchi bu holatni nuqson deb qayd etdi. Nizomga ko'ra yozuv qanday muddatda kiritiladi?",
+    "opts": [
+      "O'n besh kun ichida kiritiladi",
+      "Oy oxirida bir yo'la kiritiladi",
+      "Uch kun ichida kiritiladi",
+      "Yetti kun muddat ichida kiritiladi"
+    ],
+    "correct": 3,
+    "explanation": "Nizomga ko'ra barcha qo'llanilgan rag'batlantirishlar va intizomiy jazolar 7 kun muddat ichida harbiy xizmatchining xizmat kartochkasiga kiritiladi. Hisobning o'z vaqtida yuritilishi intizomiy holatni baholash va keyingi qarorlar uchun asos bo'ladi.",
+    "mnemonic": "Rag'bat ham, jazo ham — 7 kunda kartochkaga.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Intizom nizomi (PF-23), VII bob: intizom kitobi va hisobga olish",
+    "distractor_error": [
+      "muddatni uzaytirish",
+      "hisobni kechiktirish",
+      "muddatni qisqartirish",
+      ""
+    ]
+  },
+  {
+    "q": "Harbiy yig'inga chaqirilgan zaxiradagi fuqaro yig'in davomida intizomni buzdi va «men harbiy xizmatchi emasman, nizom menga tegishli emas» dedi. Nizom bu masalani qanday hal qiladi?",
+    "opts": [
+      "Nizom harbiy yig'in davridagi majburlarga ham tatbiq etiladi",
+      "Nizom faqat ofitserlar tarkibiga nisbatan qo'llanadi",
+      "Nizom faqat muddatli xizmatchilarga nisbatan tatbiq etiladi",
+      "Nizom faqat shartnoma asosidagi xizmatchilarga tegishli"
+    ],
+    "correct": 0,
+    "explanation": "Intizom nizomi Qurolli Kuchlarning barcha harbiy xizmatchilariga, shuningdek harbiy yig'inlarni o'tash davrida harbiy xizmatga majburlarga nisbatan ham tatbiq etiladi. Shu sababli yig'in ishtirokchisi nizom talablaridan chetda qololmaydi.",
+    "mnemonic": "Yig'inda ham nizom ishlaydi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Intizom nizomi (PF-23), Umumiy qoidalar: nizomning qamrovi",
+    "distractor_error": [
+      "",
+      "qamrovni toraytirish",
+      "qamrovni toraytirish",
+      "qamrovni toraytirish"
+    ]
+  },
+  {
+    "q": "Komandir intizomiy jazoni «qoidabuzarga o'zini yomon his qildirish» maqsadida qo'llash kerak deb hisoblamoqda. Yordamchisi nizomdagi maqsadni eslatmoqda. Nizomga ko'ra intizomiy jazoning maqsadi nima?",
+    "opts": [
+      "Komandirning shaxsiy hokimiyatini namoyish qilish va mustahkamlash",
+      "Xizmatchini nizomga rioya ruhida tarbiyalash va oldini olish",
+      "Qoidabuzarni jamoa oldida iloji boricha ko'proq kamsitish",
+      "Bo'linmadagi barcha xizmatchilarga qo'rquv hissini singdirish"
+    ],
+    "correct": 1,
+    "explanation": "Nizomga ko'ra intizomiy jazo — harbiy xizmatchini qonunga va nizomlarga rioya etish ruhida tarbiyalash hamda yangi qoidabuzarliklarning oldini olish vositasidir. Kamsitish, qo'rquv singdirish yoki hokimiyat namoyishi jazoning maqsadi emas va nizomga zid.",
+    "mnemonic": "Jazo — tarbiya vositasi, o'ch emas.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Intizom nizomi (PF-23), V bob: intizomiy jazoning maqsadi",
+    "distractor_error": [
+      "maqsadni hokimiyatga aylantirish",
+      "",
+      "maqsadni kamsitishga aylantirish",
+      "maqsadni qo'rquvga aylantirish"
+    ]
+  },
+  {
+    "q": "Bo'linmada intizomiy holatni hisobga olish masalasi ko'tarildi. Komandir «bunday hujjat yuritilmaydi» dedi. Nizomga ko'ra rotada va harbiy qismda qanday hujjatlar yuritiladi?",
+    "opts": [
+      "Hech qanday maxsus hujjat yuritilmaydi",
+      "Jangovar tayyorgarlik jurnali yuritiladi",
+      "«Xizmat kartochkasi» va «Intizom kitobi» yuritiladi",
+      "Kun tartibi jadvali yuritiladi"
+    ],
+    "correct": 2,
+    "explanation": "Nizomga ko'ra har bir rotada (bo'linmada) va harbiy qismda shaxsiy tarkibning intizomiy holatini hisobga olish uchun «Xizmat kartochkasi» va «Intizom kitobi» yuritiladi. Bu hujjatlarda rag'batlantirish va jazolar qayd etiladi, shuning uchun ularning yo'qligi nizom buzilishi hisoblanadi.",
+    "mnemonic": "Xizmat kartochkasi va Intizom kitobi.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Intizom nizomi (PF-23), VII bob: hisobga olish hujjatlari",
+    "distractor_error": [
+      "hujjatni inkor etish",
+      "hujjatni chalkashtirish",
+      "",
+      "hujjatni chalkashtirish"
+    ]
+  },
+  {
+    "q": "Komandir bo'ysunuvchisining noqonuniy xatti-harakati ustidan shikoyat qilmoqchi bo'lgan askarga «shikoyatni faqat menga berasan, boshqa hech kimga emas» dedi. Nizom bu talabni qanday baholaydi?",
+    "opts": [
+      "Talab nizomga zid — shikoyat faqat jamoa yig'ilishida ko'riladi",
+      "Talab to'g'ri — shikoyat faqat bevosita komandirga beriladi",
+      "Talab to'g'ri — tashqi organlarga murojaat taqiqlanadi",
+      "Talab nizomga zid — xizmatchi prokuratura va sudga ham murojaat qila oladi"
+    ],
+    "correct": 3,
+    "explanation": "Nizomga ko'ra har bir harbiy xizmatchi o'z huquqlari buzilganda yuqori turuvchi komandirga, harbiy prokuraturaga yoki sudga murojaat qilish huquqiga ega. Shikoyat yo'lini bitta shaxs bilan cheklash bu huquqni buzadi; jamoa yig'ilishi esa shikoyatni ko'rib chiqish organi emas.",
+    "mnemonic": "Yuqori komandir, prokuratura yoki sud.",
+    "topicId": 1,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Intizom nizomi (PF-23), VI bob: murojaat qilish huquqi",
+    "distractor_error": [
+      "organni noto'g'ri ko'rsatish",
+      "huquqni cheklash",
+      "huquqni cheklash",
+      ""
+    ]
+  }
+]

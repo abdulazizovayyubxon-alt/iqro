@@ -1,0 +1,302 @@
+[
+{
+  "q": "Marsh paytida askarning son arteriyasidan qon ketishi jgut bilan to'xtatilgan. Evakuatsiya kutilmaganda kechikdi va jgut qo'yilganiga belgilangan muddat tugay deb qoldi; bog'lam quruq, qon oqishi yo'q. Sanitar instruktor qanday yo'l tutishi kerak?",
+  "opts": [
+    "Jgutni butunlay yechib, faqat bosuvchi bog'lam bilan cheklanadi va kuzatuvni davom ettiradi",
+    "Jgutni joyida qoldirib, ustidan ikkinchi jgut qo'yadi va evakuatsiyani kutadi",
+    "Arteriyani barmoq bilan bosib turib, jgutni 10-15 daqiqaga bo'shatadi va yuqoriroqqa qayta qo'yadi",
+    "Jgutni bo'shatmaydi, oyoqni iliq mato bilan o'rab, muddat cheklovini e'tiborsiz qoldiradi"
+  ],
+  "correct": 2,
+  "explanation": "Jgut to'qimalarga qon kelishini butunlay uzadi, shuning uchun belgilangan muddat tugaganda u vaqtincha bo'shatiladi — ammo bo'shatish paytida arteriya barmoq bilan bosib turiladi, aks holda qon ketishi qaytalanadi. Jgutni umuman yechib tashlash qon ketishini tiklaydi; ikkinchi jgut qo'yish esa siqilish muddatini uzaytirib, nekroz xavfini oshiradi. Muddat cheklovini e'tiborsiz qoldirish a'zoning yo'qotilishiga olib keladi.",
+  "mnemonic": "Muddat tugadi — barmoq bosib, jgut dam olsin.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 11-sinf, tibbiy tayyorgarlik: qon ketishini vaqtincha to'xtatish",
+  "distractor_error": ["jgutni erta yechish", "siqilish muddatini uzaytirish", "", "muddat cheklovini inkor etish"]
+},
+{
+  "q": "Bilak arteriyasidan qon ketishida jgut qo'yilgandan keyin qon oqishi to'xtamadi, aksincha kuchaydi; qo'l shishib, terisi ko'kish tusga kirdi. Sanitar instruktor bu belgilarni qanday izohlaydi va nima qiladi?",
+  "opts": [
+    "Jgut juda baland qo'yilgan — uni yaraga yaqinroq joyga surib, qaytadan bog'lash kerak",
+    "Jgut kuchsiz tortilgan, faqat venalar siqilgan — arteriya to'xtaguncha qayta bog'lanadi",
+    "Jgut haddan tashqari qattiq tortilgan — uni bir oz bo'shatib, holatni kuzatish kerak",
+    "Bu jgut qo'yilgandagi odatiy holat — a'zoni ko'tarib qo'yish bilan cheklanish mumkin"
+  ],
+  "correct": 1,
+  "explanation": "Yuzaki joylashgan venalar arteriyadan oldin siqiladi. Jgut kuchsiz tortilsa, vena qoni chiqib keta olmaydi, arteriya qoni esa kelaveradi — natijada a'zo shishadi, ko'karadi va qon ketishi kuchayadi. Yagona to'g'ri yechim — jgutni qaytadan, arteriya pulsi to'xtaguncha tortib bog'lash. Jgutni bo'shatish yoki surish ahvolni yanada og'irlashtiradi.",
+  "mnemonic": "Ko'karsa — kuchsiz: vena qamalgan, arteriya ochiq.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: jgut qo'yish qoidalari va tipik xatolari",
+  "distractor_error": ["jgut o'rnini noto'g'ri baholash", "", "belgilarni teskari talqin qilish", "patologik belgini normal deb hisoblash"]
+},
+{
+  "q": "Qishki dala mashg'ulotidan qaytgan askarning oyoq barmoqlari oqarib, sezuvchanligini yo'qotgan. Sherigi barmoqlarni qor bilan ishqalashni, boshqasi esa gulxanga tutishni taklif qilmoqda. Sanitar instruktor qanday qaror qabul qiladi?",
+  "opts": [
+    "Qor bilan ishqalashga ruxsat beradi — ishqalanish qon aylanishini tez tiklaydi",
+    "Barmoqlarni gulxanga yaqin tutib, imkon qadar tez isitishni buyuradi",
+    "Barmoqlarni spirt bilan ho'llab, kuch bilan uqalashni buyuradi",
+    "Ishqalashni taqiqlaydi: quruq issiq bog'lam o'rab, iliq ichimlik beradi"
+  ],
+  "correct": 3,
+  "explanation": "Sovuq olgan to'qima juda mo'rt bo'ladi: qor yoki qo'l bilan ishqalash muzlagan hujayralarni mexanik shikastlaydi va teriga infeksiya kiritadi. Ochiq olovda yoki issiq buyum bilan tez isitish esa kuyish va chuqur to'qima o'limiga olib keladi. To'g'ri yo'l — isitishni tashqaridan emas, ichkaridan va asta-sekin ta'minlash: quruq issiqlik saqlovchi bog'lam hamda iliq ichimlik.",
+  "mnemonic": "Sovuqni ishqalama — o'ra va ichkaridan isit.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: sovuq olishda birinchi yordam",
+  "distractor_error": ["eskirgan 'qor bilan ishqalash' usuli", "tashqaridan tez isitish", "spirt bilan uqalash", ""]
+},
+{
+  "q": "Tog'li hududda adashib qolgan askar topildi: hushi xiralashgan, harakatlari sust, ilgari kuzatilgan qaltirash to'xtagan. O'lchov tana ichki haroratini 34 darajada ko'rsatdi. Bu ko'rsatkichni qanday baholash va birinchi navbatda nima qilish kerak?",
+  "opts": [
+    "Umumiy sovush boshlangan — nam kiyim yechilib, jabrlanuvchi asta-sekin isitiladi",
+    "Ko'rsatkich normaning quyi chegarasida — iliq choy berish bilan cheklanish kifoya qiladi",
+    "Qaltirashning to'xtashi yaxshilanish belgisi — askarni harakatlantirib, yurishga majburlash kerak",
+    "Holat og'ir emas, ammo tanani tez isitish uchun uni issiq vannaga solish maqsadga muvofiq"
+  ],
+  "correct": 0,
+  "explanation": "Tana ichki harorati 35 darajadan pastga tushganda termoregulyatsiya buziladi va umumiy sovush boshlanadi. Qaltirashning to'xtashi yaxshilanish emas — aksincha, organizmning issiqlik ishlab chiqarish zaxirasi tugaganini bildiradi. Bunday jabrlanuvchini harakatlantirish yoki issiq vannada keskin isitish yurak ritmining buzilishiga olib kelishi mumkin; isitish nam kiyim yechilgandan keyin, asta-sekin amalga oshiriladi.",
+  "mnemonic": "Qaltiroq to'xtadi — zaxira tugadi.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: umumiy sovush (gipotermiya) belgilari va yordam",
+  "distractor_error": ["", "chegarani noto'g'ri baholash", "og'irlashish belgisini yaxshilanish deb bilish", "keskin isitish"]
+},
+{
+  "q": "Dala oshxonasida qaynoq suv to'kilib, askarning bilagida shaffof suyuqlikka to'la pufakchalar paydo bo'ldi; og'riq kuchli, teri butunligi saqlangan. Qaysi harakatlar ketma-ketligi to'g'ri hisoblanadi?",
+  "opts": [
+    "Pufakchalarni steril nina bilan teshib, suyuqligini chiqarib, ustiga yod surtiladi",
+    "Kuygan sohaga o'simlik moyi yoki sariyog' surtilib, ustidan zich bog'lam qo'yiladi",
+    "Kuygan soha 10-15 daqiqa oqar sovuq suv ostida ushlanadi, so'ng steril quruq bog'lam qo'yiladi",
+    "Teriga to'g'ridan-to'g'ri muz bo'lagi qo'yilib, og'riq to'xtaguncha ushlab turiladi"
+  ],
+  "correct": 2,
+  "explanation": "Pufakcha ostidagi suyuqlik steril bo'lib, u yangi hosil bo'layotgan to'qimani himoya qiladi — uni teshish infeksiya uchun darvoza ochadi. Moy va sariyog' issiqlikni ushlab qolib, kuyishni chuqurlashtiradi hamda keyingi tozalashni qiyinlashtiradi. Muzni bevosita teriga qo'yish esa kuyish ustiga sovuq shikastini qo'shadi. Oqar sovuq suv issiqlikni chiqarib, chuqurlashish jarayonini to'xtatadi.",
+  "mnemonic": "Pufakni yorma, moy surtma — oqar suv.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: kuyish darajalari va birinchi yordam",
+  "distractor_error": ["pufakni yorish", "moy surtish", "", "muzni bevosita qo'yish"]
+},
+{
+  "q": "Yong'in o'chog'idan chiqarilgan askarning ko'krak old yuzasi va bir qo'li butunlay kuygan; hushi joyida, chanqoqlikdan shikoyat qilmoqda. Sanitar instruktor kuyish maydonini baholab, qanday xulosaga keladi?",
+  "opts": [
+    "Maydon kichik — ambulator yordam va og'riq qoldiruvchi bilan cheklanadi",
+    "Maydon kuyish shoki rivojlanadigan darajada katta — jabrlanuvchi shoshilinch evakuatsiyaga olinadi va suyuqlik ichiriladi",
+    "Maydon o'rtacha — faqat kuzatuv o'rnatilib, evakuatsiya umumiy navbat bilan amalga oshiriladi",
+    "Maydon ahamiyatsiz — asosiy e'tibor kuyish yuzasini zich bog'lam bilan yopishga qaratiladi"
+  ],
+  "correct": 1,
+  "explanation": "To'qqizlar qoidasi bo'yicha ko'krak old yuzasi va butun qo'l birgalikda tananing katta qismini tashkil etadi. Bunday maydonda plazma yo'qotilishi tez boshlanadi va kuyish shoki rivojlanadi, shuning uchun jabrlanuvchi umumiy navbatga qo'yilmaydi — u shoshilinch evakuatsiya guruhiga kiritiladi, hushi joyida bo'lsa suyuqlik ichiriladi. Zich bog'lam yoki oddiy kuzatuv suyuqlik yo'qotilishini to'xtatmaydi.",
+  "mnemonic": "Maydon katta — shok yaqin: suyuqlik va tezkor evakuatsiya.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: kuyish maydonini baholash (to'qqizlar qoidasi), kuyish shoki",
+  "distractor_error": ["maydonni kam baholash", "", "evakuatsiya shoshilinchligini pasaytirish", "asosiy xavfni bog'lamda deb bilish"]
+},
+{
+  "q": "Portlashdan keyin qulagan devor plitasi ostida askarning oyog'i to'rt soatdan beri siqilib qolgan; u hushida va og'riqdan shikoyat qilmoqda. Qutqaruvchilar plitani ko'tarishga tayyor. Plita ko'tarilishidan OLDIN nima qilinishi shart?",
+  "opts": [
+    "Siqilgan oyoqning yuqorisiga jgut yoki zich bog'lam qo'yiladi va faqat shundan keyin a'zo bo'shatiladi",
+    "Oyoq bo'shatilib, qon aylanishini tiklash uchun u darhol iliq suv bilan uqalanadi",
+    "Jabrlanuvchiga og'riq qoldiruvchi berilib, plita imkon qadar tez ko'tariladi",
+    "Oyoq bo'shatilgach, u issiq mato bilan o'raladi va jabrlanuvchi yurishga undaladi"
+  ],
+  "correct": 0,
+  "explanation": "Uzoq vaqt siqilgan mushaklarda parchalanish mahsulotlari to'planadi. Siqilish to'satdan olib tashlansa, ular bir vaqtning o'zida umumiy qon oqimiga kirib, buyrak yetishmovchiligiga va o'limga olib keladi. Shuning uchun a'zo bo'shatilishidan oldin uning yuqorisiga jgut yoki zich bog'lam qo'yilib, zaharli moddalar oqimi ushlab turiladi. Uqalash, isitish yoki yurishga undash bu oqimni aksincha tezlashtiradi.",
+  "mnemonic": "Avval bog'la — keyin bo'shat.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: uzoq siqilish sindromi",
+  "distractor_error": ["", "uqalash bilan oqimni tezlashtirish", "tartibni teskari qo'yish", "a'zoga yuklama berish"]
+},
+{
+  "q": "Askar boldirida ochiq sinish oldi: yara chetidan suyak uchi ko'rinib turibdi, yaradan qon sizmoqda, jabrlanuvchi hushida. Birinchi yordam qaysi tartibda ko'rsatiladi?",
+  "opts": [
+    "Suyak uchi ehtiyotkorlik bilan yara ichiga qaytariladi, so'ng shina qo'yiladi",
+    "Yara spirt bilan yuviladi, suyak to'g'rilanadi va soha mahkam tortib bog'lanadi",
+    "Faqat shina qo'yiladi, yara ochiq qoldirilib, jabrlanuvchi tezda evakuatsiya qilinadi",
+    "Qon ketishi to'xtatiladi, yaraga steril bog'lam qo'yilib, a'zo to'g'rilanmasdan qotiriladi"
+  ],
+  "correct": 3,
+  "explanation": "Ochiq sinishda birinchi vazifa — qon ketishini to'xtatish va yarani infeksiyadan yopish. Suyak uchini yaraga qaytarish yoki to'g'rilashga urinish qon tomir va nervlarni shikastlaydi hamda yara ichiga chuqur infeksiya kiritadi. Yarani ochiq qoldirish uni ifloslanishga qoldiradi. Shina to'g'rilashsiz, a'zoni bor holatida qotirish uchun qo'yiladi.",
+  "mnemonic": "To'xtat — yop — qotir. To'g'rilama.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: ochiq va yopiq sinishlarda birinchi yordam",
+  "distractor_error": ["suyakni joyiga kiritish", "sinishni to'g'rilash", "yarani ochiq qoldirish", ""]
+},
+{
+  "q": "Askarning boldir suyagi singan; mavjud vositalar orasidan taxta shina tanlandi. Instruktor shinaning uzunligi va qamrovini tushuntirmoqda. Qaysi qoida to'g'ri hisoblanadi?",
+  "opts": [
+    "Shina faqat sinish sohasiga, qo'shni bo'g'imlarga tegizmasdan qo'yiladi",
+    "Shina sinish joyidan yuqori va past tomondagi ikkita qo'shni bo'g'imni qamrab oladigan uzunlikda qo'yiladi",
+    "Shina chanoqdan boshlab, oyoqning uchala yirik bo'g'imini qamrab oladigan qilib qo'yiladi",
+    "Shina o'rniga elastik bint ishlatilib, soha imkon qadar mahkam tortib bog'lanadi"
+  ],
+  "correct": 1,
+  "explanation": "Transport immobilizatsiyasining asosiy qoidasi — sinish sohasidagi harakatni butunlay yo'qotish; buning uchun shina sinishdan yuqori va pastdagi ikkita bo'g'imni qamrab olishi kerak. Faqat sinish joyiga qo'yilgan shina bo'g'im harakatini to'xtatmaydi. Uchala bo'g'imni qamrash faqat son suyagi singanda talab qilinadi. Elastik bint bilan tortish esa qon aylanishini buzadi va suyak parchalarini siljitadi.",
+  "mnemonic": "Sinish o'rtada — ikki bo'g'im qamrovda.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: transport immobilizatsiyasi qoidalari",
+  "distractor_error": ["bo'g'imlarni qamramaslik", "", "son sinishi qoidasini boldirga ko'chirish", "shinani bint bilan almashtirish"]
+},
+{
+  "q": "Askar yiqilgandan keyin qo'lini ko'tara olmaydi; yelka bo'g'imining shakli o'zgargan, harakatlantirishga urinilganda prujinasimon qarshilik seziladi, a'zo uzunligi esa deyarli o'zgarmagan. Bu qanday shikast va qanday yordam ko'rsatiladi?",
+  "opts": [
+    "Suyak sinishi — a'zo o'qi to'g'rilanib, shina bilan qotiriladi",
+    "Pay cho'zilishi — sovuq qo'yilib, qo'lni erkin harakatlantirish mumkin",
+    "Bo'g'im chiqishi — joyiga solinmaydi, qo'l tanaga bog'lab qotiriladi",
+    "Yumshoq to'qima ko'karishi — issiq kompress qo'yilib, soha uqalanadi"
+  ],
+  "correct": 2,
+  "explanation": "Bo'g'im shaklining o'zgarishi va harakatga prujinasimon qarshilik — aynan bo'g'im chiqishining belgilari; sinishda esa a'zo uzunligi o'zgaradi va patologik harakatchanlik paydo bo'ladi. Chiqqan bo'g'imni joyiga solish faqat shifokor ishi: mashq sharoitida urinish qon tomir va nervlarni uzishi mumkin. Sovuq yoki issiq bilan cheklanish esa bo'g'imni qotirmasdan qoldirib, shikastni og'irlashtiradi.",
+  "mnemonic": "Prujina qarshiligi — bo'g'im chiqqan, solma.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: bo'g'im chiqishi va sinishni farqlash",
+  "distractor_error": ["chiqishni sinish deb bilish", "shikastni yengil baholash", "", "faol isitish va uqalash"]
+},
+{
+  "q": "Mashg'ulot paytida askar hushidan ketdi, ammo mustaqil nafas olmoqda va tomir urishi aniqlanmoqda; hushidan ketishidan oldin u ko'ngli aynayotganini aytib ulgurgan edi. Sanitar instruktor uni qanday holatda saqlaydi?",
+  "opts": [
+    "Yon tomonga o'girib, tiklanish holatiga keltiradi va nafasini kuzatadi",
+    "Chalqancha yotqizib, boshi ostiga baland yostiq qo'yadi",
+    "Nafasi va tomir urishi borligiga qaramay ko'krak qafasini bosishni boshlaydi",
+    "O'tirgan holatga keltirib, yuziga sovuq suv sepadi"
+  ],
+  "correct": 0,
+  "explanation": "Hushsiz, lekin nafas olayotgan jabrlanuvchida asosiy xavf — tilning tomoqqa tushishi va qusuq massasining nafas yo'llariga kirishi. Yon tomonga o'girilgan tiklanish holati ikkala xavfni ham bartaraf etadi. Chalqancha, ayniqsa baland yostiqda yotqizish nafas yo'lini yopadi. Yurak ishlayotganda ko'krak qafasini bosish asossiz va zararli, hushsiz odamni o'tirgizish esa umuman mumkin emas.",
+  "mnemonic": "Hushsiz, lekin nafas bor — yon tomonga.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 11-sinf: hushsiz holatda nafas yo'llarini ochiq saqlash",
+  "distractor_error": ["", "nafas yo'lini yopadigan holat", "ko'rsatmasiz reanimatsiya", "hushsizni o'tirgizish"]
+},
+{
+  "q": "Ovqatlanish paytida askar to'satdan bo'g'ila boshladi: gapira olmaydi, yo'tala olmaydi, qo'llari bilan bo'g'zini ushlagan, yuzi ko'karib bormoqda. Qaysi harakat to'g'ri hisoblanadi?",
+  "opts": [
+    "Tez suv ichiriladi va luqmani yutib yuborishga harakat qilinadi, so'ng kuzatiladi",
+    "Chalqancha yotqizilib, sun'iy nafas beriladi, so'ng tomir urishi tekshiriladi",
+    "Og'ziga barmoq tiqib, begona jism paypaslanadi va topilsa tortib olinadi",
+    "Kurak suyaklari orasiga zarba beriladi, natija bo'lmasa qorin sohasiga bosim qo'llanadi"
+  ],
+  "correct": 3,
+  "explanation": "Gapira va yo'tala olmaslik nafas yo'lining to'liq berkilganini bildiradi. Bunda havo oqimini sun'iy hosil qilish kerak: avval kurak suyaklari orasiga zarbalar, samara bo'lmasa qorin sohasiga yuqoriga qaratilgan bosim. Suv ichirish jismni chuqurroq surib yuboradi; barmoq bilan qidirish ham xuddi shunday xavf tug'diradi. Nafas yo'li berk bo'lganda sun'iy nafas berish havoni o'pkaga yetkazmaydi.",
+  "mnemonic": "Gapirolmasa — urib, so'ng bosib chiqar.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 11-sinf: nafas yo'llariga begona jism tushganda yordam",
+  "distractor_error": ["jismni chuqurroq surish", "berk yo'lga havo puflash", "ko'r-ko'rona paypaslash", ""]
+},
+{
+  "q": "Ta'mirlash ishlari vaqtida askar shikastlangan kabelga tegib, hushidan ketdi; sim hamon uning qo'lida. Yaqin turgan xizmatchi qanday harakat qilishi kerak?",
+  "opts": [
+    "Darhol jabrlanuvchining qo'lidan ushlab, uni simdan tortib oladi",
+    "Avval tok manbaini uzadi yoki quruq yog'och bilan simni uzoqlashtiradi",
+    "Jabrlanuvchi ustiga suv sepib, tok kuchini pasaytirishga urinadi",
+    "Metall tayoq bilan simni surib tashlab, so'ng nafasini tekshiradi"
+  ],
+  "correct": 1,
+  "explanation": "Tok ta'siridagi odamga tegish qutqaruvchining o'zini elektr zanjiriga qo'shadi va ikkinchi jabrlanuvchi paydo bo'ladi. Shuning uchun birinchi qadam — zanjirni uzish: manbani o'chirish yoki tok o'tkazmaydigan quruq vosita bilan simni ajratish. Suv va metall tok o'tkazuvchi bo'lgani uchun ikkalasi ham vaziyatni og'irlashtiradi.",
+  "mnemonic": "Avval tokni uz — keyin qo'l ur.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: elektr toki urishida birinchi yordam",
+  "distractor_error": ["elektr zanjiriga qo'shilish", "", "suv orqali tok o'tkazish", "metall bilan tok o'tkazish"]
+},
+{
+  "q": "Suv to'sig'idan o'tish mashqida cho'kib ketgan askar qirg'oqqa chiqarildi: hushi yo'q, nafas olmayapti, tomir urishi aniqlanmayapti. Qutqaruvchining harakati qanday bo'lishi kerak?",
+  "opts": [
+    "Qornini bosib, o'pkasidagi suvni to'liq chiqarishga uzoq vaqt sarflaydi, so'ng reanimatsiyani boshlaydi",
+    "Boshini pastga qaratib silkitadi va suv o'z-o'zidan oqib chiqishini kutadi",
+    "Og'iz bo'shlig'ini tez tozalab, kechiktirmasdan yurak-o'pka reanimatsiyasini boshlaydi",
+    "Jabrlanuvchini quruq matoga o'rab isitadi va tibbiy yordam kelishini kutadi"
+  ],
+  "correct": 2,
+  "explanation": "Nafas va qon aylanishi to'xtaganda hal qiluvchi omil — vaqt: miya kislorodsiz bir necha daqiqada shikastlanadi. Suvni chiqarishga urinish yoki jabrlanuvchini silkitish reanimatsiyani kechiktiradi va foyda bermaydi, chunki o'pkaga tushgan suvning asosiy qismi qonga so'riladi. Isitib kutish esa umuman chora emas. Og'iz bo'shlig'i tozalanadi va darhol reanimatsiya boshlanadi.",
+  "mnemonic": "Suvni kutma — reanimatsiya boshla.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: suvda cho'kishda birinchi yordam",
+  "distractor_error": ["suv chiqarishga vaqt yo'qotish", "samarasiz usul", "", "chorasiz kutish"]
+},
+{
+  "q": "Bo'linmadagi bir necha askar uyda tayyorlangan konserva go'shtni iste'mol qilgandan bir kun keyin ko'z oldi ikkilanishi, qovoq osilishi, og'iz qurishi va yutinishning qiyinlashuvidan shikoyat qildi; tana harorati ko'tarilmagan. Komandir qanday qaror qabul qiladi?",
+  "opts": [
+    "Botulizmga shubha qilib, kasallanganlarni zudlik bilan gospitalga yetkazadi va oshqozon yuvish choralarini tashkil qiladi",
+    "Oddiy ovqatdan zaharlanish deb baholab, ko'p suyuqlik berib, o'z joyida kuzatuvni davom ettiradi",
+    "Yuqori nafas yo'llari kasalligi deb hisoblab, yotoq rejimi va issiq ichimlik tayinlaydi",
+    "Ovqatlanish rejimi buzilgan deb baholab, parhez taomlarga o'tkazadi va ertaga qayta ko'rikdan o'tkazadi"
+  ],
+  "correct": 0,
+  "explanation": "Ko'z oldi ikkilanishi, qovoq osilishi, og'iz qurishi va yutinishning qiyinlashuvi — botulizm toksinining nerv tizimiga ta'siriga xos belgilar; haroratning ko'tarilmasligi bu holatni oddiy oshqozon-ichak infeksiyasidan ajratib turadi. Toksin nafas mushaklarini falajlab, o'limga olib kelishi mumkin, shuning uchun kuzatuv bilan cheklanish yoki ertaga qoldirish yo'l qo'yib bo'lmas kechikish hisoblanadi.",
+  "mnemonic": "Konserva + ikkilangan ko'z = botulizm.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: oziq-ovqatdan zaharlanish, botulizm",
+  "distractor_error": ["", "belgilarni oddiy zaharlanish deb bilish", "nerv belgilarini shamollash deb bilish", "shoshilinchlikni pasaytirish"]
+},
+{
+  "q": "Harbiy qismda o'ta xavfli yuqumli kasallik tasdiqlangach, komandir hududga kirish va undan chiqishni butunlay to'xtatib, tashqi aloqani cheklab qo'ydi. Bu qanday rejim va u observatsiyadan nimasi bilan farq qiladi?",
+  "opts": [
+    "Observatsiya rejimi — unda harakat cheklanmay, faqat tibbiy kuzatuv o'rnatiladi",
+    "Karantin rejimi — unda harakat qat'iy cheklanadi, observatsiyada esa asosan kuzatuv o'rnatiladi",
+    "Dezinfeksiya rejimi — unda faqat ob'ektlar va anjomlarga ishlov beriladi",
+    "Sanitar nazorat rejimi — unda faqat suv va oziq-ovqat sifati tekshiriladi"
+  ],
+  "correct": 1,
+  "explanation": "Karantin — eng qat'iy epidemiyaga qarshi chora: u hududni to'liq izolyatsiya qilib, kirish-chiqish va aloqani to'xtatadi. Observatsiya esa yengilroq rejim bo'lib, unda kasallik yuqishi ehtimoli bor shaxslar belgilangan muddat davomida tibbiy kuzatuvda saqlanadi, biroq to'liq izolyatsiya joriy etilmaydi. Dezinfeksiya va sanitar nazorat alohida choralar bo'lib, hududni izolyatsiya qilish vazifasini bajarmaydi.",
+  "mnemonic": "Karantin — qulf, observatsiya — ko'z.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 11-sinf: epidemiyaga qarshi choralar — karantin va observatsiya",
+  "distractor_error": ["ikki rejimni almashtirish", "", "yordamchi chorani rejim deb bilish", "yordamchi chorani rejim deb bilish"]
+},
+{
+  "q": "Portlash sodir bo'lgan joyda bir vaqtning o'zida to'rt jabrlanuvchi aniqlandi: birinchisining sonidan qon otilib chiqmoqda; ikkinchisining bilagi singan, hushi joyida; uchinchisining yuzida yuzaki kuyish bor; to'rtinchisi hushsiz, lekin nafas olmoqda va qon ketishi yo'q. Yordam birinchi navbatda kimga ko'rsatiladi?",
+  "opts": [
+    "Bilagi singan askarga — harakatsizlantirish eng tez bajariladigan chora",
+    "Yuzi kuygan askarga — kuyish yuzasi tez ifloslanadi",
+    "Sonidan qon otilib chiqayotgan askarga — hayotga bevosita xavf shu qon yo'qotishda",
+    "Hushsiz askarga — hushni yo'qotish eng og'ir belgi hisoblanadi"
+  ],
+  "correct": 2,
+  "explanation": "Saralashda birinchi o'rinni bir necha daqiqada bajariladigan va aynan shu daqiqalarda hayotni saqlab qoladigan chora egallaydi: otilib chiqayotgan arterial qon qisqa vaqtda o'limga olib keladi. Hushsiz, lekin nafas olayotgan jabrlanuvchi ikkinchi navbatda tiklanish holatiga keltiriladi. Sinish va yuzaki kuyish hayotga bevosita xavf solmaydi, shuning uchun keyingi navbatga qoldiriladi.",
+  "mnemonic": "Avval qon — keyin nafas — so'ng sinish.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: jabrlanganlarni saralash (tibbiy triaj) tartibi",
+  "distractor_error": ["bajarish osonligiga qarab tanlash", "ikkilamchi xavfga urg'u berish", "", "belgining ta'sirchanligiga qarab tanlash"]
+},
+{
+  "q": "Og'ir jarohat olgan askar dastlab qo'zg'aluvchan bo'lib, ko'p gapirdi va og'riqdan deyarli shikoyat qilmadi. Yigirma daqiqadan keyin u sustlashdi, terisi oqarib, tomir urishi tezlashgan va kuchsizlangan holga keldi. Nima sodir bo'lmoqda?",
+  "opts": [
+    "Og'riq pasaygan — jabrlanuvchining ahvoli yaxshilanib bormoqda",
+    "Bu jismoniy charchoq — dam olgandan keyin holat o'z-o'zidan tiklanadi",
+    "Bosh miya chayqalishi belgilari asta-sekin so'nib bormoqda",
+    "Shokning erektil bosqichi torpid bosqichga o'tmoqda — ahvol og'irlashgan"
+  ],
+  "correct": 3,
+  "explanation": "Travmatik shok ikki bosqichda kechadi: qisqa muddatli erektil bosqichda jabrlanuvchi qo'zg'aluvchan bo'lib, og'riqni sezmasligi mumkin; keyin torpid bosqich boshlanadi — sustlik, terining oqarishi, tomir urishining tezlashib kuchsizlanishi. Bu belgilar yaxshilanish emas, aksincha hayotiy funksiyalarning susayishini bildiradi va shoshilinch chora talab qiladi.",
+  "mnemonic": "Jim bo'ldi — yaxshi emas: torpid boshlandi.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: travmatik shok bosqichlari",
+  "distractor_error": ["og'irlashishni yaxshilanish deb bilish", "holatni yengil baholash", "boshqa shikast bilan chalkashtirish", ""]
+},
+{
+  "q": "Askarning ko'krak qafasiga metall parcha sanchilib qolgan va uning bir qismi yaradan tashqarida turibdi; jabrlanuvchi hushida, nafasi qiyinlashgan. Birinchi yordam ko'rsatuvchi qanday harakat qiladi?",
+  "opts": [
+    "Jismni qo'zg'atmasdan, atrofini bog'lam bilan mustahkamlab evakuatsiya qiladi",
+    "Jismni ehtiyotkorlik bilan sug'urib olib, yaraga steril bog'lam qo'yadi",
+    "Jismni aylantirib bo'shatadi va yara atrofini spirt bilan yuvadi",
+    "Jismni kesib qisqartiradi va ustidan zich bosuvchi bog'lam o'raydi"
+  ],
+  "correct": 0,
+  "explanation": "Sanchilgan jism yara kanalini vaqtincha bekitib turadi va qon tomirni bosib qo'ygan bo'lishi mumkin; uni chiqarish kuchli qon ketishini hamda ko'krak bo'shlig'iga havo kirishini boshlab yuboradi. Shuning uchun jism shifoxonagacha qo'zg'atilmaydi, faqat atrofidan mustahkamlanadi. Aylantirish yoki kesish esa uni ichki to'qimalarda siljitib, qo'shimcha shikast yetkazadi.",
+  "mnemonic": "Sanchilgan jismga tegma — atrofini mustahkamla.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: yara turlari va sanchilgan jism bo'lgan yaralar",
+  "distractor_error": ["", "jismni chiqarish", "jismni siljitish", "jismga mexanik ta'sir"]
+},
+{
+  "q": "Dala mashg'ulotida askarning bilagi o'tkir jism bilan jarohatlandi. Yaradan to'q qizil rangli qon bir tekis, uzluksiz oqmoqda; otilib chiqish va yurak urishiga mos pulsatsiya kuzatilmayapti. Sanitar instruktor qon ketishining turini qanday aniqlaydi va qaysi chorani qo'llaydi?",
+  "opts": [
+    "Arterial qon ketishi — kechiktirmasdan jgut qo'yiladi",
+    "Venoz qon ketishi — a'zo ko'tarilib, yaraga bosuvchi bog'lam qo'yiladi",
+    "Kapillyar qon ketishi — bog'lam qo'yish talab etilmaydi",
+    "Parenximatoz qon ketishi — sovuq qo'yish bilan cheklaniladi"
+  ],
+  "correct": 1,
+  "explanation": "To'q qizil rang va bir tekis, otilishsiz oqim — venoz qon ketishining belgilari; arterial qonda rang yorqin qizil bo'lib, oqim yurak urishiga mos ravishda otilib chiqadi. Venoz qon ketishida a'zoni ko'tarish qon oqimini kamaytiradi va bosuvchi bog'lam yetarli bo'ladi; jgut bu holatda ortiqcha va zararli. Kapillyar qon ketishi tomchilab oqadi, parenximatoz qon ketishi esa ichki a'zolarda yuzaga keladi va dala sharoitida to'xtatilmaydi.",
+  "mnemonic": "To'q rang, tekis oqim — vena: ko'tar va bos.",
+  "topicId": 5, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: qon ketishi turlari va vaqtincha to'xtatish usullari",
+  "distractor_error": ["venani arteriya deb bilish", "", "og'irlikni kam baholash", "ichki qon ketishi bilan chalkashtirish"]
+}
+]

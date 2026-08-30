@@ -1,0 +1,552 @@
+[
+  {
+    "q": "O'qituvchi sinfda mehnat, tozalik va o'zaro yordam bo'yicha doimiy topshiriqlar tizimini joriy qildi. O'quvchilar bunga o'rganib, keyinchalik uni odat sifatida bajara boshladi. Bu qaysi tarbiya metodi?",
+    "opts": [
+      "Odatlantirish metodi",
+      "Jazolash metodi",
+      "Rag'batlantirish metodi",
+      "Ishontirish metodi"
+    ],
+    "correct": 0,
+    "explanation": "Mashq (odatlantirish) metodi takroriy, muntazam faoliyat orqali barqaror xulq-atvor odatini shakllantiradi. Ishontirish ongga, rag'batlantirish va jazolash esa xulqni tuzatishga qaratilgan bo'lib, odat hosil qilish vazifasini bajarmaydi.",
+    "mnemonic": "Odat — takrordan tug'iladi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Tarbiya nazariyasi: tarbiya metodlari",
+    "distractor_error": [
+      "",
+      "metodni chalkashtirish",
+      "metodni chalkashtirish",
+      "metodni chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi o'quvchilardan aniqlik va vaqtga rioya qilishni talab qiladi, ammo o'zi darsga muntazam kechikadi. Sinfda talab kuchini yo'qotdi. Tarbiyaning qaysi metodi ishlamayapti?",
+    "opts": [
+      "Jamoat fikri metodi",
+      "Shaxsiy namuna metodi",
+      "Ishontirish metodi",
+      "Talab qo'yish metodi"
+    ],
+    "correct": 1,
+    "explanation": "Shaxsiy namuna tarbiyaning eng kuchli metodlaridan biri: tarbiyalanuvchi so'zdan ko'ra ko'rgan xulq-atvorga ergashadi. Talab tarbiyachining o'z xulqi bilan tasdiqlanmasa, u ishonchsiz bo'lib qoladi va boshqa metodlarning ta'sirini ham susaytiradi.",
+    "mnemonic": "Namuna so'zdan kuchli.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Tarbiya nazariyasi: shaxsiy namuna metodi",
+    "distractor_error": [
+      "metodni chalkashtirish",
+      "",
+      "metodni chalkashtirish",
+      "metodni chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi o'quvchilarga tabiatni asrash, chiqindini to'g'ri yig'ish va poligon hududini tozalash bo'yicha amaliy tadbirlar uyushtirdi. Bu qaysi tarbiya turiga kiradi?",
+    "opts": [
+      "Estetik tarbiya",
+      "Huquqiy tarbiya",
+      "Ekologik tarbiya",
+      "Iqtisodiy tarbiya"
+    ],
+    "correct": 2,
+    "explanation": "Ekologik tarbiya tabiatga ongli munosabat, uni asrash ko'nikmasi va ekologik mas'uliyatni shakllantiradi. Estetik tarbiya go'zallikni idrok etishga, huquqiy tarbiya qonunga rioya qilishga qaratilgan bo'lib, boshqa vazifalarni bajaradi.",
+    "mnemonic": "Tabiatga munosabat — ekologik tarbiya.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Tarbiya nazariyasi: tarbiya turlari",
+    "distractor_error": [
+      "turini chalkashtirish",
+      "turini chalkashtirish",
+      "",
+      "turini chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi o'quvchilarga huquq va burchlarini tushuntirib, qonunbuzarlikning oqibatlari haqida amaliy misollar keltirdi va ularni ongli tanlovga o'rgatdi. Bu qaysi tarbiya turi?",
+    "opts": [
+      "Jismoniy tarbiya",
+      "Estetik tarbiya",
+      "Mehnat tarbiyasi",
+      "Huquqiy tarbiya"
+    ],
+    "correct": 3,
+    "explanation": "Huquqiy tarbiya o'quvchida huquqiy bilim, qonunga hurmat va o'z xatti-harakati oqibatini oldindan ko'ra bilish ko'nikmasini shakllantiradi. Uning natijasi — qo'rquvdan emas, ongli tanlovdan kelib chiqadigan qonunga rioya.",
+    "mnemonic": "Huquqni bil — oqibatni ko'r.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Tarbiya nazariyasi: huquqiy tarbiya",
+    "distractor_error": [
+      "turini chalkashtirish",
+      "turini chalkashtirish",
+      "turini chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Sinf rahbari o'quvchilarni o'z tarixi, milliy qadriyatlari va Vatan oldidagi burchini anglashga yo'naltiruvchi tadbirlar tizimini tuzdi. Bu qaysi tarbiya yo'nalishi?",
+    "opts": [
+      "Vatanparvarlik tarbiyasi yo'nalishi",
+      "Jismoniy tarbiya yo'nalishi",
+      "Politexnik tarbiya yo'nalishi",
+      "Iqtisodiy tarbiya yo'nalishi"
+    ],
+    "correct": 0,
+    "explanation": "Vatanparvarlik tarbiyasi milliy o'zlikni anglash, tarix va qadriyatlarga hurmat hamda Vatan oldidagi burchni anglash orqali shakllanadi. CHQBT fani uchun bu yo'nalish yetakchi tarbiyaviy vazifa hisoblanadi.",
+    "mnemonic": "Tarix + qadriyat + burch = vatanparvarlik.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Tarbiya nazariyasi: vatanparvarlik tarbiyasi",
+    "distractor_error": [
+      "",
+      "yo'nalishni chalkashtirish",
+      "yo'nalishni chalkashtirish",
+      "yo'nalishni chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'smir o'quvchi darsda o'qituvchining har bir talabiga qarshi chiqadi, tengdoshlari oldida o'zini ko'rsatishga intiladi. Yosh psixologiyasi bu xulqni qanday izohlaydi?",
+    "opts": [
+      "Bu qobiliyat pastligining ko'rsatkichi hisoblanadi",
+      "Bu o'smirlik davridagi mustaqillikka intilishning ko'rinishi",
+      "Bu kasallik belgisi bo'lib, tibbiy aralashuv talab qiladi",
+      "Bu tarbiyasizlikning aniq belgisi hisoblanadi"
+    ],
+    "correct": 1,
+    "explanation": "O'smirlik davrida shaxsning mustaqillikka intilishi va tengdoshlar orasida o'z o'rnini topish ehtiyoji keskin ortadi — qarshi chiqish ko'pincha shu ehtiyojning ifodasi. Buni tarbiyasizlik yoki kasallik deb baholash muammoni hal qilmaydi, aksincha qarama-qarshilikni kuchaytiradi.",
+    "mnemonic": "O'smirning qarshiligi — mustaqillik izlash.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Yosh psixologiyasi: o'smirlik davri xususiyatlari",
+    "distractor_error": [
+      "yorliq yopishtirish",
+      "",
+      "muammoni tibbiylashtirish",
+      "yorliq yopishtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi o'smir o'quvchini sinf oldida qattiq tanqid qildi. Natijada o'quvchi yanada qaysar bo'lib, qarshilik kuchaydi. Yosh xususiyatidan kelib chiqib to'g'ri yondashuv qanday bo'lardi?",
+    "opts": [
+      "Muammoni tengdoshlar sudiga qo'yish",
+      "Tanqidni butunlay to'xtatib, xulqqa e'tibor bermaslik",
+      "Muammoni yakkama-yakka suhbatda muhokama qilish",
+      "Tanqidni yanada qattiqroq va ochiqroq qilish"
+    ],
+    "correct": 2,
+    "explanation": "O'smir uchun tengdoshlar oldidagi obro' juda muhim, shuning uchun ommaviy tanqid uni himoyaga o'tishga majbur qiladi va qarshilikni kuchaytiradi. Yakkama-yakka suhbatda esa u o'z xatosini tan olishi ancha oson bo'ladi.",
+    "mnemonic": "Maqta — ochiq, tanqid qil — yolg'iz.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Yosh psixologiyasi va pedagogik takt",
+    "distractor_error": [
+      "obro'ni yanada buzish",
+      "muammoni e'tiborsiz qoldirish",
+      "",
+      "qarshilikni kuchaytirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi o'quv materialini sinfning tayyorgarlik darajasiga qarab soddalashtira oladi, murakkab tushunchani tushunarli misolga aylantira biladi. Bu qaysi pedagogik qobiliyat?",
+    "opts": [
+      "Tashkilotchilik qobiliyati",
+      "Kommunikativ qobiliyat",
+      "Akademik qobiliyat",
+      "Didaktik qobiliyat"
+    ],
+    "correct": 3,
+    "explanation": "Didaktik qobiliyat — o'quv materialini o'quvchi uchun tushunarli qilib qayta ishlash, uni soddalashtirish va tushuntira olish qobiliyati. Akademik qobiliyat fanni chuqur bilishga, tashkilotchilik esa jamoani boshqarishga tegishli.",
+    "mnemonic": "Tushuntira olish — didaktik qobiliyat.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Pedagogik mahorat: pedagogik qobiliyatlar",
+    "distractor_error": [
+      "qobiliyatni chalkashtirish",
+      "qobiliyatni chalkashtirish",
+      "qobiliyatni chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi o'quvchining yuz ifodasi va gapirish ohangidan uning kayfiyatini va holatini tez sezadi, shunga qarab muomalasini o'zgartiradi. Bu qaysi qobiliyat?",
+    "opts": [
+      "Persiptiv qobiliyat",
+      "Didaktik qobiliyat",
+      "Tashkilotchilik qobiliyati",
+      "Akademik qobiliyat"
+    ],
+    "correct": 0,
+    "explanation": "Persiptiv qobiliyat — o'quvchining ichki holatini tashqi belgilari orqali idrok eta bilish, uning kayfiyati va ehtiyojini sezish qobiliyati. Aynan shu qobiliyat pedagogik taktning asosini tashkil etadi.",
+    "mnemonic": "Holatni sezish — persiptiv qobiliyat.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Pedagogik mahorat: persiptiv qobiliyat",
+    "distractor_error": [
+      "",
+      "qobiliyatni chalkashtirish",
+      "qobiliyatni chalkashtirish",
+      "qobiliyatni chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi darsni aniq bosqichlarga bo'lib, vaqtni taqsimlab, guruh ishini va navbatchilikni tartibga sola oladi. Sinfda ish jarayoni uzilishsiz boradi. Bu qaysi qobiliyat namoyoni?",
+    "opts": [
+      "Persiptiv qobiliyat",
+      "Tashkilotchilik qobiliyati",
+      "Nutq madaniyati qobiliyati",
+      "Akademik qobiliyat"
+    ],
+    "correct": 1,
+    "explanation": "Tashkilotchilik qobiliyati faoliyatni rejalashtirish, vazifalarni taqsimlash, vaqtni boshqarish va jamoa ishini uzilishsiz olib borishda namoyon bo'ladi. Bu qobiliyat yetishmasa, hatto yaxshi tayyorlangan dars ham amalda tarqoq o'tadi.",
+    "mnemonic": "Jarayonni boshqarish — tashkilotchilik.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Pedagogik mahorat: tashkilotchilik qobiliyati",
+    "distractor_error": [
+      "qobiliyatni chalkashtirish",
+      "",
+      "qobiliyatni chalkashtirish",
+      "qobiliyatni chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchining nutqi bir maromda, ohangsiz va juda tez. O'quvchilar asosiy fikrni ajrata olmayapti va tez charchayapti. Pedagogik nutq texnikasi bo'yicha nima to'g'rilanishi kerak?",
+    "opts": [
+      "Gapirish tezligi oshirilishi kerak",
+      "Nutq yozma matn bilan almashtirilishi kerak",
+      "Sur'at, ohang va urg'u boshqarilishi kerak",
+      "Ovoz balandligi oshirilishi kerak"
+    ],
+    "correct": 2,
+    "explanation": "Pedagogik nutq texnikasi sur'at, ohang, pauza va mantiqiy urg'uni boshqarishni o'z ichiga oladi — aynan shular orqali asosiy fikr ajratiladi va diqqat ushlab turiladi. Ovozni shunchaki balandlatish yoki tezlashtirish muammoni hal qilmaydi.",
+    "mnemonic": "Sur'at, pauza, urg'u — fikrni ajratadi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Pedagogik mahorat: nutq texnikasi",
+    "distractor_error": [
+      "yechimni toraytirish",
+      "nutqni almashtirish",
+      "",
+      "yechimni toraytirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi barcha qarorlarni yakka o'zi qabul qiladi, o'quvchilarning fikrini so'ramaydi, itoatni talab qiladi. Sinf tashqi jihatdan intizomli, biroq tashabbus umuman yo'q. Bu qaysi muloqot uslubi?",
+    "opts": [
+      "Demokratik uslub",
+      "Liberal uslub",
+      "Hamkorlik uslubi",
+      "Avtoritar uslub"
+    ],
+    "correct": 3,
+    "explanation": "Avtoritar uslubda barcha qaror o'qituvchi tomonidan yakka qabul qilinadi va so'zsiz itoat talab etiladi; natijada tashqi tartib saqlanadi, ammo mustaqillik va tashabbus so'nadi. Demokratik uslubda esa qaror muhokama orqali, o'quvchi fikri hisobga olingan holda qabul qilinadi.",
+    "mnemonic": "Itoat bor, tashabbus yo'q — avtoritar.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Pedagogik muloqot uslublari",
+    "distractor_error": [
+      "uslubni chalkashtirish",
+      "uslubni chalkashtirish",
+      "uslubni chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi sinfga deyarli aralashmaydi, talab qo'ymaydi va nizolarni «o'zlari hal qilsin» deb qoldiradi. Sinfda tartib buzildi, kuchli o'quvchilar boshqalarni siqib chiqara boshladi. Bu qaysi uslub va uning oqibati nima?",
+    "opts": [
+      "Liberal uslub, jamoa boshqaruvsiz qoladi",
+      "Hamkorlik uslubi — mas'uliyat taqsimlanadi",
+      "Demokratik uslub — jamoa mustaqil rivojlanadi",
+      "Avtoritar uslub — tartib qat'iy saqlanadi"
+    ],
+    "correct": 0,
+    "explanation": "Liberal uslubda o'qituvchi rahbarlikdan amalda voz kechadi: talab ham, qo'llab-quvvatlash ham yetishmaydi. Natijada jamoa o'z-o'zini boshqara olmay, norasmiy yetakchilar ta'siriga tushadi va zaif o'quvchilar himoyasiz qoladi.",
+    "mnemonic": "Aralashmaslik — boshqaruvsizlik.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Pedagogik muloqot uslublari: liberal uslub",
+    "distractor_error": [
+      "",
+      "uslubni chalkashtirish",
+      "uslubni chalkashtirish",
+      "uslubni chalkashtirish"
+    ]
+  },
+  {
+    "q": "Ikki o'quvchi o'rtasidagi nizoda o'qituvchi ikkala tomonni ham tinglab, ular manfaatini qondiradigan umumiy yechim topishga harakat qildi. Bu nizoni hal qilishning qaysi strategiyasi?",
+    "opts": [
+      "Chetlanish strategiyasi",
+      "Hamkorlik strategiyasi",
+      "Raqobat strategiyasi",
+      "Moslashuv strategiyasi"
+    ],
+    "correct": 1,
+    "explanation": "Hamkorlik strategiyasida tomonlarning manfaatlari ochiq muhokama qilinadi va ikkalasini ham qondiradigan yechim izlanadi — bu nizoni haqiqatan hal qiladi. Chetlanish muammoni kechiktiradi, raqobat esa bir tomonni yutqizuvchi holatga qo'yadi.",
+    "mnemonic": "Ikkala tomon yutsa — hamkorlik.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Pedagogik konfliktologiya: nizo strategiyalari",
+    "distractor_error": [
+      "strategiyani chalkashtirish",
+      "",
+      "strategiyani chalkashtirish",
+      "strategiyani chalkashtirish"
+    ]
+  },
+  {
+    "q": "Nizo yuzaga kelganda o'qituvchi «vaqt hammasini hal qiladi» deb hech qanday chora ko'rmadi. Bir hafta o'tib nizo butun sinfga tarqaldi. Bu qaysi strategiya va uning kamchiligi nimada?",
+    "opts": [
+      "Murosa — tomonlar qisman yon beradi",
+      "Raqobat — kuchli tomon o'z yechimini o'tkazadi",
+      "Chetlanish — muammo hal bo'lmay, kengayib boradi",
+      "Hamkorlik — yechim ishtirokchilar bilan topiladi"
+    ],
+    "correct": 2,
+    "explanation": "Chetlanish strategiyasida nizoga aralashilmaydi; u ba'zan vaqtincha keskinlikni pasaytiradi, ammo sabab bartaraf etilmagani uchun muammo saqlanib qoladi va ko'pincha kengayadi. Pedagogik amaliyotda bu eng ko'p uchraydigan xato.",
+    "mnemonic": "Chetlansang — nizo o'sadi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Pedagogik konfliktologiya: chetlanish strategiyasi",
+    "distractor_error": [
+      "strategiyani chalkashtirish",
+      "strategiyani chalkashtirish",
+      "",
+      "strategiyani chalkashtirish"
+    ]
+  },
+  {
+    "q": "Sinf rahbari o'quvchilar haqidagi asosiy ma'lumotlarni, davomat va tarbiyaviy ishlar rejasini yuritishi kerak. U «bu ortiqcha qog'ozbozlik» deb hujjatlarni yuritmaydi. Bu qanday baholanadi?",
+    "opts": [
+      "Nuqson emas — hujjat faqat tekshiruv oldidan tuziladi",
+      "To'g'ri — hujjat pedagogik ishga xalaqit beradi",
+      "To'g'ri — hujjatni faqat ma'muriyat yuritadi",
+      "Nuqson — sinf hujjatlarini yuritish sinf rahbari majburiyati"
+    ],
+    "correct": 3,
+    "explanation": "Sinf hujjatlarini belgilangan tartibda yuritish sinf rahbarining bevosita majburiyati: bu ma'lumotlar o'quvchi haqidagi yaxlit tasavvurni saqlaydi, oila va mutaxassislar bilan ishlashda asos bo'ladi. Hujjatni faqat tekshiruv oldidan tuzish uning ma'nosini yo'qotadi.",
+    "mnemonic": "Sinf hujjati — ish quroli, qog'ozbozlik emas.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Sinf rahbarining majburiyatlari",
+    "distractor_error": [
+      "hujjatni rasmiyatchilikka aylantirish",
+      "majburiyatni inkor etish",
+      "mas'uliyatni ko'chirish",
+      ""
+    ]
+  },
+  {
+    "q": "Sinf rahbari o'quvchi haqida oilaviy sirni bilib qoldi va uni hamkasblari bilan tanaffusda muhokama qildi. Pedagogik etika bo'yicha bu qanday baholanadi?",
+    "opts": [
+      "Etika buzilishi: shaxsiy ma'lumot maxfiy saqlanishi shart",
+      "Muammo yo'q, chunki muhokama pedagoglar orasida bo'lgan",
+      "Muammo yo'q, chunki ma'lumot o'quvchidan olingan",
+      "To'g'ri harakat: hamkasblar xabardor bo'lishi kerak"
+    ],
+    "correct": 0,
+    "explanation": "Pedagog o'quvchi va uning oilasi haqidagi shaxsiy ma'lumotni maxfiy saqlashi shart; u faqat bolaga yordam berish maqsadida, zarur doirada va tegishli mutaxassislarga aytilishi mumkin. Tanaffusdagi erkin muhokama bu talabni buzadi va oila ishonchini yo'qotadi.",
+    "mnemonic": "Bolaning siri — tanaffusda muhokama qilinmaydi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Pedagogik etika: maxfiylik",
+    "distractor_error": [
+      "",
+      "buzilishni oqlash",
+      "buzilishni oqlash",
+      "buzilishni oqlash"
+    ]
+  },
+  {
+    "q": "O'quvchi darsda o'qituvchining bilimini shubha ostiga qo'yuvchi savol berdi. O'qituvchi javobni aniq bilmasdi. Pedagogik etika bo'yicha eng to'g'ri yo'l qaysi?",
+    "opts": [
+      "Taxminiy javob berib, ishonch bilan aytib qo'yish",
+      "Bilmasligini tan olib, birga aniqlashni taklif qilish",
+      "Savolni e'tiborsiz qoldirib, darsni davom ettirish",
+      "O'quvchini «ortiqcha savol berma» deb to'xtatish"
+    ],
+    "correct": 1,
+    "explanation": "Bilmaslikni tan olish o'qituvchi obro'sini tushirmaydi, aksincha halollik va bilimga munosabat namunasini ko'rsatadi. Taxminiy javobni ishonch bilan aytish esa noto'g'ri bilim tarqatadi va keyinchalik obro'ni haqiqatan ham buzadi.",
+    "mnemonic": "Bilmasang — birga izla.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Pedagogik etika va halollik",
+    "distractor_error": [
+      "noto'g'ri bilim tarqatish",
+      "",
+      "savolni e'tiborsiz qoldirish",
+      "savol berishni to'xtatish"
+    ]
+  },
+  {
+    "q": "O'qituvchi bir o'quvchiga doimiy imtiyoz beradi, boshqasiga esa xuddi shu xato uchun jazo qo'llaydi. Sinfda norozilik kuchaydi. Pedagogik etikaning qaysi talabi buzilgan?",
+    "opts": [
+      "Ilmiylik tamoyilining talabi",
+      "Dars vaqtini tejash talabi",
+      "Adolatlilik va bir xil talabchanlik talabi",
+      "Ko'rgazmalilik tamoyilining talabi"
+    ],
+    "correct": 2,
+    "explanation": "Pedagogik etikaning asosiy talablaridan biri — barcha o'quvchilarga nisbatan adolatli va bir xil talabchan bo'lish. Tanlab qo'llangan imtiyoz va jazo o'qituvchiga bo'lgan ishonchni yo'qotadi va jamoada ziddiyat keltirib chiqaradi.",
+    "mnemonic": "Bir xato — bir xil munosabat.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Pedagogik etika: adolatlilik",
+    "distractor_error": [
+      "talabni chalkashtirish",
+      "talabni chalkashtirish",
+      "",
+      "talabni chalkashtirish"
+    ]
+  },
+  {
+    "q": "Yosh o'qituvchi sinfda obro' qozonish uchun o'quvchilar bilan «do'st» bo'lishga urinib, talablarni butunlay yumshatdi. Bir oy o'tib sinfda tartib buzildi. Bu holat nimani ko'rsatadi?",
+    "opts": [
+      "O'quvchilar bilan iliq munosabat umuman zararli ekanini",
+      "Obro'ni faqat tajriba bilan qozonish mumkinligini",
+      "Obro' faqat qattiqqo'llik bilan qozonilishini",
+      "Yaqinlik bilan talabchanlik muvozanati buzilganini"
+    ],
+    "correct": 3,
+    "explanation": "Pedagogik obro' yaqinlik va talabchanlikning muvozanatiga asoslanadi: faqat yaqinlik tartibni yo'qotadi, faqat qattiqqo'llik esa ishonchni. Iliq munosabat zararli emas — u aniq va barqaror talab bilan birga bo'lishi kerak.",
+    "mnemonic": "Yaqinlik + talabchanlik = obro'.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Pedagogik mahorat: pedagogik obro'",
+    "distractor_error": [
+      "yaqinlikni butunlay rad etish",
+      "sababni tajribaga yuklash",
+      "qattiqqo'llikni mutlaqlashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Sinf rahbari yangi jamoada norasmiy yetakchi paydo bo'lganini va u ba'zi o'quvchilarni chetlashtirayotganini payqadi. Jamoa bilan ishlashda to'g'ri qadam qanday?",
+    "opts": [
+      "Yetakchi ta'sirini foydali faoliyatga yo'naltirish",
+      "Barcha o'quvchilarni yetakchidan uzoqlashtirish",
+      "Norasmiy yetakchini sinfdan chiqarib yuborish",
+      "Vaziyatga aralashmasdan, jamoa o'zi hal qilishini kutish"
+    ],
+    "correct": 0,
+    "explanation": "Norasmiy yetakchilik jamoaning tabiiy hodisasi: uni yo'q qilish emas, ijobiy yo'nalishga burish samarali. Ayni paytda sinf rahbari chetlangan o'quvchilarni umumiy faoliyatga jalb qilib, jamoadagi mavqelarni tenglashtirishi kerak.",
+    "mnemonic": "Yetakchini yo'q qilma — yo'naltir.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Jamoa bilan ishlash: norasmiy yetakchilik",
+    "distractor_error": [
+      "",
+      "jamoani bo'lish",
+      "muammoni chiqarib tashlash",
+      "aralashmaslik"
+    ]
+  },
+  {
+    "q": "O'qituvchi yangi jamoa bilan ishlashni boshladi. Jamoa hali shakllanmagan: umumiy maqsad yo'q, guruhlarga bo'linish kuchli. Jamoa rivojlanishining bu bosqichida o'qituvchining roli qanday bo'ladi?",
+    "opts": [
+      "Faqat faol o'quvchilar bilan ishlaydi, qolganini e'tiborsiz qoldiradi",
+      "Talabni bevosita o'zi qo'yadi va umumiy maqsadni shakllantiradi",
+      "Barcha qarorni darhol o'quvchilar ovoziga havola qiladi",
+      "Jamoaga umuman aralashmay, tabiiy shakllanishini kutadi"
+    ],
+    "correct": 1,
+    "explanation": "Jamoa shakllanishining birinchi bosqichida talab bevosita tarbiyachidan keladi va umumiy maqsad u tomonidan shakllantiriladi; faqat jamoa yetilgach, talab avval faollar, keyin esa jamoaning o'zi orqali qo'yila boshlaydi. Shakllanmagan jamoaga darhol to'liq mustaqillik berish tarqoqlikni kuchaytiradi.",
+    "mnemonic": "Avval talab tarbiyachidan — keyin jamoadan.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Jamoa nazariyasi: jamoa rivojlanish bosqichlari",
+    "distractor_error": [
+      "jamoani bo'lish",
+      "",
+      "bosqichni o'tkazib yuborish",
+      "aralashmaslik"
+    ]
+  },
+  {
+    "q": "O'qituvchi o'quvchining muvaffaqiyatsizligini «bu bolaning qobiliyati shu» deb izohladi va u bilan qo'shimcha ishlashni to'xtatdi. Zamonaviy pedagogika bu qarashga qanday baho beradi?",
+    "opts": [
+      "To'g'ri — qobiliyat tug'ma va o'zgarmaydi",
+      "To'g'ri — resursni kuchli o'quvchilarga yo'naltirish samarali",
+      "Noto'g'ri: natija sharoit va mehnatga ham bog'liq",
+      "Noto'g'ri — muammoni faqat oila hal qilishi kerak"
+    ],
+    "correct": 2,
+    "explanation": "Zamonaviy pedagogika o'quv natijasini faqat tug'ma qobiliyat bilan emas, o'qitish sifati, motivatsiya, mehnat va qo'llab-quvvatlash bilan izohlaydi. «Qobiliyati shu» degan yorliq o'quvchini rivojlanish imkoniyatidan mahrum qiladi va o'qituvchini mas'uliyatdan chetlatadi.",
+    "mnemonic": "Yorliq yopishtirma — sharoit yarat.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Pedagogika: rivojlanish va qobiliyat",
+    "distractor_error": [
+      "qobiliyatni o'zgarmas deb bilish",
+      "resursni tanlab yo'naltirish",
+      "",
+      "mas'uliyatni oilaga yuklash"
+    ]
+  },
+  {
+    "q": "O'qituvchi darsda o'quvchilarga bir xil savolni berib, javobni faqat qo'l ko'targanlardan so'raydi. Sinfning bir qismi hech qachon javob bermaydi. Qaysi usul barchani jarayonga jalb qiladi?",
+    "opts": [
+      "Faqat qo'l ko'targanlarni so'rashda davom etish",
+      "Savolni faqat kuchli o'quvchilarga berish",
+      "Javob berishni butunlay ixtiyoriy qoldirish",
+      "O'ylash vaqti berib, juftlikda muhokama qildirish"
+    ],
+    "correct": 3,
+    "explanation": "O'ylash uchun vaqt berish va javobni avval juftlikda muhokama qildirish har bir o'quvchiga fikr shakllantirish imkonini beradi, so'ng so'ralganda esa passiv o'quvchi ham tayyor bo'ladi. Faqat qo'l ko'targanlarni so'rash esa doimiy ravishda bir xil faol guruh bilan ishlashga olib keladi.",
+    "mnemonic": "O'yla — juftlikda ayt — sinfga chiqar.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Interfaol usullar: barchani jalb qilish texnikalari",
+    "distractor_error": [
+      "muammoni saqlash",
+      "tafovutni kengaytirish",
+      "passivlikni qo'llab-quvvatlash",
+      ""
+    ]
+  },
+  {
+    "q": "Dars oxirida o'qituvchi «hammaga tushunarlimi?» deb so'radi, sinf jim qoldi va u mavzu o'zlashtirilgan deb hisobladi. Keyingi nazoratda natija past chiqdi. Xato nimada edi?",
+    "opts": [
+      "Jimlik tushunish belgisi deb qabul qilingan, tekshiruv o'tkazilmagan",
+      "Savol dars oxirida emas, boshida berilishi kerak edi",
+      "Savol yozma shaklda berilishi kerak edi",
+      "Savol faqat kuchli o'quvchilarga berilishi kerak edi"
+    ],
+    "correct": 0,
+    "explanation": "«Tushunarlimi?» degan savolga jimlik ko'pincha tushunmaslikni yashiradi: o'quvchi savol berishdan tortinadi. O'zlashtirishni tekshirish uchun aniq topshiriq, qisqa savol yoki chiqish varaqasi kabi vositalar kerak — ular haqiqiy holatni ko'rsatadi.",
+    "mnemonic": "Jimlik — tushunish belgisi emas.",
+    "topicId": 6,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Baholash: darsdagi tushunishni tekshirish",
+    "distractor_error": [
+      "",
+      "vaqtga urg'u berish",
+      "shaklga urg'u berish",
+      "doirani toraytirish"
+    ]
+  }
+]

@@ -126,6 +126,11 @@ const docs = missing.map((q) => ({
   explanation: q.explanation || `✓ To'g'ri javob: ${String.fromCharCode(65 + q.correct)}`,
   mnemonic: q.mnemonic || '',
   image: q.image || '',
+  // Ixtiyoriy: manba va qiyinlik. `source_ref` — e'tirozga javob shu maydondan
+  // yoziladi (savol qaysi nizom bandiga tayanganini ko'rsatadi). Faylda
+  // bo'lmasa yozilmaydi, ya'ni eski import fayllari uchun hech narsa o'zgarmaydi.
+  ...(q.source_ref ? { source_ref: q.source_ref } : {}),
+  ...(q.difficulty ? { difficulty: q.difficulty } : {}),
   // K-3: keyingi importlar dublikatni SERVERDAN shu maydon orqali topadi
   qHash: qHashOf(q.q),
   createdAt: nowIso,

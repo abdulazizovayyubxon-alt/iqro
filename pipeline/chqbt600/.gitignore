@@ -1,0 +1,6 @@
+# Qayta quriladigan chiqishlar — repoda saqlanmaydi:
+#   screen_all.json / candidates.json  ← node pipeline/chqbt600/screen.mjs
+#   *_korish.html                      ← node pipeline/chqbt600/viewer.mjs
+out/*
+# Bundan tashqari: jonli bazaga AYNAN shu fayl yuklangan, audit uchun qoladi.
+!out/chqbt_625_yangi.json

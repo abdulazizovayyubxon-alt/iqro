@@ -1,0 +1,182 @@
+{
+  "_izoh": "Bazadan saqlanadigan savollarning tuzatilgan matni. Faqat o'zgargan maydonlar yoziladi; apply bosqichida shu qiymatlar ustiga yoziladi.",
+
+  "A2sKY0gKSRc0dtFCQA9S": {
+    "opts": [
+      "A) Nafas yo'llari orqali (inhalatsiya)",
+      "B) Teri orqali (resorbsiya)",
+      "C) Ichak yo'li orqali (ingestiya)",
+      "D) Parenteral yo'l orqali"
+    ]
+  },
+
+  "BVZeUMrPMvrLvgwI7KWz": {
+    "opts": [
+      "A) Shikastlangan joyni darhol zaif ishqor eritmasi bilan ishlab, neytrallashtirish va bog'lash.",
+      "B) Kislota tekkan joyni quruq toza matoga surtib tozalash va sovuq suvli kompress qo'yish.",
+      "C) Ta'sir qilgan moddani ko'p miqdorda oqar suv bilan yuvib, shifokorga murojaat qilish.",
+      "D) Kuygan joyga moyli krem surtib, himoya qilish va bir necha soat kuzatib turish."
+    ],
+    "explanation": "Kislota bilan kimyoviy kuyishda moddani darhol oqar suv bilan yuvib tashlash kerak, chunki u teriga chuqur singib boradi. Neytrallashga urinish yoki matoga surtish kuyish maydonini kengaytiradi va qo'shimcha zarar yetkazadi. Shifokorga murojaat qilish asoratlarning oldini olish uchun zarur."
+  },
+
+  "CI16XglhmdlgvG2gqAZS": {
+    "opts": [
+      "A) Jabrlanuvchini darhol yotqizib, tinchlantiradi, harakatini cheklaydi, 103 tez tibbiy yordam brigadasini chaqiradi va hushida bo'lsa ko'p suyuqlik ichiradi.",
+      "B) Jarohatdan yuqoriga turniket qo'yadi, pichoq bilan chaqish joyini kesib, zaharni og'iz bilan so'rib chiqarishga harakat qiladi va askarni yurgizib shifoxonaga olib boradi.",
+      "C) Chaqilgan joyni cho'g' bilan kuydiradi, zaif kaliy permanganat eritmasi bilan yuvadi, qon bosimini oshiruvchi preparat beradi va tik turishga ruxsat etadi.",
+      "D) Tish izini alkogol bilan dezinfeksiyalaydi, qattiq bosuvchi bog'lam qo'yadi, qonni suyultiruvchi dori ichiradi va mashqni davom ettirishga buyuradi."
+    ]
+  },
+
+  "EZwsxjCr2gLuDHNaCMIe": {
+    "opts": [
+      "A) Bemorni tez orqaga yotqizib, og'riqni bosish uchun dori ichirish.",
+      "B) Bemorni har qanday harakatdan qat'iyan himoya qilish va harakatsizlantirish.",
+      "C) Orqa mushaklarini isitish uchun issiq kompress qo'yish va massaj qilish.",
+      "D) Jarohatlangan joyga turniket qo'yib, qon ketishining oldini olish."
+    ],
+    "explanation": "Umurtqa pog'onasi shikastlanishida asosiy qoida — bemorni harakatdan saqlash va harakatsizlantirish. Noto'g'ri ko'chirish yoki massaj qilish orqa miya shikastlanishini kuchaytirib, nogironlikka olib kelishi mumkin. Turniket esa faqat qon ketishida qo'llaniladi va bu holatga aloqasi yo'q."
+  },
+
+  "KVtw7henbumVINbwWeYe": {
+    "q": "Mashg'ulot paytida harbiy xizmatchi yiqilib tushdi va oyog'ida suyak sinishi belgilari (soha shishgan, deformatsiyaga uchragan) kuzatildi. Yonidagi sherigi unga tez yordam ko'rsatmoqchi. Shifokorlar yetib kelguniga qadar qaysi harakat tibbiy jihatdan noto'g'ri va xavfli hisoblanadi?",
+    "opts": [
+      "A) Shikastlangan a'zoni maxsus shina yordamida qotirish va harakatsizlantirish.",
+      "B) Sinib chiqib turgan suyakni majburan o'z o'rniga solishga harakat qilish.",
+      "C) Jarohatlangan joyga sovuq kompress qo'yib, og'riqni pasaytirishga harakat qilish.",
+      "D) Shikastlangan a'zoni tananing pastki qismidan biroz yuqoriga ko'tarib qo'yish."
+    ]
+  },
+
+  "Liu4dDDIZs0GnVRXJZ5P": {
+    "q": "Harbiy mashg'ulot paytida askar qo'lini o'tkir toshga sidirib, terining yupqa qavati shikastlanadi. Yara sirtidan otilib chiqadigan oqim yo'q, butun maydon bo'ylab mayda qon tomchilari sizib chiqadi va oddiy bog'lam qo'yilgach, qisqa vaqtda to'xtaydi. Bu alomatlar qon ketishining qaysi turiga xos?",
+    "opts": [
+      "A) Yorqin qizil rangda, zarba berib (pulsatsiyalab) oqadigan arterial qon ketishi",
+      "B) To'q qizil rangda, doimiy ravishda tinim oqib turadigan venoz qon ketishi",
+      "C) Yara yuzasidan tomchilab, nisbatan xavfsiz va tez to'xtaydigan kapillyar qon ketishi",
+      "D) Ichki a'zolar to'qimalaridan oqadigan va to'xtatilishi qiyin parenximatoz qon ketishi"
+    ],
+    "explanation": "Kapillyar qon ketishi aynan yuzaki shikastlanishlarda kuzatiladi: qon butun yara sirtidan mayda tomchilar holida sizib chiqadi va o'z-o'zidan tez to'xtaydi. Arterial qon yorqin rangda va pulsatsiyalab oqadi, venoz qon esa to'q rangda, bir tekis oqimi bilan ajralib turadi. Parenximatoz qon ketishi ichki a'zolarda yuzaga keladi va dala sharoitida to'xtatilmaydi."
+  },
+
+  "Q5czHKDLsYXHXxhAeFvg": {
+    "q": "Tibbiy tayyorgarlik mashg'ulotida harbiy xizmatchining ko'krak qafasi o'tkir zarbadan shikastlandi. Jarohat tufayli o'pka atrofidagi bo'shliqqa havo kirib, o'pkaning o'pirilib qolishi va nafas olishning susayishi kuzatildi. Bu holatning patologik mohiyati nimadan iborat?",
+    "explanation": "Pnevmotoraks — ko'krak (plevra) bo'shlig'iga havo yig'ilishi; bosim o'zgargani uchun o'pka o'pirilib qoladi. Bo'shliqqa qon yig'ilsa, bu gemotoraks deb ataladi. O'pka to'qimasining yallig'lanishi va yurak qopchasiga suyuqlik to'planishi esa butunlay boshqa patologik jarayonlardir."
+  },
+
+  "Q81nkfIDWpTLITpc5aHw": {
+    "explanation": "«Ryukzak» usulida yaradorning og'irligi qutqaruvchining orqasiga tushadi, shuning uchun yarador o'zini ushlab turishi — ya'ni hushida bo'lishi shart. Bu usul 50-300 metr oraliqdagi o'rta masofalarga mo'ljallangan. Qisqa masofalar yoki hushsiz yarador uchun boshqa ko'chirish usullari qo'llaniladi."
+  },
+
+  "Sc8GDnKxkqLyiWSapD6m": {
+    "q": "Mudofaa vazifasini bajarayotgan askar ko'krak qafasidan o'tuvchi o'q jarohati oldi. Jarohat joyidan nafas olayotganda xarakterli «ishqirash» ovozi eshitiladi, yarada pufakchalar paydo bo'lmoqda va nafasi tobora qisilmoqda. Shunday holatda birinchi yordamning eng dolzarb chorasi qaysi?",
+    "opts": [
+      "A) Jarohatlangan hududni og'riqsizlantiruvchi vosita bilan ishlab, so'ngra qattiq bosim bilan bog'lash.",
+      "B) Bemorni chalqancha yotqizib, oyoqlarini ko'tarib qo'yish va ko'krak qafasiga sovuq kompress qo'yish.",
+      "C) Havo o'pka bo'shlig'iga kirmasligi uchun yarani steril qoplama yoki toza doka bilan yopish.",
+      "D) O'q yoki shrapnelni darhol jarohat joyidan olib tashlab, ichki qon ketishining oldini olish."
+    ],
+    "explanation": "Ko'krak qafasining teshilgan jarohatida ochiq pnevmotoraks vujudga keladi: tashqi havo plevra bo'shlig'iga kirib, o'pkani o'pirib qo'yadi. Shuning uchun asosiy vazifa — yarani havo o'tkazmaydigan material bilan yopib, havo kirishini to'xtatish. Jarohatdan jismni olish yoki oyoqlarni ko'tarish havo kirishini to'xtatmaydi, aksincha holatni og'irlashtiradi.",
+    "mnemonic": "Ko'krak teshildi — havoni to's, yarani yop."
+  },
+
+  "Yv5zoDZbrhMdD3OEEF1C": {
+    "opts": [
+      "A) Jabrlanuvchilarni tezda xavfli hududdan tashqariga, toza havoga olib chiqish va gaz manbaini o'chirish",
+      "B) Jabrlanuvchilarga ammiak spirti hidlatib, hushlarini tiklash va shifokor kelgunicha kutish",
+      "C) Darhol tibbiy punktga xabar berish va bemorlarni o'z o'rnida harakatsiz holatda saqlash",
+      "D) Eshik va derazalarni keng ochib, xonani shamollatish va havo tozalanguncha kutish"
+    ],
+    "mnemonic": "Toza havoga chiqar, manbani o'chir."
+  },
+
+  "awxp4AYtkLnKHotNlyry": {
+    "explanation": "Pay cho'zilishida sovuq ta'siri qon tomirlarini toraytirib, shish va og'riqni tez kamaytiradi. Biroq teri to'qimalarining muzlashi va sovuq kuyishiga yo'l qo'ymaslik uchun muzli xalta 15-20 daqiqadan ortiq ushlanmaydi, takroriy qo'llash esa 3-4 soatdan keyin amalga oshiriladi. Uzoq muddatli yoki juda tez-tez qo'llash to'qimaga zarar yetkazadi.",
+    "mnemonic": "O'n besh-yigirma daqiqa muz, uch-to'rt soatdan keyin yana."
+  },
+
+  "hYbZ4aAVnQ5b4LvODFOi": {
+    "q": "Jangovar tayyorgarlik mashg'ulotida instruktor yarador askarlarning quyidagi holatlarini namoyish etmoqda: 1) yara yuzasidan qonning tashqariga oqishi; 2) qonning tananing yopiq bo'shliqlariga (masalan, qorin bo'shlig'iga) to'planishi, tashqi alomatlarsiz; 3) qonning to'qimalar orasiga shimilib, ko'karish hosil qilishi. Bu uchala holat qon ketishining klinik tasnifidagi qaysi turlariga mos keladi?",
+    "explanation": "Savolda keltirilgan belgilar — qonning tashqariga oqishi, yopiq bo'shliqqa yig'ilishi va to'qimalarga shimilishi — qon ketishining aynan klinik ko'rinishlarini ifodalaydi, ya'ni tashqi, ichki va yashirin turlarini. Tomir turiga ko'ra bo'linish (arterial, venoz, kapillyar) anatomik tasnif, birlamchi va ikkilamchi bo'linish esa vaqt bo'yicha tasnifdir.",
+    "mnemonic": "Tashqariga oqsa — tashqi, bo'shliqqa to'lsa — ichki, to'qimaga shimilsa — yashirin."
+  },
+
+  "jQeYU2IoLDbK7LOTAWyF": {
+    "q": "Yozgi o'quv mashg'ulotlari paytida askarni ilon chaqdi. Jabrlanuvchini gospitalga yetkazish uchun uni ko'tarib olib borish kerak bo'lmoqda. Nega bunda jabrlanuvchining harakati eng kam darajada saqlanishi zarur?",
+    "mnemonic": "Harakat — qonni tez haydaydi, zahar bilan birga."
+  },
+
+  "klwy2rAZquXqojE1vADy": {
+    "q": "Qishki mashg'ulotlar chog'ida harbiy xizmatchilar yopiq chodirda ventilyatsiyasiz ishlaydigan pech yonida uxlab qolishdi. Ertalab ularning boshi aylana boshladi, lablari olcha rangida qizarib ketdi. Shu holatga sabab bo'lgan gazning asosiy toksik ta'sir mexanizmi qaysi?"
+  },
+
+  "mhBBC4IV9GTlg1QLBMcs": {
+    "mnemonic": "Bosh shikastlansa — bo'yinni qimirlatma."
+  },
+
+  "oWoZc2EshdrTgthbgzJF": {
+    "explanation": "Yara ustiga to'g'ridan-to'g'ri bosim o'tkazish — arterial qon ketishini to'xtatishning eng tez va samarali birinchi chorasi: u tomir devorlarini mexanik siqib qo'yadi. A'zoni ko'tarish yoki turniket qo'yish bosim samara bermaganda qo'llaniladigan keyingi bosqichlardir. Yara atrofini tozalash esa qon to'xtaguncha kechiktiriladi.",
+    "mnemonic": "Avval bosim — qolgani keyin."
+  },
+
+  "pN7DjjWo9DGvDQfCsetO": {
+    "opts": [
+      "A) Kuchli og'riqni bosish uchun preparatni mushak to'qimasiga (yelka yoki son yuzasiga) in'ektsiya qilish.",
+      "B) Ta'sirni tezlashtirish maqsadida preparatni to'g'ridan-to'g'ri tomir ichiga, qon oqimiga yuborish.",
+      "C) So'rilishni osonlashtirish uchun preparatni teri ostiga, qo'l yelkasi sohasiga in'ektsiya qilish.",
+      "D) In'ektsiya sharoiti bo'lmasa, preparatni tabletka ko'rinishida og'iz orqali ichirib berish."
+    ],
+    "explanation": "Promedol — kuchli og'riqsizlantiruvchi vosita bo'lib, og'ir jarohat va kuyishlarda qo'llaniladi. Dala sharoitida u mushak to'qimasiga (yelka yoki son yuzasiga) yuboriladi: bu tez ta'sir beradi va maxsus tayyorgarlik talab qilmaydi. Tomir ichiga yuborish shifokor ishi, teri ostiga yuborish esa ta'sirni kechiktiradi."
+  },
+
+  "sLIEGiJxftaUGrbHLU0R": {
+    "q": "Mashg'ulot paytida o'tloqda dam olayotgan askarni qoraqurt chaqdi va u qattiq og'riqdan shikoyat qilmoqda. Quyidagi amallar to'plamidan qaysi biri tibbiy ko'rsatmaga muvofiq to'g'ri tartibni ifodalaydi?",
+    "opts": [
+      "A) Chaqqan joyni sovuq suv bilan yuvish, sovuq kompress qo'yish, antigistamin dori berish va shifoxonaga yetkazish.",
+      "B) Chaqqan joyni issiq suv bilan yuvish, issiq kompress qo'yish, og'riq qoldiruvchi berish va o'rnida kuzatish.",
+      "C) Chaqqan joyning yuqorisiga turniket qo'yish, yara yuzasini yod bilan ishlash va antitoksin kelishini kutish.",
+      "D) Chaqqan joyni spirt bilan ishlash, qurt qismi qolgan bo'lsa pichoq bilan olib tashlash va yarani ochiq qoldirish."
+    ],
+    "explanation": "Qoraqurt zahari ta'sirida sovuq qon tomirlarini toraytirib, zaharning tarqalishini sekinlashtiradi va og'riqni kamaytiradi — shuning uchun sovuq suv va sovuq kompress qo'llaniladi. Issiq suv zaharning tezroq singishiga olib keladi, turniket to'qimani shikastlaydi, spirt va kesish esa yaraga infeksiya kiritadi.",
+    "mnemonic": "Qoraqurt: sovuq suv, kompress, dori, shifoxona."
+  },
+
+  "tFcjrb8pmGX39frTMrjm": {
+    "opts": [
+      "A) Gijja kasalliklari, vabo, gepatit A",
+      "B) OITS, gepatit B, gepatit C",
+      "C) Bezgak, kuydirgi, ensefalit",
+      "D) Gripp, zotiljam, difteriya"
+    ],
+    "mnemonic": "Iflos suv va yuvilmagan meva — vabo, gepatit A, gijja."
+  },
+
+  "tjAqMTQk93c69sArXMDC": {
+    "explanation": "«Qizil hudud»da tadbirlar tartibi qat'iy: avval javoban o't ochib, pana joyga yashirinish va otishmada ustunlikni ta'minlash lozim. Yaradorga yordam faqat shundan keyin, sharoit nisbatan xavfsiz bo'lganda ko'rsatiladi — aks holda qutqaruvchining o'zi ham yaralanadi va jabrlanuvchilar soni ortadi."
+  },
+
+  "tuRZH9AvYS1VRdkJYueO": {
+    "opts": [
+      "A) Yaradorni tinch joyga yotqizib (boshi biroz ko'tarilgan), boshiga sovuq qo'yish, harakatni cheklash va 103 ni chaqirish",
+      "B) Yaradorning boshiga issiq kompress qo'yib, o'rnidan turg'izish, sekin yurishga majburlash va og'riq qoldiruvchi berish",
+      "C) Yaradorni zambilga yotqizib, boshini past qilib, tezlik bilan tibbiy punktga olib borish va yo'lda suv ichirish",
+      "D) Yaradorni qattiq qo'zg'atib, hushiga kelguncha hid solish, bo'yniga bog'lam qo'yish va tik holatda kuzatish"
+    ]
+  },
+
+  "u3G6U3NBRlgbvec0apxG": {
+    "q": "Marsh paytida askarning son suyagi yopiq holda singani aniqlandi. Tibbiy xizmatchi birinchi yordamni ko'rsatishga kirishmoqda. Quyidagi ketma-ketliklardan qaysi biri to'g'ri?",
+    "opts": [
+      "A) Shikastlangan sohani shina bilan qotirish → og'riq qoldiruvchi berish → shifoxonaga olib borish",
+      "B) Og'riq qoldiruvchi vosita berish → shikastlangan sohani shina bilan qotirish → shifoxonaga olib borish",
+      "C) Bemorni darhol shifoxonaga olib borish → og'riq qoldiruvchi berish → immobilizatsiya qilish",
+      "D) Immobilizatsiya qilish → shifoxonaga olib borish → og'riq qoldiruvchi vosita berish"
+    ],
+    "explanation": "Yopiq sinishda avval og'riq qoldiruvchi vosita beriladi — bu og'riq shokining oldini oladi va keyingi amallarni yengillashtiradi. So'ngra shikastlangan soha immobilizatsiya qilinadi va shundan keyingina bemor shifoxonaga olib boriladi. Immobilizatsiyasiz tashish suyak parchalarini siljitadi."
+  },
+
+  "dB9bK1ODsexqb0D86kKD": {
+    "explanation": "Immobilizatsiya suyak parchalarining qo'shni tomir va asablarni shikastlashiga yo'l qo'ymaydi, shu bilan og'ir shok va infeksiya xavfini kamaytiradi hamda bemorni xavfsiz tashish imkonini beradi. Suyakni o'z o'rniga qo'yish (repozitsiya) faqat shifokor tomonidan maxsus sharoitda bajariladi — bu birinchi yordam vazifasi emas."
+  }
+}

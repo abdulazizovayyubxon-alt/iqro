@@ -1,0 +1,684 @@
+[
+  {
+    "q": "Ikki o'quvchi AK-74 avtomatining ma'lumotlarini yozib olishda chalkashdi: biri kalibrni 7,62 mm deb, ikkinchisi o'qdon sig'imini 45 patron deb yozdi. Instruktor ikkala raqamni ham tuzatdi va bu ko'rsatkichlar boshqa qurol rusumlariga tegishli ekanini aytdi. AK-74 ning kalibri va o'qdon sig'imi qanday?",
+    "opts": [
+      "Kalibri 9 mm, o'qdon sig'imi 8 patron",
+      "Kalibri 5,45 mm, o'qdon sig'imi 30 patron",
+      "Kalibri 7,62 mm, o'qdon sig'imi 30 patron",
+      "Kalibri 5,45 mm, o'qdon sig'imi 45 patron"
+    ],
+    "correct": 1,
+    "explanation": "AK-74 avtomati 5,45 millimetrli patron uchun mo'ljallangan va uning standart o'qdoni 30 patronga sig'adi. 7,62 millimetr avvalgi avlod avtomatiga, 45 patronli o'qdon esa qo'l pulemyotiga tegishli; 9 millimetr va sakkiz patron to'pponcha ko'rsatkichlari hisoblanadi.",
+    "mnemonic": "AK-74: 5,45 va 30 — nomidagi raqam kalibrni eslatadi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — AK-74 jangovar-texnik ma'lumotlari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "avtomat ko'rsatkichlarini to'pponcha ko'rsatkichlari bilan almashtirish",
+      "",
+      "kalibrni avvalgi avlod avtomati ko'rsatkichi bilan almashtirish",
+      "o'qdon sig'imini qo'l pulemyoti ko'rsatkichi bilan almashtirish"
+    ]
+  },
+  {
+    "q": "Askar avtomatni tozalash uchun uni ajratmoqchi bo'lib, avval stvol qopqog'ini oldi, keyin o'qdonni ajratdi. Instruktor uni to'xtatib, tartib buzilgani xavfli ekanini aytdi. Avtomatni to'liqsiz ajratishda birinchi navbatda nima bajariladi?",
+    "opts": [
+      "Shompol va penal ajratib olinadi",
+      "Gaz trubkasi ajratilib, zatvor ramasi chiqariladi",
+      "O'qdon ajratiladi va patronnikda patron yo'qligi tekshiriladi",
+      "Stvol qopqog'i olinadi va qaytarish mexanizmi chiqariladi"
+    ],
+    "correct": 2,
+    "explanation": "Ajratishning birinchi qadami har doim qurolni xavfsiz holga keltirish: o'qdon ajratiladi, zatvor orqaga tortilib patronnikda patron qolmaganiga ko'z bilan ishonch hosil qilinadi, so'ng zatvor qo'yib yuborilib tepki bosiladi. Bu bosqich o'tkazib yuborilsa, ajratish jarayonida tasodifiy o't ochilishi mumkin.",
+    "mnemonic": "Ajratishdan oldin — o'qdon va patronnik.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — avtomatni to'liqsiz ajratish tartibi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "yordamchi jihozlardan boshlab, patronnikni tekshirmaslik",
+      "ajratish tartibini oxiridan boshlash",
+      "",
+      "xavfsizlik bosqichini o'tkazib, bevosita mexanizmga o'tish"
+    ]
+  },
+  {
+    "q": "O'quvchi avtomatning avtomatik ravishda qayta o'qlanishini «qurol ichidagi prujinaning kuchi» bilan izohladi. O'qituvchi prujina faqat qismlarni joyiga qaytarishini, harakatni esa boshqa manba boshlashini tushuntirdi. AK-74 avtomatikasi qanday energiya hisobiga ishlaydi?",
+    "opts": [
+      "Qaytarish prujinasining siqilish va yozilish energiyasi hisobiga",
+      "Zatvorning o'q bilan bevosita to'qnashuv energiyasi hisobiga",
+      "Otuvchining tepkini bosish mushak kuchi hisobiga",
+      "Gaz kamerasiga o'tgan kukun gazlari energiyasi hisobiga"
+    ],
+    "correct": 3,
+    "explanation": "O'q stvol kanali bo'ylab harakatlanib gaz teshigidan o'tgach, kukun gazlarining bir qismi gaz kamerasiga kiradi va porshen orqali zatvor ramasini orqaga itaradi — aynan shu jarayon gilzani chiqarish va yangi patronni yuborishni ta'minlaydi. Qaytarish prujinasi esa faqat orqaga ketgan qismlarni oldingi holatiga qaytaradi.",
+    "mnemonic": "Avtomatikani gaz boshlaydi, prujina qaytaradi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — AK-74 avtomatikasining ishlash prinsipi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "prujinaning qaytaruvchi rolini harakat manbai deb bilish",
+      "energiya manbaini mexanik to'qnashuv deb tushunish",
+      "avtomatikani otuvchining mushak kuchiga bog'lash",
+      ""
+    ]
+  },
+  {
+    "q": "Otish mashg'ulotida uch o'quvchi turli holatda o't ochdi: biri yotib, ikkinchisi tiz cho'kib, uchinchisi tik turib. Ularning natijalari sezilarli farq qildi, garchi qurol va masofa bir xil bo'lsa ham. Otish holatlari aniqlik nuqtayi nazaridan qanday tartiblanadi?",
+    "opts": [
+      "Yotib otish eng barqaror, tik turib otish eng kam barqaror",
+      "Tik turib otish eng barqaror, yotib otish eng kam barqaror",
+      "Tiz cho'kib otish eng barqaror, qolgan ikkisi teng darajada",
+      "Uchala holat ham bir xil barqarorlikni beradi"
+    ],
+    "correct": 0,
+    "explanation": "Barqarorlik tayanch maydoni va og'irlik markazining balandligiga bog'liq: yotib otishda tana yerga to'liq tegib, tayanch maydoni eng katta va og'irlik markazi eng past bo'ladi. Tik turib otishda esa tayanch faqat oyoqlar bilan cheklanadi va tanadagi har qanday tebranish qurol stvoliga uzatiladi.",
+    "mnemonic": "Qancha past — shuncha barqaror.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — otish holatlari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "barqarorlik tartibi to'liq teskari qo'yilgan",
+      "oraliq holatni eng barqaror deb hisoblash",
+      "tayanch maydonining ta'sirini butunlay inkor qilish"
+    ]
+  },
+  {
+    "q": "Otish natijalarini ko'rgan instruktor o'quvchining barcha o'qlari nishon markazidan yuqoriga tushganini aniqladi, o'qlar esa bir-biriga zich joylashgan. U xatoni mo'ljalga olishda deb baholadi. Otuvchi mushkani prisel o'yig'ida qanday ushlaganda o'qlar yuqoriga ketadi?",
+    "opts": [
+      "Mushkani o'yiqning chap chetiga surganda",
+      "Mushkani o'yiq qirralaridan yuqori ko'targanda",
+      "Mushkani o'yiq qirralaridan past tushirganda",
+      "Mushkani o'yiqning o'ng chetiga surganda"
+    ],
+    "correct": 1,
+    "explanation": "Mo'ljalga olishda mushkaning uchi prisel o'yig'ining yuqori qirralari bilan bir sathda turishi kerak. Mushka o'yiqdan yuqori ko'tarilsa, stvol aslida yuqoriga qaratilgan bo'ladi va o'qlar nishon markazidan tepaga tushadi; past tushirilsa, aksincha pastga ketadi. O'qlarning zich joylashuvi esa xato tizimli ekanini ko'rsatadi.",
+    "mnemonic": "Mushka baland — o'q baland.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — mo'ljalga olish xatolari",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "vertikal siljishni qarama-qarshi gorizontal xato bilan chalkashtirish",
+      "",
+      "vertikal xatoning yo'nalishi teskari ko'rsatilgan",
+      "vertikal siljishni gorizontal xato bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "Otishdan keyin nishonni tekshirgan instruktor o'qlarning bir joyga zich tushganini, ammo butun guruh markazdan chapga siljiganini ko'rdi. U o'quvchining qurolni ushlashi va nafasi to'g'ri ekanini tasdiqladi. Bunday natija nimadan darak beradi?",
+    "opts": [
+      "Qurol nosoz, o'qlar tasodifiy tarqalgan bo'lishi mumkin",
+      "Patronlar sifatsiz, porox zaryadi bir xil emas",
+      "Otish barqaror, ammo mo'ljal moslamasi siljigan",
+      "Otish nobarqaror, tepki turtib bosilgan bo'lishi mumkin"
+    ],
+    "correct": 2,
+    "explanation": "O'qlarning zich to'planishi otuvchining texnikasi barqaror ekanini, ya'ni ushlash, nafas va tepki bosish to'g'ri bajarilganini ko'rsatadi. Butun guruhning bir tomonga siljishi esa tizimli xato belgisi bo'lib, uning sababi mo'ljal moslamasining sozlanmagani yoki mushkaning yon tomonga surilganidir — bu qurolni pristrelka qilish bilan tuzatiladi.",
+    "mnemonic": "Zich lekin chetda — texnika emas, moslama aybdor.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — otish natijalarini tahlil qilish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "tizimli siljishni tasodifiy tarqalish bilan chalkashtirish",
+      "zich guruhni patron sifatsizligiga bog'lash",
+      "",
+      "zich to'planishni nobarqaror otish belgisi deb talqin qilish"
+    ]
+  },
+  {
+    "q": "Yosh otuvchi nishonga aniq mo'ljal olgach, tepkini keskin, bir zarb bilan bosdi va o'q nishondan ancha pastga tushdi. Instruktor mo'ljal to'g'ri bo'lgani holda ham natija buzilishi mumkinligini aytdi. Tepkini bosish qanday bajarilishi kerak?",
+    "opts": [
+      "Keskin va tez, o'q yo'nalishini o'zgartirmasdan bosiladi",
+      "Bir necha bosqichda, har safar to'xtab bosiladi",
+      "Butun kaft bilan qisib, qurolni mahkamlagan holda bosiladi",
+      "Bir tekis va sekin, stvolni qimirlatmasdan bosiladi"
+    ],
+    "correct": 3,
+    "explanation": "Tepki keskin bosilganda barmoqning zarb kuchi butun qurolga uzatiladi va o't ochilish lahzasida stvol o'z yo'nalishidan chetlanadi — mo'ljal qanchalik aniq bo'lmasin, o'q nishondan chetga tushadi. Shuning uchun tepki ko'rsatkich barmoqning bo'g'imi bilan bir tekis, sezilmas darajada sekin bosiladi.",
+    "mnemonic": "Tepkini bos, turtma.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — tepkini bosish texnikasi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "zarb kuchining stvolga ta'sirini inkor qilish",
+      "uzluksiz harakatni bo'lib, mo'ljalni yo'qotish",
+      "qurolni ortiqcha qisib, mushak titrashini kuchaytirish",
+      ""
+    ]
+  },
+  {
+    "q": "Ta'minot bo'limida patronlarni tekshirayotgan askar patron tuzilishini sanab chiqmoqchi bo'ldi va «o'q bilan gilza» deb ikkitasini aytdi. Instruktor tuzilma to'liq emasligini aytdi. Jangovar patron qaysi qismlardan iborat?",
+    "opts": [
+      "O'q, gilza, porox zaryadi va kapsyul",
+      "O'q, gilza va porox zaryadi",
+      "O'q, kapsyul va trassa tarkibi",
+      "O'q, gilza, kapsyul va zapal"
+    ],
+    "correct": 0,
+    "explanation": "Patron to'rt qismdan tashkil topadi: o'q nishonga ta'sir qiladi, gilza barcha qismlarni birlashtiradi, porox zaryadi o'qni harakatga keltiruvchi gazlarni hosil qiladi, kapsyul esa zarbadan alangalanib porox zaryadini yondiradi. Kapsyulsiz zanjir uzilib qoladi va o't ochilmaydi.",
+    "mnemonic": "O'q, gilza, porox, kapsyul — to'rttasi birga.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — patron tuzilishi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "alangalantiruvchi qismni tushirib qoldirish",
+      "asosiy qismni maxsus patron elementi bilan almashtirish",
+      "patron elementini granata zapali bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "Tunda o'tkazilgan mashg'ulotda komandir bo'linmaga o'q uchish yo'nalishini ko'rish imkonini beradigan patronlardan foydalanishni buyurdi. Yosh askar bunday patronni oddiy patrondan farqlay olmadi. Bunday patron qanday nomlanadi va nimasi bilan farq qiladi?",
+    "opts": [
+      "Yondiruvchi patron — nishonda yong'in chiqaradi",
+      "Trassalovchi patron — o'q ortida yorug' iz qoldiradi",
+      "Zirhteshar patron — o'q qattiq to'siqni teshib o'tadi",
+      "O'quv patroni — porox zaryadi umuman bo'lmaydi"
+    ],
+    "correct": 1,
+    "explanation": "Trassalovchi patron o'qining ichida yonuvchi tarkib bo'lib, u uchish davomida yonib yorug' iz qoldiradi va otuvchiga o'q yo'nalishini ko'rish hamda o'tni to'g'rilash imkonini beradi. Zirhteshar patron boshqa vazifani — qattiq to'siqni teshishni bajaradi, o'quv patronida esa zaryad umuman bo'lmaydi.",
+    "mnemonic": "Trassa — o'qning ko'rinadigan izi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — maxsus patron turlari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "iz qoldiruvchi ta'sirni yong'in chiqarish bilan chalkashtirish",
+      "",
+      "iz qoldirish vazifasini to'siqni teshish bilan chalkashtirish",
+      "jangovar patronni o'quv patroni bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "Ofitserga shaxsiy qurol berildi va u uning ko'rsatkichlarini avtomat bilan taqqoslay boshladi. Yordamchisi «kalibr va o'qdon sig'imi avtomatnikiga yaqin» deb taxmin qildi. Makarov to'pponchasining kalibri va o'qdon sig'imi qanday?",
+    "opts": [
+      "Kalibri 5,45 mm, o'qdon sig'imi 8 patron",
+      "Kalibri 7,62 mm, o'qdon sig'imi 15 patron",
+      "Kalibri 9 mm, o'qdon sig'imi 8 patron",
+      "Kalibri 9 mm, o'qdon sig'imi 30 patron"
+    ],
+    "correct": 2,
+    "explanation": "Makarov to'pponchasi 9 millimetrli patron uchun mo'ljallangan va uning o'qdoni sakkiz patronga sig'adi — bu qurol yaqin masofada shaxsiy himoya uchun ishlatiladi. Avtomat ko'rsatkichlari bilan taqqoslash noto'g'ri, chunki to'pponcha butunlay boshqa vazifa uchun yaratilgan.",
+    "mnemonic": "To'pponcha — 9 mm, 8 patron.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — Makarov to'pponchasi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "to'pponcha kalibrini avtomat kalibri bilan almashtirish",
+      "ikkala ko'rsatkichni ham boshqa qurol rusumidan olish",
+      "",
+      "to'pponcha o'qdonini avtomat o'qdoni bilan almashtirish"
+    ]
+  },
+  {
+    "q": "Bo'linmaga uzoq masofadagi yakka nishonlarni aniq yo'q qilish vazifasi berildi. Komandir bu vazifa uchun alohida qurol va maxsus tayyorgarlik ko'rgan xizmatchi kerakligini aytdi. Bunday vazifa uchun mo'ljallangan qurol qaysi va uning asosiy xususiyati nima?",
+    "opts": [
+      "Qo'l pulemyoti — uzluksiz o't bilan maydonni bosadi",
+      "Reaktiv granatomyot — zirhli nishonni yo'q qiladi",
+      "Avtomat — yaqin masofada tez o't ochadi",
+      "Snayper miltig'i — optik moslama bilan aniq o't ochadi"
+    ],
+    "correct": 3,
+    "explanation": "Snayper miltig'i uzoq masofadagi yakka, ayniqsa muhim nishonlarni aniq yo'q qilish uchun mo'ljallangan bo'lib, uning asosiy ustunligi optik moslama va yuqori aniqlikdir. Qo'l pulemyoti maydonni o't bilan bosishga, granatomyot esa zirhli texnikaga qarshi ishlatiladi.",
+    "mnemonic": "Yakka va uzoq nishon — snayper ishi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — jangovar qurol turlari va vazifalari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "aniq o'tni maydonni bosuvchi o't bilan chalkashtirish",
+      "yakka nishon vazifasini zirhga qarshi vosita bilan chalkashtirish",
+      "uzoq masofa vazifasini yaqin jang quroli bilan chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Askar reaktiv granatomyotdan xona ichidan, devor ortidan turib o't ochmoqchi bo'ldi va orqasida sherigi turgan edi. Komandir uni keskin to'xtatdi. Bunday qurolning o'ziga xos xavfi nimada?",
+    "opts": [
+      "Orqa tomondan otilgan reaktiv oqim odamni og'ir shikastlaydi",
+      "Old tomondagi to'lqin faqat nishon atrofida xavf tug'diradi",
+      "Otish paytida stvol qizib, otuvchining qo'lini kuydiradi",
+      "Granata otilgach darhol emas, bir necha soniyadan keyin portlaydi"
+    ],
+    "correct": 0,
+    "explanation": "Reaktiv granatomyotdan o't ochilganda quvurning orqa tomonidan kuchli issiq gaz oqimi otilib chiqadi va u bir necha o'n metr masofada odamni og'ir shikastlashi mumkin. Shuning uchun otuvchining orqasida odam bo'lmasligi, yopiq joydan yoki devorga yaqin turib o't ochilmasligi qat'iy talab qilinadi.",
+    "mnemonic": "Granatomyotning orqasi oldi kabi xavfli.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — granatomyotdan foydalanish xavfsizligi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "xavfni faqat nishon tomoniga bog'lab, orqa zonani unutish",
+      "asosiy xavfni ikkilamchi texnik holat bilan almashtirish",
+      "granatomyot xavfini qo'l granatasi xususiyati bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "Otish maydonchasiga kelgan bo'linma o'qlash komandasini oldi. Bir askar avval zatvorni tortib, keyin o'qdonni qo'ydi va saqlagichni umuman ishlatmadi. Instruktor tartib buzilganini aytdi. Avtomatni o'qlash qanday ketma-ketlikda bajariladi?",
+    "opts": [
+      "O'qdon qo'yiladi, saqlagichga qo'yiladi, so'ng zatvor tortiladi",
+      "O'qdon qo'yiladi, zatvor tortiladi, so'ng saqlagichga qo'yiladi",
+      "Zatvor tortiladi, o'qdon qo'yiladi, so'ng saqlagichga qo'yiladi",
+      "Saqlagichga qo'yiladi, zatvor tortiladi, so'ng o'qdon qo'yiladi"
+    ],
+    "correct": 1,
+    "explanation": "To'g'ri tartib: o'qdon qo'yiladi, zatvor orqaga tortilib qo'yib yuboriladi — shunda patron patronnikka yuboriladi, so'ngra qurol saqlagichga qo'yiladi. Zatvor o'qdonsiz tortilsa patron yuborilmaydi, saqlagich esa oxirida qo'yilmasa qurol o't ochishga tayyor holda nazoratsiz qoladi.",
+    "mnemonic": "O'qdon — zatvor — saqlagich.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — qurolni o'qlash tartibi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "saqlagichni patron yuborilishidan oldin qo'yish",
+      "",
+      "zatvorni o'qdonsiz tortib, patronni yubormaslik",
+      "saqlagichni birinchi o'ringa qo'yib, tartibni buzish"
+    ]
+  },
+  {
+    "q": "Mashg'ulot tugagach, askar qurolni bo'shatish uchun faqat o'qdonni ajratdi va uni topshirishga olib bordi. Qurol topshirish punktida patronnikda patron borligi aniqlandi. Qurolni o'qdan bo'shatish qanday bajarilishi kerak edi?",
+    "opts": [
+      "Zatvor tortiladi va qurol o'qdon bilan birga topshiriladi",
+      "Tepki bosilib, keyin o'qdon ajratiladi va qurol topshiriladi",
+      "O'qdon ajratiladi, patronnik ko'zdan kechiriladi, tepki bosiladi",
+      "O'qdon ajratiladi va qurol tekshiruvsiz topshiriladi"
+    ],
+    "correct": 2,
+    "explanation": "O'qdonni ajratish patronnikdagi patronni chiqarmaydi — u yerda o'qlangan patron qolib ketishi mumkin va bu tasodifiy o't ochilishining eng ko'p uchraydigan sababidir. To'g'ri tartib: o'qdon ajratiladi, zatvor orqaga tortilib patronnik ko'z bilan tekshiriladi, so'ng zatvor qo'yib yuborilib tepki bosiladi.",
+    "mnemonic": "O'qdonni olding — patronnikni ko'zdan kechir.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — qurolni o'qdan bo'shatish tartibi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "o'qdonni ajratmasdan topshirib, xavfni saqlab qolish",
+      "tekshiruv bosqichlarining tartibini teskari bajarish",
+      "",
+      "patronnikdagi patronni e'tibordan chetda qoldirish"
+    ]
+  },
+  {
+    "q": "Otish maydonchasiga yaqinlashgan askar masofada ko'tarilgan qizil bayroqni ko'rdi va uni «shunchaki belgi» deb hisoblab, maydon chetidan o'tib ketmoqchi bo'ldi. Navbatchi uni to'xtatdi. Otish maydonchasidagi qizil bayroq nimani bildiradi?",
+    "opts": [
+      "Otish tugagan va maydon xavfsiz holatga keltirilgan",
+      "Maydonda ta'mirlash ishlari olib borilmoqda",
+      "Maydonda o'quv mashg'uloti rejalashtirilgan",
+      "Otish o'tkazilmoqda va maydonga kirish taqiqlanadi"
+    ],
+    "correct": 3,
+    "explanation": "Ko'tarilgan qizil bayroq otish o'tkazilayotganini va maydonga hamda uning xavfli zonasiga kirish qat'iy taqiqlanganini bildiruvchi umumiy signaldir. Bayroq tushirilgunga qadar hech kim, shu jumladan mashg'ulotga aloqasi bo'lmagan shaxslar ham maydonga chiqa olmaydi.",
+    "mnemonic": "Qizil bayroq ko'tarilgan — o'q uchmoqda.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — otish maydonchasidagi xavfsizlik signallari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "signalning ma'nosini teskarisiga tushunish",
+      "xavfsizlik signalini xo'jalik belgisi deb hisoblash",
+      "amaldagi holatni rejalashtirilgan holat bilan chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Granata mashg'ulotida instruktor zapalni ko'rsatib, «chekani tortgan zahoti portlaydi» degan fikrni rad etdi va vaqt oralig'i borligini aytdi. Bu oraliq granatani uloqtirish va panaga yashirinish uchun yetarli bo'lishi kerak. UZRGM rusumli zapalning sekinlashtirish vaqti qancha?",
+    "opts": [
+      "3,2-4,2 sekund oralig'ida sekinlashtiruvchi tarkib yonadi",
+      "0,5-1 sekund oralig'ida sekinlashtiruvchi tarkib yonadi",
+      "8-10 sekund oralig'ida sekinlashtiruvchi tarkib yonadi",
+      "15-20 sekund oralig'ida sekinlashtiruvchi tarkib yonadi"
+    ],
+    "correct": 0,
+    "explanation": "UZRGM zapalining sekinlashtiruvchi tarkibi taxminan 3,2 dan 4,2 sekundgacha yonadi va shundan keyingina portlash sodir bo'ladi. Bu oraliq granatani uloqtirib, panaga yashirinishga yetadi, ammo granatani qo'lda ushlab turishga imkon bermaydi.",
+    "mnemonic": "Zapal — taxminan to'rt sekund.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — qo'l granatasi zapali",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "vaqtni uloqtirishga yetmaydigan darajada qisqartirish",
+      "sekinlashtirish vaqtini ikki barobar oshirib yuborish",
+      "granata zapalini boshqa qurilma vaqti bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "Bo'linma ochiq joyda hujumga o'tmoqda. Askar mudofaa granatasini olib, uni tanasidan taxminan yigirma metr narida joylashgan nishonga, panasiz turgan holda uloqtirmoqchi bo'ldi. Komandir buni taqiqladi. Sababi nimada?",
+    "opts": [
+      "Mudofaa granatasi harakatdagi nishonga qarshi ishlamaydi",
+      "Parchalar tarqalish radiusi uloqtirish masofasidan katta",
+      "Mudofaa granatasi ochiq joyda umuman portlamaydi",
+      "Mudofaa granatasining zapali boshqa turdagi bo'ladi"
+    ],
+    "correct": 1,
+    "explanation": "Mudofaa granatasining parchalari uni uloqtirish mumkin bo'lgan masofadan ancha uzoqqa tarqaladi, shuning uchun uni faqat xandaq, jar yoki boshqa ishonchli panadan turib uloqtirishga ruxsat etiladi. Ochiq joyda, panasiz turib uloqtirish otuvchining o'zini parchalar zonasida qoldiradi.",
+    "mnemonic": "Mudofaa granatasi — faqat panadan.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — mudofaa granatasidan foydalanish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "taqiqni nishon harakatiga bog'lash",
+      "",
+      "taqiq sababini granataning ishlamasligi deb tushunish",
+      "taqiqni zapal turidagi farq bilan izohlash"
+    ]
+  },
+  {
+    "q": "Askar granatani uloqtirgach, natijani ko'rish uchun bir soniya ikkilanib turdi, keyin panaga yotdi. Komandir bu ikkilanish halokatli bo'lishi mumkinligini aytdi. Granatani uloqtirgandan keyin qanday harakat qilinadi?",
+    "opts": [
+      "Joyida tik turib, portlash to'lqinini kutish",
+      "Oldinga yugurib, portlash zonasiga yaqinlashish",
+      "Darhol panaga yashirinib, portlashgacha boshni ko'tarmaslik",
+      "Nishonni kuzatib turib, portlashdan keyin panaga o'tish"
+    ],
+    "correct": 2,
+    "explanation": "Zapalning sekinlashtirish vaqti atigi bir necha sekundni tashkil qiladi va bu vaqt aynan panaga yashirinish uchun mo'ljallangan. Natijani kuzatish uchun ikkilanish yoki tik turish otuvchini parchalar zonasida qoldiradi; kuzatish esa portlashdan keyin, panadan turib olib boriladi.",
+    "mnemonic": "Uloqtirdingmi — darhol panaga.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — granata uloqtirishda xavfsizlik",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "portlash to'lqinining ta'sirini e'tiborsiz qoldirish",
+      "portlash zonasiga ataylab yaqinlashish",
+      "",
+      "kuzatishni xavfsizlikdan ustun qo'yish"
+    ]
+  },
+  {
+    "q": "Omborga kelgan tekshiruvchi patron qutilarining nam yerto'lada, isitish quvuriga yaqin joyda turganini ko'rdi. Ombor mudiri «quti berk, ichiga hech narsa o'tmaydi» dedi. O'q-dorilarni saqlashda qanday shart bajarilishi kerak?",
+    "opts": [
+      "Nam, salqin joyda, issiqlik manbalari yaqinida saqlanadi",
+      "Quruq, issiq joyda, quyosh nuri tushadigan tokchada saqlanadi",
+      "Ochiq havoda, brezent bilan yopilgan holda saqlanadi",
+      "Quruq, salqin joyda, issiqlik manbalaridan uzoqda saqlanadi"
+    ],
+    "correct": 3,
+    "explanation": "Namlik gilza va kapsyulni korroziyaga uchratib, patronning ishonchsiz ishlashiga yoki umuman o't ochmasligiga olib keladi, issiqlik esa porox zaryadining xossalarini o'zgartiradi. Shuning uchun o'q-dorilar quruq va salqin joyda, isitish qurilmalari va bevosita quyosh nuridan uzoqda saqlanadi.",
+    "mnemonic": "O'q-dori — quruq va salqin joyda.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — o'q-dorilarni saqlash shartlari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "namlik va issiqlikning zararli ta'sirini inkor qilish",
+      "issiqlik va quyosh ta'sirini xavfsiz deb hisoblash",
+      "himoyalanmagan saqlash usulini yetarli deb bilish",
+      ""
+    ]
+  },
+  {
+    "q": "Otish natijalari tahlil qilinganda bir o'quvchining o'qlari nishon bo'ylab keng tarqalgani, boshqasining o'qlari esa zich to'plangani ma'lum bo'ldi. O'qituvchi bu ikki holatni turli tushunchalar bilan izohladi. Otishda o'qlarning bir joyga zich tushishi qanday atama bilan ifodalanadi?",
+    "opts": [
+      "O'q tushishining zichligi — otish barqarorligini ko'rsatadi",
+      "O'q tushishining aniqligi — nishon markaziga mosligini ko'rsatadi",
+      "O'q tarqalishi — traektoriyaning egriligini ko'rsatadi",
+      "O'q tezligi — porox zaryadining kuchini ko'rsatadi"
+    ],
+    "correct": 0,
+    "explanation": "Zichlik o'qlarning bir-biriga qanchalik yaqin tushganini, ya'ni otish texnikasining barqarorligini ifodalaydi; aniqlik esa o'qlar guruhining nishon markaziga qanchalik mos kelishini bildiradi. Bu ikki ko'rsatkich mustaqil: o'qlar zich tushib, ayni paytda markazdan siljigan bo'lishi mumkin.",
+    "mnemonic": "Zichlik — o'zaro yaqinlik; aniqlik — markazga yaqinlik.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — otish natijalari ko'rsatkichlari",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "zichlik va aniqlik tushunchalarini o'zaro almashtirish",
+      "natija ko'rsatkichini traektoriya xususiyati bilan chalkashtirish",
+      "natija ko'rsatkichini o'q tezligi bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "Askar avtomatini tozalayotib, zatvor ramasi ostidagi uzun sterjenni ko'rdi va uning vazifasini «zatvorni tutib turish» deb izohladi. Instruktor bu qismning boshqa vazifasi borligini aytdi. Gaz porsheni bilan birga bo'lgan zatvor ramasi qanday vazifani bajaradi?",
+    "opts": [
+      "Stvolni sovutib, ortiqcha issiqlikni tashqariga chiqaradi",
+      "Gaz bosimini qabul qilib, avtomatika qismlarini harakatga keltiradi",
+      "Patronni o'qdondan olib, faqat patronnikka yuboradi",
+      "Gilzani ushlab turib, uni patronnikda mahkamlaydi"
+    ],
+    "correct": 1,
+    "explanation": "Zatvor ramasi gaz porsheni orqali kukun gazlarining bosimini qabul qiladi va shu energiya hisobiga zatvorni hamda boshqa harakatlanuvchi qismlarni ishga tushiradi — ya'ni u avtomatikaning asosiy harakatlantiruvchi bo'g'inidir. Patronni yuborish va gilzani chiqarish esa zatvorning o'zi bajaradigan ishlardir.",
+    "mnemonic": "Rama — gazni oladi, harakatni tarqatadi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — AK-74 qismlarining vazifalari",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "mexanik vazifani issiqlik almashinuvi bilan chalkashtirish",
+      "",
+      "rama vazifasini zatvorning vazifasi bilan almashtirish",
+      "harakatlantiruvchi qismni ushlab turuvchi qism deb bilish"
+    ]
+  },
+  {
+    "q": "Mashg'ulotda o'quvchi avtomatning nishonga olish moslamasidagi raqamlarni ko'rib, «bu raqamlar o'qning tezligini bildiradi» deb o'yladi. O'qituvchi ularning boshqa ma'nosi borligini tushuntirdi. Prisel shkalasidagi raqamlar nimani ko'rsatadi?",
+    "opts": [
+      "Otish tezligini daqiqadagi o'q sonida ko'rsatadi",
+      "O'qdondagi patronlar sonini o'nliklarda ko'rsatadi",
+      "Nishongacha bo'lgan masofani yuz metrlarda ko'rsatadi",
+      "O'qning boshlang'ich tezligini yuz metr sekundda ko'rsatadi"
+    ],
+    "correct": 2,
+    "explanation": "Prisel shkalasidagi har bir raqam nishongacha bo'lgan masofani yuz metr birligida ifodalaydi: masalan uchlik raqami uch yuz metrga mo'ljallanganini bildiradi. Otuvchi masofani baholab, shkalani mos raqamga qo'yadi — shunda stvolga o'qning pasayishini qoplaydigan zarur ko'tarilish beriladi.",
+    "mnemonic": "Prisel raqami — masofa, yuz metrda.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — nishonga olish moslamasi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "masofa shkalasini otish tezligi bilan chalkashtirish",
+      "shkalani o'q-dori hisobi bilan chalkashtirish",
+      "",
+      "masofa shkalasini tezlik ko'rsatkichi deb tushunish"
+    ]
+  },
+  {
+    "q": "Mashg'ulotdan keyin askar avtomatini tozalab bo'lib, moyni ko'p miqdorda quyib, mexanizmlarni to'liq moyga botirdi. Qishki mashg'ulotda qurolda tutilishlar boshlandi. Qurolni moylashda qanday qoida amal qiladi?",
+    "opts": [
+      "Barcha qismlar mo'l moy bilan to'ldiriladi",
+      "Moy faqat stvol kanaliga quyiladi, qolgan qismlarga tegmaydi",
+      "Moy umuman ishlatilmaydi, quruq artish kifoya",
+      "Ishqalanuvchi yuzalarga yupqa qatlam moy suriladi"
+    ],
+    "correct": 3,
+    "explanation": "Moy ishqalanuvchi yuzalarga yupqa, teng qatlam qilib suriladi. Ortiqcha moy chang va qumni o'ziga yig'adi, sovuqda esa quyuqlashib mexanizm harakatini sekinlashtiradi va tutilishlarga sabab bo'ladi; moysiz qoldirish esa korroziya va tez yeyilishga olib keladi.",
+    "mnemonic": "Moy — yupqa qatlam, ko'p emas.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — qurolni tozalash va moylash",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "ortiqcha moyning chang yig'ish va quyuqlashish ta'sirini unutish",
+      "moylash zonasini noto'g'ri belgilash",
+      "moylashni butunlay rad etib, korroziyaga yo'l qo'yish",
+      ""
+    ]
+  },
+  {
+    "q": "Ikki o'quvchi otish natijasini muhokama qilmoqda: birining o'qlari nishonning yuqori qismiga, ikkinchisiniki pastki qismiga tushdi, ikkalasi ham mushkani o'yiq bilan bir sathda ushlaganini aytmoqda. O'qituvchi boshqa omilni ko'rsatdi. Prisel noto'g'ri o'rnatilganda natija qanday o'zgaradi?",
+    "opts": [
+      "Prisel masofadan katta bo'lsa o'q yuqoriga, kichik bo'lsa pastga tushadi",
+      "Prisel masofadan katta bo'lsa o'q pastga, kichik bo'lsa yuqoriga tushadi",
+      "Prisel qiymati o'q tushish balandligiga ta'sir qilmaydi",
+      "Prisel faqat o'qning yon tomonga siljishiga ta'sir qiladi"
+    ],
+    "correct": 0,
+    "explanation": "Prisel raqami oshirilganda stvolga qo'shimcha ko'tarilish beriladi — bu uzoq masofada o'qning pasayishini qoplash uchun zarur, ammo yaqin nishonda o'q nishondan yuqoriga chiqib ketadi. Aksincha, masofadan kichik prisel qo'yilsa, ko'tarilish yetmaydi va o'q nishonga yetmasdan pastga tushadi.",
+    "mnemonic": "Katta prisel — baland o'q.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — priselni masofaga moslash",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "priselning vertikal ta'siri teskari ko'rsatilgan",
+      "prisel qiymatining ta'sirini butunlay inkor qilish",
+      "vertikal sozlashni gorizontal sozlash bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "Yosh askar avtomatga o'rnatilgan optik moslamani ko'rib, «bu faqat uzoqni kattalashtirib ko'rsatadi» dedi. Instruktor uning yana bir muhim ustunligi borligini aytdi. Optik moslamaning oddiy mexanik moslamaga nisbatan asosiy afzalligi nimada?",
+    "opts": [
+      "O'qning boshlang'ich tezligini oshiradi va masofani uzaytiradi",
+      "Nishon va nishonga olish belgisi bir tekislikda ko'rinadi",
+      "Nishon va mushka har xil tekislikda aniq ko'rinadi",
+      "Otish tezligini oshiradi va qayta o'qlashni tezlashtiradi"
+    ],
+    "correct": 1,
+    "explanation": "Mexanik moslamada otuvchi ko'zi bir vaqtda uchta narsani — o'yiq, mushka va nishonni turli masofada ushlashi kerak, bu esa xatoni oshiradi. Optik moslamada nishonga olish belgisi nishon bilan bir tekislikda ko'rinadi, shuning uchun ko'z bitta tasvirga fokuslanadi va aniqlik sezilarli ortadi.",
+    "mnemonic": "Optikada bitta tasvir — bitta fokus.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — optik nishonga olish moslamasi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "moslamani o'qning ballistik xossalariga ta'sir qiladi deb bilish",
+      "",
+      "optikaning asosiy ustunligini teskarisiga aylantirish",
+      "nishonga olish vositasini o't ochish tezligiga bog'lash"
+    ]
+  },
+  {
+    "q": "Otish mashg'ulotida bo'linma turli nishonlarga o't ochmoqda: biri yerdan past ko'rinadigan yassi shakl, ikkinchisi tik turgan odam bo'yidagi shakl. Yosh askar ikkalasiga ham bir xil prisel qo'ydi. Nishon turini aniqlash otishda nima uchun muhim?",
+    "opts": [
+      "Nishon turi tepkini bosish texnikasini belgilaydi",
+      "Nishon turi qurolning otish tezligini cheklaydi",
+      "Nishon o'lchami masofani baholashga asos bo'ladi",
+      "Nishon turi o'qning boshlang'ich tezligini o'zgartiradi"
+    ],
+    "correct": 2,
+    "explanation": "Nishonlarning o'lchami standartlashtirilgan bo'lgani uchun otuvchi ularning ko'rinish kattaligiga qarab masofani baholaydi va shunga mos prisel o'rnatadi. Nishon turi o'qning tezligiga ham, tepki bosish texnikasiga ham ta'sir qilmaydi — u faqat masofani baholash va mo'ljal tanlash uchun mo'ljal beradi.",
+    "mnemonic": "Nishon o'lchami — masofa o'lchovi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — nishon turlari va masofani baholash",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "nishon turini otish texnikasi bilan chalkashtirish",
+      "nishon turini qurolning texnik ko'rsatkichi bilan bog'lash",
+      "",
+      "nishon xususiyatini o'qning ballistikasiga bog'lash"
+    ]
+  },
+  {
+    "q": "Mashg'ulot yakunida qurol topshirish punktida navbatchi har bir avtomatni alohida tekshirmoqda. Bir askar «men o'zim tekshirdim, ishonavering» deb tekshiruvsiz o'tmoqchi bo'ldi. Otishdan keyin qurolni ko'rikdan o'tkazish qoidasi qanday?",
+    "opts": [
+      "Otuvchining o'z tekshiruvi va og'zaki tasdig'i yetarli hisoblanadi",
+      "Ko'rik faqat tutilish yuz bergan qurollarga nisbatan o'tkaziladi",
+      "Ko'rik keyingi mashg'ulot boshlanishidan oldin o'tkaziladi",
+      "Har bir qurol mansabdor shaxs ishtirokida qayta ko'rikdan o'tkaziladi"
+    ],
+    "correct": 3,
+    "explanation": "Otishdan keyin har bir qurol mansabdor shaxs ishtirokida ko'rikdan o'tkaziladi va patronnikda patron qolmagani, o'qdon ajratilgani ko'z bilan tasdiqlanadi. Bu qoida shaxsiy ishonchga tayanmaydi, chunki aynan o'z-o'ziga ishonish natijasida qolib ketgan patron tasodifiy o't ochilishining asosiy sababi hisoblanadi.",
+    "mnemonic": "O'z so'zing emas — mustaqil ko'rik.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — otishdan keyingi ko'rik",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "mustaqil nazoratni shaxsiy ishonch bilan almashtirish",
+      "ko'rikni faqat nosoz qurollarga cheklash",
+      "ko'rikni keyingi mashg'ulotga qoldirib, xavfni saqlab qolish",
+      ""
+    ]
+  },
+  {
+    "q": "Bo'linma qishki sharoitda mashg'ulot o'tkazmoqda: harorat past, askarlar qo'lqopda. Bir askar qalin qo'lqopda tepkini bosishga urindi va tasodifan avvalroq o't ochdi. Instruktor sharoitga moslashish qoidasini eslatdi. Qo'lqopda otishda qanday ehtiyot chorasi qo'llaniladi?",
+    "opts": [
+      "Tepki his qilinishi uchun barmoq erkin bo'ladigan vosita qo'llaniladi",
+      "Qalinroq qo'lqop kiyilib, tepki kuchliroq bosiladi",
+      "Qo'lqop butunlay yechilib, qo'l ochiq holda otiladi",
+      "Tepki ikkala barmoq bilan birga bosiladi"
+    ],
+    "correct": 0,
+    "explanation": "Qalin qo'lqop tepkining bosim kuchini sezishga imkon bermaydi va otuvchi qancha bosganini nazorat qila olmaydi — natijada o't kutilmaganda ochiladi. Shuning uchun ko'rsatkich barmoq erkin qoladigan maxsus qo'lqop ishlatiladi; qo'lni butunlay ochish esa sovuqda barmoq sezuvchanligini yo'qotib, xuddi shu muammoni keltirib chiqaradi.",
+    "mnemonic": "Tepkini his qilmasang — nazorat yo'q.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — qishki sharoitda otish xavfsizligi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "sezuvchanlik muammosini kuch bilan hal qilishga urinish",
+      "sovuqda barmoq sezuvchanligining yo'qolishini hisobga olmaslik",
+      "tepkini bosish texnikasini buzib, nazoratni yo'qotish"
+    ]
+  },
+  {
+    "q": "Askar avtomatiga shtik-pichoqni o'rnatib, uni doimiy shu holda olib yurmoqchi bo'ldi va mashg'ulotda ham yechmadi. Instruktor bunday amaliyot noto'g'ri ekanini aytdi. Shtik-pichoq qanday maqsadda va qachon o'rnatiladi?",
+    "opts": [
+      "Nishonni belgilash uchun, mo'ljalga olish paytida o'rnatiladi",
+      "Yaqin jangda qo'llash uchun, komanda bo'yicha o'rnatiladi",
+      "Otish aniqligini oshirish uchun, doimiy o'rnatib yuriladi",
+      "Qurolni tayanchga qo'yish uchun, tozalash paytida o'rnatiladi"
+    ],
+    "correct": 1,
+    "explanation": "Shtik-pichoq yaqin jangda dushmanga qarshi ishlatish hamda xo'jalik ishlarini bajarish uchun mo'ljallangan va u belgilangan komanda bo'yicha o'rnatiladi. Doimiy o'rnatib yurish qurolni og'irlashtiradi, muvozanatini o'zgartiradi va yurish paytida xavf tug'diradi; otish aniqligiga esa u ijobiy ta'sir ko'rsatmaydi.",
+    "mnemonic": "Shtik — komanda bilan, doim emas.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — shtik-pichoqning vazifasi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "shtikni nishonga olish moslamasi deb tushunish",
+      "",
+      "yaqin jang vositasini otish aniqligiga bog'lash",
+      "shtik vazifasini yordamchi jihoz vazifasi bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "Otish mashg'ulotida rahbar «Otish!» komandasini berdi, ammo bir necha o'quvchi nishonlarni ko'rmayotganini aytdi va o'z-o'zicha maydon bo'ylab yura boshladi. Rahbar darhol boshqa komanda berdi. Otish paytida kutilmagan holat yuzaga kelganda birinchi navbatda nima qilinadi?",
+    "opts": [
+      "Har bir otuvchi o'zi qaror qabul qilib, harakatni tanlaydi",
+      "Nishonlar qayta o'rnatilgach, komanda takrorlanadi",
+      "«To'xtat!» komandasi beriladi va qurollar saqlagichga qo'yiladi",
+      "Mashg'ulot davom ettirilib, holat otish oxirida hal qilinadi"
+    ],
+    "correct": 2,
+    "explanation": "Otish maydonchasida har qanday kutilmagan holatda birinchi harakat — o't ochishni darhol to'xtatish: tegishli komanda beriladi, qurollar saqlagichga qo'yiladi va stvollar xavfsiz yo'nalishga qaratiladi. Faqat shundan keyin holat aniqlanadi va mashg'ulotni davom ettirish masalasi hal qilinadi.",
+    "mnemonic": "Kutilmagan holat — avval o'tni to'xtat.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — otish paytidagi xavfsizlik komandalari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "yagona boshqaruvni yakka qarorlar bilan almashtirish",
+      "to'xtatish bosqichini o'tkazib, bevosita tiklashga o'tish",
+      "",
+      "xavfli holatda o't ochishni davom ettirish"
+    ]
+  },
+  {
+    "q": "Mashg'ulotdan keyin ikki o'quvchi bahslashmoqda: biri «qurolni har doim o'qlangan deb hisoblash kerak», ikkinchisi «men o'zim bo'shatganman, demak ishonch bilan ushlashim mumkin» deydi. Instruktor birinchi fikrni asosli deb baholadi. Bu qoidaning mohiyati nimada?",
+    "opts": [
+      "Qurol bo'shatilgach, u bilan erkin muomala qilishga ruxsat beriladi",
+      "Qurolni o'qlangan deb hisoblash faqat mashg'ulot paytida talab qilinadi",
+      "Qurolni o'qlangan deb hisoblash tajribasiz otuvchilarga nisbatan qo'llaniladi",
+      "Qurol bilan muomala har doim o'qlangan holatdagidek ehtiyot bilan olib boriladi"
+    ],
+    "correct": 3,
+    "explanation": "Bu qoida qurol bilan bog'liq baxtsiz hodisalarning asosiy sababini — «u bo'sh edi» degan ishonchni yo'q qiladi. Qurol qanday holatda bo'lishidan qat'i nazar, uning stvoli hech qachon odamga qaratilmaydi va barmoq zarurat bo'lmaganda tepkida turmaydi; bu talab tajriba darajasiga ham, joyga ham bog'liq emas.",
+    "mnemonic": "Har qurol o'qlangan — istisnosiz.",
+    "topicId": 2,
+    "category": "chqbt",
+    "source_ref": "Otish tayyorgarligi — qurol bilan muomala qilishning asosiy qoidasi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "bo'shatilgan qurolni xavfsiz deb hisoblab, nazoratni bo'shashtirish",
+      "umumiy qoidani vaqt va joyga bog'lab cheklash",
+      "umumiy qoidani tajriba darajasiga bog'lab cheklash",
+      ""
+    ]
+  }
+]

@@ -1,0 +1,512 @@
+[
+{
+  "q": "Harbiy shaharchada tumanli tovush signali — sirena uzluksiz yangray boshladi. Kazarmadagi askarlar hovliga chiqib, nima bo'lganini bir-biridan so'ray boshladi. Navbatchi ofitser shaxsiy tarkibga qanday buyruq berishi kerak?",
+  "opts": [
+    "Barcha shaxsiy tarkibni darhol hovliga saf tortishga va keyingi ko'rsatmani kutishga buyuradi",
+    "Radio va televideniyeni yoqib, xabar matnini tinglashni hamda shundan keyin harakat qilishni buyuradi",
+    "Shaxsiy tarkibni zudlik bilan panoh joyga tushirib, aloqani butunlay uzishni buyuradi",
+    "Himoya vositalarini taqib, hududdan chiqib ketish yo'nalishini mustaqil tanlashni buyuradi"
+  ],
+  "correct": 1,
+  "explanation": "Uzluksiz sirena — «Diqqat hammaga!» signali. U aholini biror aniq harakatga emas, axborot manbaini yoqishga chorlaydi: sirenadan keyin radio yoki televideniye orqali qanday favqulodda vaziyat yuz bergani va nima qilish kerakligi e'lon qilinadi. Signalning o'zidan panoh joyga tushish yoki hududni tark etish kerakligi kelib chiqmaydi — bu keyingi xabar bilan belgilanadi.",
+  "mnemonic": "Sirena — «eshit» degani, «yugur» degani emas.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: fuqaro muhofazasi signallari va aholini ogohlantirish tartibi",
+  "distractor_error": ["signalni saf tortish komandasi deb bilish", "", "signalni panoh joy komandasi deb bilish", "harakatni xabarsiz boshlash"]
+},
+{
+  "q": "Uch qavatli kazarmaning ikkinchi qavatida mashg'ulot ketayotganda binoning kuchli silkinishi boshlandi, shift suvog'i to'kila boshladi. Zinapoyagacha 20 metr, eshikda tirband. Mashg'ulot rahbari qanday buyruq beradi?",
+  "opts": [
+    "Barchani zinapoyaga yugurib, birinchi qavatga tushishga va tashqariga chiqishga buyuradi",
+    "Deraza yonidagi ochiq joyga to'planib, tashqarini kuzatib turishni buyuradi",
+    "Tebranish tugaguncha yuk ko'taruvchi devor yoki stol tagida pana bo'lishni buyuradi",
+    "Liftga navbat tashkil qilib, guruh-guruh bo'lib pastga tushishni buyuradi"
+  ],
+  "correct": 2,
+  "explanation": "Zilzilaning birinchi kuchli tebranishlari bir necha o'n soniya davom etadi — bu vaqtda yugurish eng xavfli harakat: zinapoya maydonchalari va tirband eshiklarda odamlar bosilib qoladi. Tebranish tugaguncha ichki yuk ko'taruvchi devor yoniga yoki mustahkam mebel tagiga pana bo'lish kerak, chunki asosiy shikast tushayotgan buyum va suvoqdan yetadi. Deraza yoni va lift zilzilada eng xavfli joylar hisoblanadi.",
+  "mnemonic": "Silkinayotganda — qol va pana bo'l; chiqish keyin.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: zilzila vaqtida binoda harakat qoidalari",
+  "distractor_error": ["tebranish vaqtida yugurish", "deraza yonini xavfsiz deb bilish", "", "liftdan foydalanish"]
+},
+{
+  "q": "Zilzila tugagach, kazarmaga qaytgan askarlar yo'lakda kuchli gaz hidini sezdi. Xona qorong'i, biri chiroq tugmasini bosmoqchi, ikkinchisi telefon chirog'ini yoqmoqchi bo'ldi. Navbatchi qanday harakat qilishi kerak?",
+  "opts": [
+    "Elektr va olov manbaiga tegmasdan gaz ventilini yopadi, derazalarni ochadi va binoni bo'shatadi",
+    "Chiroqni yoqib, gaz sizayotgan joyni topadi va uni nam mato bilan o'rab qo'yadi",
+    "Derazalarni yopib, gaz tarqalmasligi uchun xonani germetik holatda saqlaydi",
+    "Shaxsiy tarkibni ichkarida qoldirib, faqat gaz xizmatining kelishini kutadi"
+  ],
+  "correct": 0,
+  "explanation": "Gaz bilan to'yingan havoda elektr kalitining uchqun berishi yoki telefon chirog'i portlashni keltirib chiqarish uchun yetarli. Shuning uchun hech qanday elektr va olov manbaiga tegilmaydi: gaz ventili yopiladi, derazalar ochilib havo almashtiriladi va odamlar binodan chiqariladi. Xonani germetik saqlash gaz konsentratsiyasini portlash chegarasigacha oshiradi.",
+  "mnemonic": "Gaz hidi bor — kalitga tegma, ventil va deraza.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: zilziladan keyingi harakatlar, kommunal tarmoq avariyasi",
+  "distractor_error": ["", "uchqun manbaini yoqish", "gazni to'plash", "harakatsiz kutish"]
+},
+{
+  "q": "Daryo bo'yidagi bo'linmaga suv toshqini haqida ogohlantirish keldi: suv sathi ikki soat ichida ko'tariladi. Ayrim askarlar omborni qo'riqlab qolishni, boshqalari mashinada quyi oqim bo'ylab yo'lga chiqishni taklif qilmoqda. Komandir qanday qaror qabul qiladi?",
+  "opts": [
+    "Omborni qo'riqlash uchun kichik guruh qoldirib, qolganlarini ko'chiradi",
+    "Mashinalarda quyi oqim bo'ylab, suv oqimi yo'nalishida yo'lga chiqadi",
+    "Shaxsiy tarkibni joyida qoldirib, suv sathini kuzatishni davom ettiradi",
+    "Hujjat va zarur ashyolarni olib, shaxsiy tarkibni oldindan belgilangan balandlikka ko'chiradi"
+  ],
+  "correct": 3,
+  "explanation": "Toshqin ogohlantirilgan bo'lsa, yagona to'g'ri yechim — vaqt bor ekan, odamlarni suv yetib bormaydigan balandlikka ko'chirish. Moddiy boylikni qo'riqlash uchun odam qoldirish hayotni tavakkalga qo'yadi. Suv oqimi yo'nalishi bo'ylab yo'lga chiqish esa toshqin bilan bir tomonga harakatlanish demak — transport suv ostida qolishi mumkin. Kuzatishni davom ettirish qolgan vaqtni yo'qotadi.",
+  "mnemonic": "Toshqinda — yuqoriga, oqim bilan emas.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: suv toshqinida aholini himoya qilish va evakuatsiya",
+  "distractor_error": ["mulkni hayotdan ustun qo'yish", "oqim yo'nalishi bo'ylab qochish", "vaqtni yo'qotish", ""]
+},
+{
+  "q": "Tog' darasida joylashgan bo'linma sel xavfi haqida signal oldi; guvillagan tovush yuqori oqimdan eshitilmoqda. Dara tubidan chiqish yo'li ikkita: dara o'zani bo'ylab pastga va yon bag'irga ko'tarilib. Qaysi yo'nalish tanlanadi va nima uchun?",
+  "opts": [
+    "O'zan bo'ylab pastga — quyi oqimda dara kengayadi va oqim kuchi kamayadi",
+    "Yon bag'irga ko'tarilib — sel o'zan bo'ylab harakatlanadi, undan chiqib ketish kerak",
+    "O'zanning o'rtasidagi katta toshlar ustiga chiqib — ular oqimni to'sib turadi",
+    "O'zan bo'ylab yuqoriga — oqim manbaidan uzoqlashish shart emas"
+  ],
+  "correct": 1,
+  "explanation": "Sel oqimi o'zan bo'ylab, ya'ni pastga qarab harakatlanadi va uning tezligi yugurgan odamnikidan yuqori. Shuning uchun o'zan bo'ylab qochish — oqim bilan bir yo'lda qolish demak. Yagona to'g'ri harakat — o'zandan chiqib, yon bag'irga ko'tarilish. O'zan ichidagi toshlar sel bosimida ag'dariladi va himoya bermaydi.",
+  "mnemonic": "Seldan o'zan bo'ylab qochilmaydi — yon bag'irga.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: sel va tog'li hududdagi xavfli tabiiy hodisalar",
+  "distractor_error": ["oqim yo'nalishida qochish", "", "to'siqqa ishonish", "oqim yo'lida qolish"]
+},
+{
+  "q": "Qishki marsh vaqtida qor ko'chkisi bo'linmaning bir qismini bosib qoldi. Ko'chki ostida qolgan askar hushida, atrofida oz miqdorda bo'sh joy bor, qorning qaysi tomon ustida ekani noma'lum. U qanday harakat qilishi kerak?",
+  "opts": [
+    "Kuch bilan tepib, qorni har tomonga surib, tezroq yo'l ochishga harakat qiladi",
+    "Uzluksiz baqirib, kuchini ayamasdan yordam chaqiradi",
+    "Yuz oldida havo bo'shlig'ini saqlab, kuchni tejaydi va ovoz eshitilganda qisqa signal beradi",
+    "Kiyimini yechib, isinish uchun harakatni kuchaytiradi va tinmay qimirlaydi"
+  ],
+  "correct": 2,
+  "explanation": "Ko'chki ostida hal qiluvchi omil — havo va vaqt. Yuz oldidagi kichik bo'shliq nafas olish uchun zaxira beradi, kuchni tejash esa kislorod sarfini kamaytiradi. Uzluksiz baqirish va kuchli harakat kislorodni tez tugatadi hamda qorni yanada zichlashtiradi; ovozni faqat qutqaruvchilar yaqinlashgani eshitilganda berish maqsadga muvofiq. Kiyimni yechish sovushni tezlashtiradi.",
+  "mnemonic": "Qor ostida — havo saqla, kuch tejа, ovozni ayab ber.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: qor ko'chkisi va tog' sharoitidagi xavfsizlik",
+  "distractor_error": ["kuchni behuda sarflash", "kislorodni tez tugatish", "", "issiqlikni yo'qotish"]
+},
+{
+  "q": "Omborxonada yong'in chiqdi, xonaning yuqori qismi quyuq tutunga to'lgan, chiqish eshigi 15 metr narida. Ichkarida qolgan askar chiqib ketishi kerak. U qanday harakat qilsa, tutundan zaharlanish xavfi eng kam bo'ladi?",
+  "opts": [
+    "Nam mato bilan nafas yo'lini yopib, polga yaqin emaklab chiqadi",
+    "Nafasini ushlab, tik holatda tez yuguradi va eshikni ochib chiqadi",
+    "Balandroq toza havo izlab, stol yoki javon ustiga chiqadi",
+    "Eshikni keng ochib qo'yib, tutun tarqalguncha ichkarida kutadi"
+  ],
+  "correct": 0,
+  "explanation": "Issiq tutun yuqoriga ko'tariladi, shuning uchun polga yaqin qatlamda havo nisbatan toza va salqin bo'ladi — chiqish emaklab amalga oshiriladi. Nam mato zarrachalarni ushlab qoladi. Tik holatda yugurish odamni eng zaharli qatlamga olib kiradi; balandga chiqish esa aynan shu qatlamga. Eshikni keng ochish yangi havo oqimini berib, yonishni kuchaytiradi.",
+  "mnemonic": "Tutun yuqorida — sen pastda emakla.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: yong'in xavfsizligi va tutunli binodan chiqish",
+  "distractor_error": ["", "eng zaharli qatlamda harakat", "tutun qatlamiga ko'tarilish", "yonishni kuchaytirish"]
+},
+{
+  "q": "Aloqa xonasidagi elektr shchiti ichida yong'in boshlandi, tarmoq hali uzilmagan. Navbatchi yonida suvli o't o'chirgich, chelakdagi suv va kukunli o't o'chirgich bor. U qanday harakat qilishi kerak?",
+  "opts": [
+    "Chelakdagi suvni sepib, alangani tezda bostiradi va keyin tarmoqni uzadi",
+    "Suvli o't o'chirgichni ishlatadi, chunki u kuchli oqim beradi",
+    "Alanga o'z-o'zidan so'nishini kutadi va faqat hududni o'rab qo'yadi",
+    "Avval tarmoqni uzadi, so'ng kukunli o't o'chirgichni qo'llaydi"
+  ],
+  "correct": 3,
+  "explanation": "Kuchlanish ostidagi qurilmaga suv sepish tok urishiga olib keladi, chunki suv oqimi tokni o't o'chiruvchiga o'tkazadi. Shuning uchun tartib qat'iy: avval tarmoq uziladi, so'ngra elektr qurilmalari uchun mo'ljallangan kukunli yoki karbonat angidridli o't o'chirgich ishlatiladi. Alangani kutish esa yong'inning butun xonaga tarqalishiga imkon beradi.",
+  "mnemonic": "Avval tokni uz — keyin kukun.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: yong'in o'chirish vositalari va ularni tanlash",
+  "distractor_error": ["tok ostiga suv sepish", "tok ostiga suv sepish", "harakatsizlik", ""]
+},
+{
+  "q": "Yoqilg'i quyish shoxobchasida to'kilgan benzin yonib ketdi, alanga yer bo'ylab yoyilmoqda. Yaqin atrofda suv shlangi, qum solingan quti va ko'pikli o't o'chirgich bor. Yong'in xavfsizligi bo'yicha mas'ul xizmatchi qaysi vositani tanlaydi va nima uchun?",
+  "opts": [
+    "Suv shlangi — kuchli oqim alangani mexanik ravishda o'chirib yuboradi",
+    "Ko'pikli o't o'chirgich yoki qum — ular yonuvchi suyuqlik yuzasini havodan uzadi",
+    "Suv va qum aralashmasi — namlangan qum yuzani tezroq sovitadi",
+    "Hech qanday vosita — alanga yoqilg'i tugaguncha kutiladi"
+  ],
+  "correct": 1,
+  "explanation": "Benzin suvdan yengil bo'lgani uchun uning yuzasida qalqib yuradi: suv alangani o'chirmaydi, aksincha yonayotgan suyuqlikni oqim bilan birga yoyib yuboradi. Ko'pik va qum esa yonuvchi suyuqlik yuzasini yopib, kislorod kirishini to'xtatadi. Namlangan qum ham suv olib kelgani uchun bir xil xavfni saqlaydi.",
+  "mnemonic": "Yonuvchi suyuqlikka suv emas — ko'pik yoki qum.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: yonuvchi suyuqliklar yong'inini o'chirish",
+  "distractor_error": ["suv yonuvchi suyuqlikni yoyadi", "", "suv qo'shilishi bir xil xavf", "harakatsizlik"]
+},
+{
+  "q": "Harbiy shaharcha yonidagi kombinatda xlor sizib chiqqani xabar qilindi. Xlor havodan taxminan ikki yarim baravar og'ir. Bo'linma ikki qavatli binoda joylashgan, gazniqoblar hali tarqatilmagan. Komandirning birinchi qarori qanday bo'ladi?",
+  "opts": [
+    "Shaxsiy tarkibni yerto'laga tushiradi va eshiklarni zich yopib qo'yadi",
+    "Barchani ochiq havoga chiqarib, hovlida saf tortishga buyuradi",
+    "Shaxsiy tarkibni yuqori qavatga ko'taradi, chiqish shamolga ko'ndalang bo'ladi",
+    "Binoni tark etib, shamol yo'nalishi bo'ylab pastlikka harakatlanadi"
+  ],
+  "correct": 2,
+  "explanation": "Havodan og'ir gaz pastga cho'kadi: yerto'la, zovur va pastliklarda uning konsentratsiyasi eng yuqori bo'ladi, shuning uchun xlor sizib chiqqanda yuqori qavatlarga ko'tariladi. Hududni tark etish esa shamolga ko'ndalang yo'nalishda amalga oshiriladi — shamol bo'ylab harakatlanish bulut bilan birga siljish demakdir.",
+  "mnemonic": "Xlor og'ir — yuqoriga chiq, shamolga ko'ndalang ket.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: kuchli ta'sir etuvchi zaharli moddalar (xlor) tarqalganda harakat",
+  "distractor_error": ["og'ir gaz to'planadigan joyga tushish", "himoyasiz ochiq joyga chiqish", "", "shamol bo'ylab bulut bilan siljish"]
+},
+{
+  "q": "Qo'shni sovutgich sexida ammiak sizib chiqdi. Ammiak havodan yengil bo'lib, yuqoriga ko'tariladi va o'tkir hidga ega. Bo'linma ko'p qavatli binoning yuqori qavatida joylashgan. Qanday harakat to'g'ri bo'ladi?",
+  "opts": [
+    "Pastki qavatlarga tushib, nafas yo'lini limon kislotasi eritmasi bilan yopish",
+    "Yuqori qavatda qolib, derazalarni keng ochib qo'yish va kutish",
+    "Tomga chiqib, ochiq havoda toza oqim kelishini kutish",
+    "Pastki qavatlarga tushib, nafas yo'lini soda eritmasi bilan yopish"
+  ],
+  "correct": 0,
+  "explanation": "Ammiak havodan yengil bo'lgani uchun yuqori qavatlar va tomda to'planadi — himoyalanish uchun pastga tushiladi. Ammiak ishqoriy xossaga ega, shuning uchun nafas yo'lini himoya qiluvchi mato kuchsiz kislota (limon kislotasi) eritmasi bilan namlanadi; soda eritmasi esa xlor kabi kislotali gazlarga qarshi ishlatiladi. Derazani ochish gazning xonaga kirishini ko'paytiradi.",
+  "mnemonic": "Ammiak yengil — pastga tush, limon kislotasi bilan.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: kuchli ta'sir etuvchi zaharli moddalar (ammiak) va himoya usullari",
+  "distractor_error": ["", "gaz to'planadigan qavatda qolish", "eng yuqori nuqtaga chiqish", "neytrallovchini teskari tanlash"]
+},
+{
+  "q": "Harbiy qism darvozasi yonida egasiz sport sumkasi topildi; ichidan sim uchi ko'rinib turibdi. Yaqin atrofda navbatchi va bir necha askar bor. Navbatchining harakatlari qanday tartibda bo'lishi kerak?",
+  "opts": [
+    "Sumkani ochib, ichidagini tekshiradi va xavfsiz bo'lsa chetga olib qo'yadi",
+    "Sumkani ehtiyotkorlik bilan ko'tarib, ochiq maydonga olib chiqadi",
+    "Sumka yonida turib, mobil telefonda suratga oladi va rasmni yuboradi",
+    "Sumkaga tegmasdan odamlarni uzoqlashtiradi, hududni o'raydi va xabar beradi"
+  ],
+  "correct": 3,
+  "explanation": "Portlovchi qurilma bo'lishi mumkin bo'lgan buyumga tegish, ko'tarish yoki ochish qat'iyan taqiqlanadi — ko'pchilik qurilmalar aynan qo'zg'alishdan ishga tushadi. Buyum yonida mobil aloqadan foydalanish ham xavfli, chunki radiosignal ishga tushirish vositasi bo'lishi mumkin. Yagona to'g'ri harakat — odamlarni uzoqlashtirish, hududni o'rash va mutaxassislarni chaqirish.",
+  "mnemonic": "Egasiz buyum: tegma, uzoqlashtir, xabar ber.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 11-sinf: terrorchilik xavfi va shubhali buyum topilganda harakat",
+  "distractor_error": ["qurilmani ochish", "qurilmani qo'zg'atish", "yaqinda radioaloqadan foydalanish", ""]
+},
+{
+  "q": "Bo'linma uchun himoya inshooti tanlanmoqda. Hududda yadroviy portlash to'g'ridan-to'g'ri kutilmayapti, asosiy xavf — radioaktiv chang bilan ifloslangan hududda uzoq turish. Inshootda germetiklik va filtr-ventilyatsiya tizimi yo'q, lekin qalin tuproq qatlami bor. Bu inshoot qaysi turga kiradi va vazifaga mos keladimi?",
+  "opts": [
+    "Panohgoh — germetik va filtr tizimli inshoot, vazifaga to'liq mos keladi",
+    "Radiatsiyaga qarshi boshpana — nurlanish ta'sirini kamaytiradi, shu vazifaga mos keladi",
+    "Oddiy yashirinish joyi — himoya bermaydi, vazifaga umuman mos emas",
+    "Bombapanoh — bevosita portlashdan himoya qiladi, boshqa vazifaga yaramaydi"
+  ],
+  "correct": 1,
+  "explanation": "Radiatsiyaga qarshi boshpananing asosiy belgisi — qalin tuproq yoki qurilish qatlami bilan nurlanish ta'sirini pasaytirish; unda germetiklik va filtr-ventilyatsiya bo'lishi shart emas. Panohgoh esa aynan germetik, filtr-ventilyatsiya tizimiga ega inshoot bo'lib, tavsifga mos kelmaydi. Oddiy yashirinish joyi ham ma'lum darajada himoya beradi, biroq uzoq turish uchun mo'ljallanmagan.",
+  "mnemonic": "Filtr bor — panohgoh; faqat tuproq — radiatsiyaga qarshi boshpana.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: himoya inshootlarining turlari va tasnifi",
+  "distractor_error": ["belgilarni panohgohga bog'lash", "", "himoyani butunlay inkor etish", "vazifani noto'g'ri cheklash"]
+},
+{
+  "q": "Aholi punktida evakuatsiya e'lon qilindi, yig'ilish joyiga chiqishga 30 daqiqa vaqt berildi. Oila a'zolari nima olishni muhokama qilmoqda: biri televizorni, ikkinchisi kiyim to'plamini, uchinchisi hujjat va dorilarni taklif qilmoqda. CHQBT o'qituvchisi qaysi tartibni to'g'ri deb tushuntiradi?",
+  "opts": [
+    "Avval qimmatbaho jihozlar, so'ng kiyim, imkon bo'lsa hujjatlar olinadi",
+    "Faqat kiyim va oziq-ovqat olinadi, hujjatlar keyin tiklanadi",
+    "Hujjatlar, dorilar, ikki-uch kunlik oziq-ovqat va mavsumga mos kiyim olinadi",
+    "Hech narsa olinmaydi, hamma narsa yig'ilish joyida beriladi"
+  ],
+  "correct": 2,
+  "explanation": "Evakuatsiyada olib chiqiladigan narsalar ro'yxati hayot va keyingi rasmiylashtirish ehtiyojiga qarab belgilanadi: shaxsni tasdiqlovchi hujjatlar, doimiy qabul qilinadigan dorilar, ikki-uch kunlik oziq-ovqat va suv hamda mavsumga mos kiyim. Qimmatbaho jihozlar ko'chirishni og'irlashtiradi va vaqtni yeydi; hujjatsiz esa yordam olish va ro'yxatdan o'tish qiyinlashadi.",
+  "mnemonic": "Hujjat, dori, uch kunlik non — qolgani keyin.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: aholini evakuatsiya qilish tartibi",
+  "distractor_error": ["mulkni ustun qo'yish", "hujjatni e'tibordan qoldirish", "", "tayyorgarlikni inkor etish"]
+},
+{
+  "q": "Ombor hududida kimyoviy modda to'kilib, bug' tarqala boshladi; yaqinda ishlayotgan uch nafar askar bor. Navbatchi ofitser oldida to'rt vazifa turibdi: xabar berish, odamlarni chiqarish, hududni o'rash va manbani to'sish. Ular qaysi tartibda bajarilishi kerak?",
+  "opts": [
+    "Odamlarni zonadan chiqarish → xabar berish → hududni o'rash → manbani to'sish",
+    "Manbani to'sish → odamlarni chiqarish → hududni o'rash → xabar berish",
+    "Hududni o'rash → manbani to'sish → xabar berish → odamlarni chiqarish",
+    "Xabar berish → hududni o'rash → manbani to'sish → odamlarni chiqarish"
+  ],
+  "correct": 0,
+  "explanation": "Favqulodda vaziyatda ustuvorlik tartibi o'zgarmaydi: avval odamlarning hayoti — zarar zonasidagi shaxsiy tarkib chiqariladi, so'ng xabar berilib kuchlar chaqiriladi, keyin hudud o'raladi va faqat himoya vositasidagi mutaxassislar manbani to'sadi. Manbani himoyasiz to'sishga urinish yangi jabrlanuvchilar keltirib chiqaradi, odamlarni oxirgi navbatga qoldirish esa ularning zaharlanishiga olib keladi.",
+  "mnemonic": "Odam — xabar — o'rov — manba.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: kimyoviy xavfli obyektdagi avariyada harakat tartibi",
+  "distractor_error": ["", "himoyasiz manbaga borish", "odamni oxirgi o'ringa qoldirish", "odamni oxirgi o'ringa qoldirish"]
+},
+{
+  "q": "Kazarmani ko'rikdan o'tkazgan komandir zaxira chiqish eshigi oldiga bo'sh javon va qurilish ashyolari taxlab qo'yilganini aniqladi. Xonada 40 nafar askar yashaydi. Qaysi qaror to'g'ri va nima uchun?",
+  "opts": [
+    "Javonni qoldiradi, chunki asosiy chiqish eshigi ochiq va yetarli",
+    "Javonni qoldirib, uning yoniga yong'in o't o'chirgichini qo'shimcha qo'yadi",
+    "Zaxira chiqish yo'lini darhol bo'shatadi — asosiy eshik tutunda yopilishi mumkin",
+    "Zaxira eshikni umuman berkitib, kalitini navbatchida saqlashni buyuradi"
+  ],
+  "correct": 2,
+  "explanation": "Zaxira chiqish yo'lining vazifasi — asosiy yo'l tutun, alanga yoki tirband tufayli ishlamay qolganda odamlarni chiqarish. Uni to'sib qo'yish 40 kishilik xonada halokatli oqibatga olib keladi. O't o'chirgich qo'yish yoki eshikni butunlay berkitib kalitni saqlash chiqish yo'lini tiklamaydi — yong'inda kalitni izlashga vaqt qolmaydi.",
+  "mnemonic": "Zaxira chiqish — doim bo'sh, doim ochiladigan.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: binolarda yong'in xavfsizligi talablari",
+  "distractor_error": ["zaxira yo'lni ortiqcha deb bilish", "muammoni boshqa vosita bilan almashtirish", "", "yo'lni yopib qo'yish"]
+},
+{
+  "q": "Radiatsion razvedka boshlig'i shtabga ma'ruza qilmoqda: yadroviy portlashdan keyin hududda kuchli va uzoq davom etuvchi radioaktiv ifloslanish qayd etilgan, portlash bulutida esa ko'p miqdorda tuproq zarralari bo'lgan. Bu ma'lumot portlashning qaysi turiga ishora qiladi?",
+  "opts": [
+    "Yuqori balandlikdagi havo portlashi — bulut yer bilan tutashmagan",
+    "Yer usti portlashi — olov shari yerga tegib, tuproqni bulutga ko'targan",
+    "Yer osti portlashi — bulut umuman yer yuzasiga chiqmagan",
+    "Suv osti portlashi — radioaktiv moddalar suvda qolib ketgan"
+  ],
+  "correct": 1,
+  "explanation": "Radioaktiv ifloslanishning miqdori olov sharining yer bilan tutashuviga bog'liq: yer usti portlashida tuproq zarralari bulutga ko'tarilib, radioaktiv moddalarni yutadi va keyin katta hududga cho'kadi. Havo portlashida bulut yerga tegmagani uchun ifloslanish ancha kam bo'ladi. Yer osti va suv osti portlashlarida esa asosiy radioaktiv massa portlash joyida qoladi.",
+  "mnemonic": "Bulutda tuproq bor — demak, yer usti portlashi.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: yadroviy portlash turlari va radioaktiv ifloslanish",
+  "distractor_error": ["ifloslanish sababini noto'g'ri bog'lash", "", "hodisani yer ostiga bog'lash", "hodisani suvga bog'lash"]
+},
+{
+  "q": "Yadroviy portlashdan keyin hududni ko'zdan kechirgan guruh quyidagini qayd etdi: ochiq turgan askarlarning yuz va qo'llarida kuyish izlari bor, yog'och to'siqlar va quruq o't yongan, biroq g'ishtli binolar butun qolgan. Bu manzara qaysi shikastlantiruvchi omilning ustunligini ko'rsatadi?",
+  "opts": [
+    "Yorug'lik nurlanishi — u ochiq teri va yonuvchan materiallarga ta'sir qilgan",
+    "Zarba to'lqini — u bino va inshootlarni vayron qiladi",
+    "O'tuvchan radiatsiya — u to'siqlarni teshib o'tadi va kuyish qoldirmaydi",
+    "Radioaktiv ifloslanish — u kechroq, hudud cho'kmasi bilan namoyon bo'ladi"
+  ],
+  "correct": 0,
+  "explanation": "Ochiq teridagi kuyish va yonuvchan materiallarning alangalanishi — yorug'lik nurlanishining tipik izlari; u to'g'ri yo'nalishda tarqalgani uchun pana joydagi narsalarga ta'sir qilmaydi. Zarba to'lqini bo'lganda binolar shikastlanardi. O'tuvchan radiatsiya kuyish qoldirmaydi, radioaktiv ifloslanish esa darhol emas, hudud cho'kmasi bilan namoyon bo'ladi.",
+  "mnemonic": "Kuydirdi-yu, buzmadi — yorug'lik nurlanishi.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: yadroviy qurolning shikastlantiruvchi omillari",
+  "distractor_error": ["", "buzilish yo'qligini e'tiborsiz qoldirish", "kuyishni radiatsiyaga bog'lash", "vaqt omilini hisobga olmaslik"]
+},
+{
+  "q": "Ochiq joyda turgan askar uzoqdan ko'zni qamashtiruvchi yorug'likni ko'rdi; yaqin atrofda xandaq yoki bino yo'q. Zarba to'lqinining yetib kelishiga bir necha soniya qoldi. U qanday harakat qilishi kerak?",
+  "opts": [
+    "Tik turgan holda yorug'lik manbaiga qarab, masofani baholaydi",
+    "Yugurib, portlash joyidan uzoqroqqa qochishga harakat qiladi",
+    "Eng past joyga, oyoqlarini portlash tomonga qaratib yotadi",
+    "Chalqancha yotib, yuzini yuqoriga qaratadi va nafasini ushlaydi"
+  ],
+  "correct": 2,
+  "explanation": "Zarba to'lqini yer yuzasi bo'ylab tarqalgani uchun eng past joyda uning bosimi kamroq bo'ladi, yotgan odamning ta'sir yuzasi esa keskin kichrayadi. Oyoqlarni portlash tomonga qaratish tananing eng himoyasiz qismini — bosh va ko'krakni to'lqin bosimidan yashiradi. Tik turish, yugurish yoki yuzni yorug'likka qaratish qo'shimcha ravishda ko'z va yuz kuyishiga olib keladi.",
+  "mnemonic": "Yorug'likni ko'rding — yot, oyoq portlashga qarasin.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: zarba to'lqini va undan himoyalanish usullari",
+  "distractor_error": ["ta'sir yuzasini oshirish", "vaqtni behuda sarflash", "", "yuz va ko'zni ochiq qoldirish"]
+},
+{
+  "q": "Yadroviy portlash kutilayotgan hududda ikki guruh turibdi: birinchisi och rangli, yengil ustki kiyimda, ikkinchisi to'q rangli, yupqa kiyimda; ikkalasi ham ochiq joyda. Yorug'lik nurlanishi ta'sirida qaysi guruh ko'proq zarar ko'radi va nima uchun?",
+  "opts": [
+    "Har ikkala guruh bir xil zarar ko'radi, chunki kiyim rangi ahamiyatsiz",
+    "Och rangli kiyimdagilar — yorug'lik och yuzada uzoqroq ushlanadi",
+    "Zarar kiyimga emas, faqat odamning turgan masofasiga bog'liq bo'ladi",
+    "To'q rangli kiyimdagilar — qora yuza yorug'lik energiyasini ko'proq yutadi"
+  ],
+  "correct": 3,
+  "explanation": "Yorug'lik nurlanishi issiqlik energiyasi sifatida ta'sir qiladi: to'q va qora yuzalar bu energiyani yutadi va tez qiziydi, och va yaltiroq yuzalar esa uni qaytaradi. Shu sababli bir xil masofada to'q rangli kiyimdagi odam ko'proq kuyish oladi. Masofa ham muhim omil, ammo savolda ikkala guruh bir xil sharoitda turibdi.",
+  "mnemonic": "Qora yutadi, oq qaytaradi.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 11-sinf: yorug'lik nurlanishidan himoyalanish",
+  "distractor_error": ["omilni butunlay inkor etish", "yutish va qaytarishni almashtirish", "shartni e'tiborsiz qoldirish", ""]
+},
+{
+  "q": "O'tuvchan radiatsiya kutilayotgan hududda bo'linma to'rt xil joydan birini tanlashi kerak: ochiq maydon, yuk avtomobili kuzovi, ochiq xandaq va yer osti temir-beton inshooti. Qaysi variant eng yuqori himoya beradi va bu nimaga bog'liq?",
+  "opts": [
+    "Yuk avtomobili kuzovi — metall qoplama nurlanishni to'liq qaytaradi",
+    "Yer osti temir-beton inshooti — qatlam qalinligi nurlanishni susaytiradi",
+    "Ochiq xandaq — chuqurlik nurlanishni butunlay to'sib qo'yadi",
+    "Ochiq maydon — nurlanish tarqalib, konsentratsiyasi kamayadi"
+  ],
+  "correct": 1,
+  "explanation": "O'tuvchan radiatsiyani to'sadigan asosiy omil — moddaning qalinligi va zichligi: tuproq va temir-beton qatlami qancha qalin bo'lsa, nurlanish shuncha kuchli susayadi. Yuk mashinasining yupqa metall qoplamasi gamma-nur va neytron oqimini deyarli ushlamaydi. Ochiq xandaq himoyani biroz oshiradi, lekin to'liq to'sib qo'ymaydi; ochiq maydonda esa himoya umuman yo'q.",
+  "mnemonic": "Qalin va zich qatlam — nurlanishga to'siq.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: o'tuvchan radiatsiyadan himoyalanish, himoya qatlami",
+  "distractor_error": ["yupqa metallga ishonish", "", "qisman himoyani to'liq deb bilish", "himoyasizlikni afzallik deb bilish"]
+},
+{
+  "q": "Radioaktiv ifloslangan hududda joylashgan bo'linma panoh joyda turibdi. Radiatsiya darajasi portlashdan keyingi dastlabki soatlarda eng yuqori bo'lib, vaqt o'tishi bilan tez pasayadi. Komandir chiqish vaqtini qanday belgilaydi?",
+  "opts": [
+    "Dozimetrik nazorat ko'rsatkichi ruxsat etilgan darajaga tushgunicha panohda qoladi",
+    "Darhol chiqib, shaxsiy tarkibni ochiq havoda joylashtiradi",
+    "Chiqishni bir hafta kechiktiradi, chunki daraja faqat shu muddatda pasayadi",
+    "Chiqish vaqtini shamol yo'nalishi o'zgarishiga qarab belgilaydi"
+  ],
+  "correct": 0,
+  "explanation": "Radioaktiv cho'kmaning faolligi dastlabki soatlarda eng yuqori bo'lib, keyin tez pasayadi — shuning uchun eng xavfli davr aynan boshida o'tkaziladi. Chiqish muddati taxmin bilan emas, dozimetrik nazorat ko'rsatkichiga qarab belgilanadi. Darhol chiqish eng katta dozani olishga olib keladi, bir haftaga qat'iy kechiktirish esa ortiqcha va vazifani bajarishga to'sqinlik qiladi.",
+  "mnemonic": "Chiqish vaqtini soat emas — dozimetr aytadi.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: radioaktiv ifloslangan hududda harakat va dozimetrik nazorat",
+  "distractor_error": ["", "eng xavfli daqiqada chiqish", "muddatni asossiz uzaytirish", "noto'g'ri mezon tanlash"]
+},
+{
+  "q": "Radiatsiya xavfi e'lon qilingandan so'ng bo'linmaga yod preparatlari tarqatildi. Ayrim askarlar ularni «keyinroq, alomat paydo bo'lganda» qabul qilishni taklif qilmoqda. Tibbiy xizmat boshlig'i qanday tushuntirish beradi?",
+  "opts": [
+    "Preparat faqat alomat paydo bo'lgandan keyin, davo maqsadida qabul qilinadi",
+    "Preparatni istalgan vaqtda qabul qilish mumkin, muddat ahamiyatga ega emas",
+    "Preparat ko'rsatma bo'lishi bilan, qalqonsimon bezni oldindan to'ldirish uchun ichiladi",
+    "Preparat faqat radioaktiv chang teriga tekkanda ishlatiladi"
+  ],
+  "correct": 2,
+  "explanation": "Yod profilaktikasining ma'nosi — qalqonsimon bezni bezarar yod bilan oldindan to'ldirish, shunda organizmga tushgan radioaktiv yod unda to'planmaydi. Shu sababli preparat ta'sirdan oldin yoki imkon qadar erta, ko'rsatma bo'lishi bilan qabul qilinadi. Alomat paydo bo'lganda ichish samarasiz, chunki radioaktiv yod allaqachon so'rilgan bo'ladi.",
+  "mnemonic": "Yod — kasallikdan keyin emas, undan oldin.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: radiatsiyaviy himoya, yod profilaktikasi",
+  "distractor_error": ["profilaktikani davo deb bilish", "vaqt omilini inkor etish", "", "ta'sir yo'lini chalkashtirish"]
+},
+{
+  "q": "Vazifani bajargan bo'linma zararlangan hududdan chiqdi. Texnika radioaktiv chang bilan qoplangan, ayrim ashyolarga zaharlovchi modda tomchisi tekkan, tibbiy punktda esa yuqumli kasallik qo'zg'atuvchisi aniqlangan. Uchala holatda mos ravishda qanday ishlov qo'llanadi?",
+  "opts": [
+    "Degazatsiya, deaktivatsiya, dezinfeksiya",
+    "Deaktivatsiya, degazatsiya, dezinfeksiya",
+    "Dezinfeksiya, deaktivatsiya, degazatsiya",
+    "Deaktivatsiya, dezinfeksiya, degazatsiya"
+  ],
+  "correct": 1,
+  "explanation": "Har uch atama ishlov obyektiga qarab farqlanadi: radioaktiv moddalarni yuzadan chiqarib tashlash — deaktivatsiya, zaharlovchi moddalarni zararsizlantirish — degazatsiya, kasallik qo'zg'atuvchilarini yo'q qilish — dezinfeksiya. Savolda holatlar shu tartibda berilgan: chang, zaharlovchi modda tomchisi, qo'zg'atuvchi.",
+  "mnemonic": "Chang — deaktiv, gaz — degaz, mikrob — dezinfeksiya.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 11-sinf: maxsus ishlov turlari",
+  "distractor_error": ["birinchi ikkitasini almashtirish", "", "tartibni butunlay chalkashtirish", "oxirgi ikkitasini almashtirish"]
+},
+{
+  "q": "Zaharlangan hududdan chiqqan bo'linmada suv va maxsus ishlov punkti hozircha yo'q; xizmatchilarning ochiq terisi va kiyimiga zaharlovchi modda tomchilari tekkan. Komandir qanday qaror qabul qiladi?",
+  "opts": [
+    "To'liq sanitar ishlov punkti tashkil etilguncha hech qanday chora ko'rmay kutadi",
+    "Ochiq teri va kiyimni oddiy suv bilan yuvishga buyuradi",
+    "Faqat kiyimni almashtirish bilan cheklanadi, teriga tegmaydi",
+    "Individual protivximik paket bilan qisman sanitar ishlovni darhol o'tkazadi"
+  ],
+  "correct": 3,
+  "explanation": "Zaharlovchi modda teriga tekkanda vaqt hal qiluvchi ahamiyatga ega: qisman sanitar ishlov individual protivximik paket yordamida joyning o'zida, kechiktirmasdan o'tkaziladi. To'liq sanitar ishlov keyinroq, maxsus punktda bajariladi. Oddiy suv bilan yuvish moddani to'liq zararsizlantirmaydi, kiyimni almashtirish esa teridagi tomchini yo'qotmaydi.",
+  "mnemonic": "Avval qisman — joyida, to'liq ishlov keyin.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: qisman va to'liq sanitar ishlov",
+  "distractor_error": ["vaqtni yo'qotish", "yetarsiz chora bilan cheklanish", "asosiy manbani qoldirish", ""]
+},
+{
+  "q": "Kimyoviy hujumdan keyin bir necha xizmatchida qorachiqning keskin torayishi, ko'p so'lak oqishi, mushaklarning ixtiyorsiz titrashi va nafas qisilishi kuzatildi. Sanitar instruktorning harakatlari qanday tartibda bo'lishi kerak?",
+  "opts": [
+    "Gazniqob kiydiriladi, shprits-tyubikdagi antidot yuboriladi va jabrlanuvchi zonadan chiqariladi",
+    "Jabrlanuvchining kiyimi yechiladi, badani suv bilan yuviladi, so'ng gazniqob kiydiriladi",
+    "Og'riq qoldiruvchi yuborilib, jabrlanuvchi harakatsiz holatda kuzatuvga olinadi",
+    "Sun'iy nafas berish boshlanadi, antidot esa gospitalda yuboriladi"
+  ],
+  "correct": 0,
+  "explanation": "Qorachiqning torayishi, so'lak oqishi va mushak titrashi — asab-falajlovchi zaharlovchi moddaga xos belgilar. Bunda ketma-ketlik qat'iy: avval nafas yo'llari himoyalanadi (gazniqob), so'ng shprits-tyubikdagi antidot yuboriladi va shundan keyin jabrlanuvchi zonadan chiqariladi. Antidotni gospitalgacha kechiktirish yoki og'riq qoldiruvchi bilan cheklanish o'lim bilan tugaydi.",
+  "mnemonic": "Niqob — antidot — zonadan chiqar.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: asab-falajlovchi zaharlovchi moddalar va antidot qo'llash",
+  "distractor_error": ["", "himoyani kechiktirish", "antidotsiz kuzatish", "antidotni kechiktirish"]
+},
+{
+  "q": "Bo'g'uvchi ta'sirdagi zaharlovchi modda tarqalgan zonadan chiqarilgan askar o'zini yaxshi his qilmoqda, faqat yengil yo'tal bor. U mashqni davom ettirishni so'ramoqda. Sanitar instruktor qanday qaror qabul qiladi?",
+  "opts": [
+    "Mashqni davom ettirishga ruxsat beradi, chunki alomatlar yengil",
+    "Jismoniy yuklamani oshirib, nafas yo'llarini «tozalashga» yordam beradi",
+    "Jabrlanuvchini isitib, harakatsiz holatda saqlaydi va shifokor nazoratiga topshiradi",
+    "Darhol sun'iy nafas berishni boshlaydi va yuqori qavatga ko'taradi"
+  ],
+  "correct": 2,
+  "explanation": "Bo'g'uvchi ta'sirdagi moddalarning xavfi yashirin davrda: dastlab jabrlanuvchi deyarli sog'lom ko'rinadi, biroq bir necha soatdan keyin o'pka shishi rivojlanadi. Har qanday jismoniy yuklama bu jarayonni tezlashtiradi, shuning uchun jabrlanuvchi isitiladi, harakatsiz saqlanadi va shifokor nazoratiga beriladi. O'pka shishi xavfi borligi uchun sun'iy nafas berish ham taqiqlanadi.",
+  "mnemonic": "Yaxshi ko'rinsa ham — yotsin: yashirin davr aldaydi.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: bo'g'uvchi ta'sirdagi zaharlovchi moddalar",
+  "distractor_error": ["yashirin davrni e'tiborsiz qoldirish", "yuklama bilan holatni og'irlashtirish", "", "taqiqlangan usulni qo'llash"]
+},
+{
+  "q": "Teri-yara qiluvchi zaharlovchi modda tomchisi askarning bilagiga tushdi. Teri hozircha qizarmagan, og'riq ham yo'q. Yonidagi sherigi «alomat chiqqanda ishlov beramiz» deb maslahat bermoqda. To'g'ri harakat qanday?",
+  "opts": [
+    "Alomat paydo bo'lguncha kutiladi, keyin yara bog'lanadi",
+    "Tomchi darhol individual protivximik paket bilan zararsizlantiriladi",
+    "Tomchi quruq mato bilan artib olinadi va ustiga moy surtiladi",
+    "Teri iliq suv va sovun bilan uzoq vaqt ishqalanadi"
+  ],
+  "correct": 1,
+  "explanation": "Teri-yara qiluvchi moddalarning yashirin davri bor: ta'sir darhol sezilmaydi, biroq bu vaqtda modda teriga singib boradi. Shuning uchun zararsizlantirish alomat kutmasdan, birinchi daqiqalarda individual protivximik paket bilan bajariladi. Quruq mato bilan artish moddani yuza bo'ylab yoyadi, moy esa uning so'rilishini tezlashtiradi; ishqalash ham singishni kuchaytiradi.",
+  "mnemonic": "Og'riq yo'q — bu tinchlik emas: darhol ishlov ber.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: teri-yara qiluvchi zaharlovchi moddalar va individual paket",
+  "distractor_error": ["yashirin davrni kutish", "", "moddani yoyib yuborish", "so'rilishni kuchaytirish"]
+},
+{
+  "q": "Zararlangan hududda askar to'satdan hushidan ketdi; undan achchiq bodom hidi kelmoqda, terisi pushti tusda, nafas olishi to'xtab qolgan. Bunday manzara qaysi guruh zaharlovchi moddaga xos va nima qilinadi?",
+  "opts": [
+    "Teri-yara qiluvchi modda — teriga darhol degazatsiya paketi qo'llanadi",
+    "Bo'g'uvchi modda — jabrlanuvchi isitilib, harakatsiz saqlanadi",
+    "Psixokimyoviy modda — jabrlanuvchi izolyatsiya qilinib, kuzatiladi",
+    "Umumzaharlovchi modda — gazniqob kiydirilib, antidot zudlik bilan qo'llanadi"
+  ],
+  "correct": 3,
+  "explanation": "Achchiq bodom hidi, terining pushti tusi va hushning tez yo'qolishi — umumzaharlovchi moddalarga (sinil kislotasi guruhi) xos manzara; ular to'qimalarning kislorod o'zlashtirishini bloklaydi va bir necha daqiqada o'ldiradi. Shuning uchun gazniqob kiydirilib, antidot kechiktirmasdan qo'llanadi. Teri-yara qiluvchi va bo'g'uvchi moddalarda yashirin davr bo'ladi, psixokimyoviy moddalar esa hulq-atvor buzilishi bilan namoyon bo'ladi.",
+  "mnemonic": "Achchiq bodom hidi — daqiqalar hisobi.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: umumzaharlovchi ta'sirdagi zaharlovchi moddalar",
+  "distractor_error": ["tez ta'sirni sekin ta'sir deb bilish", "yashirin davr bor deb hisoblash", "belgilarni ruhiy holatga bog'lash", ""]
+},
+{
+  "q": "Kimyoviy hujumdan keyin bir guruh xizmatchida g'ayrioddiy holat kuzatildi: ular kulib, aloqasiz gapirmoqda, buyruqni tushunmaydi, biroq nafas olishi va yurak faoliyati saqlangan, teri toza. Komandirning birinchi qarori qanday bo'ladi?",
+  "opts": [
+    "Ularni qurol va texnikadan uzoqlashtirib, izolyatsiya va kuzatuvga oladi",
+    "Ularni safga qo'yib, buyruqni takror aytish orqali hushiga keltirishga urinadi",
+    "Ularga antidot yuborib, mashg'ulotni davom ettiradi",
+    "Ularni ochiq havoda qoldirib, o'z holiga tashlab qo'yadi"
+  ],
+  "correct": 0,
+  "explanation": "Ruhiyatga ta'sir qiluvchi (psixokimyoviy) moddalar hayotiy funksiyalarni buzmaydi, ammo hulq-atvorni nazoratsiz qiladi — bunday holatdagi xizmatchi qurol bilan o'ziga va atrofdagilarga xavf tug'diradi. Shuning uchun birinchi chora — qurol va texnikadan uzoqlashtirish, izolyatsiya va kuzatuv. Safga qo'yish yoki mashg'ulotni davom ettirish nazoratsiz harakatlarga yo'l ochadi.",
+  "mnemonic": "Hulq buzildi — avval qurolni ol.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: psixokimyoviy ta'sirdagi zaharlovchi moddalar",
+  "distractor_error": ["", "nazoratsiz holatda safga qo'yish", "vaziyatni yengil baholash", "nazoratsiz qoldirish"]
+},
+{
+  "q": "Bo'linma joylashgan hududda tunda samolyot uchib o'tgach, ertalab noodatiy manzara aniqlandi: yerda parchalanib ketgan idish qoldiqlari, atrofda g'ayrioddiy ko'p hasharot to'plangan, ikki kundan keyin bir vaqtning o'zida ko'plab xizmatchi kasallandi. Bu belgilar nimadan dalolat beradi va qanday chora ko'riladi?",
+  "opts": [
+    "Radioaktiv ifloslanish — dozimetrik nazorat va deaktivatsiya o'tkaziladi",
+    "Kimyoviy hujum — degazatsiya va antidot qo'llash tashkil etiladi",
+    "Bakteriologik vositalar qo'llanilgan — hudud izolyatsiya qilinib, namuna olinadi",
+    "Oddiy mavsumiy kasallik — bemorlar tibbiy punktda davolanadi"
+  ],
+  "correct": 2,
+  "explanation": "Noodatiy idish qoldiqlari, hasharotlarning g'ayrioddiy to'planishi va bir necha kun o'tib ommaviy, bir xil kasallanish — bakteriologik vositalar qo'llanilganining bilvosita belgilari; kasallikning yashirin davri borligi uni kimyoviy hujumdan ajratib turadi. Bunda namuna olinib, hudud izolyatsiya qilinadi va epidemiyaga qarshi rejim joriy etiladi. Dozimetrik nazorat va degazatsiya boshqa turdagi zararlanishga qaratilgan.",
+  "mnemonic": "Idish, hasharot, bir necha kundan keyin kasallik — bakteriologik.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 11-sinf: bakteriologik (biologik) qurol va uning belgilari",
+  "distractor_error": ["belgilarni radiatsiyaga bog'lash", "yashirin davrni e'tiborsiz qoldirish", "", "hujum belgilarini inkor etish"]
+},
+{
+  "q": "Avariya oqibatida yopiq sisterna ichiga tushish kerak bo'ldi: u yerda noma'lum gaz to'plangan va kislorod miqdori keskin kamaygan. Xizmatchida filtrlovchi gazniqob va izolyatsiyalovchi apparat bor. Qaysi vosita tanlanadi va nima uchun?",
+  "opts": [
+    "Filtrlovchi gazniqob — u har qanday gazni ushlab qoladi",
+    "Izolyatsiyalovchi apparat — u odamni tashqi muhitdan butunlay ajratadi",
+    "Filtrlovchi gazniqob — u yengil va harakatni cheklamaydi",
+    "Nam mato bilan yopilgan oddiy respirator — u yetarli himoya beradi"
+  ],
+  "correct": 1,
+  "explanation": "Filtrlovchi vosita atrofdagi havoni tozalab beradi, ammo kislorod ishlab chiqarmaydi — kislorod yetishmaydigan yoki gaz turi noma'lum bo'lgan muhitda u ishlamaydi. Izolyatsiyalovchi apparat esa nafas olishni o'z zaxirasi hisobiga ta'minlab, odamni tashqi muhitdan butunlay ajratadi. Yengillik va qulaylik bunday sharoitda tanlov mezoni bo'la olmaydi.",
+  "mnemonic": "Kislorod kam yoki gaz noma'lum — izolyatsiyalovchi.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: filtrlovchi va izolyatsiyalovchi himoya vositalari",
+  "distractor_error": ["filtrning imkoniyatini oshirib baholash", "", "qulaylikni mezon qilish", "yetarsiz vositaga ishonish"]
+},
+{
+  "q": "Zararlangan hududni kesib o'tayotgan askar gazniqobi niqobining yon qismida kichik yirtiq borligini sezdi; hududdan chiqishga hali 200 metr qolgan. U qanday harakat qilishi kerak?",
+  "opts": [
+    "Niqobni yechib, nafasini ushlagan holda hududdan yugurib chiqadi",
+    "Yirtiqni e'tiborsiz qoldirib, harakatni odatdagidek davom ettiradi",
+    "Nafasini ushlab, yirtiq joyni qo'li bilan bosadi va zaxira niqobga almashtiradi",
+    "Yirtiq joyni og'zi bilan yopib, nafasni faqat filtr orqali oladi"
+  ],
+  "correct": 2,
+  "explanation": "Niqobning butunligi buzilishi — himoyaning tugashi demak, ammo uni shunchaki yechish yoki e'tiborsiz qoldirish zaharlanishga olib keladi. To'g'ri tartib: nafas ushlanadi, teshik qo'l bilan vaqtincha bosiladi va imkon boricha tez zaxira niqobga almashtiriladi. Zararlangan hududda niqobsiz yugurish esa nafas olmasdan bosib o'tish mumkin bo'lgan masofadan ancha uzoq.",
+  "mnemonic": "Yirtiq bo'lsa — nafasni ushla, bos, almashtir.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y3",
+  "source_ref": "CHQBT 10-sinf: gazniqobdan foydalanish va nosozlikda harakat",
+  "distractor_error": ["himoyani butunlay yo'qotish", "nosozlikni e'tiborsiz qoldirish", "", "himoyani tiklamaydigan usul"]
+},
+{
+  "q": "Fuqaro muhofazasi mashg'ulotida o'qituvchi ikki xil holatni taqqoslamoqda: birinchisida aholi xavfli hududdan butunlay olib chiqiladi, ikkinchisida aholi o'z joyida qolib, panoh joy va himoya vositalari bilan himoyalanadi. Ushbu ikki tadbir mos ravishda qanday ataladi?",
+  "opts": [
+    "Birinchisi — yashirish, ikkinchisi — evakuatsiya",
+    "Birinchisi — dispersiya, ikkinchisi — dezaktivatsiya",
+    "Birinchisi — evakuatsiya, ikkinchisi — yashirish",
+    "Har ikkalasi ham evakuatsiyaning turlari hisoblanadi"
+  ],
+  "correct": 2,
+  "explanation": "Evakuatsiya — aholini xavfli hududdan xavfsiz joyga ko'chirish, ya'ni odamlarni xavfdan uzoqlashtirish. Yashirish esa aholini joyida qoldirib, uni himoya inshootlari va shaxsiy himoya vositalari bilan qoplash demakdir. Bu ikki tadbir bir-birini to'ldiradi, biroq mazmuni jihatidan teskari yo'nalishga ega va bir tushunchaga birlashtirilmaydi.",
+  "mnemonic": "Evakuatsiya — odamni xavfdan uzoqlashtir; yashirish — xavfdan yop.",
+  "topicId": 4, "category": "chqbt", "difficulty": "Y2",
+  "source_ref": "CHQBT 10-sinf: aholini himoya qilishning asosiy usullari",
+  "distractor_error": ["tushunchalarni almashtirish", "boshqa atamalarga chalkashtirish", "", "ikkita tadbirni birlashtirish"]
+}
+]

@@ -1,0 +1,332 @@
+[
+  {
+    "q": "Xaritani birinchi marta ko'rgan o'quvchi undagi jigarrang chiziqlarni yo'l deb, yashil dog'larni esa o'tloq deb o'qidi va marsh yo'nalishini noto'g'ri rejalashtirdi. O'qituvchi xaritada har bir rang aniq mazmunga ega ekanini tushuntirdi. Topografik xaritada ko'k, yashil va jigarrang ranglar nimani bildiradi?",
+    "opts": [
+      "Ko'k — relyef, yashil — suv ob'ektlari, jigarrang — o'simlik qoplami",
+      "Ko'k — yo'llar, yashil — aholi punktlari, jigarrang — suv ob'ektlari",
+      "Ko'k — chegaralar, yashil — relyef, jigarrang — aholi punktlari",
+      "Ko'k — suv ob'ektlari, yashil — o'simlik qoplami, jigarrang — relyef"
+    ],
+    "correct": 3,
+    "explanation": "Topografik xaritada ranglar tizimi qat'iy: ko'k rang daryo, ko'l va boshqa suv ob'ektlarini, yashil rang o'rmon va butazorlarni, jigarrang rang esa relyefni ko'rsatuvchi gorizontallarni bildiradi. Sun'iy ob'ektlar — yo'llar, binolar va chegaralar qora rangda tasvirlanadi.",
+    "mnemonic": "Ko'k — suv, yashil — o'simlik, jigarrang — relyef.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source_ref": "Harbiy topografiya — topografik xarita ranglari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "suv va relyef ranglari o'zaro almashtirilgan",
+      "ranglarni sun'iy ob'ektlarga noto'g'ri biriktirish",
+      "rang tizimini butunlay boshqa mazmunga bog'lash",
+      ""
+    ]
+  },
+  {
+    "q": "Komandir xaritada quduqni ko'rsatuvchi belgini ko'rib, uning haqiqiy o'lchamini xaritadan o'lchamoqchi bo'ldi va natija bema'ni chiqdi. Yordamchisi bu belgi boshqa turkumga tegishli ekanini aytdi. Xaritadagi shartli belgilar qaysi guruhlarga bo'linadi?",
+    "opts": [
+      "Masshtabli va masshtabsiz belgilar — boshqa turkum yo'q",
+      "Rangli va oq-qora belgilar, qolganlari yordamchi hisoblanadi",
+      "Doimiy va vaqtinchalik belgilar, qolganlari xaritaga kirmaydi",
+      "Masshtabli, masshtabsiz, chiziqli va tushuntiruvchi belgilar"
+    ],
+    "correct": 3,
+    "explanation": "Masshtabli belgilar ob'ektning haqiqiy o'lchamini xarita masshtabida ko'rsatadi — masalan o'rmon konturi. Masshtabsiz belgilar quduq yoki yolg'iz daraxt kabi kichik ob'ektlarni faqat joylashuvi bilan bildiradi, o'lcham esa ular bo'yicha aniqlanmaydi. Chiziqli belgilar yo'l va daryolarni, tushuntiruvchi yozuvlar esa qo'shimcha ma'lumotni beradi.",
+    "mnemonic": "Masshtabsiz belgidan o'lcham olinmaydi.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source_ref": "Harbiy topografiya — shartli belgilar turlari",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "turkumni ikkitaga qisqartirib, chiziqli va tushuntiruvchi belgilarni tashlab qoldirish",
+      "belgilarni mazmuni bo'yicha emas, ko'rinishi bo'yicha guruhlash",
+      "belgilarni vaqt xususiyatiga qarab noto'g'ri guruhlash",
+      ""
+    ]
+  },
+  {
+    "q": "Xaritada gorizontallar bir joyda bir-biriga juda zich, boshqa joyda esa siyrak joylashgan. Yosh ofitser texnika uchun zich chiziqli hududni tanladi, chunki «u yerda chiziqlar ko'p, demak yo'l yaxshi» deb o'yladi. Gorizontallarning zichligi nimani bildiradi?",
+    "opts": [
+      "Gorizontallar zichligi o'simlik qoplamining qalinligini bildiradi",
+      "Zich gorizontallar tik nishablikni, siyraklari yotiq joyni bildiradi",
+      "Zich gorizontallar yotiq joyni, siyraklari tik nishablikni bildiradi",
+      "Gorizontallar zichligi yo'l qoplamasining sifatini bildiradi"
+    ],
+    "correct": 1,
+    "explanation": "Gorizontallar bir xil balandlikdagi nuqtalarni tutashtiradi va ular orasidagi balandlik farqi butun xarita bo'ylab bir xil. Shuning uchun chiziqlar qanchalik zich joylashgan bo'lsa, shu balandlik farqi shuncha qisqa masofada o'zgaradi — ya'ni nishablik tik bo'ladi. Siyrak chiziqlar esa yotiq, texnika o'ta oladigan joyni ko'rsatadi.",
+    "mnemonic": "Chiziq zich — nishab tik.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source_ref": "Harbiy topografiya — gorizontallar va nishablik",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "relyef ko'rsatkichini o'simlik qoplami bilan chalkashtirish",
+      "",
+      "zichlik va nishablik bog'liqligi teskari talqin qilingan",
+      "relyef ko'rsatkichini yo'l xususiyati bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "Kuzatuvchi ma'ruzasida joyni tasvirlab, ikki balandlik orasidagi pasaygan joyni «jar» deb atadi, aslida esa u ikki tomondan ko'tarilib, ikki tomondan pasayadigan shakl edi. Komandir atamani tuzatdi. Ikki qo'shni balandlik orasidagi pasaygan bu relyef shakli qanday ataladi?",
+    "opts": [
+      "Jar",
+      "Botiq",
+      "Qirra",
+      "Egar"
+    ],
+    "correct": 3,
+    "explanation": "Egar — ikkita qo'shni balandlik orasidagi pasaygan joy bo'lib, undan ikki tomonga qarab yer ko'tariladi, qolgan ikki tomonga esa pasayadi; u ko'pincha o'tish yo'li sifatida ishlatiladi. Jar bir tomonga qarab pasayib boradigan cho'ziq chuqurlik, botiq esa har tomondan yopiq pastlikdir.",
+    "mnemonic": "Ikki tepa orasidagi pasayish — egar.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source_ref": "Harbiy topografiya — relyefning asosiy shakllari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "cho'ziq chuqurlikni ikki tepa orasidagi shakl bilan chalkashtirish",
+      "yopiq pastlikni ochiq o'tish joyi bilan chalkashtirish",
+      "pasaygan shaklni ko'tarilgan shakl bilan chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Guruh xaritadan olingan yo'nalish bo'yicha kompas o'rnatib yurdi, ammo bir necha kilometrdan keyin belgilangan nuqtadan sezilarli chetga chiqdi. Tekshiruvda xaritadagi burchak kompasga to'g'ridan-to'g'ri ko'chirilgani ma'lum bo'ldi. Xaritadagi va kompasdagi burchaklar nima uchun farq qiladi?",
+    "opts": [
+      "Magnit og'ish tufayli — magnit meridian geografik meridiandan chetlanadi",
+      "Xarita masshtabi tufayli — masshtab burchak qiymatini o'zgartiradi",
+      "Yer sirtining qiyaligi tufayli — nishablik burchakni kattalashtiradi",
+      "Kompas aniqligi tufayli — asbob har doim bir xil xato beradi"
+    ],
+    "correct": 0,
+    "explanation": "Xaritadagi burchak geografik meridianga nisbatan o'lchanadi, kompas strelkasi esa magnit meridian bo'ylab turadi va bu ikki yo'nalish o'rtasida magnit og'ish deb ataladigan burchak farqi mavjud. Shuning uchun xaritadan olingan burchakka magnit og'ish tuzatmasi kiritilmasa, harakat yo'nalishi tizimli ravishda chetga suriladi.",
+    "mnemonic": "Xaritada geografik, kompasda magnit — orada og'ish bor.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source_ref": "Harbiy topografiya — magnit og'ish va azimutlar",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "burchak farqini masshtab ta'siri deb tushunish",
+      "gorizontal burchakni relyef qiyaligiga bog'lash",
+      "tizimli farqni asbob xatosi deb hisoblash"
+    ]
+  },
+  {
+    "q": "Kuzatuv punktidan dushman texnikasi aniqlandi va uni artilleriyaga uzatish kerak. Kuzatuvchi «katta yo'lning chap tomonida, o'rmon yaqinida» deb xabar berdi, artilleriyachilar esa joyni topa olmadi. Xaritada nishonning o'rnini aniq uzatishning to'g'ri usuli qanday?",
+    "opts": [
+      "Xarita varag'i nomenklaturasi va uning masshtabi ko'rsatiladi",
+      "Koordinata to'ri kvadrati raqami, so'ng kvadrat ichidagi aniq o'rin ko'rsatiladi",
+      "Xaritadagi eng yaqin aholi punkti nomi va yo'nalish ko'rsatiladi",
+      "Kuzatuv punktidan bo'lgan masofa va nishablik burchagi ko'rsatiladi"
+    ],
+    "correct": 1,
+    "explanation": "Topografik xaritadagi koordinata to'ri har bir joyga bir qiymatli manzil beradi: avval kvadrat raqami aytiladi, so'ng kvadrat ichidagi o'rin aniqlashtiriladi. Og'zaki tasvir esa har bir kishida turlicha talqin qilinadi va aynan shu sababli nishon topilmay qoladi.",
+    "mnemonic": "Nishon manzili — kvadrat raqami, so'z emas.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source_ref": "Harbiy topografiya — koordinata to'ri bo'yicha nishon ko'rsatish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "varaq ma'lumotini nishon koordinatasi deb hisoblash",
+      "",
+      "aniq koordinatani noaniq og'zaki tavsif bilan almashtirish",
+      "nishon o'rnini kuzatuvchining o'z holatiga bog'lab qoldirish"
+    ]
+  },
+  {
+    "q": "Mudofaaga o'tgan bo'linma dushman o'ti ostida. Askar sayoz, yotib otishga mo'ljallangan okop qazib to'xtadi va «vaqt yo'q» deb ish tugatildi deb hisobladi. Komandir okopni bosqichma-bosqich chuqurlashtirish talab etilishini aytdi. Yakka okop qanday tartibda rivojlantiriladi?",
+    "opts": [
+      "Tik turib otish uchun, so'ng tiz cho'kib, oxirida yotib otish uchun",
+      "Darhol to'liq profilda, oraliq bosqichlarsiz",
+      "Faqat yotib otish uchun, chunki chuqurroq okop harakatni cheklaydi",
+      "Yotib otish uchun, so'ng tiz cho'kib, oxirida tik turib otish uchun"
+    ],
+    "correct": 3,
+    "explanation": "Dushman o'ti ostida vaqt cheklangani uchun avval eng tez qaziladigan, yotib otish uchun mo'ljallangan okop tayyorlanadi va askar darhol himoyalanadi. Vaziyat imkon bergan sari u tiz cho'kib, so'ng tik turib otish uchun chuqurlashtiriladi — bu to'liq profilli okop bo'lib, himoyani ham, harakat erkinligini ham beradi.",
+    "mnemonic": "Okop sayozdan chuqurga o'sadi.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source_ref": "Taktik tayyorgarlik — yakka okopni jihozlash",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "bosqichlar tartibi teskari qo'yilgan va vaqt omili unutilgan",
+      "o't ostida bajarib bo'lmaydigan hajmni birdaniga talab qilish",
+      "himoya darajasini oshirishdan asossiz voz kechish",
+      ""
+    ]
+  },
+  {
+    "q": "Bo'linma mavqeni niqoblamoqda. Askarlar yaqin atrofdagi butun butalarni kesib, ularni bir tekis qatorga tikib chiqdi, natijada joy atrofdagi manzaradan keskin ajralib qoldi. Komandir niqoblash buzilganini aytdi. Niqoblashning asosiy talabi nimadan iborat?",
+    "opts": [
+      "Ob'ekt atrofdagi joy manzarasidan ajralib turmasligi kerak",
+      "Ob'ekt iloji boricha ko'p material bilan yopilishi kerak",
+      "Ob'ekt yaqinidagi o'simlik butunlay olib tashlanishi kerak",
+      "Ob'ekt to'q rangli material bilan qoplanishi kerak"
+    ],
+    "correct": 0,
+    "explanation": "Niqoblashning mezoni — material miqdori emas, atrofdagi manzaraga tabiiy mos kelish: rang, shakl va joylashuv tartibi tevarak-atrofdan farq qilmasligi kerak. Tekis qatorga tikilgan butalar yoki tozalab olib tashlangan o'simlik aynan g'ayritabiiy tartib hosil qilib, ob'ektni havodan ham, yerdan ham ko'zga tashlaydi.",
+    "mnemonic": "Niqob — ko'p material emas, tabiiy ko'rinish.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source_ref": "Taktik tayyorgarlik — niqoblash tamoyillari",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "niqoblash sifatini material miqdori bilan o'lchash",
+      "atrofni o'zgartirib, ob'ektni yanada ko'zga tashlash",
+      "niqoblashni faqat rang masalasiga qisqartirish"
+    ]
+  },
+  {
+    "q": "Komandir kuzatuv sektorida oriyentirlarni belgilab, ularni tasodifiy tartibda raqamladi: uzoqdagi tepalikka birinchi, yaqindagi daraxtga uchinchi raqam berdi. Jangda vazifa uzatishda chalkashlik yuz berdi. Oriyentirlar qanday tartibda raqamlanadi?",
+    "opts": [
+      "Ahamiyati bo'yicha, eng muhimidan boshlab",
+      "O'ngdan chapga va o'zidan uzoqqa qarab",
+      "Chapdan o'ngga va uzoqdan o'ziga qarab",
+      "Balandligi bo'yicha, eng balandidan boshlab"
+    ],
+    "correct": 1,
+    "explanation": "Oriyentirlar yagona qoida bo'yicha — o'ngdan chapga va kuzatuvchidan uzoqqa qarab raqamlanadi. Bu tartib barcha uchun bir xil bo'lgani sababli komandir aytgan raqamni har bir askar bir xil tushunadi; tasodifiy yoki shaxsiy mezon bo'yicha raqamlash esa aynan jangda chalkashlik keltirib chiqaradi.",
+    "mnemonic": "O'ngdan chapga, yaqindan uzoqqa.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source_ref": "Taktik tayyorgarlik — oriyentirlarni belgilash tartibi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "yagona qoidani sub'ektiv baholashga bog'lash",
+      "",
+      "raqamlash yo'nalishi ikkala o'lchamda ham teskari olingan",
+      "yagona qoidani ob'ektning tashqi belgisiga bog'lash"
+    ]
+  },
+  {
+    "q": "Bo'linma ochiq joyda hujumga o'tmoqda. Askarlar bir-biriga yaqin, deyarli yonma-yon yurib bordi va dushmanning bitta portlashi bir necha kishini birdan ishdan chiqardi. Komandir jangovar tartib buzilganini aytdi. Hujum zanjirida askarlar orasidagi masofa nima uchun saqlanadi?",
+    "opts": [
+      "Komandirning ovozi barcha askarga bir vaqtda yetib borishi uchun",
+      "Askarlar bir-birining o't ochish sektorini kengaytirishi uchun",
+      "Zanjir dushmanga kengroq bo'lib ko'rinishi uchun",
+      "Bitta portlash bir necha askarni birdan ishdan chiqarmasligi uchun"
+    ],
+    "correct": 3,
+    "explanation": "Zanjirdagi interval birinchi navbatda zarardan himoya vositasi: askarlar tarqoq joylashganda bitta snaryad yoki mina portlashi zarar zonasiga faqat bir kishini oladi. Zich to'plangan tarkib esa dushman uchun qulay nishonga aylanadi va yagona zarba bilan butun bo'linma jangovar qobiliyatini yo'qotishi mumkin.",
+    "mnemonic": "Tarqoq tur — bitta zarba hammani olmasin.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source_ref": "Taktik tayyorgarlik — hujumdagi jangovar tartib",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "himoya maqsadini boshqaruv qulayligi bilan almashtirish",
+      "interval sababini o't ochish imkoniyatiga qisqartirish",
+      "taktik talabni psixologik ta'sir bilan chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Okopda turgan askar tomon dushman tanki to'g'ri kelmoqda. Askar okopdan chiqib, tank oldidan yugurib qochmoqchi bo'ldi. Komandir uni to'xtatib, boshqa harakatni buyurdi. Okopdagi askar yaqinlashayotgan tankka nisbatan qanday yo'l tutadi?",
+    "opts": [
+      "Okop tubiga bekinadi, tank o'tgach unga orqa tomondan zarba beradi",
+      "Okopdan chiqib, tankning old tomoniga qarab yuguradi",
+      "Okopdan chiqib, tankning yon tomoniga ochiq joyda yuguradi",
+      "Okopda tik turib, tank yaqinlashguncha o't ochishda davom etadi"
+    ],
+    "correct": 0,
+    "explanation": "Tank okop ustidan o'tganda okop tubiga bekingan askar tirik qoladi, chunki gusenitsa okop chetlaridan o'tadi. Tank o'tib ketgach uning eng zaif tomoni — orqa va yon qismi ochiladi va aynan shu payt granata bilan zarba berish mumkin. Okopdan chiqib yugurish esa askarni ochiq joyda pulemyot o'ti ostida qoldiradi.",
+    "mnemonic": "Tankni o'tkazib yubor, orqasidan ur.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source_ref": "Taktik tayyorgarlik — tankka qarshi kurash",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "himoyani tashlab, eng zarba oladigan zonaga chiqish",
+      "pana joyni tashlab, ochiq joyda nishonga aylanish",
+      "tankning zirhi va o'tiga qarshi samarasiz harakatni davom ettirish"
+    ]
+  },
+  {
+    "q": "Bo'linma oldida minalangan hudud aniqlandi, aylanib o'tish imkoni yo'q. Bir askar «minalar orasidan ehtiyot bo'lib o'tamiz» deb, guruhni turli yo'nalishlarda tarqatib yubormoqchi bo'ldi. Komandir boshqa tartibni belgiladi. Mina-portlash to'sig'idan qanday o'tiladi?",
+    "opts": [
+      "Texnika izidan yurib, piyoda tarkib tarqoq holda o'tadi",
+      "Belgilangan va tozalangan o'tish joyidan, izma-iz harakatlanib",
+      "Har bir askar o'ziga qulay yo'nalishni tanlab, alohida o'tadi",
+      "Yugurgan holda, to'siq zonasini imkon qadar tez kesib o'tib"
+    ],
+    "correct": 1,
+    "explanation": "Mina maydonidan o'tishning yagona xavfsiz usuli — muhandislik tarkibi tomonidan tozalangan va aniq belgilangan o'tish joyi; shaxsiy tarkib undan izma-iz, oldingi askarning izidan yuradi. Har kimning o'z yo'lini tanlashi yoki tarqoq harakatlanish tozalanmagan zonaga chiqib qolish demakdir, yugurish esa nazoratni butunlay yo'qotadi.",
+    "mnemonic": "Mina maydonida — bitta yo'l, izma-iz.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source_ref": "Taktik tayyorgarlik — mina-portlash to'siqlaridan o'tish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "tasodifiy izga ishonib, tarqoq harakatlanish",
+      "",
+      "tozalangan yo'lni tark etib, tekshirilmagan zonaga chiqish",
+      "tezlikni xavfsizlikdan ustun qo'yish"
+    ]
+  },
+  {
+    "q": "Tungi mashg'ulotda askar yorug' fonarni yoqib, xaritani ko'zdan kechirdi, so'ng darhol qorong'ilikka qaradi va bir necha daqiqa hech narsani ko'ra olmadi. Instruktor tungi ko'rishning o'ziga xosligini tushuntirdi. Tunda harakatlanayotgan xizmatchi qanday ehtiyot chorasini ko'radi?",
+    "opts": [
+      "Yorug' fonardan tez-tez foydalanib, ko'zni yorug'likka o'rgatadi",
+      "Har safar yorug'likdan keyin bir necha soniya kutib, harakatni davom ettiradi",
+      "Yorug'likka bir ko'zi bilan, qorong'ilikka ikkinchi ko'zi bilan qaraydi",
+      "Yorug' manbaiga qaramaydi, zarur bo'lsa qizil rangli xira yorug'likdan foydalanadi"
+    ],
+    "correct": 3,
+    "explanation": "Ko'z qorong'ilikka moslashishi uchun o'ttiz daqiqagacha vaqt ketadi, yorug'lik esa bu moslashuvni bir lahzada buzadi va askar uzoq vaqt ko'r holga tushadi. Shuning uchun tunda yorug' manbaiga qaralmaydi, zarur hollarda esa moslashuvni kam buzadigan xira qizil yorug'likdan foydalaniladi.",
+    "mnemonic": "Tunda ko'z moslashuvini asra.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source_ref": "Taktik tayyorgarlik — tungi sharoitda harakat",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "moslashuvni yo'qotadigan harakatni foydali deb hisoblash",
+      "moslashuv uchun zarur vaqtni sezilarli kam baholash",
+      "amalda bajarib bo'lmaydigan usulni taklif qilish",
+      ""
+    ]
+  },
+  {
+    "q": "Uzoq marshga chiqqan bo'linma to'xtovsiz yurishni davom ettirdi: komandir «vaqtdan yutamiz» dedi. Bir necha soatdan keyin askarlarning oyoqlari shilinib, kolonna cho'zilib ketdi va o'rtacha tezlik pasaydi. Marshda dam olish to'xtashlari nima uchun rejalashtiriladi?",
+    "opts": [
+      "Kuchni tiklash, jihozni va oyoq kiyimni tartibga keltirish uchun",
+      "Faqat oziq-ovqat tarqatish va suv ichirish uchun",
+      "Kolonnaning uzunligini ataylab qisqartirish uchun",
+      "Yo'lni razvedka qilib, yangi marshrut tanlash uchun"
+    ],
+    "correct": 0,
+    "explanation": "Rejalashtirilgan to'xtashlar shaxsiy tarkibning kuchini tiklash, oyoq kiyim va jihozni tartibga keltirish hamda texnikani ko'zdan kechirish uchun zarur. Ular vaqt yo'qotish emas, aksincha vaqt yutish vositasi: dam olmasdan yurgan bo'linmaning tezligi tez pasayadi va oyoq shilinishi jangovar qobiliyatni yo'qotadi.",
+    "mnemonic": "To'xtash — vaqt yo'qotish emas, tezlikni saqlash.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source_ref": "Taktik tayyorgarlik — marshda dam olish to'xtashlari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "to'xtash vazifasini faqat ta'minot masalasiga qisqartirish",
+      "dam olish maqsadini saf tartibi masalasi bilan chalkashtirish",
+      "to'xtashni razvedka tadbiri bilan almashtirish"
+    ]
+  },
+  {
+    "q": "Jangovar vazifa oldidan radio orqali komandir ochiq matnda bo'linma nomini, joylashuv koordinatasini va hujum vaqtini uzatdi. Aloqa boshlig'i buni jiddiy buzilish deb baholadi. Radioaloqada yashirin boshqaruv qanday ta'minlanadi?",
+    "opts": [
+      "Uzatish takrorlanmaydi, shuning uchun ochiq matn xavfsiz hisoblanadi",
+      "Chaqiruv belgilari, kodlangan nom va shartli signallar qo'llaniladi",
+      "Uzatish tezligi oshirilib, matn qisqartirilgan holda beriladi",
+      "Uzatish faqat tunda, dushman kam faol vaqtda amalga oshiriladi"
+    ],
+    "correct": 1,
+    "explanation": "Radio uzatmasi dushman tomonidan tinglanishi mumkin, shuning uchun bo'linma nomi, joylashuvi va vazifa vaqti hech qachon ochiq matnda berilmaydi: ular o'rniga chaqiruv belgilari, kodlangan nomlar va oldindan kelishilgan shartli signallar ishlatiladi. Uzatishni qisqartirish yoki tunga ko'chirish tinglanish xavfini yo'qotmaydi.",
+    "mnemonic": "Efirda ochiq nom yo'q — faqat kod.",
+    "topicId": 3,
+    "category": "chqbt",
+    "source_ref": "Taktik tayyorgarlik — yashirin boshqaruv va aloqa intizomi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "ochiq matnni takrorlanmaslik sababli xavfsiz deb bilish",
+      "",
+      "tinglanish xavfini uzatish tezligi bilan hal qilishga urinish",
+      "xavfni vaqt tanlash bilan yo'qotish mumkin deb hisoblash"
+    ]
+  }
+]

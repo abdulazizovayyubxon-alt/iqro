@@ -1,0 +1,816 @@
+[
+  {
+    "q": "O'qituvchi darsni tayyorlayotib metodlarni tanlashda chalkashib qoldi: hikoya, plakat ko'rsatish va amaliy mashq bir xil turkumga kiradimi, deb so'radi. Metodist metodlarni bilim manbaiga qarab ajratish mumkinligini aytdi. Bu tasnif bo'yicha metodlar qanday guruhlanadi?",
+    "opts": [
+      "Nazariy, tajribaviy va tekshiruv metodlariga",
+      "Og'zaki, ko'rgazmali va amaliy metodlarga",
+      "Oson, o'rtacha va murakkab metodlarga",
+      "Yakka, juftlik va guruh metodlariga"
+    ],
+    "correct": 1,
+    "explanation": "Bilim manbaiga ko'ra metodlar uch guruhga bo'linadi: og'zaki metodlarda manba so'z bo'ladi, ko'rgazmali metodlarda tasvir yoki namoyish, amaliy metodlarda esa o'quvchining o'z harakati. Bu tasnif o'qituvchiga maqsadga mos metodni tanlash va ularni birga qo'llash imkonini beradi.",
+    "mnemonic": "So'z, tasvir, harakat — uchta manba.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Didaktika: ta'lim metodlarining manba bo'yicha tasnifi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "metod tasnifini o'quv jarayoni bosqichlari bilan chalkashtirish",
+      "",
+      "metodlarni tasnif emas, murakkablik darajasiga qarab bo'lish",
+      "metod tasnifini ish shakli bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi darsni shunday boshladi: o'quvchilarga yechimi noma'lum vaziyat berdi, ular taxminlar aytdi, so'ng zarur bilimni o'zlari izlab topdi. Hamkasbi bu usulni «vaqtni behuda sarflash» deb baholadi. Bu qanday ta'lim turi va uning ustunligi nimada?",
+    "opts": [
+      "Dasturlashtirilgan ta'lim, u har bir qadamni nazorat qilish imkonini beradi",
+      "Masofaviy ta'lim, u o'quvchi vaqtini erkin taqsimlash imkonini beradi",
+      "Muammoli ta'lim, u fikrlash va bilimni mustahkam o'zlashtirishni beradi",
+      "An'anaviy ta'lim, u material hajmini tez yetkazish imkonini beradi"
+    ],
+    "correct": 2,
+    "explanation": "Muammoli ta'limda o'quvchi tayyor xulosani olmaydi, balki ziddiyatli vaziyatga duch keladi va bilimni uni hal qilish uchun izlaydi. Bu tayyor material berishdan ko'proq vaqt oladi, ammo bilim mustaqil izlanish natijasida olingani uchun ancha mustahkam saqlanadi va fikrlash ko'nikmasini rivojlantiradi.",
+    "mnemonic": "Muammo bo'lsa — izlash boshlanadi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Pedagogik texnologiyalar: muammoli ta'lim",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "muammoli vaziyatni qadamma-qadam boshqariladigan ta'lim bilan chalkashtirish",
+      "ta'lim turini uni tashkil etish shakli bilan chalkashtirish",
+      "",
+      "izlanishga asoslangan ta'limni tayyor bilim berish bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'quvchilar bir necha hafta davomida guruh bo'lib maktab hovlisida evakuatsiya yo'nalishlari xaritasini tayyorladi: ma'lumot to'pladi, chizdi va yakunda taqdim etdi. O'qituvchi bu ishni qanday atashni bilmadi. Bu qaysi usulga mos keladi va uning natijasi nima bilan o'lchanadi?",
+    "opts": [
+      "Aqliy hujum, natija bildirilgan g'oyalar soni bilan",
+      "Evristik suhbat, natija berilgan javoblar aniqligi bilan",
+      "Rolli o'yin, natija ijro etilgan rollar sifati bilan",
+      "Loyiha metodi, natija amaliy mahsulot va uni himoya qilish bilan"
+    ],
+    "correct": 3,
+    "explanation": "Loyiha metodida o'quvchilar uzoq muddat davomida real muammo ustida ishlab, aniq mahsulot yaratadi va uni taqdim etadi. Uning qiymati faqat tayyor mahsulotda emas, balki rejalashtirish, ma'lumot izlash, hamkorlik va natijani himoya qilish ko'nikmalarining shakllanishidadir.",
+    "mnemonic": "Loyiha — uzoq ish va aniq mahsulot.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Pedagogik texnologiyalar: loyiha metodi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "uzoq muddatli ishni qisqa g'oya to'plash usuli bilan chalkashtirish",
+      "amaliy mahsulot yaratishni og'zaki savol-javob bilan chalkashtirish",
+      "loyihani rol ijro etishga asoslangan usul bilan chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi nazariy materialni videodars shaklida uyga berdi, sinf vaqtini esa mashq, muhokama va amaliy ishga ajratdi. Hamkasbi «bu tartibni buzish» dedi. Bunday tashkil etish qanday nomlanadi va uning mantiqi nimada?",
+    "opts": [
+      "Teskari dars, sinf vaqti eng qiyin ishga ajratiladi",
+      "Modulli ta'lim, material mustaqil bloklarga bo'linadi",
+      "Masofaviy ta'lim, o'quv jarayoni sinfdan tashqariga ko'chiriladi",
+      "Individual ta'lim, har bir o'quvchi o'z sur'atida ishlaydi"
+    ],
+    "correct": 0,
+    "explanation": "Teskari dars mantig'i oddiy: yangi ma'lumot bilan tanishishni o'quvchi yolg'iz uddalay oladi, qiyin qismi esa uni qo'llash va tushunmagan joyini aniqlashdir. Shuning uchun tanishish uyga ko'chiriladi, o'qituvchi yonida bo'lgan sinf vaqti esa aynan mashq va tushuntirishga sarflanadi.",
+    "mnemonic": "Tanishish uyda, qiyin ish sinfda.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Pedagogik texnologiyalar: teskari dars",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "dars tuzilmasi o'zgarishini material bo'linishi bilan chalkashtirish",
+      "aralash shaklni butunlay masofaviy ta'lim deb tushunish",
+      "umumiy tashkil etish shaklini individual sur'at bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi yangi mavzuni boshlashdan oldin o'quvchilardan mavzu bo'yicha bilganlarini yozishni, so'ng nimani bilmoqchi ekanini qayd etishni, dars oxirida esa nimani bilib olganini yozishni so'radi. Bu texnika qanday vazifani bajaradi?",
+    "opts": [
+      "Uy vazifasining bajarilishini nazorat qilish imkonini beradi",
+      "Boshlang'ich bilimni faollashtiradi va o'sishni ko'rsatadi",
+      "Faqat dars oxiridagi natijani qayd etib boradi",
+      "O'quvchilarni bilim darajasi bo'yicha guruhlarga ajratadi"
+    ],
+    "correct": 1,
+    "explanation": "Bu texnika uch bosqichda ishlaydi: birinchi ustun mavjud bilimni yodga soladi va yangi materialni unga bog'lashga tayyorlaydi, ikkinchisi shaxsiy maqsad qo'yish orqali qiziqish uyg'otadi, uchinchisi esa o'quvchining o'ziga o'z o'sishini ko'rsatadi. Shu bilan u ham motivatsiya, ham refleksiya vositasi bo'ladi.",
+    "mnemonic": "Bilaman, bilmoqchiman, bildim.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Interfaol usullar: bilaman-bilmoqchiman-bildim jadvali",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "o'quv texnikasini nazorat vositasi deb tushunish",
+      "",
+      "uch bosqichli texnikani faqat yakuniy qayd bilan chalkashtirish",
+      "refleksiya vositasini saralash vositasiga aylantirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi ikkita tushunchani, masalan gazniqob va respiratorni taqqoslashni topshirdi. O'quvchilar ikkita kesishuvchi doira chizib, umumiy jihatlarni kesishgan qismga yozdi. Bu grafik usul qanday ataladi va u nimani ko'rsatadi?",
+    "opts": [
+      "Baliq skeleti, muammoning sabablarini guruhlab ko'rsatadi",
+      "Sinkveyn, tushunchani qisqa she'riy shaklda umumlashtiradi",
+      "Venn diagrammasi, umumiy va farqli jihatlarni ajratib ko'rsatadi",
+      "Klaster, tushunchalar tarmog'ini shoxlab yozib chiqadi"
+    ],
+    "correct": 2,
+    "explanation": "Venn diagrammasi ikki yoki uch tushunchani taqqoslash uchun ishlatiladi: kesishgan qismga umumiy belgilar, ajralgan qismlarga esa har birining o'ziga xos belgilari yoziladi. Bu o'quvchini yuzaki o'xshatishdan tizimli taqqoslashga o'tkazadi.",
+    "mnemonic": "Kesishgan joy — umumiy jihat.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Interfaol usullar: Venn diagrammasi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "taqqoslash usulini sabab tahlili usuli bilan chalkashtirish",
+      "grafik taqqoslashni matnli umumlashtirish bilan chalkashtirish",
+      "",
+      "taqqoslash usulini tushunchalarni tarmoqlash usuli bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'quvchilarga «harbiy intizom nima uchun buziladi?» degan savol berildi. Ular sabablarni bir necha guruhga ajratib, ularni gorizontal o'q atrofidagi qiyshiq chiziqlarga yozdi, oxirida esa xulosa chiqardi. Bu texnika qanday ataladi va qaysi vazifani bajaradi?",
+    "opts": [
+      "Klaster, tushunchalar o'rtasidagi bog'lanishni yoyib ko'rsatadi",
+      "Insert, matn o'qishda yangi ma'lumotni belgilab boradi",
+      "Debat, qarama-qarshi fikrlarni dalil bilan himoya qildiradi",
+      "Baliq skeleti, muammoning sabablarini guruhlab tahlil qiladi"
+    ],
+    "correct": 3,
+    "explanation": "Baliq skeleti muammoni sabablari bo'yicha tizimli tahlil qilish uchun ishlatiladi: markazda muammo, yon suyaklarda sabab guruhlari, ularning shoxchalarida esa aniq omillar, oxirida umumiy xulosa turadi. Bu o'quvchini yakka sababni ko'rsatishdan ko'p omilli tahlilga o'tkazadi.",
+    "mnemonic": "Bosh — muammo, suyaklar — sabablar.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Interfaol usullar: baliq skeleti texnikasi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "sabab tahlilini erkin tushuncha tarmog'i bilan chalkashtirish",
+      "tahlil texnikasini matn bilan ishlash texnikasi bilan chalkashtirish",
+      "yozma tahlilni og'zaki bahs shakli bilan chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'quvchilar matnni o'qiyotib chetiga belgi qo'yib bordi: bilgan joyiga bir belgi, yangi ma'lumotga boshqa belgi, tushunmagan joyiga savol belgisi. Dars oxirida o'qituvchi savol belgilari qo'yilgan joylarni muhokama qildi. Bu texnikaning asosiy foydasi nimada?",
+    "opts": [
+      "O'qishni faol qiladi va tushunmagan joyni ko'rinadigan qiladi",
+      "Matnni o'qish tezligini sezilarli oshirish imkonini beradi",
+      "Matnni yod olish uchun qulay shaklga keltiradi",
+      "O'quvchilarni o'qish tezligi bo'yicha taqqoslash imkonini beradi"
+    ],
+    "correct": 0,
+    "explanation": "Belgi qo'yish o'qishni passiv ko'z yugurtirishdan faol jarayonga aylantiradi: o'quvchi har bir jumlani o'z bilimi bilan taqqoslashga majbur bo'ladi. Bundan tashqari savol belgilari o'qituvchiga sinfning qayerda qiynalganini aniq ko'rsatadi va darsni shu joylarga qaratish imkonini beradi.",
+    "mnemonic": "Belgi qo'ysang — o'qish faol bo'ladi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Interfaol usullar: matnni belgilab o'qish texnikasi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "tushunish texnikasini o'qish tezligi mashqiga aylantirish",
+      "faol tahlilni yodlash vositasi deb tushunish",
+      "o'quv texnikasini o'quvchilarni taqqoslash vositasiga aylantirish"
+    ]
+  },
+  {
+    "q": "Ikki o'quvchi guruhi bir masalaning qarama-qarshi tomonlarini himoya qilib, dalillar keltirdi, bir-birining dalilini rad etdi va hakamlar hay'ati xulosa chiqardi. O'qituvchi bu usulni har mavzuga qo'llamoqchi bo'ldi. Bu usul qaysi maqsadga eng mos keladi?",
+    "opts": [
+      "O'quvchilarning boshlang'ich darajasini aniqlashga",
+      "Bahsli, bir necha yechimga ega masalalarni ko'rib chiqishga",
+      "Yangi atamalar va ta'riflarni birinchi marta o'rgatishga",
+      "Amaliy ko'nikmani mashq qilib mustahkamlashga"
+    ],
+    "correct": 1,
+    "explanation": "Bahs usuli o'quvchidan dalil topish, uni tuzish va qarshi fikrni tahlil qilishni talab qiladi, shuning uchun u bir necha asosli yechimi bo'lgan masalalarda samarali. Yagona to'g'ri javobi bor ta'rifni o'rgatishda yoki amaliy mashqda esa u vaqtni oladi va maqsadga xizmat qilmaydi.",
+    "mnemonic": "Bahs — bahsli mavzuga.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Interfaol usullar: bahs va uning qo'llanish doirasi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "bahsni boshlang'ich diagnostika vositasi deb bilish",
+      "",
+      "bahsni yagona javobli material o'rgatishga qo'llash",
+      "og'zaki bahsni amaliy mashq o'rniga qo'yish"
+    ]
+  },
+  {
+    "q": "O'qituvchi har oyning oxirida bo'lim bo'yicha nazorat ishi o'tkazadi, har darsda o'quvchilarni kuzatib baho qo'yadi va o'quv yili yakunida umumiy imtihon oladi. Metodist bu uch amalni bir-biridan ajratishni so'radi. Ular qanday nazorat turlariga mos keladi?",
+    "opts": [
+      "Oraliq, tematik va joriy nazoratga",
+      "Kirish, tematik va tashqi nazoratga",
+      "Joriy, oraliq va yakuniy nazoratga",
+      "Kirish, joriy va oraliq nazoratga"
+    ],
+    "correct": 2,
+    "explanation": "Joriy nazorat har darsdagi ishni kuzatib boradi va tez tuzatish imkonini beradi, oraliq nazorat bo'lim yoki chorak yakunida o'zlashtirishni umumlashtiradi, yakuniy nazorat esa kurs yoki o'quv yili natijasini qayd etadi. Bu uch tur turli vazifani bajaradi va biri ikkinchisining o'rnini bosa olmaydi.",
+    "mnemonic": "Har darsda joriy, bo'limda oraliq, oxirida yakuniy.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Didaktika: nazorat turlari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "nazorat turlari ketma-ketligini buzib ko'rsatish",
+      "ichki nazorat turlarini tashqi baholash bilan chalkashtirish",
+      "",
+      "yakuniy nazoratni tushirib, boshlang'ich nazoratni qo'shish"
+    ]
+  },
+  {
+    "q": "O'qituvchi test tuzdi, ammo ko'p o'quvchi materialni bilmasa ham to'g'ri javobni topdi: to'g'ri variant har doim eng uzun va eng batafsil yozilgan edi. Test topshirig'iga qanday talab qo'yiladi?",
+    "opts": [
+      "To'g'ri variant to'liq va batafsil yoritilgan bo'lishi kerak",
+      "Noto'g'ri variantlar imkon qadar qisqa bo'lishi kerak",
+      "Variantlar soni har bir savolda turlicha bo'lishi kerak",
+      "Barcha variantlar shakl jihatidan bir xil va ishonarli bo'lishi kerak"
+    ],
+    "correct": 3,
+    "explanation": "Test topshirig'i bilimni o'lchashi kerak, mantiqiy taxminni emas. Agar to'g'ri javob uzunligi, batafsilligi yoki uslubi bilan ajralib tursa, o'quvchi materialni bilmasdan ham uni tanlaydi va natija haqiqiy bilimni ko'rsatmaydi. Shuning uchun barcha variantlar bir xil qolipda va ishonarli yozilishi kerak.",
+    "mnemonic": "Variantlar bir xil ko'rinsin — javob bilim bilan topilsin.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Baholash: test topshirig'iga qo'yiladigan talablar",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "javob-ishora tug'diradigan yozuv uslubini talab deb ko'rsatish",
+      "distraktorlarni ataylab zaif qilib, taxminni osonlashtirish",
+      "test tuzilmasini bir xil bo'lmasligini talab deb ko'rsatish",
+      ""
+    ]
+  },
+  {
+    "q": "Dars oxirida o'qituvchi har bir o'quvchiga kichik varaq berib, «bugungi mavzudan bitta tushunmagan joyingizni yozing» dedi va varaqlarni yig'ib oldi. Keyingi dars aynan shu joylardan boshlandi. Bu usul baholashning qaysi turiga kiradi?",
+    "opts": [
+      "Formativ baholash, u o'qitishni tuzatish uchun xizmat qiladi",
+      "Summativ baholash, u yakuniy natijani qayd etish uchun xizmat qiladi",
+      "Kirish baholash, u boshlang'ich darajani aniqlash uchun xizmat qiladi",
+      "Tashqi baholash, u maktab natijasini taqqoslash uchun xizmat qiladi"
+    ],
+    "correct": 0,
+    "explanation": "Formativ baholash o'qish jarayoni davom etayotgan paytda o'tkaziladi va uning natijasi bahoga emas, o'qitishni tuzatishga sarflanadi. Chiqish varaqasi aynan shunday ishlaydi: u o'qituvchiga sinfning qaysi joyda qiynalganini ko'rsatadi va keyingi darsni shunga moslashtirish imkonini beradi.",
+    "mnemonic": "Formativ — baho uchun emas, tuzatish uchun.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Baholash: formativ baholash usullari",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "jarayon davomidagi baholashni yakuniy baholash bilan chalkashtirish",
+      "dars oxiridagi tekshiruvni boshlang'ich diagnostika deb bilish",
+      "sinf ichidagi usulni tashqi baholash tizimi bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi amaliy ishni baholashda har safar turlicha talab qo'ydi va o'quvchilar nima uchun baho past bo'lganini tushunmadi. Metodist oldindan e'lon qilinadigan hujjat tuzishni maslahat berdi. Bu hujjat qanday ataladi va u nimani o'z ichiga oladi?",
+    "opts": [
+      "Kalendar reja, mavzular ketma-ketligini va soatlarni belgilaydi",
+      "Rubrika, har bir mezon bo'yicha bajarilish darajalarini tavsiflaydi",
+      "Test kaliti, har bir savolning to'g'ri javobini ko'rsatadi",
+      "Dars ishlanmasi, mashg'ulot bosqichlarini batafsil bayon qiladi"
+    ],
+    "correct": 1,
+    "explanation": "Rubrika baholash mezonlarini va har bir mezon bo'yicha bajarilish darajalarini so'zda tavsiflaydi, masalan qaysi holatda ish to'liq, qisman yoki qoniqarsiz hisoblanadi. U oldindan e'lon qilingani uchun o'quvchi nimaga erishishi kerakligini biladi, baho esa asoslanadi va bahsga o'rin qolmaydi.",
+    "mnemonic": "Rubrika — bahoning oldindan aytilgan qoidasi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Baholash: rubrika va mezonli baholash",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "baholash hujjatini o'quv rejasi hujjati bilan chalkashtirish",
+      "",
+      "sifat mezonlarini yagona to'g'ri javob kaliti bilan chalkashtirish",
+      "baholash hujjatini dars rejasi bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'quvchi topshiriqni yolg'iz bajara olmadi, ammo o'qituvchining ikkita yo'naltiruvchi savolidan keyin uni mustaqil yakunladi. Bir hafta o'tib shunday topshiriqni yordamsiz bajardi. Bu holat qaysi psixologik tushuncha bilan izohlanadi?",
+    "opts": [
+      "Sezgir davr, ma'lum ko'nikmani egallash uchun eng qulay yosh oralig'i",
+      "Diqqat barqarorligi, bir faoliyatga uzoq vaqt jamlana olish qobiliyati",
+      "Yaqin rivojlanish zonasi, bugun yordam bilan qilingan ish ertaga mustaqil bajariladi",
+      "Amaldagi rivojlanish darajasi, o'quvchi hozir mustaqil qila oladigan ish doirasi"
+    ],
+    "correct": 2,
+    "explanation": "Yaqin rivojlanish zonasi — o'quvchi mustaqil bajara olmaydigan, ammo kattaning yo'naltiruvchi yordami bilan uddalaydigan vazifalar sohasi. Ta'lim aynan shu zonaga qaratilishi kerak: juda oson topshiriq rivojlanish bermaydi, juda qiyini esa yordam bilan ham bajarilmaydi.",
+    "mnemonic": "Bugun yordam bilan — ertaga mustaqil.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Yosh psixologiyasi: yaqin rivojlanish zonasi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "rivojlanish zonasini yosh davri tushunchasi bilan chalkashtirish",
+      "rivojlanish tushunchasini diqqat xususiyati bilan chalkashtirish",
+      "",
+      "yordam bilan bajariladigan doirani mustaqil daraja bilan chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi darsda kutilmagan tovush chiqarganda o'quvchilar beixtiyor unga qarab qoladi, murakkab masalani yechishda esa diqqatni ushlash uchun ular kuch sarflaydi. Bu ikki holat diqqatning qaysi turlariga mos keladi?",
+    "opts": [
+      "Birinchisi ixtiyoriy, ikkinchisi ixtiyorsiz diqqat",
+      "Ikkalasi ham ixtiyorsiz diqqatning ko'rinishlari",
+      "Ikkalasi ham ixtiyoriy diqqatning ko'rinishlari",
+      "Birinchisi ixtiyorsiz, ikkinchisi ixtiyoriy diqqat"
+    ],
+    "correct": 3,
+    "explanation": "Ixtiyorsiz diqqat kuchli, yangi yoki kutilmagan qo'zg'atuvchi tomonidan o'z-o'zidan tortiladi va irodaviy kuch talab qilmaydi. Ixtiyoriy diqqat esa maqsad qo'yish va iroda bilan ushlab turiladi, shuning uchun u tez charchaydi. O'qituvchi darsni shunday quradiki, ixtiyorsiz diqqat qiziqishga, qiziqish esa barqaror ishga aylansin.",
+    "mnemonic": "Beixtiyor tortiladi, ixtiyoriy ushlab turiladi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Psixologiya: diqqat turlari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "ikki diqqat turining ta'rifi o'zaro almashtirilgan",
+      "irodaviy kuch talab qiladigan diqqatni ham beixtiyor deb bilish",
+      "beixtiyor tortiluvchi diqqatni irodaviy diqqat deb hisoblash",
+      ""
+    ]
+  },
+  {
+    "q": "Ikki o'quvchi bir xil vaqt sarfladi: biri imtihondan oldingi kechada to'rt soat takrorladi, ikkinchisi bir hafta davomida har kuni yarim soatdan takrorladi. Bir oydan keyin ikkinchisi materialni ancha yaxshi esladi. Bu natijani nima izohlaydi?",
+    "opts": [
+      "Vaqtga taqsimlangan takrorlash uzoq muddatli eslab qolishni beradi",
+      "Bir joyda to'plangan takrorlash uzoq muddatli eslab qolishni beradi",
+      "Takrorlash usuli eslab qolishga sezilarli ta'sir ko'rsatmaydi",
+      "Eslab qolish faqat sarflangan umumiy vaqt miqdoriga bog'liq"
+    ],
+    "correct": 0,
+    "explanation": "Unutish eng tez material o'rganilgan dastlabki soatlar va kunlarda kechadi, shuning uchun takrorlash aynan shu oraliqlarda takrorlansa, iz har safar mustahkamlanadi. Bir kechada to'plangan takrorlash imtihonga yetadi, ammo bir necha kundan keyin material tez unutiladi.",
+    "mnemonic": "Bo'lib takrorlagan uzoq eslaydi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Psixologiya: takrorlashni vaqtga taqsimlash",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "taqsimlangan va to'plangan takrorlash samarasi almashtirilgan",
+      "takrorlash tashkil etilishining ta'sirini inkor qilish",
+      "natijani faqat sarflangan vaqt miqdoriga bog'lash"
+    ]
+  },
+  {
+    "q": "O'qituvchi bir mavzuni faqat og'zaki tushuntirdi, ikkinchisini esa tushuntirish, sxema va amaliy mashq bilan birga berdi. Ikkinchi mavzu barcha o'quvchilarda ancha yaxshi o'zlashtirildi. Buning pedagogik izohi qanday?",
+    "opts": [
+      "Amaliy mashq o'quvchilarni charchatgani uchun diqqat kuchaygan",
+      "Material bir necha kanal orqali berilganda o'zlashtirish mustahkamlanadi",
+      "Ikkinchi mavzu mazmunan yengilroq bo'lgani uchun oson o'zlashtirilgan",
+      "O'quvchilar ikkinchi mavzuga ko'proq vaqt ajratgani uchun natija yaxshi"
+    ],
+    "correct": 1,
+    "explanation": "Har bir o'quvchida ma'lumotni qabul qilishning kuchli kanali turlicha bo'ladi, bundan tashqari bir mazmunning eshitish, ko'rish va harakat orqali takrorlanishi xotirada bir necha o'zaro bog'langan iz qoldiradi. Shuning uchun materialni bir necha shaklda berish butun sinf uchun o'zlashtirishni oshiradi.",
+    "mnemonic": "Eshit, ko'r, bajar — uch iz qoladi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Didaktika: materialni bir necha shaklda taqdim etish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "diqqat mexanizmini noto'g'ri talqin qilish",
+      "",
+      "metodik farq natijasini mazmun yengilligi bilan izohlash",
+      "natijani faqat sarflangan vaqt farqi bilan izohlash"
+    ]
+  },
+  {
+    "q": "Sinfda bir o'quvchi tez va shiddatli javob beradi, ikkinchisi sekin o'ylab, mulohaza yuritib gapiradi. O'qituvchi ikkinchisini «sust» deb baholab, undan tez javob talab qila boshladi. Individual xususiyatlarga munosabat qanday bo'lishi kerak?",
+    "opts": [
+      "Xususiyat e'tiborga olinmaydi, hammaga bir xil talab qo'yiladi",
+      "Xususiyatga qarab o'quvchining bahosi pasaytiriladi yoki oshiriladi",
+      "Xususiyat kamchilik emas, unga mos ish sur'ati va shakli beriladi",
+      "Xususiyat kamchilik hisoblanadi va uni tuzatish talab etiladi"
+    ],
+    "correct": 2,
+    "explanation": "Asab tizimi xususiyatlaridan kelib chiqadigan sur'at va reaksiya tezligi tarbiya bilan o'zgartirilmaydi va u qobiliyat darajasini ko'rsatmaydi. Sekin, mulohaza bilan ishlaydigan o'quvchi ko'pincha chuqurroq va aniqroq natija beradi, unga esa javobni tayyorlash uchun vaqt berilishi kifoya.",
+    "mnemonic": "Sur'at boshqa — qobiliyat boshqa.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Psixologiya: individual xususiyatlarni hisobga olish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "individual farqlarni butunlay e'tiborsiz qoldirish",
+      "shaxsiy xususiyatni baho mezoniga aylantirish",
+      "",
+      "tug'ma xususiyatni tuzatilishi kerak bo'lgan nuqson deb bilish"
+    ]
+  },
+  {
+    "q": "O'qituvchi ikki o'quvchini taqqoslamoqda: birinchisi avtomatni ajratishni bilib, har safar o'ylab, qadamlarni eslab bajaradi; ikkinchisi buni ravon, o'ylamasdan, aniq bajaradi. O'qituvchi ikkalasini bir xil baholadi. Bu ikki holat qanday farqlanadi?",
+    "opts": [
+      "Birinchisida malaka, ikkinchisida endi ko'nikma shakllangan",
+      "Ikkalasida ham bir xil daraja, farq faqat tezlikda",
+      "Ikkalasida ham bilim darajasi, ko'nikma hali shakllanmagan",
+      "Birinchisida ko'nikma, ikkinchisida avtomatlashgan malaka shakllangan"
+    ],
+    "correct": 3,
+    "explanation": "Ko'nikma — harakatni ongli nazorat ostida, har bir qadamni eslab bajarish. Malaka esa ko'p marta takrorlash natijasida avtomatlashgan ko'nikma bo'lib, u diqqatni bo'shatadi va odam ayni paytda vaziyatni kuzatishi mumkin. Jangovar sharoitda aynan shu farq hal qiluvchi ahamiyatga ega.",
+    "mnemonic": "Ko'nikma o'ylab, malaka o'ylamay bajariladi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Didaktika: ko'nikma va malaka",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "ko'nikma va malaka tushunchalari o'zaro almashtirilgan",
+      "sifat farqini faqat tezlik farqiga qisqartirish",
+      "amaliy darajani bilim darajasi bilan chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi o'quvchi haqida xulosa chiqarish uchun faqat bitta nazorat ishi natijasiga tayandi. Maktab psixologi bunday xulosa ishonchsiz ekanini aytdi. Pedagogik diagnostikada qanday tamoyil amal qiladi?",
+    "opts": [
+      "Bir necha metod natijasi taqqoslanib, xulosa vaqt ichida tekshiriladi",
+      "Eng oxirgi natija asos qilib olinadi, chunki u dolzarb hisoblanadi",
+      "Eng yuqori natija asos qilib olinadi, chunki u imkoniyatni ko'rsatadi",
+      "Xulosa o'qituvchining shaxsiy taassuroti asosida shakllantiriladi"
+    ],
+    "correct": 0,
+    "explanation": "Bitta o'lchov tasodifiy omillarga bog'liq bo'ladi: o'quvchining kayfiyati, sog'lig'i, topshiriq turi natijani sezilarli o'zgartiradi. Shuning uchun diagnostikada kuzatish, suhbat, faoliyat mahsulini tahlil qilish va test kabi bir necha metod natijalari taqqoslanadi hamda xulosa vaqt ichida tasdiqlanadi.",
+    "mnemonic": "Bitta o'lchov — xulosa emas.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Pedagogik diagnostika: metodlar majmuasi tamoyili",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "yagona o'lchovni dolzarblik bahonasida yetarli deb bilish",
+      "yagona o'lchovni imkoniyat ko'rsatkichi deb bilish",
+      "obyektiv diagnostikani shaxsiy taassurot bilan almashtirish"
+    ]
+  },
+  {
+    "q": "Ota-onalar bilan suhbatda uch xil tarbiya uslubi ko'rindi: birinchi oilada bolaga hech qanday talab qo'yilmaydi, ikkinchisida faqat buyruq beriladi va tushuntirilmaydi, uchinchisida talab qo'yilib, sababi tushuntiriladi. Qaysi uslub bola rivojlanishi uchun eng qulay hisoblanadi?",
+    "opts": [
+      "Bola bilan umuman shug'ullanilmaydigan uslub",
+      "Talab qo'yilib, sababi tushuntiriladigan uslub",
+      "Hech qanday talab qo'yilmaydigan erkin uslub",
+      "Faqat buyruq va nazoratga asoslangan uslub"
+    ],
+    "correct": 1,
+    "explanation": "Talab qo'yilib, uning sababi tushuntiriladigan uslubda bola ham chegarani biladi, ham qoidaning mantiqini tushunadi va asta-sekin o'zini boshqarishni o'rganadi. Talabsiz erkinlik o'zini nazorat qilish ko'nikmasini bermaydi, tushuntirishsiz buyruq esa itoatni tashqi nazorat bor paytdagina saqlaydi.",
+    "mnemonic": "Talab bor, tushuntirish ham bor.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Oila pedagogikasi: tarbiya uslublari",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "e'tiborsizlikni tarbiya uslubi sifatida ijobiy baholash",
+      "",
+      "chegarasiz erkinlikni rivojlantiruvchi muhit deb hisoblash",
+      "tushuntirishsiz nazoratni samarali uslub deb bilish"
+    ]
+  },
+  {
+    "q": "Sinfda bir necha o'quvchi darsni qoldirmoqda, tartibni buzmoqda va zararli odatlarga qiziqish bildirmoqda. O'qituvchi ularga faqat jazo choralarini qo'lladi, holat esa yomonlashdi. Deviant xulqning oldini olishda qanday yondashuv samarali?",
+    "opts": [
+      "O'quvchini sinf jamoasidan vaqtincha ajratib qo'yish",
+      "Masalani butunlay ota-onalar zimmasiga o'tkazish",
+      "O'quvchini muvaffaqiyat keltiradigan foydali faoliyatga jalb qilish",
+      "Jazo choralarini kuchaytirib, nazoratni maksimal darajaga chiqarish"
+    ],
+    "correct": 2,
+    "explanation": "Deviant xulq ko'pincha e'tirof va muvaffaqiyat ehtiyoji qonuniy yo'l bilan qondirilmaganda paydo bo'ladi. Faqat jazo bu ehtiyojni qoldirib, o'quvchini yanada uzoqlashtiradi. Samarali yo'l — unga o'zini ko'rsata oladigan, natija beradigan faoliyat topish va shu orqali ijobiy maqomni shakllantirish.",
+    "mnemonic": "Jazo bo'shliq qoldiradi, faoliyat uni to'ldiradi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Tarbiya nazariyasi: deviant xulqning oldini olish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "o'quvchini ajratib, uzoqlashuvni chuqurlashtirish",
+      "pedagogik javobgarlikni butunlay oilaga o'tkazish",
+      "",
+      "sababni bartaraf etmay, faqat nazoratni kuchaytirish"
+    ]
+  },
+  {
+    "q": "Yangi sinf rahbari jamoadagi munosabatlarni bilmoqchi: kim kim bilan ishlashni xohlaydi, kim chetda qolgan. U buni faqat kuzatish orqali aniqlamoqchi bo'ldi va aniq manzara chiqmadi. Bunday ma'lumotni olishning maxsus usuli qanday ataladi?",
+    "opts": [
+      "Anketa, o'quvchilarning fan bo'yicha fikrini to'playdi",
+      "Testlash, o'quvchilarning bilim darajasini o'lchaydi",
+      "Xronometraj, dars vaqtining taqsimlanishini qayd etadi",
+      "Sotsiometriya, jamoadagi tanlovlar va maqomlarni aniqlaydi"
+    ],
+    "correct": 3,
+    "explanation": "Sotsiometriya o'quvchilardan qaysi sinfdoshi bilan birga ishlashni yoki dam olishni xohlashini so'rash orqali jamoadagi tanlovlar tarmog'ini tuzadi. Natijada kim yetakchi, kim e'tibordan chetda qolgani ko'rinadi va sinf rahbari yolg'iz qolgan o'quvchi bilan maqsadli ishlash imkoniga ega bo'ladi.",
+    "mnemonic": "Sotsiometriya — kim kimni tanlaydi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Pedagogik diagnostika: sotsiometriya",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "munosabatlar tahlilini fikr so'rash usuli bilan chalkashtirish",
+      "ijtimoiy diagnostikani bilim o'lchash usuli bilan chalkashtirish",
+      "munosabatlar tahlilini vaqt hisobi usuli bilan chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'quvchilar darsda ijtimoiy tarmoqdan olingan, manbasi ko'rsatilmagan «harbiy xabar»ni haqiqat sifatida muhokama qila boshladi. O'qituvchi ularni to'xtatib, xabarni tekshirish yo'lini ko'rsatdi. Mediasavodxonlikning asosiy ko'nikmasi nima?",
+    "opts": [
+      "Manbani aniqlash va ma'lumotni boshqa manbalar bilan solishtirish",
+      "Xabarni tez tarqatib, ko'proq odamdan fikr olish",
+      "Xabarni yozgan odamning obro'siga qarab ishonch bildirish",
+      "Xabarni ko'rganlar soniga qarab uning to'g'riligini baholash"
+    ],
+    "correct": 0,
+    "explanation": "Mediasavodxonlikning o'zagi — ma'lumotni qabul qilishdan oldin uning manbasini aniqlash va mustaqil manbalar bilan solishtirish. Ko'rishlar soni, tarqalish tezligi yoki muallifning tanilganligi xabarning haqiqiyligini isbotlamaydi va ko'pincha aynan shu belgilar noto'g'ri ma'lumotni ishonarli qilib ko'rsatadi.",
+    "mnemonic": "Avval manbani top, keyin ishon.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Tarbiya: mediasavodxonlikni shakllantirish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "tekshirishni tarqatish va ommaviy fikr bilan almashtirish",
+      "haqiqiylikni muallifning obro'siga bog'lash",
+      "haqiqiylikni ommaviylik ko'rsatkichi bilan o'lchash"
+    ]
+  },
+  {
+    "q": "O'qituvchi darsda o'quvchilarga «bu mavzu imtihonda bo'ladi, shuning uchun o'rganinglar» deydi va boshqa hech qanday sabab keltirmaydi. Vaqt o'tib o'quvchilarning fanga qiziqishi so'ndi. Motivatsiyani mustahkamlashning ishonchli yo'li qanday?",
+    "opts": [
+      "O'quvchilarni natijalari bo'yicha ochiq taqqoslab borish",
+      "Materialning real hayotdagi ma'nosini va qo'llanishini ko'rsatish",
+      "Nazorat ishlari sonini oshirib, tashqi bosimni kuchaytirish",
+      "Yuqori baho va mukofot miqdorini muntazam oshirib borish"
+    ],
+    "correct": 1,
+    "explanation": "Imtihon, baho va mukofot tashqi motivatsiya bo'lib, ular tashqi omil yo'qolishi bilan ta'sirini yo'qotadi. Barqaror motivatsiya materialning o'quvchi uchun ma'noli bo'lishidan, ya'ni uni real vaziyatda ishlata olishini ko'rishidan tug'iladi; taqqoslash esa ko'pchilikda faqat qo'rquv va qochish xulqini kuchaytiradi.",
+    "mnemonic": "Ma'no bo'lsa — qiziqish qoladi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Psixologiya: ichki va tashqi motivatsiya",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "motivatsiyani raqobat va taqqoslash orqali qurishga urinish",
+      "",
+      "motivatsiyani tashqi bosim bilan almashtirish",
+      "barqaror qiziqishni mukofot miqdoriga bog'lash"
+    ]
+  },
+  {
+    "q": "Ikki o'qituvchi bahslashmoqda: biri «dars faqat bilim beradi, tarbiya sinf soatida amalga oshadi», ikkinchisi «har bir dars tarbiyalaydi» deydi. Metodist ikkinchi fikrni asosli deb baholadi. Ta'limning tarbiyaviy funksiyasi qanday namoyon bo'ladi?",
+    "opts": [
+      "Sinfdan tashqari tadbirlar davomidagina namoyon bo'ladi",
+      "Sinf rahbari olib boradigan soatlardagina namoyon bo'ladi",
+      "Mazmun, o'qituvchi munosabati va ish tartibi orqali namoyon bo'ladi",
+      "Maxsus tarbiyaviy mavzular o'tilgandagina namoyon bo'ladi"
+    ],
+    "correct": 2,
+    "explanation": "Har bir dars o'quvchiga nafaqat bilim, balki mehnatga munosabat, halollik, javobgarlik va o'zaro hurmat namunasini ham beradi. Bu ta'sir o'quv materialining mazmuni, o'qituvchining o'quvchilarga munosabati va darsdagi ish tartibi orqali uzatiladi, shuning uchun tarbiya alohida soatga ajratilmaydi.",
+    "mnemonic": "Har dars tarbiyalaydi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Pedagogika: ta'limning tarbiyaviy funksiyasi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "tarbiyani darsdan tashqari faoliyatga ko'chirish",
+      "tarbiyaviy funksiyani bitta lavozim zimmasiga yuklash",
+      "",
+      "tarbiyani faqat mavzu mazmuniga bog'lab qo'yish"
+    ]
+  },
+  {
+    "q": "Dars tahlilida direktor faqat vaqt taqsimotini kuzatdi, metodist esa savol berish texnikasiga e'tibor qaratdi, uchinchi kuzatuvchi darsni barcha jihatlari bo'yicha baholadi. Ular bir xil hujjat to'ldirishi kerak edi. Dars tahlilining qanday turlari mavjud?",
+    "opts": [
+      "Ochiq va yopiq tahlil turlari",
+      "Rejali va rejadan tashqari tahlil turlari",
+      "Ichki va tashqi tahlil turlari",
+      "To'liq, aspektli va qisqa tahlil turlari"
+    ],
+    "correct": 3,
+    "explanation": "To'liq tahlilda darsning barcha tomonlari, aspektli tahlilda esa faqat bitta tanlangan jihat, masalan savol berish texnikasi yoki vaqt taqsimoti chuqur ko'rib chiqiladi. Qisqa tahlil umumiy baho beradi. Kuzatuvchilar turli maqsad qo'ygani uchun ular bir xil emas, turli hujjat to'ldirishi kerak edi.",
+    "mnemonic": "Hammasi, bittasi yoki umumiy.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Pedagogik mahorat: dars tahlili turlari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "tahlil turlarini o'tkazish shakli bilan chalkashtirish",
+      "tahlil turlarini rejalashtirilganlik belgisi bilan chalkashtirish",
+      "tahlil turlarini kuzatuvchining mansabi bilan chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi butun darsni o'zi gapirib o'tdi, o'quvchilar esa faqat tingladi va yozib oldi. Dars oxirida u sinfning nimani tushunganini bilmasdan qoldi. Pedagogik jarayonda bu qaysi element yo'qligini bildiradi?",
+    "opts": [
+      "Qaytar aloqa, o'qituvchiga natijani ko'rsatuvchi kanal",
+      "O'quv maqsadi, faoliyat yo'nalishini belgilovchi element",
+      "O'quv mazmuni, o'zlashtiriladigan material tarkibi",
+      "O'quv vositasi, materialni yetkazishga xizmat qiluvchi jihoz"
+    ],
+    "correct": 0,
+    "explanation": "Qaytar aloqa — o'qituvchining o'z ta'siri natijasi haqida ma'lumot olishi. Usiz o'qitish ochiq halqaga aylanadi: o'qituvchi gapiradi, ammo material yetib borgani yoki yo'qligini bilmaydi va tuzatish kirita olmaydi. Shuning uchun darsning har bosqichida javob oladigan usullar rejalashtiriladi.",
+    "mnemonic": "Qaytar aloqasiz o'qitish — ko'r harakat.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Pedagogika: pedagogik jarayonda qaytar aloqa",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "natija haqidagi ma'lumot yo'qligini maqsad yo'qligi deb bilish",
+      "aloqa muammosini material mazmuni muammosi deb bilish",
+      "aloqa muammosini texnik jihoz masalasiga qisqartirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi darsda o'quvchilarni kichik guruhlarga bo'ldi, ammo har bir guruhda faqat bitta faol o'quvchi ishladi, qolganlari kuzatib o'tirdi va natija umumiy hisoblandi. Guruh ishini samarali qilish uchun nima qilinishi kerak?",
+    "opts": [
+      "Faol o'quvchi guruh rahbari etib doimiy tayinlanadi",
+      "Har bir a'zoga aniq rol va shaxsiy javobgarlik biriktiriladi",
+      "Guruh tarkibi kichraytirilib, ish hajmi qisqartiriladi",
+      "Guruhga faqat bitta umumiy baho qo'yilishi saqlanadi"
+    ],
+    "correct": 1,
+    "explanation": "Guruh ishining eng ko'p uchraydigan nuqsoni — ishning bir-ikki kishi zimmasiga tushishi. Buni faqat rollarni aniq taqsimlash va har bir a'zodan o'z qismi bo'yicha shaxsiy hisobot talab qilish hal qiladi. Yagona umumiy baho esa aksincha, ishlamay natijadan foydalanish imkonini saqlaydi.",
+    "mnemonic": "Rol bo'lmasa — bitta ishlaydi.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Pedagogik texnologiyalar: guruh ishini tashkil etish",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "faollik farqini rasmiylashtirib, holatni mustahkamlash",
+      "",
+      "tuzilma muammosini hajm masalasiga qisqartirish",
+      "muammoni saqlab qoladigan baholash tartibini davom ettirish"
+    ]
+  },
+  {
+    "q": "O'qituvchi o'quvchiga «bu masalani yechishga qurbing yetmaydi» dedi. O'quvchi shundan keyin qiyin topshiriqlarga umuman urinmay qo'ydi, garchi ilgari harakat qilardi. Bu holat qaysi pedagogik hodisa bilan izohlanadi?",
+    "opts": [
+      "Diqqat barqarorligining pasayish jarayoni",
+      "Xotira hajmining yosh bilan bog'liq o'zgarishi",
+      "O'qituvchi kutishining o'quvchi natijasiga ta'siri",
+      "Yosh davri inqirozining tabiiy ko'rinishi"
+    ],
+    "correct": 2,
+    "explanation": "O'qituvchining o'quvchi imkoniyatiga bo'lgan ishonchi yoki ishonchsizligi so'z, ohang va e'tibor orqali uzatiladi va o'quvchi uni o'zi haqidagi haqiqat sifatida qabul qiladi. Past kutish natijasida o'quvchi harakat qilishni to'xtatadi va bashorat o'z-o'zini oqlaydi; yuqori, ammo real kutish esa aksincha natijani ko'taradi.",
+    "mnemonic": "Nimani kutsang — shuni olasan.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Psixologiya: o'qituvchi kutishining ta'siri",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "motivatsiya o'zgarishini diqqat xususiyati bilan izohlash",
+      "xulq o'zgarishini xotira ko'rsatkichi bilan izohlash",
+      "",
+      "ijtimoiy ta'sir hodisasini yosh inqirozi bilan izohlash"
+    ]
+  },
+  {
+    "q": "O'quvchi murakkab topshiriqni bajara olmay, «men bunga qodir emasman» dedi. O'qituvchi «hozircha bajara olmayapsan, qaysi qadamda qiynalding?» deb savolni boshqacha qo'ydi va ish davom etdi. Bu yondashuvning pedagogik mohiyati nimada?",
+    "opts": [
+      "Muvaffaqiyatsizlik e'tiborsiz qoldirilib, mavzu almashtiriladi",
+      "Muvaffaqiyatsizlik uchun javobgarlik o'qituvchi zimmasiga olinadi",
+      "Muvaffaqiyatsizlik natijasida topshiriq butunlay bekor qilinadi",
+      "Muvaffaqiyatsizlik o'zgarmas sifat emas, rivojlanish bosqichi deb ko'rsatiladi"
+    ],
+    "correct": 3,
+    "explanation": "O'quvchi muvaffaqiyatsizlikni o'zgarmas qobiliyat belgisi deb tushunsa, urinishni to'xtatadi. Uni jarayondagi bosqich sifatida ko'rsatish va aniq qaysi qadamda qiynalganini so'rash muammoni hal qilinadigan holga keltiradi hamda o'quvchining harakatini davom ettiradi.",
+    "mnemonic": "«Qodir emasman» emas — «hozircha bajara olmadim».",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Psixologiya: rivojlanishga yo'naltirilgan tafakkur",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "qiyinchilikni chetlab o'tib, ko'nikmani shakllantirmaslik",
+      "javobgarlikni o'quvchidan butunlay olib qo'yish",
+      "topshiriqni bekor qilib, rivojlanish imkonini yo'qotish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi darsda o'quvchilarga faqat «to'g'ri» yoki «noto'g'ri» deb javob beradi. O'quvchilar xatosini tushunmay, uni keyingi ishda ham takrorlaydi. Samarali qaytar aloqa qanday bo'lishi kerak?",
+    "opts": [
+      "Xatoning sababini ko'rsatib, keyingi qadamni aytib beradigan",
+      "Qisqa va aniq bo'lib, faqat natijani qayd etadigan",
+      "Umumiy maqtovdan iborat bo'lib, ishonchni oshiradigan",
+      "Baho shaklida berilib, o'quvchi darajasini bildiradigan"
+    ],
+    "correct": 0,
+    "explanation": "«Noto'g'ri» degan javob xatoni ko'rsatadi, ammo uni tuzatish yo'lini bermaydi, shuning uchun o'quvchi o'sha xatoni takrorlayveradi. Samarali qaytar aloqa uch savolga javob beradi: nima talab qilingan edi, hozir qanday holat va keyingi qadam nima. Aynan shu uchinchi qism o'zgarish keltiradi.",
+    "mnemonic": "Qaytar aloqada keyingi qadam bo'lsin.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Baholash: samarali qaytar aloqa",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "",
+      "qaytar aloqani natijani qayd etish bilan cheklash",
+      "mazmunli aloqani umumiy maqtov bilan almashtirish",
+      "qaytar aloqani baho qo'yish bilan tenglashtirish"
+    ]
+  },
+  {
+    "q": "Sinf rahbari yangi jamoada faol, boshqalar quloq soladigan, ammo rasmiy lavozimi bo'lmagan o'quvchini payqadi va uni «raqobatchi» deb ko'rib, chetlatishga urindi. Jamoadagi holat yomonlashdi. Norasmiy yetakchiga nisbatan qanday yondashuv to'g'ri?",
+    "opts": [
+      "Uning mavjudligi e'tiborsiz qoldirilib, ish rasmiy yo'l bilan olib boriladi",
+      "Uning ta'siri jamoa manfaati yo'nalishiga burilib, hamkorlik qilinadi",
+      "Uning ta'siri cheklanib, jamoadan asta-sekin uzoqlashtiriladi",
+      "Unga rasmiy lavozim berilib, faoliyati to'liq nazorat qilinadi"
+    ],
+    "correct": 1,
+    "explanation": "Norasmiy yetakchi jamoaning tabiiy tuzilmasi natijasida paydo bo'ladi va uni chetlatish jamoani rahbardan uzoqlashtiradi. To'g'ri yo'l — u bilan hamkorlik qilish, unga jamoa uchun ahamiyatli vazifa topish va shu orqali uning ta'sirini ijobiy yo'nalishga burish.",
+    "mnemonic": "Yetakchini chetlatma — hamkor qil.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Jamoa bilan ishlash: norasmiy yetakchi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "jamoadagi haqiqiy ta'sirni e'tiborsiz qoldirish",
+      "",
+      "tabiiy tuzilmani kuch bilan buzishga urinish",
+      "hamkorlikni to'liq nazorat o'rnatish bilan almashtirish"
+    ]
+  },
+  {
+    "q": "Ikki o'quvchi o'rtasida nizo chiqdi. O'qituvchi ikkalasini ham tinglamasdan, kuchliroq ovoz chiqargan tomon foydasiga qaror qildi. Ikkinchi o'quvchi o'zini haqsiz his qilib, o'qituvchiga ishonchini yo'qotdi. Nizoni hal qilishning to'g'ri yo'li qanday?",
+    "opts": [
+      "Ikkala tomonga bir xil jazo berilib, masala shu bilan yopiladi",
+      "Nizo sinf oldida ochiq muhokamaga qo'yilib, ovozga qo'yiladi",
+      "Ikkala tomon alohida tinglanib, so'ng qaror qabul qilinadi",
+      "Nizo darhol to'xtatilib, sababi keyinroq aniqlanadi"
+    ],
+    "correct": 2,
+    "explanation": "Nizoni hal qilish faktlarni aniqlashdan boshlanadi: har bir tomon alohida, xalaqit berilmasdan tinglanadi va shundan keyin qaror qabul qilinadi. Tinglamasdan chiqarilgan qaror, ikkala tomonni bir xil jazolash yoki masalani ovozga qo'yish adolat hissini buzadi va nizoni yashirin holga o'tkazadi.",
+    "mnemonic": "Avval tingla, keyin qaror qil.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Pedagogik konfliktologiya: nizoni hal qilish tartibi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "aybni aniqlamasdan, tenglashtiruvchi jazo qo'llash",
+      "shaxsiy nizoni ommaviy muhokamaga chiqarish",
+      "",
+      "sababni aniqlamasdan, nizoni yashirin holga o'tkazish"
+    ]
+  },
+  {
+    "q": "O'qituvchi darsda o'quvchiga savol berdi va javobni kutmasdan, bir soniya ichida o'zi javob berib qo'ydi. Bu holat har darsda takrorlandi va o'quvchilar javob berishga urinishni to'xtatdi. Savol berishda qanday texnik shart muhim?",
+    "opts": [
+      "Savolni imkon qadar tez takrorlab, javobni undash",
+      "Savolni bir vaqtda bir necha o'quvchiga yo'naltirish",
+      "Savolga javobni o'zi aytib, so'ng tasdiqlatish",
+      "Savoldan keyin o'ylash uchun yetarli pauza berish"
+    ],
+    "correct": 3,
+    "explanation": "Javobni shakllantirish uchun o'quvchiga bir necha soniya kerak bo'ladi va bu vaqt o'qituvchiga uzoq tuyuladi. Pauza berilganda javob beruvchilar soni ham, javoblarning to'liqligi ham sezilarli ortadi. O'qituvchi darhol o'zi javob bersa, o'quvchi o'ylashning hojati yo'qligini o'rganadi.",
+    "mnemonic": "Savoldan keyin sukut — o'ylash vaqti.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Pedagogik mahorat: savol berish texnikasi",
+    "difficulty": "Y3",
+    "distractor_error": [
+      "o'ylash vaqtini qisqartirib, bosimni kuchaytirish",
+      "manzilsiz savol berib, javobgarlikni tarqatib yuborish",
+      "javobni o'zi aytib, o'quvchining fikrlashini bekor qilish",
+      ""
+    ]
+  },
+  {
+    "q": "O'qituvchi yangi mavzuni tushuntirishni to'g'ridan-to'g'ri murakkab ta'rifdan boshladi, o'quvchilarning mavzuga oid hech qanday tajribasini so'ramadi. Sinf materialni tushunmadi. Yangi materialni bayon qilishda qanday tamoyil qo'llaniladi?",
+    "opts": [
+      "Ma'lumdan noma'lumga, oddiydan murakkabga borish",
+      "Noma'lumdan ma'lumga, murakkabdan oddiyga borish",
+      "Nazariyadan boshlab, amaliyotga umuman o'tmaslik",
+      "Har bir mavzuni oldingi materialdan mustaqil bayon qilish"
+    ],
+    "correct": 0,
+    "explanation": "Yangi bilim eskisiga bog'langandagina o'zlashtiriladi, shuning uchun bayon o'quvchiga tanish bo'lgan tajriba yoki oldingi mavzudan boshlanadi va asta-sekin murakkablashadi. Murakkab ta'rifdan boshlash o'quvchida bog'lanish nuqtasi qoldirmaydi va material yodlashga aylanadi.",
+    "mnemonic": "Tanishdan notanishga, oddiydan murakkabga.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Didaktika: izchillik va tushunarlilik tamoyillari",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "",
+      "bayon yo'nalishi teskari qo'yilgan",
+      "nazariya va amaliyot bog'liqligini butunlay uzish",
+      "mavzular o'rtasidagi bog'lanishni inkor qilish"
+    ]
+  },
+  {
+    "q": "O'qituvchi darsni qo'ng'iroq bilan tugatdi: yakun chiqarilmadi, uy vazifasi shoshib aytildi, o'quvchilar nimani o'rganganini umumlashtirmadi. Metodist darsning muhim qismi tushib qolganini aytdi. Darsning yakuniy qismi qanday vazifani bajaradi?",
+    "opts": [
+      "Keyingi dars mavzusini e'lon qilishgagina mo'ljallangan",
+      "Materialni umumlashtiradi, natijani baholaydi va vazifani tushuntiradi",
+      "Uy vazifasini e'lon qilish uchungina ajratilgan qism hisoblanadi",
+      "Davomatni qayd etish uchungina ajratilgan qism hisoblanadi"
+    ],
+    "correct": 1,
+    "explanation": "Yakuniy qism darsni yaxlit qiladi: o'rganilgan material umumlashtiriladi, o'quvchilarning ishi baholanadi, ular o'zlari nimani o'zlashtirganini anglaydi va uy vazifasi tushunarli qilib tushuntiriladi. Bu qism tushib qolsa, dars alohida epizodlar to'plami bo'lib qoladi va material xotirada tizimlashmaydi.",
+    "mnemonic": "Dars yakunsiz — bilim tizimsiz.",
+    "topicId": 6,
+    "category": "chqbt",
+    "source_ref": "Didaktika: darsning yakuniy qismi",
+    "difficulty": "Y2",
+    "distractor_error": [
+      "yakuniy qismni e'lon qilish vazifasiga qisqartirish",
+      "",
+      "yakuniy qismni bitta tashkiliy amalga qisqartirish",
+      "yakuniy qismni qayd etish ishiga qisqartirish"
+    ]
+  }
+]

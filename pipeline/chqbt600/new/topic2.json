@@ -1,0 +1,662 @@
+[
+  {
+    "q": "Fuqaro ovchilik miltig'ini do'stidan sotib oldi va uni hech qayerda ro'yxatdan o'tkazmasdan uyida saqlamoqda. U «qurol o'zimniki, hujjat shart emas» deb hisoblaydi. Qonun talabi qanday?",
+    "opts": [
+      "Har bir qurol belgilangan tartibda ro'yxatdan o'tkazilishi shart",
+      "Ro'yxat faqat sotuvchidan talab qilinadi, xaridordan emas",
+      "Qurol egasi ixtiyoriga ko'ra ro'yxatdan o'tkazilishi mumkin",
+      "Qurolni olib yurishgina ro'yxatdan o'tkazishni talab qiladi"
+    ],
+    "correct": 0,
+    "explanation": "«Qurol to'g'risida»gi qonunga muvofiq fuqarolik qurolini olish, saqlash va olib yurish faqat belgilangan tartibda, ruxsatnoma va ro'yxatdan o'tkazish asosida amalga oshiriladi. Egalik huquqining o'zi hujjatlashtirishni almashtirmaydi; ro'yxatga qo'yish majburiyati aynan qurol egasi zimmasida.",
+    "mnemonic": "Qurol bor — hujjat ham bo'lsin.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Qurol to'g'risida»gi O'RQ-550-son Qonun: qurolni ro'yxatdan o'tkazish",
+    "distractor_error": [
+      "",
+      "majburiyatni boshqaga o'tkazish",
+      "majburiyatni ixtiyoriy qilish",
+      "majburiyatni toraytirish"
+    ]
+  },
+  {
+    "q": "Ovchilik miltig'i egasi bo'lgan fuqaro qurolni devorga osib qo'ygan, o'q-dorilar esa shkafda ochiq turibdi. Uyda voyaga yetmagan bolalar bor. Tekshiruvchi qanday nuqson qayd etadi?",
+    "opts": [
+      "Nuqson yo'q — saqlash tartibi egasining ixtiyorida",
+      "Qurol va o'q-dori qulflanadigan joyda saqlanmagan",
+      "Qurol va o'q-dori bir xonada saqlanmagani nuqson hisoblanadi",
+      "Qurol devorga osilganda uning tanasi tez zanglaydi"
+    ],
+    "correct": 1,
+    "explanation": "Qonun qurol va o'q-dorilarni begona shaxslar, ayniqsa bolalar kira olmaydigan, qulflanadigan maxsus joyda saqlashni talab qiladi — bu talab baxtsiz hodisa va qurolning noqonuniy qo'lga o'tishining oldini oladi. Saqlash tartibi egasining ixtiyoriga qoldirilmaydi.",
+    "mnemonic": "Qurol — qulf ostida, bolalar yetmaydigan joyda.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Qurol to'g'risida»gi O'RQ-550-son Qonun: qurolni saqlash talablari",
+    "distractor_error": [
+      "talabni inkor etish",
+      "",
+      "talabni chalkashtirish",
+      "asosiy xavfni ko'rmaslik"
+    ]
+  },
+  {
+    "q": "Ovchilikka chiqqan fuqaro qurolini bir necha soatga qo'shnisiga berib turdi, chunki «u ham ovchi, hujjati bor». Qonun bu harakatni qanday baholaydi?",
+    "opts": [
+      "Harakat qonuniy, agar qurol bir sutkadan kam berilsa",
+      "Harakat qonuniy, agar bu haqda yozma tilxat olinsa",
+      "Qurol boshqa shaxsga berilmaydi — ruxsatnoma shaxsan egasiga tegishli",
+      "Harakat qonuniy, chunki ikkalasida ham ruxsatnoma bor"
+    ],
+    "correct": 2,
+    "explanation": "Ruxsatnoma shaxsan qurol egasiga beriladi va uni boshqa shaxsga o'tkazish huquqini bermaydi; qurolni vaqtincha ham bo'lsa boshqa kishiga topshirish qonunbuzarlik hisoblanadi. Ikkinchi shaxsda ruxsatnoma bo'lishi, muddatning qisqaligi yoki tilxat bu qoidani o'zgartirmaydi.",
+    "mnemonic": "Ruxsatnoma — shaxsiy, qurol qo'ldan qo'lga o'tmaydi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "«Qurol to'g'risida»gi O'RQ-550-son Qonun: qurolni saqlash va olib yurish",
+    "distractor_error": [
+      "muddat bilan oqlash",
+      "hujjat bilan oqlash",
+      "",
+      "ruxsatnomani umumiylashtirish"
+    ]
+  },
+  {
+    "q": "Fuqaro to'y marosimida spirtli ichimlik ichgach, ovchilik miltig'ini olib chiqib, havoga o't ochmoqchi bo'ldi. Do'stlari uni to'xtatdi. Qonun bu holatni qanday tartibga soladi?",
+    "opts": [
+      "Qurolni faqat ochiq maydonda ishlatish shart qilinadi",
+      "Havoga otish xavfsiz hisoblanib, cheklanmaydi",
+      "Bayram marosimlarida havoga o't ochishga ruxsat beriladi",
+      "Mast holatda qurolni olib yurish va ishlatish taqiqlanadi"
+    ],
+    "correct": 3,
+    "explanation": "Qonun spirtli ichimlik yoki giyohvand modda ta'siri ostida qurolni olib yurish va undan foydalanishni qat'iy taqiqlaydi. Havoga otilgan o'q ham yerga qaytadi va ancha uzoqdagi odamni jarohatlashi mumkin, shuning uchun bunday otish hech qanday marosimda oqlanmaydi.",
+    "mnemonic": "Mast holatda qurolga qo'l urilmaydi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Qurol to'g'risida»gi O'RQ-550-son Qonun: qurolni qo'llash cheklovlari",
+    "distractor_error": [
+      "asosiy taqiqni chalkashtirish",
+      "xavfni inkor etish",
+      "taqiqni bayram bilan oqlash",
+      ""
+    ]
+  },
+  {
+    "q": "Fuqaro uyiga o'g'ri kirganini ko'rib, ovchilik miltig'i bilan uni qo'rqitdi. O'g'ri qochib ketayotganda fuqaro uning orqasidan o't ochdi. Qonun bu harakatni qanday baholaydi?",
+    "opts": [
+      "Qochayotgan shaxsga o't ochish zaruriy mudofaa chegarasidan chiqadi",
+      "Harakat qonuniy, agar keyin militsiyaga xabar berilsa",
+      "Harakat qonuniy — o'z mulkini himoya qilish cheklanmaydi",
+      "Harakat qonuniy, agar o'g'ri hovlidan chiqmagan bo'lsa"
+    ],
+    "correct": 0,
+    "explanation": "Qurol faqat hayot va sog'liqqa bevosita tahdid mavjud bo'lganda, tahdidga mutanosib ravishda qo'llanadi. Qochayotgan shaxs endi bevosita tahdid solmaydi, shuning uchun unga qarata o't ochish zaruriy mudofaa chegarasidan chiqish hisoblanadi va javobgarlikka olib keladi. Keyin xabar berish bu bahoni o'zgartirmaydi.",
+    "mnemonic": "Tahdid tugadi — qurol ham jim.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "«Qurol to'g'risida»gi O'RQ-550-son Qonun: qurolni qo'llash asoslari",
+    "distractor_error": [
+      "",
+      "keyingi harakat bilan oqlash",
+      "mutanosiblikni inkor etish",
+      "hududga bog'lash"
+    ]
+  },
+  {
+    "q": "Fuqaroning ovchilik miltig'i uyidan o'g'irlandi. U «topilib qolar» deb bir hafta hech kimga aytmadi. Qonun talabiga ko'ra u nima qilishi kerak edi?",
+    "opts": [
+      "Faqat keyingi ro'yxatdan o'tish paytida ma'lum qilishi kerak edi",
+      "Yo'qolgani haqida darhol ichki ishlar organlariga xabar berishi kerak edi",
+      "Bir oy ichida sug'urta kompaniyasiga murojaat qilishi kerak edi",
+      "O'zi mustaqil qidiruv olib borishi kerak edi"
+    ],
+    "correct": 1,
+    "explanation": "Qurol yo'qolgan yoki o'g'irlangan taqdirda egasi bu haqda kechiktirmasdan ichki ishlar organlariga xabar berishi shart — chunki nazoratdan chiqqan qurol jinoyat qurolga aylanishi mumkin. Xabar berishni kechiktirish yoki mustaqil qidiruv qonun talabiga zid.",
+    "mnemonic": "Qurol yo'qoldi — darhol xabar.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Qurol to'g'risida»gi O'RQ-550-son Qonun: qurol yo'qolganda xabar berish",
+    "distractor_error": [
+      "xabarni kechiktirish",
+      "",
+      "mas'uliyatni sug'urtaga o'tkazish",
+      "xabarni kechiktirish"
+    ]
+  },
+  {
+    "q": "O'quvchilar qurol turlarini muhokama qilmoqda. Ular fuqarolik, xizmat va harbiy qurolni bir-biridan qanday ajratishni so'radi. Qaysi javob bu tasnifning asosiy mezonini to'g'ri ko'rsatadi?",
+    "opts": [
+      "Qurollar ishlab chiqarilgan yiliga qarab bo'linadi",
+      "Qurollar ishlab chiqarilgan mamlakatga qarab bo'linadi",
+      "Qurollar tayinlanishi va foydalanuvchi toifasiga qarab bo'linadi",
+      "Qurollar faqat kalibri va o'lchamiga qarab bo'linadi"
+    ],
+    "correct": 2,
+    "explanation": "Qonun qurollarni tayinlanishi va kim foydalanishiga qarab tasniflaydi: fuqarolik quroli (o'zini himoya qilish, ovchilik, sport), xizmat quroli (vakolatli tashkilot xodimlari uchun) va harbiy qurol (Qurolli Kuchlar va boshqa harbiylashtirilgan tuzilmalar uchun). Kalibr, ishlab chiqarilgan yil va mamlakat tasnifning asosi emas.",
+    "mnemonic": "Tasnif — tayinlanish va foydalanuvchi bo'yicha.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Qurol to'g'risida»gi O'RQ-550-son Qonun: qurol turlari",
+    "distractor_error": [
+      "mezonni chalkashtirish",
+      "mezonni chalkashtirish",
+      "",
+      "mezonni chalkashtirish"
+    ]
+  },
+  {
+    "q": "Do'konga kelgan fuqaro pnevmatik miltiq sotib olmoqchi va «bu o'yinchoq, hech qanday cheklov yo'q» deb hisoblamoqda. Sotuvchi unga qonun talabini tushuntirdi. Qaysi javob to'g'ri?",
+    "opts": [
+      "Pnevmatik qurol umuman qonun tartibga solishiga tushmaydi",
+      "Pnevmatik qurol faqat sport tashkilotlariga sotiladi",
+      "Pnevmatik qurol harbiy qurol toifasiga kiritilgan",
+      "Pnevmatik qurol ham qonun bilan tartibga solinadi, cheklovlar mavjud"
+    ],
+    "correct": 3,
+    "explanation": "Pnevmatik qurol ham qonun doirasiga kiradi: uning quvvati va turiga qarab sotib olish, saqlash hamda foydalanishga nisbatan talablar belgilanadi. Uni butunlay tartibga solinmagan buyum deb bilish ham, harbiy qurol toifasiga kiritish ham noto'g'ri.",
+    "mnemonic": "Pnevmatik ham qurol — qoidasi bor.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Qurol to'g'risida»gi O'RQ-550-son Qonun: pnevmatik qurollar",
+    "distractor_error": [
+      "tartibni inkor etish",
+      "doirani toraytirish",
+      "toifani chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Fuqaro ovchilik miltig'ini yig'ilgan holda, g'ilofsiz, mashinaning orqa o'rindig'iga qo'yib shahar ichida ketmoqda. Yo'lda uni nazorat to'xtatdi. Qonun talabi qanday?",
+    "opts": [
+      "Qurol o'qsizlantirilgan holda, g'ilofda tashiladi",
+      "Qurolni shaxsiy avtomobilda tashish umuman taqiqlanadi",
+      "Qurol yig'ilgan holda bo'lsa, tashish tartibi ahamiyatga ega emas",
+      "Qurol faqat kechasi g'ilofda tashilishi shart qilinadi"
+    ],
+    "correct": 0,
+    "explanation": "Qonun qurolni tashish tartibini belgilaydi: u o'qsizlantirilgan holda, g'ilof yoki maxsus qutida, ruxsat hujjatlari bilan birga tashiladi. Yig'ilgan va ochiq holda tashish qoidabuzarlik hisoblanadi; ayni paytda qurolni shaxsiy transportda tashishning o'zi taqiqlanmagan.",
+    "mnemonic": "O'qsizlantir, g'ilofga sol, hujjatni ol.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Qurol to'g'risida»gi O'RQ-550-son Qonun: qurolni tashish",
+    "distractor_error": [
+      "",
+      "taqiqni haddan oshirish",
+      "tartibni inkor etish",
+      "tartibni vaqtga bog'lash"
+    ]
+  },
+  {
+    "q": "Fuqaro qurol sotib olish uchun hujjat topshirmoqda. U «faqat ariza yozsam bo'ldi» deb hisoblaydi. Ruxsatnoma berish jarayonida yana nima talab qilinadi?",
+    "opts": [
+      "Oilaviy ahvol to'g'risidagi hujjat talab qilinadi",
+      "Tibbiy xulosa va qonunda belgilangan hujjatlar talab qilinadi",
+      "Yashash joyidan olingan ma'lumotnoma talab qilinadi",
+      "Qurol sotuvchisining tavsiyanomasi talab qilinadi"
+    ],
+    "correct": 1,
+    "explanation": "Qurol sotib olishga ruxsatnoma olish uchun fuqaro tibbiy ko'rikdan o'tib xulosa taqdim etadi, shuningdek qonunda belgilangan boshqa hujjatlarni topshiradi va sud xulosasi bilan bog'liq cheklovlar tekshiriladi. Arizaning yoki sotuvchi tavsiyasining o'zi yetarli emas.",
+    "mnemonic": "Ariza emas — tibbiy xulosa va hujjatlar.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Qurol to'g'risida»gi O'RQ-550-son Qonun: ruxsatnoma berish tartibi",
+    "distractor_error": [
+      "talabni toraytirish",
+      "",
+      "talabni toraytirish",
+      "talabni toraytirish"
+    ]
+  },
+  {
+    "q": "Ovchi o'z miltig'ining stvolini qisqartirib, uni yashirin olib yurish qulay bo'lgan holga keltirdi. U «qurol o'zimniki, xohlaganimni qilaman» deydi. Qonun bu harakatni qanday baholaydi?",
+    "opts": [
+      "O'zgartirish qonuniy, agar keyin qayta ro'yxatdan o'tkazilsa",
+      "O'zgartirish faqat kalibr o'zgarganda taqiqlanadi",
+      "Konstruksiyani o'zgartirish taqiqlanadi va javobgarlikka olib keladi",
+      "O'zgartirish qonuniy, agar qurol egasining o'zi bajarsa"
+    ],
+    "correct": 2,
+    "explanation": "Qurolning konstruksiyasini ruxsatsiz o'zgartirish — jumladan stvolni qisqartirish — qonunda taqiqlanadi va javobgarlikka olib keladi, chunki bunday o'zgartirish qurolni yashirin olib yurishga moslashtiradi va uning xavflilik darajasini oshiradi. Egalik huquqi yoki keyingi ro'yxat bu taqiqni bekor qilmaydi.",
+    "mnemonic": "Konstruksiyaga tegilmaydi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "«Qurol to'g'risida»gi O'RQ-550-son Qonun: qurolni o'zgartirish taqiqi",
+    "distractor_error": [
+      "keyingi rasmiylashtirish bilan oqlash",
+      "taqiqni toraytirish",
+      "",
+      "egalik bilan oqlash"
+    ]
+  },
+  {
+    "q": "Fuqaro ruxsatnomasi muddati tugaganini bilib turib, qurolni yana uyida saqlashda davom etmoqda. U «qurol o'zimda-ku, hech narsa qilmadim» deb hisoblaydi. Huquqiy baho qanday?",
+    "opts": [
+      "Ruxsatnoma faqat qurol sotib olish paytida talab qilinadi",
+      "Muddat tugashi faqat qurolni olib yurishga ta'sir qiladi",
+      "Ruxsatnoma muddati tugashi hech qanday oqibat keltirmaydi",
+      "Ruxsatnoma muddati tugagach, qurolni saqlash noqonuniy bo'lib qoladi"
+    ],
+    "correct": 3,
+    "explanation": "Ruxsatnoma qurolni saqlash va olib yurish huquqini beradi; uning muddati tugagach, qurolni saqlash noqonuniy holatga aylanadi va bu javobgarlikka olib keladi. Ruxsatnoma faqat sotib olish payti uchun emas — u butun saqlash davriga tegishli.",
+    "mnemonic": "Muddat tugadi — huquq ham tugadi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "«Qurol to'g'risida»gi O'RQ-550-son Qonun: ruxsatnoma amal muddati",
+    "distractor_error": [
+      "amalni bir paytga toraytirish",
+      "amalni toraytirish",
+      "oqibatni inkor etish",
+      ""
+    ]
+  },
+  {
+    "q": "Otish maydonchasida mashg'ulot boshlanishidan oldin rahbar xavfsizlik yo'riqnomasini o'tkazmoqda. O'quvchilardan biri qurolni ko'tarib, o'rtoqlariga qarab o'girildi. Rahbar darhol to'xtatdi. Qaysi asosiy qoida buzilgan?",
+    "opts": [
+      "Qurol og'zi doimo xavfsiz tomonga, nishonga qaratib ushlanadi",
+      "Qurolni faqat ikki qo'l bilan ushlash talab qilinadi",
+      "Qurolni ko'tarish faqat komandirning ruxsati bilan mumkin",
+      "Qurol og'zi doimo pastga qaratilishi shart hisoblanadi"
+    ],
+    "correct": 0,
+    "explanation": "Otish maydonchasidagi asosiy qoida — qurol og'zi har qanday holatda faqat xavfsiz tomonga, ya'ni nishonlar tomonga qaratiladi; qurol o'qsiz deb hisoblansa ham bu qoida buzilmaydi. Qolgan talablar ham mavjud, ammo tasvirlangan holatda aynan yo'nalish qoidasi buzilgan.",
+    "mnemonic": "Stvol og'zi — faqat nishonga.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Otish tayyorgarligi: otish maydonchasida xavfsizlik talablari",
+    "distractor_error": [
+      "",
+      "asosiy qoidani chalkashtirish",
+      "asosiy qoidani chalkashtirish",
+      "asosiy qoidani chalkashtirish"
+    ]
+  },
+  {
+    "q": "Otish yakunlangach, o'quvchi qurolni topshirish uchun navbatga turdi. Rahbar undan avval bir amalni bajarishni talab qildi. Qaysi amal nazarda tutilmoqda?",
+    "opts": [
+      "Qurolni to'liq ajratib, ichini tozalash kerak",
+      "Qurolni o'qdondan bo'shatib, patronnikni ko'rish kerak",
+      "Qurolni moylab, g'ilofga solib qo'yish kerak",
+      "Qurol raqamini jurnalga yozib qo'yish kerak"
+    ],
+    "correct": 1,
+    "explanation": "Otishdan keyin qurol albatta o'qsizlantiriladi: o'qdon ajratiladi, zatvor tortilib patronnik ko'zdan kechiriladi va qurolda patron qolmagani ishonchli tarzda tekshiriladi. Faqat shundan keyin qurol topshiriladi; tozalash, moylash va hisob-kitob keyingi bosqichlar.",
+    "mnemonic": "Avval bo'shat va ko'r — keyin topshir.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Otish tayyorgarligi: otishdan keyingi xavfsizlik amallari",
+    "distractor_error": [
+      "tartibni chalkashtirish",
+      "",
+      "tartibni chalkashtirish",
+      "tartibni chalkashtirish"
+    ]
+  },
+  {
+    "q": "O'quvchi «Otish!» komandasini eshitmasdan, o'ziga qulay payt kelganda o't ochdi. Uning o'qi nishonga tegdi. Rahbar mashqni to'xtatib, unga baho qo'ymadi. Bu qaror nimaga asoslangan?",
+    "opts": [
+      "Nishonga tegishi tasodifiy deb hisoblanadi",
+      "O'quvchi mashqni belgilangan vaqtdan tez bajardi",
+      "Komandasiz o't ochish qo'pol qoidabuzarlik hisoblanadi",
+      "O'q soni belgilangan miqdordan oshib ketgan"
+    ],
+    "correct": 2,
+    "explanation": "Otish faqat rahbarning komandasi bo'yicha boshlanadi va uning komandasi bilan to'xtatiladi — bu maydonchadagi barcha odamlarning hayoti bog'liq bo'lgan asosiy qoida. Komandasiz o't ochish natijasidan qat'i nazar qo'pol qoidabuzarlik hisoblanadi va mashq bekor qilinadi.",
+    "mnemonic": "Komanda bo'lmasa — otish yo'q.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Otish tayyorgarligi: otishni boshlash va to'xtatish tartibi",
+    "distractor_error": [
+      "natijaga urg'u berish",
+      "buzilishni yutuq deb bilish",
+      "",
+      "boshqa qoidani ko'rsatish"
+    ]
+  },
+  {
+    "q": "Otish paytida qurol o't ochmadi — patron tushdi, lekin otilmadi. O'quvchi darhol qurolni yon tomonga burib, nima bo'lganini ko'rmoqchi bo'ldi. Rahbar to'xtatdi. To'g'ri harakat qanday?",
+    "opts": [
+      "Zatvorni bir necha marta tez tortib, patronni chiqarib tashlash kerak",
+      "Qurolni yon tomonga burib, mexanizmni ko'zdan kechirish kerak",
+      "Qurolni darhol topshirib, boshqa qurol so'rash kerak",
+      "Qurolni nishonga qaratgan holda kutib, rahbar ko'rsatmasini bajarish"
+    ],
+    "correct": 3,
+    "explanation": "Otilmagan patron kechikib otilishi mumkin, shuning uchun qurol nishon tomonga qaratilgan holda ushlab turiladi va faqat rahbar ko'rsatmasi bilan keyingi amal bajariladi. Qurolni yon tomonga burish yoki shoshilinch harakat qilish atrofdagilar uchun bevosita xavf tug'diradi.",
+    "mnemonic": "Otilmadi — nishonga ushla va kut.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Otish tayyorgarligi: otilmagan patron bilan ish tutish",
+    "distractor_error": [
+      "shoshilinch harakat",
+      "stvolni odamlarga burish",
+      "xavfni ko'chirish",
+      ""
+    ]
+  },
+  {
+    "q": "Otish mashg'ulotida nishonlar orasida odam paydo bo'lgani ko'rindi. Bir necha o'quvchi hali o't ochmoqda. Rahbar qanday harakat qiladi?",
+    "opts": [
+      "«To'xtat!» komandasini berib, barcha otishni darhol to'xtatadi",
+      "Faqat o'sha yo'nalishdagi o'quvchini to'xtatadi",
+      "Qolgan o'qlarni otib tugatishga ruxsat beradi",
+      "Odam chiqib ketguncha kuzatishni davom ettiradi"
+    ],
+    "correct": 0,
+    "explanation": "Otish maydonchasida xavf aniqlangan zahoti «To'xtat!» komandasi beriladi va barcha otish istisnosiz to'xtatiladi, qurollar esa xavfsiz holatga keltiriladi. Qisman to'xtatish yoki kuzatishni davom ettirish odam hayotini xavf ostida qoldiradi.",
+    "mnemonic": "Xavf ko'rinsa — hamma to'xtaydi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Otish tayyorgarligi: otishni majburiy to'xtatish holatlari",
+    "distractor_error": [
+      "",
+      "qisman chora",
+      "xavfni e'tiborsiz qoldirish",
+      "harakatsizlik"
+    ]
+  },
+  {
+    "q": "Mashg'ulotdan keyin o'quvchining cho'ntagida ikkita otilmagan patron qolib ketgani aniqlandi. U «esimdan chiqibdi, keyin qaytarardim» dedi. Bu holat qanday baholanadi?",
+    "opts": [
+      "Bu shunchaki e'tiborsizlik, hisobga olinmaydi",
+      "O'q-dorini olib chiqib ketish qo'pol qoidabuzarlik hisoblanadi",
+      "Patron soni kam bo'lgani uchun qoidabuzarlik hisoblanmaydi",
+      "Qoidabuzarlik faqat jangovar patronlarda qayd etiladi"
+    ],
+    "correct": 1,
+    "explanation": "Har bir patron qat'iy hisobda bo'ladi: berilgan va otilgan o'q-dori soni solishtiriladi, qolgani esa mashg'ulot joyida topshiriladi. O'q-dorini maydonchadan olib chiqib ketish qo'pol qoidabuzarlik hisoblanadi va soniga qarab yengillashtirilmaydi.",
+    "mnemonic": "Har bir patron — hisobda.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Otish tayyorgarligi: o'q-dorilar hisobi",
+    "distractor_error": [
+      "buzilishni inkor etish",
+      "",
+      "buzilishni songa bog'lash",
+      "buzilishni turga bog'lash"
+    ]
+  },
+  {
+    "q": "Otish mashg'ulotiga tayyorgarlik ko'rayotgan o'quvchi qurolni yelkasiga osib, nishonlar tomon o'girilmasdan safdoshlari orasida yurmoqda. Rahbar buni to'xtatdi. Nima uchun?",
+    "opts": [
+      "Qurolni yelkada olib yurish uni tez eskirtiradi",
+      "Qurolni yelkada olib yurish umuman taqiqlanadi",
+      "Odamlar orasida stvol og'zi ularga qaratilib qolishi mumkin",
+      "Qurol yelkada tez ifloslanadi va tozalash talab etiladi"
+    ],
+    "correct": 2,
+    "explanation": "Otish maydonchasida qurol shunday holatda ushlanadiki, stvol og'zi hech qachon odamlar tomonga qaratilmasin. Odamlar orasida erkin yurganda yelkadagi qurol og'zi atrofdagilarga qaratilib qolishi mumkin, shuning uchun bu harakat to'xtatiladi. Ifloslanish va eskirish xavfsizlikka aloqasi yo'q masalalar.",
+    "mnemonic": "Odamlar orasida stvol og'ziga qara.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Otish tayyorgarligi: qurolni tashish va ushlash xavfsizligi",
+    "distractor_error": [
+      "aloqasiz sabab",
+      "taqiqni haddan oshirish",
+      "",
+      "aloqasiz sabab"
+    ]
+  },
+  {
+    "q": "Mashg'ulot rahbari o'quvchilarga qo'l granatasining asosiy qismlarini tushuntirmoqda. U granatani ishga tushiruvchi, portlashni ma'lum vaqt kechiktiruvchi qismni alohida ta'kidladi. Bu qism qanday nomlanadi?",
+    "opts": [
+      "Xavfsizlik halqasi deb ataladi",
+      "Granata korpusi deb ataladi",
+      "Portlovchi zaryad deb ataladi",
+      "Portlatgich deb ataladi"
+    ],
+    "correct": 3,
+    "explanation": "Qo'l granatasi korpus, portlovchi zaryad va zapaldan (portlatgichdan) iborat. Aynan zapal granatani ishga tushiradi va portlashni belgilangan vaqtga kechiktiradi — shu kechikish tufayli granata nishon ustida portlaydi. Korpus parchalar hosil qiladi, halqa esa faqat saqlash vositasi.",
+    "mnemonic": "Zapal — vaqtni hisoblaydi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Otish tayyorgarligi: qo'l granatalarining tuzilishi",
+    "distractor_error": [
+      "qismni chalkashtirish",
+      "qismni chalkashtirish",
+      "qismni chalkashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "Askar granatani uloqtirish uchun xavfsizlik chekasini (halqani) tortib oldi, biroq vaziyat o'zgarib, uloqtirish kerak bo'lmay qoldi. U halqani qaytadan joyiga solmoqchi. Bunday holatda to'g'ri harakat qanday?",
+    "opts": [
+      "Dastak mahkam ushlanadi va granata zararsizlantiriladi",
+      "Granata yerga ehtiyotkorlik bilan qo'yiladi va uzoqlashiladi",
+      "Granata boshqa askarga topshiriladi va u uloqtiradi",
+      "Halqa qaytadan joyiga solinib, granata sumkaga qaytariladi"
+    ],
+    "correct": 0,
+    "explanation": "Chekasi tortib olingan granatada faqat qo'l bilan bosib turilgan dastak portlash mexanizmini ushlab turadi: dastak qo'yib yuborilsa, hisob boshlanadi. Shuning uchun dastak mahkam ushlanadi va granata faqat belgilangan tartibda, mutaxassis ishtirokida zararsizlantiriladi. Halqani qaytarish, yerga qo'yish yoki boshqaga uzatish halokatli.",
+    "mnemonic": "Cheka chiqdi — dastakni qo'yib yuborma.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Otish tayyorgarligi: qo'l granatalari bilan ish tutish xavfsizligi",
+    "distractor_error": [
+      "",
+      "granatani nazoratsiz qoldirish",
+      "xavfni boshqaga o'tkazish",
+      "mexanizmni noto'g'ri tushunish"
+    ]
+  },
+  {
+    "q": "Askar granatani uloqtirdi, biroq u belgilangan vaqtda portlamadi. Yonidagi sherigi «borib olib kelaman» dedi. Komandir bunga yo'l qo'ymadi. Nima uchun?",
+    "opts": [
+      "Granata bir soatdan keyin o'z-o'zidan zararsizlanadi",
+      "Portlamagan granataga yaqinlashish qat'iyan taqiqlanadi",
+      "Portlamagan granata butunlay xavfsiz, faqat hisobot kerak",
+      "Granatani faqat uni uloqtirgan askar olib kelishi mumkin"
+    ],
+    "correct": 1,
+    "explanation": "Portlamagan granata eng xavfli holatda: uning mexanizmi ishga tushgan bo'lishi va har qanday tebranishdan portlashi mumkin. Shuning uchun unga hech kim yaqinlashmaydi, joy belgilanib qo'riqlanadi va granata mutaxassislar tomonidan zararsizlantiriladi.",
+    "mnemonic": "Portlamagan granata — eng xavflisi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Otish tayyorgarligi: portlamagan o'q-dorilar bilan ish tutish",
+    "distractor_error": [
+      "xavfni vaqtga bog'lash",
+      "",
+      "xavfni inkor etish",
+      "xavfni shaxsga bog'lash"
+    ]
+  },
+  {
+    "q": "Bo'linma ochiq maydonda hujumga o'tmoqda va askarlarda ikki xil granata bor. Komandir hujum paytida, panasiz joyda ishlatiladigan granatani tanlashni buyurdi. Qaysi tur mos keladi va nima uchun?",
+    "opts": [
+      "Tutun granatasi — u dushmanning ko'rishini cheklaydi",
+      "Kumulyativ granata — u zirhli nishonlarni teshadi",
+      "Hujum granatasi — uning parcha radiusi uloqtirish masofasidan kichik",
+      "Mudofaa granatasi — uning parchalari ko'p va uzoqqa uchadi"
+    ],
+    "correct": 2,
+    "explanation": "Hujum granatasining parcha ta'sir radiusi uni uloqtirish masofasidan kichik bo'ladi, shuning uchun uni pana joysiz, harakat ustida ishlatish mumkin. Mudofaa granatasining parchalari ancha uzoqqa uchadi va uni faqat pana ortidan uloqtirish xavfsiz; tutun va kumulyativ granatalar boshqa vazifalar uchun.",
+    "mnemonic": "Panasiz jangda — hujum granatasi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Otish tayyorgarligi: hujum va mudofaa granatalarining farqi",
+    "distractor_error": [
+      "vazifani chalkashtirish",
+      "vazifani chalkashtirish",
+      "",
+      "turlarni almashtirish"
+    ]
+  },
+  {
+    "q": "Yosh askar granatani uloqtirgach, joyida turib natijani kuzatmoqchi bo'ldi. Komandir uni darhol pastga tortdi. Nizom va xavfsizlik qoidalariga ko'ra granata uloqtirilgach nima qilinadi?",
+    "opts": [
+      "Uloqtiruvchi tik turib, portlash natijasini kuzatadi",
+      "Uloqtiruvchi granata ortidan yugurib boradi",
+      "Uloqtiruvchi joyida turib, quloqlarini yopadi",
+      "Uloqtiruvchi darhol pana joyga yotadi yoki bekinadi"
+    ],
+    "correct": 3,
+    "explanation": "Granata uloqtirilgandan keyin uloqtiruvchi darhol pana joyga yotadi yoki bekinadi, chunki parchalar keng radiusda tarqaladi va ular uloqtiruvchining o'ziga ham yetib borishi mumkin. Tik turib kuzatish yoki granata ortidan harakatlanish jiddiy jarohatga olib keladi.",
+    "mnemonic": "Uloqtirding — darhol panaga.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Otish tayyorgarligi: granata uloqtirish qoidalari",
+    "distractor_error": [
+      "parchalar radiusini inkor etish",
+      "xavf tomon harakat",
+      "yetarsiz himoya",
+      ""
+    ]
+  },
+  {
+    "q": "Omborda granatalar va ularning zapallari birgalikda, bitta qutida saqlanayotgani aniqlandi. Tekshiruvchi buni nuqson deb qayd etdi. Nima uchun?",
+    "opts": [
+      "Zapallar granatadan alohida saqlanadi va faqat foydalanish oldidan o'rnatiladi",
+      "Zapallar granatadan alohida saqlanishi ularning zanglashini oldini oladi",
+      "Zapallar va granatalar turli haroratda saqlanishi kerak",
+      "Zapallar granatadan og'irroq bo'lgani uchun alohida joylashtiriladi"
+    ],
+    "correct": 0,
+    "explanation": "Granatalar zapallari (portlatgichlari) o'rnatilmagan holda, alohida saqlanadi va zapal faqat granatadan foydalanish oldidan o'rnatiladi — bu tasodifiy ishga tushish va portlashning oldini oladi. Zanglash, harorat va og'irlik bu talabning sababi emas.",
+    "mnemonic": "Zapal alohida — foydalanish oldidan o'rnatiladi.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Otish tayyorgarligi: granatalarni saqlash tartibi",
+    "distractor_error": [
+      "",
+      "sababni chalkashtirish",
+      "sababni chalkashtirish",
+      "sababni chalkashtirish"
+    ]
+  },
+  {
+    "q": "Mashg'ulotda o'quvchi o'quv-mashq granatasini jangovar granatadan qanday farqlashni so'radi. Rahbar tashqi belgiga e'tibor qaratdi. Qaysi javob to'g'ri?",
+    "opts": [
+      "O'quv granatasi og'irroq bo'ladi va shakli boshqacha",
+      "O'quv granatasi maxsus rang belgisi bilan ajratiladi",
+      "O'quv granatasi umuman zapalsiz ishlab chiqariladi",
+      "O'quv granatasi faqat o'lchamiga qarab farqlanadi"
+    ],
+    "correct": 1,
+    "explanation": "O'quv-mashq granatalari jangovar granatalardan maxsus rang belgisi bilan ajratiladi — bu ularni chalkashtirib yuborishning oldini olish uchun kiritilgan. Ular shakl va massa jihatidan jangovar granataga o'xshash qilib tayyorlanadi, aks holda uloqtirish ko'nikmasi to'g'ri shakllanmaydi.",
+    "mnemonic": "Farq — rangda, shaklda emas.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Otish tayyorgarligi: o'quv va jangovar granatalar",
+    "distractor_error": [
+      "farqni shaklga bog'lash",
+      "",
+      "tuzilmani noto'g'ri ko'rsatish",
+      "farqni o'lchamga bog'lash"
+    ]
+  },
+  {
+    "q": "Askarga qo'l granatasini uzoqroqqa uloqtirish topshirildi. U granatani faqat bilagi bilan otmoqda va natija past. Instruktor texnikani to'g'riladi. Uloqtirish masofasi asosan nimaga bog'liq?",
+    "opts": [
+      "Granatning og'irligi hal qiluvchi omil",
+      "Askarning bo'yi hal qiluvchi omil hisoblanadi",
+      "Gavda, oyoq va qo'l harakatining uyg'unligi",
+      "Qo'lning kuchi hal qiluvchi ahamiyatga ega"
+    ],
+    "correct": 2,
+    "explanation": "Granatani uzoqroqqa uloqtirish uchun kuch faqat bilakdan emas, gavdaning burilishi, oyoqning turtkisi va qo'lning zarbasi birgalikda hosil qilinadi. Faqat qo'l kuchiga tayanish masofani ham, aniqlikni ham keskin kamaytiradi; og'irlik va bo'y esa ikkinchi darajali omillar.",
+    "mnemonic": "Oyoq — gavda — qo'l: uchtasi birga.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Otish tayyorgarligi: granata uloqtirish texnikasi",
+    "distractor_error": [
+      "omilni toraytirish",
+      "omilni toraytirish",
+      "",
+      "omilni toraytirish"
+    ]
+  },
+  {
+    "q": "Bo'linma xandaq ichidan turib dushmanga granata uloqtirmoqchi. Komandir mudofaa granatasidan foydalanishga ruxsat berdi. Bu qaror nimaga asoslangan?",
+    "opts": [
+      "Xandaqdan uloqtirilganda granata uzoqroqqa uchadi",
+      "Mudofaa granatasi xandaqda saqlash uchun qulayroq",
+      "Xandaqda faqat mudofaa granatalari ishlatilishi mumkin",
+      "Xandaq uloqtiruvchini granata parchalaridan himoya qiladi"
+    ],
+    "correct": 3,
+    "explanation": "Mudofaa granatasining parchalari uloqtirish masofasidan uzoqroqqa uchadi, shuning uchun undan foydalanish uchun uloqtiruvchi pana joyda — masalan, xandaq ichida — bo'lishi shart. Xandaq aynan shu himoyani beradi; uloqtirish masofasi yoki saqlash qulayligi bu qarorning asosi emas.",
+    "mnemonic": "Mudofaa granatasi — faqat pana ortidan.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y3",
+    "source_ref": "Otish tayyorgarligi: mudofaa granatasini qo'llash shartlari",
+    "distractor_error": [
+      "masofani sabab qilish",
+      "qulaylikni sabab qilish",
+      "qoidani mutlaqlashtirish",
+      ""
+    ]
+  },
+  {
+    "q": "O'quvchi granatani uloqtirishdan oldin uni bir necha marta havoga otib, qo'lida o'ynatdi. Instruktor mashg'ulotni to'xtatib, uni maydonchadan chiqardi. Bu qaror nimaga asoslangan?",
+    "opts": [
+      "Granata bilan o'ynash tasodifiy ishga tushishga olib keladi",
+      "Granatani havoga otish uning aniqligini pasaytiradi",
+      "Granata qo'lda isib, portlash kuchi oshadi",
+      "Granata bilan o'ynash uning korpusini eskirtiradi"
+    ],
+    "correct": 0,
+    "explanation": "Portlovchi vosita bilan har qanday keraksiz harakat — havoga otish, qo'lda o'ynatish, tushirib yuborish — mexanizmning tasodifiy ishga tushishi xavfini yaratadi, shuning uchun bunday xatti-harakat qat'iyan taqiqlanadi va mashg'ulotdan chetlashtirishga asos bo'ladi. Aniqlik, isish va eskirish bu yerda ikkinchi darajali.",
+    "mnemonic": "Granata — o'yinchoq emas.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Otish tayyorgarligi: portlovchi vositalar bilan ish tutish qoidalari",
+    "distractor_error": [
+      "",
+      "asosiy xavfni ko'rmaslik",
+      "asosiy xavfni ko'rmaslik",
+      "asosiy xavfni ko'rmaslik"
+    ]
+  },
+  {
+    "q": "Otish maydonchasiga kelgan o'quvchi qurolni olishi bilan «u o'qsiz» deb hisoblab, tepkini bosib ko'rdi. Instruktor bu odatni qat'iy taqiqladi. Xavfsizlikning qaysi asosiy tamoyili buzilgan?",
+    "opts": [
+      "Qurol faqat komandir ruxsati bilan ushlanadi",
+      "Har qanday qurol o'qlangan deb hisoblanadi",
+      "Qurol faqat ikki qo'l bilan ushlanadi",
+      "Qurolni tekshirish faqat ombor xodimi ishi"
+    ],
+    "correct": 1,
+    "explanation": "Qurol bilan ishlashning asosiy tamoyili — har qanday qurolni o'qlangan deb hisoblash va u bilan shunga yarasha muomala qilish. «O'qsiz edi» degan ishonch aynan eng ko'p baxtsiz hodisaga sabab bo'ladi, shuning uchun tepkini shunchaki bosib ko'rish taqiqlanadi.",
+    "mnemonic": "Har qurol — o'qlangan.",
+    "topicId": 2,
+    "category": "chqbt",
+    "difficulty": "Y2",
+    "source_ref": "Otish tayyorgarligi: qurol bilan muomala qilishning asosiy tamoyillari",
+    "distractor_error": [
+      "tamoyilni chalkashtirish",
+      "",
+      "tamoyilni chalkashtirish",
+      "mas'uliyatni ko'chirish"
+    ]
+  }
+]
