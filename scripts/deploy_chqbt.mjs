@@ -8,6 +8,7 @@ import {
   collection, query, where, getCountFromServer,
 } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
+import { normalizeQuestion } from '../src/utils/qHash.js';
 
 const MAX_CHUNK_BYTES = 800 * 1024;
 
@@ -23,6 +24,39 @@ async function main() {
 
   const rawQuestions = JSON.parse(fs.readFileSync(localQuestionsPath, 'utf8'));
   console.log(`📋 Lokal bazada ${rawQuestions.length} ta savol o'qildi.`);
+
+  // ── DEPLOY QULFI (2026-08-30) ────────────────────────────────────────
+  // Bu skript paketni FAYLDAN quradi, ya'ni fayldagi nuqson to'g'ridan-
+  // to'g'ri foydalanuvchiga boradi. Aynan shunday bo'ldi: qayta yozish
+  // bosqichi `case_top*` seriyasida bir mavzuning BARCHA ID'lariga bitta
+  // savol matnini yozib qo'ygan (200 yozuv → 22 noyob) va shu holicha
+  // paketga tushgan — 4-mavzuda 15 ta bir xil savol. Pipeline validatori
+  // dublikatni tekshiradi, lekin u qayta yozishdan OLDIN ishlagan.
+  // Endi paket qurilishidan oldin fayl yana tekshiriladi.
+  {
+    const seen = new Map();
+    const dups = [];
+    const invalid = [];
+    rawQuestions.forEach((q, i) => {
+      const key = normalizeQuestion(q.q);
+      if (!key) { invalid.push(`#${i} savol matni bo'sh`); return; }
+      if (seen.has(key)) dups.push(`#${i} (${q.id}) ≡ #${seen.get(key)}`);
+      else seen.set(key, i);
+      if (!Array.isArray(q.opts) || q.opts.length !== 4) invalid.push(`#${i} (${q.id}) opts 4 ta emas`);
+      else if (!Number.isInteger(q.correct) || q.correct < 0 || q.correct > 3) invalid.push(`#${i} (${q.id}) correct 0..3 emas`);
+      else if (!Number.isInteger(q.topicId)) invalid.push(`#${i} (${q.id}) topicId son emas`);
+    });
+    if (dups.length || invalid.length) {
+      console.error(`
+❌ PAKET QURILMADI — fayl tekshiruvdan o'tmadi:`);
+      if (dups.length) { console.error(`   takror savol: ${dups.length}`); dups.slice(0, 10).forEach((d) => console.error('     · ' + d)); }
+      if (invalid.length) { console.error(`   yaroqsiz yozuv: ${invalid.length}`); invalid.slice(0, 10).forEach((d) => console.error('     · ' + d)); }
+      console.error(`
+   Tuzatmasdan deploy qilinmaydi: paket to'g'ridan-to'g'ri foydalanuvchiga ketadi.`);
+      process.exit(1);
+    }
+    console.log(`✅ Tekshiruv: ${rawQuestions.length} ta savol, takror yo'q, yozuvlar yaroqli.`);
+  }
 
   // Ensure each question has a clean id
   const list = rawQuestions.map((q, idx) => ({

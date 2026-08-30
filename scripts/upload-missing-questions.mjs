@@ -24,6 +24,7 @@
 // FOYDALANISH:
 //   node scripts/upload-missing-questions.mjs src/data/yangi_testlar/chqbt_140_yangi_savollar.json chqbt
 //   node scripts/upload-missing-questions.mjs <fayl> <fan> --apply
+//   node scripts/upload-missing-questions.mjs <fayl> <fan> --from-db   # paket emas, kolleksiya
 //
 // ⚠️ QO'SHGANDAN KEYIN SHART:
 //   node scripts/build-fs-bundle.mjs <fan>
@@ -34,13 +35,20 @@ import 'dotenv/config';
 import fs from 'node:fs';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore, collection, doc, getDoc, setDoc, writeBatch } from 'firebase/firestore';
+import { getFirestore, collection, doc, getDoc, getDocs, query, where, setDoc, writeBatch } from 'firebase/firestore';
 import { qHashOf, normalizeQuestion } from '../src/utils/qHash.js';
 
 const APP_URL = 'https://zehin-t41p.vercel.app';
 
 const argv = process.argv.slice(2);
 const APPLY = argv.includes('--apply');
+// ⚠️ 2026-08-30: paket har doim ham bazaning nusxasi EMAS. `deploy_chqbt.mjs`
+// paketni LOKAL FAYLDAN quradi — o'sha kuni paket 3524 ta savol berardi,
+// `questions` kolleksiyasida esa 3024 ta bor edi. Paketga solishtirilsa farq
+// «0» bo'lib ko'rinadi va yetishmagan savollar bazaga hech qachon tushmaydi.
+// `--from-db` KOLLEKSIYANING O'ZINI o'qiydi: qimmatroq (fan boshiga ~3 000
+// o'qish), lekin haqiqatni ko'rsatadi.
+const FROM_DB = argv.includes('--from-db');
 const [file, category] = argv.filter((a) => !a.startsWith('--'));
 
 if (!file || !category) {
@@ -67,12 +75,20 @@ console.log(`🔐 ${email} | fan: ${category}`);
 console.log(APPLY ? '🔴 REJIM: JONLI' : '🟢 REJIM: QURUQ YURISH');
 
 // ── 1. Bazaning joriy holati (paket orqali — arzon) ─────────────────────
-const token = await cred.user.getIdToken();
-const res = await fetch(`${APP_URL}/api/get-questions?category=${encodeURIComponent(category)}`, {
-  headers: { Authorization: `Bearer ${token}` },
-});
-if (!res.ok) { console.error('❌ Paket olinmadi, HTTP', res.status); process.exit(1); }
-const live = await res.json();
+let live;
+if (FROM_DB) {
+  const snap = await getDocs(query(collection(db, 'questions'), where('category', '==', category)));
+  live = snap.docs.map((d) => d.data());
+  console.log(`🗄️  Manba: questions kolleksiyasi (${snap.size} o'qish)`);
+} else {
+  const token = await cred.user.getIdToken();
+  const res = await fetch(`${APP_URL}/api/get-questions?category=${encodeURIComponent(category)}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) { console.error('❌ Paket olinmadi, HTTP', res.status); process.exit(1); }
+  live = await res.json();
+  console.log('📦 Manba: API paketi');
+}
 const liveSet = new Set(live.map((q) => normalizeQuestion(q.q)));
 console.log(`📦 Bazada hozir: ${live.length} ta savol`);
 
