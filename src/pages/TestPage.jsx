@@ -136,6 +136,10 @@ const TestPage = () => {
   const { addObjection } = useContext(ObjectionContext);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [reqJustSent, setReqJustSent] = useState(false);
+  // Yozuv ketayotganda tugma bloklanadi. Ilgari bu yo'q edi va `addDoc`
+  // kutilayotganda qayta bosish yangi hujjat yaratardi: 2026-08-29 da bitta
+  // foydalanuvchi 1,7 soniyada 6 ta bir xil so'rov yozgan.
+  const [reqSending, setReqSending] = useState(false);
   const [showRepetitionBanner, setShowRepetitionBanner] = useState(() => {
     try {
       return localStorage.getItem('hide_repetition_banner') !== 'true';
@@ -175,6 +179,18 @@ const TestPage = () => {
   // belgi bo'lardi. U faqat imtihonda ma'noli (ExamPage).
   const [navOpen, setNavOpen] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  // Hovuz BO'SH qolganda buning SABABI: `null` — savol rostdan yo'q;
+  // 'paywall' — obuna/sinov muddati tugagan (403 yoki permission-denied);
+  // 'network' — server band (429), Firestore kvotasi tugagan yoki aloqa yo'q.
+  //
+  // ⚠️ 2026-08-30 TAHLILI — nega bu ajratildi: uchala holat ham BITTA
+  // « Mavzu tayyorlanmoqda » ekranini va « Ko'proq savol kerak » tugmasini
+  // ko'rsatardi. Ya'ni obunasi tugagan odamga ilova "sizda obuna yo'q"
+  // emas, "bizda savol yo'q" derdi. Natija: questionRequests dagi 41
+  // so'rovning 36 tasi (88%) sinov muddati TUGAGAN foydalanuvchilardan
+  // kelgan, 73 foizi esa "Barcha bo'limlar" bo'yicha — ya'ni bazada
+  // 3024 ta CHQBT savoli turganda "savol yetarli emas" deb yozilgan.
+  const [emptyReason, setEmptyReason] = useState(null);
   const [showResults, setShowResults] = useState(false);
   const [amiDelta, setAmiDelta] = useState(0); // shu sessiyada AMI necha ballga o'zgargani
   const [gainedTiers, setGainedTiers] = useState([]); // shu sessiyada olingan track darajalari (muhr-qator)
@@ -450,6 +466,9 @@ const TestPage = () => {
     setFcFlipped(false);
     setFcKnown({});
 
+    // Yuklash nima sababdan uzilgani — bo'sh ekran matnini SHU belgilaydi.
+    let failure = null;
+
     try {
       let qList = [];
 
@@ -599,12 +618,14 @@ const TestPage = () => {
               if (!res.ok) {
                 if (res.status === 403) {
                   paywalled = true;
+                  failure = 'paywall';
                   showToast(t('test.toastPremiumRequired'), 'error');
                   setShowPremiumModal(true);
                 }
                 if (res.status === 429) {
                   // Vaqtinchalik holat, obuna muammosi emas.
                   throttled = true;
+                  failure = 'network';
                   showToast(t('test.toastServerBusy'), 'error');
                 }
                 throw new Error('Server error: ' + res.status);
@@ -663,6 +684,7 @@ const TestPage = () => {
               // foydalanuvchiga bo'sh ekran emas, obuna oynasi ko'rsatiladi.
               if (fsErr?.code === 'permission-denied') {
                 paywalled = true;
+                failure = 'paywall';
                 showToast(t('test.toastPremiumRequired'), 'error');
                 setShowPremiumModal(true);
               } else if (fsErr?.code === 'resource-exhausted') {
@@ -672,9 +694,11 @@ const TestPage = () => {
                 // Sabab foydalanuvchida emas, shuning uchun matn ham
                 // "xato" emas, "vaqtinchalik cheklov" deb yoziladi.
                 console.error('Firestore kvotasi tugagan:', fsErr);
+                failure = 'network';
                 showToast(t('test.toastServerBusy'), 'error');
               } else {
                 console.error("Firestore fallback xatosi:", fsErr);
+                failure = 'network';
               }
               rawList = [];
             }
@@ -737,6 +761,8 @@ const TestPage = () => {
 
       if (currentReq === generateReqRef.current) {
         setFullPool(finalPool);
+        // Sabab faqat hovuz BO'SH qolgandagina ma'noli.
+        setEmptyReason(finalPool.length === 0 ? failure : null);
 
         // ── Hovuzni BIR MARTA yozamiz ──
         // Bu yerdagi yozuv og'ir (CHQBT'da ~2.4 MB), lekin u seans boshida
@@ -769,6 +795,11 @@ const TestPage = () => {
       console.error("Firestore Error:", error);
       if (currentReq === generateReqRef.current) {
         showToast(t('test.toastLoadError'), 'error');
+        // Hovuz ATAYLAB bo'shatiladi: aks holda oldingi fanning savollari
+        // ekranda qolib ketardi. Sabab — "aloqa/server", chunki bu yerga
+        // faqat kutilmagan uzilish tushadi (token olinmadi, tarmoq uzildi).
+        setFullPool([]);
+        setEmptyReason('network');
       }
     } finally {
       if (currentReq === generateReqRef.current) {
@@ -883,6 +914,8 @@ const TestPage = () => {
   // "Ko'proq savol kerak" — tirik halqa so'rovi (questionRequests)
   const handleRequestMore = async () => {
     if (!user) { showToast(t('test.toastLoginToRequest'), 'error'); return; }
+    if (reqSending) return;
+    setReqSending(true);
     const categoryName = SUBJECTS.find(s => s.id === state.activeCategory)?.name || state.activeCategory;
     const res = await submitQuestionRequest(user, {
       category: state.activeCategory,
@@ -899,6 +932,7 @@ const TestPage = () => {
     } else {
       showToast(t('test.toastRequestErr'), 'error');
     }
+    setReqSending(false);
   };
 
   const handleShowResults = () => {
@@ -1127,7 +1161,7 @@ const TestPage = () => {
 
       {questions.length === 0 ? (
         <div className="empty-state-card">
-          <div className={`empty-state-glow ${mode === 'mistakes' ? 'success' : 'info'}`} />
+          <div className={`empty-state-glow ${mode === 'mistakes' ? 'success' : emptyReason === 'paywall' ? 'warn' : 'info'}`} />
           <div className="empty-state-content">
             {mode === 'mistakes' ? (
               <>
@@ -1138,6 +1172,34 @@ const TestPage = () => {
                 </p>
                 <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
                   <button className="btn btn-outline" onClick={goBack}><ArrowLeft size={16} /> {t('test.changeSubject')}</button>
+                </div>
+              </>
+            ) : emptyReason === 'paywall' ? (
+              // Savollar BOR, lekin bu hisob uchun yopiq. Ilgari bu holat ham
+              // "Mavzu tayyorlanmoqda" deb ko'rsatilardi va odam savol so'rardi.
+              <>
+                <div className="empty-state-icon warn float-animation">🔒</div>
+                <h3 className="empty-state-title">{t('test.emptyPaywallTitle')}</h3>
+                <p className="empty-state-text">
+                  {t('test.emptyPaywallText')}
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center' }}>
+                  <button className="btn btn-primary" style={{ width: '220px' }} onClick={() => setShowPremiumModal(true)}>{t('test.emptyPaywallBtn')}</button>
+                  <button className="btn btn-outline" style={{ width: '220px' }} onClick={goBack}><ArrowLeft size={16} /> {t('test.chooseOtherSubject')}</button>
+                </div>
+              </>
+            ) : emptyReason === 'network' ? (
+              // Server band (429), kvota tugagan yoki aloqa yo'q — savol
+              // yetishmasligi EMAS. Yagona to'g'ri harakat: qayta urinish.
+              <>
+                <div className="empty-state-icon info float-animation">📡</div>
+                <h3 className="empty-state-title">{t('test.emptyNetworkTitle')}</h3>
+                <p className="empty-state-text">
+                  {t('test.emptyNetworkText')}
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center' }}>
+                  <button className="btn btn-primary" style={{ width: '220px' }} onClick={() => generateFullPool()}><RefreshCw size={16} /> {t('test.emptyNetworkBtn')}</button>
+                  <button className="btn btn-outline" style={{ width: '220px' }} onClick={goBack}><ArrowLeft size={16} /> {t('test.chooseOtherSubject')}</button>
                 </div>
               </>
             ) : (
@@ -1153,7 +1215,7 @@ const TestPage = () => {
                       {t('test.requestSent')}
                     </div>
                   ) : (
-                    <button className="btn btn-primary" style={{ width: '220px' }} onClick={handleRequestMore}>{t('test.needMore')}</button>
+                    <button className="btn btn-primary" style={{ width: '220px' }} onClick={handleRequestMore} disabled={reqSending}>{reqSending ? t('test.requestSending') : t('test.needMore')}</button>
                   )}
                   {topicId !== -1 && (
                     <button className="btn btn-outline" style={{ width: '220px' }} onClick={() => setTopicId(-1)}>{t('test.allTopicsBtn')}</button>

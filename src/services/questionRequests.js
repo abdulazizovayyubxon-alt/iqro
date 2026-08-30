@@ -6,15 +6,34 @@
  * eng ko'p so'ralgan mavzularni ko'rib, savol qo'shgach foydalanuvchiga
  * bildirishnoma yuboradi.
  *
- * Spam oldini olish: bir foydalanuvchi bir mavzu uchun bir marta so'raydi
- * (localStorage'da belgilanadi — objections'dagi sentObjectionIds naqshi kabi).
+ * ⚠️ TAKRORLANISH — 2026-08-30 TAHLILI. Ilgari yozuv `addDoc` bilan, ya'ni HAR
+ * SAFAR YANGI ID bilan ketardi va "allaqachon so'radi" belgisi localStorage'ga
+ * faqat `await` TUGAGANDAN KEYIN yozilardi. Tarmoq sekin bo'lganda tugmani
+ * qayta bosgan odam bir necha hujjat yaratardi: 41 yozuvning 11 tasi shunday
+ * takror edi (bitta foydalanuvchi 1,7 soniyada 6 ta yozgan). Admin paneldagi
+ * "talab darajasi" ham shu sababli shishib ko'rinardi.
+ *
+ * Endi himoya UCH QAVAT:
+ *   1) localStorage belgisi (avvalgidek) — qurilma darajasida;
+ *   2) `inFlight` qulfi — bir vaqtda ketayotgan takror bosishlar uchun;
+ *   3) hujjat ID'si (uid, fan, mavzu) dan yasaladi — ya'ni takror yozuv
+ *      FIZIK JIHATDAN mumkin emas. Ikkinchi urinish `create` emas, `update`
+ *      bo'lib qoladi va firestore.rules uni rad etadi (update faqat admin) —
+ *      shuning uchun `permission-denied` bu yerda nosozlik emas, "allaqachon
+ *      yuborilgan" degani (masalan, xotirasi tozalangan qurilmada).
  */
 import { db } from '../firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { AnalyticsEvents } from './analytics';
 
 const sentKey = (uid) => `questionReq_${uid}`;
 const reqKey = (category, topicId) => `${category}:${topicId ?? -1}`;
+
+// Firestore hujjat ID'si. `/` bo'lmasligi kerak; uid/fan/mavzu belgilarida u yo'q.
+const docIdFor = (uid, category, topicId) => `${uid}__${category}__${topicId ?? -1}`;
+
+// Shu lahzada yozuvi ketayotgan kalitlar (tugmani qayta bosish himoyasi)
+const inFlight = new Set();
 
 // Foydalanuvchi avval so'rov yuborgan (category, topicId) kalitlari ro'yxati
 export function getSentRequests(uid) {
@@ -23,6 +42,19 @@ export function getSentRequests(uid) {
     return JSON.parse(localStorage.getItem(sentKey(uid)) || '[]');
   } catch {
     return [];
+  }
+}
+
+function markSent(uid, key) {
+  try {
+    const sent = getSentRequests(uid);
+    if (!sent.includes(key)) {
+      localStorage.setItem(sentKey(uid), JSON.stringify([...sent, key]));
+    }
+  } catch (e) {
+    // Xususiy rejimda localStorage yozib bo'lmaydi — bu so'rovni bekor
+    // qilmaydi: takrorni baribir hujjat ID'si to'xtatadi.
+    console.warn('questionRequest belgisi saqlanmadi:', e?.message);
   }
 }
 
@@ -42,9 +74,11 @@ export async function submitQuestionRequest(user, { category, categoryName, topi
   const key = reqKey(category, topicId);
   const sent = getSentRequests(user.uid);
   if (sent.includes(key)) return { ok: false, reason: 'duplicate' };
+  if (inFlight.has(key)) return { ok: false, reason: 'duplicate' };
+  inFlight.add(key);
 
   try {
-    await addDoc(collection(db, 'questionRequests'), {
+    await setDoc(doc(db, 'questionRequests', docIdFor(user.uid, category, topicId)), {
       uid: user.uid,
       userEmail: user.email || '',
       userName: user.displayName || '',
@@ -57,11 +91,19 @@ export async function submitQuestionRequest(user, { category, categoryName, topi
       timestamp: new Date(),
     });
 
-    localStorage.setItem(sentKey(user.uid), JSON.stringify([...sent, key]));
+    markSent(user.uid, key);
     AnalyticsEvents.questionRequest(topicName || categoryName || category || '');
     return { ok: true };
   } catch (e) {
+    // Hujjat allaqachon bor → qoidalar `update`ni rad etdi. Foydalanuvchi
+    // uchun bu "so'rov yuborilgan" holati, xato emas.
+    if (e?.code === 'permission-denied') {
+      markSent(user.uid, key);
+      return { ok: false, reason: 'duplicate' };
+    }
     console.error('questionRequest write error:', e);
     return { ok: false, reason: 'error' };
+  } finally {
+    inFlight.delete(key);
   }
 }

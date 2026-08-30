@@ -1162,10 +1162,12 @@ button {
 .empty-state-glow { position: absolute; width: 180px; height: 180px; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 0; }
 .empty-state-glow.success { background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%); }
 .empty-state-glow.info { background: radial-gradient(circle, rgba(14, 151, 224, 0.15) 0%, transparent 70%); }
+.empty-state-glow.warn { background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%); }
 .empty-state-content { position: relative; z-index: 1; }
 .empty-state-icon { font-size: var(--fs-hero); margin-bottom: 20px; display: inline-block; }
 .empty-state-icon.success { filter: drop-shadow(0 10px 15px rgba(16, 185, 129, 0.2)); }
 .empty-state-icon.info { filter: drop-shadow(0 10px 15px rgba(14, 151, 224, 0.2)); }
+.empty-state-icon.warn { filter: drop-shadow(0 10px 15px rgba(245, 158, 11, 0.2)); }
 .empty-state-title { font-size: var(--fs-h2); font-weight: 800; color: var(--text); margin-bottom: 10px; }
 .empty-state-text { color: var(--text3); font-size: var(--fs-body); line-height: 1.6; margin-bottom: 28px; max-width: 340px; margin: 0 auto 28px; }
 
