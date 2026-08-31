@@ -391,6 +391,14 @@
 .admin-chip--blue  { color: var(--blue);  background: var(--blue-bg); }
 .admin-chip--muted { color: var(--text3); background: var(--bg3); }
 
+/* Matn ichidagi havola-tugma — boshqa tabga o'tkazadi. <a> emas, chunki
+   manzil o'zgarmaydi: panel bitta sahifada, tab esa holatda saqlanadi. */
+.admin-link-btn {
+  background: none; border: none; padding: 0;
+  font: inherit; color: var(--blue); font-weight: 700;
+  text-decoration: underline; cursor: pointer;
+}
+
 /* 6. Xavfli tugma (o'chirish/bekor qilish) */
 .admin-btn-danger { color: var(--red); border-color: var(--red); }
 .admin-btn-ok {

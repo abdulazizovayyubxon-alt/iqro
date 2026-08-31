@@ -1479,6 +1479,100 @@ try {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [invCategory, inventory, gapByKey, reqCountByKey]);
 
+  // ── Pro obunachilar (2026-08-31) ──
+  // Ilgari Pro haqidagi yagona ma'lumot Statistikadagi BITTA raqam edi va u
+  // `isPremium` bayrog'i bo'yicha sanardi — ya'ni muddati o'tgan hisob ham
+  // "Pro" bo'lib turardi. Foydalanuvchilar ro'yxati esa eng yangi
+  // USER_PAGE_SIZE ta hisobni ko'rsatadi, obunachi esa o'sha ro'yxatga
+  // tushmasligi mumkin. Natijada "kimning obunasi ertaga tugaydi" degan
+  // savolga panel javob berolmasdi.
+  //
+  // Bu yerda ATAYLAB alohida so'rov: `isPremium == true`. O'qish soni =
+  // obunachilar soni (Statistikadagi "Pro" raqami), ya'ni oldindan ma'lum va
+  // kichik. `orderBy` YO'Q — tenglik + tartib birga kompozit indeks talab
+  // qilardi; saralash mijozda bajariladi.
+  const PRO_PAGE_SIZE = 500;
+  const [proUsers, setProUsers] = useState([]);
+  const [proLoading, setProLoading] = useState(false);
+  const [proError, setProError] = useState(null);
+  const [proLoaded, setProLoaded] = useState(false);
+  const [proTruncated, setProTruncated] = useState(false);
+  const [proFilter, setProFilter] = useState('all');
+  const loadProUsers = async ({ force = false } = {}) => {
+    if (!force && proLoaded) return;
+    setProLoading(true);
+    setProError(null);
+    try {
+      const snap = await getDocs(query(
+        collection(db, 'users'),
+        where('isPremium', '==', true),
+        limit(PRO_PAGE_SIZE),
+      ));
+      setProUsers(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+      setProTruncated(snap.size >= PRO_PAGE_SIZE);
+      setProLoaded(true);
+    } catch (e) {
+      console.error('pro users load:', e);
+      setProError(e?.message || 'Yuklashda xatolik');
+    } finally {
+      setProLoading(false);
+    }
+  };
+  useEffect(() => {
+    if (!isAdmin || tab !== 'premium') return;
+    loadProUsers();
+  }, [isAdmin, tab]);
+
+  // Har obunachi uchun: muddat, qolgan kun va JIMLIK muddati.
+  // Jimlik ataylab bor: pul to'lagan-u ilovaga kirmayotgan odam — obunani
+  // yangilamaydigan odam. Uni tugash sanasidan OLDIN ko'rish kerak.
+  const IDLE_ALERT_DAYS = 14;
+  const proRows = useMemo(() => {
+    const now = Date.now();
+    const toDate = (v) => {
+      if (!v) return null;
+      const d = v?.toDate ? v.toDate() : new Date(v?.seconds ? v.seconds * 1000 : v);
+      return Number.isNaN(d?.getTime?.()) ? null : d;
+    };
+    return proUsers.map(u => {
+      const exp = toDate(u.premiumExpire);
+      const last = toDate(u.lastActiveAt);
+      return {
+        ...u,
+        exp,
+        since: toDate(u.premiumSince),
+        daysLeft: exp ? Math.ceil((exp.getTime() - now) / 86400000) : null,
+        expired: !!exp && exp.getTime() < now,
+        idleDays: last ? Math.floor((now - last.getTime()) / 86400000) : null,
+      };
+    }).sort((a, b) => {
+      // Avval muammo: muddati o'tgan-u bayrog'i ochiq hisoblar (ular Pro
+      // sanog'ini shishiradi va kontentga kirishda davom etadi), keyin tez
+      // orada tugaydiganlar. Muddatsizlar oxirida.
+      if (a.expired !== b.expired) return a.expired ? -1 : 1;
+      if ((a.daysLeft === null) !== (b.daysLeft === null)) return a.daysLeft === null ? 1 : -1;
+      if (a.daysLeft !== b.daysLeft) return (a.daysLeft ?? 0) - (b.daysLeft ?? 0);
+      return (b.idleDays ?? 0) - (a.idleDays ?? 0);
+    });
+  }, [proUsers]);
+
+  const proSummary = useMemo(() => ({
+    jami: proRows.length,
+    faol: proRows.filter(r => !r.expired).length,
+    tugagan: proRows.filter(r => r.expired).length,
+    tugayotgan: proRows.filter(r => !r.expired && r.daysLeft !== null && r.daysLeft <= 7).length,
+    muddatsiz: proRows.filter(r => r.exp === null).length,
+    jim: proRows.filter(r => r.idleDays !== null && r.idleDays >= IDLE_ALERT_DAYS).length,
+  }), [proRows]);
+
+  const visibleProRows = useMemo(() => {
+    if (proFilter === 'expiring') return proRows.filter(r => !r.expired && r.daysLeft !== null && r.daysLeft <= 7);
+    if (proFilter === 'expired') return proRows.filter(r => r.expired);
+    if (proFilter === 'endless') return proRows.filter(r => r.exp === null);
+    if (proFilter === 'idle') return proRows.filter(r => r.idleDays !== null && r.idleDays >= IDLE_ALERT_DAYS);
+    return proRows;
+  }, [proRows, proFilter]);
+
   // ⚠️ ADMIN AUDIT 2026-08-06 — A-3, A-4, A-15 BANDLARI birga tuzatildi.
   //
   // AVVAL uchta muammo bor edi:
@@ -3179,6 +3273,9 @@ try {
     { key: 'requests', label: "So'rovlar", Icon: Inbox, badge: pendingReqGroups },
     { key: 'questions', label: 'Savollar', Icon: FileText, badge: pendingPublish ? 1 : 0 },
     { key: 'users', label: 'Foydalanuvchilar', Icon: Users, badge: 0 },
+    // Nishon = e'tibor talab qiladiganlar: muddati o'tgan-u bayrog'i ochiq +
+    // 7 kun ichida tugaydiganlar. Ro'yxat yuklanmaguncha 0.
+    { key: 'premium', label: 'Pro obunachilar', Icon: Crown, badge: proSummary.tugagan + proSummary.tugayotgan },
     // Hisobni o'chirish arizalari 2026-08-31 gacha Foydalanuvchilar tabining
     // ichida, ro'yxat tepasida turardi — Google Play javob berishni majbur
     // qilgan ariza boshqa ishning yon qatoriga aylanib qolgandi. Endi alohida
@@ -4111,6 +4208,117 @@ try {
                   </div>
                 </motion.div>
               ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {tab === 'premium' && (
+        <div className="admin-stack-l">
+          <div className="admin-row-between" style={{ flexWrap: 'wrap', gap: 8 }}>
+            <div className="admin-section-title admin-section-title--flush">
+              <Crown size={18} style={{ color: 'var(--amber)' }} /> Pro obunachilar ({proRows.length})
+            </div>
+            <button className="btn btn-sm btn-outline" onClick={() => loadProUsers({ force: true })} disabled={proLoading}>
+              <RefreshCw size={13} className={proLoading ? 'spin' : ''} /> Yangilash
+            </button>
+          </div>
+
+          <div className="admin-info-box">
+            <div className="admin-info-text">
+              Ro'yxat <code>isPremium</code> bo'yicha bazadan ALOHIDA o'qiladi — Foydalanuvchilar tabidagi «eng yangi {USER_PAGE_SIZE} ta hisob» chegarasiga bog'liq emas, ya'ni bironta obunachi tushib qolmaydi.
+            </div>
+            <div className="admin-info-text" style={{ marginTop: 8 }}>
+              <strong>Muddati tugagan</strong> qatorlar tepada: ular hali ham <code>isPremium</code> bilan turibdi, ya'ni Statistikadagi «Pro» raqamiga kiradi va kontentga kirishda davom etadi.{' '}
+              <strong>Jim</strong> — pul to'lagan, lekin {IDLE_ALERT_DAYS} kundan beri ilovaga kirmagan odam: obunani yangilamasligi ehtimoli eng yuqori guruh, ular bilan tugash sanasidan OLDIN gaplashish kerak.{' '}
+              Kartochkalar filtr vazifasini ham bajaradi; qatorni bossangiz foydalanuvchi kartasi ochiladi.
+            </div>
+          </div>
+
+          {proError && <div className="admin-state-block" style={{ color: 'var(--red)' }}>{proError}</div>}
+          {proLoading && proRows.length === 0 && <div className="admin-state-block">Yuklanmoqda...</div>}
+
+          <div className="admin-stats-grid">
+            {[
+              { key: 'all', val: proSummary.jami, lbl: 'Jami Pro', color: 'var(--amber)' },
+              { key: 'expiring', val: proSummary.tugayotgan, lbl: '7 kun ichida tugaydi', color: 'var(--blue)' },
+              { key: 'expired', val: proSummary.tugagan, lbl: 'Muddati tugagan', color: 'var(--red)' },
+              { key: 'idle', val: proSummary.jim, lbl: IDLE_ALERT_DAYS + '+ kun kirmagan', color: 'var(--text3)' },
+              { key: 'endless', val: proSummary.muddatsiz, lbl: 'Muddatsiz', color: 'var(--green)' },
+            ].map(c => (
+              <button
+                key={c.key}
+                type="button"
+                className="stat-box glass-panel"
+                onClick={() => setProFilter(c.key)}
+                aria-pressed={proFilter === c.key}
+                style={{
+                  cursor: 'pointer',
+                  font: 'inherit',
+                  outline: proFilter === c.key ? '2px solid var(--blue)' : 'none',
+                  outlineOffset: '-2px',
+                }}
+              >
+                <div className="stat-box-val" style={{ color: c.color }}>{c.val}</div>
+                <div className="stat-box-lbl">{c.lbl}</div>
+              </button>
+            ))}
+          </div>
+
+          <div className="admin-table-wrap">
+            <table className="admin-table">
+              <thead>
+                <tr>
+                  <th>Obunachi</th>
+                  <th>Aloqa</th>
+                  <th>Tarif</th>
+                  <th>Tugaydi</th>
+                  <th>Oxirgi faollik</th>
+                </tr>
+              </thead>
+              <tbody>
+                {visibleProRows.map(u => (
+                  <tr key={u.id} onClick={() => setUserCard(u)} style={{ cursor: 'pointer' }}>
+                    <td>
+                      <div style={{ fontWeight: 700 }}>{u.displayName || '—'}</div>
+                      <div className="admin-td-sub">{u.shortId || u.id.slice(0, 8)}</div>
+                    </td>
+                    <td className="admin-td-sub">{u.phoneNumber || u.phone || u.email || '—'}</td>
+                    <td>
+                      <span className="admin-chip admin-chip--muted">{u.premiumPlan || '—'}</span>
+                      {u.premiumMethod && <div className="admin-td-sub">{u.premiumMethod}</div>}
+                    </td>
+                    <td>
+                      {u.exp ? (
+                        <>
+                          <div>{u.exp.toLocaleDateString('uz-UZ')}</div>
+                          <div className="admin-td-sub" style={{ marginTop: 3 }}>
+                            {u.expired
+                              ? <span className="admin-chip admin-chip--red">tugagan</span>
+                              : u.daysLeft <= 7
+                                ? <span className="admin-chip admin-chip--amber">{u.daysLeft} kun qoldi</span>
+                                : u.daysLeft + ' kun qoldi'}
+                          </div>
+                        </>
+                      ) : <span className="admin-chip admin-chip--green">muddatsiz</span>}
+                    </td>
+                    <td>
+                      {u.idleDays === null ? '—' : (u.idleDays >= IDLE_ALERT_DAYS
+                        ? <span className="admin-chip admin-chip--muted">{u.idleDays} kun jim</span>
+                        : u.idleDays + ' kun oldin')}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {proLoaded && visibleProRows.length === 0 && (
+            <div className="admin-state-block">Bu filtrda obunachi yo'q.</div>
+          )}
+          {proTruncated && (
+            <div className="admin-info-text">
+              ⚠️ Ro'yxat {PRO_PAGE_SIZE} ta bilan chegaralangan — obunachilar shundan ko'p bo'lsa, qolgani ko'rinmaydi (o'qish kvotasi himoyasi).
             </div>
           )}
         </div>
@@ -5114,6 +5322,14 @@ try {
                 </div>
                 <div style={{ marginTop: 6 }}>
                   «Pro» — <code>isPremium</code> bayrog'i bo'yicha, ya'ni <strong>muddati tugaganlar ham</strong> shu songa kiradi.
+                  Kim, qachongacha va qaysi tarifda ekani —{' '}
+                  <button
+                    type="button"
+                    className="admin-link-btn"
+                    onClick={() => setTab('premium')}
+                  >
+                    «Pro obunachilar» bo'limida
+                  </button>.
                 </div>
                 {subjectStats.totalUsers != null && (
                   <div style={{ marginTop: 6 }}>
