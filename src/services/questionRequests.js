@@ -95,8 +95,16 @@ export async function submitQuestionRequest(user, { category, categoryName, topi
     AnalyticsEvents.questionRequest(topicName || categoryName || category || '');
     return { ok: true };
   } catch (e) {
-    // Hujjat allaqachon bor → qoidalar `update`ni rad etdi. Foydalanuvchi
-    // uchun bu "so'rov yuborilgan" holati, xato emas.
+    // `permission-denied` ning IKKI sababi bor, ikkalasi ham nosozlik emas:
+    //   1) hujjat allaqachon bor → yozuv `update` bo'lib qoldi (update faqat
+    //      admin uchun) — ya'ni so'rov allaqachon yuborilgan;
+    //   2) 2026-08-31 dan beri qoidalar obunasi/sinovi TUGAGAN foydalanuvchi
+    //      so'rovini ham rad etadi (`hasContentAccess()`), chunki savolni
+    //      ko'rmagan odam "savol yo'q" degan xulosaga asoslana olmaydi.
+    // Yangi mijozda 2-holat tugmagacha yetib kelmaydi: obunasi tugaganda
+    // TestPage «Ko'proq savol kerak» emas, «Obuna muddati tugagan» ekranini
+    // ko'rsatadi. Shuning uchun bu yerda ikkalasi ham 'duplicate' sifatida
+    // muomala qilinadi — xato oynasi chiqarishdan ko'ra tinchroq.
     if (e?.code === 'permission-denied') {
       markSent(user.uid, key);
       return { ok: false, reason: 'duplicate' };

@@ -190,9 +190,24 @@ service cloud.firestore {
     }
 
     // ── questionRequests: "Ko'proq savol kerak" so'rovi — foydalanuvchi o'z so'rovini yuboradi/o'qiydi, admin boshqaradi ──
+    //
+    // ⚠️ 2026-08-31 — CREATE shartiga `hasContentAccess()` QO'SHILDI.
+    // 30-avgust tuzatishi (ec72583) to'lov devorini "bizda savol yo'q" deb
+    // ko'rsatishni to'xtatdi, LEKIN u faqat YANGILANGAN mijozda ishlaydi:
+    // PWA `registerType: 'prompt'` — yangi paket foydalanuvchi «Yangilash»ni
+    // bosmaguncha `waiting` holatida turadi. Deploy (30.08, 22:34) dan keyin
+    // ham eski paketdagi ikki foydalanuvchi o'sha soxta so'rovni yozdi
+    // (hujjat ID'si tasodifiy — eski `addDoc` yo'li).
+    //
+    // Shuning uchun sabab MA'LUMOT darajasida yopiladi: obunasi/sinovi tugagan
+    // odam birorta savolni ko'ra olmaydi, demak "bu bo'limda savol yo'q" degan
+    // xulosaga asoslana olmaydi — uning yozuvi talab emas, shovqin. Qoidalar
+    // darajasidagi rad ilovaning HAR QANDAY versiyasida darhol kuchga kiradi.
     match /questionRequests/{docId} {
       allow read: if (isLoggedIn() && resource != null && resource.data.uid == request.auth.uid) || isAdmin();
-      allow create: if isLoggedIn() && request.resource.data.uid == request.auth.uid;
+      allow create: if isLoggedIn()
+                    && request.resource.data.uid == request.auth.uid
+                    && hasContentAccess();
       allow update, delete: if isAdmin();
     }
 
