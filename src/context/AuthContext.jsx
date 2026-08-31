@@ -60,7 +60,12 @@ try {
 }
 
 // ── Trial status hisoblash funksiyasi ──
-function computeTrialStatus(data) {
+//
+// EKSPORT (2026-08-31): admin paneli ham shu funksiyadan foydalanadi —
+// «So'rovlar» tabida so'rov egasining obuna holati ko'rsatiladi. Nusxa
+// mantiq yozilsa, admin ko'rgan holat foydalanuvchi ko'rgan holatdan
+// jimgina ajralib ketardi (masalan `premiumPlan === 'paid'` sharti).
+export function computeTrialStatus(data) {
   // Agar to'langan premium bo'lsa — 'premium'
   if (data.isPremium && data.premiumPlan === 'paid') return { status: 'premium', daysLeft: 0, urgencyMs: 0 };
   // Agar referral orqali premium bo'lsa va hali muddati tugamagan bo'lsa — 'premium'

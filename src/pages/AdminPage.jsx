@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContext } from '../context/ToastContext';
-import { useAuth } from '../context/AuthContext';
+import { useAuth, computeTrialStatus } from '../context/AuthContext';
 import { useAdmin } from '../hooks/useAdmin';
 import { db, auth } from '../firebase';
 import { invalidateSettings } from '../utils/settingsCache';
@@ -685,6 +685,8 @@ const AdminPage = () => {
   const [referralSummary, setReferralSummary] = useState({ total: 0, paid: 0, pending: 0, totalBonus: 0 });
   const [objections, setObjections] = useState([]);
   const [questionRequests, setQuestionRequests] = useState([]); // "Ko'proq savol kerak" so'rovlari
+  // So'rov egalarining profillari (uid -> users/{uid} yoki null = hisob yo'q).
+  const [reqUsers, setReqUsers] = useState({});
   const [users, setUsers] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [questionsLoading, setQuestionsLoading] = useState(false);
@@ -1335,6 +1337,36 @@ try {
     }, (err) => console.error('questionRequests fetch error:', err));
     return () => unsub();
   }, [isAdmin]);
+
+  // ── So'rov egalarining obuna holati ──
+  // ⚠️ 2026-08-31: talab darajasi KIM so'raganini ko'rsatmasdi — Pro
+  // obunachining so'rovi sinovdagi odamnikidan ajralmasdi, holbuki ular bir
+  // xil og'irlikda emas: pul to'lagan odam kutayotgan mavzu birinchi
+  // navbatda to'ldirilishi kerak.
+  //
+  // Yuklash naqshi errorLogs dagidek: FAQAT noyob va hali olinmagan uid'lar,
+  // 30 talik bo'laklarda (`in` filtri chegarasi) va faqat «So'rovlar» tabi
+  // ochilganda — o'qish kvotasi behuda sarflanmasin.
+  useEffect(() => {
+    if (!isAdmin || tab !== 'requests') return undefined;
+    const missing = [...new Set(questionRequests.map(r => r.uid).filter(Boolean))]
+      .filter(uid => !(uid in reqUsers));
+    if (!missing.length) return undefined;
+    let alive = true;
+    (async () => {
+      const map = {};
+      for (let i = 0; i < missing.length; i += 30) {
+        const chunk = missing.slice(i, i + 30);
+        const us = await getDocs(query(collection(db, 'users'), where(documentId(), 'in', chunk)));
+        us.docs.forEach(d => { map[d.id] = d.data(); });
+      }
+      // Topilmagan uid ham `null` bilan belgilanadi — aks holda o'chirilgan
+      // hisoblar har snapshot'da qayta-qayta so'ralaverardi.
+      missing.forEach(uid => { if (!(uid in map)) map[uid] = null; });
+      if (alive) setReqUsers(prev => ({ ...prev, ...map }));
+    })().catch(e => console.error("so'rov egalari yuklanmadi:", e));
+    return () => { alive = false; };
+  }, [isAdmin, tab, questionRequests, reqUsers]);
 
   // ⚠️ ADMIN AUDIT 2026-08-06 — A-3, A-4, A-15 BANDLARI birga tuzatildi.
   //
@@ -2947,6 +2979,27 @@ try {
   const unsolvedCount = objections.filter(o => !o.solved).length;
   const solvedCount = objections.filter(o => o.solved).length;
 
+  // ── So'rov egasining obuna holati (rozetka uchun) ──
+  // Manba — AuthContext dagi `computeTrialStatus`, ya'ni admin ko'rgan holat
+  // foydalanuvchi ilovada ko'radigan holat bilan AYNAN bir xil bo'ladi.
+  const requesterTier = useCallback((uid) => {
+    const u = reqUsers[uid];
+    if (u === undefined) return { key: 'loading', label: '…', chip: 'admin-chip--muted' };
+    if (u === null) return { key: 'gone', label: "HISOB O'CHIRILGAN", chip: 'admin-chip--muted' };
+    const { status, daysLeft } = computeTrialStatus(u);
+    if (status === 'premium') {
+      const exp = u.premiumExpire ? new Date(u.premiumExpire) : null;
+      return {
+        key: 'pro',
+        label: exp ? `PRO · ${exp.toLocaleDateString('uz-UZ')}` : 'PRO · MUDDATSIZ',
+        chip: 'admin-chip--amber',
+      };
+    }
+    if (status === 'trial') return { key: 'trial', label: `SINOV · ${daysLeft} kun`, chip: 'admin-chip--green' };
+    // 'urgency' (8–10 kun) ham shu yerda: kontentga kirish huquqi allaqachon yo'q.
+    return { key: 'expired', label: 'MUDDATI TUGAGAN', chip: 'admin-chip--muted' };
+  }, [reqUsers]);
+
   // ── "Ko'proq savol kerak" so'rovlarini mavzu bo'yicha guruhlash (talab darajasi) ──
   const requestGroups = Object.values(
     questionRequests.reduce((acc, r) => {
@@ -2965,18 +3018,29 @@ try {
       return acc;
     }, {})
   )
-    .map(g => ({
-      ...g,
-      count: g.items.length,
-      pending: g.items.filter(i => !i.fulfilled).length,
-      latest: g.items.reduce((max, i) => {
-        const t = i.timestamp?.toDate ? i.timestamp.toDate().getTime() : new Date(i.date || 0).getTime();
-        return t > max ? t : max;
-      }, 0),
-    }))
+    .map(g => {
+      const tiers = g.items.map(i => requesterTier(i.uid).key);
+      return {
+        ...g,
+        count: g.items.length,
+        pending: g.items.filter(i => !i.fulfilled).length,
+        pro: tiers.filter(k => k === 'pro').length,
+        trial: tiers.filter(k => k === 'trial').length,
+        expired: tiers.filter(k => k === 'expired' || k === 'gone').length,
+        latest: g.items.reduce((max, i) => {
+          const t = i.timestamp?.toDate ? i.timestamp.toDate().getTime() : new Date(i.date || 0).getTime();
+          return t > max ? t : max;
+        }, 0),
+      };
+    })
     .sort((a, b) => {
-      // Faol talab (bajarilmagan) tepada, keyin so'rovlar soni bo'yicha
+      // Faol talab (bajarilmagan) tepada, keyin PRO so'rovlari, keyin umumiy son.
+      //
+      // ⚠️ 2026-08-31: ilgari tartib FAQAT songa qarardi — sinovdagi to'rt kishi
+      // pul to'lagan bitta obunachidan tepada turardi. Pro so'rovi qimmatroq:
+      // u allaqachon to'langan va javobsiz qolsa obuna uzilishi mumkin.
       if ((a.pending > 0) !== (b.pending > 0)) return a.pending > 0 ? -1 : 1;
+      if (b.pro !== a.pro) return b.pro - a.pro;
       if (b.count !== a.count) return b.count - a.count;
       return b.latest - a.latest;
     });
@@ -3768,7 +3832,13 @@ try {
           <div className="admin-section-title"><Inbox size={18} style={{ color: 'var(--blue)' }} /> Savol so'rovlari ({questionRequests.length})</div>
           <div className="admin-info-box">
             <div className="admin-info-text">
-              Foydalanuvchilar savol yetishmagan mavzular uchun <strong>"Ko'proq savol kerak"</strong> so'rovini yuboradi. Eng ko'p so'ralgan mavzular tepada turadi. Savol qo'shgach <strong>"Savol qo'shildi"</strong> tugmasini bosing — so'rov yuborgan barcha foydalanuvchilarga avtomatik bildirishnoma boradi.
+              Foydalanuvchilar savol yetishmagan mavzular uchun <strong>"Ko'proq savol kerak"</strong> so'rovini yuboradi. Savol qo'shgach <strong>"Savol qo'shildi"</strong> tugmasini bosing — so'rov yuborgan barcha foydalanuvchilarga avtomatik bildirishnoma boradi.
+            </div>
+            <div className="admin-info-text" style={{ marginTop: 8 }}>
+              Tartib: avval <strong>bajarilmagan</strong>, keyin <strong>Pro so'rovlari</strong> ko'p bo'lgan mavzu, keyin umumiy son. Rozetkalar:
+              <span className="admin-chip admin-chip--amber" style={{ margin: '0 4px' }}>PRO</span> to'lagan obunachi,
+              <span className="admin-chip admin-chip--green" style={{ margin: '0 4px' }}>SINOV</span> bepul 7 kunlik davr.
+              Obunasi tugaganlar 31-avgustdan beri so'rov <strong>yubora olmaydi</strong> (firestore.rules) — ro'yxatdagi eski yozuvlar shundan oldingi davrga tegishli.
             </div>
           </div>
 
@@ -3800,13 +3870,41 @@ try {
                         ) : (
                           <span className="status-badge-neon pending" style={{ fontSize: 'var(--fs-2xs)', padding: '2px 8px', borderRadius: 6 }}>⏳ {group.pending} KUTMOQDA</span>
                         )}
+                        {group.pro > 0 && (
+                          <span className="admin-chip admin-chip--amber">⭐ {group.pro} Pro</span>
+                        )}
+                        {group.trial > 0 && (
+                          <span className="admin-chip admin-chip--green">🎁 {group.trial} sinov</span>
+                        )}
+                        {group.expired > 0 && (
+                          <span className="admin-chip admin-chip--muted">⌛ {group.expired} tugagan</span>
+                        )}
                         <span style={{ fontSize: 'var(--fs-sm)', color: 'var(--text3)' }}>{group.categoryName}</span>
                       </div>
                       <div style={{ fontSize: 'var(--fs-lg)', fontWeight: 700, color: 'var(--text)' }}>
                         {group.topicName} <span style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', fontWeight: 500 }}>#{group.topicId}</span>
                       </div>
-                      <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text3)', marginTop: 6 }}>
-                        So'raganlar: {group.items.slice(0, 5).map(i => i.userName || i.userEmail || 'Anonim').join(', ')}{group.items.length > 5 ? ` +${group.items.length - 5}` : ''}
+                      {/* So'raganlar — ism YONIDA obuna holati. Ilgari bu qator faqat
+                          ismlarni sanardi, ya'ni Pro obunachi ham, sinovdagi odam ham,
+                          hisobini o'chirgan odam ham bir xil ko'rinardi. */}
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 8 }}>
+                        {group.items.slice(0, 6).map(i => {
+                          const tier = requesterTier(i.uid);
+                          return (
+                            <span
+                              key={i.fbId}
+                              className={`admin-chip ${tier.chip}`}
+                              title={i.userEmail || i.uid}
+                              style={{ fontWeight: 600 }}
+                            >
+                              {i.userName || i.userEmail || 'Anonim'}
+                              <span style={{ fontWeight: 800, opacity: 0.85 }}>· {tier.label}</span>
+                            </span>
+                          );
+                        })}
+                        {group.items.length > 6 && (
+                          <span className="admin-chip admin-chip--muted">+{group.items.length - 6}</span>
+                        )}
                       </div>
                     </div>
                     <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>
