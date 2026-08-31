@@ -29,26 +29,60 @@ import BottomNav from './components/BottomNav';
 // ══════════════════════════════════════════════════════════════
 // React.lazy — sahifalar faqat kerak bo'lganda yuklanadi
 // Bu bundle'ni ~60% ga kamaytiradi (1.8MB → ~700KB asosiy chunk)
+//
+// ⚠️ 2026-08-31 — NAVIGATSIYA QOTIB QOLISHI. Har Vercel deploy OLDINGI
+// paketni o'chiradi: shu kuni tekshirildi — 40 daqiqa oldin jonli bo'lgan
+// `AdminPage-*.js` va `TestPage-*.js` endi 404 qaytardi. Ilova ochiq turgan
+// odam (ayniqsa admin — u panelda uzoq o'tiradi) shu paytda hali
+// yuklamagan sahifaga o'tsa, `import()` 404 ga uchraydi: manzil o'zgaradi,
+// lekin modul kelmaydi — ekran o'zgarmay "qotib qoladi", ortga qaytish ham
+// ishlamaydi (u ham xuddi shu chunk'ni so'raydi).
+//
+// To'g'ri javob — sahifani BIR MARTA qayta yuklash: shunda yangi
+// index.html va yangi chunk nomlari olinadi. Qayta yuklash sessiyaga bir
+// marta cheklangan (aks holda tarmoq uzilganda cheksiz halqa bo'lardi);
+// ikkinchi xatoda ErrorBoundary o'z ekranini ko'rsatadi.
+const CHUNK_RELOAD_KEY = 'iqro_chunk_reload';
+const chunkFlag = {
+  get() { try { return sessionStorage.getItem(CHUNK_RELOAD_KEY); } catch { return null; } },
+  set() { try { sessionStorage.setItem(CHUNK_RELOAD_KEY, String(Date.now())); } catch { /* private rejim */ } },
+  clear() { try { sessionStorage.removeItem(CHUNK_RELOAD_KEY); } catch { /* private rejim */ } },
+};
+const lazyPage = (factory) => React.lazy(() => factory().then((mod) => {
+  // Muvaffaqiyatli yuklandi — bayroqni tozalaymiz, keyingi deploydan keyin
+  // ham qutqaruv ishlashi uchun.
+  chunkFlag.clear();
+  return mod;
+}).catch((err) => {
+  if (!chunkFlag.get()) {
+    chunkFlag.set();
+    window.location.reload();
+    // Reload boshlangunga qadar Suspense ushlab turiladi — xato ekrani
+    // chaqnab o'tmasin.
+    return new Promise(() => {});
+  }
+  throw err;
+}));
 // ══════════════════════════════════════════════════════════════
-const Dashboard = React.lazy(() => import('./pages/Dashboard'));
-const TestPage = React.lazy(() => import('./pages/TestPage'));
-const ExamPage = React.lazy(() => import('./pages/ExamPage'));
-const SmartReviewPage = React.lazy(() => import('./pages/SmartReviewPage'));
-const LeaderboardPage = React.lazy(() => import('./pages/LeaderboardPage'));
-const AchievementsPage = React.lazy(() => import('./pages/AchievementsPage'));
-const AnalysisPage = React.lazy(() => import('./pages/AnalysisPage'));
-const SchoolPage = React.lazy(() => import('./pages/SchoolPage'));
-const AdminPage = React.lazy(() => import('./pages/AdminPage'));
-const MigrationPage = React.lazy(() => import('./pages/MigrationPage'));
-const ReferralPage = React.lazy(() => import('./pages/ReferralPage'));
-const PremiumPage = React.lazy(() => import('./pages/PremiumPage'));
-const SettingsPage = React.lazy(() => import('./pages/SettingsPage'));
-const ErrorNotebookPage = React.lazy(() => import('./pages/ErrorNotebookPage'));
-const PrivacyPage = React.lazy(() => import('./pages/PrivacyPage'));
-const TermsPage = React.lazy(() => import('./pages/TermsPage'));
-const DeleteAccountPage = React.lazy(() => import('./pages/DeleteAccountPage'));
-const AboutPage = React.lazy(() => import('./pages/AboutPage'));
-const PartnerPage = React.lazy(() => import('./pages/PartnerPage'));
+const Dashboard = lazyPage(() => import('./pages/Dashboard'));
+const TestPage = lazyPage(() => import('./pages/TestPage'));
+const ExamPage = lazyPage(() => import('./pages/ExamPage'));
+const SmartReviewPage = lazyPage(() => import('./pages/SmartReviewPage'));
+const LeaderboardPage = lazyPage(() => import('./pages/LeaderboardPage'));
+const AchievementsPage = lazyPage(() => import('./pages/AchievementsPage'));
+const AnalysisPage = lazyPage(() => import('./pages/AnalysisPage'));
+const SchoolPage = lazyPage(() => import('./pages/SchoolPage'));
+const AdminPage = lazyPage(() => import('./pages/AdminPage'));
+const MigrationPage = lazyPage(() => import('./pages/MigrationPage'));
+const ReferralPage = lazyPage(() => import('./pages/ReferralPage'));
+const PremiumPage = lazyPage(() => import('./pages/PremiumPage'));
+const SettingsPage = lazyPage(() => import('./pages/SettingsPage'));
+const ErrorNotebookPage = lazyPage(() => import('./pages/ErrorNotebookPage'));
+const PrivacyPage = lazyPage(() => import('./pages/PrivacyPage'));
+const TermsPage = lazyPage(() => import('./pages/TermsPage'));
+const DeleteAccountPage = lazyPage(() => import('./pages/DeleteAccountPage'));
+const AboutPage = lazyPage(() => import('./pages/AboutPage'));
+const PartnerPage = lazyPage(() => import('./pages/PartnerPage'));
 
 // ── Chunk'larni oldindan isitish ────────────────────────────────
 // MUAMMO: route sahifalarida `exit` animatsiyasi YO'Q, shuning uchun eski
@@ -526,7 +560,14 @@ function App() {
           {/* resetKey — route o'zgarganda xato holati tozalanadi (22-band) */}
           <ErrorBoundary resetKey={location.pathname}>
             <Suspense fallback={<PageSkeleton />}>
-              <AnimatePresence mode="wait">
+              {/* ⚠️ 2026-08-31 — `mode="wait"` OLIB TASHLANDI. U chiqayotgan
+                  ekranning exit animatsiyasi tugashini kutadi, LEKIN route
+                  sahifalarida exit animatsiyasi umuman yo'q (yuqoridagi
+                  warmChunks izohiga qarang) — ya'ni foydasi nol edi. Zarari
+                  esa bor: kirayotgan sahifa Suspense'ga tushsa (chunk hali
+                  yuklanmagan yoki 404), navbat shu yerda tiqilib qolardi va
+                  ekran umuman almashmasdi. */}
+              <AnimatePresence>
                 <Routes location={location} key={location.pathname}>
                   <Route path="/" element={<Navigate to="/dashboard" replace />} />
                   <Route path="/dashboard" element={<Dashboard />} />
