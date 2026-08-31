@@ -949,7 +949,6 @@ const AdminPage = () => {
     if (!isAdmin || tab !== 'stats') return;
     if (subjectStats || subjectStatsLoading) return;
     loadSubjectStats();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tab, isAdmin]);
 
   // ── Kunlik faollik tarixi ────────────────────────────────────────────────
@@ -1498,6 +1497,8 @@ try {
   const [proLoaded, setProLoaded] = useState(false);
   const [proTruncated, setProTruncated] = useState(false);
   const [proFilter, setProFilter] = useState('all');
+  const [proSearch, setProSearch] = useState('');
+  const [proSubject, setProSubject] = useState('all');
   const loadProUsers = async ({ force = false } = {}) => {
     if (!force && proLoaded) return;
     setProLoading(true);
@@ -1541,9 +1542,20 @@ try {
         ...u,
         exp,
         since: toDate(u.premiumSince),
+        pushPerm: u.pushPerm || null,
         daysLeft: exp ? Math.ceil((exp.getTime() - now) / 86400000) : null,
         expired: !!exp && exp.getTime() < now,
         idleDays: last ? Math.floor((now - last.getTime()) / 86400000) : null,
+        // Obuna necha kunga olingan (sotilgan paket uzunligi) va necha kundan
+        // beri obunachi — ikkalasi ham "kim uzoq qoladi" savoliga ishlaydi.
+        planDays: (() => {
+          const since = toDate(u.premiumSince);
+          return since && exp ? Math.round((exp.getTime() - since.getTime()) / 86400000) : null;
+        })(),
+        memberDays: (() => {
+          const since = toDate(u.premiumSince);
+          return since ? Math.floor((now - since.getTime()) / 86400000) : null;
+        })(),
       };
     }).sort((a, b) => {
       // Avval muammo: muddati o'tgan-u bayrog'i ochiq hisoblar (ular Pro
@@ -1563,15 +1575,37 @@ try {
     tugayotgan: proRows.filter(r => !r.expired && r.daysLeft !== null && r.daysLeft <= 7).length,
     muddatsiz: proRows.filter(r => r.exp === null).length,
     jim: proRows.filter(r => r.idleDays !== null && r.idleDays >= IDLE_ALERT_DAYS).length,
+    yangi30: proRows.filter(r => r.memberDays !== null && r.memberDays <= 30).length,
+    ortachaPaket: (() => {
+      const vals = proRows.map(r => r.planDays).filter(v => v !== null);
+      return vals.length ? Math.round(vals.reduce((a, v) => a + v, 0) / vals.length) : null;
+    })(),
+    pushOchiq: proRows.filter(r => r.pushPerm === 'granted').length,
   }), [proRows]);
 
+  // Pro obunachilar QAYSI fanda tayyorlanmoqda — kontentni qayerga qo'yish
+  // kerakligini shu ro'yxat aytadi: pul to'lagan odam kutayotgan fan
+  // birinchi navbatda to'ldirilishi kerak.
+  const proBySubject = useMemo(() => {
+    const m = {};
+    proRows.forEach(r => { const k = r.subject || '—'; m[k] = (m[k] || 0) + 1; });
+    return Object.entries(m).sort((a, b) => b[1] - a[1]);
+  }, [proRows]);
+
   const visibleProRows = useMemo(() => {
-    if (proFilter === 'expiring') return proRows.filter(r => !r.expired && r.daysLeft !== null && r.daysLeft <= 7);
-    if (proFilter === 'expired') return proRows.filter(r => r.expired);
-    if (proFilter === 'endless') return proRows.filter(r => r.exp === null);
-    if (proFilter === 'idle') return proRows.filter(r => r.idleDays !== null && r.idleDays >= IDLE_ALERT_DAYS);
-    return proRows;
-  }, [proRows, proFilter]);
+    let rows = proRows;
+    if (proFilter === 'expiring') rows = rows.filter(r => !r.expired && r.daysLeft !== null && r.daysLeft <= 7);
+    else if (proFilter === 'expired') rows = rows.filter(r => r.expired);
+    else if (proFilter === 'endless') rows = rows.filter(r => r.exp === null);
+    else if (proFilter === 'idle') rows = rows.filter(r => r.idleDays !== null && r.idleDays >= IDLE_ALERT_DAYS);
+    if (proSubject !== 'all') rows = rows.filter(r => (r.subject || '—') === proSubject);
+    const q = proSearch.trim().toLowerCase();
+    if (q) {
+      rows = rows.filter(r => [r.displayName, r.phone, r.phoneNumber, r.email, r.shortId]
+        .some(v => String(v || '').toLowerCase().includes(q)));
+    }
+    return rows;
+  }, [proRows, proFilter, proSubject, proSearch]);
 
   // ⚠️ ADMIN AUDIT 2026-08-06 — A-3, A-4, A-15 BANDLARI birga tuzatildi.
   //
@@ -4219,9 +4253,33 @@ try {
             <div className="admin-section-title admin-section-title--flush">
               <Crown size={18} style={{ color: 'var(--amber)' }} /> Pro obunachilar ({proRows.length})
             </div>
-            <button className="btn btn-sm btn-outline" onClick={() => loadProUsers({ force: true })} disabled={proLoading}>
-              <RefreshCw size={13} className={proLoading ? 'spin' : ''} /> Yangilash
-            </button>
+            <div className="admin-row--tight">
+              <button
+                className="btn btn-sm btn-outline"
+                onClick={() => exportCSV(
+                  'pro_obunachilar',
+                  ['ID', 'Ism', 'Telefon', 'Fan', 'Toifa', 'Tarif', 'Usul', 'Boshlangan', 'Tugaydi', 'Qolgan kun', 'Oxirgi faollik'],
+                  visibleProRows.map(u => [
+                    u.shortId || u.id,
+                    u.displayName || '',
+                    u.phone || u.phoneNumber || '',
+                    subjectName(u.subject) || '',
+                    TOIFA_NAMES[u.teacherCategory] || u.teacherCategory || '',
+                    u.premiumPlan || '',
+                    u.premiumMethod || '',
+                    u.since ? u.since.toISOString().slice(0, 10) : '',
+                    u.exp ? u.exp.toISOString().slice(0, 10) : 'muddatsiz',
+                    u.daysLeft ?? '',
+                    u.idleDays === null ? '' : u.idleDays + ' kun oldin',
+                  ]),
+                )}
+              >
+                <Download size={13} /> CSV
+              </button>
+              <button className="btn btn-sm btn-outline" onClick={() => loadProUsers({ force: true })} disabled={proLoading}>
+                <RefreshCw size={13} className={proLoading ? 'spin' : ''} /> Yangilash
+              </button>
+            </div>
           </div>
 
           <div className="admin-info-box">
@@ -4265,15 +4323,61 @@ try {
             ))}
           </div>
 
+          <div className="admin-search-wrap">
+            <Search size={16} className="admin-search-icon" />
+            <input
+              className="admin-search"
+              value={proSearch}
+              onChange={e => setProSearch(e.target.value)}
+              placeholder="Ism, telefon yoki ID bo'yicha qidirish..."
+              aria-label="Pro obunachilar orasidan qidirish"
+            />
+          </div>
+
+          {/* Fan kesimi: pul to'lagan odamlar qaysi fanga tayyorlanmoqda —
+              kontentni qayerga qo'yish kerakligini shu ro'yxat aytadi. */}
+          {proBySubject.length > 0 && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, alignItems: 'center' }}>
+              <span className="admin-info-text" style={{ marginRight: 2 }}>Fan bo'yicha:</span>
+              <button
+                type="button"
+                className={`admin-chip ${proSubject === 'all' ? 'admin-chip--blue' : 'admin-chip--muted'}`}
+                style={{ cursor: 'pointer' }}
+                onClick={() => setProSubject('all')}
+              >
+                Hammasi {proRows.length}
+              </button>
+              {proBySubject.map(([sub, n]) => (
+                <button
+                  key={sub}
+                  type="button"
+                  className={`admin-chip ${proSubject === sub ? 'admin-chip--blue' : 'admin-chip--muted'}`}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setProSubject(proSubject === sub ? 'all' : sub)}
+                >
+                  {subjectName(sub) || sub} {n}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <div className="admin-info-text">
+            O'rtacha sotilgan paket: <strong>{proSummary.ortachaPaket !== null ? proSummary.ortachaPaket + ' kun' : '—'}</strong> ·
+            oxirgi 30 kunda yangi: <strong>{proSummary.yangi30}</strong> ·
+            push ruxsati bor: <strong>{proSummary.pushOchiq}</strong> / {proRows.length}
+            {' '}(qolganlariga eslatma YETIB BORMAYDI — ular bilan boshqa yo'l bilan bog'laning)
+          </div>
+
           <div className="admin-table-wrap">
             <table className="admin-table">
               <thead>
                 <tr>
                   <th>Obunachi</th>
                   <th>Aloqa</th>
+                  <th>Fan / toifa</th>
                   <th>Tarif</th>
                   <th>Tugaydi</th>
-                  <th>Oxirgi faollik</th>
+                  <th>Faollik</th>
                 </tr>
               </thead>
               <tbody>
@@ -4281,12 +4385,21 @@ try {
                   <tr key={u.id} onClick={() => setUserCard(u)} style={{ cursor: 'pointer' }}>
                     <td>
                       <div style={{ fontWeight: 700 }}>{u.displayName || '—'}</div>
-                      <div className="admin-td-sub">{u.shortId || u.id.slice(0, 8)}</div>
+                      <div className="admin-td-sub">
+                        {u.shortId || u.id.slice(0, 8)}
+                        {u.memberDays !== null && ` · ${u.memberDays} kundan beri`}
+                      </div>
                     </td>
                     <td className="admin-td-sub">{u.phoneNumber || u.phone || u.email || '—'}</td>
                     <td>
+                      <div>{subjectName(u.subject) || '—'}</div>
+                      <div className="admin-td-sub">{TOIFA_NAMES[u.teacherCategory] || u.teacherCategory || '—'}</div>
+                    </td>
+                    <td>
                       <span className="admin-chip admin-chip--muted">{u.premiumPlan || '—'}</span>
-                      {u.premiumMethod && <div className="admin-td-sub">{u.premiumMethod}</div>}
+                      <div className="admin-td-sub">
+                        {u.premiumMethod || '—'}{u.planDays !== null && ` · ${u.planDays} kunlik`}
+                      </div>
                     </td>
                     <td>
                       {u.exp ? (
@@ -4306,6 +4419,14 @@ try {
                       {u.idleDays === null ? '—' : (u.idleDays >= IDLE_ALERT_DAYS
                         ? <span className="admin-chip admin-chip--muted">{u.idleDays} kun jim</span>
                         : u.idleDays + ' kun oldin')}
+                      {/* Push ruxsati — «bu odamga eslatma yubora olamizmi?»
+                          degan savolning javobi. Ruxsat yo'q bo'lsa, obuna
+                          tugashi haqidagi eslatma unga YETIB BORMAYDI. */}
+                      <div className="admin-td-sub">
+                        {u.pushPerm === 'granted' ? '🔔 eslatma boradi'
+                          : u.pushPerm === 'denied' ? '🔕 bloklangan'
+                            : u.pushPerm === 'default' ? "🔕 so'ralmagan" : '🔕 —'}
+                      </div>
                     </td>
                   </tr>
                 ))}
