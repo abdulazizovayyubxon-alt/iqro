@@ -211,6 +211,47 @@ service cloud.firestore {
       allow update, delete: if isAdmin();
     }
 
+    // ── contentGaps: "savol yetishmayapti" signali (mavzu boshiga BITTA hujjat) ──
+    //
+    // ⚠️ 2026-08-31. `questionRequests` talabning KICHIK va QIYSHIQ namunasi:
+    // bo'sh ekranni ko'rganlarning ozgina qismi tugma bosadi. Shu sababli
+    // hodisaning O'ZI sanaladi (src/services/contentGaps.js):
+    //   empty     — mavzu rostdan bo'sh chiqdi (paywall/tarmoq emas);
+    //   exhausted — foydalanuvchi mavzuni to'liq aylanib chiqdi.
+    //
+    // Hujjat foydalanuvchi boshiga EMAS, MAVZU boshiga ochiladi — kolleksiya
+    // mavzular soni bilan chegaralangan, ya'ni cheksiz o'smaydi. Mijozdagi
+    // qulf yozuvni kuniga/haftasiga bittaga tushiradi; bu qoida esa qiymat
+    // SAKRASHINI to'sadi — hisoblagich har yozuvda ko'pi bilan 1 ga oshadi va
+    // hech qachon kamaymaydi (aks holda bir kishi butun statistikani nolga
+    // tushirib yuborardi).
+    function gapFieldsOk() {
+      return request.resource.data.keys().hasOnly(['category', 'categoryName', 'topicId', 'topicName', 'empty', 'exhausted', 'pro', 'trial', 'lastAt'])
+        && request.resource.data.empty is int
+        && request.resource.data.exhausted is int
+        && request.resource.data.pro is int
+        && request.resource.data.trial is int
+        && request.resource.data.topicId is int;
+    }
+    match /contentGaps/{gapId} {
+      allow read: if isAdmin();
+      allow create: if isLoggedIn() && hasContentAccess() && gapFieldsOk()
+                    && request.resource.data.empty <= 1
+                    && request.resource.data.exhausted <= 1
+                    && request.resource.data.pro <= 1
+                    && request.resource.data.trial <= 1;
+      allow update: if isLoggedIn() && hasContentAccess() && gapFieldsOk()
+                    && request.resource.data.empty >= resource.data.empty
+                    && request.resource.data.empty <= resource.data.empty + 1
+                    && request.resource.data.exhausted >= resource.data.exhausted
+                    && request.resource.data.exhausted <= resource.data.exhausted + 1
+                    && request.resource.data.pro >= resource.data.pro
+                    && request.resource.data.pro <= resource.data.pro + 1
+                    && request.resource.data.trial >= resource.data.trial
+                    && request.resource.data.trial <= resource.data.trial + 1;
+      allow delete: if isAdmin();
+    }
+
     // ── users: foydalanuvchi profili (faqat o'zini o'qiydi yoki admin) ──
     //
     // HIMOYALANGAN MAYDONLAR — mijoz ularga HECH QACHON yozmaydi.

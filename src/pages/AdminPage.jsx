@@ -571,7 +571,7 @@ const AdminPage = () => {
       .finally(() => setDelReqLoading(false));
   };
   useEffect(() => {
-    if (!isAdmin || tab !== 'users') return;
+    if (!isAdmin || tab !== 'deletions') return;
     loadDeletionRequests();
   }, [tab, isAdmin]);
   const newDeletionRequests = deletionRequests.filter(r => r.status === 'pending').length;
@@ -593,6 +593,10 @@ const AdminPage = () => {
     if (digits.length < 9) { showToast("Arizada telefon raqami yo'q", 'error'); return; }
     setUserSearch(digits);
     searchUsersOnServer(digits);
+    // Natija Foydalanuvchilar ro'yxatida chiqadi — ariza endi alohida tabda
+    // turgani uchun o'sha tabga o'tkazamiz, aks holda admin qidiruv ishlamadi
+    // deb o'ylardi.
+    setTab('users');
   };
 
   const setDeletionRequestStatus = async (id, status) => {
@@ -824,7 +828,7 @@ const AdminPage = () => {
       // badge'idagi raqam FAQAT yuklangan 200 ta e'tirozdan hisoblanardi
       // (limit(200)) — go'yo jami son bo'lib ko'rinardi. Aggregatsiya
       // so'rovi 1000 hujjatga 1 o'qish, ya'ni deyarli bepul.
-      const [u, p, q, r, o, v] = await Promise.all([
+      const [u, p, q, r, o, v, dr] = await Promise.all([
         getCountFromServer(collection(db, 'users')),
         getCountFromServer(query(collection(db, 'users'), where('isPremium', '==', true))),
         getCountFromServer(collection(db, 'questions')),
@@ -834,6 +838,11 @@ const AdminPage = () => {
         // paket qurilmagan bo'lsa har foydalanuvchi fan boshiga ~2 900 o'qish
         // sarflaydi (qarang: handleRebuildBundles).
         getDoc(doc(db, 'settings', 'version')).catch(() => null),
+        // Hisobni o'chirish arizalari — javob berish Google Play majburiyati.
+        // Ro'yxatning O'ZI faqat tab ochilganda yuklanadi; bu yerda faqat SON,
+        // aks holda tab nishoni ochilmaguncha 0 bo'lib turardi (ya'ni yangi
+        // ariza ko'zga tashlanmasdi).
+        getCountFromServer(query(collection(db, 'deletionRequests'), where('status', '==', 'pending'))).catch(() => null),
       ]);
       setOverview({
         users: u.data().count,
@@ -841,6 +850,7 @@ const AdminPage = () => {
         questions: q.data().count,
         referrals: r.data().count,
         unsolvedObjections: o.data().count,
+        pendingDeletions: dr ? dr.data().count : null,
       });
       const vData = v?.exists?.() ? v.data() : null;
       const b = vData?.bundles || {};
@@ -1367,6 +1377,107 @@ try {
     })().catch(e => console.error("so'rov egalari yuklanmadi:", e));
     return () => { alive = false; };
   }, [isAdmin, tab, questionRequests, reqUsers]);
+
+  // ── Kontent bo'shliqlari va inventar (2026-08-31) ──
+  // So'rovlar tabining IKKINCHI qatlami. «Ko'proq savol kerak» tugmasini
+  // bo'sh ekranni ko'rganlarning ozgina qismi bosadi, ya'ni so'rovlar soni
+  // talabni KAM ko'rsatadi. `contentGaps` esa hodisani sanaydi: mavzu rostdan
+  // bo'sh chiqqani va foydalanuvchi mavzuni tugatib qo'ygani
+  // (src/services/contentGaps.js). Hujjat mavzu boshiga bitta — kolleksiya
+  // kichik, o'qish arzon.
+  const [gaps, setGaps] = useState([]);
+  const [gapsLoading, setGapsLoading] = useState(false);
+  const [gapsError, setGapsError] = useState(null);
+  const [gapsLoaded, setGapsLoaded] = useState(false);
+  const loadContentGaps = ({ force = false } = {}) => {
+    if (!force && gapsLoaded) return;
+    setGapsLoading(true);
+    setGapsError(null);
+    getDocs(collection(db, 'contentGaps'))
+      .then(snap => {
+        setGaps(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+        setGapsLoaded(true);
+      })
+      .catch(e => {
+        console.error('contentGaps load:', e);
+        setGapsError(e?.message || 'Yuklashda xatolik');
+      })
+      .finally(() => setGapsLoading(false));
+  };
+  useEffect(() => {
+    if (!isAdmin || tab !== 'requests') return;
+    loadContentGaps();
+  }, [isAdmin, tab]);
+
+  // Savollar inventari — FAQAT tugma bosilganda. Har mavzu uchun bitta
+  // agregat so'rov (`getCountFromServer`), ya'ni fanga ~7–10 ta so'rov va
+  // har 1000 mos hujjatga 1 o'qish. Butun bazani yuklashdan ming marta arzon.
+  const [invCategory, setInvCategory] = useState('chqbt');
+  const [inventory, setInventory] = useState(null);
+  const [invLoading, setInvLoading] = useState(false);
+  const [invError, setInvError] = useState(null);
+  const topicsOfCategory = (cat) => TOPICS.filter(tp => (Array.isArray(tp.category)
+    ? tp.category.includes(cat)
+    : tp.category === cat));
+  const loadInventory = async () => {
+    setInvLoading(true);
+    setInvError(null);
+    try {
+      const topics = topicsOfCategory(invCategory);
+      const pairs = await Promise.all(topics.map(tp => getCountFromServer(query(
+        collection(db, 'questions'),
+        where('category', '==', invCategory),
+        where('topicId', '==', tp.id),
+      )).then(r => [tp.id, r.data().count])));
+      const byTopic = {};
+      pairs.forEach(([id, c]) => { byTopic[id] = c; });
+      setInventory({
+        category: invCategory,
+        byTopic,
+        total: pairs.reduce((sum, [, c]) => sum + c, 0),
+        at: Date.now(),
+      });
+    } catch (e) {
+      console.error('inventar:', e);
+      setInvError(e?.message || 'Sanashda xatolik');
+    } finally {
+      setInvLoading(false);
+    }
+  };
+
+  // Mavzu qatorlari: inventar + so'rovlar + hodisalar bitta jadvalda.
+  const gapByKey = useMemo(() => {
+    const m = {};
+    gaps.forEach(g => { m[`${g.category}:${g.topicId}`] = g; });
+    return m;
+  }, [gaps]);
+  const reqCountByKey = useMemo(() => {
+    const m = {};
+    questionRequests.forEach(r => {
+      const k = `${r.category}:${r.topicId}`;
+      m[k] = (m[k] || 0) + 1;
+    });
+    return m;
+  }, [questionRequests]);
+  const inventoryRows = useMemo(() => {
+    const rows = [{ topicId: -1, topicName: "Aralash / Barcha bo'limlar" }]
+      .concat(topicsOfCategory(invCategory).map(tp => ({ topicId: tp.id, topicName: tp.name })));
+    const fresh = inventory && inventory.category === invCategory ? inventory : null;
+    return rows.map(r => {
+      const g = gapByKey[`${invCategory}:${r.topicId}`] || {};
+      return {
+        ...r,
+        // «Aralash» qatorida fan bo'yicha JAMI son ko'rsatiladi — bu qatordagi
+        // signal ham aynan butun fanga tegishli.
+        questions: fresh ? (r.topicId === -1 ? fresh.total : (fresh.byTopic[r.topicId] ?? 0)) : null,
+        requests: reqCountByKey[`${invCategory}:${r.topicId}`] || 0,
+        empty: g.empty || 0,
+        exhausted: g.exhausted || 0,
+        pro: g.pro || 0,
+      };
+    }).sort((a, b) => (b.empty + b.exhausted + b.requests) - (a.empty + a.exhausted + a.requests) || a.topicId - b.topicId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [invCategory, inventory, gapByKey, reqCountByKey]);
 
   // ⚠️ ADMIN AUDIT 2026-08-06 — A-3, A-4, A-15 BANDLARI birga tuzatildi.
   //
@@ -3067,7 +3178,13 @@ try {
     { key: 'objections', label: "E'tirozlar", Icon: MessageCircle, badge: overview?.unsolvedObjections ?? unsolvedCount },
     { key: 'requests', label: "So'rovlar", Icon: Inbox, badge: pendingReqGroups },
     { key: 'questions', label: 'Savollar', Icon: FileText, badge: pendingPublish ? 1 : 0 },
-    { key: 'users', label: 'Foydalanuvchilar', Icon: Users, badge: newDeletionRequests },
+    { key: 'users', label: 'Foydalanuvchilar', Icon: Users, badge: 0 },
+    // Hisobni o'chirish arizalari 2026-08-31 gacha Foydalanuvchilar tabining
+    // ichida, ro'yxat tepasida turardi — Google Play javob berishni majbur
+    // qilgan ariza boshqa ishning yon qatoriga aylanib qolgandi. Endi alohida
+    // bo'lim. Nishon soni umumiy statistikadan (agregat so'rov) olinadi, ya'ni
+    // tab ochilmasdan ham ko'rinadi.
+    { key: 'deletions', label: "Hisob o'chirish", Icon: Trash2, badge: overview?.pendingDeletions ?? newDeletionRequests },
     { key: 'payments', label: "To'lovlar", Icon: CreditCard, badge: 0 },
     { key: 'stats', label: 'Statistika', Icon: BarChart3, badge: 0 },
     { key: 'tariffs', label: 'Tariflar', Icon: Zap, badge: 0 },
@@ -3842,6 +3959,80 @@ try {
             </div>
           </div>
 
+          {/* ── Kontent inventari va hodisa hisoblagichlari (2026-08-31) ──
+              Yuqoridagi ro'yxat — tugma BOSGANLAR. Bu jadval esa hodisani
+              ko'rsatadi: mavzu rostdan bo'sh chiqqani va uni tugatib
+              qo'yganlar. Bo'sh ekranni ko'rgan odamlarning ko'pchiligi
+              shikoyat yozmaydi — shuning uchun talabni faqat so'rovlar bilan
+              o'lchash bazani noto'g'ri joyga to'ldirishga olib keladi. */}
+          <div className="glass-panel" style={{ padding: 16 }}>
+            <div className="admin-row-between" style={{ marginBottom: 10, flexWrap: 'wrap', gap: 8 }}>
+              <div className="admin-row" style={{ fontWeight: 800, color: 'var(--text)' }}>
+                <Database size={16} style={{ color: 'var(--blue)' }} /> Kontent inventari
+                {gapsLoading && <span className="admin-info-text">&nbsp;yuklanmoqda…</span>}
+              </div>
+              <div className="admin-row--tight">
+                <select
+                  className="admin-select"
+                  style={{ maxWidth: 210 }}
+                  value={invCategory}
+                  onChange={(e) => setInvCategory(e.target.value)}
+                  aria-label="Fan tanlash"
+                >
+                  {SUBJECTS.map(sub => <option key={sub.id} value={sub.id}>{sub.name}</option>)}
+                </select>
+                <button className="btn btn-sm btn-outline" onClick={loadInventory} disabled={invLoading}>
+                  <RefreshCw size={13} className={invLoading ? 'spin' : ''} /> Savollarni sanash
+                </button>
+              </div>
+            </div>
+
+            <div className="admin-info-text" style={{ marginBottom: 10 }}>
+              <strong>So'rov</strong> — tugma bosganlar soni.{' '}
+              <strong>Bo'sh ekran</strong> — mavzu rostdan bo'sh chiqqan hodisalar; bir qurilma bir mavzu uchun kuniga bir marta sanaladi.{' '}
+              <strong>Tugatgan</strong> — savollarni to'liq aylanib chiqqanlar (haftada bir marta). Bu ikkisi tugma bosilishini KUTMAYDI.{' '}
+              <strong>Pro</strong> — shu hodisalarning nechtasi to'lagan obunachidan kelgani.{' '}
+              <strong>Savol</strong> ustuni «Savollarni sanash» bosilganda hisoblanadi — fanga ~7–10 ta agregat so'rov, butun bazani yuklashdan ming marta arzon.
+            </div>
+
+            {(gapsError || invError) && (
+              <div className="admin-info-text" style={{ color: 'var(--red)', marginBottom: 8 }}>{gapsError || invError}</div>
+            )}
+
+            <div className="admin-table-wrap">
+              <table className="admin-table">
+                <thead>
+                  <tr>
+                    <th>Mavzu</th>
+                    <th>Savol</th>
+                    <th>So'rov</th>
+                    <th>Bo'sh ekran</th>
+                    <th>Tugatgan</th>
+                    <th>Pro</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {inventoryRows.map(r => (
+                    <tr key={r.topicId}>
+                      <td>
+                        {r.topicName}
+                        <span style={{ color: 'var(--text3)' }}> #{r.topicId}</span>
+                      </td>
+                      <td>{r.questions === null ? '—' : r.questions.toLocaleString()}</td>
+                      <td>{r.requests || '—'}</td>
+                      <td>{r.empty ? <span className="admin-chip admin-chip--amber">{r.empty}</span> : '—'}</td>
+                      <td>{r.exhausted ? <span className="admin-chip admin-chip--blue">{r.exhausted}</span> : '—'}</td>
+                      <td>{r.pro ? <span className="admin-chip admin-chip--amber">⭐ {r.pro}</span> : '—'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {!gapsLoaded && !gapsLoading && !gapsError && (
+              <div className="admin-info-text" style={{ marginTop: 8 }}>Hodisa hisoblagichlari hali yuklanmadi.</div>
+            )}
+          </div>
+
           {questionRequests.length === 0 ? (
             <div className="glass-panel" style={{ padding: '60px', textAlign: 'center' }}>
               <div style={{ fontSize: 'var(--fs-10xl)', marginBottom: '12px' }}>📥</div>
@@ -3925,6 +4116,103 @@ try {
         </div>
       )}
 
+      {tab === 'deletions' && (
+        <div className="admin-stack-l">
+          <div className="admin-section-title">
+            <Trash2 size={18} style={{ color: 'var(--amber)' }} /> Hisobni o'chirish arizalari ({deletionRequests.length})
+          </div>
+          <div className="admin-info-box">
+            <div className="admin-info-text">
+              Foydalanuvchi ilovadan hisobini o'chirishni so'raganda ariza shu yerga tushadi. Google Play qoidalari bo'yicha bunday arizaga javob berish <strong>majburiy</strong>, shuning uchun «Bajarildi» belgisi arizani o'chirmaydi — u javob berilganining isboti sifatida <strong>Arxiv</strong>da saqlanadi.
+            </div>
+            <div className="admin-info-text" style={{ marginTop: 8 }}>
+              «Bajarildi» — arizaning HOLATI. Hisobning o'zini o'chirish uchun «Hisobni topish» tugmasi orqali Foydalanuvchilar ro'yxatiga o'ting.
+            </div>
+          </div>
+          {/* ⚠️ 2026-08-19: "Bajarildi" bosilgach ariza ro'yxatdan KETMASDI.
+              Bajarilganlar to'planib, "Foydalanuvchilar" tabining butun birinchi
+              ekranini egallardi — admin har safar ularni aylantirib o'tishga
+              majbur bo'lardi, YANGI ariza esa ular orasida ko'zga tashlanmasdi.
+              Endi standart holatda faqat KUTAYOTGAN arizalar ko'rinadi.
+              Bajarilganlar O'CHIRILMAYDI — Google Play talabi bo'yicha ular
+              "arizaga javob berilgani"ning isboti, shuning uchun "Arxiv"
+              tugmasi ostida turadi (naqsh: Jurnaldagi `errorsShowResolved`). */}
+            <div className="glass-panel" style={{ padding: 16, marginBottom: 16 }}>
+              <div className="admin-row-between" style={{ marginBottom: 10 }}>
+                <div className="admin-row" style={{ fontWeight: 800, color: 'var(--text)' }}>
+                  <Trash2 size={16} style={{ color: 'var(--amber)' }} /> Hisobni o'chirish arizalari
+                  {newDeletionRequests > 0 && <span className="admin-tab-badge">{newDeletionRequests}</span>}
+                </div>
+                <div className="admin-row--tight">
+                  {doneDeletionRequests > 0 && (
+                    <button
+                      className={`btn btn-sm ${delReqShowDone ? 'btn-primary' : 'btn-outline'}`}
+                      onClick={() => setDelReqShowDone(v => !v)}
+                      title="Bajarilgan arizalar o'chirilmaydi — javob berilganining isboti sifatida saqlanadi"
+                    >
+                      {delReqShowDone ? 'Arxivni yashirish' : `Arxiv (${doneDeletionRequests})`}
+                    </button>
+                  )}
+                  <button className="btn btn-sm btn-outline" onClick={() => loadDeletionRequests({ force: true })} disabled={delReqLoading}>
+                    <RefreshCw size={13} className={delReqLoading ? 'spin' : ''} /> Yangilash
+                  </button>
+                </div>
+              </div>
+              {delReqError ? (
+                <div className="admin-info-text" style={{ color: 'var(--red)' }}>{delReqError}</div>
+              ) : visibleDeletionRequests.length === 0 ? (
+                // Yig'ilgan holat — bitta satr. Kartochka butunlay yo'qolmaydi,
+                // aks holda "Arxiv" tugmasiga yo'l ham qolmasdi.
+                <div className="admin-info-text">
+                  ✅ Javob kutayotgan ariza yo'q{doneDeletionRequests > 0 ? ` — ${doneDeletionRequests} tasi bajarilgan (Arxiv)` : ''}
+                </div>
+              ) : (
+                <div className="admin-stack-s">
+                  {visibleDeletionRequests.map(r => (
+                    <div key={r.id} className={`admin-card ${r.status !== 'pending' ? 'admin-card--dim' : ''}`}>
+                      <div className="admin-row-between">
+                        <div style={{ minWidth: 0 }}>
+                          <div style={{ fontWeight: 700, color: 'var(--text)' }}>{r.name || '—'}</div>
+                          <div className="admin-meta-line" style={{ marginTop: 3 }}>
+                            <span>📞 {r.phone || '—'}</span>
+                            {r.createdAt && <span>🕒 {new Date(r.createdAt).toLocaleString()}</span>}
+                            <span className={`admin-chip ${r.status === 'pending' ? 'admin-chip--amber' : 'admin-chip--green'}`}>
+                              {r.status || 'pending'}
+                            </span>
+                            {/* Server takroriy murojaatni shu arizaga qo'shadi
+                                (api/notify-admin.js) — nechta ekani ko'rinsin */}
+                            {r.repeatCount > 0 && (
+                              <span className="admin-chip admin-chip--blue">🔁 {r.repeatCount + 1} marta yozgan</span>
+                            )}
+                            {/* Arxivda "qachon bajarilgani" ko'rinsin — aynan shu
+                                sana huquqiy jihatdan isbot bo'ladi */}
+                            {r.status !== 'pending' && r.handledAt && (
+                              <span>✅ {new Date(r.handledAt).toLocaleString()}</span>
+                            )}
+                          </div>
+                          {/* `pre-line`: server takroriy murojaatlarni bitta
+                              matnga qatorma-qator qo'shadi — aks holda hammasi
+                              bitta uzun satrga yopishib qolardi */}
+                          {r.reason && <div className="admin-info-text" style={{ marginTop: 6, whiteSpace: 'pre-line' }}>{r.reason}</div>}
+                        </div>
+                        {r.status === 'pending' && (
+                          <div className="admin-row--tight">
+                            <button className="btn btn-sm btn-outline" onClick={() => findUserFromRequest(r.phone)} title="Shu telefon bo'yicha hisobni pastdagi ro'yxatda topish">
+                              <Search size={13} /> Hisobni topish
+                            </button>
+                            <button className="btn btn-sm btn-outline" onClick={() => setDeletionRequestStatus(r.id, 'done')}>
+                              <CheckCircle size={13} /> Bajarildi
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+        </div>
+      )}
       {tab === 'questions' && (
         <div className="admin-stack-l">
           <div className="admin-section-title"><FileText size={18} style={{ color: 'var(--blue)' }} /> Savollar Bazasi ({questions.length ? questions.length : (overview?.questions ?? '—')})</div>
@@ -4196,92 +4484,6 @@ try {
 
       {tab === 'users' && (
         <div>
-          {/* ── Hisobni o'chirish arizalari (B-2) ── */}
-          {/* ⚠️ 2026-08-19: "Bajarildi" bosilgach ariza ro'yxatdan KETMASDI.
-              Bajarilganlar to'planib, "Foydalanuvchilar" tabining butun birinchi
-              ekranini egallardi — admin har safar ularni aylantirib o'tishga
-              majbur bo'lardi, YANGI ariza esa ular orasida ko'zga tashlanmasdi.
-              Endi standart holatda faqat KUTAYOTGAN arizalar ko'rinadi.
-              Bajarilganlar O'CHIRILMAYDI — Google Play talabi bo'yicha ular
-              "arizaga javob berilgani"ning isboti, shuning uchun "Arxiv"
-              tugmasi ostida turadi (naqsh: Jurnaldagi `errorsShowResolved`). */}
-          {(deletionRequests.length > 0 || delReqError) && (
-            <div className="glass-panel" style={{ padding: 16, marginBottom: 16 }}>
-              <div className="admin-row-between" style={{ marginBottom: 10 }}>
-                <div className="admin-row" style={{ fontWeight: 800, color: 'var(--text)' }}>
-                  <Trash2 size={16} style={{ color: 'var(--amber)' }} /> Hisobni o'chirish arizalari
-                  {newDeletionRequests > 0 && <span className="admin-tab-badge">{newDeletionRequests}</span>}
-                </div>
-                <div className="admin-row--tight">
-                  {doneDeletionRequests > 0 && (
-                    <button
-                      className={`btn btn-sm ${delReqShowDone ? 'btn-primary' : 'btn-outline'}`}
-                      onClick={() => setDelReqShowDone(v => !v)}
-                      title="Bajarilgan arizalar o'chirilmaydi — javob berilganining isboti sifatida saqlanadi"
-                    >
-                      {delReqShowDone ? 'Arxivni yashirish' : `Arxiv (${doneDeletionRequests})`}
-                    </button>
-                  )}
-                  <button className="btn btn-sm btn-outline" onClick={() => loadDeletionRequests({ force: true })} disabled={delReqLoading}>
-                    <RefreshCw size={13} className={delReqLoading ? 'spin' : ''} /> Yangilash
-                  </button>
-                </div>
-              </div>
-              {delReqError ? (
-                <div className="admin-info-text" style={{ color: 'var(--red)' }}>{delReqError}</div>
-              ) : visibleDeletionRequests.length === 0 ? (
-                // Yig'ilgan holat — bitta satr. Kartochka butunlay yo'qolmaydi,
-                // aks holda "Arxiv" tugmasiga yo'l ham qolmasdi.
-                <div className="admin-info-text">
-                  ✅ Javob kutayotgan ariza yo'q{doneDeletionRequests > 0 ? ` — ${doneDeletionRequests} tasi bajarilgan (Arxiv)` : ''}
-                </div>
-              ) : (
-                <div className="admin-stack-s">
-                  {visibleDeletionRequests.map(r => (
-                    <div key={r.id} className={`admin-card ${r.status !== 'pending' ? 'admin-card--dim' : ''}`}>
-                      <div className="admin-row-between">
-                        <div style={{ minWidth: 0 }}>
-                          <div style={{ fontWeight: 700, color: 'var(--text)' }}>{r.name || '—'}</div>
-                          <div className="admin-meta-line" style={{ marginTop: 3 }}>
-                            <span>📞 {r.phone || '—'}</span>
-                            {r.createdAt && <span>🕒 {new Date(r.createdAt).toLocaleString()}</span>}
-                            <span className={`admin-chip ${r.status === 'pending' ? 'admin-chip--amber' : 'admin-chip--green'}`}>
-                              {r.status || 'pending'}
-                            </span>
-                            {/* Server takroriy murojaatni shu arizaga qo'shadi
-                                (api/notify-admin.js) — nechta ekani ko'rinsin */}
-                            {r.repeatCount > 0 && (
-                              <span className="admin-chip admin-chip--blue">🔁 {r.repeatCount + 1} marta yozgan</span>
-                            )}
-                            {/* Arxivda "qachon bajarilgani" ko'rinsin — aynan shu
-                                sana huquqiy jihatdan isbot bo'ladi */}
-                            {r.status !== 'pending' && r.handledAt && (
-                              <span>✅ {new Date(r.handledAt).toLocaleString()}</span>
-                            )}
-                          </div>
-                          {/* `pre-line`: server takroriy murojaatlarni bitta
-                              matnga qatorma-qator qo'shadi — aks holda hammasi
-                              bitta uzun satrga yopishib qolardi */}
-                          {r.reason && <div className="admin-info-text" style={{ marginTop: 6, whiteSpace: 'pre-line' }}>{r.reason}</div>}
-                        </div>
-                        {r.status === 'pending' && (
-                          <div className="admin-row--tight">
-                            <button className="btn btn-sm btn-outline" onClick={() => findUserFromRequest(r.phone)} title="Shu telefon bo'yicha hisobni pastdagi ro'yxatda topish">
-                              <Search size={13} /> Hisobni topish
-                            </button>
-                            <button className="btn btn-sm btn-outline" onClick={() => setDeletionRequestStatus(r.id, 'done')}>
-                              <CheckCircle size={13} /> Bajarildi
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-
           <div className="admin-row-between" style={{ marginBottom: 14 }}>
             <div className="admin-section-title admin-section-title--flush">
               <Users size={18} style={{ color: 'var(--blue)' }} /> Foydalanuvchilar ({filteredUsers.length}/{users.length})

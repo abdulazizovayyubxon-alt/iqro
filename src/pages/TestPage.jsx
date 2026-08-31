@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { AppContext } from '../context/AppContext';
 import { ObjectionContext } from '../context/ObjectionContext';
 import { ToastContext } from '../context/ToastContext';
-import { useAuth } from '../context/AuthContext';
+import { useAuth, computeTrialStatus } from '../context/AuthContext';
 import { useTrialExpiry } from '../hooks/useTrialExpiry';
 import { useTheory } from '../hooks/useTheory';
 import { matchKeyPoint } from '../data/theory';
@@ -30,6 +30,7 @@ import { buildMistakeDrill, mistakeKey } from '../engine/mistakeQueue';
 import { examAtMs } from '../utils/examDate';
 import { AnalyticsEvents } from '../services/analytics';
 import { submitQuestionRequest, hasRequested } from '../services/questionRequests';
+import { reportEmptyTopic, reportExhaustedTopic } from '../services/contentGaps';
 import localforage from 'localforage';
 
 // Savol matnidan kirish/kontekst qismini olib tashlaydi va asosiy savolni qaytaradi.
@@ -119,7 +120,7 @@ const TestPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
-  const { user } = useAuth();
+  const { user, userDoc } = useAuth();
   const { state, batchCommitResults, updateState, saveCustomMnemonic } = useContext(AppContext);
   const mode = state.testMode || 'exam';
   const setMode = (m) => updateState({ testMode: m });
@@ -763,6 +764,39 @@ const TestPage = () => {
         setFullPool(finalPool);
         // Sabab faqat hovuz BO'SH qolgandagina ma'noli.
         setEmptyReason(finalPool.length === 0 ? failure : null);
+
+        // ── Kontent bo'shlig'i signali (2026-08-31) ──
+        // «Ko'proq savol kerak» tugmasini bo'sh ekranni ko'rganlarning ozgina
+        // qismi bosadi — qolgani shunchaki ortga qaytadi. Ya'ni so'rovlar
+        // talabning qiyshiq namunasi. Shu sababli HODISANING O'ZI yoziladi:
+        // mavzu rostdan bo'sh chiqdimi yoki odam uni tugatib qo'ydimi.
+        // Kvota qulflari (kuniga/haftasiga bir marta) contentGaps.js da.
+        if (user && mode !== 'mistakes') {
+          const tier = computeTrialStatus(userDoc || {}).status === 'premium' ? 'pro' : 'trial';
+          const gapInfo = {
+            category: state.activeCategory,
+            categoryName: SUBJECTS.find(sub => sub.id === state.activeCategory)?.name || state.activeCategory,
+            topicId,
+            topicName,
+          };
+          if (finalPool.length === 0 && !failure) {
+            reportEmptyTopic(user, tier, gapInfo);
+          } else if (finalPool.length > 0) {
+            // «Tugatgan» mezoni: berilgan javoblar soni hovuz hajmiga yetgan.
+            // Takror javoblar ham sanaladi, ya'ni bu ANIQ o'lchov emas — lekin
+            // yo'nalishi to'g'ri: shuncha javob bergan odam yangi savolni
+            // deyarli ko'rmayapti va takrordan charchay boshlaydi.
+            const inCategory = (tp) => (Array.isArray(tp.category)
+              ? tp.category.includes(state.activeCategory)
+              : tp.category === state.activeCategory);
+            const answered = topicId === -1
+              ? TOPICS.filter(inCategory).reduce((sum, tp) => sum + (state.topicStats?.[tp.id]?.answered || 0), 0)
+              : (state.topicStats?.[topicId]?.answered || 0);
+            if (answered >= finalPool.length) {
+              reportExhaustedTopic(user, tier, gapInfo);
+            }
+          }
+        }
 
         // ── Hovuzni BIR MARTA yozamiz ──
         // Bu yerdagi yozuv og'ir (CHQBT'da ~2.4 MB), lekin u seans boshida
