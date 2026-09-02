@@ -5,10 +5,9 @@ import { Handshake, Gift, Eye } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { ToastContext } from '../context/ToastContext';
 import {
-  getPendingPromoCode,
-  clearPendingPromoCode,
-  snoozePromoCard,
-  isPromoCardSnoozed,
+  isAccountPromoActive,
+  snoozeAccountPromo,
+  clearAccountPromo,
   fetchPromoInfo,
   redeemPromo,
   PROMO_ERRORS,
@@ -27,44 +26,71 @@ import {
  * Shuning uchun: havola kodni OLIB KELADI, qo'shilishni foydalanuvchi bir
  * bosish bilan TASDIQLAYDI. Qo'lda kiritish (Referral sahifasi, PremiumModal)
  * o'z joyida qoladi — kodni og'zaki olganlar uchun.
+ *
+ * MANBA (2026-09-02 dan): `localStorage` emas, `users/{uid}.pendingPromo`.
+ * Sababi services/promo.js izohida — qisqasi, `localStorage` qurilmaga
+ * tegishli edi va taklif havolani bosgan odamga emas, TELEFONGA yopishardi.
  */
 export default function PartnerJoinCard() {
   const { t } = useTranslation();
-  const { user, updateUserData } = useAuth();
+  const { user, userDoc, updateUserData } = useAuth();
   const { showToast } = useContext(ToastContext);
 
   const [info, setInfo] = useState(null);
   const [busy, setBusy] = useState(false);
 
+  const pending = userDoc?.pendingPromo || null;
+  const pendingCode = pending?.code || null;
+  const pendingSnooze = pending?.snoozedUntil || null;
+
+  // Hisobdagi taklifni yopish. Yozuv xatosi (kvota/tarmoq) kartani
+  // to'sib qo'ymasligi kerak — keyingi seansda `alreadyUsed` bo'yicha
+  // baribir yopiladi.
+  const dropPromo = () => {
+    setInfo(null);
+    clearAccountPromo(user?.uid).catch(e =>
+      console.warn('Taklifni yopish xatosi:', e.message)
+    );
+  };
+
   useEffect(() => {
-    if (!user?.uid) return;
-    const code = getPendingPromoCode();
-    if (!code || isPromoCardSnoozed()) return;
+    if (!user?.uid || !pending) { setInfo(null); return undefined; }
+
+    // ── Kimga KO'RSATILMAYDI ──
+    // Kodning EGASI o'z havolasini sinab ko'rsa, ilova unga o'z guruhiga
+    // qo'shilishni taklif qilardi. Admin ham xuddi shunday. Bu faqat
+    // YASHIRISH — ruxsat berish emas, shuning uchun mijoz tomonida yetarli.
+    if (user.role === 'admin') { setInfo(null); return undefined; }
+    if (user.partnerCode && user.partnerCode === pendingCode) { setInfo(null); return undefined; }
+
+    // Muddati o'tgan yoki «Hozir emas» bilan yashirilgan taklif
+    if (!isAccountPromoActive(pending)) { setInfo(null); return undefined; }
 
     let cancelled = false;
     (async () => {
-      const res = await fetchPromoInfo(code);
+      const res = await fetchPromoInfo(pendingCode);
       if (cancelled) return;
 
       if (!res.ok) {
-        // Tarmoq/sessiya xatosida kod SAQLANADI — keyingi ochilishda yana
+        // Tarmoq/sessiya xatosida taklif SAQLANADI — keyingi ochilishda yana
         // urinamiz. Qolgan xatolar (kod yo'q, format buzuq) qaytarilmas, shu
-        // sababli kodni tozalaymiz: aks holda karta har kirganda so'ralib,
+        // sababli taklifni yopamiz: aks holda karta har kirganda so'ralib,
         // serverga befoyda so'rov yog'dirardi.
-        if (res.error !== 'network' && res.error !== 'unauthorized') clearPendingPromoCode();
+        if (res.error !== 'network' && res.error !== 'unauthorized') dropPromo();
         return;
       }
       // Allaqachon ishlatilgan yoki kod yopilgan bo'lsa karta ko'rsatilmaydi —
       // «Qo'shilaman» baribir xatoga urilardi.
       if (res.alreadyUsed || !res.usable) {
-        clearPendingPromoCode();
+        dropPromo();
         return;
       }
-      setInfo({ ...res, code });
+      setInfo({ ...res, code: pendingCode });
     })();
 
     return () => { cancelled = true; };
-  }, [user?.uid]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.uid, user?.role, user?.partnerCode, pendingCode, pendingSnooze]);
 
   const handleJoin = async () => {
     if (busy || !info) return;
@@ -73,7 +99,6 @@ export default function PartnerJoinCard() {
     setBusy(false);
 
     if (res.ok) {
-      clearPendingPromoCode();
       if (res.type === 'days' || res.type === 'team') {
         // Muddatni Firestore kuzatuvini kutmasdan yangilaymiz — foydalanuvchi
         // «qo'shildim» degan javobni darhol ko'radi (ReferralPage bilan bir xil).
@@ -83,21 +108,25 @@ export default function PartnerJoinCard() {
         updateUserData({ isPremium: true, isTruePremium: true, premiumExpire: newExpire, trialStatus: 'premium' });
       }
       showToast(t('partnerJoin.joined'), 'success');
-      setInfo(null);
+      dropPromo();
       return;
     }
 
     showToast(PROMO_ERRORS[res.error] || t('partnerJoin.joinFailed'), 'error');
-    // Qayta urinish foyda bermaydigan xatolarda kartani yopamiz
+    // Qayta urinish foyda bermaydigan xatolarda taklifni yopamiz
     if (['already_used', 'not_found', 'limit_reached', 'expired', 'inactive', 'invalid_promo'].includes(res.error)) {
-      clearPendingPromoCode();
-      setInfo(null);
+      dropPromo();
     }
   };
 
+  // «Hozir emas» — taklif 7 kunga yashiriladi, ikkinchi marta bosilganda
+  // butunlay yopiladi (promo.js: MAX_SNOOZES). Ilgari snooze bir kunlik edi
+  // va qurilma xotirasida turardi — ya'ni rad javob hech qachon eshitilmasdi.
   const handleLater = () => {
-    snoozePromoCard(); // kod saqlanadi, karta ertaga yana chiqadi
     setInfo(null);
+    snoozeAccountPromo(user?.uid, pending).catch(e =>
+      console.warn('Taklifni kechiktirish xatosi:', e.message)
+    );
   };
 
   if (!info) return null;

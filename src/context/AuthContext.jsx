@@ -20,7 +20,7 @@ import {
   URGENCY_DAYS,
   REFERRAL_DISCOUNT,
 } from '../services/referral';
-import { getPromoCodeFromUrl, savePendingPromoCode } from '../services/promo';
+import { getPromoCodeFromUrl, savePendingPromoCode, bindPendingPromoToAccount } from '../services/promo';
 import { AnalyticsEvents } from '../services/analytics';
 import { ensureShortId } from '../utils/shortId';
 // Admin panelidagi qidiruv `users/{uid}.searchTokens` massiviga tayanadi
@@ -992,6 +992,18 @@ export const AuthProvider = ({ children }) => {
         // Xom hujjatni ham tarqatamiz — iste'molchilar o'z `getDoc` larini
         // qilmasligi uchun (yuqoridagi `userDoc` izohiga qarang).
         setUserDoc(data);
+
+        // ── Hamkor havolasidagi kod: QURILMADAN HISOBGA ──
+        // Aynan shu yerda, chunki hujjat mavjudligi kafolatlangan (yuqoridagi
+        // `exists()` tekshiruvi) — ro'yxatdan endi o'tgan foydalanuvchida ham
+        // ishlaydi: hujjat yaratilishi shu kuzatuvchini uyg'otadi.
+        // AWAIT QILINMAYDI: Firestore kvotasi tugaganda yozuv promise'i osilib
+        // qolishi mumkin, obuna holatini yangilash esa kutib turmasligi kerak.
+        if (!data.pendingPromo) {
+          bindPendingPromoToAccount(uid).catch(e =>
+            console.warn('Hamkor kodini hisobga bog\'lash xatosi:', e.message)
+          );
+        }
 
         // premiumExpire — muddatning yagona manbasi. Sana o'tgan bo'lsa obuna
         // tugagan; Firestore yozuvini onAuthStateChanged keyingi kirishda tuzatadi.
