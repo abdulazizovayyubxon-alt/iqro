@@ -219,6 +219,33 @@ export async function bindPendingPromoToAccount(uid) {
 }
 
 /**
+ * ⚠️ AUDIT 2026-09-02 (3), B-1 — KURYERNI HISOB UCHUN YAKUNLASH.
+ *
+ * `bindPendingPromoToAccount` kuryerni faqat YOZUV o'tgach tozalaydi (kvota
+ * yoki tarmoq nosozligida qayta urinish uchun). Lekin hisobda ALLAQACHON
+ * taklif bo'lsa topshirish umuman bajarilmasdi — va kuryer `localStorage` da
+ * 7 kun qolib ketardi. Keyin o'sha qurilmada `pendingPromo` si BO'LMAGAN
+ * boshqa hisob kirsa, taklif UNGA tegardi: aynan 97fe582 yopmoqchi bo'lgan
+ * teshik, faqat boshqa yo'ldan.
+ *
+ * Kuryerning vazifasi — «login bo'lgunicha ushlab turish». Kirgan hisob uni
+ * ko'rib chiqqach vazifa tugaydi, shuning uchun bu holatda TOZALANADI.
+ *
+ * @param {string} uid
+ * @param {boolean} accountHasPromo  hisobda allaqachon `pendingPromo` bormi
+ * @returns {Promise<boolean>} kod hisobga BOG'LANDIMI
+ */
+export async function settlePendingPromoForAccount(uid, accountHasPromo) {
+  if (!uid) return false;
+  if (accountHasPromo) {
+    // Topshirmaymiz — lekin qurilmada ham qoldirmaymiz.
+    clearPendingPromoCode();
+    return false;
+  }
+  return bindPendingPromoToAccount(uid);
+}
+
+/**
  * Hisobdagi taklif hozir ko'rsatilishi kerakmi?
  * (Kod egasi/admin tekshiruvi bu yerda emas — u foydalanuvchi profiliga
  * tegishli va PartnerJoinCard'da qilinadi.)

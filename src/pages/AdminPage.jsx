@@ -1037,7 +1037,14 @@ const AdminPage = () => {
   };
 
   const handleDeleteNotification = (notifId) => {
-    confirmAction("Bu bildirishnomani bazadan o'chirishni tasdiqlaysizmi?", async () => {
+    // ⚠️ AUDIT 2026-09-02 (2), A-1 — matn ilgari «bazadan o'chirish» derdi.
+    // Texnik jihatdan to'g'ri edi, lekin admin buni «qaytarib oldim» deb
+    // o'qirdi — holbuki e'lon uni allaqachon olgan foydalanuvchilarda
+    // qolib ketardi. Endi mijoz suratni solishtiradi va o'chirilganini
+    // ro'yxatidan chiqaradi, ya'ni matnni ham rostiga keltirsak bo'ladi.
+    confirmAction(
+      "Bu e'lonni o'chirasizmi? U bazadan va foydalanuvchilarning ro'yxatidan ham yo'qoladi (ilovani keyingi ochganlarida).",
+      async () => {
 try {
       await deleteDoc(doc(db, 'notifications', notifId));
       showToast("🗑️ Bildirishnoma o'chirildi", 'info');

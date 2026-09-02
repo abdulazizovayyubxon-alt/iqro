@@ -22,6 +22,7 @@ const {
   savePendingPromoCode,
   readPendingPromo,
   bindPendingPromoToAccount,
+  settlePendingPromoForAccount,
   isAccountPromoActive,
   snoozeAccountPromo,
   clearAccountPromo,
@@ -190,5 +191,65 @@ describe('«Hozir emas» — rad javob eshitiladi', () => {
     await clearAccountPromo(null);
     await snoozeAccountPromo(undefined, { code: 'MIRONSHOH' });
     expect(updateDocMock).not.toHaveBeenCalled();
+  });
+});
+
+// ════════════════════════════════════════════════════════════════════════
+//  AUDIT 2026-09-02 (3), B-1 — KURYER BEGONA HISOBGA O'TIB KETMASLIGI.
+//
+//  97fe582 kuryerni faqat YOZUV o'tgach tozalardi. Hisobda allaqachon taklif
+//  bo'lsa topshirish umuman bajarilmasdi va kod localStorage'da 7 kun qolardi.
+//  Keyin o'sha qurilmada pendingPromo si bo'lmagan boshqa hisob kirsa,
+//  taklif UNGA tegardi — o'sha teshik, faqat boshqa yo'ldan.
+// ════════════════════════════════════════════════════════════════════════
+describe('B-1: kuryer hisob uchun yakunlanadi', () => {
+  it('hisobda taklif YOQ — kod boglanadi va kuryer tozalanadi', async () => {
+    savePendingPromoCode('MIRONSHOH');
+    updateDocMock.mockResolvedValueOnce(undefined);
+
+    const bound = await settlePendingPromoForAccount('uid-A', false);
+
+    expect(bound).toBe(true);
+    expect(updateDocMock).toHaveBeenCalledTimes(1);
+    expect(localStorage.getItem(KEY)).toBeNull();
+  });
+
+  it('⚠️ hisobda taklif BOR — topshirilmaydi, LEKIN kuryer baribir tozalanadi', async () => {
+    savePendingPromoCode('MIRONSHOH');
+
+    const bound = await settlePendingPromoForAccount('uid-A', true);
+
+    expect(bound).toBe(false);
+    expect(updateDocMock).not.toHaveBeenCalled();
+    // ENG MUHIM QATOR: kod qurilmada QOLMAYDI.
+    expect(localStorage.getItem(KEY)).toBeNull();
+  });
+
+  it('toliq sahna: A otkazib yuboradi → B ga taklif TEGMAYDI', async () => {
+    savePendingPromoCode('MIRONSHOH');
+
+    // A kiradi — hisobida allaqachon taklif bor.
+    await settlePendingPromoForAccount('uid-A', true);
+    // A chiqadi, B kiradi — B da taklif yo'q.
+    const boundForB = await settlePendingPromoForAccount('uid-B', false);
+
+    expect(boundForB).toBe(false);   // kuryer bo'sh — bog'lanmadi
+    expect(updateDocMock).not.toHaveBeenCalled();
+  });
+
+  it('yozuv yiqilsa kuryer QOLADI — osha seansda qayta uriniladi', async () => {
+    savePendingPromoCode('MIRONSHOH');
+    updateDocMock.mockRejectedValueOnce(new Error('kvota'));
+
+    await expect(settlePendingPromoForAccount('uid-A', false)).rejects.toThrow('kvota');
+    // Bu ATAYLAB: tarmoq/kvota nosozligida taklif yo'qolmasin. Begona hisobga
+    // o'tib ketmasligini chiqishdagi tozalash ta'minlaydi (AuthContext logout).
+    expect(localStorage.getItem(KEY)).not.toBeNull();
+  });
+
+  it('uid bolmasa hech narsa qilinmaydi', async () => {
+    savePendingPromoCode('MIRONSHOH');
+    expect(await settlePendingPromoForAccount(null, false)).toBe(false);
+    expect(localStorage.getItem(KEY)).not.toBeNull();
   });
 });

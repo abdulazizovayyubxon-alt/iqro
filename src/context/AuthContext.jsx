@@ -20,7 +20,7 @@ import {
   URGENCY_DAYS,
   REFERRAL_DISCOUNT,
 } from '../services/referral';
-import { getPromoCodeFromUrl, savePendingPromoCode, bindPendingPromoToAccount } from '../services/promo';
+import { getPromoCodeFromUrl, savePendingPromoCode, settlePendingPromoForAccount, clearPendingPromoCode } from '../services/promo';
 import { AnalyticsEvents } from '../services/analytics';
 import { ensureShortId } from '../utils/shortId';
 // Admin panelidagi qidiruv `users/{uid}.searchTokens` massiviga tayanadi
@@ -938,6 +938,19 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('iqro_login_attempts');
     localStorage.removeItem('iqro_cached_user');
 
+    // 3b. ⚠️ AUDIT 2026-09-02 (3), B-1 — hamkor havolasidagi kod.
+    // Chiqqan odamning taklifi qurilmada qolsa, keyingi kirgan hisobga
+    // tegib ketardi. Kutilmagan taklifni qabul qilgan odamning ismi, ID'si
+    // va natijalari o'zi tanlamagan hamkor ustozga ochiladi — va bu
+    // qaytarilmaydi (redemptions yozuvi o'chirilmaydi).
+    // Yo'qotilgan taklif esa qaytariladi: hamkor havolani qayta yuboradi.
+    clearPendingPromoCode();
+
+    // 3c. B-3: kunlik reja va o'quv shartnomasi ham qurilmaga bog'langan
+    // (hisobga emas) — keyingi foydalanuvchi oldingisinikidan boshlamasin.
+    localStorage.removeItem('zehin_daily_plan_v1');
+    localStorage.removeItem('zehin_study_contract_v1');
+
     // 4. sessionStorage ni to'liq tozalash
     sessionStorage.clear();
 
@@ -999,11 +1012,13 @@ export const AuthProvider = ({ children }) => {
         // ishlaydi: hujjat yaratilishi shu kuzatuvchini uyg'otadi.
         // AWAIT QILINMAYDI: Firestore kvotasi tugaganda yozuv promise'i osilib
         // qolishi mumkin, obuna holatini yangilash esa kutib turmasligi kerak.
-        if (!data.pendingPromo) {
-          bindPendingPromoToAccount(uid).catch(e =>
-            console.warn('Hamkor kodini hisobga bog\'lash xatosi:', e.message)
-          );
-        }
+        // ⚠️ AUDIT 2026-09-02 (3), B-1 — qaror `services/promo.js` da va
+        // testga olingan: hisobda taklif bo'lsa kod TOPSHIRILMAYDI, lekin
+        // qurilmada ham QOLDIRILMAYDI. Ilgari u 7 kun qolib, keyingi kirgan
+        // begona hisobga tegib ketardi.
+        settlePendingPromoForAccount(uid, !!data.pendingPromo).catch(e =>
+          console.warn("Hamkor kodini hisobga boglash xatosi:", e.message)
+        );
 
         // premiumExpire — muddatning yagona manbasi. Sana o'tgan bo'lsa obuna
         // tugagan; Firestore yozuvini onAuthStateChanged keyingi kirishda tuzatadi.

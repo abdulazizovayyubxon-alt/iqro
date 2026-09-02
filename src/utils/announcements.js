@@ -67,4 +67,70 @@ export const publishAnnouncements = (items) =>
     updatedAt: new Date().toISOString(),
   });
 
+/**
+ * ════════════════════════════════════════════════════════════════════════
+ *  AUDIT 2026-09-02 (2), A-1 — O'CHIRILGAN E'LONNI MIJOZDAN OLIB TASHLASH
+ *
+ *  Admin e'lonni o'chirganda surat darhol qayta yozilardi, LEKIN mijozdagi
+ *  `absorb()` faqat QO'SHISHNI bilardi: suratdan yo'qolgan element
+ *  `localStorage.IQRO_NOTIFICATIONS` da qolib ketardi (60 talik oynadan
+ *  tushmaguncha). Ya'ni noto'g'ri narx yoki imtihon sanasini yuborib, keyin
+ *  o'chirgan admin «qaytarib oldim» deb o'ylardi — e'lon esa uni allaqachon
+ *  olgan har bir odamda turaverardi.
+ *
+ *  ⚠️ ENG XAVFLI JOYI — NIMANI O'CHIRMASLIK.
+ *
+ *  `isBroadcast()` ni yolg'iz mezon sifatida ishlatib bo'lMAYDI. Shaxsiy
+ *  bildirishnomalar (`users/{uid}/notifications`) `targetUser` va `userId`
+ *  maydonlarisiz yoziladi — AppContext'dagi yutuq/marra/unvon yozuvlari va
+ *  FixQuestionModal'niki (tekshirilgan). Ular uchun `isBroadcast()` `true`
+ *  qaytaradi. Faqat shunga tayansak, HAR FOYDALANUVCHINING butun yutuqlar
+ *  tarixi o'chib ketardi.
+ *
+ *  Shuning uchun IKKI shart birga talab qilinadi:
+ *    1) `src === 'global'` — element umumiy kanaldan kelgan (mijoz
+ *       `absorb()` da belgilaydi), ya'ni shaxsiy obuna yo'lidan EMAS;
+ *    2) `isBroadcast()` — shakli ham umumiy, ya'ni mavjud bo'lsa surat uni
+ *       O'Z ICHIGA OLGAN bo'lardi. Ochiq kolleksiyadagi eski
+ *       `targetUser: <uid>` yozuvlari surat qamrovidan tashqarida.
+ *
+ *  Belgisiz (eski) elementlarga TEGILMAYDI: tuzatish qurilmaga yetgunicha
+ *  saqlangan yozuvlarda `src` yo'q. Ular hamon suratda bo'lsa, keyingi
+ *  `absorb()` ularni belgilab qo'yadi (element butunlay almashtiriladi).
+ * ════════════════════════════════════════════════════════════════════════
+ *
+ * @param {Array} local          lokal saqlangan ro'yxat (umumiy + shaxsiy aralash)
+ * @param {Array} snapshotItems  `settings/announcements` dagi elementlar
+ * @param {string} anchor        suratning `updatedAt` i
+ * @returns {Array} tozalangan ro'yxat (o'zgarish bo'lmasa AYNAN o'sha massiv)
+ */
+export function reconcileAnnouncements(local, snapshotItems, anchor) {
+  if (!Array.isArray(local) || !Array.isArray(snapshotItems) || !anchor) return local;
+
+  const known = new Set(snapshotItems.map((n) => n?.id).filter(Boolean));
+
+  // Surat ko'pi bilan ANNOUNCEMENTS_LIMIT ta element saqlaydi. To'lgan bo'lsa
+  // u KESILGAN bo'lishi mumkin — u holda faqat o'zi qamragan sana oralig'iga
+  // ishonamiz, undan eskisi haqida surat hech narsa demaydi.
+  const truncated = snapshotItems.length >= ANNOUNCEMENTS_LIMIT;
+  const oldest = snapshotItems.reduce(
+    (min, n) => (n?.date && (!min || n.date < min) ? n.date : min),
+    null
+  );
+
+  const kept = local.filter((n) => {
+    if (!n?.id) return true;
+    if (n.src !== 'global') return true;          // shaxsiy yoki belgisiz eski yozuv
+    if (!isBroadcast(n)) return true;             // shakli umumiy emas — surat qamramaydi
+    if (known.has(n.id)) return true;             // suratda bor
+    if (!n.date || n.date > anchor) return true;  // suratdan KEYIN kelgan (jonli tinglovchi)
+    if (truncated && oldest && n.date < oldest) return true; // qamrovdan tashqarida
+    return false;                                  // → admin o'chirgan
+  });
+
+  // O'zgarish bo'lmasa AYNAN o'sha havolani qaytaramiz — chaqiruvchi shunga
+  // qarab keraksiz render va `localStorage` yozuvidan qochadi.
+  return kept.length === local.length ? local : kept;
+}
+
 export default publishAnnouncements;

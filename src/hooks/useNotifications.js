@@ -3,11 +3,29 @@ import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
 import { collection, onSnapshot, query, orderBy, limit, where, getDocs } from 'firebase/firestore';
 import { getSettings } from '../utils/settingsCache';
-import { ANNOUNCEMENTS_ID } from '../utils/announcements';
+import { reconcileAnnouncements, ANNOUNCEMENTS_ID } from '../utils/announcements';
 
-const STORAGE_KEY = 'IQRO_NOTIFICATIONS';
-const DELETED_KEY = 'IQRO_NOTIFICATIONS_DELETED';
+// ⚠️ AUDIT 2026-09-02 (3), B-2 — KALITLAR HISOBGA BOG'LANDI.
+//
+// Ilgari bular GLOBAL edi ('IQRO_NOTIFICATIONS'), `logout()` esa ularni
+// tozalamasdi. Umumiy qurilmada (maktab, oila telefoni) A chiqib B kirganda
+// B **A ning shaxsiy bildirishnomalarini** ko'rardi: admin bir kishiga
+// yuborgan xabarlar (to'lov eslatmasi, e'tirozga javob, obuna holati) va
+// yutuq / marra / unvon yozuvlari. `DELETED_KEY` ham o'tib, A yopgan
+// bildirishnomalar B da ham yashirin qolardi.
+//
+// Bu tahdid modeli loyihada ALLAQACHON tan olingan va imtihon sessiyasi
+// uchun yopilgan (ExamPage.jsx:361, audit 2026-08-06 T-21) — qo'ng'iroq
+// o'sha qamrovga kirmay qolgan edi.
+//
+// Kursor allaqachon bog'langan edi, u naqsh sifatida olindi.
+const STORAGE_KEY = (uid) => `IQRO_NOTIFICATIONS_${uid}`;
+const DELETED_KEY = (uid) => `IQRO_NOTIFICATIONS_DELETED_${uid}`;
 const CURSOR_KEY = (uid) => `zehin_notif_cursor_${uid}`;
+
+// Eski global kalitlar — faqat bir martalik tozalash uchun (pastga qarang).
+const LEGACY_STORAGE_KEY = 'IQRO_NOTIFICATIONS';
+const LEGACY_DELETED_KEY = 'IQRO_NOTIFICATIONS_DELETED';
 
 // ════════════════════════════════════════════════════════════════════════════
 //  O'QISH BYUDJETI — bu hook butun ilovadagi eng qimmat mijoz kodi edi
@@ -69,14 +87,58 @@ const DEFAULT_NOTIFS = () => [];
 
 // O'chirilgan bildirishnoma ID'lari — Firestore ularni qayta tiklamasligi va
 // standart bildirishnomalar qayta paydo bo'lmasligi uchun saqlanadi.
-const loadDeleted = () => {
+const loadDeleted = (uid) => {
+  if (!uid) return new Set();
   try {
-    const raw = localStorage.getItem(DELETED_KEY);
+    const raw = localStorage.getItem(DELETED_KEY(uid));
     return raw ? new Set(JSON.parse(raw)) : new Set();
   } catch { return new Set(); }
 };
-const saveDeleted = (set) => {
-  localStorage.setItem(DELETED_KEY, JSON.stringify([...set]));
+const saveDeleted = (uid, set) => {
+  if (!uid) return;
+  try { localStorage.setItem(DELETED_KEY(uid), JSON.stringify([...set])); }
+  catch { /* private rejim yoki kvota — ro'yxat baribir Firestore'dan tiklanadi */ }
+};
+
+/** Hisobga bog'langan ro'yxatni o'qish. */
+const readStored = (uid) => {
+  if (!uid) return [];
+  const deleted = loadDeleted(uid);
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY(uid));
+    if (raw) return JSON.parse(raw).filter(n => n?.id && !deleted.has(n.id));
+  } catch { /* buzilgan ma'lumot — bo'shdan boshlaymiz */ }
+  return [];
+};
+
+const persist = (uid, list) => {
+  if (!uid) return;
+  try { localStorage.setItem(STORAGE_KEY(uid), JSON.stringify(list)); }
+  catch { /* private rejim yoki kvota — qo'ng'iroq shu seansda baribir ishlaydi */ }
+};
+
+// ── Eski GLOBAL kalitlarni bir martalik tozalash (B-2 migratsiyasi) ──
+//
+// Global ro'yxat KIMGA tegishli ekanini bilib bo'lmaydi: u shu qurilmada
+// oxirgi ishlagan odamniki. Shuning uchun uni yangi kalitga KO'CHIRMAYMIZ —
+// aynan shu ko'chirish yopilayotgan teshikni ochiq qoldirardi.
+//
+// O'chirish evaziga egasi tarixini yo'qotmasin deb, o'sha hisobning KURSORI
+// ham nolga tushiriladi: shaxsiy bildirishnomalar Firestore'dan qaytadan
+// o'qiladi (`users/{uid}/notifications`, ko'pi bilan 30 hujjat, BIR MARTA) va
+// ular AYNAN shu hisobniki bo'ladi. Umumiy e'lonlar suratdan baribir keladi.
+let legacyPurged = false;
+const purgeLegacyStorage = (uid) => {
+  if (legacyPurged || !uid) return;
+  try {
+    const hadLegacy = localStorage.getItem(LEGACY_STORAGE_KEY) !== null
+      || localStorage.getItem(LEGACY_DELETED_KEY) !== null;
+    if (!hadLegacy) { legacyPurged = true; return; }
+    localStorage.removeItem(LEGACY_STORAGE_KEY);
+    localStorage.removeItem(LEGACY_DELETED_KEY);
+    localStorage.removeItem(CURSOR_KEY(uid));
+    legacyPurged = true;
+  } catch { /* private rejim — eski kalit ham yo'q, tozalash shart emas */ }
 };
 
 // Shaxsiy bildirishnomalar kursori — «shu sanagacha bo'lganini ko'rganman».
@@ -114,7 +176,14 @@ const loadGlobalAnnouncements = () => {
     if (agg && Array.isArray(agg.items)) {
       // Langar — suratning yozilgan vaqti: undan keyingilarigina alohida
       // o'qiladi. `updatedAt` yo'q bo'lsa eng yangi element sanasi ishlaydi.
-      return { items: agg.items, anchor: agg.updatedAt || newestDate(agg.items) };
+      // `fromSnapshot` — A-1 uchun: solishtirish FAQAT surat rostdan
+      // o'qilganda bajariladi. Migratsiya yo'lida (surat yo'q) ro'yxat
+      // to'liq emas, unga qarab hech narsa o'chirib bo'lmaydi.
+      return {
+        items: agg.items,
+        anchor: agg.updatedAt || newestDate(agg.items),
+        fromSnapshot: true,
+      };
     }
     // Surat hali yo'q — bir martalik to'liq o'qish (migratsiya yo'li).
     try {
@@ -124,10 +193,10 @@ const loadGlobalAnnouncements = () => {
         limit(NOTIF_LIMIT),
       ));
       const items = snap.docs.map(toItem);
-      return { items, anchor: newestDate(items) };
+      return { items, anchor: newestDate(items), fromSnapshot: false };
     } catch (e) {
       console.warn('Elonlarni yuklashda xato:', e?.code || e?.message || e);
-      return { items: [], anchor: null };
+      return { items: [], anchor: null, fromSnapshot: false };
     }
   })();
   return globalBootstrap;
@@ -141,19 +210,24 @@ const loadGlobalAnnouncements = () => {
  */
 export function useNotifications() {
   const { user } = useAuth();
-  const [notifications, setNotifications] = useState(() => {
-    const deleted = loadDeleted();
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      try { return JSON.parse(saved).filter(n => !deleted.has(n.id)); }
-      catch { /* buzilgan ma'lumot — standartdan foydalanamiz */ }
-    }
-    return DEFAULT_NOTIFS().filter(n => !deleted.has(n.id));
-  });
+  // B-2: ro'yxat endi HISOBGA bog'langan, shuning uchun uni boshlang'ich
+  // qiymatda o'qib bo'lmaydi — o'sha paytda `user` hali null bo'lishi mumkin.
+  const [notifications, setNotifications] = useState(DEFAULT_NOTIFS);
 
   const unreadCount = notifications.filter(n => !n.read).length;
 
-  const persist = (list) => localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+  // ── Hisob aniqlanganda O'SHA hisobning ro'yxatini yuklaymiz ──
+  // Chiqishda (uid = null) ro'yxat BO'SHAYDI — keyingi foydalanuvchi
+  // oldingisining bildirishnomalarini ko'rmaydi. Bu B-2 tuzatishining
+  // asosiy qatori; `logout()` dagi tozalash unga qo'shimcha himoya.
+  // Bu effekt quyidagi Firestore effektidan OLDIN turishi shart: u holat
+  // asosini qo'yadi, quyidagisi ustiga qo'shadi.
+  useEffect(() => {
+    const uid = user?.uid;
+    if (!uid) { setNotifications(DEFAULT_NOTIFS()); return; }
+    purgeLegacyStorage(uid);
+    setNotifications(readStored(uid));
+  }, [user?.uid]);
 
   useEffect(() => {
     if (!user?.uid) return undefined;
@@ -168,21 +242,25 @@ export function useNotifications() {
       || n.userId === uid;
 
     // Ikkala manbadan kelgan bildirishnomalarni lokal holatga singdirish
-    const absorb = (incoming) => {
-      const deleted = loadDeleted();
+    // `src` — element QAYSI kanaldan kelgani: 'global' (ochiq `notifications`
+    // + surat) yoki 'personal' (`users/{uid}/notifications`). A-1 solishtirishi
+    // shunga tayanadi: shaxsiy bildirishnomalarda `targetUser`/`userId`
+    // maydonlari YO'Q, ya'ni ularni shakl bo'yicha ajratib bo'lmaydi.
+    const absorb = (incoming, src) => {
+      const deleted = loadDeleted(uid);
       const fresh = incoming.filter(n => n?.id && !deleted.has(n.id));
       if (fresh.length === 0) return;
       setNotifications(prev => {
         const localMap = new Map(prev.map(item => [item.id, item]));
         fresh.forEach(fn => {
           const existing = localMap.get(fn.id);
-          localMap.set(fn.id, { ...fn, read: existing ? existing.read : false });
+          localMap.set(fn.id, { ...fn, src, read: existing ? existing.read : false });
         });
         const merged = Array.from(localMap.values())
           .filter(n => !deleted.has(n.id))
           .sort((a, b) => new Date(b.date) - new Date(a.date))
           .slice(0, KEEP_LOCAL);
-        persist(merged);
+        persist(uid, merged);
         return merged;
       });
     };
@@ -192,9 +270,23 @@ export function useNotifications() {
 
     // ── 1) UMUMIY E'LONLAR ────────────────────────────────────────────────
     const startGlobal = async () => {
-      const { items, anchor } = await loadGlobalAnnouncements();
+      const { items, anchor, fromSnapshot } = await loadGlobalAnnouncements();
       if (cancelled) return;
-      absorb(items.filter(isMine));
+
+      // ⚠️ A-1 — ADMIN O'CHIRGAN E'LONNI OLIB TASHLASH. Solishtirish
+      // `absorb` dan OLDIN: shu tartibda hali suratda turgan element
+      // darhol qaytib qo'shiladi va ekranda miltillash bo'lmaydi.
+      // Qaysi elementga tegish MUMKIN emasligi — `utils/announcements.js`.
+      if (fromSnapshot) {
+        setNotifications(prev => {
+          const next = reconcileAnnouncements(prev, items, anchor);
+          if (next === prev) return prev;   // o'zgarish yo'q — yozuv ham qilmaymiz
+          persist(uid, next);
+          return next;
+        });
+      }
+
+      absorb(items.filter(isMine), 'global');
 
       // Suratdan (yoki oxirgi ma'lum e'londan) KEYIN qo'shilganlar — jonli.
       // Langar yo'q bo'lsa (kolleksiya bo'sh) oddiy limitli so'rov ishlaydi.
@@ -208,7 +300,7 @@ export function useNotifications() {
         : query(collection(db, 'notifications'), orderBy('date', 'desc'), limit(NOTIF_LIMIT));
 
       unsubs.push(onSnapshot(qGlobal, (snap) => {
-        absorb(snap.docs.map(toItem).filter(isMine));
+        absorb(snap.docs.map(toItem).filter(isMine), 'global');
       }, (err) => {
         console.error('Elon tinglovchisi xatosi:', err?.code || err);
       }));
@@ -227,7 +319,7 @@ export function useNotifications() {
 
     unsubs.push(onSnapshot(qPersonal, (snap) => {
       const items = snap.docs.map(toItem);
-      absorb(items);
+      absorb(items, 'personal');
       // Kursor ABSORB'dan keyin suriladi: hujjat lokal ro'yxatga tushgach
       // «ko'rilgan» deb belgilanadi, aks holda u yo'qolib qolardi.
       writeCursor(uid, newestDate(items));
@@ -247,10 +339,12 @@ export function useNotifications() {
     // o'qish). AppContext.jsx:484 da ham xuddi shu sabab bilan `user?.uid`.
   }, [user?.uid]);
 
+  const uid = user?.uid;
+
   const markAllRead = () => {
     setNotifications(prev => {
       const updated = prev.map(n => ({ ...n, read: true }));
-      persist(updated);
+      persist(uid, updated);
       return updated;
     });
   };
@@ -258,7 +352,7 @@ export function useNotifications() {
   const markOneRead = (id) => {
     setNotifications(prev => {
       const updated = prev.map(item => item.id === id ? { ...item, read: true } : item);
-      persist(updated);
+      persist(uid, updated);
       return updated;
     });
   };
@@ -267,10 +361,10 @@ export function useNotifications() {
     setNotifications(prev => {
       // Joriy ID'larni "o'chirilgan" ro'yxatiga qo'shamiz — shunda Firestore ham,
       // standart bildirishnomalar ham qayta paydo bo'lmaydi.
-      const deleted = loadDeleted();
+      const deleted = loadDeleted(uid);
       prev.forEach(n => deleted.add(n.id));
-      saveDeleted(deleted);
-      persist([]);
+      saveDeleted(uid, deleted);
+      persist(uid, []);
       return [];
     });
   };
