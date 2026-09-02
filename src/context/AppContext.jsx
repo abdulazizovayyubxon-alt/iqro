@@ -528,21 +528,46 @@ const CLOUD_WRITE_TIMEOUT_MS = 15_000;
 // kunlik yozuv limiti 20 000).
 const ACTIVITY_PING_KEY = (uid) => `zehin_active_ping_${uid}`;
 
+// ⚠️ AUDIT 2026-09-02, K-4 — muvaffaqiyatsiz urinishdan keyingi oyna.
+// Kunlik qulf endi faqat YOZUV O'TGANDA qo'yiladi (sababi pastda). Demak
+// xato holatda qulf yo'q, ya'ni `writeCloudNow` har chaqirilganda yangi
+// urinish ketishi mumkin edi — uzoq davom etgan tarmoq nosozligida bu
+// kuniga minglab ortiqcha yozuv bo'lardi. Shu yerda chegaralanadi:
+// muvaffaqiyatsizlikdan keyin qayta urinish yarim soatdan erta emas.
+const ACTIVITY_RETRY_MS = 30 * 60 * 1000;
+const activityAttemptAt = new Map();
+
 const touchUserActivity = (uid) => {
   if (!uid) return;
   const today = new Date().toISOString().slice(0, 10);
   try {
     if (localStorage.getItem(ACTIVITY_PING_KEY(uid)) === today) return;
-    localStorage.setItem(ACTIVITY_PING_KEY(uid), today);
   } catch {
-    // localStorage yopiq (private rejim) — qulfsiz davom etamiz, yozuv
-    // baribir seansiga bir necha marta bo'ladi, kvota uchun xavfli emas.
+    // localStorage yopiq (private rejim) — qulfsiz davom etamiz, pastdagi
+    // xotira oynasi baribir urinishlar sonini chegaralaydi.
   }
+
+  const last = activityAttemptAt.get(uid) || 0;
+  if (Date.now() - last < ACTIVITY_RETRY_MS) return;
+  activityAttemptAt.set(uid, Date.now());
+
   // `updateDoc` ATAYLAB: hujjat yo'q bo'lsa `setDoc(merge)` uni YARATISHGA
   // urinardi va firestore.rules dagi `create` shartiga (role == 'user')
   // tushib rad etilardi. Xato jimgina yutiladi — bu ikkinchi darajali metrika,
   // uning sababli test yakuni saqlanmay qolmasligi kerak.
   updateDoc(doc(db, 'users', uid), { lastActiveAt: new Date().toISOString() })
+    .then(() => {
+      // ⚠️ AUDIT 2026-09-02, K-4 — QULF YOZUVDAN KEYIN QO'YILADI.
+      //
+      // Ilgari qulf urinishdan OLDIN qo'yilar, xato esa jimgina yutilardi.
+      // Kvota tugagan kunda BIRINCHI urinish yiqilardi va qulf yarim tungacha
+      // turardi — ya'ni o'sha kuni HECH KIMNING `lastActiveAt` i yozilmasdi.
+      // Aynan o'sha kun admin panelidagi «oxirgi faollik» ustuniga qarab
+      // «kim ilovada edi?» deb tekshiriladigan kun: ustun jimgina yolg'on
+      // gapirardi. Endi qulf faqat yozuv MUVAFFAQIYATLI bo'lganda qo'yiladi.
+      try { localStorage.setItem(ACTIVITY_PING_KEY(uid), today); }
+      catch { /* private rejim — qulfsiz, yuqoridagi oyna yetarli */ }
+    })
     .catch(() => {});
 };
 
@@ -728,6 +753,46 @@ export const AppProvider = ({ children }) => {
   // shifti shu qiymatdan hisoblanadi — uzluksiz javob berishda debounce
   // taymeri cheksiz qayta boshlanib, yozuv umuman bo'lmasligining oldini oladi.
   const oldestPendingRef = useRef(null);
+  // ⚠️ AUDIT 2026-09-02, K-3 — YOZUV DAVRI. Har hisob almashishida oshadi.
+  // Tugagan yozuv bayroqqa faqat O'Z davri hali amalda bo'lsa tegadi; aks
+  // holda eski hisobning javobi yangi hisobning holatini buzardi.
+  const writeEpochRef = useRef(0);
+
+  // ⚠️ AUDIT 2026-09-02, K-3 va K-6 — HISOB ALMASHGANDA BAYROQLAR TOZALANADI.
+  //
+  // Ilgari hisob almashganda faqat `setCloudSynced(false)` bajarilardi;
+  // oltita yozuv bayrog'i tegilmay qolardi. `AppProvider` esa ildizda turadi
+  // va hech qachon unmount bo'lmaydi, ya'ni bayroqlar butun sahifa umri
+  // davomida yashaydi. Ikki oqibati bor edi:
+  //
+  //   K-3. Kvota tugaganda `setDoc` promise'i NA resolve NA reject bo'ladi
+  //        va `inFlightRef` `true` bo'lib qotadi. Shu paytda foydalanuvchi
+  //        chiqib boshqasi kirsa (SPA — sahifa qayta yuklanmaydi), yangi
+  //        foydalanuvchining HAR yozuvi `writeCloudNow` boshidagi
+  //        `if (inFlightRef.current) return` darvozasidan qaytardi. Natijada
+  //        uning statistikasi butun seans davomida bulutga umuman
+  //        yozilmasdi — lokal zaxira ishlagani uchun jimgina.
+  //
+  //   K-6. `retryCloudRef` 2-effekt ichida o'rnatiladi, u esa `!user` da
+  //        erta qaytadi. Ya'ni chiqib ketilganda ref ESKI hisobga bog'langan
+  //        eski closure'ni ushlab qolardi va 60 soniyalik qayta urinish
+  //        taymeri `userStats/<eski uid>` ga yozishga urinaverardi. Qoidalar
+  //        uni rad etadi (ma'lumot sizmaydi), lekin backoff bekorga o'sib,
+  //        konsolga xato oqib turardi.
+  //
+  // Bu effekt 1-effektdan KEYIN, 2-effektdan OLDIN turishi SHART — effektlar
+  // e'lon tartibida ishlaydi va tozalash yozuv rejalashtirilishidan oldin
+  // bo'lishi kerak.
+  useEffect(() => {
+    writeEpochRef.current += 1;
+    pendingCloudRef.current = false;
+    inFlightRef.current = false;
+    dirtyRef.current = false;
+    oldestPendingRef.current = null;
+    retryAttemptRef.current = 0;
+    nextAttemptAtRef.current = 0;
+    retryCloudRef.current = null;
+  }, [user?.uid]);
 
   useEffect(() => {
     if (!user || !cloudSynced) return;
@@ -766,8 +831,6 @@ export const AppProvider = ({ children }) => {
     //      keyingi kirishda tiklaydi (shu sababli merge qoidalari MUHIM).
     const writeCloudNow = () => {
       saveTimerRef.current = null;
-      // Kutish oynasi yopildi — maksimal kutish shifti shu paytdan qayta sanaydi.
-      oldestPendingRef.current = null;
 
       // ⚠️ AUDIT 2026-08-23, KVOTA HALOKATI — QUYIDAGI QATOR ENG MUHIMI.
       //
@@ -789,8 +852,19 @@ export const AppProvider = ({ children }) => {
         return;
       }
 
+      // ⚠️ AUDIT 2026-09-02, K-5 — BU QATOR DARVOZADAN KEYIN TURISHI SHART.
+      // Ilgari u funksiyaning boshida edi: yozuv BO'LMAGAN taqdirda ham
+      // («inFlight» darvozasi yopiq bo'lganda) shift hisoblagichi nolga
+      // tushardi va keyingi o'zgarish yana to'liq debounce olardi. Ya'ni
+      // kod va'da qilgan «eng ko'pi CLOUD_MAX_WAIT_MS» kafolati buzilardi.
+      // Kutish oynasi yopildi — maksimal kutish shifti shu paytdan qayta sanaydi.
+      oldestPendingRef.current = null;
+
       const statRef = doc(db, 'userStats', user.uid);
-      const uidAtWrite = user.uid;
+      // K-3: yozuv boshlangan paytdagi davr. Javob kelganda davr o'zgargan
+      // bo'lsa (hisob almashgan) bayroqlarga TEGILMAYDI — ular yangi hisob
+      // uchun allaqachon tozalangan.
+      const epochAtWrite = writeEpochRef.current;
       dirtyRef.current = false; // shu yozuv AYNAN joriy holatni oladi
       pendingCloudRef.current = true;
       inFlightRef.current = true;
@@ -800,20 +874,27 @@ export const AppProvider = ({ children }) => {
       // `inFlightRef` HAQIQIY settle bo'yicha ochiladi, timeout bo'yicha EMAS.
       // Timeout Firestore mutatsiyasini BEKOR QILMAYDI — u navbatda turaveradi.
       // Ya'ni "timeout bo'ldi, yana yuboraman" degani navbatni ikkilantirish.
+      // Hisob almashgan bo'lsa bu javob eskirgan — bayroqlarning HECH BIRIGA
+      // tegmaymiz. Ilgari bu tekshiruv faqat `pendingCloudRef` da bor edi,
+      // `retryAttemptRef`, `nextAttemptAtRef` va `inFlightRef` esa eski
+      // hisobning javobi bilan o'zgarardi (AUDIT 2026-09-02, K-3).
+      const isCurrent = () => writeEpochRef.current === epochAtWrite;
+
       p.then(() => {
-        // Hisob almashgan bo'lsa bu javob eskirgan — bayroqqa tegmaymiz.
+        if (!isCurrent()) return;
         // Yozuv ketayotganda yangi o'zgarish kelgan bo'lsa bayroq YOQILGAN qoladi.
-        if (userRef.current?.uid === uidAtWrite) pendingCloudRef.current = dirtyRef.current;
+        pendingCloudRef.current = dirtyRef.current;
         retryAttemptRef.current = 0;
         nextAttemptAtRef.current = 0;
       }).catch(err => {
         // Bayroq YOQILGAN qoladi → qayta urinish effekti ko'taradi, lekin
         // endi o'sib boruvchi kechikish bilan (backoff), har daqiqada emas.
         console.error('userStats yozilmadi (qayta uriniladi):', err?.code || err);
+        if (!isCurrent()) return;
         retryAttemptRef.current += 1;
         nextAttemptAtRef.current = Date.now() + nextRetryDelay(retryAttemptRef.current);
       }).finally(() => {
-        inFlightRef.current = false;
+        if (isCurrent()) inFlightRef.current = false;
       });
 
       // Osilib qolgan yozuvni KO'RINADIGAN qilamiz: 2026-08 halokati aynan

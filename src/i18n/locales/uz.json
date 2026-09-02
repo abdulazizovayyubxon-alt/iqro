@@ -516,6 +516,8 @@
     "points": "BALL",
     "unranked": "Birinchi testni yeching — reytingga qo'shilasiz",
     "empty": "Hozircha reyting bo'sh",
+    "newWeek": "Yangi hafta boshlandi — reyting soat 14:00 da yangilanadi",
+    "newMonth": "Yangi oy boshlandi — reyting soat 14:00 da yangilanadi",
     "deleteTitle": "O'chirishni tasdiqlang",
     "deleteText": "\"{{name}}\" ning reyting natijasini rostdan ham o'chirasizmi?"
   },

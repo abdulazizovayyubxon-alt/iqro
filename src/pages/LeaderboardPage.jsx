@@ -13,6 +13,7 @@ import { ToastContext } from '../context/ToastContext';
 import { useAdmin } from '../hooks/useAdmin';
 import { AppContext, getWeekId, getMonthId } from '../context/AppContext';
 import { getLeague, nextLeague, leagueProgress } from '../utils/league';
+import { decideLeaderboardSource } from '../utils/leaderboardSnapshot';
 import { AnalyticsEvents } from '../services/analytics';
 import './LeaderboardPage.css';
 
@@ -58,7 +59,7 @@ const LB_CACHE_TTL = 5 * 60 * 1000;
 // demakdir va sahifa avvalgidek jonli so'rovga tushadi (xavfsizlik to'ri).
 //
 // «Reyting qotib qolgandek ko'rinadi» degan e'tiroz YOLG'ON KO'RSATISH bilan
-// emas, ROSTINI AYTISH bilan yechildi: taxta tepasida «Yangilangan: 13:00»
+// emas, ROSTINI AYTISH bilan yechildi: taxta tepasida «Yangilangan: 14:00»
 // yozuvi turadi. Foydalanuvchining O'Z o'rni esa (agar u top-50 dan tashqarida
 // bo'lsa) hamon JONLI hisoblanadi — pastdagi `getCountFromServer` juftligi.
 //
@@ -120,6 +121,10 @@ const LeaderboardPage = () => {
   // Ro'yxat qachonlik holatini ko'rsatadi: snapshot sanasi (ISO) yoki
   // `null` = jonli so'rovdan olingan, ya'ni hozirgi holat.
   const [snapshotAt, setSnapshotAt] = useState(null);
+  // Davr almashdi, lekin server surati hali OLDINGI davrniki (dushanba
+  // ertalab / oyning 1-sanasi). Bu holatda jonli so'rovga TUSHMAYMIZ —
+  // sabab quyida, `periodStale` izohida (AUDIT 2026-09-02, K-2).
+  const [periodPending, setPeriodPending] = useState(false);
 
   // Reyting ko'rildi. ALOHIDA effekt — quyidagi yuklash effekti `cloudSynced`
   // ni kutadi, qiziqish esa sahifa ochilgan zahoti qayd etilishi kerak.
@@ -139,6 +144,7 @@ const LeaderboardPage = () => {
     let cancelled = false;
     setLoading(true);
     setSnapshotAt(null);
+    setPeriodPending(false);
 
     const weekId = getWeekId();
     const monthId = getMonthId();
@@ -175,28 +181,65 @@ const LeaderboardPage = () => {
         let results = cachedEntry?.rows || null;
         if (cachedEntry) setSnapshotAt(cachedEntry.at);
 
+        // Surat SOG'LOM, faqat davri eski bo'lsa shu yoqiladi (K-2, quyida).
+        let periodStale = false;
+
         if (!results) {
           // Server snapshot'i — yangi bo'lsa 50 ta o'qishni 1 taga almashtiradi.
           try {
             const snapDoc = await getDoc(doc(db, 'settings', 'leaderboard'));
             if (cancelled) return;
-            const data = snapDoc.exists() ? snapDoc.data() : null;
-            const age = data?.updatedAt ? Date.now() - new Date(data.updatedAt).getTime() : Infinity;
-            const rows = data?.boards?.[boardType];
-            // Hafta/oy taxtasi uchun snapshot AYNAN shu davrniki bo'lishi shart:
-            // o'tgan haftaning ro'yxatini «joriy hafta» deb ko'rsatish — yolg'on.
-            const periodOk =
-              boardType === 'all' ? true
-                : boardType === 'weekly' ? data?.weekId === weekId
-                  : data?.monthId === monthId;
-            if (Array.isArray(rows) && age <= SNAPSHOT_MAX_AGE && periodOk) {
-              results = rows;
-              setSnapshotAt(data.updatedAt || null);
-              writeLbCache(cacheKey, results, data.updatedAt || null);
+            // Qaror sof funksiyada va testga olingan (utils/leaderboardSnapshot.js)
+            // — u butun ilovadagi eng qimmat o'qishni boshqaradi.
+            const decision = decideLeaderboardSource({
+              data: snapDoc.exists() ? snapDoc.data() : null,
+              boardType,
+              weekId,
+              monthId,
+              now: Date.now(),
+              maxAgeMs: SNAPSHOT_MAX_AGE,
+            });
+            if (decision.source === 'snapshot') {
+              results = decision.rows;
+              setSnapshotAt(decision.updatedAt);
+              writeLbCache(cacheKey, results, decision.updatedAt);
+            } else if (decision.source === 'periodPending') {
+              periodStale = true;
             }
           } catch {
             // Snapshot ixtiyoriy — yiqilsa jonli so'rovga tushamiz.
           }
+        }
+
+        // ⚠️ AUDIT 2026-09-02, K-2 — DAVR ALMASHISH OYNASI.
+        //
+        // `getWeekId` Toshkent kalendari bo'yicha ishlaydi (server va mijozda
+        // bir xil, `api/_shared.js`), ya'ni hafta DUSHANBA 00:00 da almashadi.
+        // Cron esa suratni 14:00 da yozadi (`vercel.json`). Oradagi 14 soatda
+        // surat sog'lom, lekin davri eski. Oylik taxtada ham xuddi shu — har
+        // oyning 1-sanasida.
+        //
+        // Ilgari bu oynada har foydalanuvchi jonli so'rovga tushardi:
+        //     1 (surat) + 50 (jonli) = 51 o'qish,   mijoz keshi atigi 5 daqiqa.
+        // Ertalabki cho'qqi aynan shu oynaga tushadi (o'qituvchilar darsdan
+        // oldin) — ya'ni ~1000 foydalanuvchida Spark rejasining 50 000 lik
+        // KUNLIK o'qish limiti tushgacha tugaydi. Cron ham o'sha kvotaga
+        // bog'liq: limit tugasa ertasi kuni surat yozilmaydi va halqa o'zini
+        // o'zi quvvatlaydi.
+        //
+        // NEGA JONLI SO'ROV BU YERDA BARIBIR YECHIM EMAS: yangi davr boshida
+        // `weekly_<yangi>` maydoni hujjatlarda HALI YO'Q, Firestore esa
+        // `orderBy` da maydoni yo'q hujjatni umuman qaytarmaydi. Ya'ni 50 ta
+        // o'qish sarflab ham to'liq taxta chiqmaydi — u shunchaki o'sha
+        // ertalab ball yig'ulganlarning qismini ko'rsatadi.
+        //
+        // Shuning uchun `SNAPSHOT_MAX_AGE` bilan bir xil falsafa tanlandi:
+        // yashirish emas, ROSTINI AYTISH. Foydalanuvchining O'Z o'rni pastda
+        // hamon ko'rsatiladi — u lokal statistikadan hisoblanadi va ro'yxatga
+        // bog'liq emas.
+        if (periodStale) {
+          results = [];
+          setPeriodPending(true);
         }
 
         if (!results) {
@@ -445,7 +488,7 @@ const LeaderboardPage = () => {
       </div>
 
       {/* ── Ro'yxat qachonlik holat ekani ────────────────────────────────
-          Reyting kuniga bir marta (cron 06:00) oldindan hisoblanadi: bu 50 ta
+          Reyting kuniga bir marta (cron 14:00, Toshkent) oldindan hisoblanadi: bu 50 ta
           o'qishni 1 taga tushiradi. Raqamning eskiligini YASHIRMAYMIZ —
           foydalanuvchi ball yig'ib taxta qimirlamasa, sababini bilishi kerak.
           Jonli so'rovdan kelgan bo'lsa (`snapshotAt === null`) hech narsa
@@ -527,6 +570,11 @@ const LeaderboardPage = () => {
       <div className="lb-list-wrap">
         {loading ? (
           <div className="lb-empty">{t('common.loading')}</div>
+        ) : periodPending ? (
+          // K-2: davr almashdi, surat hali eski. Bo'sh ro'yxat o'rniga SABAB.
+          <div className="lb-empty">
+            {boardType === 'weekly' ? t('leaderboard.newWeek') : t('leaderboard.newMonth')}
+          </div>
         ) : leaders.length === 0 ? (
           <div className="lb-empty">{t('leaderboard.empty')}</div>
         ) : (

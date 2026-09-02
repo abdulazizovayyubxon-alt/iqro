@@ -516,6 +516,8 @@
     "points": "POINTS",
     "unranked": "Take your first test to join the leaderboard",
     "empty": "Leaderboard is currently empty",
+    "newWeek": "A new week has started — the leaderboard updates at 14:00",
+    "newMonth": "A new month has started — the leaderboard updates at 14:00",
     "deleteTitle": "Confirm Deletion",
     "deleteText": "Are you sure you want to remove the leaderboard result for \"{{name}}\"?"
   },

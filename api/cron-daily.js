@@ -6,16 +6,28 @@
  *
  *  Har kuni 1 marta ishga tushadi (Vercel Cron yoki tashqi trigger):
  *
- *  ⚠️ JADVAL — 08:00 UTC (Toshkent 13:00). BU VAQT TASODIFIY EMAS.
+ *  ⚠️ JADVAL — 09:00 UTC (Toshkent 14:00). BU VAQT TASODIFIY EMAS.
  *
- *  Firestore bepul (Spark) rejada kunlik yozuv kvotasi Tinch okeani yarim
- *  kechasida = 07:00 UTC da yangilanadi. Cron ilgari 06:00 UTC da ishlardi,
- *  ya'ni tiklanishdan BIR SOAT OLDIN — tugab bo'lgan kvotaning dumida.
+ *  Firestore bepul (Spark) rejada kunlik yozuv kvotasi TINCH OKEANI yarim
+ *  kechasida yangilanadi — UTC yarim tunida EMAS. Cron ilgari 06:00 UTC da
+ *  ishlardi, ya'ni tiklanishdan oldin, tugab bo'lgan kvotaning dumida.
  *  Kunduzi kvota tugagan bo'lsa cron HAR KUNI bloklanardi: 2026-08-21..23
  *  oralig'ida `metrics` hujjatlari umuman yozilmadi va `meta/cronHealth`
- *  yaratilmadi. Endi tiklanishdan bir soat KEYIN ishlaydi — kvota yangi.
+ *  yaratilmadi.
  *
- *  Vaqtni o'zgartirsangiz, 07:00 UTC dan KEYIN qoldiring.
+ *  ⚠️ AUDIT 2026-09-02, K-1 — TIKLANISH VAQTI YIL DAVOMIDA SURILADI.
+ *  Bu yerda avval «tiklanish = 07:00 UTC» deb yozilgan edi va jadval 08:00
+ *  UTC ga qo'yilgandi. 07:00 faqat AQSh YOZGI vaqtida to'g'ri:
+ *
+ *      yozgi vaqt (PDT, UTC−7):  tiklanish 07:00 UTC
+ *      qishki vaqt (PST, UTC−8): tiklanish 08:00 UTC   ← 2026-11-01 dan
+ *
+ *  Ya'ni 08:00 lik jadval qishda tiklanish daqiqasiga AYNAN tushardi va
+ *  yuqoridagi nosozlik ikki oy kechikib qaytardi. Firebase hujjati ham
+ *  aniq vaqt bermaydi: "reset AROUND midnight Pacific time".
+ *
+ *  Shuning uchun 09:00 UTC — IKKALA vaqtdan ham keyin, bir soat zaxira bilan.
+ *  Vaqtni o'zgartirsangiz, 08:00 UTC dan KEYIN qoldiring (07:00 emas).
  *
  *  1. Premium muddat tekshiruvi:
  *     - premiumExpire o'tgan → isPremium = false (to'lov/promo/admin — bir xil)
@@ -771,7 +783,7 @@ export default async function handler(req, res) {
     // tashlanardi va har kim baribir 50 ta hujjat o'qirdi.
     //
     // ENDI oyna 26 SOAT: surat kun bo'yi ishlatiladi. Eskiligi mijozda
-    // OCHIQ yoziladi («Yangilangan: 13:00»), ya'ni «reyting qotib qolgandek»
+    // OCHIQ yoziladi («Yangilangan: 14:00»), ya'ni «reyting qotib qolgandek»
     // muammosi yashirish bilan emas, rostini aytish bilan yechilgan.
     //
     // ⚠️ SHUNING UCHUN BU BLOK ENDI KRITIK: u ishlamay qolsa (yoki `updatedAt`
