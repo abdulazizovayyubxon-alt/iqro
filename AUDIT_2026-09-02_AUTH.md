@@ -170,10 +170,46 @@ qaytmaydi. Buni tekshirdim.
 shishiradi, admin ro'yxati va qidiruvida (`searchTokens` bor) hech qachon
 kira olmaydigan «foydalanuvchi» bo'lib turadi.
 
-**Tuzatish:** mijoz buni tozalay olmaydi — `users` o'chirish qoidasi
-`isAdmin()` talab qiladi. Shuning uchun server tomonda: `cron-daily` allaqachon
-`users` bo'ylab yuradi, o'sha yerda Auth'da yo'q hujjatlarni belgilash yoki
-o'chirish mumkin.
+### ✅ TEKSHIRILDI (2026-09-03) — YETIM TOPILMADI
+
+Auth ro'yxatini bevosita sanash uchun Admin SDK kerak (`listUsers`), lokal
+`.env` da esa service account yo'q. Shuning uchun yetim IMZOSI bo'yicha
+qidirildi ([diag-orphans.mjs](diag-orphans.mjs), faqat o'qiydi):
+
+| O'lchov | Natija |
+|---|---|
+| `users` hujjatlari jami | **603** |
+| **TAKRORLANGAN telefon** | **0** |
+| `shortId` yo'q | 1 |
+| `lastActiveAt` yo'q | 64 |
+| «sovuq» (ikkalasi ham yo'q) | 1 |
+| **Yetim imzosi (takror telefon + sovuq)** | **0** |
+
+**Nega takror telefon hal qiluvchi belgi:** yetim yuzaga kelishi uchun odam
+qayta ro'yxatdan o'tishi va YANGI uid olishi kerak — ya'ni bitta telefonga
+ikki hujjat to'g'ri keladi. Bunday guruh BITTA ham yo'q.
+
+**Xulosa:** rollback yo'li (2026-08-29 da qo'shilgan) hozircha birorta yetim
+hujjat qoldirmagan. Bu kutilgan natija: yetim paydo bo'lishi uchun kvota
+tugashi AYNAN ro'yxatdan o'tish paytidagi profil yozuviga to'g'ri kelishi
+kerak, oyna esa juda tor.
+
+**QAROR: `cron-daily` ga solishtirish QO'SHILMADI.** Sabablari:
+1. yetim yo'q — hal qilinadigan muammo hozircha mavjud emas;
+2. oqibati statistika aniqligi, xavfsizlik yoki ishlash emas;
+3. har kunlik Auth↔Firestore solishtirish 600+ o'qish sarflaydi va
+   foydalanuvchi soni bilan o'sadi — kvota bo'yicha qurilgan loyihada
+   mavjud bo'lmagan muammo uchun doimiy xarajat qo'shish noto'g'ri.
+
+**O'rniga:** `diag-orphans.mjs` saqlanadi va kvota hodisasidan KEYIN qayta
+yuritiladi. Doimiy xarajat nol.
+
+⚠️ **O'LCHOV XATOSI TUZATILDI.** Birinchi yurishda «gender/birthDate yo'q»
+595 chiqdi va bu `60996aa` dagi 7% bilan zid edi. Sabab: o'lchov maydonning
+BOR-YO'QLIGINI emas, qiymati bo'sh emasligini sanardi. Tuzatilgandan keyin
+raqam **40** — u telefonsiz hujjatlar soni bilan aynan mos va eski
+nosozlikning qoldig'i (ular keyingi kirishda `onAuthStateChanged` zaxira
+profili bilan davolanadi).
 
 ---
 
