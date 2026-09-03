@@ -554,16 +554,25 @@ const AdminPage = () => {
   // bu arizalarga javob berish majburiyati bor.
   const [deletionRequests, setDeletionRequests] = useState([]);
   const [delReqLoading, setDelReqLoading] = useState(false);
+  // ⚠️ AUDIT 2026-09-02 (2), A-4 — mantiqiy bayroq, ro'yxat UZUNLIGI emas.
+  // Ilgari shart `deletionRequests.length > 0` edi: kolleksiya bo'sh bo'lsa
+  // (odatiy holat) u hech qachon bajarilmas va tab har ochilganda so'rov
+  // qaytadan ketardi. Qo'shni bo'limlar (`proLoaded`, `gapsLoaded`,
+  // `questionsLoaded`) allaqachon shu naqshda.
+  const [delReqLoaded, setDelReqLoaded] = useState(false);
   const [delReqError, setDelReqError] = useState(null);
   // Bajarilgan arizalar standart holatda YASHIRIN (2026-08-19) — pastdagi
   // `visibleDeletionRequests` ga qarang.
   const [delReqShowDone, setDelReqShowDone] = useState(false);
   const loadDeletionRequests = ({ force = false } = {}) => {
-    if (!force && deletionRequests.length > 0) return;
+    if (!force && delReqLoaded) return;
     setDelReqLoading(true);
     setDelReqError(null);
     getDocs(query(collection(db, 'deletionRequests'), orderBy('createdAt', 'desc'), limit(50)))
-      .then(snap => setDeletionRequests(snap.docs.map(d => ({ id: d.id, ...d.data() }))))
+      .then(snap => {
+        setDeletionRequests(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+        setDelReqLoaded(true);
+      })
       .catch(e => {
         console.error('deletionRequests load:', e);
         setDelReqError(e?.message || 'Yuklashda xatolik');

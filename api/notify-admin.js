@@ -3,7 +3,7 @@ import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { getAuth } from 'firebase-admin/auth';
 import { getMessaging } from 'firebase-admin/messaging';
-import { rateLimit, clientIp, extractBearer, clip, ensureShortIdAdmin } from './_shared.js';
+import { rateLimit, clientIp, extractBearer, clip, ensureShortIdAdmin, PLATFORM_ADMIN_EMAILS } from './_shared.js';
 
 function ensureAdminApp() {
   if (getApps().length === 0) {
@@ -23,8 +23,8 @@ function getDb() {
   return getFirestore();
 }
 
-// Admin emaillari — firestore.rules bilan bir xil
-const ADMIN_EMAILS = ['abdulazizovayyubxon@gmail.com', '998999154686@iqro.uz'];
+// Admin emaillari — yagona manba `_shared.js` da (audit 2026-09-02, A-2).
+const ADMIN_EMAILS = PLATFORM_ADMIN_EMAILS;
 
 // Bearer idToken'ni tekshirib, admin ekanini tasdiqlaydi
 async function verifyAdmin(req, db) {

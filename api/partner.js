@@ -17,12 +17,7 @@
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
-import { rateLimit, clientIp } from './_shared.js';
-
-const PLATFORM_ADMIN_EMAILS = [
-  'abdulazizovayyubxon@gmail.com',
-  '998999154686@iqro.uz',
-];
+import { rateLimit, clientIp, PLATFORM_ADMIN_EMAILS } from './_shared.js';
 
 function getDb() {
   if (getApps().length === 0) {

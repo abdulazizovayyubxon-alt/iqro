@@ -20,6 +20,33 @@
 
 import crypto from 'crypto';
 
+// ── Platforma administratorlari ──────────────────────────────────────────
+//
+// ⚠️ AUDIT 2026-09-02 (2), A-2 — BU RO'YXAT UCH JOYDA TAKRORLANGAN EDI:
+// api/notify-admin.js, api/partner.js, api/school.js. Endi server tomon
+// uchun yagona manba shu yerda.
+//
+// TO'LIQ BIRLASHTIRIB BO'LMAYDI — uchta manba qoladi va buning sababi bor:
+//   1. `src/config.js` (mijoz)   — `import.meta.env` ishlatadi, Node
+//      funksiyasiga import qilinmaydi;
+//   2. shu fayl (server)         — Vercel'ga deploy bo'ladi;
+//   3. `firestore.rules`         — Firebase'ga ALOHIDA deploy bo'ladi va
+//      hech narsani import qila olmaydi.
+//
+// Uchalasining MOSLIGI test bilan qulflangan:
+// `src/__tests__/adminEmails.test.js`. Nomuvofiqlik jimgina ikki xil
+// nosozlik beradi: (a) ro'yxatdan olib tashlangan-u qoidalarda qolgan odam
+// bazaga to'liq yozish huquqini SAQLAB QOLADI; (b) teskarisida admin panelni
+// ko'radi, lekin har amali permission-denied bilan yiqiladi.
+//
+// ADMIN QO'SHSANGIZ YOKI OLIB TASHLASANGIZ: uchala joyni ham yangilang VA
+// `firebase deploy --only firestore:rules` qiling (Vercel qoidalarni deploy
+// QILMAYDI).
+export const PLATFORM_ADMIN_EMAILS = [
+  'abdulazizovayyubxon@gmail.com',
+  '998999154686@iqro.uz',
+];
+
 // ── Doimiy vaqtli satr taqqoslash ────────────────────────────────────────
 // Uzunliklar farq qilsa timingSafeEqual tashlaydi — shuning uchun avval
 // har ikkalasini SHA-256 ga o'tkazamiz (hosil doim 32 bayt).

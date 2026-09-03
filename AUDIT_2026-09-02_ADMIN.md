@@ -8,13 +8,24 @@ bilan mosligi. Diqqat markazi — 2026-08-19 dan keyingi 11 ta o'zgarish.
 
 | Band | Xavflilik | Holat |
 |---|---|---|
-| A-1 e'lon o'chirilmasligi | o'rta | ✅ **tuzatildi + 13 test** |
-| A-2 emaillar besh joyda | past | ⬜ ochiq |
-| A-3 adminLog sinxron throw | past | ⬜ ochiq |
-| A-4 bo'sh so'rov takrori | past | ⬜ ochiq |
+| A-1 e'lon o'chirilmasligi | o'rta | ✅ tuzatildi + 13 test |
+| A-2 emaillar besh joyda | past | ✅ tuzatildi + 9 test (5 → 3 manba) |
+| A-3 adminLog sinxron throw | past | ✅ tuzatildi + 7 test |
+| A-4 bo'sh so'rov takrori | past | ✅ tuzatildi |
 
-Tekshiruv: `npm test` **450 o'tdi** (437 dan +13), `eslint` toza,
+**Bu hisobotdagi barcha bandlar yopildi.**
+
+Tekshiruv: `npm test` **471 o'tdi** (auditdan oldin 437), `eslint` toza,
 `npm run build` muvaffaqiyatli.
+
+⚠️ A-2 va A-3 qo'riqchilari ATAYLAB sinovdan o'tkazildi — test yiqila
+olishi isbotlangan:
+- A-2: qoidalarga vaqtincha soxta admin qo'shildi → `src/config.js ↔
+  firestore.rules` testi yiqildi (aynan xavfli yo'nalish: qoidalarda bor-u
+  konfiguratsiyada yo'q email);
+- A-3: `asPromise` vaqtincha olib tashlandi → uchala test ham yiqildi
+  (`Converting circular structure to JSON`, `Do not know how to serialize
+  a BigInt`, sinxron `addDoc` xatosi).
 
 ---
 

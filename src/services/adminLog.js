@@ -30,6 +30,7 @@
  */
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db, auth } from '../firebase';
+import { asPromise } from '../utils/firestoreSafe';
 
 /**
  * Jurnal guruhlari — panelda filtr chiplari shu ro'yxatdan quriladi.
@@ -147,7 +148,26 @@ export function logAdminAction(type, target = null, meta = undefined) {
     console.warn(`adminLog: "${type}" ADMIN_ACTIONS ro'yxatida yo'q — yorliq qo'shing`);
   }
 
-  addDoc(collection(db, 'adminActions'), {
+  // ⚠️ AUDIT 2026-09-02 (2), A-3 — `asPromise` MAJBURIY, bezak emas.
+  //
+  // Bu chaqiruvda IKKITA sinxron `throw` nuqtasi bor va ikkalasi ham
+  // `addDoc` PROMISE'i yaratilishidan OLDIN otiladi, ya'ni pastdagi
+  // `.catch()` ularni UMUMAN ushlay olmasdi:
+  //
+  //   1) `JSON.parse(JSON.stringify(meta))` — sikl havolasi yoki `BigInt`;
+  //   2) `addDoc` ning o'z sinxron tekshiruvi — `undefined`/`symbol`/
+  //      `function` (to'liq izoh: utils/firestoreSafe.js:81).
+  //
+  // Nega bu qimmat bo'lardi: jurnal yozuvi admin amalidan KEYIN chaqiriladi,
+  // ya'ni baza o'zgarishi ALLAQACHON bajarilgan bo'ladi. Xato chaqiruvchining
+  // `catch` iga uchib «Xatolik: ...» toast'ini chiqarardi — admin amal
+  // bajarilmadi deb o'ylab, uni QAYTA bajarardi (Pro berish, rol berish,
+  // o'chirish...).
+  //
+  // Hozirgi 37 chaqiruvning hammasi oddiy satr/son/null uzatadi, ya'ni bu
+  // yo'lga bugun yetib bo'lmaydi. Qatlam KELAJAK uchun: jurnalga boyroq
+  // `meta` qo'shilishi tabiiy va o'shanda tuzoq jimgina ochilardi.
+  asPromise(() => addDoc(collection(db, 'adminActions'), {
     type,
     target: target ? String(target).slice(0, 128) : null,
     // `meta` ni ataylab kichik ushlaymiz: jurnal hujjati arzon bo'lishi kerak,
@@ -162,7 +182,7 @@ export function logAdminAction(type, target = null, meta = undefined) {
     // `createdAt` bo'yicha (eski yozuvlarda `ts` yo'q — `orderBy('ts')` ularni
     // ro'yxatdan butunlay yo'qotardi), `ts` esa nomuvofiqlikni FOSH qiladi.
     ts: serverTimestamp(),
-  }).catch((e) => {
+  })).catch((e) => {
     // Jimgina emas — konsolda ko'rinsin, lekin foydalanuvchiga chiqmasin.
     // Eng ehtimoliy sabab: firestore.rules hali deploy qilinmagan.
     console.warn('adminLog yozilmadi (rules deploy qilinganmi?):', e?.code || e?.message);
