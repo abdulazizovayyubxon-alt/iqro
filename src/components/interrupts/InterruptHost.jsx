@@ -144,6 +144,20 @@ export default function InterruptHost() {
     && daysToExpiry >= 0 && daysToExpiry <= 3;
   const subLapsed = user?.trialStatus === 'urgency' || user?.trialStatus === 'expired';
 
+  // Telegram taklifi matnining varianti.
+  //
+  // ⚠️ 2026-09-04: rotatsiyadagi UCHALA matn ham "bepul PRO obuna yutib oling"
+  // deb chorlaydi, holat esa obunani UMUMAN tekshirmasdi. Ya'ni bugun to'lagan
+  // odam ham "Pro oling" ekranini ko'rardi — qolgan hamma sotuv nuqtasi
+  // (banner, limit ekrani, `subscription` holati) obuna bilan yopilgan, faqat
+  // shu bittasi ochiq qolgan edi.
+  //
+  // Kanalning O'ZI obunachiga ham kerak (yangiliklar, bazaga qo'shilgan
+  // savollar), shuning uchun taklif yashirilmaydi — chorlov sababi almashadi.
+  const tgVariant = useCallback(() => (user?.isTruePremium
+    ? 'pro'
+    : `v${Math.max(0, askCount('tg_channel') - 1) % 3}`), [user?.isTruePremium]);
+
   // ── Holatlar — USTUVORLIK TARTIBIDA ────────────────────────────────────────
 
   const INTERRUPTS = useMemo(() => [
@@ -194,7 +208,8 @@ export default function InterruptHost() {
       run: () => { navigate('/test'); },
     },
 
-    // 4. Telegram kanal taklifi — 3 xil matn rotatsiyasi va 7d -> 10d -> 20d oraliqli ko'rsatuv
+    // 4. Telegram kanal taklifi — 3 xil matn rotatsiyasi va 7d -> 10d -> 20d oraliqli ko'rsatuv.
+    // Haqiqiy obunachida rotatsiya o'rniga PRO sotmaydigan matn (`tgVariant`).
     {
       id: 'tg_channel',
       show: () => totalAnswered >= TG_MIN_ANSWERED
@@ -205,18 +220,9 @@ export default function InterruptHost() {
         return TG_INTERVALS[idx] || (20 * DAY);
       },
       icon: Send,
-      title: () => {
-        const v = Math.max(0, askCount('tg_channel') - 1) % 3;
-        return t(`interrupts.tg.v${v}.title`);
-      },
-      body: () => {
-        const v = Math.max(0, askCount('tg_channel') - 1) % 3;
-        return t(`interrupts.tg.v${v}.body`);
-      },
-      cta: () => {
-        const v = Math.max(0, askCount('tg_channel') - 1) % 3;
-        return t(`interrupts.tg.v${v}.cta`);
-      },
+      title: () => t(`interrupts.tg.${tgVariant()}.title`),
+      body: () => t(`interrupts.tg.${tgVariant()}.body`),
+      cta: () => t(`interrupts.tg.${tgVariant()}.cta`),
       onShow: () => bumpAsk('tg_channel'),
       run: () => {
         if (typeof window !== 'undefined') {
@@ -265,7 +271,7 @@ export default function InterruptHost() {
       cta: () => t('interrupts.install.cta'),
       run: async () => { await promptInstall(); },
     },
-  ], [t, navigate, user, daysToExpiry, subLapsed, subExpiringSoon, updateReady, applyUpdate,
+  ], [t, navigate, user, daysToExpiry, subLapsed, subExpiringSoon, tgVariant, updateReady, applyUpdate,
       state?.dailyStreak, state?.dailyGoal, goalDoneToday, totalAnswered, installable, showToast]);
 
   // ── G'olibni tanlash ───────────────────────────────────────────────────────

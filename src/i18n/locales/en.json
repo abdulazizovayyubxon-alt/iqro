@@ -1334,6 +1334,11 @@
         "title": "Join Our Telegram Channel",
         "body": "Get free PRO giveaways, study guides, and helpful tips by joining our Telegram channel.",
         "cta": "Open Channel"
+      },
+      "pro": {
+        "title": "Join Our Official Channel",
+        "body": "Attestation news, new questions added to the base, and teaching materials are posted there first.",
+        "cta": "Open Channel"
       }
     }
   },

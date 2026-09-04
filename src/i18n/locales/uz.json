@@ -1334,6 +1334,11 @@
         "title": "Telegram kanalimizga ulaning",
         "body": "Kanalimiz a'zolari uchun bepul PRO obunalar, metodik qo'llanmalar va maxsus imkoniyatlar doimiy ulashib boriladi.",
         "cta": "Kanalni ochish"
+      },
+      "pro": {
+        "title": "Rasmiy kanalimizga ulaning",
+        "body": "Attestatsiya yangiliklari, bazaga qo'shilgan yangi savollar va metodik qo'llanmalar birinchi bo'lib shu yerda e'lon qilinadi.",
+        "cta": "Kanalni ochish"
       }
     }
   },
