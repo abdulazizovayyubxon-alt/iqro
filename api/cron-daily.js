@@ -179,6 +179,8 @@ export default async function handler(req, res) {
   const results = {
     premiumExpired: 0,
     remindersSent: 0,
+    // Bepul oy eslatmasi to'lagan odamga yuborilmadi (pastdagi A bloki)
+    remindersSkippedPaid: 0,
     discountsCleared: 0,
     shortIdsAssigned: 0,
     // Push kanalining kesimi — `granted`/`denied`/`default` mijoz yozadigan
@@ -408,7 +410,23 @@ export default async function handler(req, res) {
           const freeEnd = new Date(data.freeMonthExpire);
           const daysToExpire = Math.ceil((freeEnd - now) / 86400000);
 
-          if (daysToExpire <= 3 && daysToExpire > 0) {
+          // ⚠️ 2026-09-04: shart faqat `freeMonthExpire` ga qarardi, obunaga
+          // EMAS. Bepul oyi tugashidan oldin PULLIK Pro olgan odam ham
+          // "obunani yangilang" xabarini olardi — u allaqachon to'lagan va
+          // bepul oy tugashi unga hech narsani yopmaydi.
+          //
+          // Bayroq ATAYLAB qo'yilmaydi (`reminderSent` tegilmaydi): obunasi
+          // shu uch kun ichida bekor bo'lsa, eslatma o'shanda O'RINLI bo'lib
+          // qoladi va odam navbatdan tushib ketmaydi — win-back navbatidagi
+          // bilan bir xil naqsh.
+          const coveredAfterFreeMonth = data.isPremium === true
+            && (!data.premiumExpire || new Date(data.premiumExpire) > freeEnd);
+
+          const inWindow = daysToExpire <= 3 && daysToExpire > 0;
+
+          if (inWindow && coveredAfterFreeMonth) {
+            results.remindersSkippedPaid++;
+          } else if (inWindow) {
             try {
               if (!dryRun) {
                 await db.collection('users').doc(userId).collection('notifications').add({
