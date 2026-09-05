@@ -52,6 +52,11 @@ import { matchesUserSearch, serverSearchKey } from '../utils/userSearch';
 // 2026-08-20: «Xatolik yuz berdi» xabari sababni yashirib, adminni bir necha
 // soat noto'g'ri joyda qidirishga majbur qildi (haqiqiy sabab — kvota tugashi).
 import { describeFirebaseError, withWriteTimeout } from '../utils/firebaseError';
+// 2026-09-05: Pro berilganini foydalanuvchi BILMASDI (to'lov va muddat tugashi
+// yo'llarida xabar bor edi, admin yo'lida yo'q). Matn mantiqi testga olingan
+// modulda — ism har doim ism emasligi aynan shu yerda hal qilinadi.
+import { buildGrantMessage, buildGrantPush, GRANT_TITLE } from '../utils/premiumMessage';
+import { asPromise } from '../utils/firestoreSafe';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
 
 // Ro'yxatlar uchun yagona chegara. `users`/`referrals` ilgari CHEGARASIZ
@@ -2334,9 +2339,36 @@ try {
   const [premiumUntil, setPremiumUntil] = useState('');
   const [premiumSaving, setPremiumSaving] = useState(false);
 
-  // Sana kiritish maydoni uchun `YYYY-MM-DD`
-  const isoDay = (d) => d.toISOString().slice(0, 10);
+  // Foydalanuvchiga ketadigan xabar. Admin uni YUBORISHDAN OLDIN ko'radi va
+  // tahrirlashi mumkin — matn kodda qotib qolmasin (bir kishiga «imtihoningiz
+  // bilan omad», boshqasiga «maktabingiz uchun» deb yozish tabiiy ehtiyoj).
+  const [premiumNotice, setPremiumNotice] = useState('');
+  const [premiumNotify, setPremiumNotify] = useState(true);
+  // Admin matnga qo'l urgan bo'lsa, sana o'zgarganda uni QAYTA YOZMAYMIZ —
+  // aks holda tahrir jimgina yo'qolardi.
+  const [noticeTouched, setNoticeTouched] = useState(false);
+
+  // Sana kiritish maydoni uchun `YYYY-MM-DD` — MAHALLIY kun bo'yicha.
+  //
+  // ⚠️ 2026-09-05: ilgari `d.toISOString().slice(0, 10)` edi. U UTC kunini
+  // beradi, `d.getDate()` esa mahalliy kunni o'zgartiradi — ikkisi Toshkentda
+  // (UTC+5) soat 00:00–05:00 oralig'ida BOSHQA kunni ko'rsatardi. Oqibati:
+  // «30 kun» tugmasi 29 kunlik sana qo'yardi, `min` esa kechagi kunni ruxsat
+  // etib, «Sana kelajakda bo'lishi kerak» qizil xabariga olib kelardi.
+  const isoDay = (d) => {
+    const p = (n) => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+  };
   const dayFromNow = (days) => { const d = new Date(); d.setDate(d.getDate() + days); return isoDay(d); };
+
+  // Sana o'zgarsa xabar matni ham yangilanadi (muddat va kun soni matn ichida).
+  useEffect(() => {
+    if (!premiumModal || noticeTouched || !premiumUntil) return;
+    setPremiumNotice(buildGrantMessage({
+      name: premiumModal.rawName,
+      expireIso: new Date(`${premiumUntil}T23:59:59`),
+    }));
+  }, [premiumModal, premiumUntil, noticeTouched]);
 
   const togglePremium = (userId, currentStatus) => {
     const u = users.find(x => x.id === userId);
@@ -2368,7 +2400,18 @@ try {
 
     // ── Berish: aniq sana bilan ──
     setPremiumUntil(dayFromNow(30));
-    setPremiumModal({ userId, name: label, currentExpire: u?.premiumExpire || null, plan: u?.premiumPlan || null });
+    setNoticeTouched(false);
+    setPremiumNotify(true);
+    setPremiumModal({
+      userId,
+      name: label,
+      // `rawName` — XOM `displayName`. `label` bu yerda yaramaydi: u ismsiz
+      // hisobda `shortId`/`email`/uid ga tushadi va o'sha qiymat murojaatga
+      // kirib ketardi. Tozalash va rad etish qarori `cleanDisplayName` da.
+      rawName: u?.displayName || null,
+      currentExpire: u?.premiumExpire || null,
+      plan: u?.premiumPlan || null,
+    });
   };
 
   const grantPremium = async () => {
@@ -2387,34 +2430,143 @@ try {
     if (expire > maxDate) { showToast('Muddat 5 yildan oshmasin — sanani tekshiring', 'error'); return; }
 
     setPremiumSaving(true);
+    const premiumExpire = expire.toISOString();
+    // premiumPlan: 'admin' — 'paid' EMAS. Shu bois muddat o'tganda AuthContext
+    // avtomatik tugatadi (to'lov/promo obunalariga tegmaydi).
+    const patch = {
+      isPremium: true,
+      premiumExpire,
+      premiumPlan: 'admin',
+      premiumSince: new Date().toISOString(),
+      premiumMethod: 'admin',
+    };
+
     try {
-      const premiumExpire = expire.toISOString();
-      // premiumPlan: 'admin' — 'paid' EMAS. Shu bois muddat o'tganda AuthContext
-      // avtomatik tugatadi (to'lov/promo obunalariga tegmaydi).
-      await withWriteTimeout(updateDoc(doc(db, 'users', userId), {
-        isPremium: true,
-        premiumExpire,
-        premiumPlan: 'admin',
-        premiumSince: new Date().toISOString(),
-        premiumMethod: 'admin',
-      }));
-      setUsers(prev => prev.map(u => u.id === userId
-        ? { ...u, isPremium: true, premiumExpire, premiumPlan: 'admin' } : u));
-      logAdminAction('premium.grant', userId, { gacha: premiumUntil });
-      showToast(`Pro berildi — ${new Date(premiumExpire).toLocaleDateString('uz-UZ')} gacha ✅`, 'success');
+      // `sekin` — yozuv timeout'ga uchradi, lekin BAZAGA TUSHDI.
+      let sekin = false;
+      try {
+        await withWriteTimeout(updateDoc(doc(db, 'users', userId), patch));
+      } catch (e) {
+        // ⚠️ 2026-08-20 HODISASI. Bu yerda ilgari `showToast("Xatolik yuz berdi")`
+        // turardi va u AMALDA HECH QACHON KO'RINMASDI. Sabab: kvota tugaganda
+        // (`resource-exhausted`) Firestore promise'ni rad etmaydi — cheksiz qayta
+        // uradi. Ya'ni `await` tugamaydi, `catch` ishga tushmaydi, `finally` ham
+        // yonmaydi: tugma abadiy «saqlanmoqda» holatida qoladi.
+        // Endi yozuv `withWriteTimeout` bilan chegaralangan va sabab aytiladi.
+        console.error('premium.grant xatosi:', e?.code, e?.message);
+
+        // ⚠️ 2026-09-05 O'LCHOVI — nega bu yerda darrov "xato" deyilmaydi.
+        // Bazada admin qo'li bilan Pro berilgan 16 hisobdan 5 tasida
+        // (`premiumSince` yozilgan, ya'ni Pro BERILGAN) `adminActions`
+        // jurnalida `premium.grant` izi yo'q edi. Ya'ni yozuv 12 soniyalik
+        // chegaraga urilgan, `catch` ishlagan, admin QIZIL xabar ko'rgan —
+        // holbuki Firestore yozuvni keyinroq baribir tushirgan.
+        // firebaseError.js dagi matn esa «O'zgarish SAQLANMAGAN» derdi, ya'ni
+        // panel yolg'on gapirardi va admin amalni QAYTA bajarardi.
+        //
+        // Timeout — "bekor qilindi" degani EMAS (utils/firebaseError.js:95).
+        // Shuning uchun xulosa chiqarishdan oldin hujjat QAYTA O'QILADI.
+        const landed = await asPromise(() => withWriteTimeout(getDoc(doc(db, 'users', userId)), 8000))
+          .then(s => s.exists() && s.data()?.premiumExpire === premiumExpire)
+          .catch(() => false);
+
+        if (!landed) {
+          showToast(describeFirebaseError(e), 'error');
+          return;
+        }
+        sekin = true;
+      }
+
+      setUsers(prev => prev.map(u => u.id === userId ? { ...u, ...patch } : u));
+      logAdminAction('premium.grant', userId, sekin
+        ? { gacha: premiumUntil, izoh: "yozuv sekin tushdi — qayta o'qib tasdiqlandi" }
+        : { gacha: premiumUntil });
+
+      // ⚠️ `await` ATAYLAB YO'Q. Xabar yuborish — QO'SHIMCHA ish, Pro esa
+      // allaqachon berilgan. Uni kutsak, "Pro berildi" toasti va oynaning
+      // yopilishi xabar kanaliga bog'lanib qolardi: aynan shu naqsh
+      // (tugma kutmoqda → admin qayta bosadi) tuzatilyapti.
+      // `sendGrantNotice` hech qachon rad etilmaydi — natijasi boolean.
+      if (premiumNotify) {
+        sendGrantNotice(userId, premiumNotice, premiumModal?.rawName, premiumUntil).then((ok) => {
+          if (!ok) showToast("Pro berildi, lekin xabar yetkazilmadi — «Xabarlar» bo'limidan qo'lda yuborishingiz mumkin", 'info');
+        });
+      }
+
+      showToast(sekin
+        ? `Pro berildi — tarmoq sekin edi, baza tekshirildi ✅ (${new Date(premiumExpire).toLocaleDateString('uz-UZ')} gacha)`
+        : `Pro berildi — ${new Date(premiumExpire).toLocaleDateString('uz-UZ')} gacha ✅`, 'success');
       setPremiumModal(null);
-    } catch (e) {
-      // ⚠️ 2026-08-20 HODISASI. Bu yerda ilgari `showToast("Xatolik yuz berdi")`
-      // turardi va u AMALDA HECH QACHON KO'RINMASDI. Sabab: kvota tugaganda
-      // (`resource-exhausted`) Firestore promise'ni rad etmaydi — cheksiz qayta
-      // uradi. Ya'ni `await` tugamaydi, `catch` ishga tushmaydi, `finally` ham
-      // yonmaydi: tugma abadiy «saqlanmoqda» holatida qoladi.
-      // Endi yozuv `withWriteTimeout` bilan chegaralangan va sabab aytiladi.
-      console.error('premium.grant xatosi:', e?.code, e?.message);
-      showToast(describeFirebaseError(e), 'error');
     } finally {
       setPremiumSaving(false);
     }
+  };
+
+  /**
+   * Foydalanuvchiga «Pro faollashtirildi» xabarini yetkazadi.
+   *
+   * ⚠️ IKKI QAT'IY QOIDA:
+   *
+   *  1. BU FUNKSIYA HECH QACHON XATO TASHLAMAYDI. `adminLog.js` dagi bilan
+   *     bir xil sabab: u Pro berilgandan KEYIN chaqiriladi, ya'ni baza
+   *     o'zgarishi allaqachon bo'lgan. Xato yuqoriga uchsa, admin qizil
+   *     xabar ko'rib amalni qayta bajarardi — biz aynan shu naqshni
+   *     tuzatyapmiz, yangisini qo'shmaymiz.
+   *
+   *  2. Xabar SHAXSIY subkolleksiyaga yoziladi (`users/{uid}/notifications`),
+   *     ochiq `notifications` ga EMAS: u kolleksiyani tizimga kirgan har kim
+   *     o'qiy oladi (firestore.rules:345) — ism va obuna muddati begonaga
+   *     ko'rinib qolardi. Bir kishiga atalgan xabar uchun marshrut
+   *     handleSendNotification (yuqorida) va payment-webhook.js:153 bilan
+   *     bir xil.
+   */
+  const sendGrantNotice = async (userId, text, rawName, untilDay) => {
+    const message = String(text || '').trim();
+    if (!message) return true;
+    const nowIso = new Date().toISOString();
+
+    // `date` MAJBURIY: useNotifications qo'shimcha o'qishni `where('date','>',kursor)`
+    // bilan qiladi — maydonsiz hujjat qo'ng'iroqqa umuman yetib bormaydi.
+    //
+    // `withWriteTimeout` bu yerda ham bor: kvota tugagan kuni bu yozuv ham
+    // settle bo'lmaydi va `await` abadiy osilib qolardi.
+    const ok = await asPromise(() => withWriteTimeout(addDoc(collection(db, 'users', userId, 'notifications'), {
+      type: 'success',
+      title: GRANT_TITLE,
+      message,
+      read: false,
+      date: nowIso,
+      createdAt: nowIso,
+    }))).then(() => true).catch((e) => {
+      console.warn('Pro xabari yozilmadi (Pro BERILGAN):', e?.code || e?.message);
+      return false;
+    });
+
+    // FCM push — best-effort va NATIJAGA TA'SIR QILMAYDI: asosiy kanal
+    // ilova ichidagi xabar, push esa faqat "ustiga qo'shimcha" (tokeni
+    // yo'q foydalanuvchida u umuman bo'lmaydi).
+    // Matn ilova ichidagidan qisqaroq va ALOQA MANZILISIZ
+    // (utils/premiumMessage.js dagi izoh: Play anti-steering).
+    try {
+      const idToken = await auth.currentUser?.getIdToken();
+      if (idToken) {
+        await fetch('/api/notify-admin', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${idToken}` },
+          body: JSON.stringify({
+            action: 'push',
+            title: GRANT_TITLE,
+            body: buildGrantPush({ name: rawName, expireIso: untilDay ? new Date(`${untilDay}T23:59:59`) : null }),
+            target: userId,
+          }),
+          // Serverless funksiya javob bermay qolsa ham osilib qolmasin.
+          signal: AbortSignal.timeout(10000),
+        });
+      }
+    } catch (pushErr) {
+      console.warn('Pro push yuborilmadi (zararsiz):', pushErr);
+    }
+    return ok;
   };
 
   // ⚠️ ADMIN AUDIT 2026-08-06, A-13 BAND — avval bu amal TASDIQSIZ edi: bitta
@@ -6241,6 +6393,39 @@ try {
                 <strong>Muddatsiz Pro yo'li ataylab olib tashlangan:</strong> <code>premiumExpire</code> —
                 obuna muddatining yagona manbasi.
               </div>
+            </div>
+
+            {/* ── Foydalanuvchiga ketadigan xabar ──
+                Ilgari admin yo'li JIM edi: odam Pro oladi-yu, bilmaydi.
+                Matn ko'rinib turadi va tahrirlanadi — «yubordim deb o'ylash»
+                holati qolmasin. */}
+            <div className="admin-form-row" style={{ marginTop: 14 }}>
+              <label className="admin-label admin-row" style={{ gap: 8, cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={premiumNotify}
+                  onChange={e => setPremiumNotify(e.target.checked)}
+                />
+                Foydalanuvchiga xabar yuborilsin
+              </label>
+              {premiumNotify && (
+                <>
+                  <textarea
+                    className="admin-input"
+                    rows={6}
+                    value={premiumNotice}
+                    onChange={e => { setNoticeTouched(true); setPremiumNotice(e.target.value); }}
+                    aria-label="Foydalanuvchiga ketadigan xabar matni"
+                    style={{ marginTop: 8, resize: 'vertical', lineHeight: 1.5 }}
+                  />
+                  <div className="admin-info-text" style={{ marginTop: 6 }}>
+                    Qo'ng'iroqqa (shaxsiy xabar) tushadi, havola bosiladigan bo'ladi.
+                    Push alohida, qisqaroq matn bilan ketadi — unda aloqa manzili
+                    <strong> ataylab yo'q</strong> (Play anti-steering, OBUNA_XABARNOMALARI.md).
+                    {noticeTouched && <> · <button type="button" className="btn btn-sm btn-outline" style={{ marginTop: 6 }} onClick={() => setNoticeTouched(false)}>Standart matnga qaytarish</button></>}
+                  </div>
+                </>
+              )}
             </div>
 
             <div className="admin-modal-actions">
