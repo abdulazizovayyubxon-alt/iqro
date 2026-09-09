@@ -394,9 +394,26 @@ service cloud.firestore {
     // `hasContentAccess()` ATAYIN qo'yilmadi: ustoz kodni tasdiqlagan
     // zahoti haftalik to'plamni ko'ra olishi kerak — obuna holati bu yerda
     // to'siq bo'lmasin.
+    // ⚠️ 2026-09-09 — "Guruhdan chiqarish" qo'shilgach TUZATILDI.
+    // Faqat `exists()` tekshirilardi, hamkor panelidagi chiqarish esa
+    // redemption hujjatini O'CHIRMAYDI, `status: 'removed'` qilib belgilaydi
+    // (o'chirilsa kod qayta ishlatilib, yana 3 oylik bepul Pro olinardi —
+    // api/partner.js dagi izohga qarang). Ya'ni `exists()` chiqarilgan odam
+    // uchun ham TRUE qaytarardi: guruhdan chiqarilgan, Pro'si bekor qilingan
+    // ustoz ustozning YOPIQ haftalik savollarini o'qishda davom etardi.
+    //
+    // `data.get('status','active')` — sukut qiymati bilan: `status` maydoni
+    // umuman yo'q ESKI redemption hujjatlari (bu funksiyagacha yozilganlarning
+    // hammasi) a'zo bo'lib qolaveradi.
+    //
+    // NARX: `exists()` + `get()` = 2 hujjat murojaati (qoidalar chegarasi —
+    // bitta so'rovga 10 ta). Faqat `partnerSets` o'qishda ishlaydi, ya'ni
+    // ustoz haftalik to'plamni ochganda — kamdan-kam yo'l.
     function isGroupMember(code) {
       return isLoggedIn() &&
-        exists(/databases/$(database)/documents/promoCodes/$(code)/redemptions/$(request.auth.uid));
+        exists(/databases/$(database)/documents/promoCodes/$(code)/redemptions/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/promoCodes/$(code)/redemptions/$(request.auth.uid))
+          .data.get('status', 'active') != 'removed';
     }
 
     match /partnerSets/{setId} {

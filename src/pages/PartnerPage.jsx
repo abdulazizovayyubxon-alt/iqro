@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { useAdmin } from '../hooks/useAdmin';
 import { ToastContext } from '../context/ToastContext';
-import { fetchPartnerStats, PARTNER_ERRORS } from '../services/partner';
+import { fetchPartnerStats, removePartnerMember, PARTNER_ERRORS, REMOVE_REASONS } from '../services/partner';
+import ConfirmDialog from '../components/shared/ConfirmDialog';
 import { SUBJECTS } from '../data/mockData';
 import { avatarUrl } from '../data/avatars';
 import { getLeague } from '../utils/league';
@@ -11,7 +12,7 @@ import { APP_URL } from '../config';
 import {
   Users, TrendingUp, Share2, Copy, Check, Search, Zap, RefreshCw,
   Ticket, ArrowUpRight, Sparkles, UserCheck, Activity, ShieldAlert, BookOpen,
-  HelpCircle, ChevronDown, Link2, AlertCircle, Trophy, Crown, Medal
+  HelpCircle, ChevronDown, Link2, AlertCircle, Trophy, Crown, Medal, UserMinus
 } from 'lucide-react';
 
 const GUIDE_KEY = 'zehin_partner_guide';
@@ -67,6 +68,11 @@ export default function PartnerPage() {
   const [availablePromos, setAvailablePromos] = useState([]);
   const [visibleCount, setVisibleCount] = useState(25);
   const [ratingCount, setRatingCount] = useState(10);
+  // ── Guruhdan chiqarish ──
+  // `removeTarget` — tasdiq oynasi ochiq bo'lgan a'zo (null = oyna yopiq).
+  const [removeTarget, setRemoveTarget] = useState(null);
+  const [removeReason, setRemoveReason] = useState('unpaid');
+  const [removing, setRemoving] = useState(false);
   // Qo'llanma birinchi kirishda OCHIQ turadi — hamkor ustoz havola qanday
   // ishlashini bilmasa, guruhini noto'g'ri yo'naltiradi. Yopgandan keyin
   // tanlov eslab qolinadi.
@@ -155,6 +161,64 @@ export default function PartnerPage() {
     // `user` obyekti AuthContext'da har yangilanishda qayta yaratiladi —
     // to'liq obyektga bog'lansak, statistika keraksiz qayta yuklanardi.
   }, [user?.uid, loadStats]);
+
+  // ── Guruhdan chiqarish ──
+  //
+  // ⚠️ Bu amal foydalanuvchining ILOVADAGI HISOBIGA TEGMAYDI. Server faqat
+  // ikki ishni bajaradi: guruh a'zoligini uzadi va SHU kod bergan Pro'ni
+  // bekor qiladi. Profil, natijalar, ballar, reyting — hammasi qoladi.
+  const handleRemoveMember = async () => {
+    if (!removeTarget || removing) return;
+
+    // Kod PANELDA KO'RINAYOTGAN kod bo'lishi shart, `user.partnerCode` emas:
+    // admin boshqa hamkorning guruhini ochib turgan bo'lishi mumkin — o'z
+    // kodini yuborsak, admin BOSHQA guruhdan odam chiqarib yuborardi.
+    const code = data?.promo?.code;
+    if (!code) {
+      showToast("Promokod aniqlanmadi — sahifani yangilang", 'error');
+      return;
+    }
+
+    setRemoving(true);
+    try {
+      const resp = await removePartnerMember({
+        partnerCode: code,
+        memberUid: removeTarget.uid,
+        reason: removeReason,
+      });
+
+      if (!resp.ok) {
+        showToast(PARTNER_ERRORS[resp.error] || "Amalni bajarib bo'lmadi", 'error');
+        // Oyna OCHIQ qoladi: hamkor xabarni o'qib, qayta urinishi mumkin.
+        return;
+      }
+
+      // Natijani ROSTGO'Y aytamiz. Server Pro'ni faqat SHU kod bergan bo'lsa
+      // bekor qiladi — foydalanuvchi keyin o'z puliga obuna olgan bo'lsa,
+      // obuna saqlanadi. Bu holatda "PRO bekor qilindi" deyish yolg'on
+      // bo'lardi va hamkor uni haqiqat deb hisobotga yozardi.
+      showToast(
+        resp.cancelledPremium
+          ? "Foydalanuvchi muvaffaqiyatli chiqarildi va PRO obunasi bekor qilindi"
+          : resp.premiumKeptReason === 'not_from_this_code'
+            ? "Guruhdan chiqarildi. Obunasi hamkor kodidan emas (o'zi sotib olgan) — u saqlanib qoldi"
+            : "Foydalanuvchi guruhdan chiqarildi (faol PRO obunasi yo'q edi)",
+        'success',
+      );
+
+      setRemoveTarget(null);
+      setRemoveReason('unpaid');
+
+      // Ro'yxatni qayta yuklaymiz: jamlanma ko'rsatkichlar (a'zolar soni,
+      // o'rtacha aniqlik, reyting) SERVERDA hisoblanadi — mahalliy filtr
+      // qatorni yo'qotardi-yu, yuqoridagi raqamlar eskiligicha qolardi.
+      // Bu qimmat so'rov, lekin chiqarish — kamdan-kam QO'LDA bajariladigan
+      // amal (avtomatik takrorlanmaydi), shuning uchun kvota uchun xavfsiz.
+      await loadStats();
+    } finally {
+      setRemoving(false);
+    }
+  };
 
   const handleCopyCode = async (code) => {
     if (!code) return;
@@ -830,6 +894,10 @@ export default function PartnerPage() {
                           </th>
                         ))}
                         <th style={{ padding: '10px 8px', textAlign: 'right' }}>Oxirgi faollik</th>
+                        {/* Guruhdan chiqarish — sarlavhasiz tor ustun.
+                            `aria-label` SHART: bo'sh `<th>` ekran o'quvchida
+                            nomsiz ustun bo'lib qolardi. */}
+                        <th style={{ padding: '10px 8px', width: 44 }} aria-label="Amal" />
                       </tr>
                     </thead>
                     <tbody>
@@ -934,6 +1002,32 @@ export default function PartnerPage() {
                                 <span>—</span>
                               )}
                             </td>
+
+                            {/* Guruhdan chiqarish */}
+                            <td style={{ padding: '12px 8px', textAlign: 'center' }}>
+                              <button
+                                type="button"
+                                onClick={() => { setRemoveTarget(m); setRemoveReason('unpaid'); }}
+                                title={`${m.displayName || 'Ustoz'}ni guruhdan chiqarish`}
+                                aria-label={`${m.displayName || 'Ustoz'}ni guruhdan chiqarish`}
+                                style={{
+                                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                                  width: 30, height: 30, borderRadius: 8, cursor: 'pointer',
+                                  background: 'transparent', color: 'var(--red)',
+                                  border: '1.5px solid var(--border)', transition: 'all 0.15s',
+                                }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.background = 'rgba(239,68,68,0.1)';
+                                  e.currentTarget.style.borderColor = 'var(--red)';
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.background = 'transparent';
+                                  e.currentTarget.style.borderColor = 'var(--border)';
+                                }}
+                              >
+                                <UserMinus size={15} />
+                              </button>
+                            </td>
                           </tr>
                         );
                       })}
@@ -959,6 +1053,77 @@ export default function PartnerPage() {
           </div>
         </>
       )}
+
+      {/* ── Guruhdan chiqarish tasdig'i ──
+          Oyna `removeTarget` bo'lgandagina quriladi: aks holda a'zo tanlanmagan
+          holatda ham matn ichida `removeTarget.displayName` o'qilardi. */}
+      <ConfirmDialog
+        open={!!removeTarget}
+        maxWidth={400}
+        danger
+        busy={removing}
+        title="O'qituvchini guruhdan chiqarish"
+        text={`${removeTarget?.displayName || 'Ustoz'}ni guruhdan chiqarmoqchimisiz?`}
+        cancelLabel="Bekor qilish"
+        confirmLabel={removing ? 'Chiqarilmoqda…' : 'Ha, guruhdan chiqarish'}
+        onCancel={() => { setRemoveTarget(null); setRemoveReason('unpaid'); }}
+        onConfirm={handleRemoveMember}
+      >
+        {/* Ogohlantirish — nima BO'LADI va nima BO'LMAYDI.
+            Ikkinchisi birinchisidan muhimroq: hamkorlar bu tugmani "hisobni
+            o'chirish" deb tushunib, bosishdan qo'rqishadi yoki aksincha,
+            bosgandan keyin "odamning hisobini o'chirib yubordimmi?" deb
+            murojaat qilishadi. */}
+        <div
+          style={{
+            background: 'rgba(239,68,68,0.08)',
+            border: '1.5px solid rgba(239,68,68,0.25)',
+            borderRadius: 12,
+            padding: '12px 14px',
+            marginBottom: 16,
+            display: 'flex',
+            gap: 10,
+          }}
+        >
+          <AlertCircle size={16} style={{ color: 'var(--red)', flexShrink: 0, marginTop: 2 }} />
+          <div style={{ fontSize: 'var(--fs-xs)', color: 'var(--text2)', lineHeight: 1.6 }}>
+            <strong style={{ color: 'var(--red)' }}>Diqqat:</strong> Foydalanuvchining
+            Zehin ilovasidagi <strong>akkaunti saqlanib qoladi</strong> (profili, test
+            natijalari va ballari o'chmaydi), biroq hamkor promokodi orqali berilgan
+            3 oylik <strong>PRO obunasi darhol to'xtatiladi</strong> va u bepul tarifga o'tadi.
+          </div>
+        </div>
+
+        {/* Sabab — ixtiyoriy, lekin sukut bo'yicha eng keng tarqalgani tanlangan.
+            Jurnalga tushadi: keyin "nega chiqarilgan edi?" savoliga javob bo'ladi. */}
+        <label
+          htmlFor="remove-reason"
+          style={{ display: 'block', fontSize: 'var(--fs-xs)', fontWeight: 700, color: 'var(--text3)', marginBottom: 6 }}
+        >
+          Chiqarish sababi
+        </label>
+        <select
+          id="remove-reason"
+          value={removeReason}
+          onChange={(e) => setRemoveReason(e.target.value)}
+          disabled={removing}
+          style={{
+            width: '100%',
+            padding: '10px 12px',
+            borderRadius: 10,
+            border: '1.5px solid var(--border)',
+            background: 'var(--bg2)',
+            color: 'var(--text)',
+            fontSize: 'var(--fs-sm)',
+            outline: 'none',
+            cursor: removing ? 'not-allowed' : 'pointer',
+          }}
+        >
+          {REMOVE_REASONS.map(r => (
+            <option key={r.value} value={r.value}>{r.label}</option>
+          ))}
+        </select>
+      </ConfirmDialog>
 
     </div>
   );

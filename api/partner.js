@@ -5,18 +5,24 @@
  * ════════════════════════════════════════════════════════════
  *
  *  POST { action: 'stats', partnerCode } + Authorization: Bearer <Firebase ID token>
+ *  POST { action: 'remove_member', partnerCode, memberUid, reason }
+ *       → a'zoni guruhdan chiqarish (ilova hisobi SAQLANADI, faqat guruh
+ *         a'zoligi va SHU KOD bergan Pro bekor qilinadi).
  *
  *  XAVFSIZLIK:
  *    - Hamkor FAQAT o'ziga biriktirilgan promo-kod statistikasini ko'ra oladi.
  *    - Platforma adminlari barcha hamkor kodlarini ko'rish huquqiga ega.
  *    - Foydalanuvchilarning shaxsiy sirlari, xato javob tafsilotlari yoki
  *      begona fan ma'lumotlari oshkor qilinmaydi — faqat jamlangan ko'rsatkichlar.
+ *    - Obuna maydonlari (`isPremium`, `premiumExpire`, ...) `firestore.rules`
+ *      dagi `protectedUserFields()` bilan MIJOZGA yopiq. Shuning uchun
+ *      guruhdan chiqarish MIJOZDAN emas, faqat shu yerdan (Admin SDK) bajariladi.
  * ════════════════════════════════════════════════════════════
  */
 
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
-import { getFirestore } from 'firebase-admin/firestore';
+import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 import { rateLimit, clientIp, PLATFORM_ADMIN_EMAILS } from './_shared.js';
 
 function getDb() {
@@ -31,6 +37,34 @@ function getDb() {
     initializeApp({ credential: cert(serviceAccount) });
   }
   return getFirestore();
+}
+
+/**
+ * Guruhdan chiqarishda foydalanuvchining Pro obunasi bekor qilinishi kerakmi?
+ *
+ * ⚠️ BUTUN FUNKSIYANING ENG XAVFLI QARORI, shuning uchun alohida ajratilgan
+ * va test bilan qulflangan (`src/__tests__/partnerRemove.test.js`).
+ *
+ * "Guruhdan chiqarish" faqat HAMKOR BERGAN imtiyozni qaytarib oladi. Agar
+ * foydalanuvchi keyinchalik O'Z PULIGA obuna sotib olgan bo'lsa, uni bekor
+ * qilish — pullik xizmatni tortib olish va to'g'ridan-to'g'ri to'lov nizosi.
+ *
+ * Ikkala shart ham BIRGA tekshiriladi:
+ *   · `premiumMethod` — imtiyoz MANBASI. `api/payment-webhook.js` to'lovda
+ *     uni to'lov usuliga almashtiradi, ya'ni to'lagan hisob shu yerda tushadi.
+ *   · `promoRedeemed.code` — aynan SHU hamkorning kodi. Boshqa hamkorning
+ *     yoki ommaviy kampaniya kodining Pro'siga tegish huquqimiz yo'q.
+ *
+ * @param {object} memberData - `users/{uid}` hujjati
+ * @param {string} code - guruh promokodi (KATTA harflarda)
+ * @returns {boolean}
+ */
+export function shouldCancelPromoPremium(memberData, code) {
+  if (!memberData || !code) return false;
+  if (memberData.isPremium !== true) return false;
+  const method = memberData.premiumMethod;
+  if (method !== 'promo' && method !== 'promo_team') return false;
+  return memberData.promoRedeemed?.code === code;
 }
 
 const isPlatformAdmin = async (db, decoded) => {
@@ -185,7 +219,14 @@ export default async function handler(req, res) {
       // kvotasini bitta so'rovda tugatishi mumkin edi.
       const MAX_MEMBERS = 500;
       const redemptionsSnap = await promoRef.collection('redemptions').limit(MAX_MEMBERS).get();
-      const redemptions = redemptionsSnap.docs.map(d => ({ uid: d.id, ...d.data() }));
+      // Guruhdan chiqarilganlar hisobotdan tushadi, lekin hujjati O'CHIRILMAYDI
+      // (`remove_member` izohiga qarang) — shuning uchun filtr shu yerda.
+      // `where('status','!=','removed')` ATAYLAB ishlatilmadi: u `status`
+      // maydoni umuman yo'q eski redemption hujjatlarini ham chetlab o'tardi,
+      // ya'ni chiqarilmagan a'zolar ro'yxatdan jimgina yo'qolardi.
+      const redemptions = redemptionsSnap.docs
+        .map(d => ({ uid: d.id, ...d.data() }))
+        .filter(r => r.status !== 'removed');
       // Chegaraga urilgan bo'lsak, buni JIMGINA qilmaymiz: aks holda hisobot
       // «guruhda 500 kishi» deb ko'rsatib, ustoz uni to'liq deb o'qirdi.
       const truncated = redemptionsSnap.size >= MAX_MEMBERS;
@@ -365,6 +406,209 @@ export default async function handler(req, res) {
         weeklySets,
         members,
       });
+    }
+
+    // ══════════════════════════════════════════════════════════════════
+    //  action: 'remove_member' — a'zoni hamkor guruhidan chiqarish
+    // ══════════════════════════════════════════════════════════════════
+    //
+    //  NIMA BO'LADI:
+    //    1. `promoCodes/{KOD}/redemptions/{uid}` → status: 'removed'
+    //    2. SHU KOD bergan Pro obunasi bekor qilinadi (bepul tarifga tushadi)
+    //
+    //  NIMA BO'LMAYDI (ataylab):
+    //    · `users/{uid}` hujjati O'CHIRILMAYDI — profil, `userStats`, ballar,
+    //      reyting, xato daftari, streak — hammasi joyida qoladi. Foydalanuvchi
+    //      Zehin ilovasining to'laqonli (bepul tarifdagi) a'zosi bo'lib qoladi.
+    //    · Auth hisobi tegilmaydi — u o'sha parol bilan kirishda davom etadi.
+    //
+    //  ⚠️ REDEMPTION HUJJATI NEGA O'CHIRILMAYDI:
+    //  `api/redeem-promo.js` takroran ishlatishni aynan shu hujjat BORLIGIGA
+    //  qarab to'xtatadi (`redemptionSnap.exists → already_used`). Hujjatni
+    //  o'chirsak, guruhdan chiqarilgan (masalan, TO'LOV QILMAGAN) odam o'sha
+    //  ommaviy tarqatilgan kodni qayta kiritib, yana 3 oylik bepul Pro olardi —
+    //  ya'ni "chiqarish" tugmasi jazo emas, bepul obuna tugmasiga aylanardi.
+    //  Status bilan belgilash: a'zolik uziladi, takroriy foydalanish yopiq
+    //  qoladi va kim/qachon/nega chiqargani jurnalda ko'rinadi.
+    if (action === 'remove_member') {
+      // Yozuv amali uchun alohida, qattiqroq chegara (o'qish chegarasi 30/daq).
+      // Kalit IP emas, UID: bitta hamkor bir daqiqada 10 tadan ko'p odam
+      // chiqarishi normal hol emas.
+      const rlWrite = rateLimit(`partner-remove:${uid}`, 10, 60_000);
+      if (rlWrite.limited) {
+        return res.status(429).json({ ok: false, error: 'rate_limited' });
+      }
+
+      const code = (req.body?.partnerCode || '').toString().trim().toUpperCase();
+      const memberUid = (req.body?.memberUid || '').toString().trim();
+
+      // Sabab — YOPIQ ro'yxat. Erkin matn qabul qilinsa, u jurnalga tushib
+      // keyin panelda ko'rsatiladi (XSS/hajm yuzasi) va hisobotni ifloslantiradi.
+      const REMOVE_REASONS = ['unpaid', 'left', 'other'];
+      const rawReason = (req.body?.reason || '').toString().trim();
+      const reason = REMOVE_REASONS.includes(rawReason) ? rawReason : 'other';
+
+      // Kod BU YERDA majburiy: `stats` dagi "kod topilmasa o'zi qidiradi /
+      // birinchisini tanlaydi" yordamchi mantiqi yozuv amali uchun xavfli —
+      // noto'g'ri guruhdan odam chiqarib yuborishi mumkin edi.
+      if (!code || !/^[A-Z0-9_-]{3,32}$/.test(code)) {
+        return res.status(400).json({ ok: false, error: 'invalid_code_format' });
+      }
+      if (!memberUid || memberUid.length > 128) {
+        return res.status(400).json({ ok: false, error: 'invalid_member' });
+      }
+
+      const promoRef = db.collection('promoCodes').doc(code);
+      const memberRef = db.collection('users').doc(memberUid);
+      const redemptionRef = promoRef.collection('redemptions').doc(memberUid);
+
+      // ── HUQUQ TEKSHIRUVI ──
+      // `stats` dagi bilan AYNAN bir xil shart: kodning egasi yoki admin.
+      // Sobiq admin / kodni o'ziga yozib olgan foydalanuvchi o'ta olmaydi
+      // (batafsil izoh `stats` ichida, "HUQUQ OSHIRISH TESHIGI" bandida).
+      const [ownerCheckSnap, promoCheckSnap] = await Promise.all([
+        db.collection('users').doc(uid).get(),
+        promoRef.get(),
+      ]);
+      if (!promoCheckSnap.exists) {
+        return res.status(404).json({ ok: false, error: 'promo_not_found' });
+      }
+      const requesterData = ownerCheckSnap.exists ? ownerCheckSnap.data() : {};
+      const promoCheck = promoCheckSnap.data();
+      const isAdminUser = await isPlatformAdmin(db, decoded);
+      const isAssignedPartner =
+        promoCheck.partnerUid === uid ||
+        (decoded.email && promoCheck.partnerEmail === decoded.email) ||
+        (requesterData.role === 'partner' && requesterData.partnerCode === code);
+
+      if (!isAdminUser && !isAssignedPartner) {
+        return res.status(403).json({ ok: false, error: 'forbidden' });
+      }
+
+      // Hamkor o'zini o'z guruhidan chiqara olmaydi: bu faqat o'z Pro'sini
+      // bekor qilib, panelni tushunarsiz holatga solardi.
+      if (memberUid === uid) {
+        return res.status(400).json({ ok: false, error: 'cannot_remove_self' });
+      }
+
+      const nowIso = new Date().toISOString();
+
+      // Butun amal TRANSACTION ichida: parallel ikki so'rov `usedCount` ni
+      // ikki marta kamaytirib yuborishi yoki bir a'zoni ikki marta
+      // "chiqarishi" mumkin emas.
+      const result = await db.runTransaction(async (tx) => {
+        const [promoSnap, redemptionSnap, memberSnap] = await Promise.all([
+          tx.get(promoRef), tx.get(redemptionRef), tx.get(memberRef),
+        ]);
+
+        if (!promoSnap.exists) return { ok: false, error: 'promo_not_found' };
+        if (!redemptionSnap.exists) return { ok: false, error: 'not_a_member' };
+
+        const redemption = redemptionSnap.data();
+        if (redemption.status === 'removed') return { ok: false, error: 'already_removed' };
+
+        const memberData = memberSnap.exists ? memberSnap.data() : {};
+
+        // Pro faqat SHU kod bergan bo'lsa bekor qilinadi — sharti va sababi
+        // `shouldCancelPromoPremium` izohida.
+        const cancelPremium = shouldCancelPromoPremium(memberData, code);
+
+        const userPatch = {};
+        if (cancelPremium) {
+          userPatch.isPremium = false;
+          // `premiumPlan: 'expired'` — AuthContext muddati o'tgan obunani
+          // aynan shu qiymat bilan belgilaydi (computeTrialStatus bilan mos).
+          userPatch.premiumPlan = 'expired';
+          // Sana `null` EMAS, hozirgi vaqt: AuthContext'da
+          // `isPremium && !premiumExpire` = MUDDATSIZ premium degani, ya'ni
+          // null qo'yish kelajakda teskari ta'sir berishi mumkin edi.
+          // Hozirgi vaqt esa "shu daqiqada tugadi" degan aniq iz qoldiradi.
+          userPatch.premiumExpire = nowIso;
+          userPatch.premiumMethod = 'partner_removed';
+          // Bekor qilingan imtiyoz izi hujjatda QOLMAYDI: `promoRedeemed`
+          // "shu kod menga amaldagi Pro berdi" degan ma'noni bildiradi va
+          // admin panelida shunday o'qiladi. Tarix yo'qolmaydi — kim, qachon,
+          // qaysi kodni ishlatgani `redemptions` hujjatida saqlanib qoladi.
+          //
+          // Kodni QAYTA ishlatishga bu ta'sir qilmaydi: `api/redeem-promo.js`
+          // takrorni `promoRedeemed` bilan emas, redemption hujjatining
+          // BORLIGI bilan to'xtatadi (u esa o'chirilmaydi).
+          userPatch.promoRedeemed = null;
+        }
+
+        // Foydalanuvchi hujjatidagi hamkor bog'lanishini tozalash.
+        // Faqat SHU kod bo'lsa va odamning o'zi hamkor BO'LMASA — aks holda
+        // hamkor ustozning o'z panelini ochadigan kodini o'chirib qo'yardik.
+        if (memberData.role !== 'partner' && memberData.partnerCode === code) {
+          userPatch.partnerCode = null;
+        }
+
+        if (Object.keys(userPatch).length > 0) {
+          // `merge` — hujjatning qolgan hamma maydoni (profil, sozlamalar,
+          // referral, ballar) TEGILMAYDI.
+          tx.set(memberRef, userPatch, { merge: true });
+        }
+
+        tx.set(redemptionRef, {
+          status: 'removed',
+          removedAt: nowIso,
+          removedBy: uid,
+          removedReason: reason,
+          // Pro haqiqatan bekor qilindimi — keyinchalik "nega mening
+          // obunam bor/yo'q" savoliga javob shu yerda.
+          premiumCancelled: cancelPremium,
+        }, { merge: true });
+
+        // Bo'shagan o'rin kodga qaytariladi: `maxUses` cheklovi bor kodda
+        // chiqarilgan odam o'rniga yangisini qo'shib bo'lmay qolardi.
+        // Takroriy foydalanish redemption hujjati orqali yopiq, ya'ni bu
+        // o'rinni faqat YANGI odam egallay oladi.
+        if ((promoSnap.data().usedCount || 0) > 0) {
+          tx.update(promoRef, { usedCount: FieldValue.increment(-1) });
+        }
+
+        return {
+          ok: true,
+          memberUid,
+          cancelledPremium: cancelPremium,
+          // Pro bekor qilinmagan bo'lsa — SABABI. Mijoz buni foydalanuvchiga
+          // aynan aytadi: "chiqarildi, lekin obunasi o'ziniki — saqlandi".
+          premiumKeptReason: cancelPremium
+            ? null
+            : (memberData.isPremium === true ? 'not_from_this_code' : 'no_active_premium'),
+        };
+      });
+
+      if (!result.ok) {
+        // Biznes-xato (a'zo emas / allaqachon chiqarilgan) — 200 bilan
+        // qaytadi, mijoz uni matnga aylantiradi.
+        return res.status(200).json(result);
+      }
+
+      // ── Audit izi ──
+      // Amal QAYTARILMAS (Pro bekor qilinadi) va uni hamkor bajaradi, ya'ni
+      // admin panelidan tashqarida. Jurnalsiz "obunamni kim o'chirdi?"
+      // savoliga javob bo'lmasdi. Yozuv HECH QACHON amalni buzmaydi:
+      // transaction allaqachon yakunlangan, jurnal esa qo'shimcha.
+      try {
+        await db.collection('adminActions').add({
+          type: 'partner.member.remove',
+          target: memberUid,
+          meta: {
+            kod: code,
+            sabab: reason,
+            proBekorQilindi: result.cancelledPremium,
+          },
+          actorUid: uid,
+          actorEmail: decoded.email || null,
+          createdAt: nowIso,
+          ts: FieldValue.serverTimestamp(),
+        });
+      } catch (logErr) {
+        console.warn('partner.member.remove jurnali yozilmadi:', logErr?.message);
+      }
+
+      return res.status(200).json(result);
     }
 
     return res.status(400).json({ ok: false, error: 'unknown_action' });

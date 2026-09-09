@@ -80,6 +80,12 @@ export const ADMIN_ACTIONS = {
   'promo.toggle': { label: 'Promo-kod yoqildi/o’chirildi', group: 'billing' },
   'promo.delete': { label: "Promo-kod o'chirildi", group: 'billing', danger: true },
   'promo.set_subject': { label: 'Promo-kodga fan biriktirildi', group: 'billing' },
+  // ⚠️ Bu yozuvni MIJOZ emas, `api/partner.js` (Admin SDK) yozadi va uni
+  // ADMIN EMAS, hamkor ustoz ham hosil qila oladi — jurnaldagi yagona shunday
+  // tur. `danger`: foydalanuvchining Pro obunasi bekor qilinadi, ya'ni
+  // "obunam nega yo'qoldi?" murojaatida birinchi qaraladigan yozuv shu.
+  // `actorUid` — chiqargan hamkor, `target` — chiqarilgan foydalanuvchi.
+  'partner.member.remove': { label: 'Hamkor guruhidan chiqarildi', group: 'billing', danger: true },
   'referral.mark_paid': { label: "Referral to'landi deb belgilandi", group: 'billing' },
   'referral.cancel_free': { label: 'Referral bepul Pro bekor qilindi', group: 'billing' },
   'school.create': { label: 'Maktab yaratildi', group: 'billing' },
