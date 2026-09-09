@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import SmartBottomSheet from './test/SmartBottomSheet';
 import ConfirmDialog from './shared/ConfirmDialog';
 import { useModalBackButton } from './profile/useModalBackButton';
+import { useEscapeClose } from '../hooks/useEscapeClose';
 
 /**
  * BlockRow — panel ostidagi bosiladigan qator (blok tanlash).
@@ -72,6 +73,11 @@ const SubjectTopicChips = ({
 
   // Android/iOS "orqaga": bo'lim tab'ida bo'lsak fan tab'iga qaytamiz, aks holda yopamiz
   useModalBackButton(!!sheetTab || !!pendingTab, () => {
+    if (pendingTab) { setPendingTab(null); return; }
+    setSheetTab(null);
+  });
+  // Klaviaturada ham xuddi shu mantiq (fan/bo'lim tanlagichi — SmartBottomSheet)
+  useEscapeClose(!!sheetTab || !!pendingTab, () => {
     if (pendingTab) { setPendingTab(null); return; }
     setSheetTab(null);
   });

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTheory } from '../../hooks/useTheory';
 import { useModalBackButton } from '../profile/useModalBackButton';
+import { useEscapeClose } from '../../hooks/useEscapeClose';
 import TheorySheet from './TheorySheet';
 
 /**
@@ -18,6 +19,7 @@ import TheorySheet from './TheorySheet';
 const TheoryModal = ({ open, onClose, topicId, topicName, highlight = null }) => {
   const { theory } = useTheory(open ? topicId : null);
   useModalBackButton(open, onClose);
+  useEscapeClose(open, onClose);
 
   // AnimatePresence ATAYIN ishlatilmadi: `exit` animatsiyasi tugamay qolib,
   // modal `open=false` bo'lgandan keyin ham DOM'da osilib turardi (tekshirildi

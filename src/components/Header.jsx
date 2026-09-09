@@ -162,7 +162,19 @@ const Header = ({ theme, toggleTheme }) => {
             </button>
           )}
 
-          <div className="header-greeting" onClick={() => setShowProfileDrawer(true)} title={t('header.profile')}>
+          {/* ⚠️ Ilgari bu `<div onClick>` edi. Mobilda profil paneli — 8 ta
+              menyu bandiga (Reja, Tahlil, Yutuqlar, Taklif, Sozlamalar,
+              Xatolar daftari…) YAGONA kirish nuqtasi, ya'ni ilovaning asosiy
+              menyu tugmasi. `div` bo'lgani uchun u klaviatura bilan ochilmas,
+              skrinriderda bosiladigan element deb o'qilmasdi. */}
+          <button
+            type="button"
+            className="header-greeting"
+            onClick={() => setShowProfileDrawer(true)}
+            title={t('header.profile')}
+            aria-label={t('header.profile')}
+            aria-haspopup="dialog"
+          >
             <div className="header-avatar-wrap">
               <div className="header-avatar">
                 {resolveAvatar(user)
@@ -179,7 +191,7 @@ const Header = ({ theme, toggleTheme }) => {
               <span className="header-greet-hi">{t(greetKey)}</span>
               <span className="header-greet-name">{firstName}</span>
             </div>
-          </div>
+          </button>
         </div>
 
         <div className="header-stats">
@@ -212,7 +224,12 @@ const Header = ({ theme, toggleTheme }) => {
           <motion.button
             className="user-avatar-btn"
             whileTap={{ scale: 0.95 }}
-            onClick={() => toggleTheme()}
+            onClick={() => {
+              const order = ['light', 'sepia', 'dark'];
+              const next = order[(order.indexOf(theme) + 1) % order.length];
+              toggleTheme();
+              showToast(t('header.themeSwitched', { name: t(`theme.${next}`) }), 'info');
+            }}
             title={theme === 'light' ? t('header.themeNextSepia') : theme === 'sepia' ? t('header.themeNextDark') : t('header.themeNextLight')}
             aria-label={theme === 'light' ? t('header.themeAriaSepia') : theme === 'sepia' ? t('header.themeAriaDark') : t('header.themeAriaLight')}
             style={{ width: btnSize, height: btnSize, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', padding: 0, background: 'var(--bg2)' }}
@@ -266,7 +283,12 @@ const Header = ({ theme, toggleTheme }) => {
             key={toast.id}
             style={{
               position: 'fixed',
-              bottom: isMobile ? '90px' : '32px',
+              // Pastki panel + «Imtihon» FAB band qiladigan zona 110px
+              // (BottomNav.jsx: BAR_H 82 + FAB top:-28). Ilgari bu yerda 90px
+              // turardi va toast FAB ustiga chiqib qolardi; safe-area ham
+              // hisobga olinmagandi — home-indicatorli iPhone'da xabar yana
+              // 34px pastga tushardi.
+              bottom: isMobile ? 'calc(122px + env(safe-area-inset-bottom, 0px))' : '32px',
               left: '50%',
               transform: 'translateX(-50%)',
               padding: isMobile ? '12px 18px' : '12px 24px',

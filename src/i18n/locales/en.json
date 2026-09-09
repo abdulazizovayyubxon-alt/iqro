@@ -1,4 +1,19 @@
 {
+  "notFound": {
+    "title": "Page not found",
+    "desc": "This address has changed or does not exist. Continue from the home page.",
+    "home": "Go to home"
+  },
+  "splash": {
+    "skip": "Skip"
+  },
+  "media": {
+    "zoomTitle": "Image",
+    "zoomAlt": "Question image (enlarged)",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "loadFailed": "Image failed to load"
+  },
   "nav": {
     "home": "Home",
     "test": "Test",
@@ -109,6 +124,7 @@
     "countdownOff": "Countdown off"
   },
   "header": {
+    "themeSwitched": "Mode: {{name}}",
     "greeting": "Welcome",
     "profile": "Profile",
     "newNotifications": "{{count}} new notifications",

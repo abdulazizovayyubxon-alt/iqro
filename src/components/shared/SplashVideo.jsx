@@ -16,6 +16,7 @@
  * - sessionStorage orqali sessiyada faqat bir marta
  */
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { enterSplash, exitSplash } from '../../utils/statusBar';
 
 const SPLASH_VIDEO_URL = '/videos/zehin-splash.mp4';
@@ -28,6 +29,7 @@ const VIBRATION_KEY = 'iqro-vibration';
  * @param {Function} props.onComplete — video tugaganda yoki skip qilinganda chaqiriladi
  */
 export default function SplashVideo({ onComplete }) {
+  const { t } = useTranslation();
   const videoRef = useRef(null);
   const [fading, setFading] = useState(false);
   const [visible, setVisible] = useState(true);
@@ -128,7 +130,7 @@ export default function SplashVideo({ onComplete }) {
       />
       {/* Skip tugma — doim skip qiladi (vibratsiyasiz) */}
       <button className="splash-video-skip" onClick={(e) => { e.stopPropagation(); handleSkip(); }}>
-        O'tkazish
+        {t('splash.skip')}
       </button>
     </div>
   );

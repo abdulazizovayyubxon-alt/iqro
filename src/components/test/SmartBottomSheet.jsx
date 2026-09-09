@@ -173,7 +173,7 @@ const SmartBottomSheet = ({
         }}>{icon}</span>
 
         <span style={{ flex: 1, minWidth: 0 }}>
-          <span style={{ display: 'block', fontSize: 'var(--fs-md)', fontWeight: 700, color: selected ? 'var(--accent2)' : 'var(--text)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          <span className="clamp-2" style={{ fontSize: 'var(--fs-md)', fontWeight: 700, color: selected ? 'var(--accent2)' : 'var(--text)', lineHeight: 1.3 }}>
             {name}
           </span>
           {subtitle && (

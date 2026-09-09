@@ -1399,7 +1399,11 @@ const TestPage = () => {
                     }
                   }}>{t('test.viewResults')}</button>
                 ) : (
-                  <button className="btn btn-outline" onClick={() => { accumulateTime(); setCurrentQ(prev => prev + 1); }}>{t('test.next')}</button>
+                  /* «Keyingi» — bu ekrandagi ASOSIY harakat. Ilgari u
+                     «Orqaga» bilan bir xil `btn-outline` edi: ilovaning eng
+                     ko'p takrorlanadigan ekranida oldinga yo'l hech qanday
+                     vizual ustunlikka ega emasdi. */
+                  <button className="btn btn-primary" onClick={() => { accumulateTime(); setCurrentQ(prev => prev + 1); }}>{t('test.next')}</button>
                 )}
               </div>
             </>

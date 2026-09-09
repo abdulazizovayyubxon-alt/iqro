@@ -3315,6 +3315,10 @@ try {
     return cb - ca;
   });
 
+  // Hisoblagich «100/100» bo'lib qolmasligi uchun: filtr HAQIQATAN
+  // ishlayaptimi (matn kiritilgan yoki fan tanlangan)?
+  const usersFilterActive = subjectFilter !== 'all' || !!userSearch.trim();
+
   const filteredUsers = users.filter(u => {
     // Fan filtri ATAYLAB mijoz tomonda: `where('subject','==',x)` ni
     // `orderBy('createdAt')` bilan birga ishlatish KOMPOZIT INDEKS talab
@@ -3511,18 +3515,29 @@ try {
 
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="admin-page">
-      {/* Back button */}
-      <button className="admin-back-btn" onClick={() => navigate('/dashboard')}>
-        <ArrowLeft size={16} /> Bosh sahifaga qaytish
-      </button>
-
       <div className="admin-header">
-        <div className="admin-row">
-          <div className="admin-badge"><Shield size={14} /> ADMIN</div>
-          <div>
+        {/* ⚠️ 2026-09-09 — BITTA QATOR.
+            Ilgari bu joy uch qavat edi: to'liq kenglikdagi «Bosh sahifaga
+            qaytish» tugmasi → ostida ADMIN rozetkasi + sarlavha → ostida
+            email. Telefonda ular ~100px egallardi va aynan shu balandlik
+            pastdagi foydalanuvchilar ro'yxatidan o'g'irlanardi.
+            Endi: [←] [sarlavha + email] [ADMIN] — bir qatorda ~40px.
+            Orqaga tugmasi ikonka-only: yo'nalish yonidagi sarlavhadan
+            allaqachon ma'lum, nomi esa aria-label/title da qoladi. */}
+        <div className="admin-topbar">
+          <button
+            className="admin-back-btn"
+            onClick={() => navigate('/dashboard')}
+            aria-label="Bosh sahifaga qaytish"
+            title="Bosh sahifaga qaytish"
+          >
+            <ArrowLeft size={18} />
+          </button>
+          <div className="admin-topbar-text">
             <h1 className="admin-title">Boshqaruv Paneli</h1>
             <div className="admin-subtitle">{user?.email}</div>
           </div>
+          <div className="admin-badge"><Shield size={13} /> ADMIN</div>
         </div>
         <div className="admin-quick-stats">
           <div className="admin-quick-stat">
@@ -3544,8 +3559,13 @@ try {
         </div>
       </div>
 
-      {/* Tab qatori — sichqoncha g'ildiragi va tugmalar bilan gorizontal suriladi */}
-      <div className="admin-tabs-wrap">
+      {/* Tab qatori — sichqoncha g'ildiragi va tugmalar bilan gorizontal suriladi.
+          `--pad-l/--pad-r` surish tugmasi CHIQQANDA o'sha tomonga joy ochadi:
+          tugma `position: absolute` bo'lgani uchun bo'lmasa u eng chekkadagi
+          tabning USTIGA tushib, uni yopib qo'yardi (bosilganda ham tab emas,
+          surish ishlardi). Telefonda tugmalar umuman ko'rsatilmaydi —
+          AdminPage.css dagi izohga qarang. */}
+      <div className={`admin-tabs-wrap${canScrollLeft ? ' admin-tabs-wrap--pad-l' : ''}${canScrollRight ? ' admin-tabs-wrap--pad-r' : ''}`}>
         {canScrollLeft && (
           <button 
             className="admin-tabs-scroll-btn admin-tabs-scroll-btn--left" 
@@ -4983,10 +5003,20 @@ try {
         <div>
           <div className="admin-row-between" style={{ marginBottom: 14 }}>
             <div className="admin-section-title admin-section-title--flush">
-              <Users size={18} style={{ color: 'var(--blue)' }} /> Foydalanuvchilar ({filteredUsers.length}/{users.length})
+              {/* ⚠️ Ilgari HAR DOIM «{filtrlangan}/{yuklangan}» ko'rinardi.
+                  Filtr yo'q paytda bu «(100/100)» bo'lib chiqardi — hech narsa
+                  aytmaydigan, ustiga-ustak pastdagi «bazada 800 ta» satriga
+                  qarama-qarshi ko'rinadigan raqam. Endi ikkinchi son FAQAT
+                  haqiqatan filtr ishlaganda chiqadi. */}
+              <Users size={18} style={{ color: 'var(--blue)' }} /> Foydalanuvchilar ({usersFilterActive ? `${filteredUsers.length} / ${users.length}` : users.length})
             </div>
-            <div className="admin-row">
-              <div className="admin-search-wrap" style={{ maxWidth: 260, width: '100%' }}>
+            {/* ⚠️ Kenglik qoidalari inline emas, CSS'da (`.admin-users-toolbar`).
+                Inline `maxWidth` bilan qidiruv maydoni telefonda «Fam...» bo'lib
+                siqilib qolardi: flex bola sifatida u cheksiz kichrayishi mumkin
+                edi. Endi maydonning eng kichik kengligi bor va sig'masa qator
+                O'RALADI — siqilmaydi. */}
+            <div className="admin-row admin-users-toolbar">
+              <div className="admin-search-wrap">
                 <Search size={16} className="admin-search-icon" />
                 <input
                   className="admin-search"
@@ -5004,7 +5034,6 @@ try {
               </div>
               <select
                 className="admin-select"
-                style={{ maxWidth: 190 }}
                 value={subjectFilter}
                 onChange={e => setSubjectFilter(e.target.value)}
                 aria-label="Fan bo'yicha filtr"
@@ -5018,8 +5047,15 @@ try {
                   bazadan o'zi so'raydi (yuqoridagi avtomatik qidiruv effekti),
                   shuning uchun tugma faqat "kutmasdan, hoziroq" va "yana bir
                   bor urinib ko'r" holatlari uchun qoldi. */}
-              <button className="btn btn-sm btn-outline" onClick={searchUsersOnServer} disabled={usersLoading || !userSearch.trim()} title="Kutmasdan, hoziroq butun bazadan qidirish">
-                <Search size={14} /> Bazadan qidirish
+              {/* ⚠️ 2026-09-09 — ikonka-only qilindi. Uzun matn + lupa
+                  ikonkasi bilan bu tugma telefonda IKKINCHI QIDIRUV MAYDONI
+                  bo'lib ko'rinardi (yuqorida allaqachon lupali maydon bor) va
+                  o'ziga alohida qator olardi. Vazifasi o'zgarmadi — yuqoridagi
+                  izohda yozilganidek u zaxira yo'l; asosiy holatda qidiruv
+                  bazaga o'zi chiqadi. Ikonka `Database` — lupa emas, aks
+                  holda ikkita bir xil belgi yonma-yon turardi. */}
+              <button className="btn btn-sm btn-outline admin-icon-btn" onClick={searchUsersOnServer} disabled={usersLoading || !userSearch.trim()} aria-label="Butun bazadan qidirish" title="Kutmasdan, hoziroq butun bazadan qidirish">
+                <Database size={14} />
               </button>
               {/* Kesh ATAYLAB tozalanadi: admin «Yangilash» bosganda eng
                   yangi ma'lumotni so'ragan bo'ladi, keshdagi 10 daqiqalik
@@ -5027,7 +5063,7 @@ try {
                   qaytarib qo'yishi mumkin edi. Qidirilgan matnlar to'plami
                   ham shu yerda tozalanadi — «Yangilash» = "hammasini
                   boshidan", ya'ni eski qidiruv natijasi ushlab qolmasin. */}
-              <button className="btn btn-sm btn-outline" onClick={() => { setUserSearch(''); serverSearchedRef.current.clear(); clearUserCache(); loadUsers({ force: true }); }} disabled={usersLoading} title="Ro'yxatni bazadan qayta yuklash">
+              <button className="btn btn-sm btn-outline admin-icon-btn" onClick={() => { setUserSearch(''); serverSearchedRef.current.clear(); clearUserCache(); loadUsers({ force: true }); }} disabled={usersLoading} aria-label="Ro'yxatni yangilash" title="Ro'yxatni bazadan qayta yuklash">
                 <RefreshCw size={14} className={usersLoading ? 'spin' : ''} />
               </button>
               <button className="btn btn-sm btn-outline" onClick={exportUsers} disabled={!filteredUsers.length} title="CSV faylga eksport">
@@ -5060,7 +5096,12 @@ try {
                   // toping" deb turardi — ya'ni to'g'ri natija adminning
                   // tugmani bosishini eslab qolishiga bog'liq edi. Endi
                   // qidiruv o'zi bazaga chiqadi, matn ham shuni aytadi.
-                  : <>Qidiruv BUTUN bazani qamraydi — familiya, ism, ID, telefon, email</>}
+                  // 2026-09-09: matndan «— familiya, ism, ID, telefon, email»
+                  // qismi olib tashlandi. U qidiruv maydonining O'Z
+                  // placeholder'ini so'zma-so'z takrorlardi (u ham roppa-rosa
+                  // shu ro'yxat) va telefonda satrni ikki qatorga cho'zib,
+                  // ro'yxatdan bir qator joy o'g'irlardi.
+                  : <>Qidiruv butun bazani qamraydi</>}
               </span>
             </div>
           )}

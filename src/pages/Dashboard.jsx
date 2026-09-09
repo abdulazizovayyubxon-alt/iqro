@@ -408,38 +408,6 @@ const Dashboard = () => {
         );
       })()}
 
-      {/* ── REFERRAL BANNER (Do'stlarni Taklif Qilish) ── */}
-      {showReferralBanner && (
-      <div style={{ position: 'relative', width: '100%', maxWidth: 600, margin: '0 auto' }}>
-        <button
-          aria-label={t('dashboard.bannerClose')}
-          style={{ position: 'absolute', top: 4, right: 4, zIndex: 10, background: 'transparent', border: 'none', width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', borderRadius: '50%' }}
-          onClick={(e) => { e.stopPropagation(); setShowReferralBanner(false); localStorage.setItem('iqro_dismissed_ref_banner', '1'); }}
-        >
-          <X size={18} color="var(--amber)" />
-        </button>
-      <motion.button
-        whileHover={{ scale: 1.01, y: -2 }}
-        whileTap={{ scale: 0.98 }}
-        className="dashboard-referral-banner"
-        onClick={() => navigate('/referral')}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <GiftBox size={30} style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))', flexShrink: 0 }} />
-          <div style={{ textAlign: 'left' }}>
-            <div style={{ fontSize: 'var(--fs-base)', fontWeight: 800, color: 'var(--text)' }}>
-              {t('dashboard.referralTitle')}
-            </div>
-            <div style={{ fontSize: 'var(--fs-sm)', color: 'var(--text2)', marginTop: 2, fontWeight: 500 }}>
-              {t('dashboard.referralSubtitle')}
-            </div>
-          </div>
-        </div>
-        <div className="dashboard-referral-btn">{t('dashboard.referralBtn')}</div>
-      </motion.button>
-      </div>
-      )}
-
       {/* ── OBUNA (PREMIUM) BANNER — asosiy harakat tugmalari ustida ── */}
       {!user?.isPremium && (
         <motion.button
@@ -517,6 +485,53 @@ const Dashboard = () => {
           );
         })}
       </div>
+
+      {/* ── REFERRAL BANNER (Do'stlarni Taklif Qilish) ──
+          ⚠️ 2026-09-09 da IKKI narsa tuzatildi:
+          1) O'RNI. Ilgari u tezkor harakatlar USTIDA turardi. Eng yomon
+             holatda uning tepasida yana 4 ta blok bo'lardi (hamkor taklifi,
+             fan chiplari, tugallanmagan imtihon, imtihon sanoqi, obuna) va
+             «Tezkor boshlash» sarlavhasi 375×667 ekranda umuman ko'rinmasdi.
+             Taklif — eng shoshilmas element, shuning uchun u asosiy
+             harakatlardan KEYIN turadi.
+          2) YOPISH TUGMASI. U `position:absolute` bilan bannerning ustiga
+             qo'yilgan 44×44 ko'rinmas zona edi va «Taklif qilish» tugmasining
+             yuqori-o'ng burchagi bilan 27×19px (CTA maydonining 16%) ustma-ust
+             tushardi: sahifaga o'tmoqchi bo'lgan odam bannerni YO'QOTARDI.
+             Endi ikkalasi bitta flex qatorda — ustma-ust tushishi mumkin emas. */}
+      {showReferralBanner && (
+        <div className="dashboard-referral-banner">
+          <motion.button
+            whileTap={{ scale: 0.98 }}
+            className="dashboard-referral-main"
+            aria-label={t('dashboard.referralBtn')}
+            onClick={() => navigate('/referral')}
+          >
+            <GiftBox size={30} style={{ flexShrink: 0 }} />
+            <span style={{ textAlign: 'left', minWidth: 0 }}>
+              <span style={{ display: 'block', fontSize: 'var(--fs-base)', fontWeight: 800, color: 'var(--text)' }}>
+                {t('dashboard.referralTitle')}
+              </span>
+              <span style={{ display: 'block', fontSize: 'var(--fs-sm)', color: 'var(--text2)', marginTop: 2, fontWeight: 500 }}>
+                {t('dashboard.referralSubtitle')}
+              </span>
+            </span>
+            {/* 96px kenglikdagi «Taklif qilish» chipi o'rniga chevron:
+                375px ekranda chip sarlavhani uch qatorga bo'lib yuborardi.
+                Butun banner baribir bosiladi va bu `.dashboard-action-card`
+                bilan bir xil naqsh. Tugmaning nomi `aria-label` da qoladi. */}
+            <ChevronRight size={18} style={{ color: 'var(--text3)', flexShrink: 0 }} />
+          </motion.button>
+          <button
+            type="button"
+            className="dashboard-referral-close"
+            aria-label={t('dashboard.bannerClose')}
+            onClick={() => { setShowReferralBanner(false); localStorage.setItem('iqro_dismissed_ref_banner', '1'); }}
+          >
+            <X size={18} color="var(--amber)" />
+          </button>
+        </div>
+      )}
 
       {/* ── TAYYORLIK DARAJASI — diagnostika (Tahlil sahifasiga kirish nuqtasi) ── */}
       <div style={{ marginTop: 14 }}>

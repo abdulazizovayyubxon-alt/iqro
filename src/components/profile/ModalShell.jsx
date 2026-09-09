@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../pages/ProfilePage.css';
 import { useModalA11y } from '../../hooks/useModalA11y';
+import { useModalBackButton } from './useModalBackButton';
 
 /**
  * Umumiy modal qobiq: overlay bosilganda yopiladi, ichki bosish to'xtatiladi.
@@ -16,6 +17,8 @@ import { useModalA11y } from '../../hooks/useModalA11y';
  */
 export default function ModalShell({ onClose, maxWidth = 420, style, label, children }) {
   const modalRef = useModalA11y(true, onClose);
+  // Komponent faqat ochiq holatda mount bo'ladi → shart doim TRUE
+  useModalBackButton(true, onClose);
   return (
     <div className="pp-modal-overlay" onClick={onClose}>
       <div

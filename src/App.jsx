@@ -3,7 +3,8 @@ import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-
 import { useAuth } from './context/AuthContext';
 import { AppContext } from './context/AppContext';
 import { AnimatePresence } from 'framer-motion';
-import { Shield, BookOpen, Clock, Palette } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Shield, BookOpen, Clock, Palette, Compass } from 'lucide-react';
 import BrandLogo, { ZehinMark } from './components/shared/BrandLogo';
 import PullToRefresh, { RefreshRing } from './components/shared/PullToRefresh';
 import ScrollDebugOverlay from './components/shared/ScrollDebugOverlay';
@@ -83,6 +84,30 @@ const TermsPage = lazyPage(() => import('./pages/TermsPage'));
 const DeleteAccountPage = lazyPage(() => import('./pages/DeleteAccountPage'));
 const AboutPage = lazyPage(() => import('./pages/AboutPage'));
 const PartnerPage = lazyPage(() => import('./pages/PartnerPage'));
+
+// ── Topilmadi (404) ─────────────────────────────────────────────
+function NotFoundPage() {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  return (
+    <div style={{
+      minHeight: '60vh', display: 'flex', flexDirection: 'column',
+      alignItems: 'center', justifyContent: 'center', textAlign: 'center',
+      padding: '32px 20px', gap: 10,
+    }}>
+      <Compass size={44} style={{ color: 'var(--text3)', marginBottom: 4 }} aria-hidden="true" />
+      <h1 style={{ fontSize: 'var(--fs-h1)', fontWeight: 800, color: 'var(--text)', margin: 0 }}>
+        {t('notFound.title')}
+      </h1>
+      <p style={{ fontSize: 'var(--fs-body)', color: 'var(--text3)', margin: 0, maxWidth: 340, lineHeight: 1.5 }}>
+        {t('notFound.desc')}
+      </p>
+      <button className="btn btn-primary" style={{ marginTop: 14 }} onClick={() => navigate('/dashboard', { replace: true })}>
+        {t('notFound.home')}
+      </button>
+    </div>
+  );
+}
 
 // ── Chunk'larni oldindan isitish ────────────────────────────────
 // MUAMMO: route sahifalarida `exit` animatsiyasi YO'Q, shuning uchun eski
@@ -586,7 +611,12 @@ function App() {
                   <Route path="/errors" element={<ErrorNotebookPage />} />
                   <Route path="/settings" element={<SettingsPage theme={theme} toggleTheme={toggleTheme} />} />
                   <Route path="/delete-account" element={<DeleteAccountPage />} />
-                  <Route path="*" element={<Navigate to="/test" replace />} />
+                  {/* ⚠️ Ilgari noma'lum manzil JIMGINA /test ga yo'naltirilardi.
+                      Odam eski havolani ochsa yoki manzilda xato qilsa, u
+                      kutilmagan sahifada paydo bo'lardi va nima bo'lganini
+                      bilmasdi (ayniqsa PWA yorliqlari eskirganda). Endi qisqa,
+                      tushunarli ekran va bitta aniq chiqish yo'li. */}
+                  <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </AnimatePresence>
             </Suspense>

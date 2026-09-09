@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { RefreshCw } from 'lucide-react';
 import { useModalA11y } from '../../hooks/useModalA11y';
+import { useModalBackButton } from '../profile/useModalBackButton';
 
 /**
  * ConfirmDialog — window.confirm o'rnini bosuvchi yagona tasdiq oynasi.
@@ -48,6 +49,7 @@ export default function ConfirmDialog({
   }, [busy, onCancel]);
 
   const dialogRef = useModalA11y(open, guardedCancel);
+  useModalBackButton(open, guardedCancel);
   if (!open) return null;
   return (
     <div

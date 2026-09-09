@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Check, Clock, Lightbulb, X } from 'lucide-react';
 import { useModalBackButton } from '../profile/useModalBackButton';
+import { useEscapeClose } from '../../hooks/useEscapeClose';
 
 /**
  * ExamRulesModal — imtihon shartnomasi va taktikasi, talab bo'yicha ochiladigan.
@@ -33,6 +34,7 @@ import { useModalBackButton } from '../profile/useModalBackButton';
 const ExamRulesModal = ({ open, onClose, subjectName, durationMin, perQMin, perQSec }) => {
   const { t } = useTranslation();
   useModalBackButton(open, onClose);
+  useEscapeClose(open, onClose);
 
   // AnimatePresence ATAYIN yo'q — TheoryModal'dagi bilan bir xil sabab:
   // `exit` animatsiyasi tugamay qolsa, modal `open=false` bo'lgandan keyin ham

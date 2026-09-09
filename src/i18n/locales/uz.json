@@ -1,4 +1,19 @@
 {
+  "notFound": {
+    "title": "Sahifa topilmadi",
+    "desc": "Bu manzil o'zgargan yoki mavjud emas. Bosh sahifadan davom eting.",
+    "home": "Bosh sahifaga"
+  },
+  "splash": {
+    "skip": "O'tkazish"
+  },
+  "media": {
+    "zoomTitle": "Rasm",
+    "zoomAlt": "Savol rasmi (kattalashtirilgan)",
+    "zoomIn": "Kattalashtirish",
+    "zoomOut": "Kichraytirish",
+    "loadFailed": "Rasm yuklanmadi"
+  },
   "nav": {
     "home": "Bosh",
     "test": "Test",
@@ -109,6 +124,7 @@
     "countdownOff": "Sanoq o'chirildi"
   },
   "header": {
+    "themeSwitched": "Rejim: {{name}}",
     "greeting": "Xush kelibsiz",
     "profile": "Profil",
     "newNotifications": "{{count}} ta yangi bildirishnoma",

@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { Bell, CheckCircle2, CheckCheck, AlertCircle, Info, Trash2, Award, BadgeCheck, Flag } from 'lucide-react';
 import { useNotifications } from '../hooks/useNotifications';
 import { useModalBackButton } from './profile/useModalBackButton';
+import { useEscapeClose } from '../hooks/useEscapeClose';
 
 // Matn ichidagi havolalar (https://, http://, t.me/...) va @username larni bosiladigan havolaga aylantirish
 const renderFormattedMessage = (text) => {
@@ -70,6 +71,7 @@ const NotificationBell = ({ iconSize = 18, buttonClassName = 'user-avatar-btn', 
 
   // Android back button closes notification popover
   useModalBackButton(showMenu, () => setShowMenu(false));
+  useEscapeClose(showMenu, () => setShowMenu(false));
 
   // Tashqariga bosilganda menyuni yopish
   useEffect(() => {

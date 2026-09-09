@@ -32,6 +32,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import useModalA11y from '../../hooks/useModalA11y';
+import { useModalBackButton } from '../profile/useModalBackButton';
 import '../../pages/ProfilePage.css';
 
 /** Yopilish animatsiyasi davomiyligi — CSS'dagi `ssUpOut`/`ssOut` bilan bir xil */
@@ -65,6 +66,8 @@ export default function SettingsSheet({
   // Escape, fokus tutqichi va fokusni qaytarish — qobiqning O'ZIDA.
   // Ilgari GuideModal bu qatlamdan butunlay chetda qolgan edi.
   const sheetRef = useModalA11y(true, requestClose);
+  // Komponent faqat ochiq holatda mount bo'ladi → shart doim TRUE
+  useModalBackButton(true, requestClose);
 
   return (
     <div

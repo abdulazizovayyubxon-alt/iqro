@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowLeft, Eye, EyeOff, ShieldCheck, RefreshCw } from 'lucide-react';
 
 import { useIsMobile } from '../hooks/useIsMobile';
 import { useAppUpdate } from '../hooks/useAppUpdate';
 import BrandLogo from '../components/shared/BrandLogo';
 import { SUPPORT_URL } from '../config';
+import { prefersReducedMotion } from '../utils/motion';
 
 const STEPS = {
   PHONE: 'phone',
@@ -52,15 +53,30 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [lockoutTimer, setLockoutTimer] = useState(null);
   const [featureIdx, setFeatureIdx] = useState(0);
+  // Foydalanuvchi formaga tegdimi (karuselni to'xtatish uchun)
+  const [userEngaged, setUserEngaged] = useState(false);
+  // Xato bo'lganda fokus AYNAN muammoli maydonga qaytishi uchun
+  const phoneRef = useRef(null);
+  const nameRef = useRef(null);
+  const passRef = useRef(null);
 
+  // ⚠️ Reklama karuseli — nima o'zgardi (2026-09-09):
+  //   · Ilgari u SHARTSIZ, 3 soniyada bir aylanardi. Har aylanish 0.3s chiqish
+  //     + 0.3s kirish animatsiyasi, ya'ni siklning ~20% i xira holatda o'tardi:
+  //     raqam kiritayotgan odamning ko'z qirasida doim nimadir qimirlardi.
+  //   · Endi foydalanuvchi maydonga tegishi bilan (raqam terish yoki fokus)
+  //     karusel butunlay to'xtaydi — diqqat vazifaga qaytadi.
+  //   · Tizimda "harakatni kamaytirish" yoqilgan bo'lsa umuman aylanmaydi:
+  //     bu framer-motion animatsiyasi, CSS'dagi global reduce qoidasi
+  //     JS bilan boshqariladigan animatsiyani to'xtatmaydi.
   useEffect(() => {
-    if (step === STEPS.PHONE) {
-      const int = setInterval(() => {
-        setFeatureIdx(prev => (prev + 1) % 3);
-      }, 3000);
-      return () => clearInterval(int);
-    }
-  }, [step]);
+    if (step !== STEPS.PHONE) return undefined;
+    if (userEngaged || prefersReducedMotion()) return undefined;
+    const int = setInterval(() => {
+      setFeatureIdx(prev => (prev + 1) % 3);
+    }, 3000);
+    return () => clearInterval(int);
+  }, [step, userEngaged]);
 
   const FEATURES = [
     { icon: '🚀', title: t('login.f1Title'), desc: t('login.f1Desc') },
@@ -79,6 +95,8 @@ export default function LoginPage() {
 
 
   const handlePhoneChange = (e) => {
+    // Raqam terila boshladi — reklama karuseli to'xtaydi (yuqoridagi izoh)
+    setUserEngaged(true);
     setAuthError('');
     let v = e.target.value.replace(/[^\d+]/g, '');
     if (!v.startsWith('+998')) {
@@ -89,6 +107,30 @@ export default function LoginPage() {
     if (v.length > 13) v = v.slice(0, 13);
     setPhone(v);
   };
+
+  // ── Xato qaysi maydonga tegishli ────────────────────────────────────────
+  // ⚠️ Ilgari BARCHA xatolar formaning eng ostida, «Hisobingiz bormi? Kirish»
+  // qatoridan ham keyin — muammoli maydondan ~250px pastda chiqardi. Maydonning
+  // o'zida na qizil chegara, na `aria-invalid` bor edi, fokus ham qaytmasdi.
+  // Endi maydonga tegishli xatolar AYNI maydon ostida turadi; qolganlari
+  // (server/tarmoq xatolari) avvalgidek umumiy joyda qoladi.
+  const errorField = useMemo(() => {
+    if (!authError) return null;
+    if (authError === t('login.errPhone') || authError === t('login.errEnterPhone')) return 'phone';
+    if (authError === t('login.errName')) return 'name';
+    if (authError === t('login.errPassword') || authError === t('login.errEnterPass')) return 'password';
+    return null;
+  }, [authError, t]);
+
+  // Xato chiqqach fokusni o'sha maydonga qaytaramiz — odam qayerni
+  // tuzatishi kerakligini qidirmasin.
+  useEffect(() => {
+    if (!errorField) return;
+    const el = errorField === 'phone' ? phoneRef.current
+      : errorField === 'name' ? nameRef.current
+      : passRef.current;
+    el?.focus?.();
+  }, [errorField, authError]);
 
   const isPhoneValid = () => {
     const c = phone.replace(/\D/g, '');
@@ -276,47 +318,67 @@ export default function LoginPage() {
             Endi bosqichlar oddiy shart bilan almashadi — animatsiyasiz, lekin
             HAR DOIM ishlaydi. */}
         <div style={s.content}>
-          <div>
+          <div style={s.contentInner}>
 
               {/* ── STEP: PHONE ── */}
               {step === STEPS.PHONE && (
                 <>
-                  <div style={{ marginBottom: 24, minHeight: 80, display: 'flex', alignItems: 'center' }}>
-                    <AnimatePresence mode="wait">
-                      <motion.div
+                  {/* ⚠️ BU YERDA HAM `AnimatePresence mode="wait"` BO'LMASIN —
+                      yuqoridagi bosqichlar izohidagi AYNI sabab. Karusel unda
+                      qolib ketgandi va oqibati jonli tekshiruvda ko'rindi:
+                      brauzer tabi fonga o'tsa (yoki telefonda boshqa ilovaga
+                      chiqilsa) rAF to'xtaydi → chiqish animatsiyasi tugamaydi →
+                      slayd 0.48 shaffoflikda QOTIB qoladi va boshqa umuman
+                      almashmaydi. Ya'ni ekranda doimiy yarim so'ngan matn.
+                      Endi `AnimatePresence` yo'q: `key` o'zgarganda eski blok
+                      darhol yo'qoladi, yangisi kirish animatsiyasi bilan keladi.
+                      Chiqish animatsiyasi yo'q, lekin HAR DOIM ishlaydi. */}
+                  <div style={{ marginBottom: 24, minHeight: 80, display: 'flex', alignItems: 'center' }} aria-hidden="true">
+                      <div
                         key={featureIdx}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.3 }}
+                        className="login-feature"
                         style={{ display: 'flex', alignItems: 'center', gap: 16 }}
                       >
                         <div style={{ fontSize: 'var(--fs-12xl)', filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.1))' }}>
                           {FEATURES[featureIdx].icon}
                         </div>
                         <div>
-                          <h1 style={{ ...s.title, marginBottom: 6, fontSize: 'var(--fs-5xl)', lineHeight: 1.1 }}>{FEATURES[featureIdx].title}</h1>
+                          {/* ⚠️ Ilgari bu <h1> edi — ya'ni sahifaning ASOSIY
+                              sarlavhasi har 3 soniyada o'zgarib turadigan reklama
+                              matni bo'lardi, sahifaning haqiqiy maqsadi
+                              ("Telefon raqamingiz") esa oddiy label bo'lib qolardi.
+                              Endi bu dekorativ blok; sahifa sarlavhasi quyida. */}
+                          <div style={{ ...s.title, marginBottom: 6, fontSize: 'var(--fs-5xl)', lineHeight: 1.1 }}>{FEATURES[featureIdx].title}</div>
                           <p style={{ ...s.subtitle, marginBottom: 0, fontSize: 'var(--fs-md)', lineHeight: 1.4 }}>{FEATURES[featureIdx].desc}</p>
                         </div>
-                      </motion.div>
-                    </AnimatePresence>
+                      </div>
                   </div>
                   {/* Ko'rsatma — ilgari bu ekranda UMUMAN matn yo'q edi: faqat
                       aylanuvchi reklama va yalang'och `+998`. Yangi odam nima
                       bo'layotganini (hisob YARATILISHINI va parolni O'ZI o'ylab
                       topishini) bilmasdi. */}
-                  <label htmlFor="login-phone-input" style={s.fieldLabel}>{t('login.phoneTitle')}</label>
+                  <h1 style={s.stepTitle} id="login-phone-label">{t('login.phoneTitle')}</h1>
                   <div style={s.phoneWrap}>
                     <input
                       id="login-phone-input"
-                      style={s.phoneInput}
+                      ref={phoneRef}
+                      style={errorField === 'phone'
+                        ? { ...s.phoneInput, borderBottom: '2.5px solid var(--red)' }
+                        : s.phoneInput}
                       type="tel"
+                      inputMode="tel"
+                      autoComplete="tel"
+                      aria-labelledby="login-phone-label"
+                      aria-invalid={errorField === 'phone' || undefined}
+                      aria-describedby={errorField === 'phone' ? 'err-phone' : undefined}
                       value={phone}
                       onChange={handlePhoneChange}
+                      onFocus={() => setUserEngaged(true)}
                       placeholder="+998 00 000 00 00"
                       onKeyDown={e => e.key === 'Enter' && handlePhoneNext()}
                     />
                   </div>
+                  {errorField === 'phone' && <p id="err-phone" role="alert" style={s.fieldError}>{authError}</p>}
                   <p style={s.phoneHelp}>{t('login.phoneSubtitle')}</p>
                 </>
               )}
@@ -399,24 +461,34 @@ export default function LoginPage() {
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '6px' }}>
                     <div>
-                      <label style={s.fieldLabel}>{t('login.nameLabel')}</label>
+                      <label style={s.fieldLabel} htmlFor="register-name-input">{t('login.nameLabel')}</label>
                       <input
                         id="register-name-input"
-                        style={s.input}
+                        ref={nameRef}
+                        style={{ ...s.input, marginBottom: errorField === 'name' ? 0 : 12 }}
                         type="text"
+                        autoComplete="name"
+                        aria-invalid={errorField === 'name' || undefined}
+                        aria-describedby={errorField === 'name' ? 'err-name' : undefined}
                         placeholder={t('login.namePlaceholder')}
                         value={name}
                         onChange={e => { setAuthError(''); setName(e.target.value); }}
                         autoFocus
                       />
+                      {errorField === 'name' && <p id="err-name" role="alert" style={s.fieldError}>{authError}</p>}
                     </div>
 
                     <div>
-                      <label style={s.fieldLabel}>{t('login.passwordLabel')}</label>
+                      <label style={s.fieldLabel} htmlFor="register-pass-input">{t('login.passwordLabel')}</label>
                       <div style={{ position: 'relative' }}>
                         <input
-                          style={s.input}
+                          id="register-pass-input"
+                          ref={passRef}
+                          style={{ ...s.input, marginBottom: errorField === 'password' ? 0 : 12 }}
                           type={showPass ? 'text' : 'password'}
+                          autoComplete="new-password"
+                          aria-invalid={errorField === 'password' || undefined}
+                          aria-describedby={errorField === 'password' ? 'err-pass' : undefined}
                           placeholder={t('login.passwordCreatePlaceholder')}
                           value={password}
                           onChange={e => { setAuthError(''); setPassword(e.target.value); }}
@@ -426,6 +498,7 @@ export default function LoginPage() {
                           {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
                         </button>
                       </div>
+                      {errorField === 'password' && <p id="err-pass" role="alert" style={s.fieldError}>{authError}</p>}
                       {/* Ogohlantirish, chunki parolni TIKLASH avtomatik emas:
                           email soxta, SMS yo'q — unutilsa faqat admin qo'lda
                           beradi. Odam buni parol o'ylab topayotgan PAYTIDA
@@ -444,10 +517,12 @@ export default function LoginPage() {
                 </>
               )}
 
-              {/* Error */}
-              {authError && (
+              {/* Umumiy xato — server/tarmoq kabi biror maydonga tegishli
+                  BO'LMAGAN holatlar. Maydon xatolari yuqorida, o'z maydoni
+                  ostida chiqadi (errorField izohiga qarang). */}
+              {authError && !errorField && (
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-                  <p style={s.errorText}>
+                  <p role="alert" style={s.errorText}>
                     {authError}
                   </p>
                 </div>
@@ -543,7 +618,13 @@ const getStyles = (isMobile) => ({
     display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px',
     transition: 'background 0.2s',
   },
-  content: { flex: 1, padding: isMobile ? '16px 20px 8px' : '28px 24px 16px', overflowY: 'auto' },
+  // `margin: auto 0` (contentInner) bilan birgalikda: kontent kalta bo'lsa
+  // vertikal markazga tushadi, uzun bo'lsa (klaviatura ochiq, xatolar bor)
+  // odatdagidek tepadan skroll qilinadi va HECH NARSA qirqilmaydi.
+  // Ilgari blok doim tepaga yopishardi va telefon ekranida forma bilan
+  // pastdagi tugma orasida ~350px bo'sh joy qolardi.
+  content: { flex: 1, padding: isMobile ? '16px 20px 8px' : '28px 24px 16px', overflowY: 'auto', display: 'flex', flexDirection: 'column' },
+  contentInner: { margin: 'auto 0', width: '100%' },
   title: { fontSize: 'var(--fs-8xl)', fontWeight: 800, lineHeight: 1.2, marginBottom: 8, color: 'var(--text)' },
   subtitle: { fontSize: 'var(--fs-lg)', color: 'var(--text3)', lineHeight: 1.6, marginBottom: isMobile ? 16 : 28 },
   phoneWrap: { marginBottom: 8 },
@@ -606,6 +687,13 @@ const getStyles = (isMobile) => ({
     color: 'var(--text3)', lineHeight: 1.45,
   },
   errorText: { marginTop: 10, fontSize: 'var(--fs-md)', color: 'var(--red)', fontWeight: 500 },
+  // Maydon ostidagi xato — muammoli maydonga TEGIB turadi
+  fieldError: { margin: '6px 0 12px', fontSize: 'var(--fs-md)', color: 'var(--red)', fontWeight: 600, lineHeight: 1.4 },
+  // Bosqich sarlavhasi: sahifaning HAQIQIY h1'i (aylanuvchi reklama emas)
+  stepTitle: {
+    fontSize: 'var(--fs-md)', fontWeight: 600, color: 'var(--text2)',
+    marginBottom: 6, marginTop: 0, display: 'block',
+  },
   footer: { 
     padding: isMobile 
       ? '12px 20px calc(12px + env(safe-area-inset-bottom))' 

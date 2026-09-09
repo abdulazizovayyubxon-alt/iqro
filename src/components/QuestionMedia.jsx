@@ -10,9 +10,21 @@
  * ╚══════════════════════════════════════════════════════════════╝
  */
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
+import { useTranslation } from 'react-i18next';
+import { X, ZoomIn, ZoomOut } from 'lucide-react';
 import DOMPurify from 'dompurify';
+import { useModalBackButton } from './profile/useModalBackButton';
+import { useModalA11y } from '../hooks/useModalA11y';
+
+// Lightbox boshqaruv tugmalari — qora fon ustida, teginish zonasi 44px
+const zoomBtnStyle = {
+  width: 44, height: 44, borderRadius: '50%',
+  display: 'flex', alignItems: 'center', justifyContent: 'center',
+  background: 'rgba(255,255,255,0.14)', color: '#fff',
+  border: '1px solid rgba(255,255,255,0.22)', cursor: 'pointer', padding: 0,
+};
 
 // ── SVG tozalash (XSS himoyasi) ───────────────────────────────────────────
 // AUDIT 2026-08-05, 21-BAND: `svg` maydoni `dangerouslySetInnerHTML`ga
@@ -352,8 +364,19 @@ function WideImageGrid({ src, cols = 6, perRow = 3 }) {
 }
 
 export default function QuestionMedia({ question, style }) {
+  const { t } = useTranslation();
   const [imgError, setImgError] = useState(false);
   const [zoomed, setZoomed] = useState(false);
+  // Kattalashtirish darajasi: 1 = ekranga moslashtirilgan, 2 = ikki barobar.
+  // Ilgari «zum» faqat ekranga moslashtirardi — mayda yozuvli sxemada undan
+  // deyarli foyda yo'q edi. Endi haqiqiy kattalashtirish bor va konteyner
+  // skroll qilinadi.
+  const [scale, setScale] = useState(1);
+  // Android «orqaga» tugmasi va Escape endi lightbox'ni YOPADI. Ilgari
+  // ikkalasi ham ishlamas, «orqaga» esa odamni testdan chiqarib yuborardi.
+  const closeZoom = useCallback(() => { setZoomed(false); setScale(1); }, []);
+  useModalBackButton(zoomed, closeZoom);
+  const zoomRef = useModalA11y(zoomed, closeZoom);
 
   useEffect(() => {
     setImgError(false);
@@ -441,21 +464,69 @@ export default function QuestionMedia({ question, style }) {
         </div>
         {zoomed && createPortal(
           <div
-            onClick={() => setZoomed(false)}
+            ref={zoomRef}
             role="dialog"
-            aria-label="Rasm"
+            aria-modal="true"
+            aria-label={t('media.zoomTitle')}
+            tabIndex={-1}
+            onClick={closeZoom}
             style={{
               position: 'fixed', inset: 0, zIndex: 99999,
-              background: 'rgba(0,0,0,0.88)',
+              background: 'rgba(0,0,0,0.92)',
+              // Ikki barobar kattalashtirilgan rasm ekranga sig'maydi —
+              // konteyner skroll qilinadi.
+              overflow: 'auto',
+              WebkitOverflowScrolling: 'touch',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              padding: '16px', cursor: 'zoom-out',
+              padding: '16px',
             }}
           >
             <img
               src={image}
-              alt="Savol rasmi (kattalashtirilgan)"
-              style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '8px' }}
+              alt={t('media.zoomAlt')}
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                width: scale === 1 ? 'auto' : `${scale * 100}%`,
+                maxWidth: scale === 1 ? '100%' : 'none',
+                maxHeight: scale === 1 ? '100%' : 'none',
+                objectFit: 'contain',
+                borderRadius: '8px',
+                margin: 'auto',
+                flexShrink: 0,
+              }}
             />
+
+            {/* Boshqaruv tugmalari.
+                ⚠️ Ilgari lightbox'da HECH QANDAY tugma yo'q edi: yopishning
+                yagona yo'li «istalgan joyga bosish» bo'lib, buni faqat
+                `cursor: zoom-out` bildirardi — telefonda esa kursor yo'q.
+                Odam sxemani ochib, undan qanday chiqishni bilmasdi. */}
+            <div
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                position: 'fixed',
+                top: 'calc(12px + env(safe-area-inset-top, 0px))',
+                right: 12,
+                display: 'flex', gap: 8, zIndex: 1,
+              }}
+            >
+              <button
+                type="button"
+                aria-label={scale === 1 ? t('media.zoomIn') : t('media.zoomOut')}
+                onClick={() => setScale((v) => (v === 1 ? 2 : 1))}
+                style={zoomBtnStyle}
+              >
+                {scale === 1 ? <ZoomIn size={20} /> : <ZoomOut size={20} />}
+              </button>
+              <button
+                type="button"
+                aria-label={t('common.close')}
+                onClick={closeZoom}
+                style={zoomBtnStyle}
+              >
+                <X size={20} />
+              </button>
+            </div>
           </div>,
           document.body
         )}
@@ -475,7 +546,7 @@ export default function QuestionMedia({ question, style }) {
         color: 'var(--text2)',
         fontSize: 'var(--fs-md)',
       }}>
-        🖼️ Rasm yuklanmadi
+        🖼️ {t('media.loadFailed')}
       </div>
     );
   }

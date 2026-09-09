@@ -19,6 +19,7 @@ import PremiumModal from './PremiumModal';
 import EditProfileModal from './profile/EditProfileModal';
 import AvatarPickerModal from './profile/AvatarPickerModal';
 import { useModalBackButton } from './profile/useModalBackButton';
+import { useEscapeClose } from '../hooks/useEscapeClose';
 import { useAdmin } from '../hooks/useAdmin';
 import { usePartner } from '../hooks/usePartner';
 import BrandLogo from './shared/BrandLogo';
@@ -26,7 +27,7 @@ import BrandLogo from './shared/BrandLogo';
 import {
   Award, Settings, Users, Shield, Crown, ChevronRight,
   Pencil, Camera, Share2, Send, School, BarChart3, ListChecks,
-  Sparkles
+  Sparkles, AlertCircle
 } from 'lucide-react';
 
 // ── Sokin/jiddiy uslub — kir kulrang (--bg3) o'rniga chegarali --surface ──
@@ -86,6 +87,7 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
 
   // Drawerning o'zi uchun orqaga qaytish tugmasini boshqarish
   useModalBackButton(open, onClose);
+  useEscapeClose(open, onClose);
 
   useModalBackButton(showPremium || showEdit || showAvatarPicker, () => {
     setShowPremium(false); setShowEdit(false); setShowAvatarPicker(false);
@@ -249,9 +251,17 @@ const ProfileDrawer = ({ open, onClose, theme, user }) => {
   // Menyu tartibi «o'quv yo'li» bo'yicha: avval bugun nima qilish kerak (Reja),
   // keyin qayerda turibman (Tahlil), keyin nimaga erishdim (Yutuqlar).
   // Dastur haqida → Sozlamalar > Ma'lumot. Maktab faqat admin/a'zolarga.
+  //
+  // ⚠️ «Xatolar kitobi» (/errors) 2026-09-09 gacha bu ro'yxatda YO'Q edi va
+  // faqat DESKTOP Sidebar'da turardi — u esa ≤768px da `display:none`.
+  // Ya'ni telefonda (ilovaning asosiy qurilmasi) ilovaning eng qimmatli
+  // o'quv vositasiga yagona yo'l Sozlamalar ichidan o'tardi. O'quv yo'li
+  // mantig'i bo'yicha o'rni: nimani bilmayman (Tahlil) → nimada xato
+  // qildim (Xatolar) → nimaga erishdim (Yutuqlar).
   const menuItems = [
     { icon: ListChecks, label: t('sidebar.plan', 'Bugungi reja'), path: '/analysis?tab=plan' },
     { icon: BarChart3, label: t('sidebar.analysis', 'Tahlil'), path: '/analysis' },
+    { icon: AlertCircle, label: t('sidebar.errors', 'Xatolar kitobi'), path: '/errors' },
     { icon: Award, label: t('sidebar.achievements', 'Yutuqlarim'), path: '/achievements' },
     { icon: Users, label: t('sidebar.invite', "Do'stni taklif qilish"), path: '/referral' },
     { icon: Settings, label: t('sidebar.settings', 'Sozlamalar'), path: '/settings' },

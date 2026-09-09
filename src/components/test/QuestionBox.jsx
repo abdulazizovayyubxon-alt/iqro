@@ -203,6 +203,15 @@ const QuestionBox = ({
           </div>
         )}
 
+        {/* Progress chizig'i — «SAVOL 3 / 40» matni yolg'iz o'zi yetarli
+            emas: u ikkilamchi kulrangda va odam 40 savollik to'plamning
+            qayerida turganini bir qarashda ko'rmasdi. `aria-hidden` —
+            ayni ma'lumot yuqoridagi matnda allaqachon bor, skrinrider uni
+            ikki marta o'qimasin. */}
+        <div className="q-progress" aria-hidden="true">
+          <span style={{ width: `${((currentQ + 1) / questions.length) * 100}%` }} />
+        </div>
+
         <QuestionMedia question={questions[currentQ]} />
         {questions[currentQ].isHtml ? <SafeHtml html={questions[currentQ].q} className="q-text" /> : <div className="q-text" style={{ whiteSpace: 'pre-line' }}>{questions[currentQ].q}</div>}
         {/* ⚠️ AUDIT 2026-08-17 — variantlar `<div onClick>` edi.

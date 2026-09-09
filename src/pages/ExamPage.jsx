@@ -1736,6 +1736,13 @@ const ExamPage = () => {
                 </div>
               </div>
 
+              {/* Progress chizig'i — imtihonda ham qayerda turgani ko'rinsin.
+                  Ma'lumot yuqoridagi «SAVOL n / N» matnida bor, shuning uchun
+                  chiziq skrinrider uchun yashirin. */}
+              <div className="q-progress" aria-hidden="true">
+                <span style={{ width: `${((currentQ + 1) / questions.length) * 100}%` }} />
+              </div>
+
               {/* Mualliflik / Manba nishoni */}
               {(q.author || q.source) && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>

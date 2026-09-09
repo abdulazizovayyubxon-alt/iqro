@@ -15,6 +15,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import useModalA11y from '../../hooks/useModalA11y';
+import { useModalBackButton } from '../profile/useModalBackButton';
 
 const CSS = `
 @keyframes as_spin { to { transform: rotate(360deg); } }
@@ -35,6 +36,8 @@ export default function ActionSheet({
   const { t } = useTranslation();
   // Harakat bajarilayotganda Escape/tashqi bosish oynani yopmasin
   const ref = useModalA11y(open, busy ? () => {} : onDismiss);
+  // Android «orqaga» — Escape bilan bir xil xulq (band bo'lsa yopilmaydi)
+  useModalBackButton(open, busy ? () => {} : onDismiss);
 
   return (
     <>
