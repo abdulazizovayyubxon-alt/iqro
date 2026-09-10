@@ -14,7 +14,7 @@
  * Geometriya: panel 82px + safe-area, o'yiq 130px keng va 24px chuqur,
  * FAB paneldan 28px tepaga chiqib turadi.
  */
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -38,63 +38,98 @@ const NOTCH_W = 130;  // o'yiq kengligi
 const BAR_H = 82;     // panel balandligi (safe-area ustiga qo'shiladi)
 const TOP = 22;       // FAB paneldan tepaga chiqadigan qism (SVG ichidagi ofset)
 
+// Faol chiziq sakramasin: harakat kamaytirilgan bo'lsa darhol ko'chadi.
+// Modul darajasida — har renderda yangi obyekt `NavTab` memo'sini buzardi.
+const BAR_SPRING = { type: 'spring', stiffness: 420, damping: 32 };
+const BAR_INSTANT = { duration: 0 };
+
+// ⚠️ 2026-09-10 — TAB ENDI BottomNav ICHIDA E'LON QILINMAYDI.
+// Ilgari `const Tab = ({ tab }) => ...` render funksiyasi ichida turardi:
+// har renderda React uchun YANGI komponent turi paydo bo'lib, to'rtala tugma
+// DOM'dan o'chirilib qaytadan yasalardi. BottomNav esa AppContext'ning HAR
+// yangilanishida (har javob, har `updateState`) render bo'ladi. Oqibati:
+// barmoq tugmaga tekkan paytda yangilanish kelsa `click` yangi tugmaga
+// yetmay yutilardi (panel «qotgan»dek), `layoutId` chizig'i esa har safar
+// qayta mount bo'lib framer-motion layout o'lchovini qayta bajarardi.
+const NavTab = React.memo(function NavTab({ tab, isActive, badge, label, onSelect, barTransition }) {
+  const Icon = tab.icon;
+  return (
+    <button
+      type="button"
+      onClick={() => onSelect(tab)}
+      style={styles.tab}
+      aria-current={isActive ? 'page' : undefined}
+    >
+      {isActive && (
+        <motion.div
+          layoutId="zehinNavBar"
+          style={styles.activeBar}
+          transition={barTransition}
+        />
+      )}
+      <span style={{ position: 'relative', display: 'inline-flex' }}>
+        <Icon
+          size={23}
+          strokeWidth={2.3}
+          style={{ color: isActive ? 'var(--accent)' : 'var(--text2)', transition: 'color 0.2s' }}
+        />
+        {badge && <span style={styles.badge}>{badge}</span>}
+      </span>
+      <span style={{
+        fontSize: 'var(--fs-micro)', lineHeight: 1,
+        fontWeight: isActive ? 800 : 700,
+        color: isActive ? 'var(--accent)' : 'var(--text2)',
+        transition: 'color 0.2s',
+      }}>
+        {label}
+      </span>
+    </button>
+  );
+});
+
 export default function BottomNav() {
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
-  const { state, updateState } = useContext(AppContext);
+  const { state } = useContext(AppContext);
 
   const dueCount = dueCardCount(state.spacedCards);
   const activeId = [...SIDE_TABS, EXAM].find(tab => location.pathname === tab.path)?.id || '';
+  const barTransition = prefersReducedMotion() ? BAR_INSTANT : BAR_SPRING;
 
-  // Faol chiziq sakramasin: harakat kamaytirilgan bo'lsa darhol ko'chadi
-  const barTransition = prefersReducedMotion()
-    ? { duration: 0 }
-    : { type: 'spring', stiffness: 420, damping: 32 };
-
-  const go = (tab) => {
-    if (tab.id === 'test') { updateState({ topicId: -1, testMode: 'exam' }); }
+  // ⚠️ 2026-09-10 — «Test» tabi endi holatga TEGMAYDI.
+  // Ilgari u har bosilganda `topicId: -1, testMode: 'exam'` yozardi. TestPage
+  // esa aynan shu ikki qiymat o'zgarganda hovuzni qaytadan yig'ib javoblarni
+  // nolga tushiradi, sessiyani tiklash ham ikkalasi mos kelishini talab qiladi:
+  //   · test o'rtasida «Test» qayta bosilsa — javoblar o'chib, test barcha
+  //     bo'limlar to'plamidan qaytadan boshlanardi;
+  //   · Bosh sahifada tanlangan bo'lim «Test»ga o'tishda bekor bo'lardi;
+  //   · bo'lim testidan chiqib «Test» orqali qaytilsa — sessiya tiklanmasdi.
+  // Desktop Sidebar hech qachon bunday qilmagan — endi ikkalasi bir xil.
+  //
+  // Faol tab qayta bosilsa `navigate` ham chaqirilmaydi: har bosish tarixga
+  // takroriy yozuv qo'shib, «orqaga»ni bir necha marta bosishga majbur qilardi.
+  // O'rniga sahifa tepaga suriladi (mobil tab-bar odati).
+  const go = useCallback((tab) => {
+    if (location.pathname === tab.path) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.querySelector('.main-content')?.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     navigate(tab.path);
-  };
+  }, [navigate, location.pathname]);
 
-  const Tab = ({ tab }) => {
-    const Icon = tab.icon;
-    const isActive = tab.id === activeId;
-    const badge = tab.id === 'review' && dueCount > 0 ? dueCount : null;
-
-    return (
-      <button
-        type="button"
-        onClick={() => go(tab)}
-        style={styles.tab}
-        aria-current={isActive ? 'page' : undefined}
-      >
-        {isActive && (
-          <motion.div
-            layoutId="zehinNavBar"
-            style={styles.activeBar}
-            transition={barTransition}
-          />
-        )}
-        <span style={{ position: 'relative', display: 'inline-flex' }}>
-          <Icon
-            size={23}
-            strokeWidth={2.3}
-            style={{ color: isActive ? 'var(--accent)' : 'var(--text2)', transition: 'color 0.2s' }}
-          />
-          {badge && <span style={styles.badge}>{badge}</span>}
-        </span>
-        <span style={{
-          fontSize: 'var(--fs-micro)', lineHeight: 1,
-          fontWeight: isActive ? 800 : 700,
-          color: isActive ? 'var(--accent)' : 'var(--text2)',
-          transition: 'color 0.2s',
-        }}>
-          {t(`nav.${tab.id}`)}
-        </span>
-      </button>
-    );
-  };
+  const renderTab = (tab) => (
+    <NavTab
+      key={tab.id}
+      tab={tab}
+      isActive={tab.id === activeId}
+      badge={tab.id === 'review' && dueCount > 0 ? dueCount : null}
+      label={t(`nav.${tab.id}`)}
+      onSelect={go}
+      barTransition={barTransition}
+    />
+  );
 
   return (
     <nav className="bottom-nav" style={styles.nav}>
@@ -143,11 +178,11 @@ export default function BottomNav() {
       </button>
 
       <div style={styles.row}>
-        <Tab tab={SIDE_TABS[0]} />
-        <Tab tab={SIDE_TABS[1]} />
+        {renderTab(SIDE_TABS[0])}
+        {renderTab(SIDE_TABS[1])}
         <div />
-        <Tab tab={SIDE_TABS[2]} />
-        <Tab tab={SIDE_TABS[3]} />
+        {renderTab(SIDE_TABS[2])}
+        {renderTab(SIDE_TABS[3])}
       </div>
     </nav>
   );
@@ -173,7 +208,11 @@ const styles = {
   },
   fabWrap: {
     position: 'absolute', left: '50%', top: -28, transform: 'translateX(-50%)',
-    display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5,
+    // Teginish zonasi markaz ustunining to'liq eni va panel tagigacha —
+    // doira bilan yorliq tepada qoladi (flex-start). Ilgari FAB ostidagi
+    // 30px bosilmasdi.
+    width: NOTCH_W - 34, height: BAR_H + 28,
+    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', gap: 5,
     background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', padding: 0,
     zIndex: 2,
   },
@@ -186,15 +225,21 @@ const styles = {
     // Tablar safe-area ustida turadi (home indicator ostiga tushmaydi)
     position: 'absolute', left: 0, right: 0, top: 0, height: BAR_H,
     display: 'grid', gridTemplateColumns: `1fr 1fr ${NOTCH_W - 34}px 1fr 1fr`,
-    alignItems: 'center', paddingBottom: 10,
+    // stretch — tugma ustunning TO'LIQ balandligini egallaydi. Ilgari
+    // `center` + `minHeight: 48` bilan 82px panelning faqat 48px'i bosilardi:
+    // ikonka ustidagi va yorliq ostidagi teginish hech narsa qilmasdi.
+    alignItems: 'stretch',
   },
   tab: {
-    position: 'relative', minHeight: 48,
+    position: 'relative',
     display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 5,
-    background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', padding: 0,
+    // Pastki 10px ilgari `row`da edi — kontent o'z joyida qoladi
+    background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', padding: '0 0 10px',
   },
   activeBar: {
-    position: 'absolute', top: -2, width: 26, height: 3, borderRadius: 99,
+    // Tugma endi panel tepasidan boshlanadi (ilgari 12px pastda edi) —
+    // chiziq ko'rinishda o'sha joyda qolishi uchun 12 − 2 = 10
+    position: 'absolute', top: 10, width: 26, height: 3, borderRadius: 99,
     background: 'var(--accent)',
   },
   badge: {
