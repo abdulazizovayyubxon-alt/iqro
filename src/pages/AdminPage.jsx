@@ -46,6 +46,8 @@ import { compressImage } from '../utils/compressImage';
 import {
   logAdminAction, describeAdminAction, formatActionMeta, ADMIN_ACTION_GROUPS,
 } from '../services/adminLog';
+// Taklif chegirmasining AMALDAGI foizi — narx hisoblanadigan joylar bilan bir manba
+import { effectiveReferralDiscount } from '../../api/_referralDiscount.js';
 import { useModalA11y } from '../hooks/useModalA11y';
 // Foydalanuvchi qidiruvi ALOHIDA modulda va testga olingan (utils/userSearch.js):
 // aynan bu mantiq jimgina buzilib, mavjud odamni "bazada yo'q" ko'rsatgan edi.
@@ -2148,42 +2150,89 @@ try {
     setReferralSummary(summarizeReferrals(next));
   };
 
+  // Referral hujjati ID si. 2026-08-05 dan beri deterministik
+  // (`${referrerId}_${referredId}`, api/find-referral.js); undan oldingilari
+  // tasodifiy ID bilan yozilgan — ular `referredId` bo'yicha topiladi.
+  const findReferralIdFor = async (referredId, referrerId) => {
+    if (referrerId) {
+      const det = await getDoc(doc(db, 'referrals', `${referrerId}_${referredId}`));
+      if (det.exists()) return det.id;
+    }
+    const found = await getDocs(query(
+      collection(db, 'referrals'), where('referredId', '==', referredId), limit(1),
+    ));
+    return found.empty ? null : found.docs[0].id;
+  };
+
+  // ═══ Taklif to'lovini qayd etish — YAGONA tranzaksiya ═══
+  //
+  // Ikki joydan chaqiriladi: «Takliflar» jadvalidagi «To'ladi» tugmasi va
+  // «Pro berish» oynasidagi «Bu to'lov» belgisi.
+  //
+  // ⚠️ AUDIT 2026-08-06, T-9 BAND — avval `bonusPaid` OLDINDAN tekshirilmasdi:
+  // ikki marta bosilsa (yoki allaqachon to'langan referralda) `increment(15000)`
+  // qayta bajarilib, referrer ikki barobar bonus olardi. payment-webhook.js ham
+  // bonus beradi — ya'ni qo'sh hisoblash ehtimoli bor edi.
+  // Endi tekshiruv va barcha yozuvlar BITTA tranzaksiyada (redeem-promo.js naqshi).
+  //
+  // ⚠️ 2026-09-11 — DO'STNING CHEGIRMASI ENDI SHU YERDA SARFLANADI.
+  // payment-webhook to'lovda `referralDiscount: 0` yozadi, bu qo'lda qayd
+  // etish yo'li esa chegirmaga tegmasdi — to'lagan do'st keyingi uzaytirishda
+  // ham -50% ko'rardi. Click o'chiq (config.CLICK_ENABLED), ya'ni hozir HAMMA
+  // to'lov aynan shu qo'lda yo'ldan o'tadi. Do'st hisobini o'chirgan bo'lsa
+  // uning hujjatiga yozilmaydi: `update` tranzaksiyani yiqitib, taklif
+  // qiluvchi bonussiz qolardi.
+  const markReferralPaidTx = (refId, referrerIdHint) => runTransaction(db, async (tx) => {
+    const refDoc = doc(db, 'referrals', refId);
+    const snap = await tx.get(refDoc);
+    if (!snap.exists()) throw new Error('NOT_FOUND');
+    if (snap.data().bonusPaid === true) throw new Error('ALREADY_PAID');
+
+    // Bonus egasi — referral hujjatining O'ZIDAGI referrerId (manba), chaqiruvchi
+    // bergani faqat zaxira. Tranzaksiyada barcha o'qishlar yozuvlardan OLDIN.
+    const referrerId = snap.data().referrerId || referrerIdHint || null;
+    const referredId = snap.data().referredId || null;
+    const referredRef = referredId ? doc(db, 'users', referredId) : null;
+    const referredSnap = referredRef ? await tx.get(referredRef) : null;
+
+    const paidAt = new Date().toISOString();
+    tx.update(refDoc, {
+      status: 'paid',
+      bonusPaid: true,
+      bonusAmount: 15000,
+      paidAt,
+    });
+    // Referrer ga bonus qo'shish — shu tranzaksiya ichida, ya'ni referral
+    // hujjati yangilanmasa bonus ham berilmaydi (va aksincha).
+    if (referrerId) {
+      tx.update(doc(db, 'users', referrerId), {
+        referralBonus: increment(15000),
+      });
+    }
+    const discountClosed = !!referredSnap?.exists();
+    if (discountClosed) {
+      tx.update(referredRef, { referralDiscount: 0, discountExpired: true });
+    }
+    return { paidAt, referrerId, referredId: discountClosed ? referredId : null };
+  });
+
+  // Tranzaksiyadan keyingi LOKAL yangilash — butun kolleksiyani qayta o'qimaymiz (T-8)
+  const applyReferralPaidLocally = (refId, { paidAt, referredId }) => {
+    applyReferralPatch(refId, { status: 'paid', bonusPaid: true, bonusAmount: 15000, paidAt });
+    if (referredId) {
+      setUsers(prev => prev.map(x => (x.id === referredId
+        ? { ...x, referralDiscount: 0, discountExpired: true } : x)));
+    }
+  };
+
   // ═══ Admin: Referral statusini "to'ladi" ga o'zgartirish ═══
   const handleMarkReferralPaid = async (refId, referrerId) => {
-    confirmAction("Bu referralni 'To'ladi' deb belgilashni tasdiqlaysizmi?", async () => {
+    confirmAction("Bu referralni 'To'ladi' deb belgilashni tasdiqlaysizmi? Taklif qiluvchiga 15 000 so'm bonus yoziladi, do'stning taklif chegirmasi yopiladi.", async () => {
     try {
-      // ⚠️ AUDIT 2026-08-06, T-9 BAND — avval `bonusPaid` OLDINDAN tekshirilmasdi:
-      // ikki marta bosilsa (yoki allaqachon to'langan referralda) `increment(15000)`
-      // qayta bajarilib, referrer ikki barobar bonus olardi. payment-webhook.js ham
-      // bonus beradi — ya'ni qo'sh hisoblash ehtimoli bor edi.
-      // Endi tekshiruv va ikkala yozuv BITTA tranzaksiyada (redeem-promo.js naqshi).
-      await runTransaction(db, async (tx) => {
-        const refDoc = doc(db, 'referrals', refId);
-        const snap = await tx.get(refDoc);
-        if (!snap.exists()) throw new Error('NOT_FOUND');
-        if (snap.data().bonusPaid === true) throw new Error('ALREADY_PAID');
-
-        tx.update(refDoc, {
-          status: 'paid',
-          bonusPaid: true,
-          bonusAmount: 15000,
-          paidAt: new Date().toISOString(),
-        });
-        // Referrer ga bonus qo'shish — shu tranzaksiya ichida, ya'ni referral
-        // hujjati yangilanmasa bonus ham berilmaydi (va aksincha).
-        if (referrerId) {
-          tx.update(doc(db, 'users', referrerId), {
-            referralBonus: increment(15000),
-          });
-        }
-      });
-      logAdminAction('referral.mark_paid', refId, { referrerId: referrerId || null, bonus: 15000 });
+      const done = await markReferralPaidTx(refId, referrerId);
+      logAdminAction('referral.mark_paid', refId, { referrerId: done.referrerId, bonus: 15000 });
       showToast("✅ Referral to'langan deb belgilandi va bonus berildi!", 'success');
-      // Ro'yxatni LOKAL yangilash — ilgari bu yerda butun `referrals` kolleksiyasi
-      // qayta o'qilardi (T-8). Nima o'zgarganini bilamiz, qayta o'qish shart emas.
-      applyReferralPatch(refId, {
-        status: 'paid', bonusPaid: true, bonusAmount: 15000, paidAt: new Date().toISOString(),
-      });
+      applyReferralPaidLocally(refId, done);
     } catch (e) {
       if (e.message === 'ALREADY_PAID') {
         showToast('Bu referral bo\'yicha bonus allaqachon berilgan', 'info');
@@ -2348,6 +2397,10 @@ try {
   // Admin matnga qo'l urgan bo'lsa, sana o'zgarganda uni QAYTA YOZMAYMIZ —
   // aks holda tahrir jimgina yo'qolardi.
   const [noticeTouched, setNoticeTouched] = useState(false);
+  // «Bu to'lov» belgisi — taklif chegirmasi faol foydalanuvchiga Pro berilganda.
+  // ATAYLAB standart holatda O'CHIQ: sovg'a Pro chegirma va bonusga tegmasin
+  // (izoh `markReferralPaidTx` da).
+  const [premiumReferralPaid, setPremiumReferralPaid] = useState(false);
 
   // Sana kiritish maydoni uchun `YYYY-MM-DD` — MAHALLIY kun bo'yicha.
   //
@@ -2403,9 +2456,15 @@ try {
     setPremiumUntil(dayFromNow(30));
     setNoticeTouched(false);
     setPremiumNotify(true);
+    setPremiumReferralPaid(false);
     setPremiumModal({
       userId,
       name: label,
+      // Taklif chegirmasi hali faolmi — «Bu to'lov» belgisi shunga qarab chiqadi.
+      // `u` yo'q bo'lsa (ro'yxatda emas) belgi ko'rinmaydi: noma'lum holatda
+      // bonus va chegirmaga tegmaymiz.
+      referralDiscount: effectiveReferralDiscount(u),
+      referredBy: u?.referredBy || null,
       // `rawName` — XOM `displayName`. `label` bu yerda yaramaydi: u ismsiz
       // hisobda `shortId`/`email`/uid ga tushadi va o'sha qiymat murojaatga
       // kirib ketardi. Tozalash va rad etish qarori `cleanDisplayName` da.
@@ -2482,6 +2541,29 @@ try {
       logAdminAction('premium.grant', userId, sekin
         ? { gacha: premiumUntil, izoh: "yozuv sekin tushdi — qayta o'qib tasdiqlandi" }
         : { gacha: premiumUntil });
+
+      // «Bu to'lov» belgilangan — taklif to'lovi qayd etiladi (do'st chegirmasi
+      // yopiladi, taklif qiluvchiga bonus). `await` YO'Q — pastdagi xabar bilan
+      // bir xil sabab: Pro allaqachon berilgan, bu qo'shimcha qadam yiqilsa ham
+      // Pro'ga tegilmaydi, admin esa natijani alohida xabardan biladi.
+      const { referredBy } = premiumModal;
+      if (premiumReferralPaid && referredBy) {
+        asPromise(async () => {
+          const refId = await findReferralIdFor(userId, referredBy);
+          if (!refId) throw new Error('NOT_FOUND');
+          const done = await markReferralPaidTx(refId, referredBy);
+          logAdminAction('referral.mark_paid', refId, { referrerId: done.referrerId, bonus: 15000, orqali: 'premium.grant' });
+          applyReferralPaidLocally(refId, done);
+          showToast("Taklif to'lovi qayd etildi: chegirma yopildi, taklif qiluvchiga bonus yozildi", 'success');
+        }).catch((e) => {
+          if (e?.message === 'ALREADY_PAID') {
+            showToast("Bu taklif bo'yicha bonus allaqachon berilgan", 'info');
+          } else {
+            console.error('referral.mark_paid (premium.grant) xatosi:', e?.code, e?.message);
+            showToast("Pro berildi, lekin taklif to'lovi qayd etilmadi — «Takliflar» bo'limida «To'ladi» ni bosing", 'error');
+          }
+        });
+      }
 
       // ⚠️ `await` ATAYLAB YO'Q. Xabar yuborish — QO'SHIMCHA ish, Pro esa
       // allaqachon berilgan. Uni kutsak, "Pro berildi" toasti va oynaning
@@ -6382,6 +6464,30 @@ try {
               </div>
             </div>
 
+            {/* ── Taklif chegirmasi — «Bu to'lov» (2026-09-11) ──
+                Click o'chiq: to'lov operator orqali keladi va Pro shu oynadan
+                beriladi. Ilgari bu yo'l taklif to'lovini qayd etmasdi — do'st
+                uzaytirishda ham -50% ko'rardi, taklif qiluvchi bonus olmasdi
+                (69 taklifning birortasi «To'ladi» deb belgilanmagan edi).
+                Belgi ATAYLAB o'chiq: sovg'a Pro chegirma va bonusga tegmasin. */}
+            {premiumModal.referralDiscount > 0 && premiumModal.referredBy && (
+              <div className="admin-form-row" style={{ marginTop: 14 }}>
+                <label className="admin-label admin-row" style={{ gap: 8, cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={premiumReferralPaid}
+                    onChange={e => setPremiumReferralPaid(e.target.checked)}
+                  />
+                  Bu to'lov — {premiumModal.referralDiscount}% taklif chegirmasi bilan
+                </label>
+                <div className="admin-info-text" style={{ marginTop: 6 }}>
+                  Foydalanuvchi taklif havolasi orqali kelgan, chegirmasi hali ishlatilmagan.
+                  Belgilansa: chegirma yopiladi (keyingi uzaytirish to'liq narxda) va taklif
+                  qiluvchiga 15 000 so'm bonus yoziladi. Sovg'a Pro bo'lsa — belgilamang.
+                </div>
+              </div>
+            )}
+
             {/* ── Foydalanuvchiga ketadigan xabar ──
                 Ilgari admin yo'li JIM edi: odam Pro oladi-yu, bilmaydi.
                 Matn ko'rinib turadi va tahrirlanadi — «yubordim deb o'ylash»
@@ -6476,7 +6582,10 @@ try {
                       : (userCard.createdAt ? new Date(userCard.createdAt.seconds ? userCard.createdAt.seconds * 1000 : userCard.createdAt).toLocaleString('uz-UZ') : '—')],
                     ['Takliflar soni', userCard.referralCount ?? 0],
                     ['Referral bonusi', (userCard.referralBonus ?? 0).toLocaleString() + " so'm"],
-                    ['Chegirma', userCard.referralDiscount ? `${userCard.referralDiscount}%` : '—'],
+                    // Amaldagi foiz: muddati o'tgan yangi hisobda bazada hali 50 turishi mumkin
+                    ['Chegirma', effectiveReferralDiscount(userCard)
+                      ? `${effectiveReferralDiscount(userCard)}%`
+                      : (userCard.referralDiscount > 0 ? "muddati o'tgan" : '—')],
                     ['Oxirgi faollik', userCard.lastActiveAt
                       ? new Date(userCard.lastActiveAt).toLocaleString('uz-UZ')
                       : '—'],
