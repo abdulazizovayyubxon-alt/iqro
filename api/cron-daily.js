@@ -69,9 +69,9 @@ import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 import { getMessaging } from 'firebase-admin/messaging';
 import { verifySecret, extractSecret, ensureShortIdAdmin, getWeekId, getMonthId, cronHeartbeat } from './_shared.js';
 import { TEXT as SMS_TEXT, normalizePhone, sendQueue, activeProvider, segments, isSmsEnabled } from './_sms.js';
+import { effectiveReferralDiscount } from './_referralDiscount.js';
 
 const FREE_TRIAL_DAYS = 7;
-const URGENCY_DAYS = 3;
 
 // Bir ishga tushishda yuboriladigan xabarlar YUQORI CHEGARASI (push + SMS).
 // Ikki sabab: (1) Vercel funksiyasining vaqti cheklangan, (2) sozlamadagi
@@ -507,15 +507,14 @@ export default async function handler(req, res) {
 
     for (const userDoc of discountUsers.docs) {
       const data = userDoc.data();
-      if (!data.createdAt) continue;
 
-      const createdAt = data.createdAt?.toDate
-        ? data.createdAt.toDate()
-        : new Date(data.createdAt);
-      const daysSinceReg = Math.floor((now - createdAt) / 86400000);
-
-      // Trial + urgency davri o'tgan — chegirma bekor
-      if (daysSinceReg >= FREE_TRIAL_DAYS + URGENCY_DAYS) {
+      // Muddat qoidasi YAGONA joyda — api/_referralDiscount.js. Narx
+      // hisoblashda (PremiumModal, payment-webhook) muddat o'sha yerda
+      // tekshiriladi, ya'ni bu blok faqat bazani tartibga keltiradi.
+      // ⚠️ Eski shart (`daysSinceReg >= 10`) muddatsiz ESKI hisoblarni ham
+      // o'chirardi — cron tiklangan kuni va'da qilingan chegirmalar birdaniga
+      // yo'qolardi. `createdAt` siz hujjatga avvalgidek tegilmaydi.
+      if (effectiveReferralDiscount(data, now) === 0) {
         try {
           if (!dryRun) {
             await userDoc.ref.update({

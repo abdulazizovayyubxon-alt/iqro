@@ -33,6 +33,7 @@ import { initializeApp, cert, getApps } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import crypto from 'crypto';
 import { safeEqual } from './_shared.js';
+import { effectiveReferralDiscount } from './_referralDiscount.js';
 
 const REFERRAL_BONUS = 15000;   // so'm — har bir to'lagan do'st uchun
 const MAX_REFERRALS  = 5;        // A maksimal 5 ta bonus olishi mumkin
@@ -177,12 +178,14 @@ async function processReferralBonus(db, payingUserId) {
  * hech qachon ishonilmaydi. Formula PremiumModal bilan aynan bir xil:
  *   max(0, narx*(1-chegirma%) - bonus)
  * Chegirmalar STACK qilinmaydi (referral va promo'dan eng kattasi olinadi).
+ * Referral foizi MUDDATI bilan olinadi — qoidasi api/_referralDiscount.js da
+ * (muddati o'tgan maydonni nolga tushiradigan cron'ga tayanib bo'lmaydi).
  *
  * Ajratib olindi: sof funksiya → unit test bilan qoplangan
- * (src/__tests__/payment-price.test.js).
+ * (src/__tests__/payment-price.test.js, src/__tests__/referral-discount.test.js).
  */
-export function expectedAmount(planPrice, userData = {}) {
-  const referralPct = Number(userData.referralDiscount) || 0;
+export function expectedAmount(planPrice, userData = {}, now = Date.now()) {
+  const referralPct = effectiveReferralDiscount(userData, now);
   const promoPct = Number(userData.promoDiscount?.percent) || 0;
   // Ishonchsiz ma'lumotdan kelgan foizni 0..100 oralig'iga qisamiz —
   // manbaga qaramay 100%dan katta chegirma summani MANFIY qilib yubormaydi.

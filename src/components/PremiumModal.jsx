@@ -24,6 +24,8 @@ import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { redeemPromo, PROMO_ERRORS } from '../services/promo';
 import { generateClickUrl } from '../services/payment';
+// Server bilan BIR manba — izohi o'sha faylda (api/ ichida, lekin sof mantiq)
+import { effectiveReferralDiscount } from '../../api/_referralDiscount.js';
 import { AnalyticsEvents } from '../services/analytics';
 import { isPlayBuild, CLICK_ENABLED, PAYMENT_TG_URL } from '../config';
 import { useModalA11y } from '../hooks/useModalA11y';
@@ -169,8 +171,11 @@ const PremiumModal = ({ isOpen, onClose, source = 'unknown' }) => {
 
   const fmt = (n) => new Intl.NumberFormat('fr-FR').format(n).replace(',', ' ') + ' ' + i18n.t('premium.currency');
 
-  // Chegirmalar STACK qilinmaydi — referral va promo'dan eng kattasi qo'llanadi
-  const referralPercent = userData?.referralDiscount || 0;
+  // Chegirmalar STACK qilinmaydi — referral va promo'dan eng kattasi qo'llanadi.
+  // Referral foizi MUDDATI bilan — server (payment-webhook) bilan bir xil manba;
+  // aks holda muddati o'tgan chegirma ekranda turib qolardi (uni o'chirishi
+  // kerak bo'lgan cron ishlamagan — api/_referralDiscount.js izohi).
+  const referralPercent = effectiveReferralDiscount(userData);
   const promoPercent = userData?.promoDiscount?.percent || 0;
   const discountPercent = Math.max(referralPercent, promoPercent);
   const hasReferralDiscount = discountPercent > 0;

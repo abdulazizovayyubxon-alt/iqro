@@ -386,9 +386,10 @@ export const AuthProvider = ({ children }) => {
               // Muddat tugagach referral chegirmasi bekor qilinadi — LEKIN buni
               // mijoz YOZMAYDI. `referralDiscount` to'lov summasini belgilaydi,
               // shuning uchun u firestore.rules'da mijoz uchun bloklangan
-              // (audit 2026-08-05, 1-band). Server tomonida api/cron-daily.js:186
-              // har kuni muddati o'tgan chegirmalarni tozalaydi.
-              // Bu yerda faqat MAHALLIY ko'rinishni to'g'rilaymiz.
+              // (audit 2026-08-05, 1-band). Narxdagi AMALDAGI foiz bu yerdan
+              // emas, api/_referralDiscount.js dan olinadi (PremiumModal ham,
+              // payment-webhook ham) — muddat va eski hisoblar istisnosi o'sha
+              // yerda. Quyidagi maydonlar narx uchun ishlatilmaydi.
               if (trialInfo.status === 'expired' && data.referralDiscount > 0) {
                 trialInfo.hasReferralDiscount = false;
                 trialInfo.discountPercent = 0;
