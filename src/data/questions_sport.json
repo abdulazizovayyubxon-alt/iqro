@@ -304,9 +304,9 @@
     "updatedAt": "2026-08-29T08:41:06.079Z",
     "opts": [
       "A) Dars davomida o'quvchilar bevosita jismoniy mashqlarni bajargan vaqtning darsning umumiy vaqtiga (45 daqiqa) nisbati foizda hisoblanadi (me'yorda 60-70% dan kam bo'lmasligi lozim)",
-      "B) O'qituvchining darsda tushuntirgan vaqtining mashqlar soniga ko'paytmasi hisoblanadi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) O'quvchilarning darsdagi davomatining sport zali maydoniga nisbati orqali topiladi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) Darsning kirish qismida sarflangan vaqt hisobga olinadi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) O'qituvchining darsda tushuntirgan vaqtining mashqlar soniga ko'paytmasi hisoblanadi",
+      "C) O'quvchilarning darsdagi davomatining sport zali maydoniga nisbati orqali topiladi",
+      "D) Darsning kirish qismida sarflangan vaqt hisobga olinadi"
     ]
   },
   {
@@ -383,9 +383,9 @@
     "mnemonic": "Libero: maxsus himoya, podacha va bloksiz.",
     "opts": [
       "A) Orqa chiziqda (himoyada) o'ynaydi, to'pni o'yinga kiritish (podacha), to'siq qo'yish (blok) va to'r balandligidan yuqorida to'pga hujum zarbasi berish huquqiga ega emas",
-      "B) Har doim oldingi chiziqda hujumchi sifatida qatnashadi va jamoa sardori bo'ladi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) To'pni o'yinga kiritish (podacha) vazifasini bajaradi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) Maydonda istalgan paytda to'r orqali sakrab blok qo'yishi shart jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) Har doim oldingi chiziqda hujumchi sifatida qatnashadi va jamoa sardori bo'ladi",
+      "C) To'pni o'yinga kiritish (podacha) vazifasini bajaradi",
+      "D) Maydonda istalgan paytda to'r orqali sakrab blok qo'yishi shart"
     ],
     "createdAt": "2026-06-21T08:32:35.292Z",
     "topicId": 30
@@ -476,9 +476,9 @@
     "correct": 0,
     "opts": [
       "A) To'pni o'yinga kiritish uchun 5 soniya, orqa maydondan oldinga olib o'tish uchun 8 soniya, to'liq hujumni yakunlash uchun 24 soniya va raqib jarima maydonchasida harakatsiz turish uchun 3 soniya beriladi",
-      "B) Hujumni yakunlash uchun 60 soniya, to'pni olib o'tish uchun 20 soniya beriladi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) To'pni o'yinga kiritishga 10 soniya, raqib zonasida turishga 15 soniya ajratiladi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) Basketbolda hech qanday vaqt cheklovi mavjud emas jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) Hujumni yakunlash uchun 60 soniya, to'pni olib o'tish uchun 20 soniya beriladi",
+      "C) To'pni o'yinga kiritishga 10 soniya, raqib zonasida turishga 15 soniya ajratiladi",
+      "D) Basketbolda hech qanday vaqt cheklovi mavjud emas"
     ],
     "topicId": 26,
     "createdAt": "2026-06-21T08:32:19.115Z",
@@ -815,9 +815,9 @@
     "q": "Sport fiziologiyasida 'Superkompensatsiya' (o'ta tiklanish) fazasining mohiyati va uning mashg'ulot samaradorligidagi roli nima?",
     "opts": [
       "A) Jismoniy yuklamadan keyin organizm tiklanish jarayonida energiya va funksional imkoniyatlar dastlabki darajadan ham yuqoriroq darajaga ko'tarilishi davri bo'lib, keyingi yuklama aynan shu cho'qqi paytida berilishi kerak",
-      "B) Mashg'ulot davomida mushaklar to'liq kuchsizlanib, hech qachon tiklanmaydigan holat jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) Uxlash vaqtida yurak urishi to'xtash holati jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) O'quvchining jismoniy sifatlari pasayib ketish jarayoni jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) Mashg'ulot davomida mushaklar to'liq kuchsizlanib, hech qachon tiklanmaydigan holat",
+      "C) Uxlash vaqtida yurak urishi to'xtash holati",
+      "D) O'quvchining jismoniy sifatlari pasayib ketish jarayoni"
     ],
     "updatedAt": "2026-08-29T08:41:06.081Z",
     "correct": 0,
@@ -962,9 +962,9 @@
     "mnemonic": "Estafeta: 20 metrli uzatish zonasi, maksimal tezlikda.",
     "opts": [
       "A) Tayoqcha topshirish zonasi 20 metr bo'lib (10 m tayyorgarlik hududi bilan), topshirish va qabul qilish aynan shu belgilangan zona ichida amalga oshirilishi shart",
-      "B) Zona uzunligi 5 metr bo'lib, faqat to'xtab turgan holda topshiriladi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) Tayoqchani butun masofa bo'ylab istalgan joyda irg'itib uzatish mumkin jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) Tayoqcha faqat marra chizig'ida topshiriladi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) Zona uzunligi 5 metr bo'lib, faqat to'xtab turgan holda topshiriladi",
+      "C) Tayoqchani butun masofa bo'ylab istalgan joyda irg'itib uzatish mumkin",
+      "D) Tayoqcha faqat marra chizig'ida topshiriladi"
     ],
     "correct": 0,
     "explanation": "4x100 m estafetada tayoqcha 20 metrli uzatish koridorida yuguruvchilarning maksimal tezligida, orqaga qaramasdan qabul qiluvchining qo'liga aniq topshirilishi lozim."
@@ -1039,9 +1039,9 @@
     "q": "Futbol o'yinida to'p o'yinda bo'lgan paytda 'O'yindan tashqari holat' (Offsayd) qaysi vaziyatda hisoblanmaydi va o'yin to'xtatilmaydi?",
     "opts": [
       "A) O'yinchi to'pni to'g'ridan-to'g'ri burchak to'pidan (uglovoy), autdan (yon chiziqdan to'p kiritish) yoki darvozadan tepish (ot vorot) zarbasidan qabul qilib olganda",
-      "B) O'yinchi raqib darvozaboni bilan yakkama-yakka qolganda har qanday holatda jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) Hujumchi raqib maydoni markazida turganida jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) To'p darvoza ustuniga tegib qaytganida jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) O'yinchi raqib darvozaboni bilan yakkama-yakka qolganda har qanday holatda",
+      "C) Hujumchi raqib maydoni markazida turganida",
+      "D) To'p darvoza ustuniga tegib qaytganida"
     ],
     "explanation": "Futbol qoidalariga ko'ra, autdan, burchak to'pidan va darvozadan to'p kiritilganda offsayd holati qayd etilmaydi.",
     "mnemonic": "Offsayd yo'q: Aut, Burchak, Darvozadan tepish.",
@@ -1054,9 +1054,9 @@
     "id": "1RNVLaKhrRTUCqsfo2XX",
     "opts": [
       "A) Dastlab 'Birinchi-ikkinchi hisoblang!' buyrug'i beriladi, so'ng 'Ikki qatorga — saflan!' buyrug'ida 2-raqamdagilar chap oyoqda orqaga, o'ng oyoqda o'ngga qadam tashlab 1-raqamdagilar orqasiga turadi",
-      "B) Barcha o'quvchilar bir vaqtda oldinga qadam tashlaydi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) Birinchi raqamdagilar orqaga chekinadi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) Saflanish faqat yugurish bilan amalga oshiriladi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) Barcha o'quvchilar bir vaqtda oldinga qadam tashlaydi",
+      "C) Birinchi raqamdagilar orqaga chekinadi",
+      "D) Saflanish faqat yugurish bilan amalga oshiriladi"
     ],
     "mnemonic": "Ikki qatorga saflanish: 1-2 hisob, 2-lar orqaga-o'ngga.",
     "updatedAt": "2026-08-29T08:41:06.082Z",
@@ -1206,9 +1206,9 @@
     "correct": 0,
     "opts": [
       "A) Raqib darvozaga to'g'ridan-to'g'ri gol urish ehtimoli yuqori bo'lgan aniq vaziyatni qo'pol yoki qoidabuzarlik bilan to'xtatganda belgilanadi; zarba beruvchi 7 metrli chiziqni bosmasligi kerak",
-      "B) Har qanday aut to'pi chiziqdan chiqqanda belgilanadi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) Darvozabon to'pni ushlagani uchun belgilanadi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) Maydonda 3 ta pas berilgandan so'ng darhol belgilanadi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) Har qanday aut to'pi chiziqdan chiqqanda belgilanadi",
+      "C) Darvozabon to'pni ushlagani uchun belgilanadi",
+      "D) Maydonda 3 ta pas berilgandan so'ng darhol belgilanadi"
     ],
     "q": "Gandbol o'yinida 7 metrli jarima to'pi (penalti) qaysi holatda belgilanadi va uni bajarishda qanday cheklov mavjud?"
   },
@@ -1349,9 +1349,9 @@
     "q": "O'quvchilarda egiluvchanlik (bo'g'imlarning harakatchanligi) jismoniy sifatini rivojlantirishda qaysi metodik qoidaga qat'iy rioya qilinishi shart?",
     "opts": [
       "A) Mashqlar oldidan mushak va paylar yaxshilab qizdirilishi (razminka), mashqlar og'riq paydo bo'lmaydigan amplituda chegarasida va harakatlar ketma-ketligida bajarilishi kerak",
-      "B) Mashqlarni qizdiruvchi mashqlarsiz to'g'ridan-to'g'ri sovuq mushaklarda maksimal kuch bilan bajarish jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) Og'ir shtanga ko'tarish orqali egiluvchanlikni oshirish jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) Egiluvchanlik mashqlarini haftada faqat 1 marta 1 daqiqa bajarish jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) Mashqlarni qizdiruvchi mashqlarsiz to'g'ridan-to'g'ri sovuq mushaklarda maksimal kuch bilan bajarish",
+      "C) Og'ir shtanga ko'tarish orqali egiluvchanlikni oshirish",
+      "D) Egiluvchanlik mashqlarini haftada faqat 1 marta 1 daqiqa bajarish"
     ],
     "updatedAt": "2026-08-29T08:41:06.082Z",
     "correct": 0,
@@ -1427,9 +1427,9 @@
     "updatedAt": "2026-08-29T08:41:06.082Z",
     "opts": [
       "A) Zalda bir nechta 'stansiyalar' (nuqtalar) tashkil etilib, o'quvchilar har bir stansiyada turli mushak guruhlariga mo'ljallangan mashqlarni navbatma-navbat, belgilangan vaqt yoki takrorlashda bajarib chiqadilar",
-      "B) Barcha o'quvchilar bir joyda to'xtab faqat bitta mashqni 45 daqiqa davomida takrorlaydilar jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) O'quvchilar zal bo'ylab faqat erkin yuradilar jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) Musobaqa o'tkazilib, yutqazganlar zaldan chiqariladi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) Barcha o'quvchilar bir joyda to'xtab faqat bitta mashqni 45 daqiqa davomida takrorlaydilar",
+      "C) O'quvchilar zal bo'ylab faqat erkin yuradilar",
+      "D) Musobaqa o'tkazilib, yutqazganlar zaldan chiqariladi"
     ],
     "mnemonic": "Doiraviy metod: stansiyalar, navbatma-navbat mushaklar yuklamasi.",
     "createdAt": "2026-06-21T08:32:19.129Z",
@@ -1531,9 +1531,9 @@
     "correct": 0,
     "opts": [
       "A) O'quvchining boshini oldinga biroz engashtirish, burun kataklarini 3-5 daqiqa qisib turish va burun ustiga sovuq kompress (muz) qo'yish",
-      "B) O'quvchining boshini orqaga qattiq tashlab, yotqizib qo'yish jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) O'quvchini darhol yugurtirish va issiq choy ichirish jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) Burunga issiq mato bosish jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) O'quvchining boshini orqaga qattiq tashlab, yotqizib qo'yish",
+      "C) O'quvchini darhol yugurtirish va issiq choy ichirish",
+      "D) Burunga issiq mato bosish"
     ]
   },
   {
@@ -1692,9 +1692,9 @@
     "category": "sport",
     "opts": [
       "A) Yugurib kelish yoyi kavisli bo'lib, plankadan chalqancha (orqa bilan) oshib o'tiladi va yelka bilan maxsus xavfsiz matlarga qo'niladi",
-      "B) Plankadan to'g'ridan-to'g'ri qorin bilan oshib o'tiladi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) Sakrash ikki oyoqda depsinib bajariladi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) O'quvchi sakrash vaqtida plankani qo'li bilan ushlab o'tadi jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) Plankadan to'g'ridan-to'g'ri qorin bilan oshib o'tiladi",
+      "C) Sakrash ikki oyoqda depsinib bajariladi",
+      "D) O'quvchi sakrash vaqtida plankani qo'li bilan ushlab o'tadi"
     ]
   },
   {
@@ -1901,9 +1901,9 @@
     "correct": 0,
     "opts": [
       "A) 'Halol' (sof g'alaba), 'Yombosh' (yarim g'alaba, ikkita yombosh halol bo'ladi), 'Chala' (kichik ball)",
-      "B) 'Ippon', 'Vaza-ari', 'Yuko' jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) 'Gol', 'Offsayd', 'Aut' jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) 'Nokaut', 'Nokdaun', 'Ochko' jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) 'Ippon', 'Vaza-ari', 'Yuko'",
+      "C) 'Gol', 'Offsayd', 'Aut'",
+      "D) 'Nokaut', 'Nokdaun', 'Ochko'"
     ]
   },
   {
@@ -2842,9 +2842,9 @@
     "mnemonic": "Eng tez suzish: Krol (erkin usul).",
     "opts": [
       "A) Krol (erkin suzish usuli) — qo'llarning navbatma-navbat doiraviy eshishi va oyoqlarning uzluksiz tepishi",
-      "B) Brass (qurbaqasimon suzish) jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) Batterflyay (delfinsimon suzish) jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) Chalqancha suzish jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) Brass (qurbaqasimon suzish)",
+      "C) Batterflyay (delfinsimon suzish)",
+      "D) Chalqancha suzish"
     ],
     "topicId": 30,
     "updatedAt": "2026-08-29T08:41:06.083Z",
@@ -3036,9 +3036,9 @@
     "correct": 0,
     "opts": [
       "A) Kutilmagan signallar bilan yo'nalishni tez o'zgartiruvchi harakatli o'yinlar, to'siqlardan oshib o'tish estafetalari va akrobatik elementlar",
-      "B) Bir joyda turib og'ir tosh ko'tarish jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) Bir tekis tezlikda 5000 metrga yugurish jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) Partada o'tirib shaxmat qoidalarini yodlash jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) Bir joyda turib og'ir tosh ko'tarish",
+      "C) Bir tekis tezlikda 5000 metrga yugurish",
+      "D) Partada o'tirib shaxmat qoidalarini yodlash"
     ],
     "explanation": "Chaqqonlik kutilmagan vaziyatlarda harakatlarni tez va aniq qayta qura olish qobiliyatidir. U dinamik o'yinlar va harakat koordinatsiyasi orqali rivojlanadi.",
     "createdAt": "2026-06-21T08:32:29.787Z",
@@ -3069,9 +3069,9 @@
     "updatedAt": "2026-08-29T08:41:06.083Z",
     "opts": [
       "A) Organizmning barcha a'zolari va tizimlarini (yurak-qon tomir, nafas, harakat-tayanch apparati) asosiy qismdagi yuqori jismoniy yuklamalarga bosqichma-bosqich tayyorlash va jarohatlarning oldini olish",
-      "B) O'quvchilarni maksimal darajada toliqtirish va charchatish jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "C) Nazariy ma'ruza o'qish jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq",
-      "D) O'quvchilarga to'g'ridan-to'g'ri baho qo'yib darsni tugatish jismoniy tarbiya va sport mashg'ulotlari qoidalariga muvofiq"
+      "B) O'quvchilarni maksimal darajada toliqtirish va charchatish",
+      "C) Nazariy ma'ruza o'qish",
+      "D) O'quvchilarga to'g'ridan-to'g'ri baho qo'yib darsni tugatish"
     ],
     "category": "sport",
     "topicId": 30,

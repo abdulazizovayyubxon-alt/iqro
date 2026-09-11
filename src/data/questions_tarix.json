@@ -27,9 +27,9 @@
     "upgradedLevel": "toifa_pro",
     "opts": [
       "A) Farg'onadagi Selung'ur g'ori — ilk odam qoldiqlari (fergantrop); Boysundagi Teshiktosh g'ori — neandertal bola suyagi; Zarautsoy darasi — mezolit davri qoyatosh suratlari",
-      "B) Sopollitepa — ilk temir qurollar; Zamonbobo — neolit ovchilari davri tarixiy solnomalari va manbalariga muvofiq",
-      "C) Afrosiyob — paleolit manzilgohi; Qanqa — mezolit makoni davri tarixiy solnomalari va manbalariga muvofiq",
-      "D) Dalvarzintepa — tosh davri kulolligi; Kampirtepa — eneolit davri tarixiy solnomalari va manbalariga muvofiq"
+      "B) Sopollitepa — ilk temir qurollar; Zamonbobo — neolit ovchilari",
+      "C) Afrosiyob — paleolit manzilgohi; Qanqa — mezolit makoni",
+      "D) Dalvarzintepa — tosh davri kulolligi; Kampirtepa — eneolit"
     ]
   },
   {
@@ -38,9 +38,9 @@
     "mnemonic": "Makedonskiyga qarshi 3 yillik kurash = Spitamen jasorati (mil.avv. 329-327).",
     "opts": [
       "A) Spitamen (Baqtriya va So'g'd zodagoni, Poliperxon va Krater qo'shinlarini mag'lub etgan)",
-      "B) Shiroq (cho'pon qahramon) davri tarixiy solnomalari va manbalariga muvofiq",
-      "C) To'maris (Massagetlar malikasi) davri tarixiy solnomalari va manbalariga muvofiq",
-      "D) Oksyart (So'g'd qoyasi mudofaachisi) davri tarixiy solnomalari va manbalariga muvofiq"
+      "B) Shiroq (cho'pon qahramon)",
+      "C) To'maris (Massagetlar malikasi)",
+      "D) Oksyart (So'g'd qoyasi mudofaachisi)"
     ],
     "topicId": 21,
     "explanation": "Spitamen mil.avv. 329-327 yillarda Maroqanda (Samarqand) va Politimet (Zarafshon) vodiysida yunon-makedon bosqinchilariga qarshi partizanlik urushi olib borgan va dushmanga qaqshatqich zarbalar bergan.",
@@ -99,9 +99,9 @@
     "id": "04W46PyjYvOvRjUD3brj",
     "opts": [
       "A) Parvon jangi (G'azna yaqinida Shiki Xutuxu no'yon boshchiligidagi mo'g'ul qo'shini butkul tor-mor etilgan)",
-      "B) Valiyon jangi davri tarixiy solnomalari va manbalariga muvofiq",
-      "C) Sind daryosi bo'yidagi jang davri tarixiy solnomalari va manbalariga muvofiq",
-      "D) Qatvon jangi davri tarixiy solnomalari va manbalariga muvofiq"
+      "B) Valiyon jangi",
+      "C) Sind daryosi bo'yidagi jang",
+      "D) Qatvon jangi"
     ],
     "explanation": "1221-yil bahorida Parvon jangida Jaloliddin Manguberdi Chingizxon no'yoni Shiki Xutuxu qo'shinini qaqshatqich mag'lubiyatga uchratib, Chingizxon qo'shinining yengilmasligi haqidagi afsonani yo'qqa chiqargan.",
     "upgradedLevel": "toifa_pro",
@@ -170,9 +170,9 @@
     "upgradedLevel": "toifa_pro",
     "opts": [
       "A) 1370-yil 9-aprelda Balx qurultoyida Movaronnahrning Oliy hukmdori deb e'lon qilingan; 1395-yil Terek jangida To'xtamishxonni, 1402-yil Anqara jangida Boyazid Yildirimni mag'lub etgan",
-      "B) 1365-yil Balx jangi; 1411-yil Anqara jangi davri tarixiy solnomalari va manbalariga muvofiq",
-      "C) 1380-yil Kulikovo jangi g'olibi; 1405-yil Oltin O'rdani egallagan davri tarixiy solnomalari va manbalariga muvofiq",
-      "D) 1391-yil Qunduzcha jangida Xitoy imperatorini yenggan davri tarixiy solnomalari va manbalariga muvofiq"
+      "B) 1365-yil Balx jangi; 1411-yil Anqara jangi",
+      "C) 1380-yil Kulikovo jangi g'olibi; 1405-yil Oltin O'rdani egallagan",
+      "D) 1391-yil Qunduzcha jangida Xitoy imperatorini yenggan"
     ],
     "updatedAt": "2026-08-28T17:25:21.820Z"
   },
@@ -196,9 +196,9 @@
     "mnemonic": "Mirzo Ulug'bek = Samarqand rasadxonasi, 'Ziji jadidi Ko'ragoniy' (1018 yulduz).",
     "opts": [
       "A) 'Ziji jadidi Ko'ragoniy' (1018 ta qo'zg'almas yulduzning aniq koordinatalari va 1 yillik astronomik vaqt 365 kun 6 soat 10 daqiqa 8 soniya aniqlikda hisoblangan)",
-      "B) 'Al-Qonun al-Mas'udiy' davri tarixiy solnomalari va manbalariga muvofiq davridagi asosiy tarixiy ozgarishlar bilan",
-      "C) 'Kitob surat al-arz' davri tarixiy solnomalari va manbalariga muvofiq davridagi asosiy tarixiy ozgarishlar bilan",
-      "D) 'Astronomiya asoslari' davri tarixiy solnomalari va manbalariga muvofiq davridagi asosiy tarixiy ozgarishlar bilan"
+      "B) 'Al-Qonun al-Mas'udiy' davridagi asosiy tarixiy ozgarishlar bilan",
+      "C) 'Kitob surat al-arz' davridagi asosiy tarixiy ozgarishlar bilan",
+      "D) 'Astronomiya asoslari' davridagi asosiy tarixiy ozgarishlar bilan"
     ],
     "upgradedLevel": "toifa_pro",
     "createdAt": "2026-06-23T02:09:40.554Z",
@@ -236,9 +236,9 @@
     "category": "tarix",
     "opts": [
       "A) Gandimiyon shartnomasi (Xonlik Amudaryoning o'ng qirg'og'idagi yerlardan voz kechdi va 2.2 million rubl tovon to'lash majburiyatini oldi)",
-      "B) Zirabuloq shartnomasi davri tarixiy solnomalari va manbalariga muvofiq",
-      "C) Boshsodiq shartnomasi davri tarixiy solnomalari va manbalariga muvofiq",
-      "D) Peterburg sulhi davri tarixiy solnomalari va manbalariga muvofiq"
+      "B) Zirabuloq shartnomasi",
+      "C) Boshsodiq shartnomasi",
+      "D) Peterburg sulhi"
     ],
     "mnemonic": "Gandimiyon shartnomasi (1873) = Xiva xonligining Rossiya qaramligiga tushishi."
   },
@@ -324,9 +324,9 @@
     "id": "0Hl9AmdAnY55dLScrfwz",
     "opts": [
       "A) Sobir Rahimov (100-gvardiyachi o'qchi diviziya qo'mondoni, Belorussiya va Polshani ozod etishda qahramonlik ko'rsatgan)",
-      "B) Mamadali Topivoldiyev davri tarixiy solnomalari va manbalariga muvofiq",
-      "C) Ahmadjon Shukurov davri tarixiy solnomalari va manbalariga muvofiq",
-      "D) Qo'chqor Turdiyev davri tarixiy solnomalari va manbalariga muvofiq"
+      "B) Mamadali Topivoldiyev",
+      "C) Ahmadjon Shukurov",
+      "D) Qo'chqor Turdiyev"
     ],
     "explanation": "General-mayor Sobir Rahimov — o'zbek sarkardasi, Ikkinchi jahon urushida diviziya qo'mondoni bo'lib xizmat qilgan va Gdansk shahri uchun janglarda qahramonlarcha halok bo'lgan.",
     "q": "Ikkinchi jahon urushida ko'rsatgan yuksak jasorati va harbiy qo'mondonlik mahorati uchun 'O'zbek xalqining qahramon generali' deb e'tirof etilgan, gvardiya general-mayori kim?",
@@ -488,10 +488,10 @@
     "createdAt": "2026-06-11T17:34:51.321Z",
     "q": "Ta'lim jarayonida o'quvchiga o'z o'rganish natijalarini yaxshilash, xatolarini tuzatish va qaysi yo'nalishda harakat qilish kerakligini tushuntiruvchi pedagogik ma'lumot nima deb ataladi?",
     "opts": [
-      "A) Yakuniy ball davri tarixiy solnomalari va manbalariga muvofiq",
+      "A) Yakuniy ball",
       "B) Teskari aloqa (Feedback / Qayta aloqa)",
-      "C) Imtihon hisoboti davri tarixiy solnomalari va manbalariga muvofiq",
-      "D) Baholash reytingi davri tarixiy solnomalari va manbalariga muvofiq"
+      "C) Imtihon hisoboti",
+      "D) Baholash reytingi"
     ],
     "correct": 1,
     "topicId": 22,
@@ -7315,10 +7315,10 @@
     "id": "7B8yqttGikkk7kHGp5WE",
     "createdAt": "2026-06-11T17:34:51.321Z",
     "opts": [
-      "A) Al-Xorazmiyning tug'ilgan va vafot etgan yillarini yodlab aytib berish davri tarixiy solnomalari va manbalariga muvofiq",
-      "B) Al-Xorazmiy asarlarining arab tilidagi nomlarini daftarga ko'chirib yozish davri tarixiy solnomalari va manbalariga muvofiq",
+      "A) Al-Xorazmiyning tug'ilgan va vafot etgan yillarini yodlab aytib berish",
+      "B) Al-Xorazmiy asarlarining arab tilidagi nomlarini daftarga ko'chirib yozish",
       "C) Al-Xorazmiy tomonidan kashf etilgan o'nlik sanoq tizimi va algebra tamoyillarining bugungi kunda AKT va hisoblash texnikasiga ko'rsatgan uzoq muddatli ta'sirini baholash",
-      "D) Uning yashab ijod etgan shaharlarini xaritadan topib ko'rsatish davri tarixiy solnomalari va manbalariga muvofiq"
+      "D) Uning yashab ijod etgan shaharlarini xaritadan topib ko'rsatish"
     ],
     "category": "tarix",
     "q": "Tarix darsida \"Al-Xorazmiyning matematika faniga qo'shgan hissasi\" mavzusini o'tishda o'qituvchi o'quvchilarda tarixiy ahamiyat (historical significance) ko'nikmasini rivojlantirish uchun qanday topshiriq berishi kerak?",
@@ -9980,9 +9980,9 @@
     "correct": 0,
     "opts": [
       "A) \"Galereya bo'ylab sayr\" (Gallery Walk) metodi",
-      "B) \"Sinkveyn\" metodi davri tarixiy solnomalari va manbalariga muvofiq",
-      "C) \"Bumerang\" metodi davri tarixiy solnomalari va manbalariga muvofiq",
-      "D) \"Karusel\" metodi davri tarixiy solnomalari va manbalariga muvofiq"
+      "B) \"Sinkveyn\" metodi",
+      "C) \"Bumerang\" metodi",
+      "D) \"Karusel\" metodi"
     ],
     "explanation": "\"Galereya bo'ylab sayr\" metodida o'quvchilar guruh ishlari natijalarini devorlarga osib, ularni ko'rgazma kabi aylanib o'rganadilar va yozma munosabat bildiradilar.",
     "category": "tarix",
@@ -11952,9 +11952,9 @@
     "q": "Tarix darsida o'qituvchi o'quvchilarda \"Tarixiy dalillar bilan ishlash\" ko'nikmasini rivojlantirmoqchi. Qaysi topshiriq bunga xizmat qiladi?",
     "opts": [
       "A) O'quvchilarga bitta tarixiy voqea bo'yicha berilgan ikki xil qarashga ega matnlarni taqdim etish va ulardan qaysi faktlar ishonchli dalillar bilan isbotlanganligini aniqlashni topshirish",
-      "B) Mavzu bo'yicha tayyor inshoni sinfda yoddan aytib berish davri tarixiy solnomalari va manbalariga muvofiq",
-      "C) Darslikdagi savollarga faqat ha yoki yo'q shaklida javob berish topshirig'ini berish davri tarixiy solnomalari va manbalariga muvofiq",
-      "D) Doskaga yozilgan barcha tarixiy sanalarni daftarga chiroyli husnixat bilan ko'chirish va yodlash davri tarixiy solnomalari va manbalariga muvofiq"
+      "B) Mavzu bo'yicha tayyor inshoni sinfda yoddan aytib berish",
+      "C) Darslikdagi savollarga faqat ha yoki yo'q shaklida javob berish topshirig'ini berish",
+      "D) Doskaga yozilgan barcha tarixiy sanalarni daftarga chiroyli husnixat bilan ko'chirish va yodlash"
     ],
     "correct": 0,
     "createdAt": "2026-06-11T17:34:51.321Z",
@@ -13495,9 +13495,9 @@
     "q": "Tarixni o'rganishda o'tmishdagi odamlarning his-tuyg'ulari, qadriyatlari va qarorlarini ularning o'z davri kontekstidan kelib chiqib tushunishga intilish tushunchasi nima deb ataladi?",
     "category": "tarix",
     "opts": [
-      "A) Tarixiy xronologiya davri tarixiy solnomalari va manbalariga muvofiq",
-      "B) Tarixiy anaxronizm davri tarixiy solnomalari va manbalariga muvofiq",
-      "C) Tarixiy interpretatsiya (talqin) davri tarixiy solnomalari va manbalariga muvofiq",
+      "A) Tarixiy xronologiya",
+      "B) Tarixiy anaxronizm",
+      "C) Tarixiy interpretatsiya (talqin)",
       "D) Tarixiy nuqtai nazar (Historical perspective) / Empathic understanding"
     ]
   },
@@ -27126,9 +27126,9 @@
     "correct": 0,
     "opts": [
       "A) Matnlarning qaysi biri Amir Temurning bevosita o'ziga tegishli (birlamchi manba) va qaysi biri keyingi tahlil (ikkilamchi manba) ekanligini aniqlash va farqlash",
-      "B) Har ikki matnni so'zma-so'z yodlash va dars oxirida aytib berish davri tarixiy solnomalari va manbalariga muvofiq",
-      "C) Zamonaviy tarixchining sharhini o'qib, o'tmish matnini tashlab yuborish davri tarixiy solnomalari va manbalariga muvofiq",
-      "D) Matnlarni daftarga hech qanday o'zgarishsiz ko'chirish davri tarixiy solnomalari va manbalariga muvofiq"
+      "B) Har ikki matnni so'zma-so'z yodlash va dars oxirida aytib berish",
+      "C) Zamonaviy tarixchining sharhini o'qib, o'tmish matnini tashlab yuborish",
+      "D) Matnlarni daftarga hech qanday o'zgarishsiz ko'chirish"
     ],
     "topicId": 22,
     "q": "Tarix darsida \"Amir Temur tuzuklari\" asaridan olingan davlat boshqaruvi haqidagi parcha bilan zamonaviy tarixchining ushbu asar haqidagi sharhini o'quvchilarga tarqatgan o'qituvchi, ularga qanday topshiriq berishi manbalarni farqlash ko'nikmasini oshiradi?",
@@ -34410,10 +34410,10 @@
   {
     "id": "XFIE8pUMoPsn9YrtCbSZ",
     "opts": [
-      "A) \"Svetofor\" usulidan davri tarixiy solnomalari va manbalariga muvofiq",
+      "A) \"Svetofor\" usulidan",
       "B) \"Mushtdan beshgacha\" (Fist to five) shakllantiruvchi baholash usulidan",
-      "C) \"Chiqish chiptasi\" (Exit ticket) usulidan davri tarixiy solnomalari va manbalariga muvofiq",
-      "D) Jamlovchi test usulidan davri tarixiy solnomalari va manbalariga muvofiq"
+      "C) \"Chiqish chiptasi\" (Exit ticket) usulidan",
+      "D) Jamlovchi test usulidan"
     ],
     "q": "Mavzuni tushuntirish jarayonida o'qituvchi o'quvchilardan tushunish darajasini qo'l barmoqlari orqali ko'rsatishni so'radi: musht - \"hech narsa tushunmadim\", besh barmoq - \"to'liq tushundim va tushuntira olaman\". O'qituvchi qaysi usuldan foydalandi?",
     "topicId": 22,
@@ -34639,10 +34639,10 @@
     "topicId": 22,
     "correct": 1,
     "opts": [
-      "A) Ilmiy integratsiyalashgan ta'lim davri tarixiy solnomalari va manbalariga muvofiq",
+      "A) Ilmiy integratsiyalashgan ta'lim",
       "B) Mahalliy o'lkashunoslik materiallaridan foydalanish (Tarixiy o'lkashunoslik)",
-      "C) Global tarixiy tahlil metodi davri tarixiy solnomalari va manbalariga muvofiq",
-      "D) Modellashtirilgan tarixiy yondashuv davri tarixiy solnomalari va manbalariga muvofiq"
+      "C) Global tarixiy tahlil metodi",
+      "D) Modellashtirilgan tarixiy yondashuv"
     ],
     "q": "O'qituvchi \"Qadimgi Xorazm davlati\" mavzusini o'tishda darsni o'sha hududdagi qadimgi Tuproqqal'a yoki Qo'yqirilganqal'a yodgorliklariga oid arxeologik topilmalar va mahalliy muzey materiallari bilan bog'lab o'tdi. Bu metodologik jihatdan qanday ataladi?",
     "category": "tarix"
@@ -39669,9 +39669,9 @@
     "category": "tarix",
     "opts": [
       "A) Hujjatdagi atamalar, tushunchalar va xarita ma'lumotlarining da'vo qilinayotgan tarixiy davr (kontekst) dunyoqarashi, tili va geografik bilimlari darajasiga mos kelmasligini tahlil qilish",
-      "B) Hujjatning darslik muqovasi bilan mos kelishini solishtirish davri tarixiy solnomalari va manbalariga muvofiq",
-      "C) Hujjatning qay darajada eski va sarg'aygan qog'ozda yozilganligiga e'tibor berish davri tarixiy solnomalari va manbalariga muvofiq",
-      "D) Hujjatni taqdim etgan o'qituvchining shaxsiy fikrini shubhasiz haqiqat deb qabul qilish davri tarixiy solnomalari va manbalariga muvofiq"
+      "B) Hujjatning darslik muqovasi bilan mos kelishini solishtirish",
+      "C) Hujjatning qay darajada eski va sarg'aygan qog'ozda yozilganligiga e'tibor berish",
+      "D) Hujjatni taqdim etgan o'qituvchining shaxsiy fikrini shubhasiz haqiqat deb qabul qilish"
     ],
     "createdAt": "2026-06-11T17:34:51.321Z",
     "topicId": 22,
@@ -42351,10 +42351,10 @@
     "createdAt": "2026-06-11T17:34:51.321Z",
     "category": "tarix",
     "opts": [
-      "A) Darslik oxiridagi barcha qadimgi sanalar ro'yxatini alohida-alohida 10 marta ko'chirtirish davri tarixiy solnomalari va manbalariga muvofiq",
+      "A) Darslik oxiridagi barcha qadimgi sanalar ro'yxatini alohida-alohida 10 marta ko'chirtirish",
       "B) Miloddan avvalgi III mingyillikda paydo bo'lgan Shumer davlati bilan miloddan avvalgi I mingyillikdagi Baqtriya davlati o'rtasidagi yillar masofasini aniqlash va vaqt o'qi bo'ylab joylashtirish",
-      "C) Davlatlar hukmdorlarining taxtga o'tirgan yillarini darslikdan shunchaki o'qib berish davri tarixiy solnomalari va manbalariga muvofiq",
-      "D) Miloddan avvalgi yillarni hisoblash qoidalarini darsdan butunlay chiqarib yuborish davri tarixiy solnomalari va manbalariga muvofiq"
+      "C) Davlatlar hukmdorlarining taxtga o'tirgan yillarini darslikdan shunchaki o'qib berish",
+      "D) Miloddan avvalgi yillarni hisoblash qoidalarini darsdan butunlay chiqarib yuborish"
     ],
     "correct": 1,
     "topicId": 22
@@ -42903,9 +42903,9 @@
     "id": "f0IXOURvD5ViMEMG5jQz",
     "q": "Dars davomida o'quvchilar guruh ishidan individual topshiriqlarni bajarishga o'tishda doimiy ravishda shovqin solmoqdalar va vaqt yo'qotilmoqda. O'qituvchi dars boshqaruvini yaxshilash uchun qanday yo'l tutishi kerak?",
     "opts": [
-      "A) Sinf tinchlanmaguncha darsni to'xtatib, o'quvchilarga baqirib turish davri tarixiy solnomalari va manbalariga muvofiq",
-      "B) Guruh ishini butunlay taqiqlash va faqat individual ma'ruzalarga o'tish davri tarixiy solnomalari va manbalariga muvofiq",
-      "C) Shovqin qilgan o'quvchilarni dars oxirigacha sinfdan tashqariga chiqarib yuborish davri tarixiy solnomalari va manbalariga muvofiq",
+      "A) Sinf tinchlanmaguncha darsni to'xtatib, o'quvchilarga baqirib turish",
+      "B) Guruh ishini butunlay taqiqlash va faqat individual ma'ruzalarga o'tish",
+      "C) Shovqin qilgan o'quvchilarni dars oxirigacha sinfdan tashqariga chiqarib yuborish",
       "D) Faoliyatlar almashinuvi uchun aniq vizual yoki ovozli signallar (masalan, qarsak chalish yoki qo'ng'iroqcha) joriy qilish va uni o'quvchilar bilan amaliy mashq qildirish"
     ],
     "correct": 3,
@@ -49756,9 +49756,9 @@
     "category": "tarix",
     "explanation": "Tarixiy tahlilda manba muallifining maqsadini aniqlash - uning qaysi g'oya va harakatlarni targ'ib qilganligini va jamiyatdagi ijtimoiy-siyosiy ta'sirini baholash orqali amalga oshiriladi.",
     "opts": [
-      "A) Gazetaning birinchi sahifasida qaysi shoirning portreti aks etgan? davri tarixiy solnomalari va manbalariga muvofiq",
-      "B) Maqolada nechta gap bor va undagi imlo xatolarini aniqlang davri tarixiy solnomalari va manbalariga muvofiq",
-      "C) Maqola qaysi matbaa korxonasida chop etilgan va uning narxi qancha bo'lgan? davri tarixiy solnomalari va manbalariga muvofiq",
+      "A) Gazetaning birinchi sahifasida qaysi shoirning portreti aks etgan?",
+      "B) Maqolada nechta gap bor va undagi imlo xatolarini aniqlang",
+      "C) Maqola qaysi matbaa korxonasida chop etilgan va uning narxi qancha bo'lgan?",
       "D) Jadidlar ushbu maqola orqali xalqning ijtimoiy-siyosiy ongini uyg'otish va muxtoriyat g'oyasini qanday asoslar bilan himoya qilishni maqsad qilganlar?"
     ],
     "createdAt": "2026-06-11T17:34:51.321Z"
@@ -49784,10 +49784,10 @@
     "explanation": "Tarixiy manbalar parchalari ustida ishlashda o'quvchidan matndagi ijtimoiy-iqtisodiy munosabatlarni, qadriyatlarni va ularning jamiyatdagi rolini tahlil qilishni so'rash eng to'g'ri metodik yondashuvdir.",
     "createdAt": "2026-06-11T17:34:51.321Z",
     "opts": [
-      "A) \"Avesto\" kitobi necha qismdan iboratligini darslikdan topib ayting davri tarixiy solnomalari va manbalariga muvofiq",
+      "A) \"Avesto\" kitobi necha qismdan iboratligini darslikdan topib ayting",
       "B) Parchadan kelib chiqib, zardushtiylik dinida dehqonchilik, chorvachilik va tabiatga bo'lgan munosabatni va ularning jamiyat hayotidagi o'rnini tahlil qiling",
-      "C) \"Avesto\" so'zining o'zbek tilidagi lug'aviy ma'nosini yoddan aytib bering davri tarixiy solnomalari va manbalariga muvofiq",
-      "D) Parchani daftarga chiroyli husnixat bilan 3 marta ko'chirib yozing davri tarixiy solnomalari va manbalariga muvofiq"
+      "C) \"Avesto\" so'zining o'zbek tilidagi lug'aviy ma'nosini yoddan aytib bering",
+      "D) Parchani daftarga chiroyli husnixat bilan 3 marta ko'chirib yozing"
     ],
     "q": "\"Avesto\" kitobidan olingan quyidagi parchani darsda o'quvchilarga o'qitish jarayonida o'qituvchi qaysi savolni berishi ularning tarixiy tahlil ko'nikmasini rivojlantirishga xizmat qiladi?",
     "correct": 1,
@@ -53419,10 +53419,10 @@
     "topicId": 22,
     "correct": 2,
     "opts": [
-      "A) Obidalarning qurilishida ishlatilgan g'ishtlar sonini matematik hisoblatish davri tarixiy solnomalari va manbalariga muvofiq",
-      "B) Darslikdagi obidalar rasmlarini shunchaki albomga chizdirib kelish topshirig'ini berish davri tarixiy solnomalari va manbalariga muvofiq",
+      "A) Obidalarning qurilishida ishlatilgan g'ishtlar sonini matematik hisoblatish",
+      "B) Darslikdagi obidalar rasmlarini shunchaki albomga chizdirib kelish topshirig'ini berish",
       "C) O'quvchilarni o'z hududidagi yoki eng yaqin shahar (masalan, Samarqand yoki Shahrisabz)dagi temuriylar obidalariga virtual yoki real sayohat qildirish va ularni dars mavzusi bilan bog'liq tahlil qilish topshirig'ini berish",
-      "D) Obidalar me'morlari ismlarini alifbo tartibida yodlash topshirig'ini berish davri tarixiy solnomalari va manbalariga muvofiq"
+      "D) Obidalar me'morlari ismlarini alifbo tartibida yodlash topshirig'ini berish"
     ],
     "category": "tarix",
     "createdAt": "2026-06-11T17:34:51.321Z",
