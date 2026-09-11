@@ -1902,12 +1902,15 @@
     "explanation": "Nizomga ko'ra, postdagi soqchining quroli o'qlangan (o'qdon o'rnatilgan), lekin patronnikka patron kiritilmagan, saqlagichga (predoxranitelga) qo'yilgan holatda bo'lishi shart. Patron faqat haqiqiy xavf tug'ilganda nishonga o't ochish uchun patronnikka kiritiladi.",
     "q": "Qorovul xizmati nizomiga ko'ra, soqchi postda turgan vaqtida qurol qanday holatda saqlanishi va tutilishi shart?",
     "opts": [
-      "A) Qurol o'qlanmagan holda, g'ilofda saqlanadi",
-      "B) Qurol o'qsiz holda, faqat nayza-pichoq taqilgan bo'ladi",
-      "C) Qurol o'qlangan (o'qdon ulangan), patronnikka patron kiritilmagan, saqlagichda bo'ladi",
-      "D) Qurolning saqlagichi ochiq va patron patronnikka kiritilgan holatda bo'ladi"
+      "A) Qurol o'qlanmagan holda, maxsus g'ilofda va qulf ostida soqchi budkasida saqlanadi",
+      "B) Qurol patronlarsiz bo'sh holda, faqat nayza-pichoq qo'yilgan holatda yelkaga osiladi",
+      "C) Qurol o'qlangan (to'liq o'qdon ulangan), patronnikka patron kiritilmagan, saqlagichda bo'ladi",
+      "D) Qurolning saqlagichi ochiq, patron patronnikka kiritilgan va tepkisi bosilgan holatda bo'ladi"
     ],
-    "mnemonic": "Manba: Qorovul xizmati nizomi, 185-modda."
+    "mnemonic": "Postda qurol = O'qdon ulangan, patronnikda o'q yo'q, saqlagichda.",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "114u3tk_34"
   },
   {
     "id": "20v9p9wXyw5CtXCGT9Pl",
@@ -3586,19 +3589,22 @@
   },
   {
     "id": "3VNunuvCQYzFXql8tCiL",
-    "explanation": "Sariosiyo va Uzun tumanlari o'tish qiyin bo'lgan tog'li hududlari ko'rsatilgan. Boshqa variantlar manbada yo'q.",
+    "explanation": "2000-yil avgust oyida Surxondaryo viloyatining Sariosiyo va Uzun tumanlaridagi murakkab tog'li hududlarda xalqaro terrorchilar guruhi to'liq tor-mor etilgan.",
     "category": "chqbt",
     "topicId": 0,
-    "mnemonic": "Sariosiyo‑Uzun – tog'li yo'l",
+    "mnemonic": "Surxondaryo aksilterror operatsiyasi = Sariosiyo va Uzun tumanlari.",
     "correct": 0,
     "opts": [
-      "A) Sariosiyo va Uzun",
-      "B) Muborak va Qamashi",
-      "C) Furqat va Qiziltepa",
-      "D) Khamza va Chiroq"
+      "A) Sariosiyo va Uzun tumanlarining tog'li dovonlarida",
+      "B) Boysun va Sherobod tumanlarining cho'l hududlarida",
+      "C) Qumqo'rg'on va Jarqo'rg'on tumanlarining daryo bo'ylarida",
+      "D) Denov va Sho'rchi tumanlarining ochiq tekisliklarida"
     ],
     "createdAt": "2026-06-23T04:27:00.246Z",
-    "q": "2000-yilgi terrorchi hujumida qaysi ikki tumanning o'tish qiyin bo‘lgan tog‘li hududlari nishonga olingan?"
+    "q": "2000-yilning avgust oyida xalqaro terrorchi to'dalar O'zbekiston hududiga bostirib kirishga uringanda Qurolli Kuchlarimiz bo'linmalari Surxondaryo viloyatining qaysi tog'li tumanlarida aksilterror operatsiyasini muvaffaqiyatli o'tkazgan?",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "39yovv_6l"
   },
   {
     "id": "3XgqQLBxQKbEz8aFwZtA",
@@ -4907,7 +4913,7 @@
     "category": "chqbt",
     "topicId": 3,
     "correct": 0,
-    "updatedAt": "2026-08-28T16:46:06.765Z",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
     "mnemonic": "Azimut > 180° bo'lsa: -180°; Azimut < 180° bo'lsa: +180°.",
     "createdAt": "2026-06-23T04:27:10.036Z",
     "opts": [
@@ -4917,9 +4923,10 @@
       "D) 205°"
     ],
     "q": "Topografik kompas yordamida harakat yo'nalishining to'g'ri azimuti 295° deb aniqlandi. Ushbu marshrut bo'yicha ortga qaytishdagi teskari azimut necha gradusga teng bo'ladi?",
-    "image": "/images/chqbt_qutb_yulduzi.png",
+    "image": "",
     "upgradedLevel": "toifa_pro",
-    "explanation": "Teskari azimut qoidasi: Agar to'g'ri azimut 180° dan katta bo'lsa, undan 180° ayriladi (295° - 180° = 115°). Agar 180° dan kichik bo'lsa, 180° qo'shiladi."
+    "explanation": "Teskari azimut qoidasi: Agar to'g'ri azimut 180° dan katta bo'lsa, undan 180° ayriladi (295° - 180° = 115°). Agar 180° dan kichik bo'lsa, 180° qo'shiladi.",
+    "updatedBy": "pro105_and_audit_fixes"
   },
   {
     "id": "4yLIaVqkPB1TJXvvK6Z3",
@@ -8315,16 +8322,18 @@
     "createdAt": "2026-06-23T04:26:56.901Z",
     "topicId": 2,
     "correct": 0,
-    "updatedAt": "2026-08-28T09:06:37.676Z",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
     "category": "chqbt",
     "q": "AK-74 avtomatida nishonga olish moslamasining (pritsel plankasi) bo'linmalari qanday masofalarga mo'ljallangan va 'P' (doimiy) harfi qaysi masofaga to'g'ri keladi?",
     "opts": [
-      "A) 1 dan 10 gacha bo'linmalar (100 m dan 1000 m gacha), 'P' harfi esa 440 metr masofadagi to'g'ridan-to'g'ri otishga to'g'ri keladi (4-bo'linmaga teng)",
-      "B) 1 dan 5 gacha bo'linmalar, 'P' harfi 100 metrga teng",
-      "C) 1 dan 15 gacha bo'linmalar, 'P' harfi 800 metrga teng",
-      "D) Faqat 200 va 400 metr masofaga mo'ljallangan"
+      "A) 1 dan 10 gacha bo'linmalar (100–1000 m), 'P' belgisi esa 440 m masofadagi to'g'ridan-to'g'ri otishga (4-bo'linmaga) to'g'ri keladi",
+      "B) 1 dan 8 gacha bo'linmalar (100–800 m), 'P' belgisi esa 300 m masofadagi qisqa nishonlarga (3-bo'linmaga) to'g'ri keladi",
+      "C) 1 dan 12 gacha bo'linmalar (100–1200 m), 'P' belgisi esa 600 m masofadagi pulemyot nishonlariga (6-bo'linmaga) to'g'ri keladi",
+      "D) Faqat 2, 4, 6 va 8 raqamlari mavjud bo'lib, 'P' belgisi poligon sharoitidagi 100 m ga (1-bo'linmaga) to'g'ri keladi"
     ],
-    "mnemonic": "AK-74 pritseli: 1-10 (100-1000 m), 'P' = 440 m (4-bo'linma)."
+    "mnemonic": "AK-74 pritseli = 1-10 (100-1000 m), 'P' = 440 m (4-bo'linma).",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "1xvxt25_4j"
   },
   {
     "id": "8XGq0tGeq4PshxzLanNw",
@@ -13595,14 +13604,14 @@
     "updatedAt": "2026-09-10T13:17:34.870Z",
     "difficulty": "hard",
     "updatedBy": "dosimetry_upgrade_sept10",
-    "explanation": "Zarba to'lqinining kuchi va vayronkorligi uning frontidagi ortiqcha bosim (izbytochnoye davleniye — \\Delta P_f) bilan o'lchanadi: 20-40 kPa — yengil, 40-60 kPa — o'rta, 60-100 kPa — og'ir, 100 kPa dan yuqori — o'ta og'ir vayronagarchilik.",
+    "explanation": "Zarba to'lqinining kuchi va vayronkorligi uning frontidagi ortiqcha bosim (izbytochnoye davleniye — Delta Pf) bilan o'lchanadi: 20-40 kPa — yengil, 40-60 kPa — o'rta, 60-100 kPa — og'ir, 100 kPa dan yuqori — o'ta og'ir vayronagarchilik.",
     "opts": [
-      "A) Zarba to'lqini frontidagi ortiqcha bosim (\\Delta P_f, kilopaskal yoki kg/sm^2 da o'lchanadi)",
+      "A) Zarba to'lqini frontidagi ortiqcha bosim (Delta Pf, kilopaskal yoki kg/sm^2 da o'lchanadi)",
       "B) Portlashdagi yorug'likning rangi va tovush ohangi",
       "C) Portlash bulutining faqat shamol bo'ylab uchish tezligi",
       "D) Tuproqning kimyoviy tarkibidagi namlik darajasi"
     ],
-    "mnemonic": "Zarba to'lqini mezoni — frontdagi ortiqcha bosim ($\\Delta P_f$).",
+    "mnemonic": "Zarba to'lqini mezoni — frontdagi ortiqcha bosim (Delta Pf).",
     "image": ""
   },
   {
@@ -15858,21 +15867,23 @@
   {
     "id": "GUoqpiKxP4ZB9GRe2x7A",
     "category": "chqbt",
-    "mnemonic": "Manba: Fuqaro muhofazasi (Ommaviy qirg'in qurollari).",
+    "mnemonic": "Yadro energiyasi = 50% to'lqin, 35% yorug'lik, 10% radiatsiya, 4% cho'kma, 1% EMP.",
     "createdAt": "2026-08-22T10:02:59.414Z",
-    "updatedAt": "2026-09-04T14:47:53.985Z",
-    "explanation": "Yadro portlashi energiyasi: 50% zarba to'lqiniga, 35% yorug'lik nurlanishiga, 10% o'tuvchi radiatsiyaga, 4% radioaktiv zararlanishga va 1% elektromagnit impulsga to'g'ri keladi.",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "explanation": "Yadro portlashi energiyasi taqsimoti: 50% zarba to'lqini, 35% yorug'lik nurlanishi, 10% o'tuvchi radiatsiya, 4% radioaktiv ifloslanish va 1% elektromagnit impuls.",
     "upgradedLevel": "toifa_pro",
     "source": "local-import-2026-08-22",
     "opts": [
       "A) Zarba to'lqini — 50%, Yorug'lik nurlanishi — 35%, O'tuvchi radiatsiya — 10%, Radioaktiv zararlanish — 4%, Elektromagnit impuls — 1%",
-      "B) Zarba to'lqini — 80%, Yorug'lik nurlanishi — 10%, O'tuvchi radiatsiya — 10%",
-      "C) Yorug'lik nurlanishi — 60%, Zarba to'lqini — 20%, Radiatsiya — 20%",
-      "D) Barcha omillar teng 20% dan taqsimlanadi"
+      "B) Zarba to'lqini — 70%, Yorug'lik nurlanishi — 15%, O'tuvchi radiatsiya — 10%, Radioaktiv zararlanish — 4%, Elektromagnit impuls — 1%",
+      "C) Zarba to'lqini — 40%, Yorug'lik nurlanishi — 40%, O'tuvchi radiatsiya — 10%, Radioaktiv zararlanish — 8%, Elektromagnit impuls — 2%",
+      "D) Zarba to'lqini — 50%, Yorug'lik nurlanishi — 20%, O'tuvchi radiatsiya — 20%, Radioaktiv zararlanish — 8%, Elektromagnit impuls — 2%"
     ],
-    "topicId": 2,
+    "topicId": 4,
     "correct": 0,
-    "q": "O'rtacha yadro portlashi sodir bo'lganda, portlash energiyasi uning asosiy shikastlovchi omillari bo'yicha qanday foiz nisbatida taqsimlanadi?"
+    "q": "O'rtacha yadro portlashi sodir bo'lganda, portlash energiyasi uning asosiy shikastlovchi omillari bo'yicha qanday foiz nisbatida taqsimlanadi?",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "1b7gvio_3y"
   },
   {
     "id": "GVMtp9IPLWKsFzGvdC71",
@@ -16607,11 +16618,12 @@
     "explanation": "Qonunning 18-moddasi: Chaqiriluvchilarni dastlabki harbiy hisobga qo'yish ular 16 yoshga to'lgan yilda aprel-iyun oylarida tuman mudofaa ishlari bo'limlari tomonidan amalga oshiriladi.",
     "upgradedLevel": "toifa_pro",
     "topicId": 0,
-    "image": "/images/chqbt_tosiqlar.png",
-    "updatedAt": "2026-08-28T16:49:05.304Z",
+    "image": "",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
     "mnemonic": "Dastlabki hisob = 16 yoshda (aprel – iyun).",
     "createdAt": "2026-06-23T04:27:10.035Z",
-    "category": "chqbt"
+    "category": "chqbt",
+    "updatedBy": "pro105_and_audit_fixes"
   },
   {
     "id": "HMDKR7w7hqLdGavYetue",
@@ -17834,17 +17846,20 @@
     "id": "IWy3Qp3ZK8q100vmLZCV",
     "category": "chqbt",
     "opts": [
-      "A) AK-74 (3,6 kg)",
-      "B) RPK-74 (5,46 kg)",
-      "C) Og'irligi ahamiyatsiz",
-      "D) AK-47 (4,3 kg)"
+      "A) 5,45 mm li Kalashnikov avtomati (AK-74)",
+      "B) 7,62 mm li Kalashnikov modernizatsiyalangan avtomati (AKM)",
+      "C) 5,45 mm li Kalashnikov qo'l pulemyoti (RPK-74)",
+      "D) 7,62 mm li Kalashnikov qo'l pulemyoti (RPK)"
     ],
-    "q": "Uzoq masofaga piyoda yurish rejalashtirilgan, jangchiga eng yengil qurol kerak. Quyidagilardan qaysi birini tanlaydi?",
-    "explanation": "AK-74 to'ldirilgan holatda 3,6 kg — eng yengili. AK-47 — 4,3 kg, RPK-74 — 5,46 kg. Uzoq yurishda yengillik muhim.",
+    "q": "Uzoq masofaga piyoda yurish va marsh qilish rejalashtirilgan vaziyatda jangchiga o'qdonli holatda eng kam og'irlikka ega bo'lgan qurol zarur. Quyidagi qurollardan qaysi biri eng kam vaznga ega hisoblanadi?",
+    "explanation": "AK-74 ning o'qdonli to'liq massasi taxminan 3,6 kg ni tashkil etadi. AKM to'liq o'qlangan holda taxminan 4,0 kg, RPK-74 taxminan 5,46 kg, RPK esa 5,6 kg ga teng. Shu sababli AK-74 eng yengil quroldir.",
     "topicId": 2,
-    "mnemonic": "Eng yengil — AK-74 (3,6 kg).",
+    "mnemonic": "Eng yengil avtomat = AK-74 (3,6 kg to'liq o'qdon bilan).",
     "correct": 0,
-    "createdAt": "2026-06-23T04:26:56.899Z"
+    "createdAt": "2026-06-23T04:26:56.899Z",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "avqai6_5p"
   },
   {
     "id": "IXduoGMwClB62HQMGuK4",
@@ -17974,20 +17989,22 @@
   {
     "id": "Iezzuj4NCXEX0DFJzdQX",
     "createdAt": "2026-06-23T04:27:10.036Z",
-    "image": "/images/chqbt_boglamlar.png",
-    "updatedAt": "2026-08-28T09:06:35.391Z",
+    "image": "",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
     "opts": [
-      "A) Spiral bog'lam",
+      "A) Spiral bint bog'lami",
       "B) Boshoqsimon (kolosovidnaya) bog'lam",
-      "C) Sakkizsimon bog'lam",
-      "D) Sopqonsimon bog'lam"
+      "C) Sakkizsimon bint bog'lami",
+      "D) Sopqonsimon bint bog'lami"
     ],
     "q": "Chanoq-son bo'g'imi va sonning yuqori qismi jarohatlanganda qon ketishini to'xtatish hamda jarohatni himoyalash uchun desmurgiya qoidasiga ko'ra qanday turdagi bint bog'lami qo'llaniladi?",
-    "mnemonic": "Son yuqorisi va chanoq — Boshoqsimon bog'lam.",
+    "mnemonic": "Son yuqorisi va chanoq = Boshoqsimon bog'lam.",
     "explanation": "Sonning yuqori qismi va chanoq-son bo'g'imi sohasiga bintning sirpanib ketmasligi uchun qorin va bel orqali mustahkamlanuvchi boshoqsimon bog'lam qo'yiladi.",
     "correct": 1,
     "topicId": 5,
-    "category": "chqbt"
+    "category": "chqbt",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "1xkibmm_57"
   },
   {
     "id": "IfMWliiLqFmEMcwl6YvI",
@@ -19116,23 +19133,25 @@
   },
   {
     "id": "JmWPZX8czrBFHqK9dvFt",
-    "qHash": "q732o9_5i",
+    "qHash": "da5in_9f",
     "opts": [
-      "Ma'ruza-suhbat usuli",
-      "Rolli o'yin usuli",
-      "Mustaqil o'qish usuli",
-      "Test-nazorat usuli"
+      "A) Modulli ko'rgazmali namoyish va passiv kuzatuv metodi",
+      "B) Taqsimlangan ijtimoiy-kasbiy simulyatsiya (rolli o'yin) metodi",
+      "C) Reproduktiv muammoli ma'ruza va konspektlashtirish metodi",
+      "D) Differensial individual test-nazorat va reytinglash metodi"
     ],
     "category": "chqbt",
-    "mnemonic": "Rolni ijro et — nuqtai nazarni tushun.",
+    "mnemonic": "Simulyatsiya (rolli o'yin) = Vazifalarni taqsimlab amaliy ko'nikmalarni imitatsiya qilish.",
     "createdAt": "2026-08-30T06:43:33.647Z",
     "image": "",
-    "explanation": "Rolli o'yinda o'quvchi muayyan rolni ijro etib, vaziyatni o'sha lavozim nuqtai nazaridan ko'radi; rollarni almashtirish esa masalaga turli tomondan qarashni o'rgatadi. Bu usul ayniqsa qaror qabul qilish va hamkorlik ko'nikmalarini rivojlantiradi.",
-    "q": "O'quvchilar guruhlarga bo'linib, har biri turli rolni (komandir, sanitar, aloqachi) bajardi va vaziyatni shu rol nuqtai nazaridan hal qildi. Dars oxirida rollar almashtirildi. Bu qaysi ta'lim usuli?",
+    "explanation": "Taqsimlangan ijtimoiy-kasbiy simulyatsiyada (rolli o'yinda) o'quvchilar muayyan lavozim vazifasini o'z zimmasiga olib, vaziyatni o'sha burchakdan tahlil qiladilar va amaliy jamoaviy qaror qabul qilishni o'rganadilar.",
+    "q": "CHQBT darsida harbiy-taktik vaziyatni hal qilish jarayonida o'quvchilarga bo'linma komandiri, sanitar-instruktor va aloqachi vazifalari taqsimlab berildi. Har bir o'quvchi o'ziga yuklatilgan jangovar vazifaning xususiyatlaridan kelib chiqib harakat qildi hamda amaliy ko'nikmalarni imitatsiya qildi. Ushbu interfaol metod qanday nomlanadi?",
     "difficulty": "Y2",
     "source_ref": "Pedagogik texnologiyalar: rolli o'yin",
     "correct": 1,
-    "topicId": 6
+    "topicId": 6,
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "updatedBy": "pro105_and_audit_fixes"
   },
   {
     "id": "JnYUhoPTWK3h4WYPb8b1",
@@ -19986,20 +20005,22 @@
   {
     "id": "KgluoTpaAonNjlIP7i2x",
     "opts": [
-      "A) Katta Ayiq (Yetti qaroqchi) turkumining chekka 2 ta yulduzi orasidagi masofani 5 barobar to'g'ri chiziq bo'ylab davom ettirish orqali",
-      "B) Kichik Ayiq turkumining o'rtasidagi yulduzdan pastga perpendikulyar tushirish orqali",
-      "C) Orion yulduzlar turkumining eng yorqin yulduzi orqali",
-      "D) Kassiopeya turkumining pastki yulduzini 3 barobar o'ngga surish orqali"
+      "A) Katta Ayiq (Yetti qaroqchi) turkumining chetki 2 ta yulduzi orasidagi masofani 5 barobar to'g'ri chiziq bo'ylab davom ettirish orqali",
+      "B) Kichik Ayiq turkumining eng markazidagi yulduzidan pastga qarab vertikal 3 barobar to'g'ri chiziq o'tkazish orqali",
+      "C) Orion yulduzlar turkumining uchta kamar yulduzini birlashtirib sharq tomonga 4 barobar davom ettirish orqali",
+      "D) Kassiopeya turkumi 'W' harfining o'rta burchagidan janub tomonga 5 barobar to'g'ri chiziq chizish orqali"
     ],
     "mnemonic": "Katta Ayiq chekka 2 yulduzi × 5 masofa = Qutb yulduzi (Shimol).",
     "upgradedLevel": "toifa_pro",
     "category": "chqbt",
-    "updatedAt": "2026-08-28T16:46:11.625Z",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
     "explanation": "Katta Ayiq paqirsimon shaklining chetki 2 yulduzi (Alfa va Beta) orasidagi masofa yuqoriga qarab 5 barobar cho'zilsa, Kichik Ayiq dumi uchidagi Qutb yulduziga borib taqaladi (aniq Shimol).",
     "createdAt": "2026-06-23T04:27:00.246Z",
     "correct": 0,
     "topicId": 3,
-    "q": "Kecha vaqtida ochiq osmon ostida Qutb yulduzi (Polyarnaya zvezda) orqali shimol yo'nalishini aniqlashda qaysi yulduzlar turkumidan mo'ljal sifatida foydalaniladi?"
+    "q": "Kecha vaqtida ochiq osmon ostida Qutb yulduzi (Polyarnaya zvezda) orqali shimol yo'nalishini aniqlashda qaysi yulduzlar turkumidan mo'ljal sifatida foydalaniladi?",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "16z5b0u_4i"
   },
   {
     "id": "Ki0VDgH075Dwt9BxjIqx",
@@ -24304,19 +24325,21 @@
   {
     "id": "PMcLYNfgbF6KAXpJqZMt",
     "q": "Saf nizomining 33-moddasiga ko'ra, harakatlanayotgan harbiy xizmatchiga yoki bo'linmaga «TO'XTA!» ijro komandasi berilganda, xizmatchi qanday amallarni bajarib to'xtaydi?",
-    "explanation": "Saf nizomi 33-moddasi: 'To'xtash uchun «Bo'linma (askar...) — TO'XTA!» komandasi beriladi. Ijro komandasi o'ng yoki chap oyoq yerga qo'yilganda beriladi; bu komanda bo'yicha yana bir qadam tashlanadi va ikkinchi oyoq unga taqilib to'xtaladi'.",
+    "explanation": "Saf nizomi 33-moddasi: 'To'xtash uchun ijro komandasi oyoqlardan biri yerga qo'yilganda beriladi; xizmatchi yana bir qadam tashlaydi va ikkinchi oyog'ini taqab to'xtaydi'.",
     "topicId": 3,
     "correct": 0,
     "category": "chqbt",
     "createdAt": "2026-06-23T04:27:03.713Z",
     "opts": [
-      "A) Komanda chap yoki o'ng oyoq yerga qo'yilganda beriladi; xizmatchi komandadan so'ng yana bir qadam tashlaydi va ikkinchi oyog'ini unga taqab, to'g'ri holatda to'xtaydi",
-      "B) Komanda eshitilishi bilan joyida sakrab to'xtaydi",
-      "C) Yana uch qadam yurib, o'ngga burilib to'xtaydi",
-      "D) Faqat chap oyog'ini ko'tarib to'xtaydi"
+      "A) Komanda berilgach, harbiy xizmatchi yana bir qadam tashlaydi va ikkinchi oyog'ini unga taqab, qad rostlab to'xtaydi",
+      "B) Komanda berilgach, harbiy xizmatchi darhol to'xtab, uch qadam orqaga tisariladi va boshliq tomon yuzlanadi",
+      "C) Komanda berilgach, harbiy xizmatchi yana ikki to'liq qadam tashlaydi va o'ng oyog'ini chapga taqamasdan to'xtaydi",
+      "D) Komanda berilgach, harbiy xizmatchi joyida uch marta qadam bosib, chap oyog'ini oldinga cho'zgan holda to'xtaydi"
     ],
-    "updatedAt": "2026-08-28T16:20:05.569Z",
-    "mnemonic": "To'xtash komandasi: komanda beriladi → +1 qadam → oyoq taqiladi."
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "mnemonic": "To'xtash komandasi = Komanda + 1 qadam + oyoqni taqash.",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "148fl2p_4q"
   },
   {
     "id": "PS3Yvk6YaaL3nHJVD8rL",
@@ -26633,23 +26656,23 @@
   {
     "id": "Rq9Kf6Sy47j0p4qoX1OA",
     "opts": [
-      "A) Barcha mashinalar bir-biriga yopishib, maksimal yuqori tezlikda yuradi",
-      "B) Mashinalarning barcha deraza va lyuklari to'liq ochib qo'yiladi",
-      "C) Faqat tunda chiroqlarni yoqmasdan quvib o'tish bilan harakatlaniladi",
-      "D) Mashinalar orasidagi masofa (distansiya) oshiriladi, tezlik me'yorda saqlanadi va yo'lga suv yoki biriktiruvchi kimyoviy qorishmalar sepiladi"
+      "A) Mashinalar orasidagi masofani qisqartirib, barcha zirhli texnikalarning maksimal tezlikda quvib o'tish tartibida harakatlanishi",
+      "B) Jangovar mashinalarning barcha ochiq lyuklari va derazalarini keng ochib, ichkaridagi havoni tabiiy shamollatish bilan harakatlanish",
+      "C) Faqat tunda chiroqlarni va gabarit chiroqlarini butunlay o'chirgan holda kolonnalar safini buzmasdan tezkor harakatlanish",
+      "D) Mashinalar orasidagi masofani (distansiyani) 50-100 metrgacha uzaytirish, tezlikni cheklash va yo'lga biriktiruvchi kimyoviy moddalar sepish"
     ],
     "correct": 3,
     "explanation": "Kolonna harakatida oldingi mashina ko'targan radioaktiv chang orqadagi mashinalarga tushmasligi uchun mashinalar orasidagi masofa 50-100 metrgacha uzaytiriladi, tezlik cheklanadi va lyuklar germetik yopiladi.",
     "topicId": 4,
     "difficulty": "hard",
-    "mnemonic": "Zararlangan yo'lda harakat — masofani uzaytirish va changni kamaytirish.",
+    "mnemonic": "Zararlangan yo'lda harakat = Distansiyani 50-100 m qilish + Tezlikni cheklash.",
     "image": "",
     "createdAt": "2026-08-30T17:05:10.897Z",
-    "updatedAt": "2026-09-10T13:46:26.462Z",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
     "q": "Radioaktiv zararlangan hududda harakatlanayotgan BTR va avtomashinalar kolonnasida chang ko'tarilishini kamaytirish uchun qanday taktik qoida qo'llaniladi?",
     "qHash": "y4esrg_4b",
     "category": "chqbt",
-    "updatedBy": "latex_dollar_cleanup_sept10"
+    "updatedBy": "pro105_and_audit_fixes"
   },
   {
     "id": "RqTxSKPYtdsEpJ4tP7gT",
@@ -31098,20 +31121,22 @@
     "source_ref": "Sinf rahbarining majburiyatlari",
     "difficulty": "Y2",
     "createdAt": "2026-08-30T06:43:33.647Z",
-    "qHash": "157otwc_59",
-    "explanation": "Sinf hujjatlarini belgilangan tartibda yuritish sinf rahbarining bevosita majburiyati: bu ma'lumotlar o'quvchi haqidagi yaxlit tasavvurni saqlaydi, oila va mutaxassislar bilan ishlashda asos bo'ladi. Hujjatni faqat tekshiruv oldidan tuzish uning ma'nosini yo'qotadi.",
+    "qHash": "sytir8_90",
+    "explanation": "CHQBT fani rahbari o'quv qurollari, pnevmatik miltiqlar, shaxsiy himoya vositalari va o'quv moddiy bazasining saqlanishi hamda xavfsizlik yo'riqnomalarining o'z vaqtida yuritilishi bo'yicha shaxsan javobgardir. Hujjatlarni yuritmaslik jiddiy xizmat qoidabuzarligi hisoblanadi.",
     "topicId": 6,
-    "correct": 3,
-    "mnemonic": "Sinf hujjati — ish quroli, qog'ozbozlik emas.",
-    "q": "Sinf rahbari o'quvchilar haqidagi asosiy ma'lumotlarni, davomat va tarbiyaviy ishlar rejasini yuritishi kerak. U «bu ortiqcha qog'ozbozlik» deb hujjatlarni yuritmaydi. Bu qanday baholanadi?",
+    "correct": 1,
+    "mnemonic": "Qurol va xavfsizlik daftarlari = CHQBT rahbarining shaxsiy yuridik majburiyati.",
+    "q": "CHQBT fani rahbari o'quv qurollari va o'quv moddiy-texnika bazasining hisobini yuritishda maxsus hisob kitoblari (formalar) hamda xavfsizlik texnikasi yo'riqnomasi daftarlarini rasmiylashtirishni rad etib, buni ortiqcha rasmiyatchilik deb baholaydi. Qonunchilik va harbiy ta'lim nizomiga ko'ra ushbu holat qanday baholanadi?",
     "opts": [
-      "Nuqson emas — hujjat faqat tekshiruv oldidan tuziladi",
-      "To'g'ri — hujjat pedagogik ishga xalaqit beradi",
-      "To'g'ri — hujjatni faqat ma'muriyat yuritadi",
-      "Nuqson — sinf hujjatlarini yuritish sinf rahbari majburiyati"
+      "A) To'g'ri yondashuv — chunki CHQBT fani rahbarining asosiy vazifasi faqat amaliy saf mashqlari bo'lib, hujjatlarni faqat maktab ma'muriyati yuritadi",
+      "B) Qonunbuzarlik va xizmat vazifasini lozim darajada bajarmaslik — qurol va moddiy vositalar hisobi hamda xavfsizlik yo'riqnomasi shaxsiy javobgarlik yuklaydi",
+      "C) Ijobiy tashabbus — ortiqcha qog'ozbozlikni kamaytirish va o'quvchilarga ko'proq jismoniy tarbiya mashg'ulotlari o'tish uchun ruxsat etiladi",
+      "D) Qisman to'g'ri — moddiy hisob faqat yillik inventarizatsiya o'tkazilayotgan paytda tuman mudofaa bo'limi tomonidan rasmiylashtiriladi"
     ],
     "category": "chqbt",
-    "image": ""
+    "image": "",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "updatedBy": "pro105_and_audit_fixes"
   },
   {
     "id": "WnaHqMKbd88JJNrUIqaZ",
@@ -31494,21 +31519,23 @@
   },
   {
     "id": "XCCp3EeP6ZRsBxaA2SUg",
-    "updatedAt": "2026-08-28T09:06:32.819Z",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
     "createdAt": "2026-08-22T10:02:59.414Z",
-    "explanation": "Harbiy xizmatni o'tash tartibi to'g'risidagi Nizomga ko'ra, ofitserlik lavozimlariga ilk bor shartnoma tuzilganda dastlabki kontrakt 5 yil muddatga tuziladi.",
-    "q": "O'zbekiston Respublikasi Qurolli Kuchlarida ofitserlar tarkibi lavozimlariga shartnoma bo'yicha harbiy xizmatga ilk bor kirayotgan fuqaro bilan dastlabki kontrakt necha yil muddatga tuziladi?",
+    "explanation": "O'zbekiston Respublikasi fuqarolarining harbiy xizmatni o'tash tartibi to'g'risidagi Nizomga muvofiq, oliy harbiy ta'lim muassasalarini tamomlagan ofitserlar bilan dastlabki kontrakt 5 yil muddatga tuziladi.",
+    "q": "«O'zbekiston Respublikasi fuqarolarining harbiy xizmatni o'tash tartibi to'g'risida»gi Nizomga muvofiq, oliy harbiy ta'lim muassasalarini tamomlagan bitiruvchilar ofitserlar tarkibi lavozimlariga tayinlanganda ular bilan birinchi kontrakt necha yil muddatga tuziladi?",
     "topicId": 0,
     "correct": 1,
-    "mnemonic": "Ofitserlikka ilk shartnoma — 5 yil.",
+    "mnemonic": "Oliy harbiy ta'lim bitiruvchisi birinchi kontrakti = 5 yil muddatga.",
     "opts": [
-      "A) 1 yil muddatga",
-      "B) 5 yil muddatga",
-      "C) 10 yil muddatga",
-      "D) 25 yil muddatga"
+      "A) 3 yil muddatga tuziladi",
+      "B) 5 yil muddatga tuziladi",
+      "C) 10 yil muddatga tuziladi",
+      "D) 15 yil muddatga tuziladi"
     ],
     "category": "chqbt",
-    "source": "local-import-2026-08-22"
+    "source": "local-import-2026-08-22",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "19cescl_7f"
   },
   {
     "id": "XD8J19sKfrceDwth8oDA",
@@ -34479,19 +34506,21 @@
   {
     "id": "ahpprkPzx57tSQx0BL8k",
     "opts": [
-      "A) Chap qo'lini oldidagi safdoshining yelkasiga yengil qo'yadi, oldindagi safdosh bir qadam oldinga va o'ngga qadam bosadi, xizmatchi bo'sh joydan 2 qadam oldinga chiqadi",
-      "B) To'g'ridan-to'g'ri oldindagi safdoshini itarib oldinga o'tadi",
-      "C) Avval 2 qadam orqaga yurib, safning chetidan aylanib chiqadi",
-      "D) Faqat o'ng tomonga burilib safdan chiqadi"
+      "A) Chap qo'lini oldidagi safdoshining yelkasiga qo'yadi, oldindagi safdosh bir qadam oldinga va o'ngga qadam bosadi, xizmatchi 2 qadam oldinga chiqadi",
+      "B) Oldindagi safdoshining o'ng tomonidan aylanib o'tib, unga hech qanday ishora bermasdan to'g'ridan-to'g'ri 2 qadam oldinga chiqadi",
+      "C) Safdoshiga tegmasdan avval 2 qadam orqaga qadam bosadi, so'ng saf qanoti bo'ylab aylanib o'tib oldinga saflanadi",
+      "D) Birinchi qatordagi ikki safdoshining orasini yorib o'tadi va to'xtamasdan darhol o'ng tomonga burilib to'xtaydi"
     ],
-    "updatedAt": "2026-08-28T09:06:31.225Z",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
     "createdAt": "2026-06-23T04:27:03.714Z",
-    "mnemonic": "2-qatordan chiqish: yelkaga qo'l — oldindagi yo'l beradi.",
+    "mnemonic": "2-qatordan chiqish = Yelkaga qo'l -> Oldindagi yo'l beradi -> Chiqish.",
     "category": "chqbt",
     "q": "Ikkinchi qatorda turgan harbiy xizmatchi 'Safdan 2 qadam chiq!' komandasini bajarganda Saf nizomi bo'yicha harakatlar tartibi qanday bo'ladi?",
     "correct": 0,
     "topicId": 1,
-    "explanation": "Saf nizomiga ko'ra, ikkinchi qatordan safdan chiqishda harbiy xizmatchi chap qo'lini oldidagi safdoshining yelkasiga qo'yadi, oldindagi bir qadam oldinga va o'ngga qadam bosib yo'l beradi, so'ng belgilangan qadamda safdan chiqiladi."
+    "explanation": "Saf nizomiga ko'ra, ikkinchi qatordan safdan chiqishda harbiy xizmatchi chap qo'lini oldidagi safdoshining yelkasiga qo'yadi, oldindagi bir qadam oldinga va o'ngga qadam bosib yo'l beradi, so'ng belgilangan qadamda safdan chiqiladi.",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "1n0mdd_3x"
   },
   {
     "id": "aiLROkjN0gqA7dVKu4lm",
@@ -38048,22 +38077,24 @@
   },
   {
     "id": "chqbt_oliy_020",
-    "explanation": "Jangovar Bayroq — harbiy shon-sharaf, jasorat va shon-shuhrat ramzidir. U harbiy qism mavjud bo'lgan butun davr mobaynida biriktiriladi va qat'iy qo'riqlanadi.",
+    "explanation": "Jangovar Bayroq — harbiy shon-sharaf, jasorat va shon-shuhrat ramzidir. U harbiy qism shtabida maxsus muhrlangan oynavand g'ilofda 1-raqamli qorovul posti soqchisi tomonidan tunu kun qo'riqlanadi.",
     "level": "oliy",
     "correct": 3,
     "category": "chqbt",
     "topicId": 0,
     "opts": [
-      "A) Faqat harbiy qism oshxonasida saqlanadigan xizmat belgisi",
-      "B) Faqat bayram kunlari ko'chaga olib chiqiladigan oddiy davlat bayrog'i",
-      "C) Harbiy qism komandirining shaxsiy uyida saqlanadigan suvenir",
-      "D) Harbiy shon-sharaf, jasorat va shon-shuhrat timsoli bo'lib, harbiy qism shtabida (navbatchilik xonasida) qurolli soqchi muhofazasida saqlanadi"
+      "A) Harbiy okrug shtabi tomonidan barcha qismlarga umumiy beriladigan va tantanali saf ko'rigidan so'ng kutubxonaga topshiriladigan ramziy mato",
+      "B) Faqat xalqaro paradda ko'rsatish uchun tayyorlanadigan hamda harbiy qism madaniyat markazi foyesida ochiq holda ko'rgazmaga qo'yiladigan mato",
+      "C) Harbiy qism komandiri o'rinbosarining xizmat xonasida saqlanadigan hamda harbiylashgan sport musobaqalarida g'oliblarga topshiriladigan ko'chma bayroq",
+      "D) Harbiy shon-sharaf, jasorat va shon-shuhrat timsoli bo'lib, harbiy qism shtabida (navbatchilik xonasida) qurolli soqchi muhofazasida saqlanadigan muqaddas ramz"
     ],
-    "mnemonic": "Manba: O'zR Qurolli Kuchlari Ichki xizmat nizomi, Jangovar Bayroq to'g'risidagi Nizom.",
+    "mnemonic": "Jangovar Bayroq = Shon-sharaf va jasorat ramzi, 1-postda qurolli soqchi qo'riqlaydi.",
     "createdAt": "2026-09-04T15:51:51.283Z",
     "isAcademic": true,
-    "updatedAt": "2026-09-04T15:51:51.283Z",
-    "q": "O'zbekiston Respublikasi Qurolli Kuchlarining Jangovar Bayrog'i qanday ramziy ma'noni anglatadi va u qismning qayerida saqlanadi?"
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "q": "O'zbekiston Respublikasi Qurolli Kuchlarining Jangovar Bayrog'i qanday ramziy ma'noni anglatadi va u qismning qayerida saqlanadi?",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "166kmzg_3l"
   },
   {
     "id": "chqbt_oliy_021",
@@ -38660,22 +38691,24 @@
   },
   {
     "id": "chqbt_oliy_052",
-    "updatedAt": "2026-09-04T15:51:51.283Z",
-    "mnemonic": "Manba: Garnizon va qorovullik xizmatlari nizomi, Soqchi daxlsizligi.",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "mnemonic": "Soqchi daxlsizligi = Qonun himoyasi + So'zsiz bo'ysunish + Qurol qo'llash huquqi.",
     "level": "oliy",
     "opts": [
-      "A) Soqchini har qanday ofitser hibsga olishi mumkin",
-      "B) Soqchi faqat taklif kiritishi mumkin, lekin qurol qo'llashga haqi yo'q",
-      "C) Soqchi fuqaroviy shaxslarga bo'ysunadi",
-      "D) Soqchi daxlsiz shaxsdir. Uning huquq va burchlari qonun bilan himoyalangan, unga hamma so'zsiz bo'ysunishi shart, uning talablarini bajarmagan har qanday shaxsga nisbatan nizomda belgilangan tartibda qurol qo'llashga haqlidir"
+      "A) Soqchi qorovul boshlig'i va garnizon komendantidan tashqari barcha harbiy xizmatchilarning intizomiy javobgarligini bevosita belgilovchi oliy mansabdor shaxs hisoblanadi",
+      "B) Soqchi faqat jinoyat sodir etilgan hollarda qurol qo'llashi mumkin bo'lib, boshqa har qanday noqonuniy xatti-harakatlarda faqat og'zaki ogohlantirish berish bilan cheklanadi",
+      "C) Soqchi faqat o'ziga teng yoki o'zidan kichik unvondagi harbiy xizmatchilarga buyruq bera oladi, yuqori ofitserlar uning postiga erkin kirish huquqiga ega bo'ladi",
+      "D) Soqchi qonun bilan qo'riqlanadigan daxlsiz shaxs bo'lib, unga hamma so'zsiz bo'ysunadi hamda nizomda ko'rsatilgan hollarda to'g'ridan-to'g'ri qurol qo'llash huquqiga egadir"
     ],
     "createdAt": "2026-09-04T15:51:51.283Z",
-    "q": "Garnizon va qorovullik nizomiga ko'ra, postda turgan soqchining daxlsizligi qanday ifodalanadi?",
+    "q": "Garnizon va qorovullik xizmatlari nizomiga ko'ra, postda turgan soqchining daxlsizligi qanday qonuniy kafolat bilan ifodalanadi?",
     "category": "chqbt",
     "isAcademic": true,
-    "explanation": "Soqchining daxlsizligi harbiy qonunning oliy talabi bo'lib, uning qonuniy buyruqlariga barcha itoat etishi shart.",
+    "explanation": "Garnizon va qorovullik nizomiga ko'ra, soqchi daxlsiz shaxsdir. Soqchining daxlsizligi uning huquq va burchlari qonun bilan muhofaza qilinishida, unga barcha shaxslarning so'zsiz bo'ysunishida hamda qurol qo'llash vakolatida namoyon bo'ladi.",
     "correct": 3,
-    "topicId": 1
+    "topicId": 1,
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "1ob56wm_3k"
   },
   {
     "id": "chqbt_oliy_053",
@@ -39533,7 +39566,7 @@
     ],
     "updatedAt": "2026-09-04T15:51:51.283Z",
     "mnemonic": "Manba: 10-sinf CHQBT darsligi, Harbiy topografiya (Minglik formulasi).",
-    "explanation": "Minglik formulasi: D = V × 1000 / U = \\frac{2{,}0 × 1000}{4} = 500 metr.",
+    "explanation": "Minglik formulasi: D = V × 1000 / U = (2.0 × 1000) / 4 = 500 metr.",
     "isAcademic": true
   },
   {
@@ -39551,14 +39584,14 @@
     "correct": 1,
     "topicId": 3,
     "q": "Dala binokli shkalasida bo'yi V = 1{,}5 metr bo'lgan dushman askari U = 0-03 (3 minglik) burchakni egallab turibdi. Askargacha bo'lgan masofani hisoblang.",
-    "explanation": "D = \\frac{1{,}5 × 1000}{3} = 500 metr.",
+    "explanation": "D = (1.5 × 1000) / 3 = 500 metr.",
     "mnemonic": "Manba: 10-sinf CHQBT darsligi, Masofani o'lchash usullari.",
     "category": "chqbt"
   },
   {
     "id": "chqbt_oliy_099",
     "isAcademic": true,
-    "explanation": "D = \\frac{2{,}7 × 1000}{9} = 300 metr.",
+    "explanation": "D = (2.7 × 1000) / 9 = 300 metr.",
     "updatedAt": "2026-09-04T15:51:51.283Z",
     "mnemonic": "Manba: 10-sinf CHQBT darsligi, Minglik formulasi.",
     "createdAt": "2026-09-04T15:51:51.283Z",
@@ -40553,20 +40586,22 @@
     "id": "chqbt_oliy_151",
     "createdAt": "2026-09-04T15:51:51.283Z",
     "level": "oliy",
-    "q": "Biologik (bakteriologik) qurollar qo'llanilganda zararlangan hududda qat'iy cheklov o'rnatiladigan «Karantin» va «Observatsiya» o'rtasidagi asosiy farq nima?",
-    "updatedAt": "2026-09-04T15:51:51.283Z",
+    "q": "Biologik (bakteriologik) qurollar qo'llanilganda zararlangan hududda joriy etiladigan «Karantin» va «Observatsiya» tizimlari o'rtasidagi asosiy tafovut nima?",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
     "opts": [
-      "A) Karantin faqat hayvonlar uchun, observatsiya odamlar uchun",
-      "B) Ikkalasi bir xil tushuncha",
-      "C) Karantin — o'ta xavfli yuqumli kasalliklar aniqlanganda hudud to'liq qurolli qurshovga olinib, kirish-chiqish butunlay taqiqlanadi; Observatsiyada esa kuchaytirilgan tibbiy nazorat olib boriladi, cheklovlar nisbatan yumshoqroq bo'ladi",
-      "D) Observatsiyada barcha aholi ko'chiriladi"
+      "A) Karantin faqat harbiy xizmatchilar va chorva mollari uchun joriy etiladi; observatsiya esa faqat tinch aholi va maktab o'quvchilari uchun qo'llaniladi",
+      "B) Karantin faqat virusli kasalliklar tarqalganda e'lon qilinadi; observatsiya esa faqat bakterial va zamburug'li infeksiyalar aniqlanganda belgilanadi",
+      "C) Karantin — o'ta xavfli infeksiyalarda hududni to'liq qurolli qurshab kirish-chiqishni taqiqlash; observatsiyada esa kuchaytirilgan tibbiy kuzatuv va profilaktika olib boriladi",
+      "D) Karantin vaqtida barcha sog'lom aholi shoshilinch boshqa viloyatlarga ko'chiriladi; observatsiyada esa aholi faqat o'z xonadonlarida to'liq izolyatsiya qilinadi"
     ],
     "isAcademic": true,
     "correct": 2,
     "category": "chqbt",
-    "explanation": "Karantin — o'lat, vabo kabi o'ta yuqumli o'choqda tashqi aloqani to'liq uzuvchi qat'iy rejimdir. Observatsiyada esa shubhali hudud tibbiy monitoring ostiga olinadi.",
+    "explanation": "Karantin — o'lat, vabo, kuydirgi kabi o'ta xavfli infeksiyalar aniqlanganda hududni to'liq qurolli himoyaga olib, tashqi aloqalarni qat'iyan taqiqlovchi ma'muriy-tibbiy rejimdir. Observatsiyada esa chegara yopilmaydi, faqat tibbiy monitoring va profilaktika kuchaytiriladi.",
     "topicId": 4,
-    "mnemonic": "Manba: 10-sinf CHQBT darsligi, Karantin va observatsiya."
+    "mnemonic": "Karantin = To'liq qurolli izolyatsiya; Observatsiya = Kuchaytirilgan tibbiy nazorat.",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "jpp2yf_4d"
   },
   {
     "id": "chqbt_oliy_152",
@@ -41884,7 +41919,7 @@
     "topicId": 1,
     "opts": [
       "A) Hech qanday so'roqsiz darhol noma'lum shaxsning oyog'iga nishonga olib o't ochish",
-      "B) «To'xta, kim kelayotir?» deb qichqirish \\to to'xtamasa «To'xta, otaman!» deb ogohlantirish \\to bo'ysunmasa havoga ogohlantiruvchi o'q uzish \\to harakat davom etsa nishonga o't ochish",
+      "B) «To'xta, kim kelayotir?» deb qichqirish -> to'xtamasa «To'xta, otaman!» deb ogohlantirish -> bo'ysunmasa havoga ogohlantiruvchi o'q uzish -> harakat davom etsa nishonga o't ochish",
       "C) Postni tashlab, darhol qorovulxonaga yordam so'rab qochib borish",
       "D) Qurolni yerga qo'yib, kelayotgan shaxs bilan qo'l jangi usulida kurashga kirishish"
     ],
@@ -41893,7 +41928,7 @@
     "createdAt": "2026-09-10T13:17:34.870Z",
     "qHash": "1t138k6_5d",
     "q": "Qorovul postida turgan soqchiga kechasi post chegarasi orqali noma'lum qurolli shaxs yaqinlashmoqda. Nizom talablariga ko'ra, soqchining harakatlar ketma-ketligi qaysi javobda to'g'ri berilgan?",
-    "mnemonic": "Soqchi qoidasi: «Kim kelayotir?» $\\to$ «To'xta, otaman!» $\\to$ Havoga o'q $\\to$ Nishonga o't.",
+    "mnemonic": "Soqchi qoidasi: «Kim kelayotir?» -> «To'xta, otaman!» -> Havoga o'q -> Nishonga o't.",
     "explanation": "Garnizon va qorovullik xizmatlari nizomiga ko'ra, soqchi qat'iy algoritm bo'yicha harakat qiladi: ogohlantiruvchi so'rov, «To'xta, otaman!», havoga o'q uzish va agar bu talablar bajarilmasa, post va o'z hayotini himoya qilish uchun nishonga o't ochish.",
     "difficulty": "hard"
   },
@@ -42590,16 +42625,16 @@
     "source": "O'zbekiston Respublikasi CHQBT davlat ta'lim standarti va Qurolli Kuchlar umumharbiy nizomlari",
     "createdAt": "2026-09-10T13:17:34.870Z",
     "updatedAt": "2026-09-10T13:17:34.870Z",
-    "explanation": "Harbiy topografiyada to'g'ri azimutdan teskari azimutga o'tish qoidasi: agar to'g'ri azimut 180^circ dan kichik bo'lsa, unga 180^circ qo'shiladi (120^circ + 180^circ = 300^circ). Agar 180^circ dan katta bo'lsa, 180^circ ayriladi.",
+    "explanation": "Harbiy topografiyada to'g'ri azimutdan teskari azimutga o'tish qoidasi: agar to'g'ri azimut 180 gradus dan kichik bo'lsa, unga 180 gradus qo'shiladi (120 gradus + 180 gradus = 300 gradus). Agar 180 gradus dan katta bo'lsa, 180 gradus ayriladi.",
     "opts": [
-      "A) 60^circ (180^circ - 120^circ = 60^circ)",
-      "B) 300^circ (120^circ + 180^circ = 300^circ)",
-      "C) 240^circ (120^circ × 2 = 240^circ)",
-      "D) 180^circ (doimiy qaytish burchagi)"
+      "A) 60 gradus (180 gradus - 120 gradus = 60 gradus)",
+      "B) 300 gradus (120 gradus + 180 gradus = 300 gradus)",
+      "C) 240 gradus (120 gradus × 2 = 240 gradus)",
+      "D) 180 gradus (doimiy qaytish burchagi)"
     ],
     "qHash": "jdi7lb_7x",
-    "q": "Kompas (Adrianov kompasi) orqali nishonga bo'lgan magnit azimuti 120^circ ekani aniqlandi. Taktik vazifani bajarib bo'lgach, bo'linma xuddi shu yo'l bilan orqaga (teskari yo'nalishda) qaytishi lozim. Ushbu yo'nalishning teskari azimuti (Obrattnyy azimut) necha gradusga teng bo'ladi?",
-    "mnemonic": "Teskari azimut: $< 180^circ$ bo'lsa $+180^circ$; $> 180^circ$ bo'lsa $-180^circ$."
+    "q": "Kompas (Adrianov kompasi) orqali nishonga bo'lgan magnit azimuti 120 gradus ekani aniqlandi. Taktik vazifani bajarib bo'lgach, bo'linma xuddi shu yo'l bilan orqaga (teskari yo'nalishda) qaytishi lozim. Ushbu yo'nalishning teskari azimuti (Obrattnyy azimut) necha gradusga teng bo'ladi?",
+    "mnemonic": "Teskari azimut: < 180 gradus bo'lsa +180 gradus; > 180 gradus bo'lsa -180 gradus."
   },
   {
     "id": "chqbt_sit_051",
@@ -42658,7 +42693,7 @@
     "topic": "Taktik tayyorgarlik",
     "q": "Dala mashg'ulotida kuzatuvchi nishongacha bo'lgan masofani «Minglik formulasi» (D = V × 1000 / U) yordamida aniqlamoqchi. Agar nishon (tankning balandligi) V = 2.7 metr bo'lib, binokl shkalasida U = 0-03 (3 minglik) burchak ostida ko'rinsa, nishongacha masofa qancha?",
     "createdBy": "situational_academic_105_v1",
-    "mnemonic": "Minglik formulasi: $D = \\frac{V \\times 1000}{U}$ (Duryot: masofa = balandlik $\\times 1000$ / burchak).",
+    "mnemonic": "Minglik formulasi: D = ( / ) (Duryot: masofa = balandlik × 1000 / burchak).",
     "explanation": "Minglik formulasiga ko'ra masofa: D = V × 1000 / U. Bu yerda V = 2.7 m, U = 3 minglik. Shunda D = 2700 / 3 = 900 metr bo'ladi.",
     "opts": [
       "A) 900 metr (D = 2.7 × 1000 / 3 = 900 m)",
@@ -42838,7 +42873,7 @@
     "q": "Kimyoviy zavodda yuz bergan avariya oqibatida atmosferaga ko'p miqdorda Xlor gazi tarqaldi. Fuqaro muhofazasi qoidalariga ko'ra, xlor gazining fizik xususiyatini (havodan og'irligini) hisobga olgan holda aholi qaysi yo'nalishda va qayerga evakuatsiya qilinishi shart?",
     "correct": 0,
     "topicId": 4,
-    "mnemonic": "Xlor — havodan og'ir, pastga cho'kadi $\\to$ balandlikka chiqiladi.",
+    "mnemonic": "Xlor — havodan og'ir, pastga cho'kadi -> balandlikka chiqiladi.",
     "topic": "Fuqaro muhofazasi",
     "createdBy": "situational_academic_105_v1",
     "source": "O'zbekiston Respublikasi CHQBT davlat ta'lim standarti va Qurolli Kuchlar umumharbiy nizomlari"
@@ -42891,15 +42926,15 @@
     "id": "chqbt_sit_064",
     "createdAt": "2026-09-10T13:17:34.870Z",
     "updatedAt": "2026-09-10T13:17:34.870Z",
-    "mnemonic": "Protivogaz kiyish: Nafasni ushla $\\to$ Kiy $\\to$ Kuchli nafas chiqar $\\to$ Ko'zni och.",
+    "mnemonic": "Protivogaz kiyish: Nafasni ushla -> Kiy -> Kuchli nafas chiqar -> Ko'zni och.",
     "difficulty": "hard",
     "topic": "Fuqaro muhofazasi",
     "explanation": "Protivogazni kiyishning oltin normativi: zaharli havo kirmasligi uchun ko'z yumiladi va nafas ushlab turiladi. Protivogaz boshga kiyilgach, shlem-maska ichidagi ifloslangan havoni haydab chiqarish uchun kuchli nafas chiqariladi («vidox») va shundan so'ng ko'z ochilib erkin nafas olinadi.",
     "opts": [
-      "A) Avval chuqur nafas olib, ko'zni katta ochish \\to protivogazni kiyib, keyin sumkaga solish",
+      "A) Avval chuqur nafas olib, ko'zni katta ochish -> protivogazni kiyib, keyin sumkaga solish",
       "B) Protivogazni kiyguncha tinimsiz baqirib xabar berish",
       "C) Bosh kiyim ustidan protivogazni shoshilmasdan kiyish",
-      "D) Nafasni ushlab turish va ko'zni yumish \\to bosh kiyimni yechish \\to protivogazni sumkadan chiqarib, boshga kiyish \\to kuchli nafas chiqarib, ko'zni ochish va nafas olishni davom ettirish"
+      "D) Nafasni ushlab turish va ko'zni yumish -> bosh kiyimni yechish -> protivogazni sumkadan chiqarib, boshga kiyish -> kuchli nafas chiqarib, ko'zni ochish va nafas olishni davom ettirish"
     ],
     "qHash": "zmwjwo_5c",
     "createdBy": "situational_academic_105_v1",
@@ -43102,7 +43137,7 @@
     "q": "Yadroviy portlash ro'y berganda dastlab ko'zni qamashtiruvchi kuchli chaqnash ko'rinadi. Xavfsizlik qoidalariga ko'ra, ochiq joydagi odam yorug'lik nurlanishi va zarba to'lqinidan saqlanish uchun darhol qanday harakat qilishi lozim?",
     "correct": 0,
     "topicId": 4,
-    "mnemonic": "Yadro chaqnashi: Chaqnashga qarama $\\to$ Orqang bilan yerga yot $\\to$ Ko'zni yum.",
+    "mnemonic": "Yadro chaqnashi: Chaqnashga qarama -> Orqang bilan yerga yot -> Ko'zni yum.",
     "topic": "Fuqaro muhofazasi",
     "createdBy": "situational_academic_105_v1",
     "source": "O'zbekiston Respublikasi CHQBT davlat ta'lim standarti va Qurolli Kuchlar umumharbiy nizomlari"
@@ -43156,7 +43191,7 @@
     "qHash": "voss36_6z",
     "createdBy": "situational_academic_105_v1",
     "difficulty": "hard",
-    "mnemonic": "Arterial qon: Och qizil, favvora $\\to$ jarohatdan yuqoriga jgut va vaqt qog'ozi.",
+    "mnemonic": "Arterial qon: Och qizil, favvora -> jarohatdan yuqoriga jgut va vaqt qog'ozi.",
     "explanation": "Och qizil rangli qonning pulsatsiya bilan (favvora bo'lib) otilishi — yirik arterial qon ketishining belgisidir. Inson bir necha daqiqada qon yo'qotib halok bo'lishi mumkin. Birinchi yordam: zudlik bilan arteriyani suyakka bosish va jarohatdan yuqoriga arterial jgut/turniket qo'yish hamda aniq vaqtni yozib qo'yish shart.",
     "topicId": 5,
     "correct": 3,
@@ -43439,13 +43474,13 @@
   },
   {
     "id": "chqbt_sit_089",
-    "explanation": "Qo'l suyaklari (bilak, yelka) singanda qo'l tirsakdan to'g'ri burchak ostida (90^circ) bukiladi, kaft qorin tomonga qaratiladi va kosinkasimon ro'molcha yordamida bo'yinga osib fiksatsiya qilinadi.",
-    "mnemonic": "Qo'l sinishida — tirsakdan $90^circ$ burchak va kosinka bog'lami.",
+    "explanation": "Qo'l suyaklari (bilak, yelka) singanda qo'l tirsakdan to'g'ri burchak ostida (90 gradus) bukiladi, kaft qorin tomonga qaratiladi va kosinkasimon ro'molcha yordamida bo'yinga osib fiksatsiya qilinadi.",
+    "mnemonic": "Qo'l sinishida — tirsakdan 90 gradus burchak va kosinka bog'lami.",
     "createdBy": "situational_academic_105_v1",
     "topic": "Tibbiy bilim asoslari",
     "updatedAt": "2026-09-10T13:17:34.870Z",
     "opts": [
-      "A) Tirsak bo'g'imidan 90^circ burchak ostida bukilgan holda bo'yinga ro'molcha (kosinka) orqali osib qo'yiladi",
+      "A) Tirsak bo'g'imidan 90 gradus burchak ostida bukilgan holda bo'yinga ro'molcha (kosinka) orqali osib qo'yiladi",
       "B) Qo'l butunlay to'g'ri cho'zilgan holda songa bog'lanadi",
       "C) Qo'lni orqaga qayirib, belbog'ga qistirib qo'yiladi",
       "D) Qo'l yuqoriga tik ko'tarilgan holatda boshga bog'lanadi"
@@ -43529,7 +43564,7 @@
     "id": "chqbt_sit_093",
     "explanation": "CHQBT darsining o'ziga xos xususiyati — uning harbiy-nizomiy muhitda o'tishidir. Dars doimo safga turish, navbatchi yoki guruh komandirining o'qituvchiga raporti («O'rtoq podpolkovnik, 11-A sinf darsga tayyor...»), harbiy salomlashish va tashqi ko'rinishni tekshirish bilan boshlanadi.",
     "createdBy": "situational_academic_105_v1",
-    "mnemonic": "CHQBT darsi boshlanishi: Safga tizilish $\\to$ Raport $\\to$ Salomlashish $\\to$ Saf ko'rigi.",
+    "mnemonic": "CHQBT darsi boshlanishi: Safga tizilish -> Raport -> Salomlashish -> Saf ko'rigi.",
     "q": "CHQBT fani o'qituvchisi har bir dars boshlanishida harbiy intizom va nizomiy ko'nikmalarni shakllantirish uchun qaysi majburiy an'anaviy strukturaviy elementni o'tkazishi shart?",
     "topic": "Pedagogik mahorat",
     "opts": [
@@ -43572,7 +43607,7 @@
   {
     "id": "chqbt_sit_095",
     "qHash": "v6ijm7_57",
-    "mnemonic": "Saf o'rgatish bosqichlari: Namunali ko'rsatish $\\to$ Elementlarga bo'lish $\\to$ Yaxlit bajarish.",
+    "mnemonic": "Saf o'rgatish bosqichlari: Namunali ko'rsatish -> Elementlarga bo'lish -> Yaxlit bajarish.",
     "createdBy": "situational_academic_105_v1",
     "source": "O'zbekiston Respublikasi CHQBT davlat ta'lim standarti va Qurolli Kuchlar umumharbiy nizomlari",
     "createdAt": "2026-09-10T13:17:34.870Z",
@@ -43581,7 +43616,7 @@
     "opts": [
       "A) O'quvchilarga faqat kitobdan qoidani yodlatish va amaliy mashq qildirmaslik",
       "B) Harakatni ko'rsatmasdan faqat video orqali tomosha qildirish",
-      "C) Namunaviy ko'rsatish \\to harakatni elementlar bo'yicha bo'lib tushuntirish va mashq qildirish \\to butun harakatni yaxlit holda avtomatizmgacha yetkazish",
+      "C) Namunaviy ko'rsatish -> harakatni elementlar bo'yicha bo'lib tushuntirish va mashq qildirish -> butun harakatni yaxlit holda avtomatizmgacha yetkazish",
       "D) O'quvchilarni darhol mustaqil ravishda o'z bilganicha qadam tashlashga qo'yib berish"
     ],
     "topic": "Pedagogik mahorat",
@@ -43617,7 +43652,7 @@
     "id": "chqbt_sit_097",
     "q": "CHQBT o'qituvchisi dars jarayonida darslik va nazariy materialdan tashqari qaysi me'yoriy hujjatlarga qat'iy tayangan holda dars o'tishi shart?",
     "qHash": "1tmp96z_3z",
-    "mnemonic": "CHQBT me'yoriy asosi: DTS + Dastur + Umumharbiy nizomlar + Qonunchilik.",
+    "mnemonic": "CHQBT me'yoriy asosi = DTS + O'quv dasturi + Umumharbiy nizomlar + Qonunlar.",
     "createdBy": "situational_academic_105_v1",
     "topic": "Pedagogik mahorat",
     "category": "chqbt",
@@ -43626,14 +43661,15 @@
     "source": "O'zbekiston Respublikasi CHQBT davlat ta'lim standarti va Qurolli Kuchlar umumharbiy nizomlari",
     "createdAt": "2026-09-10T13:17:34.870Z",
     "difficulty": "hard",
-    "updatedAt": "2026-09-10T13:17:34.870Z",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
     "explanation": "CHQBT fani davlat ahamiyatiga ega fan bo'lib, o'qituvchi o'z faoliyatida Davlat ta'lim standarti, amaldagi CHQBT o'quv dasturi, Qurolli Kuchlar Umumharbiy nizomlari hamda Mudofaa vazirligi va Maktabgacha va maktab ta'limi vazirligi qo'shma me'yoriy hujjatlariga qat'iy tayanadi.",
     "opts": [
       "A) Davlat ta'lim standarti (DTS), CHQBT o'quv dasturi, Qurolli Kuchlarning Umumharbiy nizomlari va O'zbekiston Respublikasi qonunlari",
-      "B) Faqat xorijiy davlatlarning harbiy akademiyalari qo'llanmalari",
-      "C) Faqat maktab ota-onalar qo'mitasining tavsiyanomalari",
-      "D) Gazeta va internetdagi ixtiyoriy maqolalar to'plami"
-    ]
+      "B) Faqat xorijiy davlatlarning harbiy akademiyalari tomonidan chop etilgan xalqaro harbiy taktika darsliklari va maqolalari",
+      "C) Umumiy o'rta ta'lim maktabining ota-onalar qo'mitasi hamda mahalla fuqarolar yig'ini kengashining tavsiyaviy hujjatlari",
+      "D) Mudofaa vazirligi buyruqlarisiz faqat ommaviy axborot vositalari va internet tarmoqlarida e'lon qilingan ilmiy maqolalar to'plami"
+    ],
+    "updatedBy": "pro105_and_audit_fixes"
   },
   {
     "id": "chqbt_sit_098",
@@ -43819,13 +43855,13 @@
     "correct": 0,
     "explanation": "Sanitariya tozalash punkti qat'iy «iflos» va «toza» zonalarga bo'linadi: avval kiyimlar yechilib utilizatsiyaga topshiriladi, dush qabul qilinadi, dozimetr bilan tozalik tekshiriladi va «toza» zonada yangi kiyim kiyiladi.",
     "opts": [
-      "A) Nazorat-taqsimlash posti \\to kiyimlarni yechish va zararlangan kiyimlarni topshirish \\to dush xonasida sovunlab yuvinish \\to dozimetrik nazorat \\to toza kiyim kiyish",
-      "B) Dushda yuvinish \\to kiyimni yechish \\to nazorat posti",
-      "C) Kiyim ustidan dush qabul qilish \\to to'g'ridan-to'g'ri kazarmaga ketish",
+      "A) Nazorat-taqsimlash posti -> kiyimlarni yechish va zararlangan kiyimlarni topshirish -> dush xonasida sovunlab yuvinish -> dozimetrik nazorat -> toza kiyim kiyish",
+      "B) Dushda yuvinish -> kiyimni yechish -> nazorat posti",
+      "C) Kiyim ustidan dush qabul qilish -> to'g'ridan-to'g'ri kazarmaga ketish",
       "D) Faqat oyoq kiyimni artib, dush qabul qilmasdan o'tish"
     ],
     "qHash": "1yqicy3_4m",
-    "mnemonic": "PusO tartibi: Taqsimlash $\\to$ Kiyim yechish $\\to$ Dush $\\to$ Dozimetriya $\\to$ Toza kiyim.",
+    "mnemonic": "PusO tartibi: Taqsimlash -> Kiyim yechish -> Dush -> Dozimetriya -> Toza kiyim.",
     "createdAt": "2026-08-30T17:05:10.897Z",
     "updatedAt": "2026-09-10T13:17:34.870Z",
     "image": "",
@@ -46087,18 +46123,20 @@
     "id": "f2TTbN1ns5xFGle7QIw6",
     "topicId": 1,
     "correct": 0,
-    "explanation": "Saf nizomining 68-moddasiga binoan: xizmatchi boshliqqa 2-3 qadam masofada to'xtaydi, qo'lini bosh kiyimiga qo'yadi va masalan: 'O'rtoq kapitan, oddiy askar Karimov sizning buyrug'ingiz bilan yetib keldi' deb raport beradi.",
+    "explanation": "Saf nizomi 68-moddasiga binoan: xizmatchi komandir chaqirig'iga «Men!» deb javob beradi, ijro komandasida «Xo'p bo'ladi!» deb qo'l qo'yadi, saf qadami bilan boshliqqa 2-3 qadam masofada to'xtaydi va yetib kelgani haqida raport beradi.",
     "category": "chqbt",
     "createdAt": "2026-06-23T04:26:56.907Z",
     "opts": [
-      "A) Boshliqqa 2-3 qadam qolganda to'xtaydi, qo'lini bosh kiyimiga qo'yadi va yetib kelgani haqida raport beradi",
-      "B) Boshliqqa to'g'ridan-to'g'ri taqalib to'xtaydi va qo'l berib salomlashadi",
-      "C) 5-6 metr narida to'xtab ovoz chiqarib baqiradi",
-      "D) Boshliqning yonidan o'tib ketib to'xtaydi"
+      "A) «Men!» deb javob beradi, «Xo'p bo'ladi!» deydi, chap oyog'idan saf qadami bilan eng qisqa yo'l orqali boshliqqa 2-3 qadam qolganda to'xtab, raport beradi",
+      "B) «Men!» deb javob beradi, yugurish qadami bilan to'g'ridan-to'g'ri boshliq huzuriga kelib qo'l beradi va buyruq kutadi",
+      "C) Safdan chiqmasdan turgan joyida qo'lini bosh kiyimiga qo'yadi va komandirning safga o'zi yaqinlashishini kutadi",
+      "D) Birinchi qatordagi safdoshlarining orqasidan aylanib o'tib, boshliqqa 5-6 qadam masofada to'xtab salom beradi"
     ],
-    "q": "Saf nizomiga ko'ra, boshliq safdagi harbiy xizmatchini chaqirganda va 'OLDIMGA!' komandasini berganda, xizmatchi boshliqqa necha qadam qolganda to'xtashi va nima qilishi lozim?",
-    "updatedAt": "2026-08-28T09:06:33.829Z",
-    "mnemonic": "'Oldimga' komandasi: 2-3 qadam masofa + raport."
+    "q": "Saf nizomiga ko'ra, safda turgan harbiy xizmatchiga komandir tomonidan «Oddiy askar Sobirov, OLDIMGA (saf qadami bilan) — MARSH!» komandasi berilganda harbiy xizmatchining harakatlar ketma-ketligi qanday bo'ladi?",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "mnemonic": "Oldimga komandasi = «Men!» -> «Xo'p bo'ladi!» -> 2-3 qadamda to'xtash -> Raport.",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "1f12h7z_5w"
   },
   {
     "id": "f3Lvo0e25trhQmPDr9nL",
@@ -50887,19 +50925,22 @@
   },
   {
     "id": "jwyl0rZ7aO8Dppzeu0tq",
-    "explanation": "Aniq otish 1500 m bo'lsa ham, o'q maksimal 3800 m uchadi va shu masofagacha xavfli. Otish maydoni xavfsizligida maksimal uchish masofasi hisobga olinadi.",
-    "mnemonic": "Xavf chegarasi = maksimal uchish (3800 m).",
+    "explanation": "PKM o'qi maksimal 3800 metrga uchadi va o'zining butun parvoz yo'lida inson hayotiga xavf tug'diradi. Shu sababli dala poligonida xavfsiz o'q tutgich va chegara hududi belgilanganda maksimal uchish masofasi (3800 m) inobatga olinadi.",
+    "mnemonic": "Poligon xavfsizlik chegarasi = Maksimal uchish masofasi (PKM da 3800 m).",
     "category": "chqbt",
-    "q": "PKM o'qi maksimal 3800 m uchadi, aniq otish esa 1500 m. Otish maydoni xavfsizligida qaysi masofa hisobga olinadi?",
+    "q": "7,62 mm li Kalashnikov pulemyoti (PKM) ning nishonga olish masofasi 1500 metr, o'qning eng uzoqqa uchish masofasi esa 3800 metrni tashkil etadi. O'q otish poligonida xavfsizlik zonasini belgilashda ushbu ko'rsatkichlardan qaysi biri asos qilib olinadi?",
     "opts": [
-      "A) 100 m — xavfsiz zona",
-      "B) 658 m — stvol uzunligi",
-      "C) 1500 m — o'q keyin yo'qoladi",
-      "D) 3800 m — o'q shu masofagacha uchadi"
+      "A) Nishonga olish masofasi (1500 m) — chunki bu masofadan so'ng o'q o'zining jangovar yo'nalishini butunlay yo'qotadi",
+      "B) To'g'ridan-to'g'ri otish masofasi (400 m) — chunki barcha amaliy o'q otish mashqlari faqat shu oraliqda bajariladi",
+      "C) O'qning to'liq parvoz masofasi (3800 m) — chunki o'q o'zining butun uchish masofasida odam uchun halokatli kuchini saqlab qoladi",
+      "D) O'rtacha jangovar masofa (800 m) — chunki dala poligonlarining me'yoriy chegarasi shu masofa bo'yicha hisoblanadi"
     ],
     "topicId": 2,
     "createdAt": "2026-06-23T04:26:56.901Z",
-    "correct": 3
+    "correct": 2,
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "c2mh27_70"
   },
   {
     "id": "k3nIUl3Yo9yg3d4ZroyE",
@@ -56027,18 +56068,21 @@
   {
     "id": "pOxug4vbwnadGIoz9y4Q",
     "createdAt": "2026-06-23T04:27:03.714Z",
-    "mnemonic": "Ortga buril — chap yelka tomonga 180°.",
+    "mnemonic": "Ortga buril = Chap yelka tomonga 180° (chap tovon + o'ng oyoq uchi).",
     "category": "chqbt",
     "explanation": "Saf nizomiga binoan «Ortga – BURIL!» buyrug'i faqat chap yelka tomonga, chap oyoq tovoni va o'ng oyoq uchi yordamida tanani 180 darajaga burish orqali bajariladi.",
     "opts": [
-      "A) Chap yelka tomonga chap tovon va o'ng oyoq uchi orqali 180° ga burilinadi",
-      "B) O'ng yelka tomonga o'ng tovon orqali 180° ga burilinadi",
-      "C) Faqat bosh va yelkalar orqaga buriladi",
-      "D) Sakrab orqaga burilinadi"
+      "A) Chap yelka tomonga chap tovon va o'ng oyoq uchi orqali 180° ga burilib, o'ng oyoq taqiladi",
+      "B) O'ng yelka tomonga o'ng tovon va chap oyoq uchi orqali 180° ga burilib, chap oyoq taqiladi",
+      "C) Oyoqlarni qimirlatmasdan faqat gavda va yelkalarni 180° ga burish orqali ijro etiladi",
+      "D) To'xtamasdan oldinga ikki qadam tashlab, joyida yarim burilish qilib to'xtash orqali bajariladi"
     ],
     "correct": 0,
     "q": "Saf nizomiga ko'ra, joyida «Ortga – BURIL!» buyrug'i berilganda harakat qanday ijro etiladi?",
-    "topicId": 3
+    "topicId": 3,
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "rlaxz0_2k"
   },
   {
     "id": "pPiCo6CjFf7CuSvRyAQm",
@@ -56861,19 +56905,21 @@
   {
     "id": "qGcwNoKUYDtO7C9tJTHU",
     "category": "chqbt",
-    "explanation": "Dastlabki holat (0°) → O'ng-ga (+90°) → Ort-ga (+90° + 180° = 270°) → Chap-ga (270° - 90° = 180°). Natijada askar yuzi dastlabki yo'nalishiga qarama-qarshi (orqaga) qaraydi.",
-    "mnemonic": "Ketma-ket burilishlar: +90° + 180° - 90° = 180° (orqaga).",
+    "explanation": "Saf nizomiga ko'ra, 'Sochil!' buyrug'ida harbiy xizmatchilar safni buzib, ko'rsatilgan yo'nalish bo'yicha oraliq va masofalarni saqlagan holda tezkorlik bilan yoyiladilar.",
+    "mnemonic": "«Sochil!» buyrug'i = Belgilangan yo'nalishda tezkorlik bilan tarqalish.",
     "createdAt": "2026-06-23T04:27:06.794Z",
     "correct": 0,
     "opts": [
-      "A) Dastlabki yo'nalishiga qarama-qarshi tomonga (180° orqaga)",
-      "B) Dastlabki yo'nalishining aynan o'ziga (360° to'liq)",
-      "C) Dastlabki yo'nalishidan 90° o'ng tomonga",
-      "D) Dastlabki yo'nalishidan 90° chap tomonga"
+      "A) Bo'linma jangchilari belgilangan yoki komandir ko'rsatgan yo'nalishda oraliq va masofani saqlagan holda tezkorlik bilan tarqaladilar",
+      "B) Barcha harbiy xizmatchilar qurollarini yerga qo'yib, saf bo'ylab qo'llarini ko'targan holda tiz cho'kib o'tiradilar",
+      "C) Qurollarni zudlik bilan 'ko'krakka' holatiga o'tkazib, bo'linma komandirining atrofida zich aylana hosil qilib to'planadilar",
+      "D) Harakat yo'nalishini o'zgartirmasdan, butun bo'linma bir vaqtning o'zida saf qadami bilan orqaga chekinishni boshlaydi"
     ],
     "topicId": 3,
-    "updatedAt": "2026-08-28T09:06:34.358Z",
-    "q": "Safda turgan askar dastlabki holatidan ketma-ket «O'ng-GA!», so'ng «Ort-GA!», so'ng «Chap-GA!» komandalarini bajarsa, uning yuzi dastlabki yo'nalishga nisbatan qaysi tomonga qaragan bo'ladi?"
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "q": "Bo'linma safida qurol 'osqichda' holatida harakatlanayotgan harbiy xizmatchiga boshliq tomonidan 'SOCHIL!' buyrug'i berilganda, xizmatchilar qanday harakat qilishi nizom bilan belgilangan?",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "sxsjbn_58"
   },
   {
     "id": "qItcn1tcRFfn2DMrnGih",
@@ -57102,10 +57148,10 @@
     "id": "qXMFAPoc2dYiiox3wJIF",
     "explanation": "1-fotoda patronlar bosh barmoq bosimi bilan o'qdonning yon devorlaridagi bukilgan bo'rtiqlar ostiga bittadan joylanmoqda. 2-fotoda esa oboyma va o'tkazgich yordamida to'ldirish ko'rsatilgan. Lenta avtomatda emas, pulemyotlarda qo'llanadi.",
     "opts": [
-      "A) Oboyma va o'tkazgich yordamida to'ldirish",
-      "B) Bosh barmoq bosimi bilan bittadan joylash",
-      "C) Lenta orqali uzluksiz to'ldirish",
-      "D) Maxsus to'ldirish moslamasi bilan to'ldirish"
+      "A) 15 ta patronli oboyma va maxsus o'tkazgich moslamasi yordamida tezkor to'ldirish",
+      "B) Har bir patronni o'qdon labchalari ostiga bosh barmoq bosimi bilan bittadan joylash",
+      "C) Pulemyot metall lentasi orqali patronlarni o'qdonga ketma-ket joylashtirish",
+      "D) Mexanik richagli statsionar moslama yordamida o'qdonni bosim ostida to'ldirish"
     ],
     "q": "Fotolarda o'qdonni patronlar bilan to'ldirishning ikki usuli ko'rsatilgan. 1-raqamli fotoda qanday usul qo'llanilmoqda?",
     "image": "/images/chqbt_oqdon_toldirish.png",
@@ -57113,7 +57159,9 @@
     "createdAt": "2026-06-23T04:27:10.035Z",
     "category": "chqbt",
     "correct": 1,
-    "topicId": 2
+    "topicId": 2,
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "updatedBy": "pro105_and_audit_fixes"
   },
   {
     "id": "qYCJHIs78dtkPUtr9FM8",
@@ -59368,20 +59416,23 @@
   },
   {
     "id": "svtkiF1lyTDKFR5Fg0b8",
-    "mnemonic": "Manba: O'zR QK Garnizon xizmati nizomi.",
+    "mnemonic": "Garnizonda tartib chora-tadbirlari = Garnizon boshlig'i vakolati.",
     "createdAt": "2026-08-22T10:02:59.414Z",
     "category": "chqbt",
     "q": "Garnizon xizmati nizomiga muvofiq, garnizonda harbiy intizomni saqlash, jinoyatlar va ko'ngilsiz hodisalarning oldini olish bo'yicha umumiy chora-tadbirlarni kim belgilaydi?",
     "opts": [
-      "A) Harbiy komendant",
+      "A) Garnizon harbiy komendanti",
       "B) Garnizon boshlig'i",
-      "C) Harbiy prokuror",
-      "D) Patrul xizmati boshlig'i"
+      "C) Garnizon harbiy prokurori",
+      "D) Garnizon patrul xizmati boshlig'i"
     ],
     "source": "local-import-2026-08-22",
     "topicId": 1,
     "correct": 1,
-    "explanation": "Garnizon xizmati nizomiga ko'ra, garnizonda harbiy intizomni mustahkamlash, huquqbuzarliklar va ko'ngilsiz hodisalarning oldini olish bo'yicha chora-tadbirlarni ishlab chiqish va tasdiqlash bevosita Garnizon boshlig'ining vakolatiga kiradi."
+    "explanation": "Garnizon xizmati nizomiga ko'ra, garnizonda harbiy intizomni mustahkamlash, huquqbuzarliklar va ko'ngilsiz hodisalarning oldini olish bo'yicha chora-tadbirlarni ishlab chiqish va tasdiqlash bevosita Garnizon boshlig'ining vakolatiga kiradi.",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "1irynd8_4t"
   },
   {
     "id": "t0Jyxdv8tdTe2j30tQ2X",
@@ -60529,16 +60580,18 @@
     "explanation": "Saf nizomining 27-moddasi: 'Harbiycha tik turishda to'vonlar birlashtiriladi, oyoq uchlari esa peshqadam chizig'i bo'ylab kaft kengligida (45 gradus burchak hosil qilib) ochiladi'.",
     "createdAt": "2026-06-23T04:27:03.713Z",
     "topicId": 1,
-    "mnemonic": "Harbiycha turish: to'vonlar birga, uchlar 45° (kaft kengligida).",
-    "updatedAt": "2026-08-28T09:06:37.121Z",
+    "mnemonic": "Harbiycha turish = To'vonlar birga, uchlar 45° (kaft kengligida).",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
     "correct": 0,
     "category": "chqbt",
     "opts": [
       "A) To'vonlar birga qo'yiladi, oyoq uchlari peshqadam chizig'i bo'ylab kaft kengligida (taxminan 45° burchak ostida) ochiladi",
-      "B) Oyoqlar yelka kengligida parallel joylashtiriladi",
-      "C) Oyoq uchlari birlashtirilib, to'vonlar ochiladi",
-      "D) Faqat o'ng oyoq oldinga chiqariladi"
-    ]
+      "B) Oyoqlar yelka kengligida parallel qo'yilib, qo'llar erkin ravishda shim cho'ntaklariga qo'yiladi",
+      "C) Oyoq uchlari birlashtirilib, to'vonlar 60° burchak ostida tashqi tomonga keng ochib turiladi",
+      "D) Faqat o'ng oyoq bir qadam oldinga chiqarilib, gavdaning asosiy og'irligi orqa chap oyoqqa tashlanadi"
+    ],
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "11wji3z_3n"
   },
   {
     "id": "uBHmHTMhUU0PIl8XlbPm",
@@ -61758,8 +61811,8 @@
   },
   {
     "id": "vBlrtiKsvNgRkNUjP1nC",
-    "updatedAt": "2026-08-28T09:06:31.775Z",
-    "mnemonic": "Safga qaytish: qo'l boshda — 'Xo'p bo'ladi' — o'z joyiga.",
+    "updatedAt": "2026-09-11T12:07:03.536Z",
+    "mnemonic": "Safga qaytish = Qo'l boshda -> 'Xo'p bo'ladi' -> O'z joyiga yurish.",
     "createdAt": "2026-06-23T04:27:06.790Z",
     "q": "Harbiy xizmatchi safdan chiqqandan so'ng komandirning 'Safga TUR!' komandasi berilganda qanday harakatlarni amalga oshiradi?",
     "explanation": "Saf nizomiga ko'ra: 'Safga TUR!' komandasi berilganda harbiy xizmatchi qo'lini bosh kiyimiga qo'yib 'Xo'p bo'ladi' deb javob beradi, burilib qadamlab o'z joyiga boradi.",
@@ -61767,11 +61820,13 @@
     "topicId": 1,
     "correct": 0,
     "opts": [
-      "A) Boshliqqa qarab qo'lini bosh kiyimiga qo'yadi, 'Xo'p bo'ladi' deb javob beradi, orqaga burilib eng qisqa yo'l bilan safdagi o'z o'rniga boradi",
-      "B) Komandaga javob bermasdan to'g'ridan-to'g'ri yugurib safga kiradi",
-      "C) Safga faqat orqa tomondan aylanib kiradi",
-      "D) Qo'lini tushirib, komandir ruxsatisiz joyiga o'tiradi"
-    ]
+      "A) Qo'lini bosh kiyimiga qo'yadi, 'Xo'p bo'ladi' deb javob beradi, orqaga burilib eng qisqa yo'l bilan safdagi o'z o'rniga boradi",
+      "B) Komandaga og'zaki javob bermasdan darhol orqaga buriladi va yugurish qadami bilan birinchi qatordagi ixtiyoriy bo'sh joyga kiradi",
+      "C) Safdoshlariga qarata 'Ruxsat eting' deydi va safning orqa qanotidan aylanib o'tib o'z bo'linmasining eng oxirgi safiga qo'shiladi",
+      "D) Qo'lini tushirib qad rostlaydi, komandirga ta'zim qiladi va saf boshlig'ining shaxsiy buyrug'ini kutib joyida qimirlamay turadi"
+    ],
+    "updatedBy": "pro105_and_audit_fixes",
+    "qHash": "8otdwc_3g"
   },
   {
     "id": "vCg941y3aT8UWkcQcZA0",
@@ -66758,5 +66813,2210 @@
     "mnemonic": "Ro'yxat va qahramonlar nomi — kechki yo'qlama.",
     "explanation": "Kechki yo'qlama vaqtida rota navbatchisi yoki komandir shaxsiy tarkibni to'liq ro'yxat bo'yicha tekshiradi, qahramonlar va faxriy askarlar nomi yodga olinadi. Ertalabki ko'rik tashqi ko'rinishni, xabardorlik esa axborot berishni ko'zda tutadi; kechki sayr alohida tadbir hisoblanadi.",
     "qHash": "1lthgo5_5b"
+  },
+  {
+    "id": "chqbt_pro_001",
+    "topicId": 0,
+    "category": "chqbt",
+    "q": "Kontrakt bo'yicha harbiy xizmatni o'tash tartibi to'g'risidagi Nizomga ko'ra, harbiy xizmatchi sud hukmi bilan muayyan muddatga ozodlikdan mahrum etilgan yoki harbiy unvoni bekor qilingan taqdirda kontrakt qanday huquqiy oqibatga uchraydi?",
+    "opts": [
+      "A) Kontrakt muddatidan oldin bekor qilinadi va harbiy xizmatchi xizmatdan sharmandali sabab bilan bo'shatiladi",
+      "B) Kontrakt muddati sudlanganlik davriga to'xtatilib, jazo o'tab bo'lingach yana davom ettiriladi",
+      "C) Harbiy xizmatchi lavozimi bir pog'ona pasaytirilgan holda boshqa harbiy okrugga xizmatga yuboriladi",
+      "D) Harbiy qism komandiri qarori bilan kontrakt shartlari sudlanganlik muddati tugaguniga qadar muzlatiladi"
+    ],
+    "correct": 0,
+    "explanation": "Qonunchilikka ko'ra, sud hukmi qonuniy kuchga kirgan, harbiy unvoni bekor qilingan yoki ozodlikdan mahrum etilgan harbiy xizmatchi bilan tuzilgan kontrakt muddatidan oldin bekor qilinadi va u xizmatdan bo'shatiladi.",
+    "mnemonic": "Sud hukmi = Kontrakt bekor qilinadi, xizmatdan bo'shatiladi.",
+    "qHash": "1d3h0uk_6n",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_002",
+    "topicId": 0,
+    "category": "chqbt",
+    "q": "«Safarbarlik tayyorgarligi va safarbarlik to'g'risida»gi Qonunga muvofiq, umumiy yoki qisman safarbarlik e'lon qilingan paytda Qurolli Kuchlar zaxirasidagi harbiy xizmatga majburlar qanday harakat qilishi shart?",
+    "opts": [
+      "A) Faqat Mudofaa vazirligining rasmiy veb-saytida ro'yxatdan o'tib, navbatdagi elektron ko'rsatmani kutish",
+      "B) Harbiy hisob varaqasi va chaqiruv qog'ozida (buyruqda) ko'rsatilgan muddatda belgilangan yig'in punktlariga zudlik bilan yetib kelish",
+      "C) O'zining doimiy yashash joyidagi mahalla fuqarolar yig'iniga borib xorijga chiqish ruxsatnomasini rasmiylashtirish",
+      "D) Faqat shaxsiy transport vositasini mudofaa ehtiyojlari uchun topshirish to'g'risida tuman hokimligiga ariza berish"
+    ],
+    "correct": 1,
+    "explanation": "Safarbarlik e'lon qilinganda zaxiradagi harbiy xizmatga majburlar buyruqda va chaqiruv qog'ozida belgilangan manzil va muddatda yig'in punktlariga yetib kelishlari shart.",
+    "mnemonic": "Safarbarlik = Chaqiruv qog'ozidagi muddatda yig'in punktiga yetib kelish.",
+    "qHash": "1t0k91b_5v",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_003",
+    "topicId": 0,
+    "category": "chqbt",
+    "q": "«O'zbekiston Respublikasi fuqarolarining harbiy xizmatni o'tash tartibi to'g'risida»gi Nizomga ko'ra, oddiy askar harbiy unvonidagi shartnoma bo'yicha harbiy xizmatchi uchun harbiy xizmatda bo'lishning chekka yoshi necha yosh etib belgilangan?",
+    "opts": [
+      "A) 40 yosh etib belgilangan",
+      "B) 50 yosh etib belgilangan",
+      "C) 45 yosh etib belgilangan",
+      "D) 55 yosh etib belgilangan"
+    ],
+    "correct": 2,
+    "explanation": "Nizomga ko'ra, oddiy askarlar, serjantlar va kichik ofitserlar tarkibidagi shartnoma bo'yicha harbiy xizmatchilar uchun harbiy xizmatda bo'lishning chekka yoshi 45 yoshdir.",
+    "mnemonic": "Oddiy askar, serjant, kichik ofitser chekka yoshi = 45 yosh.",
+    "qHash": "kjs90y_6r",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_004",
+    "topicId": 0,
+    "category": "chqbt",
+    "q": "Safarbarlik chaqiruvi rezervidagi (SCHR) harbiy xizmatga olingan fuqaro bir oylik harbiy yig'inni o'tash davrida qanday huquqiy maqomga ega bo'ladi?",
+    "opts": [
+      "A) Oddiy fuqaro maqomida qolib, faqat jamoat tartibini saqlash ko'ngillisi hisoblanadi",
+      "B) Faqat mehnat qonunchiligi doirasida haq to'lanadigan amaliyotchi maqomini oladi",
+      "C) Favqulodda vaziyatlar vazirligining fuqaro muhofazasi xodimi maqomiga tenglashtiriladi",
+      "D) Harbiy xizmatchi maqomiga ega bo'ladi va unga umumharbiy nizomlar talablari to'liq tatbiq etiladi"
+    ],
+    "correct": 3,
+    "explanation": "SCHR xizmatchilari bir oylik harbiy yig'inni o'tash vaqtida harbiy xizmatchi maqomiga ega bo'ladilar, harbiy qasamyod qabul qiladilar va umumharbiy nizomlarga to'liq bo'ysunadilar.",
+    "mnemonic": "SCHR yig'in davrida = To'laqonli harbiy xizmatchi maqomida bo'ladi.",
+    "qHash": "m4n0rs_44",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_005",
+    "topicId": 0,
+    "category": "chqbt",
+    "q": "O'zbekiston Respublikasi 'Mudofaa to'g'risida'gi Qonuniga muvofiq, O'zbekiston Respublikasi Qurolli Kuchlarining Oliy Bosh Qo'mondoni hisoblanadigan mansabdor shaxs qaysi javobda to'g'ri ko'rsatilgan?",
+    "opts": [
+      "A) O'zbekiston Respublikasi Prezidenti",
+      "B) O'zbekiston Respublikasi Oliy Majlisi Senati Raisi",
+      "C) O'zbekiston Respublikasi Mudofaa vaziri",
+      "D) O'zbekiston Respublikasi Bosh vaziri"
+    ],
+    "correct": 0,
+    "explanation": "Konstitutsiya va 'Mudofaa to'g'risida'gi Qonunning tegishli moddalariga binoan, O'zbekiston Respublikasi Prezidenti Qurolli Kuchlarning Oliy Bosh Qo'mondoni hisoblanadi.",
+    "mnemonic": "Oliy Bosh Qo'mondon = Prezident.",
+    "qHash": "zabix2_5k",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_006",
+    "topicId": 0,
+    "category": "chqbt",
+    "q": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunga muvofiq, kimlar muqobil xizmatga chaqirilish huquqiga ega va uning muddati necha oy?",
+    "opts": [
+      "A) Sog'lig'i bo'yicha harbiy xizmatga cheklangan deb topilgan fuqarolar — muddati 6 oy",
+      "B) Ro'yxatdan o'tgan diniy konfessiyalarga mansubligi bo'yicha harbiy xizmatni o'tashga e'tiqodi yo'l qo'ymaydigan chaqiriluvchilar — muddati 12 oy",
+      "C) Respublika oliy ta'lim muassasalarining sirtqi bo'limida o'qiyotgan talabalar — muddati 18 oy",
+      "D) Oila a'zolari tarkibida I yoki II guruh nogironi mavjud bo'lgan chaqiriluvchilar — muddati 24 oy"
+    ],
+    "correct": 1,
+    "explanation": "Qonunga ko'ra, diniy e'tiqodiga ko'ra qurol ko'tarish va harbiy xizmatni o'tashga diniy ta'limoti yo'l qo'ymaydigan, ro'yxatdan o'tgan diniy tashkilotlar a'zolari bo'lgan chaqiriluvchilar muqobil xizmatga chaqiriladi va xizmat muddati 12 oyni tashkil etadi.",
+    "mnemonic": "Muqobil xizmat = Diniy konfessiya a'zosi, muddati 12 oy.",
+    "qHash": "q0cj2o_46",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_007",
+    "topicId": 0,
+    "category": "chqbt",
+    "q": "Fuqarolarni chaqiruv uchastkalarida qayd etish (dastlabki harbiy hisobga olish) ularning necha yoshga to'lgan yilida va qaysi oylarda o'tkaziladi?",
+    "opts": [
+      "A) 16 yoshga to'lgan yilida, fevral-mart oylarida",
+      "B) 17 yoshga to'lgan yilida, oktyabr-dekabr oylarida",
+      "C) 16 yoshga to'lgan yilida, aprel-iyun oylarida",
+      "D) 18 yoshga to'lgan yilida, sentyabr-noyabr oylarida"
+    ],
+    "correct": 2,
+    "explanation": "«Umumiy harbiy majburiyat va harbiy xizmat to'g'risida»gi Qonunning 8-moddasiga binoan, fuqarolar 16 yoshga to'lgan yili aprel-iyun oylarida chaqiruv uchastkalarida qayd etiladi.",
+    "mnemonic": "Chaqiruv uchastkasida qayd etish = 16 yosh, aprel-iyun.",
+    "qHash": "1e6m1ye_42",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_008",
+    "topicId": 0,
+    "category": "chqbt",
+    "q": "O'zbekiston Respublikasi harbiy unvonlar tizimida «katta ofitserlar» tarkibiga qaysi harbiy unvonlar to'liq va to'g'ri kiritilgan?",
+    "opts": [
+      "A) Kichik leytenant, leytenant, katta leytenant, kapitan",
+      "B) General-mayor, general-leytenant, general-polkovnik",
+      "C) Katta serjant, podpolkovnik, armiya generali",
+      "D) Mayor, podpolkovnik, polkovnik"
+    ],
+    "correct": 3,
+    "explanation": "Katta ofitserlar tarkibiga: mayor, podpolkovnik va polkovnik harbiy unvonlari kiradi. Kichik ofitserlar — leytenantdan kapitangacha, oliy ofitserlar esa generallardir.",
+    "mnemonic": "Katta ofitserlar = Mayor, Podpolkovnik, Polkovnik (3 ta unvon).",
+    "qHash": "1i9v1yn_3m",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_009",
+    "topicId": 0,
+    "category": "chqbt",
+    "q": "Tinchlik davrida harbiy xizmatga chaqirilish yoshi chegarasi qaysi javobda to'g'ri ko'rsatilgan?",
+    "opts": [
+      "A) 18 yoshdan 27 yoshgacha",
+      "B) 17 yoshdan 25 yoshgacha",
+      "C) 18 yoshdan 30 yoshgacha",
+      "D) 19 yoshdan 28 yoshgacha"
+    ],
+    "correct": 0,
+    "explanation": "O'zbekiston Respublikasi qonunchiligiga binoan chaqiruv kuni 18 yoshga to'lgan hamda 27 yoshdan oshmagan fuqarolar muddatli harbiy xizmatga chaqiriladilar.",
+    "mnemonic": "Chaqiruv yoshi = 18 yoshdan 27 yoshgacha.",
+    "qHash": "rthtla_2o",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_010",
+    "topicId": 0,
+    "category": "chqbt",
+    "q": "Chaqiriluvchiga oilaviy ahvoliga ko'ra muddatli harbiy xizmatga chaqirilish muddatini kechiktirish qaysi qonuniy asos mavjud bo'lganda beriladi?",
+    "opts": [
+      "A) Oilada kamida uchta voyaga yetgan mehnatga layoqatli aka-uka birgalikda yashab kelayotgan bo'lsa",
+      "B) Ota-onasi qonunan ularni boqishi shart bo'lgan boshqa mehnatga layoqatli shaxslari bo'lmagan, mehnatga qobiliyatsiz bo'lsa",
+      "C) Oila a'zolaridan biri chet elda uzoq muddatli mehnat safarida yoki oliy ta'limda ta'lim olayotgan bo'lsa",
+      "D) Oilaning barcha voyaga yetgan a'zolari davlat korxonalari yoki budjet tashkilotlarida faoliyat yuritayotgan bo'lsa"
+    ],
+    "correct": 1,
+    "explanation": "Qonunga ko'ra, oilada mehnatga qobiliyatsiz ota-onani boqishi shart bo'lgan boshqa voyaga yetgan mehnatga layoqatli farzandlar bo'lmagan taqdirda chaqiriluvchiga chaqiruv muddati kechiktiriladi.",
+    "mnemonic": "Kechiktirish = Boquvchisi bo'lmagan mehnatga qobiliyatsiz ota-ona.",
+    "qHash": "zroac_40",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_011",
+    "topicId": 0,
+    "category": "chqbt",
+    "q": "Zaxiradagi yoki iste'fodagi ofitserlarni harbiy unvondan mahrum qilish vakolati qaysi organga berilgan?",
+    "opts": [
+      "A) Harbiy xizmatchi xizmat qilayotgan tuman yoki shahar mudofaa ishlari bo'limi boshlig'ining qarori bilan",
+      "B) Harbiy qism ofitserlar yig'ilishining umumiy qaroriga asosan harbiy qism komandiri buyrug'i bilan",
+      "C) Og'ir yoki o'ta og'ir jinoyat sodir etganligi uchun sud hukmiga binoan, shuningdek oliy ofitserlarni Prezident qarori bilan",
+      "D) Respublika harbiy prokuraturasining taqdimnomasiga asosan tuman sudi raisining rasmiy farmoyishi bilan"
+    ],
+    "correct": 2,
+    "explanation": "Harbiy xizmatchi yoki zaxiradagi ofitser og'ir yoxud o'ta og'ir jinoyat uchun sud hukmi bilan harbiy unvondan mahrum qilinishi mumkin. Oliy ofitserlar unvonidan O'zbekiston Respublikasi Prezidenti qarori bilan mahrum etiladi.",
+    "mnemonic": "Unvondan mahrum qilish = Sud hukmi (og'ir jinoyatda) / Prezident (oliy ofitserlar).",
+    "qHash": "1290v4f_2v",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_012",
+    "topicId": 0,
+    "category": "chqbt",
+    "q": "Harbiy xizmatni o'tash davrida harbiy xizmatchining qonuniy xizmat majburiyatlarini bajarish vaqti hisoblanmaydigan holat qaysi?",
+    "opts": [
+      "A) Harbiy qism hududida belgilangan kun tartibi doirasida jangovar tayyorgarlik mashg'ulotlarida bo'lish",
+      "B) Harbiy xizmat vazifalarini bajarish munosabati bilan xizmat safarida yoki marshda bo'lish",
+      "C) Harbiy qism buyrug'i bilan tabiiy ofatlar oqibatlarini bartaraf etish ishlarida bevosita qatnashish",
+      "D) Harbiy qismni yoki xizmat joyini o'zboshimchalik bilan tark etib, o'zining shaxsiy ishlari bilan shug'ullanish"
+    ],
+    "correct": 3,
+    "explanation": "Harbiy xizmatchi harbiy qismni o'zboshimchalik bilan tark etgan yoki qasddan o'zini jarohatlagan vaqtda harbiy xizmat vazifalarini bajarayotgan deb hisoblanmaydi.",
+    "mnemonic": "Xizmat vazifasi hisoblanmaydi = Qismni o'zboshimchalik bilan tashlab ketish.",
+    "qHash": "1s3ljsf_3k",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_013",
+    "topicId": 0,
+    "category": "chqbt",
+    "q": "O'zbekiston Respublikasi Harbiy qasamyodi matni qaysi normativ-huquqiy hujjat bilan tasdiqlangan?",
+    "opts": [
+      "A) O'zbekiston Respublikasining Qonuni bilan",
+      "B) Mudofaa vazirining idoraviy buyrug'i bilan",
+      "C) Vazirlar Mahkamasining qarori bilan",
+      "D) Qurolli Kuchlar Bosh shtabi boshlig'ining farmoyishi bilan"
+    ],
+    "correct": 0,
+    "explanation": "Harbiy qasamyod matni O'zbekiston Respublikasining 1992-yil 3-iyulda qabul qilingan «Harbiy qasamyod to'g'risida»gi Qonuni bilan qonun darajasida tasdiqlangan.",
+    "mnemonic": "Harbiy qasamyod matni = O'zbekiston Respublikasi Qonuni bilan tasdiqlangan.",
+    "qHash": "1tye97s_2p",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_014",
+    "topicId": 0,
+    "category": "chqbt",
+    "q": "O'zbekiston Respublikasi Qurolli Kuchlari tuzilmasiga quyidagi qo'shin turlaridan qaysilari kiritilgan?",
+    "opts": [
+      "A) Faqat Ichki ishlar vazirligi patrul-post xizmati hamda yo'l harakati xavfsizligi brigadalari",
+      "B) Quruqlikdagi qo'shinlar, Havo hujumidan mudofaa qo'shinlari va Harbiy havo kuchlari, Maxsus operatsiya kuchlari hamda boshqa qo'shilmalar",
+      "C) Faqat Chegara qo'shinlari hamda Davlat bojxona qo'mitasining kontrabandaga qarshi kurash bo'limlari",
+      "D) Faqat Favqulodda vaziyatlar vazirligining qutqaruv otryadlari va fuqaro muhofazasi batalonlari"
+    ],
+    "correct": 1,
+    "explanation": "O'zbekiston Respublikasi Qurolli Kuchlari tarkibiga Quruqlikdagi qo'shinlar, Havo hujumidan mudofaa qo'shinlari va Harbiy havo kuchlari, Maxsus operatsiya kuchlari, shuningdek tegishli vazirlik va idoralarning harbiy tuzilmalari kiradi.",
+    "mnemonic": "Qurolli Kuchlar tarkibi = Quruqlik, HHM va HHK, Maxsus operatsiya kuchlari.",
+    "qHash": "5wahlf_2v",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_015",
+    "topicId": 0,
+    "category": "chqbt",
+    "q": "O'zbekiston Respublikasi fuqarosi chet davlatlarning harbiy xizmatiga, xavfsizlik, politsiya, adliya yoki boshqa shunga o'xshash idoralariga xizmatga kirgan taqdirda O'zbekiston qonunchiligi bo'yicha qanday javobgarlikka tortiladi?",
+    "opts": [
+      "A) Faqat ma'muriy tartibda eng kam oylik ish haqining o'n baravari miqdorida jarimaga tortiladi",
+      "B) Chet davlatning rasmiy viza hujjati mavjud bo'lsa, har qanday huquqiy javobgarlikdan ozod qilinadi",
+      "C) Jinoyat kodeksining tegishli moddasi bo'yicha jinoiy javobgarlikka tortiladi (ozodlikdan mahrum etish jazosi qo'llaniladi)",
+      "D) Faqat fuqarolik holati dalolatnomalari bo'yicha xorijda doimiy istiqomat qilish maqomiga o'tkaziladi"
+    ],
+    "correct": 2,
+    "explanation": "O'zbekiston Respublikasi JK 154-moddasiga ko'ra, O'zbekiston fuqarosining chet davlatlarning harbiy xizmatiga, politsiya, harbiy adliya organlari yoki boshqa shunga o'xshash organlariga xizmatga kirishi 3 yildan 5 yilgacha ozodlikdan mahrum qilish bilan jazolanadi.",
+    "mnemonic": "Chet davlat harbiy xizmatiga kirish = Jinoyat kodeksi bo'yicha jinoiy javobgarlik.",
+    "qHash": "wtrg1m_6f",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_016",
+    "topicId": 1,
+    "category": "chqbt",
+    "q": "Garnizon va qorovullik xizmatlari nizomiga muvofiq, postga yaqinlashayotgan noma'lum shaxsga soqchi qorong'uda birinchi bo'lib qanday buyruq beradi?",
+    "opts": [
+      "A) «Kim u yerda, qurolni tashlab zudlik bilan oldimga kel!»",
+      "B) Hech qanday ovoz chiqarmasdan havoga ogohlantiruvchi o'q uzadi",
+      "C) «To'xta, darhol orqangga qayt, aks holda otaman!»",
+      "D) «To'xta, kim kelyapti?» (Stoy, kto idyot?)"
+    ],
+    "correct": 3,
+    "explanation": "Postga noma'lum shaxs yaqinlashganda soqchi birinchi bo'lib: «To'xta, kim kelyapti?» deb qat'iy buyruq beradi. Agar harakat davom etsa, «To'xta, otaman!» buyrug'i beriladi.",
+    "mnemonic": "Birinchi buyruq = «To'xta, kim kelyapti?».",
+    "qHash": "ozfbkx_44",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_017",
+    "topicId": 1,
+    "category": "chqbt",
+    "q": "Qorovul soqchisi postda turganida qaysi yagona favqulodda vaziyatda ogohlantiruvchi buyruq bermasdan va havoga ogohlantiruvchi o'q uzmasdan to'g'ridan-to'g'ri qurol qo'llashga haqlidir?",
+    "opts": [
+      "A) Soqchining o'ziga yoki qo'riqlanayotgan ob'ektga qurolli yoxud guruh bo'lib to'satdan hujum qilinganida",
+      "B) Post hududiga yaqin yo'lda shubhali yuk avtomobili dvigatelini o'chirib to'xtaganida",
+      "C) Post atrofida to'satdan qalin tuman, kuchli chang bo'roni yoki qorong'u tushganida",
+      "D) Postga qorovul boshlig'i belgilangan jadvaldan tashqari xabarsiz ravishda kelganida"
+    ],
+    "correct": 0,
+    "explanation": "Agar soqchiga yoki qo'riqlanayotgan ob'ektga qurolli yoki guruh bo'lib to'satdan hujum qilinsa, soqchi ogohlantirishsiz va havoga o'q uzmasdan to'g'ridan-to'g'ri nishonga qaratib qurol qo'llash huquqiga ega.",
+    "mnemonic": "To'g'ridan-to'g'ri qurol qo'llash = Qurolli yoki guruhli to'satdan hujum.",
+    "qHash": "n5kg11_55",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_018",
+    "topicId": 1,
+    "category": "chqbt",
+    "q": "Garnizon va qorovullik xizmati nizomiga muvofiq, soqchini postdan almashtirish yoki yechib olish kimning shaxsiy ishtirokida amalga oshirilishi shart?",
+    "opts": [
+      "A) Faqat harbiy qism navbatchisi yoki uning qurollangan yordamchisi ishtirokida",
+      "B) Faqat qorovul boshlig'i yoki uning yordamchisi (yoxud tarqatuvchi — razvodyashchiy) ishtirokida",
+      "C) Faqat harbiy qism komandirining jangovar tayyorgarlik bo'yicha o'rinbosari ishtirokida",
+      "D) Postda navbatchilik qilayotgan qo'shni post soqchisi va komendant ishtirokida"
+    ],
+    "correct": 1,
+    "explanation": "Soqchini postdan faqat qorovul boshlig'i, uning yordamchisi yoki soqchi bo'ysunuvchi tegishli tarqatuvchi (razvodyashchiy) shaxsan almashtirishi va yechib olishi shart.",
+    "mnemonic": "Soqchini almashtirish = Faqat qorovul boshlig'i, yordamchisi yoki tarqatuvchi.",
+    "qHash": "e7l5ri_46",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_019",
+    "topicId": 1,
+    "category": "chqbt",
+    "q": "Qorovullik xizmatida qo'llaniladigan «Parol» qanday maqsadga xizmat qiladi va uning maxfiyligi qanday ta'minlanadi?",
+    "opts": [
+      "A) Postga kelgan shaxslarning harbiy kiyim-boshi va shaxsiy gigiyenasini tekshirish uchun",
+      "B) Qorovulxonadagi qurol-yarog' va dori-darmon qutilarini qulflash va muhrlash vositasi sifatida",
+      "C) Qorovul boshlig'i va tarqatuvchining haqiqiyligini tasdiqlash uchun xizmat qiladi, u maxfiy so'z bo'lib, ovoz chiqarmasdan shivirlab aytiladi",
+      "D) Har kuni ertalabki batalon safida barcha shaxsiy tarkib huzurida ovoz chiqarib e'lon qilinadi"
+    ],
+    "correct": 2,
+    "explanation": "Parol — bu qorovul boshlig'i yoki tarqatuvchining shaxsini tasdiqlash uchun xizmat qiluvchi maxfiy so'zdir. U hech qachon baland ovozda aytilmaydi, quloqqa shivirlab aytiladi.",
+    "mnemonic": "Parol = Qorovul boshlig'i haqiqiyligini tasdiqlash uchun maxfiy shivirlanuvchi so'z.",
+    "qHash": "1uhgsns_37",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_020",
+    "topicId": 1,
+    "category": "chqbt",
+    "q": "Postda turgan soqchiga qorovullik nizomi bo'yicha quyidagi harakatlardan qaysi biri QAT'IYAN taqiqlanadi?",
+    "opts": [
+      "A) Post chegarasida belgilangan marshrut bo'ylab hushyorlik bilan qadam tashlab kuzatish",
+      "B) Qo'shni postlar hamda qorovulxona bilan vizual va texnik aloqa vositalari orqali bog'lanish",
+      "C) Xavf sezilgan holatlarda zudlik bilan qorovulxonani aloqa vositasi orqali xabardor qilish",
+      "D) Uxlash, mudrash, o'tirish, biron narsaga suyanish, chekish, ovqatlanish, qurolni topshirish yoki begona narsalar bilan chalg'ish"
+    ],
+    "correct": 3,
+    "explanation": "Soqchiga postda uxlash, mudrash, o'tirish, tayanish, yozish, o'qish, qo'shiq aytish, chekish, ovqatlanish, tabiiy ehtiyojlarni o'tash, qurolni hech kimga (hatto komandirga ham) bermaslik talab etiladi.",
+    "mnemonic": "Soqchiga taqiqlanadi = Uxlash, o'tirish, chekish, ovqatlanish, qurolni berish.",
+    "qHash": "epgz8c_2x",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_021",
+    "topicId": 1,
+    "category": "chqbt",
+    "q": "Ichki xizmat nizomiga muvofiq, rota navbatchisi qaysi shaxslarning ruxsati va buyrug'isiz rota qurol-yarog' saqlash xonasini ochishga va qurol tarqatishga mutlaqo HAQLI EMAS?",
+    "opts": [
+      "A) Faqat rota komandiri yoki rota starshinasining (favqulodda yig'in signalida — navbatchi ofitser buyrug'i bilan)",
+      "B) Harbiy qism komandirining moddiy-texnik ta'minot bo'yicha o'rinbosari buyrug'isiz",
+      "C) Harbiy qism oshxona boshlig'i yoki moddiy ta'minot ombori mudirining yozma ruxsatisiz",
+      "D) Batalon tibbiyot punkti feldsheri hamda sanitariya instruktorining xulosasisiz"
+    ],
+    "correct": 0,
+    "explanation": "Qurol saqlash xonasini ochish va qurollarni berish faqat rota komandiri yoki rota starshinasining shaxsiy buyrug'i bilan amalga oshiriladi (trevoga bo'lganda qism navbatchisi buyrug'i bilan).",
+    "mnemonic": "Qurol xonasi ochilishi = Rota komandiri yoki starshina buyrug'i bilan.",
+    "qHash": "18pbaw0_4u",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_022",
+    "topicId": 1,
+    "category": "chqbt",
+    "q": "Ichki xizmat nizomi bo'yicha rota dnevalniysining eng asosiy va birlamchi vazifasi qaysi javobda to'g'ri ko'rsatilgan?",
+    "opts": [
+      "A) Rota oshxonasida idish-tovoqlarni yuvish va oziq-ovqat mahsulotlarini qabul qilish",
+      "B) Kazarma ichidagi tartibni saqlash, qurol-yarog' saqlash xonasini daxlsiz qo'riqlash va begona shaxslarning kirishiga yo'l qo'ymaslik",
+      "C) Harbiy qism avtoparkidagi jangovar mashinalarni texnik ko'rikdan o'tkazish",
+      "D) Harbiy qism tibbiyot punktidagi bemorlarning sog'lig'i to'g'risida kundalik hisobot yuritish"
+    ],
+    "correct": 1,
+    "explanation": "Rota dnevalniyi xizmat joyidan ruxsatsiz ketmasligi, qurol xonasini qo'riqlashi, begonalarni kiritmasligi va kazarma tartibini nazorat qilishi shart.",
+    "mnemonic": "Dnevalniy = Qurol xonasini qo'riqlash, begonalarni kiritmaslik, tartib saqlash.",
+    "qHash": "142gt5d_3a",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_023",
+    "topicId": 1,
+    "category": "chqbt",
+    "q": "Harbiy intizom nizomiga ko'ra, harbiy xizmatchiga berilgan intizomiy jazo chorasini olib tashlash (rag'batlantirish tariqasida) qaysi tartibda amalga oshiriladi?",
+    "opts": [
+      "A) Jazo berilgan kundan e'tiboran 3 kundan so'ng hech qanday buyruqsiz avtomatik tarzda to'liq bekor bo'ladi",
+      "B) Bir vaqtning o'zida harbiy xizmatchining barcha oldingi intizomiy jazolari qism komandiri tomonidan to'liq bekor qilinadi",
+      "C) Rag'batlantirish tariqasida faqat bitta avval qo'llanilgan jazo olib tashlanadi va namunali xizmat uchun qo'llaniladi",
+      "D) Faqat tegishli harbiy sudning sudlanganlikni olib tashlash to'g'risidagi maxsus ajrimi chiqqanidan so'ng amalga oshiriladi"
+    ],
+    "correct": 2,
+    "explanation": "Intizomiy jazo rag'batlantirish tariqasida jazoni qo'llagan yoki undan yuqori komandir tomonidan olib tashlanadi. Bir vaqtda faqat bitta intizomiy jazo olib tashlanishi mumkin.",
+    "mnemonic": "Jazoni olib tashlash = Rag'batlantirish tariqasida, bir vaqtda faqat 1 ta jazo.",
+    "qHash": "1o21wcw_4h",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_024",
+    "topicId": 1,
+    "category": "chqbt",
+    "q": "Harbiy qismda «Jangovar bayroq» harbiy xizmatchilar uchun qanday ramziy va muqaddas ahamiyatga ega?",
+    "opts": [
+      "A) Faqat harbiy paradda ko'rgazmali yurish uchun mo'ljallangan bezak matosi",
+      "B) Harbiy qism shtab binosi peshtoqiga ilib qo'yiladigan oddiy davlat belgisi",
+      "C) Faqat qism komandiri shaxsiy kabinetida saqlanadigan xizmat atributi",
+      "D) Harbiy sha'n, shon-sharaf, jasorat va qahramonlik ramzi bo'lib, butun qism shaxsiy tarkibi uni jon fido qilib himoya qilishi shart"
+    ],
+    "correct": 3,
+    "explanation": "Jangovar bayroq — harbiy sha'n, shon-sharaf, jasorat va harbiy burch ramzidir. U qismning butun mavjudligi davomida saqlanadi. Agar bayroq yo'qotilsa, qism sharmandalarcha tarqatib yuboriladi.",
+    "mnemonic": "Jangovar bayroq = Harbiy sha'n, sharaf va jasorat ramzi.",
+    "qHash": "5gvg18_2r",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_025",
+    "topicId": 1,
+    "category": "chqbt",
+    "q": "Saf nizomiga ko'ra, qurol «osqichda» (na remen) bo'lgan holatda safda turib o'ngga yoki chapga burilish komandasi berilganda qurol qanday ushlanadi?",
+    "opts": [
+      "A) Burilish paytida qurolning tebranmasligi uchun uning kamari o'ng qo'l bilan mahkam ushlab turiladi",
+      "B) Qurol yelkadan olinib ikki qo'l bilan oldinga ko'ndalang qilib tutiladi",
+      "C) Qurol stvoli pastga qaratilib chap qo'lning tirsagiga qistirib olinadi",
+      "D) Qurolning kamaridan ushlanmasdan qo'llar erkin pastga tushirib burilinadi"
+    ],
+    "correct": 0,
+    "explanation": "Qurol «osqichda» turganda burilishlarda u tebranib ketmasligi uchun uning kamaridan o'ng qo'l bilan yelka sohasida mahkam ushlanadi.",
+    "mnemonic": "Osqichda burilish = O'ng qo'l qurol kamarini mahkam ushlab turadi.",
+    "qHash": "1qqnhx7_44",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_026",
+    "topicId": 1,
+    "category": "chqbt",
+    "q": "Saf nizomi bo'yicha harbiy xizmatchiga «Safdan uch qadam oldinga — CHIQ!» komandasi berilganda u harakatni qaysi oyoqdan boshlaydi va qanday yakunlaydi?",
+    "opts": [
+      "A) O'ng oyoqdan boshlab to'rt qadam bosadi va o'ngga burilib to'xtaydi",
+      "B) Chap oyoqdan boshlab uch qadam oldinga yuradi, to'rtinchi qadamda o'ng oyoqni birlashtiradi va komandir tomon yuzlanadi",
+      "C) Ixtiyoriy qulay oyoqdan boshlab ikki qadam tashlab darhol tiz cho'kadi",
+      "D) Chap oyoqdan bir qadam tashlab, o'ng oyoqni oldinga qo'ygancha joyida qoladi"
+    ],
+    "correct": 1,
+    "explanation": "Safdan chiqishda harakat chap oyoqdan boshlanadi, buyurilgan qadamlar soni (3 qadam) yuriladi, so'ngra oyoq birlashtirilib komandir tomonga burilinadi.",
+    "mnemonic": "Safdan chiqish = Chap oyoqdan 3 qadam + oyoqni birlashtirish + safga yuzlanish.",
+    "qHash": "w3vmko_48",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_027",
+    "topicId": 1,
+    "category": "chqbt",
+    "q": "Boshliq huzurida bo'lgan harbiy xizmatchi «Ketishingiz mumkin!» buyrug'ini olgach, Saf nizomi talabi bo'yicha qanday ketma-ketlikda harakat qiladi?",
+    "opts": [
+      "A) Hech qanday buyruq so'zini aytmasdan darhol orqasiga burilib eshik tomon yo'l oladi",
+      "B) O'ng qo'lini ko'ksiga qo'yib egiladi va orqasi bilan tisarilib xonadan chiqadi",
+      "C) O'ng qo'lini bosh kiyimiga qo'yib «Xo'p bo'ladi!» deydi, qo'lini tushiradi, orqaga buriladi, chap oyoq bilan birinchi qadamni tashlab harakatlanadi",
+      "D) Qo'lini bosh kiyimiga tekkizgan holatda orqaga qarab uch qadam yurib keyin buriladi"
+    ],
+    "correct": 2,
+    "explanation": "Buyruq olingach: qo'l bosh kiyimga tegizilib «Xo'p bo'ladi» deyiladi, qo'l tushiriladi, orqaga burilinadi va chap oyoqdan saf qadami bilan ketiladi.",
+    "mnemonic": "Ketishda = Qo'l bosh kiyimga -> «Xo'p bo'ladi» -> Qo'lni tushirish -> Orqaga burilish -> Chap oyoq.",
+    "qHash": "1oxwsjr_43",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_028",
+    "topicId": 1,
+    "category": "chqbt",
+    "q": "Nizomga ko'ra, teng harbiy unvondagi ikki nafar harbiy xizmatchi uchrashganda ularning qaysi biri birinchi bo'lib harbiy salom berishi shart?",
+    "opts": [
+      "A) Yosh jihatidan kattaroq bo'lgan harbiy xizmatchi birinchi salom beradi",
+      "B) Harbiy qismda xizmat staji va harbiy ixtisosi ko'proq bo'lgan xizmatchi",
+      "C) Faqat shaxsiy qurolini taqib olgan harbiy xizmatchi birinchi salom beradi",
+      "D) Qarama-qarshi kelayotgan safdoshini birinchi bo'lib ko'rgan (payqagan) harbiy xizmatchi"
+    ],
+    "correct": 3,
+    "explanation": "Teng unvondagi harbiy xizmatchilar uchrashganda xushmuomalalik va intizom yuzasidan ulardan kim birinchi bo'lib ko'rsa, o'sha xizmatchi birinchi salom beradi.",
+    "mnemonic": "Teng unvonda = Birinchi ko'rgan xizmatchi salom beradi.",
+    "qHash": "1u3j31r_3x",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_029",
+    "topicId": 1,
+    "category": "chqbt",
+    "q": "Qorovulda bo'linma va postlarning jangovar shayligini tekshirish huquqiga ega bo'lgan mansabdor shaxslar qorovulxonaga kelganda qanday hujjat taqdim etishi shart?",
+    "opts": [
+      "A) O'zining guvohnomasi bilan birga harbiy qism komandiri tomonidan imzolangan maxsus tekshirish huquqini beruvchi bir martalik yozma buyruq (predpisanie)",
+      "B) Faqat o'zining shaxsiy harbiy guvohnomasini va xizmat guvohnomasini ko'rsatishi yetarli",
+      "C) Tuman harbiy komendaturasi tomonidan berilgan vaqtinchalik xizmat safari guvohnomasi",
+      "D) Faqat harbiy qism shtabi navbatchisining og'zaki yoki telefon orqali bergan tasdig'i"
+    ],
+    "correct": 0,
+    "explanation": "Harbiy qism komandiri va uning to'g'ridan-to'g'ri boshliqlaridan tashqari barcha tekshiruvchilar qorovulni tekshirish uchun maxsus yozma ruxsatnoma (predpisanie) ko'rsatishi shart.",
+    "mnemonic": "Qorovulni tekshirish = Guvohnoma + Yozma buyruq (predpisanie).",
+    "qHash": "c7oah3_4i",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_030",
+    "topicId": 1,
+    "category": "chqbt",
+    "q": "Qorovulxonada soqchilar qurollarni o'qlash va o'qsizlantirish joyida (puleulavitel oldida) qurol stvolini qaysi burchak ostida qaratib harakatlanishi nizom bilan belgilangan?",
+    "opts": [
+      "A) To'g'ri pastga, oyoqlar tagidagi yerga perpendikulyar ravishda qaratib",
+      "B) 45–60 daraja burchak ostida yuqoriga, o'q tutgich (gruntli xandaq) yo'nalishida va atrofdagi odamlardan chetga qaratib",
+      "C) Gorizontal ravishda qurol saqlash xonasining orqa devoriga qaratib",
+      "D) O'ng tomondagi soqchi safdoshining orqa yelkasiga parallel yo'naltirib"
+    ],
+    "correct": 1,
+    "explanation": "Qurolni o'qlash va o'qsizlantirishda stvol yuqoriga 45–60 gradus burchak ostida, maxsus xavfsiz o'q tutgich (puleulavitel) yo'nalishida tutilishi qat'iy xavfsizlik qoidasidir.",
+    "mnemonic": "Qurolni o'qlash/o'qsizlantirish = 45-60 daraja yuqoriga, o'q tutgichga.",
+    "qHash": "1jyqac6_4u",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_031",
+    "topicId": 2,
+    "category": "chqbt",
+    "q": "O'q otish nazariyasida 'to'g'ri otish masofasi' (pryamoy vistrel) tushunchasiga qaysi ta'rif eng aniq va to'liq mos keladi?",
+    "opts": [
+      "A) Qurol stvolining o'qi yer sirtiga nisbatan qat'iy parallel bo'lgan holdagi maksimal masofa",
+      "B) O'q havoda harakatlanayotganda gravitatsiya kuchi ta'sir qilmaydigan dastlabki masofa",
+      "C) O'q traektoriyasining eng yuqori nuqtasi nishonning balandligidan oshmaydigan otish masofasi",
+      "D) O'qning nishonga tegish ehtimoli 100 foizga teng bo'lgan qat'iy 100 metrlik poligon masofasi"
+    ],
+    "correct": 2,
+    "explanation": "To'g'ri otish masofasi — bu traektoriyaning cho'qqisi (eng yuqori nuqtasi) nishon balandligidan oshmaydigan masofadir. Bunday masofada nishonga olish moslamasini o'zgartirmasdan turib nishonni butun balandligi bo'ylab urish mumkin.",
+    "mnemonic": "To'g'ri otish = Traektoriya cho'qqisi nishon balandligidan oshmaydi.",
+    "qHash": "r6avq_3f",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_032",
+    "topicId": 2,
+    "category": "chqbt",
+    "q": "O'qning boshlang'ich tezligiga (V0) atrof-muhit va o'q-dorining qaysi omili to'g'ridan-to'g'ri oshiruvchi ta'sir ko'rsatadi?",
+    "opts": [
+      "A) Havo bosimining keskin oshishi va havoning nisbiy namligi yuqori bo'lishi",
+      "B) Qurol stvolining keskin sovib ketishi va atrof-muhit haroratining pasayishi",
+      "C) Shamolning o'q uchish yo'nalishiga qat'iy perpendikulyar ravishda chapdan esishi",
+      "D) Porox zaryadi haroratining ko'tarilishi, chunki issiq porox tezroq va to'liq yonadi"
+    ],
+    "correct": 3,
+    "explanation": "Porox zaryadining harorati qancha yuqori bo'lsa, porox shuncha tez yonadi, gaz hosil bo'lish tezligi va bosimi ortadi, natijada o'qning boshlang'ich tezligi oshadi.",
+    "mnemonic": "Issiq porox = Yuqori gaz bosimi = Yuqori boshlang'ich tezlik.",
+    "qHash": "1r18i_3g",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_033",
+    "topicId": 2,
+    "category": "chqbt",
+    "q": "Ballistikada derivatsiya hodisasi qanday sababga ko'ra vujudga keladi va o'q parvoziga qanday ta'sir qiladi?",
+    "opts": [
+      "A) Stvoldagi o'ng rezba tufayli aylanayotgan o'qning havo qarshiligi ta'sirida otish tekisligidan o'ngga og'ishi",
+      "B) Yerning o'z o'qi atrofida sutkalik aylanishi tufayli o'q faqat janubga qarab og'adi",
+      "C) Porox gazlarining stvol og'zidagi assimetrik chiqishi tufayli o'qning doimiy pastga tushishi",
+      "D) O'q og'irlik markazining dum qismiga siljishi tufayli uning faqat chap tomonga burilishi"
+    ],
+    "correct": 0,
+    "explanation": "Derivatsiya — bu stvol o'yiqlari yo'nalishida (AK da o'ngga) aylanayotgan o'qning havoga ishqalanishi va giroskopik samara natijasida o'z otish tekisligidan o'ng tomonga tabiiy og'ishidir.",
+    "mnemonic": "Derivatsiya = O'ngga aylanuvchi o'qning o'ng tomonga og'ishi.",
+    "qHash": "15hugzw_30",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_034",
+    "topicId": 2,
+    "category": "chqbt",
+    "q": "Otish paytida mo''tadil yon shamol o'ng tomondan esayotgan bo'lsa, otuvchi nishonga olish nuqtasini qaysi tomonga qaratishi shart?",
+    "opts": [
+      "A) Shamol yo'nalishi bo'yicha, ya'ni chap tomonga siljitib nishonga oladi",
+      "B) Shamol esayotgan tomonga, ya'ni o'ng tomonga siljitib nishonga oladi",
+      "C) Shamol ta'sirini inobatga olmasdan nishonning qat'iy geometrik markaziga oladi",
+      "D) Nishonning pastki chetiga, ya'ni yer chizig'iga qarab pasaytirib nishonga oladi"
+    ],
+    "correct": 1,
+    "explanation": "O'ngdan esgan shamol o'qni chapga suradi. Shuning uchun o'q nishon markaziga borib tegishi uchun nishonga olish nuqtasi shamolga qarshi (o'ngga) olinadi.",
+    "mnemonic": "Shamol o'ngdan = Nishonga olish o'ngga (shamol esayotgan tomonga).",
+    "qHash": "umq61l_3m",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_035",
+    "topicId": 2,
+    "category": "chqbt",
+    "q": "Ko'ndalang yo'nalishda chapdan o'ngga yugurayotgan dushman piyodasiga o't ochishda otuvchi qanday taktik qoidaga amal qiladi?",
+    "opts": [
+      "A) Nishon harakat yo'nalishining orqa tomoniga qaratib o't ochadi",
+      "B) Harakatdagi nishonga faqat bir martalik yakka o'q bilan to'xtab otadi",
+      "C) O'q uzish vaqtida nishon harakatlanayotgan tomonga oldindan ilgarilash (uprejdenie) oladi",
+      "D) Faqat nishon harakatini to'xtatgan paytini kutib keyin nishonga oladi"
+    ],
+    "correct": 2,
+    "explanation": "O'q nishongacha uchib borguncha nishon ma'lum masofani bosib o'tadi. Shu sababli nishon harakati yo'nalishida ilgarilash (uprejdenie) bilan nishonga olinadi.",
+    "mnemonic": "Harakatdagi nishon = Harakat yo'nalishida oldinga ilgarilash (uprejdenie).",
+    "qHash": "y1qeb2_3h",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_036",
+    "topicId": 2,
+    "category": "chqbt",
+    "q": "AK-74 avtomatida o'q uzilgan paytda gazlarning qurol mexanizmlariga ta'sir qilish ketma-ketligi qaysi javobda to'g'ri ifodalangan?",
+    "opts": [
+      "A) O'q kapsulasi alangalanishi bilan zatvor ramasi gaz kamerasidan oldin orqaga harakatlanadi",
+      "B) Qaytish mexanizmi prujinasi siqilib, gaz kamerasiga kirmasdan zatvorni oldinga itaradi",
+      "C) Porox gazlari faqat stvol og'zi orqali chiqib, avtomatning qayta o'qlanishiga umuman qatnashmaydi",
+      "D) O'q stvoldagi gaz chiqish teshigidan o'tgach, gaz gaz kamerasiga kirib shtok va zatvor ramasini orqaga suradi"
+    ],
+    "correct": 3,
+    "explanation": "O'q gaz teshigidan o'tishi bilan porox gazlarining bir qismi gaz kamerasiga o'tadi va gaz shtogi orqali zatvor ramasiga zarba berib, uni orqaga suradi.",
+    "mnemonic": "Gaz teshigi -> Gaz kamerasi -> Shtok -> Zatvor ramasi orqaga.",
+    "qHash": "1axnsxe_3m",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_037",
+    "topicId": 2,
+    "category": "chqbt",
+    "q": "AK-74 avtomatida zatvorning stvol kanalini qulflashi (zapiranie kanala stvola) qanday kinematik harakat orqali amalga oshadi?",
+    "opts": [
+      "A) Zatvor ramasining figurali o'yig'i ta'sirida zatvor o'z o'qi atrofida o'ngga burilib jangovar bo'rtiqlariga tiraladi",
+      "B) Zatvor pastga vertikal ravishda tushib magazin qutisi devoriga qisiladi",
+      "C) Qaytish prujinasi zatvorni faqat to'g'ri chiziqli itarib o'z o'qi atrofida umuman burilmaydi",
+      "D) O't ochish dastasini bosish orqali zatvor orqa tirgakka mexanik ravishda qulflanadi"
+    ],
+    "correct": 0,
+    "explanation": "Zatvor ramasi oldinga siljiganda uning figurali o'yig'i zatvor bo'rtig'iga ta'sir qilib, zatvorni o'ngga buradi va uning jangovar tayanchlari stvol qutisining tayanchlariga kirib qulflanadi.",
+    "mnemonic": "Qulflash = Zatvorning o'ngga burilib tayanchlarga kirishi.",
+    "qHash": "dp9x7j_3h",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_038",
+    "topicId": 2,
+    "category": "chqbt",
+    "q": "O'q uzish paytida zarb beruvchi (nina) kapsulaga urildi, biroq o'q otilmadi (osechka). Xavfsizlik qoidalariga ko'ra birinchi harakat qanday bo'lishi kerak?",
+    "opts": [
+      "A) Zudlik bilan bir soniya ichida zatvorni orqaga tortib otilmagan patronni tashqariga chiqarish",
+      "B) Sekinlashgan yonish (zatyajnoy vistrel) xavfi tufayli qurol stvolini xavfsiz tomonga tutib kamida 5-10 soniya kutish",
+      "C) Qurolning magazinini yechib stvol ichiga qarab kapsulaning holatini tekshirish",
+      "D) Avtomatni zudlik bilan poligon eriga qo'yib ortga 50 metrga qochish"
+    ],
+    "correct": 1,
+    "explanation": "Osechka yuz berganda sekinlashgan o't olish (zatyajnoy vistrel) xavfi bo'ladi. Shu sababli darhol zatvor ochilmaydi, qurol nishon tomonga yo'naltirilgan holda kamida 5-10 soniya ushlab turiladi.",
+    "mnemonic": "Osechka = Darhol ochma! 5-10 soniya kut (chunki o'q kechikib otilishi mumkin).",
+    "qHash": "1ogjy60_4b",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_039",
+    "topicId": 2,
+    "category": "chqbt",
+    "q": "AK-74 avtomatida o'q uzilgandan so'ng navbatdagi patron patrontoshdan o'qdon yo'liga kirmay tiqilib qolishiga (nepodacha patrona) ko'pincha nima sabab bo'ladi?",
+    "opts": [
+      "A) Qurol stvoli narezlarining haddan tashqari toza va quruq artilgan bo'lishi",
+      "B) Otuvchining qurolni yelkasiga haddan tashqari qattiq tirab turishi",
+      "C) Magazin qutisi lablarining qiyshayishi, magazin prujinasining kuchsizlanishi yoki magazin ifloslanishi",
+      "D) O'qdon ichiga patronlarning ketma-ket to'liq 30 ta joylashtirilganligi"
+    ],
+    "correct": 2,
+    "explanation": "Patron uzatilmasligi (nepodacha) asosan magazinning ifloslanishi, uning labchalari shikastlanishi yoki magazin uzatgichi prujinasining bo'shashib qolishi tufayli yuzaga keladi.",
+    "mnemonic": "Patron uzatilmasligi = Magazin buzilgan, prujina kuchsiz yoki ifloslangan.",
+    "qHash": "wd73rb_4f",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_040",
+    "topicId": 2,
+    "category": "chqbt",
+    "q": "RGD-5 va F-1 qo'l granatalarining UZRGM-2 portlatkichi tutashgandan so'ng portlashgacha bo'lgan sekinlatgich yonish vaqti qancha?",
+    "opts": [
+      "A) 1,0 dan 1,5 soniyagacha",
+      "B) 7,0 dan 9,0 soniyagacha",
+      "C) 12,0 dan 15,0 soniyagacha",
+      "D) 3,2 dan 4,2 soniyagacha"
+    ],
+    "correct": 3,
+    "explanation": "UZRGM (UZRGM-2) unifikatsiyalangan qo'l granatasi portlatkichining sekinlatuvchi tarkibi 3,2 — 4,2 soniya davomida yonadi, so'ngra detonator kapsulasini portlatadi.",
+    "mnemonic": "UZRGM-2 portlash vaqti = 3,2 - 4,2 soniya.",
+    "qHash": "1uqtncj_3l",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_041",
+    "topicId": 2,
+    "category": "chqbt",
+    "q": "F-1 mudofaa granatasini nima sababdan faqat okop, blindaj yoki mustahkam pana ortidan turib uloqtirish qat'iy talab etiladi?",
+    "opts": [
+      "A) Uning og'ir cho'yan korpusi parchalarining halokatli tarqalish radiusi 200 metrgacha yetishi mumkinligi sababli",
+      "B) Granatani oddiy askar ochiq maydonda 100 metrdan uzoqqa uloqtira olmasligi sababli",
+      "C) Granata portlaganda kuchli zaharli xlor gazi ajralib chiqishi sababli",
+      "D) UZRGM portlatkichi ochiq havoda kislorod yetishmasligidan ishlamay qolishi sababli"
+    ],
+    "correct": 0,
+    "explanation": "F-1 mudofaa granatasining qalin korpusi maydalanib, uning qotishma parchalari 200 metrgacha uchib boradi va odamni halok qilishi mumkin. Askar granatani o'rtacha 35-45 metrga otgani uchun panada bo'lmasa o'z parchasidan yaralanadi.",
+    "mnemonic": "F-1 mudofaa = Parchalanish radiusi 200 metr (faqat pana ortidan!).",
+    "qHash": "1pq5jke_3g",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_042",
+    "topicId": 2,
+    "category": "chqbt",
+    "q": "RGO va RGN qo'l granatalarida qo'llaniladigan UDZ portlatkichining UZRGM-2 portlatkichidan tub afzalligi nimada?",
+    "opts": [
+      "A) Faqat radioboshqaruv pulti orqali berilgan masofaviy signal bilan portlashi",
+      "B) Nishonga yoki to'siqqa (yer, devor) urilishi bilanoq zarb ta'sirida zumda portlashi va o'z-o'zini yo'q qilish mexanizmiga egaligi",
+      "C) Ovoz chiqarmasdan va parchalar tarqatmasdan faqat yorug'lik chaqnashi hosil qilishi",
+      "D) Suv tagida yoki qor ichiga tushganda portlamay zararsiz holatga o'tib qolishi"
+    ],
+    "correct": 1,
+    "explanation": "UDZ (udarno-distantsionniy zapal) to'siqqa urilganda tezkor zarbiy mexanizm hisobiga darhol portlaydi. Agar nishonga tegmasa, 3,2-4,2 soniyadan so'ng o'z-o'zini yo'q qilish tizimi ishga tushadi.",
+    "mnemonic": "UDZ (RGO/RGN) = To'siqqa urilganda darhol portlaydi + samolikvidator.",
+    "qHash": "lv1mfd_34",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_043",
+    "topicId": 2,
+    "category": "chqbt",
+    "q": "PSO-1 optik nishonga olgichidagi masofani o'lchash shkalasi (dalnomernaya shkala) qaysi standart nishon bo'yi bo'yicha hisoblangan?",
+    "opts": [
+      "A) Balandligi 2,7 metr bo'lgan dushman tanki korpusi bo'yicha",
+      "B) Bo'yi 0,5 metr bo'lgan yotgan pulemyotchi nishoni bo'yicha",
+      "C) Bo'yi 1,7 metr bo'lgan tik turgan inson qiyofasi bo'yicha",
+      "D) Balandligi 4,0 metr bo'lgan harbiy yuk avtomobili bo'yicha"
+    ],
+    "correct": 2,
+    "explanation": "PSO-1 optik nishonidagi masofa o'lchash shkalasi bazaviy inson bo'yi (1,7 m) uchun moslashtirilgan bo'lib, gorizontal chiziq va egri chiziq orasiga sig'ish darajasiga qarab masofa (200 m dan 1000 m gacha) aniqlanadi.",
+    "mnemonic": "PSO-1 dalnomer = 1,7 m inson qiyofasi.",
+    "qHash": "1qowu6u_3n",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_044",
+    "topicId": 2,
+    "category": "chqbt",
+    "q": "AK-74 qurolidan 4 ta o'q uzilganda tegishning o'rtacha nuqtasini (STP) grafik usulda aniqlash qoidalari qaysi javobda to'g'ri bayon etilgan?",
+    "opts": [
+      "A) Barcha to'rtta teshikning faqat eng chetdagi ikkitasining o'rtasi qurolning aniq STP nuqtasi deb qabul qilinadi",
+      "B) To'rtta teshikning ichidan faqat nishon markaziga eng yaqin joylashgan bitta teshik to'g'ridan-to'g'ri STP deb olinadi",
+      "C) Eng pastda joylashgan ikkita teshikning vertikal masofasi o'lchanib, o'rtadagi chiziq bo'yicha markaziy nuqta olinadi",
+      "D) Ikkita eng yaqin teshik birlashtirilib o'rtasi topiladi, u 3-teshik bilan tutashtirilib masofa 3 ga bo'linadi, hosil bo'lgan nuqta 4-teshik bilan tutashtirilib 4 ga bo'linadi"
+    ],
+    "correct": 3,
+    "explanation": "4 ta teshik bo'yicha STP topish: 1 va 2-teshiklar tutashtirilib o'rtasi topiladi. Bu nuqta 3-teshik bilan tutashtirilib 3 teng bo'lakka bo'linadi va 1/3 nuqtasi belgilanadi. Hosil bo'lgan nuqta 4-teshik bilan tutashtirilib 4 ga bo'linadi (1/4 nuqta STP bo'ladi).",
+    "mnemonic": "STP ketma-ketligi = 2 ga bo'lish -> 3 ga bo'lish -> 4 ga bo'lish.",
+    "qHash": "fxwdmw_3w",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_045",
+    "topicId": 2,
+    "category": "chqbt",
+    "q": "AK-74 avtomatini 100 metr masofada normal jangovar holatga keltirishda (privedenie k boyu) 4 ta o'qning sochilish doirasi diametri ko'pi bilan qancha bo'lishi talab etiladi?",
+    "opts": [
+      "A) 15 santimetrdan oshmasligi kerak",
+      "B) 35 santimetrdan oshmasligi kerak",
+      "C) 5 santimetrdan oshmasligi kerak",
+      "D) 50 santimetrdan oshmasligi kerak"
+    ],
+    "correct": 0,
+    "explanation": "AK-74 avtomati 100 m masofada tekshirilganda, to'rtta o'qdan kamida uchtasi yoki barcha to'rttasi diametri 15 sm bo'lgan doira ichiga sig'ishi kerak. Aks holda qurolning jangovar aniqligi qoniqarsiz hisoblanadi.",
+    "mnemonic": "Jangovar holat normasi = 100 metrda diametri 15 sm doira.",
+    "qHash": "1wsjl2p_4t",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_046",
+    "topicId": 3,
+    "category": "chqbt",
+    "q": "Motootqichlar bo'linmasi piyoda jangovar tartibda (zanjir bo'lib) hujumga o'tganda harbiy xizmatchilar orasidagi me'yoriy oraliq masofa qancha bo'ladi?",
+    "opts": [
+      "A) 1 dan 2 metrgacha (yelkama-yelka)",
+      "B) 6 dan 8 metrgacha (8-12 qadam)",
+      "C) 20 dan 25 metrgacha",
+      "D) 40 dan 50 metrgacha"
+    ],
+    "correct": 1,
+    "explanation": "Piyoda jangovar zanjirda harakatlanayotganda jangchilar orasidagi oraliq 6-8 metr (8-12 qadam) qilib belgilanadi. Bu dushman o't ochganda talafotni kamaytirish va o'zaro o't bilan qo'llab-quvvatlashni ta'minlaydi.",
+    "mnemonic": "Piyoda zanjir oralig'i = 6-8 metr (8-12 qadam).",
+    "qHash": "cluawe_47",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_047",
+    "topicId": 3,
+    "category": "chqbt",
+    "q": "Mudofaada bitta motootqichlar bo'linmasi (otdelenie) egallaydigan tayanch nuqtasi (pozitsiyasi) front va chuqurlik bo'yicha qanday me'yorda bo'ladi?",
+    "opts": [
+      "A) Fronti bo'yicha 500 metrgacha, chuqurligi bo'yicha 300 metrgacha",
+      "B) Fronti bo'yicha 20 metrgacha, chuqurligi bo'yicha 10 metrgacha",
+      "C) Fronti bo'yicha 100 metrgacha, chuqurligi bo'yicha 50 metrgacha",
+      "D) Fronti bo'yicha 1 kilometrgacha, chuqurligi bo'yicha 500 metrgacha"
+    ],
+    "correct": 2,
+    "explanation": "Jangovar nizomga muvofiq, bitta motootqichlar bo'linmasi mudofaada front bo'yicha 100 metrgacha va chuqurlik bo'yicha 50 metrgacha bo'lgan pozitsiyani egallaydi.",
+    "mnemonic": "Bo'linma pozitsiyasi = Front 100 m gacha, chuqurlik 50 m gacha.",
+    "qHash": "gtkrh9_44",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_048",
+    "topicId": 3,
+    "category": "chqbt",
+    "q": "Mudofaa jangida 'vaqtinchalik o't ochish pozitsiyasi' nima maqsadda tashkil etiladi va qachon foydalaniladi?",
+    "opts": [
+      "A) Faqat yarador bo'lgan jangchilarni vaqtincha tibbiy bandgohga jo'natish uchun",
+      "B) Jangovar harakatlar to'xtagan vaqtda askarlarning kechki dam olishi va ovqatlanishi uchun",
+      "C) Qurol-yarog' omborlari va yonilg'i sisternalarini uzoq muddat saqlash uchun",
+      "D) Asosiy pozitsiyani oshkor qilmasdan alohida topshiriqlarni bajarish va dushmanning asosiy kuchlarini chalg'itish uchun"
+    ],
+    "correct": 3,
+    "explanation": "Vaqtinchalik o't ochish pozitsiyalari dushmanni asosiy kuchlar joylashuvi bo'yicha chalg'itish, kutilmagan qanotdan zarba berish yoki tunda va alohida vaziyatlarda otish uchun tayyorlanadi.",
+    "mnemonic": "Vaqtinchalik pozitsiya = Chalg'itish va asosiy nuqtani yashirish.",
+    "qHash": "1h6xp41_30",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_049",
+    "topicId": 3,
+    "category": "chqbt",
+    "q": "Ochiq joyda harakatlanayotgan piyoda bo'linma ustida dushmanning FPV-kamikadze droni xavfi paydo bo'lganda jangchilar qanday taktik qoidaga amal qilishi shart?",
+    "opts": [
+      "A) Bir joyga to'planmasdan darhol oraliqni 15-20 metrgacha kengaytirib, tabiiy chuqurlik, xandaq yoki daraxt panasiga yotish",
+      "B) Barcha jangchilar bir-biriga zich yig'ilib, bir vaqtning o'zida baland ovozda signal berish",
+      "C) Saf bo'lib tik turgan holda avtomatlardan dushmanga qarata tartibsiz o'q yog'dirish",
+      "D) Qurollarni yerga tashlab faqat ochiq maydon markaziga qarab to'xtovsiz yugurish"
+    ],
+    "correct": 0,
+    "explanation": "Dronlar yakka yoki guruhli nishonlarni oson payqaydi. Havodan tahdid bo'lganda zudlik bilan tarqalish, masofani saqlash va joy relyefidan (chuqurlik, buta, daraxt) foydalanib yashirinish talab etiladi.",
+    "mnemonic": "Dron xavfi = Tarqalish + Masofani ochish + Relyef panasiga yotish.",
+    "qHash": "2re7w1_4f",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_050",
+    "topicId": 3,
+    "category": "chqbt",
+    "q": "Dushmanning tanki yakka okopdagi otuvchi ustiga to'g'ridan-to'g'ri bostirib kelganda askarning to'g'ri taktik harakat ketma-ketligi qaysi javobda ko'rsatilgan?",
+    "opts": [
+      "A) Tank yaqinlashganda okopdan chiqib ochiq dalaga qarama-qarshi tomonga qarab yugurish",
+      "B) Tank okop ustidan o'tguncha okop tubiga yotish, o'tgach darhol qad rostlab tankning orqa motor bo'lmasiga tankka qarshi granata yoki o't ochish",
+      "C) Tankning old peshona zirhiga avtomatdan to'xtovsiz o'q uzib tank ekipajini qo'rqitish",
+      "D) Okop ichida qo'llarni ko'tarib tank komandiriga taslim bo'lish belgisini ko'rsatish"
+    ],
+    "correct": 1,
+    "explanation": "Yakka askar tankdan qochmaydi. U tank okop ustidan o'tguncha pastga yashirinadi, tank o'tishi bilan uning eng zaif qismi bo'lgan orqa motor bo'limi va yon tomoniga granata uloqtiradi hamda orqadagi piyodalariga o'q uzadi.",
+    "mnemonic": "Tank ustingdan o'tguncha okop tubiga yot -> O'tgach orqa dvigateliga granata ot!",
+    "qHash": "1vzpk3j_4f",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_051",
+    "topicId": 3,
+    "category": "chqbt",
+    "q": "Yotgan holda o't ochish uchun mo'ljallangan yakka okopni qazishda ko'krak nishoni (brustver) balandligi va okop chuqurligi me'yori qancha bo'ladi?",
+    "opts": [
+      "A) Chuqurligi 150 sm, brustver balandligi 100 sm gacha",
+      "B) Chuqurligi 5 sm, brustver balandligi umuman qilinmaydi",
+      "C) Chuqurligi taxminan 30 sm, ko'krak nishoni (brustver) balandligi 30 sm gacha",
+      "D) Chuqurligi 80 sm, brustver faqat orqa tomonga 60 sm qilib to'kiladi"
+    ],
+    "correct": 2,
+    "explanation": "Yotib otish yakka okopi: xandaq chuqurligi taxminan 30 sm, eni 60 sm, uzunligi 170 sm, oldingi brustver balandligi 30 sm gacha bo'ladi. Qazilgan tuproq hajmi 0,3 m3 ga teng.",
+    "mnemonic": "Yotib otish okopi = Chuqurlik 30 sm, Brustver 30 sm.",
+    "qHash": "1j1ov3g_42",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_052",
+    "topicId": 3,
+    "category": "chqbt",
+    "q": "Harbiy taktikada 'qanotdan qamrab olish' (oxvat) va 'aylanib o'tish' (obxod) manevrlarining asosiy tub farqi nimada?",
+    "opts": [
+      "A) Oxvat faqat tunda, obxod esa faqat kunduzi amalga oshiriladigan manevr hisoblanadi",
+      "B) Oxvatda faqat aviatsiya, obxodda esa faqat dengiz piyodalari ishtirok etadi",
+      "C) Oxvat faqat orqaga chekinishda, obxod esa faqat doimiy mudofaada qo'llaniladi",
+      "D) Oxvat dushmanning bevosita qanotiga zarba beradi va o't ochish aloqasi saqlanadi; obxod esa dushmanning chuqur orqa tomoniga chiqish manevridir"
+    ],
+    "correct": 3,
+    "explanation": "Qamrab olish (oxvat) — dushmanning bevosita qanotiga chiqib zarba berish bo'lib, frontdagi asosiy kuchlar bilan bevosita o't ochish aloqasi saqlanadi. Aylanib o'tish (obxod) esa dushmanning chuqur orqa tomoniga chiqib yo'llarini to'sish bo'lib, taktik aloqa saqlanmaydi.",
+    "mnemonic": "Oxvat = Bevosita qanotga zarba; Obxod = Chuqur orqaga (tilga) chiqish.",
+    "qHash": "wpvrde_38",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_053",
+    "topicId": 3,
+    "category": "chqbt",
+    "q": "Aholi punktlarida (shahar sharoitida) binolarni tozalashda shturm guruhi jangchilarining xonaga kirishdagi eng asosiy taktik xavfsizlik qoidasi nima?",
+    "opts": [
+      "A) Eshik va deraza o'rni bo'lgan 'o'lim yo'lagi'da (smertelnaya voronka) to'xtab qolmasdan tezda ichkariga kirib burchaklarni nazoratga olish",
+      "B) Xona eshigi ochilgach, butun guruh birgalikda eshik tirqishida qator turib kutilmagan zarbani kutish",
+      "C) Xonaga kirmasdan faqat eshik ortidan baland ovozda dushmanga taslim bo'lish haqida murojaat qilish",
+      "D) Binoga faqat tom qismidagi tuynuk orqali arqonsiz pastga sakrab tushish"
+    ],
+    "correct": 0,
+    "explanation": "Shahar jangida eshik va tor kirish joylari 'o'lim voronkasi' deb ataladi. Jangchi eshik ostonasida to'xtab qolishi mumkin emas; u ichkariga kirib, devor bo'ylab harakatlanadi va o'z burchagini (sektorini) tozalaydi.",
+    "mnemonic": "Bino shturmi = Ostonada to'xtama (o'lim voronkasi!), burchaklarni tozalab kiring.",
+    "qHash": "1ucwhu1_45",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_054",
+    "topicId": 3,
+    "category": "chqbt",
+    "q": "Tungi jang harakatlarida mudofaadagi bo'linmaning nishonga olish va o't ochish yo'nalishini aniq saqlash uchun qanday vosita oldindan tayyorlanadi?",
+    "opts": [
+      "A) Okop oldiga uzluksiz o't yoqib qo'yish orqali barcha yo'nalishlarni yoritish",
+      "B) Kunduzi mo'ljallarga qarab nishonga olish moslamalariga o'rnatiladigan kunduzgi va tungi cheklovchi yog'och tirgaklar (oriyentirlar)",
+      "C) Faqat dushman signalli raketa otgandagina okopdan bosh chiqarib qarash",
+      "D) Barcha qurollarning tungi optikasini olib tashlab faqat ovozga qarab otish"
+    ],
+    "correct": 1,
+    "explanation": "Tunda ko'rish cheklanganligi sababli kunduzi qurollar uchun yo'naltiruvchi qoziqlar (tirgaklar) va burchak cheklovchilari o'rnatiladi, shuningdek yoritqich vositalar tayyorlab qo'yiladi.",
+    "mnemonic": "Tungi nishon = Kunduzi o'rnatilgan cheklovchi tirgak va oriyentirlar.",
+    "qHash": "15hfc7b_43",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_055",
+    "topicId": 3,
+    "category": "chqbt",
+    "q": "Hujumda jangchilarning ochiq erlarda qisqa sakrashlar (perebejki) bilan harakatlanish vaqti nega 3-5 soniyadan (20-40 qadam) oshmasligi shart?",
+    "opts": [
+      "A) Harbiy xizmatchining jismoniy charchoq darajasi 5 soniyadan so'ng keskin oshib ketishi sababli",
+      "B) Qurolning og'irligi askarning tez yugurishiga faqat 5 soniya ruxsat berishi sababli",
+      "C) Dushman mergani yoki pulemyotchisi nishonni payqab, mo'ljalga olib, o'q uzishi uchun o'rtacha 3-5 soniya kerak bo'lishi sababli",
+      "D) Bo'linma komandirining ovozi faqat 5 soniyalik masofagacha yetib borishi sababli"
+    ],
+    "correct": 2,
+    "explanation": "Dushman otuvchisi paydo bo'lgan nishonni ko'rib, nishonga olib, o't ochguncha 3-5 soniya vaqt sarflaydi. Agar sakrash 5 soniyadan oshsa, askar dushmanning aniq nishoniga aylanadi.",
+    "mnemonic": "Perebejka = 3-5 soniya (dushman nishonga olguncha yot va pana top!).",
+    "qHash": "1ygqsmz_3y",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_056",
+    "topicId": 3,
+    "category": "chqbt",
+    "q": "Taktikada 'kesishuvchi o't ochish' (perekryostniy ogon) tizimining asosiy jangovar afzalligi nimada?",
+    "opts": [
+      "A) Harbiy qismning o'q-dori sarfi ikki barobar tejaladi va qurollar qizib ketmaydi",
+      "B) O'z bo'linmalarining o'qlari havoda bir-biri bilan to'qnashib qo'shimcha portlash hosil qiladi",
+      "C) Jangovar samolyotlar uchun yerdan aniq mayoq nurlarini ko'rsatib beradi",
+      "D) Dushmanning harakatlanayotgan zanjiriga kamida ikki tomondan zarba berilib, uning pana orqasiga yashirinish imkoniyati yo'qqa chiqariladi"
+    ],
+    "correct": 3,
+    "explanation": "Kesishuvchi o't ochish dushmanga turli burchaklardan (kamida ikki yo'nalishdan) zarba beradi. Bu dushmanning bitta pana ortiga yashirinishiga yo'l qo'ymaydi va yuqori talafot yetkazadi.",
+    "mnemonic": "Kesishuvchi o't = Ikki tomondan zarba, dushmanga pana yo'q.",
+    "qHash": "179aqtj_2s",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_057",
+    "topicId": 3,
+    "category": "chqbt",
+    "q": "Bo'linma harakatlanayotganda dushmanning yaqin masofadagi (20-30 metr) to'satdan pistirmasiga (ambush) uchraganda to'g'ri taktik harakat qanday bo'ladi?",
+    "opts": [
+      "A) Qochib ketishga urinmasdan, zudlik bilan barcha qurollardan dushman pistirmasiga o't ochib tajovuzkor qarshi hujum bilan bostirib kirish",
+      "B) Butun bo'linma bilan ochiq joyda bir qatorda yotib, buyruq kelishini kutish",
+      "C) Qurollarni yerga qo'yib faqat orqaga qarab 1 kilometr masofaga chekinish",
+      "D) O'z-o'zidan tutun granatalarini tashlab faqat mashinalar ichiga yashirinish"
+    ],
+    "correct": 0,
+    "explanation": "Yaqin pistirmada (killing zone ichida) qochishga yoki yotishga urinish butun guruhning qirilishiga olib keladi. Yagona to'g'ri chora — bor o't kuchi bilan pistirma ustiga agressiv bostirib kirish va pistirmani sindirishdir.",
+    "mnemonic": "Yaqin pistirma = Chekinma! Bor o't bilan to'g'ridan-to'g'ri pistirmaga hujum qil.",
+    "qHash": "128groh_48",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_058",
+    "topicId": 3,
+    "category": "chqbt",
+    "q": "Motootqichlar bo'linmasi BMP (BTR) jangovar mashinasidan piyoda tushganda (speshivanie) qanday xavfsizlik va jangovar qoidaga amal qilinadi?",
+    "opts": [
+      "A) Mashinaning old qismidan kapot ustidan sakrab dushman ko'z o'ngiga tushiladi",
+      "B) Mashinaning orqa eshiklari orqali tezda tushib, zudlik bilan mashinadan chetga yoyilib zanjir hosil qilinadi",
+      "C) Barcha jangchilar mashinaning bevosita g'ildiraklari ostida zich to'planib o'tiradi",
+      "D) Faqat qurollar tushirilib, askarlar mashina ichida o't ochishda davom etadi"
+    ],
+    "correct": 1,
+    "explanation": "Speshivanie komandasida jangchilar zirhli mashinaning orqa eshiklari/lyuklari orqali tushib, mashina o'qidan saqlangan holda zudlik bilan qanotlarga tarqaladi va jangovar zanjir tuzadi.",
+    "mnemonic": "Speshivanie = Orqa eshikdan chiq -> Mashina orqasidan chetga yoyil -> Zanjir tuz.",
+    "qHash": "1k0t4lq_3w",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_059",
+    "topicId": 3,
+    "category": "chqbt",
+    "q": "Kuzatuv posti (NP — nablyudatelniy post) tarkibiga odatda necha nafar harbiy xizmatchi tayinlanadi va ularning vazifalari qanday taqsimlanadi?",
+    "opts": [
+      "A) 10-15 nafar butun vzvod tarkibi navbatsiz faqat bitta durbin orqali qaraydi",
+      "B) Faqat 1 nafar askar hech qanday aloqa vositasisiz 24 soat davomida o'tiradi",
+      "C) 2-3 nafar jangchi: biri uzluksiz kuzatadi, ikkinchisi kuzatuv jurnalini yuritadi va aloqani ta'minlaydi",
+      "D) Faqat tibbiy xizmat xodimlari tayinlanib, jangovar kuzatuv olib borilmaydi"
+    ],
+    "correct": 2,
+    "explanation": "Kuzatuv posti tarkibiga odatda 2-3 nafar harbiy xizmatchi (kuzatuvchi va yozuvchi/aloqachi) tayinlanadi. Ular navbat bilan kuzatuv olib boradi, nishon koordinatalarini yozadi va komandirga ma'lum qiladi.",
+    "mnemonic": "Kuzatuv posti = 2-3 kishi (biri kuzatadi, biri yozadi/aloqa qiladi).",
+    "qHash": "1qufwmf_3y",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_060",
+    "topicId": 3,
+    "category": "chqbt",
+    "q": "Motootqichlar bo'linmasining mudofaada dushmanning oldingi safiga qarshi o't ochish tizimida 'tutash o't ochish zonasi' (zona sploshnogo mnogosloynogo ognya) qanday tashkil etiladi?",
+    "opts": [
+      "A) Bo'linma komandirining faqat bitta og'ir pulemyot vositasidan foydalanib mudofaa oldidagi bitta tor yo'nalishga qat'iy o't ochishi bilan",
+      "B) Mudofaadagi barcha jangchilarning bir vaqtning o'zida havoga signalli va yorituvchi raketalarni ketma-ket uzluksiz uchirishi bilan",
+      "C) O't ochish vositalarining barchasini mudofaa chuqurligidagi ehtiyot pozitsiyalarga yashirib faqat orqa tomondan o't ochish bilan",
+      "D) Barcha turdagi qurollar (avtomat, pulemyot, granatomyot, BMP qurollari) o't ochish sektorlari bir-birini qoplagan holda barcha yondashuv yo'llarini to'liq o'q ostiga olish bilan"
+    ],
+    "correct": 3,
+    "explanation": "Mudofaaning ko'p qatlamli tutash o't ochish tizimi — barcha bo'linma qurollarining sektorlari bir-biriga tutashgan holda dushmanning mudofaa oldidagi har qanday harakatini o'q ostida yo'q qilishga asoslanadi.",
+    "mnemonic": "Ko'p qatlamli o't tizimi = Bo'linmadagi barcha qurol sektorlarining o'zaro tutashishi.",
+    "qHash": "1jxpez7_51",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_061",
+    "topicId": 4,
+    "category": "chqbt",
+    "q": "Fuqaro muhofazasida boshpanalar (ubejishe) bilan radiatsiyaga qarshi yashirinish joylari (PRU) ning asosiy konstruktiv va himoya darajasidagi farqi nimada?",
+    "opts": [
+      "A) Boshpana yadroviy zarba to'lqini, zaharlovchi moddalar va biologik qurollardan to'liq germetik himoya qiladi; PRU esa asosan ionlashtiruvchi nurlanish va yorug'lik nurlanishidan himoya qiladi",
+      "B) Boshpana faqat qishloq joylarida yog'ochdan quriladi; PRU esa faqat yirik sanoat shaharlarida temir-betondan barpo etiladi",
+      "C) Boshpanada havo tozalash filtrlari umuman bo'lmaydi; PRU da esa doimiy ravishda 5 bosqichli kislorod generatorlari o'rnatiladi",
+      "D) Boshpana faqat 2 soatgacha turish uchun mo'ljallangan; PRU da esa odamlar kamida 6 oy davomida uzluksiz yashashlari mumkin"
+    ],
+    "correct": 0,
+    "explanation": "Boshpana — eng mukammal germetik himoya inshooti bo'lib, zarba to'lqini, nurlanish, zaharlanish va biologik vositalardan to'liq saqlaydi. PRU (radiatsiyaga qarshi boshpana) esa germetik emas, u asosan radioaktiv nurlanish dozasini bir necha barobar kamaytirish uchun xizmat qiladi.",
+    "mnemonic": "Boshpana = To'liq germetik (zarba to'lqini + zahar + nurlanish); PRU = Asosan radiatsiyadan himoya.",
+    "qHash": "ozks2y_4b",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_062",
+    "topicId": 4,
+    "category": "chqbt",
+    "q": "Fuqaro muhofazasi boshpanalarida filtr-ventilyatsiya tizimining III-rejimi (to'liq izolyatsiya va regeneratsiya) qaysi vaziyatda ishga tushiriladi?",
+    "opts": [
+      "A) Tashqi havodagi radioaktiv changlar darajasi me'yoriy chegaradan ozgina ko'tarilib havo harorati pasayganida",
+      "B) Boshpana atrofida kuchli yong'in sodir bo'lib yuqori harorat va is gazi xavfi tug'ilganda yoki noma'lum yuqori konsentratsiyali gazlar tarqalganda",
+      "C) Boshpana ichidagi elektr ta'minoti tarmog'ida vaqtinchalik qisqa tutashuv sodir bo'lib yoritqichlar o'chganida",
+      "D) Boshpanadagi odamlar soni rejadagidan ikki barobar kam bo'lib zaxira kislorod sarfini tejash zarurati tug'ilganda"
+    ],
+    "correct": 1,
+    "explanation": "III-rejim (to'liq izolyatsiya va ichki havoni regeneratsiya qilish) boshpana tashqarisida yoppasiga yong'inlar boshlanganda, xavfli gazlar (uglerod oksidi) to'planganda va tashqaridan umuman havo olib bo'lmaydigan sharoitda qo'llaniladi.",
+    "mnemonic": "III-rejim = To'liq izolyatsiya, tashqi havo olinmaydi, ichki havo regeneratsiya qilinadi.",
+    "qHash": "1aq98yf_43",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_063",
+    "topicId": 4,
+    "category": "chqbt",
+    "q": "Dala rentgenometri DP-5V asbobi yordamida joylarning radiatsiyaviy nurlanish darajasi (quvvati) qaysi o'lchov birligida aniqlanadi?",
+    "opts": [
+      "A) Faqat mikroFarad yoki Paskal bosim birliklarida",
+      "B) Faqat kilometr/soat tezlik birligida",
+      "C) Rentgen/soat (R/h) yoki milliRentgen/soat (mR/h) birliklarida",
+      "D) Faqat Nyuton yoki Joul energiya birliklarida"
+    ],
+    "correct": 2,
+    "explanation": "DP-5V asbobi gamma-nurlanish doza quvvatini Rentgen/soat (R/soat) va milliRentgen/soat (mR/soat) birliklarida o'lchaydi, shuningdek beta-zararlanishni aniqlash imkoniyatiga ega.",
+    "mnemonic": "DP-5V = Gamma-nurlanish doza quvvatini R/soat va mR/soatda o'lchaydi.",
+    "qHash": "g29665_3n",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_064",
+    "topicId": 4,
+    "category": "chqbt",
+    "q": "Harbiy kimyoviy razvedka asbobi (VPXR) ning qizil halqa va qizil nuqta bilan belgilangan indikator naychasi qaysi zaharlovchi moddalar guruhini aniqlashga mo'ljallangan?",
+    "opts": [
+      "A) Teri-yiringlatuvchi ta'sirga ega moddalar (iprit, lyuizit)",
+      "B) Bo'g'uvchi gazlar guruhiga kiruvchi moddalar (fosgen, difosgen)",
+      "C) Umumiy zaharlovchi xususiyatga ega moddalar (sinil kislota, xlorsian)",
+      "D) Asab-falajlovchi ta'sirga ega zaharlovchi moddalar (zarin, zoman, V-gazlar)"
+    ],
+    "correct": 3,
+    "explanation": "VPXR da: qizil halqa va nuqta — zarin, zoman, V-gazlar (asab-falajlovchi); uchta yashil halqa — fosgen, difosgen, sinil kislota; bitta sariq halqa — iprit (teri-yiringlatuvchi).",
+    "mnemonic": "Qizil halqa va nuqta = Asab-falajlovchi moddalar (Zarin, Zoman, V-x).",
+    "qHash": "oiveg4_4p",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_065",
+    "topicId": 4,
+    "category": "chqbt",
+    "q": "Zaharlovchi moddalar tomchilari kiyim-kechak, ochiq teri yuzasi yoki shaxsiy qurolga tekkanida shoshilinch qisman maxsus ishlov berish uchun qaysi individual vositadan foydalaniladi?",
+    "opts": [
+      "A) Individual kimyoga qarshi paket (IPP-8, IPP-11)",
+      "B) Faqat oddiy toza sochiq va yuvinish sovuni",
+      "C) Dala rentgenometri DP-5V ning ehtiyot qismlar to'plami",
+      "D) Shaxsiy kiyinish jamlanmasidagi charm bog'ichlar"
+    ],
+    "correct": 0,
+    "explanation": "IPP-8 (IPP-11) individual protivoximik paketi zaharlovchi va toksik moddalar tushgan teri va kiyim qismlarini zararsizlantirish (degazatsiya qilish) uchun mo'ljallangan.",
+    "mnemonic": "Teri va kiyimni degazatsiya qilish = IPP-8 / IPP-11.",
+    "qHash": "1rk82pk_52",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_066",
+    "topicId": 4,
+    "category": "chqbt",
+    "q": "Zararsizlantirish turlaridan 'degazatsiya' va 'dezaktivatsiya' tushunchalarining tub mohiyati qaysi javobda to'g'ri ifodalangan?",
+    "opts": [
+      "A) Degazatsiya — mikroblarni o'ldirish; Dezaktivatsiya — zaharli kimyoviy moddalarni neytrallash",
+      "B) Degazatsiya — zaharlovchi kimyoviy moddalarni parchalash yoki yo'qotish; Dezaktivatsiya — radioaktiv moddalarni yuvib yoki tozalab tashlash",
+      "C) Degazatsiya — portlamay qolgan minalarni yo'q qilish; Dezaktivatsiya — suv havzalarini tozalash",
+      "D) Degazatsiya — binolarni yong'indan saqlash; Dezaktivatsiya — tutun pardasini hosil qilish"
+    ],
+    "correct": 1,
+    "explanation": "Degazatsiya — kimyoviy zaharlovchi moddalarni neytrallash. Dezaktivatsiya — radioaktiv ifloslantiruvchi chang va zarrachalarni olib tashlash. Dezinfeksiya — patogen mikroblarni yo'qotish.",
+    "mnemonic": "Degazatsiya = Gaz va kimyoni neytrallash; Dezaktivatsiya = Radioaktiv changni yo'qotish.",
+    "qHash": "1g79m1v_3k",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_067",
+    "topicId": 4,
+    "category": "chqbt",
+    "q": "Sanoat korxonasida xlor gazi sizib chiqqanda vujudga keladigan favqulodda vaziyatda aholi qanday to'g'ri harakat qilishi shart?",
+    "opts": [
+      "A) Xlor havodan yengil bo'lganligi sababli yerto'lalar, pastliklar va chuqur xandaqlarga tushib yashirinish",
+      "B) Ochiq derazalarni keng ochib xonani shamollatish va ko'cha bo'ylab shamol esayotgan tomonga qarab yugurish",
+      "C) Xlor havodan 2,5 barobar og'ir bo'lib pastliklarga to'planishi sababli zudlik bilan baland tepaliklarga yoki binolarning yuqori qavatlariga ko'tarilish",
+      "D) Nafas yo'llarini sirka kislotasi eritmasi bilan ho'llangan sochiq bilan yopib pastki yerto'laga tushish"
+    ],
+    "correct": 2,
+    "explanation": "Xlor gazi havodan og'ir, u yer yuzasida, chuqurliklarda va yerto'lalarda to'planadi. Shu sababli yuqori qavatlarga chiqiladi. Ammiak esa havodan yengil bo'lib, pastga tushiladi.",
+    "mnemonic": "Xlor og'ir = Yuqori qavatga chiq! Ammiak yengil = Pastki qavatga tush!",
+    "qHash": "ad0quz_3j",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_068",
+    "topicId": 4,
+    "category": "chqbt",
+    "q": "Aholini favqulodda vaziyatlar xavfidan ogohlantirish uchun sirena va uzuq-yuluq gudoklar chalinganda ('Diqqat barchaga!' signali) fuqaroning birinchi harakati nima bo'lishi kerak?",
+    "opts": [
+      "A) Hech qanday ma'lumotni kutmasdan shaxsiy buyumlarni yig'ib shahar tashqarisiga piyoda yugurish",
+      "B) Uy eshiklarini qulflab qo'shnilar bilan ko'chada yig'ilish o'tkazish",
+      "C) O't o'chirish qismining navbatchilik qismiga qo'ng'iroq qilib ma'lumot surishtirish",
+      "D) Zudlik bilan radio, televizor yoki rasmiy axborot kanallarini yoqib FVV ning rasmiy xabari va yo'riqnomasini tinglash"
+    ],
+    "correct": 3,
+    "explanation": "Sirenalar va uzuq gudoklar chalinsa — bu 'Diqqat barchaga!' signalidir. Zudlik bilan televizor yoki radioni yoqib, Favqulodda vaziyatlar boshqarmasining favqulodda xabarini tinglash lozim.",
+    "mnemonic": "Diqqat barchaga! = Televizor yoki radioni yoq -> Rasmiy yo'riqnomani tingla!",
+    "qHash": "kd0e7k_4z",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_069",
+    "topicId": 4,
+    "category": "chqbt",
+    "q": "Individual dozimetrlar to'plami (masalan, ID-1, DKP-50A) harbiy xizmatchilar va fuqarolar tomonidan qanday maqsadda taqib yuriladi?",
+    "opts": [
+      "A) Radioaktiv nurlanish maydonida bo'lish davomida shaxsning qabul qilgan gamma-nurlanish dozasini aniqlash uchun",
+      "B) Havo tarkibidagi kislorod va karbonat angidrid miqdorini doimiy nazorat qilish uchun",
+      "C) Dushmanning harakatdagi snayperlari va lazer nishonlarini avtomatik qaytarish uchun",
+      "D) Atrof-muhitning harorati va atmosfera bosimi o'zgarishini qayd etib borish uchun"
+    ],
+    "correct": 0,
+    "explanation": "ID-1 va DKP-50A individual dozimetrlari inson organizmi qabul qilgan gamma-nurlanish dozasini (Rad yoki Rentgen birligida) o'lchash va shaxsiy hisobga olish uchun xizmat qiladi.",
+    "mnemonic": "ID-1 dozimetr = Olingan nurlanish dozasini o'lchash.",
+    "qHash": "13a52pi_3n",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_070",
+    "topicId": 4,
+    "category": "chqbt",
+    "q": "Qutqaruv va boshqa kechiktirib bo'lmaydigan ishlar (ASDVR) doirasida birlamchi qutqaruv tadbirlari tarkibiga quyidagilardan qaysi biri kiradi?",
+    "opts": [
+      "A) Yangi ko'p qavatli turar-joy binolarining poydevorini loyihalashtirish va qurish ishlarini boshlash",
+      "B) Vayronalar ostidan jabrlanganlarni qidirib topish, chiqarish, birinchi tibbiy yordam ko'rsatish va xavfsiz hududga evakuatsiya qilish",
+      "C) Zararlangan hududdagi barcha tijorat banklari va moliyaviy muassasalarning yillik hisobotlarini tekshirish",
+      "D) Favqulodda vaziyat hududidagi maktab o'quvchilarining choraklik imtihonlarini tashkil etish"
+    ],
+    "correct": 1,
+    "explanation": "Qutqaruv ishlari (ASDVR) ning asosiy maqsadi — odamlarni qidirib topish, qutqarish, tibbiy yordam ko'rsatish, kommunal tarmoqlardagi avariyalarni to'xtatish va yo'llarni tozalashdir.",
+    "mnemonic": "ASDVR = Qidirish + Qutqarish + Birinchi yordam + Evakuatsiya.",
+    "qHash": "w6bs4f_3y",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_071",
+    "topicId": 4,
+    "category": "chqbt",
+    "q": "GP-7 fuqaro protivogazining yuz qismi (maskasi) o'lchamini aniqlash uchun inson boshining qaysi o'lchamlari santimetr lenta bilan o'lchanadi?",
+    "opts": [
+      "A) Faqat ikki quloq suprasi orasidagi to'g'ri gorizontal masofa bo'yicha",
+      "B) Faqat burun uchidan ensa sohasigacha bo'lgan to'g'ridan-to'g'ri masofa bo'yicha",
+      "C) Boshning engak, chakka va tepa qismidan o'tuvchi yopiq vertikal aylanasi bo'yicha",
+      "D) Bo'yinning pastki aylanasi va yelka kengligining o'zaro nisbati bo'yicha"
+    ],
+    "correct": 2,
+    "explanation": "GP-7 protivogazi maskasi o'lchami boshning vertikal aylanasi (engak — chakka — bosh tepasi) o'lchanishi orqali aniqlanadi (1, 2 yoki 3-o'lcham tanlanadi).",
+    "mnemonic": "GP-7 o'lchami = Engakdan bosh tepasiga qadar vertikal aylana.",
+    "qHash": "1cdfc2y_3x",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_072",
+    "topicId": 4,
+    "category": "chqbt",
+    "q": "1,5 yoshgacha bo'lgan emizikli go'daklarni zaharlovchi va radioaktiv moddalardan himoya qilish uchun fuqaro muhofazasida qaysi maxsus vosita qo'llaniladi?",
+    "opts": [
+      "A) Kattalar uchun mo'ljallangan filtrlovchi protivogaz GP-5",
+      "B) Izolyatsiyalovchi harbiy protivogaz IP-4M",
+      "C) Faqat paxta-dokali niqob va oddiy bolalar ko'rpachasi",
+      "D) Bolalar himoya kamerasi KZD (KZD-4 yoki KZD-6)"
+    ],
+    "correct": 3,
+    "explanation": "1,5 yoshgacha bo'lgan bolalarga protivogaz kiygizib bo'lmaydi. Ular uchun difuzion-filtrlovchi materialdan tayyorlangan maxsus bolalar himoya kamerasi (KZD-6) qo'llaniladi.",
+    "mnemonic": "1,5 yoshgacha chaqaloqlar = Bolalar himoya kamerasi (KZD-6).",
+    "qHash": "uvdd56_4a",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_073",
+    "topicId": 4,
+    "category": "chqbt",
+    "q": "Favqulodda vaziyatlar davlat tizimi (FVDT) ning hududiy quyi tizimlari qaysi mezon bo'yicha shakllantiriladi?",
+    "opts": [
+      "A) Qoraqalpog'iston Respublikasi, viloyatlar va Toshkent shahri hamda tumanlar ma'muriy-hududiy chegaralari bo'yicha",
+      "B) Faqat temir yo'l va xalqaro avtomagistral trassalari yo'nalishlari bo'yicha",
+      "C) Tog'li va cho'lli hududlarning tabiiy iqlim mintaqalari bo'yicha",
+      "D) Yillik elektr energiyasi iste'moli yuqori bo'lgan yirik sanoat korxonalari bo'yicha"
+    ],
+    "correct": 0,
+    "explanation": "FVDT ikkita asosiy quyi tizimdan iborat: funksional (vazirlik va idoralar) va hududiy (viloyatlar, tumanlar va shaharlar ma'muriy chegaralari bo'yicha).",
+    "mnemonic": "FVDT = Funksional (vazirliklar) + Hududiy (viloyat va tumanlar).",
+    "qHash": "1c28278_31",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_074",
+    "topicId": 4,
+    "category": "chqbt",
+    "q": "Tog'li hududlarda to'satdan kuchli sel yoki toshqin xavfi to'g'risida ogohlantirish olinganda aholi qanday harakat qilishi shart?",
+    "opts": [
+      "A) Sel oqimi bo'ylab uning harakat tezligida pastlikka qarab qochishga urinish",
+      "B) Soy va daryo o'zanlaridan, pastliklardan zudlik bilan chiqib tog' yonbag'rining baland qismlariga ko'tarilish",
+      "C) Sel kelayotgan daryo o'zanidagi ko'priklar yoki quvur taglariga yashirinish",
+      "D) O'zining avtotransport vositasida sel oqimini kesib o'tishga harakat qilish"
+    ],
+    "correct": 1,
+    "explanation": "Sel xavfida zudlik bilan soy o'zanidan chetga chiqib, yonbag'irlarning baland, xavfsiz tepaliklariga ko'tarilish kerak. Ko'priklar, pastliklar va soy bo'ylari o'ta xavflidir.",
+    "mnemonic": "Sel xavfi = Soy o'zanidan qoch -> Balandlikka ko'taril!",
+    "qHash": "4b2iaf_3l",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_075",
+    "topicId": 4,
+    "category": "chqbt",
+    "q": "Ko'p qavatli binoning 5-qavatida bo'lgan shaxs kuchli zilzila yer silkinishlari boshlanganda qaysi eng to'g'ri xavfsizlik chorasini ko'rishi shart?",
+    "opts": [
+      "A) Barcha shaxsiy buyumlarni yig'ishtirib, tezkor harakat bilan ko'p qavatli bino lifti yoki zinapoyasi orqali pastga tushishga harakat qilish",
+      "B) Xonadagi barcha deraza va balkon eshiklarini keng ochib, atrofdagilarni ogohlantirgan holda tashqariga sakrashga shaylanish",
+      "C) Tashqariga yugurmasdan, xonaning yuk ko'taruvchi ichki devor burchagiga yoki mustahkam stol tagiga o'tirib boshni himoyalash",
+      "D) Bino o'rtasidagi yorug'lik tushadigan katta qandil ostida tik turib, qutqaruvchilar guruhi kelishini ovoz chiqarib kutish"
+    ],
+    "correct": 2,
+    "explanation": "Zilzila paytida liftlar va zinapoyalar birinchi bo'lib qulaydi. Yuqori qavatdan qochib ulgurib bo'lmaydi. Ichki yuk ko'taruvchi kapital devorlar burchagiga, eshik o'rniga yoki mustahkam stol tagiga kirib boshni himoya qilish kerak.",
+    "mnemonic": "Zilzilada yuqori qavat = Liftdan va zinadan qoch! Ichki burchak yoki stol tagiga yashirin.",
+    "qHash": "uj1x7h_43",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_076",
+    "topicId": 5,
+    "category": "chqbt",
+    "q": "Taktik jangovar tibbiyotda (TCCC) 'Qizil zona' (Care Under Fire — o't ostida yordam) bosqichida ko'rsatiladigan yagona va shoshilinch tibbiy harakat nima?",
+    "opts": [
+      "A) Yaradorning barcha harbiy kiyimlarini to'liq yechib, antiseptik eritmalar yordamida jarohatni chuqur tozalash va yuvish",
+      "B) Shikastlangan sohadagi suyak sinishlarini aniqlash maqsadida oyoq va qo'llarga zudlik bilan gipsli qotiruvchi shina bog'lash",
+      "C) Yaradorga tinchlantiruvchi og'riq qoldiruvchi issiq choy ichirib, uning nafas olish ritmini tekshirish uchun o'tirg'izib qo'yish",
+      "D) Dushman o't ochib turgan paytda faqat hayot uchun xavfli o'tkir arterial qon ketishida oyoq yoki qo'lga darhol turniket qo'yish"
+    ],
+    "correct": 3,
+    "explanation": "Qizil zonada dushman o'ti ostida har qanday boshqa tibbiy muolaja taqiqlanadi. Birinchi vazifa — o't ochish orqali dushmanga javob berish, yagona tibbiy chora esa favvora bo'lib oqayotgan arterial qonga zudlik bilan turniket qo'yib panaga o'tishdir.",
+    "mnemonic": "Qizil zona (o't ostida) = Faqat turniket qo'yish va pana joyga sudralib o'tish.",
+    "qHash": "ursqdb_4a",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_077",
+    "topicId": 5,
+    "category": "chqbt",
+    "q": "Oyoqning son arteriyasi jarohatlanib qon kuchli bosim bilan otilib chiqqanda qon to'xtatuvchi turniket (jgut) anatomik jihatdan qayerga qo'yiladi?",
+    "opts": [
+      "A) Jarohatdan 5-7 sm yuqoriga yoki shoshilinch sharoitda kiyim ustidan sonning eng yuqori sohasiga",
+      "B) To'g'ridan-to'g'ri ochiq qonayotgan jarohatning ichiga chuqur qilib",
+      "C) Jarohatdan 10 sm pastga, tizza bo'g'imi sohasiga",
+      "D) Qarama-qarshi tomonning sog'lom oyog'iga simmetrik qilib"
+    ],
+    "correct": 0,
+    "explanation": "Arterial qon yurakdan periferiyaga oqadi. Shuning uchun turniket qon oqimini to'xtatish uchun jarohatdan yuqoriga (yurak tomonga) 5-7 sm balandlikda yoki kiyim ustidan sonning yuqori proksimal qismiga tortiladi.",
+    "mnemonic": "Arterial turniket = Jarohatdan 5-7 sm yuqoriga (yurakka yaqin).",
+    "qHash": "qfdlpc_42",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_078",
+    "topicId": 5,
+    "category": "chqbt",
+    "q": "Turniket (jgut) qo'yilganda to'qimalar nekrozining oldini olish uchun yozgi va qishki vaqt me'yori ko'pi bilan qancha etib belgilangan?",
+    "opts": [
+      "A) Yozda ham, qishda ham uzluksiz 6 soat davomida bo'shatmasdan qoldiriladi",
+      "B) Yozda 1 soatdan, qishda esa 30-40 daqiqadan oshmasligi kerak (vaqt yozilgan qog'oz qistiriladi)",
+      "C) Har 5 daqiqada turniketni butunlay yechib qaytadan yangi joyga bog'lanadi",
+      "D) Vaqtning hech qanday ahamiyati yo'q, kasalxonaga borguncha qat'iy yechilmaydi"
+    ],
+    "correct": 1,
+    "explanation": "Jgut qon aylanishini butunlay to'xtatadi. Shuning uchun to'qimalar o'lmasligi uchun yozda ko'pi bilan 1 soat, qishda 30-40 daqiqa qo'yiladi va jgut qo'yilgan aniq vaqt qog'ozga yozib qistiriladi.",
+    "mnemonic": "Jgut vaqti = Yozda 1 soat, qishda 30-40 daqiqa + vaqt yozilgan yorliq.",
+    "qHash": "8w13zr_3r",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_079",
+    "topicId": 5,
+    "category": "chqbt",
+    "q": "Ko'krak qafasining ochiq jarohatida (havo shishib pishillab kirib-chiqayotgan ochiq pnevmotoraksda) qanday turdagi shoshilinch bog'lam qo'yiladi?",
+    "opts": [
+      "A) Plevra bo'shlig'i erkin nafas olishi uchun bir qavatli doka va yumshoq paxtali ochiq bog'lam",
+      "B) Qovurg'alarni harakatsizlantirish maqsadida ko'krak qafasiga qo'yiladigan siquvchi gipsli qotiruvchi bint",
+      "C) Germetik okklyuzion bog'lam (klapanli yoki havo o'tkazmaydigan material bilan havo kirishini to'sish)",
+      "D) Yaralangan sohadagi mikroblarni yo'qotish uchun spirtli paxta qo'yib qattiq bosuvchi doka bog'lami"
+    ],
+    "correct": 2,
+    "explanation": "Ochiq pnevmotoraksda plevra bo'shlig'iga tashqi havo so'rilib o'pkani siqib qo'yadi. Shu sababli zudlik bilan havo o'tkazmaydigan germetik (okklyuzion) bog'lam qo'yiladi.",
+    "mnemonic": "Ochiq pnevmotoraks = Germetik okklyuzion bog'lam (havo kirmasligi shart).",
+    "qHash": "zrsukl_41",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_080",
+    "topicId": 5,
+    "category": "chqbt",
+    "q": "Taktik tibbiyotda 'kuchlanishli (klapanli) pnevmotoraks' belgilari paydo bo'lganda hayotni saqlab qolish uchun dekompression igna qaysi sohaga kiritiladi?",
+    "opts": [
+      "A) Ko'krak suyagining bevosita markaziy qismiga, yurak cho'qqisining chap tomonidagi 4-qovurg'a oralig'iga",
+      "B) Qorin bo'shlig'i yuqori sohasiga, jigar sohasidan 5 sm pastdagi o'ng qovurg'a yoyi ostki burchagiga",
+      "C) Orqa kurak suyagining pastki qirrasi bo'ylab orqa o'rta chiziqning 7-qovurg'alararo bo'shlig'iga",
+      "D) Shikastlangan tomonda o'rta o'mrov chizig'i bo'yicha 2-qovurg'alararo bo'shliqqa (qovurg'aning yuqori qirrasi bo'ylab)"
+    ],
+    "correct": 3,
+    "explanation": "Kuchlanishli pnevmotoraksda bosimni pasaytirish uchun dekompression igna 2-qovurg'alararo bo'shliqqa o'rta o'mrov chizig'i bo'ylab yoki 5-qovurg'alararo oldingi qo'ltiqosti chizig'i bo'ylab qovurg'a ustki qirrasidan kiritiladi.",
+    "mnemonic": "Ignali dekompressiya = 2-qovurg'alararo, o'rta o'mrov chizig'i.",
+    "qHash": "1xgt3b6_4a",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_081",
+    "topicId": 5,
+    "category": "chqbt",
+    "q": "Chuqur jarohatlarda zamonaviy gemostatik bintlar (Celox, QuikClot) bilan jarohat kanalini tamponada qilish (wound packing) qanday bajariladi?",
+    "opts": [
+      "A) Barmoq bilan bintni jarohat tubiga suyakka yetguncha zich tiqib to'ldirish va kamida 3 daqiqa davomida qo'l bilan bosib turish",
+      "B) Bintni faqat jarohat yuzasiga bir qavat qilib yopib ustidan bo'sh bintlash",
+      "C) Bintni oldindan toza sovuq suvda ivitib keyin jarohat ustiga bog'lash",
+      "D) Bintni jarohatga kiritmasdan faqat uning atrofidagi teriga yopishtirish"
+    ],
+    "correct": 0,
+    "explanation": "Gemostatik tamponada qilishda bint qonayotgan tomir o'rniga qadar (suyakkacha) jarohat tubiga zich qilib bosib kiritiladi va faol modda qonni iviishi uchun kamida 3 daqiqa qattiq bosib turiladi.",
+    "mnemonic": "Tamponada = Jarohat tubiga zich kiritish + 3 daqiqa qattiq bosib turish.",
+    "qHash": "1r9ws6s_3x",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_082",
+    "topicId": 5,
+    "category": "chqbt",
+    "q": "Termik kuyishlarda Uolles bo'yicha 'to'qqizliklar qoidasi'ga ko'ra katta yoshli odam tanasining bitta butun oyog'i kuyishi tana yuzasining necha foizini tashkil etadi?",
+    "opts": [
+      "A) 9 foizini tashkil etadi (chunki oyoq yuzasi bitta butun qo'l yuzasiga teng deb olinadi)",
+      "B) 18 foizini tashkil etadi (oyoqning oldingi yuzasi 9% va orqa yuzasi 9%)",
+      "C) 36 foizini tashkil etadi (chunki bitta oyoq tana umumiy maydonining uchdan bir qismini egallaydi)",
+      "D) 1 foizini tashkil etadi (chunki oyoq sohasi odam tanasining eng minimal qismi hisoblanadi)"
+    ],
+    "correct": 1,
+    "explanation": "To'qqizliklar qoidasi: Bosh va bo'yin — 9%, bitta qo'l — 9%, ko'krak — 9%, qorin — 9%, orqa tomon — 18%, bitta butun oyoq — 18%, oraliq (chov) sohasi — 1%.",
+    "mnemonic": "Bitta butun oyoq = 18% (oldingi 9% + orqa 9%). Bitta qo'l = 9%.",
+    "qHash": "fdxdly_4n",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_083",
+    "topicId": 5,
+    "category": "chqbt",
+    "q": "Travmatik shokning erektil (dastlabki) fazasi bilan torpid (keyingi) fazasining asosiy klinik belgisi qaysi javobda to'g'ri ko'rsatilgan?",
+    "opts": [
+      "A) Erektil fazada — bemorning chuqur hushsizlikka tushishi va nafas to'xtashi; Torpid fazada — qon bosimining keskin oshib ketishi va tajovuzkorlik",
+      "B) Erektil fazada — haroratning keskin 40 darajaga ko'tarilishi; Torpid fazada — tana haroratining muzlab 20 darajaga tushishi va doimiy titroq",
+      "C) Erektil fazada — qisqa muddatli psixomotor qo'zg'alish va bosim ko'tarilishi; Torpid fazada — umumiy karaxtlik, sustlik va arterial bosimning xavfli pasayishi",
+      "D) Har ikkala fazada ham bemor o'zini butunlay sog'lom his qilib, arterial qon bosimi va puls ko'rsatkichlari me'yorda saqlanib qolishi"
+    ],
+    "correct": 2,
+    "explanation": "Shokning birinchi erektil fazasida og'riqdan bemor qo'zg'aluvchan, ko'p gapiradi, qon bosimi baland bo'ladi. Keyingi torpid fazada esa bemor holsizlanadi, karaxt bo'ladi, bosimi keskin tushib hayoti xavf ostida qoladi.",
+    "mnemonic": "Shok: Erektil = Qo'zg'alish; Torpid = Karaxtlik va bosimning pasayishi.",
+    "qHash": "1hn8j9d_3t",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_084",
+    "topicId": 5,
+    "category": "chqbt",
+    "q": "Boldir suyaklari singanda transport immobilizatsiyasi (shina qo'yish) o'tkazishning eng asosiy qoidasi nima?",
+    "opts": [
+      "A) Faqat sinish joyining o'zini qattiq bintlab, tizza va to'piq bo'g'imlarining erkin bukilishini to'liq saqlab qolish",
+      "B) Shinani faqat oyoq kiyimlarini yechib ochiq yalang'och teriga bevosita metall simlar yordamida qattiq bog'lash",
+      "C) Oyoqni tizza sohasidan majburan 90 daraja burchak ostida bukib, son suyagi ustidan aylantirib fiksatsiya qilish",
+      "D) Sinish joyiga tutash bo'lgan kamida ikkita bo'g'imni — tizza va boldir-oyoq panjasi (oshig'i) bo'g'imlarini harakatsizlantirish"
+    ],
+    "correct": 3,
+    "explanation": "Singan suyakni immobilizatsiya qilishda asosiy qoida — sinish sohasidan yuqoridagi va pastdagi kamida 2 ta qo'shni bo'g'imni to'liq qimirlamaydigan qilib fiksatsiya qilishdir.",
+    "mnemonic": "Immobilizatsiya qoidasi = Sinish atrofidagi kamida 2 ta bo'g'imni mahkamlash.",
+    "qHash": "1spjzzd_30",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_085",
+    "topicId": 5,
+    "category": "chqbt",
+    "q": "Katta yoshli odamlarda yurak-o'pka reanimatsiyasini (CPR) o'tkazishda ko'krak qafasini bosish (kompressiya) va nafas berish nisbati qanday?",
+    "opts": [
+      "A) 30 marta bosish va 2 marta sun'iy nafas berish (30:2)",
+      "B) 5 marta bosish va 5 marta sun'iy nafas berish (5:5)",
+      "C) 15 marta bosish va 10 marta sun'iy nafas berish (15:10)",
+      "D) 50 marta bosish va 1 marta sun'iy nafas berish (50:1)"
+    ],
+    "correct": 0,
+    "explanation": "Xalqaro CPR standartlariga ko'ra, bitta yoki ikkita qutqaruvchi bo'lishidan qat'i nazar, katta yoshlilarda kompressiya va nafas nisbati qat'iy 30:2 qilib belgilangan.",
+    "mnemonic": "CPR nisbati = 30 ta bosish : 2 ta nafas (30:2).",
+    "qHash": "1hew8s1_3v",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_086",
+    "topicId": 5,
+    "category": "chqbt",
+    "q": "Nafas yo'liga yot jism tiqilib odam to'liq bo'g'ilayotganda (gapira olmay, yo'tala olmay bo'g'izini ushlaganda) qo'llaniladigan Geymlix (Heimlich) usuli qanday bajariladi?",
+    "opts": [
+      "A) Jabrlanuvchini yerga chalqancha yotqizib, uning ko'krak qafasiga ikki musht bilan ketma-ket kuchli zarbalar berib ko'krakni silkitish",
+      "B) Jabrlanuvchining orqasiga o'tib, qo'llarni uning qorniga (kindik va to'sh suyagi oralig'iga) tutashtirib, ichkariga va yuqoriga qaratib keskin zarbli silkishlar berish",
+      "C) Jabrlanuvchining boshini keskin orqaga tashlab, uning og'iz bo'shlig'iga ko'p miqdorda iliq tuzli suv quyib qayt qildirishga urinish",
+      "D) Jabrlanuvchini oyoqlaridan ushlab pastga osiltirgancha uning kuraklari orasiga kaft bilan ketma-ket kuchli silkitish harakatlarini bajarish"
+    ],
+    "correct": 1,
+    "explanation": "Geymlix manevri: orqa tomondan quchoqlab, musht kindikdan yuqoriga qo'yiladi va ikkinchi qo'l bilan mahkamlab, ichkariga va yuqoriga tomon keskin bosiladi. Bu diafragmani ko'tarib havo oqimi bilan yot jismni chiqaradi.",
+    "mnemonic": "Geymlix = Orqasidan quchoqlash -> Kindik ustidan ichkariga va yuqoriga keskin bosish.",
+    "qHash": "16857og_4r",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_087",
+    "topicId": 5,
+    "category": "chqbt",
+    "q": "Umurtqa pog'onasi (orqa miya) jarohatlangan deb gumon qilingan yaradorni ko'chirish va tashishda qaysi qat'iy qoidaga amal qilinadi?",
+    "opts": [
+      "A) Yaradorni yelkalarga ko'tarib yoki bir kishi qo'lida ko'tarib yugurish",
+      "B) Yaradorni yumshoq brezent zambilga qornini pastga qilib buklangan holda yotqizish",
+      "C) Yaradorni faqat qattiq tekis zambilga (yoki maxsus shitga) butun gavdasini bir o'qda qimirlatmasdan 'log roll' usulida yotqizish",
+      "D) Yaradorning bo'yin va belini mustaqil ravishda har tomonga burib ko'rishini talab qilish"
+    ],
+    "correct": 2,
+    "explanation": "Umurtqa singanda har qanday egilish orqa miya nerv tolalarini uzishi mumkin. Shuning uchun bemor faqat qattiq tekis yuzaga, butun tanasi (bosh, bo'yin, gavda) bir chiziqda ushlangan holda yotqiziladi.",
+    "mnemonic": "Umurtqa jarohati = Qattiq taxta (shit) + Tanani bir o'qda burish (bukish taqiqlanadi).",
+    "qHash": "16om9h4_3o",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_088",
+    "topicId": 5,
+    "category": "chqbt",
+    "q": "Asabni falajlovchi zaharlovchi moddalar (zarin, zoman, V-gazlar) bilan zararlanishning dastlabki belgilarida (mioz — qorachiqning torayishi, ko'krak qisishi) qaysi antidot zudlik bilan kiritiladi?",
+    "opts": [
+      "A) Faqat antibiotik tabletkalari va faollashtirilgan ko'mir",
+      "B) Yuqori konsentratsiyali glyukoza va askorbin kislotasi eritmasi",
+      "C) Faqat osh tuzi eritmasi bilan oshqozonni yuvish",
+      "D) Shaxsiy dorixonadagi shpris-tyubikdagi atropin (yoki afiniy)"
+    ],
+    "correct": 3,
+    "explanation": "Fosfororganik zaharlovchi moddalarga (Zarin, Zoman, V-x) qarshi xolinolitik antidot — Atropin yoki Afiniy zudlik bilan mushak orasiga kiritiladi. U atsetilxolin retseptorlarini bloklaydi.",
+    "mnemonic": "Zarin, zoman antidoti = Atropin / Afiniy (qorachiq torayganda zudlik bilan).",
+    "qHash": "18i30fv_5g",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_089",
+    "topicId": 5,
+    "category": "chqbt",
+    "q": "Issiq urishi (termik gipertermiya) alomatlari kuzatilgan harbiy xizmatchiga ko'rsatiladigan birinchi tibbiy yordam ketma-ketligi qanday?",
+    "opts": [
+      "A) Salqin va soyali joyga olib o'tish, yoqasini yechish, bosh va bo'yinga sovuq kompress qo'yish hamda tuzli salqin suv ichirish",
+      "B) Qalin harbiy shinel yoki adyolga mahkam o'rab, quyosh nuri ostida yotqizish hamda unga qaynoq qora choy ichirish",
+      "C) Yaradorni tik holatda o'tirg'izib, uning oyoqlarini pastga osiltirib quyoshga qarab chuqur nafas olishini talab qilish",
+      "D) Zudlik bilan butun badanga toza tibbiy spirt surtib, qon aylanishini tezlashtirish maqsadida uni yugurishga majburlash"
+    ],
+    "correct": 0,
+    "explanation": "Issiq urishida tanani zudlik bilan sovitish zarur: soyaga olib o'tish, kiyimni bo'shatish, sovuq suvda ho'llangan mato qo'yish va suv-tuz balansini tiklash uchun tuzli suv ichirish kerak.",
+    "mnemonic": "Issiq urishi = Soya joy + Kiyimni yechish + Sovuq kompress + Tuzli suv.",
+    "qHash": "pj9ui7_3s",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_090",
+    "topicId": 5,
+    "category": "chqbt",
+    "q": "Oyoq-qo'llarning sovuq urishi (muzlashi) holatlarida to'qimalarni saqlab qolish uchun quyidagi harakatlardan qaysi biri QAT'IYAN MAN ETILADI?",
+    "opts": [
+      "A) Shikastlangan a'zoga quruq issiq saqlovchi paxta-doka bog'lami qo'yish",
+      "B) Sovuq urgan sohani qor bilan ishqalash, ochiq olovga tutish yoki issiq suvga to'satdan botirish",
+      "C) Bemorga iliq shirin choy berish va xona haroratida asta-sekin isitish",
+      "D) Nam va muzlagan paypoq hamda poyabzallarni ehtiyotkorlik bilan yechish"
+    ],
+    "correct": 1,
+    "explanation": "Sovuq urgan joyni qor bilan ishqalash mayda muz parchalari bilan terini shikastlaydi va infeksiya kiritadi. Olovga tutish esa to'qimalar nekroziga olib keladi. Isitish asta-sekin ichkaridan (iliq ichimlik, termoizolyatsiya) bo'lishi kerak.",
+    "mnemonic": "Sovuq urishi = Qor bilan ishqalama! Olovga tutma! Sekin-asta ichkaridan isit.",
+    "qHash": "rem8gf_3x",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_091",
+    "topicId": 6,
+    "category": "chqbt",
+    "q": "CHQBT darslarida zamonaviy 'Blended learning' (aralash ta'lim) texnologiyasini qo'llashning asosiy pedagogik afzalligi nimada?",
+    "opts": [
+      "A) Barcha amaliy saf va otish mashg'ulotlarini bekor qilib, o'quvchilarni faqat kompyuter testlari orqali baholash bilan cheklanish",
+      "B) O'qituvchining darsdagi ishtirokini butunlay to'xtatib, o'quvchilarga to'liq mustaqil harbiy tayyorgarlik ko'rish erkinligini berish",
+      "C) Nazariy bilimlarni (nizomlar, taktik qoidalar) onlayn platformalar orqali o'zlashtirib, dars vaqtini to'liq amaliy ko'nikmalarni mashq qilishga yo'naltirish",
+      "D) Faqat harbiy xizmatga chaqirilmaydigan o'quvchilarga elektron darsliklar tarqatib, boshqalarni amaliyotdan chetlatish"
+    ],
+    "correct": 2,
+    "explanation": "Aralash ta'lim (Blended learning) o'quvchilarga qonunlar, nizomlar va nazariyani mustaqil raqamli resurslar orqali o'rganish imkonini beradi, maktabdagi dars vaqti esa amaliy mashqlar (qurolni sochish-yig'ish, saf, birinchi yordam) uchun ajratiladi.",
+    "mnemonic": "Aralash ta'lim = Nazariya onlayn + Darsda to'liq amaliyot.",
+    "qHash": "fkjb9t_3i",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_092",
+    "topicId": 6,
+    "category": "chqbt",
+    "q": "CHQBT mashg'ulotlarida 'Keys-stadi' (vaziyatli o'qitish) metodining asosiy maqsadi va mohiyati qaysi javobda to'g'ri ko'rsatilgan?",
+    "opts": [
+      "A) Dars mavzusi bo'yicha tayyor kitobiy qoidalarni o'quvchilarga yodlatish va ularni doskaga chiqarib so'zma-so'z aytib berishini talab qilish",
+      "B) O'quvchilarni faqat individual tarzda bir-biri bilan muloqot qilmasdan jim o'tirib harbiy lug'at yozishga majburlash",
+      "C) O'quv yili oxirida o'tkaziladigan yakuniy davlat attestatsiyasi savollarini o'quvchilarga oldindan to'liq tarqatib berish",
+      "D) Real harbiy yoki favqulodda vaziyat muammosini modellashtirib, o'quvchilarda tahlil qilish va mustaqil qaror qabul qilish ko'nikmasini shakllantirish"
+    ],
+    "correct": 3,
+    "explanation": "Keys-stadi aniq muammoli harbiy-taktik yoki qutqaruv vaziyatini tahlil qilish, bir nechta to'g'ri yechimlarni taqqoslash va jamoada asoslangan qaror qabul qilishni o'rgatadi.",
+    "mnemonic": "Keys-stadi = Muammoli vaziyat tahlili + Mustaqil qaror qabul qilish.",
+    "qHash": "1k3v852_3m",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_093",
+    "topicId": 6,
+    "category": "chqbt",
+    "q": "Blum taksonomiyasining 'Tahlil' (Analysis) va 'Baholash' (Evaluation) darajalariga mos keluvchi CHQBT o'quv topshirig'i qaysi javobda berilgan?",
+    "opts": [
+      "A) Jangovar vaziyatda qo'llanilgan ikki xil mudofaa taktikasining afzallik va kamchiliklarini qiyoslab, eng maqbul variantni asoslab berish",
+      "B) AK-74 avtomatining barcha asosiy qismlari nomlarini kitobdagi ketma-ketlikda yoddan aytib berish",
+      "C) Saf nizomining 1-moddasini daftarga husnixat bilan xatosiz ko'chirib yozish",
+      "D) O'qituvchi ko'rsatgan saf elementlarini hech qanday izohsiz xuddi o'zidek takrorlab berish"
+    ],
+    "correct": 0,
+    "explanation": "Faktlarni eslash — quyi daraja (Bilish/Eslash). Ikki xil taktik yechimni taqqoslash, uning kuchli va zaif tomonlarini tahlil qilish va eng maqbulini asoslash esa yuqori tafakkur (Tahlil va Baholash) darajasidir.",
+    "mnemonic": "Blum yuqori pog'ona = Tahlil qilish, taqqoslash va o'z qarorini asoslash.",
+    "qHash": "1nenh5w_3z",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_094",
+    "topicId": 6,
+    "category": "chqbt",
+    "q": "CHQBT fani darslarida 'formativ (shakllantiruvchi) baholash'ning asosiy vazifasi nimadan iborat?",
+    "opts": [
+      "A) Faqat chorak oxirida jurnalga yakuniy baho qo'yib, o'quvchining bilim darajasini o'zgartirishsiz qat'iy belgilash",
+      "B) O'quv jarayoni davomida o'quvchining amaliy xatolarini o'z vaqtida aniqlab, konstruktiv qayta aloqa berish orqali natijani yaxshilash",
+      "C) Qoniqarsiz baho olgan o'quvchilarni barcha amaliy mashg'ulotlardan chetlatib sinf xonasida qoldirish",
+      "D) O'quvchilarni faqat jismoniy normativlarni bajarganligi bo'yicha reyting ro'yxatiga terib chiqish"
+    ],
+    "correct": 1,
+    "explanation": "Formativ baholash jazolash uchun emas, balki ta'lim jarayonini yaxshilash uchun xizmat qiladi. O'qituvchi o'quvchiga darhol xatosini ko'rsatadi va qanday tuzatish kerakligini yo'naltiradi (qayta aloqa).",
+    "mnemonic": "Formativ baholash = Jarayon davomida tuzatish va konstruktiv qayta aloqa.",
+    "qHash": "1lvob7w_2o",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_095",
+    "topicId": 6,
+    "category": "chqbt",
+    "q": "'Flipped classroom' (to'ntarilgan sinf) modeli asosida tashkil etilgan darsda qurol tuzilishi mavzusi qanday o'rganiladi?",
+    "opts": [
+      "A) Butun dars davomida faqat o'qituvchi ma'ruza o'qiydi, o'quvchilar esa uyga borgach qurolni mustaqil yasashga urinadilar",
+      "B) Darsda faqat jismoniy tarbiya mashqlari bajarilib, qurol tuzilishi bo'yicha hech qanday amaliyot o'tkazilmaydi",
+      "C) O'quvchilar qurolning nazariy sxemalarini uyda video orqali mustaqil ko'rib keladilar, darsda esa to'liq qurolni sochish va yig'ish amaliyotini bajaradilar",
+      "D) Nazariy bilimlarni o'rganish butunlay bekor qilinib, quroldan faqat ko'r-ko'rona foydalanishga ruxsat beriladi"
+    ],
+    "correct": 2,
+    "explanation": "Flipped classroom texnologiyasida o'quvchi nazariy materialni (videodars, slayd) uyda oldindan o'rganadi. Sinfdagi butun qimmatli dars vaqti esa amaliy harakatlar va mahoratni charxlashga sarflanadi.",
+    "mnemonic": "Flipped classroom = Nazariya uyda o'rganiladi, darsda faqat amaliyot bajariladi.",
+    "qHash": "1jch001_3d",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_096",
+    "topicId": 6,
+    "category": "chqbt",
+    "q": "CHQBT darsining yakuniy qismida 'refleksiya' bosqichini o'tkazishdan ko'zlangan asosiy pedagogik maqsad nima?",
+    "opts": [
+      "A) O'quvchilarni sinfdan tezroq chiqarib yuborish uchun qurollarni zudlik bilan omborga topshirish",
+      "B) O'qituvchining dars davomida gapirgan barcha gaplarini o'quvchilar tomonidan daftarga so'zma-so'z ko'chirtirish",
+      "C) O'quvchilar o'rtasida kim eng ko'p jarima balli to'plaganligini ovoza qilib intizomiy jazo e'lon qilish",
+      "D) O'quvchilarning darsda nimalarni o'rganganligi, qaysi ko'nikmalarda qiyinchilikka uchraganligi va o'z faoliyatini ongli tahlil qilishini ta'minlash"
+    ],
+    "correct": 3,
+    "explanation": "Refleksiya — bu o'quvchining o'z o'quv faoliyati, yutuqlari va xatolarini anglash jarayonidir. Bu harbiy xizmatga ongli tayyorgarlik va o'z ustida ishlash mas'uliyatini oshiradi.",
+    "mnemonic": "Refleksiya = O'z bilim va xatolarini ongli tahlil qilish.",
+    "qHash": "aedv8f_31",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_097",
+    "topicId": 6,
+    "category": "chqbt",
+    "q": "Taktik vaziyatlarni hal etishda 'Aqliy hujum' (Brainstorming) metodini qo'llashning eng asosiy qat'iy pedagogik qoidasi nima?",
+    "opts": [
+      "A) G'oyalar bildirilayotgan dastlabki bosqichda har qanday taklif va fikrni tanqid qilish yoki baholash mutlaqo taqiqlanadi",
+      "B) Faqat a'lochi o'quvchilar fikr bildirishiga ruxsat berilib, boshqa o'quvchilarning gapirishi man etiladi",
+      "C) Bildirilgan har bir noto'g'ri g'oya uchun o'quvchiga darhol intizomiy jazo chorasi qo'llaniladi",
+      "D) Barcha o'quvchilar faqat darslikda yozilgan bitta rasmiy javobni navbat bilan takrorlashi shart"
+    ],
+    "correct": 0,
+    "explanation": "Aqliy hujumning oltin qoidasi: g'oyalar to'planayotgan bosqichda tanqid mutlaqo taqiqlanadi. Bu o'quvchilarni qo'rquvsiz nostandart taktik fikrlashga va erkin yechimlar taklif etishga undaydi.",
+    "mnemonic": "Aqliy hujum qoidasi = Dastlabki bosqichda tanqid taqiqlanadi!",
+    "qHash": "1n2xgaz_3h",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_098",
+    "topicId": 6,
+    "category": "chqbt",
+    "q": "CHQBT fani rahbarining (o'qituvchisining) yillik faoliyatini rejalashtiruvchi asosiy me'yoriy hujjati qaysi hisoblanadi?",
+    "opts": [
+      "A) Tuman mudofaa ishlari bo'limi navbatchi ofitserining kundalik telefon xabarnomasi",
+      "B) Davlat ta'lim standarti va o'quv dasturi asosida tuzilgan hamda maktab direktori tomonidan tasdiqlangan Taqvim-mavzu reja",
+      "C) O'quvchilarning jismoniy tarbiya darslarida bajargan kross yugurish qaydnoma varaqasi",
+      "D) Harbiy qism komandiri tomonidan tasdiqlanadigan garnizon qorovullari navbatchilik jadvali"
+    ],
+    "correct": 1,
+    "explanation": "Taqvim-mavzu reja — fanning namunaviy o'quv dasturi asosida har bir mavzuni o'tish soatlari va muddatlarini belgilab beruvchi, ta'lim muassasasi rahbari tomonidan tasdiqlanadigan asosiy me'yoriy hujjatdir.",
+    "mnemonic": "Asosiy me'yoriy reja = Maktab rahbari tasdiqlagan Taqvim-mavzu reja.",
+    "qHash": "uiorzf_3c",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_099",
+    "topicId": 6,
+    "category": "chqbt",
+    "q": "Pnevmatik miltiqdan yoki o'qotar qurollardan o'quv otish mashg'ulotlari o'tkazishdan oldin o'qituvchi qanday majburiy pedagogik va xavfsizlik chorasini ko'rishi shart?",
+    "opts": [
+      "A) O'quvchilarga qurollarni berib, poligon maydonida erkin mo'ljallarga qarata mustaqil o'q uzishlariga ruxsat berish",
+      "B) Faqat o'qituvchining o'zi otib ko'rsatishi va o'quvchilarni tir binosiga kiritmasdan derazadan qaratish",
+      "C) Xavfsizlik texnikasi qoidalari bo'yicha to'liq yo'riqnoma o'tkazib, har bir o'quvchining shaxsiy imzosini maxsus ro'yxatga olish jurnaliga qo'ydirish",
+      "D) O'quvchilarning shaxsiy gigiyena qoidalariga rioya qilganligi to'g'risida tibbiy ma'lumotnoma talab qilish"
+    ],
+    "correct": 2,
+    "explanation": "Otish mashg'ulotlarida hayot xavfsizligi eng birinchi o'rinda turadi. Mashg'ulot boshlanishidan oldin barcha o'quvchilarga xavfsizlik yo'riqnomasi tushuntiriladi va ular maxsus jurnalga shaxsan imzo chekadilar.",
+    "mnemonic": "Otish oldidan = Xavfsizlik yo'riqnomasi + Jurnalga shaxsiy imzo.",
+    "qHash": "od52tq_4n",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_100",
+    "topicId": 6,
+    "category": "chqbt",
+    "q": "Saf tayyorgarligi darslarida murakkab saf usullarini o'rgatishda 'bo'laklarga bo'lib o'rgatish' (raschlenenniy metod) usulining mohiyati nimada?",
+    "opts": [
+      "A) O'quvchilarni turli guruhlarga bo'lib, har bir guruhga butunlay boshqa alohida harbiy fanlarni o'qitish",
+      "B) Harakatni hech qanday tushuntirishsiz o'ta tez sur'atlarda yugurib bajarishga majburlash",
+      "C) Faqat bo'yi baland o'quvchilarga saf usullarini o'rgatib, past bo'ylilarni tomoshabin sifatida qoldirish",
+      "D) Murakkab harakatni bir nechta alohida elementlarga (sanog'iga) ajratib, har birini mukammal o'zlashtirgach, butun harakatni yaxlit ijro etish"
+    ],
+    "correct": 3,
+    "explanation": "Bo'laklab o'rgatish metodi: murakkab saf harakati (masalan, qurol bilan burilish, saf qadami) 1, 2, 3 hisobiga bo'linib o'rgatiladi, so'ngra barcha harakatlar yaxlit va avtomatizm darajasiga yetkaziladi.",
+    "mnemonic": "Bo'laklab o'rgatish = Elementlarga bo'lish (hisob bo'yicha) -> So'ngra yaxlit bajarish.",
+    "qHash": "16jyp38_40",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_101",
+    "topicId": 6,
+    "category": "chqbt",
+    "q": "CHQBT darslarida interaktiv elektron tir va virtual reallik (VR) simulyatorlaridan foydalanishning ta'lim sifatiga ko'rsatadigan eng katta ijobiy ta'siri nima?",
+    "opts": [
+      "A) Jangovar o'q-dori sarflamasdan va shikastlanish xavfisiz real jang maydoni sharoitlarini modellashtirish hamda otish aniqligini tahlil qilish",
+      "B) Haqiqiy jangovar qurollarni o'rganish zaruratini butunlay yo'qqa chiqarib, faqat videoo'yinlar bilan cheklanish",
+      "C) O'quvchilarning jismoniy mashqlar bilan shug'ullanishini taqiqlab, faqat ekranga qarab o'tirishga o'rgatish",
+      "D) CHQBT fanini umumta'lim fanlari blokidan butunlay chiqarib tashlash imkoniyatini yaratish"
+    ],
+    "correct": 0,
+    "explanation": "Elektron tir va VR simulyatorlar — to'liq xavfsiz muhitda o'quvchida nishonni to'g'ri tanlash, nafasni ushlash va tepkini silliq bosish ko'nikmasini xatosiz shakllantiradi va o'q-dorini tejaydi.",
+    "mnemonic": "VR va elektron tir = To'liq xavfsizlik + Aniq tahlil + Taktik ko'nikma.",
+    "qHash": "pv29l6_4f",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_102",
+    "topicId": 6,
+    "category": "chqbt",
+    "q": "CHQBT mashg'ulotlarida o'quvchilar o'rtasida ziddiyat (kelishmovchilik) yuzaga kelganda harbiy rahbarning eng to'g'ri pedagogik taktikasi qanday bo'lishi kerak?",
+    "opts": [
+      "A) Barcha o'quvchilar oldida ziddiyat qatnashchilarini qattiq haqoratlab darsdan butunlay haydab yuborish",
+      "B) Emotsional holatni bosish, har ikki tomonni xolis tinglash, harbiy jamoaviylik va safdoshlik qadriyatlarini tushuntirib murosaga keltirish",
+      "C) Ziddiyatga mutlaqo e'tibor bermasdan dars rejasini go'yo hech narsa bo'lmagandek davom ettirish",
+      "D) Ziddiyat qatnashchilarining har ikkalasiga o'zaro jismoniy kuch ishlatish orqali haqiqatni aniqlashga ruxsat berish"
+    ],
+    "correct": 1,
+    "explanation": "O'qituvchi harbiy pedagog sifatida nizoni bosiqlik bilan to'xtatishi, sababini xolisona tahlil qilishi va harbiy do'stlik (birodarlik) tamoyillari asosida yechim topishi zarur.",
+    "mnemonic": "Nizoli vaziyat = Bosiqlik + Xolis tinglash + Harbiy safdoshlik qadriyatini tushuntirish.",
+    "qHash": "1t6ej8p_4g",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_103",
+    "topicId": 6,
+    "category": "chqbt",
+    "q": "CHQBT darslarida 'differensial (tabaqalashtirilgan) ta'lim yondashuvi' qanday amalga oshiriladi?",
+    "opts": [
+      "A) Barcha o'quvchilarga sog'lig'i va tayyorgarlik darajasidan qat'i nazar bir xil o'ta og'ir jismoniy talablarni yuklash",
+      "B) Faqat harbiy xizmatga borishni rejalashtirgan o'quvchilar bilan shug'ullanib, qolganlarni darsda bo'sh qoldirish",
+      "C) O'quvchilarning jismoniy rivojlanishi, sog'lig'i va psixologik xususiyatlarini inobatga olgan holda me'yoriy yuklamalarni moslashtirish",
+      "D) O'g'il bolalar va qiz bolalarning ta'lim dasturini bir-biriga mutlaqo teskari qilib mustaqil o'qitish"
+    ],
+    "correct": 2,
+    "explanation": "Differensial yondashuv o'quvchilarning individual imkoniyatlari (sog'lig'i, kuchi, psixologiyasi) ga mos vazifalar belgilashni taqozo etadi, bu esa jarohatlarning oldini oladi va motivatsiyani oshiradi.",
+    "mnemonic": "Differensial yondashuv = Shaxsiy imkoniyat va salomatlikka mos yuklama berish.",
+    "qHash": "l7xww7_2o",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_104",
+    "topicId": 6,
+    "category": "chqbt",
+    "q": "O'quvchilarda harbiy-vatanparvarlik tuyg'usini shakllantirishda 'Temur tuzuklari' va Sohibqiron Amir Temurning harbiy san'atidan foydalanishning pedagogik ahamiyati nimada?",
+    "opts": [
+      "A) O'quvchilarga zamonaviy o'qotar qurollarni o'rganish o'rniga faqat o'rta asr nayza va qilichlari bilan jang qilishni o'rgatish",
+      "B) Faqat o'rta asr harbiy liboslarini tikish va ularni darsda kiyib yurishni majburiy talab qilib qo'yish",
+      "C) Darslarda faqat tarix fanining mavzularini o'tib, CHQBT ning amaliy harbiy qismlarini bekor qilish",
+      "D) Milliy harbiy tariximiz, ajdodlarimizning jasorati va intizomga asoslangan harbiy mahoratini zamonaviy harbiy burch bilan uyg'unlashtirish"
+    ],
+    "correct": 3,
+    "explanation": "Amir Temur harbiy merosi va 'Temur tuzuklari' o'quvchilarda milliy g'urur, qat'iyat, komandirga sadoqat, temir intizom va yuksak vatanparvarlik fazilatlarini tarbiyalashda qudratli pedagogik manbadir.",
+    "mnemonic": "Ajdodlar jasorati = Milliy g'urur + Temir intizom + Harbiy burchga sadoqat.",
+    "qHash": "167y9ea_4s",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
+  },
+  {
+    "id": "chqbt_pro_105",
+    "topicId": 6,
+    "category": "chqbt",
+    "q": "Ta'lim muassasasida favqulodda vaziyat yuz berganda o'quvchilarni xavfsiz evakuatsiya qilishda o'qituvchining eng asosiy vazifasi nima?",
+    "opts": [
+      "A) Hech qanday sarosimaga (panikaga) yo'l qo'ymasdan, o'quvchilarni guruh bo'yicha evakuatsiya sxemasi asosida xavfsiz joyga olib chiqish va ro'yxat bo'yicha hisobini olish",
+      "B) O'quvchilarni sinfxonada qoldirib, o'zi birinchi bo'lib maktab hududidan tashqariga qochish",
+      "C) O'quvchilarga o'z xohishlariga ko'ra istalgan yo'nalishda mustaqil ravishda qochishga ruxsat berish",
+      "D) Bino eshiklarini qulflab, qutqaruvchilar kelguncha derazalarni sindirib baqirishni buyurish"
+    ],
+    "correct": 0,
+    "explanation": "Evakuatsiyada eng katta xavf — sarosima (panika). O'qituvchi xotirjamlikni saqlab, o'quvchilarni saf bo'yicha qat'iy yo'nalish orqali ochiq xavfsiz joyga olib chiqadi va sinf ro'yxati bo'yicha hamma chiqqanligini tekshiradi.",
+    "mnemonic": "Evakuatsiya = Sarosimaga yo'l qo'yma + Sxema bo'yicha olib chiq + Ro'yxatni tekshir.",
+    "qHash": "3sqrsu_3r",
+    "createdAt": "2026-09-11T12:06:30.772Z",
+    "updatedAt": "2026-09-11T12:06:30.772Z",
+    "level": "oliy",
+    "isAcademic": true,
+    "difficulty": "hard"
   }
 ]

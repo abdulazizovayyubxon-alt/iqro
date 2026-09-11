@@ -17,7 +17,7 @@ import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
 import ObjectionModal from '../components/shared/ObjectionModal';
 import ResultShareCard from '../components/shared/ResultShareCard';
-import { processQuestionsOnTheFly } from '../utils/questionFixer';
+import { dedupQuestions, getPreparedBank, peekPreparedBank } from '../utils/questionBank';
 import PremiumModal from '../components/PremiumModal';
 import SafeHtml from '../components/shared/SafeHtml';
 import QuestionMedia from '../components/QuestionMedia';
@@ -38,26 +38,6 @@ import { PED_BLOCK_TOTAL, isPedBlockTopic, EXAM_BLUEPRINT, hasBlueprint } from '
 import { useExitGuard } from '../hooks/useExitGuard';
 import { useModalBackButton } from '../components/profile/useModalBackButton';
 import { fetchPartnerSets, fetchSetQuestions, qulfHolatini, PARTNER_SET_ERRORS } from '../services/partnerSets';
-
-// Savol matnidan kirish/kontekst qismini olib tashlaydi (dublikat aniqlash uchun)
-function cleanForDedup(text) {
-  let clean = (text || '').trim().toLowerCase();
-  clean = clean.replace(/^\s*\[mavzu:\s*[^\]]+\]\s*/gi, '');
-  clean = clean.replace(/^\s*\[[^\]]+yangi\s+savol\]\s*/gi, '');
-  clean = clean.replace(/\s*\(\s*savol\s+kodi\s*:\s*#[a-z0-9_]+\s*\)/gi, '');
-  clean = clean.replace(/\s*#[a-z0-9_]+/gi, '');
-  const parts = clean.split(/,\s+/);
-  if (parts.length > 1) {
-    const firstPart = parts[0].trim();
-    const isIntro =
-      /^(in|im|w\u00e4hrend|bei|f\u00fcr|dars|o'qituvchi|sinf|maktab|o'quvchi|ota-ona|attestatsiya|metodik|pedagogik|ichki|tashqi|harbiy|amaliy|kasbiy|ilmiy|seminar|muhokama)/i.test(firstPart) ||
-      firstPart.split(' ').length <= 6;
-    if (isIntro) {
-      return parts.slice(1).join(', ').trim();
-    }
-  }
-  return clean.trim();
-}
 
 /** Mutaxassislik bloki — imtihonning 1–35-savollari. */
 const CORE_BLOCK_TOTAL = EXAM_TOTAL - PED_BLOCK_TOTAL;
@@ -572,14 +552,18 @@ const ExamPage = () => {
         const versionKey = `version_v2_${cat}`;
 
         const localCategoryVersion = await localforage.getItem(versionKey);
-        let allQ = await localforage.getItem(cacheKey);
+        // Seans xotirasidagi TAYYOR bank — TestPage bilan umumiy
+        // (utils/questionBank.js): paket qayta o'qilmaydi va qayta tozalanmaydi.
+        const bankRef = { cat, version: remoteVersion };
+        const bank = localCategoryVersion === remoteVersion ? peekPreparedBank(bankRef) : null;
+        let allQ = bank ? null : await localforage.getItem(cacheKey);
         let paywalled = false;
         // AUDIT 2026-08-17, X-6 BAND: server 429 qaytarsa Firestore zaxirasiga
         // TUSHMASLIK kerak. Zaxira fan boshiga ~2 900 o'qish — ya'ni limitni
         // chetlab o'tib, aynan himoya qilinayotgan resursni yeb qo'yardi.
         let throttled = false;
 
-        if (!allQ || localCategoryVersion !== remoteVersion) {
+        if (!bank && (!allQ || localCategoryVersion !== remoteVersion)) {
           // ⚠️ AUDIT 2026-08-05, 2-BAND — `settings/version.urls` dan
           // auth'SIZ `fetch(downloadUrl)` yo'li OLIB TASHLANDI: u pullik savol
           // bazasini avtorizatsiyasiz beradigan asosiy yo'l edi. Endi TestPage
@@ -653,20 +637,12 @@ const ExamPage = () => {
           return;
         }
 
-        allQ = allQ || [];
+        // Fan filtri + matn tozalash — bankda, bo'laklab va fan+versiya uchun bir marta.
+        allQ = bank || await getPreparedBank(bankRef, allQ || []);
 
-        allQ = allQ.filter(q => q.category === cat);
-        allQ = processQuestionsOnTheFly(allQ);
-
-        // Dublikat savollarni tozalaymiz (kirish kontekst qismlarini hisobga olmagan holda)
-        const seenCore = new Set();
-        allQ = allQ.filter(q => {
-          const core = cleanForDedup(q.q || '');
-          if (!core) return true;
-          if (seenCore.has(core)) return false;
-          seenCore.add(core);
-          return true;
-        });
+        // Dublikat savollarni tozalaymiz (kirish kontekst qismlarini hisobga
+        // olmagan holda). Kalit bankda allaqachon hisoblangan.
+        allQ = dedupQuestions(allQ);
 
         if (allQ.length === 0) {
           goBack();

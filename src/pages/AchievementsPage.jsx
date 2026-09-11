@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { AppContext, getWeekId } from '../context/AppContext';
@@ -17,6 +17,7 @@ import StreakRiskCard from '../components/achievements/StreakRiskCard';
 import PassportShareCard from '../components/achievements/PassportShareCard';
 import PremiumModal from '../components/PremiumModal';
 import { useMilestoneAction } from '../hooks/useMilestoneAction';
+import { useTopicTotals } from '../hooks/useTopicTotals';
 import { streakRisk } from '../utils/streakRisk';
 import { useAuth } from '../context/AuthContext';
 import { ToastContext } from '../context/ToastContext';
@@ -30,7 +31,6 @@ const AchievementsPage = () => {
   const [activeTab, setActiveTab] = useState('achievements');
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [showPassport, setShowPassport] = useState(false);
-  const [topicTotals, setTopicTotals] = useState({});
   const { isTrialExpired } = useTrialExpiry();
   const isFreeLimitReached = isTrialExpired && (state.dailyGoal?.answered || 0) >= 50;
 
@@ -62,19 +62,9 @@ const AchievementsPage = () => {
 
   // Mavzu bo'yicha umumiy savol sonini lokal keshdan yuklash (qamrov bari uchun) —
   // avval topicTotal=answered qilingani sababli qamrov doimo 100% ko'rinardi.
-  useEffect(() => {
-    (async () => {
-      try {
-        const localforage = (await import('localforage')).default;
-        const rawList = await localforage.getItem(`bundle_v2_${cat}`);
-        if (Array.isArray(rawList)) {
-          const totals = {};
-          rawList.forEach(q => { if (q.category === cat) totals[q.topicId] = (totals[q.topicId] || 0) + 1; });
-          setTopicTotals(totals);
-        }
-      } catch { /* kesh yo'q — qamrov ko'rsatilmaydi */ }
-    })();
-  }, [cat]);
+  // Hook natijani fan+versiya bo'yicha xotirada saqlaydi — sahifa har
+  // ochilganda 3 MB lik paket qayta o'qilmaydi (2026-09-11).
+  const topicTotals = useTopicTotals(cat);
 
   // Akademik yutuqlar: saqlangan darajalar (monoton) + jonli progress (sof hisob).
   // reconcileAchievements bu yerda faqat O'QISH uchun — yozish AppContext'da bo'ladi.

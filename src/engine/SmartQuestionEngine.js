@@ -77,11 +77,26 @@ const canonicalText = (text) => (text || '')
   .replace(/\s+/g, ' ')
   .trim();
 
+// Kalit obyekt bo'yicha BIR MARTA hisoblanadi. 2026-09-11 o'lchovi: Test
+// ochilishidagi smartSort (3 780 savol) 14.8 ms, shundan 11.4 ms — aynan shu
+// hisob; savol obyektlari esa seans davomida o'sha-o'sha (utils/questionBank).
+// Xavfsiz: kodda savol/karta obyektining `.q` maydoni joyida o'zgartirilmaydi
+// — matn o'zgarsa yangi obyekt yasaladi, ya'ni kesh eskirmaydi.
+const keyCache = new WeakMap();
+
 /**
  * Savol yoki takrorlash kartochkasining barqaror identifikatori.
  * Kirish sifatida ikkalasi ham bo'ladi — ikkalasida ham matn `.q` maydonida.
  */
-export const questionKey = (item) => 'h' + cyrb53(canonicalText(item?.q));
+export const questionKey = (item) => {
+  if (!item || typeof item !== 'object') return 'h' + cyrb53(canonicalText(item?.q));
+  let key = keyCache.get(item);
+  if (key === undefined) {
+    key = 'h' + cyrb53(canonicalText(item.q));
+    keyCache.set(item, key);
+  }
+  return key;
+};
 
 /**
  * Eski (100 belgilik) identifikator — faqat `customMnemonics` uchun qoldi.

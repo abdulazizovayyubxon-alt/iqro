@@ -18,7 +18,7 @@ import confetti from 'canvas-confetti';
 import { prefersReducedMotion } from '../utils/motion';
 import ObjectionModal from '../components/shared/ObjectionModal';
 import ConfirmDialog from '../components/shared/ConfirmDialog';
-import { processQuestionsOnTheFly } from '../utils/questionFixer';
+import { dedupQuestions, getPreparedBank, peekPreparedBank } from '../utils/questionBank';
 import PremiumModal from '../components/PremiumModal';
 import FreeMonthBanner from '../components/FreeMonthBanner';
 import { BATCH_SIZE, QUESTION_TIMER_SECONDS } from '../config';
@@ -32,32 +32,6 @@ import { AnalyticsEvents } from '../services/analytics';
 import { submitQuestionRequest, hasRequested } from '../services/questionRequests';
 import { reportEmptyTopic, reportExhaustedTopic } from '../services/contentGaps';
 import localforage from 'localforage';
-
-// Savol matnidan kirish/kontekst qismini olib tashlaydi va asosiy savolni qaytaradi.
-// Bu funksiya dublikatlarni aniqlashda ishlatiladi: masalan,
-//   "Im Unterricht, Konjunktiv II nima?" va "Dars davomida, Konjunktiv II nima?"
-// bir xil hisoblanishi uchun ikkalasidan ham kirish qismi olib tashlanadi.
-function cleanForDedup(text) {
-  let clean = (text || '').trim().toLowerCase();
-  // [Mavzu: ...] yoki [... yangi savol] prefikslarini olib tashlash
-  clean = clean.replace(/^\s*\[mavzu:\s*[^\]]+\]\s*/gi, '');
-  clean = clean.replace(/^\s*\[[^\]]+yangi\s+savol\]\s*/gi, '');
-  // Savol kodlarini olib tashlash
-  clean = clean.replace(/\s*\(\s*savol\s+kodi\s*:\s*#[a-z0-9_]+\s*\)/gi, '');
-  clean = clean.replace(/\s*#[a-z0-9_]+/gi, '');
-  // Verguldan oldingi kirish qismini olib tashlash (agar u qisqa va kontekst bo'lsa)
-  const parts = clean.split(/,\s+/);
-  if (parts.length > 1) {
-    const firstPart = parts[0].trim();
-    const isIntro =
-      /^(in|im|w\u00e4hrend|bei|f\u00fcr|dars|o'qituvchi|sinf|maktab|o'quvchi|ota-ona|attestatsiya|metodik|pedagogik|ichki|tashqi|harbiy|amaliy|kasbiy|ilmiy|seminar|muhokama)/i.test(firstPart) ||
-      firstPart.split(' ').length <= 6;
-    if (isIntro) {
-      return parts.slice(1).join(', ').trim();
-    }
-  }
-  return clean.trim();
-}
 
 import SubjectTopicChips, { BlockRow } from '../components/SubjectTopicChips';
 import QuestionBox from '../components/test/QuestionBox';
@@ -103,6 +77,17 @@ const poolKeyFor = (uid) => `test_pool_${uid}`;
 // Eski yagona kalit — faqat tozalash uchun (ichida 2.4 MB qolib ketgan bo'lishi
 // mumkin, hech qachon o'qilmaydi).
 const LEGACY_SESSION_KEY = 'test_session';
+
+// Kechiktirilgan hovuz yozuvini bajaradi (generateFullPool dagi izohga
+// qarang). Modul darajasida: `visibilitychange` tinglovchisi bir marta
+// o'rnatiladi va faqat barqaror ref'ni ko'radi.
+const flushPendingPool = (pendingRef) => {
+  const job = pendingRef.current;
+  if (!job) return;
+  pendingRef.current = null;
+  localforage.setItem(poolKeyFor(job.uid), job.record)
+    .catch(e => console.error('Save test pool error:', e));
+};
 
 // Taymer rejimi foydalanuvchi tanlovi sifatida saqlanadi (T-10).
 const TIMER_MODE_KEY = 'test_timer_mode';
@@ -179,7 +164,11 @@ const TestPage = () => {
   // savolning o'zida ✓/✕ bo'lib ko'rinadi — bayroq ikkinchi, ortiqcha
   // belgi bo'lardi. U faqat imtihonda ma'noli (ExamPage).
   const [navOpen, setNavOpen] = useState(false);
-  const [isGenerating, setIsGenerating] = useState(false);
+  // `true` — birinchi kadrdayoq skelet. `false` bo'lganda mount va yuklash
+  // effekti orasidagi kadrda «Mavzu tayyorlanmoqda» bo'sh ekrani va «Ko'proq
+  // savol kerak» tugmasi chaqnab o'tardi (2026-09-11). Mount effekti
+  // generateFullPool ni HAR DOIM chaqiradi va u holatni o'zi tushiradi.
+  const [isGenerating, setIsGenerating] = useState(true);
   // Hovuz BO'SH qolganda buning SABABI: `null` — savol rostdan yo'q;
   // 'paywall' — obuna/sinov muddati tugagan (403 yoki permission-denied);
   // 'network' — server band (429), Firestore kvotasi tugagan yoki aloqa yo'q.
@@ -242,6 +231,8 @@ const TestPage = () => {
   const poolStampRef = useRef(null);
   // Debounce taymeri (sessiya yozuvi uchun)
   const saveTimerRef = useRef(null);
+  // Bo'sh vaqtda yoziladigan hovuz: { uid, record } | null
+  const pendingPoolRef = useRef(null);
 
   // ── Faqat progress yozuvini o'chirish, hovuz qoladi ──
   // Natija ekranida ishlatiladi: keyingi blokka o'tish uchun hovuz kerak,
@@ -257,6 +248,9 @@ const TestPage = () => {
   // hech kimga kerak bo'lmagan holda IndexedDB'da yotib qolardi.
   const clearSavedSession = () => {
     clearSessionProgress();
+    // Hali yozilmagan hovuz ham bekor — aks holda o'chirilgandan KEYIN
+    // yozilib, 2.4 MB lik yozuv IndexedDB'da qaytadan paydo bo'lardi.
+    pendingPoolRef.current = null;
     const uid = user?.uid;
     if (uid) localforage.removeItem(poolKeyFor(uid)).catch(() => {});
   };
@@ -574,10 +568,15 @@ const TestPage = () => {
         
         // 2. Telefon xotirasidan izlaymiz
         const localCategoryVersion = await localforage.getItem(versionKey);
-        let rawList = await localforage.getItem(cacheKey);
+        // Seans xotirasida shu versiyaning TAYYOR banki bo'lsa, 3 MB lik
+        // paketni IndexedDB'dan qayta o'qish ham, uni qayta tozalash ham
+        // shart emas (utils/questionBank.js — o'lchov va sabab o'sha yerda).
+        const bankRef = { cat: state.activeCategory, version: remoteVersion };
+        let bank = localCategoryVersion === remoteVersion ? peekPreparedBank(bankRef) : null;
+        let rawList = bank ? null : await localforage.getItem(cacheKey);
 
         // 3. Agar telefonda savollar yo'q bo'lsa yoki versiya eskirgan bo'lsa (yangi savol qo'shilgan)
-        if (!rawList || localCategoryVersion !== remoteVersion) {
+        if (!bank && (!rawList || localCategoryVersion !== remoteVersion)) {
           // auth.currentUser sahifa yuklanishida null bo'lishi mumkin — kuting
           let currentUser = auth.currentUser;
           if (!currentUser) {
@@ -706,6 +705,14 @@ const TestPage = () => {
           }
         }
 
+        // Fan filtri, matn tozalash va takror kaliti — bankda, bo'laklab va
+        // fan+versiya uchun BIR MARTA. Bo'lim filtri undan keyin qo'llanadi:
+        // tozalash savolning bo'limi va fanini o'zgartirmaydi, ya'ni to'plam
+        // aynan oldingidek chiqadi (questionBank.test.js).
+        if (!bank) bank = await getPreparedBank(bankRef, rawList || []);
+        if (currentReq !== generateReqRef.current) return;
+        rawList = bank;
+
         // Agar ma'lum bir mavzu tanlangan bo'lsa, JavaScript yordamida tezkor filter qilamiz
         if (topicId !== -1) {
           const topicObj = TOPICS.find(t => t.id === topicId);
@@ -728,18 +735,9 @@ const TestPage = () => {
         
         rawList = rawList.filter(q => validTopicIds.includes(q.topicId));
 
-        // SAVOL KODLARINI UI'DAN OLIB TASHLASH VA MOSLASHTIRISH SAVOLLARINI ARALASHTIRISH
-        rawList = processQuestionsOnTheFly(rawList);
-
-        // Dublikat savollarni tozalaymiz (kirish kontekst qismlarini hisobga olmagan holda)
-        const seenCore = new Set();
-        rawList = rawList.filter(q => {
-          const core = cleanForDedup(q.q || '');
-          if (!core) return true;
-          if (seenCore.has(core)) return false;
-          seenCore.add(core);
-          return true;
-        });
+        // Dublikat savollarni tozalaymiz (kirish kontekst qismlarini hisobga
+        // olmagan holda). Kalit har savol uchun bankda allaqachon hisoblangan.
+        rawList = dedupQuestions(rawList);
 
         // 🧠 SMART SORT — aqlli savol tanlash
         // Zaif mavzulardagi savollarni ko'proq ko'rsatadi,
@@ -802,21 +800,33 @@ const TestPage = () => {
         // Bu yerdagi yozuv og'ir (CHQBT'da ~2.4 MB), lekin u seans boshida
         // BITTA marta bo'ladi — javob bosilganda emas. Shtamp sessiya yozuvini
         // shu hovuzga bog'laydi.
+        //
+        // ⚠️ 2026-09-11 — yozuv endi BO'SH VAQTDA. IndexedDB `put` qiymatni
+        // asosiy oqimda sinxron nusxalaydi (o'lchov: kompyuterda 12–20 ms,
+        // telefonda ~100 ms) va bu aynan birinchi savol chiziladigan paytga
+        // to'g'ri kelardi. Ilova fonga o'tsa kutmasdan yoziladi (pastdagi
+        // `visibilitychange`), testdan chiqilsa bekor qilinadi.
         const uid = user?.uid;
         if (uid && finalPool.length > 0) {
           const stamp = `${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
           poolStampRef.current = stamp;
-          localforage.setItem(poolKeyFor(uid), {
+          pendingPoolRef.current = {
             uid,
-            stamp,
-            activeCategory: state.activeCategory,
-            mode,
-            topicId,
-            topicSubset,
-            pool: finalPool,
-          }).catch(e => console.error('Save test pool error:', e));
+            record: {
+              uid,
+              stamp,
+              activeCategory: state.activeCategory,
+              mode,
+              topicId,
+              topicSubset,
+              pool: finalPool,
+            },
+          };
+          const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 300));
+          idle(() => flushPendingPool(pendingPoolRef), { timeout: 2000 });
         } else {
           poolStampRef.current = null;
+          pendingPoolRef.current = null;
         }
 
         // Analitika: yangi test sessiyasi boshlandi (bo'lim navigatsiyasida emas — bu effekt
@@ -923,8 +933,13 @@ const TestPage = () => {
   // Ilova fonga tushganda / yopilganda — debounce'ni KUTMASDAN yozamiz.
   // Mobil PWA foydalanuvchisi ilovani 400 ms ichida yopishi mumkin.
   useEffect(() => {
-    const onHide = () => { if (document.visibilityState === 'hidden') persistRef.current?.(); };
-    const onPageHide = () => persistRef.current?.();
+    // Hovuz sessiyadan OLDIN: tiklashda sessiya shtampi hovuzga mos kelishi shart.
+    const onHide = () => {
+      if (document.visibilityState !== 'hidden') return;
+      flushPendingPool(pendingPoolRef);
+      persistRef.current?.();
+    };
+    const onPageHide = () => { flushPendingPool(pendingPoolRef); persistRef.current?.(); };
     document.addEventListener('visibilitychange', onHide);
     // `pagehide` — iOS Safari'da `visibilitychange` har doim ishonchli emas
     window.addEventListener('pagehide', onPageHide);
