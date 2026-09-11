@@ -23,7 +23,7 @@ import {
   ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Search, Plus, Edit3, FileText, Zap,
   Bell, Send, CheckCircle2, AlertCircle, Info, ArrowLeft, UploadCloud,
   Download, Crown, Database, RefreshCw, Inbox, School, CreditCard, Ticket, X,
-  Activity, Layers, Sparkles, MoreVertical, KeyRound, Copy, CalendarDays
+  Activity, Layers, Sparkles, MoreVertical, KeyRound, CalendarDays
 } from 'lucide-react';
 
 import './AdminPage.css';
@@ -31,6 +31,7 @@ import PromoTab from '../components/admin/PromoTab';
 import SchoolsTab from '../components/admin/SchoolsTab';
 import PartnerSetsTab from '../components/admin/PartnerSetsTab';
 import FixQuestionModal, { REASON_LABELS } from '../components/admin/FixQuestionModal';
+import ResetPasswordModal from '../components/admin/ResetPasswordModal';
 import { TOPICS, SUBJECTS } from '../data/mockData';
 import { normalizeText, trigrams, jaccard } from '../utils/textSimilarity';
 // A-1: shubhali savol diagnozi. AdminPage test qilib bo'lmaydigan hajmda,
@@ -2690,8 +2691,7 @@ try {
   // Natija TOAST'da ko'rsatilmaydi: toast o'z-o'zidan yo'qoladi va parol
   // ko'chirilmay qolib ketardi (uni qayta ko'rish imkoni yo'q — Firebase
   // parolni xeshlab saqlaydi, o'qib bo'lmaydi). Shuning uchun modal.
-  const [resetPwModal, setResetPwModal] = useState(null); // { name, password }
-  const [pwCopied, setPwCopied] = useState(false);
+  const [resetPwModal, setResetPwModal] = useState(null); // { name, password, rawName, phone, email }
 
   const handleResetPassword = (u) => {
     const label = u.displayName || u.email || u.phoneNumber || u.id;
@@ -2726,9 +2726,16 @@ try {
             throw new Error(known[data.error] || data.error || `HTTP ${res.status}`);
           }
 
-          setPwCopied(false);
           setUserCard(null);
-          setResetPwModal({ name: label, password: data.password });
+          // `rawName`/`phone`/`email` — Telegramga tayyor xabar uchun
+          // (utils/resetPasswordMessage.js): ism tozalanadi, raqam niqoblanadi.
+          setResetPwModal({
+            name: label,
+            password: data.password,
+            rawName: u.displayName || null,
+            phone: u.phone || u.phoneNumber || null,
+            email: u.email || null,
+          });
           // Parolning O'ZI jurnalga YOZILMAYDI — `adminActions` panelda
           // o'qiladigan oddiy kolleksiya, jonli parol u yerda qolmasligi kerak.
           logAdminAction('user.reset_password', u.id, { kim: label });
@@ -2738,17 +2745,6 @@ try {
         }
       }
     );
-  };
-
-  const copyTempPassword = async () => {
-    try {
-      await navigator.clipboard.writeText(resetPwModal.password);
-      setPwCopied(true);
-    } catch {
-      // HTTPS bo'lmagan muhitda clipboard API yo'q — parol maydonda ko'rinib
-      // turibdi, admin qo'lda belgilab ko'chiradi.
-      showToast("Ko'chirib bo'lmadi — parolni qo'lda belgilab oling", 'error');
-    }
   };
 
   // ── CSV eksport (admin yozuvlari uchun) ──
@@ -3468,7 +3464,6 @@ try {
   const premiumModalRef = useModalA11y(!!premiumModal, () => { if (!premiumSaving) setPremiumModal(null); });
   const userCardRef = useModalA11y(!!userCard, () => setUserCard(null));
   const roleModalRef = useModalA11y(!!roleModal, () => setRoleModal(null));
-  const resetPwModalRef = useModalA11y(!!resetPwModal, () => setResetPwModal(null));
 
   // ── Tab ta'rifi bitta joyda ──
   // Ilgari 11 ta tab tugmasi qo'lda takrorlangan edi (har biri ~4 qator bir xil
@@ -6319,68 +6314,19 @@ try {
         </div>
       )}
 
-      {/* Vaqtinchalik parol. Bu oyna — parolni ko'rishning YAGONA imkoniyati:
-          Firebase parolni xeshlab saqlaydi, ya'ni uni qaytadan o'qib bo'lmaydi.
-          Yopilgandan keyin qolgan yo'l — qaytadan tiklash. Shuning uchun oynada
-          ko'chirish tugmasi bor va yopish tugmasi ataylab «Yozib oldim» deyiladi. */}
+      {/* Vaqtinchalik parol — uni ko'rishning YAGONA imkoniyati (Firebase
+          parolni xeshlab saqlaydi). Oyna va Telegramga tayyor xabar:
+          components/admin/ResetPasswordModal.jsx */}
       {resetPwModal && (
-        <div className="admin-modal-overlay">
-          <motion.div
-            ref={resetPwModalRef}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Vaqtinchalik parol"
-            tabIndex={-1}
-            initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-            className="admin-modal-panel admin-modal-panel--md"
-          >
-            <h3 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: 'var(--text)', margin: 0 }}>
-              <KeyRound size={18} style={{ color: 'var(--amber)', verticalAlign: '-3px', marginRight: 6 }} />
-              Vaqtinchalik parol
-            </h3>
-            <p className="admin-info-text" style={{ marginTop: 4, marginBottom: 16 }}>
-              <strong style={{ color: 'var(--text)' }}>{resetPwModal.name}</strong> uchun yangi parol o'rnatildi.
-            </p>
-
-            {/* `textTransform: none` — SHART. `.admin-input--code` matnni KATTA
-                HARFGA aylantiradi (u promokodlar uchun yozilgan), parol esa
-                registrga sezgir: ekranda `K7pQ…` ni `K7PQ…` deb ko'rgan admin
-                uni telefonda xato aytib berardi. */}
-            <div className="admin-row--tight" style={{ marginBottom: 12 }}>
-              <input
-                className="admin-input admin-input--code"
-                value={resetPwModal.password}
-                readOnly
-                onFocus={e => e.target.select()}
-                aria-label="Vaqtinchalik parol"
-                style={{
-                  textTransform: 'none',
-                  fontSize: 'var(--fs-3xl)',
-                  letterSpacing: '2px',
-                  textAlign: 'center',
-                }}
-              />
-              <button className="btn btn-primary" onClick={copyTempPassword}>
-                <Copy size={15} style={{ marginRight: 6, verticalAlign: '-2px' }} />
-                {pwCopied ? "Ko'chirildi" : "Ko'chirish"}
-              </button>
-            </div>
-
-            <div className="admin-info-box">
-              <div className="admin-info-title">⚠️ Bu oyna bir marta ko'rsatiladi</div>
-              <div className="admin-info-text">
-                Parol hech qayerda saqlanmaydi — yopilgandan keyin uni qayta ko'rib bo'lmaydi
-                (kerak bo'lsa qaytadan tiklaysiz). Foydalanuvchiga yetkazing va ayting:
-                kirgandan so'ng <strong>Profil → Parolni o'zgartirish</strong> dan o'z parolini qo'ysin.
-                Ochiq qolgan seanslari uzildi — barcha qurilmada qaytadan kirishi kerak.
-              </div>
-            </div>
-
-            <div className="admin-modal-actions">
-              <button className="btn btn-primary" onClick={() => setResetPwModal(null)}>Yozib oldim</button>
-            </div>
-          </motion.div>
-        </div>
+        <ResetPasswordModal
+          name={resetPwModal.name}
+          password={resetPwModal.password}
+          rawName={resetPwModal.rawName}
+          phone={resetPwModal.phone}
+          email={resetPwModal.email}
+          onClose={() => setResetPwModal(null)}
+          showToast={showToast}
+        />
       )}
 
       {premiumModal && (
